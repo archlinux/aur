@@ -231,7 +231,7 @@ index 51f31083bc..a4ef0bae04 100644
  
  We can iterate through the *keys*, or *values*, or both, of a
 diff --git a/src/sage/algebras/cluster_algebra.py b/src/sage/algebras/cluster_algebra.py
-index 4054bd5d9a..236b861c8a 100644
+index e3c7b1ea99..5ecea79c78 100644
 --- a/src/sage/algebras/cluster_algebra.py
 +++ b/src/sage/algebras/cluster_algebra.py
 @@ -183,7 +183,7 @@ g-vectors and F-polynomials can be computed from elements of ``A`` only if
@@ -243,7 +243,7 @@ index 4054bd5d9a..236b861c8a 100644
  
  Each cluster algebra is endowed with a reference to a current seed;
  it could be useful to assign a name to it::
-@@ -559,7 +559,7 @@ class PrincipalClusterAlgebraElement(ClusterAlgebraElement):
+@@ -557,7 +557,7 @@ class PrincipalClusterAlgebraElement(ClusterAlgebraElement):
              sage: A = ClusterAlgebra(['B', 2], principal_coefficients=True)
              sage: x = A.cluster_variable((1, 0)) + A.cluster_variable((0, 1))
              sage: x.homogeneous_components()
@@ -377,10 +377,10 @@ index edb8a5ffbc..fd842316c6 100644
      TESTS::
  
 diff --git a/src/sage/categories/crystals.py b/src/sage/categories/crystals.py
-index cc2b504296..119d5e37d3 100644
+index 7af4ec76da..cc8cb303f6 100644
 --- a/src/sage/categories/crystals.py
 +++ b/src/sage/categories/crystals.py
-@@ -75,7 +75,7 @@ class Crystals(Category_singleton):
+@@ -74,7 +74,7 @@ class Crystals(Category_singleton):
  
          sage: from sage.misc.abstract_method import abstract_methods_of_class
          sage: abstract_methods_of_class(Crystals().element_class)
@@ -441,7 +441,7 @@ index dec8b00b74..9322833836 100644
          slots = Map._extra_slots(self)
          slots['_function'] = self._function
 diff --git a/src/sage/categories/primer.py b/src/sage/categories/primer.py
-index a125fc602b..8f9838b7df 100644
+index 74b17110f0..a5b3e55988 100644
 --- a/src/sage/categories/primer.py
 +++ b/src/sage/categories/primer.py
 @@ -764,8 +764,8 @@ operations. In particular a list of mandatory and optional methods to
@@ -455,7 +455,7 @@ index a125fc602b..8f9838b7df 100644
  
  Documentation about those methods can be obtained with::
  
-@@ -988,9 +988,9 @@ A (not yet complete) list of mandatory and optional methods to be
+@@ -985,9 +985,9 @@ A (not yet complete) list of mandatory and optional methods to be
  implemented can be found by introspection with::
  
      sage: FiniteSemigroups().required_methods()
@@ -469,10 +469,10 @@ index a125fc602b..8f9838b7df 100644
  ``product`` does not appear in the list because a default implementation
  is provided in term of the method ``_mul_`` on elements. Of course, at
 diff --git a/src/sage/categories/pushout.py b/src/sage/categories/pushout.py
-index 27e436c636..38a2b5c383 100644
+index d3280aad2c..29f0d3672e 100644
 --- a/src/sage/categories/pushout.py
 +++ b/src/sage/categories/pushout.py
-@@ -2387,7 +2387,7 @@ class CompletionFunctor(ConstructionFunctor):
+@@ -2385,7 +2385,7 @@ class CompletionFunctor(ConstructionFunctor):
              sage: F2
              Completion[+Infinity, prec=53]
              sage: F2.extras
@@ -495,10 +495,10 @@ index a4cc095f51..5a4e347611 100644
      TESTS::
  
 diff --git a/src/sage/coding/linear_code.py b/src/sage/coding/linear_code.py
-index dc27b10920..2fefa65d8c 100644
+index 4b8f04dc4e..a5b1a59636 100644
 --- a/src/sage/coding/linear_code.py
 +++ b/src/sage/coding/linear_code.py
-@@ -2677,22 +2677,22 @@ class LinearCodeSyndromeDecoder(Decoder):
+@@ -2676,22 +2676,22 @@ class LinearCodeSyndromeDecoder(Decoder):
              sage: D = codes.decoders.LinearCodeSyndromeDecoder(C, maximum_error_weight = 1)
              sage: D._build_lookup_table()
              {(0, 0, 0, 0): (0, 0, 0, 0, 0, 0, 0, 0),
@@ -533,7 +533,7 @@ index dc27b10920..2fefa65d8c 100644
  
          TESTS:
  
-@@ -2706,11 +2706,11 @@ class LinearCodeSyndromeDecoder(Decoder):
+@@ -2705,11 +2705,11 @@ class LinearCodeSyndromeDecoder(Decoder):
              sage: D = codes.decoders.LinearCodeSyndromeDecoder(C)
              sage: D.syndrome_table()
               {(0, 0): (0, 0, 0),
@@ -550,10 +550,10 @@ index dc27b10920..2fefa65d8c 100644
                (2*a + 2, 2*a + 2): (2*a + 2, 2*a + 2, 0)}
          """
 diff --git a/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py b/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
-index aec20b0687..7483c67e0b 100644
+index beee549e25..fe272de2a3 100644
 --- a/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
 +++ b/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
-@@ -2735,119 +2735,119 @@ class ClusterSeed(SageObject):
+@@ -2733,119 +2733,119 @@ class ClusterSeed(SageObject):
              sage: B = [[0, 4, 0, -1],[-4,0, 3, 0],[0, -3, 0, 1],[1, 0, -1, 0]]
              sage: S = ClusterSeed(matrix(B)); S.mutate([2,3,1,2,1,3,0,2])
              sage: S.mutation_analysis()
@@ -738,10 +738,10 @@ index aec20b0687..7483c67e0b 100644
          """
  
 diff --git a/src/sage/combinat/crystals/kirillov_reshetikhin.py b/src/sage/combinat/crystals/kirillov_reshetikhin.py
-index afcc1fc669..95161c35a6 100644
+index 28b76b6f9c..0b0eb4404b 100644
 --- a/src/sage/combinat/crystals/kirillov_reshetikhin.py
 +++ b/src/sage/combinat/crystals/kirillov_reshetikhin.py
-@@ -1188,11 +1188,11 @@ class KR_type_E6(KirillovReshetikhinCrystalFromPromotion):
+@@ -1187,11 +1187,11 @@ class KR_type_E6(KirillovReshetikhinCrystalFromPromotion):
  
              sage: K = crystals.KirillovReshetikhin(['E',6,1],2,1)
              sage: K.highest_weight_dict_inv()
@@ -757,7 +757,7 @@ index afcc1fc669..95161c35a6 100644
          """
          hw = [x for x in self.hw_auxiliary() if x.epsilon(6) == 0]
          dic = {(self.affine_weight(x), len(x)): x for x in hw}
-@@ -1944,8 +1944,8 @@ class KR_type_box(KirillovReshetikhinGenericCrystal, AffineCrystalFromClassical)
+@@ -1943,8 +1943,8 @@ class KR_type_box(KirillovReshetikhinGenericCrystal, AffineCrystalFromClassical)
              sage: K.highest_weight_dict()
              {[]: [],
               [2]: [[1]],
@@ -767,7 +767,7 @@ index afcc1fc669..95161c35a6 100644
               [4, 2]: [[1, 1], [2]],
               [4, 4]: [[1, 1], [2, 2]]}
          """
-@@ -1964,8 +1964,8 @@ class KR_type_box(KirillovReshetikhinGenericCrystal, AffineCrystalFromClassical)
+@@ -1963,8 +1963,8 @@ class KR_type_box(KirillovReshetikhinGenericCrystal, AffineCrystalFromClassical)
              sage: K.ambient_highest_weight_dict()
              {[]: [],
               [2]: [[1, 1]],
@@ -796,10 +796,10 @@ index 25fdd16c3f..d22d1acccc 100644
          from copy import copy
          return copy(self._latex_options)
 diff --git a/src/sage/combinat/dyck_word.py b/src/sage/combinat/dyck_word.py
-index 33ecc32819..643e76c98c 100644
+index a87cc7b200..cf770c70cd 100644
 --- a/src/sage/combinat/dyck_word.py
 +++ b/src/sage/combinat/dyck_word.py
-@@ -431,12 +431,12 @@ class DyckWord(CombinatorialElement):
+@@ -430,12 +430,12 @@ class DyckWord(CombinatorialElement):
  
              sage: D = DyckWord([1,0,1,0,1,0])
              sage: D.latex_options()
@@ -816,10 +816,10 @@ index 33ecc32819..643e76c98c 100644
  
          .. TODO::
 diff --git a/src/sage/combinat/finite_state_machine.py b/src/sage/combinat/finite_state_machine.py
-index 2e5c8d9884..59acb0e80a 100644
+index a5d5421b07..acfe59bcac 100644
 --- a/src/sage/combinat/finite_state_machine.py
 +++ b/src/sage/combinat/finite_state_machine.py
-@@ -2133,8 +2133,7 @@ class FSMState(SageObject):
+@@ -2130,8 +2130,7 @@ class FSMState(SageObject):
              sage: A.state(0)._in_epsilon_cycle_(A)
              True
              sage: A.state(4)._epsilon_successors_(A)
@@ -829,7 +829,7 @@ index 2e5c8d9884..59acb0e80a 100644
              sage: A.state(4)._in_epsilon_cycle_(A)
              False
          """
-@@ -7221,7 +7220,7 @@ class FiniteStateMachine(SageObject):
+@@ -7218,7 +7217,7 @@ class FiniteStateMachine(SageObject):
              sage: S.epsilon_successors(0)
              {0: [['a', 'b']], 1: [['a']]}
              sage: S.epsilon_successors(1)
@@ -838,7 +838,7 @@ index 2e5c8d9884..59acb0e80a 100644
          """
          return self.state(state)._epsilon_successors_(self)
  
-@@ -15054,7 +15053,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15050,7 +15049,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
      This class has the additional attribute ``visited_states``::
  
          sage: it.visited_states
@@ -847,7 +847,7 @@ index 2e5c8d9884..59acb0e80a 100644
  
      This means the following (let us skip the state `0` for a moment):
      State `1` can be reached by a epsilon path which write ``'bc'`` as
-@@ -15081,7 +15080,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15077,7 +15076,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['c']]
          process (0 branches)
          sage: it.visited_states
@@ -856,7 +856,7 @@ index 2e5c8d9884..59acb0e80a 100644
  
      TESTS::
  
-@@ -15109,7 +15108,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15105,7 +15104,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -865,7 +865,7 @@ index 2e5c8d9884..59acb0e80a 100644
  
      At this point note that in the previous output, state `1` (from
      which we started) was also reached by a non-trivial
-@@ -15133,7 +15132,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15129,7 +15128,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -874,7 +874,7 @@ index 2e5c8d9884..59acb0e80a 100644
          sage: it = _FSMProcessIteratorEpsilon_(A, initial_state=A.state(3))
          sage: for current in it:
          ....:     print(current)
-@@ -15149,7 +15148,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15145,7 +15144,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -883,7 +883,7 @@ index 2e5c8d9884..59acb0e80a 100644
          sage: it = _FSMProcessIteratorEpsilon_(A, initial_state=A.state(4))
          sage: for current in it:
          ....:     print(current)
-@@ -15186,8 +15185,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15182,8 +15181,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['b', 'c', 'e']]
          process (0 branches)
          sage: it.visited_states
@@ -893,7 +893,7 @@ index 2e5c8d9884..59acb0e80a 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(2),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15205,8 +15203,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15201,8 +15199,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['c', 'd', 'f']]
          process (0 branches)
          sage: it.visited_states
@@ -903,7 +903,7 @@ index 2e5c8d9884..59acb0e80a 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(3),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15223,8 +15220,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15219,8 +15216,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['d', 'f']]
          process (0 branches)
          sage: it.visited_states
@@ -913,7 +913,7 @@ index 2e5c8d9884..59acb0e80a 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(4),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15371,9 +15367,9 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15367,9 +15363,9 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
              sage: T.state(0)._epsilon_successors_(T)  # indirect doctest
              {0: [['a', 'b', 'c']], 1: [['a']], 2: [['a', 'b']]}
              sage: T.state(1)._epsilon_successors_(T)  # indirect doctest
@@ -926,10 +926,10 @@ index 2e5c8d9884..59acb0e80a 100644
          if state not in self.visited_states:
              self.visited_states[state] = []
 diff --git a/src/sage/combinat/growth.py b/src/sage/combinat/growth.py
-index 141fe345d4..77c53ddd51 100644
+index d26bf37e0b..506de7355d 100644
 --- a/src/sage/combinat/growth.py
 +++ b/src/sage/combinat/growth.py
-@@ -703,7 +703,7 @@ class GrowthDiagram(SageObject):
+@@ -704,7 +704,7 @@ class GrowthDiagram(SageObject):
              sage: RuleRSK = GrowthDiagram.rules.RSK()
              sage: G = GrowthDiagram(RuleRSK, [[0,1,0], [1,0,2]])
              sage: G.filling()
@@ -938,7 +938,7 @@ index 141fe345d4..77c53ddd51 100644
          """
          return self._filling
  
-@@ -1358,7 +1358,7 @@ class GrowthDiagram(SageObject):
+@@ -1359,7 +1359,7 @@ class GrowthDiagram(SageObject):
  
              sage: G = GrowthDiagram(RuleRSK, pi.to_matrix())  # indirect doctest
              sage: G._filling
@@ -947,7 +947,7 @@ index 141fe345d4..77c53ddd51 100644
              sage: G.shape()
              [6, 6, 6, 6, 6, 6] / []
  
-@@ -1382,7 +1382,7 @@ class GrowthDiagram(SageObject):
+@@ -1383,7 +1383,7 @@ class GrowthDiagram(SageObject):
  
              sage: G = GrowthDiagram(RuleRSK, [[1,0,1],[0,1]])  # indirect doctest
              sage: G._filling
@@ -956,7 +956,7 @@ index 141fe345d4..77c53ddd51 100644
              sage: G.shape()
              [3, 2] / []
  
-@@ -1390,7 +1390,7 @@ class GrowthDiagram(SageObject):
+@@ -1391,7 +1391,7 @@ class GrowthDiagram(SageObject):
  
              sage: G = GrowthDiagram(RuleRSK, [[1,0,1],[0,1]], shape=SkewPartition([[3,2],[1]]))  # indirect doctest
              sage: G._filling
@@ -965,7 +965,7 @@ index 141fe345d4..77c53ddd51 100644
              sage: G.shape()
              [3, 2] / [1]
  
-@@ -1537,14 +1537,14 @@ class GrowthDiagram(SageObject):
+@@ -1538,14 +1538,14 @@ class GrowthDiagram(SageObject):
              sage: labels = [[], [1], [2], [2,1], [1,1], [1], []]
              sage: G = GrowthDiagram(RuleRSK, labels=labels)  # indirect doctest
              sage: G._filling
@@ -1010,10 +1010,10 @@ index 2b3a740fb9..bb1499483f 100644
          return {"min_sum": self.min_sum,
                  "max_sum": self.max_sum,
 diff --git a/src/sage/combinat/k_tableau.py b/src/sage/combinat/k_tableau.py
-index 8770fb9c46..eb410837fe 100644
+index f6f892ba2d..b404229d24 100644
 --- a/src/sage/combinat/k_tableau.py
 +++ b/src/sage/combinat/k_tableau.py
-@@ -2910,22 +2910,22 @@ class StrongTableau(ClonableList):
+@@ -2908,22 +2908,22 @@ class StrongTableau(ClonableList, metaclass=InheritComparisonClasscallMetaclass)
  
              sage: T = StrongTableau([[-1,-2,-4,7],[-3,6,-6,8],[4,-7],[-5,-8]], 3)
              sage: T.cells_head_dictionary()
@@ -1046,7 +1046,7 @@ index 8770fb9c46..eb410837fe 100644
               sage: StrongTableau([[None, None], [None, -1]], 4).cells_head_dictionary()
               {1: [(1, 1)]}
  
-@@ -4421,21 +4421,21 @@ class StrongTableaux(UniqueRepresentation, Parent):
+@@ -4419,21 +4419,21 @@ class StrongTableaux(UniqueRepresentation, Parent):
          EXAMPLES::
  
              sage: StrongTableaux.cells_head_dictionary([[1,2,4,7],[3,6,6,8],[4,7],[5,8]])
@@ -1079,10 +1079,10 @@ index 8770fb9c46..eb410837fe 100644
          TESTS::
  
 diff --git a/src/sage/combinat/matrices/latin.py b/src/sage/combinat/matrices/latin.py
-index 97dcce10ae..a3477f69f1 100644
+index 5d85d559ac..3095978e9f 100644
 --- a/src/sage/combinat/matrices/latin.py
 +++ b/src/sage/combinat/matrices/latin.py
-@@ -1101,68 +1101,68 @@ class LatinSquare:
+@@ -1100,68 +1100,68 @@ class LatinSquare:
                [14, 30, 47],
                [15, 31, 47]],
               {(0, 16, 32): (0, 0, 0),
@@ -1196,7 +1196,7 @@ index 97dcce10ae..a3477f69f1 100644
                (15, 31, 47): (3, 3, 3)})
          """
  
-@@ -2771,12 +2771,12 @@ def dlxcpp_rows_and_map(P):
+@@ -2770,12 +2770,12 @@ def dlxcpp_rows_and_map(P):
            [2, 6, 11],
            [3, 7, 11]],
           {(0, 4, 8): (0, 0, 0),
@@ -1213,10 +1213,10 @@ index 97dcce10ae..a3477f69f1 100644
      """
      assert P.nrows() == P.ncols()
 diff --git a/src/sage/combinat/multiset_partition_into_sets_ordered.py b/src/sage/combinat/multiset_partition_into_sets_ordered.py
-index 792e884c62..f3321ca620 100755
+index 2b15f9cb89..4af9798c2a 100755
 --- a/src/sage/combinat/multiset_partition_into_sets_ordered.py
 +++ b/src/sage/combinat/multiset_partition_into_sets_ordered.py
-@@ -1498,15 +1498,15 @@ class OrderedMultisetPartitionsIntoSets(UniqueRepresentation, Parent):
+@@ -1497,15 +1497,15 @@ class OrderedMultisetPartitionsIntoSets(UniqueRepresentation, Parent):
  
              sage: c = {"length":4, "max_order":6, "alphabet":[2,4,5,6]}
              sage: OrderedMultisetPartitionsIntoSets(**c).constraints
@@ -1250,10 +1250,10 @@ index ac452cdb14..dc1af4a512 100644
  As with the symmetric functions package, the quasisymmetric function ``1``
  has several instantiations. However, the most obvious way to write ``1``
 diff --git a/src/sage/combinat/parallelogram_polyomino.py b/src/sage/combinat/parallelogram_polyomino.py
-index 24a0d00081..4e64ec58a1 100644
+index 4dc32a7c06..0f4d7d60d9 100644
 --- a/src/sage/combinat/parallelogram_polyomino.py
 +++ b/src/sage/combinat/parallelogram_polyomino.py
-@@ -559,16 +559,16 @@ EXAMPLES::
+@@ -557,16 +557,16 @@ EXAMPLES::
      ....: )
      sage: opt = ParallelogramPolyominoesOptions['tikz_options']
      sage: opt
@@ -1277,7 +1277,7 @@ index 24a0d00081..4e64ec58a1 100644
  """
  
  
-@@ -2566,16 +2566,16 @@ class ParallelogramPolyomino(ClonableList):
+@@ -2564,16 +2564,16 @@ class ParallelogramPolyomino(ClonableList,
  
              sage: pp = ParallelogramPolyomino([[0, 1], [1, 0]])
              sage: pp.get_tikz_options()
@@ -1302,10 +1302,10 @@ index 24a0d00081..4e64ec58a1 100644
          return self.get_options()['tikz_options']
  
 diff --git a/src/sage/combinat/partition.py b/src/sage/combinat/partition.py
-index e046474e85..9ee79fb359 100644
+index 9727c06b6e..58620965b0 100644
 --- a/src/sage/combinat/partition.py
 +++ b/src/sage/combinat/partition.py
-@@ -3766,11 +3766,11 @@ class Partition(CombinatorialElement):
+@@ -3764,11 +3764,11 @@ class Partition(CombinatorialElement):
          EXAMPLES::
  
              sage: Partition([4,3,2]).block(0)
@@ -1394,10 +1394,10 @@ index e257781f1c..5fb6e27a87 100644
              True
          """
 diff --git a/src/sage/combinat/partition_tuple.py b/src/sage/combinat/partition_tuple.py
-index a78798746a..f478e5d043 100644
+index f3b6c05e40..14ca35d517 100644
 --- a/src/sage/combinat/partition_tuple.py
 +++ b/src/sage/combinat/partition_tuple.py
-@@ -1684,7 +1684,7 @@ class PartitionTuple(CombinatorialElement):
+@@ -1682,7 +1682,7 @@ class PartitionTuple(CombinatorialElement):
          EXAMPLES::
  
              sage: PartitionTuple([[2,2],[2,2]]).block(0,(0,0))
@@ -1407,10 +1407,10 @@ index a78798746a..f478e5d043 100644
              {0: 4, 1: 4}
              sage: PartitionTuple([[2,2],[2,2]]).block(2,(0,1))
 diff --git a/src/sage/combinat/posets/posets.py b/src/sage/combinat/posets/posets.py
-index deac1eff88..b40a38ee25 100644
+index 2795700652..88186e8d0f 100644
 --- a/src/sage/combinat/posets/posets.py
 +++ b/src/sage/combinat/posets/posets.py
-@@ -4044,7 +4044,7 @@ class FinitePoset(UniqueRepresentation, Parent):
+@@ -4041,7 +4041,7 @@ class FinitePoset(UniqueRepresentation, Parent):
          Since :trac:`25576`, one can ask for the isomorphism::
  
              sage: P.is_isomorphic(Q, certificate=True)
@@ -1419,7 +1419,7 @@ index deac1eff88..b40a38ee25 100644
          """
          if hasattr(other, 'hasse_diagram'):
              return self.hasse_diagram().is_isomorphic(other.hasse_diagram(),
-@@ -7592,60 +7592,60 @@ class FinitePoset(UniqueRepresentation, Parent):
+@@ -7589,60 +7589,60 @@ class FinitePoset(UniqueRepresentation, Parent):
              sage: G.edges(sort=True)
              [((-1, 0), (0, -13), None), ((-1, 0), (0, 12), None), ((-1, 0), (0, 14), None), ((-1, 0), (0, 16), None), ((0, -13), (1, -13), None), ((0, -13), (1, 12), None), ((0, -13), (1, 14), None), ((0, -13), (1, 16), None), ((0, 12), (1, 12), None), ((0, 14), (1, 12), None), ((0, 14), (1, 14), None), ((0, 16), (1, 12), None), ((0, 16), (1, 16), None), ((1, -13), (2, 0), None), ((1, 12), (2, 0), None), ((1, 14), (2, 0), None), ((1, 16), (2, 0), None)]
              sage: e
@@ -1596,10 +1596,10 @@ index 744fcda226..02a682b381 100644
      L = hwv.parent()
      rho = L.rho()
 diff --git a/src/sage/combinat/set_partition.py b/src/sage/combinat/set_partition.py
-index ef78e8b4e2..fde60b25b1 100644
+index fecf9055cd..3cc443cfc4 100644
 --- a/src/sage/combinat/set_partition.py
 +++ b/src/sage/combinat/set_partition.py
-@@ -626,13 +626,13 @@ class SetPartition(AbstractSetPartition):
+@@ -624,13 +624,13 @@ class SetPartition(AbstractSetPartition,
              sage: SP.set_latex_options(tikz_scale=2,plot='linear',fill=True,color='blue',angle=45)
              sage: SP.set_latex_options(plot='cyclic')
              sage: SP.latex_options()
@@ -1618,7 +1618,7 @@ index ef78e8b4e2..fde60b25b1 100644
  
          """
          valid_args = ['tikz_scale', 'plot', 'color', 'fill', 'show_labels',
-@@ -660,13 +660,13 @@ class SetPartition(AbstractSetPartition):
+@@ -658,13 +658,13 @@ class SetPartition(AbstractSetPartition,
          EXAMPLES::
  
              sage: SP = SetPartition([[1,6], [3,5,4]]); SP.latex_options()
@@ -1637,10 +1637,10 @@ index ef78e8b4e2..fde60b25b1 100644
          opts = self._latex_options.copy()
          if "tikz_scale" not in opts:
 diff --git a/src/sage/combinat/similarity_class_type.py b/src/sage/combinat/similarity_class_type.py
-index c52ea6e394..7a7f0da433 100644
+index ec3676a710..23a397daa7 100644
 --- a/src/sage/combinat/similarity_class_type.py
 +++ b/src/sage/combinat/similarity_class_type.py
-@@ -1593,7 +1593,7 @@ def matrix_centralizer_cardinalities_length_two(n, q = None, selftranspose = Fal
+@@ -1591,7 +1591,7 @@ def matrix_centralizer_cardinalities_length_two(n, q = None, selftranspose = Fal
          (q^4 - q^2, 1/2*q^4 - 1/2*q^3)]
          sage: from sage.combinat.similarity_class_type import dictionary_from_generator
          sage: dictionary_from_generator(matrix_centralizer_cardinalities_length_two(2, q = 2))
@@ -1650,10 +1650,10 @@ index c52ea6e394..7a7f0da433 100644
      if q is None:
          q = FractionField(QQ['q']).gen()
 diff --git a/src/sage/combinat/symmetric_group_representations.py b/src/sage/combinat/symmetric_group_representations.py
-index d3c2495e44..5394c31a6c 100644
+index 554b161bf3..15ef6c0b89 100644
 --- a/src/sage/combinat/symmetric_group_representations.py
 +++ b/src/sage/combinat/symmetric_group_representations.py
-@@ -540,8 +540,8 @@ class YoungRepresentation_generic(SymmetricGroupRepresentation_generic_class):
+@@ -538,8 +538,8 @@ class YoungRepresentation_generic(SymmetricGroupRepresentation_generic_class):
              sage: orth._tableau_dict
              {(0, -1, 2, 1, 0): [[1, 2, 3], [4, 5]],
               (0, 2, -1, 1, 0): [[1, 2, 4], [3, 5]],
@@ -1663,7 +1663,7 @@ index d3c2495e44..5394c31a6c 100644
               (2, 0, 1, -1, 0): [[1, 3, 5], [2, 4]]}
          """
          # construct a dictionary pairing vertices with tableau
-@@ -565,8 +565,8 @@ class YoungRepresentation_generic(SymmetricGroupRepresentation_generic_class):
+@@ -563,8 +563,8 @@ class YoungRepresentation_generic(SymmetricGroupRepresentation_generic_class):
              sage: orth._word_dict
              {(0, -1, 2, 1, 0): (4, 5, 1, 2, 3),
               (0, 2, -1, 1, 0): (3, 5, 1, 2, 4),
@@ -1674,10 +1674,10 @@ index d3c2495e44..5394c31a6c 100644
          """
          word_dict = {}
 diff --git a/src/sage/combinat/words/finite_word.py b/src/sage/combinat/words/finite_word.py
-index a3bdb3d433..6c2f088db5 100644
+index 9406087ff8..e2c7d47fe0 100644
 --- a/src/sage/combinat/words/finite_word.py
 +++ b/src/sage/combinat/words/finite_word.py
-@@ -4832,9 +4832,9 @@ class FiniteWord_class(Word_class):
+@@ -4828,9 +4828,9 @@ class FiniteWord_class(Word_class):
          EXAMPLES::
  
              sage: Word([2,1,4,2,3,4,2]).evaluation_dict()
@@ -1689,7 +1689,7 @@ index a3bdb3d433..6c2f088db5 100644
              sage: Word().evaluation_dict()
              {}
  
-@@ -7109,9 +7109,9 @@ def evaluation_dict(w):
+@@ -7105,9 +7105,9 @@ def evaluation_dict(w):
  
          sage: from sage.combinat.words.finite_word import evaluation_dict
          sage: evaluation_dict([2,1,4,2,3,4,2])
@@ -1702,10 +1702,10 @@ index a3bdb3d433..6c2f088db5 100644
          {}
  
 diff --git a/src/sage/combinat/words/suffix_trees.py b/src/sage/combinat/words/suffix_trees.py
-index 325c33220f..e85700c1d7 100644
+index daaa592cb7..53da37127d 100644
 --- a/src/sage/combinat/words/suffix_trees.py
 +++ b/src/sage/combinat/words/suffix_trees.py
-@@ -1654,7 +1654,12 @@ class DecoratedSuffixTree(ImplicitSuffixTree):
+@@ -1652,7 +1652,12 @@ class DecoratedSuffixTree(ImplicitSuffixTree):
              sage: w = Word('abaababbabba')
              sage: T = DecoratedSuffixTree(w)
              sage: T._partial_labeling()
@@ -1735,10 +1735,10 @@ index 47327fab0c..3557ae6ca8 100644
          import sage.combinat.words.word as word
          return {'iter_with_caching': word.Word_iter_with_caching,
 diff --git a/src/sage/crypto/mq/sr.py b/src/sage/crypto/mq/sr.py
-index 0124f776d0..5683ae819e 100644
+index 736dd315ab..698f3fe308 100644
 --- a/src/sage/crypto/mq/sr.py
 +++ b/src/sage/crypto/mq/sr.py
-@@ -1654,49 +1654,49 @@ class SR_generic(MPolynomialSystemGenerator):
+@@ -1652,49 +1652,49 @@ class SR_generic(MPolynomialSystemGenerator):
  
              sage: sr = mq.SR(1,1,1,4)
              sage: sr.variable_dict()
@@ -1970,10 +1970,10 @@ index 71e811e861..70e3afcc06 100644
          if self.__read_only__:
              raise RuntimeError('Cannot modify a read only database.')
 diff --git a/src/sage/doctest/forker.py b/src/sage/doctest/forker.py
-index c91a49c06b..e50b4e586a 100644
+index c93d1f2d99..7f32509467 100644
 --- a/src/sage/doctest/forker.py
 +++ b/src/sage/doctest/forker.py
-@@ -139,7 +139,7 @@ def init_sage():
+@@ -138,7 +138,7 @@ def init_sage():
      dictionary output::
  
          sage: {'a':23, 'b':34, 'au':56, 'bbf':234, 'aaa':234}
@@ -1982,7 +1982,7 @@ index c91a49c06b..e50b4e586a 100644
      """
      try:
          # We need to ensure that the Matplotlib font cache is built to
-@@ -183,15 +183,6 @@ def init_sage():
+@@ -182,15 +182,6 @@ def init_sage():
      from sage.repl.rich_output.backend_doctest import BackendDoctest
      dm.switch_backend(BackendDoctest())
  
@@ -1999,10 +1999,10 @@ index c91a49c06b..e50b4e586a 100644
      from sage.structure.debug_options import debug
      debug.refine_category_hash_check = True
 diff --git a/src/sage/doctest/util.py b/src/sage/doctest/util.py
-index f980982715..0b77d5d84d 100644
+index cd1706e011..c9613b5cf4 100644
 --- a/src/sage/doctest/util.py
 +++ b/src/sage/doctest/util.py
-@@ -78,7 +78,7 @@ def dict_difference(self, other):
+@@ -77,7 +77,7 @@ def dict_difference(self, other):
          sage: D1 = DocTestDefaults()
          sage: D2 = DocTestDefaults(foobar="hello", timeout=100)
          sage: dict_difference(D2.__dict__, D1.__dict__)
@@ -2010,7 +2010,7 @@ index f980982715..0b77d5d84d 100644
 +        {'timeout': 100, 'foobar': 'hello'}
      """
      D = dict()
-     for k, v in iteritems(self):
+     for k, v in self.items():
 diff --git a/src/sage/ext/fast_callable.pyx b/src/sage/ext/fast_callable.pyx
 index 94e2928525..cb461c07f8 100644
 --- a/src/sage/ext/fast_callable.pyx
@@ -2091,10 +2091,10 @@ index 94e2928525..cb461c07f8 100644
          return self._orig_args
  
 diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
-index 01989bbd80..56d7d554ef 100644
+index adafb48182..e042bab502 100644
 --- a/src/sage/geometry/polyhedron/base.py
 +++ b/src/sage/geometry/polyhedron/base.py
-@@ -6273,20 +6273,20 @@ class Polyhedron_base(Element):
+@@ -6300,20 +6300,20 @@ class Polyhedron_base(Element):
              sage: P = polytopes.twenty_four_cell()
              sage: P.flag_f_vector()
                  {(-1,): 1,
@@ -2123,7 +2123,7 @@ index 01989bbd80..56d7d554ef 100644
                   (3,): 24,
                   (4,): 1}
  
-@@ -6316,18 +6316,18 @@ class Polyhedron_base(Element):
+@@ -6343,18 +6343,18 @@ class Polyhedron_base(Element):
              sage: P = (Polyhedron(lines=[[1]]) * polytopes.cross_polytope(3))
              sage: P.flag_f_vector()
              {(-1,): 1,
@@ -2147,7 +2147,7 @@ index 01989bbd80..56d7d554ef 100644
               (2,): 12,
               (3,): 8,
               4: 1}
-@@ -6367,22 +6367,22 @@ class Polyhedron_base(Element):
+@@ -6394,22 +6394,22 @@ class Polyhedron_base(Element):
  
              sage: polytopes.hypercube(4)._flag_f_vector()
              {(-1,): 1,
@@ -2187,10 +2187,10 @@ index 01989bbd80..56d7d554ef 100644
          return self.combinatorial_polyhedron()._flag_f_vector()
  
 diff --git a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-index d7d27efc5f..db1bdf3495 100644
+index 870c733ea1..6dfdf2b254 100644
 --- a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
 +++ b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-@@ -1549,20 +1549,20 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1551,20 +1551,20 @@ cdef class CombinatorialPolyhedron(SageObject):
              sage: C = polytopes.hypercube(4).combinatorial_polyhedron()
              sage: C.flag_f_vector()
                  {(-1,): 1,
@@ -2219,7 +2219,7 @@ index d7d27efc5f..db1bdf3495 100644
                   (3,): 8,
                   (4,): 1}
  
-@@ -1591,7 +1591,7 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1593,7 +1593,7 @@ cdef class CombinatorialPolyhedron(SageObject):
  
              sage: C = (Polyhedron(lines=[[1]]) * polytopes.hypercube(2)).combinatorial_polyhedron()
              sage: C.flag_f_vector()
@@ -2228,7 +2228,7 @@ index d7d27efc5f..db1bdf3495 100644
  
          If the arguments are not stricly increasing or out of range, a key error is raised::
  
-@@ -1628,7 +1628,7 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1630,7 +1630,7 @@ cdef class CombinatorialPolyhedron(SageObject):
  
              sage: C = CombinatorialPolyhedron(3)
              sage: C._flag_f_vector()
@@ -2265,10 +2265,10 @@ index 4287f9ed56..78d30d8f75 100644
              sage: LatticePolytope_PPL((0,0), (4,0), (0,4)).embed_in_reflexive_polytope()
              Traceback (most recent call last):
 diff --git a/src/sage/geometry/triangulation/element.py b/src/sage/geometry/triangulation/element.py
-index ba053e7139..d354b5c19b 100644
+index fe7a656094..7afd37e914 100644
 --- a/src/sage/geometry/triangulation/element.py
 +++ b/src/sage/geometry/triangulation/element.py
-@@ -605,32 +605,32 @@ class Triangulation(Element):
+@@ -603,32 +603,32 @@ class Triangulation(Element):
  
              sage: triangulation = polytopes.hypercube(2).triangulate(engine='internal')
              sage: triangulation._boundary_simplex_dictionary()
@@ -2318,7 +2318,7 @@ index ba053e7139..d354b5c19b 100644
          """
          result = dict()
          for simplex in self:
-@@ -750,12 +750,10 @@ class Triangulation(Element):
+@@ -748,12 +748,10 @@ class Triangulation(Element):
              (-1,  0,  0, -1),
              ( 0,  1,  0, -1),
              ( 0, -1,  0,  1)
@@ -2408,10 +2408,10 @@ index cd69e1628a..acb5489824 100755
      TESTS::
  
 diff --git a/src/sage/graphs/digraph.py b/src/sage/graphs/digraph.py
-index 00d852010d..fabe0ffa71 100644
+index e6275fa389..c6c405fac0 100644
 --- a/src/sage/graphs/digraph.py
 +++ b/src/sage/graphs/digraph.py
-@@ -2675,7 +2675,7 @@ class DiGraph(GenericGraph):
+@@ -3212,7 +3212,7 @@ class DiGraph(GenericGraph):
          installed, so we don't test its relative values::
  
              sage: H.layout_acyclic()
@@ -2420,7 +2420,7 @@ index 00d852010d..fabe0ffa71 100644
  
              sage: H = DiGraph({0: [1]})
              sage: pos = H.layout_acyclic(rankdir='up')
-@@ -2720,15 +2720,15 @@ class DiGraph(GenericGraph):
+@@ -3257,15 +3257,15 @@ class DiGraph(GenericGraph):
  
              sage: H = DiGraph({0: [1, 2], 1: [3], 2: [3], 3: [], 5: [1, 6], 6: [2, 3]})
              sage: H.layout_acyclic_dummy()
@@ -2466,10 +2466,10 @@ index 802d4a8f6e..aa5efb8dac 100644
      TESTS:
  
 diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
-index e00570bc2c..50b1178323 100644
+index 8779f53b5a..45452c29d9 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5209,7 +5209,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5202,7 +5202,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -2478,7 +2478,7 @@ index e00570bc2c..50b1178323 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5263,16 +5263,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5256,16 +5256,16 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2500,7 +2500,7 @@ index e00570bc2c..50b1178323 100644
              sage: g = graphs.BalancedTree(3, 4)
              sage: pos = g.layout(layout='planar', save_pos=True, test=True)
              sage: pos[0]
-@@ -5281,7 +5281,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5274,7 +5274,7 @@ class GenericGraph(GenericGraph_pyx):
              [3, 64]
              sage: g = graphs.CycleGraph(7)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2509,7 +2509,7 @@ index e00570bc2c..50b1178323 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5292,9 +5292,9 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5285,9 +5285,9 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.CompleteGraph(4)
              sage: g.layout(layout='planar', external_face=(0,1))
@@ -2521,7 +2521,7 @@ index e00570bc2c..50b1178323 100644
  
          Choose the embedding:
  
-@@ -16605,7 +16605,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16063,7 +16063,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_paths(0)
@@ -2549,7 +2549,7 @@ index e00570bc2c..50b1178323 100644
  
          All these paths are obviously induced graphs::
  
-@@ -16615,7 +16634,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16073,7 +16092,16 @@ class GenericGraph(GenericGraph_pyx):
          ::
  
              sage: D.shortest_paths(0, cutoff=2)
@@ -2567,7 +2567,7 @@ index e00570bc2c..50b1178323 100644
              sage: G = Graph( { 0: {1: 1}, 1: {2: 1}, 2: {3: 1}, 3: {4: 2}, 4: {0: 2} }, sparse=True)
              sage: G.plot(edge_labels=True).show() # long time
              sage: G.shortest_paths(0, by_weight=True)
-@@ -16625,7 +16653,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16083,7 +16111,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = DiGraph([(0,1,1),(1,2,3),(0,2,5)])
              sage: D.shortest_paths(0)
@@ -2576,7 +2576,7 @@ index e00570bc2c..50b1178323 100644
              sage: D.shortest_paths(0, by_weight=True)
              {0: [0], 1: [0, 1], 2: [0, 1, 2]}
  
-@@ -16874,7 +16902,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16332,7 +16360,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_path_lengths(0)
@@ -2604,7 +2604,7 @@ index e00570bc2c..50b1178323 100644
  
          Weighted case::
  
-@@ -18993,18 +19040,18 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18450,18 +18497,18 @@ class GenericGraph(GenericGraph_pyx):
               '#00ff00': [((1,3,2,4), (1,4)(2,3), 3), ...],
               '#ff0000': [((1,3,2,4), (1,3)(2,4), 1), ...]}
              sage: G._color_by_label()  # py3
@@ -2627,7 +2627,7 @@ index e00570bc2c..50b1178323 100644
  
          TESTS:
  
-@@ -19149,8 +19196,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18606,8 +18653,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g.layout(layout="acyclic_dummy", save_pos=True)
              {('0', 0): [0.3..., 0],
@@ -2637,7 +2637,7 @@ index e00570bc2c..50b1178323 100644
               ('1', 1): [0.6..., 1]}
  
              sage: D3 = g.layout(dim=3); D3  # random
-@@ -19286,10 +19333,10 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18743,10 +18790,10 @@ class GenericGraph(GenericGraph_pyx):
              sage: g = graphs.LadderGraph(3)
              sage: g.layout_ranked(heights={i: (i, i+3) for i in range(3)})
              {0: [0.668..., 0],
@@ -2650,7 +2650,7 @@ index e00570bc2c..50b1178323 100644
               5: [1.33..., 2]}
              sage: g = graphs.LadderGraph(7)
              sage: g.plot(layout="ranked", heights={i: (i, i+7) for i in range(7)})
-@@ -19473,13 +19520,13 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18930,13 +18977,13 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = graphs.BalancedTree(2, 2)
              sage: G.layout_tree(tree_root=0)
@@ -2669,7 +2669,7 @@ index e00570bc2c..50b1178323 100644
  
              sage: G = graphs.BalancedTree(2, 4)
              sage: G.plot(layout="tree", tree_root=0, tree_orientation="up")
-@@ -19491,15 +19538,15 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18948,15 +18995,15 @@ class GenericGraph(GenericGraph_pyx):
              sage: T.set_embedding({0: [1, 6, 3], 1: [2, 5, 0], 2: [1], 3: [4, 7, 8, 0],
              ....:     4: [3], 5: [1], 6: [0], 7: [3], 8: [3]})
              sage: T.layout_tree()
@@ -2692,7 +2692,7 @@ index e00570bc2c..50b1178323 100644
              sage: T.plot(layout="tree", tree_root=3)
              Graphics object consisting of 18 graphics primitives
  
-@@ -23653,7 +23700,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23110,7 +23157,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = DiGraph({1: [10], 2:[10,11], 3:[10,11], 4:[], 5:[11, 4], 6:[11], 7:[10,11], 8:[10,11], 9:[10], 10:[11, 5, 8], 11:[6]})
              sage: G.katz_centrality(.85)
@@ -2702,7 +2702,7 @@ index e00570bc2c..50b1178323 100644
               2: 0.000000000000000,
               3: 0.000000000000000,
               4: 16.7319819819820,
-@@ -23662,7 +23710,6 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23119,7 +23167,6 @@ class GenericGraph(GenericGraph_pyx):
               7: 0.000000000000000,
               8: 18.6846846846847,
               9: 0.000000000000000,
@@ -2710,7 +2710,7 @@ index e00570bc2c..50b1178323 100644
               11: 202.778914049184}
  
  
-@@ -23682,7 +23729,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23139,7 +23186,7 @@ class GenericGraph(GenericGraph_pyx):
              sage: graphs.PathGraph(4).katz_centrality(1/20,3)
              21/379
              sage: (graphs.PathGraph(3) + graphs.PathGraph(4)).katz_centrality(1/20)
@@ -2720,10 +2720,10 @@ index e00570bc2c..50b1178323 100644
          """
          n = self.order()
 diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
-index cda883c703..a0e45092d5 100644
+index 97321a3b74..8393015aaf 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -3820,7 +3820,7 @@ class Graph(GenericGraph):
+@@ -3818,7 +3818,7 @@ class Graph(GenericGraph):
          EXAMPLES::
  
              sage: graphs.CycleGraph(4).bipartite_color()
@@ -2732,7 +2732,7 @@ index cda883c703..a0e45092d5 100644
              sage: graphs.CycleGraph(5).bipartite_color()
              Traceback (most recent call last):
              ...
-@@ -4103,10 +4103,10 @@ class Graph(GenericGraph):
+@@ -4101,10 +4101,10 @@ class Graph(GenericGraph):
              sage: G.plot(partition=P)
              Graphics object consisting of 16 graphics primitives
              sage: G.coloring(hex_colors=True, algorithm="MILP")
@@ -2746,10 +2746,10 @@ index cda883c703..a0e45092d5 100644
              Graphics object consisting of 16 graphics primitives
  
 diff --git a/src/sage/graphs/graph_coloring.pyx b/src/sage/graphs/graph_coloring.pyx
-index f2200f5712..c828bb41df 100644
+index 7f82c45712..f45111c24a 100644
 --- a/src/sage/graphs/graph_coloring.pyx
 +++ b/src/sage/graphs/graph_coloring.pyx
-@@ -1028,10 +1028,10 @@ def edge_coloring(g, value_only=False, vizing=False, hex_colors=False, solver=No
+@@ -1029,10 +1029,10 @@ def edge_coloring(g, value_only=False, vizing=False, hex_colors=False, solver=No
          [(0, 5), (2, 7)],
          [(1, 6), (3, 4), (5, 8), (7, 9)]]
         sage: edge_coloring(g, value_only=False, hex_colors=True, solver='GLPK')
@@ -3040,10 +3040,10 @@ index a14cc59540..2334df7f2d 100644
          """
          SQLDatabase.__init__(self, dblocation)
 diff --git a/src/sage/graphs/isgci.py b/src/sage/graphs/isgci.py
-index 6db80b2bd3..8f54c9b64f 100644
+index ce6211aa10..1088050e91 100644
 --- a/src/sage/graphs/isgci.py
 +++ b/src/sage/graphs/isgci.py
-@@ -759,7 +759,7 @@ class GraphClasses(UniqueRepresentation):
+@@ -762,7 +762,7 @@ class GraphClasses(UniqueRepresentation):
              sage: type(t)
              <... 'list'>
              sage: t[0]
@@ -3052,7 +3052,7 @@ index 6db80b2bd3..8f54c9b64f 100644
          """
          self._get_ISGCI()
          return self.inclusions()
-@@ -776,13 +776,13 @@ class GraphClasses(UniqueRepresentation):
+@@ -779,13 +779,13 @@ class GraphClasses(UniqueRepresentation):
  
              sage: t = graph_classes.smallgraphs()
              sage: t
@@ -3112,10 +3112,10 @@ index 879cd0e0e8..1212a575cd 100644
  
      tree_nodes, (v1, v2, v3) = x
 diff --git a/src/sage/graphs/tutte_polynomial.py b/src/sage/graphs/tutte_polynomial.py
-index 27860001cd..38f9cd8a79 100644
+index 377d6b253b..a3fbad9dea 100644
 --- a/src/sage/graphs/tutte_polynomial.py
 +++ b/src/sage/graphs/tutte_polynomial.py
-@@ -386,7 +386,7 @@ class VertexOrder(EdgeSelection):
+@@ -387,7 +387,7 @@ class VertexOrder(EdgeSelection):
              sage: A.order
              [4, 6, 3, 2, 1, 7]
              sage: A.inverse_order
@@ -3125,10 +3125,10 @@ index 27860001cd..38f9cd8a79 100644
          self.order = list(order)
          self.inverse_order = dict([reversed(_) for _ in enumerate(order)])
 diff --git a/src/sage/groups/perm_gps/cubegroup.py b/src/sage/groups/perm_gps/cubegroup.py
-index 78602206c2..74cdb272d9 100644
+index 72c2c484c4..54b2b1485f 100644
 --- a/src/sage/groups/perm_gps/cubegroup.py
 +++ b/src/sage/groups/perm_gps/cubegroup.py
-@@ -691,12 +691,12 @@ class CubeGroup(PermutationGroup_generic):
+@@ -690,12 +690,12 @@ class CubeGroup(PermutationGroup_generic):
              sage: C.parse(facets) == g
              True
              sage: faces = C.faces("L"); faces
@@ -3146,10 +3146,10 @@ index 78602206c2..74cdb272d9 100644
              True
              sage: C.parse("L' R2") == C.parse("L^(-1)*R^2")
 diff --git a/src/sage/knots/link.py b/src/sage/knots/link.py
-index eda927fb17..3aff0d2b43 100644
+index 8d98039a30..cc796274dc 100644
 --- a/src/sage/knots/link.py
 +++ b/src/sage/knots/link.py
-@@ -752,47 +752,47 @@ class Link(SageObject):
+@@ -750,47 +750,47 @@ class Link(SageObject):
              sage: L = Link([[1, 3, 2, 4], [2, 3, 1, 4]])
              sage: tails, heads = L._directions_of_edges()
              sage: tails
@@ -3444,10 +3444,10 @@ index fbe7be949a..bf9fc0e435 100644
              sage: M2 = matroids.named_matroids.NonFano()
              sage: M1._is_isomorphic(M2)
 diff --git a/src/sage/matroids/catalog.py b/src/sage/matroids/catalog.py
-index 8a42138784..6644d91855 100644
+index 845dd72e8e..83caf2d188 100644
 --- a/src/sage/matroids/catalog.py
 +++ b/src/sage/matroids/catalog.py
-@@ -725,7 +725,7 @@ def TernaryDowling3():
+@@ -724,7 +724,7 @@ def TernaryDowling3():
          sage: len(list(M.linear_subclasses()))
          72
          sage: M.fundamental_cycle('abc', 'd')
@@ -3671,10 +3671,10 @@ index 747f5dcda7..65ef9d9e95 100644
      """
      result = { "required"  : [],
 diff --git a/src/sage/modular/arithgroup/arithgroup_perm.py b/src/sage/modular/arithgroup/arithgroup_perm.py
-index 6559327295..7a2bec3b04 100644
+index 4620c7b3c0..a447fb2caf 100644
 --- a/src/sage/modular/arithgroup/arithgroup_perm.py
 +++ b/src/sage/modular/arithgroup/arithgroup_perm.py
-@@ -2388,7 +2388,7 @@ class EvenArithmeticSubgroup_Permutation(ArithmeticSubgroup_Permutation_class):
+@@ -2387,7 +2387,7 @@ class EvenArithmeticSubgroup_Permutation(ArithmeticSubgroup_Permutation_class):
              sage: G.cusp_widths()
              [1, 1, 4]
              sage: G.cusp_widths(exp=True)
@@ -3684,10 +3684,10 @@ index 6559327295..7a2bec3b04 100644
              sage: S2 = "(1,2)(3,4)(5,6)"
              sage: S3 = "(1,3,5)(2,4,6)"
 diff --git a/src/sage/modular/arithgroup/congroup_gammaH.py b/src/sage/modular/arithgroup/congroup_gammaH.py
-index aa91f91db9..702ec9e56f 100644
+index f989b8e5b9..948ec41b2a 100644
 --- a/src/sage/modular/arithgroup/congroup_gammaH.py
 +++ b/src/sage/modular/arithgroup/congroup_gammaH.py
-@@ -595,6 +595,7 @@ class GammaH_class(CongruenceSubgroup):
+@@ -594,6 +594,7 @@ class GammaH_class(CongruenceSubgroup):
              sage: G = GammaH(240,[7,239])
              sage: G._coset_reduction_data_second_coord()
              {1: [1],
@@ -3695,7 +3695,7 @@ index aa91f91db9..702ec9e56f 100644
               2: [1],
               3: [1],
               4: [1],
-@@ -612,8 +613,7 @@ class GammaH_class(CongruenceSubgroup):
+@@ -611,8 +612,7 @@ class GammaH_class(CongruenceSubgroup):
               48: [1, 191],
               60: [1, 49, 137, 233],
               80: [1, 7, 49, 103],
@@ -3706,10 +3706,10 @@ index aa91f91db9..702ec9e56f 100644
              Congruence Subgroup Gamma_H(1200) with H generated by [7, 1199]
              sage: K = sorted(G._coset_reduction_data_second_coord())
 diff --git a/src/sage/modular/dirichlet.py b/src/sage/modular/dirichlet.py
-index dd5332c879..6e3e0589ac 100644
+index 1204e39322..187befe1bb 100644
 --- a/src/sage/modular/dirichlet.py
 +++ b/src/sage/modular/dirichlet.py
-@@ -2277,7 +2277,7 @@ class DirichletGroup_class(WithEqualityById, Parent):
+@@ -2276,7 +2276,7 @@ class DirichletGroup_class(WithEqualityById, Parent):
          TESTS::
  
              sage: DirichletGroup(5)._zeta_dlog
@@ -3739,10 +3739,10 @@ index ad2dba4fbc..1cd1fa7ba4 100644
          """
          return self._nproc
 diff --git a/src/sage/plot/graphics.py b/src/sage/plot/graphics.py
-index 8a1917dc5a..8197b189d3 100644
+index 3c8caece49..4739879e25 100644
 --- a/src/sage/plot/graphics.py
 +++ b/src/sage/plot/graphics.py
-@@ -1297,8 +1297,8 @@ class Graphics(WithEqualityById, SageObject):
+@@ -1295,8 +1295,8 @@ class Graphics(WithEqualityById, SageObject):
              sage: G_kwds = Graphics._extract_kwds_for_show(kwds, ignore='xmin')
              sage: kwds # Note how this action modifies the passed dictionary
              {'f': <function <lambda> at 0x...>,
@@ -3753,7 +3753,7 @@ index 8a1917dc5a..8197b189d3 100644
              sage: G_kwds
              {'figsize': [1, 1]}
  
-@@ -2244,13 +2244,13 @@ class Graphics(WithEqualityById, SageObject):
+@@ -2242,13 +2242,13 @@ class Graphics(WithEqualityById, SageObject):
  
              sage: l = line([(1e-19,-1), (-1e-19,+1)], aspect_ratio=1.0)
              sage: l.get_minmax_data()
@@ -3772,7 +3772,7 @@ index 8a1917dc5a..8197b189d3 100644
          """
          objects = self._objects
          if objects:
-@@ -2303,18 +2303,18 @@ class Graphics(WithEqualityById, SageObject):
+@@ -2301,18 +2301,18 @@ class Graphics(WithEqualityById, SageObject):
  
              sage: l = line([(0,0), (1,1)], aspect_ratio=1.0)
              sage: l._limit_output_aspect_ratio(1, 2, 1e19, 3)
@@ -3823,7 +3823,7 @@ index e0c608e23e..0e29b40d72 100644
          import numpy
  
 diff --git a/src/sage/plot/plot3d/base.pyx b/src/sage/plot/plot3d/base.pyx
-index 81e7018681..3abb757af0 100644
+index 2d53ec2394..a10ebb261c 100644
 --- a/src/sage/plot/plot3d/base.pyx
 +++ b/src/sage/plot/plot3d/base.pyx
 @@ -2141,14 +2141,14 @@ class Graphics3dGroup(Graphics3d):
@@ -4120,7 +4120,7 @@ index 7a8c4cebd7..a0c481c856 100644
              sage: A = A.translate(-1, -1, -1)
              sage: A_repr = A.threejs_repr(A.default_render_params())
 diff --git a/src/sage/repl/display/pretty_print.py b/src/sage/repl/display/pretty_print.py
-index f3863dea6a..1b270b4e8f 100644
+index 28f150bfb3..2e46563cf0 100644
 --- a/src/sage/repl/display/pretty_print.py
 +++ b/src/sage/repl/display/pretty_print.py
 @@ -83,7 +83,7 @@ class SagePrettyPrinter(PrettyPrinter):
@@ -4129,7 +4129,7 @@ index f3863dea6a..1b270b4e8f 100644
              sage: dict(zzz=123, aaa=99, xab=10)    # sorted by keys
 -            {'aaa': 99, 'xab': 10, 'zzz': 123}
 +            {'zzz': 123, 'aaa': 99, 'xab': 10}
-     
+ 
          These are overridden in IPython in a way that we feel is somewhat
          confusing, and we prefer to print them like plain Python which is
 diff --git a/src/sage/rings/asymptotic/asymptotic_expansion_generators.py b/src/sage/rings/asymptotic/asymptotic_expansion_generators.py
@@ -4157,10 +4157,10 @@ index 7cddd91066..3f45d0a2f4 100644
           (4, 4): 5}
      """
 diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-index 8b03d221b6..651438358f 100644
+index 2c2a40092f..f28a3592d1 100644
 --- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 +++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-@@ -3791,7 +3791,7 @@ def subs_all(f, sub, simplify=False):
+@@ -3790,7 +3790,7 @@ def subs_all(f, sub, simplify=False):
          sage: a = {'foo': x**2 + y**2, 'bar': x - y}
          sage: b = {x: 1 , y: 2}
          sage: subs_all(a, b)
@@ -4249,10 +4249,10 @@ index 12a4c130ab..48ca15952a 100644
          We can check that the coefficients of the invariants have no common divisor
          for a general quintic form::
 diff --git a/src/sage/rings/multi_power_series_ring_element.py b/src/sage/rings/multi_power_series_ring_element.py
-index e5e92420a2..83fa565962 100644
+index dd1f5df5e4..a1e2988f38 100644
 --- a/src/sage/rings/multi_power_series_ring_element.py
 +++ b/src/sage/rings/multi_power_series_ring_element.py
-@@ -1109,8 +1109,8 @@ class MPowerSeries(PowerSeries):
+@@ -1108,8 +1108,8 @@ class MPowerSeries(PowerSeries):
              sage: s = m + m2
              sage: s.dict()
              {(1, 15, 0, 48): 2/3,
@@ -4262,7 +4262,7 @@ index e5e92420a2..83fa565962 100644
               (39, 5, 23, 30): -1/4}
          """
          out_dict = {}
-@@ -1202,9 +1202,9 @@ class MPowerSeries(PowerSeries):
+@@ -1201,9 +1201,9 @@ class MPowerSeries(PowerSeries):
              Multivariate Power Series Ring in s, t over Integer Ring
              sage: f = 1 + t + s + s*t + R.O(3)
              sage: f.coefficients()
@@ -4275,10 +4275,10 @@ index e5e92420a2..83fa565962 100644
              sage: g = f^2 + f - 2; g
              3*s + 3*t + s^2 + 5*s*t + t^2 + O(s, t)^3
 diff --git a/src/sage/rings/number_field/S_unit_solver.py b/src/sage/rings/number_field/S_unit_solver.py
-index 02160e9930..646a24f56c 100644
+index 16593f89ee..fbef474be2 100644
 --- a/src/sage/rings/number_field/S_unit_solver.py
 +++ b/src/sage/rings/number_field/S_unit_solver.py
-@@ -1596,7 +1596,7 @@ def clean_rfv_dict(rfv_dictionary):
+@@ -1595,7 +1595,7 @@ def clean_rfv_dict(rfv_dictionary):
          sage: len(rfv_dict)
          4
          sage: rfv_dict
@@ -4287,7 +4287,7 @@ index 02160e9930..646a24f56c 100644
      """
  
      for a, val in list(rfv_dictionary.items()):
-@@ -1760,31 +1760,31 @@ def construct_comp_exp_vec(rfv_to_ev_dict, q):
+@@ -1759,31 +1759,31 @@ def construct_comp_exp_vec(rfv_to_ev_dict, q):
          sage: from sage.rings.number_field.S_unit_solver import construct_comp_exp_vec
          sage: rfv_to_ev_dict = {(6, 6): [(3, 0)], (5, 6): [(1, 2)], (5, 4): [(5, 3)], (6, 2): [(5, 5)], (2, 5): [(0, 1)], (5, 5): [(3, 4)], (4, 4): [(0, 2)], (6, 3): [(1, 4)], (3, 6): [(5, 4)], (2, 2): [(0, 4)], (3, 5): [(1, 0)], (6, 4): [(1, 1)], (3, 2): [(1, 3)], (2, 6): [(4, 5)], (4, 5): [(4, 3)], (2, 3): [(2, 3)], (4, 2): [(4, 0)], (6, 5): [(5, 2)], (3, 3): [(3, 2)], (5, 3): [(5, 0)], (4, 6): [(2, 1)], (3, 4): [(3, 5)], (4, 3): [(0, 5)], (5, 2): [(3, 1)], (2, 4): [(2, 0)]}
          sage: construct_comp_exp_vec(rfv_to_ev_dict, 7)
@@ -4386,7 +4386,7 @@ index 17904ad8b1..b356714dba 100644
          cdef dict D = <dict> self._poly._mpoly_dict_recursive(self._parent.variable_names(),
                                                                self._parent.base_ring())
 diff --git a/src/sage/rings/polynomial/multi_polynomial.pyx b/src/sage/rings/polynomial/multi_polynomial.pyx
-index 7000594fdf..13e3b80e39 100644
+index 51ada7c969..801698b847 100644
 --- a/src/sage/rings/polynomial/multi_polynomial.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial.pyx
 @@ -504,7 +504,7 @@ cdef class MPolynomial(CommutativeRingElement):
@@ -4399,10 +4399,10 @@ index 7000594fdf..13e3b80e39 100644
          TESTS::
  
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 35c2374fbc..5f3deeb69c 100644
+index 547dc32ee8..8806a69342 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -3678,11 +3678,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -3676,11 +3676,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: loads(dumps(I)).__getstate__()
              (Monoid of ideals of Multivariate Polynomial Ring in x, y over Finite Field of size 32003,
@@ -4457,10 +4457,10 @@ index f86c7c7990..ad624ed901 100644
          return self.__repn.copy()
  
 diff --git a/src/sage/rings/polynomial/polynomial_element_generic.py b/src/sage/rings/polynomial/polynomial_element_generic.py
-index 81aee6e5de..1957f948ad 100644
+index 7319ae5544..a8b6d5bc82 100644
 --- a/src/sage/rings/polynomial/polynomial_element_generic.py
 +++ b/src/sage/rings/polynomial/polynomial_element_generic.py
-@@ -340,7 +340,7 @@ class Polynomial_generic_sparse(Polynomial):
+@@ -338,7 +338,7 @@ class Polynomial_generic_sparse(Polynomial):
              sage: f = w^15 - w*3; f
              w^15 - 3*w
              sage: d = f._dict_unsafe(); d
@@ -4470,10 +4470,10 @@ index 81aee6e5de..1957f948ad 100644
              w^15 + 10*w
          """
 diff --git a/src/sage/rings/polynomial/polynomial_ring.py b/src/sage/rings/polynomial/polynomial_ring.py
-index ce311014d3..799cd00aa7 100644
+index f19e94c766..ecdfe8f66e 100644
 --- a/src/sage/rings/polynomial/polynomial_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_ring.py
-@@ -1203,7 +1203,7 @@ class PolynomialRing_general(sage.algebras.algebra.Algebra):
+@@ -1201,7 +1201,7 @@ class PolynomialRing_general(sage.algebras.algebra.Algebra):
  
              sage: R.<y,x,a42> = RR[]
              sage: R.gens_dict()
@@ -4539,7 +4539,7 @@ index eb38b71170..e08a1f1787 100644
          G = graphs.Grid2dGraph(m+2,n+2)
          G.allow_multiple_edges(True)  # to ensure each vertex ends up with degree 4
 diff --git a/src/sage/sandpiles/sandpile.py b/src/sage/sandpiles/sandpile.py
-index 6eb0df739d..cd0716728c 100644
+index eca470cc59..6acb1f95c0 100644
 --- a/src/sage/sandpiles/sandpile.py
 +++ b/src/sage/sandpiles/sandpile.py
 @@ -264,7 +264,7 @@ Working with sandpile divisors::
@@ -4560,7 +4560,7 @@ index 6eb0df739d..cd0716728c 100644
      sage: D.rank()
      2
      sage: sorted(D.effective_div(), key=str)
-@@ -549,7 +549,7 @@ class Sandpile(DiGraph):
+@@ -548,7 +548,7 @@ class Sandpile(DiGraph):
              [-1 -2  3  0]
              [ 0  0  0  0]
              sage: s.dict()
@@ -4569,7 +4569,7 @@ index 6eb0df739d..cd0716728c 100644
  
          Sandpiles can be created from Graphs and DiGraphs. ::
  
-@@ -1977,13 +1977,13 @@ class Sandpile(DiGraph):
+@@ -1976,13 +1976,13 @@ class Sandpile(DiGraph):
  
              sage: S = Sandpile({0:[1], 2:[0,1], 1:[2]})
              sage: S.dict()
@@ -4585,7 +4585,7 @@ index 6eb0df739d..cd0716728c 100644
          """
  
          # first order the vertices according to their distance from the sink
-@@ -2078,7 +2078,7 @@ class Sandpile(DiGraph):
+@@ -2077,7 +2077,7 @@ class Sandpile(DiGraph):
              sage: s.group_order()
              28
              sage: s.jacobian_representatives()
@@ -4594,7 +4594,7 @@ index 6eb0df739d..cd0716728c 100644
  
          Let `\tau` be the nonnegative generator of the kernel of the transpose of
          the Laplacian, and let `tau_s` be it sink component, then the sandpile
-@@ -2426,7 +2426,8 @@ class Sandpile(DiGraph):
+@@ -2425,7 +2425,8 @@ class Sandpile(DiGraph):
              sage: S = Sandpile({0:{},1:{0: 1, 2: 1, 3: 4},2:{3: 5},3:{1: 1, 2: 1}},0)
              sage: p = S.betti_complexes()
              sage: p[0]
@@ -4604,7 +4604,7 @@ index 6eb0df739d..cd0716728c 100644
              sage: S.resolution()
              'R^1 <-- R^5 <-- R^5 <-- R^1'
              sage: S.betti()
-@@ -3004,9 +3005,9 @@ class SandpileConfig(dict):
+@@ -3003,9 +3004,9 @@ class SandpileConfig(dict):
              sage: c.equivalent_recurrent()
              {1: 1, 2: 1}
              sage: c.__dict__
@@ -4617,7 +4617,7 @@ index 6eb0df739d..cd0716728c 100644
  
          .. NOTE::
  
-@@ -4324,12 +4325,12 @@ class SandpileDivisor(dict):
+@@ -4323,12 +4324,12 @@ class SandpileDivisor(dict):
              sage: D = SandpileDivisor(S,[0,1,1])
              sage: eff = D.effective_div()
              sage: D.__dict__
@@ -4634,7 +4634,7 @@ index 6eb0df739d..cd0716728c 100644
              sage: D[0] += 1
              sage: D.__dict__
              {'_sandpile': Cycle sandpile graph: 3 vertices, sink = 0,
-@@ -4926,7 +4927,7 @@ class SandpileDivisor(dict):
+@@ -4925,7 +4926,7 @@ class SandpileDivisor(dict):
              sage: s = sandpiles.Complete(4)
              sage: D = SandpileDivisor(s,[2,-3,2,0])
              sage: D.q_reduced()
@@ -4643,7 +4643,7 @@ index 6eb0df739d..cd0716728c 100644
              sage: D.q_reduced(False)
              [-2, 1, 2, 0]
  
-@@ -6358,13 +6359,13 @@ def glue_graphs(g, h, glue_g, glue_h):
+@@ -6357,13 +6358,13 @@ def glue_graphs(g, h, glue_g, glue_h):
          sage: glue_y = {0: 1, 1: 2, 3: 1}
          sage: z = glue_graphs(x,y,glue_x,glue_y); z
          {'sink': {},
@@ -4801,10 +4801,10 @@ index 4274bd90cc..09a620f745 100644
      ub = Ueberschiebung
      if f.parent().ngens() == 1:
 diff --git a/src/sage/schemes/projective/projective_space.py b/src/sage/schemes/projective/projective_space.py
-index 64a40170de..4d90bdc703 100644
+index 2a2916ef49..aad6e0f280 100644
 --- a/src/sage/schemes/projective/projective_space.py
 +++ b/src/sage/schemes/projective/projective_space.py
-@@ -1825,13 +1825,13 @@ class ProjectiveSpace_finite_field(ProjectiveSpace_field):
+@@ -1823,13 +1823,13 @@ class ProjectiveSpace_finite_field(ProjectiveSpace_field):
              sage: P1 = ProjectiveSpace(GF(7),1,'x')
              sage: P1.rational_points_dictionary()
              {(0 : 1): 0,
@@ -4821,10 +4821,10 @@ index 64a40170de..4d90bdc703 100644
          n = self.dimension_relative()
          R = self.base_ring()
 diff --git a/src/sage/schemes/riemann_surfaces/riemann_surface.py b/src/sage/schemes/riemann_surfaces/riemann_surface.py
-index 3eac1ea46f..4c84df6514 100644
+index ef5fcf50e0..505c0a5aa5 100644
 --- a/src/sage/schemes/riemann_surfaces/riemann_surface.py
 +++ b/src/sage/schemes/riemann_surfaces/riemann_surface.py
-@@ -1012,17 +1012,17 @@ class RiemannSurface(object):
+@@ -1011,17 +1011,17 @@ class RiemannSurface(object):
               (1, 2): (),
               (1, 3): (0,1),
               (1, 6): (),
@@ -4850,10 +4850,10 @@ index 3eac1ea46f..4c84df6514 100644
               (7, 6): ()}
          """
 diff --git a/src/sage/schemes/toric/morphism.py b/src/sage/schemes/toric/morphism.py
-index 9818f2ada9..4c14eb94c3 100644
+index d2cee6fe37..ef9c475752 100644
 --- a/src/sage/schemes/toric/morphism.py
 +++ b/src/sage/schemes/toric/morphism.py
-@@ -587,7 +587,7 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
+@@ -586,7 +586,7 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
      TESTS::
  
          sage: V.embedding_morphism()._reverse_ray_map()
@@ -4862,7 +4862,7 @@ index 9818f2ada9..4c14eb94c3 100644
          sage: V.embedding_morphism()._defining_cone
          1-d cone of Rational polyhedral fan in 2-d lattice N
      """
-@@ -647,9 +647,9 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
+@@ -646,9 +646,9 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
              sage: P1 = P2_112.orbit_closure(Cone([(1,0)]))
              sage: f = P1.embedding_morphism()
              sage: f._ray_map
@@ -4874,7 +4874,7 @@ index 9818f2ada9..4c14eb94c3 100644
          """
          orbit = self.parent().domain()
          codomain_fan = self.parent().codomain().fan()
-@@ -1815,7 +1815,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
+@@ -1814,7 +1814,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
              sage: fc = P1xP1.hom(matrix([[1],[0]]), P1).fiber_component(Cone([(1,0)]))
              sage: f = fc.embedding_morphism()
              sage: f._ray_index_map  # indirect doctest
@@ -4883,7 +4883,7 @@ index 9818f2ada9..4c14eb94c3 100644
  
          TESTS::
  
-@@ -1955,7 +1955,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
+@@ -1954,7 +1954,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
              N(1, -3) (9, 2)
              N(-1, 2) (11, 1)
              sage: f._ray_index_map
@@ -4893,10 +4893,10 @@ index 9818f2ada9..4c14eb94c3 100644
          try:
              image_ray_index = self._ray_index_map[fiber_ray]
 diff --git a/src/sage/schemes/toric/weierstrass.py b/src/sage/schemes/toric/weierstrass.py
-index 788dc3d1ae..c0c6aadc2f 100644
+index 3f93cccd24..5ce45b0dcc 100644
 --- a/src/sage/schemes/toric/weierstrass.py
 +++ b/src/sage/schemes/toric/weierstrass.py
-@@ -260,16 +260,16 @@ def Newton_polytope_vars_coeffs(polynomial, variables):
+@@ -258,16 +258,16 @@ def Newton_polytope_vars_coeffs(polynomial, variables):
          sage: p = (a30*x^3 + a21*x^2*y + a12*x*y^2 + a03*y^3 + a20*x^2*z +
          ....:      a11*x*y*z + a02*y^2*z + a10*x*z^2 + a01*y*z^2 + a00*z^3)
          sage: p_data = Newton_polytope_vars_coeffs(p, [x,y,z]);  p_data
@@ -4950,10 +4950,10 @@ index a5fbd555f2..587b055dcf 100644
          """
          return (self._parent, self.__dict__)
 diff --git a/src/sage/structure/global_options.py b/src/sage/structure/global_options.py
-index 3c9c27d1f2..7a9a3ca4d5 100644
+index d5a85c8394..4d2ea30597 100644
 --- a/src/sage/structure/global_options.py
 +++ b/src/sage/structure/global_options.py
-@@ -1311,9 +1311,9 @@ class GlobalOptions(object):
+@@ -1314,9 +1314,9 @@ class GlobalOptions(metaclass=GlobalOptionsMeta):
  
              sage: Partitions.options._reset()
              sage: Partitions.options.__getstate__()
@@ -5106,10 +5106,10 @@ index f87bc88dbe..a042684db8 100644
          """
          return self.facade_element_constructor_attributes(
 diff --git a/src/sage/structure/unique_representation.py b/src/sage/structure/unique_representation.py
-index d24858673f..6ac7af6830 100644
+index 75d963e0ef..17c0d668f3 100644
 --- a/src/sage/structure/unique_representation.py
 +++ b/src/sage/structure/unique_representation.py
-@@ -859,7 +859,7 @@ class CachedRepresentation(six.with_metaclass(ClasscallMetaclass)):
+@@ -858,7 +858,7 @@ class CachedRepresentation(metaclass=ClasscallMetaclass):
          arguments in the instance dictionary upon construction::
  
              sage: x.__dict__

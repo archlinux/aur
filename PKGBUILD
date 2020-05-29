@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.1.rc5.r0.g765c5cb3e2
+pkgver=9.2.beta0.r0.g860e4dc988
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -58,15 +58,15 @@ sha256sums=('SKIP'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '11e33637d7807ab0ca3409022638956c0d2dd60b3aa35f101744d6b9bef0f847'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '7d658e3a3381b478db9c0584450768adf3663b02e217b99d37c2f9467fa9789e'
+            'b0dbacaeb4d9bad98c178cd62427976e86f3e78cdcb1bdbe72af0c7481198e78'
             'fc28ca3aa1a656bfb451181d5086b3041238f24bf462cc69626d3cd603a246df'
-            '5aef0dfb3ac8cc953d9cfa14e50d65e3e6a57f9cc7de5b030dd166757687f64d'
+            '382c9ef075f6396acb9808215176c3a2b59b24d7c1fc31db248aacaf9236fe63'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'ee40e8c595a97166124ac64b105ed62070f1c42564e28a6c2cbdb30da4a5bd49'
             '4947a86264622dffebb58b802f0616f0fb47b5784d95346f44ee426cb2e541fc'
-            'f4c48127791f7fac46f0f4589bca4fdec43ab0689665f37436d52743d263fb0f'
+            '688345dd88174cc82a196a9ecace86f3b4f28bb2fae2d7196a40a76ff724f92e'
             'b15762a283b2dade0d5131c7b22b33f47bcbc1eca4975b1e00d85fa152299503'
-            'eeeafd1a74c8c43c369569c8ea1dbae8fd9fcfdf0e6609471c030e9738b97ce5'
+            'c9fa4f136a8e4fa9832524bb0ee4a7fbb3c6e992595a3b10c7c627ba9161b4ce'
             'fde6e00ccc200c748d6f092e35c60b93d4ed096f7b35b2db42681935f30ebcee')
 
 pkgver() {

@@ -34,10 +34,10 @@ index c60f944..1daa219 100644
      .. RUBRIC:: Rank 2 elliptic curve
  
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index 2732f22..6c2a453 100644
+index 26e219c..9f4681c 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
-@@ -3433,18 +3433,18 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -3431,18 +3431,18 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              Fractional ideal (2, 1/2*a - 1/2)
              Fractional ideal (2, 1/2*a + 1/2)
              3
@@ -59,7 +59,7 @@ index 2732f22..6c2a453 100644
              7
              8
              Fractional ideal (1/2*a + 3/2)
-@@ -3452,9 +3452,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -3450,9 +3450,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              Fractional ideal (4, a + 1)
              Fractional ideal (1/2*a - 3/2)
              9
@@ -71,7 +71,7 @@ index 2732f22..6c2a453 100644
              10
          """
          hnf_ideals = self.pari_nf().ideallist(bound)
-@@ -4550,7 +4550,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4548,7 +4548,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
                -1/13*a^2 + 6/13*a + 345/13,
                -1,
                2/13*a^2 + 1/13*a - 755/13,
@@ -80,7 +80,7 @@ index 2732f22..6c2a453 100644
               [(Fractional ideal (11, a - 2), 2), (Fractional ideal (19, a + 7), 2)])
  
          Number fields defined by non-monic and non-integral
-@@ -4708,9 +4708,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4706,9 +4706,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
               2/13*a^2 + 1/13*a - 755/13,
@@ -93,7 +93,7 @@ index 2732f22..6c2a453 100644
  
          Verify that :trac:`16708` is fixed::
  
-@@ -5355,7 +5355,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -5353,7 +5353,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<a> = NumberField(7/9*x^3 + 7/3*x^2 - 56*x + 123)
              sage: K.elements_of_norm(7)
@@ -102,7 +102,7 @@ index 2732f22..6c2a453 100644
          """
          proof = proof_flag(proof)
          B = self.pari_bnf(proof).bnfisintnorm(n)
-@@ -5458,7 +5458,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -5456,7 +5456,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: pari('setrand(2)')
              sage: L.<b> = K.extension(x^2 - 7)
              sage: f = L.factor(a + 1); f
@@ -111,7 +111,7 @@ index 2732f22..6c2a453 100644
              sage: f.value() == a+1
              True
  
-@@ -6535,7 +6535,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6533,7 +6533,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: [K.uniformizer(P) for P,e in factor(K.ideal(5))]
              [t^2 - t + 1, t + 2, t - 2]
              sage: [K.uniformizer(P) for P,e in factor(K.ideal(7))]
@@ -120,7 +120,7 @@ index 2732f22..6c2a453 100644
              sage: [K.uniformizer(P) for P,e in factor(K.ideal(67))]
              [t + 23, t + 26, t - 32, t - 18]
  
-@@ -7805,11 +7805,11 @@ class NumberField_absolute(NumberField_generic):
+@@ -7803,11 +7803,11 @@ class NumberField_absolute(NumberField_generic):
               Ring morphism:
                 From: Number Field in a1 with defining polynomial x^3 - 7*x - 7
                 To:   Number Field in a with defining polynomial 7/9*x^3 + 7/3*x^2 - 56*x + 123
@@ -148,10 +148,10 @@ index 59bab07..079eaaa 100644
              sage: K.<a> = NumberField(x^3 + x + 1)
              sage: Q.<X> = K[]
 diff --git a/src/sage/rings/number_field/number_field_ideal.py b/src/sage/rings/number_field/number_field_ideal.py
-index b4eabe8..d746dcb 100644
+index 35ee5a6..95ba0f5 100644
 --- a/src/sage/rings/number_field/number_field_ideal.py
 +++ b/src/sage/rings/number_field/number_field_ideal.py
-@@ -1824,7 +1824,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
+@@ -1823,7 +1823,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
  
              sage: F.<a> = NumberField(2*x^3 + x + 1)
              sage: fact = F.factor(2); fact
@@ -160,7 +160,7 @@ index b4eabe8..d746dcb 100644
              sage: [p[0].norm() for p in fact]
              [2, 2]
          """
-@@ -2415,7 +2415,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
+@@ -2414,7 +2414,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
              sage: A.is_coprime(B)
              False
              sage: lam = A.idealcoprime(B); lam
@@ -183,10 +183,10 @@ index 6ed0aea..529e23a 100644
          Conversion from unit group to a number field and back
          gives the right results (:trac:`25874`)::
 diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-index 1e2052c..2c05db9 100644
+index de62148..e962ad5 100644
 --- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-@@ -1293,9 +1293,9 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+@@ -1291,9 +1291,9 @@ class PolynomialQuotientRing_generic(CommutativeRing):
                 1/16*a*xbar^3 + (-1/16*a - 1/8)*xbar^2 + 23/16*a*xbar - 23/16*a - 23/8),
                6),
               ((-5/4*xbar^2 - 115/4,
@@ -199,7 +199,7 @@ index 1e2052c..2c05db9 100644
                2)]
  
          By using the ideal `(a)`, we cut the part of the class group coming from
-@@ -1425,9 +1425,9 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+@@ -1423,9 +1423,9 @@ class PolynomialQuotientRing_generic(CommutativeRing):
                 1/16*a*xbar^3 + (-1/16*a - 1/8)*xbar^2 + 23/16*a*xbar - 23/16*a - 23/8),
                6),
               ((-5/4*xbar^2 - 115/4,
@@ -213,10 +213,10 @@ index 1e2052c..2c05db9 100644
  
          Note that all the returned values live where we expect them to::
 diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/schemes/elliptic_curves/ell_number_field.py
-index 2967f08..300278b 100644
+index 46e7af5..68cf4e3 100644
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
-@@ -302,7 +302,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -301,7 +301,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              (3,
               3,
               [(0 : 0 : 1),
@@ -226,7 +226,7 @@ index 2967f08..300278b 100644
          """
          verbose = int(verbose)
          if known_points is None:
-@@ -810,7 +811,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -809,7 +810,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<v> = NumberField(x^2 + 161*x - 150)
              sage: E = EllipticCurve([25105/216*v - 3839/36, 634768555/7776*v - 98002625/1296, 634768555/7776*v - 98002625/1296, 0, 0])
              sage: E.global_integral_model()
@@ -235,7 +235,7 @@ index 2967f08..300278b 100644
  
          :trac:`14476`::
  
-@@ -923,10 +924,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -919,10 +920,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
             sage: E1 = E.scale_curve(u^5)
             sage: E1.ainvs()
             (0,
