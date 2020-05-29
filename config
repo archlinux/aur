@@ -1,0 +1,7 @@
+## Google Safebrowsing API config
+
+# https://github.com/google/safebrowsing
+# Read the doc to obtain your API KEY
+
+LISTEN=127.0.0.1:34567
+API_KEY=CHANGEME

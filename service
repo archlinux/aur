@@ -1,0 +1,26 @@
+[Unit]
+Description=Google Safe Browsing API
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+EnvironmentFile=/etc/google-safebrowsing/config
+User=gsb
+ExecStart=/usr/lib/google-safebrowsing/sbserver -srvaddr "$LISTEN" -apikey "$API_KEY" -db /var/lib/google-safebrowsing/db
+
+WorkingDirectory=~
+StateDirectory=google-safebrowsing
+StateDirectoryMode=0750
+Restart=on-failure
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=full
+
