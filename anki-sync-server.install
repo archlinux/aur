@@ -80,6 +80,14 @@ Run Bundled Anki Client:
 execute:
 
     /opt/anki-sync-server/anki-bundled/runanki
+
+you'll need most of the optional dependencies installed before running it
+though.  
+
+Also "aqt.forms" is a module you'll have to build yourself using the following script:
+  
+    /opt/anki-sync-server/anki-bundled/tools/build_ui.sh
+    
 =======================================================================
 EOF
 }
