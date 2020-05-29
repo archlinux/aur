@@ -1,0 +1,135 @@
+From 32fbd1068014af5f4ceeb54f892149fa393dbfff Mon Sep 17 00:00:00 2001
+From: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
+Date: Thu, 28 May 2020 00:41:48 +0200
+Subject: [PATCH] Add support for Brother PT-2430PC
+
+---
+ Makefile.am                   |  1 +
+ driver/ptouch-pt.xml          |  3 ++
+ printer/Brother-PT-2430PC.xml | 77 +++++++++++++++++++++++++++++++++++
+ rastertoptch.c                |  1 +
+ 4 files changed, 82 insertions(+)
+ create mode 100644 printer/Brother-PT-2430PC.xml
+
+diff --git a/Makefile.am b/Makefile.am
+index b8d4faf..c19169d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -53,6 +53,7 @@ PRINTERS			= printer/Brother-QL-500.xml \
+ 				  printer/Brother-PT-1960.xml \
+ 				  printer/Brother-PT-2300.xml \
+ 				  printer/Brother-PT-2420PC.xml \
++				  printer/Brother-PT-2430PC.xml \
+ 				  printer/Brother-PT-2450DX.xml \
+ 				  printer/Brother-PT-2500PC.xml \
+ 				  printer/Brother-PT-2600.xml \
+diff --git a/driver/ptouch-pt.xml b/driver/ptouch-pt.xml
+index dc76daa..cdcf70f 100644
+--- a/driver/ptouch-pt.xml
++++ b/driver/ptouch-pt.xml
+@@ -66,6 +66,9 @@ USA
+   <printer>
+    <id>printer/Brother-PT-2420PC</id>
+   </printer>
++  <printer>
++   <id>printer/Brother-PT-2430PC</id>
++  </printer>
+   <printer>
+    <id>printer/Brother-PT-2450DX</id>
+   </printer>
+diff --git a/printer/Brother-PT-2430PC.xml b/printer/Brother-PT-2430PC.xml
+new file mode 100644
+index 0000000..70ef8e4
+--- /dev/null
++++ b/printer/Brother-PT-2430PC.xml
+@@ -0,0 +1,75 @@
++<!--
++Copyright (c) 2006  Arne John Glenstrup <panic@itu.dk>
++
++This file is part of ptouch-driver.
++
++ptouch-driver is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 2 of the License, or (at
++your option) any later version.
++
++ptouch-driver is distributed in the hope that it will be useful, but
++WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with ptouch-driver; if not, write to the Free Software
++Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
++USA
++-->
++<printer id="printer/Brother-PT-2430PC">
++  <make>Brother</make>
++  <model>PT-2430PC</model>
++  <pcmodel>BR2430</pcmodel>
++  <mechanism>
++    <thermal/>
++    <!--not "color"-->
++    <resolution>
++      <dpi>
++        <x>180</x>
++        <y>180</y>
++      </dpi>
++    </resolution>
++  </mechanism>
++  <url>https://www.brother.co.uk/labelling-and-receipts/pt2430pc</url>
++  <lang>
++    <proprietary />
++  </lang>
++  <autodetect>
++    <general>
++      <ieee1284>MFG:Brother;CMD:PT-CBP;MDL:2430PC;CLS:PRINTER;</ieee1284>
++      <commandset>PT-CBP</commandset>
++      <description>Brother PT-2430PC</description>
++      <manufacturer>Brother</manufacturer>
++      <model>PT-2430PC</model>
++    </general>
++  </autodetect>
++  <functionality>D</functionality>
++  <driver>ptouch-pt</driver>
++  <unverified/>
++  <!--no "contrib_url"-->
++  <comments>
++    <en>
++    Prints 10mm per second.
++    </en>
++  </comments>
++  <select>
++    <option id="opt/Brother-PT-LegacyTransferMode"/>
++    <option id="opt/Brother-PTQL-Resolution">
++      <enum_val id="ev/180dpi" />
++    </option>
++    <option id="opt/Brother-PTQL-BytesPerLine">
++      <enum_val id="ev/16" />
++    </option>
++    <option id="opt/Brother-PT-PageSize">
++      <arg_defval>ev/tz-24</arg_defval>
++      <enum_val id="ev/tz-6" />
++      <enum_val id="ev/tz-9" />
++      <enum_val id="ev/tz-12" />
++      <enum_val id="ev/tz-18" />
++      <enum_val id="ev/tz-24" />
++    </option>
++    <option id="opt/Brother-PTQL-CutLabel" />
++  </select>
++</printer>
+diff --git a/rastertoptch.c b/rastertoptch.c
+index bd6842c..865be2e 100644
+--- a/rastertoptch.c
++++ b/rastertoptch.c
+@@ -213,6 +213,7 @@
+  * <tr><td>PT-1960  <td>auto     <td>RLE<td>180<td> 96<td>12<td>TZ6-18mm
+  * <tr><td>PT-2300  <td>auto     <td>RLE<td>180<td>112<td>14<td>TZ6-18mm
+  * <tr><td>PT-2420PC<td>manual   <td>RLE<td>180<td>128<td>16<td>TZ6-24mm
++ * <tr><td>PT-2430PC<td>auto     <td>RLE<td>180<td>128<td>16<td>TZ6-24mm
+  * <tr><td>PT-2450DX<td>auto     <td>RLE<td>180<td>128<td>16<td>TZ6-24mm
+  * <tr><td>PT-2500PC<td>auto     <td>RLE<td>180<td>128<td>16<td>TZ6-24mm
+  * <tr><td>PT-2600  <td>auto     <td>RLE<td>180<td>128<td>16<td>TZ,AV6-24mm
+-- 
+2.26.2
+

@@ -1,7 +1,7 @@
 pkgbase = printer-driver-ptouch
 	pkgdesc = P-Touch PT-series and QL-series printer driver for Linux (under CUPS)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/philpem/printer-driver-ptouch
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = printer-driver-ptouch
 	makedepends = foomatic-db-engine
 	depends = ghostscript
 	source = printer-driver-ptouch-1.5.1.tar.gz::https://github.com/philpem/printer-driver-ptouch/archive/v1.5.1.tar.gz
+	source = 0001-Add-support-for-Brother-PT-2430PC.patch
 	sha256sums = 92de714d5b0103a7216812b4a497edeb879405fa57acace65e2c7b226e9e71de
+	sha256sums = bf5da0201b05906c17c2c210fb1092c7ad5786d1941ba521cad6da208c11c7b9
 
 pkgname = printer-driver-ptouch
 
