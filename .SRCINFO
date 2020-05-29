@@ -1,7 +1,7 @@
 pkgbase = otr-verwaltung3p-dev
 	pkgdesc = Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.
-	pkgver = 1.0.0beta002
-	pkgrel = 3
+	pkgver = 1.0.0b4
+	pkgrel = 4
 	url = https://github.com/EinApfelBaum/otr-verwaltung3p
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = otr-verwaltung3p-dev
 	depends = python
 	depends = python-gobject
 	depends = gst-python
-	depends = python-xdg
+	depends = python-appdirs
 	depends = python-dbus
 	depends = python-cairo
 	depends = python-requests
@@ -34,8 +34,8 @@ pkgbase = otr-verwaltung3p-dev
 	conflicts = otr-verwaltung3p
 	conflicts = otr-verwaltung3p-dev-git
 	options = !strip
-	source = https://github.com/EinApfelBaum/otr-verwaltung3p/archive/1.0.0-beta002.tar.gz
-	sha256sums = 11c28866d445fda7ac255e3e850d9d63c44991fd42abf8749b2fd108fc13d3d4
+	source = https://github.com/EinApfelBaum/otr-verwaltung3p/archive/1.0.0b4.tar.gz
+	sha256sums = 75727de7b26ce9e8d133e1d1486872d57b02426acd2c86a898c8c718efd4f1af
 
 pkgname = otr-verwaltung3p-dev
 
