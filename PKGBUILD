@@ -4,7 +4,7 @@
 pkgname=rvgl-io-soundtrack
 pkgver=20.0302
 pkgrel=3
-pkgdesc="RVGL community-made sountrack."
+pkgdesc="RVGL community-made soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')

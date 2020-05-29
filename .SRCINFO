@@ -1,5 +1,5 @@
 pkgbase = rvgl-io-soundtrack
-	pkgdesc = RVGL community-made sountrack.
+	pkgdesc = RVGL community-made soundtrack.
 	pkgver = 20.0302
 	pkgrel = 3
 	url = https://rvgl.re-volt.io
