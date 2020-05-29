@@ -1,5 +1,5 @@
-# Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
 # Maintainer:  Iliya Ivanov <aur@proforge.org>
+# Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
 # Contributor: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
 
 _pkgbase='php'
@@ -24,7 +24,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.4.5
+pkgver=7.4.6
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -36,7 +36,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch')
-sha256sums=('d059fd7f55bdc4d2eada15a00a2976697010d3631ef6f83149cc5289e1f23c2c'
+sha256sums=('d740322f84f63019622b9f369d64ea5ab676547d2bdcf12be77a5a4cffd06832'
             'SKIP'
             '537e6f9f8879de2ba021b5efcaf759fccebd0e7b506d03a7ce973a5f3a482219'
             '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
