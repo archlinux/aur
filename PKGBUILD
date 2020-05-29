@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.4.47
+pkgver=8.5.67
 pkgrel=2
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
             'ec2c551cdfff1fd5ef72faac675eb687c69f81355fb7a03b333bdf5043fa3bc9'
-            '92bbb8acab3a5f9bdc5c3bd4d936a6a4a61f0c5b1195a6d71f7afc72cbd8b32e')
+            'a60fe8ede264ca640fac12b43eae6c719dbcadf5334b958bdb33e2e134b27972')
 
 OUTFLD=out.gn/Release
 
@@ -94,7 +94,6 @@ prepare() {
     v8_enable_i18n_support=true
     v8_use_external_startup_data=false
     use_custom_libcxx=false
-    linux_use_bundled_binutils=false
     use_sysroot=false'
 
 }
@@ -139,6 +138,9 @@ package() {
 
   install -d ${pkgdir}/usr/include
   install -Dm644 include/*.h ${pkgdir}/usr/include
+
+  install -d ${pkgdir}/usr/include/cppgc
+  install -Dm644 include/cppgc/*.h ${pkgdir}/usr/include/cppgc
 
   install -d ${pkgdir}/usr/include/libplatform
   install -Dm644 include/libplatform/*.h ${pkgdir}/usr/include/libplatform
