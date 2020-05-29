@@ -7,6 +7,7 @@ arch=(i686 x86_64)
 url="https://sourceforge.net/projects/ibmtpm20tss/"
 license=('BSD')
 depends=('openssl')
+makedepends=('git')
 # tarbomb
 #source=("https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss$pkgver.tar.gz")
 #sha256sums=('5242ce5ca8f9aff8d7a5c71dc41dbdac472b0827dafc3a1cdb6e32c16cbb95e3')

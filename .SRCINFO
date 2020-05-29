@@ -7,6 +7,7 @@ pkgbase = ibm-tss
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = openssl
 	source = ibm-tss::git+https://git.code.sf.net/p/ibmtpm20tss/tss#commit=aa6c6ec83793ba21782033c03439977c26d3cc87
 	sha256sums = SKIP
