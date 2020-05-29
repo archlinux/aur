@@ -1,13 +1,12 @@
 pkgbase = ocaml-ffmpeg-git
 	pkgdesc = OCaml bindings to the FFmpeg library
 	pkgver = r323.1273a5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-ffmpeg
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = dune
-	makedepends = dune-configurator
 	depends = ocaml
 	depends = ffmpeg
 	options = !strip

@@ -2,13 +2,13 @@
 
 pkgname=ocaml-ffmpeg-git
 pkgver=r323.1273a5e
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
 license=('LGPL2.1')
 depends=('ocaml' 'ffmpeg')
-makedepends=('dune' 'dune-configurator')
+makedepends=('dune')
 options=('!strip' '!makeflags')
 source=("$pkgname::git+https://github.com/savonet/ocaml-ffmpeg")
 
