@@ -3,3 +3,5 @@ pkg/
 *.pkg.tar.xz
 *.pkg.tar
 *.src.tar.gz
+defragcpmpak*.zip
+defragpak*.zip
