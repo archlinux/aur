@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-pluginlib-tutorials
 	pkgdesc = ROS - The pluginlib_tutorials package.
 	pkgver = 0.1.11
-	pkgrel = 3
-	url = https://www.wiki.ros.org/pluginlib/Tutorials
+	pkgrel = 4
+	url = https://wiki.ros.org/pluginlib/Tutorials
 	arch = i686
 	arch = x86_64
 	arch = aarch64
