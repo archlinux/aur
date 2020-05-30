@@ -1,6 +1,6 @@
 pkgbase = awwan-git
 	pkgdesc = Configuration management software
-	pkgver = 0.0.0.20200530150425.8ac2120686d7
+	pkgver = 0.1.1.20200530150425.8ac2120686d7
 	pkgrel = 1
 	url = https://sr.ht/~shulhan/awwan
 	arch = i686
