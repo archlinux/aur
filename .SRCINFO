@@ -1,15 +1,17 @@
 pkgbase = java13-openjdk-hsdis
 	pkgdesc = Disassembler for HotSpot
 	pkgver = 13.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openjdk.java.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	source = openjdk-jdk-13.0.2+8.tar.gz::http://hg.openjdk.java.net/jdk-updates/jdk13u/archive/jdk-13.0.2+8.tar.gz
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.31.tar.bz2
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	source = binutils-compat.patch
 	sha256sums = d38fb17795782dffe84e98f21f1d6293b0a45ea8f1e9c81e99cd71acac03a4e0
-	sha256sums = 2c49536b1ca6b8900531b9e34f211a81caf9bf85b1a71f82b81ae32fcd8ffe19
+	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
+	sha256sums = c1f416b131419c7f9ef565b04d2a55872a6fae91f1e21be7868938d6ed2fa1b6
 
 pkgname = java13-openjdk-hsdis
 
