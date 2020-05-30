@@ -1,0 +1,20 @@
+pkgbase = fraunces-font-git
+	pkgdesc = A display, “Old Style” soft-serif typeface inspired by early 20th century typefaces
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://github.com/undercasetype/Fraunces
+	arch = any
+	license = OFL
+	makedepends = gftools
+	makedepends = git
+	makedepends = fontbakery
+	makedepends = python-fontmake
+	makedepends = python-fonttools
+	makedepends = python-ttfautohint-py
+	makedepends = statmake
+	source = fraunces-font-git::git+https://github.com/undercasetype/Fraunces.git
+	sha256sums = SKIP
+
+pkgname = ttf-fraunces-variable-git
+	pkgdesc = A display, “Old Style” soft-serif typeface inspired by early 20th century typefaces (variable)
+
