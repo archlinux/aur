@@ -9,11 +9,12 @@
 #  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
+#  - remove depends on intel-media-sdk, remove --enable-libmfx
+#  - remove depends on vmaf, remove --enable-vmaf
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-_gitcommit=cbb3c9497549f8856d8cd37ac63af1406a784e58
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -67,6 +68,7 @@ depends=(
   raspberrypi-firmware
   sdl2
   speex
+  srt
   v4l-utils
   xz
   zlib
@@ -89,8 +91,12 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#commit=${_gitcommit}")
-sha256sums=(SKIP)
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+        vmaf-model-path.patch)
+sha256sums=(
+  SKIP
+  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+)
 
 pkgver() {
   cd ffmpeg
@@ -101,7 +107,11 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+  # lavf/mp3dec: don't adjust start time; packets are not adjusted
+  # https://crbug.com/1062037
+  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
+
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 
 build() {
@@ -114,6 +124,7 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-avisynth \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -137,6 +148,7 @@ build() {
     --enable-libpulse \
     --enable-libsoxr \
     --enable-libspeex \
+    --enable-libsrt \
     --enable-libssh \
     --enable-libtheora \
     --enable-libv4l2 \
