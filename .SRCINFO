@@ -1,0 +1,13 @@
+pkgbase = fraunces-font
+	pkgdesc = A display, “Old Style” soft-serif typeface inspired by early 20th century typefaces
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://github.com/undercasetype/Fraunces
+	arch = any
+	license = OFL
+	source = https://github.com/undercasetype/Fraunces/archive/611c698e29de78d133beac7534a0ac7b914682cb/ttf-fraunces-variable-0.001.zip
+	sha256sums = 44b6f52536b8fdabae2e938344befbe2bacbc7800909c086401f4a28197fad7e
+
+pkgname = ttf-fraunces-variable
+	pkgdesc = A display, “Old Style” soft-serif typeface inspired by early 20th century typefaces (variable)
+
