@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc."
-url='https://www.wiki.ros.org/rospy_tutorials'
+url='https://wiki.ros.org/rospy_tutorials'
 
 pkgname='ros-noetic-rospy-tutorials'
 pkgver='0.9.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
