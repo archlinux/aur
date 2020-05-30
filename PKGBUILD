@@ -4,7 +4,7 @@
  
 _PkgName=SU2
 pkgname=su2
-pkgver=7.0.4
+pkgver=7.0.5
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
@@ -13,7 +13,7 @@ depends=('openmpi' 'python')
 makedepends=('gcc-fortran')
 arch=('x86_64')
 source=("https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
-sha256sums=('abeba82ff922e3b5980944d98eb3ee3fef51ce663c39224a52105798542ef29b')
+sha256sums=('3cb2b87ef6ad3d31011756ca1da068fc8172c0d2d1be902fbbd4800b50da28bd')
 
 prepare() {
     cd "$srcdir/$_PkgName-$pkgver"
