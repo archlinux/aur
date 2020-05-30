@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-nodelet-core
 	pkgdesc = ROS - Nodelet Core Metapackage.
 	pkgver = 1.10.0
-	pkgrel = 1
-	url = https://www.wiki.ros.org/nodelet_core
+	pkgrel = 2
+	url = https://wiki.ros.org/nodelet_core
 	arch = any
 	license = BSD
 	makedepends = cmake
