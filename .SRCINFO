@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-genlisp
 	pkgdesc = ROS - Common-Lisp ROS message and service generators.
 	pkgver = 0.4.18
-	pkgrel = 1
-	url = https://www.wiki.ros.org/roslisp
-	arch = any
+	pkgrel = 2
+	url = https://wiki.ros.org/genlisp
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
