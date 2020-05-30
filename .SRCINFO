@@ -1,0 +1,17 @@
+pkgbase = java14-openjdk-hsdis
+	pkgdesc = Disassembler for HotSpot
+	pkgver = 14.0.1
+	pkgrel = 1
+	url = http://openjdk.java.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = openjdk-jdk-14.0.1+7.tar.gz::http://hg.openjdk.java.net/jdk-updates/jdk14u/archive/jdk-14.0.1+7.tar.gz
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	source = binutils-compat.patch
+	sha256sums = 301203cbda9c40a5fc496b3299806995ac4833b39c6d2e8470fd85a35461afd4
+	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
+	sha256sums = 3b1bd383cdfef4a6cfd9ed0dafeeee956670ad7fb797323f72e56bb7bc0cebaa
+
+pkgname = java14-openjdk-hsdis
+
