@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Phone dialer and call handler"
 arch=(i686 x86_64 armv7h aarch64)
@@ -17,7 +17,7 @@ makedepends=(gobject-introspection
              meson
              vala)
 source=("https://source.puri.sm/Librem5/calls/-/archive/v${pkgver}/calls-v${pkgver}.tar.gz")
-sha256sums=('3754256173a6a77a79c55cf5ae6887965ba972e0a95006e622e4cc488631e3a2')
+sha256sums=('5b0f2586810f201c6ece0af4adade90908ff69867f0db12d975d54ce0a377a7d')
 
 
 build() {
