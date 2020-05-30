@@ -1,53 +1,53 @@
 # Asus Aura Addressable RGB Header
-SUBSYSTEM=="usb", ATTR{idVendor}=="0b05", ATTR{idProduct}=="18a3", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0b05", ATTR{idProduct}=="18a3", TAG+="uaccess"
 
 # AMD Wraith Prism
-SUBSYSTEM=="usb", ATTR{idVendor}=="2516", ATTR{idProduct}=="0051", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="2516", ATTR{idProduct}=="0051", TAG+="uaccess"
 
 # Corsair Commander Pro
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="0c10", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="0c10", TAG+="uaccess"
 
 # Corsair k70 RGB
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b13", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b13", TAG+="uaccess"
 
 # Corsair k70 RGB LUX
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b33", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b33", TAG+="uaccess"
 
 # Corsair k95 RGB
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b11", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b11", TAG+="uaccess"
 
 # Corsair Lighting Node Pro
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="0c0b", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="0c0b", TAG+="uaccess"
 
 # Corsair m65 RGB Elite
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b5a", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b5a", TAG+="uaccess"
 
 # Corsair mm800 RGB Polaris
-SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b3b", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", ATTR{idProduct}=="1b3b", TAG+="uaccess"
 
 # HyperX Alloy Elite
-SUBSYSTEM=="usb", ATTR{idVendor}=="0951", ATTR{idProduct}=="16be", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0951", ATTR{idProduct}=="16be", TAG+="uaccess"
 
 # i2c User Access
-KERNEL=="i2c-[0-9]*", MODE="0666", TAG+="uaccess"
+KERNEL=="i2c-[0-9]*", TAG+="uaccess"
 
 # msi 3-zone Keyboard
-SUBSYSTEM=="usb", ATTR{idVendor}=="1770", ATTR{idProduct}=="FF00", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1770", ATTR{idProduct}=="FF00", TAG+="uaccess"
 
 # NZXT Hue 2
-SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="2001", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="2001", TAG+="uaccess"
 
 # NZXT Smart Device v2
-SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="2006", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="2006", TAG+="uaccess"
 
 # NZXT Kraken
-SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="170e", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1e71", ATTR{idProduct}=="170e", TAG+="uaccess"
 
 # Redragon k556
-SUBSYSTEM=="usb", ATTR{idVendor}=="0c45", ATTR{idProduct}=="5004", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0c45", ATTR{idProduct}=="5004", TAG+="uaccess"
 
 # Redragon m711
-SUBSYSTEM=="usb", ATTR{idVendor}=="04d9", ATTR{idProduct}=="fc30", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="04d9", ATTR{idProduct}=="fc30", TAG+="uaccess"
 
 # Thermaltake Poseidon Z RGB
-SUBSYSTEM=="usb", ATTR{idVendor}=="264a", ATTR{idProduct}=="3006", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="264a", ATTR{idProduct}=="3006", TAG+="uaccess"
