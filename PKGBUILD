@@ -12,8 +12,8 @@ url="http://libcpuid.sourceforge.net"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake' 'ninja' 'doxygen')
-conflicts=('libcpuid')
 provides=('libcpuid')
+conflicts=('libcpuid')
 source=("git+https://github.com/anrieff/libcpuid.git")
 sha512sums=('SKIP')
 
@@ -23,15 +23,11 @@ pkgver() {
 }
 
 build() {
-	msg2 "Generate build system..."
 	cmake -S "$srcdir/$_pkgname" -B build -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
-
-	msg2 "Build..."
 	cmake --build build
 }
 
 package() {
-	msg2 "Install..."
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dvm644 "$srcdir/$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
