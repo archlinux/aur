@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-lightbox-photoswipe
-pkgver=2.98
+pkgver=3.0
 pkgrel=1
 pkgdesc="Simple integration of PhotoSwipe to WordPress"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/lightbox-photoswipe.${pkgver}.zip")
-sha512sums=('f9751e99c9c6f4536869995dec5e2a18916889f13b7021c80badc1617fba56675349268c1105d59f8a8f9e8211692c0ab8a7b83fe960cf721366a5d90591c06a')
+sha512sums=('c50fe763580ea7e134ed81260e5b5d9e05ecb6b2e93fe9bdb5dc0fdc3e0919fc7d399cd2157fc330d1f5edff33da942f8ba9afa374f2d19f2051038cec461321')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
