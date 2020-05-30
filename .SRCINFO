@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-genmsg
 	pkgdesc = ROS - Standalone Python library for generating ROS message and service data structures for various languages.
 	pkgver = 0.5.16
-	pkgrel = 1
-	url = https://www.wiki.ros.org/genmsg
+	pkgrel = 2
+	url = https://wiki.ros.org/genmsg
 	arch = any
 	license = BSD
 	makedepends = cmake
