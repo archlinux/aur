@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=5.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -35,13 +35,15 @@ package() {
     bsdtar -xf data.tar.xz -C "$pkgdir"
     
     # icons
+    local _file
     local _res
-    for _res in 16 24 32 48 64 128 256
+    while read -r -d '' _file
     do
+        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*-//')"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/asc-de.png"
-    done
+            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
+    done < <(find "${pkgdir}/opt/onlyoffice/desktopeditors" -maxdepth 1 -type f -name 'asc-de-*.png' -print0)
     
     # 3rd party licenses
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
