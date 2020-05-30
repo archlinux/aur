@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.9.2.0
-pkgrel=102
+pkgrel=103
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -14,7 +14,7 @@ sha512sums=('4c55922ad9f6c529a8c8ca73602b9f42fa3cda4945fe8edaa554909334445e089db
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i -e 's/== *0.50/==0.54/' -e 's/== *5.26/==5.28/' -e 's/< *4/<5/' -e 's/< *2/<3/' -e 's/< *1/<2/' $pkgname.cabal
+  sed -i 's/== *0.50/==0.54/;s/== *5.26/==5.28/;s/< *4/<5/;s/< *2/<3/;s/< *1/<2/;s/< *0.7/<1/' $pkgname.cabal
 }
 
 build() {
