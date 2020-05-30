@@ -3,7 +3,6 @@
 pkgname=tetrio-desktop
 pkgver=1.0.0
 pkgrel=2
-epoch=1
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('unknown' 'APACHE' 'MIT')
