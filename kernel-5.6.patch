@@ -1,0 +1,29 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d56c0d45f0e27f814e87a1676b6bdccccbc252e9
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -213,11 +213,11 @@ static int vtuner_proc_release(struct inode *inode, struct file *file)
+ 	return ret;
+ }
+ 
+-static const struct file_operations vtunerc_read_proc_fops = {
+-	.open		= vtunerc_proc_open,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-	.release	= vtuner_proc_release,
++static const struct proc_ops vtunerc_read_proc_ops = {
++	.proc_open	= vtunerc_proc_open,
++	.proc_read	= seq_read,
++	.proc_lseek	= seq_lseek,
++	.proc_release	= vtuner_proc_release,
+ 	};
+ 
+ #endif
+@@ -333,7 +333,7 @@ static int __init vtunerc_init(void)
+ 					ctx->idx);
+ 			ctx->procname = my_strdup(procfilename);
+ 			if (proc_create_data(ctx->procname, 0, NULL,
+-							&vtunerc_read_proc_fops,
++							&vtunerc_read_proc_ops,
+ 							ctx) == 0)
+ 				printk(KERN_WARNING
+ 					"vtunerc%d: Unable to register '%s' proc file\n",

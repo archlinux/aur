@@ -1,0 +1,11 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=a035d552a93bb9ef6048733bb9f2a0dc857ff869
+--- a/vtunerc_ctrldev.c
++++ b/vtunerc_ctrldev.c
+@@ -205,6 +205,7 @@ static long vtunerc_ctrldev_ioctl(struct file *file, unsigned int cmd,
+ 		}
+ 		/* follow into old code for compatibility */
+ 
++	fallthrough;
+ 	case VTUNER_SET_TYPE:
+ 		dprintk(ctx, "msg VTUNER_SET_TYPE\n");
+ 		if (strcasecmp((char *)arg, "DVB-S") == 0) {
