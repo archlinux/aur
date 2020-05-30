@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-code-syntax-block
 	pkgdesc = Extends Gutenberg adding color syntax highlighting to the code block
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/mkaz/code-syntax-block
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-code-syntax-block-1.3.1.tar.gz::https://downloads.wordpress.org/plugin/code-syntax-block.1.3.1.zip
-	sha512sums = 27238bd39a264440a64bd2cae67e3edb8af60afd3fca9ff156064f9b7786e2922b79836b7fa533f6c27206dcfa37df92290eecf6af7f3477a2bfc01f50e1ca5f
+	source = wordpress-plugin-code-syntax-block-1.3.2.tar.gz::https://downloads.wordpress.org/plugin/code-syntax-block.1.3.2.zip
+	sha512sums = c7ad001bd95b520b7c86b281c440f6423b9894ecbbda1b31e2583e2dc617c9fff732c794de045df697b664171c8ac924081dcc9594c671df4ee38d5ea7effc30
 
 pkgname = wordpress-plugin-code-syntax-block
 
