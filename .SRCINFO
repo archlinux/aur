@@ -1,0 +1,16 @@
+pkgbase = pandoc-latex-fontsize
+	pkgdesc = Pandoc filter for changing fontsize in code blocks
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/chdemko/pandoc-latex-fontsize
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = python-pypandoc
+	depends = python-panflute
+	provides = pandoc-latex-fontsize
+	source = pandoc-latex-fontsize-1.1.2.tar.gz::https://github.com/chdemko/pandoc-latex-fontsize/archive/1.1.2.tar.gz
+	sha512sums = 0f8d41b6d449f96f6a73593d3f76ef45180dca2244d374d7f4c5301337247ef6d3b8459683949403819a7b6f93247d2db37868bf5fbe59542899b95a10710562
+
+pkgname = pandoc-latex-fontsize
+
