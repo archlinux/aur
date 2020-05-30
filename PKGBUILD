@@ -13,15 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/anrieff/libcpuid/archive/v$
 sha512sums=('c98f4a95e111da5a4ac54d6f6e25c882f01e6984fcf2f8c1d1c8437cac54ea057233aab05a19c4a1ffa800d54aebf089ca8be6b26b89ff625df382a2984ee462')
 
 build() {
-	msg2 "Generate build system..."
 	cmake -S "$srcdir/$pkgname-$pkgver" -B build -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
-
-	msg2 "Build..."
 	cmake --build build
 }
 
 package() {
-	msg2 "Install..."
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dvm644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
