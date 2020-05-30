@@ -1,7 +1,7 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=batify2
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Lightweight battery notification"
 arch=(x86_64)
