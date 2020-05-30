@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features."
-url='https://www.wiki.ros.org/ros_tutorials'
+url='https://wiki.ros.org/ros_tutorials'
 
 pkgname='ros-noetic-ros-tutorials'
 pkgver='0.9.1'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

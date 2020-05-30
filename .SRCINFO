@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-ros-tutorials
 	pkgdesc = ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features.
 	pkgver = 0.9.1
-	pkgrel = 2
-	url = https://www.wiki.ros.org/ros_tutorials
+	pkgrel = 3
+	url = https://wiki.ros.org/ros_tutorials
 	arch = i686
 	arch = x86_64
 	arch = aarch64
