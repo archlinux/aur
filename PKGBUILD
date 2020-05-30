@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.19.30
+pkgver=3.19.31
 pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file
 		"${pkgname}.png"
 		"${pkgname}.reg")
 
-sha256sums=('eece455fb7cb62b7f3b71395660bf22fe1976dd9dc510d577a2ed7baffa2cd81'
+sha256sums=('172ae69f37a41d2c44e73a9c42c38581ae0bd7878d7819fc7e8c960963a52ee7'
             'f35b60d2da37bb7d7a8a224eb8a392680824078179629d75c4f3efd3b0693980'
             'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2'
             '4d33d040f772c4b1f1652b8af59342bdec600fd3de875e7ef6ee1a43fc3415cf'
@@ -30,8 +30,9 @@ package() {
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringing.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringing2.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringtone.wav"
-	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "microsip.exe"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "lame_enc.dll"
+
+	install -Dm0644 "MicroSIP.exe" "${pkgdir}/usr/lib/${pkgname}/microsip.exe"
 
 	install -Dt "${pkgdir}/usr/bin" -m0755 "${pkgname}"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "${pkgname}.reg"
