@@ -2,7 +2,7 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.1.0.r549.g0e311be
+pkgver=0.1.0.r580.gd4f162f
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ check() {
 }
 
 package_python-einsteinpy-git() {
-    depends=('python>=3.5' 'python-astropy' 'python-matplotlib' 'python-plotly' 'python-sympy')
+    depends=('python>=3.6' 'python-astropy' 'python-matplotlib' 'python-plotly' 'python-sympy' 'python-numba')
     optdepends=('python-einsteinpy-doc: Documentation for EinsteinPy')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
