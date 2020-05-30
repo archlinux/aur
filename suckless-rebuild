@@ -4,24 +4,23 @@ DESTDIR=~/.suckless
 BUILDDIR=~/.suckless-build
 
 usage() {
-  echo "Usage: suckless-rebuild st <config.h>"
+  echo "Usage: suckless-rebuild st|slstatus <config.h>"
   exit 1
 }
 
 if [[ ${#@} != 2 || $1 =~ ^-h$|^--help$ || $2 =~ ^-h$|^--help$ ]]; then
-  echo "Usage: suckless-rebuild st <config.h>"
-  exit 1
+  usage
 fi
 
-tool=$1
+software=$1
 config=$2
 
-if [[ ! $tool =~ ^st$ ]]; then
-  echo "Unknown suckless tool '$tool'."
+if [[ ! $software =~ ^st$|^slstatus$ ]]; then
+  echo "Unknown suckless software '$software'."
   exit 1
 fi
-if [[ ! -d /usr/src/$tool ]]; then
-  echo "'an9wer-$tool' may not be installed."
+if [[ ! -d /usr/src/$software ]]; then
+  echo "'an9wer-$software' may not be installed."
   exit 1
 fi
 if [[ ! -f $config ]]; then
@@ -29,20 +28,20 @@ if [[ ! -f $config ]]; then
   exit 1
 fi
 
-if [[ -e $BUILDDIR/$tool ]]; then
-  temp=$(mktemp -u -d /tmp/$tool.XXXXX)
-  mv "$BUILDDIR/$tool" "$temp"
+if [[ -e $BUILDDIR/$software ]]; then
+  temp=$(mktemp -u -d /tmp/$software.XXXXX)
+  mv "$BUILDDIR/$software" "$temp"
 fi
 
 mkdir -p "$BUILDDIR"
-cp -r /usr/src/st "$BUILDDIR/$tool"
-cp -f "$config" "$BUILDDIR/$tool"
+cp -r /usr/src/$software "$BUILDDIR/$software"
+cp -f "$config" "$BUILDDIR/$software"
 
-cd "$BUILDDIR/$tool"
+cd "$BUILDDIR/$software"
 if make &> build.log && make PREFIX="$DESTDIR" install &> build.log; then
   echo "Done! Recommend to add '~/.suckless/bin' to \$PATH to use new builded st."
 else
-  echo "Some error occurred, check '$BUILDDIR/$tool/build.log' to find more."
+  echo "Some error occurred, check '$BUILDDIR/$software/build.log' to find more."
 fi
 if [[ -v temp ]]; then
   sed -i "1i The last built directory was moved to $temp\n" build.log
