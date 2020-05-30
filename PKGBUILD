@@ -14,15 +14,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver
 sha512sums=('838ed092c81e9e295e08d4df564dd9af3b25d925ea7fc5cdfe4e831300a0c53e43333305962aeb783ab17fedf3a5786caf93e5a647f470af23eac8b156a167b7')
 
 build() {
-	msg2 "Generate build system..."
 	cmake -S "$_realname-$pkgver" -B build -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-
-	msg2 "Build..."
 	cmake --build build
 }
 
 package() {
-	msg2 "Install..."
 	DESTDIR="$pkgdir" ninja -C build install
-
 }
