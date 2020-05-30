@@ -1,6 +1,6 @@
 pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink
-	pkgver = 26.0.8.0
+	pkgver = 26.0.10.0
 	pkgrel = 1
 	url = http://www.slimjet.com
 	arch = i686
