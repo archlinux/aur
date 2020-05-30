@@ -1,7 +1,7 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
 	pkgver = 4.1.0alpha1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.exaile.org/
 	arch = any
 	license = GPL2

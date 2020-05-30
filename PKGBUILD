@@ -9,7 +9,7 @@
 pkgname=exaile
 _pkgver=4.1.0-alpha1
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
 url="https://www.exaile.org/"
@@ -50,7 +50,7 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$_pkgver"
-	make test
+	make PYTEST=py.test test
 }
 
 package() {
