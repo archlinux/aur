@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2_msgs."
-url='https://www.wiki.ros.org/tf2_msgs'
+url='https://wiki.ros.org/tf2_msgs'
 
 pkgname='ros-noetic-tf2-msgs'
 pkgver='0.6.5'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
