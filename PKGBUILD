@@ -6,8 +6,9 @@ pkgrel=1
 pkgdesc="Customized thumbnailers for Tumbler"
 arch=('any')
 url="https://docs.xfce.org/xfce/thunar/tumbler"
+license=('unknown')
 depends=('imagemagick')
-optdepends=('djvulibre')
+optdepends=('djvulibre: thumbnails for DjVu files')
 source=('dds.thumbnailer'
 	'djvu.thumbnailer'
 	'folder-thumbnailer.sh'
