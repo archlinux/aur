@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A metapackage for geometry library suite."
-url='https://www.wiki.ros.org/geometry'
+url='https://wiki.ros.org/geometry'
 
 pkgname='ros-noetic-geometry'
 pkgver='1.12.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

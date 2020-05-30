@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-geometry
 	pkgdesc = ROS - A metapackage for geometry library suite.
 	pkgver = 1.12.0
-	pkgrel = 2
-	url = https://www.wiki.ros.org/geometry
+	pkgrel = 3
+	url = https://wiki.ros.org/geometry
 	arch = any
 	license = BSD
 	makedepends = cmake
