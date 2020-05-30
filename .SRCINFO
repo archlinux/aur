@@ -1,8 +1,8 @@
 pkgbase = python-extinction
 	pkgdesc = Fast interstellar dust extinction laws in Python
-	pkgver = 0.4.2
+	pkgver = 0.4.5
 	pkgrel = 1
-	url = http://extinction.readthedocs.io/
+	url = http://extinction.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = python-extinction
 	makedepends = cython2
 	makedepends = python-numpy
 	makedepends = python2-numpy
-	source = https://files.pythonhosted.org/packages/source/e/extinction/extinction-0.4.2.tar.gz
-	md5sums = a79209dc264c4d1a4a1c4fcbc37ec611
+	source = https://files.pythonhosted.org/packages/source/e/extinction/extinction-0.4.5.tar.gz
+	md5sums = 697e804e83225bab3d4267fffd9a9054
 
 pkgname = python-extinction
 	depends = python-numpy>=1.13.3

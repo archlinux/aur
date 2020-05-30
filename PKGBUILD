@@ -2,16 +2,16 @@
 pkgbase=python-extinction
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Fast interstellar dust extinction laws in Python"
 arch=('i686' 'x86_64')
-url="http://extinction.readthedocs.io/"
+url="http://extinction.readthedocs.io"
 license=('MIT')
 makedepends=('cython' 'cython2' 'python-numpy' 'python2-numpy')
 #checkdepends=('python-pytest' 'python2-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a79209dc264c4d1a4a1c4fcbc37ec611')
+md5sums=('697e804e83225bab3d4267fffd9a9054')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
