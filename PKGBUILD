@@ -1,8 +1,8 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 _npmname=node-pre-gyp
 pkgname=nodejs-node-pre-gyp
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Node.js tool for easy binary deployment of C++ addons "
 arch=('any')
 url="https://github.com/mapbox/node-pre-gyp"
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha1sums=('9a0596533b877289bcad4e143982ca3d904ddc83')
+sha1sums=('c2fc383276b74c7ffa842925241553e8b40f1087')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$_npmname-$pkgver.tgz"
