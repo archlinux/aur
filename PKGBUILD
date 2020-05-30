@@ -2,12 +2,12 @@
 
 pkgname=tpm_futurepcr
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Calculate future TPM PCRs after a kernel upgrade'
 arch=('any')
 url="https://github.com/grawity/${pkgname}"
 license=('MIT')
-depends=('python' 'python-signify' 'tpm2-tools')
+depends=('python' 'python-signify' 'python-pyasn1-modules' 'tpm2-tools')
 makedepends=('python-setuptools')
 
 source=("https://github.com/grawity/${pkgname}/archive/v${pkgver}.tar.gz")
