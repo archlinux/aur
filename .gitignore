@@ -1,0 +1,6 @@
+foo-yc20/
+faust-*.tar.gz
+foo-yc20-git-*.pkg.tar.xz
+foo-yc20-git-*.pkg.tar.zst
+pkg/
+src/
