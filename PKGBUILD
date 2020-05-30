@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_bridge and rosconsole for connecting console_bridge-based logging to rosconsole-based logging."
-url='https://www.wiki.ros.org/rosconsole_bridge'
+url='https://wiki.ros.org/rosconsole_bridge'
 
 pkgname='ros-noetic-rosconsole-bridge'
 pkgver='0.5.4'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

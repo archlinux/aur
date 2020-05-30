@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-rosconsole-bridge
 	pkgdesc = ROS - rosconsole_bridge is a package used in conjunction with console_bridge and rosconsole for connecting console_bridge-based logging to rosconsole-based logging.
 	pkgver = 0.5.4
-	pkgrel = 1
-	url = https://www.wiki.ros.org/rosconsole_bridge
+	pkgrel = 2
+	url = https://wiki.ros.org/rosconsole_bridge
 	arch = any
 	license = BSD
 	makedepends = cmake
