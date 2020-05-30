@@ -3,10 +3,11 @@
 pkgname=discord_arch_electron
 _pkgname=discord
 pkgver=0.0.10
-pkgrel=4
+pkgrel=5
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 provides=('discord')
+conflicts=('discord')
 url='https://discordapp.com'
 license=('custom')
 depends=('electron')
@@ -24,9 +25,6 @@ prepare() {
 
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" $_pkgname.desktop
   echo 'Path=/usr/bin' >> $_pkgname.desktop
-
-  # We need to hack in our custom app.asar path, otherwise electron will complain
-  sed -i "s|_path2.default.join(process.resourcesPath, 'build_info.json')|'/opt/$_pkgname/resources/build_info.json'                     |" resources/app.asar
 }
 
 package() {
@@ -46,9 +44,16 @@ package() {
   chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
 
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
+  install -d "$pkgdir"/usr/lib/electron
+  install -d "$pkgdir"/usr/lib/electron/resources
+
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-  ln -s /opt/$_pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-  ln -s /opt/$_pkgname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  ln -sf /opt/$_pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  ln -sf /opt/$_pkgname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+
+  # HACKS FOR SYSTEM ELECTRON
+  ln -s /opt/$_pkgname/resources/build_info.json "$pkgdir"/usr/lib/electron/resources/
+  ln -s /opt/$_pkgname/discord.png        "$pkgdir"/usr/lib/electron
 
   # Licenses
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html

@@ -1,7 +1,7 @@
 pkgbase = discord_arch_electron
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://discordapp.com
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = discord_arch_electron
 	optdepends = libpulse: Pulseaudio support
 	optdepends = xdg-utils: Open files
 	provides = discord
+	conflicts = discord
 	source = https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
