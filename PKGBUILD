@@ -1,9 +1,9 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.9.1
-_jslibcommit='0a30c7eb1ecbac500e6c55a7d4024d98efa982bc'
-_nodeversion='10.19.0'
+pkgver=1.10.0
+_jslibcommit='212a2e3745e6e0e2b3057ed308c47daf6aeefbc8'
+_nodeversion='10.20.1'
 pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
@@ -15,8 +15,8 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('730736277f31d3102d717cf524ea55852fd89776cca20e23840b19e45ab94994448d09b3e294aab04d51355b8415ab265b229198c259b81198d07a9611268abc'
-            'c6ce73345e59b77689aca8a59da539ddb9efc8f7ed77e2172397e8fe959a68448bb576d1ff0bbe1615de45e45113210e1ef94cd632a0111559dd7f125a622c52')
+sha512sums=('f3d02a98e32b8cb8b33276d5c60ada1136b175623e60b7f008fc10bf175fd935e601a097c7dc5410d461838d82a1fc71c16b35d6bb03aa78dc5567e8db250c2d'
+            '1ca8085e54d7c4ba3952109d5d854b1dc633669bc7d7791c1fa9b4c0d905a9ba7bb3059b72c17de048bb7f007f7711b690fb3fc9b3a4c73fdc37749ed2a59b09')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
@@ -39,6 +39,9 @@ build() {
   # in the final build for now.
   npm run dist:lin
 
+  # create zsh completions
+  ./dist/linux/bw completion --shell zsh > _bw
+
   # Restore node config from nvm
   npm config set prefix ${_npm_prefix}
   nvm unalias default
@@ -52,4 +55,7 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 ./dist/linux/bw "${pkgdir}/usr/bin/bw"
+
+  # package zsh completions
+  install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions" "${srcdir}/cli-${pkgver}/_bw"
 }
