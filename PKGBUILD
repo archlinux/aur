@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=tpm_futurepcr
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Calculate future TPM PCRs after a kernel upgrade'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-signify' 'tpm2-tools')
 makedepends=('python-setuptools')
 
 source=("https://github.com/grawity/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6eea2b6a9f052f67df354b9badc133878a7f023340e540ad16e80966736b8d8a')
+sha256sums=('0050e2c6b25d6725c3ff5e7f1f7c8bbd8b9197ca5f3b46e8c691eb4344191be4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
