@@ -1,4 +1,3 @@
-
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 # Contributor: Robin McCorkell <robin@mccorkell.me.uk>
 
