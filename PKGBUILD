@@ -2,7 +2,7 @@
 # Contributor: Minzord
 
 pkgname="aura-git"
-pkgver=v3.0.0.r0.ge6cc0f5
+pkgver=v3.1.0.r2.gbfb2924
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
