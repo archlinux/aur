@@ -9,7 +9,7 @@ license=('GPL2')
 depends=("qt4" 'libelf' 'boost' 'libsigc++' "cross-mipsel-linux-gnu-gcc")
 makedepends=('autoconf' 'make')
 conflicts=("umps2-git")
-source=("https://sourceforge.net/projects/mps/files/uMPS2/$pkgname-$pkgver.tar.gz"
+source=("https://sourceforge.net/projects/mps/files/uMPS2/umps-$pkgver.tar.gz"
         "0001-upstream-fixes.patch")
 md5sums=('60b72c2f8e2e5ab58de4277649e5e4ce'
          'b8145ca1b9a4db35adb1fb2f43eabc5f')
