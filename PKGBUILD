@@ -17,7 +17,7 @@ optdepends=('gtk2: use GUI version in addition to CLI interface' )
 
 source=("${pkgname}.desktop"
         "0001-Use-shared-version-of-libjpeg-turbo.patch"
-        "droidcam.zip::https://github.com/aramg/${pkgname}/archive/v${pkgver}.zip"
+        "${pkgname}-${pkgver}.zip::https://github.com/aramg/${pkgname}/archive/v${pkgver}.zip"
 )
 
 sha512sums=('72d21aa2d7eecc9bb070aaf7059a671246feb22f9c39b934a5463a4839f9347050de00754e5031dbc44f78eb2731f58f0cd2fcf781bc241f6fbd1abb4308b7ee'
@@ -39,9 +39,9 @@ package() {
   pushd ${pkgname}-${pkgver}/linux
 
   # Install droidcam program files
-  install -Dm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm755 "${pkgname}-cli" "$pkgdir/usr/bin/${pkgname}-cli"
-  install -Dm644 icon2.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "../../${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${pkgname}-cli" "${pkgdir}/usr/bin/${pkgname}-cli"
+  install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "../../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
