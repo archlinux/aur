@@ -7,7 +7,7 @@
 
 pkgname=nethack-qt
 _pkgname=nethack
-pkgver=3.6.4
+pkgver=3.6.6
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('custom')
 depends=('gzip' 'ncurses' 'qt5-base' 'qt5-multimedia' 'libxaw' 'libxt' 'libx11')
 # 'libxmu' 'libxext'
 source=("https://nethack.org/download/${pkgver}/${_pkgname}-${pkgver//.}-src.tgz")
-md5sums=('b3a84ed39818489560c8c0e368490255')
+md5sums=('6c9a75f556d24c66801d74d8727a602e')
 
 
 prepare() {

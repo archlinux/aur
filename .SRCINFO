@@ -1,6 +1,6 @@
 pkgbase = nethack-qt
 	pkgdesc = A single player dungeon exploration game
-	pkgver = 3.6.4
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = http://www.nethack.org/index.html
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = nethack-qt
 	depends = libxaw
 	depends = libxt
 	depends = libx11
-	source = https://nethack.org/download/3.6.4/nethack-364-src.tgz
-	md5sums = b3a84ed39818489560c8c0e368490255
+	source = https://nethack.org/download/3.6.6/nethack-366-src.tgz
+	md5sums = 6c9a75f556d24c66801d74d8727a602e
 
 pkgname = nethack-qt
 
