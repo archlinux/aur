@@ -2,7 +2,7 @@
 # Submitter:  Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=unscd
-pkgver=0.52
+pkgver=0.53
 pkgrel=1
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://busybox.net/~vda/unscd/'
 license=('GPL2')
 source=("http://busybox.net/~vda/unscd/nscd-$pkgver.c"
         'unscd.service' 'unscd.conf' 'unscd.8')
-md5sums=('846d108ed997a3cbd94fe953bea40a48'
+md5sums=('5dd67886de0e9e3efa5286bc4ea76f94'
          'SKIP'
          'SKIP'
          'SKIP')
