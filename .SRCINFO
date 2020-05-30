@@ -1,0 +1,13 @@
+pkgbase = python-flake8-quotes
+	pkgdesc = Flake8 lint for quotes
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/zheller/flake8-quotes
+	arch = any
+	license = MIT
+	depends = flake8
+	source = https://github.com/zheller/flake8-quotes/archive/3.2.0.tar.gz
+	md5sums = eeb206b4e444833ea1f3b45afb52c3a3
+
+pkgname = python-flake8-quotes
+
