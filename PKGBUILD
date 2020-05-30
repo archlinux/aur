@@ -8,7 +8,7 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs-ipv6
-pkgver=14.2.0
+pkgver=14.3.0
 pkgrel=1
 pkgdesc='NodeJS patched to work in IPv6 only network'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 "nodejs-$pkgver.tar.gz::https://github.com/nodejs/node/archive/v$pkgver.tar.gz"
 "patch.diff")
 sha512sums=(
-"da4a5fc3bb3b5e781a56a11d18a54c96fb49562736b1020505f6565c737a9f25c88e50aad0087d44a5b4e9a7a61d81b70a9338263b2bd7acf9bccd31fbdc8783"
+"3a48e2d332d65efab81c0db1ee401d95efecae098e735e55fc958d182931fd97195cedb81aaccc8a04134ad1d200e4dc01b1a3c9c2f565d1282f25a76c790fbf"
 "ec70e2c49e8a75114e45f1af71519cf0445773e57579eaa51ddecfc134bdaaffb37bc7e863f3103d1f0ddcf4a26e41aa1be678d34c997916e59aecbfe3dd19e5")
 
 build() {
