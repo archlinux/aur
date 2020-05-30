@@ -1,10 +1,10 @@
 pkgdesc="ROS - tf2_tools."
-url='https://www.wiki.ros.org/tf2_tools'
+url='https://wiki.ros.org/tf2_tools'
 
 pkgname='ros-noetic-tf2-tools'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-noetic-tf2-msgs
