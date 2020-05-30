@@ -3,7 +3,7 @@
 _pkgname=okonomiyaki
 pkgname=python-$_pkgname
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental library aimed at consolidating a lot of our low-level code used for Enthought eggs'
 arch=('any')
 url='https://github.com/enthought/okonomiyaki'
@@ -29,6 +29,8 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  sed -i /zipfile2/d "$pkgdir"/usr/lib/python*/site-packages/okonomiyaki-*.egg-info/requires.txt
 }
 
 # vim:set ts=2 sw=2 et:
