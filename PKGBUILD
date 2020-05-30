@@ -7,15 +7,12 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=firefox-esr-i18n
-pkgname=("$pkgbase-all")
 pkgver=68.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Language pack for Firefox ESR"
 arch=('any')
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-provides=("$pkgbase=$pkgver-$pkgrel")
-depends=("firefox-esr>=$pkgver")
 
 _languages=(
   'ach    "Acholi"'
@@ -131,18 +128,11 @@ done
 # Don't extract anything
 noextract=(${source[@]%%::*})
 
-package_firefox-esr-i18n-all() {
-  pkgdesc="All language packs for Firefox ESR (meta)"
-  depends=("${_all_depends[@]}")
-}
-
 _package() {
-  pkgdesc="${_languages["$1"]} language pack for Firefox ESR"
-  provides+=("firefox-i18n-$_as_lower")
-  conflicts=("firefox-i18n-$_as_lower")
-
-  install -Dm644 "firefox-i18n-$pkgver-$1.xpi" \
-      "$pkgdir/usr/lib/firefox/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"
+  pkgdesc="$2 language pack for Firefox ESR"
+  depends=("firefox-esr>=$pkgver")
+  install -Dm644 firefox-esr-i18n-$pkgver-$1.xpi \
+    "$pkgdir/usr/lib/firefox/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"
 }
 
 sha256sums=('a19b7b4c1f0a941be9de0488561d813e12794d4b40c9b0dc027fb97fdeafb84e'
@@ -238,5 +228,3 @@ sha256sums=('a19b7b4c1f0a941be9de0488561d813e12794d4b40c9b0dc027fb97fdeafb84e'
             '0f5eb83daf0fe899db5d37cbef5cfa9f5c43d7c137c01798bce6565925df003c'
             '530ede5da364726425d60daeeceb3467490e79ddff8c5cdbbd96ad416384d6da'
             'd61184a5920a0ae598dcb791d3e0bced17db0fe874863f56dcec07651bc0f470')
-# vim: set ts=2 sw=2 et syn=sh ft=sh:
-

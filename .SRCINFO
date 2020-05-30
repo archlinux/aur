@@ -1,14 +1,12 @@
 pkgbase = firefox-esr-i18n
 	pkgdesc = Language pack for Firefox ESR
 	pkgver = 68.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = firefox-esr>=68.8.0
-	provides = firefox-esr-i18n=68.8.0-2
 	noextract = firefox-esr-i18n-68.8.0-ach.xpi
 	noextract = firefox-esr-i18n-68.8.0-af.xpi
 	noextract = firefox-esr-i18n-68.8.0-an.xpi
