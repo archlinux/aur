@@ -63,22 +63,6 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1635764
-  hg export -r fae8aeba1a70 | patch -Rp1
-  #
-  hg export -r c413912c4f0e | patch -Rp1
-  hg export -r 943fe6210744 | patch -Rp1
-  hg export -r dc731fd750fc | patch -Rp1
-  hg export -r b33846644c52 | patch -Rp1
-  hg export -r 650751e6df05 | patch -Rp1
-  hg export -r bd8867b35eee | patch -Rp1
-  hg export -r b719a4f5a39f | patch -Rp1
-  hg export -r a98fde98a836 | patch -Rp1
-  #
-  hg export -r fbef9d03ac28 | patch -Rp1
-  hg export -r 53f0e4ab7fcf | patch -Rp1
-  hg export -r cb27cbe57e4d | patch -Rp1
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
