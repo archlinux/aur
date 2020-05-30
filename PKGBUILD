@@ -10,7 +10,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.5.r13.a645274
+pkgver=2.4.6.r0.f7bbca4
 pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
@@ -18,15 +18,14 @@ url='https://github.com/xmendez/wfuzz'
 license=('GPL')
 arch=('any')
 
+makedepends=('python-mock' 'python-netaddr' 'python-sphinx' 'git')
 depends=('python-pycurl' 'python-future' 'python-chardet')
-makedepends=('python-mock' 'python-netaddr' 'python-pip' 'python-sphinx' 'git' 'rsync')
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 source=("git+$url.git" 'setup.patch')
-sha256sums=('SKIP'
-            'cbea3a1e7e6c8d8c4e74797a67022771c759d9a69c8c57ea7b91680d73565920')
+sha256sums=('SKIP' '252de9391983d0f0ecbc22d68435df4789f78ff36af16c22d69bf70463ef97d0')
 
 
 prepare() {
@@ -35,7 +34,9 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%-git}/docs"
+  cd "${pkgname%-git}"
+  python setup.py build
+  cd docs
   python conf.py
   make SPHINXOPTS='-Q -j auto' man html
 }
@@ -43,16 +44,16 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  install -Dt "$pkgdir/usr/share/man/man1/" docs/_build/man/*.1
-  install -Dt "$pkgdir/usr/share/doc/${pkgname/-git}/" -m644 README.md
-  rsync -rpt docs/_build/html "$pkgdir/usr/share/doc/${pkgname/-git}/"
+  install -Dm644 docs/_build/man/*.1 -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname/-git}/"
+  cp -a --no-preserve=ownership docs/_build/html "$pkgdir/usr/share/doc/${pkgname/-git}/"
 
   install -Dm644 *_bash_completion "$pkgdir/etc/bash_completion.d/${pkgname/-git}"
 
-  install -dm755 "$pkgdir/usr/share/${pkgname/-git}/wordlists"
-  rsync -rpt wordlist/* "$pkgdir/usr/share/${pkgname/-git}/wordlists/"
+  install -dm755 "$pkgdir/usr/share/${pkgname/-git}"
+  cp -a --no-preserve=ownership wordlist "$pkgdir/usr/share/${pkgname/-git}/wordlists"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
 

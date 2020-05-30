@@ -1,16 +1,16 @@
 diff -ru --color old/setup.py new/setup.py
---- old/setup.py	2020-02-08 12:00:56.237165025 +0100
-+++ new/setup.py	2020-02-08 12:00:43.487165315 +0100
-@@ -20,7 +20,7 @@
- ]
- 
+--- old/setup.py	2020-05-30 20:52:59.944499004 +0200
++++ new/setup.py	2020-05-30 20:54:13.063630153 +0200
+@@ -22,7 +22,7 @@
  install_requires = [
--    'pycurl<=7.43.0.3',
-+    'pycurl<=7.43.0.5',
-     'pyparsing',
+     'pycurl',
+     'pyparsing<3;python_version<="3.4"',
+-    'pyparsing>3*;python_version>="3.5"',
++    'pyparsing;python_version>="3.5"',
      'future',
      'six',
-@@ -34,7 +34,7 @@
+     'configparser;python_version<"3.5"',
+@@ -36,7 +36,7 @@
  setup(
      name="wfuzz",
      include_package_data=True,
