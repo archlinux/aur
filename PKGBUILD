@@ -3,7 +3,7 @@
 _pyname=ttfautohint-py
 pkgname=python-$_pyname
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for ttfautohint, a free auto-hinter for TrueType fonts"
 url="https://github.com/fonttools/$_pyname"
 arch=('x86_64')
@@ -18,4 +18,5 @@ sha256sums=('f000fe9d99ab75e2fc6ca4bb7161ddf392974a86dca878a92484498489759d03')
 package() {
     export PIP_CONFIG_FILE=/dev/null
     pip install --isolated --root="$pkgdir" --ignore-installed --no-deps $_wheel
+    python -O -m compileall "$pkgdir"
 }
