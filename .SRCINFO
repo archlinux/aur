@@ -1,7 +1,7 @@
 pkgbase = f2c
 	pkgdesc = Fortran to C code translator
 	pkgver = 20200425
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.netlib.org/f2c
 	arch = x86_64
 	license = custom

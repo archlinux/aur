@@ -6,7 +6,7 @@
 
 pkgname=f2c
 pkgver=20200425
-pkgrel=1
+pkgrel=2
 pkgdesc='Fortran to C code translator'
 url='http://www.netlib.org/f2c'
 license=('custom')
@@ -40,10 +40,11 @@ build() {
 
 package() {
   cd "$pkgdir"
-  install -dm755 usr/{bin,include,lib,share/licenses/$pkgname}
+  install -dm755 usr/{bin,include,lib,share/{licenses/$pkgname,man/man1}}
   install -m755 "$srcdir/f2c/f2c" usr/bin
   install -m755 "$srcdir/libf2c/libf2c.so" usr/lib
   install -m755 "$srcdir/libf2c/f2c.h" usr/include
+  install -m755 "$srcdir/f2c/f2c.1t" usr/share/man/man1/f2c.1
   cat <<EOF > usr/share/licenses/$pkgname/LICENSE
 Copyright 1990-1996, 2000-2001 by AT&T, Lucent Technologies and Bellcore.
 
