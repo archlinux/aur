@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - octovis is visualization tool for the OctoMap library based on Qt and libQGLViewer."
-url='https://octomaphub.io'
+url='https://octomap.github.io'
 
 pkgname='ros-noetic-octovis'
 pkgver='1.9.0'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('GPLv2')
 
 ros_makedepends=(ros-noetic-octomap)
@@ -21,13 +21,6 @@ depends=(${ros_depends[@]}
   qt4
   libqglviewer-qt4)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/octovis/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/octomap-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="octomap-${pkgver}/octovis"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
 sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
@@ -45,7 +38,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
