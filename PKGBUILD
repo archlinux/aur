@@ -4,7 +4,7 @@
 
 pkgname=('soldat-git')
 _installdir='/usr/share/soldat'
-pkgver=1.8.0.1.g9c8d032
+pkgver=1.8.0.4.g6dee4d0
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
 arch=('x86_64')
@@ -15,13 +15,13 @@ makedepends=('make' 'fpc' 'zip')
 #optdepends=()
 provides=('soldat')
 # conflicts=()
-source=("$pkgname::git+https://github.com/Soldat/soldat.git" "soldat-base::git+https://github.com/Soldat/base.git")
+source=("$pkgname::git+https://github.com/Soldat/soldat.git#branch=develop" "soldat-base::git+https://github.com/Soldat/base.git")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
   # git describe --tags | sed 's/^v//;s/-/./g'
-  echo "1.8.0.$(git rev-list --count master).g$(git describe --always)"
+  echo "1.8.0.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
