@@ -4,7 +4,7 @@
 
 pkgname=gdcm
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='a C++ library for DICOM medical files'
 arch=('i686' 'x86_64')
 url='http://gdcm.sourceforge.net'
