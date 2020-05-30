@@ -1,6 +1,6 @@
 pkgbase = muwire-git
 	pkgdesc = An I2P file sharing program (git version)
-	pkgver = 0.6.12.r40.g85ad3109
+	pkgver = 0.7.1.r1.g59353a67
 	pkgrel = 1
 	url = https://muwire.com/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = muwire-git
 	source = muwire.sh
 	sha256sums = SKIP
 	sha256sums = e3e425d872f3c8cd68037b4ffe71ec66d07148072db89f6af220e7b24881d633
-	sha256sums = d48d94fef75622bb2afca202804a32cac1cec0514894e1a7c21bb9c2d3a9438b
+	sha256sums = d9a21ba4b76e0e3f64f6e5826a0cc1cfb42f07a9378a7f8beffa5293c76c1672
 
 pkgname = muwire-git
 

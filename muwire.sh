@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec java -jar /usr/share/java/muwire.jar "$@"
+exec java -Xmx256M -jar /usr/share/java/muwire.jar "$@"
