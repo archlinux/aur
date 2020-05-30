@@ -21,6 +21,7 @@ makedepends=(
     desktop-file-utils
     gettext
 )
+optdepends=('lightdm-guest: Enable guest session options')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('fdecb5fecd72e800c8fc0a06a5c78d4ebdf6bcea3a9923f99f196a5a09cb3187')

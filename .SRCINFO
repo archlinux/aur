@@ -14,6 +14,7 @@ pkgbase = lightdm-settings
 	depends = python-gobject
 	depends = python-setproctitle
 	depends = python-xapp
+	optdepends = lightdm-guest: Enable guest session options
 	source = lightdm-settings-1.4.0.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/1.4.0.tar.gz
 	sha256sums = fdecb5fecd72e800c8fc0a06a5c78d4ebdf6bcea3a9923f99f196a5a09cb3187
 
