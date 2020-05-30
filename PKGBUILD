@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS packaging system."
-url='https://wiki.ros.org/ROS'
+url='https://wiki.ros.org/ros'
 
 pkgname='ros-noetic-ros'
 pkgver='1.15.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
