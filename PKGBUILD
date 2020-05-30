@@ -10,7 +10,7 @@ license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multilockscreen' 'gtk-engine-murrine')
 conflicts=('multilockscreen-git' 'betterlockscreen' 'betterlockscreen-git')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('bdccd833ef7be51a73e39d89ab6724b92b20261d34581159e9d587edb6f565a8')
+sha256sums=('71849cb95a1c68476aaebb02b1d6cf0f7526eebad0fb67299fbdfa20b463096b')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
