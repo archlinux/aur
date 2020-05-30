@@ -1,7 +1,7 @@
 pkgbase = pandoc-latex-fontsize
 	pkgdesc = Pandoc filter for changing fontsize in code blocks
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chdemko/pandoc-latex-fontsize
 	arch = x86_64
 	license = BSD
