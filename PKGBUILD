@@ -2,7 +2,7 @@
 
 pkgbase=vibrant-git
 pkgname=(libvibrant-git vibrant-cli-git)
-pkgver=0.0.2.r4.g01b9f63
+pkgver=0.0.2.r22.g3b880d2
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
@@ -29,9 +29,9 @@ build() {
 }
 
 package_libvibrant-git() {
-    provides=("libvibrant" "libvibrant.so")
+    provides=("libvibrant" "libvibrant.so=1-64")
     conflicts=("vibrant" "libvibrant")
-    depends=("libdrm" "libxrandr")
+    depends=("libxrandr" "libxnvctrl")
 
     cd "build"
 
