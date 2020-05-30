@@ -1,40 +1,26 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgbase=python-django-taggit
-pkgname=(python-django-taggit python2-django-taggit)
-_pkgname=django-taggit
-pkgver=0.23.0
+pkgname=python-django-taggit
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Simple tagging application for Django"
 arch=('any')
-url="http://github.com/alex/django-taggit/"
+url="https://github.com/jazzband/django-taggit/"
 license=('BSD')
-makedepends=('python2-django' 'python-django' 'python2-mock' 'python-mock')
-source=($_pkgname-$pkgver.tar.gz::https://github.com/alex/django-taggit/archive/$pkgver.tar.gz)
-sha256sums=('f6c9cbeea93dd04406f815ebfea3bdfb4fab0af5e1a93d2f3e13a79e0b47486a')
+makedepends=('python-django' 'python-mock')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jazzband/django-taggit/archive/$pkgver.tar.gz)
+sha256sums=('d36b16107717db86829ad9077bdb3acfe67450708c5d4df5caa26888752d4a49')
 
-# tests currently fail
+# tests fail
 # check() {
-#   cd "${srcdir}"/$_pkgname-$pkgver
+#   cd "${srcdir}"/django-taggit-$pkgver
 # 
-#   python2 setup.py test
 #   python setup.py test
 # }
 
-package_python2-django-taggit() {
-  depends=('python2-django')
-
-  cd "${srcdir}"/$_pkgname-$pkgver
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_python-django-taggit() {
-  depends=('python-django')
-
-  cd "${srcdir}"/$_pkgname-$pkgver
+package() {
+  cd "${srcdir}"/django-taggit-$pkgver
+  
   python setup.py install --root="${pkgdir}" --optimize=1
-
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
