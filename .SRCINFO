@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-kalman-filter
 	pkgdesc = ROS - Simple Kalman Filter in Python.
 	pkgver = 0.2.4
-	pkgrel = 3
-	url = https://wiki.ros.org/kalman_filter
+	pkgrel = 4
+	url = https://github.com/DLu/wu_ros_tools
 	arch = any
 	license = BSD
 	makedepends = cmake
