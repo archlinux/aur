@@ -1,7 +1,7 @@
 # Maintainer: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-tools
-pkgver=0.1.1
-pkgrel=7
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A minimal composable infrastructure on top of libudev and libevdev'
 arch=('x86_64')
 license=('GPL3')
@@ -10,8 +10,8 @@ depends=('libevdev' 'yaml-cpp')
 makedepends=('cmake' 'gcc')
 source=("$pkgname.tar.gz::https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v${pkgver}"
         'udevmon.service')
-md5sums=('033f4c3e81e4d7865314ad2873e3d158'
-         'dcbbb73258945188d319cdc3598662e7')
+sha256sums=('c816ef7d93171d818180aa18ac650de54156856da564b2ed889093df55ff69bc'
+            '66f61f1ee1384572447d304059224e7126ea76a491e83c0dad3a73bb723eca17')
 
 build() {
     cd ${srcdir}/tools-v${pkgver}-*
@@ -21,6 +21,8 @@ build() {
 
 package() {
     cd ${srcdir}/tools-v${pkgver}-*/build
+
+    mkdir -p "${pkgdir}/etc/interception/udevmon.d"
 
     mkdir -p "${pkgdir}/usr/lib/systemd/system"
     install -m 644 "${srcdir}/udevmon.service" "${pkgdir}/usr/lib/systemd/system"
