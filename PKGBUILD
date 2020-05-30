@@ -1,7 +1,7 @@
 # Maintainer: Nick Boughton (nicholasboughton@gmail.com)
 
 pkgname=quasar-icongenie
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='CLI tool for building web application icons'
 arch=(i686 x86_64)

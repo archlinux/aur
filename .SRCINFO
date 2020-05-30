@@ -1,6 +1,6 @@
 pkgbase = quasar-icongenie
 	pkgdesc = CLI tool for building web application icons
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://quasar.dev/icongenie
 	arch = i686
