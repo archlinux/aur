@@ -1,6 +1,6 @@
 pkgbase = python-pydicom
 	pkgdesc = Pure python package for working with DICOM files
-	pkgver = 1.4.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pydicom.github.io/pydicom/stable/index.html
 	arch = any
@@ -8,17 +8,11 @@ pkgbase = python-pydicom
 	license = custom
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python
 	optdepends = python-numpy: for working with pixel data
 	optdepends = python-pillow: for working with compressed image data
-	source = python-pydicom-1.4.2.tar.gz::https://github.com/pydicom/pydicom/archive/v1.4.2.tar.gz
-	md5sums = dc5c3e61f6dd6db4b92f34c8026b6e8a
+	source = python-pydicom-2.0.0.tar.gz::https://github.com/pydicom/pydicom/archive/v2.0.0.tar.gz
+	md5sums = 57262b6846904fd14647430363c2319a
 
 pkgname = python-pydicom
-
-pkgname = python2-pydicom
-	depends = python2
-	optdepends = python2-numpy: for working with pixel data
-	optdepends = python2-pillow: for working with compressed image data
 
