@@ -1,7 +1,8 @@
-# Maintainer: Dmitri Goutnik <dg@syrec.org>
+# Maintainer: f0ruD <fzero@rubi.gd>
+# Previous Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=gops
-pkgver=0.3.7
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='A tool to list and diagnose Go processes currently running on your system'
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ build() {
   env GOPATH="${srcdir}" go build
 }
 
-# check() {
+# icheck() {
 #   cd src/github.com/google/gops
 #   env GOPATH="${srcdir}" go test ./...
 # }
@@ -31,4 +32,4 @@ package() {
   install -Dm755 gops "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('0d1ad5441e9260f675adc15507fa22cfc9721164c13b8df4cd028ce6b42ede2f')
+sha256sums=('7c8bffa272adce6d6d7351413de61bb163da5fabad42f5d21a1bed41504cf454')
