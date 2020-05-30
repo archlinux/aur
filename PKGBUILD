@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic."
-url='https://www.wiki.ros.org/wiimote'
+url='https://wiki.ros.org/wiimote'
 
 pkgname='ros-noetic-wiimote'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 
 ros_makedepends=(ros-noetic-genmsg
@@ -36,13 +36,6 @@ depends=(${ros_depends[@]}
   cwiid
   python-numpy)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/wiimote/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="joystick_drivers-${pkgver}/wiimote"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/joystick_drivers/archive/${pkgver}.tar.gz")
 sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
