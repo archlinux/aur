@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Metapackage of geometry tutorials ROS."
-url='https://www.wiki.ros.org/geometry_tutorials'
+url='https://wiki.ros.org/geometry_tutorials'
 
 pkgname='ros-noetic-geometry-tutorials'
 pkgver='0.2.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

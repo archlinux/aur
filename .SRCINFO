@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-geometry-tutorials
 	pkgdesc = ROS - Metapackage of geometry tutorials ROS.
 	pkgver = 0.2.2
-	pkgrel = 2
-	url = https://www.wiki.ros.org/geometry_tutorials
+	pkgrel = 3
+	url = https://wiki.ros.org/geometry_tutorials
 	arch = any
 	license = BSD
 	makedepends = cmake
