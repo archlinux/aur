@@ -1,6 +1,6 @@
 pkgbase = ngxtop-ce
 	pkgdesc = Real-time metrics for nginx server
-	pkgver = 0.0.3a6
+	pkgver = 0.0.3a7
 	pkgrel = 1
 	url = https://github.com/ngxtop/ngxtop
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ngxtop-ce
 	depends = python-pyparsing
 	provides = ngxtop
 	conflicts = ngxtop
-	source = https://files.pythonhosted.org/packages/source/n/ngxtop-ce/ngxtop-ce-0.0.3a6.tar.gz
-	sha256sums = 0d0c7d99d2a542b8621d3f397e7b9870427f87402669eff3d8ef3ab61cded9fa
+	source = https://files.pythonhosted.org/packages/source/n/ngxtop-ce/ngxtop-ce-0.0.3a7.tar.gz
+	sha256sums = 417e1de0e6552a45e78b8ad07b85754590f0096adb16e8f3210e5ea46666428c
 
 pkgname = ngxtop-ce
 

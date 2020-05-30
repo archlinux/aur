@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=ngxtop-ce
-pkgver=0.0.3a6
+pkgver=0.0.3a7
 pkgrel=1
 pkgdesc="Real-time metrics for nginx server"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 conflicts=('ngxtop')
 provides=('ngxtop')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0d0c7d99d2a542b8621d3f397e7b9870427f87402669eff3d8ef3ab61cded9fa')
+sha256sums=('417e1de0e6552a45e78b8ad07b85754590f0096adb16e8f3210e5ea46666428c')
 
 
 build () {
