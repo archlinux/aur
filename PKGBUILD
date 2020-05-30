@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=qt-logout
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Logout script for qt5'
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
