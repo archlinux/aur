@@ -1,0 +1,13 @@
+pkgbase = python-flake8-deprecated
+	pkgdesc = Warns about deprecated method calls.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/gforcada/flake8-deprecated
+	arch = any
+	license = GPL-2.0
+	depends = flake8
+	source = https://github.com/gforcada/flake8-deprecated/archive/1.3.tar.gz
+	md5sums = 51bb7161af44baf4ef5f1c610e0343b5
+
+pkgname = python-flake8-deprecated
+
