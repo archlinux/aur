@@ -1,0 +1,13 @@
+pkgbase = python-flake8-builtins
+	pkgdesc = Check for python builtins being used as variables or parameters.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/gforcada/flake8-builtins
+	arch = any
+	license = GPL-2.0
+	depends = flake8
+	source = https://github.com/gforcada/flake8-builtins/archive/1.5.3.tar.gz
+	md5sums = 37b4f9d07afde9a46fd1aa9fb19c3714
+
+pkgname = python-flake8-builtins
+
