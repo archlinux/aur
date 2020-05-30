@@ -1,4 +1,4 @@
-# Maintainer: Hugo Sales <someonewithpc AT gmail dot com>
+# Maintainer: Hugo Sales <hugo (at) fc (dot) up (dot) pt>
 
 pkgname=openbugs
 pkgver=3.2.3
