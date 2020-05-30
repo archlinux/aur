@@ -21,9 +21,9 @@ index be614b8e8..94918929e 100644
  
  add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
  
--TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
+-TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
 \ No newline at end of file
-+TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 diff --git a/samples/luxcoredemo/CMakeLists.txt b/samples/luxcoredemo/CMakeLists.txt
 index 194104caf..241dbd5f2 100644
 --- a/samples/luxcoredemo/CMakeLists.txt
@@ -42,19 +42,19 @@ index 3acb27bfa..b52d3ec81 100644
  add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
  add_definitions(${VISIBILITY_FLAGS})
  
--TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
-+TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
+-TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
 index c8b23001b..607f92b6a 100644
 --- a/samples/luxcoreui/CMakeLists.txt
 +++ b/samples/luxcoreui/CMakeLists.txt
-@@ -90,5 +90,6 @@ TARGET_LINK_LIBRARIES(luxcoreui
+@@ -89,4 +92,5 @@ TARGET_LINK_LIBRARIES(luxcoreui
+ 	${LUXCORE_LIBRARY}
  	${OPENGL_LIBRARIES}
  	${GTK3_LIBRARIES}
- 	${Boost_LIBRARIES}
-+	${PYTHON_LIBRARIES}
- 	${OPENCL_LIBRARIES}
- 	${CUDA_ALL_LIBRARIES})
+-	${Boost_LIBRARIES})
++	${Boost_LIBRARIES}
++	${PYTHON_LIBRARIES})
 diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
 index edd6e6762..1875ee5cf 100644
 --- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
