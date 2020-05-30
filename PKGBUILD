@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a tool for setting and publishing joint state values for a given URDF."
-url='https://www.wiki.ros.org/joint_state_publisher'
+url='https://wiki.ros.org/joint_state_publisher'
 
 pkgname='ros-noetic-joint-state-publisher'
 pkgver='1.12.13'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
