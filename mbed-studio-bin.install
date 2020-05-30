@@ -1,0 +1,20 @@
+post_install() {
+    ## reload udev rules
+	# reload udev rules
+    udevadm control --reload
+    udevadm trigger
+}
+
+post_upgrade() {
+    ## reload udev rules
+	# reload udev rules
+    udevadm control --reload
+    udevadm trigger
+}
+
+post_remove() {
+    ## reload udev rules
+	# reload udev rules
+    udevadm control --reload
+    udevadm trigger
+}
