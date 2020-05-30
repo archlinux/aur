@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-self-test
 	pkgdesc = ROS - self_test.
 	pkgver = 1.9.3
-	pkgrel = 3
-	url = https://www.wiki.ros.org/self_test
+	pkgrel = 4
+	url = https://wiki.ros.org/self_test
 	arch = i686
 	arch = x86_64
 	arch = aarch64

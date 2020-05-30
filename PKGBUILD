@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - self_test."
-url='https://www.wiki.ros.org/self_test'
+url='https://wiki.ros.org/self_test'
 
 pkgname='ros-noetic-self-test'
 pkgver='1.9.3'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
