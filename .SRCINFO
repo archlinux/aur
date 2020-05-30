@@ -6,6 +6,7 @@ pkgbase = cpu-x-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = nasm
