@@ -15,7 +15,16 @@ makedepends=('cmake'
              'openjpeg2'
              'python'
              'swig'
-	     'vtk')
+             'vtk'
+             'qt5-base'
+             'glew'
+             'openmpi'
+             'proj'
+             'netcdf'
+             'hdf5'
+             'libogg'
+             'libtheora'
+)
 source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz")
 sha512sums=('d5ea0a7419372dfd03ace014e116738b369acdebe82e6314e39f9bef33480525b03f7028d2c12260d6152e3817ef8ac061d8a0ed9aff5d8f39256c87d17b76d6')
 
