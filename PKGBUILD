@@ -1,7 +1,7 @@
 # Maintainer: X0rg
 
-_pkgbasename=memtest86
-pkgname=$_pkgbasename-efi
+_realname=memtest86
+pkgname=$_realname-efi
 pkgver=8.4
 pkgrel=1
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
@@ -11,10 +11,10 @@ license=('GPL2' 'custom:PassMark')
 makedepends=('p7zip')
 optdepends=('efibootmgr: to add a new EFI boot entry'
 	'grub: to add MemTest86 entry in GRUB2 menu')
-backup=(etc/$pkgname/$pkgname.conf)
-install=$pkgname.install
-source=(#"$pkgname-$pkgver.zip::https://www.memtest86.com/downloads/$_pkgbasename-usb.zip"
-	"$pkgname-$pkgver.zip::https://github.com/X0rg/AUR-packages/raw/master/files/$_pkgbasename-usb.zip"
+backup=("etc/$pkgname/$pkgname.conf")
+install="$pkgname.install"
+source=(#"$pkgname-$pkgver.zip::https://www.memtest86.com/downloads/$_realname-usb.zip"
+	"$pkgname-$pkgver.zip::https://github.com/X0rg/AUR-packages/raw/master/files/$_realname-usb.zip"
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"memtest86-efi-update.hook"
@@ -26,7 +26,6 @@ sha512sums=('905e5a7983f5fe3c2ccf3852d1047e31bec293589acd476c610da53b58670b7d7b2
             '1fe55a642e36005f5b7b58e5fb245e8029bb1a19b5f30d8ddba6bbf5a4b96c1bba35be0dfacee478034b8367fdde62d34a934dcd787f4c6702889615bac9f78a')
 
 prepare() {
-	msg2 "Extract ISO..."
 	7z x -y "$srcdir/memtest86-usb.img" > /dev/null
 	7z x -y "$srcdir/EFI System Partition.img" -oc:"$srcdir/$pkgname-$pkgver" > /dev/null
 }
@@ -34,7 +33,7 @@ prepare() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	msg2 "Move MemTest86 stuff in share directory..."
+	# Move MemTest86 stuff in share directory
 	install -Dvm755 "EFI/BOOT/BOOTIA32.efi"  "$pkgdir/usr/share/$pkgname/bootia32.efi"
 	install -Dvm755 "EFI/BOOT/BOOTX64.efi"   "$pkgdir/usr/share/$pkgname/bootx64.efi"
 	install -Dvm644 "EFI/BOOT/blacklist.cfg" "$pkgdir/usr/share/$pkgname/blacklist.cfg"
@@ -42,11 +41,11 @@ package() {
 	install -Dvm644 "EFI/BOOT/unifont.bin"   "$pkgdir/usr/share/$pkgname/unifont.bin"
 	install -Dvm644 "license.rtf"            "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf"
 
-	msg2 "Install AUR provided script..."
+	# Install AUR provided script
 	install -Dvm755 "$srcdir/memtest86-efi"        "$pkgdir/usr/bin/memtest86-efi"
 	install -Dvm644 "$srcdir/memtest86-efi.conf"   "$pkgdir/etc/memtest86-efi/memtest86-efi.conf"
 
-	msg2 "Install Pacman hooks..."
+	# Install Pacman hooks
 	install -Dvm644 "$srcdir/memtest86-efi-update.hook" "$pkgdir/usr/share/libalpm/hooks/memtest86-efi-update.hook"
 	install -Dvm644 "$srcdir/memtest86-efi-remove.hook" "$pkgdir/usr/share/libalpm/hooks/memtest86-efi-remove.hook"
 }
