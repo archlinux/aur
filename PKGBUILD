@@ -1,19 +1,29 @@
-# Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: acxz <akashpatel2008@yahoo.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
+
 pkgname=python-colcon-core
-pkgver=0.3.22
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Command line tool to build sets of software packages."
 arch=(any)
-url="https://pypi.org/project/colcon-core"
+url="https://colcon.readthedocs.io/en/released/"
 license=('Apache')
-depends=('python-pytest' 'python-pytest-runner' 'python-pytest-rerunfailures' 'python-pytest-repeat' 'python-coverage' 'python-pytest-cov' 'python-distlib' 'python-notify2' 'python-empy')
+depends=('python-pytest' 'python-pytest-runner' 'python-pytest-rerunfailures'
+         'python-pytest-repeat' 'python-coverage' 'python-pytest-cov'
+         'python-distlib' 'python-notify2' 'python-empy')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/70/55/2a1effeac1707632ccb8121f920f4b142fa6e43ce967ce17897e94ce5352/colcon-core-0.3.22.tar.gz)
-sha256sums=('b3f04e14168675914e87fde3d0999279499fe61203109419782408c371f58be1')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/colcon/colcon-core/archive/$pkgver.tar.gz")
+sha256sums=('e657aab632efdb17ba4b5a173d6c8f58ef47120453122081f057a9c878511c9b')
+
+_pkgname=colcon-core
+
+build() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python setup.py build
+}
 
 package() {
-    cd ${srcdir}/colcon-core-${pkgver}
-
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python setup.py install --root="$pkgdir" --optimize=1
+    install -D -m644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
 }
