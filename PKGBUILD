@@ -15,7 +15,7 @@
 
 pkgname=ffmpeg-mmal
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -74,11 +74,15 @@ depends=(
   zlib
 )
 makedepends=(
+  avisynthplus
   git
   ladspa
   nasm
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=(
+  'avisynthplus: AviSynthPlus support'
+  'ladspa: LADSPA filters'
+)
 provides=(
   ffmpeg
   libavcodec.so
@@ -91,8 +95,11 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
-        vmaf-model-path.patch)
+_tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+source=(
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+  vmaf-model-path.patch
+)
 sha256sums=(
   SKIP
   8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
@@ -107,9 +114,9 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  # lavf/mp3dec: don't adjust start time; packets are not adjusted
-  # https://crbug.com/1062037
-  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
+  # backport avisynthplus support
+  git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
+  git show 56f59246293de417d27ea7e27cb9a7727ee579fb -- libavformat/avisynth.c | git apply -
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
