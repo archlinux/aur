@@ -23,7 +23,6 @@ pkgbase = cryptodev-linux
 	sha256sums = 4c762bbea27edeb283d44af37be2faf2df21312853b200e6b93319d563f51d86
 
 pkgname = cryptodev-linux
-	pkgdesc = cryptodev Linux module
 	depends = linux
 
 pkgname = cryptodev-linux-dkms

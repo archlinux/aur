@@ -35,7 +35,6 @@ build() {
 }
 
 package_cryptodev-linux() {
-  pkgdesc="cryptodev Linux module"
   depends=('linux')
 
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
