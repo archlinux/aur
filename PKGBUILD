@@ -5,7 +5,7 @@ pkgname=ventoy-bin
 _pkgname=ventoy
 provides=(ventoy)
 conflicts=(ventoy)
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='A new multiboot USB solution (Binary)'
 url='http://www.ventoy.net/'
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('bash' 'util-linux')
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/ventoy-${pkgver}-linux.tar.gz"
         'ventoy')
-sha512sums=('11b91d2f9d9ea941597e6211b5a2df3f03c08b0aedd9538571a53985fc8484507c0bbc572f3619d19bb4c7b5bf8ad62cc2fe516c9b4353d7d826c9de6c169923'
+sha512sums=('b89c4de490ec7af8358c98c7613ba2cb91e42c2db0c7e541ac62e1b3d9dfb7ff2d7550c72a71e52b0e27f7b030053e62b1b3bde3ed93fe7b00be78d4abe00865'
             '27fef4c8e254863896888cf3e77a39ed377100effc69a4518fe55038069c7c1e8b56f1a79d47d969eda8e5bd90920e93b34dd361aac67be948266d1e7b238dcd')
 
 prepare() {
