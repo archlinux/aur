@@ -1,7 +1,7 @@
 # Maintainer: Hugo Sales <hugo (at) fc (dot) up (dot) pt>
 
 pkgname=pandoc-latex-fontsize
-pkgrel=1
+pkgrel=2
 pkgver=1.1.2
 pkgdesc="Pandoc filter for changing fontsize in code blocks"
 url="https://github.com/chdemko/${pkgname}"
