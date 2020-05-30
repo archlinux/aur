@@ -1,7 +1,7 @@
 pkgbase = foo-yc20-git
 	pkgdesc = An emulation of the Yamaha YC-20 combo organ as an LV2 plugin and a standalone program (git version)
 	pkgver = 1.3.0.r330.b99d4a3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sampov2/foo-yc20
 	arch = x86_64
 	arch = armv7l
@@ -15,8 +15,10 @@ pkgbase = foo-yc20-git
 	conflicts = foo-yc20
 	source = foo-yc20::git+https://github.com/sampov2/foo-yc20.git
 	source = faust-0.9.73-mr2.tar.gz::https://github.com/grame-cncm/faust/archive/40a919756d09c6b2de19b3299b7eef55997551dc.tar.gz
+	source = foo-yc20-makefile-ldflags.patch
 	sha256sums = SKIP
 	sha256sums = 74ad05cd5d508e30d78f31ff230e29793dc1cdb4f156cdb2afe43ac119f82701
+	sha256sums = 5408a958c15bf39d0034c6aeb0a86652a4bb34dd403780e3438bd7bf5e3f45ee
 
 pkgname = foo-yc20-git
 

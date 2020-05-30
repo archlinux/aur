@@ -1,0 +1,37 @@
+diff --git a/Makefile b/Makefile
+index 6b92148..16973f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -60,27 +60,27 @@ lv2: $(LV2_PLUGIN) $(LV2_UI)
+ OBJS_FOO_YC20=src/foo-yc20.o src/configuration.o src/yc20-jack.o src/main-gui.o src/foo-yc20-ui.o src/yc20-base-ui.o src/graphics.o src/yc20-precalc.o $(WIN32_RC)
+ 
+ foo-yc20: $(OBJS_FOO_YC20) $(OBJS_DSP_STANDALONE)
+-	$(CXX11) $(OBJS_FOO_YC20) $(OBJS_DSP_STANDALONE) `$(PKG_CONFIG) --libs gtk+-2.0` `$(PKG_CONFIG) --libs jack` $(LDFLAGS_YC20) -o foo-yc20
++	$(CXX11) $(OBJS_FOO_YC20) $(OBJS_DSP_STANDALONE) $(LDFLAGS) `$(PKG_CONFIG) --libs gtk+-2.0` `$(PKG_CONFIG) --libs jack` -o foo-yc20
+ 
+ ## CLI version
+ OBJS_FOO_YC20_CLI=src/foo-yc20.o src/configuration.o src/main-cli.o src/yc20-jack.o src/yc20-precalc.o
+ 
+ foo-yc20-cli: $(OBJS_FOO_YC20_CLI) $(OBJS_DSP_STANDALONE)
+-	$(CXX11) $(OBJS_FOO_YC20_CLI) $(OBJS_DSP_STANDALONE) $(LDFLAGS_YC20_CLI) `$(PKG_CONFIG) --libs jack` -o foo-yc20-cli
++	$(CXX11) $(OBJS_FOO_YC20_CLI) $(OBJS_DSP_STANDALONE) $(LDFLAGS) `$(PKG_CONFIG) --libs jack` -o foo-yc20-cli
+ 
+ ## LV2 version
+ OBJS_LV2=src/lv2.o src/foo-yc20.o src/yc20-precalc.o
+ 
+ $(LV2_PLUGIN): $(OBJS_LV2) $(OBJS_DSP_PLUGIN)
+-	$(CXX11) $(OBJS_LV2) $(OBJS_DSP_PLUGIN) -fPIC -shared -o $(LV2_PLUGIN) $(LDFLAGS_YC20_LV2)
++	$(CXX11) $(OBJS_LV2) $(OBJS_DSP_PLUGIN) -fPIC -shared $(LDFLAGS) -o $(LV2_PLUGIN)
+ 
+ ## LV2 UI
+ OBJS_LV2_UI=src/lv2-ui.o src/foo-yc20-ui2.o src/yc20-base-ui.o src/graphics.o
+ 
+ $(LV2_UI): $(OBJS_LV2_UI)
+-	$(CXX11) $(OBJS_LV2_UI) -fPIC -shared `$(PKG_CONFIG) --libs gtk+-2.0` -o $(LV2_UI) $(LDFLAGS_YC20_LV2)
++	$(CXX11) $(OBJS_LV2_UI) -fPIC -shared $(LDFLAGS) `$(PKG_CONFIG) --libs gtk+-2.0` -o $(LV2_UI)
+ 
+-## VSTi - only compiles for windows with MinGW32. 
++## VSTi - only compiles for windows with MinGW32.
+ ##        Note: Jack is used in compile flags to provide access to the ringbuffer.h. there
+ ##              is no runtime dependency or even a library as we use the separately compiled ringbuffer.o
+ OBJS_VSTI_LINUX=src/vsti.o src/vstplugmain.o src/foo-yc20.o src/yc20-precalc.o src/yc20-base-ui.o src/graphics.o src/jackringbuffer.o

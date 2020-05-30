@@ -5,7 +5,7 @@ _faust_version=0.9.73-mr2
 _faust_commit=40a919756d09c6b2de19b3299b7eef55997551dc
 pkgname="${_name}-git"
 pkgver=1.3.0.r330.b99d4a3
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulation of the Yamaha YC-20 combo organ as an LV2 plugin and a standalone program (git version)"
 arch=('x86_64' 'armv7l')
 url="https://github.com/sampov2/foo-yc20"
@@ -16,9 +16,11 @@ makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git+https://github.com/sampov2/foo-yc20.git"
-        "faust-${_faust_version}.tar.gz::https://github.com/grame-cncm/faust/archive/${_faust_commit}.tar.gz")
+        "faust-${_faust_version}.tar.gz::https://github.com/grame-cncm/faust/archive/${_faust_commit}.tar.gz"
+        'foo-yc20-makefile-ldflags.patch')
 sha256sums=('SKIP'
-            '74ad05cd5d508e30d78f31ff230e29793dc1cdb4f156cdb2afe43ac119f82701')
+            '74ad05cd5d508e30d78f31ff230e29793dc1cdb4f156cdb2afe43ac119f82701'
+            '5408a958c15bf39d0034c6aeb0a86652a4bb34dd403780e3438bd7bf5e3f45ee')
 
 
 pkgver() {
@@ -29,8 +31,14 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_name}"
+
+  # Fix LDFLAGS position
+  patch -p1 -N -i "${srcdir}/foo-yc20-makefile-ldflags.patch"
+
+  # Insert project version into Makefile
   VERSION="$(git tag --sort=-taggerdate | head -n 1)"
   sed -i -e 's/^VERSION=/VERSION='$VERSION'/' Makefile
+
   # Adapted from: https://github.com/zynthian/zynthian-sys/blob/master/scripts/recipes/install_foo-yc20.sh
   sed -i -e 's|-Iinclude/|-Iinclude -I'${srcdir}'/faust-'${_faust_commit}'/architecture|' Makefile
   sed -i -e 's/= NULL/= 0/' src/faust-dsp-standalone.cpp
