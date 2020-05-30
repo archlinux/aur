@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-ros
 	pkgdesc = ROS - ROS packaging system.
 	pkgver = 1.15.2
-	pkgrel = 1
-	url = https://www.wiki.ros.org/ROS
+	pkgrel = 2
+	url = https://wiki.ros.org/ROS
 	arch = i686
 	arch = x86_64
 	arch = aarch64
