@@ -1,3 +1,4 @@
+
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 # Contributor: Robin McCorkell <robin@mccorkell.me.uk>
 
@@ -5,7 +6,7 @@ pkgbase=cryptodev-linux
 pkgname=(cryptodev-linux cryptodev-linux-dkms)
 pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace"
 pkgver=1.10
-pkgrel=4
+pkgrel=5
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
