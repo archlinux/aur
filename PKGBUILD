@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
-url='https://www.wiki.ros.org/turtlesim'
+url='https://wiki.ros.org/turtlesim'
 
 pkgname='ros-noetic-turtlesim'
 pkgver='0.9.1'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

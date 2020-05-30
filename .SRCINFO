@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-turtlesim
 	pkgdesc = ROS - turtlesim is a tool made for teaching ROS and ROS packages.
 	pkgver = 0.9.1
-	pkgrel = 2
-	url = https://www.wiki.ros.org/turtlesim
+	pkgrel = 3
+	url = https://wiki.ros.org/turtlesim
 	arch = i686
 	arch = x86_64
 	arch = aarch64
