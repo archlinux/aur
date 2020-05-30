@@ -1,6 +1,6 @@
 pkgbase = openra-ra2-git
 	pkgdesc = An OpenRA mod inspired by Command & Conquer: Red Alert 2
-	pkgver = 1049.git.bcd5e3d
+	pkgver = 1050.git.d9d6e99
 	pkgrel = 1
 	url = https://github.com/OpenRA/ra2
 	install = openra-ra2.install
