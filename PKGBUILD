@@ -2,7 +2,7 @@
 
 pkgname=openbugs
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenBUGS, a software package for performing Bayesian inference Using Gibbs Sampling"
 arch=('any')
 url="http://openbugs.net/w/FrontPage"

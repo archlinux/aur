@@ -1,7 +1,7 @@
 pkgbase = openbugs
 	pkgdesc = OpenBUGS, a software package for performing Bayesian inference Using Gibbs Sampling
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openbugs.net/w/FrontPage
 	arch = any
 	license = GPL2
