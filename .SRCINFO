@@ -1,0 +1,15 @@
+pkgbase = tuexdo-cc-wmi-dkms
+	pkgdesc = An interface to the WMI methods on TUXEDO laptops
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/tuxedocomputers/tuxedo-cc-wmi
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	depends = dkms
+	provides = tuexdo-cc-wmi
+	source = tuexdo-cc-wmi::git+https://github.com/tuxedocomputers/tuxedo-cc-wmi
+	sha512sums = SKIP
+
+pkgname = tuexdo-cc-wmi-dkms
+
