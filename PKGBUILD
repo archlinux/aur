@@ -7,7 +7,7 @@ pkgdesc="Simple tagging application for Django"
 arch=('any')
 url="https://github.com/jazzband/django-taggit/"
 license=('BSD')
-makedepends=('python-django' 'python-mock')
+makedepends=('python-django' 'python-mock' 'python-isort')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jazzband/django-taggit/archive/$pkgver.tar.gz)
 sha256sums=('d36b16107717db86829ad9077bdb3acfe67450708c5d4df5caa26888752d4a49')
 

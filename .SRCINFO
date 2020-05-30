@@ -7,6 +7,7 @@ pkgbase = python-django-taggit
 	license = BSD
 	makedepends = python-django
 	makedepends = python-mock
+	makedepends = python-isort
 	source = python-django-taggit-1.3.0.tar.gz::https://github.com/jazzband/django-taggit/archive/1.3.0.tar.gz
 	sha256sums = d36b16107717db86829ad9077bdb3acfe67450708c5d4df5caa26888752d4a49
 
