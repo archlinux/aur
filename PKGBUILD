@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
 depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
-         'gst-plugins-base-libs' 'luajit' 'libgl' 'libinput'
+         'gst-plugins-base-libs' 'lua' 'libgl' 'libinput'
          'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'poppler' 'openjpeg2' 'libjpeg-turbo'
