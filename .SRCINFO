@@ -1,0 +1,17 @@
+pkgbase = awwan-git
+	pkgdesc = Configuration management software
+	pkgver = 0.0.0.20200530150425.8ac2120686d7
+	pkgrel = 1
+	url = https://sr.ht/~shulhan/awwan
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:BSD
+	makedepends = git
+	makedepends = go>=1.13
+	provides = awwan
+	source = awwan-git::git+https://git.sr.ht/~shulhan/awwan
+	sha1sums = SKIP
+
+pkgname = awwan-git
+
