@@ -4,7 +4,7 @@
 
 pkgname=cuneiform
 pkgver=1.1.0
-pkgrel=19
+pkgrel=20
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages"
 arch=('x86_64')
 url="https://launchpad.net/cuneiform-linux"
@@ -20,18 +20,18 @@ prepare() {
   cd $pkgname-linux-$pkgver
   patch -Np1 -i ../build-fix.patch
   sed -i 's/lib64/lib/' install_files.cmake
+# Don't override LDFLAGS
+  sed -e '/CMAKE_SHARED_LINKER_FLAGS/d' -i cuneiform_src/CMakeLists.txt
 }
 
 build() {
-  cd $pkgname-linux-$pkgver
-  [[ -d build ]] || mkdir build
-  cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  make
+  CFLAGS+=' -fcommon'
+  cmake -B build -S $pkgname-linux-$pkgver .. \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-linux-$pkgver/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../cuneiform_src/Kern/license.txt "$pkgdir/usr/share/licenses/cuneiform/license.txt"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $pkgname-linux-$pkgver/cuneiform_src/Kern/license.txt "$pkgdir/usr/share/licenses/cuneiform/license.txt"
 }
