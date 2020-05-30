@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Piskel
+Comment=A free online editor for animated sprites & pixel art.
+GenericName=Pixel Art Program
+Exec=/usr/bin/piskel
+Icon=/usr/share/pixmaps/piskel.png
+Type=Application
+Categories=Graphics

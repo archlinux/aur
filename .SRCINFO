@@ -1,0 +1,25 @@
+pkgbase = piskel-bin
+	pkgdesc = A free online editor for animated sprites & pixel art.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/piskelapp/piskel
+	arch = x86_64
+	license = Apache
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = gconf
+	depends = gtk2
+	depends = alsa-lib
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	provides = piskel
+	conflicts = piskel
+	options = !strip
+	source = logo.ico::https://github.com/piskelapp/piskel/raw/master/misc/desktop/logo.ico
+	source = Piskel.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = piskel-bin
+
