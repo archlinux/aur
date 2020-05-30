@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=14
-_clr=955
+_minor=15
+_clr=957
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33180
+_clear_version=33250
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=ed9742c7731954441602e260403c7d9df8303202ac6d36f75820b037d4865dbb
+_config_hash=8e6661dfaf10f53b3e23f54109a3cdefdc0fb027bc4ef8cff6a10f0dd5cc0a95
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -76,3 +76,6 @@ b2sums=('609b665efbd3d6ef5b803854a008612766a30a6c0270281fb1359dc71ab127b14dd3924
 b2sums=('4dc3439633c0454cf8aef40350fbd80ec6db13474e440d8588f925dc6ece9929d94034ec62855cd544ace1ddfd7863911514aba7174ca84c963cd6adc6d36a18'
         'b63717a132d172b271ab4bd8181513793cc654d66116211849cdaee1caa4e45864511109c75fa9d988a00c91beddc28d04b7f7bbe34aaabdfc062b6c14b00f0b'
         '37a9b07b7683a9a7f66222617e668eb2f200698081ce27b7d08da5c8180cb87587371fd3e30847b080de7a1228c96c9a1ef8e90dfa0e938134d21177bc8692b5')
+b2sums=('1c1dbbcfcfc8614eb3ac4ba3a22ce5d479378c82cb87b3c70353311bc1d98fae8ae0281c5795c6d3faf8e4051bf39e9776ef45bcdf45bcb7a75926f15bdbf699'
+        '85261238e652e9869683cd9559f3274ac2cb0c9d3fde9da00bd0354938fefdac22985843b0c6de0aefb2e553a59e455328bbf765fb4ed98bbd62596e1bfdb137'
+        '3719c4164553c16f04ec02d86699240f701cf14a0c2de5d147aa108eb9e709d9ece38b4e27f857012a814639338adf83f8ecc7f0ca2e7847f48b2e9082aa7cf0')
