@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for both Python and C++."
-url='https://www.wiki.ros.org/tf2_ros'
+url='https://wiki.ros.org/tf2_ros'
 
 pkgname='ros-noetic-tf2-ros'
 pkgver='0.6.5'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
