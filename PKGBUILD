@@ -3,8 +3,8 @@
 # Contributor: Fergus Symon <fergofrog@fergofrog.com>
 
 pkgname=razercfg
-pkgver=0.41
-pkgrel=2
+pkgver=0.42
+pkgrel=1
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
 url=https://bues.ch/cms/hacking/razercfg
@@ -14,8 +14,8 @@ makedepends=('cmake')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 provides=('razerd')
 backup=('etc/razer.conf')
-source=("https://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc})
-sha512sums=('a24f3d2187f0791459e1f7a86583f72e6bfd9fc81fda6fa3482f3351dc641f8a511339b5c3b041c3e88a7d5da35a641696e86ce7d46b3fdb6a125bc7fed78a87'
+source=("https://bues.ch/razercfg/razercfg-$pkgver.tar.xz"{,.asc})
+sha512sums=('3856f4133b620fb639a46a5bb02fe8e6c47ae3928a04fe9d1bbef2792a44fdd4f5dff2efa43a1e43d75312025d3c65c626e331e723092e4e0b8d6622657fb197'
             'SKIP')
 validpgpkeys=('757FAB7CED1814AE15B4836E5FB027474203454C') # Michael Busch
 
