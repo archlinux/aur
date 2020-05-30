@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SESSION=default
+SESSIONDIR=/usr/share/xsessions/
+if [ -f ${HOME}/.dmrc ]; then
+        SESSION=$(grep -e "^Session=" ${HOME}/.dmrc | cut -d= -f2)
+fi
+if [ -f ${SESSIONDIR}/${SESSION}.desktop ]; then
+        SESSIONFILE=${SESSIONDIR}/${SESSION}.desktop
+else
+        SESSIONFILE=${SESSIONDIR}/default.desktop
+fi
+EXECFILE=$(grep -e "^Exec=" ${SESSIONFILE} | cut -d= -f2)
+exec ${EXECFILE}

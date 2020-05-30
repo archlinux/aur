@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=run.dmrc
+Name=RunDMRC
+Comment=Run session saved in ~/.dmrc
