@@ -1,10 +1,10 @@
 pkgdesc="ROS - Package containing message files"
-url='https://wiki.ros.org/rosbridge_msgs'
+url='https://wiki.ros.org/rosbridge_suite'
 
 pkgname='ros-noetic-rosbridge-msgs'
 pkgver='0.11.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
