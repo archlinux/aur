@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-roscpp-core
 	pkgdesc = ROS - Underlying data libraries for roscpp messages.
 	pkgver = 0.7.1
-	pkgrel = 2
-	url = https://www.wiki.ros.org/roscpp_core
+	pkgrel = 3
+	url = https://wiki.ros.org/roscpp_core
 	arch = i686
 	arch = x86_64
 	arch = aarch64

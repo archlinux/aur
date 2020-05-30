@@ -1,10 +1,10 @@
 pkgdesc="ROS - Underlying data libraries for roscpp messages."
-url='https://www.wiki.ros.org/roscpp_core'
+url='https://wiki.ros.org/roscpp_core'
 
 pkgname='ros-noetic-roscpp-core'
 pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
