@@ -40,9 +40,10 @@ build() {
     cd $srcdir/ValiantShades
     make version VERSION="${pkgver}"
     printf "Success in setting version\n"
-    make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
+    make core || (printf "make core failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at https://github.com/AttacqueSuperior/ValiantShades/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
+    make engine
 }
 
 package() {
