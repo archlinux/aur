@@ -1,23 +1,29 @@
+# Maintainer: oldherl <oldherl@gmail.com>
 # Contributor: Anatoly V. Beregovoy <avberegovoy@gmail.com>
-# Maintainer: Anatoly V. Beregovoy <avberegovoy@gmail.com>
 
 pkgname=libpasastro
-pkgver=1.1
-pkgrel=20
+pkgver=1.3.0
+pkgrel=1
+_pkgver="v$pkgver"
 pkgdesc="Provide Pascal interface for standard astronomy libraries"
 arch=('x86_64')
 url="http://www.sourceforge.net/projects/libpasastro/"
-license=('GPLv2')
-depends=()
-makedepends=()
+license=('GPL')
+depends=('gcc-libs')
+makedepends=('git')
 options=()
-source=(http://downloads.sourceforge.net/sourceforge/libpasastro/libpasastro-$pkgver-$pkgrel-linux_$arch.tar.xz)
-md5sums=('c7badbb08010af30833437f6b671f7cf')
+source=("git+https://github.com/pchev/libpasastro.git#tag=$_pkgver")
+sha256sums=('SKIP')
+
+build() {
+  cd $srcdir/$pkgname
+  # fix: gcc complains if output directory does not exist
+  mkdir -p plan404/obj
+  make -j
+}
 
 package() {
-  cd $srcdir/$pkgname
-  mkdir -p $pkgdir/usr/lib
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
-  install -D -m755 lib/*                $pkgdir/usr/lib/
-  install -D -m644 share/doc/$pkgname/* $pkgdir/usr/share/doc/$pkgname/
+  cd "$srcdir/$pkgname"
+  ./install.sh "$pkgdir/usr"
 }
+
