@@ -1,0 +1,15 @@
+pkgbase = autotiling-rs-git
+	pkgdesc = Automatically alternates container layouts between horizontal and vertical
+	pkgver = 0.1.0.r3.g1a0579a
+	pkgrel = 1
+	url = https://github.com/ammgws/autotiling-rs
+	arch = x86_64
+	makedepends = git
+	makedepends = rust
+	provides = autotiling-rs
+	conflicts = autotiling-rs
+	source = autotiling-rs::git+https://github.com/ammgws/autotiling-rs
+	md5sums = SKIP
+
+pkgname = autotiling-rs-git
+
