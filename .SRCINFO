@@ -1,6 +1,6 @@
 pkgbase = qt-logout
 	pkgdesc = Logout script for qt5
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/qt-logout
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = qt-logout
 	conflicts = multilockscreen-git
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
-	source = https://github.com/TheCynicalTeam/qt-logout/archive/1.0.1-1.tar.gz
+	source = https://github.com/TheCynicalTeam/qt-logout/archive/1.0.2-1.tar.gz
 	sha256sums = bdccd833ef7be51a73e39d89ab6724b92b20261d34581159e9d587edb6f565a8
 
 pkgname = qt-logout
