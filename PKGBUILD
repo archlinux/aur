@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Package for Nodelet tutorial."
-url='https://www.wiki.ros.org/nodelet_tutorial_math'
+url='https://wiki.ros.org/nodelet_tutorial_math'
 
 pkgname='ros-noetic-nodelet-tutorial-math'
 pkgver='0.1.11'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
