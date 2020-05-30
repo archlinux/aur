@@ -11,6 +11,11 @@ makedepends=('git' 'libsodium' 'pkg-config')
 source=("git+$url#tag=v${pkgver}")
 md5sums=('SKIP')
 
+prepare() {
+  cd "$srcdir/$pkgname"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "$srcdir/$pkgname"
   ./autogen.sh
