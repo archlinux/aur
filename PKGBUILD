@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2_geometry_msgs."
-url='https://www.wiki.ros.org/tf2_ros'
+url='https://wiki.ros.org/tf2_ros'
 
 pkgname='ros-noetic-tf2-geometry-msgs'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
