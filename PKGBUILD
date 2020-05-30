@@ -14,5 +14,5 @@ sha512sums=('0f8d41b6d449f96f6a73593d3f76ef45180dca2244d374d7f4c5301337247ef6d3b
 
 package() {
     cd "${srcdir}"/${pkgname}-${pkgver}
-    install -Dm755 "${pkgname//-/_}.py" "${pkgdir}/usr/bin/${pkgname//-/_}"
+    install -Dm755 "${pkgname//-/_}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
