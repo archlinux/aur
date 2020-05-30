@@ -1,14 +1,14 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=secret
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny secret store to keep your little secrets"
 arch=('x86_64')
 url="https://github.com/angt/secret"
 license=('BSD')
 depends=()
 makedepends=('git')
-source=("git+https://github.com/angt/secret#tag=v${pkgver}")
+source=("git+$url#tag=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
