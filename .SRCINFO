@@ -1,7 +1,7 @@
 pkgbase = umps2
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mps.sourceforge.net/
 	arch = x86_64
 	license = GPL2
