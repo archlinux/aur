@@ -6,6 +6,7 @@ pkgbase = amdgpu-fancontrol-git
 	install = amdgpu-fancontrol.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = systemd
 	depends = bc
 	provides = amdgpu-fancontrol
