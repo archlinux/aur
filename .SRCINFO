@@ -1,0 +1,14 @@
+pkgbase = python-stackprinter
+	pkgdesc = Debugging-friendly exceptions for Python
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/cknd/stackprinter
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/stackprinter/stackprinter-0.2.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-stackprinter
+
