@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-smclib
 	pkgdesc = ROS - The State Machine Compiler (SMC) from https://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine.
 	pkgver = 1.8.5
-	pkgrel = 2
-	url = https://smc.sourceforge.net/
+	pkgrel = 3
+	url = http://smc.sourceforge.net/
 	arch = any
 	license = Mozilla Public License Version 1.1
 	makedepends = cmake

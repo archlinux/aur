@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The State Machine Compiler (SMC) from https://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine."
-url='https://smc.sourceforge.net/'
+url='http://smc.sourceforge.net/'
 
 pkgname='ros-noetic-smclib'
 pkgver='1.8.5'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('Mozilla Public License Version 1.1')
 
 ros_makedepends=(
