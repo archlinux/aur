@@ -1,7 +1,7 @@
 pkgbase = cryptodev-linux
-	pkgdesc = cryptodev Linux module
+	pkgdesc = Kernel module providing access to Linux kernel cryptographic drivers from userspace
 	pkgver = 1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cryptodev-linux.org/
 	install = cryptodev-linux.install
 	arch = i686
@@ -27,6 +27,6 @@ pkgname = cryptodev-linux
 	depends = linux
 
 pkgname = cryptodev-linux-dkms
-	pkgdesc = cryptodev Linux module sources
+	pkgdesc = Kernel module providing access to Linux kernel cryptographic drivers from userspace - sources
 	depends = dkms
 

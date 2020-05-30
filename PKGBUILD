@@ -3,9 +3,9 @@
 
 pkgbase=cryptodev-linux
 pkgname=(cryptodev-linux cryptodev-linux-dkms)
-pkgdesc="cryptodev Linux module"
+pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace"
 pkgver=1.10
-pkgrel=3
+pkgrel=4
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -44,7 +44,7 @@ package_cryptodev-linux() {
 }
 
 package_cryptodev-linux-dkms() {
-  pkgdesc="cryptodev Linux module sources"
+  pkgdesc+=" - sources"
   depends=('dkms')
 
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
