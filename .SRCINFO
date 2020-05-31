@@ -1,11 +1,11 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
 	license = GPL3
-	depends = r
+	depends = r>=3.0.0
 	depends = pandoc>=1.12.3
 	depends = r-knitr>=1.22
 	depends = r-yaml>=2.1.19
@@ -25,9 +25,8 @@ pkgbase = r-rmarkdown
 	optdepends = r-tibble
 	optdepends = r-fs
 	optdepends = r-pkgdown
-	optdepends = r-callr>=2.0.0
-	source = https://cran.r-project.org/src/contrib/rmarkdown_2.1.tar.gz
-	sha256sums = ef450e21206c454aa78eeca9023bbc78d1b2939e0b4bed9fdec9f2bf81ee455d
+	source = https://cran.r-project.org/src/contrib/rmarkdown_2.2.tar.gz
+	sha256sums = b0060c10a5992f6430f09388674d580984c500990453daab8a26b317301cd9a4
 
 pkgname = r-rmarkdown
 
