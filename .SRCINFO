@@ -1,0 +1,15 @@
+pkgbase = rime-taigi
+	pkgdesc = Taiwanese input for rime
+	pkgver = 0.0.0.20200531
+	pkgrel = 1
+	url = https://github.com/i3thuan5/rime-taigi
+	arch = x86_64
+	license = LGPL
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	source = https://github.com/i3thuan5/rime-taigi/archive/c05c9acb683a3ba1ccb34d722bcd4ccb2895f4d9/rime-taigi-c05c9acb683a3ba1ccb34d722bcd4ccb2895f4d9.tar.gz
+	md5sums = f7082e16860bbccb17fa34dbf08bf872
+
+pkgname = rime-taigi
+
