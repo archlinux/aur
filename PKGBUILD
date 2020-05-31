@@ -3,8 +3,8 @@
 
 _pkgname=tmdbsimple
 pkgname=python-$_pkgname
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.2.9
+pkgrel=1
 pkgdesc="A wrapper for The Movie Database API v3. "
 arch=('any')
 url="https://github.com/celiao/tmdbsimple"
@@ -19,6 +19,6 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('29184eaef39788887e4bf7751863da250cbac4655abf132b9d026c398b0d7e08')
+sha256sums=('aaca46cd08324a24750d01efbe11a87ac3fab008b2bc3c21a1f6530339b4e859')
 
 # vim:set ts=2 sw=2 et:
