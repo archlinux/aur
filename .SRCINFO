@@ -1,8 +1,8 @@
 pkgbase = python-wstool
-	pkgdesc = workspace multi-SCM commands
-	pkgver = 0.1.17
-	pkgrel = 2
-	url = http://wiki.ros.org/wstool
+	pkgdesc = Command-line tool for maintaining a workspace of projects from multiple version-control systems
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/vcstools/wstool
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -10,8 +10,8 @@ pkgbase = python-wstool
 	depends = python-vcstools
 	depends = python-yaml
 	conflicts = python2-wstool
-	source = https://files.pythonhosted.org/packages/source/w/wstool/wstool-0.1.17.tar.gz
-	sha256sums = c79b4f110ef17004c24972d742d2c5f606b0f6b424295e7ed029a48e857de237
+	source = https://github.com/vcstools/wstool/archive/0.1.18.tar.gz
+	sha256sums = f04621acda755a45896db2d3a84131f96cf69905515997637b4568f3fad5c46e
 
 pkgname = python-wstool
 
