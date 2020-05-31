@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('python' 'mariadb-connector-c')
 makedepends=('python-setuptools')
 source=("https://downloads.mariadb.org/interstitial/connector-python-${pkgver}/mariadb-connector-python-${pkgver}.tar.gz")
-sha512sums=('d3812d30177f9a88f5c9e0ca12cd930b54ebc43d0d45b9f2b1f4d268be660500b722293a0fb429828498f2085c8fd3bc30db89c3c9546d08630748f03744cabb')
+sha512sums=('553a42584ecaa57e2e1e7e402c22a46e3d6bb1ebf96fe9e1afd213b51fdf293f41aa2c63349e3c77d03401a2e028804de19024e25a26d1b3f4bd02c24bf68b1f')
 
 build() {
 	cd "${srcdir}/mariadb-${pkgver}"
