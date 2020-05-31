@@ -1,8 +1,8 @@
 pkgbase = python2-catkin_tools
-	pkgdesc = Command line tools for working with catkin.
+	pkgdesc = Command line tools for working with catkin
 	pkgver = 0.4.5
-	pkgrel = 2
-	url = http://catkin-tools.readthedocs.org/
+	pkgrel = 3
+	url = https://github.com/catkin/catkin_tools
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
@@ -14,8 +14,8 @@ pkgbase = python2-catkin_tools
 	provides = python2-catkin-tools
 	conflicts = python-catkin_tools
 	conflicts = python2-catkin-tools
-	source = https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-0.4.5.tar.gz
-	sha256sums = 50ebfd047a74e657cb1f3e150976355e23afbda519c4cecf63d7f548477730c3
+	source = https://github.com/catkin/catkin_tools/archive/0.4.5.tar.gz
+	sha256sums = 6a9a2512183824a8250979c7772dc9487e3d2830a956fbd52fd2d8d71fba6d58
 
 pkgname = python2-catkin_tools
 
