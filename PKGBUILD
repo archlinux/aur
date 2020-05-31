@@ -21,7 +21,8 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd st
-	printf "0.8.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	_pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+ 	echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
