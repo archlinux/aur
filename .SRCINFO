@@ -1,8 +1,8 @@
 pkgbase = python2-catkin_pkg
-	pkgdesc = catkin package library
+	pkgdesc = Standalone Python library for the catkin package system
 	pkgver = 0.4.20
-	pkgrel = 1
-	url = http://wiki.ros.org/catkin_pkg
+	pkgrel = 2
+	url = https://github.com/ros-infrastructure/catkin_pkg
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
@@ -14,8 +14,8 @@ pkgbase = python2-catkin_pkg
 	provides = python2-catkin-pkg
 	conflicts = python-catkin_pkg
 	conflicts = python2-catkin-pkg
-	source = https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-0.4.20.tar.gz
-	sha256sums = c8ea11c2785d8b9fe4553ef3df2da5a5e1d2721c50a735d4379b837d0679b01a
+	source = https://github.com/ros-infrastructure/catkin_pkg/archive/0.4.20.tar.gz
+	sha256sums = 4f3dd4dd08360205da899610a4296d017bdef48a4c3e6e15923e6c04a2d35bee
 
 pkgname = python2-catkin_pkg
 
