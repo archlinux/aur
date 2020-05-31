@@ -8,28 +8,28 @@
 
 pkgname=ocaml-menhir-compcert
 _basepkgname=${pkgname%-*}
-pkgver=20190924
+pkgver=20200211
 pkgrel=1
 pkgdesc="Latest version of Menhir that can build the latest CompCert release."
 arch=("i686" "x86_64")
 url="http://cristal.inria.fr/~fpottier/menhir/"
 license=('GPL' 'QPL')
 depends=('ocaml>=4.02')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'dune')
 provides=($_basepkgname=$pkgver)
 conflicts=($_basepkgname)
 options=(!strip !makeflags)
 source=("https://gitlab.inria.fr/fpottier/menhir/-/archive/$pkgver/menhir-$pkgver.tar.gz")
-md5sums=('69b2cbcfb12ca0ca09ad0096c8716265')
+sha256sums=('00f677401a92d91568a4faffb4977ab71a32a265de59e35419ad5b705d4a532d')
 
 build() {
   cd "$srcdir/${_basepkgname/ocaml-/}-$pkgver"
-  make PREFIX="/usr" all
+
+  dune build
 }
 
 package() {
   cd "$srcdir/${_basepkgname/ocaml-/}-$pkgver"
-  export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  install -dm 755 "$OCAMLFIND_DESTDIR"
-  make PREFIX="$pkgdir/usr" install
+  dune install --prefix "${pkgdir}/usr" \
+       --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
