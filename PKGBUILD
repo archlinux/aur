@@ -3,10 +3,10 @@
 
 pkgname=manifest-tool-bin
 pkgver=v1.0.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Container image manifest tool for manifest list object creation/query'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/estesp/manifest-tool'
 license=('Apache2')
 depends=()
