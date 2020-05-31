@@ -1,7 +1,7 @@
 pkgbase = tuxpaint
 	pkgdesc = Drawing program designed for young children
 	pkgver = 0.9.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tuxpaint.org/
 	arch = x86_64
 	license = GPL

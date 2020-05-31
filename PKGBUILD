@@ -5,7 +5,7 @@
 
 pkgname=tuxpaint
 pkgver=0.9.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='http://tuxpaint.org/' # no https available
@@ -55,6 +55,10 @@ package() {
   # bash completions
   mv "$pkgdir/usr/share/bash-completion/completions/tuxpaint-completion.bash" \
     "$pkgdir/usr/share/bash-completion/completions/tuxpaint"
+
+  # docs
+  mv "$pkgdir/usr/share/doc/$pkgname-$pkgver" \
+    "$pkgdir/usr/share/doc/$pkgname"
 
   # desktop shortcut
   install -Dm644 "$pkgname-$pkgver/src/$pkgname.desktop" \
