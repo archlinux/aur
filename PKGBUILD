@@ -2,10 +2,10 @@
 
 pkgname=socket-activate
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='activate arbitrary services via systemd socket activation'
 arch=(x86_64)
-url='https://github.com/cherti/typemute'
+url='https://github.com/cherti/socket-activate'
 license=('GPLv3')
 makedepends=('go')
 source=('https://github.com/cherti/socket-activate/archive/v0.1.tar.gz')

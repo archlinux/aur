@@ -1,8 +1,8 @@
 pkgbase = socket-activate
 	pkgdesc = activate arbitrary services via systemd socket activation
 	pkgver = 0.1
-	pkgrel = 1
-	url = https://github.com/cherti/typemute
+	pkgrel = 2
+	url = https://github.com/cherti/socket-activate
 	arch = x86_64
 	license = GPLv3
 	makedepends = go
