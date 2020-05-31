@@ -3,7 +3,7 @@
 
 pkgname=libpasastro
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 _pkgver="v$pkgver"
 pkgdesc="Provide Pascal interface for standard astronomy libraries"
 arch=('x86_64')
@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  ./install.sh "$pkgdir/usr"
+  make install PREFIX="$pkgdir/usr"
 }
 
