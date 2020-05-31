@@ -1,19 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python2-wstool'
 pkgname=('python2-wstool')
-_module='wstool'
-pkgver='0.1.17'
-pkgrel=2
-pkgdesc="workspace multi-SCM commands"
-url="http://wiki.ros.org/wstool"
-depends=('python2' 'python2-vcstools' 'python2-yaml')
-conflicts=('python-wstool')
-makedepends=('python2-setuptools')
-license=('BSD')
+pkgver='0.1.18'
+pkgrel=1
+pkgdesc='Command-line tool for maintaining a workspace of projects from multiple version-control systems'
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('c79b4f110ef17004c24972d742d2c5f606b0f6b424295e7ed029a48e857de237')
+url='https://github.com/vcstools/wstool'
+license=('BSD')
+depends=('python2' 'python2-vcstools' 'python2-yaml')
+makedepends=('python2-setuptools')
+
+conflicts=('python-wstool')
+source=("https://github.com/vcstools/wstool/archive/${pkgver}.tar.gz")
+sha256sums=('f04621acda755a45896db2d3a84131f96cf69905515997637b4568f3fad5c46e')
+
+_module='wstool'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
