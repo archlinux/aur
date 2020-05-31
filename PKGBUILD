@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
 pkgver=r7411.a31f3c0c7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
@@ -40,8 +40,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   npm install
-  # Make fails with more than one thread
-  make -j1
+  make
+  # Hack https://github.com/jitsi/jitsi-meet/pull/6925
+  for c in $(ls node_modules/i18n-iso-countries/langs); do
+    cp node_modules/i18n-iso-countries/langs/${c} lang/countries-${c}
+  done
   make source-package
   tar xvfj jitsi-meet.tar.bz2
 }
