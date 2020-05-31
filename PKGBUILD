@@ -1,19 +1,19 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=iredis-bin
-pkgver=1.6.2
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
 arch=('x86_64')
 url='https://iredis.io'
-license=('custom')
+license=("custom:${pkgname}")
 provides=('iredis')
 depends=('bash' 'python')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/laixintao/iredis/releases/download/v${pkgver}/iredis.tar.gz"
         'LICENSE::https://raw.githubusercontent.com/laixintao/iredis/master/LICENSE')
-sha256sums=('c8cd859ddae622bc24668ca7e1f52c75f978e92f0408210c6eee3078bf8a39f8'
-         '489222c8a4a5b237aa3c72b7f3a13cad3281b1c261d3242522ee4de6c4c7c1be')
+sha256sums=('33e822ec350926dc498664c3b91449e75cd5d0b2dc11c016d421502fbdae639c'
+         'fb40cd56a42a6a3854ac72e2217889bd29c61d9488c96c41115c2419707c3d83')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/iredis
