@@ -1,7 +1,7 @@
 pkgbase = notepanda
 	pkgdesc = A simple cross-platform notepad. Based on Qt and C++.
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ChungZH/notepanda
 	arch = x86_64
 	license = MIT
