@@ -1,13 +1,14 @@
 pkgbase = xrel-terminal-client
 	pkgdesc = A terminal client to access the xREL.to API, written in Go.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/hashworks/xREL-Terminal-Client
 	changelog = CHANGELOG
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/hashworks/xREL-Terminal-Client/releases/download/v2.1.1/xREL-linux-amd64.tar.gz
-	md5sums = 41f0c55b1065f674679b9bd8205abb6c
+	makedepends = go
+	source = https://github.com/hashworks/xREL-Terminal-Client/archive/v2.1.2.tar.gz
+	sha256sums = 957a4891937123f8b88d8155d2c55ce8e8a7428df11afa72b91c67159d8f2f42
 
 pkgname = xrel-terminal-client
 

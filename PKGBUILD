@@ -1,15 +1,38 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=xrel-terminal-client
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A terminal client to access the xREL.to API, written in Go."
-arch=(x86_64)
-url=https://github.com/hashworks/xREL-Terminal-Client
-license=(GPL3)
+arch=("x86_64")
+url="https://github.com/hashworks/xREL-Terminal-Client"
+license=("GPL3")
 changelog=CHANGELOG
-source=("https://github.com/hashworks/xREL-Terminal-Client/releases/download/v${pkgver}/xREL-linux-amd64.tar.gz")
-md5sums=(41f0c55b1065f674679b9bd8205abb6c)
+makedepends=('go')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=("5fc87553a139ea25fc2c616045d0c99ce884bc62eaed53091a30bbcef3a3661f")
+
+prepare(){
+	cd "xREL-Terminal-Client-${pkgver}"
+	mkdir -p build/
+}
+
+build() {
+	cd "xREL-Terminal-Client-${pkgver}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -ldflags '-X main.VERSION='"${pkgver}"' -X main.BUILD_DATE='"$(date +"%Y-%m-%d_%H:%M:%S")" -o build/xrel ./src
+}
+
+check() {
+	cd "xREL-Terminal-Client-${pkgver}"
+	go test ./src
+}
 
 package() {
-  install -D xREL "${pkgdir}/usr/bin/xREL"
+	cd "xREL-Terminal-Client-${pkgver}"
+	install -Dm755 build/xrel "${pkgdir}/usr/bin/xrel"
 }
+
