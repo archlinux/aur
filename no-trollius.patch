@@ -123,14 +123,6 @@ diff -ur catkin_tools-0.4.5.orig/catkin_tools/verbs/catkin_build/build.py catkin
  
  try:
      # Python3
-diff -ur catkin_tools-0.4.5.orig/catkin_tools.egg-info/requires.txt catkin_tools-0.4.5/catkin_tools.egg-info/requires.txt
---- catkin_tools-0.4.5.orig/catkin_tools.egg-info/requires.txt	2019-04-03 13:42:28.000000000 -0700
-+++ catkin_tools-0.4.5/catkin_tools.egg-info/requires.txt	2019-04-07 18:24:22.326761874 -0700
-@@ -2,4 +2,3 @@
- setuptools
- PyYAML
- osrf-pycommon>0.1.1
--trollius
 diff -ur catkin_tools-0.4.5.orig/setup.py catkin_tools-0.4.5/setup.py
 --- catkin_tools-0.4.5.orig/setup.py	2019-04-03 13:37:46.000000000 -0700
 +++ catkin_tools-0.4.5/setup.py	2019-04-07 18:20:52.899986813 -0700
