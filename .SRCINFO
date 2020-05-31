@@ -1,6 +1,6 @@
 pkgbase = amf-headers-git
 	pkgdesc = Header files for AMD Advanced Media Framework (git version)
-	pkgver = 1.4.14.r6.g95220c0
+	pkgver = 1.4.16.1.r5.g802f92e
 	pkgrel = 1
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/AMF/
 	arch = any
