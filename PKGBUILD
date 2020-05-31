@@ -1,19 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python-vcstool'
 pkgname=('python-vcstool')
-_module='vcstool'
 pkgver='0.2.9'
-pkgrel=1
-pkgdesc="vcstool provides a command line tool to invoke vcs commands on multiple repositories."
-url="https://github.com/dirk-thomas/vcstool"
-depends=('python' 'python-yaml')
-conflicts=('python2-vcstool')
-makedepends=('python-setuptools')
-license=('Apache')
+pkgrel=2
+pkgdesc='A version control system tool designed to make working with multiple repositories easier'
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('4add62ef4908fadbff192219f88e0f159c637d3650097022d7e6480d449060d1')
+url='https://github.com/dirk-thomas/vcstool'
+license=('Apache')
+depends=('python' 'python-yaml')
+makedepends=('python-setuptools')
+
+conflicts=('python2-vcstool')
+source=("https://github.com/dirk-thomas/vcstool/archive/${pkgver}.tar.gz")
+sha256sums=('96f2d5d3953b012b434a803c1a9b849511aaf7eaa227994225ded209c4b23927')
+
+_module='vcstool'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
