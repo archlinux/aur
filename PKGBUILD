@@ -5,7 +5,7 @@
 
 # Maintainer: Alan D'souza <hello@xilog.xyz>
 pkgname=go-clock
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="go-clock command line utility to make a large clock using Unicode characters"
