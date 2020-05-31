@@ -1,5 +1,5 @@
-# Maintainer: mars <gzhqyz@gmail.com>
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: mars <gzhqyz at gmail dot com>
+# Contributor: Sven-Hendrik Haase <svenstaro at gmail dot com>
 
 pkgname=python-pynvim-git
 pkgver=0.4.1
