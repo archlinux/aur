@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/bin/rezound %U
+MimeType=audio/x-rez;audio/wav;audio/x-vorbis;application/x-ogg;audio/basic;audio/x-aiff;audio/x-mp3;audio/x-mp2;audio/x-wav
+Name=ReZound
+Terminal=false
+Type=Application
+Icon=/usr/share/rezound/icon_logo_32.gif
