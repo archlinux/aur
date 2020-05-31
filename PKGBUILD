@@ -13,6 +13,7 @@ sha1sums=('SKIP'
           'SKIP')
 makedepends=(git)
 depends=(vulkan-icd-loader qt5-base)
+optdepends=(qt5-x11extras qt5-wayland)
 
 prepare() {
   cd VulkanCapsViewer
