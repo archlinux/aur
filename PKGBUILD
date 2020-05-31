@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gnutls-git
-pkgver=3.6.4.r103.gc7de377eb
+pkgver=3.6.13.r104.g52e78f1e3
 pkgrel=1
 pkgdesc="A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them"
 arch=('i686' 'x86_64')
@@ -24,8 +24,9 @@ pkgver() {
 build() {
   cd "gnutls"
 
-  make autoreconf
-  ./configure --prefix="/usr" \
+  ./bootstrap
+  ./configure \
+    --prefix="/usr" \
     --with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit" \
     --disable-full-test-suite \
     --disable-guile
