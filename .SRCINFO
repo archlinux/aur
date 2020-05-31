@@ -1,13 +1,14 @@
 pkgbase = srrdb-terminal-client
 	pkgdesc = A terminal client to access srrdb.com, written in Go.
-	pkgver = 1.1.4
-	pkgrel = 1
+	pkgver = 1.1.5
+	pkgrel = 2
 	url = https://github.com/hashworks/srrdb-Terminal-Client
 	changelog = CHANGELOG
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/hashworks/srrdb-Terminal-Client/releases/download/v1.1.4/srrdb-linux-amd64.tar.gz
-	md5sums = db1ab55948a69264895791bfccf4d6a7
+	makedepends = go
+	source = https://github.com/hashworks/srrdb-Terminal-Client/archive/v1.1.5.tar.gz
+	sha256sums = e1be74da97202cf3cb6737f56f84cec42158167940b20dfc5f1302d7399c761c
 
 pkgname = srrdb-terminal-client
 
