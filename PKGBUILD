@@ -5,13 +5,12 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=83.0.4103.44
+pkgver=83.0.4103.61
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
-options=(debug !strip)
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
@@ -19,7 +18,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'libpipewire02' 'clang' 'lld' 'gn-git' 'java-runtime-headless'
+             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -29,38 +28,37 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-widevine.patch
+        v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-skia-harmony.patch)
-sha256sums=('66db5e559db6d17db4427dfcb3a54b9707e8e6a8a72941c6c15f97ba654d6b50'
+sha256sums=('4961f20c4ee6a94490e823f1b1c4128147068f1ce9cfc509e81815f2101405bc'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
+            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [ffmpeg]=ffmpeg
+  # [ffmpeg]=ffmpeg # broken with recent ffmpeg git
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  #[harfbuzz-ng]=harfbuzz
-  #[icu]=icu
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
   [libdrm]=
-  #[libjpeg]=libjpeg
+  [libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
   [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  #[re2]=re2 # Not possible with custom libcxx
+  # [re2]=re2 # Not possible with custom libcxx
   [snappy]=snappy
   [yasm]=
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
-  ${!_system_libs[@]}
-  ${libjpeg_turbo}
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
 )
 depends+=(${_system_libs[@]})
 
@@ -92,9 +90,8 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
-  # M79 is supposed to download it as a component but it doesn't seem to work
-  patch -Np1 -i ../chromium-widevine.patch
+  # https://crbug.com/v8/10393
+  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -119,6 +116,7 @@ prepare() {
     find "third_party/$_lib" -type f \
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
+      \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
       \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
@@ -155,7 +153,6 @@ build() {
     'use_glib=true'
     'use_system_libwayland=true'
     'use_vaapi=false'
-    'use_jumbo_build=false'
     'enable_nacl=false'
     'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
@@ -192,7 +189,6 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/crashpad_handler "$pkgdir/usr/lib/chromium/crashpad_handler"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
