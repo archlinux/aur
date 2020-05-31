@@ -9,7 +9,7 @@ pkgbase = hid-nintendo-dkms
 	depends = linux-headers
 	depends = bc
 	provides = hid-nintendo
-	source = git+https://github.com/nicman23/dkms-hid-nintendo#tag=1
+	source = git+https://github.com/nicman23/dkms-hid-nintendo
 	source = dkms.conf
 	md5sums = SKIP
 	md5sums = 7dee3612b857c0aeb9de37977ed64d36

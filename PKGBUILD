@@ -2,7 +2,7 @@
 _pkgbase=hid-nintendo
 pkgname=${_pkgbase}-dkms
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="hid-nintendo Driver (DKMS)"
 arch=('any')
 url="https://github.com/nicman23/dkms-hid-nintendo"
