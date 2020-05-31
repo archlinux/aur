@@ -1,7 +1,7 @@
 # Maintainer: nycex <nycex / cccp.org>
 _pkgbasename=axosnake
 pkgname=$_pkgbasename-git
-pkgrel=1
+pkgrel=2
 pkgver=r69.f4e09b3
 pkgdesc="a snake game written in rust with quicksilver"
 arch=('any')
