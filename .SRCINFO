@@ -1,0 +1,17 @@
+pkgbase = gmat-bin
+	pkgdesc = A secure and free password manager for all of your devices.
+	pkgver = 2018a
+	pkgrel = 1
+	url = http://gmatcentral.org/
+	arch = x86_64
+	groups = 
+	license = Apache
+	depends = cspice
+	conflicts = gmat
+	options = !strip
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2018a/gmat-ubuntu-x64-R2018a.tar.gz
+	sha512sums = 9b1edbf8e9a692a2a6f5410b1165ae4b0e2085dbb05f7acbef2c4145f22d54b9525657ae900acfe8e73088a42f2f3829a3b5ffe277244cfc1d7eb0a9a1085414
+
+pkgname = gmat-bin
+
