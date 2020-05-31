@@ -9,7 +9,7 @@
 
 _pack=sparsersb
 pkgname=octave-$_pack
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Interface to the librsb package implementing the RSB sparse matrix format."
 arch=(any)
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('56fd7baf282c3e16096560f0d51e3597070941b3ef7f98509df8777e1418d7a3')
+sha256sums=('1feeb29fc958d8557b5d4af606cf76de4a2c2e0644a12e5be03282ba5850d759')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
