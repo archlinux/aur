@@ -1,37 +1,54 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgname=vibrant
-pkgname=${_pkgname}
-pkgver=0.0.2
-pkgrel=2
+pkgbase=vibrant
+pkgname=(libvibrant vibrant-cli)
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://gitlab.com/Scrumplex/vibrant"
 license=("GPL3" "custom:MIT")
-depends=("libdrm" "libxrandr")
 makedepends=("git" "cmake")
-provides=($_pkgname "libvibrant.so=0-64")
-conflicts=($_pkgname)
-source=("${_pkgname}::git+https://gitlab.com/Scrumplex/vibrant.git#tag=${pkgver}")
+source=("${pkgbase}::git+https://gitlab.com/Scrumplex/vibrant.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 
 build() {
 
-    cmake -B build -S "$_pkgname" \
+    cmake -B build -S "$pkgbase" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     make -C build
 }
 
-package() {
+package_libvibrant() {
+    provides=("libvibrant.so=1-64")
+    conflicts=("vibrant")
+    depends=("libxrandr" "libxnvctrl")
 
-    make -C build DESTDIR="$pkgdir" install
+    cd "build"
 
-    cd "$_pkgname"
+    env DESTDIR="$pkgdir" cmake -DCOMPONENT=lib -P cmake_install.cmake
+
+    cd "../$pkgbase"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_vibrant-cli() {
+    conflicts=("vibrant")
+    depends=("libvibrant.so=1-64")
+
+    cd "build"
+
+    env DESTDIR="$pkgdir" cmake -DCOMPONENT=cli -P cmake_install.cmake
+
+    cd "../$pkgbase"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
