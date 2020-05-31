@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=83.0.4103.61
+pkgver=84.0.4147.30
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -17,7 +17,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'desktop-file-utils' 'hicolor-icon-theme')
 provides=('chromium')
 conflicts=('chromium')
-makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
+makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git'
              'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
@@ -28,11 +28,9 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-skia-harmony.patch)
-sha256sums=('4961f20c4ee6a94490e823f1b1c4128147068f1ce9cfc509e81815f2101405bc'
+sha256sums=('14d2b6240eb307f8907c8d9900dddfab530a84324bda0b6f5a10d7a6c809c5ff'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -54,7 +52,6 @@ declare -gA _system_libs=(
   [opus]=opus
   # [re2]=re2 # Not possible with custom libcxx
   [snappy]=snappy
-  [yasm]=
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -69,7 +66,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 756066
+# Branch point: 768962
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
@@ -89,9 +86,6 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
-
-  # https://crbug.com/v8/10393
-  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -117,7 +111,6 @@ prepare() {
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
       \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
-      \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -143,7 +136,6 @@ build() {
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'linux_use_bundled_binutils=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'use_ozone=true'
