@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Add Replay Gain tags to your whole music library'
 arch=('any')
 url='https://github.com/DarwinAwardWinner/rganalysis'
-license=('unknown')
+license=('GPL2')
 depends=('python' 'python-plac' 'python-mutagen' 'python-parse')
 optdepends=('python-tqdm: Progress bars'
 				'audiotools: Backend for computing gain'
