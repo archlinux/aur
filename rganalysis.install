@@ -1,0 +1,3 @@
+post_install() {
+	echo "At least one backend must be installed in order to compute replay gain tags."
+}
