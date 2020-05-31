@@ -1,6 +1,6 @@
 pkgbase = zls-master-data-git
 	pkgdesc = Zig LSP implementation + Zig Language Server (with the master dataset)
-	pkgver = r199.cffe4af
+	pkgver = r292.585ae07
 	pkgrel = 1
 	url = https://github.com/zigtools/zls
 	arch = any
