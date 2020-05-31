@@ -3,7 +3,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r14488.f24c67877
+pkgver=r14738.058ec2278
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -11,17 +11,8 @@ url="https://github.com/yuzu-emu/yuzu/"
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-mainline-git' 'yuzu-canary-git')
-depends=('shared-mime-info'
-         'desktop-file-utils'
-         'sdl2'
-         'qt5-base'
-         'qt5-multimedia'
-         'qt5-tools'
-         'libxkbcommon-x11'
-         'libfdk-aac')
-makedepends=('git'
-             'cmake'
-             'python2')
+depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11' 'libfdk-aac')
+makedepends=('git' 'cmake' 'python2' 'catch2' 'nlohmann-json' 'fmt' 'boost')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu")
 md5sums=('SKIP')
@@ -47,21 +38,7 @@ build() {
 	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu
 	export TRAVIS_TAG=$(git describe --tags)
 	
-	# Hopefully temporary fix for a compilation error involving fmt
-	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
-	
-	# Flag to disable pre-compiled headers so boost can build properly
-	CXXFLAGS+=" -DENABLE_PRECOMPILED_HEADERS=OFF"
-
-	# Flag to fix SDL exceptions occurring in some users' builds
-	CXXFLAGS+=" -I/usr/include/SDL2 -D_REENTRANT -pthread -lSDL2"
-	
-	# Temporary workaround for the issue 3754:
-	# https://github.com/yuzu-emu/yuzu/issues/3754
-	sed -i 's:-Werror=conversion::' src/video_core/CMakeLists.txt
-	
-	mkdir -p build
-	cd build
+	mkdir -p build && cd build
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
@@ -79,6 +56,5 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname/build"
-	
 	make DESTDIR="$pkgdir/" install
 }
