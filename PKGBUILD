@@ -12,7 +12,7 @@ depends=('zlib' 'gcc-libs')
 license=("custom")
 conflicts=("geekbench227")
 source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
-md5sums=('2ed522222271269c1c4699cdfd78b054')
+sha512sums=('0f0a8206ced8cbaf271d964ece273a800bdd1d5b5918130aca2e31cab59f7d716c1b714b96a934e5b0fab8a9b73d1fcdc7ea9cd7ef37963b1a923cdefb542a78')
 options=('!strip')
 
 package() {
