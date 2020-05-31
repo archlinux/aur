@@ -1,0 +1,16 @@
+pkgbase = python2-werkzeug
+	pkgdesc = Swiss Army knife of Python web development
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://werkzeug.pocoo.org/
+	arch = any
+	license = custom:BSD
+	checkdepends = python2-pytest-timeout
+	checkdepends = python2-requests
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-werkzeug-1.0.1.tar.gz::https://github.com/pallets/werkzeug/archive/1.0.1.tar.gz
+	sha512sums = ba82120fb3e96e3a1334c6452d5ba1950fc016d2d147d643bbc2168ccec496f1dea799982ae8c578167155082c0bdbda5d56a23f64b4b6865f97e90e22df022e
+
+pkgname = python2-werkzeug
+
