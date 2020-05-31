@@ -1,4 +1,4 @@
-pkgbase=('python-bumpversion')
+pkgbase='python-bumpversion'
 pkgname=('python-bumpversion')
 _module='bumpversion'
 pkgver='0.5.3'
