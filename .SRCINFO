@@ -14,7 +14,7 @@ pkgbase = browser360
 	depends = libxtst
 	depends = libglvnd
 	source = https://down.360safe.com/gc/browser360-cn-stable_12.2.1070.0-1_amd64.deb
-	sha512sums = 2da0e8e4475d9a27880ec9a5816112825243e31b3fb9010ad34d61790062cb4138bd1753d8699173d9ee3c8142a9704da86d6d46c87f0dbabc4c4ca7e04fc712
+	sha256sums = 77bcf2895f5c780156af449147371901f5b12348cdbcd23bb848db3412370cb7
 
 pkgname = browser360
 
