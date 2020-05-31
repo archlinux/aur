@@ -15,11 +15,6 @@ source=("git+https://github.com/TheCynicalTeam/${_pkgname}.git")
 md5sums=("SKIP")
 install=${_pkgname}.install
 
-pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
 	_srcdir="$srcdir/$_pkgname"
 	mkdir -p "$pkgdir/usr/bin"
