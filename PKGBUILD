@@ -13,6 +13,8 @@ sha256sums=('SKIP')
 
 build() {
   cd $startdir/src/$pkgname
+  ./autogen.sh
+  ./configure
   make || return 1
 }
 
