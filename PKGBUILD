@@ -35,6 +35,12 @@ prepare(){
 }
 
 build(){
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go get -u ./...
     go build -o build/$pkgname .
 }
 
@@ -43,7 +49,8 @@ check() {
 }
 
 package() {
-    sudo install -Dm755 build/$pkgname /usr/bin/$pkgname
+    echo ""$pkgdir"/usr/bin/$pkgname"
+    install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
 
 md5sums=('97f6383ffcd74aed66b231bb65f69b59')
