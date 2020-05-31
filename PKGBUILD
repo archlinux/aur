@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=byte
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A Music Player designed for elementary OS"
 arch=("x86_64")
@@ -15,7 +15,7 @@ depends=("elementary-icon-theme"
 makedepends=("meson"
              "vala")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alainm23/byte/archive/${pkgver}.tar.gz")
-sha256sums=('c5b06be1d53ebcc42e8a996a6ea96f021a90b58fc128d6f5a9992fa57b8c9618')
+sha256sums=('ea70db7a30f4a6bd4f252016f7cb8359d5b0c250a315ee5cce53e79bc0be055c')
 
 build() {
   cd ${pkgname}-${pkgver}
