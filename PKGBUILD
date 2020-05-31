@@ -1,20 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python2-catkin_lint'
 pkgname=('python2-catkin_lint')
-_module='catkin_lint'
 pkgver='1.6.8'
-pkgrel=2
-pkgdesc="Check catkin packages for common errors"
-url="https://github.com/fkie/catkin_lint"
+pkgrel=3
+pkgdesc='Check catkin packages for common errors'
+arch=('any')
+url='https://github.com/fkie/catkin_lint'
+license=('BSD')
 depends=('python2' 'python2-catkin_pkg' 'python2-lxml')
+makedepends=('python2-setuptools')
 provides=('python2-catkin-lint')
 conflicts=('python-catkin_lint' 'python2-catkin-lint')
-makedepends=('python2-setuptools')
-license=('BSD')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('32fffc8ff52cc49f241080381702ffc229c47a9e03606efbf43853f0d16c630f')
+source=("https://github.com/fkie/catkin_lint/archive/${pkgver}.tar.gz")
+sha256sums=('869344712a323a719df8fa16fb278984533568e39bffda48d273fddf7b9114f8')
+
+_module='catkin_lint'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
