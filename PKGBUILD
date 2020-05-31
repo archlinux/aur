@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
 license=(GPL3)
 depends=(boost-libs python3 expat python3-scipy python-numpy cgal cairomm python-cairo)
-makedepends=(boost sparsehash cairomm python-cairo autoconf-archive)
+makedepends=(boost sparsehash autoconf-archive)
 optdepends=('graphviz: graph layout'
 'python-matplotlib: graph drawing')
 provides=(python3-graph-tool)
