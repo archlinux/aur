@@ -10,6 +10,11 @@ post_install() {
   echo
   echo "uca-apply remove"
   echo
+  echo "It might need to be necessary to restart Thunar for the new custom "
+  echo "actions to show up:"
+  echo
+  echo "thunar -q"
+  echo
 }
 
 post_upgrade() {
