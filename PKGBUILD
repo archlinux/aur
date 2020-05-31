@@ -2,7 +2,7 @@ pkgname=jitsi-meet
 # https://github.com/jitsi/jitsi-meet/releases/latest
 pkgver=1.0.4127
 _tag="jitsi-meet_4627"
-pkgrel=1
+pkgrel=2
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
 url="https://github.com/jitsi/jitsi-meet"
@@ -26,13 +26,19 @@ build() {
     npm install
     # fix as many vulns as possible, but seems to break the package as well
     #npm audit fix
-    # Make fails with more than one thread
-    make -j1
+    make
+    # Hack https://github.com/jitsi/jitsi-meet/pull/6925
+    for c in $(ls node_modules/i18n-iso-countries/langs); do
+      cp node_modules/i18n-iso-countries/langs/${c} lang/countries-${c}
+    done
+    # Build the final source
+    make source-package
+    tar xvfj $pkgname.tar.bz2
 }
 
 package() {
     install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/${pkgname}-stable-${_tag}/" "${pkgdir}/opt/jitsi-meet"
+    cp -R "${srcdir}/${pkgname}-stable-${_tag}/${pkgname}" "${pkgdir}/opt/jitsi-meet"
 
     # get rid of all local references
     find "${pkgdir}" -type f -execdir sed -i "s#$srcdir##g" "{}" \;
