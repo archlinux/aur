@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=twa
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Tiny web auditor with strong opinions'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'bind-tools' 'curl' 'jq' 'netcat')
 checkdepends=('shellcheck' 'testssl.sh')
 optdepends=('testssl.sh')
 source=("$url/archive/v$pkgver/twa-v$pkgver.tar.gz")
-sha512sums=('82204e0b3d0524b612b3405e91bc42a44f4b93770f852191094c506b0c0284b4eac28e500844ec3607ab28a19b221262652ba6e37d5f68447a32af490aee4e7c')
+sha512sums=('96a6d6288a0c1cd5caa9c4bb83ac167abde4d1963cbb0e4a426d558d2b20f95e6c3d944dac719baa048d96c0817a056844910e14a99a00eb70c04528eb77d811')
 
 check() {
   cd twa-$pkgver
