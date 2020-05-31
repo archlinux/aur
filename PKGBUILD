@@ -2,7 +2,7 @@
 
 pkgname=adapta-gtk-theme-colorpack-joshaby-git
 _gitname=Adapta-Colorpack
-pkgver=1.202005181340.r1.g367e7a9
+pkgver=1.202005271440.r0.g6b95eea
 pkgrel=1
 pkgdesc="A beautiful GTK+ theme based in material design (git version from Joshaby)."
 arch=('any')
