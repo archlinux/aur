@@ -1,32 +1,35 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-#
-# Based on the linux-mainline package by:
-# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
-_srcname=${pkgbase}
+
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.7.904365.5ca28f3f536f0
+pkgver=5.7.904759.61216b3787162
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
 makedepends=(
   bc kmod libelf
-  xmlto python-sphinx-2 python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
-source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+_srcname=${pkgbase}
+source=(
+  "${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
+  sphinx-workaround.patch
+  gcc10-early-boot-fix.patch
+  wno-maybe-initialized.patch
 )
 sha256sums=('SKIP'
-            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c')
+            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            '8c8fb0be88fcd767e8768ee1bde491e8b4de83f6a644e002019d1d5a0da920f9'
+            'b4e60ef20c47093ec47867439d057d936c6ba8384cc47a0d0737830c48bea63a')
 
 pkgver() {
   cd "${_srcname}"
