@@ -1,8 +1,8 @@
 pkgbase = python2-rosinstall_generator
 	pkgdesc = A tool for generating rosinstall files
 	pkgver = 0.1.19
-	pkgrel = 1
-	url = http://wiki.ros.org/rosinstall_generator
+	pkgrel = 2
+	url = https://github.com/ros-infrastructure/rosinstall_generator
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
@@ -15,8 +15,8 @@ pkgbase = python2-rosinstall_generator
 	provides = python2-rosinstall-generator
 	conflicts = python-rosinstall_generator
 	conflicts = python2-rosinstall-generator
-	source = https://files.pythonhosted.org/packages/source/r/rosinstall_generator/rosinstall_generator-0.1.19.tar.gz
-	sha256sums = dcf4c6b179491fb51c40aca9a9217727f0848804cb4d4f00a8022a2e082493b7
+	source = https://github.com/ros-infrastructure/rosinstall_generator/archive/0.1.19.tar.gz
+	sha256sums = 97f23bd869feea8a2f92749e275f5776829484bd5040fd8ca3b148cc0e9551e0
 
 pkgname = python2-rosinstall_generator
 
