@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
-pkgver=r7241.93ef8495c
+pkgver=r7411.a31f3c0c7
 pkgrel=1
 epoch=
 pkgdesc="WebRTC JavaScript video conferences"
@@ -42,9 +42,11 @@ build() {
   npm install
   # Make fails with more than one thread
   make -j1
+  make source-package
+  tar xvfj jitsi-meet.tar.bz2
 }
 
 package() {
   install -d "${pkgdir}/opt"
-  cp -R "${srcdir}/jitsi-meet-git/" "${pkgdir}/opt/jitsi-meet"
+  cp -R "${srcdir}/jitsi-meet-git/jitsi-meet/" "${pkgdir}/opt/jitsi-meet"
 }
