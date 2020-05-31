@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=4.3.r96873.g3733a6bc20
+pkgver=4.3.r98015.ga886785018
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -58,31 +58,37 @@ depends=(
     'opus'
     'sdl2'
     'speex'
+    'srt'
     'v4l-utils'
+    'vmaf'
     'xz'
     'zlib'
 )
-makedepends=('git' 'ffnvcodec-headers' 'ladspa' 'nasm')
-optdepends=('intel-media-sdk: for Intel Quick Sync Video'
-            'ladspa: for LADSPA filters')
+makedepends=('git' 'avisynthplus' 'ffnvcodec-headers' 'ladspa' 'nasm')
+optdepends=('avisynthplus: for reading AviSynth scripts as input'
+            'intel-media-sdk: for Intel Quick Sync Video'
+            'ladspa: for LADSPA filters'
+            'nvidia-utils: Nvidia NVDEC/NVENC support')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
 conflicts=('ffmpeg')
-source=('git+https://git.ffmpeg.org/ffmpeg.git')
-sha256sums=('SKIP')
+source=('git+https://git.ffmpeg.org/ffmpeg.git'
+        '010-ffmpeg-fix-vmaf-model-path.patch')
+sha256sums=('SKIP'
+            'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02')
+
+prepare() {
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+}
 
 pkgver() {
-    cd ffmpeg
-    
     local _version
     local _revision
     local _shorthash
-    
-    _version="$(  git describe  --tags --long      | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
-    _shorthash="$(git rev-parse --short HEAD)"
-    
+    _version="$(git -C ffmpeg describe  --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
+    _revision="$(git -C ffmpeg describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
+    _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
@@ -96,6 +102,7 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
+        --enable-avisynth \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -121,10 +128,12 @@ build() {
         --enable-libpulse \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
+        --enable-libvmaf \
         --enable-libvorbis \
         --enable-libvpx \
         --enable-libwebp \
@@ -138,7 +147,6 @@ build() {
         --enable-omx \
         --enable-shared \
         --enable-version3
-        
     make
     make tools/qt-faststart
 }
