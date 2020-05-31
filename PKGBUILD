@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 pkgname=bootiso
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="A bash script to securely create a bootable USB device from one ISO file."
 arch=('any')
 url="https://github.com/jsamr/bootiso"
@@ -10,7 +10,7 @@ depends=('wimlib' 'syslinux' 'glibc' 'ncurses' 'util-linux' 'bash' 'coreutils'
 		 'binutils' 'findutils' 'jq' 'sed' 'grep' 'file' 'gawk' 'rsync' 'curl' 'tar' 'bc'
 		 'e2fsprogs' 'dosfstools' 'ntfs-3g')
 source=("https://github.com/jsamr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0a81f18ce356ec823f64b9235b4c1c1d5067a6f7f25175e74a7279078ecf81b1')
+sha256sums=('7591f4b9b68ac691476256d3f2a081754f384dbad8c036a178bd1b19c4051618')
 
 package() {
 	cd "$pkgname-$pkgver"
