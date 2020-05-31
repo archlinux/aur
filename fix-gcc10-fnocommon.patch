@@ -1,0 +1,40 @@
+diff -Naur z88dk.old/src/appmake/m5.c z88dk/src/appmake/m5.c
+--- z88dk.old/src/appmake/m5.c	2018-09-17 05:00:12.000000000 +0200
++++ z88dk/src/appmake/m5.c	2020-05-31 14:52:29.889764807 +0200
+@@ -15,7 +15,6 @@
+ static char              help         = 0;
+ static char              audio        = 0;
+ static char              fast         = 0;
+-unsigned long            checksum;
+ 
+ 
+ /* Options that are available for this module */
+@@ -83,6 +82,7 @@
+     int c;
+     int i;
+     int len, blocklen;
++    unsigned long checksum;
+ 
+     if (help)
+         return -1;
+diff -Naur z88dk.old/src/appmake/sc3000.c z88dk/src/appmake/sc3000.c
+--- z88dk.old/src/appmake/sc3000.c	2019-06-12 05:00:08.000000000 +0200
++++ z88dk/src/appmake/sc3000.c	2020-05-31 14:51:58.861726767 +0200
+@@ -21,8 +21,6 @@
+ static char              survivors    = 0;
+ static char              sf7000       = 0;
+ 
+-unsigned long            checksum;
+-
+ 
+ /* Options that are available for this module */
+ option_t sc3000_options[] = {
+@@ -112,6 +110,8 @@
+     FILE *fpin, *fpout;
+     long pos=0, blocklen;
+     int c, i, len;
++    unsigned long checksum;
++
+ 
+     if (help)
+         return -1;
