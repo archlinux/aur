@@ -8,7 +8,6 @@ pkgbase = vulkan-caps-viewer
 	makedepends = git
 	depends = vulkan-icd-loader
 	depends = qt5-base
-	depends = qt5-x11extras
 	source = https://github.com/SaschaWillems/VulkanCapsViewer#tag=2.04
 	source = https://github.com/KhronosGroup/Vulkan-Headers
 	sha1sums = SKIP

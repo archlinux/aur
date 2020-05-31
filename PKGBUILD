@@ -12,7 +12,7 @@ source=("git+https://github.com/SaschaWillems/VulkanCapsViewer#tag=$pkgver"
 sha1sums=('SKIP'
           'SKIP')
 makedepends=(git)
-depends=(vulkan-icd-loader qt5-base qt5-x11extras)
+depends=(vulkan-icd-loader qt5-base)
 
 prepare() {
   cd VulkanCapsViewer
