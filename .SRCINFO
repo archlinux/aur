@@ -1,14 +1,14 @@
 pkgbase = takt
 	pkgdesc = A text-based music programming language designed by Satoshi Nishimura
 	pkgver = 0.310
-	pkgrel = 1
+	pkgrel = 2
 	url = http://takt.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	depends = readline
 	depends = alsa-lib
-	source = https://excellmedia.dl.sourceforge.net/project/takt/takt-0.310-src.tar.gz
+	source = https://downloads.sourceforge.net/project/takt/takt-0.310-src.tar.gz
 	md5sums = a128a4d295e91cfcde1f1a8a17d0ed26
 
 pkgname = takt
