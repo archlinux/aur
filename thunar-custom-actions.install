@@ -1,0 +1,17 @@
+post_install() {
+  echo
+  echo "Users wanting to add these thunar custom actions to their personal "
+  echo "Thunar configuration need to run:"
+  echo
+  echo "uca-apply update"
+  echo
+  echo "To remove the actions from their personal Thunar configuration, "
+  echo "users can run:"
+  echo
+  echo "uca-apply remove"
+  echo
+}
+
+post_upgrade() {
+  post_install
+}

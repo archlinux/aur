@@ -1,0 +1,32 @@
+pkgbase = thunar-custom-actions
+	pkgdesc = Additional useful custom actions for the Thunar file manager
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/thunar-custom-actions
+	install = thunar-custom-actions.install
+	arch = any
+	license = GPL
+	makedepends = gettext
+	depends = python
+	depends = python-lxml
+	depends = bc
+	depends = coreutils
+	depends = findutils
+	depends = ghostscript
+	depends = gnupg
+	depends = imagemagick
+	depends = m4
+	depends = make
+	depends = perl
+	depends = pinentry
+	depends = python
+	depends = util-linux
+	depends = xdg-utils
+	depends = zenity
+	source = thunar-custom-actions-v0.0.22.tar.gz::https://gitlab.com/nobodyinperson/thunar-custom-actions/-/archive/make-manpages-optional/thunar-custom-actions-make-manpages-optional.tar.gz
+	source = https://gitlab.com/nobodyinperson/m4-utils/-/archive/master/m4-utils-master.tar.gz
+	md5sums = c6ac9f3ae0b3487eb507d40526d6f52a
+	md5sums = 52c5538bb2fc8adcd77c655352711f2f
+
+pkgname = thunar-custom-actions
+
