@@ -1,7 +1,7 @@
 # Maintainer: Emma Caldeira <kiito@tilde.team>
 
 pkgname=python-mariadb-connector
-pkgver=0.9.58
+pkgver=0.9.59
 pkgrel=1
 pkgdesc="A Python DB API 2.0 compliant API for access to MariaDB and MySQL databases"
 arch=('any')
