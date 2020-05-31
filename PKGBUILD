@@ -23,7 +23,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -o build .
+	go build -ldflags '-X main.VERSION='"${pkgver}"' -X main.BUILD_DATE='"$(date +"%Y-%m-%d_%H:%M:%S")" -o build .
 }
 
 check() {
@@ -33,5 +33,5 @@ check() {
 
 package() {
 	cd "srrdb-Terminal-Client-${pkgver}"
-	install -Dm755 "build/srrdb-Terminal-Client-${pkgver}" "${pkgdir}/usr/bin/srrdb"
+	install -Dm755 "build/srrdb-Terminal-Client" "${pkgdir}/usr/bin/srrdb"
 }
