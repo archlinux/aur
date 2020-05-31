@@ -2,7 +2,7 @@
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
 pkgname=gitstatus-git
-pkgver=r1284.e164594
+pkgver=r1294.ab1aea1
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('x86_64')
