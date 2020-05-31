@@ -1,20 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python-osrf_pycommon'
 pkgname=('python-osrf_pycommon')
-_module='osrf_pycommon'
-pkgver='0.1.9'
+pkgver='0.1.10'
 pkgrel=1
-pkgdesc="Commonly needed Python modules, used by Python software developed at OSRF"
-url="http://osrf-pycommon.readthedocs.org/"
+pkgdesc='Commonly needed Python modules, used by Python software developed at OSRF'
+arch=('any')
+url='https://github.com/osrf/osrf_pycommon'
+license=('Apache')
 depends=('python')
+makedepends=('python-setuptools')
 provides=('python-osrf-pycommon')
 conflicts=('python-osrf-pycommon')
-makedepends=('python-setuptools')
-license=('Apache')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a5f8861f86a2e8552748b1d552de1297d05d027d38bbf7e811b2107a85d75eeb')
+source=("https://github.com/osrf/osrf_pycommon/archive/${pkgver}.tar.gz")
+sha256sums=('429708204cc3c9389e90da637fc0ac797bc6653853599f0ac4b59091f41b6cb4')
+
+_module='osrf_pycommon'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
