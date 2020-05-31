@@ -2,7 +2,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-config
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='Tux Paint configuration tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('tuxpaint' 'fltk' 'libxft' 'libxext')
 options=('!makeflags')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('cfc8e8ff4240eccddfd14a58be0adcedb09306ac6ec2f707b90c5b33c8ec6f7e')
+sha256sums=('2b4c81d1f9664334907b70684d0f2cd340d2fc74fded453d107f39461c167240')
 
 build() {
   make -C "$pkgname-$pkgver" PREFIX=/usr
@@ -20,12 +20,10 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -d "$pkgdir/usr/bin/" \
-    "$pkgdir/opt/kde/share/icons/hicolor/"{16x16,32x32,48x48}"/apps/"
- make PREFIX="$pkgdir/usr" DESTDIR="$pkgdir" KDE_PREFIX="$pkgdir/opt/kde" \
-   KDE_ICON_PREFIX="$pkgdir/opt/kde/share/icons" install
- install -Dm644 src/tuxpaint-config.desktop \
-   "$pkgdir/usr/share/applications/tuxpaint-config.desktop"
+  make PREFIX=/usr DESTDIR="$pkgdir" KDE_PREFIX="" \
+    KDE_ICON_PREFIX="" X11_ICON_PREFIX=/usr/share/pixmaps/ install
+  install -Dm644 src/tuxpaint-config.desktop \
+    "$pkgdir/usr/share/applications/tuxpaint-config.desktop"
 }
 
 # vim: ts=2 sw=2 et:
