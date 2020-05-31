@@ -1,9 +1,9 @@
-pkgbase = multilockscreen
+pkgbase = multimonitorlock
 	pkgdesc = A simple lock script for i3lock-color
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/multilockscreen
-	install = multilockscreen.install
+	url = https://github.com/TheCynicalTeam/multimonitorlock
+	install = multimonitorlock.install
 	arch = any
 	license = GNU General Public License v3.0
 	depends = i3lock-color
@@ -15,8 +15,7 @@ pkgbase = multilockscreen
 	conflicts = multilockscreen-git
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
-	source = git+https://github.com/TheCynicalTeam/multilockscreen.git
+	source = git+https://github.com/TheCynicalTeam/multimonitorlock.git
 	md5sums = SKIP
 
-pkgname = multilockscreen
-
+pkgname = multimonitorlock

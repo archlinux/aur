@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
-_pkgname=multilockscreen
-pkgname=multilockscreen
+_pkgname=multimonitorlock
+pkgname=multimonitorlock
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
