@@ -1,12 +1,12 @@
 pkgbase = sane-fmt
 	pkgdesc = Opinionated code formatter for TypeScript and JavaScript
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 0
 	url = https://github.com/sane-fmt/sane-fmt
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = sane-fmt-0.3.5.tar.gz::https://github.com/sane-fmt/sane-fmt/archive/0.3.5.tar.gz
+	source = sane-fmt-0.3.6.tar.gz::https://github.com/sane-fmt/sane-fmt/archive/0.3.6.tar.gz
 	source = https://raw.githubusercontent.com/sane-fmt/sane-fmt/master/LICENSE.md
 	sha1sums = SKIP
 	sha1sums = SKIP
