@@ -2,8 +2,8 @@
 
 pkgbase=vibrant
 pkgname=(libvibrant vibrant-cli)
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://gitlab.com/Scrumplex/vibrant"
