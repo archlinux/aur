@@ -1,19 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python-rospkg'
 pkgname=('python-rospkg')
-_module='rospkg'
 pkgver='1.2.6'
-pkgrel=1
-pkgdesc="ROS package library"
-url="http://wiki.ros.org/rospkg"
-depends=('python' 'python-catkin_pkg' 'python-distro' 'python-yaml')
-conflicts=('python2-rospkg')
-makedepends=('python-setuptools')
-license=('BSD')
+pkgrel=2
+pkgdesc='Standalone Python library for the ROS package system'
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('3a27f5037afeba796449b30ad77cb1085fc65f8be10e75e40dbcc3777f83c1a6')
+url='https://github.com/ros-infrastructure/rospkg'
+license=('BSD')
+depends=('python' 'python-catkin_pkg' 'python-distro' 'python-yaml')
+makedepends=('python-setuptools')
+
+conflicts=('python2-rospkg')
+source=("https://github.com/ros-infrastructure/rospkg/archive/${pkgver}.tar.gz")
+sha256sums=('6fec215df97895b3906660fed736544b7232635dd3a62e6a8aae553159e67ac2')
+
+_module='rospkg'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
