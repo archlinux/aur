@@ -1,6 +1,6 @@
 pkgbase = marvinc-git
 	pkgdesc = MarvInc is a zachlike puzzle game with a story told through emails.
-	pkgver = 1.4.0.r0.gdbd418e
+	pkgver = 1.4.1.r0.g6acf76c
 	pkgrel = 1
 	url = https://github.com/MarvellousSoft/MarvInc/
 	arch = x86_64
