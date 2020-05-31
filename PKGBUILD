@@ -1,19 +1,19 @@
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 
-pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=2263.48fe766f
+pkgname="${_pkgname}-git"
+pkgver=2361.a9dbfad0
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
-provides=("streamlink-twitch-gui")
-conflicts=("streamlink-twitch-gui")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=("gtk3" "libxss" "nss" "streamlink")
-makedepends=("git" "nodejs" "yarn" "grunt-cli")
+makedepends=("git" "nodejs" "yarn")
 options=(!strip)
-source=(${_pkgname}::"git+https://github.com/streamlink/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/streamlink/${_pkgname}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	yarn install --pure-lockfile --non-interactive
-	grunt release
+	yarn run grunt release
 }
 
 package() {
@@ -40,12 +40,12 @@ package() {
 	# copy licenses
 	install -Dm644 \
 		-t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-		"${srcdir}/${_pkgname}/LICENSE" \
+		"${builddir}/LICENSE.txt" \
 		"${builddir}/credits.html"
 
 	# copy application content and remove unneeded files and dirs
 	cp -a "${builddir}/." "${pkgdir}/opt/${_pkgname}/"
-	rm -r "${pkgdir}/opt/${_pkgname}/"{{add,remove}-menuitem.sh,credits.html,icons/}
+	rm -r "${pkgdir}/opt/${_pkgname}/"{{add,remove}-menuitem.sh,LICENSE.txt,credits.html,icons/}
 
 	# create custom start script and disable version check
 	cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
@@ -68,8 +68,8 @@ package() {
 		Name=Streamlink Twitch GUI
 		GenericName=Twitch.tv browser for Streamlink
 		Comment=Browse Twitch.tv and watch streams in your videoplayer of choice
-		Keywords=streamlink;livestreamer;twitch;
-		Categories=AudioVideo;
+		Keywords=streamlink;twitch;streaming;
+		Categories=AudioVideo;Network;
 		Exec=/usr/bin/${_pkgname}
 		Icon=${_pkgname}
 	EOF
