@@ -3,10 +3,10 @@
 _project=quicksand
 _upname=${_project^}Family
 pkgbase=${_project}-font
-pkgname=("ttf-$_project" "ttf-$_project-variable")
+pkgname=("ttf-$_project-variable") # "ttf-$_project"
 pkgver=3.003
 _sha=c0f7d6b2d2cb4e5477745d3eed096d7c1c4b05ba
-pkgrel=1
+pkgrel=2
 pkgdesc='A sans serif typeface designed by Andrew Paglinawan using geometric shapes'
 arch=('any')
 url="https://github.com/andrew-paglinawan/${_upname}"
