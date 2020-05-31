@@ -4,7 +4,7 @@ _svt_hevc_ver='1.4.3'
 _svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r97777.g3b5a36c56d
+pkgver=4.3.r98015.ga886785018
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -12,50 +12,53 @@ url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
-        'alsa-lib' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
-        'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
-        'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
-        'glslang' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun'
-        'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c'
-        'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
-        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264'
-        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
+        'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+        'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
+        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'libgme' 'gsm' 'libiec61883'
+        'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
+        'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
+        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
+        'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
+        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio'
-        'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
+        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
+        'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
-        'avisynthplus' 'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git'
-        'openh264' 'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git'
+        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
         'pocketsphinx' 'rockchip-mpp'
 )
 makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'ffnvcodec-headers' 'clang'
     # AUR:
-        'decklink-sdk' 'amf-headers-git'
+        'decklink-sdk' 'amf-headers'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        "ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        '010-ffmpeg-fix-vmaf-model-path.patch'
+        "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
         'LICENSE')
 sha256sums=('SKIP'
+            'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-    # add svt codec support for hevc and av1
     rm -f ffmpeg/libavcodec/libsvt_{hevc,av1}.c
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
 }
 
 pkgver() {
