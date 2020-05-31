@@ -6,7 +6,7 @@ pkgbase = go-clock
 	arch = x86_64
 	license = MIT
 	source = https://github.com/XilogOfficial/go-clock/raw/master//go-clock-1.0.1.tar.gz
-	md5sums = 2f296c9bf6984a9d819cdc490a626b71
+	md5sums = 5b8c3b6479e6753d9e9b2731da527210
 
 pkgname = go-clock
 
