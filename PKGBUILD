@@ -4,13 +4,13 @@
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-rpi
 pkgver=81.0.4044.138
-pkgrel=1
+pkgrel=2
 _ubuntuver=0.18.04.1
-pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi for armv6h/armv7h/aarch64"
-arch=('armv6h' 'armv7h' 'aarch64')
+pkgdesc="Prebuilt ffmpeg-codecs package for Vivaldi for armv6h/armv7h"
+arch=('armv6h' 'armv7h')
 url="https://packages.ubuntu.com/bionic/armhf/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
-depends=('vivaldi')
+depends=('vivaldi-rpi')
 provides=(
   'vivaldi-ffmpeg-codecs'
 )
@@ -33,4 +33,3 @@ package() {
   mkdir -p "$pkgdir/usr/share/vivaldi-codecs"
   cp "$srcdir/usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/usr/share/vivaldi-codecs/libffmpeg.so"
 }
-
