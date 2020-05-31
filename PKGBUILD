@@ -1,6 +1,6 @@
 # Maintainer: Hugo Denizart <hugo at denizart dot pro>
 pkgname=obs-streamfx
-pkgver=0.8.0b3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
