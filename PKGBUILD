@@ -25,5 +25,5 @@ package() {
     cd "${srcdir}/${_pkgbasename}"
 
     install -D -m755 target/release/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/license/$_pkgbasename/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgbasename/LICENSE"
 }
