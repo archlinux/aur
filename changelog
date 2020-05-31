@@ -1,3 +1,11 @@
+2020-05-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.1.8-1:
+    [!] OS-specific builds now come with re-enabled single file deployment after resolving all of problems listed in #1544. This results in far better ASF folder structure.
+    [!] ASF now comes with cross-process synchronization - this allows multiple instances of ASF to communicate with each other, in particular in regards to the limiters. Check multiple instances page for more details (#1798, #1797).
+    Added --network-group command-line argument.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-05-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.0.6-1:
     Added linux-arm64 variant to ASF releases, check compatibility section for more info (#1728).
