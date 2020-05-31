@@ -2,7 +2,7 @@
 
 pkgname=python-pywalfox
 _name=pywalfox
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Native app used alongside the Pywalfox browser extension"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('788d49746a741baff4bb5697d0bec76fc6c66e2591578adf238867a5c22c80ee')
+sha256sums=('f3eedef306c5b8bd3129486744b6a5c8f6ee279ad6179b5567a5ffe447bd5a70')
 
 build() {
     cd $_name-$pkgver

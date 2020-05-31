@@ -1,14 +1,14 @@
 pkgbase = python-pywalfox
 	pkgdesc = Native app used alongside the Pywalfox browser extension
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/frewacom/pywalfox
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
 	depends = python
-	source = python-pywalfox-2.3.tar.gz::https://pypi.python.org/packages/source/p/pywalfox/pywalfox-2.3.tar.gz
-	sha256sums = 788d49746a741baff4bb5697d0bec76fc6c66e2591578adf238867a5c22c80ee
+	source = python-pywalfox-2.4.tar.gz::https://pypi.python.org/packages/source/p/pywalfox/pywalfox-2.4.tar.gz
+	sha256sums = f3eedef306c5b8bd3129486744b6a5c8f6ee279ad6179b5567a5ffe447bd5a70
 
 pkgname = python-pywalfox
 
