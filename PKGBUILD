@@ -3,20 +3,22 @@
 # Contributor: Danny Su       <contact@dannysu.com>
 
 pkgname=duplicati-latest
-pkgver=2.0.5.106
+pkgver=2.0.5.107
 pkgrel=1
-_date=2020-05-11
+_date=2020-05-26
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
 license=('LGPL')
 install=duplicati.install
-source=(https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_${_date}.zip
+source=(
+	https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip
+        # https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_${_date}.zip # duplicati.com seems to be blocked in Russia, see https://aur.archlinux.org/packages/duplicati-latest/#comment-746652
 	duplicati-user.service
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('fd23aa26aa9486944e2c6f36113837f4e4057a12174063e7973c3231611474de'
+sha256sums=('30c807b0e921162edc2964c5d43e6d0ff5c83a61ad7403d32a9101fe8c8e7045'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
