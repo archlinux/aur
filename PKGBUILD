@@ -3,7 +3,7 @@
 
 pkgname=tuxpaint-config
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Tux Paint configuration tool'
 arch=('x86_64')
 url='http://www.tuxpaint.org/' # no https available
@@ -20,8 +20,14 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make PREFIX=/usr DESTDIR="$pkgdir" KDE_PREFIX="" \
-    KDE_ICON_PREFIX="" X11_ICON_PREFIX=/usr/share/pixmaps/ install
+  make \
+    PREFIX=/usr \
+    GNOME_PREFIX=/usr \
+    KDE_PREFIX="" \
+    KDE_ICON_PREFIX="" \
+    X11_ICON_PREFIX=/usr/share/pixmaps/ \
+    DESTDIR="$pkgdir" \
+    install
   install -Dm644 src/tuxpaint-config.desktop \
     "$pkgdir/usr/share/applications/tuxpaint-config.desktop"
 }
