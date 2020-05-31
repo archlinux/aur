@@ -1,6 +1,6 @@
-# Maintainer: mars <gzhqyz@gmail.com>
-# Contributor: Daniel M. Capella <polyzen@archlinux.org>
-# Contributor: Darshit Shah <darnir@gmail.com>
+# Maintainer: mars <gzhqyz at gmail dot com>
+# Contributor: Daniel M. Capella <polyzen at archlinux dot org>
+# Contributor: Darshit Shah <darnir at gmail dot com>
 
 pkgname=vint-git
 pkgver=0.4a4.dev8+g5b05880
