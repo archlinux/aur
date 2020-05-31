@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.14.r0.g40bd709
+pkgver=v0.15.r0.g06da477
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
@@ -10,7 +10,8 @@ groups=('')
 makedepends=('cmake' 'nlohmann-json' 'bcc')
 depends=()
 optdepends=('systemd: service manager'
-                         'bcc: execsnoop for program_proxy/program_noproxy')
+            'bcc: execsnoop for program_proxy/program_noproxy'
+            'linux-headers: bcc init')
 provides=('cgproxy')
 conflicts=('cgproxy')
 
