@@ -1,0 +1,12 @@
+pkgbase = go-clock
+	pkgdesc = go-clock command line utility to make a large clock using Unicode characters
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XilogOfficial/go-clock/raw/master/
+	arch = x86_64
+	license = MIT
+	source = https://github.com/XilogOfficial/go-clock/raw/master//go-clock-1.0.0.tar.gz
+	md5sums = 2f296c9bf6984a9d819cdc490a626b71
+
+pkgname = go-clock
+
