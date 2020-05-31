@@ -1,22 +1,38 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
-# Contributor: Mihai Coman <mihai@m1x.ro>
-# Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
+# Maintainer: oldherl <oldherl@gmail.com>
 
 pkgname=skychart
 pkgver=4.2.1
-pkgrel=1
+pkg_commit=4073
+pkgrel=2
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('x86_64')
 license=('GPL')
 depends=('gtk2' 'xplanet' 'libpasastro')
+makedepends=('fpc' 'lazarus')
 url="http://www.ap-i.net/skychart/start"
 
-sha256sums=('fcf1d19df6e7082c5057342248bc5159847c85ca5a678013f6b6447c036d4520')
+source=(
+"https://sourceforge.net/projects/skychart/files/1-software/version_$pkgver/skychart-$pkgver-$pkg_commit-src.tar.xz"
+)
 
-source=(http://sourceforge.net/projects/skychart/files/1-software/version_${pkgver}/skychart-${pkgver}-4073-linux_"${arch}".tar.xz)
+sha256sums=('1f76d3c981b361e16d52851cb27bc97552630d6e25c832af617af88e2d322ca2')
+
+build() {
+  cd "skychart-$pkgver-$pkg_commit-src"
+  fpc="/usr/lib/fpc/""`fpc -iV`""/units/x86_64-linux/"
+  echo fpc=$fpc
+  echo ./configure fpc="$fpc" lazarus=/usr/lib/lazarus prefix="$pkgdir/usr" target=x86_64-linux 
+  ./configure fpc="$fpc" lazarus=/usr/lib/lazarus prefix="$pkgdir/usr" target=x86_64-linux 
+  make CPU_TARGET=x86_64 OS_TARGET=linux clean
+  make CPU_TARGET=x86_64 OS_TARGET=linux -j 1
+}
 
 package() {
-mkdir "${pkgdir}"/usr/
-tar -xf "${srcdir}"/skychart-"$pkgver"-4073-linux_"${arch}".tar.xz --strip 1 -C "${pkgdir}/usr/"
-chown -R root:root "${pkgdir}/usr/"
+  cd "skychart-$pkgver-$pkg_commit-src"
+  echo pkgdir $pkgdir
+  mkdir -p "$pkgdir/usr"
+  make install
+  make install_data
+  make install_doc
+  make install_nonfree
 }
