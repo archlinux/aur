@@ -7,7 +7,7 @@ url="https://github.com/vx-labs/wasp/"
 license=('GPL')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('acbaa6dfb6634411bdf56c36394127a772bfa091dda2576db8f54fcc4d06f330')
+sha256sums=('343e858bd6a79553493b79e33208dd71fb2d8f06583cc372ef3c29d2a93f03cb')
 
 prepare(){
   cd "$pkgname-$pkgver"
