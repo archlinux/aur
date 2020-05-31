@@ -1,6 +1,6 @@
 pkgbase = gruvbox-tilix-git
 	pkgdesc = Gruvbox theme for Tilix
-	pkgver = 0
+	pkgver = r.96f74f8
 	pkgrel = 1
 	url = https://github.com/MichaelThessel/tilix-gruvbox
 	arch = any
