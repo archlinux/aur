@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-git
-pkgver=V5.1.518_Beta.r23.ge8f0447e2
+pkgver=5.1.529.Beta.r5.g04b62aacc
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation - Git version"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/^[vV]//;s/\_/\./;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
