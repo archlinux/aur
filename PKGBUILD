@@ -14,7 +14,7 @@ optdepends=('pulseaudio: PulseAudio support'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs'
             'gst-libav: libav codec')
-source=("https://codingteam.net/project/bluemindo/download/file/bluemindo-$pkgver.tar.gz"
+source=("https://lab.erwanbriand.fr/project/bluemindo/download/file/bluemindo-$pkgver.tar.gz"
         "bluemindo.patch")
 sha256sums=('e405c881feeb43f8126988403e1c1008ee5341c8faae90d5e671d9075c89fe5c'
             '3f8758bd2255966af796937902e1ff5064df3f34283172eaee8b28d855fb0747')
