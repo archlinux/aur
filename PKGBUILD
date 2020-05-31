@@ -12,8 +12,8 @@ arch=('any')
 license=('MIT')
 url="https://bitbucket.org/pytest-dev/$_name"
 depends=('python2-pytest' 'python2-werkzeug')
-makedepends=('python-pytest' 'python2-pytest' 'python-werkzeug' 'python2-werkzeug')
-checkdepends=('python-requests' 'python2-requests')
+makedepends=('python2-pytest' 'python2-werkzeug')
+checkdepends=('python2-requests')
 source=("$pkgname-$pkgver.tar.gz::$url/get/$pkgver.tar.bz2")
 sha512sums=('78993ee0245c9eace723c21eee6de359089f1e1895eac9c531268353b3a3d2045006d29656ea99733ad380f33af2b88f7332e83dcd4c7a97ced611cdbce5a673')
 
