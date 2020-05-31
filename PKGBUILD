@@ -5,7 +5,7 @@
 
 pkgname=tuxpaint
 pkgver=0.9.24
-pkgrel=2
+pkgrel=3
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='http://tuxpaint.org/' # no https available
@@ -13,7 +13,7 @@ license=('GPL')
 backup=('etc/tuxpaint/tuxpaint.conf')
 depends=('fribidi' 'libpaper' 'librsvg' 'python2' 'sdl_image'
          'sdl_mixer' 'sdl_pango' 'sdl_ttf')
-makedepends=('gperf' 'setconf')
+makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
