@@ -39,6 +39,7 @@ prepare() {
 build() {
     cd $srcdir/d2
     make version VERSION="${pkgver}"
+    make engine
     make core
 }
 
