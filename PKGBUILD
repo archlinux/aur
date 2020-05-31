@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.24.0
+pkgver=1.24.2
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -30,14 +30,15 @@ optdepends=('modemmanager: for modem management service'
             'bluez: bluetooth support'
             'openresolv: resolvconf support'
             'ppp: dialup connection support'
-            'iwd: wpa_supplicant alternative')
+            'iwd: wpa_supplicant alternative'
+            'firewalld: Firewall support')
 provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=ea141ba8f8d1cf72e3bd752199c1076821fffdf9  # tags/1.24.0^0
+_commit=972453d7352e92f4f988e00d6f43636835a1ae91  # tags/1.24.2^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
