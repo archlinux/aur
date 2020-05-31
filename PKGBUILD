@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r14549.429f8cb21
+pkgver=r14739.9b01af353
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git')
 depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11' 'libfdk-aac')
-makedepends=('git' 'cmake' 'python2')
+makedepends=('git' 'cmake' 'python2' 'catch2' 'nlohmann-json' 'fmt' 'boost')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline")
 md5sums=('SKIP')
@@ -37,19 +37,6 @@ build() {
 	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu-mainline
 	export TRAVIS_TAG=$(git describe --tags)
 	
-	# Hopefully temporary fix for a compilation error involving fmt
-	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
-	
-	# Flag to disable pre-compiled headers so boost can build properly
-	CXXFLAGS+=" -DENABLE_PRECOMPILED_HEADERS=OFF"
-
-	# Flag to fix SDL exceptions occurring in some users' builds
-	CXXFLAGS+=" -I/usr/include/SDL2 -D_REENTRANT -pthread -lSDL2"
-	
-	# Temporary workaround for the issue 3754:
-	# https://github.com/yuzu-emu/yuzu/issues/3754
-	sed -i 's:-Werror=conversion::' src/video_core/CMakeLists.txt
-	
 	mkdir -p build && cd build
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
@@ -69,8 +56,4 @@ check() {
 package() {
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
-	
-	# Temporary fix until yuzu fixes the zlib and libzip patch
-	cd "$pkgdir/usr"
-	rm -rf include lib lib64 share/man share/pkgconfig
 }
