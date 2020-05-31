@@ -1,6 +1,6 @@
 pkgbase = devtest
 	pkgdesc = A tool for AUR package maintainers to easily manage and test multiple packages
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/bscubed/devtest
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = devtest
 	makedepends = git
 	depends = devtools
 	optdepends = ccache: For ccache integration
-	source = git+https://github.com/bscubed/devtest.git#tag=v1.0.1
+	source = git+https://github.com/bscubed/devtest.git#tag=v1.0.2
 	md5sums = SKIP
 
 pkgname = devtest
