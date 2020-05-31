@@ -2,7 +2,7 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r199.cffe4af
+pkgver=r292.585ae07
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('any')
 url="https://github.com/zigtools/${_pkgbasename}"
@@ -34,5 +34,5 @@ package() {
 	cd "${srcdir}/${_pkgbasename}"
 
 	install -D -m755 zig-cache/bin/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
-	install -D -m644 LICENSE.md "${pkgdir}/usr/share/license/$_pkgbasename/LICENSE"
+	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/$_pkgbasename/LICENSE"
 }
