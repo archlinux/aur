@@ -5,9 +5,10 @@ pkgbase = terraformer
 	url = https://github.com/GoogleCloudPlatform/terraformer
 	arch = x86_64
 	license = Apache
+	makedepends = go
 	provides = terraformer
-	source = https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.7/terraformer-all-linux-amd64
-	sha256sums = bff3ba338a69690a3e3ad0e130c8b49b04fe373f6672caf6c5c49edc4425742e
+	source = https://github.com/GoogleCloudPlatform/terraformer/archive/0.8.7.tar.gz
+	sha256sums = 8884528c84f2b70480f16e7c8a1f79e9723671415365b2bd36d21e5142eb4746
 
 pkgname = terraformer
 
