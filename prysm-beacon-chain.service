@@ -1,0 +1,10 @@
+[Unit]
+Description=Prysm beacon-chain client
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/prysm.beacon-chain --datadir=/var/lib/prysm/beacon-chain
+Restart=always
+
+[Install]
+WantedBy=default.target

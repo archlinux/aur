@@ -1,0 +1,14 @@
+[Unit]
+Description=Prysm beacon-chain client
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/prysm.validator
+StandardInput=tty
+TTYPath=/dev/tty2
+TTYReset=yes
+TTYVHangup=yes
+Restart=always
+
+[Install]
+WantedBy=default.target

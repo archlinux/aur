@@ -1,0 +1,24 @@
+pkgbase = prysm
+	pkgdesc = go implementation of the Ethereum 2.0 blockchain
+	pkgver = 1.0.0_alpha.8
+	pkgrel = 1
+	url = https://prysmaticlabs.com/
+	arch = x86_64
+	license = GPLv3
+	makedepends = java-environment=11
+	makedepends = libarchive
+	makedepends = zip
+	makedepends = unzip
+	makedepends = go
+	noextract = bazel-3.0.0-linux-x86_64
+	source = https://releases.bazel.build/3.0.0/release/bazel-3.0.0-linux-x86_64
+	source = git+https://github.com/prysmaticlabs/prysm.git#tag=v1.0.0-alpha.8
+	source = prysm-validator.service
+	source = prysm-beacon-chain.service
+	sha256sums = 3efb903ef885339a271445a9940642df704f97297fbe268f131d4fe36b02ea80
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = prysm
+
