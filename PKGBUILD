@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=einsteinpy
 pkgname=python-${_pyname}-doc
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Documentation for EinsteinPy"
 arch=('i686' 'x86_64')
 url="https://einsteinpy.org/"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'python-nbsphinx' 'python-numba' 'pandoc' 'graphviz')
+makedepends=("python-${_pyname}=${pkgver}" 'python-nbsphinx' 'pandoc' 'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('24f0ba1b00781fc3bd2cf8fa082e22ca')
+md5sums=('2e294b8c4ea8cbd248748cabec70bb9b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
