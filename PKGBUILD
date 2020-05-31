@@ -1,5 +1,5 @@
 pkgname=wasp
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Distributed MQTT Broker, written in go.'
 arch=('x86_64')
