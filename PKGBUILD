@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kostyuchenko <derfenix@gmail.com>
 
 pkgname=corectrl
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
@@ -15,7 +15,7 @@ optdepends=(
 	'util-linux: For lscpu'
 )
 source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha512sums=('0521b87ef1a042e4e0dfacf78f632c4784580bb845240feeee499b244d500637cb72ccf0d3988620effa9fc19323ac742a2551881973f70b45ab2076ed0a626e')
+sha512sums=('fdc050a78cbaa7a532b52198aa410d999b4c9a7b477dae35bb55352b0c0cd49fe951b46f3924ff6ef3cd4bb7acdd06eae74faa006c4e5ca6c9a607f2f10a9248')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
