@@ -1,18 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python2-vcstools'
 pkgname=('python2-vcstools')
-_module='vcstools'
 pkgver='0.1.42'
-pkgrel=2
-pkgdesc="VCS/SCM source control library for svn, git, hg, and bzr"
-url="http://wiki.ros.org/vcstools"
+pkgrel=3
+pkgdesc='Python library for interacting with various VCS systems'
+arch=('any')
+url='https://github.com/vcstools/vcstools'
+license=('BSD')
 depends=('python2' 'python2-dateutil' 'python2-yaml')
 makedepends=('python2-setuptools')
-license=('BSD')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('9e48d8ed8b0fdda739af56e05bf10da1a509cb7d4950a19c73264c770802777a')
+
+conflicts=()
+source=("https://github.com/vcstools/vcstools/archive/${pkgver}.tar.gz")
+sha256sums=('3dccd4d3c82d3be6b0ba6a2def83af7e68ee495d108587ac66aa74720e5e9c97')
+
+_module='vcstools'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

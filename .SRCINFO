@@ -1,16 +1,16 @@
 pkgbase = python2-vcstools
-	pkgdesc = VCS/SCM source control library for svn, git, hg, and bzr
+	pkgdesc = Python library for interacting with various VCS systems
 	pkgver = 0.1.42
-	pkgrel = 2
-	url = http://wiki.ros.org/vcstools
+	pkgrel = 3
+	url = https://github.com/vcstools/vcstools
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-dateutil
 	depends = python2-yaml
-	source = https://files.pythonhosted.org/packages/source/v/vcstools/vcstools-0.1.42.tar.gz
-	sha256sums = 9e48d8ed8b0fdda739af56e05bf10da1a509cb7d4950a19c73264c770802777a
+	source = https://github.com/vcstools/vcstools/archive/0.1.42.tar.gz
+	sha256sums = 3dccd4d3c82d3be6b0ba6a2def83af7e68ee495d108587ac66aa74720e5e9c97
 
 pkgname = python2-vcstools
 
