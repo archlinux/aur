@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver=v0.5.0.r1.g7894ab3
+pkgver=v0.5.1.r2.g5f35ff5
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
