@@ -1,8 +1,8 @@
 pkgbase = python2-rosdistro
 	pkgdesc = A tool to work with rosdistro files
 	pkgver = 0.8.2
-	pkgrel = 1
-	url = http://wiki.ros.org/rosdistro
+	pkgrel = 2
+	url = https://github.com/ros-infrastructure/rosdistro
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
@@ -11,8 +11,8 @@ pkgbase = python2-rosdistro
 	depends = python2-rospkg
 	depends = python2-yaml
 	conflicts = python-rosdistro
-	source = https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-0.8.2.tar.gz
-	sha256sums = aa51e08e27e59dfd26c7754dc43fb3e99f897fd9281ff64a86723b264fcbd964
+	source = https://github.com/ros-infrastructure/rosdistro/archive/0.8.2.tar.gz
+	sha256sums = ca6e7955820658781bde572927895c2ae8d89c37d5d891a254fd9cc29f9904a6
 
 pkgname = python2-rosdistro
 
