@@ -1,6 +1,6 @@
 pkgbase = st-jacob-git
 	pkgdesc = This Jacob McDonnell's build of st see the repo for more details
-	pkgver = 0.8.3.r4.aede06f
+	pkgver = 0.8.3.r5.aafe7dd
 	pkgrel = 1
 	url = https://gitlab.com/Jacob_McDonnell/st.git
 	arch = x86_64
