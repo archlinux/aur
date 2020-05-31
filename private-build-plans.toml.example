@@ -17,7 +17,7 @@ family = "Iosevka Custom"          # Font menu family name
 design = [                         # Common styles
 
   "cv05",                          # hooky i
-  "cv14",                          # dotted 0
+  "cv23",                          # lower ¶
   "cv24",                          # open double story g
   "cv26",                          # short leg m
   "cv27",                          # tailed l
@@ -36,8 +36,12 @@ design = [                         # Common styles
   "cv83",                          # curly R
   "cv90",                          # toothless u
   "cv92",                          # toothless G
-
+  "cv93",                          # backslash 0
+  "cv95",                          # curly λ
+  "cv97",                          # open 9
+  "cv98",                          # sans j
 ]
+
 # upright = []                     # Upright-only styles
 # italic = []                      # Italic-only styles
 # oblique = []                     # Oblique-only styles
@@ -49,7 +53,7 @@ design = [                         # Common styles
   "sp-fixed",                      # strict mono; no ligatures
 
   "cv05",                          # hooky i
-  "cv14",                          # dotted 0
+  "cv23",                          # lower ¶
   "cv24",                          # open double story g
   "cv26",                          # short leg m
   "cv27",                          # tailed l
@@ -68,6 +72,10 @@ design = [                         # Common styles
   "cv83",                          # curly R
   "cv90",                          # toothless u
   "cv92",                          # toothless G
+  "cv93",                          # backslash 0
+  "cv95",                          # curly λ
+  "cv97",                          # open 9
+  "cv98",                          # sans j
 
 ]
 # upright = []                     # Upright-only styles
@@ -81,7 +89,7 @@ design = [                         # Common styles
   "sp-term",                       # strict mono; with ligatures
 
   "cv05",                          # hooky i
-  "cv14",                          # dotted 0
+  "cv23",                          # lower ¶
   "cv24",                          # open double story g
   "cv26",                          # short leg m
   "cv27",                          # tailed l
@@ -100,6 +108,10 @@ design = [                         # Common styles
   "cv83",                          # curly R
   "cv90",                          # toothless u
   "cv92",                          # toothless G
+  "cv93",                          # backslash 0
+  "cv95",                          # curly λ
+  "cv97",                          # open 9
+  "cv98",                          # sans j
 
 ]
 # upright = []                     # Upright-only styles
