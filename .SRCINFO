@@ -1,0 +1,16 @@
+pkgbase = quicksand-font
+	pkgdesc = A sans serif typeface designed by Andrew Paglinawan using geometric shapes
+	pkgver = 3.003
+	pkgrel = 1
+	url = https://github.com/andrew-paglinawan/QuicksandFamily
+	arch = any
+	license = OFL
+	source = https://github.com/andrew-paglinawan/QuicksandFamily/archive/c0f7d6b2d2cb4e5477745d3eed096d7c1c4b05ba/ttf-quicksand-3.003.zip
+	sha256sums = a63d5d26ffb6edc13c85af6c326ee43c0741e969967831ba9639606b86494c06
+
+pkgname = ttf-quicksand
+	pkgdesc = A sans serif typeface designed by Andrew Paglinawan using geometric shapes (variable)
+
+pkgname = ttf-quicksand-variable
+	pkgdesc = A sans serif typeface designed by Andrew Paglinawan using geometric shapes (variable)
+
