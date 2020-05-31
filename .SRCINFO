@@ -1,0 +1,21 @@
+pkgbase = sora-font
+	pkgdesc = Font for SORA
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://github.com/sora-xor/sora-font
+	arch = any
+	license = OFL
+	source = https://github.com/sora-xor/sora-font/archive/50fd1ab47afb5cabda0028acd491307e839d42b6/ttf-sora-1.002.zip
+	sha256sums = d29da30f5edb8fd26315c8b55713b84fc9da501e78db5369792dc6a6840ffc1c
+
+pkgname = ttf-sora
+	pkgdesc = Font for SORA (TrueType)
+	provides = sora-font
+
+pkgname = otf-sora
+	pkgdesc = Font for SORA (OpenType)
+	provides = sora-font
+
+pkgname = ttf-sora-variable
+	pkgdesc = Font for SORA (Variable)
+
