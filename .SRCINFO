@@ -8,7 +8,6 @@ pkgbase = python-ufo2ft
 	checkdepends = python-pytest
 	checkdepends = python-skia-pathops
 	makedepends = python-setuptools
-	depends = python
 	depends = python-booleanoperations
 	depends = python-compreffor
 	depends = python-cu2qu
