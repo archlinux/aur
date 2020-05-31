@@ -1,8 +1,8 @@
 pkgbase = python2-rosinstall
-	pkgdesc = The installer for ROS
+	pkgdesc = Command-line tools for maintaining a workspace of projects from multiple version-control systems, tailored for the ROS community
 	pkgver = 0.7.8
-	pkgrel = 4
-	url = http://wiki.ros.org/rosinstall
+	pkgrel = 5
+	url = https://github.com/vcstools/rosinstall
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
@@ -13,8 +13,8 @@ pkgbase = python2-rosinstall
 	depends = python2-wstool
 	depends = python2-yaml
 	conflicts = python-rosinstall
-	source = https://files.pythonhosted.org/packages/source/r/rosinstall/rosinstall-0.7.8.tar.gz
-	sha256sums = 2ba808bf8bac2cc3f13af9745184b9714c1426e11d09eb96468611b2ad47ed40
+	source = https://github.com/vcstools/rosinstall/archive/0.7.8.tar.gz
+	sha256sums = ce1266e63aaefccabb4b0aefc56f8cceb45d4e188a4ecad2f623cbb4a5b1843f
 
 pkgname = python2-rosinstall
 
