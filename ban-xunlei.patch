@@ -1,0 +1,57 @@
+diff --git a/libtransmission/handshake.c b/libtransmission/handshake.c
+index 8dc08d3..15702e0 100644
+--- a/libtransmission/handshake.c
++++ b/libtransmission/handshake.c
+@@ -282,6 +282,9 @@ parseHandshake (tr_handshake *    handshake,
+   handshake->havePeerID = true;
+   dbgmsg (handshake, "peer-id is [%*.*s]", PEER_ID_LEN, PEER_ID_LEN, peer_id);
+ 
++  /* Error if the client is banned. */
++  if (tr_peerMgrClientIsBanned(peer_id)) return HANDSHAKE_ENCRYPTION_WRONG;
++
+   tor = tr_torrentFindFromHash (handshake->session, hash);
+   if (!memcmp (peer_id, tr_torrentGetPeerId(tor), PEER_ID_LEN))
+     {
+diff --git a/libtransmission/peer-mgr.c b/libtransmission/peer-mgr.c
+index 30e9036..f6a249d 100644
+--- a/libtransmission/peer-mgr.c
++++ b/libtransmission/peer-mgr.c
+@@ -2016,7 +2016,7 @@ myHandshakeDoneCB (tr_handshake  * handshake,
+       if (io->utp_socket)
+         atom->flags |= ADDED_F_UTP_FLAGS;
+ 
+-      if (atom->flags2 & MYFLAG_BANNED)
++      if ((atom->flags2 & MYFLAG_BANNED) | tr_peerMgrClientIsBanned(peer_id))
+         {
+           tordbg (s, "banned peer %s tried to reconnect",
+                   tr_atomAddrStr (atom));
+@@ -4082,3 +4082,15 @@ makeNewPeerConnections (struct tr_peerMgr * mgr, const int max)
+ 
+   tr_free (candidates);
+ }
++
++bool
++tr_peerMgrClientIsBanned (const uint8_t * peer_id)
++{
++  if (peer_id == NULL) return false;
++  bool banned = false;
++  banned |= !memcmp(peer_id+1, "SD", 2);
++  banned |= !memcmp(peer_id+1, "XL", 2);
++  //if (banned)
++  //  tr_logAddNamedError ("Client banned.", "(Client filter)");
++  return banned;
++}
+diff --git a/libtransmission/peer-mgr.h b/libtransmission/peer-mgr.h
+index 5ee45ae..5d64914 100644
+--- a/libtransmission/peer-mgr.h
++++ b/libtransmission/peer-mgr.h
+@@ -184,7 +184,8 @@ void         tr_peerMgrGotBadPiece          (tr_torrent         * tor,
+ void         tr_peerMgrPieceCompleted       (tr_torrent         * tor,
+                                              tr_piece_index_t     pieceIndex);
+ 
+-
++/* Check if the client is banned. XunLei is banned because it never uploads.*/
++bool         tr_peerMgrClientIsBanned       (const uint8_t      * peer_id);
+ 
+ /* @} */
+ 
