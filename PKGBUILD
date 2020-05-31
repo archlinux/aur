@@ -4,7 +4,7 @@
 
 pkgname=atlauncher-bin
 pkgrel=1
-pkgver=3.3.4.2
+pkgver=3.3.5.1
 pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
 arch=('any')
 url="http://www.atlauncher.com/"
@@ -20,8 +20,8 @@ source=("atlauncher-${pkgver}-${pkgrel}.jar::https://github.com/ATLauncher/ATLau
         )
 noextract=("atlauncher-${pkgver}-${pkgrel}.jar")
 
-sha256sums=('9f69251bd860ce2c14ad1f4ed0460b478b57c2310253d0b800bde80088be94a5'
-            '8d74eebf99c96ce3719147dd5d00b66c72b5336371d0dc07cd1c96f7d45688fe'
+sha256sums=('e2a0c766e8e8ab6d724ffd1142ab4672ade4bcbd2ce102b68c1964a3ce0099f9'
+            '8afdfd968a72a047444f6ebceb718566b7be5164bfa4aa1fd0a0698616c53738'
             '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
             '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
 
