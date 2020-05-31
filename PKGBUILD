@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-defcon'
 _pkgname='defcon'
-pkgver='0.7.1'
+pkgver='0.7.2'
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 url="https://pypi.org/project/defcon/"
@@ -12,7 +12,7 @@ optdepends=('python-fontpens' 'python-lxml')
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('c0ca665ddab915f60a1ca889bd6cf33fdf9b3fe52556261f43a4fcc3c2453bfc')
+sha256sums=('1967eaa23dcc8e1cbe3bd130aae4d9ddb72027b62d3e23eeb640065cfbd6d8d1')
 
 check() {
     cd "$_pkgname-$pkgver"
