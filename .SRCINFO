@@ -1,6 +1,6 @@
 pkgbase = wpfind
 	pkgdesc = Find wallpapers among other files and directories and copy/move them in specified directories. Very useful to clean your mess :-P
-	pkgver = 0.1.3
+	pkgver = 0.1.3.2
 	pkgrel = 1
 	url = https://makotonoblog.be/wpfind/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = wpfind
 	depends = bash
 	depends = detox
 	depends = imagemagick
-	source = wpfind-0.1.3.tar.gz::https://github.com/shakasan/wpfind/archive/0.1.3.tar.gz
-	md5sums = aa9329df08255fb4fcc4904cea10fada
+	source = wpfind-0.1.3.2.tar.gz::https://github.com/shakasan/wpfind/archive/0.1.3.2.tar.gz
+	md5sums = baf8efbb0edca2c8843ce9f463ecadf2
 
 pkgname = wpfind
 
