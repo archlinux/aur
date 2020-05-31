@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=st-jacob-git
-pkgver=0.8.3.r1.1ff86da
+pkgver=0.8.3.r4.aede06f
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of st see the repo for more details"
 arch=(x86_64 i686)
