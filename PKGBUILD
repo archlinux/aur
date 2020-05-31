@@ -15,10 +15,6 @@ arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
 sha256sums=('031ca35c98a74a18461ba7258ed439ad5c49dbe76ec5cc3598f1d9bb96313858')
 
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-}
-
 package() {
     cd "${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
