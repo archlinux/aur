@@ -30,8 +30,7 @@ build() {
     QMAKE_CFLAGS="$CFLAGS" \
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS" \
-    PREFIX=/usr \
-    ../VulkanCapsViewer
+    PREFIX=/usr
 
   make
 }
