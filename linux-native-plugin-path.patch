@@ -1,0 +1,26 @@
+diff --git a/ReClass.NET/Core/InternalCoreFunctions.cs b/ReClass.NET/Core/InternalCoreFunctions.cs
+index 0e1494b..dde7e50 100644
+--- a/ReClass.NET/Core/InternalCoreFunctions.cs
++++ b/ReClass.NET/Core/InternalCoreFunctions.cs
+@@ -13,7 +13,7 @@ namespace ReClassNET.Core
+ 	internal class InternalCoreFunctions : NativeCoreWrapper, IInternalCoreFunctions, IDisposable
+ 	{
+ 		private const string CoreFunctionsModuleWindows = "NativeCore.dll";
+-		private const string CoreFunctionsModuleUnix = "NativeCore.so";
++		private const string CoreFunctionsModuleUnix = "/usr/lib/NativeCore.so";
+ 
+ 		private readonly IntPtr handle;
+ 
+diff --git a/ReClass.NET/Forms/MainForm.cs b/ReClass.NET/Forms/MainForm.cs
+index 19a9162..6972c80 100644
+--- a/ReClass.NET/Forms/MainForm.cs
++++ b/ReClass.NET/Forms/MainForm.cs
+@@ -99,7 +99,7 @@ namespace ReClassNET.Forms
+ 
+ 			GlobalWindowManager.AddWindow(this);
+ 
+-			pluginManager.LoadAllPlugins(Path.Combine(Application.StartupPath, Constants.PluginsFolder), Program.Logger);
++			pluginManager.LoadAllPlugins(Path.Combine("/usr/lib/ReClass.NET/", Constants.PluginsFolder), Program.Logger);
+ 
+ 			toolStrip.Items.AddRange(NodeTypesBuilder.CreateToolStripButtons(ReplaceSelectedNodesWithType).ToArray());
+ 			changeTypeToolStripMenuItem.DropDownItems.AddRange(NodeTypesBuilder.CreateToolStripMenuItems(ReplaceSelectedNodesWithType, false).ToArray());

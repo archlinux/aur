@@ -1,0 +1,42 @@
+diff --git a/ReClass.NET/Core/CoreFunctionsManager.cs b/ReClass.NET/Core/CoreFunctionsManager.cs
+index 92af4d6..09018a0 100644
+--- a/ReClass.NET/Core/CoreFunctionsManager.cs
++++ b/ReClass.NET/Core/CoreFunctionsManager.cs
+@@ -86,6 +86,10 @@ namespace ReClassNET.Core
+ 		{
+ 			var c1 = callbackSection == null ? null : (EnumerateRemoteSectionCallback)delegate (ref EnumerateRemoteSectionData data)
+ 			{
++				var module_name = Path.GetFileName(data.ModulePath);
++				var separator_pos = data.ModulePath.LastIndexOf('\\');
++				if (separator_pos != -1) module_name = data.ModulePath.Substring(separator_pos + 1);
++
+ 				callbackSection(new Section
+ 				{
+ 					Start = data.BaseAddress,
+@@ -95,20 +99,24 @@ namespace ReClassNET.Core
+ 					Protection = data.Protection,
+ 					Type = data.Type,
+ 					ModulePath = data.ModulePath,
+-					ModuleName = Path.GetFileName(data.ModulePath),
++					ModuleName = module_name,
+ 					Category = data.Category
+ 				});
+ 			};
+ 
+ 			var c2 = callbackModule == null ? null : (EnumerateRemoteModuleCallback)delegate (ref EnumerateRemoteModuleData data)
+ 			{
++				var name = Path.GetFileName(data.Path);
++				var separator_pos = data.Path.LastIndexOf('\\');
++				if (separator_pos != -1) name = data.Path.Substring(separator_pos + 1);
++
+ 				callbackModule(new Module
+ 				{
+ 					Start = data.BaseAddress,
+ 					End = data.BaseAddress.Add(data.Size),
+ 					Size = data.Size,
+ 					Path = data.Path,
+-					Name = Path.GetFileName(data.Path)
++					Name = name
+ 				});
+ 			};
+ 
