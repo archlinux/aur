@@ -1,7 +1,7 @@
 pkgbase = shattered-pixel-dungeon
 	pkgdesc = Shattered fork of the popular rogue-like game
-	pkgver = 0.7.5.f
-	pkgrel = 3
+	pkgver = 0.8.0.b
+	pkgrel = 2
 	url = https://shatteredpixel.com/
 	arch = any
 	license = GPL3
@@ -11,10 +11,10 @@ pkgbase = shattered-pixel-dungeon
 	depends = bash
 	depends = xorg-xrandr
 	conflicts = shattered-pixel-dungeon-git
-	source = https://github.com/00-Evan/shattered-pixel-dungeon-gdx/archive/v0.7.5f.tar.gz
+	source = https://github.com/00-Evan/shattered-pixel-dungeon/archive/v0.8.0b.tar.gz
 	source = shattered-pixel-dungeon.sh
 	source = shattered-pixel-dungeon.desktop
-	sha512sums = fa3d4372ed7fdd4ff1799798fbfd2d02caf6d876e992c1759d61e324e72566801e0d348f384f611bfae04804435fbaf498c1155e4ffd3f8f69eb7f35a57e7bdd
+	sha512sums = 8dbd1a40dd0e777b1de48014e4b988a28a8fa9aa6430a1dca64aa0743c6260ab25140b7add06e7a6bdc670465e434a96feeab728a5ba6bf3add5814564c6f29c
 	sha512sums = 586ac3e1357495434e318dbda539792565a423ca59768b4e1aee8c81764ad6daea75365b4714fdac76a098b0ffc42da91cf5f2a5ab83fa0dc1beb7abf99f2607
 	sha512sums = 204a7bcedbbc14bdad6586e4b759b326191a7fd2c344dadc7032495d4caa5fe32edac4118d7294229a6fe24f6684416fff37e260bbc9dde9e50846a03ba77db8
 
