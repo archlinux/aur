@@ -47,3 +47,4 @@ package() {
 }
 
 md5sums=('5b8c3b6479e6753d9e9b2731da527210')
+md5sums=('5b8c3b6479e6753d9e9b2731da527210')
