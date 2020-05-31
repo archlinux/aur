@@ -3,7 +3,7 @@
 pkgname=gmat-bin
 pkgver=2018a
 pkgrel=1
-pkgdesc="A secure and free password manager for all of your devices."
+pkgdesc="An open-source space mission analysis tool"
 arch=('x86_64')
 url="http://gmatcentral.org/"
 license=('Apache')

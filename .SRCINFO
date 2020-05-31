@@ -1,5 +1,5 @@
 pkgbase = gmat-bin
-	pkgdesc = A secure and free password manager for all of your devices.
+	pkgdesc = An open-source space mission analysis tool
 	pkgver = 2018a
 	pkgrel = 1
 	url = http://gmatcentral.org/
