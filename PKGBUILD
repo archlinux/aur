@@ -1,4 +1,4 @@
-# Maintainer: mars <gzhqyz@gmail.com>
+# Maintainer: mars <gzhqyz at gmail dot com>
 # Contributor: Ryan Owens <RyanOwens at linux dot com>
 
 pkgname=gnome-shell-extension-hibernate-status
