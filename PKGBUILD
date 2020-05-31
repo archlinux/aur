@@ -62,11 +62,11 @@ _minor=6
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=7
+_pfrel=8
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_bmppatchname=bmq_v5.6-r3.patch
+_bmppatchname=bmq_v5.6-r4.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -661,8 +661,8 @@ sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             '35b1eea04b02c8072568bce49468eb8487e1217a0f5a3cd979cff9af569ab2ef'
             '59008ddd377115e3ecba7dd33fa04be709cbfe1ef104a7d462b5ed01e04a04b7'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '063e166a1206ef5d3f01ab90688d6e2757124ab1548d2ec1428bae486f3aa278'
-            '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
+            '8fe1e28fabfe46683bd70372e2b1c7b6aeabd68d996c9db4e456f8b52a5e7b43'
+            '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
