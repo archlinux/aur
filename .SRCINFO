@@ -7,7 +7,7 @@ pkgbase = go-clock
 	license = MIT
 	makedepends = go
 	source = https://github.com/XilogOfficial/go-clock/raw/master//go-clock-1.0.1.tar.gz
-	md5sums = 5b8c3b6479e6753d9e9b2731da527210
+	md5sums = 97f6383ffcd74aed66b231bb65f69b59
 
 pkgname = go-clock
 

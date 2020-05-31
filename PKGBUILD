@@ -46,3 +46,4 @@ package() {
     sudo install -Dm755 build/$pkgname /usr/bin/$pkgname
 }
 
+md5sums=('97f6383ffcd74aed66b231bb65f69b59')
