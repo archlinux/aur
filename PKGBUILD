@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=cargo-fund
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Tool for discovering funding links in Rust project dependencies.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 conflicts=('cargo-fund-git')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('66f4d9d7e27e6a95f657f308b2a2ef0c14a66459e905a301da2cafdc810008e0')
+sha256sums=('fe782aca9bdb6c00e5c83b4517c5354bf6913f6d170b379b62bca618c406d33a')
 
 build() {
   cd "$pkgname-$pkgver"

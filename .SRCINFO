@@ -1,6 +1,6 @@
 pkgbase = cargo-fund
 	pkgdesc = Tool for discovering funding links in Rust project dependencies.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/acfoltzer/cargo-fund
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = cargo-fund
 	makedepends = cargo
 	depends = openssl
 	conflicts = cargo-fund-git
-	source = 0.1.0.tar.gz::https://github.com/acfoltzer/cargo-fund/archive/0.1.0.tar.gz
-	sha256sums = 66f4d9d7e27e6a95f657f308b2a2ef0c14a66459e905a301da2cafdc810008e0
+	source = 0.2.0.tar.gz::https://github.com/acfoltzer/cargo-fund/archive/0.2.0.tar.gz
+	sha256sums = fe782aca9bdb6c00e5c83b4517c5354bf6913f6d170b379b62bca618c406d33a
 
 pkgname = cargo-fund
 
