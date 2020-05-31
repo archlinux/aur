@@ -4,7 +4,7 @@
 # shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
-_branch="functions"
+_branch="modifier-panels-ui"
 _suffix=${_branch}
 _fragment=${FRAGMENT:-#branch=${_branch}}
 [[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
@@ -21,7 +21,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-${_suffix}-git
-pkgver=2.83.r97300.g6692ca602ca
+pkgver=2.90.r96609.g8a971c9d91f
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"

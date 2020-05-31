@@ -1,6 +1,6 @@
-pkgbase = blender-functions-git
-	pkgdesc = Development version of Blenders functions branch
-	pkgver = 2.83.r97300.g6692ca602ca
+pkgbase = blender-modifier-panels-ui-git
+	pkgdesc = Development version of Blenders modifier-panels-ui branch
+	pkgver = 2.90.r96609.g8a971c9d91f
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -33,9 +33,9 @@ pkgbase = blender-functions-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender-functions
-	conflicts = blender-functions
-	source = git://git.blender.org/blender.git#branch=functions
+	provides = blender-modifier-panels-ui
+	conflicts = blender-modifier-panels-ui
+	source = git://git.blender.org/blender.git#branch=modifier-panels-ui
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
@@ -49,8 +49,8 @@ pkgbase = blender-functions-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
-	sha256sums = 81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72
+	sha256sums = ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 
-pkgname = blender-functions-git
+pkgname = blender-modifier-panels-ui-git
 
