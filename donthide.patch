@@ -1,0 +1,32 @@
+--- rc_config.c
++++ rc_config.c
+@@ -163,7 +163,6 @@
+   if( (width == 0) || (height == 0) ) return;
+ 
+   /* Set size and position of window */
+-  gtk_widget_hide( window );
+   gtk_window_resize( GTK_WINDOW(window), width, height );
+   gtk_window_move( GTK_WINDOW(window), x, y );
+ 
+@@ -214,7 +213,6 @@
+   Set_Window_Geometry( main_window,
+ 	  rc_config.main_x, rc_config.main_y,
+ 	  rc_config.main_width, rc_config.main_height );
+-  gtk_widget_show( main_window );
+ 
+   /* Restore main (structure) window widgets state */
+   if( rc_config.main_currents_togglebutton )
+--- callback_func.c
++++ callback_func.c
+@@ -1026,11 +1026,9 @@
+ Open_Nec2_Editor( int action )
+ {
+   nec2_edit_window = create_nec2_editor( &nec2_editor_builder );
+-  gtk_widget_hide( nec2_edit_window );
+   Set_Window_Geometry( nec2_edit_window,
+ 	  rc_config.nec2_edit_x, rc_config.nec2_edit_y,
+ 	  rc_config.nec2_edit_width, rc_config.nec2_edit_height );
+-  gtk_widget_show( nec2_edit_window );
+ 
+   cmnt_treeview = GTK_TREE_VIEW(
+ 	  Builder_Get_Object(nec2_editor_builder, "nec2_cmnt_treeview") );
