@@ -1,0 +1,16 @@
+pkgbase = gruvbox-tilix-git
+	pkgdesc = Gruvbox theme for Tilix
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/MichaelThessel/tilix-gruvbox
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = tilix>=1.5
+	provides = gruvbox-tilix
+	conflicts = gruvbox-tilix
+	source = gruvbox-tilix-git::git+https://github.com/MichaelThessel/tilix-gruvbox.git
+	md5sums = SKIP
+
+pkgname = gruvbox-tilix-git
+
