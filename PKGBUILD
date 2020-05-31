@@ -1,19 +1,20 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase='python-rosdistro'
 pkgname=('python-rosdistro')
-_module='rosdistro'
 pkgver='0.8.2'
-pkgrel=1
-pkgdesc="A tool to work with rosdistro files"
-url="http://wiki.ros.org/rosdistro"
-depends=('python' 'python-catkin_pkg' 'python-rospkg' 'python-yaml')
-conflicts=('python2-rosdistro')
-makedepends=('python-setuptools')
-license=('BSD')
+pkgrel=2
+pkgdesc='A tool to work with rosdistro files'
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('aa51e08e27e59dfd26c7754dc43fb3e99f897fd9281ff64a86723b264fcbd964')
+url='https://github.com/ros-infrastructure/rosdistro'
+license=('BSD')
+depends=('python' 'python-catkin_pkg' 'python-rospkg' 'python-yaml')
+makedepends=('python-setuptools')
+
+conflicts=('python2-rosdistro')
+source=("https://github.com/ros-infrastructure/rosdistro/archive/${pkgver}.tar.gz")
+sha256sums=('ca6e7955820658781bde572927895c2ae8d89c37d5d891a254fd9cc29f9904a6')
+
+_module='rosdistro'
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
