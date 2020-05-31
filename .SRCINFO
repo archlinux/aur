@@ -1,6 +1,6 @@
 pkgbase = python-einsteinpy
 	pkgdesc = Python package for General Relativity
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://einsteinpy.org/
 	arch = i686
@@ -11,16 +11,17 @@ pkgbase = python-einsteinpy
 	checkdepends = python-astropy
 	checkdepends = python-sympy
 	checkdepends = python-plotly
+	checkdepends = python-numba>0.49.0
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/e/einsteinpy/einsteinpy-0.2.1.tar.gz
-	md5sums = 24f0ba1b00781fc3bd2cf8fa082e22ca
+	source = https://files.pythonhosted.org/packages/source/e/einsteinpy/einsteinpy-0.3.0.tar.gz
+	md5sums = 2e294b8c4ea8cbd248748cabec70bb9b
 
 pkgname = python-einsteinpy
-	depends = python>=3.5
+	depends = python>=3.6
 	depends = python-astropy
 	depends = python-matplotlib
 	depends = python-plotly>=4.0
 	depends = python-sympy>=1.1
-	optdepends = python-numba: For accelerating the code
+	depends = python-numba>0.49.0
 	optdepends = python-einsteinpy-doc: Documentation for EinsteinPy
 
