@@ -1,6 +1,6 @@
 pkgbase = git-bookmark-git
 	pkgdesc = Keep your bookmarks with your repository
-	pkgver = 0.4.2.r8.g9c258a2
+	pkgver = 0.5.1.r0.gc4ef8b4
 	pkgrel = 1
 	url = https://github.com/Qu4tro/git-bookmark
 	arch = any
