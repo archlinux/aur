@@ -2,7 +2,7 @@
 # Contributor: juan tascon <juantascon __at__ horlux org>
 
 pkgname=mongodb-shell-bin
-pkgver=4.2.6
+pkgver=4.2.7
 basever() {
   sed 's/\.[[:digit:]]\+$//' <<< "${pkgver}"
 }
@@ -15,7 +15,7 @@ provides=("mongodb=$pkgver")
 conflicts=("mongodb")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities")
 source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/$(basever)/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb" "LICENSE")
-sha256sums=('7213050af1f55a298676ac1b003276b41680994d9d13eae5d2a4be50f1f6bb92'
+sha256sums=('1751c3c412cfcec501dce519827a1be1b1d85210f1f9340eedd135b031a89cd1'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
 
 prepare() {
