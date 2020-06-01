@@ -20,7 +20,7 @@ provides=(
 )
 options=()
 source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-012a.tar.gz")
-md5sums=('23cba894f130cf5207c4cd71cd5b2bb9')
+md5sums=('01affa248ef47b77c726d300364c4fa3')
 
 build() {
   cd qdvdauthor-${pkgver}/build
