@@ -4,13 +4,14 @@
 pkgname="python-django-markdownx-git"
 pkgver=1.0
 pkgrel=1
-
+pkgdesc="Comprehensive Markdown plugin built for Django"
 arch=("any")
-url="https://neutronx.github.io/django-markdownx/"
+url="https://github.com/neutronX/django-markdownx"
+license=("bsd")
 
 provides=("python-django-markdownx")
 
-source=("$pkgname::git+https://github.com/neutronX/django-markdownx")
+source=("$pkgname::git+$url")
 
 depends=("python" "python-django" "python-pillow" "python-markdown")
 makedepends=("python-setuptools")
@@ -28,6 +29,8 @@ build() {
 package() {
 	cd $pkgname
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	
+	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/python-django-markdownx/LICENSE
 }
 
 md5sums=("SKIP")

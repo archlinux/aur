@@ -1,8 +1,10 @@
 pkgbase = python-django-markdownx-git
+	pkgdesc = Comprehensive Markdown plugin built for Django
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://neutronx.github.io/django-markdownx/
+	url = https://github.com/neutronX/django-markdownx
 	arch = any
+	license = bsd
 	makedepends = python-setuptools
 	depends = python
 	depends = python-django
