@@ -1,10 +1,11 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
+# Contributor: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 # PKGBUILD script for git-bookmark upstream, git version
 # Keep your bookmarks with your repository
 _pkgname=git-bookmark
 pkgname=$_pkgname-git
-pkgver=0.4.2.r8.g9c258a2
+pkgver=0.5.1.r0.gc4ef8b4
 pkgrel=1
 pkgdesc="Keep your bookmarks with your repository"
 arch=('any')
