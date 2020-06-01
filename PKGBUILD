@@ -6,7 +6,7 @@
 pkgname=soulseekqt
 pkgver=20180130
 _pkgver=2018-1-30
-pkgrel=11
+pkgrel=12
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
@@ -41,7 +41,7 @@ package() {
     chmod 755 -R "$pkgdir/opt/$pkgname"
     # This fix context menu on right click in search results
     rm "$pkgdir/opt/$pkgname/lib/libfreetype.so.6"
-    rm -rf "$pkgdir/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}"
+    rm -rf "$pkgdir"/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}
 }
 
 md5sums=('1d98331893bc9b9d45ba34f6523353ab'
