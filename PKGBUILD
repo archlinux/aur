@@ -7,17 +7,16 @@
 
 _name='rezound'
 pkgname="${_name}-git"
-_pkgver='latest'
-# pkgver="${_pkgver}"
-pkgver="${_pkgver}"
+#_pkgver='latest'
+ pkgver="${_pkgver}"
+pkgver="latest"
 # pkgver='0.13.1beta.r2022M.date20131229'
 pkgrel=2
 pkgdesc="A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins."
 arch=('i686' 'x86_64')
 url='http://rezound.sourceforge.net/'
 
-#_svntrunk="http://svn.code.sf.net/p/${_name}/code/trunk"
-# _svntrunk="http://${_name}.svn.sourceforge.net/svnroot/${_name}/trunk"
+
 
 license=('GPL')
 depends=(
@@ -69,6 +68,10 @@ sha256sums=(
            )
 
 
+_pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   msg "Starting build..."
