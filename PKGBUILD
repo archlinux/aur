@@ -3,7 +3,7 @@
 # 
 
 pkgname=idris2-git
-pkgver=0.2.0.r30.g8b062f4
+pkgver=0.2.0.r100.ge4c6aa2
 pkgrel=1
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
@@ -13,13 +13,13 @@ depends=('chez-scheme')
 makedepends=('git')
 provides=('idris2')
 conflicts=('idris2')
-source=('git+https://github.com/idris-lang/idris2.git')
+source=('git+https://github.com/idris-lang/Idris2.git')
 md5sums=('SKIP')
 
-_srcname="idris2"
+_srcname="Idris2"
 
 pkgver() {
-    cd idris2
+    cd $_srcname
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
