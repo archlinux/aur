@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.0.0.r4.g7465330
+pkgver=0.0.0.r7.g3023d03
 pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
 license=('Apache-2.0')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 optdepends=('bash-completion')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,8 +22,11 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 	go build \
 		-trimpath \
-		-ldflags "-extldflags $LDFLAGS" \
-		-o ${pkgname%-git} .
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
+		-o "${pkgname%-git}" .
 }
 
 package() {
