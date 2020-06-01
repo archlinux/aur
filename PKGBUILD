@@ -14,11 +14,11 @@ _java_ver=8
 _jdk_update=262
 _jdk_build=02
 _repo_ver=aarch64-shenandoah-jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url='http://openjdk.java.net/'
+url='https://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc' 'giflib'
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc8' 'giflib'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah
 pkgver=${_java_ver}.u${_jdk_update}b${_jdk_build}
@@ -75,7 +75,7 @@ build() {
   export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
-  sh configure \
+  CC=gcc-8 CXX=g++-8 sh configure \
     --prefix="${srcdir}/${_prefix}" \
     --with-update-version="${_jdk_update}" \
     --with-build-number="b${_jdk_build}" \
@@ -112,10 +112,10 @@ build() {
   find . -iname '*.debuginfo' -exec rm {} \;
 }
 
-#check() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  make -k check
-#}
+check() {
+  cd "${srcdir}/jdk8u-shenandoah-${_repo_ver}"
+  make -k test
+}
 
 package_jre8-openjdk-shenandoah-headless() {
   pkgdesc='OpenJDK Java 8 headless runtime environment'

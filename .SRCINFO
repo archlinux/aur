@@ -1,14 +1,14 @@
 pkgbase = java8-openjdk-shenandoah
 	pkgver = 8.u262b02
-	pkgrel = 1
-	url = http://openjdk.java.net/
+	pkgrel = 2
+	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
 	makedepends = java-environment=8
 	makedepends = cpio
 	makedepends = unzip
 	makedepends = zip
-	makedepends = gcc
+	makedepends = gcc8
 	makedepends = giflib
 	makedepends = libxrender
 	makedepends = libxtst
@@ -48,7 +48,7 @@ pkgname = jre8-openjdk-shenandoah-headless
 pkgname = jre8-openjdk-shenandoah
 	pkgdesc = OpenJDK Java 8 full runtime environment
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-shenandoah-headless=8.u262b02-1
+	depends = jre8-openjdk-shenandoah-headless=8.u262b02-2
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -63,7 +63,7 @@ pkgname = jdk8-openjdk-shenandoah
 	pkgdesc = OpenJDK Java 8 development kit
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-shenandoah=8.u262b02-1
+	depends = jre8-openjdk-shenandoah=8.u262b02-2
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	provides = java-environment-openjdk-shenandoah=8
