@@ -13,10 +13,14 @@ conflicts=('dxhd-bin')
 source=("$pkgname::git+https://github.com/dakyskye/dxhd.git")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$pkgname"
+	git rev-parse --short HEAD
+}
 
 build() {
 	cd "$pkgname"
-	GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=master-$(git rev-parse --short HEAD) " -o $pkgname .
+	GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=master-$pkgver" -o $pkgname .
 }
 
 package() {
