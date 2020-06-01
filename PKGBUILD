@@ -2,7 +2,7 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-kombu
-pkgver=4.6.8
+pkgver=4.6.9
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -22,11 +22,11 @@ optdepends=('python-pymongo: for MongoDB support'
             # 'python-kazoo: for Zookeeper support': Not packaged yet
             # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-redis' 'python-yaml' 'python-msgpack' 'python-pycurl'
+checkdepends=('python-pytest' 'python-redis' 'python-yaml' 'python-msgpack' 'python-pycurl'
               'python-case' 'python-pymongo' 'python-pytz' 'python-pytest-sugar' 'python-sqlalchemy'
               'python-pyro' 'python-boto3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/celery/kombu/archive/$pkgver.tar.gz")
-sha512sums=('e9fee7dc126d7f17e36029289285fecfa4c497f813f8e5e58af60761a6e4e9536778c8a9744778ce83fa0271ba630bb06f87ffc65e2fff721195ee6245eb68be')
+sha512sums=('7f80ab3b9210d372da297735610cf423e49afaaaac320f63bd62dbc53cf5aebfdca71142fe758557bc96adc43cf05f7dc191fad5fbe6b7cb9493df37cad1bbb8')
 
 build() {
   cd kombu-$pkgver
@@ -35,7 +35,7 @@ build() {
 
 check() {
   cd kombu-$pkgver
-  python setup.py pytest
+  python -m pytest
 }
 
 package() {
