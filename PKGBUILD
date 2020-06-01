@@ -1,7 +1,7 @@
 # Maintainer: Michaël Lhomme <papylhomme at gmail dot com>
 
 pkgname=diskmonitor
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="KDE tools to monitor SMART devices and MDRaid health status"
 arch=('i686' 'x86_64')
