@@ -1,0 +1,21 @@
+diff --git a/ReClass.NET/UI/ScrollableCustomControl.cs b/ReClass.NET/UI/ScrollableCustomControl.cs
+index 4de6a4d..e5c05b7 100644
+--- a/ReClass.NET/UI/ScrollableCustomControl.cs
++++ b/ReClass.NET/UI/ScrollableCustomControl.cs
+@@ -2,6 +2,7 @@
+ using System.Diagnostics.Contracts;
+ using System.Runtime.InteropServices;
+ using System.Windows.Forms;
++using ReClassNET.Native;
+ 
+ namespace ReClassNET.UI
+ {
+@@ -213,7 +214,7 @@ namespace ReClassNET.UI
+ 				case ScrollEventType.ThumbTrack:
+ 				case ScrollEventType.ThumbPosition:
+ 					
+-					if (GetScrollInfo(new HandleRef(this, Handle), bar, scrollinfo))
++					if (!NativeMethods.IsUnix() && GetScrollInfo(new HandleRef(this, Handle), bar, scrollinfo))
+ 					{
+ 						SetValue(type, scrollProperties, scrollinfo.nTrackPos);
+ 					}
