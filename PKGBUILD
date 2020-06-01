@@ -70,7 +70,6 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
-  [libevent]=libevent
   [libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
   [libvpx]=libvpx
