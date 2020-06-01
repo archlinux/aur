@@ -1,21 +1,21 @@
 pkgbase = git-git
 	pkgdesc = A fast distributed version control system
-	pkgver = 2.19.0.rc2.r0.gc05048d439
+	pkgver = 2.27.0.rc2.r128.g56219baf1e
 	pkgrel = 1
 	url = http://git-scm.com/
 	install = git-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = python2
+	makedepends = python
 	makedepends = xmlto
 	makedepends = asciidoc
 	makedepends = libgnome-keyring
 	makedepends = git
 	depends = curl
-	depends = expat>=2.0
+	depends = expat
 	depends = perl-error
-	depends = perl>=5.14.0
+	depends = perl
 	depends = openssl
 	depends = perl-mailtools
 	depends = pcre2
@@ -31,21 +31,20 @@ pkgbase = git-git
 	optdepends = perl-datetime-format-iso8601: git mediawiki support
 	optdepends = perl-lwp-protocol-https: git mediawiki https support
 	optdepends = perl-cgi: gitweb (web interface) support
-	optdepends = python2: various helper scripts
+	optdepends = python: various helper scripts
 	optdepends = subversion: git svn
-	optdepends = cvsps2: git cvsimport
-	optdepends = gnome-keyring: GNOME keyring credential helper
+	optdepends = org.freedesktop.secrets: keyring credential helper
 	optdepends = libsecret: libsecret credential helper
 	provides = git
 	conflicts = git
 	source = git+https://github.com/git/git.git
 	source = git-daemon@.service
 	source = git-daemon.socket
-	source = git.sysusers
+	source = git-sysusers.conf
 	sha512sums = SKIP
 	sha512sums = 1cfed9796391a5339db75e6a2ca4c83760da3445d52cc5b3dcf0ccf1fe33bddf7ab7e74f49011b9543bce330517200513bd442c59767e5de65d37bc9d4a686d0
 	sha512sums = bd4aff421e547044a2a91b8a77c86ce14f05321008aa2e28aab35154b297803ca716ccba3e0fca3805033d4adb455adb41086ceeca98200b8006582c13f2c7d3
-	sha512sums = 17c6a884904d7336ea9975d28a15298fdc6d3ba8d00c3fc8a0f739b8e2e31e9fe4c558228f5a8509ec3c4481211e83575cf4b0d57dfc8f648c7c1b0729ee4bee
+	sha512sums = 4d4b434c2c317388ed6d3bdd87b1e8acb6c845b58be7bd1466e73a210cc824d53185fad302c5fffc1328f0c25300050843f343f37d36700a981e3c11322ea0cc
 
 pkgname = git-git
 
