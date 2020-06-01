@@ -3,8 +3,8 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.6.7.r206.gc8c7518e97f7d
-_kernel_rel=5.6
+pkgver=5.7.r48.g5b1497bfe6030
+_kernel_rel=5.7
 _branch=pf-${_kernel_rel}
 _product=linux-pf
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
   pf_defconfig
   sphinx-workaround.patch)
 sha256sums=('SKIP'
-            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
             '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
@@ -97,7 +97,7 @@ _package-git() {
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
-  rm "$modulesdir"/{source,build}
+  rm -f "$modulesdir"/{source,build}
 }
 
 _package-headers-git() {
