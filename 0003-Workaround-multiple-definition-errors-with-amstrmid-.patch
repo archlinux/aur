@@ -1,0 +1,30 @@
+From 901bf854204cb2f9a4df9b9771183971f3c2f609 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 23 May 2020 15:43:20 +0200
+Subject: [PATCH 3/3] Workaround "multiple definition" errors with
+ amstrmid/strmiids
+
+---
+ src/plugins/directshow/directshow.pro | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/directshow/directshow.pro b/src/plugins/directshow/directshow.pro
+index 27bb3abb..0cce6f20 100644
+--- a/src/plugins/directshow/directshow.pro
++++ b/src/plugins/directshow/directshow.pro
+@@ -16,8 +16,11 @@ mingw {
+     DEFINES += NO_DSHOW_STRSAFE
+ }
+ 
++# Link against amstrmid for IID_IMFVideoDeviceID, IID_IMFVideoPresenter, IID_IMFTopologyServiceLookupClient
++# and IID_IMFTopologyServiceLookupClient; add -Wl,--allow-multiple-definition to workaround conflicts with
++# strmiids which contains symbols also required but not provided by amstrmid
+ mingw {
+-    LIBS_PRIVATE += -lamstrmid
++    LIBS_PRIVATE += -Wl,--allow-multiple-definition -lamstrmid
+ }
+ 
+ include(common/common.pri)
+-- 
+2.26.2
+
