@@ -1,0 +1,10 @@
+post_install () {
+  echo "To restore the system time on boot, save the time on shutdown and"
+  echo "periodically save the system time in case of power failure:"
+  echo "  systemctl enable fake-hwclock fake-hwclock-save.timer"
+  echo "  systemctl start fake-hwclock"
+}
+
+post_upgrade () {
+  post_install
+}

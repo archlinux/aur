@@ -1,0 +1,18 @@
+pkgbase = fake-hwclock
+	pkgdesc = Saves time on shutdown and restores it on boot from a file
+	pkgver = 0.3
+	pkgrel = 1
+	install = fake-hwclock.install
+	arch = any
+	license = GPL
+	source = fake-hwclock.sh
+	source = fake-hwclock.service
+	source = fake-hwclock-save.service
+	source = fake-hwclock-save.timer
+	md5sums = ebba7a7f7e4018dc756aab29877bec39
+	md5sums = fa52aac3db246575c3cc8c1bf608766c
+	md5sums = 9f93ed2b74260d204a9c285d35ee2daa
+	md5sums = b2b494cb4ba99eb12df3cb4188902ca4
+
+pkgname = fake-hwclock
+
