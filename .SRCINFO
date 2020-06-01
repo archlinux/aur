@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 9.20180625
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = gimp-plugin-registry
 	depends = liblqr>=0.4.0
 	depends = libtiff>=4.0.3
 	depends = xdg-utils
+	depends = python2-gimp
 	optdepends = adobe-icc: ICC profiles from Adobe
 	provides = gimp-dbp
 	provides = gimp-elsamuko-scripts
