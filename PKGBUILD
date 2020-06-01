@@ -18,9 +18,9 @@ depends=('leveldb'
 makedepends=('python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
-url="https://github.com/kyuupichan/electrumx"
+url="https://github.com/spesmilo/electrumx"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/spesmilo/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service'
         'electrumx.sysusers')
