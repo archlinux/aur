@@ -5,13 +5,12 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=84.0.4128.3 
+pkgver=85.0.4158.4
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
-options=(debug !strip)
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
@@ -29,37 +28,34 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('ad9f8fcbfc087d9726576f8cec0aa2107d0b33f2e8680d857c79e92542600e9d'
+sha256sums=('6a38f142ffd5c222e7019a55602df89016ec8a2160fba75b4575e2ad17824b12'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [ffmpeg]=ffmpeg
+  # [ffmpeg]=ffmpeg # broken with recent ffmpeg git
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  #[harfbuzz-ng]=harfbuzz
-  #[icu]=icu
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
   [libdrm]=
-  #[libjpeg]=libjpeg
+  [libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
   [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  #[re2]=re2
+  # [re2]=re2 # Not possible with custom libcxx
   [snappy]=snappy
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
-  ${!_system_libs[@]}
-  ${libjpeg_turbo}
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
 )
 depends+=(${_system_libs[@]})
 
@@ -70,7 +66,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 759067
+# Branch point: 772468
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
@@ -90,10 +86,6 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
-
-  # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
-  # M79 is supposed to download it as a component but it doesn't seem to work
-  patch -Np1 -i ../chromium-widevine.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -118,6 +110,7 @@ prepare() {
     find "third_party/$_lib" -type f \
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
+      \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -143,7 +136,6 @@ build() {
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'linux_use_bundled_binutils=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'use_ozone=true'
@@ -153,7 +145,6 @@ build() {
     'use_glib=true'
     'use_system_libwayland=true'
     'use_vaapi=false'
-    'use_jumbo_build=false'
     'enable_nacl=false'
     'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
@@ -190,7 +181,6 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/crashpad_handler "$pkgdir/usr/lib/chromium/crashpad_handler"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
