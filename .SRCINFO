@@ -7,6 +7,7 @@ pkgbase = multimonitorlock
 	arch = any
 	license = GNU General Public License v3.0
 	depends = i3lock-color
+	depends = multimonitorlock-gui
 	depends = imagemagick
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
@@ -19,3 +20,4 @@ pkgbase = multimonitorlock
 	md5sums = SKIP
 
 pkgname = multimonitorlock
+
