@@ -29,7 +29,7 @@ pkgbase = balena-etcher
 	source = balena-etcher-electron.sh
 	source = balena-etcher-electron.desktop
 	sha256sums = SKIP
-	sha256sums = f68042a2f233111e35378fe4dc57c484503aca34b94433eaad406bbcabecad08
+	sha256sums = adfeb24db224231491165ae1552fabce56a76dca45d301982790977dbf28f9ac
 	sha256sums = c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754
 
 pkgname = balena-etcher
