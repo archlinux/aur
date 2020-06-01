@@ -3,9 +3,9 @@
 
 pkgname=mozilla-firefox-sync-server-git
 pkgver=1.8.0.r67.g516807e
-pkgrel=2
+pkgrel=3
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync - 1.5+ version for Firefox 29+"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
 license=('MPL2')
 depends=('python2' 'python2-virtualenv')
@@ -43,7 +43,13 @@ build() {
 	cd ${pkgname}
 	make build
 
-	# PostgreSQL support (please uncomment)
+	# SQLite support
+	#local/bin/pip install pysqlite2
+
+	# MySQL support (should already be included)
+	#local/bin/pip install PyMySQL
+
+	# PostgreSQL support
 	#local/bin/pip install psycopg2
 
 	# There is no install target in the Makefile, so let's do some cleaning
