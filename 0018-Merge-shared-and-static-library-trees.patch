@@ -1,4 +1,4 @@
-From 7cfd69a804680ba04a89bc921f5e35a5add12fd4 Mon Sep 17 00:00:00 2001
+From 10d0bde7bad521e00055177d7165df33b641f539 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/31] Merge shared and static library trees
@@ -17,10 +17,10 @@ Change-Id: I1de08df42d83d411aae519691cd3cde1fd6f3d1d
  7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 81c84b28ef..910e59188f 100644
+index e775bf046e..8b968ba297 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -648,7 +648,12 @@ defineTest(qtConfOutput_machineTuple) {
+@@ -652,7 +652,12 @@ defineTest(qtConfOutput_machineTuple) {
  
  defineTest(qtConfOutput_commitOptions) {
      # qdevice.pri needs to be written early, because the compile tests require it.
@@ -34,7 +34,7 @@ index 81c84b28ef..910e59188f 100644
  }
  
  # type (empty or 'host'), option name, default value
-@@ -1387,3 +1392,12 @@ defineTest(createConfigStatus) {
+@@ -1391,3 +1396,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -89,7 +89,7 @@ index c15559e174..dd09ac749d 100644
  unset(DEVICE_PRI)
  
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 3a71376029..bbada46c29 100644
+index 99b7fe6562..f996e53d2c 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -232,6 +232,23 @@ for(ever) {
@@ -139,10 +139,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 9c65f21ac0..f79512ca60 100644
+index 8e4d11484f..c73b19c144 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3232,6 +3232,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3228,6 +3228,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -152,7 +152,7 @@ index 9c65f21ac0..f79512ca60 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3408,11 +3411,11 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3404,11 +3407,11 @@ MakefileGenerator::writePkgConfigFile()
      t << Qt::endl;
  
      // requires
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.26.1
+2.26.2
 

@@ -1,4 +1,4 @@
-From 9e55df2614a99e6fce2460ea3f32c1039bc9f0e6 Mon Sep 17 00:00:00 2001
+From 9cc80f62ffaec0261b0d554f80ff1413aa46d4d7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 25 Aug 2017 17:07:17 +0200
 Subject: [PATCH 30/31] Fix linking against static plugins with qmake
@@ -11,7 +11,7 @@ approach
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index d6299d8eed..5311748953 100644
+index 4632cb8b30..7583943bd0 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -69,7 +69,7 @@ all_qt_module_deps = $$resolve_depends(qt_module_deps, "QT.", ".depends" ".run_d
@@ -33,5 +33,5 @@ index d6299d8eed..5311748953 100644
          # Check if the plugin is known to Qt. We can use this to determine
          # the plugin path. Unknown plugins must rely on the default link path.
 -- 
-2.26.1
+2.26.2
 

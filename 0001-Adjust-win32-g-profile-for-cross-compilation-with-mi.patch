@@ -1,11 +1,11 @@
-From c416378bd70ab26f9ce9e34fe72a364dd19bae73 Mon Sep 17 00:00:00 2001
+From c06d6c088bb5bd20ef531f38beb9f5eb8b2f8045 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/31] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
-might be the cleaner solution. However tools like windeployqt and
+might be the cleaner solution. However, tools like windeployqt and
 qbs do checks based on the hardcoded mkspec name to detect MinGW.
 So for this to work, the mkspec must be called win32-g++.
 
@@ -13,15 +13,15 @@ Also see the following issues:
 * https://github.com/Martchus/PKGBUILDs/issues/59
 * https://github.com/Martchus/PKGBUILDs/issues/60
 
-Change-Id: I4c9b3c170ed13943abe0d8b397a8cb9e360538b6
+Change-Id: I127bb0516bd4acfea588a5d48c46811525a8fca8
 ---
- mkspecs/common/g++-win32.conf      | 52 ++++++++++++++++++++----------
+ mkspecs/common/g++-win32.conf      | 50 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
  mkspecs/win32-g++/qmake.conf       |  4 +--
- 3 files changed, 39 insertions(+), 21 deletions(-)
+ 3 files changed, 37 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index c3a1f3a373..5208d22bd6 100644
+index c3a1f3a373..d852ccc2ad 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -60,7 +60,7 @@ index c3a1f3a373..5208d22bd6 100644
  
  QMAKE_INCDIR            =
  
-@@ -41,40 +48,51 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
+@@ -41,40 +48,49 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
  QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
  QMAKE_LFLAGS_EXCEPTIONS_ON = -mthreads
@@ -93,12 +93,10 @@ index c3a1f3a373..5208d22bd6 100644
 -QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
 -QMAKE_LIBS_NETWORK      = -lws2_32
 +QMAKE_LIBS_CORE         = -lz -lpcre2-16 -liconv -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
-+QMAKE_LIBS_GUI          = -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
-+                            $$system($${QMAKE_PKG_CONFIG} --libs harfbuzz) \
-+                            $$system($${QMAKE_PKG_CONFIG} --libs freetype2)
-+QMAKE_LIBS_GUI_STATIC   = -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
-+                            $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) \
-+                            $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2)
++QMAKE_LIBS_GUI          = $$system($${QMAKE_PKG_CONFIG} --libs harfbuzz) $$system($${QMAKE_PKG_CONFIG} --libs freetype2) \
++                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
++QMAKE_LIBS_GUI_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2) \
++                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ldxgi -ld3d11
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
 +QMAKE_LIBS_NETWORK_STATIC = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
 +QMAKE_LIBS_DBUS         = $$system($${QMAKE_PKG_CONFIG} --libs dbus-1)
@@ -163,5 +161,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.26.1
+2.26.2
 
