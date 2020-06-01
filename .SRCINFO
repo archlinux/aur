@@ -1,7 +1,7 @@
 pkgbase = keyring
-	pkgdesc = gnome-keyring python script + plugins for various apps (irssi, vimperator, qutebroswer, msmtp and offlineimap
+	pkgdesc = gnome-keyring python script + plugins for various apps (vimperator, qutebroswer, msmtp and offlineimap)
 	pkgver = 20200517
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ervandew/keyring
 	arch = any
 	license = unknown
