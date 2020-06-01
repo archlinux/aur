@@ -20,7 +20,7 @@ _additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservic
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.14.2
+pkgver=5.15.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -33,8 +33,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('c37708bc396f6dac397b49a6a268d5edb39e1c8296ca2337ce9e80bde04775cc'
-            '3bd42653817aa67bc4202848628e9b01cd03356d588745734da6c54dad61ccd2')
+sha256sums=('c68b0778a521e5522641c41b1778999dd408ebfda1e0de166a83743268be5f3f'
+            '986e6bf33dfb3e85fa7b46cdcb954899e4c66345dcb18008c5cf748660c797b3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
