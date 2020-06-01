@@ -2,8 +2,8 @@
 
 _pkgbase=droidcam
 pkgname=droidcam-dkms-git
-_pkgver=6.7.7
-pkgver=6.7.7.r46.98cbf07
+_pkgver=6.7.8
+pkgver=6.7.8.r55.cea6121
 pkgrel=1
 pkgdesc="A tool for using your android device as a wireless/usb webcam (DKMS)"
 arch=('x86_64')
@@ -20,13 +20,13 @@ source=("${pkgname}"::"git+https://github.com/aramg/droidcam"
         "$_pkgbase.desktop"
         "Makefile.dkms")
 md5sums=('SKIP'
-         '5ff0e772a76befba4e37e03101b611d7'
+         'fb7d7fa80a8e47a98868941939104636'
          '3be4282edbff37ee6649c7c06c276003'
          '0f0e1d04146dd5be70d5028f144bd0a2'
          '22b9912d96bc7691dfb6b7f82ec0306d'
          'c4417957cf66d4e647c7d140fbaa13cd')
 sha512sums=('SKIP'
-            '06af4dcf187b4ce03ea328658844d2f8e65034b83f9600a092d739dce72626572c7384ef7f669eda012563246483c31919183bd6e131ddea969e5361c418a64f'
+            '73f622caff2654852bae6ec89a7b28c4afacc7329d291a3121ad13d0fbcf0c3b8a5d6e6941bbaa7ba33d8ebb347bb4afd390e2180b8cc89cf6d8afbd6583ea2e'
             'd1af1b94193fa65f42ca7fdc3b81180d8f141e72ead6b80e13a103e817cbcaf1470cbb9f97e8eb6c2f3012f1f2c3d3bbc9887a10f3def8fb80f1c12c7e9184de'
             '4cedbc823498a1ff70f6df1d312f29fa609c1316d15bbc8a23c5aa5055b87cb2d156e6da12aefa0195e1adbe65b94e6a79ae799083f9da4a959c21796280c491'
             '38e7e987e71696a209dde7cafe03e0910606d0dfd45aa1829910cbc40a336464bc8299c4fef0a32f0f74914537704f242331f8dae55cdf1884291866ea8a1e4c'
