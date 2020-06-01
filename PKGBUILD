@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=epr-git
-pkgver=2.4.8
+pkgver=2.4.8.r130.81a75bd
 pkgrel=1
 pkgdesc="CLI Epub Reader"
 arch=(any)
@@ -14,6 +14,11 @@ provides=(epr)
 conflicts=(epr)
 source=("git+https://github.com/wustho/epr.git")
 md5sums=("SKIP")
+
+pkgver() {
+  cd "$pkgname"
+  printf "%s.r%s.%s" "$(grep -F '__version__ =' epr.py | awk -F\" '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "$srcdir/${pkgname/-git/}"
