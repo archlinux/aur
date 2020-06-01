@@ -2,15 +2,15 @@
 #             jgottula
 
 pkgname=vdo
-pkgrel=2
-pkgver=6.2.2.117
+pkgrel=1
+pkgver=6.2.3.91
 pkgdesc='Userspace tools for managing VDO volumes'
 arch=('x86_64')
 url="https://github.com/dm-vdo/vdo"
 license=('GPL2')
 depends=('kvdo-dkms' 'python-yaml' 'device-mapper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/vdo/archive/$pkgver.tar.gz")
-sha256sums=('b9ff603fcec476a9cf4affc6a7e4aa93cb0f9ea668b2c9bff58e038f5b3da4e8')
+sha256sums=('17cab1d1f5394d40a92684840e685800a59a25daa1869ae1004478f0f590dcfc')
 
 build() {
   cd "$pkgname-$pkgver"
