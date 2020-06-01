@@ -1,0 +1,24 @@
+pkgbase = textshot-git
+	pkgdesc = Python tool for grabbing text via screenshot
+	pkgver = r40.fabf700
+	pkgrel = 1
+	url = https://github.com/ianzhao05/textshot
+	arch = any
+	license = MIT
+	depends = tesseract
+	depends = python-entrypoint2
+	depends = python-easyprocess
+	depends = python-mss
+	depends = python-pillow
+	depends = python-pyperclip
+	depends = python-pyqt5
+	depends = python-pyqt5-sip
+	depends = python-pyscreenshot
+	depends = python-pytesseract
+	provides = textshot
+	conflicts = textshot
+	source = textshot::git+https://github.com/ianzhao05/textshot.git
+	sha256sums = SKIP
+
+pkgname = textshot-git
+
