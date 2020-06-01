@@ -2,7 +2,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=yamc-git
-pkgver=0.0.1.r1
+provides=("yamc")
+conflicts=("yamc")
+pkgver=0.0.1.r2
 pkgrel=1
 pkgdesc="C++ mutex (mutual exclusion primitive for multi-threading) collections. This is header-only, cross-platform, no external dependency C++11 library."
 url="https://github.com/yohhoy/yamc"
