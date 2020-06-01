@@ -4,8 +4,8 @@
 # Past Contributor: James An <james@jamesan.ca>
 
 pkgname=droidcam
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
@@ -16,12 +16,12 @@ makedepends=('gtk2')
 optdepends=('gtk2: use GUI version in addition to CLI interface' )
 
 source=("${pkgname}.desktop"
-        "${pkgname}-${pkgver}.zip::https://github.com/aramg/${pkgname}/archive/v${pkgver}.zip"
+        "${pkgname}-${pkgver}.zip::https://github.com/aramg/${pkgname}/releases/download/${pkgver}/${pkgname}_1590948242.zip"
         "${pkgname}.conf"
 )
 
 sha512sums=('72d21aa2d7eecc9bb070aaf7059a671246feb22f9c39b934a5463a4839f9347050de00754e5031dbc44f78eb2731f58f0cd2fcf781bc241f6fbd1abb4308b7ee'
-            'f02a76eb5323b62db9a54107a42e2150e2dfc27ab0acb5600ec0ed09e0512c2b7a21dd2105125d4f4d482348c807bf87f2d96131ce5b46e89d60a3b6f67d3a53'
+            '73f622caff2654852bae6ec89a7b28c4afacc7329d291a3121ad13d0fbcf0c3b8a5d6e6941bbaa7ba33d8ebb347bb4afd390e2180b8cc89cf6d8afbd6583ea2e'
             'ea457b46a2fc9f1a3ea8e99f2cd0771a587cff89f42335fdaf55988dda0376a1fea73b660174c9f1906a304bace68bffec30b70b20dafc05ebae8854d9aadb13'
 )
 
