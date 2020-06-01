@@ -1,0 +1,23 @@
+pkgbase = marblemarcher-git
+	pkgdesc = Community Version of the game Marble Marcher, where you explore 3D raymarched fractals by controlling a marble
+	pkgver = v1.4.2.r54.gec85f58
+	pkgrel = 1
+	url = https://github.com/WAUthethird/Marble-Marcher-Community-Edition
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	depends = eigen
+	depends = sfml
+	depends = anttweakbar
+	depends = glm
+	provides = marblemarcher
+	source = marblemarcher::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#branch=master
+	source = marblemarcher.desktop
+	sha256sums = SKIP
+	sha256sums = 902387d9365654b4a8225c5e99b972f696a981f396adc576feb2d830e39f8890
+
+pkgname = marblemarcher-git
+

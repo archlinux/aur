@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Marble Marcher
+Comment=Explore Raymarched 3D Fractals
+Path=/opt/marblemarcher
+Exec=/opt/marblemarcher/MarbleMarcher
+Icon=/opt/marblemarcher/images/icon.ico
+Terminal=false
+Categories=Game;
