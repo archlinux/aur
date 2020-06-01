@@ -25,7 +25,7 @@ pkgbase = ipxe-netboot
 	sha256sums = 3ba0cf390975bb07bf1d3c7ff802d6977bdf901c94883ea2de44c16d444252e5
 	sha256sums = 64d021f345a0b4633de17ba43d816295076adc8a378eaa54e6796e8c0e95d6d0
 	sha256sums = 139a5e4a4e0fa505378c72c5f700934ce8333f4e6b1b508886c4b0eb14f4be99
-	sha256sums = 63cdadea20fd5ba0f1a632d1ebd34e7b3d91f08b88a3b43508cc825bb42e55a4
+	sha256sums = c485ec0609580bedceb22b008cc7fcadebd30af94b5c42f7ceecd0c40b9abbbe
 
 pkgname = ipxe-netboot
 
