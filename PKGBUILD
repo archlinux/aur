@@ -138,7 +138,7 @@ prepare() {
   patch -Np1 -i ../fix-intel-vaapi-wayland.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$pkgname-$_ungoogled_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
