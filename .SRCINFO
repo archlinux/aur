@@ -1,15 +1,15 @@
-pkgbase = qt-logout
+pkgbase = multimonitorlock-gui
 	pkgdesc = Logout script for qt5
-	pkgver = 1.0.2
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/qt-logout
+	url = https://github.com/TheCynicalTeam/multimonitorlock-gui
 	arch = any
 	license = GNU General Public License v3.0
 	depends = python-pyqt5
 	depends = multimonitorlock
 	depends = gtk-engine-murrine
-	source = https://github.com/TheCynicalTeam/qt-logout/archive/1.0.2-1.tar.gz
-	sha256sums = 71849cb95a1c68476aaebb02b1d6cf0f7526eebad0fb67299fbdfa20b463096b
+	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/1.0.0-1.tar.gz
+	sha256sums = 4f96b63a53cc0db3bf9d6c77164c1cf4c37663a142a151e17b08891a11e2b157
 
-pkgname = qt-logout
+pkgname = multimonitorlock-gui
 
