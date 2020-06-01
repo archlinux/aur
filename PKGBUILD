@@ -2,29 +2,29 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_variants_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='2'
+pkgver='0.14.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of accessor and iteration functions for ocaml variant types'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-variantslib>=0.13.0' 'ocaml-ppxlib>=0.9.0')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-variantslib>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6a88116a8a7bb5689c7c855578bb841b904908c330f40aa4ff662dc8162893c3')
+sha256sums=('3b4559901173a39dc7b7fab99777d661abdc9ed2da1ce268d18e4cf0b785d6b4')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
