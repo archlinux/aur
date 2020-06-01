@@ -2,3 +2,4 @@ linux-cli
 src/
 pkg/
 *.pkg.*
+*.log

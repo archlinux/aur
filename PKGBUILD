@@ -1,18 +1,19 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: exprez135 <exprezdev at pm dot me>
+# Based on protonvpn-cli-ng: Nate Ijams ~ exprez135 <exprezdev at pm dot me>
 
 pkgname=protonvpn-cli-ng-git
-product=protonvpn-cli-ng
-pkgver=2.2.2.r0.ga5f1c61
+pkgver=2.2.3.r2.gdd0aab7
 pkgrel=1
-pkgdesc="ProtonVPN CLI tool for protonvpn.com"
+pkgdesc="A Linux CLI for ProtonVPN."
 arch=("any")
 url="https://github.com/ProtonVPN/linux-cli"
 license=("GPLv3")
-depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests")
+depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests" "python-jinja")
+makedepends=("git")
 replaces=("protonvpn-cli")
-conflicts=("${product}")
-provides=("${product}")
+_product=protonvpn-cli-ng
+conflicts=("${_product}")
+provides=("${_product}")
 _src_name=linux-cli
 source=("git+${url}")
 sha256sums=("SKIP")
@@ -23,8 +24,7 @@ pkgver() {
 }
 
 package() {
-    cd "${_src_name}"
-
-    python setup.py install --optimize=1 --root="${pkgdir}"
-    install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${_src_name}"
+  python setup.py install --optimize=1 --root="$pkgdir" 
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
