@@ -8,13 +8,13 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.4
 _channel=stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'go-pie' 'rust' 'npm' 'python')
+makedepends=('git' 'go' 'rust' 'npm' 'python')
 optdepends=('bash-completion')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
@@ -58,7 +58,10 @@ build() {
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	go build \
 		-trimpath \
-		-ldflags "-extldflags $LDFLAGS" \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
 		-buildmode c-archive
 
