@@ -1,4 +1,4 @@
-From 718ed1a58165a785123450d2e00ceaef0d1121e5 Mon Sep 17 00:00:00 2001
+From 51188881323e4563e58e6e32b4ac30478c5e56ef Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:58:25 +0200
 Subject: [PATCH 14/31] Fix linking against shared/static PostgreSQL
@@ -8,10 +8,10 @@ Subject: [PATCH 14/31] Fix linking against shared/static PostgreSQL
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/plugins/sqldrivers/configure.json b/src/plugins/sqldrivers/configure.json
-index 9c8475439f..478c669e88 100644
+index 7262914c64..852ba558be 100644
 --- a/src/plugins/sqldrivers/configure.json
 +++ b/src/plugins/sqldrivers/configure.json
-@@ -88,9 +88,9 @@
+@@ -90,9 +90,9 @@
              },
              "headers": "libpq-fe.h",
              "sources": [
@@ -24,5 +24,5 @@ index 9c8475439f..478c669e88 100644
              ]
          },
 -- 
-2.26.1
+2.26.2
 
