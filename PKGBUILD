@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kpt
-pkgver=0.17.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Toolkit to manage, manipulate, customize, and apply Kubernetes Resource configurations'
 arch=('x86_64')
@@ -10,19 +10,29 @@ depends=('git')
 makedepends=('go')
 install=kpt.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/kpt/archive/v${pkgver}.tar.gz")
-sha256sums=('460f54e3d0cff3ae5edf9f1bf5268d219c44c7c01d0ddf9e1d6f33f0ab01ddb8')
+sha256sums=('19db15baceb358c6655b773463219a9669584506ef0b73bdfe16773a6a36525f')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
   go build -o "$pkgname"
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  # tests rely on git identity being present. fails in clean chroot env
-  #go test ./...
+  # ./internal only. we don't want e2e tests
+  # still git identity requires...
+  #go test -short -failfast ./internal/...
 }
 
 package() {
