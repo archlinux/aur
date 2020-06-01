@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='base'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.2'
-pkgrel='2'
+pkgver='0.14.0'
+pkgrel='1'
 pkgdesc='Full standard library replacement for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.07.0' 'ocaml-sexplib0')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.07.0' 'ocaml-sexplib0>=0.14.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fc5d761a46ec328418c97779cba3ea7231d1632cefac651679cd4ede26f5cd5a')
+sha256sums=('76068b7da6f5c23c006ed9a5740a3ddc5b656ce828dc5787c53c79e67953f278')
 
 _sourcedirectory="$_projectname-$pkgver"
 
