@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_cold
 	pkgdesc = Expands [@Cold] into [@inline never][@specialise never][@Local never]
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/janestreet/ppx_cold
 	arch = x86_64
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = ocaml-ppx_cold
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=1.5.1
+	makedepends = dune>=2.0.0
 	depends = ocaml>=4.04.2
-	depends = ocaml-base>=0.13.0
-	depends = ocaml-ppxlib>=0.9.0
+	depends = ocaml-base>=0.14.0
+	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_cold-0.13.0-2.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.13.0.tar.gz
-	sha256sums = d2e97191bdd465ad9e8f59169d48022ebfa2e21bb5ca764cd3be07d59a8e4642
+	source = ocaml-ppx_cold-0.14.0-1.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.14.0.tar.gz
+	sha256sums = 9f6479fc16dd8a7cf534058c60e3ba331628e095a06a5e4418159f6ed445647f
 
 pkgname = ocaml-ppx_cold
