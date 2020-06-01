@@ -11,7 +11,7 @@ pkgdesc="A challenging 2D motocross platform game, where physics play an importa
 arch=('i686' 'x86_64')
 url="http://xmoto.tuxfamily.org"
 license=('GPL')
-depends=('libjpeg' 'libpng' 'lua52' 'sdl_mixer' 'ode' 'curl' 'sqlite' 'sdl_ttf'
+depends=('libjpeg' 'libpng' 'lua51' 'sdl_mixer' 'ode' 'curl' 'sqlite' 'sdl_ttf'
          'sdl_net' 'glu' 'libxdg-basedir' 'libxml2')
 makedepends=('cmake' 'ninja' 'git')
 conflicts=("$_basename")
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgbase} -GNinja -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../${pkgbase} -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DLUA_INCLUDE_DIR=/usr/include/lua5.1
   ninja
   ninja xmoto_pack
 }
