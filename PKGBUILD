@@ -7,12 +7,12 @@ url="http://www.gentoo.org/proj/en/portage/index.xml"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('python' 'xmlto' 'rsync' 'eselect-git')
-source=('portage::git://anongit.gentoo.org/proj/portage.git')
+source=("${pkgname%-git}::git://anongit.gentoo.org/proj/portage.git")
 makedepends=('epydoc' 'git' 'docbook-xsl')
-install=$pkgname.install
+install="$pkgname.install"
 
 build() {
-    cd portage
+    cd "$srcdir/${pkgname%-git}"
     python setup.py build
 }
 
@@ -24,7 +24,7 @@ package() {
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     version="$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-	echo ${version#portage.}
+	echo "${version#portage.}"
 }
 
 md5sums=('SKIP')
