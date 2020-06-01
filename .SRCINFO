@@ -1,0 +1,13 @@
+pkgbase = arzte_sans
+	pkgdesc = Ärzte Sans Open Type Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.bademeister.com
+	arch = any
+	license = CC BY-NC-SA 3.0 DE
+	depends = fontconfig
+	source = https://downloads.bademeister.com/bonus/ArzteSans_OTF_1.0.zip
+	md5sums = 161eba42745cc77ed14c87a9313fd34b
+
+pkgname = arzte_sans
+
