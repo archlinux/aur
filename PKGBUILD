@@ -8,13 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2020.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'go-pie' 'rust' 'npm' 'python')
+makedepends=('git' 'go' 'rust' 'npm' 'python')
 optdepends=('bash-completion')
 install="$pkgname.install"
 _commit='ca17805ec31da8201982ef3e9082ca3376395b52'
@@ -56,7 +56,10 @@ build() {
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	go build \
 		-trimpath \
-		-ldflags "-extldflags $LDFLAGS" \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
 		-buildmode c-archive
 
