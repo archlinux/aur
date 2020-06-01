@@ -2,30 +2,42 @@
 # based on python-solid package
 
 pkgname=python-solid-git
-pkgver=r324.a70eb06
+_pkgname=solidpython
+pkgver=r476.bb341d7
+_pkgver=0.4.9
 pkgrel=1
 pkgdesc="SolidPython: OpenSCAD for Python"
 arch=('any')
 license=('LGPL2.1')
 url="https://github.com/SolidCode/SolidPython"
-makedepends=()
-provides=(python-solid)
-conflicts=(python-solid)
+makedepends=("python-setuptools" "python-poetry")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 depends=('python-euclid3' 'python-pypng' 'python-prettytable' 'python-regex')
-source=("git+https://github.com/SolidCode/SolidPython.git")
+source=("git+https://github.com/SolidCode/${_pkgname}.git")
 md5sums=(SKIP)
 
 pkgver() {
-  cd SolidPython
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd ${_pkgname}
+  poetry config virtualenvs.create false
+  poetry config cache-dir "${srcdir}/${_pkgname}/.poetry-cache"
+}
+
 build() {
-    cd ${srcdir}/SolidPython
-    python setup.py build
+  cd ${_pkgname}
+  poetry build --format sdist
+  tar xvf dist/${_pkgname}-${_pkgver}.tar.gz
+
+  cd ${_pkgname}-${_pkgver}/
+  python setup.py build
 }
 
 package() {
-    cd ${srcdir}/SolidPython
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd ${_pkgname}/${_pkgname}-${_pkgver}/
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
