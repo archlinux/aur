@@ -1,6 +1,6 @@
 pkgbase = gotop
 	pkgdesc = A terminal based graphical activity monitor inspired by gtop and vtop
-	pkgver = 3.5.1
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/xxxserxxx/gotop
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = gotop
 	license = AGPL3
 	makedepends = go
 	depends = glibc
-	source = gotop-3.5.1.tar.gz::https://github.com/xxxserxxx/gotop/archive/v3.5.1.tar.gz
-	sha256sums = 2d67778e410fc2c5fce4aca8d29a77370968919f1eefbe7b2f83b8323c4275d2
+	source = gotop-3.5.3.tar.gz::https://github.com/xxxserxxx/gotop/archive/v3.5.3.tar.gz
+	sha256sums = fd9ecc1f9fcd622dc88f93af87fdf6a12020cec424d742deb1865853b38d5605
 
 pkgname = gotop
 
