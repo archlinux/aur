@@ -5,9 +5,9 @@
 
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.10.1
+pkgver=1.11.0
 _libgit2ver="tag-005f77dca6dbe8788e55139fa1199fc94cc04f9a"
-pkgrel=3
+pkgrel=1
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('x86_64')
 url='https://github.com/romkatv/powerlevel10k'
@@ -23,9 +23,8 @@ optdepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha512sums=(
-  '4004d86ad00cec9c23f7f1af1a82708cd17fa7e5aa2eddd5300c7a900aeee8e22e50c687bb45169979c713325ed1b684110de473ff58c4edb3f284133e927cb1'
-  '1f4ff3844c19cc9fc9857191075cfdda4cf01797b86cfa9fd29ac2a8baf47051211d533fd72f2d273f8ce7c625b59dd965557d8295af084208cc7fb26ba81a34')
+sha512sums=('28177cc961f1fe5460f5ab1c792b539876f3b613d2b74df4de62ec32581e009067345ac3c98fe7350161e8df3e7774245e3df1eb933f49a0627648fded1198e1'
+            '1f4ff3844c19cc9fc9857191075cfdda4cf01797b86cfa9fd29ac2a8baf47051211d533fd72f2d273f8ce7c625b59dd965557d8295af084208cc7fb26ba81a34')
 replaces=('zsh-theme-powerlevel9k')
 
 build() {
@@ -71,7 +70,7 @@ package() {
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.vscode/"
   # unfortunetaly this is necessary. Otherwise gitstatus/install will try to
   # sideload the gitstatus binary and place it in $HOME/.cache/gitstatus/
-  mv "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/"{gitstatusd,gitstatusd-linux-x86_64}
+  mv "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/"{gitstatusd,gitstatusd-linux-$CARCH}
   # make sure to apply zsh compiling on files in pkgdir
   cd "${pkgdir}/usr/share/zsh-theme-powerlevel10k/"
   for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
