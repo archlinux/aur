@@ -1,6 +1,6 @@
 pkgbase = paexec
 	pkgdesc = Parallel executor, distributes tasks over network or CPUs
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/cheusov/paexec
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = paexec
 	makedepends = mk-configure
 	makedepends = clang
 	depends = runawk
-	source = https://github.com/cheusov/paexec/archive/paexec-1.1.3.tar.gz
-	sha256sums = 28b2abe808337b3bfcca5bc34f31b62245f9876180779f03378a3cdcceedf545
+	source = https://github.com/cheusov/paexec/archive/paexec-1.1.4.tar.gz
+	sha256sums = e0ad09598e6824e6a06f52a84c2646320b01757db757c06d340ebdbfc078d956
 
 pkgname = paexec
 
