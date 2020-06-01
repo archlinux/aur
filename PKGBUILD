@@ -3,7 +3,7 @@
 
 pkgname=mozilla-firefox-sync-server-git
 pkgver=1.8.0.r67.g516807e
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync - 1.5+ version for Firefox 29+"
 arch=('i686' 'x86_64')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
