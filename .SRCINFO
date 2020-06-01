@@ -1,4 +1,4 @@
-pkgbase = arzte_sans
+pkgbase = aerzte_sans
 	pkgdesc = Ärzte Sans Open Type Font
 	pkgver = 1.0
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = arzte_sans
 	source = https://downloads.bademeister.com/bonus/ArzteSans_OTF_1.0.zip
 	md5sums = 161eba42745cc77ed14c87a9313fd34b
 
-pkgname = arzte_sans
+pkgname = aerzte_sans
 

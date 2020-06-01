@@ -1,7 +1,7 @@
 # Maintainer: Frank Zimmermann <veltheimer_frank at t-online.de>
 
-pkgname=arzte_sans
-_pkgname=arzte_sans
+pkgname=aerzte_sans
+_pkgname=aerzte_sans
 pkgver=1.0
 pkgrel=1
 pkgdesc="Ärzte Sans Open Type Font"
