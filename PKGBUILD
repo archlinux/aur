@@ -1,20 +1,19 @@
-# Maintainer: grimi <grimi at poczta dot fm>
+# Maintainer: BeChris (gmail)
 
-_pkgname=python-lhafile
 pkgname=python2-lhafile
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="LHA archive support for Python 2"
 arch=('i686' 'x86_64')
 url="http://fengestad.no/python-lhafile/"
 license=('BSD')
 depends=('python2')
-source=("http://fengestad.no/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('bc63d61a1b562bbbc52118c168f8cb5e')
+source=("$pkgname::git+https://github.com/FrodeSolheim/python-lhafile#tag=v${pkgver}")
+md5sums=('SKIP')
 
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd "$pkgname"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
