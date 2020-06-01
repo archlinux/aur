@@ -1,0 +1,12 @@
+pkgbase = mlink
+	pkgdesc = A tool connecting mBlock web version to devices
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://www.mblock.cc/en-us/download
+	arch = x86_64
+	license = custom
+	source = https://dl.makeblock.com/mblock5/linux/mLink-1.2.0-1.el7.x86_64.rpm
+	sha256sums = 1625de43bd7639ce87c3d0b05bac82336df8860351b35f113f93d0140b830c3b
+
+pkgname = mlink
+
