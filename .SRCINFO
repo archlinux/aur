@@ -1,0 +1,14 @@
+pkgbase = libreoffice-template-briefvorlage-din-lang
+	pkgdesc = Libreoffice template DIN Brief lang
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://extensions.libreoffice.org/templates/briefvorlage-din-lang-dl
+	arch = any
+	groups = libreoffice-extensions
+	license = CC-by-sa-v3
+	depends = libreoffice
+	source = https://extensions.libreoffice.org/templates/briefvorlage-din-lang-dl/1.2/@@download/file/briefvorlage-din-lang-dl-1-4.ott
+	md5sums = 49db02cfcf0df1bf249d9338642ad7cd
+
+pkgname = libreoffice-template-briefvorlage-din-lang
+
