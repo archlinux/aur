@@ -1,0 +1,15 @@
+pkgbase = keyring
+	pkgdesc = gnome-keyring python script + plugins for various apps (irssi, vimperator, qutebroswer, msmtp and offlineimap
+	pkgver = 20200517
+	pkgrel = 1
+	url = https://github.com/ervandew/keyring
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = gnome-keyring
+	source = git+https://github.com/ervandew/keyring.git
+	md5sums = SKIP
+
+pkgname = keyring
+
