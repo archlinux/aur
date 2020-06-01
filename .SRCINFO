@@ -1,0 +1,15 @@
+pkgbase = python-django-js-asset-git
+	pkgdesc = A Django class-based view generating PDF resposes using WeasyPrint
+	pkgver = 1.2.2.r7.g4a0d951
+	pkgrel = 1
+	url = https://github.com/matthiask/django-js-asset/
+	arch = any
+	license = bsd
+	checkdepends = python-pytz
+	depends = python-django
+	provides = python-django-js-asset
+	source = python-django-js-asset-git::git+https://github.com/matthiask/django-js-asset/
+	md5sums = SKIP
+
+pkgname = python-django-js-asset-git
+
