@@ -1,0 +1,17 @@
+pkgbase = tintin-git
+	pkgdesc = A console-based MUD client.
+	pkgver = r22.df64b5a
+	pkgrel = 1
+	url = https://github.com/scandum/tintin
+	arch = any
+	license = GPL3
+	makedepends = pcre
+	makedepends = gnutls
+	makedepends = zlib
+	provides = tintin
+	conflicts = tintin
+	source = git://github.com/scandum/tintin.git
+	md5sums = SKIP
+
+pkgname = tintin-git
+
