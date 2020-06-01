@@ -3,6 +3,7 @@
 pkgname="python-django-dbbackup-git"
 pkgver=2.5.0.r194.ge0d3eaf
 pkgrel=1
+pkgdesc="Management commands to help backup and restore your project database and media files"
 
 provides=("python-django-dbbackup")
 url="https://django-dbbackup.readthedocs.io/en/stable/"
