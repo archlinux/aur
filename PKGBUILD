@@ -4,14 +4,16 @@
 _module="tablib"
 pkgname="python-${_module}"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Format-agnostic tabular data library (XLS, JSON, YAML, CSV)"
 arch=("any")
 url="http://python-tablib.org"
 license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
-checkdepends=("python-pytest-cov")
+checkdepends=("python-pytest-cov" "python-tabulate" "python-markuppy"
+              "python-odfpy" "python-pandas" "python-xlrd"
+              "python-xlwt" "python-openpyxl" "python-pyaml")
 optdepends=("python-tabulate: cli interface"
             "python-markuppy: for HTML support"
             "python-odfpy: for ODS support"
