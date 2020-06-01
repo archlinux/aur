@@ -1,7 +1,7 @@
 pkgbase = ocaml-base_quickcheck
 	pkgdesc = Randomized testing framework, designed for compatibility with Base
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/janestreet/base_quickcheck
 	arch = x86_64
 	arch = i686
@@ -10,17 +10,18 @@ pkgbase = ocaml-base_quickcheck
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=1.5.1
+	makedepends = dune>=2.0.0
 	depends = ocaml>=4.04.2
-	depends = ocaml-base>=0.13.0
-	depends = ocaml-ppx_base>=0.13.0
-	depends = ocaml-ppx_fields_conv>=0.13.0
-	depends = ocaml-ppx_let>=0.13.0
-	depends = ocaml-ppx_sexp_message>=0.13.0
-	depends = ocaml-splittable_random>=0.13.0
-	depends = ocaml-ppxlib>=0.9.0
+	depends = ocaml-base>=0.14.0
+	depends = ocaml-ppx_base>=0.14.0
+	depends = ocaml-ppx_fields_conv>=0.14.0
+	depends = ocaml-ppx_let>=0.14.0
+	depends = ocaml-ppx_sexp_message>=0.14.0
+	depends = ocaml-ppx_sexp_value>=0.14.0
+	depends = ocaml-splittable_random>=0.14.0
+	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-base_quickcheck-0.13.0-2.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.13.0.tar.gz
-	sha256sums = 858ed7751dfc616a93f9bf3214ca45bfa934743c54d8bcc48f8ae2655e58bfe5
+	source = ocaml-base_quickcheck-0.14.0-1.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.14.0.tar.gz
+	sha256sums = eb18152bb29b6484cdb4ae18357b4dfb18b5e6f0d79cb18bd9ed7d8d906ca38b
 
 pkgname = ocaml-base_quickcheck
