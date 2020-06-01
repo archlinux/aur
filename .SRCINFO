@@ -1,0 +1,16 @@
+pkgbase = python-django-qr-code-git
+	pkgdesc = An application that provides tools for displaying QR codes on your Django site.
+	pkgver = 1.2.0.r0.g8837861
+	pkgrel = 1
+	url = https://github.com/dprog-philippe-docourt/django-qr-code
+	arch = any
+	license = BSD
+	depends = python-django>=2.2
+	depends = python-qrcode>=6.1
+	depends = python-pillow
+	provides = python-django-qr-code
+	source = python-django-qr-code-git::git+https://github.com/dprog-philippe-docourt/django-qr-code
+	md5sums = SKIP
+
+pkgname = python-django-qr-code-git
+
