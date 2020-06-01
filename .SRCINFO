@@ -1,0 +1,16 @@
+pkgbase = python-django-markdownx-git
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://neutronx.github.io/django-markdownx/
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-pillow
+	depends = python-markdown
+	provides = python-django-markdownx
+	source = python-django-markdownx-git::git+https://github.com/neutronX/django-markdownx
+	md5sums = SKIP
+
+pkgname = python-django-markdownx-git
+
