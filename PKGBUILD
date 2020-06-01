@@ -2,29 +2,29 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_pipebang'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='2'
+pkgver='0.14.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter that inlines reverse application operators |> and |!'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-ppxlib>=0.9.0')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.04.2' 'ocaml-ppxlib>=0.11.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b716c2ef4196df735fd31637e1b5f76bbea708f02f7358034f249a7a65d87d62')
+sha256sums=('0fc99c9c038d429692616fa0de73a50977981cc7c1eee404b3f559fdc55520e5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
