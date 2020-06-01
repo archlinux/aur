@@ -2,8 +2,8 @@
 
 _target="sh-elf"
 pkgname=${_target}-gcc-casio
-pkgver=9.2.0
-pkgrel=5
+pkgver=10.1.0
+pkgrel=1
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -12,7 +12,7 @@ depends=("${_target}-binutils-casio" 'libmpc' 'elfutils' 'gmp' 'mpfr')
 optdepends=('isl: integer set library')
 options=('!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz")
-sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206')
+sha512sums=('0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
