@@ -1,6 +1,6 @@
 pkgbase = portage-git
 	pkgdesc = Gentoo's package management system
-	pkgver = 13974.b87f77d
+	pkgver = 2.3.100.r3.c238d5f7e
 	pkgrel = 1
 	url = http://www.gentoo.org/proj/en/portage/index.xml
 	install = portage-git.install
@@ -10,7 +10,7 @@ pkgbase = portage-git
 	makedepends = epydoc
 	makedepends = git
 	makedepends = docbook-xsl
-	depends = python2
+	depends = python
 	depends = xmlto
 	depends = rsync
 	depends = eselect-git
