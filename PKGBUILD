@@ -1,7 +1,8 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Jeremy Kescher <jeremy@kescher.at>
+# Previous Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=lib32-spirv-tools
-pkgver=2019.5
+pkgver=2020.3
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
