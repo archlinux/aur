@@ -1,0 +1,7 @@
+# Dirctories
+src/
+cmus/
+pkg/
+
+# Files
+*.tar.xz

@@ -4,35 +4,32 @@
 # or submit a pull request @ https://github.com/savagezen/pkgbuild
 
 pkgname=cmus-git
-pkgver=v2.8.0.r0.g65d36d5
+pkgver=v2.8.0.r24.gd1290d5
 pkgrel=1
-pkgdesc="A very feature-rich ncurses-based music player"
-arch=('i686' 'x86_64')
+pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
+arch=('x86_64')
 url="https://cmus.github.io/"
 depends=('ncurses')
 makedepends=('git')
 optdepends=('alsa-lib: ALSA output plugin support'
-		'aRts: aRts'
-		'faad2: .aac, .mp4, .m4a, .m4b'
-		'ffmpeg: .ffmpeg, .wma, .ape, .mka, .tta, .shn'
-		'flac: .flac'
-		'libavcodec: .wma, .ape, .mka, .tta, .shn'
-		'libao: for AO output plugin support'
-		'libcddb: .cdio'
-		'libcdio: .cdio'
-		'libcdio-paranoia: .cdio'
-		'libcue: .cue'		
-		'libmad: .mp3'
-		'libmikmod: .mod, .s3m'
-		'libmodplug: .mod, .s3m'
-		'libmp4v2: .mp4, .m4a, .m4b'
-		'libmpcdec: .mpc, .mpp, .mp+'
-		'libpulse: for Pulse Audio output plugin support'
-		'libraor: RoarAudio'
-		'libvorbis: .ogg'
-		'opusfile: .opus'
-		'oss: OSS'
-		'wavpack: .wv')
+	    'faad2: .aac, .mp4, .m4a, .m4b'
+	    'ffmpeg: .ffmpeg, .wma, .ape, .mka, .tta, .shn'
+	    'flac: .flac'
+	    'libao: for AO output plugin support'
+	    'libcddb: .cdio'
+	    'libcdio: .cdio'
+	    'libcdio-paranoia: .cdio'
+	    'libcue: .cue'		
+	    'libmad: .mp3'
+	    'libmikmod: .mod, .s3m'
+	    'libmodplug: .mod, .s3m'
+	    'libmp4v2: .mp4, .m4a, .m4b'
+            'libmpcdec: .mpc, .mpp, .mp+'
+	    'libpulse: for Pulse Audio output plugin support'
+	    'libvorbis: .ogg'
+	    'opusfile: .opus'
+	    'oss: OSS'
+	    'wavpack: .wv')
 conflicts=('cmus')
 provides=('cmus')
 license=('GPL')
