@@ -16,7 +16,7 @@ source=("git+https://github.com/wustho/epr.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/${pkgname/-git/}"
   printf "%s.r%s.%s" "$(grep -F '__version__ =' epr.py | awk -F\" '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
