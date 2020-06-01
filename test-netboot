@@ -32,5 +32,5 @@ exec qemu-system-x86_64 \
   -m 2G \
   -drive if=pflash,format=raw,readonly,file="${OVMF_CODE}" \
   -drive if=pflash,format=raw,file=efivars \
-  -usb -usbdevice disk:format=raw:fat:./fat \
+  -usb -drive if=none,id=usb-fat,format=raw,file=fat:rw:./fat -device usb-storage,drive=usb-fat \
   "$@"
