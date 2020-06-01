@@ -1,6 +1,6 @@
 
 pkgname=dosbox-ece
-_pkgver=4338
+_pkgver=4347
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
@@ -9,20 +9,22 @@ url="https://dosboxece.yesterplay.net/"
 license=('GPLv2')
 depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'munt' 'openglide-git')
 optdepends=('libpng' 'ncurses')
-makedepends=('autoconf' 'automake' 'gcc')
+makedepends=('autoconf' 'automake' 'gcc' 'dos2unix')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
-  "https://dosboxdl.yesterplay.net/DOSBox ECE r${_pkgver} (Linux source).7z"
+  "https://dosboxece.yesterplay.net/download/DOSBox ECE r${_pkgver}.7z"
   "dosbox-ece.png"
   "dosbox-ece.desktop"
 )
-md5sums=('0ddd53cf2d5e2cccc52c9c22e4384a6c'
+md5sums=('0322475006f897ffd07b62d8df7023d1'
          '19fbd9958c0a412000d5fe7362774df1'
          '7ab512ca7e6bdb3616e197271ffae928')
 
 build() {
   FLAGS="-O3 -DNDEBUG -pipe -I/usr/include/openglide"
+  dos2unix autogen.sh
+  chmod +x autogen.sh
   ./autogen.sh
   ./configure CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" --prefix=/usr
   make -j "$(nproc)"
