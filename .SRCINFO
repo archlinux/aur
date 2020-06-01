@@ -1,0 +1,20 @@
+pkgbase = python-django-stdimage-git
+	pkgdesc = Django Standardized Image Field
+	pkgver = 3.0.0.r26.g4c7194a
+	pkgrel = 1
+	url = https://github.com/codingjoe/django-stdimage
+	arch = any
+	license = mit
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-django
+	checkdepends = python-pytest-cov
+	depends = python-django
+	depends = python-pillow
+	depends = python-progressbar
+	provides = python-django-stdimage
+	source = python-django-stdimage-git::git+https://github.com/codingjoe/django-stdimage
+	md5sums = SKIP
+
+pkgname = python-django-stdimage-git
+
