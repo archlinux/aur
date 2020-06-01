@@ -1,7 +1,7 @@
 pkgbase = trello
 	pkgdesc = Unofficial Trello Desktop app
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/danielchatfield/trello-desktop
 	arch = any
 	license = MIT

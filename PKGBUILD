@@ -4,7 +4,7 @@
 #
 pkgname="trello"
 pkgver="0.1.9"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Unofficial Trello Desktop app"
 arch=('any')
 url="https://github.com/danielchatfield/trello-desktop"
@@ -45,7 +45,7 @@ package() {
     install -Dm644 ${pkgname}-desktop-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 ${pkgname}-desktop-${pkgver}/static/Icon.png "${pkgdir}"/usr/share/pixmaps/trello.png
 
-    rm -rf ${pkgname}-desktop-${pkgver}/{static,media,LICENSE}
+    rm -rf ${pkgname}-desktop-${pkgver}/{media,LICENSE}
     mv ${pkgname}-desktop-${pkgver} "${pkgdir}"/usr/lib/trello
 
     install -Dm755 trello "${pkgdir}"/usr/bin/trello
