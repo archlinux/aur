@@ -1,6 +1,6 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 pkgname=chasquid
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='SMTP (email) server with a focus on simplicity, security, and ease of operation'
 arch=('x86_64')
