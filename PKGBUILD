@@ -2,7 +2,7 @@
 pkgname=vt-cli
 pkgver=0.7.0+15+g13f5bfe
 _commit=13f5bfed2cff747fdba131cda499df878f9a2b2d
-pkgrel=1
+pkgrel=2
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url='https://github.com/VirusTotal/vt-cli'
@@ -19,6 +19,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${_commit}"
+  export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -29,7 +30,7 @@ build() {
 
 check() {
   cd "${pkgname}-${_commit}"
-  go test ./...
+  TZ='CET' go test ./...
 }
 
 package() {
