@@ -19,10 +19,10 @@ pkgbase = dosbox-ece
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = https://dosboxece.yesterplay.net/download/DOSBox ECE r4347.7z
+	source = https://dosboxece.yesterplay.net/download/DOSBox ECE r4347 (source).7z
 	source = dosbox-ece.png
 	source = dosbox-ece.desktop
-	md5sums = 0322475006f897ffd07b62d8df7023d1
+	md5sums = 7b49c5d09863fddc9153a28ee35f9e84
 	md5sums = 19fbd9958c0a412000d5fe7362774df1
 	md5sums = 7ab512ca7e6bdb3616e197271ffae928
 

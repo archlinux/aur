@@ -13,11 +13,11 @@ makedepends=('autoconf' 'automake' 'gcc' 'dos2unix')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
-  "https://dosboxece.yesterplay.net/download/DOSBox ECE r${_pkgver}.7z"
+  "https://dosboxece.yesterplay.net/download/DOSBox ECE r${_pkgver} (source).7z"
   "dosbox-ece.png"
   "dosbox-ece.desktop"
 )
-md5sums=('0322475006f897ffd07b62d8df7023d1'
+md5sums=('7b49c5d09863fddc9153a28ee35f9e84'
          '19fbd9958c0a412000d5fe7362774df1'
          '7ab512ca7e6bdb3616e197271ffae928')
 
