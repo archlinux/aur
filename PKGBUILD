@@ -13,19 +13,19 @@
 
 _qt_module=qt3d
 pkgname=mingw-w64-qt5-3d
-pkgver=5.14.2
+pkgver=5.15.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9da82f1cc4b7d416d31ec96224c59d221473a48f6e579eef978f7d2e3932c674')
+sha256sums=('61856f0c453b79e98b7a1e65ea8f59976fa78230ffa8dec959b5f4b45383dffd')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
