@@ -1,13 +1,13 @@
 pkgbase = gint-git
 	pkgdesc = Alternative library and kernel for add-in development on fx-9860G and fx-CG50
-	pkgver = r157.4485e7f
-	pkgrel = 2
+	pkgver = r166.0498344
+	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	depends = fxsdk
 	depends = sh-elf-gcc-casio
 	options = !strip
-	source = gint-git::git+https://gitea.planet-casio.com/Lephenixnoir/gint.git#branch=compat
+	source = gint-git::git+https://gitea.planet-casio.com/Lephenixnoir/gint.git#branch=master
 	sha256sums = SKIP
 
 pkgname = gint-git

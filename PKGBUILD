@@ -1,9 +1,9 @@
 # Maintainer: Darks <l.gatin@protonmail.com>
 _basename="gint"
-_branch="compat"
+_branch="master"
 pkgname="${_basename}-git"
-pkgver=r157.4485e7f
-pkgrel=2
+pkgver=r166.0498344
+pkgrel=1
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50'
 arch=('i686' 'x86_64')
 depends=('fxsdk' 'sh-elf-gcc-casio')
