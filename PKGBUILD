@@ -6,17 +6,26 @@
 # Contributor: vinibali <vinibali1 at gmail.com>
 
 pkgname=f2fs-tools-git
-pkgver=1.12.0
-pkgrel=2
+pkgver=686.git.9a31cef
+pkgrel=1
 pkgdesc='Tools for Flash-Friendly File System (F2FS)'
 arch=('x86_64')
 url='https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
 depends=('util-linux')
 makedepends=('git')
 license=('GPL')
+provides=('f2fs-tools')
+conflicts=('f2fs-tools')
 validpgpkeys=('D3452A79D8C2B4EAC656F4224014A87E824850D2') # Jaegeuk Kim <jaegeuk@kernel.org>
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd $srcdir/f2fs-tools-git
+    no=$(git rev-list --count HEAD)
+    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+    printf "${no}.git.${hash}"
+}
 
 prepare() {
 	cd "${pkgname}"
