@@ -2,13 +2,13 @@ pkgbase = xcwd-git
 	pkgdesc = xcwd is a simple tool that prints the current working directory of the currently focused window.
 	pkgver = 20141221
 	pkgrel = 1
-	url = http://github.com/schischi-a/xcwd.git
+	url = http://github.com/schischi/xcwd.git
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = libx11
-	source = git://github.com/schischi-a/xcwd
+	source = git://github.com/schischi/xcwd
 	md5sums = SKIP
 
 pkgname = xcwd-git

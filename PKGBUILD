@@ -4,15 +4,15 @@
 # Contributor: _@killown.com
 
 pkgname=xcwd-git
-pkgver=20141221
+pkgver=20190309
 pkgrel=1
 pkgdesc="xcwd is a simple tool that prints the current working directory of the currently focused window."
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('libx11')
 makedepends=('git')
-url="http://github.com/schischi-a/xcwd.git"
-source=('git://github.com/schischi-a/xcwd')
+url="http://github.com/schischi/xcwd.git"
+source=('git://github.com/schischi/xcwd')
 md5sums=('SKIP')
 _gitname="xcwd"
 
