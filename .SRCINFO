@@ -1,0 +1,19 @@
+pkgbase = python-rapidfuzz-git
+	pkgdesc = Rapid fuzzy string matching in Python using the Levenshtein Distance
+	pkgver = 0.6.3.r73.g0007571
+	pkgrel = 1
+	url = https://github.com/maxbachmann/rapidfuzz
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = gcc
+	makedepends = python-pytest
+	depends = python
+	provides = python-rapidfuzz
+	source = python-rapidfuzz-git::git+https://github.com/maxbachmann/rapidfuzz
+	source = python-rapidfuzz-git-cpp::git+https://github.com/maxbachmann/rapidfuzz-cpp
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-rapidfuzz-git
+
