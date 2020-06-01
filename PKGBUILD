@@ -2,12 +2,12 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('any')
 url="https://isacikgoz.me/tldr"
 license=('MIT')
-makedepends=('go-pie' 'dep' 'git')
+makedepends=('go' 'dep' 'git')
 provides=("${pkgname%++}")
 conflicts=("${pkgname%++}" 'nodejs-tldr' 'tldr-bash-git' 'tldr-cpp-client' 'tldr-python-client')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/isacikgoz/tldr/archive/v$pkgver.tar.gz")
@@ -19,8 +19,8 @@ prepare() {
 	export GOPATH="$srcdir"/gopath
 
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
-	dep init
-	dep ensure
+	dep init -v
+	dep ensure -v
 }
 
 build() {
@@ -28,9 +28,8 @@ build() {
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
 
 	go build \
-		-gcflags "all=-trimpath=${PWD}" \
-		-asmflags "all=-trimpath=${PWD}" \
-		-ldflags "-extldflags ${LDFLAGS}" \
+		-buildmode=pie \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-o $pkgname .
 }
 

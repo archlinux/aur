@@ -1,11 +1,11 @@
 pkgbase = tldr++
 	pkgdesc = Community driven man pages improved with smart user interaction
 	pkgver = 0.6.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://isacikgoz.me/tldr
 	arch = any
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	makedepends = dep
 	makedepends = git
 	provides = tldr
