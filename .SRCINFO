@@ -1,6 +1,6 @@
 pkgbase = samba-heimdal
 	pkgver = 4.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.samba.org
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = samba-heimdal
 	makedepends = acl
 	makedepends = libldap
 	makedepends = libcap
-	makedepends = ldb-heimdal
+	makedepends = ldb
 	makedepends = krb5
 	makedepends = pam
 	makedepends = systemd
@@ -49,7 +49,7 @@ pkgname = smbclient-heimdal
 	depends = popt
 	depends = cifs-utils
 	depends = tdb
-	depends = ldb-heimdal
+	depends = ldb
 	depends = tevent
 	depends = libgcrypt
 	depends = python
@@ -81,7 +81,7 @@ pkgname = samba-heimdal
 	depends = libcap>=2.16
 	depends = gnutls>=2.4.1
 	depends = talloc
-	depends = ldb-heimdal
+	depends = ldb
 	depends = libbsd
 	depends = python
 	depends = iniparser

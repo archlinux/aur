@@ -1,6 +1,5 @@
-
-# Maintainer: DJ Lucas <dj@lucasit.com>
-# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: DJ Lucas <dj@lucasit.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 # Contributor: Michael Hansen <zrax0111 gmail com>
@@ -14,12 +13,12 @@ pkgbase=samba-heimdal
 _pkgbase=samba
 pkgname=('smbclient-heimdal' 'samba-heimdal')
 pkgver=4.12.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.samba.org"
 license=('GPL3')
 makedepends=('python' 'docbook-xsl' 'pkg-config' 'libbsd' 'db' 'popt' 'libcups'
-             'readline' 'tevent' 'acl' 'libldap' 'libcap' 'ldb-heimdal' 'krb5' 'pam'
+             'readline' 'tevent' 'acl' 'libldap' 'libcap' 'ldb' 'krb5' 'pam'
              'systemd' 'gnutls' 'talloc' 'tdb' 'dbus' 'libaio'
              'perl-parse-yapp' 'libnsl' 'libtirpc' 'rpcsvc-proto' 'jansson'
              'ceph-libs')
@@ -86,7 +85,7 @@ build() {
 
 package_smbclient-heimdal() {
 pkgdesc="Tools to access a server's filespace and printers via SMB (built for Samba with Heimdal)"
-depends=('popt' 'cifs-utils' 'tdb' 'ldb-heimdal'
+depends=('popt' 'cifs-utils' 'tdb' 'ldb'
          'tevent' 'libgcrypt' 'python' 'talloc' 'readline' 'gnutls'
          'libbsd' 'libldap' 'libcups' 'libarchive' 'libnsl' 'jansson'
          'libldb.so' 'libtdb.so' 'libtevent.so' 'libreadline.so')
@@ -150,7 +149,7 @@ replaces=('libwbclient-heimdal')
 package_samba-heimdal() {
 pkgdesc="SMB Fileserver and AD Domain server (using internal Heimdal server)"
 depends=('db>=4.7' 'popt' 'libcups' 'libcap>=2.16' 'gnutls>=2.4.1'
-         'talloc' 'ldb-heimdal' 'libbsd' 'python' 'iniparser' 'tdb' 'libaio' 'perl-parse-yapp' "smbclient-heimdal>=$pkgver" 'gpgme'
+         'talloc' 'ldb' 'libbsd' 'python' 'iniparser' 'tdb' 'libaio' 'perl-parse-yapp' "smbclient-heimdal>=$pkgver" 'gpgme'
          'ceph-libs' 'libldb.so' 'libtdb.so' 'libtevent.so')
 optdepends=('python-dnspython: required for AD DC provisioning'
             'gamin: required for AD DC provisioning')
