@@ -22,5 +22,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	install -Dm755 "textshot.py" "$pkgdir/usr/bin/textshot"
 }
