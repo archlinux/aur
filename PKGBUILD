@@ -2,28 +2,28 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='sexplib0'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='4'
+pkgver='0.14.0'
+pkgrel='1'
 pkgdesc='Library containing the definition of S-expressions and some base converters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('glibc' 'ocaml>=4.04.2')
-makedepends=('dune>=1.5.1')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f98c6693e3067b816f8a21a648a2481fa49b792fb6146ec701adf9ec41affa51')
+sha256sums=('1e2d1c27015809d816d1c707abfbc61f6b55830dedec01de8152d10ab7d6a19e')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
