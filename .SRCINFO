@@ -1,6 +1,6 @@
 pkgbase = ipxe-netboot
 	pkgdesc = iPXE build for Arch Linux netboot
-	pkgver = r5941.bdf0e029
+	pkgver = r5942.ebff21a5
 	pkgrel = 1
 	url = http://ipxe.org
 	arch = i686

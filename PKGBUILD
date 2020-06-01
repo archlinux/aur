@@ -1,7 +1,7 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 pkgname=ipxe-netboot
-pkgver=r5941.bdf0e029
+pkgver=r5942.ebff21a5
 pkgrel=1
 pkgdesc="iPXE build for Arch Linux netboot"
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ build() {
   export NO_WERROR
 
   make \
+    CFLAGS+='-fcommon' \
     EMBED="$srcdir/arch.ipxe" \
     CERT="$srcdir/codesigning_pierre_archlinux.pem","$srcdir/codesigning_thomas_archlinux.pem","$srcdir/dst_x1.pem" \
     TRUST="$srcdir/codesigning_pierre_archlinux.pem","$srcdir/codesigning_thomas_archlinux.pem","$srcdir/dst_x1.pem" \
