@@ -1,0 +1,7 @@
+dpf/
+shiro-plugins/
+pkg/
+src/
+shiro-plugins-git-*.tar.xz
+shiro-plugins-git-*.tar.zst
+shiro-plugins-git-*.src.tar.gz

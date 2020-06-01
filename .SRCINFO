@@ -1,0 +1,23 @@
+pkgbase = shiro-plugins-git
+	pkgdesc = Collection of LADSPA, LV2 and VST2 plugins made in MAX Gen~ (no MOD UI) (git version)
+	pkgver = 0.1.0.r37.138d49a
+	pkgrel = 1
+	url = https://github.com/ninodewit/SHIRO-Plugins/
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	provides = shiro-plugins
+	provides = shiro-plugins=0.1.0
+	conflicts = shiro-plugins
+	source = shiro-plugins::git+https://github.com/ninodewit/SHIRO-Plugins.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = shiro-plugins-git
+
