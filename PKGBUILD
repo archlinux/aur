@@ -12,11 +12,11 @@ builddepends=("cmake")
 arch=("any")
 optdepends=("boost: provide upgradeable locks")
 sha256sums=("SKIP")
-source=("git+https://gitlab.com/patlefort/sharedaccess")
 _repo="sharedaccess"
+source=("git+https://gitlab.com/patlefort/${_repo}")
 
 build() {
-	cmake -S sharedaccess -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S ${_repo} -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make -C build
 }
 
