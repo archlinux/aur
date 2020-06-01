@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
