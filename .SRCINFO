@@ -1,6 +1,6 @@
 pkgbase = libreoffice-fresh-rpm
 	pkgdesc = LGPL Office Suite installed from rpms
-	pkgver = 6.4.3
+	pkgver = 6.4.4
 	pkgrel = 1
 	url = http://www.libreoffice.org
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = libreoffice-fresh-rpm
 	optdepends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
-	source = https://download.documentfoundation.org/libreoffice/stable/6.4.3/rpm/x86_64/LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz
-	sha256sums = 7a6a779a5b2fc73cb1b17057daa0630b101d6c4e30caa43443099ba15a55d9a5
+	source = https://download.documentfoundation.org/libreoffice/stable/6.4.4/rpm/x86_64/LibreOffice_6.4.4_Linux_x86-64_rpm.tar.gz
+	sha256sums = ecf56288d67ddfd609ac4982947c2679738cc3fae508460af0d67d3dffb88c7d
 
 pkgname = libreoffice-fresh-rpm
 

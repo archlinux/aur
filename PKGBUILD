@@ -78,12 +78,13 @@
 ## updated to upstream 6.3.4
 ## updated to upstream 6.4.2
 ## updated to upstream 6.4.3
+## updated to upstream 6.4.4
 
 ## Check for new LibreOffice releases:
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.4.3
+pkgver=6.4.4
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
@@ -94,7 +95,7 @@ makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('7a6a779a5b2fc73cb1b17057daa0630b101d6c4e30caa43443099ba15a55d9a5')
+sha256sums=('ecf56288d67ddfd609ac4982947c2679738cc3fae508460af0d67d3dffb88c7d')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
@@ -111,15 +112,15 @@ for a in ${opt_pak[@]}; do  ## loop for all optional extensions
        select opt_ext in $(cat index.html | awk -F'_' "/${a}/ && !/.asc/ {print \$7}" | awk -F'.' '{print $1}'); do
          ## download the rpm package
          msg "Retrieving LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz...";
-         curl -L -O "http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz"; 
+         curl -L -O "https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz"; 
          ## download the rpm sha256
-         curl -L -O "http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz.sha256";
+         curl -L -O "https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz.sha256";
          ## check the sha256 sum for the package
          msg "Done";
          msg "Validating LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz with sha256sum...";
          sha256sum -c "LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz.sha256"
          if [ ! $? -eq 0 ]; then  ## check the sha256sum error
-            echo "Failed sha256sum check for http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz";
+            echo "Failed sha256sum check for https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm_${a}_${opt_ext}.tar.gz";
             exit;
           else
             msg "Done";
