@@ -2,30 +2,32 @@
 
 pkgname=license-detector
 _pkgname="go-$pkgname"
-pkgver=3.1.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Reliable project licenses detector"
 arch=('x86_64')
-url="https://github.com/src-d/go-license-detector"
+url="https://github.com/go-enry/go-license-detector"
 license=('Apache')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/src-d/go-license-detector/archive/v3.1.0.tar.gz")
-sha256sums=('bb12da726fa39e62f8547c86db13a919ad7f0bdf229be158e68e8aff382b6575')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('bfa05f73958a45efb5760a3a3e74ee46030c3f2bac232b67a6d3b046a3c0840e89880b5b26c4dc0e97985617630745f4a76192dc1bfb527f65419a2eebe0fe25')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   go mod vendor
+  mkdir -p build
 }
 
 build() {
-  export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
   cd "$_pkgname-$pkgver"
-  go build \
-    gopkg.in/src-d/go-license-detector.v3/cmd/license-detector
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+  go build -o build ./cmd/...
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname-$pkgver/build/$pkgname"
 }
