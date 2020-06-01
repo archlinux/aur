@@ -12,7 +12,7 @@
 
 _qt_module=qtscxml
 pkgname=mingw-w64-qt5-scxml
-pkgver=5.14.2
+pkgver=5.15.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
@@ -24,7 +24,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('030cea352a56074f577200f967ef37c959b2767127de61f766f59b0d99763790')
+sha256sums=('9c3a72bf5ebd07553b0049cc1943f04cff93b7e53bde8c81d652422dbf12ff72')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
