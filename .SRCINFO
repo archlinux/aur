@@ -17,7 +17,7 @@ pkgbase = plata-theme-slim
 	optdepends = ttf-roboto: Recommended font
 	provides = plata-theme
 	conflicts = plata-theme
-	source = git+https://gitlab.com/tista500/plata-theme.git#tag=
+	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.9.8
 	md5sums = SKIP
 
 pkgname = plata-theme-slim
