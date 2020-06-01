@@ -1,7 +1,7 @@
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi@gmail.com>
 
 pkgbase=linux-x570-vfio
-pkgver=5.6.14.arch1
+pkgver=5.6.15.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -24,7 +24,7 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
             'eb2b9f321a548db1b3ca93bd4578989b2b50a14d9bcc6bffcb5307c803063bf5'
