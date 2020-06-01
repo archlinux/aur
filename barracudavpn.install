@@ -1,7 +1,7 @@
 post_install() {
-        echo "post_install"
+  mkdir -p /etc/barracudavpn
 }
 
 post_upgrade() {
-        echo "post_upgrade"
+  post_install
 }
