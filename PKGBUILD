@@ -16,6 +16,7 @@ optdepends=('miniupnpc: UPnP support'
             'python-miniupnpc: Python bindings for miniupnpc'
             'python-geoip: for geo-blocker'
             'python-feedparser: for Reddit plugin'
+            'gspell: for spell checking support'
             'nuspell: for spell checking support'
             'libappindicator-gtk3: for tray icon support')
 checkdepends=('python-pytest')

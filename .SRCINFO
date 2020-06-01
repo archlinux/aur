@@ -19,6 +19,7 @@ pkgbase = nicotine-plus-git
 	optdepends = python-miniupnpc: Python bindings for miniupnpc
 	optdepends = python-geoip: for geo-blocker
 	optdepends = python-feedparser: for Reddit plugin
+	optdepends = gspell: for spell checking support
 	optdepends = nuspell: for spell checking support
 	optdepends = libappindicator-gtk3: for tray icon support
 	provides = nicotine-plus
