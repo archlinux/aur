@@ -1,6 +1,6 @@
 pkgname=path-extractor
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A unix filter which outputs the filepaths found in stdin'
 arch=('x86_64')
 repo="github.com/edi9999/$pkgname"
@@ -21,12 +21,11 @@ prepare() {
 }
 
 build() {
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
   export GOPATH="$srcdir/gopath"
   cd "$gopkg"
-  go install \
-    -trimpath \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -v ./...
+  go install -v ./...
 }
 
 # Skip check, they don't pass
