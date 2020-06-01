@@ -1,4 +1,4 @@
-From 7a3de1e7695a79bde92ed2bb58eaf0c04ade9e7e Mon Sep 17 00:00:00 2001
+From a23f88d109a240c136e19f0dcd15ba0e7aba1804 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 24/31] Fix macro invoking moc, rcc and uic
@@ -18,10 +18,10 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index 02f49a4b1e..581dbeac50 100644
+index 88350cb68b..e1e0aa1125 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
-@@ -139,8 +139,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
+@@ -153,8 +153,9 @@ function(qt5_create_moc_command infile outfile moc_flags moc_options moc_target
      endif()
  
      set(_moc_extra_parameters_file @${_moc_parameters_file})
@@ -32,7 +32,7 @@ index 02f49a4b1e..581dbeac50 100644
                         DEPENDS ${infile} ${moc_depends}
                         ${_moc_working_dir}
                         VERBATIM)
-@@ -255,8 +256,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
+@@ -295,8 +296,9 @@ function(qt5_add_binary_resources target)
          set(rc_depends ${rc_depends} ${_rc_depends})
      endforeach()
  
@@ -43,8 +43,8 @@ index 02f49a4b1e..581dbeac50 100644
                         ARGS ${rcc_options} --binary --name ${target} --output ${rcc_destination} ${infiles}
                         DEPENDS ${rc_depends} ${out_depends} ${infiles} VERBATIM)
      add_custom_target(${target} ALL DEPENDS ${rcc_destination})
-@@ -288,8 +290,9 @@ function(QT5_ADD_RESOURCES outfiles )
-         _QT5_PARSE_QRC_FILE(${infile} _out_depends _rc_depends)
+@@ -339,8 +341,9 @@ function(qt5_add_resources outfiles)
+         _qt5_parse_qrc_file(${infile} _out_depends _rc_depends)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTORCC ON)
  
 +        get_target_property(MOC_LOC ${Qt5Core_RCC_EXECUTABLE} IMPORTED_LOCATION)
@@ -55,10 +55,10 @@ index 02f49a4b1e..581dbeac50 100644
                             MAIN_DEPENDENCY ${infile}
                             DEPENDS ${_rc_depends} "${_out_depends}" VERBATIM)
 diff --git a/src/widgets/Qt5WidgetsMacros.cmake b/src/widgets/Qt5WidgetsMacros.cmake
-index 737371a5ad..d103278cdf 100644
+index 35d2a2dc54..99f061f1b8 100644
 --- a/src/widgets/Qt5WidgetsMacros.cmake
 +++ b/src/widgets/Qt5WidgetsMacros.cmake
-@@ -55,8 +55,9 @@ function(QT5_WRAP_UI outfiles )
+@@ -55,8 +55,9 @@ function(qt5_wrap_ui outfiles )
          get_filename_component(outfile ${it} NAME_WE)
          get_filename_component(infile ${it} ABSOLUTE)
          set(outfile ${CMAKE_CURRENT_BINARY_DIR}/ui_${outfile}.h)
@@ -70,5 +70,5 @@ index 737371a5ad..d103278cdf 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.26.1
+2.26.2
 

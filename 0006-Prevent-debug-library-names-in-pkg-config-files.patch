@@ -1,4 +1,4 @@
-From 2cfd0a32516ba85f0c608fb81341090c28209750 Mon Sep 17 00:00:00 2001
+From dd50dd544fbf94606c08fa57b0393df24282c28b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:01:14 +0200
 Subject: [PATCH 06/31] Prevent debug library names in pkg-config files
@@ -15,10 +15,10 @@ files for the debug build an unique file name.
  1 file changed, 3 insertions(+)
 
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index f9532e0db9..9c65f21ac0 100644
+index e94084381c..8e4d11484f 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3229,6 +3229,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3225,6 +3225,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
          if (dot != -1)
              ret = ret.left(dot);
      }
@@ -29,5 +29,5 @@ index f9532e0db9..9c65f21ac0 100644
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
 -- 
-2.26.1
+2.26.2
 

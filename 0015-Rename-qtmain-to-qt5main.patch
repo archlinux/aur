@@ -1,4 +1,4 @@
-From 1bbc646bd5ceb497aba73d8fc77214bf29d34f48 Mon Sep 17 00:00:00 2001
+From 3d8c9c9a7b35b0d2fa749b272bd57cab188a4834 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 15/31] Rename qtmain to qt5main
@@ -12,10 +12,10 @@ Prevents conflict with mingw-w64-qt4 package
  4 files changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 5208d22bd6..1a058b787f 100644
+index d852ccc2ad..11249c1470 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
-@@ -84,7 +84,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
+@@ -82,7 +82,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
  QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
  QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
  QMAKE_LIBS_COMPAT       = -ladvapi32 -lshell32 -lcomdlg32 -luser32 -lgdi32 -lws2_32
@@ -25,10 +25,10 @@ index 5208d22bd6..1a058b787f 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 0e71fd0015..0e8d41c685 100644
+index 24ed125f12..593161f362 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -325,14 +325,14 @@ mac {
+@@ -329,14 +329,14 @@ mac {
      }
  
      mingw {
@@ -76,5 +76,5 @@ index 1f54c846ec..162e7a4b1b 100644
  
  CONFIG += static
 -- 
-2.26.1
+2.26.2
 
