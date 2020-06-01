@@ -1,6 +1,6 @@
 pkgbase = msp430-elf-libstdc++
 	pkgdesc = The GNU C++ Standard Library for the msp430-elf target.
-	pkgver = 9.3.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = msp430-elf-libstdc++
 	license = LGPL
 	depends = msp430-elf-newlib
 	depends = msp430-elf-binutils
-	depends = msp430-elf-gcc>=9.0.0
-	depends = msp430-elf-gcc<10.0.0
+	depends = msp430-elf-gcc>=10.0.0
+	depends = msp430-elf-gcc<11.0.0
 	depends = libmpc
 	depends = elfutils
 	depends = zlib
@@ -21,8 +21,8 @@ pkgbase = msp430-elf-libstdc++
 	options = zipman
 	options = docs
 	options = !strip
-	source = https://ftpmirror.gnu.org/gcc/gcc-9.3.0/gcc-9.3.0.tar.xz
-	sha256sums = 71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1
+	source = https://ftpmirror.gnu.org/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+	sha256sums = b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2
 
 pkgname = msp430-elf-libstdc++
 
