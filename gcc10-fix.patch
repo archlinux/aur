@@ -1,0 +1,13 @@
+diff --git a/SoObjects/Mailer/SOGoMailObject.h b/SoObjects/Mailer/SOGoMailObject.h
+index 2d412e47c..5b53c4f54 100644
+--- a/SoObjects/Mailer/SOGoMailObject.h
++++ b/SoObjects/Mailer/SOGoMailObject.h
+@@ -51,7 +51,7 @@
+ 
+ @class WOResponse;
+ 
+-NSArray *SOGoMailCoreInfoKeys;
++extern NSArray *SOGoMailCoreInfoKeys;
+ 
+ @interface SOGoMailObject : SOGoMailBaseObject
+ {
