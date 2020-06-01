@@ -5,13 +5,13 @@
 pkgname=sope
 pkgdesc="application server used by SOGo"
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
 license=('GPL')
 options=('!strip')
 replaces=('sope2')
-depends=('gnustep-base<=1.26.0')
+depends=('gnustep-base')
 makedepends=('gcc-objc'
              'gnustep-make'
              'libxml2'

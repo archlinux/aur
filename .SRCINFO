@@ -1,7 +1,7 @@
 pkgbase = sope
 	pkgdesc = application server used by SOGo
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/files/downloads/SOGo/Sources/
 	arch = x86_64
 	license = GPL
