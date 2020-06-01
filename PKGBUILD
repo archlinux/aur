@@ -13,7 +13,7 @@ optdepends=('gtk-engine-murrine>=0.98.1: for gtk2 theming'
             'ttf-roboto: Recommended font')
 provides=('plata-theme')
 conflicts=('plata-theme')
-source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkver}")
+source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
