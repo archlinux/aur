@@ -5,6 +5,7 @@ pkgbase = tintin-git
 	url = https://github.com/scandum/tintin
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = pcre
 	makedepends = gnutls
 	makedepends = zlib
