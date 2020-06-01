@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Riad Wahby <kwantam+aur at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Riad Wahby <kwantam+aur at gmail dot com>
 # Contributor: Felix Schindler <aut at felixschindler dot net>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -13,21 +14,22 @@
 
 pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
-pkgrel=5
-#_ocaml_ver=4.06.0-2
+pkgrel=6
+_ocaml_ver=4.10.0
 arch=('i686' 'x86_64')
-url="http://llvm.org/"
+url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-makedepends=('cmake' 'libffi' 'python2' "ocaml" 'python-sphinx'
-             'ocaml-ctypes' 'ocaml-findlib' 'libedit' 'swig')
+makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
+             "ocaml=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib' 'python2'
+             'python-sphinx' 'python-recommonmark' 'swig')
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
-source=(http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
-        http://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
-        http://releases.llvm.org/$pkgver/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
-        http://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
-        http://releases.llvm.org/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
+source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
+        https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
+        https://releases.llvm.org/$pkgver/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
+        https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
+        https://releases.llvm.org/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
         D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
         D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
         D35246-Fix-sanitizer-build-against-latest-glibc.patch
@@ -54,8 +56,10 @@ sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'cd48bb5498c25fed2c237ab44e3700aa76ae9d8040bffa0e17dfebf2f4243bc1'
             '039a78549a5fcf6b42acba4d8f05c5593f3adeb38b151b607aa44ceb542562d8'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
-validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D'
-              '11E521D646982372EB577A1F8F0871F202119294')
+validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
+validpgpkeys+=('11E521D646982372EB577A1F8F0871F202119294')
+validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
+validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   cd "$srcdir/llvm-$pkgver.src"
@@ -87,26 +91,26 @@ prepare() {
 
 build() {
   cd "$srcdir/llvm-$pkgver.src/build"
+  export CFLAGS='-Wall -Wstrict-prototypes -Wno-unused-local-typedefs -Wno-sizeof-pointer-memaccess -Wno-maybe-uninitialized -Wno-stringop-truncation -Xlinker "--allow-multiple-definition"'
 
-  cmake \
+  cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLLVM_HOST_TRIPLE=$CHOST \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
-    -DLLVM_DYLIB_EXPORT_ALL=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DLLVM_INSTALL_UTILS=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=AVR \
     -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
-    ..
-
-  make
-  make ocaml_doc
+    -DLLDB_USE_SYSTEM_SIX=1
+  ninja all ocaml_doc
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/\(clang\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
@@ -116,8 +120,7 @@ build() {
 
 check() {
   cd "$srcdir/llvm-$pkgver.src/build"
-  make check
-  make check-clang
+  ninja check
 }
 
 package_llvm38() {
@@ -130,7 +133,7 @@ package_llvm38() {
 
   cd "$srcdir/llvm-$pkgver.src"
 
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 
   # Remove documentation sources
   rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
@@ -190,7 +193,7 @@ package_llvm-ocaml38() {
 
   install -d "$pkgdir"/{usr/lib,usr/share/doc}
   cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
-  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$_pkgname"
+  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$_pkgname/html"
 
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

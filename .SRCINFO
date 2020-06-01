@@ -1,30 +1,34 @@
 pkgbase = llvm38
 	pkgver = 3.8.1
-	pkgrel = 5
-	url = http://llvm.org/
+	pkgrel = 6
+	url = https://llvm.org/
 	arch = i686
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = libffi
-	makedepends = python2
-	makedepends = ocaml
-	makedepends = python-sphinx
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = ocaml=4.10.0
 	makedepends = ocaml-ctypes
 	makedepends = ocaml-findlib
-	makedepends = libedit
+	makedepends = python2
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
 	makedepends = swig
 	options = staticlibs
-	source = http://releases.llvm.org/3.8.1/llvm-3.8.1.src.tar.xz
-	source = http://releases.llvm.org/3.8.1/llvm-3.8.1.src.tar.xz.sig
-	source = http://releases.llvm.org/3.8.1/cfe-3.8.1.src.tar.xz
-	source = http://releases.llvm.org/3.8.1/cfe-3.8.1.src.tar.xz.sig
-	source = http://releases.llvm.org/3.8.1/clang-tools-extra-3.8.1.src.tar.xz
-	source = http://releases.llvm.org/3.8.1/clang-tools-extra-3.8.1.src.tar.xz.sig
-	source = http://releases.llvm.org/3.8.1/compiler-rt-3.8.1.src.tar.xz
-	source = http://releases.llvm.org/3.8.1/compiler-rt-3.8.1.src.tar.xz.sig
-	source = http://releases.llvm.org/3.8.1/lldb-3.8.1.src.tar.xz
-	source = http://releases.llvm.org/3.8.1/lldb-3.8.1.src.tar.xz.sig
+	source = https://releases.llvm.org/3.8.1/llvm-3.8.1.src.tar.xz
+	source = https://releases.llvm.org/3.8.1/llvm-3.8.1.src.tar.xz.sig
+	source = https://releases.llvm.org/3.8.1/cfe-3.8.1.src.tar.xz
+	source = https://releases.llvm.org/3.8.1/cfe-3.8.1.src.tar.xz.sig
+	source = https://releases.llvm.org/3.8.1/clang-tools-extra-3.8.1.src.tar.xz
+	source = https://releases.llvm.org/3.8.1/clang-tools-extra-3.8.1.src.tar.xz.sig
+	source = https://releases.llvm.org/3.8.1/compiler-rt-3.8.1.src.tar.xz
+	source = https://releases.llvm.org/3.8.1/compiler-rt-3.8.1.src.tar.xz.sig
+	source = https://releases.llvm.org/3.8.1/lldb-3.8.1.src.tar.xz
+	source = https://releases.llvm.org/3.8.1/lldb-3.8.1.src.tar.xz.sig
 	source = D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
 	source = D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
 	source = D35246-Fix-sanitizer-build-against-latest-glibc.patch
@@ -35,6 +39,8 @@ pkgbase = llvm38
 	source = llvm-Config-llvm-config.h
 	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	validpgpkeys = 11E521D646982372EB577A1F8F0871F202119294
+	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	sha256sums = 6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9
 	sha256sums = SKIP
 	sha256sums = 4cd3836dfb4b88b597e075341cae86d61c63ce3963e45c7fe6a8bf59bb382cdf
@@ -57,9 +63,9 @@ pkgbase = llvm38
 
 pkgname = llvm38
 	pkgdesc = Low Level Virtual Machine
-	depends = llvm-libs38=3.8.1-5
+	depends = llvm-libs38=3.8.1-6
 	depends = perl
-	provides = llvm=3.8.1-5
+	provides = llvm=3.8.1-6
 	conflicts = llvm
 	replaces = llvm
 
@@ -70,16 +76,16 @@ pkgname = llvm-libs38
 	depends = libffi
 	depends = libedit
 	depends = ncurses
-	provides = llvm-libs=3.8.1-5
+	provides = llvm-libs=3.8.1-6
 	conflicts = llvm-libs
 	replaces = llvm-libs
 
 pkgname = llvm-ocaml38
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm38=3.8.1-5
+	depends = llvm38=3.8.1-6
 	depends = ocaml
 	depends = ocaml-ctypes
-	provides = llvm-ocaml=3.8.1-5
+	provides = llvm-ocaml=3.8.1-6
 	conflicts = llvm-ocaml
 	replaces = llvm-ocaml
 
@@ -90,19 +96,19 @@ pkgname = lldb38
 	depends = libxml2
 	depends = python2
 	depends = python2-six
-	provides = lldb=3.8.1-5
+	provides = lldb=3.8.1-6
 	conflicts = lldb
 	replaces = lldb
 
 pkgname = clang38
 	pkgdesc = C language family frontend for LLVM
 	url = http://clang.llvm.org/
-	depends = llvm-libs38=3.8.1-5
+	depends = llvm-libs38=3.8.1-6
 	depends = gcc
 	depends = libxml2
 	optdepends = openmp: OpenMP support in clang with -fopenmp
 	optdepends = python2: for scan-view and git-clang-format
-	provides = clang=3.8.1-5
+	provides = clang=3.8.1-6
 	provides = clang-analyzer=3.8.1
 	conflicts = clang
 	conflicts = clang-analyzer
@@ -112,8 +118,8 @@ pkgname = clang38
 pkgname = clang-tools-extra38
 	pkgdesc = Extra tools built using clang's tooling APIs
 	url = http://clang.llvm.org/
-	depends = clang38=3.8.1-5
-	provides = clang-tools-extra=3.8.1-5
+	depends = clang38=3.8.1-6
+	provides = clang-tools-extra=3.8.1-6
 	conflicts = clang-tools-extra
 	replaces = clang-tools-extra
 
