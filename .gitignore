@@ -1,0 +1,6 @@
+# Vim files
+*.sw[p|o]
+*.un~
+
+# git cache files
+*.orig
