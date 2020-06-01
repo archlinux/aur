@@ -4,7 +4,7 @@
 
 pkgname=libafterimage
 pkgver=1.20
-pkgrel=4
+pkgrel=5
 pkgdesc="Generic image manipulation library"
 url="http://www.afterstep.org/afterimage"
 license=('GPL')
@@ -16,7 +16,7 @@ source=("https://downloads.sourceforge.net/project/afterstep/libAfterImage/$pkgv
         header-install.patch)
 sha256sums=('6e233253f4d1dd22dfce9f9a245cc036d814fc99ba7f6732f4e345de62cfe458'
             'bbf95bcddc4c48dcde88745dc9cb772ca53b625e8e466b9d565e4183ce71dbe3'
-            'b7e1b16af975b4f3b66fd91ca1244d4fc44db398027f2829ad24882b79b882b8'
+            'a38f2e46bb69f6749c5e48cff60f51fae6bda19d268f0c7f16dfbd74d34d2f64'
             '6e1c5fd8acbbbc1c83f0ca490f08b7602d37a2295cb4741eef6f3b88fb638203')
 
 prepare() {

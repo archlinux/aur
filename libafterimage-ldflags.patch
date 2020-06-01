@@ -6,7 +6,7 @@ diff -aur --color libAfterImage-1.20-old/Makefile.in libAfterImage-1.20-new/Make
  $(LIB_SHARED).$(LIBVER): $(LIB_OBJS) $(LIB_INCS) config.h
  	$(CC) -shared -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
 -	 $(LIB_OBJS)
-+	 $(LIB_OBJS) ${USER_LD_FLAGS}
++	 $(LIB_OBJS) $(USER_LD_FLAGS)
  
  install.man:
  		@if [ -d doc/man ] ; then \
