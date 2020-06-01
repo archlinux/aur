@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=nvim-r
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Vim plugin to work with R"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('vim-r' 'r-vimcom')
 replaces=('vim-r')
 install='nvim-r.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jalvesaq/Nvim-R/archive/v${pkgver}.tar.gz")
-sha256sums=('d4d132f2780b3bde8d0bfccb90c165c5beb8c22f44b3a977b0e43acd9f19e867')
+sha256sums=('b4b616e8dace0c3c006467f6471c9805ed8754beb1b8aaeedad952b3eb0f25e8')
 
 package() {
   cd "Nvim-R-${pkgver}"
