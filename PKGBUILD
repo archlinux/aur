@@ -13,7 +13,8 @@ provides=('piskel')
 options=(!strip)
 source=("logo.ico::https://github.com/piskelapp/piskel/raw/master/misc/desktop/logo.ico"
     "Piskel.desktop")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('c2f050d7a8e779af36018947a91a4e6f613eeb1d832d96dc979565a71fe3c282'
+            '193985d8343485ee4c4388432e0426d82a29437f9a3ad3fb3bbf19a3793a5f17')
 
 prepare()
 {
