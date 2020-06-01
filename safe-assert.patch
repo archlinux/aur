@@ -1,0 +1,13 @@
+diff --git a/libs/widgets/KoToolBox.cpp b/libs/widgets/KoToolBox.cpp
+index 360aa26f1d..d6e5637fb5 100644
+--- a/libs/widgets/KoToolBox.cpp
++++ b/libs/widgets/KoToolBox.cpp
+@@ -48,7 +48,7 @@
+ 
+ static int buttonSize(int screen)
+ {
+-    KIS_ASSERT_RECOVER_RETURN_VALUE(screen < QGuiApplication::screens().size() && screen >= 0, 16);
++    KIS_SAFE_ASSERT_RECOVER_RETURN_VALUE(screen < QGuiApplication::screens().size() && screen >= 0, 16);
+ 
+     QRect rc = QGuiApplication::screens().at(screen)->availableGeometry();
+     if (rc.width() <= 1024) {

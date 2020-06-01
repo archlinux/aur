@@ -1,6 +1,6 @@
 pkgbase = krita-beta
 	pkgdesc = Edit and paint images - beta release
-	pkgver = 4.3.0
+	pkgver = 4.3.0.beta2
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -22,10 +22,12 @@ pkgbase = krita-beta
 	depends = opencolorio
 	provides = krita
 	conflicts = krita
-	source = https://download.kde.org/unstable/krita/4.3.0-beta1/krita-4.3.0-beta1.tar.xz
+	source = https://download.kde.org/unstable/krita/4.3.0-beta2/krita-4.3.0-beta2.tar.xz
 	source = krita-pyqt5-sip5.patch
-	sha256sums = e2a3a61f3d8be6009895417c5094859a98307091b12624eb52281f2657e23ff0
+	source = safe-assert.patch
+	sha256sums = 63479ea6b009bc55254ac2df7a043ebd659e5fe5db696e308e01bf1a56c89d32
 	sha256sums = ab2f33843d8cad31bc13e0eca7dc732cdbfed054924f25ed61102c0d0971c1d8
+	sha256sums = 890edc92a297edbed001263b069767c34fdd51a45969ea12ae760cc4c8f98ee4
 
 pkgname = krita-beta
 
