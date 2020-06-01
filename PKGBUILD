@@ -9,7 +9,7 @@ url="https://github.com/scandum/tintin"
 license=('GPL3')
 conflicts=('tintin')
 provides=('tintin')
-makedepends=('pcre' 'gnutls' 'zlib')
+makedepends=('git' 'pcre' 'gnutls' 'zlib')
 source=('git://github.com/scandum/tintin.git')
 md5sums=('SKIP')
 
