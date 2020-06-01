@@ -16,7 +16,7 @@ _jdk_update=252
 _jdk_build=1649.2
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('GPL2')
@@ -244,12 +244,18 @@ package_jdk8-openjdk-jetbrains() {
 
   # 'bin' files
   pushd bin
-
+  install -dm755 "${pkgdir}${_jvmdir}/bin/"
   # 'java-rmi.cgi' will be handled separately as it should not be in the PATH and has no man page
   for b in $(ls | grep -v java-rmi.cgi); do
     if [ -e ../jre/bin/${b} ]; then
       # Provide a link of the jre binary in the jdk/bin/ directory
       ln -s ../jre/bin/${b} "${pkgdir}${_jvmdir}/bin/${b}"
+    else
+      # Copy binary to jdk/bin/
+      install -D -m 755 ${b} "${pkgdir}${_jvmdir}/bin/${b}"
+      # Copy man page
+      install -D -m 644 ../man/man1/${b}.1 "${pkgdir}/usr/share/man/man1/${b}-${_jdkname}.1"
+      install -D -m 644 ../man/ja/man1/${b}.1 "${pkgdir}/usr/share/man/ja/man1/${b}-${_jdkname}.1"
     fi
   done
   popd

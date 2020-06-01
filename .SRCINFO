@@ -1,6 +1,6 @@
 pkgbase = java8-openjdk-jetbrains
 	pkgver = 8.u252.b1649.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JetBrains/jdk8u
 	arch = x86_64
 	license = GPL2
@@ -46,7 +46,7 @@ pkgname = jre8-openjdk-jetbrains-headless
 pkgname = jre8-openjdk-jetbrains
 	pkgdesc = OpenJDK Java 8 full runtime environment (with JetBrains patches)
 	install = install_jre8-openjdk-jetbrains.sh
-	depends = jre8-openjdk-jetbrains-headless=8.u252.b1649.2-3
+	depends = jre8-openjdk-jetbrains-headless=8.u252.b1649.2-4
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -61,7 +61,7 @@ pkgname = jdk8-openjdk-jetbrains
 	pkgdesc = OpenJDK Java 8 development kit (with JetBrains patches)
 	install = install_jdk8-openjdk-jetbrains.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-jetbrains=8.u252.b1649.2-3
+	depends = jre8-openjdk-jetbrains=8.u252.b1649.2-4
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	provides = java-environment-openjdk-jetbrains=8
