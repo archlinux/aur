@@ -1,0 +1,39 @@
+pkgbase = dcvviewer-bin
+	pkgdesc = DCV Desktop Cloud Visualization GTK client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients.
+	pkgver = 2020.0.1358
+	pkgrel = 1
+	url = https://www.nice-software.com/products/dcv
+	arch = x86_64
+	license = custom: commercial
+	depends = backintime
+	depends = cairo>=1.10.0
+	depends = dconf
+	depends = desktop-file-utils
+	depends = ffmpeg
+	depends = gcc-libs>=4.2
+	depends = gdk-pixbuf2>=2.22.0
+	depends = glib2
+	depends = glibc>=2.18
+	depends = gst-plugins-base-libs>=1.0.0
+	depends = gstreamer>=1.0.0
+	depends = gtk3>=3.21.4
+	depends = hicolor-icon-theme
+	depends = krb5>=1.16
+	depends = libepoxy>=1.0
+	depends = libjpeg-turbo
+	depends = libsasl
+	depends = libsoup
+	depends = libva>=1.8.0
+	depends = libx11
+	depends = libxml2>=2.7.4
+	depends = lz4
+	depends = openssl>=1.1.0
+	depends = pango
+	depends = pcsclite>=1.3.0
+	depends = protobuf-c
+	depends = sqlite>=3.5.9
+	source = https://d1uj6qtbmh3dt5.cloudfront.net/2020.0/Clients/nice-dcv-viewer_2020.0.1358-1_amd64.ubuntu1804.deb
+	sha256sums = b41820f54a8e3e5e820cc32aa08b4e9079508f654134ec3b69a2eace62c66bf4
+
+pkgname = dcvviewer-bin
+
