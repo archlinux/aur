@@ -1,0 +1,16 @@
+pkgbase = python-django-tex-git
+	pkgdesc = A simple Django app to render LaTeX templates and compile them into PDF files.
+	pkgver = 1.1.7.r0.g75ddacd
+	pkgrel = 1
+	url = https://github.com/weinbusch/django-tex
+	arch = any
+	license = BSD
+	depends = python-django>=2.2
+	depends = texlive-bin
+	depends = python-jinja>=2.9.6
+	provides = python-django-tex
+	source = python-django-tex-git::git+https://github.com/weinbusch/django-tex
+	md5sums = SKIP
+
+pkgname = python-django-tex-git
+
