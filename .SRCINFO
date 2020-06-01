@@ -1,0 +1,13 @@
+pkgbase = cv_to_cc.lv2
+	pkgdesc = Convert LV2 CV to MIDI CV
+	pkgver = r1.04adeed
+	pkgrel = 1
+	url = https://github.com/polyeffects/cv_to_cc.lv2
+	arch = x86_64
+	license = GPL
+	depends = lv2
+	source = git+https://github.com/polyeffects/cv_to_cc.lv2
+	md5sums = SKIP
+
+pkgname = cv_to_cc.lv2
+
