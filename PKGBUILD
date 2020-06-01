@@ -15,7 +15,7 @@ conficts=("marblemarcher")
 source=(
 	'marblemarcher::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#branch=master'
 	'marblemarcher.desktop')
-sha256sums=('SKIP' '902387d9365654b4a8225c5e99b972f696a981f396adc576feb2d830e39f8890')
+sha256sums=('SKIP' '40c67bca187b0cc5ac271cbb7cbc82296bd56899ee8c07709523636679129f89')
 
 pkgver() {
 	cd "marblemarcher"
@@ -31,10 +31,14 @@ build(){
 }
 package(){
 	cd "marblemarcher"
-	mkdir -p "$pkgdir/opt/marblemarcher"
-	cp -r game_folder/* "$pkgdir/opt/marblemarcher"
-	cp build/MarbleMarcher "$pkgdir/opt/marblemarcher"
-	install -D "$srcdir/marblemarcher.desktop" "$pkgdir/usr/share/applications/marblemarcher.desktop"
+	#Install
+	mkdir -p "$pkgdir/usr/share/marblemarcher"
+	cp -r game_folder/* "$pkgdir/usr/share/marblemarcher"
+	
+	mkdir -p "$pkgdir/usr/bin/"
+	cp build/MarbleMarcher "$pkgdir/usr/bin/"
+	
+	install -Dm644 "$srcdir/marblemarcher.desktop" "$pkgdir/usr/share/applications/marblemarcher.desktop"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/marblemarcher"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/marblemarcher"
 }
