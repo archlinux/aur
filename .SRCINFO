@@ -1,14 +1,14 @@
 pkgbase = python2-lhafile
 	pkgdesc = LHA archive support for Python 2
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://fengestad.no/python-lhafile/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = python2
-	source = http://fengestad.no/python-lhafile/python-lhafile-0.2.1.tar.gz
-	md5sums = bc63d61a1b562bbbc52118c168f8cb5e
+	source = python2-lhafile::git+https://github.com/FrodeSolheim/python-lhafile#tag=v0.2.2
+	md5sums = SKIP
 
 pkgname = python2-lhafile
 
