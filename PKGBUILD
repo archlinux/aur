@@ -7,12 +7,12 @@ arch=('x86_64')
 url='https://github.com/zee-mzha/vibrantlinux'
 license=('MIT')
 depends=('qt5-base' 'libvibrant')
-makedepends=('git')
+makedepends=('git' 'imagemagick')
 conflicts=('vibrantlinux')
 provides=('vibrantlinux')
-source=("${_pkgname}::git+https://github.com/zee-mzha/vibrantLinux.git" 'vibrantLinux.desktop')
-sha256sums=('SKIP' 'SKIP')
-pkgver=2.1.1.r0.g59b8045
+source=("${_pkgname}::git+https://github.com/zee-mzha/vibrantLinux.git")
+sha256sums=('SKIP')
+pkgver=2.1.1.r7.g1dc6b43
 
 pkgver() {
     cd "${_pkgname}"
@@ -24,7 +24,7 @@ build() {
     cd "${_pkgname}"
 
     qmake
-    make ${MAKEFLAGS}
+    make
 }
 
 package() {
@@ -32,9 +32,11 @@ package() {
 
     make INSTALL_ROOT="${pkgdir}" install
 
-    for res in 16 32 64 128 256 512
-    do
-        install -Dm664 "assets/icon${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vibrantLinux.png"
+    for res in 16 32 64 128 256 512; do
+        convert "${srcdir}/vibrantlinux/assets/icon.png" -resize "${res}x${res}" "${srcdir}/vibrantlinux/assets/icon-${res}.png"
+        install -Dm644 "${srcdir}/vibrantlinux/assets/icon-${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vibrantLinux.png"
     done
-    install -Dm644 "${srcdir}/vibrantLinux.desktop" "${pkgdir}/usr/share/applications/vibrantLinux.desktop"
+
+    rm "${pkgdir}/usr/share/icons/icon.png"
+    mv "${pkgdir}/usr/share/applications/application.desktop" "${pkgdir}/usr/share/applications/vibrantLinux.desktop"
 }
