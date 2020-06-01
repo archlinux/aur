@@ -4,7 +4,7 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=3.10.1.r0.g8e602b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -46,9 +46,11 @@ build() {
 		-v \
 		-trimpath \
 		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
 		-gcflags "all=-trimpath=$srcdir" \
 		-asmflags "all=-trimpath=$srcdir" \
-		-ldflags "-extldflags $LDFLAGS" \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-o "./dist/${pkgname%-git}" "./cmd/${pkgname%-git}"
 
 	# Clean mod cache for makepkg -C
