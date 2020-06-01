@@ -1,14 +1,14 @@
 pkgbase = komga
 	pkgdesc = Media server for comics/mangas/BDs with API and OPDS support
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://komga.org
 	arch = any
 	license = MIT
 	depends = java-runtime
-	source = komga.jar::https://github.com/gotson/komga/releases/download/v0.30.0/komga-0.30.0.jar
+	source = komga.jar::https://github.com/gotson/komga/releases/download/v0.31.0/komga-0.31.0.jar
 	source = komga
-	md5sums = ecfbf0b308ededa005a5c30986c6776f
+	md5sums = fda5324698ddbd7347f22afb8b9be8cb
 	md5sums = e5713c297be47045511f06664574754f
 
 pkgname = komga
