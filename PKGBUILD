@@ -31,6 +31,7 @@ package()
 
 	install -d "${pkgdir}/usr/share/applications"
 	install "${srcdir}/Piskel.desktop" "${pkgdir}/usr/share/applications"
+    chmod +x "${pkgdir}/usr/share/applications/Piskel.desktop"
 
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/Piskel/piskel" "${pkgdir}/usr/bin/piskel"
