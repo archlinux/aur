@@ -1,9 +1,10 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bruno Dupuis <lisael@lisael.org>
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
+
 pkgname=perl-app-sqitch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Sane database change management'
 _dist=App-Sqitch
 arch=('any')
@@ -59,7 +60,7 @@ optdepends=(
 
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/$_dist-v$pkgver.tar.gz")
-sha512sums=('764a17c7cce73f49a789b2ffd2d7d6a3822257f8078710f986110f7136a91f841bd672d9adcbaccb87e8fca6a076d3437243d5601e96d355a37855aa99b25739')
+sha512sums=('bb2d179c473d2c659fa0e6b23a5c312449299975a2e487f84812d9d891ecc139278da1661e1a4eb922487b0cafb8014de019b498c069799f39fd2e31392cf3aa')
 
 build() {
     cd "$srcdir/$_dist-$pkgver"
