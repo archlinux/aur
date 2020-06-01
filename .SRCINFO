@@ -1,0 +1,15 @@
+pkgbase = chart-geany
+	pkgdesc = Chart Geany is a free cross platform software solution for market technical analysis, charting and a portfolio manager.
+	pkgver = 6.1.5
+	pkgrel = 1
+	url = https://chart-geany.sourceforge.io/
+	arch = any
+	license = GPL2
+	makedepends = clang
+	depends = qtwebkit-bin
+	depends = libxls
+	source = chart-geany-6.1.5.tar.gz::https://sourceforge.net/projects/chart-geany/files/6.0/chartgeany-6.1.5.tar.gz/download
+	md5sums = c2f0acdc7025de66ff6cbcba65212751
+
+pkgname = chart-geany
+
