@@ -2,29 +2,29 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_assert'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='2'
+pkgver='0.14.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Assert-like extension nodes that raise useful errors on failure'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppx_cold>=0.13.0' 'ocaml-ppx_compare>=0.13.0' 'ocaml-ppx_here>=0.13.0' 'ocaml-ppx_sexp_conv>=0.13.0' 'ocaml-ppxlib>=0.9.0')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppx_cold>=0.14.0' 'ocaml-ppx_compare>=0.14.0' 'ocaml-ppx_here>=0.14.0' 'ocaml-ppx_sexp_conv>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5e640cdde010da7dcdd1e9d99b11191c99b229e45ef4f06d5e0595a3f619366')
+sha256sums=('bb4808387bc143e8e4e443bb5caa6ad665009d51097b8ebf6c76a0bf53b2105d')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
