@@ -1,3 +1,5 @@
+# Maintainer: Julian Daube <joposter (at) gmail (dot) com>
+# Contributor: Julian Daube <joposter (at) gmail (dot) com>
 pkgname=python-django-qr-code-git
 pkgver=1.2.0.r0.g8837861
 pkgrel=1
