@@ -11,7 +11,7 @@ url="http://python-tablib.org"
 license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
-checkdepends=("python-pytest")
+checkdepends=("python-pytest-cov")
 optdepends=("python-tabulate: cli interface"
             "python-markuppy: for HTML support"
             "python-odfpy: for ODS support"
