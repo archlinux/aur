@@ -5,15 +5,15 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=st-jacob-git
-pkgver=0.8.3.r5.aafe7dd
+pkgver=0.8.3.r6.ee5ae82
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of st see the repo for more details"
 arch=(x86_64 i686)
 url="https://gitlab.com/Jacob_McDonnell/st.git"
 license=('MIT/X Consortium License')
-depends=()
+depends=(libxft-bgra)
 makedepends=(git make)
-optdepends=(dmenu xurls xclip python-pywal)
+optdepends=(dmenu xurls xclip python-pywal ttf-joypixels)
 provides=(st)
 conflicts=(st)
 source=("git+$url")
