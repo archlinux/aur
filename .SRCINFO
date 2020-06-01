@@ -1,0 +1,16 @@
+pkgbase = python-django-markdownify-git
+	pkgdesc = Markdown template filter for Django
+	pkgver = 0.8.0.r5.gf5b7e2e
+	pkgrel = 1
+	url = https://github.com/erwinmatijsen/django-markdownify
+	arch = any
+	license = MIT
+	depends = python-django
+	depends = python-markdown
+	depends = python-bleach
+	provides = python-django-markdownify
+	source = python-django-markdownify-git::git+https://github.com/erwinmatijsen/django-markdownify
+	md5sums = SKIP
+
+pkgname = python-django-markdownify-git
+
