@@ -3,7 +3,7 @@
 pkgname="python-django-import-export-git"
 pkgver=2.1.0.r8.g29a7d96
 pkgrel=1
-pkgdesc="Management commands to help backup and restore your project database and media files"
+pkgdesc="Django application and library for importing and exporting data with admin integration."
 provides=("python-django-import-export")
 
 arch=("any")
