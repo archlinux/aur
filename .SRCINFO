@@ -1,6 +1,6 @@
 pkgbase = stmm-input-bt
 	pkgdesc = Device input event library - keyboards over bluetooth
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://efanomars.com/stmm-input-bt
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = stmm-input-bt
 	depends = bluez
 	depends = bluez-libs
 	depends = dconf
-	source = https://efanomars.com/sources/stmm-input-bt-0.15.tar.gz
-	sha256sums = b02c343bf47e34907eeeac9fdf76faaad7f0ff9a800ef2bb147496ce3b352c24
+	source = https://efanomars.com/sources/stmm-input-bt-0.16.tar.gz
+	sha256sums = 3bd5a5b97760a30bba77e34ead635a8db66b62d761b37356402d231f4c730d0d
 
 pkgname = stmm-input-bt
 
