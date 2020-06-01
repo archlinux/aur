@@ -1,7 +1,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=ps3netsrv
-_wMM_version=1.47.27
+_wMM_version=1.47.28
 pkgver=20200529
 pkgrel=1
 pkgdesc='PS3 Net Server (mod by aldostools)'
