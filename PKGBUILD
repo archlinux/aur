@@ -1,29 +1,29 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _projectname='sexplib'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='2'
+pkgver='0.14.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Library for serializing OCaml values to and from S-expressions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-num' 'ocaml-parsexp>=0.13.0' 'ocaml-sexplib0>=0.13.0')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.04.2' 'ocaml-num' 'ocaml-parsexp>=0.14.0' 'ocaml-sexplib0>=0.14.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d14cf46a4439f736b5dc6992d00918a01fbbfdd6b3ee26a999f3707e3425c96')
+sha256sums=('ad75ab155e2b4e2fec63fb178ef25a0a5a7de3834b939db95f38287dfd21cc68')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
