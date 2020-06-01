@@ -16,7 +16,8 @@ sha256sums=('b41820f54a8e3e5e820cc32aa08b4e9079508f654134ec3b69a2eace62c66bf4')
 
 package(){
 
-	# Extract package data
+  # Extract package data, move files to comply with Arch package guidelines
+  # (https://wiki.archlinux.org/index.php/Arch_package_guidelines#Directories)
 	tar -xf data.tar.xz -C "${pkgdir}" \
     --transform 's,^./usr/lib/x86_64-linux-gnu,./usr/lib,' \
     --transform 's,^./usr/libexec,./usr/lib,' \
@@ -27,6 +28,7 @@ package(){
     --transform 's,^./usr/share/doc\(/nice-dcv-viewer\)\?$,.,' \
     --exclude './usr/share/doc/nice-dcv-viewer/changelog.Debian.gz'
   
+  # Update paths in launcher script
   sed -i 's|libdir=${basedir}/lib/x86_64-linux-gnu|libdir=${basedir}/lib|; s|libexecdir=${basedir}/libexec|libexecdir=${basedir}/lib|' \
     "${pkgdir}/usr/bin/dcvviewer"
 
