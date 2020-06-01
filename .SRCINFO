@@ -1,0 +1,13 @@
+pkgbase = netmon
+	pkgdesc = Simple console network traffic monitor.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/mdomlop/netmon
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = netmon-0.9.tar.gz::https://github.com/mdomlop/netmon/archive/0.9.tar.gz
+	md5sums = aeea37ed5d35b1d118adaf7b47235a3d
+
+pkgname = netmon
+
