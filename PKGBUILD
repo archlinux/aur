@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -40,9 +40,11 @@ build() {
 		-v \
 		-trimpath \
 		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
 		-gcflags "all=-trimpath=$srcdir" \
 		-asmflags "all=-trimpath=$srcdir" \
-		-ldflags "-extldflags $LDFLAGS" \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-o "./dist/$pkgname" "./cmd/$pkgname"
 
 	# Clean mod cache for makepkg -C
