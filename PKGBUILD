@@ -3,7 +3,7 @@
 
 # TODO cleanup asar, drop as much as possible, remove local references
 pkgname=whalebird-desktop
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
@@ -15,7 +15,7 @@ provides=('whalebird')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h3poteto/${pkgname}/archive/${pkgver}.tar.gz"
   whalebird.desktop
   whalebird.sh)
-sha256sums=('d97ece17bf24f5139017a1fcfb29978968b69a845979c5c6e13118a16fee0df1'
+sha256sums=('07f7794b160c544b6bc34e58a6037dcf817f8a4067fcdf53c2b678a02db6257b'
             '8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef'
             'a0a050952353c78389bdafd8885cae4a402d0819acad07010566657e387c5ce9')
 
