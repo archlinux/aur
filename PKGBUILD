@@ -9,7 +9,7 @@ pkgdesc="A simple Django app to render LaTeX templates and compile them into PDF
 provides=("$_pkgname")
 url="https://github.com/weinbusch/django-tex"
 arch=("any")
-license=("BSD")
+license=("MIT")
 
 source=("$pkgname::git+$url")
 depends=("python-django>=2.2" "texlive-bin" "python-jinja>=2.9.6")

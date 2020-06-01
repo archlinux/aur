@@ -4,7 +4,7 @@ pkgbase = python-django-tex-git
 	pkgrel = 1
 	url = https://github.com/weinbusch/django-tex
 	arch = any
-	license = BSD
+	license = MIT
 	depends = python-django>=2.2
 	depends = texlive-bin
 	depends = python-jinja>=2.9.6
