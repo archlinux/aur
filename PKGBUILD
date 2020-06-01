@@ -2,12 +2,12 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=mozilla-firefox-sync-server-git
-pkgver=1.8.0.r32.gbebd2f3
+pkgver=1.8.0.r67.g516807e
 pkgrel=1
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync - 1.5+ version for Firefox 29+"
 arch=('i686' 'x86_64')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
-license=('GPL')
+license=('MPL2')
 depends=('python2' 'python2-virtualenv')
 makedepends=('git')
 options=(!debug)
@@ -34,14 +34,17 @@ prepare() {
 
 	# Change default sqlite database location
 	sed -i "s|/tmp/syncserver.db|/var/lib/ffsync/sync_storage.db|g" syncserver.ini
+
+	# Remove obsolete parameter
+	sed -i "s|--no-site-packages||g" Makefile
 }
 
 build() {
 	cd ${pkgname}
 	make build
 
-	# PostgreSQL support
-	# local/bin/pip install psycopg2
+	# PostgreSQL support (please uncomment)
+	#local/bin/pip install psycopg2
 
 	# There is no install target in the Makefile, so let's do some cleaning
 	rm -rf .git .gitignore Dockerfile Makefile MANIFEST.in README.rst setup.py \
