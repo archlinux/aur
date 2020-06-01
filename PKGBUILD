@@ -24,7 +24,7 @@ build() {
     cd $_pkgname
     ./bootstrap
     ./configure --prefix=/usr \
-                CPPFLAGS=-I/usr/lib/python3.7/site-packages/numpy/core/include/ \
+                CPPFLAGS=-I/usr/lib/python3.8/site-packages/numpy/core/include/ \
                 PYTHON=python3 \
                 SWIG=/usr/bin/swig-3
     make
