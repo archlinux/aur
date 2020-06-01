@@ -1,0 +1,21 @@
+pkgbase = als-controller-git
+	pkgdesc = A daemon that adjusts screen and keyboard backlight using the Zenbook's light sensor
+	pkgver = r86.a2f9f2b
+	pkgrel = 1
+	url = https://github.com/hitzemann/Asus-Zenbook-Ambient-Light-Sensor-Controller
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = als-dkms
+	depends = qt5-base
+	depends = libbsd
+	provides = als-controller
+	conflicts = als-controller
+	source = als-controller-git::git+https://github.com/hitzemann/Asus-Zenbook-Ambient-Light-Sensor-Controller.git
+	source = als-controller.service
+	sha256sums = SKIP
+	sha256sums = 47b3e42bd5d59867e639975597d5225b1654c92b2965509280ffd71956849ba4
+
+pkgname = als-controller-git
+
