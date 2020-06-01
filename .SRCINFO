@@ -1,6 +1,6 @@
 pkgbase = nwjs-bin
 	pkgdesc = An app runtime based on Chromium and node.js.
-	pkgver = 0.45.6
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://nwjs.io/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = nwjs-bin
 	conflicts = nwjs
 	conflicts = node-webkit
 	replaces = node-webkit
-	source = nwjs-bin-0.45.6.tar.gz::http://dl.nwjs.io/v0.45.6/nwjs-v0.45.6-linux-x64.tar.gz
-	sha256sums = 84d45dfefcf7e5ddb961b0aa8aeb7ff5671766d0d1629002ca3927ab05613aca
+	source = nwjs-bin-0.46.0.tar.gz::http://dl.nwjs.io/v0.46.0/nwjs-v0.46.0-linux-x64.tar.gz
+	sha256sums = 77237ca27323641ea2fb3cfadc80f32ee1a2f14ecd814efd2041744fdd7e3fc3
 
 pkgname = nwjs-bin
 
