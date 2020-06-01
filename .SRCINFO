@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-gamepad
 	pkgdesc = Adds support for getting events from gamepad devices (mingw-w64)
-	pkgver = 5.14.2
+	pkgver = 5.15.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-qt5-gamepad
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.14/5.14.2/submodules/qtgamepad-everywhere-src-5.14.2.tar.xz
-	sha256sums = f77daadb4755cf760e11812264259fb103396fd1b06df1e06b5df162081c8d03
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtgamepad-everywhere-src-5.15.0.tar.xz
+	sha256sums = dda54d9f90897944bed5e6af48a904a677fd97eb6f57ab08a2b232c431caf31a
 
 pkgname = mingw-w64-qt5-gamepad
 
