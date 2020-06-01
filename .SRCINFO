@@ -17,7 +17,7 @@ pkgbase = marblemarcher-git
 	source = marblemarcher::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#branch=master
 	source = marblemarcher.desktop
 	sha256sums = SKIP
-	sha256sums = 902387d9365654b4a8225c5e99b972f696a981f396adc576feb2d830e39f8890
+	sha256sums = 40c67bca187b0cc5ac271cbb7cbc82296bd56899ee8c07709523636679129f89
 
 pkgname = marblemarcher-git
 
