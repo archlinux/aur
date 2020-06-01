@@ -4,10 +4,11 @@
 # Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
+# Contributor: Netboy3
 
 pkgname=snort
 pkgver=2.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='http://www.snort.org'
@@ -24,7 +25,13 @@ install='snort.install'
 source=("https://www.snort.org/downloads/snort/${pkgname}-${pkgver}.tar.gz"
     "http://rules.emergingthreats.net/open/${pkgname}-2.9.0/emerging.rules.tar.gz"
     'snort@.service'
+    'snort-2.9.15.1-fno-common.patch'
 )
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -Np1 -i ../snort-2.9.15.1-fno-common.patch
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -47,6 +54,7 @@ package() {
     
     install -d -m755 "${pkgdir}/var/log/snort"
     install -D -m644 etc/{*.conf*,*.map} "${pkgdir}/etc/snort/"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     
     # init service file
     install -D -m644 ../snort@.service $pkgdir/usr/lib/systemd/system/snort@.service
@@ -59,5 +67,6 @@ package() {
 }
 
 md5sums=('1cec58babaea3420014d61a93e6e1545'
-         'SKIP'
-         'a847030a34396e6b2d1cacd272ad42da')
+    'SKIP'
+    'a847030a34396e6b2d1cacd272ad42da'
+'101bc0617d1547b14359ad884ac70541')
