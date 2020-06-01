@@ -3,28 +3,28 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='stdio'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
-pkgrel='3'
+pkgver='0.14.0'
+pkgrel='1'
 pkgdesc='Standard IO Library for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base')
-makedepends=('dune>=1.5.1')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7c2dd42188b8afe833e840751d0b6107e8d2dea601845c6ad9c928f8a90b81d9')
+sha256sums=('1685cb86b29b07075ba6028431cf4e3f687c071d89996a6437442db2dfe1b0b2')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
