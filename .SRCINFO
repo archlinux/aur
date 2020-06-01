@@ -1,0 +1,17 @@
+pkgbase = git-bookmark
+	pkgdesc = Keep your bookmarks with your repository
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Qu4tro/git-bookmark
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = make
+	depends = git
+	depends = docopts
+	source = git-bookmark-0.5.1.tar.gz::https://github.com/Qu4tro/git-bookmark/archive/0.5.1.tar.gz
+	md5sums = d16cff4a707789ce6a2a7cc22cef833a
+
+pkgname = git-bookmark
+
