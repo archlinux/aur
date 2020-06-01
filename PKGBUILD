@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r1875.860390da
+pkgver=r1935.5f3675b8
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
@@ -91,7 +91,7 @@ prepare() {
 
   # NOTE: Remove VTT commit for Rubik as it caused some issues with display.
   # See: https://github.com/google/fonts/issues/1137
-  git revert -n dfd435109b718b1c5a8da7bd0872c751e2ae1820
+  git -c merge.renames=0 revert -n dfd435109b718b1c5a8da7bd0872c751e2ae1820
 
   # NOTE: Adobe Blank is not meant to be installed.
   # See: https://github.com/google/fonts/issues/2106#issuecomment-520067314
