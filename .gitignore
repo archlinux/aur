@@ -1,4 +1,5 @@
-*
-!/.gitignore
-!/ChangeLog
-!/PKGBUILD
+/*.pkg.*
+/.ccls-cache/
+/abcMIDI-*.zip
+/pkg/
+/src/
