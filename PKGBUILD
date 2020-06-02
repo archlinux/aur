@@ -1,7 +1,7 @@
 # Maintainer: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=cmus-git
-pkgver=v2.8.0.r45.g33fad6e
+pkgver=v2.8.0.r24.gd1290d5
 pkgrel=1
 pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ optdepends=('alsa-lib: for ALSA output plugin support'
 conflicts=('cmus')
 provides=('cmus')
 license=('GPL')
-source=(git://github.com/KamranMackey/cmus)
+source=(git://github.com/cmus/cmus)
 sha512sums=('SKIP')
 _gitname=cmus
 
@@ -53,16 +53,14 @@ pkgver() {
 }
 
 build() {
-  cd "$_gitname"/src/
-  chmod +x configure
+  cd "$_gitname"
   ./configure prefix=/usr
   make
 }
 
 package() {
-  cd "$_gitname"/src/
+  cd "$_gitname"
   make DESTDIR="$pkgdir" install
-  cd ../
   install -Dm644 contrib/cmus.bash-completion "$pkgdir"/usr/share/bash-completion/completions/cmus
   install -Dm644 contrib/_cmus "$pkgdir"/usr/share/zsh/site-functions/_cmus
 }
