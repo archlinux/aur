@@ -1,7 +1,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.15.10
+pkgver=0.15.11
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('bash-completion' 'cmake' 'doxygen'
 checkdepends=('python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('524cf6ca1578141b2150fde3a5321ddf')
+md5sums=('69b1d92008bbcd5e273c0d717ac9b523')
 
 prepare() {
 	cd "$pkgname-$pkgver"
