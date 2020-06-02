@@ -2,11 +2,12 @@
 
 pkgname=stoplight-studio-appimage
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
 url='https://stoplight.io/studio/'
 license=('custom')
+depends=('fuse2')
 source=(
   "stoplight-studio-linux-x86_64-${pkgver}.AppImage::https://github.com/stoplightio/studio/releases/download/v${pkgver}/stoplight-studio-linux-x86_64.AppImage"
   "stoplight-studio.desktop"
