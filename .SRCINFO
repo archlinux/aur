@@ -7,7 +7,6 @@ pkgbase = cppman
 	license = GPL3
 	depends = python3
 	depends = vim
-	depends = groff
 	depends = python-beautifulsoup4
 	depends = python-html5lib
 	conflicts = cppman-git
