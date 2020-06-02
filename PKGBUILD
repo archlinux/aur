@@ -10,7 +10,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
@@ -27,6 +27,7 @@ conflicts=('telegram-desktop')
 
 source=(
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+    "telegram-desktop-qt5.15.patch"
     # Custom patches
     "always_delete_for_everyone.patch"
     "always_clear_history_for_everyone.patch"
@@ -34,7 +35,8 @@ source=(
     "always_send_as_photo_or_album.patch"
 )
 sha512sums=(
-    'a6a105676d8d24ec3414895cadc664829c5abc041d8614409e22d7964d7280e44df35ece5fca18a0cd127f65bd363abc1e5c36807b0031eabd6eb77c7effdfb8'
+    'f942ce93d9671f3bb95a8fbba107fc851bfe3f28871c9651f6f2d97d711602f8a671f7b74750894b2175d33a67c25017562cd4ee455da7aa9b86755d1c3f1cfb'
+    '6bbe0583103d575a1413141799985c7c7b590d8a9856c727320ce322679a3d38343a144c314eee54fa9776c8f3a084627a333e6860d1b8cb8f496b1702070ac0'
     # Custom patches
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
@@ -44,6 +46,8 @@ sha512sums=(
 
 prepare() {
     cd tdesktop-$pkgver-full
+
+    patch -p1 -i ../telegram-desktop-qt5.15.patch
 
     # custom patches
     patch -Np1 -i "$srcdir/always_delete_for_everyone.patch"
