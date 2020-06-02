@@ -11,7 +11,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.6.dev.3.r22.gad7bd93
+pkgver=3.6.dev.3.r24.g1432f00
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
         "gcc9.patch"
+        "glibc_stdio.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
@@ -34,6 +35,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
 sha256sums=('SKIP'
             'd8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36'
             '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
+            '62e2a63b29a014279c72564fb7b08995a85869605d21c2b0a08e85eedd1adf12'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
