@@ -5,7 +5,7 @@ pkgname=python-solid-git
 _pkgname=solidpython
 pkgver=r476.bb341d7
 _pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SolidPython: OpenSCAD for Python"
 arch=('any')
 license=('LGPL2.1')
@@ -24,8 +24,8 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  poetry config virtualenvs.create false
-  poetry config cache-dir "${srcdir}/${_pkgname}/.poetry-cache"
+  poetry config --local virtualenvs.create false
+  poetry config --local cache-dir "${srcdir}/${_pkgname}/.poetry-cache"
 }
 
 build() {
