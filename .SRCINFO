@@ -1,0 +1,17 @@
+pkgbase = alephone-phoenix
+	pkgdesc = A 35-level single player major conversion
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://simplici7y.com/items/marathon-phoenix-2
+	arch = any
+	license = unknown
+	depends = alephone
+	source = http://simplici7y.com/items/marathon-phoenix-2/download
+	source = alephone-phoenix.sh
+	source = alephone-phoenix.desktop
+	sha256sums = 12270b379e1d8b5f2c6ab2b2266d8668424922cbda4669474bf4d4893e9806e4
+	sha256sums = 71eb4d35aefe82c9f57e4b286cd017099574e34a25259a238aaab30d3960d794
+	sha256sums = af42176f0de2b0a4e6da62316d30494168e785b00f22fb362f2685bfe2770cb9
+
+pkgname = alephone-phoenix
+
