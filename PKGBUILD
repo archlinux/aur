@@ -1,13 +1,13 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=cadet-gtk-git
-pkgver=0.5.0.r0.gbcad9f1
+pkgver=0.5.0.r8.g55b32ae
 pkgrel=1
 pkgdesc="A GTK based GUI for the CADET subsystem of GNUnet."
 url="https://gitlab.com/TheJackiMonster/cadet-gtk"
 license=('GPL3')
 arch=( 'any' )
-depends=('gtk3' 'libhandy' 'gnunet' 'jansson')
+depends=('gtk3' 'libhandy' 'gnunet' 'jansson' 'libnotify')
 makedepends=(git cmake make)
 provides=(cadet-gtk)
 conflicts=(cadet-gtk)
