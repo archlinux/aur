@@ -52,7 +52,7 @@ pkgver=78.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=78.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -140,9 +140,7 @@ ac_add_options --with-system-nss
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END

@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta
 	pkgver = 78.0b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	arch = i686
 	arch = x86_64
