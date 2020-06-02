@@ -1,0 +1,16 @@
+pkgbase = python-flakehell
+	pkgdesc = Flake8 wrapper to make it nice, legacy-friendly, configurable.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://flakehell.readthedocs.io/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-dephell
+	provides = duniterpy
+	source = https://github.com/life4/flakehell/archive/v.0.5.0.tar.gz
+	sha512sums = a69f00131c5453e46809bdd1e978348b47c218022f9b3b95db126380cfd05e78261492b99745f364a6883e6401c93d8472554fcb62543536793ecc69f92ab1a1
+
+pkgname = python-flakehell
+
