@@ -4,7 +4,7 @@ _pkgname=python-django-js-asset
 pkgname=$_pkgname-git
 pkgver=1.2.2.r7.g4a0d951
 pkgrel=1
-pkgdesc="A Django class-based view generating PDF resposes using WeasyPrint"
+pkgdesc="script tag with additional attributes for django.forms.Media"
 
 provides=("$_pkgname")
 url="https://github.com/matthiask/django-js-asset/"
