@@ -1,15 +1,16 @@
 pkgbase = rofi-mpd
-	pkgdesc = Script for controlling mpd through rofi.
-	pkgver = 0.1.0
+	pkgdesc = Script for controlling mpd through rofi
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/Prior99/mopidy-subidy
+	url = https://github.com/samedamci/rofi-mpd
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = mpc
-	depends = zsh
+	depends = mpd
+	depends = rofi
 	provides = rofi-mpd
-	source = https://github.com/prior99/rofi-mpd/archive/0.1.0.tar.gz
-	sha256sums = 7cb8666c26002e3586198f8aebd9ac808c19eced196434980fa3fe3346f26f00
+	source = https://github.com/samedamci/rofi-mpd/archive/v1.0.tar.gz
+	sha256sums = 90c6079e636cbbf0ed93d017c9c4011f4121b653b113f38289e7682005803809
 
 pkgname = rofi-mpd
 
