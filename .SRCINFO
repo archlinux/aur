@@ -1,12 +1,12 @@
 pkgbase = ruby-prawn-icon
 	pkgdesc = Provides icon fonts for PrawnPDF
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jessedoyle/prawn-icon/
 	arch = any
 	license = RUBY
-	license = GPL-2
-	license = GPL-3
+	license = GPL2
+	license = GPL3
 	depends = ruby
 	depends = ruby-prawn
 	noextract = prawn-icon-2.5.0.gem
