@@ -8,7 +8,7 @@ pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
 url="https://notabug.org/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pywebview' 'webkit2gtk>=2.22' 'python-gobject')
+depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pywebview' 'webkit2gtk>=2.22' 'python-gobject' 'python-cairo')
 makedepends=('git')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://notabug.org/RemixDev/$_pkgname"

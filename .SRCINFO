@@ -13,6 +13,7 @@ pkgbase = deemix-pyweb-git
 	depends = python-pywebview
 	depends = webkit2gtk>=2.22
 	depends = python-gobject
+	depends = python-cairo
 	provides = deemix-pyweb
 	source = deemix-pyweb::git+https://notabug.org/RemixDev/deemix-pyweb
 	source = deemix-webui::git+https://notabug.org/RemixDev/deemix-webui
