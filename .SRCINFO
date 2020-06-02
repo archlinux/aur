@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-nl
 	pkgdesc = Dutch language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.nl.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.nl.langpack.xpi
-	sha256sums = 6ad7d931aff6717fb5592d1eb58c1e8adf29b01ae5669bb49beab7c1293d9d5b
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.nl.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.nl.langpack.xpi
+	sha256sums = 519e83b7a7de5d3e4a080c60f56c73d12bab47f574e3a65d5b27eb880216889e
 
 pkgname = seamonkey-i18n-nl
 
