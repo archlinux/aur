@@ -7,6 +7,7 @@ pkgdesc="A script to rebuild suckless softwares"
 url="https://github.com/an9wer/pkg/tree/master/arch/suckless-rebuild"
 arch=('x86_64')
 license=('MIT')
+groups=('an9wer-suckless')
 depends=('bash')
 source=("suckless-rebuild")
 md5sums=('3bca355a7976136bc77c5421d9e7c59d')

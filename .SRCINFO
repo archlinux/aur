@@ -4,6 +4,7 @@ pkgbase = an9wer-suckless-rebuild
 	pkgrel = 1
 	url = https://github.com/an9wer/pkg/tree/master/arch/suckless-rebuild
 	arch = x86_64
+	groups = an9wer-suckless
 	license = MIT
 	depends = bash
 	source = suckless-rebuild
