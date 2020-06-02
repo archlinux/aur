@@ -1,17 +1,17 @@
 pkgbase = nginx-mainline-mod-ndk
 	pkgdesc = Module for mainline nginx that adds generic tools that module developers can use
 	pkgver = 0.3.0
-	pkgrel = 39
+	pkgrel = 40
 	url = https://github.com/simpl/ngx_devel_kit
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz.asc
 	source = https://github.com/simpl/ngx_devel_kit/archive/v0.3.0/ngx_devel_kit-0.3.0.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83
+	sha256sums = 44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8
 	sha256sums = SKIP
 	sha256sums = 88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619
 
