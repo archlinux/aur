@@ -1,0 +1,15 @@
+pkgbase = python-hdlparse-git
+	pkgdesc = Simple parser for extracting VHDL documentation
+	pkgver = r20.be7cdab
+	pkgrel = 1
+	url = https://github.com/kevinpt/hdlparse.git
+	arch = any
+	license = mit
+	makedepends = python-setuptools
+	depends = python
+	provides = python-hdlparse
+	source = python-hdlparse::git+https://github.com/kevinpt/hdlparse.git
+	md5sums = SKIP
+
+pkgname = python-hdlparse-git
+
