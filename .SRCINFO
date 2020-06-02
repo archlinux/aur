@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-nb-no
 	pkgdesc = Norwegian (Bokmal) language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.nb-NO.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.nb-NO.langpack.xpi
-	sha256sums = 3d1cbb0299224a45d0ef08b8603c1a54a49ad98f5600fc6d9c4bcf2edda87a52
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.nb-NO.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.nb-NO.langpack.xpi
+	sha256sums = c818795d0c201ec1acaac57ac037b918117b1a062391ed11fa5ca581ccc0b981
 
 pkgname = seamonkey-i18n-nb-no
 
