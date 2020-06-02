@@ -1,12 +1,12 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=cpp-taskflow-git
-_pkgname="${pkgname%-git}"
-pkgver=r650.d1741c3
+_pkgname=taskflow
+pkgver=r1311.ccf1711
 pkgrel=1
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('any')
-url="https://github.com/cpp-taskflow/cpp-taskflow"
+url="https://github.com/taskflow/taskflow"
 license=('MIT')
 makedepends=('cmake' 'git')
 source=("git+$url")
@@ -43,5 +43,4 @@ package() {
     cd "${_pkgname}"
     cmake --build build -- DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cp -a example "${pkgdir}/usr/share/${pkgname}/"
 }
