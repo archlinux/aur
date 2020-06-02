@@ -1,15 +1,15 @@
 # Maintainder: samedamci <samedamci@disroot.org>
 pkgname=rofi-keepassxc
-pkgver=1.3
-pkgrel=1
+pkgver=1.4
+pkgrel=2
 pkgdesc="Simple keepassxc-cli frontend in rofi"
 arch=('any')
 url="https://github.com/samedamci/${pkgname}"
-license=('MIT')
-depends=('rofi' 'xclip' 'keepassxc' 'zsh')
+license=('ISC')
+depends=('rofi' 'xclip' 'keepassxc')
 makedepends=()
 source=("https://github.com/samedamci/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('29e2a246546850d309478bde719d625c9a92834cb79659fe7fab0dc53cc4f5ab645352717c82bc5d6fd7c550e98193a32dfe9769090274eb909fff2de8d909ae')
+sha512sums=('ce0d756f0b89dd4752e854f629b5dd146bd5e3afc5157c4487249be7a31972b0e2225f3ed80d6a11061d7fba1f8e0e93e282db872e280c028249a0553f8f617b')
 
 package() {
 	cd "$pkgname-$pkgver" || exit 1
