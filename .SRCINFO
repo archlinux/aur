@@ -31,7 +31,6 @@ pkgbase = firefox-beta
 	makedepends = xorgproto
 	depends = gtk3
 	depends = libxt
-	depends = startup-notification
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
