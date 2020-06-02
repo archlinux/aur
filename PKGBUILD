@@ -2,13 +2,14 @@
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 pkgname=cppman
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ 98/11/14 manual pages for Linux/MacOS"
 arch=('any')
 url="https://github.com/aitjcize/cppman"
 license=('GPL3')
 conflicts=(cppman-git)
-depends=(python vim python-beautifulsoup4 python-html5lib)
+depends=(python python-beautifulsoup4 python-html5lib)
+optdepends=("vim: For using vim as a pager")
 
 
 source=("https://pypi.python.org/packages/53/9a/4908e1de68541c43961bea068c7062e91f8c8b656ea5fcf6ce0d7138a702/${pkgname}-${pkgver}.tar.gz")
