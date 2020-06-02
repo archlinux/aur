@@ -1,6 +1,6 @@
 pkgbase = deemix-pyweb-git
 	pkgdesc = This is a pywebview wrapper for deemix-webui
-	pkgver = r107.df4f93f
+	pkgver = r119.704daa1
 	pkgrel = 1
 	url = https://notabug.org/RemixDev/deemix-pyweb
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = deemix-pyweb-git
 	depends = python-flask
 	depends = python-flask-socketio
 	depends = python-pywebview
+	depends = webkit2gtk>=2.22
+	depends = python-gobject
 	provides = deemix-pyweb
 	source = deemix-pyweb::git+https://notabug.org/RemixDev/deemix-pyweb
 	source = deemix-webui::git+https://notabug.org/RemixDev/deemix-webui
