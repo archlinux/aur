@@ -2,7 +2,7 @@
 
 _pkgname=linux-aarch64-raspberrypi
 pkgname=linux-aarch64-raspberrypi-bin
-pkgver=4.19.122.20200512
+pkgver=4.19.122.20200602
 pkgdesc="Automated weekly build of the default branch aarch64 bcmrpi3_defconfig Linux kernel for the Raspberry Pi 3 models B/B+"
 _kernver=${pkgver%.*}
 pkgrel=1
@@ -21,7 +21,7 @@ source=("https://github.com/sakaki-/bcmrpi3-kernel/releases/download/${pkgver}/b
         'cmdline.txt'
         'linux.preset'
         '99-linux.hook')
-sha1sums=('1cd1034c56393c2a364d715a96dff9cb0250a674'
+sha1sums=('f94f263942507257320611da97dbe9f18f480c88'
           '472aa9e8528789f17950fb0b06de60ce3f67e4f8'
           'f55155535974425e4c1ab5869fbe86b68cdc04cb'
           '495384696eaccf1ae6894938780cf9bdf3020ef3'
