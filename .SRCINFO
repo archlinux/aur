@@ -1,18 +1,18 @@
 pkgbase = nginx-mainline-mod-naxsi
 	pkgdesc = Nginx Anti XSS & SQL Injection (module for mainline nginx)
 	pkgver = 0.56
-	pkgrel = 20
+	pkgrel = 21
 	url = https://github.com/nbs-system/naxsi
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = nginx-mainline
 	backup = etc/nginx/naxsi_core.rules
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz.asc
 	source = https://github.com/nbs-system/naxsi/archive/0.56/naxsi-0.56.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83
+	sha256sums = 44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8
 	sha256sums = SKIP
 	sha256sums = 0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4
 
