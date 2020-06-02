@@ -1,4 +1,5 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Marco Pompili
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
@@ -11,7 +12,7 @@ arch=('x86_64')
 url='http://steghide.sourceforge.net'
 license=('GPL')
 depends=('libmcrypt' 'gcc-libs' 'mhash' 'libjpeg' 'zlib')
-source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://iweb.dl.sourceforge.net/project/steghide/steghide/${pkgver}/steghide-${pkgver}.tar.gz"
         'buildsystem.patch'
         'gcc-4.2.patch'
          "${pkgname}-climits.patch"
