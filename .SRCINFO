@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-de
 	pkgdesc = German language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.de.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.de.langpack.xpi
-	sha256sums = a735b0a4ed2c22436ef315ab2125ed1305666f19b505807f5ead4c96160966d2
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.de.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.de.langpack.xpi
+	sha256sums = b5a899eaf64652381dd5742d1739987a1265e61826bace5ea4b2568f59aacc8c
 
 pkgname = seamonkey-i18n-de
 
