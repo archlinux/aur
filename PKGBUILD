@@ -66,7 +66,7 @@ _uksm_path="uksm-patches-v3"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
 _uksm_patch="0001-UKSM-for-${_major}.patch"
 _gcc_path="cpu-patches-v3-sep"
-_gcc_patch="0001-cpu-5.6-merge-graysky-s-patchset.patch"
+_gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
