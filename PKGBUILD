@@ -3,13 +3,13 @@
 
 pkgname=arduino-builder
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
 url="https://github.com/arduino/arduino-builder"
 license=('GPL')
 depends=('arduino-ctags')
-makedepends=('go-pie' 'git' 'unzip')
+makedepends=('go' 'git' 'unzip')
 optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}-${pkgver}.tar.xz.asc::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
@@ -19,6 +19,12 @@ validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <su
 
 build()
 {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	go build
 
