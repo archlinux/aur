@@ -5,27 +5,27 @@
 
 pkgname=cmus-git
 pkgver=v2.8.0.r24.gd1290d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
 arch=('x86_64')
 url="https://cmus.github.io/"
 depends=('ncurses')
 makedepends=('git')
 optdepends=('alsa-lib: ALSA output plugin support'
-	    'faad2: .aac, .mp4, .m4a, .m4b'
+	    'faad2: Advanced Audio Codec support'
 	    'ffmpeg: .ffmpeg, .wma, .ape, .mka, .tta, .shn'
-	    'flac: .flac'
+	    'flac: Free Lossless Audio Codec support'
 	    'libao: for AO output plugin support'
 	    'libcddb: .cdio'
 	    'libcdio: .cdio'
 	    'libcdio-paranoia: .cdio'
 	    'libcue: .cue'		
-	    'libmad: .mp3'
+	    'libmad: MPEG Audio Layer support'
 	    'libmikmod: .mod, .s3m'
 	    'libmodplug: .mod, .s3m'
 	    'libmp4v2: .mp4, .m4a, .m4b'
             'libmpcdec: .mpc, .mpp, .mp+'
-	    'libpulse: for Pulse Audio output plugin support'
+	    'libpulse: PulseAudio output plugin support'
 	    'libvorbis: .ogg'
 	    'opusfile: .opus'
 	    'oss: OSS'
