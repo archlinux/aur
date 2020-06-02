@@ -1,0 +1,16 @@
+pkgbase = hackrf-spectrum-analyzer
+	pkgdesc = Spectrum Analyzer GUI for hackrf_sweep
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/pavsa/hackrf-spectrum-analyzer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = hackrf
+	source = hackrf-spectrum-analyzer-1.5.zip::https://github.com/pavsa/hackrf-spectrum-analyzer/releases/download/1.5/hackrf_spectrum_analyzer.zip
+	sha256sums = f7e6d640631f559e5d9e92ba6fe5270689ee5195a7298654e054231d9485acab
+
+pkgname = hackrf-spectrum-analyzer
+
