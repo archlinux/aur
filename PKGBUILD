@@ -5,14 +5,14 @@
 pkgname=argonone
 pkgver=0.2.2
 pkgrel=1
-pkgdesc="Argon One Service and Control Scripts"
+pkgdesc="Argon One Service and Control Scripts For Raspberry Pi"
 arch=('any')
 url='https://download.argon40.com/argon1.sh'
 license=('GPL3')
 depends=('i2c-tools' 'lm_sensors' 'python>=3.3')
 provides=('argonone')
 install=argonone.install
-source=("https://files.tonyfettes.tk/argonone/${pkgname}-${pkgver}.tar.gz")
+source=("https://files.tonyfettes.com/argonone/${pkgname}-${pkgver}.tar.gz")
 md5sums=('bc76b22b074dcd09df0925fa16e0de34')
 
 package() {
