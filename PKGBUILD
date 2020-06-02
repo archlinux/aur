@@ -3,7 +3,7 @@
 
 _pkgbase=tbs-linux_media-git
 pkgname=${_pkgbase}-dkms
-pkgver=r20180926.102742.6023ef2c0
+pkgver=r20200602.162918.d0a9dd9442
 pkgrel=1
 pkgdesc="TBS linux open source drivers (DKMS)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=("${_pkgbase}" 'linux_media')
 source=('dkms.conf'
         'modules.list'
         'media_build::git+https://github.com/tbsdtv/media_build.git')
-sha256sums=('c634c043deccaf3c2ed81c3a208f6c3b358255e7ed348886da7e13c13e9977f7'
+sha256sums=('29080dcf03d7229358a8e5a7690dc3d4cd7bcbb7535e3a8370dfeaef6721a70d'
             '195c6a971c915855ab4e39cfd4d7ae14b513fbb7c8daa5b3e5135cc5b50ba81c'
             'SKIP')
 options=('!strip')
