@@ -5,7 +5,7 @@
 # shellcheck disable=SC2191 # unsafe array asignment.
 
 ####to disable cuda kernel comment out this line
-_BUILD_CUDA="on"
+_BUILD_CUDA="${_BUILD_CUDA:-ON}"
 
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
@@ -20,7 +20,7 @@ license=('GPL')
 groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
-if [ "$_BUILD_CUDA" == "on" ] ; then 
+if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda-sdk')
   optdepends=('cuda-toolkit: for cuda sfm/mvs acceleration')
 fi
@@ -56,7 +56,7 @@ build() {
 
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
-    if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "on" ]]; then
+    if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
                       -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
