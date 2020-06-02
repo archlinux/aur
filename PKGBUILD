@@ -1,18 +1,19 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=cpp-taskflow
-pkgver=2.4.0
+_alt_pkgname=taskflow
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('any')
-url="https://github.com/cpp-taskflow/cpp-taskflow"
+url="https://github.com/taskflow/taskflow"
 license=('MIT')
 makedepends=('cmake')
-source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('c59ec561675cc387bf30cc41065a85099cb14a731267d7156462441c230d8145')
+source=("$url/archive/${pkgver}.tar.gz")
+sha256sums=('3f7559a52b721dc0e25cabf8d265422619a78fa1ff527514d06c9d5d4d670a00')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_alt_pkgname}-${pkgver}"
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
@@ -24,17 +25,17 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_alt_pkgname}-${pkgver}"
     cmake --build build
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_alt_pkgname}-${pkgver}"
     cmake --build build -- test
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_alt_pkgname}-${pkgver}"
     cmake --build build -- DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
