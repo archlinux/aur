@@ -2,7 +2,7 @@
 # Contributor: Timmy Yao <timmy.yao+aur@gmail.com>
 pkgname=authy
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Two-Factor Authentication from your PC. Converted from Windows electron version"
 arch=("x86_64")
 url="https://authy.com/"
@@ -19,7 +19,7 @@ build() {
 	7z x "Authy%20Desktop%20Setup%20${pkgver}.exe" -o"$pkgname-$pkgver" -y
 	
 	cd "$pkgname-$pkgver"
-	7z x "authy-electron-$pkgver-full.nupkg" -y
+	7z x "authy-$pkgver-full.nupkg" -y
 
 	mkdir app.asar
 	asar e lib/net45/resources/app.asar app.asar
