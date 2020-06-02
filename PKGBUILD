@@ -2,7 +2,7 @@
 
 pkgbase=vibrant
 pkgname=(libvibrant vibrant-cli)
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
