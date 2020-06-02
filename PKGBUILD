@@ -4,10 +4,11 @@
 
 pkgname=draftsight
 pkgver=2019SP3
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/$pkgname/"
+options=('!strip')
 license=('custom')
 depends=('alsa-lib'
          'desktop-file-utils'
@@ -15,6 +16,7 @@ depends=('alsa-lib'
          'gcc-libs'
          'glib2'
          'gtk2'
+         'libfaketime'
          'libcups'
          'libgl'
          'libice'
@@ -33,7 +35,7 @@ depends=('alsa-lib'
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
 md5sums=('5be437640a14d87eeef57556dd614a36'
-         '70904e450823c6978f242435d414e0fc')
+         '39b8863d209a2ff71df332fc1b457153')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
