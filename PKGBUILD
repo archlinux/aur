@@ -67,7 +67,7 @@ package_dolphin-emu-nogui-git() {
 	pkgdesc="$pkgdesc - no GUI$_pkgdescappend"
 	depends=("$pkgbase")
 	optdepends=()
-  	provides=("$_noguipkgname" "$_mainpkgname-cli")
+	provides=("$_noguipkgname" "$_mainpkgname-cli")
 	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
 
 	cd "$srcdir/$_sourcedirectory/"
