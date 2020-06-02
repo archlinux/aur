@@ -1,9 +1,10 @@
 pkgbase = cmus-git
 	pkgdesc = Small, fast and powerful console music player for Unix-like operating systems.
-	pkgver = v2.8.0.r24.gd1290d5
-	pkgrel = 4
+	pkgver = v2.8.0.r45.g33fad6e
+	pkgrel = 1
 	url = https://cmus.github.io/
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = faad2
@@ -42,7 +43,7 @@ pkgbase = cmus-git
 	optdepends = wavpack: for wavpack input plugin support
 	provides = cmus
 	conflicts = cmus
-	source = git://github.com/cmus/cmus
+	source = git://github.com/KamranMackey/cmus
 	sha512sums = SKIP
 
 pkgname = cmus-git
