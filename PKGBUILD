@@ -2,7 +2,7 @@
 
 pkgname=cmus-git
 pkgver=v2.8.0.r24.gd1290d5
-pkgrel=3
+pkgrel=4
 pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
 arch=('x86_64')
 url="https://cmus.github.io/"
@@ -61,5 +61,6 @@ build() {
 package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir" install
+  install -Dm644 contrib/cmus.bash-completion "$pkgdir"/usr/share/bash-completion/completions/cmus
   install -Dm644 contrib/_cmus "$pkgdir"/usr/share/zsh/site-functions/_cmus
 }
