@@ -19,7 +19,7 @@ provides=('hyperspy-link-traits')
 conflicts=('hyperspy-link-traits')
 
 source=(https://github.com/hyperspy/link_traits/archive/v$pkgver.zip)
-sha256sums=('9a7886baa676eaf99e47448dd50cb8b15dffef81df0cdf42fb23c272be9183da')
+sha256sums=('0d2b24e548813a453cf8b1e8411b241893d864ded43566aab726de855be32aec')
 
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
