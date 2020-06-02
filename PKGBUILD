@@ -1,6 +1,7 @@
-# Maintainer: Timmy Yao <timmy.yao+aur@gmail.com>
+# Maintainer: Arti Zirk <arti.zirk@gmail.com>
+# Contributor: Timmy Yao <timmy.yao+aur@gmail.com>
 pkgname=authy
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Two-Factor Authentication from your PC. Converted from Windows electron version"
 arch=("x86_64")
@@ -10,8 +11,8 @@ depends=('electron')
 makedepends=('npm' 'p7zip' 'asar')
 source=("https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/${pkgver}/win32/x64/Authy%20Desktop%20Setup%20${pkgver}.exe"
         "authy.desktop")
-md5sums=('2612c816ae5ea59ecfbbaef02e26830b'
-         '6e27d1fc03a2ba89c0b6670d4f38b08b')
+md5sums=('690fb7dbd197cd8a3c158ff9664129e4'
+         'bb9f4ecd1eac83d21c9696582b1ce98e')
 
 build() {
 	cd "$srcdir"
