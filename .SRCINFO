@@ -1,14 +1,15 @@
 pkgbase = pex
 	pkgdesc = A library and tool for generating .pex (Python EXecutable) files
-	pkgver = 0.8.6
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://pex.readthedocs.org/
 	arch = any
 	license = Apache2
-	depends = python2
-	depends = python2-wheel
-	source = https://pypi.python.org/packages/source/p/pex/pex-0.8.6.tar.gz
-	sha256sums = 956b1ae60c00c0a60f5ccd3dd06f9db732ec3f34831dce80be64cfaccb78ed9c
+	makedepends = python-tox
+	depends = python
+	depends = python-wheel
+	source = pex-2.1.11.zip::https://github.com/pantsbuild/pex/archive/v2.1.11.zip
+	sha256sums = 05fb1ab7d5850a43b9472a34213f5a673eb75fb06d4cfbae8b009a8a05f9dde3
 
 pkgname = pex
 
