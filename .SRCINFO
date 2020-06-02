@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-tray-icons
 	pkgdesc = Simple version of TopIcons Plus
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/zhangkaizhao/gnome-shell-extension-tray-icons
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://github.com/zhangkaizhao/gnome-shell-extension-tray-icons/archive/v3.tar.gz
-	sha256sums = 04207044b3f15cc402624495dc101f33ac7b8a73092d57d96bc7e47ecbec796d
+	source = https://github.com/zhangkaizhao/gnome-shell-extension-tray-icons/archive/v4.tar.gz
+	sha256sums = bdc7227fb5518cee52f116ee20412f0375156016218b832ae83356842f1de6a6
 
 pkgname = gnome-shell-extension-tray-icons
 
