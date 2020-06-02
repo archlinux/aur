@@ -2,7 +2,8 @@
 # Submitter: Steffen L. Norgren (incongruous) <steffen[at]norgren[dot]ca>
 
 pkgname=luv-icon-theme-git
-pkgver=0.4.9.12.r2.gc2b0d15
+epoch=1
+pkgver=r834.38c20d3
 pkgrel=1
 pkgdesc="The spiritual successor to Flattr, a flat but complex icon theme for freedesktop environments."
 arch=('any')
@@ -17,8 +18,9 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	( set -o pipefail
-	git describe --long --tags 2>/dev/null | sed 's/^luv.v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	(
+	set -o pipefail
+	git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
 	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
