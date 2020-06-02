@@ -14,8 +14,9 @@ license=(GPL)
 url="https://www.digikam.org/"
 depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalendarcore
          qt5-xmlpatterns imagemagick glu)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte jasper)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'jasper: openJPEG support'
             'libkvkontakte: VKontakte plugin'
             'rawtherapee: RAW import' 'darktable: RAW import'
             "digikam-plugin-gmic: G'MIC plugin"
@@ -50,8 +51,7 @@ build() {
     -DENABLE_AKONADICONTACTSUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND
+    -DENABLE_QWEBENGINE=ON
   make
 }
 
