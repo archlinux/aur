@@ -1,7 +1,7 @@
 pkgbase = jeedom-status
 	pkgdesc = Add Jeedom global status to your favorite desktop bar (i3blocks, polybar, etc...)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deimosfr/jeedom-status
 	arch = x86_64
 	license = GPL
