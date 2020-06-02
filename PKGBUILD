@@ -1,7 +1,7 @@
 # Maintainer: Schrottfresse <schrottfresse@gmx.de>
 pkgname=libspatialindex-git
-pkgver=r500.e4a15b6
-pkgrel=2
+pkgver=r571.2f79e35
+pkgrel=1
 pkgdesc="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API "
 arch=('i686' 'x86_64')
 url="http://libspatialindex.github.com/"
@@ -23,9 +23,7 @@ pkgver() {
 build() {
   cd $_gitname
   sed -i -e 's+#!/usr/bin/env python$+#!/usr/bin/env python2+' ./test/gtest/gtest-*/scripts/*.py
-
-  ./autogen.sh
-  ./configure --prefix=/usr
+  cmake .
   make
 }
 
@@ -33,5 +31,3 @@ package() {
   cd $_gitname
   make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:
