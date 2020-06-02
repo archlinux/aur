@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
 	arch = i686
@@ -28,8 +28,10 @@ pkgbase = petsc
 	options = staticlibs
 	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.13.1.tar.gz
 	source = test_optdepends.sh
+	source = DSTabulation-Fortran-fix.patch
 	sha256sums = 74a895e44e2ff1146838aaccb7613e7626d99e0eed64ca032c87c72d084efac3
 	sha256sums = 207f3c8107698f572f4075422bd069859c6a69b6bf92183d977dc802da323e18
+	sha256sums = 6907950866797d2a6058de8bc4d4369aa175c4cde92cb533b5b1e291db23edcf
 
 pkgname = petsc
 

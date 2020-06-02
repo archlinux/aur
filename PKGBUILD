@@ -31,12 +31,19 @@ optdepends=('trilinos: support for trilinos'
   )
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-lite-${pkgver/_/-}.tar.gz
-        test_optdepends.sh)
+        test_optdepends.sh
+        DSTabulation-Fortran-fix.patch)
 sha256sums=('74a895e44e2ff1146838aaccb7613e7626d99e0eed64ca032c87c72d084efac3'
-            '207f3c8107698f572f4075422bd069859c6a69b6bf92183d977dc802da323e18')
+            '207f3c8107698f572f4075422bd069859c6a69b6bf92183d977dc802da323e18'
+            '6907950866797d2a6058de8bc4d4369aa175c4cde92cb533b5b1e291db23edcf')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/DSTabulation-Fortran-fix.patch"
+}
 
 build() {
   _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
