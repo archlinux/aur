@@ -1,14 +1,16 @@
 pkgbase = ttf-hackgen
 	pkgdesc = HackGen is a composite font of Hack and GenJyuu-Gothic.
-	pkgver = 1.4.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/yuru7/HackGen
 	arch = any
 	license = custom
-	source = https://github.com/yuru7/HackGen/releases/download/v1.4.1/HackGen_v1.4.1.zip
-	source = https://raw.githubusercontent.com/yuru7/HackGen/v1.4.1/LICENSE.txt
-	md5sums = efd9891606d3d3b735e72c994ca85bb5
-	md5sums = 8ddf37fb8b4fe29428dd085beb8a8718
+	source = https://github.com/yuru7/HackGen/releases/download/v2.0.0/HackGen_v2.0.0.zip
+	source = https://github.com/yuru7/HackGen/releases/download/v2.0.0/HackGenNerd_v2.0.0.zip
+	source = https://raw.githubusercontent.com/yuru7/HackGen/v2.0.0/LICENSE.txt
+	sha256sums = 5ad5c40f2476cd37bf48a496da3ebc5f08c2d817ea4d672fe39c6cb93d91010a
+	sha256sums = 022a2c376dee8523334643e22ce50411ce668d7daadc7857d4382f685393d03a
+	sha256sums = 8ac2fc3472cd8c8c988bbd047a9739f528f614a3e61ff0925e26d2e76e53301d
 
 pkgname = ttf-hackgen
 
