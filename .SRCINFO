@@ -1,8 +1,9 @@
 pkgbase = remctl
 	pkgdesc = Tool for running commands on remote hosts using Kerberos authentication
 	pkgver = 3.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eyrie.org/~eagle/software/remctl/
+	install = install.sh
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -20,15 +21,9 @@ pkgbase = remctl
 	backup = etc/remctl/remctl.conf
 	source = https://archives.eyrie.org/software/kerberos/remctl-3.16.tar.gz
 	source = https://archives.eyrie.org/software/kerberos/remctl-3.16.tar.gz.asc
-	source = remctl.service
-	source = remctl@.service
-	source = remctl.socket
 	validpgpkeys = E784364E8DDE7BB370FBD9EAD15D313882004173
 	sha256sums = 94522fac45e850c8fedf21997a90c940845e89ca90ddb8f7693d4085979e09f6
 	sha256sums = SKIP
-	sha256sums = 9801df9c99570fe92c0e215add2e05882a679127914e593055020cc7bee0d1e7
-	sha256sums = 7c04784c70919439025cfda57d7af8f264184c0d6078b42ee7440154392c1082
-	sha256sums = 4da925bc78c22dcb93c2332f3a6182a02e028e372effb63e0cc0eaebb86c935a
 
 pkgname = remctl
 
