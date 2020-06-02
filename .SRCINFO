@@ -1,0 +1,32 @@
+pkgbase = blis-cblas-openmp
+	pkgdesc = BLAS-like Library Instantiation Software Framework (providing blas and cblas, with OpenMP support, particularly recommended for AMD Zen CPUs)
+	pkgver = 0.7.0
+	pkgrel = 0
+	url = https://github.com/flame/blis
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = python
+	provides = blas=3.9.0
+	provides = cblas=3.9.0
+	conflicts = blis
+	conflicts = blas
+	conflicts = cblas
+	options = staticlibs
+	options = !emptydirs
+	source = blis-cblas-openmp::git+https://github.com/flame/blis.git#commit=943a21def0bedc1732c0a2453afe7c90d7f62e95
+	source = cblas_f77.h
+	source = cblas_mangling.h
+	source = cblas_test.h
+	source = cblas.h
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = blis-cblas-openmp
+
