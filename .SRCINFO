@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-es-ar
 	pkgdesc = Spanish (Argentina) language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.es-AR.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.es-AR.langpack.xpi
-	sha256sums = 861df4bb14dc00891a221ce08e2be4ed0103d680fe9b676f710d6cd965c3d121
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.es-AR.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.es-AR.langpack.xpi
+	sha256sums = 63f326801ea54f82fb4638b17b18d349d39ec4dbaaabe029604483a7d18782f7
 
 pkgname = seamonkey-i18n-es-ar
 
