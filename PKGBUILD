@@ -7,12 +7,12 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
-depends=('electron' 'libxkbfile')
+depends=('electron8-bin' 'libxkbfile')
 makedepends=('git' 'npm' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
@@ -52,7 +52,7 @@ prepare() {
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
+	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
 
 	# Set node-sass version for node 14 compatibility
 	sed -E -i 's|("node-sass": ").*"|\14.14.0"|' 'package.json'
@@ -77,7 +77,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron8' -c.electronVersion="$(cat '/usr/lib/electron8/version')"
 }
 
 package() {
@@ -96,7 +96,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron8 '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
