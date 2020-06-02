@@ -5,13 +5,13 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dmenu-jacob-git
-pkgver=4.9.0.r2.884cb77
+pkgver=4.9.0.r3.8459c44
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of dmenu see the repo for more details"
 arch=(x86_64 i686)
 url="https://gitlab.com/Jacob_McDonnell/dmenu.git"
 license=('MIT/X Consortium License')
-depends=()
+depends=(libxft-bgra)
 makedepends=(git make)
 optdepends=(python-pywal)
 provides=(dmenu)
