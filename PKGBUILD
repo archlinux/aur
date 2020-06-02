@@ -1,10 +1,10 @@
 # Maintainer: Chiwan Park <chiwanpark@hotmail.com>
 pkgname='mendeley-reference-manager'
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mendeley Reference Manager'
 arch=('x86_64')
-depends=('harfbuzz' 'libgl')
+depends=('harfbuzz' 'libgl' 'libxss')
 url='https://www.mendeley.com/download-reference-manager'
 license=('custom')
 
