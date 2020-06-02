@@ -65,7 +65,7 @@ _aufs_path="aufs-patches"
 _aufs_ver="20200518"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="cpu-patches-v3-sep"
-_gcc_patch="0001-cpu-5.6-merge-graysky-s-patchset.patch"
+_gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
