@@ -6,7 +6,7 @@
 
 pkgname=knemo
 pkgver=0.7.7.git20151003
-pkgrel=5
+pkgrel=6
 pkgdesc="The KDE Network Monitor"
 arch=('x86_64')
 url="https://www.linux-apps.com/content/show.php?content=12956"
@@ -18,7 +18,7 @@ options=('libtool')
 _commit=f3afe2e4b6f091f21a64905965abafd2ef46826d  # frameworks
 source=("git://git.kde.org/knemo.git#commit=$_commit" knemo-gcc6.patch)
 sha256sums=('SKIP'
-            '5da88c3c60bf7ab924c85ee2c1159a12d4c376ad726eab784972abc36295a4fc')
+            '840fe4f68ff6b9e801d98482a0b76f42764332d81071589ac3bc5632bfc49d92')
 
 prepare() {
   mkdir build
@@ -36,7 +36,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
