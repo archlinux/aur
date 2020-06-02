@@ -3,7 +3,7 @@
 pkgname=blis-cblas-openmp
 pkgver=0.7.0
 _blasver=3.9.0
-pkgrel=0
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework (providing blas and cblas, with OpenMP support, particularly recommended for AMD Zen CPUs)"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -36,6 +36,16 @@ build() {
   export CFLAGS="-pipe -Ofast -fno-plt -ftree-vectorize -flto -falign-functions=32 -fno-semantic-interposition -fipa-pta -fdevirtualize-at-ltrans -floop-nest-optimize -floop-strip-mine -floop-interchange -fgraphite-identity"
   export CXXFALGS=${CFLAGS}
   
+  export BLIS_JC_NT=1
+  export BLIS_PC_NT=1
+  export BLIS_IC_NT=1
+  export BLIS_JR_NT=1
+  export BLIS_IR_NT=1
+  export OMP_NUM_THREADS=1
+  export OPENBLAS_NUM_THREADS=1
+  export MKL_NUM_THREADS=1
+  export nt_use=1
+  
   # static build is necessary for some packages and programs (e. g. GAMESS)
   ./configure --prefix=/usr --enable-static --enable-shared --enable-cblas --enable-threading=openmp auto
   make
@@ -43,6 +53,16 @@ build() {
 
 check() {
     cd "${pkgname}"
+    
+    export BLIS_JC_NT=1
+    export BLIS_PC_NT=1
+    export BLIS_IC_NT=1
+    export BLIS_JR_NT=1
+    export BLIS_IR_NT=1
+    export OMP_NUM_THREADS=1
+    export OPENBLAS_NUM_THREADS=1
+    export MKL_NUM_THREADS=1
+    export nt_use=1
     make check
 }
 

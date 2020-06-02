@@ -1,7 +1,7 @@
 pkgbase = blis-cblas-openmp
 	pkgdesc = BLAS-like Library Instantiation Software Framework (providing blas and cblas, with OpenMP support, particularly recommended for AMD Zen CPUs)
 	pkgver = 0.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = i686
 	arch = x86_64
