@@ -1,7 +1,7 @@
 pkgbase = gamescope-git
 	pkgdesc = Micro-compositor formerly known as steamcompmgr
-	pkgver = 3.6.1.r23.g5ab3129
-	pkgrel = 2
+	pkgver = 3.6.2.r0.g44023e2
+	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = custom:BSD-2-Clause
@@ -9,6 +9,7 @@ pkgbase = gamescope-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = patch
+	makedepends = vulkan-headers
 	depends = wlroots-git
 	depends = sdl2
 	depends = libxcomposite
