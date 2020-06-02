@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=hyperspy-link-traits
 pkgshort=link_traits
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A fork to traitlets' link and dlink to link traits in addition to traitlets." 
 arch=('any')
