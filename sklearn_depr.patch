@@ -1,0 +1,103 @@
+diff --git a/hep_ml/commonutils.py b/hep_ml/commonutils.py
+index 96bf86e..f5d5575 100755
+--- a/hep_ml/commonutils.py
++++ b/hep_ml/commonutils.py
+@@ -18,7 +18,12 @@ except ImportError:
+     # The cross_validation module is deprecated as of sklearn 0.18, in favour
+     # of the model_selection module
+     import sklearn.cross_validation as sklearn_cross_validation
+-from sklearn.neighbors.unsupervised import NearestNeighbors
++# sklearn 0.22 deprecated sklearn.neighbors.unsupervised
++# remain backwards compatible
++try:
++    from sklearn.neighbors import NearestNeighbors
++except ImportError as e:
++    from sklearn.neighbors.unsupervised import NearestNeighbors
+ 
+ __author__ = "Alex Rogozhnikov"
+ 
+diff --git a/hep_ml/metrics.py b/hep_ml/metrics.py
+index 995604b..3298396 100644
+--- a/hep_ml/metrics.py
++++ b/hep_ml/metrics.py
+@@ -49,7 +49,12 @@ from __future__ import division, print_function
+ 
+ import numpy
+ from sklearn.base import BaseEstimator
+-from sklearn.neighbors.unsupervised import NearestNeighbors
++# sklearn 0.22 deprecated sklearn.neighbors.unsupervised
++# remain backwards compatible
++try:
++    from sklearn.neighbors import NearestNeighbors
++except ImportError as e:
++    from sklearn.neighbors.unsupervised import NearestNeighbors
+ 
+ from .commonutils import take_features, check_xyw, weighted_quantile
+ from . import metrics_utils as ut
+diff --git a/hep_ml/tree.py b/hep_ml/tree.py
+index 401fa9d..10f343b 100644
+--- a/hep_ml/tree.py
++++ b/hep_ml/tree.py
+@@ -1,8 +1,16 @@
+ from __future__ import division, print_function, absolute_import
++import numpy
+ from sklearn.base import BaseEstimator, TransformerMixin, RegressorMixin
+ from sklearn.tree import DecisionTreeRegressor
+-from sklearn.tree.tree import DTYPE
+-import numpy
++# sklearn.tree.tree is deprecated as of 0.22
++# remain backwards compatible (DTYPE is float32 underneath)
++try:
++    from sklearn import __version__ as sklver
++    if sklver < '0.22':
++        raise ImportError('Scikit-learn is older than version 0.22. Falling back to old interface.')
++    from numpy import float32 as skldtype
++except ImportError as e:
++    from sklearn.tree.tree import DTYPE as skldtype
+ """
+ A wrapper over regression trees is presented here.
+ This one isn't actually needed by itself, but is an important part of gradient boosting.
+@@ -61,6 +69,6 @@ class SklearnClusteringTree(DecisionTreeRegressor, ClusteringTree):
+     @staticmethod
+     def prepare_data(X):
+         """Converting to the type needed during fitting sklearn trees."""
+-        return numpy.array(X, dtype=DTYPE)
++        return numpy.array(X, dtype=skldtype)
+ 
+ 
+diff --git a/tests/test_nnet.py b/tests/test_nnet.py
+index f718aa9..7dee6dd 100644
+--- a/tests/test_nnet.py
++++ b/tests/test_nnet.py
+@@ -1,7 +1,12 @@
+ from __future__ import division, print_function
+ 
+ import numpy
+-from sklearn.linear_model.logistic import LogisticRegression
++# sklearn 0.22 deprecated sklearn.linear_model.logistic
++# remain backwards compatible
++try:
++    from sklearn.linear_model import LogisticRegression
++except ImportError as e:
++    from sklearn.linear_model.logistic import LogisticRegression
+ from sklearn.metrics import roc_auc_score, mean_squared_error, log_loss
+ from sklearn.base import clone
+ from sklearn.datasets import make_blobs
+diff --git a/tests/test_uboost.py b/tests/test_uboost.py
+index 84c3913..09dd2f6 100644
+--- a/tests/test_uboost.py
++++ b/tests/test_uboost.py
+@@ -6,7 +6,12 @@ from six.moves import zip
+ from sklearn.metrics import roc_auc_score, accuracy_score
+ from sklearn.naive_bayes import GaussianNB
+ from sklearn.tree import DecisionTreeClassifier
+-from sklearn.ensemble.weight_boosting import AdaBoostClassifier
++# sklearn 0.22 deprecated sklearn.ensemble.weight_boosting
++# remain backwards compatible
++try:
++    from sklearn.ensemble import AdaBoostClassifier
++except ImportError as e:
++    from sklearn.ensemble.weight_boosting import AdaBoostClassifier
+ 
+ from hep_ml.commonutils import generate_sample
+ from hep_ml.metrics import BinBasedCvM, KnnBasedCvM

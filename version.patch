@@ -1,0 +1,64 @@
+From 4ad4534e9e6b3f528b14953b32ca4a9ed521735a Mon Sep 17 00:00:00 2001
+From: Alex Rogozhnikov <iamfullofspam@gmail.com>
+Date: Thu, 5 Mar 2020 00:15:49 -0800
+Subject: [PATCH] bump version
+
+---
+ README.md          | 10 ++++++++--
+ hep_ml/__init__.py |  2 +-
+ setup.py           |  2 +-
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/README.md b/README.md
+index e544a8b..5664ea8 100755
+--- a/README.md
++++ b/README.md
+@@ -13,10 +13,11 @@
+ ![hep_ml, python library for high energy physics](https://github.com/arogozhnikov/hep_ml/blob/data/data_to_download/hep_ml_image.png)
+ 
+ 
+-### Main points
++### Main features
++
+ * uniform classifiers - the classifiers with low correlation of predictions and mass (or some other variable, or even set of variables)
+   * __uBoost__ optimized implementation inside
+-  * __UGradientBoosting__ (with different losses, specially __FlatnessLoss__ is very interesting)
++  * __UGradientBoosting__ (with different losses, specially __FlatnessLoss__ is of high interest)
+ * measures of uniformity (see **hep_ml.metrics**)
+ * advanced losses for classification, regression and ranking for __UGradientBoosting__ (see **hep_ml.losses**).  
+ * **hep_ml.nnet** - theano-based flexible neural networks 
+@@ -43,6 +44,11 @@ cd hep_ml
+ pip install .
+ ```
+ 
++Local testing: 
++```bash
++nosetests tests/
++```
++
+ ### Links
+ 
+ * [documentation](https://arogozhnikov.github.io/hep_ml/)
+diff --git a/hep_ml/__init__.py b/hep_ml/__init__.py
+index f76a7e2..23e2430 100755
+--- a/hep_ml/__init__.py
++++ b/hep_ml/__init__.py
+@@ -1,4 +1,4 @@
+ from __future__ import print_function, division, absolute_import
+ 
+ __author__ = 'Alex Rogozhnikov'
+-__version__ = '0.6.0'
++__version__ = '0.6.1'
+diff --git a/setup.py b/setup.py
+index 7010b7b..5edf343 100644
+--- a/setup.py
++++ b/setup.py
+@@ -7,7 +7,7 @@
+ 
+ setup(
+     name="hep_ml",
+-    version='0.6.0',
++    version='0.6.1',
+     description="Machine Learning for High Energy Physics",
+     long_description=long_description,
+     long_description_content_type='text/markdown',

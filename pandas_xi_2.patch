@@ -1,0 +1,50 @@
+From 48c5f4ab57f076113c56475f3cd87b4bdfa6f4ab Mon Sep 17 00:00:00 2001
+From: Alex Rogozhnikov <iamfullofspam@gmail.com>
+Date: Thu, 5 Mar 2020 00:12:27 -0800
+Subject: [PATCH] updates to eliminate usage of .ix from pandas
+
+---
+ hep_ml/commonutils.py | 2 +-
+ hep_ml/losses.py      | 2 +-
+ hep_ml/uboost.py      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hep_ml/commonutils.py b/hep_ml/commonutils.py
+index 5356aee..96bf86e 100755
+--- a/hep_ml/commonutils.py
++++ b/hep_ml/commonutils.py
+@@ -254,7 +254,7 @@ def take_features(X, features):
+     are_strings = all([isinstance(feature, str) for feature in features])
+     are_numbers = all([isinstance(feature, Number) for feature in features])
+     if are_strings and isinstance(X, pandas.DataFrame):
+-        return X[features][:]
++        return X.loc[:, features]
+     elif are_numbers:
+         return numpy.array(X)[:, features]
+     else:
+diff --git a/hep_ml/losses.py b/hep_ml/losses.py
+index 1c95b39..e1e079a 100644
+--- a/hep_ml/losses.py
++++ b/hep_ml/losses.py
+@@ -807,7 +807,7 @@ def _compute_groups_indices(self, X, y, label):
+             bin_limits = []
+             for axis_limits in extended_bin_limits:
+                 bin_limits.append(axis_limits[1 + shift:-1:2])
+-            bin_indices = compute_bin_indices(X.ix[:, self.uniform_features].values, bin_limits=bin_limits)
++            bin_indices = compute_bin_indices(X.loc[:, self.uniform_features].values, bin_limits=bin_limits)
+             groups_indices += list(bin_to_group_indices(bin_indices, mask=label_mask))
+         return groups_indices
+ 
+diff --git a/hep_ml/uboost.py b/hep_ml/uboost.py
+index cc6463d..d37f312 100755
+--- a/hep_ml/uboost.py
++++ b/hep_ml/uboost.py
+@@ -189,7 +189,7 @@ def fit(self, X, y, sample_weight=None, neighbours_matrix=None):
+             assert self.uniform_features is not None, \
+                 "uniform_variables should be set"
+             self.knn_indices = compute_knn_indices_of_same_class(
+-                X.ix[:, self.uniform_features], y, self.n_neighbors)
++                X.loc[:, self.uniform_features], y, self.n_neighbors)
+ 
+         sample_weight = commonutils.check_sample_weight(y, sample_weight=sample_weight, normalize=True)
+         assert np.all(sample_weight >= 0.), 'the weights should be non-negative'

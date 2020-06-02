@@ -1,0 +1,26 @@
+From 0766997d92b8f387258bd8b7ae82c7e2401ed66d Mon Sep 17 00:00:00 2001
+From: connesy <connesy@users.noreply.github.com>
+Date: Tue, 16 Oct 2018 11:55:25 +0200
+Subject: [PATCH] Update reweight.py
+
+Fixed syntax error in doc-string for GBReweighter, line 222, from:
+"For example: gb_args = {'subsample': 0.8, max_features=0.75}"
+to
+"For example: gb_args = {'subsample': 0.8, 'max_features': 0.75}"
+---
+ hep_ml/reweight.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hep_ml/reweight.py b/hep_ml/reweight.py
+index afdc488..a13018e 100644
+--- a/hep_ml/reweight.py
++++ b/hep_ml/reweight.py
+@@ -219,7 +219,7 @@ def __init__(self,
+          that algorithm 'puts' in each leaf to prevent exploding.
+         :param gb_args: other parameters passed to gradient boosting.
+             Those are: subsample, min_samples_split, max_features, max_leaf_nodes
+-            For example: gb_args = {'subsample': 0.8, max_features=0.75}
++            For example: gb_args = {'subsample': 0.8, 'max_features': 0.75}
+             See :class:`hep_ml.gradientboosting.UGradientBoostingClassifier`.
+         """
+         self.learning_rate = learning_rate

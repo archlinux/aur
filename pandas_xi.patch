@@ -1,0 +1,23 @@
+From 15f3f4757cf0fddb32853e83ace75af55d054bd3 Mon Sep 17 00:00:00 2001
+From: Ayush Thada <itsayushthada@gmail.com>
+Date: Wed, 4 Mar 2020 00:58:57 +0530
+Subject: [PATCH] Pandas "ix" indexer removed.
+
+New indexing added. "ix" indexer was last supporting in Pandas 0.22.0.
+---
+ hep_ml/commonutils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hep_ml/commonutils.py b/hep_ml/commonutils.py
+index 61376cb..5356aee 100755
+--- a/hep_ml/commonutils.py
++++ b/hep_ml/commonutils.py
+@@ -254,7 +254,7 @@ def take_features(X, features):
+     are_strings = all([isinstance(feature, str) for feature in features])
+     are_numbers = all([isinstance(feature, Number) for feature in features])
+     if are_strings and isinstance(X, pandas.DataFrame):
+-        return X.ix[:, features]
++        return X[features][:]
+     elif are_numbers:
+         return numpy.array(X)[:, features]
+     else:

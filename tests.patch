@@ -1,0 +1,48 @@
+From 39dd942d6333576e898243c267f2d89f9e738d95 Mon Sep 17 00:00:00 2001
+From: Alex Rogozhnikov <iamfullofspam@gmail.com>
+Date: Thu, 5 Mar 2020 00:41:31 -0800
+Subject: [PATCH] fix tests
+
+---
+ hep_ml/gradientboosting.py     | 1 +
+ tests/test_gradientboosting.py | 1 +
+ tests/test_metrics.py          | 2 +-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hep_ml/gradientboosting.py b/hep_ml/gradientboosting.py
+index 4d9b460..ebdae19 100644
+--- a/hep_ml/gradientboosting.py
++++ b/hep_ml/gradientboosting.py
+@@ -149,6 +149,7 @@ def _get_train_features(self, X):
+         if self.train_features is None:
+             return X
+         else:
++            assert all(f in X.columns for f in self.train_features), [X.columns, self.train_features]
+             return X.loc[:, self.train_features]
+ 
+     def staged_decision_function(self, X):
+diff --git a/tests/test_gradientboosting.py b/tests/test_gradientboosting.py
+index 8d6e287..fbec64a 100644
+--- a/tests/test_gradientboosting.py
++++ b/tests/test_gradientboosting.py
+@@ -61,6 +61,7 @@ def test_gradient_boosting(n_samples=1000, distance = 0.6):
+         assert result >= 0.7, "The quality is too poor: {} with loss: {}".format(result, loss)
+ 
+     trainX['fake_request'] = numpy.random.randint(0, 4, size=len(trainX))
++    testX['fake_request'] = numpy.random.randint(0, 4, size=len(testX))
+     for loss in [losses.MSELossFunction(),
+                  losses.MAELossFunction(),
+                  losses.RankBoostLossFunction(request_column='fake_request')]:
+diff --git a/tests/test_metrics.py b/tests/test_metrics.py
+index 373d1bd..4dad9a6 100644
+--- a/tests/test_metrics.py
++++ b/tests/test_metrics.py
+@@ -244,7 +244,7 @@ def test_metrics_clear(n_samples=2000, knn=50, uniform_class=0):
+     features = X.columns[:1]
+ 
+     mask = (y == uniform_class)
+-    X_clear = X.ix[mask, :]
++    X_clear = X[mask]
+     y_clear = y[mask]
+     sample_weight_clear = sample_weight[mask]
+     predictions_clear = predictions[mask]
