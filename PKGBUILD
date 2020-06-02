@@ -1,10 +1,11 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=age-git
-pkgver=v1.0.0.beta2.r35.gc9a35c0
-pkgrel=2
+pkgver=1.0.0.beta2.r35.gc9a35c0
+pkgrel=1
 pkgdesc="A simple, modern and secure file encryption tool"
 url="https://github.com/FiloSottile/age"
-license=('custom: BSD')
+license=('BSD')
 provides=('age')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
@@ -19,10 +20,7 @@ prepare(){
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
