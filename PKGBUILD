@@ -2,10 +2,10 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _modname="ngx_vod"
-_nginxver=1.17.10
+_nginxver=1.19.0
 
 pkgname=nginx-mainline-mod-vod-git
-pkgver=r1252.f453ef8
+pkgver=r1276.7aa1c33
 pkgrel=1
 pkgdesc="NGINX-based MP4 Repackager"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ validpgpkeys=(
   'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83'
+sha256sums=('44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8'
             'SKIP'
             'SKIP')
 
