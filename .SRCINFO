@@ -8,6 +8,7 @@ pkgbase = openfaas-cli
 	arch = arm64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	provides = faas-cli
 	source = openfaas-cli-0.12.4.tar.gz::https://github.com/openfaas/faas-cli/archive/0.12.4.tar.gz
