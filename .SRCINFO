@@ -1,6 +1,6 @@
 pkgbase = bspwm-undo-git
 	pkgdesc = Undoable versions of some bspc commands.
-	pkgver = r15.e4094f1
+	pkgver = r22.972431a
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/bspwm-undo
 	arch = any

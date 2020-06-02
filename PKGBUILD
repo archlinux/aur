@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=bspwm-undo-git
 _pkgname=${pkgname%-git}
-pkgver=r20.541ec98
+pkgver=r22.972431a
 pkgrel=1
 pkgdesc="Undoable versions of some bspc commands."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -14,8 +14,8 @@ source=("${_pkgname}::git+https://github.com/Kharacternyk/${_pkgname}.git#branch
 sha256sums=(SKIP)
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
