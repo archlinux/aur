@@ -4,8 +4,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
-pkgver=6.3.0
-pkgrel=3
+pkgver=6.4.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -86,7 +86,7 @@ backup=(
   'etc/sasl2/libvirt.conf'
 )
 source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('74069438d34082336e99a88146349e21130552b96efc3b7c562f6878127996f5'
+sha256sums=('586ebcf220369d08a07c6cc17035e8a91bb3741e4300199459904e9e02478be7'
             'SKIP')
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F') # Daniel Veillard <veillard@redhat.com>
 
