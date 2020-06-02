@@ -4,19 +4,19 @@
 _gemname=prawn
 pkgname=ruby-$_gemname
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and nimble PDF generator for Ruby'
 arch=(any)
 url='http://prawnpdf.org'
-license=(PRAWN GPL-2.0 GPL-3.0)
-depends=(ruby ruby-ttfunk-1.5 ruby-pdf-core-0.7)
+license=('custom:PRAWN' 'GPL2' 'GPL3')
+depends=('ruby' 'ruby-ttfunk<1.6' 'ruby-pdf-core<0.8')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha1sums=('0f714088c390b029e09460b0f3c480e43ddc3772')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
