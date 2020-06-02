@@ -1,7 +1,7 @@
 # Maintainer: Samuel Walladge <aur @ swalladge dot net>
 pkgname=jobber
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc='An alternative to cron, with sophisticated status-reporting and error-handling'
 makedepends=('go')
 depends=('glibc')
@@ -9,7 +9,7 @@ arch=('x86_64')
 backup=("etc/${pkgname}.conf")
 url='http://dshearer.github.io/jobber/'
 license=('MIT')
-sha256sums=('14efd9e088e4b3e1e4018fb8cd3161cc43da7941261b31c3e90d630545b305db')
+sha256sums=('fd88a217a413c5218316664fab5510ace941f4fdb68dcb5428385ff09c68dcc2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dshearer/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
