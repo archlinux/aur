@@ -1,7 +1,7 @@
 # Owner: Marcel Radzio <info@nordgedanken.de>
 # Maintainer: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=riot-desktop-git
-pkgver=v1.6.2.r0.g075299a7
+pkgver=v1.6.3.rc.1.r0.g76592720
 pkgrel=1
 pkgname=(riot-web-git riot-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
@@ -13,8 +13,8 @@ makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'elect
 provides=('riot-desktop')
 backup=("etc/riot/config.json")
 _giturl='git://github.com/vector-im'
-source=("riot-web::${_giturl}/riot-web.git#tag=v1.6.2"
-        "riot-desktop::${_giturl}/riot-desktop.git#tag=v1.6.2"
+source=("riot-web::${_giturl}/riot-web.git#tag=v1.6.3-rc.1"
+        "riot-desktop::${_giturl}/riot-desktop.git#tag=v1.6.3-rc.1"
         "riot-desktop.desktop"
         "riot-desktop.sh")
 sha256sums=('SKIP'
