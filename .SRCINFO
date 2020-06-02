@@ -28,6 +28,7 @@ pkgbase = hyperspy
 	depends = python-imageio
 	depends = python-pyaml
 	depends = python-ptable
+	depends = python-tifffile
 	optdepends = python-pillow: tiff export
 	optdepends = python-seaborn: prettier plotting
 	provides = hyperspy

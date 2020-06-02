@@ -13,7 +13,7 @@ depends=('python' 'python-scipy' 'python-matplotlib' 'python-numpy'
          'python-sympy' 'python-dill' 'python-h5py' 'python-dateutil'
          'ipython-ipyparallel' 'python-dask' 'python-scikit-image'
          'python-pint' 'python-statsmodels' 'python-numexpr' 'python-sparse'
-         'python-imageio' 'python-pyaml' 'python-ptable'          
+         'python-imageio' 'python-pyaml' 'python-ptable' 'python-tifffile'          
          )
 
 optdepends=('python-pillow: tiff export'
