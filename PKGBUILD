@@ -35,7 +35,7 @@ depends=('alsa-lib'
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
 md5sums=('5be437640a14d87eeef57556dd614a36'
-         '39b8863d209a2ff71df332fc1b457153')
+         '70904e450823c6978f242435d414e0fc')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
