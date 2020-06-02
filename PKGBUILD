@@ -1,4 +1,5 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com> (29/05/2020)
+# Contributor: Xwang (Fixed a compiling issue, 30/05/2020)
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
