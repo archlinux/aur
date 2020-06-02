@@ -1,9 +1,8 @@
-# Maintainer: David < david at rjamo dot dev >
-# Contributor: Tom < reztho at archlinux dot us >
+# Maintainer: Ruben
 pkgname=dnieremote
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="dnieremote"
+pkgdesc="dnieremote Read p.19 https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf"
 arch=('x86_64')
 url="https://www.dnielectronico.es/"
 depends=('gtkmm3')
