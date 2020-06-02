@@ -5,14 +5,14 @@ _pkgname=discoverhue
 pkgbase=python-discoverhue
 pkgname=('python-discoverhue' 'python2-discoverhue')
 pkgdesc="Discovery of hue bridges per the Philips design guide. "
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('any')
 url="https://github.com/Overboard/discoverhue"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Overboard/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('c882c13b3c48a2f2274d7760b358fc657fe5e83f31fe95b264c9e5c033472a4242c1868838009744a4adb41ea10cc14403ebf7b410c7b6350893dcd3819e8701')
+sha512sums=('165160b3fb656db66f95de452fa848d1e3330dc1ce2d51d3d1005986b717ca1fc20725d99d6021f7c6b5140ee6da8ab39d030917c7c5c30ac03947af7c438b73')
 validpgpkeys=('') # TODO https://github.com/Overboard/discoverhue/issues/2
 
 prepare() {
