@@ -1,7 +1,7 @@
 # Maintainer: Pierre Mavro <deimosfr@gmail.com>
 pkgname=jeedom-status
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Add Jeedom global status to your favorite desktop bar (i3blocks, polybar, etc...)"
 arch=(x86_64)
 url="https://github.com/deimosfr/jeedom-status"
