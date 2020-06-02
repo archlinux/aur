@@ -3,7 +3,7 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor-git
-pkgver=52.d9f5914
+pkgver=54.111f230
 pkgrel=1
 pkgdesc="Zen monitor is monitoring software for AMD Zen-based CPUs"
 arch=('x86_64' 'i686')
@@ -26,6 +26,8 @@ prepare() {
   cd "$srcdir/$_pkgbase"
   # Fix pkgdir references in desktop files
   sed -i 's/@APP_EXEC@|${DESTDIR}/@APP_EXEC@|/g' makefile
+  # Fix variable declaration for GCC 10
+  sed -i 's/gboolean display_coreid;/extern gboolean display_coreid;/' src/include/zenmonitor.h
 }
 
 build() {
