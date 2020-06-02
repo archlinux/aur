@@ -1,5 +1,5 @@
 pkgbase = dnieremote
-	pkgdesc = dnieremote
+	pkgdesc = dnieremote Read p.19 https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.dnielectronico.es/
