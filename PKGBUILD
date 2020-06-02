@@ -8,10 +8,9 @@ pkgrel=1
 pkgdesc='TrueType Font Metrics Parser'
 arch=(any)
 url='https://prawnpdf.org'
-license=(Nonstandard GPL-2.0 GPL-3.0)
+license=(custom GPL2 GPL3)
 depends=(ruby)
-provides=(ruby-ttfunk)
-conflicts=(ruby-ttfunk)
+provides=('ruby-ttfunk=1.5.1')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

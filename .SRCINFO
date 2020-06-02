@@ -4,12 +4,11 @@ pkgbase = ruby-ttfunk-1.5
 	pkgrel = 1
 	url = https://prawnpdf.org
 	arch = any
-	license = Nonstandard
-	license = GPL-2.0
-	license = GPL-3.0
+	license = custom
+	license = GPL2
+	license = GPL3
 	depends = ruby
-	provides = ruby-ttfunk
-	conflicts = ruby-ttfunk
+	provides = ruby-ttfunk=1.5.1
 	noextract = ttfunk-1.5.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/ttfunk-1.5.1.gem
