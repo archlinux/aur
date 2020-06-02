@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-fr
 	pkgdesc = French language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.fr.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.fr.langpack.xpi
-	sha256sums = ed09b8d293567b776e0373a3d7bef2d389725dfd885a816470ebe3a522930119
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.fr.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.fr.langpack.xpi
+	sha256sums = 50c0a8212405e7edf01bc91562d85c28125b9c39bfd5ed0f98199dc13c149322
 
 pkgname = seamonkey-i18n-fr
 

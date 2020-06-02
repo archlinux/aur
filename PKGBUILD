@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-fr
-pkgver=2.49.4
+pkgver=2.53.2
 pkgrel=1
 _lang=fr
 pkgdesc="French language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('ed09b8d293567b776e0373a3d7bef2d389725dfd885a816470ebe3a522930119')
+sha256sums=('50c0a8212405e7edf01bc91562d85c28125b9c39bfd5ed0f98199dc13c149322')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
