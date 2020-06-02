@@ -1,0 +1,8 @@
+--- a/jpeg/ejpeg.h
++++ b/jpeg/ejpeg.h
+@@ -32,4 +32,4 @@
+ #define IMG_FORMAT_411  0x05   /* Three-component 4:1:1  image */
+ 
+ JPEGEXPORT
+-int No_JPEG_Header_Flag;
++extern int No_JPEG_Header_Flag;

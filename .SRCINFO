@@ -1,13 +1,15 @@
 pkgbase = libfpx
 	pkgdesc = FlashPIX OpenSource Toolkit
 	pkgver = 1.3.1.10
-	pkgrel = 3
-	url = https://www.imagemagick.org/download/delegates/
+	pkgrel = 4
+	url = https://github.com/ImageMagick/libfpx/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	source = https://www.imagemagick.org/download/delegates/libfpx-1.3.1-10.tar.xz
+	source = 010-libfpx-gcc10-fix.patch
 	sha256sums = 491b55535580d27355669c45fe995446bd34df5dbcdc15312e58c3ebecc6a455
+	sha256sums = e93f193b199023c5e2e2557c4f21fc276b8784f5a07363729235c42c16066cbd
 
 pkgname = libfpx
 
