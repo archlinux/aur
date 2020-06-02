@@ -2,25 +2,23 @@
 
 pkgname=btusb-csr-0x8891
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="patch btusb so it works on CSR clone devices with id 0x8891"
 url=https://bugzilla.kernel.org/show_bug.cgi?id=60824
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=(
-	'dkms'
-	'linux-headers'
-)
+depends=('dkms')
+makedepends=('linux-headers')
 
 source=(
 	"Makefile"
 	"btusb.patch"
-	"btusb.c::https://github.com/zen-kernel/zen-kernel/blob/v5.6.13-zen1/drivers/bluetooth/btusb.c"
-	"btintel.h::https://github.com/zen-kernel/zen-kernel/blob/v5.6.13-zen1/drivers/bluetooth/btintel.h"
-	"btbcm.h::https://github.com/zen-kernel/zen-kernel/blob/v5.6.13-zen1/drivers/bluetooth/btbcm.h"
-	"btrtl.h::https://github.com/zen-kernel/zen-kernel/blob/v5.6.13-zen1/drivers/bluetooth/btrtl.h"
+	"btusb.c::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.6.15-zen1/drivers/bluetooth/btusb.c"
+	"btintel.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.6.15-zen1/drivers/bluetooth/btintel.h"
+	"btbcm.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.6.15-zen1/drivers/bluetooth/btbcm.h"
+	"btrtl.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.6.15-zen1/drivers/bluetooth/btrtl.h"
 	"dkms.conf"
-)
+) 
 
 prepare() {
 	\cp --remove-destination $(readlink btusb.c) btusb.c
@@ -47,7 +45,7 @@ package() {
 }
 
 sha512sums=(
-	'45210d56fc4604befa6f4fa0bf51fd9296a274c14b38c1671bcffeb0028af17eb72c4ef0b2c9cb0442906251603264315fa0d4f31e881f7d4eacc7b9b0b72ca2'
+	'263480d12c234c4e42bf5c8e518af8b6000a8d2307d4cf0a740d22887c1574a36a9105272d0b739a04257fceb66f794d230d901f70ffd8076fdd294bc503216d'
 	'b743173b2466a88502fd59920fc88cf1a1fa64ffe21d6821afdad569570161ee2c6b17888cf98f6e04ae0542ead02f0a29cc1b59f93dbce0c794b61ae60740ab'
 	'ff192171996c031b1bc03263173a9d78c425d4263ca3100b448bead71c8f67c74ca53add0e3d083a52409a91a17e6676025ff940fe252eb6ed1ba80c2300c04f'
 	'16ce8e77b598ca4dc5dbba805046e066698a5157fee73b0425a4bd51e1b063a745a3aa3cc169abcacb249d3bd93901a059f3a71dc009f3ca93af2e542400a35b'

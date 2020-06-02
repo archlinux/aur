@@ -10,8 +10,3 @@ all:
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules clean
 
-insmod:
-	sudo insmod btusb.ko
-
-rmmod:
-	sudo rmmod btusb.ko
