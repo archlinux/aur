@@ -1,7 +1,7 @@
 pkgbase = fracplanet
 	pkgdesc = Fractal planet and terrain generator
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/fracplanet/
 	arch = i686
 	arch = x86_64

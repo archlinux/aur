@@ -1,8 +1,9 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com> (28/05/2020)
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: nic96
 pkgname=fracplanet
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fractal planet and terrain generator"
 url="http://sourceforge.net/projects/fracplanet/"
 license=('GPL2')
@@ -18,7 +19,7 @@ sha256sums=('435dd07e1798f810280260d09d2ee85e870eb466411e49b859eb1bef6f336ade'
 build() {
   cd $srcdir/$pkgname-$pkgver
   qmake-qt4 "VERSION_NUMBER=$VERSION_NUMBER" fracplanet.pro
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
@@ -27,4 +28,3 @@ package() {
   install -Dm644 $srcdir/fracplanet.desktop $pkgdir/usr/share/applications/fracplanet.desktop
   install -Dm644 $srcdir/fracplanet.png $pkgdir/usr/share/pixmaps/fracplanet.png
 }
-
