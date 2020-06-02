@@ -4,11 +4,11 @@
 _gemname=prawn-table
 pkgname=ruby-$_gemname
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides tables for PrawnPDF'
 arch=(any)
 url='https://github.com/prawnpdf/prawn-table'
-license=(RUBY GPL-2 GPL-3)
+license=(RUBY GPL2 GPL3)
 depends=(ruby ruby-prawn)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
@@ -16,7 +16,7 @@ noextract=($_gemname-$pkgver.gem)
 sha1sums=('0db902ddbb158fda2a7c2e44ef35b3505f4de4ba')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
