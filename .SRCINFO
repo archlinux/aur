@@ -1,0 +1,16 @@
+pkgbase = python-httpcore
+	pkgdesc = A minimal low-level HTTP client.
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = https://github.com/encode/httpcore
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-h11
+	depends = python-h2
+	depends = python-sniffio
+	source = https://files.pythonhosted.org/packages/source/h/httpcore/httpcore-0.9.1.tar.gz
+	sha256sums = ecc5949310d9dae4de64648a4ce529f86df1f232ce23dcfefe737c24d21dfbe9
+
+pkgname = python-httpcore
+
