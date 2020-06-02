@@ -2,7 +2,7 @@
 # Maintainer: Matheus <wlion@protonmail.com>
 
 pkgname=fedora-firefox-wayland-bin
-pkgver=76.0.1
+pkgver=77.0
 pkgrel=1
 # fedora version
 fc="fc32"
@@ -14,7 +14,7 @@ provides=('firefox=${pkgver}' 'libffi=3.1')
 conflicts=('firefox' 'libffi=3.1' 'libffi=3.2')
 options=(!emptydirs !strip)
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire)
+         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire libpipewire02)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -23,7 +23,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm"
 	"https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm")
 
-sha256sums=('3e033c26ae1a8c6ae7bbb6d962a2e2743dcd755fdfd726c23cf7067eb0f584e2'
+sha256sums=('d04843b36eac7f12f6566c4a450f3b1c595e62610fe0346cb32a006fe5e07882'
 	    '86c87a4169bdf75c6d3a2f11d3a7e20b6364b2db97c74bc7eb62b1b22bc54401')
 
 prepare() {

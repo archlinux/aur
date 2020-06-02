@@ -1,6 +1,6 @@
 pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build with wayland enabled by default
-	pkgver = 76.0.1
+	pkgver = 77.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -23,20 +23,21 @@ pkgbase = fedora-firefox-wayland-bin
 	depends = icu
 	depends = libjpeg6-turbo
 	depends = pipewire
+	depends = libpipewire02
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=76.0.1
+	provides = firefox=77.0
 	provides = libffi=3.1
 	conflicts = firefox
 	conflicts = libffi=3.1
 	conflicts = libffi=3.2
 	options = !emptydirs
 	options = !strip
-	source = https://kojipkgs.fedoraproject.org/packages/firefox/76.0.1/1.fc32/x86_64/firefox-76.0.1-1.fc32.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/firefox/77.0/1.fc32/x86_64/firefox-77.0-1.fc32.x86_64.rpm
 	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm
-	sha256sums = 3e033c26ae1a8c6ae7bbb6d962a2e2743dcd755fdfd726c23cf7067eb0f584e2
+	sha256sums = d04843b36eac7f12f6566c4a450f3b1c595e62610fe0346cb32a006fe5e07882
 	sha256sums = 86c87a4169bdf75c6d3a2f11d3a7e20b6364b2db97c74bc7eb62b1b22bc54401
 pkgname = fedora-firefox-wayland-bin
 
