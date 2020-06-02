@@ -3,7 +3,7 @@
 _pkgname=cld3
 _reponame=$_pkgname
 pkgname=python-${_pkgname}-git
-pkgver=0.2.3.20200116
+pkgver=0.2.3.20200117
 pkgrel=1
 pkgdesc='Python bindings for cld3 (Compact Language Detector v3)'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  echo $(awk -F'"' '/version=/ { print $2 }' setup.py).$(git log -1 --pretty='%cd' --date=short | tr -d '-')
+  echo $(awk -F'"' '/version=/ { print $2 }' setup.py).$(TZ=UTC git log -1 --pretty='%cd' --date=short-local | tr -d '-')
 }
 
 build() {
