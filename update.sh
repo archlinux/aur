@@ -5,8 +5,12 @@ PROJ_NAME=sublime-music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
 URL=https://gitlab.com/sumner/sublime-music
 DEPENDS=(
+    libnm-glib
+    libnotify
     python-bottle
+    python-dateutil
     python-deepdiff
+    python-deprecated
     python-fuzzywuzzy
     python-gobject
     python-levenshtein
@@ -14,8 +18,6 @@ DEPENDS=(
     python-pychromecast
     python-requests
     python-yaml
-    libnm-glib
-    libnotify
 )
 LICENSE='GPL3'
 ADDITIONAL=
@@ -63,8 +65,6 @@ optdepends=(
 )
 makedepends=(
     'python-setuptools'
-    'inkscape'
-    'make'
 )
 license=('${LICENSE}')
 arch=('any')

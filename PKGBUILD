@@ -4,13 +4,17 @@ pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
 pkgver='0.9.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
 depends=(
     'python'
+    'libnm-glib'
+    'libnotify'
     'python-bottle'
+    'python-dateutil'
     'python-deepdiff'
+    'python-deprecated'
     'python-fuzzywuzzy'
     'python-gobject'
     'python-levenshtein'
@@ -18,16 +22,12 @@ depends=(
     'python-pychromecast'
     'python-requests'
     'python-yaml'
-    'libnm-glib'
-    'libnotify'
 )
 optdepends=(
     'python-keyring: support for storing passwords in the system keyring'
 )
 makedepends=(
     'python-setuptools'
-    'inkscape'
-    'make'
 )
 license=('GPL3')
 arch=('any')
