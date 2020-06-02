@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-hu
 	pkgdesc = Hungarian language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.hu.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.hu.langpack.xpi
-	sha256sums = 93ca899651a38c8b0753b419bb2d0c321e6293fb1d6ecc7a10129793b3de4cff
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.hu.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.hu.langpack.xpi
+	sha256sums = 353ba04ae18cd2a034db8d6041b69e42b5458213e2e2e33abb7c05c2f403ceac
 
 pkgname = seamonkey-i18n-hu
 
