@@ -37,7 +37,6 @@ validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export REMCTL_PERL_FLAGS="--installdirs=vendor"
-  export REMCTL_PYTHON_VERSIONS="python2"
   ./configure \
     --prefix=/usr             \
     --sbindir=/usr/bin        \
