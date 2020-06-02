@@ -1,13 +1,15 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
 url='https://github.com/Praqma/helmsman'
 license=('MIT')
 depends=('helm-diff' 'kubectl')
-optdepends=('ruby-hiera-eyaml: backend for secret encryption')
+optdepends=(
+  'ruby-hiera-eyaml: backend for secret encryption'
+  'helm-secrets: backend for secret encryption')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5e0dc492560cb3ecc11f5db6bcea3861f8305004950becc12a81dfc7bfaed17d')
