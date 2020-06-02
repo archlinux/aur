@@ -8,26 +8,23 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=20190917
+pkgver=20200513
 pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
-# Now using soft fork: https://github.com/horst3180/arc-theme/issues/840
-url="https://github.com/arc-design/arc-theme"
+# Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
+url="https://github.com/jnsh/arc-theme"
 license=('GPL3')
 optdepends=('arc-icon-theme: recommended icon theme'
             'gtk-engine-murrine: for gtk2 themes'
-            'gnome-themes-standard: for gtk2 themes'
-            #'resvg: building the package faster'
-            )
-makedepends=('gtk3' 'sassc' 'optipng' 'inkscape' 'parallel')
+            'gnome-themes-standard: for gtk2 themes'            )
+makedepends=('sassc' 'optipng' 'inkscape')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('da3e98e696160542fc77678193ff4fdeecc1cab7b4c1ec57e1bd850486a80547e1d688c9784f5ef422f097449f1105c071a3ff917c25a6a315fe970bedf10c6f'
+sha512sums=('ac814babf995facce72497efad7d7afb6d2eed0ad02640aeb694874681c961b136fcc4fba8350fdee715d44c26db2a336b3430c054a299285ced782ed67bbcfe'
             'SKIP')
-validpgpkeys=('97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161'  # NicoHood
-              '1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE') # Fossfreedom
+validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
 prepare() {
     cp -a ${_pkgname}-${pkgver}{,-solid}
@@ -35,10 +32,10 @@ prepare() {
 
 build() {
     cd ${_pkgname}-${pkgver}
-    ./autogen.sh --prefix=/usr --with-gnome-shell=3.30
+    ./autogen.sh --prefix=/usr --with-gnome-shell=3.36 --with-cinnamon=4.6 --with-gtk3=3.24
 
     cd ../${_pkgname}-${pkgver}-solid
-    ./autogen.sh --prefix=/usr --disable-transparency --with-gnome-shell=3.30
+    ./autogen.sh --prefix=/usr --disable-transparency --with-gnome-shell=3.36 --with-cinnamon=4.6 --with-gtk3=3.24
 }
 
 package_arc-gtk-theme() {
