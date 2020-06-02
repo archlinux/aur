@@ -1,0 +1,30 @@
+pkgbase = datamanager-cli-git
+	pkgdesc = The official cli client for the datamanager system
+	pkgver = 1.0.r206.3c8b365
+	pkgrel = 1
+	url = https://github.com/DataManager-Go/DataManagerCLI
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/DataManager-Go/DataManagerCLI
+	md5sums = SKIP
+
+pkgname = datamanager-cli-git
+
+pkgbase = datamanager-cli-git
+	pkgdesc = The official cli client for the datamanager system
+	pkgver = 1.0.r206.3c8b365
+	pkgrel = 1
+	url = https://github.com/DataManager-Go/DataManagerCLI
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/DataManager-Go/DataManagerCLI
+	md5sums = SKIP
+
+pkgname = datamanager-cli-git
+
