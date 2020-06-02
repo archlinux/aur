@@ -6,8 +6,8 @@ index c250ca8..4887fc4 100755
  #endif
  
  #ifdef _OPENMP
--#pragma omp parallel default(none) \
-+#pragma omp parallel default(none) firstprivate(vl_infinity_d) \
+-#pragma omp parallel \
++#pragma omp parallel firstprivate(vl_infinity_d) \
              shared(self, distances, assignments, numData, distFn, data) \
              num_threads(vl_get_max_threads())
  #endif
