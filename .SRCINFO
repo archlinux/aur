@@ -1,0 +1,17 @@
+pkgbase = alephone-red
+	pkgdesc = A total conversion scenario for Marathon Infinity created by Ian McConville
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://bighouse.bungie.org/red/
+	arch = any
+	license = unknown
+	depends = alephone
+	source = http://files3.bungie.org/trilogy/MarathonRED.zip
+	source = alephone-red.sh
+	source = alephone-red.desktop
+	sha256sums = fc61a33f47054f0967769a2fb15a38567b98d93114f7e9b6fd69d89da9d523dc
+	sha256sums = c46633189ec6b5dc09ce460aa1c119528863ffd598b6fc905e263a46096ab1c6
+	sha256sums = cfb344eb5c198b03fc4cdaa97660156df3a127858ffbb2ee99d3174e610fc9c1
+
+pkgname = alephone-red
+
