@@ -3,7 +3,7 @@
 pkgname=multimonitorlock-gui
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='Logout script for qt5'
+pkgdesc='GUI for multimonitorlock to set the background'
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')

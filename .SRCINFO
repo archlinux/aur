@@ -1,5 +1,5 @@
 pkgbase = multimonitorlock-gui
-	pkgdesc = Logout script for qt5
+	pkgdesc = GUI for multimonitorlock to set the background
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock-gui
