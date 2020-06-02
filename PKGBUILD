@@ -11,7 +11,6 @@ url='https://github.com/PyCQA/flake8-commas'
 arch=('any')
 license=('MIT')
 
-provides=('duniterpy')
 depends=('python')
 
 source=("https://github.com/PyCQA/$_pkgname/archive/$pkgver.tar.gz")
