@@ -1,12 +1,16 @@
 post_install() {
 	getent group ffsync &>/dev/null || groupadd -r ffsync >/dev/null
 	getent passwd ffsync &>/dev/null || useradd -r -s /usr/bin/false \
-		-g ffsync -G ffsync,http -d /var/lib/mozilla-firefox-sync-server ffsync >/dev/null
-	chown -R ffsync:ffsync /var/lib/mozilla-firefox-sync-server /etc/webapps/mozilla-firefox-sync-server
+		-g ffsync -G ffsync,http -d /var/lib/ffsync ffsync >/dev/null
+
+	chown -R ffsync:ffsync /var/lib/ffsync
+	systemd-tmpfiles --create ffsync.conf
 }
 
 post_update() {
-	chown -R ffsync:ffsync /var/lib/mozilla-firefox-sync-server /etc/webapps/mozilla-firefox-sync-server
+	chown -R ffsync:ffsync /var/lib/ffsync
+	chown -R ffsync:http /run/ffsync
+
 	echo ">> Documentation: https://wiki.archlinux.org/index.php/Mozilla_Firefox_Sync_Server"
 }
 
