@@ -1,7 +1,7 @@
 pkgbase = aura-bin
 	pkgdesc = A secure package manager for Arch Linux and the AUR - Prebuilt binary
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://github.com/fosskers/aura
 	arch = x86_64
 	license = GPL-3
@@ -13,8 +13,8 @@ pkgbase = aura-bin
 	conflicts = aura-git
 	options = strip
 	backup = etc/aura.conf
-	source = https://github.com/fosskers/aura/releases/download/v3.1.0/aura-3.1.0-x86_64.tar.gz
-	md5sums = 4f61d39cd6f0b1f11503ae1e6433a5e3
+	source = https://github.com/fosskers/aura/releases/download/v3.1.1/aura-3.1.1-x86_64.tar.gz
+	md5sums = 18e0c41d3e2cf990902200cfc230fdae
 
 pkgname = aura-bin
 
