@@ -3,16 +3,17 @@
 
 pkgname=mozilla-firefox-sync-server-git
 pkgver=1.8.0.r67.g516807e
-pkgrel=3
-pkgdesc="Mozilla Sync Server for built-in Firefox Sync - 1.5+ version for Firefox 29+"
+pkgrel=4
+pkgdesc='Mozilla Sync Server for built-in Firefox Sync'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
 license=('MPL2')
 depends=('python2' 'python2-virtualenv')
 makedepends=('git')
 options=(!debug)
-conflicts=('mozilla-firefox-sync-server-hg')
-install=${pkgname}.install
+conflicts=('mozilla-firefox-sync-server' 'mozilla-firefox-sync-server-hg')
+provides=('mozilla-firefox-sync-server')
+install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/mozilla-services/syncserver"
 	'ffsync.service'
 	'ffsync.tmpfiles')
@@ -23,28 +24,28 @@ sha384sums=('SKIP'
 	'a7384b5b55b2377ee4445e45bfd0545435c2a6a19730ff4219340e3c6e8a3b51fcb46e4215093df860f9fa99a0b471ab'
 	'236b285f7e390d31cd13a0ac78c524acfbc8a7325d7b0b114b39f69a5963535d5f1f73bdef575728b2f6e81860c4ea16')
 backup=('opt/mozilla-firefox-sync-server/syncserver.ini')
+optdepends=('uwsgi-plugin-python2: Serve the webapp using uwsgi'
+	'mozilla-firefox-account-server: Run your own firefox account server')
 
 pkgver() {
-	cd ${pkgname}
+	cd "${pkgname}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd ${pkgname}
+	cd "${pkgname}"
 
 	# Change default sqlite database location
 	sed -i "s|/tmp/syncserver.db|/var/lib/ffsync/sync_storage.db|g" syncserver.ini
+	sed -i "s|^\#sqluri|sqluri|" syncserver.ini
 
 	# Remove obsolete parameter
-	sed -i "s|--no-site-packages||g" Makefile
+	sed -i "s| --no-site-packages||g" Makefile
 }
 
 build() {
-	cd ${pkgname}
+	cd "${pkgname}"
 	make build
-
-	# SQLite support
-	#local/bin/pip install pysqlite2
 
 	# MySQL support (should already be included)
 	#local/bin/pip install PyMySQL
@@ -65,13 +66,13 @@ build() {
 }
 
 check() {
-	cd ${pkgname}
+	cd "${pkgname}"
 
 	#make test
 }
 
 package() {
-	cd ${pkgname}
+	cd "${pkgname}"
 
 	# There is no install target in the Makefile, installing manually
 	install -dm 755 "${pkgdir}"/opt/${pkgname/-git} "${pkgdir}"/var/lib/ffsync
