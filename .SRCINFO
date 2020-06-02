@@ -1,7 +1,7 @@
 pkgbase = zsh-fast-syntax-highlighting
 	pkgdesc = Optimized and extended zsh-syntax-highlighting
 	pkgver = 1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zdharma/fast-syntax-highlighting
 	arch = any
 	license = BSD
