@@ -1,7 +1,7 @@
 pkgbase = veloren-bin
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veloren.net/
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = veloren-bin
 	noextract = veloren-voxygen.desktop
 	noextract = voxygen.png
 	options = !strip
-	source = veloren-bin::https://veloren.sfo2.cdn.digitaloceanspaces.com/releases/0.6.0-linux.tar.gz
+	source = veloren-bin::https://veloren-4129.fra1.digitaloceanspaces.com/releases/0.6.0-linux.tar.gz
 	source = veloren-voxygen.desktop
 	source = voxygen.png
 	sha512sums = 5813901058904ad460eb79b0103fb13d080d40c4f377e9da10a8c4242522a4d81c38ef2f6ddbba777366c6a70e2f46349f890094e2787d362a60ba8d89a0e768

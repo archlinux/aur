@@ -2,7 +2,7 @@
 
 pkgname=veloren-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
@@ -13,7 +13,7 @@ makedepends=()
 provides=("$pkgname" 'veloren')
 conflicts=("$pkgname" 'veloren')
 source=(
-    "$pkgname"::"https://veloren.sfo2.cdn.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
+    "$pkgname"::"https://veloren-4129.fra1.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
     "veloren-voxygen.desktop"
     "voxygen.png"
 )
