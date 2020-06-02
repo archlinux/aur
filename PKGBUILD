@@ -5,15 +5,15 @@ _pkgname=qhue
 pkgbase=python-qhue
 pkgname=('python-qhue' 'python2-qhue')
 pkgdesc="A very lightweight Python wrapper to the Philips Hue API"
-pkgver=1.0.9
+pkgver=1.0.12
 pkgrel=1
 arch=('any')
 url="https://github.com/quentinsf/qhue"
 license=('GPL2')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quentinsf/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c037fa12c38b05e2569a16450c6bf361d5e3615f27ab3a79141779287429e5914d4501f86c62e91b40812fcb532628e2eae568e4e1b928a74a56d37e55e5887f')
-validpgpkeys=('') # TODO
+sha512sums=('11ea0f9853dd0e26ecae0d6bd22b45f68ba1b19e6bd01379b2a2c67fd80bd1c4f5db9a34d988248b6111b3ea5bba71eddcc5a8390aea16a09e05c4b749a019d0')
+validpgpkeys=('') # TODO https://github.com/quentinsf/qhue/issues/19
 
 prepare() {
     # Create a copy for the python2 package
