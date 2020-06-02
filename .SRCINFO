@@ -7,14 +7,14 @@ pkgbase = nginx-mainline-mod-secure-token-git
 	arch = x86_64
 	license = CUSTOM
 	makedepends = git
-	depends = nginx-mainline=1.17.10
+	depends = nginx-mainline=1.19.0
 	provides = nginx-mainline-mod-secure-token
 	conflicts = nginx-mainline-mod-secure-token
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz
-	source = https://nginx.org/download/nginx-1.17.10.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz
+	source = https://nginx.org/download/nginx-1.19.0.tar.gz.asc
 	source = ngx_secure_token::git+https://github.com/kaltura/nginx-secure-token-module.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83
+	sha256sums = 44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8
 	sha256sums = SKIP
 	sha256sums = SKIP
 
