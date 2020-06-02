@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=remctl
-pkgver=3.15
+pkgver=3.16
 pkgrel=1
 pkgdesc="Tool for running commands on remote hosts using Kerberos authentication"
 arch=(i686 x86_64)
@@ -9,14 +9,16 @@ license=(custom)
 depends=("krb5")
 makedepends=(
   "perl"
+  "perl-module-build"
   "php"
-  "python2"
+  "python"
+  "python-setuptools"
   "ruby"
 )
 provides=(
   "perl-net-remctl=$pkgver"
   "php-remctl=$pkgver"
-  "python2-remctl=$pkgver"
+  "python-remctl=$pkgver"
   "ruby-net-remctl=$pkgver"
 )
 backup=("etc/remctl/remctl.conf")
@@ -25,7 +27,7 @@ source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "remctl.service"
         "remctl@.service"
         "remctl.socket")
-sha256sums=('7f593bdbc11d7b0a539069da3c4b21c1059d0952c44c3815f50e1f023ad8ea7d'
+sha256sums=('94522fac45e850c8fedf21997a90c940845e89ca90ddb8f7693d4085979e09f6'
             'SKIP'
             '9801df9c99570fe92c0e215add2e05882a679127914e593055020cc7bee0d1e7'
             '7c04784c70919439025cfda57d7af8f264184c0d6078b42ee7440154392c1082'
