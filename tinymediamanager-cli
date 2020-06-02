@@ -7,14 +7,11 @@ mkdir --parents "$HOME/.tiny-media-manager/templates"
 cd "$HOME/.tiny-media-manager"
 ln --symbolic --force /usr/share/tinyMediaManager/templates/templates.jar ./templates/templates.jar
 
-java \
-  -Djava.net.preferIPv4Stack=true \
+source /usr/share/tinyMediaManager/tmm.JAVA_OPTS
+
+java $JAVA_OPTS \
   -Dappbase=https://www.tinymediamanager.org/ \
-  -Djna.nosys=true \
   -Djava.awt.headless=true \
-  -Xms64m \
-  -Xmx512m \
-  -Xss512k \
   -cp /usr/share/tinyMediaManager/tmm.jar:/usr/share/tinyMediaManager/lib/* \
   org.tinymediamanager.TinyMediaManager \
   "$@"
