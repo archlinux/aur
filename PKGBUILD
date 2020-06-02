@@ -3,10 +3,10 @@ _basename="gint"
 _branch="master"
 pkgname="${_basename}-git"
 pkgver=r166.0498344
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50'
 arch=('i686' 'x86_64')
-depends=('fxsdk' 'sh-elf-gcc-casio')
+depends=('fxsdk' 'sh-elf-gcc-casio' 'python-pillow')
 source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git#branch=${_branch}")
 options=("!strip")
 sha256sums=("SKIP")
