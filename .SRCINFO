@@ -1,6 +1,6 @@
 pkgbase = asciidoc-py3
 	pkgdesc = Text document format for short documents, articles, books and UNIX man pages. (python3 version)
-	pkgver = 9.0.0rc2
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/asciidoc/asciidoc-py3
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = asciidoc-py3
 	optdepends = w3m: text generation (alternative to lynx)
 	provides = asciidoc
 	conflicts = asciidoc
-	source = https://github.com/asciidoc/asciidoc-py3/archive/9.0.0rc2.tar.gz
-	sha512sums = 61ea1eb74a2e2da76f92e32ef279f8940fa4ea77a82078e15b54c7c6f134e9d177b0425c6eb8a239cfd2dc6a6f85ad5e93883a447a3e0e92850c0898747b5ea3
+	source = https://github.com/asciidoc/asciidoc-py3/archive/9.0.0.tar.gz
+	b2sums = 7f93161887c17aa2b9d99863a97b8eabc76c58910cd81fb2b3e408a0f7b242dd792c6d26510a61a4a275f482c38a2b2fc277a52bdc22580b7b3694d524ae1f13
 
 pkgname = asciidoc-py3
 
