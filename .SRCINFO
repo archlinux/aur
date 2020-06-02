@@ -1,6 +1,6 @@
 pkgbase = nautilus-open-any-terminal
 	pkgdesc = context-menu entry for opening other terminal in nautilus
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/Stunkymonkey/nautilus-open-any-terminal
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nautilus-open-any-terminal
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-nautilus
-	source = git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=df37ad5ee0040c601dccebbf1ba2f4c82fbe3853
+	source = git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=1475b0214c559bf1d9f9170fc3bcf3eaab2fae6b
 	sha512sums = SKIP
 
 pkgname = nautilus-open-any-terminal
