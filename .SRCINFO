@@ -1,5 +1,5 @@
 pkgbase = winbox-xdg
-	pkgdesc = Mikrotik RouterOS GUI Configurator (wine). xdg base specification compliant version
+	pkgdesc = Mikrotik RouterOS GUI Configurator (wine). xdg base directory specification compliant version
 	pkgver = 3.24
 	pkgrel = 1
 	url = http://www.mikrotik.com
