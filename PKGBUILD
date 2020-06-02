@@ -1,16 +1,17 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
-# Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
-# Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
+# Previous Maintainers: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
+#      and: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
+# Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.1.12
+pkgver=4.1.13
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
 license=('GPL')
 depends=('cty' 'fltk' 'libsamplerate' 'libusb-compat' 'flxmlrpc'
-         'portaudio' 'libpulse' 'hamlib')
+         'portaudio' 'libpulse' 'hamlib' 'hamradio-menus')
 optdepends=('libsndfile: sound file support'
             'pulseaudio: pulseaudio support')
 source=(http://w1hkj.com/files/$pkgname/$pkgname-$pkgver.tar.gz)
@@ -39,5 +40,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('e484ba0c4fd974bd961ecc1ff5336c13')
-sha256sums=('216f0d3a010636c8716365d5e33ee1f6ae0cab39e45edfa28aae13a4b5d852fa')
+md5sums=('89740f5e5d6277fbee9571d53d1355dc')
+sha256sums=('448867a113c35d7ad908fc92774a995dae5e6c4f0f2219e93586c031cb279856')
