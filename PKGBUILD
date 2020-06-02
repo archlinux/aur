@@ -5,7 +5,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.6.15.arch1
+pkgver=5.7.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -84,7 +84,7 @@ _repo_url="https://git.archlinux.org/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.5-v5.6.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
@@ -93,7 +93,7 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
-    0005-v5.6_undead-pds099o.patch
+    0005-v5.7_undead-pds099o.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -103,9 +103,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '1485a4418dc0028af7c95a1d60165c5450c41d5e8158a2a00475478fa67f344948b81c862e73f7c442b23f62d1aff518ef8bcedf5ba630f18d072d533884168d'
+            '2b1da401945e5169ed6ca5fe077981fa1e7f9c01c0bae14144d708f4d566b052c336d59562585c93189f96b78caf964b8f3b7857fe6c076a5c2205fde81b5c84'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '8f3fce45a43c25800d1efb11010a769eafc0a678ea128d695ef5fe189efe1fe60f0bf16d4d7ff13111bdb2385fdcfb27d554c2d3a93debf2341e5e83224f6153'
+            'c4ca80f506c01bc1d13d9d7bc7336f9ff77a24aa8343c40cd02e073ae5cf280dbabf1a9ddbd2064edf054de383fd510a8915b7d8f47b5bc76147109a5f424e92'
             'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -123,14 +123,14 @@ prepare() {
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
-
+    
     msg2 "Patching with Sphinx build fail workaround..."
     patch -Np1 -i "$srcdir/sphinx-workaround.patch"
     
     # From https://github.com/Frogging-Family/linux-tkg/tree/master/linux56-tkg/linux56-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.6 by TkG"
+    msg2 "Patching with Undead PDS 0.99o patches, rebased by TkG"
     for MyPatch in \
-        0005-v5.6_undead-pds099o.patch \
+        0005-v5.7_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
         msg2 "Patching with $MyPatch..."

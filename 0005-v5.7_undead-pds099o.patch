@@ -1,29 +1,9 @@
 From 89067d28ca90681fc6cf108de79b9aedb93dfa9d Mon Sep 17 00:00:00 2001
 From: Tk-Glitch <ti3nou@gmail.com>
-Date: Mon, 9 Dec 2019 7:11:23 +0100
-Subject: PDS 099o, 5.6 rebase
+Date: Thu, 16 Apr 2020 5:50:12 +0200
+Subject: PDS 099o, 5.7 rebase
 
 
-diff --git a/Documentation/admin-guide/sysctl/kernel.rst b/Documentation/admin-guide/sysctl/kernel.rst
-index 032c7cd3cede..360a229b0abe 100644
---- a/Documentation/admin-guide/sysctl/kernel.rst
-+++ b/Documentation/admin-guide/sysctl/kernel.rst
-@@ -82,6 +82,7 @@ show up in /proc/sys/kernel:
- - randomize_va_space
- - real-root-dev               ==> Documentation/admin-guide/initrd.rst
- - reboot-cmd                  [ SPARC only ]
-+- rr_interval
- - rtsig-max
- - rtsig-nr
- - sched_energy_aware
-@@ -105,6 +106,7 @@ show up in /proc/sys/kernel:
- - unknown_nmi_panic
- - watchdog
- - watchdog_thresh
-+- yield_type
- - version
- 
- 
 diff --git a/Documentation/scheduler/sched-PDS-mq.txt b/Documentation/scheduler/sched-PDS-mq.txt
 new file mode 100644
 index 000000000000..709e86f6487e
@@ -1070,7 +1050,7 @@ new file mode 100644
 index 000000000000..aefbd9cebcfb
 --- /dev/null
 +++ b/kernel/sched/pds.c
-@@ -0,0 +1,6548 @@
+@@ -0,0 +1,6558 @@
 +/*
 + *  kernel/sched/pds.c, was kernel/sched.c
 + *
@@ -3943,6 +3923,16 @@ index 000000000000..aefbd9cebcfb
 +			continue;
 +		pds_sg_balance_trigger(i);
 +	}
++}
++DEFINE_PER_CPU(unsigned long, thermal_pressure);
++
++void arch_set_thermal_pressure(struct cpumask *cpus,
++			       unsigned long th_pressure)
++{
++	int cpu;
++
++	for_each_cpu(cpu, cpus)
++		WRITE_ONCE(per_cpu(thermal_pressure, cpu), th_pressure);
 +}
 +#endif /* CONFIG_SCHED_SMT */
 +#endif /* CONFIG_SMP */
@@ -7624,7 +7614,7 @@ new file mode 100644
 index 000000000000..b3926a8425b2
 --- /dev/null
 +++ b/kernel/sched/pds_sched.h
-@@ -0,0 +1,482 @@
+@@ -0,0 +1,508 @@
 +#ifndef PDS_SCHED_H
 +#define PDS_SCHED_H
 +
@@ -7723,6 +7713,9 @@ index 000000000000..b3926a8425b2
 +
 +#ifdef CONFIG_HAVE_SCHED_AVG_IRQ
 +	struct sched_avg	avg_irq;
++#endif
++#ifdef CONFIG_SCHED_THERMAL_PRESSURE
++	struct sched_avg	avg_thermal;
 +#endif
 +
 +	unsigned long queued_level;
@@ -7855,6 +7848,24 @@ index 000000000000..b3926a8425b2
 +	return rq->clock_task;
 +}
 +
++/**
++ * By default the decay is the default pelt decay period.
++ * The decay shift can change the decay period in
++ * multiples of 32.
++ *  Decay shift		Decay period(ms)
++ *	0			32
++ *	1			64
++ *	2			128
++ *	3			256
++ *	4			512
++ */
++extern int sched_thermal_decay_shift;
++
++static inline u64 rq_clock_thermal(struct rq *rq)
++{
++	return rq_clock_task(rq) >> sched_thermal_decay_shift;
++}
++
 +/*
 + * {de,en}queue flags:
 + *
@@ -7918,6 +7929,11 @@ index 000000000000..b3926a8425b2
 +	raw_spin_lock(&rq->lock);
 +
 +	return rq;
++}
++
++static inline int task_current(struct rq *rq, struct task_struct *p)
++{
++	return rq->curr == p;
 +}
 +
 +static inline bool task_running(struct task_struct *p)
@@ -8188,11 +8204,14 @@ index c8870c5bd7df..4fc9f2ead4d2 100644
  #include <linux/sched.h>
  
  #include <linux/sched/autogroup.h>
-@@ -2496,3 +2500,4 @@ static inline void membarrier_switch_mm(struct rq *rq,
- {
+@@ -2496,6 +2500,7 @@ static inline void membarrier_switch_mm(struct rq *rq,
+ 	return true;
  }
  #endif
 +#endif /* !CONFIG_SCHED_PDS */
+ 
+ void swake_up_all_locked(struct swait_queue_head *q);
+ void __prepare_to_swait(struct swait_queue_head *q, struct swait_queue *wait);
 diff --git a/kernel/sched/stats.c b/kernel/sched/stats.c
 index 750fb3c67eed..45bd43942575 100644
 --- a/kernel/sched/stats.c
