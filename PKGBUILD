@@ -4,14 +4,13 @@
 _gemname=css_parser
 pkgname=ruby-$_gemname-1.6
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby CSS parser.'
 arch=(any)
 url='https://github.com/premailer/css_parser'
 license=(MIT)
 depends=(ruby ruby-addressable)
-conflicts=(ruby-css_parser)
-provides=(ruby-css_parser)
+provides=('ruby-css_parser=1.6.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
