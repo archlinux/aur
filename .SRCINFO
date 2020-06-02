@@ -1,14 +1,16 @@
 pkgbase = archimedes-tools
 	pkgdesc = Archimedes is a set of tools, including mesh generators, for performing unstructured finite element simulations
 	pkgver = 1.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.cs.cmu.edu/~quake/archimedes.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = libx11
 	source = http://www.netlib.org/voronoi/triangle.zip
+	source = triangle_definitions.patch
 	md5sums = 10aff8d7950f5e0e2fb6dd2e340be2c9
+	md5sums = 98844d1b1d9de73101b660412132cd07
 
 pkgname = triangle
 	pkgdesc = A Two-Dimensional Quality Mesh Generator and Delaunay Triangulator.
