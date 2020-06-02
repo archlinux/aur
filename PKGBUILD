@@ -2,8 +2,8 @@
 
 pkgname=nginx-mainline-mod-brotli
 epoch=1
-pkgver=0.1.2
-pkgrel=22
+pkgver=1.0.0rc
+pkgrel=1
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.0
@@ -11,12 +11,12 @@ _nginxver=1.19.0
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('i686' 'x86_64')
 depends=('nginx-mainline' 'brotli')
-url="https://github.com/eustas/ngx_brotli"
+url="https://github.com/google/ngx_brotli"
 license=('CUSTOM')
 
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	https://github.com/eustas/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
+	https://github.com/google/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
 validpgpkeys=(
@@ -25,7 +25,7 @@ validpgpkeys=(
 
 sha256sums=('44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8'
             'SKIP'
-            '309af9e96c10e80f1884acea96379980979581adc287ce338f084607bd48c185')
+            'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b')
 
 prepare() {
 	cd "$srcdir"/$_modname-$pkgver
