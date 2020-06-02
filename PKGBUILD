@@ -11,7 +11,6 @@ url='https://flakehell.readthedocs.io/'
 arch=('any')
 license=('MIT')
 
-provides=('duniterpy')
 depends=('python' 'python-setuptools' 'python-dephell' 'python-attrs' 'python-entrypoints' 'python-typing-extensions' 'python-termcolor' 'python-flake8-quotes' 'python-pygments' 'python-isort' 'python-pylint' 'python-urllib3' 'flake8' 'python-mccabe')
 
 source=("https://github.com/life4/$_pkgname/archive/v.$pkgver.tar.gz")
