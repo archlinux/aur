@@ -19,7 +19,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    local _version="$(git describe --tags)"
+    local _version="$(git describe --tags --match 'v*')"
     printf "${_version#v}"
 }
 
