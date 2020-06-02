@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.7.10
+pkgver=1.7.11
 pkgrel=1
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs"
 arch=('x86_64')
@@ -15,10 +15,10 @@ optdepends=('grim: for screen color picker on Sway'
 
 source=("https://github.com/nwg-piotr/azote/archive/v$pkgver.tar.gz")
 
-md5sums=('2297ffcb45eff5207fa5584621e939d6')
+md5sums=('7acc3017f79dffaa1c5db1ce5d42399d')
 
 package() {
-  install -D -m 755 "$pkgname"-"$pkgver"/dist/azote-arch "$pkgdir"/usr/bin/azote
+  install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
   install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/azote.svg
   install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/indicator*.png
   install -D -t "$pkgdir"/usr/share/applications "$pkgname"-"$pkgver"/dist/azote.desktop
