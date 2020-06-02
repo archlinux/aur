@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-sk
 	pkgdesc = Slovak language pack for SeaMonkey
-	pkgver = 2.49.4
+	pkgver = 2.53.2
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.4
-	noextract = seamonkey-2.49.4.sk.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.sk.langpack.xpi
-	sha256sums = 2ee8ee5e418fbb08297f249e99c8628ef08d458692c63f2eb07eca770e928ea8
+	depends = seamonkey>=2.53.2
+	noextract = seamonkey-2.53.2.sk.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.sk.langpack.xpi
+	sha256sums = e944e6cdeee3a419b92d016aa175e8d59bdc944caf1c3a1c4830a641daf1294c
 
 pkgname = seamonkey-i18n-sk
 
