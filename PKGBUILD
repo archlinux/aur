@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=3.2.6
+pkgver=3.2.10
 _scriptsver=1.1.2
 pkgrel=3
 pkgdesc='Centralized EAP controller software'
@@ -11,13 +11,11 @@ license=('custom')
 depends=('jre8-openjdk' 'java-jsvc' 'net-tools')
 provides=('eap-controller')
 source=(
-    "https://static.tp-link.com/2020/202001/20200116/Omada_Controller_v${pkgver}_linux_x64.tar.gz"
+    "https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v${pkgver}_linux_x64.tar.gz"
     "${pkgname}-scripts-${_scriptsver}.tar.gz::https://github.com/conqp/omada-controller-scripts/archive/${_scriptsver}.tar.gz"
 )
-sha256sums=(
-    'bf1fda3e1d882fa15bf8909cb4f2ede5561e5e47d7b02e422524136781aa8b12'
-    '1444c2fa29cd68c0acd3464ad0d51dbdd1645da515e79a84ede706f04c82db6e'
-)
+sha256sums=('f0e12452a7cca3d1d19b93d9e21568510132febe8d9af3390a49f3c701e81378'
+            '1444c2fa29cd68c0acd3464ad0d51dbdd1645da515e79a84ede706f04c82db6e')
 
 
 package() {

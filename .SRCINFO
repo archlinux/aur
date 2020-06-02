@@ -16,3 +16,21 @@ pkgbase = omada-controller
 
 pkgname = omada-controller
 
+pkgbase = omada-controller
+	pkgdesc = Centralized EAP controller software
+	pkgver = 3.2.10
+	pkgrel = 3
+	url = https://www.tp-link.com/support/download/eap-controller/#Controller_Software
+	arch = x86_64
+	license = custom
+	depends = jre8-openjdk
+	depends = java-jsvc
+	depends = net-tools
+	provides = eap-controller
+	source = https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v3.2.10_linux_x64.tar.gz
+	source = omada-controller-scripts-1.1.2.tar.gz::https://github.com/conqp/omada-controller-scripts/archive/1.1.2.tar.gz
+	sha256sums = f0e12452a7cca3d1d19b93d9e21568510132febe8d9af3390a49f3c701e81378
+	sha256sums = 1444c2fa29cd68c0acd3464ad0d51dbdd1645da515e79a84ede706f04c82db6e
+
+pkgname = omada-controller
+
