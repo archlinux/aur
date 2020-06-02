@@ -21,8 +21,8 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20200319
-_pkgver="19Mar2020"
+pkgver=20200602
+_pkgver="2Jun2020"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -80,7 +80,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
         "${_feature_args[@]}" #\
-        # Add options for additional packages
+        # Add options for additional packages (above this line)
         #-DPKG_<NAME>=yes
 
   make
