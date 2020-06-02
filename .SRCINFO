@@ -1,0 +1,22 @@
+pkgbase = gnome-sound-recorder-git
+	pkgdesc = A utility to make simple audio recording from your GNOME desktop
+	pkgver = 3.34.0+99+gf45ae48
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/SoundRecorder
+	arch = any
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = gjs
+	depends = gst-plugins-good
+	depends = gst-plugins-base
+	depends = libhandy
+	provides = gnome-sound-recorder
+	conflicts = gnome-sound-recorder
+	source = git+https://gitlab.gnome.org/GNOME/gnome-sound-recorder.git#commit=
+	sha512sums = SKIP
+
+pkgname = gnome-sound-recorder-git
+
