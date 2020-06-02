@@ -1,6 +1,6 @@
 pkgbase = python-clutch
 	pkgdesc = Transmission RPC for Python
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/mhadam/clutch
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python-clutch
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-typing_extensions
-	source = clutch-4.1.0.tar.gz::https://github.com/mhadam/clutch/archive/v4.1.0.tar.gz
-	sha512sums = 5d174b7f0987fc4cc92e9d261c357690d3d6a59ba18a870c2a2feb3eddb6072603b9af2926bea7ffa936c8e223ce6836e3a2e7949ac3254a54e8baa1d15507b1
+	source = clutch-4.2.0.tar.gz::https://github.com/mhadam/clutch/archive/v4.2.0.tar.gz
+	sha512sums = 8161b63de80efefa7e2ebacae65af89cf7fa1481c198fc6f59fce4c43ceb42b594152016c1c58284c684e905626f43df26435134b0fe1924cddee6a13836c5ca
 
 pkgname = python-clutch
 
