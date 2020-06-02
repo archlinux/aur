@@ -4,7 +4,7 @@
 _gemname=ttfunk
 pkgname=ruby-$_gemname-1.5
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TrueType Font Metrics Parser'
 arch=(any)
 url='https://prawnpdf.org'
