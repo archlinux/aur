@@ -1,19 +1,18 @@
 pkgbase = kontactinterface-git
 	pkgdesc = Kontact Plugin Interface Library
-	pkgver = r308.d4229c6
+	pkgver = r530.bb0ce06
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/kontactinterface
+	url = https://kontact.kde.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = python
 	depends = kparts
 	provides = kontactinterface
 	conflicts = kontactinterface
-	source = git://anongit.kde.org/kontactinterface.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kontactinterface.git
+	sha256sums = SKIP
 
 pkgname = kontactinterface-git
 
