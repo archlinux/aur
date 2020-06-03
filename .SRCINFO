@@ -1,20 +1,28 @@
 pkgbase = kactivities-git
 	pkgdesc = Core components for the KDE's Activities
-	pkgver = v5.68.0.rc1.r0.g0983cf12
+	pkgver = r1289.82a8883
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kactivities
+	url = https://community.kde.org/Frameworks
 	arch = i686
 	arch = x86_64
+	groups = kf5
 	license = LGPL
-	makedepends = extra-cmake-modules-git
-	makedepends = git
+	makedepends = extra-cmake-modules
 	makedepends = boost
-	depends = kcmutils-git
+	makedepends = doxygen
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = qt5-declarative
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kwindowsystem
+	optdepends = qt5-declarative: QML bindings
 	provides = kactivities
 	provides = kactivities-frameworks
 	conflicts = kactivities
-	source = git://anongit.kde.org/kactivities.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kactivities.git
+	sha256sums = SKIP
 
 pkgname = kactivities-git
 

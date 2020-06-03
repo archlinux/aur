@@ -1,40 +1,44 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kactivities-git
-pkgver=v5.68.0.rc1.r0.g0983cf12
+_pkgname=kactivities
+pkgname=$_pkgname-git
+pkgver=r1289.82a8883
 pkgrel=1
-pkgdesc="Core components for the KDE's Activities"
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kactivities'
-license=('LGPL')
-depends=('kcmutils-git')
+pkgdesc="Core components for the KDE's Activities"
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kcoreaddons kconfig kwindowsystem)
+makedepends=(extra-cmake-modules boost doxygen git qt5-tools qt5-doc qt5-declarative)
+optdepends=('qt5-declarative: QML bindings')
+groups=(kf5)
 provides=('kactivities' 'kactivities-frameworks')
 conflicts=('kactivities')
-makedepends=('extra-cmake-modules-git' 'git' 'boost')
-source=('git://anongit.kde.org/kactivities.git')
-md5sums=('SKIP')
+source=("git+https://github.com/KDE/kactivities.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kactivities
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $srcdir/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../kactivities \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
