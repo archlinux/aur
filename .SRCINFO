@@ -1,7 +1,7 @@
 pkgbase = noti
 	pkgdesc = Monitor a process and trigger a notification
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/variadico/noti
 	arch = x86_64
 	license = MIT

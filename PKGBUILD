@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 pkgname=noti
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Monitor a process and trigger a notification'
 arch=('x86_64')
 url='https://github.com/variadico/noti'
@@ -13,9 +13,11 @@ sha256sums=('8fcf494084ea6eacac2e55dfcaf978452e1af0139205cd23fce71bfb20dd17fe')
 build() {
   cd "$pkgname-$pkgver"
   go build \
-    -mod=vendor \
     -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
+    -buildmode=pie \
+    -mod=vendor \
+    -modcacherw \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
     -o $pkgname \
     github.com/variadico/noti/cmd/noti
 }
