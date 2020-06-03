@@ -1,7 +1,7 @@
 pkgbase = avaloniailspy
 	pkgdesc = Avalonia-based .NET Decompiler (port of ILSpy)
 	pkgver = v5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/icsharpcode/AvaloniaILSpy
 	arch = any
 	license = MIT
