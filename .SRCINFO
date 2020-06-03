@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2017
 	pkgdesc = Clear Linux lts2017
-	pkgver = 4.14.182
+	pkgver = 4.14.183
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-clear-lts2017
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.182.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.183.xz
 	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.180-109
 	source = enable_additional_cpu_optimizations-20200527.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200527.tar.gz
 	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200520.tar.xz
@@ -21,7 +21,7 @@ pkgbase = linux-clear-lts2017
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 9f9f998f52b0141b01485993d5a44c1d94010ccd4718008b77443751f6c18cb5
+	sha256sums = a9a37cec8b218129b4479d8ef78dac94ae2eb02f219037de78eacb3c33fbd8a3
 	sha256sums = SKIP
 	sha256sums = 8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc
 	sha256sums = 16e7ae4bef734b243428eea07f3b3c3d4721880c3ea8eb8f98628fd6ae5b77c3
