@@ -30,8 +30,8 @@ validpgpkeys=()
 package() {
 	install -d ${pkgdir}/opt
 	install -d ${pkgdir}/usr/bin
-	mkdir ${pkgdir}/opt/$pkgname
-	cp $srcdir/* ${pkgdir}/opt/$pkgname/.
+	mkdir ${pkgdir}/opt/$_pkgname
+	cp $srcdir/* ${pkgdir}/opt/$_pkgname/.
 	echo -e "#!/bin/bash
-dotnet /opt/$pkgname/ImeWlConverterCmd.dll" >> $pkgdir/usr/bin/$pkgname && chmod a+x $pkgdir/usr/bin/$_pkgname 
+dotnet /opt/$_pkgname/ImeWlConverterCmd.dll" >> $pkgdir/usr/bin/$_pkgname && chmod a+x $pkgdir/usr/bin/$_pkgname 
 }
