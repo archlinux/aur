@@ -3,7 +3,7 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activtools
-pkgver=5.18.18
+pkgver=5.18.19
 pkgrel=0
 pkgdesc="Tools for Promethean hardware: activmanager, activcalibrate, activremote, activmonitor."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nss' 'openssl-1.0' 'qt5-base' 'icu60')
 optdepends=('activinspire: Prometheans presentation software'
             'activdriver: Driver for Promethean hardware')
 source=("http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1804_amd64.deb")
-md5sums=('c1c1d41bc3025c55636231462e6b2d65')
+md5sums=('460a49108127cd9c532d3b9ccc2a23d1')
 
 package() {
  # Extract the source.

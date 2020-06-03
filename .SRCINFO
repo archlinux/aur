@@ -1,6 +1,6 @@
 pkgbase = activtools
 	pkgdesc = Tools for Promethean hardware: activmanager, activcalibrate, activremote, activmonitor.
-	pkgver = 5.18.18
+	pkgver = 5.18.19
 	pkgrel = 0
 	url = https://support.prometheanworld.com/product/activdriver
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = activtools
 	depends = icu60
 	optdepends = activinspire: Prometheans presentation software
 	optdepends = activdriver: Driver for Promethean hardware
-	source = http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_5.18.18-0~Ubuntu~1804_amd64.deb
-	md5sums = c1c1d41bc3025c55636231462e6b2d65
+	source = http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_5.18.19-0~Ubuntu~1804_amd64.deb
+	md5sums = 460a49108127cd9c532d3b9ccc2a23d1
 
 pkgname = activtools
 
