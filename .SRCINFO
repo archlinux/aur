@@ -1,9 +1,9 @@
 pkgbase = v4l2loopback-dc-dkms
 	pkgdesc = A kernel module for droidcam
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://www.dev47apps.com/droidcam/linuxx
+	url = https://github.com/aramg/droidcam
 	arch = x86_64
 	license = GPL
 	depends = dkms

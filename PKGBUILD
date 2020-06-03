@@ -7,16 +7,16 @@ _pkgname=v4l2loopback-dc
 pkgname=${_pkgname}-dkms
 pkgver=1.2
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='A kernel module for droidcam'
 arch=('x86_64')
-url="https://www.dev47apps.com/droidcam/linuxx"
+url="https://github.com/aramg/droidcam"
 license=('GPL')
 depends=('dkms')
 optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux')
 backup=("etc/modprobe.d/${_pkgname}.conf")
 source=("dkms.conf"
-        "${pkgname}-${pkgver}.zip::https://github.com/aramg/droidcam/archive/${pkgver}.zip"
+        "${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip"
 )
 
 sha512sums=('27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d'
