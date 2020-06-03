@@ -1,7 +1,7 @@
 pkgbase = aurvote-git
 	pkgdesc = Tool to vote for your favorite AUR packages (development version)
-	pkgver = r27.fd413f1
-	pkgrel = 3
+	pkgver = 1.9.r7.gfd413f1
+	pkgrel = 1
 	url = https://github.com/archlinuxfr/aurvote
 	arch = any
 	license = GPL
