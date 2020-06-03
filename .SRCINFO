@@ -1,7 +1,7 @@
 pkgbase = ytp-git
-	pkgdesc = Searches and plays Youtube videos
+	pkgdesc = Searches and plays Youtube stuff
 	pkgver = r52.b34c5cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/uoou/ytp
 	arch = any
 	license = GPL2

@@ -5,8 +5,8 @@
 _pkgname=ytp
 pkgname=ytp-git
 pkgver=r52.b34c5cb
-pkgrel=1
-pkgdesc="Searches and plays Youtube videos"
+pkgrel=2
+pkgdesc="Searches and plays Youtube stuff"
 arch=('any')
 url="https://gitlab.com/uoou/$_pkgname"
 license=('GPL2')
