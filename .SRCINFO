@@ -1,6 +1,6 @@
 pkgbase = git-open
 	pkgdesc = Open a repo website (GitHub, GitLab, Bitbucket) in your browser
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/paulirish/git-open
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = git-open
 	depends = git
 	depends = xdg-utils
 	conflicts = nodejs-git-open
-	source = https://github.com/paulirish/git-open/archive/v2.0.0.tar.gz
-	sha256sums = 70629da6202353399083dec21b1ef6f63985bc5c2b4f141bd044116236ade42d
+	source = https://github.com/paulirish/git-open/archive/v2.1.0.tar.gz
+	sha256sums = 0cf7f7f55c611c8dfccf0a3135df4032f2ea085491be84fb565cac2d744c4951
 
 pkgname = git-open
 
