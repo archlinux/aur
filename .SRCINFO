@@ -1,0 +1,10 @@
+pkgbase = segfault
+	pkgdesc = Do nothing, just segfault
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	source = segfault.c
+	sha256sums = 8910b2701d952ded02de19b762bcc6606abc7997ea49ef9222107b8bae29b1c5
+
+pkgname = segfault
+
