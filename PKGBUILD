@@ -25,9 +25,11 @@
 # ttf-sil-padauk:
 #   Has more variants than Google Fonts.
 
+# ttf-sil-abyssinica
+
 pkgname=ttf-google-fonts-opinionated-git
 pkgver=20200602
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType fonts from Google Fonts, but with updated versions of some fonts"
 arch=('any')
 url="https://github.com/google/fonts"
@@ -41,6 +43,7 @@ depends=('fontconfig'
          'ttf-droid'
          'ttf-inconsolata'
          'ttf-sil-padauk'
+         'ttf-sil-abyssinica'
          )
 makedepends=('git')
 conflicts=('adobe-source-code-pro-fonts'
@@ -89,7 +92,6 @@ conflicts=('adobe-source-code-pro-fonts'
            # ttf-sil-fonts packages
            'ttf-sil-harmattan'
            'ttf-sil-scheherazade'
-           'ttf-sil-abyssinica'
            )
 provides=("${conflicts[@]}" 'ttf-font')
 source=("git+https://github.com/google/fonts.git")
@@ -115,6 +117,7 @@ package() {
     "$pkgdir/usr/share/fonts/TTF" \;
 
   # Remove excluded fonts.
+  find "${pkgdir}/usr/share/fonts/" -type f -name "AbyssinicaSIL-*.ttf" -delete
   find "${pkgdir}/usr/share/fonts/" -type f -name "Cantarell-*.ttf" -delete
   find "${pkgdir}/usr/share/fonts/" -type f -name "Droid*.ttf" -delete
   find "${pkgdir}/usr/share/fonts/" -type f -name "Inconsolata-*.ttf" -delete
