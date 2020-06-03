@@ -1,13 +1,13 @@
 # Maintainer: Kyle <kyle@free2.ml>
 pkgname=opus-tools-git
 _gitname=opus-tools
-pkgver=0.1.9.9.gaa7e018 # determined from git origin
+pkgver=0.2.13.g6c758c0 # determined from git origin
 pkgrel=1
 pkgdesc="A collection of tools for working with opus files (git version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://wiki.xiph.org/Opus-tools"
 license=('BSD')
-depends=(opus libogg)
+depends=('flac' 'libogg' 'opus' 'opusfile' 'libopusenc')
 makedepends=('git')
 provides=(opus-tools)
 conflicts=(opus-tools)
