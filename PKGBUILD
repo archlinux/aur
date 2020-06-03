@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=terragrunt
-pkgver=0.23.21
+pkgver=0.23.22
 pkgrel=1
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
@@ -15,7 +15,7 @@ conflicts=('terragrunt')
 provides=('terragrunt')
 license=('MIT')
 source=("terragrunt-${pkgver}.tar.gz::https://github.com/gruntwork-io/terragrunt/archive/v${pkgver}.tar.gz")
-sha256sums=('9237d9d57839a40fd7bba40762de4e253481456dfe9d47e3535f6457e3319cd9')
+sha256sums=('0a7c63dcdb9b3f921d21c27dfb37a8bb52337b61afb30a342bc62e90d31bbb11')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
