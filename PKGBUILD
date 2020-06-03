@@ -4,7 +4,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=0.8.2.r3292.g0f459e8
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter"
 arch=('x86_64')
@@ -30,12 +30,8 @@ build() {
 
 	cd $srcdir/Xonotic/source/d0_blind_id
 	sh autogen.sh
-	./configure --prefix=/usr --disable-rijndael
+	./configure --prefix=/usr
 	make
-}
-
-pkgver() {
-	ls $srcdir/Xonotic/source/qcsrc/csprogs-xonotic-* | sed 's/[^v]*[^-]//;s/-/.r/;s/-/./;s/~.*//'
 }
 
 package() {
