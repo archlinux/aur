@@ -1,14 +1,17 @@
 pkgbase = dnieremote-bin
 	pkgdesc = DNIeRemote enable to use the smartphone as reader for Spanish DNI
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 0
 	url = https://www.dnielectronico.es/
 	arch = x86_64
 	license = custom
 	depends = gtkmm3
 	depends = libpkcs11-dnie
+	noextract = DNIeRemoteSetup_1.0-0_amd64.deb
 	source = https://www.dnielectronico.es/descargas/Apps/DNIeRemoteSetup_1.0-0_amd64.deb
-	md5sums = 469294eed8f9f137f1b91816b882baf6
+	source = https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf
+	sha256sums = e9540741fdc1def06bcf82a463f1241c66eb0e44e00815d6ec3c913617827d10
+	sha256sums = c236326ba5bb2354e2a62b1be38e673f8a0a392423de354e8663c9069145022d
 
 pkgname = dnieremote-bin
 
