@@ -1,6 +1,6 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=moviebattles2
-pkgver=1.6.1.3
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A fast-paced, action packed mod for Jedi Knight: Jedi Academy"
 arch=('i686' 'x86_64')
@@ -8,12 +8,12 @@ url="https://www.moviebattles.org"
 license=('unknown')
 depends=('bin32-openjk')
 source=(
-    "$pkgname-$pkgver.zip::https://drive.google.com/uc?id=1TjIRluyPzUgLXUOt_nH-RAZ9Ufp6Kpxb&export=download"
+    "$pkgname-$pkgver.zip::https://drive.google.com/uc?id=14_19PRCjdsMwz_uwL1yjg9-CvZqZnJxK&export=download"
     'moviebattles2.desktop'
     'moviebattles2.png'
     'moviebattles2')
 md5sums=(
-    '5fb64d4939b4cfa7b9bc4827cf888a92'
+    '9f42f19454773ccf326810dcdd0064f9'
     '14d9db62e04f1cbed851ba7e098ff207'
     '3d20693ab4602ba56d61e9ee401e1dba'
     '400671872ffab35708b1acd1129b3797')
