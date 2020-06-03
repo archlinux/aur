@@ -1,0 +1,13 @@
+pkgbase = python-yacs
+	pkgdesc = Yet Another Configuration System
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/rbgirshick/yacs
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = python-yacs-0.1.7.tar.gz::https://github.com/rbgirshick/yacs/archive/v0.1.7.tar.gz
+	sha512sums = aa00e6eedbdbffbb11d9302ea723ed010e22920dc73e466fe403cfd65c8ede80f95153cf0fd8ef06bedb392c741c259aeae7b87bd9b95df5e4d0d1d0ac2d4486
+
+pkgname = python-yacs
+
