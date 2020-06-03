@@ -1,6 +1,6 @@
 pkgbase = tilemap-studio
 	pkgdesc = A tilemap editor for Game Boy, GBC, GBA, or SNES projects.
-	pkgver = 3.1.0.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/Rangi42/tilemap-studio
 	arch = x86_64
