@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -17,18 +17,21 @@ sha1sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$pkgname"
-    
-    # We don't build electron, and doesn't depends on postinstall script
-    sed '/"electron"/d;/postinstall/d' -i package.json
+
+    # We don't build electron and friends, and don't depends on postinstall script
+    sed '/^\s*\"electron.*$/d;/postinstall/d' -i package.json
 
     # Add some close-to-complete translations
-    cd "$srcdir/$pkgname"/scripts
-    sed "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" -i refresh-language.js
+    sed "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" -i scripts/refresh-language.js
+
+    # Do not specify icon explicitly in window.js
+    sed '/^\s*icon.*$/d' -i source/main/zettlr-window.js
 }
 
 build() {
     cd "$srcdir/$pkgname"
-    NODE_ENV='' yarn install --pure-lockfile --no-bin-links --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
+    local NODE_ENV=''
+    yarn install --pure-lockfile --no-bin-links --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
     yarn less
     yarn handlebars
     yarn lang:refresh
@@ -69,11 +72,16 @@ exec electron /$_destdir "\$@"
 END
 
     for px in 16 24 32 48 64 96 128 256 512; do
-        install -Dm644 "$srcdir/$pkgname/"resources/icons/png/"$px"x"$px".png \
-        "$pkgdir"/usr/share/icons/hicolor/"$px"x"$px"/apps/"$pkgname".png
+        # cp linux icons to where electron desires
+        install -Dm644 "${srcdir}/${pkgname}/resources/icons/png/${px}x${px}.png" \
+            "$pkgdir/$_destdir/resources/icons/png/${px}x${px}.png"
     done
 
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<END
+    # generate freedesktop entry files
+    install -Dm644 "${srcdir}/${pkgname}/resources/icons/png/512x512.png" \
+        "$pkgdir"/usr/share/icons/hicolor/"$px"x"$px"/apps/"$pkgname".png
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=Zettlr
 Comment=A powerful Markdown Editor with integrated tree view
