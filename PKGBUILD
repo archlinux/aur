@@ -47,12 +47,15 @@ package() {
 	cd "$srcdir/"
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$_pkgname/." {} +
-	cp -r --no-preserve=ownership --preserve=mode 'locales/' "$pkgdir/usr/lib/$_pkgname/locales/"
-	cp -r --no-preserve=ownership --preserve=mode 'resources/' "$pkgdir/usr/lib/$_pkgname/resources/"
+
+	for _folder in 'locales' 'resources'; do
+		cp -r --no-preserve=ownership --preserve=mode "$_folder/" "$pkgdir/usr/lib/$_pkgname/$_folder/"
+	done
 
 	install -dm755 "$pkgdir/usr/bin"
 	ln -nfs "/usr/lib/$_pkgname/$_projectname" "$pkgdir/usr/bin/$_pkgname"
 
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
+		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+	done
 }
