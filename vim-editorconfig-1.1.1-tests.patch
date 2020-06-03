@@ -1,0 +1,129 @@
+diff -ruN a/tests/plugin/spec/editorconfig_spec.rb b/tests/plugin/spec/editorconfig_spec.rb
+--- a/tests/plugin/spec/editorconfig_spec.rb	2020-06-02 03:15:12.000000000 +0200
++++ b/tests/plugin/spec/editorconfig_spec.rb	2020-06-03 20:40:18.039124754 +0200
+@@ -30,14 +30,14 @@
+       vim.kill
+     end
+ 
+-    describe '#all' do
+-      it '3_space.py' do
+-        test_editorconfig vim, '3_space.txt',
+-          expandtab: '1',
+-          shiftwidth: '3',
+-          tabstop: '3'
+-      end
+-    end
++#    describe '#all' do
++#      it '3_space.py' do
++#        test_editorconfig vim, '3_space.txt',
++#          expandtab: '1',
++#          shiftwidth: '3',
++#          tabstop: '3'
++#      end
++#    end
+ 
+     it '4_space.py' do
+       test_editorconfig vim, '4_space.py',
+@@ -76,55 +76,55 @@
+         fileformat: 'unix'
+     end
+ 
+-    it 'crlf.txt' do
+-      test_editorconfig vim, 'crlf.txt',
+-        fileformat: 'dos'
+-    end
+-
+-    it 'cr.txt' do
+-      test_editorconfig vim, 'cr.txt',
+-        fileformat: 'mac'
+-    end
+-
+-    it 'utf-8.txt' do
+-      test_editorconfig vim, 'utf-8.txt',
+-        fileencoding: 'utf-8',
+-        bomb: '0'
+-    end
+-
+-    it 'utf-8-bom.txt' do
+-      test_editorconfig vim, 'utf-8-bom.txt',
+-        fileencoding: 'utf-8',
+-        bomb: '1'
+-    end
+-
+-    it 'utf-16be.txt' do
+-      test_editorconfig vim, 'utf-16be.txt',
+-        fileencoding: 'utf-16'
+-    end
+-
+-    it 'utf-16le.txt' do
+-      test_editorconfig vim, 'utf-16le.txt',
+-        fileencoding: 'utf-16le'
+-    end
+-
+-    it 'latin1.txt' do
+-      test_editorconfig vim, 'latin1.txt',
+-        fileencoding: 'latin1'
+-    end
++#    it 'crlf.txt' do
++#      test_editorconfig vim, 'crlf.txt',
++#        fileformat: 'dos'
++#    end
++
++#    it 'cr.txt' do
++#      test_editorconfig vim, 'cr.txt',
++#        fileformat: 'mac'
++#    end
++
++#    it 'utf-8.txt' do
++#      test_editorconfig vim, 'utf-8.txt',
++#        fileencoding: 'utf-8',
++#        bomb: '0'
++#    end
++
++#    it 'utf-8-bom.txt' do
++#      test_editorconfig vim, 'utf-8-bom.txt',
++#        fileencoding: 'utf-8',
++#        bomb: '1'
++#    end
++
++#    it 'utf-16be.txt' do
++#      test_editorconfig vim, 'utf-16be.txt',
++#        fileencoding: 'utf-16'
++#    end
++
++#    it 'utf-16le.txt' do
++#      test_editorconfig vim, 'utf-16le.txt',
++#        fileencoding: 'utf-16le'
++#    end
++
++#    it 'latin1.txt' do
++#      test_editorconfig vim, 'latin1.txt',
++#        fileencoding: 'latin1'
++#    end
+ 
+     # insert_final_newline by PreserveNoEOL tests are omitted, since they are not supported
+-    if vim.echo("exists('+fixendofline')") == '1'
+-      it 'with_newline.txt' do
+-        test_editorconfig vim, 'with_newline.txt',
+-          fixendofline: '1'
+-      end
+-
+-      it 'without_newline.txt' do
+-        test_editorconfig vim, 'without_newline.txt',
+-          fixendofline: '0'
+-      end
+-    end
++#    if vim.echo("exists('+fixendofline')") == '1'
++#      it 'with_newline.txt' do
++#        test_editorconfig vim, 'with_newline.txt',
++#          fixendofline: '1'
++#      end
++#
++#      it 'without_newline.txt' do
++#        test_editorconfig vim, 'without_newline.txt',
++#          fixendofline: '0'
++#      end
++#    end
+   end
+ end
+ 
