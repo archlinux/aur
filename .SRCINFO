@@ -1,0 +1,18 @@
+pkgbase = universal-data-tool-bin
+	pkgdesc = Collaborate & label any type of data, images, text, or documents, in an easy web interface or desktop app
+	pkgver = 0.10.18
+	pkgrel = 1
+	url = https://universaldatatool.com
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	provides = universal-data-tool
+	noextract = universal-data-tool-bin-0.10.18.AppImage
+	options = !strip
+	source = universal-data-tool-bin-0.10.18.AppImage::https://github.com/UniversalDataTool/universal-data-tool/releases/download/v0.10.18/Universal-Data-Tool-0.10.18.AppImage
+	source = LICENSE::https://github.com/UniversalDataTool/universal-data-tool/raw/master/LICENSE
+	sha256sums = 6f851e11536bb6d11867923598d3705b3f9af349e2b422d627f30747f9240e80
+	sha256sums = 7c65062117526f7cec40896a71b8dfab96da54194f61b18b95816920839da172
+
+pkgname = universal-data-tool-bin
+
