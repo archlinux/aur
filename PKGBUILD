@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL')
 source=("https://github.com/zadam/trilium/releases/download/v$pkgver/trilium-linux-x64-$pkgver.tar.xz")
-sha512sums=('ab40c42ea8014850f4053e9c58d178c5a435874429ec7ff4457e4df7632d8e592d008341c8cdc6d5a3988e0fa281e0a1b87eebf5c1d94dbdcb10ae2ea682939c')
+sha512sums=('9e941fa696d23ff4be8ad149d2c095a4bf453e39233eb1f1ee9d138734493c684473bb0e54e3ddd7a486c893dfda69bfd04b55df144832cc196389a5421730f7')
 
 package()
 {
