@@ -1,8 +1,8 @@
-# Maintainer: koraynilay <bat3ko.f@gmail.com>
+# Maintainer: koraynilay <koray.fra@gmail.com>
 pkgname=scrnsvr
-pkgver=1.0
+pkgver=0.1
 pkgrel=1
-pkgdesc="X Screensaver/locker"
+pkgdesc="Yet Another X Screensaver/locker"
 arch=('x86_64')
 url="https://github.com/koraynilay/scrnsvr"
 license=('WTFPL')
