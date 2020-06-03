@@ -23,8 +23,6 @@ prepare() {
   cd "$srcdir/sc-im/src"
   # install things in the correct place for package managers
   patch < "$srcdir/arch.patch"
-  cd ..
-  patch -p1 < "$srcdir/258.patch"
 }
 
 pkgver() {
