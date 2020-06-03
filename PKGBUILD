@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bertalan <dani@danielbertalan.dev>
 
 pkgname=sssteg
-pkgver=0.1
+pkgver=0.2.1
 pkgrel=1
 epoch=
 pkgdesc="Hide secrets across multiple files with secret sharing and steganography."
@@ -20,10 +20,11 @@ backup=()
 options=()
 #install=
 #changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BertalanD/sssteg/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BertalanD/sssteg/archive/v${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz.asc::https://github.com/BertalanD/sssteg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 noextract=()
-sha256sums=('939d8b759f0ef10237aaec95f1a32003b25e4a0121bc08905d17fc23106a062d')
-validpgpkeys=('9B787C055C7AE4AEADB957B637DAA2139C04C1C0')
+sha256sums=('04d35bcbd85ddbc91bb3ad703ca1fde47fadf799724bde12b496da7ed0cf3b9b' 'SKIP')
+validpgpkeys=('159BD4F60996D172568DD4653B04FADDA4EBCC81')
 
 package() {
 	cd "${pkgname}-${pkgver}"
