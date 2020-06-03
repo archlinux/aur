@@ -4,7 +4,7 @@
 
 _pkgname=kactivities
 pkgname=$_pkgname-git
-pkgver=r1289.82a8883
+pkgver=v5.70.0.r5.g82a8883
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Core components for the KDE's Activities"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
