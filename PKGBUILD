@@ -3,7 +3,7 @@
 
 pkgname=bitbox-udev
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Udev rules to connect bitbox01 and bitbox02 hardware wallets to your linux box'
 arch=(any)
 url='https://shiftcrypto.ch/'
@@ -14,7 +14,7 @@ install='bitbox-udev.install'
 source=(https://raw.githubusercontent.com/digitalbitbox/bitbox-wallet-app/d045d25ac1a3839bcb7993d95bf2501bc1e86780/frontends/qt/resources/deb-afterinstall.sh
         https://raw.githubusercontent.com/digitalbitbox/bitbox-wallet-app/master/LICENSE)
 sha256sums=('5cdc3d15d3f133789585e9cc29aef983993af7a91df3ad28bcc8cb07cab365d7'
-            '7b89151aa6b525d1b370d8224fe9191f1ad6a3b9e0beb02c745585b5e1dd02d5')
+            '7b4d4d4c91c3ea7a50ebffe310bbb96e6be3a6ff39d24f47765c8d154939d9ab')
 
 prepare() {
   sed -i -r 's/\/etc\/udev\/rules.d\///' ${srcdir}/deb-afterinstall.sh
