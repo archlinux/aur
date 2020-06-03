@@ -2,7 +2,7 @@
 pkgname=scrnsvr-bin
 pkgver=0.1
 pkgrel=1
-pkgdesc="Yet Another X Screensaver/locker"
+pkgdesc="Yet Another X Screensaver/locker. Pre-compiled version."
 arch=('x86_64')
 url="https://github.com/koraynilay/scrnsvr"
 license=('WTFPL')
