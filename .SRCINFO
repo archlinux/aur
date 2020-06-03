@@ -7,15 +7,17 @@ pkgbase = sc-im-git
 	arch = x86_64
 	arch = armv7h
 	license = BSD
+	makedepends = gcc8
 	depends = libxml2
 	depends = libzip
-	optdepends = libxlsxwriter: export to xlsx
+	optdepends = libxlsxwriter: export to xlsx. Requires rebuild of sc-im
+	optdepends = gnuplot: create graphs
 	conflicts = scim-spreadsheet
 	conflicts = sc-im
 	source = git://github.com/andmarti1424/sc-im
 	source = arch.patch
 	md5sums = SKIP
-	md5sums = 9a71ebf916378831bc1600d3581a126b
+	md5sums = 51e2712b355accd9771ccbaf24b0ac8a
 
 pkgname = sc-im-git
 
