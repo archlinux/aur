@@ -1,6 +1,6 @@
 pkgbase = r-dplyr
 	pkgdesc = A Grammar of Data Manipulation
-	pkgver = 0.8.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dplyr
 	arch = i686
@@ -9,43 +9,35 @@ pkgbase = r-dplyr
 	makedepends = gcc
 	depends = r>=3.2.0
 	depends = r-ellipsis
-	depends = r-assertthat>=0.2.0
-	depends = r-glue>=1.3.0
+	depends = r-generics
+	depends = r-glue>=1.3.2
+	depends = r-lifecycle>=0.2.0
 	depends = r-magrittr>=1.5
-	depends = r-pkgconfig
 	depends = r-r6
-	depends = r-rcpp>=1.0.1
-	depends = r-rlang>=0.4.0
-	depends = r-tibble>=2.0.0
-	depends = r-tidyselect>=0.2.5
-	depends = r-bh
-	depends = r-plogr>=0.2.0
-	optdepends = r-bit64
+	depends = r-rlang>=0.4.6
+	depends = r-tibble>=2.1.3
+	depends = r-tidyselect>=1.1.0
+	depends = r-vctrs>=0.3.0
+	optdepends = r-bench
+	optdepends = r-broom
 	optdepends = r-callr
 	optdepends = r-covr
-	optdepends = r-crayon
 	optdepends = r-dbi
 	optdepends = r-dbplyr
-	optdepends = r-dtplyr
-	optdepends = r-ggplot2
-	optdepends = r-hms
 	optdepends = r-knitr
 	optdepends = r-lahman
-	optdepends = r-lubridate
-	optdepends = r-mgcv
+	optdepends = r-lobstr
 	optdepends = r-microbenchmark
 	optdepends = r-nycflights13
+	optdepends = r-purrr
 	optdepends = r-rmarkdown
 	optdepends = r-rmysql
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-withr
-	optdepends = r-broom
-	optdepends = r-purrr
-	optdepends = r-readr
-	source = https://cran.r-project.org/src/contrib/dplyr_0.8.5.tar.gz
-	md5sums = 86faa442ad8027b27b3ece36a09e7a8b
+	source = https://cran.r-project.org/src/contrib/dplyr_1.0.0.tar.gz
+	md5sums = f698fae24b0a2c201899ec6564b213ad
 
 pkgname = r-dplyr
 
