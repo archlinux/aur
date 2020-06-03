@@ -2,8 +2,8 @@
 # Contributor : Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=ndppd-git
-pkgver=0.x
-pkgrel=1
+pkgver=r116.e01d67a
+pkgrel=2
 pkgdesc="NDP Proxy Daemon, version 0.x (git version)"
 arch=('x86_64')
 url="https://github.com/DanielAdolfsson/ndppd"
@@ -20,14 +20,15 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
 
-# pacmans version comparisons with later commits to the repo. The format
-# VERSION='VER_NUM.rREV_NUM.HASH', or a relevant subset in case VER_NUM or HASH
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${srcdir}/${pkgname%-git}"
+
+    # Fix versioning, though dozens of commits have been added to the master branch
+    # after v0.2.5, which was released at August 2016.
+    sed -i 's/\"0.2.4\"/\"0.2.5\"/' src/ndppd.h
 
     make DEBUG=1 PREFIX=/usr all
 }
