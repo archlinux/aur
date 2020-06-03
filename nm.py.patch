@@ -1,12 +1,10 @@
---- ./opt/appgate/linux/nm.py.before	2020-03-17 11:43:13.875718603 +0000
-+++ ./opt/appgate/linux/nm.py	2020-03-17 11:44:42.565719740 +0000
-@@ -271,8 +271,10 @@
-     if _bus_exists('uk.org.thekelleys.dnsmasq', '/'):
+--- nm.py-5.1.3.orig	2020-06-03 18:30:33.236358565 +0100
++++ nm.py-5.1.3.arch	2020-06-03 18:30:17.606358578 +0100
+@@ -276,7 +276,9 @@
          syslog(LOG_INFO, '[has_system_dnsmasq] dnsmasq bus present')
          return True
--
--    if platform.linux_distribution()[0] != 'Fedora':
-+    
+ 
+-    if distro.linux_distribution()[0] != 'Fedora':
 +    # this is PKGBUILD for Arch so this check should always yield True
 +    # if platform.linux_distribution()[0] != 'Fedora':
 +    if True:
