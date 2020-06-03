@@ -4,7 +4,7 @@
 # Contributor: Emil Velikov <emil.l.velikov@gmail.com>
 
 pkgname=waffle
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('libx11' 'libxcb' 'wayland')
 makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
 
 source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v$pkgver/waffle-v$pkgver.tar.gz")
-sha256sums=('d2ee1eef9f0e35ae1cd916db24e46ce4358c94a82776dcb89f5f72bd97a7e9ba')
+sha256sums=('4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd')
 
 prepare() {
   if [ -d build ]
