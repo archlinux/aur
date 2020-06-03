@@ -3,7 +3,7 @@
 
 pkgname="brig"
 pkgver="0.4.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="File synchronization on top of ipfs with git like interface and web based UI"
 arch=(x86_64 i686 armv7h aarch64)
 license=("AGPLv3")
@@ -17,7 +17,11 @@ sha256sums=("SKIP")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    GOBIN="${srcdir}/${pkgname}-${pkgver}" go run mage.go b
+    GOBIN_OLD=$GOBIN
+    GOBIN="${srcdir}/${pkgname}-${pkgver}"
+    go mod vendor
+    go run mage.go b
+    GOBIN=$GOBIN_OLD
 }
 
 package() {
