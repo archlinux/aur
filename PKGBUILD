@@ -1,42 +1,49 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kdelibs4support-git
-pkgver=r544.9d39a69
-pkgrel=3
-pkgdesc='KDE 4 Support'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kdelibs4support'
+_pkgname=kdelibs4support
+pkgname=$_pkgname-git
+pkgver=r941.9eab2bc6
+pkgrel=1
+pkgdesc='Porting aid from KDELibs4 (Git)'
+arch=(i686 x86_64)
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=('kunitconversion-git' 'kdesignerplugin-git' 'kemoticons-git' 'kitemmodels-git' 'kinit-git' 'kded-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'qt5-tools' 'networkmanager' 'perl-uri' 'python')
-conflicts=('kdelibs4support')
-provides=('kdelibs4support')
-groups=('kf5-aids')
-source=('git://anongit.kde.org/kdelibs4support.git')
-md5sums=('SKIP')
+depends=(kunitconversion kitemmodels kemoticons kded kparts perl)
+makedepends=(extra-cmake-modules git kdoctools qt5-tools networkmanager perl-uri kdesignerplugin)
+conflicts=(kdelibs4support)
+provides=(kdelibs4support)
+groups=(kf5-aids)
+source=("git+https://github.com/KDE/kdelibs4support.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kdelibs4support
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../kdelibs4support \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+
+# cert bundle seems to be hardcoded
+# link it to the one from ca-certificates
+  rm -f "$pkgdir"/usr/share/kf5/kssl/ca-bundle.crt
+  ln -sf /etc/ssl/certs/ca-certificates.crt "$pkgdir"/usr/share/kf5/kssl/ca-bundle.crt
+
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
