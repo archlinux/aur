@@ -3,7 +3,7 @@
 
 pkgname=trackma-git
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -14,8 +14,7 @@ depends=('python'
 makedepends=('python'
     'python-setuptools'
     'desktop-file-utils'
-    'git'
-    )
+    'git')
 optdepends=('python-gobject: GTK frontend'
     'python-cairo:   GTK frontend'
     'python-pillow:  thumbnail images for GUI frontends'
@@ -30,8 +29,8 @@ source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
 
 sha256sums=('SKIP'
             '80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce'
-            'ec25ab92890b72b4a9334d13280bc889f53d91463f54a4de7120a594770718fa'
-            'dbeb2e1980df220392fc0b41e6d2f6110f0d506282dfbfc84b354e20adb7bf84')
+            '1d866705353d08243ecef80495da7bb5703d8e95697cdfe75e4f4170e5ef23f4'
+            '988f4c4422577f0657e9ff8a9695ef44796ee6a9c43e07ee7a81369f25c2761f')
 
 #old package name.
 conflicts=('wmal-git')

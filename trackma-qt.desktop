@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Trackma (Qt)
 Exec=trackma-qt %u
-OnlyShowIn=KDE;
+NotShowIn=GNOME;MATE;X-Cinnamon;XFCE;Unity;
 Type=Application
 Categories=Network;
 Icon=trackma

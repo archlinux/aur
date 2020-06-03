@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Trackma (GTK)
 Exec=trackma-gtk %u
-OnlyShowIn=GNOME;MATE;X-Cinnamon;XFCE;Unity;
+NotShowIn=KDE;LXQt;Razor;
 Type=Application
 Categories=Network;
 Icon=trackma
