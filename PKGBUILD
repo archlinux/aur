@@ -4,7 +4,7 @@
 
 _pkgname=kdecoration
 pkgname=$_pkgname-git
-pkgver=r232.0539093
+pkgver=v5.18.90.r12.g0539093
 pkgrel=1
 pkgdesc='Plugin based library to create window decorations (Git)'
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
