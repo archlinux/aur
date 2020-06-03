@@ -35,9 +35,14 @@ md5sums=('92d6aa6442c3e67571b4494553b0d180')
 
 build() {
   cd "molden$pkgver"
-  # Patch Makefile for surf utility to reflect the 
-  # replacement of missing makedepend 
+  # Patch Makefile for surf utility to reflect 
+  # the replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
+  
+  # Patch to compile with gfortran 10
+  # Contributed by Panadestein on 5/31/2020
+  sed -i 's/FFLAGS = -g ${AFLAG}/& -fallow-argument-mismatch/g' makefile
+  sed -i 's/FFLAGS = -c -g -ffast-math -funroll-loops -O3/& -fallow-argument-mismatch/g' ambfor/makefile
   make
 }
 
