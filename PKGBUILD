@@ -1,8 +1,8 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.5.12
-_pkgver=1.5.12
+pkgver=v1.5.13
+_pkgver=1.5.13
 pkgrel=0
 epoch=
 pkgdesc="A full-featured download manager (release version)"
