@@ -1,0 +1,55 @@
+pkgbase = libvgm-git
+	pkgdesc = Library for decoding and playing VGM files
+	pkgver = r385.32ffc85
+	pkgrel = 1
+	url = https://github.com/ValleyBell/libvgm
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = zlib
+	makedepends = alsa-lib
+	makedepends = libpulse
+	makedepends = libao
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/ValleyBell/libvgm.git
+	source = libvgm-use-shared-libs.patch
+	md5sums = SKIP
+	md5sums = 4761dda54c46003dddd487255fcfe424
+
+pkgname = libvgm-player-git
+	pkgdesc = libvgm player library
+	depends = libvgm-common-git
+	depends = libvgm-emu-git
+	depends = libvgm-utils-git
+
+pkgname = libvgm-emu-git
+	pkgdesc = libvgm emulation library
+	depends = libvgm-common-git
+
+pkgname = libvgm-utils-git
+	pkgdesc = libvgm utility library
+	depends = libvgm-common-git
+	depends = zlib
+
+pkgname = libvgm-audio-git
+	pkgdesc = libvgm audio playing library
+	depends = libvgm-common-git
+	depends = alsa-lib
+	depends = libpulse
+	depends = libao
+
+pkgname = libvgm-common-git
+	pkgdesc = libvgm common headers
+
+pkgname = vgm2wav-git
+	pkgdesc = VGM to WAVE utility
+	depends = libvgm-utils-git
+	depends = libvgm-player-git
+
+pkgname = vgmplayer-git
+	pkgdesc = Interactive VGM player
+	depends = libvgm-utils-git
+	depends = libvgm-player-git
+	depends = libvgm-audio-git
+

@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 23347d0..2bbe703 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -167,7 +167,11 @@ endif(BUILD_TESTS)
+ if(BUILD_PLAYER)
+ add_executable(player player.cpp player/dblk_compr.c)
+ target_include_directories(player PRIVATE ${PROJECT_SOURCE_DIR})
++if(BUILD_SHARED)
++target_link_libraries(player PRIVATE vgm-audio_shared vgm-player_shared vgm-emu_shared vgm-utils_shared)
++else()
+ target_link_libraries(player PRIVATE vgm-audio vgm-player)
++endif(BUILD_SHARED)
+ if(USE_SANITIZERS)
+     add_sanitizers(player)
+ endif(USE_SANITIZERS)
+@@ -176,7 +180,11 @@ endif()
+ if(BUILD_VGM2WAV)
+ add_executable(vgm2wav vgm2wav.cpp)
+ target_include_directories(vgm2wav PRIVATE ${PROJECT_SOURCE_DIR})
++if(BUILD_SHARED)
++target_link_libraries(vgm2wav PRIVATE vgm-player_shared vgm-emu_shared vgm-utils_shared)
++else()
+ target_link_libraries(vgm2wav PRIVATE vgm-player vgm-emu vgm-utils)
++endif(BUILD_SHARED)
+ if(USE_SANITIZERS)
+ 	add_sanitizers(vgm2wav)
+ endif()
