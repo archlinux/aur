@@ -1,18 +1,22 @@
 pkgbase = xmr-stak-nvidia-git
-	pkgdesc = Monero Miner (NVIDIA)
-	pkgver = r1457.67cf951
+	pkgdesc = Free Monero RandomX Miner and unified CryptoNight miner (CUDA)
+	pkgver = 2.10.8.r0.g67cf951
 	pkgrel = 1
-	url = https://github.com/fireice-urk/xmr-stak
+	url = https://github.com/fireice-uk/xmr-stak
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = opencl-headers
 	depends = libmicrohttpd
 	depends = openssl
-	depends = cuda
 	depends = hwloc
+	depends = ocl-icd
+	depends = cuda
 	source = git+https://github.com/fireice-uk/xmr-stak.git
-	sha512sums = SKIP
+	source = xmr-stak.service
+	sha256sums = SKIP
+	sha256sums = e0cbee0dab1c730e5deff31eddef84a635b4c9f33ba2368a446e62acc084649a
 
 pkgname = xmr-stak-nvidia-git
 
