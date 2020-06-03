@@ -2,8 +2,8 @@
 
 pkgname=unciv
 _pkgname=Unciv
-_gradle_ver=5.6.4 # This package does not work with system gradle
-pkgver=3.9.0.1
+_gradle_ver=6.1.1 # This package does not work with system gradle
+pkgver=3.9.1.REL
 _pkgver=${pkgver%.*}-patch${pkgver##*.}
 _pkgver=${_pkgver/-patchREL/}
 pkgrel=1
@@ -21,14 +21,17 @@ source=(
   "$pkgname.desktop"
 )
 noextract=("gradle-$_gradle_ver-all.zip")
-md5sums=('2ce534990ff56827aa1db1c9079477fa'
-         '9fc6bd2c1bf6f18f5620bca5c19e3c05'
+md5sums=('febd89335b6af7a123c2143ed765001d'
+         'd1df7d94816bbedb2ab45187fceda7e5'
          'f8eab098f20681b8db232cc5709713d3'
          '42d5f7ea8ee48d2d643d070786f039ba')
 
 prepare() {
   # Use gradle downloaded by our pkgbuild to allow caching
   sed -i "6s|https\\\://services.gradle.org/distributions|../../../|" $_srcdir/gradle/wrapper/gradle-wrapper.properties
+  # Get rid of the Android part (it somehow always asks for Android SDK)
+  gawk -i inplace 'BEGIN { doPrint = 1; } /project\(":android"\) {/ { doPrint = 0; } /^}$/ { if (doPrint != 1) { doPrint = 1; next }} { if (doPrint) print $0;}' $_srcdir/build.gradle.kts
+  rm -rf $_srcdir/android
 }
 
 build() {
