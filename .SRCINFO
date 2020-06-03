@@ -1,6 +1,6 @@
 pkgbase = aloevera
 	pkgdesc = Graphical asset processing pipeline for the Commander X16
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/yeastplume/aloevera
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = aloevera
 	depends = gcc-libs
 	optdepends = cc65: compile assembly and header files
 	optdepends = x16-emulator: run BASIC and bin files
-	source = aloevera-0.2.1.tar.gz::https://github.com/yeastplume/aloevera/archive/v0.2.1.tar.gz
-	md5sums = 2bfda79f95d01654749003d2b3f8eb3e
+	source = aloevera-0.2.3.tar.gz::https://github.com/yeastplume/aloevera/archive/v0.2.3.tar.gz
+	md5sums = 4595bce344d2a9cf30fe59110c8f373e
 
 pkgname = aloevera
 

@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=aloevera
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Graphical asset processing pipeline for the Commander X16"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('cc65: compile assembly and header files'
             'x16-emulator: run BASIC and bin files')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeastplume/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ea5a3a4bb06a99f58cf6b8f0e20f16ac')
+md5sums=('4595bce344d2a9cf30fe59110c8f373e')
 
 build() {
   cd "$pkgname-$pkgver"
