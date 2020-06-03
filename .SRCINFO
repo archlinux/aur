@@ -1,7 +1,7 @@
 pkgbase = ttf-google-fonts-typewolf
 	pkgdesc = Typewolf's curated collection of the 40 best fonts from the Google Fonts project.
 	pkgver = 20.06.7993310
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.typewolf.com/google-fonts
 	arch = any
 	license = custom:SIL Open Font License v1.1
@@ -94,7 +94,7 @@ pkgbase = ttf-google-fonts-typewolf
 	conflicts = ttf-google-fonts-git
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = ttf-ibm-plex
-	source = ttf-google-fonts-typewolf-20.06.7993310-1.tar.gz::https://github.com/google/fonts/archive/799331018b4fe67a33f1d001d09304b612864568.tar.gz
+	source = ttf-google-fonts-typewolf-20.06.7993310-2.tar.gz::https://github.com/google/fonts/archive/799331018b4fe67a33f1d001d09304b612864568.tar.gz
 	sha256sums = fc0d93228b98c1ed12c2a62362276110a1107ff7db2c0c06f0abc6d96fc4256b
 
 pkgname = ttf-google-fonts-typewolf
