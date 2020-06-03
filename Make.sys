@@ -16,7 +16,7 @@ MAKE = make
 #------------------------------------------------------------------------
 # compilers & flags
 #------------------------------------------------------------------------
-CFLAGS = -ffast-math -funroll-loops -fPIC -DUSE_FONTS -pedantic -Wall -DUSE_INTERP_RESULT
+CFLAGS = -ffast-math -funroll-loops -fPIC -DUSE_FONTS -pedantic -Wall -DUSE_INTERP_RESULT -fcommon -O2
 CC     = gcc -g
 #LDLIB  = -ldl
 MATH   = -lm -lc
