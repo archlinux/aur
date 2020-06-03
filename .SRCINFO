@@ -1,5 +1,5 @@
 pkgbase = ttf-google-fonts-typewolf
-	pkgdesc = Typewolf's curated collection of the 40 best fonts from the Google Fonts project.
+	pkgdesc = Typewolf's curated collection of the 40 best fonts from the Google Fonts project
 	pkgver = 20.06.7993310
 	pkgrel = 2
 	url = https://www.typewolf.com/google-fonts
