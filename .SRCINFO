@@ -1,4 +1,4 @@
-pkgbase = scrnsvr
+pkgbase = scrnsvr-bin
 	pkgdesc = Yet Another X Screensaver/locker
 	pkgver = 0.1
 	pkgrel = 1
@@ -15,8 +15,8 @@ pkgbase = scrnsvr
 	optdepends = dunst: dunstify for notifications
 	optdepends = notify-send: for notifications
 	conflicts = scrnsvr
-	source = scrnsvr-0.1::git+https://github.com/koraynilay/scrnsvr
+	source = scrnsvr-bin-0.1::git+https://github.com/koraynilay/scrnsvr
 	md5sums = SKIP
 
-pkgname = scrnsvr
+pkgname = scrnsvr-bin
 

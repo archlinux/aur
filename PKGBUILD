@@ -1,5 +1,5 @@
 # Maintainer: koraynilay <koray.fra@gmail.com>
-pkgname=scrnsvr
+pkgname=scrnsvr-bin
 pkgver=0.1
 pkgrel=1
 pkgdesc="Yet Another X Screensaver/locker"
