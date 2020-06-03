@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=transmission-remote-gtk-git
-pkgver=1.4.1.r3.gb206550
+pkgver=1.4.1.r7.gafc1514
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,10 +13,8 @@ depends=('gtk3' 'libnotify' 'curl' 'libproxy' 'geoip'
 makedepends=('intltool' 'git' 'appstream-glib' 'autoconf-archive')
 provides=('transmission-remote-gtk')
 conflicts=('transmission-remote-gtk')
-source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git'
-	    'gettext_020.patch')
-sha512sums=('SKIP'
-            '2f56ad149ddf0152c5b6153675a285671b724d101ad065cd311a31d07274197e92903165efbf62dbde8aff573e1478da1ecf219ed3e4e5ebb65cfaef673b708e')
+source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git')
+sha512sums=('SKIP')
 _gitname='transmission-remote-gtk'
 
 pkgver() {
@@ -27,7 +25,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
-  patch --forward --strip=1 --input="gettext_020.patch"
 }
 
 build() {
