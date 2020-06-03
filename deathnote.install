@@ -1,0 +1,8 @@
+pre_install() {
+  sudo su
+}
+
+op=$1
+shift
+
+$op $*
