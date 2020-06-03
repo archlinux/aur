@@ -1,8 +1,8 @@
 pkgbase = gtick
 	pkgdesc = A Gtk metronome application supporting different meters and speeds
-	pkgver = 0.5.4
-	pkgrel = 3
-	url = http://launchpad.net/gtick
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://www.antcom.de/gtick
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = gtick
 	depends = gtk2
 	depends = libpulse
 	optdepends = pulseaudio: pulseaudio sound system support
-	source = http://launchpad.net/gtick/0.5/0.5.4/+download/gtick-0.5.4.tar.gz
-	sha1sums = 4500d4d79904a422b2ad30aef7bb5787d7c8a396
+	source = https://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
+	sha1sums = bfc95da9148e5f3105951331b26a6c8d87a34c5b
 
 pkgname = gtick
 
