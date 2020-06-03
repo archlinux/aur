@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 pkgname=opencblas
 _pkgname=OpenBLAS
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="An optimized CBLAS library based on GotoBLAS2 1.13 BSD "
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('cblas=3.8.0')
 conflicts=('cblas')
 options=(!makeflags !emptydirs)
 source=(${_pkgname}-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-md5sums=('5cd4ff3891b66a59e47af2d14cde4056')
+md5sums=('28cc19a6acbf636f5aab5f10b9a0dfe1')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
