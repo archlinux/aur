@@ -1,41 +1,43 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-pkgname=kwrited-git
-pkgver=r272.57af491
+_pkgname=kwrited
+pkgname=$_pkgname-git
+pkgver=r424.0124ec6
 pkgrel=1
-pkgdesc='Kwrited'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kde-workspace'
-license=('LGPL')
-depends=('kpty-git' 'knotifications-git')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
-conflicts=('kwrited')
-provides=('kwrited')
-source=('git://anongit.kde.org/kwrited.git')
-groups=('plasma')
-md5sums=('SKIP')
+pkgdesc='KDE daemon listening for wall and write messages'
+arch=(i686 x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(kpty knotifications kdbusaddons)
+makedepends=(extra-cmake-modules git kdoctools)
+groups=(plasma)
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+source=("git+https://github.com/KDE/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kwrited
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../kwrited/${DIR} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DBUILD_AS_EXECUTABLE=OFF \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  cd $srcdir/$_pkgname/build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

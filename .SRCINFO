@@ -1,8 +1,8 @@
 pkgbase = kwrited-git
-	pkgdesc = Kwrited
-	pkgver = r272.57af491
+	pkgdesc = KDE daemon listening for wall and write messages
+	pkgver = r424.0124ec6
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/kde-workspace
+	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
 	arch = x86_64
 	groups = plasma
@@ -10,12 +10,13 @@ pkgbase = kwrited-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = kdoctools
-	depends = kpty-git
-	depends = knotifications-git
+	depends = kpty
+	depends = knotifications
+	depends = kdbusaddons
 	provides = kwrited
 	conflicts = kwrited
-	source = git://anongit.kde.org/kwrited.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kwrited.git
+	sha256sums = SKIP
 
 pkgname = kwrited-git
 
