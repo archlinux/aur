@@ -1,7 +1,7 @@
 # Maintainer: Paul Bell <linux "at" dpb "dot" org "dot" uk>
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=rpcemu
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="An Emulator of classic Acorn computer systems, such as the Risc PC and A7000"
 url="http://www.marutan.net/rpcemu/"
@@ -9,24 +9,32 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 makedepends=('qt5-base')
 source=("http://www.marutan.net/rpcemu/cgi/download.php?sFName=${pkgver}/rpcemu-${pkgver}.tar.gz")
-sha256sums=('cc014e7d692a4434693b1262e43c813a425704ab7ad1ed0f6ff46e4377fc4942')
+sha256sums=('33b89e02e62b5621c625aa6d388d3a357e7ee013e74a00fcf53ef68f31d19605')
 install="$pkgname.install"
 backup=('usr/share/rpcemu/rpc.cfg')
-_pkgname="rpcemu-recompiler"
+
+# dynarec/recompiler is the default (_verbool=0)
+# set _verbool=1 for "interpreter"
+_verbool=0
+
+if [ "$_verbool" -eq 0 ]; then
+  _pkgname="rpcemu-recompiler"
+else
+  _pkgname="rpcemu-interpreter"
+fi
 
 prepare() {
-  # dynarec/recompiler is the default (_verbool=0)
-  # set _verbool=1 for "interpreter"
-  local _verbool=0
   if [ "$_verbool" -eq 0 ]; then
     sed -e "s/CONFIG += debug_and_release/CONFIG += debug_and_release dynarec/" \
         -i "$srcdir/${pkgname}-${pkgver}/src/qt5/rpcemu.pro"
-  else
-    _pkgname="rpcemu-interpreter"
   fi
 }
 
 build() {
+  # need to add "-fcommon". GCC 10 has apparently changed how multiple symbols
+  # defined in different sources are dealt with by default
+  export CFLAGS="$CFLAGS -fcommon"
+
   cd "$srcdir/${pkgname}-${pkgver}/src/qt5"
   qmake-qt5
   make
