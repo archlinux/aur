@@ -9,9 +9,7 @@ license=("APACHE")
 depends=("certbot")
 makedepends=("python-setuptools")
 checkdepends=("python-pytest" "python-requests-mock")
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("86795cdfad16f7b1125dc1680041551c04a2f2d74439d1debd875dbbd8d78bda")
 
 build() {
