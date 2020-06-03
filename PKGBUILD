@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=3.9.r7.g4d4f931
+pkgver=3.9.2.r6.g378f2c1
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -26,6 +26,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	sed -i 's/==/>=/g' requirements.txt
+	sed -i 's/,<5.15//g' requirements.txt setup.py
 }
 
 build() {
