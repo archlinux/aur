@@ -1,5 +1,5 @@
 pkgbase = scrnsvr-bin
-	pkgdesc = Yet Another X Screensaver/locker. Pre-compiled version.
+	pkgdesc = Yet Another X Screensaver/locker. Precompiled version.
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/koraynilay/scrnsvr
@@ -13,7 +13,7 @@ pkgbase = scrnsvr-bin
 	depends = procps-ng
 	depends = libxss
 	optdepends = dunst: dunstify for notifications
-	optdepends = notify-send: for notifications
+	optdepends = libnotify: for notifications
 	conflicts = scrnsvr
 	source = scrnsvr-bin-0.1::git+https://github.com/koraynilay/scrnsvr
 	md5sums = SKIP
