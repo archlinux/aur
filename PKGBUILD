@@ -2,8 +2,8 @@
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 
 pkgname=ghq
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/x-motemen/ghq"
