@@ -7,7 +7,7 @@
 
 pkgname=megasync
 pkgver=4.3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/MEGAsync"
@@ -18,10 +18,12 @@ makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "pdfium.patch")
+        "pdfium.patch"
+        "add-missing-include.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'f913ff490771e170610829f42f9285412ed8f4e7343f5dd7cb33e3bda4175aba')
+            'f913ff490771e170610829f42f9285412ed8f4e7343f5dd7cb33e3bda4175aba'
+            'c4fa2f7c9e17c205bf009bc601b974ad6ac380e73238849b0be01d855a805e3f')
 
 prepare() {
     cd "MEGAsync"
@@ -31,6 +33,9 @@ prepare() {
 
     cd "src/MEGASync/mega"
     patch -Np1 -i "../../../../pdfium.patch"
+
+    cd ..
+    patch -Np1 -i "../../../add-missing-include.patch"
 }
 
 build() {
