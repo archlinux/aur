@@ -5,7 +5,7 @@
 
 _pkgname=charybdis
 pkgname=charybdis-git
-pkgver=charybdis.4.1.2.r162.gef62a62f
+pkgver=4.1.2.r162.gef62a62f
 pkgrel=1
 pkgdesc='Scalable IRCv3.2 server for large, community-oriented networks (Git)'
 arch=('any')
@@ -26,8 +26,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # cutting off 'charybdis-' prefix that presents in the git tag
+  git describe --long | sed 's/^charybdis-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
