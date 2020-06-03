@@ -1,0 +1,18 @@
+pkgbase = mdpreview-git
+	pkgdesc = A simple QT-based Markdown previewer, designed to be used with an external editor
+	pkgver = r79.576dacb
+	pkgrel = 1
+	url = https://github.com/fboender/mdpreview
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-markdown
+	depends = python-pyinotify
+	depends = python-markdown-checklist
+	provides = mdpreview
+	source = git+https://github.com/fboender/mdpreview.git
+	sha256sums = SKIP
+
+pkgname = mdpreview-git
+
