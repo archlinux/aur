@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=haven
-_cranver=2.3.0
+_cranver=2.3.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('r>=3.2' 'r-forcats>=0.2.0' r-hms 'r-rcpp>=0.11.4' 'r-readr>=0.1.0' 'r-
 makedepends=(gcc make)
 optdepends=(r-covr r-fs r-knitr r-rmarkdown r-testthat r-pillar r-cli r-crayon)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('452fe0ca0755779b1bbb750a32f533fa')
+md5sums=('0bff6f5f925469d0a34ee2472be3f695')
 
 build() {
   cd "${srcdir}"
