@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.6.15
+	pkgver = 5.7
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -9,23 +9,27 @@ pkgbase = linux-gc
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.15.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.15.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
-	source = bmq_v5.6-r4.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r4.patch
-	source = enable_additional_cpu_optimizations-20200428.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200428.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e4f57a0db2a7a992e4a36a10e1b2167a3a83b3f4.patch
+	source = bmq_v5.7-r0.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.7/bmq_v5.7-r0.patch
+	source = enable_additional_cpu_optimizations-20200527.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200527.tar.gz
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/16945cf3f9e403f531985ba425118584d27414f1.patch
+	source = fix_compile_error_in_psi_c.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/53c690361e12a1097383c7940471216a2f1b0d03.patch
+	source = resync_thermal_cpu_cooling_sched_core.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/ad9eb862e06f395e846a2f2e084e5b0e7eb9ca4b.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 65ab799393d490463c610270634874dfcb66440a312837d04b51bbb69323034e
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0
 	sha256sums = SKIP
-	sha256sums = dffefdf24499ae25c2714ae1db0c19006bdcfa8fec444e5b068dbf91a5050a90
+	sha256sums = d35f9e3c28a65d59170e79440f020dbe481ad52999910a46451fc33cf60f9f20
 	sha256sums = 19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a
-	sha256sums = 1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9
-	sha256sums = 2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966
-	sha256sums = e3c4f81e3db79d2bf45f1311af0e66e9b6cce2469f597f4ed488ee27f9470501
+	sha256sums = d31a3e698eb8da8ea76ac05bf93a2c70f4ace014662e87c62d9fc3c75b7f55fc
+	sha256sums = 8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc
+	sha256sums = 10bfc7bbe7f98582e171cb4c0abd800ba6428b3e2cdca4ff4dfbd2070cff69bb
+	sha256sums = c954598b9f527b7546abc2b609808042b51ff802f495e30139e4840b61a628fc
+	sha256sums = 0407cd1211d590c90f791fb3544ef391bb102a6a41d91a2608254cb34fd22367
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler
@@ -34,11 +38,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.6.15
+	provides = linux-gc=5.7
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.6.15
-	provides = linux-headers=5.6.15
+	provides = linux-gc-headers=5.7
+	provides = linux-headers=5.7
 

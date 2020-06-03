@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.15
+pkgver=5.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -31,29 +31,33 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.6-r4
+_bmqversion=5.7-r0
 _bmq_patch="bmq_v${_bmqversion}.patch"
-_gcc_more_v='20200428'
+_gcc_more_v='20200527'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e4f57a0db2a7a992e4a36a10e1b2167a3a83b3f4.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/16945cf3f9e403f531985ba425118584d27414f1.patch"
+  "fix_compile_error_in_psi_c.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/53c690361e12a1097383c7940471216a2f1b0d03.patch"
+  "resync_thermal_cpu_cooling_sched_core.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/ad9eb862e06f395e846a2f2e084e5b0e7eb9ca4b.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('65ab799393d490463c610270634874dfcb66440a312837d04b51bbb69323034e'
+sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'SKIP'
-            'dffefdf24499ae25c2714ae1db0c19006bdcfa8fec444e5b068dbf91a5050a90'
+            'd35f9e3c28a65d59170e79440f020dbe481ad52999910a46451fc33cf60f9f20'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
-            '2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966'
-            'e3c4f81e3db79d2bf45f1311af0e66e9b6cce2469f597f4ed488ee27f9470501')
+            'd31a3e698eb8da8ea76ac05bf93a2c70f4ace014662e87c62d9fc3c75b7f55fc'
+            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
+            '10bfc7bbe7f98582e171cb4c0abd800ba6428b3e2cdca4ff4dfbd2070cff69bb'
+            'c954598b9f527b7546abc2b609808042b51ff802f495e30139e4840b61a628fc'
+            '0407cd1211d590c90f791fb3544ef391bb102a6a41d91a2608254cb34fd22367')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -83,6 +87,9 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
+  # Fix compile error in psi.c
+  patch -Np1 -i "$srcdir/fix_compile_error_in_psi_c.patch"
+  patch -Np1 -i "$srcdir/resync_thermal_cpu_cooling_sched_core.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
@@ -90,7 +97,7 @@ prepare() {
 
   # https://github.com/graysky2/kernel_gcc_patch
   echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.7+.patch"
 
   make oldconfig
 
