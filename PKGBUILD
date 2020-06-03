@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-sql-abstract'
-pkgver='1.86'
+pkgver='1.87'
 pkgrel='1'
 pkgdesc="Generate SQL from Perl data structures"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('perl-hash-merge>=0.12' 'perl-moo>=2.000001' 'perl-mro-compat>=0.12' 'p
 makedepends=('perl-test-deep>=0.101' 'perl-test-exception>=0.31' 'perl-test-warn')
 url='http://search.cpan.org/dist/SQL-Abstract'
 source=("https://cpan.metacpan.org/authors/id/I/IL/ILMARI/SQL-Abstract-${pkgver}.tar.gz")
-md5sums=('d4540f32a01cc8591dea8dc373e30f27')
-sha512sums=('248652656bebf9e3f3e2582880f78f4f8c6dd2a8e2546a750b33e9d95cd6da6d8a197d0be69b5e44a24e04c8e1262d4bf3085fa95405fa28eefc3b822a93fa42')
+md5sums=('bcbf019ab810e28aef776576b3a6b21e')
+sha512sums=('be1d9b7b5c0354008fa9444648b73f9901002dbd199b2981978c5467f8218438b8305cdd857aed3e19637e50402cae58e342cdf5c54d031aac3e66cf14c2e1b5')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
