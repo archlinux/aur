@@ -1,4 +1,4 @@
-# Maintainer: Kyle <kyle@gmx.ca>
+# Maintainer: Kyle <kyle@free2.ml>
 pkgname=opus-tools-git
 _gitname=opus-tools
 pkgver=0.1.9.9.gaa7e018 # determined from git origin
@@ -11,7 +11,7 @@ depends=(opus libogg)
 makedepends=('git')
 provides=(opus-tools)
 conflicts=(opus-tools)
-source=('git+https://git.xiph.org/opus-tools.git')
+source=('git+https://gitlab.xiph.org/xiph/opus-tools.git')
 md5sums=('SKIP')
 
 pkgver() {
