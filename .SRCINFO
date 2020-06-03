@@ -1,6 +1,6 @@
 pkgbase = activityfox-git
 	pkgdesc = allow Firefox to play nice with KDE Plasma Activities
-	pkgver = 0.2
+	pkgver = 0.2.r3.g2c84c52
 	pkgrel = 1
 	url = https://github.com/temporaryname96/activityfox
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = activityfox-git
 	license = GPL3
 	makedepends = automoc4
 	depends = firefox
+	provides = activityfox
+	conflicts = activityfox
 	source = git+https://github.com/temporaryname96/activityfox.git
 	sha256sums = SKIP
 
