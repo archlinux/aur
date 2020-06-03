@@ -1,7 +1,7 @@
 pkgbase = helmsman
 	pkgdesc = Helm Charts as Code
-	pkgver = 3.4.2
-	pkgrel = 2
+	pkgver = 3.4.3
+	pkgrel = 1
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = helmsman
 	depends = kubectl
 	optdepends = ruby-hiera-eyaml: backend for secret encryption
 	optdepends = helm-secrets: backend for secret encryption
-	source = helmsman-3.4.2.tar.gz::https://github.com/Praqma/helmsman/archive/v3.4.2.tar.gz
-	sha256sums = 5e0dc492560cb3ecc11f5db6bcea3861f8305004950becc12a81dfc7bfaed17d
+	source = helmsman-3.4.3.tar.gz::https://github.com/Praqma/helmsman/archive/v3.4.3.tar.gz
+	sha256sums = a030106c670aed5dd0e198f3f8595a77c31ba5234d6e0df6055a1d9373a9cf9c
 
 pkgname = helmsman
 
