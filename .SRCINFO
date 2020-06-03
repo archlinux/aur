@@ -1,7 +1,7 @@
 pkgbase = zoom-system-qt
 	pkgdesc = Video Conferencing and Web Conferencing Service - system Qt libraries
 	pkgver = 5.0.413237.0524
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us/
 	arch = x86_64
 	license = custom
@@ -19,6 +19,7 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-webengine: SSO login support
 	optdepends = picom: extra compositor needed by some window managers for screen sharing
 	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
+	provides = zoom
 	conflicts = zoom
 	options = !strip
 	source = zoom-system-qt-5.0.413237.0524_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.0.413237.0524/zoom_x86_64.pkg.tar.xz

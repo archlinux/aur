@@ -4,11 +4,12 @@
 _basename=zoom
 pkgname="$_basename-system-qt"
 pkgver=5.0.413237.0524
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Conferencing and Web Conferencing Service - system Qt libraries"
 arch=('x86_64')
 license=('custom')
 url='https://zoom.us/'
+provides=('zoom')
 conflicts=('zoom')
 makedepends=('patchelf')
 depends=('ttf-font' 'pulseaudio-alsa'
