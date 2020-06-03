@@ -1,16 +1,16 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: EoleDev
+# Contributor: Jan Cholasta <grubber at grubber cz>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgbase=freeipa
 pkgname=(python-ipalib
          python-ipaclient
-         python2-ipalib
-         python2-ipaclient
          freeipa-common
          freeipa-client-common
          freeipa-client)
 pkgver=4.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -22,30 +22,21 @@ makedepends=('openldap'
              'gettext'
              'python'
              'python-setuptools'
-             'python2'
-             'python2-setuptools'
              'nspr'
              'nss'
              'openssl'
              'ding-libs'
              'libsasl'
-             'python2-nss'
-             'python2-pyasn1'
-             'python2-pyasn1-modules'
-             'python2-dnspython'
-             'python2-six'
              'sssd>=1.13.0'
-             'python2-cffi'
              'python-jinja'
-             'python-pyasn1-modules'
-             'python2-jinja')
+             'python-pyasn1-modules')
 options=(emptydirs)
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
 sha256sums=('89df0d170e960d859512d2cdb601e99049bcb84423441d9b92a1cf47dd0a9d84'
-            'f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369'
+            '07571a3899e4403a404ffe2ad96816f9978dc4c8efc3204df9748784623f253b'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
 
@@ -64,26 +55,6 @@ prepare() {
 build() {
     cd freeipa-${pkgver}
 
-    export PYTHON=/usr/bin/python2
-    # Workaround: make sure all shebangs are pointing to Python 2
-    # This should be solved properly using setuptools
-    # and this hack should be removed.
-    find \
-        ! -name '*.pyc' -a \
-        ! -name '*.pyo' -a \
-        -type f -exec grep -qsm1 '^#!.*\bpython' {} \; \
-        -exec sed -i -e '1 s|^#!.*\bpython[^ ]*|#!/usr/bin/python2|' {} \;
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --sbindir=/usr/bin \
-                --with-vendor-suffix=-arch-${pkgrel} \
-                --disable-server \
-                --without-ipatests \
-                --disable-pylint --without-jslint
-
-    make
-
-    pushd ../freeipa-${pkgver}-python3
     export PYTHON=/usr/bin/python3
     # Workaround: make sure all shebangs are pointing to Python 3
     # This should be solved properly using setuptools
@@ -100,8 +71,6 @@ build() {
                 --disable-server \
                 --without-ipatests \
                 --disable-pylint --without-jslint
-    popd
-
     mkdir -p ../install
 
     # Please put as much logic as possible into make install. It allows:
@@ -119,12 +88,10 @@ build() {
     # Python 3 installation needs to be done first. Subsequent Python 2 install
     # will overwrite /usr/bin/ipa and other scripts with variants using
     # python2 shebang.
-    pushd ../freeipa-${pkgver}-python3
     (cd ipaclient && make install DESTDIR=../../install)
     (cd ipalib && make install DESTDIR=../../install)
     (cd ipaplatform && make install DESTDIR=../../install)
     (cd ipapython && make install DESTDIR=../../install)
-    popd
 
     # Python 2 installation
     make install DESTDIR="$PWD"/../install
@@ -211,77 +178,6 @@ package_python-ipaclient() {
     done
 }
 
-package_python2-ipalib() {
-    pkgdesc='Python libraries used by IPA'
-    arch=('any')
-    depends=("freeipa-common=$pkgver-$pkgrel"
-             'python2-gssapi>=1.2.0'
-             'gnupg'
-             'keyutils'
-             'python2>=2.7.9'
-             'python2-nss>=0.16'
-             'python2-cryptography>=1.4'
-             'sssd'
-             'python2-qrcode>=5.0.0'
-             'python2-pyasn1'
-             'python2-pyasn1-modules'
-             'python2-dateutil'
-             'python2-yubico>=1.2.3'
-             'python2-dbus'
-             'python2-setuptools'
-             'python2-six'
-             'python2-dnspython>=1.15'
-             'python2-enum34'
-             'python2-netifaces>=0.10.4'
-             'python2-pyusb')
-    provides=("python2-ipapython=$pkgver-$pkgrel"
-              "python2-ipaplatform=$pkgver-$pkgrel")
-    conflicts=('freeipa-python')
-    replaces=('freeipa-python')
-
-    cd freeipa-${pkgver}
-
-    install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md \
-                                                        Contributors.txt
-
-    local _file
-    for _file in ../install/usr/lib/python2.*/site-packages/ipapython \
-                 ../install/usr/lib/python2.*/site-packages/ipalib \
-                 ../install/usr/lib/python2.*/site-packages/ipaplatform \
-                 ../install/usr/lib/python2.*/site-packages/ipapython-*.egg-info \
-                 ../install/usr/lib/python2.*/site-packages/ipalib-*.egg-info \
-                 ../install/usr/lib/python2.*/site-packages/ipaplatform-*.egg-info
-    do
-        _file="${_file#../install/}"
-        mkdir -p "$pkgdir"/"${_file%/*}"
-        mv ../install/"$_file" "$pkgdir"/"$_file"
-    done
-}
-
-package_python2-ipaclient() {
-    pkgdesc='Python libraries used by IPA client'
-    arch=('any')
-    depends=("freeipa-client-common=$pkgver-$pkgrel"
-             "freeipa-common=$pkgver-$pkgrel"
-             "python2-ipalib=$pkgver-$pkgrel"
-             'python2-dnspython>=1.15'
-             'python2-jinja')
-
-    cd freeipa-${pkgver}
-
-    install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md \
-                                                        Contributors.txt
-
-    local _file
-    for _file in ../install/usr/lib/python2.*/site-packages/ipaclient \
-                 ../install/usr/lib/python2.*/site-packages/ipaclient-*.egg-info
-    do
-        _file="${_file#../install/}"
-        mkdir -p "$pkgdir"/"${_file%/*}"
-        mv ../install/"$_file" "$pkgdir"/"$_file"
-    done
-}
-
 package_freeipa-common() {
     pkgdesc='Common files used by IPA'
     arch=('any')
@@ -328,7 +224,7 @@ package_freeipa-client() {
     pkgdesc='IPA authentication for use on clients'
     depends=("freeipa-client-common=$pkgver-$pkgrel"
              "freeipa-common=$pkgver-$pkgrel"
-             "python2-ipaclient=$pkgver-$pkgrel"
+             "python-ipaclient=$pkgver-$pkgrel"
              'python-augeas'
              'cyrus-sasl-gssapi'
              'ntp'
@@ -342,7 +238,7 @@ package_freeipa-client() {
              'nss'
              'bind-tools'
              'oddjob'
-             'python2-gssapi>=1.2.0'
+             'python-gssapi>=1.2.0'
              'autofs'
              'nfsidmap'
              'nfs-utils')

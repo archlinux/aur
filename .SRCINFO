@@ -1,7 +1,7 @@
 pkgbase = freeipa
 	pkgdesc = The Identity, Policy and Audit system
 	pkgver = 4.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freeipa.org/
 	arch = i686
 	arch = x86_64
@@ -13,37 +13,28 @@ pkgbase = freeipa
 	makedepends = gettext
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
 	makedepends = nspr
 	makedepends = nss
 	makedepends = openssl
 	makedepends = ding-libs
 	makedepends = libsasl
-	makedepends = python2-nss
-	makedepends = python2-pyasn1
-	makedepends = python2-pyasn1-modules
-	makedepends = python2-dnspython
-	makedepends = python2-six
 	makedepends = sssd>=1.13.0
-	makedepends = python2-cffi
 	makedepends = python-jinja
 	makedepends = python-pyasn1-modules
-	makedepends = python2-jinja
 	options = emptydirs
 	source = https://releases.pagure.org/freeipa/freeipa-4.8.6.tar.gz
 	source = 0001-platform-add-Arch-Linux-platform.patch
 	source = freeipa-client-update-sshd_config
 	source = freeipa-client-update-sshd_config.hook
 	sha256sums = 89df0d170e960d859512d2cdb601e99049bcb84423441d9b92a1cf47dd0a9d84
-	sha256sums = f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369
+	sha256sums = 07571a3899e4403a404ffe2ad96816f9978dc4c8efc3204df9748784623f253b
 	sha256sums = 9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d
 	sha256sums = 1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d
 
 pkgname = python-ipalib
 	pkgdesc = Python libraries used by IPA
 	arch = any
-	depends = freeipa-common=4.8.6-1
+	depends = freeipa-common=4.8.6-2
 	depends = python-gssapi>=1.2.0
 	depends = gnupg
 	depends = keyutils
@@ -64,54 +55,17 @@ pkgname = python-ipalib
 	depends = python-dnspython>=1.15
 	depends = python-netifaces>=0.10.4
 	depends = python-pyusb
-	provides = python-ipapython=4.8.6-1
-	provides = python-ipaplatform=4.8.6-1
+	provides = python-ipapython=4.8.6-2
+	provides = python-ipaplatform=4.8.6-2
 
 pkgname = python-ipaclient
 	pkgdesc = Python libraries used by IPA client
 	arch = any
-	depends = freeipa-client-common=4.8.6-1
-	depends = freeipa-common=4.8.6-1
-	depends = python-ipalib=4.8.6-1
+	depends = freeipa-client-common=4.8.6-2
+	depends = freeipa-common=4.8.6-2
+	depends = python-ipalib=4.8.6-2
 	depends = python-dnspython>=1.15
 	depends = python-jinja
-
-pkgname = python2-ipalib
-	pkgdesc = Python libraries used by IPA
-	arch = any
-	depends = freeipa-common=4.8.6-1
-	depends = python2-gssapi>=1.2.0
-	depends = gnupg
-	depends = keyutils
-	depends = python2>=2.7.9
-	depends = python2-nss>=0.16
-	depends = python2-cryptography>=1.4
-	depends = sssd
-	depends = python2-qrcode>=5.0.0
-	depends = python2-pyasn1
-	depends = python2-pyasn1-modules
-	depends = python2-dateutil
-	depends = python2-yubico>=1.2.3
-	depends = python2-dbus
-	depends = python2-setuptools
-	depends = python2-six
-	depends = python2-dnspython>=1.15
-	depends = python2-enum34
-	depends = python2-netifaces>=0.10.4
-	depends = python2-pyusb
-	provides = python2-ipapython=4.8.6-1
-	provides = python2-ipaplatform=4.8.6-1
-	conflicts = freeipa-python
-	replaces = freeipa-python
-
-pkgname = python2-ipaclient
-	pkgdesc = Python libraries used by IPA client
-	arch = any
-	depends = freeipa-client-common=4.8.6-1
-	depends = freeipa-common=4.8.6-1
-	depends = python2-ipalib=4.8.6-1
-	depends = python2-dnspython>=1.15
-	depends = python2-jinja
 
 pkgname = freeipa-common
 	pkgdesc = Common files used by IPA
@@ -126,9 +80,9 @@ pkgname = freeipa-client-common
 pkgname = freeipa-client
 	pkgdesc = IPA authentication for use on clients
 	install = freeipa-client.install
-	depends = freeipa-client-common=4.8.6-1
-	depends = freeipa-common=4.8.6-1
-	depends = python2-ipaclient=4.8.6-1
+	depends = freeipa-client-common=4.8.6-2
+	depends = freeipa-common=4.8.6-2
+	depends = python-ipaclient=4.8.6-2
 	depends = python-augeas
 	depends = cyrus-sasl-gssapi
 	depends = ntp
@@ -142,7 +96,7 @@ pkgname = freeipa-client
 	depends = nss
 	depends = bind-tools
 	depends = oddjob
-	depends = python2-gssapi>=1.2.0
+	depends = python-gssapi>=1.2.0
 	depends = autofs
 	depends = nfsidmap
 	depends = nfs-utils

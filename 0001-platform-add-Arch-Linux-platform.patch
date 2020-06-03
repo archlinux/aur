@@ -35,38 +35,28 @@ index 8b9989dec..2399250b1 100644
 +/etc/conf.d/autofs
  .IP  o
  /etc/autofs_ldap_auth.conf
- 
+
 @@ -79,7 +79,7 @@ Files that will be configured when SSSD is the automount client (default):
  .TP
  Files that will be configured when using the ldap automount client:
- 
+
 -/etc/sysconfig/autofs
 +/etc/conf.d/autofs
- 
+
  /etc/autofs_ldap_auth.conf
- 
+
 diff --git a/client/man/ipa-client-install.1 b/client/man/ipa-client-install.1
 index 319952cb6..d01ccec64 100644
 --- a/client/man/ipa-client-install.1
 +++ b/client/man/ipa-client-install.1
-@@ -250,7 +250,7 @@ Files replaced if NTP is enabled:
- 
- /etc/ntp.conf
- .br
--/etc/sysconfig/ntpd
-+/etc/conf.d/ntpd.conf
- .br
- /etc/ntp/step\-tickers
- .TP
-@@ -272,7 +272,7 @@ Files updated, existing content is maintained:
+@@ -270,6 +270,6 @@ Files updated, existing content is maintained:
  .br
  /etc/krb5.keytab
  .br
 -/etc/sysconfig/network
 +/etc/hostname
- .SH "EXIT STATUS"
- 0 if the installation was successful
- 
+
+ .TP
 diff --git a/ipaplatform/arch/__init__.py b/ipaplatform/arch/__init__.py
 new file mode 100644
 index 000000000..9da42e7b4
@@ -197,4 +187,3 @@ index 501e2bc56..b47875164 100644
              "ipaplatform.fedora",
 -- 
 2.13.3
-
