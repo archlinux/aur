@@ -1,6 +1,6 @@
 pkgbase = perl-cpanel-json-xs
 	pkgdesc = JSON::XS for Cpanel, fast and correct serialising
-	pkgver = 4.17
+	pkgver = 4.19
 	pkgrel = 2
 	url = http://search.cpan.org/dist/Cpanel-JSON-XS
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = perl-cpanel-json-xs
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=0
-	source = http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Cpanel-JSON-XS-4.17.tar.gz
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Cpanel-JSON-XS-4.19.tar.gz
 	options = !emptydirs
 
 pkgname = perl-cpanel-json-xs
