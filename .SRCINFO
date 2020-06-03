@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-lcms2
 	pkgdesc = Small-footprint color management engine, version 2 (android)
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = http://www.littlecms.com
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = android-aarch64-lcms2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.9.tar.gz
-	sha256sums = 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
+	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.10.tar.gz
+	sha256sums = e11bc4e538587ec1530f9fef25f77261b94d5886c5ea81d8bb171a802df970ad
 
 pkgname = android-aarch64-lcms2
 
