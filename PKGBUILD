@@ -4,7 +4,7 @@
 # Contributor: John Trengrove <john at retrofilter dot com>
 
 pkgname=dgraph-bin
-pkgver=1.2.1
+pkgver=20.03.3
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         'dgraph.service'
         'dgraph-zero.service'
         'dgraph-ratel.service')
-sha256sums=('3c7b2b2d64b52c6935708c3055e6ab9d2119488afe54ecbd9d1415a6ecfdd859'
-            '78c8d2bc7c24c45afeac6204c6c829764af4c65a612e9ad5a68699b6ae9c4d16'
+sha256sums=('b943779411b2d6299714070816611ded7a2acd64eb5e14e05a201cdd23c4baed'
+            'd7c5d3b80911b4f263cc20746ec0c2af5c233f12690805dfc4f5e88be37c46a7'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
             '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83'
