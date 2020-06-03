@@ -7,7 +7,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.14.2
+pkgver=5.15.0
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
@@ -66,7 +66,7 @@ install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Support-pkg-config-under-Android.patch"
         "0002-Force-64-bit-atomics-usage.patch")
-md5sums=('b3d2b6d00e6ca8a8ede6d1c9bdc74daf'
+md5sums=('610a228dba6ef469d14d145b71ab3b88'
          '6af9dcc450ae6c69d8fddccf0680d84a'
          'f17efcb3d46afefd9d2c011301fd53c5')
 
