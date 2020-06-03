@@ -1,0 +1,35 @@
+pkgbase = virtualbox-guest-dkms-vmsvga
+	pkgdesc = VirtualBox Guest kernel modules sources (VMSVGA fix)
+	pkgver = 6.1.8
+	pkgrel = 1
+	url = https://virtualbox.org/
+	install = virtualbox-guest-dkms-vmsvga.install
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = dkms
+	depends = gcc
+	depends = make
+	depends = virtualbox-guest-utils
+	optdepends = linux-headers: build modules against Arch kernel
+	optdepends = linux-lts-headers: build modules against LTS kernel
+	optdepends = linux-zen-headers: build modules against ZEN kernel
+	provides = VIRTUALBOX-GUEST-MODULES
+	conflicts = virtualbox-archlinux-source
+	conflicts = virtualbox-guest-source
+	conflicts = virtualbox-guest-dkms
+	replaces = virtualbox-archlinux-source
+	replaces = virtualbox-guest-source
+	replaces = virtualbox-guest-modules-lts
+	replaces = virtualbox-guest-dkms
+	source = https://download.virtualbox.org/virtualbox/6.1.8/VirtualBox-6.1.8.tar.bz2
+	source = LocalConfig.kmk
+	source = virtualbox-guest-dkms-vmsvga.conf
+	source = vboxvmsvga.service
+	sha256sums = 426888f83036b6b1f79c272d317a4e8ecf43781f6a266fd7209c03dca504eefc
+	sha256sums = 2be313b98bffde482aad93b00c419f1d5f7645fd9e6053175ffb0d925067f96a
+	sha256sums = edd0492f0706e03169cdf3654658ea650687c30967ca5e32fde19d43e3dd4e5e
+	sha256sums = b6da21bfbc2d452aa8e2ae5c118ec8ed8b87ad6d86000e6b27f28c098b9871ca
+
+pkgname = virtualbox-guest-dkms-vmsvga
+

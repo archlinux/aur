@@ -1,0 +1,9 @@
+#! /bin/bash
+
+post_install() {
+  echo '==> The vboxvmsvga service must be started for auto-resize to work with the VMSVGA adapter.'
+}
+
+post_upgrade() {
+  post_install $1
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=VirtualBox VMSVGA Service
+ConditionVirtualization=oracle
+After=vboxservice.service
+
+[Service]
+ExecStart=/usr/bin/VBoxClient -f --vmsvga
+
+[Install]
+WantedBy=graphical.target
