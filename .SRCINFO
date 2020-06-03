@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-git
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop
-	pkgver = 3.31.4+11+gcccb12a6d
+	pkgver = 3.35.91+3+ga80bbdf1a
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = gnome-control-center-git
 	depends = grilo
 	depends = clutter-gtk
 	depends = libibus
-	depends = cheese
+	depends = cheese-git
 	depends = libgudev
 	depends = bolt
 	optdepends = system-config-printer: Printer settings
