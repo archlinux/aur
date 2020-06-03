@@ -68,12 +68,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=15
+_minor=16
 _srcname=linux-${_major}
 _clr=${_major}.15-957
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -171,7 +171,7 @@ prepare() {
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
 
-        ## Library routines
+        # Library routines
         scripts/config --enable FONT_TER16x32
 
         make olddefconfig
@@ -352,7 +352,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            '995f3a824d7ee90b137fc22af9b5e2b7d0b1f9f81b51bfb01bfc284bf9109e34'
+            'd032f7c4c0d894df6e90fb4990afd4dedb0e794129acf7637728bbf536cc4c9c'
             'SKIP'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
