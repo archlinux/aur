@@ -1,6 +1,6 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
-pkgver=20.1.20111.484
+pkgver=20.2.20141.491
 pkgrel=1
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
@@ -19,18 +19,15 @@ install=payetools-rti.install
 changelog=
 source=(
 	"https://www.gov.uk/government/uploads/uploaded/hmrc/$pkgname-$pkgver-linux.zip" 
-	"https://archive.org/download/archlinux_pkg_lib32-krb5/lib32-krb5-1.17.1-1-x86_64.pkg.tar.zst"
 	)
 noextract=( "$pkgname-$pkgver-linux.zip" )
 sha256sums=(
-        "d70c5d294017e5b062ade93b8c259406931db617d142373f95f176f837d8da4d"
+        "ed2a854377e695b62d28cd6c5a42c288782dd3d1fcaadcb28d9488f9573e5a6e"
 	"a40bc137d02a17d759eacb7576bcf720202c9178318aae363a4814ba16eb739b"
 	)
 
 prepare() {
   unzip "$pkgname-$pkgver-linux.zip"
-  mkdir lib32-krb5 || true
-  tar --zstd -xvf lib32-krb5-1.17.1-1-x86_64.pkg.tar.zst -C lib32-krb5 usr/lib32
 }
 
 build() {
@@ -46,7 +43,6 @@ package() {
   chrpath -d opt/HMRC/basic-paye-tools/libQt* 
   chrpath -d opt/HMRC/basic-paye-tools/PyQt4.Qt* 
   chrpath -d opt/HMRC/basic-paye-tools/imageformats/* 
-  cp -v ${srcdir}/lib32-krb5/usr/lib32/lib* opt/HMRC/basic-paye-tools/
   install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${pkgdir}/opt/HMRC/basic-paye-tools/license.txt
   sed -i "s#${pkgdir}##g" ${pkgdir}/tmp/.local/share/applications/*.desktop
   install -D -t ${pkgdir}/usr/share/applications/ ${pkgdir}/tmp/.local/share/applications/*.desktop

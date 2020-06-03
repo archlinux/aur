@@ -8,9 +8,10 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note "This package embeds, for its exclusive use, an unmaintained version of lib32-krb5"
-    note "The mainainer of this package accepts no liability for any consequence of this"
-    note "Please complain to the editor of the software so they fix it."
+    note "A malicious user having access to /home/teamcity could preload libraries referenced"
+    note "in the RPATH of the binary libraries included in the upstream package."
+    note "This PKGBUILD removes the reference to the RPATH."
+    note "HOWEVER the problem is still not fixed for python libraries."
 }
 
 post_upgrade() {
