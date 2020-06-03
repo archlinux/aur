@@ -1,8 +1,8 @@
 pkgbase = kadu
 	pkgdesc = Qt-based Jabber/XMPP and Gadu-Gadu client
 	pkgver = 4.3
-	pkgrel = 1
-	url = http://www.kadu.im/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/kadu/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -23,10 +23,10 @@ pkgbase = kadu
 	depends = qt5-x11extras
 	depends = qxmpp
 	options = !emptydirs
-	source = http://download.kadu.im/stable/kadu-4.3.tar.bz2
+	source = https://downloads.sourceforge.net/sourceforge/kadu/kadu-4.3.tar.bz2
 	source = gcc7.patch
-	md5sums = 011899121ca5a7e653892f29072032e2
-	md5sums = bc2c5ad95bc492cefd92964b4dfe24ca
+	sha256sums = ad5d1cbb908c3cd07f2955d343d44b993cd5639427a48a2912441955cfd2bd6e
+	sha256sums = 44314715021666a7221460cea2400db0c1cc1d93dcb220738434d8a472924172
 
 pkgname = kadu
 

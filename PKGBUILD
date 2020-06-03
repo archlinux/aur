@@ -1,23 +1,24 @@
-# $Id: PKGBUILD 208988 2017-01-25 08:21:35Z arojas $
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Mateusz Herych
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 
 pkgname=kadu
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
-url='http://www.kadu.im/'
+url='https://sourceforge.net/projects/kadu/'
 license=('GPL')
 depends=('enchant' 'hicolor-icon-theme' 'injeqt' 'libarchive' 'libgadu' 'libmpdclient' 'libotr'
          'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qxmpp')
 makedepends=('cmake' 'qt5-tools')
 options=('!emptydirs')
-source=(http://download.kadu.im/stable/$pkgname-$pkgver.tar.bz2
-        gcc7.patch)
-md5sums=('011899121ca5a7e653892f29072032e2'
-         'bc2c5ad95bc492cefd92964b4dfe24ca')
+source=("https://downloads.sourceforge.net/sourceforge/kadu/${pkgname}-${pkgver}.tar.bz2"
+        "gcc7.patch")
+sha256sums=('ad5d1cbb908c3cd07f2955d343d44b993cd5639427a48a2912441955cfd2bd6e'
+            '44314715021666a7221460cea2400db0c1cc1d93dcb220738434d8a472924172')
 
 prepare() {
   cd $pkgname-$pkgver
