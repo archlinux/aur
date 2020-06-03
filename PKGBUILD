@@ -3,13 +3,14 @@
 # Contributor: neverix <nev at ateverix dot io>
 # Contributor: Stepan Shabalin <stomperhomp at gmail dot com>
 pkgname=yin-yang-git
-pkgver=1.0.beta.r33.g6699876
+pkgver=1.0.beta.r69.g33cdf7d
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
 url="https://github.com/daehruoydeef/Yin-Yang"
 license=('MIT')
 depends=('python-pyqt5' 'python-qtpy' 'python-suntime')
+optdepends=('kvantum-qt5: Kvantum theme support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/daehruoydeef/Yin-Yang.git")
