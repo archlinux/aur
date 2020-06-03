@@ -8,7 +8,7 @@ pkgver=2.3.0.r8.g3ea6e61cd
 pkgrel=1
 pkgdesc="System Security Services Daemon"
 arch=('x86_64')
-url="https://pagure.io/SSSD/sssd"
+url="https://github.com/SSSD/sssd"
 license=('GPL3')
 depends=(
   'bind'          # for nsupdate
