@@ -1,4 +1,5 @@
 # Maintainer: Kai Ninomiya <kainino1@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Submitter: Veeti Paananen <veeti.paananen@rojekti.fi>
 # Contributor: Sebastian Stammler <stammler.s@gmail.com>
 # Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
@@ -11,18 +12,21 @@
 # otherwise unsuitable (bugs, etc.) Their individual packages are included as
 # dependencies instead. A list of excluded fonts is below.
 
-# Cantarell: Google ships an outdated version compared to the cantarell-fonts
-# package.
+# cantarell-fonts:
+#   Google ships an outdated version compared to the cantarell-fonts package.
+#   https://github.com/google/fonts/issues/112
 
-# Droid: the ttf-droid package includes more variants.
+# ttf-droid:
+#   The ttf-droid package includes more variants.
 
-# Fira Sans & Fira Mono: Google ships an outdated and buggy version.
-# https://github.com/google/fonts/issues/10
+# ttf-inconsolata:
+#   Google ships a modified version.
 
-# Inconsolata: Google ships a modified version.
+# ttf-sil-padauk:
+#   Has more variants than Google Fonts.
 
 pkgname=ttf-google-fonts-opinionated-git
-pkgver=20170723
+pkgver=20200602
 pkgrel=1
 pkgdesc="TrueType fonts from Google Fonts, but with updated versions of some fonts"
 arch=('any')
@@ -32,12 +36,12 @@ depends=('fontconfig'
          'xorg-fonts-encodings'
          'xorg-mkfontdir'
          'xorg-mkfontscale'
-
+         # Fonts excluded from this package:
          'cantarell-fonts'
          'ttf-droid'
-         'ttf-fira-sans'
-         'ttf-fira-mono'
-         'ttf-inconsolata')
+         'ttf-inconsolata'
+         'ttf-sil-padauk'
+         )
 makedepends=('git')
 conflicts=('adobe-source-code-pro-fonts'
            'adobe-source-sans-pro-fonts'
@@ -49,12 +53,13 @@ conflicts=('adobe-source-code-pro-fonts'
            'openarch_fonts'
            'otf-bitter'
            'otf-goudy'
-           'ttf-andika'
            'ttf-anonymous-pro'
            'ttf-cardo'
            'ttf-chromeos-fonts'
            'ttf-comfortaa'
            'ttf-croscore'
+           'ttf-fira-mono'
+           'ttf-fira-sans'
            'ttf-google-fonts-git'
            'ttf-google-fonts-hg'
            'ttf-google-webfonts'
@@ -75,13 +80,17 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-pt-sans'
            'ttf-roboto'
            'ttf-roboto-mono'
-           'ttf-sil-fonts'
            'ttf-sortsmillgoudy'
            'ttf-source-code-pro'
            'ttf-source-sans-pro'
            'ttf-ubuntu-font-family'
            'ttf-vollkorn'
-           'ttf-lato')
+           'ttf-lato'
+           # ttf-sil-fonts packages
+           'ttf-sil-harmattan'
+           'ttf-sil-scheherazade'
+           'ttf-sil-abyssinica'
+           )
 provides=("${conflicts[@]}" 'ttf-font')
 source=("git+https://github.com/google/fonts.git")
 md5sums=('SKIP')
@@ -108,6 +117,7 @@ package() {
   # Remove excluded fonts.
   find "${pkgdir}/usr/share/fonts/" -type f -name "Cantarell-*.ttf" -delete
   find "${pkgdir}/usr/share/fonts/" -type f -name "Droid*.ttf" -delete
-  find "${pkgdir}/usr/share/fonts/" -type f -name "Fira*.ttf" -delete
   find "${pkgdir}/usr/share/fonts/" -type f -name "Inconsolata-*.ttf" -delete
+  find "${pkgdir}/usr/share/fonts/" -type f -name "Ligconsolata-*.ttf" -delete
+  find "${pkgdir}/usr/share/fonts/" -type f -name "Padauk-*.ttf" -delete
 }
