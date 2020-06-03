@@ -1,7 +1,7 @@
 pkgbase = ntpsec
 	pkgdesc = Security-hardened Network Time Protocol implementation
 	pkgver = 1.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = ntpsec
 	optdepends = ttf-liberation: Improves font quality in ntpviz renderings
 	provides = ntp
 	conflicts = ntp
+	backup = etc/ntp.conf
 	backup = etc/ntp.d/default.conf
 	backup = etc/ntp.d/use-pool
 	source = ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.1.9.tar.gz
