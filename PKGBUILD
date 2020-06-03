@@ -1,14 +1,14 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=retrofe
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization"
 arch=('i686' 'x86_64')
 url="http://retrofe.nl"
 license=('GPL3')
 depends=('glib2' 'zlib' 'gstreamer' 'gst-plugins-base' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('cmake' 'mercurial' 'python2')
-source=('hg+https://phulshof@bitbucket.org/phulshof/retrofe#branch=RetroFE-Release-0.9.0'
+source=('hg+https://phulshof@bitbucket.org/phulshof/retrofe#branch=RetroFE-Release-0.10.0'
 	$pkgname.desktop
 	'icon.png')
 md5sums=('SKIP' 
