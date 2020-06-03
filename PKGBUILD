@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=mnormt
-_cranver=1.5-7
+_cranver=2.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="The Multivariate Normal and t Distributions"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=2.2.0')
+depends=('r>=4.0.0' 'r-tmvnsim>=1.0.2')
 makedepends=(gcc gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a73c1bad27f080cd37337f485b244525')
+md5sums=('da5dc61145b022505fdd0c9b2c1cf633')
 
 build() {
   cd "${srcdir}"
