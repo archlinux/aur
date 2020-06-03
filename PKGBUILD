@@ -3,7 +3,7 @@
 pkgname=iredis-bin
 pkgver=1.7.2
 pkgrel=1
-pkgdesc="Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
+pkgdesc="A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
 arch=('x86_64')
 url='https://iredis.io'
 license=("custom:${pkgname}")
