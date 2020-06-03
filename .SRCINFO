@@ -1,8 +1,8 @@
 pkgbase = gitwrk-git
-	pkgdesc = Command line interface to manage clipboard
+	pkgdesc = GitWrk is a small CLI tool that helps you with monthly reports by extracting working hours directly from git repository.
 	pkgver = v1.0.8.r0.g904fcd8
-	pkgrel = 1
-	url = https://github.com/yaa110/gitwrk
+	pkgrel = 2
+	url = https://github.com/unravela/gitwrk
 	arch = i686
 	arch = x86_64
 	license = MIT

@@ -3,12 +3,12 @@
 pkgname=gitwrk-git
 _pkgname=gitwrk
 pkgver=v1.0.8.r0.g904fcd8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url="https://github.com/yaa110/gitwrk"
+url="https://github.com/unravela/gitwrk"
 license=("MIT")
 
-pkgdesc='Command line interface to manage clipboard'
+pkgdesc='GitWrk is a small CLI tool that helps you with monthly reports by extracting working hours directly from git repository.'
 
 source=("$_pkgname::git://github.com/unravela/gitwrk.git")
 sha512sums=('SKIP')
