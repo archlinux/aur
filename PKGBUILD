@@ -4,7 +4,7 @@
 
 pkgname=sssd-git
 _gitname='sssd'
-pkgver=2.2.3.r18.g2c13d8bd0
+pkgver=2.3.0.r8.g3ea6e61cd
 pkgrel=1
 pkgdesc="System Security Services Daemon"
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 )
 provides=('sssd')
 conflicts=('sssd')
-source=('git+https://pagure.io/SSSD/sssd.git')
+source=('git+https://github.com/SSSD/sssd')
 sha512sums=('SKIP')
 
 pkgver() {
