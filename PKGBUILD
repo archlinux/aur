@@ -1,8 +1,10 @@
-# Maintainer: Valère Monseur <valere dot monseur at ymail dot com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
 _pkgname=ktsuss
 pkgname=ktsuss-git
-pkgver=0.r19.e1358de
+pkgver=r23.9ea2e83
 pkgrel=1
 pkgdesc="Graphical version of su written in C and GTK+"
 arch=('i686' 'x86_64')
@@ -12,22 +14,18 @@ depends=('util-linux' 'gtk2')
 makedepends=('git')
 provides=('ktsuss')
 conflicts=('ktsuss')
-source=("$_pkgname"::'git+https://github.com/nomius/ktsuss.git')
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/nomius/ktsuss.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  if [ ! -x ./configure ]; then
-    ./autogen.sh
-  fi
-
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }

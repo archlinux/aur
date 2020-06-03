@@ -1,6 +1,6 @@
 pkgbase = ktsuss-git
 	pkgdesc = Graphical version of su written in C and GTK+
-	pkgver = 0.r19.e1358de
+	pkgver = r23.9ea2e83
 	pkgrel = 1
 	url = https://github.com/nomius/ktsuss
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ktsuss-git
 	provides = ktsuss
 	conflicts = ktsuss
 	source = ktsuss::git+https://github.com/nomius/ktsuss.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ktsuss-git
 
