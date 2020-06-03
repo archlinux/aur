@@ -1,14 +1,15 @@
 pkgbase = dns-zone-blacklist-git
 	pkgdesc = dnsmasq, bind and unbound zone files to be used in DNS based AD Blockers
-	pkgver = r337.01caed5
+	pkgver = r409.676938e
 	pkgrel = 1
 	url = https://github.com/oznu/dns-zone-blacklist
 	arch = any
+	makedepends = git
 	optdepends = unbound
 	optdepends = bind
 	optdepends = dnsmasq
 	source = git+https://github.com/oznu/dns-zone-blacklist.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dns-zone-blacklist-git
 
