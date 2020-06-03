@@ -1,6 +1,6 @@
 # Maintainer: Bryan Burke <bryan.t.burke@gmail.com>
 pkgname=keys-pub-git
-pkgver=v0.0.45
+pkgver=v0.0.47
 pkgrel=1
 pkgdesc='keys.pub CLI - keys and keysd'
 arch=('x86_64')
@@ -19,6 +19,7 @@ build() {
   (
     set -o pipefail
     cd "${pkgname}"
+    git config advice.detachedHead false
     git checkout $(git describe --abbrev=0 --tags)
     commit=$(git rev-parse --short HEAD)
     date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -28,7 +29,10 @@ build() {
 
     go build -o bin/keysd -ldflags "-X main.version=$pkgver -X main.commit=$commit -X main.date=$date" ./keysd/main.go
     go build -o bin/keys -ldflags "-X main.version=$pkgver -X main.commit=$commit -X main.date=$date" ./keys/main.go
-    go build -o bin/fido2.so --buildmode=plugin -ldflags "-X main.version=$pkgver -X main.commit=$commit -X main.date=$date" ./fido2/plugin.go
+    
+    cd ../auth/rpc
+
+    go build -o ../../service/bin/fido2.so --buildmode=plugin -ldflags "-X main.version=$pkgver -X main.commit=$commit -X main.date=$date" ./plugin/plugin.go
   )
 }
 

@@ -1,6 +1,6 @@
 pkgbase = keys-pub-git
 	pkgdesc = keys.pub CLI - keys and keysd
-	pkgver = v0.0.45
+	pkgver = v0.0.47
 	pkgrel = 1
 	url = https://github.com/keys-pub/keysd
 	arch = x86_64
