@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.ntpsec.org/"
@@ -71,4 +71,6 @@ package() {
   done
 
   install -dm 700 -g 212 -o 212 "$pkgdir/var/lib/ntp"
+  touch $pkgdir/etc/ntp.conf
+
 }
