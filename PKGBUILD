@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=v0.19.1.r23091
+pkgver=v0.20.0.r24395
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
