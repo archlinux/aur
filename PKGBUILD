@@ -1,7 +1,7 @@
 # Maintainer: maisvendoo <maisvendoo@gmail.com>
 # Contributor: jmf <jmf at mesecons dot net>
 
-pkgname=osgqt-dev
+pkgname=osgqt-rrs
 pkgver=3.7.0
 _pkgver=3.7.0
 pkgrel=1
