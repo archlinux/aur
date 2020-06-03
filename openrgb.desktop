@@ -2,9 +2,9 @@
 Name=OpenRGB
 GenericName=RGB Settings
 Comment=Configuration utility for RGB lights supporting motherboards, RAM, & peripherals
-Exec=openrgb
+Exec=bash -c 'cd $HOME/.config/OpenRGB && openrgb'
 Icon=openrgb
 Terminal=false
 Type=Application
 Categories=Settings;System;
-StartupNotify=false
+StartupNotify=true
