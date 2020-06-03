@@ -2,7 +2,7 @@
 
 pkgname=openra-d2-git
 _pkgname=openra-d2
-pkgver=184.git.708d552
+pkgver=185.git.ec4d63e
 pkgrel=1
 pkgdesc="A Dune II-inspired mod of OpenRA"
 arch=('any')
