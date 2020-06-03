@@ -1,6 +1,6 @@
 pkgbase = openra-kknd-git
 	pkgdesc = A Krush, Kill n' Destroy-inspired mod of OpenRA
-	pkgver = 186.git.cc3f3d8
+	pkgver = 189.git.87fb71e
 	pkgrel = 1
 	url = https://www.kknd-game.com/
 	install = openra-kknd.install
