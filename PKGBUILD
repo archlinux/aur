@@ -1,5 +1,6 @@
 #Maintainer: weearc <q19981121@163.com>
-pkgname=imewlconverter
+pkgname=imewlconverter-cli
+_pkgname=imewlconverter
 pkgver=v2.8.0
 pkgrel=0
 epoch=
@@ -32,5 +33,5 @@ package() {
 	mkdir ${pkgdir}/opt/$pkgname
 	cp $srcdir/* ${pkgdir}/opt/$pkgname/.
 	echo -e "#!/bin/bash
-dotnet /opt/$pkgname/ImeWlConverterCmd.dll" >> $pkgdir/usr/bin/$pkgname && chmod a+x $pkgdir/usr/bin/$pkgname 
+dotnet /opt/$pkgname/ImeWlConverterCmd.dll" >> $pkgdir/usr/bin/$pkgname && chmod a+x $pkgdir/usr/bin/$_pkgname 
 }
