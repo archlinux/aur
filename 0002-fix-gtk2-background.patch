@@ -1,0 +1,25 @@
+From 20b0985a77df913585628d49a3b541fb957ae366 Mon Sep 17 00:00:00 2001
+From: gamezelda
+Date: Thu, 4 Jun 2020 00:06:50 +0200
+Subject: [PATCH] fix setting background palette
+
+---
+ src/plugins/styles/gtk2/qgtkstyle.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/plugins/styles/gtk2/qgtkstyle.cpp b/src/plugins/styles/gtk2/qgtkstyle.cpp
+index 2544593..6138bd2 100644
+--- a/src/plugins/styles/gtk2/qgtkstyle.cpp
++++ b/src/plugins/styles/gtk2/qgtkstyle.cpp
+@@ -442,6 +442,8 @@ void QGtkStyle::polish(QApplication *app)
+     if (app->desktopSettingsAware() && d->isThemeAvailable()) {
+ #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+         QApplicationPrivate::setSystemPalette(standardPalette());
++#else
++        QApplication::setPalette(standardPalette());
+ #endif
+         QApplicationPrivate::setSystemFont(d->getThemeFont());
+         d->applyCustomPaletteHash();
+-- 
+2.27.0
+
