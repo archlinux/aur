@@ -1,6 +1,6 @@
 pkgbase = deno-bin
 	pkgdesc = A secure TypeScript runtime on V8
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://deno.land/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = deno-bin
 	makedepends = binutils
 	makedepends = unzip
 	provides = deno
-	source_x86_64 = deno-1.0.4.zip::https://github.com/denoland/deno/releases/download/v1.0.4/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 42b18a4b1e04339023fc383fc2c5f07e01ff6dabe37e4fc058362a274c266503
+	source_x86_64 = deno-1.0.5.zip::https://github.com/denoland/deno/releases/download/v1.0.5/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = c800e2f61659f0c947f56414d6bdc330747a709f8ee1ad25d632ff232a5567ce
 
 pkgname = deno-bin
 
