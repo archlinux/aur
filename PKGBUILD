@@ -61,12 +61,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=43
+_minor=44
 _srcname=linux-${_major}
 _clr=${_major}.43-41
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
@@ -155,7 +155,7 @@ prepare() {
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
 
-        ## Library routines
+        # Library routines
         scripts/config --enable FONT_TER16x32
 
         make olddefconfig
@@ -321,7 +321,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '2685d44c357d95262ec685eb35820448575b2907f8232c32aa384e901bc5e4c4'
+            '4a571526820ef2a10ecc4c2870bb378c1efddac9a35cc06ecbadc25fe2ffab8c'
             'SKIP'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc')
 
