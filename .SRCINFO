@@ -6,6 +6,7 @@ pkgbase = zegrapher
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
+	depends = boost
 	conflicts = zegrapher
 	source = https://github.com/AdelKS/ZeGrapher/archive/v3.1.tar.gz
 	md5sums = f6099bea1d4787702a0d67705e2c3dc3
