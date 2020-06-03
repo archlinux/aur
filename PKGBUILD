@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.1.15.0
+pkgver=2.1.16.0
 pkgrel=1
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
@@ -27,7 +27,7 @@ optdepends=(
 	"mingw-w64-libsquish: DDS file support"
 )
 sha256sums=(
-	"95b90ba22b73765cbcbd9e11891769c2e78696ad24d4af77ef3f3c8674422401"
+	"f44e3b3cffe9a8f47395da1ae59e972ecb26adf65f17581e6a489fdcce0cb116"
 	"87e13ccaf0359ad86713721448f14073d9e4b8904fb1353b259c351482c326a7"
 )
 source=(
