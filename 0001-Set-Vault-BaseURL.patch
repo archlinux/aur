@@ -1,3 +1,4 @@
+diff --git a/src/app/app.component.ts b/src/app/app.component.ts
 index 2c694d95..bba34865 100644
 --- a/src/app/app.component.ts
 +++ b/src/app/app.component.ts
@@ -57,6 +58,7 @@ index c74261dd..f61ccefe 100644
              api: isDev ? 'http://localhost:4000' : null,
              identity: isDev ? 'http://localhost:33656' : null,
              events: isDev ? 'http://localhost:46273' : null,
+diff --git a/src/app/settings/two-factor-u2f.component.ts b/src/app/settings/two-factor-u2f.component.ts
 index 5560c476..a9b954a8 100644
 --- a/src/app/settings/two-factor-u2f.component.ts
 +++ b/src/app/settings/two-factor-u2f.component.ts
@@ -68,6 +70,7 @@ index 5560c476..a9b954a8 100644
          }], [], (data: any) => {
              this.ngZone.run(() => {
                  this.u2fListening = false;
+diff --git a/src/scss/styles.scss b/src/scss/styles.scss
 index 80951953..5c784175 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
@@ -100,9 +103,10 @@ index 80951953..5c784175 100644
 +app-org-account > a.btn.btn-outline-secondary { @extend %bwrs-hide; }
 +/**** END Bitwarden_RS CHANGES ****/
 +
- $primary: #3c8dbc;
- $primary-accent: #286090;
+ $primary: #175DDC;
+ $primary-accent: #1252A3;
  $secondary: #ced4da;
+diff --git a/webpack.config.js b/webpack.config.js
 index aecb1860..44acdc1d 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
