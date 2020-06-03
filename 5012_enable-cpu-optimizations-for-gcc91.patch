@@ -1,5 +1,5 @@
 WARNING
-This patch works with gcc versions 9.1+ and with kernel version 5.5+ and should
+This patch works with gcc versions 9.1+ and with kernel version 5.7+ and should
 NOT be applied when compiling on older versions of gcc due to key name changes
 of the march flags introduced with the version 4.9 release of gcc.[1]
 
@@ -60,7 +60,7 @@ See the following experimental evidence supporting this statement:
 https://github.com/graysky2/kernel_gcc_patch
 
 REQUIREMENTS
-linux version >=5.5
+linux version >=5.7
 gcc version >=9.1
 
 ACKNOWLEDGMENTS
@@ -73,8 +73,8 @@ REFERENCES
 4. https://github.com/graysky2/kernel_gcc_patch/issues/15
 5. http://www.linuxforge.net/docs/linux/linux-gcc.php
 
---- a/arch/x86/include/asm/module.h	2019-12-15 18:16:08.000000000 -0500
-+++ b/arch/x86/include/asm/module.h	2019-12-17 14:03:55.968871551 -0500
+--- a/arch/x86/include/asm/vermagic.h	2019-12-15 18:16:08.000000000 -0500
++++ b/arch/x86/include/asm/vermagic.h	2019-12-17 14:03:55.968871551 -0500
 @@ -27,6 +27,36 @@ struct mod_arch_specific {
  #define MODULE_PROC_FAMILY "586MMX "
  #elif defined CONFIG_MCORE2
