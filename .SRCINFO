@@ -1,5 +1,5 @@
 pkgbase = brickstrap-git
-	pkgdesc = Tool for bootstrapping Debian and creating bootable image files for embedded systems
+	pkgdesc = Tool for turning Docker images into bootable image files for embedded systems
 	pkgver = 0.6.8.r4.ga48aea5
 	pkgrel = 1
 	url = https://github.com/ev3dev/brickstrap
@@ -9,7 +9,7 @@ pkgbase = brickstrap-git
 	depends = libguestfs
 	optdepends = qemu-arm-static: Build arm images (f.e. LEGO ev3 bricks)
 	source = git+https://github.com/ev3dev/brickstrap.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = brickstrap-git
 
