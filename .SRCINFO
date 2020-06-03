@@ -11,6 +11,7 @@ pkgbase = certbot-dns-hetzner-git
 	makedepends = git
 	depends = certbot
 	provides = certbot-dns-hetzner
+	conflicts = certbot-dns-hetzner
 	source = certbot-dns-hetzner::git+https://github.com/ctrlaltcoop/certbot-dns-hetzner.git
 	sha256sums = SKIP
 
