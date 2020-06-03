@@ -7,6 +7,7 @@ pkgbase = icecat
 	license = GPL
 	license = MPL
 	license = LGPL
+	makedepends = m4
 	makedepends = unzip
 	makedepends = zip
 	makedepends = diffutils
