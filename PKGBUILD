@@ -2,7 +2,7 @@
 
 _name="ddev"
 _version="1.15"
-_versionsuffix="alpha2"
+_versionsuffix="alpha3"
 _downloadver=$_version
 pkgname="$_name-edge-bin"
 pkgver="$_version"_"$_versionsuffix"
@@ -15,7 +15,7 @@ provides=("$_name")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
 source=("https://github.com/drud/ddev/releases/download/v$_downloadver-$_versionsuffix/ddev_linux.v$_downloadver-$_versionsuffix.tar.gz")
-sha256sums=("2d644647c70391cb7c7f493c8c25d1f434d867368a12a9613d4a852b9af2a103")
+sha256sums=("944b7bdfcdf6c4836a0b92b923d082b6dfdf5602f86007b5b59759608bcd2e29")
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"
