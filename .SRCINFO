@@ -1,0 +1,17 @@
+pkgbase = python-markdown-checklist-git
+	pkgdesc = Python Markdown extension for lists of tasks with checkboxes
+	pkgver = r23.63ca633
+	pkgrel = 1
+	url = https://github.com/FND/markdown-checklist
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-markdown
+	provides = python-markdown-checklist
+	source = git+https://github.com/FND/markdown-checklist.git
+	sha256sums = SKIP
+
+pkgname = python-markdown-checklist-git
+
