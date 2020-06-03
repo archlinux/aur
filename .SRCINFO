@@ -1,0 +1,15 @@
+pkgbase = rbuild-cli-git
+	pkgdesc = The official cli client for the remote build system
+	pkgver = 1.0.r12.fa30590
+	pkgrel = 1
+	url = https://github.com/JojiiOfficial/RemoteBuildClient
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/JojiiOfficial/RemoteBuildClient
+	md5sums = SKIP
+
+pkgname = rbuild-cli-git
+
