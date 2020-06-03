@@ -4,7 +4,7 @@
 
 pkgname=python-pychromecast
 _name=${pkgname#python-}
-pkgver=5.3.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
