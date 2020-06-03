@@ -2,7 +2,7 @@
 
 pkgname=gmsh-bin
 pkgver=4.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A free 3D finite element grid generator with a build-in CAD engine and post-processor. Includes SDK."
 arch=('i686' 'x86_64')
 url="http://gmsh.info/"
@@ -48,10 +48,7 @@ package() {
         install -Dm 644 "$file" "${pkgdir}/usr/include/$file"
     done
     # Lib
-    cd "${srcdir}/${pkgname%-*}-${pkgver}-Linux${_archvar}-sdk/lib"
-    for file in *; do
-        install -Dm 755 "$file" "${pkgdir}/usr/lib/$file"
-    done
+    cp -a "${srcdir}/${pkgname%-*}-${pkgver}-Linux${_archvar}-sdk/lib/" "${pkgdir}/usr/lib/"
     # Docs:
     cd "$srcdir"
     mkdir -p "${pkgdir}/usr/share/doc"
