@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = Rawconverter ART including blackfoxx-Theme built from latest sources
-	pkgver = 1.3_89_g34d69f4b1
+	pkgver = 1.3_110_gd65d28596
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -26,10 +26,8 @@ pkgbase = art-rawconverter-git
 	conflicts = art-rawconverter
 	source = art-rawconverter-git_src::git+https://bitbucket.org/agriggio/art.git#branch=master
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
-	source = cmakelists.patch
 	sha256sums = SKIP
 	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
-	sha256sums = ae3646842985338b700b68987879c3eb8d4483c895e58134bf512fe3df33c39b
 
 pkgname = art-rawconverter-git
 
