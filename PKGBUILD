@@ -1,5 +1,5 @@
 # Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
-# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 pkgname=gnome-control-center-git
 pkgver=3.35.91+3+ga80bbdf1a
