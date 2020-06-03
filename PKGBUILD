@@ -5,12 +5,17 @@
 
 _pkgname=charybdis
 pkgname=charybdis-git
-pkgver=charybdis.4.1.2.r160.g458b5d1f
+pkgver=charybdis.4.1.2.r162.gef62a62f
 pkgrel=1
-pkgdesc='A highly scalable IRCv3-compliant IRCd (development version)'
-url='https://charybdis-ircd.github.io/'
+pkgdesc='Scalable IRCv3.2 server for large, community-oriented networks (Git)'
+arch=('any')
+url="https://charybdis-ircd.github.io"
 license=('GPL2')
 options=('!strip')
+depends=('bison' 'flex' 'openssl' 'zlib')
+makedepends=('git')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 install=charybdis.install
 source=('git+https://github.com/charybdis-ircd/charybdis.git'
         'charybdis.service'
@@ -18,21 +23,15 @@ source=('git+https://github.com/charybdis-ircd/charybdis.git'
 sha256sums=('SKIP'
             'a890d3a4fddd34b475c1c2e5f47f790af3bcebc3539c4a92a7343829fdbce563'
             '2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29')
-arch=('i686' 'x86_64')
-depends=('bison' 'flex' 'openssl' 'zlib')
-makedepends=('git')
-conflicts=('charybdis')
-provides=('charybdis')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/$_pkgname"
 
-  # Get the version number.
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/$_pkgname"
 
   # Set up the build.
   ./autogen.sh
