@@ -1,18 +1,19 @@
 pkgbase = kdecoration-git
-	pkgdesc = Plugin based library to create window decorations
-	pkgver = v5.17.90.r6.g9c14f69
+	pkgdesc = Plugin based library to create window decorations (Git)
+	pkgver = r232.0539093
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/kde-workspace
+	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = git
-	depends = qt5-base
+	depends = ki18n
 	provides = kdecoration
 	conflicts = kdecoration
-	source = git://anongit.kde.org/kdecoration.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kdecoration.git
+	sha256sums = SKIP
 
 pkgname = kdecoration-git
 
