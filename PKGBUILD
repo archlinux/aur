@@ -14,7 +14,7 @@ depends=('r>=3.4.0' r-rcppeigen r-rcppparallel pandoc)
 makedepends=(gcc)
 optdepends=(r-rcpp r-bh r-knitr r-rmarkdown r-rstan)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('92eb7202921d002f0433c6f539b0ecc4')
+md5sums=('109277bc264c9b57411f51813bf91c39')
 
 build() {
   cd "${srcdir}"
