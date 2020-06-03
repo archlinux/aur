@@ -1,38 +1,42 @@
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=baloo-widgets-git
-pkgver=r410.331c859
+_pkgname=baloo-widgets
+pkgname=$_pkgname-git
+pkgver=r648.925e353
 pkgrel=1
-pkgdesc="A framework for searching and managing metadata"
+pkgdesc="Widgets for Baloo (Git)"
 arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/kdelibs/baloo'
+url='https://community.kde.org/Baloo'
 license=(LGPL)
 depends=(baloo)
 makedepends=(extra-cmake-modules git kdoctools)
-source=('git://anongit.kde.org/baloo-widgets')
+source=("git+https://github.com/KDE/baloo-widgets.git")
 provides=(baloo-widgets)
 conflicts=(baloo-widgets)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd baloo-widgets
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../baloo-widgets \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
 }
