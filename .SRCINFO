@@ -1,0 +1,15 @@
+pkgbase = r-tmvnsim
+	pkgdesc = Truncated Multivariate Normal Simulation
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tmvnsim
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = r
+	source = https://cran.r-project.org/src/contrib/tmvnsim_1.0-2.tar.gz
+	md5sums = 50a38f2142ee328060aca7d2672b5dcf
+
+pkgname = r-tmvnsim
+
