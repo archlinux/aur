@@ -1,13 +1,13 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=discord-overlay-git
-pkgver=r49.0a2fa2f
-pkgrel=2
+pkgver=r77.51a1a0f
+pkgrel=1
 pkgdesc="QT5 Overlay for discord"
 arch=('x86_64')
 url="https://github.com/trigg/DiscordOverlayLinux"
 license=('GPL3')
-depends=('qt5-webengine' 'python-pyqtwebengine' 'python-pyqt5' 'python-pyxdg')
-makedepends=('git')
+depends=('python' 'qt5-webengine' 'python-pyqtwebengine' 'python-pyqt5' 'python-pyxdg')
+makedepends=('git' 'python-setuptools')
 optdepends=('picom: transparency support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,9 +22,13 @@ pkgver() {
 	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+build () {
+	cd "$srcdir/${pkgname%-git}"
+    python setup.py build
+}
+
 
 package() {
-	install -m 0755 -D -T "$srcdir/${pkgname%-git}/discord-overlay" "$pkgdir/usr/bin/discord-overlay"
-	install -m 0644 -D -T "$srcdir/${pkgname%-git}/discord-overlay.desktop" "$pkgdir/usr/share/applications/discord-overlay.desktop"
-	install -m 0644 -D -T "$srcdir/${pkgname%-git}/README.md" "$pkgdir/usr/share/doc/discord-overlay/README.md"
+	cd "$srcdir/${pkgname%-git}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
