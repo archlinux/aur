@@ -19,6 +19,11 @@ optdepends=('gtk-engine-murrine: GTK2 support'
 source=("${_pkgname}::git+https://github.com/jnsh/${_pkgname}.git")
 md5sums=('SKIP')
 
+# Latest stable Arch package versions
+_cinnamonver=4.6
+_gnomeshellver=3.36
+_gtk3ver=3.24
+
 pkgver() {
   cd "${_pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -27,9 +32,9 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   ./autogen.sh --prefix=/usr \
-    --with-cinnamon=4.6 \
-    --with-gnome-shell=3.36 \
-    --with-gtk3=3.24
+    --with-cinnamon="${_cinnamonver}" \
+    --with-gnome-shell="${_gnomeshellver}" \
+    --with-gtk3="${_gtk3ver}"
   make
 
   cd "${srcdir}"
@@ -37,9 +42,9 @@ build() {
 
   cd "${_pkgname}-solid"
   ./autogen.sh --prefix=/usr \
-    --with-cinnamon=4.6 \
-    --with-gnome-shell=3.36 \
-    --with-gtk3=3.24 \
+    --with-cinnamon="${_cinnamonver}" \
+    --with-gnome-shell="${_gnomeshellver}" \
+    --with-gtk3="${_gtk3ver}" \
     --disable-transparency
   make
 }
