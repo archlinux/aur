@@ -1,4 +1,5 @@
-# Maintainer:	Jesse Jaara	<gmail.com: jesse.jaara>
+# Maintainer: Phillip Schichtel <phillip@schich.tel>
+# Contributor:	Jesse Jaara	<gmail.com: jesse.jaara>
 # Contributor:	p2k		<uni-ulm.de: Patrick.Schneider>
 
 pkgname=ktlint
