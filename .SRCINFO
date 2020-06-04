@@ -8,6 +8,14 @@ pkgbase = zdkimfilter
 	arch = x86_64
 	license = GPL3
 	depends = courier-mta
+	depends = glibc>=2.31
+	depends = libidn2=2.3.0
+	depends = libunistring=0.9.10
+	depends = libutil-linux=2.35.2
+	depends = nettle=3.6
+	depends = opendbx=1.4.6
+	depends = opendkim=2.10.3
+	depends = zlib=1:1.2.11
 	options = debug
 	options = !strip
 	backup = etc/courier/filters/zdkimfilter.conf
@@ -18,13 +26,4 @@ pkgbase = zdkimfilter
 	sha512sums = SKIP
 
 pkgname = zdkimfilter
-	depends = courier-mta
-	depends = glibc>=2.31
-	depends = libidn2=2.3.0
-	depends = libunistring=0.9.10
-	depends = libutil-linux=2.35.2
-	depends = nettle=3.6
-	depends = opendbx=1.4.6
-	depends = opendkim=2.10.3
-	depends = zlib=1:1.2.11
 
