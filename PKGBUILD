@@ -1,8 +1,8 @@
-# Maintainer : Maël Kerbiriou <m431.kerbiriou@free.fr>
+# Maintainer : Maël Kerbiriou <m431.ker.biriou at gmail dot com>
 
 pkgbase=duckdb-git
 pkgname=('duckdb-git' 'python-duckdb-git')
-pkgver=v0.1.8.r5.g6978d121b
+pkgver=v0.1.8.r6.g439acd03a
 pkgrel=1
 pkgdesc="Embeddable SQL OLAP Database Management System"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.duckdb.org/"
 license=('MIT')
 makedepends=('git' 'cmake')
 checkdepends=('python-pytest')
-depends=('gcc-libs')
+depends=('gcc-libs' 'python-numpy' 'python-pandas')
 provides=('duckdb' 'python-duckdb')
 source=("${pkgbase}::git+https://github.com/cwida/${pkgbase%-git}.git")
 md5sums=('SKIP')
