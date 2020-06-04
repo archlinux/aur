@@ -1,0 +1,18 @@
+pkgbase = netron-bin
+	pkgdesc = Visualizer for neural network, deep learning and machine learning models
+	pkgver = 4.2.7
+	pkgrel = 1
+	url = https://lutzroeder.github.io/netron
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	provides = netron
+	noextract = netron-bin-4.2.7.AppImage
+	options = !strip
+	source = netron-bin-4.2.7.AppImage::https://github.com/lutzroeder/netron/releases/download/v4.2.7/Netron-4.2.7.AppImage
+	source = LICENSE::https://github.com/lutzroeder/netron/raw/master/LICENSE
+	sha256sums = 7f508bad75e1dfa548683a23146ceb9ab22c18a1a67b57b50830b81eab634c1a
+	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
+
+pkgname = netron-bin
+
