@@ -1,7 +1,9 @@
-# Maintainer: Bruce Zhang
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bruce Zhang
+
 pkgname=electron-fiddle
-_name=fiddle
-pkgver=0.11.1
+_pkgname=fiddle
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
@@ -9,28 +11,28 @@ url="https://electronjs.org/fiddle"
 license=('MIT')
 depends=('electron')
 makedepends=('npm')
-provides=('electron-fiddle')
-source=("$_name-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('e0452b4581afe40a3179b358d8d3e90dd13a3faf6a1382068136cf0361c09da2')
+provides=("$pkgname" "$pkgname")
+source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
+sha256sums=('c0ec8528c4882c0b98677486b773833625c6db93f44f36b4a7db5b57798d6212')
 
 prepare() {
 	local cache="$srcdir/npm-cache"
 	local dist="/usr/lib/electron"
 
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	npm install --cache "$cache"
 }
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	npm run package
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver/out/Electron Fiddle-linux-x64/resources"
+	cd "$srcdir/$_pkgname-$pkgver/out/Electron Fiddle-linux-x64/resources"
 	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
 
-	cd "$srcdir/$_name-$pkgver/assets/icons"
+	cd "$srcdir/$_pkgname-$pkgver/assets/icons"
 	install -Dm644 fiddle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/electron-fiddle.svg"
 
 	cd "$srcdir"
@@ -50,4 +52,6 @@ StartupNotify=true
 Categories=GNOME;GTK;Utility;
 " > electron-fiddle.desktop
 	install -Dm755 electron-fiddle.desktop "$pkgdir/usr/share/applications/electron-fiddle.desktop"
+	install -Dm644 $srcdir/$_pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
