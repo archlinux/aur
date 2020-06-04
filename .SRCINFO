@@ -1,0 +1,20 @@
+pkgbase = kodi-addon-game-libretro-mame-git
+	pkgdesc = MAME for Kodi
+	pkgver = r33.d0a07d7
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.mame
+	arch = armv7h
+	arch = x86_64
+	groups = kodi-addons
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = kodi-platform
+	depends = kodi-addon-game-libretro
+	depends = libretro-mame-git
+	source = kodi-addon-game-libretro-mame-git::git+https://github.com/kodi-game/game.libretro.mame.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kodi-addon-game-libretro-mame-git
+
