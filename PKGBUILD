@@ -4,7 +4,7 @@ _svt_hevc_ver='1.4.3'
 _svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r98015.ga886785018
+pkgver=4.3.r98041.ge34686d7ac
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -26,9 +26,9 @@ depends=(
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git'
-        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'pocketsphinx' 'rockchip-mpp'
+        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
+        'rockchip-mpp'
 )
 makedepends=(
     # official repositories:
@@ -45,12 +45,14 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        '050-ffmpeg-fix-svt-av1.patch'
         'LICENSE')
 sha256sums=('SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
+            '462a5f6bf588c199fb0a162fc00a4de22b5a2506dc811cfd6e989f54166b0ad8'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -59,14 +61,15 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-svt-av1.patch"
 }
 
 pkgver() {
     local _version
     local _revision
     local _shorthash
-    _version="$(git -C ffmpeg describe  --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$(git -C ffmpeg describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
+    _version="$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
+    _revision="$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')"
     _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
