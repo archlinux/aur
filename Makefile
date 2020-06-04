@@ -1,6 +1,18 @@
-.PHONY: all
+.PHONY: all clean repro
 
-all:
-	@rm *.tar.* .SRCINFO
+
+all: clean %-x86_64.pkg.tar.zst
+
+clean:
+	rm -rf *.tar.* *.log pkg/ src/
+
+.SRCINFO:	PKGBUILD
+	@updpkgsums
 	@makepkg --printsrcinfo > .SRCINFO
-	@sed -i 's/^sha512sums=.*$$/$(shell makepkg -g)/g' PKGBUILD
+
+%-x86_64.pkg.tar.zst: .SRCINFO
+	@extra-x86_64-build
+
+repro: %-x86_64.pkg.tar.zst
+	@makerepropkg -d *.pkg.tar.zst
+

@@ -1,9 +1,9 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=cryptsetup-vault
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A cli tool and initcpio hook to unlock a cryptdevice via HashiCorp Vault unattended"
-arch=('any')
+arch=(x86_64)
 url="https://gitlab.com/T4cC0re/cryptsetup-vault"
 license=('Apache-2.0')
 makedepends=('go>=1.11.1')
@@ -13,20 +13,8 @@ noextract=("${pkgname}-${pkgver}.tar.gz")
 
 build(){
   export CGO_ENABLED=0
-  echo "Extracting sources..."
   tar -xvf ${pkgname}-${pkgver}.tar.gz --strip 1 >/dev/null
-  echo "Downloading go modules..."
-  go mod download
-  echo "Verifying go modules..."
-  go mod verify
-  echo "Compiling..."
-  go build -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-extldflags=-static -ldflags='-w -s' -ldflags="-X main.version=v${pkgver}" -o $pkgname .
-  if hash upx &>/dev/null ; then
-    echo "UPX found. Making extra small..."
-    upx --lzma --best --all-filters --exact $pkgname
-  else
-    echo "Pro tip: Install the package 'upx' to compress $pkgname and save space"
-  fi
+  go build -trimpath -ldflags="-w -s -X main.version=v${pkgver} -extldflags=-Wl,-z,now,-z,relro" -buildmode=pie -o $pkgname .
 }
 
 package() {
@@ -35,4 +23,4 @@ package() {
   install -Dm644 "initcpio/hooks/cryptsetupvault"      "$pkgdir/usr/lib/initcpio/hooks/cryptsetupvault"
   install -Dm644 "initcpio/install/cryptsetupvault"    "$pkgdir/usr/lib/initcpio/install/cryptsetupvault"
 }
-sha512sums=(eabd407a6e11a7770b51208fca98c41e0b9ffb28524af6c8afbd3a32fa6e02116fb35b5cf3478eac72dcd0921de6ee9ccfa2bdde0ef5b8da547543fb895cc060)
+sha512sums=('ad2a4912a94f91def40e400204624e47c6f8538169ecc26ef8262c587cf5c5867b9fdccadece27649ec2e92e80474d7ef5d24e557c5892ca4f69168f1be75e69')
