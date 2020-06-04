@@ -1,0 +1,14 @@
+pkgbase = alusus
+	pkgdesc = ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية
+	pkgver = 0.6.1
+	pkgrel = 0
+	url = https://alusus.org/
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = python-pip
+	source = https://github.com/sulimanp/Alusus/archive/master.zip
+	md5sums = aece76ac530dafcd5561bd354d46ae05
+
+pkgname = alusus
+
