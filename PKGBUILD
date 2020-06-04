@@ -26,7 +26,10 @@ build() {
     cd "${srcdir}/rapiddisk"
 
     # build package
-    make DESTDIR=${pkgdir} all
+    cd src
+    make
+    cd ..
+    #make DESTDIR=${pkgdir} all
 
     # gzip manpages
     gzip -c doc/${_pkgbase}.1 > doc/${_pkgbase}.1.gz
@@ -39,14 +42,20 @@ package() {
 
     # standard installation
     #make DESTDIR=${pkgdir} install
+    cd src
+    make DESTDIR=${pkgdir} install
+    cd ../conf
+    make DESTDIR=${pkgdir} install
+    cd ../doc
+    make DESTDIR=${pkgdir} install
     mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-    cd module
+    cd ../module
     cp rapiddisk.c rapiddisk-cache.c dkms.conf Makefile ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cd ..
 
 
     # Arch's /sbin is a symbolic link to /usr/bin
-    #mv ${pkgdir}/sbin ${pkgdir}/usr/bin
+    mv ${pkgdir}/sbin ${pkgdir}/usr/bin
 
     # copy documentation
     install -Dm644 -t "${pkgdir}/usr/share/man/man1/" \
