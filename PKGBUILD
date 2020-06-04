@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.6
+pkgver=1.22.8
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 url="https://blogs.gnome.org/clutter/"
@@ -12,11 +12,9 @@ depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango
          libxrandr)
 makedepends=(gobject-introspection git gtk-doc)
 provides=(libcogl.so libcogl-{gles2,pango,path}.so)
-_commit=dd104794b0d5e477e4ac2dbf3382f873fb40e5e1  # tags/1.22.6^0
-source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit"
-        eglmesaext.diff)
-sha256sums=('SKIP'
-            '1d8909cbeea87964f1218bc545b17fa6d4369aadb63e9c2926ce7b17f76e6883')
+_commit=c2e25cef6bd7b3f12c8625f82956388e419cd046  # tags/1.22.8^0
+source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -25,10 +23,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
-  # Fix building with libglvnd headers
-  patch -Np1 -i ../eglmesaext.diff
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
