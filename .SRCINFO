@@ -1,17 +1,17 @@
 pkgbase = code-server
 	pkgdesc = VS Code in the browser
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/cdr/code-server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source = code-server-3.4.0.service::https://raw.githubusercontent.com/cdr/code-server/v3.4.0/ci/build/code-server.service
+	source = code-server-3.4.1.service::https://raw.githubusercontent.com/cdr/code-server/v3.4.1/ci/build/code-server.service
 	sha512sums = 7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280
-	source_x86_64 = https://github.com/cdr/code-server/releases/download/v3.4.0/code-server-3.4.0-linux-amd64.tar.gz
+	source_x86_64 = https://github.com/cdr/code-server/releases/download/v3.4.1/code-server-3.4.1-linux-amd64.tar.gz
 	sha512sums_x86_64 = e62779861d598c0a88916f31134161924f59e3fe9812688f1591280543c22533cb75c253e102245e7fb6e1cf00032e34f5ba3418b946d8370e2ab040bf87c5ff
-	source_aarch64 = https://github.com/cdr/code-server/releases/download/v3.4.0/code-server-3.4.0-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/cdr/code-server/releases/download/v3.4.1/code-server-3.4.1-linux-arm64.tar.gz
 	sha512sums_aarch64 = 3eaa6f7b0506d8a81cd6337bcd5487628e01d6967c33468529bb1a7164fb3276f2b19afbb1b70fcc93e25deafd675fff3b8a9e2c0856173da36aa009178e06df
 
 pkgname = code-server
