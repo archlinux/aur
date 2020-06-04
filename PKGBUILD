@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.05
+pkgver=2020.06
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
 _filesrev=29877042dd393774197b134426e37cb0dbabef34
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-current-kpe
-_commit=0d27c9d142253b4a55e53f01b079ac988e1fe219
+_commit=dce288a7f9b1e1ccd57f03f35d91b93519c87847
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.desktop::$_filesurl/waterfox-current.desktop"
         "distribution.ini::$_filesurl/distribution.ini"
