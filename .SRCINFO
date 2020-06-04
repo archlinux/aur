@@ -1,0 +1,13 @@
+pkgbase = lesspass
+	pkgdesc = Stateless open source password manager
+	pkgver = 9.1.9
+	pkgrel = 1
+	url = https://lesspass.com
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/l/lesspass/lesspass-9.1.9.tar.gz
+	sha256sums = a0ef5fff83f9b120cb579673cbb72b64bdc51bef5ac98aa32ffc774f27be6003
+
+pkgname = lesspass
+
