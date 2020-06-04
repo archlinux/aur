@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.14.0rc1.r2.g98483890e
+pkgver=1.14.0.r1.g38c1fdb14
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -22,17 +22,29 @@ depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
          'python-attrs' 'python-netaddr' 'python-sortedcontainers'
          'python-treq' 'python-psutil' 'python-sdnotify' 'python-jinja'
          'python-bleach' 'python-psutil' 'python-typing-extensions'
+         'python-idna' 'python-pyasn1-modules' 'python-six'
          'systemd')
 makedepends=('git')
-checkdepends=('python-lxml' 'python-mock' 'python-parameterized')
-optdepends=('python-psycopg2: PostgreSQL support'
-            'python-lxml: URL previewing')
+checkdepends=('python-lxml' 'python-mock' 'python-parameterized' 'python-authlib')
+optdepends=('python-matrix-synapse-ldap3: LDAP3 auth provider'
+            'python-psycopg2: PostgreSQL support'
+            "python-txacme: ACME support (Let's Encrypt)"
+            'python-pysaml2: SAML2 support'
+            'python-authlib: OIDC support'
+            'python-lxml: URL previewing'
+            'python-sentry_sdk: Sentry support'
+            'python-pyjwt: JWT support'
+            'python-txredisapi: worker communication via Redis'
+            'python-hiredis: worker communication via Redis (faster)')
 
 source=("git+https://github.com/matrix-org/synapse.git#branch=master"
+        '0001-synapse-python_dependencies.py-permit-prometheus_cli.patch'
         'synapse.service'
         'sysusers-synapse.conf')
 
+
 md5sums=('SKIP'
+         'bcbaf40db1116b0c4ec4e1dc8f5e89b6'
          'c4352682c5fb5eb0440ceb54a20ac4cb'
          'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
@@ -46,6 +58,15 @@ replaces=('matrix-synapse-py3-git')
 pkgver() {
 	cd synapse
 	git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/-r/./;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+        cd synapse
+        for p in "${source[@]}"; do
+                if [[ $p == *.patch ]]; then
+                        git apply -3 "$srcdir/$p"
+                fi
+        done
 }
 
 build() {
