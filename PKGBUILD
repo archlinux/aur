@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j9-git
-pkgver=9.01.18.20191222
+pkgver=9.02.03.20200604
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=('wget: for web/gethttp addon'
 makedepends=('clang')
             source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20191222.tar.gz')
-md5sums=('SKIP' 'SKIP' 'f848f0d79bebd08171a84ffb60777241')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j902_env_20200604.tar.gz')
+md5sums=('SKIP' 'SKIP' '97d95a813d13ff4c4242f701dd6c6a2f')
 install=j9-git.install
 
 pkgver() {
@@ -26,7 +26,7 @@ echo "$(head -c 7 jenv/usr/lib/j9/system/config/version.txt)"."$(date +%Y%m%d)"
 
 prepare() {
 cd ${srcdir}/jsource-master
-echo '#define jversion "901"' > jsrc/jversion.h
+echo '#define jversion "902"' > jsrc/jversion.h
 echo '#define jplatform "linux"' >> jsrc/jversion.h
 echo '#define jtype "build"' >> jsrc/jversion.h
 echo '#define jlicense "GPL3"' >> jsrc/jversion.h
@@ -39,6 +39,8 @@ sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
 sed -i "s@-mavx -DC_AVX=1@-mavx -march=native -DC_AVX=1@" make/build_libj.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
 sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
+cd ${srcdir}/qtide-master
+sed -i "s@#include <QPainter>@#include <QPainter>\n#include <QPainterPath>@" lib/wd/isigraph2.h
 }
 
 build() {
