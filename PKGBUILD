@@ -10,7 +10,6 @@ url='https://github.com/andmarti1424/sc-im'
 depends=(libxml2 libzip)
 optdepends=('libxlsxwriter: export to xlsx. Requires rebuild of sc-im'
             'gnuplot: create graphs')
-makedepends=(gcc8)
 license=('BSD')
 conflicts=('scim-spreadsheet' 'sc-im-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz"
@@ -31,7 +30,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver/src"
-  make CC=gcc-8
+  make CC='gcc -fcommon'
 }
 
 package() {

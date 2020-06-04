@@ -7,7 +7,6 @@ pkgbase = sc-im
 	arch = x86_64
 	arch = armv7h
 	license = BSD
-	makedepends = gcc8
 	depends = libxml2
 	depends = libzip
 	optdepends = libxlsxwriter: export to xlsx. Requires rebuild of sc-im
