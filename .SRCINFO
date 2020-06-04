@@ -1,0 +1,15 @@
+pkgbase = kanit-font
+	pkgdesc = a Thai + Latin formal sans serif font family with 18 styles
+	pkgver = 0
+	pkgrel = 1
+	url = https://cadsondemak.github.io/kanit
+	arch = any
+	license = OFL
+	provides = kanit-font
+	source = otf-kanit-0.zip::https://github.com//kanit/archive/f0c99c2461674524d19fe0922604325955caffec.zip
+	sha256sums = aba494422a553db35fc42b30be7a10e0c95b9aef3e6e9d0910ebd6742573fc8c
+
+pkgname = otf-kanit
+
+pkgname = ttf-kanit
+
