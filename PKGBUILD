@@ -21,8 +21,16 @@ pkgver() {
 }
 
 package() {
+
+    # use the original installation script
     cd "$_pkgname"
     chmod +x ./install.sh
     INSTALL_PATH=$pkgdir/usr ./install.sh
+
+    # fix link
+    rm "$pkgdir/usr/bin/mdpreview"
+    ln -s /usr/lib/mdpreview/mdpreview "$pkgdir/usr/bin"
+
+    # install license file
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
