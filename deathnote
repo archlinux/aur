@@ -13,13 +13,14 @@ echo -e "Welcome to DeathNote :\nWhat you would like to kill [process(p)/user_se
 read -p "Enter your choice: " var
 a="p"
 b="u"
-if [ $a = $var ]
+if [[ $a = "$var" ]]
 then
    read -p "Enter the process name: " pro
    killall -p $pro
-elif [ $b = $var ]
+elif [[ $b = "$var" ]]
 then 
 pkill -9 -u $(whoami)
 else
 echo Invalid  Choice!!!!
+exit 110
 fi
