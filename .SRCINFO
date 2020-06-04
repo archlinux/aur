@@ -1,0 +1,16 @@
+pkgbase = mfetch-git
+	pkgdesc = Yet another minimal bash CLI fetchlike utility.
+	pkgver = v1.0.r0.8ecf7db
+	pkgrel = 1
+	url = https://gitlab.com/rpolve/mfetch
+	install = mfetch.install
+	arch = any
+	license = WTFPL
+	makedepends = git
+	provides = mfetch
+	conflicts = mfetch
+	source = git+https://gitlab.com/rpolve/mfetch
+	md5sums = SKIP
+
+pkgname = mfetch-git
+
