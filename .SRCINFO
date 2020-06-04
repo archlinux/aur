@@ -1,5 +1,5 @@
 pkgbase = arch-sign-modules
-	pkgdesc = Helper scripts for Signed Kernel Modules
+	pkgdesc = Signed (In Tree & Out of Tree) Kernel Modules for linux-lts linux-hardened linux-zen
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/itoffshore/Arch-SKM
