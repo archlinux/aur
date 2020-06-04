@@ -1,7 +1,7 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname="rancher-k3d-bin"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Little helper to run Rancher Labs k3s in Docker'
 arch=('x86_64')
 url='https://github.com/rancher/k3d'
