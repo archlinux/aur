@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20200526
+	pkgver = 20200604
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -28,27 +28,13 @@ pkgbase = m64p
 	conflicts = mupen64plus-gui
 	conflicts = mupen64plus-video-gliden64
 	conflicts = mupen64plus
-	source = git+https://github.com/loganmc10/m64p.git#commit=19fd445e74a2d9672c13cee6df8798f2225f9fc8
-	source = git+https://github.com/m64p/mupen64plus-gui.git
-	source = git+https://github.com/m64p/mupen64plus-audio-sdl2.git
-	source = git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git
-	source = git+https://github.com/m64p/mupen64plus-input-qt.git
-	source = GLideN64-loganmc10::git+https://github.com/loganmc10/GLideN64.git
-	source = mupen64plus-core-loganmc10::git+https://github.com/loganmc10/mupen64plus-core.git
-	source = mupen64plus-input-raphnetraw-loganmc10::git+https://github.com/loganmc10/mupen64plus-input-raphnetraw.git
+	source = git+https://github.com/loganmc10/m64p.git#commit=bc57b4a0a53361978a1fdd9329e3a7091fcff088
 	source = 010-m64p-remove-build-jobs-limitation.patch
 	source = 020-m64p-enable-optimizations.patch
 	source = m64p.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = 9241207664cd3338ae38d02f30f7ae0f3e06c3593a50548d46bca6505181b5c2
-	sha256sums = bfd5ba0be1090bdf3460ff9e3794f79e88320e4417359f06380f7c48da241985
+	sha256sums = f4cdfe23cbf35724388e8b7d2ab7f8b93cad461759588deebf46b7eb8fd2367e
 	sha256sums = 8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808
 
 pkgname = m64p
