@@ -7,7 +7,7 @@ _jdkname=liberica-jdk-8-full
 pkgname="${_jdkname}-bin"
 _java_ver=8
 pkgver=8u252+9
-pkgrel=1
+pkgrel=2
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(i686 x86_64)
 url='https://bell-sw.com/'
@@ -61,7 +61,7 @@ package() {
   cd jdk${pkgver/+*/}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
-  cp -a . "${pkgdir}/${_jvmdir}/"
+  cp -a * "${pkgdir}/${_jvmdir}/"
 
   # copied from java8-openjdk
 
