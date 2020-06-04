@@ -1,7 +1,7 @@
 pkgbase = okteto
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes.
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/okteto/okteto
 	arch = x86_64
 	arch = aarch64
