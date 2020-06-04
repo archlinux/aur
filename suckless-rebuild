@@ -4,7 +4,7 @@ DESTDIR=~/.suckless
 BUILDDIR=~/.suckless-build
 
 usage() {
-  echo "Usage: suckless-rebuild st|slstatus <config.h>"
+  echo "Usage: suckless-rebuild dmenu|slstatus|st <config.h>"
   exit 1
 }
 
@@ -15,7 +15,7 @@ fi
 software=$1
 config=$2
 
-if [[ ! $software =~ ^st$|^slstatus$ ]]; then
+if [[ ! $software =~ ^dmenu$|^slstatus$|^st$ ]]; then
   echo "Unknown suckless software '$software'."
   exit 1
 fi
@@ -28,6 +28,7 @@ if [[ ! -f $config ]]; then
   exit 1
 fi
 
+# Move last build directory
 if [[ -e $BUILDDIR/$software ]]; then
   temp=$(mktemp -u -d /tmp/$software.XXXXX)
   mv "$BUILDDIR/$software" "$temp"
@@ -39,12 +40,12 @@ cp -f "$config" "$BUILDDIR/$software"
 
 cd "$BUILDDIR/$software"
 if make &> build.log && make PREFIX="$DESTDIR" install &> build.log; then
-  echo "Done! Recommend to add '~/.suckless/bin' to \$PATH to use new builded st."
+  echo "Done! Recommend to add '~/.suckless/bin' to \$PATH to use new builded $software."
 else
   echo "Some error occurred, check '$BUILDDIR/$software/build.log' to find more."
 fi
 if [[ -v temp ]]; then
-  sed -i "1i The last built directory was moved to $temp\n" build.log
+  sed -i "1i The last build directory was moved to $temp\n" build.log
 fi
 
 # vim: set filetype=sh:
