@@ -1,0 +1,16 @@
+pkgbase = python-flake8-eradicate
+	pkgdesc = Flake8 plugin to find commented out or dead code
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sobolevn/flake8-eradicate
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-dephell
+	depends = python-eradicate
+	source = https://github.com/sobolevn/flake8-eradicate/archive/0.4.0.tar.gz
+	sha512sums = 6e9907d4e1720c8cb34b684e9fa069ac37027246b53c10d4958f0d173bb18654c65c76fe08716c37bcedcf4e61262bee9b8b0d5b3f74feda987fe707a1c47c7c
+
+pkgname = python-flake8-eradicate
+
