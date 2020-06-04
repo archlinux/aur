@@ -1,0 +1,19 @@
+pkgbase = an9wer-dmenu
+	pkgdesc = An efficient dynamic menu for X
+	pkgver = 4.9.r5.gdb6093f
+	pkgrel = 1
+	url = https://tools.suckless.org/dmenu/
+	install = an9wer-dmenu.install
+	arch = x86_64
+	groups = an9wer-suckless
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = an9wer-suckless-rebuild>=0.1.2
+	source = dmenu::git://git.suckless.org/dmenu
+	md5sums = SKIP
+
+pkgname = an9wer-dmenu
+
