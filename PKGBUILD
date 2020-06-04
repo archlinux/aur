@@ -1,7 +1,7 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
 pkgname=sl-sh-git
-pkgver=0.8.62
+pkgver=0.8.63
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
@@ -40,7 +40,6 @@ build() {
 check() {
 	cd "${pkgname%-git}-$pkgver"
 	cargo check
-	#cargo test --release --locked
 }
 
 package() {
@@ -48,9 +47,4 @@ package() {
 	install -D -m 755 "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh" -t "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
 	cp ${srcdir}/${pkgname%-git}-$pkgver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-}
-
-pkgver() {
-	cd "${pkgname%-git}-$pkgver"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
