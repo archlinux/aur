@@ -1,7 +1,7 @@
 pkgbase = bitbox-udev
 	pkgdesc = Udev rules to connect bitbox01 and bitbox02 hardware wallets to your linux box
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://shiftcrypto.ch/
 	install = bitbox-udev.install
 	arch = any

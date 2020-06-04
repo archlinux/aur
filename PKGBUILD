@@ -3,7 +3,7 @@
 
 pkgname=bitbox-udev
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Udev rules to connect bitbox01 and bitbox02 hardware wallets to your linux box'
 arch=(any)
 url='https://shiftcrypto.ch/'
