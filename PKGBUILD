@@ -4,7 +4,7 @@
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-stable-git
-pkgver=1.3.0
+pkgver=1.3.0.r1.gc44d67ff
 pkgrel=1
 pkgdesc='Music player for GNOME (dev branch)'
 arch=(any)
