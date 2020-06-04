@@ -2,7 +2,7 @@
 pkgname=dependency-check-cli
 _pkgname=dependency-check
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies."
 arch=('any')
 depends=('java-runtime')

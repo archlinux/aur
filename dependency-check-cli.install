@@ -1,5 +1,6 @@
 post_install() {
 	groupadd dependencycheck
+	mkdir /opt/dependency-check/data
 	chown -R root:dependencycheck /opt/dependency-check/data
 	chmod -R g+w /opt/dependency-check/data
 	echo "    Users should be added to the 'dependencycheck' group to be able to perform vulnerability database updates."
@@ -7,6 +8,7 @@ post_install() {
 }
 
 post_upgrade() {
+	mkdir /opt/dependency-check/data
 	chown -R root:dependencycheck /opt/dependency-check/data
 	chmod -R g+w /opt/dependency-check/data
 }

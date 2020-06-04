@@ -1,7 +1,7 @@
 pkgbase = dependency-check-cli
 	pkgdesc = Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies.
 	pkgver = 5.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeremylong/DependencyCheck
 	install = dependency-check-cli.install
 	arch = any
