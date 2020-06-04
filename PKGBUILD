@@ -1,42 +1,57 @@
 # Maintainer: Jens Staal <staal1978 at gmail dot com>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Myrddin <darknesseatsall at aol dot com>
+
 pkgname=jdk10-openjdk-openj9-bin
-_pkgver_minor="0.2.13"
-_pkgver_split="0.2"
-_pkgver_build="13"
-_pkgver_minweb="0.2%2B13"
-_openj_ver="0.9.0"
-_majjver="10"
-pkgver=${_majjver}.${_pkgver_split}.u${_pkgver_build}
+_jdkver=10
+_jdkminor=0
+_jdkpatch=2
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
+_openj9ver=0.9.0
+_buildvershort=13
+_buildver=${_buildvershort}_openj9-${_openj9ver}
+pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_majjver}"
+pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
-url="https://adoptopenjdk.net/releases.html?variant=openjdk${_majjver}&jvmVariant=openj9#x64_linux"
-license=('custom')
+url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
+license=('GPL2')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
 provides=(
-"java-environment=${_majjver}" 
-"java-environment-openjdk=${_majjver}"
-"java-runtime=${_majjver}" 
-"java-runtime-openjdk=${_majjver}"
-"java-runtime-headless=${_majjver}"
-"java-runtime-headless-openjdk=${_majjver}"
+  "java-environment=${_jdkver}"
+  "java-environment-openjdk=${_jdkver}"
+  "java-runtime=${_jdkver}"
+  "java-runtime-openjdk=${_jdkver}"
+  "java-runtime-headless=${_jdkver}"
+  "java-runtime-headless-openjdk=${_jdkver}"
 )
-makedepends=('coreutils' 'bash')
-source=("https://github.com/AdoptOpenJDK/openjdk${_majjver}-openj9-releases/releases/download/jdk-${_majjver}.${_pkgver_minweb}_openj9-${_openj_ver}/OpenJDK${_majjver}-OPENJ9_x64_Linux_jdk-${_majjver}.${_pkgver_minor}_openj9-${_openj_ver}.tar.gz")
-noextract=("OpenJDK${_majjver}-OPENJ9_x64_Linux_jdk-${pkgver}_openj9-${_pkgver_minweb}.tar.gz")
-# https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.sha256.txt
-# extract automatically? [bash -c "${_pkgsum_sha256}"] Could this work?
+conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
+options=(!strip)
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-openj9-releases/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}-OPENJ9_x64_Linux_jdk-${_jdkfullver}.${_buildver}.tar.gz")
 sha256sums=('1ef0dab3853b2f3666091854ef8149fcb85970254558d5d62cfa9446831779d1')
 
-package() {
-    cd "$srcdir"
-    
-    mkdir -p "${pkgdir}/usr/lib/jvm/"
-    tar -xf OpenJDK${_majjver}-OPENJ9_x64_Linux_jdk-${_majjver}.${_pkgver_minor}_openj9-${_openj_ver}.tar.gz -C "${pkgdir}/usr/lib/jvm/"
-    mv "${pkgdir}/usr/lib/jvm/jdk-${_majjver}.${_pkgver_split}+${_pkgver_build}" "${pkgdir}/usr/lib/jvm/java-${_majjver}-j9"
-    mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s "/usr/lib/jvm/java-${_majjver}-j9/legal" "${pkgdir}/usr/share/licenses/java-${_majjver}-j9"
-    
-}
+_jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
+package() {
+  # Install
+  install -d "${pkgdir}/${_jvmdir}"
+  cd jdk-${_jdkfullver}+${_buildvershort}
+  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
+  # Link JKS keystore from ca-certificates-utils
+  rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+  # Legal
+  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-j9"
+  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-j9/"
+  ln -s /usr/share/licenses/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/legal"
+  # Conf
+  install -d "${pkgdir}/etc"
+  cp -r conf "${pkgdir}/etc/java${_jdkver}-j9"
+  ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
+  # Man pages
+  for f in man/man1/*; do
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk10-j9.1}"
+  done
+  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+}
+# vim:set ts=4 sw=4 et:
