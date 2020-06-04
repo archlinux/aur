@@ -1,15 +1,14 @@
 pkgbase = python-authlib
 	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
-	pkgver = 0.13
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://authlib.org/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-0.13.tar.gz
-	sha256sums = 401a4a184379a6551b79af30243ce1ad56da0a8da5b4925e0be260f07ee40009
+	source = https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-0.14.3.tar.gz
+	sha256sums = cc52908e9e996f3de2ac2f61bf1ee6c6f1c5ce8e67c89ff2ca473008fffc92f6
 
 pkgname = python-authlib
-	depends = python
 
