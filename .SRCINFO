@@ -1,0 +1,22 @@
+pkgbase = python-pyretri-git
+	pkgdesc = Open source deep learning based unsupervised image retrieval toolbox built on PyTorch
+	pkgver = 0.1.0.r83.c559bb8
+	pkgrel = 1
+	url = https://github.com/PyRetri/PyRetri
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-scikit-learn
+	depends = python-torchvision
+	depends = python-tqdm
+	depends = python-yacs
+	provides = python-pyretri=0.1.0.r83.c559bb8
+	conflicts = python-pyretri
+	source = PyRetri::git+https://github.com/PyRetri/PyRetri.git
+	sha512sums = SKIP
+
+pkgname = python-pyretri-git
+
