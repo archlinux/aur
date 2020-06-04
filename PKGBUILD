@@ -13,7 +13,7 @@ pkgrel=2
 pkgdesc="Maintenance version of Blender 2.80-release branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
+depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'openimagedenoise'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
@@ -22,7 +22,6 @@ makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=("blender-${pkgver%%.r*}")
 conflicts=("blender-${pkgver%%.r*}")
 license=('GPL')
-install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
 # the path in .gitmodules.
@@ -33,18 +32,16 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
-        blender-2.8.desktop
         SelectCudaComputeArch.patch
         python3.8.patch
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'cd108dca1c77607c6a7cc45aa284ea97'
-         '4441d9a6db38b85b7dc5c3c9e6872951'
-         '3b8c61d865e00e7d5d371824d46ac700')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
+            'e399be5e2646699e7fbde2bbb40a9d49b4019f942c9ad18b01b2ef8b9ee35959')
 
 pkgver() {
   cd "$srcdir/blender"
