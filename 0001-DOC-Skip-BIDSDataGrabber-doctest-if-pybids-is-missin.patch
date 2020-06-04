@@ -1,0 +1,44 @@
+From dc230ef7c9e6261164d66124f82918807473a81d Mon Sep 17 00:00:00 2001
+From: Chris Markiewicz <markiewicz@stanford.edu>
+Date: Thu, 4 Jun 2020 13:30:11 -0400
+Subject: [PATCH] DOC: Skip BIDSDataGrabber doctest if pybids is missing
+
+---
+ nipype/conftest.py      | 1 +
+ nipype/interfaces/io.py | 8 ++++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/nipype/conftest.py b/nipype/conftest.py
+index b099fd007..7323e7284 100644
+--- a/nipype/conftest.py
++++ b/nipype/conftest.py
+@@ -17,6 +17,7 @@ shutil.copytree(NIPYPE_DATADIR, data_dir)
+ def add_np(doctest_namespace):
+     doctest_namespace["np"] = numpy
+     doctest_namespace["os"] = os
++    doctest_namespace["pytest"] = pytest
+     doctest_namespace["datadir"] = data_dir
+ 
+ 
+diff --git a/nipype/interfaces/io.py b/nipype/interfaces/io.py
+index d9b578caa..2b2510f16 100644
+--- a/nipype/interfaces/io.py
++++ b/nipype/interfaces/io.py
+@@ -2895,6 +2895,14 @@ class BIDSDataGrabber(LibraryBaseInterface, IOBase):
+ 
+     Examples
+     --------
++
++    .. setup::
++
++        >>> try:
++        ...     import bids
++        ... except ImportError:
++        ...     pytest.skip()
++
+     By default, the BIDSDataGrabber fetches anatomical and functional images
+     from a project, and makes BIDS entities (e.g. subject) available for
+     filtering outputs.
+-- 
+2.27.0
+

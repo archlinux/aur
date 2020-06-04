@@ -10,7 +10,7 @@
 pkgname=python-nipype
 _name=${pkgname/python-/}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://github.com/nipy/nipype'
@@ -18,8 +18,9 @@ license=('Apache')
 depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'python-packaging' 'python-prov' 'python-pydot' 'python-pydotplus' 'python-dateutil' 'python-rdflib>=5.0.0' 'python-scipy' 'python-simplejson' 'python-traits' 'python-filelock' 'python-matplotlib' 'python-numpydoc' 'python-future' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-etelemetry>=0.2.0')
 makedepends=('python-sphinx' 'python-sphinxcontrib-napoleon')
 optdepends=('python-pybids' 'python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
-source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('dbbe74ac99740da749350a6957326bd78d6ba388694b0c09cd92575f111576af')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz" "0001-DOC-Skip-BIDSDataGrabber-doctest-if-pybids-is-missin.patch")
+sha256sums=('dbbe74ac99740da749350a6957326bd78d6ba388694b0c09cd92575f111576af'
+            '50dd1c4093399d05fdf0f6558f5d31ef6fdfd30771c23c54314e190e18a217d2')
 
 _setpaths(){
 
@@ -44,6 +45,14 @@ _setpaths(){
 
 }
 
+prepare() {
+
+    mv 0001-DOC-Skip-BIDSDataGrabber-doctest-if-pybids-is-missin.patch ${srcdir}/${_name}-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
+
+    patch --forward --strip=1 --input=0001-DOC-Skip-BIDSDataGrabber-doctest-if-pybids-is-missin.patch
+}
+
 
 build() {
 
@@ -55,6 +64,15 @@ build() {
 
 }
 
+check() {
+
+    cd ${srcdir}/${_name}-${pkgver}
+
+    _setpaths
+    echo "MATLABCMD: ${MATLABCMD}"
+
+    pytest -v --doctest-modules nipype
+}
 
 package() {
 
