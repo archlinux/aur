@@ -1,22 +1,22 @@
 pkgbase = kafka-manager
-	pkgdesc = A tool for managing Apache Kafka.
-	pkgver = 1.3.3.17
+	pkgdesc = A tool for managing Apache Kafka. Also known as CMAK.
+	pkgver = 3.0.0.4
 	pkgrel = 1
-	url = https://github.com/yahoo/kafka-manager
+	url = https://github.com/yahoo/CMAK
 	install = kafka-manager.install
 	arch = any
 	license = Apache
 	makedepends = sbt
 	makedepends = unzip
-	depends = java-environment=8
+	depends = java-environment>=11
 	depends = bash
 	backup = etc/kafka-manager.conf
-	source = https://github.com/yahoo/kafka-manager/archive/1.3.3.17.tar.gz
+	source = kafka-manager-3.0.0.4.tar.gz::https://github.com/yahoo/kafka-manager/archive/3.0.0.4.tar.gz
 	source = kafka-manager.conf
 	source = kafka-manager.service
-	md5sums = cf9a82bc684bbdebe5820d50d67053f8
-	md5sums = 8ee7f7d85857bfad3ad087678a47d270
-	md5sums = 22db3c3ad6b7772fad5513b5438b707b
+	md5sums = d19a1ba3fcc81ddba18ac0533d073183
+	md5sums = ce078e82f517feb2ba27db7d52e79324
+	md5sums = a5307a86a62d2689c11e9ef5d9619b1c
 
 pkgname = kafka-manager
 
