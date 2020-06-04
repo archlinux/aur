@@ -12,7 +12,7 @@ pkgver=20.05
 _buildver=20.05.09-1589035558
 _pkgverpostfix=""
 _electronver="6.1.4"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -21,6 +21,7 @@ arch=('i686' 'x86_64')
 license=('custom:MPL2.0')
 
 makedepends=('npm' 'grunt-cli'
+  'nodejs>=14.3.0'
   'ttf-droid'
   'jq' 'semver')
 
