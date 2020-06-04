@@ -1,15 +1,14 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Contributors: Achilleas Pipinellis, speed145a, Schnouki
+# Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
+# Contributor: Simon Brulhart <simon@brulhart.me>
+# Contributor: Det <nimetonmaili g-mail>, Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=62.0
-_major=${pkgver/rc*}
-_build=${pkgver/*rc}
+pkgver=77.0.1
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - Release"
-arch=('i686' 'x86_64')
-url="https://www.mozilla.org/"
+pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
+arch=('x86_64')
+url="https://www.mozilla.org/en-US/firefox/new/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
@@ -19,33 +18,28 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Sound'
             'upower: Battery API')
+options=(!strip)
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-install=$pkgname.install
-source=( "$_pkgname.sh"
-        "$pkgname.desktop")
-source_i686=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
-sha256sums=('fb7ffa69b4a7b133caec527d2ff5059280be8f4e6c6554a29cab1803761467df'
-            '6ff746b8e6d642accc64cb31f173d75b5d069167c0511aa1ff5010540a6e1310')
-sha256sums_i686=('ab4e848172223c746e4070afce15a000b890c5fa9321895a3858a4775a1c9f89')
-sha256sums_x86_64=('3fcd3faf06280dc54bc4544a13d10d40f81d6ef5235624116e846c65000aad13')
+source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2{,.asc}
+        $_pkgname.sh
+        $_pkgname.desktop)
+sha256sums=('03859fd56f79cb520e30bae2433b6f61f806c8f95e7576092894eb1d644e6ff1'
+            'SKIP'
+            '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
+            'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 
 package() {
   # Create directories
-  msg2 "Creating directory structure..."
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
   mkdir -p "$pkgdir"/opt
 
-  msg2 "Moving stuff in place..."
   # Install
-  cp -r firefox/ "$pkgdir"/opt/$_pkgname
+  cp -r firefox/ "$pkgdir"/opt/$pkgname
 
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
-  ln -s $_pkgname "$pkgdir"/usr/bin/$pkgname  # compatibility
-  ln -sf firefox "$pkgdir"/opt/$_pkgname/firefox-bin
 
   # Desktops
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
@@ -53,15 +47,15 @@ package() {
   # Icons
   for i in 16x16 32x32 48x48 64x64 128x128; do
     install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$_pkgname/browser/chrome/icons/default/default${i/x*}.png \
+    ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
           "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
   done
 
   # Use system-provided dictionaries
   #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
 
   # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
 }

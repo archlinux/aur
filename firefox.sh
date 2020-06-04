@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/firefox/firefox --class "Firefox" "$@"
+exec /opt/firefox-bin/firefox --class "Firefox" --name "Firefox" "$@"
