@@ -1,26 +1,31 @@
-# Maintainer: Luca P <meti at lplab.net>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Luca P <meti at lplab.net>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeffrey 'jf' Lim <jfs.world@gmail.com>
 
 pkgname=tnef
+pkgdesc="Program for unpacking ms-tnef MIME attachment"
 pkgver=1.4.18
-pkgrel=1
-arch=('x86_64' 'i686')
-pkgdesc="Program which operates like tar to unpack the files inside an ms-tnef MIME attachment"
+pkgrel=2
+arch=('x86_64')
 url="https://github.com/verdammelt/tnef"
 license=('GPL')
-depends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/verdammelt/tnef/archive/$pkgver.tar.gz")
+makedepends=('glibc')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('fa56dd08649f51b173017911cae277dc4b2c98211721c2a60708bf1d28839922')
 
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    autoreconf -fi
+}
+
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  [ -x configure ] || autoreconf
-  ./configure --prefix=/usr
-  make
+    cd "$srcdir"/$pkgname-$pkgver
+    ./configure --prefix=/usr
+    make  
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
 }
