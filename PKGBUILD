@@ -4,7 +4,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy
-pkgver=1.18.4
+pkgver=1.18.5
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools' 'gcc-fortran' 'python-nose' 'cython')
 checkdepends=('python-pytest')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
-sha512sums=('38a8eef1d51f746f1f9ab3e0d9e444cfa49312df7b32c34d707fc99ffd5f21af0e482e4c378bc890161c7d0f1efab6ce7d291825a4752793d3ffeefc3fb17fbc')
+sha512sums=('ff62527fd83b50d40a288deb1b8e30ff83eddcf747893bef3ec8f3dd5b7e699553aea5bffc3fd2aabdb5417de4e0b8b4ab78baa4915cfc123319ae4b5a04a8b4')
 
 build() {
   cd numpy-$pkgver
