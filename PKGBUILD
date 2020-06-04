@@ -1,5 +1,5 @@
 # Maintainer: Dan Campbell <dan at compiledworks dot com>
-# Former Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
+# Contributor: Jesus Alvarez <jeezusjr at gmail dot com>
 # Creator: Jan Hambrecht <jaham at gmx dot net>
 
 pkgname=spacenavd
