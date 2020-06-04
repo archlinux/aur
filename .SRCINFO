@@ -1,13 +1,15 @@
 pkgbase = nagircbot
 	pkgdesc = IRC bot announcing Nagios status
 	pkgver = 0.0.33
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.vanheusden.com/nagircbot/
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	license = GPL
-	depends = openssl
+	depends = gcc-libs=10.1.0
+	depends = glibc>=2.31
+	depends = openssl=1.1.1.g
 	source = https://www.vanheusden.com/nagircbot/nagircbot-0.0.33.tgz
 	sha512sums = 1e4d69cef4a425e8540ff408688cf7899c04098ec47acbd6da601f48e01f808958982e7d8a1519934bd5aa895fe0f8dedc51d80460f85097355d5bdea79fd708
 
