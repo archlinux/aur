@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/ardour5/themes/
+  mkdir -p ${pkgdir}/usr/share/ardour6/themes/
   cd "$srcdir/${pkgname}"
-  cp recbox-ardour.colors "$pkgdir/usr/share/ardour5/themes/"
+  cp recbox-ardour.colors "$pkgdir/usr/share/ardour6/themes/"
 }
