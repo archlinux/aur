@@ -1,0 +1,14 @@
+pkgbase = python-codetiming
+	pkgdesc = A flexible, customizable timer for your Python code
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/codetiming/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/92/a5/990e22c3f67e26db8e7dbbf58dc503748b7dca58ab2fda876fa69d30b04c/codetiming-1.2.0.tar.gz
+	sha256sums = bc0d19fedfc66c8f8ffd2245d2bd5ae88005ecff5f740a67c9cc776083db4a8e
+
+pkgname = python-codetiming
+
