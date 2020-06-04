@@ -9,13 +9,25 @@
 pkgname=jabberd2
 pkgver=r1175.376e632
 _commit=${pkgver#*.}
-pkgrel=21
+pkgrel=22
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
 arch=('i686' 'pentium4' 'x86_64' 'armv6h')
 url='http://jabberd2.org/'
 license=('GPL')
 options=('!libtool')
-depends=('udns' 'expat' 'gsasl' 'libidn' 'openssl')
+_pinned_dependencies=(
+  'expat=2.2.9'
+  'glibc>=2.31'
+  'gsasl=1.8.1'
+  'libidn=1.35'
+  'openssl=1.1.1.g'
+  'pam=1.3.1'
+  'postgresql-libs=12.3'
+  'sqlite=3.32.1'
+  'udns=0.4'
+  'zlib=1:1.2.11'
+)
+depends=("${_pinned_dependencies[@]}")
 optdepends=('sqlite3' 'postgresql-libs')
 makedepends=('git' 'sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
