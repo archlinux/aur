@@ -27,7 +27,7 @@ provides=('google-chrome')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=beta
-source=("http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
+source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
 sha512sums=('0adf8e38f71490d41690fd698de74edd5e161c2c9f9b666287d5b3e57f9a0099f518b3db2550eaa0e90138baab4f2ca07a24474d52b062149756b297f39afc3e'
