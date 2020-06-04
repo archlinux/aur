@@ -1,18 +1,19 @@
 pkgbase = rp-pppoe-gui
 	pkgdesc = GUI for Roaring Penguin's Point-to-Point Protocol over Ethernet client
-	pkgver = 3.13
+	pkgver = 3.14
 	pkgrel = 1
 	url = http://www.roaringpenguin.com/pppoe/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = rp-pppoe=3.13
+	depends = rp-pppoe=3.14
 	depends = tk
 	options = !makeflags
 	options = !emptydirs
-	source = https://dianne.skoll.ca/projects/rp-pppoe/download/rp-pppoe-3.13.tar.gz
+	source = https://dianne.skoll.ca/projects/rp-pppoe/download/rp-pppoe-3.14.tar.gz
 	source = kmode.patch
-	md5sums = ec9dccd9a367a1f71f2dc81069796dd8
+	validpgpkeys = FC2E9B645468698FD7B21655C1842E2A126F42E0
+	md5sums = 399ec9f69149f4a42edf0b4f5ac2173c
 	md5sums = 8df35e67558b6b4567d1ab24c9202898
 
 pkgname = rp-pppoe-gui
