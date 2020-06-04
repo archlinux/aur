@@ -3,7 +3,7 @@
 
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
-pkgver=3.31.2.r010.gfd0753b23
+pkgver=3.37.2.r004.g2faecfeeb
 pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
@@ -44,7 +44,7 @@ build() {
                 -DCMAKE_INSTALL_PREFIX=/usr \
                 -DLIBEXEC_INSTALL_DIR=/usr/lib \
                 -DSYSCONF_INSTALL_DIR=/etc \
-                -DENABLE_GTK_DOC=ON \
+                -DENABLE_GTK_DOC=OFF \
                 -DENABLE_INTROSPECTION=ON \
                 -DENABLE_UOA=OFF \
                 -DENABLE_VALA_BINDINGS=ON \
