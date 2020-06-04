@@ -1,26 +1,18 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=st-syaoran-git
 _dir=st-syaoran
-pkgver=0.8.3.r8.cca4032
+pkgver=0.8.3.r20.00aadff
 pkgrel=1
 pkgdesc="This is my st (suckless/simple terminal) build."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/st-syaoran.git"
 license=('MIT')
-groups=()
-depends=('ttf-liberation' 'dmenu')
+depends=(ttf-liberation)
 makedepends=(make ncurses libxext git)
-checkdepends=()
-optdepends=('picom')
 provides=(st)
 conflicts=(st)
-replaces=()
-backup=()
-options=()
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
     cd "${_dir}"
