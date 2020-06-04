@@ -1,0 +1,13 @@
+pkgbase = python-eradicate
+	pkgdesc = Removes commented-out code from Python files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/myint/eradicate
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/myint/eradicate/archive/v1.0.tar.gz
+	sha512sums = 720662c25a571791d9ffe15aaaff7b67f5c73945a855defb7b0dec9379031eb9f1d5e5b9b132ba520a0ff14e5af1eb2e110aeb2621a0df75b5cc16c93307ab6a
+
+pkgname = python-eradicate
+
