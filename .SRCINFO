@@ -1,0 +1,24 @@
+pkgbase = jdk10-openj9-bin
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk10
+	pkgver = 10.0.2b13_openj9_0.9.0
+	pkgrel = 1
+	url = https://adoptopenjdk.net/index.html?variant=openjdk10&jvmVariant=openj9
+	arch = x86_64
+	license = GPL2
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=10
+	provides = java-environment-openjdk=10
+	provides = java-runtime=10
+	provides = java-runtime-openjdk=10
+	provides = java-runtime-headless=10
+	provides = java-runtime-headless-openjdk=10
+	conflicts = jdk10-openj9-bin
+	conflicts = jdk10-openj9
+	options = !strip
+	source = https://github.com/AdoptOpenJDK/openjdk10-openj9-releases/releases/download/jdk-10.0.2%2B13_openj9-0.9.0/OpenJDK10-OPENJ9_x64_Linux_jdk-10.0.2.13_openj9-0.9.0.tar.gz
+	sha256sums = 1ef0dab3853b2f3666091854ef8149fcb85970254558d5d62cfa9446831779d1
+
+pkgname = jdk10-openj9-bin
+
