@@ -1,0 +1,13 @@
+pkgbase = python-flake8-assertive
+	pkgdesc = Flake8 unittest assert method checker
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/jparise/flake8-assertive
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/jparise/flake8-assertive/archive/1.2.1.tar.gz
+	sha512sums = 908a1e3e4b2ef0cdfab1ebe04598b8802aa532247e8eabb7eed7ce775c4b790b4178533f86a17e49fbe0e53b090ac942ef4541130d09656f5ed1874106952e57
+
+pkgname = python-flake8-assertive
+
