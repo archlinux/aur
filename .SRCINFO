@@ -3,7 +3,6 @@ pkgbase = mfetch-git
 	pkgver = v1.0.r0.8ecf7db
 	pkgrel = 1
 	url = https://gitlab.com/rpolve/mfetch
-	install = mfetch.install
 	arch = any
 	license = WTFPL
 	makedepends = git

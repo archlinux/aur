@@ -9,7 +9,6 @@ license=('WTFPL')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=mfetch.install
 source=('git+https://gitlab.com/rpolve/mfetch')
 md5sums=('SKIP')
 
