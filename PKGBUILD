@@ -2,7 +2,7 @@
 
 _name=groovy
 pkgname=groovy-sdk
-pkgver=2.5.9
+pkgver=2.5.12
 pkgrel=1
 pkgdesc='SDK for groovy language'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 optdepends=("groovy: the binaries")
 source=("https://dl.bintray.com/groovy/maven/apache-${pkgname}-${pkgver}.zip")
 options=(!strip)
-sha256sums=("6660c5e98226faea4de6c191bc3e33eb9159e8f4251d1a38de612a8e2030cae3")
+sha256sums=(9c876d514ccaaab350e7352038cf37c635c68fc7d0864d3676e32c04955f1fe7)
 
 package() {
 
