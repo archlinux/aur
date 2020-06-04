@@ -1,0 +1,25 @@
+#!/bin/sh
+allowAbort=true;
+myInterruptHandler()
+{
+    if $allowAbort; then
+        echo -e "\nCome back soon to fill the Deathnote !!!!!!" && exit 1;
+    fi;
+}
+# register signal handler
+trap myInterruptHandler SIGINT;
+result=$(figlet DeathNote | lolcat --force) && echo "$result"  
+echo -e "Welcome to DeathNote :\nWhat you would like to kill [process(p)/user_session(u)]??"
+read -p "Enter your choice: " var
+a="p"
+b="u"
+if [ $a = $var ]
+then
+   read -p "Enter the process name: " pro
+   killall -p $pro
+elif [ $b = $var ]
+then 
+pkill -9 -u $(whoami)
+else
+echo Invalid  Choice!!!!
+fi

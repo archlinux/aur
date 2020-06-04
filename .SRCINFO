@@ -1,0 +1,18 @@
+pkgbase = deathnote
+	pkgdesc = This is the DeathNote. It can kill, not human's but processes and sessions executing in your system.
+	pkgver = 1.0.r30.99e6741
+	pkgrel = 1
+	url = https://gitlab.com/mayankgite/deathnote.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = figlet
+	depends = lolcat
+	provides = deathnote
+	source = deathnote
+	source = deathnote.desktop
+	md5sums = b99d9e4a63729ceebf6a752852ff3f18
+	md5sums = a8f6a7dbfe88951ff2541da4be218952
+
+pkgname = deathnote
+
