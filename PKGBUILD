@@ -1,9 +1,8 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
-
 pkgbase=cp210x
 pkgname=(cp210x cp210x-dkms)
 pkgver=2019.7.12
-pkgrel=3
+pkgrel=4
 pkgdesc='Silicon Labs CP210x RS232 serial adaptor driver'
 url='https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers'
 arch=("$(uname -m)")
@@ -15,11 +14,8 @@ source=("https://www.silabs.com/documents/login/software/Linux_3.x.x_4.x.x_VCP_D
 sha256sums=('7d624cd66ee610fd9c6598793534ed593ac1309b3d3b3699c101d921ad9ccd7c'
             '62da72a3f8f9566326168a759cb5cc54b8c39aeb6594e1b4229774868c7eb3d2')
 
-build() {
-  make KVERSION="$(</usr/src/linux/version)"
-}
-
 package_cp210x() {
+  make KVERSION="$(</usr/src/linux/version)"
   install -Dt "$pkgdir/usr/lib/modules/$(</usr/src/linux/version)/extramodules" -m644 *.ko
   find "$pkgdir" -name '*.ko' -exec xz {} +
 
