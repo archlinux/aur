@@ -2,7 +2,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=sia-daemon
-pkgver=1.4.8
+pkgver=1.4.10
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -10,12 +10,15 @@ arch=('x86_64')
 url="https://sia.tech"
 license=('MIT')
 depends=('glibc')
-source=("https://sia.tech/releases/Sia-${_pkgver}-linux-amd64.zip")
-sha512sums=('8967e506eabd7212e035f937d91aaec8fa2cb26053a8af0cd4ae2feb3f15b4be9cacb1447ce793905c81911eaabdf40b19d1d2fa0343b9a987811b2bb4757285')
+source=("https://sia.tech/releases/Sia-${_pkgver}-linux-amd64.zip"
+	"https://gitlab.com/NebulousLabs/Sia/-/raw/master/LICENSE")
+sha512sums=('4db274a6599a60144ec703b1c7dae3e120a7d7d44b5ec1e2058d736bbf4d34660302cabdf46de18e5db9d048fdc2d36797572c114a9c17d8fa0756b20ed45b1b'
+            'f2eb222fff7fe71e37e2e60ed34630fbcf5464a8b05de415b346002f8b33b0a2735027649d595280f026801ba26978442b743abc54dc5451c7f8396979f5b1ae')
 
 package() {
   cd $srcdir/Sia-$_pkgver-linux-amd64
 
   install -Dm755 siac "${pkgdir}/usr/bin/siac"
   install -Dm755 siad "${pkgdir}/usr/bin/siad"
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
