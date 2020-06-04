@@ -1,31 +1,42 @@
 #!/usr/bin/env bash
 
+VERSION=0.1.3
+
 DESTDIR=~/.suckless
 BUILDDIR=~/.suckless-build
 
-usage() {
-  echo "Usage: suckless-rebuild dmenu|slstatus|st <config.h>"
-  exit 1
+die() {
+  echo "${@:2}"
+  exit $1
 }
 
-if [[ ${#@} != 2 || $1 =~ ^-h$|^--help$ || $2 =~ ^-h$|^--help$ ]]; then
-  usage
-fi
+usage() {
+  die $1 "Usage: suckless-rebuild dmenu|slstatus|st <config.h>"
+}
 
-software=$1
-config=$2
+version() {
+  die $1 "suckless-build $VERSION"
+}
+
+case $1 in
+  dmenu|slstatus|st ) software=$1; config=$2 ;;
+  -V|--version ) version 0 ;;
+  -h|--help) usage 0 ;;
+  * ) usage 1 ;;
+esac
+
+if [[ ${#@} != 2 ]]; then
+  usage 1
+fi
 
 if [[ ! $software =~ ^dmenu$|^slstatus$|^st$ ]]; then
-  echo "Unknown suckless software '$software'."
-  exit 1
+  die 1 "Unknown suckless software '$software'."
 fi
 if [[ ! -d /usr/src/$software ]]; then
-  echo "'an9wer-$software' may not be installed."
-  exit 1
+  die 1 "'an9wer-$software' may not be installed."
 fi
 if [[ ! -f $config ]]; then
-  echo "'$config' is not a regular file."
-  exit 1
+  die 1 "'$config' is not a regular file."
 fi
 
 # Move last build directory
@@ -36,7 +47,7 @@ fi
 
 mkdir -p "$BUILDDIR"
 cp -r /usr/src/$software "$BUILDDIR/$software"
-cp -f "$config" "$BUILDDIR/$software"
+cp -f "$config" "$BUILDDIR/$software/config.h"
 
 cd "$BUILDDIR/$software"
 if make &> build.log && make PREFIX="$DESTDIR" install &> build.log; then
