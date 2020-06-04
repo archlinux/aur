@@ -3,15 +3,15 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.8
-pkgrel=2
+pkgver=2.2.9
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3'
+depends=('python-jsonschema' 'python-aiohttp' 'python-aiohttp-cors'
          'python-async_generator' 'python-aiofiles'
          'python-yarl' 'python-jinja' 'python-raven' 'python-psutil'
          'python-zipstream-gns3' 'python-prompt_toolkit' 'python-async-timeout'
@@ -26,14 +26,14 @@ optdepends=('dynamips: Cisco router emulator.'
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('9e4d8d633ebb13fe2ad5b2099370dc894f7e4e4a5d59a898573dafde97f83970'
+sha256sums=('054f37586551fb806d432ba8490ca85fc98da8897f0efae3672e2389fc698f79'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
     cd "$pkgname-$pkgver"
     sed -i \
+        -e 's|^aiofiles==0\.4\.0$|aiofiles>=0.4.0|' \
         -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' \
-        -e 's|^yarl==1.3.0 .*|yarl>=1.3.0|' \
         requirements.txt
 }
 
