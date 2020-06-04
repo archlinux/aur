@@ -1,0 +1,22 @@
+pkgbase = tmulti-git
+	pkgdesc = Manage multiple Telegram Desktop account
+	pkgver = r16.ced5984
+	pkgrel = 1
+	url = https://github.com/andrew-ld/tmulti
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt5-base
+	makedepends = imagemagick
+	depends = telegram-desktop
+	depends = qt5-base
+	provides = tmulti
+	source = tmulti::git+https://github.com/andrew-ld/tmulti
+	source = tmulti.desktop
+	sha1sums = SKIP
+	sha1sums = 42425bb1b5c33d5aab7ca8236a2766aac63fa1ab
+
+pkgname = tmulti-git
+

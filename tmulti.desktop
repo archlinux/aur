@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=TMulti
+Comment=Manage multiple Telegram Desktop account
+TryExec=telegram-desktop
+Exec=tmulti -- %u
+Icon=tmulti
+Terminal=false
+StartupWMClass=TMulti
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
