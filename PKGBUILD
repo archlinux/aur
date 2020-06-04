@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=81.0.4044.138
-pkgrel=2
+pkgver=83.0.4103.97
+pkgrel=1
 _pkgname=chromium
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -19,7 +19,8 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-                             'clang' 'lld' 'gn' 'java-runtime-headless')
+                             'clang' 'lld' 'gn' 'java-runtime-headless'
+             'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -27,17 +28,27 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
-        rebuild-Linux-frame-button-cache-when-activation.patch
         clean-up-a-call-to-set_utf8.patch
-        icu67.patch
+        iwyu-std-numeric_limits-is-defined-in-limits.patch
+        add-missing-algorithm-header-in-crx_install_error.cc.patch
+        libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+        include-memory-header-to-get-the-definition-of-std-u.patch
+        make-some-of-blink-custom-iterators-STL-compatible.patch
+        avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+        v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+        chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('f478f28b8111cb70231df4c36e754d812ad7a94b7c844e9d0515345a71fd77a6'
+sha256sums=('12c405f61284cfc78f8c2b6600f3c1ae61a83b639c41087bb4f74fcaab036f83'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
-            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
-            '5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006'
+            '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
+            '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
+            '50687079426094f2056d1f4806dc30fc8d6bad16190520e57ba087ec5db1d778'
+            '071326135bc25226aa165639dff80a03670a17548f2d2ff5cc4f40982b39c52a'
+            '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
+            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
+            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
+            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -87,15 +98,32 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/1049258
-  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
-  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
-
   # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
   patch -Np1 -i ../clean-up-a-call-to-set_utf8.patch
 
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2153111
+  patch -Np1 -F3 -i ../iwyu-std-numeric_limits-is-defined-in-limits.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2152333
+  patch -Np1 -i ../add-missing-algorithm-header-in-crx_install_error.cc.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2132403
+  patch -Np1 -i ../libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2164645
+  patch -Np1 -i ../include-memory-header-to-get-the-definition-of-std-u.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2174199
+  patch -Np1 -i ../make-some-of-blink-custom-iterators-STL-compatible.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
+  patch -Np1 -i ../avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+
   # https://crbug.com/v8/10393
-  patch -Np3 -d v8 <../icu67.patch
+  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-83-gcc-10.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -114,6 +142,7 @@ prepare() {
     find "third_party/$_lib" -type f \
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
+      \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
       \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
@@ -157,7 +186,6 @@ build() {
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
-    'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
@@ -194,27 +222,47 @@ package() {
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  #ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
   install -Dm644 chrome/app/resources/manpage.1.in \
     "$pkgdir/usr/share/man/man1/chromium.1"
   sed -i \
-    -e "s/@@MENUNAME@@/Chromium/g" \
-    -e "s/@@PACKAGE@@/chromium/g" \
-    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    -e 's/@@MENUNAME@@/Chromium/g' \
+    -e 's/@@PACKAGE@@/chromium/g' \
+    -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
-  cp \
-    out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/*.bin \
-    "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+  sed -i \
+    -e 's/chromium-browser\.desktop/chromium.desktop/' \
+    -e '/<update_contact>/d' \
+    -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+
+  local toplevel_files=(
+    chrome_100_percent.pak
+    chrome_200_percent.pak
+    resources.pak
+    v8_context_snapshot.bin
+
+    # ANGLE
+    libEGL.so
+    libGLESv2.so
+
+    #chromedriver
+  )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+    toplevel_files+=(icudtl.dat)
   fi
+
+  cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
