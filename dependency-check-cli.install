@@ -15,4 +15,5 @@ post_upgrade() {
 
 post_remove() {
 	groupdel dependencycheck
+	rm -fr /opt/dependency-check
 }
