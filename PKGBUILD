@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.3.2.r2476.e37a65c7
+pkgver=1.4.3.2.r2493.c334fe4c
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -16,9 +16,9 @@ optdepends=('miniupnpc: UPnP support'
             'python-miniupnpc: Python bindings for miniupnpc'
             'python-geoip: for geo-blocker'
             'python-feedparser: for Reddit plugin'
-            'gspell: for spell checking support'
-            'nuspell: for spell checking support'
-            'libappindicator-gtk3: for tray icon support'
+            'gspell: for spell checking in chat'
+            'nuspell: for spell checking in chat'
+            'libappindicator-gtk3: for tray icon'
             'gsound: for sound effects')
 checkdepends=('python-pytest')
 #checkdepends=('python-pytest-xvfb' 'robotframework' 'miniupnpc')
@@ -40,9 +40,17 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-#	nicotine --version | grep Nicotine+
+
+	# Basic sanity check
+	./nicotine --version | grep Nicotine+
+
+	# Perform local in-tree unit tests
 	pytest test/unit
-#	xvfb-run robot test/integration/nicotine.robot
+
+	# Requires Nicotine+ to be installed
+
+		# Run the GUI inside of a dummy frame buffer
+#		xvfb-run robot test/integration/nicotine.robot
 }
 
 package() {
