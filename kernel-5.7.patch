@@ -1,0 +1,52 @@
+--- a/kernel/conftest.sh	2020-06-02 22:58:18.105955835 +0200
++++ b/kernel/conftest.sh	2020-06-02 22:52:18.043929185 +0200
+@@ -434,6 +434,21 @@
+             compile_check_conftest "$CODE" "NV_SET_MEMORY_ARRAY_UC_PRESENT" "" "functions"
+         ;;
+ 
++	set_pages_array_uc)
++            #
++            # Determine if the set_pages_array_uc() function is present.
++            #
++            CODE="
++            #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
++            #include <asm/set_memory.h>
++            #endif
++            void conftest_set_pages_array_uc(void) {
++                set_pages_array_uc();
++            }"
++
++            compile_check_conftest "$CODE" "NV_SET_PAGES_ARRAY_UC_PRESENT" "" "functions"
++	;;
++
+         sysfs_slab_unlink)
+             #
+             # Determine if the sysfs_slab_unlink() function is present.
+--- a/kernel/nvidia/nv-vm.c	2020-06-02 22:58:17.379955781 +0200
++++ b/kernel/nvidia/nv-vm.c	2020-06-02 22:56:22.865947306 +0200
+@@ -81,7 +81,14 @@
+ {
+     switch (type)
+     {
+-#if defined(NV_SET_MEMORY_ARRAY_UC_PRESENT)
++#if defined(NV_SET_PAGES_ARRAY_UC_PRESENT)
++        case NV_MEMORY_UNCACHED:
++            set_pages_array_uc((struct page**)&pages, num_pages);
++            break;
++        case NV_MEMORY_WRITEBACK:
++            set_pages_array_wb((struct  page**)&pages, num_pages);
++            break;
++#elif defined(NV_SET_MEMORY_ARRAY_UC_PRESENT)
+         case NV_MEMORY_UNCACHED:
+             set_memory_array_uc(pages, num_pages);
+             break;
+--- a/kernel/nvidia/nvidia.Kbuild	2020-06-02 23:35:16.595120035 +0200
++++ b/kernel/nvidia/nvidia.Kbuild	2020-06-02 23:35:10.096119554 +0200
+@@ -105,6 +105,7 @@
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += list_is_first
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_memory_uc
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_memory_array_uc
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_pages_array_uc
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += change_page_attr
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_get_class
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_choose_state

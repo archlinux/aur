@@ -6,7 +6,7 @@
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
 pkgver=390.132
-pkgrel=36
+pkgrel=37
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -18,11 +18,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         'kernel-4.16.patch'
         'kernel-5.5.patch'
-        'kernel-5.6.patch')
+        'kernel-5.6.patch'
+        'kernel-5.7.patch')
 sha256sums=('b6b4b8af37e78e026c9ebdf4a5c64ea412dfcb710931dd028c22dac228de659d'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
             'c72d89546b6dbd332e678800e48acbcdb29c1e1f23f986f77cee2c46b1a91e75'
-            '9e820398ad71c6ea14a8efc6b0f61a38000971c00a5ac4e5959686569dabb3c7')
+            '9e820398ad71c6ea14a8efc6b0f61a38000971c00a5ac4e5959686569dabb3c7'
+            'ebe1505ea53975de41d15558327b342ece59f564af367a3050711e3f4183cc87')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
@@ -37,6 +39,9 @@ prepare() {
 
     # Patch to make it compile under linux 5.6
     patch -Np1 -i ../kernel-5.6.patch
+
+    # Patch to make it compile under linux 5.7 - Courtesy of jopadan
+    patch -Np1 -i ../kernel-5.7.patch
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
