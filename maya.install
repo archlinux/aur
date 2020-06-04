@@ -1,27 +1,35 @@
 show_msg() {
-    echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2017/bin/License.env
+    echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2020/bin/License.env
 
-    /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
+    /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService --nolsb
 
     read -r -d '' POSTINSTALLMGG << EOF
-## In order to activate Maya, you need to run its registration setup file and
-## enter your registration information.
+## In order to activate Maya, at firts you need to 
+## start the Autodesk Licensing Service
 
 ## Run:
 
-$ sudo /opt/maya-setup/setup
+$ sudo systemctl start adsklicensing
+
 
 ## When it asks for your registration information,
 ## go to http://www.autodesk.com/education/free-software/maya
-## and create a student account. Next, select Maya 2017 for the version,
+## and create a student account. Next, select Maya 2020 for the version,
 ## Linux as the operating system, and English for the language.
 
-## Follow the setup all the way through. Installation will fail, but that's
-## normal.
-    
+## Then you must to register Maya manually
+
+## Run:
+
+$ sudo /opt/Autodesk/AdskLicensing/9.2.1.2399/helper/AdskLicensingInstHelper register --pk 657L1  --pv 2020.0.0.F --cf /var/opt/Autodesk/Adlm/Maya2020/MayaConfig.pit --el en --sn yourserialnumber
+
+with your serial number
+
 ## Next, run Maya to activate the licence.
 
-$ maya2017
+$ maya2020
+
+## Select "enter a serial number", then Maya starts
 
 ## Maya uses the Alt key to move around, so if your window manager uses
 ## pure Alt for moving the window around, change it to Meta or something.
@@ -36,9 +44,22 @@ EOF
 }
 
 post_install() {
+    getent group adsklic &>/dev/null || sudo groupadd adsklic
+    id -u adsklic &>/dev/null || sudo useradd -M -r -g adsklic adsklic -d / -s /usr/sbin/nologin
+
+    chown -R adsklic:adsklic /var/opt/Autodesk/
+
+    xset +fp /usr/share/fonts/100dpi/ #Helvantica fix
+    xset +fp /usr/share/fonts/75dpi/
+    xset fp rehash
     show_msg
 }
 
 post_upgrade() {
     show_msg
+}
+
+post_remove() {
+    rm -r /var/opt/
+    rm -r /usr/autodesk
 }
