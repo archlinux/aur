@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=mbed-os6
-_pkgver=6.0.0-beta-1
+_pkgver=6.0.0
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc='Source code for Arm Mbed OS v6'
@@ -10,7 +10,7 @@ url="https://os.mbed.com"
 license=('Apache')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-os/archive/mbed-os-${_pkgver}.tar.gz"
         'mbed-os6.install')
-sha256sums=('b358e32ff7823dfa01f1d8ba32ae3381c46c957b38d2c8a15792178974cfa8e4'
+sha256sums=('962df825f90f933745820d1e5656e4f15988cce1b79339dc8c60f2b4320f964a'
             '6b0b9674caa5bd90c84793d09b111ff0791b7ee4b9d94e28908009663334000c')
 provides=('mbed-os')
 install='mbed-os6.install'

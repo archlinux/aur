@@ -1,6 +1,6 @@
 pkgbase = mbed-os6
 	pkgdesc = Source code for Arm Mbed OS v6
-	pkgver = 6.0.0beta1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://os.mbed.com
 	install = mbed-os6.install
@@ -10,9 +10,9 @@ pkgbase = mbed-os6
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = mbed-os6-6.0.0beta1.tar.gz::https://github.com/ARMmbed/mbed-os/archive/mbed-os-6.0.0-beta-1.tar.gz
+	source = mbed-os6-6.0.0.tar.gz::https://github.com/ARMmbed/mbed-os/archive/mbed-os-6.0.0.tar.gz
 	source = mbed-os6.install
-	sha256sums = b358e32ff7823dfa01f1d8ba32ae3381c46c957b38d2c8a15792178974cfa8e4
+	sha256sums = 962df825f90f933745820d1e5656e4f15988cce1b79339dc8c60f2b4320f964a
 	sha256sums = 6b0b9674caa5bd90c84793d09b111ff0791b7ee4b9d94e28908009663334000c
 
 pkgname = mbed-os6
