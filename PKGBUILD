@@ -1,0 +1,25 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
+_cranname=cowplot
+_cranver=1.0.0
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
+pkgrel=1
+pkgdesc="Streamlined Plot Theme and Plot Annotations for 'ggplot2'"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2)
+depends=('r>=3.5.0' 'r-ggplot2>=2.2.1' r-gtable r-rlang r-scales)
+optdepends=(r-cairo r-covr r-dplyr r-forcats r-gridgraphics r-knitr r-lattice r-magick r-maps r-paswr r-rmarkdown r-testthat r-tidyr r-vdiffr r-venndiagram)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('61e6ce26a52570bf1c9f515cf7f3873d')
+
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
