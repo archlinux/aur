@@ -1,8 +1,8 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=ledger-live
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Open source companion app for your Ledger devices"
 arch=('x86_64')
 url="https://www.ledgerwallet.com/live"
@@ -11,7 +11,7 @@ makedepends=(yarn python nodejs-lts-erbium)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('317d3aee21afb444a606e15eb010dfcd553cb6fbe5c51c605f3004622d94fbe3e96bfc45d6940a9ed1ad6851b4f1836ee522f69aa33a5cd967e6796273b6f4af'
+sha512sums=('36223f078b2b7a7ad163467610483f32c0dafe94739b027c9cc2abafccc26c0a16d3217c6550057273360b01abf7a83328646607ab2a73aef374e2894d0dbb12'
             '282faf948b4ab1204f61d838e8362c398ffa731533c75f2b42056a53b939255de89b82e4a9553c161874694f27089070217e56cad18a258e0b18796ab4722955')
 # TODO sign with ledger pgp
 validpgpkeys=()
@@ -46,4 +46,5 @@ package() {
   install -D -m644 \
     "build/icons/icon@4x.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ledger-live.png"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
