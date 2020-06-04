@@ -1,6 +1,6 @@
 pkgbase = passbook-stable-git
 	pkgdesc = Password manager for GNOME (stable branch: last release + fixes)
-	pkgver = 0.8.r10.ge5c158f
+	pkgver = 0.8.r13.gbc16dcd
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gnumdk/passbook
 	arch = any
