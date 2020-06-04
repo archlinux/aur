@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.8
+pkgver=2.2.9
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -11,15 +11,16 @@ url='https://github.com/GNS3/gns3-gui'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'gns3-converter' 'python-distro' 'python-raven' 'python-psutil'
-         'python-pyqt5' 'python-sip' 'qt5-svg' 'qt5-websockets' 'desktop-file-utils')
+depends=('python-jsonschema' 'gns3-converter' 'python-distro' 'python-raven'
+         'python-psutil' 'python-pyqt5' 'python-sip' 'qt5-svg' 'qt5-websockets'
+         'desktop-file-utils' 'python-sentry_sdk')
 optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
             'dynamips: Cisco router emulator.'
             'xterm: Default terminal emulator for CLI management of virtual instances.'
             'wireshark-qt: Live packet capture.')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop')
-sha256sums=('f602d69cdf3cd64ee4f0de0390f7271e079df8387e087123d1a0f0d5c8ed5d5e'
+sha256sums=('b85d3e581741b77bd7fb04580683f89459127beda9852621032604a58c6b998a'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
 
 prepare() {
