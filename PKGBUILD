@@ -7,6 +7,7 @@ arch=('x86_64')
 url='https://github.com/rancher/k3d'
 license=('MIT')
 provides=("k3d")
+conflicts=("rancher-k3d-beta-bin")
 source=("${pkgname}-${pkgver}::https://github.com/rancher/k3d/releases/download/v$pkgver/k3d-linux-amd64")
 sha256sums=('da9ff31bcf4377fadfb065f4998d347f19de1168a5a553ce2c23b763ee1f6098')
 

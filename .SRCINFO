@@ -6,6 +6,7 @@ pkgbase = rancher-k3d-bin
 	arch = x86_64
 	license = MIT
 	provides = k3d
+	conflicts = rancher-k3d-beta-bin
 	source = rancher-k3d-bin-1.7.0::https://github.com/rancher/k3d/releases/download/v1.7.0/k3d-linux-amd64
 	sha256sums = da9ff31bcf4377fadfb065f4998d347f19de1168a5a553ce2c23b763ee1f6098
 
