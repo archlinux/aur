@@ -1,6 +1,6 @@
 pkgbase = foundationdb-clients-bin
 	pkgdesc = FoundationDB clients and library. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains client utilities and libraries.
-	pkgver = 6.2.19
+	pkgver = 6.2.20
 	pkgrel = 1
 	url = https://www.foundationdb.org
 	install = foundationdb-clients-bin.install
@@ -12,8 +12,8 @@ pkgbase = foundationdb-clients-bin
 	depends = tar>=1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://www.foundationdb.org/downloads/6.2.19/ubuntu/installers/foundationdb-clients_6.2.19-1_amd64.deb
-	sha256sums_x86_64 = 7635ef697ef3d1b7d7f107f2411f98252a89dc341d821ce21aa38f647a225768
+	source_x86_64 = https://www.foundationdb.org/downloads/6.2.20/ubuntu/installers/foundationdb-clients_6.2.20-1_amd64.deb
+	sha256sums_x86_64 = 330ba31b2240e40d1fd27b173a623db043d3bb953d21edc4e8e9add429bebff9
 
 pkgname = foundationdb-clients-bin
 
