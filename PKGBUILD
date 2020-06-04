@@ -4,9 +4,9 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='https://wiki.ros.org/laser_filters'
 
 pkgname='ros-melodic-laser-filters'
-pkgver='1.8.10'
+pkgver='1.8.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -44,15 +44,8 @@ depends=(
 )
 
 _dir="laser_filters-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz"
-  CMakeLists-signal.patch)
-sha256sums=('5c4e508e4ed30c98ad74158c62e665e6044ce4b5d44b9fb1fc2589c00552c923'
-            'bf96a9ab678f7811ba2d99cb07e0eaaa0a7c03f5604878970ba3acda18931a3c')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz")
+sha256sums=('8c81c29f6e48daa6c120ddc72088b7a84d9753f91cb5027e745b0a94f9fd41fb')
 
 build() {
 	# Use ROS environment variables.
