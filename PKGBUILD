@@ -10,6 +10,7 @@ depends=(
   'courier-mta'
 )
 _pinned_dependencies=(
+  'glibc>=2.31'
   'libidn2=2.3.0'
   'libunistring=0.9.10'
   'libutil-linux=2.35.2'

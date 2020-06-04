@@ -19,6 +19,7 @@ pkgbase = zdkimfilter
 
 pkgname = zdkimfilter
 	depends = courier-mta
+	depends = glibc>=2.31
 	depends = libidn2=2.3.0
 	depends = libunistring=0.9.10
 	depends = libutil-linux=2.35.2
