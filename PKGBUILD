@@ -1,20 +1,20 @@
 # Maintainer: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="http://www.snapmaker.com"
 license=('AGPL v3')
 arch=('x86_64')
-md5sums=('ab939afafe59b93e85c508f174752975'
-         '4030a38f07ebc0a322355a160e669e65'
-)
-
+options=('!strip')
 source=(
     "https://github.com/Snapmaker/Luban/releases/download/v${pkgver}/snapmaker-luban-${pkgver}-linux-amd64.deb"
     "https://snapshot.debian.org/archive/debian/20191014T030756Z/pool/main/g/gconf/libgconf-2-4_3.2.6-6_amd64.deb"
 )
-
+sha256sums=(
+    '1d1bedc5ea63b0c5abf93f50da94ef3f3fff6ff4ca170ac6a358bac24de74a9f'
+    '57a77787a3b29cef92470e2ffdf6582924bfdab2f38d089c490c5ac8511c60cd'
+)
 noextract=("${source[@]##*/}")
 
 prepare() {
