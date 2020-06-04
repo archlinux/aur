@@ -9,17 +9,17 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
-url='https://pypi.python.org/pypi/prov/'
+url='https://github.com/nipy/nipype'
 license=('Apache')
-depends=('python-etelemetry' 'python-filelock' 'python-matplotlib' 'python-numpy' 'python-numpydoc' 'python-scipy' 'python-networkx' 'python-traits' 'python-dateutil' 'python-nibabel' 'python-future' 'python-simplejson' 'python-prov' 'python-click' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-pydotplus' 'python-pydot' 'python-packaging')
-makedepends=('python-sphinx')
-optdepends=('python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
-source=("https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('935b660bfd81f773bd5291a90a921cc226f62940950c094be04f080f6c69501d')
+depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'python-packaging' 'python-prov' 'python-pydot' 'python-pydotplus' 'python-dateutil' 'python-rdflib>=5.0.0' 'python-scipy' 'python-simplejson' 'python-traits' 'python-filelock' 'python-matplotlib' 'python-numpydoc' 'python-future' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-etelemetry>=0.2.0')
+makedepends=('python-sphinx' 'python-sphinxcontrib-napoleon')
+optdepends=('python-pybids' 'python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
+sha256sums=('dbbe74ac99740da749350a6957326bd78d6ba388694b0c09cd92575f111576af')
 
 _setpaths(){
 
