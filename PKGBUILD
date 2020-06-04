@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('MIT')
 groups=('an9wer-suckless')
 makedepends=('git')
-depends=('libx11' 'libxinerama' 'libxft' 'an9wer-suckless-rebuild>=0.1.2')
+depends=('libx11' 'libxinerama' 'libxft' 'an9wer-suckless-rebuild>=0.1.3')
 install=$pkgname.install
 source=("$_pkgname::git://git.suckless.org/dmenu")
 md5sums=('SKIP')

@@ -11,7 +11,7 @@ pkgbase = an9wer-dmenu
 	depends = libx11
 	depends = libxinerama
 	depends = libxft
-	depends = an9wer-suckless-rebuild>=0.1.2
+	depends = an9wer-suckless-rebuild>=0.1.3
 	source = dmenu::git://git.suckless.org/dmenu
 	md5sums = SKIP
 
