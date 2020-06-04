@@ -1,0 +1,30 @@
+pkgbase = r-rstatix
+	pkgdesc = Pipe-Friendly Framework for Basic Statistical Tests
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rstatix
+	arch = any
+	license = GPL2
+	depends = r>=3.3.0
+	depends = r-tidyr>=1.0.0
+	depends = r-purrr
+	depends = r-broom
+	depends = r-rlang>=0.3.1
+	depends = r-tibble>=2.1.3
+	depends = r-dplyr>=0.7.1
+	depends = r-magrittr
+	depends = r-corrplot
+	depends = r-tidyselect>=1.0.0
+	depends = r-car
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-ggpubr
+	optdepends = r-emmeans
+	optdepends = r-coin
+	optdepends = r-testthat
+	optdepends = r-spelling
+	source = https://cran.r-project.org/src/contrib/rstatix_0.5.0.tar.gz
+	md5sums = 087f8b0e1af60bc4c4af2c1e31e121f3
+
+pkgname = r-rstatix
+
