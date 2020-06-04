@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd $startdir/src/$pkgname
-  return $(test -x hovacui)
+  return $(test -x src/elinks)
 }
 
 package() {
