@@ -1,6 +1,6 @@
 pkgbase = stremio
 	pkgdesc = A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)
-	pkgver = 4.4.106
+	pkgver = 4.4.107
 	pkgrel = 1
 	url = https://www.stremio.com/
 	arch = x86_64
@@ -17,20 +17,20 @@ pkgbase = stremio
 	depends = qt5-quickcontrols2
 	depends = qt5-translations
 	depends = qt5-webchannel
-	source = git+https://github.com/Stremio/stremio-shell.git#tag=4.4.106
+	source = git+https://github.com/Stremio/stremio-shell.git#tag=4.4.107
 	source = git+https://github.com/Ivshti/libmpv.git
 	source = git+https://github.com/itay-grudev/SingleApplication.git
 	source = git+https://github.com/Ivshti/razerchroma.git
-	source = stremio-4.4.106-server.js::https://dl.strem.io/four/v4.4.106/server.js
-	source = stremio-4.4.106-stremio.asar::https://dl.strem.io/four/v4.4.106/stremio.asar
-	source = stremio-do-not-download-server-js.patch
+	source = stremio-4.4.107-server.js::https://dl.strem.io/four/v4.4.107/server.js
+	source = stremio-4.4.107-stremio.asar::https://dl.strem.io/four/v4.4.107/stremio.asar
+	source = 010-stremio-do-not-download-server-js.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4b5a091b936ad324c58a57fe635c0dc3a93f851092535f4f92163cddcb143517
-	sha256sums = 2775741ca73537ece1f7d528c8778246eb738efc4a1942c86e9e8d475fd0ec2e
-	sha256sums = b1febe31374eaceefc1f869d574a00f7f5414eafa8b5d0a92a5f511078ba3add
+	sha256sums = 23abaeba95b162adcec4fd8109d3865fa43aafd5ac3f74c0e4f3645667993006
+	sha256sums = 09ef380e54478362bf073e11eb26cdaa39198bf22b511d2e55c62e408cba7330
+	sha256sums = 931c14dbc0df3f3bfcf6a6b1e54718b180f703ca65528039698f44c3ae1e8fec
 
 pkgname = stremio
 

@@ -1,6 +1,5 @@
-diff -Naurp a/release.makefile b/release.makefile
---- a/release.makefile	2019-06-01 17:55:19.000000000 +0000
-+++ b/release.makefile	2019-06-01 17:58:39.254503016 +0000
+--- a/release.makefile
++++ b/release.makefile
 @@ -8,7 +8,7 @@ SERVER_JS := server.js
  
  STREMIO_BIN := ${BUILD_DIR}/stremio
@@ -10,7 +9,7 @@ diff -Naurp a/release.makefile b/release.makefile
  
  install:
  	make -C ${BUILD_DIR} install
-@@ -24,14 +24,11 @@ icons:
+@@ -27,14 +27,11 @@ icons:
  	mkdir -p "$@"
  	cd "$@" && printf 16,22,24,32,64,128 | xargs -I^ -d, sh -c 'rsvg-convert ../images/stremio.svg -w ^ -o smartcode-stremio_^.png && rsvg-convert ../images/stremio_tray_white.svg -w ^ -o smartcode-stremio-tray_^.png'
  

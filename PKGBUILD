@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.106
+pkgver=4.4.107
 pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
@@ -16,14 +16,14 @@ source=("git+https://github.com/Stremio/stremio-shell.git#tag=${pkgver}"
         'git+https://github.com/Ivshti/razerchroma.git'
         "stremio-${pkgver}-server.js"::"https://dl.strem.io/four/v${pkgver}/server.js"
         "stremio-${pkgver}-stremio.asar"::"https://dl.strem.io/four/v${pkgver}/stremio.asar"
-        'stremio-do-not-download-server-js.patch')
+        '010-stremio-do-not-download-server-js.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '4b5a091b936ad324c58a57fe635c0dc3a93f851092535f4f92163cddcb143517'
-            '2775741ca73537ece1f7d528c8778246eb738efc4a1942c86e9e8d475fd0ec2e'
-            'b1febe31374eaceefc1f869d574a00f7f5414eafa8b5d0a92a5f511078ba3add')
+            '23abaeba95b162adcec4fd8109d3865fa43aafd5ac3f74c0e4f3645667993006'
+            '09ef380e54478362bf073e11eb26cdaa39198bf22b511d2e55c62e408cba7330'
+            '931c14dbc0df3f3bfcf6a6b1e54718b180f703ca65528039698f44c3ae1e8fec')
 
 prepare() {
     git -C stremio-shell submodule init
@@ -33,8 +33,8 @@ prepare() {
     git -C stremio-shell submodule update
     
     # do not download server.js during 'make'
-    ln -s "${srcdir}/stremio-${pkgver}-server.js" stremio-shell/server.js
-    patch -d stremio-shell -Np1 -i "${srcdir}/stremio-do-not-download-server-js.patch"
+    ln -s "../stremio-${pkgver}-server.js" stremio-shell/server.js
+    patch -d stremio-shell -Np1 -i "${srcdir}/010-stremio-do-not-download-server-js.patch"
 }
 
 build() {
@@ -54,13 +54,15 @@ package() {
     ln -s ../../../opt/stremio/smartcode-stremio.desktop "${pkgdir}/usr/share/applications/smartcode-stremio.desktop"
     
     # icons
+    local _file
     local _res
-    for _res in 16 22 24 32 64 128
+    while read -r -d '' _file
     do
+        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//')"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         ln -s ../../../../../../opt/stremio/icons/smartcode-stremio_${_res}.png \
               "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/smartcode-stremio.png"
         ln -s ../../../../../../opt/stremio/icons/smartcode-stremio-tray_${_res}.png \
               "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/smartcode-stremio-tray.png"
-    done
+    done < <(find "${pkgdir}/opt/stremio/icons" -maxdepth 1 -type f -name 'smartcode-stremio_*.png' -print0)
 }
