@@ -1,14 +1,13 @@
 pkgbase = gnome-web-photo
 	pkgdesc = Generate full-size image files and thumbnails from HTML files and web pages
 	pkgver = 0.10.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.gnome.org/Archive/gnome-web-photo
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = intltool
 	depends = webkitgtk
-	depends = icu64
 	source = https://download.gnome.org/sources/gnome-web-photo/0.10/gnome-web-photo-0.10.6.tar.xz
 	sha256sums = 1353fc1abe9fcd38b3e09c6282e43aeb0c306201a4df9e25d4834407ba2cbe7f
 
