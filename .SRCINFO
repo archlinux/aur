@@ -1,0 +1,18 @@
+pkgbase = keep-cli-git
+	pkgdesc = Keep-cli is a cli Google Keep client. You can add, delete, and manage your Google Keep notes.
+	pkgver = 0.1.6.r98.621deef
+	pkgrel = 1
+	url = https://github.com/zack-ashen/keep-cli
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = keep-cli
+	conflicts = keep-cli
+	source = git+https://github.com/zack-ashen/keep-cli
+	md5sums = SKIP
+
+pkgname = keep-cli-git
+
