@@ -1,0 +1,14 @@
+[Unit]
+Description=usbip client
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/usbip/remote-devices/%i.conf
+ExecStart=/bin/sh -c "/usr/bin/usbip attach -r $USBIP_HOST -b $(/usr/bin/usbip list -r $USBIP_HOST | grep $USBIP_DEVICE | cut -d: -f1)"
+ExecStop=/bin/sh -c "/usr/bin/usbip detach -p $(/usr/bin/usbip port | grep -B1 $USBIP_DEVICE | grep '<Port in Use>' | sed -E 's/^Port ([0-9][0-9]).*/\\1/')"
+
+#[Install]
+#WantedBy=multi-user.target
+

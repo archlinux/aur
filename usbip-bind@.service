@@ -1,0 +1,17 @@
+# /etc/systemd/system/usbip-bind@.service
+[Unit]
+Description=USB-IP Binding on bus id %I
+After=network-online.target usbipd.service
+Wants=network-online.target
+Requires=usbipd.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/usbip/bind-devices/%i.conf
+ExecStart=/bin/sh -c "/usr/bin/usbip bind -b $(/usr/bin/usbip list -p -l | grep '#usbid=$USBIP_DEVICE#' | cut '-d#' -f1)"
+RemainAfterExit=yes
+ExecStop=/bin/sh -c "/usr/bin/usbip unbind -b $(/usr/bin/usbip list -p -l | grep '#usbid=$USBIP_DEVICE#' | cut '-d#' -f1)"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

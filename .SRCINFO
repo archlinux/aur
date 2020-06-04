@@ -1,0 +1,20 @@
+pkgbase = usbip-systemd
+	pkgdesc = Systemd service files for usbip - remote host and local client
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = usbip
+	backup = etc/usbip/remote-devices/remote.conf
+	backup = etc/usbip/bind-devices/bind.conf
+	source = usbip-bind@.service
+	source = usbip@.service
+	source = remote.conf
+	source = bind.conf
+	sha256sums = 30f77b2bc666ec7360328aac2c7336dd77535dd9addf73083c672a7e20aaf2dc
+	sha256sums = 068c9680948e00997d78acd84eaccd78cf12c8bc332af9e10893679b9be61cc0
+	sha256sums = bf5c1ab65307aaedc964ab4666bcfde0f031149b64e5c832730d684f630b25d8
+	sha256sums = b7da25a1e649c1b18ff8736b355c2d5535038c9bfe85160b15ca5889f1bba67b
+
+pkgname = usbip-systemd
+

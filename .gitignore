@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!bind.conf
+!remote.conf
+!usbip@.service
+!usbip-bind@.service
