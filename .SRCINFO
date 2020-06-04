@@ -1,6 +1,6 @@
 pkgbase = gitleaks
 	pkgdesc = Audit Git repos for secrets and keys
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/zricethezav/gitleaks
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gitleaks
 	license = MIT
 	makedepends = go-pie
 	depends = glibc
-	source = https://github.com/zricethezav/gitleaks/archive/v4.3.0/gitleaks-v4.3.0.tar.gz
-	sha256sums = 4ef9eaef76e14123ecb3e55d3d1b11b35faa5e030935f5764f42a18a25edd3df
+	source = https://github.com/zricethezav/gitleaks/archive/v4.3.1/gitleaks-v4.3.1.tar.gz
+	sha256sums = 0a109362ccc1b773407112c8fa81718c09c861fdefdaa19312316aa4f88ef1e0
 
 pkgname = gitleaks
 
