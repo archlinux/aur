@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=shuffledns
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A wrapper around massdns written in go"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ conflicts=('shuffledns')
 depends=("massdns")
 makedepends=("go-pie")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f33540acb21c9ab7e2b21f35ce6b5c16707402a60e0fd62819bd1f868343ce60')
+sha256sums=('efdb8e28561de1b72e02e2e7853963b384e49744edc07cecceaf53913a943b68')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/${pkgname}
