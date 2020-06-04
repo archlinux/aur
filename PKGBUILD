@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 # TODO systemd service
 pkgname=keys-pub
-pkgver=0.0.45
+pkgver=0.0.47
 pkgrel=1
 pkgdesc='keys.pub CLI client and service (keys, keysd)'
 arch=('x86_64' 'i686')
@@ -10,22 +10,20 @@ license=('MIT')
 depends=('libfido2')
 makedepends=('git' 'go' 'gzip')
 optdepends=('org.freedesktop.secrets: storing secrets')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keys-pub/keysd/archive/v${pkgver}.tar.gz")
-sha256sums=('4669de6c0225442531c01afaba76bb3241f5e1604245ea77e16abb4c940f7ae8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keys-pub/keys-ext/archive/v${pkgver}.tar.gz")
+sha256sums=('c9ada22e3bb7424c06838fa299288b5a2506ed7d659a5230ddc1e08a29f66cd2')
 
 prepare() {
-  cd "keysd-${pkgver}"
-  # replace all keys-pub/keysd modules except http/api (tests fail)
-  find -type f -name go.mod -exec sed -i 's#// \?\(replace github.com/keys-pub/keysd\)#\1#g; /^replace github.com\/keys-pub\/keysd\/http\/api/d' {} +
-
-  # add missing replaces
-  echo 'replace github.com/keys-pub/keysd/firestore => ../../firestore' >> http/client/go.mod
-  for i in service/go.mod wormhole/go.mod; do
-    echo 'replace github.com/keys-pub/keysd/firestore => ../firestore' >>"$i"
-  done
-
-  # go mod tidy all over the place
-  find -type f -name go.mod -execdir go mod tidy \;
+  cd "keys-ext-${pkgver}"
+  # lots of the components fetch an older version of themselves. not gonna use the replace directive
+  # on all of them. this is an upstream issue
+  (
+    cd auth/rpc
+    go mod download
+  )
+  cd service
+  sed -i 's#// \?\(replace github.com/keys-pub/keys-ext\)#\1#g' go.mod
+  go mod tidy
 }
 
 build() {
@@ -36,7 +34,7 @@ build() {
     main.date="$(date -u -d @${SOURCE_DATE_EPOCH:-$EPOCHSECONDS} +%FT%TZ)"
   )
 
-  cd "keysd-${pkgver}/service"
+  cd "keys-ext-${pkgver}"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -44,18 +42,26 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
 
+  (
+    cd auth/rpc
+    go build -o ../../fido2.so -buildmode=plugin ./plugin
+  )
+  cd service
   go build -o .. -ldflags "${x[*]/#/-X=}" ./{keys,keysd}
-  go build -o ../fido2.so -buildmode=plugin ./fido2
 }
 
 check() {
-  cd "keysd-${pkgver}"
-  # firestore tests require external dependencies, http/api never used
-  find -type f -name go.mod -not \( -path ./firestore/go.mod -or -path ./http/api/go.mod \) -execdir go test -short ./... \;
+  cd "keys-ext-${pkgver}"
+  (
+    cd auth/rpc
+    go test -failfast -short ./...
+  )
+  cd service
+  go test -short ./...
 }
 
 package() {
-  cd "keysd-${pkgver}"
+  cd "keys-ext-${pkgver}"
   install -Dm755 keys keysd -t "${pkgdir}/usr/bin"
   install -m644 fido2.so -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
