@@ -1,12 +1,13 @@
 pkgbase = arch-sign-modules
 	pkgdesc = Helper scripts for Signed Kernel Modules
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/itoffshore/Arch-SKM
 	install = arch-sign-modules.install
 	arch = x86_64
 	license = GPL
-	source = arch-sign-modules-0.2.2.tar.gz::https://github.com/itoffshore/Arch-SKM/archive/0.2.2.tar.gz
+	depends = asp
+	source = arch-sign-modules-0.2.3.tar.gz::https://github.com/itoffshore/Arch-SKM/archive/0.2.3.tar.gz
 	md5sums = 94c3cd5d65c8456ce2d63e4284c6aac4
 
 pkgname = arch-sign-modules
