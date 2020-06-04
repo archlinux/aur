@@ -1,0 +1,13 @@
+pkgbase = python-flake8-coding
+	pkgdesc = Adds coding magic comment checks (coding:) to flake8.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/tk0miya/flake8-coding
+	arch = any
+	license = Apache-2.0
+	depends = python
+	source = https://github.com/tk0miya/flake8-coding/archive/1.3.2.tar.gz
+	sha512sums = 1a2301d0eb945c4c3637a49272e2f4f496fb42b52125bcc37131763c7528c13c99070b876233f4b083dba248c94ebd742d40399593abae30c8a8d332d5a5e97f
+
+pkgname = python-flake8-coding
+
