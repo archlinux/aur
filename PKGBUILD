@@ -6,14 +6,14 @@
 _pkgname=charybdis
 pkgname=charybdis-git
 pkgver=4.1.2.r162.gef62a62f
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable IRCv3.2 server for large, community-oriented networks (Git)'
 arch=('any')
 url="https://charybdis-ircd.github.io"
 license=('GPL2')
 options=('!strip')
 depends=('bison' 'flex' 'openssl' 'zlib')
-makedepends=('git')
+makedepends=('git' 'openssl' 'mbedtls' 'gnutls')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 install=charybdis.install
@@ -43,6 +43,9 @@ build() {
     --localstatedir=/var \
     --enable-fhs-paths \
     --with-rundir=/run \
+    --enable-openssl \
+    --enable-mbedtls \
+    --enable-gnutls \
     --with-program-prefix=charybdis-
 
   # Build it!

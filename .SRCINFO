@@ -1,12 +1,15 @@
 pkgbase = charybdis-git
 	pkgdesc = Scalable IRCv3.2 server for large, community-oriented networks (Git)
 	pkgver = 4.1.2.r162.gef62a62f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://charybdis-ircd.github.io
 	install = charybdis.install
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = openssl
+	makedepends = mbedtls
+	makedepends = gnutls
 	depends = bison
 	depends = flex
 	depends = openssl
