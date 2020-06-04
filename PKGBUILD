@@ -7,7 +7,7 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Automated security testing using bandit and flake8."
 
-url='https://github.com/best-doctor/flake8-annotations-complexity'
+url='https://github.com/tylerwince/flake8-bandit'
 arch=('any')
 license=('MIT')
 
