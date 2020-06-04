@@ -1,7 +1,7 @@
 pkgbase = appgate-sdp-5
 	pkgdesc = Software Defined Perimeter v5 - GUI client
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cyxtera.com/essential-defense/appgate-sdp/support
 	arch = x86_64
 	license = custom
@@ -19,11 +19,11 @@ pkgbase = appgate-sdp-5
 	conflicts = appgate-sdp
 	options = staticlibs
 	source = https://bin.appgate-sdp.com/5.1/client/appgate-sdp_5.1.2_amd64.deb
-	source = appgatedriver.service
+	source = appgatedriver.service.patch
 	source = nm.py.patch
 	source = set_dns.patch
 	md5sums = cdea9f4f5ff4184b999ae0ed4d0c9b93
-	md5sums = 002644116e20b2d79fdb36b7677ab4cf
+	md5sums = 52c30e4c8d5e6131aa48c9a1919aafd2
 	md5sums = 4b299aebb57019c6a4f70860da454300
 	md5sums = aa95ad0ba9304cf72ee43779cd28d9a5
 
