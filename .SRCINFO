@@ -1,8 +1,8 @@
 pkgbase = ekg2
 	pkgdesc = Ncurses based Jabber, Gadu-Gadu, Tlen and IRC client
-	pkgver = 0.3.1+5815+gaef7c7e1
+	pkgver = 0.3.1+5820+gf427d083
 	pkgrel = 1
-	url = http://en.ekg2.org/
+	url = https://github.com/ekg2/ekg2
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -11,12 +11,8 @@ pkgbase = ekg2
 	depends = gpm
 	depends = libgadu
 	depends = python2
-	source = git+https://github.com/ekg2/ekg2#commit=aef7c7e1a1e8ff64e1503571ffd75029468548a5
-	source = openssl-1.1.patch
-	source = gnutls.patch
+	source = git+https://github.com/ekg2/ekg2#commit=f427d083ee899d42532c046100490a915b0e8a82
 	md5sums = SKIP
-	md5sums = 8d0528fbfb182b5c75723f9d84f0e3bc
-	md5sums = 58f951bb349c20e18c38f824108c62c2
 
 pkgname = ekg2
 

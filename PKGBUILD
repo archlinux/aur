@@ -3,22 +3,18 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=ekg2
-pkgver=0.3.1+5815+gaef7c7e1
+pkgver=0.3.1+5820+gf427d083
 _pkgver=0.3.1
 pkgrel=1
 pkgdesc='Ncurses based Jabber, Gadu-Gadu, Tlen and IRC client'
 arch=('x86_64')
-url='http://en.ekg2.org/'
+url='https://github.com/ekg2/ekg2'
 license=('GPL')
 depends=('aspell' 'gpgme' 'gpm' 'libgadu' 'python2')
 makedepends=('git')
-_commit=aef7c7e1a1e8ff64e1503571ffd75029468548a5  # master
-source=("git+https://github.com/ekg2/ekg2#commit=$_commit"
-         openssl-1.1.patch
-         gnutls.patch)
-md5sums=('SKIP'
-         '8d0528fbfb182b5c75723f9d84f0e3bc'
-         '58f951bb349c20e18c38f824108c62c2')
+_commit=f427d083ee899d42532c046100490a915b0e8a82  # master
+source=("git+https://github.com/ekg2/ekg2#commit=$_commit")
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -27,8 +23,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np1 -i ../openssl-1.1.patch
-  patch -Np1 -i ../gnutls.patch
   sed -i 's@^#!.*python$@#!/usr/bin/python2@' contrib/python/notify-bubble.py
 }
 
