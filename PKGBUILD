@@ -27,7 +27,7 @@ provides=('google-chrome')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=unstable
-source=("http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
+source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
 sha512sums=('665e3fa8c2b1eab21ebb68ca6184af781e1b2b89cbef1f20d8cbf0f71eccbb46e32e47130f0d16c20450a817baf31c89e7d63a26c9f6dc92469515ba3e64cfb0'
