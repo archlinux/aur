@@ -1,13 +1,12 @@
 pkgbase = dwmblocks-syaoran-git
-	pkgdesc = dwmblocks for dwm
+	pkgdesc = This is clickable statusbar for dwm.
 	pkgver = 0.1r9.1c1a0df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/justanoobcoder/dwmblocks-syaoran.git
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	depends = libx11
-	depends = bc
 	depends = pacman-contrib
 	depends = networkmanager
 	depends = pulseaudio

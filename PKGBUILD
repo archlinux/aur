@@ -2,28 +2,18 @@
 pkgname=dwmblocks-syaoran-git
 _dir=dwmblocks-syaoran
 pkgver=0.1r9.1c1a0df
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="dwmblocks for dwm"
+pkgdesc="This is clickable statusbar for dwm."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/dwmblocks-syaoran.git"
 license=('GPL')
-groups=()
-depends=(libx11 bc pacman-contrib networkmanager pulseaudio pulseaudio-alsa alsa-utils htop ibus ibus-bamboo)
+depends=(libx11 pacman-contrib networkmanager pulseaudio pulseaudio-alsa alsa-utils htop ibus ibus-bamboo)
 makedepends=(make)
-checkdepends=()
-optdepends=()
 provides=(dwmblocks)
 conflicts=(dwmblocks)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
     cd "$_dir"
