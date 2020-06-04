@@ -1,20 +1,20 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=obs-websocket
-pkgver=4.7.0
-_obsver=24.0.3
-pkgrel=3
+pkgver=4.8.0
+_obsver=25.0.8
+pkgrel=1
 pkgdesc="WebSockets API for obs-studio"
 arch=('x86_64')
 url="https://github.com/Palakis/$pkgname"
 license=('GPL2')
-depends=("obs-studio>=$_obsver" 'openssl')
-makedepends=('asio' 'cmake' 'websocketpp-git-dev')
+depends=("obs-studio>=$_obsver")
+makedepends=('asio' 'cmake' 'websocketpp')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
     "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
-sha256sums=('1aa7eb296f9a82207353400d48b7cbdc3414ae6d37a085b0b35660577a09bafb'
-            '19f59b5a58e2158a93fe425e236c2d535afcbfd6b1d4c881cd1d8023a7e3c474')
+sha256sums=('a0b99f8039225305af36ef84d353155173d5878f56187a8988a827b487f15781'
+            'ef1179c23256c312212e3dce9083d4fa67751db05c3001ad824e2b6995943941')
 
 prepare() {
     rm -rf build
