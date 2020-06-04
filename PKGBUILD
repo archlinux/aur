@@ -2,7 +2,7 @@
 
 pkgname=zettlr-bin
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -17,5 +17,5 @@ package() {
     mv $srcdir/opt $pkgdir/opt
     mv $srcdir/usr $pkgdir/usr
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/opt/Zettlr/zettlr $pkgdir/usr/bin/zettlr
+    ln -s /opt/Zettlr/zettlr $pkgdir/usr/bin/zettlr
 }
