@@ -4,14 +4,14 @@
 
 _pkgname=castor
 pkgname=castor-git
-pkgver=0.7.0.r6.g188cd6c
+pkgver=0.8.13.r0.gcb7d09b
 pkgrel=1
 pkgdesc="A gemini, gopher and finger graphical client"
 arch=('i686' 'x86_64')
 url="https://git.sr.ht/~julienxx/castor"
 license=('unknown')
 depends=('gtk3' 'gdk-pixbuf2' 'pango' 'atk' 'cairo' 'openssl')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'rust' 'cargo' 'patch')
 source=("${_pkgname}::git+${url}"
         castor-0.7.0-makefile.patch)
 sha256sums=('SKIP'

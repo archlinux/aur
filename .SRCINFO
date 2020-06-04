@@ -1,6 +1,6 @@
 pkgbase = castor-git
 	pkgdesc = A gemini, gopher and finger graphical client
-	pkgver = 0.7.0.r6.g188cd6c
+	pkgver = 0.8.13.r0.gcb7d09b
 	pkgrel = 1
 	url = https://git.sr.ht/~julienxx/castor
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = castor-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = patch
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = pango
