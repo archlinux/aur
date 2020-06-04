@@ -1,14 +1,13 @@
 pkgbase = brittany
-	pkgdesc = An Haskell source code formatter.
-	pkgver = 0.12.1.1.x1
+	pkgdesc = Haskell source code formatter
+	pkgver = 0.12.1.1.x2
 	pkgrel = 1
 	url = https://github.com/lspitzner/brittany
-	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = stack
-	source = https://github.com/lspitzner/brittany/archive/0.12.1.1.x1.tar.gz
-	sha256sums = 1d44a35a8586a842db17a5e20662faca759b03983956f0c17f1fc68f229893e2
+	source = https://github.com/lspitzner/brittany/archive/0.12.1.1.x2.tar.gz
+	sha256sums = 97fc02baba76a42d19847f5a695af7fa1c2699e6cfbf91c2604998d8501c0d75
 
 pkgname = brittany
 
