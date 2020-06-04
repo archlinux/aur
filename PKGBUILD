@@ -5,7 +5,7 @@
 pkgname=firefox-bin
 _pkgname=firefox
 pkgver=77.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
 arch=('x86_64')
 url="https://www.mozilla.org/en-US/firefox/new/"
@@ -28,6 +28,7 @@ sha256sums=('03859fd56f79cb520e30bae2433b6f61f806c8f95e7576092894eb1d644e6ff1'
             'SKIP'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 package() {
   # Create directories
