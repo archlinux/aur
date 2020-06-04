@@ -1,7 +1,7 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
 pkgname=sl-sh-git
-pkgver=0.8.63
+pkgver=0.8.64
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
@@ -34,7 +34,8 @@ prepare() {
 build() {
 	cd "${pkgname%-git}-$pkgver"
 	rustup target add x86_64-unknown-linux-musl
-	cargo build --release --target x86_64-unknown-linux-musl --locked --all-features
+    # TODO look into using --locked, will require some new CI
+	cargo build --release --target x86_64-unknown-linux-musl --all-features
 }
 
 check() {
