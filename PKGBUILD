@@ -26,7 +26,7 @@ optdepends=(
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable
-source=("http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
+source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
 sha512sums=('3106979ebeedd32405fa9205e5e2369bea0199b72d2d3238f5124e196791277c7fa7ce387c18460b5a220818f12c622981c21e3e4c3049beed02345a6255a828'
