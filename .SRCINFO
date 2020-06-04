@@ -1,0 +1,14 @@
+pkgbase = python-flake8-isort
+	pkgdesc = flake8 plugin to validate annotations complexity
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/gforcada/flake8-isort
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = python-testfixtures
+	source = https://github.com/gforcada/flake8-isort/archive/3.0.0.tar.gz
+	sha512sums = bdd72c69368fd6c76e6a1c23bb71178dba03ea851dfe9d4df3dbf65a44a7c0623604e6a125dd2010c054d7f470fea9114d2a28d2bd6ac0cb48d370086dd08eb8
+
+pkgname = python-flake8-isort
+
