@@ -1,18 +1,23 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=zdkimfilter
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'pentium4' 'x86_64')
 url='https://www.tana.it/sw/zdkimfilter/'
 license=('GPL3')
 depends=(
   'courier-mta'
-  'opendkim'
-  'opendbx'
-  'nettle'
-  'libidn2'
-  'zlib')
+)
+_pinned_dependencies=(
+  'libidn2=2.3.0'
+  'libunistring=0.9.10'
+  'libutil-linux=2.35.2'
+  'nettle=3.6'
+  'opendbx=1.4.6'
+  'opendkim=2.10.3'
+  'zlib=1:1.2.11'
+)
 backup=('etc/courier/filters/zdkimfilter.conf')
 source=(
   "http://www.tana.it/sw/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
@@ -31,6 +36,8 @@ build() {
 }
 
 package() {
+
+  depends+=("${_pinned_dependencies[@]}")
 
   cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install

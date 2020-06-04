@@ -1,18 +1,13 @@
 pkgbase = zdkimfilter
 	pkgdesc = zDKIM filter for Courier-MTA using the OpenDKIM Project's library.
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.tana.it/sw/zdkimfilter/
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	license = GPL3
 	depends = courier-mta
-	depends = opendkim
-	depends = opendbx
-	depends = nettle
-	depends = libidn2
-	depends = zlib
 	options = debug
 	options = !strip
 	backup = etc/courier/filters/zdkimfilter.conf
@@ -23,4 +18,12 @@ pkgbase = zdkimfilter
 	sha512sums = SKIP
 
 pkgname = zdkimfilter
+	depends = courier-mta
+	depends = libidn2=2.3.0
+	depends = libunistring=0.9.10
+	depends = libutil-linux=2.35.2
+	depends = nettle=3.6
+	depends = opendbx=1.4.6
+	depends = opendkim=2.10.3
+	depends = zlib=1:1.2.11
 
