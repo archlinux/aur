@@ -1,12 +1,12 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgname=esp8266-rtos-sdk
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ESP8266 RTOS SDK"
 arch=('x86_64')
 url="https://github.com/espressif/ESP8266_RTOS_SDK"
 license=('Espressif MIT')
-depends=('python2' python2-click python2-pyserial python2-cryptography python2-pyparsing python2-pyelftools-git)
+depends=('python2' python2-click python2-pyserial python2-cryptography python2-pyparsing python2-future python2-pyelftools-git)
 optdepends=('xtensa-lx106-elf-gcc-bin: Toolchain for the ESP8266')
 makedepends=('git')
 options=(!strip)
