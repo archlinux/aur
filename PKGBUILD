@@ -1,15 +1,15 @@
 pkgname=drpm
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A small library for fetching information from deltarpm packages"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
-license=('custom:BSD' 'LGPL2.1')
-depends=('bzip2' 'openssl' 'rpm-org' 'xz' 'zlib' 'zstd')
+license=('LGPL2.1' 'custom:BSD')
+depends=('bzip2' 'openssl' 'rpm-tools' 'xz' 'zlib' 'zstd')
 makedepends=('cmake>=2.8.5' 'doxygen')
 checkdepends=('cmocka')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('84ca877cf68593b4de5dd31de1738b07')
+md5sums=('3c8d04d5ae70de42c75be9243cbb519a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
