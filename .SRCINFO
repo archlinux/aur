@@ -1,0 +1,16 @@
+pkgbase = python-meshio
+	pkgdesc = Input/output for many mesh formats
+	pkgver = 4.0.13
+	pkgrel = 1
+	url = https://github.com/nschloe/meshio
+	arch = x86_64
+	license = MIT
+	makedepends = python-pep517
+	depends = python-numpy
+	optdepends = python-netcdf4
+	optdepends = python-h5py
+	source = python-meshio-4.0.13.tar.gz::https://github.com/nschloe/meshio/archive/v4.0.13.tar.gz
+	sha256sums = cea75403ddb7eaf68165cb719c0fef569f02dc62c7405122ff4347362334b3af
+
+pkgname = python-meshio
+
