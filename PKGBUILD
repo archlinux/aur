@@ -9,6 +9,7 @@ package="linux-x86-64_${pkgver}_MyCrypto.AppImage"
 arch=('x86_64')
 provides=('mycrypto')
 conflicts=('mycrypto')
+depends=('gconf')
 url='https://github.com/MyCryptoHQ/MyCrypto'
 license=('MIT')
 source=("${url}/releases/download/${pkgver}/${package}"

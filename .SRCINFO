@@ -5,6 +5,7 @@ pkgbase = mycrypto-bin
 	url = https://github.com/MyCryptoHQ/MyCrypto
 	arch = x86_64
 	license = MIT
+	depends = gconf
 	provides = mycrypto
 	conflicts = mycrypto
 	source = https://github.com/MyCryptoHQ/MyCrypto/releases/download/1.7.10/linux-x86-64_1.7.10_MyCrypto.AppImage
