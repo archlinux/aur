@@ -1,0 +1,14 @@
+pkgbase = python-pyquota
+	pkgdesc = A simple python wrapper for C apis of quotactl
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/tjumyk/pyquota
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pyquota
+	source = https://files.pythonhosted.org/packages/source/p/pyquota/PyQuota-0.0.3.tar.gz
+	sha256sums = cc45e0ef02100356b8d05d68ea5fdad93cd7ce99020fdc8c547945432a1409b7
+
+pkgname = python-pyquota
+
