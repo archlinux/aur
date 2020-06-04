@@ -5,7 +5,7 @@
  
  cd $base_dir/mupen64plus-core/projects/unix
 -make NETPLAY=1 OSD=0 NO_ASM=1 all
-+make NETPLAY=1 all
++make NETPLAY=1 OSD=0 all
  cp -P $base_dir/mupen64plus-core/projects/unix/*$suffix* $install_dir
  cp $base_dir/mupen64plus-core/data/* $install_dir
  
@@ -14,10 +14,10 @@
  cd $base_dir/GLideN64/projects/cmake
  if [[ $UNAME == *"MINGW"* ]]; then
 -  cmake -G "MSYS Makefiles" -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
-+  cmake -G "MSYS Makefiles" -DMUPENPLUSAPI=On ../../src/
++  cmake -G "MSYS Makefiles" -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
  else
 -  cmake -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
-+  cmake -DMUPENPLUSAPI=On ../../src/
++  cmake -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
  fi
  make
  
