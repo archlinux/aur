@@ -1,0 +1,25 @@
+pkgbase = trojan-qt5
+	pkgdesc = A cross-platform ss/ssr/vmess/trojan GUI client
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/Trojan-Qt5/Trojan-Qt5
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base>5.11.0,
+	depends = grpc>=1.27.0,
+	depends = libuv>=1.34.2,
+	depends = libsodium>=1.0.17,
+	depends = qrencode>=3.4.4,
+	depends = zbar>=0.10.0,
+	depends = yaml-cpp>=0.6.2,
+	depends = openssl>=1.1.1d,
+	depends = zlib>=1.12.1,
+	depends = icu>=60.2,
+	depends = bzip2>=1.0.6
+	provides = trojan-qt5
+	conflicts = trojan-qt5
+	source = Trojan-Qt5::git+https://github.com/Trojan-Qt5/Trojan-Qt5#tag=v1.1.6
+	sha512sums = SKIP
+
+pkgname = trojan-qt5
+
