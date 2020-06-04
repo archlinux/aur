@@ -1,12 +1,12 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
-url="http://ffmpeg.org/"
+url="https://ffmpeg.org/"
 license=('GPL3')
 depends=(
   'mingw-w64-aom'
@@ -41,12 +41,16 @@ depends=(
   'mingw-w64-zlib'
   'mingw-w64-x265'
 )
+# TODO: Add vmaf dependency
+#'mingw-w64-vmaf'
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+        vmaf-model-path.patch
         configure.patch)
 sha256sums=('SKIP'
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
             '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -59,9 +63,14 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+  # lavf/mp3dec: don't adjust start time; packets are not adjusted
+  # https://crbug.com/1062037
+  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
 
   patch -Np1 -i ../configure.patch
+
+# TODO: Add vmaf dependency
+#  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 
 build() {
@@ -77,6 +86,7 @@ build() {
       --disable-debug \
       --enable-static \
       --disable-stripping \
+      --enable-avisynth \
       --enable-fontconfig \
       --enable-gmp \
       --enable-gnutls \
@@ -112,6 +122,9 @@ build() {
       --enable-version3 \
       --disable-doc \
       --x86asmexe=yasm
+
+# TODO: Add vmaf dependency
+#      --enable-libvmaf \
 
     make
   done
