@@ -3,17 +3,17 @@
 _pkgname=etelemetry
 pkgname=python-$_pkgname
 _name=${pkgname#python-}
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Etelemetry python client API"
-url="https://github.com/RDFLib/rdflib/pull/649"
+url="https://github.com/sensein/etelemetry-client"
 arch=('any')
 license=('apache')
-depends=('python')
+depends=('python-ci-info')
 provides=("python-etelemetry")
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/b1/89/a8a87c4a65f5f922a3e8ef298c1ba6979f923ff144a6f3203c14e04a6537/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('32147fe3cb770dea9a6aa7057942faa0ff57b131c3dfcba3ac93ad3ef4c66d54')
+source=("https://files.pythonhosted.org/packages/6e/35/e684ac76f9044b888d9d1961e93e38c9b12bfb4f6d2eaf17329109b8e770/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('bfb58f58e98f63eae20caffb8514fb68c572332aa6e773cf3fcbde9b408d88e7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
