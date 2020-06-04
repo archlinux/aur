@@ -97,7 +97,7 @@ prepare() {
 
   # https://github.com/graysky2/kernel_gcc_patch
   echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.7+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
 
   make oldconfig
 
