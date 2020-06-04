@@ -1,8 +1,9 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=sia-ui
 _pkgname=Sia-UI
-pkgver=1.4.7
+pkgver=1.4.10
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -10,14 +11,16 @@ arch=('x86_64')
 url="https://sia.tech"
 license=('MIT')
 depends=('gconf' 'gtk2' 'nss' 'libxss')
-source=("https://sia.tech/releases/Sia-UI-${_pkgver}.AppImage")
-sha512sums=('69ea72eef5841edce0d356b831d149bdb007c0606fc55e414ce6406b4233c5faee83fa27ccc0a5d1f210d96ff092442798a9e0584c769eccd9ca57101fc29898')
+source=("https://sia.tech/releases/Sia-UI-${_pkgver}.AppImage"
+	"https://raw.githubusercontent.com/NebulousLabs/Sia-UI/master/LICENSE")
+sha512sums=('a3381650ec9e4aa0321b7277ce52199eefee39c39f37a2a28b9ee8c6f5b7b70b0ccd6f0f76a1f2eff17d722c7646e87ffb72703f8f218cd1eb089bf459ca1e1c'
+            'da77523b36551334730d2be5e2b11935aa180db47dc703dcc9bd899269cd205f2205a406ff582cf8aa2fec2bae90442edcc2ef10aab341ce68e662b8137e98e3')
 
 
 prepare() {
-  # extract files
-  chmod +x "Sia-UI-${_pkgver}.AppImage"
-  ./Sia-UI-${_pkgver}.AppImage --appimage-extract
+  chmod u+x ${srcdir}/Sia-UI-${_pkgver}.AppImage
+
+  ${srcdir}/Sia-UI-${_pkgver}.AppImage --appimage-extract
 }
 
 package() {
@@ -43,5 +46,7 @@ package() {
   # install desktop file
   sed -e "s/AppRun/$pkgname/g" -i $pkgname.desktop
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
 
