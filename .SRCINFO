@@ -1,6 +1,6 @@
 pkgbase = rapiddisk-dkms
 	pkgdesc = Advanced Linux RAM Drive and Caching kernel modules
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://www.rapiddisk.org/
 	install = rapiddisk-dkms.install

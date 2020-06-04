@@ -3,8 +3,8 @@
 _pkgbase='rapiddisk'
 pkgname="$_pkgbase-dkms"
 _vermajor=6
-_verminor=0
-_verrevision=1
+_verminor=1
+_verrevision=0
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
 pkgrel=1
 pkgdesc="Advanced Linux RAM Drive and Caching kernel modules"
@@ -16,12 +16,13 @@ depends=('dkms'
          'cryptsetup')
 makedeps=('jansson')
 install=${pkgname}.install
-_gitcommit=df31a80
+_gitcommit=4f74161
 source=("git+https://github.com/pkoutoupis/rapiddisk#commit=${_gitcommit}")
 
 md5sums=('SKIP')
 
 build() {
+    ls -lsh ${srcdir}
     cd "${srcdir}/rapiddisk"
 
     # build package
@@ -37,10 +38,15 @@ package() {
     cd "${srcdir}/rapiddisk"
 
     # standard installation
-    make DESTDIR=${pkgdir} install
+    #make DESTDIR=${pkgdir} install
+    mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    cd module
+    cp rapiddisk.c rapiddisk-cache.c dkms.conf Makefile ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    cd ..
+
 
     # Arch's /sbin is a symbolic link to /usr/bin
-    mv ${pkgdir}/sbin ${pkgdir}/usr/bin
+    #mv ${pkgdir}/sbin ${pkgdir}/usr/bin
 
     # copy documentation
     install -Dm644 -t "${pkgdir}/usr/share/man/man1/" \
