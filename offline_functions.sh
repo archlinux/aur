@@ -30,7 +30,7 @@ build_aur () {
     echo " => Adding ${package} to local AUR hosting directory ${offline_mirror_path}"
     mkdir -p "${offline_mirror_path}/os/x86_64"
     sh -c "cp *.xz ${offline_mirror_path}/os/x86_64"
-    sh -c "repo-add ${offline_mirror_path}/os/x86_64/arch_offline.db.tar.gz ${offline_mirror_path}/os/x86_64/*.xz"
+    sh -c "repo-add ${offline_mirror_path}/os/x86_64/arch_offline.db.tar.gz ${offline_mirror_path}/os/x86_64/*pkg*.xz"
 
     ## Long term storage inside the ISO? (if we want to install from CD to disk or host it to others)
     # sh -c "mv *.xz ${old_dir}/$2/$1.pkg.tar.xz"
@@ -63,7 +63,7 @@ make_offline_mirror() {
     echo " => Downloading core packages to offline mirror."
     #sh -c "pacman --noconfirm --dbpath /tmp/ -Syu -w --cachedir ${offline_mirror_path} gawk gettext grep gzip pacman sed texinfo util-linux"
     sh -c "pacman --noconfirm --dbpath /tmp/ -Syu -w --cachedir ${offline_mirror_path} base base-devel"
-    sh -c "repo-add ${offline_mirror_path}/arch_offline.db.tar.gz ${offline_mirror_path}/*.xz"
+    sh -c "repo-add ${offline_mirror_path}/arch_offline.db.tar.gz ${offline_mirror_path}/*pkg*.xz"
 }
 patch_in_local_mirror() {
     # [arch_offline]\n
