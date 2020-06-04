@@ -3,11 +3,11 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.3.2.r2493.c334fe4c
+pkgver=1.4.3.2.r2502.e1f879ff
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
-url="http://nicotine-plus.org"
+url="https://nicotine-plus.github.io/nicotine-plus"
 license=('GPL3')
 depends=('gtk3' 'gobject-introspection' 'libnotify' 'python-dbus'
          'python-gobject' 'python-mutagen' 'xdg-utils')
