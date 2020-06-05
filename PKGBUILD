@@ -2,40 +2,28 @@
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=yudit
-pkgver=2.9.6
+pkgver=3.0.5
 pkgrel=1
-epoch=
 pkgdesc="A free Unicode plain-text editor for Unix-like systems."
 arch=('i686' 'x86_64')
 url="http://www.yudit.org/"
 license=('GPL')
-groups=()
 depends=('libx11')
-makedepends=()
-checkdepends=()
 optdepends=('hunspell: spell checking')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("http://yudit.org/download/$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=('be9ca4253204579c26ac1860cba1220f')
-sha1sums=('904f41815a657efe58cb80ccdbc855e4fd926c13')
-sha256sums=('ded0b47742fce92aedb6403e8e758162abc73395f9c5a3268ceb2093fbfdf906')
-validpgpkeys=()
+md5sums=('bee6011261f836784aa15b1710fd5dae')
+sha1sums=('0d14822be2ae6d72bc256a7cbcb6e4fd8788f669')
+sha256sums=('cddeb559c36dece12157a527f19d7220e88d916ccf9336b48b263f04c966d382')
+sha512sums=('53513e8932574d909bbe3687be0ea5f0a434e3c1e3078f3e26713007cd93dbef407de64d2e0628e8b5e8aa0231557f9e6befb7146a21e57a6bfd7880a669d91a')
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
 
