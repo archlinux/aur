@@ -1,0 +1,16 @@
+pkgbase = ni-translate-git
+	pkgdesc = A translator for Linux, running at the background which wakes up with the translation of the last selected text after tapping the specific key twice
+	pkgver = r71.4744cf1
+	pkgrel = 1
+	url = https://github.com/yasirtug/ni-translate
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = ni-translate
+	source = ni-translate::git+https://github.com/yasirtug/ni-translate
+	sha256sums = SKIP
+
+pkgname = ni-translate-git
+
