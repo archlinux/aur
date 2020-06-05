@@ -1,0 +1,20 @@
+pkgbase = qt5-ukui-platformtheme-git
+	pkgdesc = qt5 platform theme for UKUI
+	pkgver = v1.0.2.r62.ga9a9e59
+	pkgrel = 1
+	url = https://github.com/ukui/qt5-ukui-platformtheme
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = git
+	depends = dconf
+	depends = gsettings-qt
+	depends = kwindowsystem
+	provides = qt5-ukui-platformtheme
+	conflicts = qt5-ukui-platformtheme
+	source = git+https://github.com/ukui/qt5-ukui-platformtheme
+	sha512sums = SKIP
+
+pkgname = qt5-ukui-platformtheme-git
+
