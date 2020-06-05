@@ -1,0 +1,15 @@
+pkgbase = tempconvert
+	pkgdesc = Utility for converting temperatures between Fahrenheit and Celsius.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://benthetechguy.github.io/miscprograms/tempconvert
+	arch = any
+	license = GPL
+	depends = bash
+	depends = bc
+	noextract = $pkgname
+	source = tempconvert
+	md5sums = bc379290abc64f5fc2fd08c29dc1ef7f
+
+pkgname = tempconvert
+

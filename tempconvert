@@ -1,0 +1,47 @@
+#!/bin/bash
+if [ "$#" -eq 2 ]; then
+    if [ "$1" = "ctf" ]; then
+        if [ "$2" -eq "$2" ]; then
+            a=`echo "($2*1.8)+32" | bc`
+            echo "tempconvert by Ben Westover"
+            echo ""
+            echo "Input: ${2} Degrees Celsius"
+            echo "Output: ${a} Degrees Fahrenheit"
+            echo ""
+            exit 0
+        else
+            echo ""
+            echo "Input must be an integer."
+            echo "USAGE: ${0} <CONVERSION TYPE> <INPUT>"
+            echo "EXAMPLE: ${0} ctf 69"
+            exit 1
+        fi
+    else
+        if [ "$1" = "ftc" ]; then
+            if [ "$2" -eq "$2" ]; then
+                a=`echo "0.556*($2-32)" | bc`
+                echo "tempconvert by Ben Westover"
+                echo ""
+                echo "Input: ${2} Degrees Fahrenheit"
+                echo "Output: ${a} Degrees Celcius"
+                echo ""
+                exit 0
+            else
+                echo ""
+                echo "Input must be an integer."
+                echo "USAGE: ${0} <CONVERSION TYPE> <INPUT>"
+                echo "EXAMPLE: ${0} ctf 69"
+                exit 1
+            fi
+        else
+            echo "Conversion type must be either ctf (Celcius to Fahrenheit) or ftc (Fahrenheit to Celsius)."
+            echo "USAGE: ${0} <CONVERSION TYPE> <INPUT>"
+            echo "EXAMPLE: ${0} ctf 69"
+            exit 1
+        fi
+    fi
+else
+    echo "USAGE: ${0} <CONVERSION TYPE> <INPUT>"
+    echo "EXAMPLE: ${0} ctf 69"
+    exit 1
+fi
