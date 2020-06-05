@@ -1,14 +1,13 @@
 pkgbase = keys-pub
 	pkgdesc = keys.pub CLI client and service (keys, keysd)
 	pkgver = 0.0.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keys.pub/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = gzip
 	depends = libfido2
 	optdepends = org.freedesktop.secrets: storing secrets
 	source = keys-pub-0.0.47.tar.gz::https://github.com/keys-pub/keys-ext/archive/v0.0.47.tar.gz
