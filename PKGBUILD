@@ -1,5 +1,6 @@
 # Maintainer: cyka3702 <swc.rainier@gmail.com>
 # Contributor: paperbenni <paperbenni@gmail.com>
+package name instantassist
 pkgname=instantassist
 _pkgname=instantassist
 pkgver=202006050952
