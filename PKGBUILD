@@ -2,13 +2,11 @@
 
 pkgname=mingw-w64-libgit2
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
-makedepends=(mingw-w64-cmake gcc-libs)
-conflicts=(mingw-w64-libgit2)
-provides=(mingw-w64-libgit2)
+makedepends=(mingw-w64-cmake)
 options=(staticlibs !buildflags !strip)
 license=(GPL)
 url="https://github.com/libgit2/libgit2"
@@ -23,7 +21,7 @@ build() {
     for _arch in ${_architectures}; do
         mkdir -p build-${_arch} && pushd build-${_arch}
         ${_arch}-cmake -DTHREADSAFE=ON -DBUILD_CLAR=OFF -DSTDCALL=ON ..
-        ${_arch}-cmake -DTHREADSAFE=ON -DBUILD_CLAR=OFF -DSTDCALL=ON --build .
+        make
         popd
     done
 }
