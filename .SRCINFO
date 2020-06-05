@@ -1,6 +1,6 @@
 pkgbase = thunderbird-appmenu-bin
 	pkgdesc = Thunderbird-appmenu, binary version
-	pkgver = 68.8.0
+	pkgver = 68.9.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
@@ -20,15 +20,15 @@ pkgbase = thunderbird-appmenu-bin
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=68.8.0
+	provides = thunderbird=68.9.0
 	conflicts = thunderbird
-	noextract = thunderbird-appmenu-68.8.0-1-x86_64.pkg.tar.xz
+	noextract = thunderbird-appmenu-68.9.0-1-x86_64.pkg.tar.xz
 	options = !emptydirs
 	options = !makeflags
-	source = https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-68.8.0-1-x86_64.pkg.tar.xz
-	source = https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-68.8.0-1-x86_64.pkg.tar.xz.sig
+	source = https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-68.9.0-1-x86_64.pkg.tar.xz
+	source = https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-68.9.0-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 85F86E317555BECC1C2184BF2C45BA09ABC5D7DA
-	sha256sums = f8140844f11bfcba1338a3c612ef81e4f5e964eaedbe965968c726af8b9a7ab3
+	sha256sums = 19e37c75929463cc9c646003be71f393d99347ba7de5f0282e6e4fdc23ef4fb5
 	sha256sums = SKIP
 
 pkgname = thunderbird-appmenu-bin

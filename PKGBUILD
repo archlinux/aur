@@ -11,7 +11,7 @@
 # Building: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=thunderbird-appmenu-bin
-pkgver=68.8.0
+pkgver=68.9.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Thunderbird-appmenu, binary version"
@@ -28,7 +28,7 @@ source=(https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunde
 noextract=(thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'f8140844f11bfcba1338a3c612ef81e4f5e964eaedbe965968c726af8b9a7ab3'
+	'19e37c75929463cc9c646003be71f393d99347ba7de5f0282e6e4fdc23ef4fb5'
 	'SKIP'
 )
 
