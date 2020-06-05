@@ -1,8 +1,8 @@
 # Maintainer: Oliver Ford <dev@ojford.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=iosevka-generate
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.0
+pkgrel=0
 pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
 url='https://github.com/OJFord/iosevka-generate'
 license=('GPL')
