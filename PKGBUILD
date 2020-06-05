@@ -7,7 +7,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=76.0.1
+pkgver=77.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -30,11 +30,11 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3'
+sha256sums=('54256fc5f8e9c2e8129ef84773fae31fcfdaf95da6d4d03151f3939e9f749640'
             'SKIP'
-            '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
+            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
-            '3e5e34b8d45b9cc48e78e9c474f2450cc597451bbb331fb5a4e8f3a3ba5e3a70')
+            'c87e9df0fa2ba96989b70403e412aae54de9e29a56c7872f155cfd8a1e0b9a33')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -57,7 +57,7 @@ prepare() {
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # actual appmenu patch from ubuntu repos
-  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_76.0+build2-0ubuntu0.18.04.1.debian.tar.xz
+  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_77.0.1+build1-0ubuntu0.18.04.1.debian.tar.xz
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
