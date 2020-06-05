@@ -4,7 +4,7 @@
 # Contributor: Rebin Silva <rebinsilva@gmail.com>
 
 pkgname=vkd3d-valve-git
-pkgver=1.1.r1050.ge6bd3cb
+pkgver=1.1.r1120.ge685793
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library (Valve version)"
 arch=('x86_64')
@@ -23,8 +23,8 @@ makedepends=( # Prevent out-of-date SPIRV headers error
             )
 conflicts=('vkd3d' 'vkd3d-git')
 provides=('vkd3d')
-source=('git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0' '8e7bf8a5c3e004763a62822ff2d79cf76907b712.patch')
-sha256sums=('SKIP' '053084b7fddc4ea0e8bb8d23cec41ea701276cac30fee64e9147177daaf6f2ae')
+source=('git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0')
+sha256sums=('SKIP')
 
 pkgver() {
   cd vkd3d
@@ -35,8 +35,6 @@ prepare() {
   mkdir -p build
 
   cd vkd3d
-  # If this isn't needed anymore, leave a comment on the AUR!
-  patch --forward --strip=1 --input="${srcdir}/8e7bf8a5c3e004763a62822ff2d79cf76907b712.patch"
   ./autogen.sh
 }
 

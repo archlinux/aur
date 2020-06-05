@@ -1,6 +1,6 @@
 pkgbase = vkd3d-valve-git
 	pkgdesc = D3D12 to Vulkan translation library (Valve version)
-	pkgver = 1.1.r1050.ge6bd3cb
+	pkgver = 1.1.r1120.ge685793
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/vkd3d
 	arch = x86_64
@@ -17,9 +17,7 @@ pkgbase = vkd3d-valve-git
 	conflicts = vkd3d
 	conflicts = vkd3d-git
 	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0
-	source = 8e7bf8a5c3e004763a62822ff2d79cf76907b712.patch
 	sha256sums = SKIP
-	sha256sums = 053084b7fddc4ea0e8bb8d23cec41ea701276cac30fee64e9147177daaf6f2ae
 
 pkgname = vkd3d-valve-git
 
