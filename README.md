@@ -7,7 +7,7 @@ Iosevka Generate is a tool to generate your own [Iosevka][Iosevka] font for you.
 NB: Iosevka itself now has a similar TOML spec for font building. The remaining value in iosevka generate is:
   - handle acquiring & installing repo and dependencies automatically
   - cleaner config format (`<letter> = <style>` lines vs. `["v-<letter>-<style>", ...]` on one)
-  - (WIP) font-awesome & nerd-font patching
+  - patch with [nerd font][NerdFont]
 
 ## Usage
 
@@ -18,6 +18,7 @@ In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config.ini`, in 
     sans
     stress-fw
     ligset = haskell
+    nerdfont = fontawesome powerline material octicons
 
 [common]
     l = hooky
@@ -60,7 +61,10 @@ The helper tool in this repository is licensed according to the [LICENCE.md](/LI
 
 This tool retrieves and makes use of the Iosevka font and supporting build tooling, which are copyright of [Belle Invis][Invis] and licensed as described in [that project's repository][Iosevka].
 
+Nerd Font is (optionally) used for patching additional glyphs, and is copyright of [Ryan L. McIntyre][McIntyre] and licensed as described in [that project's repository][NerdFont].
+
 
 [aur/iosevka-generate]: https://aur.archlinux.org/packages/iosevka-generate
 [Invis]: https://github.com/be5invis
 [Iosevka]: https://github.com/be5invis/iosevka
+[NerdFont]: https://github.com/ryanoasis/nerd-fonts
