@@ -1,5 +1,5 @@
 # Maintainer: Tun Win Naing <tunwn.mdy at gmail dot com>
-# Contributor: Donald Webster <fryfrog at gmail dot com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-mono
 pkgver=0.16.613
