@@ -14,13 +14,13 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='7ae2b2e9a954c6b8fd9a3f3ed2e080fe3b223adb'
+_commit='4e3f979e7ab5d9d9a043215ff0b76b4917371b5e'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.10.15
+pkgver=7.0.10.16
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
@@ -41,10 +41,12 @@ makedepends=(
 )
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff'
-        'imagemagick-inkscape-1.0.patch')
+        'imagemagick-inkscape-1.0.patch'
+        'imagemagick-fix-heic.patch'::'https://github.com/ImageMagick/ImageMagick/commit/a6a1e0616b6c431b55ed255454144653dd677d21.patch')
 sha256sums=('SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
-            'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30')
+            'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30'
+            '1d5cdefc4c9f5aad870bbf89af2ac1eae8b501e20a826c4c30c96ba775df1a96')
 
 prepare() {
     cd "$_srcname"
@@ -59,6 +61,8 @@ prepare() {
     
     # fix for 'sh: gitversion.sh: command not found' during autoreconf
     sed -i 's|(gitversion|(./gitversion|' configure.ac
+    
+    patch -Np1 -i "${srcdir}/imagemagick-fix-heic.patch"
     
     autoreconf -fis
 }
