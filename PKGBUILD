@@ -3,7 +3,7 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/nomad/${pkgver
         'nomad-client.hcl'
         'nomad-client.service'
         'nomad-server.hcl')
-sha256sums=('0c190d3cca12b75645e946e49207bf62bff8e0d8f52eee43dc059dbb8814da99'
+sha256sums=('f6a38099e27e8ff1dd7e1fe7215c954ebe4986d05ed6320739186ff3502bb78a'
           '85b6938ba13b450f8b7b9ca281178eea57a9409948b9e70b69d6a66a4dbdaa7b'
           'c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97'
           '1ddf845cfbb2beff7162bd7299705338cf1611fc9f7dfe6a093e4c9cce43e0d2'
