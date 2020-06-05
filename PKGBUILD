@@ -3,14 +3,13 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-pkgver=0.17.1+0+g1b6c48075
+git_branch=0.18
+pkgver=0.18.1+0+g81c4f2d80
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 makedepends=(
-	'autoconf'
-	'automake'
 	'boost'
 	'git'
 	'libevent'
@@ -22,15 +21,25 @@ makedepends=(
 	'zeromq'
 )
 source=(
-  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=0.17"
+  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=$git_branch"
+  "qt515.patch"
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
 )
 sha256sums=('SKIP'
+            '97fbaf4f5dca82771a960b545c277a84eadce1eb146e8a61b0a31e73d2df6cc8'
             'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
             '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
             'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db')
+
+
+prepare() {
+  cd "$pkgbase"
+  autoreconf -fi
+
+  patch -Np1 -i ../qt515.patch
+}
 
 pkgver() {
   cd "$pkgbase"
@@ -39,7 +48,6 @@ pkgver() {
 
 build() {
   cd "$pkgbase"
-  ./autogen.sh
   ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests
   make
 }
