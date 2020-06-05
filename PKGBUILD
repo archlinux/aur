@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.30.1.r43.g59fb22d4b
+pkgver=0.34.0.r228.gf3249054e
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
 
   make release=1 FLAGS="--no-debug" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-       EXPORTS='CRYSTAL_CONFIG_PATH="lib:/usr/lib/crystal"' \
+       CRYSTAL_CONFIG_PATH='/usr/lib/crystal"' \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
   make docs CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make compiler_spec std_spec \
+  make -j1 compiler_spec std_spec \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        CRYSTAL_CONFIG_VERSION="$pkgver" \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
