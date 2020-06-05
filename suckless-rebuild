@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=0.1.3
+VERSION=0.1.4
 
 DESTDIR=~/.suckless
 BUILDDIR=~/.suckless-build
@@ -11,7 +11,7 @@ die() {
 }
 
 usage() {
-  die $1 "Usage: suckless-rebuild dmenu|slstatus|st <config.h>"
+  die $1 "Usage: suckless-rebuild dmenu|dwm|slstatus|st <config.h>"
 }
 
 version() {
@@ -19,7 +19,7 @@ version() {
 }
 
 case $1 in
-  dmenu|slstatus|st ) software=$1; config=$2 ;;
+  dmenu|dwm|slstatus|st ) software=$1; config=$2 ;;
   -V|--version ) version 0 ;;
   -h|--help) usage 0 ;;
   * ) usage 1 ;;
@@ -29,9 +29,6 @@ if [[ ${#@} != 2 ]]; then
   usage 1
 fi
 
-if [[ ! $software =~ ^dmenu$|^slstatus$|^st$ ]]; then
-  die 1 "Unknown suckless software '$software'."
-fi
 if [[ ! -d /usr/src/$software ]]; then
   die 1 "'an9wer-$software' may not be installed."
 fi
