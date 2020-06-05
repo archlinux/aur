@@ -6,7 +6,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=v6.4.0.rc1.r1.g6f60d2a850
+pkgver=v6.4.0.r38.gbc85c34ea9
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
