@@ -39,7 +39,7 @@ patch --directory="$_sourcedir" --strip=0 < terminfo.patch
 
 
 	echo 'Applying patches from $_startdir if they exist...'
-	if [ -d "$_startdir}/patches" ]; then
+	if [ -d "$_startdir/patches" ]; then
 	        for patch in $_startdir/patches/*.diff; do
                         echo "Applying $patch ..."
 		        patch -p1 -s -i "$patch"
