@@ -1,0 +1,17 @@
+pkgbase = instantassist
+	pkgdesc = a bunch of shortcuts for instantOS
+	pkgver = 202006050952
+	pkgrel = 1
+	url = https://github.com/instantos/instantassist
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = instantmenu
+	provides = instantassist
+	options = zipman
+	source = instantassist::git+https://github.com/instantOS/instantASSIST.git
+	md5sums = SKIP
+
+pkgname = instantassist
+
