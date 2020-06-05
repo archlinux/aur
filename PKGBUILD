@@ -2,7 +2,7 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=1.6.17
+pkgver=1.6.18.1
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -17,10 +17,9 @@ conflicts=('runelite-git')
 source=("${url}/archive/runelite-parent-${pkgver}.tar.gz"
         runelite.desktop
         runelite.png)
-sha512sums=('402a2f0418758fb4f12e69ae8d031674a1a9680b3fccef5f2767a1ad5f3653950664e6b3928ced6d3423f034f16f8f86cb2694421f107c611bf4e8b8f11fb39d'
+sha512sums=('c19cf8cdb441d34e91539c590fbaaec7401a1bb04b465785ad9447081bed9c82a7aa96f93d74be58b83eb5035be3f6c4e7f360be1d68b7d0ad2a0e6515f1d4bf'
             'e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1'
             '73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b')
-
 build() {
     cd ${srcdir}/${pkgname}-runelite-parent-${pkgver}/
 
