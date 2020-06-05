@@ -1,0 +1,34 @@
+pkgbase = tilibs-git
+	pkgdesc = Various TI libs required for TILP
+	pkgver = 1.18.r41.g7be38a45
+	pkgrel = 1
+	url = http://lpg.ticalc.org/prj_tilp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2
+	options = !libtool
+	source = tilibs-git::git+https://github.com/debrouxl/tilibs.git
+	source = libticables.install
+	source = 69-libticables.rules
+	md5sums = SKIP
+	md5sums = 1831838d99949e3d378a07d8608b2bb4
+	md5sums = 2e38fe89764f129c567b06afbbdfdcd0
+
+pkgname = libticonv-git
+	provides = libticonv
+	conflicts = libticonv
+
+pkgname = libticables-git
+	install = libticables.install
+	provides = libticables
+	conflicts = libticables
+
+pkgname = libticalcs-git
+	provides = libticalcs
+	conflicts = libticalcs
+
+pkgname = libtifiles-git
+	provides = libtifiles
+	conflicts = libtifiles
+
