@@ -4,7 +4,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname="tupitube.desk"
-pkgver=0.2.10
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="A design and authoring tool for digital artists interested in 2D animation."
 url="https://www.maefloresta.com/"
@@ -15,16 +15,16 @@ conflicts=("tupi")
 makedepends=("ruby" "zlib" "libgl")
 source=("http://sourceforge.net/projects/tupi2d/files/Source%20Code/$pkgname-$pkgver.tar.gz" 
         "quazip5.patch")
-md5sums=('1c4db742a301e3169bcfeb7b5e80bff7'
-         'b5da9bd90ef57e6778f4e281572da3eb')
+md5sums=('bba559aba6f17064fee0720336da1aca'
+         '5c33ca77bf675939d9fb557b31c2f926')
 
 prepare() {
-	cd "${pkgname}_$pkgver"
+	cd "${pkgname}"
 	patch -p1 -i ../quazip5.patch
 }
 
 build() {
-	cd "${pkgname}_$pkgver"
+	cd "${pkgname}"
 	./configure \
 		--libdir="/usr/lib" \
 		--without-debug
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-	cd "${pkgname}_$pkgver"
+	cd "${pkgname}"
 	make DESTDIR="$pkgdir" install
 
 }

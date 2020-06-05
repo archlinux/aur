@@ -84,18 +84,12 @@ index ba63f319..d746377c 100755
          end
  
          # config.addLib("-lquazip-qt5")
-diff --git a/src/libtupi/tuppackagehandler.h b/src/libtupi/tuppackagehandler.h
-index 413bae8a..5e623971 100644
---- a/src/libtupi/tuppackagehandler.h
-+++ b/src/libtupi/tuppackagehandler.h
-@@ -38,8 +38,8 @@
- 
- #include "tglobal.h"
- #include "tapplicationproperties.h"
--#include "quazip/quazip.h"
--#include "quazip/quazipfile.h"
-+#include "quazip5/quazip.h"
-+#include "quazip5/quazipfile.h"
- 
- // SQA: Pending to enable in the future
- // #include "quazip/JlCompress.h"
+diff --git a/src/libtupi/tuppackagehandler.cpp b/src/libtupi/tuppackagehandler.cpp
+37,39c37,39
+< #include "quazip/quazip.h"
+< #include "quazip/quazipfile.h"
+< #include "quazip/JlCompress.h"
+---
+> #include "quazip5/quazip.h"
+> #include "quazip5/quazipfile.h"
+> #include "quazip5/JlCompress.h"
