@@ -1,6 +1,6 @@
 pkgbase = deepspeech
 	pkgdesc = A TensorFlow implementation of Baidu's DeepSpeech architecture
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/mozilla/DeepSpeech
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deepspeech
 	makedepends = python-wheel
 	makedepends = git
 	makedepends = sox
-	source = DeepSpeech-0.7.1::git+https://github.com/mozilla/DeepSpeech.git#tag=v0.7.1
+	source = DeepSpeech-0.7.3::git+https://github.com/mozilla/DeepSpeech.git#tag=v0.7.3
 	source = git+https://github.com/mozilla/tensorflow.git#branch=r1.15
 	sha256sums = SKIP
 	sha256sums = SKIP
