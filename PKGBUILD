@@ -1,7 +1,6 @@
 # Maintainer: cyka3702 <swc.rainier@gmail.com>
 # Contributor: paperbenni <paperbenni@gmail.com>
 pkgname=instantassist
-echo package name $pkgname
 _pkgname=instantassist
 pkgver=202006050952
 pkgrel=1
