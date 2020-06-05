@@ -5,15 +5,14 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=r618.011e17b6
+pkgver=r630.b856dcb6
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
 url="http://xmoto.tuxfamily.org"
 license=('GPL')
-depends=('curl' 'glu' 'libjpeg' 'libpng' 'lua51' 'libxml2'
-         'sdl_mixer' 'sdl_net'  'sdl_ttf' 'sqlite')
-optdepends=('libxdg-basedir' 'ode')
+depends=('curl' 'glu' 'libjpeg' 'libpng' 'lua51' 'libxml2' 'libxdg-basedir'
+         'ode' 'sdl_mixer' 'sdl_net'  'sdl_ttf' 'sqlite')
 makedepends=('cmake' 'git' 'ninja')
 conflicts=("$_basename")
 provides=("$_basename")
