@@ -14,7 +14,7 @@ sha512sums=('7a17cd7ecdd969b04480609edfc98df26ed4d71414f6b16fc9c7fb1ed51facf7339
 
 package() {
     cd "KiwiVM-GA-systemd-${pkgver}"
-    sed -i '9 s/#Type=exec/Type=exec/'        qemukvmga.service
-    sed -i '10 s/Type=simple/#Type=simple/'   qemukvmga.service
-    install -Dm644 qemukvmga.service -t       "${pkgdir}/usr/lib/systemd/system"
+    sed -i '9 s/#Type=exec/Type=exec/'        "qemukvmga.service"
+    sed -i '10 s/Type=simple/#Type=simple/'   "qemukvmga.service"
+    install -Dm644 "qemukvmga.service" -t       "${pkgdir}/usr/lib/systemd/system"
 }
