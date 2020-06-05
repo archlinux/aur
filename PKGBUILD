@@ -1,7 +1,7 @@
 # Maintainer: Francisco Guimaraes <francisco at gmail dot com>
 
 pkgname=whatsapp-nativefier-dark
-pkgver=0.20200428132708
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron) using dark theme"
 arch=("armv7l" "i686" "x86_64")
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
   "f79228902c35740ba202fc74494b3fa851911e466955298b231d7fcfebc63b37"
   "12b72fd82fff48dc8c5a08f7bc070259b9929cf408bf6738133a08508e4d3d09"
-  "a7297b08019fcc42c9f9fe29695a882b1bc097fd40aa09edccc1a5587d905305"
+  "c7c201732ce2c2b55fc496280b23a493feb2d7c8fd7b008d7d416d3906529829"
   "6b214b951ff556fe2b87bb66bf8d3eb7b8ae7ed1dd0ceef0fa9d2c4ca86e0fff"
   "77c85afca5dcea2a041a9461ead9700067556f95dc3702602c074260c4d3f047"
 )
