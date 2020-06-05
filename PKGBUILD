@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=202.5103.16
 _dlver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -21,7 +21,7 @@ makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
         "jetbrains-${pkgbase}.desktop")
 sha256sums=('10294d8e422cd55348a79924b677fd485c4b7b3b4386e012d5ac4cda94cfab1e'
-            'deb1e9f90e99f2ac00b5c31581fe6148712ecfa25f7290a39ae71443978cd539')
+            'e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
 noextract=("${_dlname}-${_dlver}.tar.gz")
 
 build() {

@@ -1,12 +1,10 @@
 [Desktop Entry]
-Type=Application
 Version=1.0
+Type=Application
 Name=CLion EAP
-GenericName=clion
-Comment=C/C++ IDE. 30-day evaluation.
 Icon=clion-eap
 Exec="/usr/bin/clion-eap" %f
-Terminal=false
+Comment=A cross-platform IDE for C and C++
 Categories=Development;IDE;
-StartupNotify=true
+Terminal=false
 StartupWMClass=jetbrains-clion

@@ -1,7 +1,7 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
 	pkgver = 202.5103.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = clion-eap
 	source = https://download.jetbrains.com/cpp/CLion-202.5103.16.tar.gz
 	source = jetbrains-clion-eap.desktop
 	sha256sums = 10294d8e422cd55348a79924b677fd485c4b7b3b4386e012d5ac4cda94cfab1e
-	sha256sums = deb1e9f90e99f2ac00b5c31581fe6148712ecfa25f7290a39ae71443978cd539
+	sha256sums = e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0
 
 pkgname = clion-eap
 	depends = libdbusmenu-glib
