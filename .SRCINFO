@@ -1,6 +1,6 @@
 pkgbase = deemix-git
 	pkgdesc = a deezer downloader built from the ashes of Deezloader Remix.
-	pkgver = r266.6e01f38
+	pkgver = r274.fd148d4
 	pkgrel = 1
 	url = https://notabug.org/RemixDev/deemix
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = deemix-git
 	depends = python-requests
 	depends = python-spotipy
 	provides = deemix
+	conflicts = deemix
 	source = deemix::git+https://notabug.org/RemixDev/deemix
 	md5sums = SKIP
 
