@@ -1,6 +1,6 @@
 pkgbase = instantassist
 	pkgdesc = a bunch of shortcuts for instantOS
-	pkgver = 202006050952
+	pkgver = 202006050953
 	pkgrel = 1
 	url = https://github.com/instantos/instantassist
 	arch = any
