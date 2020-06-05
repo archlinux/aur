@@ -1,5 +1,5 @@
 diff --git a/Makefile.in b/Makefile.in
-index a8eeae2..46b6da9 100644
+index d8f5a62..0962b49 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -799,7 +799,7 @@ lemon$(BEXE):	$(TOP)/tool/lemon.c $(TOP)/tool/lempar.c
@@ -13,19 +13,10 @@ index a8eeae2..46b6da9 100644
  # Rules to build individual *.o files from generated *.c files. This
 @@ -1091,7 +1091,7 @@ parse.c:	$(TOP)/src/parse.y lemon$(BEXE)
  	cp $(TOP)/src/parse.y .
- 	./lemon$(BEXE) $(OPT_FEATURE_FLAGS) $(OPTS) parse.y
+ 	./lemon$(BEXE) $(OPT_FEATURE_FLAGS) $(OPTS) -S parse.y
  
 -sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid$(BEXE) $(TOP)/VERSION
 +sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid $(TOP)/VERSION
  	$(TCLSH_CMD) $(TOP)/tool/mksqlite3h.tcl $(TOP) >sqlite3.h
  
  keywordhash.h:	$(TOP)/tool/mkkeywordhash.c
-@@ -1214,7 +1214,7 @@ FTS5_SRC = \
-    $(TOP)/ext/fts5/fts5_varint.c \
-    $(TOP)/ext/fts5/fts5_vocab.c  \
- 
--fts5parse.c:	$(TOP)/ext/fts5/fts5parse.y lemon
-+fts5parse.c:	$(TOP)/ext/fts5/fts5parse.y lemon$(BEXE)
- 	cp $(TOP)/ext/fts5/fts5parse.y .
- 	rm -f fts5parse.h
- 	./lemon$(BEXE) $(OPTS) fts5parse.y
