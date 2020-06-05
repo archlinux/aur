@@ -1,6 +1,6 @@
 pkgbase = rocm-validation-suite
 	pkgdesc = Tool for detecting and troubleshooting common problems affecting AMD GPUs
-	pkgver = 3.3.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/ROCmValidationSuite
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = rocm-validation-suite
 	depends = git
 	options = !staticlibs
 	options = strip
-	source = rocm_validation_suite-roc-3.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/roc-3.3.0.tar.gz
-	sha256sums = 37c62381a98d3f83aecad0b4870bdc98059b844e71a60fbc0eab1348d407a87a
+	source = rocm-validation-suite-3.6.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/rocm-3.6.0.tar.gz
+	sha256sums = fd036ed5fb8cfc9b1e26c6c320ceb322177ed0b4d36d354edd35b120d337c8f6
 
 pkgname = rocm-validation-suite
 
