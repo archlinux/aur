@@ -43,7 +43,7 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
     install -Dm0644 "braveAbout.png" "$pkgdir/usr/share/pixmaps/brave-dev.png"
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
-    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname"
+#    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname"
 
     ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
 }
