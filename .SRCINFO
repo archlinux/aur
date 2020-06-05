@@ -8,6 +8,7 @@ pkgbase = instagram-scraper
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-tqdm
+	depends = python-moviepy
 	source = https://files.pythonhosted.org/packages/source/i/instagram-scraper/instagram-scraper-1.9.0.tar.gz
 	sha512sums = d5429f743cf4a3fa443472de113c3df55cbfdde454260b0af382d4ae9a85d351dc22ed99ff1d6004b6b0ea3e453835abd4b0fef280c34aa69728d31a76197906
 
