@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 
 pkgname=bforartists
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -9,18 +9,18 @@ url="www.bforartists.de"
 license=('GPL')
 depends=('alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
-makedepends=('git' 'cmake' 'boost' 'mesa')
+         'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy' 'llvm')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 optdepends=('cuda')
 provides=('bforartists')
 conflicts=('bforartists-git')
 replaces=('bforartists')
 backup=()
 options=()
-srcver="2.0.1"
+srcver="$pkgver"
 install=bforartists.install
 source=("https://github.com/Bforartists/Bforartists/archive/v$srcver.tar.gz")
-md5sums=('20e4346ba1c39467cb837dda3f519999')
+md5sums=('1486365b5ee56b92f00dad66d65574f1')
 noextract=()
 
 # determine whether we can precompile CUDA kernels
@@ -51,6 +51,8 @@ build() {
     -DWITH_FFTW3=ON \
     -DWITH_SYSTEM_GLEW=ON \
     -DWITH_CODEC_FFMPEG=ON \
+    -DWITH_LLVM=ON \
+    -DWITH_CYCLES_OSL=ON \
     -DPYTHON_VERSION=3.8 \
     $_EXTRAOPTS
 #    -DWITH_OPENCOLLADA:BOOL=OFF \

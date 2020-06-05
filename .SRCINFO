@@ -1,6 +1,6 @@
 pkgbase = bforartists
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = www.bforartists.de
 	install = bforartists.install
@@ -11,6 +11,7 @@ pkgbase = bforartists
 	makedepends = cmake
 	makedepends = boost
 	makedepends = mesa
+	makedepends = llvm
 	depends = alembic
 	depends = libgl
 	depends = python
@@ -27,12 +28,13 @@ pkgbase = bforartists
 	depends = libtiff
 	depends = libpng
 	depends = python-numpy
+	depends = llvm
 	optdepends = cuda
 	provides = bforartists
 	conflicts = bforartists-git
 	replaces = bforartists
-	source = https://github.com/Bforartists/Bforartists/archive/v2.0.1.tar.gz
-	md5sums = 20e4346ba1c39467cb837dda3f519999
+	source = https://github.com/Bforartists/Bforartists/archive/v2.1.0.tar.gz
+	md5sums = 1486365b5ee56b92f00dad66d65574f1
 
 pkgname = bforartists
 
