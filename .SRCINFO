@@ -1,7 +1,7 @@
 pkgbase = saturnon-git
 	pkgdesc = Treeview based file browser
-	pkgver = 0.36.2
-	pkgrel = 2
+	pkgver = 0.37.0
+	pkgrel = 1
 	url = https://gitlab.com/TheDalaiAlpaca/saturnon
 	arch = any
 	license = GPL3
@@ -14,10 +14,7 @@ pkgbase = saturnon-git
 	optdepends = less: for using saturnon to open textfiles
 	optdepends = vlc: for using saturnon with music.conf
 	optdepends = dbus: for using saturnon with music.conf
-	optdepends = youtube-dl: for using saturnon with youtube.conf
-	optdepends = jq: for using saturnon with youtube.conf
-	optdepends = mpv: for using saturnon with youtube.conf
-	source = https://gitlab.com/TheDalaiAlpaca/saturnon/-/archive/0.36.2/saturnon-0.36.2.tar.gz
+	source = https://gitlab.com/TheDalaiAlpaca/saturnon/-/archive/0.37.0/saturnon-0.37.0.tar.gz
 	md5sums = SKIP
 
 pkgname = saturnon-git
