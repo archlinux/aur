@@ -48,7 +48,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=78.0b2
+pkgver=78.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=78.0
@@ -71,7 +71,7 @@ conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop)
-sha256sums=('cbca5f44898a674dc42f1974a91b8f1ff190fe2eb1c613fe97854abf5e7ef79e'
+sha256sums=('4a96c0a0ee96a7756fe5047070e1fcf43d49fa63309dafd38d0e937c40ea560e'
             'SKIP'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
