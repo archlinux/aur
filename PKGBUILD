@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=83.0.4103.97
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -233,10 +233,11 @@ package() {
 
   install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
     "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
-  sed -i \
+  sed -ni \
     -e 's/chromium-browser\.desktop/chromium.desktop/' \
     -e '/<update_contact>/d' \
     -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
+    -e '/^<?xml/,$p' \
     "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
 
   local toplevel_files=(
