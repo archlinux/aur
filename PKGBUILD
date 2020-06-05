@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.6.16.arch1.r904675.5912f85bf2c7
+pkgver=v5.6.16.arch1.r904681.d4c719103a7e
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.6.16.arch1

@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.6.16.arch1.r904675.5912f85bf2c7
+	pkgver = v5.6.16.arch1.r904681.d4c719103a7e
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
