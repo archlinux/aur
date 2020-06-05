@@ -1,7 +1,7 @@
 # Maintainer: Silvio Ankermann < silvio at booq dot org >
 
 pkgname=python-drivelib
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Easy access to the most common Google Drive API calls'
 url='https://github.com/Lykos153/python-drivelib'

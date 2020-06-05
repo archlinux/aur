@@ -1,6 +1,6 @@
 pkgbase = python-drivelib
 	pkgdesc = Easy access to the most common Google Drive API calls
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Lykos153/python-drivelib
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-drivelib
 	depends = python-google-auth-httplib2
 	depends = python-google-auth
 	depends = python-oauth2client
-	source = git+https://github.com/Lykos153/python-drivelib.git#tag=v0.1.4
+	source = git+https://github.com/Lykos153/python-drivelib.git#tag=v0.1.5
 	sha256sums = SKIP
 
 pkgname = python-drivelib
