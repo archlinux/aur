@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
-	pkgver = 2.8.6
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://wiki.ros.org/gazebo_plugins
 	arch = i686
@@ -60,8 +60,8 @@ pkgbase = ros-noetic-gazebo-plugins
 	depends = ros-noetic-image-transport
 	depends = ros-noetic-gazebo-dev
 	depends = ros-noetic-rospy
-	source = ros-noetic-gazebo-plugins-2.8.6.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.6.tar.gz
-	sha256sums = df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4
+	source = ros-noetic-gazebo-plugins-2.9.1.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.9.1.tar.gz
+	sha256sums = 9fac7aa1e9773aae20cfef1ec062353f91e4546ebd638e1df2e3f8b51f1e0773
 
 pkgname = ros-noetic-gazebo-plugins
 
