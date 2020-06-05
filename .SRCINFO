@@ -1,0 +1,18 @@
+pkgbase = an9wer-dwm
+	pkgdesc = A dynamic window manager for X
+	pkgver = 6.2.r5.gf09418b
+	pkgrel = 1
+	url = http://dwm.suckless.org
+	arch = x86_64
+	groups = an9wer-suckless
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxft
+	depends = libxinerama
+	depends = an9wer-suckless-rebuild>=0.1.4
+	source = dwm::git://git.suckless.org/dwm#commit=f09418b
+	md5sums = SKIP
+
+pkgname = an9wer-dwm
+
