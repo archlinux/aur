@@ -1,0 +1,24 @@
+pkgbase = libxmp-aarch64-git
+	pkgdesc = Libxmp is a library that renders module files to PCM data. It supports over 90 mainstream and obscure module formats.
+	pkgver = libxmp.4.4.1.r161.g92313f6f
+	pkgrel = 1
+	url = http://xmp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = make
+	makedepends = autoconf
+	depends = sdl
+	depends = libvorbis
+	depends = curl
+	depends = glibc
+	optdepends = pulseaudio
+	provides = libxmp
+	conflicts = libxmp
+	source = git+https://github.com/cmatsuoka/libxmp.git
+	md5sums = SKIP
+
+pkgname = libxmp-aarch64-git
+
