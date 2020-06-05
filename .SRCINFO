@@ -1,0 +1,17 @@
+pkgbase = openimagedenoise-bin
+	pkgdesc = Intel(R) Open Image Denoise library, official binaries
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://openimagedenoise.github.io
+	arch = x86_64
+	license = Apache
+	depends = intel-tbb
+	depends = python
+	depends = ispc
+	provides = openimagedenoise
+	conflicts = openimagedenoise
+	source = https://github.com/OpenImageDenoise/oidn/releases/download/v1.2.0/oidn-1.2.0.x86_64.linux.tar.gz
+	sha256sums = 47a395c3d9795625e29d84667306f51e15105ac40b481fb70fb01d63b8443e98
+
+pkgname = openimagedenoise-bin
+
