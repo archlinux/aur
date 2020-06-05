@@ -3,7 +3,7 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="https://dupeguru.voltaicideas.net/"
@@ -20,6 +20,11 @@ md5sums=(
 )
 provides=("dupeguru")
 conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
+
+prepare() {
+  cd "$srcdir"
+  sed -i "s/hsaudiotag3k>=1.1.3/hsaudiotag3k>=1.1.*/g" requirements.txt
+}
 
 build() {
   cd "$srcdir"

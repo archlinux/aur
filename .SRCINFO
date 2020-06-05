@@ -1,7 +1,7 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dupeguru.voltaicideas.net/
 	arch = any
 	license = BSD
