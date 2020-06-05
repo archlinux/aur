@@ -3,7 +3,7 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.1.9.r26.geb0e26b5
+pkgver=v2.2.9.r0.gc0c81514
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -13,19 +13,34 @@ groups=('gns3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'python-setuptools')
-depends=('python-jsonschema' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3'
-         'python-yarl-gns3' 'python-jinja' 'python-raven' 'python-psutil'
-         'python-zipstream-gns3' 'python-prompt_toolkit-gns3' 'python-async-timeout-gns3'
-         'busybox')
-optdepends=('dynamips: Cisco router emulator.'
-            'gns3-gui: graphical user interface for GNS3 server.'
-            'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
-            'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
-            'vpcs: Simple PC emulation for basic network operations.'
-            'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
+depends=(
+    'busybox'
+    'python-aiofiles'
+    'python-aiohttp'
+    'python-aiohttp-cors'
+    'python-async_generator'
+    'python-async-timeout'
+    'python-distro'
+    'python-jinja'
+    'python-jsonschema'
+    'python-prompt_toolkit'
+    'python-psutil'
+    'python-py-cpuinfo'
+    'python-sentry_sdk'
+    'python-yarl'
+    'python-zipstream-gns3'
+)
+optdepends=(
+    'dynamips: Cisco router emulator.'
+    'gns3-gui-git: graphical user interface for GNS3 server.'
+    'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
+    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
+    'libvirt: needed for the NAT cloud'
+    'vpcs: Simple PC emulation for basic network operations.'
+    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
 )
 install="$_pkgname.install"
-source=("$_pkgname::git+git://github.com/GNS3/$_pkgname.git#branch=2.1"
+source=("$_pkgname::git+git://github.com/GNS3/$_pkgname.git"
         "$_pkgname@.service")
 sha256sums=('SKIP'
             'd145c7a4b7163aecd91b71a0769130d62beb5f4381fe5437774f6b4477a3fa48')
@@ -33,6 +48,14 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+    sed -i \
+        -e 's|^aiofiles==0\.4\.0$|aiofiles>=0.4.0|' \
+        -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' \
+        requirements.txt
 }
 
 build() {
