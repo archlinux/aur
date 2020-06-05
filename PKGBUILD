@@ -2,7 +2,7 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 pkgname=amide  
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Medical imaging data examiner'
 arch=('x86_64')
 url='http://amide.sourceforge.net/'
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  CFLAGS+=" -fno-common" ./configure --prefix=/usr 
+  CFLAGS+=" -fcommon" ./configure --prefix=/usr 
   make --jobs=1
 }
 
