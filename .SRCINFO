@@ -18,6 +18,7 @@ pkgbase = dwm-ekollof-git
 	depends = dwm-ekollof-git
 	depends = dwmblocks-ekollof-git
 	depends = dmenu-ekollof-git
+	depends = deadd-notification-center-bin
 	provides = dwm
 	conflicts = dwm
 	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof.git
