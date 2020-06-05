@@ -1,6 +1,6 @@
 pkgbase = libretro-o2em-git
 	pkgdesc = libretro port of O2EM, an Odyssey 2 / VideoPac emulator
-	pkgver = 110.481c061
+	pkgver = 123.31a60bb
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-o2em
 	arch = i686
