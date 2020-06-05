@@ -1,11 +1,11 @@
 _pkgname='river'
 pkgname="${_pkgname}-git"
-pkgver=r171.7988a2e
-pkgrel=2
-pkgdesc='A dyanmic wayland compositor.'
+pkgver=r264.59d0fb7
+pkgrel=1
+pkgdesc='A dynamic tiling wayland compositor.'
 arch=('any')
 url="https://github.com/ifreund/${_pkgname}"
-license=('MIT')
+license=('GPL3')
 depends=('zig' 'wlroots')
 makedepends=('git' 'wayland-protocols')
 provides=('river')
@@ -23,14 +23,7 @@ build() {
 	zig build -Drelease-safe
 }
 
-check() {
-	cd "${_pkgname}"
-	zig build test -Drelease-safe
-}
-
 package() {
 	cd "${_pkgname}"
-	zig build install -Drelease-safe --prefix .
-	install -Dm 755 bin/river -t "${pkgdir}/usr/bin/"
-	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	zig build -Drelease-safe --prefix "${pkgdir}/usr" install
 }
