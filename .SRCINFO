@@ -1,7 +1,7 @@
 pkgbase = fabric1
 	pkgdesc = Python library and command-line tool designed to streamline deploying applications or performing system administration tasks via the SSH protocol
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fabfile.org/
 	arch = any
 	license = BSD

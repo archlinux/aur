@@ -5,7 +5,7 @@
 
 pkgname=fabric1
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library and command-line tool designed to streamline deploying applications or performing system administration tasks via the SSH protocol"
 url="https://www.fabfile.org/"
 license=('BSD')
