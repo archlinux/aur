@@ -1,26 +1,25 @@
 # Maintainer: Asterios Dimitriou <asterios@pci.gr>
 
 pkgname=libqsqlcipher
-_pkgver=5.14-1
-pkgver=5.14.2
+_pkgver=5.15-1
+pkgver=5.15.0
 pkgrel=1
 pkgdesc="Qt5 sqldriver plugin for SQLCipher"
 url="https://github.com/sjemens/qsqlcipher-qt5"
 license=('LGPL3')
 arch=('i686' 'x86_64')
-depends=(qt5-base sqlcipher)
+depends=(qt5-base)
 source=(qsqlcipher-qt5-${_pkgver}.tar.gz::"https://github.com/sjemens/qsqlcipher-qt5/archive/v${_pkgver}.tar.gz")
-sha256sums=('54bcde8ba564d504972dd22c342df15c18ccd219b1bcd088563b777bd13d7d26')
+sha256sums=('d9e84408226db8e603a09065905c557b2a0468122d42c8fd4a0abf6c61208471')
 
 build() {
   rm -rf "${srcdir}/build" && mkdir -p "${srcdir}/build"
-	cd "${srcdir}/build"
-	QMAKE_CFLAGS="${CFLAGS}" \
-	QMAKE_CXXFLAGS="${CXXFLAGS}" \
-	qmake ../qsqlcipher-qt5-${_pkgver}/qsqlcipher.pro \
-	  CONFIG+=withTests \
-	  DEFINES+=DISABLE_COLUMN_METADATA
-	make
+  cd "${srcdir}/build"
+  QMAKE_CFLAGS="${CFLAGS}" \
+  QMAKE_CXXFLAGS="${CXXFLAGS}" \
+  qmake ../qsqlcipher-qt5-${_pkgver}/qsqlcipher.pro \
+    CONFIG+=withTests
+  make
 }
 
 check() {
@@ -29,6 +28,6 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/build/qsqlcipher"
-	make install INSTALL_ROOT="${pkgdir}"
+  cd "${srcdir}/build/qsqlcipher"
+  make install INSTALL_ROOT="${pkgdir}"
 }
