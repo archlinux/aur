@@ -2,7 +2,7 @@
 # Contributor: paperbenni <paperbenni@gmail.com>
 pkgname=instantassist
 _pkgname=instantassist
-pkgver=202006050952
+pkgver=202006050953
 pkgrel=1
 pkgdesc="a bunch of shortcuts for instantOS"
 url="https://github.com/instantos/instantassist"
