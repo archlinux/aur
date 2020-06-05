@@ -2,7 +2,7 @@
 
 _plug=lvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r231.c9a2c00
+pkgver=r311.aea5d2d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,7 +23,9 @@ optdepends=('vapoursynth-plugin-combmask: deinterlace.decomb'
             'vapoursynth-plugin-readmpls: misc.source support for mpls sources'
             'vapoursynth-plugin-continuityfixer: misc.edgefixer'
             )
-makedepends=('git')
+makedepends=('git'
+             'python-setuptools'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/lvsfunc.git")

@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-lvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: lvsfunc (GIT version)
-	pkgver = r231.c9a2c00
+	pkgver = r311.aea5d2d
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/lvsfunc
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = vapoursynth
 	depends = vapoursynth-plugin-fvsfunc
 	depends = vapoursynth-plugin-havsfunc
