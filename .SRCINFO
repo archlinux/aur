@@ -1,6 +1,6 @@
 pkgbase = evtc-watch-git
 	pkgdesc = Guild Wars 2/arcdps evtc log searching tool. Built[sic] from master branch using the rust nightly toolchain.
-	pkgver = ccd313a
+	pkgver = 1c714d8
 	pkgrel = 1
 	url = https://gitlab.com/networkjanitor/evtc-watch
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = evtc-watch-git
 	depends = gcc-libs
 	depends = bash
 	depends = zip
+	depends = inotify-tools
 	optdepends = jq
 	optdepends = curl
 	provides = evtc-watch
