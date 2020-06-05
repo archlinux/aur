@@ -2,17 +2,18 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
 license=('MPL2')
 makedepends=('asciidoc' 'cargo' 'rust')
-depends=('dbus')
+depends=('dbus' 'cryptsetup' 'libutil-linux' 'clang')
 optdepends=('stratis-cli: command line interface')
+checkdepends=('python-pyudev')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-b2sums=('86a2b2e58aed08ea34e1ddbc064ec4e4bfd3f4f4544d60ba580941b71e56b80b65c99852934b2c4826ed2cac073bb66dcd4dcf1d4ff243f38f026582eb7257b1')
+b2sums=('cf050e65b6a593a37ddb55d73a4c4707c6ff036f5cbafbbf0552b1ec3617c63b0b3388af2bdde60b93c20c42549f3e9f2fbc0b1649c85ee854a2a8cadf3b89ef')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
