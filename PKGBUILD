@@ -1,7 +1,7 @@
 # Maintainer: Helloagain <nospamming11+arch at gmail dot com>
 
 pkgname=fakturama
-pkgver=2.1.0.c
+pkgver=2.1.0.e
 pkgrel=1
 pkgdesc="Creates invoices with ZUGFeRD support"
 arch=('x86_64')
@@ -24,12 +24,12 @@ install=
 changelog=
 source=(
 	# "$pkgname-$pkgver.tar.gz::https://bitbucket.org/fakturamadev/fakturama-2/downloads/Installer_Fakturama_linux_x64_${pkgver}.tar.gz"
-	"$pkgname-$pkgver.tar.gz::https://bitbucket.org/fakturamadev/fakturama-2/downloads/Installer_Fakturama_linux_x64_2.1.0c.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v2.1.0/Installer_Fakturama_linux_x64_2.1.0e.tar.gz"
 	"fakturama2.desktop"
 )
 noextract=()
 sha256sums=(
-	"ab6d363e9b446111a922bd7e51a527fa649dead348a72d73cdec6da46445f769"
+	"f930260f04dec2aae3e347c1007e636b64f5504c1f84dced6d4814575af34519"
 	"550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c"
 )
 
