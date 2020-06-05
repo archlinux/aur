@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='https://wiki.ros.org/laser_filters'
 
 pkgname='ros-noetic-laser-filters'
-pkgver='1.8.10'
+pkgver='1.8.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -45,7 +45,7 @@ depends=(
 
 _dir="laser_filters-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz")
-sha256sums=('5c4e508e4ed30c98ad74158c62e665e6044ce4b5d44b9fb1fc2589c00552c923')
+sha256sums=('8c81c29f6e48daa6c120ddc72088b7a84d9753f91cb5027e745b0a94f9fd41fb')
 
 build() {
 	# Use ROS environment variables.
