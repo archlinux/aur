@@ -1,6 +1,6 @@
 pkgbase = empoche
 	pkgdesc = New Time Tracking and Task Management application.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://empoche.com
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = empoche
 	depends = libxss
 	depends = nss
 	provides = empoche
-	source_x86_64 = https://empoche-desktop.s3.eu-central-1.amazonaws.com/empoche-0.4.1.pacman
-	sha256sums_x86_64 = e323443635a5ccfedd46fcda6d3e13c3905a0bf67aad2f89d2770ef7ca47643b
+	source_x86_64 = https://empoche-desktop.s3.eu-central-1.amazonaws.com/empoche-0.4.2.pacman
+	sha256sums_x86_64 = 625730b7563902f326c16e26781a08e5c1360af08e95d23ad3621199886572ea
 
 pkgname = empoche
 
