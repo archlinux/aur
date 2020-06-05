@@ -1,0 +1,18 @@
+pkgbase = gtk-frdp
+	pkgdesc = RDP viewer widget for Gtk
+	pkgver = 3.37.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gtk-frdp
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = freerdp
+	depends = gtk3
+	source = git+https://gitlab.gnome.org/GNOME/gtk-frdp.git#commit=3a5f1356864339a5a9af27ce6e9464b8f0c5c5f5
+	sha256sums = SKIP
+
+pkgname = gtk-frdp
+
