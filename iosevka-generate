@@ -7,27 +7,29 @@ import subprocess
 import sys
 from pathlib import Path
 from textwrap import dedent
-from typing import Dict, Set, Tuple
+from typing import Dict, Iterable, List, Optional, Set, Tuple
 
 import inflection
 from git import Repo
 from xdg.BaseDirectory import xdg_cache_home, xdg_config_home, xdg_data_home
 
 IOSEVKA_REPO = "https://github.com/be5invis/iosevka"
+NERDFONT_REPO = "https://github.com/ryanoasis/nerd-fonts"
 
 
-def get_repo(repo_dir: Path) -> Repo:
+def get_repo(repo_dir: Path, remote_url: str) -> Repo:
     if repo_dir.exists():
         print(f"Updating {IOSEVKA_REPO} ...", file=sys.stderr)
         repo = Repo(repo_dir)
         repo.remote().pull()
     else:
-        repo = Repo.clone_from(IOSEVKA_REPO, repo_dir, depth=1)
+        print(f"Cloning {remote_url} ...", file=sys.stderr)
+        repo = Repo.clone_from(remote_url, repo_dir, depth=1)
     return repo
 
 
 def install_iosevka(repo_dir: Path):
-    get_repo(repo_dir)
+    get_repo(repo_dir, IOSEVKA_REPO)
 
     print("Installing iosevka...", file=sys.stderr)
     try:
@@ -63,7 +65,28 @@ def generate_font(iosevka_dir: Path, font_name: str, font_styles: Dict[str, Set[
     ).check_returncode()
 
 
-def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]]]:
+def nerdfont_patch(
+    font_dir: Path, repo_dir: Path, options: Iterable[str] = [], mono: bool = True
+) -> None:
+    get_repo(repo_dir, NERDFONT_REPO)
+
+    for font in filter(Path.is_file, font_dir.glob("*")):
+        print(f"Patching {font} with nerdfont ...", file=sys.stderr)
+        subprocess.run(
+            [
+                f"{repo_dir}/font-patcher",
+                "--careful",
+                "--progressbars",
+                *(["--mono"] if mono else []),
+                *map(lambda o: f"--{o}", options),
+                font,
+            ],
+            cwd=font_dir,
+        ).check_returncode()
+        font.rename(f"{font.name}.unpatched")
+
+
+def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[List]]:
     print(f"Parsing iosevka-generate conf: {config_file} ...", file=sys.stderr)
 
     config = configparser.ConfigParser(
@@ -80,20 +103,23 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]]]:
         for section in sections
     }
 
+    nerdfont: Optional[List] = None
     for option, value in config["options"].items():
         if option == "name":
             font_name = value
+        elif option == "nerdfont":
+            nerdfont = value.split(" ")
         elif not value:
             font_styles["common"].add(option)
         else:
             font_styles["common"].add(f"{option}-{value}")
 
-    return (font_name, font_styles)
+    return (font_name, font_styles, nerdfont)
 
 
 def store_fonts(dest: Path, source: Path):
     dest.mkdir(parents=True, exist_ok=True)
-    for font in filter(lambda f: f.is_file(), source.glob("*")):
+    for font in filter(lambda f: f.is_file(), source.glob("*.ttf")):
         shutil.move(source / font, dest / font.name)
 
     subprocess.run(["fc-cache", "--force"]).check_returncode()
@@ -101,14 +127,24 @@ def store_fonts(dest: Path, source: Path):
 
 if __name__ == "__main__":
     config_dir = Path(xdg_config_home) / "iosevka"
-    install_dir = Path(xdg_cache_home) / "iosevka"
+    cache_dir = Path(xdg_cache_home)
+    install_dir = cache_dir / "iosevka"
+    font_dir = Path(xdg_data_home) / "fonts"
 
     install_iosevka(install_dir)
     for conf in Path(config_dir).glob("*.ini"):
-        name, styles = parse_config(conf)
-        generate_font(install_dir, name, styles)
+        name, styles, nerdfont_opts = parse_config(conf)
 
+        generate_font(install_dir, name, styles)
         gen_dir = install_dir / "dist" / name / "ttf"
-        font_dir = Path(xdg_data_home) / "fonts"
+
+        if nerdfont_opts is not None:
+            mono = any(
+                filter(lambda o: o in styles["common"], ("sp-term", "sp-fixed"))
+            )
+
+            nerdfont_patch(
+                gen_dir, cache_dir / "nerdfont", options=nerdfont_opts, mono=mono
+            )
 
         store_fonts(font_dir, gen_dir)
