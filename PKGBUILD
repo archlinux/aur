@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre01
 _major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -245,7 +245,7 @@ package_kodi-devel() {
     'shairplay: AirPlay support'
     'upower: Display battery level'
   )
-  provides=('xbmc')
+  provides=('xbmc' "kodi=${pkgver}")
   conflicts=('xbmc')
   replaces=('xbmc')
 
@@ -278,7 +278,7 @@ package_kodi-devel() {
 
 package_kodi-x11-devel() {
   pkgdesc="x11 kodi binary"
-  provides=('KODI-BIN')
+  provides=('KODI-BIN' "kodi-x11=${pkgver}")
   replaces=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
@@ -297,7 +297,7 @@ package_kodi-x11-devel() {
 
 package_kodi-wayland-devel() {
   pkgdesc="wayland kodi binary"
-  provides=('KODI-BIN')
+  provides=('KODI-BIN' "kodi-wayland=${pkgver}")
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
@@ -314,7 +314,7 @@ package_kodi-wayland-devel() {
 
 package_kodi-gbm-devel() {
   pkgdesc="gbm kodi binary"
-  provides=('KODI-BIN')
+  provides=('KODI-BIN' "kodi-gbm=${pkgver}")
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'

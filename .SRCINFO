@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 18.8pre01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -109,6 +109,7 @@ pkgname = kodi-devel
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
 	provides = xbmc
+	provides = kodi=18.8pre01
 	conflicts = xbmc
 	replaces = xbmc
 
@@ -136,6 +137,7 @@ pkgname = kodi-x11-devel
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
+	provides = kodi-x11=18.8pre01
 	replaces = kodi-bin
 
 pkgname = kodi-wayland-devel
@@ -162,6 +164,7 @@ pkgname = kodi-wayland-devel
 	depends = waylandpp
 	depends = kodi-devel
 	provides = KODI-BIN
+	provides = kodi-wayland=18.8pre01
 
 pkgname = kodi-gbm-devel
 	pkgdesc = gbm kodi binary
@@ -187,6 +190,7 @@ pkgname = kodi-gbm-devel
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
+	provides = kodi-gbm=18.8pre01
 
 pkgname = kodi-eventclients-devel
 	pkgdesc = Kodi Event Clients
