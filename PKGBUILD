@@ -2,20 +2,20 @@
 # Contributor: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=2.0.1
+pkgver=2.1.0
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc='A CLI for the Stratis Project.'
 arch=('any')
 license=('Apache')
 url='https://stratis-storage.github.io/'
-depends=('python-dbus-client-gen' 'python-into-dbus' 'python-justbytes' 'python-dateutil')
+depends=('python-dbus-client-gen' 'python-into-dbus' 'python-justbytes' 'python-dateutil' 'python-semantic-version')
 makedepends=('dbus-glib' 'git' 'mpfr' 'python-argparse' 'python-dbus' 'python-pip' 'asciidoc')
 # checkdepends=('python-nose' 'python-hypothesis' 'stratisd')
 source=(
   "${pkgname}-${_pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${_pkgver}.tar.gz"
 )
-sha256sums=('9455b6c0ab54d3ce6475acccda3d52c8c334b41624a89d8597a706c77086d417')
+sha256sums=('451ec0070f9eba9cc0712069683f4a8ee3a3333dff8a850957fe9c9c60e0d195')
 
 ### ignore tests because it requires root permission to access stratisd
 # check() {
