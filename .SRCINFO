@@ -1,12 +1,11 @@
 pkgbase = aura
 	pkgdesc = A secure package manager for Arch Linux and the AUR
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fosskers/aura
 	arch = x86_64
 	license = GPL-3
 	makedepends = stack
-	makedepends = ghc
 	depends = gmp
 	depends = pacman
 	depends = git
