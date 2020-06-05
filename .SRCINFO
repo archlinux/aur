@@ -1,7 +1,7 @@
 pkgbase = fakturama
 	pkgdesc = Creates invoices with ZUGFeRD support
 	pkgver = 2.1.0.e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fakturama.info
 	arch = x86_64
 	license = EPL

@@ -2,7 +2,7 @@
 
 pkgname=fakturama
 pkgver=2.1.0.e
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates invoices with ZUGFeRD support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -52,6 +52,7 @@ package() {
 
 	# Create entry under _main_application
 	install -m 755 -d "$_main_application"
+	chmod u+w,g+w,o+w -R "$_main_application"
 
 	# Copy all needed files
 	cp -r "$srcdir/artifacts.xml" "$_main_application"
@@ -61,6 +62,13 @@ package() {
 	cp -r "$srcdir/features" "$_main_application"
 	cp -r "$srcdir/p2" "$_main_application"
 	cp -r "$srcdir/plugins" "$_main_application"
+
+	# special folder that needs special permissions
+	chmod u+w,g+w,o+w -R "$_main_application/configuration"
+	chmod u+w,g+w,o+w -R "$_main_application/features"
+	chmod u+w,g+w,o+w -R "$_main_application/plugins"
+	chmod u+w,g+w,o+w -R "$_main_application/p2"
+
 
 	# Copy other files
 	install -Dm 644 "$srcdir/icon.xpm" "$pkgdir/usr/share/pixmaps/fakturama2.xpm"
