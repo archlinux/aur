@@ -1,0 +1,19 @@
+pkgbase = tilp-git
+	pkgdesc = TI graphing calculator link/transfer program
+	pkgver = 1.18.r25.g4fdd6bd0
+	pkgrel = 1
+	url = https://github.com/adriweb/tilp_and_gfm/tree/gtk3
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = libticalcs
+	optdepends = gfm: to manage and manipulate TI Group Files (backups)
+	provides = tilp
+	conflicts = tilp
+	source = tilp-git::git+https://github.com/adriweb/tilp_and_gfm.git#branch=gtk3
+	md5sums = SKIP
+
+pkgname = tilp-git
+
