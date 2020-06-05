@@ -1,6 +1,6 @@
 pkgbase = dupeguru-git
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.0.4.r18.g2ea02bd7
+	pkgver = 4.0.4.r40.gd5a6ca74
 	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
@@ -19,11 +19,7 @@ pkgbase = dupeguru-git
 	conflicts = dupeguru-se
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
-	source = git+https://github.com/hsoft/dupeguru.git
-	source = git+https://github.com/hsoft/hscommon#commit=5497c6fec44de6767a6488f540526d70218ef0da
-	source = git+https://github.com/hsoft/qtlib.git#commit=45cf0cbf77c87eb591914f0235b3b2e36ef09bb8
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://github.com/arsenetar/dupeguru.git
 	md5sums = SKIP
 
 pkgname = dupeguru-git

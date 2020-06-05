@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.0.4.r18.g2ea02bd7
+pkgver=4.0.4.r40.gd5a6ca74
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -11,24 +11,14 @@ depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsau
          'libxkbcommon-x11')
 makedepends=('git' 'python-sphinx')
 checkdepends=('python-tox')
-source=('git+https://github.com/hsoft/dupeguru.git'
-        'git+https://github.com/hsoft/hscommon#commit=5497c6fec44de6767a6488f540526d70218ef0da'
-        'git+https://github.com/hsoft/qtlib.git#commit=45cf0cbf77c87eb591914f0235b3b2e36ef09bb8')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=('git+https://github.com/arsenetar/dupeguru.git')
+md5sums=('SKIP')
 provides=('dupeguru')
 conflicts=('dupeguru' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-  git submodule init
-  git config submodule.hscommon.url "${srcdir}/hscommon"
-  git config submodule.qtlib.url    "${srcdir}/qtlib"
-  git submodule update
 }
 
 build() {
