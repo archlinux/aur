@@ -4,7 +4,7 @@
 pkgname=remmina-appindicator
 _pkgname=remmina
 epoch=1
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='remote desktop client written in GTK+ (compiled with appindicator)'
 arch=(x86_64)
@@ -53,7 +53,7 @@ replaces=(
     remmina
 )
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/Remmina/Remmina/-/archive/v${pkgver/rc/-rc}/Remmina-v${pkgver/rc/-rc}.tar.bz2")
-sha512sums=('ea88e2ce6355519eb6a5fd52b1860736a9b04741dda6a692a23aa52fb6a47900e6af57162604b692cb4ca6d63ffe564c5e4a317cd5f8b2e3ea6db0684cef3a68')
+sha512sums=('07ed67b2bf576582c0bec3c73a77ce4a31728ed9ea74f0924ef5a6fc2fe9eeb2681cc0e8ff55355f3b1ce920ce416b036f9c245e0c8016875091e8511ce2a867')
 
 build() {
   cd "$srcdir"/Remmina-v${pkgver/rc/-rc}/
