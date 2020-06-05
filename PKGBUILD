@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 pkgver=83.0.4103.97
-pkgrel=1
+pkgrel=2
 _pkgname=chromium
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -241,6 +241,7 @@ package() {
     -e 's/chromium-browser\.desktop/chromium.desktop/' \
     -e '/<update_contact>/d' \
     -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
+    -e '/^<?xml/,$p' \
     "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
 
   local toplevel_files=(
