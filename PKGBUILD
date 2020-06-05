@@ -4,9 +4,9 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-noetic-gazebo-ros-control'
-pkgver='2.8.5'
+pkgver='2.9.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-joint-limits-interface
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros_control"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+sha256sums=('9fac7aa1e9773aae20cfef1ec062353f91e4546ebd638e1df2e3f8b51f1e0773')
 
 build() {
   # Use ROS environment variables
