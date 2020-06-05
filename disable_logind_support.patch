@@ -1,14 +1,10 @@
---- udisks-udisks-2.7.2_orig/configure.ac	2017-09-11 18:28:05.242977535 +0300
-+++ udisks-udisks-2.7.2/configure.ac	2017-09-09 20:45:08.274150812 +0300
-@@ -170,10 +170,7 @@
- AC_SUBST(LIBATASMART_CFLAGS)
- AC_SUBST(LIBATASMART_LIBS)
- 
--PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd >= 209], [have_libsystemd_login=yes],
--                  [PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd-login >= 44 libsystemd-daemon],
--                  [have_libsystemd_login=yes],
--                  [have_libsystemd_login=no])])
-+have_libsystemd_login=no
- AM_CONDITIONAL(HAVE_LIBSYSTEMD_LOGIN, test x$have_libsystemd_login = xyes)
- if test "x$have_libsystemd_login" = "xyes"; then
-   AC_DEFINE([HAVE_LIBSYSTEMD_LOGIN], 1, [Define to 1 if libsystemd-login is available])
+--- udisks-udisks-2.9.0_orig/configure.ac	2020-05-26 18:07:07.000000000 +0300
++++ udisks-udisks-2.9.0/configure.ac	2020-06-04 10:07:53.578649448 +0300
+@@ -201,6 +201,7 @@
+                     [PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd-login >= 44 libsystemd-daemon],
+                     [have_libsystemd_login=yes],
+                     [have_libsystemd_login=no])])
++  have_libsystemd_login=no
+   if test "x$have_libsystemd_login" = "xyes"; then
+     AC_DEFINE([HAVE_LIBSYSTEMD_LOGIN], 1, [Define to 1 if libsystemd-login is available])
+   fi
