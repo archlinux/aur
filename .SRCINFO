@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
 	pkgver = 12.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trilinos.org
 	arch = x86_64
 	license = LGPL3
@@ -22,8 +22,10 @@ pkgbase = trilinos
 	conflicts = gtest
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-18-1.tar.gz
 	source = Makefile.kokkos.patch
+	source = Seacas.patch
 	sha256sums = 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
 	sha256sums = 64130011dd70f3be1133c0943be458a7d4f6fa799e6bd47a6294300ced6d827a
+	sha256sums = 0e2f10b7ba4f7349eaef6bff111cda6de6d216ab417e24bf0b342711117a7374
 
 pkgname = trilinos
 
