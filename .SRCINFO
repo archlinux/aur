@@ -1,0 +1,16 @@
+pkgbase = coc
+	pkgdesc = An NSFW (18+) erotica game made by Fenoxo, Corruption of Champions
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.fenoxo.com/play-games/
+	arch = x86_64
+	license = AGPL
+	depends = flashplayer-standalone
+	provides = coc
+	source = coc.swf::https://www.fenoxo.com/play/CoC_1.0.2.swf
+	source = coc
+	md5sums = SKIP
+	md5sums = 168c1806165b3169ffbc40ccfadd61de
+
+pkgname = coc
+
