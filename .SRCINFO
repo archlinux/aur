@@ -7,7 +7,7 @@ pkgbase = python-pihole5-list-tool
 	license = MIT
 	depends = python-requests
 	depends = python-ansicolors
-	depends = python-inquirer
+	depends = python-pyinquirer
 	source = https://files.pythonhosted.org/packages/15/37/89e20ff4c5c2115001c488221f38d09a0a29c680d06c1d9082e1a3e33aff/pihole5-list-tool-0.4.4.tar.gz
 	sha256sums = c4b1693aae9a8f44c8d00a59ac5bbece648016e7b8dbd85b772f086a8e16fc7a
 
