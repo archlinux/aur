@@ -1,0 +1,5 @@
+/pkg
+/src
+/firefox-extension-*
+/privacy_pass*.xpi
+
