@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-image-publisher
 	pkgdesc = ROS - Contains a node publish an image stream from single image file or avi motion file.
-	pkgver = 1.12.23
-	pkgrel = 3
+	pkgver = 1.15.2
+	pkgrel = 1
 	url = https://wiki.ros.org/image_publisher
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = ros-noetic-image-publisher
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-image-transport
-	source = ros-noetic-image-publisher-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
-	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
+	source = ros-noetic-image-publisher-1.15.2.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.15.2.tar.gz
+	sha256sums = 35427b2d4e1396e0260ea2cf7d770a67104779b65fd03f287082098319c4acf5
 
 pkgname = ros-noetic-image-publisher
 
