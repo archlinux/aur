@@ -31,7 +31,6 @@ pkgbase = matrix-mirage-git
 	depends = python-lxml
 	depends = python-mistune
 	depends = python-blist
-	depends = python-uvloop
 	depends = python-matrix-nio>=0.13.0
 	source = git://github.com/mirukana/mirage.git
 	sha256sums = SKIP
