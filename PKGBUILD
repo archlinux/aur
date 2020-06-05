@@ -19,28 +19,28 @@
 
 pkgbase=kodi-devel
 pkgname=(
-  "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
+  "$pkgbase" kodi-x11-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.7.1pre07
-_major=18.7
-pkgrel=1
+pkgver=18.8pre01
+_major=18.7.1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'doxygen' 'glew'
+  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python2-pycryptodomex' 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-  'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
+  'python2-pycryptodomex' 'python2-pillow' 'python2-pybluez'
+  'python2-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
+  'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland
-  'wayland-protocols' 'waylandpp>=0.2.7-1'
+  'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
-  'libinput' 'libxkbcommon'
+  'libinput'
 )
 
 _codename=Leia
@@ -79,13 +79,8 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
   000-PR17300.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17300.patch
-  001-PR17945.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17945.patch
-  002-PR17958.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17958.patch
-  003-PR17970.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17970.patch
-  004-PR17971.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17971.patch
-  005-PR17974.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17974.patch
-  006-PR17975.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17975.patch
-  007-PR17979.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17979.patch
+  000-PR17804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17804.patch
+  001-PR17988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17988.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -97,7 +92,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('f6bb2ad9d8ca27d1b6bf68690d699f5e2bf3d0c7e5700d8e564b7583054c434e'
+sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
@@ -108,13 +103,8 @@ sha256sums=('f6bb2ad9d8ca27d1b6bf68690d699f5e2bf3d0c7e5700d8e564b7583054c434e'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
-            '41bed18e6be31116d07ef3dff1a73e6abd861d953f6159f9b88adb2c4f84d197'
-            '76cabbf49e1125d8d07b05af1dac3aeeef88640d99ca5eb5221bf6029de2b501'
-            '09a8fc2efa251b52393f87ec8a95369176086a8b5786357466b30236e261f805'
-            '48dcc0a774f493e8e1321b8313b2cddc73dd8511dcb5f039d4ff29220573162c'
-            'e0d6cf782bbc4feaa2b4aba799c5a54f075059599cc874593ec6d3a92932c988'
-            '34fde5a100d2f6d1e05554a1da1e43907ec5282602db9204f3f2f28e5efd2ec9'
-            '6b57621c7d7507eedeae6436f8bb1d17f253365c285861441841ed36bc320177')
+            'f11af738b2be8f390a7b515cfb74276a0ccb64ac061b8f5a7b3772e19eb0d203'
+            '89ac4b3feac908075ddbcdc4f9f1d1703c25e2fdb1661e776c162eb779437bd8')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
@@ -182,7 +172,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DENABLE_MYSQLCLIENT=ON \
+    -DX11_RENDER_SYSTEM=gl \
     ../"xbmc-$_tag"
   make
   make preinstall
@@ -244,7 +234,7 @@ package_kodi-devel() {
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodomex'
     'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo'
-    'kodi-bin'
+    'KODI-BIN'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -255,8 +245,9 @@ package_kodi-devel() {
     'shairplay: AirPlay support'
     'upower: Display battery level'
   )
-  provides=("kodi=${pkgver}")
-  conflicts=('kodi')
+  provides=('xbmc')
+  conflicts=('xbmc')
+  replaces=('xbmc')
 
   _components=(
     'kodi'
@@ -285,16 +276,16 @@ package_kodi-devel() {
 # kodi-x11
 # components: kodi-bin
 
-package_kodi-bin-devel() {
+package_kodi-x11-devel() {
   pkgdesc="x11 kodi binary"
-  conflicts=('kodi-bin')
+  provides=('KODI-BIN')
+  replaces=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
     'libxslt' 'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib'
     'tinyxml' "$pkgbase"
   )
-  provides=("kodi-bin=${pkgver}")
 
   cd kodi-build-x11
   install -Dm755 kodi-x11 "$pkgdir/usr/lib/kodi/kodi-x11"
@@ -306,13 +297,12 @@ package_kodi-bin-devel() {
 
 package_kodi-wayland-devel() {
   pkgdesc="wayland kodi binary"
-  provides=("kodi-bin=${pkgver}" "kodi-wayland")
-  conflicts=('kodi-wayland')
+  provides=('KODI-BIN')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
     'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp>=0.2.7-1' "$pkgbase"
+    'waylandpp' "$pkgbase"
   )
 
   cd kodi-build-wayland
@@ -324,8 +314,7 @@ package_kodi-wayland-devel() {
 
 package_kodi-gbm-devel() {
   pkgdesc="gbm kodi binary"
-  provides=("kodi-bin=${pkgver}" 'kodi-gbm')
-  conflicts=('kodi-gbm')
+  provides=('KODI-BIN')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
