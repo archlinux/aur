@@ -4,7 +4,7 @@
 # Contributor: Nicolas Pouillard <Nicolas.Pouillard@gmail.com>
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
@@ -15,27 +15,30 @@ makedepends=('ocaml-findlib' 'ocaml' 'ocaml-pcre')
 #makedepends=('ocaml-findlib' 'ocaml' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-cryptokit')
 options=('!strip' '!makeflags' 'staticlibs')
 source=(http://download.camlcity.org/download/$pkgname-$pkgver.tar.gz)
-md5sums=('6a632896685421ff09e0c7ee3e17e79d')
-sha256sums=('13b81c333c53229c0b0cfe785d9a99988f772d1bf876a4b7f657b2e5730313c8')
+md5sums=('55650be818c9c8940e7390b5d4cdbf76')
+sha256sums=('1136b7134e3ba9de77060e46be09e332d15217aa1ff71e215362f6a729a02f65')
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   ./configure -enable-gnutls -enable-gssapi -enable-pcre -bindir /usr/bin
 
-  # You also could configure to add some more support,
-  # if you have installed the according modules:
+  # You may adapt the switch-settings to your needs before building the package.
   #
-  #  ./configure \
-  #    -enable-pcre  \
-  #    -enable-full-pcre \
-  #    -enable-gtk2 \
-  #    -enable-tcl \
-  #    -enable-gnutls \
-  #    -enable-gssapi \
-  #    -enable-zip \
-  #    -enable-nethttpd \
-  #    -enable-apache \
-  #    -enable-gtk \
+  # Defaults as printed by configure:
+  #
+  #     -disable-pcre
+  #     -disable-full-pcre
+  #     -disable-gtk
+  #     -disable-gtk2
+  #     -disable-tcl
+  #     -disable-gnutls
+  #     -disable-gssapi
+  #     -disable-zip
+  #     -disable-apache
+  #     -disable-nethttpd
+  #     -bindir /usr/bin
+  #     -datadir <library directory>
+  #     -cpp cpp
 
   make all opt
 }
