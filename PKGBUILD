@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.6.16.arch1.r904681.d4c719103a7e
+pkgver=v5.6.16.arch1.r903063.c9b4a210f946
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.6.16.arch1
@@ -123,8 +123,8 @@ prepare() {
     
     msg2 "Pull tag from Linux stable upstream repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    git pull --no-edit --no-commit --rebase upstream_stable ${_srcver_tag//.arch*/}
-#     git pull --no-edit --no-commit -s recursive -X ours upstream_stable ${_srcver_tag//.arch*/}
+    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    git merge --no-edit --no-commit FETCH_HEAD
     
     # https://git.archlinux.org/linux.git/commit/?h=v5.6.15-arch1&id=e4f57a0db2a7a992e4a36a10e1b2167a3a83b3f4
     msg2 "Patching with CLONE_NEWUSER patch ..."
