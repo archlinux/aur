@@ -1,0 +1,18 @@
+pkgbase = instantmenu
+	pkgdesc = menu for instantOS
+	pkgver = fece5ac
+	pkgrel = 1
+	url = https://github.com/instantos/instantmenu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = instantmenu
+	conflicts = instantmenu
+	source = instantmenu::git+https://github.com/instantOS/instantMENU.git
+	sha256sums = SKIP
+
+pkgname = instantmenu
+
