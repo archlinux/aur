@@ -1,0 +1,16 @@
+pkgbase = tits
+	pkgdesc = An NSFW (18+) erotica game made by Fenoxo, Trials In Tainted Space
+	pkgver = 0.8.090
+	pkgrel = 1
+	url = https://www.fenoxo.com/play-games/
+	arch = x86_64
+	license = AGPL
+	depends = flashplayer-standalone
+	provides = tits
+	source = tits.swf::https://www.fenoxo.com/play/latest_download.php
+	source = tits
+	md5sums = SKIP
+	md5sums = b0fd9e9b3e257e5363259e639156442b
+
+pkgname = tits
+
