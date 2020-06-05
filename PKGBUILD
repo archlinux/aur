@@ -32,7 +32,7 @@ build() {
 
   make release=1 FLAGS="--no-debug" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-       CRYSTAL_CONFIG_PATH='/usr/lib/crystal"' \
+       CRYSTAL_CONFIG_PATH="/usr/lib/crystal" \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
   make docs CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
