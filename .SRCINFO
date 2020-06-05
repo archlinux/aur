@@ -3,6 +3,7 @@ pkgbase = foot
 	pkgrel = 3
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
+	arch = aarch64
 	license = mit
 	checkdepends = check
 	makedepends = meson

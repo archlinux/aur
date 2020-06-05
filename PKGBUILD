@@ -2,7 +2,7 @@
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.3.0
 pkgrel=3
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
