@@ -2,7 +2,7 @@
 pkgname=polkadot
 pkgdesc="Polkadot Node Implementation"
 pkgrel=1
-pkgver=0.8.0
+pkgver=0.8.3
 arch=('x86_64')
 url="https://github.com/paritytech/${pkgname}"
 license=('GPL3')

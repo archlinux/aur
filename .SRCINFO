@@ -1,6 +1,6 @@
 pkgbase = polkadot
 	pkgdesc = Polkadot Node Implementation
-	pkgver = 0.8.0
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/paritytech/polkadot
 	arch = x86_64
