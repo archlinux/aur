@@ -1,0 +1,12 @@
+[Unit]
+Description=Prysm validator client %i
+After=network-online.target
+
+[Service]
+User=prysm
+EnvironmentFile=/etc/conf.d/prysm-validator.%i
+ExecStart=/usr/bin/prysm.validator --keymanager=keystore --keymanageropts='{"passphrase":"${password}","path":"/var/lib/prysm/validator.%i/keys"}' --beacon-rpc-provider=${beacon} --datadir=/var/lib/prysm/validator.%i/data
+Restart=always
+
+[Install]
+WantedBy=default.target
