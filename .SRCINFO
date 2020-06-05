@@ -1,6 +1,6 @@
 pkgbase = ide65xx-git
 	pkgdesc = IDE for 6502, 6510, C64 projects uses Kick Assembler
-	pkgver = r21.3350918
+	pkgver = r32.aaa3921
 	pkgrel = 1
 	url = https://sites.google.com/view/ide65xx
 	arch = i686
