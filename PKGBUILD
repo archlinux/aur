@@ -2,14 +2,15 @@
 
 _plug=vsutil
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r26.90c602b
+pkgver=r60.afc1870
 pkgrel=1
 pkgdesc='A collection of general purpose Vapoursynth functions to be reused in modules/scripts'
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vsutil'
 license=('MIT')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'python-setuptools')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vsutil.git")
@@ -22,10 +23,12 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "${_plug}"
+    python setup.py build
+}
+
 package() {
     cd "${_plug}"
-    echo "asdqasdas"
-    install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-    python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-    python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
