@@ -1,10 +1,11 @@
 pkgbase = python-pyreadr
 	pkgdesc = Read and write R RData and Rds files into/from pandas dataframes.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ofajardo/pyreadr
 	arch = x86_64
 	license = AGPL
+	makedepends = unzip
 	depends = python-pandas
 	noextract = pyreadr-0.2.3-cp38-cp38-manylinux1_x86_64.whl
 	source = https://files.pythonhosted.org/packages/cp38/p/pyreadr/pyreadr-0.2.3-cp38-cp38-manylinux1_x86_64.whl
