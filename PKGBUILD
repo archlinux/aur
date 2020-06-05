@@ -1,22 +1,23 @@
-# Maintainer : Remy van Elst
-# https://raymii.org
-# You need to download the files yourself from the VanDyke website and place them in the folder.
+# Maintainer = Caleb Yates (caldog20@gmail.com)
+# SecureCRT software is owned and copyrighted by Vandyke Inc. The software is free to download for eval and requires a separately purchased license for full features and support
+ 
+## To install this package, you need to download the SecureCRT for Linux package in tar.gz format and place it in the same directory as the PKGBUILD
+
+## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=8.0.0
-incrver=1063
+pkgver=8.7.2
+incrver=2214
 pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
 license=('custom')
 
-depends=('openssl' 'glibc' 'qt4')
+depends=('openssl' 'glibc' 'qt5-base' 'icu63')
 		
-source_x86_64=("${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz")
-md5sums_x86_64=('02942bd378efaead6baa5b29cdbd349a')
-source_i686=("${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz")
-md5sums_i686=('61795836e0f7a2b91d24596f84f1d2fb')
+source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu19-64.tar.gz")
+md5sums=('55f77c1d82f5ddec4ee08f0a6b973f69')
 options=('!strip')
 
 package() {

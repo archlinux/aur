@@ -1,19 +1,17 @@
 pkgbase = scrt
 	pkgdesc = Vandyke SecureCRT SSH Client
-	pkgver = 8.0.0
+	pkgver = 8.7.2
 	pkgrel = 1
 	url = http://www.vandyke.com/products/securecrt/
 	arch = x86_64
-	arch = i686
 	license = custom
 	depends = openssl
 	depends = glibc
-	depends = qt4
+	depends = qt5-base
+	depends = icu63
 	options = !strip
-	source_x86_64 = scrt-8.0.0.1063.ubuntu13-64.tar.gz::file://scrt-8.0.0.1063.ubuntu13-64.tar.gz
-	md5sums_x86_64 = 02942bd378efaead6baa5b29cdbd349a
-	source_i686 = scrt-8.0.0.1063.ubuntu13.tar.gz::file://scrt-8.0.0.1063.ubuntu13.tar.gz
-	md5sums_i686 = 61795836e0f7a2b91d24596f84f1d2fb
+	source = local://scrt-8.7.2.2214.ubuntu19-64.tar.gz
+	md5sums = 55f77c1d82f5ddec4ee08f0a6b973f69
 
 pkgname = scrt
 
