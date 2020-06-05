@@ -26,8 +26,9 @@ release() {
     check="$(md5sum "$t" | cut -d' ' -f1)"
     sed -i "s/md5sums=.*/md5sums=('$check')/" PKGBUILD
     sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+    makepkg --printsrcinfo > .SRCINFO
 
-    git commit -m "Release v$1" -- PKGBUILD
+    git commit -m "Release v$1" -- PKGBUILD .SRCINFO
     git push origin
     git push aur
 }
