@@ -4,14 +4,14 @@
 
 pkgname=xxdiff
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical browser for file and directory differences."
-url="https://bitbucket.org/blais/xxdiff"
+url="https://github.com/blais/xxdiff"
 license=('GPL2')
 depends=('qt5-base')
-makedepends=('flex>=2.5.31' 'bison' 'mercurial' 'python-docutils')
+makedepends=('flex>=2.5.31' 'bison' 'git' 'python-docutils')
 arch=('x86_64' 'i686')
-source=("hg+https://bitbucket.org/blais/xxdiff#revision=5e5f885" "cpp11.diff")
+source=("git+https://github.com/blais/xxdiff.git" "cpp11.diff")
 md5sums=('SKIP'
          'feb486afc64fa53cfc348219d3779d41')
 
