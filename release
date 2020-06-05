@@ -1,0 +1,36 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    *.*.*)
+        ;;
+    *)
+        >&2 echo Need a version to release in the form 'x.y.z'
+        exit 1
+        ;;
+esac
+
+prep_release() {
+    sed -i "s/pkgver=.*/pkgver=$1/" PKGBUILD
+    sed -i 's/pkgrel=.*/pkgrel=0/' PKGBUILD
+    sed -i "s/version=\".*\"/version=\"$1\"/" setup.py
+
+    git commit -m "Prepare v$1" -- setup.py PKGBUILD
+    git tag "v$1"
+    git push origin HEAD "v$1"
+}
+
+release() {
+    t="$(mktemp)"
+    wget --output-document="$t" "https://github.com/OJFord/iosevka-generate/archive/v$1.tar.gz"
+    check="$(md5sum "$t" | cut -d' ' -f1)"
+    sed -i "s/md5sums=.*/md5sums=('$check')/" PKGBUILD
+    sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+
+    git commit -m "Release v$1" -- PKGBUILD
+    git push origin
+    git push aur
+}
+
+prep_release "$1"
+release "$1"
