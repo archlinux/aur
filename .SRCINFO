@@ -1,7 +1,7 @@
 pkgbase = keys-pub
 	pkgdesc = keys.pub CLI client and service (keys, keysd)
 	pkgver = 0.0.47
-	pkgrel = 2
+	pkgrel = 3
 	url = https://keys.pub/
 	arch = x86_64
 	arch = i686
