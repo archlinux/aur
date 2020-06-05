@@ -16,5 +16,5 @@ package() {
     cd "KiwiVM-GA-systemd-${pkgver}"
     sed -i '9 s/#Type=exec/Type=exec/'        qemukvmga.service
     sed -i '10 s/Type=simple/#Type=simple/'   qemukvmga.service
-    install -Dm644 qemukvmga.service          "${pkgdir}/usr/lib/systemd/system/qemukvmga.service"
+    install -Dm644 qemukvmga.service     -t   "${pkgdir}/usr/lib/systemd/system"
 }
