@@ -1,26 +1,31 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=bubblemail-git
-pkgver=1.0.99
-pkgrel=0
+pkgver=1.0.r18
+pkgrel=1
 pkgdesc="New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts"
-pkgfolder="bubblemail-master"
-provides=("bubblemail")
-conflicts=("bubblemail")
+pkgbasename=bubblemail
+provides=("${pkgbasename}")
+conflicts=("${pkgbasename}")
 arch=(any)
 url="https://framagit.org/razer/bubblemail/"
 license=('GPL2')
 makedepends=('python-setuptools' 'python-pillow' 'vala' 'folks')
 depends=('python' 'python-dbus' 'python-gobject' 'python-requests' 'libsecret' 'gnome-keyring')
 optdepends=('gnome-online-accounts' 'gnome-shell' 'bubblemail-gnome-shell-extension' 'folks')
-source=("https://framagit.org/razer/bubblemail/-/archive/master/${pkgfolder}.tar.bz2")
+source=("git+https://framagit.org/razer/bubblemail.git/")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${pkgbasename}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-    cd "${srcdir}/${pkgfolder}"
+    cd "${srcdir}/${pkgbasename}"
     python setup.py build || return 1
 }
 
 package() {
-    cd "${srcdir}/${pkgfolder}"
+    cd "${srcdir}/${pkgbasename}"
     python setup.py install --root=${pkgdir} --optimize=1 || return 1
 }
