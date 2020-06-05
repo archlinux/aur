@@ -23,7 +23,6 @@ source=(
 noextract=( "$pkgname-$pkgver-linux.zip" )
 sha256sums=(
         "ed2a854377e695b62d28cd6c5a42c288782dd3d1fcaadcb28d9488f9573e5a6e"
-	"a40bc137d02a17d759eacb7576bcf720202c9178318aae363a4814ba16eb739b"
 	)
 
 prepare() {

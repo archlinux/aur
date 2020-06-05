@@ -20,7 +20,6 @@ pkgbase = payetools-rti
 	options = !strip
 	source = https://www.gov.uk/government/uploads/uploaded/hmrc/payetools-rti-20.2.20141.491-linux.zip
 	sha256sums = ed2a854377e695b62d28cd6c5a42c288782dd3d1fcaadcb28d9488f9573e5a6e
-	sha256sums = a40bc137d02a17d759eacb7576bcf720202c9178318aae363a4814ba16eb739b
 
 pkgname = payetools-rti
 
