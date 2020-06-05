@@ -1,7 +1,7 @@
 pkgbase = fmedia-bin
 	pkgdesc = Fast media player/recorder/converter
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stsaz.github.io/fmedia
 	arch = i686
 	arch = x86_64
