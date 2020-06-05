@@ -1,0 +1,21 @@
+pkgbase = cgal-git
+	pkgdesc = Computational Geometry Algorithms Library
+	pkgver = r91288.6b679968c6
+	pkgrel = 1
+	url = https://github.com/CGAL/cgal.git
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-svg
+	makedepends = eigen
+	depends = mpfr
+	depends = gmp
+	provides = cgal
+	conflicts = cgal
+	source = git+https://github.com/CGAL/cgal.git
+	sha256sums = SKIP
+
+pkgname = cgal-git
+
