@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -18,6 +18,10 @@ depends=(
 	"mingw-w64-libsquish"
 	"mingw-w64-pugixml"
 	"mingw-w64-fmt"
+	"mingw-w64-freetype2"
+	"mingw-w64-opencolorio"
+	"mingw-w64-opencv"
+	"mingw-w64-ffmpeg"
 )
 builddepends=("mingw-w64-cmake" "git")
 arch=("any")
@@ -45,7 +49,7 @@ build() {
 			-DBUILD_MISSING_ROBINMAP=ON -DBUILD_ROBINMAP_FORCE=ON -DUSE_EXTERNAL_PUGIXML=ON -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=20 \
 			-DINSTALL_DOCS=OFF -DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF \
 			-DUSE_CCACHE=OFF -DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS="" \
-			-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish" \
+			-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg" \
 			-DCMAKE_CXX_FLAGS="-fpermissive"
 		make -C "build-${_arch}"
 	done
