@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.6.15.arch1.r903053.826b05af2cd6
+	pkgver = v5.6.16.arch1.r904675.5912f85bf2c7
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -19,12 +19,14 @@ pkgbase = linux-bcachefs-git
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = sphinx-workaround.patch
+	source = Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 7bce59dcbfce1850f31194974be7b300bce49a2da9205b213d1da57657f5acbfa38bba3b6daa8a25cfd814b13e87edd46664d88f80ef694a1cd219dfee37c3cd
 	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
+	sha512sums = 7d26264f3e5a80604283be188a40583ee51884ecdd6635e415ff905f6b845b9d437bb9089914c2930b42eac581ecf3306a844800ddfb6198ac026b6d45846a78
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

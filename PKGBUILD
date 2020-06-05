@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.6.15.arch1.r903053.826b05af2cd6
+pkgver=v5.6.16.arch1.r904675.5912f85bf2c7
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.6.15.arch1
+_srcver_tag=v5.6.16.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -93,6 +93,7 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
+    Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -101,28 +102,33 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             '7bce59dcbfce1850f31194974be7b300bce49a2da9205b213d1da57657f5acbfa38bba3b6daa8a25cfd814b13e87edd46664d88f80ef694a1cd219dfee37c3cd'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '7d26264f3e5a80604283be188a40583ee51884ecdd6635e415ff905f6b845b9d437bb9089914c2930b42eac581ecf3306a844800ddfb6198ac026b6d45846a78')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    cd $_reponame
+    cd "$srcdir/$_reponame"
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    # msg2 "Pull tag from Linux stable upstream repository..."
-    # git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    # git pull --no-edit --no-commit upstream_stable ${_srcver_tag//-arch*/}
-    # git pull --no-edit --no-commit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
-
-    msg2 "Pull stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    git pull --no-edit --no-commit arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
+    # msg2 "Pull stable tag from Arch vanilla kernel repository..."
+    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    # git pull --no-edit --no-commit arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
+    
+    msg2 "Pull tag from Linux stable upstream repository..."
+    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    git pull --no-edit --no-commit --rebase upstream_stable ${_srcver_tag//.arch*/}
+#     git pull --no-edit --no-commit -s recursive -X ours upstream_stable ${_srcver_tag//.arch*/}
+    
+    # https://git.archlinux.org/linux.git/commit/?h=v5.6.15-arch1&id=e4f57a0db2a7a992e4a36a10e1b2167a3a83b3f4
+    msg2 "Patching with CLONE_NEWUSER patch ..."
+    patch -Np1 -i "$srcdir/Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
@@ -133,7 +139,7 @@ prepare() {
     
     msg2 "Setting config..."
     cp ../config .config
-
+    
     if [ -n "$_subarch" ]; then
         yes "$_subarch" | make oldconfig
     else
@@ -165,12 +171,12 @@ prepare() {
 }
 
 pkgver() {
-    cd $_reponame
+    cd "$srcdir/$_reponame"
     printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd $_reponame
+    cd "$srcdir/$_reponame"
     make all
     make htmldocs
 }
@@ -196,7 +202,7 @@ _package() {
         wireguard-arch
     )
 
-    cd $_reponame 
+    cd "$srcdir/$_reponame" 
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -218,7 +224,7 @@ _package() {
 _package-headers() {
     pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
 
-    cd $_reponame
+    cd "$srcdir/$_reponame"
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing build files..."
