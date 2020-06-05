@@ -6,7 +6,7 @@ _pkgbase=${pkgname%-*}
 # number or you can drop RELEASE completely." Rather than doing either, the
 # above acknowledgement (that 1.0 is totally wrong) will have to suffice.
 pkgver=1.0r24.g39568fa
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=(x86_64)
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgbase"
-    make
+    make -j1
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = chromebook_keyboard_backlight_driver-dkms
 	pkgdesc = Keyboard backlight driver for various chromebook models
 	pkgver = 1.0r24.g39568fa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/corcoran/chromebook_keyboard_backlight_driver
 	install = chromebook_keyboard_backlight_driver-dkms.install
 	arch = x86_64
