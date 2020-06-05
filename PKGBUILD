@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200604
+pkgver=20200605
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
 makedepends=('git' 'cmake' 'nasm' 'icoutils')
 provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_commit=bc57b4a0a53361978a1fdd9329e3a7091fcff088
+_commit=10910d73fe9d8ffda421c82202a9a58b2ffa9474
 source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-enable-optimizations.patch'
