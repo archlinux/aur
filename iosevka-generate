@@ -83,7 +83,7 @@ def nerdfont_patch(
             ],
             cwd=font_dir,
         ).check_returncode()
-        font.rename(f"{font.name}.unpatched")
+        font.rename(f"{font}.unpatched")
 
 
 def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[List]]:
