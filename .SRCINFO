@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-stereo-image-proc
 	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
-	pkgver = 1.12.23
-	pkgrel = 2
-	url = https://github.com/ros-perception/image_pipeline
-	arch = any
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://wiki.ros.org/stereo_image_proc
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -26,8 +30,8 @@ pkgbase = ros-noetic-stereo-image-proc
 	depends = ros-noetic-message-filters
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-image-transport
-	source = ros-noetic-stereo-image-proc-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
-	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
+	source = ros-noetic-stereo-image-proc-1.15.2.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.15.2.tar.gz
+	sha256sums = 35427b2d4e1396e0260ea2cf7d770a67104779b65fd03f287082098319c4acf5
 
 pkgname = ros-noetic-stereo-image-proc
 
