@@ -1,14 +1,14 @@
 pkgbase = librelp
 	pkgdesc = The Reliable Event Logging Protocol
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.rsyslog.com/librelp/
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = gnutls
-	source = http://download.rsyslog.com/librelp/librelp-1.4.0.tar.gz
-	sha256sums = 5cd02ce7ede2fea037e65cc5389e41dde99b69b1df984b42c14029e60bb9dd05
+	source = http://download.rsyslog.com/librelp/librelp-1.6.0.tar.gz
+	sha256sums = cf6cc948a5b3d1e56b3251585c11beea1c5b285fcbf8e29ad68955c7eb75f8ca
 
 pkgname = librelp
 
