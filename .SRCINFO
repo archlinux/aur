@@ -1,0 +1,12 @@
+pkgbase = lenticular.lv2
+	pkgdesc = Ports of VCV Rack modules to LV2
+	pkgver = r78.c4281c0
+	pkgrel = 1
+	url = https://github.com/polyeffects/lenticular_lv2
+	arch = x86_64
+	license = GPL
+	source = lenticular.lv2::git+https://github.com/polyeffects/lenticular_lv2
+	md5sums = SKIP
+
+pkgname = lenticular.lv2
+
