@@ -1,25 +1,25 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-svn
-pkgver=r22367
+pkgver=r26625
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
 url='https://www.xpra.org'
 license=('GPL2')
-depends=('python2' 'pygtk' 'libxtst' 'python2-pillow' 'python2-lz4'
+depends=('gtk3' 'python' 'libxtst' 'python-cairo' 'python-gobject' 'python-pillow' 'python-lz4'
          'ffmpeg' 'libvpx' 'xf86-video-dummy' 'libxkbfile'
-         'python2-netifaces' 'python2-numpy' 'python2-rencode' 'python2-opengl'
-         'python2-gtkglext' 'python-lz4' 'python-opengl')
-optdepends=('x264: Codec' 'python2-dbus: dbus features'
-            'python2-pycups: Printing support'
-            'python2-cryptography: Cryptography'
+         'python-netifaces' 'python-rencode' 'python-opengl'
+         'python-lz4')
+optdepends=('x264: Codec' 'python-dbus: dbus features'
+            'python-pycups: Printing support'
             'python-cryptography: Cryptography'
-            'gst-python2: Sound Forwarding'
-            'opencv: Webcam Capture')
+            'python-numpy: GPU accelerated capture and compression for NVIDIA cards'
+            'gst-python: Sound Forwarding'
+            'opencv: Webcam Forwarding')
 conflicts=('xpra')
 provides=('xpra')
-makedepends=('subversion' 'python2-setuptools' 'cython2' 'uglify-js')
+makedepends=('subversion' 'python-setuptools' 'cython' 'uglify-js')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/05_features.conf'
         'etc/xpra/conf.d/10_network.conf'
@@ -47,14 +47,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-svn}"
-
-  export pkgdir
-  python2 setup.py build --without-enc_x265
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname%-svn}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --without-enc_x265
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   sed -i 's|/build/xpra/pkg/xpra/etc/xpra/xorg.conf|/etc/xpra/xorg.conf|' "${pkgdir}"/etc/xpra/conf.d/55_server_x11.conf
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
