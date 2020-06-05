@@ -4,24 +4,38 @@
 
 pkgname=gns3-server
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'python-aiohttp' 'python-aiohttp-cors'
-         'python-async_generator' 'python-aiofiles'
-         'python-yarl' 'python-jinja' 'python-raven' 'python-psutil'
-         'python-zipstream-gns3' 'python-prompt_toolkit' 'python-async-timeout'
-         'python-py-cpuinfo' 'busybox')
-optdepends=('dynamips: Cisco router emulator.'
-            'gns3-gui: graphical user interface for GNS3 server.'
-            'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
-            'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
-            'vpcs: Simple PC emulation for basic network operations.'
-            'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
+depends=(
+    'busybox'
+    'python-aiofiles'
+    'python-aiohttp'
+    'python-aiohttp-cors'
+    'python-async_generator'
+    'python-async-timeout'
+    'python-distro'
+    'python-jinja'
+    'python-jsonschema'
+    'python-prompt_toolkit'
+    'python-psutil'
+    'python-py-cpuinfo'
+    'python-sentry_sdk'
+    'python-yarl'
+    'python-zipstream-gns3'
+)
+optdepends=(
+    'dynamips: Cisco router emulator.'
+    'gns3-gui: graphical user interface for GNS3 server.'
+    'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
+    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
+    'libvirt: needed for the NAT cloud'
+    'vpcs: Simple PC emulation for basic network operations.'
+    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
 )
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
