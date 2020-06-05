@@ -35,6 +35,7 @@ package() {
           --categories 'Utility;Audio;AudioVideo' \
           --icon "${pkgname%-bin}"
   install -Dm644 fmedia.desktop -t "${pkgdir}/usr/share/applications"
-  ln -s /opt/fmedia/fmedia "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /opt/fmedia/fmedia "${pkgdir}/usr/bin/"
 }
 # vim:set ts=2 sw=2 et:
