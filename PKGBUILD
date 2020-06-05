@@ -15,5 +15,5 @@ source=("qemu-kvm_ga::https://gist.githubusercontent.com/unknowndev233/0852d2461
 sha512sums=('21329a42155679a8cec4c562e12973425f7f7f8662aed54e96b4446a4fe6f2286695f2c9fe3fbf091642c36ba6568394c9b067747f78281fbf4415b5c94f36b2')
 
 package() {
-	install -Dm755 "${srcdir}/qemu-kvm_ga" "${pkgdir}/usr/bin/qemu-kvm_ga"
+	install -Dm755 "qemu-kvm_ga" -t "${pkgdir}/usr/bin"
 }
