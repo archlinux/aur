@@ -4,13 +4,17 @@ _nginxver=1.18.0
 
 pkgname=nginx-mod-ipscrub
 pkgver=1.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h')
+_pinned_dependencies=(
+  'glibc>=2.31'
+  'libbsd=0.10.0'
+)
 depends=(
   "nginx=$_nginxver"
-  'libbsd'
+  "${_pinned_dependencies[@]}"
 )
 url='https://github.com/masonicboom/ipscrub'
 license=('custom')
