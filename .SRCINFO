@@ -1,0 +1,17 @@
+pkgbase = rehex
+	pkgdesc = A good general-purpose hex editor with a wide selection of features for analysing and annotating binary file formats
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/solemnwarning/rehex
+	arch = x86_64
+	license = GPL
+	makedepends = jansson
+	makedepends = wxgtk2
+	makedepends = llvm
+	depends = jansson
+	depends = wxgtk2
+	source = rehex-0.2.0.zip::https://github.com/solemnwarning/rehex/archive/0.2.0.zip
+	md5sums = 38c779f7ff78a07f4c09a15e75e3f138
+
+pkgname = rehex
+
