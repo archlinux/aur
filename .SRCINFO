@@ -1,0 +1,16 @@
+pkgbase = papirus-filezilla-themes
+	pkgdesc = Papirus icon theme for Filezilla
+	pkgver = 20200105
+	pkgrel = 1
+	url = https://github.com/PapirusDevelopmentTeam/papirus-filezilla-themes
+	arch = any
+	license = MIT
+	depends = filezilla
+	provides = papirus-filezilla-themes
+	conflicts = papirus-filezilla-themes
+	conflicts = papirus-filezilla-themes-git
+	source = https://github.com/PapirusDevelopmentTeam/papirus-filezilla-themes/archive/20200105.tar.gz
+	sha256sums = 28e28c50b6b500b522f78590ce442e2ed93c5c2bd7a169ee1d31ab588af92427
+
+pkgname = papirus-filezilla-themes
+
