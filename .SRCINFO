@@ -1,0 +1,22 @@
+pkgbase = hornet-bin
+	pkgdesc = Powerful IOTA fullnode software (official precompiled binary)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/gohornet/hornet
+	install = hornet.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	backup = var/lib/hornet/config_comnet.json
+	backup = var/lib/hornet/config.json
+	backup = var/lib/hornet/mqtt_config.json
+	backup = var/lib/hornet/peering.json
+	backup = var/lib/hornet/profiles.json
+	backup = etc/default/hornet
+	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v0.4.0/hornet_0.4.0_amd64.deb
+	sha256sums_x86_64 = d23d79c38f524636b0cedb7d49d056974929af255c871c97dfdc68092baf807d
+	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v0.4.0/hornet_0.4.0_arm64.deb
+	sha256sums_aarch64 = 1975ae7275fe7c31aa81a04f4d13b6a4dddc8e152d90dab8690451d24328860f
+
+pkgname = hornet-bin
+

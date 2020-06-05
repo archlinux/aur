@@ -1,0 +1,15 @@
+#!/bin/sh
+
+pre_install() {
+	useradd --no-create-home --system hornet > /dev/null
+	mkdir -p /var/lib/hornet
+}
+
+post_install() {
+	chown -R hornet:hornet /var/lib/hornet
+}
+
+post_remove() {
+	userdel hornet > /dev/null
+}
+
