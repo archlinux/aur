@@ -1,38 +1,86 @@
-*** nss-mdns-0.10/src/nss.c.orig	2015-02-14 18:27:09.307400597 +0000
---- nss-mdns-0.10/src/nss.c	2015-02-14 18:28:38.826193854 +0000
+*** orig-nss.c	2018-02-19 15:33:31.000000000 +0000
+--- nss.c	2020-06-05 17:29:03.659841552 +0100
 ***************
-*** 378,383 ****
---- 378,410 ----
-          } else
-              status = NSS_STATUS_NOTFOUND;
+*** 126,131 ****
+--- 126,149 ----
       }
-+     if (u.count == 0 && avahi_works && !strstr(name, ".")) {
-+         const char *p="local";
-+         int fullnamesize;
-+         char *fullname;
-+         fullnamesize = strlen(name) + strlen(p) + 2;
-+         if ((fullname = malloc(fullnamesize))){
-+             snprintf(fullname, fullnamesize, "%s.%s", name, p);
-+             if (verify_name_allowed(fullname)) {
-+                 int r;
-+                 if ((r = avahi_resolve_name(af, fullname, data)) < 0) {
-+                         /* Lookup failed */
-+                         avahi_works = 0;
-+                     }
-+                 else if (r == 0) {
-+                     /* Lookup succeeded */
-+                     if (af == AF_INET && ipv4_func)
-+                        ipv4_func((ipv4_address_t*) data, &u);
-+                     if (af == AF_INET6 && ipv6_func)
-+                         ipv6_func((ipv6_address_t*)data, &u);
-+                     }
-+                 else
-+                    /* Lookup suceeded, but nothing found */
-+                    status = NSS_STATUS_NOTFOUND;
-+                 }
-+             free(fullname);
-+             }
-+         }
+  }
   
-  #ifdef HONOUR_SEARCH_DOMAINS
-      if (u.count == 0 && avahi_works && !ends_with(name, ".")) {
++ static enum nss_status _convert_avahi_result(avahi_resolve_result_t r, int* errnop, int* h_errnop) {
++     switch (r) {
++     case AVAHI_RESOLVE_RESULT_SUCCESS:
++         return NSS_STATUS_SUCCESS;
++ 
++     case AVAHI_RESOLVE_RESULT_HOST_NOT_FOUND:
++         *errnop = ETIMEDOUT;
++         *h_errnop = HOST_NOT_FOUND;
++         return NSS_STATUS_NOTFOUND;
++ 
++     case AVAHI_RESOLVE_RESULT_UNAVAIL:
++     default:
++         *errnop = ETIMEDOUT;
++         *h_errnop = NO_RECOVERY;
++         return NSS_STATUS_UNAVAIL;
++     }
++ }
++ 
+  static enum nss_status gethostbyname_impl(const char* name, int af,
+                                            userdata_t* u, int* errnop,
+                                            int* h_errnop) {
+***************
+*** 168,195 ****
+      if (mdns_allow_file)
+          fclose(mdns_allow_file);
+  #endif
+- 
+      if (!name_allowed) {
+          *errnop = EINVAL;
+          *h_errnop = NO_RECOVERY;
+          return NSS_STATUS_UNAVAIL;
+      }
+  
+!     switch (do_avahi_resolve_name(af, name, u)) {
+!     case AVAHI_RESOLVE_RESULT_SUCCESS:
+!         return NSS_STATUS_SUCCESS;
+! 
+!     case AVAHI_RESOLVE_RESULT_HOST_NOT_FOUND:
+!         *errnop = ETIMEDOUT;
+!         *h_errnop = HOST_NOT_FOUND;
+!         return NSS_STATUS_NOTFOUND;
+! 
+!     case AVAHI_RESOLVE_RESULT_UNAVAIL:
+!     default:
+!         *errnop = ETIMEDOUT;
+!         *h_errnop = NO_RECOVERY;
+!         return NSS_STATUS_UNAVAIL;
+!     }
+  }
+  
+  enum nss_status _nss_mdns_gethostbyname4_r(const char* name,
+--- 186,211 ----
+      if (mdns_allow_file)
+          fclose(mdns_allow_file);
+  #endif
+      if (!name_allowed) {
++ 		if (!strstr(name, ".")) {
++ 			const char *p="local";
++ 			int fullnamesize;
++ 			char *fullname;
++ 			fullnamesize = strlen(name) + strlen(p) + 2;
++ 			if ((fullname = malloc(fullnamesize))){
++ 				avahi_resolve_result_t r;
++ 				snprintf(fullname, fullnamesize, "%s.%s", name, p);
++     			r = do_avahi_resolve_name(af, fullname, u);
++ 				free(fullname);
++ 				return _convert_avahi_result(r, errnop, h_errnop);
++ 				}
++ 			}
+          *errnop = EINVAL;
+          *h_errnop = NO_RECOVERY;
+          return NSS_STATUS_UNAVAIL;
+      }
+  
+!     return _convert_avahi_result(do_avahi_resolve_name(af, name, u), errnop, h_errnop);
+  }
+  
+  enum nss_status _nss_mdns_gethostbyname4_r(const char* name,
