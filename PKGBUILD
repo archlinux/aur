@@ -6,7 +6,7 @@
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
 pkgver='5.3.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/lwt"
@@ -18,6 +18,13 @@ source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('38ce928378a07b685f4606b60cbe37c26ef93ccb3e808c218e7d34ece9e659ad')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+    cd "$srcdir/$_sourcedirectory/"
+	# this test breaks for some people but not for others
+	# see comments from oriba, crave and pha-qu on the AUR page
+	sed -i '/test_mcast "mcast-join-loop"/d' 'test/unix/test_mcast.ml'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
