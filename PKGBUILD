@@ -8,7 +8,7 @@ pkgdesc='Ivideon Client'
 arch=('x86_64')
 url='https://ivideon.com'
 license=('freeware')
-depends=('qt5-base' 'qt5-script' 'qt5-svg' 'qt5-multimedia' 'openssl' 'wget' 'vlc')
+depends=('qt5-base' 'openssl')
 makedepends=('libarchive')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}.${pkgrel}_amd64.deb"
 	"${pkgname}.desktop")
