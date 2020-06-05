@@ -6,18 +6,11 @@ url='https://wiki.ros.org/interactive_markers'
 pkgname='ros-noetic-interactive-markers'
 pkgver='1.12.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-rostest
-	ros-noetic-catkin
-	ros-noetic-tf
-	ros-noetic-std-msgs
-	ros-noetic-rosconsole
-	ros-noetic-roscpp
-	ros-noetic-visualization-msgs
-	ros-noetic-rospy
+    ros-noetic-catkin
 )
 
 makedepends=(
@@ -27,13 +20,14 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-noetic-rostest
-	ros-noetic-tf
-	ros-noetic-std-msgs
 	ros-noetic-rosconsole
 	ros-noetic-roscpp
-	ros-noetic-visualization-msgs
 	ros-noetic-rospy
+	ros-noetic-rostest
+	ros-noetic-std-msgs
+	ros-noetic-tf2-ros
+	ros-noetic-tf2-geometry-msgs
+	ros-noetic-visualization-msgs
 )
 
 depends=(
