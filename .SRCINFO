@@ -1,6 +1,6 @@
 pkgbase = ubridge-git
-	pkgdesc = Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.
-	pkgver = v0.9.14.r11.g634062b
+	pkgdesc = Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
+	pkgver = v0.9.18.r7.gb65c542
 	pkgrel = 1
 	url = https://github.com/GNS3/ubridge
 	install = ubridge.install
@@ -8,7 +8,6 @@ pkgbase = ubridge-git
 	groups = gns3
 	license = GPL3
 	makedepends = git
-	makedepends = gcc
 	depends = libpcap
 	provides = ubridge
 	conflicts = ubridge
