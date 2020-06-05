@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-markdown-checklist-git
-pkgver=r23.63ca633
+pkgver=r25.8030283
 pkgrel=1
 pkgdesc='Python Markdown extension for lists of tasks with checkboxes'
 arch=('any')
@@ -32,6 +32,11 @@ check() {
 }
 
 package() {
+
+    # install through setuptools
     cd "$_pkgname"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+    # install license to /usr/share/license/python-markdown-checklist-git
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

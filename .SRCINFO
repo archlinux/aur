@@ -1,6 +1,6 @@
 pkgbase = python-markdown-checklist-git
 	pkgdesc = Python Markdown extension for lists of tasks with checkboxes
-	pkgver = r23.63ca633
+	pkgver = r25.8030283
 	pkgrel = 1
 	url = https://github.com/FND/markdown-checklist
 	arch = any
