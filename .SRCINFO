@@ -1,0 +1,21 @@
+pkgbase = instantwm
+	pkgdesc = window manager for instantOS
+	pkgver = 202006050953
+	pkgrel = 1
+	url = https://github.com/instantos/instantwm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = instantutils
+	depends = instantassist
+	provides = instantwm
+	conflicts = instantwm
+	options = zipman
+	source = instantwm-git::git+https://github.com/instantOS/instantWM.git
+	md5sums = SKIP
+
+pkgname = instantwm
+
