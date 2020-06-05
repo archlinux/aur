@@ -2,7 +2,7 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=librenms
-pkgver=1.64.0
+pkgver=1.64.1
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
