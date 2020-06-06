@@ -1,6 +1,6 @@
 pkgbase = python-ufolib2
 	pkgdesc = A UFO font library
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/fonttols/ufoLib2
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-ufolib2
 	depends = python
 	depends = python-attrs
 	depends = python-fonttools
-	source = https://pypi.org/packages/source/u/ufoLib2/ufoLib2-0.7.1.zip
-	sha256sums = 0387d3ecae3ffd56f57c81269ef4471981d430888467eaa13220d227bcf3291d
+	source = https://pypi.org/packages/source/u/ufoLib2/ufoLib2-0.8.0.zip
+	sha256sums = 1ab84170f13ca2622103cb24f43db73a1107d41656c65fe65e70bd0c9a5edf69
 
 pkgname = python-ufolib2
 
