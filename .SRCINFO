@@ -6,6 +6,7 @@ pkgbase = jdtextedit
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = gendesk
 	depends = python-pyqt5
 	depends = python-qscintilla-qt5
 	depends = python-chardet
