@@ -1,0 +1,16 @@
+pkgbase = ohhaibrowser-bin
+	pkgdesc = A productivity focused web browser
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://ohhaibrowser.com
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = ohhaibrowser
+	source = ohhaibrowser-bin-3.4.0.tar.gz::https://github.com/OhHaiBrowser/Browser/releases/download/v3.4/ohhaibrowser-3.4.0.x86_64.rpm
+	sha256sums = 13d499808c004d1aed600419ed4dcf8749cdceb1b50d384d9c84b994048776e2
+
+pkgname = ohhaibrowser-bin
+
