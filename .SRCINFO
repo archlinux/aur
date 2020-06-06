@@ -1,7 +1,7 @@
 pkgbase = papirus-folders
 	pkgdesc = Change Papirus icon theme folder colors
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PapirusDevelopmentTeam/papirus-folders
 	arch = any
 	license = MIT

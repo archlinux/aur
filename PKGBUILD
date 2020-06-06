@@ -3,7 +3,7 @@
 
 pkgname=papirus-folders
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Change Papirus icon theme folder colors"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -20,4 +20,6 @@ package() {
   install -Dm644 "${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
