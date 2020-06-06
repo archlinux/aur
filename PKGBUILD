@@ -1,10 +1,11 @@
+# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer:  Rod Kay            <charlie5 on #ada at freenode.net>
 # Contributor: Patrick Kelly      <kameo76890 at gmail dot com>
 # Contributor: Georgios Tsalikis  <aliverius somewhere near tsalikis and a net>
 
 pkgname=gnat-gps
 pkgver=2020
-pkgrel=1
+pkgrel=2
 _gps_version="20.2"
 pkgdesc="GNAT Programming Studio for Ada"
 
@@ -13,14 +14,18 @@ url="https://github.com/AdaCore/gps"
 license=('GPL')
 
 depends=("clang" "libadalang"
-         "gnatcoll-xref" "gnatcoll-python" "gnatcoll-db2ada"
+         "gnatcoll-xref" "gnatcoll-python2" "gnatcoll-db2ada"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
          "python2-gobject")
+optdepends=('python2-jedi')
 makedepends=('gprbuild' 'python2-sphinx' 'texlive-latexextra' 'graphviz')
 
 _laltools_ver=2020-20200429-1998C
 _laltools_checksum=740372d8ffb1e4755a99bead2d78dace904235c0
+# later a_l_s versions are incompatible with GPS 20.2 because of:
+# https://github.com/AdaCore/ada_language_server/commit/6f356e0c522313acedbdf8cbef8908399f46a6cf
+# https://github.com/AdaCore/ada_language_server/commit/24f8c81c4ec238632ceb6a60b664c2707a3e70be (https://github.com/AdaCore/gps/issues/97)
 _als_ver=21.0.3
 source=("gps-${_gps_version}.tar.gz::https://github.com/AdaCore/gps/archive/$_gps_version.tar.gz"
         "ada_language_server-$_als_ver.tar.gz::https://github.com/AdaCore/ada_language_server/archive/$_als_ver.tar.gz"
