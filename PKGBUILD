@@ -2,8 +2,8 @@
 _name=ScanHeadsman
 _name_lc=$(echo "${_name}" | tr '[:upper:]' '[:lower:]')
 pkgname="${_name_lc}-bin"
-pkgver=1.2.20200604
-pkgrel=2
+pkgver=1.2.20200606
+pkgrel=1
 epoch=
 pkgdesc="A tool to extract scan data and methods from Thermo RAW file into a text-based format"
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("${url}/downloads/${_name}-${pkgver}.zip"
         "${_name}")
 noextract=("${_name}-${pkgver}.zip")
-md5sums=('3af5d526b024f6f2953d0dcd344f9e1e'
+md5sums=('f2329e1786213ff17c174556a5dcb643'
          '1bff258fa44eb24eb939e8fbddd5c45d')
 
 prepare() {
