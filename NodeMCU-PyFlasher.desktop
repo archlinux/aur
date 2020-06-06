@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=NodeMCU-PyFlasher
+Comment=ModeMCU Flash tool
+Exec=/usr/bin/NodeMCU-PyFlasher
+Icon=NodeMCU-PyFlasher
+Terminal=false
+Categories=X-embedded;X-flasher;X-NodeMCU;
