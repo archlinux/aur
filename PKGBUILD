@@ -8,7 +8,7 @@ arch=('any')
 depends=('libzim>=6.0.1' 'gumbo-git' 'xapian-core')
 makedepends=('meson')
 url='https://github.com/openzim/zimwriterfs'
-source=("https://github.com/openzim/zimwriterfs/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(5eb9eed011d977d4c0d9530cde347819c49913073a37e29786a65640b27fd96c)
 
 build() {

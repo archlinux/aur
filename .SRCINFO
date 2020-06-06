@@ -9,7 +9,7 @@ pkgbase = zimwriterfs
 	depends = libzim>=6.0.1
 	depends = gumbo-git
 	depends = xapian-core
-	source = https://github.com/openzim/zimwriterfs/archive/1.3.10.tar.gz
+	source = zimwriterfs-1.3.10.tar.gz::https://github.com/openzim/zimwriterfs/archive/1.3.10.tar.gz
 	sha256sums = 5eb9eed011d977d4c0d9530cde347819c49913073a37e29786a65640b27fd96c
 
 pkgname = zimwriterfs
