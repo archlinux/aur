@@ -1,12 +1,13 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=update-notifier-service
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Update notifier systemd user service and timer"
 arch=('any')
 license=('GPL')
 install=update-notifier.install
-depends=('update-notifier')
+depends=('systemd' 'sed')
+makedepends=()
 source=(
 	'update-notifier.service'
 	'update-notifier.timer'
@@ -18,6 +19,7 @@ sha256sums=('77860876f3dd1de8da0db947e10c0caa868bad1de487b2c06d13a7fcfd446b93'
 validpgpkeys=('916961EE198832DD70B628B356DB0538F60D951C')
 
 package() {
+	depends+=('update-notifier')
 	install -Dm 644 update-notifier.service "$pkgdir/usr/lib/systemd/user/update-notifier.service"
 	install -Dm 644 update-notifier.timer "$pkgdir/usr/lib/systemd/user/update-notifier.timer"
 	install -Dm 644 update-notifier.hook "$pkgdir/usr/share/libalpm/hooks/update-notifier.hook"
