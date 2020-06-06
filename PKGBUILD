@@ -8,7 +8,7 @@ arch=('x86_64')
 provides=('terraformer')
 url='https://github.com/GoogleCloudPlatform/terraformer'
 makedepends=('go')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=("8884528c84f2b70480f16e7c8a1f79e9723671415365b2bd36d21e5142eb4746")
 
 prepare(){
