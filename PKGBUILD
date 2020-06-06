@@ -1,10 +1,10 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 # Use KDE API features (recommended for Plasma users)
-_plasma=true
+_plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.5.1.r1.gbb1acd9
+pkgver=1.5.1.r6.g7eb0c9f
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
@@ -53,4 +53,5 @@ package() {
     cd ${pkgname%-git}/build
 
     cmake --install .
+    rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
