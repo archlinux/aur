@@ -1,0 +1,12 @@
+pkgbase = csv-split
+	pkgdesc = A command line tool for splitting CSV files
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/miltfra/csv-files
+	arch = x86_64
+	license = GPL-3.0
+	source = csv-split-0.0.2.tar.gz::https://github.com/miltfra/csv-split/archive/v0.0.2.tar.gz
+	md5sums = 266c98288f348ada648bc3a834e45996
+
+pkgname = csv-split
+
