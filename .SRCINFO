@@ -12,6 +12,9 @@ pkgbase = stagit
 	license = custom:MIT/X Consortium
 	makedepends = git
 	depends = libgit2
+	provides = stagit
+	conflicts = stagit
+	conflicts = stagit-git
 	source = https://codemadness.org/releases/stagit/stagit-0.9.3.tar.gz
 	sha256sums = db89b41c6d3803b2562d56fee0d939360fc887902f17aaf27dff774df0402da3
 
