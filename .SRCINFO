@@ -1,7 +1,7 @@
 pkgbase = st-syaoran-git
 	pkgdesc = This is my st (suckless/simple terminal) build.
 	pkgver = 0.8.3.r20.00aadff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/justanoobcoder/st-syaoran.git
 	arch = any
 	license = MIT
