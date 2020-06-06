@@ -1,4 +1,5 @@
 # Maintainer: roger <roger@rogerpc.com.ar>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=escrotum-git
 pkgver=0.2.1.r44.292766e
