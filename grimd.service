@@ -1,0 +1,15 @@
+[Unit]
+Description=Fast dns proxy that can run anywhere, built to black-hole internet advertisements and malware servers
+After=network.target
+
+[Service]
+User=grimd
+Group=grimd
+WorkingDirectory=/var/lib/grimd
+LimitNOFILE=4096
+PIDFile=/var/run/grimd/grimd.pid
+ExecStart=/usr/bin/grimd -config /etc/grimd/grimd.toml -update
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

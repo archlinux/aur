@@ -1,0 +1,5 @@
+post_remove() {
+    echo "Remember that the following directories aren't removed."
+    echo "  -> /etc/grimd"
+    echo "  -> /var/lib/grimd"
+}

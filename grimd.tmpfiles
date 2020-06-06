@@ -1,0 +1,2 @@
+d /var/lib/grimd 0755 grimd grimd
+d /etc/grimd 0755 grimd grimd

@@ -1,0 +1,30 @@
+pkgbase = grimd-git
+	pkgdesc = Fast dns proxy that can run anywhere, built to black-hole internet advertisements and malware servers
+	pkgver = r163.533e0e4
+	pkgrel = 1
+	url = https://github.com/looterz/grimd
+	install = grimd.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = grimd
+	conflicts = grimd
+	source = grimd::git+https://github.com/looterz/grimd.git#branch=master
+	source = grimd.install
+	source = grimd.service
+	source = grimd.sysusers
+	source = grimd.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 3719fba967f038048cda5e474822dcc82e96926151660c2ae344d5148d670bbb
+	sha256sums = 368f718bcd74db58f6d38ddbf4a05a62d07801bf7a499723d50121c272961517
+	sha256sums = 532e8565462c20f57f6e620e813ac4558be6839985e8ae8bc602f11b0896eb44
+	sha256sums = 9adaaab6909fe610cf506c43a748aa976619ac42c056d57f705957a44a73b6f4
+
+pkgname = grimd-git
+
