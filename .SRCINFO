@@ -1,0 +1,19 @@
+pkgbase = irstlm-git
+	pkgdesc = IRSTLM Toolkit
+	pkgver = r108.5ded9e3
+	pkgrel = 1
+	url = https://github.com/irstlm-team/irstlm
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	depends = bash
+	depends = perl
+	depends = zlib
+	provides = irstlm
+	conflicts = irstlm
+	source = git+https://github.com/irstlm-team/irstlm.git
+	md5sums = SKIP
+
+pkgname = irstlm-git
+
