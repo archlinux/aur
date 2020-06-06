@@ -8,7 +8,7 @@ pkgbase = tuitube
 	depends = libcurlpp
 	depends = mpv
 	source = https://github.com/djt3/tuitube/archive/v2.2.2.tar.gz
-	md5sums = 890260e2d8c3ba05da4e57a537019342
+	md5sums = c81365f673fdf6ab71c8348e8506e247
 
 pkgname = tuitube
 

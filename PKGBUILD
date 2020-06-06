@@ -8,7 +8,7 @@ license=('GPL3')
 url="https://github.com/djt3/$pkgname/"
 source=("https://github.com/djt3/tuitube/archive/v$pkgver.tar.gz")
 depends=('libcurlpp' 'mpv')
-md5sums=('890260e2d8c3ba05da4e57a537019342')
+md5sums=('c81365f673fdf6ab71c8348e8506e247')
 
 build() {
   cd "$pkgname-$pkgver"
