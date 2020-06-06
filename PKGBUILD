@@ -8,7 +8,7 @@ url="https://github.com/hashworks/srrdb-Terminal-Client"
 license=("GPL3")
 changelog=CHANGELOG
 makedepends=('go')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("957a4891937123f8b88d8155d2c55ce8e8a7428df11afa72b91c67159d8f2f42")
 
 prepare(){

@@ -7,7 +7,7 @@ pkgbase = srrdb-terminal-client
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/hashworks/srrdb-Terminal-Client/archive/v1.1.5.tar.gz
+	source = srrdb-terminal-client-1.1.5.tar.gz::https://github.com/hashworks/srrdb-Terminal-Client/archive/v1.1.5.tar.gz
 	sha256sums = 957a4891937123f8b88d8155d2c55ce8e8a7428df11afa72b91c67159d8f2f42
 
 pkgname = srrdb-terminal-client
