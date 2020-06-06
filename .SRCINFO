@@ -1,0 +1,14 @@
+pkgbase = skychart-data-pictures
+	pkgdesc = DSO pictures for skychart. 9700 pictures for object of the SAC and OpenNGC catalog.
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.ap-i.net/skychart/start
+	arch = any
+	license = GPL
+	depends = skychart>=4.0
+	options = !strip
+	source = https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/skychart-data-pictures-4.0-3421-linux_all.tar.bz2
+	sha1sums = 5ae47783d592fb1feeb53097727a8dde3808d97b
+
+pkgname = skychart-data-pictures
+
