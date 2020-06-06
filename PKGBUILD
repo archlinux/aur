@@ -1,24 +1,33 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocprofiler
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="ROC profiler library. Profiling with perf-counters and derived metrics."
 arch=('x86_64')
-url="https://github.com/ROCm-Developer-Tools/rocprofiler"
+url='https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html'
 license=('MIT')
-depends=('hsa-rocr' 'python' 'python-argparse' 'python-cppheaderparser')
-makedepends=('cmake')
+depends=('hsa-rocr')
+makedepends=('cmake' 'python' 'python-argparse' 'python-cppheaderparser')
+optdepends=('hip-rocclr: Trace HIP calls'
+            'roctracer: Trace HSA calls')
 options=(!staticlibs strip)
-source=("rocprofiler-roc-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/rocprofiler/archive/roc-$pkgver.tar.gz")
-sha256sums=('dccdcf95f5d237866cb9bd57492457ebed246d5fa75cb8e976631a1c9c5449aa')
+_git='https://github.com/ROCm-Developer-Tools/rocprofiler'
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        'add_string_header.patch')
+sha256sums=('c42548dd467b7138be94ad68c715254eb56a9d3b670ccf993c43cd4d43659937'
+            '40264623a8431f63662137963852e1e6c025e1960212cdf4b08ce00a370b7cc4')
+
+prepare(){
+    cd "rocprofiler-rocm-$pkgver"
+    patch -Np1 -i ../add_string_header.patch
+}
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        "$srcdir/rocprofiler-roc-$pkgver"
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        "$srcdir/rocprofiler-rocm-$pkgver"
   make
 }
 
@@ -29,8 +38,7 @@ package() {
 
   # add links
   install -d "$pkgdir/usr/bin"
-  local _fn
-  for _fn in rocprofiler; do
-    ln -s "/opt/rocm/rocprofiler/bin/$_fn" "$pkgdir/usr/bin/$_fn"
-  done
+  ln -s "/opt/rocm/rocprofiler/bin/rocprof" "$pkgdir/usr/bin/rocprof"
+
+  install -Dm644 "$srcdir/rocprofiler-rocm-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
