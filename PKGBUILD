@@ -2,12 +2,17 @@
 _pkgname='bitw'
 pkgname="$_pkgname-git"
 pkgver='r53.aa676ad'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
 makedepends=('git' 'go>=1.13')
+optdepends=(
+	'wl-clipboard: clipboard utility for Wayland (one of the optdepends is required for the tests to pass - build time dep)'
+	'xclip: clipboard utility for X11 (one of the optdepends is required for the tests to pass - build time dep)'
+	'xsel: clipboard utility for X11 (one of the optdepends is required for the tests to pass - build time dep)'
+)
 provides=("$_pkgname" 'org.freedesktop.secrets')
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
@@ -15,6 +20,7 @@ sha256sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 _bindir="$pkgname-bin"
+_gopath="$pkgname-gopath"
 
 prepare() {
 	mkdir -p "$srcdir/$_bindir/"
@@ -27,6 +33,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
+	export GOPATH="$srcdir/$_gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -37,6 +44,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
+	export GOPATH="$srcdir/$_gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
