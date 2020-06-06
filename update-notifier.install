@@ -1,0 +1,8 @@
+post_install()
+{
+	echo 'Now run "systemctl --user enable update-notifier.timer"'
+}
+pre_remove()
+{
+	systemctl --global disable update-notifier.timer &> /dev/null
+}

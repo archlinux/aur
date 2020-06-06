@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = update-notifier
+
+[Action]
+Description = patching update-notifier for systemd.
+When = PostTransaction
+Exec = /usr/bin/sed -i '/^[[:blank:]]*dunstify.*up to date/{s/\(^[[:blank:]]*\)\(dunstify .*\)/\1[ "$1" != "-systemd" ] \&\& \2 || true/}' usr/bin/update-notifier

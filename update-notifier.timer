@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Update notifier a few times a day
+
+[Timer]
+OnStartupSec=30sec
+OnCalendar=0/2:25:00
+
+[Install]
+WantedBy=timers.target

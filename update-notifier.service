@@ -1,0 +1,9 @@
+[Unit]
+Description=Update notifier service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-notifier -systemd
+
+[Install]
+WantedBy=update-notifier.timer
