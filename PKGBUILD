@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Antidote1911/${pkgname}"
 license=('GPL')
 depends=('qt5-base')
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Antidote1911/${pkgname}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antidote1911/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('8BD7326B6A428F90D844BC3ED74B0682922333EBE6B4557278EF72DE9E36BA73')
 
 build() {
