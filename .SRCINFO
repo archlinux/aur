@@ -1,7 +1,7 @@
 pkgbase = hipcub
 	pkgdesc = Header-only library on top of rocPRIM or CUB
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#hipcub
 	arch = x86_64
 	license = custom
