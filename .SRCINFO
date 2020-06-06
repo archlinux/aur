@@ -1,14 +1,11 @@
 pkgbase = rocm-utils
-	pkgdesc = ROCm Platform Runtime: Closed source utils
-	pkgver = 2.2.31
+	pkgdesc = ROCm Platform Runtime: Utils
+	pkgver = 3.5.0
 	pkgrel = 1
-	url = https://github.com/RadeonOpenCompute/ROCm
-	arch = any
-	license = BEER
+	url = https://rocm-documentation.readthedocs.io/en/latest/
+	arch = x86_64
 	depends = rocminfo
 	depends = rocm-clang-ocl
-	provides = rocm-utils
-	conflicts = rocm-utils
 
 pkgname = rocm-utils
 
