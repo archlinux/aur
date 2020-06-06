@@ -1,14 +1,13 @@
 pkgbase = wine-installer
 	pkgdesc = A metapackage that provides desktop files and menus to WINE
-	pkgver = 4.0.5
-	pkgrel = 3
+	pkgver = 5.0.2
+	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/w/wine-installer
 	arch = x86_64
 	license = GPL
 	depends = wine
-	optdepends = winetricks: Script to install various redistributable runtime libraries in Wine.
-	source = wine-installer-4.0.5.tar.xz::http://packages.linuxmint.com/pool/main/w/wine-installer/wine-installer_4.0.5.tar.xz
-	sha256sums = b360b6c34e2fbc84fd959caa204ba48c850db5fb437487ff2516e67c0632057f
+	source = wine-installer-5.0.2.tar.xz::http://packages.linuxmint.com/pool/main/w/wine-installer/wine-installer_5.0.2.tar.xz
+	sha256sums = 24c4c3641e418f5db95ccb7e67a34a8d67c2a40f489baebb8ef54495ef9c6867
 
 pkgname = wine-installer
 

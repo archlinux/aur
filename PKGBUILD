@@ -1,8 +1,8 @@
 # Maintainer: Sam Burgos < santiago.burgos1089@gmail.com >
 
 pkgname=wine-installer
-pkgver=4.0.5
-pkgrel=3
+pkgver=5.0.2
+pkgrel=1
 pkgdesc='A metapackage that provides desktop files and menus to WINE'
 arch=(x86_64)
 url="http://packages.linuxmint.com/pool/main/w/${pkgname}"
@@ -10,9 +10,8 @@ license=(GPL)
 depends=(
     wine
 )
-optdepends=('winetricks: Script to install various redistributable runtime libraries in Wine.')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('b360b6c34e2fbc84fd959caa204ba48c850db5fb437487ff2516e67c0632057f')
+sha256sums=('24c4c3641e418f5db95ccb7e67a34a8d67c2a40f489baebb8ef54495ef9c6867')
 
 package() {
   cd ${pkgname}
