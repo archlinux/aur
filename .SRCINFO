@@ -1,14 +1,14 @@
 pkgbase = sfrename
 	pkgdesc = Program for renaming files and directories
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://www.nongnu.org/small-file-renamer/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtk3>=3.22.0
-	source = https://download.savannah.nongnu.org/releases/small-file-renamer/sfrename-1.2.7.tar.gz
-	md5sums = 8ab239acf5aab72745a5bca7130636ba
+	source = https://download.savannah.nongnu.org/releases/small-file-renamer/sfrename-1.2.8.tar.gz
+	md5sums = 5b14df98b00be8a5d08254575432288c
 
 pkgname = sfrename
 
