@@ -1,0 +1,21 @@
+pkgbase = ruby-cool.io
+	pkgdesc = provides a high performance event framework for Ruby which uses the libev C library.
+	pkgver = 1.6.0
+	pkgrel = 0
+	url = https://github.com/tarcieri/cool.io
+	arch = x86_64
+	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = ruby-rdoc
+	makedepends = ruby-bundler
+	makedepends = ruby-rake-compiler
+	depends = ruby
+	provides = cool.io_ext.so
+	provides = iobuffer_ext.so
+	options = !emptydirs
+	source = https://github.com/tarcieri/cool.io/archive/v1.6.0/cool.io-v1.6.0.tar.gz
+	sha512sums = 0523b4af2560afa19dfa87feeda7f9bfe36dd08f4a0e77ff344b9083f6b3e80e4824e5e83fad80bf98ec4f88b2a36ca07b7a01be5a60c154c76f44621a404d2a
+
+pkgname = ruby-cool.io
+
