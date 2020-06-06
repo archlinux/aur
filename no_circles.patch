@@ -2,14 +2,14 @@ Description: changes all round pictures to rounded rectangles
 Credits: novie
 
 diff --git a/Telegram/SourceFiles/ui/image/image.cpp b/Telegram/SourceFiles/ui/image/image.cpp
-index 559e0e9b5..24afa50e7 100644
+index 6fce4b879..df9229b02 100644
 --- a/Telegram/SourceFiles/ui/image/image.cpp
 +++ b/Telegram/SourceFiles/ui/image/image.cpp
-@@ -609,6 +609,7 @@ const QPixmap &Image::pixCircled(
- 		Data::FileOrigin origin,
- 		int32 w,
- 		int32 h) const {
-+	return pixRounded(origin, w, h, ImageRoundRadius::Large, RectPart::AllCorners);
- 	checkSource();
+@@ -203,6 +203,7 @@ const QPixmap &Image::pixRounded(
+ }
  
+ const QPixmap &Image::pixCircled(int w, int h) const {
++	return pixRounded(w, h, ImageRoundRadius::Large, RectPart::AllCorners);
  	if (w <= 0 || !width() || !height()) {
+ 		w = width();
+ 	} else {
