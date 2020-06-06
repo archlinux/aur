@@ -14,6 +14,7 @@ pkgbase = sfeed
 	depends = glibc
 	provides = sfeed
 	conflicts = sfeed
+	conflicts = sfeed-git
 	source = https://codemadness.org/releases/sfeed/sfeed-0.9.17.tar.gz
 	sha256sums = 8bd1bf05915741fe44323bf92cec25ad4ad745c5909886cd8dfb0087ede4182f
 
