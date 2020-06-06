@@ -1,0 +1,13 @@
+diff --git a/ch341funcs.c b/ch341funcs.c
+index 3bed06b..55ba7cf 100644
+--- a/ch341funcs.c
++++ b/ch341funcs.c
+@@ -30,7 +30,7 @@ extern FILE *debugout, *verbout;
+ uint32_t getnextpkt;                            // set by the callback function
+ uint32_t syncackpkt;                            // synch / ack flag used by BULK OUT cb function
+ uint16_t byteoffset;
+-uint8_t *readbuf;
++extern uint8_t *readbuf;
+ 
+ // --------------------------------------------------------------------------
+ // ch341configure()

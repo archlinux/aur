@@ -1,0 +1,18 @@
+diff --git a/ch341funcs.c b/ch341funcs.c
+index 23c5236..3bed06b 100644
+--- a/ch341funcs.c
++++ b/ch341funcs.c
+@@ -58,8 +58,12 @@ struct libusb_device_handle *ch341configure(uint16_t vid, uint16_t pid) {
+         fprintf(stderr, "Couldnt initialise libusb\n");
+         return NULL;
+     }
+-
++	
++#if LIBUSB_API_VERSION < 0x01000106
+     libusb_set_debug(NULL, 3);                  // maximum debug logging level
++#else
++    libusb_set_option(NULL, LIBUSB_OPTION_LOG_LEVEL, 3);
++#endif
+ 
+     fprintf(verbout, "Searching USB buses for WCH CH341a i2c EEPROM programmer [%04x:%04x]\n", 
+             USB_LOCK_VENDOR, USB_LOCK_PRODUCT);
