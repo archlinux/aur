@@ -1,9 +1,9 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
+
 pkgname=dwmblocks-syaoran-git
 _dir=dwmblocks-syaoran
 pkgver=0.1r9.1c1a0df
 pkgrel=2
-epoch=
 pkgdesc="This is clickable statusbar for dwm."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/dwmblocks-syaoran.git"
