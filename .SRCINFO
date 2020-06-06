@@ -6,6 +6,7 @@ pkgbase = trojan-go-git
 	arch = x86_64
 	license = GPL3
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	depends = v2ray-geoip
 	depends = v2ray-domain-list-community
