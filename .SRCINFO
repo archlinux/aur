@@ -1,0 +1,17 @@
+pkgbase = nodemcu-pyflasher
+	pkgdesc = Self-contained NodeMCU flasher with GUI based on esptool.py and wxPython.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/marcelstoer/nodemcu-pyflasher
+	arch = x86_64
+	license = MIT
+	depends = pyinstaller
+	depends = python-wxpython
+	depends = esptool
+	source = nodemcu-pyflasher.tar.gz::https://github.com/marcelstoer/nodemcu-pyflasher/archive/v4.0.tar.gz
+	source = remove-create-dmg.patch
+	sha256sums = 728dcad6264bce7a4dddfdd627a95557e0e779ed6bd48d9773766eb6b9af4790
+	sha256sums = 260d5e1f6aa887680dfd0d00d248ecac70d7251f511049e0f0c745447b009975
+
+pkgname = nodemcu-pyflasher
+

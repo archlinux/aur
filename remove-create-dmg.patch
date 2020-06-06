@@ -1,0 +1,9 @@
+diff --unified --recursive --text nodemcu-pyflasher-4.0/build.sh nodemcu-pyflasher-4.0.new/build.sh
+--- nodemcu-pyflasher-4.0/build.sh	2019-02-17 22:53:47.000000000 +0800
++++ nodemcu-pyflasher-4.0.new/build.sh	2020-06-06 12:17:24.780421248 +0800
+@@ -8,5 +8,3 @@
+             build-on-mac.spec
+ 
+ #https://github.com/sindresorhus/create-dmg
+-create-dmg dist/$NAME-$VERSION.app
+-mv "$NAME-$VERSION 0.0.0.dmg" dist/$NAME-$VERSION.dmg
