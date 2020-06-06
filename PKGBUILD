@@ -1,12 +1,13 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=esbuild-git
-pkgver=r84.e989f9d
+pkgver=r558.42309b7
 pkgrel=1
 pkgdesc="An extremely fast JavaScript bundler and minifier"
 arch=("x86_64" "i686")
 url="https://github.com/evanw/esbuild"
 license=(MIT)
+depends=(glibc)
 makedepends=(go git)
 provides=(esbuild)
 conflicts=(esbuild)
@@ -19,12 +20,18 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/src/esbuild/main/"
-  GOPATH="${srcdir}/${pkgname}/" GO111MODULE=off go build -o esbuild -trimpath -ldflags "-extldflags ${LDFLAGS}"
+  cd "${srcdir}/${pkgname}/cmd/esbuild/"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm755 src/esbuild/main/esbuild ${pkgdir}/usr/bin/esbuild
+  install -Dm755 cmd/esbuild/esbuild ${pkgdir}/usr/bin/esbuild
 }
