@@ -1,10 +1,9 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
-# Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher"
-pkgver="1.0.5"
-pkgrel=2
-commitsha="08214f84ebac965b819c44fd726b658f29e53599"
+pkgver="1.0.6"
+pkgrel=1
+commitsha="e774ea7edd744ebac2ad99fd89474545bbbc661b"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
