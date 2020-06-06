@@ -23,7 +23,7 @@ prepare() {
 }
 
 pkgver() {
-	cd "$srcdir/$_builddir/$_buildpath/"
+	cd "$srcdir/$_sourcedirectory/"
 	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
