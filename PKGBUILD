@@ -7,27 +7,17 @@
 pkgname=msync-git
 pkgver=0.9.8.r1099.a1132ef
 pkgrel=1
-epoch=
 pkgdesc="A low bandwidth store and forward Mastodon / Pleroma API command line client"
 arch=(any)
 url="https://github.com/Kansattica/msync.git"
 license=('GPL')
-groups=()
-depends=()
+depends=(curl)
 makedepends=(git cmake gcc)
-checkdepends=()
-optdepends=()
 provides=(msync)
 conflicts=(msync)
-replaces=()
-backup=()
-options=()
-install=
 changelog=
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/msync"
