@@ -37,34 +37,32 @@ sha256sums=('SKIP'
             '36c82c506a058edc50b882200332c6a540aa68a5749919eb62dc6c633c47deb3'
             'd73e4b984ab95954bd18e08237c6aa8bec32ccc5699531727362e2c75ba9c25e')
 
-build () {
+prepare() {
   cd ${srcdir}/filebin
   git checkout ${pkgver}
   git submodule update --init --recursive
-  scripts/optimize_js.sh
+}
+
+build () {
+  bash "${srcdir}/filebin/scripts/optimize_js.sh"
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/webapps
-  mkdir -p ${pkgdir}/etc/webapps/filebin
-  mkdir -p ${pkgdir}/usr/lib/systemd/system
-  cp -ra ${srcdir}/filebin/ ${pkgdir}/usr/share/webapps/filebin/
-  cp filebin-file-cron.service filebin-file-cron.timer filebin-user-cron.service filebin-user-cron.timer ${pkgdir}/usr/lib/systemd/system
-  cp filebin-nginx.conf filebin-php-fpm.conf ${pkgdir}/usr/share/webapps/filebin
-  cd ${pkgdir}/usr/share/webapps/filebin
-  cp application/config/example/{config-local,database,memcached}.php ${pkgdir}/etc/webapps/filebin
-  rm application/config/memcached.php
-  ln -s /etc/webapps/filebin/{config-local,database,memcached}.php application/config
-  cp data/local/examples/contact-info.php ${pkgdir}/etc/webapps/filebin
-  ln -s /etc/webapps/filebin/contact-info.php data/local
-
-  # http
-  chown 33:33 ${pkgdir}/usr/share/webapps/filebin/data/uploads
+  install -D -d -m755 "${pkgdir}/usr/lib/systemd/system"
+  install -D -d -m755 -g 33 "${pkgdir}/usr/share/webapps/filebin" "${pkgdir}/etc/webapps/filebin"
+  install -D -d -m755 -o 33 -g 33 "${pkgdir}/usr/share/webapps/filebin/data/uploads"
+  install -m640 -g 33 "${srcdir}/filebin/data/local/examples/contact-info.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/filebin/application/config/example/config-local.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/filebin/application/config/example/database.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/filebin/application/config/example/memcached.php" "${pkgdir}/etc/webapps/filebin"
+  install -m644 filebin-file-cron.service filebin-file-cron.timer filebin-user-cron.service filebin-user-cron.timer "${pkgdir}/usr/lib/systemd/system"
+  install -m644 filebin-nginx.conf filebin-php-fpm.conf ${pkgdir}/usr/share/webapps/filebin
+  cp -r "${srcdir}/filebin/"* "${pkgdir}/usr/share/webapps/filebin/"
+  rm "${pkgdir}/usr/share/webapps/filebin/application/config/memcached.php"
+  ln -s /etc/webapps/filebin/{config-local,database,memcached}.php "${pkgdir}/usr/share/webapps/filebin/application/config"
+  ln -s /etc/webapps/filebin/contact-info.php "${pkgdir}/usr/share/webapps/filebin/data/local"
 
   # removing unnecessary data for a production environment
-  rm -rf .git
-  rm -rf git-hooks
-  rm -rf application/third_party/{test-more-php,mockery}
-  rm -rf application/tests
-  find . -name \*.gitignore -type f -delete 
+  rm -rf "${pkgdir}/usr/share/webapps/filebin/"{git-hooks,application/third_party/test-more-php,application/third_party/mockery,application/tests,scripts/optimize_js.sh,scripts/install-git-hooks.sh,scripts/hooks-wrapper.sh}
+  find "${pkgdir}/usr/share/webapps/filebin" -name ".git*" -type f -delete
 }
