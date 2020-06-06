@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-tools-genstubs-git
+	pkgdesc = Generates stub files for the VapourSynth Python module and plugins
+	pkgver = r459.4176ac7
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vsrepo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	provides = vapoursynth-tools-genstubs
+	conflicts = vapoursynth-tools-genstubs
+	source = genstubs::git+https://github.com/vapoursynth/vsrepo.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-tools-genstubs-git
+
