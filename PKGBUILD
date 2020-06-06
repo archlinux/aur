@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   mkdir -p "$srcdir/$_pkgname/build"
   cd "$srcdir/$_pkgname/build"
-  cmake ../ -DCGAL_HEADER_ONLY=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  cmake ../ -DCMAKE_C_COMPILER=/opt/cling/bin/clang -DCMAKE_CXX_COMPILER=/opt/cling/bin/clang++ -DCGAL_HEADER_ONLY=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build() {
@@ -38,7 +38,7 @@ package () {
   make install DESTDIR="$pkgdir"
 
   # The tarball still has all these licenses included
-  for _license in "$srcdir/$_pkgname/Installation/LICENSE"{,.FREE_USE,.GPL,.LGPL,.BSL,.COMMERCIAL,.RFL}; do
-    install -D -m644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+  for _license in "LICENSE"{,.FREE_USE,.GPL,.LGPL,.BSL,.COMMERCIAL,.RFL}; do
+    install -D -m644 "$srcdir/$_pkgname/Installation/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
   done
 }
