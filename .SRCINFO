@@ -15,8 +15,7 @@ pkgbase = libzim
 	depends = zlib
 	depends = xz
 	depends = icu
-	replaces = zimlib-git
-	source = https://github.com/openzim/libzim/archive/6.1.5.tar.gz
+	source = libzim-6.1.5.tar.gz::https://github.com/openzim/libzim/archive/6.1.5.tar.gz
 	sha256sums = c38127663c79a672204426491cf117b609957b4ce2ec69413e474b668a1b02f2
 
 pkgname = libzim
