@@ -5,7 +5,7 @@
 
 _pkgname=v4l2loopback-dc
 pkgname=${_pkgname}-dkms
-pkgver=1.2
+pkgver=1.3
 epoch=1
 pkgrel=2
 pkgdesc='A kernel module for droidcam'
@@ -16,11 +16,11 @@ depends=('dkms')
 optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux')
 backup=("etc/modprobe.d/${_pkgname}.conf")
 source=("dkms.conf"
-        "${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip"
+        "${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
 )
 
 sha512sums=('27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d'
-            '8aba2c9371bb8ad793ad3495c00f5331be7a3f45b0edc7f49067716df9666d585331a289ad2920fb8a024bc4d4738fcf2dff1f9e121c5f8ef825a4c53420d623')
+            'c783b62c530c521aa7f047073efe74b57f28fbadbd097dca595fb582820566aedd03c6e92d2f24d9ff84dceed8ab51955ad77e80481ebfb6e30423425f8f2953')
 
 prepare() {
   # Generate the module loading configuration files
