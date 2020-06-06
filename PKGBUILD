@@ -3,17 +3,15 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.6
-_major=5.6
+_srcname=linux-5.7
+_major=5.7
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=16
-### on initial release comment this out and set to =1
+_minor=
 _minorc=$((_minor+1))
-#_minorc=1
 ### on initial release this is just $_major
-_fullver=$_major.$_minor
-#_fullver=$_major
+#_fullver=$_major.$_minor
+_fullver=$_major
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
@@ -21,7 +19,7 @@ arch=(x86_64)
 license=(GPL2)
 url="https://www.kernel.org/"
 makedepends=(
-       kmod inetutils bc libelf
+  bc kmod libelf
 )
 options=('!strip')
 source=(
@@ -37,15 +35,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('57cdecc9579ed05b3bab3c3ed8d314eb73ed8f249fbf3c77d1dff75bfa468728'
+sha256sums=('4f60647b0d73dfea9a509457386a7c3766aedc1b8dee81b083912444c4865972'
             'SKIP'
-            '25504b4de7baf912071d1ed40b13af0689305442b9dea9218fd096d8bd997cf7'
+            'de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'SKIP'
-            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '71030461a03fe30133f357001394ca2644c5fe0aae52161fe00c74aec0f900fe'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '46c253f0d12b73a0cff3c40b82b656b7c7c423dac9abb61a391042d873eb9c47')
+            '382c2e99dbc6fc2184492d961441bc2cde2b8de23e018cb291c952c5e1c3ed37')
 
-_kernelname=${pkgbase#linux}
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -81,8 +78,7 @@ prepare() {
 
 build() {
   cd linux-${_fullver}
-
-  make bzImage modules
+  make all
 }
 
 _package() {
