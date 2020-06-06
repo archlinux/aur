@@ -1,6 +1,6 @@
 pkgbase = rocm-libs
 	pkgdesc = ROCm Libs - Libraries utilizing HPC and Ultrascale GPU Computing of ROCm
-	pkgver = 3.3.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rocm-libs
 	depends = rocfft
 	depends = rocprim
 	depends = rocrand
+	depends = rocsolver
 	depends = rocsparse
 	depends = rocthrust
 
