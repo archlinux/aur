@@ -1,0 +1,5 @@
+post_install() {
+	echo " => In order to enable zram-generator create config /etc/systemd/zram-generator.conf"
+	echo "    (examples located at /usr/share/doc/zram-generator) and reboot"
+}
+
