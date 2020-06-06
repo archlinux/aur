@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=linux-selinux
-pkgver=5.6.13.arch1
+pkgver=5.6.15.arch1
 pkgrel=1
 pkgdesc='Linux SELinux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -34,10 +34,10 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
