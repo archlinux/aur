@@ -1,4 +1,4 @@
-pkgbase = prismatik
+pkgbase = prismatik-bin
 	pkgdesc = A controller for usb driven LED backlights.
 	pkgver = 5.11.2
 	pkgrel = 3
@@ -14,5 +14,5 @@ pkgbase = prismatik
 	source = https://github.com/woodenshark/Lightpack/releases/download/5.11.2/prismatik_5.11.2_amd64.deb
 	sha256sums = a97f88a9eec9f91b076d2f6b6117b03470fff71e9b18fe595ebe377220871c6f
 
-pkgname = prismatik
+pkgname = prismatik-bin
 

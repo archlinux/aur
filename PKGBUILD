@@ -1,6 +1,6 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
-pkgname=prismatik
+pkgname=prismatik-bin
 pkgver=5.11.2
 pkgrel=3
 pkgdesc="A controller for usb driven LED backlights."
