@@ -1,34 +1,54 @@
+# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+
 pkgname=kazam
 pkgver=1.4.5
-pkgrel=7
-pkgdesc="A screencasting program with design in mind"
+pkgrel=8
+pkgdesc="Screencast and screenshot application created with design in mind"
 arch=('any')
 url="https://launchpad.net/kazam"
 license=('GPL')
-groups=()
-depends=('python' 'python-cairo' 'python-xdg' 'python-dbus' 'python-distutils-extra' 'python-gobject' 'gobject-introspection' 'gstreamer' 'gst-plugins-base' 'gtk3' 'pango' 'gdk-pixbuf2' 'libwnck3' 'ffmpeg' 'libmatroska' 'libtheora' 'gnome-desktop')
-optdepends=('libkeybinder3: hotkeys support' 'libappindicator3: indicator on Unity panel support')
-conflicts=('kazam-bzr' 'kazam-stable-bzr')
-source=("https://launchpad.net/${pkgname}/stable/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
-    'version.patch'
-    'configparser_api_changes.patch'
-    'configparser34.py'
-    'configparser_use_old_version.patch')
-md5sums=('522ac80fef7123875271b30298ed6877'
-         '847ae2478ae5e35f6e1af49aa9fb3fa9'
-         '8e751e821558c989ac02ef687a7b7339'
-         '9974105c95473b9d39c705780367879a'
-         '4e59fc27cd4cd5ca1fe1aa379009c31e')
+depends=(
+    'python-cairo'
+    'python-dbus'
+    'python-gobject'
+    'python-xdg'
+    'gstreamer'
+    'gst-plugins-base'
+    'gst-libav'
+    'libwnck3'
+    'libcanberra'
+)
+optdepends=(
+    'libkeybinder3: hotkeys support'
+)
+
+source=(
+    "https://launchpad.net/${pkgname}/stable/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
+    configparser_api_changes.patch
+    fix-PyGIWarnings.patch
+    setlocale.patch
+)
+sha256sums=('8e4868c09c4b0ad55b3c72407a26ef94020dc1b95ac31dfdea112b5377b6cfe3'
+            '5dd8d693437377b0e9bcd600cc9fd700c855b9b861ed51f3cd061ab0f52d9988'
+            '1e886d680bcc09bd90b45d294496d948fceccae0813cbea5273dc8b493d4e324'
+            '9309d29b33ca78b6c3e3e74222346a0a02068a37c7bf7bf8ce0b50fd79706b82')
+
+_srcname=${pkgname}-${pkgver}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    cp "${srcdir}/configparser34.py" "${srcdir}/$pkgname-$pkgver/$pkgname/backend/"
-    patch -p1 < "${srcdir}/version.patch"
-    patch -p1 < "${srcdir}/configparser_api_changes.patch"
-    patch -p1 < "${srcdir}/configparser_use_old_version.patch"
+    cd "${_srcname}"
+    
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        patch -Np1 < "../$src"
+    done
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${_srcname}"
     python3 setup.py install --root ${pkgdir}
 }
