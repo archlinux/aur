@@ -3,9 +3,9 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
-_commit=c6c926d225b621e025f15ffe83f9088d41edba9c # tags/4.6.2^0
+_commit=8a42a21efa264ad94f3f0cf8c67ebb9b621616bb # tags/4.6.3^0
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-slim}"
@@ -17,7 +17,7 @@ replaces=('cinnamon')
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
          'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
          'gnome-themes-extra' 'gstreamer' 'libcroco' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
-         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus' 'python-distro' 'python-gobject' 'python-pam'
+         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pam'
          'python-pexpect' 'python-pillow' 'python-pyinotify' 'python-pytz' 'python-tinycss2'
          'python-xapp' 'timezonemap' 'xapps')
 optdepends=('blueberry: Bluetooth support'
