@@ -1,12 +1,15 @@
-# Maintainer: Bryce Chidester <bryce@cobryce.com>
+# Maintainer: Olivia Mackintosh <livvy@base.nu>
+# Contributor: Bryce Chidester <bryce@cobryce.com>
 pkgname=purple-matrix-git
-pkgver=r182.5a7166a
-pkgrel=0
+pkgver=r207.1d23385
+pkgrel=1
 pkgdesc="Libpurple protocol plugin for matrix."
 arch=('any')
 url="https://github.com/matrix-org/purple-matrix"
 license=('GPL2')
 depends=('libpurple' 'http-parser' 'glib2' 'json-glib')
+optdepends=('libolm-git: encryption support'
+            'libgcrypt: encryption support')
 makedepends=('git')
 provides=('purple-matrix')
 conflicts=('purple-matrix')
@@ -23,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make MATRIX_NO_E2E=1
+	(pacman -Q libolm-git libgcrypt && make) || make MATRIX_NO_E2E=1
 }
 
 
