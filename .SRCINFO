@@ -1,0 +1,19 @@
+pkgbase = jdtextedit
+	pkgdesc = A powerful texteditor with a lot of features
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://gitlab.com/JakobDev/jdTextEdit
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-qscintilla-qt5
+	depends = python-chardet
+	depends = python-requests
+	depends = python-cchardet
+	depends = python-editorconfig
+	source = jdtextedit-7.2.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/7.2/jdTextEdit-7.2.tar.gz
+	sha256sums = 9190b7dfe278326d9bbe3696999c2e53676b021391ffafc735b7fed88936cf22
+
+pkgname = jdtextedit
+
