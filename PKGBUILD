@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.0.4
+pkgver=1.0.5
 _pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
@@ -33,7 +33,7 @@ conflicts=(
     warpinator-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
-sha256sums=('b41da05d4a5dd59072b3ce8b189a2e78d298ce71a72d436e47584380a14c4ad3')
+sha256sums=('b736d6a608d1c5dff496680ab8550f3db9fa5dbf3068577787fcc1605dc27448')
 
 prepare() {
 	cd "$srcdir/warpinator"
