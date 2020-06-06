@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.2.2.r477.2a03a68
+pkgver=0.2.2.r482.f55e68c
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ install=$pkgname.install
 source=("${_name}::git://github.com/mywave82/opencubicplayer.git"
         "unifont.patch")
 md5sums=('SKIP'
-         '27d962f746ba8c6b761f6a62ae5d093a')
+         'ce9883e1daacd9624c65be1bcdbb9124')
 
 prepare() {
     cd "${srcdir}/${_name}"

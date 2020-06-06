@@ -1,10 +1,10 @@
 diff --unified --recursive --text package.orig/ocp/configure package.new/ocp/configure
---- package.orig/ocp/configure	2020-04-19 14:55:17.089021923 +0300
-+++ package.new/ocp/configure	2020-04-19 14:58:43.770238001 +0300
-@@ -9818,15 +9818,15 @@
+--- package.orig/ocp/configure	2020-06-06 15:41:09.851035735 +0300
++++ package.new/ocp/configure	2020-06-06 15:46:16.263149466 +0300
+@@ -9851,15 +9851,15 @@
    prefix=$prefix_save
    exec_prefix=$exec_prefix_save
-
+ 
 -	as_ac_File=`$as_echo "ac_cv_file_$UNIFONTDIR/unifont.ttf" | $as_tr_sh`
 -{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $UNIFONTDIR/unifont.ttf" >&5
 -$as_echo_n "checking for $UNIFONTDIR/unifont.ttf... " >&6; }
@@ -21,14 +21,14 @@ diff --unified --recursive --text package.orig/ocp/configure package.new/ocp/con
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9838,18 +9838,18 @@
+@@ -9871,18 +9871,18 @@
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
-
+ 
  else
--  as_fn_error $? "$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
-
+ 
 -	as_ac_File=`$as_echo "ac_cv_file_$UNIFONTDIR/unifont_csur.ttf" | $as_tr_sh`
 -{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $UNIFONTDIR/unifont_csur.ttf" >&5
 -$as_echo_n "checking for $UNIFONTDIR/unifont_csur.ttf... " >&6; }
@@ -45,14 +45,14 @@ diff --unified --recursive --text package.orig/ocp/configure package.new/ocp/con
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9861,18 +9861,18 @@
+@@ -9894,18 +9894,18 @@
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
-
+ 
  else
--  as_fn_error $? "$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
-
+ 
 -	as_ac_File=`$as_echo "ac_cv_file_$UNIFONTDIR/unifont_upper.ttf" | $as_tr_sh`
 -{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $UNIFONTDIR/unifont_upper.ttf" >&5
 -$as_echo_n "checking for $UNIFONTDIR/unifont_upper.ttf... " >&6; }
@@ -69,38 +69,38 @@ diff --unified --recursive --text package.orig/ocp/configure package.new/ocp/con
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9884,7 +9884,7 @@
+@@ -9917,7 +9917,7 @@
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
-
+ 
  else
--  as_fn_error $? "$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
-
+ 
  	cat >>confdefs.h <<_ACEOF
 diff --unified --recursive --text package.orig/ocp/configure.ac package.new/ocp/configure.ac
---- package.orig/ocp/configure.ac	2020-04-19 14:55:17.089021923 +0300
-+++ package.new/ocp/configure.ac	2020-04-19 14:59:06.190369996 +0300
-@@ -557,9 +557,9 @@
-
+--- package.orig/ocp/configure.ac	2020-06-06 15:41:09.851035735 +0300
++++ package.new/ocp/configure.ac	2020-06-06 15:47:48.977121525 +0300
+@@ -580,9 +580,9 @@
+ 
  dnl locate the ttf-unifont
  	AS_AC_EXPAND(UNIFONTDIR, $with_unifontdir)
--	AC_CHECK_FILE($UNIFONTDIR/unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
--	AC_CHECK_FILE($UNIFONTDIR/unifont_csur.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
--	AC_CHECK_FILE($UNIFONTDIR/unifont_upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
-+	AC_CHECK_FILE($UNIFONTDIR/Unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
-+	AC_CHECK_FILE($UNIFONTDIR/Unifont_CSUR.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
-+	AC_CHECK_FILE($UNIFONTDIR/Unifont_Upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)]))
+-	AC_CHECK_FILE($UNIFONTDIR/unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
+-	AC_CHECK_FILE($UNIFONTDIR/unifont_csur.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
+-	AC_CHECK_FILE($UNIFONTDIR/unifont_upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont_CSUR.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont_Upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
  	AC_DEFINE_UNQUOTED(UNIFONTDIR, "$UNIFONTDIR")
  fi
-
+ 
 diff --unified --recursive --text package.orig/ocp/stuff/poutput-fontengine.c package.new/ocp/stuff/poutput-fontengine.c
---- package.orig/ocp/stuff/poutput-fontengine.c	2020-04-19 14:55:17.159022335 +0300
-+++ package.new/ocp/stuff/poutput-fontengine.c	2020-04-19 14:59:31.597186245 +0300
+--- package.orig/ocp/stuff/poutput-fontengine.c	2020-06-06 15:41:09.891036012 +0300
++++ package.new/ocp/stuff/poutput-fontengine.c	2020-06-06 15:48:33.550761797 +0300
 @@ -393,22 +393,22 @@
  		return 1;
  	}
-
+ 
 -	unifont_bmp = TTF_OpenFontFilename(UNIFONTDIR "/unifont.ttf", 16, 0, 0, 0);
 +	unifont_bmp = TTF_OpenFontFilename(UNIFONTDIR "/Unifont.ttf", 16, 0, 0, 0);
  	if (!unifont_bmp)
@@ -125,4 +125,4 @@ diff --unified --recursive --text package.orig/ocp/stuff/poutput-fontengine.c pa
 +		fprintf (stderr, "TTF_OpenFont(\"" UNIFONTDIR "/Unifont_Upper.ttf\") failed: %s\n", TTF_GetError());
  		TTF_ClearError();
  	}
-
+ 
