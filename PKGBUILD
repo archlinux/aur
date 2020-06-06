@@ -1,16 +1,71 @@
-# Maintainer: Kartik Mohta <kartikmohta@gmail.com>
+# Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
+# A lot of thanks go to the previous maintainer, Kartik Mohta, for his work.
 pkgname=ros2-arch-deps
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
 arch=('any')
 license=('BSD')
 
-depends=('asio' 'cppcheck' 'cmake' 'console-bridge' 'eigen' 'git' 'log4cxx'
-         'opencv' 'poco' 'python' 'python-colcon-common-extensions'
-         'python-empy' 'python-nose' 'python-pip' 'python-rosdep'
-         'python-vcstool' 'python-yaml' 'tinyxml' 'tinyxml2')
+depends=('asio'
+         'bullet'
+         'cmake'
+         'eigen'
+         'git'
+         'glew'
+         'glu'
+         'hdf5'
+         'libxaw'
+         'log4cxx'
+         'opencv'
+         'poco'
+         'python'
+         'python-cryptography'
+         'python-empy'
+         'python-lark-parser'
+         'python-netifaces'
+         'python-nose'
+         'python-numpy'
+         'python-pyqt5'
+         'python-pytest-repeat'
+         'python-setuptools'
+         'python-sip'
+         'python-yaml'
+         'qt5-base' 
+         'sip' 
+         'tinyxml'
+         'tinyxml2'
+         'vtk'
+         'wget'
+         # AUR
+         'python-notify2'
+         'python-vcstool'
+         'python-colcon-argcomplete'
+         'python-colcon-bash'
+         'python-catkin_pkg'
+         'python-colcon-cmake'
+         'python-colcon-core'
+         'python-colcon-defaults'
+         'python-colcon-devtools'
+         'python-colcon-library-path'
+         'python-colcon-metadata'
+         'python-colcon-notification'
+         'python-colcon-output'
+         'python-colcon-package-information'
+         'python-colcon-package-selection'
+         'python-colcon-pkg-config'
+         'python-colcon-parallel-executor'
+         'python-colcon-powershell'
+         'python-colcon-python-setup-py'
+         'python-colcon-recursive-crawl'
+         'python-colcon-ros'
+         'python-colcon-test-result'
+         'python-colcon-zsh'         
+         'python-colcon-common-extensions'
+         'python-rospkg'
+         'python-rosdistro'
+         'python-rosdep')
 
 md5sums=()
 
