@@ -1,22 +1,21 @@
 pkgbase = labrador
-	pkgdesc = EspoTek Labrador transforms your PC or smartphone into a fully-featured electronics lab
-	pkgver = 1.1
-	pkgrel = 2
-	url = http://espotek.com
+	pkgdesc = Transforms your PC into a fully-featured electronics lab (with an EspoTek USB device)
+	pkgver = 1.2_65ca876
+	pkgrel = 1
+	url = https://espotek.com
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
-	depends = libdfuprog
-	source = https://github.com/EspoTek/Labrador/archive/1.1.tar.gz
-	source = 68-labrador.rules
-	source = labrador.desktop
-	source = labrador.png
-	source = use_system_libs.patch
-	sha256sums = 028aa7de4c46e10d4c00355fb294d7e29bc735a15ba12e257150b5c45ee32755
-	sha256sums = 221e149de8e24a98da38ca8586d5dda7c08bf4a26b649ac2d55e4b25aada154d
-	sha256sums = 708d2e142931c6c6b190155b0833b296d5562cd8de758a137dd356577e5077a6
-	sha256sums = a4d11834978d31526d388723b695c618c2c23962a10d45f66c8ef3238bfa0b63
-	sha256sums = 18e4d82337fa2cde887cb133190f62613b56230279392a9fe013ee6639fa2b20
+	depends = hicolor-icon-theme
+	optdepends = dfu-programmer: USB programmer for Atmel chips
+	optdepends = dfu-util: USB firmware down/uploader
+	conflicts = libdfuprog
+	source = https://github.com/EspoTek/Labrador/archive/continuous-Linux.tar.gz
+	source = labrador-install.patch
+	source = Labrador_pinout.png
+	sha256sums = 4a45a3069317d294ab2b75d7a428c969237945f02d8ad6025defe32ce8f56088
+	sha256sums = 6584acad931a8dc281ac75e92234d10af0194ff6e3d40a9a67509763a29b92f4
+	sha256sums = 0879b78874b86b648b067d69c21500717df518874cb3f87ed40ea3d6e44979bd
 
 pkgname = labrador
 
