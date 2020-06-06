@@ -1,23 +1,28 @@
 pkgbase = apache-flex-sdk
 	pkgdesc = The open-source framework for building expressive web and mobile applications
 	pkgver = 4.16.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://flex.apache.org/
 	install = apache-flex-sdk.install
 	arch = any
 	license = APACHE
 	depends = bash
 	depends = java-environment
+	optdepends = apache-flex-sdk-docs: Documentation for Apache Flex SDK
 	optdepends = adobe-air-sdk: for compiling flex projects into AIR apps
-	noextract = playerglobal31_0.swc
+	optdepends = flashplayer-standalone-debug: for debugging SWFs
+	optdepends = flashplugin-debug: for debugging SWFs in-browser
+	noextract = playerglobal.swc
 	options = !strip
 	options = !emptydirs
-	source = https://www.apache.org/dist/flex/4.16.1/binaries/apache-flex-sdk-4.16.1-bin.tar.gz
-	source = https://fpdownload.macromedia.com/get/flashplayer/installers/archive/playerglobal/playerglobal31_0.swc
+	source = https://downloads.apache.org/flex/4.16.1/binaries/apache-flex-sdk-4.16.1-bin.tar.gz
+	source = https://downloads.apache.org/flex/4.16.1/binaries/apache-flex-sdk-4.16.1-bin.tar.gz.md5
+	source = playerglobal.swc::https://fpdownload.macromedia.com/get/flashplayer/installers/archive/playerglobal/playerglobal32_0.swc
 	source = apache-flex-sdk.sh
 	sha256sums = 17fda7ac8d3e476cad3127f345455ef316acfb87c6f4322e5897bd8d9b09388e
-	sha256sums = e8b0799cb19d57729407be54bad0ce13e148b93ac176952ec49952e082b6869a
-	sha256sums = 0bb488494fed38498c90c5eb0fede79827f1b074cc21de94bebf2eae28c27890
+	sha256sums = SKIP
+	sha256sums = 66927db00b2aed2ec2159961c2381277c67153e8a26b763ab328c94fab64da85
+	sha256sums = 13a4d4a11e44023f52ae9f3ac984065054604ebe6b1f2e3e69897f723d5fbd5d
 
 pkgname = apache-flex-sdk
 
