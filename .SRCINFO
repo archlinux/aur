@@ -3,15 +3,12 @@ pkgbase = pam-ihosts
 	pkgver = 1.5.7
 	pkgrel = 2
 	url = https://github.com/ColumPaget/pam_ihosts
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = binutils
 	depends = pam
-	depends = libffi
-	provides = pam-ihosts
-	conflicts = pam-ihosts-git
-	source = https://github.com/ColumPaget/pam_ihosts/archive/v1.5.7.tar.gz
+	source = pam-ihosts-1.5.7.tar.gz::https://github.com/ColumPaget/pam_ihosts/archive/v1.5.7.tar.gz
 	sha256sums = 769f93da84f6c9b4fa7222b3d522d56ed78d536faac05fb9d267c105d1984fd4
 
 pkgname = pam-ihosts
