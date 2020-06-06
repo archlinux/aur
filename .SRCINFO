@@ -7,7 +7,7 @@ pkgbase = xrel-terminal-client
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/hashworks/xREL-Terminal-Client/archive/v2.1.2.tar.gz
+	source = xrel-terminal-client-2.1.2.tar.gz::https://github.com/hashworks/xREL-Terminal-Client/archive/v2.1.2.tar.gz
 	sha256sums = 5fc87553a139ea25fc2c616045d0c99ce884bc62eaed53091a30bbcef3a3661f
 
 pkgname = xrel-terminal-client

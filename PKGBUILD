@@ -8,7 +8,7 @@ url="https://github.com/hashworks/xREL-Terminal-Client"
 license=("GPL3")
 changelog=CHANGELOG
 makedepends=('go')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("5fc87553a139ea25fc2c616045d0c99ce884bc62eaed53091a30bbcef3a3661f")
 
 prepare(){
