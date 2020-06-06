@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Identification and conversion functions for Chinese text processing'
 arch=('any')
 url="https://github.com/tsroten/dragonmapper"
-license=('BSD')
+license=('MIT')
 depends=('python-jinja'
          'python-markupsafe'
          'python-pygments'
