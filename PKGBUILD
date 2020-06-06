@@ -1,39 +1,35 @@
-# Maintainer: Maxime Tréca <maxime.treca@gmail.com>
+# Maintainer: Jeffrey Crochet <jlcrochet at pm dot me>
+# PKGBUILD based on dina-font-otb by Ckat
+
 pkgname=gohufont-otb
-pkgver=r8.cc36b8c
+pkgver=2.1
 pkgrel=1
-pkgdesc="A monospace bitmap font."
-arch=('any')
-url="https://github.com/hchargois/gohufont"
-license=('custom')
-depends=('xorg-font-utils' 'fontconfig')
-makedepends=('git' 'fonttosfnt-git')
-conflicts=('gohufont')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/hchargois/gohufont.git")
-md5sums=('SKIP')
+pkgdesc="OpenType bitmap conversion of Gohufont"
+arch=(any)
+url=https://font.gohu.org
+license=(custom:WTFPL)
+makedepends=(fonttosfnt)
+conflicts=(gohufont gohu-ttf gohufont-powerline)
+source=(https://font.gohu.org/gohufont-$pkgver.tar.gz)
+md5sums=(154921c092ac5a4e1806e04d84d6707d)
 
 _ex_pt() {
-	_pt=${1%.bdf}
-	_pt=${_pt#*-}
-	echo $_pt
-}
-
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    _pt=${1%.pcf.gz}
+    _pt=${_pt#*-}
+    echo $_pt
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
-	for f in *.bdf; do
-		fonttosfnt -o "${f/bdf/otb}" "$f"
-	done
+    cd "$srcdir/gohufont-$pkgver"
+    for f in *.pcf.gz; do
+        fonttosfnt -o "${f/pcf.gz/otb}" "$f"
+    done
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
-	for i in *.otb; do
-		install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
-	done
+    cd "$srcdir/gohufont-$pkgver"
+    for i in *.otb; do
+        install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
+    done
+    install -Dm644 COPYING-LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING-LICENSE"
 }

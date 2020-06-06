@@ -1,16 +1,16 @@
 pkgbase = gohufont-otb
-	pkgdesc = A monospace bitmap font.
-	pkgver = r8.cc36b8c
+	pkgdesc = OpenType bitmap conversion of Gohufont
+	pkgver = 2.1
 	pkgrel = 1
-	url = https://github.com/hchargois/gohufont
+	url = https://font.gohu.org
 	arch = any
-	license = custom
-	makedepends = git
-	depends = xorg-font-utils
-	depends = fontconfig
+	license = custom:WTFPL
+	makedepends = fonttosfnt
 	conflicts = gohufont
-	source = gohufont-otb::git+https://github.com/hchargois/gohufont.git
-	md5sums = SKIP
+	conflicts = gohu-ttf
+	conflicts = gohufont-powerline
+	source = https://font.gohu.org/gohufont-2.1.tar.gz
+	md5sums = 154921c092ac5a4e1806e04d84d6707d
 
 pkgname = gohufont-otb
 
