@@ -2,7 +2,7 @@
 # Maintainer: AdrianoML <adriano.lols@gmail.com>
 
 pkgname=jstest-gtk-git
-pkgver=0.1.0.r97.g5a94e59
+pkgver=0.1.0.r98.g7a51eef
 pkgrel=1
 pkgdesc="A simple GTK2-based joystick tester and calibrator"
 arch=('i686' 'x86_64')
@@ -18,15 +18,15 @@ sha1sums=('SKIP'
           '1c1cdc1c2d98c18ce4b0523c53b8be8a08f4eeed')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
 
   msg "Patching..."
-  patch -p1 < "$srcdir/fix_datadir.patch"
+  patch -p1 < "../fix_datadir.patch"
 
   if [[ ! -e 'build' ]]; then
       mkdir build
@@ -37,12 +37,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
 
-  install -D -m755 build/jstest-gtk "$pkgdir/usr/bin/jstest-gtk"
+  install -D -m755 build/jstest-gtk "${pkgdir}/usr/bin/jstest-gtk"
   install -D -m644 "./data/generic.png" "${pkgdir}/usr/share/icons/jstest-gtk.png"
-  install -D -m644 "${srcdir}/jstest-gtk.desktop" "${pkgdir}/usr/share/applications/jstest-gtk.desktop"
+  install -D -m644 "../jstest-gtk.desktop" "${pkgdir}/usr/share/applications/jstest-gtk.desktop"
   mkdir -p "${pkgdir}/usr/share/jstest-gtk"
-  cp -r "${srcdir}/jstest-gtk/data" "${pkgdir}/usr/share/jstest-gtk/"
+  cp -r "../jstest-gtk/data" "${pkgdir}/usr/share/jstest-gtk/"
 }
 
