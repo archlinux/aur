@@ -1,0 +1,28 @@
+pkgbase = python-dragonmapper
+	pkgdesc = Identification and conversion functions for Chinese text processing
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/tsroten/dragonmapper
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-markupsafe
+	depends = python-pygments
+	depends = python-sphinx
+	depends = python-coverage
+	depends = flake8
+	depends = python-docutils
+	depends = python-mccabe
+	depends = python-pep8
+	depends = python-py
+	depends = python-pyflakes
+	depends = python-tox
+	depends = python-virtualenv
+	depends = python-hanzidentifier
+	depends = python-zhon
+	source = python-dragonmapper-0.2.6.tar.gz::https://github.com/tsroten/dragonmapper/archive/v0.2.6.tar.gz
+	sha256sums = 77443bef7b31b00fed2861514ac59510bae87478237bab8bbe54aa1b79934f4a
+
+pkgname = python-dragonmapper
+
