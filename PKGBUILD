@@ -9,7 +9,7 @@ pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 depends=('ledger-udev')
@@ -38,16 +38,20 @@ package() {
 	rm -rf $srcdir/$pkgbin
 	mv -f "$srcdir/squashfs-root" "$srcdir/$pkgbin"
 
-	# Install Icon
-	install -Dm644 "$srcdir/$pkgbin/usr/share/icons/hicolor/5x5/apps/ledger-live-desktop.png" "$pkgdir/usr/share/pixmaps/$pkgbin.png"
-
 	install -d "$pkgdir/opt/$pkgbin"
 	cp -a "$srcdir/$pkgbin/." "$pkgdir/opt/$pkgbin/"
 	chmod -R +rx "$pkgdir/opt/$pkgbin"
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgbin/ledger-live-desktop" "$pkgdir/usr/bin/$pkgbin"
-	# Provided .desktop file tries to run "AppRun" instead of ledger-live-desktop
+	
+	# Fix desktop icon
+	sed -E \
+		-e "/X-/d" \
+		-e "s#^Icon=.*\$#Icon=/opt/${pkgbin}/${pkgbin}.png#" \
+		-i "$srcdir/$pkgbin/$pkgbin.desktop"
+
+	# Provided .desktop file tries to run "AppRun" instead of ledger-live-desktop	
 	sed -e 's/AppRun/ledger-live-desktop/g' -i $srcdir/$pkgbin/$pkgbin.desktop
 	install -Dm644 "$srcdir/$pkgbin/$pkgbin.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
 }
