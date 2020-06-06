@@ -2,8 +2,7 @@
 # Contributor: Utkan Güngördü <utkan@freeconsole.org>
 
 pkgname=waifu2x-ncnn-vulkan-git
-_pkgname=waifu2x-ncnn-vulkan
-pkgver=20200414.r4.g5a4023f
+pkgver=20200606.r0.gcd12dff
 pkgrel=1
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
