@@ -1,6 +1,6 @@
 pkgbase = rocm-dkms
 	pkgdesc = ROCm - Open Soruce Platform for HPC and Ultrascale GPU Computing
-	pkgver = 3.1.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
