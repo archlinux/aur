@@ -1,6 +1,6 @@
 pkgbase = zenmonitor-git
 	pkgdesc = Zen monitor is monitoring software for AMD Zen-based CPUs
-	pkgver = 54.111f230
+	pkgver = 56.26d4f9e
 	pkgrel = 1
 	url = https://github.com/ocerman/zenmonitor
 	arch = x86_64
