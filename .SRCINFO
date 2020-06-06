@@ -1,28 +1,20 @@
 pkgbase = rocm-opencl-runtime
 	pkgdesc = Radeon Open Compute - OpenCL runtime
-	pkgver = 3.3.0
-	pkgrel = 7
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime
 	arch = x86_64
 	license = MIT
-	makedepends = mesa
 	makedepends = cmake
-	makedepends = git
 	makedepends = rocm-cmake
 	depends = hsakmt-roct
 	depends = hsa-rocr
+	depends = rocclr
 	depends = opencl-icd-loader
-	depends = comgr
 	provides = rocm-opencl-runtime
 	provides = opencl-driver
-	source = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-3.3.0.tar.gz
-	source = https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/978b4b3a29a3aebc86ce9315d5c5963e88722d03.tar.gz
-	source = ret_val-fix.patch::https://github.com/KhronosGroup/OpenCL-ICD-Loader/commit/9acc3fcbeadeef27c57d9fb195c4a94fbcf52f66.patch
-	source = install_vendor_file.patch
-	sha256sums = ac6999f1a491ab066286c2bd6adf50f08f831286f56e267879f9f7eced22f98e
-	sha256sums = 0c14bf890bd198ef5a814b5b7ed57b69e890b0c0a1bcfba8fdad996fa1a97fc7
-	sha256sums = 59bbb5e566c32a55deedb849eb6224c3b196df6fb3a3b1aa7f5b7adb86cd6614
-	sha256sums = b83de5ea8ae889664ce2725f90c5db8c1c9e98839d75c7743b355d16435dccee
+	source = rocm-opencl-runtime-3.5.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-3.5.0.tar.gz
+	sha256sums = 511b617d5192f2d4893603c1a02402b2ac9556e9806ff09dd2a91d398abf39a0
 
 pkgname = rocm-opencl-runtime
 
