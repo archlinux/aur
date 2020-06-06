@@ -1,6 +1,6 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
-pkgname=prismatik-psieg
+pkgname=prismatik-psieg-bin
 pkgver=5.11.2.19
 pkgrel=1
 pkgdesc="A controller for usb driven LED backlights. An unofficial fork."
