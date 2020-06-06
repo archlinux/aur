@@ -1,60 +1,41 @@
-# Maintainer: Ron Asimi <ron dot asimi at gmail dot com>
+# Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
-_pkgname=powerlevel10k
-pkgname=zsh-theme-${_pkgname}-git
-pkgver=r2255.a1c45a5
+pkgname=zsh-theme-powerlevel10k-git
+pkgver=r3618.50dec9f
 pkgrel=1
-pkgdesc="Powerlevel10k is a theme for ZSH. It's a backward-compatible fork of Powerlevel9k with lower latency and better prompt responsiveness"
+pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('any')
-url='https://github.com/romkatv/powerlevel10k'
+url="https://github.com/romkatv/powerlevel10k"
 license=('MIT')
 depends=('zsh')
 optdepends=(
+  'ttf-meslo-nerd-font-powerlevel10k: terminal font recommended by powerlevel10k'
   'powerline-fonts: patched fonts for powerline'
-  'oh-my-zsh-git: oh-my-zsh integration'
-  'prezto-git: Prezto integration'
-  'antigen-git: Antigen integration'
-  'zpm: ZPM integration'
-  'zsh-zim-git: Zim integration'
-  'awesome-terminal-fonts: icon package'
-  'acpi: battery monitoring'
-  'git: status of repository'
-  'mercurial: status of repository'
-  'systemd: virtualization detection'
-  'openssh: ssh detection')
-source=("${_pkgname}::git+https://github.com/romkatv/${_pkgname}.git")
-sha256sums=('SKIP')
-makedepends=('git')
-provides=("zsh-theme-${_pkgname}")
-conflicts=(
-  "zsh-theme-${_pkgname}"
-  "zsh-theme-powerlevel9k-git"
-)
-install="zsh-theme-${_pkgname}.install"
+  'awesome-terminal-fonts: icon package')
+install=zsh-theme-powerlevel10k.install
+provides=("zsh-theme-powerlevel10k")
+conflicts=("zsh-theme-powerlevel10k")
+source=('powerlevel10k::git+https://github.com/romkatv/powerlevel10k.git')
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/powerlevel10k"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package()
-{
-  cd "${srcdir}/${_pkgname}"
+build() {
+  cd "$srcdir/powerlevel10k"
+  zsh -fc '
+    emulate zsh -o no_aliases
+    unset -m "GITSTATUS_*"
+    GITSTATUS_CACHE_DIR="$PWD"/gitstatus/usrbin ./gitstatus/install -f'
+  for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
+    zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
+  done
+}
 
-  # Install license
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # Install the theme
-  install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
-
-  # Install the utilities
-  install -D -m755 prompt_powerlevel10k_setup "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt_powerlevel10k_setup"
-  install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/config"
-  cp -R config "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
-  install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin"
-  cp -R gitstatus "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
-  cp -R internal "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
+package() {
+  cd "$srcdir"
+  find powerlevel10k -path powerlevel10k/.git -prune \
+    -o '(' -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-{}" ';' ')'
 }

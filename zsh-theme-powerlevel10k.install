@@ -1,11 +1,4 @@
 post_install() {
-  echo
-  echo "Usage:"
-  echo "Configure your setup to use the theme. Instructions for different frameworks can be found at"
-  echo "https://github.com/romkatv/powerlevel10k#installation-and-configuration"
-  echo
-  echo "Requirements"
-  echo "Vim Powerline patched font. Many different ones on the AUR"
-  echo "Make sure terminal is using 256-colors mode with export TERM=\"xterm-256color\"."
-  echo
-}
+  printf '  \033[34m->\033[0m To activate \033[1mPowerlevel10k\033[0m, add the following line to \033[4m.zshrc\033[0m:\n'
+  printf '  \033[34m->\033[0m   \033[32msource\033[0m \033[4m/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme\033[0m\n'
+} 
