@@ -11,6 +11,8 @@ pkgbase = uade-quad
 	depends = libao
 	depends = fuse
 	provides = uade123
+	provides = uadefs
+	provides = mod2ogg2.sh
 	source = http://blog.airmann.de/wp-content/uploads/2013/08/uade_2.13q.tar.bz2
 	md5sums = 612002d4a749f4292d7813b8e400f265
 
