@@ -1,0 +1,6 @@
+post_install() {
+  echo '>>> To setup Your own config:'
+  echo '>>> copy from /usr/share/uade2/'
+  echo '>>> "uade.conf" and "uaerc" to ~/.uade2,'
+  echo '>>> and do some changes...'
+}

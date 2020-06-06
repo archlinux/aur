@@ -1,0 +1,18 @@
+pkgbase = uade-quad
+	pkgdesc = Amiga music player with multichannel patch
+	pkgver = 2.13q
+	pkgrel = 2
+	url = https://blog.airmann.de/uade-multichannel-audio-support/
+	install = uade.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = libao
+	depends = fuse
+	provides = uade123
+	source = http://blog.airmann.de/wp-content/uploads/2013/08/uade_2.13q.tar.bz2
+	md5sums = 612002d4a749f4292d7813b8e400f265
+
+pkgname = uade-quad
+
