@@ -1,11 +1,14 @@
 pkgbase = rock-dkms-bin
 	pkgdesc = Linux AMD GPU kernel driver from ROC in DKMS format.
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver
 	arch = any
 	license = GPL
 	depends = dkms
+	depends = rock-dkms-firmware
+	provides = rock-dkms
+	conflicts = rock-dkms
 	options = !strip
 	options = !emptydirs
 	backup = etc/modprobe.d/blacklist-radeon.conf
