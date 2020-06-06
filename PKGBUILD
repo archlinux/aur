@@ -2,7 +2,7 @@
 
 _pkgname='tinyalsa'
 pkgname="${_pkgname}-git"
-pkgver=0.0
+pkgver=1.1.1.r138.gdca5d9b
 pkgrel=1
 pkgdesc='a small library to interface with ALSA in the Linux kernel'
 arch=('x86_64')
@@ -14,6 +14,10 @@ provides=('tinyalsa')
 conflicts=('tinyalsa')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    git -C "${srcdir}/${_pkgname}" describe --tags | sed 's/-/.r/;s/-/./g'
+}
 
 build() {
     cmake -S "${srcdir}/${_pkgname}" -B "${srcdir}/build" \
