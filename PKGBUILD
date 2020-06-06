@@ -1,13 +1,14 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=zsh-theme-powerlevel10k-git
-pkgver=r3618.50dec9f
+pkgver=r3621.05dad31
 pkgrel=1
 pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('any')
 url="https://github.com/romkatv/powerlevel10k"
 license=('MIT')
 depends=('zsh')
+makedepends=('git')
 optdepends=(
   'ttf-meslo-nerd-font-powerlevel10k: terminal font recommended by powerlevel10k'
   'powerline-fonts: patched fonts for powerline'
