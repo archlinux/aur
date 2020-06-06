@@ -2,7 +2,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=otf-manjari
-pkgver=1.710
+pkgver=1.800
 pkgrel=1
 pkgdesc="Malayalam unicode font with rounded terminals suitable for body text."
 arch=(any)
@@ -16,9 +16,9 @@ source=(
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Bold.otf"
 "67-smc-manjari.conf"
 )
-sha256sums=('56b340420124a0049c122b63f21fbc3c8502967c5dc5228f6bdb0bf6a500d9db'
-            '19be26fd2fd7b3c973239988932d494ca2f1d0df1d1044eacde871a9f951bbc5'
-            '53e1465b48bbf7d3f8cb50906bf2c7fa18453416eb4727a3f22a2d0898cac446'
+sha256sums=('a554a2e183279960155c109aad8560a697a6690253dfdf5c416015c65a0164ea'
+            '2873c84078687e7292fcccbc6e862cc38e332a8544035e4273e5af5bcb5cce5f'
+            '1dc90b00e7350912178f0371e203fdf9b95eb64b14df718cd8401c6470672eed'
             '9db802bf36c46debd96e9d63a152d8baf0a788e88e8675991ea2802706545780')
 install=otf-malayalam-fonts.install
 
