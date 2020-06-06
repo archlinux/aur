@@ -1,6 +1,6 @@
 pkgbase = websocketpp-git
 	pkgdesc = C++/Boost Asio based websocket client/server library
-	pkgver = 0.6.0.1461.c5510d6
+	pkgver = 0.8.2.1709.1b11fd3
 	pkgrel = 1
 	url = http://www.zaphoyd.com/websocketpp/
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = websocketpp-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = boost-libs
-	makedepends = scons
 	optdepends = openssl: TLS socket component support
 	optdepends = asio: alternative asio transport support
 	optdepends = boost: non C++11 environments support
