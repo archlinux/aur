@@ -2,7 +2,7 @@
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgbase=gnatcoll-bindings
-pkgname=(gnatcoll-python)
+pkgname=(gnatcoll-python2)
 _upstream_ver=20.0-20191009-1B2EA
 pkgver=2020
 pkgrel=2
@@ -27,10 +27,12 @@ build()
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 }
 
-package_gnatcoll-python()
+package_gnatcoll-python2()
 {
-    pkgdesc='GNAT Components Collection - Interface to the python interpreter (python 2).'
+    pkgdesc='GNAT Components Collection - Interface to the python 2 interpreter.'
     depends=('python2' 'gnatcoll-core')
+    provides=('gnatcoll-python')
+    replaces=('gnatcoll-python')
 
     cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
     python2 setup.py install --prefix="$pkgdir/usr"
