@@ -1,6 +1,6 @@
 pkgbase = monero-git
 	pkgdesc = Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)
-	pkgver = 0.15.0.1
+	pkgver = 0.16.0.0
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
@@ -23,7 +23,9 @@ pkgbase = monero-git
 	depends = hidapi
 	depends = protobuf
 	source = monero::git+https://github.com/monero-project/monero.git
+	source = cmake-headers.patch
 	sha256sums = SKIP
+	sha256sums = fe716415b67138cf79357c7db8d684d57f9dae4180e755b8143ff5bc7ce47bfc
 
 pkgname = monero-git
 	install = monero.install
@@ -32,7 +34,7 @@ pkgname = monero-git
 	backup = etc/monerod.conf
 
 pkgname = libmonero-wallet-git
-	provides = libmonero-wallet=0.15.0.1
+	provides = libmonero-wallet=0.16.0.0
 	conflicts = libmonero-wallet
 	options = !strip
 

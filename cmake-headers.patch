@@ -1,0 +1,60 @@
+--- a/contrib/epee/src/CMakeLists.txt	2020-06-06 01:43:21.457032958 -0400
++++ b/contrib/epee/src/CMakeLists.txt	2020-06-06 01:21:08.961327684 -0400
+@@ -52,6 +52,44 @@
+       install(TARGETS epee_readline
+           ARCHIVE DESTINATION ${lib_folder})
+     endif()
++    install(FILES
++	    ../include/net/abstract_http_client.h
++	    ../include/net/enums.h
++	    ../include/net/http_auth.h
++	    ../include/net/http_base.h
++	    ../include/net/http_client.h
++	    ../include/net/http_client_base.h
++	    ../include/net/net_helper.h
++	    ../include/net/net_parse_helpers.h
++	    ../include/net/net_ssl.h
++	    ../include/net/net_utils_base.h
++        DESTINATION include/net)
++    install(FILES
++	    ../include/serialization/enableable.h
++	    ../include/serialization/keyvalue_serialization.h
++	    ../include/serialization/keyvalue_serialization_overloads.h
++        DESTINATION include/serialization)
++    install(FILES
++	    ../include/storages/parserse_base_utils.h
++        DESTINATION include/storages)
++    install(FILES
++	    ../include/byte_slice.h
++	    ../include/fnv1.h
++	    ../include/hex.h
++	    ../include/int-util.h
++	    ../include/memwipe.h
++	    ../include/misc_language.h
++	    ../include/misc_log_ex.h
++	    ../include/mlocker.h
++	    ../include/reg_exp_definer.h
++	    ../include/span.h
++	    ../include/string_coding.h
++	    ../include/string_tools.h
++	    ../include/syncobj.h
++	    ../include/to_nonconst_iterator.h
++	    ../include/warnings.h
++	    ../include/wipeable_string.h
++        DESTINATION include)
+ endif()
+ 
+ target_link_libraries(epee
+--- a/external/easylogging++/CMakeLists.txt	2020-06-06 01:42:30.776566825 -0400
++++ b/external/easylogging++/CMakeLists.txt	2020-06-06 01:42:35.803279807 -0400
+@@ -55,6 +55,10 @@
+     install(TARGETS easylogging
+         ARCHIVE DESTINATION ${lib_folder}
+         LIBRARY DESTINATION ${lib_folder})
++    install(FILES
++	    easylogging++.h
++	    ea_config.h
++	    DESTINATION include)
+ endif()
+ set_property(TARGET easylogging APPEND PROPERTY COMPILE_FLAGS "-fPIC")
+ 

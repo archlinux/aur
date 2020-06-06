@@ -4,7 +4,7 @@
 pkgbase='monero-git'
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.15.0.1
+pkgver=0.16.0.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -17,7 +17,8 @@ checkdepends=('python-requests')
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 _upstream=https://github.com/monero-project/monero.git
-source=("$_gitname::git+$_upstream")
+source=("$_gitname::git+$_upstream"
+	'cmake-headers.patch')
 
 _builddir=build
 
@@ -34,6 +35,8 @@ pkgver() {
 
 prepare() {
        cd "$srcdir/$_gitname"
+
+       patch -p1 < $srcdir/cmake-headers.patch
 
        git submodule init
        git submodule update
@@ -142,4 +145,5 @@ package_libmonero-wallet-git() {
         cd $_stagedir
         find usr/{include,lib} -type f -exec install -D -m 755 {} ${pkgdir}/{} \;
 }
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'fe716415b67138cf79357c7db8d684d57f9dae4180e755b8143ff5bc7ce47bfc')

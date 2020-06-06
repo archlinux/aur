@@ -6,4 +6,7 @@ src/
 
 *.tar.xz
 
+*.pkg.tar.xz
+*.pkg.tar.zst
+
 monero/
