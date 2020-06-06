@@ -1,24 +1,22 @@
 pkgbase = code_saturne
 	pkgdesc = An open source CFD software which solves the Navier-Stokes equations under different circumstances.
-	pkgver = 6.0.0
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://code-saturne.org
 	arch = x86_64
 	license = GPL
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = gcc-fortran
-	makedepends = hdf5-openmpi
-	depends = openmpi
+	makedepends = gcc8-fortran
 	depends = libxml2
 	depends = python-pyqt5
 	depends = cgns
 	depends = parmetis
 	depends = scotch
 	depends = med
-	depends = hdf5-openmpi
-	source = http://code-saturne.org/cms/sites/default/files/releases/code_saturne-6.0.0.tar.gz
-	md5sums = be9ea1760896b8f681e5995a11f7129f
+	depends = hdf5
+	source = http://code-saturne.org/cms/sites/default/files/releases/code_saturne-6.0.2.tar.gz
+	sha512sums = 2b66b063dcdbbfc049336b570d2484adf424441d8b2ca51c9bc636512f57b1ab9a4d8ed21cfe2a115b38c64c8159a3f1f4e4c5cca9d4808e24c62a7a21e40974
 
 pkgname = code_saturne
 
