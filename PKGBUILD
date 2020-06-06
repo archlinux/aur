@@ -4,7 +4,7 @@
 pkgname=pyrit
 _pkgname=Pyrit
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The famous WPA precomputed cracker'
 url='https://github.com/JPaulMora/Pyrit'
 arch=('x86_64')
@@ -16,13 +16,16 @@ optdepends=(
 )
 checkdepends=('python2-sqlalchemy' 'scapy')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JPaulMora/Pyrit/archive/v${pkgver}.tar.gz
-        scapy-2.3.2.patch)
+        scapy-2.3.2.patch
+        fix-broken-join.patch)
 sha512sums=('912742cd7d9cd9231b9b3aa155a5170c0ba36c3865280423e100c1d12df34e093ee56305d8738d4f406abbfef9b1d540872872b8ef23d699466298d41289ad25'
-            '99d4ae2159be2d829337f3481cbb6580da1c6a2d2b6b28c7ed17348daa983859b7cd6ba3ee8575cbcba16efa27bf230bac075599b1fa0b531178dbdc45f853b2')
+            '99d4ae2159be2d829337f3481cbb6580da1c6a2d2b6b28c7ed17348daa983859b7cd6ba3ee8575cbcba16efa27bf230bac075599b1fa0b531178dbdc45f853b2'
+            '4a8d868a4adc94d5c6dd3c467572edd49efe0e0f4b0ea61ccfe830499e7cdedb0da81b27166caac23332fe90505fe0bbcfb67e61fde632cd58ce290e46426d67')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
   patch -p1 < "${srcdir}/scapy-2.3.2.patch"
+  patch -p1 -i ../fix-broken-join.patch # Fix tests (Debian)
 }
 
 build() {
