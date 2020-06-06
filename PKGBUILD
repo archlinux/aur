@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   mkdir -p "$srcdir/$_pkgname/build"
   cd "$srcdir/$_pkgname/build"
-  cmake ../ -DCMAKE_C_COMPILER=/opt/cling/bin/clang -DCMAKE_CXX_COMPILER=/opt/cling/bin/clang++ -DCGAL_HEADER_ONLY=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  cmake ../ -DCGAL_HEADER_ONLY=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build() {
