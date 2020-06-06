@@ -1,11 +1,12 @@
 pkgbase = spectral-matrix
 	pkgdesc = Glossy cross-platform client for Matrix
 	pkgver = 854
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/spectral-im/spectral
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
+	depends = cmark
 	depends = qt5-graphicaleffects
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2

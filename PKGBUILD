@@ -4,14 +4,14 @@
 pkgname=spectral-matrix
 _pkgname=spectral
 pkgver=854
-pkgrel=1
+pkgrel=2
 _commit_sortfilterproxymodel="6678acc67c4fce90851e7ee7602b4350b6b4c15b"
 pkgdesc='Glossy cross-platform client for Matrix'
 url='https://gitlab.com/spectral-im/spectral'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 conflicts=('spectral-matrix-git')
-depends=('qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools' 'qtkeychain' 'libquotient-git' 'libqtolm')
+depends=('cmark' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools' 'qtkeychain' 'libquotient-git' 'libqtolm')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/spectral-im/spectral/-/archive/$pkgver/spectral-$pkgver.tar.gz"
 		"SortFilterProxyModel-$_commit_sortfilterproxymodel.tar.gz::https://github.com/oKcerG/SortFilterProxyModel/archive/$_commit_sortfilterproxymodel.tar.gz")
