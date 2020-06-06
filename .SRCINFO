@@ -1,0 +1,15 @@
+pkgbase = gb-backup-git
+	pkgdesc = Gamer Backup, a super opinionated cloud backup system
+	pkgver = r24.3bf23cb
+	pkgrel = 1
+	url = https://github.com/leijurv/gb
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	depends = lepton
+	source = gb::git+https://github.com/leijurv/gb.git
+	sha256sums = SKIP
+
+pkgname = gb-backup-git
+
