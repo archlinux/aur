@@ -7,12 +7,12 @@ pkgdesc="Create PDFs from images or scanner"
 arch=('x86_64')
 url="https://dragotin.github.io/quirksite/"
 license=('GPL3')
-source=("https://github.com/dragotin/pdfquirk/archive/v${pkgver}.tar.gz")
+source=("https://github.com/dragotin/${pkgname}/archive/v${pkgver}.tar.gz")
 depends=('imagemagick')
 optdepends=('sane: scanning support')
 makedepends=('cmake' 'extra-cmake-modules' 'glu' 'qt5-base')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}" "${pkgname}-git")
 sha256sums=('f6aed0c2f5eb2056c47948ef321f614b9fba7b44fe968bb878661e7469ca3bfa')
 
 build() {

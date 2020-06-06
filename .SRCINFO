@@ -13,6 +13,7 @@ pkgbase = pdfquirk
 	optdepends = sane: scanning support
 	provides = pdfquirk
 	conflicts = pdfquirk
+	conflicts = pdfquirk-git
 	source = https://github.com/dragotin/pdfquirk/archive/v0.91.tar.gz
 	sha256sums = f6aed0c2f5eb2056c47948ef321f614b9fba7b44fe968bb878661e7469ca3bfa
 
