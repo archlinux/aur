@@ -2,7 +2,7 @@ diff --git a/src/sage/repl/attach.py b/src/sage/repl/attach.py
 index 11967fbf96..ccb9c4e0c0 100644
 --- a/src/sage/repl/attach.py
 +++ b/src/sage/repl/attach.py
-@@ -597,12 +597,7 @@ def reload_attached_files_if_modified():
+@@ -596,12 +596,7 @@ def reload_attached_files_if_modified():
          basename = os.path.basename(filename)
          timestr = time.strftime('%T', mtime)
          notice = '### reloading attached file {0} modified at {1} ###'.format(basename, timestr)
@@ -20,8 +20,8 @@ diff --git a/src/sage/repl/display/fancy_repr.py b/src/sage/repl/display/fancy_r
 index 818498fbae..af33f92126 100644
 --- a/src/sage/repl/display/fancy_repr.py
 +++ b/src/sage/repl/display/fancy_repr.py
-@@ -15,10 +15,12 @@ Representations of objects.
- import types
+@@ -16,10 +16,12 @@ Representations of objects.
+ from io import StringIO
  
  from IPython.lib.pretty import (
 -    _safe_getattr, _baseclass_reprs,
@@ -38,7 +38,7 @@ diff --git a/src/sage/repl/display/formatter.py b/src/sage/repl/display/formatte
 index 5eece441c6..11db26b0db 100644
 --- a/src/sage/repl/display/formatter.py
 +++ b/src/sage/repl/display/formatter.py
-@@ -173,8 +173,8 @@ class SageDisplayFormatter(DisplayFormatter):
+@@ -175,8 +175,8 @@ class SageDisplayFormatter(DisplayFormatter):
              sage: shell.run_cell('ipython_image')
              <IPython.core.display.Image object>
              sage: shell.run_cell('get_ipython().display_formatter.format(ipython_image)')
@@ -216,7 +216,7 @@ diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
 index 9c6ec027d0..4d3521c3e8 100644
 --- a/src/sage/rings/qqbar.py
 +++ b/src/sage/rings/qqbar.py
-@@ -8096,13 +8096,13 @@ class ANBinaryExpr(ANDescr):
+@@ -8094,13 +8094,13 @@ class ANBinaryExpr(ANDescr):
          decrease it before we return::
  
              sage: import sys; sys.getrecursionlimit()

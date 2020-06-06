@@ -57,7 +57,7 @@ index 2ba6b72..926ca07 100644
      sage: y*z*y*y*z*z + 2*y*z*y*z*z*x + y*z*y*z*z*z - y*z*z*y*z*x + y*z*z*z*z*x in I
      True
  
-@@ -236,7 +244,7 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -233,7 +241,7 @@ class FreeAlgebraFactory(UniqueFactory):
          a*b^2*c^3
      """
      def create_key(self, base_ring, arg1=None, arg2=None,
@@ -66,7 +66,7 @@ index 2ba6b72..926ca07 100644
              names=None, name=None,
              implementation=None, degrees=None):
          """
-@@ -267,6 +275,8 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -264,6 +272,8 @@ class FreeAlgebraFactory(UniqueFactory):
              return tuple(degrees),base_ring
          # test if we can use libSingular/letterplace
          if implementation == "letterplace":
@@ -75,7 +75,7 @@ index 2ba6b72..926ca07 100644
              args = [arg for arg in (arg1, arg2) if arg is not None]
              kwds = dict(sparse=sparse, order=order, implementation="singular")
              if name is not None:
-@@ -277,7 +287,7 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -274,7 +284,7 @@ class FreeAlgebraFactory(UniqueFactory):
              if degrees is None:
                  return (PolRing,)
              from sage.all import TermOrder
@@ -587,7 +587,7 @@ diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_funct
 index 8b03d22..c5cd87b 100644
 --- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 +++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-@@ -1580,7 +1580,7 @@ class FractionWithFactoredDenominator(RingElement):
+@@ -1579,7 +1579,7 @@ class FractionWithFactoredDenominator(RingElement):
              (1, [(x*y + x + y - 1, 2)])
              sage: alpha = [4, 3]
              sage: decomp = F.asymptotic_decomposition(alpha); decomp
@@ -596,7 +596,7 @@ index 8b03d22..c5cd87b 100644
              sage: F1 = decomp[1]
              sage: p = {y: 1/3, x: 1/2}
              sage: asy = F1.asymptotics(p, alpha, 2, verbose=True)
-@@ -1614,7 +1614,7 @@ class FractionWithFactoredDenominator(RingElement):
+@@ -1613,7 +1613,7 @@ class FractionWithFactoredDenominator(RingElement):
              sage: alpha = [3, 3, 2]
              sage: decomp = F.asymptotic_decomposition(alpha); decomp
              (0, []) +
@@ -609,7 +609,7 @@ diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/ri
 index e5d6921..f4027eb 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_element.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_element.py
-@@ -2147,7 +2147,7 @@ def degree_lowest_rational_function(r, x):
+@@ -2179,7 +2179,7 @@ def degree_lowest_rational_function(r, x):
      ::
  
          sage: r = f/g; r
@@ -631,7 +631,7 @@ index 962205f..1c9a81d 100644
  
      Now for each prime `p` dividing this integer 164878, the Groebner
      basis of I modulo `p` will be non-trivial and will thus give a
-@@ -1563,8 +1563,8 @@ class MPolynomialIdeal_singular_repr(
+@@ -1561,8 +1561,8 @@ class MPolynomialIdeal_singular_repr(
              sage: I2 = y*R
              sage: I3 = (x, y)*R
              sage: I4 = (x^2 + x*y*z, y^2 - z^3*y, z^3 + y^5*x*z)*R
@@ -642,7 +642,7 @@ index 962205f..1c9a81d 100644
  
          The ideals must share the same ring::
  
-@@ -4106,9 +4106,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4104,9 +4104,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()

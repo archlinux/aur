@@ -156,108 +156,9 @@ index 162a5393a7..556ab688aa 100644
               I[0, 0] + I[0, 1] + I[1, 1]]
          """
 diff --git a/src/sage/combinat/posets/posets.py b/src/sage/combinat/posets/posets.py
-index 88186e8d0f..302cf8dead 100644
+index f1463c3184..ee48a3abc2 100644
 --- a/src/sage/combinat/posets/posets.py
 +++ b/src/sage/combinat/posets/posets.py
-@@ -7589,60 +7589,60 @@ class FinitePoset(UniqueRepresentation, Parent):
-             sage: G.edges(sort=True)
-             [((-1, 0), (0, -13), None), ((-1, 0), (0, 12), None), ((-1, 0), (0, 14), None), ((-1, 0), (0, 16), None), ((0, -13), (1, -13), None), ((0, -13), (1, 12), None), ((0, -13), (1, 14), None), ((0, -13), (1, 16), None), ((0, 12), (1, 12), None), ((0, 14), (1, 12), None), ((0, 14), (1, 14), None), ((0, 16), (1, 12), None), ((0, 16), (1, 16), None), ((1, -13), (2, 0), None), ((1, 12), (2, 0), None), ((1, 14), (2, 0), None), ((1, 16), (2, 0), None)]
-             sage: e
--            {((-1, 0), (0, 14)): 0,
--             ((-1, 0), (0, -13)): 0,
--             ((-1, 0), (0, 12)): 0,
--             ((-1, 0), (0, 16)): 0,
--             ((1, 12), (2, 0)): 0,
--             ((0, 14), (1, 12)): 0,
--             ((0, 14), (1, 14)): 1,
--             ((1, 16), (2, 0)): 0,
-+            {((1, 12), (2, 0)): 0,
-+             ((0, 16), (1, 12)): 0,
-+             ((0, 16), (1, 16)): 1,
-+             ((1, 14), (2, 0)): 0,
-              ((0, -13), (1, 12)): 0,
--             ((0, -13), (1, 16)): 0,
-              ((0, -13), (1, 14)): 0,
-              ((0, -13), (1, -13)): 1,
--             ((1, 14), (2, 0)): 0,
-+             ((0, -13), (1, 16)): 0,
-+             ((-1, 0), (0, 16)): 0,
-+             ((-1, 0), (0, -13)): 0,
-+             ((-1, 0), (0, 12)): 0,
-+             ((-1, 0), (0, 14)): 0,
-              ((0, 12), (1, 12)): 1,
--             ((0, 16), (1, 12)): 0,
--             ((0, 16), (1, 16)): 1,
--             ((1, -13), (2, 0)): 0}
-+             ((1, -13), (2, 0)): 0,
-+             ((1, 16), (2, 0)): 0,
-+             ((0, 14), (1, 12)): 0,
-+             ((0, 14), (1, 14)): 1}
-             sage: qs = [[1,2,3,4,5,6,7,8,9],[[1,3],[3,4],[5,7],[1,9],[2,3]]]
-             sage: Poset(qs).frank_network()
-             (Digraph on 20 vertices,
--             {((1, 3), (2, 0)): 0,
--              ((-1, 0), (0, 6)): 0,
--              ((-1, 0), (0, 7)): 0,
--              ((-1, 0), (0, 9)): 0,
--              ((-1, 0), (0, 2)): 0,
--              ((-1, 0), (0, 3)): 0,
--              ((-1, 0), (0, 4)): 0,
--              ((-1, 0), (0, 5)): 0,
--              ((-1, 0), (0, 8)): 0,
--              ((-1, 0), (0, 1)): 0,
-+             {((0, 2), (1, 2)): 1,
-+              ((0, 5), (1, 5)): 1,
-+              ((1, 6), (2, 0)): 0,
-+              ((0, 8), (1, 8)): 1,
-+              ((1, 3), (2, 0)): 0,
-+              ((1, 9), (2, 0)): 0,
-+              ((0, 1), (1, 1)): 1,
-               ((0, 7), (1, 7)): 1,
-               ((0, 7), (1, 5)): 0,
--              ((1, 6), (2, 0)): 0,
--              ((0, 3), (1, 3)): 1,
--              ((0, 3), (1, 2)): 0,
--              ((0, 3), (1, 1)): 0,
-               ((1, 2), (2, 0)): 0,
--              ((1, 5), (2, 0)): 0,
-+              ((0, 4), (1, 4)): 1,
-               ((0, 4), (1, 3)): 0,
-               ((0, 4), (1, 2)): 0,
-               ((0, 4), (1, 1)): 0,
--              ((0, 4), (1, 4)): 1,
-+              ((1, 5), (2, 0)): 0,
-+              ((1, 8), (2, 0)): 0,
-+              ((-1, 0), (0, 2)): 0,
-+              ((-1, 0), (0, 9)): 0,
-+              ((-1, 0), (0, 5)): 0,
-+              ((-1, 0), (0, 6)): 0,
-+              ((-1, 0), (0, 8)): 0,
-+              ((-1, 0), (0, 1)): 0,
-+              ((-1, 0), (0, 7)): 0,
-+              ((-1, 0), (0, 4)): 0,
-+              ((-1, 0), (0, 3)): 0,
-               ((1, 1), (2, 0)): 0,
-+              ((0, 3), (1, 3)): 1,
-+              ((0, 3), (1, 2)): 0,
-+              ((0, 3), (1, 1)): 0,
-+              ((0, 9), (1, 9)): 1,
-+              ((0, 9), (1, 1)): 0,
-               ((1, 4), (2, 0)): 0,
--              ((0, 5), (1, 5)): 1,
--              ((1, 9), (2, 0)): 0,
--              ((0, 8), (1, 8)): 1,
--              ((0, 1), (1, 1)): 1,
--              ((1, 8), (2, 0)): 0,
-               ((0, 6), (1, 6)): 1,
--              ((1, 7), (2, 0)): 0,
--              ((0, 9), (1, 1)): 0,
--              ((0, 9), (1, 9)): 1,
--              ((0, 2), (1, 2)): 1})
-+              ((1, 7), (2, 0)): 0})
- 
-         AUTHOR:
- 
 @@ -7841,9 +7841,9 @@ class FinitePoset(UniqueRepresentation, Parent):
              sage: P = posets.AntichainPoset(3)
              sage: Pc = P.cuts()
@@ -469,7 +370,7 @@ diff --git a/src/sage/doctest/forker.py b/src/sage/doctest/forker.py
 index 7f32509467..024b867e59 100644
 --- a/src/sage/doctest/forker.py
 +++ b/src/sage/doctest/forker.py
-@@ -1049,7 +1049,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+@@ -1085,7 +1085,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
              False
              sage: doctests, extras = FDS.create_doctests(globs)
              sage: ex0 = doctests[0].examples[0]
@@ -478,7 +379,7 @@ index 7f32509467..024b867e59 100644
              sage: DTR.compile_and_execute(ex0, compiler, globs)
              1764
              sage: globs['doctest_var']
-@@ -1062,7 +1062,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+@@ -1098,7 +1098,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
          Now we can execute some more doctests to see the dependencies. ::
  
              sage: ex1 = doctests[0].examples[1]
@@ -487,7 +388,7 @@ index 7f32509467..024b867e59 100644
              sage: DTR.compile_and_execute(ex1, compiler, globs)
              sage: sorted(list(globs.set))
              ['R', 'a']
-@@ -1074,7 +1074,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+@@ -1110,7 +1110,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
          ::
  
              sage: ex2 = doctests[0].examples[2]
@@ -878,34 +779,25 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 45452c29d9..398774a985 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5202,7 +5202,7 @@ class GenericGraph(GenericGraph_pyx):
-         This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
- 
-             sage: g.layout(layout = "planar", save_pos = True)
--            {1: [5, 1], 2: [0, 5], 3: [1, 0], 0: [1, 4], 4: [1, 2], 5: [2, 1], 6: [4, 1]}
-+            {2: [5, 1], 0: [0, 5], 4: [1, 0], 1: [1, 4], 3: [3, 1], 5: [2, 1], 6: [1, 3]}
-         """
-         deprecation(24494, 'This method is replaced by the method layout. '
-                            'Please use layout(layout="planar", save_pos=True) '
 @@ -5256,25 +5256,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
--            {5: [8, 1],
--             7: [0, 8],
--             9: [1, 0],
--             0: [3, 2],
+-            {0: [3, 2],
 -             1: [4, 3],
 -             2: [3, 4],
 -             3: [4, 4],
 -             4: [2, 6],
+-             5: [8, 1],
 -             6: [1, 7],
--             8: [1, 1]}
-+            {2: [8, 1],
-+             0: [0, 8],
-+             4: [1, 0],
+-             7: [0, 8],
+-             8: [1, 1],
+-             9: [1, 0]}
++            {0: [0, 8],
 +             1: [6, 2],
++             2: [8, 1],
 +             3: [6, 1],
++             4: [1, 0],
 +             5: [5, 2],
 +             6: [2, 2],
 +             7: [2, 3],
@@ -921,8 +813,8 @@ index 45452c29d9..398774a985 100644
 +            [93, 14]
              sage: g = graphs.CycleGraph(7)
              sage: g.layout(layout='planar', save_pos=True, test=True)
--            {1: [5, 1], 2: [0, 5], 3: [1, 0], 0: [1, 4], 4: [1, 2], 5: [2, 1], 6: [4, 1]}
-+            {2: [5, 1], 0: [0, 5], 4: [1, 0], 1: [1, 4], 3: [3, 1], 5: [2, 1], 6: [1, 3]}
+-            {0: [1, 4], 1: [5, 1], 2: [0, 5], 3: [1, 0], 4: [1, 2], 5: [2, 1], 6: [4, 1]}
++            {0: [0, 5], 1: [1, 4], 2: [5, 1], 3: [3, 1], 4: [1, 0], 5: [2, 1], 6: [1, 3]}
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
@@ -1075,8 +967,8 @@ index 1212a575cd..43737512c3 100644
          sage: r = _realizer(g, tn)
          sage: _compute_coordinates(g,r)
          sage: g.get_pos()
--        {1: [5, 1], 0: [0, 5], 2: [1, 0], 3: [4, 1], 4: [1, 1], 5: [2, 2], 6: [1, 4]}
-+        {1: [5, 1], 0: [0, 5], 2: [1, 0], 3: [2, 1], 4: [1, 3], 5: [2, 2], 6: [4, 1]}
+-        {0: [0, 5], 1: [5, 1], 2: [1, 0], 3: [4, 1], 4: [1, 1], 5: [2, 2], 6: [1, 4]}
++        {0: [0, 5], 1: [5, 1], 2: [1, 0], 3: [2, 1], 4: [1, 3], 5: [2, 2], 6: [4, 1]}
      """
  
      tree_nodes, (v1, v2, v3) = x
@@ -1739,27 +1631,6 @@ index ef9c475752..f682ded875 100644
  """
  
  #*****************************************************************************
-@@ -586,7 +586,7 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
-     TESTS::
- 
-         sage: V.embedding_morphism()._reverse_ray_map()
--        {N(1): 2, N(-1): 3}
-+        {N(-1): 3, N(1): 2}
-         sage: V.embedding_morphism()._defining_cone
-         1-d cone of Rational polyhedral fan in 2-d lattice N
-     """
-@@ -646,9 +646,9 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
-             sage: P1 = P2_112.orbit_closure(Cone([(1,0)]))
-             sage: f = P1.embedding_morphism()
-             sage: f._ray_map
--            {N(0, 1): (1), N(1, 0): (0), N(-1, -2): (-2)}
-+            {N(1, 0): (0), N(-1, -2): (-2), N(0, 1): (1)}
-             sage: f._reverse_ray_map()
--            {N(1): 1, N(-2): 2}
-+            {N(-2): 2, N(1): 1}
-         """
-         orbit = self.parent().domain()
-         codomain_fan = self.parent().codomain().fan()
 @@ -713,7 +713,7 @@ class SchemeMorphism_orbit_closure_toric_variety(SchemeMorphism, Morphism):
                From: 1-d toric variety covered by 2 affine patches
                To:   2-d CPR-Fano toric variety covered by 3 affine patches
@@ -1796,16 +1667,7 @@ index ef9c475752..f682ded875 100644
          """
          phi_i, phi_b, phi_s = self.fan_morphism().factor()
          from sage.schemes.toric.all import ToricVariety
-@@ -1814,7 +1814,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
-             sage: fc = P1xP1.hom(matrix([[1],[0]]), P1).fiber_component(Cone([(1,0)]))
-             sage: f = fc.embedding_morphism()
-             sage: f._ray_index_map  # indirect doctest
--            {N(1): 2, N(-1): 3}
-+            {N(-1): 3, N(1): 2}
- 
-         TESTS::
- 
-@@ -1951,10 +1951,10 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
+@@ -1951,8 +1951,8 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
              sage: for r in fc.fan().rays():
              ....:     print("{} {}".format(r, f._image_ray_multiplicity(r)))
              N(0, 1) (5, 1)
@@ -1813,11 +1675,8 @@ index ef9c475752..f682ded875 100644
              N(-1, 2) (11, 1)
 +            N(1, -3) (9, 2)
              sage: f._ray_index_map
--            {N(2, -6): 9, N(-3, 4): 10, N(0, 1): 5, N(1, 0): 4, N(-1, 2): 11}
-+            {N(1, 0): 4, N(0, 1): 5, N(-3, 4): 10, N(2, -6): 9, N(-1, 2): 11}
+             {N(-3, 4): 10, N(-1, 2): 11, N(0, 1): 5, N(1, 0): 4, N(2, -6): 9}
          """
-         try:
-             image_ray_index = self._ray_index_map[fiber_ray]
 @@ -1998,7 +1998,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
              V(z0) + V(z1) + 3*V(z2) + 4*V(z3)
              sage: fc = f.fiber_component(Cone([(1,1,0)]))

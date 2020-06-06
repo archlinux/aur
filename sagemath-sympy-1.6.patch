@@ -48,7 +48,7 @@ diff --git a/src/sage/symbolic/relation.py b/src/sage/symbolic/relation.py
 index 028f628797..d252434d52 100644
 --- a/src/sage/symbolic/relation.py
 +++ b/src/sage/symbolic/relation.py
-@@ -914,7 +914,8 @@ def solve(f, *args, **kwds):
+@@ -913,7 +913,8 @@ def solve(f, *args, **kwds):
      print them::
  
          sage: solve(sinh(x) - 2*cosh(x),x,algorithm='sympy')

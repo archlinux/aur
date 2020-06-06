@@ -2,7 +2,7 @@ diff --git a/src/sage/interfaces/gap.py b/src/sage/interfaces/gap.py
 index 2b1cb8aef4..0bbc018499 100644
 --- a/src/sage/interfaces/gap.py
 +++ b/src/sage/interfaces/gap.py
-@@ -891,7 +891,7 @@ class Gap_generic(ExtraTabCompletion, Expect):
+@@ -886,7 +886,7 @@ class Gap_generic(ExtraTabCompletion, Expect):
              sage: print(gap.version())
              4...
          """
@@ -15,7 +15,7 @@ diff --git a/src/sage/coding/linear_code.py b/src/sage/coding/linear_code.py
 index e106498063..b56388830b 100644
 --- a/src/sage/coding/linear_code.py
 +++ b/src/sage/coding/linear_code.py
-@@ -481,17 +481,17 @@ class AbstractLinearCode(AbstractCode, Module):
+@@ -483,17 +483,17 @@ class AbstractLinearCode(AbstractCode, Module):
              0
              sage: C = codes.HammingCode(GF(4, 'z'), 3)
              sage: C.automorphism_group_gens()
@@ -38,7 +38,7 @@ index e106498063..b56388830b 100644
                  Defn: z |--> z),
                ((z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1); (), Ring endomorphism of Finite Field in z of size 2^2
                  Defn: z |--> z)],
-@@ -707,10 +707,10 @@ class AbstractLinearCode(AbstractCode, Module):
+@@ -709,10 +709,10 @@ class AbstractLinearCode(AbstractCode, Module):
              sage: C_iso == aut_group_can_label.get_canonical_form()
              True
              sage: aut_group_can_label.get_autom_gens()
@@ -56,7 +56,7 @@ diff --git a/src/sage/combinat/tiling.py b/src/sage/combinat/tiling.py
 index acc4640675..4ee841d681 100644
 --- a/src/sage/combinat/tiling.py
 +++ b/src/sage/combinat/tiling.py
-@@ -324,21 +324,21 @@ def ncube_isometry_group(n, orientation_preserving=True):
+@@ -320,21 +320,21 @@ def ncube_isometry_group(n, orientation_preserving=True):
  
          sage: ncube_isometry_group(3)
          [
@@ -167,7 +167,7 @@ diff --git a/src/sage/groups/perm_gps/permgroup.py b/src/sage/groups/perm_gps/pe
 index 8512b01122..245fdd868b 100644
 --- a/src/sage/groups/perm_gps/permgroup.py
 +++ b/src/sage/groups/perm_gps/permgroup.py
-@@ -852,7 +852,7 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -850,7 +850,7 @@ class PermutationGroup_generic(FiniteGroup):
             sage: f=PG._coerce_map_from_(MG)
             sage: mg = MG.an_element()
             sage: p = f(mg); p
@@ -176,7 +176,7 @@ index 8512b01122..245fdd868b 100644
             sage: PG(p._gap_()) == p
             True
  
-@@ -901,9 +901,9 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -899,9 +899,9 @@ class PermutationGroup_generic(FiniteGroup):
              False
              sage: g1, g2, g3 = G.gens()
              sage: P(g1*g2)

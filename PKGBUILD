@@ -53,21 +53,21 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-sympy-1.6.patch)
 sha256sums=('SKIP'
             '5034676c4ce46181723f261d6bd180a795adea417f485c5e3e361b3aaef498ec'
-            '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
-            '887b931b0eb3c7fcfcb01ae0cfda9668925ed59740c4134cba13c43dfe0dd088'
+            'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
+            '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '11e33637d7807ab0ca3409022638956c0d2dd60b3aa35f101744d6b9bef0f847'
+            '1a98d031b896eebdbcb61f2f5d9bc8b5edbe766aac6d6cc2ff2e1fb736b5c098'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            'b0dbacaeb4d9bad98c178cd62427976e86f3e78cdcb1bdbe72af0c7481198e78'
-            'fc28ca3aa1a656bfb451181d5086b3041238f24bf462cc69626d3cd603a246df'
-            '382c9ef075f6396acb9808215176c3a2b59b24d7c1fc31db248aacaf9236fe63'
+            'f9721c66d1a0267bb19923f5084d40f8121fcada6db1d1c37484dab70b655544'
+            'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
+            '312cfbaa9e39bd0184cdee775d7225992d8a23ae72df03709c78d4ebcf8d3ed6'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
-            'ee40e8c595a97166124ac64b105ed62070f1c42564e28a6c2cbdb30da4a5bd49'
-            '4947a86264622dffebb58b802f0616f0fb47b5784d95346f44ee426cb2e541fc'
+            'f6b3f52748d0f692f109c29724b402149b74960d8954e244ab770c85af832b6c'
+            'fea8674782a398ead1b065e0d4b551be4e268c15fa336b91b9bb7e738163eaed'
             '688345dd88174cc82a196a9ecace86f3b4f28bb2fae2d7196a40a76ff724f92e'
             'b15762a283b2dade0d5131c7b22b33f47bcbc1eca4975b1e00d85fa152299503'
             'c9fa4f136a8e4fa9832524bb0ee4a7fbb3c6e992595a3b10c7c627ba9161b4ce'
-            'fde6e00ccc200c748d6f092e35c60b93d4ed096f7b35b2db42681935f30ebcee')
+            'ade7f86abc8b04b6a01c1a495b644a034d27bacdfdfa62813f4f8945bb96a8fe')
 
 pkgver() {
   cd sage
@@ -84,8 +84,6 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# Remove dict sorting, it doesn't work with ipython >= 7.10
-  patch -p1 -i ../sagemath-no-dict-sorting.patch
 # Python 3.8 support
   patch -p1 -i ../sagemath-python-3.8.patch
 # Fix expect_peek with pexpect 4.8
@@ -114,6 +112,8 @@ prepare(){
   patch -p1 -i ../sagemath-matplotlib-3.2.patch
 # Port to sympy 1.6 changes https://trac.sagemath.org/ticket/29730
   patch -p1 -i ../sagemath-sympy-1.6.patch
+# Sort dicts in doctests https://trac.sagemath.org/ticket/29042
+  patch -p1 -i ../sagemath-no-dict-sorting.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
