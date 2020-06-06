@@ -3,7 +3,7 @@
 pkgname=python-nvidia-ml-py3
 _name=nvidia-ml-py3
 pkgver=7.352.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings for the NVIDIA Management Library'
 arch=('any')
 url='https://github.com/nicolargo/nvidia-ml-py3'
@@ -12,7 +12,7 @@ depends=(
   cuda
 )
 makedepends=(
-  'python-setuptools'
+  python-setuptools
 )
 source=(
   "${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
