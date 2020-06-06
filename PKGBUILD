@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
@@ -53,6 +53,6 @@ package() {
     sed -i "s/$pathtoreplace//g" {} +
 }
 
-md5sums=('1750399a3d2e84488af66d1acf68bc2a'
+md5sums=('6b9170ef25f92501aa994aca1f9e9163'
          '9cbd95a65cb9d7a81cb39ec02127ac8d'
          '2e7c7804b970baa7f9274dae47618a52')
