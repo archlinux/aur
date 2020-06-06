@@ -9,6 +9,7 @@ pkgbase = tscrape
 	depends = glibc
 	provides = tscrape
 	conflicts = tscrape
+	conflicts = tscrape-git
 	source = https://codemadness.org/releases/tscrape/tscrape-0.5.tar.gz
 	sha256sums = 826611882263959faed479589b78db01891a68e0b1e15e2d32fdacfea22af5a4
 
