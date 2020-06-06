@@ -1,6 +1,6 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = minimized build of Digikam for non-KDE users, without Plasma/KDE integration
-	pkgver = 6.3.0
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = http://www.digikam.org/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	depends = knotifyconfig
 	depends = marble-common
 	depends = threadweaver
-	depends = kcalcore
+	depends = kcalendarcore
 	depends = exiv2
 	depends = imagemagick
 	optdepends = kipi-plugins: export to various online services
@@ -28,8 +28,16 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	provides = digikam
 	conflicts = digikam
 	conflicts = digikam-git
-	source = http://download.kde.org/stable/digikam/6.3.0/digikam-6.3.0.tar.xz
-	sha256sums = 94dc05e3f9c08b83419010d1689c7b0398d4eced4fef42375249c974622874ba
+	source = https://download.kde.org/stable/digikam/6.4.0/digikam-6.4.0.tar.xz
+	source = https://download.kde.org/stable/digikam/6.4.0/digikam-6.4.0.tar.xz.sig
+	source = initialize-imagemagick.patch::https://cgit.kde.org/digikam.git/patch/?id=76ff65ae
+	source = digikam-opencv-4.2.patch
+	source = digikam-qt-5.15.patch
+	sha256sums = 775012ff515bdd25a0b894c95bf5d33e7122b523da9c0f3af260ec3eff498d6f
+	sha256sums = SKIP
+	sha256sums = c559882c0df2243c5a5baab3373bda4084fb9a1d54959770b8846fe026eaf360
+	sha256sums = 41e687eacf59f7a92deae535a097e456dcb4243686286aad16329acef71c7594
+	sha256sums = 3dd295fe3b49bf2140e44a86e65741522744034e0d204af12a642621feea81fc
 
 pkgname = digikam-without-akonadi-mediawiki-vkontakte
 
