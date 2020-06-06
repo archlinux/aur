@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.3.4
+pkgver=6.4.6
 _pkgdir=cpeditor-full-source-$pkgver
 pkgrel=1
 pkgdesc='The editor for competitive programming'
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 build() {
 	cd $_pkgdir
 	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++
-	cmake --build build
+	cmake --build build -j$(nproc)
 }
 
 package() {
