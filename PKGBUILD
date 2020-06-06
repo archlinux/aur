@@ -3,7 +3,7 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
@@ -41,7 +41,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/d/distributed/distributed-$pkgver.tar.gz"
 )
 sha256sums=(
-  '8b6f8a28eb32ad93f33bd34141fcaf2e437ef5bda900347e8384b332c7f233a3'
+  '902f098fb7558f035333804a5aeba2fb26a2a715388808205a17cbb2e02e0558'
 )
 
 build() {
@@ -52,6 +52,5 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --skip-build --root="$pkgdir" --prefix=/usr --optimize=1
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
