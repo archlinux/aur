@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.install
+!*.sysusers
+!*.tmpfiles
+!*.service
+!.gitignore
+!envvars

@@ -1,0 +1,2 @@
+# Specify additional arguments to pass to bird-exporter on startup.
+FLAGS=""

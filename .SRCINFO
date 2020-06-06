@@ -1,0 +1,20 @@
+pkgbase = prometheus-bird-exporter
+	pkgdesc = Bird protocol state exporter for bird routing daemon to use with Prometheus
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/czerwonk/bird_exporter
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = bird
+	conflicts = prometheus-bird-exporter-git
+	backup = etc/default/prometheus-bird-exporter
+	source = prometheus-bird-exporter-1.2.5.tar.gz::https://github.com/czerwonk/bird_exporter/archive/1.2.5.tar.gz
+	source = prometheus-bird-exporter.service
+	source = envvars
+	sha512sums = d10b38f40570a672b9555a97a072e0671add5db8a4124b986fa70d4da069545bce2299129c692f15a1fbe9be40dc14e061bf486f68df8ab4ae2c7c51a3ada763
+	sha512sums = c4fd4be00e8030702c323c364853a08f21ff27e47a0b20e0b4f6e5a9b6ebc1a4f6a15c1eace25bf677354904659340a5ec0b518846cfcd7c865423edd175188d
+	sha512sums = e7495d7ca7fc54cc47dc73ac9542b9741810603d9312f9c386fc7e6ce3081e484ff3e13c8c2cbdc12935826d5b198cb06edb00266a3335f65aeae8b4147278f6
+
+pkgname = prometheus-bird-exporter
+
