@@ -2,28 +2,24 @@
 _pkgname='certspotter'
 pkgname="$_pkgname-git"
 pkgver='0.10.r1.g6d5e239'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Certificate Transparency Log Monitor - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
-makedepends=('git' 'go-pie>=1.5' 'golang-github-mreiferson-go-httpclient' 'golang-golang-x-net')
+makedepends=('git' 'go>=1.5')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 _sourcedirectory="$pkgname"
-_builddir="$pkgname-build"
-_buildpath="src/software.sslmate.com/src/$_pkgname"
 _bindir="$pkgname-bin"
+_gopath="$pkgname-gopath"
 
 prepare() {
-	cd "$srcdir/"
-	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
-	mv "$_sourcedirectory/" "$_builddir/$_buildpath/"
-
-	mkdir -p "$_bindir/"
+	mkdir -p "$srcdir/$_bindir/"
+	mkdir -p "$srcdir/$_gopath/"
 }
 
 pkgver() {
@@ -32,13 +28,28 @@ pkgver() {
 }
 
 build() {
-	export GOPATH="$srcdir/$_builddir:/usr/share/gocode"
-	go build -v -trimpath -ldflags "-extldflags $LDFLAGS" -o "$srcdir/$_bindir/" "$(echo "$_buildpath" | cut -d '/' -f 2-)/..."
+	cd "$srcdir/$_sourcedirectory/"
+	export GOPATH="$srcdir/$_gopath"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+	go mod init "software.sslmate.com/src/$_pkgname"
+	go mod tidy
+	export GOFLAGS="$GOFLAGS -mod=readonly"
+	go build -v -o "$srcdir/$_bindir/" './...'
 }
 
 check() {
-	export GOPATH="$srcdir/$_builddir:/usr/share/gocode"
-	go test -v "$srcdir/$_builddir/$_buildpath/..."
+	cd "$srcdir/$_sourcedirectory/"
+	export GOPATH="$srcdir/$_gopath"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go test -v './...'
 }
 
 package() {
