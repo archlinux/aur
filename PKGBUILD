@@ -5,7 +5,7 @@
 
 _pkgname=tupitube.desk
 pkgname=$_pkgname-git
-pkgver=r1250.cc8940e8
+pkgver=r1720.2b833c8e
 pkgrel=1
 pkgdesc="A design and authoring tool for digital artists interested in 2D animation."
 url="http://www.maefloresta.com/"
@@ -17,7 +17,7 @@ conflicts=("tupi")
 makedepends=("git" "ruby" "zlib" "libgl")
 source=("git+https://github.com/xtingray/tupitube.desk.git" "quazip5.patch")
 md5sums=('SKIP'
-         'b5da9bd90ef57e6778f4e281572da3eb')
+         '5c33ca77bf675939d9fb557b31c2f926')
 
 prepare() {
 	cd "$_pkgname"
