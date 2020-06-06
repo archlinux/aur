@@ -1,12 +1,12 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The Fast Remote Desktop Application (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'gnome-themes-extra')
+depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'lsb-release' 'gnome-themes-extra')
 optdepends=('libpulse: audio support')
 makedepends=('patchelf')
 conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk')
@@ -20,6 +20,7 @@ sha256sums_i686=('2b62a369a9fb24cc060bf29ccd1ee94f45d4c2be8c62e4fba8b925ca3008f7
 sha256sums_x86_64=('d37678596d7df3926b9ea7dec842cd895618b9860fd75e490deebcf09cf3eeee')
 
 package() {
+    # install start script which sets the env variable for theme?
     # install binary
     install -Dm 755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
     # patch the binary to replace obsolete dependency
