@@ -7,11 +7,13 @@ pkgbase = regextester
 	arch = i686
 	license = GPL3
 	makedepends = meson
+	makedepends = ninja
 	makedepends = vala
-	depends = gtk3
 	depends = granite
+	depends = gtk3
 	provides = regextester
 	conflicts = regextester
+	conflicts = regextester-git
 	source = https://github.com/artemanufrij/regextester/archive/1.1.0.tar.gz
 	sha256sums = a9785c86357288632079bad7d897af7d2216e8ed2fcf6467f9991fd7adb26d3b
 
