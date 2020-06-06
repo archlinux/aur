@@ -15,7 +15,7 @@ pkgbase = kiwix-lib
 	depends = xapian-core
 	depends = aria2
 	depends = libmicrohttpd
-	source = https://github.com/kiwix/kiwix-lib/archive/9.2.2.tar.gz
+	source = kiwix-lib-9.2.2.tar.gz::https://github.com/kiwix/kiwix-lib/archive/9.2.2.tar.gz
 	sha256sums = 35ff73e80b97ee1cfd8e5d222707ee36da4bf8fea28fbc3f3eb423dc13225689
 
 pkgname = kiwix-lib
