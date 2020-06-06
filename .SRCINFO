@@ -1,19 +1,22 @@
 pkgbase = goaccess-git
-	pkgdesc = GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
-	pkgver = v0.8.r2629.ge0385cc
+	pkgdesc = A real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
+	pkgver = v1.4.r7.ge462ba08
 	pkgrel = 1
 	url = https://goaccess.io
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = ncurses
 	depends = libmaxminddb
 	depends = openssl
-	optdepends = geoip: Provides a mmdb geoip database
+	optdepends = geoip2-database: for geoip support
 	provides = goaccess
 	conflicts = goaccess
-	backup = etc/goaccess.conf
+	backup = etc/goaccess/goaccess.conf
+	backup = etc/goaccess/browsers.list
+	backup = etc/goaccess/podcast.list
 	source = git+https://github.com/allinurl/goaccess.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = goaccess-git
 

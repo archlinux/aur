@@ -2,18 +2,19 @@
 
 pkgname=goaccess-git
 pkgrel=1
-pkgver=v0.8.r2629.ge0385cc
-pkgdesc='GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
+pkgver=v1.4.r7.ge462ba08
+pkgdesc='A real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
 url='https://goaccess.io'
 license=('MIT')
-arch=('any')
+arch=('x86_64')
 conflicts=('goaccess')
 provides=('goaccess')
 depends=('ncurses' 'libmaxminddb' 'openssl')
-optdepends=('geoip: Provides a mmdb geoip database')
-backup=('etc/goaccess.conf')
+optdepends=('geoip2-database: for geoip support')
+makedepends=('git')
+backup=('etc/goaccess/goaccess.conf' 'etc/goaccess/browsers.list' 'etc/goaccess/podcast.list')
 source=('git+https://github.com/allinurl/goaccess.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "goaccess"
@@ -23,7 +24,7 @@ pkgver() {
 build() {
 	cd "goaccess"
 	autoreconf -fiv
-	./configure --prefix=/usr --enable-utf8 --enable-geoip=legacy --sysconfdir=/etc --with-openssl
+	./configure --enable-geoip=mmdb --enable-utf8 --with-openssl --prefix=/usr --sysconfdir=/etc
 	make
 }
 
