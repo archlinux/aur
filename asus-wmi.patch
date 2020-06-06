@@ -1,0 +1,62 @@
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -116,6 +116,8 @@
+ 	u32 arg0;
+ 	u32 arg1;
+ 	u32 arg2; /* At least TUF Gaming series uses 3 dword input buffer. */
++        u32 arg3; /* At least ROG Zephyrus G14 series uses 5 dword input buffer */
++        u32 arg4;
+ } __packed;
+ 
+ /*
+@@ -1722,7 +1724,7 @@
+ 	asus->fan_boost_mode = new_mode;
+ 	fan_boost_mode_write(asus);
+ 
+-	return result;
++	return count;
+ }
+ 
+ // Fan boost mode: 0 - normal, 1 - overboost, 2 - silent
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -110,6 +110,12 @@
+ 	.wmi_force_als_set = true,
+ };
+ 
++static struct quirk_entry quirk_asus_ga401i = {
++       .wapf = 4, // not sure if that is correct
++       .wmi_backlight_power = true,
++       .wmi_backlight_set_devstate = true,
++};
++
+ static int dmi_matched(const struct dmi_system_id *dmi)
+ {
+ 	pr_info("Identified laptop model '%s'\n", dmi->ident);
+@@ -411,7 +417,25 @@
+ 		},
+ 		.driver_data = &quirk_asus_forceals,
+ 	},
+-	{},
++	{
++               .callback = dmi_matched,
++               .ident = "ASUSTeK COMPUTER INC. GA401IV",
++               .matches = {
++                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++                       DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
++               },
++               .driver_data = &quirk_asus_ga401i,
++       },
++       {
++               .callback = dmi_matched,
++               .ident = "ASUSTeK COMPUTER INC. GA401IU",
++               .matches = {
++                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++                       DMI_MATCH(DMI_PRODUCT_NAME, "GA401IU"),
++               },
++               .driver_data = &quirk_asus_ga401i,
++       },
++       {},
+ };
+ 
+ static void asus_nb_wmi_quirks(struct asus_wmi_driver *driver)
