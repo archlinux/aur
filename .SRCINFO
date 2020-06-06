@@ -9,6 +9,7 @@ pkgbase = json2tsv
 	depends = glibc
 	provides = json2tsv
 	conflicts = json2tsv
+	conflicts = json2tsv-git
 	source = https://codemadness.org/releases/json2tsv/json2tsv-0.5.tar.gz
 	sha256sums = 0e919ff3ecd4eed8d1209e1da0bb6d4c4099b276168a941b8bceecfe128e1fc5
 
