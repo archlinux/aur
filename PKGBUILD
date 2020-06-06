@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=15
-_clr=957
+_minor=16
+_clr=958
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33250
+_clear_version=33290
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=8e6661dfaf10f53b3e23f54109a3cdefdc0fb027bc4ef8cff6a10f0dd5cc0a95
+_config_hash=5a5e4d25c736dcf6b0c7202aa62928947c4614c5f57e4fd0b4d05106677e3c1a
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -79,3 +79,6 @@ b2sums=('4dc3439633c0454cf8aef40350fbd80ec6db13474e440d8588f925dc6ece9929d94034e
 b2sums=('1c1dbbcfcfc8614eb3ac4ba3a22ce5d479378c82cb87b3c70353311bc1d98fae8ae0281c5795c6d3faf8e4051bf39e9776ef45bcdf45bcb7a75926f15bdbf699'
         '85261238e652e9869683cd9559f3274ac2cb0c9d3fde9da00bd0354938fefdac22985843b0c6de0aefb2e553a59e455328bbf765fb4ed98bbd62596e1bfdb137'
         '3719c4164553c16f04ec02d86699240f701cf14a0c2de5d147aa108eb9e709d9ece38b4e27f857012a814639338adf83f8ecc7f0ca2e7847f48b2e9082aa7cf0')
+b2sums=('4992da2ad20b99697f17eea0461da975df2a82b98ff03c007a9527f65ea7cf40f15233352b8430006fa9e084e8717b96daf83198f5530a9cb6ffa91e52eebc86'
+        '75880ab2d52d1544834c5cd6b2656b2c3c4739cdb3d46c5254c3e56b2595ef7e730a8a8ac48609777838b5de36b4d87dac8c5e8a6b8abcf74db84a66164bafa5'
+        '06b4ff5a559dc184aeb744211017bdc13eff410a21572557a45acf6ed16f1b30aef46bf08d3b3f47ae2ba5802983ca1d9da0db3b597ac56d7ae93c1f54e3635a')
