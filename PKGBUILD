@@ -1,8 +1,8 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
-pkgver=2.0.2.9
-pkgrel=3
+pkgver=2.0.2.10
+pkgrel=1
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
 url="https://github.com/openai/mujoco-py"
@@ -30,14 +30,14 @@ options=(!strip)
 # so use the lastest commit (at the time of writing).
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$_name-$pkgver-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/d73ce6e91d096b74da2a2fcb0a4164e10db5f641/LICENSE.md"
-        "$_name-$pkgver.patch")
-sha256sums=('6ae20ca9509203758f5e30a7a4019cb2d581b6d40dc2c2669dbe3229cfdf05e8'
+        "$_name.patch")
+sha256sums=('8282830659106b8e08a3883f6a5956af76fd42f21e63d6c8bee6092247d3bd4e'
             'fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a'
             '21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865')
 
 prepare() {
 	cd "$_name-$pkgver"
-	patch -p1 -i "$srcdir/$_name-$pkgver.patch"
+	patch -p1 -i "$srcdir/$_name.patch"
 }
 
 build() {

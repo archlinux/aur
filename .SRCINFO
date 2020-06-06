@@ -1,7 +1,7 @@
 pkgbase = python-mujoco-py
 	pkgdesc = Python interface to the MuJoCo physics engine
-	pkgver = 2.0.2.9
-	pkgrel = 3
+	pkgver = 2.0.2.10
+	pkgrel = 1
 	url = https://github.com/openai/mujoco-py
 	arch = x86_64
 	license = MIT
@@ -20,10 +20,10 @@ pkgbase = python-mujoco-py
 	depends = python-imageio
 	depends = python-numpy
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/m/mujoco-py/mujoco-py-2.0.2.9.tar.gz
-	source = mujoco-py-2.0.2.9-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/d73ce6e91d096b74da2a2fcb0a4164e10db5f641/LICENSE.md
-	source = mujoco-py-2.0.2.9.patch
-	sha256sums = 6ae20ca9509203758f5e30a7a4019cb2d581b6d40dc2c2669dbe3229cfdf05e8
+	source = https://files.pythonhosted.org/packages/source/m/mujoco-py/mujoco-py-2.0.2.10.tar.gz
+	source = mujoco-py-2.0.2.10-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/d73ce6e91d096b74da2a2fcb0a4164e10db5f641/LICENSE.md
+	source = mujoco-py.patch
+	sha256sums = 8282830659106b8e08a3883f6a5956af76fd42f21e63d6c8bee6092247d3bd4e
 	sha256sums = fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a
 	sha256sums = 21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865
 
