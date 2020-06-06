@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocprim
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Header-only library providing HIP parallel primitives'
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocPRIM"
@@ -15,8 +15,8 @@ build() {
   mkdir -p build
   cd build
 
-  CXX=/opt/rocm/hcc/bin/hcc \
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocprim \
+  CXX=/opt/rocm/hip/bin/hipcc \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
         -DBUILD_TEST=OFF \
         -DBUILD_BENCHMARK=OFF \
