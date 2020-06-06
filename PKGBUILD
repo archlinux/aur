@@ -27,20 +27,8 @@ pkgver() {
 prepare() {
   set -eo pipefail
 
-  # Create git repository to hold gitlab upstream code and create diff
-  if [ -d "libxft_upstream" ]; then
-    rm -rf "libxft_upstream";
-  fi;
-
-  mkdir libxft_upstream
-  pushd libxft_upstream
-  git init
-  git remote add upstream ${LIBXFT_UPSTREAM_URL}
-  git fetch --depth=2 upstream ${COMMIT_ID}
-  popd
-
   pushd libXft-${_pkgbasever}
-  git --git-dir ../libxft_upstream/.git diff -u ${COMMIT_ID}~ ${COMMIT_ID} | patch -p1
+  curl -S https://gitlab.freedesktop.org/xorg/lib/libxft/-/commit/${COMMIT_ID}.patch | patch -p1
   popd
 
   set +eo pipefail
