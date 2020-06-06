@@ -7,12 +7,12 @@
 pkgname=rethinkdb
 pkgver=2.4.0
 _node=6.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
 license=(Apache)
-depends=(protobuf curl)
+depends=(curl)
 makedepends=(clang protobuf boost jemalloc git python2 make)
 backup=(etc/rethinkdb/instances.d/default.conf)
 install=rethinkdb.install
@@ -59,6 +59,7 @@ prepare() {
     --dynamic jemalloc \
     --allow-fetch \
     --fetch npm \
+    --fetch protobuf \
     CXX=clang++
 
   # Manually fetch the Node version used, so we can patch it
