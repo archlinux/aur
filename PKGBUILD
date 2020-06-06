@@ -1,8 +1,8 @@
-# Maintainer: M A <morealaz at gmail dot com>
+# Maintainer: Parham <parham at tuta dot io>
 
 pkgname=icu4j
-pkgver=65.1
-pkgrel=6
+pkgver=67.1
+pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
 url="http://site.icu-project.org/"
@@ -23,13 +23,13 @@ noextract=("${pkgname}-${pkgver//./_}.jar"
            "${pkgname}-charset-${pkgver//./_}-src.jar"
            "${pkgname}-localespi-${pkgver//./_}.jar"
            "${pkgname}-localespi-${pkgver//./_}-src.jar")
-sha256sums=('041e677ddea663f219cd554ef1005ec27870207bb5420347af1d0268b3409291'
-            '473009ebe8bdc7e7b2343130b13d62eb28ddf21289a09210730a34831e08c948'
-            'f25ca0db6ed0bb681686d6f19a06d03db0e721ab1dac4ec6059bbee561f83e10'
-            'dd01a87f5d74b48e179da3431d4886588c483649c462de19dedfd2b22dd7d573'
-            'bf94250fa9ac34f20bebd79b2bf6695b9c8deb0e35976257698182562137927a'
-            'bb46e8951449ccafdab059569651d3d7a9de688e2e93ee1296874c46fb311a85'
-            '91aa83a55a8d07c50a07e2bf0ac291fdbad4388619ec1a350b818387f1849a92'
+sha256sums=('c4eb904caf5fba968a2f1a3b8aef14df801e9329b21697209ca30bfcf153867d'
+            '2313076465b7f6aca318fca5523956db9272e30a0524c0749b435952417197d3'
+            'f6ac585fd0913c2e12b156831b9755e5b9a09e77f013738db79e677f08180076'
+            '0ad414c75ec928943392a4d684f29b1f322dec13b32c9480c4eadb5fa091cb28'
+            '567b5377d70ce9cf902499c40ac3dde58316c2fe7938f41def7d45c3871bfae5'
+            'ef65382254ce991bc250e7106df61e1c9af648cee693e9c2262895f1c7498f3c'
+            '773f823b843c92a117ab66f6b9f47c08bb5a90fa52ad7b55c4d4b028c5fd212d'
             'SKIP')
 
 package() {
