@@ -1,0 +1,15 @@
+pkgbase = deemixgui
+	pkgdesc = A minimal Electron application that loads the deemix site.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://notabug.org/lollilol/deemixgui
+	arch = any
+	license = GPL3
+	makedepends = yarn
+	depends = electron
+	depends = zlib
+	source = deemixgui-0.0.7.tar.gz::https://notabug.org/lollilol/deemixgui/archive/master.tar.gz
+	sha256sums = 1ff8feb4c6e44b408ece66f2c456ed54d7a1ba7c826237b2abb503d6fc5c0479
+
+pkgname = deemixgui
+
