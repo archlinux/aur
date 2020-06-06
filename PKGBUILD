@@ -6,9 +6,9 @@
 pkgname=pyspread
 pkgver=1.99.2
 pkgrel=1
-pkgdesc="A cross-platform Python spreadsheet application. Python 2.7 version"
+pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
-url="https://manns.github.io/pyspread/"
+url="https://pyspread.gitlab.io/"
 license=('GPL3')
 depends=('python-numpy>=1.1.0'
         'python-pyqt5'
