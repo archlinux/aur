@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/java -jar '/usr/share/shutter-encoder/Shutter Encoder.jar' "$@" 
