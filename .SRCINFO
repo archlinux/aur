@@ -1,7 +1,7 @@
 pkgbase = libsane-dsseries
 	pkgdesc = Brother SANE drivers for DSmobile 620
 	pkgver = 1.0.5_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=ds620_all
 	install = libsane-dsseries.install
 	arch = x86_64
