@@ -1,7 +1,7 @@
 # Maintainer: Lyman Li <lymanrb@gmail.com>
 
 pkgname=odpscmd
-pkgver=0.32.2
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="Aliyun ODPS Command Line Tool"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 makedepends=('unzip')
 source=("https://github.com/aliyun/aliyun-odps-console/releases/download/v${pkgver}/odpscmd_public.zip"
     odpscmd)
-md5sums=('81b335023cf29e58c6c96f425f7123fb'
+md5sums=('eee6bfdd91dd41725c91143a4464e32f'
     'a94bb8679669e70a77aa0212ba8767c3')
 
 build() {
