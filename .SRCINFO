@@ -1,0 +1,17 @@
+pkgbase = python-zhon
+	pkgdesc = Constants used in Chinese text processing
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/tsroten/zhon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-virtualenv
+	depends = python-sphinx
+	depends = python-tox
+	depends = python-wheel
+	source = python-zhon-1.1.5.tar.gz::https://github.com/tsroten/zhon/archive/v1.1.5.tar.gz
+	sha256sums = 291583edc10fab6ea7dc3ad6c9054a626884d2413b9a1288f5753e4965ffbd5b
+
+pkgname = python-zhon
+
