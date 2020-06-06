@@ -2,12 +2,12 @@
 
 pkgname=xautoclick
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates repetitive mouse clicking to reduce RSI."
 arch=('i686' 'x86_64')
 url="https://github.com/qarkai/xautoclick"
 license=('GPL2')
-depends=('gtk3')
+depends=('gtk3' 'libevdev')
 makedepends=('cmake')
 optdepends=('qt5-base: (compile time) for qt5 based gui'
             'fltk: (compile time) for fltk based gui')

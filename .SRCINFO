@@ -1,13 +1,14 @@
 pkgbase = xautoclick
 	pkgdesc = Automates repetitive mouse clicking to reduce RSI.
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarkai/xautoclick
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = gtk3
+	depends = libevdev
 	optdepends = qt5-base: (compile time) for qt5 based gui
 	optdepends = fltk: (compile time) for fltk based gui
 	source = https://github.com/qarkai/xautoclick/archive/v0.34.tar.gz
