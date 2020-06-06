@@ -1,9 +1,9 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-_ver=0.14.2
+_ver=0.14.3
 pkgver=$(echo "${_ver}" | tr -d -)
-pkgrel=2
+pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-go"
@@ -39,7 +39,7 @@ package() {
     install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
-md5sums=('543f674feda7dbd0f1ca0f22d9e59d2a'
+md5sums=('9f842ce0026b0e099254ca4d4b0bdd79'
          'ae3e285b857b7efeecbab29826f29735'
          '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
          '92cd2fa8929c5acddbddf7d4fc2fd494')
