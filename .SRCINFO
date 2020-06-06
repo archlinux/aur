@@ -1,0 +1,20 @@
+pkgbase = python-charset-normalizer
+	pkgdesc = Like Chardet. Package for encoding & language detection. Charset detection
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/Ousret/charset_normalizer
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cached-property
+	depends = python-prettytable
+	depends = python-loguru
+	depends = python-dragonmapper
+	depends = python-zhon
+	provides = python-charset_normalizer
+	source = python-charset-normalizer-1.3.4.tar.gz::https://github.com/Ousret/charset_normalizer/archive/1.3.4.tar.gz
+	sha256sums = e4c6f8bc03a2cc901de40f922c0fb7c36ef9238e06209febfffb1d54acf59d2c
+
+pkgname = python-charset-normalizer
+
