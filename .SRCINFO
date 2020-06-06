@@ -1,6 +1,6 @@
 pkgbase = nodemcu-tool
 	pkgdesc = Upload/Download Lua files to your ESP8266 module with NodeMCU firmware
-	pkgver = 3.0.2
+	pkgver = 3.2.1
 	pkgrel = 2
 	url = https://www.npmjs.com/package/nodemcu-tool
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodemcu-tool
 	depends = nodejs>=8
 	depends = npm
 	depends = python2
-	source = http://registry.npmjs.org/nodemcu-tool/-/nodemcu-tool-3.0.2.tgz
-	sha256sums = c5fe6378907fab0fd870087eca4d098809e64f5cfe70789eef88cf70a5c886e1
+	source = http://registry.npmjs.org/nodemcu-tool/-/nodemcu-tool-3.2.1.tgz
+	sha256sums = 5e1ddfd566dca10fa42c8017587b1b0f94acbec4f2d07edd9e243798d9ad9a83
 
 pkgname = nodemcu-tool
 
