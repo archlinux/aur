@@ -12,6 +12,8 @@ pkgbase = jdtextedit
 	depends = python-requests
 	depends = python-cchardet
 	depends = python-editorconfig
+	depends = python-charset-normalizer
+	depends = python-jdtranslationhelper
 	source = jdtextedit-7.2.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/7.2/jdTextEdit-7.2.tar.gz
 	sha256sums = 9190b7dfe278326d9bbe3696999c2e53676b021391ffafc735b7fed88936cf22
 

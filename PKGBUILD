@@ -12,7 +12,9 @@ depends=('python-pyqt5'
          'python-chardet'
          'python-requests'
          'python-cchardet'
-         'python-editorconfig')
+         'python-editorconfig'
+         'python-charset-normalizer'
+         'python-jdtranslationhelper')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/${pkgver}/jdTextEdit-${pkgver}.tar.gz")
 sha256sums=('9190b7dfe278326d9bbe3696999c2e53676b021391ffafc735b7fed88936cf22')
