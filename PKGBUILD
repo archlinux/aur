@@ -5,7 +5,7 @@ pkgbase=gnatcoll-bindings
 pkgname=(gnatcoll-python2)
 _upstream_ver=20.0-20191009-1B2EA
 pkgver=2020
-pkgrel=2
+pkgrel=3
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
@@ -20,7 +20,7 @@ sha1sums=("$_checksum")
 
 build()
 {
-    _gpr_opts="-cargs $CFLAGS -largs $LDFLAGS"
+    _gpr_opts="-R -cargs $CFLAGS -largs $LDFLAGS"
 
     cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
     # --gpr-opts reads all remaining arguments, so no quotes
