@@ -202,12 +202,20 @@ package() {
     rm -f "${pkgdir}"/usr/lib/pkgconfig/json11.pc
 
     rm -f "${pkgdir}"/usr/bin/get_disto
+    rm -f "${pkgdir}"/usr/bin/cwebp
+    rm -f "${pkgdir}"/usr/bin/dwebp
+    rm -f "${pkgdir}"/usr/bin/gif2webp
     rm -f "${pkgdir}"/usr/bin/vwebp
     rm -f "${pkgdir}"/usr/bin/vwebp_sdl
+    rm -f "${pkgdir}"/usr/bin/webpinfo
     rm -f "${pkgdir}"/usr/bin/webpmux
     rm -f "${pkgdir}"/usr/bin/webp_quality
     rm -f "${pkgdir}"/usr/lib/pkgconfig/libwebp*
+    rm -f "${pkgdir}"/usr/share/man/man1/cwebp.1
+    rm -f "${pkgdir}"/usr/share/man/man1/dwebp.1
+    rm -f "${pkgdir}"/usr/share/man/man1/gif2webp.1
     rm -f "${pkgdir}"/usr/share/man/man1/vwebp.1
+    rm -f "${pkgdir}"/usr/share/man/man1/webpinfo.1
     rm -f "${pkgdir}"/usr/share/man/man1/webpmux.1
 
     find "${pkgdir}" -type d -empty -delete
