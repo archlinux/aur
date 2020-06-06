@@ -1,0 +1,21 @@
+pkgbase = realsr-ncnn-vulkan-git
+	pkgdesc = realsr super resolution implemented with ncnn library
+	pkgver = 20200606.r0.g1a7c13e
+	pkgrel = 1
+	url = https://github.com/nihui/realsr-ncnn-vulkan
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = glslang
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	provides = realsr-ncnn-vulkan
+	conflicts = realsr-ncnn-vulkan
+	source = git://github.com/nihui/realsr-ncnn-vulkan.git
+	sha256sums = SKIP
+
+pkgname = realsr-ncnn-vulkan-git
+
