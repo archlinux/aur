@@ -1,15 +1,15 @@
 pkgbase = deepin-dock-plugin-weather-git
 	pkgdesc = A plugin for deepin dock, display weather information.
-	pkgver = 5.3.1
+	pkgver = 5.7
 	pkgrel = 1
-	url = https://github.com/CareF/deepin-dock-plugin-weather
+	url = https://github.com/sonichy/WEATHER_DDE_DOCK
 	arch = x86_64
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = dtkcore
 	depends = deepin-dock
-	source = deepin-dock-plugin-weather-git-5.3.1.tar.gz::https://github.com/CareF/deepin-dock-plugin-weather/archive/5.3.1.tar.gz
-	md5sums = ceef2d3bc03643eb1273d2cbff9bc591
+	source = deepin-dock-plugin-weather-git-v5.7(DeepinV20).tar.gz::https://github.com/sonichy/WEATHER_DDE_DOCK/archive/v5.7(DeepinV20).tar.gz
+	md5sums = 558a991d2d0d14ec1f9c5fcd4913ebef
 
 pkgname = deepin-dock-plugin-weather-git
 
