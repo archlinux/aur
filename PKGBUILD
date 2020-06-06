@@ -2,8 +2,8 @@
 
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
-pkgver=r106.5a06f0d
-pkgrel=4
+pkgver=r107.35c708f
+pkgrel=2
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
@@ -32,6 +32,7 @@ prepare() {
   git apply "$srcdir"/aes67-linux-daemon/3rdparty/patches/ravenna-alsa-lkm-fixes.patch
   git apply "$srcdir"/aes67-linux-daemon/3rdparty/patches/ravenna-alsa-lkm-arm-32bit.patch
   git apply "$srcdir"/aes67-linux-daemon/3rdparty/patches/ravenna-alsa-lkm-add-codec-am824.patch
+  git apply "$srcdir"/aes67-linux-daemon/3rdparty/patches/ravenna-alsa-lkm-disable-ptp-checksum.patch
 }
 
 package() {
