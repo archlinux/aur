@@ -13,8 +13,7 @@ sha256sums=(5eb9eed011d977d4c0d9530cde347819c49913073a37e29786a65640b27fd96c)
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	# See https://github.com/openzim/zimwriterfs/issues/64
-	arch-meson build -Dwerror=false
+	arch-meson build
 	ninja -C build
 }
 
