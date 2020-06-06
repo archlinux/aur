@@ -1,0 +1,17 @@
+pkgbase = feeluown-kuwo
+	pkgdesc = Kuwo music provider for FeelUOwn music player
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-kuwo
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = feeluown
+	depends = python-pycryptodome
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/f/fuo_kuwo/fuo_kuwo-0.1.1.tar.gz
+	sha256sums = d34902a43b3f381ec969ef1127883960736f535bd6233b7984c86d0af684f948
+
+pkgname = feeluown-kuwo
+
