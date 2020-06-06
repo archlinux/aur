@@ -2,13 +2,13 @@
 # Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos-git
-pkgver=r3024.4f5f487f
+pkgver=r3071.7b9c3c4f
 pkgrel=1
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
 url="https://github.com/pothosware/PothosCore/wiki"
 license=('boost')
-depends=('python' 'poco' 'soapysdr-git' 'portaudio')
+depends=('python' 'poco' 'soapysdr' 'portaudio')
 makedepends=('git' 'nlohmann-json')
 provides=('pothos')
 conflicts=('pothos')

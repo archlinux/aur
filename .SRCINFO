@@ -1,6 +1,6 @@
 pkgbase = pothos-git
 	pkgdesc = The Pothos data-flow framework
-	pkgver = r3024.4f5f487f
+	pkgver = r3071.7b9c3c4f
 	pkgrel = 1
 	url = https://github.com/pothosware/PothosCore/wiki
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = pothos-git
 	makedepends = nlohmann-json
 	depends = python
 	depends = poco
-	depends = soapysdr-git
+	depends = soapysdr
 	depends = portaudio
 	provides = pothos
 	conflicts = pothos
