@@ -1,7 +1,7 @@
 # Maintainer : chliny <chliny11 at gmail dot com>
 
 pkgname=shadowsocks-rust
-pkgver=v1.8.12.2.g34f1728
+pkgver=v1.8.12.4.ge64eb3f
 pkgrel=1
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
