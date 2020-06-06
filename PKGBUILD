@@ -2,7 +2,7 @@
 
 pkgname=bforartists
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="www.bforartists.de"
@@ -67,4 +67,9 @@ package() {
   $pkgdir/usr/share/bforartists/$bfa_version/scripts/startup \
   $pkgdir/usr/share/bforartists/$bfa_version/scripts/modules \
   $pkgdir/usr/share/bforartists/$bfa_version/scripts/addons
+  
+  msg "add -${pkgver} suffix to desktop shortcut"
+  sed -i "s/=blender/=blender-${pkgver}/g" "${pkgdir}/usr/share/applications/bforartists.desktop"
+  sed -i "s/=Blender/=Blender-${pkgver}/g" "${pkgdir}/usr/share/applications/bforartists.desktop"
+  mv "${pkgdir}/usr/share/applications/bforartists.desktop" "${pkgdir}/usr/share/applications/bforartists-${pkgver}.desktop"
 }

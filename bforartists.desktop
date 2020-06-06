@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Bforartists
+Comment=A 3D program
+Comment[cs]=Program pro 3D modeling a animaci
+Comment[es]=Un programa de 3D
+Comment[no]=Et 3d-program
+Comment[da]=Et program til 3d-modelering
+Exec=bforartists-2.1.0
+Icon=bforartists-2.1.0
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Graphics;3DGraphics;
+MimeType=application/blender;application/x-blender;

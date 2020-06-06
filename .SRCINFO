@@ -1,7 +1,7 @@
 pkgbase = bforartists
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = www.bforartists.de
 	install = bforartists.install
 	arch = i686
