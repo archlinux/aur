@@ -1,11 +1,14 @@
-# Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
+# Maintainer: Serge K <arch@phnx47.net>
+# Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
+
+# Repository for PR: https://gitlab.com/phnx47-aur/ledger-live-bin
 
 pkgname=ledger-live-bin
 pkgdesc='Ledger Hardware Wallet management software'
 pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=2.3.2
+pkgver=2.5.0
 pkgrel=1
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
@@ -14,9 +17,9 @@ optdepends=('lib32-gtk2')
 makedepends=('gendesk')
 options=(!strip)
 source_x86_64=(
-  "${url}/releases/download/v${pkgver}/${package}"
+  "${package}::${url}/releases/download/v${pkgver}/${package}"
 )
-sha512sums_x86_64=(aacfdd9b1c22c55d6254b40728e54ae0240d8fedf9e4ca3bc05b7fd42257582d18830036a9d44a5a26299f5b46c6bf46eb32bf720ad90e5581aaba92d8b0f220)
+sha512sums_x86_64=('61d3235aada3e8eaf903be3cb8a7df3007d1d693fcba9b13f7279c3babc1b7a1b89c7984a972732999001084f59e44d6346709c55d4df9ab168a67860b927962')
 
 prepare() {
 	gendesk -f -n \
