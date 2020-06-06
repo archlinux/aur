@@ -24,6 +24,7 @@ _gopath="$pkgname-gopath"
 
 prepare() {
 	mkdir -p "$srcdir/$_bindir/"
+	mkdir -p "$srcdir/$_gopath/"
 }
 
 pkgver() {
