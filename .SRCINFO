@@ -1,0 +1,17 @@
+pkgbase = nginx-mod-form-input
+	pkgdesc = Nginx module that reads HTTP POST and PUT request body encoded in "application/x-www-form-urlencoded", and parse the arguments in request body into nginx variables.
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/calio/form-input-nginx-module
+	arch = x86_64
+	license = BSD
+	makedepends = nginx-src
+	depends = nginx
+	depends = nginx-mod-ndk
+	source = https://github.com/vision5/ngx_devel_kit/archive/v0.3.1/ngx_devel_kit-0.3.1.tar.gz
+	source = https://github.com/calio/form-input-nginx-module/archive/v0.12/form-input-0.12.tar.gz
+	sha256sums = 0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85
+	sha256sums = 5c1869d55897075adb3fdf840b21060dc54669a1f840a36d1539acc7e59dd106
+
+pkgname = nginx-mod-form-input
+
