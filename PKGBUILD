@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/fheroes2/"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf')
 makedepends=('subversion' 'gettext')
-source=(svn+https://fheroes2.svn.sourceforge.net/svnroot/fheroes2/trunk/fheroes2 
+source=(fheroes2::svn+https://svn.code.sf.net/p/fheroes2/code/trunk
         fheroes2.desktop
         fheroes2.sh)
 install=fheroes2.install
@@ -23,19 +23,19 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/fheroes2/src"
+  cd "$srcdir/fheroes2/fheroes2/src"
   sed -i 's/libpng12-config/libpng14-config/g' Makefile
   sed -i '30i#include <unistd.h>' fheroes2/dialog/dialog_selectfile.cpp
   make RELEASE=1 WITH_AI=simple
 }
 
 package() {
-  cd "$srcdir/fheroes2"
+  cd "$srcdir/fheroes2/fheroes2"
   install -Dm755 "$srcdir/fheroes2.sh" "$pkgdir/usr/bin/fheroes2"
   install -Dm644 "$srcdir/fheroes2.desktop" "$pkgdir/usr/share/applications/fheroes2.desktop"
-  install -Dm644 "$srcdir/fheroes2/image/fheroes2_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/fheroes2.png"
-  install -Dm755 "$srcdir/fheroes2/src/dist/fheroes2" "$pkgdir/usr/share/fheroes2/fheroes2"
-  install -Dm644 "$srcdir/fheroes2/fheroes2.cfg" "$pkgdir/usr/share/fheroes2/fheroes2.cfg"
+  install -Dm644 "$srcdir/fheroes2/fheroes2/image/fheroes2_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/fheroes2.png"
+  install -Dm755 "$srcdir/fheroes2/fheroes2/src/dist/fheroes2" "$pkgdir/usr/share/fheroes2/fheroes2"
+  install -Dm644 "$srcdir/fheroes2/fheroes2/fheroes2.cfg" "$pkgdir/usr/share/fheroes2/fheroes2.cfg"
   install -dm755 "$pkgdir/usr/share/fheroes2/data" "$pkgdir/usr/share/fheroes2/maps"
 }
 
