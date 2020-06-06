@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-fastparquet'
 _module='fastparquet'
-pkgver='0.3.3'
+pkgver='0.4.0'
 pkgrel=1
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
@@ -20,7 +20,7 @@ optdepends=('python-snappy'
 license=('Apache')
 arch=('x86_64')
 source=("https://github.com/dask/fastparquet/archive/$pkgver.tar.gz")
-sha256sums=('c13bb15375d97e1f5f5d71731a3e8739cae9de9fc446cdfaec135a2ae93c1cd4')
+sha256sums=('34c0a94e36710cc7615770661888d9c610da3925cd2bd6164bc6d5682530814c')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
