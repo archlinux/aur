@@ -41,27 +41,15 @@
   }
 
   function serviceWorkerHack() {
-    const regexes = [
-      // en (enlish)
-      /whatsapp works with.*to use whatsapp.*update/i,
-      // pt (portuguese)
-      /o whatsapp funciona com.*para utilizar o whatsapp.*atualize/i,
-      // ge (german)
-      /whatsapp funktioniert mit.*um whatsapp zu benutzen.*aktualisiere/i,
-      // es (spanish)
-      /whatsapp funciona con.*para usar whatsapp.*actualiza/i,
-      // ca (catalan)
-      /whatsapp funciona amb.*per utilitzar whatsapp.*actualitza/i,
-    ];
-
-    for (const regex of regexes) {
-      if (document.body.innerText.replace(/\n/g, " ").search(regex) !== -1) {
-        navigator.serviceWorker.getRegistration().then(function (r) {
-          r.unregister();
-          document.location.reload();
-        });
-        return;
-      }
+    if (
+      document.querySelector(
+        "a[href='https://support.google.com/chrome/answer/95414']"
+      )
+    ) {
+      navigator.serviceWorker.getRegistration().then((registration) => {
+        registration.unregister();
+        document.location.reload();
+      });
     }
   }
 
