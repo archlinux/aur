@@ -1,0 +1,13 @@
+pkgbase = python-date2name
+	pkgdesc = Handling time-stamps and date-stamps in file names
+	pkgver = 2018.5.9.1
+	pkgrel = 1
+	url = https://github.com/novoid/date2name
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+
+pkgname = python-date2name
+
