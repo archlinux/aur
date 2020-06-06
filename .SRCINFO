@@ -8,6 +8,7 @@ pkgbase = msync-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	depends = curl
 	provides = msync
 	conflicts = msync
 	source = git+https://github.com/Kansattica/msync.git
