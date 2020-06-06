@@ -1,0 +1,112 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b7530e8f..4316a369 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -122,7 +122,7 @@ install(FILES ${CMAKE_SOURCE_DIR}/huggle_res/Resources/huggle3_newlogo.png DESTI
+ if (LINUX_SNAP)
+     install(DIRECTORY scripts/ DESTINATION bin/extensions FILES_MATCHING PATTERN "*.js")
+ else()
+-    install(DIRECTORY scripts/ DESTINATION share/huggle/extensions FILES_MATCHING PATTERN "*.js")
++    install(DIRECTORY scripts/ DESTINATION lib/huggle/extensions FILES_MATCHING PATTERN "*.js")
+ endif()
+ 
+ include(CPack)
+Submodule src/extensions/enwiki contains modified content
+diff --git a/src/extensions/enwiki/CMakeLists.txt b/src/extensions/enwiki/CMakeLists.txt
+index cbe5cce..396e013 100644
+--- a/src/extensions/enwiki/CMakeLists.txt
++++ b/src/extensions/enwiki/CMakeLists.txt
+@@ -60,5 +60,5 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_en DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_en DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_en DESTINATION lib/huggle/extensions)
+ endif()
+Submodule src/extensions/extension-flow contains modified content
+diff --git a/src/extensions/extension-flow/CMakeLists.txt b/src/extensions/extension-flow/CMakeLists.txt
+index 3744d6b..9a7ae91 100644
+--- a/src/extensions/extension-flow/CMakeLists.txt
++++ b/src/extensions/extension-flow/CMakeLists.txt
+@@ -54,6 +54,6 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_flow DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_flow DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_flow DESTINATION lib/huggle/extensions)
+ endif()
+ 
+Submodule src/extensions/extension-mass-delete contains modified content
+diff --git a/src/extensions/extension-mass-delete/CMakeLists.txt b/src/extensions/extension-mass-delete/CMakeLists.txt
+index 05fec89..400c28e 100644
+--- a/src/extensions/extension-mass-delete/CMakeLists.txt
++++ b/src/extensions/extension-mass-delete/CMakeLists.txt
+@@ -56,5 +56,5 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_nuke DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_nuke DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_nuke DESTINATION lib/huggle/extensions)
+ endif()
+Submodule src/extensions/extension-scoring contains modified content
+diff --git a/src/extensions/extension-scoring/CMakeLists.txt b/src/extensions/extension-scoring/CMakeLists.txt
+index f459515..af4a7e9 100644
+--- a/src/extensions/extension-scoring/CMakeLists.txt
++++ b/src/extensions/extension-scoring/CMakeLists.txt
+@@ -76,5 +76,5 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_scoring DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_scoring DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_scoring DESTINATION lib/huggle/extensions)
+ endif()
+Submodule src/extensions/extension-splitter-helper contains modified content
+diff --git a/src/extensions/extension-splitter-helper/CMakeLists.txt b/src/extensions/extension-splitter-helper/CMakeLists.txt
+index d56f8a5..9fcdf82 100644
+--- a/src/extensions/extension-splitter-helper/CMakeLists.txt
++++ b/src/extensions/extension-splitter-helper/CMakeLists.txt
+@@ -67,5 +67,5 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_sh DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_sh DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_sh DESTINATION lib/huggle/extensions)
+ endif()
+Submodule src/extensions/extension-thanks contains modified content
+diff --git a/src/extensions/extension-thanks/CMakeLists.txt b/src/extensions/extension-thanks/CMakeLists.txt
+index f4bfa1b..df38ff8 100644
+--- a/src/extensions/extension-thanks/CMakeLists.txt
++++ b/src/extensions/extension-thanks/CMakeLists.txt
+@@ -67,6 +67,6 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_thanks DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_thanks DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_thanks DESTINATION lib/huggle/extensions)
+ endif()
+ 
+Submodule src/extensions/mass-delivery contains modified content
+diff --git a/src/extensions/mass-delivery/CMakeLists.txt b/src/extensions/mass-delivery/CMakeLists.txt
+index 29c52fa..bb6a2f4 100644
+--- a/src/extensions/mass-delivery/CMakeLists.txt
++++ b/src/extensions/mass-delivery/CMakeLists.txt
+@@ -75,5 +75,5 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ if (LINUX_SNAP)
+     INSTALL(TARGETS huggle_md DESTINATION bin/extensions)
+ else()
+-    INSTALL(TARGETS huggle_md DESTINATION share/huggle/extensions)
++    INSTALL(TARGETS huggle_md DESTINATION lib/huggle/extensions)
+ endif()
+diff --git a/src/huggle_core/definitions_prod.hpp b/src/huggle_core/definitions_prod.hpp
+index 3e1a4319..8d69cb3b 100644
+--- a/src/huggle_core/definitions_prod.hpp
++++ b/src/huggle_core/definitions_prod.hpp
+@@ -216,7 +216,7 @@ namespace std { typedef decltype(nullptr) nullptr_t; }
+     #define HUGGLE_GLOBAL_EXTENSION_PATH            QCoreApplication::applicationDirPath() + "/extensions"
+ #elif defined __linux__
+     #define HUGGLE_UPDATER_PLATFORM_TYPE            "linux"
+-    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/local/share/huggle/extensions"
++    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/lib/huggle/extensions"
+ #elif defined HUGGLE_WIN
+     // This is needed by yaml cpp library, otherwise it won't build with MSVC
+     #define YAML_CPP_DLL
