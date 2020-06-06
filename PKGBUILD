@@ -3,8 +3,8 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r2406.aeae9df8
-pkgrel=2
+pkgver=r2449.3b6c3a3e
+pkgrel=3
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
@@ -14,10 +14,12 @@ makedepends=('ninja' 'git')
 source=(
   "git+https://github.com/sumneko/${_pkgname}.git"
   '0001-Fix-paths.patch'
+  '0002-Disable-Test-Target.patch'
   'wrapper'
 )
 sha256sums=('SKIP'
             'ef3dff01cd1804c0715ce2fc7d8b57dc32da364b272bbfa9e1f3cac40b55d6e9'
+            '7dde63f7c372a06ec951e705b5690ed5500a8dab601266dcca57d603cd0675a6'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver () {
@@ -33,10 +35,7 @@ prepare () {
   cd "${_pkgname}"
 
   git submodule update --init --recursive
-
-  for f in ${srcdir}/*.patch; do
-    git apply $f
-  done
+  git apply "${srcdir}"/*.patch
 }
 
 build () {
