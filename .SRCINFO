@@ -16,6 +16,7 @@ pkgbase = dave_gnukem
 	depends = sdl_mixer
 	provides = dave_gnukem
 	conflicts = dave_gnukem
+	conflicts = dave_gnukem-git
 	source = https://github.com/davidjoffe/dave_gnukem/archive/1.0.1.tar.gz
 	source = 1.0.1-data.tar.gz::https://github.com/davidjoffe/gnukem_data/archive/1.0.1.tar.gz
 	source = dave_gnukem-wrapper.sh
