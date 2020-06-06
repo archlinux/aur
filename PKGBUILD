@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 
 pkgname=bforartists-git
-pkgver=2.0.0.99980c7
+pkgver=2.1.0.413e886
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=()
 depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
-makedepends=('cmake' 'git' 'boost' 'mesa')
+makedepends=('cmake' 'git' 'boost' 'mesa' 'llvm')
 optdepends=('cuda')
 provides=('bforartists')
 conflicts=('bforartists')
