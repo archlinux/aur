@@ -50,24 +50,26 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-pari-2.11.3.patch
         sagemath-jedi-0.16.patch
         sagemath-sphinx-3.patch
-        sagemath-sympy-1.6.patch)
+        sagemath-sympy-1.6.patch
+        sagemath-flint-2.6.patch)
 sha256sums=('SKIP'
             '5034676c4ce46181723f261d6bd180a795adea417f485c5e3e361b3aaef498ec'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '1a98d031b896eebdbcb61f2f5d9bc8b5edbe766aac6d6cc2ff2e1fb736b5c098'
+            '3bbb83cfcd022b3a0c0efdac76c26feb7d94ce94c519e753dfc835e6c4ee6178'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
             'f9721c66d1a0267bb19923f5084d40f8121fcada6db1d1c37484dab70b655544'
             'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
-            '312cfbaa9e39bd0184cdee775d7225992d8a23ae72df03709c78d4ebcf8d3ed6'
+            'e55bb5df7d6ce65fc9d124b6b59407071f0c55d88f730e9467398f10cc87e66d'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'f6b3f52748d0f692f109c29724b402149b74960d8954e244ab770c85af832b6c'
             'fea8674782a398ead1b065e0d4b551be4e268c15fa336b91b9bb7e738163eaed'
             '688345dd88174cc82a196a9ecace86f3b4f28bb2fae2d7196a40a76ff724f92e'
-            'b15762a283b2dade0d5131c7b22b33f47bcbc1eca4975b1e00d85fa152299503'
+            'b59dacad45959a5dafa0075a2175206afc1780511566807a2277de0b804548f4'
             'c9fa4f136a8e4fa9832524bb0ee4a7fbb3c6e992595a3b10c7c627ba9161b4ce'
-            'ade7f86abc8b04b6a01c1a495b644a034d27bacdfdfa62813f4f8945bb96a8fe')
+            'ade7f86abc8b04b6a01c1a495b644a034d27bacdfdfa62813f4f8945bb96a8fe'
+            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
 
 pkgver() {
   cd sage
@@ -76,6 +78,26 @@ pkgver() {
 
 prepare(){
   cd sage
+
+# Upstream patches
+# use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
+  patch -p1 -i ../sagemath-cremona.patch
+# Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
+  patch -p1 -i ../sagemath-singular-4.1.2.patch
+# Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
+  patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# Fix doc build with sphinx 3 https://trac.sagemath.org/ticket/28856
+  patch -p1 -i ../sagemath-sphinx-3.patch
+# Fix warnings with matplotlib 3.2 https://trac.sagemath.org/ticket/29547
+  patch -p1 -i ../sagemath-matplotlib-3.2.patch
+# Port to sympy 1.6 changes https://trac.sagemath.org/ticket/29730
+  patch -p1 -i ../sagemath-sympy-1.6.patch
+# Sort dicts in doctests https://trac.sagemath.org/ticket/29042
+  patch -p1 -i ../sagemath-no-dict-sorting.patch
+# Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
+  patch -p1 -i ../sagemath-flint-2.6.patch
+# Fix deprecation warnings on autocompletion with jedi 0.16
+  patch -p1 -i ../sagemath-jedi-0.16.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
@@ -96,24 +118,6 @@ prepare(){
   patch -p1 -i ../sagemath-gap-4.11.patch
 # Fix doctests with pari 2.11.3
   patch -p1 -i ../sagemath-pari-2.11.3.patch
-# Fix deprecation warnings on autocompletion with jedi 0.16
-  patch -p1 -i ../sagemath-jedi-0.16.patch
-
-# Upstream patches  
-# use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
-  patch -p1 -i ../sagemath-cremona.patch
-# Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
-  patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
-  patch -p1 -i ../sagemath-ecl-sigfpe.patch
-# Fix doc build with sphinx 3 https://trac.sagemath.org/ticket/28856
-  patch -p1 -i ../sagemath-sphinx-3.patch
-# Fix warnings with matplotlib 3.2 https://trac.sagemath.org/ticket/29547
-  patch -p1 -i ../sagemath-matplotlib-3.2.patch
-# Port to sympy 1.6 changes https://trac.sagemath.org/ticket/29730
-  patch -p1 -i ../sagemath-sympy-1.6.patch
-# Sort dicts in doctests https://trac.sagemath.org/ticket/29042
-  patch -p1 -i ../sagemath-no-dict-sorting.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage

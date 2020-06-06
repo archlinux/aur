@@ -20,22 +20,6 @@ index a312548..d1c9c95 100644
  
  -  Using Singular's ``BrillNoether`` command (for details see the section
     Brill-Noether in the Singular online documentation
-diff --git a/src/doc/en/developer/coding_in_other.rst b/src/doc/en/developer/coding_in_other.rst
-index ee71373..799f16f 100644
---- a/src/doc/en/developer/coding_in_other.rst
-+++ b/src/doc/en/developer/coding_in_other.rst
-@@ -449,11 +449,6 @@ interface to Singular::
-           0
-     [2]:
-        [1]:
--          -2
--       [2]:
--          -1
--       [3]:
--          1
-     ...
- 
- From looking at the output, notice that our wrapper function will need
 diff --git a/src/sage/algebras/free_algebra.py b/src/sage/algebras/free_algebra.py
 index 2ba6b72..926ca07 100644
 --- a/src/sage/algebras/free_algebra.py

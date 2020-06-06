@@ -779,6 +779,15 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 45452c29d9..398774a985 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
+@@ -5202,7 +5202,7 @@ class GenericGraph(GenericGraph_pyx):
+         This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
+ 
+             sage: g.layout(layout = "planar", save_pos = True)
+-            {0: [1, 4], 1: [5, 1], 2: [0, 5], 3: [1, 0], 4: [1, 2], 5: [2, 1], 6: [4, 1]}
++            {0: [0, 5], 1: [1, 4], 2: [5, 1], 3: [3, 1], 4: [1, 0], 5: [2, 1], 6: [1, 3]}
+         """
+         deprecation(24494, 'This method is replaced by the method layout. '
+                            'Please use layout(layout="planar", save_pos=True) '
 @@ -5256,25 +5256,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
@@ -1214,7 +1223,7 @@ diff --git a/src/sage/modules/fg_pid/fgp_module.py b/src/sage/modules/fg_pid/fgp
 index 12087687dd..ade1b6cf3d 100644
 --- a/src/sage/modules/fg_pid/fgp_module.py
 +++ b/src/sage/modules/fg_pid/fgp_module.py
-@@ -1897,7 +1897,7 @@ class FGP_Module_class(Module):
+@@ -1898,7 +1898,7 @@ class FGP_Module_class(Module):
              sage: A = (ZZ**2) / span([[4,0],[0,3]], ZZ)
              sage: hash(A)
              1328975982 # 32-bit
