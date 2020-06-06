@@ -9,7 +9,7 @@ replaces=('kiwix-cli-git')
 depends=('kiwix-lib')
 makedepends=('meson')
 url='https://github.com/kiwix/kiwix-tools'
-source=("https://github.com/kiwix/kiwix-tools/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(950b30ccdce4ade6da72283ae1055a3de886ff2d2108df1c560e54d849716cdf)
 
 build() {
