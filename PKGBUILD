@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
-pkgver=2.1.2
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('c23d9a961132cd2592ce8f728ed7592091a8c2a1d94797facd93516ab0c9194bd5b90ba7a7d4e8aa778940bc4a23d4ac69507a9f150c3bf4e743c6659e545ccf'
+sha512sums=('a6a105676d8d24ec3414895cadc664829c5abc041d8614409e22d7964d7280e44df35ece5fca18a0cd127f65bd363abc1e5c36807b0031eabd6eb77c7effdfb8'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
             '247ba6576166dead08289b145ca126b6498c0731f9e4a5763b80d4a4cc3f057dffc6d8b697ed4fa2129a5b86c568ec5130fda25df30661a4f4c147d358f3ae5b'
@@ -55,6 +55,7 @@ build() {
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
         -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
+        -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
