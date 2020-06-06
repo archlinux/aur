@@ -3,7 +3,7 @@
 pkgname=dwm-syaoran-git
 _dir=dwm-syaoran
 pkgver=6.2.r60.eb07ded
-pkgrel=2
+pkgrel=1
 pkgdesc="This is my dwm (dynamic window manager) build."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/dwm-syaoran.git"
