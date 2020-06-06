@@ -1,7 +1,7 @@
 pkgbase = rethinkdb
 	pkgdesc = Distributed NoSQL database for realtime applications
 	pkgver = 2.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.rethinkdb.com
 	install = rethinkdb.install
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = rethinkdb
 	makedepends = git
 	makedepends = python2
 	makedepends = make
-	depends = protobuf
 	depends = curl
 	noextract = node-v6.11.0.tar.gz
 	options = !emptydirs
