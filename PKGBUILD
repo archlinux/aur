@@ -13,7 +13,7 @@ depends=('glibc' 'v2ray')
 provides=('v2raya')
 conflicts=('v2raya')
 
-sha_service=c949d0aef062c16e61f6ff39a058737303171197
+sha_service=75c7aa49017ac8573bd18b8c01e7529b0a20cdcc
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=9df77b489c86a212923edbc2092c1c7f49596a58
 
@@ -46,19 +46,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '96adb86884e1c21c5fc670983bdfe36f779270a0'
+    'a62b0bc9baf6275e18facd417b768da08019f78c'
 )
 sha1sums_x86_64=(
-    '5a0cd74e6286d64a000bf98b4f8deac816ae8835'
+    '716b5ed273147067b7ecb61934a6b9d206e8ba6a'
 )
 sha1sums_aarch64=(
-    'de02e3c61a2f29ecf6ff2b04257a6ed85104ee9d'
+    '8aa2fa4b568be294def1066bc94484ae72c03843'
 )
 sha1sums_armv6h=(
-    '678d5e064f10439cbbfa8a4ee57720e9d0eb54ce'
+    '96ff3664ccbffb780c206335761423f8c918d8ae'
 )
 sha1sums_armv7h=(
-    '678d5e064f10439cbbfa8a4ee57720e9d0eb54ce'
+    '96ff3664ccbffb780c206335761423f8c918d8ae'
 )
 
 package() {
