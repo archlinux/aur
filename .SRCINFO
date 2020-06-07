@@ -1,0 +1,20 @@
+pkgbase = feeluown-netease
+	pkgdesc = feeluown netease plugin
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-netease
+	arch = any
+	groups = feeluown-full
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = feeluown
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-marshmallow
+	depends = python-beautifulsoup4
+	source = https://files.pythonhosted.org/packages/source/f/fuo_netease/fuo_netease-0.4.2.tar.gz
+	sha256sums = e0b9e1132c64ee9d11a1d881d1418646c1bfd244bae6db42aed46427d1b568b2
+
+pkgname = feeluown-netease
+
