@@ -2,9 +2,9 @@
 
 pkgname=fluent-bit
 
-pkgmaj=1.2
-pkgver=1.2.2
-pkgrel=4
+pkgmaj=1.4
+pkgver=1.4.5
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
