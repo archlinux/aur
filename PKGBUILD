@@ -7,7 +7,7 @@
 _pkgname=8188fu
 pkgname="$_pkgname-dkms"
 pkgver=r7.2dd10a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for Realtek RTL8188FU USB wireless adapter'
 arch=('any')
 url='http://www.realtek.com.tw/'
@@ -17,10 +17,12 @@ makedepends=('git')
 install="${pkgname}.install"
 source=("$_pkgname::git+https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers.git"
         blacklist-r8188fu.conf
-        dkms.conf)
+        dkms.conf
+        linux-5.6.patch)
 sha256sums=('SKIP'
             '48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6'
-            'e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103')
+            'e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103'
+            '0bc53698eba30a8f635c595f905230d18371c1738903a1da80f9bbca58dd8ec5')
 
 
 
@@ -31,7 +33,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname/rtl$_pkgname"
-
+  local i;for i in "${source[@]}";do
+    case $i in
+      *.patch)
+        echo "Applying patch ${i}"
+        patch -p1 -i "${srcdir}/${i}"
+    esac
+  done
   # Disable power saving (possibly already done below?)
   sed -i 's/^CONFIG_POWER_SAVING \= y/CONFIG_POWER_SAVING = n/' Makefile
 }
