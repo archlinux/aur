@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r262.fce526e
+pkgver=r266.0767a9f
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -89,10 +89,8 @@ package() {
 
 	### cros-pulse-config
 
-	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/cros-pulse-config.service
-	ln -sf ../cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/cros-pulse-config.service
-	mkdir -p ${pkgdir}/usr/lib/systemd/user/pulseaudio.service.wants
-	ln -sf ../cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/pulseaudio.service.wants/cros-pulse-config.service
+	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/daemon.conf ${pkgdir}/etc/skel/.config/pulse/daemon.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/default.pa ${pkgdir}/etc/skel/.config/pulse/default.pa
 
 	### cros-sftp
 

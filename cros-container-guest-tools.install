@@ -32,6 +32,13 @@ cat << EOF
 
 	Please report any issues to the AUR page!
 
+	(!) Manual actions required:
+
+	1. Check if ~/.config/pulse directory is present. If not, execute
+	   cp -r /etc/skel/.config/pulse ~/.config
+
+	Restart Crostini after package was installed/updated and manual actions were done!
+
 EOF
 
 }
