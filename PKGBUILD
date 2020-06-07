@@ -1,52 +1,79 @@
-# Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Jesse Spangenberger <azulephoenix@gmail.com>
 
-pkgname=notepadqq-git
-_pkgname=notepadqq
+set -u
+pkgname=notepadqq
+pkgname+='-git'
 pkgver=2.0.0.beta.r5.g5553c0be
 pkgrel=1
-pkgdesc="A Linux clone of Notepad++"
-arch=('i686' 'x86_64')
-url="http://notepadqq.altervista.org/wp/"
+pkgdesc='Notepad++-like text editor for Linux'
+arch=('x86_64')
+arch+=('i686')
+#url='http://notepadqq.altervista.org/wp/'
+url='https://notepadqq.com/'
 license=('GPL3')
-depends=('qt5-webengine>=5.6' 'qt5-svg>=5.6' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'qt5-tools>=5.6')
-provides=('notepadqq')
-conflicts=('notepadqq-bin' 'notepadqq' 'notepadqq-common' 'notepadqq-src')
-install=${_pkgname}.install
-sha1sums=('SKIP'
-          'SKIP')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-svg' 'qt5-webkit')
+depends[0]='qt5-svg>=5.6'
+depends+=('qt5-webengine>=5.6' 'uchardet')
+makedepends=('git' 'qt5-tools')
+makedepends+=('qt5-websockets' 'qt5-tools>=5.6')
 options=('!emptydirs')
-
-source=("git://github.com/notepadqq/notepadqq.git"
-        "git://github.com/notepadqq/CodeMirror.git")
+options+=('!strip')
+provides=("notepadqq=${pkgver%%.r*}")
+conflicts=('notepadqq') # 'notepadqq-bin' 'notepadqq-common' 'notepadqq-src'
+#install="${pkgname#-git}.install"
+_srcdir="${pkgname%-git}"
+source=(
+  'git://github.com/notepadqq/notepadqq.git'
+  'git://github.com/notepadqq/CodeMirror.git'
+)
+md5sums=('SKIP'
+         'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	set -o pipefail
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  set -u
+  cd "${_srcdir}"
+  set -o pipefail
+  if ! git describe --long | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'; then
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
+  set +u
 }
 
 prepare() {
-  cd "${_pkgname}"
+  set -u
+  cd "${_srcdir}"
 
-  git config submodule.src/editor/libs/codemirror.url "${srcdir}/CodeMirror"
-  git submodule init
-  git submodule update
+  git config submodule.src/editor/libs/codemirror.url "$srcdir/CodeMirror"
+  git submodule update --init
+  #git submodule update
+  set +u
 }
 
 build() {
-	cd "${_pkgname}"
-	
-	qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease notepadqq.pro
+  set -u
+  cd "${_srcdir}"
 
-	make
-	
+  qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease notepadqq.pro
+
+  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
+    local _nproc="$(nproc)"
+    if [ "${_nproc}" -gt 8 ]; then
+      _nproc=8
+    fi
+    _mflags+=('-j' "${_nproc}")
+  fi
+  nice make -s -j "${_mflags[@]}"
+  set +u
 }
 
 package() {
-	cd "${_pkgname}"
+  set -u
+  cd "${_srcdir}"
 
-	make INSTALL_ROOT="${pkgdir}" install
+  make INSTALL_ROOT="$pkgdir" install
+  set +u
 }
-
+set +u

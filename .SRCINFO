@@ -1,28 +1,31 @@
 pkgbase = notepadqq-git
-	pkgdesc = A Linux clone of Notepad++
+	pkgdesc = Notepad++-like text editor for Linux
 	pkgver = 2.0.0.beta.r5.g5553c0be
 	pkgrel = 1
-	url = http://notepadqq.altervista.org/wp/
-	install = notepadqq.install
-	arch = i686
+	url = https://notepadqq.com/
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qt5-websockets
 	makedepends = qt5-tools>=5.6
-	depends = qt5-webengine>=5.6
 	depends = qt5-svg>=5.6
 	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	provides = notepadqq
-	conflicts = notepadqq-bin
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = qt5-webengine>=5.6
+	depends = uchardet
+	provides = notepadqq=2.0.0.beta
 	conflicts = notepadqq
-	conflicts = notepadqq-common
-	conflicts = notepadqq-src
 	options = !emptydirs
+	options = !strip
 	source = git://github.com/notepadqq/notepadqq.git
 	source = git://github.com/notepadqq/CodeMirror.git
-	sha1sums = SKIP
-	sha1sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = notepadqq-git
 
