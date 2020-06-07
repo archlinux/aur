@@ -1,0 +1,15 @@
+pkgbase = xframe
+	pkgdesc = C++ multi-dimensional labeled arrays and dataframe based on xtensor
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/xtensor-stack/xframe
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = gcc
+	depends = xtensor
+	source = xframe-0.3.0.tar.gz::https://github.com/xtensor-stack/xframe/archive/0.3.0.tar.gz
+	sha512sums = 880fe8ca00bd189a197cc71e5f32539562db69433fdfa03db5f0db8211230db36eb96757a5ca3c667ae1d4edc96eae38393718e7a1e3f7c1827130cf21579b07
+
+pkgname = xframe
+
