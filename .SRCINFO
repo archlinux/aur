@@ -1,6 +1,6 @@
 pkgbase = python-rasterio
 	pkgdesc = Python library for reading and writing geospatial raster data.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://rasterio.readthedocs.io/en/stable/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = python-rasterio
 	depends = python-cligj
 	depends = python-snuggs
 	depends = python-click-plugins
-	source = https://files.pythonhosted.org/packages/source/r/rasterio/rasterio-1.1.4.tar.gz
-	sha256sums = 5d7393f3a690a91813022452022df1d5a3a2c732019f24f2bd0b051fd47a03c1
+	source = https://files.pythonhosted.org/packages/source/r/rasterio/rasterio-1.1.5.tar.gz
+	sha256sums = ebe75c71f9257c780615caaec8ef81fa4602702cf9290a65c213e1639284acc9
 
 pkgname = python-rasterio
 
