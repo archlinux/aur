@@ -1,0 +1,38 @@
+/*
+ * The code contained herein is licensed under the GNU General Public
+ * License. You may obtain a copy of the GNU General Public License
+ * Version 2 or later at the following location:
+ *
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * Device tree overlay for Raspberry Pi devices with bluetooth to
+ * inform the kernel that a bluetooth controller can be accessed
+ * over serial using the main UART (pl011 UART, not mini-UART)
+ * via HCI. Assumes the main UART node is termed uart0.
+ * 
+ * Modified from mainline device tree source for Pi Zero W,
+ * bcm2835-rpi-zero-w.dts, 
+ * Copyright (C) 2017 Stefan Wahren <stefan.wahren@i2se.com>
+ *
+ * Tested on a Raspberry Pi Zero W.
+ *
+ * Copyright (C) 2018 Shenghao Yang <me@shenghaoyang.info>
+ *
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+        compatible = "brcm,bcm2708";
+        fragment@0 {
+                target-path = "uart0";
+                __overlay__ {
+                        bluetooth {
+                                compatible = "brcm,bcm43438-bt";
+                                max-speed = <2000000>; /* You can experiment with this */
+                                /* Other elements omitted, pins may be different on different PI models */
+                        };
+                };
+        };
+};

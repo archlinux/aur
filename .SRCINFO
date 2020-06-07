@@ -1,0 +1,19 @@
+pkgbase = bluetooth-raspberrypi
+	pkgdesc = Bluetooth support for Raspberry Pi
+	pkgver = 6
+	pkgrel = 3
+	url = https://github.com/RoEdAl/alarm-bluetooth-raspberrypi
+	install = bluetooth-raspberrypi.install
+	arch = any
+	license = GPL
+	makedepends = dtc
+	depends = firmware-raspberrypi>=4
+	conflicts = pi-bluetooth
+	options = !strip
+	source = bcmbt-overlay.dts
+	source = bluetooth-raspberrypi.install
+	sha256sums = 0ba43da86a934558eb8659daecc29186ccfc5864eca5b03c06afd7f62de954ae
+	sha256sums = 0dc3e5e8b966d122aa95bf6455360fd9a6efd3439e40f11bfe842282a12eb665
+
+pkgname = bluetooth-raspberrypi
+

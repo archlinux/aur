@@ -1,0 +1,10 @@
+post_install() {
+	echo
+	echo -e "\033[1;33mPlease add bcmbt overlay to /boot/config.txt:"
+	echo -e "\033[0;31mdtoverlay=bcmbt \033[0m"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
