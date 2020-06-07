@@ -62,7 +62,7 @@ pkgbase=linux-bcachefs-git
 pkgver=v5.6.16.arch1.r903063.c9b4a210f946
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.6.16.arch1
+_srcver_tag=v5.6.17.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -70,6 +70,7 @@ makedepends=(
     bc
     kmod
     libelf
+    pahole
     xmlto
     python-sphinx
     python-sphinx_rtd_theme
@@ -121,7 +122,7 @@ prepare() {
     # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     # git pull --no-edit --no-commit arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
     
-    msg2 "Pull tag from Linux stable upstream repository..."
+    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
     git fetch upstream_stable ${_srcver_tag//.arch*/}
     git merge --no-edit --no-commit FETCH_HEAD
@@ -215,7 +216,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -290,6 +291,9 @@ _package-headers() {
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+    
+    echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
