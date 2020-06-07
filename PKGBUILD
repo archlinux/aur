@@ -4,7 +4,7 @@
 
 pkgname=jrommanager
 _gitname=JRomManager
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
