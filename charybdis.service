@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=forking
 PIDFile=/run/charybdis/ircd.pid
-ExecStart=/usr/bin/charybdis-ircd
+ExecStart=/usr/bin/charybdis
 Restart=always
 User=charybdis
 Group=charybdis
