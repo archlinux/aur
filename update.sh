@@ -8,6 +8,7 @@ DEPENDS=(
     libnm-glib
     libnotify
     python-bottle
+    python-dataclasses-json
     python-dateutil
     python-deepdiff
     python-deprecated

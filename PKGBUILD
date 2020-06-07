@@ -4,7 +4,7 @@ pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
 pkgver='0.10.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
 depends=(
@@ -12,6 +12,7 @@ depends=(
     'libnm-glib'
     'libnotify'
     'python-bottle'
+    'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
     'python-deprecated'
