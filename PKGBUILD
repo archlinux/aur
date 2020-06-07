@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.r1.gd36b113
+pkgver=1.2
 pkgrel=1
 pkgdesc="Dependency graph of installed packages on your wallpaper."
 url="http://github.com/Kharacternyk/${_pkgname}"
