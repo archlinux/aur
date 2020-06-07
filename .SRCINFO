@@ -1,7 +1,7 @@
 pkgbase = ntfd-bin
 	pkgdesc = A lightweight notification daemon for fancy desktop integrations
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kamek-pf/ntfd
 	arch = x86_64
 	license = GPL

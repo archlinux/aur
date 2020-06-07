@@ -2,7 +2,7 @@
 
 pkgname=ntfd-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight notification daemon for fancy desktop integrations"
 depends=('ttf-weather-icons')
 arch=('x86_64')
