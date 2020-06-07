@@ -1,13 +1,13 @@
 pkgbase = cpick
 	pkgdesc = Extensive color picker in the terminal.
-	pkgver = 0.9.3
+	pkgver = v0.9.3
 	pkgrel = 1
 	url = https://gitlab.com/ethanbakerdev/cpick
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	depends = go
-	source = git+https://gitlab.com/ethanbakerdev/cpick.git
+	makedepends = go
+	source = git+https://gitlab.com/ethanbakerdev/cpick.git#tag=v0.9.3
 	sha256sums = SKIP
 
 pkgname = cpick
