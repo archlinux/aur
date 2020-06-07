@@ -1,7 +1,7 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=python-pywpsrpc
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python bindings for WPS Office RPC"
 url="https://github.com/timxx/pywpsrpc"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('qt5-base' 'wps-office')
 makedepends=('sip5' 'qt5-base')
 source=("https://pypi.python.org/packages/source/p/pywpsrpc/pywpsrpc-${pkgver}.tar.gz")
-sha256sums=('c9178a23286e05442c2c13229637142f0cff35a1d35a89e150dfa7cbc3538e2f')
+sha256sums=('ccd5e07dc817137f86f9af5a20bda9815aa62434b5c9067762d30e5779331372')
 
 build() {
     cd "${srcdir}/pywpsrpc-${pkgver}"
