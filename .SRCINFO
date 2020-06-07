@@ -1,0 +1,17 @@
+pkgbase = socomo
+	pkgdesc = Tool to visualize and maintain the composition of java code
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gdela/socomo
+	arch = any
+	license = MIT
+	depends = java-runtime>=8
+	depends = bash
+	noextract = socomo-2.1.0.jar
+	source = socomo-2.1.0.jar::https://github.com/gdela/socomo/releases/download/v2.1.0/socomo-standalone-2.1.0.jar
+	source = LICENSE::https://github.com/gdela/socomo/raw/master/license.md
+	sha256sums = f82f895ceecd2abd10a8438c94d94ac1fb145da7e0bfc9805c3d0b7fbbd52b9c
+	sha256sums = db03e299eba85a089575ee5d09be97e345aa80e5164a5ce5a58ed424b1059be9
+
+pkgname = socomo
+
