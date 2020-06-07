@@ -19,39 +19,39 @@ sha256sums=(SKIP)
 
 if [ $_plasma == true ]
 then
-    depends+=(knotifications kiconthemes)
+  depends+=(knotifications kiconthemes)
 fi
 
 pkgver() {
-    cd ${pkgname%-git}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # Clone submodules
 prepare() {
-    cd ${pkgname%-git}
+  cd ${pkgname%-git}
 
-    git submodule init
-    git submodule update
+  git submodule init
+  git submodule update
 }
 
 build() {
-    mkdir -p ${pkgname%-git}/build
-    cd ${pkgname%-git}/build
+  mkdir -p ${pkgname%-git}/build
+  cd ${pkgname%-git}/build
 
-    if [ $_plasma == true ]
-    then
-        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D PLASMA=ON ..
-    else
-        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
-    fi
+  if [ $_plasma == true ]
+  then
+      cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D PLASMA=ON ..
+  else
+      cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
+  fi
 
-    cmake --build .
+  cmake --build .
 }
 
 package() {
-    cd ${pkgname%-git}/build
+  cd ${pkgname%-git}/build
 
-    cmake --install .
-    rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
+  cmake --install .
+  rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
