@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
@@ -20,10 +20,10 @@ install=
 changelog=
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("3d96b3715c3cb48a35eda2b3a08e4e923f9e9c24fa05a4bbaf40c3dc954174f0")
+sha256sums=('a0b8cc43555a06b7964359c80dd35c8cfcbcdea1b2213b2e64378d5ea721c100')
 
 prepare() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 
 	sed -i "s/from distutils.core import setup/from setuptools import setup/" setup.py
 	sed -i "s/pygls>=0.8.1,<0.9.0/pygls>=0.8.1/" setup.py
