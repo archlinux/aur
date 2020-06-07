@@ -1,0 +1,14 @@
+pkgbase = ttf-pacifico
+	pkgdesc = Pacifico is an original and fun brush script handwriting font by Vernon Adams which was inspired by the 1950s American surf culture. It was redrawn by Jacques Le Bailly and expanded to Cyrillic by Botjo Nikoltchev and Ani Petrova.
+	pkgver = 3.000
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Pacifico
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = ttf-pacifico.zip::https://fonts.google.com/download?family=Pacifico
+	sha256sums = 576ca38f06e477cbe218af416657ec33b67bc98c5ddb626ebc8a1b2ab453e4b7
+
+pkgname = ttf-pacifico
+
