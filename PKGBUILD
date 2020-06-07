@@ -40,7 +40,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DFLB_TESTS_INTERNAL=Yes \
-        -DFLB_TESTS_RUTNIME=Yes \
+        -DFLB_IN_MQTT=Yes \
+        -DFLB_TLS=Yes \
+        -DFLB_ALL=Yes \
+        -DFLB_OUT_NATS=Yes \
         ..
     make
 }
