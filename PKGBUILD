@@ -2,7 +2,7 @@
 
 pkgbase=vibrant
 pkgname=(libvibrant vibrant-cli)
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
@@ -52,3 +52,4 @@ package_vibrant-cli() {
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+
