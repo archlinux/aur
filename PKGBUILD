@@ -1,6 +1,6 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 pkgname=swift-language-git
-pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r537.g072a459
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.04.a.r63.g932a91e0c56
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -16,24 +16,26 @@ backup=()
 options=()
 install=
 source=('git+https://github.com/apple/swift'
-        'llvm::git+https://github.com/apple/swift-llvm'
-        'clang::git+https://github.com/apple/swift-clang'
-        'lldb::git+https://github.com/apple/swift-lldb'
-        'cmark::git+https://github.com/apple/swift-cmark'
-        'llbuild::git+https://github.com/apple/swift-llbuild'
-        'swiftpm::git+https://github.com/apple/swift-package-manager'
-        'git+https://github.com/apple/swift-corelibs-xctest'
-        'git+https://github.com/apple/swift-corelibs-foundation')
+#        'llvm::git+https://github.com/apple/swift-llvm'
+#        'clang::git+https://github.com/apple/swift-clang'
+#        'lldb::git+https://github.com/apple/swift-lldb'
+#        'cmark::git+https://github.com/apple/swift-cmark'
+#        'llbuild::git+https://github.com/apple/swift-llbuild'
+#        'swiftpm::git+https://github.com/apple/swift-package-manager'
+#        'git+https://github.com/apple/swift-corelibs-xctest'
+#        'git+https://github.com/apple/swift-corelibs-foundation'
+       )
 noextract=()
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+        )
 
 pkgver() {
     cd "$srcdir/swift"
