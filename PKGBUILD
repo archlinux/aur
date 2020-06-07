@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=python-av1an-git
-pkgver=1.10.r14.gce65e84
+pkgver=1.10.r44.g15896f0
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -13,7 +13,8 @@ depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'ffmpeg' 'python-op
 optdepends=('aom: AOMENC encoder support'
             'svt-av1: SVT-AV1 encoder support'
             'rav1e: rav1e encoder support'
-            'libvpx: vpx encoder support')
+            'libvpx: vpx encoder support'
+            'vmaf: VMAF calculation support')
 provides=('python-av1an')
 conflicts=('python-av1an')
 source=("git+https://github.com/master-of-zen/Av1an.git")
