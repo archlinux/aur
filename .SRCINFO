@@ -1,0 +1,17 @@
+pkgbase = yawhich-key-git
+	pkgdesc = Yet another which-key but universal for all applications, desktop environment
+	pkgver = 0.7.0.r4.gc732ab9
+	pkgrel = 1
+	url = https://github.com/adelin-b/yawhich-key
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rofi
+	depends = yq2-bin
+	provides = yawhich-key
+	conflicts = yawhich-key
+	source = yawhich-key-git-0.7.0.r4.gc732ab9::git+https://github.com/adelin-b/yawhich-key.git
+	md5sums = SKIP
+
+pkgname = yawhich-key-git
+
