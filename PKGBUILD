@@ -49,6 +49,9 @@ sha256sums=('94c44101c3dd6774887029110269bbaf9aff68cce5ea0783588157cc08d82ed8'
             '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b')
 
 prepare() {
+    # not sure where diagnostics is included, pip install it
+    pip install diagnostics
+
     # Use directory names which build-script expects
     ln -sf llvm-project-swift-${_swiftver} llvm-project
 
