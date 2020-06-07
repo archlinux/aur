@@ -1,0 +1,15 @@
+pkgbase = rvgl-original
+	pkgdesc = RVGL for GNU/Linux. Includes original soundtrack.
+	pkgver = 1
+	pkgrel = 1
+	url = https://rvgl.re-volt.io
+	arch = x86_64
+	license = custom
+	depends = rvgl-bin
+	depends = rvgl-dcpack
+	depends = rvgl-soundtrack
+	provides = rvgl
+	conflicts = rvgl
+
+pkgname = rvgl-original
+
