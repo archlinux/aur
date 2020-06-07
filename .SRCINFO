@@ -2,14 +2,14 @@ pkgbase = qgnomeplatform
 	pkgdesc = Qt Platform Theme aimed to accomodate as much of GNOME settings as possible
 	pkgver = 0.6.1
 	pkgrel = 1
-	url = https://github.com/MartinBriza/QGnomePlatform
+	url = https://github.com/FedoraQt/QGnomePlatform
 	arch = x86_64
 	license = LGPL2.1
 	depends = qt5-base
 	depends = gtk3
 	depends = qt5-wayland
 	depends = qt5-x11extras
-	source = qgnomeplatform-0.6.1.tar.gz::https://github.com/MartinBriza/QGnomePlatform/archive/0.6.1.tar.gz
+	source = qgnomeplatform-0.6.1.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/0.6.1.tar.gz
 	sha256sums = b2630b56bd1d2798f5403a74ec53df694a91f239742f0086f3d565e28bc3382a
 
 pkgname = qgnomeplatform
