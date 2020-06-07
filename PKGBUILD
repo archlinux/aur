@@ -49,18 +49,6 @@ sha256sums=('94c44101c3dd6774887029110269bbaf9aff68cce5ea0783588157cc08d82ed8'
             '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b')
 
 prepare() {
-    # Use python2 where appropriate
-    find "$srcdir" -type f -print0 | \
-         xargs -0 sed -i 's|/usr/bin/env python$|&2|;s|/usr/bin/python$|&2|'
-    find "$srcdir/llvm-project-swift-${_swiftver}/lldb" -name Makefile -print0 | \
-         xargs -0 sed -i 's|python-config|python2-config|g'
-    sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
-         "$srcdir/swift-swift-${_swiftver}/CMakeLists.txt"
-    sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
-         "$srcdir/llvm-project-swift-${_swiftver}/lldb/CMakeLists.txt"
-    sed -i 's/\<python\>/&2/' \
-         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
-
     # Use directory names which build-script expects
     for sdir in llvm clang clang-tools-extra libcxx lldb compiler-rt
     do
