@@ -1,7 +1,7 @@
 pkgbase = recutils
 	pkgdesc = Set of tools and libraries to access plain text databases called recfiles.
 	pkgver = 1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/recutils/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,10 @@ pkgbase = recutils
 	checkdepends = check
 	depends = libgcrypt
 	source = https://ftp.gnu.org/gnu/recutils/recutils-1.8.tar.gz
-	md5sums = 0ec4f9046cc01092758be9c4988c6fb3
+	source = https://ftp.gnu.org/gnu/recutils/recutils-1.8.tar.gz.sig
+	validpgpkeys = BDFA5717FC1DD35C2C3832A23EF90523B304AF08
+	sha256sums = df8eae69593fdba53e264cbf4b2307dfb82120c09b6fab23e2dad51a89a5b193
+	sha256sums = SKIP
 
 pkgname = recutils
 
