@@ -80,23 +80,6 @@ prepare() {
     rm -rf swift swiftpm
     mv swift-swift-${_swiftver} swift
     mv swift-package-manager-swift-${_swiftver} swiftpm
-
-    # Fix wrong glibc include paths in glibc module map
-    ( cd swift && patch -p1 -i "$srcdir/glibc-includes.patch" )
-
-    # repl_swift requires -ldl
-    ( cd lldb && patch -p1 -i "$srcdir/repl_swift-dl.patch" )
-
-    # Fix compile/test errors with newer glibc (2.30)
-    # See https://github.com/apple/swift-package-manager/pull/2408
-    ( cd swiftpm && patch -p1 -i "$srcdir/swiftpm-glibc.patch" )
-    ( cd swift && patch -p1 -i "$srcdir/swift-tests-glibc.patch" )
-
-    # Fix Python 3.8 compatibility in unit tests
-    ( cd cmark && patch -p1 -i "$srcdir/cmark-python38.patch" )
-
-    # Fix sanitizer-common build with glibc 2.31 (backport LLVM D70662)
-    ( cd compiler-rt && patch -p1 -i "$srcdir/sanitizer-glibc2.31.patch" )
 }
 
 _common_build_params=(
