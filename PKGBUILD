@@ -1,24 +1,20 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
-_name=gzdoom
-pkgname=${_name}
-pkgver=4.3.3
-pkgrel=2
+pkgname=gzdoom
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
-license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('alsa-lib'
-         'fluidsynth>=2'
-         'gtk3'
+license=('BSD' 'GPL3' 'LGPL3')
+depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
-         'libsndfile'
-         'mpg123'
          'openal'
-         'sdl2')
+         'sdl2'
+         'zmusic')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -32,63 +28,45 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
-            'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
-replaces=("${_name}1")
-source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
-        "${_name}.desktop"
-        '0001-Fix-soundfont-search-path.patch')
+replaces=("gzdoom1")
+source=("gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
+        'gzdoom.desktop'
+        '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '11323f98caadb086b35cce1697744eeba53c96a3f4f9a8c9184ed23e6fb1ea61')
+            'ee6629e35d0422dff628cf715244a8a444b9cb9fac4e11f2b852ee7f23f4d587')
 
 prepare() {
-    cd $_name
-
-    patch -p1 -i"$srcdir"/0001-Fix-soundfont-search-path.patch
+    cd gzdoom
+    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
 }
 
 build() {
-    cd $_name
-
-    local _cflags="-ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/$_name\\\""
-    cmake -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
-          -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${_cflags}" \
-          -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,-z,noexecstack" \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DDYN_FLUIDSYNTH=OFF \
-          -DDYN_GTK=OFF \
-          -DDYN_MPG123=OFF \
-          -DDYN_OPENAL=OFF \
-          -DDYN_SNDFILE=OFF \
-          -DINSTALL_PATH=bin \
-          -DINSTALL_PK3_PATH=share/$_name \
-          .
-    make
+    cd gzdoom
+    mkdir -p build
+    cmake -B build \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/gzdoom\\\"" \
+          -D DYN_GTK=OFF \
+          -D DYN_OPENAL=OFF
+    make -C build
 }
 
 package() {
-    cd $_name
-
-    make install DESTDIR="$pkgdir"
-    install -D -m644 soundfonts/gzdoom.sf2 \
-            "$pkgdir"/usr/share/$_name/soundfonts/gzdoom.sf2
-    install -D -m644 fm_banks/GENMIDI.GS.wopl \
-            "$pkgdir"/usr/share/$_name/fm_banks/GENMIDI.GS.wopl
-    install -D -m644 fm_banks/gs-by-papiezak-and-sneakernets.wopn \
-            "$pkgdir"/usr/share/$_name/fm_banks/gs-by-papiezak-and-sneakernets.wopn
-
-    desktop-file-install --dir="$pkgdir"/usr/share/applications \
-                         "$srcdir"/${_name}.desktop
-    install -D -m644 src/posix/zdoom.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${_name}.xpm
-
-    install -d "$pkgdir"/usr/share/licenses
-    ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
+    cd gzdoom
+    install build/gzdoom -t "$pkgdir"/usr/bin -D
+    install build/gzdoom.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
+    desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
+    install docs/{console,rh-log,skins}.* -t "$pkgdir"/usr/share/doc/gzdoom -D -m 644
+    install build/{brightmaps,lights,game_support}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
+    install build/soundfonts/gzdoom.sf2 -t "$pkgdir"/usr/share/gzdoom/soundfonts -D -m 644
+    install build/fm_banks/* -t "$pkgdir"/usr/share/gzdoom/fm_banks -D -m 644
+    install src/posix/zdoom.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm -D -m 644
+    install docs/licenses/{bsd,fxaa,gdtoa,README}.* -t "$pkgdir"/usr/share/licenses/$pkgname -D -m 644
 }
