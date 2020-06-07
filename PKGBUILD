@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.7.arch1
+pkgver=5.7.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -70,6 +70,7 @@ makedepends=(
     bc
     kmod
     libelf
+    pahole
     xmlto
     python-sphinx
     python-sphinx_rtd_theme
@@ -103,7 +104,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '2b1da401945e5169ed6ca5fe077981fa1e7f9c01c0bae14144d708f4d566b052c336d59562585c93189f96b78caf964b8f3b7857fe6c076a5c2205fde81b5c84'
+            'dc32266d4d8145e27c4ec34307c884aa14c4819225000103e6da56fd08d85320ccd4a8b253c8f69c5946e1eec9b99745424a55777936f72351a983defc00ea9f'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'c4ca80f506c01bc1d13d9d7bc7336f9ff77a24aa8343c40cd02e073ae5cf280dbabf1a9ddbd2064edf054de383fd510a8915b7d8f47b5bc76147109a5f424e92'
             'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
@@ -213,14 +214,14 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
 
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -288,6 +289,9 @@ _package-headers() {
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+    
+    echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
