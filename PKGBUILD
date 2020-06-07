@@ -1,12 +1,12 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 # Based on upwork-appimage package on the AUR
-# 
+#
 # There's no central repository for AppImages, and no convention on
 # system-wide AppImage installations, so we're picking /opt/appimages.
 # We grab koreader.png and koreader.desktop from the AppImage, patch the koreader.desktop,
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
-pkgver=2020.04.1
+pkgver=2020.05
 pkgrel=1
 
 pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats"
@@ -20,7 +20,7 @@ noextract=("$_filename")
 options=('!strip')
 install=${pkgname}.install
 source=("http://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
-sha256sums=('34501dbd1ea04b7259bd44f49eec4ebb7f0fb797d50e65c01600f7a494afd16b')
+sha256sums=('eee40bf4c50a5efee07db3ed4a294b8e60cc8f9ba7e6984b0b3e70d82091a263')
 
 prepare() {
     cd "${srcdir}"
