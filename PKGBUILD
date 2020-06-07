@@ -1,6 +1,6 @@
 # Maintainer: Victor Perevozchikov webmaster@victor3d.com.br
 pkgname=mkvdts2ac3
-pkgver=1
+pkgver=r147.dffeb0f
 pkgrel=1
 pkgdesc='Bash script to convert DTS audio to AC3 within a matroska file.'
 arch=('any')
