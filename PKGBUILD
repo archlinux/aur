@@ -5,14 +5,13 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=76.0.1
+pkgver=77.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
-depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
-         ttf-font libpulse)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm git binutils)
@@ -22,23 +21,35 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        $pkgname.desktop
-        "git+https://gitlab.com/${pkgname}-community/browser/common.git"
-        "git+https://gitlab.com/${pkgname}-community/settings.git"
-        "remove_addons.patch")
-sha256sums=('f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3'
-            '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
-            'SKIP'
-            'SKIP'
-            '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0')
+source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+               $pkgname.desktop
+               "git+https://gitlab.com/${pkgname}-community/browser/common.git"
+               "git+https://gitlab.com/${pkgname}-community/settings.git"
+               "megabar.patch"
+               "remove_addons.patch")
+source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+                $pkgname.desktop
+                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
+                "git+https://gitlab.com/${pkgname}-community/settings.git"
+                "megabar.patch"
+                "remove_addons.patch"
+                arm.patch
+                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-if [[ $CARCH == 'aarch64' ]]; then
-  source+=(arm.patch
-           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
-  sha256sums+=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
-fi
+sha256sums_x86_64=('54256fc5f8e9c2e8129ef84773fae31fcfdaf95da6d4d03151f3939e9f749640'
+                   '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+                   'SKIP'
+                   'SKIP'
+                   '1130fb4c737ed7bb5f62e008133efe5d830b71e93af91f251dfeee68d190d27d'
+                   '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0')
+sha256sums_aarch64=('54256fc5f8e9c2e8129ef84773fae31fcfdaf95da6d4d03151f3939e9f749640'
+                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+                    'SKIP'
+                    'SKIP'
+                    '1130fb4c737ed7bb5f62e008133efe5d830b71e93af91f251dfeee68d190d27d'
+                    '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
+                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
   mkdir mozbuild
@@ -74,9 +85,7 @@ export MOZ_REQUIRE_SIGNING=0
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 
@@ -108,10 +117,6 @@ END
   export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
-  # do we need those for aarch64 as well?
-  # well, let's try it without them ^^
-  # patch -p1 -i ../fix-armhf-webrtc-build.patch
-  # patch -p1 -i ../webrtc-fix-compiler-flags-for-armhf.patch
 
 else
 
@@ -123,6 +128,10 @@ fi
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
+
+  # Disable (some) megabar functionality
+  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
+  patch -p1 -i ../megabar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
