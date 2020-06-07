@@ -56,19 +56,18 @@ check() {
 package() {
     cd $pkgname-$pkgver/build
 
+    # install binaries and libraries
     make DESTDIR="$pkgdir/" install
 
-    # put /lib/* in /usr/lib
-    mv $pkgdir/lib/* $pkgdir/usr/lib
-    rmdir $pkgdir/lib
+    # put systemd unit files in the right spot (make install puts them in /lib/systemd/system)
+    mkdir -p "$pkgdir/usr/lib/systemd/system"
+    mv "$pkgdir/lib/systemd/system/fluent-bit.service" "$pkgdir/usr/lib/systemd/system"
+    rm -rf "$pkgdir/lib"
 
-    # also put /usr/lib64/* in /usr/lib
-    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
-    rmdir $pkgdir/usr/lib64
-
-    # put /usr/lib/system/* in /usr/lib/systemd/system/* so that systemd can actually find it ...
-    mkdir -p $pkgdir/usr/lib/systemd
-    mv $pkgdir/usr/lib/system $pkgdir/usr/lib/systemd
+    # install license file and documentation
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 sha512sums=('98a971c62913db7b7689889c9365234e9d68e220dd510d45522150806cf1e23b208208f765b3d51519753071068114f6a3fc25f499688551a3b63df37c7f516e')
