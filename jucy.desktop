@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Jucy
+Comment=A client for the DirectConnect protocol
+Comment[de]=Ein Client für das DirectConnect Protokoll
+Comment[it]=Un client per la rete DirectConnect
+Comment[cs]=Klient pro DirectConnect protokol
+Comment[ru]=Клиент для протокола DC (ДиректКоннект)
+Exec=jucy
+Type=Application
+GenericName=A client for the DirectConnect protocol
+GenericName[de]=Ein Client für das DirectConnect Protokoll
+GenericName[it]=Un client per la rete DirectConnect
+GenericName[cs]=Klient pro DirectConnect protokol
+GenericName[ru]=Клиент для протокола DC (ДиректКоннект)
+Terminal=false
+Icon=jucy
+X-KDE-StartupNotify=false
+Categories=Network;FileTransfer;P2P;
