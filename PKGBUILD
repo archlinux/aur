@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=('e70c2b203c65729a321e479b858ec587')
 
 build() {
-  qmake "$srcdir/$pkgname-$pkgver"
+  qmake "$srcdir/$pkgname-$pkgver/source"
   make ${MAKEFLAGS}
 }
 
