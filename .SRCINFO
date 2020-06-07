@@ -1,0 +1,13 @@
+pkgbase = python-filetags
+	pkgdesc = Management of simple tags within file names
+	pkgver = 2019.12.22.1
+	pkgrel = 1
+	url = https://github.com/novoid/filetags
+	arch = any
+	license = GPL
+	makedepends = python-pip
+	depends = python
+	depends = python-clint
+
+pkgname = python-filetags
+
