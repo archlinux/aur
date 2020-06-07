@@ -1,7 +1,7 @@
 pkgbase = corectrl
 	pkgdesc = Core control application
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = corectrl
 	depends = qt5-quickcontrols2
 	depends = qt5-base>=5.9
 	depends = botan>=2.2.0
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
 	optdepends = vulkan-tools: For vulkaninfo
 	optdepends = mesa-demos: For glxinfo,
 	optdepends = util-linux: For lscpu
