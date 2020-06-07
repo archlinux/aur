@@ -2,7 +2,7 @@
 # Maintainer Solomon Choina <shlomochoina@gmail.com>
 pkgname=mono-nightly
 _pkgname=mono
-pkgver=6.7.0.356
+pkgver=6.13.0.588
 pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Nightly version."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('monodoc' 'mono')
 replaces=('mono')
 source=(https://download.mono-project.com/sources/mono/nightly/${_pkgname}-${pkgver}.tar.xz 
 	mono.binfmt.d)
-md5sums=('7b05c7d9a6690b4dda379542e00fd811'
+md5sums=('b0aab323c3a8c89b584830bb4b662618'
          'b9ef8a65fea497acf176cca16c1e2402')
 install="mono.install"
 
