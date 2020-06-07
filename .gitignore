@@ -1,0 +1,4 @@
+/blkdevsync/
+/pkg/
+/src/
+/*.pkg.tar.*
