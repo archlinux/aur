@@ -17,7 +17,7 @@ sha256sums=("5eeba828b5cbfb9def926b37cb0bab2595bef1d15f8e118b47ed23620e1f707b"
 package() {
     install -Dm755 ntfd "${pkgdir}/usr/bin/ntfd"
     mkdir -p ~/.config/ntfd
-    if [ ! -f "~/.config/ntfd/config.toml" ]; then
+    if [ ! -f ~/.config/ntfd/config.toml ]; then
         cp config.toml ~/.config/ntfd/config.toml
     fi
 }
