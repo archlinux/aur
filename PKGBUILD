@@ -33,7 +33,6 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -o bin/${_provider_bin} cmd/${_provider_bin}/*
     go build -o bin/${_provisioner_bin} cmd/${_provisioner_bin}/*
 }
