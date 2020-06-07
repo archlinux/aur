@@ -1,15 +1,15 @@
 pkgbase = xtensor
-	pkgdesc = QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing.
-	pkgver = 0.21.4
+	pkgdesc = C++ tensors with broadcasting and lazy computing
+	pkgver = 0.21.5
 	pkgrel = 1
-	url = https://github.com/QuantStack/xtensor
+	url = https://github.com/xtensor-stack/xtensor
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = gcc
 	makedepends = cmake
 	depends = xtl
-	source = xtensor-0.21.4.tar.gz::https://github.com/QuantStack/xtensor/archive/0.21.4.tar.gz
-	sha512sums = 8f22475b5aad1c9b184950021a256d711ca9d4be799d2e55b37b943d6bcc614797105a18fcf8cbdce9544c597256f9c4136ac5377a1795077dfe904f8b00cc55
+	source = xtensor-0.21.5.tar.gz::https://github.com/xtensor-stack/xtensor/archive/0.21.5.tar.gz
+	sha512sums = d06f96225bf82ead7dfcc202a3bfdc61b99e470a4e5ae29f3108c51607e8b2f82e2fc2250ece20e42224d37a464d8b56d212b792e26c5d80c6a01328cf7506c8
 
 pkgname = xtensor
 
