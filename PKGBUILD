@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=crow-translate-git
-pkgver=2.3.2.r0.g207e452
+pkgver=2.3.2.r1.g2a3aa55
 pkgrel=1
 pkgdesc='A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more'
 arch=(x86_64)
@@ -22,20 +22,22 @@ pkgver() {
 # Clone submodules
 prepare() {
   cd ${pkgname%-git}
-  
+
   git submodule init
   git submodule update
 }
 
 build() {
-  cd ${pkgname%-git}
-  
-  qmake
-  make
+  mkdir -p ${pkgname%-git}/build
+  cd ${pkgname%-git}/build
+
+  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
+  cmake --build .
 }
 
 package() {
-  cd ${pkgname%-git}
-  
-  make INSTALL_ROOT="$pkgdir/" install
-} 
+  cd ${pkgname%-git}/build
+
+  cmake --install .
+  rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
+}
