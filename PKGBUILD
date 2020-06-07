@@ -4,8 +4,8 @@
 pkgname=sharedaccess-git
 provides=("sharedaccess")
 conflicts=("sharedaccess")
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="C++17 library to make sharing a resource with multiple threads easier."
 url="https://gitlab.com/patlefort/sharedaccess"
 license=("GPL3")
