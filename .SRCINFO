@@ -1,0 +1,15 @@
+pkgbase = terminatorx
+	pkgdesc = Turntable scratching synthesizer
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://terminatorx.org/
+	arch = x86_64
+	license = GPL2
+	depends = mpg123
+	depends = sox
+	depends = vorbis-tools
+	source = https://terminatorx.org/dist/terminatorX-4.0.1.tar.gz
+	sha512sums = dae7d401870db39692d57e1fe5df47be7b50179a8cd739b60bdfda211cbe29e8abdc116bda23a286ddf49533e76175ac2a5811e0516b1a7d50b7873f7db4715b
+
+pkgname = terminatorx
+
