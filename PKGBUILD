@@ -10,10 +10,10 @@ pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
-depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
+depends=('python' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libblocksruntime')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python2-six' 'perl'
-             'python2-sphinx' 'python2-requests' 'rsync')
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python-six' 'perl'
+             'python-sphinx' 'python-requests' 'rsync')
 
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
