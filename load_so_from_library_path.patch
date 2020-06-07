@@ -1,0 +1,73 @@
+Author: Andreas Rönnquist <gusnan@debian.org>
+Description: Load lexilla so from /usr/lib/scite/
+ Updates the source to be able to put libraries in /usr/lib/scite, and
+ still load them poperly in SciTE.
+--- a/scintilla/gtk/makefile
++++ b/scintilla/gtk/makefile
+@@ -184,7 +184,7 @@
+ 	$(RANLIB) $@
+ 
+ $(COMPONENT): $(SRC_OBJS) $(LEXLIBS_OBJS) $(GTK_OBJS) $(MARSHALLER)
+-	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@ $(CONFIGLIB)
++	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@ $(CONFIGLIB) -Wl,-rpath,/usr/lib/scite -L/usr/lib/scite
+ 
+ Catalogue.o: Catalogue.cxx
+ 	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) -D SCI_LEXER -D SCI_EMPTYCATALOGUE -c $< -o $@
+--- a/scite/gtk/makefile
++++ b/scite/gtk/makefile
+@@ -45,6 +45,7 @@
+ datadir=$(prefix)/share
+ pixmapdir=$(datadir)/pixmaps
+ bindir=$(prefix)/bin
++libdir=$(prefix)/lib/scite
+ SYSCONF_PATH=$(prefix)/share/scite
+ 
+ INSTALL=install
+@@ -149,7 +150,7 @@
+ 	Utf8_16.o
+ 
+ $(PROG): SciTEGTK.o GUIGTK.o Widget.o DirectorExtension.o $(SRC_OBJS) $(LUA_OBJS)
+-	$(CXX) $(BASE_FLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
++	$(CXX) $(BASE_FLAGS) $(LDFLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers -Wl,-rpath,/usr/lib/scite $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
+ 
+ # Automatically generate header dependencies with "make deps"
+ include deps.mak
+@@ -158,11 +159,11 @@
+ # This is OK - just means no SciTE in the Gnome Applications menu
+ # Dead:	install -D SciTEGTK.properties $(SYSCONF_PATH)/SciTEGlobal.properties
+ install:
+-	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(SYSCONF_PATH)
++	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(libdir) $(DESTDIR)$(SYSCONF_PATH)
+ 
+ 	$(INSTALL) -m 755 $(PROG) $(DESTDIR)$(bindir)
+-	$(INSTALL) -m 755 $(COMPONENT) $(DESTDIR)$(bindir)
+-	$(INSTALL) -m 755 $(LEXILLA) $(DESTDIR)$(bindir)
++	$(INSTALL) -m 755 $(COMPONENT) $(DESTDIR)$(libdir)
++	$(INSTALL) -m 755 $(LEXILLA) $(DESTDIR)$(libdir)
+ 
+ 	for files in $(srcdir)/../src/*.properties $(srcdir)/../doc/*.html $(srcdir)/../doc/SciTEIco.png $(srcdir)/../doc/PrintHi.png $(srcdir)/../doc/SciTEIndicators.png; \
+ 	do \
+@@ -177,9 +178,9 @@
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(bindir)/SciTE
+-	rm -f $(DESTDIR)$(bindir)/libscintilla.so
+-	rm -f $(DESTDIR)$(bindir)/liblexilla.so
+-	rm -rf $(DESTDIR)$(SYSCONF_PATH)
++	rm -f $(DESTDIR)$(libdir)/libscintilla.so
++	rm -f $(DESTDIR)$(libdir)/liblexilla.so
++	rm -rf $(DESTDIR)$(SYSCONF_PATH) $(DESTDIR)$(libdir)
+ ifdef gnomeprefix
+ 	rm -f $(DESTDIR)$(datadir)/applications/SciTE.desktop
+ 	rm -f $(DESTDIR)$(pixmapdir)/Sci48M.png
+--- a/scite/gtk/SciTEGTK.cxx
++++ b/scite/gtk/SciTEGTK.cxx
+@@ -5463,7 +5463,7 @@
+ 		executableDirectory = FilePath(selfExe).Directory();
+ 	}
+ #endif
+-	LexillaSetDefaultDirectory(executableDirectory.AsInternal());
++	LexillaSetDefaultDirectory("/usr/lib/scite/");
+ 
+ 	// Get this now because gtk_init() clears it
+ 	const gchar *startup_id = g_getenv("DESKTOP_STARTUP_ID");
