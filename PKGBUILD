@@ -11,7 +11,7 @@ url="https://github.com/devture/matrix-synapse-shared-secret-auth"
 arch=('any')
 license=('AGPL')
 makedepends=('python-setuptools')
-depends=('python')
+depends=('python', 'python-twisted')
 source=("git+https://github.com/devture/${_name}.git")
 sha256sums=(SKIP)
 
