@@ -1,20 +1,19 @@
 pkgbase = gsettings-desktop-schemas-dev
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.33.0
+	pkgver = 3.36.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
-	arch = x86_64
+	arch = any
 	license = GPL
+	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = meson
-	makedepends = gobject-introspection
 	depends = glib2
-	depends = intltool
-	optdepends = adobe-source-code-pro-fonts: default monospace font
-	provides = gsettings-desktop-schemas
-	conflicts = gsettings-desktop-schemas
-	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=3.33.0
-	sha256sums = SKIP
+	depends = dconf
+	depends = cantarell-fonts
+	depends = adobe-source-code-pro-fonts
+	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=4f18b55461a92488722a0209bdacbd6a6a1d1bdd
+	sha512sums = SKIP
 
 pkgname = gsettings-desktop-schemas-dev
 
