@@ -10,7 +10,7 @@ pkgbase = pleroma
 	makedepends = unzip
 	makedepends = curl
 	depends = ncurses
-	depends = postgresql
+	optdepends = postgresql: Pleroma Database for storage
 	provides = pleroma
 	conflicts = pleroma-git
 	source = pleroma.zip::https://git.pleroma.social/api/v4/projects/2/jobs/artifacts/stable/download?job=amd64

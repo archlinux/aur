@@ -33,7 +33,7 @@ post_install() {
 	chown -R pleroma /etc/pleroma
 
 	printf "\n"
-	printf "The user should run the following commands\n\n"
+	printf "The user should run the following commands, the second two only if postgres is installed\n\n"
 
 	printf '>>> sudo -Hu pleroma -s /bin/bash /opt/pleroma/bin/pleroma_ctl instance gen --output /etc/pleroma/config.exs --output-psql /tmp/setup_db.psql\n'
 	printf '>>> sudo -Hu postgres -s /bin/bash psql -f /tmp/setup_db.psql\n'
