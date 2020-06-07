@@ -1,0 +1,19 @@
+pkgbase = openbeans-bin
+	pkgdesc = An IDE distribution. It packages the best there is in the ecosystem, polishes it, fixes minor annoyances and serves them to you in a clean bundle. Formerly CoolBeans
+	pkgver = 2019.12
+	pkgrel = 1
+	url = http://www.openbeans.org
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = java-environment>=8
+	depends = lib32-gcc-libs
+	depends = python
+	depends = bash
+	provides = openbeans
+	options = !strip
+	source = openbeans-bin-2019.12.tgz::https://github.com/OpenBeans/OpenBeans/releases/download/2019.12/OpenBeans-2019.12.tgz
+	sha256sums = 003462dbafde3d0b9779dfcbfbfebd9f5f085473a92639d481a8ab6015f0fe0d
+
+pkgname = openbeans-bin
+
