@@ -1,0 +1,13 @@
+pkgbase = sharedaccess
+	pkgdesc = C++17 library to make sharing a resource with multiple threads easier.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/patlefort/sharedaccess
+	arch = any
+	license = GPL3
+	optdepends = boost: provide upgradeable locks
+	source = https://gitlab.com/patlefort/sharedaccess/-/archive/1.1.0/sharedaccess-1.1.0.tar.gz
+	sha256sums = 2533beb088e961f6eed43644258e2e8a322e5a314d797b4d49fced6395fbce61
+
+pkgname = sharedaccess
+
