@@ -1,15 +1,24 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
-	pkgver = 1.2.2
-	pkgrel = 4
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = https://fluentbit.io/
 	arch = x86_64
 	license = Apache
+	checkdepends = gtest
+	checkdepends = doxygen
+	checkdepends = graphviz
 	makedepends = cmake
+	makedepends = postgresql-libs
+	makedepends = postgresql
+	makedepends = python
+	makedepends = valgrind
+	makedepends = gcc8
+	depends = systemd-libs
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = https://fluentbit.io/releases/1.2/fluent-bit-1.2.2.tar.gz
-	md5sums = 761ca237b4a96491fa157f1dd9d0d09e
+	source = https://fluentbit.io//releases/1.4/fluent-bit-1.4.5.tar.gz
+	sha512sums = 98a971c62913db7b7689889c9365234e9d68e220dd510d45522150806cf1e23b208208f765b3d51519753071068114f6a3fc25f499688551a3b63df37c7f516e
 
 pkgname = fluent-bit
 

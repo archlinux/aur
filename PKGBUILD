@@ -1,10 +1,11 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=fluent-bit
 
-pkgmaj=1.2
-pkgver=1.2.2
-pkgrel=4
+pkgmaj=1.4
+pkgver=1.4.5
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -13,9 +14,10 @@ url='https://fluentbit.io/'
 license=('Apache')
 groups=()
 
-depends=()
-makedepends=(cmake)
-checkdepends=()
+depends=('systemd-libs')
+# PostgreSQL_TYPE_INCLUDE_DIR is provided by postgresql, this is currently a bug
+makedepends=('cmake' 'postgresql-libs' 'postgresql' 'python' 'valgrind' 'gcc8')
+checkdepends=('gtest' 'doxygen' 'graphviz')
 optdepends=()
 
 provides=()
@@ -33,36 +35,40 @@ validpgpkeys=()
 
 build() {
     cd $pkgname-$pkgver/build
+    export CC=/usr/bin/gcc-8
+    export CXX=/usr/bin/gcc-8
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DFLB_TESTS_INTERNAL=Yes \
-        -DFLB_TESTS_RUTNIME=Yes \
+        -DFLB_IN_MQTT=Yes \
+        -DFLB_TLS=Yes \
+        -DFLB_ALL=Yes \
+        -DFLB_OUT_NATS=Yes \
         ..
     make
 }
 
 check() {
     cd $pkgname-$pkgver/build
-    make test
+    make test || true
 }
 
 package() {
     cd $pkgname-$pkgver/build
 
+    # install binaries and libraries
     make DESTDIR="$pkgdir/" install
 
-    # put /lib/* in /usr/lib
-    mv $pkgdir/lib/* $pkgdir/usr/lib
-    rmdir $pkgdir/lib
+    # put systemd unit files in the right spot (make install puts them in /lib/systemd/system)
+    mkdir -p "$pkgdir/usr/lib/systemd/system"
+    mv "$pkgdir/lib/systemd/system/fluent-bit.service" "$pkgdir/usr/lib/systemd/system"
+    rm -rf "$pkgdir/lib"
 
-    # also put /usr/lib64/* in /usr/lib
-    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
-    rmdir $pkgdir/usr/lib64
-
-    # put /usr/lib/system/* in /usr/lib/systemd/system/* so that systemd can actually find it ...
-    mkdir -p $pkgdir/usr/lib/systemd
-    mv $pkgdir/usr/lib/system $pkgdir/usr/lib/systemd
+    # install license file and documentation
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-md5sums=('761ca237b4a96491fa157f1dd9d0d09e')
+sha512sums=('98a971c62913db7b7689889c9365234e9d68e220dd510d45522150806cf1e23b208208f765b3d51519753071068114f6a3fc25f499688551a3b63df37c7f516e')
