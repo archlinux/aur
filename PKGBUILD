@@ -1,6 +1,6 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=prysm
-pkgver=1.0.0_alpha.8
+pkgver=1.0.0_alpha.9
 pkgrel=2
 _bazelver=3.0.0
 pkgdesc="go implementation of the Ethereum 2.0 blockchain"
