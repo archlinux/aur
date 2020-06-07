@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zen
-pkgver=5.7.zen1
+pkgver=5.7.1.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -9,7 +9,7 @@ url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -26,7 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '1810a587d97307e506b1e4d3901b9d1c002f7b44f9c272abf91fe05ff363c010'
+            '761ee8a79e82e0e89190e3c1c7d6b7fe64be4338f614ae6a9b2da8683a31d03d'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -70,6 +70,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=()
 
   cd $_srcname
   local kernver="$(<version)"
@@ -84,7 +85,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -159,6 +160,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
