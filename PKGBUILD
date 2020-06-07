@@ -1,6 +1,7 @@
 # Maintainer: j.e. <patriot.game@gmail.com>
 # Contributer: j.b.
 pkgname=yoink
+pkgdesc="Update all AUR packages in a target directory."
 pkgver=0.0.2
 pkgrel=1
 url="https://github.com/jpe90/yoink"
