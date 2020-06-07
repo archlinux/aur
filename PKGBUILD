@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer : bartus <arch-local-repo(at).bartus.33mail.com>
 # Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
 # Contributor : kikadf <kikadf.01@gmail.com>
@@ -10,7 +11,7 @@
 
 pkgname=megasync-nopdfium
 pkgver=4.3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync)
@@ -23,10 +24,11 @@ makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
+        "qt5_5.15.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
-            )
+            '27cf5f69ed40ae02e2a4145ccb4931834a60c32d907b083e8b3db626c3062562')
 
 prepare() {
     cd "MEGAsync"
@@ -37,6 +39,8 @@ prepare() {
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
     sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
+
+    git -C "$srcdir"/MEGAsync apply "$srcdir"/qt5_5.15.patch
 }
 
 build() {
