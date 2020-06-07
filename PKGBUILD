@@ -12,7 +12,7 @@ _pkgver=3.10beta
 pkgrel=1
 pkgdesc="A free GUI for chess"
 arch=('x86_64')
-url="http://www.playwitharena.com/"
+url="http://www.playwitharena.de/"
 license=('custom')
 install='arena.install'
 
