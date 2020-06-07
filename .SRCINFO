@@ -1,6 +1,6 @@
 pkgbase = prismatik-psieg-bin
 	pkgdesc = A controller for usb driven LED backlights. An unofficial fork.
-	pkgver = 5.11.2.19
+	pkgver = 5.11.2.23
 	pkgrel = 1
 	url = https://github.com/psieg/Lightpack
 	install = prismatik.install
@@ -11,8 +11,8 @@ pkgbase = prismatik-psieg-bin
 	provides = lightpack
 	provides = prismatik
 	conflicts = prismatik
-	source = https://github.com/psieg/Lightpack/releases/download/5.11.2.19/prismatik_5.11.2.19_amd64.deb
-	sha256sums = 07248fe7d9950747b6c73bb0b382dfd3b84219d8675b65c3a5f08b5bc83d1ac8
+	source = https://github.com/psieg/Lightpack/releases/download/5.11.2.23/prismatik_5.11.2.23_amd64.deb
+	sha256sums = cde00d39ae695edf71c0c5e71958ed3304f6321049ec877abfa4419d55550ab4
 
 pkgname = prismatik-psieg-bin
 
