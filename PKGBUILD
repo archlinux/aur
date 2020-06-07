@@ -3,8 +3,8 @@
 pkgname=naiveproxy-bin
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=81.0.4044.92
-pkgrel=1
+pkgver=83.0.4103.61
+pkgrel=2
 arch=('x86_64' 'i386' 'i686' 'pentium4' 'aarch64' 'arm' 'armv7h')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -30,7 +30,7 @@ esac
 source=( ${_pkgname}-${pkgver}-${pkgrel}-${_arch}.tar.gz::https://github.com/klzgrad/naiveproxy/releases/download/v${pkgver}-${pkgrel}/naiveproxy-v${pkgver}-${pkgrel}-linux-${_arch}.tar.xz)
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP')
+md5sums=('ea292fa2f79e384126d56afa059652e9')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-git')
 
