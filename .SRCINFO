@@ -1,0 +1,15 @@
+pkgbase = terraform-provider-proxmox-git
+	pkgdesc = Terraform provider plugin for Proxmox
+	pkgver = r218.bcb3160
+	pkgrel = 1
+	url = https://github.com/Telmate/terraform-provider-proxmox
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = terraform-provider-proxmox
+	source = git+https://github.com/Telmate/terraform-provider-proxmox.git
+	sha256sums = SKIP
+
+pkgname = terraform-provider-proxmox-git
+
