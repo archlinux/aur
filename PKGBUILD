@@ -2,19 +2,15 @@
 
 pkgname=netvfy-agent-git
 srcgiturl=https://github.com/netvfy/netvfy-agent
-pkgver=v1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Netvfy - Connect to your secure virtual network."
 arch=('i686' 'x86_64')
-url="https://my.netvfy.org/"
+url="http://netvfy.com"
 license=('Unknown Free')
 depends=('jansson' 'curl' 'libevent' 'openssl')
-optdepends=()
+optdepends=() # 'qt4'
 makedepends=('git' 'scons' 'cmake')
-# - libevent-dev
-# - libssl-dev
-# - libjansson-dev
-# - libcurl4-openssl-dev)
 source=("${pkgname}::git+${srcgiturl}.git")
 md5sums=('SKIP')
 
@@ -34,6 +30,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   set -e
+  git checkout master
   git submodule update --init --recursive
 
   pushd tapcfg
@@ -48,7 +45,7 @@ build() {
   mkdir ${srcdir}/${pkgname}/build
   cd ${srcdir}/${pkgname}/build
   cmake .. -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DWITH_GUI=OFF
-  make nvagent
+  make
   echo ======================== build completed ========================
 }
 
@@ -60,7 +57,7 @@ package() {
   echo "#!/bin/sh
   sudo chmod 666 /dev/net/tun
   sudo setcap cap_net_bind_service,cap_net_admin=ep /usr/bin/netvfy-agent
-  " > ${pkgdir}/usr/bin/netvirt-allow_user
+  " > ${pkgdir}/usr/bin/netvfy-allow_user
 
   mkdir -p ${pkgdir}/usr/lib/systemd/system
 
@@ -72,7 +69,8 @@ After=network.target
 
 [Service]
 Environment="HOME=/root"
-ExecStart=/usr/bin/netvfy-agent
+# run as root with -k provisioning_key and set proper networkname
+ExecStart=/usr/bin/netvfy-agent -c mynetwork
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
