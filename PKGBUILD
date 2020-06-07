@@ -65,7 +65,7 @@ build() {
     fi
     _mflags+=('-j' "${_nproc}")
   fi
-  nice make -s -j "${_mflags[@]}"
+  nice make -s "${_mflags[@]}"
   set +u
 }
 
