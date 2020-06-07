@@ -9,19 +9,19 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index 2bba9c54..1b7e5530 100644
+index 46b33d98..b3163cbe 100644
 --- a/package.json
 +++ b/package.json
-@@ -77,7 +77,7 @@
-     "electron-mocha": "8.1.1",
-     "electron-notarize": "0.1.1",
+@@ -78,7 +78,7 @@
+     "curve25519-n": "https://github.com/scottnonnenberg-signal/node-curve25519.git#3e94f60bc54b2426476520d8d1a0aa835c25f5cc",
+     "draft-js": "0.10.5",
      "emoji-datasource": "5.0.1",
 -    "emoji-datasource-apple": "5.0.1",
 +    "emoji-datasource-google": "5.0.1",
      "emoji-regex": "8.0.0",
      "fast-glob": "3.2.1",
      "filesize": "3.6.1",
-@@ -358,8 +358,8 @@
+@@ -369,8 +369,8 @@
        "sticker-creator/dist/**",
        "!node_modules/emoji-datasource/emoji_pretty.json",
        "!node_modules/emoji-datasource/**/*.png",
@@ -33,7 +33,7 @@ index 2bba9c54..1b7e5530 100644
        "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
        "!**/node_modules/.bin",
 diff --git a/ts/components/emoji/lib.ts b/ts/components/emoji/lib.ts
-index 47b7f0b0..60996d4b 100644
+index 49704d80..4c1157bc 100644
 --- a/ts/components/emoji/lib.ts
 +++ b/ts/components/emoji/lib.ts
 @@ -69,7 +69,7 @@ export type EmojiData = {
@@ -55,12 +55,12 @@ index 47b7f0b0..60996d4b 100644
  
  const imageQueue = new PQueue({ concurrency: 10 });
 diff --git a/yarn.lock b/yarn.lock
-index 45dbb680..e9cc1e5c 100644
+index 17151421..32b3ebaa 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -6227,10 +6227,10 @@ elliptic@^6.0.0:
-     minimalistic-assert "^1.0.0"
-     minimalistic-crypto-utils "^1.0.0"
+@@ -6510,10 +6510,10 @@ email-validator@^2.0.4:
+   resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+   integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
  
 -emoji-datasource-apple@5.0.1:
 +emoji-datasource-google@5.0.1:
