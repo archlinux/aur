@@ -50,10 +50,8 @@ sha256sums=('94c44101c3dd6774887029110269bbaf9aff68cce5ea0783588157cc08d82ed8'
 
 prepare() {
     # Use directory names which build-script expects
-    for sdir in llvm clang clang-tools-extra libcxx lldb compiler-rt
-    do
-        ln -sf llvm-project-swift-${_swiftver}/${sdir} ${sdir}
-    done
+    ln -sf llvm-project-swift-${_swiftver} llvm-project
+
     for sdir in cmark llbuild
     do
         rm -rf ${sdir}
