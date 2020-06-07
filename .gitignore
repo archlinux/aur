@@ -1,6 +1,21 @@
 /pkg/
 /src/
-/swift
+# src repos
+/swift/
+/cmark/
+/llbuild/
+/llvm-project/
+/swift-argument-parser/
+/swift-corelibs-foundation/
+/swift-corelibs-libdispatch/
+/swift-corelibs-xctest/
+/swift-driver/
+/swift-integration-tests/
+/swift-stress-tester/
+/swift-syntax/
+/swift-tools-support-core/
+/swiftpm/
+# downloaded
 *.tar.xz
 *.tar.xz.sig
 .DS_Store
