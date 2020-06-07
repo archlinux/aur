@@ -1,0 +1,12 @@
+pkgbase = wyabdcrealpeopletts
+	pkgdesc = An audio collection of english words (can be used by stardict and qstardict).
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://stardict-4.sourceforge.net/
+	arch = any
+	license = GPL
+	source = http://sourceforge.net/projects/stardict-4/files/WyabdcRealPeopleTTS/WyabdcRealPeopleTTS.tar.bz2
+	md5sums = 374562042e7902c39b33365958a4c4ed
+
+pkgname = wyabdcrealpeopletts
+
