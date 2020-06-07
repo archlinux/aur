@@ -4,8 +4,8 @@
 
 pkgname=advanced-ssh-config
 _name=assh
-pkgver=2.9.2
-_vcsref=ee3bc4d
+pkgver=2.9.3
+_vcsref=0659d67
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/moul/assh'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
-sha256sums=('cbb728ba0c5242e8ccc462579460a754f4ead4c2769245aedd88f1121be28c99')
+sha256sums=('d700a23a97b579aa48ee8ecc6d30878acc0840d368c7a0089c7c20f6fa028c71')
 
 build() {
   cd "$_name-$pkgver"
