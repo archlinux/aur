@@ -1,11 +1,12 @@
 pkgbase = xfce4-sensors-plugin-nvidia-hddtemp_through_netcat-current
 	pkgdesc = A lm_sensors plugin for the Xfce panel with nvidia and hddtemp (through netcat) support, current version
 	pkgver = 1.3.92
-	pkgrel = 3
+	pkgrel = 4
 	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 	arch = x86_64
 	groups = xfce4-goodies
 	license = GPL2
+	makedepends = gcc8
 	makedepends = xfce4-dev-tools
 	makedepends = intltool
 	makedepends = hddtemp
