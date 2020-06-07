@@ -34,6 +34,8 @@ validpgpkeys=()
 
 build() {
     cd $pkgname-$pkgver/build
+    export CC=/usr/bin/gcc-8
+    export CXX=/usr/bin/gcc-8
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
