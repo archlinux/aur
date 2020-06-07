@@ -2,7 +2,7 @@
 # Maintainer: Guido de Gobbis <guido@degobbis.de>
 
 pkgname=empoche
-pkgrel=1
+pkgrel=2
 pkgver=0.4.2
 pkgdesc="New Time Tracking and Task Management application."
 url="https://empoche.com"
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('proprietary')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 source_x86_64=("https://empoche-desktop.s3.eu-central-1.amazonaws.com/empoche-${pkgver}.pacman")
-sha256sums_x86_64=('625730b7563902f326c16e26781a08e5c1360af08e95d23ad3621199886572ea')
+sha256sums_x86_64=('e66857f172b899751622e90846870efff0af26933452b0a654df62f5c8ad89ba')
 
 package() {
     # Install in /opt
