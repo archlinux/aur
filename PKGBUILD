@@ -2,7 +2,7 @@
 
 pkgname=processing
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -16,11 +16,11 @@ install=openjdkmsg.install
 # version number above 0266 in addition to the ordinary version number.
 # https is not available for reference.zip.
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
-        'http://download.processing.org/reference.zip'
+        'https://download.processing.org/reference.zip'
         build.xml
         errormessage.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
-            '71fd6022d7a1cab78b5040b2434c475eaf8bcc75d5fd56dcc3ddf1c4e6617024'
+            '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             '9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220'
             '3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26')
 
