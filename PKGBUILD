@@ -1,5 +1,5 @@
-# Maintainer: soloturn@gmail.com
-# Contributor: Michael Hansen <zrax0111 gmail com>
+# Maintainer: Michael Hansen <zrax0111 gmail com>
+# Contributor: soloturn@gmail.com
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
