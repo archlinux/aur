@@ -1,6 +1,6 @@
 # Maintainer: Lasath Fernando <devel@lasath.org>
 pkgname=plasma5-applets-kargos-git
-pkgver=r65.a7ecd46
+pkgver=r85.e115334
 pkgrel=1
 pkgdesc="KDE Plasma port of GNOME Argos and OSX BitBar"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/lipido/kargos"
 license=('GPL-3.0')
 groups=()
 depends=()
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
