@@ -1,0 +1,22 @@
+pkgbase = ikemen-go-git
+	pkgdesc = Open source fighting games engine written in Go with support for M.U.G.E.N resources.
+	pkgver = 0.94.2
+	pkgrel = 1
+	url = https://github.com/Windblade-GR01/Ikemen_GO
+	arch = any
+	license = custom:MIT
+	makedepends = openal=1.19.1
+	depends = go
+	depends = xorg-server
+	depends = mesa
+	provides = ikemen-go-git
+	conflicts = ikemen-go-git
+	source = ikemen_go::https://github.com/Windblade-GR01/Ikemen_GO/archive/master.zip
+	source = resources::https://github.com/Windblade-GR01/Ikemen_GO-Elecbyte-Screenpack/archive/master.zip
+	source = ikemen_go.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = bc323f0ce347b5d5f036b369e68c9fd7
+
+pkgname = ikemen-go-git
+
