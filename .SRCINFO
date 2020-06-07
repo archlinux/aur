@@ -1,0 +1,26 @@
+pkgbase = rvgl-community
+	pkgdesc = RVGL for GNU/Linux. Includes community soundtrack and additional content for playing online.
+	pkgver = 1
+	pkgrel = 1
+	url = https://rvgl.re-volt.io
+	arch = x86_64
+	license = custom
+	depends = rvgl-bin
+	depends = rvgl-dcpack
+	depends = rvgl-io-cars
+	depends = rvgl-io-cars-bonus
+	depends = rvgl-io-clockworks
+	depends = rvgl-io-clockworks-modern
+	depends = rvgl-io-lmstag
+	depends = rvgl-io-loadlevel
+	depends = rvgl-io-music
+	depends = rvgl-io-skins
+	depends = rvgl-io-tracks
+	depends = rvgl-io-tracks-bonus
+	depends = rvgl-io-tracks-circuit
+	depends = rvgl-io-soundtrack
+	provides = rvgl
+	conflicts = rvgl
+
+pkgname = rvgl-community
+
