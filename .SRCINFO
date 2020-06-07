@@ -1,7 +1,7 @@
 pkgbase = ttf-proza-libre
-	pkgdesc = A sans-serif typeface that is pleasant to read on screens by Sorkin Type Co
+	pkgdesc = A typeface that is pleasant to read on screens across different operating systems, by Bureau Roffa
 	pkgver = 1.0.r12.g45ea7bb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasperdewaard/Proza-Libre
 	arch = any
 	license = custom:SIL Open Font License v1.1

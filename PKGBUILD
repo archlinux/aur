@@ -2,8 +2,8 @@
 pkgname=ttf-proza-libre
 _commit='45ea7bb14c2301988fbda75fc27374f63e33c19c'
 pkgver=1.0.r12.g45ea7bb
-pkgrel=1
-pkgdesc='A sans-serif typeface that is pleasant to read on screens by Sorkin Type Co'
+pkgrel=2
+pkgdesc='A typeface that is pleasant to read on screens across different operating systems, by Bureau Roffa'
 arch=('any')
 url='https://github.com/jasperdewaard/Proza-Libre'
 license=('custom:SIL Open Font License v1.1')
