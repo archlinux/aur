@@ -1,0 +1,17 @@
+pkgbase = matrix-bot-haskell-git
+	pkgdesc = A [matrix] bot written in Haskell
+	pkgver = 0.0.1.0.r4.gb2b3812
+	pkgrel = 1
+	url = https://github.com/livmackintosh/matrix-bot-haskell
+	arch = x86_64
+	license = AGPL3
+	makedepends = ghc
+	makedepends = stack
+	depends = libolm-git
+	optdepends = bash-completion: for bash completions
+	provides = matrix-bot
+	source = git+https://github.com/livmackintosh/matrix-bot-haskell
+	md5sums = SKIP
+
+pkgname = matrix-bot-haskell-git
+
