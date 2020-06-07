@@ -2,13 +2,14 @@
 # Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: mrhanky <mrhanky@unterschicht.tv>
 pkgname=homeshick-git
-pkgver=1.1.0.r0.490013f
+pkgver=2.0.0.r0.eea2fc5
 pkgrel=1
 pkgdesc="bash stand-in for homesick by technicalpickles"
 arch=(any)
 url="https://github.com/andsens/homeshick"
 license=('BSD')
-depends=('git')
+makedepends=('git')
+depends=('bash')
 source=("$pkgname"::'git+https://github.com/andsens/homeshick.git')
 sha512sums=('SKIP')
 
@@ -23,7 +24,7 @@ build() {
     "$srcdir"/$pkgname/bin/homeshick
   # patch the location of the homeshick installation
   sed -i 's|\$HOME/.homesick/repos/homeshick|/usr|' \
-    "$srcdir"/$pkgname/bin/homeshick.csh \
+    "$srcdir"/$pkgname/homeshick.csh \
     "$srcdir"/$pkgname/homeshick.sh \
     "$srcdir"/$pkgname/homeshick.fish \
     "$srcdir"/$pkgname/bin/homeshick
@@ -32,9 +33,9 @@ build() {
 package() {
   # copy the 'binary' *ahem* script
   install -D "$srcdir"/$pkgname/bin/homeshick "$pkgdir"/usr/bin/homeshick
-  install -D "$srcdir"/$pkgname/bin/homeshick.csh "$pkgdir"/usr/bin/homeshick.csh
   # copy the utils scripts
   mkdir -p "$pkgdir"/usr/lib/homeshick/lib/
+  install -D "$srcdir"/$pkgname/homeshick.csh "$pkgdir"/usr/lib/homeshick/homeshick.csh
   install -D "$srcdir"/$pkgname/homeshick.sh "$pkgdir"/usr/lib/homeshick/homeshick.sh
   install -D "$srcdir"/$pkgname/homeshick.fish "$pkgdir"/usr/lib/homeshick/homeshick.fish
   cp -r "$srcdir"/$pkgname/lib "$pkgdir"/usr/lib/homeshick/

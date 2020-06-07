@@ -1,11 +1,11 @@
 pkgbase = homeshick-git
 	pkgdesc = bash stand-in for homesick by technicalpickles
-	pkgver = 1.1.0.r0.490013f
+	pkgver = 2.0.0.r0.eea2fc5
 	pkgrel = 1
 	url = https://github.com/andsens/homeshick
 	arch = any
 	license = BSD
-	depends = git
+	makedepends = git
 	source = homeshick-git::git+https://github.com/andsens/homeshick.git
 	sha512sums = SKIP
 
