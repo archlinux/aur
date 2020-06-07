@@ -1,0 +1,17 @@
+pkgbase = quark-electron-bin
+	pkgdesc = A cross-platform, integrated development environment for rapidly building - functional , prototypal projects, written in HTML, CSS and JavaScript with native desktop app like capabilities
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://quarkjs.io
+	arch = x86_64
+	license = GPL3
+	depends = libxss
+	depends = gtk3
+	depends = nss
+	provides = quark-electron
+	options = !strip
+	source = quark-electron-bin-0.6.4.tar.gz::https://github.com/Nishkalkashyap/Quark-electron/releases/download/v0.6.4/Quark-linux-amd64-0.6.4.deb
+	sha256sums = eb28db768d60a913bc25b92a4c23ab2077101101a56373e18f52cce9503ba3b6
+
+pkgname = quark-electron-bin
+
