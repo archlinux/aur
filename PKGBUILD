@@ -1,7 +1,7 @@
 # Maintainer: adelin-b
 pkgname=('yawhich-key-git')
 pkgrel=1
-pkgver=0.7.0.r4.gc732ab9
+pkgver=0.8.0.r1.g03b4803
 pkgdesc="Yet another which-key but universal for all applications, desktop environment"
 arch=('any')
 url="https://github.com/adelin-b/yawhich-key"
@@ -35,7 +35,6 @@ package() {
 }
 
 pkgver() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$pkgname-$pkgver"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
