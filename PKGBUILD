@@ -1,8 +1,9 @@
-# Maintainer: Michael Hansen <zrax0111 gmail com>
+# Maintainer: soloturn@gmail.com
+# Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.1.5-RELEASE
+_swiftver=5.2.4-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -11,7 +12,7 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libblocksruntime')
-makedepends=('git' 'cmake' 'ninja' 'swig3' 'clang>=5.0' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python2-six' 'perl'
              'python2-sphinx' 'python2-requests' 'rsync')
 
 source=(
