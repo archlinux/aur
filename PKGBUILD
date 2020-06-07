@@ -4,7 +4,7 @@
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2020.04.r7.g3e89ebb8d
+pkgver=2020.04.r29.gf9b56b498
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -22,15 +22,17 @@ optdepends=('u3d: for U3D and IDTF file support'
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
+        "gcc10.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
-            )
+            'b6ed63f6ebea471a518420ae261a7ede6fb49a6c3c4e298a92c4d8af5dd520c6')
 
 prepare() {
   git -C "${srcdir}/${_name}" submodule init
   git -C "${srcdir}/${_name}" config submodule.vcglib.url "$srcdir"/vcglib
   git -C "${srcdir}/${_name}" submodule update
+  git -C "${srcdir}/${_name}" apply -v "$srcdir"/*patch
 }
 
 pkgver() {
