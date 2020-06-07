@@ -5,13 +5,13 @@ _name=$( expr "${pkgname}" : "python-\(.*\)-git" )
 provides=('python-matrix-synapse-shared-secret-auth')
 conflicts=('python-matrix-synapse-shared-secret-auth')
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Shared Secret Authenticator password provider module for Matrix Synapse"
 url="https://github.com/devture/matrix-synapse-shared-secret-auth"
 arch=('any')
 license=('AGPL')
 makedepends=('python-setuptools')
-depends=('python', 'python-twisted')
+depends=('python' 'python-twisted')
 source=("git+https://github.com/devture/${_name}.git")
 sha256sums=(SKIP)
 
