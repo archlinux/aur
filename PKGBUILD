@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 groups=()
-depends=('icu' 'libedit' 'libxml2' 'swig' 'python2' 'libbsd' 'ncurses' )
+depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
 makedepends=('git' 'ninja' 'cmake' 'clang')
 provides=('swift-language')
 conflicts=('swift-language-bin')
@@ -54,17 +54,15 @@ pkgver() {
 
 build() {
     cd "$srcdir/swift"
-    # Patch to use python2
-    find "$srcdir" -type f -print0 | xargs -0 sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/g'
     # Fix /usr/include error
     find "$srcdir" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
-    LDFLAGS='-ldl -lpthread' python2 utils/build-script -b -p --foundation --xctest -R
+    LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
 }
 
 check() {
   cd "$srcdir/swift"
-  python2 utils/build-script -t
+  python utils/build-script -t
 }
 
 package() {
