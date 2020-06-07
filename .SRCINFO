@@ -1,0 +1,18 @@
+pkgbase = openal119-bin
+	pkgdesc = Cross-platform 3D audio library, software implementation
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = https://github.com/kcat/openal-soft
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	conflicts = openal
+	source = openal119bin.pkg.tar.xz::https://github.com/gm3k4g/file_place/raw/master/openal-1.19.1-1-x86_64.pkg.tar.xz
+	sha512sums = 7ccc7467087e92136aaf015e0cda0867d10eabe66dfad3378f50a891b9b3e71fc4f3358a04e249ef00778056f34a6d60e755f6e73be773afe1a21923895c46c0
+
+pkgname = openal119-bin
+	optdepends = qt5-base: alsoft-config GUI Configurator
+	optdepends = fluidsynth: MIDI rendering
+	provides = openal=1.19.1
+	conflicts = openal
+
