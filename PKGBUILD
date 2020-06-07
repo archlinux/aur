@@ -1,28 +1,50 @@
+# Maintainer:  Wez Furlong <wez at wezfurlong dot org>
+
 pkgname=('wezterm-git')
-_pkgname="wezterm"
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=0.1.0.696.gab0c5a8
+pkgver=20200517.122836.92c201c6.105.g5d508350
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/wez/wezterm"
 license=('MIT')
-depends=('freetype2' 'fontconfig' 'libegl' 'harfbuzz' 'xcb-util-wm' 'xcb-util-keysyms' 'python' 'libxkbcommon-x11')
-makedepends=('rust' 'cargo' 'cmake' 'git' 'ragel')
-source=("$_pkgname::git+https://github.com/wez/wezterm.git")
+depends=(
+  'dbus'
+  'fontconfig'
+  'hicolor-icon-theme'
+  'libx11'
+  'libxkbcommon-x11'
+  'wayland'
+  'xcb-util-keysyms'
+  'xcb-util-wm'
+)
+makedepends=('rust' 'cargo' 'cmake' 'git' 'pkgconf')
+source=("git+https://github.com/wez/wezterm.git")
 sha256sums=('SKIP')
+conflicts=('wezterm-bin' 'wezterm-nightly-bin')
+
+prepare() {
+  cd $srcdir/wezterm
+  git submodule update --init --recursive
+}
 
 pkgver() {
-	cd $_pkgname
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)"
+  cd $srcdir/wezterm
+  git describe --tags | tr - .
 }
 
 build() {
-	cd $_pkgname
+  cd $srcdir/wezterm
 	cargo build --release
 }
 
 package() {
-	cd $_pkgname
-	install -D -m755 "$srcdir/$_pkgname/target/release/wezterm" "$pkgdir/usr/bin/wezterm"
+	cd $srcdir/wezterm
+  install -Dsm755 target/release/wezterm $pkgdir/usr/bin/wezterm
+  install -Dsm755 target/release/strip-ansi-escapes $pkgdir/usr/bin/strip-ansi-escapes
+  install -Dm644 assets/icon/terminal.png $pkgdir/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
+  install -Dm644 -t $pkgdir/usr/share/wezterm/colors assets/colors/*
+  install -Dm644 assets/wezterm.desktop $pkgdir/usr/share/applications/org.wezfurlong.wezterm.desktop
+  install -Dm644 assets/wezterm.appdata.xml $pkgdir/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml
+  install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
