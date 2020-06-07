@@ -13,9 +13,10 @@ url='https://fluentbit.io/'
 license=('Apache')
 groups=()
 
-depends=()
-makedepends=(cmake)
-checkdepends=()
+depends=('systemd-libs')
+# PostgreSQL_TYPE_INCLUDE_DIR is provided by postgresql, this is currently a bug
+makedepends=('cmake' 'postgresql-libs' 'postgresql' 'python' 'valgrind' 'gcc8')
+checkdepends=('gtest' 'doxygen' 'graphviz')
 optdepends=()
 
 provides=()
