@@ -1,6 +1,6 @@
 pkgbase = gb-backup-git
 	pkgdesc = Gamer Backup, a super opinionated cloud backup system
-	pkgver = r24.3bf23cb
+	pkgver = r27.9cf9ddf
 	pkgrel = 1
 	url = https://github.com/leijurv/gb
 	arch = x86_64
