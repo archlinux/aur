@@ -1,7 +1,7 @@
 # Maintainer: Jouni Rinne <l33tmmx at gmail dot com>
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
-pkgname=bluetooth-raspberrypi
+pkgname=alarm-bluetooth-raspberrypi
 pkgver=6
 pkgrel=3
 pkgdesc="Bluetooth support for Raspberry Pi"
@@ -14,7 +14,7 @@ makedepends=('dtc')
 options=('!strip')
 install=$pkgname.install
 source=('bcmbt-overlay.dts'
-        'bluetooth-raspberrypi.install')
+        'alarm-bluetooth-raspberrypi.install')
 sha256sums=('0ba43da86a934558eb8659daecc29186ccfc5864eca5b03c06afd7f62de954ae'
             '0dc3e5e8b966d122aa95bf6455360fd9a6efd3439e40f11bfe842282a12eb665')
 
