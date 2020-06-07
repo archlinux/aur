@@ -17,4 +17,5 @@ sha256sums=('eb28db768d60a913bc25b92a4c23ab2077101101a56373e18f52cce9503ba3b6')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
+  sed -i 's/IDE;/IDE;Development;/' "${pkgdir}/usr/share/applications/quark.desktop"
 }
