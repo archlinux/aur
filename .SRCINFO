@@ -1,0 +1,23 @@
+pkgbase = gsubs-bin
+	pkgdesc = A desktop app that finds you the perfect subtitle match
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cholaware.com/gsubs
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = gconf
+	depends = alsa-lib
+	depends = gtk2
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	depends = pango-legacy
+	provides = gsubs
+	source = gsubs-bin-1.0.1.deb::https://github.com/sanjevirau/gsubs/releases/download/v1.0.1/gsubs_1.0.1_amd64.deb
+	source = LICENSE::https://github.com/sanjevirau/gsubs/raw/master/LICENSE
+	sha256sums = 4ee26200acd919b7c86ae94c91b39df5ba9dec157faaba66f803a0478f658cac
+	sha256sums = 6d36933ec352f97ed680a03fa8267ee496a4985e151cfcfff43eb7cd6902d4c2
+
+pkgname = gsubs-bin
+
