@@ -1,20 +1,32 @@
-# Maintainer: archus <archus@archlinux.cba.pl>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: archus <archus@archlinux.cba.pl>
 
 pkgname=streamtuner2
 pkgver=2.2.1
 pkgrel=1
 pkgdesc="An internet radio browser"
 arch=('any')
-url="http://sourceforge.net/projects/streamtuner2"
-license=('custom')
-depends=('python2' 'pygtk' 'python2-xdg' 'python2-pillow' 'python2-keybinder2' 'python2-lxml' 'python2-cssselect' 'python2-pyquery' 'python2-requests')
-makedepends=('libarchive')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.rpm")
-md5sums=('4b66fd3f73d3a8693b86249cd525edda')
+url="https://sourceforge.net/projects/streamtuner2/"
+license=('custom:public domain')
+depends=(gtk3 python-dbus python-gobject python-pillow python-pyquery python-pyxdg python-requests youtube-dl)
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.src.txz"
+        "streamtuner2-make.patch")
+sha256sums=('30aa66fa9bc314c8161fdcb1fddba57fdd3b6b910acf4f07de1d59366bdd024b'
+            '6e20484cc250204f8d37582087405c734998ea4d3c42cef9b55f50db756cc3e2')
+
+prepare() {
+  cd $pkgname
+  patch -Np1 -i ../streamtuner2-make.patch
+  gzip -dc > gtk3.xml < gtk3.xml.gz
+}
+
+build() {
+  cd $pkgname
+  make
+}
 
 package() {
-  cd "${pkgdir}"
-  bsdcpio -id -I "${srcdir}/${pkgname}-${pkgver}.rpm"
-  # python2 fix
-  sed -i 's:^#!.*/usr/bin/env.*python:#!/usr/bin/env python2:' "${pkgdir}/usr/bin/streamtuner2"
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dm644 CREDITS "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
 }

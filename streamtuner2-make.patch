@@ -1,0 +1,34 @@
+--- a/Makefile	2015-05-25 03:41:55.000000000 +0100
++++ b/Makefile	2015-07-05 16:01:58.899708716 +0100
+@@ -67,19 +67,18 @@ check:
+ 
+ # manual installation
+ install:
+-	mkdir	-p				$(DEST)/channels
+-	mkdir	-p				/usr/share/doc/streamtuner2/help/img
+-	install -m 755		bin		/usr/bin/streamtuner2
+-	$(INST)		*py		-t $(DEST)
+-	$(INST)		gtk3*		-t $(DEST)
+-	$(INST)		channels/*py	-t $(DEST)/channels
+-	$(INST)		help/*page	-t /usr/share/doc/streamtuner2/help
+-	$(INST)		help/img/*	-t /usr/share/doc/streamtuner2/help/img
+-	$(INST)		CREDITS		-t $(DEST)
+-	$(INST)		README		-t /usr/share/doc/streamtuner2
+-	$(INST)		*.desktop	-t /usr/share/applications/
+-	$(INST)		icon.png	/usr/share/pixmaps/streamtuner2.png
+-	$(INST)		help/str*2.1	-t /usr/share/man/man1/
++	mkdir	-p				$(DESTDIR)$(DEST)/channels/
++	mkdir	-p				$(DESTDIR)/usr/bin/
++	mkdir	-p				$(DESTDIR)/usr/share/applications/
++	mkdir	-p				$(DESTDIR)/usr/share/pixmaps/
++	mkdir	-p				$(DESTDIR)/usr//share/man/man1/
++	install -m 755		bin		$(DESTDIR)/usr/bin/streamtuner2
++	$(INST)		*py		-t $(DESTDIR)$(DEST)
++	$(INST)		gtk3*		-t $(DESTDIR)$(DEST)
++	$(INST)		channels/*py	-t $(DESTDIR)$(DEST)/channels
++	$(INST)		*.desktop	-t $(DESTDIR)/usr/share/applications/
++	$(INST)		icon.png	$(DESTDIR)/usr/share/pixmaps/streamtuner2.png
++	$(INST)		help/str*2.1	-t $(DESTDIR)/usr/share/man/man1/
+ 
+ # start locally
+ st2: run
