@@ -1,0 +1,19 @@
+pkgbase = feeluown-local
+	pkgdesc = feeluown local plugin
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-local
+	arch = any
+	groups = feeluown-full
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = feeluown
+	depends = python-marshmallow
+	depends = python-mutagen
+	depends = python-fuzzywuzzy
+	source = https://files.pythonhosted.org/packages/source/f/fuo_local/fuo_local-0.2.1.tar.gz
+	sha256sums = a799a428e5c3cf8696e8dda124d7e7ac7dce1b1525b1100df40c748e4b13d445
+
+pkgname = feeluown-local
+
