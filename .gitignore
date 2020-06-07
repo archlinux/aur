@@ -1,5 +1,6 @@
 /pkg/
 /src/
+/swift
 *.tar.xz
 *.tar.xz.sig
 .DS_Store
