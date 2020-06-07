@@ -1,11 +1,19 @@
-pkgbase = instant-meshes
-	pkgdesc = interactive retopology of .obj or .ply (point cloud) developed as part of SIGGRAPH ASIA 2015
-	pkgver = git
-	pkgrel = 5
-	url = http://igl.ethz.ch/projects/instant-meshes/
-	arch = any
-	license = custom
-	makedepends = git
+pkgbase = instant-meshes-git
+	pkgdesc = Interactive field-aligned mesh generator
+	pkgver = r46.7b31608
+	pkgrel = 1
+	url = https://github.com/wjakob/instant-meshes
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = zenity
+	depends = hicolor-icon-theme
+	source = instant-meshes::git+https://github.com/wjakob/instant-meshes.git
+	source = datasets::https://instant-meshes.s3.eu-central-1.amazonaws.com/instant-meshes-datasets.zip
+	source = instant-meshes.desktop
+	md5sums = SKIP
+	md5sums = a282b3d0849c213fc342fe6c181cb6d6
+	md5sums = 3f9bd04b74972df7b4105082bef7a5df
 
-pkgname = instant-meshes
+pkgname = instant-meshes-git
 

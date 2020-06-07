@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+
+Type=Application
+Name=Instant Meshes
+Comment=Interactive Meshing Software
+Exec=instant-meshes
+Icon=instant-meshes
+Terminal=false
+Catergories=Graphics;Meshing
+Keywords=graphics
+
