@@ -1,0 +1,33 @@
+diff --git a/drivers/platform/x86/asus-nb-wmi.c b/drivers/platform/x86/asus-nb-wmi.c
+index 7d13193f18fb..f2adc162aa74 100644
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -95,6 +95,12 @@ static struct quirk_entry quirk_asus_ga401i = {
+        .wmi_backlight_set_devstate = true,
+ };
+ 
++static struct quirk_entry quirk_asus_ga502i = {
++       .wapf = 4, // not sure if that is correct
++       .wmi_backlight_power = true,
++       .wmi_backlight_set_devstate = true,
++};
++
+ static int dmi_matched(const struct dmi_system_id *dmi)
+ {
+ 	pr_info("Identified laptop model '%s'\n", dmi->ident);
+@@ -414,6 +420,15 @@ static const struct dmi_system_id asus_quirks[] = {
+                },
+                .driver_data = &quirk_asus_ga401i,
+        },
++       {
++               .callback = dmi_matched,
++               .ident = "ASUSTeK COMPUTER INC. GA501IU",
++               .matches = {
++                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++                       DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
++               },
++               .driver_data = &quirk_asus_ga502i,
++      },
+        {},
+ };
+ 

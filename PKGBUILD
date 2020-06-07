@@ -23,19 +23,22 @@ source=(
   k10-temp.patch
   asus-wmi.patch
   i8042.patch
+  asus-wmi-g15.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
+
 sha256sums=('SKIP'
             '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '8f9bb0be13e47b8fff55702bb4ea6f4d88eed5b5350d6e7025519f4dcb3cff79'
             '28d35438857ffe9fccab8d05e22cd9c590f3b52172809e78d726f035f4b5557f'
             '4bc71b8651dcb8bb8370b39a6d8ac582eeabfb91564c74335f305aaef7dae2ad'
-            '03afc868493b7a7a066aaf2113662fd29ffde7a5665dee8539fe3982048788e4')
+            '03afc868493b7a7a066aaf2113662fd29ffde7a5665dee8539fe3982048788e4'
+            '78c3eb55b5ddd2e5bf10f264c2351cbc97dfbc377668ac04d2a288aaea188dfa')
 
 
 

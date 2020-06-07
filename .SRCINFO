@@ -18,6 +18,7 @@ pkgbase = linux-g14
 	source = k10-temp.patch
 	source = asus-wmi.patch
 	source = i8042.patch
+	source = asus-wmi-g15.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
@@ -28,6 +29,7 @@ pkgbase = linux-g14
 	sha256sums = 28d35438857ffe9fccab8d05e22cd9c590f3b52172809e78d726f035f4b5557f
 	sha256sums = 4bc71b8651dcb8bb8370b39a6d8ac582eeabfb91564c74335f305aaef7dae2ad
 	sha256sums = 03afc868493b7a7a066aaf2113662fd29ffde7a5665dee8539fe3982048788e4
+	sha256sums = 78c3eb55b5ddd2e5bf10f264c2351cbc97dfbc377668ac04d2a288aaea188dfa
 
 pkgname = linux-g14
 	pkgdesc = The Linux witch patches for ASUS ROG Zephyrus G14 kernel and modules
