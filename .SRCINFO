@@ -1,0 +1,20 @@
+pkgbase = wezterm-nightly-bin
+	pkgdesc = Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust
+	pkgver = 20200517.122836.92c201c6.105.g5d508350
+	pkgrel = 1
+	url = https://wezfurlong.org/wezterm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = fuse
+	depends = libx11
+	provides = wezterm
+	conflicts = wezterm-bin
+	options = !strip
+	source = wezterm::https://github.com/wez/wezterm/releases/download/nightly/WezTerm-nightly-Ubuntu16.04.AppImage
+	source = LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wezterm-nightly-bin
+
