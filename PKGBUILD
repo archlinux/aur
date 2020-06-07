@@ -1,9 +1,10 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgname=neverball
-pkgver=1.6.0
-pkgrel=4
+pkgname=neverball-git
+pkgver=1.6.0.r154.gc1f75922
+pkgrel=1
 pkgdesc="3D game similar to Super Monkey Ball or Marble Madness"
 arch=('x86_64')
 url="http://neverball.org/"
@@ -11,24 +12,23 @@ license=('GPL')
 depends=('sdl2_ttf' 'libgl' 'libpng' 'libjpeg' 'libvorbis' 'physfs' \
          'hicolor-icon-theme' 'xdg-utils')
 makedepends=('mesa')
-source=(http://neverball.org/${pkgname}-${pkgver}.tar.gz
-        neverball-filesystem.patch::"https://github.com/Neverball/neverball/commit/27279856.patch")
-sha256sums=('73fe63cca4f96e2d355480d03bc0b2904e83a0abdf65fe8c52db5cc3cca88fa0'
-            'b93f17315766a8f1a70f46716cd99260981f4797ec1589b26f03bfca201a8e0d')
+source=("${pkgname}::git+https://github.com/Neverball/neverball.git")
+sha256sums=('SKIP')
 
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 <../neverball-filesystem.patch # Fix creating settings dir
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/neverball[.]//g'
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   make DATADIR=/usr/share/neverball LOCALEDIR=/usr/share/locale \
     CPPFLAGS="$CPPFLAGS -DNDEBUG" CFLAGS="$CFLAGS"
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}"/usr/share/{neverball,locale,applications,doc/neverball}
   install -d "${pkgdir}"/usr/share/man/man{1,6}
