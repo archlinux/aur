@@ -1,5 +1,5 @@
 # Maintainer zulu <aur@netz-mafia.de>
-
+# Maintainer Solomon Choina <shlomochoina@gmail.com>
 pkgname=mono-nightly
 _pkgname=mono
 pkgver=6.7.0.356
