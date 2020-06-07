@@ -3,7 +3,7 @@
 
 _pkgbase=r8125
 pkgname=(r8125 r8125-dkms)
-pkgver=9.003.04
+pkgver=9.003.05
 pkgrel=0
 pkgdesc="r8125 kernel driver for linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=(linux-headers)
 source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('e7c7a8edbb37aa8b22614b4cebba1af11188933fa9d39c584348e3fa45efd834'
+sha256sums=('75196ec98afcefbb6706307104d32131a27abba24ac333633790264968d548d6'
             '7a6b42b6ebbd76ae3c40e10f824c2dae88448fab3ba074916b3be5c2b4bef448')
 
 build() {
