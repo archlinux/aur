@@ -1,0 +1,14 @@
+pkgbase = python-typing-inspect
+	pkgdesc = Runtime inspection utilities for Python typing module
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ilevkivskyi/typing_inspect
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/typing_inspect/typing_inspect-0.6.0.tar.gz
+	md5sums = 987fa620fd0ac7b6be9c8f6d71eeea2e
+
+pkgname = python-typing-inspect
+
