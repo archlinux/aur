@@ -4,7 +4,7 @@
 
 pkgname=wyabdcrealpeopletts
 pkgver=0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="An audio collection of english words (can be used by stardict and qstardict)."
 arch=('any')
 url="http://stardict-4.sourceforge.net/"
