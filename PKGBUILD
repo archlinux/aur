@@ -55,7 +55,9 @@ pkgver() {
 build() {
     cd "$srcdir/swift"
     # Fix /usr/include error
-    find "$srcdir" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
     LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
 }
