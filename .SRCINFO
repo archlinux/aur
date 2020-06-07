@@ -5,9 +5,7 @@ pkgbase = python-hydra
 	url = https://hydra.cc
 	arch = any
 	license = MIT
-	checkdepends = pytest
-	checkdepends = pytest-snail
-	depends = omegaconf>=2.0
+	depends = python-omegaconf>=2.0
 	provides = python-hydra
 	source = python-hydra-1.0.0rc1::https://github.com/facebookresearch/hydra/archive/hydra-1.0.0rc1.tar.gz
 	md5sums = 8507d98157ea0829e7ba0f7a07ea1a57
