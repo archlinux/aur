@@ -1,0 +1,22 @@
+pkgbase = audacious-gtk
+	pkgdesc = Lightweight, advanced audio player focused on audio quality
+	pkgver = 4.0.4
+	pkgrel = 1
+	url = https://audacious-media-player.org/
+	install = audacious.install
+	arch = x86_64
+	license = BSD
+	depends = glib2
+	depends = libsm
+	depends = desktop-file-utils
+	depends = unzip
+	depends = libguess
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = audacious
+	conflicts = audacious
+	source = https://distfiles.audacious-media-player.org/audacious-4.0.4.tar.bz2
+	sha256sums = SKIP
+
+pkgname = audacious-gtk
+
