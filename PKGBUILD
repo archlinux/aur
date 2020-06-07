@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=5.4.43
-_rtpatchver=25
+_pkgver=5.4.44
+_rtpatchver=26
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -31,11 +31,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('2667b90a42d42557aca9e3d37bba1b4e71809b9523958e6870ada311c4790744'
+sha256sums=('97c2bbce51c73294cf150f26401d47a2d32d3095f3afb0ddb693f21fb6b68439'
             'SKIP'
-            '62a4064891de8920755be5a4ace627f2a314ba9154aa7df8ac5c6e57de023e42'
+            '7df71887a448d0b3ee27eea4883eec27fd5578f77058bb21a2ef98a0c2f6f19a'
             'SKIP'
-            '782e30ff2943cd236f3e4dfdb85a276e71f28521efc8e3ef1f230ade0e3e6800'
+            'c59bd37a65ca30c9f496d5c8a71985e85612d04a4b663e6a45c6de136e80dcc6'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
 
