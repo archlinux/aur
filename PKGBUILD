@@ -2,16 +2,16 @@
 
 _gitname=cascadia-code
 pkgbase=cascadia-code-git
-pkgname=("otf-${pkgbase}") # "ttf-${pkgbase}"
-pkgver=1911.21.r9.g0610f2d
+pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
+pkgver=1911.21.r13.gebfefd1
 pkgrel=1
 pkgdesc="A new monospaced font that includes programming ligatures"
 url="https://github.com/microsoft/${_gitname}"
 arch=('any')
 license=('custom:OFL')
 makedepends=('git' 'python')
-provides=("otf-cascadia-code=${pkgver}")
-#conflicts=('nerd-fonts-cascadia-code' 'ttf-cascadia-code' 'ttf-cascadia-code-git')
+provides=("otf-cascadia-code=${pkgver}" "ttf-cascadia-code=${pkgver}")
+conflicts=('nerd-fonts-cascadia-code' 'ttf-cascadia-code')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -35,8 +35,8 @@ package_otf-cascadia-code-git() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# package_ttf-cascadia-code-git() {
-    # cd "${_gitname}"
-    # install -Dm644 build/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
-    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-# }
+package_ttf-cascadia-code-git() {
+    cd "${_gitname}"
+    install -Dm644 build/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
