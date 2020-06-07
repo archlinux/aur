@@ -34,7 +34,6 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	mkdir -p build/
-	mkdir go
 }
 
 build() {
