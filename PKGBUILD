@@ -5,7 +5,7 @@
 
 pkgname=firefox-kde-opensuse-rpm
 _ffver=76.0.1
-_revision=835.6
+_revision=835.10
 pkgver=${_ffver}_0_${_revision}
 pkgrel=1
 epoch=2  # Because of update 76.0.1-833.1
@@ -30,7 +30,7 @@ provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse")
 options=()
 source=("https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_ffver}-${_revision}.x86_64.rpm")
-sha512sums=('a62ce1f080092044e5cf106b55564866be7a7724ce33f4e1bfb566a63e00a244bafa3a98185572982578b3824f8d6723a0c8de2d68d45f13bea522db94a81592')
+sha512sums=('9cc069699603427ec71b35a0ccc8bd603ba089125c449915f8bc22a3814e88462600c2687a4fac801ff2b5be25ecb9dfc537f23dd758015c39fcb3064c5e8218')
 
 
 package() {
