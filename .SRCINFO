@@ -1,12 +1,13 @@
 pkgbase = plasma5-applets-kargos-git
 	pkgdesc = KDE Plasma port of GNOME Argos and OSX BitBar
-	pkgver = r65.a7ecd46
+	pkgver = r85.e115334
 	pkgrel = 1
 	url = https://github.com/lipido/kargos
 	arch = any
 	license = GPL-3.0
 	makedepends = git
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	provides = plasma5-applets-kargos
 	conflicts = plasma5-applets-kargos
 	source = plasma5-applets-kargos::git+https://github.com/lipido/kargos.git#branch=master
