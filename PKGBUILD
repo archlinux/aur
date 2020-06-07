@@ -23,8 +23,8 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}-static" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=FALSE
-		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release
+		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}-static" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=FALSE
+		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release
 		make -C build-${_arch}
 	done
 }
