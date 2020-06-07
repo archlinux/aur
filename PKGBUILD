@@ -2,13 +2,13 @@
 pkgname=xtl
 pkgver=0.6.13
 pkgrel=1
-pkgdesc="QuantStack tools library - Basic tools (containers, algorithms) used by other quantstack packages"
+pkgdesc="The x template library"
 arch=('any')
-url="https://github.com/QuantStack/xtl"
+url="https://github.com/xtensor-stack/${pkgname}"
 license=('BSD-3-Clause')
 depends=('gcc')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/xtl/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
 build() {
 	cd "${pkgname}-${pkgver}"
