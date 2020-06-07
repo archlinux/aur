@@ -1,15 +1,14 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocprofiler
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROC profiler library. Profiling with perf-counters and derived metrics."
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html'
 license=('MIT')
-depends=('hsa-rocr')
+depends=('hsa-rocr' 'roctracer')
 makedepends=('cmake' 'python' 'python-argparse' 'python-cppheaderparser')
-optdepends=('hip-rocclr: Trace HIP calls'
-            'roctracer: Trace HSA calls')
+optdepends=('hip-rocclr: Trace HIP calls')
 options=(!staticlibs strip)
 _git='https://github.com/ROCm-Developer-Tools/rocprofiler'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
