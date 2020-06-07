@@ -1,0 +1,5 @@
+pkg/
+src/
+redkite/
+redkite-git-*.pkg.tar.xz
+redkite-git-*.pkg.tar.zst
