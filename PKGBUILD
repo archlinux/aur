@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Chasteen <jonathan dot chasteen at live dot com>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Jonathan Chasteen <jonathan dot chasteen at live dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: aimileus <me at aimileus dot nl>
 # Contributor: spider-mario <spidermario@free.fr>
