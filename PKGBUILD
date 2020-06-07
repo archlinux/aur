@@ -1,4 +1,5 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=fluent-bit
 
