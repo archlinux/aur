@@ -1,11 +1,12 @@
 pkgbase = openarena-git
 	pkgdesc = A violent, sexy, multiplayer first person shooter based on the ioquake3 engine (binary package)
 	pkgver = 0.8.8.r2428.f507a7a8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openarena.ws/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = make
