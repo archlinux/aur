@@ -7,8 +7,9 @@
 # but it will also create files in /opt/arena, where it is installed.
 #
 pkgname=arena-chess-gui
-pkgver=1.1
-pkgrel=2
+pkgver=3.10
+_pkgver=3.10beta
+pkgrel=1
 pkgdesc="A free GUI for chess"
 arch=('x86_64')
 url="http://www.playwitharena.com/"
@@ -17,13 +18,13 @@ install='arena.install'
 
 depends=(gtk2 xdg-utils)
 makedepends=()
-source=(http://www.playwitharena.de/downloads/arenalinux_64bit_${pkgver}.tar.gz)
-md5sums=('dcef17e3fdd0892fa41a80d0a00e02a5')
+source=(http://www.playwitharena.de/downloads/arenalinux_64bit_${_pkgver}.tar.gz)
+sha256sums=('0db8d9f7febc8a396f5a9e777a6d4fd477740b5a7437ba1e896b7d4a9e4eebdf')
 
 package() {
   mkdir -p ${pkgdir}/opt/arena
   cp -R ${srcdir}/* ${pkgdir}/opt/arena
-  rm ${pkgdir}/opt/arena/arenalinux_64bit_${pkgver}.tar.gz
+  rm ${pkgdir}/opt/arena/arenalinux_64bit_${_pkgver}.tar.gz
   chmod -R a+rw ${pkgdir}/opt/arena
 
   mkdir -p ${pkgdir}/usr/bin
