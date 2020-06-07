@@ -1,12 +1,11 @@
-# Maintainer: Que Quotion <quequotion@bugmenot.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Link Dupont <link@subpop.net>
+# Based on the file created for Arch Linux by:
+# Jan de Groot <jgc@archlinux.org>
+# Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgbase=dbus-x11
 pkgname=(dbus-x11 dbus-x11-docs)
-pkgver=1.12.16
+pkgver=1.12.18
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -14,11 +13,10 @@ arch=(x86_64)
 license=(GPL custom)
 depends=(systemd-libs expat audit)
 makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive libx11)
-_commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
+_commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36  # tags/dbus-1.12.18^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
         dbus-reload.hook)
-sha256sums=('SKIP'
-            'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3')
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
