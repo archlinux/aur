@@ -2,14 +2,14 @@
 
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.1.0.r815.f9b8340
+pkgver=2.1.1.r820.8742ddb
 pkgrel=1
 pkgdesc="A free software percussion synthesizer (git version)"
 arch=('i386' 'x86_64')
 url="https://gitlab.com/iurie-sw/geonkick"
 license=('GPL3')
 groups=('pro-audio' 'lv2-plugins')
-depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libsndfile' 'shared-mime-info')
+depends=('cairo' 'hicolor-icon-theme' 'libsndfile')
 makedepends=('cmake' 'jack' 'lv2' 'rapidjson' 'redkite' 'sord')
 optdepends=('jack: for stand-alone application')
 provides=("${_pkgname}")
