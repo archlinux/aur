@@ -8,6 +8,7 @@ url='https://github.com/ev3dev/brickstrap'
 license=('MIT')
 arch=('any')
 depends=('docker' 'libguestfs')
+makedepends=('git')
 optdepends=('qemu-arm-static: Build arm images (f.e. LEGO ev3 bricks)')
 source=("git+${url}.git")
 sha256sums=('SKIP')
