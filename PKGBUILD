@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 
 pkgname=mackup
-pkgver=0.8.28
+pkgver=0.8.29
 pkgrel=1
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python'
              'python-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b4a586d12460df00a8322e0ffc8454fe0816630bd97640cd08b87fa0de6c1ba6')
+sha256sums=('2be19200ed93d277dc5ac91bae392a88c1ce31d49181ba5a6ca4e5193333ff29')
 
 
 package() {
