@@ -1,4 +1,4 @@
-# Maintainer: Victor <victor@xirion.net
+# Maintainer: Victor <victor@xirion.net>
 
 pkgname=terraform-provider-proxmox-git
 _pkgname=terraform-provider-proxmox
