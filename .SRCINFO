@@ -1,16 +1,16 @@
 pkgbase = scanheadsman-bin
 	pkgdesc = A tool to extract scan data and methods from Thermo RAW file into a text-based format
-	pkgver = 1.2.20200606
+	pkgver = 1.2.20200607
 	pkgrel = 1
 	url = https://bitbucket.org/caetera/scanheadsman
 	arch = any
 	license = MIT
 	depends = mono
-	noextract = ScanHeadsman-1.2.20200606.zip
+	noextract = ScanHeadsman-1.2.20200607.zip
 	options = !strip
-	source = https://bitbucket.org/caetera/scanheadsman/downloads/ScanHeadsman-1.2.20200606.zip
+	source = https://bitbucket.org/caetera/scanheadsman/downloads/ScanHeadsman-1.2.20200607.zip
 	source = ScanHeadsman
-	md5sums = f2329e1786213ff17c174556a5dcb643
+	md5sums = 15b71bdc664de2ebbbe9882ab40d2d5a
 	md5sums = 1bff258fa44eb24eb939e8fbddd5c45d
 
 pkgname = scanheadsman-bin
