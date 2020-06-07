@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=qemu-arm-static
-pkgver=5.0.0r0
+pkgver=5.0.0r1
 _pkgver=${pkgver/r/-r}
 pkgrel=1
 pkgdesc='Statically linked qemu-arm, qemu-armeb and qemu-aarch64 executables from Alpine'
@@ -23,9 +23,9 @@ package() {
     done
 }
 
-md5sums=('98374a8d5cf5ec17b49e2562466525bb'
-    '0bffd1bca446f5f6218886e5b73629ae'
-    'c686f4c423b2468639f8adfecc23c740'
-    '11c56ac5b0463055b7e3bc1216fe639e'
-    '990e3e260665c1da56b5b1c71f480664'
-'89569b9c545af650dfeab24d4f8bb677')
+md5sums=('befd97a28f168e03bcc38e686361085f'
+         '463d39e1b9e2b6becd0637ca55bde50f'
+         'c3cbfa64f52d26d648d241f9ea22fba5'
+         '11c56ac5b0463055b7e3bc1216fe639e'
+         '990e3e260665c1da56b5b1c71f480664'
+         '89569b9c545af650dfeab24d4f8bb677')
