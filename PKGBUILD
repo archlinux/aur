@@ -18,16 +18,13 @@ conflicts=("yawhich-key")
 # options=()
 # install=
 # changelog=$pkgname
-source=("$pkgname-$pkgver::git+https://github.com/adelin-b/yawhich-key.git")
+source=("$pkgname::git+https://github.com/adelin-b/yawhich-key.git")
 
 # noextract=()
 md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  echo $srcdir
-  pwd
-  echo $DESTDIR
+  cd "$srcdir/$pkgname"
   echo $pkgdir
      make DESTDIR="$pkgdir/" install
   # install -Dm744 "${srcdir}/yawhich-key" "${pkgdir}/urs/local/bin/yawhich-key}"
@@ -35,6 +32,6 @@ package() {
 }
 
 pkgver() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }

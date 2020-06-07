@@ -10,7 +10,7 @@ pkgbase = yawhich-key-git
 	depends = yq2-bin
 	provides = yawhich-key
 	conflicts = yawhich-key
-	source = yawhich-key-git-0.8.0.r1.g03b4803::git+https://github.com/adelin-b/yawhich-key.git
+	source = yawhich-key-git::git+https://github.com/adelin-b/yawhich-key.git
 	md5sums = SKIP
 
 pkgname = yawhich-key-git
