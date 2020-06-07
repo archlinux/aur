@@ -1,15 +1,12 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 5.2.3
+	pkgver = 5.2.4
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
 	license = apache
 	makedepends = patchelf
 	makedepends = rpmextract
-	depends = clang
-	depends = icu63
-	depends = libbsd
 	depends = libutil-linux
 	depends = libxml2
 	depends = python3
@@ -17,8 +14,8 @@ pkgbase = swift-bin
 	conflicts = swift-language-git
 	replaces = swift-language-bin
 	options = !strip
-	source = https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/swift-lang-5.2.3-1.fc33.x86_64.rpm
-	sha256sums = 5b960d79ed8bb755ccb5fa37a0cb82903a6fad656104952fbb0940c08a693020
+	source = https://swift.org/builds/swift-5.2.4-release/centos8/swift-5.2.4-RELEASE/swift-5.2.4-RELEASE-centos8.tar.gz
+	sha256sums = dd07e4e8f57b8339d4a720c45b1279a8e8d8d3ce6695f82919db1674923d8794
 
 pkgname = swift-bin
 
