@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 76.0.1
+	pkgver = 77.0.1
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgbase = librewolf-bin
 	provides = librewolf
 	conflicts = librewolf
 	options = !emptydirs
-	source = https://gitlab.com/librewolf-community/browser/linux/-/jobs/544984787/artifacts/raw/librewolf-76.0.1-1-x86_64.pkg.tar.xz
-	sha256sums = 90b89d65455854060de0677c03617d36705853474a30925f6f7d85260b95e6cc
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/linux/-/jobs/584398353/artifacts/raw/librewolf-77.0.1-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 3ffafdf3c99f0930d551d2c2ba3a160cc6775f665825ebe9d5130ba61986aeec
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/linux/-/jobs/584404499/artifacts/raw/librewolf-77.0.1-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = d47ae8c840c07296b263c2a28d27e25eb49bb9eeb4db8e145d1e47c47877352b
 
 pkgname = librewolf-bin
 
