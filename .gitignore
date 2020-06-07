@@ -1,0 +1,5 @@
+mephisto.lv2/
+pkg/
+src/
+mephisto.lv2-git-*.pkg.tar.xz
+mephisto.lv2-git-*.pkg.tar.zst
