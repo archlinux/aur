@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libwebp
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
 url="https://developers.google.com/speed/webp/"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libtiff"
          "android-${_android_arch}-giflib")
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-configure')
+makedepends=('android-configure' 'dh-autoreconf')
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
 sha256sums=('424faab60a14cb92c2a062733b6977b4cc1e875a6398887c5911b3a1a6c56c51')
 
