@@ -9,49 +9,46 @@ pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 depends=('ledger-udev')
-optdepends=('lib32-gtk2')
-makedepends=('gendesk')
 options=(!strip)
 source_x86_64=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
 )
 sha512sums_x86_64=('61d3235aada3e8eaf903be3cb8a7df3007d1d693fcba9b13f7279c3babc1b7a1b89c7984a972732999001084f59e44d6346709c55d4df9ab168a67860b927962')
 
-prepare() {
-	gendesk -f -n \
-                --name "Ledger Live" \
-                --pkgname "$pkgname" \
-                --pkgdesc "$pkgdesc" \
-                --categories="Utility;Office"
-}
 
 package() {
+	# Clean old build dir files
+	rm -rf "$srcdir/squashfs-root"
 
 	# Extract files
 	chmod +x "$srcdir/$package"
 	$srcdir/$package --appimage-extract
-	# Clean old build dir files
-	rm -rf $srcdir/$pkgbin
-	mv -f "$srcdir/squashfs-root" "$srcdir/$pkgbin"
-
+	rm -rf "$srcdir/squashfs-root/$pkgbin.png"
+	
 	install -d "$pkgdir/opt/$pkgbin"
-	cp -a "$srcdir/$pkgbin/." "$pkgdir/opt/$pkgbin/"
+	cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgbin/"
 	chmod -R +rx "$pkgdir/opt/$pkgbin"
 
 	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/$pkgbin/ledger-live-desktop" "$pkgdir/usr/bin/$pkgbin"
-	
-	# Fix desktop icon
-	sed -E \
-		-e "/X-/d" \
-		-e "s#^Icon=.*\$#Icon=/opt/${pkgbin}/${pkgbin}.png#" \
-		-i "$srcdir/$pkgbin/$pkgbin.desktop"
+	ln -s "/opt/$pkgbin/$pkgbin" "$pkgdir/usr/bin/$pkgbin"
 
-	# Provided .desktop file tries to run "AppRun" instead of ledger-live-desktop	
-	sed -e 's/AppRun/ledger-live-desktop/g' -i $srcdir/$pkgbin/$pkgbin.desktop
-	install -Dm644 "$srcdir/$pkgbin/$pkgbin.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
+	# Fix icon folders
+	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/2x2" "$srcdir/squashfs-root/usr/share/icons/hicolor/128x128"
+	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/3x3" "$srcdir/squashfs-root/usr/share/icons/hicolor/256x256"
+	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/4x4" "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512"
+	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/5x5" "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024"
+
+	install -d "$pkgdir/usr/share"
+	cp -r "$srcdir/squashfs-root/usr/share/." "${pkgdir}/usr/share/"
+	
+	# Correct .desktop
+	sed -e "s/AppRun/${pkgbin}/g" -i "$srcdir/squashfs-root/$pkgbin.desktop"
+
+	find "$pkgdir" -type d -exec chmod 755 {} +
+
+	install -Dm644 "$srcdir/squashfs-root/$pkgbin.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
 }
