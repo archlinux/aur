@@ -10,7 +10,6 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=(acd66359feb4318b421f9574cfc5a511133a77d916d0b13c7caa3783c0bfe167)
 
 package() {
-	install -D -d -m755 "${pkgdir}/usr/include/"
-	install -m644 "Mustache-${pkgver}/mustache.hpp" "${pkgdir}/usr/include/"
+	install -D -m644 "Mustache-${pkgver}/mustache.hpp" "${pkgdir}/usr/include/mustache.hpp"
 }
 
