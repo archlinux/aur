@@ -6,7 +6,7 @@
 _pkgname=charybdis
 pkgname=charybdis-git
 pkgver=4.1.2.r162.gef62a62f
-pkgrel=2
+pkgrel=3
 pkgdesc='Scalable IRCv3.2 server for large, community-oriented networks (Git)'
 arch=('any')
 url="https://charybdis-ircd.github.io"
@@ -21,7 +21,7 @@ source=('git+https://github.com/charybdis-ircd/charybdis.git'
         'charybdis.service'
         'charybdis.tmpfiles')
 sha256sums=('SKIP'
-            'a890d3a4fddd34b475c1c2e5f47f790af3bcebc3539c4a92a7343829fdbce563'
+            '63c3b8133db0b34c1335471f967147b0e7f78cb5586d3943f24c86e0d2660440'
             '2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29')
 
 pkgver() {
