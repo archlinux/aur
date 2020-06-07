@@ -1,6 +1,6 @@
 pkgbase = xmoto-git
 	pkgdesc = A challenging 2D motocross platform game, where physics play an important role.
-	pkgver = r630.b856dcb6
+	pkgver = r632.9d507b2d
 	pkgrel = 1
 	url = http://xmoto.tuxfamily.org
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = xmoto-git
 	depends = glu
 	depends = libjpeg
 	depends = libpng
-	depends = lua51
+	depends = lua
 	depends = libxml2
 	depends = libxdg-basedir
 	depends = ode
