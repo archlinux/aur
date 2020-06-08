@@ -7,7 +7,7 @@ _source="installer"   # if installing from .sh installer
 
 pkgname=cisco-anyconnect
 pkgver=4.8.03052
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -98,7 +98,7 @@ package() {
     # install plugins
     # we intentionally don't install the telemetry plugin here
     # because it tries to write to /opt and we don't want that
-    for plugin in "libvpnipsec.so"; do
+    for plugin in "libacwebhelper.so" "libvpnipsec.so"; do
         install -Dm755 ${plugin} "${pkgdir}/opt/cisco/anyconnect/bin/plugins/${plugin}"
     done
 
