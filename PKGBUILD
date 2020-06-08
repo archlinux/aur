@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=glslang-sparzz-git
-pkgver=8.13.3743.2020.05.26
+pkgver=8.13.3743.2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="glslang build from source. For better install instructions visit my GitHub page https://github.com/sparzz/vulkan-arch-aur it will provide the install order instruction for Vulkan API. Almost all the Vulkan packages from my AUR requires glslang"
