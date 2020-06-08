@@ -1,39 +1,92 @@
-# Maintainer: Your Name <linuxboy@fel.hopto.org>
-pkgname=usbrelay
-pkgver=20190629
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+
+_opt_python=0
+
+_opt_debug=0
+
+_opt_git='#commit=f3434b9050076987d906a6516c31922ab0026fcc' # release 0.7 Segmentation fault
+
+set -u
+pkgname='usbrelay'
+#pkgname+='-git'
+pkgver=0.7.r33.gf3434b9
 pkgrel=1
-pkgdesc="Control usb relay - based on hidapi"
-url="https://github.com/darrylb123/usbrelay"
-license=('GPL-2.0')
-groups=('system')
-depends=('hidapi')
+pkgdesc='Control usb relay - based on hidapi'
 arch=('i686' 'x86_64')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/darrylb123/usbrelay/archive/master.zip")
-noextract=()
-md5sums=('2291c1c5e92315d0d9e8804bfba4be6d')
-validpgpkeys=()
+url='https://github.com/darrylb123/usbrelay'
+license=('GPL2')
+depends=('hidapi')
+options=('!strip')
+_srcdir="${pkgname}-${pkgver%%.r*}"
+if [ "${pkgver}" = '0.6' ]; then
+  _srcdir="${pkgname}-0-6"
+fi
+source=("${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz")
+md5sums=('SKIP')
+sha256sums=('SKIP')
+
+if [ "${_opt_python}" -ne 0 ]; then
+  depends+=('python3')
+fi
+
+if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_git:-}" ]; then
+  _srcdir="${pkgname%-git}"
+  source[0]="${url//https/git}.git${_opt_git}"
+  makedepends+=('git')
+  if [ "${pkgname%-git}" != "${pkgname}" ]; then
+    md5sums[0]='SKIP'
+    sha256sums[0]='SKIP'
+    provides=("${pkgname%-git}=${pkgver%%.r*}")
+    conflicts=("${pkgname%-git}")
+  fi
+pkgver() {
+  set -u
+  cd "${_srcdir}"
+  git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
+  set +u
+}
+elif [ "${pkgver%%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  printf '%s' "${pkgver%%.r*}"
+}
+fi
 
 prepare() {
-	cd "$pkgname-master"
+  set -u
+  cd "${_srcdir}"
+  sed -e 's:/usr/lib64:/usr/lib:g' \
+      -e '/setup.py install/ s:$: --prefix=/usr --root=$(DESTDIR) --optimize=1:g' \
+    -i 'Makefile'
+  make clean
+  set +u
 }
 
 build() {
-	cd "$pkgname-master"
-	make
+  set -u
+  cd "${_srcdir}"
+  if [ "${_opt_debug}" -ne 0 ]; then
+    CFLAGS+=' -g -rdynamic'
+  fi
+  if [ "$(vercmp "${pkgver}" '0.5')" -eq 0 ]; then
+    LDFLAGS="${LDFLAGS//,--as-needed/}"
+  fi
+  if [ "${_opt_python}" -eq 0 ]; then
+    make
+  else
+    CFLAGS+=" $(python-config --includes)"
+    make 'python'
+  fi
+  set +u
 }
-
 
 package() {
-	cd "$pkgname-master"
-	make DESTDIR="$pkgdir/" install
+  set -u
+  cd "${_srcdir}"
+  if [ "${_opt_python}" -eq 0 ]; then
+    make DESTDIR="${pkgdir}/" install
+  else
+    make 'install_py' DESTDIR="${pkgdir}/" install
+  fi
+  set +u
 }
+set +u
