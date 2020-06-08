@@ -1,7 +1,7 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=prysm
 pkgver=1.0.0_alpha.9
-pkgrel=2
+pkgrel=3
 _bazelver=3.0.0
 pkgdesc="go implementation of the Ethereum 2.0 blockchain"
 arch=('x86_64')
@@ -19,11 +19,13 @@ source=(
 	git+https://github.com/prysmaticlabs/prysm.git#tag=v${pkgver/_/-}
 	prysm-validator@.service
 	prysm-beacon-chain.service
+	prysm.sysusers
 )
 noextract=("bazel-$_bazelver-linux-$CARCH")
 
 sha256sums=('3efb903ef885339a271445a9940642df704f97297fbe268f131d4fe36b02ea80'
 			'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -43,9 +45,9 @@ package() {
 		install "$srcdir/$pkgname/bazel-bin/$target/linux_amd64_stripped/$target" "$pkgdir/usr/bin/prysm.$target"
 	done
 
-	install -dm755 "$pkgdir/var/lib/prysm/beacon-chain"
-	install -Dm644 "$srcdir/prysm-validator@.service" "$pkgdir/usr/lib/systemd/system/prysm-validator@.service"
-	install -Dm644 "$srcdir/prysm-beacon-chain.service" "$pkgdir/usr/lib/systemd/system/prysm-beacon-chain.service"
+	install -Dm644 "$srcdir/prysm-validator@.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 "$srcdir/prysm-beacon-chain.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 644 "$srcdir/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
 	$bazel clean
 }

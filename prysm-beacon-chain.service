@@ -3,6 +3,7 @@ Description=Prysm beacon-chain client
 After=network-online.target
 
 [Service]
+ExecStartPre=/usr/bin/mkdir -p /var/lib/prysm/beacon-chain
 ExecStart=/usr/bin/prysm.beacon-chain --datadir=/var/lib/prysm/beacon-chain
 Restart=always
 
