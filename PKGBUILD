@@ -2,8 +2,8 @@
 # Maintainer: Shichao Gao <xgdgsc at gmail dot com>
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
@@ -27,4 +27,4 @@ package() {
 	find "${pkgdir}" -type f | xargs chown root:root
 }
 
-md5sums=('3ebab7695cf7461487088b5888790a80')
+md5sums=('7c49e82c902f9c36fbd387f05a46435c')
