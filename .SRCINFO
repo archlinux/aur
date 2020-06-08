@@ -1,0 +1,14 @@
+pkgbase = nextcloud-app-apporder
+	pkgdesc = Nextcloud app to enable sorting inside the app menu.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/juliushaertl/apporder
+	arch = any
+	license = AGPL
+	depends = nextcloud
+	options = !strip
+	source = apporder-0.10.0.tar.gz::https://github.com/juliushaertl/apporder/releases/download/v0.10.0/apporder.tar.gz
+	sha256sums = d8bd5fbbc26655257e8af3c2bc5fb0eec23a7312aad32c6e5b0bf89e29ce1668
+
+pkgname = nextcloud-app-apporder
+
