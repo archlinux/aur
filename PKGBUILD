@@ -1,7 +1,7 @@
 #Maintainer:  sparzz
 pkgname=radv-aco-git
 packager=sparzz
-pkgver=20.2.0_devel_2020.06.08
+pkgver=20.2.0_devel_2020.06.08_r1
 pkgrel=1
 epoch=
 pkgdesc="Provide mesa RADV drivers for AMD card with the ACO compiler enable by default . Update with yay -Sua. It provide the most recent Vulkan API. "
@@ -129,11 +129,6 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
-pkgver() {
-    cd mesa-sparzz-aco
-    read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
 
 prepare() {
 
