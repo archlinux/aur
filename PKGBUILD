@@ -4,7 +4,7 @@ pkgname=mingw-w64-xerces-c-icu
 provides=("mingw-w64-xerces-c")
 conflicts=("mingw-w64-xerces-c")
 pkgver=3.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A validating XML parser written in a portable subset of C++. (ICU and static build enabled)"
 arch=(any)
 url="http://xerces.apache.org/xerces-c/"
@@ -24,8 +24,9 @@ prepare() {
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}-static" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=FALSE
+		make -C "build-${_arch}-static"
 		${_arch}-cmake -S "xerces-c-${pkgver}" -B "build-${_arch}" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release
-		make -C build-${_arch}
+		make -C "build-${_arch}"
 	done
 }
 
