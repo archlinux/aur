@@ -9,6 +9,8 @@ pkgbase = brickstrap-git
 	depends = docker
 	depends = libguestfs
 	optdepends = qemu-arm-static: Build arm images (f.e. LEGO ev3 bricks)
+	provides = brickstrap
+	conflicts = brickstrap
 	source = git+https://github.com/ev3dev/brickstrap.git
 	sha256sums = SKIP
 
