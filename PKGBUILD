@@ -1,21 +1,23 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tofe <chris.chapuis@gmail.com>
 # Contributor: zhuqin <zhuqin83@gmail.com>
 # Contributor: tri1976 <trile7@gmail.com>
 # Contributor: snoopy33 <snoopy33@no-log.org>
 
 pkgname=cairo-dock-plug-ins-git
-pkgver=3.4.1.r7.88ae103
+pkgver=3.4.1.r19.02ad3401d
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock'
 arch=('i686' 'x86_64')
-url='http://glx-dock.org'
+url='https://glx-dock.org'
 license=('GPL')
 depends=('cairo-dock')
-makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'gnome-menus'
+makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'git' 'gnome-menus'
              'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse'
              'libxklavier' 'lm_sensors' 'python' 'python2' 'ruby' 'upower'
-             'vala' 'vte3' 'webkitgtk' 'zeitgeist')
+             'vala' 'vte3' 'zeitgeist')
 optdepends=('alsa-lib: Sound Control, Sound Effects applets'
             'dbus-sharp-glib: Mono API'
             'fftw: Impulse applet'
@@ -33,36 +35,34 @@ optdepends=('alsa-lib: Sound Control, Sound Effects applets'
             'ruby: Ruby API'
             'upower: Power Manager applet'
             'vte3: Terminal applet'
-            'webkitgtk: Weblets applet'
+            'wireless_tools: Wifi applet'
             'zeitgeist: Recent Events applet')
 replaces=('cairo-dock-plugins-git')
 provides=('cairo-dock-plug-ins')
 conflicts=('cairo-dock-plug-ins')
-source=('git+https://github.com/Cairo-Dock/cairo-dock-plug-ins.git'
-        'cairo-dock-plug-ins-mono.patch')
-sha256sums=('SKIP'
-            '91a32a93e27f4600c5aee0b6e7b4c7d8cc6711a40ac5d185021e616cf5d1bdb7')
+source=('git+https://github.com/Cairo-Dock/cairo-dock-plug-ins.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd cairo-dock-plug-ins
+  cd $srcdir/cairo-dock-plug-ins
 
-  _tag='3.4.1'
+   _tag='3.4.1'
   echo "${_tag}.r$(git rev-list --count ${_tag}..HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd cairo-dock-plug-ins
+  cd $srcdir/cairo-dock-plug-ins
 
-  patch -Np1 -i ../cairo-dock-plug-ins-mono.patch
-}
-
-build() {
-  cd cairo-dock-plug-ins
+  sed 's/gmcs/mcs/' -i CMakeLists.txt
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd $srcdir/cairo-dock-plug-ins/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -71,9 +71,11 @@ build() {
 }
 
 package() {
-  cd cairo-dock-plug-ins/build
+  cd $srcdir/cairo-dock-plug-ins/build
 
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}"/usr/lib/{cli,mono}
+
 }
 
 # vim: ts=2 sw=2 et:
