@@ -1,7 +1,7 @@
 # Maintainer: Daniel Biehl dbiehl@live.de
 
 pkgname=getgauge
-pkgver=1.0.8
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Light weight cross-platform test automation tool for authoring test cases in the business language."
 arch=('x86_64' 'i686')
