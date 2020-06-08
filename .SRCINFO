@@ -11,7 +11,9 @@ pkgbase = prismatik-psieg-bin
 	provides = lightpack
 	provides = prismatik
 	provides = prismatik-psieg
+	conflicts = lightpack
 	conflicts = prismatik
+	conflicts = prismatik-psieg
 	source = https://github.com/psieg/Lightpack/releases/download/5.11.2.23/prismatik_5.11.2.23_amd64.deb
 	sha256sums = cde00d39ae695edf71c0c5e71958ed3304f6321049ec877abfa4419d55550ab4
 
