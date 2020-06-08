@@ -5,7 +5,7 @@ branch= # This variable can be set to any development branch
 pkgname=asbru-cm-${branch}${branch:+-}git
 _pkgname=asbru
 _fpkgname=asbru-cm
-pkgver=6.2.0.r0.gd80b881
+pkgver=6.2.1.r3.g9f10b16
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -41,8 +41,8 @@ package() {
 
   # /opt stuff
   mkdir -p "$pkgdir"/opt/${_fpkgname}${branch:+-}${branch}/{res,utils,lib}
-  install -Dm644 res/{*png,*svg,*glade,*yml,*jpg,*css} "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/ || true
-  cp -rp res/themes "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/ || true
+  install -Dm644 res/{*png,*svg,*glade,*yml} "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/
+  cp -rp res/themes "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/
   install -Dm755 utils/* -t "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/utils/
   cp -rp lib/* "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/lib/
   install -m755 asbru-cm "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/${_fpkgname}${branch:+-}${branch}
