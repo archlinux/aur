@@ -1,7 +1,7 @@
 pkgbase = networkd-broker
 	pkgdesc = An event broker daemon for systemd-networkd
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/bpetlert/networkd-broker
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = networkd-broker
 	depends = iw
 	provides = networkd-broker
 	conflicts = networkd-broker
-	source = networkd-broker-0.3.0.tar.gz::https://github.com/bpetlert/networkd-broker/archive/0.3.0.tar.gz
-	sha256sums = 6f2f4f64b3b3fee511fc56b2287574b5dacbe0e1f5831a45d0ba35ccee437436
+	source = networkd-broker-0.3.1.tar.gz::https://github.com/bpetlert/networkd-broker/archive/0.3.1.tar.gz
+	sha256sums = 122304e1dcf75933efa4b9cb4cb0d1eaef74b529b32424a1e05ee05302852631
 
 pkgname = networkd-broker
 
