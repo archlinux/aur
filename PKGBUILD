@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dwm-jacob-git
-pkgver=6.2.r2.ee100fa
+pkgver=0.6.2.r2.ee100fa
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of dwm see the repo for more details"
 arch=(x86_64 i686)
