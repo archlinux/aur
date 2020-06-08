@@ -1,6 +1,6 @@
 pkgbase = raze-git
 	pkgdesc = Build engine port backed by GZDoom tech (git version)
-	pkgver = 0.6.0+58+g2881cff75
+	pkgver = 0.6.0+485+g5330964a7
 	pkgrel = 1
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = raze-git
 	depends = libvpx
 	depends = openal
 	depends = sdl2
-	depends = zmusic
+	depends = zmusic>=1.1.1
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = kdialog: crash dialog (KDE)
 	optdepends = xorg-xmessage: crash dialog (other)
@@ -26,7 +26,7 @@ pkgbase = raze-git
 	source = 0001-Fix-file-paths.patch
 	source = raze.desktop
 	sha256sums = SKIP
-	sha256sums = 8d304c587ef9545da3c00e6314b8bc76f87f5650b97f95b4e1d994e08347334c
+	sha256sums = 363b00bbc3022f584b93aaef704a192a5aa1cce2e72f295b2bf89ecce87050fd
 	sha256sums = ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8
 
 pkgname = raze-git

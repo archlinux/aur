@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze-git
-pkgver=0.6.0+58+g2881cff75
+pkgver=0.6.0+485+g5330964a7
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libvpx'
          'openal'
          'sdl2'
-         'zmusic')
+         'zmusic>=1.1.1')
 makedepends=('cmake'
              'desktop-file-utils'
              'git')
@@ -27,7 +27,7 @@ source=("Raze::git+https://github.com/coelckers/Raze"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
-            '8d304c587ef9545da3c00e6314b8bc76f87f5650b97f95b4e1d994e08347334c'
+            '363b00bbc3022f584b93aaef704a192a5aa1cce2e72f295b2bf89ecce87050fd'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
 
 pkgver() {
