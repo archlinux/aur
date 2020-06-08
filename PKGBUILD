@@ -279,8 +279,8 @@ build() {
     # There are configure flags to install only the client or server, but I don't see any reason to.
     # Amanda's handling of /etc is so broken that we must specify it 3 times and fix it in package()
     MT='/usr/bin/mt-st' \
-    CFLAGS="${CFLAGS} -g -rdynamic" \
-    CXXFLAGS="${CXXFLAGS} -g -rdynamic" \
+    CFLAGS="${CFLAGS} -g -rdynamic -fcommon" \
+    CXXFLAGS="${CXXFLAGS} -g -rdynamic -fcommon" \
     ./configure "${_opts[@]}" \
       --prefix='/usr' \
       --sbindir='/usr/bin' \
@@ -710,7 +710,7 @@ fi
 EOF
 
   # Install the licence
-  install -Dpm444 'COPYRIGHT' -t "${pkgdir}/usr/share/licences/${pkgname}/"
+  install -Dpm444 'COPYRIGHT' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 set +u
