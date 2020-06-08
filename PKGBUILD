@@ -2,7 +2,7 @@
 # Contributor: Simon Hanna<simon DOT Hanna AT serve-me DOT info>
 pkgname=filebin
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A pastebin service written in PHP"
 arch=('any')
 url="https://wiki.server-speed.net/projects/filebin"
@@ -38,26 +38,28 @@ sha256sums=('SKIP'
             'd73e4b984ab95954bd18e08237c6aa8bec32ccc5699531727362e2c75ba9c25e')
 
 prepare() {
-  cd ${srcdir}/filebin
-  git checkout ${pkgver}
+  cd "${srcdir}/${pkgname}"
+  git checkout "${pkgver}"
   git submodule update --init --recursive
 }
 
 build () {
-  bash "${srcdir}/filebin/scripts/optimize_js.sh"
+  bash "${srcdir}/${pkgname}/scripts/optimize_js.sh"
 }
 
 package() {
+  install -Dm644 "${srcdir}/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+
   install -D -d -m755 "${pkgdir}/usr/lib/systemd/system"
   install -D -d -m755 -g 33 "${pkgdir}/usr/share/webapps/filebin" "${pkgdir}/etc/webapps/filebin"
   install -D -d -m755 -o 33 -g 33 "${pkgdir}/usr/share/webapps/filebin/data/uploads"
-  install -m640 -g 33 "${srcdir}/filebin/data/local/examples/contact-info.php" "${pkgdir}/etc/webapps/filebin"
-  install -m640 -g 33 "${srcdir}/filebin/application/config/example/config-local.php" "${pkgdir}/etc/webapps/filebin"
-  install -m640 -g 33 "${srcdir}/filebin/application/config/example/database.php" "${pkgdir}/etc/webapps/filebin"
-  install -m640 -g 33 "${srcdir}/filebin/application/config/example/memcached.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/${pkgname}/data/local/examples/contact-info.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/${pkgname}/application/config/example/config-local.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/${pkgname}/application/config/example/database.php" "${pkgdir}/etc/webapps/filebin"
+  install -m640 -g 33 "${srcdir}/${pkgname}/application/config/example/memcached.php" "${pkgdir}/etc/webapps/filebin"
   install -m644 filebin-file-cron.service filebin-file-cron.timer filebin-user-cron.service filebin-user-cron.timer "${pkgdir}/usr/lib/systemd/system"
-  install -m644 filebin-nginx.conf filebin-php-fpm.conf ${pkgdir}/usr/share/webapps/filebin
-  cp -r "${srcdir}/filebin/"* "${pkgdir}/usr/share/webapps/filebin/"
+  install -m644 filebin-nginx.conf filebin-php-fpm.conf "${pkgdir}/usr/share/webapps/filebin"
+  cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/usr/share/webapps/filebin/"
   rm "${pkgdir}/usr/share/webapps/filebin/application/config/memcached.php"
   ln -s /etc/webapps/filebin/{config-local,database,memcached}.php "${pkgdir}/usr/share/webapps/filebin/application/config"
   ln -s /etc/webapps/filebin/contact-info.php "${pkgdir}/usr/share/webapps/filebin/data/local"
