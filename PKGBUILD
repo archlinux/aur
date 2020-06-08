@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=xrel-terminal-client
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal client to access the xREL.to API, written in Go."
 arch=("x86_64")
 url="https://github.com/hashworks/xREL-Terminal-Client"
@@ -33,6 +33,7 @@ check() {
 
 package() {
 	cd "xREL-Terminal-Client-${pkgver}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm755 build/xrel "${pkgdir}/usr/bin/xrel"
 }
 
