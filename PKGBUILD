@@ -1,28 +1,27 @@
-# Maintainer: David Donchez <david.donchez@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: David Donchez <david.donchez@gmail.com>
+
 pkgname=kpm
-pkgver=v0.17.0
+pkgver=0.25.0
 pkgrel=1
-pkgdesc="CLI to deploy and manage applications stack on Kubernetes"
+pkgdesc="KPM is a tool to deploy and manage application stacks on Kubernetes."
 arch=('any')
-url="https://github.com/kubespray/kpm"
+url="https://github.com/coreos/kpm"
 license=('Apache')
-groups=()
-depends=('python2' 'python2-yaml' 'python2-jinja' 'python-requests' 'python2-jsonpatch' 'python2-tabulate' 'python2-termcolor')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
+depends=('python2' 'python2-yaml' 'python2-jinja' 'python2-requests' 'python2-jsonpatch' 'python2-tabulate' 'python2-termcolor')
 options=(!emptydirs)
-install=
-source=("$pkgname::https://github.com/kubespray/kpm/archive/$pkgver.zip")
-sha256sums=('58b07746033558ee0b709e31a0329611102c8bacf612f5b541be397f7b8968f8')
+source=("$pkgname.zip::https://github.com/coreos/kpm/archive/v$pkgver.zip")
+sha256sums=('7167842c1758fa30bd3a2c68bd9f9aa18669d73f6f92848d9c2339d65a8024b4')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py build
+}
 
 package() {
-  # striping char from tag
-  pkgtag=${pkgver:1}
-  cd "$srcdir/$pkgname-$pkgtag"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
