@@ -4,12 +4,12 @@
 _pkgname=s4cmd
 pkgname=s4cmd-python3-git
 pkgver=132.80059bf
-pkgrel=2
+pkgrel=3
 pkgdesc="Super S3 command line tool (git) for Python 3"
 arch=('any')
 url="https://github.com/bloomreach/${_pkgname}"
 license=('GPL')
-depends=('python' 'python-dateutil' 'python-boto3')
+depends=('python' 'python-dateutil' 'python-boto3' 'python-pytz')
 makedepends=(git python-setuptools)
 optdepends=('gnupg: encrypted file storage')
 provides=('s4cmd')
