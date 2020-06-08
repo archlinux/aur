@@ -5,7 +5,7 @@ _srctag=5.9-GE-1-NR
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -143,7 +143,7 @@ sha256sums=(
     SKIP
     SKIP
     'c899f176cbb7b1c411abbc103e17ae05702df21a502534c6f71c891ebde7b604'
-    '3e4e609198d20ad2fef479ffca96120223df03581b489b0390f27c44075011ff'
+    '6696b090e1b3ee854e52880f51210267d8139631d26e7604a4db519a4db076f1'
     'b3013734f6c551bb669b6236ccdc0c38dde25b946b1b518e77c9b2a6adfb1166'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
