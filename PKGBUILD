@@ -1,17 +1,17 @@
-# Maintainer: Patrick Schratz <patrick.schratz@gmail.com>
-# Adapted from nodejs-mkdirp
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Patrick Schratz <patrick.schratz@gmail.com>
 
 pkgname=nodejs-decktape
 _npmname=decktape
-pkgver=2.11.0
-pkgrel=0
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='PDF exporter for HTML presentation frameworks'
 arch=('any')
 url='https://github.com/astefanutti/decktape'
 license=('MIT')
 depends=('npm' 'nodejs')
 source=("${_npmname}-${pkgver}.tar.gz::https://github.com/astefanutti/"${_npmname}"/archive/v"${pkgver}".tar.gz")
-md5sums=('097548c4ecd9cb0208c480f6fad7fe41')
+sha256sums=('690e931e1d5f8aa71dacde43a41b250ed936f9fb9a5b827abac5abe00ebc3841')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
