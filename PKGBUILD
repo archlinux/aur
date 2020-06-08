@@ -1,6 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
 pkgname=brickstrap-git
+_pkgname="${pkgname%-git}"
 pkgver=0.6.8.r4.ga48aea5
 pkgrel=1
 pkgdesc='Tool for turning Docker images into bootable image files for embedded systems'
@@ -14,11 +15,11 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
+	cd "${_pkgname}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${pkgname%-git}"
-	install -Dm755 src/brickstrap.sh "${pkgdir}/usr/bin/brickstrap"
+	install -Dm644 "${_pkgname}/COPYING.MIT" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.MIT"
+	install -Dm755 "${_pkgname}/src/brickstrap.sh" "${pkgdir}/usr/bin/brickstrap"
 }
