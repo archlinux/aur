@@ -3,7 +3,7 @@
 pkgname=mingw-w64-xalan-c-git
 conflicts=("mingw-w64-xalan-c")
 provides=("mingw-w64-xalan-c")
-pkgver=1.12.0.r0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards."
 arch=(any)
@@ -23,10 +23,13 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
 	cd "xalan-c"
 	git apply "../fix-cross-compile.patch"
+	sed -i -r "s/_MSC_VER/_WIN32/" "src/xalanc/XalanExe/XalanExe.cpp"
 }
 
 build() {
 	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF -DBUILD_SHARED_LIBS=FALSE
+		make -C "build-${_arch}-static"
 		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF
 		make -C "build-${_arch}"
 	done
@@ -34,6 +37,7 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
+		make DESTDIR="${pkgdir}" -C "build-${_arch}-static" install
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a

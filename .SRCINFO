@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-xalan-c-git
 	pkgdesc = The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards.
-	pkgver = 1.12.0.r0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://xalan.apache.org/
 	arch = any
