@@ -6,7 +6,7 @@ if [ -f "$HOME/.xdmanrc" ]; then
     source "$HOME/.xdmanrc"
 fi
 if [ "x$XDMAN_JAVA_HOME" != "x" ]; then
-    "$XDMAN_JAVA_HOME/bin/java" -Dsun.java2d.xrender=false -jar /opt/xdman/xdman.jar
+    "$XDMAN_JAVA_HOME/bin/java" -Dsun.java2d.xrender=false -jar /opt/xdman/xdman.jar $@
 else
-    java -Dsun.java2d.xrender=false -jar /opt/xdman/xdman.jar
+    java -Dsun.java2d.xrender=false -jar /opt/xdman/xdman.jar $@
 fi

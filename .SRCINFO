@@ -1,7 +1,7 @@
 pkgbase = xdman
 	pkgdesc = Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser.
 	pkgver = 2020.7.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://subhra74.github.io/xdm/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xdman
 	depends = java-runtime>=11
 	source = xdman.bin
 	source = https://github.com/subhra74/xdm/releases/download/7.2.11/xdm-setup-7.2.11.tar.xz
-	sha256sums = bb7e28fe2873c3fbaffd9a7448835d4d2a210f7cf136dd683f3bb389f0f03f91
+	sha256sums = f50e60e27a8b70c03b564853a3c11a59105915891782c581cc803356e0008739
 	sha256sums = 140413651797d97b13c5f1a2f0c528da6e46d3652bd36abd743b1a69dc610438
 
 pkgname = xdman
