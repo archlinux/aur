@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r352044.2e1cfd02d0f
+pkgver=11.0.0_r356619.ef5850a2de3
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -23,7 +23,6 @@ license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
                             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
-checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h')
 
@@ -58,11 +57,6 @@ pkgver() {
 }
 
 prepare() {
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-    mkdir _build
-    
     cd llvm-project
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang
@@ -70,10 +64,13 @@ prepare() {
 }
 
 build() {
-    cd _build
-    cmake "$srcdir"/llvm-project/llvm  -G Ninja \
-        -D CMAKE_C_FLAGS="${CFLAGS}" \
-        -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
+    cmake \
+        -B _build \
+        -S "$srcdir"/llvm-project/llvm  \
+        -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
@@ -97,18 +94,18 @@ build() {
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
-    ninja $NINJAFLAGS
-    ninja $NINJAFLAGS ocaml_doc
+    ninja -C _build $NINJAFLAGS
+    ninja -C _build $NINJAFLAGS ocaml_doc
 }
 
 check() {
-    cd _build
-    ninja $NINJAFLAGS check
-    ninja $NINJAFLAGS check-polly
-    ninja $NINJAFLAGS check-lld
-    ninja $NINJAFLAGS check-lldb
-    ninja $NINJAFLAGS check-clang
-    ninja $NINJAFLAGS check-clang-tools
+
+    ninja -C _build $NINJAFLAGS check-llvm
+    ninja -C _build $NINJAFLAGS check-clang
+    ninja -C _build $NINJAFLAGS check-clang-tools
+    ninja -C _build $NINJAFLAGS check-polly
+    ninja -C _build $NINJAFLAGS check-lld
+    ninja -C _build $NINJAFLAGS check-lldb
 }
 
 package_llvm-git() {
@@ -125,9 +122,8 @@ package_llvm-git() {
     # A package always provides itself, so there's no need to provide llvm-git
     conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly')
     
-    pushd _build
-        DESTDIR="$pkgdir" ninja $NINJAFLAGS install
-    popd
+   DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
+
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
