@@ -3,7 +3,7 @@ pkgname=certbot-dns-hetzner-git
 _pkgname="${pkgname%-git}"
 pkgdesc="Certbot plugin enabling dns-01 challenge on the Hetzner DNS API"
 pkgver=v1.0.3.r0.g0b5f4d2
-pkgrel=2
+pkgrel=3
 arch=("any")
 url="https://github.com/ctrlaltcoop/certbot-dns-hetzner"
 license=("APACHE")
@@ -32,5 +32,6 @@ check() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
