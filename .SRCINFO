@@ -1,9 +1,8 @@
 pkgbase = s6-linux-utils-musl
-	pkgdesc = Tiny Linux-specific utilities
-	pkgver = 1.0.0
+	pkgdesc = s6-linux-utils is a set of minimalistic Linux-specific system utilities.
+	pkgver = 2.5.1.2
 	pkgrel = 1
-	url = http://www.skarnet.org/software/s6-linux-utils
-	changelog = CHANGELOG
+	url = https://www.skarnet.org/software/s6-linux-utils
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
@@ -11,8 +10,9 @@ pkgbase = s6-linux-utils-musl
 	makedepends = libnl
 	makedepends = musl
 	provides = s6-linux-utils
-	source = http://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-1.0.0.tar.gz
-	md5sums = 89efa44c5582a7d18d12baf0c3d26074
+	conflicts = s6-linux-utils
+	source = https://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-2.5.1.2.tar.gz
+	sha256sums = 06f97b84e78abcc952d108c0bab28831676062fe6f34cf7eeab32c8f93ae9270
 
 pkgname = s6-linux-utils-musl
 

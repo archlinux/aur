@@ -1,16 +1,19 @@
-# Maintainer: David Arroyo <droyo@aqwari.us>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contriubtor: David Arroyo <droyo@aqwari.us>
+
 pkgname=s6-linux-utils-musl
-pkgver=1.0.0
+pkgver=2.5.1.2
 pkgrel=1
-pkgdesc="Tiny Linux-specific utilities"
+pkgdesc="s6-linux-utils is a set of minimalistic Linux-specific system utilities."
 arch=('i686' 'x86_64')
-url="http://www.skarnet.org/software/s6-linux-utils"
+url="https://www.skarnet.org/software/s6-linux-utils"
 license=('custom:ISC')
-changelog=CHANGELOG
-makedepends=(skalibs libnl musl)
-provides=(s6-linux-utils)
+makedepends=('skalibs' 'libnl' 'musl')
+provides=('s6-linux-utils')
+conflicts=('s6-linux-utils')
 source=(${url}/s6-linux-utils-$pkgver.tar.gz)
-md5sums=('89efa44c5582a7d18d12baf0c3d26074')
+sha256sums=('06f97b84e78abcc952d108c0bab28831676062fe6f34cf7eeab32c8f93ae9270')
 
 # Usually we can use musl-gcc here. However, s6-devd
 # builds against libs and header files in /usr/{lib,include}.
