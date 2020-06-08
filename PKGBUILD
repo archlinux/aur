@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=spirv-tools-sparzz-git
-pkgver=2020.05.26_r5
+pkgver=2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="SPIR-V Tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur  "
