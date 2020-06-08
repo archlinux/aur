@@ -1,7 +1,7 @@
 #Maintainer:  sparzz
 pkgname=radv-git
 packager=sparzz
-pkgver=20.2.0_devel.2020.05.27_r1
+pkgver=20.2.0_devel.2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco. Depends on my vulkan aur repos. It provide the most recent Vulkan API. "
