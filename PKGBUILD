@@ -4,7 +4,7 @@
 
 pkgname=typhoon_2001
 pkgver=r3992
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast paced 3D shoot-em-up based on Tempest 2000"
 arch=("i686" "x86_64")
 url="http://www.kuto.de/projekte_typhoon.html"
@@ -13,7 +13,7 @@ options=(!strip)
 install=typhoon_2001.install
 depends_i686+=("flac" "glu" "libpulse" "libvorbis" "libxcursor" "libxpm" "libxrender" "mesa")
 depends_x86_64+=("lib32-flac" "lib32-glu" "lib32-libpulse" "lib32-libvorbis" "lib32-libxcursor" "lib32-libxpm" "lib32-libxrender" "lib32-mesa" )
-source=("https://dl.dropboxusercontent.com/u/13181650/typhoon_2001_r3992.tar.gz" "https://dl.dropboxusercontent.com/u/13181650/typhoon_add.tar.gz")
+source=("https://www.dropbox.com/s/q57ev217t83bi4z/typhoon_2001_r3992.tar.gz" "https://www.dropbox.com/s/ac7ioyle250h8zr/typhoon_add.tar.gz?dl=0")
 md5sums=('d83d89570a18ef121776442baef00647'
          'b02d2ea8fcfed6f065cf1837723c03da')
 
