@@ -1,10 +1,12 @@
 pkgbase = libxfce4ui-devel
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (Development version)
-	pkgver = 4.15.2
+	pkgver = 4.15.3
 	pkgrel = 1
-	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
+	url = https://gitlab.xfce.org/xfce/libxfce4ui/-/blob/master/README
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	groups = xfce4-devel
 	license = GPL2
 	makedepends = intltool
@@ -19,10 +21,10 @@ pkgbase = libxfce4ui-devel
 	depends = hicolor-icon-theme
 	depends = gtk3
 	optdepends = glade: Glade designer plugin
-	provides = libxfce4ui=4.15.2
+	provides = libxfce4ui=4.15.3
 	conflicts = libxfce4ui
-	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.15/libxfce4ui-4.15.2.tar.bz2
-	sha256sums = cbab99954099394ea579e83761458c735b773fdca9b2bfa87fb94376846ac900
+	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.15/libxfce4ui-4.15.3.tar.bz2
+	sha256sums = ce89419720da0fa84a3bb46bc447564c5800057c026c272ae0b016918c0a9307
 
 pkgname = libxfce4ui-devel
 
