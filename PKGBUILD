@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.2.0_devel.123819.9048adbd246
+pkgver=20.2.0_devel.124685.1234faa7bf1
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -111,31 +111,31 @@ build () {
         -D dri-drivers=i915,i965,r200,r100,nouveau \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
         -D vulkan-drivers=amd,intel \
-        -D dri3=true \
-        -D egl=true \
+        -D dri3=enabled \
+        -D egl=enabled \
         -D gallium-extra-hud=true \
         -D vulkan-overlay-layer=true \
         -D vulkan-device-select-layer=true \
         -D gallium-nine=true \
         -D gallium-omx=disabled \
         -D gallium-opencl=disabled \
-        -D gallium-va=true \
-        -D gallium-vdpau=true \
-        -D gallium-xa=true \
-        -D gallium-xvmc=false \
-        -D gbm=true \
-        -D gles1=false \
-        -D gles2=true \
+        -D gallium-va=enabled \
+        -D gallium-vdpau=enabled \
+        -D gallium-xa=enabled \
+        -D gallium-xvmc=disabled \
+        -D gbm=enabled \
+        -D gles1=disabled \
+        -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
-        -D libunwind=true \
-        -D llvm=true \
-        -D lmsensors=true \
+        -D libunwind=enabled \
+        -D llvm=enabled \
+        -D lmsensors=enabled \
         -D osmesa=gallium \
-        -D shared-glapi=true \
-        -D valgrind=false \
+        -D shared-glapi=enabled \
+        -D valgrind=disabled \
         -D tools=[] \
-        -D zstd=true
+        -D zstd=enabled
 
     meson configure _build
     
