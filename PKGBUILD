@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=pam-ihosts
 pkgver=1.5.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A PAM module that provides access control by ip, mac-address, or country-code/region."
 license=("GPL3")
 arch=("x86_64")
@@ -19,5 +19,6 @@ build() {
 
 package() {
 	cd "pam_ihosts-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+	make DESTDIR="${pkgdir}/" install
 }
