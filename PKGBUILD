@@ -8,7 +8,7 @@ url='https://github.com/Lykos153/python-drivelib'
 license=('GPLv3+')
 arch=('any')
 depends=('python' 'python-google-api-python-client' 'python-google-auth-oauthlib' 'python-google-auth-httplib2' 'python-google-auth' 'python-oauth2client')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=("git+https://github.com/Lykos153/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 

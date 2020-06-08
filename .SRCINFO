@@ -6,6 +6,7 @@ pkgbase = python-drivelib
 	arch = any
 	license = GPLv3+
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-google-api-python-client
 	depends = python-google-auth-oauthlib
