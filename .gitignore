@@ -5,4 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!android-messages-desktop
+!android-messages-desktop.sh
+!android-messages-desktop.desktop
