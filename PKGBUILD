@@ -27,7 +27,9 @@ url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 _srcname=linux-${pkgver}
