@@ -1,9 +1,9 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 
 pkgname=virtualbox-guest-dkms-vmsvga
-pkgver=6.1.8
+pkgver=6.1.10
 pkgrel=1
-pkgdesc='VirtualBox Guest kernel modules sources (VMSVGA fix)'
+pkgdesc='VirtualBox Guest kernel modules sources (VMSVGA resize and multi-head fix)'
 arch=('x86_64')
 url='https://virtualbox.org/'
 license=('GPL' 'custom')
@@ -27,7 +27,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgve
         'LocalConfig.kmk'
         'virtualbox-guest-dkms-vmsvga.conf'
         'vboxvmsvga.service')
-sha256sums=('426888f83036b6b1f79c272d317a4e8ecf43781f6a266fd7209c03dca504eefc'
+sha256sums=('37d8b30c0be82a50c858f3fc70cde967882239b6212bb32e138d3615b423c477'
             '2be313b98bffde482aad93b00c419f1d5f7645fd9e6053175ffb0d925067f96a'
             'edd0492f0706e03169cdf3654658ea650687c30967ca5e32fde19d43e3dd4e5e'
             'b6da21bfbc2d452aa8e2ae5c118ec8ed8b87ad6d86000e6b27f28c098b9871ca')
