@@ -13,7 +13,7 @@ depends=('bash' 'util-linux')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
-        'ventoy')
+        "${pkgname%-bin}")
 sha512sums=('b89c4de490ec7af8358c98c7613ba2cb91e42c2db0c7e541ac62e1b3d9dfb7ff2d7550c72a71e52b0e27f7b030053e62b1b3bde3ed93fe7b00be78d4abe00865'
             '27fef4c8e254863896888cf3e77a39ed377100effc69a4518fe55038069c7c1e8b56f1a79d47d969eda8e5bd90920e93b34dd361aac67be948266d1e7b238dcd')
 
