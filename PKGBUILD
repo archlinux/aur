@@ -2,7 +2,7 @@
 # Contributor: mncarbone <mncarbone@gmail.com>
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint
-pkgver=20191127
+pkgver=20200501
 pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=()
 source_i686=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l32-${pkgver}.tgz)
 source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l64-${pkgver}.tgz)
 noextract=()
-sha256sums_x86=("fd0cff776b6a97dc22d1852503d65d23bb0171bdace751f8ef38b86ffd821d74")
-sha256sums_x86_64=("f63b7c56145f357f99aa856bcf3cafdacaae011a0a3c90f868ce3198b9833f08")
+sha256sums_x86=("bfe1a22b8f794640c1d5e4f24da890d3faa88432405fb9f94d93d43ac89b9f1c")
+sha256sums_x86_64=("a0d0af715163ae9052fc8b950923fb15d1503f6fc2fa3c564e964ff1f06922a7")
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
