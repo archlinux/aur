@@ -1,6 +1,6 @@
 pkgbase = pandoc-citeproc-bin
 	pkgdesc = Pandoc Cite Processor - executable only, without 750MB Haskell depends/makedepends
-	pkgver = 2.7.3
+	pkgver = 2.9.2.1
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/pandoc-citeproc
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pandoc-citeproc-bin
 	conflicts = pandoc-citeproc
 	replaces = pandoc-citeproc-static
 	replaces = pandoc-citeproc-lite
-	source = https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
-	sha256sums = eb775fd42ec50329004d00f0c9b13076e707cdd44745517c8ce2581fb8abdb75
+	source = https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-linux-amd64.tar.gz
+	sha256sums = 5b61a981bd2b7d48c1b4ba5788f1386631f97e2b46d0d1f1a08787091b4b0cf8
 
 pkgname = pandoc-citeproc-bin
 
