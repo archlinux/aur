@@ -1,0 +1,30 @@
+pkgbase = tiled-git
+	pkgdesc = A general purpose tile map editor, built to be flexible and easy to use
+	pkgver = v1.3.4.r310.gc547aa71
+	pkgrel = 1
+	url = http://www.mapeditor.org
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = qt5-tools
+	makedepends = python3
+	makedepends = qbs
+	makedepends = git
+	depends = qt5-base
+	depends = libgl
+	depends = gtk-update-icon-cache
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = libxkbcommon-x11
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = zstd
+	optdepends = python3: Python plugin
+	provides = tiled
+	conflicts = tiled
+	replaces = tiled
+	source = tiled::git+https://github.com/bjorn/tiled.git#branch=master
+	sha512sums = SKIP
+
+pkgname = tiled-git
+
