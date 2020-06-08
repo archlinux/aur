@@ -12,8 +12,6 @@ url="https://github.com/vivien/i3blocks-contrib"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('84148bf8f514de3b3dcaedeb5621e9640f96423d06759b7072507a15d0b6337f')
-provides=("i3blocks-contrib")
-conflicts=("i3blocks-contrib")
 
 # Please keep those ordered by script-name. Packages for more than 2 scripts go on top
 optdepends=('coreutils: For some scripts'
