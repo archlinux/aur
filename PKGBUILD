@@ -21,7 +21,7 @@ backup=('etc/webapps/filebin/config-local.php'
 )
 install=filebin.install
 options=('!strip' 'emptydirs')
-source=("git+https://github.com/Bluewind/filebin.git"
+source=("git+https://github.com/Bluewind/filebin.git#tag=${pkgver}?signed"
         'filebin-nginx.conf'
         'filebin-php-fpm.conf'
         'filebin-file-cron.service'
@@ -37,9 +37,10 @@ sha256sums=('SKIP'
             '36c82c506a058edc50b882200332c6a540aa68a5749919eb62dc6c633c47deb3'
             'd73e4b984ab95954bd18e08237c6aa8bec32ccc5699531727362e2c75ba9c25e')
 
+validpgpkeys=('CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E') # Florian Pritz <bluewind@archlinux.org>
+
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git checkout "${pkgver}"
   git submodule update --init --recursive
 }
 

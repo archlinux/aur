@@ -19,13 +19,14 @@ pkgbase = filebin
 	backup = etc/webapps/filebin/contact-info.php
 	backup = etc/webapps/filebin/database.php
 	backup = etc/webapps/filebin/memcached.php
-	source = git+https://github.com/Bluewind/filebin.git
+	source = git+https://github.com/Bluewind/filebin.git#tag=3.4.4?signed
 	source = filebin-nginx.conf
 	source = filebin-php-fpm.conf
 	source = filebin-file-cron.service
 	source = filebin-file-cron.timer
 	source = filebin-user-cron.service
 	source = filebin-user-cron.timer
+	validpgpkeys = CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E
 	sha256sums = SKIP
 	sha256sums = 6ed404a3fbc28c6ab35bf1eba67ddcf46cfd48893237155e38d297a13020180c
 	sha256sums = 034442098d1608807bec2a03028a7c8bb9ae9d286c378e2f668b4aca3cc9d4e1
