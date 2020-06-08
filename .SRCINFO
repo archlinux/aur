@@ -1,7 +1,7 @@
 pkgbase = jx
 	pkgdesc = Command line tool for working with Jenkins X
 	pkgver = 2.1.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jenkins-x/jx
 	arch = x86_64
 	license = Apache
