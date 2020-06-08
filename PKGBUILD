@@ -2,7 +2,7 @@
 pkgname=srrdb-terminal-client
 pkgver=1.1.5
 pkgrel=3
-pkgdesc="A terminal client to access srrdb.com, written in Go."
+pkgdesc="A terminal client to access srrdb.com"
 arch=("x86_64")
 url="https://github.com/hashworks/srrdb-Terminal-Client"
 license=("GPL3")

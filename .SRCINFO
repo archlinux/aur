@@ -1,5 +1,5 @@
 pkgbase = srrdb-terminal-client
-	pkgdesc = A terminal client to access srrdb.com, written in Go.
+	pkgdesc = A terminal client to access srrdb.com
 	pkgver = 1.1.5
 	pkgrel = 3
 	url = https://github.com/hashworks/srrdb-Terminal-Client
