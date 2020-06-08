@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=2.1.7
+pkgver=2.1.10
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ source=(
     "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
-    "variant::git+https://github.com/mapbox/variant"
+    "variant::git+https://github.com/desktop-app/variant.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
