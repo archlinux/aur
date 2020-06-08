@@ -1,7 +1,7 @@
 pkgbase = kiwix-desktop-git
 	pkgdesc = Offline reader for Web content, especially intended to make Wikipedia available offline.
 	pkgver = 2.0.1.r13.g2c98856
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwix/kiwix-desktop
 	arch = i686
 	arch = x86_64
