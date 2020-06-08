@@ -11,7 +11,7 @@ depends=('php')
 source=("phpstan-${pkgver}.phar::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar"
         "phpstan-${pkgver}.phar.asc::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar.asc")
 validpgpkeys=('D32680D5957DC7116BE29C14CF1A108D0E7AE720')
-sha256sums=('ad6dd8a042eade9046cb0561b53b37b4d19163fe6c4f4bc49d65dfeece2606a9'
+sha256sums=('a76547ff7508bd56611e34e817c90f0a24d43ac6c1df0f4cd111348a28dfa0a6'
             'SKIP')
 
 package() {
