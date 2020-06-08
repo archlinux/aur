@@ -1,12 +1,12 @@
 pkgname=python-qtermwidget
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for QTermWidget"
 arch=("x86_64")
 url="https://lxqt.org"
 # Yep, it"s messy when you"re talking about licenses
 license=("LGPL" "custom:BSD" "custom:Public Domain")
-depends=("python" "qtermwidget")
+depends=("python" "qtermwidget" "python-sip" "sip")
 conflicts=("python-qtermwidget-git")
 makedepends=("lxqt-build-tools" "git")
 source=("https://github.com/lxqt/qtermwidget/releases/download/$pkgver/qtermwidget-$pkgver.tar.xz")
