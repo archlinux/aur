@@ -16,10 +16,11 @@ depends=("glibc")
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   CGO_ENABLED=0
+  BUILDDATE=$(date +%Y%m%dT%H%M%S)
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
+    -ldflags "-X main.Version=v${pkgver} -X main.BuildDate=${BUILDDATE} -extldflags ${LDFLAGS}" \
     -buildmode=pie \
     ./cmd/gotop
 }
