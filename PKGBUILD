@@ -2,7 +2,7 @@
 pkgname=xrel-terminal-client
 pkgver=2.1.2
 pkgrel=2
-pkgdesc="A terminal client to access the xREL.to API, written in Go."
+pkgdesc="A terminal client to access the xREL.to API"
 arch=("x86_64")
 url="https://github.com/hashworks/xREL-Terminal-Client"
 license=("GPL3")
