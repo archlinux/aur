@@ -4,7 +4,7 @@
 
 pkgname=i3blocks-contrib
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Community-contributed blocklets for i3blocks"
 arch=('any')
 groups=('i3')
@@ -65,7 +65,7 @@ optdepends=('coreutils: For some scripts'
             'youtube-dl: For ytdl-mpv script')
 
 package() {
-  install -Dm644 "${pkgname-$pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 "${pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   install -dm755 "${pkgdir}/usr/lib/i3blocks/"
-  mv "${pkgname}-$pkgver"/* "${pkgdir}/usr/lib/i3blocks/"
+  mv "${pkgname}-${pkgver}"/* "${pkgdir}/usr/lib/i3blocks/"
 }

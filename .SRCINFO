@@ -1,7 +1,7 @@
 pkgbase = i3blocks-contrib
 	pkgdesc = Community-contributed blocklets for i3blocks
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vivien/i3blocks-contrib
 	arch = any
 	groups = i3
