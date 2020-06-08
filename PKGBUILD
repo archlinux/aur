@@ -22,7 +22,6 @@ sha256sums=('a55e0801c318b02b1ac4e16e9b7a87ccfa7b039ea60d2c62610bd1bbbdd6cd4a' '
 prepare() {
 
   cd "keepassxc-$pkgver"
-  pwd
   patch --forward --strip=1 --input="${srcdir}/0001-fix-minimizing-on-copy-if-running-under-KDE-Plasma.patch"
 }
 
