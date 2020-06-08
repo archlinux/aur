@@ -2,8 +2,8 @@
 pkgname=certbot-dns-hetzner-git
 _pkgname="${pkgname%-git}"
 pkgdesc="Certbot plugin enabling dns-01 challenge on the Hetzner DNS API"
-pkgver=v1.0.3.r0.g0b5f4d2
-pkgrel=3
+pkgver=1.0.3.r0.g0b5f4d2
+pkgrel=1
 arch=("any")
 url="https://github.com/ctrlaltcoop/certbot-dns-hetzner"
 license=("APACHE")
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
