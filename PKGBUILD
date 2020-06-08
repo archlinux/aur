@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=srrdb-terminal-client
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal client to access srrdb.com, written in Go."
 arch=("x86_64")
 url="https://github.com/hashworks/srrdb-Terminal-Client"
@@ -33,5 +33,6 @@ check() {
 
 package() {
 	cd "srrdb-Terminal-Client-${pkgver}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm755 "build/srrdb-Terminal-Client" "${pkgdir}/usr/bin/srrdb"
 }
