@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: jswenson
 pkgname=android-messages-desktop
-pkgver=3.1.0+85+gf325f70
+pkgver=3.1.0+86+g59c06dd
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
 makedepends=('git' 'yarn')
-_commit=f325f709f7a3d9157404ff528e5c899a67254387
+_commit=59c06dd0f50ef1f1b219643100f5a0a557f12969
 source=("git+$url.git#commit=$_commit"
         "$pkgname.sh"
         "$pkgname.desktop")
