@@ -5,7 +5,7 @@
 
 # Maintainer: Faye Jackson <justalittleepsilon@gmail.com>
 pkgname=msync
-pkgver=0.9.8
+pkgver=0.9.9.1
 pkgrel=1
 _tagver="v$pkgver"
 pkgdesc="A low bandwidth store and forward Mastodon / Pleroma API command line client"
@@ -16,7 +16,7 @@ depends=(curl libcurl3-gnutls)
 provides=(msync)
 conflicts=(msync-git)
 source=("https://github.com/Kansattica/msync/releases/download/${_tagver}/msync-${_tagver}-install-linux-x64-gcc")
-md5sums=('7a86f6f2b31c6f82ec38771434764505')
+md5sums=('8f28a14507b1fdeade60164fc6883f9c')
 
 package() {
 	cd $srcdir
