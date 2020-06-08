@@ -9,6 +9,8 @@ pkgbase = dns-zone-blacklist-git
 	optdepends = unbound
 	optdepends = bind
 	optdepends = dnsmasq
+	provides = dns-zone-blacklist
+	conflicts = dns-zone-blacklist
 	source = git+https://github.com/oznu/dns-zone-blacklist.git
 	sha256sums = SKIP
 
