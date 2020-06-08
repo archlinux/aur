@@ -23,7 +23,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -ldflags '-X main.VERSION='"${pkgver}"' -X main.BUILD_DATE='"$(date +"%Y-%m-%d_%H:%M:%S")" -o build .
+	go build -ldflags '-X main.VERSION='"${pkgver}"' -X main.BUILD_DATE='"$(date -d@"${SOURCE_DATE_EPOCH}" +"%Y-%m-%d_%H:%M:%S")"'' -o build .
 }
 
 check() {
