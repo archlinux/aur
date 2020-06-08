@@ -4,6 +4,7 @@ pkgbase = dns-zone-blacklist-git
 	pkgrel = 1
 	url = https://github.com/oznu/dns-zone-blacklist
 	arch = any
+	license = MIT
 	makedepends = git
 	optdepends = unbound
 	optdepends = bind
