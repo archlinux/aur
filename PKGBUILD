@@ -2,7 +2,7 @@
 
 pkgname=oink-git
 pkgrel=1
-pkgver=r108.0464439
+pkgver=r114.f80978d
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -11,7 +11,7 @@ pkgdesc="Oink is an implementation of modern parity game solvers written in C++.
 arch=('i686' 'x86_64')
 url="https://github.com/trolando/oink"
 licecnse=('Apache 2.0')
-source=("oink-git::git+https://github.com/trolando/oink#commit=0464439")
+source=("oink-git::git+https://github.com/trolando/oink#commit=f80978d")
 makedepends=('git' 'gcc' 'make' 'cmake' 'boost')
 depends=('boost-libs')
 md5sums=('SKIP')
