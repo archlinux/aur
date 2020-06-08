@@ -1,0 +1,14 @@
+pkgbase = zim-tools
+	pkgdesc = Various ZIM command line tools
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/openzim/zim-tools
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = libzim>=6.1.5
+	source = zim-tools-1.2.1.tar.gz::https://github.com/openzim/zim-tools/archive/1.2.1.tar.gz
+	sha256sums = 622ed1ff471d621a39a12f2d5d9996f71c59c29fcde2db98b8897d2e2d266991
+
+pkgname = zim-tools
+
