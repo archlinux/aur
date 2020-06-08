@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=11.0.0_r352204.aca335955c0
+pkgver=11.0.0_r356627.2c512eaf378
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -38,11 +38,6 @@ pkgver() {
 
 
 prepare() {
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-    mkdir _build
-    
    cd llvm-project
     # remove code parts not needed to build this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc mlir flang
@@ -50,13 +45,16 @@ prepare() {
 }
 
 build() {
-    cd _build
+
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
     
     LIB32_CFLAGS="$CFLAGS"" -m32"
     LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
 
-    cmake "$srcdir"/llvm-project/llvm  -G Ninja \
+    cmake \
+        -B _build \
+        -S "$srcdir"/llvm-project/llvm \
+        -G Ninja \
         -D LLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt" \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
@@ -79,13 +77,12 @@ build() {
         -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_VERSION_SUFFIX=""
 
-    ninja $NINJAFLAGS all
+    ninja -C _build $NINJAFLAGS all
 }
 
 check() {
-    cd _build
-    ninja $NINJAFLAGS check-llvm
-    ninja $NINJAFLAGS check-clang
+    ninja -C _build $NINJAFLAGS check-llvm
+    ninja -C build $NINJAFLAGS check-clang
 }
 
 package_lib32-llvm-git() {
@@ -93,9 +90,7 @@ depends=('lib32-llvm-libs-git' 'llvm-git')
 provides=('aur-lib32-llvm-git' 'lib32-llvm' 'lib32-clang' 'lib32-clang-git')
 conflicts=('lib32-llvm' 'lib32-clang')
 
-    cd _build
-
-    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
+    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # The runtime library goes into lib32-llvm-libs-git
     mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
