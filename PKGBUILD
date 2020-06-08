@@ -16,7 +16,7 @@ source=(dbeaver-ee.desktop dbeaver-ee.install)
 source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('1b7ba50c167135d9a10ade51443d9c48619994fadd287062b1535e5b0d342894')
+sha256sums_x86_64=('d5debc6b08a6f238f6bd8aa08a3d6d029166c436f6fcce7274f4348c49461e96')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
 
