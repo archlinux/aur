@@ -1,7 +1,7 @@
 pkgbase = keepassxc-kde-fix
 	pkgdesc = Cross-platform community-driven port of Keepass password manager (with KDE workaround. See issue details https://github.com/keepassxreboot/keepassxc/issues/2793)
 	pkgver = 2.5.4
-	pkgrel = 2
+	pkgrel = 4
 	url = https://keepassxc.org/
 	arch = x86_64
 	license = GPL
