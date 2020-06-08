@@ -1,7 +1,7 @@
 pkgbase = i2p
 	pkgdesc = A distributed anonymous network
 	pkgver = 0.9.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = i2p
 	source = i2prouter.bash
 	source = i2prouter.sh
 	source = chromium-i2p.sh
+	source = upstream.patch::https://github.com/i2p/i2p.i2p/commit/6c0e18d3.patch
 	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
 	sha256sums = ab0eb691b2753277738fe16ddc46349a24fd66b6323deae987f7c927272befd8
 	sha256sums = SKIP
@@ -35,6 +36,7 @@ pkgbase = i2p
 	sha256sums = 7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a
 	sha256sums = 8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5
 	sha256sums = 77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0
+	sha256sums = 9e1d016b6044645a433bf3380d22d64b169127194e621f7dbf0e1c056bf7cb1c
 
 pkgname = i2p
 
