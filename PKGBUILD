@@ -13,15 +13,15 @@ checkdepends=('abi-compliance-checker')
 provides=('zmusic')
 conflicts=('zmusic')
 _srcname=ZMusic
-_checkver=1.1.0
+_checkver=1.1.1
 source=("${_srcname}::git+https://github.com/coelckers/ZMusic"
         '0001-Use-correct-soundfont-path.patch')
 source_x86_64=("libzmusic.so.1-${_checkver}-x86_64.dump.gz"
                "libzmusiclite.so.1-${_checkver}-x86_64.dump.gz")
 sha256sums=('SKIP'
             '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f')
-sha256sums_x86_64=('eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35'
-                   'd490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123')
+sha256sums_x86_64=('648c4f9462877a2b9dab1b8bd2fad7967c09fee3307f5f24adaa1f4532842780'
+                   '2abc6f5c128f023699210f6cfb22257a6a26375f0b206d92de1272302a84bbcf')
 
 pkgver() {
     cd $_srcname
