@@ -6,13 +6,13 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=245.r630.g842a362c3a
+pkgver=245.r1582.ga07e962549
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
-depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'systemd-git')
+depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'lib32-zstd' 'systemd-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
