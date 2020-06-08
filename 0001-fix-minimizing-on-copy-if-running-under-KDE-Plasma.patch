@@ -1,4 +1,4 @@
-From 7e043b507ee09d3f3dfda1fe917833072405d910 Mon Sep 17 00:00:00 2001
+From 1af49828a7964b69c003e64e375bddb0580baaa0 Mon Sep 17 00:00:00 2001
 From: magum <magum@home>
 Date: Mon, 8 Jun 2020 12:45:15 +0300
 Subject: [PATCH] fix minimizing on copy if running under KDE Plasma
@@ -7,21 +7,42 @@ it is workaround old Qt bug https://bugreports.qt.io/browse/QTBUG-25727
 
 Fixes: https://github.com/keepassxreboot/keepassxc/issues/2793
 ---
- src/gui/DatabaseWidget.cpp | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ src/gui/DatabaseWidget.cpp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/DatabaseWidget.cpp b/src/gui/DatabaseWidget.cpp
-index 990cf4e3..c71604be 100644
+index 990cf4e3..887466bc 100644
 --- a/src/gui/DatabaseWidget.cpp
 +++ b/src/gui/DatabaseWidget.cpp
-@@ -672,7 +672,9 @@ void DatabaseWidget::setClipboardTextAndMinimize(const QString& text)
+@@ -61,6 +61,7 @@
+ #include "gui/group/GroupView.h"
+ #include "keeshare/KeeShare.h"
+ #include "touchid/TouchID.h"
++#include "MainWindow.h"
+ 
+ #ifdef WITH_XC_NETWORKING
+ #include "gui/IconDownloaderDialog.h"
+@@ -667,12 +668,22 @@ void DatabaseWidget::showTotpKeyQrCode()
+     }
+ }
+ 
++MainWindow* getMainWindow();
++
+ void DatabaseWidget::setClipboardTextAndMinimize(const QString& text)
+ {
      clipboard()->setText(text);
      if (config()->get("HideWindowOnCopy").toBool()) {
          if (config()->get("MinimizeOnCopy").toBool()) {
 -            window()->showMinimized();
-+            window()->setWindowState(window()->windowState()|Qt::WindowMinimized);
-+            QApplication::processEvents();
-+            window()->setWindowState(window()->windowState()&~Qt::WindowMinimized);
++            if (config()->get("GUI/MinimizeToTray").toBool())
++            {
++                getMainWindow()->hideWindow();
++
++            } else {
++                window()->setWindowState(window()->windowState() | Qt::WindowMinimized);
++                QApplication::processEvents();
++                window()->setWindowState(window()->windowState() & ~Qt::WindowMinimized);
++            }
          } else if (config()->get("DropToBackgroundOnCopy").toBool()) {
              window()->lower();
          }
