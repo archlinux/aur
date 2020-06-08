@@ -1,0 +1,5 @@
+castools/
+pkg/
+src/
+castools-git-*.pkg.tar.xz
+castools-git-*.pkg.tar.zst

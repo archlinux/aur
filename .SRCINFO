@@ -1,0 +1,15 @@
+pkgbase = castools-git
+	pkgdesc = Convert WAV files of MSX tapes into .cas format and back (git version)
+	pkgver = 1.31.r7.218b177
+	pkgrel = 1
+	url = http://home.kabelfoon.nl/~vincentd/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = castools
+	conflicts = castools
+	source = castools::git+https://github.com/joyrex2001/castools.git
+	sha256sums = SKIP
+
+pkgname = castools-git
+
