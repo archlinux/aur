@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=1
+pkgver=4.91a94aa
 pkgrel=1
 pkgdesc="A AUR helper"
 arch=(any)
@@ -19,11 +19,10 @@ pkgver() {
 
 prepare(){
 	cd "$srcdir/$pkgname"
-	chmod +x sysinfo
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin" "gitaur"
+	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
