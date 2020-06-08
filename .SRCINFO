@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 245.r630.g842a362c3a
+	pkgver = 245.r1582.ga07e962549
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -117,9 +117,9 @@ pkgname = systemd-git
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=245.r630.g842a362c3a
-	provides = udev=245.r630.g842a362c3a
-	provides = systemd=245.r630.g842a362c3a
+	provides = systemd-tools=245.r1582.ga07e962549
+	provides = udev=245.r1582.ga07e962549
+	provides = systemd=245.r1582.ga07e962549
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
