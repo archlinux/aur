@@ -1,14 +1,14 @@
 pkgbase = python-sgp4
 	pkgdesc = Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://pypi.org/project/sgp4/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-2.8.tar.gz
-	md5sums = 6b916d61d4900b0ba100ecbd3b6bf28e
+	source = https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-2.9.tar.gz
+	md5sums = 89cfa99f83e7431d66be4a977284054c
 
 pkgname = python-sgp4
 	depends = python
