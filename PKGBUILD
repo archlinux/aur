@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=anesthetic
 pkgname=python-$_modulename
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="nested sampling visualisation"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e693222ab55699e4903d2f1c734992430f26ca3645880393672b768439fc6451')
+sha256sums=('2f5d700047d1c31fcbb55d566f059aef63edd8bafce347350ca6d5a9f5d27b15')
 package() {
   cd "$srcdir/$_modulename-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
