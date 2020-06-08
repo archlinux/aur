@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64')
 url='https://github.com/coelckers/ZMusic'
@@ -11,20 +11,18 @@ optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('cmake')
 checkdepends=('abi-compliance-checker')
 _srcname=ZMusic-${pkgver}
-_sover=arch.1
-_checkver=1.0.0
+_checkver=1.1.0
 source=("${_srcname}.tar.gz::https://github.com/coelckers/ZMusic/archive/${pkgver}.tar.gz"
         '0001-Use-correct-soundfont-path.patch')
-source_x86_64=("libzmusic.so.${_sover}-${_checkver}-x86_64.dump.gz"
-               "libzmusiclite.so.${_sover}-${_checkver}-x86_64.dump.gz")
-sha256sums=('69255ddb62ecb238474bc57e3f761a593006a22eef90c4e786ef613d9a643b3a'
+source_x86_64=("libzmusic.so.1-${_checkver}-x86_64.dump.gz"
+               "libzmusiclite.so.1-${_checkver}-x86_64.dump.gz")
+sha256sums=('98552b840063ba67da4a86fc2f22d0262ec41838323da83ab24f8ddcc6afe90e'
             '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f')
-sha256sums_x86_64=('fb524e664305019a2be2ba6da0634b902906c6c9b4ad71e1ec68a548f76f3243'
-                   'c7ec2809cc27a17c5a010537545ba2e80c75956c0a91dfbb9dd5e496a6f4308b')
+sha256sums_x86_64=('eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35'
+                   'd490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123')
 
 prepare() {
     cd $_srcname
-    echo "set_target_properties(zmusic zmusiclite PROPERTIES SOVERSION ${_sover})" >>source/CMakeLists.txt
     patch -i "$srcdir"/0001-Use-correct-soundfont-path.patch -p 1
 }
 
@@ -44,12 +42,20 @@ check() {
     if [ $_checkver = ${pkgver%%+*} ]; then
         return
     fi
-    if [ "$srcdir"/libzmusic.so.*-${_checkver}-${CARCH}.dump.gz \
-         != "$srcdir"/libzmusic.so.${_sover}-${_checkver}-${CARCH}.dump.gz ]; then
+
+    _soverbumped=true
+    cd "$srcdir"/$_srcname/build/source
+    for _lib in libzmusic.so.* libzmusiclite.so.*; do
+        if [ -f "$srcdir"/"${_lib}-${_checkver}-${CARCH}.dump" ]; then
+            _soverbumped=false
+            break
+        fi
+    done
+    if $_soverbumped; then
         return
     fi
 
-    cd $_srcname
+    cd "$srcdir"/$_srcname
     mkdir -p check
     cmake -B check \
           -D CMAKE_BUILD_TYPE=Debug \
@@ -60,10 +66,14 @@ check() {
           -D DYN_SNDFILE=OFF
     make -C check
 
-    for _lib in libzmusic.so.${_sover} libzmusiclite.so.${_sover}; do
-        _old="$srcdir"/${_lib}-${_checkver}-${CARCH}.dump
+    cd "$srcdir"/$_srcname/check/source
+    for _lib in libzmusic.so.* libzmusiclite.so.*; do
+        _old="$srcdir"/"${_lib}-${_checkver}-${CARCH}.dump"
+        if [ ! -f "$_old" ]; then
+            continue
+        fi
         _new=${_lib}-${pkgver}-${CARCH}.dump
-        abi-dumper check/source/$_lib -lver $pkgver -public-headers include -output $_new
+        abi-dumper $_lib -lver $pkgver -public-headers ../../include -output $_new
         abi-compliance-checker -l $_lib -old $_old -new $_new
     done
 }
