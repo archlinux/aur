@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("https://github.com/getgauge/gauge/archive/v$pkgver.tar.gz")
-sha256sums=('9757b568e53730caa3699f0d9ccc87af0b30091b3655674c61aaf6de8164837c')
+sha256sums=('b136727d0ed114ab18d9d380e1ff70ad70e60b56bbacf854be2aeddc9b20044a')
 
 _gauge_path="src/github.com/getgauge/gauge"
 
