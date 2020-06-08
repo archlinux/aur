@@ -1,0 +1,30 @@
+diff --git a/meson.build b/meson.build
+index 2a8bd34..152a9b6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,6 +2,16 @@ project('XRootGIF', 'c', license : 'MIT', version : '1.5.1', default_options : [
+ incdir = include_directories('src/')
+ fsmod = import('fs')
+ 
++# enable full RELRO where possible
++# FIXME: until https://github.com/mesonbuild/meson/issues/1140 is fixed
++test_link_args = [
++  '-Wl,-z,relro',
++  '-Wl,-z,now',
++]
++foreach arg: test_link_args
++    add_project_link_arguments(arg, language : 'c')
++endforeach
++
+ #Dependencies
+ x11_dep = dependency('x11')
+ imlib2_dep = dependency('imlib2')
+@@ -31,7 +41,7 @@ src_files = ['src/xrootgif.c', 'src/globals.c', 'src/output.c', 'src/sample.c',
+ # Autocompletion files
+ install_data(['src/utils/zsh-completion.in', 'src/utils/bash-completion.in'], rename : ['zsh/site-functions/_xrootgif', 'bash-completion/completions/xrootgif'], install_dir : 'share')
+ # License
+-install_data('src/LICENSE.txt',  install_dir : 'share/licenses/XRootGIF')
++install_data('src/LICENSE.txt',  install_dir : 'share/licenses/xrootgif')
+ 
+ #Build
+ if multimonitor_support == 1

@@ -1,32 +1,32 @@
 # Maintainer: Jonas Röger <jonas.roeger@gmail.com>
 pkgname=xrootgif
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A simple program for setting animated wallpapers, targeting performance"
 arch=('x86_64')
 url="https://github.com/VipeOut23/XRootGIF"
 license=('custom:MIT')
 depends=('libx11' 'giflib' 'imlib2')
-makedepends=('gcc' 'make')
-optdepends=('libxrandr: Better multi monitor support'
-            'libxinerama: Better multi monitor support')
+makedepends=('gcc' 'meson' 'ninja')
+optdepends=('libxrandr: multi monitor support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VipeOut23/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=(d28776f659afd1e5d265a4f10f91a7d83998de43a2dafc5a719cd8cd9c5bacd543e001106ae8fe37a830fdbd4498c1da7427c1717f847ce5c9928dd3cfe00583)
+sha512sums=('e681e84c99b49ddaf75004e50c7518f105cd91419a239c77b5110fa26df9953bea827c38b11524eaac65e0015ea5f12749176567276d36db56c1b59e81c92ec8')
 
 prepare() {
 	local _realname="XRootGIF"
 	cd $srcdir/$_realname-$pkgver
-	./configure --prefix=$pkgdir --pkgname=$pkgname
+	patch -p1 -i "../../$pkgname-$pkgver-aur.patch"
+	meson --prefix=$pkgdir/usr build
 }
 
 build() {
 	local _realname="XRootGIF"
-	cd $srcdir/$_realname-$pkgver
-	make
+	cd $srcdir/$_realname-$pkgver/build
+	ninja
 }
 
 package() {
 	local _realname="XRootGIF"
-	cd $srcdir/$_realname-$pkgver
-	make install
+	cd $srcdir/$_realname-$pkgver/build
+	ninja install
 }
