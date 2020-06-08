@@ -1,0 +1,19 @@
+pkgbase = dwm-jacob-git
+	pkgdesc = This Jacob McDonnell's build of dwm see the repo for more details
+	pkgver = 6.2.r2.ee100fa
+	pkgrel = 1
+	url = https://gitlab.com/Jacob_McDonnell/dwm.git
+	arch = x86_64
+	arch = i686
+	license = MIT/X Consortium License
+	makedepends = git
+	makedepends = make
+	depends = libxft-bgra
+	optdepends = dwmblocks
+	provides = dwm
+	conflicts = dwm
+	source = git+https://gitlab.com/Jacob_McDonnell/dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-jacob-git
+
