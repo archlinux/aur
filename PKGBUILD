@@ -2,15 +2,15 @@
 # based off `corectrl` PKGBUILD by Sergey Kostyuchenko <derfenix@gmail.com>
 
 _pkgname=corectrl
-pkgname="$_pkgname-git"
-pkgver=1.0.3.r25.g20db8ac
-pkgrel=2
+pkgname=${_pkgname}-git
+pkgver=1.0.3.r128.g2aacf49
+pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
-license=('GPL3')
-arch=('i686' 'x86_64')
-depends=('botan>=2.2.0' 'qt5-base>=5.9' 'qt5-quickcontrols2' 'qt5-charts' 'kauth' 'karchive' 'procps-ng' 'hwids')
-makedepends=('git' 'cmake>=3.3' 'extra-cmake-modules' 'gcc>=8' 'qt5-tools')
+license=(GPL3)
+arch=(i686 x86_64)
+depends=('botan>=2.2.0' 'qt5-base>=5.9' qt5-quickcontrols2 qt5-charts qt5-svg qt5-xmlpatterns kauth karchive procps-ng hwids)
+makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools)
 optdepends=(
     'vulkan-tools: for vulkaninfo'
     'mesa-demos: for glxinfo'
