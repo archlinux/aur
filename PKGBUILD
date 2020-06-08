@@ -3,7 +3,7 @@
 pkgbase='nps'
 pkgname=('nps' 'npc')
 pkgver=0.26.7
-pkgrel=1
+pkgrel=2	
 pkgdesc="a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal. "
 arch=('x86_64')
 url="https://github.com/ehang-io/nps"

@@ -1,7 +1,7 @@
 pkgbase = nps
 	pkgdesc = a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal.
 	pkgver = 0.26.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ehang-io/nps
 	arch = x86_64
 	license = GPL3
