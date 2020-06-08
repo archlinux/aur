@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-hetzner
 	pkgdesc = Certbot plugin enabling dns-01 challenge on the Hetzner DNS API
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctrlaltcoop/certbot-dns-hetzner
 	arch = any
 	license = APACHE
