@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_2020.05.27.r2
+pkgver=1.2.140_2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="Vulkan-tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur"
