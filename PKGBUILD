@@ -26,18 +26,24 @@ build() {
 	go build ./cmd/npc/npc.go
 	go build ./cmd/nps/nps.go
 }
+packaging() {
+	install -Dm 755 ${1} ${pkgdir}/usr/bin/${1}
+	install -Dm 644 ${srcdir}/${1}.service ${pkgdir}/usr/lib/systemd/system/${1}.service
+}
 package_npc() {
 	cd ${srcdir}/${pkgbase}-${pkgver}
-	_name=`echo ${FUNCTION} | cut -d _ -f 2`
-	install -Dm 755 npc ${pkgdir}/usr/bin/npc
-	install -Dm 644 ${srcdir}/npc.service ${pkgdir}/usr/lib/systemd/system/npc.service
-	install -Dm 644 conf/npc.conf ${pkgdir}/etc/nps/conf/npc.conf
+	_name=`echo ${FUNCNAME} | cut -d _ -f 2`
+	packaging ${_name}
+	backup=("etc/nps/conf/${_name}.conf")
+
+	install -Dm 644 conf/${_name}.conf ${pkgdir}/etc/nps/conf/${_name}.conf
 }	
 package_nps() {
 	cd ${srcdir}/${pkgbase}-${pkgver}
-	_name=`echo ${FUNCTION} | cut -d _ -f 2`
-	install -Dm 755 nps ${pkgdir}/usr/bin/nps
-	install -Dm 644 ${srcdir}/nps.service ${pkgdir}/usr/lib/systemd/system/nps.service
+	_name=`echo ${FUNCNAME} | cut -d _ -f 2`
+	packaging ${_name}
+	backup=("etc/nps/conf/${_name}.conf")
+
 	mkdir -p ${pkgdir}/etc/nps
 	cp -r conf web ${pkgdir}/etc/nps	
 	rm ${pkgdir}/etc/nps/conf/npc.conf

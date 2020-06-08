@@ -14,6 +14,8 @@ pkgbase = nps
 	md5sums = b53cd2a24d017a9fc5e6a7b8e101a456
 
 pkgname = nps
+	backup = etc/nps/conf/.conf
 
 pkgname = npc
+	backup = etc/nps/conf/.conf
 
