@@ -8,14 +8,14 @@ url='https://github.com/Lykos153/git-annex-remote-googledrive'
 license=('GPLv3+')
 arch=('any')
 depends=('git-annex' 'python-annexremote' 'python-drivelib' 'python-tenacity' 'python-gitpython' 'python-humanfriendly')
-makedepends=('python-setuptools')
-source=("https://github.com/Lykos153/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4a87f5d47d45acad55f64de5be8dff1b41b9bc5f7cbf7bb73306a767cd0bccdb')
+makedepends=('python-setuptools' 'git')
+source=("git+https://github.com/Lykos153/${pkgname}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     python setup.py install --optimize=1 "--root=${pkgdir}"
 }
