@@ -3,7 +3,7 @@
 # Release Code Name: Ohm
 
 pkgname=lbry-app-bin
-pkgver=0.46.0
+pkgver=0.46.1
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('MIT')
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
 depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.46.0/LBRY_0.46.0.deb')
-sha256sums=('9d530c51a5efb107285f99099ad5ca117dd9452c670b5c4ac1705a7e4d761500')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.46.1/LBRY_0.46.1.deb')
+sha256sums=('e51206a118a1b9313ab035be54d592bea8240b999788d556ad710a4f3f8c169a')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
