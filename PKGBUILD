@@ -2,7 +2,7 @@
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=yudit
-pkgver=3.0.5
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="A free Unicode plain-text editor for Unix-like systems."
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('GPL')
 depends=('libx11')
 optdepends=('hunspell: spell checking')
 source=("http://yudit.org/download/$pkgname-$pkgver.tar.gz")
-md5sums=('bee6011261f836784aa15b1710fd5dae')
-sha1sums=('0d14822be2ae6d72bc256a7cbcb6e4fd8788f669')
-sha256sums=('cddeb559c36dece12157a527f19d7220e88d916ccf9336b48b263f04c966d382')
-sha512sums=('53513e8932574d909bbe3687be0ea5f0a434e3c1e3078f3e26713007cd93dbef407de64d2e0628e8b5e8aa0231557f9e6befb7146a21e57a6bfd7880a669d91a')
+md5sums=('cbc1a89cc962d2674281692d17aefd7d')
+sha1sums=('0e48ad6c794aa1b40df684c28cef5349506baaf0')
+sha256sums=('e89afb50ad4e0ca39edf509c8619d96003a1cd29707f879a6302f2cc9509fd37')
+sha512sums=('6c8740e891c73862a7e170fe6482c27677db523c6f2fdf9a5f0cab17fc358f8ef275de4c588aa61a65271307e61f29734429b8f5d06645c23b618dd5b4777c27')
 
 build() {
 	cd "$pkgname-$pkgver"
