@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-loader-git
-pkgver=1.2.141_2020.05.27
+pkgver=1.2.141_2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="Vulkan loader build from source. Depends on vulkan headers from my aur repo.  For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
