@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://git.sr.ht/~krathalan/wtwitch"
@@ -20,7 +20,7 @@ optdepends=('mpv: for watching streams'
 _packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
 source=("${url}/archive/${pkgver}.tar.gz" "${_packagesig}")
 validpgpkeys=("02AAA23ABDF1D538BD889D251AADE5E728FFC667")
-sha512sums=("8a8cf7d1dbe363dce846d6f0112c18fb9637bc8bd8daf13f0b739cf54ccf9811ef7866f84ae71c797bf7ec14072b752a45e9a954981c4ff0717b6c0c6e54d984" "57e2ff82056ccce63021b13119f4b2fceaea044a2048871c4b266af11bcc38057c72a6373c5d8da91ce8b44e62926b7a91857d0a83dd86fc74502246686cc566")
+sha512sums=("c4994644376043d39e5be8b72dae3a8630f3c3c4f5d30b3b82f5ca15aa7b48b7e0ef77911f3b5bc1edac18860a66c81cde5c1515b4d2ae667f84ae7f208ecb9a" "9ea716cdff6ab02ea4c9b3619fae1d4cb32535de3d3100861b3f8ed071309ec16121f0aae3a59a5a366af0fdcb88df78079261ef1e73b42b830441fc330a8654")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
