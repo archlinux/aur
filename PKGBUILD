@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="CLI tool to generate terraform files from existing infrastructure (reverse Terraform)"
 license=('Apache')
 arch=('x86_64')
-provides=('terraformer')
 url='https://github.com/GoogleCloudPlatform/terraformer'
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
