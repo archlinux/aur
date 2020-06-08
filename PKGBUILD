@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.4pre+531+g9bf0f9bbf
+pkgver=4.4pre+556+g4c3c32dca
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3'
          'libjpeg'
          'openal'
          'sdl2'
-         'zmusic')
+         'zmusic>=1.1.1')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
