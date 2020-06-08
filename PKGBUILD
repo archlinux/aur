@@ -1,24 +1,25 @@
-# Maintainer:  Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: feanor1397 <feanor1397@gmail.com>
 
 pkgname=rtlwifi_new-rtw88-dkms
 _pkgname=rtlwifi_new
-pkgver=r293.05f5504
+pkgver=r328.6dcff1c
 pkgrel=1
 pkgdesc='Newest Realtek rtlwifi codes, rtw88 branch'
 arch=('i686' 'x86_64')
 url='https://github.com/lwfinger/rtlwifi_new'
 depends=('dkms')
 makedepends=('git')
-provides=('rtlwifi_new-dkms')
-conflicts=('rtlwifi_new-dkms')
+provides=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git')
+conflicts=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git')
+replaces=('rtlwifi_new-extended-dkms-git')
 install=${pkgname}.install
 source=("git+https://github.com/lwfinger/rtlwifi_new.git#branch=rtw88" 
 	"dkms.conf")
 sha256sums=('SKIP'
             '7152228ef9162a1a5599aab63556ff958c2447b1e2c8f896c29883694a9a5934')
-
-
 
 pkgver() {
 	cd "${_pkgname}"
