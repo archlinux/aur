@@ -4,13 +4,13 @@
 
 pkgname=i3blocks-contrib
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Community-contributed blocklets for i3blocks"
 arch=('any')
 groups=('i3')
 url="https://github.com/vivien/i3blocks-contrib"
 license=('GPL3')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('84148bf8f514de3b3dcaedeb5621e9640f96423d06759b7072507a15d0b6337f')
 provides=("i3blocks-contrib")
 conflicts=("i3blocks-contrib")
@@ -67,6 +67,7 @@ optdepends=('coreutils: For some scripts'
             'youtube-dl: For ytdl-mpv script')
 
 package() {
-  install -dm755 "$pkgdir"/usr/lib/i3blocks/
-  mv i3blocks-contrib-$pkgver/* "$pkgdir"/usr/lib/i3blocks/
+  install -Dm644 "${pkgname-$pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -dm755 "${pkgdir}/usr/lib/i3blocks/"
+  mv "${pkgname}-$pkgver"/* "${pkgdir}/usr/lib/i3blocks/"
 }
