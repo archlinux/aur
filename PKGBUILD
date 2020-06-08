@@ -1,6 +1,6 @@
 # Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
 pkgname=peertube-viewer-rs-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=2
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 provides=("peertube-viewer-rs")
 conflicts=("peertube-viewer-rs")
 
-md5sums=('717320bec663f11587b8f2557b3b414e')
+md5sums=('2c044f07d59e6d9e90779cfd1d8da017')
 source=("release-v$pkgver.tar.gz.zip::https://gitlab.com/SostheneGuedon/peertube-viewer-rs/-/jobs/artifacts/v$pkgver/download?job=release-linux")
 noextract=("release-v$pkgver.tar.gz.zip")
 
