@@ -1,7 +1,7 @@
 pkgbase = xiaomitool-v2
 	pkgdesc = Modding of Xiaomi devices made easy for everyone
 	pkgver = 9.11.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xiaomitool.com/V2/
 	arch = any
 	license = custom

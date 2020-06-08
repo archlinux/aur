@@ -2,7 +2,7 @@
 
 pkgname=xiaomitool-v2
 pkgver=9.11.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Modding of Xiaomi devices made easy for everyone'
 arch=(any)
 license=(custom)
