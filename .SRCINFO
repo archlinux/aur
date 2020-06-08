@@ -1,13 +1,13 @@
 pkgbase = comet-ms-bin
 	pkgdesc = Comet: an open source tandem mass spectrometry (MS/MS) sequence database search tool
 	pkgver = 2019.01.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://comet-ms.sourceforge.net/
 	install = comet-ms-bin.install
 	arch = x86_64
 	license = Apache
-	source = https://sourceforge.net/projects/comet-ms/files/comet_2019015.zip/download
-	sha1sums = 79b62092c61edf489c1ecb0a933008ea650b87ee
+	source = download-2019.01.5-2::https://sourceforge.net/projects/comet-ms/files/comet_2019015.zip/download
+	sha1sums = 8bdd58abda2227379f6f169c4cb5a99e1c911afd
 
 pkgname = comet-ms-bin
 
