@@ -1,6 +1,6 @@
 pkgbase = radv-git
-	pkgdesc = Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco. Depends on my vulkan aur repos. It provide the most recent Vulkan API.
-	pkgver = 20.2.0_devel.2020.06.08
+	pkgdesc = Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco. It provide the most recent Vulkan API.
+	pkgver = 20.2.0_devel.2020.06.08_r1
 	pkgrel = 1
 	url = https://github.com/mesa3d/mesa
 	arch = x86_64
@@ -110,8 +110,8 @@ pkgbase = radv-git
 	depends = python-evdev
 	depends = yay
 	provides = radv-git
-	conflicts = mesa-radv-drivers-git
-	replaces = mesa-radv-drivers-git
+	conflicts = radv-aco-git
+	replaces = radv-aco-git
 	source = mesa::git+https://github.com/mesa3d/mesa.git
 	md5sums = SKIP
 
