@@ -2,7 +2,7 @@
 # Maintainer: Matthias Schiffer <mschiffer@universe-factory.net>
 
 pkgname=mopidy-mpris
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Mopidy extension for controlling Mopidy through the MPRIS D-Bus interface"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 provides=('mopidy-mpris')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b37afe2e99200cdd258750732fc04495c39a5279a63d9a5e9bb4e811313bdcfe')
+sha256sums=('992847e1bf9deb549ed4633ebfdafdde875c68f127128a1f91c6d49a83daa74a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
