@@ -21,13 +21,15 @@ install="mono.install"
 
 build() {
   cd "${srcdir}"/${_pkgname}-${pkgver}
+  mkdir mono/eventpipe
 
-    # Build mono
+  # Build mono
   ./autogen.sh --prefix=/usr  \
     --sysconfdir=/etc   \
     --bindir=/usr/bin   \
     --sbindir=/usr/bin    \
     --disable-quiet-build \
+    --enable-llvm \
     --with-mcs-docs=no
   make
 
