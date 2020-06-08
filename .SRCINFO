@@ -1,6 +1,6 @@
 pkgbase = matrix-registration
 	pkgdesc = Webapp for token based matrix registration
-	pkgver = 0.5.6
+	pkgver = 0.5.7.dev0
 	pkgrel = 1
 	url = https://github.com/ZerataX/matrix-registration
 	install = matrix-registration.install
@@ -13,14 +13,15 @@ pkgbase = matrix-registration
 	depends = python-flask-cors
 	depends = python-flask-httpauth
 	depends = python-flask-limiter
+	depends = python-waitress
 	depends = python-dateutil
 	depends = python-yaml
 	depends = python-requests
 	depends = python-wtforms
 	depends = systemd
-	source = matrix-registration-0.5.6.tar.gz::https://github.com/ZerataX/matrix-registration/archive/v0.5.6.tar.gz
+	source = matrix-registration-0.5.7.dev0.tar.gz::https://github.com/ZerataX/matrix-registration/archive/v0.5.7.dev0.tar.gz
 	source = matrix-registration.service
-	sha256sums = 770a5033d119f87ad61601a3df3d1abc046f2a9b5dada9ced785df99f7f660d1
+	sha256sums = 8db9cc34350c6f1e20b489d9162e840c9d6c5cc9140f732881c0a25c7459bbe9
 	sha256sums = e6855f64adaeff6be8cdf1106f62d1fe0f66e5015ff856e6db41e05f25bcd29a
 
 pkgname = matrix-registration
