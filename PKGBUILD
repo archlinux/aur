@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r353030.54d7db165d4
+pkgver=11.0.0_r356572.3ebbe353638
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -49,11 +49,6 @@ pkgver() {
 }
 
 prepare() {
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-    mkdir _build
-
     cd llvm-project
     # remove code parts not needed for build
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl mlir libc flang
@@ -61,11 +56,12 @@ prepare() {
 
 build() {
     
-    cd _build
-
-    cmake "$srcdir"/llvm-project/llvm  -G Ninja \
-        -D CMAKE_C_FLAGS="${CFLAGS}" \
-        -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
+    cmake \
+        -B _build \
+        -S "$srcdir"/llvm-project/llvm  \
+        -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
@@ -85,18 +81,16 @@ build() {
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_BINDINGS=OFF \
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
+        -Wno-dev
         
-    ninja $NINJAFLAGS
-
+    ninja -C _build $NINJAFLAGS 
 }
 
 check() {
-    cd _build
-    ninja $NINJAFLAGS check
-    ninja $NINJAFLAGS check-clang
-    ninja $NINJAFLAGS check-clang-tools
-
+    ninja -C _build $NINJAFLAGS check-llvm
+    ninja -C _build $NINJAFLAGS check-clang
+    ninja -C _build $NINJAFLAGS check-clang-tools
 }
 
 package_llvm-minimal-git() {
@@ -106,8 +100,7 @@ package_llvm-minimal-git() {
     conflicts=('llvm' 'compiler-rt' 'clang')
     optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
 
-    cd _build
-    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
+    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
