@@ -1,7 +1,7 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
 	pkgver = 1.8.6pre2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs-modules.install
 	arch = i686
@@ -16,8 +16,12 @@ pkgbase = openafs-modules
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/candidate/1.8.6pre2/openafs-1.8.6pre2-src.tar.bz2
 	source = 0001-Temporary-fix-for-compilation-with-GCC-10.patch
+	source = 0002-libafs-Abstract-the-Linux-lru-cache-interface.patch
+	source = 0003-LINUX-5.7-replace-__pagevec_lru_add-with-lru_cache_a.patch
 	sha256sums = ae1aa62c977fc13d61df1f9822ff75af301c50f8ff0528c8fd1f2914fffafcf5
-	sha256sums = ebd26d2434689ca7f1c71434cf9a524cf8f2457faa2ba93b90723f4244092451
+	sha256sums = b067b59bf856d15ded1ee786d303eb7b7ff47edb5b3e078b1d43862b8db62368
+	sha256sums = 22d94f69864cde0027716e8bb251406b9fe3745aa6b0f8a16fcb94748e8c3925
+	sha256sums = dec56eff34fd1ea492a12d90558edfd4a46b82f203f6e7a1fd7543eb1fb0bc99
 
 pkgname = openafs-modules
 
