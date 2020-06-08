@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = gzdoom
 	depends = libjpeg
 	depends = openal
 	depends = sdl2
-	depends = zmusic
+	depends = zmusic>=1.1.1
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data

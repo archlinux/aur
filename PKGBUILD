@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libjpeg'
          'openal'
          'sdl2'
-         'zmusic')
+         'zmusic>=1.1.1')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
