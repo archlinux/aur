@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=1.2.4.r33.efd9549
+pkgver=1.7.r16.9e087ba
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -37,5 +37,5 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname%-git}"
 	make install DESTDIR="${pkgdir}"
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
