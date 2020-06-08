@@ -1,0 +1,13 @@
+pkgbase = bruteforce-luks-git
+	pkgdesc = The bruteforce-luks git version
+	pkgver = 1.0.r46.a18694a
+	pkgrel = 1
+	url = https://github.com/glv2/bruteforce-luks
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	source = git+https://github.com/glv2/bruteforce-luks
+	md5sums = SKIP
+
+pkgname = bruteforce-luks-git
+
