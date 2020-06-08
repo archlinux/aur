@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-opencolorio-git
 	pkgdesc = OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation.
-	pkgver = 2.0.0.r1
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 2
 	url = https://opencolorio.org/
 	arch = any
 	license = BSD-3-Clause

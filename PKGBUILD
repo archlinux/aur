@@ -3,8 +3,8 @@
 pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
-pkgver=2.0.0.r1
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
 arch=(any)
 url="https://opencolorio.org/"
@@ -30,17 +30,22 @@ prepare() {
 }
 
 build() {
+	_flags=( -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF
+		-DOCIO_INLINES_HIDDEN=ON -DOCIO_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=14 -DOCIO_BUILD_PYTHON=OFF
+		-DOCIO_BUILD_GPU_TESTS=OFF -DOCIO_ADD_EXTRA_BUILTINS=ON
+		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX" )
+		
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "OpenColorIO" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF \
-		-DOCIO_INLINES_HIDDEN=ON -DOCIO_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=14 -DOCIO_BUILD_PYTHON=OFF \
-		-DOCIO_BUILD_GPU_TESTS=OFF -DOCIO_ADD_EXTRA_BUILTINS=ON \
-		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX"
+		${_arch}-cmake -S "OpenColorIO" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
+		make -C "build-${_arch}-static"
+		${_arch}-cmake -S "OpenColorIO" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
 
 package() {
 	for _arch in ${_architectures}; do
+		make DESTDIR="${pkgdir}" -C "build-${_arch}-static" install
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
 		pushd "${pkgdir}/usr/${_arch}/bin"
 			ln -s "libOpenColorIO_2_0.dll" "libOpenColorIO.dll"
