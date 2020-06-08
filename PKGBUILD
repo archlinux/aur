@@ -16,4 +16,6 @@ build() {
 package() {
     cd $srcdir
     cargo install --root="$pkgdir" --git=https://github.com/jedisct1/encrypted-dns-server
+    rm $pkgdir/.crates.toml
+    rm $pkgdir/.crates2.json
 }
