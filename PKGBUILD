@@ -2,7 +2,7 @@
 # Contributor: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
@@ -19,13 +19,13 @@ source=("git+$url#tag=v$pkgver"
 sha256sums=('SKIP'
             'd35dd5205e3b607ee105a1252677d0607d0c35636ee3e6057275b5f13e555858'
             '7e214caa8bee053adac26a00a17ed732970e86665cbe31553b1d3d609f0a49b4'
-            '11d251220beea1637ec9bff6be31d1bb95bfe3a1de4fdae5e3cc5c53cea996fd'
+            'fc3045b87c98d870d846f1ca9698d543622afbc59360120947c048234c79fc89'
             '8f6baaa89e9723ac3344a2af201a93f348975537bc748024c0a48b0773f42b1f')
 backup=('etc/oragono.conf')
 
 prepare() {
     cd "${srcdir}/$pkgname"
-    patch -p1 < ../path.patch
+    patch < ../path.patch
 }
 
 build() {

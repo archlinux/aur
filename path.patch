@@ -1,28 +1,28 @@
-From 4f96b050a45a79741fa045499ec172f865142ceb Mon Sep 17 00:00:00 2001
-From: Jason Papakostas <vithos@gmail.com>
-Date: Mon, 9 Mar 2020 06:06:14 -0500
-Subject: [PATCH] config: default paths for arch linux package
-
----
- oragono.yaml | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/oragono.yaml b/oragono.yaml
-index 5733d56..f37d5cc 100644
---- a/oragono.yaml
-+++ b/oragono.yaml
-@@ -28,8 +28,8 @@ server:
+--- oragono.yaml.orig	2020-06-08 16:06:51.204833514 +0200
++++ oragono.yaml	2020-06-08 16:14:16.321358294 +0200
+@@ -50,8 +50,8 @@
          # The standard SSL/TLS port for IRC is 6697. This will listen on all interfaces:
          ":6697":
              tls:
--                key: tls.key
--                cert: tls.crt
-+                key: /var/lib/oragono/tls.key
-+                cert: /var/lib/oragono/tls.crt
+-                cert: fullchain.pem
+-                key: privkey.pem
++                cert: /var/lib/oragono/fullchain.pem
++                key: /var/lib/oragono/privkey.pem
                  # 'proxy' should typically be false. It's only for Kubernetes-style load
                  # balancing that does not terminate TLS, but sends an initial PROXY line
                  # in plaintext.
-@@ -114,7 +114,7 @@ server:
+@@ -70,8 +70,8 @@
+         # ":8097":
+         #     websocket: true
+         #     tls:
+-        #         cert: fullchain.pem
+-        #         key: privkey.pem
++        #         cert: /var/lib/oragono/fullchain.pem
++        #         key: /var/lib/oragono/privkey.pem
+ 
+     # sets the permissions for Unix listen sockets. on a typical Linux system,
+     # the default is 0775 or 0755, which prevents other users/groups from connecting
+@@ -154,7 +154,7 @@
  
      # motd filename
      # if you change the motd, you should move it to ircd.motd
@@ -31,7 +31,7 @@ index 5733d56..f37d5cc 100644
  
      # motd formatting codes
      # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
-@@ -593,7 +593,7 @@ debug:
+@@ -685,7 +685,7 @@
  # datastore configuration
  datastore:
      # path to the datastore
@@ -40,7 +40,7 @@ index 5733d56..f37d5cc 100644
  
      # if the database schema requires an upgrade, `autoupgrade` will attempt to
      # perform it automatically on startup. the database will be backed
-@@ -621,7 +621,7 @@ languages:
+@@ -714,7 +714,7 @@
      default: en
  
      # which directory contains our language files
@@ -49,5 +49,3 @@ index 5733d56..f37d5cc 100644
  
  # limits - these need to be the same across the network
  limits:
--- 
-2.25.1
