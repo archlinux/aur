@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "${_pkgname}"
 	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
+	make DESTDIR="${pkgdir}" install
 }
