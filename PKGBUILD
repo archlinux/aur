@@ -4,7 +4,7 @@ pkgver=1.3.10
 pkgrel=3
 pkgdesc="A tool for creating ZIM files based on contents on a local filesystem"
 license=('GPL3')
-arch=('any')
+arch=('x86_64')
 depends=('libzim>=6.0.1' 'gumbo-git' 'xapian-core')
 makedepends=('meson')
 url='https://github.com/openzim/zimwriterfs'
