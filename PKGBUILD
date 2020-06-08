@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab
 pkgver=2020.05
-pkgrel=2
+pkgrel=3
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -17,17 +17,15 @@ optdepends=('u3d: for U3D and IDTF file support'
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
-        "gcc10.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
-            'b6ed63f6ebea471a518420ae261a7ede6fb49a6c3c4e298a92c4d8af5dd520c6')
+            )
 
 prepare() {
   git -C "${srcdir}/${pkgname}" submodule init
   git -C "${srcdir}/${pkgname}" config submodule.vcglib.url "$srcdir"/vcglib
   git -C "${srcdir}/${pkgname}" submodule update
-  git -C "${srcdir}/${pkgname}" apply -v "$srcdir"/*patch
 }
 
 
