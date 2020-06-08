@@ -6,7 +6,6 @@ pkgdesc="A PAM module that provides access control by ip, mac-address, or countr
 license=("GPL3")
 arch=("x86_64")
 depends=("pam")
-makedepends=("gcc" "binutils")
 url='https://github.com/ColumPaget/pam_ihosts'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=(769f93da84f6c9b4fa7222b3d522d56ed78d536faac05fb9d267c105d1984fd4)
