@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=fontbase
 pkgver=2.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
 url="https://fontba.se/"
