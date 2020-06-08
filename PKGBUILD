@@ -1,8 +1,7 @@
-# Maintainer: Mihai Bişog <mihai.bisog@gmail.com>
 # Maintainer: Piotr Serafin <piotr.serafin.71@gmail.com>
 
 pkgname=tsduck
-_pkgver=3.20-1689
+_pkgver=3.21-1819
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
@@ -11,7 +10,7 @@ url="https://tsduck.io/"
 license=('BSD')
 depends=(pcsclite curl srt jq) 
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
-md5sums=('3578a9bf9a61a26de3bdbabf9276409a')
+md5sums=('887e678fd86b8916335e8a48ac037560')
 install=$pkgname.install
 
 build() {
@@ -22,14 +21,30 @@ build() {
 package() {
     cd "$pkgname-${_pkgver}"
 
-    make SYSROOT="$pkgdir" install install-devel
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+    make SYSROOT="$pkgdir" install
+    install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    local TSPLUGINS_PATH="/usr/lib/tsduck/plugins"
-    mkdir -p "$pkgdir/$TSPLUGINS_PATH"
-    find "$pkgdir/usr/bin" -type f -name 'tsplugin_*.so' -exec mv -t "$pkgdir/$TSPLUGINS_PATH" {} +
+    mkdir -p "$pkgdir/usr/lib"
+    find "$pkgdir/usr/bin" -type f -name 'tsduck.so' -exec mv -t "$pkgdir/usr/lib" {} +
+
+    # If pacman sees a /lib directory in a package, it will detect a conflict 
+    # with the symlink on the filesystem. This uses /usr/lib directly.
+    mkdir -p "$pkgdir/usr/lib/udev/rules.d"
+    cp "$pkgdir/lib/udev/rules.d/80-tsduck.rules" "$pkgdir/usr/lib/udev/rules.d"
+    rm -rf "$pkgdir/lib"
+
+    mkdir -p "$pkgdir/usr/lib/$pkgname"
+    find "$pkgdir/usr/bin" -type f -name 'tsplugin_*.so' -exec mv -t "$pkgdir/usr/lib/$pkgname" {} +
+    find "$pkgdir/usr/bin" -type f -name 'tsduck.*.xml' -exec mv -t "$pkgdir/usr/lib/$pkgname" {} +
+    find "$pkgdir/usr/bin" -type f -name 'tsduck.names' -exec mv -t "$pkgdir/usr/lib/$pkgname" {} +
+    find "$pkgdir/usr/bin" -type f -name 'tsduck.oui.names' -exec mv -t "$pkgdir/usr/lib/$pkgname" {} +
+
+    # When 3.22 will be released all above static resources will be installed in /usr/share/tsduck
+    # mkdir -p "$pkgdir/usr/share/$pkgname"
+    # find "$pkgdir/usr/bin" -type f -name 'tsduck.*.xml' -exec mv -t "$pkgdir/usr/share/$pkgname" {} +
+    # find "$pkgdir/usr/bin" -type f -name 'tsduck.names' -exec mv -t "$pkgdir/usr/share/$pkgname" {} +
+    # find "$pkgdir/usr/bin" -type f -name 'tsduck.oui.names' -exec mv -t "$pkgdir/usr/share/$pkgname" {} +
 
     mkdir -p "$pkgdir/etc/profile.d/"
-    echo "export TSPLUGINS_PATH=/${TSPLUGINS_PATH}" > "$pkgdir/etc/profile.d/tsduck.sh"
+    echo "export TSPLUGINS_PATH=/usr/lib/tsduck" > "$pkgdir/etc/profile.d/tsduck.sh"
 }
