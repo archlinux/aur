@@ -2,7 +2,7 @@
 
 pkgname=kyma
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides a set of commands you can use to install, manage, and test Kyma.'
 arch=('x86_64')
 url='https://github.com/kyma-project/cli'
