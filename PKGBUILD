@@ -8,7 +8,7 @@ url="https://fontba.se/"
 license=('custom:FontBase')
 depends=('electron')
 makedepends=('p7zip')
-source=("$pkgname-$pkgver.AppImage::http://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
+source=("$pkgname-$pkgver.AppImage::https://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
 md5sums=('f4eea68f860f17f6e338c632299b38dc')
 
 prepare() {
