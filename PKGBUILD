@@ -34,11 +34,6 @@ install='ztdns.install'
 
 
 prepare() {
-	# cd "$srcdir/$_pkgname"
-	# mkdir -p "${srcdir}/../go"
-	# export GOPATH="${srcdir}/../go"
-	# export PATH="$PATH:$GOPATH/bin"
-	# fix for broken version
 	chmod u+w -R "$GOPATH"
 }
 
@@ -53,7 +48,6 @@ pkgver() {
 	local COUNT=$(git rev-list --count HEAD)
 	local COMMIT=$(git rev-parse --short HEAD)
 	local CHKSUM=$(git rev-list master | head -n1)
-	# printf "%s.%s_%s" "$DATE" "r${COUNT}" "g${CHKSUM:0:9}"
 	printf "%s.%s_%s" "$DATE" "r${COUNT}" "g${COMMIT}"
 
 }
@@ -109,14 +103,12 @@ package() {
 	done
 
 	find "$srcdir/go/src/$_pkgname" -name "LICENSE" -type f | while read filename; do
-		#printf '%s\n' $(basename $filename)
 		if [ "$(basename $filename)" == "LICENSE" ]; then
 				install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/MIT"
 		fi
 	done
 
 	find "$srcdir/go/src/$_pkgname" -name ".ztdns.toml.example" -type f | while read filename; do
-		#printf '%s\n' $(basename $filename)
 		if [ "$(basename $filename)" == ".ztdns.toml.example" ]; then
 				install -Dm 644 .ztdns.toml.example "$pkgdir/etc/.ztdns.toml"
 		fi
