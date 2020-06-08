@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index d1b0e6a..8f11730 100755
+index 8183820..7acc32a 100755
 --- a/proton
 +++ b/proton
-@@ -102,39 +102,15 @@ class Proton:
+@@ -102,7 +102,6 @@ class Proton:
          self.user_settings_file = self.path("user_settings.py")
          self.wine_bin = self.bin_dir + "wine"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -10,12 +10,12 @@ index d1b0e6a..8f11730 100755
  
      def path(self, d):
          return self.base_dir + d
+@@ -114,35 +113,14 @@ class Proton:
+             not filecmp.cmp(self.version_file, self.path("dist/version"))
  
      def extract_tarball(self):
 -        with self.dist_lock:
--            if not os.path.exists(self.dist_dir) or \
--                    not os.path.exists(self.path("dist/version")) or \
--                    not filecmp.cmp(self.version_file, self.path("dist/version")):
+-            if self.need_tarball_extraction():
 -                if os.path.exists(self.dist_dir):
 -                    shutil.rmtree(self.dist_dir)
 -                tar = None
@@ -31,10 +31,14 @@ index d1b0e6a..8f11730 100755
 -                try_copy(self.version_file, self.dist_dir)
 +        return True
  
+     def missing_default_prefix(self):
+         '''Check if the default prefix dir is missing. Returns true if missing, false if present'''
+         return not os.path.isdir(self.default_pfx_dir)
+ 
      def make_default_prefix(self):
 -        with self.dist_lock:
 -            local_env = dict(g_session.env)
--            if not os.path.isdir(self.default_pfx_dir):
+-            if self.missing_default_prefix():
 -                #make default prefix
 -                local_env["WINEPREFIX"] = self.default_pfx_dir
 -                local_env["WINEDEBUG"] = "-all"

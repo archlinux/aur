@@ -1,12 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.0-7
+_srctag=5.0-8
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=4.9.4
-#_dxvkver=1.5
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -31,8 +30,6 @@ depends=(
   python
   steam-native-runtime
   "wine-gecko-bin>=$_geckover"
-  "wine-mono-bin>=$_monover"
-#  "dxvk>=$_dxvkver"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex meson
   'gcc>=4.5.0-2'
@@ -57,13 +54,10 @@ makedepends=(autoconf ncurses bison perl fontforge flex meson
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
   gsm
-#  vulkan-headers
-#  spirv-headers
   samba
   opencl-headers
   git
@@ -85,11 +79,9 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-#  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
-#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
@@ -110,14 +102,20 @@ source=(
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
+    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-    glib::git+https://gitlab.gnome.org/GNOME/glib.git
+    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-bin-${_monover}.tar.gz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
     dxvk-extraopts.patch
+    wine-gcc10.patch
+)
+noextract=(
+    wine-mono-bin-${_monover}.tar.gz
 )
 sha256sums=(
     SKIP
@@ -125,6 +123,7 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
+    SKIP    
     SKIP
     SKIP
     SKIP
@@ -134,15 +133,19 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    '2c47db5b0381fe1d83cf96f531ce63c7781892bba56db033899fbb8ba6e1a2bc'
-    'ce7a59545f5a077e8f93684eddfdad39df807ffeb3a39d6054ca5d1c61644b04'
+    'df97cdb904a583a1f92ce17d9d4793aed063ebc9bb139b6d1989b22a534c7b63'
+    '4cce6f7f262fa42f9e6b4c30d3b75852c186b71e91ccbe5cc5980563d3296120'
+    '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
+    '311dd7461619c2f31e0ec281f1aca2f46dec23d3e21246b9b8d7775081998e32'
 )
 
 prepare() {
-    [ ! -d build ] && mkdir build
+    [ ! -d mono ] && mkdir mono
+    cp "wine-mono-bin-${_monover}.tar.gz" mono/
 
+    [ ! -d build ] && mkdir build
     cd proton
     for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
         git submodule init "${submodule}"
@@ -156,7 +159,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    for submodule in gstreamer gst-plugins-{base,good} glib; do
+    for submodule in gstreamer gst-{plugins-{base,good},orc} glib; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"
         git submodule update "${submodule}"
@@ -165,6 +168,8 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+
+    patch -p1 -i "$srcdir"/wine-gcc10.patch
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
@@ -225,9 +230,9 @@ build() {
         WINEESYNC=0 \
         WINEFSYNC=0 \
         NO_DXVK=0 \
-        SYSTEM_GSTREAMER=0\
+        SYSTEM_GSTREAMER=0 \
         SYSTEM_GECKO=1 \
-        SYSTEM_MONO=1 \
+        SYSTEM_MONO=0 \
         make -j1 dist
 }
 
@@ -249,8 +254,6 @@ package() {
         -exec chmod 644 {} \;
     chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
 
-    ln -s /usr/share/wine/mono \
-        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
     ln -s /usr/share/wine/gecko \
         "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
 

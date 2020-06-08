@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
-	pkgver = 5.0.7
-	pkgrel = 2
+	pkgver = 5.0.8
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
@@ -99,7 +99,6 @@ pkgbase = proton-native
 	makedepends = python
 	makedepends = steam-native-runtime
 	makedepends = wine-gecko-bin>=2.47.1
-	makedepends = wine-mono-bin>=4.9.4
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -132,7 +131,6 @@ pkgbase = proton-native
 	depends = python
 	depends = steam-native-runtime
 	depends = wine-gecko-bin>=2.47.1
-	depends = wine-mono-bin>=4.9.4
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -171,7 +169,8 @@ pkgbase = proton-native
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-5.0-7
+	noextract = wine-mono-bin-4.9.4.tar.gz
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-5.0-8
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
 	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
@@ -181,14 +180,17 @@ pkgbase = proton-native
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = FAudio::git+https://github.com/FNA-XNA/FAudio.git
+	source = glib::git+https://gitlab.gnome.org/GNOME/glib.git
 	source = gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+	source = gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
 	source = gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
 	source = gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-	source = glib::git+https://gitlab.gnome.org/GNOME/glib.git
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-4.9.4/wine-mono-bin-4.9.4.tar.gz
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
 	source = dxvk-extraopts.patch
+	source = wine-gcc10.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -203,10 +205,13 @@ pkgbase = proton-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2c47db5b0381fe1d83cf96f531ce63c7781892bba56db033899fbb8ba6e1a2bc
-	sha256sums = ce7a59545f5a077e8f93684eddfdad39df807ffeb3a39d6054ca5d1c61644b04
+	sha256sums = SKIP
+	sha256sums = df97cdb904a583a1f92ce17d9d4793aed063ebc9bb139b6d1989b22a534c7b63
+	sha256sums = 4cce6f7f262fa42f9e6b4c30d3b75852c186b71e91ccbe5cc5980563d3296120
+	sha256sums = 8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98
+	sha256sums = 311dd7461619c2f31e0ec281f1aca2f46dec23d3e21246b9b8d7775081998e32
 
 pkgname = proton-native
 
