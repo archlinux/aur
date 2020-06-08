@@ -1,5 +1,5 @@
 pkgbase = pam-ihosts
-	pkgdesc = A PAM module that provides access control by ip, mac-address, or country-code/region.
+	pkgdesc = A PAM module that provides access control by ip, mac-address, or country-code/region
 	pkgver = 1.5.7
 	pkgrel = 3
 	url = https://github.com/ColumPaget/pam_ihosts

@@ -2,7 +2,7 @@
 pkgname=pam-ihosts
 pkgver=1.5.7
 pkgrel=3
-pkgdesc="A PAM module that provides access control by ip, mac-address, or country-code/region."
+pkgdesc="A PAM module that provides access control by ip, mac-address, or country-code/region"
 license=("GPL3")
 arch=("x86_64")
 depends=("pam")
