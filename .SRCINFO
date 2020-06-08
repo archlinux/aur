@@ -1,0 +1,19 @@
+pkgbase = dwmblocks-jacob-git
+	pkgdesc = This Jacob McDonnell's build of dwmblocks see the repo for more details
+	pkgver = 1.0.0.r1.d3c3476
+	pkgrel = 1
+	url = https://gitlab.com/Jacob_McDonnell/dwmblocks.git
+	arch = x86_64
+	arch = i686
+	license = MIT/X Consortium License
+	makedepends = git
+	makedepends = make
+	depends = libxft-bgra
+	optdepends = dwmblocks
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://gitlab.com/Jacob_McDonnell/dwmblocks.git
+	md5sums = SKIP
+
+pkgname = dwmblocks-jacob-git
+
