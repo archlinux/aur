@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-validation-layers-git
-pkgver=1.2.140_2020.05.27_r2
+pkgver=1.2.140_2020.06.08
 pkgrel=1
 epoch=
 pkgdesc="vulkan validation layers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
