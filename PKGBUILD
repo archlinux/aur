@@ -3,41 +3,39 @@
 
 pkgname=git-bug
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')
 url="https://github.com/MichaelMure/${pkgname%-git}"
 license=('GPL3')
 depends=('git')
-makedepends=('go-pie')
+makedepends=('go')
 optdepends=('xdg-utils: open bugs in browser')
 source=("git+${url}.git#commit=2d64b85db71a17ff3277bbbf7ac9d8e81f8e416c")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    go mod vendor -v
-}
-
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    commands_path='github.com/MichaelMure/git-bug/commands'
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+
+    local commands_path='github.com/MichaelMure/git-bug/commands'
     go generate
     go build \
-        -mod=vendor \
+        -mod=readonly \
+        -buildmode=pie \
         -trimpath \
         -ldflags "-X ${commands_path}.GitCommit=$(git rev-list -1 HEAD) \
                   -X ${commands_path}.GitLastTag=$(git describe --abbrev=0 --tags) \
                   -X ${commands_path}.GitExactTag=$(git name-rev --name-only --tags HEAD) \
-                  -extldflags ${LDFLAGS}"
-    }
+                  -extldflags \"${LDFLAGS}\""
+}
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    go test -mod=vendor -bench=. ./...
+    go test ./...
 }
 
 package() {
