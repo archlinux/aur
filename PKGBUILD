@@ -4,7 +4,7 @@
 pkgname=yamc-git
 provides=("yamc")
 conflicts=("yamc")
-pkgver=0.0.1.r2
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="C++ mutex (mutual exclusion primitive for multi-threading) collections. This is header-only, cross-platform, no external dependency C++11 library."
 url="https://github.com/yohhoy/yamc"
