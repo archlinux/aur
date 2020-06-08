@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=libzim
 pkgver=6.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference implementation of the ZIM specification by the openZIM project"
 license=('GPL2')
 arch=('armv7h' 'i686' 'x86_64')
@@ -23,6 +23,7 @@ check() {
 }
 
 package() {
+	install -Dm644 "${pkgname}-${pkgver}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	cd "${pkgname}-${pkgver}/build"
 	DESTDIR="${pkgdir}" ninja install
 }
