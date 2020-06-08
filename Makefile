@@ -1,7 +1,7 @@
 default: clean build
 
 build: namcap
-	rm Gemfile.lock
+	rm -rf Gemfile.lock
 	bundle install
 	bundle exec ruby update.rb
 	makepkg
