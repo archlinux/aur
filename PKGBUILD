@@ -2,7 +2,7 @@
 pkgname=tempconvert
 pkgver=1.0
 pkgrel=1
-pkgdesc="Utility for converting temperatures between Fahrenheit and Celsius."
+pkgdesc="Utility written in bash for converting temperatures between Fahrenheit and Celsius."
 arch=('any')
 url="https://benthetechguy.github.io/miscprograms/tempconvert"
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = tempconvert
-	pkgdesc = Utility for converting temperatures between Fahrenheit and Celsius.
+	pkgdesc = Utility written in bash for converting temperatures between Fahrenheit and Celsius.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://benthetechguy.github.io/miscprograms/tempconvert
