@@ -109,8 +109,8 @@ check() {
 	cd "$srcdir/mullvadvpn-app"
 	cargo test --release --locked
 
-	cd gui
-	npm test
+#	cd gui
+#	npm test
 }
 
 package() {
@@ -134,7 +134,7 @@ package() {
 	# Link to the GUI binary
 	install -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-	# Install desktop file & icons from .deb
+	# Install desktop file & icons from deb
 	cd dist
 	ar x "MullvadVPN-${pkgver}.0_amd64.deb"
 	tar -xf data.tar.xz
