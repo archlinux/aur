@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7
+pkgver=5.7.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -31,7 +31,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.7-r0
+_bmqversion=5.7-r1
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20200527'
 source=(
@@ -40,24 +40,20 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/16945cf3f9e403f531985ba425118584d27414f1.patch"
-  "fix_compile_error_in_psi_c.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/53c690361e12a1097383c7940471216a2f1b0d03.patch"
-  "resync_thermal_cpu_cooling_sched_core.patch::https://gitlab.com/alfredchen/linux-bmq/-/commit/ad9eb862e06f395e846a2f2e084e5b0e7eb9ca4b.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/402b115acf83ea5678b7a5a761c3893778907ec5.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
+sha256sums=('40d318add8cefe3fdb26f19dac7386f5e7b63854ae021e593466902856ce9ded'
             'SKIP'
-            'd35f9e3c28a65d59170e79440f020dbe481ad52999910a46451fc33cf60f9f20'
+            '1e1e84e6f6f394d64a13176b4c9d95a87d1a405f44c456b95b6e8af1379bbfc6'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'd31a3e698eb8da8ea76ac05bf93a2c70f4ace014662e87c62d9fc3c75b7f55fc'
+            '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
-            '10bfc7bbe7f98582e171cb4c0abd800ba6428b3e2cdca4ff4dfbd2070cff69bb'
-            'c954598b9f527b7546abc2b609808042b51ff802f495e30139e4840b61a628fc'
-            '0407cd1211d590c90f791fb3544ef391bb102a6a41d91a2608254cb34fd22367')
+            'd135e96102073c553126573d2f0137a375e520f529d7addc111a3aec048b1174')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -87,9 +83,6 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-  # Fix compile error in psi.c
-  patch -Np1 -i "$srcdir/fix_compile_error_in_psi_c.patch"
-  patch -Np1 -i "$srcdir/resync_thermal_cpu_cooling_sched_core.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
