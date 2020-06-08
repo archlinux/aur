@@ -11,8 +11,7 @@ arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
-optdepends=('matcha-icon-theme: Matching icon theme'
-            'qogir-icon-theme: Recommended icon theme'
+optdepends=('qogir-icon-theme: Recommended icon theme'
             'kvantum-theme-matcha: Matching Kvantum theme')
 source=("$pkgname-$_pkgver.zip::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
 options=('!strip')

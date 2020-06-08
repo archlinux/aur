@@ -8,7 +8,6 @@ pkgbase = matcha-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	optdepends = matcha-icon-theme: Matching icon theme
 	optdepends = qogir-icon-theme: Recommended icon theme
 	optdepends = kvantum-theme-matcha: Matching Kvantum theme
 	options = !strip
