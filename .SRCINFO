@@ -1,0 +1,24 @@
+pkgbase = soju-git
+	pkgdesc = A user-friendly IRC bouncer
+	pkgver = r323.d0cf1d2
+	pkgrel = 1
+	url = https://sr.ht/~emersion/soju/
+	install = soju.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	provides = soju
+	conflicts = soju
+	source = soju::git+https://git.sr.ht/~emersion/soju
+	source = soju.sysusers
+	source = soju.service
+	source = soju.tmpfiles
+	sha256sums = SKIP
+	sha256sums = c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa
+	sha256sums = bdaac5cbbb59a9e8a73fa9956196412315d5fb6ba69abde3a5649cef7028e2f2
+	sha256sums = 8ad78b224cf570e09c7f95d2a4e89c83449c9715ceaaecedcc81c56be812ee77
+
+pkgname = soju-git
+

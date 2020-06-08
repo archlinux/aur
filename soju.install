@@ -1,0 +1,5 @@
+#/bin/bash
+
+post_install() {
+    echo '==> Create /var/lib/soju/soju.config ('man soju')'
+}
