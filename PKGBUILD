@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=11.0.0_r352197.2464d8135e2
+pkgver=11.0.0_r356576.615673f3a10
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -49,25 +49,22 @@ pkgver() {
 }
 
 prepare() {
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-    mkdir _build
-
     cd llvm-project
     # remove code parts not needed to build this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl clang clang-tools-extra compiler-rt mlir flang
 }
 
 build() {
-    cd _build
   
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
     
     LIB32_CFLAGS="$CFLAGS"" -m32"
     LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
     
-    cmake "$srcdir"/llvm-project/llvm -G Ninja \
+    cmake \
+        -B _build \
+        -S "$srcdir"/llvm-project/llvm \
+        -G Ninja \
         -D CMAKE_C_FLAGS="$LIB32_CFLAGS" \
         -D CMAKE_CXX_FLAGS="$LIB32_CXXFLAGS" \
         -D CMAKE_BUILD_TYPE=Release \
@@ -87,14 +84,13 @@ build() {
         -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D LLVM_VERSION_SUFFIX="" \
-        -D LLVM_ENABLE_BINDINGS=OFF \
+        -D LLVM_ENABLE_BINDINGS=OFF
         
-        ninja $NINJAFLAGS
+        ninja -C _build $NINJAFLAGS
 }
 
 check() {
-    cd _build
-    ninja $NINJAFLAGS check-llvm
+    ninja -C _build $NINJAFLAGS check-llvm
 }
 package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
@@ -104,8 +100,8 @@ package_lib32-llvm-minimal-git() {
     
     
     
-    cd _build
-    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
+#    cd _build
+    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # Remove files which conflict with lib32-llvm-libs
     rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO,Remarks}}.so
