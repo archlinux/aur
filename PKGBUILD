@@ -15,8 +15,6 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(
   ffmpeg
-  gcc-libs
-  glibc
   libegl
   libretro-core-info
   libzip
