@@ -1,6 +1,6 @@
 pkgname=googleplaymusic
 _pkgname=GooglePlayMusic
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Google Play Music is a unofficial client to play your music."
 arch=('any')
