@@ -1,19 +1,26 @@
 pkgbase = trojan-go-git
-	pkgdesc = A Trojan proxy written in Go (git version).
-	pkgver = 0.6.0.r0.gb93b95f
+	pkgver = 0.6.0.r4.g0b85bb2
 	pkgrel = 1
 	url = https://github.com/p4gefau1t/trojan-go
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	makedepends = hugo
+	source = trojan-go::git+https://github.com/p4gefau1t/trojan-go.git
+	sha512sums = SKIP
+
+pkgname = trojan-go-git
+	pkgdesc = A Trojan proxy written in Go (git version).
 	depends = glibc
 	depends = v2ray-geoip
 	depends = v2ray-domain-list-community
 	provides = trojan-go
 	conflicts = trojan-go
-	source = trojan-go::git+https://github.com/p4gefau1t/trojan-go.git
-	sha512sums = SKIP
 
-pkgname = trojan-go-git
+pkgname = trojan-go-docs-git
+	pkgdesc = Offline Documentation for Trojan-Go.
+	depends = 
+	provides = trojan-go-docs
+	conflicts = trojan-go-docs
 

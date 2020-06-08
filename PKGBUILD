@@ -1,15 +1,12 @@
-pkgname=trojan-go-git
+pkgbase=trojan-go-git
+pkgname=(trojan-go-git trojan-go-docs-git)
 _pkgname=trojan-go
-pkgver=0.6.0.r0.gb93b95f
+pkgver=0.6.0.r4.g0b85bb2
 pkgrel=1
-pkgdesc="A Trojan proxy written in Go (git version)."
+makedepends=(go git hugo)
 arch=(x86_64)
 url="https://github.com/p4gefau1t/trojan-go"
 license=(GPL3)
-depends=(glibc v2ray-geoip v2ray-domain-list-community)
-makedepends=(go git)
-provides=(trojan-go)
-conflicts=(trojan-go)
 source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
@@ -19,21 +16,47 @@ pkgver() {
 }
 
 build() {    
-    cd "$srcdir"/$_pkgname
-    
     # NOTE: uncomment this if you are in mainland china
     # export GOPROXY="https://goproxy.cn,direct"
-    export CGO_ENABLED=0
+    export CGO_ENABLED=1
     export GO111MODULE=on
 
-    go build -v -tags "full" -ldflags="-s -w" -o trojan-go .
+    # Build Trojan-Go
+    cd "$srcdir"/$_pkgname
+    go build -v \
+        -buildmode=pie -trimpath -mod=readonly -modcacherw \
+        -tags "full" \
+        -ldflags="-s -w -extldflags=-Wl,-z,now,-z,relro" \
+        -o trojan-go .
+    
+    # Build Trojan-Go Documentation
+    cd "$srcdir"/$_pkgname/docs/
+    make hugo-build
 }
 
-package() {
-    cd "$srcdir"/$_pkgname
+package_trojan-go-git() {
+    pkgdesc="A Trojan proxy written in Go (git version)."
+    depends=(glibc v2ray-geoip v2ray-domain-list-community)
+    provides=(trojan-go)
+    conflicts=(trojan-go)
+
+    sed -i "10s/bin/lib/g" "$srcdir"/$_pkgname/example/trojan-go.service
+    
     install -Dm755 "$srcdir"/$_pkgname/trojan-go -t "$pkgdir"/usr/lib/trojan-go/
-    ln -sf /usr/lib/v2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
-    ln -sf /usr/lib/v2ray/geoip.dat "$pkgdir"/usr/lib/trojan-go/geoip.dat
+    install -Dm644 "$srcdir"/$_pkgname/example/{{client,server}.json,trojan-go{,@}.service} -t "$pkgdir"/etc/trojan-go/example/
+    
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /usr/lib/trojan-go/trojan-go "$pkgdir"/usr/bin/trojan-go
+    ln -sf /usr/lib/v2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
+    ln -sf /usr/lib/v2ray/geoip.dat "$pkgdir"/usr/lib/trojan-go/geoip.dat
+}
+
+package_trojan-go-docs-git() {
+    pkgdesc="Offline Documentation for Trojan-Go."
+    depends=()
+    provides=(trojan-go-docs)
+    conflicts=(trojan-go-docs)
+
+    mkdir -p "$pkgdir"/usr/share/doc/trojan-go
+    cp -rv "$srcdir"/$_pkgname/docs/public/* "$pkgdir"/usr/share/doc/trojan-go/
 }
