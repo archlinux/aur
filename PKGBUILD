@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=zimwriterfs
 pkgver=1.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for creating ZIM files based on contents on a local filesystem"
 license=('GPL3')
 arch=('x86_64')
@@ -18,6 +18,7 @@ build() {
 }
 
 package() {
+	install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd "${pkgname}-${pkgver}/build"
 	DESTDIR="${pkgdir}" ninja install
 }
