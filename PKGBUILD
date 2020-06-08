@@ -5,8 +5,8 @@
 # Contributor: Florian Reimair <office /at/ florianreimair.at>
 
 pkgname=guake-git
-pkgver=3.6.3.37.g9d3ef38
-pkgrel=2
+pkgver=3.7.0.44.g00d880f7
+pkgrel=1
 pkgdesc="Top-down terminal for Gnome using gtk3 and vte3"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Guake/guake"
