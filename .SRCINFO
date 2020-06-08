@@ -1,0 +1,17 @@
+pkgbase = pkger
+	pkgdesc = Embed static files in Go binaries
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/markbates/pkger
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = pkger
+	conflicts = pkger
+	source = pkger-0.17.0.tar.gz::https://github.com/markbates/pkger/archive/v0.17.0.tar.gz
+	sha256sums = 2a4593803004027257b1360022ae51d44a726b8881df92d315b353748c61d654
+
+pkgname = pkger
+
