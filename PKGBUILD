@@ -2,14 +2,14 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=git-bug-git
-pkgver=0.7.0.r6.g05c968ca
+pkgver=0.7.1.r21.g5029cc1e
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')
 url="https://github.com/MichaelMure/${pkgname%-git}"
 license=('GPL3')
 depends=('git')
-makedepends=('go-pie')
+makedepends=('go')
 optdepends=('xdg-utils: open bugs in browser')
 provides=('git-bug')
 conflicts=('git-bug')
@@ -21,30 +21,28 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/; s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    go mod vendor -v
-}
-
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    commands_path='github.com/MichaelMure/git-bug/commands'
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+
+    local commands_path='github.com/MichaelMure/git-bug/commands'
     go generate
     go build \
-        -mod=vendor \
+        -mod=readonly \
+        -buildmode=pie \
         -trimpath \
         -ldflags "-X ${commands_path}.GitCommit=$(git rev-list -1 HEAD) \
                   -X ${commands_path}.GitLastTag=$(git describe --abbrev=0 --tags) \
                   -X ${commands_path}.GitExactTag=$(git name-rev --name-only --tags HEAD) \
-                  -extldflags ${LDFLAGS}"
-    }
+                  -extldflags \"${LDFLAGS}\""
+}
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    export GOPATH=${srcdir}
-    go test -mod=vendor -bench=. ./...
+    go test ./...
 }
 
 package() {
