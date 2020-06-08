@@ -27,16 +27,15 @@ source=(
 )
 md5sums=(
 	'a2f03ca8b803ca4da7d2dedadeca74bb'
-	'91bd3dde9ceffd040d8319ebee929b8b'
+	'29c750c9f50cc8d0896731bd95f55a6a'
 )
 build() {
 	patch -s -p0 < sge-8.1.9.patch
-	cd sge-8.1.9
-	install -d source/MANSBUILD_sge/SEDMAN/man/man1
-	install -d source/MANSBUILD_sge/SEDMAN/man/man3
-	install -d source/MANSBUILD_sge/SEDMAN/man/man5
-	install -d source/MANSBUILD_sge/SEDMAN/man/man8
-	cd source
+	cd sge-8.1.9/source
+	install -d MANSBUILD_sge/SEDMAN/man/man1
+	install -d MANSBUILD_sge/SEDMAN/man/man3
+	install -d MANSBUILD_sge/SEDMAN/man/man5
+	install -d MANSBUILD_sge/SEDMAN/man/man8
 	sh scripts/bootstrap.sh -no-java -no-jni
 	./aimk -no-java -no-jni -with-arch-linux
 	install -d clients/gui-installer/dist
