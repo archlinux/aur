@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=1.2.0.r0.g150106e
+pkgver=1.2.0.r15.gc4842cc
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -27,7 +27,15 @@ build() {
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
-  meson setup --buildtype=release --cross-file cross-wine.conf -Duse-bitbridge=true build
+  options=(--buildtype=release -Dwith-bitbridge=true)
+
+  # Meson won't apply any new options when this is not a clean build
+  if [[ -d build ]]; then
+    meson setup --reconfigure "${options[@]}" build
+  else
+    meson setup --cross-file cross-wine.conf "${options[@]}" build
+  fi
+
   ninja -C build
 }
 
