@@ -8,9 +8,8 @@ arch=('x86_64')
 url="http://vtk.org"
 license=('BSD')
 depends=('ospray' 'openimagedenoise' 'libxt' 'double-conversion' 'glew' 'eigen' 'expat' 'lz4' 'hdf5' 'proj' 'utf8cpp' 'pugixml' 'netcdf' 'pegtl' 'gl2ps')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 provides=('vtk')
-conflicts=('vtk')
 source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz")
 sha256sums=("c9edd74c681c3bf236f7fd70ea26f18511bee546823f3e4076b835a23b578d40")
 
