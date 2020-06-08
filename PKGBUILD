@@ -2,7 +2,7 @@
 
 pkgname=raze
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libvpx'
          'openal'
          'sdl2'
-         'zmusic')
+         'zmusic>=1.1.1')
 makedepends=('cmake'
              'desktop-file-utils'
              'git')
