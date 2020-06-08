@@ -1,15 +1,15 @@
 pkgbase = f3d
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = 0.1.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.kitware.com/f3d/f3d
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = vtk-raytracing-git
+	depends = vtk9
 	provides = f3d
-	source = https://gitlab.kitware.com/f3d/f3d/-/archive/v0.1.1/f3d-v0.1.1.tar.gz
-	sha256sums = aa9d2d29fb1e8f4d9f2f741832dd7e721c65d77340d63065af8289fb58dbb1cc
+	source = https://gitlab.kitware.com/f3d/f3d/-/archive/v1.0.0/f3d-v1.0.0.tar.gz
+	sha256sums = 8f21a5950434050884f4587aa1587b715eaf34c0895f7fd2b20da726a06204cd
 
 pkgname = f3d
 
