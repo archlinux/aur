@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=kiwix-tools
 pkgver=3.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="kiwix command line tools"
 license=('GPL3')
 arch=('armv7h' 'i686' 'x86_64')
@@ -24,6 +24,7 @@ check() {
 }
 
 package() {
+	install -Dm644 "${pkgname}-${pkgver}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	cd "${pkgname}-${pkgver}/build"
 	DESTDIR="${pkgdir}" ninja install
 }
