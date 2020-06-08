@@ -1,0 +1,16 @@
+pkgbase = python-txredisapi
+	pkgdesc = Non-blocking redis client for python twisted
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/IlyaSkriblovsky/txredisapi
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-twisted
+	depends = python-six
+	source = txredisapi-1.4.7.tar.gz::https://files.pythonhosted.org/packages/source/t/txredisapi/txredisapi-1.4.7.tar.gz
+	sha256sums = e6cc43f51e35d608abdca8f8c7d20e148fe1d82679f6e584baea613ebec812bb
+
+pkgname = python-txredisapi
+
