@@ -1,5 +1,5 @@
 pkgbase = prismatik-bin
-	pkgdesc = A controller for usb driven LED backlights.
+	pkgdesc = A controller for usb driven LED backlights
 	pkgver = 5.11.2
 	pkgrel = 3
 	url = https://github.com/woodenshark/Lightpack

@@ -3,7 +3,7 @@
 pkgname=prismatik-bin
 pkgver=5.11.2
 pkgrel=3
-pkgdesc="A controller for usb driven LED backlights."
+pkgdesc="A controller for usb driven LED backlights"
 arch=('x86_64')
 url="https://github.com/woodenshark/Lightpack"
 license=('GPL3')
