@@ -1,5 +1,5 @@
 pkgbase = goaccess-git
-	pkgdesc = A real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
+	pkgdesc = A real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser
 	pkgver = 1.4.r20.gd6fb1252
 	pkgrel = 1
 	url = https://goaccess.io
