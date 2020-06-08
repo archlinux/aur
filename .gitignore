@@ -1,0 +1,5 @@
+pkg/
+src/
+tamgamp.lv2/
+tamgamp.lv2-git-*.pkg.tar.xz
+tamgamp.lv2-git-*.pkg.tar.zst

@@ -1,0 +1,19 @@
+pkgbase = tamgamp.lv2-git
+	pkgdesc = A guitar pre-amp simulator LV2 plugin (git version)
+	pkgver = r12.590ced0
+	pkgrel = 1
+	url = https://github.com/sadko4u/tamgamp.lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	makedepends = lv2
+	depends = zita-resampler
+	provides = tamgamp.lv2
+	conflicts = tamgamp.lv2
+	source = tamgamp.lv2::git+https://github.com/sadko4u/tamgamp.lv2.git
+	sha512sums = SKIP
+
+pkgname = tamgamp.lv2-git
+
