@@ -2,24 +2,38 @@
 # Contributor: Tim Meusel <tim at bastelfreak dot de>
 
 _gemname=fast_gettext
-pkgname=ruby-$_gemname
-pkgver=2.0.1
+pkgname=ruby-${_gemname}
+pkgver=2.0.3
 pkgrel=1
-pkgdesc='GetText but 3.5 x faster, 560 x less memory, simple, clean namespace (7 vs 34) and threadsafe!'
+pkgdesc='A simple, fast, memory-efficient and threadsafe implementation of GetText'
 arch=(any)
 url='https://github.com/grosser/fast_gettext'
 license=(MIT RUBY)
+makedepends=(ruby-rdoc ruby-rake ruby-rspec ruby-bundler)
 depends=(ruby)
-# makedepends=(rubygems ruby-rdoc ruby-rake ruby-rspec ruby-bundler)
-makedepends=(rubygems ruby-rdoc)
+source=("https://github.com/grosser/fast_gettext/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz")
 options=(!emptydirs)
-source=(https://github.com/grosser/fast_gettext/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('7f2f93aeb6b88fbd0d9dff82ae2caada1fc5673030d45a8d9aa65c5d4bd47ad5')
+sha256sums=('7a58cd52a57911987b50747e890d4f810f4b271173431646274e1cfe5f605c0a')
+
+# disable cloud metric reporting during tests
+prepare() {
+  cd "${_gemname}-${pkgver}"
+
+  sed -i '/single_cov/d' spec/spec_helper.rb
+  sed -i '/SingleCov.setup/d' spec/spec_helper.rb
+  sed -i '/SingleCov/d' spec/fast_gettext/*.rb
+  sed -i '/SingleCov/d' spec/fast_gettext/translation_repository/*.rb
+}
 
 build() {
   cd "${_gemname}-${pkgver}"
   gem build "${_gemname}.gemspec"
+}
+
+check() {
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  # tests currently disabled because active-record isn't available as package
+  # rspec
 }
 
 package() {
@@ -36,4 +50,5 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
   # no license file provided in the source
+  install -Dm 644 Readme.md CHANGELOG -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
