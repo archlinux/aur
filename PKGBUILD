@@ -5,7 +5,7 @@
 
 # Maintainer: Zachary Ashen <zachary.h.a@gmail.com>
 pkgname=keep-cli-git
-pkgver=0.1.6
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Keep-cli is a cli Google Keep client. You can add, delete, and manage your Google Keep notes."
 arch=(x86_64 i686)
@@ -22,7 +22,7 @@ _pkgname=keep-cli
 
 pkgver() {
     cd "${_pkgname}"
-    printf "0.1.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.13.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
