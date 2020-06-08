@@ -1,0 +1,20 @@
+# Configuration file for ztDNS
+
+suffix = "zt"
+port = 53
+interface = "zt0"
+
+# Number of minutes to wait before updating the DNS database again (Default: 30)
+DBRefresh = 30
+
+# This section contains information related to your ZeroTier config
+[ZT]
+# API is used to contact the ZeroTier controller API service.
+API = ""
+# URL is the url of the ZeroTier controller API
+URL = "https://my.zerotier.com/api"
+
+# This section contains one or more ZeroTier networks
+# Format is: domain = "NetworkID"
+# Domain does not have to match the configured network name
+[Networks]

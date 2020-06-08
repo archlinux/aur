@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+	# enable non-root users to bind to privileged ports
+	setcap cap_net_bind_service=+eip /usr/bin/ztdns
+	# generate sample configuration file
+	ztdns mkconfig
+}
+
+pre_upgrade() {
+	# do
+}
