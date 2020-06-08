@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=aur-thumbsup
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A tool to manage voting for favorite AUR packages (including systemd service for auto vote)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4148d6d601c09dfa3203034a655e990db9e522189496437139c5f576ec3044c5')
+sha256sums=('ad196ddd0cefa98be4dc65e071d311894a893588c0cdf366551eafe9ac88261e')
 
 build() {
   cd "${pkgname}-${pkgver}"
