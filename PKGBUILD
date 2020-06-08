@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.0+4+gfbb3a50
+pkgver=1.1.1+1+ge8b2bd4
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64')
@@ -88,7 +88,5 @@ check() {
 package() {
     cd $_srcname
     make -C build install DESTDIR="$pkgdir"
-    ln -s libzmusic.so.1 "$pkgdir"/usr/lib/libzmusic.so.arch.1
-    ln -s libzmusiclite.so.1 "$pkgdir"/usr/lib/libzmusiclite.so.arch.1
     install licenses/{bsd,dumb,legal,zmusic}.txt -t "$pkgdir"/usr/share/licenses/$pkgname -D -m 644
 }
