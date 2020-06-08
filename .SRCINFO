@@ -12,6 +12,8 @@ pkgbase = gsettings-desktop-schemas-dev
 	depends = dconf
 	depends = cantarell-fonts
 	depends = adobe-source-code-pro-fonts
+	provides = gsettings-desktop-schemas
+	conflicts = gesttings-desktop-schemas
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=4f18b55461a92488722a0209bdacbd6a6a1d1bdd
 	sha512sums = SKIP
 
