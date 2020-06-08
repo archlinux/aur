@@ -9,6 +9,7 @@ pkgbase = vc4c-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = llvm
+	makedepends = clang
 	provides = opencl-pi
 	provides = opencl-vc4
 	provides = opencl-driver
