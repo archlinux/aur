@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-wide
 	pkgdesc = Official Telegram Desktop client, with wide message bubbles
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = telegram-desktop-wide
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.10/tdesktop-2.1.10-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.11/tdesktop-2.1.11-full.tar.gz
 	source = wide-messages.patch
-	sha512sums = eaffcd877353d7dab8536e5ff31ecbfac6a716816cbef13eda970fe5ca701af6c6bad068411409b4373f1bb4e0f39a9d834ffd64240d0742aadec9a8a537592e
+	sha512sums = 9f2fba2814a5ab64f946913e32fce66dbc842d9607cbaee00994689ef6a661a04c2a8de5e075fc532e7d8926b51432c06c2b1510b019d729eef40da373d91d42
 	sha512sums = d350450a1e3b950a6df34a24caa340c848c83e0aa93acf95d80b1e5a5c39fe7e2ab122025a718861751541a0d8bfee35482cc13f261ea0fbce874e214213ddae
 
 pkgname = telegram-desktop-wide
