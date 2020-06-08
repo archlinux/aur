@@ -1,0 +1,19 @@
+pkgbase = calendar-cli
+	pkgdesc = calendar-cli is a caldav client for calendar and task management
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/tobixen/calendar-cli
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-caldav
+	depends = python-icalendar
+	depends = python-pytz
+	depends = python-vobject
+	depends = python-tzlocal
+	depends = python-six
+	source = https://github.com/tobixen/calendar-cli/archive/v0.12.0.tar.gz
+	md5sums = a0d4ed9621d93d9e0ae182e6d09583d1
+
+pkgname = calendar-cli
+
