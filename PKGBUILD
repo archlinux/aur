@@ -15,7 +15,7 @@ pkgrel=2
 pkgver="${_pkgver//-/_}"
 pkgdesc="IRC services"
 arch=("i686" "x86_64")
-url="http://www.atheme.org/atheme/"
+url="https://atheme.org/atheme.html"
 license=('custom:ISC')
 # qrencode seems to be optional at build time but with no easy way to disable
 # it aside from uninstalling qrencode
