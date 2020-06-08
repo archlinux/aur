@@ -11,6 +11,7 @@ license=('custom:BSD3')
 provides=('haskell-ide-engine')
 makedepends=('git' 'stack')
 source=("${pkgname}::git://github.com/haskell/haskell-ide-engine.git")
+conflicts=('haskell-ide-engine')
 noextract=()
 md5sums=('SKIP')
 
