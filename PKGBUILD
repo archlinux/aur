@@ -2,7 +2,7 @@
 
 pkgname=goaccess-git
 pkgrel=1
-pkgver=v1.4.r7.ge462ba08
+pkgver=v1.4.r20.gd6fb1252
 pkgdesc='A real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
 url='https://goaccess.io'
 license=('MIT')
@@ -30,5 +30,6 @@ build() {
 
 package() {
 	cd "goaccess"
+	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
 }
