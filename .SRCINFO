@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20200603.r0.g48f99181fc11
+	pkgver = 20200608.r0.g1713116fa907
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = linux-next-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = pahole
 	options = !strip
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 	source = sphinx-workaround.patch
 	source = config
 	sha512sums = SKIP
 	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
-	sha512sums = 90aa1e820db384815c1f3f857bb3f11589df360267ece539f2642a0b1f80f075ab1d9ba8c83aab5ce5e9962cbd13abdf3ccbd92400b4c07fd1d576257f72a3ae
+	sha512sums = db854554b8b8138ac44488ed8656bc620a01f361f3a6006cf0b8c7e3513c0d7b0f2be8534694b063af33ccaacdf95bd1f824470f4509a274f7f52c5b67e0f723
 
 pkgname = linux-next-git
 	pkgdesc = The Linux NEXT kernel and modules
