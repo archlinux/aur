@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.45
-pkgrel=3
+pkgver=2.45.1
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -19,12 +19,8 @@ options=('!strip' 'emptydirs')
 install=snapd.install
 # 0001-fontconfig-compat.patch: proposed upstream https://github.com/snapcore/snapd/pull/8604
 # 0002-zsh-completion.patch: cherry-pick from upstream master
-source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
-        "0001-fontconfig-compat.patch"
-        "0002-zsh-completion.patch")
-sha256sums=('54399873d874d3797784ff685e2b21840751d77ccfada6292b34060d58ee4256'
-            'ceb4592363a5b56a1fa118b96764fc24e477f8e2bf727331ce7d726bf36ab9e3'
-            'c9f40bb1e1b9aa7f3cbf3431a910e0da38cdf467de160870f75ad03e4a3ebb17')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
+sha256sums=('9e289f3dd1c73b651c27fc3b6b2339660335c6c5c9261ef0fa2975c1c849bf66')
 
 _gourl=github.com/snapcore/snapd
 
