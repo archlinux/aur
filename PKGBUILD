@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime 
-pkgver=v0.2.r0.fe62e4b
+pkgver=v0.2.1.r27.7fec1cf
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -44,7 +44,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
-
+    git submodule update
 }
 
 build() {
