@@ -1,6 +1,6 @@
 pkgbase = wpewebkit-gl-aarch64
 	pkgdesc = Web content engine library optimized for embedded devices (gl version)
-	pkgver = 2.28.0
+	pkgver = 2.28.2
 	pkgrel = 1
 	url = https://wpewebkit.org
 	arch = aarch64
@@ -25,11 +25,11 @@ pkgbase = wpewebkit-gl-aarch64
 	provides = wpewebkit-git
 	conflicts = wpewebkit
 	conflicts = wpewebkit-git
-	source = https://webreflection.github.io/aur/wpewebkit-gl-aarch64-2.28.0.tar.gz
-	md5sums = 7af01ad1f249b305da4c9cccb149ae93
-	sha1sums = 994eda9e0dbc28be7c2cc60b362a61c1bd03db38
-	sha256sums = c71dd9e254bda25c072554af7e9535e877581959e2ff166cc097e2a6ead5237a
-	sha512sums = 8a6538794dfe76feef1e0b1cb8239f68c381b1d2c80a0ca389fa264eca71bc63505c370a438745a83c67ba43ef368fab2d76671e30f4450cddba290f4c08cef9
+	source = https://webreflection.github.io/aur/wpewebkit-gl-aarch64-2.28.2.tar.gz
+	md5sums = 9fa91dba3ac5d6de5d370ef302d26f2f
+	sha1sums = cc9f3bce54998d7a77001b3a35b60d324262dfee
+	sha256sums = 29e48899f1bf32c0461a84a8564e41284b99793fe6f572db834aec0789558f50
+	sha512sums = a790ffc096a24e3c826469c998fff1f743786a151fb6f0ad84fc283a5f14df2f199f9c4cc8fe3e77169b5430b5ce44124b00804b36deb0525095e65983576481
 
 pkgname = wpewebkit-gl-aarch64
 
