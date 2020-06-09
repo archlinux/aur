@@ -5,7 +5,7 @@ pkgname=sharedaccess-git
 provides=("sharedaccess")
 conflicts=("sharedaccess")
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++17 library to make sharing a resource with multiple threads easier."
 url="https://gitlab.com/patlefort/sharedaccess"
 license=("GPL3")
@@ -24,4 +24,5 @@ build() {
 
 package() {
 	make DESTDIR="${pkgdir}" -C build install
+	install -Dm644 "${_repo}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
