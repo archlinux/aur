@@ -11,9 +11,11 @@ arch=('any')
 url="https://github.com/quentinsf/qhue"
 license=('GPL2')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quentinsf/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('11ea0f9853dd0e26ecae0d6bd22b45f68ba1b19e6bd01379b2a2c67fd80bd1c4f5db9a34d988248b6111b3ea5bba71eddcc5a8390aea16a09e05c4b749a019d0')
-validpgpkeys=('') # TODO https://github.com/quentinsf/qhue/issues/19
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quentinsf/${_pkgname}/archive/${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/quentinsf/${_pkgname}/releases/download/${pkgver}/qhue-${pkgver}.tar.gz.asc")
+sha512sums=('11ea0f9853dd0e26ecae0d6bd22b45f68ba1b19e6bd01379b2a2c67fd80bd1c4f5db9a34d988248b6111b3ea5bba71eddcc5a8390aea16a09e05c4b749a019d0'
+            'SKIP')
+validpgpkeys=('36F2083F293ED4FD83847B8309328E8BF9464B5F')
 
 prepare() {
     # Create a copy for the python2 package
