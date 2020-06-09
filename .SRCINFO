@@ -1,0 +1,16 @@
+pkgbase = imenu
+	pkgdesc = simple ui scripts using instantMENU
+	pkgver = 9851542
+	pkgrel = 1
+	url = https://github.com/instantOS/imenu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = instantmenu
+	provides = imenu
+	conflicts = imenu
+	source = imenu::git+https://github.com/instantOS/imenu.git
+	sha256sums = SKIP
+
+pkgname = imenu
+
