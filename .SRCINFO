@@ -8,6 +8,7 @@ pkgbase = nvfancontrol-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = libxnvctrl
+	depends = gcc-libs
 	depends = libxext
 	optdepends = nvidia: For GTX 4xx or newer cards
 	optdepends = nvidia-340xx: For G8x, G9x and GTX 2xx cards
