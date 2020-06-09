@@ -1,0 +1,17 @@
+pkgbase = instantconf
+	pkgdesc = simple config system for instantOS
+	pkgver = 202004291748
+	pkgrel = 1
+	url = https://github.com/instantOS/instantconf
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sqlite
+	depends = bash
+	provides = instantconf
+	conflicts = instantconf
+	source = instantconf::git+https://github.com/instantOS/instantconf.git
+	sha256sums = SKIP
+
+pkgname = instantconf
+
