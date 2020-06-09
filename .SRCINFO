@@ -1,0 +1,16 @@
+pkgbase = kvantum-theme-fluent-git
+	pkgdesc = fluent a windows 10 like theme for Kvantum
+	pkgver = r17.890a450
+	pkgrel = 1
+	url = https://github.com/Luwx/Fluent-kvantum
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = kvantum-qt5
+	provides = kvantum-theme-fluent
+	conflicts = kvantum-theme-fluent
+	source = git+https://github.com/Luwx/Fluent-kvantum.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-fluent-git
+
