@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: jswenson
 pkgname=android-messages-desktop
-pkgver=3.1.0+86+g59c06dd
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -10,21 +10,15 @@ url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
 makedepends=('git' 'yarn')
-_commit=59c06dd0f50ef1f1b219643100f5a0a557f12969
-source=("git+$url.git#commit=$_commit"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('SKIP'
+sha256sums=('d7e4313be62c5140e48c12c3f9093854b9d0f30ff4e0a2faed85e9e5a21b5a58'
             'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 
 	# Disable building of dist packages
 	sed -i 's/"AppImage", "snap", "pacman", "deb", "rpm", "freebsd", "zip"/"dir"/g' \
@@ -32,13 +26,13 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	HOME="$srcdir/.electron-gyp" yarn --cache-folder "$srcdir/yarn-cache"
+	cd "$pkgname-$pkgver"
+	yarn --cache-folder "$srcdir/yarn-cache"
 	yarn run dist
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	install -d "$pkgdir/usr/lib/$pkgname"
 	cp -r dist/linux-unpacked/resources "$pkgdir/usr/lib/$pkgname"
 
