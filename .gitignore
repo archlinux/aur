@@ -1,0 +1,5 @@
+/pkg
+/src
+/whatfiles-git
+*.tar.*
+*.patch

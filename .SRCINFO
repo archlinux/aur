@@ -1,0 +1,18 @@
+pkgbase = whatfiles-git
+	pkgdesc = Log what files are accessed by any Linux process
+	pkgver = r2.f3a4c0d
+	pkgrel = 1
+	url = https://github.com/spieglt/whatfiles
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	source = whatfiles-git::git+https://github.com/spieglt/whatfiles.git#branch=master
+	source = https://github.com/zapp42/whatfiles/commit/8069df82512455e7a1d2c7d48c55f1e6ed0220c8.patch
+	sha256sums = SKIP
+	sha256sums = 4ea491ae9136072cb5e4a6389d2e710040654128713dd8dbcb709db8602e4e92
+
+pkgname = whatfiles-git
+
