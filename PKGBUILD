@@ -3,7 +3,7 @@
 
 pkgname=ndppd-git
 pkgver=r116.e01d67a
-pkgrel=2
+pkgrel=3
 pkgdesc="NDP Proxy Daemon, version 0.x (git version)"
 arch=('x86_64')
 url="https://github.com/DanielAdolfsson/ndppd"
@@ -13,9 +13,10 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/ndppd.conf')
-source=('git+https://github.com/DanielAdolfsson/ndppd')
-noextract=()
-md5sums=('SKIP')
+source=('git+https://github.com/DanielAdolfsson/ndppd'
+        'ndppd.service')
+md5sums=('SKIP'
+         '4658734163b92421e4e4fea4cbb4f7d9')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
@@ -36,6 +37,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     make PREFIX=/usr SBINDIR=/${pkgdir}/usr/bin DESTDIR=${pkgdir} install
-    install -D -m 644 "ndppd.service" "${pkgdir}/usr/lib/systemd/system/ndppd.service"
+    install -D -m 644 "${srcdir}/ndppd.service" "${pkgdir}/usr/lib/systemd/system/ndppd.service"
     install -D -m 644 "ndppd.conf-dist" "${pkgdir}/etc/ndppd.conf"
 }
