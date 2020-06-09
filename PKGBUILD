@@ -22,5 +22,5 @@ build() {
 
 package() {
 	make DESTDIR="${pkgdir}" -C build install
-	install -Dm644 "${_repo}-${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/sharedaccess/LICENSE"
+	install -Dm644 "${_repo}-${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
