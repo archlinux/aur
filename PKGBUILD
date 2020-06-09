@@ -1,6 +1,6 @@
 pkgname=pandoc-crossref-bin
-pkgver=0.3.4.1a
-_pandoc_pkgver=2_7_3
+pkgver=0.3.6.3
+_pandoc_pkgver=2.9.2.1
 pkgrel=1
 pkgdesc="Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends"
 url="https://hackage.haskell.org/package/pandoc-crossref"
