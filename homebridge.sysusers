@@ -1,0 +1,2 @@
+g homebridge /var/lib/homebridge
+u homebridge - "homebridge user" /var/lib/homebridge /bin/false

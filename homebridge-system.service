@@ -1,12 +1,14 @@
 [Unit]
 Description=Node.js HomeKit Server
-Requires=avahi-daemon.service
+Requires=network.target avahi-daemon.service
 After=network.target avahi-daemon.service
 
 [Service]
-User=homebridge
 Type=simple
 ExecStart=/usr/bin/homebridge -U /var/lib/homebridge
+User=homebridge
+Group=homebridge
+Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -1,6 +1,6 @@
 pkgbase = homebridge-git
 	pkgdesc = HomeKit support for the impatient
-	pkgver = 0.4.53.r9.g8a2a122
+	pkgver = 0.4.46.r222.g721ff2c
 	pkgrel = 1
 	url = https://github.com/nfarina/homebridge
 	install = homebridge.install
@@ -17,11 +17,13 @@ pkgbase = homebridge-git
 	source = git+https://github.com/nfarina/homebridge.git
 	source = homebridge-system.service
 	source = homebridge-user.service
+	source = homebridge.sysusers
 	source = homebridge.install
 	sha512sums = SKIP
-	sha512sums = 56eb3b04e0a84753b98cfd91a2f3b96d33e20639e3b38faa1c0388fcf55025ea8776efee6723b61b2ad8bc55689708f2fce5f6387eb3e23429b9feac44e521d1
-	sha512sums = b9ea4a2597b54eb3bfa427d48bb5bb807c4b629bd07c73501a3778fcc8ddbc4cba3f1557f55fc76d40d5085cf73e54b11cc631d1962814641a17242487440468
-	sha512sums = de43f228bdfbf88ec92adaa46a32c772c6bb1f265899d56c4e9a70b2e9bd3381f45be0345b1bd55e8ec2f3b61fa1f903d823162293464b3e1b43aab8b772b6dd
+	sha512sums = 16f923855946b1ff7fd6b70da035a304634c7dd42bd2e86c5877718fd5e3a22a7177fd8d850e7ffa4826cdd2fc2b30f727bd182809ddb9faade626f87ed792bc
+	sha512sums = 2fc28db38b231caf8021bd6109e1c4cee65dd68e2128e9f2bfe712fd61867328dd6b6be642a6431b2c92657a5e7f23991be8dcf1ea0c23e3cfa120341ee090bc
+	sha512sums = 18277a981c2e6f68ed6433d9afc89fb59019b763c253dd135bb3662baba2185245a7eb476b3eed36f5458386447ed766b89dd0e307c5c1ab277900a01c625c7d
+	sha512sums = 20e373e99d814ea23b5fa0c966cafdc7e8bf116443c475d08870bffc36027ae512fa2e0c6996802f04e9703a9df52bacf2e25ecadb04b137c798524e50e6817d
 
 pkgname = homebridge-git
 
