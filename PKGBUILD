@@ -1,7 +1,7 @@
 # Maintainer: tuximail <admin@tuximail.de>
 pkgname=spacemacs-dev
 pkgver=0.300.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A community-driven Emacs distribution - Development version"
 arch=('any')
 url='https://spacemacs.org'
@@ -21,7 +21,7 @@ pkgver() {
 package() {
 	mkdir -p ~/.emacs.d/
 	touch ~/.emacs.d/.lock
-	cp -r "$pkgname"/* ~/.emacs.d
+	cp -r "$pkgname"/. ~/.emacs.d
 	rm -r "$pkgname"
 	echo
 	echo -e "\033[0;31mAs spacemacs is only a configuration set, you just call emacs to run it\033[0m"
