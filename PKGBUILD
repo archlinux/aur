@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-vault
-pkgver=5.18.5
+pkgver=5.19.0
 pkgrel=1
 pkgdesc="Plasma applet and services for creating encrypted vaults"
 arch=(x86_64)
@@ -10,27 +10,21 @@ license=(LGPL)
 groups=(plasma)
 depends=(plasma-workspace networkmanager-qt)
 makedepends=(extra-cmake-modules)
-optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption')
+optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption' 'gocryptfs: to use gocryptfs for encryption')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('cae2713823e8c59c7a2beb96d362a15024fe260cf10419ba037e8a798f3c1b41'
+sha256sums=('e20ff39ea102112258dd419abba153d1d7c9ae9116c988ccc550af3c151a30b5'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
+  cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
