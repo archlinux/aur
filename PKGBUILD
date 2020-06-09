@@ -6,7 +6,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=77.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -40,13 +40,13 @@ sha256sums_x86_64=('54256fc5f8e9c2e8129ef84773fae31fcfdaf95da6d4d03151f3939e9f74
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
-                   '1130fb4c737ed7bb5f62e008133efe5d830b71e93af91f251dfeee68d190d27d'
+                   '305b3ac9b96430eb71035ddff558995268a88646d9b4ead50316b39af9da53c7'
                    '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0')
 sha256sums_aarch64=('54256fc5f8e9c2e8129ef84773fae31fcfdaf95da6d4d03151f3939e9f749640'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
-                    '1130fb4c737ed7bb5f62e008133efe5d830b71e93af91f251dfeee68d190d27d'
+                    '305b3ac9b96430eb71035ddff558995268a88646d9b4ead50316b39af9da53c7'
                     '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
