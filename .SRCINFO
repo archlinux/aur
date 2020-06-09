@@ -1,0 +1,17 @@
+pkgbase = instantdotfiles
+	pkgdesc = dotfiles for instantOS
+	pkgver = 202005051741
+	pkgrel = 1
+	url = https://github.com/paperbenni/dotfiles
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = bash
+	provides = instantdotfiles
+	conflicts = instantdotfiles
+	source = instantdotfiles::git+https://github.com/paperbenni/dotfiles.git
+	sha256sums = SKIP
+
+pkgname = instantdotfiles
+
