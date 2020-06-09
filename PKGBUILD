@@ -4,12 +4,12 @@
 _pkgname=homebridge
 pkgname=$_pkgname-git
 pkgver=0.4.46.r222.g721ff2c
-pkgrel=1
+pkgrel=2
 pkgdesc="HomeKit support for the impatient"
 arch=('any')
 url="https://github.com/nfarina/homebridge"
 license=('apache')
-depends=('nodejs>=4.3.2' 'avahi')
+depends=('nodejs>=10.17.0' 'avahi')
 makedepends=(
   'git'
   'npm'

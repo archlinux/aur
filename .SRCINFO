@@ -1,7 +1,7 @@
 pkgbase = homebridge-git
 	pkgdesc = HomeKit support for the impatient
 	pkgver = 0.4.46.r222.g721ff2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nfarina/homebridge
 	install = homebridge.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = homebridge-git
 	makedepends = git
 	makedepends = npm
 	makedepends = python
-	depends = nodejs>=4.3.2
+	depends = nodejs>=10.17.0
 	depends = avahi
 	provides = homebridge
 	conflicts = homebridge
