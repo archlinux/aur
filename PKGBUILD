@@ -22,7 +22,7 @@ _pkgname=keep-cli
 
 pkgver() {
     cd "${_pkgname}"
-    printf "0.1.13.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.15.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
