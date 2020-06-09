@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Densify
+Comment=PDF Compressor
+Exec=densify
+Terminal=false
+Icon=densify
+Type=Application
+Categories=Utility;
+StartupNotify=true
