@@ -1,0 +1,18 @@
+pkgbase = instantlock
+	pkgdesc = lock screen for instantOS
+	pkgver = f6e2bb5
+	pkgrel = 1
+	url = https://github.com/instantOS/instantLOCK.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libxrandr
+	provides = instantlock
+	provides = instantlock
+	conflicts = instantlock
+	conflicts = instantlock
+	source = instantlock::git+https://github.com/instantOS/instantLOCK.git
+	sha256sums = SKIP
+
+pkgname = instantlock
+
