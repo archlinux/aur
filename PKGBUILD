@@ -18,7 +18,7 @@ source=(
 	rtw88_blacklist.conf
 )
 sha1sums=('a798b10d4f2c962c246f2c1bc695314e2b15e7b3'
-          'c038108304fbbf5c9c51e4e7053ce1c11f6087ec'
+          '1f8eb72a676c311a434ccece3f2bad2c20ddaa09'
           '18ecc64076501d396a2fabf4f1f31d3d1945b874')
 
 prepare() {
