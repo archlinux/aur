@@ -1,0 +1,17 @@
+pkgbase = instantwidgets
+	pkgdesc = Conky widgets for instantOS
+	pkgver = 20204208429760e
+	pkgrel = 1
+	url = https://github.com/instantOS/instantWIDGETS
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = conky
+	provides = instantwidgets
+	conflicts = instantwidgets
+	source = instantwidgets::git+https://github.com/instantOS/instantwidgets.git
+	sha256sums = SKIP
+
+pkgname = instantwidgets
+
