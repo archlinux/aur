@@ -1,62 +1,39 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer:
+# COntributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=rtl8192su-git
 _pkgname=rtl8192su
-pkgver=1f09c7a
-pkgrel=3
+pkgver=r579.1f09c7a
+pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8188SU/RTL8191SU/RTL8192SU devices"
 arch=('x86_64' 'i686')
 # https://wireless.wiki.kernel.org/en/users/Drivers/rtl819x
 # pointed to this github repo --> https://github.com/chunkeey/rtl8192su
 url="https://github.com/chunkeey/rtl8192su"
 license=('GPL')
-_extramodules="extramodules-4.12-ARCH"
-depends=('linux>=4.12' 'linux<4.13')
-makedepends=('linux-headers>=4.12' 'git')
-source=("git://github.com/chunkeey/$_pkgname.git")
+depends=('dkms')
+makedepends=('linux-headers' 'git' 'bc')
+source=("git+https://github.com/chunkeey/$_pkgname.git")
 sha256sums=('SKIP')
-install=readme.install
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+install=${_pkgname}.install
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+
 build() {
-  cd "$_pkgname"
-  make INSTALL_PREFIX=/usr
+  cd "$srcdir/$_pkgname"
+  make INSTALL_PREFIX=/usr -j`cat /proc/cpuinfo |grep "processor"|wc -l`
   find . -type f -name '*.ko' -print0 | xargs -0 gzip -9
 }
 
 package() {
-  _su="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi/rtl8192su"
-  _se="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi/rtl8192se"
-  _s="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi/rtl8192s"
-  _base="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi"
-
-  # modules
-  install -pd "$pkgdir/$_su"
-  install -pd "$pkgdir/$_se"
-  install -pd "$pkgdir/$_s"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtlwifi.ko.gz" "$pkgdir/$_base/rtlwifi.ko.gz"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl_pci.ko.gz" "$pkgdir/$_base/rtl_pci.ko.gz"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl_usb.ko.gz" "$pkgdir/$_base/rtl_usb.ko.gz"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl8192su/rtl8192su.ko.gz" \
-    "$pkgdir/$_su/rtl8192su.ko.gz"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl8192se/rtl8192se.ko.gz" \
-    "$pkgdir/$_su/rtl8192se.ko.gz"
-  install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl8192s/rtl8192s-common.ko.gz" \
-    "$pkgdir/$_su/rtl8192s-common.ko.gz"
-
-  # firmware
-  install -pd "$pkgdir/usr/lib/firmware/rtlwifi"
-  for i in rtl8192sfw.bin rtl8192sufw-ap.bin rtl8192sufw-apple.bin \
-    rtl8192sufw-windows.bin rtl8712u-linux-firmware-bad.bin \
-    rtl8712u-most-recent-v2.6.6-bad.bin rtl8712u-most-recent-v2.6.6-bad.bin \
-    rtl8712u-oldest-but-good.bin; do
-    install -pm644 "$_pkgname/firmwares/$i" "$pkgdir/usr/lib/firmware/rtlwifi/$i"
-  done
+  cd "$srcdir/$_pkgname"
+  mkdir -p $pkgdir/usr/lib/modules/`uname -r`/kernel/drivers/net/wireless
+  make DESTDIR=$pkgdir/usr install
 }
 
 # vim:set ts=2 sw=2 et:
