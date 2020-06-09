@@ -5,7 +5,7 @@
 
 # Maintainer: Zachary Ashen <zachary.h.a@gmail.com>
 pkgname=keep-cli-git
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Keep-cli is a cli Google Keep client. You can add, delete, and manage your Google Keep notes."
 arch=(x86_64 i686)
