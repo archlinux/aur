@@ -47,18 +47,18 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_major=5.6
-_minor=17
+_major=5.7
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick')
+             'graphviz' 'imagemagick' 'pahole')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
@@ -68,9 +68,9 @@ _bfq_rev_path="bfq-reverts-all-v2"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K200514"
+_bfq_rel="r2K200607"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
-_gcc_path="cpu-patches-v3-sep"
+_gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -78,8 +78,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -212,7 +211,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -289,6 +288,9 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -322,15 +324,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7d42eb0327997df85b4c5c7c0babab738f0dd85ef3e739cbc7ce6a21e19821acb72ca6f0beb7636f988b95c29e61b9bf79175ecbdb309835a517f5f538cbc2b3'
+sha512sums=('cb10179262dbfed73bc0086ec2a6a3ea5de72aa9910b3b51a8db732e90a56b54a3492329d49c175ed1b5483e280efc72a73243dfbb272c34a7a453f6b82fbe2d'
             'SKIP'
-            '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
-            '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
-            '9c71d44a84a2cbe16af1328ab11b9733218a26eda23e6643fcf1daebf368bcd5ff2502ffd77f7b6b300b943e87f1d9e787ffb48f3705fba6daa8b49094fb9f2d'
-            '8c0ca7ab292e6f1a75fd4ae0de797259bf68a5f1512b9f0c905250446ebb924531589d4b8d4d9d7fb1cdd65658b32a8528a7fb7056947d7b31bdc87b4e424752'
-            '4ef82534e202188bec24232a60af73d48870c7f0b3403ec821b132c38cdccc9917037d74dd94cbcbc6be70cf45006e7ace928c32623cecb5289251c2eb4ea1d8'
+            'b0f77cee611f7a18e623aa69a783ab567071edc7333169cf9ad724563f82ed8c0eb587c832b5e968e51d195d1f7ce94305504d266094401cbf48aef517e83e87'
+            '943fe5e55c7b86c642f7502c9572d9a9436debfc83ee32ecdaeebed40465375328232ee395714c14b6e76e9e853e97302f1eb36585a51b35bc1937f0d3822013'
+            'f13189fb9cc3488425bc82c45aedaf9ffa8a64f9320e89c18df528afa880ec8982ce9049359eb451690a22c503aace718cf98e89b0cc16b9566249bc7c4c34e0'
+            '1f04c499a1dc00860ce515b105683daf9081d137bc6830ac6f9e68c8791e5032e583ecb628b5c35a6af80863cbda6222ed3515c6a55a24d193b2a11aa6766668'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '8a16248931ab02818ae782104afc245ef7837ee59f8b81d300717a6208830f50a46b95990619db1a0529d0ebc652414da6c142e122213ef64fe03f9c8035f7f1')
+            '4ae7c9e969c5023edd5f6c6d741cedd46903b0bae674d22c626f6cbfaa639fd53c5d3f4ed6075cec9b6e6c1ffbb31834061741a52ed20db2b9cb0b41c102e106')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
