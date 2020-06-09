@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <max.rumpf1998@gmail.com>
 _pkgbase=simple-shutdown-dialog
 pkgname=simple-shutdown-dialog-git
-pkgver=3.436e6bc
+pkgver=11.a24da73
 pkgrel=1
 pkgdesc="A simple dialog to shutdown, reboot, suspend or logout, built with GTK"
 arch=('x86_64' 'i686')
