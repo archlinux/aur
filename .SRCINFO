@@ -1,5 +1,5 @@
 pkgbase = rime-cloverpinyin
-	pkgdesc = 🍀️四叶草简体拼音输入方案 for rime
+	pkgdesc = ✤四叶草简体拼音输入方案 for rime
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://github.com/fkxxyz/rime-cloverpinyin
