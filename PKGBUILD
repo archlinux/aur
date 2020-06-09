@@ -5,18 +5,18 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=78.0a1.r527882.34d71b4a0086
-_pkgver=78.0a1
+pkgver=79.0a1.r534610.7f7b98339065
+_pkgver=79.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 _repo=https://hg.mozilla.org/mozilla-central
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 nss-hg nspr-hg libxt startup-notification mime-types dbus-glib ffmpeg
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg
          ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-            xorg-server-xvfb autoconf2.13 rust ccache mercurial clang llvm jack 
+            xorg-server-xvfb autoconf2.13 rust ccache mercurial-hg icu clang llvm jack 
             python nodejs python2-psutil cbindgen nasm
             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2 python
             nodejs python2-psutil cbindgen nasm
@@ -89,16 +89,10 @@ ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-ke
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
  
-# System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --disable-debug
