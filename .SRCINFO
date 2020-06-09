@@ -1,6 +1,6 @@
 pkgbase = nozbe
 	pkgdesc = To-do, task, project and time management application.
-	pkgver = 3.10.0
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = https://nozbe.com
 	arch = x86_64
