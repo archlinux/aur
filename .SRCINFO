@@ -1,13 +1,13 @@
 pkgbase = insomnia
 	pkgdesc = HTTP and GraphQL client for developers
-	pkgver = 2020.2.1
+	pkgver = 2020.2.2
 	pkgrel = 1
 	url = http://insomnia.rest/
 	arch = x86_64
 	options = !strip
-	source = https://github.com/Kong/insomnia/releases/download/core%402020.2.1/Insomnia.Core-2020.2.1.deb
+	source = https://github.com/Kong/insomnia/releases/download/core%402020.2.2/Insomnia.Core-2020.2.2.deb
 	source = insomnia.sh
-	md5sums = ac0289e88bb0a32f77d6fd47b78d7c31
+	md5sums = d992481708ef5cf3c6a40f0ebb435dd5
 	md5sums = dfe139daf29b508bdb83bc735681a381
 
 pkgname = insomnia
