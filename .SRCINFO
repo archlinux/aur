@@ -1,0 +1,15 @@
+pkgbase = python-msgcheck
+	pkgdesc = Gettext file checker.
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/flashcode/msgcheck
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/msgcheck/msgcheck-3.1.tar.gz
+	sha256sums = ef77ada3d9a32dd454cd90bebf216e3e3376bd30354be9f1b15ea50148f071ff
+
+pkgname = python-msgcheck
+	depends = python
+
