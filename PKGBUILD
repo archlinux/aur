@@ -8,8 +8,7 @@ pkgdesc="Un-official electron desktop app for https://repl.it"
 url="https://github.com/repl-it-discord/repl-it-electron"
 license=('Apache 2.0')
 makedepends=('gendesk' 'wget')
-depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
-conflicts=('gdlauncher-appimage' 'gdlauncher' 'gdlauncher-git')
+conflicts=('replit-desktop')
 source_x86_64=(
     "repl.it-linux-x64.zip::https://github.com/repl-it-discord/repl-it-electron/releases/download/${pkgver}/repl.it-linux-x64.zip"
 )

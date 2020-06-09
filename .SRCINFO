@@ -7,14 +7,6 @@ pkgbase = replit-desktop-bin
 	license = Apache 2.0
 	makedepends = gendesk
 	makedepends = wget
-	depends = libnotify
-	depends = libxss
-	depends = libxtst
-	depends = libindicator-gtk3
-	depends = libappindicator-gtk3
-	conflicts = gdlauncher-appimage
-	conflicts = gdlauncher
-	conflicts = gdlauncher-git
 	source_x86_64 = repl.it-linux-x64.zip::https://github.com/repl-it-discord/repl-it-electron/releases/download/1.1.0/repl.it-linux-x64.zip
 	md5sums_x86_64 = SKIP
 
