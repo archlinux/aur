@@ -1,0 +1,17 @@
+pkgbase = plasma5-applets-kpplemenu-git
+	pkgdesc = The Kpple menu is the drop-down menu of Kpple OS.
+	pkgver = r13.04fbbdc
+	pkgrel = 1
+	url = https://github.com/kppleos/org.kpple.kppleMenu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	provides = plasma5-applets-kpplemenu
+	conflicts = plasma5-applets-kpplemenu
+	source = git+https://github.com/kppleos/org.kpple.kppleMenu.git
+	sha256sums = SKIP
+
+pkgname = plasma5-applets-kpplemenu-git
+
