@@ -3,7 +3,7 @@
 pkgname="linus-meta"
 pkgdesc="Packages i always need so i dont forget or uninstall them"
 pkgver="1"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 license=("GPL3")
 depends=(
@@ -16,7 +16,6 @@ depends=(
 
     #Arch
     "base"
-    "base-devel"
     "arch-wiki-docs"
 
     #Boot

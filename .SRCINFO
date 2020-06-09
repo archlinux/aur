@@ -1,7 +1,7 @@
 pkgbase = linus-meta
 	pkgdesc = Packages i always need so i dont forget or uninstall them
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	depends = linux
@@ -9,7 +9,6 @@ pkgbase = linus-meta
 	depends = linux-headers
 	depends = linux-docs
 	depends = base
-	depends = base-devel
 	depends = arch-wiki-docs
 	depends = grub
 	depends = efibootmgr
