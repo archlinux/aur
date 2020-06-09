@@ -2,7 +2,7 @@
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
 pkgver=2.17.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url='https://github.com/RocketChat/Rocket.Chat.Electron'
@@ -24,7 +24,7 @@ _dir="Rocket.Chat.Electron-${pkgver}"
 prepare() {
   cd "$_dir"
   patch -Np1 <../use-system-dictionaries.patch
-  yarn upgrade electron@"$(</usr/lib/electron7/version)" --non-interactive
+  yarn upgrade electron@"$(</usr/lib/electron7/version)" @babel/core@7.8.7 @babel/preset-env@7.8.7 --non-interactive
 }
 
 build() {
