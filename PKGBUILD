@@ -1,6 +1,6 @@
 # Maintainer: sparzz
 pkgname=vulkan-validation-layers-git
-pkgver=1.2.140_2020.06.09
+pkgver=1.2.140_2020.06.09_r1
 pkgrel=1
 epoch=
 pkgdesc="vulkan validation layers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
@@ -46,10 +46,12 @@ package() {
 	-DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
-	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
 	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
 	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/share/vulkan/registry \
-	-DVULKAN_LOADER_DIR=/usr/local/lib/pkgconfig \
+	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
+    -DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib/pkgconfig \
+    -DVULKAN_LOADER_DIR=/usr/local/lib \
+    -DVULKAN_LOADER_DIR=/usr/local/lib/pkgconfig \
 	cmake configure Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
