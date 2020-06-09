@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_2020.06.09
+pkgver=1.2.140_2020.06.09_r1
 pkgrel=1
 epoch=
 pkgdesc="Vulkan-tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur"
