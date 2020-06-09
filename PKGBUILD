@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: sparzz
 pkgname=vulkan-headers-sparzz-git
-pkgver=1.2.141_2020.06.08
+pkgver=1.2.141_2020.06.09
 pkgrel=1
 epoch=
 pkgdesc="Vulkan Headers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
