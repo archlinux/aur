@@ -5,7 +5,7 @@
 
 # Maintainer: Emiel Kollof <emiel@kollof.nl>
 pkgname=dwm-ekollof-git
-pkgver=6.2.r20.4d43b14
+pkgver=6.2.r22.59eff3c
 pkgrel=1
 epoch=
 pkgdesc="Emiel Kollof's personal patched build of dwm."
