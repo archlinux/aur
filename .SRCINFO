@@ -1,6 +1,6 @@
 pkgbase = telegraf-bin
 	pkgdesc = An open source agent for collecting metrics and data on the system; Binary release
-	pkgver = 1.14.3
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://github.com/influxdata/telegraf
 	install = telegraf.install
@@ -18,16 +18,16 @@ pkgbase = telegraf-bin
 	md5sums = 58cc9edf8fbf07e7d3a0357db78121b1
 	md5sums = 9c7a4df3556cab94837c432f5e46cf04
 	md5sums = 10a23e7a514f23f0930e1a4254936534
-	source_i686 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.3_linux_i386.tar.gz
-	md5sums_i686 = cf47c7832d4720f13e35ff83a04e8fb7
-	source_x86_64 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.3_linux_amd64.tar.gz
-	md5sums_x86_64 = 82c5457826e2c31e133222393db213d4
-	source_armv6h = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.3_linux_armhf.tar.gz
-	md5sums_armv6h = 5eac438b4485c6a81e32321c293a00c7
-	source_armv7h = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.3_linux_armhf.tar.gz
-	md5sums_armv7h = 5eac438b4485c6a81e32321c293a00c7
-	source_aarch64 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.3_linux_arm64.tar.gz
-	md5sums_aarch64 = af6bc0d01a2d330418f29f7400a1fbd4
+	source_i686 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.4_linux_i386.tar.gz
+	md5sums_i686 = 4010e7ffa9a1ed738a2e46614b20c4d6
+	source_x86_64 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.4_linux_amd64.tar.gz
+	md5sums_x86_64 = 2c9cb0cbf3527ef8e6ee2ba5447bbd46
+	source_armv6h = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.4_linux_armhf.tar.gz
+	md5sums_armv6h = 973b8b65dbf86cc590aa10e671c303af
+	source_armv7h = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.4_linux_armhf.tar.gz
+	md5sums_armv7h = 973b8b65dbf86cc590aa10e671c303af
+	source_aarch64 = https://dl.influxdata.com/telegraf/releases/telegraf-1.14.4_linux_arm64.tar.gz
+	md5sums_aarch64 = ea1ef42068a0dc8270639411b2ce3302
 
 pkgname = telegraf-bin
 
