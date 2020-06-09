@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r5442.c4d0b714
+pkgver=r5937.58f3fc6b
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
