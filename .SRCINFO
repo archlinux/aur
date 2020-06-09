@@ -1,13 +1,12 @@
 pkgbase = rime-cloverpinyin
 	pkgdesc = ✤四叶草简体拼音输入方案 for rime
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/fkxxyz/rime-cloverpinyin
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.fkxxyz.com/d/cloverpinyin/
 	arch = x86_64
 	license = LGPL
 	makedepends = librime
-	makedepends = rime-prelude
-	makedepends = rime-essay
+	depends = rime-prelude
 	depends = rime-emoji
 	depends = rime-symbols
 	source = git+https://gitee.com/fkxxyz/rime-cloverpinyin.git
