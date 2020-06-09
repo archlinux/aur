@@ -1,7 +1,7 @@
 pkgbase = kosmorro
 	pkgdesc = A program that computes the ephemerides
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kosmorro.space
 	arch = any
 	license = AGPL3
@@ -10,8 +10,8 @@ pkgbase = kosmorro
 	makedepends = ruby-ronn
 	depends = python>=3.5.0
 	depends = python<4.0.0
-	depends = python-skyfield>=1.21.0
-	depends = python-skyfield<2.0.0
+	depends = python-skyfield>=1.21
+	depends = python-skyfield<2.0
 	depends = python-numpy>=1.17.0
 	depends = python-numpy<2.0.0
 	depends = python-tabulate
