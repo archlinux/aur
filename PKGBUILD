@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wf-config-git 
-pkgver=r45.dd6f495
+pkgver=r134.3554d95
 pkgrel=1
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=('x86_64')
