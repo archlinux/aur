@@ -5,7 +5,7 @@
 pkgname=ethminer-cuda
 _pkgname=ethminer
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum miner with OpenCL, CUDA and stratum support."
 arch=('x86_64')
 url="https://github.com/ethereum-mining/ethminer"
@@ -27,7 +27,7 @@ build () {
   mkdir -p build && cd build
 
   export CC=gcc-8
-  export CCX=g++-8
+  export CXX=g++-8
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DETHASHCUDA=ON
   cmake --build .
 }
