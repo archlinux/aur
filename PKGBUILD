@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.3.2.r2502.e1f879ff
+pkgver=1.4.3.2.r2535.2e4f3b32
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -56,4 +56,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	rm -rf "$pkgdir/$site_packages/test"
 }
