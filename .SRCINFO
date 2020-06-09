@@ -1,0 +1,23 @@
+pkgbase = five-or-more-git
+	pkgdesc = Remove colored balls from the board by forming lines
+	pkgver = 3.32.0+56+gbe9877f
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Five%20or%20more
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = librsvg
+	depends = libgnome-games-support
+	provides = five-or-more
+	conflicts = five-or-more
+	source = git+https://gitlab.gnome.org/GNOME/five-or-more.git
+	sha512sums = SKIP
+
+pkgname = five-or-more-git
+
