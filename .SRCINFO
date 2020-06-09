@@ -1,0 +1,36 @@
+pkgbase = instantos
+	pkgdesc = meta package for instantOS
+	pkgver = 9851542
+	pkgrel = 1
+	url = https://github.com/instantOS/instantMETA
+	arch = any
+	license = MIT
+	makedepends = bash
+	makedepends = git
+	depends = git
+	provides = instantos
+	conflicts = instantos
+	source = instantos::git+https://github.com/instantOS/instantMETA.git
+	sha256sums = SKIP
+
+pkgname = instantos
+	depends = git
+	depends = instantdotfiles
+	depends = instantutils
+	depends = instantwallpaper
+	depends = instantassist
+	depends = instantthemes
+	depends = instantwidgets
+	depends = instantcursors
+	depends = instantshell
+	depends = otf-nerd-fonts-fira-code
+	depends = instantconf
+	depends = instantwm
+	depends = instantlock
+	depends = instantmenu
+	depends = instantwelcome
+	depends = instantsettings
+	depends = islide
+	depends = imenu
+	depends = grub-instantos
+
