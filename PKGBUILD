@@ -15,8 +15,7 @@ source=(
 sha512sums=('f765134ba1a67cc3346f1e3f833390ca7a3d7aadf0c9754e9a471873120256668a73fa5b0a853e3d2edfbf2cdae57a4c0248a65ef9b9da5c423828ce3572c9a9'
             'bd9d69d9ac21b13c79afa1a4daef1ed1597ce4ab8ba2ee9986c3a50770a6b8f25962d58c27912680f1ad983e5893821603d847e8ec23c0073c1c57403ba94a69')
 
-provides=('dingtalk')
-conflicts=('dingtalk' 'dingtalk-electron' 'dingtalk-git')
+conflicts=('dingtalk-electron')
 
 prepare() {
     bsdtar -xf "$srcdir/data.tar.xz"
@@ -27,7 +26,7 @@ package() {
     cp -pr "$srcdir/opt/dingtalk/"* "$pkgdir/opt/dingtalk/"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -s ../../opt/dingtalk/nw "$pkgdir/usr/bin/dingtalk"
+    ln -s ../../opt/dingtalk/nw "$pkgdir/usr/bin/dingtalk-linux"
 
     cd "$srcdir/usr/lib64"
     cp -pr libpangocairo-1.0.so.0 libpangoft2-1.0.so.0.2800.1 libpangoxft-1.0.so.0 libpango-1.0.so.0 libpangocairo-1.0.so.0.2800.1 libpangox-1.0.so.0 libpangoxft-1.0.so.0.2800.1 libpango-1.0.so.0.2800.1 libpangoft2-1.0.so.0 libpangox-1.0.so.0.2800.1 "$pkgdir/opt/dingtalk/lib"
@@ -39,7 +38,7 @@ Version=1.0.0
 Encoding=UTF-8
 Name=Dingtalk
 Comment=Dingtalk for Linux
-Exec=dingtalk
+Exec=dingtalk-linux
 Icon=dingtalk
 Terminal=false
 Type=Application
