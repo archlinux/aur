@@ -1,0 +1,11 @@
+diff -aur package.pristine/src/MarkdownEditor.cpp package.new/src/MarkdownEditor.cpp
+--- package.pristine/src/MarkdownEditor.cpp	2020-02-23 01:49:46.000000000 +0100
++++ package.new/src/MarkdownEditor.cpp	2020-06-09 10:45:40.380449821 +0200
+@@ -34,6 +34,7 @@
+ #include <QUrl>
+ #include <QPixmap>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QFileInfo>
+ #include <QDir>
+ 

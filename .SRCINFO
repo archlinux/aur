@@ -1,7 +1,7 @@
 pkgbase = ghostwriter
 	pkgdesc = A cross-platform, aesthetic, distraction-free Markdown editor
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wereturtle/ghostwriter
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = ghostwriter
 	optdepends = pandoc: For Pandoc supported Markdown flavors and export to various formats
 	optdepends = cmark: For processing and rendering CommonMark
 	source = ghostwriter-1.8.1.tar.gz::https://github.com/wereturtle/ghostwriter/archive/v1.8.1.tar.gz
+	source = qt-5.15.patch
 	sha512sums = 9f60f81a594cf161edfeac8c75830e186ab4ec2c22859b2bad40768e1ecf64e6842b52a69024a1f014d24a2f1cbb38e15a7799101d7fd54ef7709e245f6ac521
+	sha512sums = 3f62e61560624131088c68ed3b55e68b29c2e747a7db8f7b9b9680df3db780bf9639ff8b630a085a9eace0cbf2322a6b458bd739d872453a6193767bebd1340c
 
 pkgname = ghostwriter
 
