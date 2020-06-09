@@ -1,0 +1,13 @@
+pkgbase = curlcpp
+	pkgdesc = An object oriented C++ wrapper for CURL
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/JosephP91/curlcpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = curlcpp-1.4.tar.gz::https://github.com/JosephP91/curlcpp/archive/1.4.tar.gz
+	sha256sums = c2faa9bc27a5ecf609bffb7e6c38cba3d61b6def4e853cfc6259640bcd985083
+
+pkgname = curlcpp
+
