@@ -1,4 +1,4 @@
-# Maintainer: Torben <torben.letorbi at gmail dot com>
+# Maintainer: Torben <git at letorbi dot com>
 # Contributor: emersion <contact at emersion dot fr>
 # Contributor: Techlive Zheng <techlivezheng at gmail dot com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
