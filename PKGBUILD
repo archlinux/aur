@@ -7,7 +7,7 @@
 
 pkgname=scite
 pkgver=4.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Editor with facilities for building and running programs'
 arch=('i686' 'x86_64')
 url='http://www.scintilla.org/SciTE.html'
@@ -17,7 +17,7 @@ backup=('usr/share/scite/SciTEGlobal.properties')
 source=("https://www.scintilla.org/${pkgname}${pkgver//./}.tgz"
         "load_so_from_library_path.patch")
 sha256sums=('05e53ccb1219753b9c73b0c1b83b6e2868a8c0c91d8785db2a5f8f9c41ed7d3f'
-            '8936d18d9f2232b6bb04ca1e35cf4f24b3e8edf09e5e045c0bf78541b245f1a5')
+            'f2cbc239a1fb166d411a817ad7964d06b72111fc51b5ef56795275a62ead3681')
 
 
 prepare() {

@@ -1,20 +1,17 @@
-Author: Andreas Rönnquist <gusnan@debian.org>
-Description: Load lexilla so from /usr/lib/scite/
- Updates the source to be able to put libraries in /usr/lib/scite, and
- still load them poperly in SciTE.
---- a/scintilla/gtk/makefile
-+++ b/scintilla/gtk/makefile
-@@ -184,7 +184,7 @@
- 	$(RANLIB) $@
+diff -r d1b44eea341b gtk/SciTEGTK.cxx
+--- a/scite/gtk/SciTEGTK.cxx	Sat Jun 06 20:55:49 2020 +1000
++++ b/scite/gtk/SciTEGTK.cxx	Mon Jun 08 12:02:44 2020 +1000
+@@ -5463,7 +5463,6 @@
+ 		executableDirectory = FilePath(selfExe).Directory();
+ 	}
+ #endif
+-	LexillaSetDefaultDirectory(executableDirectory.AsInternal());
  
- $(COMPONENT): $(SRC_OBJS) $(LEXLIBS_OBJS) $(GTK_OBJS) $(MARSHALLER)
--	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@ $(CONFIGLIB)
-+	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@ $(CONFIGLIB) -Wl,-rpath,/usr/lib/scite -L/usr/lib/scite
- 
- Catalogue.o: Catalogue.cxx
- 	$(CXX) $(CXX_ALL_FLAGS) $(CXXFLAGS) -D SCI_LEXER -D SCI_EMPTYCATALOGUE -c $< -o $@
---- a/scite/gtk/makefile
-+++ b/scite/gtk/makefile
+ 	// Get this now because gtk_init() clears it
+ 	const gchar *startup_id = g_getenv("DESKTOP_STARTUP_ID");
+diff -r d1b44eea341b gtk/makefile
+--- a/scite/gtk/makefile	Sat Jun 06 20:55:49 2020 +1000
++++ b/scite/gtk/makefile	Mon Jun 08 12:02:44 2020 +1000
 @@ -45,6 +45,7 @@
  datadir=$(prefix)/share
  pixmapdir=$(datadir)/pixmaps
@@ -28,16 +25,15 @@ Description: Load lexilla so from /usr/lib/scite/
  
  $(PROG): SciTEGTK.o GUIGTK.o Widget.o DirectorExtension.o $(SRC_OBJS) $(LUA_OBJS)
 -	$(CXX) $(BASE_FLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
-+	$(CXX) $(BASE_FLAGS) $(LDFLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers -Wl,-rpath,/usr/lib/scite $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
++	$(CXX) $(BASE_FLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers -Wl,-rpath,$(libdir) $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
  
  # Automatically generate header dependencies with "make deps"
  include deps.mak
-@@ -158,11 +159,11 @@
- # This is OK - just means no SciTE in the Gnome Applications menu
+@@ -159,10 +160,11 @@
  # Dead:	install -D SciTEGTK.properties $(SYSCONF_PATH)/SciTEGlobal.properties
  install:
--	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(SYSCONF_PATH)
-+	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(libdir) $(DESTDIR)$(SYSCONF_PATH)
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(SYSCONF_PATH)
++	$(INSTALL) -m 755 -d $(DESTDIR)$(libdir)
  
  	$(INSTALL) -m 755 $(PROG) $(DESTDIR)$(bindir)
 -	$(INSTALL) -m 755 $(COMPONENT) $(DESTDIR)$(bindir)
@@ -47,27 +43,32 @@ Description: Load lexilla so from /usr/lib/scite/
  
  	for files in $(srcdir)/../src/*.properties $(srcdir)/../doc/*.html $(srcdir)/../doc/SciTEIco.png $(srcdir)/../doc/PrintHi.png $(srcdir)/../doc/SciTEIndicators.png; \
  	do \
-@@ -177,9 +178,9 @@
+@@ -177,8 +179,8 @@
  
  uninstall:
  	rm -f $(DESTDIR)$(bindir)/SciTE
 -	rm -f $(DESTDIR)$(bindir)/libscintilla.so
 -	rm -f $(DESTDIR)$(bindir)/liblexilla.so
--	rm -rf $(DESTDIR)$(SYSCONF_PATH)
 +	rm -f $(DESTDIR)$(libdir)/libscintilla.so
 +	rm -f $(DESTDIR)$(libdir)/liblexilla.so
-+	rm -rf $(DESTDIR)$(SYSCONF_PATH) $(DESTDIR)$(libdir)
+ 	rm -rf $(DESTDIR)$(SYSCONF_PATH)
  ifdef gnomeprefix
  	rm -f $(DESTDIR)$(datadir)/applications/SciTE.desktop
- 	rm -f $(DESTDIR)$(pixmapdir)/Sci48M.png
---- a/scite/gtk/SciTEGTK.cxx
-+++ b/scite/gtk/SciTEGTK.cxx
-@@ -5463,7 +5463,7 @@
- 		executableDirectory = FilePath(selfExe).Directory();
- 	}
- #endif
--	LexillaSetDefaultDirectory(executableDirectory.AsInternal());
-+	LexillaSetDefaultDirectory("/usr/lib/scite/");
- 
- 	// Get this now because gtk_init() clears it
- 	const gchar *startup_id = g_getenv("DESKTOP_STARTUP_ID");
+diff -r d1b44eea341b src/LexillaLibrary.cxx
+--- a/scite/src/LexillaLibrary.cxx	Sat Jun 06 20:55:49 2020 +1000
++++ b/scite/src/LexillaLibrary.cxx	Mon Jun 08 12:02:44 2020 +1000
+@@ -122,8 +122,12 @@
+ 			paths.remove_prefix(separator + 1);
+ 		}
+ 		if (path == ".") {
+-			path = directoryLoadDefault;
+-			path += pathSeparator;
++			if (directoryLoadDefault.empty()) {
++				path = "";
++			} else {
++				path = directoryLoadDefault;
++				path += pathSeparator;
++			}
+ 			path += defaultName;
+ 		}
+ 		if (!NameContainsDot(path)) {
