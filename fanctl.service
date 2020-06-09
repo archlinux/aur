@@ -1,0 +1,9 @@
+[Unit]
+Description=fanctl fan controller
+
+[Service]
+Environment=RUST_LOG=fanctl=trace
+ExecStart=/usr/bin/fanctl -c /etc/fanctl.yml
+
+[Install]
+WantedBy=default.target 
