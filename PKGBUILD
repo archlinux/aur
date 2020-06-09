@@ -22,7 +22,7 @@ depends=(
 	'udisks2' 'upower'
 )
 optdepends=(
-	'gnome-user-share: Bluetooth and WebDAV file sharing'
+	'gnome-user-share: WebDAV file sharing'
 	'gnome-remote-desktop: screen sharing'
 	'openssh: remote login'
 	'rygel: media sharing'
