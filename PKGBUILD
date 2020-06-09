@@ -1,26 +1,15 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-dev
-pkgver=1.19.0_1.0.pre
-pkgrel=2
+pkgver=1.19.0_4.0.pre
+pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-dev}.io"
 license=("custom" "BSD" "CCPL")
-depends=("glu" "java-environment" "lib32-libglvnd")
-optdepends=(
-  "android-sdk"
-  "android-studio"
-  "bash"
-  "dart"
-  "git"
-  "intellij-idea-community-edition"
-  "intellij-idea-ultimate-edition"
-  "perl"
-  "python"
-  "sh"
-)
-makedepends=("git" "python")
+depends=("bash" "git" "glu" "java-environment" "lib32-libglvnd" "unzip")
+optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python")
+makedepends=("python")
 provides=("${pkgname%-dev}")
 conflicts=("${pkgname%-dev}")
 backup=("opt/${pkgname%-dev}/packages/${pkgname%-dev}_test/pubspec.yaml" "opt/${pkgname%-dev}/packages/${pkgname%-dev}/pubspec.yaml")
@@ -32,7 +21,7 @@ source=(
   "${pkgname%-dev}.csh"
 )
 sha256sums=(
-  "11c832731aa9ec783d5ed8ea0f14eb9f820cdf6e2850ea6367b034c15216b126"
+  "b0f8d5d76daa63624b2715495daecef3628b156e4c93412de2653b649eaf4c96"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
