@@ -47,32 +47,31 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.6
-_minor=17
+_major=5.7
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick')
+             'graphviz' 'imagemagick' 'pahole')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
 _aufs_ver="20200518"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
-_gcc_path="cpu-patches-v3-sep"
+_gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -205,7 +204,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -282,6 +281,9 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -315,14 +317,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7d42eb0327997df85b4c5c7c0babab738f0dd85ef3e739cbc7ce6a21e19821acb72ca6f0beb7636f988b95c29e61b9bf79175ecbdb309835a517f5f538cbc2b3'
+sha512sums=('cb10179262dbfed73bc0086ec2a6a3ea5de72aa9910b3b51a8db732e90a56b54a3492329d49c175ed1b5483e280efc72a73243dfbb272c34a7a453f6b82fbe2d'
             'SKIP'
-            '989fc498abb9a18cae6776b95bde5d0b472e658c89ba98117658b12f5d9735b66e7c7effe96c35b765a0083f8495a67a3b7b46980304cfa600cd90a83f6e064d'
-            '9c71d44a84a2cbe16af1328ab11b9733218a26eda23e6643fcf1daebf368bcd5ff2502ffd77f7b6b300b943e87f1d9e787ffb48f3705fba6daa8b49094fb9f2d'
-            '8c0ca7ab292e6f1a75fd4ae0de797259bf68a5f1512b9f0c905250446ebb924531589d4b8d4d9d7fb1cdd65658b32a8528a7fb7056947d7b31bdc87b4e424752'
-            '4ef82534e202188bec24232a60af73d48870c7f0b3403ec821b132c38cdccc9917037d74dd94cbcbc6be70cf45006e7ace928c32623cecb5289251c2eb4ea1d8'
+            '4725109f0b7cb0744e64483889bbfd379f626b746588bfffa9e1193b9ea990b707b57528776e99a79a37c56b86e7dec602d3e639f4270b4ad5ff02f9fe4b95c2'
+            'f13189fb9cc3488425bc82c45aedaf9ffa8a64f9320e89c18df528afa880ec8982ce9049359eb451690a22c503aace718cf98e89b0cc16b9566249bc7c4c34e0'
+            '1f04c499a1dc00860ce515b105683daf9081d137bc6830ac6f9e68c8791e5032e583ecb628b5c35a6af80863cbda6222ed3515c6a55a24d193b2a11aa6766668'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '1f5f5183961a1b313b41c3c405e794797dd0a1f60a407f912969d0d9f19e87e7c492bf5466f33b614191e90b00dd4152eb7e297749c6fca2bdaf5fd32b3d0c8e')
+            'bdf91424b888534b59b00817df8c243beab0320f49835d5e7dbdd390f127bcdd3435ca31632f9d54fc6f0461336cca86dc686347ffeed62e0b2aa1a35ab0a484')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
