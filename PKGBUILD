@@ -1,26 +1,24 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=1.19.0.1.0.pre.r83.8abf0a6d8c
+pkgver=1.19.0.5.0.pre.r39.9037ccd355
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-git}.io"
 license=("custom" "BSD" "CCPL")
-depends=("glu" "java-environment" "lib32-libglvnd")
+depends=("bash" "git" "glu" "java-environment" "lib32-libglvnd" "unzip")
 optdepends=(
   "android-sdk"
   "android-studio"
   "bash"
   "dart"
-  "git"
   "intellij-idea-community-edition"
   "intellij-idea-ultimate-edition"
   "perl"
   "python"
-  "sh"
 )
-makedepends=("git" "python" "unzip")
+makedepends=("python")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("opt/${pkgname%-git}/packages/${pkgname%-git}_test/pubspec.yaml" "opt/${pkgname%-git}/packages/${pkgname%-git}/pubspec.yaml")
