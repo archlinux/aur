@@ -1,8 +1,8 @@
 pkgbase = android-messages-desktop-bin
 	pkgdesc = Android Messages as a cross-platform desktop app
-	pkgver = 3.1.0
-	pkgrel = 3
-	url = https://github.com/chrisknepper/android-messages-desktop
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/OrangeDrangon/android-messages-desktop
 	arch = x86_64
 	license = MIT
 	depends = electron
@@ -10,12 +10,14 @@ pkgbase = android-messages-desktop-bin
 	depends = libappindicator-gtk3
 	provides = android-messages-desktop
 	conflicts = android-messages-desktop
-	source = https://github.com/chrisknepper/android-messages-desktop/releases/download/v3.1.0/android-messages-desktop-3.1.0.pacman
-	source = https://raw.githubusercontent.com/chrisknepper/android-messages-desktop/master/LICENSE
+	source = https://github.com/OrangeDrangon/android-messages-desktop/releases/download/v4.0.0/android-messages-desktop-4.0.0.pacman
+	source = https://github.com/OrangeDrangon/android-messages-desktop/raw/v4.0.0/LICENSE
 	source = android-messages-desktop
-	sha256sums = 97d5e7997ced8635e8fe46cefb0d95c979900e733570562d020d167ca348349a
-	sha256sums = 3a0332a1a4cbd1db232d73b032c3450c978e48759a3dbcfeddfb874e93bc0b3c
-	sha256sums = 006d50c067e21c9978890a2e8f27b86ba121e48992ef6814864188d704fca860
+	source = android-messages-desktop.desktop
+	sha256sums = aed2d8f5b78dd302dd21f867bda60c39a2321de1a36a4cbe698e616dfe08d920
+	sha256sums = 3ad8e115711a8eca0050f768179efdca0f978b195a9c4f856a9d805628d3886c
+	sha256sums = ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69
+	sha256sums = 1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a
 
 pkgname = android-messages-desktop-bin
 
