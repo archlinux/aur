@@ -1,19 +1,19 @@
 pkgbase = ccs-tools
 	pkgdesc = TOMOYO Linux 1.8.x userspace tools
-	pkgver = 1.8.5
-	pkgrel = 3
+	pkgver = 1.8.7
+	pkgrel = 1
 	url = http://akari.osdn.jp/
 	install = ccs-tools.install
 	arch = any
 	license = GPL
 	depends = ncurses
 	conflicts = tomoyo-tools
-	source = http://osdn.jp/frs/redir.php?f=/tomoyo/49693/ccs-tools-1.8.5-20170102.tar.gz
-	source = http://osdn.jp/frs/redir.php?f=/tomoyo/49693/ccs-tools-1.8.5-20170102.tar.gz.asc
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/49693/ccs-tools-1.8.7-20200505.tar.gz
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/49693/ccs-tools-1.8.7-20200505.tar.gz.asc
 	source = ccs-auditd.service
 	source = tomoyo.logrotate
 	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
-	sha256sums = 06628d95debe97dd65d7412f9ab288d7368751056537cec0a08701db29c4443b
+	sha256sums = cae2f6840e70fb7858dfefb79a5c6ee01d3246dca9522088328eb2b31abcc296
 	sha256sums = SKIP
 	sha256sums = ea447aaaed7fdc9ed6b08d5c256237cd8f2ea74a6f157829613af5b3a3b18bfa
 	sha256sums = d88cdc21bb68a7e2abf0512f10dc56e57db7ca172e179d0fb50998ccf3caf648
