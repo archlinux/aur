@@ -1,0 +1,17 @@
+pkgbase = quicklogic-fpga-toolchain-bin
+	pkgdesc = SymbiFlow variant provided as QuickLogic's vendor toolchain
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/QuickLogic-Corp/quicklogic-fpga-toolchain
+	arch = x86_64
+	arch = i686
+	license = custom:ISC
+	depends = readline6
+	provides = quicklogic-fpga-toolchain
+	conflicts = quicklogic-fpga-toolchain
+	options = !strip
+	source = https://github.com/QuickLogic-Corp/quicklogic-fpga-toolchain/releases/download/v0.1.0/Symbiflow_v0.1.0.gz.run
+	sha512sums = 5333a80f67c4fdae6340ae717a09903e1a4066113234881080ab28d52232fee9e4adccfa0f52be963758d9a5be391b01cc38d3ccc638391dbf4d7890b2a697be
+
+pkgname = quicklogic-fpga-toolchain-bin
+
