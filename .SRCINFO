@@ -1,7 +1,7 @@
 pkgbase = squidguard
 	pkgdesc = Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid.
 	pkgver = 1.6.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.squidguard.org
 	install = squidguard.install
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = squidguard
 	backup = etc/logrotate.d/squidguard
 	backup = etc/squidguard/squidGuard.conf.default
 	source = https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/1.6.0-1/squidguard_1.6.0.orig.tar.gz
+	source = squidguard-1.6.0-gcc10.patch
 	sha512sums = d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e
+	sha512sums = c7852acd56b0282f8496619e2e01a9d0916f879641f35c618d4dc2798c60ef260c56dbf23d13b7eeb95c13aceea649001b089688183f3f9cfdebfcea3a3f5e9b
 
 pkgname = squidguard
 

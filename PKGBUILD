@@ -3,7 +3,7 @@
 
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
 arch=('x86_64' 'i686')
 url="http://www.squidguard.org"
@@ -15,13 +15,17 @@ optdepends=('openldap'
 backup=('etc/logrotate.d/squidguard' 'etc/squidguard/squidGuard.conf.default')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$pkgver-1/squidguard_$pkgver.orig.tar.gz")
-sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e')
+source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$pkgver-1/squidguard_$pkgver.orig.tar.gz"
+	"squidguard-1.6.0-gcc10.patch")
+sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e'
+            'c7852acd56b0282f8496619e2e01a9d0916f879641f35c618d4dc2798c60ef260c56dbf23d13b7eeb95c13aceea649001b089688183f3f9cfdebfcea3a3f5e9b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
+  patch -p0 -i "$srcdir/squidguard-1.6.0-gcc10.patch"
+
 }
 
 build() {
