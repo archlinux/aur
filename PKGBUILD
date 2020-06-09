@@ -2,7 +2,7 @@
 
 pkgname=otr-verwaltung3p-dev
 pkgver=1.0.0b7
-pkgrel=6
+pkgrel=7
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -26,6 +26,6 @@ options=('!strip')
 
 
 package() {
-    cd "${srcdir}/${_pkgname}-${_pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
 }
