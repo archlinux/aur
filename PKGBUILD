@@ -5,7 +5,7 @@
 
 pkgname=brave-beta-bin
 pkgver=1.11.58
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
 url='https://brave.com/download-beta'
@@ -45,7 +45,5 @@ package() {
     install -Dm0644 -t "${pkgdir}/usr/share/applications" "brave-browser.desktop"
     install -Dm0644 "logo.png" "${pkgdir}/usr/share/pixmaps/brave-beta.png"
     install -Dm0664 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
-    mv "${pkgdir}/usr/lib/${pkgname}/"{LICENSE,LICENSES.chromium.html} "${pkgdir}/usr/share/licenses/${pkgname}"
-
     ln -s /usr/lib/PepperFlash "${pkgdir}/usr/lib/pepperflashplugin-nonfree"
 }
