@@ -7,7 +7,7 @@
 
 pkgname='inspircd'
 pkgver='3.6.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('x86_64')
 url='https://www.inspircd.org/'
@@ -15,7 +15,7 @@ license=('GPL2')
 conflicts=('inspircd')
 provides=('inspircd')
 depends=('perl')
-makedepends=('libmariadbclient' 'sqlite3' 'libldap' 'geoip'
+makedepends=('libmariadbclient' 'sqlite3' 'libldap' 'geoip' 'libmaxminddb'
     'gnutls' 'openssl' 'libgcrypt' 'postgresql-client'
     're2' 'tre' 'mbedtls')
 optdepends=('gnutls: m_ssl_gnutls'
