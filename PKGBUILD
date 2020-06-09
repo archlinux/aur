@@ -2,25 +2,18 @@
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=python-klein
-pkgver=19.6.0
-pkgrel=3
+pkgver=20.6.0
+pkgrel=1
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'
 license=(MIT)
-# incremental is listed in both setup_requires and install_requires
 depends=(python python-attrs python-hyperlink python-incremental python-six
          python-tubes python-twisted python-werkzeug python-zope-interface)
-makedepends=(python-setuptools python-incremental)
+makedepends=(python-setuptools)
 checkdepends=(python-hypothesis python-mock python-treq python-pytest)
 source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz")
-sha512sums=('849631f121449556c33a45dcc5b909339730b50f224cd52aadd1e88b1cfe11ef67c03387ef2fc66517d56251001af161b72b518981d36246c741cc381750858f')
-
-prepare() {
-  cd klein-$pkgver
-  # https://github.com/twisted/klein/pull/286
-  sed -i '/"typing"/d' setup.py
-}
+sha512sums=('1cba04a365fd9c7185e2f2472f617f875ee9cec41ac97940dda4a145811cefcbbe34f11e1f306656dc43d88b49e66bfcb5efb72d25283bbc8a0729b2fc5e2fca')
 
 build() {
   cd klein-$pkgver
