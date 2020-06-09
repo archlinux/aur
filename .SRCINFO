@@ -1,0 +1,17 @@
+pkgbase = instantwelcome
+	pkgdesc = welcome app instantOS
+	pkgver = 20202610d52be7a
+	pkgrel = 1
+	url = https://github.com/instantOS/instantWELCOME
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = gtk3
+	provides = instantwelcome
+	conflicts = instantwelcome
+	source = instantwelcome::git+https://github.com/instantOS/instantwelcome.git
+	sha256sums = SKIP
+
+pkgname = instantwelcome
+
