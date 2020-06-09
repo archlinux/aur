@@ -1,0 +1,17 @@
+pkgbase = rime-cloverpinyin
+	pkgdesc = Clover Simplified pinyin input for rime.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fkxxyz/rime-cloverpinyin
+	arch = x86_64
+	license = LGPL
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	depends = rime-emoji
+	depends = rime-symbols
+	source = https://github.com/fkxxyz/rime-cloverpinyin/archive/1.0.0.tar.gz
+	sha512sums = 784c78a5be5d1138c5e90804069dc8c552310d203682c5c8f0fc6e0a89a493ac7a37bbe886b36c12f8ab6b89ae3e909e3b988d48d31330fe8f0c3ced84993af1
+
+pkgname = rime-cloverpinyin
+
