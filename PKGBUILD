@@ -1,6 +1,6 @@
 # Maintainer:F43nd1r <support@faendir.com>
 pkgname=keepass-natmsg
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 epoch=
 pkgdesc="KeePass plugin to expose credentials securely to a browser using Native Messaging"
@@ -9,7 +9,7 @@ url="https://github.com/smorks/keepassnatmsg"
 license=('GPL3')
 depends=('keepass')
 source=("https://github.com/smorks/keepassnatmsg/releases/download/v$pkgver/KeePassNatMsg-v$pkgver-binaries.zip")
-sha256sums=("537c74f0a8b56f6f22f2c28687f3992c0190bb5e91fa8dcb28a24828b47f546d")
+sha256sums=("b615f5fd3e4ed9acbf930f66040ab26f161187f480122f8a4d172c066ef50c4f")
 
 package() {
     mkdir -p "${pkgdir}"/usr/share/keepass/plugins
