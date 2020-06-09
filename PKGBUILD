@@ -2,14 +2,14 @@
 
 pkgname=google-docs-nativefier
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron wrapper for the Google Docs web application"
 arch=(x86_64)
 license=(MIT)
 url=https://docs.google.com
 source=($pkgname.png
         $pkgname.desktop)
-makedepends=(nodejs nodejs-nativefier npm)
+makedepends=(nodejs nodejs-nativefier npm unzip)
 sha256sums=('5231652761dce688ddd2f4b2a5b958fd5486acaa181ec239fd9d330d835b5bbb'
             'e3f241fc5eba29bf3f5f4ade5fb7cf4ca9426a1ddc34548d7224e5b372db49e4')
 
@@ -23,7 +23,7 @@ build() {
       --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
       --internal-urls "(.*?docs\.google\.com.*?|.*?accounts\.google\.com.*?)" \
       --single-instance \
-      --electron-version 7.1.11
+      --electron-version 8.2.0
 }
 
 package() {
