@@ -17,7 +17,6 @@ pkgbase = flutter-git
 	depends = unzip
 	optdepends = android-sdk
 	optdepends = android-studio
-	optdepends = bash
 	optdepends = dart
 	optdepends = intellij-idea-community-edition
 	optdepends = intellij-idea-ultimate-edition

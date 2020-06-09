@@ -8,16 +8,7 @@ arch=("x86_64")
 url="https://${pkgname%-git}.io"
 license=("custom" "BSD" "CCPL")
 depends=("bash" "git" "glu" "java-environment" "lib32-libglvnd" "unzip")
-optdepends=(
-  "android-sdk"
-  "android-studio"
-  "bash"
-  "dart"
-  "intellij-idea-community-edition"
-  "intellij-idea-ultimate-edition"
-  "perl"
-  "python"
-)
+optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python")
 makedepends=("python")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
