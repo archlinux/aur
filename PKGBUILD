@@ -4,8 +4,8 @@
 
 pkgname=asix-dkms
 _pkgbase=asix
-pkgver=4.23.0
-pkgrel=4
+pkgver=4.24.0
+pkgrel=1
 pkgdesc='A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters'
 arch=('i686' 'x86_64')
 
@@ -23,19 +23,19 @@ _filename="AX88772C_772B_772A_760_772_178_Linux_Driver_v${pkgver}_Source"
 source=(
     "https://www.asix.com.tw/FrootAttach/driver/${_filename}.tar.bz2"
     'dkms.conf'
-    'linux-4.20.patch'
+    '0001-linux-5.5.patch'
 )
 sha512sums=(
-    '7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688'
+    '039622836e321350476e37120e837885bea070f17782232150c157ee667335952f694b052ebdeb4e7df35d4c342a788dd661066f5b5d7606a2600bdebeb68958'
     'ba2f214bc0baa2b2f8baf480e904ea8ed15dfc24c15d3dd453f9a0db47615b16ff5722fc1384435959b281b4ec322956ba1380fef8146ef019ddc56e304c495d'
-    'e9e7025e8157d6950200a45a07d35de99c1342a60f02fa1701753e589cfa1964de86c136e8ce26f51d284cd716f75fe9953b1ee09381e9f1599aa89c8e61db8f'
+    'c2d1c1718b89624a244e0dc697557f9b0f9de08fbb8a85356f836e55b8e6aa2a88630aaa14d28a76cac16ee949153fec2caf427e3b1ecac9fb44cf8519ce2215'
 )
 
 prepare() {
     cd "${srcdir}/${_filename}"
 
-    # Linux kernel internals changed since Linux 4.20.
-    patch -p1 < "${srcdir}/linux-4.20.patch"
+    # Linux kernel internals changed since Linux 5.5.
+    patch -p1 < "${srcdir}/0001-linux-5.5.patch"
 
     # Use a DKMS build against the right kernel release
     sed -i "${srcdir}/${_filename}/Makefile" \

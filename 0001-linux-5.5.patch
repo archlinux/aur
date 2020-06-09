@@ -1,0 +1,14 @@
+--- a/axusbnet.c	2020-06-09 09:40:11.491845696 +0200
++++ b/axusbnet.c	2020-06-09 09:41:34.533243738 +0200
+@@ -1062,7 +1062,11 @@
+ /*-------------------------------------------------------------------------*/
+ 
+ static
++#if LINUX_VERSION_CODE > KERNEL_VERSION(5, 5, 0)
++void axusbnet_tx_timeout(struct net_device *net, unsigned int i)
++#else
+ void axusbnet_tx_timeout(struct net_device *net)
++#endif
+ {
+ 	struct usbnet *dev = netdev_priv(net);
+ 	struct driver_info	*info = dev->driver_info;
