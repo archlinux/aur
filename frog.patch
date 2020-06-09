@@ -1,0 +1,64 @@
+From af0751adc2be8caed5455c9dab0a1d5bab610567 Mon Sep 17 00:00:00 2001
+From: Tk-Glitch <ti3nou@gmail.com>
+Date: Tue, 15 Jan 2019 06:22:07 +0100
+Subject: frog master race
+
+
+diff --git a/neofetch b/neofetch
+index 64c75f6e..3e10db02 100755
+--- a/neofetch
++++ b/neofetch
+@@ -1175,7 +1175,7 @@ get_distro() {
+         distro+=" $machine_arch"
+ 
+     [[ ${ascii_distro:-auto} == auto ]] && \
+-        ascii_distro=$(trim "$distro")
++        ascii_distro="Arch"
+ }
+ 
+ get_model() {
+@@ -5208,25 +5208,25 @@ EOF
+         "Arch"*)
+             set_colors 6 6 7 1
+             read -rd '' ascii_data <<'EOF'
+-${c1}                   -`
+-                  .o+`
+-                 `ooo/
+-                `+oooo:
+-               `+oooooo:
+-               -+oooooo+:
+-             `/:-:++oooo+:
+-            `/++++/+++++++:
+-           `/++++++++++++++:
+-          `/+++o${c2}oooooooo${c1}oooo/`
+-${c2}         ${c1}./${c2}ooosssso++osssssso${c1}+`
+-${c2}        .oossssso-````/ossssss+`
+-       -osssssso.      :ssssssso.
+-      :osssssss/        osssso+++.
+-     /ossssssss/        +ssssooo/-
+-   `/ossssso+/:-        -:/+osssso+-
+-  `+sso+:-`                 `.-/+oso:
+- `++:.                           `-/+/
+- .`                                 `/
++${c1}                   
++       .---.`               `.---.       
++    `/syhhhyso-           -osyhhhys/`    
++   .syNMdhNNhss/``.---.``/sshNNhdMNys.   
++   +sdMh.`+MNsssssssssssssssNM+`.hMds+   
++   :syNNdhNNhssssssssssssssshNNhdNNys:   
++    /ssyhhhysssssssssssssssssyhhhyss/    
++    .ossssssssssssssssssssssssssssso.    
++   :sssssssssssssssssssssssssssssssss:   
++  /sssssssssssssssssssssssssssssssssss/  
++ :sssssssssssssoosssssssoosssssssssssss: 
++ osssssssssssssoosssssssoossssssssssssso 
++ osssssssssssyyyyhhhhhhhyyyyssssssssssso 
++ /yyyyyyhhdmmmmNNNNNNNNNNNmmmmdhhyyyyyy/ 
++  smmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmms  
++   /dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd/   
++    `:sdNNNNNNNNNNNNNNNNNNNNNNNNNds:`    
++       `-+shdNNNNNNNNNNNNNNNdhs+-`       
++             `.-:///////:-.`             
+ EOF
+         ;;
+ 
