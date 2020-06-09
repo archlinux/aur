@@ -1,6 +1,6 @@
 pkgbase = knowte
-	pkgdesc = Knowte is a note taking application that allows you to quickly and easily organize and find your notes.
-	pkgver = 2.0.3
+	pkgdesc = A note taking application that allows you to quickly and easily organize and find your notes
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://www.digimezzo.com
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = knowte
 	conflicts = knowte
 	replaces = knowte
 	options = !strip
-	source = Knowte-2.0.3.AppImage::https://github.com/digimezzo/knowte/releases/download/v2.0.3/Knowte-2.0.3.AppImage
+	source = Knowte-2.0.4.AppImage::https://github.com/digimezzo/knowte/releases/download/v2.0.4/Knowte-2.0.4.AppImage
 	source = knowte.desktop
-	sha256sums = bae0f53bc08c5eb7934a25659cd88e46b5e739c598fcff28f6ea91a618c6d110
-	sha256sums = 7b2db0cb226fc0f6578414d8e522f940e1a1d1a04b1aeac206e01f6a98a752ae
+	sha256sums = 1046d0428ddacf93491e7d0e90bb24af26aa16731b1ef00b36f0e5d943f3a64a
+	sha256sums = 2e0022cf360af289e0fecb677ecd629759299f9e845e628bfb10eda88201f154
 
 pkgname = knowte
 
