@@ -1,5 +1,5 @@
 pkgbase = endpoint-verification
-	pkgdesc = Google Endpoint Verification Helper for Chromium
+	pkgdesc = Endpoint Verification Helper for Chromium
 	pkgver = 2019.10.07.c273328186_00
 	pkgrel = 1
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
