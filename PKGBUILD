@@ -2,15 +2,15 @@
 
 _name=netdisco
 pkgname=python-netdisco
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
-pkgdesc='Library for Python that discovers devices on your local network'
+pkgdesc='Library for Python that discovers devices on your local network [deprecated]'
 arch=('any')
 url=https://github.com/home-assistant/netdisco
 license=('Apache')
 depends=('python' 'python-zeroconf' 'python-requests' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/n/netdisco/$_name-$pkgver.tar.gz")
-sha256sums=("2b3aca14a1807712a053f11fd80dc251dd821ee4899aefece515287981817762")
+sha256sums=("46839e47c57554241971fbf3ba7e0077cadd22dd2bcf7eec4f72b243de2e062d")
 
 build() {
   cd $_name-$pkgver
