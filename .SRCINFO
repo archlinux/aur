@@ -1,6 +1,6 @@
 pkgbase = kosmorro
 	pkgdesc = A program that computes the ephemerides
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://kosmorro.space
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = kosmorro
 	depends = python-dateutil
 	optdepends = texlive-bin: PDF creation support
 	optdepends = python-latex: PDF creation support
-	source = kosmorro-v0.8.0.tar.gz::https://github.com/Deuchnord/kosmorro/archive/v0.8.0.tar.gz
-	source = locales.tar.xz
-	sha256sums = 8bf3259a49678d7c517386417a5234b955ae1d58e6d5795bd39efd585afd9d6e
-	sha256sums = 5cea0f49f4efe15b948d8de2bec1f8e44786e4fe92a8b56ebb0ce2f4d7f258bb
+	source = kosmorro-v0.8.1.tar.gz::https://github.com/Deuchnord/kosmorro/archive/v0.8.1.tar.gz
+	source = kosmorro-v0.8.1-locales.tar::https://github.com/Deuchnord/kosmorro/releases/download/v0.8.1/locales.tar.gz
+	sha256sums = 5faca5e2f046684c3f8b6aeeb25c1c614a6f882996e2cf9200b5f66d88b6f9fc
+	sha256sums = 2f112f971c27bd40e9e1e495da92f33f698f5e2a42813ae92882727f41e4a103
 
 pkgname = kosmorro
 
