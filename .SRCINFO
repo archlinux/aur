@@ -1,6 +1,6 @@
 pkgbase = vulkan-tools-git
 	pkgdesc = Vulkan-tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur
-	pkgver = 1.2.140_2020.06.08
+	pkgver = 1.2.140_2020.06.09
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-Tools.git
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = vulkan-tools-git
 	makedepends = vulkan-validation-layers-git
 	makedepends = vulkan-loader-git
 	makedepends = vulkan-headers-sparzz-git
-	makedepends = vulkan-extensionlayer-sparzz-git
 	makedepends = glslang-sparzz-git
 	provides = vulkan-tools-git
 	source = Vulkan-Tools::git+https://github.com/KhronosGroup/Vulkan-Tools.git
