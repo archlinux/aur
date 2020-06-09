@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Comment=TETR.IO is a modern yet familiar online stacker.
+Name=TETR.IO
+Exec=tetrio-desktop
+Icon=tetrio-desktop
+Terminal=false
+Categories=Game;BlocksGame;
