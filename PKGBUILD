@@ -3,7 +3,7 @@
 pkgname=annotatego-git
 _pkgname=annotatego
 pkgver=r7.e52c42d
-pkgrel=1
+pkgrel=2
 pkgdesc='Creates sourcehut JSON annotations for Go source trees'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/annotatego'
@@ -16,14 +16,20 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    (   set -o pipefail
+    (
+        set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 
 build() {
     cd "$srcdir/$_pkgname"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -o annotatego
 }
 
