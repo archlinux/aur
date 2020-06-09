@@ -1,0 +1,15 @@
+pkgbase = stardict-oed
+	pkgdesc = Oxford English Dictionary for Stardict
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://code.google.com/archive/p/stardict-3/
+	arch = any
+	license = freeware
+	depends = stardict
+	source = http://download.huzheng.org/bigdict/stardict-Oxford_English_Dictionary_2nd_Ed._P1-2.4.2.tar.bz2
+	source = http://download.huzheng.org/bigdict/stardict-Oxford_English_Dictionary_2nd_Ed._P2-2.4.2.tar.bz2
+	md5sums = 7ce40a845b76c33f5c80cd9af638d344
+	md5sums = 4fb5a2085540ebba08b2ebd3418d631e
+
+pkgname = stardict-oed
+
