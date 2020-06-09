@@ -7,6 +7,8 @@ pkgbase = spacemacs
 	license = GPL3
 	makedepends = git
 	depends = emacs
+	provides = emacs
+	conflicts = spacemacs-dev
 	source = spacemacs::git+https://github.com/syl20bnr/spacemacs
 	md5sums = SKIP
 
