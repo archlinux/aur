@@ -1,6 +1,6 @@
 pkgbase = vulkan-loader-git
 	pkgdesc = Vulkan loader build from source. Depends on vulkan headers from my aur repo. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur
-	pkgver = 1.2.141_2020.06.09
+	pkgver = 1.2.141_2020.06.09_r1
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
