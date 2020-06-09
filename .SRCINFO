@@ -1,0 +1,14 @@
+pkgbase = instantfonts
+	pkgdesc = patched fonts for instantOS
+	pkgver = 20205001
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = wget
+	makedepends = git
+	depends = sh
+	provides = instantfonts
+	conflicts = instantfonts
+
+pkgname = instantfonts
+
