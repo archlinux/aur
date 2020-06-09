@@ -18,11 +18,12 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20200607'
+_pkgver_date='20200609'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
-_pluginver='0.01'
+_plugin_tag='0.01'
+_plugin_ver='1.2.0'
 
 pkgver="$_pkgver_upstream.r$_pkgver_date$_pkgver_uniqueness"
 
@@ -32,15 +33,15 @@ pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive pat
 arch=('x86_64')
 url="https://ephtracy.github.io/"
 source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/$_pkgver_tag/MagicaVoxel-$_pkgver_upstream-win64.zip"
-        "$pkgname-plugin-$_pluginver.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/$_pluginver/plugin-intel-denoiser-win64.zip"
+        "$pkgname-plugin-$_plugin_ver.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/$_plugin_tag/plugin-intel-denoiser-win64-$_plugin_ver.zip"
         'magicavoxel'
         'magicavoxel.desktop'
         'LICENSE')
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('5be6967726764767440828c3404bd9be09e6716e1996323d687c527ad7516b3beee0bc81075c59113e2ad98b164b860c06ee7f3bfe0e12c14648e982e958832e'
-            '23fe26a26dad536810a21fda5565c97d520961b63d06ed5e3aae170a5c636a3c202c9ab40ce80486ff6fca5d34e3ab1a48cabedc43ad678236b4e4abbc0ab67a'
+sha512sums=('8b7293aa5a77b248cbdeae4e9b0d0c12867c71c77b3d79db2a61f703c81365b06d27d303d5ac5a03e34fbc5828ac79bc10c6a209eef8f0b427744cfad6af23dd'
+            '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
             '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
             'feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae')
