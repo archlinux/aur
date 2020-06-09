@@ -1,0 +1,27 @@
+pkgbase = cnrdrvcups-sfp
+	pkgdesc = Canon UFRII LT Printer Driver for Linux (LBP112/912, LBP113/913, LBP151dw, LBP6030/LBP6040/LBP6018L, LBP6230/LBP6240, LBP7100C/LBP7110C, LBP8100)
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://www.canon-europe.com
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	license = custom
+	makedepends = jbigkit
+	makedepends = gzip
+	makedepends = gtk2
+	depends = gcc-libs
+	depends = libxml2
+	depends = libglade
+	optdepends = libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices
+	optdepends = gtk2: for cnsetuputil2
+	conflicts = cndrvcups-lb
+	conflicts = cndrvcups-common-lb
+	options = !emptydirs
+	options = !strip
+	options = !libtool
+	source = http://gdlp01.c-wss.com/gds/0/0100005950/10/linux-UFRIILT-drv-v500-uken-18.tar.gz
+	md5sums = 8bc3a4e3c372bb4d1b9af2cc012c720b
+	sha512sums = e7b964f3d4541e1ec9ba07eac17559233ab2db16d1f025ffd8a46a65297c63205b7a3cdc031d95f04d719e97eaf93fd763bdc6c27f12c5aac346bb4f204d5967
+
+pkgname = cnrdrvcups-sfp
