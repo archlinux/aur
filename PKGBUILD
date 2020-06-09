@@ -2,8 +2,8 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.114.4
-pkgrel=3
+pkgver=1.115.1
+pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -20,7 +20,7 @@ _librepo='http://u.tlauncher.ru/repo'
 # _librepo='http://turikhay.ru/tlauncher/repo'
 
 _bootstrap_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6'
-_launcher_checksum='6e40f9b10a2a5ef00004e4d406d33a5550ec069a6475be9bf26b8fe94b9b0bea'
+_launcher_checksum='0617b92b615aaca9931e1a28b33d1d22ae28162b84e80c117585652817872737'
 
 source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         # Patched bootstrap to allow launching without RW rights (RO only)
@@ -35,20 +35,19 @@ source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "${_librepo}/libraries/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"
         "${_librepo}/libraries/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.jar"
         "${_librepo}/libraries/commons-io/commons-io/2.5/commons-io-2.5.jar"
-        "${_librepo}/libraries/com/google/code/gson/gson/2.7/gson-2.7.jar"
+        "${_librepo}/libraries/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"
         "${_librepo}/libraries/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
         "${_librepo}/libraries/com/fasterxml/jackson/core/jackson-core/2.7.3/jackson-core-2.7.3.jar"
         "${_librepo}/libraries/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"
         "${_librepo}/libraries/com/getsentry/raven/raven/7.8.1/raven-7.8.1.jar"
         "${_librepo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
-        "${_librepo}/libraries/com/google/guava/14.0/guava-14.0.jar"
+        "${_librepo}/libraries/com/google/guava/guava/14.0/guava-14.0.jar"
         "${_librepo}/libraries/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar"
         "${_librepo}/libraries/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar"
         "${_librepo}/libraries/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
         "${_librepo}/libraries/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
 
         'tlauncher.desktop'
-        'tlauncher.install'
         'tlauncher.bash')
 noextract=("${source[@]##*/}")
 sha256sums=(#"${_bootstrap_checksum}"
@@ -61,7 +60,7 @@ sha256sums=(#"${_bootstrap_checksum}"
             '807c95293e41e8159477442077da6d0962a7f486d4b980be61f60a8db9cb290f'
             '26c5856e954b5f864db76f13b86919b59c6eecf9fd930b96baa8884626baf2f5'
             'a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474'
-            '2d43eb5ea9e133d2ee2405cc14f5ee08951b8361302fdd93494a3a997b508d32'
+            'b8545ba775f641f8bba86027f06307152279fee89a46a4006df1bf2f874d4d9d'
             '2218c73b40f9af98b570d084420c1b4a81332297bd7fc27ddd552e903be8e93c'
             'f6d5ef0f62dcd9788ec9f7538c352eda7372eeaa3efc3a3f38c9c223d2cced48'
             '1d5aeb6bd98b0fdd151269eae941c05f6468a791ea0f1e68d8e7fe518af3e7df'
@@ -74,9 +73,7 @@ sha256sums=(#"${_bootstrap_checksum}"
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
-            '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b'
             '724cd1866b16127d93f34d815a581c6fd30086a1313b7ed303e6cdbc78ea7a51')
-install="${pkgname}.install"
 
 package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
@@ -92,13 +89,13 @@ package() {
   install -Dm0644 "${srcdir}/commons-compress-1.10.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"
   install -Dm0644 "${srcdir}/jopt-simple-4.9.jar" "${pkgdir}/opt/tlauncher/lib/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.jar"
   install -Dm0644 "${srcdir}/commons-io-2.5.jar" "${pkgdir}/opt/tlauncher/lib/commons-io/commons-io/2.5/commons-io-2.5.jar"
-  install -Dm0644 "${srcdir}/gson-2.7.jar" "${pkgdir}/opt/tlauncher/lib/com/google/code/gson/gson/2.7/gson-2.7.jar"
+  install -Dm0644 "${srcdir}/gson-2.6.2.jar" "${pkgdir}/opt/tlauncher/lib/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"
   install -Dm0644 "${srcdir}/java-semver-0.9.0.jar" "${pkgdir}/opt/tlauncher/lib/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
   install -Dm0644 "${srcdir}/jackson-core-2.7.3.jar" "${pkgdir}/opt/tlauncher/lib/com/fasterxml/jackson/core/jackson-core/2.7.3/jackson-core-2.7.3.jar"
   install -Dm0644 "${srcdir}/slf4j-api-1.7.21.jar" "${pkgdir}/opt/tlauncher/lib/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"
   install -Dm0644 "${srcdir}/raven-7.8.1.jar" "${pkgdir}/opt/tlauncher/lib/com/getsentry/raven/raven/7.8.1/raven-7.8.1.jar"
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
-  install -Dm0644 "${srcdir}/guava-14.0.jar" "${pkgdir}/opt/tlauncher/lib/com/google/guava/14.0/guava-14.0.jar"
+  install -Dm0644 "${srcdir}/guava-14.0.jar" "${pkgdir}/opt/tlauncher/lib/com/google/guava/guava/14.0/guava-14.0.jar"
   install -Dm0644 "${srcdir}/log4j-api-2.8.1.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar"
   install -Dm0644 "${srcdir}/log4j-core-2.8.1.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar"
   install -Dm0644 "${srcdir}/nstweaker-1.0.jar" "${pkgdir}/opt/tlauncher/lib/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
