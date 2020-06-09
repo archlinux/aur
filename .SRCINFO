@@ -1,0 +1,23 @@
+pkgbase = gnome-chess-git
+	pkgdesc = Play the classic two-player boardgame of chess
+	pkgver = 3.37.2+3+gaf4e19f
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Chess
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = librsvg
+	optdepends = gnuchess: Play against computer
+	provides = gnome-chess
+	conflicts = gnome-chess
+	source = git+https://gitlab.gnome.org/GNOME/gnome-chess.git
+	sha512sums = SKIP
+
+pkgname = gnome-chess-git
+
