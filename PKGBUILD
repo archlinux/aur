@@ -42,9 +42,9 @@ prepare() {
         -e 's/^KDIR.*/KDIR   = \/lib\/modules\/$(KERNELRELEASE)\/build/g' \
         -e 's/SUBDIRS/M/g'
 
-    # Add module version to differenciate with the kernel module from
-    # upstream/Arch Linux kernel.
-    echo "MODULE_VERSION(\"${pkgver}.${pkgrel}\");" >> "${srcdir}/${_filename}/asix.c"
+    # # Add module version to differenciate with the kernel module from
+    # # upstream/Arch Linux kernel.
+    # echo "MODULE_VERSION(\"${pkgver}.${pkgrel}\");" >> "${srcdir}/${_filename}/asix.c"
 }
 
 package() {
