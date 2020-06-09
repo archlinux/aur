@@ -6,13 +6,13 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.1.r107.g167c83497
+pkgver=0.6.0rc2.r44.g970a0b414
 pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=("go>=2:1.14.2-1" git)
+makedepends=("go>=2:1.14.4-1" git)
 optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")

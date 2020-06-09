@@ -1,13 +1,13 @@
 pkgbase = go-ipfs-git
 	pkgdesc = A peer-to-peer hypermedia distribution protocol
-	pkgver = 0.5.1.r107.g167c83497
+	pkgver = 0.6.0rc2.r44.g970a0b414
 	pkgrel = 1
 	url = https://github.com/ipfs/go-ipfs
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	makedepends = go>=2:1.14.2-1
+	makedepends = go>=2:1.14.4-1
 	makedepends = git
 	optdepends = fuse2: for mounting/advanced use
 	optdepends = bash-completion: bash completion support
