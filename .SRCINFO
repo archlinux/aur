@@ -1,11 +1,12 @@
 pkgbase = python-tensorflow-graphics-git
 	pkgdesc = Differentiable Graphics Layers for TensorFlow
-	pkgver = r265.e397941
+	pkgver = r270.7bc08c6
 	pkgrel = 1
 	url = https://github.com/tensorflow/graphics
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-tensorflow
 	depends = python-numpy
 	depends = python-tensorflow-addons-cuda-git

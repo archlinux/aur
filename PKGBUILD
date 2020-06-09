@@ -1,14 +1,14 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-tensorflow-graphics-git
-pkgver=r265.e397941
+pkgver=r270.7bc08c6
 pkgrel=1
 pkgdesc="Differentiable Graphics Layers for TensorFlow "
 url="https://github.com/tensorflow/graphics"
 arch=('any')
 license=('APACHE')
 depends=('python-tensorflow' 'python-numpy' 'python-tensorflow-addons-cuda-git' 'python-matplotlib')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel')
 optdepends=('openexr: EXR loader')
 source=("git+https://github.com/tensorflow/graphics.git")
 sha256sums=('SKIP')
