@@ -4,7 +4,7 @@
 _pkgname=glib
 pkgname=lib32-glib
 pkgver=1.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Common C routines used by Gtk+ and other libs (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -14,7 +14,7 @@ makedepends=('gcc-multilib')
 options=('!makeflags')
 install=glib.install
 source=(ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/${_pkgname}-${pkgver}.tar.gz
-	https://src.fedoraproject.org/rpms/glib/raw/master/f/glib-1.2.10-gcc9.patch
+	glib-1.2.10-gcc9.patch
 	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
 sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
           '9e675101003cd97da0b42bf04fc6489197a822c7'
