@@ -1,0 +1,20 @@
+pkgbase = instantwallpaper
+	pkgdesc = wallpaper generator for instantOS
+	pkgver = 202004291830
+	pkgrel = 1
+	url = https://github.com/instantOS/instantwallpaper
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	depends = feh
+	depends = imagemagick
+	provides = instantwallpaper
+	conflicts = instantwallpaper
+	source = instantwallpaper::git+https://github.com/instantOS/instantWALLPAPER.git
+	sha256sums = SKIP
+
+pkgname = instantwallpaper
+
