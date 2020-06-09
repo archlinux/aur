@@ -3,7 +3,7 @@
 pkgname=mongodb-shell
 pkgver=0.0.5
 pkgrel=1
-pkgdesc='The MongoDB Shell is a fully functional JavaScript environment for interacting with MongoDB deployments.'
+pkgdesc='The MongoDB Shell is a fully functional JavaScript environment for interacting with MongoDB deployments having syntax highligting, clear error messages and intelligent autocomplete.'
 url='https://www.mongodb.com/'
 license=('custom')
 depends=('mongodb-bin')
