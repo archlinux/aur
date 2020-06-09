@@ -2,7 +2,7 @@
 
 _pkgname=dmenu
 pkgname=$_pkgname-rs
-pkgver=5.0.1.0.g906941c
+pkgver=5.1.0.0.g906941c
 pkgrel=1
 pkgdesc="A 1:1 port of dmenu, rewritten in Rust"
 arch=('i686' 'x86_64')
