@@ -1,27 +1,27 @@
-pkgname=pandoc-crossref-bin
+pkgname=haskell-pandoc-crossref-bin
+_pkgname=pandoc-crossref
 pkgver=0.3.6.3
 _pandoc_pkgver=2.9.2.1
 pkgrel=1
-pkgdesc="Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends"
-url="https://hackage.haskell.org/package/pandoc-crossref"
+pkgdesc="Pandoc filter for cross-references - executable only"
+url="https://hackage.haskell.org/package/${_pkgname}"
 license=("GPL2")
 arch=('x86_64')
 conflicts=("pandoc-crossref")
 provides=("pandoc-crossref")
-replaces=('pandoc-crossref-static' 'pandoc-crossref-lite')
+replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=('pandoc')
 
 source=(
-    "pandoc-crossref-${pkgver}.tar.gz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/linux-pandoc_${_pandoc_pkgver}.tar.gz"
+    "pandoc-crossref-${pkgver}.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/pandoc-crossref-Linux-${_pandoc_pkgver}.tar.xz"
 )
-sha256sums=('4b4abb27d6c54a0461e2c0e6d14eca7cb646bf9e10a59f3d2c8d5e7ed3583848')
+sha256sums=('19ff5f0af8706598e90d164d577ce7fc7d0e403fbe5e3d41c1e3e2cbf26ecb26')
 
 package() {
     cd "${srcdir}"
 
     # To avoid having to download over a gigabyte of haskell makedepends (400-ish for ghc, plus 750 in libs), we
     # just yoink the binary from static compiled binary distributed by pandoc:
-    tar -zxf "pandoc-crossref-${pkgver}.tar.gz"
     mkdir -p "${pkgdir}/usr/bin"
     cp pandoc-crossref "${pkgdir}/usr/bin/"
     mkdir -p "${pkgdir}/usr/share/man/man1/"
