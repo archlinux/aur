@@ -1,0 +1,35 @@
+pkgbase = lightworks
+	pkgdesc = Lightworks is a professional video editing suite
+	pkgver = 2020.1
+	pkgrel = 2
+	url = http://www.lwks.com/
+	arch = x86_64
+	license = custom
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libjpeg-turbo
+	depends = pango
+	depends = curl
+	depends = gtk3
+	depends = portaudio
+	depends = openssl
+	depends = libgl
+	depends = libtiff
+	depends = libutil-linux
+	depends = ffmpeg
+	depends = glu
+	depends = libedit
+	depends = nvidia-cg-toolkit
+	depends = openssl-1.0
+	optdepends = nvidia-utils: only for nVidia users
+	optdepends = libc++: only for BlackMagic RAW support (BRAW)
+	optdepends = libc++abi: only for BlackMagic RAW support (BRAW)
+	conflicts = lwks-beta
+	replaces = lwks
+	options = !strip
+	source = https://cdn.lwks.com/releases/lightworks-2020.1-r122068-amd64.deb
+	sha256sums = 23ed5b617628ac278cc5b2f0f799f53368e3b00203c55ddc65e25be3e9f14fbf
+
+pkgname = lightworks
+
