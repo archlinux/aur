@@ -1,13 +1,12 @@
 pkgbase = srhtctl
 	pkgdesc = CLI for interacting with the sr.ht API
 	pkgver = 0.4.0
-	pkgrel = 2
-	url = https://git.xenrox.net/~xenrox/srhtctl
+	pkgrel = 3
+	url = https://hub.xenrox.net/~xenrox/srhtctl/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = go-pie
-	provides = srhtctl
+	makedepends = go
 	source = srhtctl-0.4.0.tar.gz::https://git.xenrox.net/~xenrox/srhtctl/archive/0.4.0.tar.gz
 	sha256sums = b513f29fad270445156fd034ffa3da8d2ccf9bfcee70dbb9c7c70cbe8e608657
 
