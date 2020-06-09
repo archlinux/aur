@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=protozero
-pkgver=1.6.8
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Minimalist protocol buffer decoder and encoder in C++"
 url="https://github.com/mapbox/protozero"
@@ -27,4 +27,4 @@ package() {
   install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('019a0f3789ad29d7e717cf2e0a7475b36dc180508867fb47e8c519885b431706')
+sha256sums=('beffbdfab060854fd770178a8db9c028b5b6ee4a059a2fed82c46390a85f3f31')
