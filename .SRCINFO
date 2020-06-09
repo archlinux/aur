@@ -1,6 +1,6 @@
 pkgbase = cnrdrvcups-sfp
 	pkgdesc = Canon UFRII LT Printer Driver for Linux (LBP112/912, LBP113/913, LBP151dw, LBP6030/LBP6040/LBP6018L, LBP6230/LBP6240, LBP7100C/LBP7110C, LBP8100)
-	pkgver = 5.0
+	pkgver = 5.00
 	pkgrel = 1
 	url = https://www.canon-europe.com
 	arch = x86_64
