@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def on github>
 pkgname=kubedee-git
-pkgver=0.4.0.r25.7c82291
-pkgrel=2
+pkgver=0.7.0.r25.c12a800
+pkgrel=1
 pkgdesc='Multi-node Kubernetes clusters on LXD'
 arch=('any')
 url=https://github.com/schu/kubedee
@@ -10,7 +10,7 @@ source=("${pkgname}::git+https://github.com/schu/kubedee")
 depends=('lxd' 'btrfs-progs' 'cfssl' 'jq' 'kubectl')
 provides=('kubedee')
 conflicts=('kubedee')
-optdepends=('kubernetes')
+optdepends=('kubernetes' 'etcd' 'cri-o' 'runc' 'cni-plugins' 'docker-registry2')
 sha512sums=('SKIP')
 
 pkgver() {
