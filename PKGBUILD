@@ -5,7 +5,7 @@
 #
 # 1. Log in to xilinx.com
 # 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "All OS installer Single-File Download (TAR/GZIP)" - WARNING: This file is >25GB in size
+# 3. Download "All OS installer Single-File Download (TAR/GZIP)" - WARNING: This file is >35GB in size
 # 4. Place the .tar.gz in the same directory as the PKGBUILD
 # 5. Build!
 #
@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a ~27GB .tar.gz, which decompresses to ~30GB,
-# and the final zstd-compressed package is another 16GB. Reserve ~80GB in total for building.
+# This package is huge. The download alone is a ~35GB .tar.gz, which decompresses to ~36GB,
+# and the final zstd-compressed package is another 17GB. Reserve ~120GB in total for building.
 #
 # It can also take up to two hours to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
@@ -26,9 +26,10 @@
 # wrap the `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vivado
-pkgver=2019.2
-_more_ver=1106_2127
-pkgrel=4
+_srcname=Xilinx_Unified
+pkgver=2020.1
+_more_ver=0602_1208
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -42,13 +43,13 @@ depends=('ncurses5-compat-libs'
          'digilent.adept.utilities'
          'xterm')
 
-source=("file:///Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
+source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
-noextract=("Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz")
+noextract=("${_srcname}_${pkgver}_${_more_ver}.tar.gz")
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('e2b2762964ef5f014591b13d77d823ab'
+md5sums=('b018f7b331ab0446137756156ff944d9'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
@@ -57,7 +58,7 @@ options=('!strip')
 prepare() {
 	# https://git.archlinux.org/pacman.git/commit/?id=349c22d043290ccd0cce9f30981f5415e295442a
 	echo "Manually extracting archive..."
-	bsdtar -xf "Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
+	bsdtar -xf "${_srcname}_${pkgver}_${_more_ver}.tar.gz"
 
 	mkdir -p "$srcdir/installer_temp"
 }
@@ -68,12 +69,13 @@ build() {
 }
 
 package() {
-	cd "Xilinx_Vivado_${pkgver}_${_more_ver}"
+	cd "${_srcname}_${pkgver}_${_more_ver}"
 
 	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
 	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
 		--batch Install \
 		--agree XilinxEULA,3rdPartyEULA,WebTalkTerms \
+		--product Vivado \
 		--edition 'Vivado HL WebPACK' \
 		--location "$pkgdir/opt/Xilinx"
 
@@ -94,5 +96,5 @@ package() {
 
 	# Save space for subsequent packaging, checking etc
 	cd ..
-	rm -rf "Xilinx_Vivado_${pkgver}_${_more_ver}"
+	rm -rf "${_srcname}_${pkgver}_${_more_ver}"
 }
