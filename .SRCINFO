@@ -1,0 +1,16 @@
+pkgbase = instantcursors
+	pkgdesc = Cursors for instantOS
+	pkgver = 20204208429760e
+	pkgrel = 1
+	url = https://github.com/paperbenni/cursors
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	provides = instantcursors
+	conflicts = instantcursors
+	source = instantcursors::git+https://github.com/paperbenni/cursors.git
+	sha256sums = SKIP
+
+pkgname = instantcursors
+
