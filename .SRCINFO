@@ -1,0 +1,25 @@
+pkgbase = dingtalk-linux
+	pkgdesc = May be the official Linux experimental version
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.dingtalk.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gconf
+	depends = glibc
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = dingtalk
+	conflicts = dingtalk
+	conflicts = dingtalk-electron
+	conflicts = dingtalk-git
+	source = http://okapps.oukan.online/lroapps/deb-amd64/dingtalk_3.0.0_amd64.deb
+	source = http://mirror.centos.org/centos/6/os/x86_64/Packages/pango-1.28.1-11.el6.x86_64.rpm
+	sha512sums = f765134ba1a67cc3346f1e3f833390ca7a3d7aadf0c9754e9a471873120256668a73fa5b0a853e3d2edfbf2cdae57a4c0248a65ef9b9da5c423828ce3572c9a9
+	sha512sums = bd9d69d9ac21b13c79afa1a4daef1ed1597ce4ab8ba2ee9986c3a50770a6b8f25962d58c27912680f1ad983e5893821603d847e8ec23c0073c1c57403ba94a69
+
+pkgname = dingtalk-linux
+
