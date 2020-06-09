@@ -2,7 +2,7 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux-lts linux-hardened linux-zen"
 arch=(x86_64)
 url="https://github.com/itoffshore/Arch-SKM"
@@ -11,7 +11,7 @@ depends=(asp)
 makedepends=()
 install="$pkgname.install"
 source=($pkgname-$pkgver.tar.gz::https://github.com/itoffshore/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('94c3cd5d65c8456ce2d63e4284c6aac4')
+md5sums=('8461f05745d94a1d199f4d6c88c84241')
 
 build() {
   return 0
