@@ -1,6 +1,6 @@
 pkgbase = rvrspkg
 	pkgdesc = Creates a PKGBUILD for Arch Linux using the already installed package files
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/BiteDasher/rvrspkg
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = rvrspkg
 	depends = bash
 	depends = coreutils
 	depends = sed
-	source = rvrspkg-1.4.tar.gz::https://github.com/BiteDasher/rvrspkg/archive/1.4.tar.gz
-	sha256sums = bcdea473596ef3cd53ff6c4f5ea9e2a43eed32853886b7c0c31db7ecc91a77e0
+	source = rvrspkg-1.4.1.tar.gz::https://github.com/BiteDasher/rvrspkg/archive/1.4.1.tar.gz
+	sha256sums = 84a6937ecdad5e54835206d568d8ccaea3a3c204e054a148fff69f1863a6a28a
 
 pkgname = rvrspkg
 
