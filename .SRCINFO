@@ -1,18 +1,18 @@
 pkgbase = qemu-user-static
 	pkgdesc = Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt.
-	pkgver = 4.2.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
-	makedepends = python2
+	makedepends = python
 	makedepends = glib2-static
 	makedepends = pcre-static
-	source = https://download.qemu.org/qemu-4.2.0.tar.xz
-	source = https://download.qemu.org/qemu-4.2.0.tar.xz.sig
+	source = https://download.qemu.org/qemu-5.0.0.tar.xz
+	source = https://download.qemu.org/qemu-5.0.0.tar.xz.sig
 	validpgpkeys = CEACC9E15534EBABB82D3FA03353C9CEF108B584
-	sha512sums = 2a79973c2b07c53e8c57a808ea8add7b6b2cbca96488ed5d4b669ead8c9318907dec2b6109f180fc8ca8f04c0f73a56e82b3a527b5626b799d7e849f2474ec56
+	sha512sums = 21ef0cbe107c468a40f0fa2635db2a40048c8790b629dfffca5cd62bb1b502ea8eb133bfc40df5ecf1489e2bffe87f6829aee041cb8a380ff04a8afa23b39fcf
 	sha512sums = SKIP
 
 pkgname = qemu-user-static

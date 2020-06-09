@@ -1,19 +1,17 @@
-# Maintainer: Stefan Agner <stefan@agner.ch>
+# Maintainer: crab2313 <crab2313@gmail.com>
 
 pkgname=qemu-user-static
 pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
-pkgver=4.2.0
+pkgver=5.0.0
 pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 depends=()
-makedepends=(python2 glib2-static pcre-static)
+makedepends=(python glib2-static pcre-static)
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig})
-sha512sums=(
-  '2a79973c2b07c53e8c57a808ea8add7b6b2cbca96488ed5d4b669ead8c9318907dec2b6109f180fc8ca8f04c0f73a56e82b3a527b5626b799d7e849f2474ec56'
-  'SKIP'
-)
+sha512sums=('21ef0cbe107c468a40f0fa2635db2a40048c8790b629dfffca5cd62bb1b502ea8eb133bfc40df5ecf1489e2bffe87f6829aee041cb8a380ff04a8afa23b39fcf'
+            'SKIP')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -25,7 +23,7 @@ esac
 : "${FORCE_CONFIGURE:=1}"
 
 prepare() {
-  mkdir build-user-static
+  mkdir -p build-user-static
 
   cd qemu-${pkgver}
   #sed -i 's/vte-2\.90/vte-2.91/g' configure
@@ -59,7 +57,6 @@ _configure() {
             --disable-sdl \
             --disable-opengl \
             --disable-xen \
-            --disable-kvm \
             --disable-fdt \
             --disable-vhost-net \
             --disable-vhost-crypto \
@@ -69,6 +66,8 @@ _configure() {
             --disable-tpm \
             --disable-qom-cast-debug \
             --disable-capstone \
+            --disable-zstd \
+            --disable-linux-io-uring \
             --static
 }
 
