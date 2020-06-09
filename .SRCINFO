@@ -1,0 +1,25 @@
+pkgbase = gnome-nibbles-git
+	pkgdesc = Guide a worm around a maze
+	pkgver = 3.35.90+14+g557e8e2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Nibbles
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = clutter-gtk
+	depends = gsound
+	depends = librsvg
+	depends = libgnome-games-support
+	depends = libgee
+	provides = gnome-nibbles
+	conflicts = gnome-nibbles
+	source = git+https://gitlab.gnome.org/GNOME/gnome-nibbles.git
+	sha512sums = SKIP
+
+pkgname = gnome-nibbles-git
+
