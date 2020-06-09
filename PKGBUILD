@@ -23,10 +23,10 @@ prepare() {
 }
 
 build() {
-  tar xvf ${pkgname}-${pkgver}.tar.gz
+	tar xvf ${pkgname%-latest}-${pkgver}.tar.gz
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+	cd "${pkgname%-latest}-${pkgver}"
+	python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
