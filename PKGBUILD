@@ -2,9 +2,9 @@
 
 pkgname=rpi-imager
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi Imaging Utility"
-depends=('curl' 'libarchive' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg')
+depends=('curl' 'libarchive' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools')
 makedepends=('gcc' 'make' 'cmake')
 arch=('x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
