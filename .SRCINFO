@@ -5,18 +5,26 @@ pkgbase = ikemen-go-git
 	url = https://github.com/Windblade-GR01/Ikemen_GO
 	arch = any
 	license = custom:MIT
-	makedepends = openal=1.19.1
+	makedepends = openal119-bin
 	depends = go
 	depends = xorg-server
 	depends = mesa
+	depends = libxcursor
+	depends = alsa-lib
+	depends = cairo
+	depends = pango
+	depends = xorg-xrandr
+	depends = libxinerama
+	depends = libxi
+	depends = gtk3
 	provides = ikemen-go-git
 	conflicts = ikemen-go-git
 	source = ikemen_go::https://github.com/Windblade-GR01/Ikemen_GO/archive/master.zip
 	source = resources::https://github.com/Windblade-GR01/Ikemen_GO-Elecbyte-Screenpack/archive/master.zip
-	source = ikemen_go.sh
+	source = ikemen-go.sh
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = bc323f0ce347b5d5f036b369e68c9fd7
+	md5sums = 0cf3f5ab496a2b5fe96ed7506c66960b
 
 pkgname = ikemen-go-git
 
