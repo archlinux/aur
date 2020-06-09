@@ -1,0 +1,19 @@
+pkgbase = ngrok2-bin
+	pkgdesc = secure introspectable tunnels to localhost
+	pkgver = 2.3.35
+	pkgrel = 1
+	url = https://ngrok.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = ngrok
+	options = !strip
+	source = LICENSE
+	sha256sums = SKIP
+	source_x86_64 = https://bin.equinox.io/a/jAq5uX8wfS8/ngrok-2.3.35-linux-amd64.tar.gz
+	sha256sums_x86_64 = 55df9c479b41a3b9b488458b5fb758df63001d14196a4126e3f669542c8727e9
+	source_aarch64 = https://bin.equinox.io/a/hm4nbCCX7iK/ngrok-2.3.35-linux-arm64.tar.gz
+	sha256sums_aarch64 = 412a6d145ab61eae0012d2fbe111bf962e11327f11787d3d41d56ea97969fe04
+
+pkgname = ngrok-bin
+
