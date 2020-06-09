@@ -1,0 +1,16 @@
+pkgbase = instanttools
+	pkgdesc = development tools for instantOS
+	pkgver = 2020041458757ebd9
+	pkgrel = 1
+	url = https://github.com/instantOS/instanttools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	provides = instanttools
+	conflicts = instanttools
+	source = instanttools::git+https://github.com/instantOS/instantTOOLS.git
+	sha256sums = SKIP
+
+pkgname = instanttools
+
