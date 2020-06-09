@@ -12,15 +12,15 @@ pkgname=(
   'python2-mbed-host-tests'
   'python2-mbed-greentea'
 )
-pkgver=0.0.13
-pkgrel=2
+pkgver=0.0.14
+pkgrel=1
 pkgdesc="The tools to test and work with Mbed OS"
 arch=('any')
 url="https://os.mbed.org"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('a50772dfe1a3862897cb668452b846844a29a8c59503ddb3e95bcd59dab41e09')
+sha256sums=('e9fbc3413ef387b201cf2b6a057bdaec81ea7c8a54654b63f2119f4f8b89debc')
 
 _remove_test() {
   # Why are tests installed?
