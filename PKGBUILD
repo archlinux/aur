@@ -1,8 +1,8 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=assh-git
 _pkgname=assh
-pkgver=2.9.1
-pkgrel=2
+pkgver=2.9.3
+pkgrel=1
 pkgdesc='make your ssh client smarter https://manfred.life/assh'
 arch=('any')
 url='https://github.com/moul/assh.git'
