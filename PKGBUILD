@@ -31,7 +31,7 @@ package() {
     cd "$srcdir/usr/lib64"
     cp -pr libpangocairo-1.0.so.0 libpangoft2-1.0.so.0.2800.1 libpangoxft-1.0.so.0 libpango-1.0.so.0 libpangocairo-1.0.so.0.2800.1 libpangox-1.0.so.0 libpangoxft-1.0.so.0.2800.1 libpango-1.0.so.0.2800.1 libpangoft2-1.0.so.0 libpangox-1.0.so.0.2800.1 "$pkgdir/opt/dingtalk/lib"
      
-    install -Dm644 "$srcdir/usr/share/icons/dingtalk.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dingtalk.png"
+    install -Dm644 "$srcdir/usr/share/icons/dingtalk.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dingtalk-linux.png"
 
     echo "[Desktop Entry]
 Version=1.0.0
@@ -39,12 +39,12 @@ Encoding=UTF-8
 Name=Dingtalk
 Comment=Dingtalk for Linux
 Exec=dingtalk-linux
-Icon=dingtalk
+Icon=dingtalk-linux
 Terminal=false
 Type=Application
 Categories=Network;InstantMessaging;
 Name[zh_CN]=钉钉
 Comment[zh_CN]=钉钉 for Linux
     " > "$srcdir/dingtalk.desktop"
-    install -Dm644 "$srcdir/dingtalk.desktop" "$pkgdir/usr/share/applications/dingtalk.desktop"
+    install -Dm644 "$srcdir/dingtalk.desktop" "$pkgdir/usr/share/applications/dingtalk-linux.desktop"
 }
