@@ -1,0 +1,10 @@
+[Unit]
+Description=Endpoint Verification Service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/google/endpoint_verification/endpoint_verification.sh
+
+[Install]
+WantedBy=graphical.target
+
