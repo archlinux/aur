@@ -7,22 +7,24 @@ pkgdesc="Open source fighting games engine written in Go with support for M.U.G.
 arch=('any')
 url="https://github.com/Windblade-GR01/Ikemen_GO"
 license=('custom:MIT')
-depends=('go' 'xorg-server' 'mesa')
+depends=('go' 'xorg-server' 'mesa' 'libxcursor' 'alsa-lib' 'cairo' 'pango' 'xorg-xrandr' 'libxinerama' 'libxi' 'gtk3')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
-makedepends=('openal=1.19.1')
+makedepends=('openal119-bin')
 source=(
 	'ikemen_go::https://github.com/Windblade-GR01/Ikemen_GO/archive/master.zip'
 	'resources::https://github.com/Windblade-GR01/Ikemen_GO-Elecbyte-Screenpack/archive/master.zip'
-	'ikemen_go.sh'
+	'ikemen-go.sh'
 	)
 md5sums=('SKIP'
          'SKIP'
-         'bc323f0ce347b5d5f036b369e68c9fd7')
+         '0cf3f5ab496a2b5fe96ed7506c66960b')
 
 build() {
-	# get required resources
+	# acquire permissions and get required resources
 	cd "$srcdir/Ikemen_GO-master/build"
+	chmod +x get.sh
+	chmod +x build.sh
 	./get.sh
 
 	# create the dir for build process to work
@@ -34,10 +36,11 @@ build() {
 	cd "$srcdir/Ikemen_GO-master/bin"
 	cp -r * ..
 	cd ..	
-	rm -rf bin
 
-	# delete build folder
+	# delete build folder and other unnecessary directories
+	rm -rf bin
 	rm -rf build
+	rm -rf go
 	
 	# delete go.mod, go.sum .gitignore, .gitattributes
 	rm go.mod
@@ -58,7 +61,11 @@ package() {
 	install -dm755 "$pkgdir/opt"
 	cp -a "$srcdir/Ikemen_GO-master" "$pkgdir/opt/$pkgname"
 
+	# set permisisons for dirs/files
+	find "$pkgdir/opt/$pkgname" -type d -exec chmod 777 {} \;
+	find "$pkgdir/opt/$pkgname" -type f -exec chmod 777 {} \;
+
 	# shebang shortcut within /ur/bin
 	install -d "$pkgdir/usr/bin"
-	cp "$srcdir/ikemen_go.sh" "$pkgdir/usr/bin/ikemen_go"
+	cp "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
 }
