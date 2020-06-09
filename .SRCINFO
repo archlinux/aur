@@ -1,0 +1,35 @@
+pkgbase = wsjtx-system-hamlib
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - no superbuild (uses system hamlib and boost)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://physics.princeton.edu/pulsar/k1jt/wsjtx.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = asciidoc
+	makedepends = asciidoctor
+	makedepends = gcc-fortran
+	makedepends = boost
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	depends = qt5-tools
+	depends = hamlib
+	depends = libusb
+	depends = libusb-compat
+	depends = libpulse
+	depends = libpng
+	depends = fftw
+	depends = boost-libs
+	provides = wsjtx
+	conflicts = wsjtx
+	source = wsjtx-2.2.0.tar.gz::http://physics.princeton.edu/pulsar/K1JT/wsjtx-2.2.0.tgz
+	source = cmakelists.patch
+	source = findhamlib.patch
+	sha1sums = 9e626276f7525477d99321e5e2ddac9a62720665
+	sha1sums = bb4c6ce9dae4b5ae211a7fd6b24f6e1a6ed289f8
+	sha1sums = f406cde650b080184bc3e2e9e8d42eceb7da5cd5
+
+pkgname = wsjtx-system-hamlib
+
