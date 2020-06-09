@@ -4,16 +4,14 @@
 
 _brinf=(
 [MFC-L8610CDW]
-PRN_CUP_RPM=mfcl8610cdwcupswrapper-1.4.0-0.i386.rpm
-PRN_CUP_DEB=mfcl8610cdwcupswrapper-1.4.0-0.i386.deb
-PRN_LPD_RPM=mfcl8610cdwlpr-1.3.0-0.i386.rpm
-PRN_LPD_DEB=mfcl8610cdwlpr-1.3.0-0.i386.deb
+PRN_CUP_RPM=mfcl8610cdwcupswrapper-1.5.0-0.i386.rpm
+PRN_CUP_DEB=mfcl8610cdwcupswrapper-1.5.0-0.i386.deb
+PRN_LPD_RPM=mfcl8610cdwlpr-1.5.0-0.i386.rpm
+PRN_LPD_DEB=mfcl8610cdwlpr-1.5.0-0.i386.deb
+REQUIRE32LIB=no
 PRINTERNAME=MFCL8610CDW
 SCANNER_DRV=brscan4
 SCANKEY_DRV=brscan-skey
-)
-_brinf+=(
-REQUIRE32LIB=yes
 )
 
 _opt_DEB=0
@@ -25,13 +23,13 @@ _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
 _brotherxnd="${_brotherlnd}"   # upper or lower as required by scripts
 pkgname="brother-${_brotherl}"
-_lprver='1.3.0_0'
-_cupver='1.4.0_0'
+_lprver='1.5.0_0'
+_cupver='1.5.0_0'
 pkgver="${_cupver}"
 pkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
-url='https://support.brother.com/g/s/id/linux/en/'
+url='https://support.brother.com/'
 license=('GPL' 'custom')
 depends=('cups' 'ghostscript' 'sed' 'grep')
 # We look at the scripts and find these programs from which we decide on the depends above.
@@ -57,15 +55,15 @@ source=(
   'lpr-license.txt'
 )
 md5sums=('e42487a541573287fad544bafd1766c6'
-         'bb66911f263ed95baeeefb6d80b8eac1'
+         'f79bb3831af251bfcd876459cc054a99'
          '4f14b328317aac0d22c7f7f73c581628'
-         'bc2c76b0202463252156c0b0f3e130f6'
-         '3d1407b5c0d66b70a9a5460b07e81408')
+         '5c629753325da0b93fffedadecc59e63'
+         'bce59955c4442d31876ffb0b1cb2bb62')
 sha256sums=('65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
-            '4feca093e25c91f8caa25322ad0c7cf0fc0c49abc2780b6a886a2551e1473a2b'
+            '9be8010091f7488773a892c8a93169200b1e3e453ef0eaab698ee6fe9cff7411'
             'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3'
-            '330db3d38fc474c9c6871d2ac6a1e1998a001e1e76a25b01f3e39c178b547173'
-            '43c542015cb80ea600c3d216ea54b8f12515c98d1a5cd044543ecfa572cf4cd8')
+            '64b501f4e5536e84ef5ebb48612d19f8150a67904bfe9b44a2b00b2167e10ef0'
+            '9a4b99c28c2aca3fa2de75d2a04491cc74eb92906067edaac5b1ab741391b03e')
 
 _mismatch=0
 _brverchk() {
@@ -278,6 +276,34 @@ build() {
   set +u
 }
 
+_postin() {
+  # move architecture specific binaries into place and delete rest
+  set +u; msg2 "Apply ${CARCH} binaries"; set -u
+  local _basedir="opt/brother/Printers/${_brotherxnd}"
+  local _f=''
+  pushd "${pkgdir}/${_basedir}/lpd" > /dev/null
+  local _dir _fnd=0
+  local _dels=()
+  for _dir in */; do
+    _dels+=("${_dir}")
+    if [ "${_dir}" = "${CARCH}/" ]; then
+      _dir="${_dir%/}"
+      mv "${_dir}"/* .
+      install -d "${pkgdir}/usr/bin"
+      mv br*cdw "${pkgdir}/usr/bin/"
+      _fnd=1
+    fi
+  done
+  if [ "${_fnd}" -eq 0 ]; then
+    echo "No architecture specific binaries were found in ${_basedir}/lpd/${CARCH}"
+    set +u
+    false
+  else
+    rm -r "${_dels[@]}"
+  fi
+  popd > /dev/null
+}
+
 package() {
   set -u
 
@@ -288,6 +314,8 @@ package() {
       cp -pR "${srcdir}/${_dir}" "${pkgdir}"
     fi
   done
+
+  _postin
 
   # Ensure we got a ppd and a filter for CUPS
   test ! -z "$(find "${pkgdir}/usr/share/cups/model" -type 'f' -name '*.ppd')" || echo "${}"
