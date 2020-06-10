@@ -1,10 +1,11 @@
 pkgbase = lib32-gst-plugins-bad
 	pkgdesc = GStreamer open-source multimedia framework bad plugins (32-bit)
 	pkgver = 1.16.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = lib32-gtk3
 	makedepends = lib32-libtiger

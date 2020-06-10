@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.16.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
         gst-plugins-bad)
 makedepends=(git lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers lv2
              meson python vulkan-headers)
+checkdepends=(xorg-server-xvfb)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
         "0001-vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch")
@@ -73,19 +74,21 @@ build() {
         -D wpe=disabled \
         -D gl=disabled \
         -D gobject-cast-checks=disabled \
-        -D glib-asserts=disabled \
-        -D glib-checks=disabled \
         -D package-name="GStreamer Bad Plugins (Arch Linux)" \
         -D package-origin="https://www.archlinux.org/" \
         -D introspection=disabled \
         -D dtls=disabled
 
-    ninja -C build
+    meson compile -C build
 }
 
-check() {
-    meson test -C build --print-errorlogs
-}
+check() (
+    mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+    export XDG_RUNTIME_DIR
+
+    xvfb-run -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+        meson test -C build --print-errorlogs
+)
 
 package() {
     DESTDIR="$pkgdir" meson install -C build
