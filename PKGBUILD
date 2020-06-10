@@ -1,6 +1,6 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=pagekite
-pkgver=1.0.1.200424
+pkgver=1.5.2.200603
 pkgrel=1
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
@@ -12,19 +12,19 @@ provides=('pagekite')
 conflicts=('python2-pagekite')
 options=(!emptydirs zipman)
 source=(
-  "https://pagekite.net/pk/src/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/pagekite/PyPagekite/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '693def32aded61845cc0fec4d727c3fb4473d1864f2488a4a2e49224b006f398'
+  'ffe5d52f609458e2bbc7e7740688604991a66838b39aa4ba5af7656ee65759c2'
 )
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/PyPagekite-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/PyPagekite-${pkgver}"
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   # Config files
