@@ -1,0 +1,13 @@
+pkgbase = redressed-font
+	pkgdesc = A typeface blending script and italic letterforms in an upright non-connecting style
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Redressed
+	arch = any
+	license = Apache
+	source = redressed-1.001.zip::https://fonts.google.com/download?family=Redressed
+	sha256sums = 315a4135c9784be9caafa5e3d19fe7d1651209437e8393274b23fbe7d1eb028b
+
+pkgname = ttf-redressed
+	provides = redressed-font
+
