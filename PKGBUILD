@@ -13,7 +13,7 @@ license=(GPL LGPL)
 provides=(processing)
 conflicts=(processing processing-bin)
 depends=('jdk8' 'libgl')
-makedepends=('apache-ant' 'gendesk' 'unzip')
+makedepends=('ant' 'gendesk' 'unzip')
 options=(!strip)
 # The Processing version scheme for the 3.5.x series uses a special magical
 # version number above 0266 in addition to the ordinary version number.
