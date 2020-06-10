@@ -1,27 +1,29 @@
 # Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
+# Cleanup: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=sipvicious
-pkgver=0.2.8
-pkgrel=2
-pkgdesc="Tools for auditing SIP devices"
-arch=('i686' 'x86_64')
-url="http://blog.sipvicious.org"
-license=('GPLv2')
-depends=('python2')
-install=sipvicious.install
-source=("https://github.com/EnableSecurity/${pkgname}/archive/v${pkgver}.tar.gz")
-conflicts=('sipvicious-svn')
-sha1sums=('6b0af366109bf0e8922cc97578d70b7a6c5913c8')
-
-build() {
-	msg "No build..."
-}
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="SIPVicious is a set of tools that can be used to audit SIP VoIP systems."
+arch=('any')
+url="https://github.com/EnableSecurity/sipvicious"
+license=('GPL3')
+depends=('python>=3.6' 'python-scapy')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/$pkgname/archive/v$pkgver.tar.gz")
+b2sums=('5ddcdf775db0ade6e61e77009c7991d8523db02dbdd6e8588c23f5cd6f4d2868dd1d78e7f17322cde67414b4eb2b8c89f2d4ee0079487e5f5f7ee75f4759adf5')
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	chmod 755 *.py
-	sed -i "s:/usr/bin/env python:/usr/bin/env python2:" *.py
-	install -d -m 755 ${pkgdir}/usr/bin
-	install -d -m 755 ${pkgdir}/usr/share
-	mv ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/${pkgname}
+  readonly _PROGS=('svcrack' 'svcrash' 'svmap' 'svreport' 'svwar')
+
+  cd $srcdir/$pkgname-$pkgver
+  
+  install -dm755 $pkgdir/usr/share/man/man1
+  for _PROG in "${_PROGS[@]}"; do
+    gzip -c --best man1/$_PROG.1 > man1/$_PROG.1.gz
+    install -Dm644 man1/$_PROG.1.gz $pkgdir/usr/share/man/man1/$_PROG.1.gz
+  done
+
+  chmod +x setup.py
+  ./setup.py install --root=$pkgdir
 }
