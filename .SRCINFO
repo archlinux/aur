@@ -1,7 +1,7 @@
 pkgbase = git-revise
 	pkgdesc = A git subcommand to efficiently update, split, and rearrange commits
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mystor.github.io/git-revise.html
 	arch = any
 	license = MIT

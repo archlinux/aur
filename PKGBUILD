@@ -2,7 +2,7 @@
 pkgname=git-revise
 pkgdesc="A git subcommand to efficiently update, split, and rearrange commits"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://mystor.github.io/git-revise.html"
 license=('MIT')
@@ -12,7 +12,6 @@ makedepends=('python-setuptools')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  sed --in-place s!man/man1!share/man/man1! setup.py
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
