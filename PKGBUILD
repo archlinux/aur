@@ -41,10 +41,8 @@ build() {
 	cp -rf * "$srcdir/Ikemen_GO-master"
 	cd ..
 	rm -rf "Ikemen_GO-Elecbyte-Screenpack-master"
-}
 
-package() {
-	# remove unnecessary files
+	msg "Removing dirs/files that are no longer necessary.."
 	sudo rm -rf "$srcdir/Ikemen_GO-master/go"
 	rm -rf "$srcdir/Ikemen_GO-master/bin"
 	rm -rf "$srcdir/Ikemen_GO-master/build"
@@ -52,12 +50,18 @@ package() {
 	rm "$srcdir/Ikemen_GO-master/go.sum"
 	rm "$srcdir/Ikemen_GO-master/.gitignore"
 	rm "$srcdir/Ikemen_GO-master/.gitattributes" 
+}
+
+package() {
 
 	# package installation: under /opt
-	install -dm777 "$pkgdir/opt/$pkgname/"
+	install -d "$pkgdir/opt/$pkgname/"
 	cp -a "$srcdir/Ikemen_GO-master/." "$pkgdir/opt/$pkgname"
 
 	# shebang shortcut under /usr/bin
 	install -d "$pkgdir/usr/bin"
 	cp "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
+
+	#set permissions to current user for the package under /opt
+	chown -R $USER:users "$pkgdir/opt/$pkgname/."
 }
