@@ -1,0 +1,23 @@
+pkgbase = gnome-klotski-git
+	pkgdesc = Slide blocks to solve the puzzle
+	pkgver = 3.36.3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Klotski
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = vala
+	makedepends = git
+	depends = gtk3
+	depends = librsvg
+	depends = libgnome-games-support
+	provides = gnome-klotski
+	conflicts = gnome-klotski
+	source = git+https://gitlab.gnome.org/GNOME/gnome-klotski.git
+	sha512sums = SKIP
+
+pkgname = gnome-klotski-git
+
