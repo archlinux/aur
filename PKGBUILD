@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.6.15.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux witch patches for ASUS ROG Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
