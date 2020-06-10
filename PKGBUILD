@@ -2,7 +2,7 @@
 
 _basename=serd
 pkgname=lib32-serd
-pkgver=0.30.2
+pkgver=0.30.4
 pkgrel=1
 pkgdesc="Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 depends=('lib32-glibc' 'serd')
 makedepends=('waf')
 source=("https://download.drobilla.net/$_basename-$pkgver.tar.bz2"{,.sig})
-sha512sums=('b1e18ac883aac2a8146ee0e1de553ac2b512deba5307e5c9fa2733d9011ed0777d67790aa6527e73b3f11c9da0d8c9a98227457bb412897296f4464228cac0f7'
+sha512sums=('4cc032f826d891213c6db787b10a41ffb8f4b2a3357ffa536e34013755dc34db7109d1b42f550a0d559d8651f56c3a5dfb3654c3e2047ee6e609ff9a5fe803d6'
             'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3')
 
@@ -43,7 +43,7 @@ build() {
                          --libdir=/usr/lib32 \
                          --test
 
-    waf build
+    waf -v build
 }
 
 check() {
