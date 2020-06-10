@@ -2,7 +2,7 @@
 
 pkgname=elgato-gchd-git
 pkgver=r147.e5bc6b9
-pkgrel=1
+pkgrel=2
 pkgdesc="Elgato Game Capture HD Driver"
 arch=('i686' 'x86_64')
 url="https://github.com/tolga9009/elgato-gchd"
@@ -14,12 +14,10 @@ conflicts=("${pkgname%-git}")
 source=(
     "git+${url}.git" 
     "https://edge.elgato.com/egc/windows/egcw/3.70/final/GameCaptureSetup_3.70.43.3043_x64.msi"
-    "80-elgato-gchd.rules"
 )
 sha256sums=(
     'SKIP'
     '8f4a81e0e4cc794eaf1c9e33c2c8ade8b345de1e524369fc7e31d8dff3f83d5e'
-    '02e903c82c4860fb78cf414cf507a57d611bcc357166f7292129a0538a5e1b39'
 )
 
 pkgver() {
@@ -50,5 +48,7 @@ package() {
     for f in ${srcdir}/firmware/*; do
         install -D -m644 -t "${pkgdir}/usr/lib/firmware/gchd/" "$f"
     done
-    install -D -m644 -t "${pkgdir}/etc/udev/rules.d/" 80-elgato-gchd.rules
+    for f in ${srcdir}/${pkgname%-git}/udev-rules/*; do
+        install -D -m644 -t "${pkgdir}/etc/udev/rules.d/" "$f"
+    done
 }
