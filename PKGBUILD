@@ -5,7 +5,7 @@
 pkgdesc="A fancy custom distribution of Valves Proton with various patches(Stable Branch)"
 pkgname=proton-ge-custom-stable-bin
 pkgver=5.8_GE_2_MF
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog

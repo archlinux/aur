@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-stable-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches(Stable Branch)
 	pkgver = 5.8_GE_2_MF
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
 	arch = x86_64
