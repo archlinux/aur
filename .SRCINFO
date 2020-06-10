@@ -1,0 +1,16 @@
+pkgbase = rakugaki
+	pkgdesc = Simple drawing tool for elementary OS
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/lainsce/rakugaki
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = rakugaki-1.0.5.tar.gz::https://github.com/lainsce/rakugaki/archive/1.0.5.tar.gz
+	sha256sums = 9094dbefff61cf138636fe55c7dd611b9d766d71ad42744ca5942780910046a7
+
+pkgname = rakugaki
+
