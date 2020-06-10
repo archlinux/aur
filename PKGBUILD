@@ -2,13 +2,13 @@
 
 pkgname=irtt
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heistp/irtt/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://github.com/heistp/irtt/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
 sha256sums=('f9767fa9259db1932d011ed0a9f9528c70411878668ba0db6451264557ddd800'
@@ -19,18 +19,21 @@ validpgpkeys=('35C296FC733AA777B03DB9A8CAEC8F418885D165')  # Pete Heist <pete@ev
 build() {
   cd "$pkgname-$pkgver"
 
-  GO111MODULE=on \
-    go build \
-      -trimpath \
-      -ldflags "-extldflags $LDFLAGS" \
-      "github.com/heistp/irtt/cmd/irtt"
+  go mod init "github.com/heistp/irtt"
+  go build \
+    -buildmode=pie \
+    -ldflags "-extldflags $LDFLAGS" \
+    -trimpath \
+    -modcacherw \
+    "github.com/heistp/irtt/cmd/irtt"
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
-  GO111MODULE=on \
-    go test "github.com/heistp/irtt/cmd/irtt"
+  go test \
+    -mod=readonly \
+    ./...
 }
 
 package() {
