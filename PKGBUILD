@@ -1,37 +1,30 @@
-# Maintainer: Michael Schubert <mschu.dev at google mail>
+# Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=augustus
-pkgver=2.5.5
+_pkgname=Augustus
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A eucaryotic gene prediction program"
 arch=('i686' 'x86_64')
 url="http://augustus.gobics.de/"
 license=('custom:Artistic-2.0')
-depends=('perl')
-source=("http://augustus.gobics.de/binaries/$pkgname.$pkgver.tar.gz"
-        "http://augustus.gobics.de/binaries/LICENCE.TXT")
-md5sums=('234adc8fe4c2ff0b70715fbf00173668'
-         '7e2216d2af60d1644c220cbad40b0e36')
+depends=('samtools' 'htslib' 'bamtools')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v$pkgver.tar.gz)
+sha256sums=('2fc5f9fd2f0c3bba2924df42ffaf55b5c130228cea18efdb3b6dfab9efa8c9f4')
 options=(!strip)
 
+prepare() {
+  cd $_pkgname-$pkgver
+  sed -i "/\/usr\/local\/bin/d" Makefile
+  sed -i "/bam2wig/d" auxprogs/Makefile # requires special dir structure of util
+}
+
 build() {
-  cd $pkgname.$pkgver
-  make all
+  cd $_pkgname-$pkgver
+  make SAMTOOLS=/usr/include/bam
 }
 
 package() {
-  cd $pkgname.$pkgver
-
-  mkdir -p "$pkgdir/usr/share/augustus/scripts"
-  mkdir -p "$pkgdir/etc/"{augustus,profile.d}
-
-  cp -R bin "$pkgdir/usr/"
-  cp -R config "$pkgdir/etc/augustus/"
-  cp -R {docs,examples} "$pkgdir/usr/share/augustus/"
-  cp scripts/*.pl "$pkgdir/usr/share/augustus/scripts/"
-
-  echo export AUGUSTUS_CONFIG_PATH="/etc/augustus/config/" > "$pkgdir/etc/profile.d/augustus.sh"
-  chmod a+rx "$pkgdir/etc/profile.d/augustus.sh"
-
-  install -Dm644 "$srcdir/LICENCE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $_pkgname-$pkgver
+  make INSTALLDIR="$pkgdir" install
+  install -Dm644 src/LICENSE.TXT "$pkgdir"/usr/share/licenses/augustus/LICENSE
 }
-
