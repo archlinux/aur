@@ -1,6 +1,6 @@
 CLI11.hpp
 LICENSE
-*.tar.xz
+*.tar.*
 pkg
 src
 *.zip
