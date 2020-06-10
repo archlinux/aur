@@ -2,7 +2,7 @@
 pkgdesc="XDG sound theme for the unexicon distribution"
 pkgname=unexicon-sound-theme-git
 _pkgname=unexicon-sound-theme
-pkgver=0.9.r2.g88c67ee
+pkgver=1.0.r1.g38e8a0d
 pkgrel=1
 arch=('any')
 license=('GPL')

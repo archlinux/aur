@@ -1,6 +1,6 @@
 pkgbase = unexicon-sound-theme-git
 	pkgdesc = XDG sound theme for the unexicon distribution
-	pkgver = 0.9.r2.g88c67ee
+	pkgver = 1.0.r1.g38e8a0d
 	pkgrel = 1
 	url = https://github.com/bbidulock/unexicon-sound-theme
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = unexicon-sound-theme-git
 	depends = sound-theme-freedesktop
 	depends = sound-theme-smooth
 	depends = linux-a11y-sound-theme
-	provides = unexicon-sound-theme=0.9-1
+	provides = unexicon-sound-theme=1.0-1
 	conflicts = unexicon-sound-theme
 	source = unexicon-sound-theme-git::git://github.com/bbidulock/unexicon-sound-theme.git
 	sha256sums = SKIP
