@@ -1,9 +1,10 @@
-# Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
-# Cleanup: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: Franck Stauffer <franck.stauffer@telecom-sudparis.eu>
+# Contributor: GI_Jack <iamjacksemail@hackermail.com>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SIPVicious is a set of tools that can be used to audit SIP VoIP systems."
 arch=('any')
 url="https://github.com/EnableSecurity/sipvicious"
@@ -26,4 +27,8 @@ package() {
 
   chmod +x setup.py
   ./setup.py install --root=$pkgdir
+
+  for _PROG in "${_PROGS[@]}"; do
+    mv $pkgdir/usr/bin/sipvicious_$_PROG $pkgdir/usr/bin/$_PROG
+  done
 }
