@@ -1,7 +1,7 @@
 pkgbase = kotlin-language-server
 	pkgdesc = Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/fwcd/KotlinLanguageServer
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = kotlin-language-server
 	depends = java-runtime=11
 	provides = kotlin-language-server
 	conflicts = kotlin-language-server-git
-	source = https://github.com/fwcd/KotlinLanguageServer/archive/0.5.2.tar.gz
-	sha256sums = ddca071ab9c376d95e1b969e16fd69b91e1d25f903cbcf3c2647f303699549eb
+	source = https://github.com/fwcd/KotlinLanguageServer/archive/0.6.0.tar.gz
+	sha256sums = a31d279fdc6bdd9439bff09c40c9830b6e9d4fd18b5ff5d0596a71e3490ad119
 
 pkgname = kotlin-language-server
 
