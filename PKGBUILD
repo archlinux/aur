@@ -1,10 +1,10 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 _pkgname=rust
-_cargo=0.44.0
+_cargo=0.45.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.43.1
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -25,20 +25,19 @@ source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('84ba23058542691dae8157beec6a7679a420643eb6a708134bb1dfb01cbdebea'
+sha256sums=('4ee5811bfb5fd0eb26fcf7f9b57f4e8fced458219ba52bff6d2474321ff39c18'
             'SKIP'
-            'a18b89572ff2e55eb9e0428efcdb60eacd82fe28c4d825d169b0ffc9e3c55ceb'
+            'fe1d8d81950eea1f67219abc49bc1ae88b2b27fd02d1bffa38b43bc5bff05124'
             'SKIP'
-            'dabc62db53c2e7ffeba2824d4c52a938486b04c01a93ecba00c5d529868f6cfc'
+            '122b2a909fc185c6ae5a0110af6f60699f4332b4fb3c43698b14a873fbe65b6e'
             'SKIP'
-            'fc78b40b6aed05720dc8f86b86f30e4f7ba405d63ab182fd81a645f42df62058'
+            '9cafbff2dbbed3bbb0e4efa8c7b59524d7698e3252f1261266392e35ee06f42a'
             'SKIP'
-            'bac1f6011a46ded9344471341bc12630a1d45f9da194cb5a2b4c3d2769356108'
+            '8c7aa90981b606319ce49072c97981b5652679c334da428ebfaba0716fa01803'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
-PKGEXT=".pkg.tar.gz"
 
 prepare() {
   cd ${srcdir}
@@ -88,14 +87,6 @@ package() {
   popd
   install -dm755 "${pkgdir}/usr/x86_64-w64-mingw32/bin" && pushd "${pkgdir}/usr/x86_64-w64-mingw32/bin"
   ln -sf "../../../opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll .
-  popd
-
-  # use system MinGW provided crt2.o and dllcrt2.o
-  pushd "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib"
-  ln -sf "../../../../../../usr/i686-w64-mingw32/lib/"{crt2.o,dllcrt2.o} .
-  popd
-  pushd "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib"
-  ln -sf "../../../../../../usr/x86_64-w64-mingw32/lib/"{crt2.o,dllcrt2.o} .
   popd
 
   # strip
