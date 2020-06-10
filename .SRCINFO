@@ -1,7 +1,7 @@
 pkgbase = biboumi
 	pkgdesc = XMPP gateway to IRC
 	pkgver = 8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biboumi.louiz.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = biboumi
 	license = ZLIB
 	makedepends = cmake
 	makedepends = pandoc
+	makedepends = catch2
 	depends = expat
 	depends = libidn
 	depends = udns

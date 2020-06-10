@@ -2,13 +2,13 @@
 
 pkgname=biboumi
 pkgver=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'udns' 'botan' 'sqlite' 'postgresql-libs')
-makedepends=('cmake' 'pandoc')
+makedepends=('cmake' 'pandoc' 'catch2')
 backup=("etc/$pkgname/$pkgname.cfg")
 source=("https://git.louiz.org/biboumi/snapshot/$pkgname-$pkgver.tar.xz"
         'biboumi.tmpfiles'
