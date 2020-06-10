@@ -2,7 +2,7 @@
 # Contributor: Greg Darke <darke+arch@google.com>
 
 pkgname=google-cloud-sdk-datastore-emulator
-pkgver=296.0.0
+pkgver=296.0.1
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides local emulation of a Datastore environment."
 url="https://cloud.google.com/sdk/"
@@ -16,7 +16,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('88ef8fb17c7764df2b997bc8ed82b7e8f51d40b51bc469dfff7604166439a75f')
+sha256sums=('2229c7b2e0e335c6ca24f5968bb004c43bc3ec8d2ab91fe790e8520e480231a4')
 
 package() {
   mkdir "${pkgdir}/opt"
