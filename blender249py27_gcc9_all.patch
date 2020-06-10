@@ -1,0 +1,287 @@
+diff --git a/extern/bullet2/src/BulletSoftBody/btSoftBodyInternals.h b/extern/bullet2/src/BulletSoftBody/btSoftBodyInternals.h
+index 5f0f7d54318..ebcef46f511 100644
+--- a/extern/bullet2/src/BulletSoftBody/btSoftBodyInternals.h
++++ b/extern/bullet2/src/BulletSoftBody/btSoftBodyInternals.h
+@@ -18,6 +18,7 @@ subject to the following restrictions:
+ #define _BT_SOFT_BODY_INTERNALS_H
+ 
+ #include "btSoftBody.h"
++#include <string.h>
+ 
+ #include "LinearMath/btQuickprof.h"
+ #include "BulletCollision/BroadphaseCollision/btBroadphaseInterface.h"
+@@ -171,8 +172,7 @@ public:
+ template <typename T>
+ static inline void			ZeroInitialize(T& value)
+ {
+-	static const T	zerodummy;
+-	value=zerodummy;
++	memset(&value,0,sizeof(T));
+ }
+ //
+ template <typename T>
+diff --git a/intern/elbeem/intern/ntl_blenderdumper.cpp b/intern/elbeem/intern/ntl_blenderdumper.cpp
+index b1fece25890..35329947558 100644
+--- a/intern/elbeem/intern/ntl_blenderdumper.cpp
++++ b/intern/elbeem/intern/ntl_blenderdumper.cpp
+@@ -164,7 +164,7 @@ int ntlBlenderDumper::renderScene( void )
+ 				boutfilename << ".bobj.gz";
+ 				gzf = gzopen(boutfilename.str().c_str(), "wb1"); // wb9 is slow for large meshes!
+ 				if (!gzf) {
+-					errMsg("ntlBlenderDumper::renderScene","Unable to open output '"<<boutfilename<<"' ");
++					errMsg("ntlBlenderDumper::renderScene","Unable to open output '"<<boutfilename.str()<<"' ");
+ 					return 1; }
+ 
+ 				// dont transform velocity output, this is handled in blender
+diff --git a/intern/elbeem/intern/ntl_vector3dim.h b/intern/elbeem/intern/ntl_vector3dim.h
+index 6f17f9f5e7b..a553aa83c6a 100644
+--- a/intern/elbeem/intern/ntl_vector3dim.h
++++ b/intern/elbeem/intern/ntl_vector3dim.h
+@@ -111,6 +111,12 @@ using std::string;
+ #endif // ELBEEM_PLUGIN==1
+ 
+ 
++/* absolute value */
++template < class T >
++inline T
++ABS( T a )
++{ return (0 < a) ? a : -a ; }
++
+ // basic inlined vector class
+ template<class Scalar>
+ class ntlVector3Dim
+diff --git a/intern/elbeem/intern/particletracer.cpp b/intern/elbeem/intern/particletracer.cpp
+index 819fcdd0b9a..7d69e5778d6 100644
+--- a/intern/elbeem/intern/particletracer.cpp
++++ b/intern/elbeem/intern/particletracer.cpp
+@@ -231,7 +231,7 @@ void ParticleTracer::checkDumpTextPositions(double simtime) {
+ 		if(mDumpTextFile.length()>1) {   
+ 			boutfilename << mDumpTextFile <<  ".cpart2"; 
+ 		} else {                           
+-			boutfilename << boutfilename <<"_particles" <<  ".cpart2"; 
++			boutfilename << boutfilename.str() <<"_particles" <<  ".cpart2";
+ 		}
+ 		debMsgStd("ParticleTracer::checkDumpTextPositions",DM_MSG,"T-Dumping: "<< this->getName() <<", particles:"<<mParts.size()<<" "<< " to "<<boutfilename.str()<<" " , 7);
+ 
+diff --git a/intern/elbeem/intern/utilities.h b/intern/elbeem/intern/utilities.h
+index a5f63e696a6..d3e12844194 100644
+--- a/intern/elbeem/intern/utilities.h
++++ b/intern/elbeem/intern/utilities.h
+@@ -171,12 +171,6 @@ inline T
+ MAX( T a, T b )
+ { return (a < b) ? b : a ; }
+ 
+-/* absolute value */
+-template < class T >
+-inline T
+-ABS( T a )
+-{ return (0 < a) ? a : -a ; }
+-
+ /* sign of the value */
+ template < class T >
+ inline T
+diff --git a/intern/memutil/MEM_Allocator.h b/intern/memutil/MEM_Allocator.h
+index b2c3c5e82e2..f364eaec020 100644
+--- a/intern/memutil/MEM_Allocator.h
++++ b/intern/memutil/MEM_Allocator.h
+@@ -24,6 +24,7 @@
+ #ifndef __MEM_Allocator_h_included__
+ #define __MEM_Allocator_h_included__ 1
+ 
++#include <cstddef>
+ #include "guardedalloc/MEM_guardedalloc.h"
+ #include "guardedalloc/BLO_sys_types.h"
+ 
+diff --git a/source/blender/imbuf/intern/dds/ColorBlock.cpp b/source/blender/imbuf/intern/dds/ColorBlock.cpp
+index 043fba9d675..418932aad86 100644
+--- a/source/blender/imbuf/intern/dds/ColorBlock.cpp
++++ b/source/blender/imbuf/intern/dds/ColorBlock.cpp
+@@ -78,8 +78,8 @@ ColorBlock::ColorBlock(const Image * img, uint x, uint y)
+ 
+ void ColorBlock::init(const Image * img, uint x, uint y)
+ {
+-	const uint bw = min(img->width() - x, 4U);
+-	const uint bh = min(img->height() - y, 4U);
++	const uint bw = MIN(img->width() - x, 4U);
++	const uint bh = MIN(img->height() - y, 4U);
+ 
+ 	static int remainder[] = {
+ 		0, 0, 0, 0,
+diff --git a/source/blender/imbuf/intern/dds/Common.h b/source/blender/imbuf/intern/dds/Common.h
+index 6f09346f770..4a461052315 100644
+--- a/source/blender/imbuf/intern/dds/Common.h
++++ b/source/blender/imbuf/intern/dds/Common.h
+@@ -25,14 +25,14 @@
+ #ifndef _DDS_COMMON_H
+ #define _DDS_COMMON_H
+ 
+-#ifndef min
+-#define min(a,b) ((a) <= (b) ? (a) : (b))
++#ifndef MIN
++#define MIN(a,b) ((a) <= (b) ? (a) : (b))
+ #endif
+-#ifndef max
+-#define max(a,b) ((a) >= (b) ? (a) : (b))
++#ifndef MAX
++#define MAX(a,b) ((a) >= (b) ? (a) : (b))
+ #endif
+-#ifndef clamp
+-#define clamp(x,a,b) min(max((x), (a)), (b))
++#ifndef CLAMP
++#define CLAMP(x,a,b) MIN(MAX((x), (a)), (b))
+ #endif
+ 
+ template<typename T>
+diff --git a/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp b/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp
+index 0981ae88db6..54f9c2032e8 100644
+--- a/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp
++++ b/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp
+@@ -858,8 +858,8 @@ void DirectDrawSurface::mipmap(Image * img, uint face, uint mipmap)
+ 	// Compute width and height.
+ 	for (uint m = 0; m < mipmap; m++)
+ 	{
+-		w = max(1U, w / 2);
+-		h = max(1U, h / 2);
++		w = MAX(1U, w / 2);
++		h = MAX(1U, h / 2);
+ 	}
+ 	
+ 	img->allocate(w, h);
+@@ -963,9 +963,9 @@ void DirectDrawSurface::readBlockImage(Image * img)
+ 			readBlock(&block);
+ 			
+ 			// Write color block.
+-			for (uint y = 0; y < min(4U, h-4*by); y++)
++			for (uint y = 0; y < MIN(4U, h-4*by); y++)
+ 			{
+-				for (uint x = 0; x < min(4U, w-4*bx); x++)
++				for (uint x = 0; x < MIN(4U, w-4*bx); x++)
+ 				{
+ 					img->pixel(4*bx+x, 4*by+y) = block.color(x, y);
+ 				}
+@@ -980,7 +980,7 @@ static Color32 buildNormal(uint8 x, uint8 y)
+ 	float ny = 2 * (y / 255.0f) - 1;
+ 	float nz = 0.0f;
+ 	if (1 - nx*nx - ny*ny > 0) nz = sqrt(1 - nx*nx - ny*ny);
+-	uint8 z = clamp(int(255.0f * (nz + 1) / 2.0f), 0, 255);
++	uint8 z = CLAMP(int(255.0f * (nz + 1) / 2.0f), 0, 255);
+ 	
+ 	return Color32(x, y, z);
+ }
+@@ -1085,9 +1085,9 @@ uint DirectDrawSurface::mipmapSize(uint mipmap) const
+ 	
+ 	for (uint m = 0; m < mipmap; m++)
+ 	{
+-		w = max(1U, w / 2);
+-		h = max(1U, h / 2);
+-		d = max(1U, d / 2);
++		w = MAX(1U, w / 2);
++		h = MAX(1U, h / 2);
++		d = MAX(1U, d / 2);
+ 	}
+ 
+ 	if (header.pf.flags & DDPF_FOURCC)
+diff --git a/source/gameengine/Converter/BL_ActionActuator.cpp b/source/gameengine/Converter/BL_ActionActuator.cpp
+index 88d6d294dc0..800f597d2e6 100644
+--- a/source/gameengine/Converter/BL_ActionActuator.cpp
++++ b/source/gameengine/Converter/BL_ActionActuator.cpp
+@@ -31,6 +31,7 @@
+ #include <math.h>
+ #else
+ #include <cmath>
++#include <cstddef>
+ #endif
+ 
+ #include "SCA_LogicManager.h"
+diff --git a/source/gameengine/Converter/BL_ShapeActionActuator.cpp b/source/gameengine/Converter/BL_ShapeActionActuator.cpp
+index bf7edb5f641..59534ebf7a9 100644
+--- a/source/gameengine/Converter/BL_ShapeActionActuator.cpp
++++ b/source/gameengine/Converter/BL_ShapeActionActuator.cpp
+@@ -31,6 +31,7 @@
+ #include <math.h>
+ #else
+ #include <cmath>
++#include <cstddef>
+ #endif
+ 
+ #include "SCA_LogicManager.h"
+diff --git a/source/gameengine/GameLogic/SCA_ILogicBrick.h b/source/gameengine/GameLogic/SCA_ILogicBrick.h
+index 779e5397a6a..5d831ad58d8 100644
+--- a/source/gameengine/GameLogic/SCA_ILogicBrick.h
++++ b/source/gameengine/GameLogic/SCA_ILogicBrick.h
+@@ -35,6 +35,8 @@
+ #include "GEN_Map.h"
+ #include "GEN_HashedPtr.h"
+ 
++#include <cstddef>
++
+ class SCA_ILogicBrick : public CValue
+ {
+ 	Py_Header;
+diff --git a/source/gameengine/GameLogic/SCA_ISensor.h b/source/gameengine/GameLogic/SCA_ISensor.h
+index 9bbd6ed41e4..ef56865e941 100644
+--- a/source/gameengine/GameLogic/SCA_ISensor.h
++++ b/source/gameengine/GameLogic/SCA_ISensor.h
+@@ -35,6 +35,7 @@
+ #include "SCA_IController.h"
+ 
+ #include <vector>
++#include <cstddef>
+ 
+ /**
+  * Interface Class for all logic Sensors. Implements
+diff --git a/source/gameengine/GameLogic/SCA_PythonController.cpp b/source/gameengine/GameLogic/SCA_PythonController.cpp
+index 80e4f54c9c5..a65b1ecf259 100644
+--- a/source/gameengine/GameLogic/SCA_PythonController.cpp
++++ b/source/gameengine/GameLogic/SCA_PythonController.cpp
+@@ -203,7 +203,7 @@ SCA_IActuator* SCA_PythonController::LinkedActuatorFromPy(PyObject *value)
+ 	PyErr_Format(PyExc_ValueError, "'%s' not in this python controllers actuator list", PyString_AsString(value_str));
+ 	Py_DECREF(value_str);
+ 	
+-	return false;
++	return NULL;
+ }
+ 
+ /* warning, self is not the SCA_PythonController, its a PyObjectPlus_Proxy */
+diff --git a/source/gameengine/Ketsji/KX_Light.cpp b/source/gameengine/Ketsji/KX_Light.cpp
+index ae9e097a96e..95d77f16ae7 100644
+--- a/source/gameengine/Ketsji/KX_Light.cpp
++++ b/source/gameengine/Ketsji/KX_Light.cpp
+@@ -188,7 +188,7 @@ GPULamp *KX_LightObject::GetGPULamp()
+ 	if(m_glsl)
+ 		return GPU_lamp_from_blender(m_blenderscene, GetBlenderObject(), GetBlenderGroupObject());
+ 	else
+-		return false;
++		return NULL;
+ }
+ 
+ void KX_LightObject::Update()
+#diff --git a/source/gameengine/Ketsji/KX_PolygonMaterial.cpp b/source/gameengine/Ketsji/KX_PolygonMaterial.cpp
+#index 63c1b17abc1..d452cf41995 100644
+#--- a/source/gameengine/Ketsji/KX_PolygonMaterial.cpp
+#+++ b/source/gameengine/Ketsji/KX_PolygonMaterial.cpp
+#@@ -51,6 +51,8 @@
+# 
+# #include "KX_PyMath.h"
+# 
+#+#include <cstddef>
+#+
+# KX_PolygonMaterial::KX_PolygonMaterial(PyTypeObject *T)
+# 		: PyObjectPlus(T),
+# 		  RAS_IPolyMaterial(),
+diff --git a/source/gameengine/Physics/Dummy/DummyPhysicsEnvironment.cpp b/source/gameengine/Physics/Dummy/DummyPhysicsEnvironment.cpp
+index e41574ff181..1fab12c879a 100644
+--- a/source/gameengine/Physics/Dummy/DummyPhysicsEnvironment.cpp
++++ b/source/gameengine/Physics/Dummy/DummyPhysicsEnvironment.cpp
+@@ -33,6 +33,8 @@
+ #include <config.h>
+ #endif
+ 
++#include <cstddef>
++
+ DummyPhysicsEnvironment::DummyPhysicsEnvironment()
+ {
+ 	// create physicsengine data
+-- 
+2.24.0
+
