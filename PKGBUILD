@@ -2,13 +2,13 @@
 
 pkgbase=vibrant-git
 pkgname=(libvibrant-git vibrant-cli-git)
-pkgver=0.0.2.r22.g3b880d2
+pkgver=1.0.3.r2.g8c5fa72
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://gitlab.com/Scrumplex/vibrant"
 license=("GPL3" "custom:MIT")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "check")
 source=("${pkgbase}::git+https://gitlab.com/Scrumplex/vibrant.git")
 sha512sums=('SKIP')
 
@@ -26,6 +26,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     make -C build
+}
+
+check() {
+
+    make -C build test
 }
 
 package_libvibrant-git() {
