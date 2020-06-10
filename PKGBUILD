@@ -2,35 +2,27 @@
 
 pkgname=virtualbox-guest-dkms-vmsvga
 pkgver=6.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='VirtualBox Guest kernel modules sources (VMSVGA resize and multi-head fix)'
 arch=('x86_64')
 url='https://virtualbox.org/'
 license=('GPL' 'custom')
-depends=('dkms' 'gcc' 'make' 'virtualbox-guest-utils')
+depends=('dkms' 'gcc' 'make')
 optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS kernel'
             'linux-zen-headers: build modules against ZEN kernel')
 provides=('VIRTUALBOX-GUEST-MODULES')
 conflicts=('virtualbox-archlinux-source'
-           'virtualbox-guest-source'
-           'virtualbox-guest-dkms')
-replaces=('virtualbox-archlinux-source'
-          'virtualbox-guest-source'
-          'virtualbox-guest-modules-lts'
-          'virtualbox-guest-dkms')
-optdepends=('linux-headers: build modules against Arch kernel'
-            'linux-lts-headers: build modules against LTS kernel'
-            'linux-zen-headers: build modules against ZEN kernel')
-install=virtualbox-guest-dkms-vmsvga.install
+           'virtualbox-guest-dkms'
+           'virtualbox-guest-source')
 source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}.tar.bz2"
         'LocalConfig.kmk'
-        'virtualbox-guest-dkms-vmsvga.conf'
-        'vboxvmsvga.service')
+        'vboxvmsvga.desktop'
+        'virtualbox-guest-dkms-vmsvga.conf')
 sha256sums=('37d8b30c0be82a50c858f3fc70cde967882239b6212bb32e138d3615b423c477'
             '2be313b98bffde482aad93b00c419f1d5f7645fd9e6053175ffb0d925067f96a'
-            'edd0492f0706e03169cdf3654658ea650687c30967ca5e32fde19d43e3dd4e5e'
-            'b6da21bfbc2d452aa8e2ae5c118ec8ed8b87ad6d86000e6b27f28c098b9871ca')
+            '4404a95eb6f5c30683625e870fe7a26e562200c2220728d0c14151dbf9667e36'
+            'edd0492f0706e03169cdf3654658ea650687c30967ca5e32fde19d43e3dd4e5e')
 
 prepare() {
   cd "VirtualBox-$pkgver"
@@ -67,8 +59,8 @@ package() {
   install -d -m0755 "$pkgdir/usr/lib/modules-load.d"
   printf 'vboxguest\nvboxsf\nvboxvideo\n' > "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 
-  # systemd unit
-  install -D -m0644 "$srcdir/vboxvmsvga.service" "$pkgdir/usr/lib/systemd/system/vboxvmsvga.service"
+  # autostart
+  install -D -m0644 "$srcdir/vboxvmsvga.desktop" "$pkgdir/etc/xdg/autostart/vboxvmsvga.desktop"
 
   # license
   install -D -m0644 "$srcdir/VirtualBox-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

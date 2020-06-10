@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Version=1.0
+Name=vboxvmsvga
+Name[C]=vboxvmsvga
+Comment[C]=VirtualBox VMSVGA Services
+Comment=VirtualBox VMSVGA Services
+Exec=/usr/bin/VBoxClient --vmsvga
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
