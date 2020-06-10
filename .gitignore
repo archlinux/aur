@@ -3,5 +3,6 @@ src
 license.txt
 guizero-*.tar.gz
 python-guizero-*.pkg.tar.xz
+python-guizero-*.pkg.tar.zst
 python-guizero-*.src.tar.gz
 .AURINFO

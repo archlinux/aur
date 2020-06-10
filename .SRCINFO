@@ -7,6 +7,7 @@ pkgbase = python-guizero
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-pillow
+	depends = tk
 	source = https://files.pythonhosted.org/packages/source/g/guizero/guizero-1.1.0.tar.gz
 	source = https://raw.githubusercontent.com/lawsie/guizero/master/license.txt
 	md5sums = 52cecac2f7cf9642c2e1f3da2f37e23e
