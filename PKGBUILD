@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.4.1123.r1151.g2170e90
+pkgver=1.4.1399.r1151.g2170e90
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -47,15 +47,10 @@ prepare() {
 }
 
 build() {
-  cd psi
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPSI_PLUS=ON -DCHAT_TYPE=WEBENGINE ..
-  make
+  cmake -B build -S psi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPSI_PLUS=ON -DCHAT_TYPE=WEBENGINE  ..
+  cmake --build build
 }
 
 package() {
-  cd psi/build
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
