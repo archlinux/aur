@@ -1,14 +1,14 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r2012.96548282f
-pkgrel=2
+pkgver=r2027.7276ce9f5
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg')
-makedepends=('git' 'qt5-tools')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg' 'quazip')
+makedepends=('git' 'qt5-tools' 'fontobene-qt5')
 provides=('librepcb')
 conflicts=('librepcb')
 source=('git+https://github.com/LibrePCB/LibrePCB')
@@ -23,7 +23,7 @@ build() {
   # Prepare
   cd "$srcdir/$_fullname-build"
   mkdir build && cd build
-  qmake -r ../librepcb.pro PREFIX="${pkgdir}/usr"
+  qmake -r ../librepcb.pro PREFIX="${pkgdir}/usr" CONFIG+=release UNBUNDLE+=quazip UNBUNDLE+=fontobene-qt5
 
   # Compile
   make
