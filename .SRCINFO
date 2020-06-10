@@ -1,6 +1,6 @@
 pkgbase = xf86-video-intel-git
 	pkgdesc = X.org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 2.99.917+900+g652d93cb
+	pkgver = 2.99.917+909+g5ca3ac1a
 	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxgraphics
@@ -17,6 +17,7 @@ pkgbase = xf86-video-intel-git
 	makedepends = libxcursor
 	makedepends = libxtst
 	makedepends = libxss
+	makedepends = libxfont2
 	makedepends = git
 	depends = mesa
 	depends = libxvmc
@@ -40,7 +41,7 @@ pkgbase = xf86-video-intel-git
 	conflicts = xf86-video-intel-legacy
 	replaces = xf86-video-intel-uxa
 	replaces = xf86-video-intel-sna
-	source = xf86-video-intel-git::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel.git
+	source = xf86-video-intel::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel.git
 	sha256sums = SKIP
 
 pkgname = xf86-video-intel-git

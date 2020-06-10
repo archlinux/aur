@@ -4,7 +4,7 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-pkgver=2.99.917+900+g652d93cb
+pkgver=2.99.917+909+g5ca3ac1a
 pkgrel=1
 epoch=1
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs')
 makedepends=('xorg-server-devel' 'libx11' 'libxrender' 'libxv'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
+             'libxfont2'
              # additional for git snapshot
              'git') # 'meson' 'valgrind')
 optdepends=('libxrandr: for intel-virtual-output'
@@ -28,19 +29,23 @@ provides=("${_pkgname}" 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
 conflicts=("${_pkgname}" 'xorg-server<1.20' 'xf86-video-intel-sna'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy')
 groups=('xorg-drivers')
-source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
+source=("${_pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${_pkgname}"
   git describe --tags | sed 's/-/+/g'
 }
 
-build() {
-  cd $pkgname
-
+prepare() {
+  cd "${_pkgname}"
   NOCONFIGURE=1 ./autogen.sh
 
+#  mkdir build
+}
+
+build() {
+  cd "${_pkgname}"
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -60,13 +65,13 @@ build() {
 }
 
 check() {
-  cd $pkgname
+  cd "${_pkgname}"
   make check
 #  meson test -C build
 }
 
 package() {
-  cd $pkgname
+  cd "${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
 
