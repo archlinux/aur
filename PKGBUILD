@@ -1,6 +1,6 @@
 # Maintainer: John FrostFox <john.frostfox at gmail dot com>
 pkgname=recapp-git
-pkgver=1.0.2.r6.g151d6d9
+pkgver=1.1.0.r0.g65d6ef1
 pkgrel=1
 pkgdesc="Simple screen recorder for Linux written in GTK, using only GStreamer."
 arch=('any')
