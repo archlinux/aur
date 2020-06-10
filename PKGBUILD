@@ -2,7 +2,7 @@
 
 _basename=aom
 pkgname=lib32-aom
-pkgver=1.0.0.errata1+avif
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 url="https://aomedia.org/"
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(BSD custom:PATENTS)
 depends=(lib32-glibc aom)
 makedepends=(cmake git ninja yasm)
-_commit=4eb1e7795b9700d532af38a2d9489458a8038233  # tags/v1.0.0-errata1-avif^0
+_commit=bb35ba9148543f22ba7d8642e4fbd29ae301f5dc  # tags/v2.0.0^0
 source=("git+https://aomedia.googlesource.com/aom#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -25,7 +25,7 @@ build() {
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    cmake -H$_basename -Bbuild \
+    cmake -H$_basename -Bbuild -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib32 \
         -DBUILD_SHARED_LIBS=1 \
