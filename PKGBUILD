@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="a simple tool for lossless jpeg cropping"
 license=('GPL')
 url="https://github.com/jepler/cropgui"
-depends=('libjpeg' 'python-pillow' 'imagemagick' 'pygtk' 'perl-image-exiftool')
+depends=('libjpeg' 'python-pillow' 'imagemagick' 'python-gobject' 'gtk3' 'perl-image-exiftool')
 source=("https://github.com/jepler/cropgui/archive/v${pkgver}.tar.gz")
 md5sums=('989b837c59ac1fe5b3fa99af341f8ca8')
 
