@@ -13,7 +13,7 @@ pkgbase = wf-config-git
 	makedepends = glm
 	depends = libevdev
 	depends = libxml2
-	provides = wf-config
+	provides = wf-config=0.4.0
 	conflicts = wf-config
 	source = git+https://github.com/WayfireWM/wf-config
 	sha256sums = SKIP

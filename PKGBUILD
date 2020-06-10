@@ -8,7 +8,7 @@ url="https://github.com/WayfireWM/wf-config"
 license=('MIT')
 depends=('libevdev' 'libxml2')
 makedepends=('git' 'wlroots' 'meson' 'ninja' 'wayland-protocols' 'glm')
-provides=("${pkgname%-git}")
+provides=("wf-config=0.4.0")
 conflicts=("${pkgname%-git}")
 replaces=()
 source=('git+https://github.com/WayfireWM/wf-config')
