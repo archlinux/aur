@@ -7,11 +7,11 @@ _srcname=linux-5.7
 _major=5.7
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
-#_fullver=$_major.$_minor
-_fullver=$_major
+_fullver=$_major.$_minor
+#_fullver=$_major
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
@@ -35,11 +35,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('4f60647b0d73dfea9a509457386a7c3766aedc1b8dee81b083912444c4865972'
+sha256sums=('605681dc3f4864c92f8e1ccecb5bdb6f0c4d65cb1f83ddf5172b514643459f40'
             'SKIP'
-            'de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
+            '40d318add8cefe3fdb26f19dac7386f5e7b63854ae021e593466902856ce9ded'
             'SKIP'
-            '71030461a03fe30133f357001394ca2644c5fe0aae52161fe00c74aec0f900fe'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '382c2e99dbc6fc2184492d961441bc2cde2b8de23e018cb291c952c5e1c3ed37')
 
@@ -102,7 +102,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -177,6 +177,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
