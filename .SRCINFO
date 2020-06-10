@@ -1,0 +1,26 @@
+pkgbase = gitify-bin
+	pkgdesc = GitHub notifications on your menu bar
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://www.gitify.io/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	depends = libappindicator-gtk3
+	depends = libsecret
+	noextract = gitify-bin-3.0.5.deb
+	options = !strip
+	source = gitify-bin-3.0.5.deb::https://github.com/manosim/gitify/releases/download/v3.0.5/gitify_3.0.5_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/manosim/gitify/v3.0.5/LICENSE
+	sha256sums = 32cc787606a2c25e00cd6f73a3a9de6826afb6d4dd3618da355c264d075794d7
+	sha256sums = SKIP
+
+pkgname = gitify-bin
+
