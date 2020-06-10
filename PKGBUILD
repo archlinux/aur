@@ -1,7 +1,7 @@
 # Maintainer Cédric Bellegarde
 
 pkgname=passbook-stable-git
-pkgver=0.8.r28.g59e8fe4
+pkgver=0.8.r30.gb18f820
 pkgrel=1
 pkgdesc='Password manager for GNOME (stable branch: last release + fixes)'
 arch=(any)
