@@ -1,0 +1,12 @@
+pkgbase = ttf-hactor
+	pkgdesc = A font alternative to Operator Mono by combination of Hack and Victor Mono.
+	pkgver = 20200609
+	pkgrel = 1
+	url = https://github.com/dqisme/Hactor
+	arch = any
+	license = MIT
+	source = hactor::https://github.com/dqisme/Hactor/archive/master.zip
+	sha256sums = 72dfe9b9fd105a643472c992f7047a047c23e96e4e4675fda0a0bf628cc6e4c2
+
+pkgname = ttf-hactor
+
