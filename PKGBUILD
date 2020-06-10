@@ -4,7 +4,7 @@
 _pkgname='php-humbug-box'
 pkgname="${_pkgname}-bin"
 pkgver=3.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, zero config application bundler with PHARs.'
 arch=('any')
 url='https://github.com/humbug/box'
