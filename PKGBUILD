@@ -10,7 +10,7 @@ depends=('mongodb-bin')
 provides=("mongosh=$pkgver")
 arch=('x86_64')
 source=("https://downloads.mongodb.com/compass/mongosh-$pkgver-linux.tgz")
-sha256sums=('d1312f133909abddb3b507e8445199770f6c454c1e809abe45655fc0fe1b863f')
+sha256sums=('f0fc64377307a7d0cf8af27b39acd058e8e942d353b706d4561a5ff832cdc785')
 options=(!strip)
 package() {
   cd $srcdir
