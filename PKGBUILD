@@ -26,6 +26,8 @@ sha256sums=('3dc6643d2c064b7718badff44b948f8d410f00f13db197820b26ae38045f5112')
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
