@@ -1,21 +1,22 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Torben <git at letorbi dot com>
+# Contributor: lesto <mombelli.mauro at gmail dot com>
+# Contributor: Antonio Rojas <arojas at archlinux dot org>
+# Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 
 pkgname=processing-jdk8
 pkgver=3.5.4
 pkgrel=1
 arch=(x86_64)
-pkgdesc='Programming environment for creating images, animations and interactions'
+pkgdesc='Programming environment for creating images, animations and interactions (uses Oracle JDK 8)'
 url='https://www.processing.org/'
 license=(GPL LGPL)
 provides=(processing)
 conflicts=(processing processing-bin)
-# Can upgrade to OpenJDK 10 once java-openjfx has been upgraded to support it
 depends=('jdk8' 'libgl')
 makedepends=('apache-ant' 'gendesk' 'unzip')
 options=(!strip)
 # The Processing version scheme for the 3.5.x series uses a special magical
 # version number above 0266 in addition to the ordinary version number.
-# https is not available for reference.zip.
 source=("https://github.com/processing/processing/archive/processing-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
         no_downloads.patch)
@@ -62,12 +63,7 @@ package() {
   ln -s "/usr/share/processing/processing" "$pkgdir/usr/bin/processing"
   ln -s "/usr/share/processing/processing-java" "$pkgdir/usr/bin/processing-java"
 
-  # Use /usr/lib/jvm/default-runtime
+  # Ensure that processing uses Oracle's JDK 8
   rmdir "$pkgdir/usr/share/processing/java"
-
-  # Processing does not work with OpenJDK 10 or 11, use OpenJDK 8
-  #ln -s /usr/lib/jvm/default-runtime/ "$pkgdir/usr/share/processing/java"
   ln -s /usr/lib/jvm/java-8-jdk/ "$pkgdir/usr/share/processing/java"
 }
-
-# vim: ts=2 sw=2 et
