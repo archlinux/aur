@@ -1,0 +1,20 @@
+pkgbase = twitch
+	pkgdesc = Unofficial Twitch desktop application.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/coreybruce/twitch-desktop
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = twitch
+	conflicts = twitch
+	source = git+https://gitlab.com/coreybruce/twitch-desktop.git
+	sha256sums = SKIP
+
+pkgname = twitch
+
