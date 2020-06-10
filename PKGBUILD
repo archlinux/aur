@@ -9,6 +9,7 @@ pkgdesc='Fast, zero config application bundler with PHARs.'
 arch=('any')
 url='https://github.com/humbug/box'
 license=('MIT')
+conflicts=('php-box')
 install="${_pkgname}.install"
 source=(
   "https://github.com/humbug/box/releases/download/${pkgver}/box.phar"
