@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbextension-rise
 	pkgdesc = Live Reveal.js Jupyter/IPython Slideshow Extension
-	pkgver = 5.3.0
-	pkgrel = 4
+	pkgver = 5.6.1
+	pkgrel = 1
 	url = https://github.com/damianavila/RISE
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = jupyter-nbextension-rise
 	depends = python
 	depends = jupyter-notebook
 	conflicts = python-rise
-	source = https://files.pythonhosted.org/packages/source/r/rise/rise-5.3.0.tar.gz
-	sha256sums = b34cc01ff85e47f386456ac4cb0659dcb2fb482c6db05feb5218d43580fea519
+	source = https://files.pythonhosted.org/packages/source/r/rise/rise-5.6.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = jupyter-nbextension-rise
 

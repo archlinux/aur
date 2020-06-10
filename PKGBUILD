@@ -1,9 +1,10 @@
-# Maintainer: getzze <getzze at gmail dot com>
+# Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
+# Contributor: getzze <getzze at gmail dot com>
 
 pkgname=jupyter-nbextension-rise
 _name=rise
-pkgver=5.3.0
-pkgrel=4
+pkgver=5.6.1
+pkgrel=1
 pkgdesc="Live Reveal.js Jupyter/IPython Slideshow Extension"
 arch=(any)
 url="https://github.com/damianavila/RISE"
@@ -12,7 +13,7 @@ conflicts=('python-rise')
 depends=('python' 'jupyter-notebook')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b34cc01ff85e47f386456ac4cb0659dcb2fb482c6db05feb5218d43580fea519')
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/rise-$pkgver"
