@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 provides=('irtt')
 conflicts=('irtt')
 source=("git+https://github.com/heistp/irtt.git")
@@ -25,15 +25,20 @@ build() {
   cd "irtt"
 
   go build \
-    -trimpath \
+    -buildmode=pie \
     -ldflags "-extldflags $LDFLAGS" \
-    "github.com/heistp/irtt/cmd/irtt"
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
+    ./cmd/...
 }
 
 check() {
   cd "irtt"
 
-  go test ./...
+  go test \
+    -mod=readonly \
+    ./...
 }
 
 package() {
