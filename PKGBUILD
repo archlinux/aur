@@ -3,13 +3,13 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0rc6.r4.0c68365
+pkgver=1.0.0rc9.r21.1aa65b9
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
-makedepends=('git' 'dep' 'go-pie' 'python-setuptools' 'python-grpcio-tools')
+makedepends=('git' 'dep' 'go' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
@@ -43,31 +43,28 @@ build() {
 
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
     go build \
-    -v \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o opensnitchd .
+        -v \
+        -trimpath \
+		-buildmode=pie \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
+        -o opensnitchd .
 
     cd "$srcdir/${pkgname%-git}/proto"
     make
 
     cd "$srcdir/${pkgname%-git}/ui"
     python setup.py build
-
-    # Skipping, too many syntax errors
-    # cd "$srcdir/${pkgname%-git}"
-    # python make_ads_rules.py
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm755 daemon/opensnitchd -t "$pkgdir/usr/bin"
     install -Dm644 daemon/opensnitchd.service -t \
-    	"$pkgdir/usr/lib/systemd/system"
+        "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/opensnitchd/rules"
     install -Dm644 daemon/default-config.json -t "$pkgdir/etc/opensnitchd"
     install -Dm644 debian/opensnitch.logrotate \
-    	"$pkgdir/etc/logrotate.d/opensnitch"
+        "$pkgdir/etc/logrotate.d/opensnitch"
 
     cd "$srcdir/${pkgname%-git}/ui"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
