@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.sk1project.sk1</id>
+  <launchable type="desktop-id">sk1.desktop</launchable>
+  <name>sK1</name>
+  <summary>Create and edit multipage documents for prepress</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>sK1 2.0 is professional quality illustration program. sK1 2.0 is a powerful and mature application that makes users more productive and provides them professional and free solution even for exotic *nix OSes. Whether you are a newbie user or an experienced designer, sK1 2.0 makes it easy to get started. With its professional color-management engine and wide-range file format compatibility, sK1 2.0 provides color accuracy and drawing flexibility you need for all types of projects.</p>
+  </description>
+  <screenshots>
+    <screenshot>
+      <image>https://sk1project.net/content/sk1/screenshots/sk1_2_0_01ubuntu.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://sk1project.net/content/sk1/screenshots/sk1_2_0_02ubuntu.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://sk1project.net/content/sk1/screenshots/sk1_2_0_03ubuntu.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://sk1project.net/content/sk1/screenshots/sk1_2_0_04ubuntu.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://sk1project.net/content/sk1/screenshots/sk1_2_0_05ubuntu.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/sk1project/sk1-wx/issues</url>
+  <url type="homepage">https://sk1project.net/</url>
+</component>
