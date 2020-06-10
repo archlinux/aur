@@ -1,8 +1,7 @@
+webkitgtk-*.pkg.tar.zst
 webkitgtk-*.pkg.tar.xz
-webkitgtk2-*.pkg.tar.xz
 webkitgtk-*.tar.xz
 webkitgtk-*.log
-webkitgtk2-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
