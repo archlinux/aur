@@ -2,26 +2,35 @@
 # Contributor: Stunts <f.pinamartins@gmail.com>
 pkgname=staden-io_lib
 _pkgname=io_lib
-pkgver=1.14.11
+pkgver=1.14.12
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="DNA sequence assembly (Gap4) and editing and analysis tools (Spin)"
 arch=('i686' 'x86_64')
-url="http://staden.sourceforge.net/"
+url="https://github.com/jkbonfield/io_lib"
 license=('BSD')
 depends=('curl')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jkbonfield/io_lib/archive/io_lib-$_pkgver.tar.gz)
-sha256sums=('317aebf88f5b5d687e8165a68d2ed142f16dd5436fd530a24dbaa4acb5684051')
+conflicts=('htscodecs')
+provides=('htscodecs')
+source=($pkgname-$pkgver.tar.gz::$url/releases/download/io_lib-$_pkgver/io_lib-$pkgver.tar.gz)
+sha256sums=('bc0c5ed688f59a522ef02aafc7c34359f44024d4763599b92030d60bbc5c3415')
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
-  aclocal
-  autoreconf --install
+  cd "$srcdir/$_pkgname-$pkgver/htscodecs"
+  aclocal --force
+  autoreconf --force --install
+  automake --force
   ./configure --prefix=/usr
-  make CFLAGS=-g 
+
+  cd "$srcdir/$_pkgname-$pkgver"
+  aclocal --force
+  autoreconf --force --install
+  automake --force
+  ./configure --prefix=/usr
+  make CFLAGS=-g
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
