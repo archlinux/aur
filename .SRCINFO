@@ -1,14 +1,14 @@
 pkgbase = kpack
 	pkgdesc = Manipulates KnightOS software packages
-	pkgver = 1.0.11
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/KnightOS/kpack
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
-	source = kpack-1.0.11.tar.gz::https://github.com/KnightOS/kpack/archive/1.0.11.tar.gz
-	sha256sums = f4fe6141a4cdbb714327ddb96b790c2671b7ca138e6af299cf716ec5ab153d69
+	source = kpack-1.1.0.tar.gz::https://github.com/KnightOS/kpack/archive/1.1.0.tar.gz
+	sha256sums = 3b1ac534db30e67820d0d1849eee8c675e1a5cf041013e3020f68440cc7ed26d
 
 pkgname = kpack
 
