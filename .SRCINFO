@@ -1,6 +1,6 @@
 pkgbase = gitui
 	pkgdesc = Blazing fast terminal-ui for git written in Rust
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/extrawurst/gitui
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = gitui
 	makedepends = cargo
 	depends = libgit2
 	conflicts = gitui-git
-	source = 0.5.0.tar.gz::https://github.com/extrawurst/gitui/archive/v0.5.0.tar.gz
-	sha256sums = 1ed6aae8605548331eeb340682d4a66f4251b6aff39e3be74c65ccc3bcfa8f61
+	source = 0.6.0.tar.gz::https://github.com/extrawurst/gitui/archive/v0.6.0.tar.gz
+	sha256sums = 26b85882369c85fe7458a88ff9a8e277741a4de443a35749598d382a85c03daf
 
 pkgname = gitui
 
