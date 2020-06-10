@@ -5,6 +5,7 @@ pkgbase = crow-translate-git
 	url = https://github.com/crow-translate/crow-translate
 	arch = x86_64
 	license = GPL3
+	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
 	makedepends = git
 	depends = qt5-base
