@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.13.1
-pkgrel=3
+pkgrel=4
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -26,7 +26,7 @@ optdepends=('trilinos: support for trilinos'
   'hdf5-openmpi: support for the parallel version of HDF5'
   'mumps: support for the mumps sparse solver'
   'fftw: support for the FFTW fast Fourier transform'
-  #'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
+  'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
   'suitesparse: support for the suitesparse sparse matrix libraries'
   )
 install=petsc.install
@@ -34,7 +34,7 @@ source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-lite-${pkg
         test_optdepends.sh
         DSTabulation-Fortran-fix.patch)
 sha256sums=('74a895e44e2ff1146838aaccb7613e7626d99e0eed64ca032c87c72d084efac3'
-            '207f3c8107698f572f4075422bd069859c6a69b6bf92183d977dc802da323e18'
+            'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623'
             '6907950866797d2a6058de8bc4d4369aa175c4cde92cb533b5b1e291db23edcf')
 
 _install_dir=/opt/petsc/${_config}
