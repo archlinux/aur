@@ -1,13 +1,13 @@
 # Maintainer: tinywrkb <tinywrkb@gmail.com>
 #
 # pipewire package maintainers:
-#   Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+#   Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #   Jan de Groot <jgc@archlinux.org>
 
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-_commit=ba215efed0da8d6c9f3f2414d76a8e2c75352501  # tags/0.3.5
+_commit=b04552b2522a2cdae9a246be6ed77bb5ae31cda3  # tags/0.3.6
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -30,15 +30,12 @@ prepare() {
 }
 
 build() {
-  # warning: ‘-Wformat-security’ ignored without ‘-Wformat’ [-Wformat-security]
-  CFLAGS+=" -Wformat"
-
   arch-meson $_pkgbase build \
     -D gstreamer=false \
     -D docs=true \
     -D man=true
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
