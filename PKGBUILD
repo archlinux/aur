@@ -1,5 +1,5 @@
 pkgname=kdstatemachineeditor
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 arch=(any)
 pkgdesc=""
@@ -8,7 +8,7 @@ depends=('qt5-declarative' 'qt5-remoteobjects' 'qt5-scxml' 'graphviz')
 makedepends=('cmake' 'doxygen' 'qt5-tools')
 url="https://github.com/KDAB/KDStateMachineEditor/"
 source=("https://github.com/KDAB/KDStateMachineEditor/archive/v${pkgver}.tar.gz")
-sha256sums=('c4426de9fb0ec65e15dadf82cb32a1a878681ca3acae996596ee79ecb8b43ca4')
+sha256sums=('8b2ae1775201b1f97cd332f5aec23ed5bb943531c6583690c4130ff517f75b2c')
 
 prepare() {
   mkdir -p build
