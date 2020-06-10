@@ -2,28 +2,36 @@
 
 pkgname=alusus
 pkgver=0.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية"
 arch=('x86_64')
 url="https://alusus.org/"
 license=('custom')
-depends=('python' 'python-pip')
-source=('https://github.com/sulimanp/Alusus/archive/master.zip')
-md5sums=('aece76ac530dafcd5561bd354d46ae05')
+makedepends=('python' 'python-pip' 'cmake' 'git')
+
+_gitroot="https://github.com/sulimanp/Alusus.git"
+_gitname="Alusus"
 
 build() {
-    cd "$srcdir/Alusus-master"
-    ./Tools/build.sh --bloc . --iloc .
-if [ -e "./Builds/Dependencies/llvm-10.0.0.install" ]; then
-    cmake Sources -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/Alusus" -DLLVM_PATH=./Builds/Dependencies/llvm-10.0.0.install
-    make -j $(nproc)
-fi
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  cd "$srcdir/$_gitname"
+
+  # BUILD HERE
+	mkdir -p opt/Alusus
+	./Tools/build.sh --bloc . --iloc opt/Alusus --btype r
 }
 
 package() {
-    cd "$srcdir/Alusus-master" 
-    make install -j $(nproc)
+  cd "$srcdir/$_gitname"
+  cp -r "$srcdir/Alusus/opt/Alusus" "$pkgdir/opt/"
 }
 
-# ==> ERROR: One or more files did not pass the validity check!
-# makepkg -g >> PKGBUILD
