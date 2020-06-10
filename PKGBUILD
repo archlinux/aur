@@ -1,7 +1,7 @@
 # Maintainer: kXuan <kxuanobj at gmail dot com>
 
 pkgname=protoc-gen-grpc-web
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Protobuf gRPC compiler for Web Clients'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/grpc/grpc-web'
 license=('Apache2')
 depends=('protobuf>=3')
 source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz")
-sha512sums=('51bfc1e7d3cb209f936946f3ca6e78b35ed8a73c83160f8474f1c1437b7130df7bb10335968323a9fe72d4ac2ba339214c923b8045d3388811fe5a06fbda7c3e')
+sha512sums=('313b96fd2a83ffd3d02d13f8d4c81b9b92d16689b263a4dc228326fb03c6fa9dabd9d48b18f93a4d2ccc8cb2612ce284555848fcb2c856d5377f8e8efcc8862f')
 
 build() {
     cd "grpc-web-${pkgver}"
