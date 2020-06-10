@@ -1,0 +1,5 @@
+pkg/
+src/
+psync/
+*.tar.gz
+*.pkg.tar.*
