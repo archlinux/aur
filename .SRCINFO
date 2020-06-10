@@ -13,7 +13,7 @@ pkgbase = mingw-w64-protobuf
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/google/protobuf/archive/v3.12.0.tar.gz
+	source = https://github.com/protocolbuffers/protobuf/archive/v3.12.0.tar.gz
 	sha256sums = 946ba5371e423e1220d2cbefc1f65e69a1e81ca5bab62a03d66894172983cfcd
 
 pkgname = mingw-w64-protobuf
