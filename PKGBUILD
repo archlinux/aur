@@ -1,10 +1,10 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=bluetoother
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Bluetoooth adapter connectivity GUI tool"
-url='https://efanomars.com/bluetoother'
+url='https://efanomars.com/utilities/bluetoother'
 arch=('x86_64')
 license=('GPL3')
 
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("bluetoother")
 #conflicts=("bluetoother")
 
-source=('https://efanomars.com/sources/bluetoother-0.11.tar.gz')
-sha256sums=('2c3f123df73d1541fe55ba1e821af6cc7d6027a81d46776035e98397a3fcf5ae')
+source=('https://efanomars.com/sources/bluetoother-0.12.tar.gz')
+sha256sums=('26841ce2b06bfd762b5d925a9efbbd36cbe81cc905a07f8ef8370c57d4e62c88')
 
 build() {
   cd "${srcdir}/bluetoother"
