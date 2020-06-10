@@ -1,7 +1,7 @@
 pkgbase = veloren
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = veloren
 	makedepends = pango
 	makedepends = atk
 	makedepends = gdk-pixbuf2
+	makedepends = python
 	depends = gtk3
 	provides = veloren
 	conflicts = veloren
