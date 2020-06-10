@@ -8,6 +8,7 @@ pkgbase = imeditor
 	makedepends = meson
 	makedepends = appstream-glib
 	depends = gtk3
+	depends = python-gobject
 	depends = python-pillow
 	source = imeditor-0.9.4.tar.gz::https://github.com/ImEditor/ImEditor/archive/0.9.4.tar.gz
 	sha256sums = 82105705461431e1592399b59f1417b53e441d68d1de76b2a6b57ca7efcf0aa6
