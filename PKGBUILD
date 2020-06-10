@@ -5,8 +5,8 @@
 
 pkgname=gnat-gps
 pkgver=2020
-pkgrel=2
-_gps_version="20.2"
+pkgrel=3
+_gps_version="1b841d995bd6171f2462cad4a00c34cb6989fa7b"
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ source=("gps-${_gps_version}.tar.gz::https://github.com/AdaCore/gps/archive/$_gp
         0005-Fix-recursive-make-in-docs.patch
         gps.desktop)
 
-sha1sums=('bd0b5c3d3e1c411d2824f93f59534d783010e65c'
+sha1sums=('357780e1155b38a5ff8b5a4c9b088f88682860d4'
           'a737b6d7ee2d4a1193f088a0817070e545752dae'
           "$_laltools_checksum"
           '7befc021358ada26c6a332e623113b32317bfd8c'

@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
 	pkgver = 2020
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AdaCore/gps
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme-symbolic
 	depends = python2-gobject
 	optdepends = python2-jedi
-	source = gps-20.2.tar.gz::https://github.com/AdaCore/gps/archive/20.2.tar.gz
+	source = gps-1b841d995bd6171f2462cad4a00c34cb6989fa7b.tar.gz::https://github.com/AdaCore/gps/archive/1b841d995bd6171f2462cad4a00c34cb6989fa7b.tar.gz
 	source = ada_language_server-21.0.3.tar.gz::https://github.com/AdaCore/ada_language_server/archive/21.0.3.tar.gz
 	source = libadalang-tools-2020-20200429-1998C-src.tar.gz::https://community.download.adacore.com/v1/740372d8ffb1e4755a99bead2d78dace904235c0?filename=libadalang-tools-2020-20200429-1998C-src.tar.gz
 	source = 0001-Use-GPR.Sinput.Reference_Name.patch
@@ -31,7 +31,7 @@ pkgbase = gnat-gps
 	source = 0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
 	source = 0005-Fix-recursive-make-in-docs.patch
 	source = gps.desktop
-	sha1sums = bd0b5c3d3e1c411d2824f93f59534d783010e65c
+	sha1sums = 357780e1155b38a5ff8b5a4c9b088f88682860d4
 	sha1sums = a737b6d7ee2d4a1193f088a0817070e545752dae
 	sha1sums = 740372d8ffb1e4755a99bead2d78dace904235c0
 	sha1sums = 7befc021358ada26c6a332e623113b32317bfd8c
