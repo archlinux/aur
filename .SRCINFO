@@ -1,7 +1,7 @@
 pkgbase = vr-video-player-git
 	pkgdesc = A virtual reality video player for x11 on Linux
 	pkgver = r21.7f658e8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DEC05EBA/vr_video_player
 	arch = x86_64
 	license = custom:BSD3
@@ -14,7 +14,7 @@ pkgbase = vr-video-player-git
 	depends = libxcomposite
 	provides = vr-video-player
 	conflicts = vr-video-player
-	source = git+https://github.com/DEC05EBA/vr_video_player.git
+	source = git+https://gitgud.io/dec05eba/vr-video-player.git
 	sha512sums = SKIP
 
 pkgname = vr-video-player-git
