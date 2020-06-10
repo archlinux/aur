@@ -1,14 +1,17 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=jointris
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="Joinable tetris blocks with bombs"
-url='https://efanomars.com/jointris'
+url='https://efanomars.com/games/jointris'
 arch=('x86_64')
 license=('GPL3')
 
-depends=('stmm-games' 'stmm-input' 'gtkmm3')
+depends=(
+    'stmm-games>=0.24'
+    'stmm-input>=0.14'
+    'gtkmm3')
 makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
@@ -16,8 +19,8 @@ optdepends=()
 #replaces=("jointris")
 #conflicts=("jointris")
 
-source=('https://efanomars.com/sources/jointris-0.23.tar.gz')
-sha256sums=('16acb31fb7fe463016aa01275f1bff927213141b1601cf275aad3cceeefbc39c')
+source=('https://efanomars.com/sources/jointris-0.24.tar.gz')
+sha256sums=('a3923dad1508c2cf6b2b00bc00d9ee3f9617d3100992b8fb294b2e6ddd3349f8')
 
 build() {
   cd "${srcdir}/jointris"

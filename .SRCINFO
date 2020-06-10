@@ -1,8 +1,8 @@
 pkgbase = jointris
 	pkgdesc = Joinable tetris blocks with bombs
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
-	url = https://efanomars.com/jointris
+	url = https://efanomars.com/games/jointris
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -10,11 +10,11 @@ pkgbase = jointris
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python
-	depends = stmm-games
-	depends = stmm-input
+	depends = stmm-games>=0.24
+	depends = stmm-input>=0.14
 	depends = gtkmm3
-	source = https://efanomars.com/sources/jointris-0.23.tar.gz
-	sha256sums = 16acb31fb7fe463016aa01275f1bff927213141b1601cf275aad3cceeefbc39c
+	source = https://efanomars.com/sources/jointris-0.24.tar.gz
+	sha256sums = a3923dad1508c2cf6b2b00bc00d9ee3f9617d3100992b8fb294b2e6ddd3349f8
 
 pkgname = jointris
 
