@@ -1,10 +1,10 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=fofimon
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Monitor selected folders and files for modifications"
-url='https://efanomars.com/fofimon'
+url='https://efanomars.com/utilities/fofimon'
 arch=('x86_64')
 license=('GPL3')
 
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("fofimon")
 #conflicts=("fofimon")
 
-source=('https://efanomars.com/sources/fofimon-0.9.tar.gz')
-sha256sums=('722674a8d88b7614b32732ce9c61266155b712667e5bb139f3227fb1e3be2949')
+source=('https://efanomars.com/sources/fofimon-0.10.tar.gz')
+sha256sums=('8b3f00a5e7982f3ee81216cbd2aff37092dd7a2d4aea9958be9e13d69193463d')
 
 build() {
   cd "${srcdir}/fofimon"
