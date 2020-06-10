@@ -2,8 +2,8 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.8.0.dev.r6115.gc3c22c9d
-pkgrel=1
+pkgver=2.8.0.dev.r6226.g88a8ba97
+pkgrel=2
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
@@ -39,18 +39,12 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../krusader \
+  cmake -B build -S krusader \
     -DKDESU_PATH="/usr/lib/kf5/kdesu"
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
