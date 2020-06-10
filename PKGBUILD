@@ -67,5 +67,5 @@ package() {
 	msg "Setting permissions of ikemen directory to current user and the users group.."
 	chown -R $USER:users "$pkgdir/opt/$pkgname/"
 	msg "Setting permissions of ikemen shortcut to be executable.."
-	chmod 755 "$pkgdir/usr/bin/ikemen-go"
+	chown $USER:users "$pkgdir/usr/bin/ikemen-go"
 }
