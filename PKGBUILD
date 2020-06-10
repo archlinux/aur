@@ -13,17 +13,14 @@ conflicts=(processing processing-bin)
 depends=('jdk8' 'libgl')
 makedepends=('apache-ant' 'gendesk' 'unzip')
 options=(!strip)
-install=openjdkmsg.install
 # The Processing version scheme for the 3.5.x series uses a special magical
 # version number above 0266 in addition to the ordinary version number.
 # https is not available for reference.zip.
 source=("https://github.com/processing/processing/archive/processing-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
-        errormessage.patch
         no_downloads.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
-            'c6e9609c514730105aab1ee9786f89488e9f49509158743ab1dbea21c1378dcf'
             'e3490e4276d1bd33a00d8accad3d72500519477f8aca44703045d92faa342cf6')
 
 prepare() {
@@ -32,27 +29,12 @@ prepare() {
   # Symbolic link for not having to repeat the revision number
   ln -sf "processing-processing-"*"-$pkgver" $pkgname
 
-  # Add some details to one of the error messages
-  patch -p0 -i errormessage.patch
-
   # Copy reference.zip to the java directory
   mkdir -p $pkgname/java
   cp "$srcdir/reference.zip" $pkgname/java/
 
-  # Unpack reference.zip
-  mkdir -p $pkgname/build/linux/work/modes/java
-  unzip -q -u "$srcdir/reference.zip" -d $pkgname/build/linux/work/modes/java
-
-  # Disable the "We only like Java from Sun and Oracle" GUI message
-  sed -i 's,Messages.showWarning,\/\*Messages.showWarning,;s,null);,null);\*\/,' \
-    "$pkgname/app/src/processing/app/platform/LinuxPlatform.java"
-
   # Create missing directories
   mkdir -p $pkgname/build/linux/work/java
-
-  # Use the font's built-in hinting instructions
-  sed 's|  java|  _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp" java|g' \
-    -i $pkgname/build/linux/processing
 
   # Don't download any files during Ant's build process
   patch $pkgname/build/build.xml < no_downloads.patch
