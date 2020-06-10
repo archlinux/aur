@@ -4,11 +4,11 @@ pkgname=mbed-studio-bin
 _archivename=MbedStudio
 _binname=${pkgname%%-bin}
 DOMAIN="https://studio.mbed.com"
-ARCHIVE_PATH="/installers/release-0.9.1/0.9.1.a7d67582/linux/MbedStudio.tar.gz"
+ARCHIVE_PATH="/installers/release-1.0.0/1.0.0.24701316/linux/MbedStudio.tar.gz"
 CLANGD_FILENAME="clangd-8.0.1.zip"
 INTERNAL_CLANG_VER="8"
-pkgver=0.9.1
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="free IDE and toolchain for Mbed OS 5 application and library development, run as root for armc6 compiler"
 arch=('x86_64')
 url="https://os.mbed.com/studio/"
@@ -83,7 +83,7 @@ package() {
 	chmod +x "$EXEC_PATH"
 }
 
-md5sums=('c9acf7d6ea77e191c7497d8ed4221873'
+md5sums=('16153c63ad47b12903307795ce221828'
          'fdb5e9446da4a0b4b0794172d8891824'
          'ba5f16b0d7eeef5b124cd68078a38672'
          '7cf4ae1f6777f0c610125a59b0fefca6')
