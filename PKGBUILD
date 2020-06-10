@@ -8,7 +8,7 @@ _svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.3.r98066.gbd6336b970
+pkgver=4.3.r98097.g9dfb19baeb
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
