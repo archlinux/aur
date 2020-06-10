@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=github-cli-git
-pkgver=0.5.5.r25.g48ffd5a
-pkgrel=2
+pkgver=0.9.0.r156.g217998a
+pkgrel=1
 pkgdesc="The GitHub CLI tool"
 arch=('i686' 'x86_64')
 url="https://github.com/cli/cli"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 optdepends=("git: To interact with repositories")
 provides=('github-cli')
 conflicts=('github-cli')
@@ -26,15 +26,20 @@ build() {
   cd "cli"
 
   go build \
-    -trimpath \
+    -buildmode=pie \
     -ldflags "-extldflags $LDFLAGS" \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
     ./cmd/gh
 }
 
 check() {
   cd "cli"
 
-  go test ./...
+  go test \
+    -mod=readonly \
+    ./...
 }
 
 package() {
