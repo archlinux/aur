@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -9,13 +9,13 @@ arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
 depends=("libmpdclient")
-makedepends=("meson" "abseil-cpp>=20200225.2-2" "gtest-py3>=1.10" "gmock-py3>=1.10")
+makedepends=("meson" "abseil-cpp>=20200225.2-2" "gtest>=1.10" "gmock>=1.10")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
 )
 sha256sums=(
-  "04bc83a22e41ddb1163699f4bf8379364e20c479dbbccc35e7658ef9728dcd17"
+  "390ce9d758b23998409b989ad2768981fd8fc92713a00b21dbf4b35f368075c1"
 )
 
 
