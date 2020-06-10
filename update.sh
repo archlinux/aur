@@ -3,7 +3,7 @@
 AUR_NAME=sublime-music
 PROJ_NAME=sublime-music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
-URL=https://gitlab.com/sumner/sublime-music
+URL=https://sublimemusic.app
 DEPENDS=(
     python-bottle
     python-dataclasses-json
