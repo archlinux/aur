@@ -10,6 +10,7 @@ arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
 provides=('proton')
+conflicts=('proton-ge-custom-stable-bin')
 depends=('python'
          'vulkan-icd-loader')
 optdepends=('kdialog: KDE splash dialog support'
