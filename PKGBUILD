@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 273634 2017-12-10 21:50:40Z arojas $
-# Maintainer: Paul Wilk <paul.wilk@null.net>
+# Maintainer: Amiad <aur@hatul.info>
+# Contributor: Paul Wilk <paul.wilk@null.net>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Benjamin Andresen <benny@klapmuetz.org>
 # Contributor: Mikko Seppдlд <t-r-a-y@mbnet.fi>
 
 pkgname=xvkbd
-pkgver=3.8
+pkgver=4.1
 pkgrel=1
 pkgdesc="virtual (graphical) keyboard program for X Window System"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('libxmu' 'xaw3d' 'glibc' 'libxt' 'libxtst' 'libxp' 'libxpm')
 makedepends=('imake')
 source=(http://t-sato.in.coocan.jp/xvkbd/xvkbd-$pkgver.tar.gz)
-sha256sums=('2ca43d4f2eebd66aef7c89a17e019146f14ccfe85c731a818202a85fd6e2259b')
+sha256sums=('952d07df0fe1e45286520b7c98b4fd00fd60dbf3e3e8ff61e12c259f76a3bef4')
 
 build() {
   cd $pkgname-$pkgver
@@ -25,6 +25,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
+  mkdir -p "$pkgdir"/usr/share/X11
   make DESTDIR="$pkgdir" install
   # fix
   rm -f "$pkgdir"/usr/lib/X11/app-defaults
