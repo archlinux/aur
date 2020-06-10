@@ -1,0 +1,23 @@
+pkgbase = gnome-robots-git
+	pkgdesc = Avoid the robots and make them crash into each other
+	pkgver = 3.37.2+2+g40c285d
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Robots
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = git
+	depends = gtk3
+	depends = gsound
+	depends = librsvg
+	depends = libgnome-games-support
+	provides = gnome-robots
+	conflicts = gnome-robots
+	source = git+https://gitlab.gnome.org/GNOME/gnome-robots.git
+	sha512sums = SKIP
+
+pkgname = gnome-robots-git
+
