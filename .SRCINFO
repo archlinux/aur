@@ -1,0 +1,22 @@
+pkgbase = pathfinder-git
+	pkgdesc = A fast, practical GPU rasterizer for fonts and vector graphics
+	pkgver = 0.1.0.1494.g0f350092
+	pkgrel = 1
+	url = https://github.com/servo/pathfinder
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo-c
+	depends = harfbuzz
+	depends = fontconfig
+	provides = pathfinder
+	conflicts = pathfinder
+	source = git+https://github.com/servo/pathfinder
+	source = https://github.com/servo/pathfinder/pull/343.patch
+	sha256sums = SKIP
+	sha256sums = e7bd0e8dc5fccf0ede19622714213db6b633bdf283903d00833089408ab97ab8
+
+pkgname = pathfinder-git
+
