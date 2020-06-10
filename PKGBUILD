@@ -1,14 +1,16 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-xi
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Device input event library - xi floating keyboards"
-url='https://efanomars.com/stmm-input-xi'
+url='https://efanomars.com/libraries/stmm-input-xi'
 arch=('x86_64')
 license=('GPL3' 'LGPL3')
 
-depends=('stmm-input' 'gtkmm3' 'libx11' 'libxi')
+depends=(
+    'stmm-input>=0.14'
+    'gtkmm3' 'libx11' 'libxi')
 makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
@@ -16,8 +18,8 @@ optdepends=()
 #replaces=("stmm-input-xi")
 #conflicts=("stmm-input-xi")
 
-source=('https://efanomars.com/sources/stmm-input-xi-0.13.tar.gz')
-sha256sums=('95758d33d1d27d71152193b1c3ca74888afc18241be33e6c80943d0da365a9d8')
+source=('https://efanomars.com/sources/stmm-input-xi-0.14.tar.gz')
+sha256sums=('a5af628275349ca2d3403cd569d90e4661b81503877c88cf89978dba85e4da08')
 
 build() {
   cd "${srcdir}/stmm-input-xi"
