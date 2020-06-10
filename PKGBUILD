@@ -3,16 +3,16 @@
 
 pkgname=wrapland-git
 _pkgname=wrapland
-pkgver=0.518.0.beta.0.r13.g98aa219
+pkgver=0.519.0.beta.0.r15.g4120997
 pkgrel=1
 pkgdesc='Qt/C++ library that wraps and mediates the libwayland client and server API'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
-depends=('kwayland')
+depends=('kwayland' 'wayland')
 provides=("wrapland")
 conflicts=("wrapland")
-makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc wayland-protocols)
+makedepends=(extra-cmake-modules doxygen qt5-tools wayland-protocols pkgconf)
 source=("$_pkgname::git+https://gitlab.com/kwinft/wrapland.git")
 md5sums=('SKIP')
 
