@@ -1,3 +1,4 @@
+# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
@@ -29,6 +30,9 @@ prepare() {
         share/gprconfig/compilers.xml \
         share/gprconfig/linker.xml \
         share/gprconfig/gnat.xml
+
+    # bootstrap.sh is in fact not POSIX compliant
+    sed -i 's|^#!/bin/sh|#!/bin/bash|' bootstrap.sh
 }
 
 build() {
