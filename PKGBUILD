@@ -6,7 +6,7 @@ _svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-full
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -55,7 +55,7 @@ sha256sums=('9df6c90aed1337634c1fb026fb01c154c29c82a64ea71291ff2da9aacb9aad31'
             '269555538ec6d410b42ec43d22edd3eff2006208a1d4cbc8a028d9a432b81577'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
+            'cbcf51f37b17355b228b62862cfde141b0701f260d8bc3502a922f0f91303f9e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
