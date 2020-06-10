@@ -3,7 +3,7 @@
 _name=DXconvert
 pkgname=dxconvert
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A file conversion and manipulation toolkit for Yamaha FM synth patches"
 arch=('any')
 url="http://dxconvert.martintarenskeen.nl/"
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('python')
 optdepends=('castools: convert Cassette Interface data (DX100/27/21, DX9, TX81Z)'
             'python-rtmidi: MIDI input/output'
+            'tk: dxconvert and txconvert GUI'
             'zbar: convert patches from QR codes to SysEx')
 source=("http://home.kpn.nl/m.tarenskeen/download/sysex/${_name}/${_name}-${pkgver}.zip")
 sha256sums=('cad4af8cefef74fb991f2fcd0b03485c8a84b5c4c2c8f68067da5aed67975647')
