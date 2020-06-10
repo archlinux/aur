@@ -65,13 +65,13 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
 )
 options=('!strip')
 _ckpatch="patch-5.7-ck${_ckpatchversion}"
