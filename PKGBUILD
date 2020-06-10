@@ -6,18 +6,18 @@ pkgdesc='Linux kernel with AMDGPU DC patches'
 
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.7.904759.61216b3787162
+pkgver=5.6.891392.6302a40c6dfa
 pkgrel=1
 arch=(x86_64)
-url='https://cgit.freedesktop.org/~agd5f/linux/'
+url='https://gitlab.freedesktop.org/drm/amd'
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
-_srcname=${pkgbase}
+_srcname=linux-agd5f
 source=(
   "${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
@@ -26,7 +26,7 @@ source=(
   wno-maybe-initialized.patch
 )
 sha256sums=('SKIP'
-            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '8c8fb0be88fcd767e8768ee1bde491e8b4de83f6a644e002019d1d5a0da920f9'
             'b4e60ef20c47093ec47867439d057d936c6ba8384cc47a0d0737830c48bea63a')
@@ -96,7 +96,7 @@ _package-git() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -171,6 +171,9 @@ _package-headers-git() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
