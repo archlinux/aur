@@ -11,13 +11,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver=r2093.5451d287
+pkgver=r2223.727d73fe
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
 url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('libphutil' 'php' 'python')
+depends=('php' 'python')
 optdepends=('git: Git VCS support'
             'subversion: Subversion VCS support'
             'mercurial: Mercurial VCS support')
