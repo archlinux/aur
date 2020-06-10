@@ -1,0 +1,14 @@
+pkgbase = imgur-downloader
+	pkgdesc = Python script/class to download an entire Imgur album in one go into a folder of your choice.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.org/project/imgur-downloader/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.3
+	source = https://files.pythonhosted.org/packages/source/i/imgur_downloader/imgur_downloader-0.2.2.tar.gz
+	sha1sums = d7ea57eea65bbce02eaf1f9348d081b1145c7eb5
+
+pkgname = imgur-downloader
+
