@@ -19,12 +19,12 @@ install=openjdkmsg.install
 # https is not available for reference.zip.
 source=("https://github.com/processing/processing/archive/processing-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
-        build.xml
-        errormessage.patch)
+        errormessage.patch
+        no_downloads.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
-            '9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220'
-            'c6e9609c514730105aab1ee9786f89488e9f49509158743ab1dbea21c1378dcf')
+            'c6e9609c514730105aab1ee9786f89488e9f49509158743ab1dbea21c1378dcf'
+            'e3490e4276d1bd33a00d8accad3d72500519477f8aca44703045d92faa342cf6')
 
 prepare() {
   gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc"
@@ -54,8 +54,8 @@ prepare() {
   sed 's|  java|  _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp" java|g' \
     -i $pkgname/build/linux/processing
 
-  # Use a custom build.xml file for ant
-  cp -fv build.xml $pkgname/build/build.xml
+  # Don't download any files during Ant's build process
+  patch $pkgname/build/build.xml < no_downloads.patch
 }
 
 build() {

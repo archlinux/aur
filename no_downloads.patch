@@ -1,0 +1,83 @@
+--- processing-processing-0270-3.5.4/build/build.xml	2020-01-17 17:20:35.000000000 +0100
++++ build.xml	2020-06-10 15:40:24.506176847 +0200
+@@ -419,12 +419,6 @@
+       <isset property="version" />
+     </condition>
+ 
+-    <!--<echo message="ref ignoreable? ${reference.ignorable}" />-->
+-    <get src="http://download.processing.org/reference.zip"
+-         dest="../java/reference.zip"
+-         ignoreerrors="${reference.ignorable}"
+-         usetimestamp="true" />
+-
+     <unzip dest="${target.path}/modes/java"
+            src="../java/reference.zip"
+            overwrite="false">
+@@ -789,7 +783,7 @@
+     <fail message="wrong platform (${os.name})" />
+   </target>
+ 
+-  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jre-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
++  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
+     <mkdir dir="linux/work" />
+ 
+     <copy todir="linux/work" preservelastmodified="true">
+@@ -855,58 +849,6 @@
+     <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
+     <copy file="linux/appdata.xml" todir="linux/work/lib" />
+     <copy file="linux/desktop.template" todir="linux/work/lib" />
+-
+-<!--
+-    Cannot use ant version of tar because it doesn't preserve properties.
+-    <untar compression="gzip"
+-           dest="linux/work"
+-           src="linux/jre.tgz"
+-           overwrite="false"/>
+--->
+-
+-<!--
+-    http://www.gnu.org/software/tar/manual/html_section/transform.html
+--->
+-    <exec executable="tar" dir="linux">
+-      <!-- Change directory -->
+-      <!--
+-      <arg value="-C" />
+-      <arg value="linux/work" />
+-      <arg value="-xzpf" />
+-      -->
+-      <arg value="xfz" />
+-      <arg value="../${jre.tgz.path}"/>
+-    </exec>
+-
+-    <!-- use the jre subfolder when having downloaded a JDK file -->
+-    <condition property="jre.dir" value="jdk${jdk.esoteric}/jre">
+-      <!-- property might not be set, but it is for arm -->
+-      <equals arg1="${jre.download.jdk}" arg2="true" />
+-    </condition>
+-    <condition property="jre.dir" value="jre${jdk.esoteric}">
+-      <not>
+-        <equals arg1="${jre.download.jdk}" arg2="true" />
+-      </not>
+-    </condition>
+-
+-    <exec executable="rsync" dir="linux">
+-      <arg value="-a" />
+-      <arg value="--delete" />
+-      <arg value="${jre.dir}/" />
+-      <arg value="work/java/" />
+-    </exec>
+-
+-    <delete dir="linux/jre${jdk.esoteric}" failonerror="false" />
+-    <delete dir="linux/jdk${jdk.esoteric}" failonerror="false" />
+-
+-    <!-- Remove unused JRE bloat. -->
+-    <delete failonerror="true">
+-      <!--
+-      <fileset refid="javafx-basics" />
+-      <fileset refid="javafx-linux-${sun.arch.data.model}" />
+-      -->
+-      <fileset refid="jre-optional-linux" />
+-    </delete>
+   </target>
+ 
+   <target name="linux-run" depends="linux-build"
