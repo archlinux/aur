@@ -1,8 +1,9 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
-pkgname=sway-services-git
+_pkgname=sway-services
+pkgname=${_pkgname}-git
 pkgdesc="Collection of sway and friends systemd unit files"
-pkgver=r18.2320d33
+pkgver=r25.cd1b01f
 pkgrel=1
 arch=(any)
 depends=('sway')
@@ -14,15 +15,15 @@ license=('MIT')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	meson --prefix=/usr --buildtype=plain "$srcdir/${pkgname%-git}" build
+	arch-meson "$srcdir/${_pkgname}" build
 }
 
 package() {
 	DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
-	install -D -m 0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
