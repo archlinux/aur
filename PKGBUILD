@@ -2,7 +2,7 @@
 pkgname=ttf-nunito-sans
 pkgver=1.0
 pkgrel=1
-description='Nunito Sans is a well balanced sans serif font by Jaques Le Bailly.'
+pkgdesc="A well balanced sans serif font by Jaques Le Bailly."
 arch=(any)
 license=(custom:OFL)
 source=("Nunito_Sans.zip::https://fonts.google.com/download?family=Nunito%20Sans")
