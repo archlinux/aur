@@ -1,7 +1,7 @@
 # Maintainer: Hans-Peter Deifel <hpd@hpdeifel.de>
 pkgname=hledger-iadd-bin
 _pkgname=hledger-iadd
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="Terminal UI as drop-in replacement for hledger add"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=(gmp)
 provides=(hledger-iadd)
 source=(https://github.com/hpdeifel/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-archlinux.tar.xz)
-sha1sums=('d5d97efcb7638540811fb2473d437166106a3933')
-sha256sums=('ad8869a8100e8c32b88449be6247692ef55b6bbad26c8e9cc0ab85c293bc7194')
+sha1sums=('ef6af5f73c402b79ec8a312d4fc293114aeb73b2')
+sha256sums=('2b0e497f1fd21b41f945932cf9ea6b89e07fe7e4bc3be36a0ec4cca83d9f9734')
 
 package() {
   cd "$srcdir/"
