@@ -5,28 +5,29 @@
 
 pkgname=lightzone
 pkgver=4.2.1
-pkgrel=1
-pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
+pkgrel=2
+pkgdesc="Open-source professional-level digital darkroom software"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime=11'
+depends=('java-runtime=14'
+    'java-openjfx'
     'javahelp2'
     'lcms2'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment=11'
+makedepends=('java-environment=14'
     'ant'
     'autoconf'
     'gcc'
     'make'
     'git'
     'libx11'
-    'pkg-config'
+    'pkgconf'
     'rsync'
     'javahelp2'
     'lcms2'
@@ -36,17 +37,19 @@ makedepends=('java-environment=11'
 source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
 md5sums=('bf64dad3db8d524bfa060b01387fd5e9')
 
-# https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
-MAKEFLAGS="-j1"
-
 build() {
-  cd "${srcdir}/LightZone-${pkgver}/"
-  if [ -d /usr/lib/jvm/java-11-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-11-jdk
+  if [ -d /usr/lib/jvm/java-14-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-14-jdk
+  elif [ -d /usr/lib/jvm/java-14-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
   else
     export JAVA_HOME=/usr/lib/jvm/default
   fi
 
+  # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
+  MAKEFLAGS="-j1"
+
+  cd "${srcdir}/LightZone-${pkgver}/"
   sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
   ant -f linux/build.xml jar
 }
@@ -56,12 +59,12 @@ package() {
 
   _libexecdir=/usr/lib
   install -dm 0755 "${pkgdir}/${_libexecdir}/${pkgname}"
-  cp -pHR linux/products/*.so "${pkgdir}/${_libexecdir}/${pkgname}"
+  cp -pH linux/products/*.so "${pkgdir}/${_libexecdir}/${pkgname}"
   _javadir=/usr/share/java
   install -dm 0755 "${pkgdir}/${_javadir}/${pkgname}"
   cp -pH lightcrafts/products/dcraw_lz "${pkgdir}/${_javadir}/${pkgname}"
   cp -pH lightcrafts/products/LightZone-forkd "${pkgdir}/${_javadir}/${pkgname}"
-  cp -pHR linux/products/*.jar "${pkgdir}/${_javadir}/${pkgname}"
+  cp -pH linux/products/*.jar "${pkgdir}/${_javadir}/${pkgname}"
 
   # create icons and shortcuts
   _datadir=/usr/share

@@ -1,24 +1,25 @@
 pkgbase = lightzone
-	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom
+	pkgdesc = Open-source professional-level digital darkroom software
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lightzoneproject.org/
 	arch = x86_64
 	license = custom:BSD-3-Clause
-	makedepends = java-environment=11
+	makedepends = java-environment=14
 	makedepends = ant
 	makedepends = autoconf
 	makedepends = gcc
 	makedepends = make
 	makedepends = git
 	makedepends = libx11
-	makedepends = pkg-config
+	makedepends = pkgconf
 	makedepends = rsync
 	makedepends = javahelp2
 	makedepends = lcms2
 	makedepends = libjpeg-turbo
 	makedepends = libtiff
-	depends = java-runtime=11
+	depends = java-runtime=14
+	depends = java-openjfx
 	depends = javahelp2
 	depends = lcms2
 	depends = lensfun
