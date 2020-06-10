@@ -10,7 +10,7 @@ pkgdesc="An email application built around conversations, for the GNOME 3 deskto
 arch=(i686 x86_64)
 url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
-depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime3' 'gtk3'
+depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime3' 'gtk3' 'gsound'
          'gnome-online-accounts' 'gspell' 'libgee' 'libhandy' 'libnotify'
          'libpeas' 'libsoup' 'libunwind' 'libxml2' 'libytnef' 'sqlite'
          'webkit2gtk')

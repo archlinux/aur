@@ -17,6 +17,7 @@ pkgbase = geary-git
 	depends = gcr
 	depends = gmime3
 	depends = gtk3
+	depends = gsound
 	depends = gnome-online-accounts
 	depends = gspell
 	depends = libgee
