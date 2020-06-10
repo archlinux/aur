@@ -2,7 +2,7 @@
 
 pkgname=git-lfs-git
 pkgver=2.11.0.r18.g8badaa96
-pkgrel=1
+pkgrel=2
 pkgdesc="Git extension for versioning large files"
 arch=('i686' 'x86_64')
 url="https://git-lfs.github.com/"
@@ -32,6 +32,14 @@ build() {
     -ldflags "-extldflags $LDFLAGS" \
     ./
   make man
+}
+
+check() {
+  cd "git-lfs"
+
+  go test \
+    -mod=readonly \
+    ./...
 }
 
 package() {
