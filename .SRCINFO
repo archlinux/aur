@@ -1,14 +1,15 @@
 pkgbase = rocclr
 	pkgdesc = Radeon Open Compute Common Language Runtime
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCm-Developer-Tools/ROCclr
 	arch = x86_64
 	license = unknown
-	makedepends = git
 	makedepends = cmake
 	depends = mesa
 	depends = comgr
+	depends = hsa-rocr
+	depends = hsakmt-roct
 	depends = rocm-cmake
 	source = rocclr-3.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/roc-3.5.0.tar.gz
 	source = rocclr-opencl-3.5.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-3.5.0.tar.gz
