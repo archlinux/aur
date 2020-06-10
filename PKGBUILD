@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-pkgname=qogir-gtk-themes
+pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
 _pkgver=2020-02-26
 pkgver=${_pkgver//-/.}
