@@ -3,9 +3,9 @@
 # Contributor: Adam S Levy <adam@aslevy.com>
 
 
-pkgname='telegraf'
-pkgver='1.14.3'
-pkgrel='1'
+pkgname=telegraf
+pkgver=1.14.4
+pkgrel=1
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
@@ -18,40 +18,36 @@ source=("https://github.com/influxdata/${pkgname}/archive/v${pkgver}/${pkgname}-
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('88c028d22c46cc65d51689e13b3ed25e0e583eda4fbf967aa8dc6e44ab508ba0'
+sha256sums=('146110daee518a1abf22f03fe87b633fb1d4455c053bf4fdf8b02ea0905d0bca'
             'b8494d35b868a256eace5f7baa7caa9d8561ee506aded3c47bd6b2ee031b0745'
             'ef54a27c036f11c44f32a42c81787dd0253f84e77170c2e8f9e268aca8773c33'
             'acf95397a51077b7684e8e4f4db7266c42cf82f24bc969ef2bc112a0f914f4cd'
             '95284d1e92f812c4c301cd1f35692850ae127397e33b910a5af7f54bbeb8986e')
 
 prepare() {
-  export GOPATH="${srcdir}"
-
-  mkdir -p "${GOPATH}/"{bin,src/github.com/influxdata}
-  ln -fsT "${srcdir}/${pkgname}-${pkgver}" \
-    "${GOPATH}/src/github.com/influxdata/${pkgname}"
-  cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
-  go mod download -x
+  cd "${pkgname}-${pkgver}"
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"
-
-  cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
-  _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -extldflags ${LDFLAGS}"
-  go build -v -o "${GOPATH}/bin/" -ldflags="${_LDFLAGS}" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "./..."
-  go clean -modcache
+  cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  _LDFLAGS="-X main.version=${pkgver} -X main.branch=tag-${pkgver} -X main.commit=tag-${pkgver} -extldflags ${LDFLAGS}"
+  go build -o build -ldflags="${_LDFLAGS}" "./..."
 }
 
 package() {
-  _BIN="${srcdir}/bin"
-
   # binary
-  install -D -m755 "${_BIN}/telegraf" "${pkgdir}/usr/bin/telegraf"
+  install -D -m755 "${srcdir}/${pkgname}-${pkgver}/build/telegraf" \
+    "${pkgdir}/usr/bin/telegraf"
 
   # configuration files
   install -dD -m755 "${pkgdir}/etc/telegraf/telegraf.d"
-  "${_BIN}/telegraf" -sample-config > "${pkgdir}/etc/telegraf/telegraf.conf"
+  "${srcdir}/${pkgname}-${pkgver}/build/telegraf" -sample-config > \
+    "${pkgdir}/etc/telegraf/telegraf.conf"
 
   # license
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
