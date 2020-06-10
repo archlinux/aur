@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
 	pkgver = 5.9_GE_1_MF
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = proton-ge-custom-bin
 	optdepends = xboxdrv: gamepad driver service
 	optdepends = python-cef: generic splash dialog support
 	provides = proton
+	conflicts = proton-ge-custom-stable-bin
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
 	source = proton-ge-custom-5.9-GE-1-MF.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.9-GE-1-NR/Proton-5.9-GE-1-MF.tar.gz
