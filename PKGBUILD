@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
     arch-meson yaru build
+    meson configure build -Dubuntu-unity=true
     ninja -C build
 }
 
