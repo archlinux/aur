@@ -1,10 +1,5 @@
-function post_install {
-    echo "All user data is stored in your home directory."
-    echo "However, you should still keep a backup of the data in /opt/etterna if you reinstall/remove Etterna!"
-}
-
 function post_upgrade {
-    post_install
+    test -d ~/.stepmania-5.0/Save && cp -ar ~/.stepmania-5.0/Save/ /opt/etterna/
 }
 
 function post_remove {

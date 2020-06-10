@@ -1,7 +1,8 @@
 # Maintainer: Zachery Gyurkovitz <zgyurkovitz@gmail.com>
+# Maintainer: Mado <madoushi@tutanota.com>
 
 pkgname=etterna
-pkgver=0.68.1
+pkgver=0.69.1
 pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ source=(
     "${pkgname}.desktop"
 )
 sha256sums=(
-    "dd1322128d06ec41c8425d2068d921ae1da81ecabdb0eb7d821c6b7b8b249c92"
+    "b5c9363498f3abc923e403cc096a7b9504dbead3b0eeb40c32f56068b72c59b9"
     "7b497e7d3d74c2f3ebf1634fe0b576603099c372f7787a21646976d76e0e0995"
 )
 build() {
@@ -63,5 +64,7 @@ package() {
         "Scripts/" \
         "Songs/" \
         "Themes/"
+    
+    touch portable.ini
 
 }
