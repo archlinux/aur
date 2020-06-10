@@ -9,9 +9,8 @@ pkgbase = processing-jdk8
 	license = LGPL
 	makedepends = apache-ant
 	makedepends = gendesk
-	makedepends = java8-openjfx
 	makedepends = unzip
-	depends = java-runtime=8
+	depends = jdk8
 	depends = libgl
 	provides = processing
 	conflicts = processing

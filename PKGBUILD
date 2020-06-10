@@ -10,8 +10,8 @@ license=(GPL LGPL)
 provides=(processing)
 conflicts=(processing processing-bin)
 # Can upgrade to OpenJDK 10 once java-openjfx has been upgraded to support it
-depends=(java-runtime=8 libgl)
-makedepends=(apache-ant gendesk java8-openjfx unzip)
+depends=('jdk8' 'libgl')
+makedepends=('apache-ant' 'gendesk' 'unzip')
 options=(!strip)
 install=openjdkmsg.install
 # The Processing version scheme for the 3.5.x series uses a special magical
@@ -85,7 +85,7 @@ package() {
 
   # Processing does not work with OpenJDK 10 or 11, use OpenJDK 8
   #ln -s /usr/lib/jvm/default-runtime/ "$pkgdir/usr/share/processing/java"
-  ln -s /usr/lib/jvm/java-8-openjdk/ "$pkgdir/usr/share/processing/java"
+  ln -s /usr/lib/jvm/java-8-jdk/ "$pkgdir/usr/share/processing/java"
 }
 
 # vim: ts=2 sw=2 et
