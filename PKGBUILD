@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/fuel_tools"
@@ -13,10 +13,10 @@ depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3'
 makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-fuel-tools/get/ignition-fuel-tools4_${pkgver}.tar.bz2")
-sha256sums=('9dd43effdd7359413fd1aa120e79337ea036bf28bbfb33f1f828050e90f42163')
+source=("https://github.com/ignitionrobotics/ign-fuel-tools/archive/${pkgname//_/-}4_${pkgver}.tar.gz")
+sha256sums=('01c0b6ae676273853e56dedd32baaf934f4efbfa7d4012967527a2a5fc2f3002')
 
-_dir="ignitionrobotics-ign-fuel-tools-34b8b2d83cf7"
+_dir="ign-fuel-tools-${pkgname//_/-}4_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
@@ -25,8 +25,7 @@ build() {
   cd build
 
   # Configure build
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING:BOOL=False
 
