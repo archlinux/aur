@@ -1,18 +1,18 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.7.r48.g5b1497bfe6030
+pkgver=5.7.1.r19.ge0d757a395d1
 _kernel_rel=5.7
 _branch=pf-${_kernel_rel}
-_product=linux-pf
+_product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -24,7 +24,7 @@ source=(
   pf_defconfig
   sphinx-workaround.patch)
 sha256sums=('SKIP'
-            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
@@ -94,10 +94,10 @@ _package-git() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm -f "$modulesdir"/{source,build}
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers-git() {
@@ -169,6 +169,9 @@ _package-headers-git() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
