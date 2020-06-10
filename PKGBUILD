@@ -2,7 +2,7 @@
 
 pkgname=alusus
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية"
 arch=('x86_64')
 url="https://alusus.org/"
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  cp -r "$srcdir/Alusus/opt/Alusus" "$pkgdir/opt/"
+  cp -r "$srcdir/Alusus/opt/" "$pkgdir/opt/"
 }
 
