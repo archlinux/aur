@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cpuid2cpuflags-git
-pkgver=8.r2.g9fde693
-pkgrel=2
-pkgdesc='Tool to generate CPU_FLAGS_* for your CPU (git version)'
+pkgver=10.r0.g12db607
+pkgrel=1
+pkgdesc='Tool to get the instruction sets supported by your CPU (git version)'
 arch=('x86_64')
 url='https://github.com/mgorny/cpuid2cpuflags/'
 license=('BSD')
