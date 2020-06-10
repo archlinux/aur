@@ -1,10 +1,12 @@
 pkgbase = radical-native-bin
 	pkgdesc = Extending Riot Web with native capabilities
 	pkgver = 0.1.0beta13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stoically/radical-native
 	arch = x86_64
 	license = MIT
+	depends = sqlcipher
+	depends = libsecret
 	noextract = 
 	source = https://github.com/stoically/radical-native/releases/download/v0.1.0beta13/radical-native_v0.1.0beta13_x86-amd64.deb
 	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1.0beta13/LICENSE

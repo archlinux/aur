@@ -6,11 +6,12 @@
 pkgname=radical-native-bin
 _name=radical-native
 pkgver=0.1.0beta13
-pkgrel=3
+pkgrel=4
 pkgdesc='Extending Riot Web with native capabilities'
 arch=('x86_64')
 license=('MIT')
-depends=("firefox")
+depends=('sqlcipher'
+         'libsecret')
 _repo="stoically/$_name"
 url="https://github.com/$_repo"
 _rawurl="https://raw.githubusercontent.com/$_repo"
