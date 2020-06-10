@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/extremeshok/clamav-unof
     'clamav-unofficial-sigs.8'
     'os.conf'
 )
-sha256sums=('20e1bd6da863513ec1dc42c3f498ca1dfe1c1845110442c2e4595df6ab8341ed'
+sha256sums=('55e92a09fb6eb2026da5ec38f66531f0090b04020cb2818fd7f581a45869ec50'
             '0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e'
             'd5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca'
             'bc5409c3d7006207bf83b7b30cb4c9fcd2aacb68c6cfbf3c5063bd265f47fcb3'
