@@ -2,13 +2,13 @@
 
 pkgname=chihaya
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A customizable, multi-protocol BitTorrent tracker"
 arch=('i686' 'x86_64')
 url="https://github.com/chihaya/chihaya"
 license=('BSD')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 backup=('etc/chihaya.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chihaya/chihaya/archive/v$pkgver.tar.gz"
         "chihaya.service::https://aur.archlinux.org/cgit/aur.git/plain/chihaya.service?h=chihaya-git"
@@ -25,9 +25,11 @@ build() {
 
   GO111MODULE=on \
     go build \
-      -trimpath \
+      -buildmode=pie \
       -ldflags "-extldflags $LDFLAGS" \
-      ./cmd/chihaya
+      -trimpath \
+      -modcacherw \
+      ./cmd/...
 }
 
 check() {
