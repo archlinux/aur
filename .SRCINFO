@@ -1,0 +1,21 @@
+pkgbase = qogir-gtk-themes
+	pkgdesc = Qogir is a flat Design theme for GTK
+	pkgver = 2020.02.26
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Qogir-theme
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	optdepends = kvantum-theme-qogir-git: Matching Kvantum theme
+	optdepends = qogir-icon-theme: Matching icon theme
+	optdepends = vimix-cursors: Matching cursor theme
+	optdepends = tela-icon-theme: Recommended icon theme
+	conflicts = qogir-gtk-themes-git
+	options = !strip
+	source = qogir-gtk-themes-2020.02.26.tar.gz::https://github.com/vinceliuice/Qogir-theme/archive/2020-02-26.tar.gz
+	sha256sums = SKIP
+
+pkgname = qogir-gtk-themes
+
