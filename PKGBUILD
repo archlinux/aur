@@ -1,8 +1,3 @@
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
-# Co-Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
-# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
-# Contributor: Eothred <yngve.levinsen@gmail.com>
-
 pkgname=radical-native-bin
 _name=radical-native
 pkgver=0.1.0beta13
