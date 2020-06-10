@@ -1,8 +1,9 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=gprbuild-bootstrap-git
-pkgver=r3154.7e996a6c
+pkgver=r3601.cf5c323f
 pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
@@ -33,6 +34,9 @@ prepare() {
         share/gprconfig/compilers.xml \
         share/gprconfig/linker.xml \
         share/gprconfig/gnat.xml
+
+    # bootstrap.sh is in fact not POSIX compliant
+    sed -i 's|^#!/bin/sh|#!/bin/bash|' bootstrap.sh
 }
 
 build() {
