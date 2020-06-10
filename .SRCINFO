@@ -1,7 +1,7 @@
 pkgbase = min12xxw
 	pkgdesc = Minolta PagePro 1[234]xxW printers driver
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hinterbergen.de/mala/min12xxw/
 	arch = i686
 	arch = x86_64
