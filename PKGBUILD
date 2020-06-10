@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=git-lfs-git
-pkgver=2.10.0.r6.gc3b776db
-pkgrel=2
+pkgver=2.11.0.r18.g8badaa96
+pkgrel=1
 pkgdesc="Git extension for versioning large files"
 arch=('i686' 'x86_64')
 url="https://git-lfs.github.com/"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go-pie' 'glide' 'ruby-ronn')
+makedepends=('git' 'go' 'go-tools' 'ruby-ronn')
 provides=('git-lfs')
 conflicts=('git-lfs')
 source=("git+https://github.com/git-lfs/git-lfs.git")
@@ -25,8 +25,10 @@ build() {
   cd "git-lfs"
 
   go build \
-    -mod=vendor \
+    -buildmode=pie \
+    -mod=readonly \
     -trimpath \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS" \
     ./
   make man
