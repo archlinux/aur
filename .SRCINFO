@@ -1,0 +1,21 @@
+pkgbase = unexicon-sound-theme
+	pkgdesc = XDG sound theme for the unexicon distribution
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bbidulock/
+	arch = any
+	groups = unexicon
+	license = GPL
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = flite
+	makedepends = flite-voices
+	makedepends = sox
+	depends = sound-theme-freedesktop
+	depends = sound-theme-smooth
+	depends = linux-a11y-sound-theme
+	source = https://github.com/bbidulock/unexicon-sound-theme/releases/download/1.0/unexicon-sound-theme-1.0.tar.lz
+	sha256sums = 0d9d3f72dd27e2da7a2cf47ddf4f100882102e0aeb55bfce16b132de4814c115
+
+pkgname = unexicon-sound-theme
+
