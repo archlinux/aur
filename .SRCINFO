@@ -1,7 +1,7 @@
 pkgbase = libksysguard-light
-	pkgdesc = Libraries for ksysguard without the big dependency on qt5-webengine
+	pkgdesc = Libraries for ksysguard to retrieve information on the current status of computer hardware without the big dependency on qt5-webengine
 	pkgver = 5.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = x86_64
 	groups = plasma
@@ -11,6 +11,7 @@ pkgbase = libksysguard-light
 	makedepends = plasma-framework
 	depends = libxres
 	depends = knewstuff
+	depends = kdeclarative
 	provides = libksysguard
 	conflicts = libksysguard
 	replaces = libksysguard
