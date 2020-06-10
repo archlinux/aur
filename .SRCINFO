@@ -1,0 +1,15 @@
+pkgbase = magewell-pro-capture-dkms
+	pkgdesc = Driver for Magewell Pro Capture Family
+	pkgver = 1.3.0.4177_1
+	pkgrel = 1
+	url = https://www.magewell.com/downloads/pro-capture#/driver/linux-x86
+	arch = x86_64
+	license = unknown
+	depends = dkms
+	depends = alsa-lib
+	conflicts = magewell-pro-capture
+	source = magewell-pro-capture-1.3.0.4177_1.tar.gz::https://github.com/jat001/magewell-pro-capture/archive/1.3.0.4177_1.tar.gz
+	sha256sums = cd9de1d4a69fb4716eb443c41501fe0a37349e7601f02c7c3a33d91adb359551
+
+pkgname = magewell-pro-capture-dkms
+
