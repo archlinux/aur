@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.18.1.1.g5342323
-pkgrel=1
+pkgrel=2
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -24,32 +24,25 @@ sha256sums=('SKIP'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
             'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
 
-
 pkgver() {
-	cd "$srcdir/$_pkgbase"
+	cd $_pkgbase
 	#_ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
         #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 	git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-        mkdir -p build
-}
-
 build() {
-        cd build
-	cmake "$srcdir/$_pkgbase" \
+  cmake -B build -S $_pkgbase \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
