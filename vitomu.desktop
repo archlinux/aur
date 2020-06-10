@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vitomu
+Exec=vitomu
+Terminal=false
+Type=Application
+Icon=vitomu
+StartupWMClass=Vitomu
+Comment=Easy to use video to audio converter
+Categories=Utility;
