@@ -4,8 +4,8 @@
 # and from https://github.com/beakerbrowser/beaker/blob/master/package.json
 
 pkgname=beaker-browser-git
-pkgver=0.8.10.r2.g54651db80
-pkgrel=2
+pkgver=1.0.0.prerelease.7.r3.g4b8204918
+pkgrel=1
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
@@ -32,11 +32,12 @@ pkgver() {
 }
 
 prepare() {    
-    cd ${srcdir}/${pkgname}
+    cd ${srcdir}/${pkgname}/scripts
     npm install
     npm run rebuild #see https://github.com/electron/electron/issues/5851
     npm run release
 
+    cd ../
     for icon in '1024x1024' '16x16' '256x256' '48x48' '64x64' '128x128' '24x24' '32x32' '512x512' '96x96'
     do
         mkdir -p hicolor/${icon}/apps/
