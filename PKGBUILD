@@ -2,7 +2,7 @@
 
 pkgname=sibs-git
 pkgver=r262.646f3d6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
 url="https://github.com/DEC05EBA/sibs"
@@ -11,7 +11,7 @@ depends=('curl' 'libarchive' 'libgit2' 'ninja' 'cmake' 'ccache')
 optdepends=('git')
 provides=('sibs')
 conflicts=('sibs')
-source=("git+https://github.com/DEC05EBA/sibs.git")
+source=("git+https://gitgud.io/dec05eba/sibs.git")
 sha512sums=('SKIP')
 
 pkgver() {
