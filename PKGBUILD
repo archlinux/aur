@@ -62,15 +62,15 @@ build() {
 package() {
 
 	# package installation: under /opt
-	install -d "$pkgdir/opt/$pkgname/"
-	cp -a "$srcdir/Ikemen_GO-master/." "$pkgdir/opt/$pkgname"
+	install -dm777 "$pkgdir/opt/$pkgname/"
+	cp -a "$srcdir/Ikemen_GO-master/" "$pkgdir/opt/$pkgname"
 
 	#set permissions to current user for the package under /opt
-	msg "Setting permissions of ikemen directory to current user and the users group.."
-	chown -R $USER:users "$pkgdir/opt/$pkgname/"
+	#msg "Setting permissions of ikemen directory to current user and the users group.."
+	#chown -R $USER:users "$pkgdir/opt/$pkgname/"
 
 	# create dir and put shebang shortcut under /usr/bin
 	install -d "$pkgdir/usr/bin"
 	install -m755 "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
-	chmod a+x "$pkgdir/usr/bin/ikemen-go"
+	chmod 0755 "$pkgdir/usr/bin/ikemen-go"
 }
