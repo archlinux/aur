@@ -27,45 +27,37 @@ build() {
 	chmod +x build.sh
 	./get.sh
 
-	# create the dir for build process to work
+	# create the dir for build process to work and compile
 	mkdir -p ../script
-	# compile
 	./build.sh
 
-	# move linux files in `bin` outside and delete bin folder
+	# move linux files in root directory and delete bin folder
 	cd "$srcdir/Ikemen_GO-master/bin"
 	cp -r * ..
 	cd ..	
-
-	# delete build folder and other unnecessary directories
-	rm -rf bin
-	rm -rf build
-	rm -rf go
 	
-	# delete go.mod, go.sum .gitignore, .gitattributes
-	rm go.mod
-	rm go.sum
-	rm .gitignore
-	rm .gitattributes 
-	
-	# move ELECBYTE resources
+	# copy ELECBYTE resources and delete other copy
 	cd "$srcdir/Ikemen_GO-Elecbyte-Screenpack-master"
 	cp -rf * "$srcdir/Ikemen_GO-master"
 	cd ..
-	
 	rm -rf "Ikemen_GO-Elecbyte-Screenpack-master"
 }
 
 package() {
-	# create the directory under /opt and copy files in there
-	install -dm755 "$pkgdir/opt"
-	cp -a "$srcdir/Ikemen_GO-master" "$pkgdir/opt/$pkgname"
+	# remove unnecessary files
+	rm -rf "$srcdir/Ikemen_GO-master/go"
+	rm -rf "$srcdir/Ikemen_GO-master/bin"
+	rm -rf "$srcdir/Ikemen_GO-master/build"
+	rm "$srcdir/Ikemen_GO-master/go.mod"
+	rm "$srcdir/Ikemen_GO-master/go.sum"
+	rm "$srcdir/Ikemen_GO-master/.gitignore"
+	rm "$srcdir/Ikemen_GO-master/.gitattributes" 
 
-	# set permisisons for dirs/files
-	find "$pkgdir/opt/$pkgname" -type d -exec chmod 777 {} \;
-	find "$pkgdir/opt/$pkgname" -type f -exec chmod 777 {} \;
+	# package installation: under /opt
+	install -dm777 "$pkgdir/opt/$pkgname/"
+	cp -a "$srcdir/Ikemen_GO-master/." "$pkgdir/opt/$pkgname"
 
-	# shebang shortcut within /ur/bin
+	# shebang shortcut under /usr/bin
 	install -d "$pkgdir/usr/bin"
 	cp "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
 }
