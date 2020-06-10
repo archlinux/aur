@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=31.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('any')
@@ -24,18 +24,20 @@ optdepends=('glew: for GPU commercial flagging'
             'mariadb-clients: Database-Frontend for client deployment'
             'python-requests: for metadata-lookup / cover art'
             'python-requests-cache: for metadata-lookup / cover art'
-            'xmltv>0.6.1: for Schedule Direct TV listings')
+            'xmltv: for Schedule Direct TV listings')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
         'mythbackend.service'
         '99-mythbackend.rules'
         'sysusers.d'
+        '001-mythpainter.patch'
 )
 sha256sums=('907d1747950ec6ef1ec965069c75500b4538b781333f60e16d62d519b221a86d'
             '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
+            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+            'fcb078842ecceb636183ed358fb4acfb25ddbe456b2529763519a6661a29baec')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
