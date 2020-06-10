@@ -3,20 +3,20 @@
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-tools
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ignition tools provide the ign command line tool that accepts multiple subcommands."
 arch=('any')
-url="https://bitbucket.org/ignitionrobotics/ign-tools"
+url="https://github.com/ignitionrobotics/ign-tools"
 license=('Apache')
 groups=('development')
 makedepends=('cmake' 'doxygen' 'pkg-config' 'ruby-ronn')
 depends=('ruby')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-tools/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('268a23b8d45ec771c8e23c3dab3e8102cfeb027b37450be12b05c6655756ac21')
+source=("https://github.com/ignitionrobotics/ign-tools/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('ea7036e73ad7893fee7c7dc06e1760f11e0cac57c024886a371359ce2768cce7')
 
-_dir="ignitionrobotics-ign-tools-db789c2424b4"
+_dir="ign-tools-${pkgname}_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
