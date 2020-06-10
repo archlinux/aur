@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
 groups=('xde')
@@ -12,7 +12,7 @@ depends=('libxss' 'libsm' 'libwnck+' 'libcanberra' 'libnotify')
 makedepends=('dbus-glib' 'libunique')
 optdepends=('xdg-launch: launch with recent update and launch notification')
 source=("https://github.com/bbidulock/xde-ctools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.lz")
-sha256sums=('750583c76cf50bdf96f3283914f37fa33b508f4f1692680ec39a0e06685fe02b')
+sha256sums=('160c2a122e764ecca2de9db3e32a20b5a5bba69a425a1bd6174e537e2ce6ddaf')
 
 build() {
   cd $pkgname-$pkgver
