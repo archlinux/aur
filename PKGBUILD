@@ -2,7 +2,7 @@
 
 _basename=lilv
 pkgname=lib32-lilv
-pkgver=0.24.6
+pkgver=0.24.8
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 depends=('lib32-sratom' 'lilv')
 makedepends=('lib32-libsndfile' 'lib32-lv2' 'waf')
 source=("https://download.drobilla.net/$_basename-$pkgver.tar.bz2"{,.sig})
-sha512sums=('0cf89d7dac97727e744579d3f4f4b330f56cf72f1a30bd03abfd645233aaf04e9bbf2abf460a0e4b963ed40e1ae78ed5f36127553bdab16e3e7dd3e93b70cdad'
+sha512sums=('f2b2638372a8280041f6e88e2077f2109f89dad6feedb9d07a88c6b5a05c37b62112f5d03282da4335ddd0d14339cfb49ad96a3df3de310265a40c24718be192'
             'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3')
 
@@ -45,7 +45,7 @@ build() {
                   --dyn-manifest \
                   --test
 
-    waf build
+    waf -v build
 }
 
 check() {
