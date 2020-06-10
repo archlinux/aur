@@ -6,6 +6,7 @@ pkgbase = php-humbug-box-bin
 	install = php-humbug-box.install
 	arch = any
 	license = MIT
+	provides = php-box
 	conflicts = php-box
 	source = https://github.com/humbug/box/releases/download/3.8.4/box.phar
 	source = https://raw.githubusercontent.com/humbug/box/3.8.4/LICENSE
