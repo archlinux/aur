@@ -1,4 +1,5 @@
 pkgbase = ttf-nunito-sans
+	pkgdesc = A well balanced sans serif font by Jaques Le Bailly.
 	pkgver = 1.0
 	pkgrel = 1
 	arch = any
