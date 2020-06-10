@@ -8,8 +8,8 @@ _dev_plugins=
 ### Do not edit below this line unless you know what you're doing
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.315.gd391ffa
-pkgrel=1
+pkgver=1.1.345.ga0acd31
+pkgrel=2
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
 url="https://psi-plus.com"
@@ -52,18 +52,15 @@ prepare() {
 }
     
 build() {
-  cd $srcdir/psi
   if [ -n "$_dev_plugins" ]; then
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON -DPSI_PLUS=ON..
+  cmake -B build -S psi -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON -DPSI_PLUS=ON..
   else
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DPSI_PLUS=ON..
+  cmake -B build -S psi -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DPSI_PLUS=ON..
   fi
-  make
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/psi
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 

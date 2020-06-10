@@ -1,7 +1,7 @@
 pkgbase = psi-plus-plugins-git
 	pkgdesc = Additional plugins for Psi+ (built with Qt 5.x)
-	pkgver = 1.1.315.gd391ffa
-	pkgrel = 1
+	pkgver = 1.1.345.ga0acd31
+	pkgrel = 2
 	url = https://psi-plus.com
 	arch = x86_64
 	license = GPL2
@@ -17,8 +17,8 @@ pkgbase = psi-plus-plugins-git
 	optdepends = libotr: for OTR plugin
 	optdepends = tidy: for OTR plugin
 	optdepends = libsignal-protocol-c: for omemoplugin
-	provides = psi-plus-plugins=1.1.315.gd391ffa
-	provides = psi-plus-plugins-qt5-git=1.1.315.gd391ffa
+	provides = psi-plus-plugins=1.1.345.ga0acd31
+	provides = psi-plus-plugins-qt5-git=1.1.345.ga0acd31
 	conflicts = psi-plus-plugins
 	conflicts = psi-plus-plugins-qt5-git
 	source = git://github.com/psi-im/plugins
