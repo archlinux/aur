@@ -2,7 +2,7 @@
 
 pkgname=rime-aurora-pinyin
 pkgver=0.0.0.20200526
-_commit=bf56ac810f74ce46932aaa02fb1ca64ab5c9cad7
+_commit=911b1acc826e8bee01ac5fd38cbc5f10aa15c57c
 pkgrel=1
 pkgdesc="【极光拼音】输入方案"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('rime-stroke')
 makedepends=('librime' 'rime-prelude')
 source=("https://github.com/hosxy/rime-aurora-pinyin/archive/$_commit/rime-aurora-pinyin-$_commit.tar.gz")
-sha512sums=('85e89361ad06ba0b37936b0a421f06b072df212d8646888545d45f035d90ba2b401d14d2b34e9468e0a69c790dc50626223d3bd613466663655b0b9ba0bb9f7e')
+sha512sums=('f2ebe8d565b377b0503edb71a1282d0b862ac0b77d8abe4cccdd1376f266cd4c729c938df538f1afd225154f866cc27421182b34a59f1f78208c23e19fdff622')
 
 prepare() {
   cd $pkgname-$_commit

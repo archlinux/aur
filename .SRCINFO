@@ -8,8 +8,8 @@ pkgbase = rime-aurora-pinyin
 	makedepends = librime
 	makedepends = rime-prelude
 	depends = rime-stroke
-	source = https://github.com/hosxy/rime-aurora-pinyin/archive/bf56ac810f74ce46932aaa02fb1ca64ab5c9cad7/rime-aurora-pinyin-bf56ac810f74ce46932aaa02fb1ca64ab5c9cad7.tar.gz
-	sha512sums = 85e89361ad06ba0b37936b0a421f06b072df212d8646888545d45f035d90ba2b401d14d2b34e9468e0a69c790dc50626223d3bd613466663655b0b9ba0bb9f7e
+	source = https://github.com/hosxy/rime-aurora-pinyin/archive/911b1acc826e8bee01ac5fd38cbc5f10aa15c57c/rime-aurora-pinyin-911b1acc826e8bee01ac5fd38cbc5f10aa15c57c.tar.gz
+	sha512sums = f2ebe8d565b377b0503edb71a1282d0b862ac0b77d8abe4cccdd1376f266cd4c729c938df538f1afd225154f866cc27421182b34a59f1f78208c23e19fdff622
 
 pkgname = rime-aurora-pinyin
 
