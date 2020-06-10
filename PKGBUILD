@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=traefik-git
-pkgver=2.2.0.rc2.r2.g37fb5298a
+pkgver=2.2.1.r15.g7928e6d0c
 pkgrel=1
 pkgdesc="The cloud native edge router"
 arch=('i686' 'x86_64')
 url="https://containo.us/traefik/"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go-pie' 'go-bindata')
+makedepends=('git' 'go' 'go-bindata')
 provides=('traefik')
 conflicts=('traefik')
 backup=('etc/traefik/traefik.toml'
@@ -33,15 +33,20 @@ build() {
 
   go generate
   go build \
-    -trimpath \
+    -buildmode=pie \
     -ldflags "-extldflags $LDFLAGS" \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
     ./cmd/traefik
 }
 
 check() {
   cd "traefik"
 
-  go test ./...
+  go test \
+    -mod=readonly \
+    ./...
 }
 
 package() {
