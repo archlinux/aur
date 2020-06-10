@@ -4,7 +4,10 @@ AUR_NAME=python-typing-inspect
 PROJ_NAME=typing_inspect
 DESCRIPTION="Runtime inspection utilities for Python typing module"
 URL=https://github.com/ilevkivskyi/typing_inspect
-DEPENDS=()
+DEPENDS=(
+    python-mypy_extensions
+    python-typing_extensions
+)
 LICENSE='MIT'
 ADDITIONAL=
 

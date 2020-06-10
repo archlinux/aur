@@ -4,11 +4,13 @@ pkgbase='python-typing-inspect'
 pkgname=('python-typing-inspect')
 _module='typing_inspect'
 pkgver='0.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Runtime inspection utilities for Python typing module'
 url='https://github.com/ilevkivskyi/typing_inspect'
 depends=(
     'python'
+    'python-mypy_extensions'
+    'python-typing_extensions'
 )
 optdepends=()
 makedepends=(
