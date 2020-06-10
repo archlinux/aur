@@ -45,7 +45,7 @@ build() {
 
 package() {
 	# remove unnecessary files
-	rm -rf "$srcdir/Ikemen_GO-master/go"
+	sudo rm -rf "$srcdir/Ikemen_GO-master/go"
 	rm -rf "$srcdir/Ikemen_GO-master/bin"
 	rm -rf "$srcdir/Ikemen_GO-master/build"
 	rm "$srcdir/Ikemen_GO-master/go.mod"
