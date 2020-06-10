@@ -5,7 +5,6 @@ pkgbase = rakugaki
 	url = https://github.com/lainsce/rakugaki
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = granite
