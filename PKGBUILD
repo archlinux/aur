@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=java-language-server
-pkgver=0.2.30
-pkgrel=4
+pkgver=0.2.32
+pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=(any)
 url="https://github.com/georgewfraser/java-language-server"
@@ -12,7 +12,7 @@ depends=('java-runtime=14')
 makedepends=('maven' 'java-environment=14')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "launcher.sh")
-sha256sums=('90fe1ca3c6731fcda6234c36cc604e29e99ba707ccb3e2cd3aeb1c8ffa9bb9c2'
+sha256sums=('82c64762bf5ef1919966c004abd0878487e2e387f8de2b03bb6c02e3cf4d81d5'
             '26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf')
 
 build() {
