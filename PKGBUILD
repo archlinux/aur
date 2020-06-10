@@ -3,8 +3,8 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.5.5
-pkgrel=2
+pkgver=3.5.6
+pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='http://llcon.sourceforge.net/'
@@ -29,4 +29,4 @@ package() {
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-sha1sums=('2bb566b8505d418526f61d0672dcb4fd168e5dd3')
+sha1sums=('f3d704710b3531b765bad6fb4a152c55c77fd193')
