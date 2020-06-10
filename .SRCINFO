@@ -1,0 +1,23 @@
+pkgbase = gnome-mines-git
+	pkgdesc = Clear hidden mines from a minefield
+	pkgver = 3.36.0+27+g55fb096
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Mines
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = librsvg
+	depends = libgnome-games-support
+	provides = gnome-mines
+	conflicts = gnome-mines
+	source = git+https://gitlab.gnome.org/GNOME/gnome-mines.git
+	sha512sums = SKIP
+
+pkgname = gnome-mines-git
+
