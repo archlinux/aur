@@ -17,7 +17,6 @@ pkgbase = kwinft-git
 	depends = qt5-sensors
 	depends = qt5-script
 	depends = wrapland
-	depends = libkscreen-kwinft-git
 	depends = disman
 	depends = kdisplay
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
