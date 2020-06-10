@@ -2,7 +2,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.3.0.r51.4b333ed8
+pkgver=0.6.0.r142.0244ab86a
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://veloren.net/'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
 depends=('gtk3')
-makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'alsa-lib' 'pango' 'atk' 'gdk-pixbuf2')
+makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'alsa-lib' 'pango' 'atk' 'gdk-pixbuf2' 'python')
 provides=("$pkgname" 'veloren')
 conflicts=("$pkgname" 'veloren')
 _repo='https://gitlab.com/veloren/veloren.git'
