@@ -9,14 +9,18 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-configure' 'protobuf' 'unzip')
 options=(!strip !buildflags staticlibs)
-source=("https://github.com/protocolbuffers/protobuf/archive/v${pkgver}.tar.gz")
-sha256sums=('946ba5371e423e1220d2cbefc1f65e69a1e81ca5bab62a03d66894172983cfcd')
+source=("https://github.com/protocolbuffers/protobuf/archive/v${pkgver}.tar.gz" https://github.com/protocolbuffers/protobuf/pull/7539.patch)
+sha256sums=('946ba5371e423e1220d2cbefc1f65e69a1e81ca5bab62a03d66894172983cfcd' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  patch -p1 -i "${srcdir}"/7539.patch
+}
+
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  curl -L https://github.com/protocolbuffers/protobuf/pull/7539.patch | patch -p1
   ./autogen.sh
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
