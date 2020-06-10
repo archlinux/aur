@@ -62,6 +62,10 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	cp "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
 
+
 	#set permissions to current user for the package under /opt
-	chown -R $USER:users "$pkgdir/opt/$pkgname/."
+	msg "Setting permissions of ikemen directory to current user and the users group.."
+	chown -R $USER:users "$pkgdir/opt/$pkgname/"
+	msg "Setting permissions of ikemen shortcut to be executable.."
+	chmod 755 "$pkgdir/usr/bin/ikemen-go"
 }
