@@ -5,11 +5,12 @@
 
 # Maintainer: Marten Kante <tiyn@martenkante.eu>
 pkgname=dmenu-tiyn-git
-pkgver=4.9
+_pkgname=dmenu-tiyn
+pkgver=4.9.r30.5497b49
 pkgrel=1
 epoch=
 pkgdesc="This is the dmenu build of tiyn. It includes the border, center and password patches."
-arch=(x86_64 i686)
+arch=('x86_64' 'i686')
 url="https://github.com/tiyn/dmenu"
 license=('MIT')
 groups=()
@@ -17,30 +18,31 @@ depends=()
 makedepends=(git)
 checkdepends=()
 optdepends=()
-provides=(dmenu)
-conflicts=(dmenu)
-replaces=(dmenu)
+provides=('dmenu')
+conflicts=('dmenu')
+replaces=('dmenu')
 backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("${_pkgname}::git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
     cd "${_pkgname}"
-    printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+    printf "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd dmenu
+    cd "${_pkgname}"
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd dmenu
+    cd "${_pkgname}"
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
