@@ -4,6 +4,7 @@ pkgbase = obs-multi-rtmp-git
         pkgrel = 1
         url = https://github.com/sorayuki/obs-multi-rtmp
         arch = x86_64
+        license = unknown
         makedepends = git
         makedepends = cmake
         depends = obs-studio
