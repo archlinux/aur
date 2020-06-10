@@ -9,7 +9,7 @@
 
 pkgname=('python-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.19
+pkgver=19.20
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=('cblas: for BLAS support'
             'ccache-ext: for ccache support during compiling'
             'python-numpy: for running numpy based tests')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('1decfe883635ce51acd72869cebe870ab9b85eb094d417adc8f48aa7b8c60cd7')
+sha256sums=('df9aa456ed5e190597fa8dafc1471670ced0128d0f115f2be7677c9c42f4328d')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
