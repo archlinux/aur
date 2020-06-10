@@ -5,9 +5,9 @@
 # shellcheck disable=2034
 
 _pkg=wildfly
-pkgname="${_pkg}"-systemd
-pkgver=19.0.0.Final
-pkgrel=2
+pkgname="$_pkg"-systemd
+pkgver=20.0.0.Final
+pkgrel=1
 
 pkgdesc='Wildfly Application Server with upstream systemd integration'
 arch=('any')
@@ -17,6 +17,7 @@ depends=('java-runtime>=8')
 optdepends=('libaio: ActiveMQ Artemis'
 	'lib32-glibc: native OpenSSL support')
 conflicts=('wildfly' 'wildfly-devel')
+provides=('wildfly')
 
 _pkgloc=opt
 _cfgloc=etc
@@ -49,7 +50,7 @@ install=${_pkg}.install
 source=(https://download.jboss.org/wildfly/"${pkgver}"/"${_pkg}"-"${pkgver}".tar.gz
 	"${_pkg}".install)
 
-sha256sums=('00e011f88c36b30dcf61ed1c54eb6f5d64f6bed9039e3774684fa152328e6535'
+sha256sums=('403eeaa21e92d5c7000c2f1961e12ac505949648fbc2229af565e4efcaed8dec'
 	'2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2')
 
 package() {
