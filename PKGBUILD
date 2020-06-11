@@ -4,7 +4,7 @@
 
 pkgname=nvidia-beta-all
 pkgver=440.82
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -15,14 +15,19 @@ provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('89feda0c3e54c9c0d0528760bbb5cf4d8e57408fb3df2728653f3a1b73c110a9')
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+        '010-nvidia-kernel-5.7.patch')
+sha256sums=('89feda0c3e54c9c0d0528760bbb5cf4d8e57408fb3df2728653f3a1b73c110a9'
+            '58c735ff7a1ad4a5d6729246444de6bd2be1c4a9eec2e9b3adcc9ef2a3389d38')
 
 prepare() {
     # extract the source file
     [ -d "$_pkg" ] && rm -rf "$_pkg"
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
+    
+    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-kernel-5.7.patch"
+    
     cd "${_pkg}"
     mv kernel kernel-orig
     
@@ -58,7 +63,7 @@ package() {
     for _kernel in "${_kernels[@]}"
     do
         install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/usr/lib/modules/${_kernel}/extramodules"
-        find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+        find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
     done
     
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
