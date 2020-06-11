@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "megajs": "^0.13.3",
-    "mkdirp": "^0.5.1",
+    "megajs": "^0.17.1",
+    "mkdirp": "^1.0.4",
     "progress-stream": "^2.0.0",
-    "rimraf": "^2.6.2",
-    "simple-get": "^3.0.2",
-    "unzip": "^0.1.11",
+    "rimraf": "^3.0.2",
+    "simple-get": "^4.0.0",
+    "unzipper": "^0.10.11",
     "zero-fill": "^2.2.3"
   }
 }

@@ -8,7 +8,7 @@ const readline = require('readline')
 
 // MEGA downloader
 const mega = require('megajs')
-const unzip = require('unzip').Extract
+const unzip = require('unzipper').Extract
 const mkdirp = require('mkdirp')
 const rimraf = require('rimraf')
 const zeroFill = require('zero-fill')
@@ -41,7 +41,7 @@ fetch.concat('https://www.legendsofequestria.com/downloads', (err, res, data) =>
         console.log('Extracting...', zipfile)
         let stream = fs.createReadStream(zipfile).pipe(unzip({
           path: dir,
-          verbose: true
+          verbose: false
         }))
         stream.on('error', (err) => {
           console.log('unzip error:', err)
@@ -61,7 +61,7 @@ fetch.concat('https://www.legendsofequestria.com/downloads', (err, res, data) =>
       })
     }
 
-    mkdirp(dlDir, (err) => {
+    mkdirp(dlDir).then(() => {
       let start = 0
       try {
         start = fs.statSync(zipfile).size
@@ -98,6 +98,8 @@ fetch.concat('https://www.legendsofequestria.com/downloads', (err, res, data) =>
           })
         })
       })
+    }).catch((err) => {
+      throw err
     })
   })
 })

@@ -2,7 +2,7 @@
 
 pkgname=legends-of-equestria
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="A free 3D MMORPG/Adventure game"
 arch=('i686' 'x86_64')
 url="https://www.legendsofequestria.com/"
