@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=sonobuoy
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('glibc')
 optdepends=(
   'docker: sonobuoy images subcommand'
   'kubectl: advances workflows')
-makedepends=('go' 'gzip' 'git')
+makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9f84bbb7d443684f008e99c233f4ed6da23e142ddb25818842786357efd1c078')
+sha256sums=('7560e2e8b9b8ebcc4fcfc7737f6b039d061e153f7d9145095c3f051bf3d6e4a1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -22,7 +22,7 @@ prepare() {
 build() {
   local _commit _defines
   # illegal packaging technique
-  _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
+  _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
