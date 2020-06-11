@@ -3,10 +3,9 @@
 
 #_fragment="#tag=blendluxcore_v2.1beta2"
 _name="luxcorerender"
-_ver_tag="blendluxcore_v2.2"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.2.r3.gd23ab33
+pkgver=2.3.r267.g066bde9
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
@@ -19,13 +18,12 @@ source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragm
 md5sums=("SKIP")
 
 pkgver() {
-  cd ${srcdir}/${_name}
-  [ -v _ver_tag ] && printf %s.r%s.g%s ${_ver_tag#blendluxcore_v} $(git rev-list ${_ver_tag}..HEAD --count) $(git log --pretty=format:'%h' -n 1) \
-                  || git describe --long --tags | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_name}"
+  git describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  depends=('blender>=2.80' 'luxcorerender>2:2.2')
+  depends=("blender>=2.80" "luxcorerender>=${pkgver%.r*}" )
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/${_name}/ ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
