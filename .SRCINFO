@@ -1,0 +1,18 @@
+pkgbase = python-pytorch-inplace_abn
+	pkgdesc = In-Place Activated BatchNorm for Memory-Optimized Training of DNNs (Pytorch)
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/mapillary/inplace_abn
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-pytorch
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-tensorboardx
+	depends = python-torchvision
+	source = git+https://github.com/mapillary/inplace_abn.git#tag=v1.0.12
+	sha256sums = SKIP
+
+pkgname = python-pytorch-inplace_abn
+
