@@ -1,13 +1,14 @@
 pkgbase = atmi
-	pkgdesc = Asynchronous Task and Memory Interface (ATMI) is a task graph framework for heterogeneous CPU-GPU systems.
+	pkgdesc = Task graph framework for heterogeneous CPU-GPU systems.
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/atmi
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	depends = rocm-cmake
-	depends = rocm-device-libs
+	makedepends = rsync
+	depends = hsa-rocr
+	depends = comgr
 	source = atmi-3.5.0.tar.gz::https://github.com/RadeonOpenCompute/atmi/archive/rocm-3.5.0.tar.gz
 	sha256sums = 3fb57d2e583fab82bd0582d0c2bccff059ca91122c18ac49a7770a8bb041a37b
 
