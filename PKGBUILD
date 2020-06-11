@@ -1,5 +1,14 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
+# Configuration
+((DISABLE_OPENCL)) || {
+  depends+=(opencl-icd-loader)
+  makedepends+=(opencl-headers)
+  optdepends+=("opencl-driver: for gpu acceleration")
+  CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_OPENCL=ON")
+}
+
 pkgname=luxcorerender
 pkgver=2.2
 _name=LuxCore-${pkgname}_v${pkgver}
@@ -11,11 +20,9 @@ pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(openimagedenoise openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
-optdepends=("opencl-driver: for gpu acceleration"
-            "pyside2: for pyluxcoretools gui")
-makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
-conflicts=(luxrays-hg)
+depends+=(openimagedenoise openimageio boost-libs blosc embree glfw gtk3)
+optdepends+=("pyside2: for pyluxcoretools gui")
+makedepends+=(boost git doxygen cmake pyside2-tools)
 provides=(luxrays)
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
         "python.patch"
@@ -37,8 +44,8 @@ prepare() {
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
-  mkdir -p build && cd build
-  cmake -DPYTHON_V=${_pyver} ${srcdir}/${_name}
+  CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build
   make
 }
 
