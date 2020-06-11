@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.12.0_dev_15_g28b934b3a
+pkgver=v1.13.0_dev_171_ga3fe9d87f
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -55,14 +55,14 @@ prepare() {
   # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
   rm -f go.mod
   go mod init || true
-  GOCACHE="${srcdir}/cache" go mod download
+  GOCACHE="${srcdir}/cache" make vendor
 }
 
 build() {
   # Be nice to people with read-only ~
   export GOCACHE="${srcdir}/cache"
   cd ${srcdir}/${_pkgname}
-  LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/\""
+  export LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/\""
   export TAGS="bindata sqlite pam"
   make generate
   make EXTRA_GOFLAGS="-trimpath" build
