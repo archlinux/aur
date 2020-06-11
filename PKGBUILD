@@ -3,9 +3,9 @@ pkgdesc="Header files and scripts for Clear Linux kernel and modules"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-_major=5.6
-_minor=16
-_clr=958
+_major=5.7
+_minor=1
+_clr=961
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33290
+_clear_version=33340
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=5a5e4d25c736dcf6b0c7202aa62928947c4614c5f57e4fd0b4d05106677e3c1a
+_config_hash=a053bd4cf9aaa97f3eb0f8241d5ba9c5b11fd56b4a97ac5424d3aff72c2f3f49
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -82,3 +82,9 @@ b2sums=('1c1dbbcfcfc8614eb3ac4ba3a22ce5d479378c82cb87b3c70353311bc1d98fae8ae0281
 b2sums=('4992da2ad20b99697f17eea0461da975df2a82b98ff03c007a9527f65ea7cf40f15233352b8430006fa9e084e8717b96daf83198f5530a9cb6ffa91e52eebc86'
         '75880ab2d52d1544834c5cd6b2656b2c3c4739cdb3d46c5254c3e56b2595ef7e730a8a8ac48609777838b5de36b4d87dac8c5e8a6b8abcf74db84a66164bafa5'
         '06b4ff5a559dc184aeb744211017bdc13eff410a21572557a45acf6ed16f1b30aef46bf08d3b3f47ae2ba5802983ca1d9da0db3b597ac56d7ae93c1f54e3635a')
+b2sums=('e9d3f131fb899a8e5d064b07881434246623d9a7bd018aa0f0e0e7fc9b533d271fa8f60fa5743d21b8d550bcf804c7c6b1906e75ade34659f7171b21643dc953'
+        'b0153d5f25bc386d230d40717bb5e96e49591911da68aaedc98a802de47d6e27ddde6eb08e08b2c9580b2530119027dd67d4e0d967566f3dd75ab90c3c031000'
+        '402ba6466ccaa0a06cba93c1aa43136ccc8705a4c578b09c8e9801e2117116cacefbecfe71eb9126a63cbe62142299a543b51cfaacb972fc5b668cfbb0c12e32')
+b2sums=('f07f28a579cd7e0ece8cf60c39415941c166fc5599a407051085f228b1597608366c6414e764407e2a6f151b0c91593ec83fdd36653a4af1ecdb974d1d4b2a8a'
+        '78141668b016262c174c012bad563f0264ea8415afb1313272bd44ef34f2171ee088c5e7f83ee8358da5498fa7c10e534b29cb482082889d8242a73ad1bd0a60'
+        '5a783e182f1dd4aa742387cc98d664a7ee1240ebe1fd0cc977a38e2f800144ce80cc5976ca6247e32aaa0ded19893c03204429130e6af39b9e0fedf69b9e02d6')
