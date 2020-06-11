@@ -13,6 +13,26 @@ sha256sums=('4076de63ec2b5e84379ddfebf27c7b29b8dc9074f3db7e2ca61d11a1d8adc041')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd qwt-${pkgver}
+  # Build release only
+  sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
+  sed -i '/+= build_all/d' qwtbuild.pri
+
+  # No designer plugin:
+  sed -i 's|+= QwtDesigner|-= QwtDesigner|' qwtconfig.pri
+
+  # Make install locations consistent with Arch's native Qwt:
+  sed -i 's|$${QWT_INSTALL_PREFIX}/doc|$${QWT_INSTALL_PREFIX}/share/doc/qwt|' qwtconfig.pri
+  sed -i 's|$${QWT_INSTALL_PREFIX}/include|$${QWT_INSTALL_PREFIX}/include/qwt|' qwtconfig.pri
+
+  # No need for docs:
+  sed -i "s|= target doc|= target|" src/src.pro
+
+  # https://sourceforge.net/p/qwt/patches/73/
+  curl -L https://sourceforge.net/p/qwt/patches/73/attachment/qwt61_qflags.patch | patch -p1
+}
+
 build() {
   for _arch in ${_architectures}; do
     export QTDIR=/usr/${_arch}/lib/qt
@@ -21,30 +41,13 @@ build() {
     cd "${srcdir}"
     cp -r "qwt-${pkgver}/" "${pkgname}-${pkgver}-build-${_arch}"
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}/qwt-${pkgver}"
-    
-
-    # Build release only
-    sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
-    sed -i '/+= build_all/d' qwtbuild.pri
-
-    # No designer plugin:
-    sed -i 's|+= QwtDesigner|-= QwtDesigner|' qwtconfig.pri
 
     # This is a mingw build, so Windows prefix is used. Let's change it:
     sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
 
-    # Make install locations consistent with Arch's native Qwt:
-    sed -i 's|$${QWT_INSTALL_PREFIX}/doc|$${QWT_INSTALL_PREFIX}/share/doc/qwt|' qwtconfig.pri
-    sed -i 's|$${QWT_INSTALL_PREFIX}/include|$${QWT_INSTALL_PREFIX}/include/qwt|' qwtconfig.pri
-
-    # No need for docs:
-    sed -i "s|= target doc|= target|" src/src.pro
-
     ${QTDIR}/bin/qmake qwt.pro
-
     make
   done
-
 }
 
 package() {
