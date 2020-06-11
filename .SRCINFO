@@ -1,0 +1,17 @@
+pkgbase = python-chevron
+	pkgdesc = A python implementation of the mustache templating language.
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/noahmorrison/chevron
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = chevron
+	conflicts = chevron
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/c/chevron/chevron-0.13.1.tar.gz
+	sha256sums = f95054a8b303268ebf3efd6bdfc8c1b428d3fc92327913b4e236d062ec61c989
+
+pkgname = python-chevron
+
