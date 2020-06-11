@@ -1,10 +1,11 @@
 pkgbase = qt-heif-image-plugin
 	pkgdesc = Enables HEIF support in Qt applications
-	pkgver = 0.3.3.r4.671166e
-	pkgrel = 3
+	pkgver = 0.3.3.r4.g671166e
+	pkgrel = 4
 	url = https://github.com/jakar/qt-heif-image-plugin
 	arch = x86_64
 	license = LGPL
+	makedepends = cmake
 	makedepends = qt5-base
 	depends = libheif
 	provides = qt5-heif
