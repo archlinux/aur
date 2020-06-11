@@ -5,8 +5,8 @@
 #
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.18"
-pkgrel="2"
+pkgver="2.10.20"
+pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('65bfe111e8eebffd3dde3016ccb507f9948d2663d9497cb438d9bb609e11d716')
+sha256sums=('e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -26,7 +26,7 @@ prepare() {
             s/^libgimpbase = .*/ libgimpbase = -lgimpbase-2.0/
             s/^libgimpmath = .*/ libgimpmath = -lgimpmath-2.0/
             s/^libgimpthumb = .*/ libgimpthumb = -lgimpthumb-2.0/' plug-ins/pygimp/Makefile.am
-    autoreconf -fi  
+    autoreconf -fi
 }
 
 build() {

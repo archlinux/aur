@@ -1,7 +1,7 @@
 pkgbase = python2-gimp
 	pkgdesc = Python 2 plugins support for GIMP
-	pkgver = 2.10.18
-	pkgrel = 2
+	pkgver = 2.10.20
+	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = x86_64
 	license = LGPL
@@ -9,8 +9,8 @@ pkgbase = python2-gimp
 	makedepends = intltool
 	depends = gimp
 	depends = pygtk
-	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.18.tar.bz2
-	sha256sums = 65bfe111e8eebffd3dde3016ccb507f9948d2663d9497cb438d9bb609e11d716
+	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.20.tar.bz2
+	sha256sums = e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c
 
 pkgname = python2-gimp
 
