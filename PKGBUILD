@@ -1,6 +1,5 @@
-#!/usr/hint/bash
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2154 # uninitialized/unused variables.
 
 _name="luxcorerender"
 _ver_tag="luxcorerender_v2.2"
