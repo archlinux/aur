@@ -1,9 +1,9 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=evtc-watch-git
 _pkgname=evtc-watch
-pkgver=1c714d8
+pkgver=r9.816c97b
 pkgrel=1
-pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Built[sic] from master branch using the rust nightly toolchain."
+pkgdesc="Guild Wars 2/arcdps evtc log zipper and dps.report uploader with discord bot notification. Build from master branch using the rust toolchain."
 arch=("x86_64")
 url="https://gitlab.com/networkjanitor/evtc-watch"
 license=("GPL")
@@ -18,8 +18,11 @@ source=(
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
