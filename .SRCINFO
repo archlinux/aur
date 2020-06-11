@@ -11,6 +11,7 @@ pkgbase = luxcorerender
 	makedepends = git
 	makedepends = doxygen
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = pyside2-tools
 	depends = opencl-icd-loader
 	depends = openimagedenoise

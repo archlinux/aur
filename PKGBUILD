@@ -22,7 +22,7 @@ url="https://www.luxcorerender.org/"
 license=('Apache')
 depends+=(openimagedenoise openimageio boost-libs blosc embree glfw gtk3)
 optdepends+=("pyside2: for pyluxcoretools gui")
-makedepends+=(boost git doxygen cmake pyside2-tools)
+makedepends+=(boost git doxygen cmake ninja pyside2-tools)
 provides=(luxrays)
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
         "python.patch"
@@ -45,8 +45,8 @@ prepare() {
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
   CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
-  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build
-  make
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja
+  ninja "$(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}")" -C "${srcdir}/build"
 }
 
 package() {
