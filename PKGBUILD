@@ -7,8 +7,13 @@ pkgrel=1
 pkgdesc="Shell utility to manipulate pages of DjVu file"
 arch=('any')
 url="https://github.com/ashipunov/${_pkgname}"
-license=('unknown')
+license=('custom: public domain')
 source=("git+${url}.git")
+depends=('djvulibre' 'img2djvu-git')
+optdepends=('gimp: edit in gimp'
+            'imagemagick: convert pages in imagemagick'
+)
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('SKIP')
@@ -21,7 +26,7 @@ pkgver() {
 package() {
   cd "${_pkgname}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "NEWS" "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
-  install -Dm644 "README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -Dm644 "TODO" "${pkgdir}/usr/share/doc/${_pkgname}/TODO"
+  install -Dm644 'NEWS' "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
+  install -Dm644 'README' "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 'TODO' "${pkgdir}/usr/share/doc/${_pkgname}/TODO"
 }
