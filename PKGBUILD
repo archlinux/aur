@@ -1,15 +1,17 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+
 pkgname=rccl
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rccl"
 license=('custom:NCSAOSL')
-depends=('hcc' 'hip')
-makedepends=('cmake' 'hcc' 'python2' 'rocminfo')
-source=("https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-$pkgver.tar.gz")
-sha256sums=('fcebb7983d7299bb4d002ae21e31c1d372e0e4b2406ee2b2321d856388a1193e')
+depends=('hip')
+makedepends=('cmake' 'python' 'rocminfo')
+source=("$pkgname-$pkgver::https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-$pkgver.tar.gz")
+sha256sums=('290b57a66758dce47d0bfff3f5f8317df24764e858af67f60ddcdcadb9337253')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -20,12 +22,7 @@ build() {
   export CXXFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CXXFLAGS")"
   export CPPFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CPPFLAGS")"
 
-  # compile with HCC
-  export CXX="/opt/rocm/hcc/bin/hcc"
-
-  # TODO: fix librccl.so, it contains references to $srcdir
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/rccl \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rccl \
         -DBUILD_TESTS=OFF \
         "$srcdir/rccl-rocm-$pkgver"
 
