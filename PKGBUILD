@@ -1,31 +1,28 @@
-# Maintainer: Jakub Okoński <jakub@okonski.org>
+# Maintainer: acxz <akashpatel at yahoo dot com>
+# Contributor: Jakub Okoński <jakub@okonski.org>
+
 pkgname=miopen
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
 license=('custom:NCSAOSL')
-depends=('ocl-icd' 'hip' 'hcc' 'rocblas' 'boost>=1.58' 'rocm-clang-ocl')
+depends=('ocl-icd' 'hip' 'rocblas' 'boost' 'rocm-clang-ocl')
 makedepends=('opencl-headers' 'cmake' 'half' 'miopengemm')
-source=("https://github.com/ROCmSoftwarePlatform/MIOpen/archive/roc-$pkgver.tar.gz")
-sha256sums=('ab056f7921c2e4a7932225409b836258327f5ec5e3ee513726a114cd303d9b59')
+source=("$pkgname-$pkgver::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-$pkgver.tar.gz")
+sha256sums=('aa362e69c4dce7f5751f0ee04c745735ea5454c8101050e9b92cc60fa3c0fb82')
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  # compile with HCC
-  export CXX="/opt/rocm/hcc/bin/hcc"
-
-  # TODO: fix libMIOpen.so, it contains references to $srcdir
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/miopen \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/miopen \
         -DMIOPEN_BACKEND=HIP \
-        -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+        -DCMAKE_PREFIX_PATH="/opt/rocm/hip" \
         -DHALF_INCLUDE_DIR=/usr/include/half \
         -DBoost_NO_BOOST_CMAKE=ON \
-        "$srcdir/MIOpen-roc-$pkgver"
+        "$srcdir/MIOpen-rocm-$pkgver"
 
   make
 }
