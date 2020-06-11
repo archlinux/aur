@@ -1,34 +1,41 @@
-# Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
 url="http://thonny.org"
 license=('MIT')
-depends=('openssl' 'python' 'python-beautifulsoup4' 'python-docutils' 'mypy' 'python-asttokens'
-         'python-astroid' 'python-pylint' 'python-pyserial' 'python-jedi' 'tcl' 'tk')
-source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('7dcf8de1e52c2f747a5ef0236475f17ceb8b59e4802395c8fbb9165272fa0a71')
+depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
+         'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/${pkgname}/${pkgname}/tar.gz/v${pkgver}")
+sha512sums=('2b87786bfd8b23589458ca9828302193b3449638261888f18177fa38bc826098bc20eed32d9daa57cbcc998e9405f52568bbf8fdb9c43e68bae86daaaed7ac37')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-    cd "$srcdir"
+  install -Dm 644 "packaging/linux/org.thonny.Thonny.desktop" \
+                  "${pkgdir}/usr/share/applications/org.thonny.Thonny.desktop"
 
-    # Correct install path for binary and icon file
-    sed -i 's|$target_dir|/usr|'                                "$pkgname/templates/Thonny.desktop"
+  sed -i 's/Icon=t/Icon=org.thonny.T/' \
+         "${pkgdir}/usr/share/applications/org.thonny.Thonny.desktop"
 
-    # Update launch script for the correct Python version
-    sed -i 's|3.7|3.8|' "$pkgname/bin/thonny"
-    sed -i 's|3.7|3.8|' "$pkgname/templates/Thonny.desktop"
+  install -Dm 644 "packaging/linux/org.thonny.Thonny.appdata.xml" \
+                  "${pkgdir}/usr/share/metainfo/org.thonny.Thonny.appdata.xml"
 
-    install -Dm 644     "$pkgname/templates/Thonny.desktop"     "$pkgdir/usr/share/applications/thonny.desktop"
-    install -Dm 644     "$pkgname/LICENSE.txt"                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm 755     "$pkgname/bin/thonny"                   "$pkgdir/usr/bin/thonny"
+  for size in 16 22 32 48 64 128 256; do
+    install -Dm 644 "packaging/icons/${pkgname}-${size}x${size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/org.thonny.Thonny.png"
+  done
 
-    # Install.py currently does not allow for setting root for creating a package
-    # Files must by copied manually for now in section below.
-    install -d  644                 "$pkgdir/usr/lib/python3.8/site-packages/thonny"
-    cp -dr --no-preserve=ownership  "$pkgname/lib/python3.7/site-packages/thonny" "$pkgdir/usr/lib/python3.8/site-packages"
+  install -Dm 644 "LICENSE.txt" \
+                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
