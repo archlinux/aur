@@ -9,7 +9,6 @@ url="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders"
 license=('custom')
 depends=("gtk3" "libxss" "alsa-lib" "libxtst" "libsecret" "nss" "glibc>=2.28-4")
 optdepends=("org.freedesktop.secrets")
-conflicts=("teams")
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('1f73d46d449cee2a2c1002af6d3d2e0eaecfefb5105f803c8a653908dafb9fa5')

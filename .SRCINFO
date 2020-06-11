@@ -13,7 +13,6 @@ pkgbase = teams-insiders
 	depends = nss
 	depends = glibc>=2.28-4
 	optdepends = org.freedesktop.secrets
-	conflicts = teams
 	noextract = teams-insiders_1.3.00.14051_amd64.deb
 	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.3.00.14051_amd64.deb
 	sha256sums = 1f73d46d449cee2a2c1002af6d3d2e0eaecfefb5105f803c8a653908dafb9fa5
