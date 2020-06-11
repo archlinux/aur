@@ -2,14 +2,14 @@
 
 _plug=placebo
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r45.a9d6662
+pkgver=r49.a8be164
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Lypheo/vs-placebo'
 license=('LGPL')
 depends=('vapoursynth')
-makedepends=('git' 'meson' 'vulkan-headers' 'libplacebo')
+makedepends=('git' 'meson' 'vulkan-headers' 'libplacebo-git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Lypheo/vs-placebo.git"
