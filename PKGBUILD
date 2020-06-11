@@ -2,25 +2,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-glint
-pkgver=1.2.8
-pkgrel=8
+pkgver=1.2.9
+pkgrel=1
 pkgdesc="X.org GLINT/Permedia video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'xf86dgaproto')
-conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
-groups=('xorg-drivers')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
-        git-fixes.patch)
-sha256sums=('657f883bb3a4e4278399eba73840862c3642706ae8b0a4798ec97a31b3524221'
-            'e14a3739c43ceaa13212c31286133d92854dd67884b7bb6188a854b939455110')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'xf86dgaproto')
+conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25')
 
-prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -Np1 -i ../git-fixes.patch
-}
+groups=('xorg-drivers')
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('852833ab2ea9ce519195dfd061a6c7aa5945a093cdc19546d1e9e69df7d577d2')
 
 build() {
   cd ${pkgname}-${pkgver}
