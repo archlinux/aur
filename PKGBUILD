@@ -2,20 +2,22 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sonnet-git
-pkgver=r524.2ce07be
-pkgrel=2
+pkgver=r533.16b33c2
+pkgrel=1
 pkgdesc='Spelling framework for Qt5'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/sonnet'
 license=('LGPL')
 depends=('qt5-base')
-makedepends=('extra-cmake-modules' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git') # 'livvoikko'
-optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 'hspell: spell checking for Hebrew')
- # 'libvoikko: spell checking for Finnish via Voikko')
+makedepends=('extra-cmake-modules-git' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git' 'libvoikko')
+optdepends=('hunspell: spell checking via hunspell'
+	    'aspell: spell checking via aspell'
+	    'hspell: spell checking for Hebrew'
+	    'libvoikko: spell checking for Finnish via Voikko')
 groups=('kf5')
 conflicts=('sonnet')
 provides=('sonnet')
-source=('git://anongit.kde.org/sonnet.git#commit=2ce07be5dff339f6f3e43ebd72b1d94792bb17f7')
+source=('git+https://invent.kde.org/frameworks/sonnet.git')
 md5sums=('SKIP')
 
 pkgver() {
