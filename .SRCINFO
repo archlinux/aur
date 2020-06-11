@@ -31,7 +31,7 @@ pkgbase = luxcorerender-git
 	source = python.patch
 	source = glfw.patch
 	sha256sums = SKIP
-	sha256sums = 4a86c54c1590bc9afecdfd0c61231de24f453e11a6906150a47cbc64888fa86b
+	sha256sums = f639fb7e31056b6c7214e303c90fe06665572ffafc11e545f7c05128a8d85dc4
 	sha256sums = 4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1
 
 pkgname = luxcorerender-git
