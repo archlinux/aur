@@ -2,8 +2,9 @@
 # Maintainer: pushsla <github.com/pushsla>
 
 pkgname=torodofi-git
-pkgver=0.9
-pkgrel=4
+_pkgname=torodofi
+pkgver=89.r73e5b7d
+pkgrel=1
 pkgdesc="Simple ToDo task manager using pure MarkDown file to store your tasks. Active/Done, tags, deadlines support. Rofi GUI."
 arch=('x86_64')
 url="https://github.com/pushsla/torodofi"
@@ -15,12 +16,12 @@ source=("git+https://github.com/pushsla/torodofi.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${_pkgname}"
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/torodofi"
+	cd "$srcdir/${_pkgname}"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -S . -B build
 	cmake --build build
 }
