@@ -1,11 +1,12 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Det <nimetonmaili@gmail.com>
 # Contributor: Godane aka Christopher Rogers <slaxemulator@gmail.com>
 # Contributor: Michai Coman <mihai@m1x.ro>
 
 pkgname=unetbootin
-pkgver=677
+pkgver=681
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -18,7 +19,7 @@ optdepends=('polkit: run unetbootin directly from menu'
 source=("https://github.com/unetbootin/unetbootin/archive/${pkgver}.tar.gz"
         'org.archlinux.pkexec.unetbootin.policy'
         'unetbootin.sh')
-sha256sums=('4538d78894a5effbe6ce0f830f3935baaf642d88e246d656a898a26f40870daa'
+sha256sums=('ec62a6321c39203a096d6a778b2f1518da815ece135e5eb95ba1e42e28ec240a'
             'fa9bb53d90cb10a0ab8dd317ed6a3506b228b0e26ed2ed8b108b5990f641641a'
             '6399c6a44b270a4ec67a36e3914c7c2f47a9008efb0133a33f92d9ad4284cc57')
 
