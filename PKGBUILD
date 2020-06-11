@@ -1,6 +1,22 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+# Configuration
+# shellcheck disable=SC2015
+((DISABLE_OPENCL)) && {
+  CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_OPENCL=ON")
+} || {
+  depends+=(opencl-icd-loader)
+  makedepends+=(opencl-headers)
+  optdepends+=("opencl-driver: for gpu acceleration")
+}
+# shellcheck disable=SC2015
+((DISABLE_CUDA||DISABLE_OPENCL)) && {
+  CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_CUDA=ON")
+} || {
+  makedepends+=(cuda)
+}
+
 _name="luxcorerender"
 _ver_tag="luxcorerender_v2.2"
 { IFS='.'; read -r _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
@@ -12,11 +28,10 @@ pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(blosc boost-libs embree glfw gtk3 opencl-icd-loader openimagedenoise openimageio)
-optdepends=("opencl-driver: for gpu acceleration"
-            "pyside2: for pyluxcoretools gui")
-makedepends=(boost cmake doxygen git ninja opencl-headers pyside2-tools)
-conflicts=(luxrays-hg luxcorerender)
+depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio)
+optdepends+=("pyside2: for pyluxcoretools gui")
+makedepends+=(boost cmake doxygen git ninja pyside2-tools)
+conflicts=(luxcorerender)
 provides=(luxrays "luxcorerender=${epoch}:${_ver_major}.${_ver_minor}")
 options=('!buildflags')
 source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
@@ -42,8 +57,9 @@ prepare() {
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
-  cmake -DPYTHON_V="${_pyver}" "${srcdir}/${_name}" -S "${_name}" -B "build" -G Ninja
-# shellcheck disable=SC2086
+  CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja
+# shellcheck disable=SC2046
   ninja ${MAKEFLAGS:--j1} -C "build"
 }
 
