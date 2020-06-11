@@ -1,9 +1,10 @@
-# Maintainer: Sebastian Wieland <wieland.s[at]online[dot]de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
 
-pkgname=nextcloud-client-appimage-daily
 _pkgname=nextcloud
+pkgname=${_pkgname}-client-appimage-daily
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
 arch=('x86_64' 'i686')
 url="https://download.nextcloud.com/desktop/daily/Linux/"
@@ -25,7 +26,7 @@ prepare() {
 
     # Extract relevant files from AppImage
     7z x -y ${_pkgname}.AppImage usr/share/icons > /dev/null
-    7z x -y ${_pkgname}.AppImage ${_pkgname}.desktop > /dev/null
+    7z x -y ${_pkgname}.AppImage com.${_pkgname}.desktopclient.${_pkgname}.desktop > /dev/null
 }
 
 package() {
@@ -37,7 +38,7 @@ package() {
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} \;
 
   # Install to /opt/appimage/
-  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "com.${_pkgname}.desktopclient.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm755 "${_pkgname}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
 
   # Create Link in /usr/bin/
