@@ -6,7 +6,7 @@
 
 pkgname=gnutls-openssl
 _pkgname=gnutls
-pkgver=3.6.13
+pkgver=3.6.14
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer with OpenSSL"
 arch=("i686" "x86_64")
@@ -20,7 +20,7 @@ optdepends=('guile: for use with Guile bindings')
 provides=("gnutls")
 conflicts=("gnutls")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
-sha256sums=('32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38'
+sha256sums=('5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63'
             'SKIP')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
               '1F42418905D8206AA754CCDC29EE58B996865171')
