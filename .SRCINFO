@@ -1,7 +1,7 @@
 pkgbase = enyo-doom
 	pkgdesc = A frontend for Doom engines
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.com/sdcofer70/enyo-doom
 	arch = x86_64
