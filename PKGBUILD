@@ -1,22 +1,23 @@
-# Maintainer: Aaron Miller <aaronm@cldtk.com>
+# Maintainer: Mike Javorski (javmorin) <mike.javorski@gmail.com>
+# Contributor: Aaron Miller <aaronm@cldtk.com>
 
 pkgname=aws-sam-cli
-pkgver=0.3.0
-pkgrel=2
-pkgdesc='CLI tool for local development and testing of Serverless applications'
+pkgver=0.52.0
+pkgrel=1
+pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
 url='https://github.com/awslabs/aws-sam-cli'
 license=('Apache')
-depends=('docker' 'python' 'python-docker' 'python-aws-sam-translator' 'python-cookiecutter' 'python-yaml' 'python-boto3' 'python-flask')
-source=("https://github.com/awslabs/aws-sam-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('227c8c9a4ad565cee58496008aa07f6ee15336b523336f9a2b404f71a0cd4b0f')
-
-build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
-}
+depends=('docker' 'python-click' 'python-flask' 'python-boto3' 'python-jmespath' 'python-yaml' 'python-cookiecutter'
+         'python-aws-sam-translator' 'python-docker' 'python-dateparser' 'python-dateutil' 'python-requests'
+         'python-serverlessrepo' 'python-aws_lambda_builders' 'python-tomlkit')
+makedepends=('python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('57e954e9dced9c53e69f92e6f6dbae26845c9b5f211cee0bee5b0997cf6b23cf')
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/$pkgname-$pkgver"
+
+  /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
 }
