@@ -1,7 +1,7 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
 pkgname=sl-sh-git
-pkgver=0.8.64
+pkgver=0.8.65
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
@@ -28,24 +28,25 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	mv "${pkgname%-git}" "${pkgname%-git}-$pkgver"
+    mv "${pkgname%-git}" "${pkgname%-git}-$pkgver"
 }
 
 build() {
-	cd "${pkgname%-git}-$pkgver"
-	rustup target add x86_64-unknown-linux-musl
+    cd "${pkgname%-git}-$pkgver"
+    rustup target add x86_64-unknown-linux-musl
     # TODO look into using --locked, will require some new CI
-	cargo build --release --target x86_64-unknown-linux-musl --all-features
+    cargo build --release --target x86_64-unknown-linux-musl --all-features
 }
 
 check() {
-	cd "${pkgname%-git}-$pkgver"
-	cargo check
+    cd "${pkgname%-git}-$pkgver"
+    cargo check
 }
 
 package() {
-	cd "${pkgname%-git}-$pkgver"
-	install -D -m 755 "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh" -t "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-	cp ${srcdir}/${pkgname%-git}-$pkgver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd "${pkgname%-git}-$pkgver"
+    strip "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh"
+    install -D -m 755 "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh" -t "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+    cp ${srcdir}/${pkgname%-git}-$pkgver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
