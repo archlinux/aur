@@ -1,6 +1,6 @@
 pkgbase = melis-wallet-bin
-	pkgdesc = The most advanced bitcoin wallet.
-	pkgver = 0.14.2
+	pkgdesc = The most advanced wallet for Bitcoin, Bitcoin Cash, Litecoin and Groestlcoin.
+	pkgver = 1.5.40
 	pkgrel = 1
 	url = https://www.melis.io/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = melis-wallet-bin
 	depends = gtk2
 	depends = nss
 	options = !strip
-	source = https://www.melis.io/packages/production/linux/melis-wallet-linux-x64-0.14.2.tar.gz
-	md5sums = 7c6897917341f26cd68df1c9dbfabcf3
+	source = https://www.melis.io/pakages/linux/production/MelisWallet-linux-x64-1.5.40.zip
+	sha256sums = 3bac88a9a7f7f4a45198b106d2b09c96834900fa9fd78dc9dd6a028dd09f41a2
 
 pkgname = melis-wallet-bin
 
