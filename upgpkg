@@ -1,4 +1,4 @@
 upgpkg_build() {
   makepkg -o
-  ./patchprov src/perl PKGBUILD
+  ./patchprov src/perl-$pkgver PKGBUILD
 }

@@ -159,7 +159,7 @@ sub pkgspec
     my($dist, $ver) = @$_;
     $dist =~ tr/A-Z/a-z/;
     $ver = eval $ver;
-    return "perl$dist=$ver";
+    return "perl-$dist=$ver";
 }
 
 ## Searches the perl source dir provided for a list of packages which
