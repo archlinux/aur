@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
 pkgver=1.115.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
