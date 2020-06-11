@@ -1,0 +1,24 @@
+pkgbase = thonny-bin
+	pkgdesc = Python IDE for beginners
+	pkgver = 3.2.7
+	pkgrel = 1
+	url = http://thonny.org
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-docutils
+	depends = mypy
+	depends = python-asttokens
+	depends = python-astroid
+	depends = python-pylint
+	depends = python-pyserial
+	depends = python-jedi
+	depends = tcl
+	depends = tk
+	source = https://github.com/thonny/thonny/releases/download/v3.2.7/thonny-3.2.7-x86_64.tar.gz
+	sha512sums = 9a0bac7d12dd96ed5f24f78caf051ed0e0715a50bce3811846c556c5fdb587ef65c5ec7c8d3354d0df96ec2581243f4dac458300507836aa67a98ef3b75b4ce8
+
+pkgname = thonny-bin
+
