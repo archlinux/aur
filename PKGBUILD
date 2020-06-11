@@ -4,15 +4,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=grap
-pkgver=1.45
-pkgrel=4
+pkgver=1.46
+pkgrel=1
 pkgdesc='A language for typesetting graphs.'
 arch=('i686' 'x86_64')
 url="https://www.lunabase.org/~faber/Vault/software/${pkgname}"
 license=('custom')
 depends=('gcc-libs')
 source=("https://www.lunabase.org/~faber/Vault/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('e23a5dda5d68140cab860f076f432785cf5d78f51ee09ba6f90cea3de9901066f61867db9fa84a1e09f2a4763083bfb4e16199cc0fdafbf39fcb5605c8b7ce96')
+sha512sums=('ee7fa32c0354ff1fb01aba63c180277f8e5f43933dd52c2b6a209bbd429ee97856b629611a84f6c9394b90f9538a11134e48b32f2b2c5b9823e606f03476a8a0')
 
 build() {
   cd $pkgname-$pkgver
