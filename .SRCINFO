@@ -5,7 +5,6 @@ pkgbase = ttf-microns
 	url = https://www.s-ings.com/projects/microns-icon-font/
 	arch = any
 	license = OFL
-	makedepends = git
 	source = ttf-microns-1.0.6.tar.gz::https://codeload.github.com/stephenhutchings/microns/tar.gz/v1.0.6
 	md5sums = 0c380a7d87275de67a4631688f596575
 
