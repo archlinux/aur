@@ -1,6 +1,6 @@
 pkgbase = moodle
 	pkgdesc = Moodle is an open-source software learning management system
-	pkgver = 3.8.2
+	pkgver = 3.8.3
 	pkgrel = 1
 	url = https://moodle.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = moodle
 	depends = mariadb
 	conflicts = moodle-plus
 	options = !strip
-	source = https://download.moodle.org/stable38/moodle-3.8.2.tgz
-	sha256sums = a3e8462ffc69ee382d92243480c014bfabe71521e7b257a972fa4caa97ee9b8c
+	source = https://download.moodle.org/stable38/moodle-3.8.3.tgz
+	sha256sums = a1c91a9dc0b3544b2a84216b933a80845aed95222b2802e418c8acb51fd9d2aa
 
 pkgname = moodle
 
