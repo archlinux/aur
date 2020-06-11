@@ -11,3 +11,38 @@ index ea1685c..2f0479b 100644
  conf.set('date', run_command(find_program('date'),'-I').stdout().strip())
  conf.set('author', run_command(find_program('whoami')).stdout().strip())
  conf.set('origin', run_command(find_program('hostname')).stdout().strip())
+diff --git a/tests/dftd4.f90 b/tests/dftd4.f90
+index 8eca975..4ad4f64 100644
+--- a/tests/dftd4.f90
++++ b/tests/dftd4.f90
+@@ -391,7 +391,7 @@ subroutine test_dftd4_pbc_energies
+    call mol%wrap_back
+    call mol%calculate_distances
+ 
+-   call generate_wsc(mol,mol%wsc,wsc_rep)
++   call generate_wsc(mol,mol%wsc)
+    call dispm%new(mol%at,refqmode,g_a,g_c)
+    ndim = sum(dispm%atoms*dispm%nref)
+    call assert_eq(ndim,26)
+@@ -529,7 +529,7 @@ subroutine test_dftd4_cell_gradient
+    call mol%wrap_back
+    call mol%calculate_distances
+ 
+-   call generate_wsc(mol,mol%wsc,wsc_rep)
++   call generate_wsc(mol,mol%wsc)
+    call dispm%new(mol%at,refqmode,g_a,g_c)
+    ndim = sum(dispm%atoms*dispm%nref)
+ 
+diff --git a/tests/eeq_model.f90 b/tests/eeq_model.f90
+index cc78723..6412c23 100644
+--- a/tests/eeq_model.f90
++++ b/tests/eeq_model.f90
+@@ -140,7 +140,7 @@ subroutine test_eeq_model_ewald
+    energy = 0.0_wp
+    sigma = 0.0_wp
+ 
+-   call generate_wsc(mol,mol%wsc,wsc_rep)
++   call generate_wsc(mol,mol%wsc)
+ 
+    call pbc_dncoord_erf(mol,cn,dcndr,dcndL,900.0_wp)
+ 
