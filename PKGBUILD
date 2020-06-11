@@ -1,12 +1,12 @@
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com0
 pkgname=wayfire-git
-pkgver=r1594.29dcd13
+pkgver=0.4.0.r168.g25d568f
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/ammen99/wayfire"
 license=('MIT')
-depends=('wlroots' 'cairo' 'glm' 'libjpeg' 'wf-config-git')
+depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'wf-config-git')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
 optdepends=('wf-shell-git: GTK3-based panel for the Wayfire compositor'
             'wf-sound-control-git: Small utility for the Wayfire compositor to control sound volume')
@@ -25,7 +25,7 @@ pkgver() {
 	cd "$srcdir/wayfire"
 
 # Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
