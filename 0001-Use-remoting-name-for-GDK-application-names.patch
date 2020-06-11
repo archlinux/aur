@@ -27,9 +27,9 @@ diff -r 6af025613ee2 widget/gtk/nsAppShell.cpp
  #include "HeadlessScreenHelper.h"
  #include "mozilla/widget/ScreenManager.h"
 @@ -178,10 +180,8 @@
-       // creating top-level windows. (At this point, a child process hasn't
-       // received the list of registered chrome packages, so the
-       // GetBrandShortName call would fail anyway.)
+       // option when program uses gdk_set_program_class().
+       //
+       // See https://bugzilla.gnome.org/show_bug.cgi?id=747634
 -      nsAutoString brandName;
 -      mozilla::widget::WidgetUtils::GetBrandShortName(brandName);
 -      if (!brandName.IsEmpty()) {
