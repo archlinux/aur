@@ -1,6 +1,6 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
-	pkgver = r1594.29dcd13
+	pkgver = 0.4.0.r168.g25d568f
 	pkgrel = 1
 	url = https://github.com/ammen99/wayfire
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wayfire-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
-	depends = wlroots
+	depends = wlroots-git
 	depends = cairo
 	depends = glm
 	depends = libjpeg
