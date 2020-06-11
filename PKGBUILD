@@ -4,7 +4,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly-bin
-pkgver=79.0a1.20200604
+pkgver=79.0a1.20200611
 _version=79.0a1
 pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
@@ -41,7 +41,7 @@ package() {
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -a thunderbird "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}
   cp vendor.js "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/defaults/pref/
-  ln -s /opt/${pkgname%-bin}-${pkgver}/thunderbird "${pkgdir}"/usr/bin/${pkgname}
+  ln -s /opt/${pkgname%-bin}-${pkgver}/thunderbird "${pkgdir}"/usr/bin/${pkgname%-bin}
   for i in 16x16 32x32 48x48 64x64 128x128; do
       install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/${pkgname}.png
   done
