@@ -9,17 +9,14 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.13.0_dev_171_ga3fe9d87f
+pkgver=v1.13.0_dev_173_ge282fbe75
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitea.io/'
 license=('MIT')
 depends=('git')
-makedepends=('go>1.11'
-             'go-bindata'
-             'nodejs>10'
-             'npm')
+makedepends=('go-pie' 'npm')
 optdepends=('mariadb: MariaDB support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support'
@@ -52,24 +49,27 @@ prepare() {
   # Change default repos path for ArchLinux and some additional settings
   patch -Np1 -i ../gitea-arch-defaults.patch
 
-  # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
-  rm -f go.mod
-  go mod init || true
+  # Be nice to people with read-only home
   GOCACHE="${srcdir}/cache" make vendor
 }
 
 build() {
-  # Be nice to people with read-only ~
+  # Again, be nice to people with read-only home
   export GOCACHE="${srcdir}/cache"
   cd ${srcdir}/${_pkgname}
-  export LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/\""
-  export TAGS="bindata sqlite pam"
   make generate
-  make EXTRA_GOFLAGS="-trimpath" build
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/\""
+  make TAGS="sqlite pam" EXTRA_GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw" build
 }
 
 package() {
   install -Dm755 ${_pkgname}/${_pkgname} -t "${pkgdir}"/usr/bin/
+  install -dm755 "${pkgdir}"/usr/share/${_pkgname}/
+  cp -dr --no-preserve=ownership ${_pkgname}/{options,public,templates} "${pkgdir}"/usr/share/${_pkgname}/
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
