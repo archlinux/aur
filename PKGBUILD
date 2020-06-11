@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-gl-transition
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with support for GL-transitions video filters'
@@ -25,7 +25,6 @@ depends=(
   gmp
   gnutls
   gsm
-  intel-media-sdk
   jack
   lame
   libass.so
@@ -35,6 +34,7 @@ depends=(
   libdrm
   libfreetype.so
   libiec61883
+  libmfx
   libmodplug
   libomxil-bellagio
   libpulse
@@ -65,17 +65,25 @@ depends=(
   opus
   sdl2
   speex
+  srt
   v4l-utils
+  vmaf
   xz
   zlib
 )
 makedepends=(
+  avisynthplus
   ffnvcodec-headers
   git
   ladspa
   nasm
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=(
+  'avisynthplus: AviSynthPlus support'
+  'intel-media-sdk: Intel QuickSync support'
+  'ladspa: LADSPA filters'
+  'nvidia-utils: Nvidia NVDEC/NVENC support'
+)
 provides=(
   libavcodec.so
   libavdevice.so
@@ -88,12 +96,15 @@ provides=(
   ffmpeg
 )
 conflicts=(ffmpeg)
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
-    https://raw.githubusercontent.com/transitive-bullshit/ffmpeg-gl-transition/master/vf_gltransition.c
-    ffmpeg_vf_gltransition.patch)
+source=(
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+  vmaf-model-path.patch
+  https://raw.githubusercontent.com/transitive-bullshit/ffmpeg-gl-transition/master/vf_gltransition.c
+  ffmpeg_vf_gltransition.patch)
 sha256sums=(SKIP
-    4d044f161913805236dbf5e78188bb5a17af10a43dbd3269d0284b12f78aee3e
-    4853e888cb3fbda247e05faa591d45b640bdadf0115db3669ef08493258a0cb4)
+  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+  4d044f161913805236dbf5e78188bb5a17af10a43dbd3269d0284b12f78aee3e
+  4853e888cb3fbda247e05faa591d45b640bdadf0115db3669ef08493258a0cb4)
 
 pkgver() {
   cd ffmpeg
@@ -104,7 +115,15 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+  # lavf/mp3dec: don't adjust start time; packets are not adjusted
+  # https://crbug.com/1062037
+  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
+
+  # backport avisynthplus support
+  git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
+  git show 56f59246293de417d27ea7e27cb9a7727ee579fb -- libavformat/avisynth.c | git apply -
+
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 
   cp "${srcdir}/vf_gltransition.c" libavfilter/
   git apply "${srcdir}/ffmpeg_vf_gltransition.patch"
@@ -120,6 +139,7 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-avisynth \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -145,10 +165,12 @@ build() {
     --enable-libpulse \
     --enable-libsoxr \
     --enable-libspeex \
+    --enable-libsrt \
     --enable-libssh \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
+    --enable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
