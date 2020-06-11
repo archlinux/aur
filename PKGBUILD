@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=assh-git
 _pkgname=assh
-pkgver=2.10.0
+pkgver=2.10.0.r0.g1ff23bee
 pkgrel=1
 pkgdesc='make your ssh client smarter https://manfred.life/assh'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
