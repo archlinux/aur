@@ -1,0 +1,8 @@
+pkgbase = gwhello
+	pkgdesc = my first AUR package ;)
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+
+pkgname = gwhello
+
