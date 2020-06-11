@@ -1,7 +1,7 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=ezau-git
 _pkgname=ezau
-pkgver=790d787
+pkgver=r11.790d787
 pkgrel=1
 pkgdesc="EVTC Zipper And Uploader"
 arch=("x86_64")
@@ -20,8 +20,11 @@ backup=(
 )
 
 pkgver() {
-    cd "${_pkgname}"
-    git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
