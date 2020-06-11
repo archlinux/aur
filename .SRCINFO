@@ -1,7 +1,7 @@
 pkgbase = perl-git
 	pkgdesc = A highly capable, feature-rich programming language (Git)
 	pkgver = 5.32.0.RC1.r6.g2bb47a6fc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.perl.org
 	arch = x86_64
 	license = GPL
