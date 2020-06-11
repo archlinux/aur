@@ -1,5 +1,5 @@
 pkgbase = luxcorerender
-	pkgdesc = LuxCoreRender is a physically correct, unbiased rendering engine.
+	pkgdesc = Physically correct, unbiased rendering engine.
 	pkgver = 2.2
 	pkgrel = 3
 	epoch = 2
