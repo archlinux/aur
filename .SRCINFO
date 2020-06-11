@@ -1,13 +1,13 @@
 pkgbase = viper4linux-gui-git
 	pkgdesc = Official UI for Viper4Linux
-	pkgver = r206.63ab11c
+	pkgver = r256.2bcb4b3
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Audio4Linux/Viper4Linux-GUI
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = viper4linux
+	depends = viper4linux-git
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = mesa

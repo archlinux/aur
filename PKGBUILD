@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=viper4linux-gui-git
-pkgver=r206.63ab11c
+pkgver=r256.2bcb4b3
 pkgrel=1
 epoch=2
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
 url="https://github.com/Audio4Linux/Viper4Linux-GUI"
 license=('GPL3')
-depends=('viper4linux' 'qt5-base' 'qt5-multimedia' 'mesa')
+depends=('viper4linux-git' 'qt5-base' 'qt5-multimedia' 'mesa')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
