@@ -26,7 +26,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-X 'main.Version=v$pkgver' -extldflags $LDFLAGS" -o build ./cmd/minify
+  go build -ldflags "-X 'main.Version=v$pkgver'" -o build ./cmd/minify
 }
 
 check() {
