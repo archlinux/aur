@@ -1,0 +1,23 @@
+pkgbase = mctlauncher
+	pkgdesc = Minecraft TLauncher Client for the AUR <visit tlauncher.org>
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.tlauncher.org
+	arch = any
+	license = GPL
+	makedepends = imagemagick
+	depends = jdk-openjdk
+	depends = java-runtime>=8
+	depends = unzip
+	noextract = jar
+	source = https://tlauncher.org/jar
+	source = mctlauncher.desktop
+	source = mctlauncher.png
+	source = mctlauncher
+	sha256sums = 5aee06077942a4c2c1def6a532fc3232e87acdf7d806b018ba5a9ff48dd52acd
+	sha256sums = ef0fb9ccaf1bf78e476f38498ad68c3943060e16a97898ac5a5d732e2311fe21
+	sha256sums = e481b09b5e7592405db862c8a162f7050df6183d32b98d6c36db04a7acad3fe7
+	sha256sums = 2f16c9a88194dd3e70ab3b9205dd06bee51679f72c311e6dc8d91d5fb08a52e4
+
+pkgname = mctlauncher
+
