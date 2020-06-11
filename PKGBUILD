@@ -1,9 +1,11 @@
-# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Alexander Fasching <fasching.a91@gmail.com>
 # Based on PKGBUILD of bitcoin-git
 
 pkgname=blackcoin-git
 _gitname=blackcoin
-pkgver=v1.2.2.r4.gea23efdc
+pkgver=.r3773
 pkgrel=1
 pkgdesc="BlackCoin is a PoS-based cryptocurrency. Provides blackcoind and blackcoin-qt"
 arch=('any')
@@ -13,23 +15,23 @@ depends=('gcc-libs' 'miniupnpc' 'openssl' 'db')
 makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 provides=('blackcoin-qt' 'blackcoind')
 #conflicts=('blackcoin-qt' 'blackcoind')
-source=('git+https://github.com/CoinBlack/blackcoin.git')
+source=('git+https://gitlab.com/blackcoin/blackcoin.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "%s.r%s" "$(git describe --tags $(git rev-list --tags --max-count=1) | sed "s/-/./g")" "$(git rev-list --count HEAD)"
 }
 
 build() {
     # Build blackcoind
     cd "$srcdir/$_gitname/src"
-    make -f makefile.unix -j$(nproc)
+    make -f makefile.unix
 
     # Build blackcoin-qt
     cd "$srcdir/$_gitname"
     qmake "USE_UPNP=1" "USE_QRCODE=1" "QMAKE_CXXFLAGS=-std=c++11"
-    make -j$(nproc)
+    make
 }
 
 package() {
