@@ -1,23 +1,26 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
-# Edited from: firefox-extension-https-everywhere
+# Contributor: Franck Stauffer
 
-_plugin_name=canvasblocker
-_plugin_version=1.2
-_plugin_id=534930
-_plugin_ext="an+fx"
 pkgname='firefox-extension-canvasblocker'
-pkgver=$_plugin_version
+pkgver=1.3
 pkgrel=1
-pkgdesc="Plugin for firefox that prevents canvas fingerprinting to prevent tracking."
-license=('MPL')
+pkgdesc="A Firefox extension to protect from being fingerprinted"
+license=('MPL2')
 arch=('any')
-url="https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/"
+url="https://github.com/kkapsner/CanvasBlocker"
 depends=("firefox")
-source=("https://addons.cdn.mozilla.net/user-media/addons/${_plugin_id}/${_plugin_name}-${_plugin_version}-${_plugin_ext}.xpi")
-noextract=("${_plugin_name}-${_plugin_version}-${_plugin_ext}.xpi")
-sha256sums=('8666579a1a005bf0f0588202422c38ab35b12ede2755de864df7a9f69f5e040a')
-
+groups=('firefox-addons')
+source=("$pkgname-$pkgver.xpi::https://github.com/kkapsner/CanvasBlocker/releases/download/$pkgver/canvasblocker.xpi"
+	"https://github.com/kkapsner/CanvasBlocker/archive/$pkgver.tar.gz")
+noextract=("$pkgname-$pkgver.xpi")
+sha256sums=('dfb8aa888cf3b4671710861a65f0fe29810210f6a37c3d0c1a9bf3d112af4bb6'
+            'a309c513ea13de3556dac3649583d13fcac86f9625673a58c57cbdae9b1d7138')
 package() {
-	install -Dm644 "${_plugin_name}-${_plugin_version}-${_plugin_ext}.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
+  cd "$srcdir"
+  install -Dm644 "$pkgname-$pkgver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
+
+  cd "$srcdir/CanvasBlocker-$pkgver"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
