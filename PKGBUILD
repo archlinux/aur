@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -9,15 +9,14 @@ license=('MIT')
 makedepends=('libelf' 'cmake' 'cuda')
 provides=('hip')
 conflicts=('hip')
-source=("https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-$pkgver.tar.gz")
-sha256sums=('8ae7cf4134975c7a36e0c72a5e041694935f38c2d7df58f4ad55e9a23b7b875c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-$pkgver.tar.gz")
+sha256sums=('ae8384362986b392288181bcfbe5e3a0ec91af4320c189bd83c844ed384161b3')
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
         "$srcdir/HIP-rocm-$pkgver"
   make
 }
