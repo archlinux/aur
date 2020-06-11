@@ -4,7 +4,7 @@
 # - veger 
 pkgname=capt-src
 pkgver=2.71
-pkgrel=2
+pkgrel=3
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
@@ -16,6 +16,7 @@ _tardir=linux-capt-drv-v271-uken
 source=("http://gdlp01.c-wss.com/gds/6/0100004596/05/${_tardir}.tar.gz"
         'ccpd.service')
 options=(!strip !zipman !buildflags)
+backup=('etc/ccpd.conf')
 
 _pkgcommonver=3.21
 _endlibdir=/usr/lib
@@ -41,7 +42,7 @@ _build_cndrvcups_common() {
     msg "Configuring: buftool"
     cd ${_common_dir}/buftool && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
     msg "Configuring: cngplp"
-    cd ${_common_dir}/cngplp && /usr/bin/autoreconf -fi && LIBS='-lgmodule-2.0 -lgtk-x11-2.0 -lglib-2.0 -lgobject-2.0' ./autogen.sh --prefix=/usr --libdir=/usr/lib
+    cd ${_common_dir}/cngplp && /usr/bin/autoreconf -fi && LDFLAGS='-z muldefs' LIBS='-lgmodule-2.0 -lgtk-x11-2.0 -lglib-2.0 -lgobject-2.0' ./autogen.sh --prefix=/usr --libdir=/usr/lib
     msg "Configuring: backend"
     cd ${_common_dir}/backend && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
 
@@ -113,11 +114,11 @@ _build_cndrvcups_capt() {
     for _dir in driver ppd backend pstocapt pstocapt2 pstocapt3
     do
         msg "Configuring: "${_dir}
-        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
+        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS="-L${pkgdir}/usr/lib" CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
     done
         
     msg "Configuring: statusui"
-    cd ${_capt_dir}/statusui && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib LIBS='-lpthread -lgdk-x11-2.0 -lgobject-2.0 -lglib-2.0 -latk-1.0 -lgdk_pixbuf-2.0' CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --disable-static
+    cd ${_capt_dir}/statusui && /usr/bin/autoreconf -fi && LDFLAGS="-z muldefs -L${pkgdir}/usr/lib" LIBS='-lpthread -lgdk-x11-2.0 -lgobject-2.0 -lglib-2.0 -latk-1.0 -lgdk_pixbuf-2.0' CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --disable-static
     
     msg "Configuring: cngplp"
     cd ${_capt_dir}/cngplp/ && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --libdir=/usr/lib
