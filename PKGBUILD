@@ -3,7 +3,7 @@
 
 pkgname=torodofi-git
 _pkgname=torodofi
-pkgver=89.r73e5b7d
+pkgver=r89.73e5b7d
 pkgrel=1
 pkgdesc="Simple ToDo task manager using pure MarkDown file to store your tasks. Active/Done, tags, deadlines support. Rofi GUI."
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
