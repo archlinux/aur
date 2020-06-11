@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 #_fragment="#tag=blendluxcore_v2.1beta2"
