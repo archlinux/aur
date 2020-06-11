@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+# This is a dummy script that fakes its own sys.argv[0] to make the completions
+# subcommand do the correct thing when run from the build directory. cleo's
+# completion generator uses this to generate completions for sys.argv[0] as well
+# as (???) os.path.join(os.getcwd(), sys.argv[0]) for mysterious reasons.
+#
+# We don't want to complete 'poetry/__main__.py'....
+
+import sys
+from poetry.console import main
+
+sys.argv = ['poetry', 'completions', sys.argv.pop()]
+
+main()
