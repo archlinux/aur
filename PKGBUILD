@@ -3,7 +3,7 @@
 
 pkgname=chipmachine
 pkgver=1.4b3
-pkgrel=5
+pkgrel=6
 pkgdesc='Demoscene/Retro Music Player'
 arch=('x86_64')
 url='https://github.com/sasq64/chipmachine'
@@ -22,24 +22,22 @@ prepare() {
   gendesk -f -n --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories="AudioVideo"
   mv ../apone-chipmachine-v1.4b3 apone
   patch -p0 -i ../apone-chipmachine-v1.4b3-datadir.patch
-  sed -i '/link_directories(\/usr\/local\/lib)/d' CMakeLists.txt  # remove insecure rpath
-  mkdir -p ../build
 }
 
 build() {
-  cd build
-
   # Workaround for gcc10 linking errors
   export CFLAGS+=" -fcommon"
 
-  cmake ../$pkgname-$pkgver
-  make
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=YES \
+    -Wno-dev
+  make -C build
 }
 
 package() {
   cd $pkgname-$pkgver
   install -Dm755 ../build/chipmachine "$pkgdir"/usr/bin/chipmachine
-#  install -Dm755 ../build/cm "$pkgdir"/usr/bin/cm
   install -d "$pkgdir"/usr/share/chipmachine
   cp -r data lua "$pkgdir"/usr/share/chipmachine/
   install -Dm644 chipmachine.desktop "$pkgdir"/usr/share/applications/chipmachine.desktop
