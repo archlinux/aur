@@ -1,8 +1,8 @@
 # Maintainer: termuellinator
 
 pkgname=sc-updater-git
-pkgver=r1.e8b3767
-pkgrel=3
+pkgver=r2.51638fe
+pkgrel=1
 pkgdesc="A script to make installing the latest wine runners from Snatella's Awesome Star Citizen Runners even easier."
 arch=('any')
 depends=('bash')

@@ -1,7 +1,7 @@
 pkgbase = sc-updater-git
 	pkgdesc = A script to make installing the latest wine runners from Snatella's Awesome Star Citizen Runners even easier.
-	pkgver = r1.e8b3767
-	pkgrel = 3
+	pkgver = r2.51638fe
+	pkgrel = 1
 	url = https://github.com/richardtatum/sc-runner-updater
 	arch = any
 	license = CC0 1.0 Universal
