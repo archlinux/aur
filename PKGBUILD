@@ -3,8 +3,8 @@
 pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
-pkgver=2.0.0
-pkgrel=2
+pkgver=v1.0.8.r457.g4f1414a1
+pkgrel=1
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
 arch=(any)
 url="https://opencolorio.org/"
@@ -18,13 +18,22 @@ depends=(
 	'mingw-w64-expat'
 	'mingw-w64-pystring')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("git+https://github.com/AcademySoftwareFoundation/OpenColorIO")
+_repo="OpenColorIO"
+source=("git+https://github.com/AcademySoftwareFoundation/${_repo}")
 sha256sums=("SKIP")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+	cd "${_repo}"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
 prepare() {
-	cd "OpenColorIO"
+	cd "${_repo}"
 	rm -f "share/cmake/modules/FindIlmBase.cmake"
 	sed -i -r 's/ilmbase::ilmbase/IlmBase::Half/' "src/OpenColorIO/CMakeLists.txt"
 }
@@ -36,9 +45,9 @@ build() {
 		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX" )
 		
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "OpenColorIO" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
+		${_arch}-cmake -S "${_repo}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
 		make -C "build-${_arch}-static"
-		${_arch}-cmake -S "OpenColorIO" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "${_repo}" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
