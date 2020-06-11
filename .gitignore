@@ -2,3 +2,5 @@
 /pkg
 /src
 nushell-git/
+chroot/
+*.log
