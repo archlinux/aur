@@ -1,25 +1,22 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Lucas Magalhães <whoisroot@national.shitposting.agency>
 pkgname=rocm-clang-ocl
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="OpenCL compilation with clang compiler."
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/clang-ocl"
 license=('unknown')
-makedepends=('cmake' 'hcc' 'rocm-cmake')
+makedepends=('cmake' 'rocm-cmake')
 source=("${pkgname}-${pkgver}::https://github.com/RadeonOpenCompute/clang-ocl/archive/rocm-$pkgver.tar.gz")
-sha256sums=('d64dd00959bbc74781738eda6fc9b1379005d7160f9373134e471c4330c641b7')
-_pkgname=clang-ocl
+sha256sums=('38c95fbd0ac3d11d9bd224ad333b68b9620dde502b8a8a9f3d96ba642901e8bb')
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DOPENCL_ROOT=/opt/rocm/hcc \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        "$srcdir/$_pkgname-rocm-$pkgver"
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        "$srcdir/clang-ocl-rocm-$pkgver"
 
   make
 }
