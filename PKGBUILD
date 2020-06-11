@@ -10,11 +10,11 @@
 }
 
 pkgname=luxcorerender
-pkgver=2.2
+pkgver=2.3
 _name=LuxCore-${pkgname}_v${pkgver}
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
-pkgrel=3
+pkgrel=1
 epoch=2
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
@@ -29,8 +29,8 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "glfw.patch"
         "boost016900_serialization.patch"
         )
-sha256sums=('35b74e5d3e682dc2826d939c66a1c225354c5eb137c86f10930d1caf70a4629b'
-            '0f4e0cb6c5a693c815553cfc25e8a497cf7164b02cca0b4a5351be1b5371bf2e'
+sha256sums=('d0afda77bd2a89ac050255495d8b0939096d259a92cf99fa5a92a51256a3d8a4'
+            'a00ee865eee4d9edf685bd4010aea4c3ae96ba5d22c2e17cda313b4d3468a806'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
             '495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760')
 
