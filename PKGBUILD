@@ -40,7 +40,7 @@ build() {
   export CFLAGS+=" -fcommon"
 
   cmake -B build -S chipmachine \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=YES
   make -C build
 }
