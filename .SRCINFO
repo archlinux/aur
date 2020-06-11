@@ -1,12 +1,13 @@
 pkgbase = lib32-libgme
 	pkgdesc = Video game music file emulation/playback library (32-bit)
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/mpyne/game-music-emu
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	depends = lib32-gcc-libs
+	depends = lib32-zlib
 	depends = libgme
 	source = https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-0.6.3.tar.xz
 	validpgpkeys = 5406ECE83665DA9D201D35720BAF0C9C7B6AE9F2
