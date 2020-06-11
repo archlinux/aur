@@ -1,7 +1,7 @@
 pkgbase = chipmachine
 	pkgdesc = Demoscene/Retro Music Player
 	pkgver = 1.4b3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sasq64/chipmachine
 	arch = x86_64
 	license = MIT

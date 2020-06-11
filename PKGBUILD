@@ -3,7 +3,7 @@
 
 pkgname=chipmachine
 pkgver=1.4b3
-pkgrel=6
+pkgrel=7
 pkgdesc='Demoscene/Retro Music Player'
 arch=('x86_64')
 url='https://github.com/sasq64/chipmachine'
@@ -29,7 +29,7 @@ build() {
   export CFLAGS+=" -fcommon"
 
   cmake -B build -S $pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=YES \
     -Wno-dev
   make -C build
