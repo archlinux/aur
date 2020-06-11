@@ -1,7 +1,7 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=sakuri
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple bash AUR helper'
 arch=('any')
 url='https://github.com/BiteDasher/sakuri'
