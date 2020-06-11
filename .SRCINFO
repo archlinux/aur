@@ -1,7 +1,7 @@
 pkgbase = browsh-bin
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brow.sh
 	arch = x86_64
 	arch = i386
@@ -12,7 +12,6 @@ pkgbase = browsh-bin
 	arch = armv7h
 	arch = aarch64
 	license = LGPL2.1
-	depends = firefox>=63
 	optdepends = upx: compress binary
 	provides = browsh
 	conflicts = browsh
@@ -36,4 +35,5 @@ pkgbase = browsh-bin
 	sha256sums_aarch64 = 59505d1ffb45e986693be28250a2ef561cb09af616b11aa77c786cb7ab144181
 
 pkgname = browsh-bin
+	depends = firefox>=63
 
