@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-testflo
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/RaRe-Technologies/testflo"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python-coverage')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/t/testflo/testflo-$pkgver.tar.gz")
-sha512sums=('e69e9c18bb611737b38cc9c088e6e19e77a29b7070081a948d5c2d3a13b6222b5dd0cd88c11518115739273fb816bb1464e128e7e44a3bbb721286cb7dee0327')
+sha512sums=('133475b4d870685e8a836b3bfb25da569664e7f54bf144332da41130107d0b0fb1142d34804d968796c76bc30ac891994ffc4e7c04ea6d73f4ceff406842a6a5')
 
 build() {
   cd testflo-$pkgver
