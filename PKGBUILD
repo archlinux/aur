@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.1
-pkgrel=2
+pkgver=5.7.2
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,18 +83,20 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('40d318add8cefe3fdb26f19dac7386f5e7b63854ae021e593466902856ce9ded'
+sha256sums=('6065ae820e2d52a77a549ef97444c36adf7ab2969b294460256f028b4eed7909'
             'SKIP'
             '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
-            '3b5de5bf70a63a6549f986d071f3d9572b19707548cd205a3b8ecdb7dcba3f1c')
+            '3b5de5bf70a63a6549f986d071f3d9572b19707548cd205a3b8ecdb7dcba3f1c'
+            '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -138,6 +140,7 @@ prepare() {
 
   # ck patchset itself
   patch -Np1 -i ../"${_ckpatch}"
+  patch -Np1 -i ../unfuck-ck1.patch
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
