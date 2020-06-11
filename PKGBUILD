@@ -4,7 +4,7 @@ _imgui_commit='1f02d240b38f445abb0381ade0867752d5d2bc7b'
 
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'libxnvctrl')
 source=("https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz"
         "https://github.com/flightlessmango/imgui/archive/$_imgui_commit.tar.gz")
-sha256sums=('ca301d03372879a33fc8b580e0c98b07bd02913911e49c6b76a350ddc220adea'
+sha256sums=('d925dbe2a552d68cdcfc915efdf5b7c5562f130dc2fb8568a2b1a1f993e49b7c'
             '585ff20b2efba8c4c2e5e29f5d1b6aab4284e61103036035fe826f194e46a918')
 
 _srcdir="MangoHud-$pkgver"
