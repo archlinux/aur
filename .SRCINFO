@@ -1,6 +1,6 @@
 pkgbase = ledger-live
 	pkgdesc = Open source companion app for your Ledger devices
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.ledgerwallet.com/live
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ledger-live
 	makedepends = yarn
 	makedepends = python
 	makedepends = nodejs-lts-erbium
-	source = https://github.com/LedgerHQ/ledger-live-desktop/archive/v2.4.1.tar.gz
+	source = https://github.com/LedgerHQ/ledger-live-desktop/archive/v2.5.0.tar.gz
 	source = ledger-live.desktop
-	sha512sums = 36223f078b2b7a7ad163467610483f32c0dafe94739b027c9cc2abafccc26c0a16d3217c6550057273360b01abf7a83328646607ab2a73aef374e2894d0dbb12
+	sha512sums = 711dd28ba3cbf2111a612f61fe9283d84852f859b12107d0ad56e882175807bce437e2fe35e42c73e8a319fa4dc9786650bd523c22a71e044669acc0900263ef
 	sha512sums = 282faf948b4ab1204f61d838e8362c398ffa731533c75f2b42056a53b939255de89b82e4a9553c161874694f27089070217e56cad18a258e0b18796ab4722955
 
 pkgname = ledger-live
