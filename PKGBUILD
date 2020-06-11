@@ -38,6 +38,27 @@ depends=(
     "curl"
     "wget"
 
+    #Java
+    "jdk-openjdk"
+    "openjdk-src"
+    "openjdk-doc"
+    "java-openjfx"
+    "java-openjfx-src"
+    "java-openjfx-doc"
+    "jdk11-openjdk"
+    "openjdk11-src"
+    "openjdk11-doc"
+    "java11-openjfx"
+    "java11-openjfx-src"
+    "java11-openjfx-doc"
+    "jdk8-openjdk"
+    "openjdk8-src"
+    "openjdk8-doc"
+    "java8-openjfx"
+    "java8-openjfx-src"
+    "java8-openjfx-doc"
+    "icedtea-web"
+
     #Desktop environment
     "plasma-meta"
     "plasma-wayland-session"
