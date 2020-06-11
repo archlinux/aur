@@ -2,13 +2,13 @@
 
 _pkgname=okular
 pkgname=okular-no-purpose
-pkgver=20.04.1
+pkgver=20.04.2
 pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL LGPL FDL)
-groups=(kde-applications kdegraphics)
+groups=(kde-applications kde-graphics)
 depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver kjs kparts discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
@@ -21,26 +21,20 @@ replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('10e29f50f7616b4784ce673ef7fd6c04d622b02c175f96cd127a99cc5cffa9bc'
+sha256sums=('b783aaac1661d1d8ec5c5e26fdec7035a6b0241a21d18caac1587ecfde44c49b'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 options=(!zipman)
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
     -DBUILD_TESTING=OFF
-    make
+    cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
