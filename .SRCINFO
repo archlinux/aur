@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.6.15.arch1
+	pkgver = 5.7.2.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.15-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.7.2-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.6.15.arch1-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.6.15.arch1-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.6.15.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = a8ce0723ca7628113f3641b8a5b294bbb6e03b4b7e0bb0c832756431c1b00469
-	sha256sums = 6302b152d062eadfdb892777b1ad7d6e46fd73e6d2af4cd68f6dc04b5737cc53
-	sha256sums = a75cbf3da572802c7b59d4f98f1e2f664a97d8fe3a6641c6ce6ff94412db4222
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.7.2.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.7.2.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.7.2.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 4e96f470b3b31b00524acabc1ffaf2bae2bb05272101bbe11c9e3b01fc0f8813
+	sha256sums = e874ca79553d1c3d157ffd5bea2b827e809e359746ae7e6551339848845d4873
+	sha256sums = 1a5c8660912dd56359e9618daf0cdb6ba431d27dcb38bf36eea5bd825cb6c4d0
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.6.15.arch1-1-bin
-	depends = linux5.6.15.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.7.2.arch1-1-bin
+	depends = linux5.7.2.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.6.15.arch1-1-headers-bin
-	depends = linux5.6.15.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.7.2.arch1-1-headers-bin
+	depends = linux5.7.2.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.6.15.arch1-1-docs-bin
-	depends = linux5.6.15.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.7.2.arch1-1-docs-bin
+	depends = linux5.7.2.arch1-1-docs-bin
 
-pkgname = linux5.6.15.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.6.15-arch1-1
+pkgname = linux5.7.2.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.7.2-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.6.15.arch1-1-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux
 
-pkgname = linux5.6.15.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.6.15-arch1-1
+pkgname = linux5.7.2.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.7.2-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.6.15.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.6.15-arch1-1
+pkgname = linux5.7.2.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.7.2-arch1-1
 	conflicts = linux-docs
 
