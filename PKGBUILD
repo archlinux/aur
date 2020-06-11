@@ -3,7 +3,7 @@
 
 _hkgname=aur
 pkgname=haskell-aur
-pkgver=7.0.1
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="Access metadata from the Arch Linux User Repository."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -22,7 +22,7 @@ options=('strip' 'staticlibs')
 provides=('haskell-aur')
 conflicts=('haskell-aur-git')
 source=(http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('5ae42445f3f46ab0749beee87f923957')
+md5sums=('05f484cb47254be4e11aaed410862acd')
 install=${pkgname}.install
 
 build() {
