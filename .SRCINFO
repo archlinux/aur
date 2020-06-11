@@ -11,9 +11,11 @@ pkgbase = hid-nintendo-nso-dkms
 	source = hid-nintendo.c
 	source = dkms.conf
 	source = hid-ids.h
+	source = Makefile
 	md5sums = dbc0bd6f144503547cb6e140c1ea2729
 	md5sums = 6d97239c33773b3f2fc5d497e98a1017
 	md5sums = 6d1c428af9d73b4fd493ee1d4465700b
+	md5sums = 3a628988ca479023b45d2bd6b9b1cfb8
 
 pkgname = hid-nintendo-nso-dkms
 

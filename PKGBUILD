@@ -8,12 +8,13 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/nadiaholmquist/linux/tree/hid-nintendo"
 license=("GPL2")
 depends=('dkms')
-source=('hid-nintendo.c' 'dkms.conf' 'hid-ids.h')
+source=('hid-nintendo.c' 'dkms.conf' 'hid-ids.h' 'Makefile')
 conflicts=(hid-nintendo-dkms)
 
 md5sums=('dbc0bd6f144503547cb6e140c1ea2729'
          '6d97239c33773b3f2fc5d497e98a1017'
-         '6d1c428af9d73b4fd493ee1d4465700b')
+         '6d1c428af9d73b4fd493ee1d4465700b'
+         '3a628988ca479023b45d2bd6b9b1cfb8')
 
 package() {
 	install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
