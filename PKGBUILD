@@ -2,7 +2,7 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=4.4.0
+_npmver=4.4.1
 pkgname=cloudron-cli
 pkgver=$_npmver
 pkgrel=1
@@ -15,7 +15,7 @@ makedepends=('npm' 'jq')
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('e9f081e30cef3a8c619684bcaab01db11ee443035a2b6eded8f1d59998cf4d4d')
+sha256sums=('e539e66ab2d8de66f629e5e78d71683f287a7722117c9fce85e8acd46f2e579c')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
