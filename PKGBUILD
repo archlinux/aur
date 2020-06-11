@@ -3,20 +3,20 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=atom-transparent
-pkgver=1.46.0
-_commit=c1fea480e3f4f9c615e23c7da221deb9d3196005
-
+pkgver=1.48.0
+_commit=5df9cd3d774352321ffeb65570de77906792f8bc
 pkgrel=1
 pkgdesc='A hackable text editor for the 21st Century, with transparency patch'
 arch=('x86_64')
 url='https://github.com/atom/atom'
 license=('MIT' 'custom')
-depends=('apm' 'electron4' 'libxkbfile' 'ripgrep')
+depends=('apm' 'electron5' 'libxkbfile' 'ripgrep')
 makedepends=('git' 'npm')
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration')
 conflicts=('atom')
 provides=('atom')
+replaces=('atom-editor')
 options=(!emptydirs)
 source=("git+https://github.com/atom/atom.git#commit=${_commit}"
         'atom.js'
@@ -55,7 +55,7 @@ prepare() {
   patch -Np1 -i ../fix-restart.patch
   patch -Np1 -i ../node-env-production.patch
   patch -Np1 -i ../no-unsafe-eval-warning.patch
-  patch -Np1 -i "${srcdir}"/enable-transparency.patch
+  patch -Np1 -i ../enable-transparency.patch
 }
 
 build() {
@@ -63,7 +63,7 @@ build() {
 
   ATOM_RESOURCE_PATH="${PWD}" \
   npm_config_build_from_source=true \
-  npm_config_target=$(< /usr/lib/electron4/version) \
+  npm_config_target=$(< /usr/lib/electron5/version) \
   apm install
 
   # Use system ctags
@@ -85,22 +85,18 @@ build() {
   env \
     npm_config_disturl=https://electronjs.org/headers \
     npm_config_runtime=electron \
-    npm_config_target=$(< /usr/lib/electron4/version) \
+    npm_config_target=$(< /usr/lib/electron5/version) \
     node-gyp rebuild
   cd ../..
 
   cd script
-  # Hack to avoid using Node 12
-  env \
-    npm_config_disturl=https://electronjs.org/headers \
-    npm_config_runtime=electron \
-    npm_config_target=$(< /usr/lib/electron4/version) \
-    npm install
+  npm install
+  # Hack to avoid using Node > 12 (https://github.com/babel/babel/issues/11216)
   # Set ELECTRON_VERSION (see use-system-electron.patch)
   env \
     ELECTRON_RUN_AS_NODE=1 \
-    ELECTRON_VERSION=$(< /usr/lib/electron4/version) \
-    electron4 \
+    ELECTRON_VERSION=$(< /usr/lib/electron5/version) \
+    electron5 \
     build --no-bootstrap
 }
 
