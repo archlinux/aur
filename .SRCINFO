@@ -32,7 +32,7 @@ pkgbase = linux-gc
 	sha256sums = 19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a
 	sha256sums = 9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7
 	sha256sums = 8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc
-	sha256sums = d135e96102073c553126573d2f0137a375e520f529d7addc111a3aec048b1174
+	sha256sums = 367ec99888fe491ad05f312125e4f323a0600d424cc68d0d7fb6cab65a930089
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler

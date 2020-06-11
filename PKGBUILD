@@ -55,7 +55,7 @@ sha256sums=('6065ae820e2d52a77a549ef97444c36adf7ab2969b294460256f028b4eed7909'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
-            'd135e96102073c553126573d2f0137a375e520f529d7addc111a3aec048b1174')
+            '367ec99888fe491ad05f312125e4f323a0600d424cc68d0d7fb6cab65a930089')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
