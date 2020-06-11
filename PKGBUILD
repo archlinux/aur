@@ -1,7 +1,9 @@
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
-pkgname=realmd-git
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mantas Mikulėnas <grawity@gmail.com>
+
 _pkgname=realmd
-pkgver=0.16.3.r26.gb6753bd
+pkgname=$_pkgname-git
+pkgver=0.16.3.r35.g517fa76
 pkgrel=1
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms"
 arch=(i686 x86_64)
@@ -16,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe | sed 's/-/.r/; s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
