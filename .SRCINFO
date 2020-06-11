@@ -1,0 +1,14 @@
+pkgbase = djvupages-git
+	pkgdesc = Shell utility to manipulate pages of DjVu file
+	pkgver = r5.3b9ab4f
+	pkgrel = 1
+	url = https://github.com/ashipunov/djvupages
+	arch = any
+	license = unknown
+	provides = djvupages
+	conflicts = djvupages
+	source = git+https://github.com/ashipunov/djvupages.git
+	sha256sums = SKIP
+
+pkgname = djvupages-git
+
