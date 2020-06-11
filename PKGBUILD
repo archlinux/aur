@@ -3,7 +3,7 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=20.04.1
+pkgver=20.04.2
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://community.kde.org/KDEConnect'
@@ -15,28 +15,23 @@ makedepends=(extra-cmake-modules kdoctools)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration')
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz"{,.sig}
          kdeconnect-openssh-8.2.patch)
-sha256sums=('788d5d514f329decd956ae79c93260d309a042a275a6e61a2a883bb79abcd0ce'
+sha256sums=('37a606f243dcce42cdb84f5d27123845b6377e1f7043a618ad2f31b69653037b'
             'SKIP'
             '8bcf0d39dfe059af866f48719562dfe7db7fcb0f20ee75d7adda9784fca0ba64')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 prepare() {
-  mkdir -p build
-
-  cd $pkgname-kde-$pkgver
-  patch -p1 -i ../kdeconnect-openssh-8.2.patch # Fix file browsing with openssh 8.2
+  patch -d $pkgname-kde-$pkgver -p1 -i ../kdeconnect-openssh-8.2.patch # Fix file browsing with openssh 8.2
 }
 
 build() {
-  cd build
-  cmake ../$pkgname-kde-$pkgver \
+  cmake -B build -S $pkgname-kde-$pkgver \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_LIBEXECDIR=lib
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
