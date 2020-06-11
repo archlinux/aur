@@ -18,10 +18,8 @@
 }
 
 _name="luxcorerender"
-_ver_tag="luxcorerender_v2.2"
-{ IFS='.'; read -r _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
 pkgname=${_name}-git
-pkgver=2.3.r869.g8762f6817
+pkgver=2.3.r431.g38ead7418
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -32,7 +30,7 @@ depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio)
 optdepends+=("pyside2: for pyluxcoretools gui")
 makedepends+=(boost cmake doxygen git ninja pyside2-tools)
 conflicts=(luxcorerender)
-provides=(luxrays "luxcorerender=${epoch}:${_ver_major}.${_ver_minor}")
+provides=(luxrays "luxcorerender=${epoch}:${pkgver%.r*}")
 options=('!buildflags')
 source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
@@ -46,8 +44,7 @@ pkgver() {
 # shellcheck disable=SC2164
   cd "${srcdir}/${_name}"
 # shellcheck disable=SC2015
-  [ -v _ver_tag ] && printf %d.%d.r%s.g%s "$_ver_major" "$_ver_minor" "$(git rev-list ${_ver_tag}..HEAD --count)" "$(git log --pretty=format:'%h' -n 1)" \
-                  || git describe --long --tags | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match luxcorerender* | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
