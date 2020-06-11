@@ -2,7 +2,7 @@
 # Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
 pkgname=hepmc2
 _pkgname=hepmc
-pkgver=2.06.10
+pkgver=2.06.11
 pkgrel=1
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('bash')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${_pkgname}/releases/${_pkgname}${pkgver}.tgz")
-sha256sums=('5adedd9e3f7447e1e5fc01b72f745ab87da2c1611df89208bb3d7c6ea94c11a4')
+sha256sums=('86b66ea0278f803cde5774de8bd187dd42c870367f1cbf6cdaec8dc7cf6afc10')
 
 build() {
     mkdir build
