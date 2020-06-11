@@ -67,10 +67,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.6
-_minor=18
+_major=5.7
+_minor=2
 _srcname=linux-${_major}
-_clr=${_major}.17-960
+_clr=${_major}.1-961
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -179,8 +179,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.5-v5.6.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.5-v5.6.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v10.1+_kernel_v5.7+.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
         fi
 
     ### Get kernel version
@@ -261,7 +261,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -337,6 +337,9 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+    echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
+
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -350,9 +353,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'SKIP'
-            '08026b9401edd0fb5a8d2f30574ca443ab4b52e0e426a46448b01714c8cc3849'
+            '6d1f86937ae202b25e4a9c3b9cd87c7da520af7000b4f271ac379282afa9b8d5'
             'SKIP'
             '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
