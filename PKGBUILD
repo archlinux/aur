@@ -9,7 +9,7 @@ url="https://teams.microsoft.com/downloads"
 license=('custom')
 depends=("gtk3" "libxss" "alsa-lib" "libxtst" "libsecret" "nss" "glibc>=2.28-4")
 optdepends=("org.freedesktop.secrets")
-conflicts=("ms-teams" "teams-insiders")
+conflicts=("ms-teams")
 replaces=("ms-teams")
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
