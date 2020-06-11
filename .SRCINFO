@@ -1,0 +1,15 @@
+pkgbase = nvptx-tools-git
+	pkgdesc = A collection of tools for use with nvptx-none GCC toolchains
+	pkgver = r61.5f6f343
+	pkgrel = 1
+	url = https://github.com/MentorEmbedded/nvptx-tools
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = nvptx-tools
+	conflicts = nvptx-tools
+	source = nvptx-tools::git+https://github.com/MentorEmbedded/nvptx-tools.git
+	sha256sums = SKIP
+
+pkgname = nvptx-tools-git
+
