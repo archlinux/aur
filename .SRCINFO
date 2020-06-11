@@ -1,7 +1,7 @@
 pkgbase = crash-standalone
-	pkgdesc = The CrashDB Shell CLI tool for interacting with CrateDB.
+	pkgdesc = The CrateDB Shell (Crash) CLI tool for interacting with CrateDB clusters.
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crate/crash
 	arch = any
 	license = apache
