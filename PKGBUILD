@@ -2,12 +2,11 @@
 
 pkgname=browsh
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
 license=('LGPL2.1')
-depends=('firefox>=63')
 makedepends=('go' 'go-bindata' 'dep' 'git')
 optdepends=('upx: compress binary')
 conflicts=('browsh-bin' 'browsh-git')
@@ -61,5 +60,6 @@ build() {
 }
 
 package() {
+	depends=('firefox>=63')
 	install -Dm755 $pkgname "${pkgdir}/usr/bin/${pkgname}"
 }
