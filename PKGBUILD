@@ -10,24 +10,23 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=v12.0.309.geadd987a6
-pkgrel=2
+pkgver=v13.99.1.35.g1778f76c7
+pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
-depends=(lib{ltdl,soxr,asyncns,cap,xtst,sm,sndfile} "rtkit" "speexdsp" "tdb"
-         "orc" "webrtc-audio-processing" jack2 dbus "systemd" "avahi" "openssl"
-         "lirc" bluez{,-libs} "sbc" python-{pyqt5,dbus,sip} "fftw") #json-c
-makedepends=("git" lib{asyncns,cap,xtst,sm,sndfile,tool,soxr} "attr" "rtkit"
-             "speexdsp" "tdb" "systemd" jack2 dbus "avahi" bluez{,-libs}
-             "intltool"  "sbc" "lirc" "openssl" "fftw" "orc" "gtk3"
-             "webrtc-audio-processing" "check" "autoconf-archive") #gconf
+depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
+         "webrtc-audio-processing" jack2 "lirc" bluez{,-libs} "sbc"
+         python-{pyqt5,dbus,sip} "fftw" dconf)
+makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
+             "tdb" jack2 bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
+             "orc" "gtk3" "webrtc-audio-processing" "check" "autoconf-archive")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)"
             "lirc-utils: infra-red support")
 backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
-provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
-conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
+provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse" libpulse{,-{simple,mainloop-glib}}.so)
+conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse" libpulse{,-{simple,mainloop-glib}}.so)
 options=(!emptydirs)
 source=("git+git://anongit.freedesktop.org/pulseaudio/pulseaudio")
 sha256sums=('SKIP')
