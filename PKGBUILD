@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=slock-jacob-git
-pkgver=1.4.r1.d8c2ac7
+pkgver=1.4.r3.afc973e
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of slock see the repo for more details"
 arch=(x86_64 i686)
@@ -29,7 +29,7 @@ package() {
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
 	./configure
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	make install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
