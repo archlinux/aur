@@ -23,7 +23,7 @@ pkgbase = alacritty-ligatures
 	depends = libxrandr
 	provides = alacritty
 	conflicts = alacritty
-	source = alacritty::git+https://github.com/Philipp-M/alacritty.git#branch=continue-font-ligatures
+	source = alacritty::git+https://github.com/zenixls2/alacritty.git#branch=ligature
 	sha256sums = SKIP
 
 pkgname = alacritty-ligatures

@@ -1,6 +1,6 @@
 pkgname='alacritty-ligatures'
 _pkgname="alacritty"
-pkgver=0.5.0.1534.g3183b7d
+pkgver=0.5.0.1567.gf2bd7d7
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/alacritty/alacritty"
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/Philipp-M/alacritty.git#branch=continue-font-ligatures")
+source=("$_pkgname::git+https://github.com/zenixls2/alacritty.git#branch=ligature")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,6 +21,7 @@ pkgver() {
 
 build(){
   cd "$_pkgname"
+  git submodule update --init
   env CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
