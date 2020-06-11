@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,14 +42,14 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/402b115acf83ea5678b7a5a761c3893778907ec5.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0f579ba70a8b9abbfe32a523dacf9d514efb1148.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('40d318add8cefe3fdb26f19dac7386f5e7b63854ae021e593466902856ce9ded'
+sha256sums=('6065ae820e2d52a77a549ef97444c36adf7ab2969b294460256f028b4eed7909'
             'SKIP'
             '1e1e84e6f6f394d64a13176b4c9d95a87d1a405f44c456b95b6e8af1379bbfc6'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
