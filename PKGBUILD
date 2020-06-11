@@ -24,6 +24,7 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "cmd/minify/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "cmd/minify/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "cmd/minify/minify_bash_tab_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
 
