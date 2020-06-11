@@ -2,7 +2,7 @@
 
 pkgname="linus-meta"
 pkgdesc="Packages i always need so i dont forget or uninstall them"
-pkgver="2"
+pkgver="3"
 pkgrel="1"
 arch=("x86_64")
 license=("GPL3")
@@ -69,6 +69,8 @@ depends=(
     "noto-fonts-emoji" #Fix emojis
     "pulseaudio-bluetooth"
     "xdg-user-dirs"
+    "flite" #Narrator support
+    "networkmanager"
 
     #Printer
     "cups"
