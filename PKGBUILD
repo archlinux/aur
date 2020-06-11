@@ -81,6 +81,8 @@ package() {
   'Categories=Graphics;' \
   > "$pkgdir/usr/share/applications/draw.io.desktop"
 
+  ln -s /usr/bin/draw.io "$pkgdir/usr/bin/drawio"
+
   MIMETYPE="$(grep mimeType "$srcdir/drawio-desktop-$pkgver/electron-builder-linux-mac.json" | sed 's/.*"mimeType":.*"\(.*\)".*/\1/g' | tr '\n' ';')"
   if [[ -n "${MIMETYPE}" ]]; then
       echo "MimeType=${MIMETYPE}" >> "$pkgdir/usr/share/applications/draw.io.desktop"
