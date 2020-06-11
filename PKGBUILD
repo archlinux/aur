@@ -22,6 +22,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   sed -i 's/debug = true/opt-level = 3\ndebug = false/' Cargo.toml
+  sed -i 's/, features = \["bundled", "static-link"\] / /g ' Cargo.toml
+  sed -i 's/Icon=neovide/Icon=nvim/' assets/neovide.desktop
 }
 
 build() {
