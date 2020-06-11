@@ -1,0 +1,29 @@
+diff -arU2 a/requirements/base.txt b/requirements/base.txt
+--- a/requirements/base.txt	2020-05-27 11:26:42.000000000 -0700
++++ b/requirements/base.txt	2020-06-10 22:44:16.399098009 -0700
+@@ -1,16 +1,16 @@
+ chevron~=0.12
+ click~=7.0
+-Flask~=1.0.2
++Flask~=1.0, >= 1.0.2
+ #Need to add Schemas latest SDK.
+ boto3~=1.13.0, >=1.13.0
+-jmespath~=0.9.5
++jmespath~=0.9, >=0.9.5
+ PyYAML~=5.1
+-cookiecutter~=1.6.0
+-aws-sam-translator==1.24.0
++cookiecutter~=1.6
++aws-sam-translator~=1.24.0
+ docker~=4.0
+ dateparser~=0.7
+-python-dateutil~=2.6, <2.8.1
+-requests==2.23.0
+-serverlessrepo==0.1.9
+-aws_lambda_builders==0.9.0
+-tomlkit==0.5.8
++python-dateutil~=2.6
++requests~=2.23.0
++serverlessrepo~=0.1.9
++aws_lambda_builders~=0.9.0
++tomlkit~=0.5, >=0.5.8
