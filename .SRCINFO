@@ -1,7 +1,7 @@
 pkgbase = kanshi-git
-	pkgdesc = Dynamic display configuration for WMs like i3/sway
-	pkgver = r73.823cdb0
-	pkgrel = 2
+	pkgdesc = Dynamic output configuration for Wayland WMs
+	pkgver = r85.846b725
+	pkgrel = 1
 	url = https://github.com/emersion/kanshi
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = kanshi-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
-	makedepends = wayland
-	depends = wlroots>=0.7
+	makedepends = wlroots>=0.7
+	depends = wayland
 	provides = kanshi
 	conflicts = kanshi
 	source = kanshi::git+https://github.com/emersion/kanshi.git
