@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=akd
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A Keyboard userspace daemon'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(libx11 boost)
 makedepends=(cmake)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('3a6c5e9273dacdacdcc87ebb9115612242839282a0e0345eb77250a70c814238')
+sha256sums=('aa5f3d1b05409d0def6f001972f482ca8a05563f0a9ce0d2e76897360492b729')
 
 build() {
   mkdir -p $pkgname-$pkgver/build
