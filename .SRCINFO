@@ -1,6 +1,6 @@
 pkgbase = sharedaccess-git
 	pkgdesc = C++17 library to make sharing a resource with multiple threads easier.
-	pkgver = v1.1.0.r0.ga893525
+	pkgver = 1.1.0.r0.ga893525
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/sharedaccess
 	arch = any
