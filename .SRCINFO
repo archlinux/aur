@@ -1,39 +1,21 @@
 pkgbase = python-h5py-git
-	pkgdesc = General-purpose Python bindings for the HDF5 library -- latest commit, with mpi
-	pkgver = r968.3d1edda
+	pkgdesc = General-purpose Python bindings for the HDF5 library
+	pkgver = r1197.ff214cdd
 	pkgrel = 1
-	url = http://www.h5py.org/
+	url = https://www.h5py.org/
 	arch = x86_64
 	license = BSD
-	makedepends = hdf5-openmpi
+	checkdepends = python-pytest
 	makedepends = cython
-	makedepends = cython2
-	makedepends = python-numpy
-	makedepends = python2-numpy
-	makedepends = python-six
-	makedepends = python2-six
 	makedepends = python-pkgconfig
-	makedepends = python2-pkgconfig
-	makedepends = python-mpi4py
-	makedepends = python2-mpi4py
+	depends = hdf5
+	depends = python-numpy
+	depends = python-six
 	provides = python-h5py
-	provides = python2-h5py
-	source = h5py::git+https://github.com/h5py/h5py.git#branch=master
+	conflicts = python-h5py
+	conflicts = hdf5-openmpi
+	source = git+https://github.com/h5py/h5py
 	md5sums = SKIP
 
 pkgname = python-h5py-git
-	depends = hdf5-openmpi
-	depends = cython
-	depends = python-numpy
-	depends = python-six
-	depends = python-pkgconfig
-	depends = python-mpi4py
-
-pkgname = python2-h5py-git
-	depends = hdf5-openmpi
-	depends = cython2
-	depends = python2-numpy
-	depends = python2-six
-	depends = python2-pkgconfig
-	depends = python2-mpi4py
 

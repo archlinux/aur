@@ -1,21 +1,24 @@
-# $Id$
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Chris Billington <chrisjbillington@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+# Contributor: Rich Li <rich@dranek.com>
+# Contributor: Sebastien Binet <binet@lblbox>
 
 _pkg=h5py
-pkgbase=python-${_pkg}-git
-pkgname=(python-${_pkg}-git python2-${_pkg}-git)
-pkgver=r968.3d1edda
+pkgname=python-${_pkg}-git
+pkgver=r1197.ff214cdd
 pkgrel=1
-pkgdesc="General-purpose Python bindings for the HDF5 library -- latest commit, with mpi"
-url="http://www.h5py.org/"
-arch=('x86_64')
-license=('BSD')
-makedepends=("hdf5-openmpi" 'cython' 'cython2' 'python-numpy' 'python2-numpy' 'python-six' 'python2-six'
-             'python-pkgconfig' 'python2-pkgconfig' 'python-mpi4py' 'python2-mpi4py')
-provides=(python-${_pkg} python2-${_pkg})
-conflics=${provides}
-
-source=("${_pkg}"'::git+https://github.com/h5py/h5py.git#branch=master')
+pkgdesc="General-purpose Python bindings for the HDF5 library"
+arch=(x86_64)
+url="https://www.h5py.org/"
+license=(BSD)
+depends=(hdf5 python-numpy python-six)
+makedepends=(cython python-pkgconfig)
+checkdepends=(python-pytest)
+conflicts=(python-h5py hdf5-openmpi)
+provides=(python-h5py)
+source=("git+https://github.com/h5py/h5py")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,24 +26,24 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
 }
 
-package_python2-h5py-git() {
-  depends=('hdf5-openmpi' 'cython2' 'python2-numpy' 'python2-six' 'python2-pkgconfig' 'python2-mpi4py')
-  cd "${_pkg}"
-  python2 setup.py configure --mpi
-  python2 setup.py install --root="${pkgdir}" --optimize 1
-  #install -d644 "${pkgdir}/usr/share/licenses/${pkgname}"
-  #install -Dm644 "./licenses/*" "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -D licenses/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+prepare() {
+  # Remove RPATH
+  sed -i "s/settings\\['runtime_library_dirs'\\] = settings\\['library_dirs'\\]/pass/" ${_pkg}/setup_build.py
 }
 
-
-package_python-h5py-git() {
-  depends=('hdf5-openmpi' 'cython' 'python-numpy' 'python-six' 'python-pkgconfig' 'python-mpi4py')
-  cd "${_pkg}"
-  python2 setup.py configure --mpi
-  python setup.py install --root="${pkgdir}" --optimize 1
-  #install -d644 "${pkgdir}/usr/share/licenses/${pkgname}"
-  #install -Dm644 "./licenses/*" "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -D licenses/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+build() {
+  cd ${_pkg}
+  python setup.py build
 }
 
+check() {
+  cd ${_pkg}
+  python setup.py test || warning "Tests failed"
+}
+
+package() {
+  cd ${_pkg}
+  python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+
+  install -Dm644 licenses/license.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+}
