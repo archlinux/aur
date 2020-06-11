@@ -11,7 +11,7 @@ license=('GPL3')
 install=${_pkgname}.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip')
+makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=("${_pkgname}")
 options=(!strip)
 source=("git+https://github.com/IceReaper/KKnD.git"
