@@ -1,5 +1,5 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034
 pkgname=luxcorerender
 pkgver=2.2
 _name=LuxCore-${pkgname}_v${pkgver}
