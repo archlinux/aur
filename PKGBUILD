@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=neovide-git
-pkgver=0.5.0.r46.g2815a28
+pkgver=0.6.0.r13.g4643464
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
