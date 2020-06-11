@@ -38,11 +38,18 @@ build() {
 	cp -r * ..
 	cd ..	
 	
+	# move ELECBYTE resources
+	#mv "$srcdir/Ikemen_GO-Elecbyte-Screenpack-master" ..
+
 	# copy ELECBYTE resources and delete other copy
 	cd "$srcdir/Ikemen_GO-Elecbyte-Screenpack-master"
 	cp -rf * "$srcdir/Ikemen_GO-master"
 	cd ..
 	rm -rf "Ikemen_GO-Elecbyte-Screenpack-master"
+
+	# Move shebang script within ikemen
+	rm "$srcdir/Ikemen_GO-master/ikemen-go.sh"
+	cp -f "ikemen-go.sh" "$srcdir/Ikemen_GO-master/"
 
 	msg "Removing dirs/files that are no longer necessary.."
 	sudo rm -rf "$srcdir/Ikemen_GO-master/go"
@@ -65,8 +72,7 @@ package() {
 	install -dm777 "$pkgdir/opt/$pkgname/"
 	cp -a "$srcdir/Ikemen_GO-master/." "$pkgdir/opt/$pkgname"
 	
-	# create dir and put shebang shortcut under /usr/bin
+	# Create static link from shebang script to /usr/bin
 	install -d "$pkgdir/usr/bin"
-	install -m755 "$srcdir/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
-	sudo chmod 755 "$pkgdir/usr/bin/ikemen-go"
+	ln -sf "$pkgdir/opt/$pkgname/ikemen-go.sh" "$pkgdir/usr/bin/ikemen-go"
 }

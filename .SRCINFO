@@ -17,14 +17,17 @@ pkgbase = ikemen-go-git
 	depends = libxinerama
 	depends = libxi
 	depends = gtk3
+	depends = sudo
 	provides = ikemen-go-git
+	provides = ikemen-go-bin
 	conflicts = ikemen-go-git
+	conflicts = ikemen-go-bin
 	source = ikemen_go::https://github.com/Windblade-GR01/Ikemen_GO/archive/master.zip
 	source = resources::https://github.com/Windblade-GR01/Ikemen_GO-Elecbyte-Screenpack/archive/master.zip
 	source = ikemen-go.sh
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 0cf3f5ab496a2b5fe96ed7506c66960b
+	md5sums = 7f753ac4bdfe4ee42ee500de123fdef0
 
 pkgname = ikemen-go-git
 
