@@ -1,0 +1,64 @@
+diff --git a/src/widgets/itempopupwindow.h b/src/widgets/itempopupwindow.h
+index 73abcfe..d0667bc 100644
+--- a/src/widgets/itempopupwindow.h
++++ b/src/widgets/itempopupwindow.h
+@@ -4,7 +4,9 @@
+ #include <QWidget>
+ #include <darrowrectangle.h>
+ #include <dregionmonitor.h>
++#include <DRegionMonitor>
+ 
++DGUI_USE_NAMESPACE
+ DWIDGET_USE_NAMESPACE
+ 
+ class ItemPopupWindow : public DArrowRectangle
+diff --git a/src/widgets/itempopupwindow.cpp b/src/widgets/itempopupwindow2.cpp
+index e6ed86c..90f9e93 100644
+--- a/src/widgets/itempopupwindow.cpp
++++ b/src/widgets/itempopupwindow2.cpp
+@@ -1,4 +1,7 @@
+ #include "itempopupwindow.h"
++#include <DRegionMonitor>
++
++DGUI_USE_NAMESPACE
+ 
+ ItemPopupWindow::ItemPopupWindow(QWidget *parent)
+     : DArrowRectangle(DArrowRectangle::ArrowTop, parent)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 301cf95..60daf59 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists2.txt
+@@ -261,6 +261,8 @@ find_package(PkgConfig REQUIRED)
+ find_package(DtkWidget REQUIRED)
+ find_package(Qt5 COMPONENTS Core Gui DBus Svg X11Extras Concurrent REQUIRED)
+ 
++pkg_check_modules(DtkWidget REQUIRED dtkwidget)
++pkg_check_modules(DtkGui REQUIRED dtkgui)
+ pkg_check_modules(PROCPS REQUIRED libprocps)
+ pkg_check_modules(XCB_LIBS REQUIRED xcb-ewmh xcb xcb-image xcb-composite xtst xcb-icccm dbusmenu-qt5)
+ pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xext)
+diff --git a/src/widgets/switchitem.h b/src/widgets/switchitem.h
+index 92dfe74..1c332da 100644
+--- a/src/widgets/switchitem.h
++++ b/src/widgets/switchitem.h
+@@ -15,7 +15,7 @@ public:
+     explicit SwitchItem(QWidget *parent = 0);
+ 
+     const QString text() const { return m_text->text(); }
+-    bool checked() const { return m_switch->checked(); }
++    bool checked() const { return m_switch->isChecked(); }
+     const QString value() const {return m_value; }
+ 
+ signals:
+diff --git a/src/modules/sound/sounditem.cpp b/src/modules/sound/sounditem.cpp
+index ec91e21..e3305a9 100644
+--- a/src/modules/sound/sounditem.cpp
++++ b/src/modules/sound/sounditem.cpp
+@@ -51,7 +51,6 @@ SoundItem::SoundItem(QWidget *parent)
+     m_tickScrollArea->hide();
+ 
+     m_tickEffect->setDirection(DTickEffect::RightToLeft);
+-    m_tickEffect->setDuration(3000);
+ 
+     QHBoxLayout *layout = new QHBoxLayout;
+     layout->setMargin(0);
