@@ -1,6 +1,6 @@
 pkgbase = python-django-cms
 	pkgdesc = An Advanced Django CMS
-	pkgver = 3.7.2
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = https://django-cms.org
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-django-cms
 	makedepends = python-treebeard
 	makedepends = python-django-sekizai
 	makedepends = python-djangocms-admin-style
-	source = python-django-cms-3.7.2.tar.gz::https://github.com/divio/django-cms/archive/3.7.2.tar.gz
-	sha256sums = 22984afbb1f991b1c44056d82ddbff3a3ab1c288b0927da7493d0ad532dc1971
+	source = python-django-cms-3.7.3.tar.gz::https://github.com/divio/django-cms/archive/3.7.3.tar.gz
+	sha256sums = ed13dace9941cca10aa70a5ce980f06f6e2a30b30b2990a300dd57a329dee251
 
 pkgname = python-django-cms
 	depends = python-django
