@@ -1,8 +1,9 @@
-# Maintainer: gspu <bssbk2455[at]gmail[dot]com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: gspu <bssbk2455[at]gmail[dot]com>
 # Contributor: Previous maintainer Vasil Yonkov <vasily@mm.st>
 
 pkgname=xmr-stak_cpu
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('GPL3')
 makedepends=('cmake')
 depends=('hwloc' 'openssl' 'libmicrohttpd')
 source=("https://github.com/fireice-uk/xmr-stak/archive/${pkgver}-rx.tar.gz")
-sha512sums=('ce2fb84e88cd3fe2d75d73c6027eea0823d3ac77463229ae838b97ba0e91d43d5f30365363049f7de7a7c1e8e85b5511850da86ecb07ae3db86d276241a7cce3')
+sha512sums=('79e2a42f31f71cdbe27b89a31d302afc1a1897acd4440482d3cb0cee2c70e90018d64e941e392ebd536e552f46f0002d9dbc4a3efde7f562880ad4236677da56')
 
 build() {
     cd "xmr-stak-${pkgver}-rx"
