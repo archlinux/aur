@@ -1,6 +1,6 @@
 pkgbase = migraphx
 	pkgdesc = AMD's graph optimization engine
-	pkgver = 0.5.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://rocmsoftwareplatform.github.io/AMDMIGraphX/doc/html/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = migraphx
 	depends = protobuf
 	depends = half
 	depends = pybind11
-	source = migraphx-0.5.1.tar.gz::https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/archive/0.5.1.tar.gz
-	sha256sums = 2079dfe2e1efbe5e56015e056bf82f90d1645fa4a2610e20afa861697616e6af
+	source = migraphx-3.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/archive/rocm-3.5.0.tar.gz
+	sha256sums = 5766f3b262468c500be5051a056811a8edfa741734a5c08c4ecb0337b7906377
 
 pkgname = migraphx
 
