@@ -1,0 +1,23 @@
+pkgbase = canorus-git
+	pkgdesc = A free music score editor
+	pkgver = r1479.3ccb8921
+	pkgrel = 1
+	url = http://www.canorus.org/
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools>=5.6
+	makedepends = cmake>=3.5
+	makedepends = swig>=3.0.8
+	makedepends = git
+	depends = qt5-svg>=5.6
+	depends = qt5-webengine>=5.6
+	depends = alsa-lib
+	depends = zlib
+	depends = python>=3
+	provides = canorus
+	conflicts = canorus
+	source = git+https://github.com/canorusmusic/canorus.git
+	sha256sums = SKIP
+
+pkgname = canorus-git
+
