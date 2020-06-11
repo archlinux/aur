@@ -1,6 +1,6 @@
 pkgbase = torodofi-git
 	pkgdesc = Simple ToDo task manager using pure MarkDown file to store your tasks. Active/Done, tags, deadlines support. Rofi GUI.
-	pkgver = r89.73e5b7d
+	pkgver = 89.73e5b7d
 	pkgrel = 1
 	url = https://github.com/pushsla/torodofi
 	arch = x86_64
