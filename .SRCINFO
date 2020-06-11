@@ -1,0 +1,24 @@
+pkgbase = python-iotedgehubdev
+	pkgdesc = Azure IoT EdgeHub Dev Too;
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/Azure/iotedgehubdev
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python-click
+	depends = docker
+	depends = python-pyopenssl
+	depends = python-requests
+	depends = python-six
+	depends = python-applicationinsights
+	depends = python-yaml
+	depends = python-jsonpath-rw
+	depends = docker-compose
+	provides = python-iotedgehubdev
+	source = src::git+https://github.com/Azure/iotedgehubdev.git#tag=v0.14.1
+	md5sums = SKIP
+
+pkgname = python-iotedgehubdev
+
