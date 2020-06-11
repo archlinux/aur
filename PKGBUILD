@@ -1,13 +1,13 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=xrandr-watch-git
-pkgver=r7.a5736ef
+pkgver=r9.655b260
 pkgrel=1
 pkgdesc="xrandr event watcher"
 arch=('x86_64')
 url='https://github.com/pastleo/xrandr-watcher'
 license=('MIT')
 depends=('nodejs')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'npm')
 provides=('xrandr-watch')
 conflicts=('xrandr-watch')
 source=(

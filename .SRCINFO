@@ -1,12 +1,13 @@
 pkgbase = xrandr-watch-git
 	pkgdesc = xrandr event watcher
-	pkgver = r7.a5736ef
+	pkgver = r9.655b260
 	pkgrel = 1
 	url = https://github.com/pastleo/xrandr-watcher
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = make
+	makedepends = npm
 	depends = nodejs
 	provides = xrandr-watch
 	conflicts = xrandr-watch
