@@ -1,5 +1,4 @@
-# Maintainer:
-# Contributor: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 #
 # i3pystatus doesn't have releases; it's rolling release.
@@ -12,8 +11,8 @@ _pkgrev=e0234c12233903bd7faca96f2f4497fb876191f2
 
 pkgname=i3pystatus
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=r1807.e0234c1
-pkgrel=2
+pkgver=3.35.r345.ge0234c1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('python')
@@ -34,7 +33,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

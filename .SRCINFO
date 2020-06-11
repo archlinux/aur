@@ -1,7 +1,7 @@
 pkgbase = i3pystatus
 	pkgdesc = i3status replacement written in python for the i3 window manager
-	pkgver = r1807.e0234c1
-	pkgrel = 2
+	pkgver = 3.35.r345.ge0234c1
+	pkgrel = 1
 	url = https://github.com/enkore/i3pystatus
 	arch = i686
 	arch = x86_64
