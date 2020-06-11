@@ -1,0 +1,15 @@
+pkgbase = terraform-provider-stripe
+	pkgdesc = Terraform provider for Stripe
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/franckverrot/terraform-provider-stripe
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = terraform-provider-stripe-1.4.0.tar.gz::https://github.com/franckverrot/terraform-provider-stripe/archive/1.4.0.tar.gz
+	sha256sums = 7af24f4443f4abeadb487dbe8540de94aa9fe565748aea7a601447491f7035eb
+
+pkgname = terraform-provider-stripe
+
