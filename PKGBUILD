@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-core_bench
-pkgver=0.11.0
+pkgver=0.14.0
 pkgrel=1
 epoch=1
 pkgdesc="A micro-benchmarking library for ocaml"
@@ -12,7 +13,7 @@ depends=('ocaml' 'ocaml-core' 'ocaml-core_extended' 'ocaml-ppx_jane' 'ocaml-text
 makedepends=('dune')
 options=('!strip')
 source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/core_bench-v${pkgver}.tar.gz")
-md5sums=('24b1327b11adb200a4cc87298a335c22')
+md5sums=('96c9241f978acbc3a6817b20b281996f')
 
 build() {
   cd "${srcdir}/core_bench-v${pkgver}"
