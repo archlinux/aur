@@ -14,6 +14,11 @@ makedepends=('cmake>=3.10.0' 'gcc>=9.0.0' 'git>=2.25.0')
 source=("git+https://github.com/pushsla/torodofi.git")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
 	cd "$srcdir/torodofi"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -S . -B build
