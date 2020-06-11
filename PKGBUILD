@@ -1,7 +1,7 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 
 pkgname=riot-desktop-nightly-bin
-pkgver=2020060901
+pkgver=2020061101
 pkgrel=1
 pkgdesc="A glossy Matrix collaboration client for the desktop (nightly .deb build)."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://riot.im"
 license=('Apache')
 source=("https://packages.riot.im/debian/pool/main/r/riot-nightly/riot-nightly_${pkgver}_amd64.deb"
         "riot-desktop-nightly.sh")
-sha256sums=('37bccbc0f2d3558d43ea8fd56df943d4dc71367638cfb1f3eea2250736a1381e'
+sha256sums=('327ac268c171a9c5d5ebb17b67ec658856003f7d51e93a2ea7673cd0080020dc'
             'f6c01c7b4ed8f200d89a3a8e8ff10db7b4d5043ad1a77fb75c51440c236f0678')
 
 package() {
