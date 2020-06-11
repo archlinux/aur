@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.17.1-49
-pkgver=4.17.1
+_debpkgver=4.18.0-50
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -27,8 +27,8 @@ package() {
       install -Dm755 "$srcdir/usr/bin/hqplayer-restore-backup.sh" \
     "$pkgdir/usr/bin/hqplayer-restore-backup.sh"
     
-     #install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
-    #"$pkgdir/etc/hqplayer/hqplayerd.xml"
+     install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
+    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
     
      mkdir -p "$pkgdir/etc/hqplayer"
     
