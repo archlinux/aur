@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=slock-jacob-git
-pkgver=1.4.r3.afc973e
+pkgver=1.4.r4.f6a6c88
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of slock see the repo for more details"
 arch=(x86_64 i686)
@@ -24,12 +24,13 @@ pkgver(){
 	printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+        cd slock
+        make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
 package() {
-	cd slock
-	./configure
-	mkdir -p ${pkgdir}/opt/${pkgname}
-	cp -rf * ${pkgdir}/opt/${pkgname}
-	make install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+        cd slock
+        make PREFIX=/usr DESTDIR="${pkgdir}" install
+        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
