@@ -1,0 +1,15 @@
+pkgbase = json2tsv-git
+	pkgdesc = JSON to TSV converter
+	pkgver = 0.5.r2.gdf5cda0
+	pkgrel = 1
+	url = https://codemadness.org/json2tsv.html
+	arch = x86_64
+	license = custom:ISC license
+	makedepends = git
+	provides = json2tsv
+	conflicts = json2tsv
+	source = git://git.codemadness.org/json2tsv
+	sha256sums = SKIP
+
+pkgname = json2tsv-git
+
