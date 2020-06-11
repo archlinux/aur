@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libjpeg-xl-git
-pkgver=r4.gf84edfb
-pkgrel=2
+pkgver=r6.g50bbf27
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -14,7 +14,8 @@ optdepends=('giflib: for CLI tools'
             'libpng: for CLI tools'
             'openexr: for CLI tools')
 makedepends=('git' 'cmake' 'clang' 'giflib' 'gperftools' 'libjpeg-turbo'
-             'libpng' 'openexr' 'zlib' 'libgl' 'freeglut' 'gtest' 'python')
+             'libpng' 'openexr' 'zlib' 'libgl' 'freeglut' 'gtest' 'python'
+             'doxygen')
 provides=('libjpeg-xl')
 conflicts=('libjpeg-xl')
 source=('git+https://gitlab.com/wg1/jpeg-xl.git'
@@ -28,8 +29,7 @@ source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/meganz/mingw-std-threads.git'
         '010-libjpeg-xl-git-remove-werror.patch'
         '020-libjpeg-xl-git-fix-headers-install-path.patch'
-        '030-libjpeg-xl-git-fix-gdk-pixbuf-install-path.patch'
-        '040-libjpeg-xl-git-fix-highway-build.patch')
+        '030-libjpeg-xl-git-fix-highway-build.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -39,10 +39,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0f538f216f7fca8611efd5d638b521eb2c3b1fb716720afb371f034b3165c90c'
-            'c2ea669a2afd94b6582921c893e0b382cd632c12d0a9c2358f955fd6cccffdc3'
-            '1666790b92321fbf5859abe50c7355c91b0eddd7381529f35f052e71913c3bf0'
-            '4011b3dccad3954d7090c8ab70e615ef23ba29958b888e88ecd85d76eaba7372')
+            '1688c7e887a771801af60c915c793c285ee5318c15c76fd5ba06e2b0918adf47'
+            '86868318bd3252d689e51aecf1e2a480cf2e2ef3fb2c238171a6cb3a2cdf6506'
+            '322ea656cceda16567caff9093acbcd398f055878d47340a7695deac1ce6902b')
 
 prepare() {
     local _mingw_commit
@@ -61,8 +60,7 @@ prepare() {
     git -C jpeg-xl submodule update
     patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-remove-werror.patch"
     patch -d jpeg-xl -Np1 -i "${srcdir}/020-libjpeg-xl-git-fix-headers-install-path.patch"
-    patch -d jpeg-xl -Np1 -i "${srcdir}/030-libjpeg-xl-git-fix-gdk-pixbuf-install-path.patch"
-    patch -d jpeg-xl -Np1 -i "${srcdir}/040-libjpeg-xl-git-fix-highway-build.patch"
+    patch -d jpeg-xl -Np1 -i "${srcdir}/030-libjpeg-xl-git-fix-highway-build.patch"
 }
 
 pkgver() {
@@ -70,8 +68,6 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=" ${CPPFLAGS}"
-    export CXXFLAGS+=" ${CPPFLAGS}"
     cmake -B build -S jpeg-xl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
@@ -89,6 +85,8 @@ check() {
 
 package() {
     make -C build DESTDIR="$pkgdir" install
-    install -D -m644 jpeg-xl/plugins/mime/image-x-jxl.xml -t "${pkgdir}/usr/share/mime/packages"
+    install -D -m644 jpeg-xl/plugins/mime/image-jxl.xml -t "${pkgdir}/usr/share/mime/packages"
     rm "${pkgdir}/usr/bin/"{cbrunsli,butteraugli_main,decode_and_encode,epf_main,fuzzer_corpus,ssimulacra_main,xyb_range}
+    rm "${pkgdir}/usr/lib/"{libhwy.a,pkgconfig/libhwy{,-test}.pc}
+    rm -r "${pkgdir}/usr/include/hwy"
 }

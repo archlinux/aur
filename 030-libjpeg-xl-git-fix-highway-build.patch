@@ -1,0 +1,12 @@
+--- a/third_party/highway/CMakeLists.txt
++++ b/third_party/highway/CMakeLists.txt
+@@ -66,6 +66,9 @@ set(HWY_FLAGS
+   -Wnon-virtual-dtor
+   -Woverloaded-virtual
+   -Wvla
++  
++  # Build fixes
++  -fPIC
+ )
+ 
+ if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")

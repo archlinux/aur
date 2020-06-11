@@ -1,7 +1,6 @@
-diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-04-22 00:42:34.000000000 +0000
-+++ b/CMakeLists.txt	2020-04-22 00:42:38.000000000 +0000
-@@ -154,10 +154,6 @@ add_compile_options(
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -151,10 +151,6 @@ add_compile_options(
    -Wall
  )
  
