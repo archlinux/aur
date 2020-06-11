@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-bandwidth-test
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Bandwidth test for ROCm"
 arch=('x86_64')
@@ -9,15 +9,14 @@ license=('custom:NCSAOSL')
 depends=('hsa-rocr')
 makedepends=('cmake')
 options=(!staticlibs strip)
-source=("rocm_bandwidth_test-roc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f5f914073018619dc91662d5bf630903dfa4db9136d603591917fdfb3c9164ce')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-$pkgver.tar.gz")
+sha256sums=('fbb63fb8713617fd167d9c1501acbd92a6b189ee8e1a8aed668fa6666baae389')
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocm_bandwidth_test \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocm_bandwidth_test \
         "$srcdir/rocm_bandwidth_test-rocm-$pkgver"
   make
 }
