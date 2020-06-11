@@ -1,20 +1,18 @@
 pkgbase = python-openslide
-	pkgdesc = A simple interface to read whole-slide images in Python
+	pkgdesc = Python bindings to OpenSlide
 	pkgver = 1.1.1
-	pkgrel = 2
-	url = https://openslide.org
+	pkgrel = 3
+	url = https://github.com/openslide/openslide-python
 	arch = x86_64
 	license = LGPL
+	checkdepends = python-pytest
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/openslide/openslide-python/releases/download/v1.1.1/openslide-python-1.1.1.tar.xz
-	sha256sums = e3c1f27e4704221327d3c74b0960742079b18fea2d1896eda71a3efdd3f9d3f7
-
-pkgname = python-openslide
 	depends = openslide
 	depends = python-pillow
+	source = openslide-python-1.1.1.tar.gz::https://github.com/openslide/openslide-python/archive/v1.1.1.tar.gz
+	source = 0001-fix-setup-script.patch::https://github.com/openslide/openslide-python/commit/298b5a9a163eb2a371d90770b71706cc4cb0003a.patch
+	sha256sums = 33c390fe43e3d7d443fafdd66969392d3e9efd2ecd5d4af73c3dbac374485ed5
+	sha256sums = a84489927980ebb0d64d4a4ea146a4c709d6b77848e6e145869bf6f12d875c9c
 
-pkgname = python2-openslide
-	depends = openslide
-	depends = python2-pillow
+pkgname = python-openslide
 
