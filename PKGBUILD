@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.6.14
-_rtpatchver=7
+_pkgver=5.6.17
+_rtpatchver=9
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -21,9 +21,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  sphinx-workaround.patch
-  0002-gcc-plugins-drop-support-for-GCC-4.7.patch
-  0003-gcc-common.h-Update-for-GCC-10.patch)
+  sphinx-workaround.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -32,15 +30,13 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
+sha256sums=('c33a245401db38de760a7229cf3917eb6e6f8fabab0dc5add95b9b8f3e557f9e'
             'SKIP'
-            '95566473def743f299c7128b95a77ced63eb21a72052706ba968a1ec11cac7fb'
+            '0b78af5ea1e1e3d2b633e3c4715ca14a59736ebc70eb9662f4a04c790bb6114c'
             'SKIP'
-            '45759066cd533e989e99ec51c3b14734e4c7020795edd9e371e28599a872d1d3'
+            '4eef5757aec0357d46e8e9fd146f414d438812ef34d4f51b56baa93e7fa43493'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '96ff333774c0a8686c41610364f13e5244946c86e3e12e841e1bbd0d9f33c788'
-            '523280e5d125a19af537ee88a531b56a049f3daeb713da473d244eb423f6125f')
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
