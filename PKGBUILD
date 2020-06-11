@@ -3,7 +3,7 @@
 pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
-pkgver=v1.0.8.r457.g4f1414a1
+pkgver=1.0.8.r457.g4f1414a1
 pkgrel=1
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
 arch=(any)
@@ -27,7 +27,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgver() {
 	cd "${_repo}"
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
