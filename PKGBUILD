@@ -2,7 +2,7 @@
 # Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
 pkgname=hepmc
 _pkgname=HepMC3
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('root: ROOT I/O'
             'pythia8: Pythia support'
             'python: Python interface')
 source=("${pkgname}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${pkgname}/releases/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6e4e4bb5708af105d4bf74efc2745e6efe704e942d46a8042f7dcae37a4739fe')
+sha256sums=('0e8cb4f78f804e38f7d29875db66f65e4c77896749d723548cc70fb7965e2d41')
 
 build() {
     mkdir build
