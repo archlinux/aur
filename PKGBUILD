@@ -2,15 +2,15 @@
 # Contributor: Darshit Shah <darnir@gmail.com>
 
 pkgname=vgrep
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=( 'go' )
+depends=('go')
 url="https://github.com/vrothberg/vgrep"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('81ce6c03a922f79f4399c461d704602eb08a7c555ee9c02482efee1fbcd9d89f')
+sha256sums=('ecea69eb91a0c07471d89ff08bdc8b6cb2eb6b62e9b689dd74a9ef5a1df9f99e')
 
 prepare() {
   mkdir $srcdir/{bin,pkg,src}
