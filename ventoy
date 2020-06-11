@@ -1,2 +1,4 @@
 #!/bin/sh
+pushd /opt/ventoy
 exec /opt/ventoy/Ventoy2Disk.sh "$@"
+popd
