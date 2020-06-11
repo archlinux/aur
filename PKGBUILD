@@ -17,6 +17,8 @@ sha256sums=('e84fbe2eb0c1d54a26c44301aacebd602925080fa1bc3b8005f14c15fba8c3e0')
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i 's/debug = true/opt-level = 3\ndebug = false/' Cargo.toml
+  sed -i 's/, features = \["bundled", "static-link"\] / /g ' Cargo.toml
+  sed -i 's/Icon=neovide/Icon=nvim/' assets/neovide.desktop
 }
 
 build() {
