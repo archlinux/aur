@@ -2,16 +2,16 @@
 
 pkgname=python-hosts
 _pypiname=${pkgname}
-pkgver=0.4.7
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='a hosts file manager library written in python'
 arch=('any')
 url='https://github.com/jonhadfield/python-hosts'
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('08efb4ddf7cfd8b7c2b14544b0b851f9')
-sha256sums=('007d031efc3e9211c4f4360734df5f9b173a08003ceea430bec64a85248cb749')
+md5sums=('8e9d1eb341fdf496cb0b976c39d1514a')
+sha256sums=('850998704ba9025ce4c8ffd45dc4fbea2b5e30247bf3b574872ac5df90426b4d')
 
 prepare() {
 	cd "${_pypiname}-${pkgver}"
