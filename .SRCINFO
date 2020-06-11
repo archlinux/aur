@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-preview
-	pkgver = 5.0.0+100+preview.4.20279.10
+	pkgver = 5.0.0+100+preview.5.20279.10
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
