@@ -3,7 +3,7 @@
 pkgname=mingw-w64-xalan-c-git
 conflicts=("mingw-w64-xalan-c")
 provides=("mingw-w64-xalan-c")
-pkgver=1.12.0
+pkgver=r2.d8240ca
 pkgrel=1
 pkgdesc="The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards."
 arch=(any)
@@ -19,6 +19,14 @@ sha256sums=(
 	"08400961f038c1aed090174425e894673ffc359b52bcbad73d2c537a89ea34b7")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+pkgver() {
+	cd "${_repo}"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 prepare() {
 	cd "xalan-c"
