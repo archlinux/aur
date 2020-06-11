@@ -3,9 +3,9 @@
 
 pkgname=arx-libertatis
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)'
-url='http://arx-libertatis.org/'
+url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl' 'openal' 'glew')
