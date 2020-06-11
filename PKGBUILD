@@ -4,7 +4,7 @@
 
 pkgname=nyxt-browser
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
 url="https://nyxt.atlas.engineer"
@@ -20,6 +20,9 @@ optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-good: for HTML5 audio/video'
             'gst-plugins-bad: for HTML5 audio/video'
             'gst-plugins-ugly: for HTML5 audio/video')
+conflicts=('next-browser')
+provides=('next-browser')
+replaces=('next-browser')
 # Binary will not run otherwise.
 options=('!strip' '!makeflags')
 
