@@ -2,7 +2,7 @@
 pkgname=moodledesktop-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Moodle Desktop is our solution to accessing your Moodle courses on desktop or Surface tablets."
 arch=('x86_64' 'i686')
 url='https://download.moodle.org/desktop/'
@@ -11,10 +11,10 @@ depends=(gtk3 libegl libgles libxss nss opera-ffmpeg-codecs)
 makedepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
-source_x86_64=("https://download.moodle.org/desktop/linux/$_pkgname-linux-64-v372.tar.gz")
-sha512sums_x86_64=('fca4154167e783c0f1ebe581da5723c325611e032ab39871a4d5577bd130cd684367012b0e59858283bd4d52ea9f1e2cda8c742955f654327cde5804d2fe17ff')
-sha512sums_i686=('42e1f46a0aaf977a6b1e7bbfa5c5722490a36a2e08855326265146c9156c138da32f8ab31704d4bcef7b7193470f4f0c99cf8e944446b0bb22887b5db5d3483c')
-source_i686=("https://download.moodle.org/desktop/linux/$_pkgname-linux-32-v372.tar.gz")
+source_x86_64=("https://download.moodle.org/desktop/linux/$_pkgname-linux-64-v380.tar.gz")
+sha512sums_x86_64=('63206445d1a9d8af28c29e2f45a92f031671191b255b3c24ebb2c552b63b73b7317f75ad8366888b24e5225e496347e226f087d13bba6209fb665543d1f827b1')
+sha512sums_i686=('d3e99545438e6c60c8341999772f5652ad980a141faf5424cc31b1716a7a55c74d34fc40d69c3544b431efa8fc9b786508465e2234354212fb858089c224d52b')
+source_i686=("https://download.moodle.org/desktop/linux/$_pkgname-linux-32-v380.tar.gz")
 
 if [ ${CARCH} = i686 ]; then
   _APPIMAGE_ARCH=ia32
