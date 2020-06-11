@@ -1,12 +1,12 @@
 pkgbase = jdsp4linux-gui-git
 	pkgdesc = User Interface for JamesDSP on Linux
 	pkgver = 1.1.r2.3abfc92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThePBone/JDSP4Linux-GUI
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = jdsp4linux
+	depends = jdsp4linux-git
 	depends = qt5-multimedia
 	depends = mesa
 	provides = jdsp4linux-gui

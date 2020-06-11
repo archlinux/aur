@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jdsp4linux-gui-git
 pkgver=1.1.r2.3abfc92
-pkgrel=1
+pkgrel=2
 pkgdesc="User Interface for JamesDSP on Linux"
 arch=('x86_64')
 url="https://github.com/ThePBone/JDSP4Linux-GUI"
 license=('GPL3')
-depends=('jdsp4linux' 'qt5-multimedia' 'mesa')
+depends=('jdsp4linux-git' 'qt5-multimedia' 'mesa')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
