@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
 pkgver=440.82
-pkgrel=1
+pkgrel=2
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -20,10 +20,12 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta.sysusers'
+        '010-nvidia-kernel-5.7.patch'
         '110-nvidia-settings-full-beta-change-desktop-paths.patch')
 sha256sums=('edd415acf2f75a659e0f3b4f27c1fab770cf21614e84a18152d94f0d004a758e'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
+            '58c735ff7a1ad4a5d6729246444de6bd2be1c4a9eec2e9b3adcc9ef2a3389d38'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -47,6 +49,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     bsdtar -C "$_pkg" -xf "${_pkg}/nvidia-persistenced-init.tar.bz2"
     
+    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-kernel-5.7.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-settings-full-beta-change-desktop-paths.patch"
 }
 
@@ -65,7 +68,7 @@ package_nvidia-full-beta() {
     
     install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}${_extradir}"
     
-    find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
     
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
     
