@@ -1,7 +1,7 @@
 # Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
 
 pkgname=turbodiary
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Turbo Diary - A Personal Diary'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~emvigo/turbodiary'
 license=('APACHE')
 depends=('glibc')
 source=("https://git.sr.ht/~emvigo/turbodiary/archive/$pkgver.tar.gz")
-sha256sums=('c146f66d227b1f67c51c446360965a46e04f1be368c5e453fbdbcf6c748b39bb')
+sha256sums=('7f2e506f8448694acc680f37e6fec5dd85eed7b936ec486362ad477417ae25c4')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make PREFIX="$pkgdir/usr" install
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
