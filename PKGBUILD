@@ -2,7 +2,7 @@
 
 _pkgbase=jool
 pkgname=${_pkgbase}-dkms-git
-pkgver=4.0.7.r6.g07a9c951
+pkgver=4.0.9.r0.g3e1e8fd1
 pkgrel=1
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=('i686' 'x86_64')
