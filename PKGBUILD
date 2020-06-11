@@ -2,8 +2,8 @@
 
 pkgname="linus-meta"
 pkgdesc="Packages i always need so i dont forget or uninstall them"
-pkgver="1"
-pkgrel="2"
+pkgver="2"
+pkgrel="1"
 arch=("x86_64")
 license=("GPL3")
 depends=(
