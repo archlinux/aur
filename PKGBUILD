@@ -55,14 +55,14 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	#avoid migrations on bootup (see #7269)
-	sed -i 's/--migrate/--enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' misc/systemd/ipfs.service
-	#increase timeouts (see #7283)
-	sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' misc/systemd/ipfs.service
 	install -Dm 755 cmd/ipfs/ipfs "$pkgdir/usr/bin/ipfs"
 	install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/system/ipfs-api.socket"
 	install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/system/ipfs-gateway.socket"
 	install -Dm 644 misc/systemd/ipfs-hardened.service "$pkgdir/usr/lib/systemd/system/ipfs.service"
+	#avoid migrations on bootup (see #7269) and enable gc and pubsub by default (sane defaults)
+	sed -i 's/--migrate/--enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
+	#increase timeouts (see #7283)
+	sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# systemd-sysusers
 	install -Dm 644 "misc/systemd/ipfs-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/ipfs.conf"
 	install -Dm 644 misc/completion/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
