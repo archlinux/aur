@@ -1,16 +1,16 @@
 # Maintainer : fuero <fuerob@gmail.com>
 # Co-Mantainer: Jeff Henson <jeff@henson.io>
 
-pkgname='govmomi'
+pkgname=govmomi
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 _repo_prefix='github.com/vmware'
 _repo_name="${pkgname/-git}"
 url="https://${_repo_prefix}/${_repo_name}"
 license=('Apache')
 arch=('x86_64')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 depends=('glibc')
 conflicts=('govmomi-git')
 provides=('govmomi')
@@ -35,10 +35,21 @@ clean() {
 }
 
 _gobuild() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   export GOPATH="${srcdir}"
   export PATH="$PATH:$GOPATH/bin"
 
-  go build -x -i -v -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" -o $1
+  go build -v \
+        -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" \
+        -mod=readonly \
+        -modcacherw \
+        -trimpath \
+        -buildmode=pie \
+        -o $1
 }
 
 build() {
