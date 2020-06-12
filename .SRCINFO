@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-git
 	pkgdesc = JupyterLab computational environment
-	pkgver = 19615.git.94a622d
+	pkgver = 19617.git.6f529d1
 	pkgrel = 1
 	url = https://github.com/jupyterlab/jupyterlab
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = jupyterlab-git
 	makedepends = nodejs
 	makedepends = python-recommonmark
 	makedepends = jsx-lexer
-	makedepends = git
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-copybutton
 	depends = jupyterlab_server
 	source = git+https://github.com/jupyterlab/jupyterlab.git
-	source = jupyterlab-git.install
 	source = jupyter-lab.desktop
 	sha256sums = SKIP
-	sha256sums = ad628adfa2aa6997ffc05352b86e75f1fe23f60b5e056cc0bd23f5d6f87ad4e9
 	sha256sums = d7ed2287b823a78b7fe05194180ad9b4602657d5e32b8ed548418039451c0434
 
 pkgname = jupyterlab-git
