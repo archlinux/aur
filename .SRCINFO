@@ -1,0 +1,19 @@
+pkgbase = python-vsg-git
+	pkgdesc = VHDL style guide: coding style enforcement for VHDL
+	pkgver = r1251.960fc7d
+	pkgrel = 1
+	url = https://github.com/jeremiah-c-leary/vhdl-style-guide/
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	provides = python-vsg-git
+	conflicts = python-vsg
+	options = !emptydirs
+	source = git+https://github.com/jeremiah-c-leary/vhdl-style-guide
+	md5sums = SKIP
+
+pkgname = python-vsg-git
+	depends = python-pyaml
+

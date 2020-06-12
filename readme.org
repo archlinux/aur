@@ -1,0 +1,8 @@
+#+TITLE: Python-vsg-git AUR package
+
+[[https://gitlab.com/aur-packages/python-vsg-git/-/commits/master][https://gitlab.com/aur-packages/python-vsg-git/badges/master/pipeline.svg]]
+
+[[https://vhdl-style-guide.readthedocs.io/en/latest/index.html][Vhdl style guide]] provides coding style guide enforcement for VHDL code. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]] provides a way
+to build a package suitable for [[https://www.archlinux.org/][Archlinux]].
+
+This project lives [[https://gitlab.com/aur-packages/python-vsg-git][here]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-vsg-git/pipelines][build]] process.
