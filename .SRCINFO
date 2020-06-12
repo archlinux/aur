@@ -9,7 +9,7 @@ pkgbase = blender-plugin-luxcorerender-git
 	provides = blender-plugin-luxcorerender
 	conflicts = blender-plugin-luxcorerender
 	source = luxcorerender::git+https://github.com/LuxCoreRender/BlendLuxCore.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = blender-plugin-luxcorerender-git
 	depends = blender>=2.80

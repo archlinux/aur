@@ -15,7 +15,7 @@ makedepends=(git)
 conflicts=(blender-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
 source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  depends=("blender>=2.80" "luxcorerender>=${pkgver%.r*}" )
+  depends=("blender>=2.80" "luxcorerender>=${pkgver%.r*}")
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
   cp -a "${srcdir}/${_name}/" "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
