@@ -5,6 +5,7 @@ pkgbase = beancount
 	url = http://furius.ca/beancount/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	depends = python>=3.5
 	depends = mpdecimal
