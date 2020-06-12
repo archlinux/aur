@@ -6,8 +6,8 @@ _npmname=cli-service-global
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=4.4.3
-pkgrel=2
+pkgver=4.4.4
+pkgrel=1
 pkgdesc='vue-cli-service global addon for vue-cli'
 arch=('any')
 url=https://cli.vuejs.org
@@ -17,7 +17,7 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
 # Get SHASUM:  curl -s "https://registry.npmjs.org/@vue/cli-service-global" | jq '.versions."4.4.3".dist.shasum'
-sha1sums=('bc0bfc0e2870ba810d5d70f4f07133780b08777f')
+sha1sums=('848e86dc1957a38594a9d32ab457f7e0dd21cde3')
 
 package() {
  # Setting temporary cache
