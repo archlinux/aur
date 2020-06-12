@@ -6,7 +6,6 @@ pkgbase = vue-cli
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = jq
 	depends = nodejs
 	conflicts = nodejs-vue-cli
 	noextract = vue-cli-4.4.3.tar.gz
