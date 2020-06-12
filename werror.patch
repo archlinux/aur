@@ -1,0 +1,11 @@
+--- Makefile	2020-06-12 13:37:50.000000000 +0200
++++ Makefile	2020-06-12 13:38:05.961704427 +0200
+@@ -5,7 +5,7 @@
+ 	scons -j 8
+ 
+ release:
+-	scons mode=release
++	scons mode=release werror=n
+ 
+ profile:
+ 	scons mode=profile
