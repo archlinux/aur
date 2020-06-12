@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /opt/ConnectMeDesktop
-./connect-me-desktop.sh
+exec ./nwjs-v0.45.6-linux-x64/nw ConnectMeDesktop-x64.nw
