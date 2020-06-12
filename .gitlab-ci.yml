@@ -20,7 +20,7 @@ build-package:
   stage: test
   script:
     - cd /home/notroot
-    - su notroot -c "git clone https://aur.archlinux.org/python-vhdl-style-guide.git"
+    - su notroot -c "git clone [[https://aur.archlinux.org/python-vsg.git]]"
     - cd python-vhdl-style-guide
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
     - vsg -h
