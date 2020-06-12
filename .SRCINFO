@@ -1,0 +1,15 @@
+pkgbase = python-seed-isort-config
+	pkgdesc = Statically populate the 'known_third_party' 'isort' setting.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/asottile/seed-isort-config
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aspy-refactor-imports
+	source = https://files.pythonhosted.org/packages/source/s/seed-isort-config/seed_isort_config-2.2.0.tar.gz
+	sha256sums = be4cfef8f9a3fe8ea1817069c6b624538ac0b429636ec746edeb27e98ed628c8
+
+pkgname = python-seed-isort-config
+
