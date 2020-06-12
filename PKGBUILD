@@ -13,7 +13,7 @@ url="https://luxcorerender.org/"
 license=('GPL')
 source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${pkgver}.tar.gz"
         "denoise.patch")
-sha256sums=('92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e'
+sha256sums=('a5ea3dbac4e56decef5561ceb456be3eb6658111dd8feed55d632a52bfd7edaa'
             '63103ec3bf77c502a54f6f74cad020a448c9641be90202944c46bda0a1ff8bfe')
 
 prepare() {
