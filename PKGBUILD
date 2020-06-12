@@ -1,7 +1,7 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=git-ignore-tool-git
 _name=git-ignore-tool
-pkgver=35.1674505
+pkgver=1.0.r0.g97a8a37
 pkgrel=1
 pkgdesc="Easy configuration of git ignored files"
 arch=('i686' 'x86_64')
@@ -15,16 +15,16 @@ source=("$_name::git+https://github.com/albfan/git-ignore.git#branch=master"
 md5sums=('SKIP'
          'SKIP')
 
+pkgver() {
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd "$srcdir/$_name"
   git submodule init
   git config submodule.t/sharness.url $srcdir/sharness
   git submodule update
-}
-
-pkgver() {
-  cd "$srcdir/$_name"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
