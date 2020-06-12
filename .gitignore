@@ -3,3 +3,4 @@ DarkReign
 pkg
 src
 *.gz
+*.log*
