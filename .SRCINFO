@@ -1,0 +1,26 @@
+pkgbase = qv2ray-plugin-naiveproxy-git
+	pkgdesc = Qv2ray Plugin: NaiveProxy (for Qv2ray v2.6.0-rc2+ only)
+	pkgver = 20200612.r12.d924872
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QvPlugin-NaiveProxy
+	arch = x86_64
+	groups = qv2ray-plugin
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	makedepends = which
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	depends = qt5-base>5.11.0
+	depends = qv2ray-dev-git
+	optdepends = naiveproxy
+	provides = qv2ray-plugin-naiveproxy
+	conflicts = qv2ray-plugin-naiveproxy
+	source = qv2ray-plugin-naiveproxy::git+https://github.com/Qv2ray/QvPlugin-NaiveProxy
+	sha512sums = SKIP
+
+pkgname = qv2ray-plugin-naiveproxy-git
+
