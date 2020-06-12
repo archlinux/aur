@@ -1,6 +1,6 @@
-pkgbase = google-breakpad-git
+pkgbase = breakpad
 	pkgdesc = An open-source multi-platform crash reporting system
-	pkgver = r1844.2ffe1163
+	pkgver = r1846.2757a2c9
 	pkgrel = 1
 	url = https://chromium.googlesource.com/breakpad/breakpad/
 	arch = i686
@@ -9,13 +9,14 @@ pkgbase = google-breakpad-git
 	license = BSD
 	makedepends = git
 	depends = gcc-libs
-	conflicts = google-breakpad-svn
+	provides = google-breakpad
+	conflicts = google-breakpad-git
 	options = staticlibs
 	options = !strip
 	source = git+https://chromium.googlesource.com/breakpad/breakpad
 	source = git+https://chromium.googlesource.com/linux-syscall-support
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = google-breakpad-git
+pkgname = breakpad
 
