@@ -3,8 +3,8 @@
 # Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-_appver=1.10.0
-_scalaver=2.11
+_appver=1.10.1
+_scalaver=2.12
 pkgver=${_appver}_${_scalaver}
 pkgrel=1
 pkgdesc="A framework and distributed processing engine for stateful computations over unbounded and bounded data streams (with Scala)"
@@ -15,13 +15,14 @@ depends=('java-environment>=7' 'bash')
 optdepends=('python2: Python2 support for python API'
             'python: Python3 support for python API'
             'hadoop: Support for running on YARN')
+makedepends=('jq' 'curl')
 install=apache-flink.install
-_download_portal="https://www.apache.org/dyn/closer.lua/flink/flink-1.10.0/flink-${_appver}-bin-scala_${_scalaver}.tgz"
+_download_portal="https://www.apache.org/dyn/closer.lua/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
 _closest_mirror=$(curl "${_download_portal}?asjson=1" | jq '(.preferred + .path_info)' | tr -d '"",' )
 source=("${pkgname}-${pkgver}.tgz::$_closest_mirror"
         'apache-flink-jobmanager.service'
         'apache-flink-taskmanager@.service')
-sha256sums=('4d9e8e1a2de3cd7f221b73a9d266f0d260550272afd82041134b9032c84cceb3'
+sha256sums=('cd3159a6d288349768787a1b57968e108e28e7d31c06d44c6ed241c102f56deb'
             'SKIP'
             'SKIP')
 backup=("etc/${pkgname}/flink-conf.yaml"
