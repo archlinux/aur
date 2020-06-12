@@ -1,6 +1,6 @@
 pkgbase = openra-yr-git
 	pkgdesc = A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA
-	pkgver = 429.git.b8e9167
+	pkgver = 430.git.4b973fd
 	pkgrel = 1
 	url = https://github.com/cookgreen/Yuris-Revenge
 	install = openra-yr.install
