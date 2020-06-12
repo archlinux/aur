@@ -1,7 +1,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname='eclint'
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
@@ -11,12 +11,13 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip')
 source=(
-  "${url}/uploads/e4266c2a6fe9fab19490d864e5432c20/eclint-${pkgver}.tar.gz"
-  "${url}/uploads/6b4e491e638d375a72c78ff047184d60/eclint-${pkgver}.tar.gz.sig"
+  "${url}/uploads/77e786bb14145c1d6b2aadeb277c15bf/eclint-${pkgver}.tar.gz"
+  "${url}/uploads/2234a0cd6088fcb2ef9d367877774272/eclint-${pkgver}.tar.gz.sig"
 )
+
 sha256sums=(
-  'ff094d00951f644bed9c4297a3f83daa9aa1468ab79a19c6e5dc0438a5666d8e'
-  '67d983fe5b80c84ef0b90ddd01e1b33359f50d60724e6a547c9bf7fad0f02506'
+  '068d44e45f73e1f7ec0187afbf6e9f2cf11e32b90776a8144ef2fefe8a5012ce'
+  'e2ea8241178d02593a0ee22a1dee0330f2ea31659a72f2f73787a34c4102c59a'
 )
 validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
