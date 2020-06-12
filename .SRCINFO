@@ -1,6 +1,6 @@
 pkgbase = dracut-luks-tpm2
 	pkgdesc = Dracut module to retrieve LUKS key from TPM
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/mihirlad55/dracut-luks-tpm2
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dracut-luks-tpm2
 	depends = tpm2-tools
 	depends = dracut
 	depends = cryptsetup
-	source = dracut-luks-tpm2::git+https://github.com/mihirlad55/dracut-luks-tpm2.git#tag=v1.0.4
+	source = dracut-luks-tpm2::git+https://github.com/mihirlad55/dracut-luks-tpm2.git#tag=v1.0.5
 	md5sums = SKIP
 
 pkgname = dracut-luks-tpm2

@@ -1,6 +1,6 @@
 # Maintainer Mihir Lad <contact at mihirlad dot com>
 pkgname=dracut-luks-tpm2
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Dracut module to retrieve LUKS key from TPM"
 arch=('any')
