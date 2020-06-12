@@ -3,7 +3,7 @@
 pkgname=v2ray-exporter
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="An exporter that collect V2Ray metrics over its Stats API and export them to Prometheus."
+pkgdesc="An exporter that collect V2Ray metrics over its Stats API and export them to Prometheus"
 arch=('x86_64')
 url="https://github.com/wi1dcard/v2ray-exporter"
 license=('MIT')
