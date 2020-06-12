@@ -4,7 +4,7 @@
 pkgname=fluent-bit
 
 pkgmaj=1.4
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 epoch=
 
@@ -14,9 +14,9 @@ url='https://fluentbit.io/'
 license=('Apache')
 groups=()
 
-depends=('systemd-libs')
+depends=('gcc-libs')
 # PostgreSQL_TYPE_INCLUDE_DIR is provided by postgresql, this is currently a bug
-makedepends=('cmake' 'postgresql-libs' 'postgresql' 'python' 'valgrind' 'gcc8')
+makedepends=('cmake' 'postgresql-libs' 'postgresql' 'python' 'valgrind' 'systemd-libs')
 checkdepends=('gtest' 'doxygen' 'graphviz')
 optdepends=()
 
@@ -35,8 +35,6 @@ validpgpkeys=()
 
 build() {
     cd $pkgname-$pkgver/build
-    export CC=/usr/bin/gcc-8
-    export CXX=/usr/bin/gcc-8
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -71,4 +69,4 @@ package() {
     install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('98a971c62913db7b7689889c9365234e9d68e220dd510d45522150806cf1e23b208208f765b3d51519753071068114f6a3fc25f499688551a3b63df37c7f516e')
+sha512sums=('98b4541f3ece656c0fe83ae021433bca92009a2601ba85951fc8fa26388e10325e5492f23425d01906963b1a6aade83d33fc607531bbcaad47c448629f92daa7')
