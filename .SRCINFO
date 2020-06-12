@@ -18,7 +18,7 @@ pkgbase = bisq
 	source = https://github.com/bisq-network/bisq/archive/v1.3.4.tar.gz
 	source = bisq.desktop
 	sha256sums = 4ccfd7d6603748b18dc78083828a4e6b38bbaf10a34dc3b566367cc55e324834
-	sha256sums = 3560a5cfd097c644874af634725f6063674ffc93ac48118846cc693490cee6bc
+	sha256sums = 687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406
 
 pkgname = bisq
 

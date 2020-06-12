@@ -12,7 +12,7 @@ makedepends=('git' 'git-lfs' 'maven' 'jdk11-openjdk' 'protobuf')
 source=("https://github.com/bisq-network/${pkgname}/archive/v${pkgver}.tar.gz"
         "bisq.desktop")
 sha256sums=('4ccfd7d6603748b18dc78083828a4e6b38bbaf10a34dc3b566367cc55e324834'
-            '3560a5cfd097c644874af634725f6063674ffc93ac48118846cc693490cee6bc')
+            '687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
 
 _binname=Bisq
 conflicts=("bisq-bin" "bisq-git")
