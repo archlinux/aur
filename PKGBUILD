@@ -3,12 +3,12 @@
 pkgname=elmerfem-git
 _pkgname=elmerfem
 pkgver=20200517.61b7f5cd
-pkgrel=1
+pkgrel=2
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL')
-depends=('arpack' 'blas' 'qt5-script' 'python-pyqt5' 'qwt' 'netcdf-fortran-openmpi' 'paraview-opt' 'mumps-par' 'oce' 'vtk' 'hypre' 'mmg3d' 'libnn-git' 'libcsa-git' 'scalapack' 'trilinos')
+depends=('arpack' 'blas' 'qt5-script' 'python-pyqt5' 'qwt' 'netcdf-fortran-openmpi' 'paraview-opt' 'mumps-par' 'oce' 'vtk' 'hypre' 'mmg3d' 'libnn-git' 'libcsa-git' 'scalapack')
 makedepends=('git' 'gcc-fortran' 'cmake')
 provides=('elmerfem')
 conflicts=('elmerfem')
