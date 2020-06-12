@@ -1,7 +1,7 @@
 pkgbase = dbus-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support
-	pkgver = 1.12.16
-	pkgrel = 5
+	pkgver = 1.12.18
+	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
 	groups = selinux
@@ -20,12 +20,12 @@ pkgbase = dbus-selinux
 	depends = systemd-libs-selinux>=242.84-2
 	depends = expat
 	depends = audit
-	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=23cc709db8fab94f11fa48772bff396b20aea8b0
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36
 	source = dbus-reload.hook
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
 	sha256sums = SKIP
-	sha256sums = 56d0b5131e030649c6666707aefd67d5c44b6498091f7fdc92dc570b6d6b94fe
+	sha256sums = d636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3
 
 pkgname = dbus-selinux
 	depends = systemd-libs-selinux>=242.84-2
@@ -36,8 +36,8 @@ pkgname = dbus-selinux
 	provides = libdbus
 	provides = libdbus-1.so
 	provides = libdbus-selinux
-	provides = dbus=1.12.16-5
-	provides = selinux-dbus=1.12.16-5
+	provides = dbus=1.12.18-1
+	provides = selinux-dbus=1.12.18-1
 	conflicts = libdbus
 	conflicts = libdbus-selinux
 	conflicts = dbus
