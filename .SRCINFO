@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
-	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)
+	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool). Based on gdal ArchLinux package version.
 	pkgver = 3.0.4
-	pkgrel = 2.0
+	pkgrel = 9.0
 	url = http://www.gdal.org/
 	changelog = gdal-hdf4.changelog
 	arch = x86_64
