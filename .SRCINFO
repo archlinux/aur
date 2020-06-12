@@ -26,7 +26,6 @@ pkgbase = openra-raplus-git
 	options = !strip
 	source = git+https://github.com/MlemandPurrs/raplusmod.git
 	source = openra-raplus
-	source = Makefile.patch
 	source = openra-raplus.appdata.xml
 	source = openra-raplus.desktop
 	md5sums = SKIP

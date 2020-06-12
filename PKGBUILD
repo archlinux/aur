@@ -15,12 +15,7 @@ makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-raplus')
 options=(!strip)
 source=("git+${url}.git"
-# You have to get the following file from MaxMind, which will require a free account
-# https://dev.maxmind.com/geoip/geoip2/geolite2/
-#"local://GeoLite2-Country.mmdb.gz"
 "openra-raplus"
-#"fetch-engine.patch"
-"Makefile.patch"
 "openra-raplus.appdata.xml"
 "openra-raplus.desktop")
 md5sums=('SKIP'
@@ -40,7 +35,6 @@ prepare() {
     cd $srcdir/raplusmod
     dos2unix *.md
     find . -name "*.sh" -exec chmod +x {} \;
-#    patch -Np1 -i $srcdir/fetch-engine.patch
     printf "Success in converting docs...\n"
 }
 
