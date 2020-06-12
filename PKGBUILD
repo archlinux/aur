@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
-_commit=8673084639b6b67accf57894516e1bbfae4710e2
+_commit=e19b33954bab851764fe759f654e3d37cb228c3f
 pkgname=deemix
-pkgver=1.0.15
+pkgver=1.0.18
 pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'p
 makedepends=('python-setuptools')
 conflicts=('deemix-git')
 source=("https://notabug.org/RemixDev/deemix/archive/$_commit.tar.gz")
-sha256sums=('08ae8f49e70ce1fa17b36c91f718026a00d6fa412039729255c828b7e5f08ea1')
+sha256sums=('00024f775cc8d1f37f7b87f78fbd937cfbcefac261f0413136a477456b4e7db1')
 
 build() {
   cd deemix
