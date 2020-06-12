@@ -1,5 +1,5 @@
 _cranname=RODBC
-_cranver=1.3-16
+_cranver=1.3-17
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,7 +9,7 @@ depends=("unixodbc")
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f385c523db5233d22b82e284a26c2028')
+md5sums=('4750da5e7fa9e22cad43381948d1556b')
 
 build() {
   cd "${srcdir}"
