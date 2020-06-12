@@ -1,0 +1,12 @@
+pkgbase = extrakto
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/laktak/extrakto
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = git+https://github.com/laktak/extrakto#commit=9c58dc47d8aa28e3c15576178b845c98770c4271
+	md5sums = SKIP
+
+pkgname = extrakto
+
