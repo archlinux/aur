@@ -1,6 +1,6 @@
 pkgbase = iriunwebcam-bin
 	pkgdesc = Use your phone's camera as a wireless webcam in your PC.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://iriun.gitlab.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = iriunwebcam-bin
 	depends = v4l2loopback-dkms
 	options = !strip
 	source = iriunwebcam.deb::http://iriun.gitlab.io/iriunwebcam.deb
-	md5sums = ce4492c4d75732a48801966bc75c5d9a
+	md5sums = b7c50305187cd5a9dfd75fbedfd0cfb1
 
 pkgname = iriunwebcam-bin
 
