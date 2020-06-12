@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=nsec3walker
-pkgver=2010.12.23
+pkgver=20101223
 pkgrel=1
 pkgdesc="walk NSEC3 secured DNSSEC zones"
 url="https://dnscurve.org/nsec3walker.html"

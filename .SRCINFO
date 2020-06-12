@@ -1,6 +1,6 @@
 pkgbase = nsec3walker
 	pkgdesc = walk NSEC3 secured DNSSEC zones
-	pkgver = 2010.12.23
+	pkgver = 20101223
 	pkgrel = 1
 	url = https://dnscurve.org/nsec3walker.html
 	arch = i686
