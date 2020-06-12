@@ -19,7 +19,12 @@ else
 fi
 
 echo "Patching PKGBUILD"
-sed -i.bak -e "s/^sha256sums=.*$/sha256sums=(\"$sha256sum\")/" -e "s/^_pkgver=.*$/_pkgver=$version/" -e "s/^pkgver=.*$/pkgver=${version//-/_}/"  PKGBUILD
+sed -i.bak \
+	-e "s/^sha256sums=.*$/sha256sums=(\"$sha256sum\")/" \
+	-e "s/^_pkgver=.*$/_pkgver=$version/" \
+	-e "s/^pkgver=.*$/pkgver=${version//-/_}/" \
+	-e "s/^pkgrel=.*$/pkgrel=1/" \
+	PKGBUILD
 
 echo "Install now with makepkg -si"
 

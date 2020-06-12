@@ -35,7 +35,6 @@ package_endpoint-verification-chrome() {
 	pkgdesc="Endpoint verification Helper for Google Chrome"
 	depends=(google-chrome)
 	provides=(endpoint-verification)
-	conflicts=(endpoint-verification)
 	
 	cp -a "$srcdir/data/opt" "$pkgdir"
 	cp -a "$srcdir/data/usr" "$pkgdir"

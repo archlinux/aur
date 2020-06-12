@@ -17,5 +17,4 @@ pkgname = endpoint-verification-chrome
 	pkgdesc = Endpoint verification Helper for Google Chrome
 	depends = google-chrome
 	provides = endpoint-verification
-	conflicts = endpoint-verification
 
