@@ -2,11 +2,13 @@
 
 pkgname='goreleaser'
 pkgver=v0.138.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin")
 
 depends=()
 # makedepends=('git')

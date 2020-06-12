@@ -1,7 +1,7 @@
 pkgbase = goreleaser
 	pkgdesc = Deliver Go binaries as fast and easily as possible
 	pkgver = v0.138.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://goreleaser.com
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = goreleaser
 	makedepends = go>=1.14
 	optdepends = nfpm: deb and rpm packager
 	optdepends = snapcraft: snap packager
+	provides = goreleaser
+	conflicts = goreleaser-bin
 	source = goreleaser-v0.138.0.tar.gz::https://github.com/goreleaser/goreleaser/archive/v0.138.0.tar.gz
 	sha256sums = SKIP
 
