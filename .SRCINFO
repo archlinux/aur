@@ -1,7 +1,7 @@
 pkgbase = connect-me-desktop-bin
 	pkgdesc = Connect Me Desktop Linux
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://store.connectme.io
 	arch = x86_64
 	license = unknown
@@ -10,7 +10,7 @@ pkgbase = connect-me-desktop-bin
 	source = ConnectMeDesktop
 	md5sums = d577d22bb7ca01505420608b5ff221d9
 	md5sums = 76bc4af92f4886fab2db0a818c0f717e
-	md5sums = 0c27b7c6fae35de0689f92831d1478de
+	md5sums = 18695055b3377b42811274b92cbe3f36
 
 pkgname = connect-me-desktop-bin
 
