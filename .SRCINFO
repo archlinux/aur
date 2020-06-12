@@ -1,7 +1,7 @@
 pkgbase = filebin
 	pkgdesc = A pastebin service written in PHP
-	pkgver = 3.4.4
-	pkgrel = 2
+	pkgver = 3.4.5
+	pkgrel = 1
 	url = https://wiki.server-speed.net/projects/filebin
 	install = filebin.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = filebin
 	backup = etc/webapps/filebin/contact-info.php
 	backup = etc/webapps/filebin/database.php
 	backup = etc/webapps/filebin/memcached.php
-	source = git+https://github.com/Bluewind/filebin.git#tag=3.4.4?signed
+	source = git+https://github.com/Bluewind/filebin.git#tag=3.4.5?signed
 	source = filebin-nginx.conf
 	source = filebin-php-fpm.conf
 	source = filebin-file-cron.service

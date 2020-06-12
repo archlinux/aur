@@ -1,8 +1,8 @@
 # Maintainer: hashworks<mail@hashworks.net>
 # Contributor: Simon Hanna<simon DOT Hanna AT serve-me DOT info>
 pkgname=filebin
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.4.5
+pkgrel=1
 pkgdesc="A pastebin service written in PHP"
 arch=('any')
 url="https://wiki.server-speed.net/projects/filebin"
