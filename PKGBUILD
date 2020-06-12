@@ -3,17 +3,15 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
-pkgver=2.2
-#_rel="rc1"
-[ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
+pkgver=2.3
 epoch=2
-pkgrel=2
+pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="https://luxcorerender.org/"
 license=('GPL')
 conflicts=(luxblend25 luxblend25-hg)
-source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_pkgver}.tar.gz"
+source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${pkgver}.tar.gz"
         "denoise.patch")
 sha256sums=('92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e'
             '63103ec3bf77c502a54f6f74cad020a448c9641be90202944c46bda0a1ff8bfe')
@@ -24,7 +22,7 @@ prepare() {
 }
 
 package() {
-  depends=('blender>=2.80' 'luxcorerender>2:2.2')
+  depends=("blender>=2.80" "luxcorerender>$pkgver")
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/BlendLuxCore-blendluxcore_v${_pkgver} ${pkgdir}/usr/share/blender/${_blender}/scripts/addons/${_name}
