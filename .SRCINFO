@@ -1,6 +1,6 @@
 pkgbase = python-apache-libcloud
 	pkgdesc = standard Python library that abstracts away differences among multiple cloud provider APIs
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://libcloud.apache.org
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = python-apache-libcloud
 	checkdepends = python-pyopenssl
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.0.0.tar.gz
-	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.0.0.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.1.0.tar.gz.asc
 	validpgpkeys = 3ACBB4086C01F7376628088CAB4A19AE1CE85744
 	validpgpkeys = 35542BB9C0C01D5E5478BADE6A61AF8545413203
 	validpgpkeys = 997828DC62F759CEA189D65E2C0754B2CE0692F3
-	sha512sums = c04e55e0b7b8943250fd3b291d7aa5e2aa67c4460405f8cb7f527a2c95e045dcd4ce3785ad83fe8284e49d761c84c3f243f491e59c94de463e2079d77da09332
+	sha512sums = c6907c86db7d93e137a575c47b3d091d0f52fdc054609a597bd43288562b0b47c790c6858c1a8a0967b8a269765fb54b732b607ce96dcdb68e9e91dfdd4cb63f
 	sha512sums = SKIP
 
 pkgname = python-apache-libcloud
