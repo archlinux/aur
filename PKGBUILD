@@ -4,10 +4,9 @@ pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfi
 url='https://wiki.ros.org/rqt_reconfigure'
 
 pkgname='ros-noetic-rqt-reconfigure'
-pkgver='0.4.10'
-_pkgver_patch=0
+pkgver='0.5.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,7 +35,7 @@ depends=(
 
 _dir="rqt_reconfigure-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('f1e295756d77e28afd702c2dbed9459fed6997c312129fc8d57954532a4fd004')
+sha256sums=('a21f8d077add53beb5e25f8054d591678ca7ac3d326136560863ad7c28e5412d')
 
 build() {
 	# Use ROS environment variables.

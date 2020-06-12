@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-reconfigure
 	pkgdesc = ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure.
-	pkgver = 0.4.10
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_reconfigure
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-rqt-reconfigure
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rospy
-	source = ros-noetic-rqt-reconfigure-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_reconfigure/archive/0.4.10.tar.gz
-	sha256sums = f1e295756d77e28afd702c2dbed9459fed6997c312129fc8d57954532a4fd004
+	source = ros-noetic-rqt-reconfigure-0.5.2.tar.gz::https://github.com/ros-visualization/rqt_reconfigure/archive/0.5.2.tar.gz
+	sha256sums = a21f8d077add53beb5e25f8054d591678ca7ac3d326136560863ad7c28e5412d
 
 pkgname = ros-noetic-rqt-reconfigure
 
