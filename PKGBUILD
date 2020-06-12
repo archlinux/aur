@@ -4,10 +4,10 @@ pkgname=mingw-w64-xalan-c-icu
 provides=("mingw-w64-xalan-c")
 conflicts=("mingw-w64-xalan-c")
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 _filever="1_12_0"
 pkgdesc="The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards. (ICU enabled)"
-arch=(any)
+arch=("any")
 url="https://xalan.apache.org/"
 license=("APACHE")
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git')
@@ -28,10 +28,12 @@ prepare() {
 }
 
 build() {
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -Dtranscoder=icu -Ddoxygen=OFF )
+	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}-static" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF -DBUILD_SHARED_LIBS=FALSE
+		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
 		make -C "build-${_arch}-static"
-		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}" -Dtranscoder=icu -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF
+		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
