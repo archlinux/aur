@@ -9,8 +9,8 @@ url="https://bitbucket.org/pidgin/libgnt"
 license=('GPL3')
 depends=('glib2' 'ncurses' 'libxml2' 'python')
 makedepends=('mercurial' 'meson' 'libxml2' 'python' 'gobject-introspection' 'gtk-doc')
-provides=("${pkgname%-hg}")
-conflicts=("${pkgname%-hg}")
+provides=("${pkgname%-hg}" "libgnt")
+conflicts=("${pkgname%-hg}" "libgnt")
 source=('hg+https://bitbucket.org/pidgin/libgnt#branch=default')
 sha256sums=('SKIP')
 

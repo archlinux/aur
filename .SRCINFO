@@ -17,7 +17,9 @@ pkgbase = libgnt3-hg
 	depends = libxml2
 	depends = python
 	provides = libgnt3
+	provides = libgnt
 	conflicts = libgnt3
+	conflicts = libgnt
 	source = hg+https://bitbucket.org/pidgin/libgnt#branch=default
 	sha256sums = SKIP
 
