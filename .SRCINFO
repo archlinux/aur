@@ -8,7 +8,6 @@ pkgbase = linux-gc
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
-	makedepends = pahole
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
