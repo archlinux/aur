@@ -1,7 +1,7 @@
 # Maintainer: Daniel <kingdread {at} gmx {period} de>
 pkgname=candy-kingdom-git
 _pkgname=candy-kingdom
-pkgver=1388
+pkgver=r1388.e44ef54
 pkgrel=1
 pkgdesc="A collection of SAT solvers and tools for structure analysis in SAT problems."
 arch=("x86_64")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    git rev-list --count HEAD
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
