@@ -1,6 +1,8 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=68.8.0
+pkgver=68.9.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -22,8 +24,8 @@ source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i68
 
 sha512sums=('2f2da27d0d677cfee9ed2ff9da74c4e779150d26e369cb6816f2b1962b38af7d0728c9c362304138212b45e9580f65847c3a011b9bd3417a26b1b48c00cabe8d'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('cce266a330866ec3368c7d3f596868a87e1e3d786ddb848402456c5d80e5dec60a93a6feeee596b1ad91492e1d07aa5cc5703b09f0703d44575db7a050d58864')
-sha512sums_i686=('cce266a330866ec3368c7d3f596868a87e1e3d786ddb848402456c5d80e5dec60a93a6feeee596b1ad91492e1d07aa5cc5703b09f0703d44575db7a050d58864')
+sha512sums_x86_64=('ed6caacf356c6487a489e983275a2c3d00eac3b2282445667a1f26ac9ce217afb8261a929ccc9aa2bdf7a89101a86faee2ef87c16f0677ecf5abcc727397275f')
+sha512sums_i686=('ed6caacf356c6487a489e983275a2c3d00eac3b2282445667a1f26ac9ce217afb8261a929ccc9aa2bdf7a89101a86faee2ef87c16f0677ecf5abcc727397275f')
 
 # RC
 if [[ $_build = ? ]]; then
