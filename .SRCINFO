@@ -1,18 +1,21 @@
 pkgbase = airtame-application
 	pkgdesc = Airtame official screen streaming application.
-	pkgver = 3.5.1
-	pkgrel = 2
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://airtame.com
 	arch = x86_64
 	license = custom
-	depends = gconf
+	depends = gtk3
 	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = https://downloads.airtame.com/app/latest/linux/Airtame-3.5.1.deb
-	sha1sums = dd0cdf383a0c4cadfc4f05c06b670f8e4acc97d8
+	depends = libxtst
+	depends = xdg-utils
+	depends = libutil-linux
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://downloads.airtame.com/app/latest/linux/Airtame-4.0.1.deb
+	sha1sums = 1ef1c7f7cc330fba51856790b34ae9ca2dbd3506
 
 pkgname = airtame-application
 
