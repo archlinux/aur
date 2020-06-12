@@ -3,3 +3,4 @@ CAmod
 pkg
 src
 *.gz
+*.log*
