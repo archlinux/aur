@@ -2,6 +2,7 @@
 # Contributor: Benjamin Maisonnas <ben@wainei.net>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Rebin Silva <rebinsilva@gmail.com>
+# Contributor: heavysink <heavysink at gmail>
 
 pkgname=vkd3d-valve
 pkgver=1.1
