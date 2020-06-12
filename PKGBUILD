@@ -3,12 +3,12 @@
 
 pkgname=elektra
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-depends=('yajl' 'qt5-base' 'python' 'curl' 'boost' 'swig' 'libuv' 'libgit2' 'libev' 'zeromq')
+depends=('yajl' 'qt5-base' 'python' 'curl' 'boost' 'swig' 'libuv' 'libgit2' 'libev' 'zeromq' 'qt5-quickcontrols')
 optdepends=('ruby: for ruby bindings'
 	    'python2: for python2-bindings'
 	    'xerces-c: for python2-bindings'

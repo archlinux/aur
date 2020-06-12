@@ -1,7 +1,7 @@
 pkgbase = elektra
 	pkgdesc = A universal hierarchical configuration store
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = elektra
 	depends = libgit2
 	depends = libev
 	depends = zeromq
+	depends = qt5-quickcontrols
 	optdepends = ruby: for ruby bindings
 	optdepends = python2: for python2-bindings
 	optdepends = xerces-c: for python2-bindings
