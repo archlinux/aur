@@ -3,3 +3,4 @@ ra2
 pkg
 src
 *.gz
+*.log*
