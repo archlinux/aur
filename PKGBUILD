@@ -57,7 +57,7 @@ package() {
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-rv/README.md
     install -Dm644 $srcdir/openra-rv.desktop $pkgdir/usr/share/applications/openra-rv.desktop
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
-    for size in 16 32 48 64 128 256; do
+    for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
       cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
