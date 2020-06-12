@@ -3,3 +3,4 @@ sole-survivor
 pkg
 src
 *.gz
+*.log*
