@@ -1,31 +1,22 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=xortool
-pkgver=0.96
-pkgrel=2
-pkgdesc="A tool to analyze multi-byte XOR cipher"
-url="https://github.com/hellman/xortool"
-depends=('python2')
+pkgver=0.99
+pkgrel=1
+pkgdesc="Tool for xor cipher analysis"
 arch=('any')
+url="https://github.com/hellman/${pkgname}"
 license=('MIT')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/hellman/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('ff8745a337fc376aa3aab0737626fd542c6b2d0abbb098c548ae7d318693bc45f2ed0e5b5635b15841a3cc42127d759514b31a1989404b3980eb0c67993d220e')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  sed -e 's|env python$|env python2|g' -i xortool/*
-}
-
-build() {
-  cd ${pkgname}-${pkgver}
-  python2 setup.py build
-}
+source=("${url}/archive/v${pkgver}.tar.gz")
+depends=('python' 'python-docopt' 'python-setuptools')
+provides=("${pkgname}")
+conflicts=("${pkgname}" "${pkgname}-git")
+sha256sums=('b92da4832b62745c639c439216ca4b73b902854ee50cae2e185eff3b21bb65de')
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python2 setup.py install -O1 --prefix="${pkgdir}/usr"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
