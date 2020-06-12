@@ -2,7 +2,7 @@
 pkgname=python-vsg
 pkgver=1
 pkgrel=11.1
-pkgdesc="Coding style enforcement for VHDL"
+pkgdesc="VHDL style guide: coding style enforcement for VHDL"
 arch=('any')
 url="https://github.com/jeremiah-c-leary/vhdl-style-guide/"
 license=('GPLv3')
