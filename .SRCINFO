@@ -2,7 +2,7 @@ pkgbase = duff-git
 	pkgdesc = A command-line utility for quickly finding duplicates in a given set of files
 	pkgver = 0.5.2.r56.g3c8eb2f
 	pkgrel = 1
-	url = http://duff.dreda.org/
+	url = https://github.com/elmindreda/duff
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = duff-git
 	depends = sh
 	provides = duff
 	conflicts = duff
-	source = git+https://github.com/fsiler/duff.git
+	source = git+https://github.com/elmindreda/duff.git
 	md5sums = SKIP
 
 pkgname = duff-git

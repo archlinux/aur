@@ -6,13 +6,13 @@ pkgver=0.5.2.r56.g3c8eb2f
 pkgrel=1
 pkgdesc="A command-line utility for quickly finding duplicates in a given set of files"
 arch=('i686' 'x86_64')
-url="http://duff.dreda.org/"
+url="https://github.com/elmindreda/duff"
 license=('custom')
 depends=('glibc' 'sh')
 makedepends=('git')
 conflicts=('duff')
 provides=('duff')
-source=("git+https://github.com/fsiler/${pkgname%-git}.git")
+source=("git+https://github.com/elmindreda/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
