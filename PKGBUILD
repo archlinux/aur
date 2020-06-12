@@ -11,7 +11,7 @@ options=(!strip)
 _appimage="${pkgname}-offline-${pkgver}-${CARCH}.AppImage"
 source=("${_appimage}::https://neo4j.com/artifact.php?name=${_appimage}")
 noextract=("${_appimage}")
-md5sums=('471207b8d9d882c5b278855c2b07e732')
+md5sums=('335d91f18d23537665a9f7c438d8edde')
 
 prepare() {
     chmod +x "${_appimage}"

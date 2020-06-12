@@ -9,7 +9,7 @@ pkgbase = neo4j-desktop
 	noextract = neo4j-desktop-offline-1.2.9-x86_64.AppImage
 	options = !strip
 	source = neo4j-desktop-offline-1.2.9-x86_64.AppImage::https://neo4j.com/artifact.php?name=neo4j-desktop-offline-1.2.9-x86_64.AppImage
-	md5sums = 471207b8d9d882c5b278855c2b07e732
+	md5sums = 335d91f18d23537665a9f7c438d8edde
 
 pkgname = neo4j-desktop
 
