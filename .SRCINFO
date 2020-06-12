@@ -1,6 +1,6 @@
 pkgbase = armadillo
 	pkgdesc = C++ linear algebra library
-	pkgver = 9.880.1
+	pkgver = 9.900.1
 	pkgrel = 2
 	url = http://arma.sourceforge.net/
 	install = armadillo.install
@@ -14,8 +14,8 @@ pkgbase = armadillo
 	depends = superlu>=5.2.0
 	optdepends = hdf5: HDF5 output
 	optdepends = intel-mkl: Intel Math Kernel Library support
-	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-9.880.1.tar.xz
-	sha512sums = 41852b573065a2b26617c402a11a4eb7f64b04ae809fd9e15e568a8e1ec85a2febf407fd4f795a4aa84222b24375c0a316101e0ffaa9166a5bda67735c3c3b98
+	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-9.900.1.tar.xz
+	sha512sums = 711062504572ac1a365f6441cff049c543eb95ddb7b19f2e032f91d53cef4812a339030873764a2a7ca73dd0954dbdb1cf7de8a8170b1bac9b90cb58aa39a19a
 
 pkgname = armadillo
 
