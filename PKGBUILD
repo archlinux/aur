@@ -3,7 +3,7 @@
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=peazip-gtk2-portable
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=('peazip-gtk2' 'peazip-qt')
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz")
-sha256sums=('cfd16be8822ef65492fa8a3ebe1c88b9fee15e2e0c1f0b35caa508ca0241f4a2')
+sha256sums=('9b6e906425f49fa2cb989e2fc990a817327be68b41f009cc5454b5920ad756dc')
 
 package() {
   _srcpea="$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2"
@@ -29,10 +29,7 @@ package() {
   cd "$_srcpea/res"
   install -d "$_pkgres/icons"
   install -d "$_pkgres/unace"
-  for _file in *.txt lang/*.txt pea* rnd 7z/{7z*,*.txt,Codecs/*} arc/* lang/* *paq/* quad/* themes/{*.7z,*-embedded/*} upx/*; do
-    _octal=$(stat -c "%a" "$_file")
-    install -Dm"${_octal}" "$_file" "$_pkgres/$_file"
-  done
+  find . -type f -exec install -D '{}' "$_pkgres/{}" \;
 
   # set default language
   # lang=chs
