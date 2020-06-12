@@ -39,4 +39,12 @@ check() {
 package() {
   cd drminfo
   DESTDIR="${pkgdir}" ninja -C build install
+
+  install -dm755 "$pkgdir/usr/share/bash-completion/completions/"
+  pushd "$pkgdir/usr/bin" >/dev/null
+  for x in *
+  do
+    ./$x --complete-bash > "$pkgdir/usr/share/bash-completion/completions/$x"
+  done
+  popd >/dev/null
 }
