@@ -1,5 +1,5 @@
 pkgname=fing
-pkgver=5.4.0
+pkgver=5.5.2
 pkgrel=1
 pkgdesc='The ultimate tool for network discovery and scanning'
 arch=('x86_64')
@@ -7,8 +7,8 @@ url='https://www.fing.com/images/uploads/general/Fing_CLI_User_Guide_1.2.pdf'
 license=('custom:FING EXECUTABLE LICENSE')
 depends=('icu55')
 options=(!strip)
-source=(https://www.fing.com/images/uploads/general/CLI_Linux_others_${pkgver}.zip)
-sha1sums=('e66136543e7c5169d9a17b88ad836b2a32754ddc')
+source=(https://www.fing.com/images/uploads/general/CLI_Linux_Generic_${pkgver}.zip)
+sha1sums=('06ec64338577ab805f10ac817b5266ccbe8d0d29')
 
 prepare() {
     tar -zxvf ${pkgname}-${pkgver}-amd64.tar.gz
