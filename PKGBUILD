@@ -2,7 +2,7 @@
 
 pkgname=php-yaml
 _extname=yaml
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library."
 arch=("i686" "x86_64")
@@ -28,4 +28,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir"$(php-config --extension-dir)/$_extname.so
 }
 
-sha256sums=('9786b0386e648f12cc18a038358bd57bee4906e350a2e9ab776d6a5f18fc6680')
+sha256sums=('5acbf64d770b4b0aef8c877326fc0711112db4215a27c0fe8e4478fb7314b666')
