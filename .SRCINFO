@@ -1,0 +1,28 @@
+pkgbase = cyberchef-electron
+	pkgdesc = The Cyber Swiss Army Knife (unofficial Electron wrapper)
+	pkgver = 9.21.0
+	pkgrel = 1
+	url = https://github.com/gchq/CyberChef
+	arch = any
+	license = Apache
+	makedepends = unzip
+	depends = electron
+	noextract = CyberChef_v9.21.0.zip
+	options = !strip
+	source = https://github.com/gchq/CyberChef/releases/download/v9.21.0/CyberChef_v9.21.0.zip
+	source = https://raw.githubusercontent.com/gchq/CyberChef/master/src/web/static/images/logo/cyberchef_hat_512.png
+	source = https://raw.githubusercontent.com/gchq/CyberChef/master/src/web/static/images/logo/cyberchef_hat.svg
+	source = main.js
+	source = prompt.js
+	source = cyberchef.sh
+	source = cyberchef.desktop
+	sha256sums = 5a53c4e0bee1303ef73210a6e2fbb3f5151d4ad09cc3681581c6c35b15584126
+	sha256sums = 0e936b556d83975e3ecf02e45433c46bf63fa303a31147fd8599f22fcb2d61e1
+	sha256sums = e6582ba4f0f6141f62f6214420abcf524475f5a887e3aaee6169974f78462589
+	sha256sums = a48ce4a789367ddb66ff49bcdb12f5f7c540581b4c78c93e3a3cb6440d60ade8
+	sha256sums = e61bcdb9df37f14deea5fefcbae40eb4a3609887946ac08651a1b65e434c7042
+	sha256sums = a1d095d83601902f9ec741f6586429d9f1f4052187f2aee022e6cfcea1f9cf3a
+	sha256sums = 8700203f930a1fac32f69f4b8f8e01fd832444a29ff7f73cbde66194f2350155
+
+pkgname = cyberchef-electron
+
