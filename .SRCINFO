@@ -1,6 +1,6 @@
 pkgbase = documize-community-bin
 	pkgdesc = Modern Confluence alternative designed for internal & external docs, built with Golang + EmberJS
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://www.documize.com
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = documize-community-bin
 	optdepends = mariadb>=10.3.0
 	provides = documize-community
 	provides = documize
-	source = documize-community-bin-3.7.0::https://github.com/documize/community/releases/download/v3.7.0/documize-community-linux-amd64
-	sha256sums = bf6b43db38fe17a6a2f31a37d721b6863b8252a03b9306fa736008dc018b5c4d
+	source = documize-community-bin-3.8.0::https://github.com/documize/community/releases/download/v3.8.0/documize-community-linux-amd64
+	sha256sums = bdfd89748b398d0273c4fda6bff46e5f7f39e28c1a227a3f31c69f4d44b34c23
 
 pkgname = documize-community-bin
 
