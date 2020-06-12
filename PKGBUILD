@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-pystring
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pystring is a collection of C++ functions which match the interface and behavior of python's string class methods using std::string."
 arch=(any)
 url="https://github.com/imageworks/pystring"
@@ -24,8 +24,10 @@ prepare() {
 }
 
 build() {
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" )
+	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "pystring-${pkgver}" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release
+		${_arch}-cmake -S "pystring-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
