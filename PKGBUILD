@@ -194,6 +194,7 @@ package() {
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
-sha256sums=('SKIP'
+
+sha256sums=('a91f564b0b88f2030126277bc5b83abaa2e7e9e0fb06489fbe34946e71cc8f20'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
