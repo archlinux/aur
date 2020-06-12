@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.23.2815.102.20200521
-	pkgrel = 2
+	pkgver = 2.23.2815.102.20200611
+	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = fcitx-mozc-neologd-ut
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/downloads/users/26/26416/mozcdic-neologd-ut-20200521.1.tar.bz2
+	source = https://osdn.net/downloads/users/26/26435/mozcdic-ut-neologd-20200611.1.tar.bz2
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = d0c551031828ed9c07cc683762353a67b1a17627
 	sha1sums = c6f5aac79c7e98fbda96de251d8f0d0787344ca9
@@ -36,10 +36,10 @@ pkgbase = fcitx-mozc-neologd-ut
 	sha1sums = 13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0
 	sha1sums = 63a2b10e7d209c6216e2d912b2629efc44c637ea
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
-	sha1sums = c09d1da0445868474ed0dae2b580d17dbc2f5364
+	sha1sums = 9f4271df6e5b5506f3485a547432f52755cd496c
 
 pkgname = mozc-neologd-ut
-	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
+	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd Dictionary
 	arch = i686
 	arch = x86_64
 	depends = qt5-base
@@ -52,10 +52,10 @@ pkgname = mozc-neologd-ut
 	conflicts = mozc-ut
 
 pkgname = fcitx-mozc-neologd-ut
-	pkgdesc = Fcitx engine module for Mozc
+	pkgdesc = Fcitx engine module for Mozc with NEologd Dictionary
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut=2.23.2815.102.20200521
+	depends = mozc-neologd-ut=2.23.2815.102.20200611
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2
