@@ -5,17 +5,18 @@
 
 _name=atom
 pkgname=atom-editor-git
-pkgver=1.35.0.r1175.g48ca032eb
+pkgver=1.35.0.r1386.g527af1ad3
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century - git channel'
 arch=('x86_64')
 url="https://atom.io/"
 license=('MIT' 'custom')
-depends=('apm' 'electron4' 'libxkbfile' 'ripgrep')
+depends=('apm' 'electron5' 'libxkbfile' 'ripgrep')
 makedepends=('git' 'npm')
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration')
-replaces=('atom-editor')
+conflicts=('atom')
+provides=('atom')
 options=(!emptydirs)
 source=("git+https://github.com/atom/atom.git"
         'atom.js'
@@ -30,7 +31,7 @@ source=("git+https://github.com/atom/atom.git"
         'use-system-apm.patch'
         'use-system-electron.patch')
 sha256sums=('SKIP'
-            'd286e0766e47cfea73cd207abb9d6f7375846688823e72732c871a852b4b261d'
+            '6218ecf9a767e80f70a4b07abaefcf63a3d615200ff27b2dbc7bb36eacd8e87f'
             '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
             'b3d3706519556a59ba557b695017c9debe8b23efe2782cdb440131520bc0540d'
             '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
@@ -40,7 +41,7 @@ sha256sums=('SKIP'
             'a09439c2a908ca174ff3be1f0d85071d12c792ae19748e36fe601e372d6d925b'
             '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
             '8d48dca4571136375b325f4bf94ccfb996e90e57b7fdf83d53c1eb2e69b3b0d4'
-            '81af763f05c1afd87705b8c7a6647e35f524b2e952adb2e596de2a7e8fe4e69e')
+            '84b03b2e68d2f86cd963a2e9327698545a8a782895594cf2cc9a74531c5c7875')
 
 
 pkgver() {
@@ -66,7 +67,7 @@ build() {
 
   ATOM_RESOURCE_PATH="${PWD}" \
   npm_config_build_from_source=true \
-  npm_config_target=$(< /usr/lib/electron4/version) \
+  npm_config_target=$(< /usr/lib/electron5/version) \
   apm install
 
   # Use system ctags
@@ -88,22 +89,18 @@ build() {
   env \
     npm_config_disturl=https://electronjs.org/headers \
     npm_config_runtime=electron \
-    npm_config_target=$(< /usr/lib/electron4/version) \
+    npm_config_target=$(< /usr/lib/electron5/version) \
     node-gyp rebuild
   cd ../..
 
   cd script
-  # Hack to avoid using Node 12
-  env \
-    npm_config_disturl=https://electronjs.org/headers \
-    npm_config_runtime=electron \
-    npm_config_target=$(< /usr/lib/electron4/version) \
-    npm install
+  npm install
+  # Hack to avoid using Node > 12 (https://github.com/babel/babel/issues/11216)
   # Set ELECTRON_VERSION (see use-system-electron.patch)
   env \
     ELECTRON_RUN_AS_NODE=1 \
-    ELECTRON_VERSION=$(< /usr/lib/electron4/version) \
-    electron4 \
+    ELECTRON_VERSION=$(< /usr/lib/electron5/version) \
+    electron5 \
     build --no-bootstrap
 }
 

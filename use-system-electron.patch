@@ -4,7 +4,7 @@
      "url": "https://github.com/atom/atom/issues"
    },
    "license": "MIT",
--  "electronVersion": "4.2.7",
+-  "electronVersion": "5.0.13",
    "dependencies": {
      "@atom/nsfw": "1.0.26",
      "@atom/source-map-support": "^0.3.4",
@@ -19,7 +19,7 @@
  const cleanOutputDirectory = require('./lib/clean-output-directory')
  const codeSignOnMac = require('./lib/code-sign-on-mac')
  const codeSignOnWindows = require('./lib/code-sign-on-windows')
-@@ -63,12 +63,12 @@
+@@ -64,12 +64,12 @@
  })
  
  const CONFIG = require('./config')
@@ -34,17 +34,18 @@
    cleanOutputDirectory()
    copyAssets()
    transpilePackagesWithCustomTranspilerPaths()
-@@ -87,73 +87,5 @@
+@@ -88,74 +88,5 @@
  
  if (!argv.generateApiDocs) {
    binariesPromise
 -    .then(packageApplication)
      .then(packagedAppPath => generateStartupSnapshot(packagedAppPath).then(() => packagedAppPath))
--    .then(packagedAppPath => {
+-    .then(async packagedAppPath => {
 -      switch (process.platform) {
 -        case 'darwin': {
 -          if (argv.codeSign) {
--            codeSignOnMac(packagedAppPath)
+-            await codeSignOnMac(packagedAppPath)
+-            await notarizeOnMac(packagedAppPath)
 -          } else if (argv.testSign) {
 -            testSignOnMac(packagedAppPath)
 -          } else {
@@ -110,7 +111,7 @@
  }
 --- a/script/lib/generate-startup-snapshot.js
 +++ b/script/lib/generate-startup-snapshot.js
-@@ -265,17 +265,14 @@
+@@ -286,17 +286,14 @@
          CONFIG.executableName
        );
      } else {
@@ -118,7 +119,7 @@
 -        packagedAppPath,
 -        CONFIG.executableName
 -      );
-+      nodeBundledInElectronPath = 'electron4';
++      nodeBundledInElectronPath = 'electron5';
      }
      childProcess.execFileSync(
        nodeBundledInElectronPath,
@@ -130,7 +131,7 @@
      console.log('Generating startup blob with mksnapshot');
      childProcess.spawnSync(process.execPath, [
        path.join(
-@@ -317,5 +314,6 @@
+@@ -338,5 +335,6 @@
          destinationPath
        );
      }
@@ -143,9 +144,9 @@
      "coffeelint": "1.15.7",
      "colors": "1.1.2",
      "donna": "1.0.16",
--    "electron-chromedriver": "^4.2.0",
-     "electron-link": "0.4.0",
--    "electron-mksnapshot": "^4.2.0",
+-    "electron-chromedriver": "^9.0.0",
+     "electron-link": "0.4.1",
+-    "electron-mksnapshot": "^9.0.2",
      "electron-packager": "12.2.0",
      "@atom/electron-winstaller": "0.0.1",
      "eslint": "^5.16.0",
@@ -160,18 +161,6 @@
          name: null
        };
      }
---- a/src/main-process/atom-window.js
-+++ b/src/main-process/atom-window.js
-@@ -47,7 +47,8 @@
-         // Disable the `auxclick` feature so that `click` events are triggered in
-         // response to a middle-click.
-         // (Ref: https://github.com/atom/atom/pull/12696#issuecomment-290496960)
--        disableBlinkFeatures: 'Auxclick'
-+        disableBlinkFeatures: 'Auxclick',
-+        nodeIntegration: true
-       }
-     };
- 
 --- a/src/module-cache.js
 +++ b/src/module-cache.js
 @@ -270,7 +270,7 @@
