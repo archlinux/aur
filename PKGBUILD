@@ -2,7 +2,7 @@
 
 pkgname=lua-love-release
 _rockname=love-release
-pkgver=2.0.14
+pkgver=2.0.15
 pkgrel=1
 pkgdesc="Lua script that makes LÖVE game release easier"
 arch=('any')
@@ -18,7 +18,7 @@ depends=('lua'
          'lua-middleclass')
 makedepends=('luarocks')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MisterDA/love-release/archive/v${pkgver}.tar.gz")
-sha256sums=('1ee4aff34cb7d1bce45c1f6c025be0fdef013265a8b49ef4bd2d6d8c42fa555f')
+sha256sums=('4c065f12a6057cee8d6b1ff1d2bc0816e009a6f4722e970dc98c8dddf59fb982')
 
 prepare() {
   mv "${srcdir}/${_rockname}-${pkgver}/rockspecs/${_rockname}-${pkgver}-1.rockspec" "${srcdir}/${_rockname}-${pkgver}"
