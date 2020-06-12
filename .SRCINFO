@@ -1,15 +1,17 @@
 pkgbase = vue-cli
 	pkgdesc = Standard tooling for Vue.js development
 	pkgver = 4.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cli.vuejs.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	conflicts = nodejs-vue-cli
-	options = !strip
+	noextract = vue-cli-4.4.3.tar.gz
+	source = vue-cli-4.4.3.tar.gz::https://registry.npmjs.org/@vue/cli/-/cli-4.4.3.tgz
+	sha1sums = f8bbdad39dc3508001dd43d54c97a39df81f4e44
 
 pkgname = vue-cli
 
