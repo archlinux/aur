@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils@czserver.de>
 
 pkgname=prometheus-snmp-exporter-generator
-pkgver=0.15.0
+pkgver=0.18.0
 pkgrel=5
 pkgdesc="Generator parse MIBs and generates configs for the snmp_exporter"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('git' 'go')
 depends=('net-snmp')
 source=("https://github.com/prometheus/snmp_exporter/archive/v${pkgver}.tar.gz")
-sha512sums=('1050a25d12a8201deab0ab7ea95dc35e250954a321d14251c10f87b016c879cf036e01f4043e3463607200381de63f12ea6bcf094dea2939707545f978c2675b')
+sha512sums=('ea24d58053089e16b091353ccbb387346f2bef825f181efc8b347349d72a624ecda3269d3261ca0503bcb3c565e723c4a4685b8445a46e38efb892fd2ac7ce89')
 
 prepare() {
     export GOPATH="${srcdir}/gopath"
