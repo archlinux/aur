@@ -15,13 +15,13 @@ md5sums=('SKIP')
 
 package() {
 	# remove unnecessary files
-	rm "${srcdir}/ikemen-go"
+	rm "${srcdir}/ikemen-go/"
 
 	# package goes under /opt
-	install -d "${pkgdir}/opt/${pkgname}/"
+	install -dm777 "${pkgdir}/opt/${pkgname}/"
 	cp -a "${srcdir}/." "${pkgdir}/opt/$pkgname"
 
-	# shortcut goes under /usr/bin
+	# create the /usr/bin/ dir
 	install -d "${pkgdir}/usr/bin"
 
 	# create a shortcut for ikemen go
