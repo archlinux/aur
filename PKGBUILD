@@ -4,7 +4,7 @@
 _pkgname=bimp
 pkgname=gimp-plugin-bimp
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Batch Image Manipulation Plugin for GIMP'
 arch=('x86_64' 'i686')
 url='http://www.alessandrofrancesconi.it/projects/bimp/'
@@ -13,7 +13,7 @@ depends=('gimp')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/alessandrofrancesconi/${pkgname}/archive/v$pkgver.tar.gz
         01_gcc_fcommon.patch)
 md5sums=('21e7a31b8148c3537654ee5fd399f02c'
-         '413ff72eb1a5cd6e7440ee6363b7aaeb')
+         '6fcaf1a32acbd299a33f8b07cef455ff')
 
 
 prepare() {
