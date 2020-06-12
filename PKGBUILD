@@ -8,7 +8,7 @@ url="https://github.com/jeremiah-c-leary/vhdl-style-guide/"
 license=('GPLv3')
 conflicts=('python-vsg-git')
 provides=('python-vsg')
-depends=('python' 'python-setuptools' 'python-pyyaml')
+depends=('python' 'python-setuptools' 'python-pyaml')
 
 makedepends=('git')
 
