@@ -2,15 +2,15 @@
 pkgname=libgnt3-hg
 pkgver=r1374.8672fda6d081
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GLib Ncurses Toolkit"
 arch=('x86_64')
 url="https://bitbucket.org/pidgin/libgnt"
 license=('GPL3')
 depends=('glib2' 'ncurses' 'libxml2' 'python')
 makedepends=('mercurial' 'meson' 'libxml2' 'python' 'gobject-introspection' 'gtk-doc')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-hg}")
+conflicts=("${pkgname%-hg}")
 source=('hg+https://bitbucket.org/pidgin/libgnt#branch=default')
 sha256sums=('SKIP')
 
