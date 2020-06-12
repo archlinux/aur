@@ -2,7 +2,7 @@
 
 pkgname=openra-kknd-git
 _pkgname=openra-kknd
-pkgver=232.git.83f863b
+pkgver=247.git.2ad6f14
 pkgrel=1
 pkgdesc="A Krush, Kill n' Destroy-inspired mod of OpenRA"
 arch=('any')
@@ -15,14 +15,10 @@ makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=("${_pkgname}")
 options=(!strip)
 source=("git+https://github.com/IceReaper/KKnD.git"
-"fetch-engine.patch"
-"Makefile.patch"
 "${_pkgname}"
 "${_pkgname}.appdata.xml"
 "${_pkgname}.desktop")
 md5sums=('SKIP'
-         '711019044fbb1c1e3aa5edc58b54343d'
-         'feae017ba5765215cd151a892362e6b1'
          '97e2915c76fed6ddc325652bbc03daa6'
          'c5f78612c8da1e25119bd13c14989a14'
          'bca1c5bd8363910c329041cafcb784d5')
