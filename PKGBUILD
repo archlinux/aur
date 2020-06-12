@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 pkgbase=bbswitch-ati-git
 pkgname=(bbswitch-ati-git bbswitch-ati-dkms-git)
-pkgver=0.8.4.g07b110d
-pkgrel=2
+pkgver=0.8.5.gddbd243
+pkgrel=1
 pkgdesc='kernel module allowing to switch also AMD integrated and Nvidia dedicated graphics card on Optimus laptops (Git version)'
 arch=('i686' 'x86_64')
 license=('GPL')
