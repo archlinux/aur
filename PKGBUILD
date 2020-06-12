@@ -2,7 +2,7 @@
 # Previous Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=oomd
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A userspace out-of-memory killer.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}/${pkgname}.json")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebookincubator/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('42187233ad4b10feeb9666b56e0fa3fbb04dda824184b60eb6f69052913b44127331da8901e1ef5e2c723989f5f1ccd4c28f3ffdae3f02e359cc4e6d288b5fe3')
+sha512sums=('6bf5668eedd093666abf290ec8a864e4028deb29605a35da31d8ba9eb4ae18322ec0bb214e683d5c5a8c2e1fdf17d3f81645ca0ff9a07316a172e2a7765de046')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
