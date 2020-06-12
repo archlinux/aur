@@ -35,7 +35,7 @@ build() {
                     )
   cmake "${cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when passing multiple flags.
- ninja $(grep -oP -- '-+[A-z]* ?[0-9]*'<<<${MAKEFLAGS:--j1}) -C "${srcdir}/build"
+ ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<${MAKEFLAGS:--j1}) -C "${srcdir}/build"
 }
 
 package() {
