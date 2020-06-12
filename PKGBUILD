@@ -2,35 +2,33 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=1.6.18.1
+pkgver=2.1.3
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
+url='https://runelite.net/'
 arch=(any)
 license=('BSD')
-url="https://github.com/runelite/runelite"
-depends=('java-environment' 'ttf-font')
-optdepends=('gvfs: enable links')
-makedepends=('maven')
-provides=("runelite")
-conflicts=('runelite-git')
-source=("${url}/archive/runelite-parent-${pkgver}.tar.gz"
-        runelite.desktop
-        runelite.png)
-sha512sums=('c19cf8cdb441d34e91539c590fbaaec7401a1bb04b465785ad9447081bed9c82a7aa96f93d74be58b83eb5035be3f6c4e7f360be1d68b7d0ad2a0e6515f1d4bf'
-            'e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1'
-            '73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b')
-build() {
-    cd ${srcdir}/${pkgname}-runelite-parent-${pkgver}/
-
-    mvn clean package -DskipTests=true
-}
+depends=(
+    'java-runtime>=11'
+    'ttf-font')
+optdepends=(
+    'gvfs: enable links'
+    'libnotify: native tray notifications')
+makedepends=()
+source=("https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
+    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
+    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
+    runelite.desktop)
+noextract=('RuneLite.jar')
+sha256sums=('92269b5e3f6bbb64c3a38131faf9c560947354dbd3f789b02c2f7713dae2ea04'
+    '1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad'
+    '81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11'
+    'SKIP')
 
 package() {
-    client_jar=$(find ${srcdir}/${pkgname}-runelite-parent-${pkgver}/runelite-client/target -type f -name client-*-shaded.jar)
-
     install -D -m644 \
-        "${client_jar}" \
+        "${srcdir}/RuneLite.jar" \
         "${pkgdir}/usr/share/runelite/RuneLite.jar"
 
     install -D -m644 \
@@ -42,7 +40,7 @@ package() {
         "${pkgdir}/usr/share/pixmaps/runelite.png"
 
     install -D -m644 \
-        "${srcdir}/${pkgname}-runelite-parent-${pkgver}/LICENSE" \
+        "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
     install -D -m755 \
