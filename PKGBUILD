@@ -15,14 +15,14 @@ md5sums=('SKIP')
 
 package() {
 	# remove unnecessary files
-	rm "${srcdir}/ikemen-go/"
-	# set permissions
-	chmod -R 777 "$srcdir/."
+	rm "${srcdir}/ikemen-go"
 
 	# package goes under /opt
-	install -d "$pkgdir/opt/"
-	install -dm777 "$pkgdir/opt/$pkgname/"
-	cp -a "${srcdir}/." "${pkgdir}/opt/$pkgname"
+	install -d -m777 "$pkgdir/opt/$pkgname"
+	cp -a "${srcdir}/." "$pkgdir/opt/$pkgname"
+	# set permissions
+	find "$pkgdir/opt/$pkgname" -type f -exec chmod 777 {} \;
+  	find "$pkgdir/opt/$pkgname" -type d -exec chmod 777 {} \;
 
 	# create the /usr/bin/ dir
 	install -d "${pkgdir}/usr/bin"
