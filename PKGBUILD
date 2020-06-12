@@ -16,16 +16,16 @@ md5sums=('SKIP')
 package() {
 	# remove unnecessary files
 	rm "${srcdir}/ikemen-go/"
+	# set permissions
+	chmod -R 777 "$srcdir/."
 
 	# package goes under /opt
 	install -d "$pkgdir/opt/"
 	install -dm777 "$pkgdir/opt/$pkgname/"
 	cp -a "${srcdir}/." "${pkgdir}/opt/$pkgname"
-	chmod -R 777 "$pkdir/opt/$pkgname/"
 
 	# create the /usr/bin/ dir
 	install -d "${pkgdir}/usr/bin"
-
 	# create a shortcut for ikemen go
 	printf '%s\n' '#!/usr/bin/env sh' 'cd /opt/ikemen-go-bin; ./Ikemen_GO_linux' >> "${pkgdir}/usr/bin/ikemen-go"
 	chmod +x "${pkgdir}/usr/bin/ikemen-go" 
