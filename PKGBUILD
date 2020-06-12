@@ -1,7 +1,7 @@
 # Maintainer: FACT-Finder <ff-dev@omikron.net>
 
 pkgname=snage
-pkgver=0.0.18
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A tool for managing change logs."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 optdepends=('git: git-version provider')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FACT-Finder/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f4fb3be132ce80ca6d36b542e02f8efb0e49168ba34a113cd03bf18a724fcc86')
+sha256sums=('6aa62b2538894ebb3b887606ec2430da1d941f3fda682054b8b94ca11e24663a')
 options=(!strip)
 
 package() {
