@@ -2,7 +2,7 @@
 
 pkgname=tilt
 pkgdesc='Local Kubernetes development with no stress'
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -11,7 +11,7 @@ optdepends=('kubectl')
 makedepends=('go' 'nodejs' 'yarn')
 conflicts=('tilt-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/windmilleng/tilt/archive/v$pkgver.tar.gz")
-sha256sums=('4bf9aaecc470d76bb6523f5fe66e84af007cf524c4a006c837aa87053ee6d2af')
+sha256sums=('6c10f8cdee51b5cbfccfa2e3b3c92495a60784814a9d6abbf8229cc186c12a66')
 
 build() {
   cd $pkgname-$pkgver
