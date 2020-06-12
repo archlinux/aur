@@ -3,3 +3,4 @@ raplusmod
 pkg
 src
 *.gz
+*.log*
