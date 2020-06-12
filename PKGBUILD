@@ -4,7 +4,7 @@
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
 # Conttributor: xiretza <xiretza+aur@gmail.com>
-
+# Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
 pkgver=5.1
 pkgrel=1
