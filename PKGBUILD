@@ -6,7 +6,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=76.0.1
+pkgver=77.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('bin32-firefox-i18n: i18n support'
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
         'firefox32.desktop'
 	'firefox32-safe.desktop')
-sha256sums=('f355704f2ccd0bfca2b6de07613262272f37a03b90948e9d6bd5024079819004'
+sha256sums=('11db2f7c5aa0bf534e915a9cb380a1bb26656d92321a762597da619fbf84e120'
             'd24cf628f3fe57da81c0e36ed2ac6b615560931bc588eda2e76dfd8d93e813f2'
             'ae6ddbaa9734c3938bb809a334acc96c54195b997ad0fb43d9a9442eb80e0f16')
 
