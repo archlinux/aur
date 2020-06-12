@@ -2,7 +2,7 @@
 _pkgname=xmrig
 pkgname=${_pkgname}-bin
 pkgver=5.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level"
 arch=('x86_64')
 url="https://github.com/xmrig/xmrig"
