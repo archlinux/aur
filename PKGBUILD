@@ -17,7 +17,7 @@ sha256sums=('a5ea3dbac4e56decef5561ceb456be3eb6658111dd8feed55d632a52bfd7edaa'
             '63103ec3bf77c502a54f6f74cad020a448c9641be90202944c46bda0a1ff8bfe')
 
 prepare() {
-  cd "${srcdir}/BlendLuxCore-blendluxcore_v${_pkgver}"
+  cd "${srcdir}/BlendLuxCore-blendluxcore_v${pkgver}"
   patch -Np1 -i "${srcdir}/denoise.patch"
 }
 
@@ -25,7 +25,7 @@ package() {
   depends=("blender>=2.80" "luxcorerender>$pkgver")
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
-  cp -a "${srcdir}"/BlendLuxCore-blendluxcore_v${_pkgver} "${pkgdir}"/usr/share/blender/${_blender}/scripts/addons/${_name}
+  cp -a "${srcdir}"/BlendLuxCore-blendluxcore_v${pkgver} "${pkgdir}"/usr/share/blender/${_blender}/scripts/addons/${_name}
   # change the search path in exporter so it finds pylux in its new location :(previous solution was much better, what happen to blendlux )
   #sed -i 's|from.*import pylux|import pylux|' "$pkgdir/usr/share/blender/$_blender/scripts/addons/luxrender/outputs/pure_api.py"
 # shellcheck disable=SC2013 # works until path has no white space.
