@@ -1,13 +1,13 @@
 pkgbase = riot-desktop-nightly-bin
 	pkgdesc = A glossy Matrix collaboration client for the desktop (nightly .deb build).
-	pkgver = 2020061101
+	pkgver = 2020061201
 	pkgrel = 1
 	url = https://riot.im
 	arch = x86_64
 	license = Apache
-	source = https://packages.riot.im/debian/pool/main/r/riot-nightly/riot-nightly_2020061101_amd64.deb
+	source = https://packages.riot.im/debian/pool/main/r/riot-nightly/riot-nightly_2020061201_amd64.deb
 	source = riot-desktop-nightly.sh
-	sha256sums = 327ac268c171a9c5d5ebb17b67ec658856003f7d51e93a2ea7673cd0080020dc
+	sha256sums = 5ba9d3fc0c79dd2c576194c3b1f3b12b1715a63384be07c66f435716857ef270
 	sha256sums = f6c01c7b4ed8f200d89a3a8e8ff10db7b4d5043ad1a77fb75c51440c236f0678
 
 pkgname = riot-desktop-nightly-bin
