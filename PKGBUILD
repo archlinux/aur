@@ -1,8 +1,8 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=flac2all
-pkgver=5.0
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
 url="https://github.com/ZivaVatra/flac2all"
@@ -19,15 +19,12 @@ optdepends=(
 'vorbis-tools: for ogg support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZivaVatra/$pkgname/archive/v$pkgver.tar.gz"
-01-unfuck_python3.patch::https://github.com/ZivaVatra/flac2all/commit/dfe6d201d57866905dabf6bbcae4d396e4e4d130.patch
 )
-sha256sums=('d18a01653eed4d497cc1fe0393fecfaf6b6eab5dac9bd5599d1e83231b76c22d'
-            '2ad929c76351bcb63782ce06c45db62abfad6191be498914abaf17321e71479c')
+sha256sums=('32ffb53068d4e5b766ac66c7988170e84d8368648fcb671ebf4a168a5b03a391')
 
 prepare() {
   cd "$pkgname-$pkgver"
   [[ -f version ]] || echo "v$pkgver" > version
-  patch -Np1 -i ../01-unfuck_python3.patch
 }
 
 build() {
