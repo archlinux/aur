@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=viper4linux-gui-git
-pkgver=r256.2bcb4b3
+pkgver=2.0.r0.gd6733da
 pkgrel=1
-epoch=2
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
 url="https://github.com/Audio4Linux/Viper4Linux-GUI"
 license=('GPL3')
-depends=('viper4linux-git' 'qt5-base' 'qt5-multimedia' 'mesa')
+depends=('viper4linux-git' 'qt5-svg' 'qt5-multimedia' 'mesa')
 makedepends=('git')
+optdepends=('libappindicator-gtk3: tray icon support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/Audio4Linux/Viper4Linux-GUI.git"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
