@@ -1,6 +1,6 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=core
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('help2man' 'imagemagick' 'python-grpcio-tools' 'openvswitch')
 optdepends=('openvswitch: Open vSwitch support')
 backup=('etc/core/core.conf')
 source=("https://github.com/coreemu/core/archive/release-$pkgver.tar.gz")
-md5sums=('e3af7375a50547b7e7700095d829daf3')
+md5sums=('a2d29adb499f35a2d9a1ef0e31409160')
 
 build() {
   cd "$srcdir/core-release-$pkgver"
