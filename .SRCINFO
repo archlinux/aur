@@ -1,7 +1,7 @@
 pkgbase = thunderbird-nightly-bin
 	pkgdesc = Standalone Mail/News reader - Nightly build
 	pkgver = 79.0a1.20200611
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-nightly.install
 	arch = i686

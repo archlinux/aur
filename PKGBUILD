@@ -6,7 +6,7 @@
 pkgname=thunderbird-nightly-bin
 pkgver=79.0a1.20200611
 _version=79.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone Mail/News reader - Nightly build'
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -43,9 +43,9 @@ package() {
   cp vendor.js "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/defaults/pref/
   ln -s /opt/${pkgname%-bin}-${pkgver}/thunderbird "${pkgdir}"/usr/bin/${pkgname%-bin}
   for i in 16x16 32x32 48x48 64x64 128x128; do
-      install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/${pkgname}.png
+      install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/${pkgname%-bin}.png
   done
-  install -Dm644 ${pkgname%-bin}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  install -Dm644 ${pkgname%-bin}.desktop "${pkgdir}"/usr/share/applications/${pkgname%-bin}.desktop
   rm -rf "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries/
   ln -sf /usr/share/hunspell/ "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries
 }
