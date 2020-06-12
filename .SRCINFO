@@ -1,0 +1,21 @@
+pkgbase = vkd3d-valve
+	pkgdesc = D3D12 to Vulkan translation library (Valve version)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/vkd3d
+	arch = x86_64
+	license = LGPL
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	makedepends = xcb-proto
+	makedepends = wine
+	depends = spirv-tools
+	depends = vulkan-icd-loader
+	depends = libxcb
+	provides = vkd3d
+	conflicts = vkd3d
+	source = https://github.com/ValveSoftware/vkd3d/archive/vkd3d-1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = vkd3d-valve
+
