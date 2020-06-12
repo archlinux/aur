@@ -6,7 +6,7 @@ pkgver=2.10.5550
 pkgrel=11
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('x86_64')
-url="http://jitsi.org"
+url="https://desktop.jitsi.org/Main/HomePage"
 license=('Apache')
 depends=('java-runtime=8')
 makedepends=('apache-ant' 'java-environment=8')
