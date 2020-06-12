@@ -1,6 +1,6 @@
 pkgbase = mon2cam-git
 	pkgdesc = Workaround for multi-monitor Discord screensharing
-	pkgver = r23.99a5180
+	pkgver = r32.8117a97
 	pkgrel = 1
 	url = https://github.com/ShayBox/Mon2Cam
 	arch = any
