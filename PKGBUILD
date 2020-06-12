@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-session-git
-pkgver=1.11.r1.g53b77a1
+pkgver=1.13.r1.g048e9ee
 pkgrel=1
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde-git')
@@ -10,7 +10,7 @@ url="https://github.com/bbidulock/xde-session"
 license=('GPL')
 provides=('xde-session')
 conflicts=('xde-session')
-depends=('m4' 'libunique' 'libxss' 'libxvnc' 'xde-theme' 'xde-ctools-git'
+depends=('m4' 'pam' 'libunique' 'libxss' 'libxvnc' 'xde-theme' 'xde-ctools-git'
 	 'xde-helpers-git' 'xde-menu-git' 'xdg-launch-git' 'libcanberra' 'numlockx')
 optdepends=('xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser')
 makedepends=('git' 'xorgproto')

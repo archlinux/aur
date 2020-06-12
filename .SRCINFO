@@ -1,6 +1,6 @@
 pkgbase = xde-session-git
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.11.r1.g53b77a1
+	pkgver = 1.13.r1.g048e9ee
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = xde-session-git
 	makedepends = git
 	makedepends = xorgproto
 	depends = m4
+	depends = pam
 	depends = libunique
 	depends = libxss
 	depends = libxvnc
