@@ -1,7 +1,7 @@
 # Maintainer: Mikhail Swift <mikhail.swift@gmail.com>
 pkgname=lazydocker-git
 _pkgname=lazydocker
-pkgver=0.8.r6.g10617da
+pkgver=0.9.r0.g10617da
 pkgrel=1
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -29,5 +29,6 @@ build() {
 }
 
 package() {
-    install -Dm755 "${_pkgname}/${_pkgname}" ${pkgdir}/usr/bin/${_pkgname}
+    install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
