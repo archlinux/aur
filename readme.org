@@ -1,6 +1,6 @@
-#+TITLE: Python-vhdl-style-guide AUR package
+#+TITLE: Python-vsg AUR package
 
-[[https://gitlab.com/aur-packages/python-vhdl-style-guide/-/commits/master][https://gitlab.com/aur-packages/python-vhdl-style-guide/badges/master/pipeline.svg]]
+[[https://gitlab.com/aur-packages/python-vsg/-/commits/master][https://gitlab.com/aur-packages/python-vsg/badges/master/pipeline.svg]]
 
 [[https://vhdl-style-guide.readthedocs.io/en/latest/index.html][Vhdl style guide]] provides coding style guide enforcement for VHDL code. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]] provides a way
 to build a package suitable for [[https://www.archlinux.org/][Archlinux]].
