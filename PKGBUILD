@@ -3,7 +3,7 @@
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.0.0
+_pkgver=7.0.2
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -26,6 +26,7 @@ prepare() {
   cd "$srcdir/powershell-native"
   git submodule init
   git submodule update
+  rm "$srcdir/powershell/global.json"
 }
 
 build() {
