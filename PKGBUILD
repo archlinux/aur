@@ -20,14 +20,10 @@ pkgver() {
   git describe --long --abbrev=10 | sed 's/^drminfo-//; s/-/./; s/-/+/; s/-/./'
 }
 
-prepare() {
+build() {
   cd drminfo
   rm -rf build
   meson build --prefix='/usr'
-}
-
-build() {
-  cd drminfo
   ninja -C build
 }
 
