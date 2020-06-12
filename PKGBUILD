@@ -1,7 +1,7 @@
 # Maintainer: Ethan Zonca <ethanzonca@ethanzonca.com>
 
-pkgname=lcm
-pkgver=1.4.0
+pkgname=lcm-git
+pkgver=20200602.r1170.e7ab2d5
 pkgrel=1
 pkgdesc="Lightweight real-time networking library"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,8 +13,18 @@ optdepends=(
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
 makedepends=(cmake)
-source=(https://github.com/lcm-proj/lcm/releases/download/v$pkgver/$pkgname-$pkgver.zip)
-sha512sums=('76ef0892cf7bc4cbda3c87776ebe9c095bae821efe19720461670031f88aff48f17551297b47c9bf8e0390a1ae0cf11240599be1bc235de96615c3e2866800fd')
+source=($pkgname-$pkgver::git+http://github.com/lcm-proj/lcm.git)
+
+sha512sums=(SKIP)
+
+pkgver() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+  printf "%s.r%s.%s" \
+    "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 
 build() {
