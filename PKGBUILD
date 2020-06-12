@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.6.15.arch1
+pkgver=5.7.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -11,7 +11,7 @@ url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -29,7 +29,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             # -- covolunablu-gaming patches --
             '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
@@ -90,7 +90,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -165,6 +165,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
