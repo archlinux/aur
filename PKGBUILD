@@ -8,9 +8,9 @@
 _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes libutil-linux-aes)
-_pkgmajor=2.34
-pkgver=${_pkgmajor}
-pkgrel=8
+_pkgmajor=2.35
+pkgver=${_pkgmajor}.2
+pkgrel=1
 pkgdesc="Miscellaneous system utilities for Linux, with loop-AES support"
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -21,19 +21,17 @@ options=('strip')
 install=${pkgname}.install
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-$pkgver.tar."{xz,sign}
-        "${_basename}-${_pkgmajor}.diff"
+        "${_basename}-${pkgver}.diff"
         "${pkgname}.modules"
-        '0001-lsblk-force-to-print-PKNAME-for-partition.patch'
         pam-{login,common,runuser,su}
         'util-linux-aes.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5'
+sha256sums=('21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a'
             'SKIP'
-            'b03fcfb72bc2f08e0051ac8af47b67fa7c71c7a95a45480650b8c3a5a11fbe08'
+            'b500e906f0675318647a1af5696866822794d1fd535a6adf1b3f0f17e4ce56f7'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
-            'cfadc020011f88c028dc50c4e6790f5bae385b881417d917a8706c6ff78613d9'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
             '95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935'
@@ -45,11 +43,8 @@ sha256sums=('743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5'
 
 prepare() {
   cd "$_basename-$pkgver"
-
-  patch -Np1 < ../0001-lsblk-force-to-print-PKNAME-for-partition.patch
-
-  msg "Patching with loop-AES"
-  patch -Np1 -i "../${_basename}-${_pkgmajor}.diff"
+  patch -Np1 -i "../${_basename}-${pkgver}.diff"
+  autoreconf -i
 }
 
 build() {
@@ -75,7 +70,6 @@ build() {
     --enable-chfn-chsh \
     --enable-write \
     --enable-mesg \
-    --enable-partx \
     --disable-hardlink \
     --with-python=3
 
@@ -83,7 +77,7 @@ build() {
 }
 
 package_util-linux-aes() {
-  conflicts=('eject' "${_basename}")
+  conflicts=('rfkill' "${_basename}")
   provides=('rfkill' "${_basename}")
   replaces=('rfkill')
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libcap-ng' 'libutil-linux-aes')
