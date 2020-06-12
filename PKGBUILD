@@ -3,7 +3,7 @@
 
 pkgname=next-browser
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
 url="https://next.atlas.engineer"
@@ -23,12 +23,12 @@ conflicts=('nyxt-browser')
 options=('!strip' '!makeflags')
 
 build() {
-  cd ${pkgname%-browser}-$pkgver
+  cd nyxt-$pkgver
   make all
 }
 
 package() {
-  cd ${pkgname%-browser}-$pkgver
+  cd nyxt-$pkgver
   make install PREFIX=/usr DESTDIR="$pkgdir"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
