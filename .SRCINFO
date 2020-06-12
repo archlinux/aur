@@ -1,0 +1,17 @@
+pkgbase = marcellus-font
+	pkgdesc = A set of flared serif typefaces inspired by classic Roman inscription letterforms
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Marcellus
+	arch = any
+	license = OFL
+	source = marcellus-1.000.zip::https://fonts.google.com/download?family=Marcellus
+	source = marcellus-1.000-sc.zip::https://fonts.google.com/download?family=Marcellus+SC
+	sha256sums = 410a303c5ed8d546cec8ee3293c3094d1d1b05901aa1a1e27cbe65243e9cefaa
+	sha256sums = 2d10c91081b663919f49851d67b259e3c95becf43ad3e0d4ede0e5b3ea7d66b0
+
+pkgname = ttf-marcellus
+	provides = marcellus-font
+
+pkgname = ttf-marcellus-sc
+
