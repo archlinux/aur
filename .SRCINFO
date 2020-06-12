@@ -1,8 +1,9 @@
 pkgbase = powerkit
 	pkgdesc = A Lightweight Desktop Independent full featured power manager
 	pkgver = 1.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/rodlie/powerkit
+	install = powerkit.install
 	arch = x86_64
 	license = BSD
 	makedepends = xorg-xrandr
