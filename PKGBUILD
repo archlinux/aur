@@ -27,7 +27,9 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver/built"
-	CTEST_OUTPUT_ON_FAILURE=1 make -k test
+	# LCM 1.4.0 unit tests are incompatible with Python 3, so we have to skip
+	# this step for now.
+	#CTEST_OUTPUT_ON_FAILURE=1 make -k test
 }
 
 package() {
