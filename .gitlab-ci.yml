@@ -21,6 +21,6 @@ build-package:
   script:
     - cd /home/notroot
     - su notroot -c "git clone https://aur.archlinux.org/python-vsg.git"
-    - cd python-vhdl-style-guide
+    - cd python-vsg
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
     - vsg -h
