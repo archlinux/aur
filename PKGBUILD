@@ -4,7 +4,7 @@
 
 pkgname=ktlint
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
 url="https://ktlint.github.io/"
@@ -22,6 +22,6 @@ package() {
   cd "${srcdir}"
 
   install -D -m755 ktlint-${pkgver} "${pkgdir}/usr/bin/ktlint"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/license/ktlint/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/ktlint/LICENSE"
 }
 

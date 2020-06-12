@@ -1,7 +1,7 @@
 pkgbase = ktlint
 	pkgdesc = An anti-bikeshedding Kotlin linter with built-in formatter
 	pkgver = 0.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ktlint.github.io/
 	arch = any
 	license = MIT
