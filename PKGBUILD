@@ -5,7 +5,7 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=1.4.10
-pkgrel=2
+pkgrel=1
 pkgdesc='Simple, super-flexible options. Does magic upon request.'
 
 arch=(any)
