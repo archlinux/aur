@@ -1,10 +1,10 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=fortune-mod-limericks
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of really funny and perverse limericks."
 arch=('any')
-url="http://stormdragon.tk/fortunes/limericks"
+url="https://billy.wolfe.casa/fortunes/limericks"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
