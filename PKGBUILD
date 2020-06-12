@@ -2,7 +2,7 @@
 
 pkgname=php-stomp
 _extname=stomp
-pkgver=1.0.9
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="PHP stomp client extension"
 arch=("i686" "x86_64")
@@ -29,4 +29,4 @@ package() {
 	install -m0755 -D "modules/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('7a7d748c6327ef8c6853dcadaedd41b4366ff821b401b11fab7b915cb5246575')
+sha256sums=('b80b4287080846150c845c9e94ad288d01975e67031e3f242a03c70da8b33d2f')
