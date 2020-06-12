@@ -4,7 +4,7 @@
 
 
 pkgname=('imagemagick-no-hdri')
-pkgver=6.9.7.9
+pkgver=7.0.10.18
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -14,7 +14,7 @@ makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'opencl-headers' 'opencl-icd-loader' 'libwebp' 'subversion' 'glu')
 source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc}
         perlmagick.rpath.patch)
-sha1sums=('3252058951b4e9eec3aef10120906336a5652672'
+sha1sums=('0e2f5816062a427f9e83a2eb76d5ad1c8327ef40'
           'SKIP'
           'e143cf9d530fabf3b58023899b5cc544ba93daec')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
@@ -39,7 +39,7 @@ build() {
     --with-webp --with-gslib --with-gs-font-dir=/usr/share/fonts/Type1 \
     --with-perl --with-perl-options="INSTALLDIRS=vendor" --with-lqr --with-rsvg \
     --enable-opencl --with-openjp2 --without-gvc --without-djvu --without-autotrace \
-    --without-jbig --without-fpx --without-dps --without-fftw $EXTRAOPTS
+    --without-jbig --without-fpx --without-dps --without-fftw --disable-hdri $EXTRAOPTS
   make
 }
 
