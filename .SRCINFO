@@ -1,5 +1,5 @@
 pkgbase = peazip-qt-bin
-	pkgver = 7.3.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = http://www.peazip.org/peazip-linux.html
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = peazip-qt-bin
 	depends = lib32-gcc-libs
 	depends = lib32-xz
 	depends = lib32-libx11
+	depends = lib32-zlib
 	optdepends = quad: A ROLZ-based file compressor
 	optdepends = unace: Support for ace files
 	optdepends = arc: Support for arc files
@@ -28,8 +29,8 @@ pkgbase = peazip-qt-bin
 	conflicts = peazip-qt-opensuse-latest
 	options = !emptydirs
 	options = !strip
-	source = peazip-qt-bin-7.3.0.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/7.3.0/peazip_portable-7.3.0.LINUX.Qt.tar.gz
-	sha256sums = cc8511c572f8d7e770a739c8237a20471102e267f0e72b26ae4dadd213b78a69
+	source = peazip-qt-bin-7.3.1.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/7.3.1/peazip_portable-7.3.1.LINUX.Qt.tar.gz
+	sha256sums = 8bac9c2cb6d7d7736ad26fe0ae6db600cdfe302efd3cf1e34b4674ecd2895878
 
 pkgname = peazip-qt-bin
 

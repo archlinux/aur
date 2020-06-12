@@ -5,7 +5,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.peazip.org/peazip-linux.html'
@@ -21,7 +21,8 @@ depends=('lib32-curl'
          'zpaq'
          'lib32-gcc-libs'
          'lib32-xz'
-         'lib32-libx11')
+         'lib32-libx11'
+         'lib32-zlib')
 options=('!emptydirs' '!strip')
 optdepends=('quad: A ROLZ-based file compressor' 
             'unace: Support for ace files'
@@ -33,7 +34,7 @@ conflicts=('peazip'
            'peazip-qt-build'
            'peazip-qt-opensuse-latest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt.tar.gz")
-sha256sums=('cc8511c572f8d7e770a739c8237a20471102e267f0e72b26ae4dadd213b78a69')
+sha256sums=('8bac9c2cb6d7d7736ad26fe0ae6db600cdfe302efd3cf1e34b4674ecd2895878')
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
