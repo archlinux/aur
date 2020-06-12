@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'libinput' 'libjpeg-turbo' 'libwebp'
-         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord' 'pipewire'
+         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord' 'libpipewire02'
          'egl-wayland')
 makedepends=('meson' 'wayland-protocols')
 provides=('weston')
