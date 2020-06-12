@@ -4,3 +4,4 @@ yr
 pkg
 src
 *.gz
+*.log*
