@@ -2,11 +2,11 @@ pkgbase = fortune-mod-confucius
 	pkgdesc = Fortune cookies: Confucius sayings.)
 	pkgver = 20180810
 	pkgrel = 2
-	url = http://billy.wolfe.casa/fortunes/confucius
+	url = https://billy.wolfe.casa/fortunes/confucius
 	arch = any
 	license = WTFPL
 	depends = fortune-mod
-	source = http://billy.wolfe.casa/fortunes/confucius
+	source = https://billy.wolfe.casa/fortunes/confucius
 	md5sums = e5fc48907a093b08be2822e82c4bc78a
 
 pkgname = fortune-mod-confucius
