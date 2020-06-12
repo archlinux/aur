@@ -1,6 +1,6 @@
 # Maintainer: Yuta Sakamoto <sksat@sksat.net>
 pkgname=zen
-pkgver=0.8.20200609LTS
+pkgver=0.8.20200612002LTS
 pkgrel=1
 pkgdesc="Reduce your stress with the C language. The first step to writing perfect software is Zen™"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('bash')
 install=
 changelog=
 source=("https://zen-lang.org/dist/$pkgver/$pkgname-linux-$arch-$pkgver.tar.xz")
-sha256sums=('cb3a0cb76141c2d957fdcb6e8322462f06050e924e7e18f36d21a21770b19edf')
+sha256sums=('92ac886ad78da5d86ce9829d8a49118bdacf4972aed15685c5757509d53ad8cc')
 
 package() {
   cd "${srcdir}/$pkgname-linux-$arch-$pkgver"
