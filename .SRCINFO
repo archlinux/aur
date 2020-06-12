@@ -1,14 +1,15 @@
 pkgbase = quasar-icongenie
 	pkgdesc = CLI tool for building web application icons
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quasar.dev/icongenie
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm>=5.0.0
 	depends = nodejs>=10.0.0
-	options = !strip
+	noextract = quasar-icongenie-2.2.1.tar.gz
+	source = quasar-icongenie-2.2.1.tar.gz::https://registry.npmjs.org/@quasar/icongenie/-/icongenie-2.2.1.tgz
+	sha1sums = 703a89ab80373cb03ac28477834155be0b89ef2a
 
 pkgname = quasar-icongenie
 
