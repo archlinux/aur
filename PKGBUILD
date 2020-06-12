@@ -2,7 +2,7 @@
 
 pkgname=chromaprint-fftw
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extracts fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
@@ -21,6 +21,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DFFT_LIB:STRING='fftw3' \
+        -DGTEST_SOURCE_DIR:PATH='/usr/src/googletest' \
         -Wno-dev
     make -C build
 }
