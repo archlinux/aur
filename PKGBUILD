@@ -2,33 +2,48 @@
 
 pkgname='goreleaser'
 pkgver=v0.138.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 
 depends=()
-makedepends=()
+# makedepends=('git')
+makedepends=('git' 'go>=1.14')
 optdepends=('nfpm: deb and rpm packager'
 	'snapcraft: snap packager')
 
-_basedownloadurl="https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}"
+_url="https://github.com/${pkgname}/${pkgname}"
 
-source_x86_64=("${pkgname}_${pkgver}_linux_x86_64.tar.gz::${_basedownloadurl}/${pkgname}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('60cd594e1413483e5728398f861e34834530e0fb1de842312d62ba9ccd57e5f8')
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-source_i686=("${pkgname}_${pkgver}_linux_i386.tar.gz::${_basedownloadurl}/${pkgname}_linux_i386.tar.gz")
-sha256sums_i686=('ae789fa3e6eb35611ab0da742def52f993411333aeaf19b198797954910228ed')
+prepare() {
+  # setup env variables & dirs
+  mkdir -p "${srcdir}/go"
+  export GOPATH="${srcdir}/go"
+  export GO111MODULE=on
 
-source_aarch64=("${pkgname}_${pkgver}_linux_arm64.tar.gz::${_basedownloadurl}/${pkgname}_linux_arm64.tar.gz")
-sha256sums_aarch64=('f70fe9875eb74e1c1a52c586e8c2fa7c5386838cd6ed51230f8fdb1ae55a9675')
+  cd "${srcdir}/${pkgname}-${pkgver#v}"
+  
+  # download dependencies
+  go mod download
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver#v}"
+
+  CGO_ENABLED=0 go build -v -trimpath -ldflags "-s -w -X \"main.version=${pkgver}-src\" -X \"main.builtBy=aur\" -X  \"main.date=$(date)\"" -o "dist/${pkgname}" .
+
+  go clean -modcache
+}
 
 package() {
-	# Bin
-	rm -f "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  # Bin
+  rm -f "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver#v}/dist/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	# License
-	install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # License
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver#v}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
