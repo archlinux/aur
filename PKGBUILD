@@ -1,8 +1,9 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin
-pkgver=3.0.0
-_commit=4704037848261e09fe342469e31396eb205d8408
+pkgver=4.0.0b1
+_commit=c7c9a32b9b85b9e7dce3b254600972dcc6d7f683
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')

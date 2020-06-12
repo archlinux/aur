@@ -1,6 +1,6 @@
 pkgbase = grin
 	pkgdesc = Minimal implementation of the MimbleWimble protocol
-	pkgver = 3.0.0
+	pkgver = 4.0.0b1
 	pkgrel = 1
 	url = https://github.com/mimblewimble/grin
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = grin
 	makedepends = rust
 	depends = ncurses
 	backup = etc/grin/server.toml
-	source = git+https://github.com/mimblewimble/grin.git#commit=4704037848261e09fe342469e31396eb205d8408
+	source = git+https://github.com/mimblewimble/grin.git#commit=c7c9a32b9b85b9e7dce3b254600972dcc6d7f683
 	source = grin-server.service
 	source = grin-server.toml
 	sha256sums = SKIP
