@@ -8,8 +8,6 @@ pkgbase = govmomi
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = govmomi
-	conflicts = govmomi-git
 	source = govmomi-0.22.1.tar.gz::https://github.com/vmware/govmomi/archive/v0.22.1.tar.gz
 	sha512sums = d63dd7d82dda867aae93e78261b464eb6d4af99c434ad37faaf506d1dd48294701b48b288307da17a250534c4b31215027b45c8fbca5076f6d6ae8c73afd3d24
 
