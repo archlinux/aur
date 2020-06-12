@@ -1,4 +1,5 @@
 # Maintainer: Daniel Otero <otero (dot) o (dot) daniel (at) gmail (dot) com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=openmp-nvptx
 _pkgname=openmp
