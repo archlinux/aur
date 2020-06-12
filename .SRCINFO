@@ -1,9 +1,7 @@
 pkgbase = eduke32-git
-	pkgdesc = Advanced Duke Nukem 3D source port - git version
-	pkgver = r9014_d473e6028
+	pkgver = r9142_e3946bf81
 	pkgrel = 1
 	url = http://eduke32.com
-	install = eduke32-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,10 +15,6 @@ pkgbase = eduke32-git
 	optdepends = timidity-freepats: a free soundfont for music
 	optdepends = fluidsynth: alternative midi sequencer
 	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
-	provides = eduke32
-	provides = eduke32-svn
-	conflicts = eduke32
-	conflicts = eduke32-svn
 	source = eduke32-git::git+https://voidpoint.io/terminx/eduke32
 	source = eduke32.png
 	sha256sums = SKIP
@@ -28,4 +22,16 @@ pkgbase = eduke32-git
 	makedepends_i686 = nasm
 
 pkgname = eduke32-git
+	pkgdesc = Advanced Duke Nukem 3D source port - git version
+	install = eduke32-git.install
+	provides = eduke32
+	provides = eduke32-svn
+	conflicts = eduke32
+	conflicts = eduke32-svn
+
+pkgname = voidsw-git
+	pkgdesc = Advanced Shadow Warrior source port - git version
+	install = voidsw-git.install
+	provides = voidsw
+	conflicts = voidsw
 

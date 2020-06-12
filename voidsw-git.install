@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "==> Remember you need 'Shadow Warrior' data files to play. You can put them under"
+  echo "==> '/usr/share/games/voidsw/' for all users or '~/.config/voidsw' for yourself."
+}
+
+post_upgrade() {
+  post_install
+}
