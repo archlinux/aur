@@ -9,7 +9,7 @@ url='https://github.com/yasirtug/ni-translate'
 license=('GPL3')
 provides=('ni-translate')
 depends=('qt5-base')
-makedepends=('qt5-base')
+makedepends=('qt5-base' 'gendesk')
 source=("${pkgname%-git}::git+https://github.com/yasirtug/ni-translate")
 sha256sums=('SKIP')
 
