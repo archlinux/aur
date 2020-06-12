@@ -70,12 +70,3 @@ index 01becbe2a9a8..acbc3626852b 100644
  } __packed;
  
  /*
-@@ -1722,7 +1724,7 @@ static ssize_t fan_boost_mode_store(struct device *dev,
- 	asus->fan_boost_mode = new_mode;
- 	fan_boost_mode_write(asus);
- 
--	return result;
-+	return count;
- }
- 
- // Fan boost mode: 0 - normal, 1 - overboost, 2 - silent

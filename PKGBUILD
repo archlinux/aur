@@ -1,15 +1,15 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.6.15.arch1
-pkgrel=2
-pkgdesc='Linux witch patches for ASUS ROG Zephyrus G14'
+pkgver=5.7.2.arch1
+pkgrel=1
+pkgdesc='Linux witch patches for ASUS ROG Zephyrus G14/G15'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto
   git
 )
@@ -32,12 +32,13 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '2a157fdbf3a6396e985db9ae5d11870a786717dca31de78cad09c06eb28761ff'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '8f9bb0be13e47b8fff55702bb4ea6f4d88eed5b5350d6e7025519f4dcb3cff79'
             '28d35438857ffe9fccab8d05e22cd9c590f3b52172809e78d726f035f4b5557f'
-            'e62dec5a7a239716190c1bdb1b11e7c2d6494cdb642b62b9d0c679fa0f18e0f8'
+            '00e785b1f72de3387eab601d142664e47b5c53f13dd68a256d56a12c69621e21'
             '03afc868493b7a7a066aaf2113662fd29ffde7a5665dee8539fe3982048788e4')
+
 
 
 
@@ -97,10 +98,10 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm "$modulesdir"/{source,build} || echo 1
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
@@ -172,6 +173,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
