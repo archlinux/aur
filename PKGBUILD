@@ -2,7 +2,7 @@
 
 pkgname=kazam
 pkgver=1.4.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Screencast and screenshot application created with design in mind"
 arch=('any')
 url="https://launchpad.net/kazam"
@@ -12,14 +12,13 @@ depends=(
     'python-dbus'
     'python-gobject'
     'python-xdg'
+    'python-distutils-extra'
+    'libkeybinder3'
     'gstreamer'
     'gst-plugins-base'
     'gst-libav'
     'libwnck3'
     'libcanberra'
-)
-optdepends=(
-    'libkeybinder3: hotkeys support'
 )
 
 source=(
