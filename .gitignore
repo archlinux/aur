@@ -3,3 +3,4 @@ d2
 pkg
 src
 *.gz
+*.log*
