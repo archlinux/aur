@@ -36,7 +36,7 @@ source=("hg+$_repo"
         '0003-Disable-netwerk-test-http3server.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            '79b35f2959763e9c940f061b309cc33aea5abfa188aaf09b29626716e24708d1'
+            '11ffb5665e3925349553868a3d326b8397d2705707de033d6ec6ee00babeb87f'
             '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035'
             '505f54744f6e9830463861730b587788615c3799f6787f8c96d4220d0f5128cd'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
