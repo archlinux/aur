@@ -1,14 +1,15 @@
 # Maintainer: David Horvath <horvath.david987 at gmail dot com>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
 license=('CCPL:by-nd')
 groups=()
 depends=('npm'
-         'yarn')
+         'yarn'
+	     'git')
 makedepends=()
 checkdepends=()
 optdepends=()
