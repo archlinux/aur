@@ -8,6 +8,7 @@ pkgbase = python-vsg
 	makedepends = git
 	depends = python
 	depends = python-setuptools
+	depends = python-pyyaml
 	provides = python-vsg
 	conflicts = python-vsg-git
 	options = !emptydirs
