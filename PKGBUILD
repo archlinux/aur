@@ -1,8 +1,8 @@
 # Maintainer: Ethan Zonca <ethanzonca@ethanzonca.com>
 
 pkgname=lcm
-pkgver=1.3.1
-pkgrel=5
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Lightweight real-time networking library"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/lcm-proj/lcm"
@@ -12,23 +12,25 @@ optdepends=(
 	'java-environment: support for lcm-spy and other GUI tools'
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
-makedepends=()
-source=(http://github.com/lcm-proj/lcm/releases/download/v${pkgver}/$pkgname-$pkgver.zip)
+makedepends=(cmake)
+source=(https://github.com/lcm-proj/lcm/releases/download/v$pkgver/$pkgname-$pkgver.zip)
+sha512sums=('76ef0892cf7bc4cbda3c87776ebe9c095bae821efe19720461670031f88aff48f17551297b47c9bf8e0390a1ae0cf11240599be1bc235de96615c3e2866800fd')
 
-md5sums=('61ea232993a750285686cd63f1cfcd3f')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
+	mkdir -p built
+	cd built
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make -k check
+	cd "$srcdir/$pkgname-$pkgver/built"
+	CTEST_OUTPUT_ON_FAILURE=1 make -k test
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver/built"
 	make DESTDIR="$pkgdir/" install
 }
