@@ -29,6 +29,8 @@ package() {
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
 
+    rm -f qtdiag
+
     rm -f libQt5*.so{,.*}
     rm -f libicu*.so{,.*}
 
