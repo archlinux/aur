@@ -4,7 +4,7 @@ pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
 pkgver=1.0.8.r457.g4f1414a1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
 arch=(any)
 url="https://opencolorio.org/"
@@ -42,7 +42,7 @@ build() {
 	_flags=( -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF
 		-DOCIO_INLINES_HIDDEN=ON -DOCIO_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=14 -DOCIO_BUILD_PYTHON=OFF
 		-DOCIO_BUILD_GPU_TESTS=OFF -DOCIO_ADD_EXTRA_BUILTINS=ON
-		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX" )
+		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX" )
 		
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_repo}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
