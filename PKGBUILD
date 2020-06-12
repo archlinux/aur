@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.1.16.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -44,19 +44,24 @@ prepare() {
 }
 
 build() {
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -fpermissive"
+		-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=ON -DBUILD_ROBINMAP_FORCE=ON 
+		-DUSE_EXTERNAL_PUGIXML=ON -DBUILD_TESTING=OFF -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
+		-DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
+		-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=""
+		-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg" )
+		
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}" -DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF \
-			-DBUILD_MISSING_ROBINMAP=ON -DBUILD_ROBINMAP_FORCE=ON -DUSE_EXTERNAL_PUGIXML=ON -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=20 \
-			-DINSTALL_DOCS=OFF -DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF \
-			-DUSE_CCACHE=OFF -DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS="" \
-			-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg" \
-			-DCMAKE_CXX_FLAGS="-fpermissive"
+		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
+		make -C "build-${_arch}-static"
+		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
 
 package() {
 	for _arch in ${_architectures}; do
+		make DESTDIR="${pkgdir}" -C "build-${_arch}-static" install
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a

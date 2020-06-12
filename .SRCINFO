@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openimageio
 	pkgdesc = A library for reading and writing images.
 	pkgver = 2.1.16.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.openimageio.org/
 	arch = any
 	license = BSD-3-Clause
