@@ -1,0 +1,14 @@
+pkgbase = memo
+	pkgdesc = A drop-down app to take note for KDE users
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/FishHawk/Memo
+	arch = x86_64
+	license = GPL
+	depends = qt5-quickcontrols2
+	depends = kxmlgui
+	source = https://github.com/FishHawk/Memo/releases/download/v0.1.1/memo-linux-x64-v0.1.1.tar.gz
+	md5sums = SKIP
+
+pkgname = memo
+
