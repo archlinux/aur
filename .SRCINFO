@@ -1,14 +1,16 @@
 pkgbase = jool
 	pkgdesc = Open Source SIIT and NAT64 for Linux.
-	pkgver = 4.0.7
-	pkgrel = 5
+	pkgver = 4.0.9
+	pkgrel = 1
 	url = https://www.jool.mx
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/NICMx/Jool/releases/download/v4.0.7/jool-4.0.7.tar.gz
+	makedepends = libnl
+	makedepends = iptables
+	source = https://github.com/NICMx/Jool/releases/download/v4.0.9/jool-4.0.9.tar.gz
 	source = https://raw.githubusercontent.com/ydahhrk/packaging/master/Jool/debian/jool-tools.jool.service
 	source = https://raw.githubusercontent.com/ydahhrk/packaging/master/Jool/debian/jool-tools.jool_siit.service
-	sha512sums = adc269c75b7195fbb6de04ecc50824b464644bcaf1ba00634912cbdc21308b872273f4dc5b866f2af9dfd58fedf624e77e0ddaf68403447e6749f7fd0e50146f
+	sha512sums = 906b8e6af43c0bb15a9302cef0721a6112820e3c474285c8ae8e1d5c8eda815881cbdfd554a1a98c48b6ed138572b5a8001c5fe3443111888d1dbe685bb0df20
 	sha512sums = d3f6b88d4551c501455f1c1f8c33b7fbc667ae3d69c1793d230dcfc7b7b96fda46ac18449cacde54121e69f08de9a8eb97a5927b540381274b966cdeb3a84690
 	sha512sums = 4078ea3a99831c7aa8d7b8d05529f27aaa7289a8cfae90d122fe69d782a30ea4d31f8f71a9edcdcec774b12cd329123607522640fcfc4eac4b588bbec70b5d92
 
