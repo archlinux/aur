@@ -1,13 +1,12 @@
 pkgbase = linux-ck
 	pkgver = 5.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
-	makedepends = pahole
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.2.tar.sign
