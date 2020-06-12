@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.5.127
+pkgver=8.5.141
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -99,6 +99,12 @@ prepare() {
 }
 
 build() {
+  export CC=/usr/bin/clang
+  export CXX=/usr/bin/clang++
+  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  export GYP_GENERATORS=ninja
+
+
   cd $srcdir/v8
   
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
