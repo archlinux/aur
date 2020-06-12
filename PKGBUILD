@@ -1,13 +1,13 @@
 # Maintainer: Gregory <gregory.mkv@gmail.com>
 
 pkgname=handlr-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Powerful alternative to xdg-utils written in Rust"
 arch=('x86_64')
 url="https://github.com/chmln/handlr"
 license=('unknown')
-source=("${url}/releases/download/v${pkgver}/handlr" 
+source=("${url}/releases/download/v${pkgver}/handlr"
     "$url/raw/v${pkgver}/completions/handlr.fish")
 md5sums=('SKIP' 'SKIP')
 
