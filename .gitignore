@@ -1,4 +1,4 @@
-pkg
-src
-*.tar.gz
-*.tar.xz
+*.log
+*.gz
+*.zst
+sooperlooper*/
