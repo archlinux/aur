@@ -7,7 +7,7 @@
 
 pkgname=weston-eglstream
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
