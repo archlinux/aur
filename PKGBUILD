@@ -21,6 +21,7 @@ package() {
   cp -a "${srcdir}"/doc "$pkgdir/usr/share/vlang/"
   cp -a "${srcdir}"/thirdparty "$pkgdir/usr/lib/vlang/"
   cp -a "${srcdir}"/vlib "$pkgdir/usr/lib/vlang/"
+  cp -a "${srcdir}"/cmd "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 # vim:set ts=2 sw=2 et:
