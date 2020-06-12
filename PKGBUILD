@@ -1,5 +1,4 @@
-# Maintainer:  Joost Bremmer < contact@madeofmagicandwires.online>
-# Contributor: Josh Hoffer <hoffer.joshua@gmail.com>
+# Maintiner: anon at sansorgan.es
 # Contributor: Sean Anderson <seanga2@gmail.com>
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
@@ -7,11 +6,11 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=wine-valve
-pkgver=4.16
+pkgver=5.1
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
-url='https://github.com/ValveSoftware/wine'
+url='https://github.com/ValveSoftware/wine.git'
 license=('LGPL')
 _depends=(
     'sdl2'                  'lib32-sdl2'
@@ -30,7 +29,8 @@ _depends=(
     'libpcap'               'lib32-libpcap'
     'desktop-file-utils'
     'libgphoto2'
-    )
+    'vkd3d-valve'
+)
 makedepends=('autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
@@ -52,10 +52,9 @@ makedepends=('autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-'samba'
-'opencl-headers'
-'vulkan-headers'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
+    'samba'		    'opencl-headers'
+    'vulkan-headers'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -78,125 +77,123 @@ optdepends=(
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'cups'
     'samba'
-'dosbox'
+    'dosbox'
 )
 options=('staticlibs')
-install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ValveSoftware/wine/archive/wine-$pkgver.tar.gz"
-    '30-win32-aliases.conf'
-    'wine-binfmt.conf')
-conflicts=('wine-valve-git')
-sha256sums=('50b7c7cb23ac31bec3f16c72ca3019172108f5e2153363d877ec736d8bf66904'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
+install="$pkgname.install"
+source=("https://github.com/ValveSoftware/wine/archive/wine-${pkgver}.tar.gz"
+        '30-win32-aliases.conf'
+        'wine-binfmt.conf')
 
-if [ "$CARCH" = 'i686' ]
+if [ "$CARCH" = 'i686' ] 
 then
-# strip lib32 etc. on i686
-_depends=(${_depends[@]/*32-*/})
-makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
-optdepends=(${optdepends[@]/*32-*/})
-  provides=("wine=${pkgver}" "wine-valve=${pkgver}")
-  conflicts=('wine' 'wine-staging' 'wine-staging-git')
-  else
-makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}" "wine-valve=${pkgver}")
-  conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
-  replaces=('bin32-wine')
-  fi
+    # strip lib32 etc. on i686
+    _depends=(${_depends[@]/*32-*/})
+    makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
+    optdepends=(${optdepends[@]/*32-*/})
+    provides=("wine=${pkgver}" "wine-valve=${pkgver}")
+    conflicts=('wine' 'wine-staging' 'wine-staging-git')
+else
+    makedepends=(${makedepends[@]} ${_depends[@]})
+    provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}" "wine-valve=${pkgver}")
+    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
+    replaces=('bin32-wine')
+fi
+
 
 prepare() {
-  cd "${pkgname/valve/wine}-$pkgver"
-
-  # fix path of opencl headers
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    cd "wine-wine-${pkgver}"
+    
+    # fix path of opencl headers
+    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 build() {
-  # delete old build dirs (from previous builds) and make new ones
-  rm    -rf "$pkgname"-{32,64}-build
-  mkdir -p  "$pkgname"-32-build
+    # delete old build dirs (from previous builds) and make new ones
+    rm    -rf "$pkgname"-{32,64}-build
+    mkdir -p  "$pkgname"-32-build
+    
+    # workaround for FS#55128
+    # https://bugs.archlinux.org/task/55128
+    # https://bugs.winehq.org/show_bug.cgi?id=43530
+    export CFLAGS="${CFLAGS/-fno-plt/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    
+    # build wine 64-bit
+    # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
+    if [ "$CARCH" = 'x86_64' ] 
+    then
+        msg2 'Building Wine-64...'
 
-  # workaround for FS#55128
-  # https://bugs.archlinux.org/task/55128
-  # https://bugs.winehq.org/show_bug.cgi?id=43530
-  export CFLAGS="${CFLAGS/-fno-plt/}"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
-
-  # build wine 64-bit
-  # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
-  if [ "$CARCH" = 'x86_64' ]
-  then
-    msg2 'Building Wine-64...'
-
-    mkdir "$pkgname"-64-build
-    cd    "$pkgname"-64-build
-
-    ../"${pkgname/valve/wine}-${pkgver}"/configure \
-      --prefix='/usr' \
-      --libdir='/usr/lib' \
-      --with-x \
-      --with-gstreamer \
-      --enable-win64 \
-      --disable-tests
+        mkdir "$pkgname"-64-build
+        cd    "$pkgname"-64-build
+        
+        ../"wine-wine-${pkgver}"/configure \
+                          --prefix='/usr' \
+                          --libdir='/usr/lib' \
+                          --with-x \
+                          --with-gstreamer \
+                          --enable-win64 \
+			  --disable-tests
+        make
+        
+        local _wine32opts=(
+                    '--libdir=/usr/lib32'
+                    "--with-wine64=${srcdir}/${pkgname}-64-build"
+        )
+        
+        export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    fi
+    
+    # build wine 32-bit
+    msg2 'Building Wine-32...'
+    
+    cd "${srcdir}/${pkgname}"-32-build
+    
+    ../"wine-wine-${pkgver}"/configure \
+                      --prefix='/usr' \
+                      --with-x \
+                      --with-gstreamer \
+		      --disable-tests \
+                      ${_wine32opts[@]}
     make
-
-    local _wine32opts=(
-      '--libdir=/usr/lib32'
-      "--with-wine64=${srcdir}/${pkgname}-64-build")
-
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  fi
-
-  # build wine 32-bit
-  msg2 'Building Wine-32...'
-
-  cd "${srcdir}/${pkgname}"-32-build
-
-  ../"${pkgname/valve/wine}-${pkgver}"/configure \
-    --prefix='/usr' \
-    --with-x \
-    --with-gstreamer \
-    --disable-tests \
-    ${_wine32opts[@]}
-  make
 }
 
 package() {
-  depends=(${_depends[@]})
-
-  # package wine 32-bit
-  # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-  msg2 'Packaging Wine-32...'
-
-  cd "$pkgname"-32-build
-
-  if [ "$CARCH" = 'i686' ]
-  then
-      make prefix="$pkgdir/usr" install
-  else
-    make prefix="$pkgdir/usr" \
-      libdir="$pkgdir/usr/lib32" \
-      dlldir="$pkgdir/usr/lib32/wine" install
-
-    # package wine 64-bit
-    msg2 'Packaging Wine-64...'
-
-    cd "${srcdir}/${pkgname}"-64-build
-
-    make prefix="$pkgdir/usr" \
-      libdir="$pkgdir/usr/lib" \
-      dlldir="$pkgdir/usr/lib/wine" install
-  fi
-
-  # font aliasing settings for Win32 applications
-  install -d "$pkgdir"/etc/fonts/conf.{avail,d}
-  install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
-
-  # wine binfmt
-  install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+    depends=(${_depends[@]})
+    
+    # package wine 32-bit
+    # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
+    msg2 'Packaging Wine-32...'
+    
+    cd "$pkgname"-32-build
+    
+    if [ "$CARCH" = 'i686' ] 
+    then
+        make prefix="$pkgdir/usr" install
+    else
+        make prefix="$pkgdir/usr" \
+             libdir="$pkgdir/usr/lib32" \
+             dlldir="$pkgdir/usr/lib32/wine" install
+    
+        # package wine 64-bit
+        msg2 'Packaging Wine-64...'
+        
+        cd "${srcdir}/${pkgname}"-64-build
+        
+        make prefix="$pkgdir/usr" \
+             libdir="$pkgdir/usr/lib" \
+             dlldir="$pkgdir/usr/lib/wine" install
+    fi
+    
+    # font aliasing settings for Win32 applications
+    install -d "$pkgdir"/etc/fonts/conf.{avail,d}
+    install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
+    ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    
+    # wine binfmt
+    install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
-
-
-# vim: set ts=2 sts=2 sw=2 et :
+sha256sums=('SKIP'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
