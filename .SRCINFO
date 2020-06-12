@@ -1,6 +1,6 @@
 pkgbase = python-ezpadova-git
 	pkgdesc = A python package that allows you to download PADOVA isochrones directly from their website
-	pkgver = r61.5378a3e
+	pkgver = r62.dc9de28
 	pkgrel = 1
 	url = https://github.com/mfouesneau/ezpadova
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-ezpadova-git
 pkgname=('python-ezpadova-git' 'python2-ezpadova-git')
-pkgver=r61.5378a3e
+pkgver=r62.dc9de28
 pkgrel=1
 pkgdesc="A python package that allows you to download PADOVA isochrones directly from their website"
 arch=('i686' 'x86_64')
