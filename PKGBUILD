@@ -8,7 +8,7 @@ url="https://github.com/jeremiah-c-leary/vhdl-style-guide/"
 license=('GPLv3')
 conflicts=('python-vsg-git')
 provides=('python-vsg')
-depends=('python' 'python-setuptools' 'python-pyaml')
+depends=('python' 'python-setuptools')
 
 makedepends=('git')
 
@@ -22,6 +22,7 @@ build() {
 }
 
 package() {
+    depends=('python-pyaml')
     cd "${srcdir}/vhdl-style-guide"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
