@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Connect Me
+Exec=/usr/bin/ConnectMeDesktop
+Categories=Network;Office;
