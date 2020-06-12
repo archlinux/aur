@@ -1,6 +1,6 @@
 pkgbase = xde-session
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.11
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = xde-session
 	license = GPL
 	makedepends = xorgproto
 	depends = m4
+	depends = pam
 	depends = libunique
 	depends = libxvnc
 	depends = xde-theme
@@ -18,8 +19,8 @@ pkgbase = xde-session
 	depends = xdg-launch
 	depends = numlockx
 	optdepends = xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser
-	source = https://github.com/bbidulock/xde-session/releases/download/1.11/xde-session-1.11.tar.lz
-	sha256sums = ef1354f668b01479d3aec5f88a6821d0b9665702683603804854fa933dc60bf6
+	source = https://github.com/bbidulock/xde-session/releases/download/1.13/xde-session-1.13.tar.lz
+	sha256sums = aebf15df485ee78836aec7c31b19428aad020dc82d864347c06b7387ddfb9c8a
 
 pkgname = xde-session
 
