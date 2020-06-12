@@ -2,7 +2,7 @@
 
 pkgname=dyn-wall-rs
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility to allow you to set a dynamic wallpaper and more.'
 arch=('x86_64')
 url='https://github.com/RAR27/dyn-wall-rs'
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('rust')
 optdepends=('feh: for setting wallpapers for window managers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('52d34cba57b47eae8940d47cabe3d04b7258bee827490a2ad97008c210dfeca2')
+sha256sums=('d95e5c743097c4b4744d5deeb2ee9a41017346328adb93866ec9fbd430f5f7bc')
 
 build() {
   cd "$pkgname-$pkgver"
