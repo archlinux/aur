@@ -7,6 +7,7 @@ pkgbase = epub2txt-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	conflicts = epub2txt
 	source = git+https://github.com/kevinboone/epub2txt2.git
 	sha256sums = SKIP
 

@@ -8,6 +8,7 @@ url="https://github.com/kevinboone/epub2txt2"
 license=('GPL')
 makedepends=('git')
 _gitname=epub2txt2
+conflicts=('epub2txt')
 source=("git+https://github.com/kevinboone/${_gitname}.git")
 sha256sums=('SKIP')
 
