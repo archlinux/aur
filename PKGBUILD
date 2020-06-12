@@ -3,11 +3,13 @@
 pkgname=lcm-git
 pkgver=20200602.r1170.e7ab2d5
 pkgrel=1
-pkgdesc="Lightweight real-time networking library"
+pkgdesc="Lightweight real-time networking library (git version of lcm)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/lcm-proj/lcm"
 license=('LGPL')
 depends=('glib2')
+provides=(lcm)
+conflicts=(lcm)
 optdepends=(
 	'java-environment: support for lcm-spy and other GUI tools'
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
