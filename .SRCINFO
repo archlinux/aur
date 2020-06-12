@@ -1,6 +1,6 @@
 pkgbase = drminfo-git
 	pkgdesc = print drm device information
-	pkgver = 7.1+4.g2d93a2dd2f
+	pkgver = 7.1+75.g4904426309
 	pkgrel = 1
 	url = https://www.kraxel.org/cgit/drminfo/
 	arch = i686
