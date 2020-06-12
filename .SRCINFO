@@ -1,6 +1,6 @@
 pkgbase = candy-kingdom-git
 	pkgdesc = A collection of SAT solvers and tools for structure analysis in SAT problems.
-	pkgver = 1388
+	pkgver = r1388.e44ef54
 	pkgrel = 1
 	url = https://github.com/Udopia/candy-kingdom
 	arch = x86_64
