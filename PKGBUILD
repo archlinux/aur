@@ -5,7 +5,7 @@
 
 pkgname=scilab
 pkgver=6.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
@@ -16,7 +16,7 @@ depends=('suitesparse>=4.4.1' 'arpack' 'fftw' 'eigen'
          'curl' 'inetutils'
          'java-runtime>=8'
          'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
-         'jeuclid-core' 'jgraphx>=2.0.0.1' 'javahelp2'
+         'jeuclid-core' 'jgraphx-jre8' 'javahelp2'
          'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
          'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
          'jogl>=2.3.2' 'apache-lucene>=7'
