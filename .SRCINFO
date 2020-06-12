@@ -1,18 +1,17 @@
 pkgbase = codespace
 	pkgdesc = The code snippet manager you've been waiting for (Requires license key)
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://codespace.app
 	arch = x86_64
-	license = custom
+	license = custom:
 	depends = gtk3
 	depends = libxss
-	depends = alsa-lib
 	depends = nss
-	depends = libcups
-	depends = at-spi2-core
-	source = codespace-1.1.2.tar.gz::https://codespace.app/download/latest
-	sha256sums = a6933017968661b2a4a3bcaa11599651c62614ec62a4f39a579f7cee23595f2f
+	source = codespace-1.2.0.tar.gz::https://codespace.app/download/latest
+	source = LICENSE
+	sha256sums = 15fde4b88fae49c870691d1d6b4e8d5c0d54958adc15087c12e09d0adff697c1
+	sha256sums = SKIP
 
 pkgname = codespace
 
