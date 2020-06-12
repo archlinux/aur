@@ -1,6 +1,6 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator-git
-pkgver=0.1.2+23+g9de243e
+pkgver=0.1.2+42+g4eaf28a
 pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
 arch=("x86_64")
@@ -41,6 +41,7 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 target/release/zram-generator "$pkgdir/usr/lib/systemd/system-generators/zram-generator"
+	install -Dm644 units/swap-create@.service "$pkgdir/usr/lib/systemd/system/swap-create@.service"
 	install -Dm644 zram-generator.conf.example "$pkgdir/usr/share/doc/zram-generator/zram-generator.conf.example"
 	install -Dm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
 }
