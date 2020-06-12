@@ -18,8 +18,10 @@ package() {
 	rm "${srcdir}/ikemen-go/"
 
 	# package goes under /opt
-	install -dm777 "${pkgdir}/opt/$pkgname/"
+	install -d "$pkgdir/opt/"
+	install -dm777 "$pkgdir/opt/$pkgname/"
 	cp -a "${srcdir}/." "${pkgdir}/opt/$pkgname"
+	chmod -R 777 "$pkdir/opt/$pkgname/"
 
 	# create the /usr/bin/ dir
 	install -d "${pkgdir}/usr/bin"
