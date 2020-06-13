@@ -1,44 +1,41 @@
-# Maintainer: Julien Savard <juju at juju2143 dot ca>
+# Maintainer: Julien Savard <juju@juju2143.ca>
+# Contributor: Nathaniel van Diepen <eeems@eeems.codes>
+
 pkgname=ticemu-git
-pkgver=2.0dev.r2073.fd0b11d9
-pkgrel=1
-pkgdesc="An open-source third-party TI-84 Plus CE / TI-83 Premium CE calculator emulator"
-arch=("i686" "x86_64")
-url="https://github.com/CE-Programming/CEmu"
-license=('GPL')
-groups=()
-depends=('qt5-base' 'qt5-declarative')
-makedepends=('git')
-provides=("ticemu")
-conflicts=("ticemu")
-replaces=()
-backup=()
-options=()
-install=
-source=('ticemu::git+https://github.com/CE-Programming/CEmu' 'ticemu.desktop')
-noextract=()
-md5sums=('SKIP'
-         'c575a2907d353a7de6813004daf5fae9')
-
+pkgver=1.3.r29.g4f8e0406
 pkgver() {
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	printf "%s.r%s.%s" "$(cat CEmu.pro | grep 'CEMU_VERSION =' | grep -o '[^=]*$' | tail -n1 |sed 's# ##g'|sed 's#^v##g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  if git describe --tags > /dev/null 2>&1;then
+  git describe --tags --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/v//';
+  else
+  date +%Y%m%d;
+  fi;
 }
-
+url='https://ce-programming.github.io/CEmu/'
+pkgrel=1
+makedepends=('git')
+depends=('qt5-base' 'libarchive')
+pkgdesc='Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features'
+license=('GPL')
+arch=('any')
+source=("$pkgname::git+https://github.com/CE-Programming/CEmu.git"
+	"git+https://github.com/CE-Programming/zdis.git"
+	"git+https://github.com/adriweb/tivars_lib_cpp.git")
+prepare(){
+  cd "$srcdir/$pkgname/gui/qt"
+  git submodule init
+  git config submodule."core/debug/zdis".git.url $srcdir/zdis
+  git config submodule."gui/qt/tivars_lib_cpp".git.url $srcdir/tivars_lib_cpp
+  git submodule update
+}
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	git submodule init
-	git submodule update
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	qmake-qt5 -r CEmu.pro
-	make
+  cd "$srcdir/$pkgname/gui/qt"
+  qmake -r CEmu.pro "PREFIX=$pkgdir/usr"
+  make
 }
-
 package() {
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	install -D -m755 "${srcdir}/${pkgname%-git}/gui/qt/CEmu" "$pkgdir/usr/bin/ticemu"
-	install -D -m644 "${srcdir}/${pkgname%-git}/README.md" "$pkgdir/usr/share/${pkgname%-git}/README"
-	install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-	install -D -m644 "${srcdir}/${pkgname%-git}/gui/qt/resources/icons/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-	install -D -m644 "${srcdir}/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgname/gui/qt"
+  make install
 }
+md5sums=('SKIP' 'SKIP' 'SKIP')
