@@ -65,5 +65,6 @@ package() {
 
   # Ensure that processing uses Oracle's JDK 8
   rmdir "$pkgdir/usr/share/processing/java"
-  ln -s /usr/lib/jvm/java-8-jdk/ "$pkgdir/usr/share/processing/java"
+  mkdir -p "$pkgdir/usr/share/processing/java/bin/"
+  ln -s /usr/lib/jvm/java-8-jdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
 }
