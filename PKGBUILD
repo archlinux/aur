@@ -2,8 +2,8 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=v0.2.1.r27.7fec1cf
-pkgrel=4
+pkgver=v0.2.2.r0.30698de
+pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -26,8 +26,7 @@ source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
 		)
 noextract=()
 md5sums=('SKIP'
-		'168d064b2c784975c30b30c27ba18062'
-		)
+         '9502bfa470c41577c750314515bba6f0')
 validpgpkeys=()
 
 pkgver() {
@@ -44,6 +43,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
+	sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
     git submodule update --init --recursive
 }
 
