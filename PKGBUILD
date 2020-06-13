@@ -2,7 +2,7 @@
 
 pkgname=sunloginclient
 pkgver=10.0.2.24779
-pkgrel=1
+pkgrel=2
 pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems. It is the best choice for IT technology, game players, designers and other people with remote management needs."
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -44,4 +44,5 @@ package() {
 	 
 	#  ugly hack
 	sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" "${pkgdir}/opt/sunlogin/bin/sunloginclient"
+	sed -i "s#/usr/local/sunlogin/res/icon/%s.ico\x0#/opt/sunlogin/res/icon/%s.ico\x0\x0\x0\x0\x0\x0\x0#g" "${pkgdir}/opt/sunlogin/bin/sunloginclient"
 }
