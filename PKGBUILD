@@ -44,7 +44,7 @@ prepare() {
 build() {
   cd "$pkgname/build"
 
-  ant build
+  PATH="/usr/lib/jvm/java-8-jdk/bin/:$PATH" ant build
 }
 
 package() {
