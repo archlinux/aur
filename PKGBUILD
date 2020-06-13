@@ -4,7 +4,7 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=0.1.27.r189.g465f0ddf6
+pkgver=0.1.27.r717.gb3fc462a7
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
