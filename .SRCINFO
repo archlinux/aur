@@ -1,6 +1,6 @@
 pkgbase = langkit-git
 	pkgdesc = Compiler for syntactic and semantic language analysis libraries
-	pkgver = r6608.7e98ba83
+	pkgver = r6816.55fe04716
 	pkgrel = 1
 	url = https://github.com/AdaCore/langkit/
 	arch = any
@@ -14,18 +14,15 @@ pkgbase = langkit-git
 	depends = python-psutil
 	depends = python-sphinx
 	depends = python-yaml
-	depends = python2-docutils
-	depends = python2-e3-core
-	depends = python2-enum34
-	depends = python2-funcy
-	depends = python2-mako
+	depends = python-docutils
+	depends = python-e3-core
+	depends = python-funcy
+	depends = python-mako
 	depends = yapf
 	provides = langkit
 	conflicts = langkit
 	source = git+https://github.com/AdaCore/langkit.git
-	source = python2.patch
 	sha1sums = SKIP
-	sha1sums = 755fde34ecd1eeb2deeacf67148e22d2934ff6b4
 
 pkgname = langkit-git
 
