@@ -2,8 +2,8 @@
 pkgname='noaa-apt'
 pkgdesc='NOAA APT image decoder with GUI'
 pkgver=1.2.0
-pkgrel=1
-arch=('x86_64') 
+pkgrel=2
+arch=('x86_64' 'aarch64') 
 url="https://github.com/martinber/${pkgname}"
 license=('GPL3')
 depends=('gsl' 'gtk3')
