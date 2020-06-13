@@ -3,13 +3,12 @@
 pkgname=cryo
 arch=('x86_64')
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A visual file manager with p2p file transfers"
 url="https://cryonet.io"
 license=('custom:"Copyright (c) Manuel Pietschmann"')
 groups=()
 depends=('hicolor-icon-theme'
-         'tor'
          'libpng'
          'libexif'
          'libjpeg-turbo'
@@ -17,7 +16,7 @@ depends=('hicolor-icon-theme'
          'libraw'
          'sqlite')
 makedepends=('xz')
-optdepends=()
+optdepends=('tor')
 provides=()
 conflicts=()
 replaces=()
