@@ -3,7 +3,7 @@
 
 pkgname=gohufont-otb
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType bitmap conversion of Gohufont"
 arch=(any)
 url=https://font.gohu.org
