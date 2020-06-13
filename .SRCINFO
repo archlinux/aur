@@ -1,13 +1,10 @@
 pkgbase = otf-pecita
 	pkgdesc = A handwritten font with attached letters.
 	pkgver = 5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pecita.eu
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = http://pecita.eu/b/Pecita.otf
 	source = OFL.txt
 	md5sums = 2d9707af5d62c09a782b31aa96de12cb

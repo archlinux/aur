@@ -1,12 +1,12 @@
 # Contributor: feufochmar <feufochmar.gd@gmail.com>
 pkgname=otf-pecita
 pkgver=5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A handwritten font with attached letters."
 arch=('any')
 url="http://pecita.eu"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=("http://pecita.eu/b/Pecita.otf" "OFL.txt")
 
 package() {
