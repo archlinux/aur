@@ -1,7 +1,7 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server-git
-pkgver=0.48.alpha4.r7.f988a50f
+pkgver=0.48.r5.4ab8d3f9
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
