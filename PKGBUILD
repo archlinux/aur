@@ -29,13 +29,16 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-strict-jar.patch"
         "${pkgname}-LD_LIBRARY_PATH.patch"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
-        "${pkgname}-num.patch")
+        "${pkgname}-num.patch"
+        "libxml.patch"
+         )
 sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
             '7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
             'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
             '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
-            '31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed')
+            '31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed'
+            'c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -50,6 +53,8 @@ prepare(){
   # OCaml
   patch -p0 < "${srcdir}"/${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch
   patch -p0 < "${srcdir}"/${pkgname}-num.patch
+  # libxml
+  patch -p1 < "${srcdir}"/libxml.patch
 }
 
 build() {

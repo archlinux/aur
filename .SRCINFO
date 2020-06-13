@@ -51,12 +51,14 @@ pkgbase = scilab
 	source = scilab-LD_LIBRARY_PATH.patch
 	source = scilab-0004-Fix-build-with-ocaml-4.0.4.patch
 	source = scilab-num.patch
+	source = libxml.patch
 	sha256sums = ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964
 	sha256sums = 7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0
 	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
 	sha256sums = a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db
 	sha256sums = 6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392
 	sha256sums = 31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed
+	sha256sums = c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041
 
 pkgname = scilab
 
