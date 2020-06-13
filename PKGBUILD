@@ -1,9 +1,15 @@
 # Maintainer: Dmitry Popov <ixaphire@gmail.com>
 
+_with_r=false
+_with_cuda=false
+
 _name=xgboost
 pkgbase=xgboost-git
 pkgname=('xgboost-git'
          'python-xgboost-git')
+if $_with_r; then
+  pkgname+=('r-xgboost-git')
+fi
 pkgver=r4049.911a90283
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
@@ -14,6 +20,9 @@ source=('git+https://github.com/dmlc/xgboost.git'
         'git+https://github.com/NVlabs/cub'
         'python_no_libs.patch')
 makedepends=('python-setuptools')
+if $_with_r; then
+  makedepends+=('r' 'r-stringi' 'r-magrittr' 'r-data.table')
+fi
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
@@ -37,11 +46,39 @@ prepare() {
 }
 
 build() {
+  local cmake_args=()
+
   cd "${_name}"
-  mkdir build
-  cd build
-  cmake .. # -DUSE_CUDA=ON
+  mkdir build && cd build
+
+  if $_with_r; then
+    cmake_args+=('-DR_LIB=ON')
+  fi
+  if $_with_cuda; then
+    cmake_args+=('-DUSE_CUDA=ON')
+  fi
+
+  if $_with_cuda; then
+    CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8 cmake .. ${cmake_args[@]}
+  else
+    cmake .. ${cmake_args[@]}
+  fi
+
   make
+
+  if $_with_r; then
+    mv ../lib/{,lib}xgboost.so
+    # based on xgboost/cmake/Utils.cmake:setup_rpackage_install_target:
+    rm -r R-package
+    cp -r ../R-package .
+    rm -r R-package/{src,configure}
+    mkdir R-package/src
+    cp ../lib/libxgboost.so R-package/src/xgboost.so
+    echo "all:" > R-package/src/Makevars
+
+    mkdir "${srcdir}/R-${_name}"
+    R CMD INSTALL --no-multiarch --build R-package -l "${srcdir}/R-${_name}"
+  fi
 }
 
 package_xgboost-git() {
@@ -89,5 +126,25 @@ package_python-xgboost-git() {
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
+
+if $_with_r; then
+
+package_r-xgboost-git() {
+  pkgdesc='XGBoost R wrapper'
+  depends=('r'
+           'r-stringi'
+           'r-magrittr'
+           'r-data.table')
+  conflicts=('r-xgboost')
+  provides=('r-xgboost')
+
+  cd "${_name}/build"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+
+  cp -a --no-preserve=ownership "${srcdir}/R-${_name}/${_name}" "${pkgdir}/usr/lib/R/library"
+}
+
+fi
 
 # vim:set ts=2 sw=2 et:
