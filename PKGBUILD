@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-git
-pkgver=r4023.71caaabc
+pkgver=r4155.7ddad847
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -9,8 +9,9 @@ url='https://github.com/AdaCore/libadalang/'
 arch=('any')
 license=('GPL')
 
-depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv' 'gnatcoll-gmp')
-makedepends=('git' 'langkit-git')
+depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv' 'gnatcoll-gmp'
+         'langkit')
+makedepends=('git')
 
 provides=('libadalang')
 conflicts=('libadalang')
@@ -37,7 +38,7 @@ build()
     # GPRbuild chooses GCC.
     gprconfig -o config.cgpr --batch --config=c,,,,GCC --config=ada,,,,
 
-    python2 ada/manage.py --no-langkit-support generate
+    python ada/manage.py --no-langkit-support generate
 
     # Build Libadalang both as a static library and as a shared one. Ask not to
     # use rpath (-R), but that only makes sense for the shared library, so
@@ -47,7 +48,7 @@ build()
     # TODO: build & install static libraries. For now, this fails because
     # auto-initialized static libraries are built using partial linking (ld's
     # -r option), which conflicts with GCC's by default -pie option.
-    python2 ada/manage.py \
+    python ada/manage.py \
         --library-types relocatable --no-langkit-support \
         build --build-mode=prod --gargs="-R --config=$PWD/config.cgpr"
 }
@@ -57,11 +58,11 @@ package()
     cd "$srcdir/${pkgname%-git}"
 
     # Install the Ada library with its C binding
-    python2 ada/manage.py \
+    python ada/manage.py \
         --library-types relocatable --no-langkit-support \
         install --build-mode=prod "$pkgdir/usr"
 
     # Install the Python binding
     cd build/python
-    python2 setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir"
 }
