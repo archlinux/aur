@@ -13,6 +13,7 @@ pkgbase = github-desktop-bin
 	depends = gconf
 	depends = nss
 	depends = nspr
+	depends = unzip
 	optdepends = hub: CLI interface for GitHub.
 	provides = github-desktop
 	conflicts = github-desktop
