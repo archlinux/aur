@@ -31,7 +31,7 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
         "${pkgname}-num.patch")
 sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
-            '2d313ccb06fd47e3924e0bba36282860e1125712d027c1091c2b49ab5408e5fe'
+            '7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
             'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
             '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
