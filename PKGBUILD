@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: jswenson
 pkgname=android-messages-desktop-bin
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -11,11 +10,11 @@ license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.pacman"
+source=("$url/releases/download/v$pkgver/AndroidMessages-$pkgver.pacman"
         "$url/raw/v$pkgver/LICENSE"
         "${pkgname%-bin}"
         "${pkgname%-bin}.desktop")
-sha256sums=('aed2d8f5b78dd302dd21f867bda60c39a2321de1a36a4cbe698e616dfe08d920'
+sha256sums=('2a155d6865a412f31b9a42bdab4dd0b6f35348e4d98f0b07bbda2bb58ba67bc7'
             '3ad8e115711a8eca0050f768179efdca0f978b195a9c4f856a9d805628d3886c'
             'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
