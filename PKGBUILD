@@ -2,7 +2,7 @@
 
 pkgname='python-apprise'
 _name=${pkgname#python-}
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
@@ -21,7 +21,7 @@ depends=('python-decorator'
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('aacdd54640a9c66d1c84c8f4390f63feb5a7a8741867a6b451f82ff74c8c792c')
+sha256sums=('695f9b98b7eb273901d9d28a026a69a028a57ab7d666bdf146ecc215c80b5041')
 
 package() {
   cd apprise-${pkgver}
