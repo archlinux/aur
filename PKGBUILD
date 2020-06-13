@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator-git
 pkgver=0.1.2+45+g943d7aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd unit generator for zram devices"
 arch=("x86_64")
 url="https://github.com/systemd/zram-generator"
@@ -40,6 +40,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
+	install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dpm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
 }
