@@ -5,7 +5,7 @@
 
 pkgname=processing-jdk8
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions (uses Oracle JDK 8)'
 url='https://www.processing.org/'

@@ -1,12 +1,12 @@
 pkgbase = processing-jdk8
 	pkgdesc = Programming environment for creating images, animations and interactions (uses Oracle JDK 8)
 	pkgver = 3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.processing.org/
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = gendesk
 	makedepends = unzip
 	depends = jdk8
