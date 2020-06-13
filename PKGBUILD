@@ -3,7 +3,7 @@
 # builds the develop branch of cabbage against the master branch of juce
 pkgname=cabbage
 pkgrel=1 
-pkgver=2.3.41.git
+pkgver=2.3.44.git
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
