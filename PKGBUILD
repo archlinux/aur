@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
-	sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+	#sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
     git submodule update --init --recursive
 }
 
