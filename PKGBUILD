@@ -19,9 +19,11 @@ options=(!strip)
 # version number above 0266 in addition to the ordinary version number.
 source=("https://github.com/processing/processing/archive/processing-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
+        derive_jdk_from_path.patch
         no_downloads.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
+            '00d4edeb3e1d61a4e7a0fec12dfe340091f6a067fcadf3654d29e5286fc7e1df'
             'e3490e4276d1bd33a00d8accad3d72500519477f8aca44703045d92faa342cf6')
 
 prepare() {
@@ -39,6 +41,9 @@ prepare() {
 
   # Don't download any files during Ant's build process
   patch $pkgname/build/build.xml < no_downloads.patch
+
+  # Derive JDK location from java binary found in PATH
+  patch $pkgname/build/linux/processing < derive_jdk_from_path.patch
 }
 
 build() {
@@ -63,8 +68,9 @@ package() {
   ln -s "/usr/share/processing/processing" "$pkgdir/usr/bin/processing"
   ln -s "/usr/share/processing/processing-java" "$pkgdir/usr/bin/processing-java"
 
-  # Ensure that processing uses Oracle's JDK 8
+  # Ensure that processing uses the Java version selected by PATH
   rmdir "$pkgdir/usr/share/processing/java"
   mkdir -p "$pkgdir/usr/share/processing/java/bin/"
-  ln -s /usr/lib/jvm/java-8-jdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
+  echo -e '#!/bin/sh\n`which java` "$@"' > "$pkgdir/usr/share/processing/java/bin/java"
+  chmod a+x "$pkgdir/usr/share/processing/java/bin/java"
 }
