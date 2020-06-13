@@ -1,4 +1,6 @@
-/*.tar.xz
-/pkg
-/src
-/stepmania
+/stepmania/
+
+/pkg/
+/src/
+/*.tar.*
+/*.log

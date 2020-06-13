@@ -1,6 +1,6 @@
 pkgbase = stepmania-git
-	pkgdesc = An advanced rhythm game designed for both home and arcade use
-	pkgver = 5.1.0_b2_362_g75d9400cb0
+	pkgdesc = An advanced rhythm game designed for both home and arcade use.
+	pkgver = 5.1.0.b2.r483.376e5f46d8
 	pkgrel = 1
 	url = https://www.stepmania.com/
 	arch = x86_64
@@ -8,17 +8,18 @@ pkgbase = stepmania-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = ffmpeg
+	makedepends = nasm
 	depends = glew
 	depends = gtk2
 	depends = libmad
+	depends = libpulse
 	depends = libtommath
+	depends = libva
+	depends = libvorbis
 	provides = stepmania
 	conflicts = stepmania
 	source = git+https://github.com/stepmania/stepmania.git
-	source = 0001-GtkModule-Add-harfbuzz-dependency.patch
 	sha256sums = SKIP
-	sha256sums = e14451013f32aba41b37ae0c4b4ee5963eccb47e011843bf52f7e5fdc1034468
 
 pkgname = stepmania-git
 

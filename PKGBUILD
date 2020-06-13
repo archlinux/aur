@@ -7,74 +7,67 @@
 # Contributor: Travis Nickles <ryoohki7@yahoo.com>
 # Contributor: Stefan Lohmaier <noneuss at gmail dot com>
 # Contributor: Dan Guzek <dguzek@gmail.com>
-
-pkgname=stepmania-git
-pkgver=5.1.0_b2_362_g75d9400cb0
+_pkgname=stepmania
+pkgname=$_pkgname-git
+pkgver=5.1.0.b2.r483.376e5f46d8
 pkgrel=1
-pkgdesc="An advanced rhythm game designed for both home and arcade use"
+pkgdesc="An advanced rhythm game designed for both home and arcade use."
 arch=(x86_64)
-url="https://www.stepmania.com/"
+url=https://www.$_pkgname.com/
 license=(MIT)
-depends=(ffmpeg glew gtk2 libmad libtommath)
-makedepends=(cmake git ninja)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+https://github.com/${pkgname%-git}/${pkgname%-git}.git"
-        '0001-GtkModule-Add-harfbuzz-dependency.patch')
-sha256sums=('SKIP'
-            'e14451013f32aba41b37ae0c4b4ee5963eccb47e011843bf52f7e5fdc1034468')
+depends=(glew gtk2 libmad libpulse libtommath libva libvorbis)
+makedepends=(cmake git ninja nasm)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(git+https://github.com/$_pkgname/$_pkgname.git)
+sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname%-git}
-	git describe --tags | sed 's/^v//;s/-/_/g'
-}
-
-prepare() {
-	cd ${pkgname%-git}
-  mkdir build
-  # Related issue: Harfbuzz includes missing
-  # https://github.com/stepmania/stepmania/issues/1850
-	patch -p1 -i "$srcdir/0001-GtkModule-Add-harfbuzz-dependency.patch"
+    cd $_pkgname
+    printf "%s" "$(git describe --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd ${pkgname%-git}/build
-  # # Related issues
-  # * OpenGL GL preference: https://github.com/stepmania/stepmania/issues/1859
-  # * system libpng: https://github.com/stepmania/stepmania/issues/1881
-  # * system tomcrypt: https://github.com/stepmania/stepmania/issues/1885
-  # * system jsoncpp: https://github.com/stepmania/stepmania/issues/1883
-  cmake -G Ninja .. \
-    -DCMAKE_INSTALL_PREFIX=/opt \
-    -DOpenGL_GL_PREFERENCE=GLVND \
-    -DWITH_LTO=ON \
-    -DWITH_SYSTEM_PNG=OFF \
-    -DWITH_SYSTEM_OGG=ON \
-    -DWITH_SYSTEM_GLEW=ON \
-    -DWITH_SYSTEM_TOMMATH=ON \
-    -DWITH_SYSTEM_TOMCRYPT=OFF \
-    -DWITH_SYSTEM_MAD=ON \
-    -DWITH_SYSTEM_JSONCPP=OFF \
-    -DWITH_SYSTEM_JPEG=ON \
-    -DWITH_SYSTEM_PCRE=ON \
-    -DWITH_SYSTEM_ZLIB=ON \
-    -DWITH_SYSTEM_FFMPEG=ON
-  cmake --build .
+    # Related issues
+    # ffmpeg: https://github.com/stepmania/stepmania/issues/2016
+    # jsoncpp: https://github.com/stepmania/stepmania/issues/1883
+    # libpng: https://github.com/stepmania/stepmania/issues/1881
+    # tomcrypt: https://github.com/stepmania/stepmania/issues/1885
+    cmake -S $_pkgname -B build \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
+        -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
+        -DCMAKE_INSTALL_PREFIX=/opt \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+        -DWITH_SYSTEM_FFMPEG=OFF \
+        -DWITH_SYSTEM_GLEW=ON \
+        -DWITH_SYSTEM_JPEG=ON \
+        -DWITH_SYSTEM_JSONCPP=OFF \
+        -DWITH_SYSTEM_MAD=ON \
+        -DWITH_SYSTEM_OGG=ON \
+        -DWITH_SYSTEM_PCRE=ON \
+        -DWITH_SYSTEM_PNG=OFF \
+        -DWITH_SYSTEM_TOMCRYPT=OFF \
+        -DWITH_SYSTEM_TOMMATH=ON \
+        -DWITH_SYSTEM_ZLIB=ON \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-  cd ${pkgname%-git}
-  DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 
-  # Symlink stepmania binary which is located in /opt
-  install -d "$pkgdir/usr/bin"
-  ln -sf /opt/${pkgname%-git}-5.1/${pkgname%-git} "$pkgdir/usr/bin/${pkgname%-git}"
+    # Symlink stepmania binary which is located in /opt
+    install -d "$pkgdir"/usr/bin
+    ln -sf /opt/$_pkgname-5.1/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 
-  # Install auxiliary files
-  install -Dt "$pkgdir/usr/share/applications" -m644 "$srcdir/${pkgname%-git}/${pkgname%-git}.desktop"
-  install -d "$pkgdir/usr/share"
-  cp -r "$srcdir/${pkgname%-git}/icons" "$pkgdir/usr/share/icons"
+    cd $_pkgname
+    # Install auxiliary files
+    install -Dm 644 $_pkgname.desktop -t "$pkgdir"/usr/share/applications
+    install -d "$pkgdir"/usr/share
+    cp -r icons "$pkgdir"/usr/share/icons
 
-  # Install license
-  install -Dm644 Docs/Licenses.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Install license
+    install -Dm644 Docs/Licenses.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
