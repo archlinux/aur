@@ -7,6 +7,7 @@
 
 _pkgname=8188fu
 pkgname="$_pkgname-dkms-arm"
+pkgbase="$_pkgname-dkms-arm"
 pkgver=r8.1d12cae
 pkgrel=1
 pkgdesc='Arm driver for Realtek RTL8188FU USB wireless adapter'
