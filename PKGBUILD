@@ -7,7 +7,7 @@
 pkgname=gnutls-openssl
 _pkgname=gnutls
 pkgver=3.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A library which provides a secure layer over a reliable transport layer with OpenSSL"
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL2.1')
@@ -22,10 +22,10 @@ conflicts=("gnutls")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=('5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63'
             'SKIP')
-validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
-              '1F42418905D8206AA754CCDC29EE58B996865171')
-               # "Simon Josefsson <simon@josefsson.org>"
-               # "Nikos Mavrogiannopoulos <nmav@gnutls.org>
+validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F')  # "Simon Josefsson <simon@josefsson.org>"
+validpgpkeys+=('1F42418905D8206AA754CCDC29EE58B996865171') # "Nikos Mavrogiannopoulos <nmav@gnutls.org>
+validpgpkeys+=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   ./configure --prefix=/usr \
@@ -48,7 +48,7 @@ package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 
-# lots of .png files are put into infodir and are gzipped by makepkg! this needs to be fixed by using !zipman
+  # lots of .png files are put into infodir and are gzipped by makepkg! this needs to be fixed by using !zipman
   # gzip -9 all files in infodir and manpages manually
   find "$pkgdir/usr/share/info" -name '*.info*' -exec gzip -n -9 {} \;
   find "$pkgdir/usr/share/man" -exec gzip -n -9 {} \;

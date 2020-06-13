@@ -1,7 +1,7 @@
 pkgbase = gnutls-openssl
 	pkgdesc = A library which provides a secure layer over a reliable transport layer with OpenSSL
 	pkgver = 3.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gnutls.org/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = gnutls-openssl
 	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.14.tar.xz.sig
 	validpgpkeys = 0424D4EE81A0E3D119C6F835EDA21E94B565716F
 	validpgpkeys = 1F42418905D8206AA754CCDC29EE58B996865171
+	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	sha256sums = 5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63
 	sha256sums = SKIP
 
