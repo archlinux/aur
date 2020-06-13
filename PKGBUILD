@@ -1,12 +1,12 @@
-# Contributor: feufochmar <feufochmar@d-20.fr>
+# Contributor: feufochmar <feufochmar.gd@beleth.fr>
 pkgname=ttf-eadui
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A script font based on the hand of a famous eleventh-century scribe."
 arch=('any')
-url="http://openfontlibrary.org/font/eadui"
+url="http://openfontlibrary.org/en/font/eadui"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=("http://openfontlibrary.org/assets/downloads/eadui/f7b140ad037eb65f4e1d3ba9d8a36515/eadui.zip")
 
 package() {
