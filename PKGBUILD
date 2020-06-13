@@ -5,33 +5,27 @@
 _pkgname=nu
 pkgname=${_pkgname}shell
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A new type of shell."
-arch=('any')
 url="https://www.nushell.sh"
 license=('MIT')
-depends=('openssl' 'zlib' 'e2fsprogs')
-makedepends=('rust' 'cargo' 'python')
+makedepends=('rust')
+depends=('openssl')
 optdepends=('libxcb' 'libx11')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
+arch=('x86_64' 'i686')
+source=("https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 # Use updpkgsums to update the checksum
 sha256sums=('f19e580b645ff047e3b7cb2e0823654e020cd5c62b22e601caf6be579204dc2a')
 
-build() {
-  cd "$pkgname-$pkgver"
-  cargo build \
-	--locked \
-	--features=stable \
-	--release 
-}
-
 package() {
-  cd "$pkgname-$pkgver"
-  install -d "$pkgdir/usr/bin"
-  find target/release \
-    -maxdepth 1 \
-    -executable \
-    -type f \
-    -exec install -m 755 "{}" "$pkgdir"/usr/bin \;
+  cd "$srcdir/$pkgver"
+
+  cargo install \
+    --locked \
+    --path . \
+    --features stable \
+    --root "${pkgdir}"/usr
+
+  rm -f "${pkgdir}"/usr/.crate*
 }
 
