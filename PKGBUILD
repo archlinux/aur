@@ -2,7 +2,7 @@
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=0.519.0.beta.0.r6.g231fc34
+pkgver=0.519.0.r0.g9edf413
 pkgrel=1
 pkgdesc='Qt/C++ display management library by KWinFT project ~ forked from KDE libkscreen'
 arch=(
@@ -20,11 +20,12 @@ depends=(
 makedepends=(
     extra-cmake-modules
     git
+    kcoreaddons
     ninja
 )
 provides=(disman)
 conflicts=(disman)
-source=('git+https://gitlab.com/kwinft/disman.git')
+source=('git+https://gitlab.com/kwinft/disman.git#branch=Plasma/5.19')
 sha512sums=('SKIP')
 
 pkgver() {
