@@ -1,8 +1,8 @@
 # Maintainer: somini <dev@somini.xyz>
 _pkgname=xdg-autostart
 pkgname="${_pkgname}-hg"
-pkgver=r22.daff73bd18a0
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="Autostart programs according to the XDG specification"
 arch=('x86_64')
 url="https://bitbucket.org/fabriceT/xdg-autostart/overview"
