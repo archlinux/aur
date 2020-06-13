@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-tools-acsuite-git
-	pkgdesc = Tool for VapourSynth: acsuite (GIT version)
-	pkgver = 4.0.0.r0.g9f9821d
+	pkgdesc = Frame-based cutting/trimming/splicing of audio with VapourSynth (GIT version)
+	pkgver = 4.1.1.r1.g808820a
 	pkgrel = 1
 	url = https://github.com/OrangeChannel/acsuite
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
+	makedepends = python-setuptools
 	depends = vapoursynth
 	depends = mkvtoolnix-cli
 	optdepends = ffmpeg: WAV output support

@@ -3,9 +3,9 @@
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=4.0.0.r0.g9f9821d
+pkgver=4.1.1.r1.g808820a
 pkgrel=1
-pkgdesc="Tool for VapourSynth: ${_plug} (GIT version)"
+pkgdesc="Frame-based cutting/trimming/splicing of audio with VapourSynth (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
 license=('Unlicense')
@@ -13,7 +13,9 @@ depends=('vapoursynth'
          'mkvtoolnix-cli'
          )
 optdepends=('ffmpeg: WAV output support')
-makedepends=('git')
+makedepends=('git'
+             'python-setuptools'
+             )
 provides=("vapoursynth-tools-${_plug}"
           "vapoursynth-plugin-${_plug}-git"
           )
@@ -32,9 +34,7 @@ pkgver() {
 
 package(){
   cd "${_plug}"
-  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python setup.py install --root="$pkgdir/" --optimize=1
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
