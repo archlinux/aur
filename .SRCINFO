@@ -1,24 +1,23 @@
 pkgbase = puddletag-qt5-git
-	pkgdesc = An audio tag editor for GNU/Linux, Qt5 version
-	pkgver = r881.aab842a
-	pkgrel = 2
-	url = https://docs.puddletag.net/
+	pkgdesc = An audio tag editor for GNU/Linux, Qt5 + Python 3 fork
+	pkgver = r942.3c5e2dc
+	pkgrel = 1
+	url = https://github.com/sandrotosi/puddletag
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python2
-	depends = python2-mutagen
-	depends = python2-pyqt5
-	depends = python2-pyparsing
-	depends = python2-configobj
-	depends = python2-musicbrainz2
+	depends = python
+	depends = python-mutagen
+	depends = python-pyparsing
+	depends = python-configobj
+	depends = python-pyqt5
 	depends = qt5-svg
-	depends = python2-pillow
+	depends = python-pillow
 	optdepends = chromaprint: AcoustID support
 	optdepends = quodlibet: QuodLibet library support
 	provides = puddletag
 	conflicts = puddletag
-	source = puddletag-qt5-git::git+https://github.com/keithgg/puddletag#branch=pyqt5
+	source = puddletag-qt5-git::git+https://github.com/sandrotosi/puddletag
 	sha256sums = SKIP
 
 pkgname = puddletag-qt5-git
