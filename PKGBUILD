@@ -2,10 +2,10 @@
 pkgname=python-umsgpack
 _pkgname=${pkgname/python-/}
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode-friendly msgpack wrapper"
 url="https://github.com/minrk/umsgpack"
-depends=('python' 'python-twisted')
+depends=('python')
 optdepends=()
 license=('MIT')
 arch=('any')
