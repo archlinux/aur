@@ -3,7 +3,7 @@
 
 _pkgname=chakracore
 pkgname=chakracore-bin
-pkgver=1.11.19
+pkgver=1.11.20
 pkgrel=1
 pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge. This is the pre-built binaries from Microsoft.'
 arch=('x86_64')
