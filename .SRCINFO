@@ -1,7 +1,7 @@
 pkgbase = python-manuf
-	pkgdesc = Parser library for Wireshark\'s OUI database
+	pkgdesc = Parser library for Wireshark's OUI database
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/manuf/
 	arch = any
 	license = Apache GPL3
