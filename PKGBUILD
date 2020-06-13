@@ -13,6 +13,8 @@ depends=('xscreensaver'
          'upower'
          'qt5-base'
          'libxss')
+provides=('powerkit')
+conflicts=('powerkit')
 makedepends=('xorg-xrandr' 'qt5-base' 'git')
 optdepends=('adwaita-icon-theme')
 source=("${_pkgname}::git+https://github.com/rodlie/powerkit")

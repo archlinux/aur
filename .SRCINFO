@@ -14,6 +14,8 @@ pkgbase = powerkit-git
 	depends = qt5-base
 	depends = libxss
 	optdepends = adwaita-icon-theme
+	provides = powerkit
+	conflicts = powerkit
 	source = powerkit::git+https://github.com/rodlie/powerkit
 	sha256sums = SKIP
 
