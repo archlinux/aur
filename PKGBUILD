@@ -5,13 +5,14 @@
 
 pkgname=text2pdf
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 _commit=3f6d725379337d0b9bde2e5e350fdfc249216be7
 pkgdesc='Convert text files to PDF'
 arch=('i686' 'x86_64')
 url='http://www.eprg.org/pdfcorner/text2pdf/'
 license=('custom')
 depends=('glibc')
+conflicts=('pdflib-lite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/philips/text2pdf/archive/$_commit.tar.gz")
 sha256sums=('83159d607ede9164dc47d64e04589a43c3b7b71d4c0ef61e114f22b132897727')
 

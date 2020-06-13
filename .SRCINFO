@@ -1,12 +1,13 @@
 pkgbase = text2pdf
 	pkgdesc = Convert text files to PDF
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.eprg.org/pdfcorner/text2pdf/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
+	conflicts = pdflib-lite
 	source = text2pdf-1.1.tar.gz::https://github.com/philips/text2pdf/archive/3f6d725379337d0b9bde2e5e350fdfc249216be7.tar.gz
 	sha256sums = 83159d607ede9164dc47d64e04589a43c3b7b71d4c0ef61e114f22b132897727
 
