@@ -1,6 +1,6 @@
 pkgbase = subsurface-libdc-git
 	pkgdesc = Library for communication with dive computers
-	pkgver = 20180621.5255ba5
+	pkgver = 20190907.ce6d989
 	pkgrel = 1
 	url = https://github.com/Subsurface-divelog/libdc
 	arch = x86_64
