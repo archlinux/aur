@@ -1,15 +1,15 @@
 pkgbase = persian-hm-xs2-fonts
 	pkgdesc = A Persian font series derived from X Series 2 fonts with Kashida feature.
-	pkgver = 3.5
-	pkgrel = 2
+	pkgver = 3.8
+	pkgrel = 1
 	url = https://bitbucket.org/dma8hm1334
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	provides = ttf-persian-hm-xs2
 	conflicts = ttf-persian-hm-xs2
-	source = https://bitbucket.org/dma8hm1334/persian-hm-xs2-3.5/downloads/persian-hm-xs2-3.5.7z
-	sha256sums = c634724b03edf80ea7d56abd88bc538061427251f1995efc479f5d7b633e8d6b
+	source = persian-hm-xs2-fonts-3.8.zip::https://bitbucket.org/dma8hm1334/persian-hm-xs2-3.8/get/master.zip
+	sha256sums = 51330a777dc4923534f995dd9866963214c21e80155cd28e475afa8a77d72901
 
 pkgname = persian-hm-xs2-fonts
 
