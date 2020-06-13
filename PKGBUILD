@@ -3,42 +3,44 @@ pkgdesc="ROS - Planning components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros-planning'
-pkgver='1.0.2'
+pkgver='1.0.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-noetic-moveit-core
-  ros-noetic-pluginlib
-  ros-noetic-dynamic-reconfigure
-  ros-noetic-moveit-ros-perception
-  ros-noetic-actionlib
-  ros-noetic-angles
-  ros-noetic-chomp-motion-planner
-  ros-noetic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+ros_makedepends=(
+  ros-noetic-catkin
+)
+makedepends=(
+  'cmake'
+  'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen)
+  eigen
+)
 
-ros_depends=(ros-noetic-moveit-core
+ros_depends=(
+  ros-noetic-moveit-core
+  ros-noetic-moveit-ros-occupancy-map-monitor
+  ros-noetic-moveit-msgs
+  ros-noetic-message-filters
   ros-noetic-pluginlib
-  ros-noetic-dynamic-reconfigure
-  ros-noetic-moveit-ros-perception
   ros-noetic-actionlib
-  ros-noetic-chomp-motion-planner
-  ros-noetic-angles)
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-rosconsole
+  ros-noetic-roscpp
+  ros-noetic-srdfdom
+  ros-noetic-urdf
+  ros-noetic-tf2
+  ros-noetic-tf2-eigen
+  ros-noetic-tf2-geometry-msgs
+  ros-noetic-tf2-msgs
+  ros-noetic-tf2-ros
+)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_ros_planning/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('de57c3ac56de6cc389205f7557d087cbc7f45e23f32079171384c5a26c6b5e9a')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_ros/planning"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('9449505f41ca9b7001d1071ae7ae383a1f95ec23edefb0d4b87f64c119069d5b')
 
 build() {
   # Use ROS environment variables
