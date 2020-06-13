@@ -1,13 +1,13 @@
 pkgbase = tint-tetris
 	pkgdesc = TINT Is Not Tetris(tm) ...at least the name isn't
-	pkgver = 0.04+nmu1
-	pkgrel = 1
+	pkgver = 0.05
+	pkgrel = 2
 	url = https://packages.debian.org/jessie/tint
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = http://http.debian.net/debian/pool/main/t/tint/tint_0.04+nmu1.tar.gz
-	md5sums = 40e4674fcf2531c638cc32b6b09123aa
+	license = BSD
+	source = http://http.debian.net/debian/pool/main/t/tint/tint_0.05.tar.xz
+	md5sums = 134c5fac011bf3148c86be11540ac98b
 
 pkgname = tint-tetris
 
