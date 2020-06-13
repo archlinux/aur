@@ -4,6 +4,7 @@ pkgbase = eduke32-git
 	url = http://eduke32.com
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = custom: BUILD
 	makedepends = git
