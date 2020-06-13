@@ -1,12 +1,12 @@
 pkgbase = beekeeper-studio-bin
 	pkgdesc = Cross platform SQL editor and database management app for Windows, Linux, and Mac.
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://www.beekeeperstudio.io/
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.4.0/beekeeper-studio_1.4.0_amd64.deb
-	sha256sums_x86_64 = edf01a3f22258dbd36f9d658c7bfe6127f52f4b072d196547879f63c043c051f
+	source_x86_64 = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.4.1/beekeeper-studio_1.4.1_amd64.deb
+	sha256sums_x86_64 = 3f856ab58e0365569eab6872d22a9435a0898e4a0d8516e6178cd43ba087408d
 
 pkgname = beekeeper-studio-bin
 
