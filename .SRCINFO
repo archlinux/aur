@@ -1,7 +1,7 @@
 pkgbase = goreleaser
 	pkgdesc = Deliver Go binaries as fast and easily as possible
 	pkgver = v0.138.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://goreleaser.com
 	arch = x86_64
 	arch = i686

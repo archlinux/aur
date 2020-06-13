@@ -2,7 +2,7 @@
 
 pkgname='goreleaser'
 pkgver=v0.138.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
@@ -36,7 +36,12 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver#v}"
 
-  CGO_ENABLED=0 go build -v -trimpath -ldflags "-s -w -X \"main.version=${pkgver}-src\" -X \"main.builtBy=aur\" -X  \"main.date=$(date)\"" -o "dist/${pkgname}" .
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w -extldflags \"${LDFLAGS}\" -X \"main.version=${pkgver}-src\" -X \"main.builtBy=aur\" -X  \"main.date=$(date)\"" -o "dist/${pkgname}" .
 
   go clean -modcache
 }
