@@ -2,17 +2,17 @@
 #Contributor: Marco Asa <marcoasa90 [at] gmail [dot] com>
 #Contributor: Bart Broek <b_dot_broek_dot_bb_at_gmail_dot_com>
 pkgname=fidocadj
-pkgver=0.24.7
+pkgver=0.24.8
 pkgrel=1
 pkgdesc="Simple and intuitive 2D vector drawing for electronics and not only."
 arch=('any')
-depends=('java-environment' 'xdg-utils' 'bash')
+depends=('java-environment' 'jre-openjdk>=14' 'jre-openjdk-headless>=14' 'xdg-utils' 'bash')
 url="http://darwinne.github.io/FidoCadJ/"
 license=('GPL')
 install=fidocadj.install
-source=('http://download.sourceforge.net/fidocadj/files/fidocadj.jar'
-'http://sourceforge.net/projects/fidocadj/files/misc/main-linux-package.tgz')
-md5sums=('eccd49dff5e613eaf7d99870fdd468c4'
+source=("$pkgname.jar::https://github.com/DarwinNE/FidoCadJ/releases/download/v$pkgver/fidocadj-$pkgver.jar"
+	"http://sourceforge.net/projects/fidocadj/files/misc/main-linux-package.tgz")
+md5sums=('0b230bbe8ad3ac286997fd7c8da53cb9'
          'a7e66f1d610f6a129a41a65a48d368c5')
 package() {
     mkdir -p $pkgdir/usr/bin/
