@@ -1,10 +1,6 @@
 # Maintainer: Jguer <joaogg3 at gmail dot com>
 pkgname=yay-bin
-<<<<<<< HEAD
 pkgver=10.0.0
-=======
-pkgver=9.4.7
->>>>>>> 679e0b782f2f4865d529fef383e10f33db588615
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
