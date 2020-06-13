@@ -1,9 +1,9 @@
 pkgbase = bspwmbar-git
 	pkgdesc = A lightweight status bar for bspwm
-	pkgver = 0.5.5.r22.g5f71809
+	pkgver = 0.6.0.r140.d2ce636
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/odknt/bspwmbar
+	url = https://gitlab.com/kenneth_08/bspwmbar
 	arch = x86_64
 	license = ISC
 	makedepends = git
@@ -17,10 +17,10 @@ pkgbase = bspwmbar-git
 	optdepends = ttf-nerd-fonts-symbols: default prefix icons font
 	provides = bspwmbar
 	conflicts = bspwmbar
-	source = git+https://github.com/odknt/bspwmbar#commit=5f7180
-	source = config.h
+	source = git+https://gitlab.com/kenneth_08/bspwmbar.git
+	source = LICENSE
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 17444c83e24d5ac40177021ade7ffc88adc7432c7cc34ee651cc7e1826e0af4d
 
 pkgname = bspwmbar-git
 
