@@ -1,0 +1,48 @@
+diff --git i/nitter.conf w/nitter.conf
+index 99b0d18..e1dbae1 100644
+--- i/nitter.conf
++++ w/nitter.conf
+@@ -1,13 +1,13 @@
+ [Server]
+-address = "0.0.0.0"
+-port = 8080
++address = "localhost"  # Change this?
++port = 13500  # Change this?
+ https = false  # disable to enable cookies when not using https
+-staticDir = "./public"
+-title = "nitter"
+-hostname = "nitter.net"
++staticDir = "/usr/share/nitter/public"
++title = "nitter"  # Change this?
++hostname = "nitter.net"  # Change this
+ 
+ [Cache]
+-directory = "./tmp"
++directory = "/var/cache/nitter"
+ listMinutes = 240  # how long to cache list info (not the tweets, so keep it high)
+ rssMinutes = 10  # how long to cache rss queries
+ redisHost = "localhost"
+@@ -19,8 +19,8 @@ redisMaxConnections = 30
+ # you receive tons of requests per second
+ 
+ [Config]
+-hmacKey = "secretkey" # random key for cryptographic signing of video urls
+-base64Media = false # use base64 encoding for proxied media urls
++hmacKey = "43179cf305cda132874f7a4d3fa4831a01528e516780157bebd564b0ca0297c2" # Regenerate e.g. `head -c 25 </dev/urandom | sha256sum`
++base64Media = true # use base64 encoding for proxied media urls
+ tokenCount = 10
+ # minimum amount of usable tokens. tokens are used to authorize API requests,
+ # but they expire after ~1 hour, and have a limit of 187 requests.
+@@ -30,9 +30,9 @@ tokenCount = 10
+ 
+ # Change default preferences here, see src/prefs_impl.nim for a complete list
+ [Preferences]
+-theme = "Nitter"
+-replaceTwitter = "nitter.net"
+-replaceYouTube = "invidio.us"
++theme = "twitter_dark"  # Change this?
++replaceTwitter = "nitter.net"  # Use the same "hostname" as above
++replaceYouTube = ""
+ replaceInstagram = ""
+ proxyVideos = true
+ hlsPlayback = false

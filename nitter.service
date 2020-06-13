@@ -1,0 +1,10 @@
+[Unit]
+Description=Nitter Daemon
+Requires=redis.service
+After=redis.service
+
+[Service]
+ExecStart=/usr/bin/nitter
+
+[Install]
+WantedBy=multi-user.target
