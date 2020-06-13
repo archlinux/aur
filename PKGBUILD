@@ -1,24 +1,24 @@
-# Maintainer: Louis Tim Larsen <louis(a)louis.dk>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Louis Tim Larsen <louis(a)louis.dk>
 
 pkgname=xubuntu-community-artwork
-pkgver=18.04.0
-pkgrel=4
-pkgdesc="Community wallpapers from Xubuntu 14.04, 16.04 & 18.04"
+pkgver=20.04.0
+pkgrel=1
+pkgdesc="Xubuntu community wallpapers"
 arch=(any)
-url="http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/"
+url="https://launchpad.net/${pkgname}"
 license=('custom')
-provides=('xubuntu-community-wallpapers')
-source=("http://archive.ubuntu.com/ubuntu/pool/universe/x/"$pkgname"/"$pkgname"_"$pkgver".tar.xz" 'xubuntu-community-wallpapers.xml' 'LICENSE')
-sha512sums=('b9274abb7328167b4d6fbb6682e7cdf209665e0bcf2aaaf46caca5d55a2c570d528660aad1ca998b910dec062d30aa56ff629ec70492674c5f99bb551ba7e27f'
-            '3cbd63ff2d6d5f13071576b7f4b09c58f4eab104aadfc1c6bc6a587398601c21551f18d08b8a363b07053ae38988e033f0605c2adc80f9445bc916f35dc0cafe'
-            '1357f5461c3a8a13d7f55ce8744770c69e681062319b535b4aec813caa2911c675ce59e77f9ad2810dd58c4e7f9898a8607d4f9f7b4133e9f0de5c4e5dd1673b')
+source=("http://archive.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz")
+provides=("${pkgname}")
+conflicts=("${pkgname}" "${pkgname}-git")
+sha256sums=('2a40074fae8754babc4e7c7e141ad2163f1f40cdf0e5ac6b267f432658d09dd1')
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/xfce4/backdrops ${pkgdir}/usr/share/gnome-background-properties ${pkgdir}/usr/share/mate-background-properties ${pkgdir}/usr/share/licenses/${pkgname}
-  cd ${srcdir}/${pkgname}/usr/share/xfce4/backdrops
-  cp *.jpg *.png ${pkgdir}/usr/share/xfce4/backdrops/
-  cp ${srcdir}/xubuntu-community-wallpapers.xml ${pkgdir}/usr/share/gnome-background-properties/ 
-  cp ${srcdir}/xubuntu-community-wallpapers.xml ${pkgdir}/usr/share/mate-background-properties/
-  sed -i 's/gnome-wp-list.dtd/mate-wp-list.dtd/' ${pkgdir}/usr/share/mate-background-properties/xubuntu-community-wallpapers.xml 
-  cp ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+  cd "${pkgname}"
+  install -d "$pkgdir/usr/share/backgrounds/${pkgname}"
+  install -m644 'usr/share/xfce4/backdrops/'*.jpg "$pkgdir/usr/share/backgrounds/${pkgname}/"
+  install -m644 'usr/share/xfce4/backdrops/'*.png "$pkgdir/usr/share/backgrounds/${pkgname}/"
+  install -Dm644 'README' "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 'debian/changelog' "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
+  install -Dm644 'debian/copyright' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

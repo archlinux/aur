@@ -1,17 +1,15 @@
 pkgbase = xubuntu-community-artwork
-	pkgdesc = Community wallpapers from Xubuntu 14.04, 16.04 & 18.04
-	pkgver = 18.04.0
-	pkgrel = 4
-	url = http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/
+	pkgdesc = Xubuntu community wallpapers
+	pkgver = 20.04.0
+	pkgrel = 1
+	url = https://launchpad.net/xubuntu-community-artwork
 	arch = any
 	license = custom
-	provides = xubuntu-community-wallpapers
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_18.04.0.tar.xz
-	source = xubuntu-community-wallpapers.xml
-	source = LICENSE
-	sha512sums = b9274abb7328167b4d6fbb6682e7cdf209665e0bcf2aaaf46caca5d55a2c570d528660aad1ca998b910dec062d30aa56ff629ec70492674c5f99bb551ba7e27f
-	sha512sums = 3cbd63ff2d6d5f13071576b7f4b09c58f4eab104aadfc1c6bc6a587398601c21551f18d08b8a363b07053ae38988e033f0605c2adc80f9445bc916f35dc0cafe
-	sha512sums = 1357f5461c3a8a13d7f55ce8744770c69e681062319b535b4aec813caa2911c675ce59e77f9ad2810dd58c4e7f9898a8607d4f9f7b4133e9f0de5c4e5dd1673b
+	provides = xubuntu-community-artwork
+	conflicts = xubuntu-community-artwork
+	conflicts = xubuntu-community-artwork-git
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_20.04.0.tar.xz
+	sha256sums = 2a40074fae8754babc4e7c7e141ad2163f1f40cdf0e5ac6b267f432658d09dd1
 
 pkgname = xubuntu-community-artwork
 
