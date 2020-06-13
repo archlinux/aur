@@ -1,0 +1,16 @@
+pkgbase = histoiremondiale
+	pkgdesc = Atlas historique - survoler le monde et lire la description de la période
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://histoiremondiale.net
+	arch = any
+	license = AGPL3,
+	license = CC,
+	license = LAL
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	source = http://sourceforge.net/projects/histmondiale/files/stable-2.1/histoiremondiale-2.1-src.tar.gz
+	md5sums = 2e4ac00f8871c8fd8cc44fe4c90a6f16
+
+pkgname = histoiremondiale
+
