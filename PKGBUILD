@@ -3,15 +3,15 @@
 
 pkgname='python-aenum'
 _pkgname='aenum'
-pkgver=2.2.2
-pkgrel=3
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Advanced Enumerations (compatible with Python's stdlib Enum), NamedTuples, and NamedConstants"
 arch=('any')
 url="https://bitbucket.org/stoneleaf/aenum"
 license=('BSD')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/00/db/6f60b39f91981b8b2811da5cb9fe989ae1ed2a424ae937f1a731ad4be945/aenum-2.2.2.tar.gz")
-sha256sums=('c94fde69eebf8d478d68f0d96c61178299d9a19465ef5effa326ebee7536c203')
+source=("https://files.pythonhosted.org/packages/6f/6a/8ed729e0add885d7a559ebb06133029b1f8c4bd66cbf1bdee1ec969fb310/aenum-2.2.3.tar.gz")
+sha256sums=('a4334cabf47c167d44ab5a6198837b80deec5d5bad1b5cf70c966c3a330260e8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -23,9 +23,6 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-  # XXX: I have no idea what's wrong with the setup.py. This is a quickfix!
-  install -Dm644 aenum/__init__.py "${pkgdir}/usr/lib/python3.8/site-packages/${_pkgname}/__init__.py"
   install -Dm644 aenum/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
