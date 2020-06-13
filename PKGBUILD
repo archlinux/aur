@@ -3,10 +3,11 @@
 _pkgname=yattag
 pkgname=python-${_pkgname}
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yattag is a Python library for generating HTML or XML in a pythonic way"
 url="http://yattag.org"
-depends=('python' 'python-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 optdepends=()
 license=('LGPL')
 arch=('any')
