@@ -1,0 +1,7 @@
+post_install() {
+   /usr/bin/pacmerge init
+}
+
+post_remove() {
+   echo "Remember to remove the pacmerge database at /var/lib/pacmerge if you no longer need it."
+}

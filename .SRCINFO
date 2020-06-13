@@ -1,10 +1,14 @@
 pkgbase = pacmerge
 	pkgdesc = A semi-automatic merge tool for pacnew files.
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
+	url = https://heptapod.host/jmb/pacmerge
+	install = pacmerge.install
 	arch = x86_64
 	arch = armv7h
+	license = GPL3
 	makedepends = cargo
+	makedepends = mercurial
 	depends = expac
 	depends = diffutils
 	source = pacmerge::hg+https://heptapod.host/jmb/pacmerge#tag=v0.1.2

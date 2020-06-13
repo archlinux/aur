@@ -1,13 +1,16 @@
 # Maintainter: Jerome M. Berger <jeberger@free.fr>
 pkgname=pacmerge
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A semi-automatic merge tool for pacnew files."
 arch=('x86_64' 'armv7h')
+url="https://heptapod.host/jmb/pacmerge"
+license=('GPL3')
 depends=(expac diffutils)
-makedepends=(cargo)
+makedepends=(cargo mercurial)
 source=("$pkgname::hg+https://heptapod.host/jmb/pacmerge#tag=v${pkgver}")
 md5sums=(SKIP)
+install=pacmerge.install
 
 build() {
     cd "$pkgname"
