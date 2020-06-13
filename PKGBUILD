@@ -3,8 +3,8 @@
 
 _name=tty-solitaire
 pkgname="${_name}-git"
-pkgver=v1.3.0.r0.gff368bc
-pkgrel=1
+pkgver=1.3.0.r0.gff368bc
+pkgrel=2
 epoch=1
 pkgdesc='An ncurses-based Klondike solitaire clone'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
