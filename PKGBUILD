@@ -21,11 +21,13 @@ source=("https://github.com/processing/processing/archive/processing-0$((266+${p
         'https://download.processing.org/reference.zip'
         always_use_java-8-jdk.patch
         derive_jdk_from_path.patch
+        disable_update_check.patch
         no_downloads.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             '8255ba154118884e51e3b9b7174814f7de8fcf7c380ce6f8666192adb6f2483c'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
+            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '52bdda3ce6368df469172889c53091f7284806e2a1524b012e236736de98f646')
 
 prepare() {
@@ -43,6 +45,9 @@ prepare() {
 
   # Don't download any files during Ant's build process
   patch $pkgname/build/build.xml < no_downloads.patch
+
+  # Disable update check in default preferences
+  patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
 
   # Derive JDK location from java binary found in PATH
   patch $pkgname/build/linux/processing < derive_jdk_from_path.patch
