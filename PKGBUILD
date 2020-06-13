@@ -1,12 +1,12 @@
 # Maintainer: Bruce Zhang
 pkgname=postman
 pkgver=7.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
 url='https://www.getpostman.com/downloads/'
 license=('custom:Postman EULA')
-depends=('electron4')
+depends=('electron7')
 provides=('postman')
 conflicts=('postman-bin')
 options=('!strip')
@@ -14,13 +14,13 @@ source_x86_64=(
   "$pkgname-$pkgver-x86_64.orig.tar.gz::https://dl.pstmn.io/download/version/$pkgver/linux64"
 )
 source=(
-  "EULA.pdf::https://www.getpostman.com/terms/Postman_EULA_May_2018.pdf"
+  "EULA.html::https://www.postman.com/licenses/postman-eula/"
   "postman.desktop"
   "postman.sh"
 )
-sha1sums=('64f19df66b8f9e687dad443d8973364fff88d90a'
+sha1sums=('e536f2e43c417bdd88087cf98af30a5092fc36f0'
           '35194ee810e13d3a21f224c6d46104fc201631c1'
-          'a05406aa53b310b183b98cd70ff64c4d09e95d50')
+          '7c00d44372bea7447ee8ef2acb03dcbdd3a9a279')
 sha1sums_x86_64=('1832e4dd949ab452807e5d97d7933a914582b92f')
 
 package() {
@@ -37,5 +37,5 @@ package() {
 
   # Install icons & eula
   install -Dm644 "$srcdir/Postman/app/resources/app/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/postman.png"
-  install -Dm644 "$srcdir/EULA.pdf" "$pkgdir/usr/share/licenses/postman/EULA.pdf"
+  install -Dm644 "$srcdir/EULA.html" "$pkgdir/usr/share/licenses/postman/EULA.html"
 }
