@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=public-inbox
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='An "archives first" approach to mailing lists'
 arch=('any')
