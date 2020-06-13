@@ -60,6 +60,9 @@ package() {
   mkdir -p "$pkgdir/usr/lib"
   cp -rp . "$pkgdir/usr/lib/draw.io"
 
+  # fix file permissions
+  chmod -R g+r,o+r "$pkgdir/usr/lib/draw.io"
+
   # create run script
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
