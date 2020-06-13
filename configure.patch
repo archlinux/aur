@@ -4,7 +4,7 @@
  
  $arch_cc          = "cc";
  $arch_ccpp        = "CC";
--$arch_nvcc        = "/usr/local/cuda-10.0/bin/nvcc";
+-$arch_nvcc        = "/usr/local/cuda-10.2/bin/nvcc";
 +$arch_nvcc        = "nvcc";
  $arch_nvccflags   = "-lineinfo --ptxas-options=-v " . 
                      "-gencode arch=compute_30,code=compute_30 " .
@@ -39,29 +39,29 @@
  #   This option enables the use of CUDA GPU acceleration functions.
  #######################
  $cuda_defines     = "-DVMDCUDA -DMSMPOT_CUDA";
--$cuda_dir         = "/usr/local/cuda-10.0";
+-$cuda_dir         = "/usr/local/cuda-10.2";
 +$cuda_dir         = "/opt/cuda";
  $cuda_include     = "";
  $cuda_library     = "";
  $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
-@@ -1098,7 +1092,7 @@
- # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-4.1.1-linux64";
- # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.0-linux64";
+@@ -1145,7 +1145,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
--$liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
-+$liboptix_dir         = "/opt/optix";
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.0.0-linux64";
+-$liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.5.0-linux64";
++$liboptix_dir         = "/opt/optix";
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-7.0.0-linux64";
  
  # NCSA Blue Waters
-@@ -1148,7 +1142,7 @@
- $libospray_dir         = "/usr/local/ospray-1.7.0.x86_64.linux";
- $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
- $libospray_library     = "-L$libospray_dir/lib ";
--$libospray_libs        = "-lospray -lospray_common -lembree -ltbb -ltbbmalloc ";
-+$libospray_libs        = "-lospray -lospray_common -lembree3 -ltbb -ltbbmalloc ";
- # Both OptiX and OSPRay renderers use the Tachyon glwin code, 
- # so we have to make sure we don't build/link it twice
- if ($config_liboptix) {
+@@ -1211,7 +1211,7 @@
+   $libospray_dir         = "/usr/local/ospray-1.8.5.x86_64.linux";
+   $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
+   $libospray_library     = "-L$libospray_dir/lib ";
+-  $libospray_libs        = "-lospray -lospray_common -lembree -ltbb -ltbbmalloc ";
++  $libospray_libs        = "-lospray -lospray_common -lembree3 -ltbb -ltbbmalloc ";
+ }
+ 
+ 
 @@ -1459,20 +1453,20 @@
  ###################
  # location of Python library and include file.
@@ -105,7 +105,7 @@
  
      if ($config_cuda) {
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
--      $cuda_library     = "-L/usr/local/cuda-10.0/lib64";
+-      $cuda_library     = "-L/usr/local/cuda-10.2/lib64";
 +      $cuda_library     = "-L/opt/cuda/lib64";
      }
  

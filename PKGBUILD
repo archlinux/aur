@@ -5,7 +5,7 @@
 
 pkgname=vmd-src
 _pkgname=vmd
-pkgver=1.9.4a38
+pkgver=1.9.4a43
 pkgrel=1
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
@@ -24,8 +24,8 @@ conflicts=("$_pkgname" "$_pkgname-bin")
 source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "configure.patch"
         "mpi.patch")
-sha256sums=('5ae1448c59369f99d0c9408b0acbc08a55bea9fa69f9b25fccc565ddac671fa9'
-            '96ce10c2d9728b416dbac83bfc30d84248044ea7371de7bbfbe854ba7e0adef5'
+sha256sums=('84323b2c34db8ce5739372dd6e225ef1fa1dc5c4b82d3810d55923a653b1bdc0'
+            'a0f4a14355aaa00c4b80b4c1115ea7731b7a5a1d65d5c0df6ed7f13665fecf75'
             'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0')
 
 prepare() {
@@ -51,7 +51,7 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/plugins
+  cd "$srcdir/plugins"
   make -j1 LINUXAMD64 world
   make distrib
   cd ../$_pkgname-$pkgver
@@ -62,8 +62,8 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir/$_pkgname-$pkgver"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd src; make install
-  sed -i 's#set defaultvmddir=.*#set defaultvmddir=/usr/lib/vmd#' $pkgdir/usr/bin/vmd
+  sed -i 's#set defaultvmddir=.*#set defaultvmddir=/usr/lib/vmd#' "$pkgdir/usr/bin/vmd"
 }
