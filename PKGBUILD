@@ -1,8 +1,9 @@
-# Maintainer: michaelchou <michaeljchou at the hotmail domain which is .com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: michaelchou <michaeljchou at the hotmail domain which is .com>
 # Contributor: enihcam <nanericwang at the google email domain which is .com>
 
 pkgname=chakracore
-pkgver=1.11.14
+pkgver=1.11.20
 pkgrel=1
 pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge'
 arch=('x86_64')
@@ -14,16 +15,13 @@ provides=('libChakraCore.so' 'ch')
 conflicts=('chakracore-git' 'chakracore-bin')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Microsoft/ChakraCore/archive/v${pkgver}.tar.gz"
-  "fix-assembly-for-clang.patch"
 )
-sha256sums=('3ee8cdb85d10441f30c5a1b8b6f9f652be1407aef21886d1f2f4c6764d24ea3d'
-            '623458eff6effd1d6497c69bf3338f25cc8396853f74ecdfbb92db982b232d99')
+sha256sums=('2d7b70db1ab01cd8c3e519639f560b7787abafe4bc41dfb862095a3573f76f0d')
 
 _dir="ChakraCore-${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
-  patch -p1 < $srcdir/fix-assembly-for-clang.patch
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y --static
 }
