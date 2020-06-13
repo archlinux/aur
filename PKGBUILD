@@ -1,7 +1,7 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-git
 _gitname=Mudlet
-pkgver=Mudlet.4.6.1.r218.g102491a74
+pkgver=Mudlet.4.6.1.r308.g62b21e672
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch"
 arch=('i686' 'x86_64')
@@ -14,24 +14,23 @@ optdepends=('discord-rpc-api: discord integration'
             'ttf-bitstream-vera: default font'
             'ttf-ubuntu-font-family: default font'
             'noto-fonts-emoji: emoji font support')
-conflicts=('mudlet')
-replaces=('mudlet')
 source=("git+https://github.com/Mudlet/Mudlet.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ${_gitname}
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+}    
 
 build() {
     cd "$srcdir/${_gitname}/src"
-    export XDG_DATA_DIRS=/usr/share
+
     export WITH_FONTS=NO 
     export WITH_UPDATER=NO
     export WITH_OWN_QTKEYCHAIN=NO
+    export XDG_DATA_DIRS=/opt/mudlet
     
-    qmake-qt5 PREFIX=/usr
+    qmake-qt5 PREFIX=/opt/mudlet
     make
 }
 
@@ -40,6 +39,10 @@ package() {
     make INSTALL_ROOT="$pkgdir" install    
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
-    install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
-    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps   
+    sed -i 's;mudlet;mudlet-git;' ../mudlet.desktop
+    sed -i 's;Mudlet;Mudlet (git);' ../mudlet.desktop
+    mv ../mudlet.desktop ../mudlet-git.desktop
+    install -m 644 ../mudlet-git.desktop ${pkgdir}/usr/share/applications/
+    mv icons/mudlet_dev_256px.png icons/mudlet-git.png
+    install -m 644 icons/mudlet-git.png ${pkgdir}/usr/share/pixmaps/ 
 }
