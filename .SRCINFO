@@ -1,14 +1,14 @@
 pkgbase = python-scapy-utils
 	pkgdesc = A collection of utility function for use with Scapy module
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://pypi.org/project/scapy-utils/
 	arch = any
 	license = MIT
 	depends = python-setuptools
 	depends = python-scapy
-	source = https://files.pythonhosted.org/packages/8e/85/ba6899d77608355cd5cf6893ebf00a197924014d45e266e3f76341d4d457/scapy_utils-0.3.5.tar.gz
-	sha256sums = 361eeb7c0d59b66c5719f795c5045c46ad5e0ac0459675b1286ea8a43a74cc83
+	source = https://files.pythonhosted.org/packages/d2/f2/73b0f73df369256893549e410d24d3a377a22331b039c8c7780fdc020009/scapy-utils-0.3.6.tar.gz
+	sha256sums = 9bb0f2e0b58436275998c362015a78d17f1f2d95eb634098091c52949ff2756e
 
 pkgname = python-scapy-utils
 
