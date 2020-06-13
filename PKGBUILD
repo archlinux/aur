@@ -35,7 +35,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 v "$pkgdir/usr/lib/vlang"
   cp -a cmd "$pkgdir/usr/lib/vlang/"
-  chmod -R 755 "$pkgdir/usr/lib/vlang/cmd"
+  chmod -R 777 "$pkgdir/usr/lib/vlang/cmd"
   cp -a examples "$pkgdir/usr/share/vlang/"
   cp -a thirdparty "$pkgdir/usr/lib/vlang/"
   cp -a vlib "$pkgdir/usr/lib/vlang/"
