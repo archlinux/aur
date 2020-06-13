@@ -3,7 +3,7 @@
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
-pkgver=2.10.0+p0+gfbbcf5036
+pkgver=2.10.2+p7+ge13391333
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -17,18 +17,22 @@ makedepends=('libx11' 'git' 'python')
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         git://git.sv.gnu.org/freetype/freetype2-demos.git
         0001-Enable-table-validation-modules.patch
-        0002-Enable-infinality-subpixel-hinting.patch
-        0003-Enable-long-PCF-family-names.patch
-        0004-Enable-old-engines-but-keep-adobe-as-default.patch
-        0005-freetype-2.5.2-more-demos.patch
+        0002-Enable-subpixel-rendering.patch
+        0003-Enable-infinality-subpixel-hinting.patch
+        0004-Enable-long-PCF-family-names.patch
+        0005-Enable-old-engines-but-keep-adobe-as-default.patch
+        freetype-2.5.2-more-demos.patch
+        cflags-order.patch
         freetype2.sh)
 sha1sums=('SKIP'
           'SKIP'
-          '46fd67e6a594f6c2c473b9321ba64913984ba42f'
-          '4bf0c0749db09878b918cc404300f0d3e9091607'
-          'af76172be8135e74391b7ad1b82c2124ae0ad86c'
-          '7770412a35d60e38cbe673c45214fbe9a17bedcf'
+          '07aecf77659ff956270c042990a013552b826e5e'
+          'f03de1bd288de5251710a7d9b05a7aec9ebb4445'
+          '6a47234d60eeec766fd2b00d18bab18cf06eb651'
+          '82e08f0f4f6f5454d9706d24d45824b5ed412a37'
+          '9ad5cbe34209ed2cd36687971dac7ba92688b774'
           '72cfecbe738085eec475e012617661ad0cc9b76f'
+          '6b93645ff0bf25fcc67a01f764f884c9791bf09f'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -48,15 +52,19 @@ prepare() {
 
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
-  patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-  patch -Np1 -i ../0004-Enable-old-engines-but-keep-adobe-as-default.patch
+  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
+  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
+  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0005-Enable-old-engines-but-keep-adobe-as-default.patch
 
   ./autogen.sh
 
   cd ../freetype2-demos
   # enable more demos
-  patch -Np1 -i ../0005-freetype-2.5.2-more-demos.patch
+  patch -Np1 -i ../freetype-2.5.2-more-demos.patch
+
+  # ensure include dirs of built freetype come first
+  patch -Np1 -i ../cflags-order.patch
 
   # Suppress RPATH
   sed -i '/X11_LIB:%=-R%/d' graph/x11/rules.mk

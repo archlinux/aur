@@ -1,5 +1,5 @@
 /*.log
-/*.pkg.tar.xz
+/*.pkg.tar.*
 /.mkpkg_check
 /MKPKG
 /freetype2
