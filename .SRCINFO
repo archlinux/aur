@@ -7,8 +7,8 @@ pkgbase = python-scapy-utils
 	license = MIT
 	depends = python-setuptools
 	depends = python-scapy
-	source = https://files.pythonhosted.org/packages/b3/ab/7a510ad0b9c866481aabc95b2b6c56853c1303d47c3322bb54f0ec649152/scapy-utils-0.3.7.tar.gz
-	sha256sums = 759e39e64d8686ccbc5421b48ce61c6e3c08048d69209ffe3fcee4dc6b334daf
+	source = https://files.pythonhosted.org/packages/39/b3/f897bdf6eb19bc777ed3a32e51e9229193edc1b11f7277081372b0ec1fe7/scapy-utils-0.3.8.tar.gz
+	sha256sums = 1e5739b83efb5737f01c6849b4d28cfdb51ac14f380bab4816a811afcc58b3c5
 
 pkgname = python-scapy-utils
 
