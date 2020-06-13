@@ -5,8 +5,8 @@ pkgbase=chicago95-git
 pkgname=(chicago95-gtk-theme-git
          chicago95-icon-theme-git
          xcursor-chicago95-git)
-pkgver=v1.0.1.r22.ge6897b9
-pkgrel=1
+pkgver=1.0.1.r22.ge6897b9
+pkgrel=2
 pkgdesc="Windows 95 inspired theme"
 arch=(any)
 url="https://github.com/grassmunk/Chicago95"
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd Chicago95
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 package_chicago95-gtk-theme-git() {
