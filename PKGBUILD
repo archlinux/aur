@@ -3,8 +3,8 @@
 pkgname=python-manuf
 _pypiname=${pkgname/python-/}
 pkgver=1.1.1
-pkgrel=3
-pkgdesc="Parser library for Wireshark\'s OUI database"
+pkgrel=4
+pkgdesc="Parser library for Wireshark's OUI database"
 arch=('any')
 url='https://pypi.org/project/manuf/'
 license=('Apache GPL3')
