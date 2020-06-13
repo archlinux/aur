@@ -15,11 +15,11 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=9.6.3
+pkgver=9.6.5
 pkgrel=1
-arch=(i686 x86_64)
+arch=('any')
 pkgdesc="${pkgbase^} - A Network Backup Tool "
-url="http://www.${pkgbase}.org"
+url="https://www.${pkgbase}.org"
 license=('AGPL3')
 optdepends=('openssl-1.0: network encryption between daemons')
 makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'qt4' 'openssl-1.0')
@@ -30,7 +30,7 @@ source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${p
         'bacula-sd.service'
         '00-qmake4.patch')
 
-sha256sums=('ec1365a678e1b49505c1cdbc59a3cef5ca5f5a5a25fb1b0cced822eeb88c5b0a'
+sha256sums=('510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
