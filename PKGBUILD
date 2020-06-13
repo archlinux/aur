@@ -1,11 +1,12 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=nitter-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
 makedepends=('git' 'nim' 'nimble' 'libsass')
+backup=('etc/nitter.conf')
 license=('AGPL3')
 arch=('x86_64')
 source=("$pkgname::git+$url.git#branch=master"
