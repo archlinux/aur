@@ -1,10 +1,11 @@
-# Author: Stefan Reisinger <dev at stefan-reisinger dot at>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Stefan Reisinger <dev at stefan-reisinger dot at>
 
 pkgname=manictime-bin
 _pkgname=manictime
-pkgver=1.0.1
-_pkgver=1_0_1_0
-pkgrel=2
+pkgver=1.2.2
+_pkgver=1_2_2_0
+pkgrel=1
 pkgdesc='ManicTime automatically records your computer usage.'
 arch=('x86_64')
 url="https://www.manictime.com/linux/download"
@@ -15,10 +16,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://cdn.manictime.com/setup/linux/v${_pkgver}/ManicTime.tar.gz"
     'manictime.desktop'
 )
-sha256sums=(
-    '6a95b9d5da1227e315942a45a18bd19ed9930c59772d685330609619ca246d16'
-    'a93303d5320cc2678a7643a4320b61d3b9577080cfdfae2055f9a4534c65c230'
-)
+sha256sums=('471ca9653ba189475cdfa8299ca8a3e9c466427f1084891271dd0d6bc29fcbca'
+            'a93303d5320cc2678a7643a4320b61d3b9577080cfdfae2055f9a4534c65c230')
 
 package() {
     install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
