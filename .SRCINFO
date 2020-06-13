@@ -1,14 +1,14 @@
 pkgbase = https-everywhere-chrome
 	pkgdesc = Chrome/Chromium extension to use HTTPS whenever possible
-	pkgver = 2019.1.7
+	pkgver = 2020.5.20
 	pkgrel = 1
 	url = https://www.eff.org/https-everywhere
 	arch = any
 	license = GPL
 	optdepends = chromium
 	optdepends = google-chrome
-	source = https://www.eff.org/files/https-everywhere-chrome-2019.1.7.crx
-	sha512sums = 77d1aff7fea3ade0c2cfc3d999428dcbbc4a31827774d489a6c95e8d6256924c3ade6c540a039a8c9aec599538ead802cbaa56d26eaff62018403ca7dc53e72c
+	source = https://www.eff.org/files/https-everywhere-chrome-2020.5.20.crx
+	sha512sums = 541f4f9047b2294ef0ad9f06308df5935fec76ccaf93595524d65ad2089898ff32353457576110689917532d472a8dfbbb8f884fbc79175d9474f12c678c05b1
 
 pkgname = https-everywhere-chrome
 
