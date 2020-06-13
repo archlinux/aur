@@ -13,7 +13,7 @@ source=(
 	"http://music.163.com/html/web2/service.html"
 )
 md5sums=('1f47c7dc3d9ce46da8099e539ee8a74d'
-         'SKIP')
+         'ee09cacb054f6a346bf935737df3f33d')
 
 DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
