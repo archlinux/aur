@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.3.5
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("git+${url}/veyon.git#tag=v${pkgver}"
     "git+${url}/ultravnc.git"
     "git+${url}/libvncserver.git"
     "git+${url}/x11vnc.git"
-    "git+git://anongit.kde.org/kldap.git")
+    "git+https://anongit.kde.org/kldap.git")
 
 md5sums=('SKIP'
          'SKIP'
