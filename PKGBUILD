@@ -22,8 +22,7 @@ install=
 changelog=
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v$pkgver.tar.gz"
         "$pkgname-${pkgver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.0.tar.gz")
-validpgpkeys=("AEBB1D24629030C6"
-              "4AEE18F83AFDEB23")
+validpgpkeys=("4AEE18F83AFDEB23")
 
 build() {
 	cd "MQTT-Explorer-${pkgver}"
