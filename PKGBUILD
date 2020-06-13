@@ -1,10 +1,10 @@
 # Maintainer: Bart De Vries <devriesb at gmail dot com>
 
 pkgname=snapcast
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 depends=(alsa-lib avahi libvorbis flac opus expat libsoxr)
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapcast.sysusers"
         "snapcast.tmpfiles"
         "snapcast.install")
-sha256sums=('15faf3727bed1a937df95e4fcb5c72412258833bb3eabfea32169436b695d9ba'
+sha256sums=('c7ce1094fa1231c66479bfd37a18f564805f632aaa42de99b52cb0f9f52a2c46'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             '1c58fef5d3e2de64c1df52138f0f3c841773e7881b9cbc76f23312deeebc11b5'
             '132ec97e9b1d179f45269cc5cc4d6850384b4796ffef7d7560cf8440447a11c6')
