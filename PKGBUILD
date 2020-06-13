@@ -2,7 +2,7 @@
 #Maintainer: WhiredPlanck <unknow>
 
 pkgbase=yozo-office-2019
-pkgname=('yozo-office-2019' 'yozo-office-2019-templates' 'yozo-office-2019-fonts')
+pkgname=('yozo-office-2019-bin' 'yozo-office-2019-templates' 'yozo-office-2019-fonts')
 _pkgver=8.0.1331.101ZH.S1
 pkgver=8.0.1331.101ZH.S1
 pkgrel=3
@@ -21,7 +21,7 @@ prepare() {
     tar -xvf data.tar.xz
 }
 
-package_yozo-office-2019() {
+package_yozo-office-2019-bin() {
     depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
     optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
     			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
@@ -49,7 +49,7 @@ package_yozo-office-2019() {
     for i in /usr/lib/jvm/java-8-openjdk/jre/lib/*; do
         ln -sf $i
     done
-    rm ext
+#    rm ext
     mv ../ext .
     
     chmod 755 $pkgdir/usr/lib

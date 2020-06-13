@@ -11,8 +11,8 @@ pkgbase = yozo-office-2019
 	source_x86_64 = http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_8.0.1331.101ZH.S1_amd64.deb
 	md5sums_x86_64 = cf22531071e607019c02a1a046f70e5c
 
-pkgname = yozo-office-2019
-	install = yozo-office-2019.install
+pkgname = yozo-office-2019-bin
+	install = yozo-office-2019-bin.install
 	depends = jre8-openjdk-headless
 	depends = libxtst
 	depends = libxt
