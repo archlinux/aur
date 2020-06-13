@@ -8,7 +8,7 @@ pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
 url="https://gitlab.com/eneiluj/${_releasename}"
 license=('AGPL')
-depends=('nextcloud>=17.0' 'nextcloud<19.0')
+depends=('nextcloud>=17.0' 'nextcloud<20.0')
 makedepends=()
 source=("${url}/-/archive/v${pkgver}/${_releasename}-v${pkgver}.tar.gz")
 

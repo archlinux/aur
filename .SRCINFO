@@ -6,7 +6,7 @@ pkgbase = nextcloud-app-phonetrack
 	arch = any
 	license = AGPL
 	depends = nextcloud>=17.0
-	depends = nextcloud<19.0
+	depends = nextcloud<20.0
 	source = https://gitlab.com/eneiluj/phonetrack-oc/-/archive/v0.6.3/phonetrack-oc-v0.6.3.tar.gz
 	sha512sums = 3eed4f5521bce1835de3dabaef848132305bfd3facb3e9fe369e2bf3202d012583a3f65e1c39d934fa5adf5c8e2f1aa0e89f93be234daf932c35f6074fa76435
 
