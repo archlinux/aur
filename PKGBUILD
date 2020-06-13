@@ -7,7 +7,7 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/wine.git'
@@ -193,6 +193,11 @@ package() {
     
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+
+    #wine list.h
+    for file in ${srcdir}/wine-wine-${pkgver}/include/wine/*.h; do
+        cp -n $file "${pkgdir}/usr/include/wine/"
+    done
 }
 
 sha256sums=('a91f564b0b88f2030126277bc5b83abaa2e7e9e0fb06489fbe34946e71cc8f20'
