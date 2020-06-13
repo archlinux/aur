@@ -1,10 +1,12 @@
-# Maintainer: Lex Black <autumn-wind at web dot de>
+# Maintainer: Platon Ryzhikov <ihummer63@yandex.ru>
+# Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Michael Jakl <jakl.michael@gmail.com>
 # With contributions from many kind people at https://aur.archlinux.org/packages/julia-git/
+# Includes Make.user and compilation flags for aarch64
 
 _pkgbase=julia
 pkgbase=${_pkgbase}-aarch64-git
-pkgname=(julia-git julia-git-docs)
+pkgname=(julia-aarch64-git julia-aarch64-git-docs)
 pkgver=1.6.0.DEV.r46933.g4e2fb5c72c2
 pkgrel=1
 arch=(aarch64)
@@ -59,7 +61,7 @@ prepare() {
 build() {
   # See FS#58221 for why USE_SYSTEM_ARPACK=0 is used, for now
   export PATH="$srcdir/bin:$PATH"
-  env CFLAGS="-O2 -pipe -fstack-protector-strong -w" CXXFLAGS="-O2 -pipe -fstack-protector-strong -w" make VERBOSE=1 -C "$_pkgbase" -j2
+  env CFLAGS="-O2 -pipe -fstack-protector-strong -w" CXXFLAGS="-O2 -pipe -fstack-protector-strong -w" make VERBOSE=1 -C "$_pkgbase"
 
   # Building doc
   cd $_pkgbase/doc
@@ -79,7 +81,7 @@ build() {
 #  rm -r depot/compiled
 #}
 
-package_julia-git() {
+package_julia-aarch64-git() {
   optdepends=('openblas-lapack: multithreaded replacement for lapack'
               'fftw: If using the FFTW package from julia'
               'gnuplot: If using the Gaston Package from julia')
@@ -104,7 +106,7 @@ package_julia-git() {
   find ${pkgdir} -name ".gitignore" -delete
 }
 
-package_julia-git-docs() {
+package_julia-aarch64-git-docs() {
   arch=('any')
   pkgdesc='Documentation and examples for Julia'
   depends=(julia)

@@ -42,7 +42,7 @@ pkgbase = julia-aarch64-git
 	sha256sums = 856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c
 	sha256sums = 0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7
 
-pkgname = julia-git
+pkgname = julia-aarch64-git
 	optdepends = openblas-lapack: multithreaded replacement for lapack
 	optdepends = fftw: If using the FFTW package from julia
 	optdepends = gnuplot: If using the Gaston Package from julia
@@ -50,7 +50,7 @@ pkgname = julia-git
 	conflicts = julia
 	backup = etc/julia/startup.jl
 
-pkgname = julia-git-docs
+pkgname = julia-aarch64-git-docs
 	pkgdesc = Documentation and examples for Julia
 	arch = any
 	depends = julia
