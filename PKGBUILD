@@ -1,16 +1,17 @@
 # Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=cargo-flamegraph
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Cargo plugin that generates a flamegraph for a given workload"
-url="https://github.com/ferrous-systems/cargo-flamegraph"
+url="https://github.com/flamegraph-rs/flamegraph"
 depends=('gcc-libs' 'perf')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
-source=(https://github.com/ferrous-systems/flamegraph/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('fae15f850540661c46d7a7243a44ff85e818912a34a60b3e8ca3ecf663f5d634463556334d2c1e6fc15abef3c8de85a4efeec006f69eb4470ec1eae29a050bd2')
+source=("https://github.com/flamegraph-rs/flamegraph/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('d3e9114b79ed296ecf472e317844aa314e3619e3253c81a2eb2681ec389e587d11307ac55a886008e5ec2ec9ccdee563213907687fddb59148db0ad4fe4cef2f')
 
 build() {
   cd "flamegraph-${pkgver}"
