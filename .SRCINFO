@@ -3,6 +3,7 @@ pkgbase = go-ipfs-git
 	pkgver = 0.6.0rc6.r56.g10623a702
 	pkgrel = 1
 	url = https://github.com/ipfs/go-ipfs
+	install = go-ipfs-git.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h

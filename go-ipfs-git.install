@@ -1,0 +1,32 @@
+post_upgrade() {
+
+  ## search for old location of ipfs data and move data
+
+  if [ -f '/var/lib/ipfs/.ipfs/config' ]; then
+    echo ":: ipfs upgrade: stopping ipfs.service if running..."
+    systemctl stop ipfs >/dev/null 2>&1 || true
+    echo ":: ipfs upgrade: moving existing ipfs data from '/var/lib/ipfs/.ipfs' to '/var/lib/ipfs/'..."
+    mv /var/lib/ipfs/.ipfs/* /var/lib/ipfs/ >/dev/null 2>&1 || true
+    rmdir /var/lib/ipfs/.ipfs/ >/dev/null 2>&1 || true
+  fi
+
+  # in case the daemon was never started, generate a configuration
+
+  if [ ! -f /var/lib/ipfs/config ]; then
+    systemctl restart systemd-sysusers.service
+
+    mkdir -p /var/lib/ipfs/
+
+    chown ipfs: -R /var/lib/ipfs/
+
+    su ipfs -s /bin/bash -c "export IPFS_PATH='/var/lib/ipfs/'; ipfs init"
+
+  fi
+}
+
+post_install() {
+
+  # do every check an upgrade would do
+
+  post_upgrade
+}
