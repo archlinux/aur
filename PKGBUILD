@@ -4,7 +4,7 @@
 
 pkgname=qtspim-iconfix
 _pkgname=qtspim
-pkgver=9.1.20
+pkgver=9.1.21
 pkgrel=1
 pkgdesc="New user interface for spim, a MIPS simulator."
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'subversion' 'icu')
-source=("spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=712")
+source=("spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=729")
 sha256sums=('SKIP')
 provides=('qtspim')
 conflicts=('qtspim')
