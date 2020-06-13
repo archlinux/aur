@@ -28,7 +28,7 @@ source=(
 noextract=()
 md5sums=('SKIP'
          'SKIP'
-         '9502bfa470c41577c750314515bba6f0')
+         '707ae7795aab12effd83e92e394bccf4')
 validpgpkeys=()
 
 prepare() {
