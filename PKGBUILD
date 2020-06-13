@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Open source fighting games engine written in Go with support for M.U.G.E.N resources."
 arch=('x86_64')
 url="https://github.com/Windblade-GR01/Ikemen_GO"
-license=('custom:MIT')
+license=('MIT')
 depends=('sudo')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}"
@@ -18,11 +18,10 @@ package() {
 	rm "${srcdir}/ikemen-go"
 
 	# package goes under /opt
-	install -d -m777 "$pkgdir/opt/$pkgname"
-	cp -a "${srcdir}/." "$pkgdir/opt/$pkgname"
-	# set permissions
-	find "$pkgdir/opt/$pkgname" -type f -exec chmod 777 {} \;
-  	find "$pkgdir/opt/$pkgname" -type d -exec chmod 777 {} \;
+	install -dm777 "$pkgdir/opt/$pkgname"
+	cp "${srcdir}/." "$pkgdir/opt/$pkgname"
+	# set dir permissions
+	chmod a+rwx -R "$pkdir/opt/$pkgname/."
 
 	# create the /usr/bin/ dir
 	install -d "${pkgdir}/usr/bin"
