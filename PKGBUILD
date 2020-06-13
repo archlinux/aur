@@ -4,9 +4,8 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=2.4.0
-_pkgver="${pkgver}-linux2"
-gitname="release-${_pkgver}"
+pkgver=r26402.48d133718
+gitname="linux"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
@@ -14,7 +13,7 @@ url="https://desktop.github.com"
 license=('MIT')
 depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf' 'nss' 'nspr')
 optdepends=('hub: CLI interface for GitHub.')
-makedepends=('xorg-server-xvfb' 'nodejs>=10.16.0' 'yarn' 'python2')
+makedepends=('xorg-server-xvfb' 'nodejs>=10.16.0' 'yarn' 'python2' 'unzip')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 DLAGENTS=("https::/usr/bin/git clone --branch ${gitname} --single-branch %u")
@@ -24,11 +23,11 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  2758e15659f5770ae2ac948250372135029e7ac2d4b6bf431a112dfdbcc681d1
+  932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
 )
 pkgver() {
   cd desktop
-  git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
   cd desktop
