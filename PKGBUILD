@@ -2,8 +2,8 @@
 
 pkgname=tint-tetris
 _realname=tint
-pkgver=0.04+nmu1
-pkgrel=2
+pkgver=0.05
+pkgrel=1
 pkgdesc="TINT Is Not Tetris(tm) ...at least the name isn't"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/jessie/tint"
@@ -16,9 +16,9 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=(http://http.debian.net/debian/pool/main/t/tint/"$_realname"_"$pkgver".tar.gz)
+source=(http://http.debian.net/debian/pool/main/t/tint/"$_realname"_"$pkgver".tar.xz)
 noextract=()
-md5sums=('40e4674fcf2531c638cc32b6b09123aa')
+md5sums=('134c5fac011bf3148c86be11540ac98b')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
