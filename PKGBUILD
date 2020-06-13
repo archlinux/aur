@@ -4,7 +4,7 @@
 
 _gemname=schleuder
 pkgname=ruby-$_gemname
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='Schleuder is a group'\''s gateway: a gpg-enabled mailinglist with remailing-capabilities.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby gnupg gpgme sqlite openssl)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('67a19c88a652781f03e9a6807b31ae871194b14157e4255bd09fb6527da23c3b74c6e41a6c2814c52b69d80ca4d3972c588340258ef1631bfe7dae6c0d63a867')
+sha512sums=('2915c2b45f32439dc93a78223edc73a77f22a69889a80b1d6fb93acd7616087c726990dda912942c0764f0e2cce595d6fed2fc3c15b795fb8c4ee2dda0421331')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
