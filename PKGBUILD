@@ -1,12 +1,12 @@
 # Contributor: feufochmar <feufochmar.gd@gmail.com>
 pkgname=ttf-nova
 pkgver=20110821
-pkgrel=1
+pkgrel=2
 pkgdesc="A font familly originally created for making inscriptions on stone."
 arch=('any')
 url="http://openfontlibrary.org/font/nova"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=("https://fontlibrary.org/assets/downloads/nova/9fea9bf34ffdc4d4c44a8502d0deb44b/nova.zip")
 
 package() {
