@@ -5,7 +5,7 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.36.1
+pkgver=3.36.5
 pkgrel=1
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -19,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('8cb8bfd358a02d8edba51114548e98154321e0895bf379a5bb336a458d594bd7')
+sha256sums=('6f0dd6e30639eb620f201a6ae40f21c4b78c030f0d6437f9e309f7240195e97c')
 
 build() {
 cd ${_pkgname}-${pkgver}
