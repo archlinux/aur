@@ -2,7 +2,7 @@
 # Contributor: Minzord
 
 pkgname="aura-git"
-pkgver=v3.1.1.r3.g66160e5
+pkgver=3.1.4.r1.gc0d0a34
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
@@ -20,7 +20,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
