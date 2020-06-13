@@ -1,15 +1,15 @@
 # Maintainer: David Oberhollenzer <goliath at infraroot dot at>
 
 pkgname=squashfs-tools-ng
-pkgver=0.9.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A new set of tools and libraries for working with SquashFS images'
-url='https://github.com/AgentD/squashfs-tools-ng'
+url='https://infraroot.at/projects/squashfs-tools-ng/index.html'
 arch=('x86_64')
 license=('GPL3' 'LGPL3')
 depends=('lzo' 'lz4' 'xz' 'zstd' 'zlib')
 source=(https://infraroot.at/pub/squashfs/${pkgname}-${pkgver}.tar.xz{,.asc})
-sha512sums=('eb550430917f267ec1ef1d11795167a6893031fc184f914170679cd24c16930a8f73a2b04a349ce1602e80a327957db7935369965a892fbe4904b6e01bb48b5c'
+sha512sums=('536f12aa53214f88739cea0d26c55e04434c284935ff1d59ee8f5108acd92fc11e800e42e3a112524d09dbd1fa50c4f15c3211ff5d02ae50b7fa137600d2ae15'
             'SKIP')
 validpgpkeys=('13063F723C9E584AEACD5B9BBCE5DC3C741A02D1')
 
