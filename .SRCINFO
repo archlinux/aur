@@ -1,6 +1,6 @@
 pkgbase = jgraphx-jre8
 	pkgdesc = Open source graph drawing component.
-	pkgver = 4.1.1
+	pkgver = 3.7.4
 	pkgrel = 1
 	url = https://github.com/jgraph/jgraphx
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = jgraphx-jre8
 	depends = java-runtime=8
 	provides = jgraphx
 	conflicts = jgraphx
-	source = jgraphx-jre8-v4.1.1.tar.gz::https://github.com/jgraph/jgraphx/archive/v4.1.1.tar.gz
-	sha256sums = 523ae9fd1a9ac560dc02d7a982b0b54c4eb674ccaa2b4809087712dbebe862e2
+	source = jgraphx-jre8-v3.7.4.tar.gz::https://github.com/jgraph/jgraphx/archive/v3.7.4.tar.gz
+	sha256sums = e73f5ee1d8a380992206fa9fe19279c6ceff4c31172b188d268203888e65dfc3
 
 pkgname = jgraphx-jre8
 
