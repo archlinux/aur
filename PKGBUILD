@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -40,7 +40,7 @@ prepare() {
     for module in ${submodules[@]}; do
         git config submodule."$module".url "${srcdir}/$module"
     done
-    
+
     git submodule update
 }
 
@@ -64,7 +64,7 @@ package() {
 
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
-	install -D -m644 $srcdir/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -D -m755 $srcdir/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
