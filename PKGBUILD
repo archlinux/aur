@@ -12,7 +12,7 @@ pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf' 'nss' 'nspr')
+depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf' 'nss' 'nspr' 'unzip')
 optdepends=('hub: CLI interface for GitHub.')
 makedepends=('xorg-server-xvfb' 'nodejs>=10.16.0' 'yarn' 'python2' 'unzip')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")

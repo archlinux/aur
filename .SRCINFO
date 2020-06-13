@@ -18,6 +18,7 @@ pkgbase = github-desktop
 	depends = gconf
 	depends = nss
 	depends = nspr
+	depends = unzip
 	optdepends = hub: CLI interface for GitHub.
 	source = git+https://github.com/shiftkey/desktop.git#tag=release-2.5.2-linux1
 	source = github-desktop.desktop
