@@ -2,7 +2,7 @@
 _pkgname=git-identity
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage your identity in Git"
 arch=('any')
 url="https://github.com/madx/git-identity"
@@ -17,8 +17,11 @@ source=("$pkgname::git+https://github.com/madx/git-identity.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/"
-  git describe --always
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
