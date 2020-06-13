@@ -3,7 +3,7 @@
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
 pkgver=v0.2.2.r0.30698de
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -67,7 +67,7 @@ package() {
 
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
-	install -D -m644 ../$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -D -m755 ../$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
