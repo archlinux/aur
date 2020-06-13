@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools-git
-pkgver=r446.3e283b06
+pkgver=r485.8b3186df
 pkgrel=1
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/libadalang-tools'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libadalang-git')
+depends=('libadalang')
 makedepends=('git')
 
 source=('git+https://github.com/AdaCore/libadalang-tools.git')
