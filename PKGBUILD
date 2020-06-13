@@ -3,7 +3,7 @@
 
 pkgname=gcolor3-git
 _gitname=gcolor3
-pkgver=v2.3.r90.g51e75fb
+pkgver=2.3.r92.ge062759
 pkgrel=1
 epoch=1
 pkgdesc="A simple color selection dialog in GTK3. Git version."
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
