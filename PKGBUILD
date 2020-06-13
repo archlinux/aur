@@ -8,7 +8,8 @@ pkgver=8.0.1331.101ZH.S1
 pkgrel=3
 pkgdesc="Yozo Office 2019 - An M$ Office Compatible Office Suit"
 url="https://www.yozosoft.com/product-officelinux.html"
-options=('!strip')
+options=('!emptydirs'
+         '!strip')
 license=("custom")
 arch=('x86_64') 
 provides=('yozo-office')
@@ -18,12 +19,14 @@ md5sums_x86_64=('cf22531071e607019c02a1a046f70e5c')
 
 prepare() {
     cd "${srcdir}"
-    tar -xvf data.tar.xz
+    bsdtar -xpf data.tar.xz
 }
 
 package_yozo-office-2019-bin() {
     depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
-    optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
+    optdepends=('cups: for printing support'
+                'libjpeg-turbo: JPEG image codec support'
+                'ttf-ms-fonts: Arial, Times, Courier etc.'
     			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
     			'yozo-office-2019-fonts: UI Fonts'
     			'yozo-office-2019-templates: Templates files')
@@ -34,13 +37,14 @@ package_yozo-office-2019-bin() {
     cp -r etc "${pkgdir}"
     rm -rf $pkgdir/etc/xdg
     rm -rf $pkgdir/etc/skel
+    rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Upgrade
     rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/uninstall
     rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Templates
     rm -rf $pkgdir/usr/lib64
     rm -rf $pkgdir/usr/share/mime
     rm -rf $pkgdir/usr/share/fonts/truetype/yozo
     rm -rf $pkgdir/usr/share/applications/yozo-uninstall.desktop
-
+    
     rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Jre/bin
     ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin $pkgdir/opt/Yozosoft/Yozo_Office/Jre/bin
     cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
@@ -66,7 +70,7 @@ package_yozo-office-2019-fonts() {
     cd "${srcdir}"
     install -d "${pkgdir}/usr/share/fonts/truetype/yozo"
     cp -r usr/share/fonts/truetype/yozo/* "${pkgdir}/usr/share/fonts/truetype/yozo"
-    targetP="${pkgdir}/usr/share/fonts/truetype/yozo"
+#    targetP="${pkgdir}/usr/share/fonts/truetype/yozo"
 }
 
 package_yozo-office-2019-templates() {
@@ -82,7 +86,7 @@ package_yozo-office-2019-templates() {
 #        read -q ans && mv -i $i $new
 #        echo
 #    done
-    install -d "${pkgdir}/etc/skel/模板"
-    cp -r etc/skel/*/* "${pkgdir}/etc/skel/模板"
-    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office/Templates"
+#    install -d "${pkgdir}/etc/skel/模板"
+#    cp -r etc/skel/*/* "${pkgdir}/etc/skel/模板"
+#    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office/Templates"
 }
