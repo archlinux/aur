@@ -1,8 +1,10 @@
-# Maintainer: Martin Kröning <mkroening@hotmail.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Martin Kröning <mkroening@hotmail.de>
+
 pkgname=moodledesktop-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="Moodle Desktop is our solution to accessing your Moodle courses on desktop or Surface tablets."
 arch=('x86_64' 'i686')
 url='https://download.moodle.org/desktop/'
