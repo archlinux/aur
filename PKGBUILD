@@ -8,7 +8,7 @@
 
 pkgname=checkpolicy
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -17,8 +17,18 @@ groups=('selinux')
 makedepends=('libsepol>=3.0')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/20191204/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c88c719a141dd5c1202d49c378c7f063349d630522d5e04dc6e0c53da81aa4f8')
+source=("https://github.com/SELinuxProject/selinux/releases/download/20191204/${pkgname}-${pkgver}.tar.gz"
+        '0001-checkpolicy-remove-unused-te_assertions.patch')
+sha256sums=('c88c719a141dd5c1202d49c378c7f063349d630522d5e04dc6e0c53da81aa4f8'
+            '8ee8d4e01e7441fe8bee97c41dabc37ed707f55e65ad6d415382590cbc0597e2')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  # Backport commit 4d330d0d3155 ("checkpolicy: remove unused te_assertions")
+  # https://github.com/SELinuxProject/selinux/commit/4d330d0d3155211f119b3082f728ae42dcc01e96
+  patch -Np2 -i ../0001-checkpolicy-remove-unused-te_assertions.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
