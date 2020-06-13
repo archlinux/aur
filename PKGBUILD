@@ -24,7 +24,9 @@ prepare() {
 package_yozo-office-2019() {
     depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
     optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
-    			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.')
+    			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
+    			'yozo-office-2019-fonts: UI Fonts'
+    			'yozo-office-2019-templates: Templates files')
     install=${pkgname}.install
     cd "${srcdir}"
     cp -r usr "${pkgdir}"
