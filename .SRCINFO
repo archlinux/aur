@@ -1,6 +1,6 @@
 pkgbase = stardog-studio
 	pkgdesc = IDE for the Stardog graph database management system.
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://www.stardog.com/studio/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = stardog-studio
 	provides = stardog-studio
 	conflicts = stardog-studio
 	options = !strip
-	source = https://s3.amazonaws.com/studio.stardog.com/linux/Stardog%20Studio-1.20.0.tar.gz
+	source = https://s3.amazonaws.com/studio.stardog.com/linux/Stardog%20Studio-1.21.0.tar.gz
 	source = stardog-studio.desktop
 	source = stardog-studio.png
-	b2sums = ad182222aa264021bca5b7eaca8de974bfc82d48f95dfcc9c1f47983fd4b9ade9ef3136d1735e08cc0550e5682d2fa9b60bf61e8aa73352e26e6a5842726f4d2
+	b2sums = cff4f9f20a6cbeda899750b71df05fa3f61dd00a8e830b0891e568e1488a96227b1bb54ba679659002fc563e51b838471126dc7618cf3e47f575a6f1b3ebf6fe
 	b2sums = 6d355359ea74002f7c6be304e163ac0d9904a50e6673be53f562b456cb62a0643cbe3d5498652b43dbebba123d1ca4feb560f46e3ba7959d7c751b259775217e
 	b2sums = fd0c409793dd6cbdd1be39f2cea3c74c8cf086778163627cb23ffea30a23737fa4e24bfa5fceb4f30f392c0211b7cd644778518043efee5e4ffe71b7ec882366
 
