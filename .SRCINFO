@@ -1,6 +1,6 @@
 pkgbase = 2048.c-git
 	pkgdesc = Console version of the game "2048" for GNU/Linux
-	pkgver = 20150412.c9bba68
+	pkgver = 20191210.9b387c3
 	pkgrel = 1
 	url = https://github.com/mevdschee/2048.c
 	arch = i686

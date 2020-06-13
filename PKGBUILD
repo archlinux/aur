@@ -3,7 +3,7 @@
 
 _pkgname=2048.c
 pkgname=${_pkgname}-git
-pkgver=20150412.c9bba68
+pkgver=20191210.9b387c3
 pkgrel=1
 pkgdesc='Console version of the game "2048" for GNU/Linux'
 url='https://github.com/mevdschee/2048.c'
