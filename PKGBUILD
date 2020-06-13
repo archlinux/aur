@@ -1,7 +1,7 @@
 # Maintainer: PurpleUltraViolet <purple.ultraviolet616@gmail.com>
 
 pkgname=ftops-git
-pkgver=v1.0.0
+pkgver=v1.0.1
 pkgrel=1
 pkgdesc="Fountain markup to PostScript"
 arch=('i686' 'x86_64')
