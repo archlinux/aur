@@ -1,17 +1,17 @@
 pkgbase = mingw-w64-muparser
 	pkgdesc = A fast math parser library (mingw-w64)
-	pkgver = 2.2.6.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://muparser.sourceforge.net/
 	arch = any
-	license = MIT
+	license = custom
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz
-	sha256sums = d2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3
+	source = https://github.com/beltoforion/muparser/archive/v2.3.0.tar.gz
+	sha256sums = b324c738a6bd5d4c7651e4d0e2a7e6d601b7cb1b8b17d11c097ce2128b772da0
 
 pkgname = mingw-w64-muparser
 
