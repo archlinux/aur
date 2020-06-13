@@ -53,7 +53,7 @@ package_yozo-office-2019-bin() {
     for i in /usr/lib/jvm/java-8-openjdk/jre/lib/*; do
         ln -sf $i
     done
-#    rm ext
+    rm ext
     mv ../ext .
     
     chmod 755 $pkgdir/usr/lib
