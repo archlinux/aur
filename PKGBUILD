@@ -1,10 +1,10 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Contributor: willemw <willemw12@gmail.com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=zfs-auto-snapshot-git
 pkgdesc="Implementation of a snapshotting service for ZFS"
 pkgver=1.2.4.r31.92db087
-pkgrel=1
-epoch=1
+pkgrel=2
 arch=('any')
 url="https://github.com/zfsonlinux/zfs-auto-snapshot"
 license=('GPL2')
@@ -77,10 +77,11 @@ EOF
 package() {
   cd "$srcdir/${pkgname%-git}"
 
-  install -d "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/man/man8"
+  gzip "src/${pkgname%-git}.8" > "$pkgdir/usr/share/man/man8/${pkgname%-git}.8.gz"
+
   install -d "$pkgdir/usr/lib/systemd/system"
-  install -d "$pkgdir/usr/share/man/man8"
-  install -m 755 src/zfs-auto-snapshot.sh "$pkgdir/usr/bin/zfs-auto-snapshot"
-  install -m 644 src/zfs-auto-snapshot.8 "$pkgdir/usr/share/man/man8"
   install -m 644 ../systemd/* "$pkgdir/usr/lib/systemd/system"
+
+  install -Dm 755 "src/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 }
