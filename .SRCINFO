@@ -1,0 +1,19 @@
+pkgbase = python-pslab-git
+	pkgdesc = Core library for PSlab desktop
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pslab.io
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pyserial
+	depends = python-numpy
+	provides = pslab-python
+	conflicts = python-pslab
+	options = !emptydirs
+	source = git://github.com/fossasia/pslab-python.git
+	sha512sums = SKIP
+
+pkgname = python-pslab-git
+
