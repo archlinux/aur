@@ -5,23 +5,26 @@
 # Contributor: Curtis Smith <kman922002@gmail.com>
 
 pkgname=odamex
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64')
 url='http://odamex.net/'
 license=('GPL')
-depends=('sdl_mixer>=1.2.6' 'wxgtk' 'miniupnpc')
+depends=('sdl2_mixer' 'portmidi' 'wxgtk' 'miniupnpc')
 makedepends=('cmake')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/odamex-src-${pkgver}.tar.gz"
-        0001-Fix-WAD-path.patch)
-sha256sums=('31704a45eae3a833dcc0c4c840444cda0ba88a2fc9b6115b612e31a6dcc48bfb'
-            'c4ce4072515c7dbfe65d1829a317d21b5f1091e04997761cdfee345a60141638')
+        0001-Fix-WAD-path.patch
+        fix-cxxflags.diff)
+sha256sums=('26e111bef9af14dd538e6424b6663b24e97eab60fda8c76e2398d575d03b0839'
+            'c4ce4072515c7dbfe65d1829a317d21b5f1091e04997761cdfee345a60141638'
+            '0541328408d71dfcd7cdf866497f9cc2c7f10780986d2fea5743f5df584d923a')
 
 prepare() {
   cd $pkgname-src-$pkgver
   patch --forward --strip=1 --input="${srcdir}/0001-Fix-WAD-path.patch"
+  patch --forward --strip=1 --input="${srcdir}/fix-cxxflags.diff"
 }
 
 build() {
