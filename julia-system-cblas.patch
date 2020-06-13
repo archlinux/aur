@@ -1,0 +1,133 @@
+From 0c442318196389d653ee21eba65d8c4f7beb72a0 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Fri, 5 Oct 2018 15:52:17 +0000
+Subject: [PATCH] Use a dedicated cblas library, that may or may not be in fact
+ the blas one.
+
+Openblas can be built with statically compiled convenience copies of
+cblas, but if not, then the system libcblas.so should be used.
+---
+ Make.inc                         | 12 +++++++++++-
+ Makefile                         |  3 +++
+ base/Makefile                    |  4 ++++
+ stdlib/LinearAlgebra/src/blas.jl | 15 +++++++++++++--
+ 4 files changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/Make.inc b/Make.inc
+index b00a41b356d8..7bc6cd69e863 100644
+--- a/Make.inc
++++ b/Make.inc
+@@ -945,6 +945,7 @@ endif
+ ifeq ($(USE_SYSTEM_BLAS), 1)
+ ifeq ($(OS), Darwin)
+ USE_BLAS64 := 0
++USE_SYSTEM_CBLAS := 0
+ USE_SYSTEM_LAPACK := 0
+ LIBBLAS := -L$(build_libdir) -lgfortblas
+ LIBBLASNAME := libgfortblas
+@@ -957,12 +958,21 @@ LIBBLAS := -L$(build_shlibdir) -lopenblas
+ LIBBLASNAME := libopenblas
+ endif
+ 
+-# OpenBLAS builds LAPACK as part of its build.
++# OpenBLAS builds cblas/LAPACK as part of its build.
+ # We only need to build LAPACK if we are not using OpenBLAS.
+ ifeq ($(USE_SYSTEM_BLAS), 0)
++LIBCBLAS := $(LIBBLAS)
++LIBCBLASNAME := $(LIBBLASNAME)
+ LIBLAPACK := $(LIBBLAS)
+ LIBLAPACKNAME := $(LIBBLASNAME)
+ else
++ifeq ($(USE_SYSTEM_CBLAS), 1)
++LIBCBLAS ?= -lcblas
++LIBCBLASNAME ?= libcblas
++else
++LIBCBLAS := -L$(build_shlibdir) -lcblas $(LIBBLAS)
++LIBCBLASNAME := libcblas
++endif
+ ifeq ($(USE_SYSTEM_LAPACK), 1)
+ LIBLAPACK ?= -llapack
+ LIBLAPACKNAME ?= liblapack
+diff --git a/Makefile b/Makefile
+index 6063e79ae956..7df60b8170d6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -184,6 +184,9 @@ endif
+ endif
+ 
+ JL_PRIVATE_LIBS-$(USE_SYSTEM_BLAS) += $(LIBBLASNAME)
++ifneq ($(LIBCBLASNAME),$(LIBBLASNAME))
++JL_PRIVATE_LIBS-$(USE_SYSTEM_CBLAS) += $(LIBCBLASNAME)
++endif
+ ifneq ($(LIBLAPACKNAME),$(LIBBLASNAME))
+ JL_PRIVATE_LIBS-$(USE_SYSTEM_LAPACK) += $(LIBLAPACKNAME)
+ endif
+diff --git a/base/Makefile b/base/Makefile
+index 70e6da933d70..8ecfa6902b59 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -42,6 +42,7 @@ else
+ endif
+ 	@echo "const libm_name = \"$(LIBMNAME)\"" >> $@
+ 	@echo "const libblas_name = \"$(LIBBLASNAME)\"" >> $@
++	@echo "const libcblas_name = \"$(LIBCBLASNAME)\"" >> $@
+ 	@echo "const liblapack_name = \"$(LIBLAPACKNAME)\"" >> $@
+ ifeq ($(USE_BLAS64), 1)
+ 	@echo "const USE_BLAS64 = true" >> $@
+@@ -183,6 +184,9 @@ endif
+ $(eval $(call symlink_system_library,libpcre2-8,PCRE))
+ $(eval $(call symlink_system_library,libdSFMT,DSFMT))
+ $(eval $(call symlink_system_library,$(LIBBLASNAME),BLAS))
++ifneq ($(LIBCBLASNAME),$(LIBBLASNAME))
++$(eval $(call symlink_system_library,$(LIBCBLASNAME),CBLAS))
++endif
+ ifneq ($(LIBLAPACKNAME),$(LIBBLASNAME))
+ $(eval $(call symlink_system_library,$(LIBLAPACKNAME),LAPACK))
+ endif
+diff --git a/stdlib/LinearAlgebra/src/blas.jl b/stdlib/LinearAlgebra/src/blas.jl
+index fee8c9e74d7e..8c76d1acbf29 100644
+--- a/stdlib/LinearAlgebra/src/blas.jl
++++ b/stdlib/LinearAlgebra/src/blas.jl
+@@ -61,6 +61,7 @@ export
+ 
+ 
+ const libblas = Base.libblas_name
++const libcblas = Base.libcblas_name
+ const liblapack = Base.liblapack_name
+ 
+ import LinearAlgebra
+@@ -101,6 +102,16 @@ else
+     end
+ end
+ 
++if libcblas == libblas
++     macro cblasfunc(x)
++        return @blasfunc(x)
++    end
++else
++    macro cblasfunc(x)
++        return Expr(:quote, x)
++    end
++end
++
+ openblas_get_config() = strip(unsafe_string(ccall((@blasfunc(openblas_get_config), libblas), Ptr{UInt8}, () )))
+ 
+ """
+@@ -300,7 +311,7 @@ for (fname, elty) in ((:cblas_zdotc_sub,:ComplexF64),
+                 #       DOUBLE PRECISION DX(*),DY(*)
+         function dotc(n::Integer, DX::Union{Ptr{$elty},AbstractArray{$elty}}, incx::Integer, DY::Union{Ptr{$elty},AbstractArray{$elty}}, incy::Integer)
+             result = Ref{$elty}()
+-            ccall((@blasfunc($fname), libblas), Cvoid,
++            ccall((@cblasfunc($fname), libcblas), Cvoid,
+                 (BlasInt, Ptr{$elty}, BlasInt, Ptr{$elty}, BlasInt, Ptr{$elty}),
+                  n, DX, incx, DY, incy, result)
+             result[]
+@@ -318,7 +329,7 @@ for (fname, elty) in ((:cblas_zdotu_sub,:ComplexF64),
+                 #       DOUBLE PRECISION DX(*),DY(*)
+         function dotu(n::Integer, DX::Union{Ptr{$elty},AbstractArray{$elty}}, incx::Integer, DY::Union{Ptr{$elty},AbstractArray{$elty}}, incy::Integer)
+             result = Ref{$elty}()
+-            ccall((@blasfunc($fname), libblas), Cvoid,
++            ccall((@cblasfunc($fname), libcblas), Cvoid,
+                 (BlasInt, Ptr{$elty}, BlasInt, Ptr{$elty}, BlasInt, Ptr{$elty}),
+                  n, DX, incx, DY, incy, result)
+             result[]
