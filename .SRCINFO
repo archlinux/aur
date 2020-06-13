@@ -1,6 +1,6 @@
 pkgbase = python-scapy-utils
 	pkgdesc = A collection of utility function for use with Scapy module
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://pypi.org/project/scapy-utils/
 	arch = any
