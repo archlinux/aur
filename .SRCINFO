@@ -1,11 +1,11 @@
 pkgbase = passphrase-git
 	pkgdesc = Zero-dependency passphrase generator, written in Zig
 	pkgver = r7.3c9d418
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~alva/passphrase
 	arch = any
 	license = MIT
-	depends = zig>=0.6.0
+	makedepends = zig>=0.6.0
 	source = git+https://git.sr.ht/~alva/passphrase
 	sha256sums = SKIP
 

@@ -2,13 +2,13 @@
 _pkgbasename=passphrase
 _exename=pp
 pkgname=${_pkgbasename}-git
-pkgrel=3
+pkgrel=4
 pkgver=r7.3c9d418
 pkgdesc="Zero-dependency passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${_pkgbasename}"
 license=('MIT')
-depends=('zig>=0.6.0')
+makedepends=('zig>=0.6.0')
 source=(git+https://git.sr.ht/~alva/${_pkgbasename})
 sha256sums=('SKIP')
 
