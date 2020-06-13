@@ -5,7 +5,7 @@
 _pkgname=nu
 pkgname=${_pkgname}shell
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A new type of shell."
 url="https://www.nushell.sh"
 license=('MIT')
@@ -18,7 +18,7 @@ source=("https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 sha256sums=('f19e580b645ff047e3b7cb2e0823654e020cd5c62b22e601caf6be579204dc2a')
 
 package() {
-  cd "$srcdir/$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   cargo install \
     --locked \

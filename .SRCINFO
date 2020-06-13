@@ -1,7 +1,7 @@
 pkgbase = nushell
 	pkgdesc = A new type of shell.
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nushell.sh
 	arch = x86_64
 	arch = i686
