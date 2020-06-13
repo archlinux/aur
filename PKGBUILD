@@ -39,8 +39,10 @@ package() {
     make INSTALL_ROOT="$pkgdir" install    
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
+    mkdir -p ${pkgdir}/usr/bin
     sed -i 's;mudlet;mudlet-git;' ../mudlet.desktop
-    sed -i 's;Mudlet;Mudlet (git);' ../mudlet.desktop
+    sed -i 's;Exec=mudlet-git;Exec=/opt/mudlet/bin/mudlet;' ../mudlet.desktop
+    sed -i 's;Mudlet;Mudlet (dev);' ../mudlet.desktop
     mv ../mudlet.desktop ../mudlet-git.desktop
     install -m 644 ../mudlet-git.desktop ${pkgdir}/usr/share/applications/
     mv icons/mudlet_dev_256px.png icons/mudlet-git.png
