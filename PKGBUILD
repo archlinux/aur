@@ -21,7 +21,7 @@ _ex_pt() {
 
 build() {
     cd "$srcdir/gohufont-$pkgver"
-    for f in *.pcf.gz; do
+    for f in *uni*; do
         fonttosfnt -o "${f/pcf.gz/otb}" "$f"
     done
 }
