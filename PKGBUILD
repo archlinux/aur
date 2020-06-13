@@ -1,7 +1,7 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-pkgver=0.4.14b
+pkgver=0.4.18b
 _ver=${pkgver/b/-beta}
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
@@ -12,7 +12,7 @@ depends=('android-tools' 'android-udev' 'electron4' 'e2fsprogs')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
-sha512sums=('6ca2d1142020f55f93c43a1370a6bde7fb442921e129afffef2421077197a03ca33cfbd6b6b63ea5371746a1b550300c3fbafe05ac490a2406f36751bc4707f3')
+sha512sums=('06752c668b13ea72881091a2b5264c94f045c597647bd1b39f4cf02146ead47a7248b3b0a80fea7b04b4f5e8b6817d3cf794cc7251c379f893526301ba1b6a09')
 
 prepare() {
     local cache="$srcdir/npm-cache"
