@@ -1,0 +1,19 @@
+pkgbase = 8188fu-dkms
+	pkgdesc = Driver for Realtek RTL8188FU USB wireless adapter
+	pkgver = r8.1d12cae
+	pkgrel = 1
+	url = http://www.realtek.com.tw/
+	install = 8188fu-dkms.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = dkms
+	source = 8188fu::git+https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers.git
+	source = blacklist-r8188fu.conf
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6
+	sha256sums = e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103
+
+pkgname = 8188fu-dkms
+
