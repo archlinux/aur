@@ -5,7 +5,7 @@ _projectname='electron'
 _pkgname="${_projectname}4"
 pkgname="$_pkgname-bin"
 pkgver='4.2.12'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Build cross platform desktop apps with web technologies - version 4 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org/"
@@ -49,7 +49,7 @@ package() {
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$_pkgname/." {} +
 
-	for _folder in 'locales' 'resources'; do
+	for _folder in 'locales' 'resources' 'swiftshader'; do
 		cp -r --no-preserve=ownership --preserve=mode "$_folder/" "$pkgdir/usr/lib/$_pkgname/$_folder/"
 	done
 
