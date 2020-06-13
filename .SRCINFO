@@ -1,0 +1,38 @@
+pkgbase = i3-next-git
+	pkgdesc = An improved dynamic tiling window manager
+	pkgver = 4.18.r322.gcf09cc79
+	pkgrel = 1
+	url = http://i3wm.org/
+	arch = i686
+	arch = x86_64
+	groups = i3-vcs
+	license = BSD
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = xcb-util-cursor
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = xcb-util-xrm
+	depends = libev
+	depends = yajl
+	depends = startup-notification
+	depends = pango
+	depends = libxkbcommon-x11
+	optdepends = dmenu: As menu.
+	optdepends = i3lock: For locking your screen.
+	optdepends = i3status: To display system information with a bar.
+	optdepends = perl: i3-save-tree and i3-dmenu-desktop
+	optdepends = perl-anyevent-i3: Features like saving the layout.
+	optdepends = perl-json-xs: Features like saving the layout.
+	provides = i3-wm
+	conflicts = i3-wm
+	conflicts = i3bar
+	conflicts = i3bar-git
+	options = docs
+	options = !strip
+	options = debug
+	source = git://github.com/i3/i3.git#branch=next
+	sha1sums = SKIP
+
+pkgname = i3-next-git
+
