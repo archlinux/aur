@@ -1,0 +1,42 @@
+#!/bin/sh
+
+post_install() {
+    systemctl daemon-reload
+
+    ECHOLEN=$(echo -e|awk '{print length($0)}')
+    if [ ${ECHOLEN} = '0' ]
+    then
+        ECHO='echo -e'
+    else
+        ECHO='echo'
+    fi;
+    $ECHO "\033[36m**************************************\033[0m"
+    $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
+    $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
+    $ECHO "\033[36m**************************************\033[0m"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    
+    ECHOLEN=$(echo -e|awk '{print length($0)}')
+    if [ ${ECHOLEN} = '0' ]
+    then
+        ECHO='echo -e'
+    else
+        ECHO='echo'
+    fi;
+    $ECHO "\033[36m**************************************\033[0m"
+    $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
+    $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
+    $ECHO "\033[36m**************************************\033[0m"
+}
+
+pre_remove() {
+    systemctl disable runsunloginclient
+    systemctl stop runsunloginclient
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
