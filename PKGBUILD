@@ -2,7 +2,7 @@
 
 pkgname=vlang-bin
 pkgver=0.1.27
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url="https://vlang.io"
@@ -16,12 +16,11 @@ package() {
   install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
   install -Dm644 "${srcdir}"/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}"/v "$pkgdir/usr/lib/vlang"
-  cp -a "${srcdir}"/examples "$pkgdir/usr/share/vlang/"
-  cp -a "${srcdir}"/tutorials "$pkgdir/usr/share/vlang/"
-  cp -a "${srcdir}"/doc "$pkgdir/usr/share/vlang/"
-  cp -a "${srcdir}"/thirdparty "$pkgdir/usr/lib/vlang/"
-  cp -a "${srcdir}"/vlib "$pkgdir/usr/lib/vlang/"
-  cp -a "${srcdir}"/cmd "$pkgdir/usr/lib/vlang/"
+  cp -a cmd "$pkgdir/usr/lib/vlang/"
+  chmod -R 777 "$pkgdir/usr/lib/vlang/cmd"
+  cp -a examples "$pkgdir/usr/share/vlang/"
+  cp -a thirdparty "$pkgdir/usr/lib/vlang/"
+  cp -a vlib "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 # vim:set ts=2 sw=2 et:
