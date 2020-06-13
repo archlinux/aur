@@ -1,12 +1,12 @@
-# Contributor: feufochmar <feufochmar@d-20.fr>
+# Contributor: feufochmar <feufochmar.gd@beleth.fr>
 pkgname=otf-miama
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A calligraphic font."
 arch=('any')
 url="http://www.dafont.com/fr/miama.font"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=("http://img.dafont.com/dl/?f=miama")
 
 package() {
