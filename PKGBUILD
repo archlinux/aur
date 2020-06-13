@@ -26,7 +26,7 @@ source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
 		)
 noextract=()
 md5sums=('SKIP'
-         '9502bfa470c41577c750314515bba6f0')
+         '707ae7795aab12effd83e92e394bccf4')
 validpgpkeys=()
 
 pkgver() {
@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
-	#sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+	sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
     git submodule update --init --recursive
 }
 

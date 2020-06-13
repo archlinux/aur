@@ -13,7 +13,7 @@ pkgbase = lemon-lime-git
 	source = Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git
 	source = lemon-lime.desktop
 	md5sums = SKIP
-	md5sums = 9502bfa470c41577c750314515bba6f0
+	md5sums = 707ae7795aab12effd83e92e394bccf4
 
 pkgname = lemon-lime-git
 
