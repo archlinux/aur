@@ -1,6 +1,6 @@
 pkgbase = weylus-bin
 	pkgdesc = Weylus - Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = weylus-bin
 	depends = libxinerama
 	depends = libxft
 	depends = libxrandr
-	source = weylus-bin-0.7.0.zip::https://github.com/H-M-H/Weylus/releases/download/v0.7.0/linux.zip
-	sha256sums = db1f662b689d6a184b215816cc6c0a04c7c8e35941692ffbda3f1837e8bdb9c8
+	source = weylus-bin-0.7.1.zip::https://github.com/H-M-H/Weylus/releases/download/v0.7.1/linux.zip
+	sha256sums = a5c8931a6ab79eb910275492ed967a3086979e939c6eae096179eedfb5326810
 
 pkgname = weylus-bin
 
