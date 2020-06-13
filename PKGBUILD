@@ -1,16 +1,16 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=2.0.0b8
+pkgver=2.0.0
 _pkgver=${pkgver/b/-beta.}
 pkgrel=1
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
-depends=('electron')
+depends=('electron7')
 makedepends=('yarn' 'moreutils' 'jq' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
-sha256sums=('2c51c25cd0ec1c01c0543270d2769d1751516c7877ce4cd81bede10e2d0b57d6')
+sha256sums=('52d35a7dfa3e81f2e476433c9882131834837a2a01b6cbfb17a88f45c163ebeb')
 conflicts=("majsoul-plus-bin")
 
 prepare() {
@@ -19,8 +19,8 @@ prepare() {
 	if [ "$CARCH" == "i686" ]; then
 		targetArch="ia32"
 	fi
-	electronDist="\/usr\/lib\/electron"
-    electronVersion=$(tail -1 /usr/lib/electron/version)
+	electronDist="\/usr\/lib\/electron7"
+    electronVersion=$(tail -1 /usr/lib/electron7/version)
     sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
     jq '.build.linux.target = ["dir"]' package.json | sponge package.json
     jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
@@ -63,7 +63,7 @@ Name=Majsoul Plus
 Name[zh_CN]=雀魂 Plus
 GenericName[zh_CN]=雀魂 Plus
 Comment=Majsoul Plus Browser
-Comment[zh_CN]=一款设计用于雀魂麻将的 PC 专用浏览器
+Comment[zh_CN]=雀魂麻将Majsoul专用浏览器，提供了一些专有特性
 Exec=majsoul-plus %U
 Terminal=false
 Type=Application
