@@ -1,6 +1,6 @@
 # Maintainer: Fabian Bornschein <plusfabi(At)gmail(Dot)com>
 pkgname=game-devices-udev
-pkgver=0.7
+pkgver=0.7.9
 pkgrel=0
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/Fabish/game-devices-udev'
@@ -11,7 +11,7 @@ makedepends=('lsb-release')
 install=${pkgname}.install
 source=("https://gitlab.com/Fabish/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip"
 		"uinput.conf")
-sha512sums=('f6b2b25dee9e46d0f7d7df45d2b82c652117547404f99b50e3319eb331470c543d465db09a15f86fd3eb0e84b61564a211c54ae05cb4ca9813d3f2b6abf6c1d3'
+sha512sums=('ec48291810c9e219708aa03507ca70b34b0e378f9fda678e086cc964b3bffd1234c1105ee704ca645840adfb7b7553c494000756500641a6c1b58d35fbf1f898'
             'a9b069ed121ffeee887e0583d8cb46035ecf1fa90a26a4ecb3aa11ff03178b2b08621f6676db6b2350f290694c04aabcf36f2ce3e0813a76dde9a33555edb112')
 if [[ $(lsb_release -is) != "Arch" ]] ; then exit 1; fi
 
