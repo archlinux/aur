@@ -2,7 +2,7 @@
 
 pkgname=ruby-jsonpath
 _gemname=jsonpath
-pkgver=0.5.0
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Ruby implementation of http://goessner.net/articles/JsonPath'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 source=("${pkgname}-${pkgver}.gem::https://rubygems.org/downloads/$_gemname-$pkgver.gem"
         'LICENSE::https://github.com/joshbuddy/jsonpath/raw/master/LICENSE.md')
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('4c7282006de383fb62d8a092e6bec6e7ebfc0b899ad59349a279bc32c76bfb9e'
+sha256sums=('185d657cb4533a4fad4b6407a7b10eba0d2f654f699b9d9f714a65de4e988faf'
             'f8d08617b73c9c304c8543b9b87e354e02468bd02982ae4406283e7a6e29ec02')
 
 package() {
