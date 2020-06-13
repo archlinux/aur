@@ -4,19 +4,26 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=lib32-jansson
-pkgver=2.12
+pkgver=2.13.1
 pkgrel=1
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=(x86_64)
-url='http://www.digip.org/jansson/'
+url=http://www.digip.org/jansson/
 license=(MIT)
 depends=(
   jansson
   lib32-glibc
 )
 makedepends=(git)
-source=(git+https://github.com/akheron/jansson.git#tag=v${pkgver})
+_tag=e9ebfa7e77a6bee77df44e096b100e7131044059
+source=(git+https://github.com/akheron/jansson.git#tag=${_tag})
 sha256sums=(SKIP)
+
+pkgver() {
+  cd jansson
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd jansson
@@ -31,8 +38,8 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32'
+    --prefix=/usr \
+    --libdir=/usr/lib32
   make
 }
 
@@ -44,4 +51,4 @@ package() {
   ln -s jansson "${pkgdir}"/usr/share/licenses/lib32-jansson
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
