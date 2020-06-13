@@ -8,7 +8,7 @@ epoch=1
 arch=('any')
 url="https://github.com/zfsonlinux/zfs-auto-snapshot"
 license=('GPL2')
-depends=('systemd>=212' 'zfs')
+depends=('systemd' 'zfs')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

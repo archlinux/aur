@@ -7,7 +7,7 @@ pkgbase = zfs-auto-snapshot-git
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = systemd>=212
+	depends = systemd
 	depends = zfs
 	provides = zfs-auto-snapshot
 	conflicts = zfs-auto-snapshot
