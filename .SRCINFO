@@ -1,6 +1,6 @@
 pkgbase = zram-generator-git
 	pkgdesc = Systemd unit generator for zram devices
-	pkgver = 0.1.2+42+g4eaf28a
+	pkgver = 0.1.2+45+g943d7aa
 	pkgrel = 1
 	url = https://github.com/systemd/zram-generator
 	install = zram-generator.install
