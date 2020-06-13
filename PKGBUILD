@@ -1,63 +1,73 @@
-# Maintainer: lks <lukas dot graetz et web dot de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: lks <lukas dot graetz et web dot de>
 # based on cairo PKGBUILD by: Jan de Groot <jgc@archlinux.org>
 
-pkgname=cairo-dfb
 _pkgname=cairo
-pkgver=1.14.8
-pkgrel=2
-pkgdesc="Cairo vector graphics library with directfb backend"
-arch=(i686 x86_64 armv7h)
-license=('LGPL' 'MPL')
+pkgname=$_pkgname-dfb
+pkgver=1.17.2+25+gaee96d175
+pkgrel=1
+pkgdesc="2D graphics library with support for multiple output devices with directfb frontend"
 url="https://cairographics.org/"
-# requires libGL + libEGL - all libgl variants (mesa, nvidia-xxx-libgl/nvidia-utils) provide libEGL
-depends=('directfb' 'libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo')
-makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'valgrind' 'git')
-             # for the test suite:
-#             'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
-#optdepends=('xcb-util: for XCB backend') # really needed?
+arch=(i686 x86_64 armv7h)
+license=(LGPL MPL)
+depends=(directfb libpng libxrender libxext fontconfig pixman glib2 lzo)
+makedepends=(mesa-libgl librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
+checkdepends=(ttf-dejavu gsfonts)
+_commit=aee96d175d8349945a6d1948a56abd4b4ec6ad84  # master
 provides=('cairo-xcb' "cairo=${pkgver}")
 replaces=('cairo-xcb')
 conflicts=('cairo')
-source=(https://cairographics.org/releases/$_pkgname-$pkgver.tar.xz)
-sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e')
+source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/$_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $srcdir/$_pkgname
+
+  # Update gtk-doc
+  cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
+  cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
+
+  # Fix typo
+  sed -i 's/have_png/use_png/g' configure.ac
+
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $srcdir/$_pkgname
 
   ./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--localstatedir=/var \
 	--disable-static \
-	--disable-lto \
+	--disable-gl \
 	--enable-tee \
-	--enable-gl \
-	--enable-egl \
 	--enable-svg \
 	--enable-ps \
 	--enable-pdf \
 	--enable-gobject \
-	--enable-directfb #\
-	#--enable-gtk-doc
-	
-	#--disable-xlib-xcb \
-	#--enable-test-surfaces \ takes ages
-	#--enable-drm # breaks build
-	
+	--enable-gtk-doc \
+	--enable-directfb \
+        --enable-full-testing \
+        --enable-test-surfaces
+  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-#check() {
-#  cd $_pkgname-$pkgver
-#  make -k test || /bin/true
-#  
-#  # results:
-#  # 1.12.8-1	# 162 Passed, 328 Failed [8 crashed, 10 expected], 26 Skipped
-#  # 1.12.12-2:	# 29 Passed, 464 Failed [460 crashed, 2 expected], 26 Skipped
-#  # 1.12.16-1:	144 Passed, 364 Failed [6 crashed, 12 expected], 27 Skipped
-#
-#}
+check() {
+  cd $srcdir/$_pkgname
+  # FIXME: tests don't pass
+  env CAIRO_TEST_TARGET=image \
+      CAIRO_TEST_TARGET_FORMAT=rgba \
+      CAIRO_TESTS='!pthread-show-text' make -k check || :
+}
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $srcdir/$_pkgname
   make DESTDIR="$pkgdir" install
 }
