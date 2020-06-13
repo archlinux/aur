@@ -1,0 +1,11 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+  echo "Enabling Upower service"
+  sudo systemctl enable upower.service
+}
+
+pre_remove() {
+  echo "Disabling Upower service"
+  sudo systemctl disable upower.service
+}
