@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: jswenson
 pkgname=android-messages-desktop
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -13,7 +12,7 @@ makedepends=('git' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('d7e4313be62c5140e48c12c3f9093854b9d0f30ff4e0a2faed85e9e5a21b5a58'
+sha256sums=('2d2a308b8fc6f04846507da60bace01b8336cfbe99a775ba97ea7cf35114f92c'
             'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
@@ -21,7 +20,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	# Disable building of dist packages
-	sed -i 's/"AppImage", "snap", "pacman", "deb", "rpm", "freebsd", "zip"/"dir"/g' \
+	sed -i 's/"AppImage", "snap", "deb", "pacman", "rpm", "freebsd", "zip"/"dir"/g' \
 		electron-builder.js
 }
 
