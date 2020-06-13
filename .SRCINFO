@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 20.04.1.r136.gd9ce7145
+	pkgver = 20.10.1.r10.gd7ec6a45
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any

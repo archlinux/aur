@@ -9,7 +9,7 @@ pkgname=(yaru-sound-theme-git
          yaru-unity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=20.04.1.r136.gd9ce7145
+pkgver=20.10.1.r10.gd7ec6a45
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
