@@ -4,8 +4,8 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=2.4.0
-_pkgver="${pkgver}-linux2"
+pkgver=2.5.2
+_pkgver="${pkgver}-linux1"
 gitname="release-${_pkgver}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
@@ -14,7 +14,7 @@ url="https://desktop.github.com"
 license=('MIT')
 depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf' 'nss' 'nspr')
 optdepends=('hub: CLI interface for GitHub.')
-makedepends=('xorg-server-xvfb' 'nodejs>=10.16.0' 'yarn' 'python2')
+makedepends=('xorg-server-xvfb' 'nodejs>=10.16.0' 'yarn' 'python2' 'unzip')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
   git+https://github.com/shiftkey/desktop.git#tag=${gitname}
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  2758e15659f5770ae2ac948250372135029e7ac2d4b6bf431a112dfdbcc681d1
+  932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
 )
 build() {
   cd desktop
