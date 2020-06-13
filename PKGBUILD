@@ -1,5 +1,5 @@
 pkgname=miniupnpd-nft-git
-pkgver=2.1.r109.g41f5475
+pkgver=2.1.r343.g1e7fb30
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon with nftables support"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ backup=(etc/miniupnpd/miniupnpd.conf)
 source=("git+https://github.com/miniupnp/miniupnp.git"
         "miniupnpd.service")
 sha256sums=('SKIP'
-            '661bc58cce292571b69d46373325ebde89c503ad96aa92e8f5b13d1168e998cb')
+            '8724e9c7815852bd6afe98508d9de5b7d4d1100e1e11d10afb6f14fb6b23277a')
 
 
 pkgver() {
@@ -24,14 +24,14 @@ pkgver() {
 
 build() {
   cd "miniupnp/miniupnpd"
-
-  make -f Makefile.linux_nft
+  ./configure --ipv6 --leasefile --disable-fork --firewall=nftables
+  make
 }
 
 package() {
   cd "miniupnp/miniupnpd"
 
-  make DESTDIR="$pkgdir" SBININSTALLDIR="/usr/bin" -f Makefile.linux_nft install
+  make DESTDIR="$pkgdir" SBININSTALLDIR="/usr/bin" install
 
   rm -r "$pkgdir/etc/init.d"
 
@@ -41,6 +41,7 @@ package() {
   install -Dm755 "netfilter_nft/scripts/nft_flush.sh" "$pkgdir/etc/miniupnpd/nft_flush.sh"
   install -Dm755 "netfilter_nft/scripts/nft_delete_chain.sh" "$pkgdir/etc/miniupnpd/nft_delete_chain.sh"
   install -Dm755 "netfilter_nft/scripts/nft_removeall.sh" "$pkgdir/etc/miniupnpd/nft_removeall.sh"
+  install -Dm755 "netfilter_nft/scripts/nft_display.sh" "$pkgdir/etc/miniupnpd/nft_display.sh"
 
   sed -i -e "s/^uuid=[-0-9a-f]*/uuid=00000000-0000-0000-0000-000000000000/
              s/make genuuid/uuidgen/" "$pkgdir/etc/miniupnpd/miniupnpd.conf"

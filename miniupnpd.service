@@ -5,10 +5,8 @@ After=network.target network-online.target
 Wants=network-online.target
 
 [Service]
-Type=forking
-ExecStartPre=/etc/miniupnpd/nft_init.sh
+Type=simple
 ExecStart=/usr/bin/miniupnpd -f /etc/miniupnpd/miniupnpd.conf
-ExecStopPost=/etc/miniupnpd/nft_removeall.sh
 PIDFile=/run/miniupnpd.pid
 
 [Install]
