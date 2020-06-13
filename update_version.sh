@@ -9,8 +9,8 @@ if [ ${#} -lt 1 ]; then
 fi
 
 version=$1
-source="http://stellar.cct.lsu.edu/files/hpx_${version}.tar.bz2"
-output_file="/tmp/hpx_${version}.tar.bz2"
+source="https://github.com/STEllAR-GROUP/hpx/archive/${version}.tar.gz"
+output_file="/tmp/hpx_${version}.tar.gz"
 
 # Download given version package
 wget --output-document "${output_file}" "${source}"

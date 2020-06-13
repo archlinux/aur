@@ -1,23 +1,23 @@
 # Maintainer: Mikael Simberg <mikael.simberg@iki.fi>
 # Contributor: Denis Demidov <dennis.demidov@gmail.com>
 pkgname=hpx
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=2
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
-url="http://stellar-group.org/libraries/hpx"
+url="http://hpx.stellar-group.org"
 depends=("boost" "gperftools" "hwloc")
 makedepends=("cmake" "gcc" "make")
 conflicts=("hpx-git")
 license=("boost")
 options=("staticlibs")
 
-source=("http://stellar.cct.lsu.edu/files/${pkgname}_${pkgver}.tar.bz2")
+source=("https://github.com/STEllAR-GROUP/${pkgname}/archive/${pkgver}.tar.gz")
 
-sha512sums=("ffba2d0e95b49d33511df4696cc019501d2ea6b6848dbc4d32fe4fe52a04bb9ff909d9c5001d65a551d32d2e60dce0a8cb5fd8dcef30efc0d00daac7dee9d9a5")
+sha512sums=("f110d5e5c10ec396f6e762568c9ecd5b767cb6efe91168b5caa8fe1e07bb5870cd13b3392fa4e008a2cc0e044b02084a35b0866e943d9b9c7435599c131f1582")
 
 build() {
-    cd "${srcdir}/${pkgname}_${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     mkdir build
     cd build
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}_${pkgver}/build"
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
 }
