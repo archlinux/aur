@@ -1,13 +1,10 @@
 pkgbase = ttf-caracteres
 	pkgdesc = A family of typefaces used on roadsigns in France.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fonts.simplythebest.net/font/367/caracteres-font.font
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = http://fonts.simplythebest.net/fonts/download=367
 	md5sums = 22d9ae4cb9e04680e879e4c2850e471f
 

@@ -1,12 +1,12 @@
-# Contributor: feufochmar <guill.delacourt@gmail.com>
+# Contributor: feufochmar <feufochmar.gd@beleth.fr>
 pkgname=ttf-caracteres
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A family of typefaces used on roadsigns in France."
 arch=('any')
 url="http://fonts.simplythebest.net/font/367/caracteres-font.font"
 license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=("http://fonts.simplythebest.net/fonts/download=367")
 
 package() {
