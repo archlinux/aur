@@ -1,22 +1,20 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Adrian Kocis <adrian dot kocis at gmail>
+# Maintainer: James An <james at jamesan dot ca>
 
 pkgname=dupd-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.r83.ged1888f
+pkgver=1.7.r43.gf137a38
 pkgrel=1
 pkgdesc="CLI utility to find duplicate files"
-arch=('i686' 'x86_64' 'any')
+arch=('i686' 'x86_64')
 url="http://www.virkki.com/$_pkgname"
 license=('GPL3')
+depends=( 'openssl' 'sqlite')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname"::"git+https://github.com/jvirkki/$_pkgname.git"
-        "libbloom"::"git+https://github.com/jvirkki/libbloom.git"
-        test.patch)
-md5sums=('SKIP'
-         'SKIP'
-         '5228e790f359376d51a9348cb72092eb')
+source=("$_pkgname"::"git+https://github.com/jvirkki/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -27,28 +25,17 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "$_pkgname"
-
-  patch -p1 -i ../test.patch
-}
-
 build() {
-  cd libbloom && make && cd ..
   cd "$_pkgname"
-
   make
 }
 
 check() {
   cd "$_pkgname"
-  mv tests/{,~}test.72
-
   make test
 }
 
 package() {
     cd "$_pkgname"
-
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
