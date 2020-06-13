@@ -3,7 +3,7 @@
 
 pkgname=cawbird-git
 _pkgname=cawbird
-pkgver=v1.1.0.2.r1.g1dbaab99
+pkgver=1.1.0.2.r2.g806ec4d1
 pkgrel=1
 pkgdesc="A fork of the Corebird GTK Twitter client that continues to work with Twitter "
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+
 }
 
 build() {
