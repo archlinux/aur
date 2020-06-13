@@ -5,8 +5,8 @@
 # Contributor: Arpan Kapoor <a at arpankapoor dot com> for 8188eu-dkms
 # Contributor: Runnytu < runnytu at gmail dot com > for 8192cu-dkms
 
-_pkgname=8188fu-arm
-pkgname="$_pkgname-dkms"
+_pkgname=8188fu
+pkgname="$_pkgname-dkms-arm"
 pkgver=r8.1d12cae
 pkgrel=1
 pkgdesc='Arm driver for Realtek RTL8188FU USB wireless adapter'
