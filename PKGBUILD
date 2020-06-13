@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
-pkgver=2018
-pkgrel=11
+pkgver=2020
+pkgrel=1
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)
@@ -11,16 +11,16 @@ optdepends=('avahi: Avahi support' 'python-dbus: Avahi support' 'python-gobject:
 conflicts=(pacredir)
 backup=(etc/pacserve/pacserve-ports.conf etc/pacserve/pacserve.service.conf)
 source=(
-  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2018.tar.xz
-  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2018.tar.xz.sig
+  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2020.tar.xz
+  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2020.tar.xz.sig
 )
 sha512sums=(
-  1094216551c3272cbd9b08f5570e4c923b5babdd4ec2e5d29ae829d42288bcd12eeffdd42d30d6da41f91ac2ef88b0ef89f79c4d1e10dffb8cdb2118908163eb
-  5142917a1fab2d5777ed78a7ca99e802584844a398072f9c6a2646dbddad65e1b08c3c538989757b9fc27f82c4052a7ce676a309ed94c161dcac67c390058ffb
+  239f3611a897ae949390188d52d5783a34b9303407bb0a21420744094e3b7955ac2d1e739a578651781a59a80993a4c74c8ae07288fb52020a5404ec91ddda5e
+  cbd3766878e29c718c3c616e8ea958013bae77b189354c2b262c87ca286d9cbe12615f6b0660bce5d3c14bcf7dd9e73daee9947fa2920da76b03c2cb2b951757
 )
 md5sums=(
-  f7e3684844f88e41a21591bffba9e887
-  08e88378b73158a179dac5d898c62591
+  7d077a804d369ca6400cd5249b705e32
+  55093efeb66a13ae9187624cf006461d
 )
 install=pacserve.install
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
