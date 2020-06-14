@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=1
-_clr=961
+_minor=2
+_clr=962
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33340
+_clear_version=33350
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=a053bd4cf9aaa97f3eb0f8241d5ba9c5b11fd56b4a97ac5424d3aff72c2f3f49
+_config_hash=defe8cbdc0c45bbb6f9a2ea94e1b79b8cf5cd3d3863521b508883f88e2dfd740
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -88,3 +88,6 @@ b2sums=('e9d3f131fb899a8e5d064b07881434246623d9a7bd018aa0f0e0e7fc9b533d271fa8f60
 b2sums=('f07f28a579cd7e0ece8cf60c39415941c166fc5599a407051085f228b1597608366c6414e764407e2a6f151b0c91593ec83fdd36653a4af1ecdb974d1d4b2a8a'
         '78141668b016262c174c012bad563f0264ea8415afb1313272bd44ef34f2171ee088c5e7f83ee8358da5498fa7c10e534b29cb482082889d8242a73ad1bd0a60'
         '5a783e182f1dd4aa742387cc98d664a7ee1240ebe1fd0cc977a38e2f800144ce80cc5976ca6247e32aaa0ded19893c03204429130e6af39b9e0fedf69b9e02d6')
+b2sums=('bc0a80c91535d31719a13c78820afefa309b4bd481b3cdf1576dce2b93d57efce556aa0225ebfb61e0d598ca6c8ac42b4645b9f4592e586239b618a682b5c328'
+        '65e9bc0779e8df44373504b8ff1b182a5a1a895891e9dd5ab9f9fe57bf37f0163ca582a7fbe064532c2f83c1b85a53b696459a706d9cc17806c4db4587683d2e'
+        'b7ccf0d59f36480bef2381eaaa3da196c3a6556f460c2b94aadad6692d4a0b95c1618c1bc780ba5b5ad5ff7f9ee7f63fcf65cad62f4ef094b8fdd7be7e5a0499')
