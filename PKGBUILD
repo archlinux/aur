@@ -4,7 +4,7 @@
 _pkgname=homebridge
 pkgname=$_pkgname-git
 pkgver=0.4.46.r222.g721ff2c
-pkgrel=2
+pkgrel=3
 pkgdesc="HomeKit support for the impatient"
 arch=('any')
 url="https://github.com/nfarina/homebridge"
@@ -52,6 +52,17 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_pkgname.tgz
   
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  chmod -R u=rwX,go=rX "$pkgdir"
+
+  # npm installs package.json owned by build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
+
+  # Delete npm installed pyc files
+  find "$pkgdir" -name "*.pyc" -delete
+
   [ -z "$HOMEBRIDGE_KEEP_GIT_HISTORY" ] && rm -rf "${pkgdir}/usr/lib/node_modules/${_pkgname}/.git"
 
   install -Dm644 "${srcdir}/${_pkgname}-system.service" "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"

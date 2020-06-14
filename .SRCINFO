@@ -1,7 +1,7 @@
 pkgbase = homebridge-git
 	pkgdesc = HomeKit support for the impatient
 	pkgver = 0.4.46.r222.g721ff2c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nfarina/homebridge
 	install = homebridge.install
 	arch = any
