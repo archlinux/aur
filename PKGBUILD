@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-scalar-does'
-pkgver='0.202'
+pkgver='0.203'
 pkgrel='1'
 pkgdesc="like ref() but useful"
 arch=('any')
@@ -13,10 +13,10 @@ depends=('perl-exporter-tiny>=0.026' 'perl-type-tiny>=0.004' 'perl-uri>=0' 'perl
 makedepends=()
 checkdepends=('perl-test-nowarnings>=0' 'perl-test-requires>=0.06')
 url='http://search.cpan.org/dist/Scalar-Does'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Scalar-Does-0.202.tar.gz')
-md5sums=('d32eeaea9b9dcb5eb55d5b56eda753a3')
-sha512sums=('e60550f9bbf7ccdf419dc77dcef8d149b6f0ef089b72a2bc5451bde98d6d590d9661919b90a68ebb9ac821dfabc4b29c24dd8b3fab05179fd9cc5f87205ee746')
-_distdir="Scalar-Does-0.202"
+source=("https://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Scalar-Does-$pkgver.tar.gz")
+md5sums=('9f423b7735f65d2b9ba6611f1fb36043')
+sha512sums=('698c5678c54f730dee96568853ba3e62c9bad4ae6157a134c0465d49068afdac039b3ab8319eba6f0c2c0634bfb7a58464a46bd1e8f2bf759d340dc2620d8419')
+_distdir="Scalar-Does-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
