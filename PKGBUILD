@@ -1,13 +1,13 @@
 # Maintainer: Alva <a at u8 dot is>
 _pkgbasename=passphrase
 pkgname=${_pkgbasename}-git
-pkgrel=2
+pkgrel=3
 pkgver=r11.0faa7ba
 pkgdesc="Zero-dependency passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${_pkgbasename}"
 license=('MIT')
-makedepends=('zig>=0.6.0')
+makedepends=('zig>=0.6.0' 'git')
 source=(git+https://git.sr.ht/~alva/${_pkgbasename})
 sha256sums=('SKIP')
 
