@@ -6,7 +6,7 @@
 
 pkgname=owncloud
 pkgver=10.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
 url="https://owncloud.org/"
@@ -39,7 +39,7 @@ sha256sums=('63f32048225c6bc4534c6757e8beee65fc845a35126899e85d787a3ba4073d48'
             'fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e')
 
 package() {
-    depends=('php>=7.4.0' 'php<7.5.0' 'php-gd')
+    depends=('php<7.4.0' 'php-gd')
 
     # install project
     install -d "$pkgdir"/usr/share/webapps/
