@@ -4,15 +4,15 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
-pkgname=asterisk-cisco
 _pkgname=asterisk
-pkgver=16.9.0
-pkgrel=3
+pkgname=$_pkgname-cisco
+pkgver=16.10.0
+pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
 conflicts=('asterisk')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="http://www.asterisk.org"
+url="https://www.asterisk.org"
 license=('GPL')
 depends=('alsa-lib'
          'curl'
@@ -47,8 +47,8 @@ source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk
 	"asterisk.logrotated" \
 	"asterisk.tmpfile")
 install=$pkgname.install
-sha256sums=('723441daf477db2468baeb0981522c9f2361e9b73493aeed4a247046abec123a'
-            'c826f7eb3d3ac575379319a2abf5dbae365657f3b2f27f44e1300f5ee5959a5d'
+sha256sums=('8733f137b4b4e01d90bb796fa41d992e656b4cf1c28d2d7e81863a6839975702'
+            '9cb84ead5edb5f5e080e04dd7bcf162ad56b838f063611f27c1e8362950a50ac'
             '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
             'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
             'ecff1e7807003beb3198f95859fa3c1b57d618940872d1c8638e65f5a49afce4'
@@ -83,19 +83,25 @@ package(){
   make DESTDIR="$pkgdir" samples
   
   # Note you must build the package before you can update meta data!
-  backup+=($(cd "$pkgdir" && echo "etc/$_pkgname/"*))
+  backup=($(cd "$pkgdir" && echo "etc/$_pkgname/"*))
 
   sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*
-  mkdir -p ${pkgdir}/usr/share/doc/asterisk/cisco/examples
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/examples" "$pkgdir/etc/asterisk/"*
+  mkdir -p ${pkgdir}/usr/share/doc/$_pkgname/cisco/examples
   
   mv "$pkgdir/var/run" "$pkgdir"
 
+  pushd contrib/systemd
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$_pkname"*.{service,socket}
+
+  pushd "$srcdir"
   install -Dm644 ${srcdir}/DialTemplate.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/DialTemplate.xml
   install -Dm644 ${srcdir}/FeaturePolicy.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/FeaturePolicy.xml
   install -Dm644 ${srcdir}/SEPMAC.cnf.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SEPMAC.cnf.xml
   install -Dm644 ${srcdir}/SoftKeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SoftKeys.xml
   install -Dm644 ${srcdir}/AppDialRules.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/AppDialRules.xml
-  install -Dm644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -Dm644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+
+  install -Dm644 "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -Dm644 "$_pkgname.logrotated" "$pkgdir/etc/logrotate.d/$_pkgname"
+  install -Dm644 "$_pkgname.tmpfile" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
  }
