@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.0.34.198
+pkgver=1.0.34.283
 pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
@@ -10,13 +10,12 @@ license=('custom')
 makedepends=('chrpath')
 depends=('libgl' 'qt5-webengine' 'sndio' 'xdelta3' 'ttf-font')
 optdepends=(albion-online-live-game-data-bin albion-online-staging-game-data-bin)
-source=("https://live.albiononline.com/autoupdate/launcher-linux-setup-${pkgver}" "albion-online-launcher.desktop")
-
-
+source=("https://live.albiononline.com/autoupdate/launcher-linux-setup-${pkgver}"
+	"albion-online-launcher.desktop")
 install=albion-online-launcher-bin.install
-options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('8d6b35ac72f9706063b5597895b6db39'
-         '14b5dfae0a7b3b0dc5e2f2975aa4892c')
+options=(!strip docs libtool emptydirs !zipman staticlibs)
+sha256sums=('71c894984f13872880d57a68a222f11e6809ef1b095f72539123f4ac1eef4280'
+            '60d094ded1087eb304acbe59564778ac4fe540977ab69996820ac823b143aee1')
 
 prepare() {
   chrpath -d "${srcdir}/data/launcher/Albion-Online"

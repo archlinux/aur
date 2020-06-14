@@ -1,6 +1,6 @@
 pkgbase = albion-online-launcher-bin
 	pkgdesc = The first true cross-platform Sandbox MMO -- launcher client
-	pkgver = 1.0.34.198
+	pkgver = 1.0.34.283
 	pkgrel = 2
 	url = https://albiononline.com/
 	install = albion-online-launcher-bin.install
@@ -20,11 +20,10 @@ pkgbase = albion-online-launcher-bin
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	options = !upx
-	source = https://live.albiononline.com/autoupdate/launcher-linux-setup-1.0.34.198
+	source = https://live.albiononline.com/autoupdate/launcher-linux-setup-1.0.34.283
 	source = albion-online-launcher.desktop
-	md5sums = 8d6b35ac72f9706063b5597895b6db39
-	md5sums = 14b5dfae0a7b3b0dc5e2f2975aa4892c
+	sha256sums = 71c894984f13872880d57a68a222f11e6809ef1b095f72539123f4ac1eef4280
+	sha256sums = 60d094ded1087eb304acbe59564778ac4fe540977ab69996820ac823b143aee1
 
 pkgname = albion-online-launcher-bin
 
