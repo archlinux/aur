@@ -1,9 +1,10 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 _extname=languagetool
 pkgname=openoffice-extension-${_extname}
-pkgver=4.1
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="An Open Source proof­reading soft­ware for English, French, German, Polish, and more than 20 other languages (Apache OpenOffice extension)"
 arch=("any")
@@ -13,7 +14,7 @@ groups=("openoffice-extensions")
 depends=('openoffice' 'java-runtime>=8')
 makedepends=('maven' 'unzip' 'java-environment>=8')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/languagetool-org/languagetool/archive/v${pkgver}.tar.gz")
-sha256sums=('84327f6564fc2c27f7063a3ec5713d6a96eec01b3452a972134b3c62be8e31ec')
+sha256sums=('3e2e54e2ebc28ad9742f9274a31a591907c0f28671143e56cd059d40c4d9e581')
 
 build() {
     cd "${srcdir}/${_extname}-${pkgver}/"
