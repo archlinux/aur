@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libmysofa-git
-pkgver=1.0.r15.gbaaa972
+pkgver=1.1.r2.g90f0089
 pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)'
 arch=('x86_64')
@@ -16,16 +16,13 @@ source=('git+https://github.com/hoene/libmysofa.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd libmysofa
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C libmysofa describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
     cmake -B libmysofa/build -S libmysofa \
-        -DBUILD_TESTS:BOOL='ON' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCODE_COVERAGE:BOOL='OFF' \
         -Wno-dev
     make -C libmysofa/build all
 }
