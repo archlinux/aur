@@ -1,14 +1,14 @@
 pkgbase = nodejs-markserv
 	pkgdesc = Markserv serves Markdown files as GitHub style HTML and LiveReloads your files in the browser as you edit.
-	pkgver = 0.3.3
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = https://github.com/f1lt3r/markserv
 	arch = any
 	license = MIT
 	depends = npm
-	noextract = markserv-0.3.3.tgz
-	source = http://registry.npmjs.org/markserv/-/markserv-0.3.3.tgz
-	sha256sums = e1d92987f6340372308443831a58811163b548bd9ca5fa40a01627673908546b
+	noextract = markserv-1.17.4.tgz
+	source = http://registry.npmjs.org/markserv/-/markserv-1.17.4.tgz
+	sha256sums = 7f9564290f461cdf131354f70b9fa9e79e7f1c4b306c0f3273de69d2d946d029
 
 pkgname = nodejs-markserv
 
