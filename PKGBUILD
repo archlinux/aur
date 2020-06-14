@@ -4,7 +4,7 @@
 
 pkgname=apache-html-manual
 _pkgname=httpd
-pkgver=2.4.10
+pkgver=2.4.43
 pkgrel=1
 pkgdesc='Apache manual html pages'
 arch=('any')
@@ -13,10 +13,8 @@ url='http://www.apache.org/dist/httpd'
 license=('APACHE')
 source=(
 http://www.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2
-http://www.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2.asc
 )
-sha256sums=('176c4dac1a745f07b7b91e7f4fd48f9c48049fa6f088efe758d61d9738669c6a'
-            'SKIP')
+sha256sums=('a497652ab3fc81318cdc2a203090a999150d86461acff97c1065dc910fe10f43')
 options=('emptydirs')
 
 package() {
