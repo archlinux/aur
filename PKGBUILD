@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %s.r%s.%s  $(grep VERSION Makefile|head -1|cut -dv -f2) $(git rev-list --count HEAD) $(git describe --always)
+  printf %s.r%s.%s  $(grep ^VERSION configure|cut -dv -f2) $(git rev-list --count HEAD) $(git describe --always)
 }
 
 build() {
