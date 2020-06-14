@@ -1,5 +1,5 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
 _gitname=animwall
@@ -24,7 +24,7 @@ provides=('animwall')
 # shellcheck disable=SC2034
 conflicts=('animwall')
 # shellcheck disable=SC2034
-license=('GPLv2')
+license=('GPL2')
 # shellcheck disable=SC2034
 url="https://github.com/pyamsoft/animwall"
 
@@ -35,7 +35,7 @@ url="https://github.com/pyamsoft/animwall"
 # shellcheck disable=SC2034
 sha256sums=('SKIP')
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=master")
+source=("${_gitname}::git+${url}#branch=main")
 
 ###############################################################################
 

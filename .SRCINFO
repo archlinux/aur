@@ -4,13 +4,13 @@ pkgbase = animwall-git
 	pkgrel = 1
 	url = https://github.com/pyamsoft/animwall
 	arch = any
-	license = GPLv2
+	license = GPL2
 	makedepends = git
 	depends = xwinwrap
 	depends = mpv
 	provides = animwall
 	conflicts = animwall
-	source = animwall::git+https://github.com/pyamsoft/animwall#branch=master
+	source = animwall::git+https://github.com/pyamsoft/animwall#branch=main
 	sha256sums = SKIP
 
 pkgname = animwall-git
