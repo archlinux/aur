@@ -6,11 +6,10 @@ pkgbase = lis
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = gcc-fortran
 	depends = openmpi
-	source = git://github.com/anishida/lis.git#branch=master
-	md5sums = SKIP
+	source = https://github.com/anishida/lis/archive/2.0.22.tar.gz
+	md5sums = 2f65f2b37ae2bdb5caad643f210e8d38
 
 pkgname = lis
 

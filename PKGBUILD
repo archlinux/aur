@@ -7,17 +7,17 @@ arch=(i686 x86_64)
 url="http://www.ssisc.org/lis"
 license=('GPL3')
 depends=('openmpi')
-makedepends=('git' 'gcc-fortran')
-source=("git://github.com/anishida/lis.git#branch=master")
-md5sums=('SKIP')
+makedepends=('gcc-fortran')
+source=("https://github.com/anishida/lis/archive/${pkgver}.tar.gz")
+md5sums=('2f65f2b37ae2bdb5caad643f210e8d38')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     git describe --tags $(git rev-list --tags --max-count=1)
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
     export FFLAGS+=" -fallow-argument-mismatch"
     export FCFLAGS+=" -fallow-argument-mismatch"
 
@@ -37,12 +37,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make check
  }
  
 package()
 {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make install DESTDIR=$pkgdir
 }
