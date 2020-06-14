@@ -1,6 +1,6 @@
 pkgbase = st-tiyn-git
 	pkgdesc = This is the st build of tiyn. It includes a bunch of patches.
-	pkgver = 0.8.3.r45.afedf22
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/tiyn/st
 	arch = x86_64
