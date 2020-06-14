@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
 license=('GPL')
-url='http://k3b.sourceforge.net'
+url='https://userbase.kde.org/K3b'
 depends=('qt5-webkit'
          'knewstuff'
          'kfilemetadata'
