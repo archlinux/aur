@@ -1,7 +1,7 @@
 pkgbase = vkd3d-valve
 	pkgdesc = D3D12 to Vulkan translation library (Valve version)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValveSoftware/vkd3d
 	arch = x86_64
 	license = LGPL
@@ -15,7 +15,7 @@ pkgbase = vkd3d-valve
 	provides = vkd3d
 	conflicts = vkd3d
 	source = https://github.com/ValveSoftware/vkd3d/archive/vkd3d-1.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = da223b0ec80570c096317d15c0d29deda8fcf571a539a83eb4e33c5a97c226bb
 
 pkgname = vkd3d-valve
 
