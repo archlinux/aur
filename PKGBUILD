@@ -3,7 +3,7 @@
 
 pkgname=miktex
 pkgver=2.9.7440
-pkgrel=1
+pkgrel=2
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
 url="https://miktex.org"
@@ -13,7 +13,7 @@ depends=('apr' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'libjpeg' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
          'poppler' 'popt' 'potrace' 'uriparser' 'zziplib' 'poppler-qt5' 'qt5-script')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools')
-source=('https://github.com/MiKTeX/miktex/archive/2.9.7440.tar.gz')
+source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")
 provides=('miktex')
 conflicts=('miktex')
 md5sums=('aa0906c8f84473dff21a5d23576dd0c5')
