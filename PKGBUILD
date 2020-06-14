@@ -5,7 +5,7 @@
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=20.10.1048554
+pkgver=20.20.1089974
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -15,17 +15,17 @@ depends=('libdrm' 'ocl-icd' 'gcc-libs')
 conflicts=('amdgpocl' 'opencl-amdgpu-pro-orca' 'opencl-amdgpu-pro-comgr' 'opencl-amdgpu-pro-pal' 'rocm-opencl-runtime')
 provides=('opencl-driver' "opencl-amdgpu-pro-orca=${pkgver}" "opencl-amdgpu-pro-pal=${pkgver}" "opencl-amdgpu-pro-comgr=${pkgver}") # this package provides both drivers, and installs them in a different location
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-10 -N %u'
+DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20 -N %u'
 
 prefix='amdgpu-pro-'
-postfix='-ubuntu-18.04'
-major='20.10'
-minor='1048554'
+postfix='-ubuntu-20.04'
+major='20.20'
+minor='1089974'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
 source=("https://drivers.amd.com/drivers/linux/${prefix}${major}-${minor}${postfix}.tar.xz")
-sha256sums=('7cbd666f9dd3e25a7bd8332a2693cabae2c9b05afe00d286ef7120f38d0335f4')
+sha256sums=('ff8de352d4dd8b0b4a7e62642028cc0a17384f3b9020621037ff2583fd694b4b')
 
 pkgver() {
 	echo "${major}.${minor}"
