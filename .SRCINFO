@@ -1,6 +1,6 @@
 pkgbase = lis
 	pkgdesc = Library of Iterative Solvers for linear systems
-	pkgver = 2.0.21
+	pkgver = 2.0.22
 	pkgrel = 1
 	url = http://www.ssisc.org/lis
 	arch = i686
