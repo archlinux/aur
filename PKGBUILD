@@ -2,7 +2,7 @@
 pkgname=swappy-git
 _pkgname=swappy
 pkgver=r168.2adcf94
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
 makedepends=("meson" "scdoc" "git")
@@ -14,6 +14,7 @@ depends=(
 )
 optdepends=(
   "libnotify"
+  "otf-font-awesome"
   "wayland-protocols"
 )
 arch=("i686" "x86_64")
