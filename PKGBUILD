@@ -3,7 +3,7 @@ pkgname=motrix
 _pkgname=Motrix
 pkgver=v1.5.15
 _pkgver=1.5.15
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="A full-featured download manager (release version)"
 arch=("x86_64")
@@ -39,7 +39,7 @@ prepare() {
 	tar -xvf $_pkgname.tar.gz
 	rm $_pkgname.tar.gz
 	mv $_pkgname-$_pkgver $_pkgname
-	npm config set ELECTRON_BUILDER_BINARIES_MIRROR=https://pan.yasking.org/electron-builder/
+#	npm config set ELECTRON_BUILDER_BINARIES_MIRROR=https://pan.yasking.org/electron-builder/
 #	echo "====================================="
 #	echo "Finding if you are in China..."
 #	curl https://myip.ipip.net | grep -i "中国"
