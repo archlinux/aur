@@ -1,7 +1,7 @@
 pkgbase = passphrase-git
 	pkgdesc = Zero-dependency passphrase generator, written in Zig
 	pkgver = r7.3c9d418
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.sr.ht/~alva/passphrase
 	arch = any
 	license = MIT
