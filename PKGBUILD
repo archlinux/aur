@@ -3,7 +3,7 @@
 
 pkgname=bspwmbar-git
 pkgver=0.6.0.r140.d2ce636
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A lightweight status bar for bspwm'
 arch=('x86_64')
@@ -14,9 +14,8 @@ optdepends=('ttf-nerd-fonts-symbols: default prefix icons font')
 makedepends=('git')
 conflicts=('bspwmbar')
 provides=('bspwmbar')
-source=("git+$url.git" LICENSE)
-sha256sums=('SKIP'
-            '17444c83e24d5ac40177021ade7ffc88adc7432c7cc34ee651cc7e1826e0af4d')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -32,5 +31,6 @@ build() {
 package() {
   cd ${pkgname%-git}
   install -Dm755 ${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git}
-  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 docs/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 docs/${pkgname%-git}.png  "$pkgdir"/usr/share/pixmaps/${pkgname%-git}.png
 }
