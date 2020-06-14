@@ -1,0 +1,9 @@
+pkgbase = otf-nimbus-mono
+	pkgdesc = Nimbus Mono typeface - A serif, typewriter typeface
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	source = https://www.fontsquirrel.com/fonts/download/nimbus-mono.zip
+
+pkgname = otf-nimbus-mono
+
