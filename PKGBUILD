@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.22.0.r2733.e0cfec7
+pkgver=5.72.0.r3159.fb6ae44
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git'
              )
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
-source=('git://anongit.kde.org/extra-cmake-modules.git')
+source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git')
 sha1sums=('SKIP')
 
 pkgver() {
