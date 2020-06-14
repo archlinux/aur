@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = R49.RC1.1.ga67b9f7
+	pkgver = R50.111.g1565c60a
 	pkgrel = 1
 	url = http://www.vapoursynth.com
 	arch = x86_64

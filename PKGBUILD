@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R49.RC1.1.ga67b9f7
+pkgver=R50.111.g1565c60a
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -58,7 +58,8 @@ prepare() {
 build() {
   cd vapoursynth
   ./autogen.sh
-  cd ../build
+
+  cd "${srcdir}/build"
   ../vapoursynth/configure \
     --prefix=/usr
 
@@ -78,6 +79,6 @@ package() {
 
   install -Dm644 "${srcdir}/vapoursynth.xml" "${pkgdir}/usr/share/mime/packages/vapoursynth.xml"
 
-  install -Dm644 ofl.txt "${pkgdir}/usr/share/licenses/${pkgname}/ofl.txt"
+  install -Dm644 src/core/ter-116n.ofl.txt "${pkgdir}/usr/share/licenses/${pkgname}/ofl.txt"
   install -Dm644 "${srcdir}/wtfpl.txt" "${pkgdir}/usr/share/licenses/${pkgname}/wtfpl.txt"
 }
