@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Goneovim
+Comment=Neovim GUI written in Golang, using a Golang qt backend
+Exec=/usr/bin/goneovim %F
+Icon=/usr/share/pixmaps/goneovim.ico
+Terminal=false
+StartupNotify=false
+Categories=Application;
