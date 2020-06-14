@@ -1,14 +1,13 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocprofiler
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ROC profiler library. Profiling with perf-counters and derived metrics."
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html'
 license=('MIT')
-depends=('hsa-rocr' 'roctracer')
-makedepends=('cmake' 'python' 'python-argparse' 'python-cppheaderparser')
-optdepends=('hip-rocclr: Trace HIP calls')
+depends=('roctracer' 'python')
+makedepends=('cmake' 'python-argparse' 'python-cppheaderparser')
 options=(!staticlibs strip)
 _git='https://github.com/ROCm-Developer-Tools/rocprofiler'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
@@ -22,20 +21,15 @@ prepare(){
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+  cmake -B build -Wno-dev \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         "$srcdir/rocprofiler-rocm-$pkgver"
-  make
+  make -C build
 }
 
 package() {
-  cd "$srcdir/build"
+  DESTDIR="$pkgdir" make -C build install
 
-  make DESTDIR="$pkgdir" install
-
-  # add links
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/rocm/rocprofiler/bin/rocprof" "$pkgdir/usr/bin/rocprof"
 
