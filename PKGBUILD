@@ -24,6 +24,8 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}/MTEngine"
 	touch Games/Plugins/C64DebuggerPluginSpiral.h
 	touch Games/Plugins/C64DebuggerPluginShowPic.h
+	# for compatibility with GCC 10 which defaults to -fno-common
+	sed -i -re 's/^CFLAGS[[:space:]]*=[[:space:]]*(.*)/CFLAGS = \1 -fcommon/' Makefile
 }
 
 build() {
