@@ -13,6 +13,8 @@ post_install() {
     $ECHO "\033[36m**************************************\033[0m"
     $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
     $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
+    $ECHO "\033[36m*  Enable Remote Control             *\033[0m"
+    $ECHO "\033[36m*  xhost +                           *\033[0m"
     $ECHO "\033[36m**************************************\033[0m"
 }
 
@@ -29,6 +31,8 @@ post_upgrade() {
     $ECHO "\033[36m**************************************\033[0m"
     $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
     $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
+    $ECHO "\033[36m*  Enable Remote Control             *\033[0m"
+    $ECHO "\033[36m*  xhost +                           *\033[0m"
     $ECHO "\033[36m**************************************\033[0m"
 }
 
