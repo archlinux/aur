@@ -626,6 +626,15 @@ index 962205f..1c9a81d 100644
  
          The ideals must share the same ring::
  
+@@ -4002,7 +4002,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+ 
+             sage: J.groebner_basis.set_cache(gb)  # optional - giacpy_sage
+             sage: ideal(J.transformed_basis()).change_ring(P).interreduced_basis()  # testing trac 21884
+-            [a - 60*c^3 + 158/7*c^2 + 8/7*c - 1, b + 30*c^3 - 79/7*c^2 + 3/7*c, c^4 - 10/21*c^3 + 1/84*c^2 + 1/84*c]
++            ...[a - 60*c^3 + 158/7*c^2 + 8/7*c - 1, b + 30*c^3 - 79/7*c^2 + 3/7*c, c^4 - 10/21*c^3 + 1/84*c^2 + 1/84*c]
+ 
+         Giac's gbasis over `\QQ` can benefit from a probabilistic lifting and
+         multi threaded operations::
 @@ -4104,9 +4104,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
@@ -670,6 +679,19 @@ index ab18796..868ca8c 100644
      def degree(self, MPolynomial_libsingular x=None, int std_grading=False):
          """
          Return the degree of this polynomial.
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index ab18796..2eb8f24 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -1348,7 +1348,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+             sage: R = IntegerModRing(15)['x,y']
+             sage: singular(R)
+             polynomial ring, over a ring (with zero-divisors), global ordering
+-            //   coefficients: ZZ/bigint(15)
++            //   coefficients: ZZ/...(15)
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
 index 42001d4..8e4eea9 100644
 --- a/src/sage/rings/polynomial/plural.pyx
@@ -684,6 +706,19 @@ index 42001d4..8e4eea9 100644
  #    self._populate_coercion_lists_()  # ???
  
      #MPolynomialRing_generic.__init__(self, base_ring, n, names, order)
+diff --git a/src/sage/rings/polynomial/polynomial_singular_interface.py b/src/sage/rings/polynomial/polynomial_singular_interface.py
+index 74b8b82..beee5ad 100644
+--- a/src/sage/rings/polynomial/polynomial_singular_interface.py
++++ b/src/sage/rings/polynomial/polynomial_singular_interface.py
+@@ -165,7 +165,7 @@ class PolynomialRing_singular_repr:
+             sage: R = IntegerModRing(15)['x,y']
+             sage: singular(R)
+             polynomial ring, over a ring (with zero-divisors), global ordering
+-            //   coefficients: ZZ/bigint(15)
++            //   coefficients: ZZ/...(15)
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
 diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
 index 592bb68..962821c 100644
 --- a/src/sage/schemes/curves/projective_curve.py
