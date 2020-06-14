@@ -1,4 +1,4 @@
-rm PKGBUILD-namcap.log
-rm -r pueue*
-rm LICENSE
-rm *.tar.gz
+rm -rf pueue*
+rm -f LICENSE
+rm -f *.tar.gz
+rm -f PKGBUILD-namcap.log
