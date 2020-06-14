@@ -1,20 +1,20 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Samuel Walladge <aur @ swalladge dot net>
 # Contributor: Asger Weirsøe <asger@weirsoe.dk>
 # Contributer: Alex Garcia <thekyz@gmail.com>
+
 pkgname=jobber-bin
 _pkgname=jobber
-pkgver=1.4.0
-pkgrel=3
-epoch=
-pkgdesc='jobber'
+pkgver=1.4.4
+pkgrel=1
+pkgdesc="An alternative to cron, with sophisticated status-reporting and error-handling"
 provides=('jobber')
 conflicts=('jobber')
 arch=('x86_64')
 url='http://dshearer.github.io/jobber/'
 license=('MIT')
-md5sums=('8741abd53187b54e6f92fbcd0ca3afe3')
-install='.install'
-source=("https://github.com/dshearer/jobber/releases/download/v$pkgver/$_pkgname-$pkgver-1.el7.$arch.rpm")
+sha256sums=('eb4f50c0d2510480bafa3efc5711fe750685c0534cfbbc74aa479a0dfdba6698')
+source=("https://github.com/dshearer/jobber/releases/download/v$pkgver/$_pkgname-$pkgver-1.el8.$arch.rpm")
 
 build() {
     cd $srcdir
