@@ -1,6 +1,6 @@
 pkgbase = telegreat-git
 	pkgdesc = Unofficial Telegreat Messaging app
-	pkgver = 1.2.17
+	pkgver = r3702.a045f216
 	pkgrel = 1
 	url = https://telegre.at
 	arch = x86_64
@@ -28,8 +28,6 @@ pkgbase = telegreat-git
 	source = CMakeLists.inj
 	source = tdesktop.patch
 	source = no-gtk2.patch
-	source = libtgvoip.patch
-	source = libtgvoip-2.patch
 	source = change-api-id.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -39,8 +37,6 @@ pkgbase = telegreat-git
 	sha256sums = d433d1570af350f003312ff66781c64d9d385d97ff3fd41421967ac5cd597279
 	sha256sums = aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
-	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
-	sha256sums = 07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26
 	sha256sums = 8cbe8e08731716b0f1a263b54abeae27a7ee9c119cea92fd6de0819121facb70
 
 pkgname = telegreat-git

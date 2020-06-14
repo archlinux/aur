@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegreat-git
-pkgver=1.2.17
+pkgver=r3702.a045f216
 pkgrel=1
 pkgdesc='Unofficial Telegreat Messaging app'
 arch=('x86_64')
@@ -24,8 +24,6 @@ source=(
     "CMakeLists.inj"
     "tdesktop.patch"
     "no-gtk2.patch"
-    "libtgvoip.patch"
-    "libtgvoip-2.patch"
     "change-api-id.patch"
 )
 sha256sums=('SKIP'
@@ -36,9 +34,12 @@ sha256sums=('SKIP'
             'd433d1570af350f003312ff66781c64d9d385d97ff3fd41421967ac5cd597279'
             'aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6'
-            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26'
             '8cbe8e08731716b0f1a263b54abeae27a7ee9c119cea92fd6de0819121facb70')
+
+pkgver() {
+    cd "$srcdir/tdesktop"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -58,11 +59,6 @@ prepare() {
 
     echo "Patching nogtk2"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
-
-    echo "Patching libtgvoip"
-    cd "Telegram/ThirdParty/libtgvoip"
-    patch -Np1 -i "$srcdir/libtgvoip.patch"
-    patch -Np1 -i "$srcdir/libtgvoip-2.patch"
 
     echo "Generating RSA private key"
     mkdir -p $srcdir/TelegramPrivate
@@ -90,7 +86,7 @@ build() {
     sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
     cd "$srcdir/tdesktop/out/Release"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-    make -j8
+    make
 }
 
 package() {
