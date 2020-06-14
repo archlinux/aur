@@ -1,7 +1,7 @@
 # Maintainer: Alva <a at u8 dot is>
 _pkgbasename=passphrase
 pkgname=${_pkgbasename}-git
-pkgrel=1
+pkgrel=2
 pkgver=r11.0faa7ba
 pkgdesc="Zero-dependency passphrase generator, written in Zig"
 arch=('any')
@@ -28,8 +28,5 @@ check() {
 
 package() {
     cd "${srcdir}/${_pkgbasename}"
-    install -D -m755 zig-cache/bin/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
-    install -D -m644 zig-cache/share/$_pkgbasename/en.txt "${pkgdir}/usr/share/$_pkgbasename/en.txt"
-    install -D -m644 zig-cache/share/man/man1/${_pkgbasename}.1 "${pkgdir}/usr/share/man/man1/${_pkgbasename}.1"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgbasename/LICENSE"
+    zig build install -Drelease-fast --prefix "${pkgdir}/usr"
 }
