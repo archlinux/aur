@@ -10,6 +10,7 @@ pkgbase = neovide-git
 	makedepends = gtk3
 	makedepends = cmake
 	makedepends = sdl2
+	makedepends = make
 	depends = fontconfig
 	depends = freetype2
 	depends = libglvnd
