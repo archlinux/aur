@@ -5,7 +5,7 @@
 pkgname='mailpile'
 pkgver='1.0.0rc6'
 _printcommit='7c1372b999dd6e68710e08e16778f2986c064295'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features'
 arch=('any')
 url="http://www.$pkgname.is"
@@ -31,8 +31,8 @@ _sourcedirectory="${pkgname^}-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
-	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/python$|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/python2.7$|#!/usr/bin/env python2.7|g' {} \;
 	rm -rf 'shared-data/'{"$pkgname-gui/",'multipile/'}
 	rm -rf 'shared-data/default-theme/'{'less/','index.html'}
 	rm -rf "$pkgname/tests"
