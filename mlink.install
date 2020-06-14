@@ -1,0 +1,3 @@
+post_install() {
+  echo 'To use, start/enable the systemd mlink.service'
+}
