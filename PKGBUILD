@@ -2,7 +2,7 @@
 
 pkgname=python2-sortedcontainers
 _pkgname=python-sortedcontainers
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Library providing sorted container types for Python.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('custom:Apache2')
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(https://github.com/grantjenks/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('1aa2d4cef402341fdeea75bc51311e59')
+md5sums=('653efdcdb3c92477ad7422af12d242fa')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
