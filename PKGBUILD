@@ -4,7 +4,7 @@
 pkgname='spambayes'
 pkgver='1.1b3.20180713'
 _commit='1335ca87c5e62b11b9d1678eb7c58000d3cf5d31'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Bayesian anti-spam classifier written in Python'
 arch=('any')
 url="https://github.com/smontanaro/$pkgname"
@@ -33,6 +33,9 @@ prepare() {
 	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-gnus_fix.patch"
 	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-paths_fix.patch"
 	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-fix-imports-from-sb_server.patch"
+
+	find . -type f -exec sed -i -E 's|#!( )?/usr/bin/env python$|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i -E 's|#!( )?/usr/local/bin/python$|#!/usr/bin/env python2.7|g' {} \;
 }
 
 package() {
