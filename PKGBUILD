@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=buttermanager
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 epoch=
 pkgdesc="Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safetly"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/egara/buttermanager"
 license=('GPL')
 groups=()
-depends=('btrfs-progs' 'python>=3')
+depends=('btrfs-progs' 'python>=3' 'grub-btrfs')
 makedepends=('python>=3' 'git')
 checkdepends=()
 optdepends=()
