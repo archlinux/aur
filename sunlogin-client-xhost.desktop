@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=xhost +
+Name=disable user access control for sunlogin client
+Comment=sunlogin client helper
+Terminal=false
+Type=Application
+StartupNotify=false
+X-KDE-autostart-after=panel
