@@ -1,6 +1,6 @@
-# Maintainer: Carlo Teubner <carlo.teubner@gmail.com>
+# Maintainer: Carlo Teubner <carlo@cteubner.net>
 pkgname=pacmods
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Tool to show changes to system config files"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-setuptools' 'pyalpm')
 options=(!emptydirs)
 source=("https://github.com/c4rlo/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b413c09cb03a075acfec88b5366b3d7681e96220f1a8cc79c15d58e1ae7667fc')
+sha256sums=('e1396189e2a8b8075ad45f1385ca818e77c75028ea9367c77c7921f9d69430af')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
