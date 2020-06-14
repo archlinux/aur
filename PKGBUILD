@@ -70,12 +70,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/meetecho/janus-gateway/arch
         'janus.conf')
 sha256sums=('731760e6911908bc523815809487e51320a738f3533f267d4beb83eaa725de85'
             'cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f'
-            'ad965a52fbe23e23a92b878bb08fa4c815b15a7569776882b21ff83c988dbd3e')
+            'aa2480ba28a049ac3571159583736216e1a5db145c0df672d4ff0a2fc7d9789f')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./autogen.sh
-	./configure \
+    cd "$pkgname-$pkgver"
+    ./autogen.sh
+    ./configure \
         --prefix /usr \
         --sysconfdir /etc \
         --disable-docs \
@@ -85,12 +85,12 @@ build() {
         --enable-plugin-lua \
         --enable-post-processing \
         --enable-rabbitmq
-	make
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install configs
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$srcdir/janus.service"
-	install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "$srcdir/janus.conf"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install configs
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$srcdir/janus.service"
+    install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "$srcdir/janus.conf"
 }
