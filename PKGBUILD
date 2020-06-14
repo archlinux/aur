@@ -4,7 +4,7 @@
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
 pkgver=2.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -40,7 +40,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build
     cd build
-    cmake -C "${srcdir}/settings.cmake" ../
+    cmake -C "${srcdir}/settings.cmake" -DCMAKE_BUILD_TYPE=Release ../
 
     make
 }
