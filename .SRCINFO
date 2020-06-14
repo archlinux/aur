@@ -1,7 +1,7 @@
 pkgbase = blender-wayland-git
 	pkgdesc = A fully integrated 3D graphics creation suite
-	pkgver = 2.90.r95473.g52ad92977e1
-	pkgrel = 1
+	pkgver = 2.90.r96894.g04390941050
+	pkgrel = 2
 	epoch = 17
 	url = http://www.blender.org
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = blender-wayland-git
 	source = git://git.blender.org/blender-dev-tools.git
 	source = embree.patch
 	source = https://developer.download.nvidia.com/redist/optix/v7.0/OptiX-7.0.0-include.zip
-	source = blender-wayland-git::git+https://github.com/christianrauch/blender.git#branch=wayland
+	source = blender-wayland-git::git+https://github.com/christianrauch/blender.git#branch=master
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
