@@ -4,7 +4,7 @@
 
 pkgname=rtlwifi_new-rtw88-dkms
 _pkgname=rtlwifi_new
-pkgver=r328.6dcff1c
+pkgver=r333.79393b9
 pkgrel=2
 pkgdesc='Newest Realtek rtlwifi codes, rtw88 branch'
 arch=('i686' 'x86_64')

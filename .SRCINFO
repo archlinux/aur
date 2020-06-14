@@ -1,6 +1,6 @@
 pkgbase = rtlwifi_new-rtw88-dkms
 	pkgdesc = Newest Realtek rtlwifi codes, rtw88 branch
-	pkgver = r328.6dcff1c
+	pkgver = r333.79393b9
 	pkgrel = 2
 	url = https://github.com/lwfinger/rtlwifi_new
 	install = rtlwifi_new-rtw88-dkms.install
