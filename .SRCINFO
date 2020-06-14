@@ -1,14 +1,14 @@
 pkgbase = gtk-theme-inspire-ui
 	pkgdesc = feren OS theme, based on Arc Theme. Only works in GNOME 3.18+ and also comes with a Cinnamon Theme
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnome-look.org/p/1013327/
 	arch = any
 	license = GPL3
 	depends = gtk3
 	depends = gtk-engine-murrine
-	source = https://github.com/feren-OS/feren-theme/archive/master.zip
-	md5sums = ecf732c38eeeb7bc6117751f1002005c
+	source = https://github.com/feren-OS/feren-theme/archive/9c9e2585045c169625f1535190f98d9187ae12f9.zip
+	md5sums = 0762f9d64d5eab4aef0d5ceb52c2b32f
 
 pkgname = gtk-theme-inspire-ui
 
