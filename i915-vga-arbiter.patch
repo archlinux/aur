@@ -37,23 +37,35 @@ until after vgacon->fbcon handoff.
 ---
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915/display/intel_display.c
-index b670239a293b..edb11715de56 100644
+index 346846609f45..18be17cb56e3 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.c
 +++ b/drivers/gpu/drm/i915/display/intel_display.c
-@@ -18469,6 +18469,7 @@ static void intel_hpd_poll_fini(struct drm_i915_private *i915)
- 
+@@ -18753,6 +18753,7 @@ static void intel_hpd_poll_fini(struct drm_i915_private *i915)
+ /* part #1: call before irq uninstall */
  void intel_modeset_driver_remove(struct drm_i915_private *i915)
  {
 +	intel_vga_enable_mem(i915);
-	flush_workqueue(i915->flip_wq);
-	flush_workqueue(i915->modeset_wq);
+ 	flush_workqueue(i915->flip_wq);
+ 	flush_workqueue(i915->modeset_wq);
  
+diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915/display/intel_display.h
+index adb1225a3480..f39229c12938 100644
+--- a/drivers/gpu/drm/i915/display/intel_display.h
++++ b/drivers/gpu/drm/i915/display/intel_display.h
+@@ -503,6 +503,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
+ void lpt_pch_enable(const struct intel_crtc_state *crtc_state);
+ void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
+ void lpt_disable_iclkip(struct drm_i915_private *dev_priv);
++extern void intel_vga_disable_mem(struct drm_i915_private *dev_priv);
+ void intel_init_display_hooks(struct drm_i915_private *dev_priv);
+ unsigned int intel_fb_xy_to_linear(int x, int y,
+ 				   const struct intel_plane_state *state,
 diff --git a/drivers/gpu/drm/i915/display/intel_vga.c b/drivers/gpu/drm/i915/display/intel_vga.c
-index 2ff7293986d4..6591d88d9563 100644
+index be333699c515..a76aa52cde76 100644
 --- a/drivers/gpu/drm/i915/display/intel_vga.c
 +++ b/drivers/gpu/drm/i915/display/intel_vga.c
-@@ -40,6 +40,37 @@ void intel_vga_disable(struct drm_i915_private *dev_priv)
-	POSTING_READ(vga_reg);
+@@ -41,6 +41,37 @@ void intel_vga_disable(struct drm_i915_private *dev_priv)
+ 	intel_de_posting_read(dev_priv, vga_reg);
  }
  
 +
@@ -89,17 +101,17 @@ index 2ff7293986d4..6591d88d9563 100644
 +
  void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
  {
-	i915_reg_t vga_reg = intel_vga_cntrl_reg(dev_priv);
-@@ -47,6 +78,7 @@ void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
- 	if (!(I915_READ(vga_reg) & VGA_DISP_DISABLE)) {
- 		DRM_DEBUG_KMS("Something enabled VGA plane, disabling it\n");
+ 	i915_reg_t vga_reg = intel_vga_cntrl_reg(dev_priv);
+@@ -49,6 +80,7 @@ void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
+ 		drm_dbg_kms(&dev_priv->drm,
+ 				"Something enabled VGA plane, disabling it\n");
  		intel_vga_disable(dev_priv);
 +		intel_vga_disable_mem(dev_priv);
  	}
  }
  
 diff --git a/drivers/gpu/drm/i915/display/intel_vga.h b/drivers/gpu/drm/i915/display/intel_vga.h
-index ba5b55b917f0..198887f4e78f 100644
+index ba5b55b917f0..7e2af7924e99 100644
 --- a/drivers/gpu/drm/i915/display/intel_vga.h
 +++ b/drivers/gpu/drm/i915/display/intel_vga.h
 @@ -15,4 +15,8 @@ void intel_vga_redisable_power_on(struct drm_i915_private *i915);
@@ -112,10 +124,10 @@ index ba5b55b917f0..198887f4e78f 100644
 +
  #endif /* __INTEL_VGA_H__ */
 diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
-index 3c512c571e60..742e138e894f 100644
+index 81a4621853db..e2576468f040 100644
 --- a/drivers/gpu/drm/i915/i915_drv.c
 +++ b/drivers/gpu/drm/i915/i915_drv.c
-@@ -289,9 +289,11 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
+@@ -232,9 +232,11 @@ static int i915_driver_modeset_probe_noirq(struct drm_i915_private *i915)
  
  	intel_bios_init(i915);
  
@@ -128,9 +140,9 @@ index 3c512c571e60..742e138e894f 100644
 +			goto out;
 +	}
  
- 	intel_register_dsm_handler();
+ 	intel_power_domains_init_hw(i915, false);
  
-@@ -326,6 +328,12 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
+@@ -276,6 +278,12 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
  	if (ret)
  		goto cleanup_gem;
  
@@ -144,10 +156,10 @@ index 3c512c571e60..742e138e894f 100644
  	intel_hpd_init(i915);
  
 diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-index 1dd1f3652795..cc9490a46c0e 100644
+index add00ec1f787..e4f49c63a397 100644
 --- a/drivers/gpu/drm/i915/i915_params.c
 +++ b/drivers/gpu/drm/i915/i915_params.c
-@@ -128,6 +128,9 @@ i915_param_named_unsafe(invert_brightness, int, 0600,
+@@ -121,6 +121,9 @@ i915_param_named_unsafe(invert_brightness, int, 0600,
  i915_param_named(disable_display, bool, 0400,
  	"Disable display (default: false)");
  
@@ -158,28 +170,17 @@ index 1dd1f3652795..cc9490a46c0e 100644
  	"Enable the MMIO debug code for the first N failures (default: off). "
  	"This may negatively affect performance.");
 diff --git a/drivers/gpu/drm/i915/i915_params.h b/drivers/gpu/drm/i915/i915_params.h
-index 31b88f297fbc..1d7c69da54d8 100644
+index 45323732f099..304987c4f9e8 100644
 --- a/drivers/gpu/drm/i915/i915_params.h
 +++ b/drivers/gpu/drm/i915/i915_params.h
-@@ -69,6 +69,7 @@ struct drm_printer;
- 	param(unsigned long, fake_lmem_start, 0) \
+@@ -70,6 +70,7 @@ struct drm_printer;
+ 	param(char *, force_probe, CONFIG_DRM_I915_FORCE_PROBE, 0400) \
+ 	param(unsigned long, fake_lmem_start, 0, 0400) \
  	/* leave bools at the end to not create holes */ \
- 	param(bool, alpha_support, IS_ENABLED(CONFIG_DRM_I915_ALPHA_SUPPORT)) \
-+	param(bool, enable_hd_vgaarb, false) \
- 	param(bool, enable_hangcheck, true) \
- 	param(bool, prefault_disable, false) \
- 	param(bool, load_detect_test, false) \
-diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915/display/intel_display.h
-index f417e0948001..6e865b86db09 100644
---- a/drivers/gpu/drm/i915/display/intel_display.h
-+++ b/drivers/gpu/drm/i915/display/intel_display.h
-@@ -497,6 +497,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
- 			   const char *name, u32 reg);
- void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
- void lpt_disable_iclkip(struct drm_i915_private *dev_priv);
-+extern void intel_vga_disable_mem(struct drm_i915_private *dev_priv);
- void intel_init_display_hooks(struct drm_i915_private *dev_priv);
- unsigned int intel_fb_xy_to_linear(int x, int y,
- 				   const struct intel_plane_state *state,
++	param(bool, enable_hd_vgaarb, false, 0600) \
+ 	param(bool, enable_hangcheck, true, 0600) \
+ 	param(bool, load_detect_test, false, 0600) \
+ 	param(bool, force_reset_modeset_test, false, 0600) \
+
 --
 5.5.5
