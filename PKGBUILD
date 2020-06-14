@@ -1,7 +1,7 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=obinskit
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="http://en.obins.net/obinskit"
