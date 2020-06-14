@@ -13,7 +13,7 @@ pkgbase = mingw-w64-x265
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = hg+https://hg.videolan.org/x265#tag=2a65b720985096bcb1664f7cb05c3d04aeb576f5
+	source = hg+https://bitbucket.org/multicoreware/x265#tag=2a65b720985096bcb1664f7cb05c3d04aeb576f5
 	source = mingw.patch
 	sha256sums = SKIP
 	sha256sums = b1953c70b734b91e7916448c4636b70305c1d5bfaf86f17f94b769499635a191
