@@ -1,0 +1,21 @@
+pkgbase = soundsense-rs-git
+	pkgdesc = A Rust version of SoundSense
+	pkgver = 1.5.1.travis.r8.g055acfb
+	pkgrel = 1
+	url = https://github.com/prixt/soundsense-rs
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = alsa-lib
+	makedepends = gtk3
+	makedepends = webkit2gtk
+	source = git+https://github.com/prixt/soundsense-rs.git
+	md5sums = SKIP
+
+pkgname = soundsense-rs-git
+	depends = libasound.so
+	depends = libgtk-3.so
+	depends = libgdk-3.so
+	depends = libwebkit2gtk-4.0.so
+	depends = libjavascriptcoregtk-4.0.so
+
