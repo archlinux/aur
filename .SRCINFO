@@ -1,0 +1,35 @@
+pkgbase = lwks14
+	pkgdesc = Lightworks version 14
+	pkgver = 14.5.0
+	pkgrel = 1
+	url = http://www.lwks.com/
+	arch = x86_64
+	license = custom
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libjpeg-turbo
+	depends = pango
+	depends = curl
+	depends = gtk3
+	depends = openssl
+	depends = libgl
+	depends = libtiff
+	depends = libutil-linux
+	depends = ffmpeg
+	depends = glu
+	depends = libedit
+	depends = nvidia-cg-toolkit
+	depends = openssl-1.0
+	optdepends = nvidia-utils: only for nVidia users
+	optdepends = libc++: only for BlackMagic RAW support (BRAW)
+	optdepends = libc++abi: only for BlackMagic RAW support (BRAW)
+	conflicts = lightworks
+	conflicts = lwks
+	conflicts = lwks-beta
+	options = !strip
+	source = https://downloads.lwks.com/v14-5/lightworks-14.5.0-amd64.deb
+	sha256sums = 87c810528ee2ee11b3ee0d7051e0ab9fb1a3c100bf491f90d3339a9fb58c5cb6
+
+pkgname = lwks14
+
