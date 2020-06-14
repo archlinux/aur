@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.8.0.r0.g75bf8b69c3
+pkgver=4.18.0.r24.g19f5c9080b
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -20,10 +20,11 @@ license=('GPL3')
 _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'pyqtwebengine' 'regex')
+_py2_deps=("${_py_deps[@]}" 'ipaddress')
 _py3_deps=("${_py_deps[@]}" 'zeroconf')
 depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
          'libwmf' 'mathjax2' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
-makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
+makedepends=('git' "${_py2_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
@@ -62,6 +63,8 @@ prepare(){
     # needed for frozen builds + beautifulsoup4
     # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
     rm -r src/backports
+    # biplist is only used on macOS + python2
+    rm -r src/biplist/
 }
 
 build() {
@@ -133,7 +136,7 @@ package_calibre-common-git() {
 
 package_calibre-git() {
     pkgdesc+=" (python2 build)"
-    depends=('calibre-common-git' "${_py_deps[@]/#/python2-}")
+    depends=('calibre-common-git' "${_py2_deps[@]/#/python2-}")
     optdepends+=('ipython2: to use calibre-debug')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
