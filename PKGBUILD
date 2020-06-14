@@ -2,23 +2,25 @@
 
 _hkgname=multistate
 pkgname=haskell-multistate
-pkgver=0.8.0.2
+pkgver=0.8.0.3
 pkgrel=1
 pkgdesc="like mtl's ReaderT / WriterT / StateT, but more than one contained value/type."
 url='https://hackage.haskell.org/package/multistate'
 license=('BSD')
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-hspec' 'haskell-monad-control' 'haskell-mtl' 'haskell-tagged' 'haskell-transformers' 'haskell-transformers-base')
+depends=('ghc-libs' 'haskell-hspec' 'haskell-monad-control' 'haskell-tagged' 'haskell-transformers-base')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('5e8e41a5a0de3973e097b388dca95f2ca6e0b1155d2b34021a448c68e52c29e0c4b49c5211c1ced2c1c679b06753daccca2d69740b0efae277e5a09196f4ec6c')
+sha512sums=('e4405dfae45f3d7ca04f93871d6c29750390a1058c293561b681b792c31e2b44cac9ff09f3baab8b470858375a30e586d47ba64b72d2861ad6407ac124ca2ce5')
 
 build() {
     cd $_hkgname-$pkgver
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
         --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+        --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+        --ghc-option='-pie'
     runhaskell Setup build
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
