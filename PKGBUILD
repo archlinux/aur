@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r334.78c836c
+pkgver=r364.16dbd0f
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -39,7 +39,7 @@ url="https://github.com/pyamsoft/update-hosts.git"
 # shellcheck disable=SC2034
 sha256sums=('SKIP')
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=master")
+source=("${_gitname}::git+${url}#branch=main")
 
 ###############################################################################
 
