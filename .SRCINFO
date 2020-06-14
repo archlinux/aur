@@ -1,6 +1,6 @@
-pkgbase = godot-blender-exporter
+pkgbase = godot-blender-exporter-git
 	pkgdesc = Exporter for Blender, made for the Godot Engine
-	pkgver = 132.fb7f25d
+	pkgver = 228.274f668
 	pkgrel = 1
 	url = https://github.com/godotengine/godot-blender-exporter
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = godot-blender-exporter
 	depends = python
 	provides = godot-blender-exporter
 	conflicts = godot-blender-exporter
-	source = godot-blender-exporter::git://github.com/godotengine/godot-blender-exporter.git
+	source = godot-blender-exporter-git::git://github.com/godotengine/godot-blender-exporter.git
 	md5sums = SKIP
 
-pkgname = godot-blender-exporter
+pkgname = godot-blender-exporter-git
 

@@ -1,7 +1,7 @@
-# Maintainer: ijet <myijet at gmail.com>
+# Maintainer: rcorre <ryan at rcorre.net>
 
-pkgname=godot-blender-exporter
-pkgver=132.fb7f25d
+pkgname=godot-blender-exporter-git
+pkgver=228.274f668
 pkgrel=1
 pkgdesc="Exporter for Blender, made for the Godot Engine"
 arch=('any')
