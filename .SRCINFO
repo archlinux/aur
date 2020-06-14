@@ -1,6 +1,6 @@
 pkgbase = firefox-passff
 	pkgdesc = zx2c4 pass manager addon for firefox
-	pkgver = 1.9.1
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/passff/passff
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = firefox-passff
 	depends = firefox>=50
 	depends = pass
 	depends = passff-host
-	noextract = passff-1.9.1-fx.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/3454648/passff-1.9.1-fx.xpi
-	sha384sums = a470ef57f843fde4f82e8f5f077591403c71c671d4ae3862290132fb80a33f833b8f8aeaad85886d55bfb9b3336b8707
+	noextract = passff-1.10-fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3584906/passff-1.10-fx.xpi
+	sha384sums = bb1a8418fcd879416832c9bfa44bfc3e1bb239795273bc98e728b570a91f5db80f9637e7e4e58fa5ee6146e622f27206
 
 pkgname = firefox-passff
 
