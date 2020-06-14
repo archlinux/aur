@@ -1,5 +1,5 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
 pkgname=pstate-frequency
@@ -8,7 +8,7 @@ pkgdesc="Easily control Intel p-state driver"
 # shellcheck disable=SC2034
 pkgver=3.10.4
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2034
 arch=('i686' 'x86_64')
 # shellcheck disable=SC2034
@@ -22,7 +22,7 @@ provides=('pstate-frequency')
 # shellcheck disable=SC2034
 conflicts=('pstate-frequency')
 # shellcheck disable=SC2034
-license=('GPLv2')
+license=('GPL2')
 # shellcheck disable=SC2034
 url="https://github.com/pyamsoft/pstate-frequency"
 # shellcheck disable=SC2034
