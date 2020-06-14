@@ -1,7 +1,7 @@
 pkgbase = soundsense-rs-git
 	pkgdesc = A Rust version of SoundSense
 	pkgver = 1.5.1.travis.r8.g055acfb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prixt/soundsense-rs
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = soundsense-rs-git
 	makedepends = gtk3
 	makedepends = webkit2gtk
 	source = git+https://github.com/prixt/soundsense-rs.git
-	md5sums = SKIP
+	source = soundsense-rs.desktop
+	sha256sums = SKIP
+	sha256sums = ced141bf8441d271ee610beebe79cdd5bfe287b1d157d79a7c470d0e44673e5f
 
 pkgname = soundsense-rs-git
 	depends = libasound.so
