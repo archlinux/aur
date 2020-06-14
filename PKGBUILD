@@ -4,7 +4,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.5.0.12
+pkgver=4.5.0.13
 pkgrel=1
 _ffmpeg_ver=2020_02_24
 _ffdetect_ver=2020_02_24
@@ -56,7 +56,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('2a5f7e7e2ec3a58ef4bcdb43926c96178adc9f3d9172177ee2579cfe1072ec28'
+sha256sums=('96a98e6b537f37af272f4f8174b5ec21b30f89bc61e83cb85d02b13240819ea5'
             '6d115633eeb1d48a80f07f53c2e8c43093bd56a4a3d7d8b3d6207c4f473a61e0'
             '50ed2c4b4a8bc62baf92ac6192c8fe21a00dd77b0079d5a971958f412bc2bf9e'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
