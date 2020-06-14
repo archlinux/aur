@@ -1,17 +1,13 @@
 pkgbase = python2-pysha3
-	pkgdesc = SHA-3 wrapper (keccak) for Python
+	pkgdesc = Backport of hashlib.sha3 for Python 2.7 to 3.5 - python2 version
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tiran/pysha3
-	arch = i686
-	arch = x86_64
-	arch = armv6
-	license = PSFL
+	arch = any
+	license = PSF
 	makedepends = python2-setuptools
 	depends = python2
-	options = !emptydirs
-	source = https://github.com/tiran/pysha3/archive/1.0.2.tar.gz
-	md5sums = 8e705c4e0b3e6cf4d108a3c9d8a2ac3d
+	source = python2-pysha3-1.0.2-2.tar.gz::https://github.com/tiran/pysha3/archive/1.0.2.tar.gz
+	sha256sums = b7691514fdb389037d3428bc4e7764715805ff829419aaa7f8bd09215e22e5d5
 
 pkgname = python2-pysha3
-
