@@ -5,7 +5,7 @@ set -e
 name="ODAFileConverter_QT5_lnxX64_7.2dll.deb"
 dest="/tmp/$name"
 
-wget -N "https://download.opendesign.com/guestfiles/ODAFileConverter/$name" -P "$dest"
+wget -N "https://download.opendesign.com/guestfiles/ODAFileConverter/$name" -P "/tmp/"
 new=( $(sha256sum "$dest") )
 old=$(grep -oP "sha256sums=\('\K[[:alnum:]]{64}(?=')" PKGBUILD)
 
@@ -13,7 +13,6 @@ if [ "$new" = "$old" ]; then
     echo "No updates!"
     exit 0
 fi
-
 
 ver=$(ar p "$dest" control.tar.xz | tar xJO ./control | grep -oP "Version: \K.+$")
 sed -Ei "s/pkgver=[0-9\.]+/pkgver=$ver/
