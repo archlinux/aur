@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.13.0.r483.g002d427f3
+pkgver=0.7.14.0.r421.g44bbb44c8
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.5' 'ruby2.5-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
+depends=('ruby2.6' 'ruby2.6-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
 optdepends=('jemalloc: lower memory consumption' 'postgresql: Database server')
 makedepends=('nodejs' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
@@ -50,10 +50,10 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.5
-  _ruby=ruby-2.5
-  _rake=rake-2.5
-  _gem=gem-2.5
+  _bundle=bundle-2.6
+  _ruby=ruby-2.6
+  _rake=rake-2.6
+  _gem=gem-2.6
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -98,8 +98,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.5
-  _ruby=ruby-2.5
+  _bundle=bundle-2.6
+  _ruby=ruby-2.6
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
