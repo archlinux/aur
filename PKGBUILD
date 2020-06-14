@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=python-mkl-random
 _pkgname=mkl_random
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="NumPy-based Python interface to Intel (R) MKL Random Number Generation functionality"
 arch=('x86_64')
