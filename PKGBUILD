@@ -1,7 +1,7 @@
 # Maintainer: Georg Graßnick <dev.grassnick at mailbox dot org>
 
 pkgname=ymuse
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
 	"ymuse.desktop"
 )
 sha512sums=(
-	"c62ac661e3cc489203476089512e19144f09f93fdf08d1acf11bd847ea1cdf27488ab9754228f1982323cb65b4e34b63fb76446fd66cf2e2d9b0678c8e969c2e"
+	"d49cc6f8e9e36f2d7b2569232c54caf40dae1d80cd910e6ba1098d4acb5528edef8360d804445c81a19009a6769aa92754eedc662a833278953940b6fb3d196e"
 	"dbf124b2be06036faecb0a5af76b6b44bfdfcd7461c69807a6fcfb3008131072412387e888d9c6777ef9549aa2ae1fafb296d904a9b525dff4b09cc36400a6ff"
 )
 
