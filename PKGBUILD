@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=nitter-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -30,6 +30,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/$pkgname"
+
+    # Tweak the configuration file
+    patch -p1 <../../config.patch
 
     # Based on the Dockerfile
     nimble build -y -d:release
