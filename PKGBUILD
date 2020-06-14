@@ -4,7 +4,7 @@
 
 pkgname=numix-themes-blue-git
 pkgver=2.6.6.r18.f25d7e0
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -43,8 +43,8 @@ prepare() {
   SVG="all-assets.svg"
   for FILE in $(cat all-assets.txt)
   do
-    inkscape "${SVG}" -i "EXP-${FILE}" -e "${FILE}.png"
-    inkscape "${SVG}" -i "EXP-${FILE}" -d 192 -e "${FILE}@2.png"
+    inkscape "${SVG}" -i "EXP-${FILE}" -o "${FILE}.png"
+    inkscape "${SVG}" -i "EXP-${FILE}" -d 192 -o "${FILE}@2.png"
   done
 }
 
