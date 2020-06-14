@@ -1,0 +1,21 @@
+diff --git src/e3/os/platform.py src/e3/os/platform.py
+index 94964a6..5694ec8 100644
+--- src/e3/os/platform.py
++++ src/e3/os/platform.py
+@@ -73,12 +73,12 @@ class SystemInfo(object):
+ 
+         # Fetch linux distribution info on linux OS
+         if cls.uname.system == "Linux":  # linux-only
+-            import ld
++            import distro
+ 
+             cls.ld_info = {
+-                "name": ld.name(),
+-                "major_version": ld.major_version(),
+-                "version": ld.version(),
++                "name": distro.name(),
++                "major_version": distro.major_version(),
++                "version": distro.version(),
+             }
+ 
+         # Fetch network interfaces
