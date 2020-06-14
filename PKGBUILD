@@ -5,8 +5,8 @@
 
 _pkgname=xorg-xinit
 pkgname=xorg-xinit-git
-pkgver=1.4.1.r0.g9a8b937
-pkgrel=1
+pkgver=1.4.1.r1.g4f54d18
+pkgrel=2
 pkgdesc="X.Org initialisation program "
 arch=('i686' 'x86_64')
 license=('custom')

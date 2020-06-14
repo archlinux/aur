@@ -1,7 +1,7 @@
 pkgbase = xorg-xinit-git
 	pkgdesc = X.Org initialisation program
-	pkgver = 1.4.1.r0.g9a8b937
-	pkgrel = 1
+	pkgver = 1.4.1.r1.g4f54d18
+	pkgrel = 2
 	url = http://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xorg-xinit-git
 	depends = inetutils
 	optdepends = xorg-twm
 	optdepends = xterm
-	provides = xorg-xinit=1.4.1-1
+	provides = xorg-xinit=1.4.1-2
 	conflicts = xorg-xinit
 	options = !emptydirs
 	backup = etc/X11/xinit/xserverrc
