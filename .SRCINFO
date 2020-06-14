@@ -1,0 +1,23 @@
+pkgbase = mapmap
+	pkgdesc = Open source video mapping software
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.mapmap.info
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = gst-libav
+	depends = gstreamer-vaapi
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = liblo
+	source = mapmap-0.6.2.tar.gz::https://github.com/mapmapteam/mapmap/archive/0.6.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = mapmap
+
