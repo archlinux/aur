@@ -1,8 +1,8 @@
 # Maintainer: Marco Obaid <marco.obaid@gmail.com>
 
 pkgname=oh-my-bash-git
-pkgver=r71.b527766
-pkgrel=2
+pkgver=r86.670b544
+pkgrel=1
 pkgdesc="A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community"
 arch=('x86_64')
 url='https://github.com/ohmybash/oh-my-bash'
