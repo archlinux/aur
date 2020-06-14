@@ -1,5 +1,5 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
 _gitname=update-hosts
