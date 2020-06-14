@@ -14,7 +14,7 @@ optdepends=('ocl-icd: for rotate_opencl plugin'
 provides=('intel-media-sdk' 'libmfx' 'intel-gmmlib' 'intel-media-driver'
           'libva' 'libva-utils')
 conflicts=('intel-media-sdk' 'libmfx' 'intel-gmmlib' 'intel-media-driver'
-          'libva' 'libva-utils')
+           'libva' 'libva-utils')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${pkgver:2}/MediaStack.tar.gz"
         '010-intel-media-stack-bin-fix-install.patch')
@@ -24,11 +24,10 @@ sha256sums=('f411ded6381dc3ffc4827852e6ff56cfb32abad6669b45afed8a90cd7678a3d8'
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${pkgname}-${pkgver}" -s'|[^/]*/||'
+    bsdtar -xf "${pkgname}-${pkgver}.tar.gz" -C "${pkgname}-${pkgver}" -s '|[^/]*/||'
 }
 
 package() {
-    # install components
     install -D -m755 "${pkgname}-${pkgver}/opt/intel/mediasdk/bin"/* -t "${pkgdir}/usr/bin"
     cp -a "${pkgname}-${pkgver}/opt/intel/mediasdk/"{include,share} "${pkgdir}/usr"
     cp -a "${pkgname}-${pkgver}/opt/intel/mediasdk/doc" "${pkgdir}/usr/share"
