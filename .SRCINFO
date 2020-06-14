@@ -1,6 +1,6 @@
 pkgbase = ffmpegfs-git
-	pkgdesc = FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding
-	pkgver = 1.5.r0.71f9603
+	pkgdesc = FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV.
+	pkgver = 1.98.r95.da13eb1
 	pkgrel = 1
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = ffmpegfs-git
 	license = FDL1.3
 	makedepends = git
 	makedepends = asciidoc
+	makedepends = w3m
+	makedepends = xxd
 	depends = fuse
 	depends = ffmpeg
 	depends = sqlite3
