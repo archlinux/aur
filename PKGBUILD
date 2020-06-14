@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
 pkgname=kpack-git
 _pkgname=kpack
-pkgver=1.0.12.r5.gd9d64d6
+pkgver=1.1.0.r2.gec7620f
 pkgrel=1
 license=('MIT')
 pkgdesc='Manipulates KnightOS software packages'

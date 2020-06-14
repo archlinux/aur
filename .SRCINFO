@@ -1,6 +1,6 @@
 pkgbase = kpack-git
 	pkgdesc = Manipulates KnightOS software packages
-	pkgver = 1.0.12.r5.gd9d64d6
+	pkgver = 1.1.0.r2.gec7620f
 	pkgrel = 1
 	url = https://github.com/KnightOS/kpack
 	arch = x86_64
