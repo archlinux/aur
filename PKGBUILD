@@ -1,37 +1,32 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
 url='https://rocalution.readthedocs.io/en/master'
 license=('MIT')
-depends=('hip-hcc' 'rocsparse' 'rocblas' 'rocprim' 'rocminfo' 'openmp')
-makedepends=('cmake' 'hcc' 'git')
+depends=('hip-rocclr' 'rocsparse' 'rocblas' 'rocprim' 'rocminfo' 'openmp')
+makedepends=('cmake' 'git')
 _git='https://github.com/ROCmSoftwarePlatform/rocALUTION'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('2745ad513ad90a7fb3d9182037ec499c3bbd19b6c928b5c24e777392b2c9bd2d')
+sha256sums=('be2f78c10c100d7fd9df5dd2403a44700219c2cbabaacf2ea50a6e2241df7bfe')
 
 build() {
-  mkdir -p build
-  cd build
-
-  CXX=/opt/rocm/hcc/bin/hcc \
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocalution \
+  CXX=/opt/rocm/hip/bin/hipcc \
+  cmake -B build -Wno-dev \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DSUPPORT_HIP=ON \
         -DSUPPORT_OMP=ON \
         -DSUPPORT_MPI=OFF \
         -Dhip_DIR=/opt/rocm/hip/lib/cmake/hip \
-        -Dhcc_DIR=/opt/rocm/hcc/lib/cmake/hcc \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
         "$srcdir/rocALUTION-rocm-$pkgver"
-  make
+  make -C build
 }
 
 package() {
-  cd "$srcdir/build"
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" make -C build install
 
   install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/rocalution.conf" << EOF
 /opt/rocm/rocalution/lib
