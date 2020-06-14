@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-discogs-api
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Interface to the Discogs REST API"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-six' 'python-requests' 'python-oauthlib')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('873a2d483dcdfe5dae7acc0a74e7550f42c3e337f135107d12e190059d762fe0584a4b1fa256e51dcae696f6c2f6206ece177f3defe51529d9d231e2405b96f2')
+sha512sums=('82213b3cf29a5d2770a5c3fbd9426fda22af09c1b0ba52970478f0384a8c13e845446ac84c2527738677dd1082756198f7f0b4ed217c58d272b550d750f8dee2')
 
 build() {
   cd "$pkgname-$pkgver"
