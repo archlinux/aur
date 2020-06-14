@@ -1,5 +1,5 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
 _gitname=git-ssh
@@ -8,7 +8,7 @@ pkgname=git-ssh-git
 # shellcheck disable=SC2034
 pkgdesc="A wrapper around git to work with multiple SSH keys"
 # shellcheck disable=SC2034
-pkgver=r234.2687dd3
+pkgver=r255.c72efd3
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -36,7 +36,7 @@ url="https://github.com/pyamsoft/git-ssh.git"
 # shellcheck disable=SC2034
 sha256sums=('SKIP')
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=master")
+source=("${_gitname}::git+${url}#branch=main")
 
 ###############################################################################
 
