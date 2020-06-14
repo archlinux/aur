@@ -1,7 +1,7 @@
 pkgbase = spambayes-git
 	pkgdesc = Bayesian anti-spam classifier written in Python - git version
 	pkgver = 1.1b3.r2798.1335ca8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smontanaro/spambayes
 	arch = any
 	license = PSF
