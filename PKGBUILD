@@ -1,8 +1,8 @@
 # Maintainer: Alva <a at u8 dot is>
 _pkgbasename=passphrase
 pkgname=${_pkgbasename}-git
-pkgrel=6
-pkgver=r10.07718a5
+pkgrel=1
+pkgver=r11.0faa7ba
 pkgdesc="Zero-dependency passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${_pkgbasename}"
@@ -19,6 +19,11 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgbasename}"
     zig build -Drelease-fast
+}
+
+check() {
+    cd "${srcdir}/${_pkgbasename}"
+    zig build test
 }
 
 package() {
