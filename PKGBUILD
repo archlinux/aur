@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
-pkgver=0.7.13.0
-pkgrel=2
+pkgver=0.7.14.0
+pkgrel=1
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.5' 'ruby2.5-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
+depends=('ruby2.6' 'ruby2.6-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
 optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
 makedepends=('nodejs' )
 conflicts=('diaspora-postgresql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
@@ -45,10 +45,10 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.5
-  _ruby=ruby-2.5
-  _rake=rake-2.5
-  _gem=gem-2.5
+  _bundle=bundle-2.6
+  _ruby=ruby-2.6
+  _rake=rake-2.6
+  _gem=gem-2.6
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -56,7 +56,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.13.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.14.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
@@ -93,8 +93,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.5
-  _ruby=ruby-2.5
+  _bundle=bundle-2.6
+  _ruby=ruby-2.6
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
@@ -136,7 +136,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('c1e79178f544397c7de29b7f3a62fda705cdde99c7464eb822b5f4594a375838'
+sha256sums=('747ba7a7e57bdbfee574ebce6622d0f94a068a387943be8fdf33b5d2e960c2db'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '2ac3ef6c4f0396b7738b18d07c56f57e0db5e5e194bf8b07ffd6ad790dd92e17'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
