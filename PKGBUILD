@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 
 pkgname=azote-git
-pkgver=1.7.7.r13.g9a7d731
+pkgver=1.7.11.r5.g73fbeed
 pkgrel=1
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs (development version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ package() {
   cd azote
   /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
   
-  install -D -m 755 dist/azote-arch "$pkgdir"/usr/bin/azote
+  install -D -m 755 dist/azote "$pkgdir"/usr/bin/azote
   install -Dm 644 LICENSE-COLORTHIEF "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-COLORTHIEF"
   install -Dm755 dist/azote.desktop "$pkgdir"/usr/share/applications/azote.desktop
   install -Dm644 dist/azote.svg "$pkgdir"/usr/share/azote/azote.svg
