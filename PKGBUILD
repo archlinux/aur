@@ -1,5 +1,5 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
 _gitname=pstate-frequency
@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.10.4".r901.7961038
+pkgver="3.10.4".r904.13bb682
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -24,7 +24,7 @@ provides=('pstate-frequency')
 # shellcheck disable=SC2034
 conflicts=('pstate-frequency')
 # shellcheck disable=SC2034
-license=('GPLv2')
+license=('GPL2')
 url="https://github.com/pyamsoft/pstate-frequency.git"
 
 ##
@@ -33,7 +33,7 @@ url="https://github.com/pyamsoft/pstate-frequency.git"
 ##
 # shellcheck disable=SC2034
 source=(
-        "${_gitname}::git+${url}"
+        "${_gitname}::git+${url}#branch=main"
         "00-fix-prefix.patch")
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
