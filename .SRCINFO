@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-youtube-classic
 	pkgdesc = Browser extension that restores the classic YouTube look (version for Firefox)
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/thisdotvoid/youtube-classic-extension
 	arch = any
 	license = MPL2
 	depends = firefox
-	noextract = youtube_classic-1.5.2-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/969546/youtube_classic-1.5.2-fx.xpi
-	sha256sums = 619e32f1fec61d2afa60b7a23622db168d2a3c18da74234df985d191f42c5704
+	noextract = youtube_classic-1.5.3-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/969546/youtube_classic-1.5.3-fx.xpi
+	sha256sums = 8a9f159e709363d5c1585ddbed9b1c0049048cf15117ff4f53093cc6af315cd8
 
 pkgname = firefox-extension-youtube-classic
 
