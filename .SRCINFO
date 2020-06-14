@@ -1,0 +1,14 @@
+pkgbase = qlift-c-api-git
+	pkgdesc = C API to Qt for Qlift
+	pkgver = r73.0f732b4
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/Longhanks/qlift-c-api.git
+	md5sums = SKIP
+
+pkgname = qlift-c-api-git
+
