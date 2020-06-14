@@ -1,17 +1,18 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
+_intelid=29628
 pkgname=intel-mas-cli-tool
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Intel Memory and Storage Tool (MAS) supports firmware upgrades and 4Kn sector size changes for PCIe/NVMe/SATA flash/Optane SSDs"
 arch=(any)
-url="https://downloadcenter.intel.com/download/29337/Intel-Memory-and-Storage-Tool-CLI-Command-Line-Interface-?product=83425"
+url="https://downloadcenter.intel.com/download/${_intelid}"
 license=()
-#depends=('' )
 makedepends=('libarchive')
 optdepends=()
-source=(https://downloadmirror.intel.com/29337/eng/Intel%C2%AE_MAS_CLI_Tool_${pkgver}_Linux.zip)
-sha1sums=('1e8eea966df0aa120b667c2e6727194110f9bc4d')
+source=(https://downloadmirror.intel.com/${_intelid}/eng/Intel%C2%AE_MAS_CLI_Tool_${pkgver}%20Linux.zip)
+md5sums=('553b27387a1f4a2350c60c63bae2d1f5')
+sha1sums=('36587603fcdc1d5eb15c70bea7427e0099e9bab3')
 
 package() {
 	cd "$pkgdir"
