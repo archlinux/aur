@@ -1,6 +1,6 @@
 pkgbase = themix-icons-numix-git
 	pkgdesc = Numix icons plugin for Themix GUI designer
-	pkgver = 19.09.20.r1.g6276c6896
+	pkgver = 20.06.07.r0.g65287ff64
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = themix-icons-numix-git
 	makedepends = python
 	depends = sed
 	depends = findutils
+	depends = bc
 	optdepends = themix-gui: GUI
 	optdepends = gnome-icon-theme: fallback icons
 	optdepends = gnome-icon-theme-symbolic: fallback icons
