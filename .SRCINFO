@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-lambda
+	pkgdesc = Collection of fortune cookies of lambda nature
+	pkgver = 11
+	pkgrel = 1
+	url = http://www.gotlisp.com/lambda/
+	arch = any
+	license = custom
+	depends = fortune-mod
+	source = http://www.gotlisp.com/lambda/lambda.dat
+	source = http://www.gotlisp.com/lambda/lambda.txt
+	md5sums = 0f2c915c3ef183024fceb37aead57449
+	md5sums = f423816a70c31117abf696cbd58cf2fe
+
+pkgname = fortune-mod-lambda
+
