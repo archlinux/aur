@@ -2,7 +2,7 @@
 _projectname='stem'
 pkgname="python2-$_projectname"
 pkgver='1.8.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Tor control library for Python - python2 version'
 arch=('any')
 url="https://$_projectname.torproject.org/"
@@ -25,7 +25,7 @@ _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-	find . -type f -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/env python2.7|g' {} \;
 
 	# Ignore broken & unreliable tests
 	sed -i 'test/settings.cfg' \
