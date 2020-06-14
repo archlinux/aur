@@ -1,10 +1,13 @@
-# Maintainer: Mohamed Sobh <mohamed.alhusieny@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mohamed Sobh <mohamed.alhusieny@gmail.com>
+
 pkgname=python-zipline
-pkgver=0.7.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A backtester for financial algorithms."
 arch=('any')
-url="http://www.zipline.io"
+url="https://www.zipline.io"
 license=('APACHE')
 depends=(
   'python>=3.3'
@@ -19,7 +22,7 @@ depends=(
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-${pkgver}.tar.gz")
-md5sums=('62d45c3c0d9a624e787b7e413937f7b4')
+sha256sums=('19b6607845d8d9dfa51c5679c65a143a04172f76fff70a58f9a835a69a25fbf9')
 
 build() {
   cd "$srcdir/${pkgname:7}-$pkgver"
