@@ -2,7 +2,7 @@
 
 pkgname=python-bitstruct
 _pkgname=bitstruct
-pkgver=8.10.0
+pkgver=8.11.0
 pkgrel=1
 pkgdesc="This module performs conversions between Python values and C bit field structs represented as Python byte strings"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/eerimoq/bitstruct"
 license=('custom')
 makedepends=('python-setuptools')
 depends=('python')
-source=(https://files.pythonhosted.org/packages/8d/1c/b78866d22bdea434e1058180b82b5ab0119c307898c2f9b15986755b7bed/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('e2cae748b486433704146e8f1ddc4601')
+source=(https://files.pythonhosted.org/packages/75/06/da9caba65a62a865df000ccb7c18508c3f4282658f48e72dd265867f9026/${_pkgname}-${pkgver}.tar.gz)
+md5sums=('8eaf853c95e10ca4b6bca2fe5ff307c6')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
