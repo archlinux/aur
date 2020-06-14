@@ -10,7 +10,7 @@ pkgbase = dmenu-tiyn-git
 	provides = dmenu
 	conflicts = dmenu
 	replaces = dmenu
-	source = dmenu-tiyn::git+https://github.com/tiyn/dmenu
+	source = dmenu-tiyn-git::git+https://github.com/tiyn/dmenu
 	md5sums = SKIP
 
 pkgname = dmenu-tiyn-git

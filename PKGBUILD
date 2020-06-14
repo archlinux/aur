@@ -5,7 +5,6 @@
 
 # Maintainer: Marten Kante <tiyn@martenkante.eu>
 pkgname=dmenu-tiyn-git
-_pkgname=dmenu-tiyn
 pkgver=4.9
 pkgrel=1
 epoch=
@@ -25,24 +24,26 @@ backup=()
 options=()
 install=
 changelog=
-source=("${_pkgname}::git+$url")
+source=("${pkgname}::git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "${_pkgname}"
-    _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
-    printf "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${pkgname}"
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "${pkgname}"
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
