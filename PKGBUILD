@@ -1,37 +1,33 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocsolver
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
 url='https://rocsolver.readthedocs.io/en/latest/userguidedocu.html'
 license=('BSD 2-Clause')
-depends=('hip-hcc' 'rocblas')
-makedepends=('cmake' 'hcc' 'python' 'python-pyaml' 'rocm-cmake' 'llvm-amdgpu')
+depends=('hip-rocclr' 'rocblas')
+makedepends=('cmake' 'python' 'python-pyaml' 'rocm-cmake' 'rocminfo')
 _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/$pkgver.tar.gz")
-sha256sums=('abbc454fdc66bde13b1e1bfe7c2ae0d57ff9ac6704bc4dde6db390303d6f1b95')
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('d655e8c762fb9e123b9fd7200b4258512ceef69973de4d0588c815bc666cb358')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-    mkdir -p build
-    cd build
-
-    CXX=/opt/rocm/hcc/bin/hcc \
-    cmake   -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+    CXX=/opt/rocm/hip/bin/hipcc \
+    cmake   -B build -Wno-dev \
+            -DCMAKE_INSTALL_PREFIX=/opt/rocm \
             -DCMAKE_PREFIX_PATH=/opt/rocm/llvm/lib/cmake/llvm \
             -DBUILD_CLIENTS_SAMPLES=OFF \
             -DBUILD_CLIENTS_TESTS=OFF \
             -DBUILD_CLIENTS_BENCHMARKS=OFF \
-            "../$_dirname"
-
-    make
+            "$_dirname"
+    make -C build
 }
 
 package() {
-    cd "$srcdir/build"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" make -C build install
 
     install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/$pkgname.conf" <<-EOF
         /opt/rocm/$pkgname/lib
