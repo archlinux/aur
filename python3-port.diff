@@ -1,0 +1,352 @@
+diff -ur a/qt-recordmydesktop/configure.ac b/qt-recordmydesktop/configure.ac
+--- a/qt-recordmydesktop/configure.ac	2008-11-23 16:05:38.000000000 +0100
++++ b/qt-recordmydesktop/configure.ac	2020-06-14 15:21:23.267768429 +0200
+@@ -27,7 +27,7 @@
+ AC_MSG_NOTICE(Using localstatedir $LOCALSTATEDIR)
+
+ dnl check for python
+-AM_PATH_PYTHON(2.3)
++AM_PATH_PYTHON(3.3)
+
+ AS_AC_EXPAND(PYTHONDIR, $pythondir)
+ AC_MSG_NOTICE(Using pythondir $PYTHONDIR)
+@@ -43,7 +43,7 @@
+
+ export PYTHONPATH=$PYTHONPATH
+
+-export PYQT4_VERSION=`python -c 'import PyQt4; from PyQt4 import QtCore; print QtCore.PYQT_VERSION_STR'  2>>/dev/null `
++export PYQT4_VERSION=`python -c 'import PyQt4; from PyQt4 import QtCore; print(QtCore.PYQT_VERSION_STR)'  2>>/dev/null `
+ if test x$PYQT4_VERSION == x; then
+     AC_MSG_ERROR(You need PyQt4>=4.1 installed to procceed);
+ fi
+diff -ur a/qt-recordmydesktop/src/qt-recordMyDesktop.in b/qt-recordmydesktop/src/qt-recordMyDesktop.in
+--- a/qt-recordmydesktop/src/qt-recordMyDesktop.in	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/qt-recordMyDesktop.in	2020-06-14 15:21:23.267768429 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+
+ #/******************************************************************************
+ #*                       qt-recordMyDesktop                                    *
+diff -ur a/qt-recordmydesktop/src/rmdMonitor.py b/qt-recordmydesktop/src/rmdMonitor.py
+--- a/qt-recordmydesktop/src/rmdMonitor.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdMonitor.py	2020-06-14 15:21:23.267768429 +0200
+@@ -25,15 +25,14 @@
+
+ from PyQt4 import QtGui,QtCore
+ import locale, gettext
+-import rmdConfig
++from . import rmdConfig
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+-import popen2
+ import os,fcntl,signal
+-from rmdStrings import *
++from .rmdStrings import *
+
+ class rmdMonitor(QtGui.QDialog):
+     labeString=monStrings['PleaseWait']
+diff -ur a/qt-recordmydesktop/src/rmdPrefsWidget.py b/qt-recordmydesktop/src/rmdPrefsWidget.py
+--- a/qt-recordmydesktop/src/rmdPrefsWidget.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdPrefsWidget.py	2020-06-14 15:21:23.271101832 +0200
+@@ -25,15 +25,16 @@
+
+ from PyQt4 import QtGui,QtCore
+ import locale, gettext
+-import rmdConfig
++import subprocess
++from . import rmdConfig
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+ def htmlize(s):
+     return "<html><body>"+s.replace("\n","<br>")+"</html></body>"
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+ import os
+-from rmdStrings import *
++from .rmdStrings import *
+
+
+
+@@ -87,7 +88,7 @@
+         self.__getSelectedPorts__()
+         self.values[24]=self.__tButToBox__(self.tooltipsComboBox)
+         self.values[25]=self.__tButToBox__(self.rFrameComboBox)
+-        self.values[26]=str(self.extraOptsEntry.text().trimmed())
++        self.values[26]=str(self.extraOptsEntry.text().strip())
+         self.optionsOpen[0]=0
+
+
+@@ -155,7 +156,7 @@
+
+
+ #Performance page
+-        for i in xrange(2,7):
++        for i in range(2,7):
+             self.labels[i]=QtGui.QLabel(prefLabelStrings[i],self.tabWidgets[1])
+             self.labels[i].setAlignment(QtCore.Qt.AlignLeft)
+             self.boxes[i]=QtGui.QHBoxLayout()
+@@ -188,7 +189,7 @@
+         self.boxes[6].insertWidget(-1,self.fullComboBox)
+
+ #sound page
+-        for i in xrange(7,10):
++        for i in range(7,10):
+             self.labels[i]=QtGui.QLabel(prefLabelStrings[i],self.tabWidgets[2])
+             self.labels[i].setAlignment(QtCore.Qt.AlignLeft)
+             self.boxes[i]=QtGui.QHBoxLayout()
+@@ -241,7 +242,7 @@
+         self.boxes[9].insertWidget(-1,self.deviceEntry)
+
+ #misc page
+-        for i in xrange(10,19):
++        for i in range(10,19):
+             self.labels[i]=QtGui.QLabel(prefLabelStrings[i],self.tabWidgets[3])
+             self.labels[i].setAlignment(QtCore.Qt.AlignLeft)
+             self.boxes[i]=QtGui.QHBoxLayout()
+@@ -305,7 +306,9 @@
+     def __runJackLSP__(self,button=None):
+         self.ports=[]
+         failed=0
+-        (stdin,stdout,stderr)=os.popen3(['jack_lsp'],'t')
++        p=subprocess.Popen(['jack_lsp'],shell=False,
++          stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True,text=True)
++        stdin,stdout,stderr = p.stdin,p.stdout,p.stderr
+         ports=stdout.readlines()
+         stdin.close()
+         stdout.close()
+diff -ur a/qt-recordmydesktop/src/rmdSelect.py b/qt-recordmydesktop/src/rmdSelect.py
+--- a/qt-recordmydesktop/src/rmdSelect.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdSelect.py	2020-06-14 15:21:23.271101832 +0200
+@@ -78,6 +78,6 @@
+     w = QtAreaSelector(p[0])
+     w.showFullScreen()
+     app.exec_()
+-    print p[0]
++    print(p[0])
+
+
+diff -ur a/qt-recordmydesktop/src/rmdSelectThumb.py b/qt-recordmydesktop/src/rmdSelectThumb.py
+--- a/qt-recordmydesktop/src/rmdSelectThumb.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdSelectThumb.py	2020-06-14 15:21:23.271101832 +0200
+@@ -25,8 +25,8 @@
+
+ from PyQt4 import QtGui,QtCore
+ import sys
+-import rmdConfig
+-from rmdFrame import *
++from . import rmdConfig
++from .rmdFrame import *
+
+ class QtThumbSelector(QtGui.QLabel):
+     def __init__(self,parent,caller,area_return,hidden,update_interval=500):
+@@ -162,7 +162,7 @@
+     w = QtThumbSelector(None,app,p[0],hidden)
+     w.show()
+     app.exec_()
+-    print p[0]
++    print(p[0])
+
+
+
+diff -ur a/qt-recordmydesktop/src/rmdSimple.py b/qt-recordmydesktop/src/rmdSimple.py
+--- a/qt-recordmydesktop/src/rmdSimple.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdSimple.py	2020-06-14 15:21:23.271101832 +0200
+@@ -25,19 +25,20 @@
+
+ from PyQt4 import QtGui,QtCore
+ import locale, gettext
+-import rmdConfig
++import subprocess
++from . import rmdConfig
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+ def htmlize(s):
+     return "<html><body>"+s.replace("\n","<br>")+"</html></body>"
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+ import os,sys
+
+-from rmdTrayIcon import *
+-import rmdPrefsWidget as pW
+-import rmdSelectThumb as sT
+-from rmdStrings import *
++from .rmdTrayIcon import *
++from . import rmdPrefsWidget as pW
++from . import rmdSelectThumb as sT
++from .rmdStrings import *
+
+ class simpleWidget(object):
+     hidden=[0]
+@@ -158,7 +159,7 @@
+             self.exited=1
+             self.optionsOpen[0]=0
+             if self.save_prefs()==False:
+-                print "Warning!!!Couldn't save preferences"
++                print("Warning!!!Couldn't save preferences")
+             sys.exit()
+     def hide(self,Event=None):
+         if self.image.realFrame != None and self.values[25]==0:
+@@ -199,7 +200,9 @@
+         xwininfo_com=['xwininfo','-frame']
+         if self.values[21]==1:
+             xwininfo_com=['xwininfo']
+-        (stdin,stdout,stderr)=os.popen3(xwininfo_com,'t')
++        p=subprocess.Popen(xwininfo_com,shell=False,
++          stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True,text=True)
++        stdin,stdout,stderr = p.stdin,p.stdout,p.stderr
+         wid=stdout.readlines()
+         stdin.close()
+         stdout.close()
+diff -ur a/qt-recordmydesktop/src/rmdStrings.py b/qt-recordmydesktop/src/rmdStrings.py
+--- a/qt-recordmydesktop/src/rmdStrings.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdStrings.py	2020-06-14 15:21:23.271101832 +0200
+@@ -24,10 +24,10 @@
+
+
+ from PyQt4 import QtGui,QtCore
+-import rmdConfig
++from . import rmdConfig
+ import locale, gettext
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+diff -ur a/qt-recordmydesktop/src/rmdTrayIcon.py b/qt-recordmydesktop/src/rmdTrayIcon.py
+--- a/qt-recordmydesktop/src/rmdTrayIcon.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdTrayIcon.py	2020-06-14 15:30:18.124992089 +0200
+@@ -25,18 +25,18 @@
+
+ from PyQt4 import QtGui,QtCore
+ import locale, gettext
+-import rmdConfig
++from . import rmdConfig
+ import re
+
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+
+-import rmdTrayPopup as iTP
+-import rmdMonitor as imon
+-import os,signal,popen2,fcntl
+-from rmdStrings import *
++from . import rmdTrayPopup as iTP
++from . import rmdMonitor as imon
++import os,signal,subprocess,fcntl
++from .rmdStrings import *
+ #values struct:
+
+ #0   fps
+@@ -198,9 +198,9 @@
+
+
+
+-        self.childP=popen2.Popen3(self.execargs,"t",0)
+-        flags = fcntl.fcntl(self.childP.childerr, fcntl.F_GETFL)
+-        fcntl.fcntl(self.childP.childerr, fcntl.F_SETFL, flags | os.O_NONBLOCK)
++        self.childP=subprocess.Popen(self.execargs,shell=False,bufsize=0,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,close_fds=True,text=True)
++        flags = fcntl.fcntl(self.childP.stderr, fcntl.F_GETFL)
++        fcntl.fcntl(self.childP.stderr, fcntl.F_SETFL, flags | os.O_NONBLOCK)
+         self.rmdPid=self.childP.pid
+         self.timed_id=QtCore.QTimer(None)
+         self.timed_id.connect(self.timed_id,QtCore.SIGNAL("timeout()"),
+@@ -217,13 +217,13 @@
+             error_log.write("\n\n\n#recordMyDesktop stderror output:\n")
+             error_log.write(self.ch_err)
+             try:
+-                for err_line in self.childP.childerr.readlines():
++                for err_line in self.childP.stderr.readlines():
+                     error_log.write(err_line)
+             except:
+                     error_log.write("Couldn't write stderror of recordMyDesktop!\n")
+-            self.childP.childerr.close()
++            self.childP.stderr.close()
+         except:
+-            print "Couldn't write error log.\n"
++            print("Couldn't write error log.\n")
+         self.dialog = QtGui.QWidget()
+         self.label1=None
+         try:
+@@ -257,7 +257,7 @@
+             if need_kill:
+                 os.kill(self.rmdPid,signal.SIGTERM)
+             self.state=-1
+-            monitor=imon.rmdMonitor(self.childP.fromchild,self.rmdPid,self.parent)
++            monitor=imon.rmdMonitor(self.childP.stdout,self.rmdPid,self.parent)
+             monitor.exec_()
+             self.state=0
+         else:
+@@ -288,7 +288,7 @@
+                 #try:
+                 while True:
+                     try:
+-                        err_line=self.childP.childerr.readline()
++                        err_line=self.childP.stderr.readline()
+                         new_stderr+=err_line
+                     except:
+                         break
+@@ -297,19 +297,19 @@
+                 if(self.ch_err.find("STATE:RECORDING")>=0):
+                     rp=re.compile("STATE:RECORDING")
+                     self.ch_err=rp.sub("",self.ch_err)
+-                    print "EXTERNAL STATE CHANGE:RECORDING"
++                    print("EXTERNAL STATE CHANGE:RECORDING")
+                     self.__set_icon__(self.trayIcon,"stop")
+                     self.state=1
+                 elif(self.ch_err.find("STATE:PAUSED")>=0):
+                     rp=re.compile("STATE:PAUSED")
+                     self.ch_err=rp.sub("",self.ch_err)
+-                    print "EXTERNAL STATE CHANGE:PAUSED"
++                    print("EXTERNAL STATE CHANGE:PAUSED")
+                     self.__set_icon__(self.trayIcon,"pause")
+                     self.state=2
+                 elif(self.ch_err.find("STATE:ENCODING")>=0):
+                     rp=re.compile("STATE:ENCODING")
+                     self.ch_err=rp.sub("",self.ch_err)
+-                    print "EXTERNAL STATE CHANGE:ENCODING"
++                    print("EXTERNAL STATE CHANGE:ENCODING")
+                     self.__stopRMD__(False)
+
+                 return True
+@@ -341,9 +341,3 @@
+     app.values=rmdConfig.default_values
+     w = trayIcon(app)
+     app.exec_()
+-
+-
+-
+-
+-
+-
+diff -ur a/qt-recordmydesktop/src/rmdTrayPopup.py b/qt-recordmydesktop/src/rmdTrayPopup.py
+--- a/qt-recordmydesktop/src/rmdTrayPopup.py	2008-11-22 11:58:07.000000000 +0100
++++ b/qt-recordmydesktop/src/rmdTrayPopup.py	2020-06-14 15:21:23.274435237 +0200
+@@ -25,14 +25,14 @@
+
+ from PyQt4 import QtGui,QtCore
+ import locale, gettext
+-import rmdConfig
++from . import rmdConfig
+ def _(s):
+-    return QtCore.QString.fromUtf8(gettext.gettext(s))
++    return gettext.gettext(s)
+ gettext.textdomain('qt-recordMyDesktop')
+ gettext.bindtextdomain('qt-recordMyDesktop',rmdConfig.locale_install_dir)
+
+-import rmdSelect as iSel
+-from rmdStrings import *
++from . import rmdSelect as iSel
++from .rmdStrings import *
+ import sys
+ #import rmdPrefsWidget as pW
