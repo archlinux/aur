@@ -18,7 +18,7 @@ prepare() {
   # exist as bash variables), so fix that too.
   cd "$srcdir/${pkgname%-git}"
   CFLAGS=$CFLAGS LDFLAGS=$LDFLAGS \
-    meson setup --prefix=/usr --buildtype=release build/
+    meson setup --prefix=/usr --buildtype=plain build/
 }
 
 pkgver() {
