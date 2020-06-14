@@ -18,6 +18,7 @@ conflicts=('megasync'
            )
 provides=('megasync')
 depends=('qt5-svg'
+         'qt5-x11extras'
          'c-ares'
          'libuv'
          'crypto++'
