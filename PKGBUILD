@@ -1,8 +1,8 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=ffmpegfs
-pkgver=1.11
+pkgver=1.98
 pkgrel=1
-pkgdesc="FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding"
+pkgdesc="FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
 url="https://nschlia.github.io/ffmpegfs/"
 license=('GPL3' 'FDL1.3')
@@ -23,4 +23,4 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/ffmpegfs/README.md"
 }
 
-sha384sums=('b56bae9863d07c6ecf176cf3a10500b298958569e9982fd82dbeda0fe2a656d1162e826625f6a47a666b2302f8c70c16')
+sha384sums=('034291d41540d5eaae27b96b8fef6ddb40d5fd69f09a37e7a1aba706efad3018dfd3effe6c06e1d40e6154c9fe29fc46')
