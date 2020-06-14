@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=19.11.80.r11761.a049f651c
+pkgver=20.07.70.r12886.78f53637c
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,11 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive')
+#The git repo has changed recently. To update your git repo to the new one
+#and save yourself from downloading the entire repo again, do:
+#git remote set-url https://invent.kde.org/multimedia/kdenlive
+#in the kdenlive git directory
+source=('git+https://invent.kde.org/multimedia/kdenlive')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)
