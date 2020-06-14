@@ -1,0 +1,8 @@
+post_install() {
+	cat <<-ECHO
+	Make sure nitter starts before the proxy server.
+	Use "systemctl edit nitter" and add something like this:
+	> [Unit]
+	> Before=nginx.service
+	ECHO
+}
