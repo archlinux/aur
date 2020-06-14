@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=namecoin-core
-pkgver=0.19.1
-pkgrel=4
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://namecoin.org"
@@ -90,7 +90,7 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-sha256sums=('afd788e6ffbea3ab01c8657a51f3fcc061478618225adebb8dd8c0aecf780023'
+sha256sums=('6e4cd88d85c1a0893e3917e8312ae790d4aaa5d8ad6f735af086849425210df8'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
             '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
