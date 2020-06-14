@@ -2,7 +2,7 @@
 
 pkgname=hurrican
 pkgver=1.0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware jump and shoot game created by Poke53280"
 arch=('i686' 'x86_64')
 url="https://github.com/thrimbor/Hurrican.git"
@@ -11,15 +11,20 @@ depends=('sdl_image' 'sdl_mixer' 'libmodplug' 'libgl' 'libepoxy')
 makedepends=('git' 'mesa' 'cmake')
 conflicts=('hurrican-svn')
 source=(hurrican::"git+https://github.com/thrimbor/hurrican.git"
+        glm::"git+https://github.com/g-truc/glm.git"
         hurrican.desktop
         hurrican.png)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 prepare() {
     cd "${srcdir}"/hurrican
     git checkout "v${pkgver}"
+    git submodule init
+    git config submodule.Hurrican/3rdparty/glm.url "${srcdir}"/glm
+    git submodule update
 }
 
 build() {
