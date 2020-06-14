@@ -1,12 +1,12 @@
 # Maintainer: Ryan Chan <ryan at rycwo dot xyz>
 
 pkgname="lemons"
-pkgver="0.5.0"
-pkgrel=2
+pkgver="0.6.0"
+pkgrel=0
 pkgdesc="Output script for lemonbar"
 arch=("any")
 url="https://git.sr.ht/~rycwo/lemons"
-license=("custom:Unlicense")
+license=("custom:WTFPL")
 depends=(
 	"bash"
 	"lemonbar-xft-git"
@@ -19,7 +19,7 @@ depends=(
 	"iw")
 optdepends=("otf-san-francisco-mono: for a nice default font")
 source=("https://git.sr.ht/~rycwo/""$pkgname""/archive/""$pkgver"".tar.gz")
-sha256sums=('ddd1981aa586c59ee5e9cc4fc88de5a8f252bb3bc9abf9b7354106b7e5d3f420')
+sha256sums=('59cd16176a7c21eba5cbe16618d1d1e367404151f4dd92ee23217aaad2f96631')
 
 package() {
 	cd "$srcdir""/""$pkgname""-""$pkgver"
