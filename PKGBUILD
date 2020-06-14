@@ -5,7 +5,7 @@
 _pkgname='mailpile'
 pkgname="$_pkgname-git"
 pkgver='1.0.0rc1.r719.g1fd5272f'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features - git version'
 arch=('any')
 url="http://www.$_pkgname.is"
@@ -31,8 +31,8 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	git submodule init
 	git submodule update
-	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
-	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/python$|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/python2.7$|#!/usr/bin/env python2.7|g' {} \;
 	rm -rf 'shared-data/'{"$_pkgname-gui/",'multipile/'}
 	rm -rf 'shared-data/default-theme/'{'less/','index.html'}
 	rm -rf "$_pkgname/tests"
