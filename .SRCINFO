@@ -1,0 +1,19 @@
+pkgbase = python-pyptt
+	pkgdesc = A PTT library that support PTT and PTT2
+	pkgver = 0.9.17
+	pkgrel = 1
+	url = https://github.com/PttCodingMan/PyPtt
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-progressbar
+	depends = python-websockets
+	depends = python-uao
+	depends = python-beautifulsoup4
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/P/PyPtt/PyPtt-0.9.17.tar.gz
+	sha256sums = 28d7038d52419259ecc5de2c53387af3954a1d54597413e3c94c9ce01c8a6931
+
+pkgname = python-pyptt
+
