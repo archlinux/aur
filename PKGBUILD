@@ -15,9 +15,7 @@ source=(
 	'git+https://github.com/Windblade-GR01/Ikemen_GO.git'
 	'git+https://github.com/Windblade-GR01/Ikemen_GO-Elecbyte-Screenpack.git'
 	)
-md5sums=('SKIP'
-         'SKIP'
-        )
+md5sums=('SKIP''SKIP')
 
 pkgver() {
   cd "${srcdir}/Ikemen_GO"
@@ -64,13 +62,13 @@ build() {
 
 package() {
 	# package installation: under /opt
-	install -dm777 "${pkgdir}/opt/$pkgname/"
+	install -d "${pkgdir}/opt/$pkgname/"
 	cp -a "${srcdir}/Ikemen_GO/." "${pkgdir}/opt/$pkgname"
 
 	# Create static link from shebang script to /usr/bin
 	install -d "${pkgdir}/usr/bin"
 
 	# create a shortcut for ikemen go
-	printf '%s\n' '#!/usr/bin/env sh' 'cd /opt/ikemen-go-git; ./Ikemen_GO_linux' >> "${pkgdir}/usr/bin/ikemen-go"
+	printf '%s\n' '#!/usr/bin/env sh' 'cd /opt/ikemen-go-bin; ./Ikemen_GO_linux' >> "${pkgdir}/usr/bin/ikemen-go"
 	chmod +x "$pkgdir/usr/bin/ikemen-go" 
 }
