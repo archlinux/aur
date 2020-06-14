@@ -3,7 +3,7 @@
 
 _gemname=sinatra
 pkgname=ruby-$_gemname
-pkgver=2.0.5
+pkgver=2.0.8.1
 pkgrel=2
 pkgdesc='Classy web-development dressed in a DSL'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-rack ruby-tilt ruby-rack-protection ruby-mustermann)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c16fd081f46c4a600933821bb2d5e15424b9d0df')
+sha1sums=('04cca7a5d9d641fe076e4e24dc5b6ff31922f4c3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
