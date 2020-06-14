@@ -1,8 +1,8 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.5.13
-_pkgver=1.5.13
+pkgver=v1.5.15
+_pkgver=1.5.15
 pkgrel=0
 epoch=
 pkgdesc="A full-featured download manager (release version)"
@@ -32,13 +32,14 @@ source=("Motrix.desktop"
 noextract=()
 sha256sums=('1b799d1b1e280a27ff625cceb429b1e00c6691eb0256ded44f6a1a0310a899d4'
 	'c89824e80769b0b19c66da12168f9e91fc15088d1324d6760ddad960eb006cba'
-	'SKIP')
+	'73059db1fd7d9d145155f2ce0aa33a07b356ce042f214b8c0357b985e334289d')
 validpgpkeys=()
 
 prepare() {
 	tar -xvf $_pkgname.tar.gz
 	rm $_pkgname.tar.gz
 	mv $_pkgname-$_pkgver $_pkgname
+	npm config set ELECTRON_BUILDER_BINARIES_MIRROR=https://pan.yasking.org/electron-builder/
 #	echo "====================================="
 #	echo "Finding if you are in China..."
 #	curl https://myip.ipip.net | grep -i "中国"
