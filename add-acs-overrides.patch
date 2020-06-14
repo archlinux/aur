@@ -49,11 +49,12 @@ your customers the hassle of this boot option.
  drivers/pci/quirks.c                          | 102 ++++++++++++++++++
  2 files changed, 110 insertions(+)
 
+
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 20aac805e197..e625ef816cf7 100644
+index 5e2ce88d6eda..958769fe0fa2 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -3472,6 +3472,14 @@
+@@ -3509,6 +3509,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -190,4 +191,3 @@ index ca9ed5774eb1..4567b0e8f2de 100644
  
 -- 
 2.26.2
-
