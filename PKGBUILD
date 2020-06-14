@@ -1,11 +1,11 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r36.a3aa219
-pkgrel=2
+pkgver=r38.e6f9e76
+pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.'
 arch=('x86_64')
-url="https://github.com/DEC05EBA/gpu-screen-recorder"
+url="https://gitgud.io/dec05eba/gpu-screen-recorder"
 license=('GPL3')
 depends=('glew' 'glfw-x11' 'ffmpeg' 'libxcomposite' 'libxdamage' 'alsa-lib' 'libpulse' 'nvidia-utils' 'cuda' 'libx11')
 makedepends=('sibs')
