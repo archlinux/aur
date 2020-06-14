@@ -2,10 +2,10 @@
 # Based on nushell package, but uses prebuilt binary
 
 pkgname=nushell-bin
-pkgver=0.13.0
-_underscoredpkgver=0_13_0
-pkgrel=2
-depends=('zlib' 'libxcb' 'openssl')
+pkgver=0.15.0
+_underscoredpkgver=0_15_0
+pkgrel=1
+depends=('zlib' 'libxcb' 'openssl' 'libgit2')
 optdepends=('libx11: for binaryview plugin')
 arch=('i686' 'x86_64')
 pkgdesc="A shell for the GitHub era"
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/do
         "https://raw.githubusercontent.com/nushell/nushell/$pkgver/LICENSE")
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('edab98782203cd16ce40c421e4362a917fdbae8405a141ba56acf381233b2ece'
+sha256sums=('cf3ea9eae4629af2382108c25675977dd4875f1c3213be85c3e40de8bae83dfe'
             '57fdb6634a2372af0978dd178f8e157f227d96f3ca27ae9c73f1320f6c0c41d4')
 
 build() {
