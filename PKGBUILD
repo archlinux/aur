@@ -3,15 +3,15 @@
 # Contributor: raku <raczkow@gmail.com>
 
 pkgname=kim4
-pkgver=0.9.5
-pkgrel=7
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="Kde Image Menu to compress, resize, convert, rename and much more"
 arch=('any')
-url="https://www.kde-apps.org/content/show.php?content=11505"
+url="http://www.librepc.com/dl/kim/"
 license=('GPL')
 depends=('bash' 'imagemagick' 'dolphin' 'kdialog')
-source=(http://bouveyron.free.fr/kim/release/$pkgname-$pkgver.tar.gz)
-md5sums=('c7934ab0dbf988da5f60d9c4cbf97dd5')
+source=("http://www.librepc.com/dl/kim/kim4-$pkgver.tar.gz")
+sha256sums=('dcc1f2fb0a9b69b7b406afab266d0521426dbe3a05a71706aa4dc7e86a70a715')
 
 package() {
   cd ${srcdir}/${pkgname}/src
