@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=20.07.70.r6494.4ff7cdb2a
+pkgver=20.07.70.r6511.d4e28c3c1
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=('cdrdao: for CD DAO mode burning support'
             )
 provides=('k3b')
 conflicts=('k3b')
-source=('git://anongit.kde.org/k3b.git')
+source=('git+https://invent.kde.org/multimedia/k3b.git')
 sha256sums=('SKIP')
 
 pkgver() {
