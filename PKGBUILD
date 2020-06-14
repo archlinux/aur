@@ -18,6 +18,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz #ignore signature
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
+  config.alt     # alternate config, curently just CONFIG_REFCOUNT_FULL
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
 #validpgpkeys=(
@@ -28,6 +29,7 @@ source=(
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             '6cbae3f6c74cf3d78e7f1d45a2c4d8e068706ef35711bed066c5cdcde6c087f4'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
+            '9bc1ea92e6ddefaa594d7383a2c1bea0fbe5efea8030b5a9cf55b6eeb3fbcaab'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
