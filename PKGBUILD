@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=nitter-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')

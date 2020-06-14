@@ -1,7 +1,7 @@
 pkgbase = nitter-git
 	pkgdesc = Alternative Twitter front-end
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zedeus/nitter
 	arch = x86_64
 	license = AGPL3
