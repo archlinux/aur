@@ -8,7 +8,7 @@ pkgver=0.10.31
 pkgrel=29
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
-makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
+makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev' 'python')
 url="https://github.com/triceratops1/gstreamer0"
 options=(!emptydirs)
 source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
@@ -31,6 +31,9 @@ prepare() {
 build() {
   cd $_pkgname
   NOCONFIGURE=1 ./autogen.sh
+
+  find . -name 'Makefile.in' -exec sed -i -e 's/\\#include/#include/g' {} \;
+
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --enable-experimental \
     --disable-schemas-install \
