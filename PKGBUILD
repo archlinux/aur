@@ -1,21 +1,18 @@
-# Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=python-st7036
-pkgver=r20.a33546b
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Python bindings for ST7036 LCD."
-arch=('armv6h')
+arch=('armv6h' 'armv7h' 'aarch64')
 url="https://github.com/pimoroni/st7036"
 license=('GPL')
 depends=('python' 'python-spidev' 'python-raspberry-gpio')
 makedepends=('python' 'git')
-source=($pkgname::git://github.com/pimoroni/st7036.git)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/pimoroni/st7036/archive/v$pkgver.tar.gz")
+sha256sums=('cb73aed42480f57f03e14c1a3ee7b93a55cddd8a326ac54dba6eeadcdf748bc7')
 
 build() {
   cd "$srcdir/$pkgname/python"
