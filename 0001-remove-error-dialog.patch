@@ -1,0 +1,28 @@
+From f09fb4674d4d3fc524a9aa810c216bbbecadcf4c Mon Sep 17 00:00:00 2001
+From: Chaoting Liu <brli@chakralinux.org>
+Date: Thu, 8 Dec 2016 06:31:31 +0000
+Subject: [PATCH] remove error dialog
+
+---
+ main.qml | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/main.qml b/main.qml
+index 007c8f6..d1c4c7f 100644
+--- a/main.qml
++++ b/main.qml
+@@ -35,11 +35,4 @@ AsemanApplication {
+             callback()
+         }
+     }
+-
+-    MessageDialog {
+-        id: errorDialog
+-        title: "Fatal Error"
+-        text: "Cutegram could not be started. Additional information:"
+-        onAccepted: app.exit(1)
+-    }
+ }
+-- 
+2.10.0
+

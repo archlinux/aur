@@ -1,19 +1,22 @@
 pkgbase = cutegram-git
-	pkgdesc = Telegram client by Aseman Land
-	pkgver = 2.9.5.dev.r26.g20690bd
+	pkgdesc = A different telegram client from Aseman team
+	pkgver = 2.9.5+de+51+g59b53fe8
 	pkgrel = 1
-	url = http://aseman.co/cutegram
+	url = http://aseman.co/en/products/cutegram/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = libqtelegram-ae-git
-	depends = telegramqml-git
-	depends = aseman-qt-tools-git
+	depends = libqtelegram-ae
+	depends = telegramqml
+	depends = aseman-qt-tools
+	depends = qt5-declarative
 	optdepends = gst-plugins-good: for audio and notification support
 	optdepends = gst-plugins-bad: for audio support
 	source = cutegram-git::git+https://github.com/Aseman-Land/Cutegram.git
-	md5sums = SKIP
+	source = 0001-remove-error-dialog.patch
+	sha256sums = SKIP
+	sha256sums = 13d4d5404fa98509c908db0444e3a4cbde598f85351de9081a986857045e2487
 
 pkgname = cutegram-git
 
