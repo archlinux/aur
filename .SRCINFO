@@ -14,8 +14,11 @@ pkgbase = daily-wallpaper-git
 	depends = python-plumbum
 	depends = gtk3
 	depends = libnotify
+	optdepends = cron: automatic download
 	provides = daily-wallpaper
+	provides = national-geographic-wallpaper
 	conflicts = daily-wallpaper
+	conflicts = national-geographic-wallpaper
 	source = daily-wallpaper-git::git+https://github.com/atareao/daily-wallpaper.git
 	md5sums = SKIP
 
