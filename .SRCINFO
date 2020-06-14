@@ -1,6 +1,6 @@
 pkgbase = pacmods
 	pkgdesc = Tool to show changes to system config files
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/c4rlo/pacmods
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = pacmods
 	depends = python-setuptools
 	depends = pyalpm
 	options = !emptydirs
-	source = https://github.com/c4rlo/pacmods/archive/0.1.0.tar.gz
-	sha256sums = b413c09cb03a075acfec88b5366b3d7681e96220f1a8cc79c15d58e1ae7667fc
+	source = https://github.com/c4rlo/pacmods/archive/0.1.1.tar.gz
+	sha256sums = e1396189e2a8b8075ad45f1385ca818e77c75028ea9367c77c7921f9d69430af
 
 pkgname = pacmods
 
