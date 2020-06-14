@@ -5,7 +5,7 @@
 
 # Maintainer: Marten Kante <tiyn@martenkante.eu>
 pkgname=st-tiyn-git
-pkgver=0.8.2
+pkgver=0.8.3.r45.afedf22
 pkgrel=1
 epoch=
 pkgdesc="This is the st build of tiyn. It includes a bunch of patches."
@@ -33,7 +33,7 @@ pkgver() {
     cd "${pkgname}"
     ( set -o pipefail
       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "0.8.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+      printf "0.8.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 }
 
 build() {
