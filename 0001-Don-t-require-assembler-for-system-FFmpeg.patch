@@ -1,0 +1,25 @@
+From e4726e3fcf2f0d506d0caebc6e92643bc8620a32 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Kr=C3=B6ning?= <mkroening@posteo.net>
+Date: Sun, 14 Jun 2020 14:03:37 +0200
+Subject: [PATCH] Don't require assembler for system FFmpeg
+
+---
+ StepmaniaCore.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/StepmaniaCore.cmake b/StepmaniaCore.cmake
+index dcab93cef0..fdccda5172 100644
+--- a/StepmaniaCore.cmake
++++ b/StepmaniaCore.cmake
+@@ -443,7 +443,7 @@ elseif(LINUX)
+       )
+   endif()
+ 
+-  if(WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND)
++  if(WITH_FFMPEG AND NOT WITH_SYSTEM_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND)
+     message(
+       "Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support."
+       )
+-- 
+2.27.0
+

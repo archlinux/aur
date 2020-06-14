@@ -9,45 +9,55 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 _pkgname=stepmania
 pkgname=$_pkgname-git
-pkgver=5.1.0.b2.r483.376e5f46d8
+pkgver=5.1.0.b2.r490.a21ebbd053
 pkgrel=1
 pkgdesc="An advanced rhythm game designed for both home and arcade use."
 arch=(x86_64)
 url=https://www.$_pkgname.com/
 license=(MIT)
-depends=(glew gtk2 libmad libpulse libtommath libva libvorbis)
-makedepends=(cmake git ninja nasm)
+depends=(ffmpeg glew gtk2 libmad libtommath libvorbis)
+makedepends=(cmake git ninja)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git+https://github.com/$_pkgname/$_pkgname.git)
-sha256sums=('SKIP')
+source=(git+https://github.com/$_pkgname/$_pkgname.git
+        0001-Don-t-require-assembler-for-system-FFmpeg.patch)
+sha256sums=('SKIP'
+            '6cf4f1f917fab4f1931fdbe5271e1253cdad0e789cb651ede575cb6d1f6c64b7')
 
 pkgver() {
     cd $_pkgname
     printf "%s" "$(git describe --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+prepare() {
+    cd $_pkgname
+
+    # Related issue: https://github.com/stepmania/stepmania/issues/2016
+    patch -p1 -i "$srcdir"/0001-Don-t-require-assembler-for-system-FFmpeg.patch
+
+    # Related issue: https://github.com/stepmania/stepmania/issues/1881
+    rm -r extern/libpng
+}
+
 build() {
     # Related issues
-    # ffmpeg: https://github.com/stepmania/stepmania/issues/2016
     # jsoncpp: https://github.com/stepmania/stepmania/issues/1883
-    # libpng: https://github.com/stepmania/stepmania/issues/1881
     # tomcrypt: https://github.com/stepmania/stepmania/issues/1885
-    cmake -S $_pkgname -B build \
+    cmake -G Ninja -S $_pkgname -B build \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
         -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
         -DCMAKE_INSTALL_PREFIX=/opt \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-        -DWITH_SYSTEM_FFMPEG=OFF \
+        -DWITH_SYSTEM_FFMPEG=ON \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_SYSTEM_JPEG=ON \
         -DWITH_SYSTEM_JSONCPP=OFF \
         -DWITH_SYSTEM_MAD=ON \
         -DWITH_SYSTEM_OGG=ON \
         -DWITH_SYSTEM_PCRE=ON \
-        -DWITH_SYSTEM_PNG=OFF \
+        -DWITH_SYSTEM_PNG=ON \
         -DWITH_SYSTEM_TOMCRYPT=OFF \
         -DWITH_SYSTEM_TOMMATH=ON \
         -DWITH_SYSTEM_ZLIB=ON \
