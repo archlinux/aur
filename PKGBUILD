@@ -1,9 +1,10 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jonathan Steel <jsteel at aur.archlinux.org>
 # Contributor: Mariusz Derela <mariusz.derela@gmail.com>
 
 pkgname=nagvis
-pkgver=1.7.10
-pkgrel=3
+pkgver=1.9.20
+pkgrel=1
 pkgdesc="Visualization addon for the well known network managment system Nagios"
 license=('GPL')
 arch=('any')
@@ -18,10 +19,10 @@ backup=('usr/share/nagvis/etc/geomap/links.xml' 'usr/share/nagvis/etc/geomap/vie
   'usr/share/nagvis/etc/maps/demo-ham-racks.cfg' 'usr/share/nagvis/etc/maps/demo-muc-srv1.cfg'
   'usr/share/nagvis/etc/maps/demo-automap.cfg' 'usr/share/nagvis/etc/.htaccess'
   'usr/share/nagvis/etc/conf.d/demo.ini.php' 'etc/httpd/conf/extra/nagvis.conf')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+source=("http://www.nagvis.org/share/$pkgname-$pkgver.tar.gz"
         $pkgname.conf)
-md5sums=('b9defcf6153525c9927a7e631fc0ff5c'
-         '05fe86ccd6e950105532bed926164f3c')
+sha256sums=('0bcdc9a6647517587b4a6b4fc7f207b09e40b29cb5b75d6474eeb30c01193853'
+            'b0cd7ef38950c876d7ce99318eea9e835776e98cd28d469b4499285fbc29031f')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver

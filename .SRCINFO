@@ -1,7 +1,7 @@
 pkgbase = nagvis
 	pkgdesc = Visualization addon for the well known network managment system Nagios
-	pkgver = 1.7.10
-	pkgrel = 3
+	pkgver = 1.9.20
+	pkgrel = 1
 	url = http://www.nagvis.org
 	install = nagvis.install
 	arch = any
@@ -26,10 +26,10 @@ pkgbase = nagvis
 	backup = usr/share/nagvis/etc/.htaccess
 	backup = usr/share/nagvis/etc/conf.d/demo.ini.php
 	backup = etc/httpd/conf/extra/nagvis.conf
-	source = http://downloads.sourceforge.net/nagvis/nagvis-1.7.10.tar.gz
+	source = http://www.nagvis.org/share/nagvis-1.9.20.tar.gz
 	source = nagvis.conf
-	md5sums = b9defcf6153525c9927a7e631fc0ff5c
-	md5sums = 05fe86ccd6e950105532bed926164f3c
+	sha256sums = 0bcdc9a6647517587b4a6b4fc7f207b09e40b29cb5b75d6474eeb30c01193853
+	sha256sums = b0cd7ef38950c876d7ce99318eea9e835776e98cd28d469b4499285fbc29031f
 
 pkgname = nagvis
 
