@@ -5,7 +5,7 @@
 
 # Maintainer: Marten Kante <tiyn@martenkante.eu>
 pkgname=dmenu-tiyn-git
-pkgver=4.9
+pkgver=4.9.r30.5497b49
 pkgrel=1
 epoch=
 pkgdesc="This is the dmenu build of tiyn. It includes the border, center and password patches."
