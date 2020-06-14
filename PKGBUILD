@@ -1,4 +1,5 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer: Ben Westover <kwestover [dot] kw [at] gmail [dot] com>
+
 pkgname=tempconvert
 pkgver=1.0
 pkgrel=1
