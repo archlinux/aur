@@ -1,0 +1,209 @@
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/BinaryFile.cpp CEmu-1.3.new/gui/qt/tivarslib/BinaryFile.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/BinaryFile.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/BinaryFile.cpp	2020-06-13 19:36:45.059220626 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "BinaryFile.h"
+ #include "tivarslib_utils.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TIModel.cpp CEmu-1.3.new/gui/qt/tivarslib/TIModel.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TIModel.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TIModel.cpp	2020-06-13 19:44:19.819550769 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "TIModel.h"
+ #include "TIModels.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TIVarFile.cpp CEmu-1.3.new/gui/qt/tivarslib/TIVarFile.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TIVarFile.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TIVarFile.cpp	2020-06-13 19:33:55.574238461 -0400
+@@ -10,6 +10,7 @@
+ #include "TIModels.h"
+ #include <numeric>
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TIVarType.cpp CEmu-1.3.new/gui/qt/tivarslib/TIVarType.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TIVarType.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TIVarType.cpp	2020-06-13 19:44:35.466351352 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "TIVarType.h"
+ #include "TIVarTypes.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/DummyHandler.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/DummyHandler.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/DummyHandler.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/DummyHandler.cpp	2020-06-13 19:35:29.837124961 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "../CommonTypes.h"
+ #include "TypeHandlers.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_DataAppVar.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_DataAppVar.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_DataAppVar.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_DataAppVar.cpp	2020-06-13 19:45:21.705760880 -0400
+@@ -8,6 +8,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactFraction.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactFraction.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactFraction.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactFraction.cpp	2020-06-13 19:34:38.542733845 -0400
+@@ -8,6 +8,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactFractionPi.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactFractionPi.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactFractionPi.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactFractionPi.cpp	2020-06-13 19:35:14.437308473 -0400
+@@ -8,6 +8,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactPi.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactPi.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactPi.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactPi.cpp	2020-06-13 19:35:04.045431961 -0400
+@@ -8,6 +8,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactRadical.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactRadical.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_ExactRadical.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_ExactRadical.cpp	2020-06-13 19:34:49.965598839 -0400
+@@ -8,6 +8,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_FP.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_FP.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_FP.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_FP.cpp	2020-06-13 19:46:04.408214124 -0400
+@@ -10,6 +10,7 @@
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
+ #include <regex>
++#include <stdexcept>
+ 
+ static bool parseSign(std::string::const_iterator &i, const std::string::const_iterator &e) {
+     bool sign = false;
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_PythonAppVar.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_PythonAppVar.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/STH_PythonAppVar.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/STH_PythonAppVar.cpp	2020-06-13 19:45:06.689952815 -0400
+@@ -9,6 +9,7 @@
+ #include "../tivarslib_utils.h"
+ 
+ #include <cstring>
++#include <stdexcept>
+ 
+ // TODO: handle filename stuff
+ // TODO: handle UTF8 BOM stuff
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericAppVar.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericAppVar.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericAppVar.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericAppVar.cpp	2020-06-13 19:46:53.728581020 -0400
+@@ -9,6 +9,7 @@
+ #include "../tivarslib_utils.h"
+ 
+ #include <cstring>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericComplex.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericComplex.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericComplex.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericComplex.cpp	2020-06-13 19:34:16.649991597 -0400
+@@ -10,6 +10,7 @@
+ 
+ #include <regex>
+ #include <unordered_map>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericList.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericList.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericList.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericList.cpp	2020-06-13 19:36:25.820453131 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericReal.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericReal.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_GenericReal.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_GenericReal.cpp	2020-06-13 19:36:14.572588684 -0400
+@@ -9,6 +9,7 @@
+ #include "../tivarslib_utils.h"
+ 
+ #include <unordered_map>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_Matrix.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_Matrix.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_Matrix.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_Matrix.cpp	2020-06-13 19:46:24.608955015 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "TypeHandlers.h"
+ #include "../tivarslib_utils.h"
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_TempEqu.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_TempEqu.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_TempEqu.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_TempEqu.cpp	2020-06-13 19:35:58.676779774 -0400
+@@ -7,6 +7,7 @@
+ 
+ #include "TypeHandlers.h"
+ #include <cstring>
++#include <stdexcept>
+ 
+ namespace tivars
+ {
+diff --unified --recursive --text CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_Tokenized.cpp CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_Tokenized.cpp
+--- CEmu-1.3.orig/gui/qt/tivarslib/TypeHandlers/TH_Tokenized.cpp	2019-06-22 05:20:44.000000000 -0400
++++ CEmu-1.3.new/gui/qt/tivarslib/TypeHandlers/TH_Tokenized.cpp	2020-06-13 19:35:49.180893653 -0400
+@@ -14,6 +14,7 @@
+ #include <iostream>
+ #include <regex>
+ #include <fstream>
++#include <stdexcept>
+ 
+ namespace tivars
+ {

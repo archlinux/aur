@@ -1,44 +1,41 @@
-# Maintainer: Julien Savard <juju at juju2143 dot ca>
-pkgname=cemu-git
-pkgver=2.0dev.r2072.0b6f6b06
+# Maintainer: Julien Savard <juju@juju2143.ca>
+# Contributor: Nathaniel van Diepen <eeems@eeems.codes>
+
+pkgname=ticemu
+pkgver=1.3
+url='https://ce-programming.github.io/CEmu/'
 pkgrel=1
-pkgdesc="An open-source third-party TI-84 Plus CE / TI-83 Premium CE calculator emulator"
-arch=("i686" "x86_64")
-url="https://github.com/MateoConLechuga/CEmu"
+makedepends=('git')
+depends=('qt5-base' 'libarchive')
+pkgdesc='Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features'
 license=('GPL')
-groups=()
-depends=('qt5-base' 'qt5-declarative')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("cemu")
-conflicts=("cemu")
-replaces=()
-backup=()
-options=()
-install=
-source=('cemu::git+https://github.com/MateoConLechuga/CEmu' 'cemu.desktop')
-noextract=()
-md5sums=('SKIP'
-         '3b347a05abc3d1a3a047a68988c659b7')
+arch=('x86_64')
+_subpkgver=('7eb89e56d219bbca5ca5cd82c98dce69bd75004b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/CE-Programming/CEmu/archive/v$pkgver.tar.gz"
+	"https://github.com/CE-Programming/zdis/archive/${_subpkgver[0]}.tar.gz"
+	"include-stdexcept.patch")
+md5sums=('cf8bfb755ea28c91a2a5b4abba14bc09'
+         'f4e1cb5120afda89b90d8867d7c89b10'
+         'ff15d1a9d6feeeb6252332976ddbbc1b')
+prepare(){
+  cd "$srcdir/CEmu-$pkgver"
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	printf "%s.r%s.%s" "$(cat CEmu.pro | grep 'CEMU_VERSION =' | grep -o '[^=]*$' | tail -n1 |sed 's# ##g'|sed 's#^v##g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  rm -r core/debug/zdis
+  cp -r "${srcdir}"/zdis-${_subpkgver[0]} core/debug/zdis
+
+  patch --forward --strip=1 --input="${srcdir}/include-stdexcept.patch"
 }
-
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	git submodule init
-	git submodule update
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	qmake-qt5 -r CEmu.pro
-	make
-}
+  cd "$srcdir/CEmu-$pkgver/gui/qt"
 
+  qmake -r CEmu.pro "PREFIX=$pkgdir/usr" "CEMU_VERSION=v$pkgver"
+  make
+}
 package() {
-	cd "$srcdir/${pkgname%-git}/gui/qt"
-	install -D -m755 "${srcdir}/${pkgname%-git}/gui/qt/CEmu" "$pkgdir/usr/bin/cemu"
-	install -D -m644 "${srcdir}/${pkgname%-git}/README.md" "$pkgdir/usr/share/${pkgname%-git}/README"
-	install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-	install -D -m644 "${srcdir}/${pkgname%-git}/gui/qt/resources/icons/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-	install -D -m644 "${srcdir}/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+  install -Dm644 "$srcdir/CEmu-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/CEmu-$pkgver/gui/qt/resources/linux/cemu.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/CEmu-$pkgver/gui/qt/resources/icons/linux/cemu-512x512.png" "$pkgdir/usr/share/pixmaps/cemu.png"
+
+  cd "$srcdir/CEmu-$pkgver/gui/qt"
+  make install
 }
