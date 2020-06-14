@@ -22,6 +22,11 @@ provides=('kvirc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('452e683760221055f117d2ab4359aa432e01ce5d5e3abe80772b7a13a78b594a')
 
+prepare() {
+  cd "${srcdir}/KVIrc-${pkgver}"
+  sed -i "37a#include <QPainterPath>" src/modules/iograph/libkviiograph.cpp
+}
+
 build() {
   if [[ -d "${srcdir}/KVIrc-${pkgver}"/build ]]; then
     rm -rf "${srcdir}/KVIrc-${pkgver}"/build
