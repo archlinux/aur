@@ -14,10 +14,10 @@ sha256sums=('SKIP')
 prepare() {
   # This needs to happen here rather than build(), because 'meson introspect'
   # from pkgver() needs the build/ directory to exist.
-  # But at this stage, CFLAGS and LDFLAGS aren't exported yet (though they do
-  # exist as bash variables), so fix that too.
+  # But at this stage, CFLAGS/CPPFLAGS/LDFLAGS aren't exported yet (though they
+  # do exist as bash variables), so fix that too.
   cd "$srcdir/${pkgname%-git}"
-  CFLAGS=$CFLAGS LDFLAGS=$LDFLAGS \
+  CFLAGS=$CFLAGS CPPFLAGS=$CPPFLAGS LDFLAGS=$LDFLAGS \
     meson setup --prefix=/usr --buildtype=plain build/
 }
 
