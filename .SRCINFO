@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-electron
 	pkgdesc = Jitsi Meet desktop application powered by Electron
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = jitsi-meet-electron
 	depends = npm
 	optdepends = nodejs-webpack: build-time dependency, to avoid re-downloading it
 	optdepends = nodejs-webpack-cli: build-time dependency, to avoid re-downloading it
-	source = jitsi-meet-electron-2.1.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.1.0.tar.gz
-	sha256sums = 8f222b95e959a92c1656f30e8a81e841598f30e83d18458ba4b690d096f12d14
+	source = jitsi-meet-electron-2.2.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.2.0.tar.gz
+	sha256sums = 3d4c71f84f2b9fb8c9bb7d3d86cfadd0b3bc3096c7dbf2513adb2b662c3d6804
 
 pkgname = jitsi-meet-electron
 

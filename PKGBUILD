@@ -1,7 +1,7 @@
 # Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
 
 pkgname=jitsi-meet-electron
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('8f222b95e959a92c1656f30e8a81e841598f30e83d18458ba4b690d096f12d14')
+sha256sums=('3d4c71f84f2b9fb8c9bb7d3d86cfadd0b3bc3096c7dbf2513adb2b662c3d6804')
 
 build() {
     cd "${pkgname}-${pkgver}"
