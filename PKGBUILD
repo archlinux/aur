@@ -2,23 +2,25 @@
 
 _hkgname=czipwith
 pkgname=haskell-czipwith
-pkgver=1.0.1.2
+pkgver=1.0.1.3
 pkgrel=1
 pkgdesc="CZipWith class and deriving via TH"
 url='https://hackage.haskell.org/package/czipwith'
 license=('BSD')
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-template-haskell' 'haskell-transformers')
+depends=('ghc-libs' )
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('8902c1a3486b46d8dc7fdd7e2b5a62396d9e6f98e10c4b8872eb8fb4c3201decd54a201b30d48a7fcada7638872bc3ee018ebe9e44eeacad1871d7338337ed4d')
+sha512sums=('59733263743a8f9506514d6d703d68583fdd120cfee320a12a72bf56e7df5e24f51328ab51b044955c30c4af1df6d21c1bd93dd6c3542330b816b81d139d129e')
 
 build() {
     cd $_hkgname-$pkgver
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
         --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+        --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+        --ghc-option='-pie'
     runhaskell Setup build
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
