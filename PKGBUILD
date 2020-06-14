@@ -4,7 +4,7 @@
 
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt)
-pkgver=2.94
+pkgver=3.00
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -12,19 +12,16 @@ license=(MIT)
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools)
 source=(https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
         ban-xunlei.patch
-        transmission-2.90-libsystemd.patch
         transmission-noxunlei-cli.sysusers
         transmission-noxunlei-cli.tmpfiles)
-sha256sums=('SKIP'
-            'a4c38c31b0826fb9ab5ff8786f79f5d48f0c74b0f1ed53ecf781fcfe75d1c0a4'
-            '9f8f4bb532e0e46776dbd90e75557364f495ec95896ee35900ea222d69bda411'
+sha256sums=('9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
+            'c1b21b0e2d54a0a041c602709f6f0c2dc3626e6aa04c049c1a76b2e3d0dcc89d'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
   ln -sf transmission-$pkgver $pkgbase-$pkgver
   cd $pkgbase-$pkgver
-  patch -Np1 -i "$srcdir/transmission-2.90-libsystemd.patch"
 
   # Ban Xunlei (Thunder) downloader as described in blog.zscself.com/posts/66b00f02/
   patch -Np1 -i "$srcdir/ban-xunlei.patch"

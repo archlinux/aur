@@ -1,5 +1,5 @@
 pkgbase = transmission-noxunlei
-	pkgver = 2.94
+	pkgver = 3.00
 	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = x86_64
@@ -11,14 +11,12 @@ pkgbase = transmission-noxunlei
 	makedepends = libevent
 	makedepends = systemd
 	makedepends = qt5-tools
-	source = https://github.com/transmission/transmission-releases/raw/master/transmission-2.94.tar.xz
+	source = https://github.com/transmission/transmission-releases/raw/master/transmission-3.00.tar.xz
 	source = ban-xunlei.patch
-	source = transmission-2.90-libsystemd.patch
 	source = transmission-noxunlei-cli.sysusers
 	source = transmission-noxunlei-cli.tmpfiles
-	sha256sums = SKIP
-	sha256sums = a4c38c31b0826fb9ab5ff8786f79f5d48f0c74b0f1ed53ecf781fcfe75d1c0a4
-	sha256sums = 9f8f4bb532e0e46776dbd90e75557364f495ec95896ee35900ea222d69bda411
+	sha256sums = 9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2
+	sha256sums = c1b21b0e2d54a0a041c602709f6f0c2dc3626e6aa04c049c1a76b2e3d0dcc89d
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
 
