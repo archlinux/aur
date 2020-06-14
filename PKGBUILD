@@ -13,6 +13,7 @@ sha256sums=('3b1ac534db30e67820d0d1849eee8c675e1a5cf041013e3020f68440cc7ed26d')
 
 build() {
 	cd "$pkgname-$pkgver"
+	CFLAGS+=" -Wno-error=unused-result -Wno-error=stringop-overflow"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
