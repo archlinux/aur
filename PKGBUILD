@@ -1,6 +1,8 @@
-# Maintainer: mexus <gilaldpellaeon@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: mexus <gilaldpellaeon@gmail.com>
+
 pkgname=dua-cli-bin
-pkgver=2.3.9
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A tool to conveniently learn about the disk usage of directories, fast!"
 provides=("dua-cli")
@@ -14,10 +16,8 @@ source=(
     "https://github.com/Byron/dua-cli/releases/download/v${pkgver}/dua-v${pkgver}-x86_64-unknown-linux-musl.tar.gz"
     "https://github.com/Byron/dua-cli/archive/v${pkgver}.tar.gz"
 )
-md5sums=(
-    '33007833df89ff1727443782d7286c97'
-    '3def7b07ae21d880971e713ec32003e9'
-)
+sha256sums=('2324a23375788ac09005ae6577b44218'
+         'd01992cf6924d1287263d35b2086b478')
 
 package() {
     cd "$srcdir/"
