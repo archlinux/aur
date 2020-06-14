@@ -1,28 +1,24 @@
 pkgbase = haskell-butcher
 	pkgdesc = Chops a command or program invocation into digestable pieces.
-	pkgver = 1.3.2.3
+	pkgver = 1.3.3.2
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/butcher
 	arch = x86_64
-	license = BSD3
+	license = BSD
 	makedepends = ghc
 	depends = ghc-libs
 	depends = haskell-bifunctors
-	depends = haskell-containers
 	depends = haskell-deque
 	depends = haskell-extra
 	depends = haskell-free
 	depends = haskell-hspec
 	depends = haskell-microlens
 	depends = haskell-microlens-th
-	depends = haskell-mtl
 	depends = haskell-multistate
-	depends = haskell-pretty
-	depends = haskell-transformers
 	depends = haskell-unsafe
 	depends = haskell-void
-	source = https://hackage.haskell.org/packages/archive/butcher/1.3.2.3/butcher-1.3.2.3.tar.gz
-	sha512sums = 55e2fc0ee8d35ddd90a7e6bbf65355423f7d71a3e1097f0a93706361f10796773b717d5e2e17c700fa7f7c7fa6fdef9aaa0f103af755fa06523b684f162018d4
+	source = https://hackage.haskell.org/packages/archive/butcher/1.3.3.2/butcher-1.3.3.2.tar.gz
+	sha512sums = 98dece006460c00280ef16ea66d91405644e10e496059e5f1412ec8461674f1eca6a3d429800611329351b35d60855d69f21be9d9a96ed027b6e4b5f2c000703
 
 pkgname = haskell-butcher
 
