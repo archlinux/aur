@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/Kethku/neovide'
 license=('MIT')
 depends=('fontconfig' 'freetype2' 'libglvnd' 'sndio')
-makedepends=('git' 'rust' 'gtk3' 'cmake' 'sdl2')
+makedepends=('git' 'rust' 'gtk3' 'cmake' 'sdl2' 'make')
 provides=("neovide")
 conflicts=("neovide")
 source=("${pkgname}::git+${url}")
@@ -22,13 +22,13 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   sed -i 's/debug = true/opt-level = 3\ndebug = false/' Cargo.toml
-  sed -i 's/, features = \["bundled", "static-link"\] / /g ' Cargo.toml
   sed -i 's/Icon=neovide/Icon=nvim/' assets/neovide.desktop
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
   export CARGO_HOME="${srcdir}/${pkgname}/CARGO"
+  export CFLAGS="-fcommon -fPIE"
   cargo build --release
 }
 
