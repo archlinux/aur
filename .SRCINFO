@@ -1,7 +1,7 @@
 pkgbase = kim4
 	pkgdesc = Kde Image Menu to compress, resize, convert, rename and much more
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.librepc.com/dl/kim/
 	arch = any
 	license = GPL
