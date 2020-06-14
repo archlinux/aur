@@ -2,7 +2,7 @@
 _projectname='stem'
 pkgname="python2-$_projectname"
 pkgver='1.8.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Tor control library for Python - python2 version'
 arch=('any')
 url="https://$_projectname.torproject.org/"
@@ -25,15 +25,18 @@ _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+	find . -type f -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2.7|g' {} \;
+
 	# Ignore broken & unreliable tests
 	sed -i 'test/settings.cfg' \
 		-e '/|test.unit.installation.TestInstallation/d' \
 		-e '/|test.integ.installation.TestInstallation/d' \
 		-e '/|test.integ.control.controller.TestController/d' \
-		-e '/|test.integ.descriptor.collector.TestCollector/d'
+		-e '/|test.integ.descriptor.collector.TestCollector/d' \
+		-e '/|test.integ.descriptor.remote.TestDescriptorDownloader/d'
 	rm 'test/'{'integ','unit'}'/installation.py'
 	rm 'test/integ/control/controller.py'
-	rm 'test/integ/descriptor/collector.py'
+	rm 'test/integ/descriptor/'{'collector','remote'}'.py'
 }
 
 build() {
