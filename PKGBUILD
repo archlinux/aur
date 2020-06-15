@@ -1,7 +1,7 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
 pkgver='0.5.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
@@ -26,6 +26,6 @@ install_default_config() {
 
 package() {
   install_default_config
-  sudo install -Dt "/usr/bin" "nimdow"
+  install -Dt "$pkgdir/usr/bin" "nimdow"
 }
 
