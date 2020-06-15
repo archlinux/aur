@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.18.2
+pkgver=0.18.4
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 conflicts=('mdcat-git')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('1098fac512072db21e9b466e66843350649abebf867bc22feeebda10d86e6787')
+sha256sums=('ecb4085e7687376d87fb2564ee73c2cfe4566787533731b2d81b1973c78f1aa8')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
