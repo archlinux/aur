@@ -14,7 +14,7 @@ md5sums=('558a991d2d0d14ec1f9c5fcd4913ebef')
 _gitname=WEATHER_DDE_DOCK
 
 build() {
-  qmake "$srcdir/$_gitname-$gitver"
+  qmake "$srcdir/$_gitname-$pkgver-DeepinV20-"
   make ${MAKEFLAGS}
 }
 
