@@ -6,9 +6,6 @@ pkgbase = crex
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	provides = crex
-	conflicts = crex
-	conflicts = crex-git
 	source = https://github.com/octobanana/crex/archive/0.2.5.tar.gz
 	sha256sums = c6a166b7a1e696a7babeaf7c5728eece1624704a18357f827129fc95ef2ecc56
 
