@@ -1,7 +1,7 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
 pkgver=5.2.0
-pkgrel=0
+pkgrel=1
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
@@ -48,6 +48,10 @@ build() {
     else
         echo "Pulse features enabled."
     fi
+
+    # Turn off warnings as errors
+    sed -i 's/QMAKE_CXXFLAGS += -Werror//' build_scripts/qt/compilers/gcc.pri
+    sed -i 's/QMAKE_CXXFLAGS += -Werror//' build_scripts/qt/compilers/clang.pri
 
     qmake PREFIX="$pkgdir/opt/" $_additionalOptions
     make
