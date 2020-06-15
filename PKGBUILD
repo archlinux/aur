@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.20.0
+pkgver=4.20.21
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -10,13 +10,13 @@ license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
 depends=('electron6')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm')
-source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
+source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver-a.0"
     "$pkgname.desktop"
     deezer
     menu-bar.patch
     quit.patch
     0001-MPRIS-interface.patch)
-sha256sums=('c87ecf354c305a5c4d7a825b975d96a420ca3c47108fcf673c3560df44ebf103'
+sha256sums=('c5b7f34f3ec3868e66a131063ca15467247257e859b040d2e8de85afe24db72f'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             '441ab8532eac991eb5315a8ab39242aae1aa6fd633e8af4b0ab2a247fe1239cc'
             '8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0'
