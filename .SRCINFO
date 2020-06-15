@@ -1,15 +1,12 @@
 pkgbase = densify
-	pkgdesc = GTK+ application to easily compress pdf files with Ghostscript
+	pkgdesc = GTK+ application to easily compress pdf files using Ghostscript
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hkdb/Densify
 	arch = any
 	license = MIT
 	depends = ghostscript
 	depends = python-gobject
-	provides = densify
-	conflicts = densify
-	conflicts = densify-git
 	source = https://github.com/hkdb/Densify/archive/v0.3.1.tar.gz
 	source = densify-wrapper.sh
 	source = densify.desktop
