@@ -5,7 +5,7 @@
 pkgname=thunderbird-beta
 _pkgname=thunderbird
 _pkgver=77.0
-pkgver=77.0b3
+pkgver=78.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -24,7 +24,7 @@ conflicts=('thunderbird-beta-bin')
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
 	thunderbird-beta.desktop)
-sha512sums=('8abe8338062b9a8e9cc6f8031a4cb7ce105302fe56b9a1782fcc189417c0c4fe4e1cfd542c45b4f114d392362706272b9eb7efd91f8c8ccfc413739ffc75cccb'
+sha512sums=('67dafe80b69576e2ed6866e95da82a877e622cb087eef2030312bc3be6daccd694fe1c75d3f182fdc98c1554cf85cfa881c30f7538eb270a3eb9443cabe7af5d'
             'SKIP'
             'cab681d5acf17dd8dabf732c0bb5f73fd0444796bb4fd82decdfa8764122513fd2f05c562cf9246eacac67ea84ae85a220f59d7eea7106e0b2f6fc16bc520dd4')
 
