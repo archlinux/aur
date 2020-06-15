@@ -1,6 +1,6 @@
 pkgbase = kgraphviewer-git
 	pkgdesc = A Graphviz dot graph file viewer for KDE
-	pkgver = 2.4.3a.r29.g9a80c71
+	pkgver = 2.4.3a.r40.gc65339d
 	pkgrel = 1
 	url = http://www.kde.org/applications/graphics/kgraphviewer/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kgraphviewer-git
 	depends = graphviz
 	provides = kgraphviewer
 	conflicts = kgraphviewer
-	source = git://anongit.kde.org/kgraphviewer
+	source = git+https://invent.kde.org/graphics/kgraphviewer.git
 	md5sums = SKIP
 
 pkgname = kgraphviewer-git

@@ -4,7 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 _pkgname=kgraphviewer
 pkgname=kgraphviewer-git
-pkgver=2.4.3a.r29.g9a80c71
+pkgver=2.4.3a.r40.gc65339d
 pkgrel=1
 pkgdesc='A Graphviz dot graph file viewer for KDE'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 depends=(qt5-base qt5-svg kcoreaddons kdoctools kparts kio kwidgetsaddons kiconthemes graphviz)
 makedepends=(cmake extra-cmake-modules boost docbook-xsl)
-source=('git://anongit.kde.org/kgraphviewer')
+source=('git+https://invent.kde.org/graphics/kgraphviewer.git')
 md5sums=('SKIP')
 
 pkgver() {
