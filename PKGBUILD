@@ -7,7 +7,7 @@
 _pkgname=retroarch
 pkgname=retroarch-rbp4
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi 4)'
 arch=(armv7h)
 url=http://www.libretro.com/
@@ -69,6 +69,8 @@ prepare() {
   cd RetroArch
 
   patch -Np1 -i ../retroarch-config.patch
+
+  git cherry-pick -n 685948368e6b28b97e1b91bdfe5921519359a033 # FS#66843
 }
 
 build() {
