@@ -1,8 +1,8 @@
 # Maintainer: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop-git
-pkgver='2.5.3.rc1'
-pkgrel='1'
+pkgver=2.6.1.rc1.r2.ga6bb84080
+pkgrel=1
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
@@ -15,7 +15,7 @@ optdepends=(
 )
 conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'owncloud-client-git' 'nextcloud-client' 'nextcloud-client-git' 'nextcloud-desktop')
 provides=('nextcloud-client')
-source=("${pkgname}::git+https://github.com/nextcloud/desktop.git")
+source=("${pkgname}::git+https://github.com/nextcloud/desktop.git#branch=stable-2.6")
 sha256sums=('SKIP')
 
 pkgver() {
