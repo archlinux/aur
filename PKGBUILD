@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("http://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
-sha256sums=('f6d4f677e614ce5fb73333da0b29e470c2d1b4909ed3e87ef0e78b96accfe28e'
+sha256sums=('1e14a3f92e92af56d8236b711eb8b8370c0c2d1842b1f4065341f642c54d2734'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -47,7 +47,7 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-metashape.desktop"
         <glob-deleteall/>
         <glob pattern="*.psz"/>
     </mime-type>
-</mime-info>' > "$srcdir/agisoft-mime.xml"
+</mime-info>' > "$srcdir/${pkgname}-mime.xml"
 
     # Create 128x128 application icons
     base64 -d "$srcdir/agisoft-metashape-icon-encoded.txt" > "$srcdir/agisoft-metashape_128.png"
@@ -86,7 +86,7 @@ package() {
 	
 	# Create MIME type
 	mkdir -p "${pkgdir}/usr/share/mime/packages"
-	mv "${srcdir}/agisoft-mime.xml" "${pkgdir}/usr/share/mime/packages"
+	mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
 	
 	# Move icons
 	for _res in 16x16 32x32 48x48 64x64 128x128; do
