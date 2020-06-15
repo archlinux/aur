@@ -6,7 +6,7 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=5.6
+_kver=5.7
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
@@ -29,9 +29,9 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('06ab321159a1444a9ddb71368f45e9dacec003c8f40936708b04560de3de778a'
+sha256sums=('c3be552f0e51ba75c2fd98731176303f827fd2ba4e5f2daab41a2d68d1c7931c'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            'ea639a90c866ddee859f769dc60133235189fea3537a7e325bbe27ba6f9b0e8b')
+            '64143eedce0a868c6aef271a38b214aa585bebed6c5accb861d0c311ef165a6d')
 
 build() {
 	msg2 "Module will be installed to: $_EXTRAMODULES"
