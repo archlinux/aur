@@ -17,6 +17,7 @@ pkgbase = surge-synthesizer-lv2-git
 	depends = libxcb
 	depends = xcb-util-renderutil
 	depends = xcb-util-image
+	depends = cmake
 	provides = surge-synthesizer
 	provides = surge-synthesizer-bin
 	conflicts = surge-synthesizer
