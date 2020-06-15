@@ -47,7 +47,7 @@ package() {
   # install game ressources and executable
   install -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/bin
   cp "${srcdir}"/classic_level_pack/* resource/levels
-  cp -r resource/* "$pkgdir"/usr/share/$pkgname
+  cp -r resource/* "$pkgdir"/usr/share/bitfighter
   install -m755 exe/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   # install documentation and license
