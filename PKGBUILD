@@ -2,7 +2,7 @@
 
 pkgname=todoist-nativefier
 pkgver=2020.04.05
-pkgrel=1
+pkgrel=2
 pkgdesc='The to do list to organize work & life'
 arch=('any')
 url='https://todoist.com'
