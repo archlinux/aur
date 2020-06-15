@@ -1,7 +1,7 @@
 pkgbase = dde-top-panel
 	pkgdesc = dde top panel for Deepin V20
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/SeptemberHX/dde-top-panel
 	install = dde-top-panel.install
 	arch = x86_64
