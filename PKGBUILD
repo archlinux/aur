@@ -2,7 +2,7 @@
 
 pkgname=flameshot-33kk-git
 _pkgname=flameshot
-pkgver=r559.85e82db
+pkgver=r560.4cbb165
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software (with custom uploader and increased blur radius)"
 arch=('i686' 'x86_64')
