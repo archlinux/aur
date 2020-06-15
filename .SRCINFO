@@ -1,0 +1,16 @@
+pkgbase = liketaskmanager-bin
+	pkgdesc = A Qt based, self-contained (AppImage) process monitor that mimics the feel and functionality of Windows 10 Task Manager's performance and process tab under Linux
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/rejuce/LikeTaskManager
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	provides = liketaskmanager
+	noextract = liketaskmanager-bin-latest.AppImage
+	options = !strip
+	source = liketaskmanager-bin-latest.AppImage::https://github.com/rejuce/LikeTaskManager/releases/download/newest/LikeTaskManager-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = liketaskmanager-bin
+
