@@ -2,12 +2,12 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname='electron'
-_major='9'
+_major=9
 _pkgname="${_projectname}${_major}"
 pkgname="$_pkgname-bin"
-pkgver='9.0.4'
-pkgrel='1'
-pkgdesc='Build cross platform desktop apps with web technologies - version ${_major} - binary version'
+pkgver=9.0.4
+pkgrel=2
+pkgdesc="Build cross platform desktop apps with web technologies - version ${_major} - binary version"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org/"
 license=('MIT')
