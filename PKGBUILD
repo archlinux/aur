@@ -3,7 +3,7 @@
 pkgname=deepin-dock-plugin-weather-git
 pkgver=5.7
 gitver="v5.7(DeepinV20)"
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for deepin dock, display weather information."
 arch=('x86_64')
 url="https://github.com/sonichy/WEATHER_DDE_DOCK"
