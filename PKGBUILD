@@ -1,22 +1,25 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-_ngx_ver=1.11.2
+_ngx_ver=1.18.0
 _mod_name=headers-more
 
-pkgname=nginx-mod-headers-more-git
-pkgver=0.32
-pkgrel=4
+_pkgname=nginx-mod-${_mod_name}
+pkgname=${_pkgname}-git
+pkgver=255.743a4bb
+pkgrel=1
 pkgdesc='Nginx module for setting and clearing input and output headers'
 arch=('i686' 'x86_64')
 url='https://github.com/openresty/headers-more-nginx-module'
 license=('custom')
-depends=("nginx=$_ngx_ver")
+depends=("nginx")
 makedepends=('git')
-source=(https://github.com/openresty/${_mod_name}-more-nginx-module/archive/v${pkgver}.tar.gz
+source=(${_pkgname}::git+https://github.com/openresty/headers-more-nginx-module.git
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
-sha512sums=('e42582b45c3111de3940bbeb67ce161aca2d55adcfb00c61c12256fa0e36221d38723013f36edbcf6d1b520f8dfb49d4657df8a956e66d36e68425afad382bd1'
-         '56fb66dd7267780acaa186679f3abefcddb3dd7701d0d87518e98c83b62cd171f40e4ce47cec0a42d31181d57856c9ba820ded001975bd50c9c09dcf409b11bf')
+sha512sums=(
+  'SKIP'
+  '8c21eeb62ab6e32e436932500f700bd2fb99fd2d29e43c08a5bfed4714c189c29c7141db551fcd5d2437303b7439f71758f7407dfd3e801e704e45e7daa78ddb'
+)
 
 _ngx_flags=(
   --with-file-aio
@@ -45,23 +48,27 @@ _ngx_flags=(
 )
 
 pkgver() {
-  cd ${_mod_name}-nginx-module
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  cd ${srcdir}/${_pkgname}
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd nginx-${_ngx_ver}
+  cd "${srcdir}/nginx-${_ngx_ver}"
+
   ./configure --prefix=/usr ${_ngx_flags[@]} \
-    --add-dynamic-module="$srcdir"/${_mod_name}-nginx-module
+    --add-dynamic-module="${srcdir}/${_pkgname}"
+
   make -f objs/Makefile modules
 }
 
 package() {
-  cd nginx-${_ngx_ver}
-  install -Dm755 objs/ngx_http_headers_more_filter_module.so \
-    "$pkgdir"/usr/lib/nginx/modules/ngx_http_headers_more_filter_module.so
+  cd "${srcdir}/nginx-${_ngx_ver}"
 
-  install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  sed -n '487,512p' "$srcdir"/${_mod_name}-nginx-module/README.markdown > \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 objs/ngx_http_headers_more_filter_module.so \
+    "${pkgdir}/usr/lib/nginx/modules/ngx_http_headers_more_filter_module.so"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  sed -n '487,512p' "${srcdir}/${_pkgname}/README.markdown" > \
+    "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
