@@ -1,14 +1,14 @@
 pkgbase = nodejs-wordwrap
 	pkgdesc = Light-weight option parsing with an argv hash. No optstrings attached.
-	pkgver = 0.0.2
+	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://github.com/substack/node-wordwrap
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = wordwrap-0.0.2.tgz
-	source = http://registry.npmjs.org/wordwrap/-/wordwrap-0.0.2.tgz
-	md5sums = 337b01f9fc79d9fbe9981ce70ad34d6f
+	noextract = wordwrap-1.0.0.tgz
+	source = http://registry.npmjs.org/wordwrap/-/wordwrap-1.0.0.tgz
+	md5sums = 748373c6c83ec94002281797913c8a85
 
 pkgname = nodejs-wordwrap
 
