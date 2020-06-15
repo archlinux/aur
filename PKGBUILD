@@ -25,6 +25,9 @@ package() {
 	cd "$srcdir/$pkgname"
 	install -dm755 "${pkgdir}/usr/share/buildaur"
 	install -D -m644 blacklist "${pkgdir}/usr/share/buildaur"
+	install -dm755 "${pkgdir}/etc/buildaur"
+	install -Dm0755 -t "$pkgdir/etc/buildaur" "prehooks/"
+	install -Dm0755 -t "$pkgdir/etc/buildaur" "posthooks/"
 	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
