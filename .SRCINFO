@@ -1,0 +1,13 @@
+pkgbase = ipmctl-git
+	pkgdesc = util for configuring and managing Intel Optane DC persistent memory modules (DCPMM).
+	pkgver = v02.00.00.3673.r14.gc9a426c7
+	pkgrel = 1
+	url = https://github.com/intel/ipmctl
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	source = ipmctl-git::git+https://github.com/intel/ipmctl
+	md5sums = SKIP
+
+pkgname = ipmctl-git
+
