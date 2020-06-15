@@ -2,37 +2,24 @@
 
 pkgname=pmdk-git
 _gitname="pmdk"
-pkgver=1.6.r49.g6e9868c93
+pkgver=1.8.r910.g6c7e703d2
 pkgrel=1
-epoch=
 pkgdesc="Persistent Memory Development Kit."
 arch=("x86_64")
 url="http://pmem.io"
-license=("Intel")
-groups=()
-depends=("autoconf" "pkgconf" "ndctl")
-makedepends=("git")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+license=(BSD)
+depends=("python" "ndctl")
+makedepends=("git" "pandoc" "autoconf" "pkgconf" "man-db")
 source=("git://github.com/pmem/pmdk.git")
 noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 prepare() {
-    cd "$_gitname"
-    git checkout stable-1.6
+    echo "prepare()"
 }
 
 pkgver() {
-	cd "$_gitname"
+	cd "$srcdir/$_gitname"
 	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -43,5 +30,6 @@ build() {
 
 package() {
     cd "$srcdir/$_gitname"
-	make install DESTDIR="$pkgdir" 
+    make install DESTDIR="$pkgdir" 
+    echo $pkgdir
 }
