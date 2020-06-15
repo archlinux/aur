@@ -1,12 +1,13 @@
-# Maintainer: Oscar Morante <spacepluk@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Oscar Morante <spacepluk@gmail.com>
 
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts
-pkgver=2018.4.15f1
+pkgver=2019.4.0f1
 pkgrel=1
 epoch=1
-pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
+pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
@@ -31,17 +32,19 @@ optdepends=("${pkgname}-doc"
             "${pkgname}-webgl"
             "${pkgname}-windows"
             "${pkgname}-facebook"
-            "visual-studio-code-bin")
-source=("2018.4.15f1.tar.xz::https://download.unity3d.com/download_unity/13f5a1bf9ca1/LinuxEditorInstaller/Unity.tar.xz"
+            "visual-studio-code-bin"
+            "unityhub"
+            "jq: needed for UnityHub integration helpers --register/--deregister")
+source=("$pkgver.tar.xz::https://download.unity3d.com/download_unity/0af376155913/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-md5sums=("95fe10b266fb18f8271f3d82373b025d"
-         '6e2f0e897fe71d99c649f397dce8c0f9'
-         '7cf8762a5f84a408286365d23fa00e5e'
-         '723f9e556821810682a6d1f4be540a74'
-         '7519f32fef332078cc77378fe9815835')
+sha256sums=('8bb784d22ea39ed38411bc02cad121750091a6c13146f746279bae9fbe723666'
+            'c22d2f91c47923496d24e8be376f70305846e60c038f923d6c7b41f0741bcb4a'
+            'e786f76cfe96b41300775e54fcdd7e81dbfb3b28f607a263ac7a3a73a697ae06'
+            '193a3b88d7149f7eff19bbb282a836847831a842db399addbcc0cc600fd08cdb'
+            'ad36e10abd6f4aa7dbd6619a57b521b067c96702b8f03a280245c60c2c1ebd1a')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
