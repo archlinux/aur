@@ -2,9 +2,9 @@
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt5-color-widgets
-_pkgname=QtColorWidgets
-pkgver=0.r15.a28a656
-pkgrel=2
+_pkgname=Qt-Color-Widgets
+pkgver=0.r17.b99b05c
+pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/mattia.basaglia/Qt-Color-Widgets'
@@ -12,37 +12,31 @@ license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'
             'qtcreator: for QtCreator integration')
-makedepends=('git' 'cmake')
+makedepends=('git')
 provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
-source=("${pkgname}::git+git://gitlab.com/mattia.basaglia/Qt-Color-Widgets.git")
+source=("git+https://gitlab.com/mattia.basaglia/Qt-Color-Widgets.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $_pkgname
+    printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $pkgname
-	eval "qmake-${pkgname::3} PREFIX=${pkgdir}/usr"
-
-	# Ensure build is an empty directory
-	rm -rf 'build'
-	mkdir -p 'build'
-	cd 'build'
-
-	cmake ..
-	make ColorWidgetsPlugin
+    cd $_pkgname
+    mkdir build
+    cd build
+    cmake ..
+    make QtColorWidgetsPlugin
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir" install_target
-	install -d "${pkgdir}/usr/lib/qt/plugins/designer"
-	install -Dvm644 'build/color_widgets_designer_plugin/libColorWidgetsPlugin.so' "${pkgdir}/usr/lib/qt/plugins/designer/"
-	install -d "${pkgdir}/usr/include/${_pkgname}"
-	find 'src' -type f -iname '*.hpp' -exec install -Dvm644 {} "${pkgdir}/usr/include/${_pkgname}/" \;
-	find 'include' -maxdepth 1 -type f -exec install -Dvm644 {} "${pkgdir}/usr/include/${_pkgname}/" \;
+    cd $_pkgname
+    install -d "${pkgdir}/usr/include/${_pkgname}"
+    mkdir -p "$pkgdir/usr/lib/qt/plugins/designer"
+    install -Dvm644 "build/color_widgets_designer_plugin/libQtColorWidgetsPlugin-Qt52.so" "${pkgdir}/usr/lib/qt/plugins/designer/"
+    find 'src' -type f -iname '*.hpp' -exec install -Dvm644 {} "${pkgdir}/usr/include/${_pkgname}/" \;
+    find 'include' -maxdepth 1 -type f -exec install -Dvm644 {} "${pkgdir}/usr/include/${_pkgname}/" \;
 }
