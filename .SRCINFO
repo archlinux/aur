@@ -1,5 +1,5 @@
 pkgbase = passphrase-git
-	pkgdesc = Zero-dependency passphrase generator, written in Zig
+	pkgdesc = Small, simple passphrase generator, written in Zig
 	pkgver = r11.0faa7ba
 	pkgrel = 3
 	url = https://git.sr.ht/~alva/passphrase
