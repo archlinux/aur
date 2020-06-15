@@ -1,0 +1,18 @@
+pkgbase = noted-cli-git
+	pkgdesc = Noted is a cli note taking and todo app similar to google keep or any other note taking service. It is a fork of my previous project keep-cli. Notes appear as cards. You can make lists and write random ideas.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/zack-ashen/noted
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = noted-cli-git
+	conflicts = noted-cli-git
+	source = git+https://github.com/zack-ashen/noted
+	md5sums = SKIP
+
+pkgname = noted-cli-git
+
