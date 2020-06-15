@@ -1,0 +1,12 @@
+#!/bin/bash
+systemctl --user --quiet is-active opentabletdriver.service
+daemonactive=$?
+
+if [ $daemonactive != 0 ]
+then
+    echo "OpenTabletDriver Daemon not running, starting"
+    systemctl --user start opentabletdriver.service
+fi
+
+cd /usr/share/OpenTabletDriver
+dotnet OpenTabletDriver.UX.Gtk.dll "$@"

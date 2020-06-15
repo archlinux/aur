@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenTabletDriver Daemon
+
+[Service]
+ExecStart=/usr/bin/dotnet /usr/share/OpenTabletDriver/OpenTabletDriver.Daemon.dll -c /usr/share/OpenTabletDriver/Configurations
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target
