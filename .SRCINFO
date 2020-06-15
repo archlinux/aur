@@ -1,0 +1,21 @@
+pkgbase = dde-top-panel
+	pkgdesc = dde top panel for Deepin V20
+	pkgver = 0.4.1
+	pkgrel = 0
+	url = https://github.com/SeptemberHX/dde-top-panel
+	install = dde-top-panel.install
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = xdotool
+	depends = deepin-network-utils
+	depends = deepin-qt5integration
+	depends = deepin-qt-dbus-factory
+	depends = libdbusmenu-qt5
+	depends = procps-ng
+	source = dde-top-panel-0.4.1.tar.gz::https://github.com/SeptemberHX/dde-top-panel/archive/0.4.1.tar.gz
+	sha512sums = fffeab4e7bb0af52f712889cf762cdde9cb24140cac89cf263b19087fce74fd1fdf0fff01b93802300f296c0b0fc49b3aadd8540182252795c2d21e6f5242972
+
+pkgname = dde-top-panel
+
