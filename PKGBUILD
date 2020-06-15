@@ -1,6 +1,6 @@
 # Maintainer: Lasha Kanteladze <kanteladzelasha339@gmail.com>
 pkgname=dxhd-bin
-pkgver=28.05.2020_20.44
+pkgver=15.06.2020_21.38
 pkgrel=0
 pkgdesc="An X11 Hotkey Daemon"
 arch=('x86_64')
