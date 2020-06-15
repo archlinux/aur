@@ -1,6 +1,6 @@
 pkgbase = epiphany-unstable
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine.
-	pkgver = 3.35.92
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine
+	pkgver = 3.37.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
@@ -19,10 +19,11 @@ pkgbase = epiphany-unstable
 	depends = gcr
 	depends = icu
 	depends = libdazzle
+	depends = libhandy
 	provides = epiphany
 	conflicts = epiphany
 	conflicts = epiphany-git
-	source = git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=1cae16e236c0c933d843382c2bf39b3bceade267
+	source = git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=550764aeb06b51fdd0ecb374f61aa3f06078026a
 	sha256sums = SKIP
 
 pkgname = epiphany-unstable
