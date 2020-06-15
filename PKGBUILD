@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
 pkgver=1.1.12.r48.g027536f
-pkgrel=2
+pkgrel=3
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -33,7 +33,12 @@ build() {
       --disable-static \
       --with-xdmconfigdir=/etc/X11/xdm \
       --with-xdmscriptdir=/etc/X11/xdm \
-      --with-pixmapdir=/usr/share/xdm/pixmaps
+      --with-pixmapdir=/usr/share/xdm/pixmaps \
+      DEF_USER_PATH="/usr/local/bin:/usr/bin:/bin" \
+      DEF_SYSTEM_PATH="/usr/local/bin:/usr/bin:/bin"
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make CWARNFLAGS=""
 }
 
