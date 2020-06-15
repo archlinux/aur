@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("http://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
 	"agisoft-delighter-icon-encoded.txt")
-sha256sums=('fbdc2efbee61c5ac78b7562fabc345ca115665306bb75978a66129a67e1d05f1'
+sha256sums=('7a6beb5ad34dc9f85cee991cebcf6eb7a032ce1928d97b6b99dc265350b68ee2'
             'SKIP')
 
 build() {
@@ -37,7 +37,7 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-delighter.desktop"
         <glob-deleteall/>
         <glob pattern="*.dlz"/>
     </mime-type>
-</mime-info>' > "$srcdir/agisoft-delighter-mime.xml"
+</mime-info>' > "$srcdir/${pkgname}-mime.xml"
 
     # Create 128x128 application icons
     base64 -d "$srcdir/agisoft-delighter-icon-encoded.txt" > "$srcdir/agisoft-delighter_128.png"
@@ -74,7 +74,7 @@ package() {
 
     # Create MIME type
     mkdir -p "${pkgdir}/usr/share/mime/packages"
-    mv "${srcdir}/agisoft-delighter-mime.xml" "${pkgdir}/usr/share/mime/packages"
+    mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
 
     # Move icons
     for _res in 16x16 32x32 48x48 64x64 128x128; do
