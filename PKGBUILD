@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
 
 pkgname=phoc-git
-pkgver=r280.3d68b09
+pkgver=r345.0db9e13
 pkgrel=1
 pkgdesc="Wayland compositor for phones"
 url="https://source.puri.sm/Librem5/phoc"
 license=("GPL3")
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 depends=('glib2' 'wlroots')
-makedepends=('meson' 'ninja' 'git' 'wayland-protocols' 'ctags')
+makedepends=('meson' 'ninja' 'git' 'wayland-protocols' 'ctags' 'xorg-server-xvfb')
 provides=(phoc)
 conflicts=(phoc)
 source=("git+https://source.puri.sm/Librem5/phoc.git")
@@ -25,7 +25,7 @@ build() {
 }
 
 check() {
-    ninja -C build test
+    xvfb-run -s -noreset ninja -C build test
 }
 
 package() {

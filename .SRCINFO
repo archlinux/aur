@@ -1,6 +1,6 @@
 pkgbase = phoc-git
 	pkgdesc = Wayland compositor for phones
-	pkgver = r280.3d68b09
+	pkgver = r345.0db9e13
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phoc
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = phoc-git
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = ctags
+	makedepends = xorg-server-xvfb
 	depends = glib2
 	depends = wlroots
 	provides = phoc
