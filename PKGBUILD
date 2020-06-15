@@ -2,18 +2,20 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=squeekboard-git
-pkgver=r918.d8f48cc
+pkgver=r1660.40b3172
 pkgrel=1
 pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
 url="https://source.puri.sm/Librem5/squeekboard"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
-depends=('gtk3' 'libcanberra' 'wayland' 'libcroco')
+arch=(i686 x86_64 arm armv6h armv7h aarch64)
+depends=('gtk3' 'libcanberra' 'wayland' 'libcroco' 'gnome-desktop')
+optdepends=('feedbackd: haptic feedback')
 makedepends=(git
              pkg-config
              meson
              intltool
              rust
+             feedbackd
              gtk-doc)
 provides=(squeekboard)
 conflicts=(squeekboard)
