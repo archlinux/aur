@@ -1,0 +1,9 @@
+pkgbase = otf-mister-pixel
+	pkgdesc = Mister Pixel typeface - A pixelated typeface with a style of cute PC-inspired symbols.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	source = http://velvetyne.fr/archives/fonts/mr_pixel.zip
+
+pkgname = otf-mister-pixel
+
