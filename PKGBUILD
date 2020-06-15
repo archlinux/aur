@@ -33,32 +33,14 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	make
-#	lazbuild \
-#		--lazarusdir=/usr/lib/lazarus \
-#		--build-all \
-#		"${pkgname%-git}.lpi"
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
 	make tests
-#	appstreamcli validate --pedantic "data/${pkgname%-git}.metainfo.xml"
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make prefix=/usr DESTDIR="$pkgdir/" install
-#	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
-#	install -Dm644 "data/${pkgname%-git}.desktop" -t \
-#		"$pkgdir/usr/share/applications"
-#	install -Dm644 "data/${pkgname%-git}.metainfo.xml" -t \
-#		"$pkgdir/usr/share/metainfo"
-#	install -Dm644 "data/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
-
-#	for icon_size in 128 256 512; do
-#		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-#		install -d $pkgdir/$icons_dir
-#		install -m644 data/icons/${icon_size}x${icon_size}/${pkgname%-git}.png -t \
-#			$pkgdir/$icons_dir
-#	done
 }
