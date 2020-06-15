@@ -1,23 +1,25 @@
-# Maintainer: Loïc Guitaut <flink at belfalas dot eu>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Loïc Guitaut <flink at belfalas dot eu>
 
 pkgname='terracoin-qt'
-pkgver=0.8.0.4
+pkgver=0.12.2.5
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.terracoin.org/"
+url="https://www.terracoin.io"
 makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc')
 license=('MIT')
 pkgdesc="P2P decentralized digital currency with fast confirmation and no central issuer (QT)"
-depends=(boost-libs qt4 miniupnpc qrencode)
+depends=(boost-libs qt5-base miniupnpc qrencode)
 install=terracoin-qt.install
 source=("https://github.com/terracoin/terracoin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('59d0a1925939add4bc70054541a7f032c8c566e73c2ec1a4da9c48a079bd0438'
+sha256sums=('94fc2db45a43d56fb3ebb383eff641b550808e80c24be79811ee44e59c8a83b3'
             '71f94ea8725bf59e3758b8d246762f7f5b61373c15370e13d54f7d174785456b')
 
 build() {
   cd "$srcdir/terracoin-$pkgver"
-  qmake-qt4 USE_QRCODE=1 USE_UPNP=1
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
