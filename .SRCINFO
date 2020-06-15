@@ -1,13 +1,11 @@
 pkgbase = xubuntu-community-artwork
 	pkgdesc = Xubuntu community wallpapers
 	pkgver = 20.04.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/xubuntu-community-artwork
 	arch = any
 	license = custom
-	provides = xubuntu-community-artwork
-	conflicts = xubuntu-community-artwork
-	conflicts = xubuntu-community-artwork-git
+	optdepends = xfce4: xfce desktop
 	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_20.04.0.tar.xz
 	sha256sums = 2a40074fae8754babc4e7c7e141ad2163f1f40cdf0e5ac6b267f432658d09dd1
 
