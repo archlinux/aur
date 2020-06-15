@@ -2,7 +2,7 @@
 
 pkgname=notion-app-nativefier
 pkgver=2020.04.05
-pkgrel=1
+pkgrel=2
 pkgdesc='The all-in-one workspace for your notes, tasks, wikis, and databases'
 arch=('any')
 url='https://www.notion.so'
