@@ -1,0 +1,18 @@
+pkgbase = android-sdk-build-tools-30
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r30
+	pkgrel = 1
+	url = https://developer.android.com/studio/releases/build-tools
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	optdepends = lib32-gcc-libs
+	optdepends = lib32-zlib
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r30-linux.zip
+	sha512sums = 242b115b32d65847093e71ae78244e5c51673d49821afd933782558c6fb706c0b1b114981edef89a8213fe2d8ca53bfbc51015bdde4ee3ced43b7fe0748ed655
+
+pkgname = android-sdk-build-tools-30
+

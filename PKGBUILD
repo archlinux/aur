@@ -1,0 +1,25 @@
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: xgdgsc <xgdgsc @t gmail dot com>
+
+pkgname=android-sdk-build-tools-30
+pkgver=r30
+pkgrel=1
+pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
+arch=('i686' 'x86_64')
+url="https://developer.android.com/studio/releases/build-tools"
+license=('custom')
+depends=('gcc-libs' 'zlib')
+optdepends=('lib32-gcc-libs' 'lib32-zlib')
+source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
+sha512sums=('242b115b32d65847093e71ae78244e5c51673d49821afd933782558c6fb706c0b1b114981edef89a8213fe2d8ca53bfbc51015bdde4ee3ced43b7fe0748ed655')
+options=('!strip')
+
+package() {
+  cd "${pkgdir}"
+  _ver=$(cat "${srcdir}/android-11/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
+
+  install -Dm644 "${srcdir}/android-11/NOTICE.txt" usr/share/licenses/${pkgname}/NOTICE.txt
+  mkdir -p "opt/android-sdk/build-tools/${_ver}"
+  cp -r "${srcdir}/android-11/"* "${pkgdir}/opt/android-sdk/build-tools/${_ver}"
+  chmod +Xr -R "${pkgdir}/opt/android-sdk/build-tools/${_ver}"
+}
