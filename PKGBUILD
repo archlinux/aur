@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: farseerfc <farseerfc@gmail.com>
 # Contributor: nylocx <just18@gmx.de>
 # Contributor: Llumex03 <l.lumex03@gmail.com>
@@ -9,7 +10,7 @@ _fragment="#commit=c8a34b0"
 pkgname=libqtelegram-ae
 epoch=3
 pkgver=10.0.0+72+gc8a34b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64')
 license=('GPL3')

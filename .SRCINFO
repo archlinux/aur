@@ -1,7 +1,7 @@
 pkgbase = libqtelegram-ae
 	pkgdesc = Telegram library written in Qt based on telegram-cli code
 	pkgver = 10.0.0+72+gc8a34b0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://launchpad.net/libqtelegram
 	arch = x86_64
