@@ -1,16 +1,16 @@
 pkgbase = solid-shell
 	pkgdesc = A command-line tool, batch processor, and interactive shell for managing Solid data
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://www.npmjs.com/package/solid-shell
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = solid-shell-1.0.2.tgz
+	noextract = solid-shell-1.0.3.tgz
 	options = !strip
-	source = https://registry.npmjs.org/solid-shell/-/solid-shell-1.0.2.tgz
-	md5sums = 4990adac156c8496a250cace3ee21138
+	source = https://registry.npmjs.org/solid-shell/-/solid-shell-1.0.3.tgz
+	md5sums = d466e4682ade00fa394f360c44c2d6fb
 
 pkgname = solid-shell
 
