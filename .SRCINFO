@@ -1,6 +1,6 @@
 pkgbase = python-fuel-git
 	pkgdesc = A data pipeline framework for machine learning.
-	pkgver = 497.732f35e
+	pkgver = 0.1.1.r289.g1d6292d
 	pkgrel = 1
 	url = https://github.com/mila-udem/fuel
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-fuel-git
 	depends = python-h5py
 	depends = python-pytables
 	depends = python-pyyaml
-	depends = python-picklable-itertools-git
+	depends = python-picklable-itertools
 	provides = python-fuel
 	source = git+https://github.com/mila-udem/fuel.git
 	sha256sums = SKIP
