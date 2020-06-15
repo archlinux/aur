@@ -1,7 +1,7 @@
 # Maintainer: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
 pkgname=goxel-voxel-editor-git
-pkgver=0.10.0.r69.5ce340a
+pkgver=0.10.6.r2.e6dcae92
 pkgrel=1
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Git version."
 arch=('i686' 'x86_64')
@@ -31,6 +31,10 @@ pkgver() {
 }
 
 build() {
+	# don't fail on warnings:
+	CFLAGS="${CFLAGS} -Wno-all"
+	CXXFLAGS="${CFLAGS}"
+
 	cd $_gitname
 	make release
 }
