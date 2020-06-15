@@ -8,14 +8,12 @@ pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
 url="https://source.puri.sm/Librem5/squeekboard"
 license=("GPL3")
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
-depends=('gtk3' 'wayland' 'gnome-desktop')
-optdepends=('feedbackd: haptic feedback')
+depends=('gtk3' 'wayland' 'gnome-desktop' 'feedbackd')
 makedepends=(git
              pkg-config
              meson
              intltool
              rust
-             feedbackd
              gtk-doc)
 provides=(squeekboard)
 conflicts=(squeekboard)
