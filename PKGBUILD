@@ -1,4 +1,6 @@
-# Maintainer : George Eleftheriou <eleftg>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: Jingbei Li <petronny>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <archange@archlinux.org>
@@ -12,7 +14,7 @@ _pkgname=hdf5
 _mpi=mpich
 pkgname=${_pkgname}-${_mpi}
 _prefix=/opt/${pkgname}
-pkgver=1.10.5
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
@@ -22,22 +24,14 @@ depends=('bash' 'libaec' "${_mpi}")
 makedepends=('cmake' 'time' 'java-environment' 'gcc-fortran')
 options=('staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
-        'mpi.patch')
-md5sums=('7c19d6b81ee2a3ba7d36f6922b2f90d3'
-         '63b43e3d4a5bbea4bcecc84874e08913')
-
-prepare() {
-    mkdir -p build
-    cd "${_pkgname}-${pkgver}"
-
-    # FS#33343
-    patch -p1 -i ../mpi.patch
-}
+        'hdf5-1.12.0-compat-1.6.patch')
+md5sums=('1fa68c4b11b6ef7a9d72ffa55995f898'
+         'afd4d35a187d5c7892e7060e729d4813')
 
 build() {
-    cd build
-
     # Crazy workaround: run CMake to generate pkg-config file
+    mkdir -p build && cd build
+
     RUNPARALLEL="/opt/mpich/bin/mpirun" \
     JAVADOC='javadoc -Xdoclint:none' \
     cmake ../${_pkgname}-${pkgver}  \
@@ -107,4 +101,7 @@ package() {
 
     install -Dm644 CMakeFiles/hdf5{,_hl}{,_cpp}-${pkgver}.pc \
         -t "${pkgdir}${_prefix}"/lib/pkgconfig
+    # Fix 1.6 compatibility for h5py
+    cd "${pkgdir}"/usr/include/
+    patch -p1 -i "${srcdir}"/hdf5-1.12.0-compat-1.6.patch
 }
