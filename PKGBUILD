@@ -49,7 +49,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-pari-2.11.3.patch
         sagemath-sphinx-3.patch
         sagemath-sympy-1.6.patch
-        sagemath-flint-2.6.patch)
+        sagemath-flint-2.6.patch
+        sagemath-cython-0.29.20.patch)
 sha256sums=('SKIP'
             '5034676c4ce46181723f261d6bd180a795adea417f485c5e3e361b3aaef498ec'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
@@ -65,7 +66,8 @@ sha256sums=('SKIP'
             '688345dd88174cc82a196a9ecace86f3b4f28bb2fae2d7196a40a76ff724f92e'
             'c9fa4f136a8e4fa9832524bb0ee4a7fbb3c6e992595a3b10c7c627ba9161b4ce'
             'ade7f86abc8b04b6a01c1a495b644a034d27bacdfdfa62813f4f8945bb96a8fe'
-            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
+            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
+            '6bc0eb8a54800d745474d7d371efedfd96838574f32fb9e2714ab268ccad2df7')
 
 pkgver() {
   cd sage
@@ -110,6 +112,8 @@ prepare(){
   patch -p1 -i ../sagemath-gap-4.11.patch
 # Fix doctests with pari 2.11.3
   patch -p1 -i ../sagemath-pari-2.11.3.patch
+# Fix crash with cython 0.29.20
+  patch -p1 -i ../sagemath-cython-0.29.20.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage

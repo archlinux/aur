@@ -1,0 +1,605 @@
+diff --git a/src/sage/algebras/lie_algebras/lie_algebra_element.pyx b/src/sage/algebras/lie_algebras/lie_algebra_element.pyx
+index d519d37b61..6a477f755c 100644
+--- a/src/sage/algebras/lie_algebras/lie_algebra_element.pyx
++++ b/src/sage/algebras/lie_algebras/lie_algebra_element.pyx
+@@ -403,7 +403,7 @@ cdef class LieAlgebraElementWrapper(ElementWrapper):
+             right = (<LieAlgebraElementWrapper> right).lift()
+         return left * right
+ 
+-    def __div__(self, x):
++    def __truediv__(self, x):
+         """
+         Division by coefficients.
+ 
+diff --git a/src/sage/ext/fast_callable.pyx b/src/sage/ext/fast_callable.pyx
+index 86033d983b..43dafee742 100644
+--- a/src/sage/ext/fast_callable.pyx
++++ b/src/sage/ext/fast_callable.pyx
+@@ -960,28 +960,6 @@ cdef class Expression:
+         """
+         return _expression_binop_helper(s, o, op_truediv)
+ 
+-    def __div__(s, o):
+-        r"""
+-        Compute a quotient of two Expressions.
+-
+-        EXAMPLES::
+-
+-            sage: from sage.ext.fast_callable import ExpressionTreeBuilder
+-            sage: etb = ExpressionTreeBuilder(vars=(x,))
+-            sage: x = etb(x)
+-            sage: x/x
+-            div(v_0, v_0)
+-            sage: x/1
+-            div(v_0, 1)
+-            sage: 1/x
+-            div(1, v_0)
+-            sage: x.__div__(1)  # py2
+-            div(v_0, 1)
+-            sage: x.__rdiv__(1)  # py2
+-            div(1, v_0)
+-        """
+-        return _expression_binop_helper(s, o, op_div)
+-
+     def __floordiv__(s, o):
+         r"""
+         Compute the floordiv (the floor of the quotient) of two Expressions.
+diff --git a/src/sage/ext/fast_eval.pyx b/src/sage/ext/fast_eval.pyx
+index 1d2c1bf447..d4e736b83e 100644
+--- a/src/sage/ext/fast_eval.pyx
++++ b/src/sage/ext/fast_eval.pyx
+@@ -797,17 +797,6 @@ cdef class FastDoubleFunc:
+         """
+         return binop(left, right, DIV)
+ 
+-    def __div__(left, right):
+-        """
+-        EXAMPLES::
+-
+-            sage: from sage.ext.fast_eval import fast_float_arg
+-            sage: f = fast_float_arg(0) / 7
+-            sage: f(14)
+-            2.0
+-        """
+-        return binop(left, right, DIV)
+-
+     def __pow__(FastDoubleFunc left, right, dummy):
+         """
+         EXAMPLES::
+diff --git a/src/sage/libs/mpmath/ext_main.pyx b/src/sage/libs/mpmath/ext_main.pyx
+index 298d289fee..29704c0904 100644
+--- a/src/sage/libs/mpmath/ext_main.pyx
++++ b/src/sage/libs/mpmath/ext_main.pyx
+@@ -1590,19 +1590,6 @@ cdef class mpnumber:
+         """
+         return binop(OP_MUL, self, other, global_opts)
+ 
+-    def __div__(self, other):
+-        """
+-        Division of mpmath numbers. Compatible numerical types
+-        are automatically converted to mpmath numbers ::
+-
+-            sage: from mpmath import mpf, mpc
+-            sage: mpf(10) / mpc(5)
+-            mpc(real='2.0', imag='0.0')
+-            sage: float(9) / mpf(3)
+-            mpf('3.0')
+-        """
+-        return binop(OP_DIV, self, other, global_opts)
+-
+     def __truediv__(self, other):
+         """
+         Division of mpmath numbers. Compatible numerical types
+diff --git a/src/sage/libs/ntl/ntl_GF2.pyx b/src/sage/libs/ntl/ntl_GF2.pyx
+index 5aa701f451..92742493ea 100644
+--- a/src/sage/libs/ntl/ntl_GF2.pyx
++++ b/src/sage/libs/ntl/ntl_GF2.pyx
+@@ -150,9 +150,6 @@ cdef class ntl_GF2(object):
+         GF2_div(r.x, (<ntl_GF2>self).x, (<ntl_GF2>other).x)
+         return r
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __sub__(self, other):
+         """
+             sage: o = ntl.GF2(1)
+diff --git a/src/sage/libs/ntl/ntl_GF2E.pyx b/src/sage/libs/ntl/ntl_GF2E.pyx
+index ee6ab1c6ad..97005292e9 100644
+--- a/src/sage/libs/ntl/ntl_GF2E.pyx
++++ b/src/sage/libs/ntl/ntl_GF2E.pyx
+@@ -281,9 +281,6 @@ cdef class ntl_GF2E(object):
+         GF2E_div(r.x, self.x, (<ntl_GF2E>other).x)
+         return r
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __neg__(ntl_GF2E self):
+         """
+         EXAMPLES::
+diff --git a/src/sage/libs/ntl/ntl_GF2X.pyx b/src/sage/libs/ntl/ntl_GF2X.pyx
+index 19dee74769..255ba60466 100644
+--- a/src/sage/libs/ntl/ntl_GF2X.pyx
++++ b/src/sage/libs/ntl/ntl_GF2X.pyx
+@@ -221,9 +221,6 @@ cdef class ntl_GF2X(object):
+             raise ArithmeticError("self (=%s) is not divisible by b (=%s)" % (self, b))
+         return q
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def DivRem(ntl_GF2X self, b):
+         """
+         EXAMPLES::
+diff --git a/src/sage/libs/ntl/ntl_ZZX.pyx b/src/sage/libs/ntl/ntl_ZZX.pyx
+index 228da08044..ef8ce2ba2c 100644
+--- a/src/sage/libs/ntl/ntl_ZZX.pyx
++++ b/src/sage/libs/ntl/ntl_ZZX.pyx
+@@ -357,9 +357,6 @@ cdef class ntl_ZZX(object):
+         result = make_ZZX_sig_off(q)
+         return result
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __mod__(ntl_ZZX self, ntl_ZZX other):
+         """
+         Given polynomials a, b in ZZ[X], there exist polynomials q, r
+diff --git a/src/sage/libs/ntl/ntl_ZZ_pEX.pyx b/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
+index 07efc9ea16..e6f8b32b86 100644
+--- a/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
++++ b/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
+@@ -376,9 +376,6 @@ cdef class ntl_ZZ_pEX(object):
+             raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
+         return r
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __mod__(ntl_ZZ_pEX self, ntl_ZZ_pEX other):
+         """
+         Given polynomials a, b in ZZ_pE[X], if p is prime and the defining modulus irreducible,
+diff --git a/src/sage/libs/ntl/ntl_ZZ_pX.pyx b/src/sage/libs/ntl/ntl_ZZ_pX.pyx
+index b2336c1c9a..a3ac93fa81 100644
+--- a/src/sage/libs/ntl/ntl_ZZ_pX.pyx
++++ b/src/sage/libs/ntl/ntl_ZZ_pX.pyx
+@@ -404,9 +404,6 @@ cdef class ntl_ZZ_pX(object):
+             raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
+         return r
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __mod__(ntl_ZZ_pX self, ntl_ZZ_pX other):
+         """
+         Given polynomials a, b in ZZ_p[X], if p is prime, then there exist polynomials q, r
+diff --git a/src/sage/libs/ntl/ntl_lzz_p.pyx b/src/sage/libs/ntl/ntl_lzz_p.pyx
+index 7809288152..e6c2b5a305 100644
+--- a/src/sage/libs/ntl/ntl_lzz_p.pyx
++++ b/src/sage/libs/ntl/ntl_lzz_p.pyx
+@@ -250,9 +250,6 @@ cdef class ntl_zz_p(object):
+         sig_off()
+         return q
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __pow__(ntl_zz_p self, long n, ignored):
+         """
+         Return the n-th nonnegative power of self.
+diff --git a/src/sage/libs/ntl/ntl_lzz_pX.pyx b/src/sage/libs/ntl/ntl_lzz_pX.pyx
+index c063e30548..72fa99ae7a 100644
+--- a/src/sage/libs/ntl/ntl_lzz_pX.pyx
++++ b/src/sage/libs/ntl/ntl_lzz_pX.pyx
+@@ -349,9 +349,6 @@ cdef class ntl_zz_pX(object):
+             raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
+         return q
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __mod__(ntl_zz_pX self, other):
+         """
+         Given polynomials a, b in ZZ[X], there exist polynomials q, r
+diff --git a/src/sage/matrix/matrix_gfpn_dense.pyx b/src/sage/matrix/matrix_gfpn_dense.pyx
+index ed9c0aaf09..97a9db20ff 100644
+--- a/src/sage/matrix/matrix_gfpn_dense.pyx
++++ b/src/sage/matrix/matrix_gfpn_dense.pyx
+@@ -1390,7 +1390,7 @@ cdef class Matrix_gfpn_dense(Matrix_dense):
+             sig_off()
+         return new_mtx(mat, self)
+ 
+-    def __div__(Matrix_gfpn_dense self, p):
++    def __truediv__(Matrix_gfpn_dense self, p):
+         """
+         Divide a matrix by a scalar.
+ 
+diff --git a/src/sage/matroids/matroid.pyx b/src/sage/matroids/matroid.pyx
+index d274d9eec5..6c8e736e80 100644
+--- a/src/sage/matroids/matroid.pyx
++++ b/src/sage/matroids/matroid.pyx
+@@ -3784,18 +3784,6 @@ cdef class Matroid(SageObject):
+         """
+         return self.minor(contractions=X)
+ 
+-    def __div__(self, X):
+-        r"""
+-        Shorthand for ``self.contract(X)``.
+-
+-        EXAMPLES::
+-
+-            sage: M = matroids.CompleteGraphic(4)
+-            sage: M.contract(1) == M / 1  # indirect doctest
+-            True
+-        """
+-        return self.contract(X)
+-
+     def __truediv__(self, X):
+         r"""
+         Shorthand for ``self.contract(X)``.
+diff --git a/src/sage/misc/lazy_import.pyx b/src/sage/misc/lazy_import.pyx
+index 16f04bfe8d..13453d79f1 100644
+--- a/src/sage/misc/lazy_import.pyx
++++ b/src/sage/misc/lazy_import.pyx
+@@ -640,19 +640,6 @@ cdef class LazyImport(object):
+         """
+         return obj(left) @ obj(right)
+ 
+-    def __div__(left, right):
+-        """
+-        TESTS::
+-
+-            sage: sage.all.foo = 10
+-            sage: lazy_import('sage.all', 'foo')
+-            sage: type(foo)
+-            <type 'sage.misc.lazy_import.LazyImport'>
+-            sage: foo / 2
+-            5
+-        """
+-        return obj(left) / obj(right)
+-
+     def __floordiv__(left, right):
+         """
+         TESTS::
+diff --git a/src/sage/modules/with_basis/indexed_element.pyx b/src/sage/modules/with_basis/indexed_element.pyx
+index 94d57d67e2..ebbcf3e1d9 100644
+--- a/src/sage/modules/with_basis/indexed_element.pyx
++++ b/src/sage/modules/with_basis/indexed_element.pyx
+@@ -883,20 +883,6 @@ cdef class IndexedFreeModuleElement(ModuleElement):
+         x_inv = B(x) ** -1
+         return type(self)(F, scal(x_inv, D))
+ 
+-    def __div__(left, right):
+-        """
+-        Forward old-style division to true division.
+-
+-        EXAMPLES::
+-
+-            sage: F = CombinatorialFreeModule(QQ, [1,2,3])
+-            sage: x = F._from_dict({1:2, 2:3})
+-            sage: x/2
+-            B[1] + 3/2*B[2]
+-        """
+-        return left / right
+-
+-
+ def _unpickle_element(C, d):
+     """
+     Unpickle an element in ``C`` given by ``d``.
+diff --git a/src/sage/quivers/algebra_elements.pyx b/src/sage/quivers/algebra_elements.pyx
+index 25968539fc..33f73a7820 100644
+--- a/src/sage/quivers/algebra_elements.pyx
++++ b/src/sage/quivers/algebra_elements.pyx
+@@ -1301,9 +1301,6 @@ cdef class PathAlgebraElement(RingElement):
+             return sample._new_(homog_poly_scale((<PathAlgebraElement>self).data, x))
+         raise TypeError("Don't know how to divide {} by {}".format(x, self))
+ 
+-    def __div__(self, x):
+-        return self / x
+-
+ ## Multiplication in the algebra
+ 
+     cpdef _mul_(self, other):
+diff --git a/src/sage/rings/asymptotic/growth_group.py b/src/sage/rings/asymptotic/growth_group.py
+index 9514b16c4b..ec301dd731 100644
+--- a/src/sage/rings/asymptotic/growth_group.py
++++ b/src/sage/rings/asymptotic/growth_group.py
+@@ -623,8 +623,8 @@ class Variable(CachedRepresentation, SageObject):
+             ...
+             TypeError: Cannot substitute in 1/x in
+             <class 'sage.rings.asymptotic.growth_group.Variable'>.
+-            > *previous* TypeError: unsupported operand type(s) for /:
+-            'sage.rings.integer.Integer' and 'str'
++            > *previous* TypeError: unsupported operand parent(s) for /:
++            'Integer Ring' and '<class 'str'>'
+             sage: Variable('1/x')._substitute_({'x': 0})
+             Traceback (most recent call last):
+             ...
+diff --git a/src/sage/rings/complex_mpc.pyx b/src/sage/rings/complex_mpc.pyx
+index 84546c2239..ceb052131f 100644
+--- a/src/sage/rings/complex_mpc.pyx
++++ b/src/sage/rings/complex_mpc.pyx
+@@ -1596,7 +1596,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
+         mpc_norm(x.value, self.value, (<RealField_class>x._parent).rnd)
+         return x
+ 
+-    def __rdiv__(self, left):
++    def __rtruediv__(self, left):
+         r"""
+         Returns the quotient of ``left`` with ``self``, that is: ``left/self``
+         as a complex number.
+@@ -1609,7 +1609,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
+ 
+             sage: MPC = MPComplexField()
+             sage: a = MPC(2, 2)
+-            sage: a.__rdiv__(MPC(1))
++            sage: a.__rtruediv__(MPC(1))
+             0.250000000000000 - 0.250000000000000*I
+             sage: MPC(1)/a
+             0.250000000000000 - 0.250000000000000*I
+diff --git a/src/sage/rings/complex_number.pyx b/src/sage/rings/complex_number.pyx
+index bc87388c1c..2b00351ffc 100644
+--- a/src/sage/rings/complex_number.pyx
++++ b/src/sage/rings/complex_number.pyx
+@@ -836,7 +836,7 @@ cdef class ComplexNumber(sage.structure.element.FieldElement):
+         mpfr_clear(right_nm)
+         return x
+ 
+-    def __rdiv__(self, left):
++    def __rtruediv__(self, left):
+         r"""
+         Returns the quotient of left with ``self``, that is:
+ 
+@@ -851,7 +851,7 @@ cdef class ComplexNumber(sage.structure.element.FieldElement):
+         EXAMPLES::
+ 
+             sage: a = ComplexNumber(2,0)
+-            sage: a.__rdiv__(CC(1))
++            sage: a.__rtruediv__(CC(1))
+             0.500000000000000
+             sage: CC(1)/a
+             0.500000000000000
+diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
+index 44936e6a6a..0cdea51d47 100644
+--- a/src/sage/rings/integer.pyx
++++ b/src/sage/rings/integer.pyx
+@@ -2024,7 +2024,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
+             mpz_mul(x.value, self.value, (<Integer>right).value)
+         return x
+ 
+-    def __div__(left, right):
++    def __truediv__(left, right):
+         r"""
+         TESTS::
+ 
+diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
+index 3d657d1f94..9f31b91f05 100644
+--- a/src/sage/rings/polynomial/polynomial_element.pyx
++++ b/src/sage/rings/polynomial/polynomial_element.pyx
+@@ -2247,9 +2247,6 @@ cdef class Polynomial(CommutativeAlgebraElement):
+         return wrapperdescr_fastcall(RingElement.__truediv__,
+                 left, (right,), <object>NULL)
+ 
+-    def __div__(left, right):
+-        return PyNumber_TrueDivide(left, right)
+-
+     def __pow__(left, right, modulus):
+         """
+         EXAMPLES::
+diff --git a/src/sage/rings/rational.pyx b/src/sage/rings/rational.pyx
+index 30b50ea497..a4f04d6edf 100644
+--- a/src/sage/rings/rational.pyx
++++ b/src/sage/rings/rational.pyx
+@@ -2435,7 +2435,7 @@ cdef class Rational(sage.structure.element.FieldElement):
+             mpq_mul(x.value, self.value, (<Rational>right).value)
+         return x
+ 
+-    def __div__(left, right):
++    def __truediv__(left, right):
+         """
+         Return ``left`` divided by ``right``
+ 
+diff --git a/src/sage/schemes/elliptic_curves/period_lattice_region.pyx b/src/sage/schemes/elliptic_curves/period_lattice_region.pyx
+index 8399d8253b..1f8a9ce8c9 100644
+--- a/src/sage/schemes/elliptic_curves/period_lattice_region.pyx
++++ b/src/sage/schemes/elliptic_curves/period_lattice_region.pyx
+@@ -434,9 +434,6 @@ cdef class PeriodicRegion:
+                             new_data[(a*rows+i)//n, (b*cols+j)//n] = data[i,j]
+         return PeriodicRegion(self.w1, self.w2, new_data)
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __invert__(self):
+         """
+         Returns the complement of this region.
+diff --git a/src/sage/structure/category_object.pyx b/src/sage/structure/category_object.pyx
+index fdca7ec591..ec16091b33 100644
+--- a/src/sage/structure/category_object.pyx
++++ b/src/sage/structure/category_object.pyx
+@@ -895,32 +895,6 @@ cdef class CategoryObject(SageObject):
+         """
+         return dir_with_other_class(self, self.category().parent_class)
+ 
+-    ##############################################################################
+-    # For compatibility with Python 2
+-    ##############################################################################
+-    def __div__(self, other):
+-        """
+-        Implement Python 2 division as true division.
+-
+-        EXAMPLES::
+-
+-            sage: V = QQ^2
+-            sage: V.__div__(V.span([(1,3)]))  # py2
+-            Vector space quotient V/W of dimension 1 over Rational Field where
+-            V: Vector space of dimension 2 over Rational Field
+-            W: Vector space of degree 2 and dimension 1 over Rational Field
+-            Basis matrix:
+-            [1 3]
+-            sage: V.__truediv__(V.span([(1,3)]))
+-            Vector space quotient V/W of dimension 1 over Rational Field where
+-            V: Vector space of dimension 2 over Rational Field
+-            W: Vector space of degree 2 and dimension 1 over Rational Field
+-            Basis matrix:
+-            [1 3]
+-        """
+-        return self / other
+-
+-
+ cpdef normalize_names(Py_ssize_t ngens, names):
+     r"""
+     Return a tuple of strings of variable names of length ngens given
+diff --git a/src/sage/structure/element.pyx b/src/sage/structure/element.pyx
+index 0791c72a70..8105a3a8ab 100644
+--- a/src/sage/structure/element.pyx
++++ b/src/sage/structure/element.pyx
+@@ -1600,77 +1600,6 @@ cdef class Element(SageObject):
+         """
+         return coercion_model.bin_op(self, n, mul)
+ 
+-    def __div__(left, right):
+-        """
+-        Top-level division operator for :class:`Element` invoking
+-        the coercion model. This is always true division.
+-
+-        See :ref:`element_arithmetic`.
+-
+-        EXAMPLES::
+-
+-            sage: 2 / 3
+-            2/3
+-            sage: pi / 3
+-            1/3*pi
+-            sage: K.<i> = NumberField(x^2+1)
+-            sage: 2 / K.ideal(i+1)
+-            Fractional ideal (-i + 1)
+-
+-        ::
+-
+-            sage: from sage.structure.element import Element
+-            sage: class MyElement(Element):
+-            ....:     def _div_(self, other):
+-            ....:         return 42
+-            sage: e = MyElement(Parent())
+-            sage: e / e
+-            42
+-
+-        TESTS::
+-
+-            sage: e = Element(Parent())
+-            sage: e / e
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand parent(s) for /: '<sage.structure.parent.Parent object at ...>' and '<sage.structure.parent.Parent object at ...>'
+-            sage: 1 / e
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand parent(s) for /: 'Integer Ring' and '<sage.structure.parent.Parent object at ...>'
+-            sage: e / 1
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand parent(s) for /: '<sage.structure.parent.Parent object at ...>' and 'Integer Ring'
+-            sage: int(1) / e
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand type(s) for /: 'int' and 'sage.structure.element.Element'
+-            sage: e / int(1)
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand type(s) for /: 'sage.structure.element.Element' and 'int'
+-            sage: None / e
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand type(s) for /: 'NoneType' and 'sage.structure.element.Element'
+-            sage: e / None
+-            Traceback (most recent call last):
+-            ...
+-            TypeError: unsupported operand type(s) for /: 'sage.structure.element.Element' and 'NoneType'
+-        """
+-        # See __add__ for comments
+-        cdef int cl = classify_elements(left, right)
+-        if HAVE_SAME_PARENT(cl):
+-            return (<Element>left)._div_(right)
+-        if BOTH_ARE_ELEMENT(cl):
+-            return coercion_model.bin_op(left, right, truediv)
+-
+-        try:
+-            return coercion_model.bin_op(left, right, truediv)
+-        except TypeError:
+-            return NotImplemented
+-
+     def __truediv__(left, right):
+         """
+         Top-level true division operator for :class:`Element` invoking
+@@ -3419,9 +3348,6 @@ cdef class Vector(ModuleElement):
+     cpdef _pairwise_product_(Vector left, Vector right):
+         raise TypeError("unsupported operation for '%s' and '%s'"%(parent(left), parent(right)))
+ 
+-    def __div__(self, other):
+-        return self / other
+-
+     def __truediv__(self, right):
+         right = py_scalar_to_element(right)
+         if isinstance(right, RingElement):
+@@ -3777,59 +3703,6 @@ cdef class Matrix(ModuleElement):
+             return left * ~right
+         return coercion_model.bin_op(left, right, truediv)
+ 
+-    def __div__(left, right):
+-        """
+-        Division of the matrix ``left`` by the matrix or scalar ``right``.
+-
+-        EXAMPLES::
+-
+-            sage: a = matrix(ZZ, 2, range(4))
+-            sage: a / 5
+-            [ 0 1/5]
+-            [2/5 3/5]
+-            sage: a = matrix(ZZ, 2, range(4))
+-            sage: b = matrix(ZZ, 2, [1,1,0,5])
+-            sage: a / b
+-            [  0 1/5]
+-            [  2 1/5]
+-            sage: c = matrix(QQ, 2, [3,2,5,7])
+-            sage: c / a
+-            [-5/2  3/2]
+-            [-1/2  5/2]
+-            sage: a / c
+-            [-5/11  3/11]
+-            [-1/11  5/11]
+-            sage: a / 7
+-            [  0 1/7]
+-            [2/7 3/7]
+-
+-        Other rings work just as well::
+-
+-            sage: a = matrix(GF(3),2,2,[0,1,2,0])
+-            sage: b = matrix(ZZ,2,2,[4,6,1,2])
+-            sage: a / b
+-            [1 2]
+-            [2 0]
+-            sage: c = matrix(GF(3),2,2,[1,2,1,1])
+-            sage: a / c
+-            [1 2]
+-            [1 1]
+-            sage: a = matrix(RDF,2,2,[.1,-.4,1.2,-.6])
+-            sage: b = matrix(RDF,2,2,[.3,.1,-.5,1.3])
+-            sage: a / b # rel tol 1e-10
+-            [-0.15909090909090906 -0.29545454545454547]
+-            [   2.863636363636364  -0.6818181818181817]
+-            sage: R.<t> = ZZ['t']
+-            sage: a = matrix(R,2,2,[t^2,t+1,-t,t+2])
+-            sage: b = matrix(R,2,2,[t^3-1,t,-t+3,t^2])
+-            sage: a / b
+-            [      (t^4 + t^2 - 2*t - 3)/(t^5 - 3*t)               (t^4 - t - 1)/(t^5 - 3*t)]
+-            [       (-t^3 + t^2 - t - 6)/(t^5 - 3*t) (t^4 + 2*t^3 + t^2 - t - 2)/(t^5 - 3*t)]
+-        """
+-        if have_same_parent(left, right):
+-            return left * ~right
+-        return coercion_model.bin_op(left, right, truediv)
+-
+     cdef _vector_times_matrix_(matrix_right, Vector vector_left):
+         raise TypeError
+ 
