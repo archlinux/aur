@@ -11,6 +11,7 @@ pkgbase = stagit-gopher
 	arch = aarch64
 	license = MIT
 	depends = libgit2
+	optdepends = geomyidae: small c-based gopherd
 	optdepends = git: scripting functionality
 	source = https://codemadness.org/releases/stagit-gopher/stagit-gopher-0.9.3.tar.gz
 	sha256sums = fb8cba96e8ea809b1bf0bfa5aed17fedca1245ed7747c1fc6c855c54bedaba04

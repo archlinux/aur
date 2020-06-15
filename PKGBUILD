@@ -8,7 +8,8 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://codemadness.org/stagit-gopher.html'
 license=('MIT')
 depends=('libgit2')
-optdepends=('git: scripting functionality')
+optdepends=('geomyidae: small c-based gopherd'
+            'git: scripting functionality')
 source=("https://codemadness.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('fb8cba96e8ea809b1bf0bfa5aed17fedca1245ed7747c1fc6c855c54bedaba04')
 
