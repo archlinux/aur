@@ -9,7 +9,7 @@
 pkgname=("libappindicator-bzr")
 pkgver=296
 pkgrel=1
-pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray'
+pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray. GTK+ 3 Bzr version.'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
@@ -42,8 +42,6 @@ build() {
 }
 
 package() {
-  pkgdesc+=' (GTK+ 3 library)'
-
   cd libappindicator
   make DESTDIR="${pkgdir}" install
 }

@@ -1,5 +1,5 @@
 pkgbase = libappindicator-bzr
-	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
+	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray. GTK+ 3 Bzr version.
 	pkgver = 296
 	pkgrel = 1
 	url = https://launchpad.net/libappindicator
@@ -26,5 +26,4 @@ pkgbase = libappindicator-bzr
 	sha512sums = SKIP
 
 pkgname = libappindicator-bzr
-	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)
 
