@@ -1,6 +1,6 @@
 pkgbase = xorg-twm-git
 	pkgdesc = Tab Window Manager for the X Window System
-	pkgver = 1.0.10.r25.ge2a533d
+	pkgver = 1.0.11.r0.gc2859ef
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = xorg-twm-git
 	makedepends = git
 	makedepends = xorg-util-macros
 	depends = libxmu
-	provides = xorg-twm=1.0.10-1
+	provides = xorg-twm=1.0.11-1
 	conflicts = xorg-twm
 	backup = usr/share/X11/twm/system.twmrc
 	source = xorg-twm-git::git://anongit.freedesktop.org/xorg/app/twm
