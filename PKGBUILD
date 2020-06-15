@@ -1,11 +1,13 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: foalsrock <foalsrock at gmail dot-com>
 # Contributor: jebaum <jebaum at ucla dot edu>
+# Maitainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fzf-git
-pkgver=20190909
+pkgver=0.21.1.r21.g06d63a8
 pkgrel=1
+epoch=1
 pkgdesc="Command-line fuzzy finder"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('ncurses')
@@ -17,32 +19,16 @@ optdepends=('fish: fish keybindings'
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=(git+https://github.com/junegunn/fzf
-        git+https://github.com/junegunn/fzf.wiki
-        key-bindings.bash.patch
-        key-bindings.zsh.patch)
+        git+https://github.com/junegunn/fzf.wiki)
 sha256sums=('SKIP'
-            'SKIP'
-            'fc981d036d85d0b9a5e6ba65f84b1c0f86bcee2dabb09238e1edfa1f49a85b63'
-            '0b89bf1d6d372b9a8d5927e58151157d42848086a252979006b89b72242c52e6')
+            'SKIP')
 provides=('fzf')
 conflicts=('fzf')
 install=fzf.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-
-  msg2 'Fixing bash and zsh key bindings...'
-
-  msg2 'Making fzf key-bindings.bash source bash completions...'
-  patch -p1 < "$srcdir/key-bindings.bash.patch"
-
-  msg2 'Making fzf key-bindings.zsh source zsh completions...'
-  patch -p1 < "$srcdir/key-bindings.zsh.patch"
+  git describe --tags | sed "s+-+.r+" | tr - .
 }
 
 build() {
@@ -63,8 +49,6 @@ package() {
   msg2 'Installing wiki...'
   cp -dpr --no-preserve=ownership "$srcdir/fzf.wiki" \
     "$pkgdir/usr/share/doc/fzf/wiki"
-
-
 
   msg2 'Installing manual...'
   install -Dm 644 "man/man1/fzf.1" -t "$pkgdir/usr/share/man/man1"
