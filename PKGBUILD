@@ -7,7 +7,7 @@
 
 pkgname=packettracer
 pkgver=7.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Cisco PacketTracer 7.3.0 installation package"
 arch=( 'x86_64' )
 depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')
@@ -19,7 +19,7 @@ license=('custom')
 source=('local://PacketTracer_730_amd64.deb'
 	'packettracer.sh')
 sha512sums=('b06275775703791d56618d99fa7daf29a8a5c82dc17b66d12a9b29927f0a97deb082a757c0cdf72c2345ac32449d0506dad35237ac9935db2e86982e115f1ae1'
-	    '74b90fc9f9e37b9d69bff1d43b97589563331b4dbbd89002447ad09d4454466321998cb0bbaeba478603c1038ef5be74b797c1a122dbb13150f8abdce174782c')
+	    '09d07ec95712f562bb9217b40a0a04cbb16e42523801b62180050326d67d3592f2ce92444440a10a6e94951c6cf53e27fb360395ef5f3732c71edc51e6a85726')
 
 package() {
 
