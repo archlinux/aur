@@ -20,7 +20,6 @@ pkgbase = squeekboard-git
 	depends = gtk3
 	depends = libcanberra
 	depends = wayland
-	depends = libcroco
 	depends = gnome-desktop
 	optdepends = feedbackd: haptic feedback
 	provides = squeekboard

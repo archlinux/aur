@@ -8,7 +8,7 @@ pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
 url="https://source.puri.sm/Librem5/squeekboard"
 license=("GPL3")
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
-depends=('gtk3' 'libcanberra' 'wayland' 'libcroco' 'gnome-desktop')
+depends=('gtk3' 'libcanberra' 'wayland' 'gnome-desktop')
 optdepends=('feedbackd: haptic feedback')
 makedepends=(git
              pkg-config
