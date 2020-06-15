@@ -1,6 +1,6 @@
 pkgbase = openra-d2-git
 	pkgdesc = A Dune II-inspired mod of OpenRA
-	pkgver = 188.git.b05c442
+	pkgver = 189.git.3c1489a
 	pkgrel = 1
 	url = https://github.com/OpenRA/d2
 	install = openra-d2.install
