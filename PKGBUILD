@@ -2,7 +2,7 @@
 
 pkgname=dde-pstate
 pkgver=0.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Intel pstate dock plugin for Deepin V20"
 arch=('x86_64')
 url="https://github.com/SeptemberHX/dde-pstate"
