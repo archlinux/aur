@@ -2,7 +2,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=v0.9.22.r0.g0497181
+pkgver=v0.10.12.r0.gc44d767
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')

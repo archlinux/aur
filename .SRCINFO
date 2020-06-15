@@ -1,6 +1,6 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League of Legends helper script
-	pkgver = v0.9.22.r0.g0497181
+	pkgver = v0.10.12.r0.gc44d767
 	pkgrel = 1
 	url = https://github.com/kyechou/leagueoflegends
 	arch = any
