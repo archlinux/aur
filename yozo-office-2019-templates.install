@@ -1,0 +1,9 @@
+post_install() {
+  echo "----------------- 温馨提示 ------------------"
+  echo "如果您刚才看见大量的 can't translate pathname ~"
+  echo "to UTF-8 报告，不用担心，这不影响安装后软件正常使用。"
+  echo "由于原包里的中文文件/目录名未采用标准字符，导致编码"
+  echo "无法正常转换所致。"
+  echo "祝您使用愉快 ～"
+  echo "-------------- By Packager: whiredplanck --"
+}
