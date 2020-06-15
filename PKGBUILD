@@ -2,7 +2,7 @@
 # Contributor: Paul Sajna <sajattack at gmail dot com>
 
 pkgname=fern-wifi-cracker
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
@@ -15,7 +15,7 @@ replaces=('fern-wifi-cracker-git')
 conflicts=('fern-wifi-cracker-git')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/savio-code/fern-wifi-cracker/archive/v${pkgver}.tar.gz")
-sha256sums=('b4b07f719ee91e7d3b37044cf8a8d4dabf0decce9124db4402eb27b93479252f')
+sha256sums=('94d0180798f1cd48a3bb25d35f496438ce8bc8e8c75c180c942df9308a2a35a7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/Fern-Wifi-Cracker"
