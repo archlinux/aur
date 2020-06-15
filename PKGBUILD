@@ -3,43 +3,35 @@
 _name=jfrog
 _upstream_name=jfrog-cli
 pkgname=jfrog-cli-go
-pkgver=1.35.1
+pkgver=1.37.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
 url="https://github.com/jfrog/jfrog-cli-go"
 license=('Apache')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${_upstream_name}/archive/${pkgver}.tar.gz")
-sha512sums=('96249a5c8f6e4e223971f9b426b1cea3e534b515db8d52ff9fde7cae99415a3cf625fc41616886b09ca19fb24330bf6bb8f017422562f2802222d3de43a96821')
+sha512sums=('747c76a285c882aab1ae062bba1fcab82e1fd8546cdd71d31b2e5ff2e4376d049158bd51f1a8cd0eb0cdc44d5b92b688e5a4bb6c4653bef7f123173d59490bdf')
 
 prepare() {
   mv -v "${_upstream_name}-${pkgver}" "${pkgname}-${pkgver}"
-  (
-    cd "$pkgname-$pkgver/"
-    go mod vendor
-    rm -v go.mod
-  )
-  export GOPATH="${srcdir}"
-  mkdir -vp src
-  mv -v "${pkgname}-${pkgver}"/vendor/* src/
-  mkdir -vp src/github.com/jfrog
-  ln -rTsf "${pkgname}-${pkgver}" src/github.com/jfrog/jfrog-cli-go
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  export GOPATH="${srcdir}"
-  go build -o "${_name}" \
-           -ldflags="-linkmode external -extldflags ${LDFLAGS} -s -w" \
-           "main.go"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build
+
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  # executable
-  install -vDm 755 "${_name}" -t "${pkgdir}/usr/bin/"
-  install -vDm 644 {CONTRIBUTING,README}.md \
+  install -vDm 755 "${_upstream_name}" -t "${pkgdir}/usr/bin/"
+  install -vDm 644 {README,RELEASE}.md \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
