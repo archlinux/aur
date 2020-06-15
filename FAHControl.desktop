@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FAHControl
+Exec=/usr/bin/FAHControl
+TryExec=FAHControl
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Science;Biology;Education;;
+Comment=Folding@home Client Control
+Icon=FAHControl.png
