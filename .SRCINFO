@@ -1,0 +1,24 @@
+pkgbase = heasoft-nodata
+	pkgdesc = NASA high energy astrophysics library, without xspec model data
+	pkgver = 6.27.2
+	pkgrel = 1
+	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
+	install = heasoft-nodata.install
+	arch = x86_64
+	license = NASA
+	license = GPL
+	makedepends = glibc
+	makedepends = gcc-fortran
+	makedepends = perl
+	makedepends = python-numpy
+	depends = ncurses
+	depends = readline
+	depends = libxpm
+	depends = libidn
+	optdepends = python-numpy: python binding
+	provides = heasoft
+	source = https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.27.2/heasoft-6.27.2src_no_xspec_modeldata.tar.gz
+	md5sums = 329391bc543414e6bb41f3f15cd646a9
+
+pkgname = heasoft-nodata
+
