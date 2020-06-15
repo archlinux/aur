@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -37,4 +37,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('23959091d692c182d5400c2592984c9c91f50f2460910f9ae5d0b8fea8430aa2')
+sha256sums=('73dd675ce687c3831e9300e5922efef3094a5bdddb8eb3699b964d3e1a0b00f2')
