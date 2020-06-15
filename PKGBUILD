@@ -3,25 +3,30 @@
 pkgname=horizontal-rule
 _pkgname=hr
 pkgver=0.5.0
-pkgrel=1
-pkgdesc="A horizontal rule for the terminal"
+pkgrel=2
+pkgdesc='A horizontal rule for the terminal'
 arch=('x86_64')
-url="https://octobanana.com/software/${_pkgname}"
+url='https://octobanana.com/software/hr'
 license=('MIT')
-source=("https://github.com/octobanana/${_pkgname}/archive/${pkgver}.tar.gz")
 makedepends=('cmake')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+source=("https://github.com/octobanana/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('18b499b7886acdd3099768e1789c4d5f73195976df65bbf1e201a995f491a9bd')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  cmake . -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+  cmake -B build -S "${_pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR=${pkgdir} install
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" -C build install
+  install -Dm644 "${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
