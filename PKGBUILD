@@ -6,8 +6,8 @@ pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
 license=('GPL2')
-source=("$url/releases/download/v$pkgver/nimdow")
-md5sums=('9d2fcf1be7298b14dcfcd227a3536742')
+source=("$url/releases/download/v$pkgver-1/nimdow")
+md5sums=('140dbf8f121919a2a2a95a9194cbf503')
 
 install_default_config() {
   if [ -f "${XDG_CONFIG_HOME}/nimdow/config.toml" ] ||
