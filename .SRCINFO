@@ -1,14 +1,14 @@
 pkgbase = chartjs
 	pkgdesc = Simple HTML5 Charts using the canvas element
-	pkgver = 2.7.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = http://www.chartjs.org
 	arch = any
 	license = MIT
-	source = https://github.com/chartjs/Chart.js/releases/download/v2.7.2/Chart.js
-	source = https://github.com/chartjs/Chart.js/releases/download/v2.7.2/Chart.min.js
-	md5sums = 995971f2a1bbcf30024b53115d945330
-	md5sums = f6c8efa65711e0cbbc99ba72997ecd0e
+	source = https://github.com/chartjs/Chart.js/releases/download/v2.9.3/Chart.js
+	source = https://github.com/chartjs/Chart.js/releases/download/v2.9.3/Chart.min.js
+	md5sums = aa0d045c7eefcedf60a4e27a6c613d19
+	md5sums = b5c2301eb15826bf38c9bdcaa3bbe786
 
 pkgname = chartjs
 
