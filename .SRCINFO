@@ -14,6 +14,7 @@ pkgbase = dde-top-panel
 	depends = deepin-qt-dbus-factory
 	depends = libdbusmenu-qt5
 	depends = procps-ng
+	depends = deepin-dock
 	source = dde-top-panel-0.4.1.tar.gz::https://github.com/SeptemberHX/dde-top-panel/archive/0.4.1.tar.gz
 	source = dde-top-panel.desktop
 	sha512sums = fffeab4e7bb0af52f712889cf762cdde9cb24140cac89cf263b19087fce74fd1fdf0fff01b93802300f296c0b0fc49b3aadd8540182252795c2d21e6f5242972
