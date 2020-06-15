@@ -1,4 +1,6 @@
 # Maintainer: Matthew Haigh <matthaigh27@gmail.com>
+# This PKGBUILD needs an rpm downloaded from https://account.wolfram.com/products/downloads/wolframscript
+# placed in the same directory
 
 pkgname=wolframscript
 pkgver=12.1.0
