@@ -4,7 +4,7 @@
 pkgname=jamulus
 _pkgname=Jamulus
 pkgver=3.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='http://llcon.sourceforge.net/'
@@ -23,7 +23,7 @@ build() {
 package() {
   depends+=('libjack.so')
   cd "${srcdir}/${pkgname}-r${pkgver//./_}"
-  install -Dm755 Jamulus "${pkgdir}/usr/bin/jamulus"
+  install -Dm755 Jamulus "${pkgdir}/usr/bin/Jamulus"
   install -Dm644 distributions/jamulus.desktop "${pkgdir}/usr/share/applications/jamulus.desktop"
   install -Dm644 src/res/fronticon.png "${pkgdir}/usr/share/pixmaps/jamulus.png"
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
