@@ -9,7 +9,7 @@ pkgbase = cargo-spellcheck
 	depends = cargo
 	depends = hunspell
 	source = 0.1.4.tar.gz::https://crates.io/api/v1/crates/cargo-spellcheck/0.1.4/download
-	md5sums = bf4be929f047defb4c7dfdaaeef79597
+	sha256sums = 115afdc87b3e63badfaba20a030ac0b5a1712900542184b5b9ca77fe0faf5607
 
 pkgname = cargo-spellcheck
 

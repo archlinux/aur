@@ -8,7 +8,6 @@ arch=("x86_64")
 license=("MIT" "Apache")
 depends=("cargo" "hunspell")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-md5sums=('bf4be929f047defb4c7dfdaaeef79597')
 
 build()
 {
@@ -23,3 +22,4 @@ package()
 
     install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
+sha256sums=('115afdc87b3e63badfaba20a030ac0b5a1712900542184b5b9ca77fe0faf5607')
