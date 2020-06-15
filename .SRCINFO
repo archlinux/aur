@@ -1,6 +1,6 @@
 pkgbase = pmdk-git
 	pkgdesc = Persistent Memory Development Kit.
-	pkgver = 1.6.1.r149.g99ae6eb7f
+	pkgver = 1.8.r910.g6c7e703d2
 	pkgrel = 1
 	url = http://pmem.io
 	arch = x86_64
