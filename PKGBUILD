@@ -5,8 +5,8 @@
 
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im')
-pkgver=3.13
-pkgrel=2
+pkgver=3.14
+pkgrel=1
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
@@ -16,8 +16,8 @@ source=(
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
 )
-md5sums=('a243c416f0d62424c0b76bf7a8eaaf51'
-         '1de67424a448ccb52955fbdb9f6e128e')
+md5sums=('39b5d9e61d39e26518b254a378c8b565'
+         '5619743484e0eb77ad475306952a8ac3')
 noextract=(im-${pkgver}_Sources.tar.gz)
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = libim
 	pkgdesc = Toolkit for digital imaging
-	pkgver = 3.13
-	pkgrel = 2
+	pkgver = 3.14
+	pkgrel = 1
 	url = https://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = libim
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
-	noextract = im-3.13_Sources.tar.gz
-	source = https://downloads.sourceforge.net/project/imtoolkit/3.13/Docs%20and%20Sources/im-3.13_Sources.tar.gz
-	source = https://downloads.sourceforge.net/project/imtoolkit/3.13/Docs%20and%20Sources/im-3.13_Docs.pdf
-	md5sums = a243c416f0d62424c0b76bf7a8eaaf51
-	md5sums = 1de67424a448ccb52955fbdb9f6e128e
+	noextract = im-3.14_Sources.tar.gz
+	source = https://downloads.sourceforge.net/project/imtoolkit/3.14/Docs%20and%20Sources/im-3.14_Sources.tar.gz
+	source = https://downloads.sourceforge.net/project/imtoolkit/3.14/Docs%20and%20Sources/im-3.14_Docs.pdf
+	md5sums = 39b5d9e61d39e26518b254a378c8b565
+	md5sums = 5619743484e0eb77ad475306952a8ac3
 
 pkgname = libim
 	pkgdesc = Imaging toolkit library
