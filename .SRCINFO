@@ -1,6 +1,6 @@
 pkgbase = fzy-git
 	pkgdesc = A fuzzy text selector menu for the terminal
-	pkgver = r340.2be07b5
+	pkgver = 1.0.r38.gc2d816d
 	pkgrel = 1
 	url = https://github.com/jhawthorn/fzy
 	arch = i686
