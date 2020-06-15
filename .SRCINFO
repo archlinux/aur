@@ -1,7 +1,7 @@
 pkgbase = android-platform-30
-	pkgdesc = Android SDK Platform, latest API
+	pkgdesc = Android SDK Platform, API 30
 	pkgver = 30_r01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
