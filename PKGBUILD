@@ -4,14 +4,14 @@ pkgver=0.90.3
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
-url="https://github.com/benzea/gnome-network-displays"
+url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL3')
 depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm'
          'python-gobject' 'x264' 'xdg-desktop-portal')
 makedepends=('meson' 'appstream-glib')
 replaces=('gnome-screencast')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c5ef9c7155ffe108d556c153b0b95678d42f984235ef5eef83e946ba0ded1e22')
+source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('6296e7bd25a750cac24cf86d97819e3855a133e44553aacdb3d9f7b9b7ab56a6')
 
 build() {
 	cd "$pkgname-$pkgver"
