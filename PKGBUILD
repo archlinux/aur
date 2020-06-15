@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/intel/ipmctl"
 license=(GPL3)
 depends=()
-makedepends=("cmake" "git")
+makedepends=("cmake" "git" "python3")
 source=(${pkgname}::git+https://github.com/intel/ipmctl)
 md5sums=('SKIP')
 
