@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2166.305200c
+pkgver=r2209.2cb9cdb
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
   'asleap: Actively recover LEAP/PPTP passwords'
+  'beef-git: The Browser Exploitation Framework'
   'bettercap: Complete, modular, portable and easily extensible MITM framework'
   'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
   'ccze: Robust and modular log colorizer with many plugins'
@@ -44,6 +45,7 @@ optdepends=(
   'sslstrip: Python tool to hijack HTTPS connections during a MITM attack'
   'usbutils: USB Device Utilities'
   'wget: A network utility to retrieve files from the Web'
+  'wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools'
   'xorg-xdpyinfo: Display information utility for X'
   'xorg-xset: User preference utility for X'
 )
