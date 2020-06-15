@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ "$1" = "--loop" ]; then
+	while true
+	do
+	date "+%n %T%n %r%n %A %B %d %Y%n %m/%d/%Y%n"
+	clear
+	done
+elif [ "$1" = "" ]; then
+	date "+%n %T%n %r%n %A %B %d %Y%n %m/%d/%Y%n"
+else
+	echo "Incorrect Argument."
+	echo "Usage: ${0} --loop"
+	exit 1
+fi

@@ -1,0 +1,14 @@
+pkgbase = currentime
+	pkgdesc = Utility written in bash that tells the time in many different formats
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://benthetechguy.github.io/miscprograms/currentime
+	arch = any
+	license = GPL
+	depends = bash
+	noextract = $pkgname
+	source = currentime
+	md5sums = e8413faaf292707e4422c39541aab767
+
+pkgname = currentime
+
