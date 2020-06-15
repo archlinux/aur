@@ -1,6 +1,6 @@
 pkgbase = budgie-indicator-applet
 	pkgdesc = Application Indicator Applet for the budgie-desktop
-	pkgver = 0.5
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/UbuntuBudgie/budgie-indicator-applet
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = budgie-indicator-applet
 	depends = ido
 	depends = libindicator-gtk3
 	depends = libpeas
-	source = https://github.com/UbuntuBudgie/budgie-indicator-applet/archive/v0.5.tar.gz
-	sha512sums = a608b946b20bd5fd2bb8e57dca874ef76545b42229a866b734f127f7539f209c2a1b7665a81afba4500c62288eabf881c9179a77817a65c92321fe699d0aa97c
+	source = https://github.com/UbuntuBudgie/budgie-indicator-applet/archive/v0.6.2.tar.gz
+	sha512sums = 7faaad7418d4df7eaef675c281c1fc09f06eb979f6e3662e9e757628ea7d94c24264d15a4c9f2b70cf78a259b11881903c3e43a56150b800307e25decdd95b99
 
 pkgname = budgie-indicator-applet
 
