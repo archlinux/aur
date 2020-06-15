@@ -3,7 +3,7 @@
 
 pkgname=gbdk-2020
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An updated version of Game Boy Development Kit"
 url="https://github.com/Zal0/gbdk-2020"
 license=('MIT')
@@ -18,12 +18,12 @@ sha256sums=('SKIP')
 
 package() {
   sed "s|%prefix%bin/|/usr/bin/|g" -i ${pkgname}/gbdk-support/lcc/gb.c
-  make -C ${pkgname} gbdk-build SDCCDIR=/usr/
-  make -C ${pkgname} gbdk-install-nosdcc SDCCDIR=/usr/
+  make -C ${pkgname} gbdk-build TARGETDIR=/opt/${pkgname} SDCCDIR=/usr/
+  make -C ${pkgname} gbdk-install-nosdcc TARGETDIR=/opt/${pkgname} SDCCDIR=/usr/
   mkdir -p ${pkgdir}/usr
   mkdir -p ${pkgdir}/opt
 
-  mv ${pkgname}/build/gbdk ${pkgdir}/opt/gbdk
-  mv ${pkgdir}/opt/gbdk/bin ${pkgdir}/usr/
-  find ${pkgdir}/opt/gbdk/ -type f -name '*.bat' -delete
+  mv ${pkgname}/build/gbdk ${pkgdir}/opt/${pkgname}
+  mv ${pkgdir}/opt/${pkgname}/bin ${pkgdir}/usr/
+  find ${pkgdir}/opt/${pkgname}/ -type f -name '*.bat' -delete
 }
