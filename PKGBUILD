@@ -1,8 +1,8 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=squeekboard
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone"
 url="https://source.puri.sm/Librem5/squeekboard"
 license=("GPL3")
