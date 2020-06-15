@@ -1,11 +1,12 @@
-# Maintainer: Whovian9369 <Whovian9369 at gmail dot com>
+# Maintainer: Franck Stauffer <franck.stauffer@protonmail.ch>
+# Contributor: Whovian9369 <Whovian9369 at gmail dot com>
 # Contributor: mock <nobody at nowhere dot co dot uk>
+
 pkgname=clrmamepro
-pkgver=4.036a
+pkgver=4.037
 pkgrel=1
 pkgdesc="A ROM manager for MAME."
-arch=('x86_64'
-      'i686')
+arch=('x86_64' 'i686')
 url="https://mamedev.emulab.it/clrmamepro/"
 license=('custom')
 depends=('wine' 'hicolor-icon-theme' 'xdg-utils')
@@ -13,9 +14,9 @@ makedepends=('icoutils')
 source=("https://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
         "clrmamepro.desktop")
-sha256sums=('075aba6b2ef878ec8db32d05f4dd219df1003b14ce2683499e706a5d85b446be'
-            '497a4a5cfe5daf8ac576f8169e611c6433b73e5019a7a8e4b0a230e531f9cdc4'
-            '830794b34205387cf69594cf555698ae888574a2f0dcbe63e7e49d1d40dcdeff')
+b2sums=('fc163d2f9687c583aa134b7cf9f68b09a44f7eb6cf6e76da1e9a76481ca88eb15b51073aabc132489e352ca2fd2e52f9639ea21c698fbf25a6d7bcae60ffe1db'
+        '92136aa1e3e5e98d5f5918f047e53a89d09318946fb20c8731a3ce84ff08abd00d65b4e6a098f71792da597677532e9c51cebb7b427594ea5d80260a43d7e147'
+        '001f96fd4d515e3501239781be80c71e32b8e5dc9c0f42b2d50794f23ba48206ab669a6348dcd22e6c37d0fddd52758844abbad40aa536c1ad59f99861567265')
 
 build() {
   wrestool -x -n 500 -o . cmpro.exe
