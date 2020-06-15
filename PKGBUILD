@@ -1,7 +1,7 @@
 # Maintainer: Zdeněk Janeček <jan.zdenek@gmail.com>
 pkgname=entangle
-pkgver=2.0
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Entangle is an application which uses GTK and libgphoto2 to provide a graphical interface for tethered photography with digital cameras."
 arch=('i686' 'x86_64')
 url="http://entangle-photo.org/"
@@ -10,7 +10,7 @@ depends=('glib2>=2.26.0' 'dbus-glib>=0.60' 'gdk-pixbuf2>=2.12.0' 'gtk3>=3.22.0' 
 makedepends=('intltool' 'meson' 'gtk-doc')
 install=entangle.install
 source=(http://entangle-photo.org/download/sources/$pkgname-$pkgver.tar.xz)
-md5sums=('12049cc192bc1c9ec5fd668921061776')
+md5sums=('32060351f18a8caa04e3bf7dd888e54d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
