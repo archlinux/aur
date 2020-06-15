@@ -1,0 +1,18 @@
+pkgbase = dde-pstate
+	pkgdesc = Intel pstate dock plugin for Deepin V20
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://github.com/SeptemberHX/dde-pstate
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = deepin-network-utils
+	depends = qt5-base
+	depends = procps-ng
+	depends = deepin-dock
+	source = dde-pstate-0.2.0.tar.gz::https://github.com/SeptemberHX/dde-pstate/archive/0.2.0.tar.gz
+	sha512sums = 652502df6090808553ff7974e5e69de3b893ddf824ef2a0123965ceca48903c5dcb1e87e07adaa4509adc34515c9956d64164ca14450b1af27d8e071bd3a9508
+
+pkgname = dde-pstate
+
