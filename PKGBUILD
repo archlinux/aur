@@ -3,11 +3,11 @@
 
 pkgname=qt5-color-widgets
 _pkgname=QtColorWidgets
-pkgver=0.r236.94e478e
+pkgver=0.r15.a28a656
 pkgrel=2
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
-url='https://github.com/mbasaglia/Qt-Color-Widgets'
+url='https://gitlab.com/mattia.basaglia/Qt-Color-Widgets'
 license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'
@@ -16,7 +16,7 @@ makedepends=('git' 'cmake')
 provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
-source=("${pkgname}::git+git://github.com/mbasaglia/Qt-Color-Widgets.git")
+source=("${pkgname}::git+git://gitlab.com/mattia.basaglia/Qt-Color-Widgets.git")
 sha256sums=('SKIP')
 
 pkgver() {
