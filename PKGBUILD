@@ -1,5 +1,7 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+
 pkgname=firefox-extension-video-download-helper
-pkgver=7.3.7
+pkgver=7.3.9
 pkgrel=1
 pkgdesc='The easy way to download and convert Web videos from hundreds of YouTube-like sites.'
 arch=('any')
