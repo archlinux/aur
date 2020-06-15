@@ -17,15 +17,10 @@ pkgname = yozo-office-2019-bin
 	depends = jre8-openjdk-headless
 	depends = libxtst
 	depends = libxt
-	optdepends = cups: for printing support
-	optdepends = libjpeg-turbo: JPEG image codec support
 	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
 	optdepends = ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.
 	optdepends = yozo-office-2019-fonts: UI Fonts
 	optdepends = yozo-office-2019-templates: Templates files
-
-pkgname = yozo-office-2019-templates
-	pkgdesc = Templates files provided by Yozo Office 2019
 
 pkgname = yozo-office-2019-fonts
 	pkgdesc = Fonts provided by Yozo Office 2019

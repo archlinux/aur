@@ -1,8 +1,9 @@
 #Maintainer: h0cheung <unknow>
 #Maintainer: WhiredPlanck <unknow>
+#Contributor：heavysink <unknow>
 
 pkgbase=yozo-office-2019
-pkgname=('yozo-office-2019-bin' 'yozo-office-2019-templates' 'yozo-office-2019-fonts')
+pkgname=('yozo-office-2019-bin' 'yozo-office-2019-fonts')
 _pkgver=8.0.1331.101ZH.S1
 pkgver=8.0.1331.101ZH.S1
 pkgrel=3
@@ -24,41 +25,42 @@ prepare() {
 
 package_yozo-office-2019-bin() {
     depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
-    optdepends=('cups: for printing support'
-                'libjpeg-turbo: JPEG image codec support'
-                'ttf-ms-fonts: Arial, Times, Courier etc.'
+    optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
     			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
     			'yozo-office-2019-fonts: UI Fonts'
     			'yozo-office-2019-templates: Templates files')
     install=${pkgname}.install
     cd "${srcdir}"
-    cp -r usr "${pkgdir}"
-    cp -r opt "${pkgdir}"
-    cp -r etc "${pkgdir}"
-    rm -rf $pkgdir/etc/xdg
-    rm -rf $pkgdir/etc/skel
-    rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Upgrade
-    rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/uninstall
-    rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Templates
-    rm -rf $pkgdir/usr/lib64
-    rm -rf $pkgdir/usr/share/mime
-    rm -rf $pkgdir/usr/share/fonts/truetype/yozo
-    rm -rf $pkgdir/usr/share/applications/yozo-uninstall.desktop
-    
-    rm -rf $pkgdir/opt/Yozosoft/Yozo_Office/Jre/bin
-    ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin $pkgdir/opt/Yozosoft/Yozo_Office/Jre/bin
-    cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
-    mv ext ../
-    rm -rf *
-    for i in /usr/lib/jvm/java-8-openjdk/jre/lib/*; do
-        ln -sf $i
-    done
-    rm ext
-    mv ../ext .
-    
+    mv etc opt usr "${pkgdir}"
     chmod 755 $pkgdir/usr/lib
+    chmod 755 $pkgdir/usr/lib64
     chmod 755 $pkgdir/usr
     chmod 755 $pkgdir/usr/bin
+    #Delete uesless files
+    cd "${pkgdir}"
+    rm -rf etc/xdg
+    rm -rf etc/skel
+    rm -rf opt/Yozosoft/Yozo_Office/Upgrade
+    rm -rf opt/Yozosoft/Yozo_Office/uninstall
+    rm -rf usr/lib64
+    rm -rf usr/share/mime
+    rm -rf usr/share/applications/yozo-uninstall.desktop
+    rm -rf opt/Yozosoft/Yozo_Office/Templates
+    
+    #Split fonts files
+    cd "${srcdir}"
+    install -d usr/share/fonts/truetype
+    mv "${pkgdir}/usr/share/fonts/truetype/yozo" usr/share/fonts/truetype
+    
+    #Replace Java bin
+    rm -rf "${pkgdir}/opt/Yozosoft/Yozo_Office/Jre/bin"
+    ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin "${pkgdir}/opt/Yozosoft/Yozo_Office/Jre/bin"
+    cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
+    for j in *; do
+        if [ "$j" != "ext" ]; then
+            rm -rf $j
+        fi
+    done
 
     targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
     unpackP="${targetP}/Jre/bin/unpack200"
@@ -68,25 +70,7 @@ package_yozo-office-2019-bin() {
 package_yozo-office-2019-fonts() {
     pkgdesc="Fonts provided by Yozo Office 2019"
     cd "${srcdir}"
-    install -d "${pkgdir}/usr/share/fonts/truetype/yozo"
-    cp -r usr/share/fonts/truetype/yozo/* "${pkgdir}/usr/share/fonts/truetype/yozo"
-#    targetP="${pkgdir}/usr/share/fonts/truetype/yozo"
+    install -d "${pkgdir}/usr/share/fonts/truetype"
+    mv usr/share/fonts/truetype/yozo "${pkgdir}/usr/share/fonts/truetype"
 }
 
-package_yozo-office-2019-templates() {
-    pkgdesc="Templates files provided by Yozo Office 2019"
-    cd "${srcdir}"
-    install -d "${pkgdir}/opt/Yozosoft/Yozo_Office/Templates"
-    cp -r opt/Yozosoft/Yozo_Office/Templates/* "${pkgdir}/opt/Yozosoft/Yozo_Office/Templates"
-    
-#    for i in etc/skel/*; do
-#        new="$(echo $i|iconv -f utf8 -t latin1|iconv -f gbk)"
-#        echo $new
-#        echo -n 'Sure?'
-#        read -q ans && mv -i $i $new
-#        echo
-#    done
-#    install -d "${pkgdir}/etc/skel/模板"
-#    cp -r etc/skel/*/* "${pkgdir}/etc/skel/模板"
-#    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office/Templates"
-}
