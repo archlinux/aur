@@ -4,12 +4,12 @@
 
 pkgname=rambox
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
-depends=(electron)
+depends=(electron8-bin)
 makedepends=(desktop-file-utils asar ruby npm sencha-cmd-6)
-url='http://rambox.pro/'
+url='https://rambox.pro/'
 license=(GPL3)
 source=("https://github.com/ramboxapp/community-edition/archive/$pkgver.tar.gz"
         "https://github.com/ramboxapp/community-edition/releases/download/$pkgver/Rambox-$pkgver-linux-x64.tar.gz"
@@ -29,7 +29,9 @@ build() {
 	asar ef ../app.asar env.js
 	
 	# install packages
-	sed -Ei 's/\s+"electron": "[^"]+",//' package.json
+	#sed -Ei 's/\s+"electron": "[^"]+",//' package.json
+	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
+
 	npm install
 	
 	# build
