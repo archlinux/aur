@@ -1,23 +1,23 @@
-# Maintainer: our Name <youremail@domain.com>
+# Maintainer: Daniel Maslowski <info@orangecms.org>
 
 _appname=pslab-desktop
 pkgname=pslab-desktop-latest
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PSLab Desktop App - latest version"
 arch=('x86_64')
 url="https://pslab.io"
 license=('GPL3')
 depends=('electron' 'python-pslab-git')
 makedepends=('git' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%}")
+provides=("${_appname}")
+conflicts=("${_appname}")
 install=
 source=(
   "https://github.com/fossasia/$_appname/archive/development.tar.gz"
   "pslab.sh"
 )
-sha256sums=('98d1b444b6a1c8f53ae222db172f6beb5f0b9593d826d719a9f4b705843dce66'
+sha256sums=('SKIP'
             '840e44427a4c582bfd0b6be431187cd77c85acf44b44514ea7d61143824bca1b')
 
 build() {
