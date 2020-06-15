@@ -7,7 +7,7 @@ pkgdesc="dde top panel for Deepin V20"
 arch=('x86_64')
 url="https://github.com/SeptemberHX/dde-top-panel"
 license=('GPL')
-depends=('deepin-network-utils' 'deepin-qt5integration' 'deepin-qt-dbus-factory' 'libdbusmenu-qt5'
+depends=('deepin-network-utils' 'deepin-qt5integration' 'deepin-qt-dbus-factory' 'libdbusmenu-qt5' 'kwindowsystem' 'qt5-base'
          'procps-ng' 'deepin-dock')
 makedepends=('cmake' 'qt5-tools' 'xdotool')
 install="${pkgname}.install"
