@@ -1,4 +1,4 @@
-# Maintainer: Jackson Baker Ryan <jackson.baker.ryan@gmail.com>
+# Maintainer: Jackson Baker Ryan <jackson.baker.ryan at gmail dot com>
 
 pkgname=otf-mister-pixel
 pkgdesc="Mister Pixel typeface - A pixelated typeface with a 
