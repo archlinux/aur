@@ -1,6 +1,6 @@
 pkgbase = libva-utils-headless
 	pkgdesc = Intel VA-API Media Applications and Scripts for headless libva
-	pkgver = 2.6.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/intel/libva-utils
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = libva-utils-headless
 	makedepends = meson
 	depends = libva-headless
 	conflicts = libva-utils
-	source = https://github.com/intel/libva-utils/archive/2.6.0.tar.gz
-	sha256sums = 6ce7a534539c9ae554ace0bfa6689d871145cc172bb3f66ceb3fe2f65466fd90
+	source = https://github.com/intel/libva-utils/archive/2.7.1.tar.gz
+	sha256sums = 9cf35b971001e7143dda14207b6891c12619a72a2ab99a9133b3da5b9c4d97dd
 
 pkgname = libva-utils-headless
 

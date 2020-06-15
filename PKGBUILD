@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-utils-headless
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Intel VA-API Media Applications and Scripts for headless libva'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libva-headless')
 makedepends=('meson')
 conflicts=('libva-utils')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6ce7a534539c9ae554ace0bfa6689d871145cc172bb3f66ceb3fe2f65466fd90')
+sha256sums=('9cf35b971001e7143dda14207b6891c12619a72a2ab99a9133b3da5b9c4d97dd')
 
 build() {
   arch-meson "libva-utils-${pkgver}" build -Ddrm=true -Dx11=false -Dwayland=false
