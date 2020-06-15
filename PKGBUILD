@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('cmake' 'qt5-tools' 'git')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qt5-webengine' 'qt5-svg')
 optdepends=(
-  'python2-nautilus: integration with Nautilus'
+  'python-nautilus: integration with Nautilus'
   'nemo-python: integration with Nemo'
 )
 conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'owncloud-client-git' 'nextcloud-client' 'nextcloud-client-git' 'nextcloud-desktop')
