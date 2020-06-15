@@ -2,7 +2,7 @@
 
 pkgname=kiwivm-ga-systemd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KiwiVM Guest Agent systemd unit file."
 arch=('any')
 url="https://github.com/unknowndev233/KiwiVM-GA-systemd"

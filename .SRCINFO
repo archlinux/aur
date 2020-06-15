@@ -1,7 +1,7 @@
 pkgbase = kiwivm-ga-systemd
 	pkgdesc = KiwiVM Guest Agent systemd unit file.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unknowndev233/KiwiVM-GA-systemd
 	arch = any
 	license = Apache
