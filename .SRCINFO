@@ -8,6 +8,8 @@ pkgbase = ipmctl-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = python3
+	makedepends = ndctl
+	depends = ndctl
 	source = ipmctl-git::git+https://github.com/intel/ipmctl
 	md5sums = SKIP
 

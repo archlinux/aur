@@ -7,8 +7,8 @@ pkgdesc="util for configuring and managing Intel Optane DC persistent memory mod
 arch=('x86_64')
 url="https://github.com/intel/ipmctl"
 license=(GPL3)
-depends=()
-makedepends=("cmake" "git" "python3")
+depends=("ndctl")
+makedepends=("cmake" "git" "python3" "ndctl")
 source=(${pkgname}::git+https://github.com/intel/ipmctl)
 md5sums=('SKIP')
 
@@ -33,6 +33,8 @@ build() {
 package() {
   cd $srcdir/$pkgname/build
   make install
+  mv $pkgdir/usr/etc $pkgdir/etc
+  mv $pkgdir/usr/var $pkgdir/var
 }
 
 # vim:set ts=2 sw=2 et:
