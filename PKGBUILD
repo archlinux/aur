@@ -1,12 +1,15 @@
-# Maintainer: FireZ <firez199984@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: FireZ <firez199984@gmail.com>
 
 pkgname=vim-arduino-syntax-git
 _pkgname=vim-arduino-syntax
-pkgver=r17.83f766d
+pkgver=r19.adbc477
 pkgrel=1
 url=https://github.com/sudar/vim-arduino-syntax
 pkgdesc="Arduino syntax files for Vim"
+license=(custom:vim)
 arch=(any)
+makedepends=(git)
 depends=(vim)
 source=("git://github.com/sudar/vim-arduino-syntax.git")
 md5sums=(SKIP)

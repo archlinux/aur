@@ -1,9 +1,11 @@
 pkgbase = vim-arduino-syntax-git
 	pkgdesc = Arduino syntax files for Vim
-	pkgver = r17.83f766d
+	pkgver = r19.adbc477
 	pkgrel = 1
 	url = https://github.com/sudar/vim-arduino-syntax
 	arch = any
+	license = custom:vim
+	makedepends = git
 	depends = vim
 	source = git://github.com/sudar/vim-arduino-syntax.git
 	md5sums = SKIP
