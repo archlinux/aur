@@ -7,7 +7,7 @@ pkgname=('yozo-office-2019-bin' 'yozo-office-2019-fonts')
 _pkgver=8.0.1331.101ZH.S1
 pkgver=8.0.1331.101ZH.S1
 pkgrel=3
-pkgdesc="Yozo Office 2019 - An M$ Office Compatible Office Suit"
+pkgdesc="永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office Suit"
 url="https://www.yozosoft.com/product-officelinux.html"
 options=('!emptydirs'
          '!strip')
@@ -68,7 +68,7 @@ package_yozo-office-2019-bin() {
 }
 
 package_yozo-office-2019-fonts() {
-    pkgdesc="Fonts provided by Yozo Office 2019"
+    pkgdesc="永中办公界面字体 | UI Fonts provided by Yozo Office 2019"
     cd "${srcdir}"
     install -d "${pkgdir}/usr/share/fonts/truetype"
     mv usr/share/fonts/truetype/yozo "${pkgdir}/usr/share/fonts/truetype"
