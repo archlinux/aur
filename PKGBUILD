@@ -1,7 +1,6 @@
 #Maintainer: h0cheung <unknow>
 #Maintainer: WhiredPlanck <unknow>
 
-pkgbase=yozo-office-2019
 pkgname=('yozo-office-2019-templates')
 _pkgver=8.0.1331.101ZH.S1
 pkgver=8.0.1331.101ZH.S1
