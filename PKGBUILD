@@ -5,9 +5,9 @@
 
 pkgname=emby-server-beta
 pkgver=4.5.0.13
-pkgrel=1
-_ffmpeg_ver=2020_02_24
-_ffdetect_ver=2020_02_24
+pkgrel=2
+_ffmpeg_ver=2020_05_23
+_ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -57,8 +57,8 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
 sha256sums=('96a98e6b537f37af272f4f8174b5ec21b30f89bc61e83cb85d02b13240819ea5'
-            '6d115633eeb1d48a80f07f53c2e8c43093bd56a4a3d7d8b3d6207c4f473a61e0'
-            '50ed2c4b4a8bc62baf92ac6192c8fe21a00dd77b0079d5a971958f412bc2bf9e'
+            'ed2fde500b705b06a0b82a9bf6b367c63b0fc899f69f77691bc68d61f3862a77'
+            'c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
             '2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c'
