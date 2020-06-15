@@ -1,4 +1,5 @@
 # Maintainer: crab2313 <crab2313@gmail.com>
+# Contributor: Stefan Agner <stefan@agner.ch>
 
 pkgname=qemu-user-static
 pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
