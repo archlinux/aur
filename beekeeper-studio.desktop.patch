@@ -1,0 +1,10 @@
+--- squashfs-root/beekeeper-studio.desktop
++++ squashfs-root/beekeeper-studio.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Beekeeper Studio
+-Exec=AppRun
++Exec=/usr/bin/beekeeper-studio %F
+ Terminal=false
+ Type=Application
+ Icon=beekeeper-studio
