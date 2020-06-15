@@ -2,7 +2,7 @@
 pkgname=xorg-xdm-xlogin
 _pkgname=xorg-xdm
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -21,13 +21,22 @@ sha256sums=('9c3d08e459667037898a73826b1e6622c359d71b3f10b2e7d8b7aff3545d1718'
 
 build() {
   cd xdm-*
+
+  # FS#63867 XDM's default userPath / systemPath hid /usr/local
+  unset DEF_USER_PATH
+
   ./autogen.sh --prefix=/usr \
       --sysconfdir=/etc \
       --disable-xdm-auth \
       --disable-static \
       --with-xdmconfigdir=/etc/X11/xdm \
       --with-xdmscriptdir=/etc/X11/xdm \
-      --with-pixmapdir=/usr/share/xdm/pixmaps
+      --with-pixmapdir=/usr/share/xdm/pixmaps \
+      DEF_USER_PATH="/usr/local/bin:/usr/bin:/bin" \
+      DEF_SYSTEM_PATH="/usr/local/bin:/usr/bin:/bin"
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make CWARNFLAGS=""
 }
 
