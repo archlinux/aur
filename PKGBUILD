@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=10.d9f58fe
+pkgver=11.1b18fff
 pkgrel=1
 pkgdesc="A AUR helper"
 arch=(any)
@@ -26,8 +26,10 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/buildaur"
 	install -D -m644 blacklist "${pkgdir}/usr/share/buildaur"
 	install -dm755 "${pkgdir}/etc/buildaur"
-	install -Dm0755 -t "$pkgdir/etc/buildaur" "prehooks/"
-	install -Dm0755 -t "$pkgdir/etc/buildaur" "posthooks/"
+	install -dm755 "${pkgdir}/etc/buildaur/prehooks"
+	install -dm755 "${pkgdir}/etc/buildaur/posthooks"
+	install -Dm0755 -t "$pkgdir/etc/buildaur/prehooks" ./prehooks/*
+	#install -Dm0755 -t "$pkgdir/etc/buildaur/posthooks" ./posthooks/*
 	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
