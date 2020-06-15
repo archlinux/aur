@@ -6,6 +6,7 @@ pkgbase = ipmctl-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	source = ipmctl-git::git+https://github.com/intel/ipmctl
 	md5sums = SKIP
 
