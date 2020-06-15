@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://beekeeperstudio.io/'
 license=('MIT')
 provides=("beekeeper-studio=${pkgver}")
-conflicts=('beekeeper-studio')
+conflicts=('beekeeper-studio' 'beekeeper-studio-bin')
 source=("https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}.AppImage"
         beekeeper-studio.desktop.patch
         beekeeper-studio.sh)
