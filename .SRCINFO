@@ -1,12 +1,12 @@
 pkgbase = o
 	pkgdesc = Small, fast and VT100-compatible text editor
 	pkgver = 2.30.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go
 	optdepends = cxx: for compiling C++
 	optdepends = brittany: for formatting Haskell
 	optdepends = clang: for formatting C++ code with clang-format
@@ -20,6 +20,8 @@ pkgbase = o
 	optdepends = asciidoctor: for writing man pages
 	optdepends = pandoc: for exporting Markdown to PDF
 	optdepends = guessica: for updating PKGBUILD files
+	optdepends = kotlin: for compiling Kotlin code
+	optdepends = crystal: for compiling Crystal code
 	options = !strip
 	source = git+https://github.com/xyproto/o#commit=7327318e7c6837fe7aab4014a812223ba4a584a8
 	sha256sums = SKIP

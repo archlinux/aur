@@ -2,12 +2,12 @@
 
 pkgname=o
 pkgver=2.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
-makedepends=(git go-pie)
+makedepends=(git go)
 source=("git+$url#commit=7327318e7c6837fe7aab4014a812223ba4a584a8") # tag: 2.30.2
 sha256sums=('SKIP')
 options=(!strip)
@@ -23,7 +23,9 @@ optdepends=('cxx: for compiling C++'
             'scdoc: for writing man pages'
             'asciidoctor: for writing man pages'
             'pandoc: for exporting Markdown to PDF'
-            'guessica: for updating PKGBUILD files')
+            'guessica: for updating PKGBUILD files'
+            'kotlin: for compiling Kotlin code'
+            'crystal: for compiling Crystal code')
 
 build() {
   cd $pkgname
