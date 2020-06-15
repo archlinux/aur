@@ -1,19 +1,19 @@
-# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Maintainer: Carlo Abelli <carlo@abelli.me>
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 # Contributor: Thomas Dziedzic  < gostrc at gmail >
 # Contributor: Gabriel Martinez < reitaka at gmail dot com >
 
 pkgname=ifuse
-pkgver=1.1.3
-pkgrel=6
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='A fuse filesystem to access the contents of an iPhone or iPod Touch'
 url='https://libimobiledevice.org/'
 arch=('x86_64')
 license=('LGPL2.1')
 depends=('libimobiledevice' 'fuse2')
 source=("https://cgit.libimobiledevice.org/ifuse.git/snapshot/$pkgname-$pkgver.tar.bz2")
-md5sums=('30740edd3ea13b4361b3f1c09c6291fc')
-sha256sums=('ab42b61ed380eb9c44772ba9c5e38420cfc4bd112155e50181d9fd6fd5358852')
+sha256sums=('e324456e64b788951b714d6ee7c2ecb1f6bda2355973548fe49d4a14db5d15fe')
 
 build() {
   cd "$pkgname-$pkgver"
