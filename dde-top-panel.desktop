@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=Deepin Desktop Environment Top Panel
+Exec=/usr/bin/dde-top-panel
+Icon=dde-top-panel
+Name=TopPanel
+StartupNotify=false
+Terminal=false
+Type=Application
+X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+X-Deepin-AppID=dde-top-panel
+
