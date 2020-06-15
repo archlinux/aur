@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Xcircuit
+Comment=A program for drawing publishable-quality electrical circuit schematic diagrams
+Exec=xcircuit
+Icon=xcircuit
+Terminal=false
+StartupNotify=false
+Categories=Application;Electronics;Engineering;
