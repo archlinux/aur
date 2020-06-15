@@ -1,0 +1,15 @@
+pkgbase = lightdm-gtk-backgroundmatch
+	pkgdesc = Tool for matching the lightdm-gtk-greeter background to xfce4
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hlecco/lightdm-gtk-backgroundmatch
+	arch = x86_64
+	license = GPL
+	depends = lightdm
+	depends = lightdm-gtk-greeter
+	depends = xfdesktop
+	source = https://github.com/hlecco/lightdm-gtk-backgroundmatch/archive/v1.0.0.tar.gz
+	md5sums = 3b425542a55030a90aa3d7d249bd9d99
+
+pkgname = lightdm-gtk-backgroundmatch
+
