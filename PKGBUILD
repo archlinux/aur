@@ -5,7 +5,7 @@ _basename=renderdoc
 pkgname=${_basename}-bin
 pkgver=1.8
 _tarname=${_basename}_${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and Vulkan debugging tool - binary version"
 arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -17,6 +17,12 @@ source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
 sha256sums=('4c906f07fcba6cd6495d6b455ff617d55f115eb2ff6ed5dd62abed253d7e6052'
             'SKIP')
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
+
+prepare() {
+    cd $_tarname
+    # patch library prefix
+    sed -i 's|/io/dist|/usr|' etc/vulkan/implicit_layer.d/renderdoc_capture.json
+}
 
 package() {
     cd $_tarname
