@@ -1,9 +1,8 @@
 pkgbase = libreoffice-dev-beta-bin
 	pkgdesc = LibreOffice development branch
-	pkgver = 6.2.0.0
+	pkgver = 7.0.0.0
 	pkgrel = 1
 	url = http://www.libreoffice.org/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = curl>=7.20.0
@@ -68,10 +67,8 @@ pkgbase = libreoffice-dev-beta-bin
 	optdepends = kdelibs: for KDE desktop integration
 	provides = libreoffice
 	provides = libreoffice-en-US
-	source_i686 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOfficeDev_6.2.0.0.beta1_Linux_x86_rpm.tar.gz
-	sha256sums_i686 = SKIP
-	source_x86_64 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_6.2.0.0.beta1_Linux_x86-64_rpm.tar.gz
-	sha256sums_x86_64 = SKIP
+	source_x86_64 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_7.0.0.0.beta1_Linux_x86-64_rpm.tar.gz
+	sha256sums_x86_64 = db2f56a8a33ef9e1db2968a9cbf0c3ef3f47a644707e138a903d48b153409824
 
 pkgname = libreoffice-dev-beta-bin
 

@@ -1,13 +1,14 @@
-# Maintainer: ferreirarocha <marcos.fr.rocha at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.xdfr.de>
+# Contributor: ferreirarocha <marcos.fr.rocha at gmail dot com>
 
 _pkgnamefmt=LibreOfficeDev
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-beta-bin
-_LOver=6.2.0.0.beta1
-pkgver=6.2.0.0
+_LOver=7.0.0.0.beta1
+pkgver=7.0.0.0
 _basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL3')
 url="http://www.libreoffice.org/"
 pkgdesc="LibreOffice development branch"
@@ -35,14 +36,8 @@ optdepends=('java-runtime:          adds java support'
             'gtk3:                  for GTK3 integration'
             'kdelibs:               for KDE desktop integration')
 provides=('libreoffice' 'libreoffice-en-US')
-
-#source_i686=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
-#source_x86_64=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
-
-source_i686=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
 source_x86_64=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
-sha256sums_i686=('SKIP')
-sha256sums_x86_64=('SKIP')
+sha256sums_x86_64=('db2f56a8a33ef9e1db2968a9cbf0c3ef3f47a644707e138a903d48b153409824')
 
 package() {
 	cd ${_pkgnamefmt}_${_LOver}*/RPMS
