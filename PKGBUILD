@@ -5,13 +5,13 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 
-_name='rezound'
-pkgname="${_name}-git"
+_pkgname='rezound'
+pkgname="${_pkgname}-git"
 #_pkgver='latest'
- pkgver="${_pkgver}"
-pkgver="latest"
+# pkgver="${_pkgver}"
+pkgver=0.13.2beta.r0.g61285e5
 # pkgver='0.13.1beta.r2022M.date20131229'
-pkgrel=2
+pkgrel=1
 pkgdesc="A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins."
 arch=('i686' 'x86_64')
 url='http://rezound.sourceforge.net/'
@@ -41,19 +41,19 @@ optdepends=(
             'cdrdao: For burn-to-CD-feature.'
            )
 provides=(
-          "${_name}=${pkgver}"
+          "${_pkgname}=${pkgver}"
          )
 replaces=(
-          "${_name}<=${pkgver}"
+          "${_pkgname}<=${pkgver}"
          )
 conflicts=(
-           "$_name"
+           "$_pkgname"
           )
-install="${_name}.install"
+install="${_pkgname}.install"
 source=(
         "git+https://github.com/Sound-Linux-More/rezound.git"
-        "${_name}.png"
-        "${_name}.install"
+        "${_pkgname}.png"
+        "${_pkgname}.install"
 	"rezound-jack.desktop"
         "website_rendered.txt"
         "website.url"
@@ -68,14 +68,16 @@ sha256sums=(
            )
 
 
-_pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver() {
+  cd "$_pkgname"
+#  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+
 }
 
 build() {
   msg "Starting build..."
-  cd "${srcdir}/${_name}/"
+  cd "${srcdir}/${_pkgname}/"
 
   # doc dir fix
   sed -i "/pkgdocdir/s/prefix/datarootdir/" config/am_include.mk
@@ -97,14 +99,14 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_name}/"
+  cd "${srcdir}/${_pkgname}/"
   make DESTDIR="${pkgdir}/" install
 
 
   ### icon
   
-  install -Dm644 "${srcdir}/${_name}.png" \
-    "${pkgdir}/usr/share/pixmaps/${_name}.png"
+  install -Dm644 "${srcdir}/${_pkgname}.png" \
+    "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
 
   ### desktop files
@@ -112,25 +114,25 @@ package() {
   install -Dm644 packaging/generic_rpm/kde/x-rez.desktop \
     "${pkgdir}/usr/share/applications/x-rez.desktop"
 
-  sed "s|\(Icon=/usr/share/\).*|\1pixmaps/${_name}.png|" \
-    packaging/generic_rpm/kde/${_name}.desktop > \
-    "${pkgdir}/usr/share/applications/${_name}.desktop"
-  chmod 644 "${pkgdir}/usr/share/applications/${_name}.desktop"
+  sed "s|\(Icon=/usr/share/\).*|\1pixmaps/${_pkgname}.png|" \
+    packaging/generic_rpm/kde/${_pkgname}.desktop > \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  chmod 644 "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   cp $srcdir/rezound-jack.desktop "${pkgdir}/usr/share/applications/rezound-jack.desktop"
  chmod 644 "${pkgdir}/usr/share/applications/rezound-jack.desktop"
 
 
   ### man
-  install -Dm644 packaging/debian/${_name}.1 \
-    "${pkgdir}/usr/share/man/man1/${_name}.1"
+  install -Dm644 packaging/debian/${_pkgname}.1 \
+    "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
 
   ### website
 
   install -Dm644 "${srcdir}/website_rendered.txt" \
-    "${pkgdir}/usr/share/doc/${_name}/website/website_rendered.txt"
+    "${pkgdir}/usr/share/doc/${_pkgname}/website/website_rendered.txt"
 
   install -Dm644 "${srcdir}/website.url" \
-    "${pkgdir}/usr/share/doc/${_name}/website/website.url"
+    "${pkgdir}/usr/share/doc/${_pkgname}/website/website.url"
 }

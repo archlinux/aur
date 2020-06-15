@@ -1,7 +1,7 @@
 pkgbase = rezound-git
 	pkgdesc = A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins.
-	pkgver = latest
-	pkgrel = 2
+	pkgver = 0.13.2beta.r0.g61285e5
+	pkgrel = 1
 	url = http://rezound.sourceforge.net/
 	install = rezound.install
 	arch = i686
@@ -22,9 +22,9 @@ pkgbase = rezound-git
 	depends = lame
 	depends = flac
 	optdepends = cdrdao: For burn-to-CD-feature.
-	provides = rezound=latest
+	provides = rezound=0.13.2beta.r0.g61285e5
 	conflicts = rezound
-	replaces = rezound<=latest
+	replaces = rezound<=0.13.2beta.r0.g61285e5
 	source = git+https://github.com/Sound-Linux-More/rezound.git
 	source = rezound.png
 	source = rezound.install
