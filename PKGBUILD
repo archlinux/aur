@@ -4,7 +4,7 @@
 _pkgname=htop
 pkgname=htop-temperature
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive process viewer with added support for CPU temperature"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://hisham.hm/htop/"
@@ -18,9 +18,11 @@ conflicts=($_pkgname)
 options=('!emptydirs')
 source=("http://hisham.hm/$_pkgname/releases/$pkgver/$_pkgname-$pkgver.tar.gz"
         "htop-temperature.patch"
+        "gcc10-fix.patch"
         "0001-fix-option-string.patch")
 sha256sums=('d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57'
             'a4c9dfbc3c2f7e08904656b53b9c08d19014cf6238fb75f1ed5ecbef2905964c'
+            'abe64433c701b348b4ea032b9cf4c64d19f2aa059a4fca1554efb283db2f7c0e'
             '343cfd8e01f2d47e54b38f725bb05a9825511b502acdb6803507e5fa4d52bed7')
 
 prepare() {
@@ -30,6 +32,9 @@ prepare() {
 
   # Add CPU temperature patch.
   patch -Np1 < "$srcdir"/htop-temperature.patch
+
+  # Add gcc10 build patch.
+  patch -Np1 < "$srcdir"/gcc10-fix.patch
 }
 
 build() {
@@ -37,6 +42,7 @@ build() {
 
   ./autogen.sh
   ./configure \
+      CFLAGS="-O2 -fno-common" \
       --prefix=/usr \
       --sysconfdir=/etc \
       --enable-cgroup \
