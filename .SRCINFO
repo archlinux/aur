@@ -1,4 +1,4 @@
-pkgbase = yozo-office-2019
+pkgbase = yozo-office-2019-templates
 	pkgdesc = 永中办公默认模板文件 | Templates files provided by Yozo Office
 	pkgver = 8.0.1331.101ZH.S1
 	pkgrel = 1
