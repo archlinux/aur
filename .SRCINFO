@@ -16,7 +16,7 @@ pkgbase = squeekboard
 	depends = gnome-desktop
 	depends = python
 	source = https://source.puri.sm/Librem5/squeekboard/-/archive/v1.9.2/squeekboard-v1.9.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 765420dec94241d1f63bf3d2faea55bdf987f76b283b3f48a42c55a96c98b763
 
 pkgname = squeekboard
 

@@ -15,7 +15,7 @@ makedepends=('pkg-config'
              'rust'
              'gtk-doc')
 source=("https://source.puri.sm/Librem5/squeekboard/-/archive/v${pkgver}/squeekboard-v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('765420dec94241d1f63bf3d2faea55bdf987f76b283b3f48a42c55a96c98b763')
 
 
 build() {
