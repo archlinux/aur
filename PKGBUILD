@@ -9,7 +9,8 @@
 pkgname=bitfighterd
 pkgver=019g
 pkgrel=3
-pkgdesc="A fast-paced team-based outer-space multi-player combat game"
+pkgdesc="A fast-paced team-based outer-space multi-player combat game - server
+and base program"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
 license=('GPL')
@@ -39,6 +40,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Wno-dev
   make -C build bitfighterd
+  make -C build
 }
 
 package() {
@@ -46,9 +48,11 @@ package() {
 
   # install game ressources and executable
   install -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/share/bitfighter "$pkgdir"/usr/bin
   cp "${srcdir}"/classic_level_pack/* resource/levels
-  cp -r resource/* "$pkgdir"/usr/share/$pkgname
+  cp -r resource/* "$pkgdir"/usr/share/bitfighter
   install -m755 exe/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -m755 exe/bitfighter "$pkgdir"/usr/bin/bitfighter
 
   # install documentation and license
   install -Dm644 doc/README.txt "$pkgdir"/usr/share/doc/$pkgname/README
