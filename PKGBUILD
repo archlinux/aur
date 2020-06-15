@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=docker-rootless
-pkgver=19.03.5
+pkgver=19.03.11
 pkgrel=1
 pkgdesc="Run the Docker daemon as a non-root user (Rootless mode)"
 arch=('x86_64')
@@ -15,12 +15,12 @@ source=(
 )
 
 md5sums=(
-	"7251a34d0fc2d6faf6e0952566779fb5"
+	"6be4fdae6e2bd2d4c627fd162226667a"
 	"c5158588c36fc80cf85835258f8cd345"
 )
 
 sha256sums=(
-	"85fb4012f8c95864b3c0da2308b99ed91c0b65f605ea6d8d2f7eb6f23812f47d"
+	"b21ee1469f5b4b3e2a20af5c0f90d7a95c9130b462fbef3808359f2f6767803f"
 	"eefe4eaa55184c396f929a2436a22af97130c6e7f8791a79582902dea7c4cd9b"
 )
 
