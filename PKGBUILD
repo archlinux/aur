@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: capnhawkbill <capnhawkbill at airmail dot cc>
 # Contributor: Sébastien Luttringer
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>
 
 pkgname=cfv
 pkgver=1.18.3
-pkgrel=7
+pkgrel=8
 pkgdesc='An utility to both test and create checksum files'
 arch=('any')
 url='http://cfv.sourceforge.net/'
