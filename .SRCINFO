@@ -18,7 +18,6 @@ pkgbase = squeekboard-git
 	makedepends = feedbackd
 	makedepends = gtk-doc
 	depends = gtk3
-	depends = libcanberra
 	depends = wayland
 	depends = gnome-desktop
 	optdepends = feedbackd: haptic feedback
