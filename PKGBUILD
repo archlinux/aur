@@ -27,5 +27,7 @@ build() {
 
 package() {
 	cd "$srcdir/wayst"
-	make INSTALL_DIR="$pkgdir/" install
+	mkdir -p "$pkgdir/usr/bin"
+	make INSTALL_DIR="$pkgdir/usr/bin" install
+	#install -Dm 755 wayst "$pkgdir"/usr/bin/wayst
 }
