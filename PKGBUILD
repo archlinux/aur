@@ -1,13 +1,13 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=v1.2.0.r140.gb732d9ec
+pkgver=v1.3.2.r341.gd366c0cf
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
 depends=('electron6')
-makedepends=('npm' 'nodejs' 'git' 'rustup')
+makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 source=(
     "deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git"
     "deltachat-desktop.desktop"
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 
-prepare() {
+build() {
     cd "$srcdir/${pkgname}"
 
     npm install --verbose
@@ -43,7 +43,7 @@ package() {
     cd "$srcdir/${pkgname}"
     
     install -d "${pkgdir}/opt/DeltaChat/electron_app"
-    cp -r node_modules  images tsc-dist build html-dist _locales "${pkgdir}/opt/DeltaChat/electron_app"
+    cp -r node_modules  images tsc-dist build html-dist _locales themes "${pkgdir}/opt/DeltaChat/electron_app"
 
     rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/win32-x64"
     rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/darwin-x64"
