@@ -14,6 +14,7 @@ url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
 makedepends=('dbus-glib' 'gobject-introspection' 'libdbusmenu-gtk3' 'libindicator-gtk3' 'vala' 'gnome-common' 'gtk-sharp-2' 'gtk-sharp-3' 'perl-xml-libxml')
+depends=('libdbusmenu-gtk3')
 options=('!emptydirs')
 source=('bzr+lp:libappindicator')
 conflicts=('libappindicator-gtk3')
@@ -42,7 +43,6 @@ build() {
 
 package() {
   pkgdesc+=' (GTK+ 3 library)'
-  depends=('libdbusmenu-gtk3' 'libindicator-gtk3')
 
   cd libappindicator
   make DESTDIR="${pkgdir}" install
