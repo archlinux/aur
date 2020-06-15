@@ -1,0 +1,20 @@
+pkgbase = dde-dock-netspeed
+	pkgdesc = Net speed plugin for Deepin Linux dock
+	pkgver = r7.3647c93
+	pkgrel = 0
+	url = https://github.com/v-svg/dde-dock-netspeed
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = deepin-network-utils
+	depends = qt5-base
+	depends = procps-ng
+	depends = deepin-dock
+	source = dde-dock-netspeed::git+https://github.com/v-svg/dde-dock-netspeed
+	source = fix.patch
+	sha512sums = SKIP
+	sha512sums = 287cec038e9fe496fdab9ca9aef75ed387e2e28d603ffc894eab98809e35bafe8682fa823f188ae36384e4b13769ef52649dd6d9bab0a538461d1f18fba03d07
+
+pkgname = dde-dock-netspeed
+

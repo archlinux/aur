@@ -1,0 +1,12 @@
+diff --git a/network_monitor.h b/network_monitor.h
+index ae8b260..24f6a7b 100644
+--- a/network_monitor.h
++++ b/network_monitor.h
+@@ -25,6 +25,7 @@
+ #define NETWORKMONITOR_H
+ 
+ #include <QWidget>
++#include <QPainterPath>
+ 
+ class NetworkMonitor : public QWidget
+ {
