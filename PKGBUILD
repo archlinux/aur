@@ -3,7 +3,7 @@
 
 _npmname=gitmoji-cli
 pkgname=nodejs-${_npmname}
-pkgver=3.2.5
+pkgver=3.2.6
 pkgrel=1
 pkgdesc='A gitmoji interactive client for using gitmojis on commit messages'
 arch=('any')
@@ -16,8 +16,8 @@ optdepends=('noto-fonts-emoji: emojis'
             'ttf-joypixels: emojis'
             'ttf-twemoji-color: emojis')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-md5sums=('a191a0a1dcf8796d151acad5e292b243')
-sha512sums=('04e74a66ac3001fe15b00888ca79c374fc53cf45301c449e4a997ac79e23b2927b634e8dc616d705efbe92ea2fd97a06a0625c285ac326d260a8a54243a3e0fc')
+md5sums=('137bf5d3378181a849bfe72ab5584e7e')
+sha512sums=('3336f748695cac54b056ee11f18dac1b12be77b54fe82442eabc374b898e3dbc5f5b7a8dace2d810f0c933b87518d52338bdb62501f1d6ab27f2c44e0ea03281')
 noextract=("${source[@]##*/}")
 
 package() {
