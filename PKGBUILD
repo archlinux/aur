@@ -4,12 +4,12 @@ _appName="pyfunceble"
 pkgname=${_appName}-dev
 _name=${pkgname}
 upstreamName="PyFunceble-dev"
-pkgver=3.1.5
+pkgver=3.1.18
 pkgrel=1
-pkgdesc="The tool to check the availability or syntax of domains, IPv4, IPv6 or URL."
+pkgdesc="The tool to check the availability or syntax of domain, IP or URL."
 arch=('any')
-url="https://funilrys.github.io/PyFunceble/"
-license=('MIT')
+url="https://pyfunceble.github.io"
+license=('Apache 2.0')
 provides=("${_appName}")
 conflicts=('pyfunceble')
 provides=("pyfunceble=${pkgver}")
@@ -25,7 +25,6 @@ depends=(
     'python-pymysql'
     'python-requests'
     'python-setuptools'
-    'python-urllib3'
     'python3'
 )
 source=(
@@ -33,8 +32,8 @@ source=(
     "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE"
 )
 sha256sums=(
-    "e1ee3fb18c9133a83fbd8f5d2573dd34c04f1eb0fb5a409995824cf27b0323c1"
-    "a11e4be5b3b09e157217214008e7f0e23092d26adb03ad593e51cffe18361508"
+    "0c2f37b2819d869a5d1041e90fdee17802809728aef2c6328d5ceda25acc64d3"
+    "2b8dc0c3f5c9a4042778b31496a0bf65f1aa6a516afa556d3d9426dbe2a92d48"
 )
 
 build() {
