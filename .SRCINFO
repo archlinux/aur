@@ -1,0 +1,18 @@
+pkgbase = vegastrike-data-git
+	pkgdesc = A spaceflight simulator in massive universe-data files
+	pkgver = 1
+	pkgrel = 1
+	url = www.vega-strike.org
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = expat
+	optdepends = 
+	provides = vegastrike-data
+	conflicts = vegastrike-data
+	source = git+https://github.com/vegastrike/Assets-Production
+	sha1sums = SKIP
+
+pkgname = vegastrike-data-git
+
