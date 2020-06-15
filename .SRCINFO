@@ -1,0 +1,19 @@
+pkgbase = gridea-bin
+	pkgdesc = A static blog writing client
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://gridea.dev
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = gridea
+	source = gridea-0.9.2.deb::https://github.com/getgridea/gridea/releases/download/v0.9.2/gridea_0.9.2_amd64.deb
+	source = LICENSE::https://github.com/getgridea/gridea/raw/master/LICENSE
+	sha256sums = 807157305754475853aa5693d9a6bd21d5ee6538eb645a58ba79de525c1e35ba
+	sha256sums = d5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2
+
+pkgname = gridea-bin
+
