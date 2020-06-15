@@ -6,6 +6,7 @@ pkgbase = passphrase
 	arch = any
 	license = MIT
 	makedepends = zig>=0.6.0
+	makedepends = git
 	source = git+https://git.sr.ht/~alva/passphrase#tag=1.0.0
 	sha256sums = SKIP
 
