@@ -2,7 +2,7 @@
 
 pkgname=dde-top-panel
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="dde top panel for Deepin V20"
 arch=('x86_64')
 url="https://github.com/SeptemberHX/dde-top-panel"
@@ -28,8 +28,8 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -d "${pkgdir}/usr/lib/dde-top-panel/plugins/"
-  ln -s /usr/lib/dde-dock/plugins/* "${pkgdir}/usr/lib/dde-top-panel/plugins/"
+  install -d "${pkgdir}/usr/lib/dde-top-panel/"
+  ln -s /usr/lib/dde-dock/plugins/ "${pkgdir}/usr/lib/dde-top-panel/plugins"
   install -Dm 755 "frame/dde-top-panel" "${pkgdir}/usr/bin/dde-top-panel"
   install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm 644 "schemas/com.deepin.dde.toppanel.gschema.xml" "${pkgdir}/usr/share/glib-2.0/schemas/com.deepin.dde.toppanel.gschema.xml"
