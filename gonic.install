@@ -2,7 +2,7 @@
 post_install() {
     echo "To make gonic fully functional, consider performing the following actions:"
     echo "  + Configure the gonic daemon:"
-    echo "      $ sudo vim /usr/lib/systemd/system/gonic.service"
+    echo "      $ sudo vim /var/lib/gonic/config"
     echo "  + Start the gonic daemon:"
     echo "      $ sudo systemctl start gonic"
     echo "  + (OPTIONAL) Start the gonic daemon at boot:"

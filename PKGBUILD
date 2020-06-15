@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Pertin <pertin (dot) dimitri (at) protonmail (dot) com>
 pkgname=gonic
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64')
@@ -9,19 +9,26 @@ makedepends=('go')
 optdepends=('ffmpeg: on-the-fly audio transcoding and caching')
 url='https://github.com/sentriz/gonic'
 license=('GPL3')
-backup=("usr/lib/systemd/system/$pkgname.service")
+backup=("var/lib/gonic/config")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkgver.tar.gz"
+        "$pkgname.config.patch"
         "$pkgname.install"
-        "$pkgname.service"
+        "$pkgname.service.patch"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('6207ac99cc58d357229f161e66b2eefd'
-         '1b70d272745c2c4cf5ea3be9445f508d'
-         '42cafc55316a6fa709eb873afe037a6d'
+md5sums=('0dca2c5c075716ae8ab1be2709f4d519'
+         '240faa29e218962b1ed6c4ce4d138248'
+         'd6e8eda0411af60e613819ac957fcc56'
+         'c8f973db7a107f8653f7ff36555ce1a0'
          '6ca6715be2cdd424846f7b37b98905f6'
          '487fe9a172e33d86514cf3dbb3b629b8')
 
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+        patch --forward --strip=1 -i "../$pkgname.config.patch"
+        patch --forward --strip=1 -i "../$pkgname.service.patch"
+}
 
 build() {
         export CGO_LDFLAGS="${LDFLAGS}"
@@ -31,11 +38,12 @@ build() {
 }
 
 package() {
-	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
+	install -Dm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+	install -Dm644 "contrib/config" "$pkgdir/var/lib/gonic/config"
+	install -Dm644 "contrib/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
