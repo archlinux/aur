@@ -13,7 +13,7 @@ groups=('lv2-plugins')
 depends=('cairo'  'fontconfig'          'freetype2'
          'libx11' 'xcb-util-cursor'     'xcb-util'
          'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
-         'xcb-util-keysyms' 'libxkbcommon-x11')
+         'xcb-util-keysyms' 'libxkbcommon-x11' 'cmake')
 makedepends=('premake-git' 'git' 'python')
 provides=('surge-synthesizer' 'surge-synthesizer-bin')
 conflicts=('surge-synthesizer' 'surge-synthesizer-bin' 'surge')
