@@ -1,5 +1,5 @@
 pkgbase = bitfighterd
-	pkgdesc = A fast-paced team-based outer-space multi-player combat game
+	pkgdesc = A fast-paced team-based outer-space multi-player combat game - server and base program
 	pkgver = 019g
 	pkgrel = 3
 	url = http://bitfighter.org/
