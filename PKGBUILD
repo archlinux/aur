@@ -1,8 +1,8 @@
 # Maintainer: Alva <a at u8 dot is>
 pkgname=passphrase
-pkgrel=3
+pkgrel=2
 pkgver=1.0.0
-pkgdesc="Zero-dependency passphrase generator, written in Zig"
+pkgdesc="Small, simple passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${pkgname}"
 license=('MIT')
