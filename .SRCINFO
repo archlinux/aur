@@ -1,0 +1,16 @@
+pkgbase = python-pydruid
+	pkgdesc = A Python connector for Apache Druid
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pydruid
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-pydruid
+	conflicts = python-pydruid-git
+	source = https://files.pythonhosted.org/packages/source/p/pydruid/pydruid-0.6.1.tar.gz
+	sha256sums = d815725ecabaff20fc580c6b516327eb8f122c4f28a3e561ea978322dbe7b652
+
+pkgname = python-pydruid
+
