@@ -19,12 +19,12 @@ optdepends=(
     'python-blinker: Flask integration')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/bugsnag-python-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/bugsnag-python-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
