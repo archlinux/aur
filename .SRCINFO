@@ -1,6 +1,6 @@
 pkgbase = python-lasagne-git
 	pkgdesc = Lasagne is a lightweight library to build and train neural networks in Theano.
-	pkgver = 567.b22500e
+	pkgver = 0.1.r371.g5d3c63c
 	pkgrel = 1
 	url = https://github.com/benanne/lasagne
 	arch = x86_64
