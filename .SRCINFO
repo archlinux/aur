@@ -1,18 +1,18 @@
 pkgbase = pdfquirk-git
 	pkgdesc = Create PDFs from images or scanner
-	pkgver = continuous.r0.g0d79759
-	pkgrel = 1
+	pkgver = r35.0d79759
+	pkgrel = 2
 	url = https://dragotin.github.io/quirksite/
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
+	makedepends = git
 	makedepends = glu
-	makedepends = qt5-base
-	depends = git
+	depends = hicolor-icon-theme
 	depends = imagemagick
+	depends = qt5-base
 	optdepends = sane: scanning support
 	provides = pdfquirk
-	conflicts = pdfquirk
 	source = git+https://github.com/dragotin/pdfquirk.git
 	sha256sums = SKIP
 
