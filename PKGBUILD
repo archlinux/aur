@@ -3,16 +3,15 @@
 _pkgname=gogextract
 pkgname=${_pkgname}-git
 pkgver=r2.6601b32
-pkgrel=1
-pkgdesc="Unpack GOG Linux installers"
+pkgrel=2
+pkgdesc='Unpack GOG Linux installers'
 arch=('any')
-url="https://github.com/Yepoleb/${_pkgname}"
+url='https://github.com/Yepoleb/gogextract'
 license=('MIT')
-source=("git+${url}.git")
 depends=('python')
 makedepends=('git')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,8 +20,9 @@ pkgver() {
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 "${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 "${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
