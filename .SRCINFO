@@ -6,8 +6,8 @@ pkgbase = angularjs
 	arch = any
 	license = MIT
 	depends = jquery
-	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js
-	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js
+	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js
+	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js
 	md5sums = d05ec671c303ff5a4596c243b562a3cb
 	md5sums = 613274fe74404112d98709adf0a28b69
 
