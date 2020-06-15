@@ -17,6 +17,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir"/muparser-${pkgver}
+  curl -L https://github.com/beltoforion/muparser/commit/09474d22ea5b3cdee4f1ea14150c6d878249dbfd.patch | patch -p1
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DENABLE_SAMPLES=OFF ..
