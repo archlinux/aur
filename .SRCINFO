@@ -11,9 +11,6 @@ pkgbase = castero
 	depends = python-grequests
 	depends = python-lxml
 	depends = python-mpv
-	provides = castero
-	conflicts = castero
-	conflicts = castero-git
 	source = https://github.com/xgi/castero/archive/v0.8.0.tar.gz
 	sha256sums = 31b302c436fd732d0af3767ed55c0f7e7698a463da86eba333053c6bd59f51d1
 
