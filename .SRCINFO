@@ -1,13 +1,14 @@
 pkgbase = bash-docs
 	pkgdesc = Advanced Bash-Scripting Guide in HTML
 	pkgver = 10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tldp.org/LDP/abs/html/
+	install = bash-docs.install
 	arch = any
-	license = GPL
+	license = custom
 	options = docs
 	source = http://www.tldp.org/LDP/abs/abs-guide.html.tar.gz
-	md5sums = 7014ea02a91ada997373fd12053b4061
+	sha256sums = e543941dc1d32689fca9da49ab89dc5f11f1655937a10afc6b3a414ac4b2da9e
 
 pkgname = bash-docs
 

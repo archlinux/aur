@@ -1,0 +1,11 @@
+post_install() {
+	ln -s /usr/share/doc/bash/copyright.html /usr/share/licenses/bash-docs/copyright.html
+}
+
+post_update() {
+        post_install
+}
+
+pre_remove() {
+	rm /usr/share/licenses/bash-docs/copyright.html
+}
