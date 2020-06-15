@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 pkgname=solid-shell
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A command-line tool, batch processor, and interactive shell for managing Solid data"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-md5sums=('8f6a2083556936362131022cc4b4d242')
+md5sums=('963a70936bbce6f169c412893de4f2f3')
 noextract=($pkgname-$pkgver.tgz)
 options=(!strip)
 
