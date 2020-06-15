@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("http://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-psx-mime-icon-encoded.txt"
         "agisoft-psz-mime-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('0a5fa7814cd7988fb5eae457943cc88d6c6f3541aa973a4fdcd0156affff0554'
+sha256sums=('a6588266a7a7a6ca7f98e0f5d73dd7c59c7141ef8535aa111ac7a0305bb53e8e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -63,23 +63,23 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/agisoft.psx">
         <comment>MetaShape Project</comment>
-        <icon name="application-agisoft-psx"/>
+        <icon name="application-agisoft-pro-psx"/>
         <glob-deleteall/>
         <glob pattern="*.psx"/>
     </mime-type>
     <mime-type type="application/agisoft.psz">
         <comment>MetaShape Archive</comment>
-        <icon name="application-agisoft-psz"/>
+        <icon name="application-agisoft-pro-psz"/>
         <glob-deleteall/>
         <glob pattern="*.psz"/>
     </mime-type>
     <mime-type type="application/agisoft.3dv">
         <comment>3D Viewer Playlist</comment>
-        <icon name="application-agisoft-3dv"/>
+        <icon name="application-agisoft-pro-3dv"/>
         <glob-deleteall/>
         <glob pattern="*.3dv"/>
     </mime-type>
-</mime-info>' > "$srcdir/agisoft-mime.xml"
+</mime-info>' > "$srcdir/${pkgname}-mime.xml"
 
     # Create 128x128 application icons
     base64 -d "$srcdir/agisoft-metashape-pro-icon-encoded.txt" > "$srcdir/agisoft-metashape-pro_128.png"
@@ -130,7 +130,7 @@ package() {
 	
 	# Create MIME type
 	mkdir -p "${pkgdir}/usr/share/mime/packages"
-	mv "${srcdir}/agisoft-mime.xml" "${pkgdir}/usr/share/mime/packages"
+	mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
 	
 	# Move icons
 	for _res in 16x16 32x32 48x48 64x64 128x128; do
@@ -139,9 +139,9 @@ package() {
 	    mv "$srcdir/agisoft-metashape-pro_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape-pro.png"
 	    mv "$srcdir/agisoft-network-monitor_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-network-monitor.png"
 	    mv "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-viewer.png"
-	    mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psx.png"
-	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
-	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-3dv"
+	    mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psx.png"
+	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psz.png"
+	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-3dv.png"
     done
     
     # Create executables in /usr/bin
@@ -149,3 +149,4 @@ package() {
     install -Dm755 "$srcdir/agisoft-network-monitor" "$pkgdir/usr/bin/agisoft-network-monitor"
     install -Dm755 "$srcdir/agisoft-viewer" "$pkgdir/usr/bin/agisoft-viewer"
 }
+
