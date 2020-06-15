@@ -2,15 +2,14 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-git
-pkgver=1.1.12
-pkgrel=1
+_pkgname=xorg-xdm
+pkgver=1.1.12.r0.ga03a628
+pkgrel=2
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd')
-provides=('xorg-xdm')
-conflicts=('xorg-xdm' 'xorg-xdm-xlogin' 'xorg-xdm-xlogin-git')
 makedepends=('git' 'pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
 options=('!libtool')
@@ -20,10 +19,12 @@ source=("$pkgname::git://anongit.freedesktop.org/git/xorg/app/xdm"
 sha512sums=('SKIP'
             '9fb1c63c37c7fe8d92f9883cc4c1f0f0685076f5edadbae1b56ed01c3f74c6fd31b57b3054441f939bcb617493dbaefe741f6826c9d1e7aa94170f7acb88cb83'
             'cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 
 pkgver() {
   cd $pkgname
-  git describe | sed 's,xdm-,,;s,-,.,g'
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {
@@ -34,16 +35,19 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure --prefix=/usr \
+  ./autogen.sh --prefix=/usr \
+      --sysconfdir=/etc \
       --disable-xdm-auth \
       --disable-static \
       --with-xdmconfigdir=/etc/X11/xdm \
       --with-xdmscriptdir=/etc/X11/xdm \
-      --with-pixmapdir=/usr/share/xdm/pixmaps
+      --with-pixmapdir=/usr/share/xdm/pixmaps \
+      DEF_USER_PATH="/usr/local/bin:/usr/bin:/bin" \
+      DEF_SYSTEM_PATH="/usr/local/bin:/usr/bin:/bin"
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make
+  make CWARNFLAGS=""
 }
 
 package() {

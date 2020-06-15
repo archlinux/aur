@@ -1,7 +1,7 @@
 pkgbase = xorg-xdm-git
 	pkgdesc = X Display Manager
-	pkgver = 1.1.12
-	pkgrel = 1
+	pkgver = 1.1.12.r0.ga03a628
+	pkgrel = 2
 	url = http://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,8 @@ pkgbase = xorg-xdm-git
 	depends = xorg-sessreg
 	depends = libxft
 	depends = systemd
-	provides = xorg-xdm
+	provides = xorg-xdm=1.1.12-2
 	conflicts = xorg-xdm
-	conflicts = xorg-xdm-xlogin
-	conflicts = xorg-xdm-xlogin-git
 	options = !libtool
 	backup = etc/X11/xdm/Xaccess
 	backup = etc/X11/xdm/Xresources
