@@ -1,0 +1,15 @@
+pkgbase = replxx
+	pkgdesc = A readline and libedit replacement that supports UTF-8, syntax highlighting, hints and Windows and is BSD licensed.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/AmokHuginnsson/replxx
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	provides = libreplxx.so
+	source = replxx-0.0.2.tar.gz::https://github.com/AmokHuginnsson/replxx/archive/release-0.0.2.tar.gz
+	sha256sums = 6f5c58b4cd23550d5a589d134727296438793cb818ce7158fbd5e1b0db1548ba
+
+pkgname = replxx
+
