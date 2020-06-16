@@ -1,14 +1,14 @@
 pkgbase = im2a
 	pkgdesc = An image to ASCII converter, made for 256-color terminals.
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/tzvetkoff/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = imagemagick
-	source = https://github.com/tzvetkoff//im2a/archive/v0.6.0.tar.gz
-	md5sums = a58101f3e14485ac687b0de1602c56fa
+	source = https://github.com/tzvetkoff//im2a/archive/v0.6.2.tar.gz
+	md5sums = 1dd1e36055738b3a18bbc71361ad0561
 
 pkgname = im2a
 
