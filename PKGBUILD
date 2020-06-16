@@ -69,7 +69,7 @@ pkgbase=linux-xanmod-rt
 pkgver=5.6.17
 _major=5.6
 _branch=5.x
-xanmod=9
+xanmod=10
 pkgrel=1
 _rev=1
 pkgdesc='Linux Xanmod real-time version'
@@ -101,7 +101,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            '0e1bd97c94f040ca0fb45aa9736b229aa10260045a242a9847d5bf8c78347b61'
+            'cb60c87aa7c44c4499d7de763d6f145e861d88664258f1206fb02cde6f458c04'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
