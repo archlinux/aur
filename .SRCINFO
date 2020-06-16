@@ -1,7 +1,7 @@
 pkgbase = python-hbmqtt
 	pkgdesc = MQTT client/broker using Python asynchronous I/O
-	pkgver = 0.9.5
-	pkgrel = 3
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://github.com/beerfactory/hbmqtt
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = python-hbmqtt
 	depends = python-passlib
 	depends = python-docopt
 	depends = python-yaml
-	source = https://github.com/beerfactory/hbmqtt/archive/0.9.5.tar.gz
-	sha256sums = 8afe70008fbe213ae9aff6d66d6db845b41b36d9f89f711657478ec3aa428790
+	source = https://github.com/beerfactory/hbmqtt/archive/0.9.6.tar.gz
+	sha256sums = 7232a4f74536ee6aed913af1dfdfb1a9c6372233c6722a610d95e179b0175e53
 
 pkgname = python-hbmqtt
 
