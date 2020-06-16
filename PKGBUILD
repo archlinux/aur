@@ -1,7 +1,7 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=info-ja-gnu-coreutils
 _pkgname=info-ja-GNU_coreutils
-pkgver=20170815
+pkgver=20190909
 pkgrel=1
 pkgdesc="Japanese version info manual"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://linuxjm.osdn.jp/"
 license=('GPL')
 install="${pkgname}.install"
 source=("https://linuxjm.osdn.jp/info-pkg/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('a555f1f6e8d6038b1215978f8ddbcc66')
+md5sums=('29ad086afbe061f66d0bdca509589e52')
 
 #prepare() {
 #}
