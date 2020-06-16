@@ -2,7 +2,7 @@
 
 pkgname=('python-kafka' 'python2-kafka')
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client for Apache Kafka'
 arch=('x86_64')
 url="https://github.com/dpkp/kafka-python"
@@ -24,13 +24,13 @@ build_python2-kafka() {
 }
 
 package_python-kafka() {
-  depends=('python' 'kafka')
+  depends=('python')
   cd "${srcdir}/${_dirname}"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-kafka() {
-  depends=('python2' 'kafka')
+  depends=('python2')
   cd "${srcdir}/${_dirname}"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
