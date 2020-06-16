@@ -5,7 +5,7 @@ pkgver=5.2.0.r2616.9747a8f5
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
-url='https://userbase.kde.org/KTorrent'
+url='https://kde.org/applications/en/internet/org.kde.ktorrent'
 license=('GPL')
 depends=('libktorrent'
          'knotifyconfig'
