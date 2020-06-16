@@ -1,4 +1,5 @@
 pkgbase = diceware-gen
+	pkgdesc = Generates random words, mainly useful for usernames and passwords
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/jmatthin/diceware-gen
