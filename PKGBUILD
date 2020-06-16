@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-x11-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.8pre04
+pkgver=18.8pre08
 _major=18.7.1
 pkgrel=1
 arch=('x86_64')
@@ -80,10 +80,16 @@ source=(
   cpuinfo
   000-PR17300.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17300.patch
   000-PR17804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17804.patch
+  # 18029 does not apply
   001-PR17988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17988.patch
   002-PR17996.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17996.patch
   003-PR18008.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18008.patch
   004-PR18019.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18019.patch
+  005-PR18024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18024.patch
+#  006-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
+  007-PR18047.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18047.patch
+  008-PR18056.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18056.patch
+
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -110,7 +116,10 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '89ac4b3feac908075ddbcdc4f9f1d1703c25e2fdb1661e776c162eb779437bd8'
             'f56503139927f0bc8f220c4b4e31266fc938a6612a4c1d2bdd75be3f54eb3a12'
             '995c61de460e0afdc135ba33f9f393a825cb4a0c7954da104d23269fe48ec118'
-            '8531da4ce924d80f5b8c8fbcf547e0738e48ffce335f73a4da6466f499ab1bfe')
+            '8531da4ce924d80f5b8c8fbcf547e0738e48ffce335f73a4da6466f499ab1bfe'
+            '4c2775722998fd0f6111ff841b29e8813c58b7905be1e8a01bf8a768622cb30c'
+            'f4ac91dbad4014a6707e8bb6f57cac0ec68a852a3e81815a210304a886a665a1'
+            '4b009d1acced4912f981d1454ff2add556b79188c003bc837d60224605364353')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
