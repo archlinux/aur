@@ -51,7 +51,7 @@ _major=5.7
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -64,7 +64,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
 _aufs_ver="20200518"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
-_gcc_path="cpu-patches-sep"
+_gcc_path="cpu-patches-v2-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -320,7 +320,7 @@ done
 sha512sums=('d7011f4b49382ddf0d561a0a42fab1a6b6f9459e7a66cfd413c57f5cfb6501bfbe31a2e95412560d9e64cd5271c1cbd8831d069d913e16af020e3eb1184090f6'
             'SKIP'
             '4725109f0b7cb0744e64483889bbfd379f626b746588bfffa9e1193b9ea990b707b57528776e99a79a37c56b86e7dec602d3e639f4270b4ad5ff02f9fe4b95c2'
-            'f13189fb9cc3488425bc82c45aedaf9ffa8a64f9320e89c18df528afa880ec8982ce9049359eb451690a22c503aace718cf98e89b0cc16b9566249bc7c4c34e0'
+            'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
             '1f04c499a1dc00860ce515b105683daf9081d137bc6830ac6f9e68c8791e5032e583ecb628b5c35a6af80863cbda6222ed3515c6a55a24d193b2a11aa6766668'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'bdf91424b888534b59b00817df8c243beab0320f49835d5e7dbdd390f127bcdd3435ca31632f9d54fc6f0461336cca86dc686347ffeed62e0b2aa1a35ab0a484')
