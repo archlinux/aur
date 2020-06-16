@@ -5,7 +5,7 @@
 set -u
 pkgname='gravit-designer-bin'
 pkgver='2019_2.7'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A cross-platform, free design tool for the 21st century empowering everyone to design'
 arch=('x86_64')
 url='https://designer.io/'
@@ -18,12 +18,12 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         'gravit-designer-document.svg'
         'gravit-designer.xml'
         'LICENSE')
-md5sums=('134bd0a00b390ad1c4f2aad399fe379a'
+md5sums=('2a9f2afdd6ad4a60c38aea8ac94f200c'
          '17969adf6d872a541772e169658b82d1'
          '70b0c1397df726a2ba0f16a4ff43993a'
          'fb3e19b45f7fe02bd959f20cc26e49d0'
          '021ccafc0993d3c34265ae59048d4bf2')
-sha256sums=('8d379014e725bd839bd223ce2ad9989063b6b107f78025cdc4db2dffc784a50f'
+sha256sums=('4012e2a70de30abe3756492ebb20ad6818a0cccb82a2a11b4e4721978638db1c'
             '80f947f51165c9764ec3ac168df64178a68c26c49d96ae1a970930146aee3cfe'
             '1c4673222f28e070258289a363ba1d03b3af87aaca99fee7c05a54c9de5deb2b'
             'd2228771efc34f1ed0953fd8f8cd49f60d72728d230c7f860862c4f2056c0df3'
