@@ -1,9 +1,9 @@
-#Maintainer: David McInnis <davidm@eagles.ewu.edu>
+#Maintainer: David McInnis <dave@dave3.xyz>
 
-pkgbase=('python-pydot-ng')
+pkgbase='python-pydot-ng'
 pkgname=('python-pydot-ng' 'python2-pydot-ng')
 _module='pydot_ng'
-pkgver='1.0.0'
+pkgver='2.0.0'
 pkgrel=4
 pkgdesc="Python interface to Graphviz's Dot Language, updated version"
 url="https://github.com/pydot/pydot-ng"
@@ -14,7 +14,7 @@ license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pydot-ng/pydot_ng-${pkgver}.tar.gz"
         "LICENSE.txt::https://github.com/pydot/pydot-ng/blob/master/LICENSE?raw=true")
-sha256sums=('c420ecd08ec34c76bec98fbc1956d58a8f0bbd7b4e1d2dc90664d9fd29471341'
+sha256sums=('8c8073b97aa7030c28118961e2c6c92f046e4cb57aeba7df87146f7baa6530c5'
             '6c5d9398c6a89864f5765375fd34529df9d6c929ca532a4e076b7451dfcec357')
 
 prepare() {
