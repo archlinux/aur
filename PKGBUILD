@@ -5,7 +5,7 @@
 
 pkgname=scilab
 pkgver=6.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
