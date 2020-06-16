@@ -2,7 +2,7 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=lib32-libcap
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('lib32-glibc' 'lib32-attr' 'libcap')
 makedepends=('linux-api-headers')
 provides=('libcap.so')
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.{xz,sign})
-sha512sums=('1529e9cb06866167e6292776ae8743a2308ea64358a9531e90f8239ccf4970df5f6a8f2e852e5be68cca1fa73ddf0865f20dd42dc00e6d91915104750d2307d8'
+sha512sums=('0193bd1b1b6223260a629458a37db581a0ff61f1d23f439fd2bdd0e6f3acb30ce996fb0f4f86c59670183d9f42932ae1e817e44e6b64f4ff49d61ea3a4a10aa5'
             'SKIP')
 validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
