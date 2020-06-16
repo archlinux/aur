@@ -2,8 +2,8 @@
 
 pkgname=systemd-wireguard-refresh-git
 pkgver=r4.6e75115
-pkgrel=1
-pkgdesc="Personal tmux configuration"
+pkgrel=2
+pkgdesc="A script and configuration files to refresh Wireguard endpoints periodically (or not)"
 license=('AGPL')
 arch=('any')
 conflicts=('systemd-wireguard-refresh')

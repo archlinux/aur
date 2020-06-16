@@ -1,5 +1,5 @@
 [Unit]
-Description=Refresh Wireguard peers DNS info
+Description=Refresh Wireguard endpoints
 After=network-online.target
 
 [Service]

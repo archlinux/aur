@@ -1,7 +1,7 @@
 pkgbase = systemd-wireguard-refresh-git
-	pkgdesc = Personal tmux configuration
+	pkgdesc = A script and configuration files to refresh Wireguard endpoints periodically (or not)
 	pkgver = r4.6e75115
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = AGPL
 	makedepends = git
