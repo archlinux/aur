@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl
 _pkgname=Tidal-Media-Downloader
-pkgver=1.1.0.20
+pkgver=1.1.0.21
 pkgrel=1
 pkgdesc="Tidal Music Download"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-aigpy' 'python-requests' 'python-libffmpeg' 'python-pycryptodome' 'python-pydub')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('edf33c632e56b444bea76d63e645527886002fc19a0f207409a5dfd36a86f070')
+sha256sums=('565570c2260e54fc3b927e2d7a274ca0f46909e525c648e6be2c274ddcc7c2ad')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/TIDALDL-PY"
