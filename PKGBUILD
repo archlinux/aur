@@ -1,11 +1,12 @@
-# Maintainer: Cody Ramaker <cramaker@linux.com>
+# Maintainer: Thor77 <thor77 at thor77 dot org>
+# Contributor: Cody Ramaker <cramaker@linux.com>
 # Contributor: Andreas Nüßlein <nutz@noova.de>
 # Contributor: Ben Edwards <ben@artfuldodge.io>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.5.7
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
@@ -26,7 +27,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('65c5439571cb86bc865d2a4878c83a3ed606d20cf550672e64b9bfdbbf3a8a08'
+sha256sums=('5066dd085cee2a7435a1bb25677102f0d4ea585f314bd026799f333b0956a06d'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
