@@ -14,7 +14,6 @@ depends=('libxcursor')
 conflicts=('breeze')
 source=("http://download.kde.org/stable/plasma/${pkgver}/breeze-${pkgver}.tar.xz")
 sha1sums=('cd033a1a35212d6db198fe748e8466713a6c1b2e')
-
 package() {
   install -dm755 "$pkgdir"/usr/share/icons/
   cp -r "$srcdir"/breeze-${pkgver}/cursors/Breeze/Breeze/           "$pkgdir"/usr/share/icons/
