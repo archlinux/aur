@@ -2,7 +2,7 @@
 
 pkgname=ipmitool-git
 pkgver=1.8.18.r192.g956ae2b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for controlling IPMI-enabled systems"
 arch=('i686' 'x86_64')
 url="https://github.com/ipmitool/ipmitool"
@@ -26,7 +26,8 @@ build() {
 
   ./bootstrap
   ./configure \
-    --prefix="/usr"
+    --prefix="/usr" \
+    --sbindir="/usr/bin"
   make
 }
 
