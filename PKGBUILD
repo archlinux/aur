@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.1.2.r2608.890f0172
+pkgver=5.2.0.r2616.9747a8f5
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=('kplotting: for stats plugin'
             )
 provides=('ktorrent')
 conflicts=('ktorrent')
-source=('git://anongit.kde.org/ktorrent.git')
+source=('git+https://invent.kde.org/network/ktorrent.git')
 sha256sums=('SKIP')
 
 pkgver() {

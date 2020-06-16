@@ -1,6 +1,6 @@
 pkgbase = ktorrent-git
 	pkgdesc = A powerful BitTorrent client. (GIT version)
-	pkgver = 5.1.2.r2608.890f0172
+	pkgver = 5.2.0.r2616.9747a8f5
 	pkgrel = 1
 	url = https://userbase.kde.org/KTorrent
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = ktorrent-git
 	optdepends = kross: for scripting plugin
 	provides = ktorrent
 	conflicts = ktorrent
-	source = git://anongit.kde.org/ktorrent.git
+	source = git+https://invent.kde.org/network/ktorrent.git
 	sha256sums = SKIP
 
 pkgname = ktorrent-git
