@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Dependency graph of installed packages on your wallpaper."
 url="http://github.com/Kharacternyk/${_pkgname}"
 arch=('any')
-license=('GPL-3')
+license=('GPL3')
 depends=('graphviz' 'pacman-contrib')
 optdepends=('feh: wallpaper setting using feh'
             'hsetroot: wallpaper setting using hsetroot'
