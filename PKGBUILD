@@ -2,18 +2,14 @@
 
 pkgname=currentime
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility written in bash that tells the time in many different formats"
 arch=('any')
-url="https://benthetechguy.github.io/miscprograms/currentime"
+# url="https://benthetechguy.github.io/miscprograms/$pkgname"
 license=('GPL')
-depends=('bash')
-source=("$pkgname")
+source=("https://raw.githubusercontent.com/benthetechguy/miscprograms/master/$pkgname")
 noextract=('$pkgname')
-md5sums=('e8413faaf292707e4422c39541aab767')
-
+sha256sums=('757398c5ce19248dd391fa0bc759c5a82d2fe20b5f41d26789d74a97d7a250d1')
 package() {
-	mkdir -p ${pkgdir}/usr
-	mkdir -p ${pkgdir}/usr/bin
-	cp $pkgname ${pkgdir}/usr/bin
+	install -D "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
