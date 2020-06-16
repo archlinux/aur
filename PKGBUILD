@@ -1,20 +1,20 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=alt
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
-pkgdesc='Command line utility that attempts to find the "alternate path" for the provided path'
+pkgdesc='Command line utility that attempts to find the "alternate" for the provided path'
 arch=('i686' 'x86_64')
 url="https://github.com/uptech/alt"
 license=('MIT')
 depends=()
 conflicts=('alt-git')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('415c3a6c50317a2de7d7eff99b2fe8226fe1263754111014f7333f29d0e942fdbcac7821dbf7a615814a7ff5c634f5eb2a617823ad4251f35b362d9ebe26bc04')
+sha256sums=('d543d102165bd4f74a60d259fb292028ab111b1051b1403842019db351601a78')
 
 build() {
   cd "$pkgname-$pkgver"
-  /usr/bin/cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked
 }
 
 package() {

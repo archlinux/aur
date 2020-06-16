@@ -1,17 +1,15 @@
 pkgbase = alt
-	pkgdesc = Command line utility that attempts to find the "alternate path" for the provided path
-	pkgver = 3.2.0
+	pkgdesc = Command line utility that attempts to find the "alternate" for the provided path
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/uptech/alt
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
-	makedepends = git
 	conflicts = alt-git
-	source = alt-3.2.0.tar.gz::https://github.com/uptech/alt/archive/v3.2.0.tar.gz
-	sha512sums = 415c3a6c50317a2de7d7eff99b2fe8226fe1263754111014f7333f29d0e942fdbcac7821dbf7a615814a7ff5c634f5eb2a617823ad4251f35b362d9ebe26bc04
+	source = alt-3.3.0.tar.gz::https://github.com/uptech/alt/archive/v3.3.0.tar.gz
+	sha256sums = d543d102165bd4f74a60d259fb292028ab111b1051b1403842019db351601a78
 
 pkgname = alt
 
