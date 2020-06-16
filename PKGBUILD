@@ -2,7 +2,7 @@
 pkgname=base16-vtrgb
 pkgver=2020_06_16
 pkgrel=1
-pkgdesc="base16 color schemes available for the virtual terminal (vt, tty)"
+pkgdesc="base16 color schemes available for the linux console (vt, tty)"
 arch=('any')
 url="https://github.com/coderonline/base16-vtrgb"
 license=('MIT')
