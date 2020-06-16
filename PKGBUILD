@@ -14,7 +14,7 @@ _merge_requests_to_use=('1124' '1003' '1267') # safe pick
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.2+10+g63fc71f05
+pkgver=3.36.3+1+g0d9ded403
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=63fc71f05bebca6a247db783c3a7672ed574dea7  # tags/3.36.2^10
+_commit=0d9ded403f6e285b6e928c5c850e0481b3a69291 # tags/3.36.3^1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         "fix_clutter_actor_set_allocation_spam.patch")
 sha256sums=('SKIP'
@@ -165,7 +165,8 @@ build() {
     -D wayland_eglstream=true \
     -D xwayland_initfd=disabled \
     -D installed_tests=false
-  ninja -C build
+
+  meson compile -C build
 }
 
 check() (
