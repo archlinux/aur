@@ -1,7 +1,7 @@
 # Maintainer: Jerry Lin <jerry73204 at gmail dot com>
 
 pkgname=('python-kafka' 'python2-kafka')
-pkgver=1.4.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Python client for Apache Kafka'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dpkp/kafka-python"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/dpkp/kafka-python/archive/${pkgver}.tar.gz")
-sha256sums=('62d5910d0f9a33be85b5082599fbe3bb7a587205923704de81e2303fe838a5d5')
+sha256sums=('454bf3aafef9348017192417b7f0828a347ec2eaf3efba59336f3a3b68f10094')
 
 _dirname="kafka-python-${pkgver}"
 
