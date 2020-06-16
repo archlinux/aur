@@ -4,7 +4,7 @@ pkgorg=joaoleal
 _pkgname=CppADCodeGen
 pkgname=cppadcodegen
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ Algorithmic Differentiation Package"
 arch=('any')
 url="https://github.com/$pkgorg/$_pkgname"
@@ -20,6 +20,7 @@ sha256sums=('3d3fee920f67b70566fa09ba62203323d4a8100d1ab210c6e7b34f7cb23349fb')
 
 build() {
     cd "$_pkgname-$pkgver"
+    export GOOGLETEST_HOME=/usr/src/googletest
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
