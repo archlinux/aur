@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.7.master.5112.r8473.a6d18bd3
+pkgver=1.7.master.5112.r8573.20a411c9
 pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=('knotifyconfig'
 optdepends=('python: python scripting support')
 conflicts=('konversation')
 provides=('konversation')
-source=('git://anongit.kde.org/konversation')
+source=('git+https://invent.kde.org/network/konversation.git')
 sha256sums=('SKIP')
 
 pkgver() {
