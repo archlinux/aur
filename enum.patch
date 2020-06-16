@@ -1,11 +1,12 @@
 diff -ur a/include/cspublic.h b/include/cspublic.h
---- a/include/cspublic.h	2016-07-19 04:00:01.000000000 -0500
-+++ b/include/cspublic.h	2017-01-12 11:24:08.715955342 -0600
-@@ -275,6 +275,7 @@
- 	CS_TDS_72,
- 	CS_TDS_73,
+--- a/include/cspublic.h	2019-08-31 04:00:01.000000000 -0500
++++ b/include/cspublic.h	2020-06-15 19:31:55.533607223 -0500
+@@ -285,6 +285,8 @@
+ #define CS_TDS_73 CS_TDS_73
  	CS_TDS_74,
+ #define CS_TDS_74 CS_TDS_74
 +	CS_TDS_80 = CS_TDS_74,
++#define CS_TDS_80 CS_TDS_80
  };
-
+ 
  /* bit mask values used by CS_DATAFMT.status */
