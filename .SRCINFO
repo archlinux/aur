@@ -1,0 +1,15 @@
+pkgbase = barva-git
+	pkgdesc = Audio visualizer that pulses the background of your terminal
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/Kharacternyk/barva
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = pulseaudio
+	conflicts = barva
+	source = barva::git+https://github.com/Kharacternyk/barva.git#branch=master
+	sha256sums = SKIP
+
+pkgname = barva-git
+
