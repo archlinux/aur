@@ -1,0 +1,32 @@
+pkgbase = azuredatastudio-bin
+	pkgdesc = Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (official binary version)
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/Microsoft/azuredatastudio
+	arch = x86_64
+	license = custom: microsoft
+	makedepends = sed
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = gnupg
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxkbfile
+	depends = libxss
+	depends = lsof
+	depends = nss
+	optdepends = krb5: Windows authentication support
+	provides = azuredatastudio
+	provides = sqlops
+	conflicts = azuredatastudio
+	conflicts = sqlops
+	options = staticlibs
+	source = azuredatastudio-bin-1.19.0.tar.gz::https://go.microsoft.com/fwlink/?linkid=2132349
+	source = azuredatastudio.desktop
+	sha256sums = 7beb42d9d7592ae8725a38b3548b87687f1e8449df13d8ec526ae11e38879c01
+	sha256sums = 460ef23631450298409a96c75662428ffc356b666eefbab813e78ef71e346727
+
+pkgname = azuredatastudio-bin
+
