@@ -1,21 +1,21 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 
-# sudo lsusb -v | grep switching
+# sudo lsusb -v 2>/dev/null | grep -e '^Bus\|Per-port power switching' | grep -B1 'Per-port power switching'
 
 set -u
 pkgname='uhubctl'
-pkgver='2.1.0'
+pkgver='2.2.0'
 pkgrel='1'
-pkgdesc='control USB per-port power switching on smart USB hubs'
+pkgdesc='control USB per-port power switching on PPPS smart USB hubs'
 arch=('x86_64')
 _github='mvp'
 url="https://github.com/${_github}/${pkgname}"
 license=('GPL')
-depends=('libusb>=1.0.12')
+depends=('libusb>=1.0.12' 'libudev.so')
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('227fdd541067b84eaa0e15cdc171458a56de7591f7a1deaff3e6d42d2809450b')
+sha256sums=('e5a722cb41967903bedbab4eea566ab332241a7f05fc7bc9c386b9a5e1762d8b')
 
 prepare() {
   set -u
@@ -28,7 +28,7 @@ build() {
   set -u
   cd "${_srcdir}"
   CFLAGS="${CFLAGS} -Wformat-overflow=2" \
-  make -j1 GIT_VERSION="${pkgver}"
+  make -s -j1 GIT_VERSION="${pkgver}"
   set +u
 }
 
