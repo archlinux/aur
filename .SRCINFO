@@ -1,0 +1,17 @@
+pkgbase = sctd
+	pkgdesc = A Daemon to change the display color temperature based on time of day
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/amir/sctd
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libx11
+	depends = libxrandr
+	source = sctd-0.1.2.tar.gz::https://github.com/amir/sctd/archive/v0.1.2.tar.gz
+	sha512sums = 8066d7d51487d667f90c617f041aa423fc046f0401533abf37185c325edf5c49b918aeb34c65e566c15c0e304fc838fec76a50ddf928953980baa5449091ce83
+
+pkgname = sctd
+
