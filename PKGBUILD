@@ -2,13 +2,13 @@
 
 pkgname=mullvad-vpn-cli
 pkgver=2020.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('nss')
-makedepends=('git' 'cargo' 'go-pie')
+makedepends=('git' 'rust' 'go')
 conflicts=('mullvad-vpn')
 install="${pkgname}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
@@ -32,6 +32,8 @@ prepare() {
     git config submodule.mullvadvpn-app-binaries.url \
         "${srcdir}/mullvadvpn-app-binaries"
     git submodule update
+
+    mkdir -p dist-assets/shell-completions
 }
 
 build() {
@@ -64,6 +66,14 @@ build() {
 
     # Update relays.json
     cargo run -p mullvad-rpc --bin relay_list > dist-assets/relays.json
+
+    # Shell completions
+    cd mullvad-cli
+    for sh in bash zsh; do
+        echo "Generating shell completion script for $sh..."
+        cargo run --release --locked --features shell-completions -- \
+            shell-completions "$sh" ../dist-assets/shell-completions/
+    done
 }
 
 check() {
@@ -88,6 +98,14 @@ package() {
 
     # Install CLI binary
     install --verbose -D --mode=755 target/release/mullvad -t "${pkgdir}/usr/bin"
+
+    # Install shell completion zsh
+    install --verbose -D --mode=644 dist-assets/shell-completions/_mullvad -t \
+        "${pkgdir}/usr/local/share/zsh/site-functions"
+
+    # Install shell completion bash
+    install --verbose -D --mode=644 dist-assets/shell-completions/mullvad.bash -t \
+        "${pkgdir}/usr/share/bash-completion/completions"
 
     # Install settings.json
     install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
