@@ -11,6 +11,8 @@ pkgbase = golden-cheetah-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = qt5-tools
+	makedepends = sip
+	makedepends = pkgconf
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-location
@@ -42,7 +44,7 @@ pkgbase = golden-cheetah-git
 	md5sums = SKIP
 	md5sums = af5e5a4376ee82ccfb69aa455b35a2d9
 	md5sums = e1fb382b4a7316da1ffd435e45e50c4a
-	md5sums = 3857988a67fdf94b999fc05753ac2494
+	md5sums = SKIP
 
 pkgname = golden-cheetah-git
 
