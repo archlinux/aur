@@ -12,6 +12,7 @@ makedepends=(bison flex 'gcc' 'make' 'qt5-tools' sip pkgconf)
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity qt5-charts vlc gsl)
 optdepends=('vlc' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb-compat' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
+conflicts=('golden-cheetah-rc' 'golden-cheetah-dev' 'golden-cheetah')
 source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
 GoldenCheetah.desktop gc.png gcconfig.pri)
 md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a 'SKIP')
