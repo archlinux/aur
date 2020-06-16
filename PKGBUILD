@@ -4,7 +4,7 @@
 
 pkgbase='python-datashader'
 pkgname='python-datashader'
-pkgver=0.7.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Bin-based rendering toolchain to visualize large datasets.'
 arch=('any')
@@ -14,18 +14,24 @@ makedepends=('python-setuptools'
              'python-param'
              'python-pyct')
 groups=('bokeh-ecosystem')
-depends=('python-dask'
-         'python>=3.4'
-         'python-datashape>=0.5.1'
-         'python-numba>=0.24.0'
-         'python-numpy>=1.7'
-         'python-odo>=0.4.1'
-         'python-pandas>=0.15.0'
-         'python-pillow'
-         'python-toolz'
-         'python-xarray')
+depends=(
+  'python>=3.4'
+  'python-dask>=0.18.0'
+  'python-datashape>=0.5.1'
+  'python-numba>=0.37.0'
+  'python-numpy>=1.7'
+  'python-pandas>=0.24.1'
+  'python-pillow>=3.1.1'
+  'python-toolz>=0.7.4'
+  'python-xarray>=0.9.6'
+  'python-colorcet>=0.9.0'
+  'python-param>=1.6.0'
+  'python-pyct'
+  'python-bokeh'
+  'python-scipy'
+)
 source=("https://github.com/pyviz/datashader/archive/v${pkgver}.tar.gz")
-sha256sums=('bc94506303a13736acee0ebbd1d30cc61bccf99b59f0316c179908ae9523e3cd')
+sha256sums=('27c1bf758eb7c57c17fcb15da93c108b382d522472f464ab8565c8f51e9707be')
 
 build() {
   cd "${srcdir}/datashader-${pkgver}"

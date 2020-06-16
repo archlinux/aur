@@ -1,6 +1,6 @@
 pkgbase = python-datashader
 	pkgdesc = Bin-based rendering toolchain to visualize large datasets.
-	pkgver = 0.7.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/bokeh/datashader
 	arch = any
@@ -9,18 +9,22 @@ pkgbase = python-datashader
 	makedepends = python-setuptools
 	makedepends = python-param
 	makedepends = python-pyct
-	depends = python-dask
 	depends = python>=3.4
+	depends = python-dask>=0.18.0
 	depends = python-datashape>=0.5.1
-	depends = python-numba>=0.24.0
+	depends = python-numba>=0.37.0
 	depends = python-numpy>=1.7
-	depends = python-odo>=0.4.1
-	depends = python-pandas>=0.15.0
-	depends = python-pillow
-	depends = python-toolz
-	depends = python-xarray
-	source = https://github.com/pyviz/datashader/archive/v0.7.0.tar.gz
-	sha256sums = bc94506303a13736acee0ebbd1d30cc61bccf99b59f0316c179908ae9523e3cd
+	depends = python-pandas>=0.24.1
+	depends = python-pillow>=3.1.1
+	depends = python-toolz>=0.7.4
+	depends = python-xarray>=0.9.6
+	depends = python-colorcet>=0.9.0
+	depends = python-param>=1.6.0
+	depends = python-pyct
+	depends = python-bokeh
+	depends = python-scipy
+	source = https://github.com/pyviz/datashader/archive/v0.11.0.tar.gz
+	sha256sums = 27c1bf758eb7c57c17fcb15da93c108b382d522472f464ab8565c8f51e9707be
 
 pkgname = python-datashader
 
