@@ -1,0 +1,23 @@
+pkgbase = jtaghal-git
+	pkgdesc = JTAG Hardware Abstraction Library
+	pkgver = r42.c76f8fe
+	pkgrel = 1
+	url = https://github.com/azonenberg/jtaghal-cmake.git
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = protobuf
+	depends = libedit
+	optdepends = libusb
+	optdepends = libftd2xx
+	provides = jtaghal
+	conflicts = jtaghal
+	conflicts = jtaghal-git
+	source = git+https://github.com/azonenberg/jtaghal-cmake.git
+	md5sums = SKIP
+
+pkgname = jtaghal-git
+
