@@ -1,6 +1,6 @@
 pkgbase = libfprint-vfs0090-git
-	pkgdesc = Library for fingerprint readers (includes WIP libre vfs0090 driver)
-	pkgver = 0.99.0.r91.g2e2e382
+	pkgdesc = Library for fingerprint readers (includes libre vfs0090 driver)
+	pkgver = 1.90.r0.gb8e684e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/3v1n0/libfprint
@@ -18,9 +18,10 @@ pkgbase = libfprint-vfs0090-git
 	depends = openssl
 	optdepends = fprintd: D-Bus daemon that manages fingerprint readers
 	provides = libfprint
+	provides = libfprint-2.so=2-64
 	conflicts = libfprint
 	replaces = libfprint-vfs0090
-	source = git+https://github.com/3v1n0/libfprint.git
+	source = git+https://github.com/3v1n0/libfprint.git#branch=vfs0090
 	md5sums = SKIP
 
 pkgname = libfprint-vfs0090-git
