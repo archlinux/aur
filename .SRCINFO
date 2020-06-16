@@ -1,0 +1,13 @@
+pkgbase = superhackertool5000-git
+	pkgdesc = A stupid program meant to seem like it is doing things it clearly isn't. Inspired by the nerds on r/masterhacker.
+	pkgver = 16.0.0
+	pkgrel = 1
+	url = https://github.com/0xDEFEC/SuperHackerTool5000
+	arch = any
+	license = unkown
+	provides = superhackertool5000
+	source = superhackertool5000::git+https://github.com/0xDEFEC/SuperHackerTool5000.git
+	md5sums = SKIP
+
+pkgname = superhackertool5000-git
+
