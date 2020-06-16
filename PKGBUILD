@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.107.7
+pkgver=0.111.3
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -44,18 +44,19 @@ optdepends=(
   'openzwave: Z-Wave integration'
   'python-lxml: Meteo France integration'
 )
+_tag=dfc345a92136be05577f861aed473fbffe8d6a79
 source=(
-  git+https://github.com/home-assistant/home-assistant.git#tag=07ce284acd85eb0526fe45c9e05d526ed8820ba7
+  git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
   home-assistant.sysusers
   home-assistant.tmpfiles
-  home-assistant-astral2.1.patch
+  home-assistant-astral2.2.patch
 )
 sha256sums=('SKIP'
             '2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5'
             '319c7790d3cdb076bf527b1d478edbc99e00b22fbf4a884b395e46460114ee41'
             'f9e43edb276e0fbbbc2273b836ef1da0ac43347b5c3e4c63774e7f7ecdf25660'
-            'd39e2bb003f5a2ea6a2faca003c5068b26b51883e28124f2bef0dfd5536465c4')
+            '1b9d2498db8dba3837cfa4263f7171be0371becf6ed15cb757febedd8c4de451')
 
 pkgver() {
   cd home-assistant
@@ -66,7 +67,7 @@ pkgver() {
 prepare() {
   cd home-assistant
 
-  patch -Np1 -i ../home-assistant-astral2.1.patch
+  patch -Np1 -i ../home-assistant-astral2.2.patch
 
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
