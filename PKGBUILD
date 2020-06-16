@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.14.0.r1.g38c1fdb14
+pkgver=1.15.0.r15.gcc32fa735
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -37,7 +37,7 @@ optdepends=('python-matrix-synapse-ldap3: LDAP3 auth provider'
             'python-txredisapi: worker communication via Redis'
             'python-hiredis: worker communication via Redis (faster)')
 
-source=("git+https://github.com/matrix-org/synapse.git#branch=master"
+source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
         '0001-synapse-python_dependencies.py-permit-prometheus_cli.patch'
         'synapse.service'
         'sysusers-synapse.conf')
