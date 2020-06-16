@@ -6,7 +6,7 @@ pkgver=4.1.0.r1434.d05914c
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
 arch=('x86_64')
-url='http://kde.org/applications/system/kdepartitionmanager'
+url='https://kde.org/applications/en/system/org.kde.partitionmanager'
 license=('GPL2')
 depends=('kpmcore'
          'kio'
