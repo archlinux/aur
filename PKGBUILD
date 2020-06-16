@@ -3,7 +3,7 @@
 # Previous Contributors: kainlite <kainlite@gmail.com>
 
 pkgname=libcouchbase
-pkgver=2.10.3
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="The C library provides fast access to documents in the latest Couchbase Server"
 arch=('i686' 'x86_64')
@@ -16,15 +16,13 @@ install=$pkgname.install
 source=(
     "https://github.com/couchbase/libcouchbase/releases/download/${pkgver}/libcouchbase-${pkgver}.tar.gz"
 )
-md5sums=('12e50e780401d524010b0b424a1af093')
+md5sums=('4a06a65931a9dc26d34b89a9bbe2dddd')
 
 build() {
   tar -xzf "libcouchbase-${pkgver}.tar.gz" -C "${srcdir}/libcouchbase-${pkgver}"
   cd "${srcdir}/libcouchbase-${pkgver}"
 
-  # For debugging:
-  # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr CMakeLists.txt
-  cmake -DCMAKE_INSTALL_PREFIX=/usr CMakeLists.txt
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DLCB_NO_MOCK=1 CMakeLists.txt 
   make || return 1
 }
 
