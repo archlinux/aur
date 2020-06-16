@@ -31,6 +31,7 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
         "${pkgname}-num.patch"
         "libxml.patch"
+	"hdf5_18_api.patch"
          )
 sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
             '7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0'
@@ -38,7 +39,8 @@ sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
             'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
             '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
             '31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed'
-            'c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041')
+            'c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041'
+            'f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -55,6 +57,8 @@ prepare(){
   patch -p0 < "${srcdir}"/${pkgname}-num.patch
   # libxml
   patch -p1 < "${srcdir}"/libxml.patch
+  # hdf5_18_api
+  patch -p1 < "${srcdir}"/hdf5_18_api.patch
 }
 
 build() {

@@ -52,6 +52,7 @@ pkgbase = scilab
 	source = scilab-0004-Fix-build-with-ocaml-4.0.4.patch
 	source = scilab-num.patch
 	source = libxml.patch
+	source = hdf5_18_api.patch
 	sha256sums = ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964
 	sha256sums = 7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0
 	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
@@ -59,6 +60,7 @@ pkgbase = scilab
 	sha256sums = 6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392
 	sha256sums = 31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed
 	sha256sums = c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041
+	sha256sums = f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e
 
 pkgname = scilab
 
