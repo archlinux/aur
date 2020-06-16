@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
-pkgver=1
+pkgver=rev.13926
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -16,6 +16,11 @@ conflicts=('vegastrike')
 
 source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source')
 sha1sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}"/Vega-Strike-Engine-Source
+  echo "rev.$(git rev-list --count HEAD)"
+}
 
 prepare(){
 mkdir -p build
