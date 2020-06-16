@@ -1,6 +1,6 @@
 pkgbase = buildaur
 	pkgdesc = A AUR helper
-	pkgver = 11.1b18fff
+	pkgver = 12.6d59f1e
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/gitaur
 	arch = any

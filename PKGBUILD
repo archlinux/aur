@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=11.1b18fff
+pkgver=12.6d59f1e
 pkgrel=1
 pkgdesc="A AUR helper"
 arch=(any)
