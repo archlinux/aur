@@ -2,17 +2,17 @@
 
 pkgname=openimagedenoise-bin
 _pkgname=oidn
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Intel(R) Open Image Denoise library, official binaries'
 arch=('x86_64')
 url='https://openimagedenoise.github.io'
 license=('Apache')
-depends=('intel-tbb' 'python' 'ispc')
+depends=('intel-tbb')
 source=("https://github.com/OpenImageDenoise/oidn/releases/download/v${pkgver}/oidn-${pkgver}.x86_64.linux.tar.gz")
 conflicts=("openimagedenoise")
 provides=("openimagedenoise")
-sha256sums=("47a395c3d9795625e29d84667306f51e15105ac40b481fb70fb01d63b8443e98")
+sha256sums=("18ff3ce92c15261db0efcd05410a6db481adf45020ec8b56540f9f6d28e7fb88")
 
 # REASON FOR THE EXISTENCE OF THIS PACKAGE:
 # The Arch package fails on my older CPU, but the official binaries work.
@@ -25,10 +25,9 @@ package() {
 
   mkdir -p "${pkgdir}/usr"
 
-  install -D -m755 bin/denoise "${pkgdir}/usr/bin/denoise"
-#   "tests" conflicts with libde265 so renaming it
-#   the official Arch package just deletes it
-  install -D -m755 bin/tests "${pkgdir}/usr/bin/oidntests"
+  install -D -m755 bin/oidnBenchmark "${pkgdir}/usr/bin/oidnBenchmark"
+  install -D -m755 bin/oidnDenoise "${pkgdir}/usr/bin/oidnDenoise"
+  install -D -m755 bin/oidnTest "${pkgdir}/usr/bin/oidnTest"
   install -d "${pkgdir}/usr/share/doc/OpenImageDenoise"
   install -D -m644 doc/* "${pkgdir}/usr/share/doc/OpenImageDenoise"
   install -d "${pkgdir}/usr/include/OpenImageDenoise"
