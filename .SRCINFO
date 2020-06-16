@@ -1,0 +1,20 @@
+pkgbase = astap-bin
+	pkgdesc = astrometric (plate) solver, stacking of images, photometry and FITS viewer
+	pkgver = 0.9.375
+	pkgrel = 1
+	url = http://www.hnsky.org/astap.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = shared-mime-info
+	depends = libxext
+	depends = gtk2
+	source_i686 = https://svwh.dl.sourceforge.net/project/astap-program/linux_installer/astap_i386.deb
+	sha256sums_i686 = cdd88a5f18cd9183e0f1de1aa438f7150b76cb7e7ba2940f2fd237bff6be43bb
+	source_x86_64 = https://ayera.dl.sourceforge.net/project/astap-program/linux_installer/astap_amd64.deb
+	sha256sums_x86_64 = 8f4090f225c09c4c01f3de49ca9f61b5dca248701f20be3e4508ecdc43e41876
+
+pkgname = astap-bin
+
