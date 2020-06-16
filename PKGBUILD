@@ -1,41 +1,40 @@
-# Maintainer: Mark Grimes <mgrimes at peculier dot com>
+# Contributor: Mark Grimes <mgrimes at peculier dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: macxcool
-# https://github.com/mvgrimes/aur-stopmotion
 
 pkgname=stopmotion
 _realname=linuxstopmotion
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(x86_64)
 pkgdesc="Stop motion animation creation program"
-url="http://linuxstopmotion.org/index.html"
-license=('GPL')
-makedepends=('pkgconfig')
-depends=('qt4' 'sdl_image' 'libxml2' 'libvorbis')
-# 'inotify-tools'
-makedepends=('git' 'libtar')
-conflicts=('linuxstopmotion-git')
-source=($_realname::git+http://git.code.sf.net/p/$_realname/code#tag=$pkgver)
-#         add-unistd.patch)
-md5sums=('SKIP')
+url="http://linuxstopmotion.org/"
+license=(GPL2)
+depends=(hicolor-icon-theme libtar qt5-multimedia)
+makedepends=(git qt5-tools)
+_commit=ed010826d9ae7668d5d477c47a10e4fb1b92ecf8  # tags/0.8.5
+source=($_realname::git+https://git.code.sf.net/p/$_realname/code#tag=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_realname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  cd $_realname
+  sed -i 's|/share/icons|/share/icons/hicolor/scalable/apps/|' stopmotion.pro
+}
 
 build() {
-    cd "$srcdir/$_realname"
-    lrelease-qt4 stopmotion.pro
-    qmake-qt4 PREFIX=/usr stopmotion.pro
-    sed -i '/^LIBS/s|$| -lX11|' Makefile
-    make
+  cd $_realname
+  qmake PREFIX=/usr stopmotion.pro
+  make
 }
 
 package() {
-    cd "$srcdir/$_realname"
-    sed -e 's/install_desktop install_dummy/install_desktop/' -i Makefile.Release
-    make INSTALL_ROOT="$pkgdir" install
-    install -D -m644 stopmotion.desktop "$pkgdir"/usr/share/applications/stopmotion.desktop
-    install -D -m644 graphics/stopmotion.png "$pkgdir"/usr/share/pixmaps/stopmotion.png
-    install -D -m644 stopmotion.mime "$pkgdir"/usr/share/mime-info/stopmotion.mime
-    install -D -m644 stopmotion.1 "$pkgdir"/usr/share/man/man1/stopmotion.1
-    gzip "$pkgdir"/usr/share/man/man1/stopmotion.1
+  cd $_realname
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 stopmotion.mime "$pkgdir"/usr/share/mime-info/stopmotion.mime
+  install -Dm644 stopmotion.1 "$pkgdir"/usr/share/man/man1/stopmotion.1
 }
-
