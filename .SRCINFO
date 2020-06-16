@@ -1,0 +1,25 @@
+pkgbase = unpackerr
+	pkgdesc = A daemon that checks for completed downloads and extracts them so Radarr, Sonarr and/or Lidarr may import them.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/davidnewhall/unpackerr
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = go
+	optdepends = transmission-cli: torrent downloader (CLI and daemon)
+	optdepends = transmission-gtk: torrent downloader (GTK+)
+	optdepends = transmission-qt: torrent downloader (Qt)
+	optdepends = deluge: torrent downloader
+	optdepends = rtorrent: torrent downloader
+	backup = etc/unpackerr/unpackerr.conf
+	source = unpackerr-0.7.0.tar.gz::https://github.com/davidnewhall/unpackerr/archive/v0.7.0.tar.gz
+	source = unpackerr.service
+	source = unpackerr.sysusers
+	sha512sums = dcc664dc897d8fe598431c11a3a521622e4a8f74da54262143586bca58c0621b34028dc75fe319bda62b96df19755fd4cb137414d973ea9d06be991a13c97bf4
+	sha512sums = 54017fc67dc86233c01fcf9b6a46c9758509111442782e67c2356b8ec5fc062abf2a6a45df62abe13d789b9933a00e2bfedbfdb6ac9eb57c3e03b43334c96676
+	sha512sums = 1607677947bb788eb9a7bdc37e85c10632888d476d393493013dbdb3924f805adae9b6c6f31e60800ed95a9bed7c1e8ee8a48ebdaacd60c52e355054f62e0237
+
+pkgname = unpackerr
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=unpackerr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=unpackerr
+Group=unpackerr
+ExecStart=/usr/bin/unpackerr --config /etc/unpackerr/unpackerr.conf
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
