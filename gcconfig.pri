@@ -8,6 +8,57 @@
 #CONFIG += debug
 CONFIG += release
 
+# uncomment below and configure the location of the GNU scientific library,
+# this is a mandatory dependency.
+#
+# Linux/Mac - use apt/homebrew to install and edit to your install location
+GSL_INCLUDES = /usr/include
+GSL_LIBS = -lgsl -lgslcblas -lm
+#
+# Windows - use vcpkg to install and edit to your install location
+#GSL_INCLUDES = c:\vcpkg\installed\x64-windows\include
+#GSL_LIBS = -LC:\vcpkg\installed\x64-windows\lib -lgsl -lgslcblas
+
+# Uncomment below if you want an R chart
+# You will need R installed along with the Rcpp and RInside
+# packages. There is an R script in the `util' directory that
+# can be run to install these packages; see it for more info.
+#DEFINES += GC_WANT_R
+
+# Uncomment below if you want Python charting / ML etc
+# You will need Python Development tools installed
+#
+# Libs needed can typically be found by calling e.g
+# python3.6-config --libs
+#
+# below 3 lines work well on Linux style OS
+DEFINES += GC_WANT_PYTHON
+CONFIG += link_pkgconfig
+# Add python3 using pkg-config
+PKGCONFIG += python3
+#PYTHONINCLUDES = -I/usr/include/python3.6
+#PYTHONLIBS = -L/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu -lpython3.6m
+# below 3 lines work well on Windows
+#DEFINES += GC_WANT_PYTHON
+#PYTHONINCLUDES = -I\"C:\Program Files\Python36\include\"
+#PYTHONLIBS = -L\"C:\Program Files\Python36\libs\" -lpython36
+#Below work ok on MacOS High Sierra
+#DEFINES += GC_WANT_PYTHON
+#PYTHONINCLUDES = -I/Library/Frameworks/Python.framework/Versions/3.6/include/python3.6m
+#PYTHONLIBS = -L/Library/Frameworks/Python.framework/Versions/3.6/lib -lpython3.6m
+
+# put output into a separate dir
+# to keep main directory clear
+#DESTDIR = .
+#OBJECTS_DIR = ./.obj
+#MOC_DIR = ./.moc
+#RCC_DIR = ./.rcc
+#UI_DIR = ./.ui
+
+# Global conf file name: If you'd like to use a different global config file
+# name than the default (e.g. for testing purposes), set it here.
+#DEFINES += GC_SETTINGS_APP=\\\"GoldenCheetahTest\\\"
+
 # If you want a console window to appear on Windows machines
 # then uncomment the following two lines.
 #CONFIG += console
@@ -18,14 +69,22 @@ CONFIG += release
 # then set the full path and filename here.
 #QMAKE_LRELEASE = /usr/bin/lrelease
 
+# MSVC needs the WINDOWS KIT libraries for the memory model you are building
+#WINKIT_INSTALL= "C:/Program Files (x86)/Windows Kits/8.1/Lib/winv6.3/um/x64"
+
 # We use g++ on all platforms so switch on auto vectorization amongst other
 # things to speed up looping over ride file points
 QMAKE_CXXFLAGS += -O3
 
 # Let us know where flex and bison are installed.
 # You may need to specify the full path if things don't work.
-QMAKE_LEX  = flex
-QMAKE_YACC = bison
+#QMAKE_LEX  = flex
+#QMAKE_YACC = bison
+# If you're compiling with nmake and VC then you
+# will likely also use win_flex and win_bison
+# so uncomment below
+#QMAKE_LEX = win_flex
+#QMAKE_YACC = win_bison
 #win32 {
 #  QMAKE_YACC = bison --file-prefix=y -t
 #  QMAKE_MOVE = cmd /c move
@@ -61,50 +120,6 @@ exists(/usr/lib/libftd2xx.so) {
     D2XX_LIBS    = /usr/lib/libftd2xx.so
 }
 
-# If you want Twitter support you must install a QT OAUTH library kQoAUTH
-#     http://github.com/kypeli/kQOAuth (Version >= 0.98 - tested with 0.98))
-# Set path to the root of the OAUTH installation
-# If you installed in /usr/local/kqoauth then set
-# KQOAUTH_INSTALL = /usr/local/kqoauth
-# This will automatically set:
-# KQOAUTH_INCLUDE = $${KQOAUTH_INSTALL}/src
-# KQOAUTH_LIBS    = $${KQOAUTH_INSTALL}/lib/libkqoauthd0.a   // if in DEBUG mode
-# KQOAUTH_LIBS    = $${KQOAUTH_INSTALL}/lib/libkqoauth0.a    // if in RELEASE mode
-# You may override the INCLUDE and LIB files if you like.
-# You *must* define KQOAUTH_INSTALL to use this feature.
-
-KQOAUTH_INSTALL = yes
-#KQOAUTH_INCLUDE = kqoauth
-#KQOAUTH_LIBS = kqoauth/libkqoauth.a
-
-# If you want 3D plotting, you need to install qwtplot3d
-#     http://qwtplot3d.sourceforge.net/
-# If you are running Linux and have font problems, download
-# the Tar ball from http://qwtplot3d.svn.sourceforge.net/viewvc/qwtplot3d/
-# Follow Branches -> Maintain_0_2_x -> qwtplot3d
-# Set path to the root of the qwtplot3d installation
-# If you installed in /usr/local/qwtplot3d then set
-# QWT3D_INSTALL = /usr/local/qwtplot3d
-# This will automatically set:
-# QWT3D_INCLUDE = $${QWT3D_INSTALL}/include 
-# QWT3D_LIBS    = $${QWT3D_INSTALL}/lib/libqwtplot3d.a
-# You may override the INCLUDE and LIB files if you like.
-# You *must* define QWT3D_INSTALL to use this feature.
-exists(/usr/lib/libqwtplot3d.a) {
-    QWT3D_INSTALL = yes
-    QWT3D_INCLUDE = /usr/include/qwtplot3d/
-    QWT3D_LIBS    = /usr/lib/libqwtplot3d.a 
-}
-
-
-# For TrainingPeaks.com upload/download you need to install the Qt Soap add-on
-#     http://qt.nokia.com/products/appdev/add-on-products/catalog/4/Utilities/qtsoap
-# If qtsoap.pri is install in /usr/local/qtsolutions/soap/ then set
-# QTSOAP_INSTALL = /usr/local/qtsolutions/soap
-# By default we use a copy of Qt Soap in the GIT repository.
-# You *must* define QTSOAP_INSTALL to use a different version than this.
-#QTSOAP_INSTALL = 
-
 # If you want support for Google Earth .kml files then you need
 # to install the Google libkml library
 #
@@ -121,7 +136,7 @@ exists(/usr/lib/libkmldom.so) {
 # Since KML also requires BOOST you will need to install
 # that too and then set BOOST_INCLUDE to that location
 # If the files are in /usr/include/boost then set
-#BOOST_INCLUDE = /usr/include/
+#BOOST_INCLUDE = /usr/include
 #Additionally, on MAC the latest libs also need the following
 #QMAKE_CFLAGS_X86_64 += -mmacosx-version-min=10.7
 #QMAKE_CXXFLAGS_X86_64 = $$QMAKE_CFLAGS_X86_64
@@ -155,41 +170,46 @@ packagesExist(libical) {
 #USBXPRESS_LIBS    = 
 
 # If you want support for using USB2 sticks in Train View on Linux or Windows
-# then you need to install libusb (Linux) or libusb-win32 (Windows) version 0.1.12
+# then you need to install libusb (Linux) version 0.1.12 
+# or libusb-win32 (Windows) version 1.2.6.0
 # For Linux builds download: (There is a copy in the contrib directory)
 #     http://prdownloads.sourceforge.net/libusb/libusb-0.1.12.tar.gz
 # For Windows builds download:
-#     http://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/0.1.12.2/
+#     ttps://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/1.2.6.0/
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define LIBUSB_INSTALL to use this feature.
 packagesExist(libusb) {
     LIBUSB_INSTALL = yes
     LIBUSB_INCLUDE = /usr/include/
     LIBUSB_LIBS    = -lusb
+#    LIBUSB_USE_V_1 = true
 }
 
 # if you want video playback on training mode then
 # download and install vlc (videolan) from
-# ftp.videolan.org/pub/vlc/1.1.8 for your platform
-# there are sdks for Mac and Windows. On Linux you
+# ftp.videolan.org/pub/vlc/1.1.8 or http://download.videolan.org/vlc/ for 
+# your platform there are sdks for Mac and Windows. On Linux you
 # will need to use the latest distro (e.g. Meerkat
 # on Ubuntu) to be sure apt-get installs the latest
 # builds (we need 1.1.8 or higher).
 # Set path to the root of the VLC installation
 # If the are installed in /usr/local/vlc then set
 # VLC_INSTALL = /usr/local/vlc
-# This will automatically set (Windows and Unix):
+# This will automatically set (Windows, Unix and macOS):
 # VLC_INCLUDE = $${VLC_INSTALL}/include 
 # For Windows
-# VLC_LIBS    = $${VLC_INSTALL}/lib/libvlc.dll.a $${VLC_INSTALL}/lib/libvlccore.dll.a
-# For Unix
-# VLC_LIBS    = -lvlc -lvlccore
+# VLC_LIBS    = $${VLC_INSTALL}/lib/libvlc.dll.a
+# For Unix and macOS
+# VLC_LIBS    = -lvlc
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define VLC_INSTALL to use this feature.
 packagesExist(libvlc) {
     VLC_INSTALL = yes
     VLC_INCLUDE = /usr/include/
     VLC_LIBS    = -lvlc -lvlccore
+    DEFINES += GC_VIDEO_VLC 
+} else {
+    DEFINES += GC_VIDEO_NONE 
 }
 
 # *** Mac users NOTE ***
@@ -203,16 +223,14 @@ packagesExist(libvlc) {
 # if you don't resample (e.g. export or merge with new recording
 # intervals) then don't bother.
 #
-# Only tested on Linux, cannot compile on Windows at present
+# Mainly tested on Linux, compilation on Windows requires
+# some modifications in the build process to build with MSVC2015 
 # Code is available at: http://www.mega-nerd.com/SRC/
 #
 packagesExist(samplerate) {
     SAMPLERATE_INSTALL = yes
     SAMPLERATE_INCLUDE = /usr/include
-    SAMPLERATE_LIBS = -lsamplerate
-    DEFINES += GC_VIDEO_VLC   
-} else {
-    DEFINES += GC_VIDEO_NONE 
+    SAMPLERATE_LIBS = -lsamplerate  
 }
 
 # If your system has PKG_CONFIG, QT can use this to get dependent libraries.
@@ -238,9 +256,6 @@ macx {
 
     # Uncomment this line if you have SDK 10.7 or higher
     #DEFINES += GC_HAVE_LION
-
-    # Uncomment this line if you have the Mac OSX Wahoo API installed (Kickr)
-    #HAVE_WFAPI = true
 
     #uncomment below if you are running on the 10.9 developer preview
     #INCLUDEPATH += /Library/Developer/CommandLineTools/SDKs/MacOSX10.9.sdk/usr/include/ 
@@ -269,8 +284,21 @@ macx {
 # if you have your own MAPQUEST KEY
 #DEFINES += GC_MAPQUESTAPI_KEY=\\\"xxxxxxxxxxxxxxxxxxxxxx\\\"
 
+# USING THE WITHINGS API (http://oauth.withings.com/api)
+#DEFINES += GC_WITHINGS_CONSUMER_KEY=\\\"xxxxxxxxxxxxxxx\\\"
+#DEFINES += GC_WITHINGS_CONSUMER_SECRET=\\\"xxxxxxxxxxxxxxx\\\"
+
 # What video playback do you want?
 #DEFINES += GC_VIDEO_NONE             # dont add any video playback support
-#DEFINES += GC_VIDEO_QUICKTIME        # mac only and the default
-#DEFINES += GC_VIDEO_QT5              # use QT5 qvideowidget if QT > 5.2.1
-#DEFINES += GC_VIDEO_VLC               # use VideoLan library needs VLC_INSTALL defined above
+#DEFINES += GC_VIDEO_QUICKTIME       # mac only and the default
+#DEFINES += GC_VIDEO_QT5             # use QT5 qvideowidget if QT > 5.2.1
+#DEFINES += GC_VIDEO_VLC             # use VideoLan library needs VLC_INSTALL defined above
+#DEFINES += GC_VIDEO_AV              # use AV Foundation on Mac now QTKit is deprecated
+
+
+# Using the GoldenCheetah/CloudDB feature (with a private CloudDB instance)
+# requires that you have a running instance of CloudDB on Google App Engine
+# (for details on CloudDB please check the documentation here: https://github.com/GoldenCheetah/CloudDB
+#DEFINES +=GC_CLOUD_DB_BASIC_AUTH=
+#DEFINES +=GC_CLOUD_DB_APP_NAME=
+#CloudDB = active
