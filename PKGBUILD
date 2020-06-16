@@ -1,12 +1,15 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Maintainer: Andrea Richiardi <a.richiardi.work@gmail.com>
+# Contributor: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 #
 # namcap warns that ruby-sexp_processor is an unnecessary dependency. This is
 # untrue.
+#
+# this package is also depended up by Emacs' feature-mode aka cucumber.el
 
 pkgname=ruby-ruby_parser
 _pkgname=ruby_parser
-pkgver=3.12.0
+pkgver=3.14.2
 pkgrel=1
 pkgdesc='Ruby parser written in pure ruby.'
 arch=(any)
@@ -15,10 +18,10 @@ license=(MIT)
 depends=('ruby-sexp_processor>=4.9.0')
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
-source=(LICENSE "http://gems.rubyforge.org/gems/${_pkgname}-${pkgver}.gem")
+source=(LICENSE "https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
 sha256sums=('46870842926785c757eb95c36c7c77235871c7fd2310e93ef72b681ac9ccfd53'
-            'bd7c7dc8de3b27665246b182061b83f81d077435b2bd77a1b8c753577a9fe059')
+            'cc28083336412b4604f7c7c766cbd8b6075d27d7a9962a9979e70e2ea56f0c27')
 
 package() {
   # install gem

@@ -1,18 +1,18 @@
 pkgbase = ruby-ruby_parser
 	pkgdesc = Ruby parser written in pure ruby.
-	pkgver = 3.12.0
+	pkgver = 3.14.2
 	pkgrel = 1
 	url = https://github.com/seattlerb/ruby_parser
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby-sexp_processor>=4.9.0
-	noextract = ruby_parser-3.12.0.gem
+	noextract = ruby_parser-3.14.2.gem
 	options = !emptydirs
 	source = LICENSE
-	source = http://gems.rubyforge.org/gems/ruby_parser-3.12.0.gem
+	source = https://rubygems.org/downloads/ruby_parser-3.14.2.gem
 	sha256sums = 46870842926785c757eb95c36c7c77235871c7fd2310e93ef72b681ac9ccfd53
-	sha256sums = bd7c7dc8de3b27665246b182061b83f81d077435b2bd77a1b8c753577a9fe059
+	sha256sums = cc28083336412b4604f7c7c766cbd8b6075d27d7a9962a9979e70e2ea56f0c27
 
 pkgname = ruby-ruby_parser
 
