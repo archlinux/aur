@@ -9,29 +9,24 @@ arch=('any')
 url="http://www.arphic.com.tw/en/home/index"
 license=('custom:Arphic_Public_License_nonprofit')
 depends=('fontconfig' 'xorg-font-utils')
-makedepends=('unrar')
-_baseurl="http://www.arphic.com/uploads/Download/font"
-source=("${_baseurl}/arplmingu20lt.rar"      # MingU20 Light
-        "${_baseurl}/arplbaosong2gbklt.rar"  # BaoSong2GBK Light
-        "${_baseurl}/public_license.rar")
-noextract=('arplmingu20lt.rar' 'arplbaosong2gbklt.rar' 'public_license.rar')
-sha256sums=('2e75608ef3208abc1d9d26b74d4f1e926c88534999b818bb1e3a19330c39ade2'
-            '0cac44a3ec50303e374c040485e13a1ecf570c6d835504c50e064734b0300fbf'
-            'e20087a5f9b06008dd3639afdc81c469ea56514e11e4e6f849f547bfaa57684d')
+makedepends=('unzip')
+_baseurl="http://www.arphic.com.tw/wp-content/uploads/2019/03"
+source=("${_baseurl}/arplmingu20lt.zip"       # MingU20 Light
+        "${_baseurl}/arplbaosong2gbklt.zip")  # BaoSong2GBK Light
+noextract=('arplmingu20lt.zip' 'arplbaosong2gbklt.rar')
+sha256sums=('8f8af623ee58817a861558fd30471dd82d0644141fccb692f958b4f558f2c2ff'
+            '249c6f192801f530b83df056b0f0b88519d5c00f80b983e70bf557f4fd429491')
 
 prepare()
 {
-    unrar x -o+ -inul arplmingu20lt.rar
-    unrar x -o+ -inul arplbaosong2gbklt.rar
-    unrar x -o+ -inul public_license.rar
+    unzip -f arplmingu20lt.zip
+    unzip -f arplbaosong2gbklt.zip
 }
 
 package()
 {
     cd "${srcdir}"
     _fdir="${pkgdir}/usr/share/fonts/TTF"
-    install -m 644 -D arplmingu20lt.ttf "${_fdir}/arplmingu20lt.ttf"
-    install -m 644 -D arplbaosong2gbklt.ttf "${_fdir}/arplbaosong2gbklt.ttf"
-    install -m 644 -D "ARPHIC PUBLIC LICENSE_20100309.doc" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.doc"
+    install -m 644 -D arplmingu20lt/arplmingu20lt.ttf "${_fdir}/arplmingu20lt.ttf"
+    install -m 644 -D arplbaosong2gbklt/arplbaosong2gbklt.ttf "${_fdir}/arplbaosong2gbklt.ttf"
 }
