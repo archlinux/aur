@@ -1,20 +1,18 @@
 # Maintainer: jerry73204 <jerry73204 at google gmail>
 
 pkgname='python-pyviz_comms'
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 pkgdesc='Bidirectional communication for the PyViz ecosystem'
 arch=('any')
 url='https://github.com/pyviz/pyviz_comms'
 license=('BSD')
-makedepends=('python-setuptools'
-             'python-param')
-depends=()
+makedepends=('python-setuptools')
+depends=('python-param')
 checkdepends=('python-nose'
               'flake8')
 source=("https://github.com/pyviz/pyviz_comms/archive/v${pkgver}.tar.gz")
-sha256sums=('24978f18895c1655364083a464d7327d6cc848ad67ffca40237bfaaa3d8de5c8')
-
+sha256sums=('4f16b773fa8a3088c34f2dd1fb51865b5083400c5b70939aa9de5edc54cfec43')
 build() {
   cd "${srcdir}/pyviz_comms-${pkgver}"
   python setup.py build
