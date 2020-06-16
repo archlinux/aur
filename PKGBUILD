@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krename-git
-pkgver=5.0.60.r512.e0ee633
+pkgver=5.0.60.r543.141e811
 pkgrel=1
 pkgdesc="A very powerful batch file renamer for KDE. (GIT Version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=('git'
              )
 provides=('krename')
 conflicts=('krename')
-source=('git+https://anongit.kde.org/krename.git')
+source=('git+https://invent.kde.org/utilities/krename.git')
 sha1sums=('SKIP')
 
 pkgver() {
