@@ -2,7 +2,7 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r138.b5e8f5c
+pkgver=r161.913d72b
 pkgrel=1
 pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
