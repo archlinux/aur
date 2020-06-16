@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/gofrp/fp-multiuser"
 license=('Apache')
 depends=('glibc')
+optdepends=('frps: provide frp server')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('d5dac6759d8a7a4e2ed531471f526e4e6e7134eb09571b48c9369b92dbe9960f032622a5fa3378e4ed0b72c6b92b76330b50819422731a491825735299ebc3b3')
