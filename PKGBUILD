@@ -3,7 +3,7 @@
 _pkgname='python-fastecdsa'
 pkgname="${_pkgname}-git"
 pkgver=2.1.2.r1.g4a16dae
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for fast elliptic curve crypto'
 arch=('x86_64')  # Please let me know if it works on other archs
 url='https://github.com/AntonKueltz/fastecdsa'
@@ -11,6 +11,7 @@ license=('custom:Unlicense')
 depends=('python' 'gmp')
 makedepends=('python-setuptools')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/AntonKueltz/fastecdsa.git") 
 sha256sums=('SKIP')
 
