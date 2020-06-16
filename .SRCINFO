@@ -12,7 +12,9 @@ pkgbase = plasma5-applets-thermal-monitor-git
 	provides = plasma5-applets-thermal-monitor
 	conflicts = plasma5-applets-thermal-monitor
 	source = git+https://github.com/kotelnik/plasma-applet-thermal-monitor.git
+	source = let-var-systemmonitorAvailableSources-refer-to-an-empty-array.patch::https://github.com/kotelnik/plasma-applet-thermal-monitor/commit/b389b886a7ee759d06c9eb0e6a3b6abbea400035.patch
 	sha256sums = SKIP
+	sha256sums = 9d2ce31a47ff9400040814d18be08503372ab9f2a8282c76dee8a0e4432814e8
 
 pkgname = plasma5-applets-thermal-monitor-git
 
