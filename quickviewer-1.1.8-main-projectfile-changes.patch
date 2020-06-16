@@ -1,6 +1,6 @@
---- quickviewer/QuickViewer/QuickViewer.pro.orig	2019-02-23 03:43:51.157350083 -0800
-+++ quickviewer/QuickViewer/QuickViewer.pro	2019-02-23 03:45:55.597348307 -0800
-@@ -424,22 +424,21 @@
+--- quickviewer/QuickViewer/QuickViewer.pro.orig	2020-06-15 20:27:13.318289440 -0700
++++ quickviewer/QuickViewer/QuickViewer.pro	2020-06-15 20:27:16.061622746 -0700
+@@ -437,22 +437,21 @@
  
  # not portable, install into /usr/local/bin
  linux : !CONFIG(debug, debug|release) : !contains(DEFINES, QV_PORTABLE) {
@@ -33,7 +33,7 @@
      install_translations.files = \
          $${PWD}/translations/languages.ini \
          $${PWD}/translations/quickviewer_ja.qm \
-@@ -462,7 +461,7 @@
+@@ -478,7 +477,7 @@
          ../AssociateFilesWithQuickViewer/icons/qv_tiff.ico \
          ../AssociateFilesWithQuickViewer/icons/qv_webp.ico \
  

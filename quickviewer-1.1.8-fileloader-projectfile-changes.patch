@@ -1,5 +1,5 @@
---- quickviewer/fileloader/fileloader.pro.orig	2019-02-23 05:29:22.150589475 -0800
-+++ quickviewer/fileloader/fileloader.pro	2019-02-23 05:30:24.377255206 -0800
+--- quickviewer/fileloader/fileloader.pro.orig	2020-06-15 20:27:13.351622773 -0700
++++ quickviewer/fileloader/fileloader.pro	2020-06-15 20:27:16.064956080 -0700
 @@ -16,7 +16,7 @@
  
  *g++* {
@@ -9,7 +9,7 @@
      QMAKE_CXXFLAGS += -std=c++11
      DEFINES += NTDDI_VERSION=NTDDI_VISTA
  }
-@@ -54,11 +54,13 @@
+@@ -57,11 +57,13 @@
  INCLUDEPATH += ../Qt7z/Qt7z
  LIBS += -lQt7z
  

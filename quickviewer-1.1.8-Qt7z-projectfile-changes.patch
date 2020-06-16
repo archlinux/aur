@@ -1,0 +1,37 @@
+--- quickviewer/Qt7z/Qt7z/Qt7z.pri.orig	2020-06-15 20:27:13.248289440 -0700
++++ quickviewer/Qt7z/Qt7z/Qt7z.pri	2020-06-16 00:39:19.858140807 -0700
+@@ -232,9 +232,11 @@
+ 
+ unix {
+     INCLUDEPATH += \
++        $$PWD/p7zip \
+         $$PWD/p7zip/CPP/myWindows \
+         $$PWD/p7zip/CPP \
+         $$PWD/p7zip/CPP/include_windows \
++        $$PWD/lib7zip/src \
+ 
+     LIBS += -ldl
+ 
+@@ -427,6 +429,22 @@
+ #        $$PWD/p7zip/C/XzCrc64Opt.c \
+ 
+     SOURCES += \
++        $$PWD/lib7zip/src/7ZipArchive.cpp \
++        $$PWD/lib7zip/src/7ZipArchiveItem.cpp \
++        $$PWD/lib7zip/src/7ZipArchiveOpenCallback.cpp \
++        $$PWD/lib7zip/src/7ZipCodecInfo.cpp \
++        $$PWD/lib7zip/src/7ZipCompressCodecsInfo.cpp \
++        $$PWD/lib7zip/src/7ZipDllHandler.cpp \
++        $$PWD/lib7zip/src/7ZipFormatInfo.cpp \
++        $$PWD/lib7zip/src/7ZipInStreamWrapper.cpp \
++        $$PWD/lib7zip/src/7zipLibrary.cpp \
++        $$PWD/lib7zip/src/7ZipObjectPtrArray.cpp \
++        $$PWD/lib7zip/src/7ZipOpenArchive.cpp \
++        $$PWD/lib7zip/src/GUIDs.cpp \
++        $$PWD/lib7zip/src/HelperFuncs.cpp \
++        $$PWD/lib7zip/src/OSFunctions_OS2.cpp \
++        $$PWD/lib7zip/src/OSFunctions_UnixLike.cpp \
++        $$PWD/lib7zip/src/OSFunctions_Win32.cpp \
+         $$PWD/p7zip/C/7zCrc.c \
+         $$PWD/p7zip/C/7zCrcOpt.c \
+         $$PWD/p7zip/C/Alloc.c \

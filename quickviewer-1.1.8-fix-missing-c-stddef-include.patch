@@ -1,0 +1,10 @@
+--- quickviewer/zimg/zimg/src/zimg/colorspace/matrix3.h.orig	2020-06-15 22:55:47.801534726 -0700
++++ quickviewer/zimg/zimg/src/zimg/colorspace/matrix3.h	2020-06-15 22:56:07.838201199 -0700
+@@ -4,6 +4,7 @@
+ #define ZIMG_COLORSPACE_MATRIX3_H_
+ 
+ #include <array>
++#include <stddef.h>
+ 
+ namespace zimg {
+ namespace colorspace {

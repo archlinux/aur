@@ -1,0 +1,11 @@
+--- quickviewer/fileloader/fileloader7zarchive.cpp.orig	2020-06-15 20:27:13.351622773 -0700
++++ quickviewer/fileloader/fileloader7zarchive.cpp	2020-06-15 22:28:42.301550922 -0700
+@@ -336,7 +336,7 @@
+ //    item.GetStringProperty(PropertyIndexEnum::kpidGroup, strVal);
+ //    prop.Group = QString::fromStdWString(strVal);
+ 
+-    uint64_t uintval;
++    unsigned __int64 uintval;
+     item.GetUInt64Property(PropertyIndexEnum::kpidSize, uintval);
+     prop.size = (size_t) uintval;
+     prop.pre_total = (size_t) pre_total;

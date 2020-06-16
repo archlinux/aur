@@ -1,0 +1,6 @@
+--- quickviewer/Qt7z/Qt7z/lib7zip/src/GUIDs.cpp.orig	2020-06-15 22:04:12.974898763 -0700
++++ quickviewer/Qt7z/Qt7z/lib7zip/src/GUIDs.cpp	2020-06-16 00:24:21.121482930 -0700
+@@ -1,2 +1,2 @@
+-#include <InitGuid.h>
++#include <initguid.h>
+ #include "GUIDs.h"
