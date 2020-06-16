@@ -9,7 +9,7 @@ pkgbase = xcursor-breeze
 	depends = libxcursor
 	conflicts = breeze
 	source = http://download.kde.org/stable/plasma/5.19.1/breeze-5.19.1.tar.xz
-	sha1sums = cd033a1a35212d6db198fe748e8466713a6c1b2e
+	sha256sums = b93d34c0d2b7a47440c0c324e0dacd23cfa82cba2929d568cc9091910bb1ce6e
 
 pkgname = xcursor-breeze
 

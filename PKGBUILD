@@ -13,9 +13,11 @@ license=('GPL')
 depends=('libxcursor')
 conflicts=('breeze')
 source=("http://download.kde.org/stable/plasma/${pkgver}/breeze-${pkgver}.tar.xz")
-sha1sums=('cd033a1a35212d6db198fe748e8466713a6c1b2e')
+
 package() {
   install -dm755 "$pkgdir"/usr/share/icons/
   cp -r "$srcdir"/breeze-${pkgver}/cursors/Breeze/Breeze/           "$pkgdir"/usr/share/icons/
   cp -r "$srcdir"/breeze-${pkgver}/cursors/Breeze_Snow/Breeze_Snow/ "$pkgdir"/usr/share/icons/
 }
+
+sha256sums=('b93d34c0d2b7a47440c0c324e0dacd23cfa82cba2929d568cc9091910bb1ce6e')
