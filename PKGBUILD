@@ -2,7 +2,7 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=3.80.0.r1398.0e714de
+pkgver=4.1.0.r1434.d05914c
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('extra-cmake-modules'
              'git'
              'python'
              )
-source=('git://anongit.kde.org/partitionmanager')
+source=('git+https://invent.kde.org/system/partitionmanager.git')
 sha256sums=('SKIP')
 
 pkgver() {
