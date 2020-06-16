@@ -1,7 +1,7 @@
-pkgbase = modustoolbox
-	pkgdesc = ModusToolbox simplifies development for IoT designers. IDE for PSoC 6
-	pkgver = 1.1.0
-	pkgrel = 234
+pkgbase = modustoolbox-bin
+	pkgdesc = Set of multi-platform development tools by Cypress. IDE for PSoC 6
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://www.cypress.com/products/modustoolbox-software-environment
 	arch = x86_64
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = modustoolbox
 	depends = perl
 	depends = diffutils
 	options = !strip
-	source = http://dlm.cypress.com.edgesuite.net/akdlm/downloadmanager/software/ModusToolbox/ModusToolbox_1.1.0.234-linux-install.tar.gz
-	sha256sums = c968b4bba6fbe7209d7e075c15300451f67460ab057a12d040cf232ac3b248fd
+	source = http://dlm.cypress.com.edgesuite.net/akdlm/downloadmanager/WICED_MODUS/P-ModusToolbox_2.0.0.1703-linux-install.tar.gz
+	md5sums = 13e885525b05058f2b8b6eee59323381
 
-pkgname = modustoolbox
+pkgname = modustoolbox-bin
 
