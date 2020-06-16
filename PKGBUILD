@@ -1,6 +1,7 @@
 # Maintainer: Justin Harrison <me@justinharrison.ca>
 
 pkgname=diceware-gen
+pkgdesc="Generates random words, mainly useful for usernames and passwords"
 pkgver=0.3.0
 pkgrel=1
 arch=("i686" "x86_64")
