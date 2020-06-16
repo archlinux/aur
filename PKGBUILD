@@ -5,7 +5,7 @@ pkgver=1.3.r886.f21c160
 pkgrel=1
 pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('x86_64')
-url='https://www.kde.org/applications/multimedia/kaudiocreator'
+url='https://kde.org/applications/en/unmaintained/org.kde.kaudiocreator'
 license=('GPL')
 depends=('kdelibs4support'
          'knotifyconfig'
