@@ -1,7 +1,7 @@
 pkgbase = python-geoviews
 	pkgdesc = Simple, concise geographical visualization in Python
-	pkgver = 1.6.2
-	pkgrel = 2
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://github.com/pyviz/geoviews
 	arch = any
 	license = BSD
@@ -27,8 +27,8 @@ pkgbase = python-geoviews
 	optdepends = python-shapely
 	optdepends = python-xarray
 	optdepends = jupyter
-	source = https://github.com/pyviz/geoviews/archive/v1.6.2.tar.gz
-	sha256sums = b89c44168891fff3071e38a671a8f7806179a60733dbedc2a32143ebabc2b974
+	source = https://github.com/pyviz/geoviews/archive/v1.8.1.tar.gz
+	sha256sums = c71a3203a47dbff1e17af590c854bd2c44157f077b1d37589404e89238050b1f
 
 pkgname = python-geoviews
 
