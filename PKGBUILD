@@ -1,14 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=shards-git
-pkgver=v0.5.3.r0.geaaced6
+pkgver=v0.11.1.r0.g3b7d490
 pkgrel=1
 pkgdesc="The package manager for the Crystal language (git version)"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ysbaddaden/shards"
 license=('Apache')
 conflicts=('shards')
 provides=('shards')
-depends=('libyaml' 'git' 'libpcl' 'libevent' 'gc')
+depends=('libyaml' 'git' 'libevent' 'gc')
 makedepends=('crystal')
 source=("git+https://github.com/ysbaddaden/shards.git")
 
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${pkgname/-git/}"
 
-  crystal build --release -o bin/shards src/shards.cr
+  make CRYSTAL_OPTS="--release" 
 }
 
 check() {
@@ -34,10 +34,8 @@ check() {
 
 package() {
   cd "${pkgname/-git/}"
-
-  install -Dm755 bin/shards "$pkgdir/usr/bin/shards"
-  install -Dm644 src/man/shards.1 "$pkgdir/usr/share/man/man1/shards.1"
-  install -Dm644 src/man/shard.yml.5 "$pkgdir/usr/share/man/man5/shard.yml.5"
+  
+  make install PREFIX="$pkgdir/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('SKIP')
