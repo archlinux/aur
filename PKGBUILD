@@ -24,4 +24,11 @@ build() {
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
+  cd "${pkgdir}"
+  chmod 755 opt/
+  chmod 755 usr/
+  chmod 755 usr/local
+  chmod 755 usr/local/bin/
+  chmod 755 usr/share/
+  chmod 755 usr/share/applications/
 }
