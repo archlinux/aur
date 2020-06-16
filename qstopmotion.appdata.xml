@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.qstopmotion.qstopmotion</id>
+  <launchable type="desktop-id">qstopmotion.desktop</launchable>
+  <name>qStopMotion</name>
+  <summary>Program to create stop-motion animations</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <description>
+    <p>Program to create stop-motion animations. Features:</p>
+    <ul>
+      <li>Project management using Scenes, Takes and Exposures</li>
+      <li>Live-View of the camera picture</li>
+      <li>Onion-Scinning</li>
+      <li>Take pictures from WebCam, Digicam and Camera</li>
+      <li>Import of existing pictures</li>
+      <li>Export to different video formats</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+​      <image>http://qstopmotion.org/images/screenshots/mode_mixing.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://sourceforge.net/p/qstopmotion/tickets/</url>
+  <url type="homepage">http://qstopmotion.org/</url>
+</component>
