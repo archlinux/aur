@@ -7,7 +7,7 @@
 pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
-pkgver=1.90.1.r53.g1b74813
+pkgver=1.90.2.r1.gfd2875a
 pkgrel=1
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
