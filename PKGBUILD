@@ -8,7 +8,7 @@ pkgdesc="Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patche
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-makedepends=('fontconfig' 'xorg-mkfontdir' 'xorg-mkfontscale')
+makedepends=('fontconfig' 'xorg-mkfontscale')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 source=("https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/patched-fonts/AnonymousPro/complete/Anonymice%20Nerd%20Font%20Complete%20Mono.ttf"
         "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/patched-fonts/Monofur/Regular/complete/monofur%20Nerd%20Font%20Complete%20Mono.ttf"

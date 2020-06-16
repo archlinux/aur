@@ -6,7 +6,6 @@ pkgbase = nerd-fonts-complete-mono-glyphs
 	arch = any
 	license = MIT
 	makedepends = fontconfig
-	makedepends = xorg-mkfontdir
 	makedepends = xorg-mkfontscale
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
