@@ -1,12 +1,13 @@
 pkgbase = scry-git
 	pkgdesc = Scry is a language server for Crystal.
-	pkgver = 1.e3f3168
-	pkgrel = 1
+	pkgver = 186.e648e65
+	pkgrel = 2
 	url = https://github.com/crystal-lang-tools/scry
 	arch = x86_64
 	license = MIT
 	depends = git
 	depends = crystal
+	depends = shards
 	source = git+https://github.com/crystal-lang-tools/scry
 	sha256sums = SKIP
 
