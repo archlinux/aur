@@ -1,0 +1,6 @@
+/tags
+/build_package
+/pkg
+/src
+*.xz
+/desktop-app-*

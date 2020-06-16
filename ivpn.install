@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+post_upgrade () {
+  echo "Restarting ivpn-service.service..."
+  systemctl restart ivpn-service.service
+}
+
+post_install () {
+  echo "Enabling ivpn-service.service..."
+  systemctl enable --now ivpn-service.service
+}
