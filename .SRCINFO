@@ -1,6 +1,6 @@
 pkgbase = hplip-plugin
 	pkgdesc = Binary plugin for HPs hplip printer driver library
-	pkgver = 3.20.5
+	pkgver = 3.20.6
 	pkgrel = 1
 	url = http://hplipopensource.com/node/309
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = hplip-plugin
 	arch = armv7h
 	arch = aarch64
 	license = custom:proprietary
-	depends = hplip>=3.20.5
+	depends = hplip>=3.20.6
 	backup = var/lib/hp/hplip.state
-	source = https://developers.hp.com/sites/default/files/hplip-3.20.5-plugin.run
-	md5sums = 931f125a72aa79f9de8b2c0ad46017c3
+	source = https://developers.hp.com/sites/default/files/hplip-3.20.6-plugin.run
+	md5sums = 77ae206da281887ab6c96c12a959f8f8
 
 pkgname = hplip-plugin
 
