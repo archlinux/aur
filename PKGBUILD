@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 _version=1.0.0
 
 pkgver() {
-    cd parallel-hashmap
-    echo "${_version}_$(git log --format="%cd" --date=short -1 | sed 's/-//g')" | sed 's/-/_/g'
+	cd parallel-hashmap
+	echo "${_version}_$(git log --format="%cd" --date=short -1 | sed 's/-//g')" | sed 's/-/_/g'
 }
 
 build() {
@@ -25,15 +25,15 @@ build() {
 	cd build
 
 	cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-	      -DPHMAP_BUILD_TESTS=ON \
-	      -DPHMAP_BUILD_EXAMPLES=ON ..
+				-DPHMAP_BUILD_TESTS=ON \
+				-DPHMAP_BUILD_EXAMPLES=ON ..
 
 	make ${MAKEFLAGS}
 }
 
 check() {
-  cd parallel-hashmap/build
-  make ${MAKEFLAGS} test
+	cd parallel-hashmap/build
+	make ${MAKEFLAGS} test
 }
 
 package() {
