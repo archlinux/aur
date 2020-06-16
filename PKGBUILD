@@ -16,6 +16,6 @@ sha1sums=('fbabc189bd26622c5c80d53a638dfc9f06075b4d'
 
 package() {
   cd "${srcdir}"
-  install -Dm 755 -t "${pkgdir}/usr/bin/powdertoy" powder64
+  install -Dm 755 -t "${pkgdir}/usr/bin" powder64
   install -Dm 644 -t "${pkgdir}/usr/share/applications" powdertoy-tpt.desktop
 }
