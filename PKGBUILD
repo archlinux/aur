@@ -3,7 +3,7 @@
 
 _gemname=sexp_processor
 pkgname="ruby-${_gemname}"
-pkgver=4.11.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="A branch of ParseTree that brings several sexp processing tools."
 arch=(any)
@@ -12,9 +12,9 @@ license=(MIT)
 depends=(ruby)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
-source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('4c90ff17c492789fdd248369fa16ce65ef05576b3d9f593a49c6a0961dbcd5ee')
+sha256sums=('a5ec27d8055ad47444cfb7ce860bad8af2365772a82892f4a8a0d97e8e9e3b34')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
