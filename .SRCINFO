@@ -1,0 +1,22 @@
+pkgbase = python-imagededup
+	pkgdesc = Finding duplicate images made easy
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://idealo.github.io/imagededup
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-tensorflow
+	depends = python-tqdm
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	source = python-imagededup-0.2.2.tar.gz::https://github.com/idealo/imagededup/archive/v0.2.2.tar.gz
+	sha256sums = 3e83f2931cd7e58387481a7df06e0f4ba47c80d244c31102c3cd71debbcb61f5
+
+pkgname = python-imagededup
+
