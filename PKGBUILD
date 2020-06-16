@@ -26,7 +26,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.9.80
+pkgver=1.10.90
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -45,13 +45,17 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=a6a05a03373d7a26f5f344e36db514c9e7627b22
+arch_revision=41b7e682bd3a4445ccc97ede268834a4255f3c3f
 for Patches in \
         clean-up-a-call-to-set_utf8.patch \
+        iwyu-std-numeric_limits-is-defined-in-limits.patch \
         add-missing-algorithm-header-in-crx_install_error.cc.patch \
-        avoid-double-destruction-of-ServiceWorkerObjectHost.patch \
-        chromium-83-gcc-10.patch \
+        libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch \
+        include-memory-header-to-get-the-definition-of-std-u.patch \
         make-some-of-blink-custom-iterators-STL-compatible.patch \
+        avoid-double-destruction-of-ServiceWorkerObjectHost.patch \
+        v8-remove-soon-to-be-removed-getAllFieldPositions.patch \
+        chromium-83-gcc-10.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -66,10 +70,14 @@ sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
+            '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
             '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
-            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
-            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
+            '50687079426094f2056d1f4806dc30fc8d6bad16190520e57ba087ec5db1d778'
+            '071326135bc25226aa165639dff80a03670a17548f2d2ff5cc4f40982b39c52a'
             '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
+            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
+            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
+            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
 
@@ -104,14 +112,26 @@ prepare() {
     # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
     patch -Np1 -i "${srcdir}"/clean-up-a-call-to-set_utf8.patch
 
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2153111
+    patch -Np1 -F3 -i "${srcdir}"/iwyu-std-numeric_limits-is-defined-in-limits.patch
+
     # https://chromium-review.googlesource.com/c/chromium/src/+/2152333
     patch -Np1 -i "${srcdir}"/add-missing-algorithm-header-in-crx_install_error.cc.patch
+
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2132403
+    patch -Np1 -i "${srcdir}"/libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2164645
+    patch -Np1 -i "${srcdir}"/include-memory-header-to-get-the-definition-of-std-u.patch
 
     # https://chromium-review.googlesource.com/c/chromium/src/+/2174199
     patch -Np1 -i "${srcdir}"/make-some-of-blink-custom-iterators-STL-compatible.patch
 
     # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
     patch -Np1 -i "${srcdir}"/avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+
+    # https://crbug.com/v8/10393
+    patch -Np1 -d v8 <"${srcdir}"/v8-remove-soon-to-be-removed-getAllFieldPositions.patch
 
     # Fixes from Gentoo
     patch -Np1 -i "${srcdir}"/chromium-83-gcc-10.patch
