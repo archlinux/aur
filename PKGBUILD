@@ -14,7 +14,7 @@ conflicts=('python-slixmpp')
 makedepends=('git' 'cython')
 options=(!emptydirs)
 
-source=("git://git.poez.io/slixmpp")
+source=("git+https://lab.louiz.org/poezio/slixmpp.git")
 md5sums=('SKIP')
 
 pkgver() {

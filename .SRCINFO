@@ -16,7 +16,7 @@ pkgbase = python-slixmpp-git
 	provides = python-slixmpp
 	conflicts = python-slixmpp
 	options = !emptydirs
-	source = git://git.poez.io/slixmpp
+	source = git+https://lab.louiz.org/poezio/slixmpp.git
 	md5sums = SKIP
 
 pkgname = python-slixmpp-git
