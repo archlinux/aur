@@ -56,17 +56,18 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=6
+_minor=7
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=8
-_kernelname=-pf
+_unpatched_sublevel=2
+_pfrel=2
+_kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_bmppatchname=bmq_v5.6-r4.patch
+_bmppatchname=bmq_v5.7-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -74,7 +75,7 @@ _CPUSUFFIXES_KBUILD=(
 pkgname=('linux-pf')
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
-pkgver=${_basekernel}.${_pfrel}
+pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
@@ -127,10 +128,9 @@ prepare() {
 	  cat "${startdir}/config.i686" >| .config
   fi
 
-  sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
+  # Restore unpatched sublevel the current -pf is based on
+  sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_unpatched_sublevel|" Makefile
 
-  # Set EXTRAVERSION to -pf
-  sed -ri "s|^(EXTRAVERSION =).*|\1|" Makefile
   _arch=$CARCH
 
   
@@ -302,7 +302,7 @@ build() {
 
   # Strip config of uneeded localversion
   if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${_kernelname}\"|g" ./.config
     sed -i "s/CONFIG_LOCALVERSION_AUTO=.*/CONFIG_LOCALVERSION_AUTO=n/" ./.config
   fi
 
@@ -460,7 +460,7 @@ _package() {
 
   
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}-${_kernelname:-ARCH}"
   ln -s "../${_extramodules}" \
      "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
@@ -656,13 +656,13 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'e78bfa9f5a1065d93396a37d59043bd79805f4681df27ef44dcddea8de092818'
             '35b1eea04b02c8072568bce49468eb8487e1217a0f5a3cd979cff9af569ab2ef'
             '59008ddd377115e3ecba7dd33fa04be709cbfe1ef104a7d462b5ed01e04a04b7'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '8fe1e28fabfe46683bd70372e2b1c7b6aeabd68d996c9db4e456f8b52a5e7b43'
-            '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
+            '2c3a80e1a0e5c90e05d8f03d8c11853f47f7d3e61afb324095e883691a5f74ec'
+            '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
