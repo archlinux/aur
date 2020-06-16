@@ -6,7 +6,7 @@ url="https://github.com/anthony-nouy/tensap"
 arch=(any)
 license=('LGPL')
 makedepends=('python-setuptools')
-depends=('python-scipy')
+depends=('python-scipy' 'python-tensorflow')
 source=("https://github.com/anthony-nouy/tensap/archive/v${pkgver}.tar.gz")
 sha256sums=('e0828ad9b2a330d996b2ce4a445980dd7bc22e79573abb7b36ff0920779b8a9d')
 
