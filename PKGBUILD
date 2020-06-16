@@ -1,8 +1,8 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=invoiceninja
-pkgver=4.5.16
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='Invoices, Expenses and Tasks built with Laravel and Flutter'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('php')
 optdepends=('mariadb')
 source=("invoiceninja-$pkgver.tar.gz::https://github.com/invoiceninja/invoiceninja/archive/v${pkgver}.tar.gz"
         "invoiceninja.tmpfiles")
-sha512sums=('3a2ada5a73e940373ba7d35c5633c91122578da8a0cf16c568eef87b82abd44fabf74640f0e6e56bae41c45db8f50bd3dea71dac5bd69ca9ed6afaa97f646075'
+sha512sums=('9e5f08320647e7500f237bd44b24df6a45601862ee4f7df7df071276adadfb98d2d3c37d0467ef71853382a281fe3b7b54729934148fa1866817cdfc2d8167da'
             '552cbcc62451182fcc1d04417338c72d0486b02f55ee3e6df89187e81b78cb9ba46ae4e9b9dc9b67a91933850c3aa024e79de7572063e0a58ae5c93090ca1770')
 
 package() {
