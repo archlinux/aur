@@ -15,7 +15,7 @@ pkgbase='cnrdrvcups-lb'
 pkgbase+='-bin'
 pkgname="${pkgbase}"
 # The download link changes with every version, try to keep changes in one place
-_pkgver='5.00';  _dl='8/0100007658/11'
+_pkgver='5.10';  _dl='8/0100007658/13'
 
 pkgver="${_pkgver}"
 pkgrel='1'
@@ -36,11 +36,11 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
 options=('!emptydirs' '!strip' '!libtool')
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-06.tar.gz"
+  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-08.tar.gz"
 )
-md5sums=('6f9f292c05df589f5940b65dc4f5c8b6')
-sha256sums=('f3a16e7b55982f336f4992680ce373b59dce937466458454851f3a46656c544b')
-sha512sums=('56ef4f53de630651e3953c17525f473b51b804853425f987b05ef1ee797234be01efde594f25b0a89d80098e5f5a2987cffd9eabee836dde0e3916c30cd25cf3')
+md5sums=('c80793681b666766cedf864a3fd20dd7')
+sha256sums=('a46986d6df72ba66dba61bd0649358f682077ef568c52e2aa0e823011b87f2a7')
+sha512sums=('dbc8b8e600ec29e73afa4ba8a760fd643d58ee2017f6c3c35e63c7f2186cf0cb675adb0ea344b0bd04d0b4fa7f13763b5ce97e8264790356134e6ded3069bf54')
 
 #PKGEXT='.pkg.tar.gz'
 
