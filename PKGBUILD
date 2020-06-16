@@ -1,5 +1,5 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
-pkgname=marktext-bin
+pkgname=marktext-appimage
 pkgver=0.16.1
 pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability.'
