@@ -7,6 +7,7 @@
 pkgname=jgraphx-jre8
 _pkgname=jgraphx
 pkgver=3.7.4
+epoch=1
 pkgrel=1
 pkgdesc="Open source graph drawing component."
 arch=('any')

@@ -2,6 +2,7 @@ pkgbase = jgraphx-jre8
 	pkgdesc = Open source graph drawing component.
 	pkgver = 3.7.4
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/jgraph/jgraphx
 	arch = any
 	license = BSD
