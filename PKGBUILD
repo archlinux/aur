@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=5.0.418682.0603
+pkgver=5.1.412382.0614
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('qt5-webengine: SSO login support'
 			'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
 source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('24653e1ca48dbf7ce245481c577a6d3f660e7b0cc7bc83785456f33659d5ce97b2bff7870e2df8ecf8aeea2fb70d9c284c93613c7bc710a221cc57333f9f37a5')
+sha512sums=('c83a5eae76933d2280e3e054654b09743ad138094322562a5198f3f1dd9d8a85bc758fe574a13adc62d162d3268dc5231416f6752ce25792757b8e60b7ae7da0')
 
 prepare() {
 	sed -i 's/Zoom\.png/Zoom/g' "${srcdir}/usr/share/applications/Zoom.desktop"
