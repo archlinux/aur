@@ -1,0 +1,5 @@
+!.gitignore
+php-phpiredis-git*
+phpiredis/
+src/
+pkg/

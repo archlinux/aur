@@ -1,14 +1,14 @@
 pkgbase = php-phpiredis-git
 	pkgdesc = PHP extension for Redis based on Hiredis
-	pkgver = 1.0.0.r0.g981d455
+	pkgver = 1.0.0.r1.gcc401c1
 	pkgrel = 1
-	url = https://github.com/nrk/phpiredis
+	url = https://github.com/gearhead/phpiredis
 	arch = i686
 	arch = x86_64
 	license = PHP
 	depends = php
 	depends = hiredis
-	source = git+https://github.com/nrk/phpiredis.git
+	source = git+https://github.com/gearhead/phpiredis.git
 	md5sums = SKIP
 
 pkgname = php-phpiredis-git

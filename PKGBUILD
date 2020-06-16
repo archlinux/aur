@@ -1,15 +1,15 @@
-# Maintainer: Elisamuel Resto <user00265 at gmail dot com>
+# Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 _pkgname=phpiredis
 pkgname=php-${_pkgname}-git
-pkgver=1.0.0.r0.g981d455
+pkgver=1.0.0.r1.gcc401c1
 pkgrel=1
 pkgdesc="PHP extension for Redis based on Hiredis"
 arch=("i686" "x86_64")
-url="https://github.com/nrk/phpiredis"
+url="https://github.com/gearhead/phpiredis"
 license=("PHP")
 depends=("php" "hiredis")
-source=("git+https://github.com/nrk/phpiredis.git")
+source=("git+https://github.com/gearhead/phpiredis.git")
 md5sums=('SKIP')
 
 pkgver() {
