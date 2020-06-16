@@ -6,7 +6,7 @@
 #
 _prjname=IDE65XX
 pkgname=ide65xx
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="IDE for 6502, 6510, C64 projects uses Kick Assembler"
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://github.com/emartisoft/${_prjname}/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('f72f4c20f2bee83aab70f82cd8992abe')
+md5sums=('de711c27ccf7ca140b443001713ef450')
 
 
 prepare() {
@@ -47,7 +47,8 @@ check() {
 package() {
   cd "${srcdir}/${_prjname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
-  install -Dm0755 IDE65xx "${pkgdir}/usr/local/bin/IDE65xx"
+  install -Dm0755 IDE65XX "${pkgdir}/usr/local/bin/IDE65XX"
+  ln -s -f IDE65XX "${pkgdir}/usr/local/bin/IDE65xx"
   # desktop/icon
   mkdir -p "${pkgdir}/usr/share/applications/"
   echo -e "[Desktop Entry]\nName=IDE 65XX\nComment=IDE 65XX Kick Assembler Edition\nExec=/usr/local/bin/IDE65xx\nIcon=ide65xx.png\nTerminal=false\nType=Application\nX-Ubuntu-Touch=true\n" > "${pkgdir}/usr/share/applications/IDE65XX.desktop"
