@@ -2,14 +2,15 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.34.0.r228.gf3249054e
+pkgver=0.35.0.r12.g01dafa331
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('gc' 'libatomic_ops' 'pcre' 'libevent')
-makedepends=('git' 'libxml2' 'llvm' 'crystal')
+makedepends=('git' 'libxml2' 'llvm')
+makedepends_x86_64=('crystal')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git' 'inetutils')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
@@ -18,6 +19,10 @@ optdepends=('shards: To make the crystal deps command work'
 conflicts=('crystal')
 provides=('crystal')
 source=("git+https://github.com/crystal-lang/crystal.git")
+source_aarch64=("https://dev.alpinelinux.org/archive/crystal/crystal-0.35.0-aarch64-alpine-linux-musl.tar.gz"
+	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9401.patch"
+	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9430.patch"
+	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9422.patch")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
@@ -25,6 +30,19 @@ pkgver() {
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+  cd "$srcdir/${pkgname/-git/}"
+
+  if [ "$CARCH" = "aarch64" ]; then
+    git clean -f
+    patch -p1 < "$srcdir/9401.patch"
+    patch -p1 < "$srcdir/9430.patch"
+    patch -p1 < "$srcdir/9422.patch"
+    export PATH="$srcdir/crystal-0.35.0-aarch64-alpine-linux-musl/bin:$PATH"
+    export EXPORT_CC="CC=cc" # prevent lld usage, broken on  aarch64
+  fi
 }
 
 build() {
@@ -72,3 +90,7 @@ package() {
 }
 
 sha256sums=('SKIP')
+sha256sums_aarch64=('de903f2b53eec558cb77520cd9d52bde357bffae37fc6120308b4ddd8a7d65f9'
+                    'e478e82388437d86e3d6921e0f1e8786232f472484e77aee393e7b634059b6d0'
+                    '5198112f76c58954112bc434e1165d1134adef9cc42abcd2d8f45d99e2309303'
+                    '5044d1a22687c712ee8bfb152fd2336b5333d6709bdb98c9450fbcf19cc5ddad')
