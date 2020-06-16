@@ -1,0 +1,14 @@
+pkgbase = systemd-wireguard-refresh-git
+	pkgdesc = Personal tmux configuration
+	pkgver = r4.6e75115
+	pkgrel = 1
+	arch = any
+	license = AGPL
+	makedepends = git
+	provides = systemd-wireguard-refresh
+	conflicts = systemd-wireguard-refresh
+	source = git+https://github.com/pvcbe/systemd-wireguard-refresh.git
+	md5sums = SKIP
+
+pkgname = systemd-wireguard-refresh-git
+

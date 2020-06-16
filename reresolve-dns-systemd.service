@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Wireguard peers DNS info
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reresolve-dns-systemd.sh
+
+[Install]
+WantedBy=network-online.target
+
