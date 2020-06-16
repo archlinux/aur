@@ -30,6 +30,7 @@ post_install() {
   post_upgrade
   #usermod -d '/' "${_hyuser}" &>/dev/null
   _print_install
+  /usr/share/libalpm/scripts/hylafax-ps2afm.sh build
   mandb -q
   set +u
 }
@@ -120,6 +121,7 @@ pre_remove() {
 post_remove() {
   set -u
   systemctl daemon-reload
+  /usr/share/libalpm/scripts/hylafax-ps2afm.sh destroy
   mandb -q
   set +u
 }
