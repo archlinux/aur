@@ -35,7 +35,7 @@ GSL_LIBS = -lgsl -lgslcblas -lm
 DEFINES += GC_WANT_PYTHON
 CONFIG += link_pkgconfig
 # Add python3 using pkg-config
-PKGCONFIG += python3
+PKGCONFIG += python3 python3-embed
 #PYTHONINCLUDES = -I/usr/include/python3.6
 #PYTHONLIBS = -L/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu -lpython3.6m
 # below 3 lines work well on Windows
@@ -302,3 +302,7 @@ macx {
 #DEFINES +=GC_CLOUD_DB_BASIC_AUTH=
 #DEFINES +=GC_CLOUD_DB_APP_NAME=
 #CloudDB = active
+
+# Fixes for building on Arch Linux
+
+DEFINES += SIP_MODULE_NAME=\\\"sip\\\"
