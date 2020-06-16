@@ -1,10 +1,10 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=18.07.70.r3567.bfdc6db6
+pkgver=20.07.70.r3687.4d1e0c1a
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://kwave.sourceforge.net'
 license=('GPL')
 depends=('qt5-multimedia'
@@ -31,29 +31,30 @@ optdepends=('libmad: MP3 plugin'
             'fftw: Sonagram plugin')
 conflicts=('kwave')
 provides=('kwave')
-source=('git://anongit.kde.org/kwave.git')
+source=('git+https://invent.kde.org/multimedia/kwave.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd kwave
-  _ver="$(cat CMakeLists.txt | grep -m3 -e '_VERSION_MAJOR' -e '_VERSION_MINOR' -e '_VERSION_MICRO' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e VERSION_MICRO | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-}
 
-build() {
   cd build
   cmake ../kwave \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DWITH_MP3=ON
 
-  make
+}
+
+build() {
+  make -C build
 }
 
 package() {
