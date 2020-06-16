@@ -1,0 +1,14 @@
+pkgbase = g17-star-database-mag17-astap
+	pkgdesc = For the internal astrometric solver of astap. Contains 105 million stars up to magnitude 17.
+	pkgver = 20190906
+	pkgrel = 1
+	url = http://www.hnsky.org/astap.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = astap-bin
+	source = https://astuteinternet.dl.sourceforge.net/project/astap-program/star_databases/g17_star_database_mag17_astap.deb
+	sha1sums = 94a896595ef874f13e0805107892379375591fe4
+
+pkgname = g17-star-database-mag17-astap
+
