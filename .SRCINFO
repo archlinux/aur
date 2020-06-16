@@ -1,0 +1,20 @@
+pkgbase = marktext-bin
+	pkgdesc = A simple and elegant open-source markdown editor that focused on speed and usability.
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://marktext.app
+	arch = x86_64
+	license = Apache
+	depends = dbus-glib
+	depends = nss
+	depends = libxss
+	depends = libdbusmenu-gtk2
+	depends = libindicator-gtk2
+	depends = gtk3
+	depends = libsecret
+	depends = libxkbfile
+	source = https://github.com/marktext/marktext/releases/download/v0.16.1/marktext-x86_64.AppImage
+	sha256sums = 373080e22e6c0aa9fa9394c91b6cf1036898a17595e629983912bbced89653ec
+
+pkgname = marktext-bin
+
