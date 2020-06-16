@@ -39,9 +39,10 @@ prepare() {
   sed '/ifdef USE_STATIC/{ N; s|.*\n\(\s*SLIB += $(IM_LIB)/libim.a\)|ifdef x_UNDEFINED_x\n\1|; }' -i "$srcdir"/iup/tecmake.mak
   sed '/ifdef USE_STATIC/{ N; s|.*\n\(\s*SLIB += $(FTGL_LIB)/libftgl.a\)|ifdef x_UNDEFINED_x\n\1|; }' -i "$srcdir"/iup/tecmake.mak
 
-  # Link libcdgl and libcdcontextplus dynamically for iupvled
+  # Link external libraries from libim and libcd dynamically for iupvled
   sed 's|SLIB += $(CD_LIB)/libcdgl.a|LIBS += cdgl|' -i "$srcdir"/iup/srcvled/config.mak
   sed 's|SLIB += $(CD_LIB)/libcdcontextplus.a|LIBS += cdcontextplus|' -i "$srcdir"/iup/srcvled/config.mak
+  sed 's|\(SLIB += $(IUP_LIB)/libiupim.a\).*|\1\nLIBS += im_process cdim|' -i "$srcdir"/iup/srcvled/config.mak
 
   # We want to use dynamic liblua
   sed '/NO_LUALINK = Yes/{ n; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluaconsole/config.mak
@@ -52,7 +53,7 @@ prepare() {
   sed 's/$(ECHO)$(LD)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
 
   # Add required gmodule-2.0 to pkg-config (temporary patch to build successfully)
-  sed '/PKGLIBS += $(shell pkg-config --libs gtk+-$(GTKSFX).0 gdk-$(GTKSFX).0)/{ s/\(.*\))/\1 gmodule-2.0)/ }' -i "$srcdir"/iup/tecmake.mak
+  sed '/PKGLIBS += $(shell pkg-config --libs gtk+-$(GTKSFX).0 gdk-$(GTKSFX).0/ { s/\(.*\))/\1 gmodule-2.0)/ }' -i "$srcdir"/iup/tecmake.mak
 }
 
 _lua_iup_build_helper() {
