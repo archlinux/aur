@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-bin-dev
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries, developement version
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://desktop.telegram.org
 	install = telegram-desktop-bin-dev.install
@@ -13,9 +13,8 @@ pkgbase = telegram-desktop-bin-dev
 	depends = hicolor-icon-theme
 	depends = libdbus
 	depends = libx11
-	optdepends = libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)
-	optdepends = libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)
-	optdepends = libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)
+	optdepends = libappindicator-gtk2: to hide Telegram in the tray bar for GTK2-based desktop environment
+	optdepends = libappindicator-gtk3: to hide Telegram in the tray bar for GTK3-based desktop environment
 	optdepends = xdg-utils: for automatic opening of URLs, files and directories in proper applications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
@@ -39,10 +38,10 @@ pkgbase = telegram-desktop-bin-dev
 	sha256sums = 83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032
 	sha256sums = 871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76
 	sha256sums = a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d
-	source_i686 = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.10/tsetup32.2.1.10.tar.xz
-	sha256sums_i686 = 31475c7433365d20874c818ed6968e77a056f3fdf18c5b82286b71ecdd9f8227
-	source_x86_64 = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.10/tsetup.2.1.10.tar.xz
-	sha256sums_x86_64 = 1188cc2c1bde053a5c805e37f8d808491b67964a8e354eb0177732fb42944a46
+	source_i686 = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.11/tsetup32.2.1.11.tar.xz
+	sha256sums_i686 = 4f3b4981a7fe2c3f5bd80a94f3c1aa7db3cd15e987e189f954c19a381ee74f41
+	source_x86_64 = https://github.com/telegramdesktop/tdesktop/releases/download/v2.1.11/tsetup.2.1.11.tar.xz
+	sha256sums_x86_64 = 16db378e0cce218d3b042b30729618f89f85467e00cd42515c23889a3ef163f9
 
 pkgname = telegram-desktop-bin-dev
 
