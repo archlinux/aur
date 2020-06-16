@@ -13,7 +13,7 @@ license=('GPL3')
 makedepends=('subversion')
 provides=('simulide')
 conflicts=('simulide')
-source=("src/simulide::svn+https://svn.code.sf.net/p/${_pkgname}/svnrepo/trunk" "simulide.desktop")
+source=("svn+https://svn.code.sf.net/p/${_pkgname}/svnrepo/trunk" "simulide.desktop")
 md5sums=('SKIP'
          'beda8f4452562e5cc1e2c9a19ac99bb3')
 depends=(
