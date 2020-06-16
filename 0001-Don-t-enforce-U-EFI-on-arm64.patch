@@ -1,0 +1,30 @@
+>From 1d70f88536654e98c1111ed993a107fbb8f7ffb2 Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <stapelberg@debian.org>
+Date: Wed, 23 Nov 2016 12:36:11 +0100
+Subject: [PATCH] =?UTF-8?q?Don=E2=80=99t=20enforce=20(U)EFI=20on=20arm64?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The Raspberry Pi 3 uses arm64 but comes with a custom bootloader, so
+there is no need for UEFI.
+---
+ vmdebootstrap/constants.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vmdebootstrap/constants.py b/vmdebootstrap/constants.py
+index 9f39415..3d807c6 100644
+--- a/vmdebootstrap/constants.py
++++ b/vmdebootstrap/constants.py
+@@ -46,7 +46,7 @@ arch_table = {  # pylint: disable=invalid-name
+         'package': 'grub-efi-arm64',
+         'bin_package': 'grub-efi-arm64-bin',
+         'extra': None,
+-        'exclusive': True,
++        'exclusive': False,
+         'target': 'arm64-efi',
+     }
+ }
+-- 
+2.9.3
+
