@@ -26,15 +26,17 @@ package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
 
     cd "${pkgdir}/opt/zoom"
+    # Fix spurious RPATH in binaries
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
 
     rm -f qtdiag
 
+    # Remove Qt libraries
     rm -f libQt5*.so{,.*}
     rm -f libicu*.so{,.*}
 
-    rm -rf *integrations
+    rm -rf {egldevice,xcbgl}integrations
     rm -rf audio
     rm -rf generic
     rm -rf iconengines
@@ -50,6 +52,7 @@ package() {
 
     rm qt.conf
 
+    # Remove unnecessary executable flag
     chmod -x *.pcm
     chmod -x *.pem
     chmod -x sip/*.{wav,WAV}
