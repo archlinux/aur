@@ -1,0 +1,14 @@
+pkgbase = parallel-hashmap-git
+	pkgdesc = A set of excellent c++ hash map implementations
+	pkgver = 1.0.0_20200519
+	pkgrel = 1
+	url = https://github.com/greg7mdp/parallel-hashmap
+	arch = any
+	license = apache
+	makedepends = gcc
+	makedepends = cmake
+	source = git+https://github.com/greg7mdp/parallel-hashmap.git
+	sha256sums = SKIP
+
+pkgname = parallel-hashmap-git
+
