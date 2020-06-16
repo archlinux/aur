@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-data-git
 _pkgname=vegastrike
-pkgver=1
+pkgver=rev.11354
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe-data files"
 arch=('any')
@@ -17,6 +17,11 @@ conflicts=('vegastrike-data')
 
 source=('git+https://github.com/vegastrike/Assets-Production')
 sha1sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}"/Assets-Production
+  echo "rev.$(git rev-list --count HEAD)"
+}
 
 package() {
   cd "${srcdir}"

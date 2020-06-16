@@ -1,6 +1,6 @@
 pkgbase = vegastrike-data-git
 	pkgdesc = A spaceflight simulator in massive universe-data files
-	pkgver = 1
+	pkgver = rev.11354
 	pkgrel = 1
 	url = www.vega-strike.org
 	arch = any
