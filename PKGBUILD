@@ -5,19 +5,19 @@ pkgdesc="SI6 Networks' IPv6 Toolkit, a security assessment and troubleshooting t
 arch=(i686 x86_64)
 url="https://www.si6networks.com/tools/ipv6toolkit/"
 license=(GPL3)
-source=("http://web.archive.org/web/20190830081632id_/https://www.si6networks.com/tools/ipv6toolkit/ipv6toolkit-v${pkgver}.tar.gz"
-        "http://web.archive.org/web/20190830081639id_/https://www.si6networks.com/tools/ipv6toolkit/ipv6toolkit-v${pkgver}.tar.gz.sig")
-sha256sums=('16f13d3e7d17940ff53f028ef0090e4aa3a193a224c97728b07ea6e26a19e987'
-            'SKIP')
+makedepends=(git)
+_commit=cd6b535196d33b49e2d816afcbd4ce39761dd2b3
+source=("git+https://github.com/fgont/ipv6toolkit#commit=$_commit")
+sha256sums=('SKIP')
 validpgpkeys=('666631C6D48463B28FB1E3C4AE250D551D4E7492')
 
 build() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname"
   make PREFIX=/usr
 }
 
 package() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" SBINPATH="$pkgdir"/usr/bin install
 }
 
