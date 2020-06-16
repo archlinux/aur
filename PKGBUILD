@@ -6,15 +6,17 @@
 # Contributor: uuwe
 
 set -u
-pkgname='openswan'
-pkgver='2.6.51.5'
-pkgrel='2'
+_pkgname='Openswan'
+pkgname="${_pkgname,,}"
+pkgver='2.6.52.1'
+pkgrel='1'
 pkgdesc='Open Source implementation of IPsec for Linux'
 arch=('i686' 'x86_64')
 url='https://www.openswan.org'
+_giturl='https://github.com/xelerance/Openswan'
 license=('GPL' 'custom')
 depends=('gmp' 'perl' 'iproute2')
-optdepends=('python')
+optdepends=('python2')
 makedepends=('flex' 'bison')
 #makedepends+=('xmlto' 'docbook-xsl')
 conflicts=('ipsec-tools' 'strongswan')
@@ -23,19 +25,20 @@ backup=(
   'etc/ipsec.d/policies/'{block,clear,clear-or-private,private,private-or-clear}
 )
 options=('!makeflags')
-_srcdir="${pkgname}-${pkgver}"
+_srcdir="${_pkgname}-${pkgver}"
 source=(
-  "http://download.openswan.org/openswan/openswan-${pkgver}.tar.gz"
+  #"https://download.openswan.org/openswan/openswan-${pkgver}.tar.gz"
+  "${_srcdir,,}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
   '0001-gcc9-strncpy.patch'
   'openswan.service'
 )
-md5sums=('49641ce5801d5f3f5b2754fe22d051ec'
+md5sums=('1c1857a2ab293dd033afd21cf5af3ebd'
          'b54891b73bc62fce51f8ca46c8731882'
          'e428e61ba81048eef92475dffa2ffc23')
-sha256sums=('4124f4ce970089f301c34b9c48f54b021cf6b2b8813877942337f8022104f70d'
+sha256sums=('33f48de8168a9339c1a9802b51799352690319b55c1c35a64d986aebb84a1629'
             'b30cfd22b14450668ecf798e6117ca6ea07609dabbee6d0ac15ef07dcef11804'
             '9f42bc005d4c361b31d41c7186a19ed8dbd1f95be31c16663bd2a1a8da8a29f0')
-sha512sums=('b7864a1f2bf4a6c713de8ed669934567d89f79bcacf146ebd83d26d3ffb2bc482bc238308fd36a83a540fb3a832a5ff264529295c2bc309777b1e516b0e9f718'
+sha512sums=('c137cc2e589a527584c7a10afae40538a9a34924f77192b4f59587cc4008c24b54b3853bd66c5b5de1de7e6abe4bd568eb958aeeda5434732bb8b1fdf198b0ad'
             'def41d3c407ef11fef7c53e5293b5b7b4d0d394218caa0ee0b0508a016f9c229dec5569dc013955e3521140a200582e3183198e2aa1dd314d13fd73e6bad415b'
             'a234e97a4fe10fb85a8a1b69d0b55b7c7a4a9ef44c199f876f64bb7290e9f161b20e4c721112e26c6a5636a898a27a36b525aae0944cf6217ff81c36389d5803')
 
@@ -67,7 +70,7 @@ build() {
     export PATH="${PWD}:${PATH}"
   fi
 
-  if [ "${pkgver}" = '2.6.51.5' ]; then
+  if [ "${pkgver}" = '2.6.52.1' ]; then
     CFLAGS+=' -fcommon'
   fi
   make USE_XAUTH='true' USE_OBJDIR='true' programs
@@ -99,6 +102,9 @@ package() {
 
   # fix python2
   sed -e '1s|python|python2|' -i "${pkgdir}/usr/lib/openswan/verify"
+
+  # clean up /run (namcap Tue 16 Jun 2020 06:24:25 PM EDT)
+  rm -r "${pkgdir}/run"
   set +u
 }
 set +u
