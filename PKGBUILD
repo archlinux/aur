@@ -1,6 +1,6 @@
 # Maintainer: Max Christian Pohle <webmaster@coderonline.de>
 pkgname=base16-vtrgb
-pkgver=2020_05_25
+pkgver=2020_06_16
 pkgrel=1
 pkgdesc="base16 color schemes available for the virtual terminal (vt, tty)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 )
 backup=('etc/vtrgb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coderonline/base16-vtrgb/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('afc1a825f1683de5aa1be1c0d4f56ab1694afbf7bdcac184bb57bcab5e79c23d')
+sha256sums=('1ec1d62d50ce18bd4893b6100214806dd441ca166f58f69d36d84bee622741dc')
 install='base16-vtrgb.install'
 
 package() {
