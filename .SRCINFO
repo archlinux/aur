@@ -1,19 +1,27 @@
 pkgbase = yozo-office
-	pkgdesc = Yozo Office - An M$ Office Compatible Office Suit
-	pkgver = 7.0.2439.101ZH.S1
-	pkgrel = 2
-	url = http://www.yozosoft.com/
-	install = yozo-office.install
-	arch = i686
+	pkgdesc = 永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office Suite
+	pkgver = 8.0.1331.101ZH.S1
+	pkgrel = 1
+	url = https://www.yozosoft.com/product-officelinux.html
 	arch = x86_64
-	license = unknown
+	license = custom
+	provides = yozo-office-2019
+	conflicts = yozo-office-2019
+	options = !emptydirs
+	options = !strip
+	source_x86_64 = http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_8.0.1331.101ZH.S1_amd64.deb
+	md5sums_x86_64 = cf22531071e607019c02a1a046f70e5c
+
+pkgname = yozo-office
+	install = yozo-office.install
+	depends = jre8-openjdk-headless
 	depends = libxtst
 	depends = libxt
 	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
 	optdepends = ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.
-	options = !strip
-	source_x86_64 = http://download.yozosoft.com/free/zh/2018/yozo-office_7.0.2439.101ZH.S1_amd64.deb
-	md5sums_x86_64 = SKIP
+	optdepends = yozo-office-2019-fonts: UI Fonts
+	optdepends = yozo-office-2019-templates: Templates files
 
-pkgname = yozo-office
+pkgname = yozo-office-fonts
+	pkgdesc = 永中办公界面字体 | UI Fonts provided by Yozo Office 2019
 
