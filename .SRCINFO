@@ -7,9 +7,9 @@ pkgbase = maestral-qt
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	depends = maestral
-	depends = python
-	depends = python-bugsnag
+	depends = maestral>=1.1.0
+	depends = python>=3.6
+	depends = python-bugsnag>=3.4.0
 	depends = python-click>=7.1.1
 	depends = python-markdown2
 	depends = python-packaging

@@ -13,9 +13,9 @@ license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python' 'python-setuptools')
 depends=(
-    'maestral'
-    'python'
-    'python-bugsnag'
+    'maestral>=1.1.0'
+    'python>=3.6'
+    'python-bugsnag>=3.4.0'
     'python-click>=7.1.1'
     'python-markdown2'
     'python-packaging'
