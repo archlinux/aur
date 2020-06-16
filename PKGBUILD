@@ -6,7 +6,7 @@
 #
 _prjname=IDE65XX
 pkgname=ide65xx-git
-pkgver=r32.aaa3921
+pkgver=r39.30d9e84
 pkgrel=1
 epoch=
 pkgdesc="IDE for 6502, 6510, C64 projects uses Kick Assembler"
@@ -59,4 +59,6 @@ package() {
   install -Dm644 icon/ide65xx.png "${pkgdir}/usr/share/icons/ide65xx.png"
 }
 
+#
 # EOF
+#
