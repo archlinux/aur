@@ -2,7 +2,7 @@
 
 pkgname=openra-kknd-git
 _pkgname=openra-kknd
-pkgver=278.git.151583b
+pkgver=280.git.b7858a3
 pkgrel=1
 pkgdesc="A Krush, Kill n' Destroy-inspired mod of OpenRA"
 arch=('any')
