@@ -1,6 +1,6 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=gobgp-bin
-pkgver=2.16.0
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="An open source BGP implementation designed from scratch for modern environment and implemented in Golang."
 arch=('i686' 'x86_64' 'aarch64' 'armv6h')
@@ -14,10 +14,10 @@ source_x86_64=("https://github.com/osrg/gobgp/releases/download/v${pkgver}/${pkg
 source_aarch64=("https://github.com/osrg/gobgp/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("https://github.com/osrg/gobgp/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_armv6.tar.gz")
 
-sha256sums_i686=("3e4c3ce8551746990f764693210a732b9d5d60e99b246b80a02d1f421572c50c")
-sha256sums_x86_64=("dd78c3a60a337b779a5b525389b492939149f4e38c7711cb42bef1e2e5f50a5e")
-sha256sums_aarch64=("4578289b424663e814d58f5c1bffcb8f134cf87e1cc929ff604a773eacccd724")
-sha256sums_armv6h=("a27e108776bdf4dc3e4c417407dd77734c6058da793aff52d60f4cd3dc9d7cd5")
+sha256sums_i686=("cdf8b9e62ea30df968fde8969b8298fde38ac241ecac89f1da93a049ca708146")
+sha256sums_x86_64=("6078a2a5a4735bcc5bd3aecce865a66c2df6d9f3403d82c0094f4aa22dc13ee4")
+sha256sums_aarch64=("6a02a377f6d05a93cb1fad09d3ea459ca60350b847720a8065d28b5a82fea052")
+sha256sums_armv6h=("a9043274c5183335fabdd000386efeeb893970500416471b573c00234a0075b0")
 
 package() {
         install -d "${pkgdir}/usr/bin"
