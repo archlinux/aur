@@ -2,7 +2,7 @@
 # Previous maintainer: Renato Garcia <fgarcia.renato@gmail.com>
 
 pkgname=python-elpy
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Package to bring powerful Python editing to Emacs. Python library only."
 install="python-elpy.install"
@@ -17,7 +17,7 @@ optdepends=('flake8: The modular source code checker: pep8, pyflakes and co'
             'yapf: Python style guide checker')
 options=(!emptydirs)
 source=("https://github.com/jorgenschaefer/elpy/archive/${pkgver}.tar.gz")
-md5sums=('03f4e00615e6eef94ebdcb16f0873d3f')
+md5sums=('136934a19b0e1966f83cf531dd4c0050')
 
 package() {
   cd "${srcdir}/elpy-${pkgver}"
