@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kaudiocreator-git
-pkgver=1.3.r882.1f945cb
+pkgver=1.3.r886.f21c160
 pkgrel=1
 pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('git'
              )
 conflicts=('kaudiocreator')
 provides=('kaudiocreator')
-source=('git://anongit.kde.org/kaudiocreator.git')
+source=('git+https://invent.kde.org/unmaintained/kaudiocreator.git')
 sha256sums=('SKIP')
 
 pkgver() {
