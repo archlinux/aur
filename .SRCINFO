@@ -1,7 +1,7 @@
 pkgbase = kafka
 	pkgdesc = A high-throughput distributed messaging system
-	pkgver = 2.12_2.3.0
-	pkgrel = 2
+	pkgver = 2.12_2.5.0
+	pkgrel = 1
 	url = https://kafka.apache.org/
 	install = install_kafka.sh
 	arch = any
@@ -20,14 +20,14 @@ pkgbase = kafka
 	backup = etc/kafka/producer.properties
 	backup = etc/kafka/server.properties
 	backup = etc/kafka/tools-log4j.properties
-	source = http://apache.cs.utah.edu/kafka/2.2.0/kafka_2.12-2.2.0.tgz
+	source = http://us.mirrors.quenda.co/apache///kafka/2.5.0/kafka_2.12-2.5.0.tgz
 	source = zookeeper_log4j.properties
 	source = systemd_kafka.service
 	source = systemd_sysusers.d_kafka.conf
 	source = systemd_tmpfiles.d_kafka.conf
-	sha256sums = f380b7961ec189e8d86e905f0981ae81b75948c36367c8b931a8e35b58e82da1
+	sha256sums = 4a857fe348e39d1cefa71bc4f61da9ffa59efbb1ff79d41709dc3dbca5f04baf
 	sha256sums = 00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3
-	sha256sums = e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde
+	sha256sums = 90363b8272ff1faf45e48aebb878c97f97caafd97bbbb8bbf937c8f9399a6229
 	sha256sums = dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079
 	sha256sums = a2258d4a06c0fcf7f7d5367c616b0a220bbd3d35256dfb3d5f790e61ac9a98f5
 

@@ -1,4 +1,5 @@
-# Maintainer: Cody Ramaker <cramaker@linux.com>
+# Maintainer: Thor77 <thor77 at thor77 dot org>
+# Contributor: Cody Ramaker <cramaker@linux.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 # Contributor: James Bulmer <nekinie@gmail.com>
 pkgname=kafka
@@ -7,10 +8,10 @@ pkgname=kafka
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
 _scalaver=2.12
-_appver=2.3.0
+_appver=2.5.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc='A high-throughput distributed messaging system'
 arch=('any')
 url='https://kafka.apache.org/'
@@ -39,9 +40,9 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('d86f5121a9f0c44477ae6b6f235daecc3f04ecb7bf98596fd91f402336eee3e7'
+sha256sums=('4a857fe348e39d1cefa71bc4f61da9ffa59efbb1ff79d41709dc3dbca5f04baf'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
-	    '90363b8272ff1faf45e48aebb878c97f97caafd97bbbb8bbf937c8f9399a6229'
+            '90363b8272ff1faf45e48aebb878c97f97caafd97bbbb8bbf937c8f9399a6229'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
             'a2258d4a06c0fcf7f7d5367c616b0a220bbd3d35256dfb3d5f790e61ac9a98f5')
 
