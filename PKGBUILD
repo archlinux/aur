@@ -1,14 +1,14 @@
 # Maintainer: Doug Davis <ddavis at ddavis dot io>
 
 pkgname=python-pygram11
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="histogramming in python accelerated with OpenMP"
 arch=('x86_64')
 url="https://github.com/douglasdavis/pygram11"
 license=('MIT')
 groups=()
-depends=('python>=3.5' 'python-numpy')
+depends=('python>=3.6' 'python-numpy')
 optdepends=()
 checkdepends=()
 makedepends=('gcc' 'python-setuptools' 'pybind11' 'python-numpy')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://pypi.io/packages/source/p/pygram11/pygram11-$pkgver.tar.gz")
-sha256sums=('d14a5b792ff17b6f6dea66d045d3033c670d77f81754a17f22f5b0899da77464')
+sha256sums=('5475366eb773dd76dac929b0d8e0fe9614165e737aca2ef61a744d737b4acca3')
 
 build() {
   cd "${srcdir}/pygram11-${pkgver}"
