@@ -3,13 +3,12 @@
 
 pkgname=gohufont-otb
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenType bitmap conversion of Gohufont"
 arch=(any)
 url=https://font.gohu.org
 license=(custom:WTFPL)
 makedepends=(fonttosfnt)
-conflicts=(gohufont gohu-ttf gohufont-powerline)
 source=(https://font.gohu.org/gohufont-$pkgver.tar.gz)
 md5sums=(154921c092ac5a4e1806e04d84d6707d)
 
@@ -29,7 +28,7 @@ build() {
 package() {
     cd "$srcdir/gohufont-$pkgver"
     for i in *.otb; do
-        install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
+        install -Dm 644 $i "$pkgdir/usr/share/fonts/$pkgname/$i"
     done
-    install -Dm644 COPYING-LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING-LICENSE"
+    install -Dm 644 COPYING-LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING-LICENSE"
 }
