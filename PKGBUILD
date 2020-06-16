@@ -1,6 +1,8 @@
-# Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Tom van der Lee <t0m.vd.l33@gmail.com>
+
 pkgname=acts
-pkgver=1.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Another Calendar-based Tarsnap Script"
 arch=("any")
@@ -12,8 +14,8 @@ depends=("tarsnap"
 	 "util-linux")
 backup=("usr/lib/systemd/system/acts.timer")
 install=$pkgname.install
-source=(https://github.com/alexjurkiewicz/acts/archive/$pkgver.tar.gz)
-md5sums=('9156584c8cea3552658b3b255e9263bf')
+source=(https://github.com/alexjurkiewicz/acts/archive/v$pkgver.tar.gz)
+sha256sums=('0c557a84ce2adecee96e3888f037ee2279a9546ee7f41bb87924c42f0ad8133c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
