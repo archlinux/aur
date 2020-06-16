@@ -19,7 +19,7 @@ makedepends=('qt5-base'
              'doxygen'
              'graphviz')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mapmapteam/mapmap/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2f1b8236d448b6839395fd78b1d407c034749a549666270f2a17e6b5f2d25c78')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
