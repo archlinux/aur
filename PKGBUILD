@@ -2,11 +2,11 @@
 # Based on (now obsolete) ttf-arphic by Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=ttf-arphic-extra
-pkgver=20100309
+pkgver=20190327
 pkgrel=2
 pkgdesc="Extra fonts released under revised Arphic Public License for non-profit use only"
 arch=('any')
-url="http://www.arphic.com.tw/en/home/index"
+url="http://www.arphic.com.tw/2019/03/27/%E6%96%87%E9%BC%8E%E5%85%AC%E7%9C%BE%E6%8E%88%E6%AC%8A%E5%AD%97%E5%9E%8B/"
 license=('custom:Arphic_Public_License_nonprofit')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('unzip')

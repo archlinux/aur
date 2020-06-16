@@ -1,22 +1,19 @@
 pkgbase = ttf-arphic-extra
 	pkgdesc = Extra fonts released under revised Arphic Public License for non-profit use only
-	pkgver = 20100309
+	pkgver = 20190327
 	pkgrel = 2
-	url = http://www.arphic.com.tw/en/home/index
+	url = http://www.arphic.com.tw/2019/03/27/%E6%96%87%E9%BC%8E%E5%85%AC%E7%9C%BE%E6%8E%88%E6%AC%8A%E5%AD%97%E5%9E%8B/
 	arch = any
 	license = custom:Arphic_Public_License_nonprofit
-	makedepends = unrar
+	makedepends = unzip
 	depends = fontconfig
 	depends = xorg-font-utils
-	noextract = arplmingu20lt.rar
+	noextract = arplmingu20lt.zip
 	noextract = arplbaosong2gbklt.rar
-	noextract = public_license.rar
-	source = http://www.arphic.com/uploads/Download/font/arplmingu20lt.rar
-	source = http://www.arphic.com/uploads/Download/font/arplbaosong2gbklt.rar
-	source = http://www.arphic.com/uploads/Download/font/public_license.rar
-	sha256sums = 2e75608ef3208abc1d9d26b74d4f1e926c88534999b818bb1e3a19330c39ade2
-	sha256sums = 0cac44a3ec50303e374c040485e13a1ecf570c6d835504c50e064734b0300fbf
-	sha256sums = e20087a5f9b06008dd3639afdc81c469ea56514e11e4e6f849f547bfaa57684d
+	source = http://www.arphic.com.tw/wp-content/uploads/2019/03/arplmingu20lt.zip
+	source = http://www.arphic.com.tw/wp-content/uploads/2019/03/arplbaosong2gbklt.zip
+	sha256sums = 8f8af623ee58817a861558fd30471dd82d0644141fccb692f958b4f558f2c2ff
+	sha256sums = 249c6f192801f530b83df056b0f0b88519d5c00f80b983e70bf557f4fd429491
 
 pkgname = ttf-arphic-extra
 
