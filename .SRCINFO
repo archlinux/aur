@@ -1,0 +1,37 @@
+pkgbase = nextcloud-stable
+	pkgdesc = A cloud server to store your files centrally on a hardware controlled by you
+	pkgver = 18.0.6
+	pkgrel = 1
+	url = https://nextcloud.com
+	arch = any
+	license = AGPL
+	optdepends = php-apache: to use the Apache web server
+	optdepends = php-sqlite: to use the SQLite database backend
+	optdepends = php-pgsql: to use the PostgreSQL database backend
+	optdepends = php-ldap: LDAP authentication
+	optdepends = php-intl
+	optdepends = php-apcu
+	optdepends = mariadb: to use the MySQL database backend
+	optdepends = smbclient: to mount SAMBA shares
+	optdepends = php-mcrypt
+	optdepends = ffmpeg: file preview
+	optdepends = libreoffice: file preview
+	provides = nextcloud
+	conflicts = nextcloud
+	options = !strip
+	backup = etc/webapps/nextcloud/apache.example.conf
+	source = https://download.nextcloud.com/server/releases/nextcloud-18.0.6.tar.bz2
+	source = https://download.nextcloud.com/server/releases/nextcloud-18.0.6.tar.bz2.asc
+	source = apache.example.conf
+	source = nextcloud-stable.hook
+	validpgpkeys = 28806A878AE423A28372792ED75899B9A724937A
+	sha256sums = 3aa185f69c4e5ec7de3b3d5792003aeb4bd16a350865e447c9363019c69b15b2
+	sha256sums = SKIP
+	sha256sums = 30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf
+	sha256sums = 26373084dc42906814ee46e0c4ebceeeae512caf46eb7cde58b5dd972b7691b1
+
+pkgname = nextcloud-stable
+	depends = php>=7.4.0
+	depends = php<7.5.0
+	depends = php-gd
+
