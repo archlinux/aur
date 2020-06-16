@@ -6,7 +6,7 @@
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=20.20.1089974
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -58,6 +58,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib
 	# pal
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.6.0" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so" "${pkgdir}/usr/lib/"
 	# orca
 	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
