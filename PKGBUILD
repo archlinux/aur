@@ -9,8 +9,7 @@ url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 license=('LGPL')
 makedepends=('meson' 'gobject-introspection')
 depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
-provides=('libgstrtspclientsink.so' 'libgstrtspserver-1.0.so=0-64')
-conflicts=('libgstrtspclientsink.so')
+provides=('libgstrtspserver-1.0.so=0-64' 'libgstrtspclientsink.so=libgstrtspclientsink.so-64')
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=('de07a2837b3b04820ce68264a4909f70c221b85dbff0cede7926e9cdbb1dc26e'
             'SKIP')
