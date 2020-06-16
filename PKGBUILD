@@ -4,9 +4,9 @@
 
 pkgname=vivaldi-rpi
 _pkgname=vivaldi
-pkgver=3.0.1874.38
-_pkgver=3.0.1874.38-1
-pkgrel=2
+pkgver=3.1.1929.34
+_pkgver=3.1.1929.34-1
+pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=('!strip' '!emptydirs')
@@ -23,7 +23,7 @@ optdepends=(
 )
 provides=('www-browser' 'vivaldi')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${_pkgver}_armhf.deb")
-sha512sums=('79c4d99ee79fa31944c4a22e077c94f0c6b75a0c844b8b78734a5dd91f9c5a686f0eb546e2c83be010e552c7590f318ccfa67911e82dacfd05f573a9078c7b50')
+sha512sums=('4c218e95b13886c96b6489095f406ee18f51fe45b4e092c8fcf15737707fcabbccfbbb1fb59c724eecd93e1e20e98be9dbed3761db44f5afd641b3d8babc37e9')
 
 prepare() {
     tar -xf data.tar.xz
