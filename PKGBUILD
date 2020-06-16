@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=2.1.50.r437.7b7d541
+pkgver=2.2.0.r459.5bf1109
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('extra-cmake-modules'
              )
 provides=('libktorrent')
 conflicts=('libktorrent')
-source=('git://anongit.kde.org/libktorrent.git')
+source=('git+https://invent.kde.org/network/libktorrent.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,16 +29,19 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-}
 
-build() {
   cd build
   cmake ../libktorrent \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
 
-  make
+
+}
+
+build() {
+  make -C build
 }
 
 package() {
