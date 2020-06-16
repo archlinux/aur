@@ -1,6 +1,6 @@
 # Maintainer: ChungZH <chungzh07 at gmail dot com>
 pkgname=notepanda
-pkgver=0.0.3
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple cross-platform notepad. Based on Qt and C++."
 arch=('x86_64')
