@@ -1,13 +1,13 @@
 pkgbase = python-obspy-docs
 	pkgdesc = Set of HTML documentation for Obspy seismological framework.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://docs.obspy.org
 	arch = any
 	license = LGPL
 	options = docs
-	source = python-obspy-docs-1.1.1.tgz::http://docs.obspy.org/archive/obspy-1.1.1-documentation.tgz
-	sha256sums = f5cd6a62a100eb4ec2d72a2569448e5f79b1846540f58e8eadaf9461100e3664
+	source = python-obspy-docs-1.2.0.tgz::http://docs.obspy.org/archive/obspy-1.2.0-documentation.tgz
+	sha256sums = aacb0b14f0c9955f5592b7858ea455e1d02d91fab3ba7f74f11b800daeb681a9
 
 pkgname = python-obspy-docs
 
