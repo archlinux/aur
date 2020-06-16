@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=(${url}/${_pkgname}/${_pkgname}-v${pkgver}.tar.bz2{,.sign})
 md5sums=('b9628468b35e92feee63eccfee8e4863'
          'SKIP')
-validpgpkeys=('F0733C808132F189')
+validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu (2013) <jariruusu@users.sourceforge.net>
 
 
 build() {
