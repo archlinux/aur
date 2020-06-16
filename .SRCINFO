@@ -2,11 +2,12 @@ pkgbase = tempconvert
 	pkgdesc = Utility written in bash for converting temperatures between Fahrenheit and Celsius.
 	pkgver = 1.0
 	pkgrel = 2
+	url = https://benthetechguy.github.io/miscprograms/tempconvert
 	arch = any
 	license = GPL
 	depends = bc
 	noextract = $pkgname
-	source = https://raw.githubusercontent.com/benthetechguy/miscprograms/master/tempconvert
+	source = https://raw.githubusercontent.com/benthetechguy/miscprograms/master/tempconvert/tempconvert
 	sha256sums = 30aa70bb28a2c5a3d81d69f06387a4660e69d65e355a0b14618ba77e0f120519
 
 pkgname = tempconvert
