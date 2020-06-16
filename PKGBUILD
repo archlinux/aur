@@ -13,7 +13,7 @@ license=('GPL3')
 makedepends=('subversion')
 provides=('simulide')
 conflicts=('simulide')
-source=("svn+https://svn.code.sf.net/p/${_pkgname}/svnrepo/trunk" "simulide.desktop")
+source=("$_pkgname::svn+https://svn.code.sf.net/p/${_pkgname}/svnrepo/trunk" "simulide.desktop")
 md5sums=('SKIP'
          'beda8f4452562e5cc1e2c9a19ac99bb3')
 depends=(
@@ -25,7 +25,7 @@ depends=(
 )
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
