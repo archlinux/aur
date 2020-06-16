@@ -1,8 +1,8 @@
 # Maintainer: Peter PJT (pjtsearch) <peterpjtsearch at gmail dot com>
 
 pkgname=graviton-git
-pkgver=2.0.84
-pkgrel=2
+pkgver=2.0.89
+pkgrel=1
 pkgdesc="A modern code editor"
 arch=('x86_64')
 url="https://graviton.netlify.app/"
