@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=3.80.0.r962.39a5645
+pkgver=4.1.0.r1067.0ffec31
 pkgrel=1
 pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=('e2fsprogs: ext2/3/4 support'
             'nilfs-utils: nilfs support'
             'udftools: UDF support'
             )
-source=('git://anongit.kde.org/kpmcore.git')
+source=('git+https://invent.kde.org/system/kpmcore.git')
 sha256sums=('SKIP')
 
 pkgver() {
