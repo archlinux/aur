@@ -1,0 +1,10 @@
+#! /bin/bash
+
+post_install() {
+  echo '==> The package azuredatastudio will start building from source at the next release!'
+  echo '==> If you want to keep using the pre-built distribution switch to azuredatastudio-bin'
+}
+
+post_upgrade() {
+  post_install
+}
