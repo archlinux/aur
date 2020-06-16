@@ -1,4 +1,5 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Maintainer: Andrea Richiardi <a.richiardi.work@gmail.com>
+# Contributor: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
 _gemname=sexp_processor
