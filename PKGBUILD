@@ -2,12 +2,12 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=master.lmde3.r0.g61a2da9
+pkgver=2.6.0.r0.g5c3d252
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-depends=('gtk3' 'glib2' 'cinnamon-desktop' 'libpeas')
+depends=('gtk3' 'glib2' 'cinnamon-desktop' 'libpeas' 'libexif')
 makedepends=('git' 'gnome-common' 'libglade' 'gobject-introspection')
 optdepends=('xviewer-plugins-git: Extra plugins')
 provides=($pkgname $_pkgbasename)
