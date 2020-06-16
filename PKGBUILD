@@ -1,7 +1,7 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Henri van de Munt <(firstname) @ gmail.com>
 
-pkgname=modustoolbox-bin
+pkgname=modustoolbox
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Set of multi-platform development tools by Cypress. IDE for PSoC 6"

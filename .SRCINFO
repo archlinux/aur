@@ -1,4 +1,4 @@
-pkgbase = modustoolbox-bin
+pkgbase = modustoolbox
 	pkgdesc = Set of multi-platform development tools by Cypress. IDE for PSoC 6
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = modustoolbox-bin
 	source = http://dlm.cypress.com.edgesuite.net/akdlm/downloadmanager/WICED_MODUS/P-ModusToolbox_2.0.0.1703-linux-install.tar.gz
 	md5sums = 13e885525b05058f2b8b6eee59323381
 
-pkgname = modustoolbox-bin
+pkgname = modustoolbox
 
