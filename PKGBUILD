@@ -5,7 +5,7 @@ pkgver=20.07.70.r3687.4d1e0c1a
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('x86_64')
-url='http://kwave.sourceforge.net'
+url='https://kde.org/applications/en/multimedia/org.kde.kwave'
 license=('GPL')
 depends=('qt5-multimedia'
          'kio'
