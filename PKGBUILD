@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ optdepends=(
   'ruby-hiera-eyaml: backend for secret encryption'
   'helm-secrets: backend for secret encryption')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a030106c670aed5dd0e198f3f8595a77c31ba5234d6e0df6055a1d9373a9cf9c')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('220be069c610c0b80789336648d318ed2046394e7a3f9b6119555fe35f19c5b2')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
