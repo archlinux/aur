@@ -1,0 +1,59 @@
+diff -NrU3 gdb-7.5-patched/bfd/doc/bfd.texinfo gdb-7.5-patched-fixed/bfd/doc/bfd.texinfo
+--- gdb-7.5-patched/bfd/doc/bfd.texinfo	2020-04-23 18:20:30.118144489 +0200
++++ gdb-7.5-patched-fixed/bfd/doc/bfd.texinfo	2020-04-23 18:24:25.183511914 +0200
+@@ -321,9 +321,9 @@
+ @unnumbered BFD Index
+ @printindex cp
+ 
++@c I think something like @colophon should be in texinfo.  In the
++@c meantime:
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
+-% meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+ \centerline{\fontname\tenrm,}
+@@ -333,7 +333,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
+ @end tex
++@c Blame: doc@cygnus.com, 28mar91.
+ 
+ @bye
+diff -NrU3 gdb-7.5-patched/bfd/sysdep.h gdb-7.5-patched-fixed/bfd/sysdep.h
+--- gdb-7.5-patched/bfd/sysdep.h	2020-04-23 18:20:30.116144107 +0200
++++ gdb-7.5-patched-fixed/bfd/sysdep.h	2020-04-23 18:24:25.181511906 +0200
+@@ -135,7 +135,7 @@
+ extern PTR realloc ();
+ #endif
+ 
+-#if !HAVE_DECL_STPCPY
++#if !HAVE_DECL_STPCPY && !defined(stpcpy)
+ extern char *stpcpy (char *__dest, const char *__src);
+ #endif
+ 
+diff -NrU3 gdb-7.5-patched/sim/common/sim-arange.h gdb-7.5-patched-fixed/sim/common/sim-arange.h
+--- gdb-7.5-patched/sim/common/sim-arange.h	2020-04-23 18:20:30.162152879 +0200
++++ gdb-7.5-patched-fixed/sim/common/sim-arange.h	2020-04-23 18:24:25.181511906 +0200
+@@ -62,17 +62,13 @@
+ 
+ /* Return non-zero if ADDR is in range AR, traversing the entire tree.
+    If no range is specified, that is defined to mean "everything".  */
+-extern INLINE int
++static INLINE int
+ sim_addr_range_hit_p (ADDR_RANGE * /*ar*/, address_word /*addr*/);
+ #define ADDR_RANGE_HIT_P(ar, addr) \
+   ((ar)->range_tree == NULL || sim_addr_range_hit_p ((ar), (addr)))
+ 
+ #ifdef HAVE_INLINE
+-#ifdef SIM_ARANGE_C
+-#define SIM_ARANGE_INLINE INLINE
+-#else
+-#define SIM_ARANGE_INLINE EXTERN_INLINE
+-#endif
++#define SIM_ARANGE_INLINE static INLINE
+ #include "sim-arange.c"
+ #else
+ #define SIM_ARANGE_INLINE

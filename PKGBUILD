@@ -1,7 +1,5 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-gdb
-pkgver=7.3.1
+pkgver=7.5.1
 pkgrel=1
 pkgdesc="The GNU Debugger (psp)"
 arch=(any)
@@ -10,20 +8,17 @@ license=('GPL3')
 groups=('psp')
 depends=('psp-sdk')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://ftp.gnu.org/pub/gnu/gdb/gdb-7.3.1.tar.bz2" 
-        "gdb-7.3.1-fix-stpcpy.patch"
-        "gdb-7.3.1-PSP.patch"
-        "gdb-7.3.1-texinfofix.patch")
+source=("http://ftp.gnu.org/pub/gnu/gdb/gdb-$pkgver.tar.bz2" 
+        "gdb-$pkgver-fixes.patch"
+        "gdb-$pkgver-PSP.patch")
 md5sums=('SKIP'
-         'SKIP' 'SKIP' 'SKIP')
+         'SKIP' 'SKIP')
 
 prepare ()
 {
   cd "$srcdir/gdb-$pkgver"
-  patch -p1 -i "$srcdir"/gdb-7.3.1-fix-stpcpy.patch
-  patch -p1 -i "$srcdir"/gdb-7.3.1-PSP.patch
-  patch -p1 -i "$srcdir"/gdb-7.3.1-texinfofix.patch
-
+  patch -p1 -i "$srcdir"/gdb-$pkgver-PSP.patch
+  patch -p1 -i "$srcdir"/gdb-$pkgver-fixes.patch
 }
 
 build()
@@ -31,7 +26,8 @@ build()
   cd "$srcdir/gdb-$pkgver"
   mkdir -p build-psp && pushd build-psp
   ../configure --prefix=/usr --target=psp \
-    --disable-werror --disable-nls 
+    --disable-werror --disable-nls \
+    --with-system-zlib --with-system-readline 
   make 
 }
 
