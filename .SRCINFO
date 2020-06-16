@@ -1,6 +1,6 @@
 pkgbase = ppcoin-qt
 	pkgdesc = P2P Long-Term Energy-Efficient Crypto-Currency (QT)
-	pkgver = 0.4.0
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = http://www.ppcoin.org/
 	install = ppcoin-qt.install
@@ -15,9 +15,9 @@ pkgbase = ppcoin-qt
 	depends = qt4
 	depends = miniupnpc
 	depends = qrencode
-	source = http://downloads.sourceforge.net/project/ppcoin/0.4.0/ppcoin-0.4.0-linux.tar.gz
+	source = http://downloads.sourceforge.net/project/ppcoin/0.5.4/ppcoin-0.5.4ppc-linux.tar.gz
 	source = ppcoin-qt.desktop
-	sha256sums = 561076e8d4e82085d577eb717b9f8b52571556fea2b8181fa8eb6039218d3f06
+	sha256sums = 1a15a190e95507b1686b5f4a32568e9b891cbed0e86ab711c489939d685e159a
 	sha256sums = c770adf5f0dcb0394a3258014d38bb62d29e49ef9f284709d1578b8b45833df5
 
 pkgname = ppcoin-qt
