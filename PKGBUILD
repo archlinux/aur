@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=release-it
-pkgver=13.6.0
+pkgver=13.6.3
 pkgrel=1
 pkgdesc="Automate versioning and package publishing"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('34676f882afbbdff53270b583397020ae941d11e463140071d6d3792345f8ac0')
+sha256sums=('11ab23660299325b75d2b71397a7c02202a123889af873e4d453c3e6dab62f1e')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
