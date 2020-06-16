@@ -3,7 +3,7 @@
 
 pkgname=avro-c
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C bindings for Avro data serialization framework"
 arch=('i686' 'x86_64')
 depends=('jansson' 'snappy' 'xz' 'zlib')
@@ -19,13 +19,16 @@ build() {
   cd "$srcdir/avro-release-$pkgver/lang/c"
 
   msg2 'Building...'
-  mkdir build && cd build
+  mkdir -p build && cd build
+
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS=-fPIC \
-    -DCMAKE_CXX_FLAGS=-fPIC \
-    -DTHREADSAFE=true
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DTHREADSAFE=true \
+    -Wno-dev
   make
 }
 

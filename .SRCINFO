@@ -1,7 +1,7 @@
 pkgbase = avro-c
 	pkgdesc = C bindings for Avro data serialization framework
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apache/avro
 	arch = i686
 	arch = x86_64
