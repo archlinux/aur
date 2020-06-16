@@ -20,12 +20,10 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	arch-meson . build
+	arch-meson "${pkgname%-git}" build
 	ninja -C build
 }
 
 package() {
- 	cd "$srcdir/${pkgname%-git}"
 	DESTDIR="$pkgdir" ninja -C build install
 }
