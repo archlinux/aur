@@ -2,14 +2,19 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.5.1.r12.g437112c
+pkgver=6.5.1.r14.g7619025
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
 depends=('qt5-base>=5.15.0')
-makedepends=("cmake" "git" "python3")
+makedepends=(
+	"cmake"
+	"git"
+	"python3"
+	"qt5-tools"
+)
 optdepends=(
 	'cf-tool: submit to Codeforces support'
 	'clang: C++ format and language server support'
