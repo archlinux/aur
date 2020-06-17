@@ -6,7 +6,7 @@ pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
 url="www.vega-strike.org"
 license=('GPL')
-depends=('boost-libs' 'python' 'freeglut' 'gtk2' 'openal' 'sdl' 'glu' 'vegastrike-data')
+depends=('boost-libs' 'python' 'freeglut' 'gtk2' 'libvorbis' 'openal' 'sdl' 'glu' 'vegastrike-data')
 #optdepends=('vegastrike-data: original dataset')
 makedepends=('git' 'cmake')
 provides=('vegastrike')
@@ -25,9 +25,13 @@ pkgver() {
 prepare(){
 mkdir -p build
 patch -Np1 -i ../python3_compile.patch
+patch -Np1 -i ../vegastrike_install.patch
+patch -Np1 -i ../vegasettings_install.patch
+patch -Np1 -i ../mesh_tool_install.patch
 }
 
 build(){
+export DATA_DIR=/usr/share/vegastrike
 	cd build
 	cmake ../Vega-Strike-Engine-Source/engine/ \
 	-DCMAKE_BUILD_TYPE=Release \
@@ -38,7 +42,8 @@ build(){
 }
 
 package() {
-mkdir -p "${pkgdir}"/usr/bin
-  cd build
-  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
+#mkdir -p "${pkgdir}"/usr/bin
+#  cd build
+#  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
+make -C build DESTDIR="${pkgdir}" install
 }

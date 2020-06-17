@@ -12,6 +12,7 @@ pkgbase = vegastrike-git
 	depends = python
 	depends = freeglut
 	depends = gtk2
+	depends = libvorbis
 	depends = openal
 	depends = sdl
 	depends = glu
