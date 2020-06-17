@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=14
-_rtpatchver=7
-_clr=${_major}.14-66
+_minor=17
+_rtpatchver=10
+_clr=${_major}.17-68
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -74,7 +74,7 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20200527'
+_gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
@@ -155,7 +155,7 @@ prepare() {
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
 
-        ## Library routines
+        # Library routines
         scripts/config --enable FONT_TER16x32
 
         make olddefconfig
@@ -319,11 +319,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
+sha256sums=('c33a245401db38de760a7229cf3917eb6e6f8fabab0dc5add95b9b8f3e557f9e'
             'SKIP'
-            '95566473def743f299c7128b95a77ced63eb21a72052706ba968a1ec11cac7fb'
+            '15a65340a6f332b4017cc61b64762018cee27a886815a3013341d99782c33fb7'
             'SKIP'
-            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc')
+            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds

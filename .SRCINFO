@@ -1,6 +1,6 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
-	pkgver = 5.6.14.7
+	pkgver = 5.6.17.10
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
@@ -12,18 +12,18 @@ pkgbase = linux-clear-preempt-rt
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.6/patch-5.6.14-rt7.patch.xz
-	source = clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=5.6.14-66
-	source = enable_additional_cpu_optimizations-20200527.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200527.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.17.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.17.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.6/patch-5.6.17-rt10.patch.xz
+	source = clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=5.6.17-68
+	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3
+	sha256sums = c33a245401db38de760a7229cf3917eb6e6f8fabab0dc5add95b9b8f3e557f9e
 	sha256sums = SKIP
-	sha256sums = 95566473def743f299c7128b95a77ced63eb21a72052706ba968a1ec11cac7fb
+	sha256sums = 15a65340a6f332b4017cc61b64762018cee27a886815a3013341d99782c33fb7
 	sha256sums = SKIP
-	sha256sums = 8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc
+	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
 
 pkgname = linux-clear-preempt-rt
 	pkgdesc = The Clear Linux Preempt-RT kernel and modules
