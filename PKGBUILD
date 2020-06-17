@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-userfonts
-pkgver=2.1.8
+pkgver=2.1.11
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -16,7 +16,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('6456f3c129742838410d7455854430bc5ba118990fe43e2e5bfce3a88963a4fc746ae2def8afc9e2cc50e465dbd0bf8907e997b27dbc48f8838da84d916c9e3b')
+sha512sums=('9f2fba2814a5ab64f946913e32fce66dbc842d9607cbaee00994689ef6a661a04c2a8de5e075fc532e7d8926b51432c06c2b1510b019d729eef40da373d91d42')
 
 prepare() {
     cd tdesktop-$pkgver-full
