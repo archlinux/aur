@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<component type="desktop">
+  <id>PrestoPalette.desktop</id>
+  <translation type="gettext">PrestoPalette</translation>
+  <name>PrestoPalette</name>
+  <summary>An artist's tool for creating harmonious color palettes</summary>
+  <description><p>PrestoPalette is an artist's tool for creating harmonious color palettes.</p><p>Create beautiful palettes, factor in lighting, quickly see contrast and more.</p></description>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <url type="bugtracker">https://github.com/PrestoPalette/PrestoPalette/issues</url>
+  <url type="donation">https://github.com/PrestoPalette/PrestoPalette</url>
+  <url type="homepage">https://github.com/PrestoPalette/PrestoPalette</url>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://github.com/PrestoPalette/PrestoPalette-Packaging/blob/master/screenshots/1.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/PrestoPalette/PrestoPalette-Packaging/blob/master/screenshots/2.png</image>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">PrestoPalette.desktop</launchable>
+  <update_contact>dagostinelli@gmail.com</update_contact>
+</component>
