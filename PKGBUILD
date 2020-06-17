@@ -1,19 +1,46 @@
 #Maintainer Ivan Porto Carrero <ivan@flanders.co.nz> (@casualjim)
 pkgname=go-swagger
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Toolkit for swagger in golang (go-swagger)"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 groups=('swagger')
 provides=('swagger')
 conflicts=('swagger')
 url="https://goswagger.io"
-license=("ASL 2.0")
+license=('Apache')
+depends=('glibc')
+makedepends=('git' 'go' 'gzip' 'tar')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/go-swagger/go-swagger/archive/v${pkgver}.tar.gz")
+sha256sums=('463cac52dffc606add5724e76614e2d8432094d43c34e6d5161caa846f33536f')
 
-source_x86_64=("swagger_linux_amd64_${pkgver}::https://github.com/go-swagger/go-swagger/releases/download/v${pkgver}/swagger_linux_amd64")
-sha256sums_x86_64=('a5426295a292bee85faa141ea8b76279fdf0a32817aeb5a0d0b51a16eeb3918d')
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
+
+build() {
+  local commit_id
+  local ldflags
+
+  commit_id=$(zcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
+
+  cd "${pkgname}-${pkgver}"
+  export CGO_ENABLED=1
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+
+  ldflags="-X github.com/go-swagger/go-swagger/cmd/swagger/commands.Commit=${commit_id}"
+  ldflags="$ldflags -X github.com/go-swagger/go-swagger/cmd/swagger/commands.Version=${pkgver}"
+  go build -ldflags="$ldflags"  ./cmd/swagger
+}
 
 package() {
-  install -d ${pkgdir}/usr/bin
-  install -Tm755 "${srcdir}/swagger_linux_amd64_${pkgver}" "${pkgdir}/usr/bin/swagger"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 swagger -t "${pkgdir}/usr/bin"
+  install -Dm644 cmd/swagger/completion/swagger.bash-completion -T "${pkgdir}/usr/share/bash-completion/completions/swagger"
+  install -Dm644 cmd/swagger/completion/swagger.zsh-completion -T "${pkgdir}/usr/share/zsh/site-functions/_swagger"
 }
