@@ -1,15 +1,17 @@
 pkgbase = pick-colour-picker
-	pkgdesc = Pick. A colour picker that remembers where you picked colours from
-	pkgver = 1.5
-	pkgrel = 5
-	url = http://kryogenix.org/code/pick/
+	pkgdesc = Colour picker that remembers where you picked colours from
+	pkgver = 1.51
+	pkgrel = 1
+	url = https://www.kryogenix.org/code/pick/
 	arch = any
-	license = custom
-	depends = python2-setuptools
-	depends = python2-gobject
-	depends = python2-cairo
-	source = pick-colour-picker_1.5-0-201702011054-ubuntu17.10.1_all.deb::https://code.launchpad.net/~sil/+archive/ubuntu/pick/+files/pick-colour-picker_1.5-0~201702011054~ubuntu17.10.1_all.deb
-	md5sums = 6debb5d29903792366725131b6d082c7
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	source = git+https://github.com/stuartlangridge/ColourPicker#commit=e54bc020b76ae3c79ae9221452d5e51a1ddde292
+	sha256sums = SKIP
 
 pkgname = pick-colour-picker
 

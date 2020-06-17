@@ -1,25 +1,32 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname=pick-colour-picker
-pkgver=1.5
-pkgrel=5
-pkgdesc="Pick. A colour picker that remembers where you picked colours from"
-arch=('any')
-url="http://kryogenix.org/code/pick/"
-license=('custom')
-depends=('python2-setuptools' 'python2-gobject' 'python2-cairo')
-source=("${pkgname}_${pkgver}-0-201702011054-ubuntu17.10.1_all.deb::https://code.launchpad.net/~sil/+archive/ubuntu/pick/+files/${pkgname}_${pkgver}-0~201702011054~ubuntu17.10.1_all.deb")
-md5sums=('6debb5d29903792366725131b6d082c7')
+pkgver=1.51
+pkgrel=1
+pkgdesc="Colour picker that remembers where you picked colours from"
+arch=(any)
+url="https://www.kryogenix.org/code/pick/"
+license=(MIT)
+depends=(gtk3 python-cairo python-gobject)
+makedepends=(git python-setuptools)
+_commit=e54bc020b76ae3c79ae9221452d5e51a1ddde292  # 1.51
+source=("git+https://github.com/stuartlangridge/ColourPicker#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  bsdtar -xJf data.tar.xz
+  cd ColourPicker
+  sed -i 's/if theme_icon and False:/if theme_icon:/' pick/__main__.py
+  sed -i '/pixmaps/d' setup.py
+}
+
+build() {
+  cd ColourPicker
+  python3 setup.py build
 }
 
 package() {
-  cp --preserve=mode -r usr "${pkgdir}"
-  find "${pkgdir}" -type f -name 'pick-colour-picker' -exec sed -i "s/python/python2/g" {} \;
-  find "${pkgdir}" -depth -type d -name "dist-packages" -execdir mv {} "site-packages" \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
-  install -dm755 "${pkgdir}"/usr/share/licenses/$pkgname
-  mv "${pkgdir}"/usr/share/licenses/$pkgname .
+  cd ColourPicker
+  python3 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 $pkgname.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
