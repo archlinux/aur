@@ -1,13 +1,13 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=('python-cocoapi-git' 'python2-cocoapi-git')
 _pkgname='cocoapi-git'
-pkgver=r195.aca78bc
+pkgver=r201.8c9bcc3
 pkgrel=1
 pkgdesc='COCO is a large image dataset designed for object detection, segmentation, person keypoints detection, stuff segmentation, and caption generation.'
 arch=('x86_64')
 url='https://github.com/cocodataset/cocoapi'
 license=('BSD')
-makedepends=('git' 'python' 'python2')
+makedepends=('git' 'python' 'python2' 'cython' 'cython2' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname%-git}"::'git+https://github.com/cocodataset/cocoapi.git')
 md5sums=('SKIP')
 
@@ -27,7 +27,7 @@ build_python2-cocoapi-git() {
 }
 
 package_python-cocoapi-git() {
-  depends=('python')
+  depends=('python' 'python-matplotlib>=2.1.0')
   provides=('python-cocoapi')
   conflicts=('python-cocoapi')
 
@@ -36,7 +36,7 @@ package_python-cocoapi-git() {
 }
 
 package_python2-cocoapi-git() {
-  depends=('python2')
+  depends=('python2' 'python2-matplotlib>=2.1.0')
   provides=('python2-cocoapi')
   conflicts=('python2-cocoapi')
 
