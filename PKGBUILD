@@ -1,32 +1,34 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Matthew McGinn <mamcgi@gmail.com>
-# Contributor: Håvard Pettersson <mail@haavard.me>
-# Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
+# based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=etcher-git
 _pkgname=etcher
-_pkgver=1.5.80
-_branch=master
-pkgver=1.5.96.r0.g2fc8b07e
+pkgver=1.5.99.r0.g5d95fcb8
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64 aarch64)
-_github_url='https://github.com/balena-io/etcher'
-url='https://etcher.io'
+url='https://www.balena.io/etcher/'
 license=(Apache)
 depends=("electron" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
 makedepends=("npm" "python2" "git" "jq")
 optdepends=("libnotify: for notifications")
-conflicts=("${_pkgname}"
-  "${_pkgname}-git"
+conflicts=(
+  "balena-${_pkgname}"
+  "${_pkgname}"
   "${_pkgname}-bin"
 )
 options=('!strip')
-source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git#branch=${_branch}"
-        "${pkgname}-electron.sh"
-        "${pkgname}-electron.desktop"
-        )
+_scripts='scripts'
+_scripts_path='scripts/resin'
+_github_balena='https://github.com/balena-io'
+source=(
+  "${_pkgname}::git+${_github_balena}/${_pkgname}"
+  "${_pkgname}-${_scripts}::git+${_github_balena}/${_scripts}"
+  "${pkgname}-electron.sh"
+  "${pkgname}-electron.desktop"
+)
 sha256sums=('SKIP'
+            'SKIP'
             'c8b0f3d9615a21a5f03af36ef9033e71e9c9716c1381879bd7279a7fcf95bb1f'
             'd23e62375aa83a57bfeebbbd7bde09a7d1917deaee78c9e4d3bdf26e1a47870f')
 
@@ -38,7 +40,8 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git submodule update || cd "${srcdir}/${_pkgname}/scripts/resin" && git checkout --
+  git config "submodule.${_scripts_path}.url" "${srcdir}/${_pkgname}-${_scripts}"
+  git submodule update
 }
 
 build() {
