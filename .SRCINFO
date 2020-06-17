@@ -1,6 +1,6 @@
 pkgbase = rime-cloverpinyin
 	pkgdesc = ✤四叶草简体拼音输入方案 for rime
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.fkxxyz.com/d/cloverpinyin/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rime-cloverpinyin
 	depends = rime-prelude
 	depends = rime-emoji
 	depends = rime-symbols
-	source = https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.1/clover.schema-1.1.1.zip
-	sha256sums = 54bf84bd84312980a27bac056579cbfea840a40a7c91f320b91608aefde14d5d
+	source = https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.2/clover.schema-1.1.2.zip
+	sha256sums = 578dc3597ba0ec1cd79ee944f8a5a23bf5a8c595391f715ededdbcd59b19c661
 
 pkgname = rime-cloverpinyin
 
