@@ -1,18 +1,18 @@
 pkgbase = watchflower
 	pkgdesc = WatchFlower is a plant monitoring application that reads and plots data from your Xiaomi 'Flower Care' and 'RoPot' Bluetooth sensors and thermometers!
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/emericg/WatchFlower
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-connectivity
 	depends = qt5-charts
 	depends = qt5-svg
-	source = https://github.com/emericg/WatchFlower/archive/v0.12.zip
-	sha256sums = fda30fb13147808db0d7c23fa6e67915cfaeaa6411b994e3c901e8ef78833130
+	source = https://github.com/emericg/WatchFlower/archive/v0.13.zip
+	sha256sums = ed3138528609c3cd6b06916c5cf045e8b1a7baa10a54d8f025efb59b826fd697
 
 pkgname = watchflower
 
