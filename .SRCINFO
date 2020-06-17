@@ -1,0 +1,33 @@
+pkgbase = mutt-wizard-zi-git
+	pkgdesc = A simple interface to auto-configure neomutt and isync with safe passwords
+	pkgver = r774.ge69a7ad
+	pkgrel = 2
+	url = https://github.com/null2264/mutt-wizard-zi
+	install = mutt-wizard-zi.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = neomutt
+	depends = isync
+	depends = msmtp
+	depends = notmuch-runtime
+	depends = pass
+	optdepends = imagemagick: view images inside of the neomutt TUI
+	optdepends = w3m: view HTML email and images inside of the neomutt TUI
+	optdepends = lynx: view HTML email inside of the neomutt TUI
+	optdepends = links: view HTML email inside of the neomutt TUI
+	optdepends = elinks: view HTML email inside of the neomutt TUI
+	optdepends = urlview: list URLs found in mails to open them in a browser
+	optdepends = abook: contact store and tab completion
+	optdepends = cronie: auto-sync mails - alt.: fcron
+	optdepends = fcron: auto-sync mails - alt.: cronie
+	optdepends = libnotify: enable desktop notifications about new mail
+	optdepends = dunst: enable desktop notifications about new mail
+	optdepends = pam-gnupg: automatically unlock gpg keys at session login
+	conflicts = mutt-wizard-zi
+	options = zipman
+	source = git+https://github.com/null2264/mutt-wizard-zi
+	sha256sums = SKIP
+
+pkgname = mutt-wizard-zi-git
+
