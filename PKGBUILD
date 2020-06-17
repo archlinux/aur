@@ -1,4 +1,5 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail.com>
+# Originally this PKGBUILD was just a modified version of that of jupyter-octave_kernel's PKGBUILD
 
 _name=scilab_kernel
 pkgname=jupyter-${_name}-git
@@ -10,7 +11,7 @@ url="https://github.com/Calysto/scilab_kernel"
 license=('MIT')
 depends=('jupyter' 'jupyter-metakernel>=0.24.2' 'jupyter-notebook' 'scilab-bin')
 makedepends=('python-pip')
-optdepends=('gnuplot: for making plots' 'jupyterlab: JupyterLab computational environment')
+optdepends=('jupyterlab: JupyterLab computational environment')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

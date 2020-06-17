@@ -10,7 +10,6 @@ pkgbase = jupyter-scilab_kernel-git
 	depends = jupyter-metakernel>=0.24.2
 	depends = jupyter-notebook
 	depends = scilab-bin
-	optdepends = gnuplot: for making plots
 	optdepends = jupyterlab: JupyterLab computational environment
 	source = git+https://github.com/Calysto/scilab_kernel.git
 	sha256sums = SKIP
