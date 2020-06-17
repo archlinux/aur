@@ -21,21 +21,22 @@ prepare() {
 
 build() {
   local commit_id
-  local ldflags
+  local goldflags
 
   commit_id=$(zcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
 
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
-  export CGO_LDFLAGS="$LDFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
 
-  ldflags="-X github.com/go-swagger/go-swagger/cmd/swagger/commands.Commit=${commit_id}"
-  ldflags="$ldflags -X github.com/go-swagger/go-swagger/cmd/swagger/commands.Version=${pkgver}"
-  go build -ldflags="$ldflags"  ./cmd/swagger
+  goldflags="-X github.com/go-swagger/go-swagger/cmd/swagger/commands.Commit=${commit_id}"
+  goldflags="$goldflags -X github.com/go-swagger/go-swagger/cmd/swagger/commands.Version=${pkgver}"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "$goldflags -extldflags \"${LDFLAGS}\"" \
+    ./cmd/swagger
 }
 
 package() {
