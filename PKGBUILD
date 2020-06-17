@@ -20,6 +20,16 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+check() {
+	cd "${_pkgname}"
+	while IFS= read -r -d '' cksum
+	do
+		# Checksum files are not properly formated, we need to fix them first
+		echo -n " ${cksum//.checksum/}" >> "${cksum}"
+		sha256sum -c "${cksum}"
+	done < <(find . -type f -name "*.checksum" -print0)
+}
+
 package() {
 	cd "${_pkgname}"
 	find . -type f -name "*.checksum" -delete
