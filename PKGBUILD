@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.0.3.r3.g835b41f
+pkgver=0.0.3.r4.g0e3a201
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -23,6 +23,7 @@ depends=('entr'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
          'python-zopfli' # fonttools optdepends
+         'sfnt2woff-zopfli'
          'ttfautohint'
          'zsh')
 provides=("${pkgname%-git}")
