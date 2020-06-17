@@ -1,6 +1,6 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
-pkgname=sdrtrunk
+pkgname=sdrtrunk-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR"
