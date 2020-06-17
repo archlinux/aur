@@ -1,5 +1,5 @@
 pkgbase = jupyter-scilab_kernel-git
-	pkgdesc = A Jupyter kernel for Octave
+	pkgdesc = A Jupyter kernel for Scilab
 	pkgver = 135.git.b2e9069
 	pkgrel = 1
 	url = https://github.com/Calysto/scilab_kernel
