@@ -1,7 +1,7 @@
 pkgbase = tomboy-reborn-bin
-	pkgdesc = A "drop-in", straightforward replacement of deprecated , but extremely usefull, /Gnome Tomboy/
+	pkgdesc = a 'drop-in', straightforward, replacement of deprecated , but extremely usefull, /Gnome Tomboy/
 	pkgver = 1.0
-	pkgrel = beta2
+	pkgrel = 2
 	url = https://github.com/grosjo/tomboy-reborn
 	arch = x86_64
 	license = GPL-3.0
