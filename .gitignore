@@ -1,0 +1,5 @@
+*.xz
+pkg
+src
+scilab_kernel
+
