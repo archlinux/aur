@@ -1,6 +1,6 @@
 pkgbase = barva-git
-	pkgdesc = Audio visualizer that pulses the background of your terminal.
-	pkgver = 0.1.1
+	pkgdesc = An audio visualizer that pulses the background of your terminal.
+	pkgver = 0.1.1.r2.g44e1d0b
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/barva
 	arch = x86_64
