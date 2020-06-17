@@ -22,6 +22,10 @@ backup=('etc/webapps/filebin/config-local.php'
 install=filebin.install
 options=('!strip' 'emptydirs')
 source=("git+https://github.com/Bluewind/filebin.git#tag=${pkgver}?signed"
+        "git+https://github.com/padraic/mockery.git"
+        "git+https://github.com/endroid/QrCode.git"
+        "git+https://github.com/erusev/parsedown.git"
+        "git+https://github.com/recurser/exif-orientation-examples.git"
         'filebin-nginx.conf'
         'filebin-php-fpm.conf'
         'filebin-file-cron.service'
@@ -30,6 +34,10 @@ source=("git+https://github.com/Bluewind/filebin.git#tag=${pkgver}?signed"
         'filebin-user-cron.timer'
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '6ed404a3fbc28c6ab35bf1eba67ddcf46cfd48893237155e38d297a13020180c'
             '034442098d1608807bec2a03028a7c8bb9ae9d286c378e2f668b4aca3cc9d4e1'
             '78dd850467d89ac3d1b57fa72fe9ce8d736ce29a89abe624d9c4d2e168e59d19'
@@ -41,7 +49,12 @@ validpgpkeys=('CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E') # Florian Pritz <bluew
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule."application/third_party/mockery".url "${srcdir}/mockery"
+  git config submodule."application/third_party/QrCode".url "${srcdir}/QrCode"
+  git config submodule."application/third_party/parsedown".url "${srcdir}/parsedown"
+  git config submodule."data/tests/exif-orientation-examples".url "${srcdir}/exif-orientation-examples"
+  git submodule update --recursive
 }
 
 build () {
