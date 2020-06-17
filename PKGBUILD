@@ -65,8 +65,8 @@ build() {
                   -DCMAKE_BUILD_TYPE=Release
                   -DCMAKE_INSTALL_PREFIX=/usr )
   cmake "${_CMAKE_FLAGS[@]}" -G Ninja -S "$pkgname" -B build
-# shellcheck disable=SC2086 # allow MAKEFLAGS to carry multiple flags.
-  ninja -C build ${MAKEFLAGS:--j1}
+# shellcheck disable=SC2046 # allow MAKEFLAGS to carry multiple flags.
+  ninja -C "$srcdir/build" $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}")
 }
 
 
