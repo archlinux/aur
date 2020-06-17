@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@kelda.io>
 pkgname=blimp-bin
-pkgver=0.13.7
+pkgver=0.13.8
 pkgrel=1
 pkgdesc="CLI for Kelda's Blimp (Docker Compose for the Cloud)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 optdepends=('docker: support for locally building custom images')
 options=(!strip)
 source=("https://blimp-releases.s3-us-west-1.amazonaws.com/blimp-linux-$pkgver")
-sha256sums=('69e487312bd6effbae8140e562e89ca0a545950fe2473d3e27ecfbf85296eb5b')
+sha256sums=('df90617cde813303c743061155c4b3eb1be4082683df31f07241dfb04e2c24b9')
 
 package() {
 	install -Dm 755 "$srcdir/blimp-linux-$pkgver" "$pkgdir/usr/bin/blimp"
