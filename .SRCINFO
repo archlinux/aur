@@ -1,0 +1,16 @@
+pkgbase = jmbe
+	pkgdesc = Java Multi-Band Excitation library: Audio conversion library for decoding MBE encoded audio frames.
+	pkgver = 1.0.7b
+	pkgrel = 1
+	url = https://github.com/DSheirer/jmbe
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = jdk-openjdk
+	makedepends = gradle
+	depends = jre-openjdk
+	source = jmbe-1.0.7b.tar.gz::https://github.com/DSheirer/jmbe/archive/v1.0.7b.tar.gz
+	sha256sums = ff6f322a742f8276464becf829867b4b54da1581a11ee0feaa39253f8ad39870
+
+pkgname = jmbe
+
