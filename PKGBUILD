@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/SeptemberHX/dde-istate-menus"
 license=('GPL')
 depends=('deepin-network-utils' 'qt5-base' 'nethogs'
-         'procps-ng' 'deepin-dock')
+         'procps-ng' 'deepin-dock' 'dtkwm' 'qt5-charts')
 makedepends=('cmake' 'qt5-tools')
 install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/SeptemberHX/dde-istate-menus"
