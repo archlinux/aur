@@ -1,14 +1,14 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
 pkgname=sdkman-cli
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Unofficial Client of sdkman, A Tool for managing parallel versions of multiple Software Development Kits'
 arch=('x86_64')
 url="https://github.com/palindrom615/$pkgname"
 license=('Apache 2.0')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('257f954663ee1ec5ff66942ac640918a4bf9f127c39c24da367f7b3cba652f2b')
+sha256sums=('20947b8ccfbf7d3ea72ee39a36997b63f3a06c6ba70653ea40945e14eef8058a')
 
 build() {
   cd $pkgname-$pkgver
