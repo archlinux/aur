@@ -1,8 +1,8 @@
 _pkgname="cppast"
 pkgname="${_pkgname}-git"
 pkgver=436.b155d6a
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Library to parse and work with the C++ AST"
 arch=('x86_64')
 url="https://github.com/foonathan/cppast"
 license=('MIT')

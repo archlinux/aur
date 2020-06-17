@@ -1,6 +1,7 @@
 pkgbase = cppast-git
+	pkgdesc = Library to parse and work with the C++ AST
 	pkgver = 436.b155d6a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/foonathan/cppast
 	arch = x86_64
