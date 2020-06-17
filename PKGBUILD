@@ -1,0 +1,17 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+
+pkgname=color-scheme-sweet-mars
+pkgver=20200613
+pkgrel=1
+pkgdesc="Sweet Mars color scheme"
+arch=('any')
+url="https://store.kde.org/p/1393486/"
+license=('GPL3')
+source=("https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTIwNzkwNTAiLCJvIjoiMSIsInMiOiIzNjRmNGM4MWYwYzIxNDFlY2Y0NTU4ZmI4Mjc5MTlkNGMxMmVmYWRiNThmNTVjNTFkZjgwOWZkYzMzMmUxMWQzNmQ0ZmZjMjk3ZTQ1Zjc2ODllY2FmZDlmNzQ0NDYzMjQyMDBmNWM1MTM1MjMyOGEyMzExOTg3OGU3YjU1ZWRhNyIsInQiOjE1OTI0MjYyNTYsInN0ZnAiOm51bGwsInN0aXAiOiI5My4yNTIuMC40NSJ9.5WS7NzCNxKeklLFMP-SX4OxO9OPS-N4x2PyFmM59qGg/Sweet-Mars.tar.xz")
+md5sums=('bc84ddbbb692b47f0dcee82463c0c08c')
+
+package() {
+  cd "${srcdir}"
+
+  install -Dm644 Sweet-Mars.colors "${pkgdir}/usr/share/color-schemes/Sweet-Mars.colors"
+}
