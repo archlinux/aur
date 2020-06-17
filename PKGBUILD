@@ -1,9 +1,10 @@
-# Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
+# Maintainer: Dan Johansen <strit@manjaro.org>
+# Contributor: Gabriel Magno <gabrielmagno1@gmail.com>
 # Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
 _pkgname=tmdbsimple
 pkgname=python-$_pkgname
-pkgver=2.2.9
+pkgver=2.2.22
 pkgrel=1
 pkgdesc="A wrapper for The Movie Database API v3. "
 arch=('any')
@@ -19,6 +20,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('aaca46cd08324a24750d01efbe11a87ac3fab008b2bc3c21a1f6530339b4e859')
-
-# vim:set ts=2 sw=2 et:
+sha256sums=('750ba95066e760f7b44963d8d3da039fd75012ec53b0624e54985e996d4ddb71')
