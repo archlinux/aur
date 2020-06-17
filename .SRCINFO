@@ -1,0 +1,22 @@
+pkgbase = hippoplayer-git
+	pkgdesc = A modern music player for your oldsk00l needs
+	pkgver = r406.2e13628
+	pkgrel = 1
+	url = https://github.com/emoon/HippoPlayer
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = git
+	makedepends = tundra2
+	makedepends = rustup
+	makedepends = qt5-base
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = qt5-base
+	provides = hippoplayer
+	source = hippoplayer::git+https://github.com/emoon/HippoPlayer
+	sha256sums = SKIP
+
+pkgname = hippoplayer-git
+
