@@ -28,6 +28,7 @@ prepare() {
 
 	cd ../mruby-zest-build
 	git submodule update --init
+	git cherry-pick 4eb88250f22ee684acac95d4d1f114df504e37a7
 	make setup
 }
 
