@@ -1,0 +1,11 @@
+--- src/Vega-Strike-Engine-Source/engine/setup/CMakeLists.txt.orig	2020-06-17 09:28:36.348748984 +0200
++++ src/Vega-Strike-Engine-Source/engine/setup/CMakeLists.txt	2020-06-17 09:41:47.556144351 +0200
+@@ -12,6 +12,8 @@
+ 
+     ADD_EXECUTABLE(vegasettings ${VEGASETTINGS_SOURCES})
+ 
++    INSTALL(TARGETS vegasettings DESTINATION bin)
++
+     #find GTK2
+     FIND_PACKAGE(GTK2 REQUIRED)
+     IF (GTK2_FOUND)

@@ -1,0 +1,11 @@
+--- src/Vega-Strike-Engine-Source/engine/CMakeLists.txt.orig	2020-06-17 08:18:19.562336282 +0200
++++ src/Vega-Strike-Engine-Source/engine/CMakeLists.txt	2020-06-17 08:20:30.666476756 +0200
+@@ -1070,6 +1070,8 @@
+     vorbisfile_LIBRARY
+ )
+ 
++INSTALL(TARGETS vegastrike DESTINATION bin)
++
+ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "3D OpenGL spaceflight simulator")
+ SET(CPACK_PACKAGE_VENDOR "Vega Strike")
+ SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/../README.md")
