@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=android-google-apis-x86-system-image
-pkgver=29_r10
+pkgver=30_r05
 pkgrel=1
 pkgdesc='Android with Google APIs x86 Atom System Image, latest API'
 arch=('any')
@@ -14,8 +14,8 @@ conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/google_apis/x86-${pkgver}.zip"
         "package.xml")
-sha256sums=('f822281976a1688a2054c05249d080b69c67b2e0b3e3761d1332008c39b1c1d9'
-            '02cf4f6c13d1a71217d07771f92b9ef471cb68db4a556871397e80b493d25353')
+sha256sums=('458b6167761e69c7b2c0504c0ddc777287c1114b6041cc0f36983984e5311844'
+            'c6d464615c08e5e7ccd3095d71c5557c7b99d64c0a207eca59a973340b6cceb6')
 
 prepare() {
   # Fix permissions
