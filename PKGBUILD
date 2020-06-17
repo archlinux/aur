@@ -1,6 +1,6 @@
 # Maintainer: afward <archlinux.gargoyley@simplelogin.co>
 pkgname=yakyak
-pkgver=1.5.6
+pkgver=1.5.7
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Desktop chat client for Google Hangouts"
@@ -11,7 +11,7 @@ depends=('electron')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
-sha256sums=('30c6256832b90421e8fe313c1166fadc71a7c11c84f50b5fe67f79ce09ec13b6'
+sha256sums=('c3871129ffddbc942f11bf2c340a68dc85dac08207bb7590b5a65b26fc2f4f0b'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
             '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
 
