@@ -5,10 +5,10 @@
 _BUILD_CUDA="${_BUILD_CUDA:-ON}"
 _CUDA_ARCH="${_CUDA_ARCH:-Auto}"
 
-name=colmap
+_name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-fragment="#branch=dev"
-pkgname=${name}-git
+_fragment="#branch=dev"
+pkgname=${_name}-git
 pkgver=3.6.dev.3.r24.g1432f00
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
@@ -22,7 +22,7 @@ if [ "$_BUILD_CUDA" == "ON" ] ; then
   makedepends+=('cuda-sdk')
   optdepends=('cuda-toolkit: for cuda sfm/mvs acceleration')
 fi
-source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
+source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "nvm-export.patch"
         "gcc9.patch"
         "glibc_stdio.patch"
@@ -81,9 +81,9 @@ package() {
   install -Dm644 man/colmap.1 -t "${pkgdir}/usr/share/man/man1"
 
   # install vocabulary trees for sequential,vocabulary matching
-  install -d -m755 "${pkgdir}/usr/share/${name}"
+  install -d -m755 "${pkgdir}/usr/share/${_name}"
   for vocab_tree in "${srcdir}"/vocabulary-tree-*.bin ; do
-    install -m644 "${vocab_tree}" "${pkgdir}/usr/share/${name}/${vocab_tree##*/}"
+    install -m644 "${vocab_tree}" "${pkgdir}/usr/share/${_name}/${vocab_tree##*/}"
   done
 }
 # vim:set ts=2 sw=2 et:
