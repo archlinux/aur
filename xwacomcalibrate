@@ -1,0 +1,156 @@
+#!/bin/bash
+
+print_help () {
+    echo "TODO"
+}
+
+while getopts "fr:" opt
+do
+    case $opt in
+        h )
+            print_help
+            ;;
+        f ) FULLSCREEN=true
+            ;;
+        r ) if [[\
+                 $OPTARG == "cw"\
+                      || $OPTARG == "half"\
+                      || $OPTARG == "ccw"\
+                ]]
+            then
+                ROTATION=$OPTARG
+            else
+                echo "Invalid rotation: $OPTARG" 1>&2
+                exit 1
+            fi
+            ;;
+        : )
+            echo "Invalid Option: $OPTARG requires an argument" 1>&2
+            exit 1
+            ;;
+        * ) echo "Unknown Option"
+            print_help
+            exit 1
+            ;;
+    esac
+done
+shift $(( OPTIND -1 ))
+
+get_dev () {
+    DEV=$(\
+          xsetwacom --list devices\
+              | grep "STYLUS"\
+              | cut -d$'\t' -f 2\
+              | tr -cd [:digit:]
+       )
+}
+
+full_tablet_size () {
+    xsetwacom --set $1 ResetArea
+    TB_X=$( xsetwacom --get $1 Area | cut -d ' ' -f 1)
+    TB_Y=$( xsetwacom --get $1 Area | cut -d ' ' -f 2)
+    TB_WIDTH=$( xsetwacom --get $1 Area | cut -d ' ' -f 3)
+    TB_HEIGHT=$( xsetwacom --get $1 Area | cut -d ' ' -f 4)
+}
+
+set_rotation () {
+    if [[ $2 ]]
+    then
+        xsetwacom --set $1 Rotate $2
+    else
+        xsetwacom --set $1 Rotate none
+    fi
+}
+
+set_output () {
+    xsetwacom set $1 MapToOutput "${2}x${3}+${4}+${5}"
+}
+
+set_area () {
+    xsetwacom set $1 area "$2" "$3"\
+              $( echo "$4 + $2" | bc )\
+              $( echo "$5 + $3" | bc )
+}
+
+get_x_screen_size () {
+    W_X="0"
+    W_Y="0"
+    W_WIDTH=$( xwininfo -root | grep Width | tr -dc [:digit:])
+    W_HEIGHT=$( xwininfo -root | grep Height | tr -dc [:digit:])
+}
+
+get_active_window_size () {
+    W_X=$(\
+          xdotool getactivewindow getwindowgeometry --shell\
+              | grep X\
+              | cut -d "=" -f2\
+       )
+    W_Y=$(\
+          xdotool getactivewindow getwindowgeometry --shell\
+              | grep Y\
+              | cut -d "=" -f2\
+       )
+    W_WIDTH=$(\
+              xdotool getactivewindow getwindowgeometry --shell\
+                  | grep WIDTH\
+                  | cut -d "=" -f2\
+           )
+    W_HEIGHT=$(\
+               xdotool getactivewindow getwindowgeometry --shell\
+                   | grep HEIGHT\
+                   | cut -d "=" -f2\
+            )
+}
+
+calculate_new_tablet_size () {
+
+    if [[ $1 == "cw" || $1 == "ccw" ]]
+    then
+        twidth=$3
+        theight=$2
+    else
+        twidth=$2
+        theight=$3
+    fi
+
+    tar=$( echo "scale=16; $twidth / $theight" | bc )
+    war=$( echo "scale=16; $4 / $5" | bc )
+
+    if [[ $( echo "scale=16; $tar <= $war" | bc ) -eq "1" ]]
+    then
+        theight=$( echo "scale=0; $twidth / $war /1" | bc )
+    else
+        twidth=$( echo "scale=0; $theight * $war /1" | bc )
+    fi
+
+    if [[ $1 == "cw" || $1 == "ccw" ]]
+    then
+        tmp=$twidth
+        twidth=$theight
+        theight=$tmp
+        unset tmp
+    fi
+
+    TB_X=$( echo "scale=0; ($TB_WIDTH - $twidth) / 2" | bc )
+    TB_Y=$( echo "scale=0; ($TB_HEIGHT - $theight) / 2" | bc )
+
+    TB_WIDTH=$twidth
+    TB_HEIGHT=$theight
+}
+
+get_dev
+set_rotation "$DEV" "$ROTATION"
+full_tablet_size "$DEV"
+if [[ $FULLSCREEN ]]
+then
+    get_x_screen_size
+else
+    get_active_window_size
+fi
+calculate_new_tablet_size "$ROTATION"\
+                          "$TB_WIDTH" "$TB_HEIGHT"\
+                          "$W_WIDTH" "$W_HEIGHT"
+set_output "$DEV" "$W_WIDTH" "$W_HEIGHT" "$W_X" "$W_Y"
+set_area "$DEV" "$TB_X" "$TB_Y" "$TB_WIDTH" "$TB_HEIGHT"
+echo "${W_WIDTH}x${W_HEIGHT}+${W_X}+${W_Y}\
+ ${TB_WIDTH}x${TB_HEIGHT}+${TB_X}+${TB_Y} $ROTATION"
