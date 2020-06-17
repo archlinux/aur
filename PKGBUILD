@@ -32,6 +32,11 @@ check() {
 
 package() {
 	cd "terraformer-${pkgver}"
+
 	install -Dm755 "build/terraformer" "${pkgdir}/usr/bin/terraformer"
+
+	sed -e 's|docs/waze-sre-logo.png|https://github.com/GoogleCloudPlatform/terraformer/blob/master/docs/waze-sre-logo.png|' -i README.md
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
