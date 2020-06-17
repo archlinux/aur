@@ -1,31 +1,18 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
-pkgver='0.5.1'
-pkgrel='3'
+pkgver='0.5.2'
+pkgrel='0'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
 license=('GPL2')
-source=("$url/releases/download/v$pkgver-1/nimdow")
-md5sums=('140dbf8f121919a2a2a95a9194cbf503')
-
-install_default_config() {
-  if [ -f "${XDG_CONFIG_HOME}/nimdow/config.toml" ] ||
-     [ -f "${HOME}/.config/nimdow/config.toml" ]; then
-    return
-  else
-    if [ -d "${XDG_CONFIG_HOME}" ]; then
-      dir="${XDG_CONFIG_HOME}/nimdow"
-    else
-      dir="${HOME}/.config/nimdow"
-    fi
-    mkdir -p "$dir"
-    curl "https://raw.githubusercontent.com/avahe-kellenberger/nimdow/master/config.default.toml" -o "${dir}/config.toml"
-  fi
-}
+source=("nimdow-$pkgver::$url/releases/download/v$pkgver/nimdow"
+        "nimdow-config-$pkgver.toml::$url/raw/v$pkgver/config.default.toml")
+md5sums=('094245101fd760dea4b0c296ea18eb03'
+         '65858033d5bf091eb442daf5d9e19b5c')
 
 package() {
-  install_default_config
-  install -Dt "$pkgdir/usr/bin" "nimdow"
+  install -D "nimdow-$pkgver" "$pkgdir/usr/bin/nimdow"
+  install -D "nimdow-config-$pkgver.toml" "$pkgdir/usr/share/nimdow/config.default.toml"
 }
 
