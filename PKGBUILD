@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Jochim <whjochim@gmail.com>
 pkgname=xwacomcalibrate
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 arch=("any")
 pkgdesc="calibrates wacom tablets to the current window"

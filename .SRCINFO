@@ -1,6 +1,6 @@
 pkgbase = xwacomcalibrate
 	pkgdesc = calibrates wacom tablets to the current window
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/whjochim/xwacomcalibrate
 	arch = any

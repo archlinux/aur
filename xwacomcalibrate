@@ -1,14 +1,22 @@
 #!/bin/bash
 
 print_help () {
-    echo "TODO"
+   printf "\nUsage: xwacomcalibrate [-h] [-d] [-f] [-r (cw | half | ccw)]\n\n"
+   printf " h: prints this help\n"
+   printf " d: Uses xdotool to continously run the script"
+   printf " f: Uses whole X screen as window size\n"
+   printf " r: Chooses the device rotation. When given, needs either \"cw\" for clockwise, \"half\" for overhead, or \"ccw\" for counterclockwise as an argument\n"
+   printf "\n"
 }
 
-while getopts "fr:" opt
+while getopts "hdfr:" opt
 do
     case $opt in
         h )
             print_help
+            ;;
+        d )
+            DAEMON=true
             ;;
         f ) FULLSCREEN=true
             ;;
@@ -20,14 +28,13 @@ do
             then
                 ROTATION=$OPTARG
             else
-                echo "Invalid rotation: $OPTARG" 1>&2
+                echo "Invalid rotation: $arg" 1>&2
                 exit 1
             fi
             ;;
         : )
             echo "Invalid Option: $OPTARG requires an argument" 1>&2
-            exit 1
-            ;;
+            exit 1 ;;
         * ) echo "Unknown Option"
             print_help
             exit 1
@@ -43,6 +50,11 @@ get_dev () {
               | cut -d$'\t' -f 2\
               | tr -cd [:digit:]
        )
+    if [[ ! $DEV ]]
+    then
+        echo "no device found"
+        exit 1
+    fi
 }
 
 full_tablet_size () {
@@ -138,19 +150,32 @@ calculate_new_tablet_size () {
     TB_HEIGHT=$theight
 }
 
-get_dev
-set_rotation "$DEV" "$ROTATION"
-full_tablet_size "$DEV"
-if [[ $FULLSCREEN ]]
+main () {
+    get_dev
+    set_rotation "$DEV" "$ROTATION"
+    full_tablet_size "$DEV"
+    if [[ $FULLSCREEN ]]
+    then
+        get_x_screen_size
+    else
+        get_active_window_size
+    fi
+    calculate_new_tablet_size "$ROTATION"\
+                              "$TB_WIDTH" "$TB_HEIGHT"\
+                              "$W_WIDTH" "$W_HEIGHT"
+    set_output "$DEV" "$W_WIDTH" "$W_HEIGHT" "$W_X" "$W_Y"
+    set_area "$DEV" "$TB_X" "$TB_Y" "$TB_WIDTH" "$TB_HEIGHT"
+    echo "${W_WIDTH}x${W_HEIGHT}+${W_X}+${W_Y}   \
+${TB_WIDTH}x${TB_HEIGHT}+${TB_X}+${TB_Y} $ROTATIONATION"
+}
+
+if [[ $DAEMON ]]
 then
-    get_x_screen_size
+    main
+    xdotool search . behave %@ focus exec --sync\
+            $(\
+              echo 'xwacomcalibrate ' $( if [[ $ROTATION ]]; then echo '-r ' $ROTATION ; fi )\
+                   $( if [[ $FULLSCREEN ]]; then echo '-f'; fi ) )
 else
-    get_active_window_size
+    main
 fi
-calculate_new_tablet_size "$ROTATION"\
-                          "$TB_WIDTH" "$TB_HEIGHT"\
-                          "$W_WIDTH" "$W_HEIGHT"
-set_output "$DEV" "$W_WIDTH" "$W_HEIGHT" "$W_X" "$W_Y"
-set_area "$DEV" "$TB_X" "$TB_Y" "$TB_WIDTH" "$TB_HEIGHT"
-echo "${W_WIDTH}x${W_HEIGHT}+${W_X}+${W_Y}\
- ${TB_WIDTH}x${TB_HEIGHT}+${TB_X}+${TB_Y} $ROTATION"
