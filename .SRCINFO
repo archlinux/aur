@@ -1,7 +1,7 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = x86_64
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = nheko
 	depends = mtxclient>=0.3.0
 	depends = spdlog
 	source = nheko-0.7.2.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v0.7.2.tar.gz
-	sha512sums = 6faac4d5507358231004af474b2de2672aab0b9b369b5ae7f311774e8c3525cecbab0aacf61ec484696d56db171b66b688d044e05a6938c9c04ec9e885e1e82e
+	sha512sums = 8f253bdac22a2d3412fcb18671145d9601d8609dbc79358412e81a17a9677a1cb44b6fc4d029f4d850818cb3fe3531adc869a7e54273e7bb17d0aa7ef85dce17
 
 pkgname = nheko
 
