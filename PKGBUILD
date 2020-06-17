@@ -10,7 +10,7 @@ fragment="#branch=dev"
 pkgname=${name}-git
 pkgver=3.6.dev.3.r24.g1432f00
 pkgrel=1
-pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
+pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
