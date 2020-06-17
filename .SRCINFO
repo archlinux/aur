@@ -1,0 +1,14 @@
+pkgbase = kwin-scripts-sticky-window-snapping-git
+	pkgdesc = KWin script that makes window edges sticky while resizing.
+	pkgver = r52.3833af8
+	pkgrel = 1
+	url = https://github.com/Flupp/sticky-window-snapping
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kwin
+	source = kwin-scripts-sticky-window-snapping-git::git+https://github.com/Flupp/sticky-window-snapping.git
+	md5sums = SKIP
+
+pkgname = kwin-scripts-sticky-window-snapping-git
+
