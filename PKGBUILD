@@ -68,9 +68,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.7
-_minor=2
+_minor=3
 _srcname=linux-${_major}
-_clr=${_major}.1-961
+_clr=${_major}.2-962
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -80,7 +80,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20200527'
+_gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -261,7 +261,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -337,9 +337,6 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-    echo "Stripping vmlinux..."
-    strip -v $STRIP_STATIC "$builddir/vmlinux"
-
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -355,9 +352,9 @@ done
 
 sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'SKIP'
-            '6d1f86937ae202b25e4a9c3b9cd87c7da520af7000b4f271ac379282afa9b8d5'
+            '2f007850373cb63198ac35b645803f8923586d21f3898d2069b6f080628cf0d2'
             'SKIP'
-            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
+            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
             'bdd05caf94135898bceac0a9d14ec6b1b458dba162d00efd46a292fe97f2679b')
 
