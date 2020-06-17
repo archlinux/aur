@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=terser
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='JavaScript parser, mangler/compressor and beautifier toolkit for ES6+'
 arch=('any')
@@ -13,7 +13,7 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('12ecc2f62babdc54e96e0691019a83ea08cd7072a71217d8e672ea211cd62191')
+sha256sums=('fa2d07983dd150fa42d2137c76dc513b40215716ae8a27154166bbb396a2c571')
 
 package() {
   # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2020-03-22
