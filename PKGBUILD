@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=13.6.0
+pkgver=13.6.1
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=('stylelint-config-standard: for the standard shareable config')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('e79806da936356bd7cdc924cfed96bdca02e6babd3557ec7a3f96028ab82216b334d9d609ab5e35f85a8939dd223cc116053dbc0a01c24650b43bece2714dc37')
+sha512sums=('5f2bcac8d13b7b2aea92e67ce428ad77f52fde58c68ae6070ba522ced4d1eac592f6bcdaf23dd4790bff7867104bd359cff8a6882e0629d9351152f7c2cb79bf')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production $pkgname-$pkgver.tgz
