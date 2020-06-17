@@ -1,7 +1,7 @@
 # Maintainer: fward <howard Dot main At outlook Dot com>
 pkgname=kangaroo-bin
 _pkgname=kangaroo
-pkgver=0.25.1.200601
+pkgver=0.26.1.200615
 pkgrel=1
 pkgdesc="Kangaroo is a SQL client and admin tool for popular databases"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "https://github.com/dbkangaroo/kangaroo/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arch.tar.gz"
 )
 sha256sums=(
-	"05ad32741dbad155bb7549bf440360310a57808426242ebb035b733a5e488c16"
+	"e9f42d0de49544a3904b4918edd8e4dc62b8224b27f30f88e38f772f98460653"
 )
 
 prepare() {
