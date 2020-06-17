@@ -1,6 +1,6 @@
 pkgbase = xwacomcalibrate
-	pkgdesc = calibrates Wacom Tablet's to the current window
-	pkgver = 1.0
+	pkgdesc = calibrates wacom tablets to the current window
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/whjochim/xwacomcalibrate
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = xwacomcalibrate
 	depends = xf86-input-wacom
 	depends = xorg-xwininfo
 	provides = xwacomcalibrate
-	source = xwacomcalibrate::git+https://github.com/whjochim/xwacomcalibrate#branch=master
+	source = xwacomcalibrate
 	sha256sums = SKIP
 
 pkgname = xwacomcalibrate
