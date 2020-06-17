@@ -4,8 +4,8 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.D.2019.12.09
-_pkgver=0.D
+pkgver=0.E.2020.06.17
+_pkgver=0.E
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -14,7 +14,6 @@ pkgdesc="A post-apocalyptic roguelike."
 url="https://cataclysmdda.org/"
 arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
-conflicts=('cataclysm-dda')
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
@@ -25,6 +24,7 @@ optdepends=('sdl2_image: for tiles'
 #source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
 # The git repo is more than a GB
 # so download a snapshot while waiting for shallow clone support in makepkg
+# (you may uncomment the alternate source/pkgver() if you would prefer to use that)
 source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip')
 md5sums=('SKIP')
 
@@ -42,8 +42,8 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 TILES=1 SOUND=1
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LANGUAGE="all" UNTESTS=0 LINTJSON=0 ASTYLE=0
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LANGUAGE="all" UNTESTS=0 LINTJSON=0 ASTYLE=0 TILES=1 SOUND=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
@@ -56,15 +56,15 @@ package() {
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 \
+  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 \
   install
 
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 TILES=1 SOUND=1 \
+  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 TILES=1 SOUND=1 \
   install
 
   # Icon
-  install -D 'data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
+  install -D 'build-data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
 
   # Docs
   install -d "$pkgdir/usr/share/doc/cataclysm-dda"
