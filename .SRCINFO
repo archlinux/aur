@@ -1,0 +1,12 @@
+pkgbase = color-scheme-sweet
+	pkgdesc = Color scheme for Sweet theme
+	pkgver = 20190321
+	pkgrel = 1
+	url = https://store.kde.org/p/1294011/
+	arch = any
+	license = GPL3
+	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1NTcwMDQzNTYiLCJvIjoiMSIsInMiOiI0NWFiZWJlZGIwYmUxMWZiMmM1ZTQ4NGIxZGE1ZDYyZmI3NzIyN2E5YmQ3MWQ3NDZlOTRhYzQ4M2Y5MDY2YzBhYjc0MGJmNTkyNWM4YmU2ZDBhNGI2NjA5YjAwNjg0ZWMxODAxNGI3Nzg4MjRmNTZjZGFiNWNmNzNkNmZkYzNiZiIsInQiOjE1OTI0MjEzOTQsInN0ZnAiOm51bGwsInN0aXAiOiI5NS4xNjUuMTUzLjg0In0.hI4D1mVC23rHE6ts43tFDwKZcVk9m_jlweqs6YEmNoA/Sweet.tar.xz
+	md5sums = c5bd46b69849d6070fe7a3d08acf3cfc
+
+pkgname = color-scheme-sweet
+
