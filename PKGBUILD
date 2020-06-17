@@ -7,18 +7,9 @@ pkgdesc="A cross-platform java application for decoding, monitoring, recording a
 arch=('i686' 'x86_64')
 url="https://github.com/DSheirer/sdrtrunk"
 license=('GPLv3')
-groups=()
 depends=('jre-openjdk' 'java-openjfx')
-#makedepends=('jdk-openjdk' 'gradle')
-checkdepends=()
-optdepends=()
-provides=()
+provides=('sdrtrunk')
 conflicts=('sdrtrunk')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/DSheirer/sdrtrunk/releases/download/v${pkgver}/sdr-trunk-linux-${CARCH}-v${pkgver}.zip"
 	"sdrtrunk.desktop" "cat-radio-icon.png")
 sha256sums=('186bdbfe7e8e217f2bb38671c0ea2709b7a9fec57250baf501edc369d7fdbcbc'
@@ -32,5 +23,4 @@ package() {
   cd "sdr-trunk-linux-${CARCH}-v${pkgver}"
   mkdir -p "${pkgdir}/opt/sdrtrunk"
   cp -ra * "${pkgdir}/opt/sdrtrunk"
-  
 }
