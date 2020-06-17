@@ -5,7 +5,7 @@ _pkgver=1.1.0
 _build=py38h23d657b_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Fourier Transform using Intel MKL - prebuilt binaries from Anaconda"
 arch=('x86_64')
 url="https://github.com/IntelPython/mkl_fft"
@@ -14,7 +14,7 @@ provides=('python-mkl-fft')
 conflicts=('python-mkl-fft')
 depends=('python-mkl-service' 'python-numpy')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('ad24e954606f5183d31cc99b20c86d878963c5a75626815cfc056c266ccbb55d')
+sha256sums=('12a63ea7e97d4b6fdbd58ac67693170c9a4bc55c1dc6b902560c597d01016438')
 
 package() {
   mkdir "${pkgdir}/usr"
