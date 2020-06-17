@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=24263.8ef3d8f58
+pkgver=24265.208614343
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
         -DPERSONAL_DIR=".${pkgname}" \
         -DGLOBAL_DIR="/usr/share/${pkgname}" \
         ..
+
   make
 }
 
@@ -42,7 +43,7 @@ package() {
   make install DESTDIR="$pkgdir"
 
   ## temporary fix
-  ## TODO: Delete when DATA_DESTINATION_DIR, DOCS_DESTINATION_DIR, MAN_DESTINATION_DIR and binary name will be configurable
+  ## TODO: Delete when https://github.com/OpenTTD/OpenTTD/pull/8218 will be merged
   cd "$pkgdir"
   mv usr/share/games/openttd usr/share/openttd-git
   mv usr/share/doc/openttd usr/share/doc/openttd-git
@@ -50,4 +51,17 @@ package() {
   mv usr/share/man/openttd-git/openttd.6 usr/share/man/openttd-git/openttd-git.6
   mv usr/bin/openttd usr/bin/openttd-git
   rm -r usr/share/games
+
+  ## install icons
+  for _res in 16 32 64 128 256; do
+    install -Dm 644 "$srcdir/$pkgname/media/openttd.${_res}.png" "usr/share/icons/hicolor/${_res}x${_res}/apps/${pkgname}.png"
+  done
+
+  ## from old makefiles (Makefile.bundle.in, config.lib)
+  ## install template desktop file
+  install -Dm 644 "$srcdir/$pkgname/media/openttd.desktop.in" "usr/share/applications/${pkgname}.desktop"
+  ## then replace template fields with real data
+  sed -i "s@!!TTD!!@$pkgname@g;s@!!MENU_GROUP!!@Game;@g;s@!!MENU_NAME!!@OpenTTD (git)@g" "usr/share/applications/${pkgname}.desktop"
+  ## and add multi-lang comments to dekstop file
+  awk -f "$srcdir/$pkgname/media/openttd.desktop.translation.awk" "$srcdir/$pkgname/src/lang/"*.txt | LC_ALL=C sort | awk -f "$srcdir/$pkgname/media/openttd.desktop.filter.awk" >> "usr/share/applications/${pkgname}.desktop"
 }
