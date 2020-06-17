@@ -1,8 +1,8 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
-pkgname=sdkman
+pkgname=sdkman-cli
 pkgver=0.4.10
 pkgrel=1
-pkgdesc='A Tool for managing parallel versions of multiple Software Development Kits'
+pkgdesc='Unofficial Client of sdkman, A Tool for managing parallel versions of multiple Software Development Kits'
 arch=('x86_64')
 url="https://github.com/palindrom615/$pkgname"
 license=('Apache 2.0')
