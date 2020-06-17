@@ -1,0 +1,17 @@
+pkgbase = sequeler
+	pkgdesc = Friendly SQL Client
+	pkgver = 0.7.91
+	pkgrel = 1
+	url = https://github.com/Alecaddd/sequeler
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = libgda-mysql
+	depends = libgda-postgres
+	source = https://github.com/Alecaddd/sequeler/archive/v0.7.91.tar.gz
+	sha256sums = 0214b1767488d0290c5c1d673cd604ba6ecdaa011e4871b02171c63e1c25bf48
+
+pkgname = sequeler
+
