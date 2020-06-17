@@ -1,17 +1,17 @@
 # Maintainer: Tim Schumacher <timschumi@gmx.de>
 # Contributor: David Vilar <davvil@gmail.com>
 pkgname=vassal
-pkgver=3.2.17
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
 url="http://www.vassalengine.org/"
 license=('LGPL')
-depends=('java-runtime-openjdk=8')
-source=(http://sourceforge.net/projects/vassalengine/files/VASSAL-current/VASSAL-${pkgver}/VASSAL-${pkgver}-linux.tar.bz2
+depends=('java-runtime>=11')
+source=(https://github.com/vassalengine/vassal/releases/download/${pkgver}/VASSAL-${pkgver}-linux.tar.bz2
         VASSAL-256x256.png)
 noextract=()
-md5sums=('dc43c18cafcf36cfbc1a0d9eb733d8d1'
+md5sums=('ee3f564f60d8070e35062b15da17c0f3'
          '4a4ec11bdbd7dbbf56e6f1d533f69a7e')
 build() {
   true
@@ -28,7 +28,9 @@ package() {
   mkdir -p $pkgdir/usr/bin
   cat << EOF > $pkgdir/usr/bin/vassal
 #!/bin/bash
-cd /usr/share/java/$pkgname && /usr/lib/jvm/java-8-openjdk/jre/bin/java -classpath lib/Vengine.jar VASSAL.launch.ModuleManager "\$@"
+shopt -s nullglob
+JAVA_PATHS=(/usr/lib/jvm/java-{11..14}-*/bin/java)
+cd /usr/share/java/$pkgname && \${JAVA_PATHS[0]} -classpath lib/Vengine.jar VASSAL.launch.ModuleManager "\$@"
 EOF
   chmod a+x $pkgdir/usr/bin/vassal
 
