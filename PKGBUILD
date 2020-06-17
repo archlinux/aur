@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/Huluti/Coulr"
 license=(MIT)
 depends=(gtk3 python-gobject)
-makedepends+=(git meson)
+makedepends=(meson)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Huluti/Coulr/archive/$pkgver.tar.gz")
 sha256sums=('3089db800021f3ce02dfbfcddf5f93047e00523ad2b8b3d4637e380f0c190dd3')
 
