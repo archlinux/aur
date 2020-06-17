@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net/zyn-fusion.html"
@@ -35,7 +35,7 @@ prepare() {
 build() {
 	mkdir -p build-zynaddsubfx
 	cd build-zynaddsubfx
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DGuiModule=zest ../zynaddsubfx
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DGuiModule=zest ../zynaddsubfx
 	make
 
 	cd ../mruby-zest-build
