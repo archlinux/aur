@@ -7,7 +7,6 @@ arch=("any")
 url="https://github.com/ctrlaltcoop/certbot-dns-hetzner"
 license=("APACHE")
 depends=("certbot")
-makedepends=("python-setuptools")
 checkdepends=("python-pytest" "python-requests-mock")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("86795cdfad16f7b1125dc1680041551c04a2f2d74439d1debd875dbbd8d78bda")
