@@ -6,7 +6,7 @@ pkgdesc="A AUR helper"
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
 license=('GPL v3')
-depends=()
+depends=('pacman')
 makedepends=('git')
 
 source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')

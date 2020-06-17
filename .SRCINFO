@@ -6,6 +6,7 @@ pkgbase = buildaur
 	arch = any
 	license = GPL v3
 	makedepends = git
+	depends = pacman
 	source = buildaur::git+https://github.com/lxgr-linux/buildaur.git
 	md5sums = SKIP
 
