@@ -5,16 +5,34 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname='makeself'
-pkgver='2.4.0'
+pkgver='2.4.2'
 pkgrel='1'
 pkgdesc='Utility to create self-extracting packages'
 arch=('any')
 url='http://megastep.org/makeself'
 license=('GPL')
 depends=('bash')
+optdepends=(
+  'gzip: compression support'
+  'bzip2: compression support'
+  'pbzip2: compression support'
+  'xz: compression support'
+  'lzop: compression support (lzo)'
+  'lz4: compression support'
+  'zstd: compression support'
+  'pigz: compression support'
+  # 'base64: encoding support' # coreutils
+  'gnupg: encryption support'
+  'openssl: encryption support'
+  'ncompress: compression support'
+  #'md5sum: digest support' # coreutils
+  #'sha256sum: digest support' # coreutils
+  'tar: archive support'
+)
 source=("${pkgname}-release-${pkgver}.tar.gz::https://github.com/megastep/${pkgname}/archive/release-${pkgver}.tar.gz")
-sha256sums=('76a8c3f3fad1b55c39ba2904a19e74962151f9481df03091d4e54938bdd13f50')
-sha512sums=('f45e349adfb329e75f5fee0053c54e06c7004c12824c935a73a9b9895acb569b339a1acc3ee2b6d69e65cf797120e9d0502ebb6fcceb72fa166cf92f802b1eca')
+md5sums=('7f81a68ee6a8db39ca099e93e7bbc5ed')
+sha256sums=('8789312db5e93fc471a1e4fb88ec13227ef63a9c7aad297f3bbf35f9511f8d62')
+sha512sums=('9a80442b53193db22ea13862a7c3923d7e6774babfb505d136b40ba67793068287beaad926087fa97e16e5e9d7aca38a6e77c0f483b1cd95a7b1e6b1766b9e5d')
 
 prepare() {
   cd "${pkgname}-release-${pkgver}"
