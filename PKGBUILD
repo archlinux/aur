@@ -1,13 +1,13 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=radare2-cutter-git
-pkgver=1.10.3.pre.r36.g3545f059
+pkgver=1.10.3.pre.r59.gcd42adc8
 pkgrel=1
 pkgdesc='Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
 arch=('x86_64')
 license=('GPL3')
-depends=('python' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python-shiboken2' 'pyside2' 'graphviz')
+depends=('python' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python-shiboken2' 'pyside2' 'graphviz' 'qt5-tools')
 makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
 optdepends=()
 provides=('radare2-cutter')
@@ -24,8 +24,10 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   git submodule update --init --recursive
+}
 
-  cd src
+build() {
+  cd "${pkgname}/src"
   cmake -B build -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DCUTTER_ENABLE_PYTHON=ON \
@@ -34,10 +36,6 @@ prepare() {
     -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF \
     -DCUTTER_ENABLE_CRASH_REPORTS=OFF \
     -DCUTTER_ENABLE_GRAPHVIZ=ON
-}
-
-build() {
-  cd "${pkgname}/src"
   make -C build VERBOSE=1
 }
 
