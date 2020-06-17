@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20200212
+pkgver=20200616
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -40,7 +40,6 @@ depends=('adobe-source-code-pro-fonts'
          'opendesktop-fonts'
          'otf-cormorant'
          'otf-fantasque-sans-mono'
-         'otf-fira-code'
          'otf-fira-mono'
          'otf-fira-sans'
          'otf-font-awesome'
