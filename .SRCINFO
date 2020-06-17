@@ -1,0 +1,20 @@
+pkgbase = android-google-apis-x86-system-image-29
+	pkgdesc = Android with Google APIs x86 Atom System Image, API-29
+	pkgver = r10
+	pkgrel = 1
+	url = https://software.intel.com/en-us/android/tools
+	arch = any
+	license = custom
+	depends = android-platform-29
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-google-apis-x86-system-image-29
+	conflicts = android-google-apis-x86-system-image-29
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-29_r10.zip
+	source = package.xml
+	sha256sums = f822281976a1688a2054c05249d080b69c67b2e0b3e3761d1332008c39b1c1d9
+	sha256sums = 02cf4f6c13d1a71217d07771f92b9ef471cb68db4a556871397e80b493d25353
+
+pkgname = android-google-apis-x86-system-image-29
+
