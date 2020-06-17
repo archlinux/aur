@@ -4,7 +4,7 @@
 pkgname=pyside2
 _qtver=5.15.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -31,7 +31,7 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
 groups=(qt qt5)
 conflicts=(python-pyside2)
-provides=(python-pyside2)
+provides=(python-pyside2 qt5-python-bindings)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
