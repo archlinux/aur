@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=edir
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="Program to rename and remove files and directories using your editor"
 url="https://github.com/bulletmark/$pkgname"
@@ -9,7 +9,7 @@ arch=("any")
 depends=("python>=3.5")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('a0ba125fcc0bd4e26cf7a18d896d717b87afcf9c')
+sha1sums=('d8ec5baec8efc231507b47fc25d3cafefda219ce')
 
 package() {
   cd "$pkgname-$pkgver"
