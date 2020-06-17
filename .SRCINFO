@@ -6,6 +6,7 @@ pkgbase = brickstrap-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = pandoc
 	depends = docker
 	depends = libguestfs
 	optdepends = qemu-arm-static: Build arm images (f.e. LEGO ev3 bricks)
