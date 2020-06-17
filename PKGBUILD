@@ -1,15 +1,15 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=12.6d59f1e
+pkgver=13.f5898cc
 pkgrel=1
 pkgdesc="A AUR helper"
 arch=(any)
-url="https://github.com/lxgr-linux/gitaur"
+url="https://github.com/lxgr-linux/buildaur"
 license=('GPL v3')
 depends=()
 makedepends=('git')
 
-source=("$pkgname"::'git://github.com/lxgr-linux/buildaur.git')
+source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')
 md5sums=('SKIP')
 
 pkgver() {
