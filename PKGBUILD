@@ -2,7 +2,7 @@
 pkgname=cpp-httplib-compiled
 _pkgname='cpp-httplib'
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ HTTP/HTTPS server and client library (compiled version)'
 arch=('x86_64' 'i686')
 url='https://github.com/yhirose/cpp-httplib'
@@ -14,8 +14,11 @@ makedepends=('cmake>=3.12')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
 sha512sums=('4ffbeb6672dec5f3704d6c3da09acf0e1984b5c7c68455f7fb030a7457bc64983665498015f2372d8a85da02be1750bab03dae956653297ac8efef67ff682854')
 build() {
-	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
-	cd "$srcdir/$_pkgname-$pkgver/build"
+	cd "$srcdir/$_pkgname-$pkgver"
+	# Lets us force a full version string to be defined instead of just a major.minor
+	sed -i "75s/^/set\(_httplib_version ${pkgver}\)/" "CMakeLists.txt"
+	mkdir -p "build"
+	cd "build"
 	# Install under /usr/lib instead of /usr/lib64
 	cmake -DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
