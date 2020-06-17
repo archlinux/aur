@@ -3,23 +3,23 @@
 pkgname=maltego
 pkgdesc='Maltego information gathering software by Paterva'
 license=('Commercial')
-url='https://www.paterva.com'
-pkgver=4.2.8.12786
+url='https://maltego-downloads.s3.us-east-2.amazonaws.com/linux'
+pkgver=4.2.11.13104
 pkgrel=1
 package=Maltego.v${pkgver}.deb
 arch=('i686' 'x86_64')
 depends=('java-runtime=8')
 
 source_i686=(
-  "${url}/malv428/${package}"
+  "${url}/${package}"
 )
 source_x86_64=(
-  "${url}/malv428/${package}"
+  "${url}/${package}"
 )
-sha256sums_i686=(c35db822ffb88c7807b9ea694821a3af3ca4f872ad44908dba695c53293a0c21)
-sha256sums_x86_64=(c35db822ffb88c7807b9ea694821a3af3ca4f872ad44908dba695c53293a0c21)
-md5sums_i686=(7682d118f2b2123815215b6f4ea40164)
-md5sums_x86_64=(7682d118f2b2123815215b6f4ea40164)
+sha256sums_i686=(1b73b0e77add946dde39c726898be7b217afeec9f6b7b014bf28f8971a7cf3ab)
+sha256sums_x86_64=(1b73b0e77add946dde39c726898be7b217afeec9f6b7b014bf28f8971a7cf3ab)
+md5sums_i686=(ce45a73d7745b97fc86de33b5f74e68f)
+md5sums_x86_64=(ce45a73d7745b97fc86de33b5f74e68f)
 
 install=maltego.install
 
