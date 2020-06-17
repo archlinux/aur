@@ -1,4 +1,4 @@
-pkgbase = xorg-xf86-input-evdev-git-surfacepen3
+pkgbase = xf86-input-evdev-git-surfacepen3
 	pkgdesc = X.org evdev input driver with the patch for Surface Pen 3 (Git)
 	pkgver = 2.10.6.r2.g7103611
 	pkgrel = 1
@@ -27,5 +27,5 @@ pkgbase = xorg-xf86-input-evdev-git-surfacepen3
 	sha512sums = SKIP
 	sha512sums = 21b7ec3aa0b4aea6b2398aec8d2a08b2071a2879916c65c9adfa0bd14c2124069ac21fdd5871a8590dac3ac73ef6accdb160ea76b21494e66db31109ca534a29
 
-pkgname = xorg-xf86-input-evdev-git-surfacepen3
+pkgname = xf86-input-evdev-git-surfacepen3
 

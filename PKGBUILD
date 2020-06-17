@@ -7,7 +7,7 @@
 # This package fix the buttons on the Surface Pen 3 (except the OneNote button which based on bluetooth)
 
 _pkgname=xorg-xf86-input-evdev
-pkgname=$_pkgname-git-surfacepen3
+pkgname=xf86-input-evdev-git-surfacepen3
 pkgver=2.10.6.r2.g7103611
 pkgrel=1
 pkgdesc="X.org evdev input driver with the patch for Surface Pen 3 (Git)"
