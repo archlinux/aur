@@ -14,7 +14,7 @@ url='https://github.com/null2264/mutt-wizard-zi'
 license=('GPL3')
 
 provids=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("mutt-wizard-git")
 
 makedepends=('git')
 depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass')
