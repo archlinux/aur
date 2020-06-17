@@ -8,14 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2020.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
-optdepends=('bash-completion')
 install="$pkgname.install"
 _commit='ca17805ec31da8201982ef3e9082ca3376395b52'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
@@ -124,8 +123,8 @@ package() {
 	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
 		"$pkgdir/usr/lib/systemd/system"
 
-	#install CLI binary
-	install -Dm755 target/release/mullvad -t "$pkgdir/usr/bin"
+	# Install CLI binary
+	install -Dm755 dist-assets/mullvad -t "$pkgdir/usr/bin"
 
 	# Link to the problem report binary
 	ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
@@ -133,6 +132,12 @@ package() {
 
 	# Link to the GUI binary
 	install -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+
+	# Install completions
+	install -Dm755 dist-assets/shell-completions/mullvad.bash \
+		"$pkgdir/usr/share/bash-completion/completions/mullvad"
+	install -Dm755 dist-assets/shell-completions/_mullvad -t \
+		"$pkgdir/usr/share/zsh/site-functions"
 
 	# Install desktop file & icons from deb
 	cd dist
