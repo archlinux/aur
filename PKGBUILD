@@ -1,10 +1,12 @@
 # Mantainer: anon@sansorgan.es
+# Maintainer: heavysink <winstonwu91 at gmail>
+
 pkgname=proton
 # Upstream version
 _pkgver='5.0-9'
 # Arch - no hyphens
 pkgver=5.0.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
 url="https://github.com/ValveSoftware/Proton/"
