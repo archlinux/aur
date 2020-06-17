@@ -1,6 +1,6 @@
 pkgbase = atcore-git
 	pkgdesc = KDE 3D Printing libary
-	pkgver = 1.0.70.r817.e710593
+	pkgver = 1.0.70.r886.293f664
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = atcore-git
 	depends = qt5-charts
 	provides = atcore
 	conflicts = atcore
-	source = git://anongit.kde.org/atcore.git
+	source = git+https://invent.kde.org/libraries/atcore.git
 	md5sums = SKIP
 
 pkgname = atcore-git
