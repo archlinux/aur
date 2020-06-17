@@ -1,0 +1,20 @@
+pkgbase = materia-blur-kde
+	pkgdesc = Materia Blur (discontinued) theme for KDE Plasma 5
+	pkgver = 20200312
+	pkgrel = 1
+	url = https://github.com/PapirusDevelopmentTeam/materia-kde
+	arch = any
+	license = GPL3
+	options = !strip
+	source = https://github.com/PapirusDevelopmentTeam/materia-kde/archive/20200312/materia-kde-20200312.tar.gz
+	sha256sums = 1d64af417a426ea0c73c55eef8e90e6e96af69e73cda8d35f16c7c0740ef187f
+
+pkgname = materia-blur-kde
+	depends = materia-kde
+	optdepends = materia-gtk-theme: Matching GTK theme
+	optdepends = kvantum-theme-materia-blur: Materia theme for Kvantum Qt style (recommended)
+
+pkgname = kvantum-theme-materia-blur
+	pkgdesc = Materia Blur (discontinued) theme for KDE Plasma 5
+	depends = kvantum-qt5
+
