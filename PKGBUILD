@@ -1,10 +1,11 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Arthur Țițeică arthur.titeica/gmail/com
 # Contributor: Thomas Laube <tomx3@tomtomtom.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.3.r0.gb690fda3
+pkgver=3.0.4.r41.g3ff00874
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Development version.'
 arch=('i686' 'x86_64')
@@ -16,30 +17,18 @@ makedepends=('git' 'qt5-tools' 'libxrandr')
 optdepends=('gst-plugins-ugly: for x264 video codec')
 provides=("${_pkgname%NG}=${pkgver}")
 conflicts=("${_pkgname%NG}")
-source=("git+https://github.com/vkohaupt/${_pkgname}.git"
-	'install.pri')
-sha512sums=('SKIP'
-	    '0a5e0523adaa9e7f9b46cbbc8f7d8d0167787b67f11cfb7895785e3f93ab8836526c1b0891f4bf3362f4e8bc44885ffcf99670b86558aa667bd4f4ac7df56f11')
+source=("git+https://github.com/vkohaupt/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags 2>/dev/null | sed -r 's/-/.r/' | tr - .
 }
 
-prepare() {
-  cd ${_pkgname}
-
-  # Add install instructions
-  cp ../install.pri src/
-  echo 'include(install.pri)' >> src/${_pkgname}.pro
-  
-  # Create build directory
-  mkdir -p "${srcdir}"/build
-}
-
 build() {
+  [[ -d "${srcdir}"/build ]] || mkdir -p "${srcdir}"/build
   cd build
-  qmake-qt5 ../${_pkgname}/src/${_pkgname}.pro \
+  qmake-qt5 ../${_pkgname}/src/ \
 	    QMAKE_CFLAGS="${CFLAGS}" \
 	    QMAKE_CXXFLAGS="${CXXFLAGS}" \
 	    CONFIG+=release \
@@ -48,6 +37,7 @@ build() {
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="${pkgdir}" install
+  install -Dm755 build/$_pkgname -t "$pkgdir"/usr/bin/
+  install -Dm644 $_pkgname/src/applications/$_pkgname.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 $_pkgname/src/applications/$_pkgname.png -t "$pkgdir"/usr/share/pixmaps/
 }
