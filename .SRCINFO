@@ -24,6 +24,7 @@ pkgbase = mutt-wizard-zi-git
 	optdepends = libnotify: enable desktop notifications about new mail
 	optdepends = dunst: enable desktop notifications about new mail
 	optdepends = pam-gnupg: automatically unlock gpg keys at session login
+	provides = mutt-wizard
 	conflicts = mutt-wizard
 	options = zipman
 	source = git+https://github.com/null2264/mutt-wizard-zi

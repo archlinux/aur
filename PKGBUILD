@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://github.com/null2264/mutt-wizard-zi'
 license=('GPL3')
 
-provids=("mutt-wizard")
+provides=("mutt-wizard")
 conflicts=("mutt-wizard")
 
 makedepends=('git')
