@@ -1,28 +1,29 @@
 pkgbase = xf86-input-evdev-git
-	pkgdesc = X.org evdev input driver - Git version
-	pkgver = 2.10.6.2.r685.g7103611
-	pkgrel = 1
-	url = https://cgit.freedesktop.org/xorg/driver/xf86-input-evdev/
+	pkgdesc = X.org evdev input driver (Git)
+	pkgver = 2.10.6.r2.g7103611
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = i686
 	arch = x86_64
-	groups = xorg
-	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = xorgproto-git
+	makedepends = X-ABI-XINPUT_VERSION=24.1
+	makedepends = xorgproto
 	makedepends = git
-	makedepends = libevdev
-	depends = glibc
-	depends = systemd
+	depends = systemd-libs
 	depends = mtdev
-	provides = xf86-input-evdev=2.10.6.2.r685.g7103611
-	provides = xf86-input-driver
-	conflicts = xorg-server<1.18.0
-	conflicts = X-ABI-XINPUT_VERSION<22
-	conflicts = xf86-input-evdev
-	options = !libtool
+	depends = libevdev
+	provides = xorg-xf86-input-evdev=2.10.6.r2.g7103611
+	provides = xorg-server
+	provides = X-ABI-XINPUT_VERSION
+	provides = X-ABI-XINPUT_VERSION
+	conflicts = xorg-server<1.19.0
+	conflicts = X-ABI-XINPUT_VERSION<24.1
+	conflicts = X-ABI-XINPUT_VERSION>=25
+	conflicts = xorg-xf86-input-evdev
 	options = !makeflags
-	source = git://anongit.freedesktop.org/xorg/driver/xf86-input-evdev
-	md5sums = SKIP
+	source = git+https://github.com/freedesktop/xorg-xf86-input-evdev.git
+	sha512sums = SKIP
 
 pkgname = xf86-input-evdev-git
 
