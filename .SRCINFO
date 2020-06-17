@@ -1,12 +1,12 @@
 pkgbase = aixlog
 	pkgdesc = Header-only C++ logging library
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/badaix/aixlog
 	arch = any
 	license = MIT
-	source = https://github.com/badaix/aixlog/archive/v1.3.0.tar.gz
-	sha256sums = 748a00d3185eeb5cd8f0d751c4ef89d8c0948364024a432d2536eef883c9c782
+	source = https://github.com/badaix/aixlog/archive/v1.4.0.tar.gz
+	sha256sums = cce5b8f5408cfd19b4d4eb678274d0c74490dc0eb2bdc8f97c852036897d6099
 
 pkgname = aixlog
 
