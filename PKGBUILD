@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 _pkgver=5.6.17
-_rtpatchver=9
+_rtpatchver=10
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -23,16 +23,12 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   sphinx-workaround.patch)
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
-  '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
-  'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
 sha256sums=('c33a245401db38de760a7229cf3917eb6e6f8fabab0dc5add95b9b8f3e557f9e'
             'SKIP'
-            '0b78af5ea1e1e3d2b633e3c4715ca14a59736ebc70eb9662f4a04c790bb6114c'
+            '15a65340a6f332b4017cc61b64762018cee27a886815a3013341d99782c33fb7'
             'SKIP'
             '4eef5757aec0357d46e8e9fd146f414d438812ef34d4f51b56baa93e7fa43493'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
