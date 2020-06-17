@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=rmw
-pkgver=0.7.04
+pkgver=0.7.05
 pkgrel=1
 pkgdesc="rmw (ReMove to Waste) is a safe-remove utility for the command line."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('ncurses')
 optdepends=('gettext')
 
 source=(https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('078bcffead7cc82564460bb8cfe22c3e36a63ecf58e8b563235989e173b06f74')
+sha256sums=('c2c30e2255745e6e8bedae14fb4d6b2ec5a407461dbf362c650e35692240681d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
