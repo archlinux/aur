@@ -1,6 +1,6 @@
 # Maintainer: mickele
 pkgname=tclreadline
-pkgver=2.3.6
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="GNU readline for interactive tcl shells"
 url="https://github.com/flightaware/tclreadline"
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 #install=''
 source=("https://github.com/flightaware/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('478b13c2de153b5423f34f007e94d7ecbe2840b451501cc1132663750e2be0d3')
+sha256sums=('a64e0faed5957b8e1ac16f179948e21cdd6d3b8313590b7ab049a3192ab864fb')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,4 +32,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
+
+    install -m644 -D -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/${pkgname}-${pkgver}/"{COPYING,sample.tclshrc,SCENARIO}
 }
