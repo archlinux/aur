@@ -15,7 +15,6 @@ makedepends=('git' 'python-gobject' 'meson')
 optdepends=(
 'pdftk: for Export and print plugin'
 'python-cheetah3: for Export and print plugin'
-'python-geoclue: for Geolocalized tasks plugin'
 'python2-libappindicator: for Notification area plugin (python-appindicator)'
 'texlive-bin: for Export and print plugin (for pdflatex)'
 'texlive-core: for Export and print plugin (for pdfjam)'
