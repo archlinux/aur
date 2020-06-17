@@ -1,6 +1,6 @@
 pkgbase = yourkit
 	pkgdesc = Java CPU and memory profiler.
-	pkgver = 2019.8b139
+	pkgver = 2019.8b141
 	pkgrel = 1
 	url = http://www.yourkit.com
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = yourkit
 	optdepends = eclipse: A Java IDE that integrates with Yourkit
 	optdepends = netbeans: A Java IDE that integrates with Yourkit
 	options = !strip
-	source = https://www.yourkit.com/download/YourKit-JavaProfiler-2019.8-b139.zip
-	sha256sums = e95f855e067e91bbaff7e2f499c2ebfe2be692c551f8ef0ef8b8b2d44a25e144
+	source = https://www.yourkit.com/download/YourKit-JavaProfiler-2019.8-b141.zip
+	sha256sums = 47cf34fdf086fc8b5ff048205b67fefbc57e1733582479d93bdd15b320750dbb
 
 pkgname = yourkit
 
