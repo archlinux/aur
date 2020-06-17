@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/DSheirer/sdrtrunk"
 license=('GPLv3')
 depends=('jre-openjdk' 'java-openjfx')
-provides=('sdrtrunk')
+provides=("sdrtrunk=${pkgver}")
 conflicts=('sdrtrunk')
 source=("https://github.com/DSheirer/sdrtrunk/releases/download/v${pkgver}/sdr-trunk-linux-${CARCH}-v${pkgver}.zip"
 	"sdrtrunk.desktop" "cat-radio-icon.png")

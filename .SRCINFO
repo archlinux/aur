@@ -8,7 +8,7 @@ pkgbase = sdrtrunk-bin
 	license = GPLv3
 	depends = jre-openjdk
 	depends = java-openjfx
-	provides = sdrtrunk
+	provides = sdrtrunk=0.4.0
 	conflicts = sdrtrunk
 	source = https://github.com/DSheirer/sdrtrunk/releases/download/v0.4.0/sdr-trunk-linux-x86_64-v0.4.0.zip
 	source = sdrtrunk.desktop
