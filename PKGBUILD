@@ -26,7 +26,7 @@ build() {
 	cd "$srcdir/${_pkgname}"
 	export CFLAGS+=" ${CPPFLAGS}"
 	export CXXFLAGS+=" ${CPPFLAGS}"
-	qmake PREFIX="${pkgdir}/usr"
+	qmake PREFIX="/usr"
 	make
 }
 
