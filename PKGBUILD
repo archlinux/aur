@@ -1,5 +1,5 @@
 pkgname=boringtun-git
-pkgver=0.2.0.8.g37be474
+pkgver=0.3.0.13.g362be0d
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64' 'i686' 'aarch64')
