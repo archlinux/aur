@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-fft-bin
 _pkgname=mkl_fft
-_pkgver=1.0.15
-_build=py38ha843d7b_0
+_pkgver=1.1.0
+_build=py38h23d657b_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
 pkgrel=1
