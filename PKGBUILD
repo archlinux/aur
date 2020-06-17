@@ -1,16 +1,16 @@
 # Maintainer: ifreund <ifreund@ifreund.xyz>
 
 pkgname=waylock
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A simple screenlocker for wayland compositors.'
 arch=('x86_64')
 url="https://github.com/ifreund/${pkgname}"
 license=('MIT')
-depends=('cairo')
+depends=('wayland' 'cairo' 'pam')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f2cb44764434bc27b58e2255c1896b6c4b6ed83ebde46efc127caa5a19bc5052')
+sha256sums=('ac9531e926794b6a46a2d24afc47942f30e2af1219d2b209f64ab50c9378ac8b')
 
 build() {
     cd "${pkgname}-${pkgver}"

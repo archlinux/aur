@@ -1,14 +1,16 @@
 pkgbase = waylock
 	pkgdesc = A simple screenlocker for wayland compositors.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ifreund/waylock
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	depends = wayland
 	depends = cairo
-	source = waylock-0.3.1.tar.gz::https://github.com/ifreund/waylock/archive/v0.3.1.tar.gz
-	sha256sums = f2cb44764434bc27b58e2255c1896b6c4b6ed83ebde46efc127caa5a19bc5052
+	depends = pam
+	source = waylock-0.3.2.tar.gz::https://github.com/ifreund/waylock/archive/v0.3.2.tar.gz
+	sha256sums = ac9531e926794b6a46a2d24afc47942f30e2af1219d2b209f64ab50c9378ac8b
 
 pkgname = waylock
 
