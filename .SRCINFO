@@ -1,0 +1,49 @@
+pkgbase = thedesk
+	pkgdesc = Desktop Environment built on Qt
+	pkgver = beta1
+	pkgrel = 1
+	url = https://github.com/vicr123/thedesk
+	arch = x86_64
+	license = GPL3
+	makedepends = polkit-qt5
+	makedepends = qt5-tools
+	makedepends = the-libs
+	makedepends = libtdesktopenvironment
+	makedepends = pulseaudio-qt
+	makedepends = libx11
+	makedepends = libxi
+	makedepends = xf86-input-libinput
+	makedepends = networkmanager-qt
+	source = thedesk-beta1::https://github.com/vicr123/thedesk/archive/beta1.tar.gz
+	sha256sums = cc9860962a637f1d40d38b9461e970c2b7694a235d1d974a2aea3ba75f45c85f
+
+pkgname = thedesk
+	depends = the-libs
+	depends = kwin
+	depends = libtdesktopenvironment
+	depends = td-polkitagent
+	depends = libthedesk
+	depends = thedesk-platform
+	depends = pulseaudio-qt
+	depends = libx11
+	depends = libxi
+	depends = xf86-input-libinput
+	depends = networkmanager-qt
+	depends = accountsservice
+
+pkgname = td-polkitagent
+	depends = the-libs
+	depends = polkit-qt5
+	depends = libtdesktopenvironment
+
+pkgname = thedesk-platform
+	depends = the-libs
+	depends = libx11
+	optdepends = contemporary-widgets: Default Widget Theme
+	optdepends = contemporary-icons: Default Icon Theme
+	optdepends = ttf-contemporary: Default Font
+
+pkgname = libthedesk
+	depends = the-libs
+	depends = libtdesktopenvironment
+
