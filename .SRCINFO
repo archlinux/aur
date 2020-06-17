@@ -1,0 +1,13 @@
+pkgbase = ltunify
+	pkgdesc = Tool for working with Logitech Unifying receivers and devices
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://lekensteyn.nl/logitech-unifying.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = ltunify-0.3.tar.gz::https://github.com/Lekensteyn/ltunify/archive/v0.3.tar.gz
+	md5sums = 28544d387d000a728282f8647feb90d6
+
+pkgname = ltunify
+
