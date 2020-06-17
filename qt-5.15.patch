@@ -1,0 +1,25 @@
+diff --git a/src/components/exposure/tupexposuretable.cpp b/src/components/exposure/tupexposuretable.cpp
+index 53df3bb7..da4cfe9a 100644
+--- a/src/components/exposure/tupexposuretable.cpp
++++ b/src/components/exposure/tupexposuretable.cpp
+@@ -36,6 +36,8 @@
+ #include "tupexposuretable.h"
+ #include "tconfig.h"
+ 
++#include <QPainterPath>
++
+ class TUPITUBE_EXPORT TupExposureVerticalHeader : public QHeaderView
+ {
+     public:
+diff --git a/src/framework/gui/tslider.cpp b/src/framework/gui/tslider.cpp
+index 206055e8..de3d13b3 100644
+--- a/src/framework/gui/tslider.cpp
++++ b/src/framework/gui/tslider.cpp
+@@ -38,6 +38,7 @@
+ #include "tapplicationproperties.h" 
+ 
+ #include <QDesktopWidget>
++#include <QPainterPath>
+ 
+ #ifdef TUP_DEBUG
+   #include <QDebug>

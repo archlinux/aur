@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.maefloresta.tupitube</id>
+  <launchable type="desktop-id">tupitube.desktop</launchable>
+  <name>TupiTube Desk</name>
+  <summary>2D Animation Toolkit</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <description>
+    <p>TupiTube Desk is a 2D animation tool for desktop environments focused on usability for children and amateur artists.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+​      <image>https://a.fsdn.com/con/app/proj/tupi2d/screenshots/screen01_en.png</image>
+    </screenshot>
+    <screenshot>
+​      <image>https://a.fsdn.com/con/app/proj/tupi2d/screenshots/screen02_en.png</image>
+    </screenshot>
+    <screenshot>
+​      <image>https://a.fsdn.com/con/app/proj/tupi2d/screenshots/screen03_en.png</image>
+    </screenshot>
+    <screenshot>
+​      <image>https://a.fsdn.com/con/app/proj/tupi2d/screenshots/tweening-en.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/xtingray/tupitube.desk/issues</url>
+  <url type="homepage">https://www.maefloresta.com/</url>
+</component>
