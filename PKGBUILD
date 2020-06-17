@@ -5,32 +5,28 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.4
-_channel=stable
-pkgver=${_pkgver}.${_channel}
-pkgrel=2
+_pkgver=2020.5
+_channel=beta
+pkgver=${_pkgver}.${_channel}2
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
-optdepends=('bash-completion')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='ca17805ec31da8201982ef3e9082ca3376395b52'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
+_commit='f9c55513f372de96223fad3ab6bd2aa78d517387'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-              #'8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
-              # David Lönnhager (code signing) <david dot l at mullvad dot net>
-             )
 
 prepare() {
 	# Point the submodule to our local copy
@@ -91,6 +87,7 @@ build() {
 		mullvad-problem-report
 		libtalpid_openvpn_plugin.so
 		mullvad-setup
+		mullvad-exclude
 	)
 	for binary in ${binaries[*]}; do
 		cp "target/release/$binary" "dist-assets/$binary"
@@ -107,13 +104,13 @@ build() {
 	npm run pack:linux
 }
 
-check() {
-	cd "$srcdir/mullvadvpn-app"
-	cargo test --release --locked
-
+#check() {
+#	cd "$srcdir/mullvadvpn-app"
+#	cargo test --release --locked
+#
 #	cd gui
 #	npm test
-}
+#}
 
 package() {
 	cd "$srcdir/mullvadvpn-app"
@@ -126,8 +123,8 @@ package() {
 	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
 		"$pkgdir/usr/lib/systemd/system"
 
-	#install CLI binary
-	install -Dm755 target/release/mullvad -t "$pkgdir/usr/bin"
+	# Install binaries
+	install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin"
 
 	# Link to the problem report binary
 	ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
@@ -144,7 +141,7 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0_amd64.deb"
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
 	tar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
