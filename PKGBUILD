@@ -1,8 +1,9 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-####to disable cuda kernel comment out this line
+## Configuration env vars:
 _BUILD_CUDA="${_BUILD_CUDA:-ON}"
+_CUDA_ARCH="${_CUDA_ARCH:-Auto}"
 
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
@@ -56,7 +57,9 @@ build() {
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
                       -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
-                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+                      -DCUDA_ARCHS="$_CUDA_ARCH"
+                    )
     else
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=OFF )
     fi
