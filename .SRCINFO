@@ -1,13 +1,13 @@
 pkgbase = zen
 	pkgdesc = Reduce your stress with the C language. The first step to writing perfect software is Zen™
-	pkgver = 0.8.20200612002LTS
+	pkgver = 0.8.20200615LTS
 	pkgrel = 1
 	url = https://zen-lang.org
 	arch = x86_64
 	license = custom:ConnectFree Reference Source License (CF-RSL)
 	depends = bash
-	source = https://zen-lang.org/dist/0.8.20200612002LTS/zen-linux-x86_64-0.8.20200612002LTS.tar.xz
-	sha256sums = 92ac886ad78da5d86ce9829d8a49118bdacf4972aed15685c5757509d53ad8cc
+	source = https://zen-lang.org/dist/0.8.20200615LTS/zen-linux-x86_64-0.8.20200615LTS.tar.xz
+	sha256sums = 855c6fd9f66462ba9bd3a0f4b97d073987094bed3d0ce5e7cb270346f6d8fcf5
 
 pkgname = zen
 
