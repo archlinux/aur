@@ -1,3 +1,4 @@
+# Maintainer: John Doe <kitterhuff@gmail.com>
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Thomas S Hatch <thatch45@gmail.copm>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
