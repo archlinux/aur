@@ -2,7 +2,7 @@
 
 pkgname=rime-cloverpinyin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 #pkgdesc="Clover Simplified pinyin input for rime."
 pkgdesc="✤四叶草简体拼音输入方案 for rime"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('rime-prelude' 'rime-emoji' 'rime-symbols')
 makedepends=('librime')
 source=(https://github.com/fkxxyz/rime-cloverpinyin/releases/download/${pkgver}/clover.schema-${pkgver}.zip)
-sha256sums=('578dc3597ba0ec1cd79ee944f8a5a23bf5a8c595391f715ededdbcd59b19c661')
+sha256sums=('d5be118497d60b7d07ef2daa2e03d1ab9fab5796e685578856b53d42b48dad2a')
 
 build(){
   cd $srcdir
