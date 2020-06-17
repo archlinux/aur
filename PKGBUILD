@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=allsorts-tools
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Font debugging tools based on the allsorts font shaping engine'
 arch=('i686' 'x86_64')
@@ -9,13 +9,13 @@ url="https://github.com/yeslogic/allsorts-tools"
 license=('Apache')
 depends=()
 conflicts=('allsorts-tools-git')
-makedepends=('rust' 'cargo')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c24f6367956f1e47cbe2575425b412c444ce4fb45c48e9ab454751d39a3ed567')
+sha256sums=('93c32dd0ce7fbef23a48e08d258977b4d2d06ffa8d26ac08585adf2e6bd62896')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked
 }
 
 package() {
