@@ -10,26 +10,15 @@ arch=('x86_64')
 license=('GPL')
 depends=('pygtk' 'python-gobject' 'python-configobj' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
-'python-liblarch-git' 'python-dbus' 'python-cairo' 'python-pyxdg')
-makedepends=('git' 'python-gobject')
+'python-liblarch-git' 'python-cairo' 'python-pyxdg')
+makedepends=('git' 'python-gobject' 'meson')
 optdepends=(
-'python2-bugzilla: for Bugzilla plugin (python-bugz)'
-'python-cheetah: for Export and print plugin'
-'texlive-bin: for Export and print plugin (for pdflatex)'
 'pdftk: for Export and print plugin'
-'pdfjam: for Export and print plugin'
+'python-cheetah3: for Export and print plugin'
 'python-geoclue: for Geolocalized tasks plugin'
-'python-clutter: for Geolocalized tasks plugin'
-'python-clutter-gtk: for Geolocalized tasks plugin'
-'python-champlain: for Geolocalized tasks plugin'
-'python-champlain-gtk: for Geolocalized tasks plugin'
-'hamster-time-tracker: for Hamster Time Tracker Integration to integrate with'
 'python2-libappindicator: for Notification area plugin (python-appindicator)'
-'python-dbus: for Tomboy/Gnote plugin'
-'python-evolution: for Evolution synchronization service'
-'python-dateutil: for Evolution and RememberTheMilk synchronization services'
-'python-suds: for MantisBT synchronization service'
-'python-launchpadlib: for Launchpad synchronization service'
+'texlive-bin: for Export and print plugin (for pdflatex)'
+'texlive-core: for Export and print plugin (for pdfjam)'
 )
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg")
@@ -39,13 +28,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson -Dprofile=development build
+
+  ninja -C build
+}
+
 package() {
   cd "${srcdir}/${pkgname}"
-  meson -Dprofile=development -Dprefix=${pkgdir}/usr .aur_build
-
-  ninja -C .aur_build install
+  DESTDIR="$pkgdir" ninja -C build install
 
   install -d "${pkgdir}"/usr
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
