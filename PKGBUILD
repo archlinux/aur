@@ -3,14 +3,14 @@
 # Contributor: Serge Victor <arch@random.re>
 
 _pipname=Flask-APScheduler
-_pkgname=flask-apscheduler
-pkgbase=python-$_pkgname
-pkgname=("python-$_pkgname" "python2-$_pkgname")
+_reponame=${_pipname,,}
+pkgbase=python-$_reponame
+pkgname=("python-$_reponame" "python2-$_reponame")
 pkgver=1.11.0
 pkgrel=2
 pkgdesc='Adds APScheduler support to Flask'
 arch=('any')
-url="https://github.com/viniciuschiele/$_pkgname"
+url="https://github.com/viniciuschiele/$_reponame"
 license=('Apache')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-apscheduler' 'python2-apscheduler' 'python-dateutil' 'python2-dateutil' 'python-flask' 'python2-flask')
 source=("$url/releases/download/$pkgver/$_pipname-$pkgver.tar.gz"
