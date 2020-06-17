@@ -1,12 +1,12 @@
 pkgbase = spire-bin
         pkgdesc = A Clojure domain specific language tailored to idempotently orchestrate machines in parallel over SSH.
-        pkgver = 0.1.0_alpha.10
+        pkgver = 0.1.0_alpha.13
         pkgrel = 2
         url = https://github.com/epiccastle/spire
         arch = x86_64
         license = EPL
         provides = spire
-        source = https://github.com/epiccastle/spire/releases/download/v0.1.0-alpha.10/spire-0.1.0-alpha.10-linux-amd64.tgz
-        sha256sums = 96f84b5b5641159a39e66a8ad1c2697df0dd267b6a5fa74c3497761b48ec8611
+        source = https://github.com/epiccastle/spire/releases/download/v0.1.0-alpha.13/spire-0.1.0-alpha.13-linux-amd64.tgz
+        sha256sums = 1b637b76b3319afe93ebb0c9e58c62ecbe06e1d8c80f2592973b4d5d3959a273
 
 pkgname = spire-bin

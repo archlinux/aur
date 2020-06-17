@@ -1,7 +1,7 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=spire-bin
-pkgver=0.1.0_alpha.10
+pkgver=0.1.0_alpha.13
 pkgrel=2
 pkgdesc='A Clojure domain specific language tailored to idempotently orchestrate machines in parallel over SSH.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=()
 
 source=("https://github.com/epiccastle/spire/releases/download/v${pkgver/_/-}/${pkgname/\-bin/}-${pkgver/_/-}-linux-amd64.tgz")
 
-sha256sums=('96f84b5b5641159a39e66a8ad1c2697df0dd267b6a5fa74c3497761b48ec8611')
+sha256sums=('1b637b76b3319afe93ebb0c9e58c62ecbe06e1d8c80f2592973b4d5d3959a273')
 
 package() {
   install -Dm755 "${srcdir}/spire" "${pkgdir}/usr/bin/spire"
