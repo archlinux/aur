@@ -1,0 +1,19 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+
+pkgname=aurorae-theme-sweet-mars
+pkgver=1.0.0+20200613
+pkgrel=1
+pkgdesc="Aurorae theme to fit the Sweet theme for Plasma and GNOME"
+arch=('any')
+url="https://store.kde.org/p/1393497/"
+license=('GPL3')
+depends=('kwin')
+source=("https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTIwODEyNjciLCJvIjoiMSIsInMiOiIzNDUyMmQ0MWRkYWQ4M2NjYmNlZjI5MTkxMWFkZWYwZjU1OTgzMjRlOTlhYjQwZWRmY2ZiOWJjMjVmNzU5OWZlNjVkYTU1MGVlMWYyMmI5OWEwMDdmYWNiOWJjN2I5ZGE0OTExODE0NGNmOTg2YTI4NDE2ZWUzY2Q4OTEzMmExZSIsInQiOjE1OTI0MjcyMzcsInN0ZnAiOm51bGwsInN0aXAiOiI5My4yNTIuMC40NSJ9.J35NbuWta3QnFCn4D-o3EEVvRvqiiUflpjB_lmE-tSE/Sweet-Mars.tar.xz")
+md5sums=('cdb1f5429b4b1cdc5490d25f2026ce3e')
+
+package() {
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/share/aurorae/themes"
+  cp -r Sweet-Mars Sweet-Mars-transparent "${pkgdir}/usr/share/aurorae/themes/"
+}
