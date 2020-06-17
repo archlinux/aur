@@ -1,31 +1,30 @@
-# Maintainer: Wouter Haffmans <wouter@simply-life.net>
-pkgname=locale-en-nl-git
-pkgver=r24.f98339c
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Wouter Haffmans <wouter@simply-life.net>
+
+pkgname=locale-en_de-git
+pkgver=r27.95f26de
 pkgrel=1
-pkgdesc="English language locale for the Netherlands (en_NL)"
-arch=('any')
-url="https://github.com/PanderMusubi/locale-en-nl"
-license=('unknown')
-groups=()
+pkgdesc="English language locale for Germany (en_DE)"
+arch=(any)
+url="https://gitlab.com/Scrumplex/locale-en_de"
+license=("GPL")
 depends=(glibc)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-source=("$pkgname"::git+https://github.com/PanderMusubi/locale-en-nl.git#branch=master)
-noextract=()
-md5sums=('SKIP')
-install=locale-en-nl-git.install
+provides=("locale-en_de")
+conflicts=("locale-en_de")
+install=${pkgname}.install
+source=("${pkgname}::git+https://gitlab.com/Scrumplex/locale-en_de")
+sha512sums=('SKIP')
+
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$pkgname"
-  mkdir -p $pkgdir/usr/share/i18n/locales/
-  install -m 0644 en_NL $pkgdir/usr/share/i18n/locales/en_NL
+    cd "$pkgname"
+
+    install -Dm 0644 en_DE $pkgdir/usr/share/i18n/locales/en_DE
 }
+

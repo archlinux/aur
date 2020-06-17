@@ -1,0 +1,21 @@
+post_install() {
+    if ! grep -q '^#\?\s*en_DE' /etc/locale.gen
+    then
+        echo "#en_DE.UTF-8 UTF-8" >> /etc/locale.gen
+    fi
+
+    if ! grep -q '^en_DE' /etc/locale.gen
+    then
+        echo "Uncomment the 'en_DE.UTF-8 UTF-8' line in /etc/locale.gen and run locale-gen as root to enable the en_DE locale"
+    fi
+}
+
+pre_remove() {
+    if grep -q '^en_DE' /etc/locale.gen
+    then
+        echo "Disabling en_DE locale"
+        sed -i 's/^en_DE/#en_DE/' /etc/locale.gen
+        locale-gen
+    fi
+}
+
