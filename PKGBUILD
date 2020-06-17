@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,21 +13,26 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron' (Electron 8). May change soon.
+# Expected one is 'electron' (Electron 9). May change soon.
 # Remember to replace it also in `franz.sh`.
 _electron='electron'
 depends=($_electron)
 makedepends=(expac git npm python)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         'franz.desktop'
-        'franz.sh')
+        'franz.sh'
+        'electron-9.patch::https://github.com/archlinuxcn/repo/raw/eb2e113ff042ef5353450c0ec4f4f621689a23d7/archlinuxcn/franz/0001-.patch')
 sha512sums=('SKIP'
             '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
-            '8584507cfc2736f4736637925536b2c06063c59cd943346717633564ae88b64c5eea294c8897f1250812478ed493f54a470501e98e99d084a2ff012dff9671f8')
+            '4bf3c692b216909afa98eae2d4e29106b8a53ede43ea12745b86517057af845a34c7e87aaa5024c29ce7cd3440d04cfd0dc881db8e35f85d1428de26db326585'
+            '463b07949c789d2be7568b93e0c7f79ab5fc753aef4c869c40ba29444ba10c12db4ad1bc0353d8b73a51619bcd8666ed3c72c070cb24b05087604e04791bda52')
 
 prepare() {
   # Small patching
   cd $pkgname
+
+  # Thanks @yuyichao for this! :)
+  patch -Np1 -i "$srcdir/electron-9.patch"
 
   # Prevent franz from being launched in dev mode
   sed -i \
