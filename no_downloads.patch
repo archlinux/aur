@@ -1,28 +1,41 @@
---- a/build/build.xml	2020-01-17 17:20:35.000000000 +0100
-+++ b/build/build.xml	2020-06-10 15:40:24.506176847 +0200
-@@ -419,12 +419,6 @@
-       <isset property="version" />
-     </condition>
- 
--    <!--<echo message="ref ignoreable? ${reference.ignorable}" />-->
--    <get src="http://download.processing.org/reference.zip"
--         dest="../java/reference.zip"
--         ignoreerrors="${reference.ignorable}"
--         usetimestamp="true" />
--
-     <unzip dest="${target.path}/modes/java"
-            src="../java/reference.zip"
-            overwrite="false">
-@@ -789,7 +783,7 @@
-     <fail message="wrong platform (${os.name})" />
+--- build.xml.orig	2020-06-13 00:09:40.000000000 +0200
++++ build.xml	2020-06-17 12:46:43.682413239 +0200
+@@ -1009,7 +1009,7 @@
+     </if>
    </target>
  
--  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jre-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
+-  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jdk-download, jfx-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
 +  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
      <mkdir dir="linux/work" />
  
      <copy todir="linux/work" preservelastmodified="true">
-@@ -855,58 +849,6 @@
+@@ -1049,25 +1049,6 @@
+       <fileset refid="runtime.jars" />
+     </copy>
+ 
+-    <preparejfx />
+-
+-    <!-- Pull in OpenJFX (separated from mainline Java in JDK 11). -->
+-    <if>
+-      <equals arg1="${jfx.available}" arg2="true" />
+-      <then>
+-        <copy todir="linux/work/core/library" overwrite="true">
+-          <fileset dir="${jfx.path.lib}" includes="*.jar"/>
+-          <fileset dir="${jfx.path.lib}" includes="*.so"/>
+-        </copy>
+-
+-        <mkdir dir="linux/work/core/java/legal/openjfx" />
+-
+-        <copy todir="linux/work/core/java/legal/openjfx" overwrite="true">
+-          <fileset dir="${jfx.path.dist}/legal" includes="**"/>
+-        </copy>
+-      </then>
+-    </if>
+-
+     <copy file="linux/processing" todir="linux/work" />
+     <chmod perm="ugo+x" file="linux/work/processing" />
+ 
+@@ -1094,57 +1075,6 @@
      <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
      <copy file="linux/appdata.xml" todir="linux/work/lib" />
      <copy file="linux/desktop.template" todir="linux/work/lib" />
@@ -31,7 +44,7 @@
 -    Cannot use ant version of tar because it doesn't preserve properties.
 -    <untar compression="gzip"
 -           dest="linux/work"
--           src="linux/jre.tgz"
+-           src="linux/jdk.tgz"
 -           overwrite="false"/>
 --->
 -
@@ -46,38 +59,37 @@
 -      <arg value="-xzpf" />
 -      -->
 -      <arg value="xfz" />
--      <arg value="../${jre.tgz.path}"/>
+-      <arg value="../${jdk.tgz.path}"/>
 -    </exec>
 -
--    <!-- use the jre subfolder when having downloaded a JDK file -->
--    <condition property="jre.dir" value="jdk${jdk.esoteric}/jre">
--      <!-- property might not be set, but it is for arm -->
--      <equals arg1="${jre.download.jdk}" arg2="true" />
--    </condition>
--    <condition property="jre.dir" value="jre${jdk.esoteric}">
--      <not>
--        <equals arg1="${jre.download.jdk}" arg2="true" />
--      </not>
--    </condition>
+-    <property name="jdk.dir" value="jdk-${jdk.esoteric}+${jdk.build}/" />
 -
 -    <exec executable="rsync" dir="linux">
 -      <arg value="-a" />
 -      <arg value="--delete" />
--      <arg value="${jre.dir}/" />
+-      <arg value="${jdk.dir}" />
 -      <arg value="work/java/" />
 -    </exec>
--
--    <delete dir="linux/jre${jdk.esoteric}" failonerror="false" />
--    <delete dir="linux/jdk${jdk.esoteric}" failonerror="false" />
 -
 -    <!-- Remove unused JRE bloat. -->
 -    <delete failonerror="true">
 -      <!--
 -      <fileset refid="javafx-basics" />
--      <fileset refid="javafx-linux-${sun.arch.data.model}" />
+-      <fileset refid="javafx-linux-${jdk.data.model}" />
 -      -->
--      <fileset refid="jre-optional-linux" />
+-      <fileset refid="jdk-optional-linux" />
 -    </delete>
+-
+-    <exec executable="rm">
+-      <arg value="-r"/>
+-      <arg line="linux/jdk-${jdk.esoteric}+${jdk.build}"/>
+-    </exec>
+-
+-    <exec executable="rm">
+-      <arg value="-r"/>
+-      <arg line="${jfx.path.dist}"/>
+-    </exec>
+-
    </target>
  
    <target name="linux-run" depends="linux-build"

@@ -5,7 +5,7 @@
  
  
 +# Always use Oracle's JDK to run processing
-+PATH="/usr/lib/jvm/java-8-jdk/bin/:$PATH" 
++PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" 
 +
  # JARs required from JDK (anywhere in/below the JDK home directory)
  JDKLIBS="rt.jar"
