@@ -1,0 +1,991 @@
+--- README.configure
++++ README.configure
+@@ -9,8 +9,8 @@ CONFIGURE OPTIONS
+
+     --enable-everything
+         Add (or remove) support for all non-multichoice options listed in
+-        "./configure --help", except for "--enable-assert" and
+-        "--enable-256-color".
++        "./configure --help", except for "--enable-assert",
++        "--enable-256-color" and "--enable-24-bit-color".
+
+         You can specify this and then disable options you do not like by
+         *following* this with the appropriate "--disable-..." arguments, or
+@@ -251,6 +251,20 @@ CONFIGURE OPTIONS
+         dramatically when more than six fonts are in use by a terminal
+         instance.
+
++    --enable-24-bit-color (default: off)
++        Enable use of 24-bit colors through
++            SGR 38 ; 2 ; R ; G ; B  m
++            SGR 48 ; 2 ; R ; G ; B  m
++
++        This switch should break termcap/terminfo compatibility to
++        "TERM=rxvt-unicode-256color", and consequently set "TERM" to
++        "rxvt-unicode-24bit" by default but there is no termcap/terminfo
++        for 24-bit color support
++
++        It also results in higher memory usage and can slow down urxvt
++        dramatically when more than six fonts are in use by a terminal
++        instance.
++
+     --with-name=NAME (default: urxvt)
+         Set the basename for the installed binaries, resulting in "urxvt",
+         "urxvtd" etc.). Specify "--with-name=rxvt" to replace with "rxvt".
+--- config.h.in
++++ config.h.in
+@@ -380,6 +380,9 @@
+ /* Define if you want 256-color support */
+ #undef USE_256_COLORS
+
++/* Define if you want 24-bit color support */
++#undef USE_24_BIT_COLOR
++
+ /* Enable extensions on AIX 3, Interix.  */
+ #ifndef _ALL_SOURCE
+ # undef _ALL_SOURCE
+--- configure
++++ configure
+@@ -713,6 +713,7 @@ enable_everything
+ enable_assert
+ enable_warnings
+ enable_256_color
++enable_24_bit_color
+ enable_unicode3
+ enable_combining
+ enable_xft
+@@ -1386,6 +1387,7 @@ Optional Features:
+   --enable-assert         enable assertions
+   --enable-warnings       turn on g++ warnings
+   --enable-256-color      enable 256-color support
++  --enable-24-bit-color   enable 24-bit color support
+   --enable-unicode3       use 21 instead of 16 bits to represent unicode characters
+   --enable-combining      enable composition of base and combining characters
+   --enable-xft            enable xft support on systems that have it
+@@ -4820,6 +4822,20 @@ $as_echo "#define USE_256_COLORS 1" >>confdefs.h
+
+ fi
+
++support_24_bit_color=no
++# Check whether --enable-24-bit-color was given.
++if test "${enable_24_bit_color+set}" = set; then :
++  enableval=$enable_24_bit_color; if test x$enableval = xyes; then
++    support_24_bit_color=yes
++  fi
++fi
++
++if test x$support_24_bit_color = xyes; then
++
++$as_echo "#define USE_24_BIT_COLOR 1" >>confdefs.h
++
++fi
++
+ # Check whether --enable-unicode3 was given.
+ if test "${enable_unicode3+set}" = set; then :
+   enableval=$enable_unicode3; if test x$enableval = xyes -o x$enableval = xno; then
+--- configure.ac
++++ configure.ac
+@@ -201,6 +201,16 @@ if test x$support_256_color = xyes; then
+   AC_DEFINE(USE_256_COLORS, 1, Define if you want 256-color support)
+ fi
+
++support_24_bit_color=no
++AC_ARG_ENABLE(24-bit-color,
++  [  --enable-24-bit-color   enable 24-bit color support],
++  [if test x$enableval = xyes; then
++    support_24_bit_color=yes
++  fi])
++if test x$support_24_bit_color = xyes; then
++  AC_DEFINE(USE_24_BIT_COLOR, 1, Define if you want 24-bit color support)
++fi
++
+ AC_ARG_ENABLE(unicode3,
+   [  --enable-unicode3       use 21 instead of 16 bits to represent unicode characters],
+   [if test x$enableval = xyes -o x$enableval = xno; then
+--- src/background.C
++++ src/background.C
+@@ -312,7 +312,7 @@ rxvt_term::render_image (rxvt_image &image)
+     img->draw (bg_img, PictOpOver, image.alpha * 1. / 0xffff);
+
+   XRenderPictFormat *format = XRenderFindVisualFormat (dpy, visual);
+-  img->convert_format (format, pix_colors [Color_bg])->replace (img);
++  img->convert_format (format, lookup_color(Color_bg, pix_colors))->replace (img);
+
+   delete bg_img;
+   bg_img = img;
+@@ -471,7 +471,7 @@ rxvt_term::render_root_image ()
+     }
+
+   XRenderPictFormat *format = XRenderFindVisualFormat (dpy, visual);
+-  img->convert_format (format, pix_colors [Color_bg])->replace (img);
++  img->convert_format (format, lookup_color(Color_bg, pix_colors))->replace (img);
+
+   delete bg_img;
+   bg_img = img;
+@@ -520,7 +520,7 @@ rxvt_term::bg_init ()
+         root_effects.set_blur (rs [Rs_blurradius]);
+
+       if (ISSET_PIXCOLOR (Color_tint))
+-        root_effects.set_tint (pix_colors_focused [Color_tint]);
++        root_effects.set_tint (lookup_color(Color_tint, pix_colors_focused));
+
+       if (rs [Rs_shade])
+         root_effects.set_shade (rs [Rs_shade]);
+--- src/command.C
++++ src/command.C
+@@ -1843,11 +1843,11 @@ rxvt_term::update_fade_color (unsigned int idx, bool first_time)
+   if (rs[Rs_fade])
+     {
+       if (!first_time)
+-        pix_colors_focused [idx].free (this);
++        lookup_color(idx, pix_colors_focused).free (this);
+
+       rgba c;
+-      pix_colors [Color_fade].get (c);
+-      pix_colors_focused [idx].fade (this, atoi (rs[Rs_fade]), pix_colors_unfocused [idx], c);
++      lookup_color(Color_fade, pix_colors).get (c);
++      lookup_color(idx, pix_colors_focused).fade (this, atoi (rs[Rs_fade]), lookup_color(idx, pix_colors_unfocused), c);
+     }
+ #endif
+ }
+@@ -3334,7 +3334,7 @@ rxvt_term::process_color_seq (int report, int color, const char *str, char resp)
+   if (str[0] == '?' && !str[1])
+     {
+       rgba c;
+-      pix_colors_focused[color].get (c);
++      lookup_color(color, pix_colors_focused).get (c);
+
+ #if XFT
+       if (c.a != rgba::MAX_CC)
+@@ -3482,7 +3482,7 @@ rxvt_term::process_xterm_seq (int op, char *str, char resp)
+           bool changed = false;
+
+           if (ISSET_PIXCOLOR (Color_tint))
+-            changed = root_effects.set_tint (pix_colors_focused [Color_tint]);
++            changed = root_effects.set_tint (lookup_color(Color_tint, pix_colors_focused));
+
+           if (changed)
+             update_background ();
+@@ -3876,7 +3876,7 @@ rxvt_term::process_sgr_mode (unsigned int nargs, const int *arg)
+ {
+   unsigned int i;
+   short rendset;
+-  int rendstyle;
++  rend_t rendstyle;
+
+   if (nargs == 0)
+     {
+@@ -3969,6 +3969,14 @@ rxvt_term::process_sgr_mode (unsigned int nargs, const int *arg)
+                 scr_color ((unsigned int) (minCOLOR + arg[i + 2]), Color_fg);
+                 i += 2;
+               }
++#if USE_24_BIT_COLOR
++            else if (nargs > i + 4 && arg[i + 1] == 2)
++              {
++                unsigned int r = arg[i + 2], g = arg[i + 3], b = arg[i + 4];
++                scr_color_rgb (r, g, b, Color_fg);
++                i += 4;
++              }
++#endif
+             break;
+           case 39:		/* default fg */
+             scr_color (Color_fg, Color_fg);
+@@ -3990,6 +3998,14 @@ rxvt_term::process_sgr_mode (unsigned int nargs, const int *arg)
+                 scr_color ((unsigned int) (minCOLOR + arg[i + 2]), Color_bg);
+                 i += 2;
+               }
++#if USE_24_BIT_COLOR
++            else if (nargs > i + 4 && arg[i + 1] == 2)
++              {
++                unsigned int r = arg[i + 2], g = arg[i + 3], b = arg[i + 4];
++                scr_color_rgb (r, g, b, Color_bg);
++                i += 4;
++              }
++#endif
+             break;
+           case 49:		/* default bg */
+             scr_color (Color_bg, Color_bg);
+--- src/init.C
++++ src/init.C
+@@ -1068,7 +1068,7 @@ rxvt_term::get_colors ()
+
+   for (i = 0; i < NRS_COLORS; i++)
+     if (const char *name = rs[Rs_color + i])
+-      set_color (pix_colors [i], name);
++      set_color (lookup_color(i, pix_colors), name);
+
+   /*
+    * get scrollBar shadow colors
+@@ -1077,13 +1077,13 @@ rxvt_term::get_colors ()
+    * from the fvwm window manager.
+    */
+ #ifdef RXVT_SCROLLBAR
+-  pix_colors [Color_scroll].fade (this, 50, pix_colors [Color_bottomShadow]);
++  lookup_color(Color_scroll, pix_colors).fade (this, 50, lookup_color(Color_bottomShadow, pix_colors));
+
+   rgba cscroll;
+-  pix_colors [Color_scroll].get (cscroll);
++  lookup_color(Color_scroll, pix_colors).get (cscroll);
+
+   /* topShadowColor */
+-  if (!pix_colors[Color_topShadow].set (this,
++  if (!lookup_color(Color_topShadow, pix_colors).set (this,
+                    rgba (
+                      min ((int)rgba::MAX_CC, max (cscroll.r / 5, cscroll.r) * 7 / 5),
+                      min ((int)rgba::MAX_CC, max (cscroll.g / 5, cscroll.g) * 7 / 5),
+@@ -1325,8 +1325,8 @@ rxvt_term::create_windows (int argc, const char *const *argv)
+   window_calc (0, 0);
+
+   /* sub-window placement & size in rxvt_term::resize_all_windows () */
+-  attributes.background_pixel = pix_colors_focused [Color_border];
+-  attributes.border_pixel     = pix_colors_focused [Color_border];
++  attributes.background_pixel = lookup_color(Color_border, pix_colors_focused);
++  attributes.border_pixel     = lookup_color(Color_border, pix_colors_focused);
+   attributes.colormap         = cmap;
+
+   top = XCreateWindow (dpy, parent,
+@@ -1412,8 +1412,8 @@ rxvt_term::create_windows (int argc, const char *const *argv)
+                             window_vt_x, window_vt_y,
+                             vt_width, vt_height,
+                             0,
+-                            pix_colors_focused[Color_fg],
+-                            pix_colors_focused[Color_bg]);
++                            lookup_color(Color_fg, pix_colors_focused),
++                            lookup_color(Color_bg, pix_colors_focused));
+
+   attributes.bit_gravity = NorthWestGravity;
+   XChangeWindowAttributes (dpy, vt, CWBitGravity, &attributes);
+@@ -1430,8 +1430,8 @@ rxvt_term::create_windows (int argc, const char *const *argv)
+   vt_ev.start (display, vt);
+
+   /* graphics context for the vt window */
+-  gcvalue.foreground         = pix_colors[Color_fg];
+-  gcvalue.background         = pix_colors[Color_bg];
++  gcvalue.foreground         = lookup_color(Color_fg, pix_colors);
++  gcvalue.background         = lookup_color(Color_bg, pix_colors);
+   gcvalue.graphics_exposures = 0;
+
+   gc = XCreateGC (dpy, vt,
+--- src/main.C
++++ src/main.C
+@@ -254,10 +254,10 @@ rxvt_term::~rxvt_term ()
+       for (int i = 0; i < TOTAL_COLORS; i++)
+         if (ISSET_PIXCOLOR (i))
+           {
+-            pix_colors_focused   [i].free (this);
++            lookup_color(i, pix_colors_focused).free (this);
+ #if OFF_FOCUS_FADING
+             if (rs[Rs_fade])
+-              pix_colors_unfocused [i].free (this);
++              lookup_color(i, pix_colors_unfocused).free (this);
+ #endif
+           }
+
+@@ -971,8 +971,8 @@ rxvt_term::set_window_color (int idx, const char *color)
+         }
+     }
+
+-  pix_colors_focused[idx].free (this);
+-  set_color (pix_colors_focused[idx], color);
++  lookup_color(idx, pix_colors_focused).free (this);
++  set_color (lookup_color(idx, pix_colors_focused), color);
+
+ done:
+   /*TODO: handle Color_BD, scrollbar background, etc. */
+@@ -989,12 +989,12 @@ rxvt_term::recolor_cursor ()
+   XColor fg, bg;
+
+   (ISSET_PIXCOLOR (Color_pointer_fg)
+-     ? pix_colors_focused[Color_pointer_fg]
+-     : pix_colors_focused[Color_fg]).get (fg);
++     ? lookup_color(Color_pointer_fg, pix_colors_focused)
++     : lookup_color(Color_fg, pix_colors_focused)).get (fg);
+
+   (ISSET_PIXCOLOR (Color_pointer_bg)
+-     ? pix_colors_focused[Color_pointer_bg]
+-     : pix_colors_focused[Color_bg]).get (bg);
++     ? lookup_color(Color_pointer_bg, pix_colors_focused)
++     : lookup_color(Color_bg, pix_colors_focused)).get (bg);
+
+   XRecolorCursor (dpy, TermWin_cursor, &fg, &bg);
+ }
+@@ -1013,14 +1013,14 @@ rxvt_term::get_colorfgbg ()
+   char *env_colorfgbg;
+
+   for (i = Color_Black; i <= Color_White; i++)
+-    if (pix_colors[Color_fg] == pix_colors[i])
++    if (lookup_color(Color_fg, pix_colors) == lookup_color(i, pix_colors))
+       {
+         sprintf (fstr, "%d", i - Color_Black);
+         break;
+       }
+
+   for (i = Color_Black; i <= Color_White; i++)
+-    if (pix_colors[Color_bg] == pix_colors[i])
++    if (lookup_color(Color_bg, pix_colors) == lookup_color(i, pix_colors))
+       {
+         sprintf (bstr, "%d", i - Color_Black);
+ #if BG_IMAGE_FROM_FILE
+@@ -1049,8 +1049,8 @@ rxvt_term::set_color (rxvt_color &color, const char *name)
+ void
+ rxvt_term::alias_color (int dst, int src)
+ {
+-  pix_colors[dst].free (this);
+-  pix_colors[dst].set (this, rs[Rs_color + dst] = rs[Rs_color + src]);
++  lookup_color(dst, pix_colors).free (this);
++  lookup_color(dst, pix_colors).set (this, rs[Rs_color + dst] = rs[Rs_color + src]);
+ }
+
+ /* -------------------------------------------------------------------- *
+@@ -1188,8 +1188,8 @@ rxvt_term::set_widthheight (unsigned int newwidth, unsigned int newheight)
+ void
+ rxvt_term::im_set_color (unsigned long &fg, unsigned long &bg)
+ {
+-  fg = pix_colors [Color_fg];
+-  bg = pix_colors [Color_bg];
++  fg = lookup_color(Color_fg, pix_colors);
++  bg = lookup_color(Color_bg, pix_colors);
+ }
+
+ void
+--- src/rxvt.h
++++ src/rxvt.h
+@@ -39,7 +39,11 @@ typedef uint32_t text_t;
+ #else
+ typedef uint16_t text_t; // saves lots of memory
+ #endif
++#if USE_24_BIT_COLOR
++typedef uint64_t rend_t;
++#else
+ typedef uint32_t rend_t;
++#endif
+ typedef  int32_t tlen_t;  // was int16_t, but this results in smaller code and memory use
+ typedef  int32_t tlen_t_; // specifically for use in the line_t structure
+
+@@ -411,43 +415,52 @@ enum {
+ #define RS_None                 0
+
+ // GET_BGATTR depends on RS_fgShift > RS_bgShift
+-#define RS_colorMask		((1UL << Color_Bits) - 1UL)
+-#define RS_bgShift		0
+-#define RS_fgShift		(RS_bgShift + Color_Bits)
+-#define RS_bgMask               (RS_colorMask << RS_bgShift)
+-#define RS_fgMask               (RS_colorMask << RS_fgShift)
++#define RS_colorMask		    ((rend_t) ((1UL << Color_Bits) - 1UL))
++#define RS_bgShift		        0
++#define RS_fgShift		        (RS_bgShift + Color_Bits)
++#define RS_bgMask               ((rend_t) (RS_colorMask << RS_bgShift))
++#define RS_fgMask               ((rend_t) (RS_colorMask << RS_fgShift))
+
+ // must have space for rxvt_fontset::fontCount * 2 + 2 values
+ #define RS_fontShift            (RS_fgShift + Color_Bits)
+-#define RS_Careful		(1UL << RS_fontShift)	/* be careful when drawing these */
+-#define RS_fontCount		rxvt_fontset::fontCount
+-#define RS_fontMask             ((RS_fontCount << (RS_fontShift + 1)) | RS_Careful)   // includes RS_Careful
++#define RS_Careful		        ((rend_t) (1UL << RS_fontShift))	/* be careful when drawing these */
++#define RS_fontCount		    ((rend_t) rxvt_fontset::fontCount)
++#define RS_fontMask             ((rend_t) ((RS_fontCount << (RS_fontShift + 1)) | RS_Careful))   // includes RS_Careful
+
+ // toggle this to force redraw, must be != RS_Careful and otherwise "pretty neutral"
+-#define RS_redraw		(2UL << RS_fontShift)
++#define RS_redraw		        ((rend_t) (2UL << RS_fontShift))
+
+-#define RS_Sel                  (1UL << 22)
++#if USE_24_BIT_COLOR
++# define RS_fontCountSize 4
++#elif USE_256_COLORS
++# define RS_fontCountSize 4
++#else
++# define RS_fontCountSize 8
++#endif
++
++#define RS_selShift             (RS_fontShift + RS_fontCountSize)
++#define RS_Sel                  ((rend_t) (1UL << RS_selShift))
+
+ // 4 custom bits for extensions
+ #define RS_customCount          16UL
+-#define RS_customShift          23
+-#define RS_customMask           ((RS_customCount - 1UL) << RS_customShift)
++#define RS_customShift          (RS_selShift + 1)
++#define RS_customMask           ((rend_t) ((RS_customCount - 1UL) << RS_customShift))
+
+ // font styles
+-#define RS_Bold                 (1UL << RS_styleShift)
+-#define RS_Italic		(2UL << RS_styleShift)
++#define RS_Bold                 ((rend_t) (1UL << RS_styleShift))
++#define RS_Italic		        ((rend_t) (2UL << RS_styleShift))
+
+-#define RS_styleCount		4
+-#define RS_styleShift		27
+-#define RS_styleMask		(RS_Bold | RS_Italic)
++#define RS_styleCount		    4
++#define RS_styleShift	        (RS_customShift + RS_styleCount)
++#define RS_styleMask		    ((rend_t) (RS_Bold | RS_Italic))
+
+ // fake styles
+-#define RS_Blink                (1UL << 29)
+-#define RS_RVid                 (1UL << 30)    // reverse video
+-#define RS_Uline                (1UL << 31)    // underline
++#define RS_Blink                ((rend_t) (1UL << (RS_styleShift + 2)))
++#define RS_RVid                 ((rend_t) (1UL << (RS_styleShift + 3)))    // reverse video
++#define RS_Uline                ((rend_t) (1UL << (RS_styleShift + 4)))    // underline
+
+-#define RS_baseattrMask         (RS_Italic | RS_Bold | RS_Blink | RS_RVid | RS_Uline)
+-#define RS_attrMask             (RS_baseattrMask | RS_fontMask)
++#define RS_baseattrMask         ((rend_t) (RS_Italic | RS_Bold | RS_Blink | RS_RVid | RS_Uline))
++#define RS_attrMask             ((rend_t) (RS_baseattrMask | RS_fontMask))
+
+ #define DEFAULT_RSTYLE  (RS_None | (Color_fg    << RS_fgShift) | (Color_bg     << RS_bgShift))
+ #define OVERLAY_RSTYLE  (RS_None | (Color_Black << RS_fgShift) | (Color_Yellow << RS_bgShift))
+@@ -599,7 +612,9 @@ enum colour_list {
+ #endif
+ };
+
+-#if USE_256_COLORS
++#if USE_24_BIT_COLOR
++#define Color_Bits      25
++#elif USE_256_COLORS
+ # define Color_Bits      9 // 0 .. maxTermCOLOR
+ #else
+ # define Color_Bits      7 // 0 .. maxTermCOLOR
+@@ -729,21 +744,21 @@ typedef struct _mwmhints
+ #define ROW(n) ROW_of (this, n)
+
+ /* how to build & extract colors and attributes */
+-#define GET_BASEFG(x)           (((x) & RS_fgMask) >> RS_fgShift)
+-#define GET_BASEBG(x)           (((x) & RS_bgMask) >> RS_bgShift)
++#define GET_BASEFG(x)           ((((rend_t) (x)) & RS_fgMask) >> RS_fgShift)
++#define GET_BASEBG(x)           ((((rend_t) (x)) & RS_bgMask) >> RS_bgShift)
+
+-#define GET_FONT(x)             (((x) & RS_fontMask) >> RS_fontShift)
+-#define SET_FONT(x,fid)         (((x) & ~RS_fontMask) | ((fid) << RS_fontShift))
++#define GET_FONT(x)             ((((rend_t) (x)) & RS_fontMask) >> RS_fontShift)
++#define SET_FONT(x,fid)         ((((rend_t) (x)) & ~((rend_t) RS_fontMask)) | (((rend_t) (fid)) << RS_fontShift))
+
+-#define GET_STYLE(x)		(((x) & RS_styleMask) >> RS_styleShift)
+-#define SET_STYLE(x,style)	(((x) & ~RS_styleMask) | ((style) << RS_styleShift))
++#define GET_STYLE(x)		    ((((rend_t) (x)) & RS_styleMask) >> RS_styleShift)
++#define SET_STYLE(x,style)	    ((((rend_t) (x)) & ~((rend_t) RS_styleMask)) | (((rend_t) (style)) << RS_styleShift))
+
+-#define GET_ATTR(x)             (((x) & RS_attrMask))
+-#define SET_FGCOLOR(x,fg)       (((x) & ~RS_fgMask)   | ((fg) << RS_fgShift))
+-#define SET_BGCOLOR(x,bg)       (((x) & ~RS_bgMask)   | ((bg) << RS_bgShift))
+-#define SET_ATTR(x,a)           (((x) & ~RS_attrMask) | (a))
++#define GET_ATTR(x)             ((((rend_t) (x)) & RS_attrMask))
++#define SET_FGCOLOR(x,fg)       ((((rend_t) (x)) & ~((rend_t) RS_fgMask))   | (((rend_t) (fg)) << RS_fgShift))
++#define SET_BGCOLOR(x,bg)       ((((rend_t) (x)) & ~((rend_t) RS_bgMask))   | (((rend_t) (bg)) << RS_bgShift))
++#define SET_ATTR(x,a)           ((((rend_t) (x)) & ~((rend_t) RS_attrMask)) | ((rend_t) (a)))
+
+-#define RS_SAME(a,b)		(!(((a) ^ (b)) & ~RS_Careful))
++#define RS_SAME(a,b)		    (!((((rend_t) (a)) ^ ((rend_t) (b))) & ~((rend_t) RS_Careful)))
+
+ #define PIXCOLOR_NAME(idx)      rs[Rs_color + (idx)]
+ #define ISSET_PIXCOLOR(idx)     (!!rs[Rs_color + (idx)])
+@@ -1503,7 +1518,12 @@ struct rxvt_term : zero_initialized, rxvt_vars, rxvt_screen
+   void scr_swap_screen () NOTHROW;
+   void scr_change_screen (int scrn);
+   void scr_color (unsigned int color, int fgbg) NOTHROW;
+-  void scr_rendition (int set, int style) NOTHROW;
++#if USE_24_BIT_COLOR
++  void scr_color_24 (unsigned int color, int fgbg) NOTHROW;
++  void scr_color_rgb (unsigned int r, unsigned int g, unsigned int b, int fgbg) NOTHROW;
++#endif
++  rxvt_color &lookup_color (unsigned int color, rxvt_color *table) NOTHROW;
++  void scr_rendition (int set, rend_t style) NOTHROW;
+   void scr_add_lines (const wchar_t *str, int len, int minlines = 0) NOTHROW;
+   void scr_backspace () NOTHROW;
+   void scr_tab (int count, bool ht = false) NOTHROW;
+--- src/rxvtfont.C
++++ src/rxvtfont.C
+@@ -243,20 +243,20 @@ rxvt_font::clear_rect (rxvt_drawable &d, int x, int y, int w, int h, int color)
+
+ # ifdef HAVE_BG_PIXMAP
+       if (term->bg_img
+-          && !term->pix_colors[color].is_opaque ()
++          && !term->lookup_color(color, term->pix_colors).is_opaque ()
+           && ((dst = XftDrawPicture (d))))
+         {
+           XClearArea (disp, d, x, y, w, h, false);
+
+-          Picture solid_color_pict = XftDrawSrcPicture (d, &term->pix_colors[color].c);
++          Picture solid_color_pict = XftDrawSrcPicture (d, &term->lookup_color(color, term->pix_colors).c);
+           XRenderComposite (disp, PictOpOver, solid_color_pict, None, dst, 0, 0, 0, 0, x, y, w, h);
+         }
+       else
+ # endif
+-        XftDrawRect (d, &term->pix_colors[color].c, x, y, w, h);
++        XftDrawRect (d, &term->lookup_color(color, term->pix_colors).c, x, y, w, h);
+
+ #else
+-      XSetForeground (disp, gc, term->pix_colors[color]);
++      XSetForeground (disp, gc, term->lookup_color(color, term->pix_colors));
+       XFillRectangle (disp, d, gc, x, y, w, h);
+ #endif
+     }
+@@ -342,7 +342,7 @@ rxvt_font_default::draw (rxvt_drawable &d, int x, int y,
+
+   clear_rect (d, x, y, term->fwidth * len, term->fheight, bg);
+
+-  XSetForeground (disp, gc, term->pix_colors[fg]);
++  XSetForeground (disp, gc, term->lookup_color(fg, term->pix_colors));
+
+   while (len)
+     {
+@@ -1053,7 +1053,7 @@ rxvt_font_x11::draw (rxvt_drawable &d, int x, int y,
+   int base = ascent; // sorry, incorrect: term->fbase;
+
+   XGCValues v;
+-  v.foreground = term->pix_colors[fg];
++  v.foreground = term->lookup_color(fg, term->pix_colors);
+   v.font = f->fid;
+
+   if (enc2b)
+@@ -1062,7 +1062,7 @@ rxvt_font_x11::draw (rxvt_drawable &d, int x, int y,
+
+       if (bg == Color_bg && !slow)
+         {
+-          v.background = term->pix_colors[bg];
++          v.background = term->lookup_color(bg, term->pix_colors);
+           XChangeGC (disp, gc, GCForeground | GCBackground | GCFont, &v);
+           XDrawImageString16 (disp, d, gc, x, y + base, xc, len);
+         }
+@@ -1094,7 +1094,7 @@ rxvt_font_x11::draw (rxvt_drawable &d, int x, int y,
+
+       if (bg == Color_bg && !slow)
+         {
+-          v.background = term->pix_colors[bg];
++          v.background = term->lookup_color(bg, term->pix_colors);
+           XChangeGC (disp, gc, GCForeground | GCBackground | GCFont, &v);
+           XDrawImageString (disp, d, gc, x, y + base, xc, len);
+         }
+@@ -1417,7 +1417,7 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+
+           if (term->bg_img
+               && (bg == Color_transparent || bg == Color_bg
+-                  || (bg >= 0 && !term->pix_colors[bg].is_opaque () && ((dst = XftDrawPicture (d2))))))
++                  || (bg >= 0 && !term->lookup_color(bg, term->pix_colors).is_opaque () && ((dst = XftDrawPicture (d2))))))
+             {
+               int src_x = x, src_y = y;
+
+@@ -1454,7 +1454,7 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+
+               if (dst)
+                 {
+-                  Picture solid_color_pict = XftDrawSrcPicture (d2, &term->pix_colors[bg].c);
++                  Picture solid_color_pict = XftDrawSrcPicture (d2, &term->lookup_color(bg, term->pix_colors).c);
+
+                   // dst can only be set when bg >= 0
+                   XRenderComposite (disp, PictOpOver, solid_color_pict, None, dst, 0, 0, 0, 0, 0, 0, w, h);
+@@ -1462,9 +1462,9 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+             }
+           else
+ #endif
+-            XftDrawRect (d2, &term->pix_colors[bg >= 0 ? bg : Color_bg].c, 0, 0, w, h);
++            XftDrawRect (d2, &term->lookup_color(bg >= 0 ? bg : Color_bg, term->pix_colors).c, 0, 0, w, h);
+
+-          XftDrawGlyphSpec (d2, &term->pix_colors[fg].c, f, enc, ep - enc);
++          XftDrawGlyphSpec (d2, &term->lookup_color(fg, term->pix_colors).c, f, enc, ep - enc);
+           XCopyArea (disp, d2, d, gc, 0, 0, w, h, x, y);
+         }
+       else
+@@ -1473,7 +1473,7 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+   else
+     {
+       clear_rect (d, x, y, w, h, bg);
+-      XftDrawGlyphSpec (d, &term->pix_colors[fg].c, f, enc, ep - enc);
++      XftDrawGlyphSpec (d, &term->lookup_color(fg, term->pix_colors).c, f, enc, ep - enc);
+     }
+ }
+
+--- src/rxvtfont.h
++++ src/rxvtfont.h
+@@ -72,8 +72,10 @@ struct rxvt_fontset
+   char *fontdesc;
+
+   // must be power-of-two - 1, also has to match RS_fontMask in rxvt.h
+-#if USE_256_COLORS
+-  enum { fontCount =   7 }; // 4 extra colors bits, 4 fewer fontcount bits
++#if USE_24_BIT_COLOR
++  enum { fontCount =   7 }; // 36 extra colors bits, 4 fewer fontcount bits
++#elif USE_256_COLORS
++  enum { fontCount =   7 }; //  4 extra colors bits, 4 fewer fontcount bits
+ #else
+   enum { fontCount = 127 };
+ #endif
+--- src/rxvtperl.xs
++++ src/rxvtperl.xs
+@@ -789,6 +789,18 @@ MODULE = urxvt             PACKAGE = urxvt
+
+ PROTOTYPES: ENABLE
+
++TYPEMAP: <<END
++rend_t T_UINT
++
++INPUT
++T_UINT
++  $var = ($type)SvUV($arg);
++
++OUTPUT
++T_UINT
++  sv_setuv($arg, (UV)$var);
++END
++
+ BOOT:
+ {
+   sv_setsv (get_sv ("urxvt::LIBDIR",   1), newSVpvn (LIBDIR,   sizeof (LIBDIR)   - 1));
+@@ -1069,43 +1081,44 @@ NOW ()
+         OUTPUT:
+         RETVAL
+
+-int
+-GET_BASEFG (int rend)
++rend_t
++GET_BASEFG (rend_t rend)
+ 	CODE:
+         RETVAL = GET_BASEFG (rend);
+ 	OUTPUT:
+         RETVAL
+
+-int
+-GET_BASEBG (int rend)
++rend_t
++GET_BASEBG (rend_t rend)
+ 	CODE:
+         RETVAL = GET_BASEBG (rend);
+ 	OUTPUT:
+         RETVAL
+
+-int
+-SET_FGCOLOR (int rend, int new_color)
++rend_t
++SET_FGCOLOR (rend_t rend, int new_color)
+ 	CODE:
+         RETVAL = SET_FGCOLOR (rend, clamp (new_color, 0, TOTAL_COLORS - 1));
+ 	OUTPUT:
+         RETVAL
+
+-int
+-SET_BGCOLOR (int rend, int new_color)
++rend_t
++SET_BGCOLOR (rend_t rend, int new_color)
+ 	CODE:
+         RETVAL = SET_BGCOLOR (rend, clamp (new_color, 0, TOTAL_COLORS - 1));
+ 	OUTPUT:
+         RETVAL
+
+-int
+-GET_CUSTOM (int rend)
++rend_t
++GET_CUSTOM (rend_t rend)
+ 	CODE:
++
+         RETVAL = (rend & RS_customMask) >> RS_customShift;
+ 	OUTPUT:
+         RETVAL
+
+-int
+-SET_CUSTOM (int rend, int new_value)
++rend_t
++SET_CUSTOM (rend_t rend, int new_value)
+ 	CODE:
+ {
+         if (!IN_RANGE_EXC (new_value, 0, RS_customCount))
+@@ -1515,8 +1528,8 @@ rxvt_term::vt_emask_add (U32 emask)
+         THIS->vt_emask_perl |= emask;
+         THIS->vt_select_input ();
+
+-U32
+-rxvt_term::rstyle (U32 new_rstyle = THIS->rstyle)
++UV
++rxvt_term::rstyle (rend_t new_rstyle = THIS->rstyle)
+ 	CODE:
+         RETVAL = THIS->rstyle;
+         THIS->rstyle = new_rstyle;
+@@ -2003,10 +2016,10 @@ rxvt_term::cur_charset ()
+         RETVAL
+
+ void
+-rxvt_term::scr_xor_rect (int beg_row, int beg_col, int end_row, int end_col, U32 rstyle1 = RS_RVid, U32 rstyle2 = RS_RVid | RS_Uline)
++rxvt_term::scr_xor_rect (int beg_row, int beg_col, int end_row, int end_col, rend_t rstyle1 = RS_RVid, rend_t rstyle2 = RS_RVid | RS_Uline)
+
+ void
+-rxvt_term::scr_xor_span (int beg_row, int beg_col, int end_row, int end_col, U32 rstyle = RS_RVid)
++rxvt_term::scr_xor_span (int beg_row, int beg_col, int end_row, int end_col, rend_t rstyle = RS_RVid)
+
+ void
+ rxvt_term::scr_bell ()
+@@ -2072,7 +2085,7 @@ rxvt_term::cmd_parse (SV *octets)
+ }
+
+ SV *
+-rxvt_term::overlay (int x, int y, int w, int h, int rstyle = OVERLAY_RSTYLE, int border = 2)
++rxvt_term::overlay (int x, int y, int w, int h, rend_t rstyle = OVERLAY_RSTYLE, int border = 2)
+ 	CODE:
+ {
+         overlay *o = new overlay (THIS, x, y, w, h, rstyle, border);
+@@ -2171,8 +2184,8 @@ Window
+ XCreateSimpleWindow (rxvt_term *term, Window parent, int x, int y, unsigned int width, unsigned int height)
+ 	C_ARGS: term->dpy, (Window)parent,
+                 x, y, width, height, 0,
+-                term->pix_colors_focused[Color_border],
+-                term->pix_colors_focused[Color_border]
++                term->lookup_color(Color_border, term->pix_colors_focused),
++                term->lookup_color(Color_border, term->pix_colors_focused)
+
+ #endif
+
+@@ -2299,7 +2312,7 @@ rxvt_term::set_background (rxvt_img *img, bool border = false)
+             img->reify ()
+                ->replace (img);
+
+-            img->convert_format (XRenderFindVisualFormat (THIS->dpy, THIS->visual), THIS->pix_colors [Color_bg])
++            img->convert_format (XRenderFindVisualFormat (THIS->dpy, THIS->visual), THIS->lookup_color(Color_bg, THIS->pix_colors))
+                ->replace (img);
+
+             THIS->bg_img = img;
+--- src/screen.C
++++ src/screen.C
+@@ -625,12 +625,52 @@ rxvt_term::scr_color (unsigned int color, int fgbg) NOTHROW
+     rstyle = SET_BGCOLOR (rstyle, color);
+ }
+
++#if USE_24_BIT_COLOR
++static rxvt_color *scr_colors[1 << 24];
++
++void
++rxvt_term::scr_color_24 (unsigned int color, int fgbg) NOTHROW
++{
++  color += TOTAL_COLORS;
++  if (fgbg == Color_fg)
++    rstyle = SET_FGCOLOR (rstyle, color);
++  else
++    rstyle = SET_BGCOLOR (rstyle, color);
++}
++
++void
++rxvt_term::scr_color_rgb (unsigned int r, unsigned int g, unsigned int b, int fgbg) NOTHROW
++{
++  unsigned int color = (r << 16) + (g << 8) + b;
++  scr_color_24(color, fgbg);
++}
++#endif
++
++rxvt_color
++&rxvt_term::lookup_color (unsigned int color, rxvt_color *table) NOTHROW
++{
++#if USE_24_BIT_COLOR
++  if (color >= TOTAL_COLORS) {
++    color -= TOTAL_COLORS;
++    if (scr_colors[color] == NULL) {
++        scr_colors[color] = new rxvt_color();
++        char name[1+2*3+1];
++        sprintf(name, "#%02x%02x%02x", (color >> 16) & 0xff, (color >> 8) & 0xff, color & 0xff);
++        scr_colors[color]->set(this, name);
++    }
++    return *scr_colors[color];
++  } else
++#endif
++  return table[color];
++}
++
++
+ /* ------------------------------------------------------------------------- */
+ /*
+  * Change the rendition style for following text
+  */
+ void
+-rxvt_term::scr_rendition (int set, int style) NOTHROW
++rxvt_term::scr_rendition (int set, rend_t style) NOTHROW
+ {
+   if (set)
+     rstyle |= style;
+@@ -1388,13 +1428,13 @@ rxvt_term::scr_erase_screen (int mode) NOTHROW
+
+       if (mapped)
+         {
+-          gcvalue.foreground = pix_colors[bgcolor_of (rstyle)];
++          gcvalue.foreground = lookup_color(bgcolor_of (rstyle), pix_colors);
+           XChangeGC (dpy, gc, GCForeground, &gcvalue);
+           XFillRectangle (dpy, vt, gc,
+                           0, Row2Pixel (row - view_start),
+                           (unsigned int)vt_width,
+                           (unsigned int)Height2Pixel (num));
+-          gcvalue.foreground = pix_colors[Color_fg];
++          gcvalue.foreground = lookup_color(Color_fg, pix_colors);
+           XChangeGC (dpy, gc, GCForeground, &gcvalue);
+         }
+     }
+@@ -1715,15 +1755,15 @@ rxvt_term::scr_rvideo_mode (bool on) NOTHROW
+     {
+       rvideo_state = on;
+
+-      ::swap (pix_colors[Color_fg], pix_colors[Color_bg]);
++      ::swap (lookup_color(Color_fg, pix_colors), lookup_color(Color_bg, pix_colors));
+ #ifdef HAVE_IMG
+       if (bg_img == 0)
+ #endif
+-          XSetWindowBackground (dpy, vt, pix_colors[Color_bg]);
++          XSetWindowBackground (dpy, vt, lookup_color(Color_bg, pix_colors));
+
+       XGCValues gcvalue;
+-      gcvalue.foreground = pix_colors[Color_fg];
+-      gcvalue.background = pix_colors[Color_bg];
++      gcvalue.foreground = lookup_color(Color_fg, pix_colors);
++      gcvalue.background = lookup_color(Color_bg, pix_colors);
+       XChangeGC (dpy, gc, GCBackground | GCForeground, &gcvalue);
+
+       scr_clear ();
+@@ -2426,14 +2466,14 @@ rxvt_term::scr_refresh () NOTHROW
+             {
+               if (showcursor && focus && row == screen.cur.row
+                   && IN_RANGE_EXC (col, cur_col, cur_col + cursorwidth))
+-                XSetForeground (dpy, gc, pix_colors[ccol1]);
++                XSetForeground (dpy, gc, lookup_color(ccol1, pix_colors));
+               else
+ #if ENABLE_FRILLS
+               if (ISSET_PIXCOLOR (Color_underline))
+-                XSetForeground (dpy, gc, pix_colors[Color_underline]);
++                XSetForeground (dpy, gc, lookup_color(Color_underline, pix_colors));
+               else
+ #endif
+-                XSetForeground (dpy, gc, pix_colors[fore]);
++                XSetForeground (dpy, gc, lookup_color(fore, pix_colors));
+
+               XDrawLine (dpy, vt, gc,
+                          xpixel, ypixel + font->ascent + 1,
+@@ -2453,7 +2493,7 @@ rxvt_term::scr_refresh () NOTHROW
+             scr_set_char_rend (ROW(screen.cur.row), cur_col, cur_rend);
+           else if (oldcursor.row >= 0)
+             {
+-              XSetForeground (dpy, gc, pix_colors[ccol1]);
++              XSetForeground (dpy, gc, lookup_color(ccol1, pix_colors));
+               if (cursor_type == 1)
+                 XFillRectangle (dpy, vt, gc,
+                                 Col2Pixel (cur_col),
+@@ -2463,7 +2503,7 @@ rxvt_term::scr_refresh () NOTHROW
+         }
+       else if (oldcursor.row >= 0)
+         {
+-          XSetForeground (dpy, gc, pix_colors[ccol1]);
++          XSetForeground (dpy, gc, lookup_color(ccol1, pix_colors));
+
+           XDrawRectangle (dpy, vt, gc,
+                           Col2Pixel (cur_col),
+@@ -2532,15 +2572,15 @@ rxvt_term::scr_recolor (bool refresh) NOTHROW
+       else
+ # endif
+         {
+-          XSetWindowBackground (dpy, parent, pix_colors[Color_border]);
++          XSetWindowBackground (dpy, parent, lookup_color(Color_border, pix_colors));
+           XSetWindowBackgroundPixmap (dpy, vt, bg_img->pm);
+         }
+     }
+   else
+ #endif
+     {
+-      XSetWindowBackground (dpy, parent, pix_colors[Color_border]);
+-      XSetWindowBackground (dpy, vt, pix_colors[Color_bg]);
++      XSetWindowBackground (dpy, parent, lookup_color(Color_border, pix_colors));
++      XSetWindowBackground (dpy, vt, lookup_color(Color_bg, pix_colors));
+     }
+
+   XClearWindow (dpy, parent);
+@@ -2550,7 +2590,7 @@ rxvt_term::scr_recolor (bool refresh) NOTHROW
+       if (transparent)
+         XSetWindowBackgroundPixmap (dpy, scrollBar.win, ParentRelative);
+       else
+-        XSetWindowBackground (dpy, scrollBar.win, pix_colors[scrollBar.color ()]);
++        XSetWindowBackground (dpy, scrollBar.win, lookup_color(scrollBar.color (), pix_colors));
+       scrollBar.state = SB_STATE_IDLE;
+       scrollBar.show (0);
+     }
+--- src/scrollbar-next.C
++++ src/scrollbar-next.C
+@@ -154,15 +154,15 @@ scrollBar_t::init_next ()
+
+   gcvalue.graphics_exposures = False;
+
+-  gcvalue.foreground = term->pix_colors_focused[Color_Black];
++  gcvalue.foreground = term->lookup_color(Color_Black, term->pix_colors_focused);
+   blackGC = XCreateGC (term->dpy, win,
+                        GCForeground | GCGraphicsExposures, &gcvalue);
+
+-  gcvalue.foreground = term->pix_colors_focused[Color_White];
++  gcvalue.foreground = term->lookup_color(Color_White, term->pix_colors_focused);
+   whiteGC = XCreateGC (term->dpy, win,
+                        GCForeground | GCGraphicsExposures, &gcvalue);
+
+-  light = term->pix_colors_focused[Color_scroll];
++  light = term->lookup_color(Color_scroll, term->pix_colors_focused);
+ #if 0
+   //color used by rxvt
+   if (color.set (term, rgba (0xaeba, 0xaaaa, 0xaeba)))
+@@ -172,7 +172,7 @@ scrollBar_t::init_next ()
+   grayGC = XCreateGC (term->dpy, win,
+                       GCForeground | GCGraphicsExposures, &gcvalue);
+
+-  dark = term->pix_colors_focused[Color_Grey25];
++  dark = term->lookup_color(Color_Grey25, term->pix_colors_focused);
+ #if 0
+   //color used by rxvt
+   if (color.set (term, rgba (0x51aa, 0x5555, 0x5144)))
+--- src/scrollbar-plain.C
++++ src/scrollbar-plain.C
+@@ -38,7 +38,7 @@ scrollBar_t::show_plain (int update)
+       XGCValues gcvalue;
+
+       init |= SB_STYLE_PLAIN;
+-      gcvalue.foreground = term->pix_colors_focused[Color_scroll];
++      gcvalue.foreground = term->lookup_color(Color_scroll, term->pix_colors_focused);
+
+       pscrollbarGC = XCreateGC (term->dpy, win, GCForeground, &gcvalue);
+     }
+--- src/scrollbar-rxvt.C
++++ src/scrollbar-rxvt.C
+@@ -158,11 +158,11 @@ scrollBar_t::show_rxvt (int update)
+
+       init |= SB_STYLE_RXVT;
+
+-      gcvalue.foreground = term->pix_colors[Color_topShadow];
++      gcvalue.foreground = term->lookup_color(Color_topShadow, term->pix_colors);
+       topShadowGC = XCreateGC (term->dpy, term->vt, GCForeground, &gcvalue);
+-      gcvalue.foreground = term->pix_colors[Color_bottomShadow];
++      gcvalue.foreground = term->lookup_color(Color_bottomShadow, term->pix_colors);
+       botShadowGC = XCreateGC (term->dpy, term->vt, GCForeground, &gcvalue);
+-      gcvalue.foreground = term->pix_colors[ (term->depth <= 2 ? Color_fg : Color_scroll)];
++      gcvalue.foreground = term->lookup_color( (term->depth <= 2 ? Color_fg : Color_scroll), term->pix_colors);
+       scrollbarGC = XCreateGC (term->dpy, term->vt, GCForeground, &gcvalue);
+     }
+   else
+--- src/scrollbar-xterm.C
++++ src/scrollbar-xterm.C
+@@ -49,13 +49,13 @@ scrollBar_t::show_xterm (int update)
+         rxvt_fatal ("can't create bitmap\n");
+
+       gcvalue.fill_style = FillOpaqueStippled;
+-      gcvalue.foreground = term->pix_colors_focused[Color_scroll];
+-      gcvalue.background = term->pix_colors_focused[Color_bg];
++      gcvalue.foreground = term->lookup_color(Color_scroll, term->pix_colors_focused);
++      gcvalue.background = term->lookup_color(Color_bg, term->pix_colors_focused);
+
+       xscrollbarGC = XCreateGC (term->dpy, win,
+                                 GCForeground | GCBackground
+                                 | GCFillStyle | GCStipple, &gcvalue);
+-      gcvalue.foreground = term->pix_colors_focused[Color_border];
++      gcvalue.foreground = term->lookup_color(Color_border, term->pix_colors_focused);
+       ShadowGC = XCreateGC (term->dpy, win, GCForeground, &gcvalue);
+     }
+
+--- src/scrollbar.C
++++ src/scrollbar.C
+@@ -72,8 +72,8 @@ scrollBar_t::resize ()
+                                  total_width (),
+                                  term->szHint.height,
+                                  0,
+-                                 term->pix_colors[Color_fg],
+-                                 term->pix_colors[color ()]);
++                                 term->lookup_color(Color_fg, term->pix_colors),
++                                 term->lookup_color(color (), term->pix_colors));
+       XDefineCursor (term->dpy, win, leftptr_cursor);
+
+       XSelectInput (term->dpy, win,
