@@ -1,15 +1,15 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atelier-git
 conflicts=('atelier')
-pkgver=0.0.80.r547.c059b90
+pkgver=0.0.80.r616.3ced938
 pkgrel=1
 pkgdesc="KDE 3D Printer Host"
 arch=('i686' 'x86_64')
-url="https://www.kde.org/"
+url="https://invent.kde.org/utilities/atelier"
 license=('GPL3')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 depends=('qt5-base' 'qt5-serialport' 'qt5-charts' 'qt5-3d' 'atcore-git' 'kxmlgui' 'ktexteditor' 'qt5-multimedia' 'gst-plugins-good') #Qt5)
-source=('git://anongit.kde.org/atelier.git')
+source=('git+https://invent.kde.org/utilities/atelier.git')
 md5sums=(SKIP)
 
 pkgver() {
