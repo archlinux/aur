@@ -1,0 +1,11 @@
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+	setcap cap_net_raw,cap_dac_read_search,cap_sys_ptrace+ep /usr/bin/dde-dock
+}
+
+post_remove() {
+	setcap -r /usr/bin/dde-dock
+}

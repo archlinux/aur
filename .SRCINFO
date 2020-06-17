@@ -1,0 +1,22 @@
+pkgbase = dde-istate-menus
+	pkgdesc = A dde-dock plugin which aims to implement most features of Istat menus(macOS) for Deepin V20
+	pkgver = r49.8973ca3
+	pkgrel = 0
+	url = https://github.com/SeptemberHX/dde-istate-menus
+	install = dde-istate-menus.install
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = deepin-network-utils
+	depends = qt5-base
+	depends = nethogs
+	depends = procps-ng
+	depends = deepin-dock
+	source = dde-istate-menus::git+https://github.com/SeptemberHX/dde-istate-menus
+	source = fix.patch
+	sha512sums = SKIP
+	sha512sums = 15ca181aa59a8849690a7b985041f645d96935f8ea1684608453a56aafd63488ff5d4a095cd3482af44c13976dc0b79090b898fd244df1e13cd4b23b782fcd23
+
+pkgname = dde-istate-menus
+
