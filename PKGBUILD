@@ -13,8 +13,8 @@ arch=('x86_64')
 url='https://github.com/null2264/mutt-wizard-zi'
 license=('GPL3')
 
-provids=("${pkgname%-git}")
-conflicts=("mutt-wizard-git")
+provids=("mutt-wizard")
+conflicts=("mutt-wizard")
 
 makedepends=('git')
 depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass')
