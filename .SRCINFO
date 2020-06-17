@@ -1,0 +1,16 @@
+pkgbase = python-interop
+	pkgdesc = C++ Library to parse Illumina InterOp files - Python bindings
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = https://github.com/Illumina/interop
+	arch = x86_64
+	license = GPL3
+	makedepends = python-pip
+	depends = python>=3.8
+	depends = python<3.9
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/cp38/i/interop/interop-1.1.10-cp38-cp38-manylinux1_x86_64.whl
+	sha256sums = f647074d5d7bc17f3766bb457fa127b89a4fcefd3707296d1c859e80263f0250
+
+pkgname = python-interop
+
