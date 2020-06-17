@@ -1,0 +1,23 @@
+pkgbase = python2-xcffib
+	pkgdesc = Python drop in replacement for xpyb, an XCB python binding
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/xcffib
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = xorg-server-xvfb
+	checkdepends = xorg-xeyes
+	makedepends = python2-setuptools
+	makedepends = python2-cffi
+	makedepends = python2-six
+	makedepends = libxcb
+	makedepends = haskell-xcffib
+	depends = python-six
+	depends = python2-cffi
+	depends = libxcb
+	source = python2-xcffib-0.9.0.tar.gz::https://github.com/tych0/xcffib/archive/v0.9.0.tar.gz
+	sha512sums = 1299ff124d5ecb91c9551fb583741901f0635d9b3685da0436a14ebfdfdcc5bdec558a457400a27a22ffe2b99649250b3ef74223f27f8ac3a267a69314b509fb
+
+pkgname = python2-xcffib
+
