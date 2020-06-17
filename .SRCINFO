@@ -1,0 +1,14 @@
+pkgbase = telosys-cli
+	pkgdesc = Allows the use of all the features of the Telosys Core generator with a simple command line tool
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://www.telosys.org
+	arch = any
+	license = LGPL3
+	depends = java-runtime>=8
+	depends = bash
+	source = telosys-cli-3.2.2.tar.gz::http://www.telosys.org/download/telosys-cli/telosys-cli-3.2.2-001.zip
+	sha256sums = f6918915d00cb02c5b806363f574cb7506ed8d7899063326789227c2b72a44c0
+
+pkgname = telosys-cli
+
