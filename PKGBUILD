@@ -1,11 +1,11 @@
 # Maintainer: hashworks <mail@hashworks.net>
-# Contributor:  soloturn@gmail.com
+# Contributor: soloturn@gmail.com
 # Contributor: nic96
 
 pkgname=kiwix-desktop-git
 _pkgname="${pkgname%-git}"
-pkgver=2.0.1.r13.g2c98856
-pkgrel=2
+pkgver=2.0.1.r16.g8430ee8
+pkgrel=1
 pkgdesc="Offline reader for Web content, especially intended to make Wikipedia available offline"
 url="https://github.com/kiwix/kiwix-desktop"
 arch=("i686" "x86_64")
@@ -24,6 +24,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
+	export CFLAGS+=" ${CPPFLAGS}"
+	export CXXFLAGS+=" ${CPPFLAGS}"
 	qmake PREFIX="${pkgdir}/usr"
 	make
 }
