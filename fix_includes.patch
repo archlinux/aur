@@ -1,0 +1,24 @@
+diff --git a/Software/src/GrabConfigWidget.cpp b/Software/src/GrabConfigWidget.cpp
+index 4cd77aa..b8fb703 100644
+--- a/Software/src/GrabConfigWidget.cpp
++++ b/Software/src/GrabConfigWidget.cpp
+@@ -28,6 +28,7 @@
+ #include <QPainter>
+ #include <QBitmap>
+ #include <QDesktopWidget>
++#include <QPainterPath>
+ #include "debug.h"
+ 
+ const unsigned GrabConfigWidget::MarginArrow = 20;
+diff --git a/Software/src/qtsingleapplication/src/qtlocalpeer.cpp b/Software/src/qtsingleapplication/src/qtlocalpeer.cpp
+index 332b064..19914f4 100644
+--- a/Software/src/qtsingleapplication/src/qtlocalpeer.cpp
++++ b/Software/src/qtsingleapplication/src/qtlocalpeer.cpp
+@@ -42,6 +42,7 @@
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
+ #include <QTime>
++#include <QDataStream>
+ 
+ #if defined(Q_OS_WIN)
+ #include <QLibrary>
