@@ -1,0 +1,20 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+
+pkgname=plasma-theme-sweet
+pkgver=1.0.0+20200529
+pkgrel=1
+pkgdesc="A dark and modern theme for Plasma based on the Helium theme"
+arch=('any')
+url="https://store.kde.org/p/1294174/"
+license=('custom:CC-BY-SA-4.0')
+depends=('plasma-desktop')
+source=("https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTA3ODA0MjciLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6Ijk3YWQ5YzA0ZTUzOTAzMTdmNzIzMGMzN2Q4MmY1MjU5YTEwYWQxY2IwZDcxYTk2YjEwZDc3YWVjZWQ5YTI5NjdhNjI0MWQzZDk4NDYyYTZmOGY0NzQxMjQyOWNjYThmNWExMDc2YWRjOTQzODc2MDUxOTkwYTBmMmQ3Y2ZkOTc5IiwidCI6MTU5MjQyMzMyNCwic3RmcCI6ImY4YzMwYjU5MjUxZWUyZDQzZGNlOGQ1ZTIyNzY1ZjA1Iiwic3RpcCI6IjIwMDM6Njo0MWFjOjg2NTE6NGNlYzpmZjY2OjI1NGY6YzhjMCJ9.TSZPRy3H0N7c4qOLQIr3GiRoIqPYQwOxe6sS1UR-HUo/Sweet.tar.xz")
+md5sums=('c3e7468ba776a0d75f6a703f61314974')
+
+package() {
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme"
+  cp -r Sweet "${pkgdir}/usr/share/plasma/desktoptheme/"
+  install -Dm644 "Sweet/LICENSE/CC BY-SA 4.0 EN.md" "${pkgdir}/usr/share/licenses/${pkgname}/CC BY-SA 4.0 EN.md"
+}
