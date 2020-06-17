@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20200608.r0.g1713116fa907
+pkgver=20200617.r0.g5fcb9628fd12
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -57,11 +57,12 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole')
-_lucjanver=5.6
+_lucjanver=5.8-rc
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
+        "${_lucjanpath}/arch-patches/0001-fixes-5.8-add-knobs-to-disallow-unprivileged-CLONE_N.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -312,5 +313,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
+            'b42c802c90943eab465f2afc4490e246d617c66961ecdf50eae712643082b1370bba66f5f08ee4694df85349e7ed4c6b83ab5cb9e20e10ba4e96068be700cdc9'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'db854554b8b8138ac44488ed8656bc620a01f361f3a6006cf0b8c7e3513c0d7b0f2be8534694b063af33ccaacdf95bd1f824470f4509a274f7f52c5b67e0f723')
