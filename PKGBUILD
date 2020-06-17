@@ -1,6 +1,6 @@
 # Maintainer: Alva <a at u8 dot is>
 pkgname=passphrase
-pkgrel=1
+pkgrel=2
 pkgver=1.0.1
 pkgdesc="Small, simple passphrase generator, written in Zig"
 arch=('any')
@@ -9,11 +9,6 @@ license=('MIT')
 makedepends=('zig>=0.6.0' 'git')
 source=(git+https://git.sr.ht/~alva/${pkgname}#tag=${pkgver})
 sha256sums=('SKIP')
-
-build() {
-    cd "${srcdir}/${pkgname}"
-    zig build -Drelease-fast
-}
 
 check() {
     cd "${srcdir}/${pkgname}"
