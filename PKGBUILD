@@ -37,4 +37,5 @@ package() {
     install -m 644 pspp-mode.el "${pkgdir}"/usr/share/pspp/contrib/pspp-mode.el
 }
 
+
 # End of file
