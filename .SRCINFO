@@ -1,6 +1,6 @@
 pkgbase = bilibili-live-helper-bin
 	pkgdesc = A Helper for Bilibili Live Broadcasting.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://bilibili.danmaku.live/
 	install = bilibili-live-helper.install
@@ -14,10 +14,10 @@ pkgbase = bilibili-live-helper-bin
 	provides = bilibili-live-helper
 	conflicts = bilibili-live-helper-git
 	replaces = bilibili-live-helper
-	source = http://s2.danmaku.live/弹幕库-linux-v2.2.1.zip
+	source = http://s2.danmaku.live/弹幕库-linux-v2.2.2.zip
 	source = Bilibili Live Helper.desktop
 	source = bilibili-live-helper.ico
-	sha512sums = bab3a671f8cdf235781024434baec7c7a65565fe5aa892a41f1d81534d5fdf68812d25d039eafa1d61501985078fc15a94492396cb080a763c41c2b0cac7b97d
+	sha512sums = fd22e2e761955ade7d58b0a251f65706b97abfec97d7aa01b98e31783ed784286ad57565583b4e93ededcb2c36dce3d4fd427a0ca78124445465ec4add9b269a
 	sha512sums = 3e6be3336af1edb333ca519ff01fd4b43920bb02c1197c6768b6bd95abed7e851b4711bcba018d29ce725c7aaf3a202f92427dfb6f9cf0db62fee084b24672a5
 	sha512sums = e9e2ca9da776ddcf8f259dad2deab208998f22238b2d4ff05d69955324729b71add6b6e628b4b7add354791b175e15525a9ec8371a7ece65a6a8ebe6e052c0e1
 
