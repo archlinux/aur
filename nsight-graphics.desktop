@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=NVIDIA Nsight Graphics
-Exec=nv-nsight-gfx
+Exec=ngfx-ui
 Type=Application
 StartupNotify=true
 Icon=nsight-graphics

@@ -1,7 +1,7 @@
 pkgname=nsight-graphics
-pkgver=2020.2.1
+pkgver=2020.3.1
 _pkgver=${pkgver//\./_}
-pkgrel=3
+pkgrel=1
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
@@ -10,9 +10,9 @@ depends=("libx11" "libxcb" "nvidia")
 source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/rdp/assets/nsight-graphics-${_pkgver}-linux-installer"
         "${pkgname}.png::http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png"
         "${pkgname}.desktop")
-sha512sums=('6ddc4d6fae8022468610f38b109c96d94f48691db95f859712d07fd48e3768cad5c44c0524c67aa86a7a3236939ab94fdc61ea078710c63d9743110183b86815'
+sha512sums=('58a5fd7ffba576ec30b39d3cf1caa8f3442c4a08107f79ec79400ed9eb2e2114dc6150136b72a82ab1c0ffe6a2c1973c74f2f94b7fd62e7b85e33f5aab577494'
             '784985c2bd3a053cee4887af3b960c7fdc041dda3ca71196ec0870d5413f646d542687b16bffe85985a46d70f68ccf7df29ed5e39952d5e553a4beec485a1185'
-            'f1bf5ebab9b766cba14438b0560652debe9b16f9a37bb1d606238d055cfc64f60978b6f2d64a30aced5e48ed4609bb535eb89d6606c49b927678b01c52d13546')
+            'e6ac4a16de65d8f82c0ac88f2445d9e2e57f6ea1597cc3c1a171d5c9d3d277e4e85140feceedfa6df84bafd837b57e2a252a9685c5dc43d2b5f72310fd9d8f21')
 replaces=('nsight')
 provides=('nsight')
 options=('!debug')
@@ -30,7 +30,8 @@ package() {
   ./install-linux.pl -noprompt -targetpath=${pkgdir}/opt/${pkgname}
 
   install -dm 755 "${pkgdir}"/usr/bin
-  ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
+  ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/ngfx "${pkgdir}"/usr/bin
+  ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/ngfx-ui "${pkgdir}"/usr/bin
 
   rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
   rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_GPU_Trace.sh
