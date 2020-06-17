@@ -1,0 +1,29 @@
+diff -ru5 libparistraceroute-0.9x/libparistraceroute/whois.c libparistraceroute-0.93/libparistraceroute/whois.c
+--- libparistraceroute-0.9x/libparistraceroute/whois.c	2016-07-11 06:22:56.000000000 -0400
++++ libparistraceroute-0.93/libparistraceroute/whois.c	2020-06-16 23:31:20.207270352 -0400
+@@ -83,11 +83,11 @@
+     size_t socket_len;
+ 
+     int    family = server_address->family;
+     size_t len = 0;
+ 
+-    buffer[BUFFER_SIZE] = '\0';
++    buffer[BUFFER_SIZE-1] = '\0';
+ 
+     if (queried_address->family != AF_INET && queried_address->family != AF_INET6) {
+         fprintf(stderr, "whois_query: queried address family not supported (family = %d)\n", queried_address->family);
+         goto ERR_INVALID_FAMILY;
+     }
+@@ -148,11 +148,11 @@
+         goto ERR_SEND;
+     }
+ 
+     // Handle the response.
+     size_t offset = 0;
+-    while ((read_size = recv(sockfd, buffer + offset, BUFFER_SIZE, 0))) {
++    while ((read_size = recv(sockfd, buffer + offset, BUFFER_SIZE-1, 0))) {
+         // Find (line_begin, line_end) the pair of pointer delimiting the next full line.
+         char * line_begin = buffer,
+              * line_end   = buffer,
+              * buffer_end = buffer + read_size;
+         while (line_end < buffer_end) {
