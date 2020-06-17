@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=master-$pkgver" -o $pkgname .
+	GOOS=linux GOARCH=amd64 go build -ldflags "-s -w -X main.version=master-$pkgver" -o $pkgname .
 }
 
 package() {
