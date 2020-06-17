@@ -47,8 +47,8 @@ package() {
   cd "$pkgdir"
   mv usr/share/games/openttd usr/share/openttd-git
   mv usr/share/doc/openttd usr/share/doc/openttd-git
-  mv usr/share/man/openttd usr/share/man/openttd-git
-  mv usr/share/man/openttd-git/openttd.6 usr/share/man/openttd-git/openttd-git.6
+  mv usr/share/man/openttd usr/share/man/man6
+  mv usr/share/man/man6/openttd.6 usr/share/man/man6/openttd-git.6
   mv usr/bin/openttd usr/bin/openttd-git
   rm -r usr/share/games
 
