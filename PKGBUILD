@@ -1,13 +1,12 @@
 # Maintainer: Wilhelm Jochim <whjochim@gmail.com>
 pkgname=xwacomcalibrate
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 arch=("any")
 pkgdesc="calibrates wacom tablets to the current window"
 url="https://github.com/whjochim/xwacomcalibrate"
 license=("GPL")
-depends=("xdotool" "xf86-input-wacom" "xorg-xwininfo")
-makedepends=("rust" "cargo" "git")
+depends=("xdotool" "xf86-input-wacom" "xorg-xwininfo" "bc")
 provides=(xwacomcalibrate)
 source=(xwacomcalibrate)
 sha256sums=("SKIP")
