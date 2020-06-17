@@ -1,16 +1,16 @@
 pkgbase = coulr
-	pkgdesc = Coulr is a color box to help developers and designers.
-	pkgver = 1.6.3
+	pkgdesc = Color box to help developers and designers
+	pkgver = 1.8.1
 	pkgrel = 1
-	url = https://github.com/Huluti/coulr
+	url = https://github.com/Huluti/Coulr
 	arch = any
 	license = MIT
-	depends = python
-	depends = libnotify
-	depends = python-gobject
+	makedepends = git
+	makedepends = meson
 	depends = gtk3
-	source = https://github.com/Huluti/coulr/archive/1.6.3.tar.gz
-	md5sums = fb41081f33335fd7b54c2388db592923
+	depends = python-gobject
+	source = coulr-1.8.1.tar.gz::https://github.com/Huluti/Coulr/archive/1.8.1.tar.gz
+	sha256sums = 3089db800021f3ce02dfbfcddf5f93047e00523ad2b8b3d4637e380f0c190dd3
 
 pkgname = coulr
 
