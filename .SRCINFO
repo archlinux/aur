@@ -1,0 +1,18 @@
+pkgbase = candy-icons
+	pkgdesc = Icon theme designed to fit the Sweet GTK theme
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1305251/
+	arch = any
+	license = GPL3
+	depends = breeze-icons
+	depends = gnome-icon-theme
+	depends = ubuntu-themes
+	depends = mint-x-icons
+	depends = elementary-icon-theme
+	depends = hicolor-icon-theme
+	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTE1NTE4NjIiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjdiYzU3MWFkZjc1ZTg3ZjM2MGQ2ZjkwZTdjMWQ2OWU4ZTNhOTBmMGEwNDFhYThiZjY0NDE2MmE5OGYwNGVkOTYwODk4YTVhMTgzYjQ3MTVmYTNlNzhiMWM4MGRlYWYxMWJiM2E3OGE0MzBiMjA2NDIxYjRhYWFjZTFhMDk4MGUzIiwidCI6MTU5MjQxMjIwOCwic3RmcCI6ImY4YzMwYjU5MjUxZWUyZDQzZGNlOGQ1ZTIyNzY1ZjA1Iiwic3RpcCI6IjIwMDM6Njo0MWFjOjg2NTE6NGNlYzpmZjY2OjI1NGY6YzhjMCJ9.UOHto7CjyWTcVWlaj8OPaDUV8R_hDGArfcxmY_GQ14g/candy-icons.tar.xz
+	md5sums = bddcf1c9a41e268c80717d8b778f3b5f
+
+pkgname = candy-icons
+
