@@ -1,4 +1,0 @@
-88c88
-< int ingrace = 0;
----
-> static int ingrace = 0;
