@@ -18,22 +18,13 @@ pkgver() {
   git describe --tags --abbrev=10 | sed 's/^WAMR-\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)-g\([0-9a-f]\+\)$/y\3.\1.\2+\4.g\5/g'
 }
 
-prepare() {
-  if [ -d build ]
-  then
-    msg2 "Build dir already exist; doing an incremental build"
-    msg2 "If you want to do a clean build, please delete $(realpath build)"
-    return
-  fi
-
+build() {
   cmake \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -S wasm-micro-runtime/product-mini/platforms/linux/ -B build
-}
 
-build() {
   ninja -C build
 }
 
