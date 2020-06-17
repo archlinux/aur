@@ -4,8 +4,8 @@
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
-pkgver=4.15
-_pkgbuild=202003050155
+pkgver=4.16
+_pkgbuild=202006040540
 pkgrel=1
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
@@ -17,21 +17,16 @@ conflicts=("eclipse-common")
 provides=("eclipse=$pkgver")
 options=(!strip)
 
-source=(
-    "http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-${pkgver}-${_pkgbuild}/eclipse-platform-${pkgver}-linux-gtk-x86_64.tar.gz&r=1"
-    "eclipse.sh"
-    "eclipse.desktop"
-)
+source=("http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-${pkgver}-${_pkgbuild}/eclipse-platform-${pkgver}-linux-gtk-x86_64.tar.gz&r=1"
+        "eclipse.sh"
+        "eclipse.desktop")
 
-sha512sums=(
-    "e75d373cbbe72c5dd17a9052c73cb77dd5de799dfaa77feb57b89d72ac4316e16ee0da23bf365b2e590f1375ea728a6587ae568b8f0402e30a052ac6a7979d03"
-    "71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac"
-    "674a8de38f391a94d4e6a279560eb82c61038786e341c49050a3438f2ad44c7d4c88ba3cd2495ca0f6551e055b83b3eafbf234badc64a63020e333b5b8990e8e"
-)
+sha512sums=('2b188b31c5fae478d618ca8e956b75463d65a25ad319b9c4b6256698d9ac690091db7069cb2e1c6b7f11ebd89dd46ac3f675c7d85c320c938c9eac04557552af'
+            '71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac'
+            'efbf99ab07a253f360ec9db70b113c2e3d18a13272dc181cb7b1711cd65399758332ad61e400b7e0acb52eebe164ba7da54a29db2f24f73e4803bff80f6c9792')
 
 package() {
     install -d ${pkgdir}/usr/bin ${pkgdir}/usr/lib ${pkgdir}/usr/share/applications
-    
     install -m755 "${srcdir}/eclipse.sh" "${pkgdir}/usr/bin/eclipse"
     install -Dm644 "${srcdir}/eclipse.desktop" "${pkgdir}/usr/share/applications/"
     
