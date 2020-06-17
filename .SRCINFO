@@ -1,11 +1,12 @@
 pkgbase = filebin
 	pkgdesc = A pastebin service written in PHP
 	pkgver = 3.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.server-speed.net/projects/filebin
 	install = filebin.install
 	arch = any
 	license = AGPL
+	license = MIT
 	makedepends = nodejs
 	makedepends = git
 	depends = php

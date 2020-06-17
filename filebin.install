@@ -8,9 +8,9 @@ post_install() {
 	echo "Run 'php /usr/share/webapps/filebin/index.php tools update_database' to initialize your database."
 	echo "Run 'php /usr/share/webapps/filebin/index.php user add_user' to add your first user."
 
-	echo "Additional information can be found in '/usr/share/webapps/filebin/INSTALL'."
+	echo "Additional information can be found in '/usr/share/doc/filebin'."
         echo ""
-	echo "For nginx and php-fpm there are sample configuration files in '/usr/share/webapps/filebin'."
+	echo "For nginx and php-fpm there are sample configuration files in '/usr/share/doc/filebin/examples'."
         echo ""
 	echo "Additionally you should enable 'filebin-user-cron.timer' and 'filebin-user-cron.timer'."
 	echo "-------------------------------------------------------------------------------"
