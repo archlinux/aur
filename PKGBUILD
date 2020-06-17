@@ -3,7 +3,7 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
 pkgver=2020.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -28,4 +28,7 @@ package() {
 	# Install daemon service
 	install -Dm644 "$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service" \
 		"$pkgdir/usr/lib/systemd/system/mullvad-daemon.service"
+
+	mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share"
+	rm -rf "$pkgdir/usr/local"
 }
