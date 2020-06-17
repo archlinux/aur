@@ -2,8 +2,8 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.115.1
-pkgrel=2
+pkgver=1.115.2
+pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -20,7 +20,7 @@ _librepo='http://u.tlauncher.ru/repo'
 # _librepo='http://turikhay.ru/tlauncher/repo'
 
 _bootstrap_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6'
-_launcher_checksum='0617b92b615aaca9931e1a28b33d1d22ae28162b84e80c117585652817872737'
+_launcher_checksum='5ed31ba64ae535bda26d7c2c2d36146fae242a12728c68545c8598f38e38e5e7'
 
 source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         # Patched bootstrap to allow launching without RW rights (RO only)
