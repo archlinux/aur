@@ -1,21 +1,20 @@
 # Maintainer: saxonbeta <saxonbeta at gmail _ com>
 #Contributor: Thomas Jost  <schnouki at schnouki _ net>
 pkgname=qnotero
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A Qt application which provides access to your Zotero references"
 arch=(any)
 url="https://github.com/ealbiter/qnotero"
 license=('GPL')
-depends=('python-qtpy')
+depends=('python-pyqt5')
 optdepends=(
   'gnote: for integration with gnote'
   'python-levenshtein: for integration with gnote'
 )
-provides=("gnotero")
-replaces=("gnotero")
+
 source=(https://github.com/ealbiter/qnotero/archive/v${pkgver}.tar.gz)
-sha256sums=('0029465e3f1c131a0eaa797b31fffc2460838c9bb95824884cda6d1ec90e27f9')
+sha256sums=('14cdaaae1298be907d7a3e65b69faa067d14a4e25b5f0439421c152815bf20f5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
