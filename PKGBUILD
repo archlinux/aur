@@ -1,7 +1,10 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # -> disable check() until #63 is fixed
-DISABLE_CHECK=1
+
+#Configuration variables
+# CUDA_ARCH : sm_50, sm_50 ...
+DISABLE_CHECK=${DISABLE_CHECK:-1}
 
 _name=popsift
 pkgname=(${_name} ${_name}-libs)
@@ -25,6 +28,7 @@ _CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release )
 
 build() {
   cd ${srcdir}
+  [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=( -DPopSift_CUDA_CC_LIST="$CUDA_ARCH" )
 
   msg2 "Build static ${_name} library"
     mkdir -p build_static && pushd build_static
