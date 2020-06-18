@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=telegram-cli-git
-pkgver=r1352.e35dc1a
+pkgver=r1357.3da0e4a
 pkgrel=1
 pkgdesc="Telegram messenger CLI"
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    ./configure CFLAGS="-w"
+    ./configure CFLAGS="-w" LDFLAGS="-Wl,--allow-multiple-definition"
     make
     gzip -f debian/telegram-cli.8
 }
