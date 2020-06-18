@@ -6,26 +6,21 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=jack_mixer
-pkgver=10
-pkgrel=2
+pkgver=11
+pkgrel=1
 pkgdesc="A GTK based Jack audio mixer"
-url="http://home.gna.org/jackmixer/"
+url="https://rdio.space/jackmixer/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('python2' 'python2-fpconst' 'pygtk' 'jack' 'hicolor-icon-theme')
-optdepends=('lash: session support'
-            'python2-gconf: gconf support')
+depends=('libjack.so' 'python-gobject' 'hicolor-icon-theme')
+optdepends=('lash: session support')
 options=('!libtool')
 install="$pkgname.install"
-source=("http://http.debian.net/debian/pool/main/j/jack-mixer/jack-mixer_${pkgver}.orig.tar.gz")
-md5sums=('d45cf4665689cc83ccee8b25a41faf91')
+source=("https://rdio.space/jackmixer/tarballs/jack_mixer-${pkgver}.tar.gz")
+md5sums=('169485489708721ecb25ffe33efa5d67')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  #Python2 fixes
-  export PYTHON="python2"
-  sed -i "s_env python_&2_" $pkgname.py
 
   ./configure \
 	--prefix=/usr \
@@ -38,4 +33,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 AUTHORS README NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
