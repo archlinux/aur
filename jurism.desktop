@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Juris-M
+GenericName=Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support.
+Icon=jurism
+Exec=/usr/bin/jurism %f
+Categories=Office
+Terminal=false

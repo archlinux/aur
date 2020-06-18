@@ -1,0 +1,9 @@
+# Ignore all files
+*
+
+# Add necessary files
+!.gitignore
+!.SRCINFO
+!jurism.desktop
+!jurism.install
+!PKGBUILD
