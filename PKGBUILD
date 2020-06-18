@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A simple (gray) theme for fcitx5"
 arch=('any')
 url="https://github.com/iovxw/fcitx5-simple-theme"
-license=('CCPL:by-sa,GFDL')
+license=('Unlicense')
 source=("https://github.com/iovxw/fcitx5-simple-theme/archive/$_commit/$pkgname-$_commit.tar.gz")
 md5sums=('c6591b50cb886c71474e8496f2c5eff5')
 
