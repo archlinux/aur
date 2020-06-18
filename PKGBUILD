@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/texstudio-org/texstudio"
 license=('GPL')
 depends=('poppler-qt5' 'qt5-svg' 'qt5-script' 'libxkbcommon-x11' 'hicolor-icon-theme' 'hunspell' 'quazip' 'desktop-file-utils')
-makedepends=('qt5-tools' 'mercurial' 'imagemagick' 'librsvg')
+makedepends=('qt5-tools' 'imagemagick' 'librsvg')
 optdepends=('evince: pdf reader'
             'okular: alternate pdf reader')
 replaces=('texmakerx')
