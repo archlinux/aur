@@ -25,6 +25,7 @@ pkgbase = papis
 	depends = python-doi
 	depends = python-typing_extensions
 	depends = python-lxml
+	depends = python-slugify
 	optdepends = papis-rofi: integration with rofi
 	source = https://files.pythonhosted.org/packages/source/p/papis/papis-0.10.tar.gz
 	source = b8ce11c08dc32051545e73e858f0cd044ac12ef2.patch
