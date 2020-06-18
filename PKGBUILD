@@ -1,6 +1,6 @@
 pkgname=fcitx-tablet
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Handwriting tablet support for fcitx"
 arch=('i686' 'x86_64')
 url="https://github.com/ohwgiles/fcitx-tablet"
@@ -11,6 +11,10 @@ optdepends=('zinnia-tomoe: handwriting model files for zinnia')
 makedepends=('cmake' 'intltool')
 source=($pkgname-$pkgver.tar.gz::https://github.com/ohwgiles/fcitx-tablet/tarball/v$pkgver)
 sha1sums=('ee0a79bf93e1c331e0bede30e3bcfd09d2058618')
+
+prepare() {
+   sed s/-Werror// -i "$srcdir/ohwgiles-fcitx-tablet-abbb5f5/CMakeLists.txt"
+}
 
 build() {
    rm -rf build
