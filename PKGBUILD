@@ -1,14 +1,14 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-ccemux
-pkgver=2.2
-pkgrel=6
+pkgver=2.3.3
+pkgrel=1
 epoch=
-pkgdesc=""
+pkgdesc="CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs."
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
 url="https://github.com/MCJack123/craftos2"
 license=('MIT')
 groups=()
-depends=('craftos-pc>=2.2' 'sdl2>=2.0.8')
+depends=('craftos-pc>=2.3.2' 'sdl2>=2.0.8')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,10 +20,10 @@ options=()
 install=
 changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
-        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.2.tar.gz")
+        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.3.3.tar.gz")
 noextract=()
-sha256sums=('6aee4aa7a3b74d8e9738f42ded967d4107bb1b6f4eead29b67cf4b5c307112a5'
-            '221595821d583ef9669a83bc061d49b761c460ead17f12862646b5caeddd7a3c')
+sha256sums=('86c0d176a9733bece72757509ec53401cd9abbab523e1dfcc579d1e09409f1d9'
+            '9dbf6d929ed6ecb659fc4da801fa308e77beb2f6ae091186c69e73642a393987')
 validpgpkeys=()
 
 prepare() {
