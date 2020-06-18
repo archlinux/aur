@@ -3,7 +3,7 @@
 
 pkgname=python-buildozer
 _pkgname=buildozer
-pkgver=1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 arch=('any')
@@ -13,9 +13,9 @@ optdepends=('python-paramiko: remote builds')
 url="https://github.com/kivy/buildozer"
 license=('MIT')
 options=(!emptydirs)
-source=("https://github.com/kivy/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('8677f67448c450d84529d81fdae6d7c4')
-sha256sums=('7c4eba8e09aa0aff35cbf0a6859ad027121165a814e5cac8d2ad1d1ce1b8febd')
+source=("$_pkgname.tar.gz::https://github.com/kivy/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('01bc2868c2fceb97c33619eb4893d68f')
+sha256sums=('9e7e1d86785d4228938e417fa9c7a20f85b23c85f4a8889415c781b77331a938')
 provides=('buildozer' 'python-buildozer')
 conflicts=('buildozer')
 
