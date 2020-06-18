@@ -2,17 +2,17 @@
 
 
 pkgname="servoblaster"
-pkgver="20140103"
-pkgrel="2"
+pkgver="20191001"
+pkgrel="1"
 pkgdesc="Userspace daemon that lets you control 8 (or more) servos from your RaspberryPi"
 url="https://github.com/richardghirst/PiBits/tree/master/ServoBlaster"
-license="GPL"
+license=("GPL")
 arch=("armv6h" "armv7h")
 makedepends=("gcc" "make")
 conflicts=("servoblaster-git")
-_commit="2ea384c0c71033ca239b51943b1321d84b39350e"
+_commit="ff1d383a37d190ae21010dc1f3671f4d222b9158"
 source=("https://github.com/richardghirst/PiBits/archive/$_commit.tar.gz")
-md5sums=("c6840744b5eb181305a19d72f43bffaf")
+md5sums=("7dbb9b70865cdeac4bb0bbe71067e25b")
 
 
 build() {
