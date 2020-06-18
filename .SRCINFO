@@ -1,0 +1,13 @@
+pkgbase = pridecat-git
+	pkgdesc = Colorize your terminal output with pride!
+	pkgver = git
+	pkgrel = 1
+	url = Colorize your terminal output with pride!
+	arch = i686
+	arch = x86_64
+	license = CC-BY-NC
+	source = git+https://github.com/lunasorcery/pridecat
+	sha256sums = SKIP
+
+pkgname = pridecat-git
+
