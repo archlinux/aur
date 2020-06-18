@@ -2,7 +2,7 @@
 # TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.4.150
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64')
@@ -10,26 +10,26 @@ url='http://www.froemling.net/apps/bombsquad'
 license=('unknown')
 depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg')
 source=(
-  "http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_${pkgver}.tar.gz"
+  "http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_${pkgver}.tar.gz"
   'bombsquad.sh'
   'bombsquad.desktop'
 )
 sha256sums=(
-  'bce5b1ea6e2c0837a33328213be48262cc02def01a75b00e4beab5572cae85ea'
+  '764b4678828c84485ca5bb329e5cf1478898331b8d89daff48ef3f9619cd0d0b'
   '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
   '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c'
 )
 
 
 package() {
-  cd "$srcdir"/BombSquad_Linux_64bit_"$pkgver"
+  cd "$srcdir"/BombSquad_Linux_"$pkgver"
 
   install -Dm755 bombsquad "$pkgdir"/usr/share/bombsquad/bombsquad
-  install -dm755 data "$pkgdir"/usr/share/bombsquad/data
-  cp -r data "$pkgdir"/usr/share/bombsquad/
+  install -dm755 ba_data "$pkgdir"/usr/share/bombsquad/ba_data
+  cp -r ba_data "$pkgdir"/usr/share/bombsquad/
 
-  find "${pkgdir}/usr/share/bombsquad/data" -type f -exec chmod 644 {} \;
-  find "${pkgdir}/usr/share/bombsquad/data" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/usr/share/bombsquad/ba_data" -type f -exec chmod 644 {} \;
+  find "${pkgdir}/usr/share/bombsquad/ba_data" -type d -exec chmod 755 {} \;
 
   install -Dm 755 "$srcdir"/bombsquad.sh "$pkgdir"/usr/bin/$pkgname
   install -Dm 644 "$srcdir"/bombsquad.desktop "$pkgdir"/usr/share/applications/bombsquad.desktop
