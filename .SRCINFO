@@ -1,0 +1,18 @@
+pkgbase = clip
+	pkgdesc = Create charts and diagrams using a CSS-like language
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://clip-lang.org
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = freetype2
+	makedepends = harfbuzz
+	depends = fmt
+	depends = cairo
+	depends = fribidi
+	source = clip-0.7.tar.gz::https://github.com/asmuth/clip/archive/v0.7.tar.gz
+	sha256sums = f38f455cf3e9201614ac71d8a871e4ff94a6e4cf461fd5bf81bdf457ba2e6b3e
+
+pkgname = clip
+
