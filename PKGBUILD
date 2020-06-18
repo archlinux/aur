@@ -1,5 +1,5 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034
 # -> disable check() until #63 is fixed
 DISABLE_CHECK=1
 
