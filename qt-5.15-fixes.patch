@@ -1,0 +1,182 @@
+From 628746382997ecd4b8cc122c21bf5ed7206f47fb Mon Sep 17 00:00:00 2001
+From: Tim Schumacher <timschumi@gmx.de>
+Date: Thu, 18 Jun 2020 20:46:40 +0200
+Subject: [PATCH] Fixes for Qt 5.15
+
+- QPainterPath is now its own header file
+
+---
+ src/ui/Badge.cpp             | 1 +
+ src/ui/ColumnView.cpp        | 1 +
+ src/ui/CommitList.cpp        | 1 +
+ src/ui/CommitToolBar.cpp     | 1 +
+ src/ui/ContextMenuButton.cpp | 1 +
+ src/ui/DetailView.cpp        | 1 +
+ src/ui/DiffView.cpp          | 1 +
+ src/ui/ExpandButton.cpp      | 1 +
+ src/ui/FileList.cpp          | 1 +
+ src/ui/FindWidget.cpp        | 1 +
+ src/ui/Footer.cpp            | 1 +
+ src/ui/SearchField.cpp       | 1 +
+ src/ui/ToolBar.cpp           | 1 +
+ 13 files changed, 13 insertions(+)
+
+diff --git a/src/ui/Badge.cpp b/src/ui/Badge.cpp
+index cb86812..fd3fb4b 100644
+--- a/src/ui/Badge.cpp
++++ b/src/ui/Badge.cpp
+@@ -10,6 +10,7 @@
+ #include "Badge.h"
+ #include "app/Application.h"
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStyleOption>
+ 
+ namespace {
+diff --git a/src/ui/ColumnView.cpp b/src/ui/ColumnView.cpp
+index 4193f82..cc6c9e1 100644
+--- a/src/ui/ColumnView.cpp
++++ b/src/ui/ColumnView.cpp
+@@ -15,6 +15,7 @@
+ #include <QLabel>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QVBoxLayout>
+ 
+ #ifdef Q_OS_WIN
+diff --git a/src/ui/CommitList.cpp b/src/ui/CommitList.cpp
+index 08e14a9..a744e55 100644
+--- a/src/ui/CommitList.cpp
++++ b/src/ui/CommitList.cpp
+@@ -31,6 +31,7 @@
+ #include <QApplication>
+ #include <QMenu>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPushButton>
+ #include <QStyledItemDelegate>
+ #include <QTextLayout>
+diff --git a/src/ui/CommitToolBar.cpp b/src/ui/CommitToolBar.cpp
+index a8252a9..a151879 100644
+--- a/src/ui/CommitToolBar.cpp
++++ b/src/ui/CommitToolBar.cpp
+@@ -15,6 +15,7 @@
+ #include <QApplication>
+ #include <QMenu>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QProxyStyle>
+ #include <QStyleOption>
+ #include <QToolButton>
+diff --git a/src/ui/ContextMenuButton.cpp b/src/ui/ContextMenuButton.cpp
+index 403a526..7bfbb05 100644
+--- a/src/ui/ContextMenuButton.cpp
++++ b/src/ui/ContextMenuButton.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "ContextMenuButton.h"
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStyleOption>
+ #include <QStylePainter>
+ #include <QToolBar>
+diff --git a/src/ui/DetailView.cpp b/src/ui/DetailView.cpp
+index 315dcb7..5127450 100644
+--- a/src/ui/DetailView.cpp
++++ b/src/ui/DetailView.cpp
+@@ -30,6 +30,7 @@
+ #include <QNetworkReply>
+ #include <QNetworkRequest>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPushButton>
+ #include <QRegularExpression>
+ #include <QStackedWidget>
+diff --git a/src/ui/DiffView.cpp b/src/ui/DiffView.cpp
+index dbadd79..552a757 100644
+--- a/src/ui/DiffView.cpp
++++ b/src/ui/DiffView.cpp
+@@ -45,6 +45,7 @@
+ #include <QMimeData>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPushButton>
+ #include <QSaveFile>
+ #include <QScrollBar>
+diff --git a/src/ui/ExpandButton.cpp b/src/ui/ExpandButton.cpp
+index b36917b..624d502 100644
+--- a/src/ui/ExpandButton.cpp
++++ b/src/ui/ExpandButton.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "ExpandButton.h"
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ ExpandButton::ExpandButton(QWidget *parent)
+   : QToolButton(parent)
+diff --git a/src/ui/FileList.cpp b/src/ui/FileList.cpp
+index 1aad0f4..f82541c 100644
+--- a/src/ui/FileList.cpp
++++ b/src/ui/FileList.cpp
+@@ -22,6 +22,7 @@
+ #include <QApplication>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSettings>
+ #include <QStyledItemDelegate>
+ #include <QWindow>
+diff --git a/src/ui/FindWidget.cpp b/src/ui/FindWidget.cpp
+index 567f39b..07096b4 100644
+--- a/src/ui/FindWidget.cpp
++++ b/src/ui/FindWidget.cpp
+@@ -15,6 +15,7 @@
+ #include <QLabel>
+ #include <QLineEdit>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QShortcut>
+ #include <QShowEvent>
+ #include <QStyleOption>
+diff --git a/src/ui/Footer.cpp b/src/ui/Footer.cpp
+index f68bc2c..fac6f51 100644
+--- a/src/ui/Footer.cpp
++++ b/src/ui/Footer.cpp
+@@ -11,6 +11,7 @@
+ #include <QHBoxLayout>
+ #include <QMenu>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QPen>
+ #include <QStyleOption>
+diff --git a/src/ui/SearchField.cpp b/src/ui/SearchField.cpp
+index b7687bf..fac5768 100644
+--- a/src/ui/SearchField.cpp
++++ b/src/ui/SearchField.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "SearchField.h"
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStyle>
+ #include <QToolButton>
+ 
+diff --git a/src/ui/ToolBar.cpp b/src/ui/ToolBar.cpp
+index e64d541..88a1807 100644
+--- a/src/ui/ToolBar.cpp
++++ b/src/ui/ToolBar.cpp
+@@ -21,6 +21,7 @@
+ #include <QHBoxLayout>
+ #include <QMenu>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStyleOptionToolButton>
+ #include <QToolButton>
+ #include <QWindow>
+-- 
+2.27.0
+

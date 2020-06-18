@@ -5,7 +5,7 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gitahead
-pkgrel=1
+pkgrel=2
 pkgver=2.6.2
 pkgdesc='Understand your Git history!'
 url='https://www.gitahead.com/'
@@ -17,14 +17,22 @@ source=(
   "git+https://github.com/gitahead/gitahead#tag=v${pkgver}"
   "gitahead.desktop"
   "gitahead.patch"
+  "qt-5.15-fixes.patch"
+  "fix-qt-theme.patch"
 )
 sha256sums=('SKIP'
             '254b4e970a942c6ac94df177e54a6169fe7e5f5c5d0d92b6f0c0f03b7b7b2fb0'
-            '096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0')
+            '096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0'
+            '422f90259e5f312a75da1030524dfd6fa054d261376b73317bb9b9fffa8de4ad'
+            '569d9a08059907e002b6b0f1c0b5aa898a0a2bd616e93a6eb20dd617320b987a')
 
 prepare() {
   cd "$srcdir/gitahead"
   patch --forward --strip=1 --input="../gitahead.patch"
+  patch --forward --strip=1 --input="${srcdir}/qt-5.15-fixes.patch"
+
+  # From https://github.com/gitahead/gitahead/pull/445
+  patch --forward --strip=1 --input="${srcdir}/fix-qt-theme.patch"
 
   git submodule update --init --recursive
 }
