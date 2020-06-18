@@ -1,9 +1,9 @@
-# Maintainer: Yamada Hayao <shun819.mail@gmail.com>
+# Maintainer: Yamada Hayao <hayao@fascode.net>
 
 pkgname=inverse-icon-theme-blue-git
 _pkgname=inverse-icon-theme
 _gitname=Inverse-icon-theme
-pkgver=r21.bf453b4
+pkgver=r24.41e1bc5
 pkgrel=1
 pkgdesc="A colorful Design icon theme for linux desktops"
 arch=('any')
