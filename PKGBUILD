@@ -5,7 +5,7 @@ pkgname=(revolution-web-git revolution-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('x86_64')
 url="https://gitlab.eastcoast.hosting/ponies/riot-web"
-license=('Apache')
+license=('custom:CSL')
 depends=('electron')
 makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'electron')
 provides=('revolution-desktop')
@@ -16,13 +16,15 @@ source=("matrix-js-sdk::${_giturl}/matrix-js-sdk.git"
 	"riot-web::${_giturl}/riot-web.git"
         "riot-desktop::${_giturl}/riot-desktop.git"
         "revolution-desktop.desktop"
-        "revolution-desktop.sh")
+        "revolution-desktop.sh"
+	"CSL.txt")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             '822db5d897392092db26a12331d6800983061094f2626a47d33c323ac206aac8'
             '88e1ffc56fe389c5e692ce247243961ac827126f3da50aa591a1a8c792cfd896'
+            'cb356a66b835aee9a277953efd754616b7da51e1b4cacd6027a0eea90a700b98'
 )
 
 pkgver() {
@@ -85,6 +87,9 @@ package_revolution-web-git() {
   install -Dm644 config.sample.json -t "${pkgdir}"/etc/webapps/revolution/
   ln -s /etc/webapps/revolution/config.json "${pkgdir}"/usr/share/webapps/revolution/
   echo "${pkgver}" > "${pkgdir}"/usr/share/webapps/revolution/version
+
+  # Install license
+  install -Dm644 ../CSL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_revolution-desktop-git() {
@@ -113,4 +118,7 @@ package_revolution-desktop-git() {
   for i in 16 24 48 64 96 128 256 512; do
     install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/revolution.png
   done
+
+  # Install license
+  install -Dm644 ../CSL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
