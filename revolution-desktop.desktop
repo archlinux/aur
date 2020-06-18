@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Revolution-Desktop
+Comment=A feature-rich client for Matrix.org
+Exec=/usr/bin/revolution-desktop %u
+Terminal=false
+Type=Application
+Icon=riot
+StartupWMClass=Revolution
+Categories=Network;InstantMessaging;Chat;IRCClient
+MimeType=x-scheme-handler/revolution;

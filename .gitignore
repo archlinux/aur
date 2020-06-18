@@ -1,0 +1,5 @@
+src/
+pkg/ 
+riot-desktop/
+riot-web/
+*.tar.xz
