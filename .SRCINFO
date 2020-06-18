@@ -1,0 +1,15 @@
+pkgbase = recycle-cli
+	pkgdesc = A recycle bin cli in python 3
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/recycle-cli/
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = gettext
+	depends = python>=3.4
+	source = Recycle.py
+	md5sums = 4ad5337338eeff9f0e0429c151faaad6
+
+pkgname = recycle-cli
+
