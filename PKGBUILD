@@ -1,6 +1,6 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-auto-pairs-git
-pkgver=r104.11fbd7c
+pkgver=r105.3e529e8
 pkgrel=1
 pkgdesc='Automatically inserts closing pairs in Kakoune'
 arch=(any)
@@ -23,5 +23,5 @@ pkgver() {
 package() {
 	cd "$srcdir/auto-pairs.kak"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/auto-pairs.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/auto-pairs.kak
 }
