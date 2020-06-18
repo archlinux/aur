@@ -3,7 +3,7 @@
 
 pkgname=recycle-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
 url="https://aur.archlinux.org/packages/recycle-cli/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('coreutils' 'gettext' 'python>=3.4')
 source=("Recycle.py")
 
-sha256sums=('20ed517f3d3f73201e31413c590434e6b72c4029b23da5f29605e753f8bc9f73')
+sha256sums=('514cde5546f3ab96c576a1eb757e2071b81e7234a7ebd0aad9fdb6c1147f85b7')
 
 package() {
 	cd "$srcdir"

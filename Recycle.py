@@ -8,10 +8,6 @@ from subprocess import call, getoutput
 from sys        import argv
 from time       import localtime, strftime
 
-import gettext
-
-gettext.install("recycle")
-
 recycleDir = environ["HOME"] + "/.Trash"
 dataDir  = recycleDir + "/files"
 pathDir  = recycleDir + "/path"
