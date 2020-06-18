@@ -1,7 +1,7 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 # Maintainer: Buildpacks Maintainers <cncf-buildpacks-maintainers at lists dot cncf dot io>
 pkgname=pack-cli-git
-pkgver=0.11.2+r101.g79d84baa
+pkgver=0.11.1+r91.gdabd4e6c
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha512sums=("SKIP")
 build() {
 	export GOPATH="${srcdir}/go"
 	cd "${srcdir}/${pkgname}"
-	PACK_VERSION=0.11.2 make build
+	PACK_VERSION=0.11.1 make build
 }
 package() {
 	export GOPATH="${srcdir}/go"
