@@ -1,6 +1,6 @@
-pkgbase = processing4-git
+pkgbase = processing4
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = r1.3cd8898
+	pkgver = 4.0a1
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = processing4-git
 	depends = jdk11-openjdk
 	depends = libgl
 	options = !strip
+	source = https://github.com/processing/processing4/archive/processing-1270-4.0a1.tar.gz
 	source = https://download.processing.org/reference.zip
 	source = always_use_java-11-openjdk.patch
 	source = change_cmd_name.patch
@@ -20,6 +21,7 @@ pkgbase = processing4-git
 	source = disable_update_check.patch
 	source = no_downloads.patch
 	source = use_system_libraries.patch
+	sha256sums = e1a50d673a4398730d125f6b4f159ede33475e560a8c2db91e692640abfaec66
 	sha256sums = 2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5
 	sha256sums = 66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323
 	sha256sums = 7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119
@@ -28,5 +30,5 @@ pkgbase = processing4-git
 	sha256sums = a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263
 	sha256sums = 6115cced44fcf1cadd945cbb5a09692a3956259c294351bdec27469f1fd03163
 
-pkgname = processing4-git
+pkgname = processing4
 
