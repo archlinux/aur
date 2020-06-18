@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.1-zen1 Kernel Configuration
+# Linux/x86 5.7.3-zen1 Kernel Configuration
 #
 
 #
@@ -4447,6 +4447,7 @@ CONFIG_I2C_ISCH=m
 CONFIG_I2C_ISMT=m
 CONFIG_I2C_PIIX4=m
 CONFIG_I2C_CHT_WC=m
+CONFIG_I2C_NCT6775=m
 CONFIG_I2C_NFORCE2=m
 CONFIG_I2C_NFORCE2_S4985=m
 CONFIG_I2C_NVIDIA_GPU=m
