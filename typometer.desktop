@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Science;System;Development
+Comment=Terminal/Editor typing latency analyzer
+Exec=typometer
+GenericName=Latency Tester
+Name=Typometer
+StartupNotify=true
+Terminal=false
+Type=Application
