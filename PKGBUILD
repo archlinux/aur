@@ -8,9 +8,9 @@ pkgdesc='Programming environment for creating images, animations and interaction
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 conflicts=(processing processing-bin processing-jdk8)
-depends=('jdk11-openjdk' 'java11-openjfx' 'libgl')
+depends=('jdk11-openjdk' 'libgl')
 # TODO add jogl as make-dependency once a package for version 2.4.0 exists
-makedepends=('ant' 'gendesk' 'unzip')
+makedepends=('ant' 'gendesk' 'java11-openjfx' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
         always_use_java-11-openjdk.patch
