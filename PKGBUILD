@@ -2,7 +2,7 @@
 
 _plug=waifu2x-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.0.g22c5ef4
+pkgver=r3.0.g870f3c9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -10,18 +10,20 @@ url='https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan'
 license=('MIT')
 depends=('vapoursynth'
          'vulkan-icd-loader'
-         'glslang'
          )
 makedepends=('git'
              'cmake'
-             'ncnn-git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Nlzy/VapourSynth-${_plug}.git"
+        'git+https://github.com/Tencent/ncnn.git'
+        'git+https://github.com/KhronosGroup/glslang.git'
         'https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan/releases/download/r0.1/models.7z'
         )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9'
             )
 
@@ -33,8 +35,16 @@ pkgver() {
 prepare() {
   mkdir -p build
 
+  cd ${_plug}
+  git config submodule.deps/nncn.url "${srcdir}/ncnn"
+  git submodule update --init deps/ncnn
+
   # rename models path
-  sed "s|models-|${_plug}-models/models-|g" -i "${_plug}/src/vsw2xnvk.cpp"
+  sed "s|models-|${_plug}-models/models-|g" -i src/vsw2xnvk.cpp
+
+  cd deps/ncnn
+  git config submodule.glslang.url "${srcdir}/glslang"
+  git submodule update --init glslang
 
 }
 
