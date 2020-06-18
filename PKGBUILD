@@ -24,9 +24,9 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_gitname"
-    mkdir -p $pkgdir/usr/include/gli
-    cp -r gli $pkgdir/usr/include
-    rm -f $pkgdir/usr/include/gli/CMakeLists.txt
-    find $pkgdir -type f -exec chmod 644 {} \;
-    find $pkgdir -type d -exec chmod 755 {} \;
+    mkdir -p "$pkgdir"/usr/include/gli
+    cp -r gli "$pkgdir"/usr/include
+    rm -f "$pkgdir"/usr/include/gli/CMakeLists.txt
+    find "$pkgdir" -type f -exec chmod 644 {} \;
+    find "$pkgdir" -type d -exec chmod 755 {} \;
 }
