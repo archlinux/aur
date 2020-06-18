@@ -2,7 +2,7 @@
 
 pkgname=prismatik-psieg
 pkgver=5.11.2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A controller for usb driven LED backlights (an unofficial fork)"
 arch=('x86_64')
 url="https://github.com/psieg/Lightpack"
@@ -12,12 +12,14 @@ makedepends=('qt5-tools')
 provides=('lightpack' 'prismatik')
 conflicts=('lightpack' 'prismatik')
 install=prismatik.install
-source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d58f840d67514a8faeeaed444dfc7ccbcc23172b08b5a5277f122b830a3ef813')
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "0001-Respect-host-linker-variables.patch")
+sha256sums=('d58f840d67514a8faeeaed444dfc7ccbcc23172b08b5a5277f122b830a3ef813'
+            'b14b546911cf93bf1b0940b38977614f3591fd3a89fe4976f848a2554fadb335')
 
 prepare() {
 	cd "Lightpack-${pkgver}"
-	cd Software
+	patch --forward --strip=1 --input="${srcdir}/0001-Respect-host-linker-variables.patch"
 }
 
 build() {
