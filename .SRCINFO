@@ -1,0 +1,13 @@
+pkgbase = tundra2
+	pkgdesc = A code build system that tries to be accurate and fast for incremental builds
+	pkgver = 2.14
+	pkgrel = 1
+	url = https://github.com/deplinenoise/tundra
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = tundra2-2.14.tar.gz::https://github.com/deplinenoise/tundra/archive/v2.14.tar.gz
+	sha256sums = db3d4b13820373a038a08b8751376e3ecdf49355f329a7909cd2f836372dffe1
+
+pkgname = tundra2
+
