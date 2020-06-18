@@ -3,40 +3,28 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=qtads
-pkgver=2.1.7
-pkgrel=2
-url="http://qtads.sourceforge.net/"
+pkgver=3.0.0
+pkgrel=1
+url="https://realnc.github.io/qtads/"
 license=('GPL')
-pkgdesc="A Qt-based interpreter for TADS text adventures. Support TADS 2 and 3, both for text-only and multimedia adventures."
+pkgdesc="interpreter for TADS games (compatible with TADS 2 and 3, multimedia and text)"
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'sdl_sound' 'sdl_mixer')
+depends=('qt5-base' 'fluidsynth' 'mpg123' 'libvorbis' 'hicolor-icon-theme' 'libsndfile')
 source=(
-	"http://downloads.sourceforge.net/sourceforge/qtads/$pkgname-$pkgver.tar.bz2"
-	"02_pointer_integer_comparison.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=853629;filename=02_pointer_integer_comparison.diff;msg=24"
-	"$pkgname.desktop"
+	"https://github.com/realnc/qtads/releases/download/v${pkgver}/qtads-${pkgver}-source.tar.xz"
 )
-sha512sums=('ab88aa20991642df6048af49d2cd7b804dbb98b3f5c6ab38ad974e8b39531d880eac0eae0ba773f332e9568578b76b677bc35753f7d1e6d9a99d919b15f4c6ee'
-            '84ecff9b5a46daee07402dffc23ef570bcd43b12fd66bf623b0465e41a77bd025390bc6ed5624e840a3b344054dea5da55e515063525bcc62a94a5ab2f4da15a'
-            '90daa97576717fa4eb7d81599fcc24fa7fa025e03ab4690a1b4e99f6cd855348c3ba9319a36f51b14bc9180454b15e0f35653912e5f3877bea0694b5e44e415c')
+sha512sums=('e7b72350876475e0b5b9b8c8c953aa380f5f25dade25785d15c5004a6866bb614c3ca2a3b34f84989013e350f9e73d339ce8ddd7d36766d80a981cfbfda7d1c6')
 
-
-prepare() {
-	cd $srcdir/$pkgname-$pkgver
-	patch -Np1 -i $srcdir/02_pointer_integer_comparison.patch
-}
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
 
-	qmake
+	qmake PREFIX=/usr
 	make
 }
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
 
-	install -D -m755 qtads $pkgdir/usr/bin/qtads
-	#desktop icon
-	install -D -m644 ${pkgname}_48x48.png $pkgdir/usr/share/pixmaps/$pkgname.png
-	install -D -m644 $startdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	make install INSTALL_ROOT="${pkgdir}"
 }
