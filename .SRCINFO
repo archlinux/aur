@@ -1,0 +1,17 @@
+pkgbase = cachetools
+	pkgdesc = A set of useful tools for managing and clearing cache.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/binex-dsk/linux-cache-tools
+	arch = any
+	license = GPL3
+	provides = cachetools-clear
+	provides = cachetools-config
+	provides = cachetools-find
+	provides = cachetools-man
+	provides = cachetools-mem
+	source = git+https://github.com/binex-dsk/linux-cache-tools.git
+	md5sums = SKIP
+
+pkgname = cachetools
+
