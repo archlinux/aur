@@ -1,5 +1,5 @@
 pkgbase = colmap
-	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
+	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
 	pkgver = 3.6dev3
 	pkgrel = 1
 	url = https://colmap.github.io/
