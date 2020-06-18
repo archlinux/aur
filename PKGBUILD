@@ -44,9 +44,6 @@ prepare() {
 
 
 build() {
-  export CFLAGS=${CFLAGS/-fno-plt/}
-  export CXXFLAGS=${CFLAGS/-fno-plt/}
-
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
