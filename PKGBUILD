@@ -10,7 +10,7 @@ _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.2.3
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -72,12 +72,14 @@ depends=(
   libfdk-aac
 )
 makedepends=(
+  avisynthplus
   ffnvcodec-headers
   git
   ladspa
   nasm
 )
 optdepends=(
+  'avisynthplus: AviSynthPlus support'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
@@ -93,14 +95,14 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-  
+_tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
 conflicts=("$_name")
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
-        vmaf-model-path.patch)
-sha256sums=(
-  SKIP
-  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+source=(
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+  vmaf-model-path.patch
 )
+sha256sums=('SKIP'
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d')
 pkgver() {
   cd ffmpeg
 
@@ -114,6 +116,9 @@ prepare() {
   # https://crbug.com/1062037
   git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
 
+  # backport avisynthplus support
+  git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
+  git show 56f59246293de417d27ea7e27cb9a7727ee579fb -- libavformat/avisynth.c | git apply -
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 build() {
