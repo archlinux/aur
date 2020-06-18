@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-inc-dec-git
 pkgver=r14.f76f6f4
-pkgrel=1
+pkgrel=2
 pkgdesc='Increment and decrement numbers in Kakoune'
 arch=(any)
 url="https://gitlab.com/Screwtapello/kakoune-inc-dec"
@@ -25,5 +25,5 @@ package() {
 	# use American spelling of license
 	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" inc-dec.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" inc-dec.kak
 }
