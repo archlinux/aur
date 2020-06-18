@@ -1,25 +1,28 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=vlc-arc-dark-git
-pkgver=20160605
+pkgver=r8.89fe85c
 pkgrel=1
-pkgdesc='ARC Dark skin for VLC Media Player (git version)'
-url='https://github.com/varlesh/VLC-Arc-Dark'
+pkgdesc="Arc Dark skin for VLC"
 arch=('any')
+url="https://github.com/varlesh/VLC-Arc-Dark"
 license=('GPL')
 depends=('vlc')
-makedepends=('git' 'make')
+makedepends=('git')
+provides=('vlc-arc-dark')
 conflicts=('vlc-arc-dark')
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  cd $srcdir/$pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+  cd $srcdir/$pkgname
+  make install DESTDIR="$pkgdir"
 }
