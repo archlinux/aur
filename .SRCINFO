@@ -1,0 +1,19 @@
+pkgbase = j901-bin
+	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
+	pkgver = 9.01
+	pkgrel = 1
+	url = http://www.jsoftware.com
+	install = j.install
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	optdepends = wget: for web/gethttp addon
+	optdepends = expat: for api/expat addon
+	optdepends = fftw: for math/fftw addon
+	optdepends = lapack: for math/lapack addon
+	provides = ijconsole
+	source = j901_amd64.deb::https://www.jsoftware.com/download/j901/install/j901_amd64.deb
+	md5sums = 11bad3e0c45bb8fb3664d5602ba7a687
+
+pkgname = j901-bin
+

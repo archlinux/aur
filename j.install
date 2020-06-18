@@ -1,0 +1,4 @@
+post_install() {
+    ldconfig
+    echo "change the j user folder (default: ~/.j901-user) in /etc/j/9.01/profilex.ijs"
+}
