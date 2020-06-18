@@ -3,7 +3,7 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=dnsperf
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Tools that measure performance of authoritative Domain Name services"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url="https://www.dns-oarc.net/tools/dnsperf"
 license=('Apache')
 depends=('bind')
 source=("https://www.dns-oarc.net/files/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('292bbaeb95389b549a91f4bfc7faf8062326ef75a0382e879ca86cdfe71df408')
-sha512sums=('b4fbfa40811174a0613ba333a57278262af2c424118c55ad3f0fe7bf4df07ae4ca4c5fb528ff659d98db61393399308b652bc9887c48ed24427c70343307f06d')
+sha256sums=('adcb3ad28ad46ef9ff4a218c67bd5ea9a9dde556b9a277059a1f390ce0f86581')
+sha512sums=('ec1df94d9f1c9bc9d439318cfa75f9eea7a8a41c88a411e0678606a3fc4374d1bcc63ce5da606ed4951477d994b440cc2109f2ffc99feddf29bbdfa17f44efd8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
