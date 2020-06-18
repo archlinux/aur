@@ -1,0 +1,8 @@
+--- src/Vega-Strike-Engine-Source/engine/objconv/CMakeLists.txt.orig	2020-06-17 09:32:16.811021115 +0200
++++ src/Vega-Strike-Engine-Source/engine/objconv/CMakeLists.txt	2020-06-17 09:40:23.923412625 +0200
+@@ -59,3 +59,5 @@
+ ENDIF (OGRE_FOUND AND NOT USE_SYSTEM_BOOST)
+ 
+ TARGET_LINK_LIBRARIES(mesh_tool ${MSH_LIBS})
++
++INSTALL(TARGETS mesh_tool DESTINATION bin)
