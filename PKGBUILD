@@ -1,6 +1,6 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=432.git.ac1efc8
+pkgver=433.git.b9a6c6d
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
