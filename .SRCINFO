@@ -1,6 +1,6 @@
 pkgbase = deemix
 	pkgdesc = A barebone deezer downloader library
-	pkgver = 1.0.21
+	pkgver = 1.0.22
 	pkgrel = 1
 	url = https://deemix.app/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = deemix
 	depends = python-mutagen
 	depends = python-spotipy
 	conflicts = deemix-git
-	source = https://notabug.org/RemixDev/deemix/archive/2cce36f82dd7f6925f7ed55199e97388527fcbd1.tar.gz
-	sha256sums = 61a408cbf9eece422d4377b8207069b8a4f3d11aa1c02be7e746d81046cac0c4
+	source = https://notabug.org/RemixDev/deemix/archive/c8875483bc132632ef35efb1b43289cd1ff6315d.tar.gz
+	sha256sums = def16a9c381677a3d0d98fa193bab44fba2a1b70fbca189369265332b616fe52
 
 pkgname = deemix
 
