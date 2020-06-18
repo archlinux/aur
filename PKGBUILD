@@ -1,8 +1,8 @@
 # Maintainer: Bertrand "Kamek" Bousquet <b.kamek@gmail.com>
 
 pkgname=ntfd-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A lightweight notification daemon for fancy desktop integrations"
 depends=('ttf-weather-icons')
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=("GPL")
 provides=("ntfd")
 source=("ntfd::${url}/releases/download/${pkgver}/ntfd-${arch}-unknown-linux-musl"
         "config.toml::https://raw.githubusercontent.com/kamek-pf/ntfd/${pkgver}/config.toml")
-sha256sums=("5eeba828b5cbfb9def926b37cb0bab2595bef1d15f8e118b47ed23620e1f707b"
-            "fc1406cf489e074f521310258a09fc14e9d54733f9f3fa52c0904e1b871ed7b8")
+sha256sums=("272f6b4222fdf64160b66d95f4c4b44e564289b6a8feccdfdcc4c694b6862264"
+            "7d181f1c27ab95aa9b216dcac55aaffc3c92b3eb81ab60c6ab62fd8700b362f1")
 
 package() {
     install -Dm755 ntfd "${pkgdir}/usr/bin/ntfd"
