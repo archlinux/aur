@@ -1,0 +1,18 @@
+pkgbase = privateergold
+	pkgdesc = Remake of the Wing Commander Privateer using the Vegastrike engine
+	pkgver = 1.03
+	pkgrel = 1
+	url = privateer.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = vegastrike-engine
+	optdepends = 
+	provides = privateergold
+	conflicts = privateergold
+	source = http://prdownloads.sourceforge.net/privateer/PrivateerGold1.03.bz2.bin?download
+	sha1sums = SKIP
+
+pkgname = privateergold
+
