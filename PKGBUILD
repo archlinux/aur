@@ -18,11 +18,11 @@ sha256sums=('d58f840d67514a8faeeaed444dfc7ccbcc23172b08b5a5277f122b830a3ef813')
 prepare() {
 	cd "Lightpack-${pkgver}"
 	cd Software
-	qmake -r
 }
 
 build() {
 	cd "Lightpack-${pkgver}/Software"
+	qmake -r
 	make
 }
 
