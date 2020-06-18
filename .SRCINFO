@@ -1,6 +1,6 @@
 pkgbase = 2ping
 	pkgdesc = a bi-directional ping utility
-	pkgver = 4.4.1
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://www.finnie.org/software/2ping/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = 2ping
 	depends = python-netifaces
 	depends = python-pycryptodome
 	optdepends = bash-completion: for bash auto-completion
-	source = 2ping-4.4.1.tar.gz::https://github.com/rfinnie/2ping/archive/v4.4.1.tar.gz
-	sha256sums = d075dbf7cbce259a1f4021a979aeeddde2574437ce5e74b444d7282de462039e
+	source = 2ping-4.5.tar.gz::https://github.com/rfinnie/2ping/archive/v4.5.tar.gz
+	sha256sums = 5278e1189ba5ed5f8d9820c56efba4a43471a6911a7c867c70a81e0d7c8ec9cc
 
 pkgname = 2ping
 

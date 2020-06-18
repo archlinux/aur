@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=2ping
-pkgver=4.4.1
+pkgver=4.5
 pkgrel=1
 pkgdesc="a bi-directional ping utility"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-dnspython' 'python-netifaces' 'python-pycryptodome')
 makedepends=('python-setuptools')
 optdepends=('bash-completion: for bash auto-completion')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rfinnie/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d075dbf7cbce259a1f4021a979aeeddde2574437ce5e74b444d7282de462039e')
+sha256sums=('5278e1189ba5ed5f8d9820c56efba4a43471a6911a7c867c70a81e0d7c8ec9cc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
