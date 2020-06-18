@@ -16,15 +16,15 @@ sha512sums=('192a555dac89add99d3e5e5e022bd112acfb8c1646ef1630c13c22658086077d5a7
 package() {
     cd $pkgname
 
-    mkdir -p $pkgdir/usr/include/gli
-    cp -r gli $pkgdir/usr/include
-    rm -f $pkgdir/usr/include/gli/CMakeLists.txt
+    mkdir -p "$pkgdir"/usr/include/gli
+    cp -r gli "$pkgdir"/usr/include
+    rm -f "$pkgdir"/usr/include/gli/CMakeLists.txt
 
     # gli provides a custom / git version of GLM
-    mkdir -p $pkgdir/usr/include/glm
-    cp -r external/glm/glm $pkgdir/usr/include
-    rm -f $pkgdir/usr/include/glm/CMakeLists.txt
+    mkdir -p "$pkgdir"/usr/include/glm
+    cp -r external/glm/glm "$pkgdir"/usr/include
+    rm -f "$pkgdir"/usr/include/glm/CMakeLists.txt
 
-    find $pkgdir -type f -exec chmod 644 {} \;
-    find $pkgdir -type d -exec chmod 755 {} \;
+    find "$pkgdir" -type f -exec chmod 644 {} \;
+    find "$pkgdir" -type d -exec chmod 755 {} \;
 }
