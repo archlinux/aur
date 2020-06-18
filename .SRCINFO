@@ -1,0 +1,15 @@
+pkgbase = python-mcpi-git
+	pkgdesc = Minecraft: Pi Edition API Python Library
+	pkgver = r13.47c6d5b
+	pkgrel = 1
+	url = https://github.com/martinohanlon/mcpi
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/martinohanlon/mcpi.git
+	md5sums = SKIP
+
+pkgname = python-mcpi-git
+
