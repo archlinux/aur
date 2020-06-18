@@ -11,6 +11,8 @@ pre_install() {
 post_install() {
 	echo 'Enabling Mullvad VPN daemon...'
 	systemctl enable --now mullvad-daemon
+
+	chmod u+s "/usr/bin/mullvad-exclude"
 }
 
 pre_upgrade() {
@@ -21,6 +23,8 @@ post_upgrade() {
 	echo 'Starting & enabling Mullvad VPN daemon...'
 	systemctl daemon-reload
 	systemctl enable --now mullvad-daemon
+
+	chmod u+s "/usr/bin/mullvad-exclude"
 }
 
 pre_remove() {
