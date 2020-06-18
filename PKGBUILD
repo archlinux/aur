@@ -1,8 +1,5 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2154 # unused/uninitialized variables.
-# shellcheck disable=SC2164 # unsafe cd.
-# shellcheck disable=SC2191 # unsafe array asignment.
 
 ####to disable cuda kernel comment out this line
 _BUILD_CUDA="${_BUILD_CUDA:-ON}"
