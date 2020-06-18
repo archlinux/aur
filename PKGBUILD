@@ -2,17 +2,17 @@
 
 _pkgname=virt-viewer
 pkgname=$_pkgname-git
-pkgver=2.0.277.g9413c58
+pkgver=9.0.7.gc6afc28
 pkgrel=1
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('i686' 'x86_64')
 url='https://virt-manager.org'
 license=('GPL')
-depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk3')
+depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk' 'gobject-introspection')
 makedepends=('git' 'intltool' 'spice-protocol')
 provides=("$_pkgname" 'virtviewer')
 conflicts=("$_pkgname" 'virtviewer')
-source=("git+https://git.fedorahosted.org/git/$_pkgname.git")
+source=("git+https://gitlab.com/$_pkgname/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
