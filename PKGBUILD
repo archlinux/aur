@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.15.r0.g06da477
+pkgver=v0.16.r0.g25d64f7
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
