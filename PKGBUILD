@@ -4,11 +4,11 @@
 
 pkgname=jurism
 pkgver=5.0.85m3
-pkgrel=1
+pkgrel=2
 pkgdesc="Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support."
 arch=('x86_64')
 url="https://juris-m.github.io/downloads"
-license=('GPL3')
+license=('AGPL3')
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
 
 sha256sums=('e77753174477bfd22d9b983e9e53954e9579e944c2b62bf32fcbdf17f1b36281')
