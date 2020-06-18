@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
-pkgname=processing4-git
-pkgver=r1.3cd8898
+pkgname=processing4
+pkgver=4.0a1
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -11,14 +11,16 @@ depends=('jdk11-openjdk' 'libgl')
 # TODO add jogl as make-dependency once a package for version 2.4.0 exists
 makedepends=('ant' 'gendesk' 'java11-openjfx' 'unzip')
 options=(!strip)
-source=('https://download.processing.org/reference.zip'
+source=("https://github.com/processing/processing4/archive/processing-$((1269+${pkgver##4.0a}))-$pkgver.tar.gz"
+        'https://download.processing.org/reference.zip'
         always_use_java-11-openjdk.patch
         change_cmd_name.patch
         derive_jdk_from_path.patch
         disable_update_check.patch
         no_downloads.patch
         use_system_libraries.patch)
-sha256sums=('2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
+sha256sums=('e1a50d673a4398730d125f6b4f159ede33475e560a8c2db91e692640abfaec66'
+            '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             '66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
@@ -26,18 +28,12 @@ sha256sums=('2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             'a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263'
             '6115cced44fcf1cadd945cbb5a09692a3956259c294351bdec27469f1fd03163')
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-  # The size of a full clone is more than 1GB, so we just make a shallow clone
-  rm -rf $pkgname
-  git clone --depth 1 https://github.com/processing/processing4.git $pkgname
-
   # Create .desktop file
   gendesk -f -n --pkgname=processing4 --pkgdesc="$pkgdesc" --name="Processing 4"
+
+  # Symbolic link for not having to repeat the revision number
+  ln -sf "processing4-processing-"*"-$pkgver" $pkgname
 
   # Copy reference.zip to the java directory
   mkdir -p $pkgname/java
