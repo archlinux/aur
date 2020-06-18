@@ -1,6 +1,6 @@
 pkgbase = linux-drm-next-git
-	pkgdesc = Linux kernel with DRM patches
-	pkgver = 5.2.890707.b45f1b3b585e
+	pkgdesc = Linux kernel with bleeding-edge GPU drivers
+	pkgver = 5.8.917195.66057dd1d1cf
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = linux-drm-next-git
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -17,20 +18,30 @@ pkgbase = linux-drm-next-git
 	options = !strip
 	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
 	source = config
+	source = sphinx-workaround.patch
+	source = gcc10-early-boot-fix.patch
+	source = wno-maybe-initialized.patch
 	sha256sums = SKIP
-	sha256sums = 73ddc4e25084b4089a39d9b1ade74b9c14a215f90752f218ab0679407db4cc50
+	sha256sums = 623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = 8c8fb0be88fcd767e8768ee1bde491e8b4de83f6a644e002019d1d5a0da920f9
+	sha256sums = b4e60ef20c47093ec47867439d057d936c6ba8384cc47a0d0737830c48bea63a
 
 pkgname = linux-drm-next-git
-	pkgdesc = The Linux kernel with DRM patches kernel and modules
+	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
-pkgname = linux-drm-next-git-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel with DRM patches kernel
+pkgname = linux-drm-next-headers-git
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge GPU drivers kernel
 
-pkgname = linux-drm-next-git-docs
-	pkgdesc = Documentation for the Linux kernel with DRM patches kernel
+pkgname = linux-drm-next-docs-git
+	pkgdesc = Documentation for the Linux kernel with bleeding-edge GPU drivers kernel
 
