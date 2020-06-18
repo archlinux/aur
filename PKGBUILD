@@ -2,7 +2,7 @@
 pkgname=kak-smarttab-git
 _reponame=smarttab.kak
 pkgver=r18.1321c30
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides commands for three different ways of handling indentation'
 arch=(any)
 url="https://gitlab.com/andreyorst/$_reponame"
@@ -25,5 +25,5 @@ package() {
 	cd "$srcdir/$_reponame"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/smarttab*.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/smarttab*.kak
 }

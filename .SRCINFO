@@ -1,7 +1,7 @@
 pkgbase = kak-smarttab-git
 	pkgdesc = Provides commands for three different ways of handling indentation
 	pkgver = r18.1321c30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/andreyorst/smarttab.kak
 	install = kak-smarttab-git.install
 	arch = any
