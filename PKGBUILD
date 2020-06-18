@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A simple blue theme for fcitx5"
 arch=('any')
 url="https://github.com/weearc/fcitx5-skin-simple-blue"
-license=('CCPL:by-sa,GFDL')
+license=('Unlicense')
 source=("https://github.com/weearc/fcitx5-skin-simple-blue/archive/$_commit/$pkgname-$_commit.tar.gz")
 md5sums=('043749fb248f96c0dae14bb088557e43')
 
