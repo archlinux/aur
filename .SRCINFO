@@ -1,0 +1,11 @@
+pkgbase = nintendo-udev
+	pkgdesc = udev rules for Nintendo Joy-Cons and Pro Controllers
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = 70-nintendo.rules
+	sha256sums = 7b1f23f3134516c69612b38193ddd0ebda52467c1c1dcd306306323026697f97
+
+pkgname = nintendo-udev
+
