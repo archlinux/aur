@@ -1,7 +1,7 @@
 pkgbase=deepspeech
 pkgname=('deepspeech' 'python-deepspeech')
 _pkgname=DeepSpeech
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
