@@ -1,0 +1,18 @@
+pkgbase = pvts
+	pkgdesc = A visual interpreter for the Scheme programming language writen in Java
+	pkgver = 0.243
+	pkgrel = 1
+	url = http://davidpilo.github.io/pvts/
+	arch = any
+	license = custom:unknown
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = bash
+	noextract = pvts-0.243.jar
+	source = pvts-0.243.jar::https://github.com/davidpilo/pvts/raw/master/dist/0.243/PVTS.jar
+	source = pvts.png
+	sha256sums = 24f4600bcb8d792f8ad848056e38cda2e548e1a48ee3c77e07529cae5c013193
+	sha256sums = SKIP
+
+pkgname = pvts
+
