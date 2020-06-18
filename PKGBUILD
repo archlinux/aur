@@ -3,8 +3,8 @@
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-painter
-pkgver=6.1.2
-_build=349
+pkgver=6.1.3
+_build=400
 pkgrel=1
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://download.substance3d.com/substance-painter/6.x/Substance_Painte
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
-sha256sums=('6502d9a27c471ea945f24438def659b2a6a646b2d3302942fce1ab4339a4fb1d'
+sha256sums=('47a3daa9005ecdeab1b05d65f51c05b8a1f3cea2f291864f4463bec85fc7df66'
             'e79b4d09983f355433a16adee7c6b308d9a1824187965d399f33acc68a14f193'
             '5c939be430674e7d61217f4f137a9974ecd38b65a432bc4bab4c64f5f145b4fd'
             'e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1')
