@@ -1,0 +1,12 @@
+pkgbase = fcitx5-dark-numix
+	pkgdesc = Modified Material-Color to fit in the numix dark theme.
+	pkgver = 0.0.0.20200618
+	pkgrel = 1
+	url = https://github.com/cjxgm/fcitx5-dark-numix
+	arch = any
+	license = Apache
+	source = https://github.com/cjxgm/fcitx5-dark-numix/archive/bf0049dd46f6336e3f7db60a17e61a4c34dd082c/fcitx5-dark-numix-bf0049dd46f6336e3f7db60a17e61a4c34dd082c.tar.gz
+	sha512sums = d8cad03869bbd909ee6f7883e8d5d52ff659852c04a3c955c51ba99b0113eba354185b08b0b3445c3e2354489f11834c6c8fd06541c01fff88418abdaa054c45
+
+pkgname = fcitx5-dark-numix
+
