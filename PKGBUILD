@@ -1,11 +1,11 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=barva-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.1.r2.g44e1d0b
+pkgver=0.2
 pkgrel=1
 pkgdesc="An audio visualizer that pulses the background of your terminal."
 url="http://github.com/Kharacternyk/${_pkgname}"
-arch=('x86_64')
+arch=('any')
 license=('GPL3')
 depends=('pulseaudio')
 makedepends=('git')
