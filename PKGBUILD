@@ -3,7 +3,7 @@ pkgname=vegastrike-git
 _pkgname=vegastrike
 pkgver=rev.11354
 pkgrel=1
-pkgdesc="A spaceflight simulator in massive universe-data files"
+pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
 url="www.vega-strike.org"
 license=('GPL')
@@ -23,27 +23,18 @@ pkgver() {
   echo "rev.$(git rev-list --count HEAD)"
 }
 
-package() {
-  cd "${srcdir}"
-
-#data files install
-  install -d "${pkgdir}"/usr/share
-  cp -a "${srcdir}"/Assets-Production/ "${pkgdir}"/usr/share/${_pkgname}/
-#remove some extra files
-cd "${pkgdir}"/usr/share/${_pkgname}/
-rm -rf .git
-rm -rf .github
-rm -rf .gitignore
-
-#  mv "${pkgdir}"/usr/share/data "${pkgdir}"/usr/share/${_pkgname}
-
-#install man page, .desktop file and icon
-#  install -D -m644 "${pkgdir}"/usr/share/${_pkgname}/documentation/${_pkgname}.1 \
-#    "${pkgdir}"/usr/share/man/man1/${_pkgname}.1
-
-  install -D -m644 "${pkgdir}"/usr/share/${_pkgname}/${_pkgname}.desktop \
-    "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
-  install -D -m644 "${pkgdir}"/usr/share/${_pkgname}/${_pkgname}.xpm \
-    "${pkgdir}"/usr/share/pixmaps/${_pkgname}.xpm
-
+prepare(){
+#Only needed until it becomes part of the source
+cp CMakelists.txt "${srcdir}"/Assets-Production/
 }
+
+
+build(){
+  cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}"/Assets-Production/CMakeLists.txt
+}
+
+package() {
+  mkdir -p "${pkgdir}"
+  make -C "${srcdir}"/Assets-Production DESTDIR="${pkgdir}" install
+}
+
