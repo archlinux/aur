@@ -1,7 +1,7 @@
 pkgbase = prismatik
 	pkgdesc = A controller for usb driven LED backlights
 	pkgver = 5.11.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/woodenshark/Lightpack
 	install = prismatik.install
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = prismatik
 	provides = lightpack
 	source = https://github.com/woodenshark/Lightpack/archive/5.11.2/prismatik-5.11.2.tar.gz
 	source = fix_includes.patch
+	source = fix_qmake_buildflags.patch
 	sha256sums = 5f3662086965270476b8ea2c014aa0b958afb15b58b5f3000e5f7280386b3022
 	sha256sums = 14c688737d8ba5f128492380c21f9b78c351e59b99375fdc143df52bc2a98781
+	sha256sums = 14c7f26ae080ab0449f4ad4ba4c68c0c3dacbbe63bace7da5c4faae9554c4d8f
 
 pkgname = prismatik
 

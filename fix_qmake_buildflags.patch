@@ -1,0 +1,76 @@
+diff -upr a/Software/grab/grab.pro b/Software/grab/grab.pro
+--- a/Software/grab/grab.pro	2014-09-30 11:18:06.000000000 +0200
++++ b/Software/grab/grab.pro	2020-06-18 19:24:09.817857700 +0200
+@@ -22,6 +22,9 @@ INCLUDEPATH += ./include \
+                ../src \
+                ../math/include \
+                ..
++QMAKE_CFLAGS = $$(CFLAGS)
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
++QMAKE_LFLAGS = $$(LDFLAGS)
+ 
+ DEFINES += $${SUPPORTED_GRABBERS}
+ # Linux/UNIX platform
+Only in b/Software/grab: Makefile
+diff -upr a/Software/hooks/hooks.pro b/Software/hooks/hooks.pro
+--- a/Software/hooks/hooks.pro	2014-09-30 11:18:06.000000000 +0200
++++ b/Software/hooks/hooks.pro	2020-06-18 19:24:39.595207492 +0200
+@@ -31,6 +31,10 @@ QMAKE_CXXFLAGS_EXCEPTIONS_ON -= -mthread
+ 
+ CONFIG -= rtti
+ 
++QMAKE_CFLAGS = $$(CFLAGS)
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
++QMAKE_LFLAGS = $$(LDFLAGS)
++
+ DEFINES += HOOKSDLL_EXPORTS UNICODE
+ 
+ CONFIG(msvc) {
+Only in b/Software: lib
+diff -upr a/Software/libraryinjector/libraryinjector.pro b/Software/libraryinjector/libraryinjector.pro
+--- a/Software/libraryinjector/libraryinjector.pro	2014-09-30 11:18:06.000000000 +0200
++++ b/Software/libraryinjector/libraryinjector.pro	2020-06-18 19:24:29.168301676 +0200
+@@ -10,6 +10,9 @@ DESTDIR  = ../lib
+ TARGET   = libraryinjector
+ TEMPLATE = lib
+ LIBS += -luuid -lole32 -ladvapi32 -luser32
++QMAKE_CFLAGS = $$(CFLAGS)
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
++QMAKE_LFLAGS = $$(LDFLAGS)
+ 
+ DEFINES += LIBRARYINJECTOR_LIBRARY
+ CONFIG(msvc) {
+Only in b/Software: Makefile
+Only in b/Software/math: Makefile
+Only in b/Software: .qmake.stash
+Only in b/Software/src: bin
+Only in b/Software/src: Makefile
+diff -upr a/Software/src/src.pro b/Software/src/src.pro
+--- a/Software/src/src.pro	2014-09-30 11:18:06.000000000 +0200
++++ b/Software/src/src.pro	2020-06-18 19:24:54.378879801 +0200
+@@ -58,6 +58,10 @@ DEFINES += $${SUPPORTED_GRABBERS}
+ 
+ LIBS    += -L../lib -lgrab -lprismatik-math
+ 
++QMAKE_CFLAGS = $$(CFLAGS)
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
++QMAKE_LFLAGS = $$(LDFLAGS)
++
+ unix:!macx{
+     CONFIG    += link_pkgconfig debug
+     PKGCONFIG += libusb-1.0
+Only in b/Software/src: stuff
+diff -upr a/Software/tests/tests.pro b/Software/tests/tests.pro
+--- a/Software/tests/tests.pro	2014-09-30 11:18:06.000000000 +0200
++++ b/Software/tests/tests.pro	2020-06-18 19:24:59.275658721 +0200
+@@ -12,6 +12,10 @@ DESTDIR     = bin
+ CONFIG     += console
+ CONFIG     -= app_bundle
+
++QMAKE_CFLAGS = $$(CFLAGS)
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
++QMAKE_LFLAGS = $$(LDFLAGS)
++
+ CONFIG(gcc):QMAKE_CXXFLAGS += -std=c++11
+
+ # QMake and GCC produce a lot of stuff
