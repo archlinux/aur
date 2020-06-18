@@ -1,17 +1,14 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy
-pkgver=v0.15
+pkgver=v0.16
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL')
 groups=('')
-makedepends=('cmake' 'nlohmann-json' 'bcc')
-depends=()
-optdepends=('systemd: service manager'
-            'bcc: execsnoop for program_proxy/program_noproxy'
-            'linux-headers: bcc init')
+makedepends=('llvm' 'clang' 'cmake' 'nlohmann-json' 'bpf')
+depends=('gcc-libs' 'systemd')
 provides=('cgproxy')
 conflicts=('cgproxy')
 
@@ -22,12 +19,24 @@ backup=('etc/cgproxy/config.json')
 install='cgproxy.install'
 
 build(){
-    cd "$pkgname"
-    mkdir -p build && cd build && cmake .. && make 
+    cd ${srcdir}/${pkgname}
+    # init submodule
+    git submodule init
+    git submodule update
+
+    # build libexecsnoop.so
+    cd "${srcdir}/${pkgname}/execsnoop-libbpf"
+    make clean
+    make CFLAGS="-O2 -Wall" libexecsnoop.so
+
+    # build main binary
+    cd "${srcdir}/${pkgname}"
+    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make
 }
 
 package_cgproxy(){
-    cd "$pkgname"/build
-    make DESTDIR=$pkgdir install 
+    cd "${srcdir}/$pkgname"/build
+    make DESTDIR=$pkgdir install
+    # cd "${srcdir}/${pkgname}/execsnoop-libbpf"
+    # make DESTDIR=$pkgdir install
 }
-
