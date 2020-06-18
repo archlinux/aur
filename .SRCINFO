@@ -1,7 +1,7 @@
 pkgbase = dxconvert
 	pkgdesc = A file conversion and manipulation toolkit for Yamaha FM synth patches
-	pkgver = 3.0.5
-	pkgrel = 2
+	pkgver = 3.0.6
+	pkgrel = 1
 	url = http://dxconvert.martintarenskeen.nl/
 	arch = any
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = dxconvert
 	optdepends = python-rtmidi: MIDI input/output
 	optdepends = tk: dxconvert and txconvert GUI
 	optdepends = zbar: convert patches from QR codes to SysEx
-	source = http://home.kpn.nl/m.tarenskeen/download/sysex/DXconvert/DXconvert-3.0.5.zip
-	sha256sums = cad4af8cefef74fb991f2fcd0b03485c8a84b5c4c2c8f68067da5aed67975647
+	source = http://home.kpn.nl/m.tarenskeen/download/sysex/DXconvert/DXconvert-3.0.6.zip
+	sha256sums = 5cd6206e283672cec7dbc1b9a80002b301af3ad530d378bb92f2d801f252fbf5
 
 pkgname = dxconvert
 
