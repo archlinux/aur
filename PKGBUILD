@@ -8,7 +8,8 @@ pkgdesc='Programming environment for creating images, animations and interaction
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 conflicts=(processing processing-bin processing-jdk8)
-depends=('jdk11-openjdk' 'java11-openjfx' 'jogl' 'libgl')
+depends=('jdk11-openjdk' 'java11-openjfx' 'libgl')
+# TODO add jogl as make-dependency once a package for version 2.4.0 exists
 makedepends=('ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
@@ -22,7 +23,7 @@ sha256sums=('2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263'
-            'db6d31c42c13f41b2fde531018927d994c4ae13a04848c4afb0762620b0f0903')
+            '6115cced44fcf1cadd945cbb5a09692a3956259c294351bdec27469f1fd03163')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -45,6 +46,8 @@ prepare() {
 
   # Don't download any files during Ant's build process
   patch $pkgname/build/build.xml < no_downloads.patch
+
+  # Use system libraries instead of the ones included in the processing4 repo
   patch $pkgname/core/build.xml < use_system_libraries.patch
 
   # Disable update check in default preferences

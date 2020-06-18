@@ -1,20 +1,9 @@
 --- build_core.xml.orig	2020-06-13 00:09:40.000000000 +0200
 +++ build_core.xml	2020-06-17 15:54:22.945551353 +0200
-@@ -29,7 +29,7 @@
-   <property name="jogl.url"
-             value="https://jogamp.org/deployment/archive/rc/v2.4.0-rc-20200307/jar" />
- 
--  <available file="library/jogl-all.jar" property="jogl.present" />
-+  <available file="/usr/share/java/jogl/jogl-all.jar" property="jogl.present" />
- 
-   <!-- ok to ignore failed downloads if we at least have a version that's local -->
-   <condition property="jogl.ignorable" value="false" else="true">
-@@ -58,17 +58,17 @@
-   </target>
- 
+@@ -60,15 +60,15 @@
    <path id="classpath.base">
--    <pathelement location="library/jogl-all.jar" />
--    <pathelement location="library/gluegen-rt.jar" />
+     <pathelement location="library/jogl-all.jar" />
+     <pathelement location="library/gluegen-rt.jar" />
 -    <pathelement location="library/javafx-swt.jar" />
 -    <pathelement location="library/javafx.base.jar" />
 -    <pathelement location="library/javafx.controls.jar" />
@@ -24,8 +13,6 @@
 -    <pathelement location="library/javafx.properties" />
 -    <pathelement location="library/javafx.swing.jar" />
 -    <pathelement location="library/javafx.web.jar" />
-+    <pathelement location="/usr/share/java/jogl/jogl-all.jar" />
-+    <pathelement location="/usr/share/java/jogl/gluegen-rt.jar" />
 +    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx-swt.jar" />
 +    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.base.jar" />
 +    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.controls.jar" />
