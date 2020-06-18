@@ -4,7 +4,7 @@
 pkgname=console-bridge
 _pkgname=console_bridge
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages."
 arch=('i686' 'x86_64')
 url="http://www.ros.org/"
@@ -23,6 +23,5 @@ build() {
 package() {
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
-    mkdir -p $pkgdir/usr/share/licenses/$pkgname
-    head -n 33 $pkgdir/usr/include/console_bridge/console.h > $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
