@@ -1,0 +1,17 @@
+pkgbase = python2-urwid
+	pkgdesc = Curses-based user interface library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://excess.org/urwid/
+	arch = x86_64
+	license = LGPL
+	makedepends = glibc
+	makedepends = python2-setuptools
+	depends = python2
+	depends = glibc
+	source = https://github.com/urwid/urwid/archive/release-2.1.0/python2-urwid-2.1.0.tar.gz
+	sha256sums = 2f35d3416f85c6ad3247fc37af450b342466827d8256512f4d28064c0020bca0
+	sha512sums = 14267d1076e51ef53dc187dc1395e9f4d968bc1019c2fc2209143eb29b9b138a378116fae30645f1183b2378ffe43ee3491de6181a51699f933970385012abe1
+
+pkgname = python2-urwid
+
