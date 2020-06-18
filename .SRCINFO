@@ -1,0 +1,18 @@
+pkgbase = microsoft-python-language-server-git
+	pkgdesc = Microsoft Language Server for Python
+	pkgver = r955.2aef1f81
+	pkgrel = 1
+	url = https://github.com/Microsoft/python-language-server
+	arch = any
+	license = Apache
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = dotnet-runtime
+	provides = microsoft-python-language-server
+	conflicts = microsoft-python-language-server
+	source = microsoft-python-language-server-git::git+https://github.com/Microsoft/python-language-server
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = microsoft-python-language-server-git
+
