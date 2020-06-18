@@ -40,7 +40,6 @@ sha256sums=('SKIP'
 
 prepare() {
   git -C "$pkgname" apply -v "$srcdir"/*.patch
-  mkdir -p build
 }
 
 
