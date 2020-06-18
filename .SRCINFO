@@ -1,0 +1,14 @@
+pkgbase = python-charamel
+	pkgdesc = Truly Universal Encoding Detection in Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/charamel/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/charamel/charamel-1.0.0.tar.gz
+	sha256sums = ce0a81979b7602c5ede8449e836119b045a258222a16512c696852c37b1047e5
+
+pkgname = python-charamel
+
