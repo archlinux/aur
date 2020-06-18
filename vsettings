@@ -1,0 +1,7 @@
+#!/bin/bash
+#This is a small wrapper that lets VegaStrike - Upon the coldest ocean run from seemingly anywhere
+if [ -d /usr/local/share/vegastrike ]; then 
+	vegasettings --target /usr/local/share/vegastrike
+	else
+	vegasettings --target /usr/share/vegastrike
+fi

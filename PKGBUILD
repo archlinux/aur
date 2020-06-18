@@ -25,8 +25,11 @@ pkgver() {
 
 prepare(){
 #Only needed until it becomes part of the source
-cd 
-cp CMakeLists.txt "${srcdir}"/Assets-Production/
+pwd
+cd ..
+cp -va ./CMakeLists.txt "${srcdir}"/Assets-Production/;
+cp -va ./vs "${srcdir}"/Assets-Production/;
+cp -va ./vsettings "${srcdir}"/Assets-Production/;
 }
 
 
