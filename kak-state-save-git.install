@@ -1,7 +1,6 @@
 post_install() {
 	echo
-	echo \
-'To finish installation source /usr/share/kak-state-save-git/rc/state-save.kak
-in your .kakrc'
+	echo If you use a custom autoload directory, do not forget to create a \
+	symbolic link inside the directory to /usr/share/kak/rc/addons.
 	echo
 }

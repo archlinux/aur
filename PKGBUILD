@@ -2,7 +2,7 @@
 pkgname=kak-state-save-git
 _reponame=kakoune-state-save
 pkgver=r26.ab7c0c7
-pkgrel=1
+pkgrel=2
 pkgdesc='Save and restore state between sessions in Kakoune'
 arch=(any)
 url="https://gitlab.com/Screwtapello/$_reponame"
@@ -26,5 +26,5 @@ package() {
 	# Use American spelling for license
 	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" state-save.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" state-save.kak
 }
