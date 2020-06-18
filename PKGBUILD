@@ -11,7 +11,7 @@
 
 pkgname=telegram-desktop-udf-patched
 pkgver=2.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -32,6 +32,7 @@ source=(
     "always_clear_history_for_everyone.patch"
     "always_pin_without_notify.patch"
     "always_send_as_photo_or_album.patch"
+    "force_gtk_integration.patch"
 )
 sha512sums=(
     '9f2fba2814a5ab64f946913e32fce66dbc842d9607cbaee00994689ef6a661a04c2a8de5e075fc532e7d8926b51432c06c2b1510b019d729eef40da373d91d42'
@@ -40,6 +41,7 @@ sha512sums=(
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
     'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
     '1fb1e4d9dcf0d54f98b2cf47a3a0cc6e6eed649617efab0e5631d9760b42eb85c7c421ba659656405f0f1d1087a80090baebb9f5f1154f4d0da9493dfa4a13c3'
+    '17faeff3ee56edd63be658c3730dbbed26437cb9bf0a9890d16cae26fd500aaab738b66de57b573903a5bd727dafe65105e151b08d7a6d8c426c148e754a7114'
 )
 
 prepare() {
@@ -50,6 +52,7 @@ prepare() {
     patch -Np1 -i "$srcdir/always_clear_history_for_everyone.patch"
     patch -Np1 -i "$srcdir/always_pin_without_notify.patch"
     patch -Np1 -i "$srcdir/always_send_as_photo_or_album.patch"
+    patch -Np1 -i "$srcdir/force_gtk_integration.patch"
 }
 
 build() {
