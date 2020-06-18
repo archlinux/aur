@@ -2,7 +2,7 @@
 
 pkgbase=eslint-plugin-snakecasejs
 pkgname=eslint-plugin-snakecasejs
-pkgver='1.2.1'
+pkgver='2.2.0'
 pkgrel=1
 pkgdesc='ESLint Plugin: enforce snake_case syntax on variables and function names'
 url='https://github.com/ptkdev/eslint-plugin-snakecasejs'
@@ -13,8 +13,8 @@ depends=(
 makedepends=('npm')
 license=('MIT')
 arch=('any')
-source=('http://registry.npmjs.org/eslint-plugin-snakecasejs/-/eslint-plugin-snakecasejs-1.2.1.tgz')
-sha256sums=('00b53b1ea98370c01333fabb5c4499de843a1e4aea90db52749e13b1d3262eae')
+source=('http://registry.npmjs.org/eslint-plugin-snakecasejs/-/eslint-plugin-snakecasejs-2.2.0.tgz')
+sha256sums=('5961718c3f9d342d46413e32ddc1118fda21607d7e85a3d7cb7b95524bfc832f')
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
