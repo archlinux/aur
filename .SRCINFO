@@ -1,7 +1,7 @@
 pkgbase = godot-git
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
 	pkgver = 4.0.dev
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = godot-git
 	makedepends = git
 	makedepends = scons
 	makedepends = pulseaudio
-	makedepends = gcc
 	makedepends = pkgconf
 	makedepends = xorg-xrandr
 	makedepends = yasm

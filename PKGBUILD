@@ -5,12 +5,12 @@
 _pkgname=godot
 pkgname=${_pkgname}-git
 pkgver=4.0.dev
-pkgrel=2
+pkgrel=3
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'scons' 'pulseaudio' 'gcc' 'pkgconf' 'xorg-xrandr' 'yasm')                                                                                                                                                       
+makedepends=('git' 'scons' 'pulseaudio' 'pkgconf' 'xorg-xrandr' 'yasm')                                                                                                                                                       
 depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
 optdepends=()
 conflicts=("godot")
@@ -55,7 +55,7 @@ pkgver() {
 build() {
     cd "${srcdir}"/${_pkgname}
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
-    scons platform=linuxbsd target=release_debug -j$((`nproc`+1))
+    scons platform=linuxbsd target=release_debug werror=no -j$((`nproc`+1))
 }
 
 package() {
