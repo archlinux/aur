@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=backports
-_cranver=1.1.7
+_cranver=1.1.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.0.0')
 makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('40fdb91d5ebe7443ec1883b0f2c57125')
+md5sums=('1bf080bdadd2a2ca14beb5cbbb214dba')
 
 build() {
   cd "${srcdir}"
