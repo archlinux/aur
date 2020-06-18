@@ -1,0 +1,19 @@
+pkgbase = perl-sql-abstract-classic
+	pkgdesc = Generate SQL from Perl data structures
+	pkgver = 1.91
+	pkgrel = 1
+	url = https://metacpan.org/pod/SQL::Abstract::Classic
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-test-deep>=0.101
+	makedepends = perl-test-exception>=0.31
+	makedepends = perl-test-warn
+	depends = perl-mro-compat>=0.12
+	depends = perl-sql-abstract>=1.79
+	depends = perl-text-balanced>=2.00
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/SQL-Abstract-Classic-1.91.tar.gz
+	sha512sums = a2389c04889ea09fc6512f955f8a383d1f51839f584a0be16aab33dec72b67214d0f22d55c666fa0ddeaa32e5c6fc91e1e50541d52e71beeb3b3d85af21a9643
+
+pkgname = perl-sql-abstract-classic
+
