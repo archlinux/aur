@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-git
-pkgver=2.3.3.0~535+a375f31
+pkgver=2.3.3.0~540+3d497fb
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
