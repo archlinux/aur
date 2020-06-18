@@ -1,11 +1,11 @@
 pkgbase = jurism
 	pkgdesc = Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support.
 	pkgver = 5.0.85m3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://juris-m.github.io/downloads
 	install = jurism.install
 	arch = x86_64
-	license = GPL3
+	license = AGPL3
 	depends = dbus-glib
 	depends = gtk3
 	depends = nss
