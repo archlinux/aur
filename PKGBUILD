@@ -39,7 +39,7 @@ prepare() {
     sed -ri "/AC_CONFIG_FILES/,/]\)/{
 /AC_CONFIG_FILES/n
 /]\)/n
-/^\s*(module\/.*)?(zfs.release|Makefile)/!d
+/^\s*(module\/.*|zfs.release|Makefile)/!d
 }" configure.ac
 
     autoreconf -fi
