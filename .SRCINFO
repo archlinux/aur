@@ -1,7 +1,7 @@
 pkgbase = rancher-k3d-beta-bin
 	pkgdesc = Little helper to run Rancher Labs k3s in Docker. Pre-release Versions
-	pkgver = 3.0.0_rc.2
-	pkgrel = 2
+	pkgver = 3.0.0_rc.5
+	pkgrel = 1
 	url = https://github.com/rancher/k3d
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,8 @@ pkgbase = rancher-k3d-beta-bin
 	license = MIT
 	provides = k3d
 	conflicts = rancher-k3d-bin
-	source = rancher-k3d-beta-bin-3.0.0_rc.2::https://github.com/rancher/k3d/releases/download/v3.0.0-rc.2/k3d-linux-amd64
-	sha256sums = e37adffe15ff67c5ed5518a295a198d008363ffe546726686856807b2dcf5860
+	source = rancher-k3d-beta-bin-3.0.0_rc.5::https://github.com/rancher/k3d/releases/download/v3.0.0-rc.5/k3d-linux-amd64
+	sha256sums = 66486f2c2a17dbd6d5daeb8ef42d15acb71cf40bb25da2f1ea9f87888b657f37
 
 pkgname = rancher-k3d-beta-bin
 
