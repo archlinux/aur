@@ -1,13 +1,14 @@
 pkgbase = freeminer-git
-	pkgver = 0.4.14.8.909.g69b31a173
+	pkgver = 0.4.14.8.r911.g5d2f00fa7
 	pkgrel = 1
-	url = http://freeminer.org/
+	url = https://freeminer.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = CCPL:cc-by-sa-3.0
 	makedepends = leveldb
 	makedepends = curl
+	makedepends = git
 	makedepends = hiredis
 	makedepends = sqlite
 	makedepends = luajit
@@ -21,16 +22,14 @@ pkgbase = freeminer-git
 	makedepends = cmake
 	makedepends = msgpack-c
 	makedepends = clang
-	makedepends = ccache
-	makedepends = git
 	source = git+https://github.com/freeminer/freeminer.git
 	source = git+https://github.com/freeminer/default.git
 	source = git+https://github.com/kaadmy/pixture.git
-	source = fix_enet_lib.patch
+	source = enet_shared_lib.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 8bdd0226cce1a8773feb840f90c392481d5486ef2bca5b144c1626df33a0bda861d93ccfb451eb5013aa42ab6fe2b029f44c02e9b85b32ed80a6668985deeb62
+	sha512sums = ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004
 
 pkgname = freeminer-git
 	pkgdesc = An open source sandbox game inspired by Minecraft
@@ -47,7 +46,7 @@ pkgname = freeminer-git
 	depends = libvorbis
 	depends = hicolor-icon-theme
 	depends = freetype2
-	provides = freeminer=0.4.14.8.909.g69b31a173
+	provides = freeminer=0.4.14.8.r911.g5d2f00fa7
 	conflicts = freeminer
 
 pkgname = freeminer-server-git
@@ -60,12 +59,12 @@ pkgname = freeminer-server-git
 	depends = luajit
 	depends = enet
 	depends = jsoncpp
-	provides = freeminer-server=0.4.14.8.909.g69b31a173
+	provides = freeminer-server=0.4.14.8.r911.g5d2f00fa7
 	conflicts = freeminer-server
 
 pkgname = freeminer-common-git
 	pkgdesc = Common data files for freeminer-git and freeminer-server-git
 	arch = any
-	provides = freeminer-common=0.4.14.8.909.g69b31a173
+	provides = freeminer-common=0.4.14.8.r911.g5d2f00fa7
 	conflicts = freeminer-common
 

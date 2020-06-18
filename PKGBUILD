@@ -1,4 +1,6 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: kusakata <shohei atmark kusakata period com>
@@ -6,43 +8,40 @@
 _pkgbase=freeminer
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-server-git" "${_pkgbase}-common-git")
-pkgver=0.4.14.8.909.g69b31a173
+pkgver=0.4.14.8.r911.g5d2f00fa7
 pkgrel=1
 arch=('i686' 'x86_64')
-url='http://freeminer.org/'
+url='https://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
+
 makedepends=(
-	'leveldb' 'curl' 'hiredis' 'sqlite' 'luajit'
+	'leveldb' 'curl' 'git' 'hiredis' 'sqlite' 'luajit'
 	'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis'
 	'hicolor-icon-theme' 'freetype2' 'cmake' 'msgpack-c' 'clang'
-	'ccache' 'git'
 )
 
 source=(
 	"git+https://github.com/${_pkgbase}/${_pkgbase}.git"
 	"git+https://github.com/${_pkgbase}/default.git"
 	"git+https://github.com/kaadmy/pixture.git"
-	'fix_enet_lib.patch'
+	'enet_shared_lib.patch'
 )
-sha512sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'8bdd0226cce1a8773feb840f90c392481d5486ef2bca5b144c1626df33a0bda861d93ccfb451eb5013aa42ab6fe2b029f44c02e9b85b32ed80a6668985deeb62'
-)
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004')
 
 pkgver() {
-	# Updating package version
 	cd "${srcdir}"/${_pkgbase}
-	git describe --long --tags 2>/dev/null | sed 's/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "${srcdir}"/${_pkgbase}
 
 	# Use Arch's enet lib
-	patch -Np1 < ../fix_enet_lib.patch
+	patch -Np1 < ../enet_shared_lib.patch
 
 	# Remove msgpack-c, enet and jsoncpp submodules
 	git submodule deinit src/external/{msgpack-c,enet,jsoncpp}
