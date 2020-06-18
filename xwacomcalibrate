@@ -1,24 +1,29 @@
 #!/bin/bash
 
 print_help () {
-   printf "\nUsage: xwacomcalibrate [-h] [-d] [-f] [-r (cw | half | ccw)]\n\n"
+   printf "\nUsage: xwacomcalibrate [-h] [-d] [-f [screen]] [-r (cw | half | ccw)]\n\n"
    printf " h: prints this help\n"
-   printf " d: Uses xdotool to continously run the script"
-   printf " f: Uses whole X screen as window size\n"
+   printf " d: Uses xdotool to continously run the script\n"
+   printf " f: Uses whole X screen as window size. If xrandr screen name is given, limits itself to that monitor\n"
    printf " r: Chooses the device rotation. When given, needs either \"cw\" for clockwise, \"half\" for overhead, or \"ccw\" for counterclockwise as an argument\n"
    printf "\n"
 }
 
-while getopts "hdfr:" opt
+while getopts ":hdf:r:" opt
 do
     case $opt in
         h )
             print_help
+            exit 0
             ;;
         d )
             DAEMON=true
             ;;
         f ) FULLSCREEN=true
+            if [[ $OPTARG ]]
+            then
+                SCREEN=$OPTARG
+            fi
             ;;
         r ) if [[\
                  $OPTARG == "cw"\
@@ -32,11 +37,14 @@ do
                 exit 1
             fi
             ;;
-        : )
-            echo "Invalid Option: $OPTARG requires an argument" 1>&2
-            exit 1 ;;
-        * ) echo "Unknown Option"
-            print_help
+        : ) if [[ $OPTARG == "r" ]]
+            then
+                echo 'option requires an argument -- ' $OPTARG 1>&2
+                print_help
+                exit 1
+            fi
+            ;;
+        \? ) print_help
             exit 1
             ;;
     esac
@@ -89,6 +97,24 @@ get_x_screen_size () {
     W_Y="0"
     W_WIDTH=$( xwininfo -root | grep Width | tr -dc [:digit:])
     W_HEIGHT=$( xwininfo -root | grep Height | tr -dc [:digit:])
+}
+
+get_screen_size () {
+    local screen=$( xrandr -q | grep "$1 connected" | cut -d ' ' -f 3 )
+    if [[ ! $screen ]]
+    then
+        echo "couldn't find screen: $1" 1>&2
+        exit 1
+    fi
+    if [[ $screen == "primary" ]]
+    then
+       local screen=$( xrandr -q | grep "$1 connected" | cut -d ' ' -f 4 )
+    fi
+    IFS='x+' read -r -a array <<< "$screen"
+    W_WIDTH="${array[0]}"
+    W_HEIGHT="${array[1]}"
+    W_X="${array[2]}"
+    W_Y="${array[3]}"
 }
 
 get_active_window_size () {
@@ -156,7 +182,12 @@ main () {
     full_tablet_size "$DEV"
     if [[ $FULLSCREEN ]]
     then
-        get_x_screen_size
+        if [[ $SCREEN ]]
+        then
+            get_screen_size "$SCREEN"
+        else
+            get_x_screen_size
+        fi
     else
         get_active_window_size
     fi
@@ -174,8 +205,10 @@ then
     main
     xdotool search . behave %@ focus exec --sync\
             $(\
-              echo 'xwacomcalibrate ' $( if [[ $ROTATION ]]; then echo '-r ' $ROTATION ; fi )\
-                   $( if [[ $FULLSCREEN ]]; then echo '-f'; fi ) )
+              echo 'xwacomcalibrate '\
+                   $( if [[ $ROTATION ]]; then echo '-r ' $ROTATION ; fi )\
+                   $( if [[ $FULLSCREEN ]]; then echo '-f'; fi )\
+            )
 else
     main
 fi
