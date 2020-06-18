@@ -1,0 +1,5 @@
+jack_mixer/
+jack_mixer-*.pkg.tar.xz
+jack_mixer-*.pkg.tar.zst
+pkg/
+src/
