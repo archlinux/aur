@@ -1,7 +1,7 @@
 pkgbase = kak-palette-git
 	pkgdesc = Color preview in Kakoune
 	pkgver = r7.652a00d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexherbo2/palette.kak
 	install = kak-palette-git.install
 	arch = any

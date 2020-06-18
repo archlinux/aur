@@ -2,7 +2,7 @@
 pkgname=kak-palette-git
 _reponame=palette.kak
 pkgver=r7.652a00d
-pkgrel=1
+pkgrel=2
 pkgdesc='Color preview in Kakoune'
 arch=(any)
 url="https://github.com/alexherbo2/$_reponame"
@@ -24,5 +24,5 @@ pkgver() {
 package() {
 	cd "$srcdir/$_reponame"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/palette.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/palette.kak
 }
