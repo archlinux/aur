@@ -1,0 +1,22 @@
+pkgbase = fcitx5-sayura-git
+	pkgdesc = A Sinhala input method for Fcitx input method framework ported from IBus-Sayura
+	pkgver = r64.8a574b6
+	pkgrel = 1
+	url = https://github.com/fcitx/fcitx5-sayura
+	arch = x86_64
+	license = GPL
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = boost-libs
+	depends = curl
+	depends = fcitx5-git
+	depends = opencc
+	conflicts = fcitx-sayura
+	replaces = fcitx-sayura
+	source = git+https://github.com/fcitx/fcitx5-sayura.git
+	md5sums = SKIP
+
+pkgname = fcitx5-sayura-git
+
