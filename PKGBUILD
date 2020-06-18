@@ -1,54 +1,50 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>  
-# Contributor: Wynne Plaga <rwplaga.linux@gmail dot com>
-# Contributor: hacker1024 <jleivenzon at gmail dot com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Based on aur/android-studio: Kordian Bruck <k@bruck.me>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
-# Contributor: tilal6991 <lalitmaganti@gmail.com>
-# Contributor: danyf90 <daniele.formichelli@gmail.com>
-# Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
-# Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
-# Contributor: Christoph Brill <egore911-at-gmail-dot-com>
-# Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=4.0.0.16
+_pkgname=android-studio
+pkgver=4.1.0.11
 pkgrel=1
-_build=193.6514223
+_build=201.6565218
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
 makedepends=('unzip' 'zip')
-depends=('freetype2' 'libxrender' 'libxtst')
+depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/android-studio-ide-${_build}-linux.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('70c04dc542281c015a700fad73d7d62ce9dace774bc12050cad9f1d6363112eb'
+sha256sums=('100cdaeeed2051082116a0f326c9021094bd934810ed4b512a1d969cc05f8ed8'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
 if [ "${CARCH}" = "i686" ]; then
     depends+=('java-environment')
 fi
 
-package() {
-  cd "${srcdir}/android-studio"
+build() {
+  cd "${_pkgname}"
 
   # Change the product name to produce a unique WM_CLASS attribute.
   mkdir -p idea
   unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
-      | sed "s/\"Studio\"/\"Studio Beta\"/" >idea/AndroidStudioApplicationInfo.xml
+      | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
   zip -r lib/resources.jar idea
   rm -r idea
+}
 
+package() {
   # Install the application.
   install -d "${pkgdir}"/{opt/"${pkgname}",usr/bin}
-  cp -a "${srcdir}/android-studio"/* "${pkgdir}/opt/${pkgname}/"
+  cp -a "${_pkgname}"/* "${pkgdir}/opt/${pkgname}/"
   ln -s "/opt/${pkgname}/bin/studio.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   # Add the icon and desktop file.
-  install -Dm644 bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${_pkgname}"/bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
