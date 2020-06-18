@@ -2,7 +2,7 @@
 # Contributor: Max Bruckner <max at maxbruckner dot de>
 
 pkgname=smooth
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.smooth-project.org/"
 license=('Artistic2.0')
 depends=('curl' 'fribidi' 'gtk3' 'libjpeg-turbo' 'libxml2')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/enzo1982/smooth/archive/v${pkgver}.tar.gz")
-sha512sums=('dbe444157c29518d8989f5cd8e8d9cd21f6d769a83ecc4dd54b7817b67bc960431f7cc370f6baadfcc9aac63c26b210422eaa929b91d0c5c4c435f24928ac621')
+sha512sums=('7df1848fa6ea13455600ca8089962fb219732bd6ee12c5f8a10fc82c5ffaf5ca3f9ff00cb48c052d4e67921919fb871c472cc8a6bd04930df4695203246a2411')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver/_/-}"
