@@ -4,20 +4,25 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
-depends=("nodejs-lts-dubnium" "ffmpeg" "postgresql" "openssl" "redis" "npm")
+depends=("nodejs>=10" "nodejs<13" "ffmpeg" "postgresql" "openssl" "redis" "npm")
+options=("!strip")
 makedepends=("yarn" "python2" "git")
 url="https://joinpeertube.org/"
 license=("AGPL")
 backup=('etc/peertube/production.yaml')
 install=$pkgname.install
-source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.zip"
-		"$pkgname.install"
-		"$pkgname.sysusers"
-		"$pkgname")
-sha256sums=('b65732879a851d810f736370e4c2ffa23bbca0cc06ff4e12286d370eff827f84'
-            'f2ce66e100c213b3db7e2f65e8678d06e5d5c37c4ac06ba5cde673a7e9e058cb'
-            '61683c744a60f4e0ef43607b25db3173a9d070ad0b9cf6ab50e79825ae365a92'
-            '3763963dc9e22de2d95977dcb00529f6e51bd9c042ba2c074aa705e50d656a69')
+
+source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
+        "https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz.asc"
+        "$pkgname.install"
+        "$pkgname.sysusers"
+        "$pkgname")
+b2sums=('afaca3aa3e1d9aea7d1760f5c31a6b97e467101e8a97578de138f21178909560a862c1d6d98813a70c80a7b83b93accc300d03d5880b05921c4cc4a3e6ebc29b'
+        'SKIP'
+        'ed191d2f82e9360e37e3a60704beb504363b48026ade8fb98378d34d2a890a9de27f3668438261bbc760a50c14c64ed173b9eb5ae47fa8e5dc3f10727bfe45a5'
+        '287a1a1b8f279b4f50d02f73b8069c39c49e6d79917f912f6f57db900064b34de91af0a5c0ee2fd743d130dc07e557b582222351491b605c7f5982c03b84b4c3'
+        '8c90b7433651fc7e21bb641ec1771bd9a4186b4c88502ab7a74becfe3515f0fd84e8dfccdb5e450a3580f5bc3a9722c4a9246d0233218b47307c6ac542170171')
+validpgpkeys=(C44AAD638367912CA93EDD57583A612D890159BE)
 
 build() {
 	cd "$pkgname-v$pkgver"
