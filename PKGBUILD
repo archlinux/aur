@@ -37,8 +37,7 @@ pkgver() {
 build() {
 	cd "craftos2"
     make -C craftos2-lua linux
-	./configure --prefix=/usr/local
-    sed -r -e 's/(CPPFLAGS=.*)/\1 -DCRAFTOSPC_COMMIT=\\"$(shell git rev-parse --short HEAD)\\"/' Makefile > Makefile
+	CPPFLAGS='-DCRAFTOSPC_COMMIT=\\"$(shell git rev-parse --short HEAD)\\"' ./configure --prefix=/usr/local
 	make 
 }
 
