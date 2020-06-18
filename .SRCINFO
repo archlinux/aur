@@ -9,7 +9,7 @@ pkgbase = recycle-cli
 	depends = gettext
 	depends = python>=3.4
 	source = Recycle.py
-	sha256sums = fa16b5f9704ab6376e95d547db14db5b465f565892e5603c4c8b615b3e97bb95
+	sha256sums = 20ed517f3d3f73201e31413c590434e6b72c4029b23da5f29605e753f8bc9f73
 
 pkgname = recycle-cli
 
