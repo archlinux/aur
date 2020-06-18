@@ -1,0 +1,12 @@
+pkgbase = fcitx5-materia-exp
+	pkgdesc = Materia EXP color theme for fcitx5
+	pkgver = 0.0.0.20200618
+	pkgrel = 1
+	url = https://github.com/hosxy/Fcitx5-Materia-EXP
+	arch = any
+	license = Apache
+	source = https://github.com/hosxy/Fcitx5-Materia-EXP/archive/09b9f878923efa6136f60e77440860f92392a932/fcitx5-materia-exp-09b9f878923efa6136f60e77440860f92392a932.tar.gz
+	sha512sums = f4d59e16a6d20cc6f69df0c0796ba3b920ca6f5423a776d32df1078f4910b1ce4b0a92434ce2468a593d4ba4360f6fcc9b1d5693b2176e1ddcabe5b28b24af52
+
+pkgname = fcitx5-materia-exp
+
