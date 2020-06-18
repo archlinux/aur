@@ -33,6 +33,7 @@ pkgver() {
 
 prepare() {
   # The size of a full clone is more than 1GB, so we just make a shallow clone
+  rm -rf $pkgname
   git clone --depth 1 https://github.com/processing/processing4.git $pkgname
 
   # Create .desktop file
