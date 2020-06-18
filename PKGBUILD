@@ -1,8 +1,8 @@
 # Maintainer: olivierlm < mail at olivierlemoal dot fr >
 
 pkgname=tonelib-zoom-bin
-pkgver=4.0.1
-pkgrel=3
+pkgver=4.3.1
+pkgrel=1
 pkgdesc="ToneLib Zoom – change and save all the settings in your Zoom(r) guitar pedal"
 arch=('x86_64')
 license=('custom')
