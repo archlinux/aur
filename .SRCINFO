@@ -1,0 +1,12 @@
+pkgbase = fcitx5-skin-simple-blue
+	pkgdesc = A simple blue theme for fcitx5
+	pkgver = 0.0.0.20200618
+	pkgrel = 1
+	url = https://github.com/weearc/fcitx5-skin-simple-blue
+	arch = any
+	license = CCPL:by-sa,GFDL
+	source = https://github.com/weearc/fcitx5-skin-simple-blue/archive/8b2b2e225c3d6b4f70082716e06d7bc93dca046c/fcitx5-skin-simple-blue-8b2b2e225c3d6b4f70082716e06d7bc93dca046c.tar.gz
+	md5sums = 043749fb248f96c0dae14bb088557e43
+
+pkgname = fcitx5-skin-simple-blue
+
