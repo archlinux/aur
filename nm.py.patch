@@ -1,0 +1,13 @@
+--- nm.py-5.1.3.orig	2020-06-03 18:30:33.236358565 +0100
++++ nm.py-5.1.3.arch	2020-06-03 18:30:17.606358578 +0100
+@@ -276,7 +276,9 @@
+         syslog(LOG_INFO, '[has_system_dnsmasq] dnsmasq bus present')
+         return True
+ 
+-    if platform.linux_distribution()[0] != 'Fedora':
++    # this is PKGBUILD for Arch so this check should always yield True
++    # if platform.linux_distribution()[0] != 'Fedora':
++    if True:
+         try:
+             bus = dbus.SystemBus()
+             proxy = bus.get_object(

@@ -1,0 +1,11 @@
+--- appgatedriver.service	2020-06-04 17:43:08.184640831 +0100
++++ appgatedriver.service.new	2020-06-04 17:42:22.764640194 +0100
+@@ -21,7 +21,7 @@
+ CapabilityBoundingSet=~CAP_SYS_PACCT
+ CapabilityBoundingSet=~CAP_SYS_CHROOT
+ CapabilityBoundingSet=~CAP_SYS_BOOT
+-InaccessiblePaths=/mnt /srv /boot /media
++InaccessiblePaths=-/mnt -/srv -/boot -/media
+ 
+ [Install]
+ WantedBy=multi-user.target

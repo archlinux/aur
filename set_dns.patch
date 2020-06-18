@@ -1,0 +1,24 @@
+--- /opt/appgate/linux/set_dns.old	2020-01-28 13:01:21.000000000 +0200
++++ /opt/appgate/linux/set_dns	2020-04-02 14:55:09.384265001 +0300
+@@ -175,10 +175,10 @@
+ def reset(tundev):
+     '''Reset the DNS status'''
+     if not nm.has_dnsmasq():
+-        systemcheck('service appgate-dumb-resolver stop')
++        systemcheck('systemctl stop appgate-dumb-resolver')
+     else:
+         if not nm.nm_has_dnsmasq():
+-            systemcheck('service appgate-resolver stop')
++            systemcheck('systemctl stop appgate-resolver')
+         else:
+             systemcheck('pkill -HUP NetworkManager')
+ 
+@@ -418,7 +418,7 @@
+         with open(RESOLVE_FILE, 'wt') as f:
+             f.write('\n'.join('nameserver %s' % i for i in servers))
+             f.write('\n')
+-        systemcheck('service appgate-dumb-resolver start')
++        systemcheck('systemctl start appgate-dumb-resolver')
+ 
+ 
+ if __name__ == '__main__':
