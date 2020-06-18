@@ -2,7 +2,7 @@
 # Contributor: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 _pkgname=ua-parser
-pkgname=python-ua-parser
+pkgname=python2-ua-parser
 pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python port of Browserscope's user agent parser"

@@ -1,4 +1,4 @@
-pkgbase = python-ua-parser
+pkgbase = python2-ua-parser
 	pkgdesc = Python port of Browserscope's user agent parser
 	pkgver = 0.10.0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = python-ua-parser
 	source = https://files.pythonhosted.org/packages/source/u/ua-parser/ua-parser-0.10.0.tar.gz
 	sha256sums = 47b1782ed130d890018d983fac37c2a80799d9e0b9c532e734c67cf70f185033
 
-pkgname = python-ua-parser
+pkgname = python2-ua-parser
 
