@@ -1,6 +1,6 @@
 pkgbase = cargo-spellcheck
 	pkgdesc = Checks all your documentation for spelling mistakes
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/drahnr/cargo-spellcheck
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cargo-spellcheck
 	license = Apache
 	depends = cargo
 	depends = hunspell
-	source = 0.2.2.tar.gz::https://crates.io/api/v1/crates/cargo-spellcheck/0.2.2/download
-	sha256sums = bb08e6d887b5325a1d8e3763f4b458dd0e585c22a472062835c89661c8503db0
+	source = 0.2.3.tar.gz::https://crates.io/api/v1/crates/cargo-spellcheck/0.2.3/download
+	sha256sums = 30c66809407681ebb7b8303bab850b85084324b4d49b0f2b9234f476beefcbb4
 
 pkgname = cargo-spellcheck
 
