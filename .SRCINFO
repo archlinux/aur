@@ -1,0 +1,12 @@
+pkgbase = fcitx5-dark-transparent
+	pkgdesc = 一个简单的 fcitx5 的黑色透明主题
+	pkgver = 0.0.0.20200618
+	pkgrel = 1
+	url = https://github.com/hosxy/fcitx5-dark-transparent
+	arch = any
+	license = MIT
+	source = https://github.com/hosxy/fcitx5-dark-transparent/archive/e196b8aa748d6a8747ff9f943a3ca25f45441c37/fcitx5-dark-transparent-e196b8aa748d6a8747ff9f943a3ca25f45441c37.tar.gz
+	sha512sums = 51eddd13fdd929dcbecac3a2dbe5078613a31a96f02193c9494eab3b4320bc1fb9af06722720b33c1a00d869a4b0fbc6260ca5ae24d6cef119abbb142e9994fc
+
+pkgname = fcitx5-dark-transparent
+
