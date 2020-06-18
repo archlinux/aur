@@ -9,7 +9,7 @@ _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 _fragment="#branch=dev"
 pkgname=${_name}-git
-pkgver=3.6.dev.3.r24.g1432f00
+pkgver=3.6.dev.3.r32.g19bf5b2
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -44,7 +44,6 @@ pkgver() {
 
 prepare() {
   git -C "$pkgname" apply -v "$srcdir"/*.patch
-  mkdir -p build
 }
 
 
