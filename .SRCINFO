@@ -10,7 +10,7 @@ pkgbase = ntfd-bin
 	source = ntfd::https://github.com/kamek-pf/ntfd/releases/download/0.2.0/ntfd-x86_64-unknown-linux-musl
 	source = config.toml::https://raw.githubusercontent.com/kamek-pf/ntfd/0.2.0/config.toml
 	sha256sums = 272f6b4222fdf64160b66d95f4c4b44e564289b6a8feccdfdcc4c694b6862264
-	sha256sums = 7d181f1c27ab95aa9b216dcac55aaffc3c92b3eb81ab60c6ab62fd8700b362f1
+	sha256sums = a28712a31afd60c1e3e81b48591f7d69bf7c138256690bf2fd3581669ebe20eb
 
 pkgname = ntfd-bin
 
