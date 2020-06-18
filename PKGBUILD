@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.20.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -10,7 +10,7 @@ license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
 depends=('electron6')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm')
-source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver-a.0"
+source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
     "$pkgname.desktop"
     deezer
     menu-bar.patch
