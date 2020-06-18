@@ -146,6 +146,9 @@ if __name__ == "__main__":
     args = argv[1:]
     _checkRecycleDir_()
 
+    if len(args) < 1:
+        showHelp()
+
     while len(args) > 0:
         arg = args[0]
         args = args[1:]
