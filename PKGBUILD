@@ -11,7 +11,7 @@
 
 pkgname=telegram-desktop-udf-patched
 pkgver=2.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -66,7 +66,7 @@ build() {
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
-        -DTDESKTOP_FORCE_GTK_FILE_DIALOG=ON
+        -DTDESKTOP_USE_GTK_FILE_DIALOG=ON
     ninja -C build
 }
 
