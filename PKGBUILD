@@ -10,14 +10,17 @@ url="https://bisq.network"
 license=('AGPL3')
 depends=('java-runtime' 'bash')
 makedepends=('git' 'git-lfs' 'maven' 'jdk11-openjdk' 'protobuf')
-source=("https://github.com/bisq-network/${pkgname}/archive/v${pkgver}.tar.gz"
-        "bisq.desktop")
-sha256sums=('e94472226acd2c149baadc4d11e49895a248b537cb0710e1f6b3ebe5d865e479'
-            '687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
+source=("bisq.desktop")
+sha256sums=('687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
 
 _binname=Bisq
 conflicts=("bisq-bin" "bisq-git")
 provides=("bisq")
+
+prepare() {
+  rm -rf "${srcdir}/${pkgname}-${pkgver}"
+  git clone --depth=1 --branch=v${pkgver} https://github.com/bisq-network/bisq.git ${pkgname}-${pkgver}
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit

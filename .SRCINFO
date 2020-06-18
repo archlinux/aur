@@ -15,9 +15,7 @@ pkgbase = bisq
 	provides = bisq
 	conflicts = bisq-bin
 	conflicts = bisq-git
-	source = https://github.com/bisq-network/bisq/archive/v1.3.5.tar.gz
 	source = bisq.desktop
-	sha256sums = e94472226acd2c149baadc4d11e49895a248b537cb0710e1f6b3ebe5d865e479
 	sha256sums = 687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406
 
 pkgname = bisq
