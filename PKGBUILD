@@ -1,6 +1,6 @@
 # Maintainer: Mattéo Delabre <spam@delab.re>
 pkgname=rmapi
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Access reMarkable tablet files through the Cloud API"
 arch=('x86_64')
