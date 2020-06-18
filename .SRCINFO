@@ -1,13 +1,13 @@
 pkgbase = xcursor-chameleon-darkskyblue
 	pkgdesc = Chameleon X Cursor Theme (darkskyblue flavour)
 	pkgver = 0.5
-	pkgrel = 2
-	url = http://www.kde-look.org/content/show.php?content=38459
+	pkgrel = 3
+	url = https://www.kde-look.org/content/show.php?content=38459
 	arch = any
 	license = GPL
 	depends = libxcursor
-	source = http://www.egregorion.net/works/chameleon/Chameleon-DarkSkyBlue-0.5.tar.bz2
-	md5sums = 3b51b270fe3bfe421f4d91e52437ca36
+	source = https://www.egregorion.net/works/chameleon/Chameleon-DarkSkyBlue-0.5.tar.bz2
+	sha512sums = 647a4f523555d1923b9a0335d91b6f579919636b4107c20c6605ba6df4d5abcb958dedc1e774ae74f80e8ca302fa27251aee35e08bd2ea3fbe7735b9ea7a4235
 
 pkgname = xcursor-chameleon-darkskyblue
 
