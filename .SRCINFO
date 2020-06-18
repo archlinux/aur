@@ -1,0 +1,16 @@
+pkgbase = apk-editor-studio-bin
+	pkgdesc = Powerful yet easy to use APK editor
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://qwertycube.com/apk-editor-studio
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = java-runtime>=8
+	depends = hicolor-icon-theme
+	provides = apk-editor-studio
+	source = apk-editor-studio-bin-1.4.0.deb::https://github.com/kefir500/apk-editor-studio/releases/download/v1.4.0/apk-editor-studio_linux_1.4.0.deb
+	sha256sums = 7383abad2a5996e02076173a4cbcbe417fce591531631a682c0aaaa7335d92d2
+
+pkgname = apk-editor-studio-bin
+
