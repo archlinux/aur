@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
 	pkgver = 12.18.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://trilinos.org
 	arch = x86_64
 	license = LGPL3
@@ -19,7 +19,6 @@ pkgbase = trilinos
 	depends = libmatio
 	depends = libx11
 	depends = hdf5-openmpi
-	conflicts = gtest
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-18-1.tar.gz
 	source = Makefile.kokkos.patch
 	source = Seacas.patch

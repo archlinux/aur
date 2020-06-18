@@ -6,14 +6,13 @@
 pkgname=trilinos
 pkgver=12.18.1
 _pkgver=${pkgver//./-}
-pkgrel=3
+pkgrel=4
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc')
-conflicts=('gtest')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
         "Makefile.kokkos.patch"
@@ -37,9 +36,9 @@ build() {
     cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
              -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
              -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
-             -DTrilinos_ENABLE_Gtest:BOOL=ON \
+             -DTrilinos_ENABLE_Gtest:BOOL=OFF \
              -DTrilinos_ENABLE_TESTS=OFF \
-             -DTPL_ENABLE_gtest:BOOL=ON \
+             -DTPL_ENABLE_gtest:BOOL=OFF \
              -DTPL_ENABLE_MPI:BOOL=ON \
              -DTPL_ENABLE_HDF5:BOOL=ON \
              -DCMAKE_INSTALL_PREFIX:PATH=/usr \
