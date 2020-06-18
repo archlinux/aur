@@ -1,7 +1,7 @@
 pkgbase = deal-ii
 	pkgdesc = An Open Source Finite Element Differential Equations Analysis Library
-	pkgver = 9.1.1
-	pkgrel = 2
+	pkgver = 9.2.0
+	pkgrel = 1
 	url = http://www.dealii.org/
 	install = deal-ii.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = deal-ii
 	depends = boost
 	optdepends = arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems
 	optdepends = assimp: Library to import various well-known 3D model formats in an uniform manner
+	optdepends = gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities
 	optdepends = gsl: A modern numerical library for C and C++ programmers
 	optdepends = hdf5-openmpi: General purpose library and file format for storing scientific data
 	optdepends = intel-tbb: High level abstract threading library
@@ -30,8 +31,8 @@ pkgbase = deal-ii
 	optdepends = trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems
 	optdepends = suitesparse: A collection of sparse matrix libraries
 	optdepends = zlib: Compression library implementing the deflate compression method found in gzip and PKZIP
-	source = https://github.com/dealii/dealii/releases/download/v9.1.1/dealii-9.1.1.tar.gz
-	sha1sums = 58ae55a3cb70c8a36f74cb0c737a0d29b281eb94
+	source = https://github.com/dealii/dealii/releases/download/v9.2.0/dealii-9.2.0.tar.gz
+	sha1sums = fff66749d7e7e8baf569e5da5a42f93e99424a86
 
 pkgname = deal-ii
 

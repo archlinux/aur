@@ -3,8 +3,8 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.1.1
-pkgrel=2
+pkgver=9.2.0
+pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -15,9 +15,9 @@ optdepends=(
       # 'adol-c: automatic differentiation library'
       'arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems'
       'assimp: Library to import various well-known 3D model formats in an uniform manner'
-      # The latest release of gmsh is not compatible with deal.II and causes
-      # some tests to fail
-      # 'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
+      # ginkgo is not yet in the AUR
+      # 'ginkgo: a high-performance linear algebra library for manycore systems'
+      'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
       'gsl: A modern numerical library for C and C++ programmers'
       'hdf5-openmpi: General purpose library and file format for storing scientific data'
       'intel-tbb: High level abstract threading library'
@@ -43,7 +43,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('58ae55a3cb70c8a36f74cb0c737a0d29b281eb94')
+sha1sums=('fff66749d7e7e8baf569e5da5a42f93e99424a86')
 
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
@@ -70,6 +70,13 @@ build() {
           fi
       fi
   done
+
+  # deal.II needs TRILINOS_DIR to be set in order to find Trilinos, so export
+  # the default value:
+  if pacman -Qs trilinos >/dev/null
+  then
+     export TRILINOS_DIR=/usr
+  fi
 
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
@@ -104,6 +111,10 @@ build() {
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
 
+  # New versions of muParser (2.3.2 and newer) have a different convention for
+  # numbering:
+  sed -i 's/#define MUP_VERSION _T/string_type ParserVersion = string_type/' \
+      ${srcdir}/${_realname}-$pkgver/cmake/modules/FindMUPARSER.cmake
 
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
