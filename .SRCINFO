@@ -1,0 +1,21 @@
+pkgbase = stratum-mining-proxy
+	pkgdesc = Stratum mining and aggregating proxy
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/braiins/stratum-mining-proxy
+	arch = x86_64
+	license = GPL
+	makedepends = python-virtualenv
+	depends = python2
+	provides = stratum-mining-proxy
+	source = git+https://github.com/braiins/stratum-mining-proxy
+	source = git+https://github.com/braiins/stratum
+	source = build.sh
+	source = requirements.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 3a6d38c4693fb0b3b16363fe5860fa86aa831c00592adcf355f15e67c7740585
+	sha256sums = d8a5e14eedb81c15fdfcd7fccd5e5d6457bb0fd1bed4e7350e2ed92519e30cfd
+
+pkgname = stratum-mining-proxy
+
