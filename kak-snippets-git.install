@@ -1,8 +1,6 @@
 post_install() {
 	echo
-	echo \
-'To finish installation, source /usr/share/kak-snippets-git/rc/snippets.kak in
-your .kakrc and optionally snippets-directory.kak in the same directory if
-you want to define snippets as separate files.'
+	echo If you use a custom autoload directory, do not forget to create a \
+	symbolic link inside the directory to /usr/share/kak/rc/addons.
 	echo
 }

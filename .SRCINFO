@@ -1,7 +1,7 @@
 pkgbase = kak-snippets-git
 	pkgdesc = Expand typed text to snippets in Kakoune
 	pkgver = r62.94931c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/occivink/kakoune-snippets
 	install = kak-snippets-git.install
 	arch = any
@@ -15,4 +15,11 @@ pkgbase = kak-snippets-git
 	sha256sums = SKIP
 
 pkgname = kak-snippets-git
+	optdepends = kak-snippets-directory-git: Define snippets as separate files
+
+pkgname = kak-snippets-directory-git
+	pkgdesc = Define kak-snippets as separate files instead of via an option
+	depends = kak-snippets-git
+	provides = kak-snippets-directory
+	conflicts = kak-snippets-directory
 
