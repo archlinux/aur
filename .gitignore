@@ -1,4 +1,6 @@
+*.tar.*
 src
 pkg
+*.log
 *.pkg.*
-source.tgz
+dps8m.state
