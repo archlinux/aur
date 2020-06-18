@@ -1,7 +1,7 @@
 pkgbase = processing4-git
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = r1.3cd8898
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/processing/processing4
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,8 @@ pkgbase = processing4-git
 	makedepends = unzip
 	depends = jdk11-openjdk
 	depends = libgl
+	provides = processing4
+	conflicts = processing4
 	options = !strip
 	source = https://download.processing.org/reference.zip
 	source = always_use_java-11-openjdk.patch

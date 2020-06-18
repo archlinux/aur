@@ -2,11 +2,13 @@
 
 pkgname=processing4-git
 pkgver=r1.3cd8898
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
+provides=('processing4')
+conflicts=('processing4')
 depends=('jdk11-openjdk' 'libgl')
 # TODO add jogl as make-dependency once a package for version 2.4.0 exists
 makedepends=('ant' 'gendesk' 'java11-openjfx' 'unzip')
