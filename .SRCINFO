@@ -5,6 +5,7 @@ pkgbase = texstudio-git
 	url = https://github.com/texstudio-org/texstudio
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = qt5-tools
 	makedepends = imagemagick
 	makedepends = librsvg
