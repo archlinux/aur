@@ -2,7 +2,7 @@
 pkgname=kak-tagbar
 _reponame=tagbar.kak
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Source outline viewer for Kakoune'
 arch=(any)
 url="https://gitlab.com/andreyorst/$_reponame"
@@ -17,5 +17,5 @@ package() {
 	cd "$_reponame-v$pkgver"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/tagbar.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/tagbar.kak
 }
