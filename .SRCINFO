@@ -1,6 +1,6 @@
 pkgbase = screenkey-git
 	pkgdesc = Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features.
-	pkgver = r272.0c3454b
+	pkgver = 0.9.r42.g0c3454b
 	pkgrel = 1
 	url = https://gitlab.com/wavexx/screenkey
 	arch = any
