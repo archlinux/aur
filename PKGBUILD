@@ -12,8 +12,8 @@ source=("https://github.com/hosxy/fcitx5-dark-transparent/archive/$_commit/$pkgn
 sha512sums=('51eddd13fdd929dcbecac3a2dbe5078613a31a96f02193c9494eab3b4320bc1fb9af06722720b33c1a00d869a4b0fbc6260ca5ae24d6cef119abbb142e9994fc')
 
 package() {
-  _variant_name=fcitx5-dark-transparent
-  cd $_variant_name-$_commit
+  _variant_name=dark-transparent
+  cd $pkgname-$_commit
   install -Dm644 highlight.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/highlight.png
   install -Dm644 panel-origin.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-origin.png
   install -Dm644 panel-round.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-round.png
