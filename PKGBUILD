@@ -1,9 +1,9 @@
-# Maintainer: Bart De Vries <devriesb@gmail.com>
+# Maintainer: Bart De Vries <bart at mogwai dot be>
 pkgname=twofing-git
-pkgver=r15.c647c32
+pkgver=r33.3e1a2ed
 pkgrel=1
 pkgdesc="Touchscreen two-finger gestures daemon"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h')
 url="http://plippo.de/p/twofing"
 license=('MIT')
 groups=()
