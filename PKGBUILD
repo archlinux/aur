@@ -15,10 +15,12 @@ provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 source=("git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=$pkgver"
         "git+https://github.com/mruby-zest/mruby-zest-build.git#tag=$pkgver"
-        'BashCompletion.cmake')
-sha512sums=('SKIP'
-            'SKIP'
-            '178a6e87ecac891f2b321123fc433a45a49b3c266b86c9fbe0c109e5c5ced447898ea55612e65a9689ff406fe5510efb1013dd12c7d2b10594b972154aceebbc')
+        'BashCompletion.cmake'
+        'gcc10.patch')
+b2sums=('SKIP'
+        'SKIP'
+        '14be130e88c2e1d2b8312ca9f6d426834a26360594ed9ed22222a98603e1d5a51e86450911c76563545f55a80952c7dfb05a251e36d59684527caccdf976c474'
+        '1f41e7a0a50f1f11a4853bd8d8daea5f4510b567381768a8bc61e15082aa668f924e3d6787cbb93a16eee2da2a34a5d20f18e69399718166d6b9d3f47b648987')
 
 prepare() {
 	cd zynaddsubfx
@@ -28,7 +30,7 @@ prepare() {
 
 	cd ../mruby-zest-build
 	git submodule update --init
-	git cherry-pick 4eb88250f22ee684acac95d4d1f114df504e37a7
+	git apply -3 "$srcdir"/gcc10.patch
 	make setup
 }
 
