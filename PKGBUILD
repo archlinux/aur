@@ -2,7 +2,7 @@
 
 _appname=hyperspace
 pkgname="$_appname-bin"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=1
 pkgdesc='The fluffiest client for the fediverse'
@@ -12,7 +12,7 @@ license=('custom:NPLv4')
 depends=(gtk3 libnotify nss libxss libxtst xdg-utils libappindicator-gtk3 libsecret)
 source=("https://github.com/hyperspacedev/hyperspace/releases/download/v${pkgver//_/-}/hyperspace_${pkgver//_/-}_amd64.deb"
         'LICENSE.txt')
-sha256sums=('478044ab47a3f7f5de7f901d537ce21fed41a00031b5bafc260014d9363980ac'
+sha256sums=('71de070a8cd09194e5c7bb184584f492f10ba21227ee8fe073d65ecb0cdd4b8b'
             'f49ae3685bf4635b0eb6f07fe684ed1b30f5b2a2c9b5b05b589fb9edfead8d35')
 
 build() {
