@@ -1,0 +1,17 @@
+pkgbase = libhoard-git
+	pkgdesc = The Hoard Memory Allocator: A Fast, Scalable, and Memory-efficient Malloc for Linux, Windows, and Mac. http://www.hoard.org
+	pkgver = r504.9d137ef
+	pkgrel = 1
+	url = http://www.hoard.org/
+	install = libhoard-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	provides = libhoard
+	conflicts = hoard
+	source = libhoard-git::git+https://github.com/emeryberger/Hoard.git
+	sha256sums = SKIP
+
+pkgname = libhoard-git
+

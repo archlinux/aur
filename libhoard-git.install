@@ -1,0 +1,17 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "-------------------------------------------------------"
+  echo "Usage instructions:"
+  echo "To use hoard, you must preload it for the programs you run."
+  echo "You can set this for each program you want separately (recommended) by"
+  echo " running them with LD_PRELOAD=/usr/lib/libhoard.so myprogram"
+  echo "To use it globally, add /usr/lib/libhoard.so to /etc/ld.so.preload"
+  echo "-------------------------------------------------------"
+}
+
+op=$1
+shift
+$op $*
