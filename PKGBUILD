@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-git
 pkgver=2.3.3.0~540+3d497fb
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -37,7 +37,7 @@ pkgver() {
 build() {
 	cd "craftos2"
     make -C craftos2-lua linux
-	CPPFLAGS='-DCRAFTOSPC_COMMIT=\\"$(shell git rev-parse --short HEAD)\\"' ./configure --prefix=/usr/local
+	CPPFLAGS='-DCRAFTOSPC_COMMIT=\"$(shell git rev-parse --short HEAD)\"' ./configure --prefix=/usr/local
 	make 
 }
 
