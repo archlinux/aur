@@ -1,19 +1,15 @@
 pkgbase = python-hiredis
 	pkgdesc = Python wrapper for hiredis
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/redis/hiredis-py
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/9e/e0/c160dbdff032ffe68e4b3c576cba3db22d8ceffc9513ae63368296d1bcc8/hiredis-1.0.0.tar.gz
-	sha256sums = e97c953f08729900a5e740f1760305434d62db9f281ac351108d6c4b5bf51795
+	source = https://files.pythonhosted.org/packages/source/h/hiredis/hiredis-1.0.1.tar.gz
+	sha256sums = aa59dd63bb3f736de4fc2d080114429d5d369dfb3265f771778e8349d67a97a4
 
 pkgname = python-hiredis
 	depends = python
-
-pkgname = python2-hiredis
-	depends = python2
 
