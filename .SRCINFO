@@ -1,0 +1,12 @@
+pkgbase = fcitx5-simple-theme
+	pkgdesc = A simple (gray) theme for fcitx5
+	pkgver = 0.0.0.20200618
+	pkgrel = 1
+	url = https://github.com/iovxw/fcitx5-simple-theme
+	arch = any
+	license = CCPL:by-sa,GFDL
+	source = https://github.com/iovxw/fcitx5-simple-theme/archive/ccaa0d959bec24b81c04f14e353bc008a8326150/fcitx5-simple-theme-ccaa0d959bec24b81c04f14e353bc008a8326150.tar.gz
+	md5sums = c6591b50cb886c71474e8496f2c5eff5
+
+pkgname = fcitx5-simple-theme
+
