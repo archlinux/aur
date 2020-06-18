@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=spectral-viewer
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=3
 pkgdesc="Tool for visualising and manipulating spectral images and HDR images."
 arch=('any')
 url="https://adufay.gitlabpages.inria.fr/SpectralViewer/"
@@ -25,6 +25,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	git checkout v3.1.2b
 	git submodule init
 	git submodule update
 }
