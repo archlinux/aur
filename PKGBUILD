@@ -16,8 +16,8 @@ package() {
     cd $_variant_name-$_commit
     install -Dm644 arrow.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/arrow.png
     install -Dm644 highlight.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/highlight.png
-    install -Dm644 input_panel.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-origin.png
-    install -Dm644 panel.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-round.png
+    install -Dm644 input_panel.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/input_panel.png
+    install -Dm644 panel.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel.png
     install -Dm644 radio.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/radio.png
     install -Dm644 theme.conf "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/theme.conf
     
