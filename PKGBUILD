@@ -12,7 +12,7 @@ sha256sums=('e0828ad9b2a330d996b2ce4a445980dd7bc22e79573abb7b36ff0920779b8a9d')
 
 prepare() {
   cd "${srcdir}"/tensap-$pkgver
-  curl -L https://github.com/anthony-nouy/tensap/commit/a5d26f4de04f2868f03d5a7932ca64d9d127c93a.patch | patch -p1 || echo "ok"
+  curl -L https://github.com/anthony-nouy/tensap/commit/a5d26f4de04f2868f03d5a7932ca64d9d127c93a.patch | patch -p1 || :
 }
 
 build() {
