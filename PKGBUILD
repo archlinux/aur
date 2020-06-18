@@ -4,15 +4,14 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 set -u
-_gitauth='lavv17'
 _pkgname='le'
 pkgname="${_pkgname}-git"
-pkgver=1.16.5.r0.g895395e
+pkgver=1.16.7.r1.gd921a3c
 pkgrel=1
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
 #url='https://directory.fsf.org/wiki/Le_editor'
-url="https://github.com/${_gitauth}/${_pkgname}"
+url="https://github.com/lavv17/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
@@ -21,10 +20,10 @@ _srcdir="${_pkgname}-${pkgver}"
 #source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
 source=(
   'git://git.sv.gnu.org/gnulib'
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauth}/${_pkgname}/archive/v${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=('SKIP'
-            'db4b8bea597d3814d22807f2b87d94e68a6bcdc586c9e94436af43ec058c1fa1')
+            '93ee87b1d2eb6dcc2bf9b43653baba78d3f89f18b339761a6e0a5521cd865e6d')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -33,7 +32,8 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   conflicts=("${_pkgname}")
   _srcdir="${_pkgname}"
   source=('git://git.sv.gnu.org/gnulib' "${url//https:/git:}.git")
-  :;sha256sums=('SKIP' 'SKIP')
+  sha256sums[0]='SKIP'
+  sha256sums[1]='SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}"
@@ -50,9 +50,9 @@ build() {
     if [ -s 'autogen.sh' ]; then
       #chmod 770 "${srcdir}/gnulib/gnulib-tool"
       PATH="$PATH:${srcdir}/gnulib" \
-      ./autogen.sh --prefix='/usr'
+      ./autogen.sh --prefix='/usr' CXX='g++'
     else
-      ./configure --prefix='/usr'
+      ./configure --prefix='/usr' CXX='g++'
     fi
   fi
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
