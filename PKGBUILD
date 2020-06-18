@@ -1,52 +1,58 @@
-# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Adrien Sohier <adrien.sohier@art-software.fr
 
 pkgbase=wicd-git
 pkgname=('wicd-git' 'wicd-gtk-git')
-pkgver=6f801a
+pkgver=r1472.c6f801a
 pkgrel=1
-arch=(any)
-url="https://launchpad.net/wicd/"
+arch=('x86_64')
+url="http://wicd.sourceforge.net/"
 license=('GPL2')
-install=wicd.install
-source=(git+git://github.com/johnboiles/wicd.git
+depends=('python2' 'python2-dbus' 'dhcpcd' 'wpa_supplicant' 'wireless_tools' 'pm-utils'
+         'inetutils' 'net-tools' 'ethtool' 'shared-mime-info' 'python2-urwid' 'python2-gobject2' 'dbus-glib' 'rfkill')
+makedepends=('git' 'python2-babel' 'python2-setuptools' 'gettext' 'pygtk')
+optdepends=('wicd-client-kde: needed if you want to use kde ui')
+source=(git+https://github.com/johnboiles/wicd.git
         wicd.desktop
         wicd-1.7.3-urwid-1.3.0.patch)
-md5sums=('SKIP'
-         '326df163a5732d38741371baa4fce9e5'
-         'f7e6085e482f37f2b8529326c21cbbbf')
-makedepends=('python2' 'python2-babel' 'python2-setuptools' 'gettext' 'dbus-glib' 'dhcpcd' 
-             'ethtool' 'inetutils' 'net-tools' 'pygtk' 'python2-dbus' 'python2-gobject2' 
-             'python2-urwid' 'rfkill' 'shared-mime-info' 'wireless_tools' 'wpa_supplicant'
-             'hicolor-icon-theme')
 options=('emptydirs')
+backup=('etc/wicd/encryption/templates/active')
+sha512sums=('SKIP'
+            '48ea8e732eb661888288fd7bd9aacddea71cb8bdeea5dbc9a4c31cdddb38e7e1e5bc64ce98b9b6f248f6b416582fc64d173da64d79d0a109ca610e08635013fa'
+            '48183d805b096c4a1857990d1d9a709544406ee93607f96d4eaf46e4f7729a73e0178251f1168aa516c38bba727821c70a9104de84ca5b4288f91219dfeed2e9')
 
 pkgver() {
-	cd wicd
-	git describe --always | tr "-" "." | cut -c2-
+  cd $srcdir/wicd
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 prepare() {
-  cd wicd
+  cd $srcdir/wicd
 
   find . -type f -exec sed -i 's@#!/usr.*python@#!/usr/bin/python2@' {} \;
-  sed -i 's/pybabel/pybabel2/g' setup.py 
   export PYTHON=python2
   
   sed -i 's|/usr/sbin/|/usr/bin/|' other/wicd.service
+  sed -i 's|pybabel|pybabel2|' setup.py
+
   patch -Np0 -i "$srcdir/wicd-1.7.3-urwid-1.3.0.patch"
 }
 
 build() {
-  cd wicd
-  python2 setup.py configure \
-      --no-install-init \
-      --resume=/usr/share/wicd/scripts/ \
-      --suspend=/usr/share/wicd/scripts/ \
-      --verbose \
-      --python=/usr/bin/python2 \
-      --lib=/usr/lib \
-      --sbin=/usr/bin \
-      --no-install-gnome-shell-extensions \
-	  --systemd=/usr/lib/systemd/system
+  cd $srcdir/wicd
+
+  python2 setup.py configure --no-install-init \
+			     --no-install-gnome-shell-extensions \
+			     --distro=arch \
+                             --resume=/usr/share/wicd/scripts/ \
+                             --suspend=/usr/share/wicd/scripts/ \
+                             --verbose \
+                             --python=/usr/bin/python2 \
+                             --lib=/usr/lib \
+                             --sbin=/usr/bin \
+                             --systemd=/usr/lib/systemd/system
+  
   python2 setup.py build
   python2 setup.py compile_translations
   
@@ -63,9 +69,9 @@ package_wicd-git() {
   provides=("wicd")
   conflicts=("wicd")
   backup=('etc/wicd/encryption/templates/active')
-  install=wicd.install  
+  install=wicd.install
 
-  cd wicd
+  cd $srcdir/wicd
   python2 setup.py install --skip-build --optimize=1 --root="$pkgdir"
 
   cd build/lib/wicd
@@ -93,7 +99,7 @@ package_wicd-gtk-git() {
               'python2-notify:	needed if you want notifications')
   install=wicd-gtk.install 
 
-  cd wicd
+  cd $srcdir/wicd
   python2 setup.py install --skip-build --optimize=1 --root="$pkgdir"
 
   install -Dm644 "$srcdir/wicd.desktop" "$pkgdir/usr/share/applications/wicd.desktop"
