@@ -1,14 +1,14 @@
 pkgbase = zpipe
-	pkgdesc = (De)compress from standard input to standard output using libzpaq
+	pkgdesc = Incremental Journaling Backup Utility and Archiver
 	pkgver = 201
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mattmahoney.net/dc/zpaq.html
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL
 	depends = zpaq
 	source = http://mattmahoney.net/dc/zpipe.201.zip
-	sha256sums = e95dfe6f701dd463f969fe16c933ed97fca194bd7aacec37d6c35409766133a8
+	sha512sums = d126187ca868ccd0092f63bb47ac9fa7ebb6befb3f5de03857ee14b7e5e9177ba7c9b04c9e5a3b7dc3743773d0602882e00d877fa4daca9fab27922c30bda4ee
 
 pkgname = zpipe
 
