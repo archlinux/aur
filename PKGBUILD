@@ -1,7 +1,7 @@
 # Maintainer: Fabrice Corraire <antidote1911@gmail.com>
 
 pkgname=arsenic
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Qt5 app for encrypt files and text with triple encryption"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Antidote1911/${pkgname}"
 license=('GPL')
 depends=('qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antidote1911/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5C3EDA0E039ABF687819165745B01F96DF8C9A9976BE851EB16B29EB22B05B77')
+sha256sums=('57E214D30840E8697C8700700F86300380B8224232B6C08A64F2BB43CB3F03DD')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
