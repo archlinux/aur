@@ -2,11 +2,11 @@
 
 pkgname=pridecat-git
 _pkgname=pridecat-git
-pkgver=git
-pkgrel=7ee6f1d
+pkgver=7ee6f1d
+pkgrel=1
 pkgdesc="Colorize your terminal output with pride!"
 arch=('i686' 'x86_64')
-url="Colorize your terminal output with pride!"
+url=https://github.com/lunasorcery/pridecat
 license=('CC-BY-NC')
 depends=()
 makedepends=()
