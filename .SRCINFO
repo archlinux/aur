@@ -8,7 +8,7 @@ pkgbase = i3-swallow
 	makedepends = git
 	depends = i3-wm
 	depends = python-i3ipc
-	conflicts = i3-swallow
+	conflicts = i3-swallow-git
 	source = git+https://github.com/TheCynicalTeam/i3-swallow.git
 	md5sums = SKIP
 
