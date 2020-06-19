@@ -1,6 +1,6 @@
 pkgbase = r-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggplot2
 	arch = any
@@ -28,6 +28,7 @@ pkgbase = r-ggplot2
 	optdepends = r-munsell
 	optdepends = r-profvis
 	optdepends = r-quantreg
+	optdepends = r-rcolorbrewer
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
 	optdepends = r-rpart
@@ -35,8 +36,8 @@ pkgbase = r-ggplot2
 	optdepends = r-svglite
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggplot2_3.3.1.tar.gz
-	md5sums = 913361570793b7409a4ca5c5b6ec2ed2
+	source = https://cran.r-project.org/src/contrib/ggplot2_3.3.2.tar.gz
+	md5sums = 02d87290852410924eb816c2d4788afa
 
 pkgname = r-ggplot2
 
