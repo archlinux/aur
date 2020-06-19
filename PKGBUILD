@@ -1,44 +1,41 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=19.21.13045.r47.gc0383491
+pkgver=20.23.16988.r118.gc1b8ae735
 pkgrel=1
-pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. (git version)'
+pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
 url='https://01.org/compute-runtime/'
 license=('MIT')
-depends=('gcc-libs' 'intel-gmmlib' 'intel-graphics-compiler')
-makedepends=('git' 'cmake' 'libva')
+depends=('intel-gmmlib' 'intel-graphics-compiler')
+makedepends=('git' 'cmake' 'libva' 'level-zero-headers')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
-provides=('opencl-driver' 'intel-compute-runtime')
+provides=('intel-compute-runtime' 'opencl-driver' 'level-zero-driver')
 conflicts=('intel-compute-runtime')
 source=('git+https://github.com/intel/compute-runtime.git')
 sha256sums=('SKIP')
 
-prepare() {
-    mkdir -p build
-}
-
 pkgver() {
-    cd compute-runtime
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C compute-runtime describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd build
-    cmake ../compute-runtime \
+    cmake -B build -S compute-runtime \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_INSTALL_LIBDIR='lib' \
-        -DNEO_DRIVER_VERSION="$pkgver"
-    make
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
-    install -D -m644 "${srcdir}/compute-runtime/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 compute-runtime/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    
+    local _lz_sover
+    local _lz_major
+    _lz_sover="$(find "${pkgdir}/usr/lib" -type f -name 'libze_intel_gpu.so.*.*.*' | sed 's/^.*\.so\.//')"
+    _lz_major="${_lz_sover%%.*}"
+    ln -s "libze_intel_gpu.so.${_lz_sover}" "${pkgdir}/usr/lib/libze_intel_gpu.so"
+    ln -s "libze_intel_gpu.so.${_lz_sover}" "${pkgdir}/usr/lib/libze_intel_gpu.so.${_lz_major}"
 }
