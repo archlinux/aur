@@ -3,7 +3,7 @@
 _pkgname=proji
 
 pkgname=${_pkgname}
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A powerful cross-platform CLI project templating tool"
 arch=("x86_64")
@@ -21,18 +21,26 @@ sha512sums=('SKIP')
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    go get -v -t -d ./...
+    go mod download
+    go generate -v ./...
 }
 
 build() {
     cd "$srcdir/$_pkgname"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-    go build \
-        -trimpath \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-s -w -extldflags ${LDFLAGS}" \
-        ./cmd/proji
+    go build -v ./
+}   
+
+check() {
+    cd "$srcdir/$_pkgname"
+    
+    go vet ./...
+    go test -v -coverprofile=coverage.txt -covermode=atomic ./pkg/...
 }
 
 package() {
