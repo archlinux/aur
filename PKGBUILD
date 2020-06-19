@@ -2,7 +2,8 @@
 # Contributor: Nick Hu <nickhu00@gmail.com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=cataclysm-dda-ncurses
-pkgver=0.E
+pkgver=0.E.2
+_pkgver=0.E-2
 pkgrel=1
 pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world, forked from the original. (ncurses only)"
 arch=('i686' 'x86_64')
@@ -15,11 +16,11 @@ optdepends=('lua51')
 conflicts=('cataclysm-dda' 'cataclysm-dda-git' 'cataclysm-dda-ncurses-bin')
 
 install='cataclysm-dda-ncurses.install'
-source=("https://github.com/CleverRaven/Cataclysm-DDA/archive/${pkgver}.tar.gz")
-sha256sums=('b0af9a9292929e17332edcea770bca9a91f1d08ea47726d78a47e09281a42fa3')
+source=("$pkgname-$_pkgver.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/${_pkgver}.tar.gz")
+sha256sums=('41546e877e2eee79c8492b3ec808ef53a4b9b208d788dac2b1a570ef143426e9')
 
 prepare() {
-  cd "$srcdir/Cataclysm-DDA-${pkgver}"
+  cd "$srcdir/Cataclysm-DDA-${_pkgver}"
 
   #0.C cannot compile without warnings anymore
   sed -i s/-Werror// Makefile
@@ -29,13 +30,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/Cataclysm-DDA-${pkgver}"
+  cd "$srcdir/Cataclysm-DDA-${_pkgver}"
 
   make USE_HOME_DIR=1 RELEASE=1 ZLEVELS=1 LUA=1 LOCALIZE=1
 }
 
 package() {
-  cd "$srcdir/Cataclysm-DDA-${pkgver}"
+  cd "$srcdir/Cataclysm-DDA-${_pkgver}"
 
   local instdir=/usr/share/cataclysm-dda
 
