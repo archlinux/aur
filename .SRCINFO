@@ -1,6 +1,6 @@
 pkgbase = hush3-bin
 	pkgdesc = HUSH (fork of KMD) full node that supports zaddrs
-	pkgver = 3.3.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://github.com/MyHush/hush3
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = hush3-bin
 	makedepends = curl
 	depends = libsodium
 	depends = lib32-zlib
-	source = https://github.com/MyHush/hush3/releases/download/v3.3.2/hush-3.3.2-linux.tar.xz
-	sha256sums = c57d4c826ca8fa6a7b8a01dca46eee01c81579d216ade21a88df55012a458b38
+	conflicts = hush3
+	source = https://github.com/MyHush/hush3/releases/download/v3.4.0/hush-3.4.0-linux.tar.xz
+	sha256sums = 106488b385571225b9fa4e029d240e52560be762098ec32b2315824bc3bb202c
 
 pkgname = hush3-bin
 

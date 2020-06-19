@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3-bin
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='HUSH (fork of KMD) full node that supports zaddrs'
 url='http://github.com/MyHush/hush3'
@@ -9,11 +9,12 @@ arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'lib32-zlib')
 makedepends=('wget' 'git' 'curl')
+conflicts=('hush3')
 source=("https://github.com/MyHush/hush3/releases/download/v$pkgver/hush-$pkgver-linux.tar.xz")
-sha256sums=('c57d4c826ca8fa6a7b8a01dca46eee01c81579d216ade21a88df55012a458b38')
+sha256sums=('106488b385571225b9fa4e029d240e52560be762098ec32b2315824bc3bb202c')
 
 build() {
-  tar -xvf hush-3.3.2-linux.tar.xz
+  tar -xvf hush-$pkgver-linux.tar.xz
 }
 
 package() {
