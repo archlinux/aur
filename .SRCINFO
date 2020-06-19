@@ -1,0 +1,12 @@
+pkgbase = fcitx5-dark-default
+	pkgdesc = Dark theme based on the default fcitx5 theme
+	pkgver = 0.0.0.20200619
+	pkgrel = 1
+	url = https://github.com/evansan/fcitx5-dark
+	arch = any
+	license = MIT
+	source = https://github.com/evansan/fcitx5-dark/archive/9ec539e6d2be5415abf6224de6d74775d59abfb6/fcitx5-dark-default-9ec539e6d2be5415abf6224de6d74775d59abfb6.tar.gz
+	md5sums = aeb8ae759febc693384a0a139aea4e25
+
+pkgname = fcitx5-dark-default
+
