@@ -3,7 +3,7 @@
 pkgbase=python-flask-paginate
 pkgname=python-flask-paginate
 _name=${pkgname#python-}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A simple paginate extension for flask"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 url="https://pypi.org/project/flask-paginate"
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py2.py3-none-any.whl")
-sha512sums=('b05513b792a9c1abaf0e53c0d9d80d401f3623bc6f50751f6d0ad9b2b3d5f1151157323d41559dd7908898164936084eb2a9a725c3ab890755e88196efd56642')
+sha512sums=(5e94852598b3ab38eb734655a8ded9b72030bc2102d0c65cfa23bf6be4d201424b67a83110d3a0e228220199b4ec71b65dd1ec5f06952c403a40146c6023f98e)
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
