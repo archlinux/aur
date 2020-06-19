@@ -4,7 +4,7 @@
 pkgname=python-locust
 _name=${pkgname#python-}
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Developer friendly load testing framework"
 arch=('any')
 url='https://locust.io/'
@@ -18,7 +18,7 @@ depends=(
 	'python-geventhttpclient'
 	'python-configargparse'
 	'python-psutil'
-	'python-flask-httpauth'
+	'python-flask-basicauth'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

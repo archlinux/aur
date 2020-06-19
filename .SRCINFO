@@ -1,7 +1,7 @@
 pkgbase = python-locust
 	pkgdesc = Developer friendly load testing framework
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://locust.io/
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-locust
 	depends = python-geventhttpclient
 	depends = python-configargparse
 	depends = python-psutil
-	depends = python-flask-httpauth
+	depends = python-flask-basicauth
 	provides = python-locust
 	conflicts = python-locust
 	source = https://files.pythonhosted.org/packages/source/l/locust/locust-1.0.3.tar.gz
