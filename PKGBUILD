@@ -1,30 +1,15 @@
 # Maintainer: Ethan Baker <mail@ethanbaker.dev>
 # Contributor: Ethan Baker <mail@ethanbaker.dev>
 pkgname='cpick'
-pkgver=v0.9.3
+pkgver=v0.9.5
 pkgrel=1
-#epoch=
 pkgdesc="Extensive color picker in the terminal."
 arch=('x86_64')
 url="https://gitlab.com/ethanbakerdev/cpick"
 license=('Apache')
-groups=()
-depends=()
 makedepends=('git' 'go')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-#install=
-#changelog=
 source=("git+https://gitlab.com/ethanbakerdev/cpick.git#tag=$pkgver")
-noextract=()
 sha256sums=('SKIP')
-#md5sums=()
-#validpgpkeys=()
 
 pkgver() {
 	cd "$pkgname"
