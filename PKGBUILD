@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: WhriedPlanck
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: h0cheung <unknow>
 # Contributor: WhiredPlanck <unknow>
-# Contributor:heavysink <unknow>
+# Contributor: heavysink <unknow>
 
 pkgbase=yozo-office
 pkgname=('yozo-office' 'yozo-office-fonts')
@@ -10,12 +10,11 @@ pkgver=8.0.1331.101ZH.S1
 pkgrel=1
 pkgdesc="永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office Suite"
 url="https://www.yozosoft.com/product-officelinux.html"
-options=('!emptydirs'
-         '!strip')
+options=('!strip')
 license=("custom")
 arch=('x86_64') 
+repalces=('yozo-office-2019')
 conflicts=('yozo-office-2019')
-provides=('yozo-office-2019')
 source_x86_64=("http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_${pkgver}_amd64.deb")
 md5sums_x86_64=('cf22531071e607019c02a1a046f70e5c')
 
@@ -29,7 +28,7 @@ package_yozo-office() {
     depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
     optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
     		'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
-    		'yozo-office-2019-fonts: UI Fonts'
+    		'yozo-office-fonts: UI Fonts'
     		'yozo-office-2019-templates: Templates files')
     install=${pkgname}.install
     cd "${srcdir}"
@@ -48,7 +47,6 @@ package_yozo-office() {
     rm -rf usr/share/mime
     rm -rf usr/share/applications/yozo-uninstall.desktop
     rm -rf opt/Yozosoft/Yozo_Office/Templates
-    
     #Split fonts files
     cd "${srcdir}"
     install -d usr/share/fonts/truetype
