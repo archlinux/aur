@@ -1,0 +1,17 @@
+pkgbase = i3session
+	pkgdesc = Remembers what's running in your i3 workspaces by saving a session file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TheCynicalTeam/i3session
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-xdg
+	depends = python-i3-py
+	depends = i3-wm
+	depends = xorg-xprop
+	source = git://github.com/TheCynicalTeam/i3session.git
+	md5sums = SKIP
+
+pkgname = i3session
+
