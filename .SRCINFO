@@ -1,6 +1,6 @@
 pkgbase = bitfetch
 	pkgdesc = Simple fetch written in C.
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://gitlab.com/bit9tream/bitfetch
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = bitfetch
 	depends = libx11
 	depends = libxinerama
 	provides = bitfetch
-	source = https://gitlab.com/bit9tream/bitfetch/-/archive/3.0/bitfetch-3.0.tar.gz
-	md5sums = a4abdefd02de4703ed231d49390513b6
+	source = https://gitlab.com/bit9tream/bitfetch/-/archive/3.1/bitfetch-3.1.tar.gz
+	md5sums = b1cd4d381aeb956b8f49790a7272266a
 
 pkgname = bitfetch
 

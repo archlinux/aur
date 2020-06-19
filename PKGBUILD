@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
@@ -13,12 +13,12 @@ checkdepends=()
 optdepends=()
 provides=(bitfetch)
 source=("https://gitlab.com/bit9tream/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a4abdefd02de4703ed231d49390513b6')
+md5sums=('b1cd4d381aeb956b8f49790a7272266a')
 
-# for this time Artix users can set ID=artix to build it for Artix Linux
+# Artix will be used when no /etc/os-release file on your system
 build() {
     cd "${pkgname}-${pkgver}"
-    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=asd
+    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=artix
 }
 
 package() {
