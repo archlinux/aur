@@ -1,11 +1,11 @@
 # Maintainer: Stick <stick@stma.is>
 # Contributer: Sherlock Holo <Sherlockya@gmail.com>
 
-pkgname=python-locustio
+pkgname=python-locust
 _name=${pkgname#python-}
-pkgver=0.14.5
-pkgrel=2
-pkgdesc="Scalable user load testing tool written in Python"
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Developer friendly load testing framework"
 arch=('any')
 url='https://locust.io/'
 license=('MIT')
@@ -15,9 +15,10 @@ depends=(
 	'python-requests'
 	'python-msgpack'
 	'python-pyzmq'
-	'python-geventhttpclient-wheels'
+	'python-geventhttpclient'
 	'python-configargparse'
 	'python-psutil'
+	'python-flask-httpauth'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

@@ -1,7 +1,7 @@
-pkgbase = python-locustio
-	pkgdesc = Scalable user load testing tool written in Python
-	pkgver = 0.14.5
-	pkgrel = 2
+pkgbase = python-locust
+	pkgdesc = Developer friendly load testing framework
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://locust.io/
 	arch = any
 	license = MIT
@@ -11,13 +11,14 @@ pkgbase = python-locustio
 	depends = python-requests
 	depends = python-msgpack
 	depends = python-pyzmq
-	depends = python-geventhttpclient-wheels
+	depends = python-geventhttpclient
 	depends = python-configargparse
 	depends = python-psutil
-	provides = python-locustio
-	conflicts = python-locustio
-	source = https://files.pythonhosted.org/packages/source/l/locustio/locustio-0.14.5.tar.gz
+	depends = python-flask-httpauth
+	provides = python-locust
+	conflicts = python-locust
+	source = https://files.pythonhosted.org/packages/source/l/locust/locust-1.0.3.tar.gz
 	sha256sums = 8ec934226e41ccfdf8d5609050cafcb6449ead09e8697104bfa86739a38dd036
 
-pkgname = python-locustio
+pkgname = python-locust
 
