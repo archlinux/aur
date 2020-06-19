@@ -3,9 +3,9 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
-_commit=8a42a21efa264ad94f3f0cf8c67ebb9b621616bb # tags/4.6.3^0
+_commit=c8cf3b54dbdefd7dc8ebd81b4039c80b2df4f672 # tags/4.6.4^0
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-slim}"
