@@ -6,7 +6,7 @@ pkgname=webstorm-eap
 _pkgname=WebStorm
 pkgver=202.5792.46
 _pkgver=2020.2
-pkgrel=2
+pkgrel=3
 ipkgdesc="JavaScript IDE and HTML editor."
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -14,7 +14,7 @@ url="http://www.jetbrains.com/webstorm"
 license=('custom')
 depends=()
 
-source=(http://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
+source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 

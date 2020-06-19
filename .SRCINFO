@@ -1,12 +1,12 @@
 pkgbase = webstorm-eap
 	pkgver = 202.5792.46
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jetbrains.com/webstorm
 	arch = i686
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = http://download.jetbrains.com/webstorm/WebStorm-202.5792.46.tar.gz
+	source = https://download.jetbrains.com/webstorm/WebStorm-202.5792.46.tar.gz
 	source = jetbrains-webstorm-eap.desktop
 	source = WebStorm_license.txt
 	sha256sums = 9698c40fedb2889dda1598148aecefdcd58c4ad8d0401d7e7842f390bd2af428
