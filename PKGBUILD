@@ -22,8 +22,8 @@ package() {
     local _file
     while read -r -d '' _file
     do
-        _dir="${_file#AMF/amf/public/include/}"
-        _dir="${_dir%/*}"
+        _dir="${_file%/*}"
+        _dir="${_file#AMF/amf/public/include}"
         install -D -m644 "$_file" -t "${pkgdir}/usr/include/AMF/${_dir}"
     done < <(find AMF/amf/public/include -type f -print0)
     
