@@ -1,7 +1,7 @@
 pkgbase = turtlico-git
 	pkgdesc = The easy programming tool
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turtlico.gitlab.com/
 	arch = any
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = turtlico-git
 	makedepends = vala
 	depends = python
 	depends = tk
+	depends = noto-fonts-emoji
 	optdepends = python-gpiozero: Raspberry PI Plugin
 	optdepends = gstreamer: Multimedia plugin
 	source = git+https://gitlab.com/turtlico/turtlico.git

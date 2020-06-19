@@ -1,12 +1,12 @@
 pkgname=turtlico-git
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The easy programming tool"
 arch=('any')
 url="https://turtlico.gitlab.com/"
 license=('GPL3')
 makedepends=('libgee' 'gtk3' 'gtksourceview4' 'json-glib' 'meson' 'vala')
-depends=('python' 'tk')
+depends=('python' 'tk' 'noto-fonts-emoji')
 optdepends=('python-gpiozero: Raspberry PI Plugin'
 	    'gstreamer: Multimedia plugin')
 source=('git+https://gitlab.com/turtlico/turtlico.git')
