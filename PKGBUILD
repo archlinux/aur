@@ -18,13 +18,14 @@ pkgver() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/include/AMF"
-    
     local _dir
-    while read -r -d '' _dir
+    local _file
+    while read -r -d '' _file
     do
-        cp -a "$_dir" "${pkgdir}/usr/include/AMF"
-    done < <(find AMF/amf/public/include -maxdepth 1 -mindepth 1 -type d -print0)
+        _dir="${_file#AMF/amf/public/include/}"
+        _dir="${_dir%/*}"
+        install -D -m644 "$_file" -t "${pkgdir}/usr/include/AMF/${_dir}"
+    done < <(find AMF/amf/public/include -type f -print0)
     
     install -D -m644 AMF/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
