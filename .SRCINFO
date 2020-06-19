@@ -1,14 +1,14 @@
 pkgbase = python-interutils
 	pkgdesc = A collection of utilities for creating interactive console scripts
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://pypi.org/project/interutils/
 	arch = any
 	license = MIT
 	depends = python-setuptools
 	depends = python-termcolor
-	source = https://files.pythonhosted.org/packages/aa/d6/be7a50a263cba7ad3bb88dd8d26194bc67fdebbdbd0e5f13761af870c97e/interutils-0.11.2.tar.gz
-	sha256sums = 2f65243442d722489b4139cb662cbb755a18ca5878fe7df6703dbb83e21363da
+	source = https://files.pythonhosted.org/packages/80/c0/05d40b7539eb8fadf95c5488c625ec687827790d3b6d9b2e6798713f43a8/interutils-0.12.0.tar.gz
+	sha256sums = 7f3605cdee0bab05e6b2b1842156535754100e2d5722f2e372b2b72cd442fa88
 
 pkgname = python-interutils
 
