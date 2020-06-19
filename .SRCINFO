@@ -1,7 +1,7 @@
 pkgbase = python-radicale-auth-seafile
 	pkgdesc = Authenticate Radicale 2 requests against Seafile
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/klemens/radicale-auth-seafile
 	arch = any
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = python-radicale-auth-seafile
 	depends = python-psycopg2
 	depends = python-passlib
 	depends = radicale>=2
-	source = https://github.com/klemens/radicale-auth-seafile/archive/v0.1.2.tar.gz
-	sha256sums = 9dbe31136ff43b4408f6772635c5054815fa5b6654f732f2c2382f58d2651032
+	source = https://github.com/klemens/radicale-auth-seafile/archive/v0.2.0.tar.gz
+	sha256sums = 9c23e60573ff9c8d339a3c1ad36790710e0d424373baa44c3273f8f48f4ffb57
 
 pkgname = python-radicale-auth-seafile
 

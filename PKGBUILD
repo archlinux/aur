@@ -2,8 +2,8 @@
 
 _pkgname=radicale-auth-seafile
 pkgname=python-$_pkgname
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Authenticate Radicale 2 requests against Seafile"
 arch=('any')
 url="https://github.com/klemens/radicale-auth-seafile"
@@ -13,7 +13,7 @@ depends=('python'
          'python-passlib'
          'radicale>=2')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9dbe31136ff43b4408f6772635c5054815fa5b6654f732f2c2382f58d2651032')
+sha256sums=('9c23e60573ff9c8d339a3c1ad36790710e0d424373baa44c3273f8f48f4ffb57')
 
 package() {
     cd "$srcdir/radicale-auth-seafile-$pkgver"
