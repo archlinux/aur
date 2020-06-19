@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=chessx
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(i686 x86_64)
 url=http://chessx.sourceforge.net
