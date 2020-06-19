@@ -3,7 +3,7 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=freac
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('i686' 'x86_64')
 url="https://www.freac.org"
