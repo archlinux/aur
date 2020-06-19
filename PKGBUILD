@@ -3,10 +3,11 @@
 # Contributor: Xiao-Long Chen
 pkgname=pacpl
 pkgver=6.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert multiple audio types from one format to another."
 arch=('any')
-url="http://pacpl.sourceforge.net/"
+#url="http://pacpl.sourceforge.net/"
+url="https://sourceforge.net/projects/pacpl/"
 license=('GPL')
 depends=(
   'perl'
@@ -23,6 +24,7 @@ depends=(
   'cddb_get'
   'vorbis-tools'
   'perl-switch'
+  'perl-string-shellquote'
   'perl-parallel-forkmanager'
   'perl-cddb'
 )
@@ -43,7 +45,7 @@ build() {
 
 package() {
   cd "${srcdir}/code"
-  cp -p ChangeLog.txt ChangeLog
+  test -f ChangeLog.txt && cp -p ChangeLog.txt ChangeLog
   make DESTDIR="${pkgdir}" install
   rm -rvf ${pkgdir}/usr/share/apps
 }
