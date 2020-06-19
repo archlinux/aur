@@ -4,7 +4,7 @@ pkgbase = i3session
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3session
 	arch = any
-	license = GPL
+	license = GNU General Public License v3.0
 	makedepends = git
 	depends = python2-xdg
 	depends = python-i3-py
@@ -14,4 +14,3 @@ pkgbase = i3session
 	md5sums = SKIP
 
 pkgname = i3session
-
