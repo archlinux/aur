@@ -2,16 +2,17 @@
 
 pkgname=2ping
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a bi-directional ping utility"
 arch=('any')
 url="https://www.finnie.org/software/2ping/"
 license=("GPL2")
-depends=('python-dnspython' 'python-netifaces' 'python-pycryptodome')
+depends=('python-dnspython' 'python-netifaces' 'python-pycryptodome'
+         'python-pycryptodomex' 'python-distro')
 makedepends=('python-setuptools')
 optdepends=('bash-completion: for bash auto-completion')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rfinnie/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5278e1189ba5ed5f8d9820c56efba4a43471a6911a7c867c70a81e0d7c8ec9cc')
+source=("https://www.finnie.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('867009928bf767d36279f90ff8f891855804c0004849f9554ac77fcd7f0fdb7b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
