@@ -1,0 +1,16 @@
+pkgbase = rime-easy-en-git
+	pkgdesc = Easy en for rime
+	pkgver = 20200519.r21.5848ebd
+	pkgrel = 1
+	url = https://github.com/rime/rime-luna-pinyin
+	arch = x86_64
+	license = LGPL
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	depends = rime-stroke
+	source = git+https://github.com/BlindingDark/rime-easy-en
+	sha512sums = SKIP
+
+pkgname = rime-easy-en-git
+
