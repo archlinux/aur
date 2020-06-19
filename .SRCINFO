@@ -1,0 +1,16 @@
+pkgbase = python-flask-basicauth
+	pkgdesc = Protect certain views or your whole application with HTTP basic access authentication
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jpvanhal/flask-basicauth
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-flask
+	provides = python-flask-basicauth
+	conflicts = python-flask-basicauth
+	source = https://files.pythonhosted.org/packages/source/F/Flask-BasicAuth/Flask-BasicAuth-0.2.0.tar.gz
+	sha256sums = df5ebd489dc0914c224419da059d991eb72988a01cdd4b956d52932ce7d501ff
+
+pkgname = python-flask-basicauth
+
