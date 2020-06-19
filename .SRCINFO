@@ -1,7 +1,7 @@
 pkgbase = krop
 	pkgdesc = A tool to crop PDF files, with an eye towards eReaders.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = http://arminstraub.com/computer/krop
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = krop
 	depends = python-pyqt5
 	depends = python-sip
 	depends = python-poppler-qt5
-	source = krop-0.5.1.tar.gz::https://github.com/arminstraub/krop/archive/v0.5.1.tar.gz
-	sha256sums = a5352c38c68348b889aa7a9f1bcbbe4bf0c761de60e2817bcc48d4d3eec8aff6
+	source = krop-0.6.0.tar.gz::https://github.com/arminstraub/krop/archive/v0.6.0.tar.gz
+	sha256sums = 97022416ec4f2ff70e0ab38d3f3aaff83a68dca99f3e273c29e9f3dd72bf88d9
 
 pkgname = krop
 
