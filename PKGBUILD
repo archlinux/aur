@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch-git
-pkgver=3.0.r1.ga4f5363
+pkgver=3.0.r14.g28dded4
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=()
 optdepends=()
 provides=(bitfetch)
 source=("${pkgname}::git+https://gitlab.com/bit9tream/bitfetch.git")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
@@ -23,7 +23,7 @@ pkgver() {
 # for Artix users you need ti set ID=artix for this time
 build() {
     cd "${pkgname}"
-    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=asd
+    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=${ID:-asd}
 }
 
 package() {
