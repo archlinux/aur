@@ -1,6 +1,6 @@
 pkgbase = proji-bin
 	pkgdesc = A powerful cross-platform CLI project templating tool
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 2
 	url = https://github.com/nikoksr/proji
 	install = proji-bin.install
@@ -9,8 +9,8 @@ pkgbase = proji-bin
 	depends = glibc
 	provides = proji
 	conflicts = proji
-	source = proji-0.19.2.tar.gz::https://github.com/nikoksr/proji/releases/download/v0.19.2/proji-Linux-64bit.tar.gz
-	sha512sums = ff79f416403cfb9f1139aead48722f8df769278d713a2dc7e8d228140160240ae65ff56985202666e8ae68a592d8783b035ecc847b4eb7ddd8cb4e905bb21248
+	source = proji-0.20.0.tar.gz::https://github.com/nikoksr/proji/releases/download/v0.20.0/proji_Linux_64bit.tar.gz
+	sha512sums = bca137f064686fe5589ed843051f3691cfea45602c7ccc961358e729e82f52fbb76f8eca0e31c47b4b8516b90935d65d348ddb187b2cbb85066a4a15970c4e99
 
 pkgname = proji-bin
 
