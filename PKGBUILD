@@ -2,7 +2,7 @@
 
 pkgbase=ibus-clean
 pkgname=(ibus-clean libibus-clean)
-pkgver=1.5.22
+pkgver=1.5.22+8+gf591381e
 pkgrel=2
 pkgdesc="ibus without gtk2 nor python2"
 arch=('x86_64')
@@ -13,16 +13,17 @@ depends=('dconf' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'python-dbus' 'python-g
 makedepends=('gobject-introspection' 'vala' 'intltool' 'gnome-common' 'gtk-doc' 'qt5-base'
              'cldr-emoji-annotation' 'unicode-character-database' 'unicode-emoji')
 options=('!emptydirs')
-source=("ibus-$pkgver.tar.gz::https://github.com/ibus/ibus/archive/$pkgver.tar.gz")
-sha512sums=('972da51eb5702692f13b4f4cff51b3765890e5a91f936b9fa6b6cafaf00f4d078dc39f14bd00f3883203d295d826647c509024dd197d726d4def8d13d45d71b4')
+_commit=f591381e3c892947ecaffe9131b9039ab9014498  # master
+source=("git+https://github.com/ibus/ibus#commit=$_commit")
+sha512sums=('SKIP')
 
 prepare() {
-  cd ibus-$pkgver
-  sed -i 's|$(libibus) $(libibus_emoji_dialog)|$(libibus_emoji_dialog) $(libibus)|' ui/gtk3/Makefile.am
+  cd ibus
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd ibus-$pkgver
+  cd ibus
   ./autogen.sh \
     --prefix=/usr \
     --libexecdir=/usr/lib/ibus \
@@ -37,6 +38,7 @@ build() {
     --enable-python-library \
     --with-python=python3 \
     --with-ucd-dir=/usr/share/unicode/
+  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
@@ -47,7 +49,7 @@ package_ibus-clean() {
   replaces+=('ibus')
   install=ibus.install
 
-  cd ibus-$pkgver
+  cd ibus
   make DESTDIR="$pkgdir" install
   make -C src DESTDIR="$pkgdir" uninstall
   make -C bindings DESTDIR="$pkgdir" uninstall
@@ -55,13 +57,14 @@ package_ibus-clean() {
 }
 
 package_libibus-clean() {
-  pkgdesc="IBus support library"
-  depends=('glib2')
-  provides+=("libibus=$pkgver")
+  pkgdesc="libibus without gtk2 nor python2"
+  depends=(libg{lib,object,io}-2.0.so)
+  provides+=('libibus')
+  provides+=('libibus-1.0.so')
   conflicts+=('libibus')
   replaces+=('libibus')
 
-  cd ibus-$pkgver
+  cd ibus
   make -C src DESTDIR="$pkgdir" install
   make -C bindings DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-pkgconfigDATA

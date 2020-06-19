@@ -1,6 +1,6 @@
 pkgbase = ibus-clean
 	pkgdesc = ibus without gtk2 nor python2
-	pkgver = 1.5.22
+	pkgver = 1.5.22+8+gf591381e
 	pkgrel = 2
 	url = https://github.com/ibus/ibus/wiki
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = ibus-clean
 	depends = iso-codes
 	depends = librsvg
 	options = !emptydirs
-	source = ibus-1.5.22.tar.gz::https://github.com/ibus/ibus/archive/1.5.22.tar.gz
-	sha512sums = 972da51eb5702692f13b4f4cff51b3765890e5a91f936b9fa6b6cafaf00f4d078dc39f14bd00f3883203d295d826647c509024dd197d726d4def8d13d45d71b4
+	source = git+https://github.com/ibus/ibus#commit=f591381e3c892947ecaffe9131b9039ab9014498
+	sha512sums = SKIP
 
 pkgname = ibus-clean
 	install = ibus.install
@@ -36,15 +36,18 @@ pkgname = ibus-clean
 	depends = python-gobject
 	depends = iso-codes
 	depends = librsvg
-	depends = libibus-clean=1.5.22
-	provides = ibus=1.5.22
+	depends = libibus-clean=1.5.22+8+gf591381e
+	provides = ibus=1.5.22+8+gf591381e
 	conflicts = ibus
 	replaces = ibus
 
 pkgname = libibus-clean
-	pkgdesc = IBus support library
-	depends = glib2
-	provides = libibus=1.5.22
+	pkgdesc = libibus without gtk2 nor python2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	provides = libibus
+	provides = libibus-1.0.so
 	conflicts = libibus
 	replaces = libibus
 
