@@ -1,4 +1,4 @@
-# We only want a handful of items, so we'l just whitelist what we want
+# We only want a handful of items, so we'll just whitelist what we want
 ./*
 !PKGBUILD
 !.gitignore
