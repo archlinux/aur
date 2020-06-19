@@ -17,7 +17,7 @@ conflicts=("slock")
 source=("https://dl.suckless.org/tools/${_pkgname}-$pkgver.tar.gz" "slock-image.patch")
 #source=("slock-$pkgver.tar.bz2::https://hg.suckless.org/slock/archive/$_pkgver.tar.gz")
 sha256sums=('b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a'
-            '2eb67544256fc1e036e844b87779914e77327aabf23036b0c6a0895fc878378a')
+            'b782b0117c966b32d95cd0bd8b3acf570d2455a133e6b9033854ffc7c9ac81ca')
 
 prepare() {
   cd "$srcdir/slock-$pkgver"
