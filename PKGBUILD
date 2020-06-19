@@ -13,7 +13,7 @@ conflicts=(
 	"${_pkgname}-git"
 )
 source=(
-	"https://github.com/aztecrabbit/brainfuck-psiphon-pro-go/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+	"https://github.com/aztecrabbit/brainfuck-psiphon-pro-go/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 )
 md5sums=(
 	'7753948ef055c55fa7c4a71323dd7fc6'
