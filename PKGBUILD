@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7.2
+pkgver=5.7.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -35,27 +35,27 @@ options=('!strip')
 _srcname=linux-${pkgver}
 _bmqversion=5.7-r1
 _bmq_patch="bmq_v${_bmqversion}.patch"
-_gcc_more_v='20200527'
+_gcc_more_v='20200615'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "0000-sphinx-workaround.patch"
-  "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
+  "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0f579ba70a8b9abbfe32a523dacf9d514efb1148.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=47d6394736e36c93b3420d2cc40e1294a16ac650"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('6065ae820e2d52a77a549ef97444c36adf7ab2969b294460256f028b4eed7909'
+sha256sums=('bca4f5ca3001a4cde341652af7fcaefed555be52a92e08ddf58a142eeb02b51a'
             'SKIP'
             '1e1e84e6f6f394d64a13176b4c9d95a87d1a405f44c456b95b6e8af1379bbfc6'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
-            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
-            '367ec99888fe491ad05f312125e4f323a0600d424cc68d0d7fb6cab65a930089')
+            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
+            'e50e88a25e3a7e7f32de3e6e9df81eb97dd62229ec08441395ad3820b849dc8d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
