@@ -6,7 +6,12 @@ pkgbase = joplin-appimage
 	arch = x86_64
 	license = MIT
 	options = !strip
-	sha512sums = 370e3dd9479bedac1c8d30cd8dd2048cd095b1c4a844b657aaeb140c0e903274f97f77f556dfa8536b9cf653b59217c9f7a628e4f1e1d25caa7d861db0c4c8ca
+	source = https://github.com/laurent22/joplin/releases/download/v1.0.220/Joplin-1.0.220.AppImage
+	source = https://github.com/laurent22/joplin/raw/v1.0.220/LICENSE
+	source = joplin.desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = joplin-appimage
 

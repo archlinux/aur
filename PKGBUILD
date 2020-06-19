@@ -8,13 +8,28 @@ arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=('MIT')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-sha512sums=('370e3dd9479bedac1c8d30cd8dd2048cd095b1c4a844b657aaeb140c0e903274f97f77f556dfa8536b9cf653b59217c9f7a628e4f1e1d25caa7d861db0c4c8ca')
-_filename=Joplin-$pkgver-x86_64.AppImage
-source() {
-    ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
-    joplin.desktop
-}
+_filename=Joplin-$pkgver.AppImage
+source=(
+  ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
+  ${url}/raw/v${pkgver}/LICENSE
+  joplin.desktop
+)
+sha512sums=(
+  SKIP
+  SKIP
+  SKIP
+)
 
+package() {
+  echo
+  echo "     _             _ _       "
+  echo "    | | ___  _ __ | (_)_ __  "
+  echo " _  | |/ _ \| '_ \| | | '_ \ "
+  echo "| |_| | (_) | |_) | | | | | |"
+  echo " \___/ \___/| .__/|_|_|_| |_|"
+  echo "            |_|              "
+  echo
+}
 package() {
     chmod +x $_filename
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16,128x128}/apps
