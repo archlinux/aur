@@ -1,0 +1,14 @@
+pkgbase = ananas-cli
+	pkgdesc = A hackable data integration & analysis tool to enable non technical users to edit data processing jobs and visualise data on demand (CLI)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://ananasanalytics.com
+	arch = any
+	license = Apache
+	depends = java-runtime>=8
+	depends = bash
+	source = ananas-cli-0.9.0.zip::https://github.com/ananas-analytics/ananas-desktop/releases/download/v0.9.0/Ananas.Analytics.Desktop.Edition-CLI-0.9.0.zip
+	sha256sums = 09debe5fc58c1ed61d8701ed1b1aa3b27f7408ffa5f74930ec6fa26a74a8a012
+
+pkgname = ananas-cli
+
