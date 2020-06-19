@@ -1,6 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
-pkgname=fcitx5-dark-transparent
+pkgname=fcitx5-skin-dark-transparent
+_pkgname=fcitx5-dark-transparent
 pkgver=0.0.0.20200618
 _commit=e196b8aa748d6a8747ff9f943a3ca25f45441c37
 pkgrel=1
@@ -8,7 +9,7 @@ pkgdesc="一个简单的 fcitx5 的黑色透明主题"
 arch=('any')
 url="https://github.com/hosxy/fcitx5-dark-transparent"
 license=('MIT')
-source=("https://github.com/hosxy/fcitx5-dark-transparent/archive/$_commit/$pkgname-$_commit.tar.gz")
+source=("https://github.com/hosxy/fcitx5-dark-transparent/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('51eddd13fdd929dcbecac3a2dbe5078613a31a96f02193c9494eab3b4320bc1fb9af06722720b33c1a00d869a4b0fbc6260ca5ae24d6cef119abbb142e9994fc')
 
 package() {
