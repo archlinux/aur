@@ -1,7 +1,7 @@
 pkgbase = bitfetch-git
 	pkgdesc = Simple fetch written in C.
-	pkgver = 3.0.r14.g28dded4
-	pkgrel = 3
+	pkgver = 3.1
+	pkgrel = 1
 	url = https://gitlab.com/bit9tream/bitfetch
 	arch = any
 	license = GPL2
