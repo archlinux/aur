@@ -1,6 +1,6 @@
 pkgbase = libdigidocpp
 	pkgdesc = Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards
-	pkgver = 3.14.2.1391
+	pkgver = 3.14.3.1399
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = libdigidocpp
 	makedepends = xsd
 	makedepends = xxd
 	depends = xml-security-c
-	source = https://installer.id.ee/media/ubuntu/pool/main/libd/libdigidocpp/libdigidocpp_3.14.2.1391.orig.tar.xz
-	sha256sums = 2e1a00cea71611343b28a0403dd4bbacae9764b6e65fe04fe2961ec2bf0bb246
+	source = https://installer.id.ee/media/ubuntu/pool/main/libd/libdigidocpp/libdigidocpp_3.14.3.1399.orig.tar.xz
+	sha256sums = 19f00e5a72246dde4214b6eedaa36e9974ba4277b92500f8240188f95b0ac5d1
 
 pkgname = libdigidocpp
 
