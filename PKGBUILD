@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
   "1803f372cee128981e4e5a559d572738a64e2dda171f194697d6888ebfc67e3d"
-  "9363c1f0dda736d3c055368844f36c6b17850a8f576e834737032ea54aabe780"
+  "e90797011d2f79c79a6b184a5e9c35c4e5c582622d075b0022675b96fccefc46"
 )
 _commit="b1346ef1caded079c5abf11e5c0daae2322c9c6b"
 
@@ -37,10 +37,20 @@ prepare() {
 
 build() {
   cd "${srcdir}/gopath/src/github.com/GoogleContainerTools/${pkgname}"
-  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" VERSION="v${pkgver}" COMMIT="${_commit}" TREE_STATE="clean" make install
+  export GOPATH="${srcdir}/gopath"
+  export PATH="${PATH}:${GOPATH}/bin"
+  export VERSION="v${pkgver}"
+  export COMMIT="${_commit}"
+  export TREE_STATE="clean"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -x -v"
+  make install
 
   # To avoid issues deleting directories next time
-  GOPATH="${srcdir}" go clean --modcache
+  go clean --modcache
 }
 
 package() {

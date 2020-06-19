@@ -13,7 +13,7 @@ pkgbase = skaffold
 	source = skaffold-1.11.0.tar.gz::https://github.com/GoogleContainerTools/skaffold/archive/v1.11.0.tar.gz
 	source = build_info.patch
 	sha256sums = 1803f372cee128981e4e5a559d572738a64e2dda171f194697d6888ebfc67e3d
-	sha256sums = 9363c1f0dda736d3c055368844f36c6b17850a8f576e834737032ea54aabe780
+	sha256sums = e90797011d2f79c79a6b184a5e9c35c4e5c582622d075b0022675b96fccefc46
 
 pkgname = skaffold
 

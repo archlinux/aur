@@ -1,9 +1,9 @@
 diff --git a/Makefile b/Makefile
-index 1f6ee7c..88f763e 100644
+index dd22ea0..aa47490 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -32,7 +32,8 @@ SUPPORTED_PLATFORMS := linux-$(GOARCH) darwin-$(GOARCH) windows-$(GOARCH).exe
- BUILD_PACKAGE = $(REPOPATH)/cmd/skaffold
+@@ -35,7 +35,8 @@ SKAFFOLD_TEST_PACKAGES = ./pkg/skaffold/... ./cmd/... ./hack/... ./pkg/webhook/.
+ GO_FILES = $(shell find . -type f -name '*.go' -not -path "./vendor/*" -not -path "./pkg/diag/*")
  
  VERSION_PACKAGE = $(REPOPATH)/pkg/skaffold/version
 -COMMIT = $(shell git rev-parse HEAD)
@@ -12,7 +12,7 @@ index 1f6ee7c..88f763e 100644
  
  ifeq "$(strip $(VERSION))" ""
   override VERSION = $(shell git describe --always --tags --dirty)
-@@ -57,7 +58,7 @@ GO_BUILD_TAGS_windows := ""
+@@ -52,7 +53,7 @@ GO_BUILD_TAGS_windows = "release"
  GO_LDFLAGS = -X $(VERSION_PACKAGE).version=$(VERSION)
  GO_LDFLAGS += -X $(VERSION_PACKAGE).buildDate=$(shell date +'%Y-%m-%dT%H:%M:%SZ')
  GO_LDFLAGS += -X $(VERSION_PACKAGE).gitCommit=$(COMMIT)
