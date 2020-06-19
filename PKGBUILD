@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.6pre2
+pkgver=1.8.6pre3
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,8 +26,8 @@ source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-s
         tmpfiles.d-openafs.conf
         0001-Temporary-fix-for-compilation-with-GCC-10.patch
         0002-Adjust-RedHat-config-and-service-files.patch)
-sha256sums=('ae1aa62c977fc13d61df1f9822ff75af301c50f8ff0528c8fd1f2914fffafcf5'
-            '262117808a28512ba9be76a40130a7e60c1c468e1d185275ab83cb45e740c8ae'
+sha256sums=('9477ac1674bf75553f268d4ee36725c9fde731f5c5e5d26aa96b089cc6b721a8'
+            'f69112878e8159b18e38287f977f7d61e0444a417ec5b013fe045cef62c5dbd6'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
             'ebd26d2434689ca7f1c71434cf9a524cf8f2457faa2ba93b90723f4244092451'
             '86b0560369e0d41e6c384fcdeed4ddf2d0a1da3e2ca55145ca9b1c0f2611e22a')
