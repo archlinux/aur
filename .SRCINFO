@@ -1,7 +1,7 @@
 pkgbase = python-locust
 	pkgdesc = Developer friendly load testing framework
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://locust.io/
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-locust
 	provides = python-locust
 	conflicts = python-locust
 	source = https://files.pythonhosted.org/packages/source/l/locust/locust-1.0.3.tar.gz
-	sha256sums = 8ec934226e41ccfdf8d5609050cafcb6449ead09e8697104bfa86739a38dd036
+	sha256sums = 7c2e850a84275b6f7c5ad4a8abde3488df94c08d3b52e619d9c71cc6b8c853cb
 
 pkgname = python-locust
 
