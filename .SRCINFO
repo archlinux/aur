@@ -1,0 +1,19 @@
+pkgbase = canvas-git
+	pkgdesc = A pretty system information tool written in POSIX sh.
+	pkgver = r19.e74dda7
+	pkgrel = 1
+	url = https://github.com/dylanaraps/canvas
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = imagemagick
+	depends = feh
+	depends = colorpicker
+	optdepends = xrandr: only for xfce to set wallpaper
+	provides = canvas
+	conflicts = pfetch
+	source = canvas::git+https://github.com/adi1090x/canvas.git
+	md5sums = SKIP
+
+pkgname = canvas-git
+
