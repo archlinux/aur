@@ -1,7 +1,7 @@
 pkgbase = posy-cursors
 	pkgdesc = Port of Posy's improved cursors
 	pkgver = 3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.synh.me/dmitry/posy-cursors
 	arch = any
 	license = unknown
