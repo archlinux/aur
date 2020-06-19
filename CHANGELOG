@@ -1,11 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-1.5.0 (April 17, 2020)
-    Add OAuth tokens for API requests as required by Twitch:
-        https://discuss.dev.twitch.tv/t/requiring-oauth-for-helix-twitch-api-endpoints/23916
-    Add support for XDG Base Directory spec
-
 1.5.1 (May 24, 2020)
     Set OAuth token expiry for 1 day after acquisition
 
@@ -14,3 +9,6 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
 1.6.1 (June 8, 2020)
     Fixed an issue where any language not officially supported would print "null" for each localized string
+
+1.6.2 (June 19, 2020)
+    Fixed a bug where the first Twitch request of the day would fail due to not updating the in-memory api token
