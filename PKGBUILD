@@ -1,7 +1,7 @@
 # Maintainer: twchen aur@twchen.cc
 
 pkgname=joplin-appimage
-pkgver=1.0.120
+pkgver=1.0.220
 pkgrel=1
 pkgdesc="The latest released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
