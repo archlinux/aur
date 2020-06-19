@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=('MIT')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-sha512sums=('7001d93db289bd47afe634285775d4acccba4732cb620051e34d6f284d2ea12e43ebe8bfae4a57236b17fbdb5bc4bb395fa0b5163d588626e37943337d88fbed')
+sha512sums=('370e3dd9479bedac1c8d30cd8dd2048cd095b1c4a844b657aaeb140c0e903274f97f77f556dfa8536b9cf653b59217c9f7a628e4f1e1d25caa7d861db0c4c8ca')
 _filename=Joplin-$pkgver-x86_64.AppImage
 source() {
     ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
