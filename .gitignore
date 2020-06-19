@@ -2,4 +2,6 @@ src/
 pkg/ 
 riot-desktop/
 riot-web/
+matrix-js-sdk/
+matrix-react-sdk/
 *.tar.xz
