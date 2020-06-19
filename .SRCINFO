@@ -1,0 +1,18 @@
+pkgbase = ctre-git
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = https://github.com/hanickadot/compile-time-regular-expressions/
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	optdepends = gcc: c++ compiler
+	optdepends = clang: c++ compiler
+	provides = ctre
+	conflicts = ctre
+	source = ctre::git+https://github.com/hanickadot/compile-time-regular-expressions.git#branch=master
+	sha512sums = SKIP
+
+pkgname = ctre-git
+
