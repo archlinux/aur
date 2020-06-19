@@ -12,8 +12,8 @@ pkgbase = chessx
 	optdepends = stockfish: for a chess engine
 	optdepends = lc0-cudnn-git: for another chess engine
 	conflicts = chessx-svn
-	source = https://sourceforge.net/projects/chessx/files/chessx/1.5.0/chessx-1.5.0.tgz
-	sha256sums = d130ad3220821da9ea19e7228222a5528fabca3ca06bc41b4d7f702454f63827
+	source = https://sourceforge.net/projects/chessx/files/chessx/1.5.4/chessx-1.5.4.tgz
+	sha256sums = e2dbacff2a6c055cfbe4ce0344331f77262867e228a5fe2895e6c242772065a8
 
 pkgname = chessx
 

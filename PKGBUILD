@@ -1,6 +1,5 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=chessx
-<<<<<<< HEAD
 pkgver=1.5.4
 pkgrel=2
 pkgdesc="Cross-platform chess database and PGN viewer"
