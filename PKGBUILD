@@ -2,13 +2,15 @@
 
 pkgname=ndi-sdk
 pkgver=4.5.20200519.r114811
-pkgrel=1
+pkgrel=2
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
 arch=('x86_64')
 url='https://www.newtek.com/ndi/sdk/'
 license=('custom')
 depends=('avahi')
+provides=('libndi')
+conflicts=('libndi')
 options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.tar.gz"
 source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${_majver}_Linux.tar.gz")
