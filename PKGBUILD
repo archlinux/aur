@@ -14,7 +14,7 @@ _filename=Joplin-$pkgver-x86_64.AppImage
 
 package() {
     chmod +x $_filename
-    mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
+    mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16,128x128}/apps
     ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/joplin.png" > /dev/null 2>&1
     ./$_filename --appimage-extract joplin.desktop > /dev/null 2>&1
     INSTALL_PATH="/opt/appimages/Joplin.AppImage"
