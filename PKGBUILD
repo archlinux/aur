@@ -6,7 +6,7 @@ pkgname=webstorm-eap
 _pkgname=WebStorm
 pkgver=202.5792.46
 _pkgver=2020.2
-pkgrel=1
+pkgrel=2
 ipkgdesc="JavaScript IDE and HTML editor."
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -15,13 +15,11 @@ license=('custom')
 depends=()
 
 source=(http://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
-        jetbrains-webstorm-eap
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
 sha256sums=('9698c40fedb2889dda1598148aecefdcd58c4ad8d0401d7e7842f390bd2af428'
-            '3712fc9477a8b5a54d970103166b05bf872fa2512c5bee7e63f62a5738e40419'
-            '931de5f12ab12e62eccaa3648d0cedf5e2c3845cc1e1a37030137fdbc24f54f3'
+            '6b61e27f662b1bfc0e98e6ed94498f3d71cf8391cb4c3d49f00062499485735e'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
 
 package() {
@@ -41,9 +39,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /opt/${pkgname}/bin/webstorm.sh "${pkgdir}"/usr/bin/${pkgname}
   install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications"
   install -m 644 "${pkgdir}/opt/${pkgname}/bin/webstorm.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-  #install -m 644 "${srcdir}/${_pkgname}-${pkgver}/license/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
   install -m 644 "${startdir}/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
-  install -m 755 "${startdir}/jetbrains-${pkgname}" "${pkgdir}/usr/bin"
 }
