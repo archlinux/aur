@@ -1,0 +1,23 @@
+pkgbase = gtkglext-pangox
+	pkgdesc = opengl extensions for gtk2, with pangox
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://gtkglext.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	depends = gtk2
+	depends = glu
+	depends = libxmu
+	depends = pangox-compat
+	provides = gtkglext
+	conflicts = gtkglext
+	source = https://downloads.sourceforge.net/sourceforge/gtkglext/gtkglext-1.2.0.tar.bz2
+	source = gtk2.20.patch
+	source = gtkglext-gcc8.patch
+	sha256sums = 16bd736074f6b14180f206b7e91263fc721b49912ea3258ab5f094cfa5497f51
+	sha256sums = 864c6963c4a2f4f69f1f028ecee6c821a4f4d5aba142f2e07898aede825ce9ea
+	sha256sums = 0ec0c22b15054b0684f9a9015ff05920af0c00dae5409e76321f683dcc17cff9
+
+pkgname = gtkglext-pangox
+
