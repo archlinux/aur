@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-github-notifications-git
+	pkgdesc = Integrate Github's notifications within the GNOME desktop environment
+	pkgver = r31.358c5a4
+	pkgrel = 1
+	url = https://github.com/alexduf/gnome-github-notifications
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-github-notifications
+	conflicts = gnome-shell-extension-github-notifications
+	source = git+https://github.com/alexduf/gnome-github-notifications
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-github-notifications-git
+
