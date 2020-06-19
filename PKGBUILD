@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.5.141
+pkgver=8.5.184
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -23,14 +23,12 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8_libbase.pc"
         "v8_libplatform.pc"
         "d8"
-        "gcc10.diff"
         "unknown_option.diff")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            'ec2c551cdfff1fd5ef72faac675eb687c69f81355fb7a03b333bdf5043fa3bc9'
             'a60fe8ede264ca640fac12b43eae6c719dbcadf5334b958bdb33e2e134b27972')
 
 OUTFLD=out.gn/Release
@@ -74,7 +72,6 @@ prepare() {
 
   msg2 "patch compiler options"
   patch -p2 < ../unknown_option.diff
-  patch -p2 < ../gcc10.diff
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
