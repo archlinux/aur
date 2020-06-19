@@ -1,0 +1,18 @@
+pkgbase = libndi-git
+	pkgdesc = Library and tool to interact with Network Device Interface (NDI) streams (git version)
+	pkgver = r4.g8e5ea1e
+	pkgrel = 1
+	url = https://code.videolan.org/jbk/libndi/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = ffmpeg
+	depends = libmicrodns
+	provides = libndi
+	conflicts = libndi
+	source = git+https://code.videolan.org/jbk/libndi.git
+	sha256sums = SKIP
+
+pkgname = libndi-git
+
