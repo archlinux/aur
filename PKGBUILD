@@ -4,7 +4,7 @@
 # Contributor: mar77i <mar77i at protonmail dot ch>
 
 pkgname=micro
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=("armv6h" "armv7h" "i686" "x86_64")

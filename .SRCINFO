@@ -1,6 +1,6 @@
 pkgbase = micro
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/zyedidia/micro
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = micro
 	makedepends = go
 	depends = glibc
 	optdepends = xclip: Required for copying/pasting text
-	source = micro-2.0.4::git+https://github.com/zyedidia/micro.git#tag=v2.0.4
+	source = micro-2.0.5::git+https://github.com/zyedidia/micro.git#tag=v2.0.5
 	source = semver::git+https://github.com/blang/semver
 	source = go-humanize::git+https://github.com/dustin/go-humanize
 	source = errors::git+https://github.com/go-errors/errors
