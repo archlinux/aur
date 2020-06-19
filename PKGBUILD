@@ -5,19 +5,18 @@
 pkgname=firefox-bin
 _pkgname=firefox
 pkgver=77.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.mozilla.org/en-US/firefox/new/"
-license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
+license=(MPL GPL LGPL)
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font)
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'hunspell: Spell checking'
-            'hyphen: Hyphenation'
-            'libnotify: Notification integration'
             'networkmanager: Location detection via available WiFi networks'
-            'pulseaudio: Sound'
-            'upower: Battery API')
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 options=(!strip)
 provides=("firefox=$pkgver")
 conflicts=('firefox')
