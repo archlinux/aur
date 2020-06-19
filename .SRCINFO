@@ -1,0 +1,19 @@
+pkgbase = privateer_wcu-git
+	pkgdesc = VegaStrike-based Privateer: Wing Commander Universe mod. Uses Privateer: Parallel Universe as its base
+	pkgver = rev.103
+	pkgrel = 1
+	url = https://github.com/pwcu/privateer_wcu
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = expat
+	depends = vegastrike-engine
+	optdepends = 
+	provides = privateer
+	conflicts = privateer
+	source = git+https://github.com/pwcu/privateer_wcu.git
+	sha1sums = SKIP
+
+pkgname = privateer_wcu-git
+
