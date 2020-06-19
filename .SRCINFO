@@ -1,7 +1,7 @@
 pkgbase = canvas-git
-	pkgdesc = A pretty system information tool written in POSIX sh.
+	pkgdesc = A bash script to generate and apply different types of gradient & blured wallpapers.
 	pkgver = r19.e74dda7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dylanaraps/canvas
 	arch = any
 	license = GPL3

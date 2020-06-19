@@ -3,8 +3,8 @@
 _pkgname=canvas
 pkgname=$_pkgname-git
 pkgver=r19.e74dda7
-pkgrel=1
-pkgdesc="A pretty system information tool written in POSIX sh."
+pkgrel=2
+pkgdesc="A bash script to generate and apply different types of gradient & blured wallpapers."
 arch=(any)
 url="https://github.com/dylanaraps/$_pkgname"
 license=("GPL3")
