@@ -34,11 +34,11 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     go build -v ./
-}   
+}
 
 check() {
     cd "$srcdir/$_pkgname"
-    
+
     go vet ./...
     go test -v -coverprofile=coverage.txt -covermode=atomic ./pkg/...
 }
