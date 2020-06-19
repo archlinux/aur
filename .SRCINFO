@@ -1,6 +1,7 @@
 pkgbase = firefox-extension-mooltipass
+	pkgdesc = Retrieve and store Mooltipass credentials easily from websites.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.themooltipass.com/setup
 	arch = any
 	license = custom:MIT
