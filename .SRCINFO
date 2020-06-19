@@ -1,6 +1,6 @@
 pkgbase = stone-soup-ncurses
 	pkgdesc = Open-source, single-player, role-playing roguelike game of exploration and treasure-hunting (ncurses-only)
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 2
 	url = http://crawl.develz.org/
 	install = stone-soup-ncurses.install
@@ -20,8 +20,8 @@ pkgbase = stone-soup-ncurses
 	conflicts = stone-soup
 	conflicts = stone-soup-tiles
 	conflicts = stone-soup-git
-	source = http://crawl.develz.org/release/0.24/stone_soup-0.24.0-nodeps.tar.xz
-	sha256sums = b9477b81da4818f260a5d68bdac7e21d342bb41f3da95ace6baefb2a8236b84d
+	source = http://crawl.develz.org/release/0.25/stone_soup-0.25.0-nodeps.tar.xz
+	sha256sums = 6dfc24f427249c4059842a807f131b2d322443bddee9c8a3626370dcbae4c166
 
 pkgname = stone-soup-ncurses
 
