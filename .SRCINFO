@@ -1,0 +1,14 @@
+pkgbase = python-genzshcomp
+	pkgdesc = Automatic generate to Zsh Completion Function from Python's Option Parser Modules.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/hhatto/genzshcomp
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	depends = python
+	source = python-genzshcomp-0.6.0.src.tar.gz::https://github.com/hhatto/genzshcomp/archive/0.6.0.tar.gz
+	sha512sums = 21997c8e0e5de263a797dc195b2aa8fbdd8adc64a8c474260e654de1e03cbfa8c53bb6d58e5eefb40f58903ae1fa939f89398c243f20428504f273a150db2e66
+
+pkgname = python-genzshcomp
+
