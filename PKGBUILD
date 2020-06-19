@@ -4,7 +4,7 @@
 _pkgname="sat-yt"
 pkgname="$_pkgname"-git
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Youtube plugin for saturnon"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
@@ -28,4 +28,5 @@ package() {
 	install -Dm 644 -t "$pkgdir/etc/saturnon"          "youtube.conf"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/refresh"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/subscribe"
+	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/install_dirs"
 }
