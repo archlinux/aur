@@ -1,0 +1,15 @@
+pkgbase = goattracker-ubuntu-bin
+	pkgdesc = Crossplatform C64 music tracker (Ubuntu-based prebuilt package)
+	pkgver = 2.75
+	pkgrel = 1
+	url = http://sourceforge.net/projects/goattracker2/
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	conflicts = goattracker
+	replaces = goattracker
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/g/goattracker/goattracker_2.75-3build1_amd64.deb
+	md5sums = 0042f11a8aeb6c0e7be8ca3d26268f05
+
+pkgname = goattracker-ubuntu-bin
+
