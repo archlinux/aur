@@ -20,9 +20,8 @@
 #                        OR IN /etc/dnsmasq.conf                              #
 ###############################################################################
 
-addn-hosts=/etc/pihole/gravity.list
 addn-hosts=/etc/pihole/local.list
-addn-hosts=/etc/pihole/black.list
+addn-hosts=/etc/pihole/custom.list
 domain-needed
 localise-queries
 bogus-priv

@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.0
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.0
 _now=`date +%N`
@@ -44,7 +44,7 @@ md5sums=('0f19aeefad3063c44f421de1ad21b233'
          '9402041b365e78a02a95942bdd3c3c05'
          'e86d30019550856eebfbaf3c66b24b3e'
          '7836b40de628a6e35992c5547bd5d5f4'
-         '4d9038588164bb9130c8ca11653f83f3'
+         '62ab22d82267f30bd1a75773a1de79c8'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
          '37e7d5e5aad2d812e825b584e07bbd02'
