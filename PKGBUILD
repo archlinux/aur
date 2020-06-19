@@ -1,16 +1,17 @@
 pkgname=gtkcord3
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=3
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
 license=('GPL3')
 depends=('gtk3' 'libhandy' 'discordlogin-git')
 provides=('gtkcord3')
+conflicts=('gtkcord3-git')
 makedepends=('git' 'go')
-source=('https://github.com/diamondburned/gtkcord3/archive/v0.0.3.tar.gz'
+source=('https://github.com/diamondburned/gtkcord3/archive/v0.0.4.tar.gz'
 	'gtkcord3.desktop')
-sha256sums=('45c7cfc30ca2e8867805450063f11af1bc55e5de9d77e4e0df73412108f9059e'
+sha256sums=('704c623393d79cc8abb68ac59a5b243576df6857626276ec3fdf15fc9b7c753f'
 	'8839b86e0a4174d5b5f3f7aa1248ee6af26901e4b5d4e749088444e1861982a4')
 
 build() {
