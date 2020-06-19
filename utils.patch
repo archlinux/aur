@@ -1,0 +1,12 @@
+diff --git a/python_hosts/utils.py b/python_hosts/utils.py
+index 38bbd28..ba20dfe 100644
+--- a/python_hosts/utils.py
++++ b/python_hosts/utils.py
+@@ -4,7 +4,6 @@ This module contains utility functions used by the Hosts and HostsEntry methods
+ """
+ import os
+ import re
+-import win_inet_pton
+ 
+ import socket
+ 

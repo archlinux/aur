@@ -1,14 +1,17 @@
 pkgbase = python-hosts
 	pkgdesc = a hosts file manager library written in python
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonhadfield/python-hosts
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/p/python-hosts/python-hosts-1.0.0.tar.gz
+	source = utils.patch
 	md5sums = 8e9d1eb341fdf496cb0b976c39d1514a
+	md5sums = b2116bec5cf7e5e67eb4961a4e25f85f
 	sha256sums = 850998704ba9025ce4c8ffd45dc4fbea2b5e30247bf3b574872ac5df90426b4d
+	sha256sums = 5be0f0749bd4070e66f5e3516df2986dd6a57c7886b583fa9ce5076f4dde3ed4
 
 pkgname = python-hosts
 
