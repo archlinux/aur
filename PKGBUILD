@@ -4,17 +4,23 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r1970.gf85c1f3
+pkgver=r2013.gd6d9a7e
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
 makedepends=('git')
 source=("git+${url}.git"
+        'Revert-mac80211-simplify-TX-aggregation-start.patch'
+        'Revert-mt76-enable-Airtime-Queue-Limit-support.patch'
+        'Revert-mt76-rely-on-mac80211-utility-routines-to-com.patch'
         'wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch'
         'dkms.conf')
 sha256sums=('SKIP'
+            'a0100102d806486713e290c788d9478c2bcd951eca09956140f685a4289af76d'
+            'bfd9729a0f19d3792e3c8a05fa133a18428ba3bf472c5e0e13fe2de841d52364'
+            '553b685584ce5d4eebf1ac5d28010ccf5bf502abebc6c0a54206c44bfd6ed835'
             '464dcf601bbfbce3e0dd7fcb5008f44b979c6ad85325244d0e0aa3cdea7fb13e'
-            'f98eb3f3a0b20ec76490aae595d264f770489c4ab8e17de6353b35ae579a92a1')
+            '7f3e5a2d19f06e6e9c453a0b7d26ae128ee1c04eb1aee5be726fa53fe82c6364')
 
 pkgver() {
 	cd ${srcdir}/mt76
@@ -31,7 +37,7 @@ package_mt76-dkms-git() {
 
 	install -dm755 ${pkgdir}/usr/src/mt76-${pkgver}/patches
 	cp -r ${srcdir}/mt76/* ${pkgdir}/usr/src/mt76-${pkgver}/
-	cp ${srcdir}/wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch ${pkgdir}/usr/src/mt76-${pkgver}/patches/
+	cp ${srcdir}/*.patch ${pkgdir}/usr/src/mt76-${pkgver}/patches/
 	rm -f -r ${pkgdir}/usr/src/mt76-${pkgver}/firmware
 	sed --follow-symlinks -e "s,@PKGVER@,${pkgver}," ${srcdir}/dkms.conf > ${pkgdir}/usr/src/mt76-${pkgver}/dkms.conf
 }

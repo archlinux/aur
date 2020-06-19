@@ -1,0 +1,11 @@
+--- a/mt7915/main.c
++++ b/mt7915/main.c
+@@ -616,7 +616,7 @@ mt7915_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_TX_START:
+ 		mtxq->agg_ssn = IEEE80211_SN_TO_SEQ(ssn);
+ 		mt7915_set_aggr_state(msta, tid, MT7915_AGGR_START);
+-		ret = IEEE80211_AMPDU_TX_START_IMMEDIATE;
++		ieee80211_start_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
+ 		mtxq->aggr = false;

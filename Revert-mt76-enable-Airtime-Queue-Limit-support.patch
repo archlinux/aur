@@ -1,0 +1,25 @@
+From 0779bc5ac71ec7b8cd3609e05611c2a31490f34c Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tomek_n@o2.pl>
+Date: Fri, 19 Jun 2020 15:49:01 +0200
+Subject: [PATCH] Revert "mt76: enable Airtime Queue Limit support"
+
+This reverts commit 62c447e2c75f8f6886db730363309e647f7a3f18.
+---
+ mac80211.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/mac80211.c b/mac80211.c
+index d8533d0c6e81..6f05371777a2 100644
+--- a/mac80211.c
++++ b/mac80211.c
+@@ -287,7 +287,6 @@ mt76_phy_init(struct mt76_dev *dev, struct ieee80211_hw *hw)
+ 
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CQM_RSSI_LIST);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_AIRTIME_FAIRNESS);
+-	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_AQL);
+ 
+ 	wiphy->available_antennas_tx = dev->phy.antenna_mask;
+ 	wiphy->available_antennas_rx = dev->phy.antenna_mask;
+-- 
+2.27.0
+

@@ -1,5 +1,5 @@
 pkgbase = mt76-git
-	pkgver = r1970.gf85c1f3
+	pkgver = r2013.gd6d9a7e
 	pkgrel = 1
 	url = https://github.com/openwrt/mt76
 	arch = x86_64
@@ -10,11 +10,17 @@ pkgbase = mt76-git
 	arch = aarch64
 	makedepends = git
 	source = git+https://github.com/openwrt/mt76.git
+	source = Revert-mac80211-simplify-TX-aggregation-start.patch
+	source = Revert-mt76-enable-Airtime-Queue-Limit-support.patch
+	source = Revert-mt76-rely-on-mac80211-utility-routines-to-com.patch
 	source = wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch
 	source = dkms.conf
 	sha256sums = SKIP
+	sha256sums = a0100102d806486713e290c788d9478c2bcd951eca09956140f685a4289af76d
+	sha256sums = bfd9729a0f19d3792e3c8a05fa133a18428ba3bf472c5e0e13fe2de841d52364
+	sha256sums = 553b685584ce5d4eebf1ac5d28010ccf5bf502abebc6c0a54206c44bfd6ed835
 	sha256sums = 464dcf601bbfbce3e0dd7fcb5008f44b979c6ad85325244d0e0aa3cdea7fb13e
-	sha256sums = f98eb3f3a0b20ec76490aae595d264f770489c4ab8e17de6353b35ae579a92a1
+	sha256sums = 7f3e5a2d19f06e6e9c453a0b7d26ae128ee1c04eb1aee5be726fa53fe82c6364
 
 pkgname = mt76-dkms-git
 	pkgdesc = mac80211 driver for MediaTek MT76x0e, MT76x2e, MT7603, MT7615, MT7628 and MT7688
