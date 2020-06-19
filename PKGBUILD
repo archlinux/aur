@@ -11,6 +11,10 @@ options=(!strip) # necessary otherwise the AppImage file in the package is trunc
 source=('https://github.com/laurent22/joplin/releases/download/v1.0.220/Joplin-1.0.220.AppImage')
 sha512sums=('7001d93db289bd47afe634285775d4acccba4732cb620051e34d6f284d2ea12e43ebe8bfae4a57236b17fbdb5bc4bb395fa0b5163d588626e37943337d88fbed')
 _filename=Joplin-$pkgver-x86_64.AppImage
+source() {
+    ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
+    joplin.desktop
+}
 
 package() {
     chmod +x $_filename
