@@ -2,8 +2,8 @@
 
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
-pkgver=0.122.0
-pkgrel=2
+pkgver=0.141.0
+pkgrel=1
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$_npmname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('nodejs' 'nodejs-addon-api')
 makedepends=('jq' 'node-gyp' 'moreutils' 'npm' 'python' 'sword') # Remove python when node-gyp package fixed
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('597efdb7af9a5b22464673022508906aec9830dddeeb9cb3b8891fbe8faadb62')
+sha256sums=('380e45d55c01d1175cfb9960a1050c22d0871f151460d03b8d1f0410e9ef2564')
 
 prepare() {
     cd "$_npmname-$pkgver"
