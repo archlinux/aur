@@ -1,25 +1,25 @@
 pkgbase = python-locust-git
 	pkgdesc = Scalable user load testing tool written in Python
-	pkgver = 0.14.5.r83.g34cb6d1
-	pkgrel = 2
+	pkgver = 1.0.3.r25.g5ea0342
+	pkgrel = 1
 	url = https://github.com/locustio/locust
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-configargparse
-	depends = python-flask
 	depends = python-gevent
-	depends = python-geventhttpclient-wheels
-	depends = python-msgpack
-	depends = python-psutil
-	depends = python-pyzmq
+	depends = python-flask
 	depends = python-requests
-	depends = python-six
+	depends = python-msgpack
+	depends = python-pyzmq
+	depends = python-geventhttpclient
+	depends = python-configargparse
+	depends = python-psutil
+	depends = python-flask-basicauth
 	provides = python-locust
 	conflicts = python-locust
 	source = python-locust-git::git+https://github.com/locustio/locust
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-locust-git
 

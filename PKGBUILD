@@ -3,27 +3,27 @@
 
 _pkg=locust
 pkgname="python-$_pkg-git"
-pkgver=0.14.5.r83.g34cb6d1
-pkgrel=2
+pkgver=1.0.3.r25.g5ea0342
+pkgrel=1
 pkgdesc="Scalable user load testing tool written in Python"
 arch=('any')
 url="https://github.com/locustio/$_pkg"
 license=('MIT')
-depends=('python-configargparse'
+depends=('python-gevent'
 	'python-flask'
-	'python-gevent'
-	'python-geventhttpclient-wheels'
-	'python-msgpack'
-	'python-psutil'
-	'python-pyzmq'
 	'python-requests'
-	'python-six')
+	'python-msgpack'
+	'python-pyzmq'
+	'python-geventhttpclient'
+	'python-configargparse'
+	'python-psutil'
+	'python-flask-basicauth')
 makedepends=('git'
 	'python-setuptools')
 provides=("python-$_pkg")
 conflicts=("python-$_pkg")
 source=("$pkgname::git+$url")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname" || exit
@@ -34,8 +34,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname" || exit
-	sed -i 's/msgpack-python/msgpack/' setup.py
-	sed -i 's/        "\([[:alpha:]-]*\).=.*"/        "\1"/' setup.py
+	# sed -i 's/        "\([[:alpha:]-]*\).=.*"/        "\1"/' setup.py
 	python setup.py build
 }
 
