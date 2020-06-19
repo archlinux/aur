@@ -1,67 +1,62 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
+#
 pkgname=chromebook_keyboard_backlight_driver
+# This should be 0.0 instead of 0.1 but too late, now
 pkgver=1.0r24.g39568fa
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
-arch=('i686' 'x86_64')
+arch=("x86_64")
 url="https://github.com/corcoran/chromebook_keyboard_backlight_driver"
-license=('GPL')
+license=("GPL")
 depends=()
-makedepends=('linux-headers')
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname" "$pkgname-dkms")
 install=${pkgname}.install
-source=("git://github.com/corcoran/chromebook_keyboard_backlight_driver.git")
-md5sums=('SKIP')
+_commit=39568facbc8440d84e4bfbd9cc380106ddc2b436
+_baseurl=git+https://github.com/corcoran/chromebook_keyboard_backlight_driver.git
+source=("$_baseurl#commit=$_commit")
+md5sums=(SKIP)
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	printf "1.0r%s.g%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
+    cd "${srcdir}/${pkgname}"
+    printf "1.0r%s.g%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	make
+    local _target_dirs _kvers
+    cd "${srcdir}/${pkgname}"
+    _target_dirs=$(find /usr/lib/modules -name vmlinuz -printf '%h\n')
+    while read -r _kvers; do
+        [[ -d "$_kvers" ]] || exit 11
+        msg2 "$(gettext "Building module for $_kvers")"
+        mkdir -p "_output/${_kvers##*/}"
+        KDIR="$_kvers/build" make -j1
+        mv -v ./*.ko "_output/${_kvers##*/}"
+    done <<<"${_target_dirs%$'\n'}"
 }
 
 package() {
-	local _excl _confd _conf _docd _newest each tdir _multi
-	_excl=_bl # don't autoload chromeos_keyboard_bl.ko variant
-	_confd=$pkgdir/etc/modules-load.d
-	_conf=chromebook_keyboard_backlight_driver.conf
-	_docd=$pkgdir/usr/share/doc/$pkgname
-	_bin=$pkgdir/usr/bin
-	_newest=
-	cd "$srcdir/$pkgname"
-	_multi=skipped_kernels.log
-	echo "# Modules for these kernels were skipped during install" > "$_multi"
-	echo "# Modules for $pkgname" > "$_conf"
-	for each in *.ko; do
-		if [[ $(file "$each") != *BuildID* ]]; then
-			continue
-		fi
-		gzip --keep "$each"
-		for tdir in $(ls -d /usr/lib/modules/extramodules* | sort -Vr); do
-			[[ ! -f "$each.gz" || ! -d "$tdir" ]] && continue
-			if [[ -z "$_newest" || $_newest == "$tdir" ]]; then
-				install -Dm 644 "$each.gz" "$pkgdir/$tdir/$each.gz"
-				_newest=$tdir
-			else
-				# minor versions should probably match but aren't checked;
-				# this note gets deleted anyway if makepkg is run with -c
-				echo "$tdir" >> "$_multi"
-			fi
-		done
-		if [[ ! $each == *"$_excl"* ]]; then
-			basename "$each" '.ko' >> "$_conf"
-		else
-			echo "#$(basename "$each" '.ko')" >> "$_conf"
-		fi
-	done
-	install -Dm 644 README.markdown "$_docd/README.markdown"
-	install -Dm 644 "$_conf" "$_confd/$_conf"
-	install -Dm 6711 keyboard_brightness "$_bin/keyboard_brightness"
+    local _mod _path _target_dir _mod_dir
+    cd "$srcdir/$pkgname"
+    echo "chromeos_keyboard_leds" > _load.conf
+    install -Dm 644 _load.conf \
+        "$pkgdir/etc/modules-load.d/chromebook_keyboard_backlight_driver.conf"
+    for _path in _output/*; do
+        _kvers=${_path#*/}
+        _mod_dir=/usr/lib/modules/$_kvers
+        [[ -d $_mod_dir ]] || exit 12
+        _target_dir=$_mod_dir/kernel/drivers/platform/chrome
+        cd "$_path"
+        for _mod in *.ko; do
+            xz --force --keep "$_mod"
+            [[ $_mod == chromeos_keyboard_bl.ko ]] && continue
+            install -Dm 644 "$_mod.xz" "$pkgdir/$_target_dir/$_mod.xz"
+        done
+        cd "$srcdir/$pkgname"
+    done
+    install -Dm 644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.markdown"
+    install -Dm 6711 keyboard_brightness "$pkgdir/usr/bin/keyboard_brightness"
 }
 
-# vim:ft=sh:noet:list
+# vim:ft=sh
