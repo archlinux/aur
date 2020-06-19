@@ -1,0 +1,16 @@
+pkgbase = rtfm
+	pkgdesc = Open the Arch Wiki search page for a string from the command line
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ThePuzzlemaker/rtfm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = rtfm-0.1.0.tar.gz::https://github.com/ThePuzzlemaker/rtfm/archive/v0.1.0.tar.gz
+	sha512sums = 7356c2973df71034ec11f64322771f1517508579764ac8d41c35398b9aaf27728eb556d32119e24c25212e26c888ab2b4c9f92ee73e9fe287d9b4af1044d8821
+
+pkgname = rtfm
+
