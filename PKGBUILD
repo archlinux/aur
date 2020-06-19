@@ -1,11 +1,11 @@
 # Maintainer: Joan Moreau <jom@grosjo.net>
 pkgname=tomboy-reborn-bin
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 _pkgstate=beta
-pkgdesc="a 'drop-in', straightforward, replacement of deprecated , but extremely usefull, /Gnome Tomboy/"
+pkgdesc="A 'drop-in', straightforward, replacement of deprecated , but extremely usefull, /Gnome Tomboy/"
 arch=('x86_64')
-license=('GPL-3.0')
+license=('LGPL')
 url="https://github.com/grosjo/tomboy-reborn"
 depends=(libcanberra)
 makedepends=()
