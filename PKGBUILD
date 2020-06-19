@@ -14,7 +14,7 @@ sha512sums=('51eddd13fdd929dcbecac3a2dbe5078613a31a96f02193c9494eab3b4320bc1fb9a
 
 package() {
   _variant_name=dark-transparent
-  cd $pkgname-$_commit
+  cd $_pkgname-$_commit
   install -Dm644 highlight.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/highlight.png
   install -Dm644 panel-origin.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-origin.png
   install -Dm644 panel-round.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/panel-round.png
