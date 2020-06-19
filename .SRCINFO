@@ -1,7 +1,7 @@
 pkgbase = pencil
 	pkgdesc = Sketching and GUI prototyping/wireframing tool
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/evolus/pencil
 	arch = any
 	license = GPL2
