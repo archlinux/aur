@@ -1,6 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
-pkgname=fcitx5-materia-exp
+pkgname=fcitx5-skin-materia-exp
+_pkgname=fcitx5-materia-exp
 pkgver=0.0.0.20200618
 _commit=09b9f878923efa6136f60e77440860f92392a932
 pkgrel=1
@@ -8,7 +9,7 @@ pkgdesc="Materia EXP color theme for fcitx5"
 arch=('any')
 url="https://github.com/hosxy/Fcitx5-Materia-EXP"
 license=('Apache')
-source=("https://github.com/hosxy/Fcitx5-Materia-EXP/archive/$_commit/$pkgname-$_commit.tar.gz")
+source=("https://github.com/hosxy/Fcitx5-Materia-EXP/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('f4d59e16a6d20cc6f69df0c0796ba3b920ca6f5423a776d32df1078f4910b1ce4b0a92434ce2468a593d4ba4360f6fcc9b1d5693b2176e1ddcabe5b28b24af52')
 
 package() {
