@@ -1,7 +1,7 @@
 pkgbase = sat-yt-git
 	pkgdesc = Youtube plugin for saturnon
-	pkgver = 0.1.2
-	pkgrel = 3
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://gitlab.com/TheDalaiAlpaca/sat-yt
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sat-yt-git
 	depends = mpv
 	depends = jq
 	depends = less
-	source = https://gitlab.com/TheDalaiAlpaca/sat-yt/-/archive/0.1.2/sat-yt-0.1.2.tar.gz
+	source = https://gitlab.com/TheDalaiAlpaca/sat-yt/-/archive/0.1.6/sat-yt-0.1.6.tar.gz
 	md5sums = SKIP
 
 pkgname = sat-yt-git

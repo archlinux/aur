@@ -3,8 +3,8 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"-git
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Youtube plugin for saturnon"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
