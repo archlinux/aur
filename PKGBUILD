@@ -2,16 +2,16 @@
 
 pkgname=python-interutils
 _pypiname=${pkgname/python-/}
-pkgver=0.10.2
+pkgver=0.11.1
 pkgrel=1
-pkgdesc="A collection of handy utilities and snippets for creating interactive programs"
+pkgdesc="A collection of utilities for creating interactive console scripts"
 arch=('any')
 url='https://pypi.org/project/interutils/'
 license=('MIT')
 depends=('python-setuptools' 'python-termcolor')
 
-source=("https://files.pythonhosted.org/packages/90/29/35e7342751a5292db7588c65f4a4b371affb79f9c9ab7f34874c6063f0bf/interutils-0.10.2.tar.gz")
-sha256sums=('82aff195f8c41c582b00abb1a1223cda2c5aff9845c8cfda45aa3ff4cd3a3ee3')
+source=("https://files.pythonhosted.org/packages/aa/d6/be7a50a263cba7ad3bb88dd8d26194bc67fdebbdbd0e5f13761af870c97e/interutils-0.11.2.tar.gz")
+sha256sums=('2f65243442d722489b4139cb662cbb755a18ca5878fe7df6703dbb83e21363da')
 
 package() {
     cd $srcdir/${_pypiname}-${pkgver}
