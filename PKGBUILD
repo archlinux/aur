@@ -2,7 +2,7 @@
 # Maintainer: Clar Charr <clar@charr.xyz>
 
 pkgname=miniflux
-pkgver=2.0.21
+pkgver=2.0.22
 pkgrel=1
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   miniflux.service
   miniflux.sysusers
 )
-sha256sums=('30a4a05dc9f5647995be515372f1bfbba7264cc654a73eb6d840b591b00d9c97'
+sha256sums=('be7a12799114cf5095f1450493e6876f666de7c0b43f989bc3ca1d3c9afaa8a6'
             '1247a3cfe0307f5f1bb070e616f57344d8f16201070ecf7dda243b3fa1fbd8b8'
             '2b3b50d9b50581a80e85e23011c8b5dd048247206083615f213d63b70f8f13be'
             'd1ce5acf1e633b04b92bf9330bd64d97c19d8f8d39c7bb4b64e11a96be4b73e2')
