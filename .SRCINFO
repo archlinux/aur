@@ -1,13 +1,13 @@
 pkgbase = gtkglextmm
 	pkgdesc = Cpp C++ bindings for gtkglext
 	pkgver = 1.2.0
-	pkgrel = 11
+	pkgrel = 12
 	url = http://gtkglext.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	makedepends = mesa
 	depends = gtkmm
-	depends = gtkglext
+	depends = gtkglext-pangox
 	source = http://downloads.sourceforge.net/sourceforge/gtkglext/gtkglextmm-1.2.0.tar.bz2
 	source = gtkglextmm-1.2.0-aclocal.patch
 	source = fix_ftbfs_gtk_2_20.patch

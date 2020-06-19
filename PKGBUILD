@@ -1,16 +1,16 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Bastien Bouclet <bastien.bouclet@gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=gtkglextmm
 pkgver=1.2.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Cpp C++ bindings for gtkglext"
 arch=('x86_64')
 url="http://gtkglext.sourceforge.net/"
 license=('GPL')
-depends=('gtkmm' 'gtkglext')
+depends=('gtkmm' 'gtkglext-pangox')
 makedepends=('mesa')
 source=("http://downloads.sourceforge.net/sourceforge/gtkglext/${pkgname}-${pkgver}.tar.bz2"
         'gtkglextmm-1.2.0-aclocal.patch'
