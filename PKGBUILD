@@ -1,7 +1,7 @@
 # Maintainer: Maxime Vincent (maximevince) <maxime [dot] vince [at] gmail [dot] com>
 
 pkgname=radare2-cutter-ghidra
-pkgver=1.10.0.r14.gc645cbee
+pkgver=1.10.3.r31.gd33eae4c
 pkgrel=1
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework with Python and Ghidra support'
 url='https://github.com/radareorg/cutter'
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd ${pkgname}
   # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1' | sed 's/-/_/g'
 }
 
 prepare() {
@@ -30,13 +30,13 @@ prepare() {
 
   mkdir -p build
   cd build
-  git clone --depth 1 --recurse-submodules https://github.com/radareorg/r2ghidra-dec.git
-  qmake-qt5 ../src/Cutter.pro CUTTER_ENABLE_PYTHON=true CUTTER_ENABLE_PYTHON_BINDINGS=true CUTTER_R2GHIDRA_STATIC=true R2GHIDRA_SOURCE=`pwd`/r2ghidra-dec
+  if cd r2ghidra-dec; then git pull -r; else git clone --depth 1 --recurse-submodules https://github.com/radareorg/r2ghidra-dec.git; fi
 }
 
 build() {
   cd "${pkgname}/build"
-  make 
+  cmake -DCUTTER_USE_BUNDLED_RADARE2=ON CUTTER_ENABLE_PYTHON=true CUTTER_ENABLE_PYTHON_BINDINGS=true CUTTER_R2GHIDRA_STATIC=true R2GHIDRA_SOURCE=r2ghidra-dec ../src
+  cmake --build .
 }
 
 package() {
