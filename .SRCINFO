@@ -4,7 +4,7 @@ pkgbase = i3-swallow
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-swallow
 	arch = any
-	license = MIT
+	license = GNU General Public License v3.0
 	makedepends = git
 	depends = i3-wm
 	depends = i3ipc-python-git
@@ -13,4 +13,3 @@ pkgbase = i3-swallow
 	md5sums = SKIP
 
 pkgname = i3-swallow
-
