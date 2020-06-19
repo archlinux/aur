@@ -1,4 +1,4 @@
-# Maintainer: twchen aur@twchen.cc
+# Maintainer: kirillz kzasorin@gmail.com
 
 pkgname=joplin-appimage
 pkgver=1.0.220
