@@ -1,6 +1,6 @@
 pkgbase = ftops-git
 	pkgdesc = Fountain markup to PostScript
-	pkgver = v1.0.5
+	pkgver = v1.0.6
 	pkgrel = 1
 	url = https://github.com/PurpleUltraViolet/ftops
 	arch = i686
