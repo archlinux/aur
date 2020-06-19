@@ -2,7 +2,7 @@
 
 pkgname=python-interutils
 _pypiname=${pkgname/python-/}
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A collection of utilities for creating interactive console scripts"
 arch=('any')
