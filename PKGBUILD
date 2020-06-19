@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=1.1.2.517
+pkgver=1.1.2.520
 pkgrel=1
 epoch=1
 pkgdesc="Chrome and Firefox extension for signing with your eID on the web"
@@ -9,8 +9,15 @@ url="http://www.id.ee/"
 license=('LGPL2.1')
 depends=('qt5-base' 'pcsclite' 'ccid')
 makedepends=('lsb-release')
-source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver-1604.tar.xz")
-sha256sums=('5d012c8ee0b6ccb5da6b7b125d2f921cb047cfdc3bad65fcc38ff6de387a4a91')
+source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver-1604.tar.xz"
+        "qt-5.15.patch")
+sha256sums=('872d4e735341a1be0bde2199f0918075b9c54eb426d783e84322ee95f130b94b'
+            '8d443921bc416fc9397289768e6dbef223fc90da34cdaf30bd50e644c7f88a0d')
+
+prepare(){
+    cd "$srcdir/$pkgname/"
+    patch -p1 -i "$srcdir/qt-5.15.patch"
+}
 
 build() {
     cd "$srcdir/$pkgname/"
