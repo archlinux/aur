@@ -44,8 +44,8 @@ _opt_phpver='php56'    # php56 for now, php when avantfax is php7 compatible
 set -u
 pkgname='avantfax'
 _pkgnick="${pkgname}" # 'ArchFAX' # Changing this for an upgrade leaves cruft in many files.
-pkgver='3.3.5'
-pkgrel='3'
+pkgver='3.3.6'
+pkgrel='1'
 pkgdesc='a web-based application for managing faxes on HylaFAX fax servers'
 arch=('any') #('i686' 'x86_64')
 url='http://www.avantfax.com/'
@@ -69,6 +69,7 @@ optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not 
 # 'vixie-cron'   # replaced with systemd timers. I use cronie.
 # 'rsync'        # used only in the manual upgrade scripts. rsync is not used in the package.
 #makedepends=('smtp-server') # sendmail isn't required. It can be used on another server.
+options=('!strip')
 install="${pkgname}.install"
 _verwatch=("${url}/changelog.php" 'AvantFAX\s\([0-9\.]\+\)\s*' 'f')
 source=(
@@ -79,7 +80,13 @@ source=(
   'avantfax.phb.service'
   'avantfax.phb.timer'
 )
-sha256sums=('7dc6cfbaea9e27d6ef696611dad79f50cbaa61be6e3b59ce25fa124af0cf1269'
+md5sums=('2518e1738a0fe8d4bbb7e6b949ad23c1'
+         'daa42347b4b089aa7c0a5a8b55d4537c'
+         '10d6468f628c5522a7e2aabf034eb3d5'
+         '5150cfa5c94562d94bc8e87392632fbd'
+         '1d2da10d483f92a454e2c047a88f2241'
+         '1329f1d50831ee5b48f32caf5278ad04')
+sha256sums=('1e89a2718221c15285e65644d5c6c25eac1175784a5047d059199af61d43dda0'
             'ebd4fb7dd1b5ec7f9ad4f5ec03dcfaa9fde32c3137d52656007bf2df94b28670'
             '2c633cd03dd234cfbcf6d0530be573e9eaa2b1e92876faa946895bf99bfb3ebc'
             '057be12012e2bd10c8400cac9a2612b9d66ea1535476671f28dbf633c8eb6972'
