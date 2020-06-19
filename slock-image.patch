@@ -1,0 +1,137 @@
+--- config.mk
++++ config.mk
+@@ -12,7 +12,7 @@
+ 
+ # includes and libs
+ INCS = -I. -I/usr/include -I${X11INC}
+-LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr
++LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr -lImlib2
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE -DHAVE_SHADOW_H
+ 
+--- slock.c
++++ slock.c
+@@ -18,8 +18,9 @@
+ #include <X11/keysym.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
++#include <Imlib2.h>
++#include <getopt.h>
+ 
+-#include "arg.h"
+ #include "util.h"
+ 
+ char *argv0;
+@@ -35,6 +36,7 @@
+ 	int screen;
+ 	Window root, win;
+ 	Pixmap pmap;
++	Pixmap bgmap;
+ 	unsigned long colors[NUMCOLS];
+ };
+ 
+@@ -190,10 +192,10 @@
+ 			color = len ? INPUT : ((failure || failonclear) ? FAILED : INIT);
+ 			if (running && oldc != color) {
+ 				for (screen = 0; screen < nscreens; screen++) {
+-					XSetWindowBackground(dpy,
+-					                     locks[screen]->win,
+-					                     locks[screen]->colors[color]);
+-					XClearWindow(dpy, locks[screen]->win);
++					if(locks[screen]->bgmap)
++						XSetWindowBackgroundPixmap(dpy, locks[screen]->win, locks[screen]->bgmap);
++					else
++						XSetWindowBackground(dpy, locks[screen]->win, locks[screen]->colors[0]);
+ 				}
+ 				oldc = color;
+ 			}
+@@ -212,7 +214,7 @@
+ }
+ 
+ static struct lock *
+-lockscreen(Display *dpy, struct xrandr *rr, int screen)
++lockscreen(Display *dpy, struct xrandr *rr, int screen,Imlib_Image *image, int use_bg_image)
+ {
+ 	char curs[] = {0, 0, 0, 0, 0, 0, 0, 0};
+ 	int i, ptgrab, kbgrab;
+@@ -233,6 +235,16 @@
+ 		lock->colors[i] = color.pixel;
+ 	}
+ 
++	if(image || use_bg_image == 1) {
++		lock->bgmap = XCreatePixmap(dpy, lock->root, DisplayWidth(dpy, lock->screen), DisplayHeight(dpy, lock->screen), DefaultDepth(dpy, lock->screen));
++		imlib_context_set_image(image);
++		imlib_context_set_display(dpy);
++		imlib_context_set_visual(DefaultVisual(dpy, lock->screen));
++		imlib_context_set_colormap(DefaultColormap(dpy, lock->screen));
++		imlib_context_set_drawable(lock->bgmap);
++		imlib_render_image_on_drawable(0, 0);
++		imlib_free_image();
++	}
+ 	/* init */
+ 	wa.override_redirect = 1;
+ 	wa.background_pixel = lock->colors[INIT];
+@@ -248,6 +260,10 @@
+ 	                                &color, &color, 0, 0);
+ 	XDefineCursor(dpy, lock->win, invisible);
+ 
++	if(lock->bgmap)
++		XSetWindowBackgroundPixmap(dpy, lock->win, lock->bgmap);
++
++
+ 	/* Try to grab mouse pointer *and* keyboard for 600ms, else fail the lock */
+ 	for (i = 0, ptgrab = kbgrab = -1; i < 6; i++) {
+ 		if (ptgrab != GrabSuccess) {
+@@ -292,7 +308,7 @@
+ static void
+ usage(void)
+ {
+-	die("usage: slock [-v] [cmd [arg ...]]\n");
++	die("\nusage: slock [options]\noptions:\n\t-v\tPrint version and exit.\n\t-i\t<full path to image file to display>\n");
+ }
+ 
+ int
+@@ -306,14 +322,25 @@
+ 	const char *hash;
+ 	Display *dpy;
+ 	int s, nlocks, nscreens;
+-
+-	ARGBEGIN {
+-	case 'v':
+-		fprintf(stderr, "slock-"VERSION"\n");
+-		return 0;
+-	default:
+-		usage();
+-	} ARGEND
++	Imlib_Image image;
++	int use_bg_image = 0;
++	int option = 0;
++
++	while ((option = getopt(argc, argv,"vi:")) != -1) {
++		switch (option) {
++			case 'v' :
++				die("slock-"VERSION" mod-bgimage\n");
++				break;
++			case 'i' :
++				use_bg_image = 1;
++				image = imlib_load_image(optarg);
++				if(!image) {
++				die("slock: unable to load image.\n");
++				}		
++             			break;
++			default: usage(); 
++		}
++	}
+ 
+ 	/* validate drop-user and -group */
+ 	errno = 0;
+@@ -355,7 +382,7 @@
+ 	if (!(locks = calloc(nscreens, sizeof(struct lock *))))
+ 		die("slock: out of memory\n");
+ 	for (nlocks = 0, s = 0; s < nscreens; s++) {
+-		if ((locks[s] = lockscreen(dpy, &rr, s)) != NULL)
++		if ((locks[s] = lockscreen(dpy, &rr, s, image, use_bg_image)) != NULL)
+ 			nlocks++;
+ 		else
+ 			break;
