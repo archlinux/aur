@@ -1,6 +1,6 @@
 pkgbase = radian
 	pkgdesc = A 21 century R console
-	pkgver = 0.5.4
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/randy3k/radian
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = radian
 	depends = python-rchitect>=0.3.25
 	depends = python-rchitect<0.4.0
 	replaces = rtichoke
-	source = radian-0.5.4.tar.gz::https://github.com/randy3k/radian/archive/v0.5.4.tar.gz
-	sha256sums = 8f3f4af52c9773cb545d141faa9d9c6905880924ae4d589a932e5ad1bb52747e
+	source = radian-0.5.6.tar.gz::https://github.com/randy3k/radian/archive/v0.5.6.tar.gz
+	sha256sums = 2b7ba355a1a892bfd9c61014156253fdb0274e843854ef580f9738948487d1b6
 
 pkgname = radian
 
