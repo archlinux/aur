@@ -1,0 +1,19 @@
+pkgbase = xmind-2020
+	pkgdesc = XMind - The most popular mind mapping software
+	pkgver = 10.1.2
+	pkgrel = 2
+	url = https://www.xmind.net/
+	arch = x86_64
+	license = custom
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	depends = alsa-lib
+	depends = gtk3
+	source = https://dl3.xmind.net/XMind-2020-for-Linux-amd-64bit-10.1.2-202004142327.deb
+	source = xmind.xml
+	sha256sums = SKIP
+	sha256sums = 833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d
+
+pkgname = xmind-2020
+
