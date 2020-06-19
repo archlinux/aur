@@ -12,27 +12,24 @@ _filename=Joplin-$pkgver.AppImage
 source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
-  joplin.desktop
 )
 sha512sums=(
-  SKIP
   SKIP
   SKIP
 )
 
 package() {
-  echo
-  echo "     _             _ _       "
-  echo "    | | ___  _ __ | (_)_ __  "
-  echo " _  | |/ _ \| '_ \| | | '_ \ "
-  echo "| |_| | (_) | |_) | | | | | |"
-  echo " \___/ \___/| .__/|_|_|_| |_|"
-  echo "            |_|              "
-  echo
-}
-package() {
+    echo
+    echo "     _             _ _       "
+    echo "    | | ___  _ __ | (_)_ __  "
+    echo " _  | |/ _ \| '_ \| | | '_ \ "
+    echo "| |_| | (_) | |_) | | | | | |"
+    echo " \___/ \___/| .__/|_|_|_| |_|"
+    echo "            |_|              "
+    echo
+
     chmod +x $_filename
-    mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16,128x128}/apps
+    mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
     ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/joplin.png" > /dev/null 2>&1
     ./$_filename --appimage-extract joplin.desktop > /dev/null 2>&1
     INSTALL_PATH="/opt/appimages/Joplin.AppImage"
