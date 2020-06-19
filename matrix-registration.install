@@ -11,3 +11,14 @@ post_install() {
 		EOF
 	fi
 }
+
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	[ $(vercmp "$2" '0.5.7') -gt 0 ] || cat <<EOF
+Databse layer changed, if you have tokes without an expiration date set, you'll have to run the following migration manually:
+	update tokens set ex_date=null where ex_date='None';
+The semantics of the db: field in the config.yaml file chnaged as well. Refer to the example config or SQLAlchemy documentation.
+EOF
+}
