@@ -1,26 +1,26 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cobang
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
 url="https://github.com/hongquan/CoBang"
-license=('Apache-2.0')
-depends=('gst-python' 'gobject-introspection' 'gtk3' 'gst-plugins-good'
+license=('GPL3')
+depends=('gst-python' 'gobject-introspection' 'gtk3' 'gst-plugins-good' 'libnm'
          'python-pillow>=7.1.2' 'python-logbook' 'python-single-version'
          'python-zbar')
-makedepends=('meson')
+makedepends=('meson' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c149333054c536fb925db2d6d637555fe44590c4be08b1ad4d9b82a809efaf5c')
+sha256sums=('d6229d68b507afef804e3ff3a7bddc0ba7838da7df9406a18296b775778f6958')
 
 build() {
-	arch-meson "CoBang-$pkgver" build
-	ninja -C build
+	cd "CoBang-$pkgver"
+	arch-meson . build
+	python setup.py build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
-
 	cd "CoBang-$pkgver"
-	install -Dm644 LICENSE-2.0.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+	DESTDIR="$pkgdir" ninja -C build install
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
