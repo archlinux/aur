@@ -1,12 +1,12 @@
 pkgbase = posy-cursors
 	pkgdesc = Port of Posy's improved cursors
 	pkgver = 3.7
-	pkgrel = 1
-	url = https://git.auteiy.me/dmitry/cursorsPosy
+	pkgrel = 2
+	url = https://git.synh.me/dmitry/posy-cursors
 	arch = any
 	license = unknown
-	source = posy-cursors-3.7.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v3.7/cursorsPosy-v3.7.tar.gz?path=themes
-	sha256sums = 38823be4e07fac1e294ae07738fea4b01a89da9c4369047f08832ca4c2bffaac
+	source = posy-cursors-3.7.tar.gz::https://git.synh.me/dmitry/posy-cursors/-/archive/master/posy-cursors-master.tar.gz?path=themes
+	sha256sums = 72fd1ebb2c55864e6c598e96f5dffac6ac68cf8f4b7bb164d62a3ac369acb419
 
 pkgname = posy-cursors
 
