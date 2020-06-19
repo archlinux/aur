@@ -1,13 +1,13 @@
 pkgbase = salt-py3
 	pkgdesc = Central system and configuration manager
 	pkgver = 3001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://saltstack.org/
 	install = salt.install
 	arch = any
 	license = Apache
 	depends = python-jinja
-	depends = python-msgpack<1.0.0
+	depends = python-msgpack
 	depends = python-yaml
 	depends = python-markupsafe
 	depends = python-requests
@@ -30,8 +30,10 @@ pkgbase = salt-py3
 	backup = etc/salt/minion
 	source = https://pypi.io/packages/source/s/salt/salt-3001.tar.gz
 	source = salt.logrotate
+	source = msgpack-requirements-fix.patch
 	sha256sums = 5ca60d1b2cc8e63db50995bd8b117914eeaf57c48ce2b3a3731ee57163adf154
 	sha256sums = abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215
+	sha256sums = 0cb1b198acc79640072fe7925630f4d1950b39208d247e99a8ce6cc9252a27f1
 
 pkgname = salt-py3
 

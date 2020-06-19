@@ -1,0 +1,11 @@
+diff --git a/requirements/base.txt b/requirements/base.txt
+index 27923c00e4..56d9131f29 100644
+--- a/requirements/base.txt
++++ b/requirements/base.txt
+@@ -1,5 +1,5 @@
+ Jinja2
+-msgpack>=0.5,!=0.5.5,<1.0.0
++msgpack>=0.5,!=0.5.5
+ PyYAML
+ MarkupSafe
+ requests>=1.0.0
