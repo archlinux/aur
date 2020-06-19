@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.7.2.arch1
+pkgver=5.7.4.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -140,7 +140,7 @@ prepare() {
 
     msg2 "Setting config..."
     cp ../config .config
-
+    
     if [ -n "$_subarch" ]; then
         yes "$_subarch" | make oldconfig
     else
