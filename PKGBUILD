@@ -86,10 +86,17 @@ prepare() {
 
 build() {
   cd "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
-  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" make build-quick
+  export GOPATH="${srcdir}/gopath"
+  export PATH="${PATH}:${GOPATH}/bin"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -x -v"
+  make build-quick
 
   # To avoid issues deleting directories next time
-  GOPATH="${srcdir}/gopath" go clean --modcache
+  go clean --modcache
 }
 
 package() {
