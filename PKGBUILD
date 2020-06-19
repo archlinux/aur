@@ -1,7 +1,7 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch-git
 pkgver=3.0.r14.g28dded4
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple fetch written in C."
 arch=(any)
 url="https://gitlab.com/bit9tream/bitfetch"
@@ -20,10 +20,10 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# for Artix users you need ti set ID=artix for this time
+# for this time i define that onlu artix does not have /etc/os-release
 build() {
     cd "${pkgname}"
-    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=${ID:-asd}
+    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=artix
 }
 
 package() {
