@@ -3,7 +3,7 @@
 
 pkgname=i3exit
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd/OpenRC-compatible exit-script for i3, including 'blurlock'"
 arch=('any')
 license=('GPL')
@@ -17,7 +17,7 @@ source=("$pkgname"
     'i3exit.install'
     'config')
 install="$pkgname.install"
-md5sums=('cf20f699b2cdc2fb7d22075866e54a9f'
+md5sums=('896d9d0941aa842ceed36c1ddb758f38'
          'e3699b2b3acaa6e59e4d40d9229273ea'
          '60e55cbbc4a3a955dbaf58183604c204'
          'c182bd89c9a507142b301394aef9a89b')

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # /usr/bin/i3exit
 
 # with openrc use loginctl
