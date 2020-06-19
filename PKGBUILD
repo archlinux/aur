@@ -1,14 +1,13 @@
 pkgname=simutrans-pak192.comic
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
-pkgdesc="High resolution graphics set for Simutrans"
+pkgdesc="High resolution graphics set for Simutrans, with a comic style"
 arch=('any')
-url="http://192comic.simutrans.com/"
+url="https://www.simutrans.com/"
 license=('CC-BY-SA')
 provides=('simutrans-pak192.comic')
-options=('!strip')
-source=(https://dl.dropboxusercontent.com/u/85896215/pak192.comic.$pkgver.zip)
-md5sums=('SKIP')
+source=(https://sourceforge.net/projects/simutrans/files/pak192.comic/pak192comic%20for%20120-2-2/pak192.comic.0.5.zip)
+sha256sums=('5e739818e5611dfe81f3069229ae049715fadf5ce54d4df5cbd4198c47c567c2')
 
 package() {
   cd "$srcdir"
