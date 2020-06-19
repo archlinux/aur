@@ -8,12 +8,7 @@ pkgdesc="Fcitx 5 Pinyin Dictionary from zh.wikipedia.org for rime"
 arch=('any')
 url="https://github.com/felixonmars/fcitx5-pinyin-zhwiki"
 license=('GFDL' 'CCPL:by-sa')
-makedepends=('opencc' 'pypinyin')
-optdepends=(
-  'libime: must choose one to build'
-  'libime-git: must choose one to build'
-)
-conflicts=('rime-pinyin-zhwiki')
+makedepends=('libime' 'opencc' 'pypinyin')
 source=("https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/$_converterver/$pkgname-$_converterver.tar.gz"
         https://dumps.wikimedia.org/zhwiki/$pkgver/zhwiki-$pkgver-all-titles-in-ns0.gz)
 md5sums=('2d01f45a73b7c686fef5c44472a9572b'
