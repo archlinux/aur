@@ -1,0 +1,22 @@
+pkgbase = turtlico-git
+	pkgdesc = The easy programming tool
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://turtlico.gitlab.com/
+	arch = any
+	license = GPL3
+	makedepends = libgee
+	makedepends = gtk3
+	makedepends = gtksourceview4
+	makedepends = json-glib
+	makedepends = meson
+	makedepends = vala
+	depends = python
+	depends = tk
+	optdepends = python-gpiozero: Raspberry PI Plugin
+	optdepends = gstreamer: Multimedia plugin
+	source = git+https://gitlab.com/turtlico/turtlico.git
+	sha256sums = SKIP
+
+pkgname = turtlico-git
+
