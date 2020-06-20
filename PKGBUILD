@@ -15,7 +15,7 @@ provides=('leafcount'
           'toafm')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+https://github.com/ryanbressler/CloudForest")
+source=("cloudforest::git+https://github.com/ryanbressler/CloudForest")
 sha256sums=('SKIP')
 
 pkgver() {

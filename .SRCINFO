@@ -15,7 +15,7 @@ pkgbase = cloudforest-git
 	provides = toafm
 	conflicts = cloudforest
 	conflicts = cloudforest-bin
-	source = git+https://github.com/ryanbressler/CloudForest
+	source = cloudforest::git+https://github.com/ryanbressler/CloudForest
 	sha256sums = SKIP
 
 pkgname = cloudforest-git
