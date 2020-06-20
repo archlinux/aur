@@ -22,26 +22,24 @@ source=("dseams::git+https://github.com/d-SEAMS/seams-core")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/seams-core"
+  cd "${srcdir}/dseams"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/seams-core"
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
+  cd "${srcdir}/dseams"
+  rm -rf build
   mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 build() {
-  cd "${srcdir}/seams-core/build"
+  cd "${srcdir}/dseams/build"
   make
 }
 
 package() {
-  cd "${srcdir}/seams-core/build"
+  cd "${srcdir}/dseams/build"
   make DESTDIR=${pkgdir} install
 }
