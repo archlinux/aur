@@ -1,6 +1,6 @@
 pkgbase = wxmaxima-git
 	pkgdesc = A document based interface for the computer algebra system Maxima.
-	pkgver = 20.02.0.r59.gdcb14ee8
+	pkgver = 20.06.6.r96.gfc09b1b93
 	pkgrel = 1
 	url = https://wxmaxima-developers.github.io/wxmaxima/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = wxmaxima-git
 	depends = maxima
 	depends = wxgtk
 	depends = openmp
+	optdepends = gnuplot: for plotting
 	provides = wxmaxima
 	conflicts = wxmaxima
 	source = git+https://github.com/wxMaxima-developers/wxmaxima.git
