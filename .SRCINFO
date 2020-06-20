@@ -1,7 +1,7 @@
 pkgbase = futurerestore-s0uthwest-git
 	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - s0uthwest's fork - git version
 	pkgver = r248.08d0e00
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/s0uthwest/futurerestore
 	arch = x86_64
 	license = LGPL3
@@ -23,17 +23,23 @@ pkgbase = futurerestore-s0uthwest-git
 	source = git+https://github.com/tihmstar/tsschecker.git
 	source = git+https://github.com/s0uthwest/idevicerestore.git
 	source = git+https://github.com/tihmstar/jssy.git
+	source = futurerestore-0001-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch
 	source = img4tool-0001-Include-arpa-inet.h-header.patch
 	source = tsschecker-0001-Fix-incorrect-language-standard.patch
+	source = tsschecker-0002-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch
 	source = idevicerestore-0001-configure.ac-check-for-pthreads.patch
+	source = idevicerestore-0002-Update-libirecovery-libplist-and-libusbmuxd-names-fo.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 8fb94f7c55ffda3e0cae69ff66dbc833e95adcf2dd7fa046012801539539bcde
 	sha256sums = bd9c4dc74f56a26d9aef10938fe0fb58cdec268a80a04b217dd4a32c5b60db2d
-	sha256sums = 3fcde7558ae9f5ebfa930a2b02074251a6817e2a984c8d0e18113baa0ea708a5
-	sha256sums = 621e0e9bd2a31d8be8da59c051d2190a98be0f5c4cd5158225ffd4ff91d3ab1e
+	sha256sums = cc9efff8b41be914b36955d15adca72447ea0ec68ec6fb4bec43bc0d67ca400c
+	sha256sums = f85de30d45d2390e99d08932c4483632854947f18b8681013e9cd7729033a775
+	sha256sums = 366065b2c1d80b6a22a0a3560e51bf30372311d390771ff105b1cf5b53fb7da0
+	sha256sums = 95a44eef2daa9b996b027006e3f7b06eb0e47a51c40ff9fbb0271324c132a97d
 
 pkgname = futurerestore-s0uthwest-git
 

@@ -1,17 +1,17 @@
-From fea67caa58f492b86fbab298e3329dbf5ff835fb Mon Sep 17 00:00:00 2001
+From eccc13e8ca858e4fa7e108cf425f30bd25125e63 Mon Sep 17 00:00:00 2001
 From: 0x9fff00 <0x9fff00+git@protonmail.ch>
 Date: Sat, 8 Feb 2020 18:22:55 +0100
-Subject: [PATCH] Fix incorrect language standard
+Subject: [PATCH 1/2] Fix incorrect language standard
 
 ---
  configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 4d8ca11..e9e2384 100644
+index 9b9acf0..dc7a58b 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -15,7 +15,7 @@ esac
+@@ -23,7 +23,7 @@ AM_CONDITIONAL(WIN32, test x$win32 = xtrue)
  
  # Checks for programs.
  AC_PROG_CC
@@ -21,5 +21,5 @@ index 4d8ca11..e9e2384 100644
  AC_PROG_LIBTOOL
  AC_CONFIG_MACRO_DIRS([m4])
 -- 
-2.25.0
+2.27.0
 

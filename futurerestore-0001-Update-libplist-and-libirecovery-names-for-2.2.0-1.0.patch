@@ -1,0 +1,30 @@
+From cbd71ea81dff449b696d1764adae824ad45399a2 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 20 Jun 2020 23:36:53 +0200
+Subject: [PATCH] Update libplist and libirecovery names for 2.2.0/1.0.0
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 68e5e62..2178d09 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,11 +30,11 @@ AC_CONFIG_SRCDIR([futurerestore])
+ 
+ # Check for libraries
+ AC_SEARCH_LIBS([pthread_create], [pthread])
+-PKG_CHECK_MODULES(libplist, libplist >= 2.0.0)
++PKG_CHECK_MODULES(libplist, libplist-2.0 >= 2.2.0)
+ PKG_CHECK_MODULES(libzip, libzip >= 0.10)
+ PKG_CHECK_MODULES(libimobiledevice, libimobiledevice-1.0 >= 1.2.1)
+ PKG_CHECK_MODULES(libfragmentzip, libfragmentzip >= 1.0)
+-PKG_CHECK_MODULES(libirecovery, libirecovery >= 0.2.0)
++PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >= 1.0.0)
+ 
+ AC_PROG_CC
+ AC_PROG_CXX
+-- 
+2.27.0
+

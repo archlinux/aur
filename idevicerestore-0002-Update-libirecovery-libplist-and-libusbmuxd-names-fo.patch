@@ -1,0 +1,32 @@
+From c9d64f9ab3dadfb6bd080df721fa6e7277a629a2 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 20 Jun 2020 23:48:52 +0200
+Subject: [PATCH 2/2] Update libirecovery, libplist and libusbmuxd names for
+ 1.0.0/2.2.0/2.0.2
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d69e56d..cd8cc32 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,11 +20,11 @@ AC_PROG_LIBTOOL
+ 
+ # Checks for libraries.
+ AC_SEARCH_LIBS([pthread_create], [pthread])
+-PKG_CHECK_MODULES(libirecovery, libirecovery >= 0.2.0)
++PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >= 1.0.0)
+ PKG_CHECK_MODULES(libimobiledevice, libimobiledevice-1.0 >= 1.2.1)
+-PKG_CHECK_MODULES(libplist, libplist >= 1.0)
++PKG_CHECK_MODULES(libplist, libplist-2.0 >= 2.2.0)
+ PKG_CHECK_MODULES(libzip, libzip >= 1.4)
+-PKG_CHECK_MODULES(libusbmuxd, libusbmuxd >= 1.0)
++PKG_CHECK_MODULES(libusbmuxd, libusbmuxd-2.0 >= 2.0.2)
+ PKG_CHECK_MODULES(libcurl, libcurl >= 7.0)
+ PKG_CHECK_MODULES(openssl, openssl >= 0.9.8)
+ PKG_CHECK_MODULES(zlib, zlib >= 1.2)
+-- 
+2.27.0
+
