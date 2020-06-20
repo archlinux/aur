@@ -9,7 +9,7 @@ pkgbase = pwncat-git
 	makedepends = git
 	depends = python
 	provides = pwncat
-	source = git+https://github.com/cytopia/pwncat
+	source = pwncat::git+https://github.com/cytopia/pwncat
 	sha256sums = SKIP
 
 pkgname = pwncat-git

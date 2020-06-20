@@ -10,7 +10,7 @@ license=('MIT')
 provides=('pwncat')
 depends=('python')
 makedepends=('python-setuptools' 'git')
-source=("git+https://github.com/cytopia/pwncat")
+source=("pwncat::git+https://github.com/cytopia/pwncat")
 sha256sums=('SKIP')
 
 pkgver() {
