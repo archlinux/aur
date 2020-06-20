@@ -19,22 +19,22 @@ source=("lua51-lgi::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/lua51-lgi"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }  
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/lua51-lgi"
   sed -i -e "s/^PKGS = .*/& lua${_luaver//./}/" lgi/Makefile
 }
 
 build() {
-  cd "${srcdir}/lgi"
+  cd "${srcdir}/lua51-lgi"
   make PREFIX=/usr LUA_VERSION=${_luaver}
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/lua51-lgi"
   make DESTDIR="${pkgdir}/" PREFIX=/usr LUA_VERSION=${_luaver} install
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/lua51-lgi"
   install -Dm 644 docs/* -t "${pkgdir}/usr/share/doc/lua51-lgi"
