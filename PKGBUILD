@@ -7,7 +7,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.19.2
+pkgver=1.2.21
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -80,7 +80,7 @@ SPIRV-Headers.git#commit=29c11140baaf9f7fdaa39a583672c556bf1795a1"
 #commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474"
 "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
 )
-sha256sums=('13a2fb5f0ed0cb0adc9834e40838fdece37898a62a5a16271ebe796471bd0e83'
+sha256sums=('ac5f65cf32019c2d44033e25f1a3424ef2727cbfafc06b5083114e63b40845a1'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'

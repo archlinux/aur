@@ -1,6 +1,6 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.2.19.2
+	pkgver = 1.2.21
 	pkgrel = 1
 	url = http://www.aseprite.org/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = aseprite
 	conflicts = aseprite-git
 	conflicts = aseprite-gpl
 	conflicts = skia-git
-	source = https://github.com/aseprite/aseprite/releases/download/v1.2.19.2/Aseprite-v1.2.19.2-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.2.21/Aseprite-v1.2.21-Source.zip
 	source = aseprite.desktop
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m81
@@ -61,7 +61,7 @@ pkgbase = aseprite
 	source = git+https://skia.googlesource.com/external/github.com/google/wuffs.git#commit=4080840928c0b05a80cda0d14ac2e2615f679f1a
 	source = git+https://chromium.googlesource.com/chromium/src/third_party/zlib#commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474
 	source = gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74
-	sha256sums = 13a2fb5f0ed0cb0adc9834e40838fdece37898a62a5a16271ebe796471bd0e83
+	sha256sums = ac5f65cf32019c2d44033e25f1a3424ef2727cbfafc06b5083114e63b40845a1
 	sha256sums = deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25
 	sha256sums = SKIP
 	sha256sums = SKIP
