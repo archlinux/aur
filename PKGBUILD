@@ -29,7 +29,7 @@ package() {
   
   mkdir -p $pkgdir/usr/bin
   for i in $(ls $pkgdir/opt/rust/bin); do
-    ln -s $pkgdir/opt/rust/bin/$i $pkgdir/usr/bin/$i
+    ln -s /opt/rust/bin/$i $pkgdir/usr/bin/$i
   done
   chmod -R a+rw $pkgdir/opt/rust # rustup and cargo won't run as an ordinary user otherwise
 }
