@@ -30,7 +30,7 @@ package() {
 	[ ! -f "\$conf_dir/preferences.txt" ] && cp "/opt/subs2srs/preferences.txt" "\$conf_dir/"
 
 	cd "\$conf_dir"
-	mono /opt/subs2srs/subs2srs.exe
+	exec mono /opt/subs2srs/subs2srs.exe
 	END
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
 
