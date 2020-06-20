@@ -1,6 +1,6 @@
 pkgbase = linus-meta
 	pkgdesc = Packages i always need so i dont forget or uninstall them
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
