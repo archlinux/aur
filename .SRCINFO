@@ -1,0 +1,18 @@
+pkgbase = python-openrgb-git
+	pkgdesc = A python client for the OpenRGB SDK
+	pkgver = v0.0.5.r1.gf32661a
+	pkgrel = 1
+	url = https://github.com/jath03/openrgb-python
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = git
+	depends = openrgb
+	depends = python
+	provides = python-openrgb
+	conflicts = python-openrgb
+	source = python-openrgb::git+https://github.com/jath03/openrgb-python
+	sha256sums = SKIP
+
+pkgname = python-openrgb-git
+
