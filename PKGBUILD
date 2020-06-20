@@ -76,7 +76,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -447,7 +447,7 @@ _package() {
   _kernver="$(make LOCALVERSION= kernelrelease)"
 
   mkdir -p "${pkgdir}"/usr/lib/modules
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
 
   msg2 "Installing boot image..."
@@ -659,7 +659,7 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'e78bfa9f5a1065d93396a37d59043bd79805f4681df27ef44dcddea8de092818'
             '35b1eea04b02c8072568bce49468eb8487e1217a0f5a3cd979cff9af569ab2ef'
-            '59008ddd377115e3ecba7dd33fa04be709cbfe1ef104a7d462b5ed01e04a04b7'
+            '9b52e6b04ec3b5d89c20a8db2279d2f4c8799b710af78937540d3e42afab4b94'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '2c3a80e1a0e5c90e05d8f03d8c11853f47f7d3e61afb324095e883691a5f74ec'
             '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
