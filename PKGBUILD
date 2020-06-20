@@ -10,18 +10,25 @@ license=("GPL")
 arch=('i686' 'x86_64' 'aarch64')
 
 makedepends=("git" "cmake" "bluez-libs" "libvpx")
-
-depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libjpeg-turbo" "libpng" "freetype2")
+depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder" "libjpeg-turbo" "libpng" "freetype2")
 
 source=(
     "stk-code::git+https://github.com/supertuxkart/stk-code.git"
-)
 
-md5sums=('SKIP')
+    # Use this source for the network alpha testing branch
+    #"stk-code::git+https://github.com/supertuxkart/stk-code.git#branch=network"
+
+    # assets reside in subversion repository
+    "stk-assets::svn+https://svn.code.sf.net/p/supertuxkart/code/stk-assets"
+)
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/stk-code"
     local _git_rev="$(git rev-list --count HEAD)"
+
+    cd "${srcdir}/stk-assets"
+    local _assets_rev="$(svnversion)"
 
     printf "%s+%s" "${_git_rev}" "${_assets_rev}"
 }
@@ -32,10 +39,10 @@ build() {
         rm -rf cmake_build
     fi
     mkdir cmake_build
-    cd cmake_build
 
+    cd cmake_build
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_RECORDER=off \
-       -DESERVER_ONLY=ON -DCHECK_ASSETS=off ..
+       -DESERVER_ONLY=ON ..
     make
 }
 
