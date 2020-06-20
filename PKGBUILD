@@ -11,7 +11,7 @@ makedepends=('git' 'gtk-update-icon-cache')
 optdepends=('mojave-gtk-theme-git: Recommended GTK theme')
 license=('GPL3')
 url="https://github.com/vinceliuice/${_gitname}"
-source=("git+${url}")
+source=("mcmojave-circle-icon-theme::git+${url}")
 sha256sums=('SKIP')
 options=('!strip')
 

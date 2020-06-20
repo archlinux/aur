@@ -9,7 +9,7 @@ pkgbase = mcmojave-circle-icon-theme-git
 	makedepends = gtk-update-icon-cache
 	optdepends = mojave-gtk-theme-git: Recommended GTK theme
 	options = !strip
-	source = git+https://github.com/vinceliuice/McMojave-circle
+	source = mcmojave-circle-icon-theme::git+https://github.com/vinceliuice/McMojave-circle
 	sha256sums = SKIP
 
 pkgname = mcmojave-circle-icon-theme-git
