@@ -10,7 +10,7 @@ license=('GPL2')
 provides=('workstation')
 depends=('libnotify' 'notify-osd' 'opencv2')
 makedepends=('cargo' 'opencv2')
-source=("git+${url}")
+source=("workstation::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

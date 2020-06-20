@@ -12,7 +12,7 @@ pkgbase = workstation-git
 	depends = notify-osd
 	depends = opencv2
 	provides = workstation
-	source = git+https://github.com/amar-laksh/workstation
+	source = workstation::git+https://github.com/amar-laksh/workstation
 	sha256sums = SKIP
 
 pkgname = workstation-git
