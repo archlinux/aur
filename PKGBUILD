@@ -1,7 +1,7 @@
 # Maintainer: Drommer <drommer@archlinux.org>
 
 pkgname=breath2-git
-pkgver=r90.bcca0ed
+pkgver=r106.e2a317a5
 pkgrel=1
 pkgdesc='Breath 2 Look & Feel package (color schemes, icons, Konsole theme, Plasma5 theme, SDDM theme, wallpapers, Yakuake theme)'
 arch=(x86_64)

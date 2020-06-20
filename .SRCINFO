@@ -1,6 +1,6 @@
 pkgbase = breath2-git
 	pkgdesc = Breath 2 Look & Feel package (color schemes, icons, Konsole theme, Plasma5 theme, SDDM theme, wallpapers, Yakuake theme)
-	pkgver = r90.bcca0ed
+	pkgver = r106.e2a317a5
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/artwork/themes/breath2
 	arch = x86_64
