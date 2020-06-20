@@ -10,6 +10,7 @@ pkgbase = picard-git
 	depends = python-pyqt5
 	depends = python-mutagen
 	optdepends = python-discid: CD-Lookup feature
+	optdepends = python-markdown: Scripting documentation
 	optdepends = chromaprint: AcoustID integration
 	optdepends = qt5-translations: Translated Qt5 components
 	optdepends = qt5-multimedia: Built‐in media player
