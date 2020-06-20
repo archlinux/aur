@@ -9,7 +9,7 @@ url='http://mylg.io'
 license=('MIT')
 depends=('libpcap')
 makedepends=('go' 'git')
-source=("git+https://github.com/mehrdadrad/mylg")
+source=("mylg::git+https://github.com/mehrdadrad/mylg")
 sha256sums=('SKIP')
 
 pkgver() {

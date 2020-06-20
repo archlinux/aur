@@ -8,7 +8,7 @@ pkgbase = mylg-git
 	makedepends = go
 	makedepends = git
 	depends = libpcap
-	source = git+https://github.com/mehrdadrad/mylg
+	source = mylg::git+https://github.com/mehrdadrad/mylg
 	sha256sums = SKIP
 
 pkgname = mylg-git
