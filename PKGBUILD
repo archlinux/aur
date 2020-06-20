@@ -15,19 +15,19 @@ source=("rednukem::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/NRedneck"
+  cd "${srcdir}/rednukem"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/NRedneck"
+  cd "${srcdir}/rednukem"
   make PACKAGE_REPOSITORY=1
   convert -verbose source/rr/rsrc/game_icon.ico rednukem.png
   gendesk -f -n --pkgname "rednukem" --pkgdesc "${pkgdesc}" --exec="rednukem" --categories=Game\;Shooter --icon rednukem
 }
 
 package() {
-  cd "${srcdir}/NRedneck"
+  cd "${srcdir}/rednukem"
   install -d "${pkgdir}/usr/bin"
   install -m755 rednukem "${pkgdir}/usr/bin/"
   install -Dm644 "package/common/buildlic.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
