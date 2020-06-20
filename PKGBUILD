@@ -2,7 +2,7 @@
 
 pkgname='pidgin-otrng-git'
 _pkgname='pidgin-otrng'
-pkgver=489.bcd69a4
+pkgver=694.232fc65
 pkgrel=1
 pkgdesc='a pidgin plugin which implements Off-the-Record (OTRv4) Messaging'
 arch=('i686' 'x86_64')

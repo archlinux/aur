@@ -1,6 +1,6 @@
 pkgbase = pidgin-otrng-git
 	pkgdesc = a pidgin plugin which implements Off-the-Record (OTRv4) Messaging
-	pkgver = 489.bcd69a4
+	pkgver = 694.232fc65
 	pkgrel = 1
 	url = https://github.com/otrv4/pidgin-otrng
 	arch = i686
