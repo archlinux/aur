@@ -1,0 +1,26 @@
+pkgbase = supertuxkart-server-git
+        pkgdesc = Server for SuperTuxKart - development version
+        pkgver = 22105+
+        pkgrel = 1
+        url = http://supertuxkart.sourceforge.net/
+        arch = i686
+        arch = x86_64
+        arch = aarch64
+        license = GPL
+        makedepends = git
+        makedepends = cmake
+        makedepends = bluez-libs
+        makedepends = libvpx
+        depends = libvorbis
+        depends = freealut
+        depends = libgl
+        depends = glut
+        depends = fribidi
+        depends = glew
+        depends = libjpeg-turbo
+        depends = libpng
+        depends = freetype2
+        source = stk-code::git+https://github.com/supertuxkart/stk-code.git
+        md5sums = SKIP
+
+pkgname = supertuxkart-server-git
