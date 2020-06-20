@@ -2,9 +2,9 @@
      
 pkgname=nvidia-pf
 pkgver=440.82
-pkgrel=4
-_goodkver=5.6
-_badkver=5.7
+pkgrel=5
+_goodkver=5.7
+_badkver=5.8
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -22,8 +22,10 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
 provides=('NVIDIA-MODULE')
 license=('custom')
 options=(!strip)
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('abc45d506515bde8f9efad90bf54f796')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+       'nvidia-kernel-5.7.patch')
+md5sums=('abc45d506515bde8f9efad90bf54f796'
+         '8b0b4fd32275a4745d55ea391f23a43e')
 
 
 
@@ -36,6 +38,8 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
+  pwd
+  patch -Np1 -i "${srcdir}/nvidia-kernel-5.7.patch"
 }
 
 build() {
