@@ -6,20 +6,20 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.10.3
+pkgrel=1
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
-depends=('python2' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libgnomeui' 'libunique')
+depends=('python2' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libunique' )
 makedepends=('perl-xml-parser' 'itstool' 'yelp-tools')
 source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('b5c1103b82811d4161c7e25e27bda5579009965d0f78872f76e4bc25e29e9170')
+sha256sums=('ef130851058d63194f790bfbba27b6be2b6f2906d923ccec847b9cc595193a2e')
 
 build() {
   cd "$pkgname-$pkgver"
-  export PYTHON=python2
+
   ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
 	      --localstatedir=/var --enable-python \
 	      --with-help-dir=/usr/share/doc/$pkgname
