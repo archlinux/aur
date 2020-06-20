@@ -16,7 +16,7 @@ depends=('libxrandr'
          'sdl2_net')
 makedepends=('go' 'gendesk')
 install=opendiablo2.install
-source=("git+https://github.com/OpenDiablo2/OpenDiablo2")
+source=("opendiablo2::git+https://github.com/OpenDiablo2/OpenDiablo2")
 sha256sums=('SKIP')
 
 pkgver() {

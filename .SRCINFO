@@ -16,7 +16,7 @@ pkgbase = opendiablo2-git
 	depends = sdl2_mixer
 	depends = sdl2_net
 	provides = opendiablo2
-	source = git+https://github.com/OpenDiablo2/OpenDiablo2
+	source = opendiablo2::git+https://github.com/OpenDiablo2/OpenDiablo2
 	sha256sums = SKIP
 
 pkgname = opendiablo2-git
