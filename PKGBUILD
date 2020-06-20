@@ -10,10 +10,10 @@ license=('GPL3')
 provides=('it-edit')
 depends=('vte290' 'gtksourceview3')
 makedepends=('git')
-source=("git+${url}"
-    '0001-fix-make-install-failure-inside-fakeroot.patch')
+source=("it-edit::git+${url}"
+        '0001-fix-make-install-failure-inside-fakeroot.patch')
 sha256sums=('SKIP'
-      'SKIP')
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/IT-Edit/it-edit-2.0/"
