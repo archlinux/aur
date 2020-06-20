@@ -1,0 +1,60 @@
+diff --git a/Makefile.custom b/Makefile.custom
+index 49fe83e..1fc05a4 100644
+--- a/Makefile.custom
++++ b/Makefile.custom
+@@ -71,11 +71,11 @@ WARNFLAGS_CXX = -Wgcc-compat
+ endif
+ 
+ ARCHFLAGS += $(XARCHFLAGS)
+-CFLAGS  = $(LANGFLAGS) $(WARNFLAGS) $(WARNFLAGS_C) $(INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCFLAGS)
+-PUB_CFLAGS  = $(LANGFLAGS) $(WARNFLAGS) $(WARNFLAGS_C) $(PUB_INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCFLAGS)
+-CXXFLAGS = $(LANGXXFLAGS) $(WARNFLAGS) $(WARNFLAGS_CXX) $(INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCXXFLAGS)
++CFLAGS  = $(LANGFLAGS) $(WARNFLAGS) $(WARNFLAGS_C) $(INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCFLAGS)
++PUB_CFLAGS  = $(LANGFLAGS) $(WARNFLAGS) $(WARNFLAGS_C) $(PUB_INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCFLAGS)
++CXXFLAGS = $(LANGXXFLAGS) $(WARNFLAGS) $(WARNFLAGS_CXX) $(INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCXXFLAGS)
+ LDFLAGS = $(XLDFLAGS)
+-ASFLAGS = $(ARCHFLAGS) $(XASFLAGS)
++ASFLAGS = $(XASFLAGS)
+ 
+ SAGE ?= sage
+ SAGES= $(shell ls test/*.sage)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 922c0fd..f16dec3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,7 +22,7 @@ if ARCH_32
+ goldilocks_gen_tables_SOURCES = utils.c goldilocks_gen_tables.c arch_32/f_impl.c f_arithmetic.c f_generic.c goldilocks.c scalar.c
+ endif
+ 
+-goldilocks_gen_tables_CFLAGS = $(AM_CFLAGS) $(LANGFLAGS) $(WARNFLAGS) $(INCFLAGS) $(INCFLAGS_448) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCFLAGS)
++goldilocks_gen_tables_CFLAGS = $(AM_CFLAGS) $(LANGFLAGS) $(WARNFLAGS) $(INCFLAGS) $(INCFLAGS_448) $(OFLAGS) $(GENFLAGS) $(XCFLAGS)
+ goldilocks_gen_tables_LDFLAGS = $(AM_LDFLAGS) $(XLDFLAGS)
+ 
+ 
+@@ -51,7 +51,7 @@ if ARCH_32
+ libgoldilocks_la_SOURCES = utils.c shake.c spongerng.c arch_32/f_impl.c f_arithmetic.c f_generic.c goldilocks.c elligator.c scalar.c eddsa.c GEN/goldilocks_tables.c
+ endif
+ 
+-libgoldilocks_la_CFLAGS = $(AM_CFLAGS) $(LANGFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCFLAGS)
++libgoldilocks_la_CFLAGS = $(AM_CFLAGS) $(LANGFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCFLAGS)
+ libgoldilocks_la_LDFLAGS = $(AM_LDFLAGS) $(XLDFLAGS)
+ 
+ incsubdir = $(includedir)/goldilocks
+diff --git a/test/Makefile.am b/test/Makefile.am
+index e2bcfe3..3f6cc16 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -3,11 +3,11 @@ include $(top_srcdir)/variables.am
+ check_PROGRAMS = test test_bench
+ 
+ test_SOURCES = test_goldilocks.cxx
+-test_CXXFLAGS = $(AM_CXXFLAGS) $(LANGXXFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCXXFLAGS) $(LIBGOLDILOCKS_CXXFLAGS)
++test_CXXFLAGS = $(AM_CXXFLAGS) $(LANGXXFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCXXFLAGS) $(LIBGOLDILOCKS_CXXFLAGS)
+ test_LDFLAGS = $(AM_LDFLAGS) $(XLDFLAGS) $(LIBGOLDILOCKS_LIBS)
+ test_LDADD = $(top_srcdir)/src/libgoldilocks.la
+ 
+ test_bench_SOURCES = bench_goldilocks.cxx
+-test_bench_CXXFLAGS = $(AM_CXXFLAGS) $(LANGXXFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(ARCHFLAGS) $(GENFLAGS) $(XCXXFLAGS) $(LIBGOLDILOCKS_CXXFLAGS)
++test_bench_CXXFLAGS = $(AM_CXXFLAGS) $(LANGXXFLAGS) $(WARNFLAGS) $(INCFLAGS) $(OFLAGS) $(GENFLAGS) $(XCXXFLAGS) $(LIBGOLDILOCKS_CXXFLAGS)
+ test_bench_LDFLAGS = $(AM_LDFLAGS) $(XLDFLAGS) $(LIBGOLDILOCKS_LIBS)
+ test_bench_LDADD = $(top_srcdir)/src/libgoldilocks.la
