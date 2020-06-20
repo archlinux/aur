@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -d /usr/share/gamejolt/data-376715-852660 ]; then
+	echo "ok"
+else 
+	tar -xf /usr/share/gamejolt/data-376715-852660.tar.gz
+fi
+echo "Run Gamejolt client"
+/usr/share/gamejolt/game-jolt-client
