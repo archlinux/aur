@@ -29,12 +29,12 @@ source=("cozy-audiobooks::git+https://github.com/geigi/cozy")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/cozy"
+  cd "${srcdir}/cozy-audiobooks"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/cozy"
+  cd "${srcdir}/cozy-audiobooks"
   meson --prefix='/usr' build
   ninja -C build
   ninja -C build com.github.geigi.cozy-update-po
@@ -42,6 +42,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/cozy"
+  cd "${srcdir}/cozy-audiobooks"
   DESTDIR="${pkgdir}" ninja -C build install
 }
