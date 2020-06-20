@@ -1,0 +1,17 @@
+pkgbase = fspviewer
+	pkgdesc = A standalone viewer for spherical (equirectangular) panoramic images
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://www.fsoft.it/FSPViewer
+	arch = x86_64
+	license = custom:fspviewer
+	depends = gtk2
+	depends = libsm
+	depends = libpng12
+	source = fspviewer-2.1.0.tar.gz::http://www.fsoft.it/FSPViewer/dwn-files/FSPViewer-2.1.0-64.tar.gz
+	source = fspviewer.png
+	sha256sums = 3bb70c654037225c4f9b8198eb893ab5b21dbaf6b2917a17fa1792b4d5adcde6
+	sha256sums = SKIP
+
+pkgname = fspviewer
+
