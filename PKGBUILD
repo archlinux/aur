@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=84.0.4147.21
+pkgver=85.0.4168.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -242,6 +242,7 @@ _keeplibs=(
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
+           'third_party/opencv'
            'third_party/openscreen'
            'third_party/openscreen/src/third_party/mozilla'
            'third_party/openscreen/src/third_party/tinycbor/src/src'
