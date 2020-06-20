@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=cadet-gtk-git
-pkgver=0.5.0.r8.g55b32ae
+pkgver=0.5.0.r40.g46b0961
 pkgrel=1
 pkgdesc="A GTK based GUI for the CADET subsystem of GNUnet."
 url="https://gitlab.com/TheJackiMonster/cadet-gtk"
@@ -28,5 +28,13 @@ build() {
 package() {
 	cd "${srcdir}/cadet-gtk"
 	make install DESTDIR="$pkgdir"
+	
+	install -Dm644 "resources/icon/full_color_32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/cadet-gtk.png"
+	install -Dm644 "resources/icon/full_color_64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/cadet-gtk.png"
+	install -Dm644 "resources/icon/full_color_128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cadet-gtk.png"
+	install -Dm644 "resources/icon/full_color_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/cadet-gtk.png"
+	install -Dm644 "resources/icon/full_color_512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/cadet-gtk.png"
+	
+	install -Dm644 "cadet-gtk.desktop" "$pkgdir/usr/share/applications/cadet-gtk.desktop"
 }
 
