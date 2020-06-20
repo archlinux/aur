@@ -1,11 +1,11 @@
-# Maintainer: foo bar
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
+# Quick thanks from deuill, creator of rofi-dmenu
 pkgname=opendoas-sudo
 pkgver=1
 pkgrel=1
 pkgdesc="A symlink for using Doas as a drop-in replacement to sudo, heavily copy-pasted from rofi-dmenu"
 arch=('any')
-url="https://davedavenport.github.io/rofi/"
+url="https://github.com/Duncaen/OpenDoas"
 license=('MIT')
 depends=('opendoas')
 provides=('sudo')
