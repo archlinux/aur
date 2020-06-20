@@ -15,7 +15,7 @@ source=("kuyen-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/kuyen-icons"
+  cd "${srcdir}/kuyen-icon-theme"
   ( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/kuyen-icons"
+  cd "${srcdir}/kuyen-icon-theme"
   rm *.md
   rm -rf .git
 }
