@@ -9,7 +9,7 @@ url="http://subs2srs.sourceforge.net/"
 license=('GPL')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
 optdepends=('anki')
-makedepends=('p7zip' 'imagemagick')
+makedepends=('p7zip' 'icoutils')
 source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download")
 sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1')
 
@@ -67,6 +67,21 @@ package() {
 	ln -sf /usr/bin/mkvextract "$pkgdir/opt/subs2srs/Utils/mkvtoolnix/mkvextract.exe"
 	ln -sf /usr/bin/mkvinfo    "$pkgdir/opt/subs2srs/Utils/mkvtoolnix/mkvinfo.exe"
 
-	7z -y e "$pkgname.exe" '3.ico' -r 1>/dev/null
-	convert '3.ico' "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+	7z -y e "$pkgname.exe" '3.ico' '4.ico' -r 1>/dev/null
+	icotool -x '3.ico' '4.ico'
+	for size in 16 32; do
+		install -Dm644 \
+		?"_1_${size}x${size}x24.png" \
+		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+	done
+
+	7z -y e 'Utils/SubsReTimer/SubsReTimer.exe' '*.ico' -r 1>/dev/null
+	icotool -x ./*.ico
+	for size in 16 32 48; do
+		install -Dm644 \
+		?"_1_${size}x${size}x32.png" \
+		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/subsretimer.png"
+	done
+
+	rm ./*.ico ./*.png
 }
