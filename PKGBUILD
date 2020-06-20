@@ -11,7 +11,7 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'libxss' 'cmake' 'mercurial')
+             'wayland-protocols' 'libxss' 'cmake' 'libxxf86vm' 'mercurial')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'

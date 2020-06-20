@@ -15,6 +15,7 @@ pkgbase = sdl2-hg
 	makedepends = wayland-protocols
 	makedepends = libxss
 	makedepends = cmake
+	makedepends = libxxf86vm
 	makedepends = mercurial
 	depends = glibc
 	depends = libxext
