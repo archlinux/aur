@@ -10,7 +10,7 @@ Group=courier
 EnvironmentFile=/etc/courier-imap/imapd
 ExecStart=/usr/lib/courier-imap/imapd-ssl.rc start
 ExecStop=/usr/lib/courier-imap/imapd-ssl.rc stop
-PIDFile=/var/run/courier/imapd-ssl.pid
+PIDFile=/run/courier/imapd-ssl.pid
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID
 
 [Install]
