@@ -11,7 +11,7 @@ pkgbase = flatery-icon-theme-git
 	conflicts = flatery-icon-theme
 	conflicts = flatery-icon-theme-git
 	options = !strip
-	source = git+https://github.com/cbrnix/Flatery
+	source = flatery-icon-theme::git+https://github.com/cbrnix/Flatery
 	sha256sums = SKIP
 
 pkgname = flatery-icon-theme-git

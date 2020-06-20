@@ -7,11 +7,11 @@ pkgdesc='Flatery is an icon theme for linux in flat style'
 arch=('any')
 url='https://github.com/cbrnix/Flatery'
 license=('CCPL')
-makedepends=('git')
-source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
+makedepends=('git')
+source=("flatery-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
