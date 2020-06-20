@@ -1,6 +1,6 @@
 pkgbase = libotr-ng-git
 	pkgdesc = A new implementation of OTR with support for version 4.
-	pkgver = 2783.b40e1410
+	pkgver = 2884.cd983b2d
 	pkgrel = 1
 	url = https://github.com/otrv4/libotr-ng
 	arch = i686
@@ -12,9 +12,7 @@ pkgbase = libotr-ng-git
 	depends = libotr
 	depends = libgcrypt
 	source = git+https://github.com/otrv4/libotr-ng.git
-	source = nopedantic.patch
 	sha256sums = SKIP
-	sha256sums = 5e4b09cced2c12e592caae20a9ee1723090cae9885ced69205947be4d9385b57
 
 pkgname = libotr-ng-git
 

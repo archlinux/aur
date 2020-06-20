@@ -2,22 +2,20 @@
 
 pkgname='libotr-ng-git'
 _pkgname='libotr-ng'
-pkgver=2783.b40e1410
+pkgver=2884.cd983b2d
 pkgrel=1
 pkgdesc='A new implementation of OTR with support for version 4.'
 arch=('i686' 'x86_64')
 url='https://github.com/otrv4/libotr-ng'
 license=('LGPL')
 depends=('glib2' 'libgoldilocks-git' 'libsodium' 'libotr' 'libgcrypt')
-source=('git+https://github.com/otrv4/libotr-ng.git'
-	nopedantic.patch)
-sha256sums=('SKIP'
-	5e4b09cced2c12e592caae20a9ee1723090cae9885ced69205947be4d9385b57)
+source=('git+https://github.com/otrv4/libotr-ng.git')
+sha256sums=('SKIP')
 
-prepare() {
-	cd "${srcdir}/${_pkgname}"
-	patch -p1 -i "${srcdir}/nopedantic.patch"
-}
+#prepare() {
+	#cd "${srcdir}/${_pkgname}"
+	#patch -p1 -i "${srcdir}/nopedantic.patch"
+#}
 
 build() {
 	cd "${srcdir}/${_pkgname}"
