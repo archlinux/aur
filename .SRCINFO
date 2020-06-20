@@ -1,7 +1,7 @@
 pkgbase = bacula
 	pkgdesc = Bacula - A Network Backup Tool
 	pkgver = 9.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bacula.org
 	install = bacula.install
 	arch = any
@@ -17,14 +17,12 @@ pkgbase = bacula
 	source = bacula-dir.service
 	source = bacula-fd.service
 	source = bacula-sd.service
-	source = 00-qmake4.patch
 	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
 	sha256sums = 510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a
 	sha256sums = SKIP
 	sha256sums = d1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565
 	sha256sums = 072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39
 	sha256sums = a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb
-	sha256sums = 9297335f269257093be96be88c1047237f124cd6b358b0fee17f6afaad6b5e80
 
 pkgname = bacula-common
 	pkgdesc = Bacula - A Network Backup Tool (common files)

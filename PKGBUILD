@@ -16,7 +16,7 @@ pkgname=("${pkgbase}-common"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
 pkgver=9.6.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="https://www.${pkgbase}.org"
@@ -27,15 +27,13 @@ install="bacula.install"
 source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         'bacula-dir.service'
         'bacula-fd.service'
-        'bacula-sd.service'
-        '00-qmake4.patch')
+        'bacula-sd.service')
 
 sha256sums=('510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
-            'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb'
-            '9297335f269257093be96be88c1047237f124cd6b358b0fee17f6afaad6b5e80')
+            'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb')
 
 # Bacula 4096 Distribution Verification Key (www.bacula.org)
 validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
@@ -47,16 +45,8 @@ prepare() {
 
   cd autoconf
 
-  # Enable tray-monitor
-  sed -i '/src\/qt-console\/install_conf_file \\/asrc\/qt-console\/tray-monitor\/install_conf_file \\' configure.in
-
-  # Configure openssl assumes a structure $base/{lib,include}, but Arch has /usr/{lib,include}/openssl-1.0
-  sed -Ei 's/\$with_openssl_directory\/(lib|include)/\$with_openssl_directory\/\1\/openssl-1.0/g' configure.in
-
   autoconf configure.in > ../configure
   cd ..
-
-  patch -Np3 -i "${srcdir}/00-qmake4.patch" || true
 }
 
 build() {
@@ -79,13 +69,6 @@ build() {
     --with-openssl=/usr                      \
     --with-x
 
-  make
-  make DESTDIR="${srcdir}/install" install
-
-  # Apparently the configure scripts don't have an option to enable building this program
-  cd src/qt-console/tray-monitor
-  chmod +x install_conf_file
-  qmake-qt4
   make
   make DESTDIR="${srcdir}/install" install
 
