@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=('bash')
 optdepends=('opencv' 'cuda' 'python')
 provides=("${pkgname%-git}")
-source=("git+https://github.com/pjreddie/darknet")
+source=("darknet::git+https://github.com/pjreddie/darknet")
 sha256sums=('SKIP')
 
 pkgver() {

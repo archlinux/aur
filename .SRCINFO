@@ -10,7 +10,7 @@ pkgbase = darknet-git
 	optdepends = cuda
 	optdepends = python
 	provides = darknet
-	source = git+https://github.com/pjreddie/darknet
+	source = darknet::git+https://github.com/pjreddie/darknet
 	sha256sums = SKIP
 
 pkgname = darknet-git
