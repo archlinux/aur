@@ -6,7 +6,7 @@ post_install() {
 
 post_upgrade() {
   for i in $(ls /opt/rust/bin); do
-    ln -s /opt/rust/bin/$i /usr/bin/$i
+    unlink /usr/bin/$i && ln -s /opt/rust/bin/$i /usr/bin/$i
   done
 }
 
