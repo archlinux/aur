@@ -1,6 +1,6 @@
 pkgbase = ghcide
 	pkgdesc = A library for building Haskell IDE tooling
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/digital-asset/ghcide
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ghcide
 	makedepends = stack
 	depends = gmp
 	depends = zlib
-	source = ghcide-0.1.0::https://github.com/digital-asset/ghcide/archive/v0.1.0.tar.gz
-	sha256sums = f161e29b9f22b4f47b6001d523e62538ae70c2ed540f131948be0ce96fac4371
+	source = ghcide-0.2.0.tar.gz::https://github.com/digital-asset/ghcide/archive/v0.2.0.tar.gz
+	sha256sums = 9a0b8c6158dcfe5654d948db1848235b86b7b958b66cb983308416c717d97cba
 
 pkgname = ghcide
 
