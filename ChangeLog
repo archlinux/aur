@@ -1,3 +1,9 @@
+4.5.29 (2020-06-19 14:13:13)
+
+    Fixes an issue when compiling the SDK examples with the latest Xcode,
+    Fixes an issue with the comment editor,
+    Improves the import / export sheets in order to better see the results.
+
 4.5.28 (2020-05-13 13:05:34)
 
     Fixes a hang in the decompiler on methods from classes containing weak ivars.
