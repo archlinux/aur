@@ -3,7 +3,7 @@
 pkgname=opendoas-sudo
 pkgver=1
 pkgrel=1
-pkgdesc="A symlink for using Doas as a drop-in replacement to sudo, heavily copy-pasted from rofi-dmenu"
+pkgdesc="A symlink for using Doas as a drop-in replacement to sudo"
 arch=('any')
 url="https://github.com/Duncaen/OpenDoas"
 license=('MIT')
