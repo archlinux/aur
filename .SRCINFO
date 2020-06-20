@@ -1,0 +1,16 @@
+pkgbase = sdltrs
+	pkgdesc = TRS-80 Model I/III/4/4P emulator
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = https://gitlab.com/jengun/sdltrs
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = BSD
+	depends = hicolor-icon-theme
+	depends = sdl2
+	source = https://gitlab.com/jengun/sdltrs/-/archive/1.2.10/sdltrs-1.2.10.tar.gz
+	sha512sums = 176170aaaf2e4af6bce277da7a69bff46ffe8b4769d6bac9f526bca319925bb6df063c6c06be0655239478a86306a8ac2f4cf55446995905280aa027c9148950
+
+pkgname = sdltrs
+
