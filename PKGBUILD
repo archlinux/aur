@@ -29,7 +29,7 @@
 pkgbase=llvm35
 pkgname=('llvm35' 'llvm35-libs' 'clang35')
 pkgver=3.5.2
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -42,6 +42,7 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         #https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz
         llvm-3.5.0-force-link-pass.o.patch
         gcc5.patch
+        gcc10.patch
         llvm-Config-config.h
         llvm-Config-llvm-config.h)
 sha256sums=('44196156d5749eb4b4224fe471a29cc3984df92570a4a89fa859f7394fc0c575'
@@ -49,6 +50,7 @@ sha256sums=('44196156d5749eb4b4224fe471a29cc3984df92570a4a89fa859f7394fc0c575'
             #'542d7aadd21e7fe35bea0a7912bc965f08a1a566746cebcca76f96dcfeb74dc3'
             '5702053503d49448598eda1b8dc8c263f0df9ad7486833273e3987b5dec25a19'
             'c964eecdfb0cbf4d2a59a553d7bdb3f16e70d8910e6aa7e9c768828ecbdfcea2'
+            '75bfba16c3bf6fd4fc3d4807969f64a68e5259ca6d15b560333cdac9baf09df2'
             '312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 
@@ -77,6 +79,9 @@ prepare() {
   # Fix build with GCC 5.1
   # http://llvm.org/viewvc/llvm-project?view=revision&revision=218295
   patch -Np0 -i ../gcc5.patch
+
+  # -fvisibility-inlines-hidden breaks the build with GCC 10
+  patch -Np0 -i ../gcc10.patch
 }
 
 build() {

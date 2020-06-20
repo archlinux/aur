@@ -1,6 +1,6 @@
 pkgbase = llvm35
 	pkgver = 3.5.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -11,19 +11,21 @@ pkgbase = llvm35
 	source = https://releases.llvm.org/3.5.2/cfe-3.5.2.src.tar.xz
 	source = llvm-3.5.0-force-link-pass.o.patch
 	source = gcc5.patch
+	source = gcc10.patch
 	source = llvm-Config-config.h
 	source = llvm-Config-llvm-config.h
 	sha256sums = 44196156d5749eb4b4224fe471a29cc3984df92570a4a89fa859f7394fc0c575
 	sha256sums = 4feb575f74fb3a74b6245400460230141bf610f235ef3a25008cfe6137828620
 	sha256sums = 5702053503d49448598eda1b8dc8c263f0df9ad7486833273e3987b5dec25a19
 	sha256sums = c964eecdfb0cbf4d2a59a553d7bdb3f16e70d8910e6aa7e9c768828ecbdfcea2
+	sha256sums = 75bfba16c3bf6fd4fc3d4807969f64a68e5259ca6d15b560333cdac9baf09df2
 	sha256sums = 312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
 	makedepends_x86_64 = gcc-multilib
 
 pkgname = llvm35
 	pkgdesc = Low Level Virtual Machine
-	depends = llvm35-libs=3.5.2-6
+	depends = llvm35-libs=3.5.2-7
 	depends = perl
 	conflicts = llvm
 
@@ -38,7 +40,7 @@ pkgname = llvm35-libs
 pkgname = clang35
 	pkgdesc = C language family frontend for LLVM
 	url = http://clang.llvm.org/
-	depends = llvm35-libs=3.5.2-6
+	depends = llvm35-libs=3.5.2-7
 	depends = gcc
 	optdepends = llvm-libs: for compiling with -flto
 	conflicts = clang

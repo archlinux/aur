@@ -1,0 +1,11 @@
+--- Makefile.config.in.orig	2020-06-20 01:07:02.000000000 +0200
++++ Makefile.config.in	2020-06-20 01:08:51.501705109 +0200
+@@ -336,7 +336,7 @@
+ ENABLE_EMBED_STDCXX := @ENABLE_EMBED_STDCXX@
+ 
+ # Use -fvisibility-inlines-hidden?
+-ENABLE_VISIBILITY_INLINES_HIDDEN := @ENABLE_VISIBILITY_INLINES_HIDDEN@
++ENABLE_VISIBILITY_INLINES_HIDDEN := 0
+ 
+ # Do we want to allow timestamping information into builds?
+ ENABLE_TIMESTAMPS := @ENABLE_TIMESTAMPS@
