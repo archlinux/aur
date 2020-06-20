@@ -18,12 +18,12 @@ source=("elementary-icon-theme::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/icons"
+  cd "${srcdir}/elementary-icon-theme"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/icons"
+  cd "${srcdir}/elementary-icon-theme"
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -31,13 +31,13 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/icons/build"
+  cd "${srcdir}/elementary-icon-theme/build"
   arch-meson ../
   ninja
 }
 
 package() {
-  cd "${srcdir}/icons/build"
+  cd "${srcdir}/elementary-icon-theme/build"
   DESTDIR="${pkgdir}" ninja install
   rm "${pkgdir}"/.VolumeIcon*
 }
