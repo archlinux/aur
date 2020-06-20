@@ -7,11 +7,11 @@ pkgdesc='This icon theme got inspired on Mac OS icons and mimics those for the L
 arch=('any')
 url='https://github.com/balasakthi88/EX-Impression'
 license=('GPL3')
-makedepends=('git')
-source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
+makedepends=('git')
+source=("ex-impression-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

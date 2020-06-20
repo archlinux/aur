@@ -11,7 +11,7 @@ pkgbase = ex-impression-icon-theme-git
 	conflicts = ex-impression-icon-theme
 	conflicts = ex-impression-icon-theme-git
 	options = !strip
-	source = git+https://github.com/balasakthi88/EX-Impression
+	source = ex-impression-icon-theme::git+https://github.com/balasakthi88/EX-Impression
 	sha256sums = SKIP
 
 pkgname = ex-impression-icon-theme-git
