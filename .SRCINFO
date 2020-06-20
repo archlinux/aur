@@ -1,0 +1,13 @@
+pkgbase = opendoas-sudo
+	pkgdesc = A symlink for using Doas as a drop-in replacement to sudo, heavily copy-pasted from rofi-dmenu
+	pkgver = 1
+	pkgrel = 1
+	url = https://davedavenport.github.io/rofi/
+	arch = any
+	license = MIT
+	depends = opendoas
+	provides = sudo
+	conflicts = sudo
+
+pkgname = opendoas-sudo
+
