@@ -155,7 +155,6 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
-        #--enable-libsvtav1 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
