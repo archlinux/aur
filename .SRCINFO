@@ -1,6 +1,6 @@
 pkgbase = argonone
 	pkgdesc = Argon One Service and Control Scripts For Raspberry Pi
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://download.argon40.com/argon1.sh
 	install = argonone.install
@@ -9,8 +9,9 @@ pkgbase = argonone
 	depends = i2c-tools
 	depends = lm_sensors
 	depends = python>=3.3
+	depends = raspberrypi-userland-aarch64-git
 	provides = argonone
-	source = https://files.tonyfettes.com/argonone/argonone-0.2.2.tar.gz
+	source = https://files.tonyfettes.com/argonone/argonone-0.2.3.tar.gz
 	md5sums = bc76b22b074dcd09df0925fa16e0de34
 
 pkgname = argonone

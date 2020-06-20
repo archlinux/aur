@@ -3,13 +3,13 @@
 # Contributor: kounch (https://github.com/kounch)
 
 pkgname=argonone
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Argon One Service and Control Scripts For Raspberry Pi"
 arch=('any')
 url='https://download.argon40.com/argon1.sh'
 license=('GPL3')
-depends=('i2c-tools' 'lm_sensors' 'python>=3.3')
+depends=('i2c-tools' 'lm_sensors' 'python>=3.3' 'raspberrypi-userland-aarch64-git')
 provides=('argonone')
 install=argonone.install
 source=("https://files.tonyfettes.com/argonone/${pkgname}-${pkgver}.tar.gz")
