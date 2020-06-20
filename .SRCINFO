@@ -1,16 +1,15 @@
 pkgbase = radical-native-bin
 	pkgdesc = Extending Riot Web with native capabilities
-	pkgver = 0.1.0beta13
-	pkgrel = 4
+	pkgver = 0.1beta14
+	pkgrel = 1
 	url = https://github.com/stoically/radical-native
 	arch = x86_64
 	license = MIT
 	depends = sqlcipher
 	depends = libsecret
-	noextract = 
-	source = https://github.com/stoically/radical-native/releases/download/v0.1.0beta13/radical-native_v0.1.0beta13_x86-amd64.deb
-	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1.0beta13/LICENSE
-	sha512sums = a6d190359ea6f7cf04928fd007c818e8d521576e0093af8a6f621cda98ebfd115a110aa44799c316ebe8bd861c1295366948d6bcaa928003c8cf35f1efabad98
+	source = https://github.com/stoically/radical-native/releases/download/v0.1beta14/radical-native_v0.1beta14_x86-amd64.deb
+	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1beta14/LICENSE
+	sha512sums = ea0249ce92c7a9ba7c33d70bfbfc5dfeb4b407ce9292a327538bd578b3b73800e7b1588d84bb0806ad98a9691dacd8a39dcd2e73f2a01ff6a8c378b261ea8d6e
 	sha512sums = 4b7ddd854dff49b640b8dad9b8bb7cda64ed02a1aa4f0299498a57fe372e042f4969e2e2bfa2449064e8c9bfb8909d8f4e6644365672a819b61c324302130049
 
 pkgname = radical-native-bin
