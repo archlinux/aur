@@ -41,12 +41,13 @@ prepare() {
 
 package() {
     local installdir="${pkgdir}/opt/${pkgname}"
-    mkdir -p "${installdir}"
+    local tmpdir="${srcdir}/tmp"
 
+    mkdir -p "${installdir}" "${tmpdir}"
     cd "${srcdir}"
 
     if [[ "${CARCH}" == 'armv7h' ]]; then
-        "./ti_cgt_pru_${pkgver}_armlinuxa8hf_busybox_installer.sh" --prefix "${installdir}" --temp '/tmp'
+        "./ti_cgt_pru_${pkgver}_armlinuxa8hf_busybox_installer.sh" --prefix "${installdir}" --temp "${tmpdir}"
     else
         printf "${installdir}\n" | "./ti_cgt_pru_${pkgver}_linux_installer_x86.bin" --mode text
         find "${installdir}" -maxdepth 1 -type f -delete
