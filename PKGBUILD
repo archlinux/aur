@@ -1,18 +1,18 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 epoch=
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
-depends=('wine' 'libxcb' 'lib32-libxcb')
-makedepends=('meson' 'ninja' 'boost' 'lib32-boost-libs>=1.72.0')
+depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
+makedepends=('meson' 'ninja')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-sha256sums=('c620fb2e96227ebcb148d0f55121d1519a8f570a3c58b3bc9b0151920fb7d556')
+sha256sums=('63516a6eed7d70a0c6a8218b00549d77047e0f6dd17488b5fd43f6e8937af082')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,7 +20,15 @@ build() {
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
-  meson setup --buildtype=release --cross-file cross-wine.conf -Duse-bitbridge=true build
+  options=(--buildtype=release -Dwith-bitbridge=true)
+
+  # Meson won't apply any new options when this is not a clean build
+  if [[ -d build ]]; then
+    meson setup --reconfigure "${options[@]}" build
+  else
+    meson setup --cross-file cross-wine.conf "${options[@]}" build
+  fi
+
   ninja -C build
 }
 
