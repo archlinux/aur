@@ -3,7 +3,7 @@
 
 pkgname=libirecovery-git
 epoch=2
-pkgver=0.1.1.r151.g7ff3385
+pkgver=1.0.0.r1.gfbcfbf2
 pkgrel=1
 pkgdesc="Library and utility to talk to iBoot/iBSS via USB"
 arch=('i686' 'x86_64')
