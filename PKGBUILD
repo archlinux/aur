@@ -16,7 +16,7 @@ optdepends=('glfw-x11: Needed for graphics support'
       'freetype2: Needed for graphics support'
       'openssl: Needed for http support')
 conflicts=('vlang')
-source=('git+https://github.com/vlang/v')
+source=('vlang::git+https://github.com/vlang/v')
 sha256sums=('SKIP')
 
 pkgver() {

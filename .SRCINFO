@@ -11,7 +11,7 @@ pkgbase = vlang-git
 	optdepends = freetype2: Needed for graphics support
 	optdepends = openssl: Needed for http support
 	conflicts = vlang
-	source = git+https://github.com/vlang/v
+	source = vlang::git+https://github.com/vlang/v
 	sha256sums = SKIP
 
 pkgname = vlang-git
