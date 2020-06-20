@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="The free tier OctaneRender intergrated Blender"
 arch=('x86_64')
 license=('proprietary')
-depends=()
+depends=('octane-server-prime')
 optdepends=()
 makedepends=()
 url="https://home.otoy.com/render/octane-render/demo/"
@@ -22,5 +22,5 @@ package()
 {
   mkdir -p ${pkgdir}/usr/local ${pkgdir}/usr/bin
   cp -rf ./OctaneForBlender/usr/local/OctaneBlender ${pkgdir}/usr/local/
-  ln -s ${pkgdir}/usr/local/OctaneBlender/blender ${pkgdir}/usr/bin/OctaneBlender
+  ln -s /usr/local/OctaneBlender/blender ${pkgdir}/usr/bin/OctaneBlender
 }
