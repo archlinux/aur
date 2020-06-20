@@ -1,0 +1,11 @@
+--- src/Vega-Strike-Engine-Source/engine/CMakeLists.txt.orig	2020-06-19 12:30:04.113046656 +0200
++++ src/Vega-Strike-Engine-Source/engine/CMakeLists.txt	2020-06-19 12:30:25.860243218 +0200
+@@ -771,7 +771,7 @@
+ # Find Boost with boost_python library
+ OPTION(USE_SYSTEM_BOOST "Use system boost" OFF)
+ IF(USE_SYSTEM_BOOST)
+-  find_package(Boost COMPONENTS python)
++  find_package(Boost COMPONENTS python27)
+   IF(Boost_FOUND)
+     message("++ Found System Boost : ${Boost_VERSION}")
+     SET(BOOST_PYTHON_NO_PY_SIGNATURES 1)
