@@ -1,19 +1,19 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+
 pkgname=adplay
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='AdLib sound player tool'
 arch=('i686' 'x86_64')
-url="http://adplug.sf.net/"
+url="https://github.com/adplug/adplay-unix"
 license=('GPL')
 depends=('adplug')
 source=(
-  "https://github.com/adplug/adplay-unix/releases/download/v$pkgver/adplay-$pkgver.tar.bz2"
+  "https://github.com/adplug/adplay-unix/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2"
   'default-players.patch'
 )
-sha256sums=(
-  'e9dea6a0ec02c6f2329454a3aaa3bfb4607a56917174c7fc38a4c7e66ff096ad'
-  '5128c9504fbca78f7b3a36cbfdd67b315ea68fb28743f72d8cb17f27cedbed10'
-)
+sha256sums=('eb36bd6a7066980ce5b72aa710a784dfb37a0ffe6dfc506a5eeef6c7485edfd5'
+            '5128c9504fbca78f7b3a36cbfdd67b315ea68fb28743f72d8cb17f27cedbed10')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
