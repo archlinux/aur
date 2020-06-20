@@ -9,7 +9,7 @@ pkgbase = edytornc-git
 	depends = hicolor-icon-theme
 	depends = qt5-serialport
 	provides = edytornc
-	source = git+https://github.com/u-235/edytornc
+	source = edytornc::git+https://github.com/u-235/edytornc
 	sha256sums = SKIP
 
 pkgname = edytornc-git

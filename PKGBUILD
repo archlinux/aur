@@ -12,7 +12,7 @@ provides=('edytornc')
 depends=('hicolor-icon-theme'
          'qt5-serialport')
 makedepends=('git')
-source=("git+${url}")
+source=("edytornc::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
