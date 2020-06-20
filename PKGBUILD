@@ -2,7 +2,7 @@
 
 pkgname=picom-ibhagwan-git
 _gitname=picom
-pkgver=1379_Next.98.g68c8f1b_2020.04.26
+pkgver=1381_Next.100.g82ecc90_2020.06.20
 pkgrel=1
 pkgdesc="iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners"
 arch=(i686 x86_64)
