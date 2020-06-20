@@ -1,0 +1,23 @@
+From f13f25db3e952cd40b3c3aa90a24399408968e04 Mon Sep 17 00:00:00 2001
+From: Antoine Viallon <antoine@lesviallon.fr>
+Date: Sat, 20 Jun 2020 19:19:49 +0200
+Subject: [PATCH] Fix build fail under GCC 10
+
+GCC fails to build because of -Wnarrowing
+---
+ SheepShaver/src/video.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SheepShaver/src/video.cpp b/SheepShaver/src/video.cpp
+index d0eda93d..60ef8c13 100644
+--- a/SheepShaver/src/video.cpp
++++ b/SheepShaver/src/video.cpp
+@@ -736,7 +736,7 @@ static int16 VideoStatus(uint32 pb, VidLocals *csSave)
+ 
+ 		case cscGetNextResolution: {
+ 			D(bug("GetNextResolution \n"));
+-			int work_id = ReadMacInt32(param + csPreviousDisplayModeID);
++			unsigned int work_id = ReadMacInt32(param + csPreviousDisplayModeID);
+ 			switch (work_id) {
+ 				case kDisplayModeIDCurrent:
+ 					work_id = csSave->saveData;
