@@ -13,7 +13,7 @@ depends=('qt5-x11extras'
          'hicolor-icon-theme'
          'libssh')
 makedepends=('cmake' 'git' 'libvirt')
-source=("git+https://github.com/canonical/multipass")
+source=("canonical-multipass::git+https://github.com/canonical/multipass")
 sha256sums=('SKIP')
 
 pkgver() {

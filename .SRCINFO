@@ -12,7 +12,7 @@ pkgbase = canonical-multipass-git
 	depends = apparmor
 	depends = hicolor-icon-theme
 	depends = libssh
-	source = git+https://github.com/canonical/multipass
+	source = canonical-multipass::git+https://github.com/canonical/multipass
 	sha256sums = SKIP
 
 pkgname = canonical-multipass-git
