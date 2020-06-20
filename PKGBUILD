@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('git')
 provides=('victory-icon-theme')
 conflicts=('victory-icon-theme')
-source=("git+${url}.git")
+source=("victory-icon-theme::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -8,7 +8,7 @@ pkgbase = victory-icon-theme-git
 	makedepends = git
 	provides = victory-icon-theme
 	conflicts = victory-icon-theme
-	source = git+https://gitlab.com/newhoa/victory-icon-theme.git
+	source = victory-icon-theme::git+https://gitlab.com/newhoa/victory-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = victory-icon-theme-git
