@@ -21,7 +21,7 @@ source=("lua-sitegen::git+https://github.com/leafo/sitegen")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/sitegen
+  cd "${srcdir}"/lua-sitegen
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -29,7 +29,7 @@ build() {
   mkdir -p 5.3
 
   # Build for 5.3
-  (cd 5.3; luarocks build --pack-binary-rock --lua-version=5.3 --deps-mode=none ../sitegen/"sitegen-dev-1.rockspec")
+  (cd 5.3; luarocks build --pack-binary-rock --lua-version=5.3 --deps-mode=none ../lua-sitegen/"sitegen-dev-1.rockspec")
 }
 
 package() {
