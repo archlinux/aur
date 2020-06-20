@@ -1,0 +1,13 @@
+pkgbase = octane-blender-prime
+	pkgdesc = The free tier OctaneRender intergrated Blender
+	pkgver = 2020.1_21.8
+	pkgrel = 1
+	url = https://home.otoy.com/render/octane-render/demo/
+	arch = x86_64
+	license = proprietary
+	noextract = octane_blender_2020.1-21.8-stable.run
+	source = https://render.otoy.com/downloads/c7/d6/77/85/octane_blender_2020.1-21.8-stable.run
+	md5sums = 920af44e399161c0acf4360051e57c8a
+
+pkgname = octane-blender-prime
+
