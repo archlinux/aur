@@ -14,12 +14,12 @@ source=("python-py-stackexchange::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/Py-StackExchange"
+  cd "${srcdir}/python-py-stackexchange"
   printf "1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/Py-StackExchange"
+  cd "${srcdir}/python-py-stackexchange"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
