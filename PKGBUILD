@@ -18,6 +18,7 @@ package() {
 	mkdir -p "$pkgdir/opt" \
 		 "$pkgdir/usr/bin" \
 		 "$pkgdir/usr/share/applications" \
+		 "$pkgdir/usr/share/licenses/$pkgname"
 
 	cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
 
@@ -83,4 +84,6 @@ package() {
 	done
 
 	rm ./*.ico ./*.png
+
+	mv "$pkgdir/opt/subs2srs/gpl.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
