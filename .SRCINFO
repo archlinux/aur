@@ -1,0 +1,14 @@
+pkgbase = libirecovery
+	pkgdesc = Library and utility to talk to iBoot/iBSS via USB
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.libimobiledevice.org/
+	arch = x86_64
+	license = LGPL2.1
+	depends = libusb
+	depends = readline
+	source = https://www.libimobiledevice.org/downloads/libirecovery-1.0.0.tar.bz2
+	sha256sums = cda0aba10a5b6fc2e1d83946b009e3e64d0be36912a986e35ad6d34b504ad9b4
+
+pkgname = libirecovery
+
