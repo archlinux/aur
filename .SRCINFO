@@ -1,6 +1,6 @@
 pkgbase = eontimer-git
 	pkgdesc = A Pokemon RNG timer
-	pkgver = 2.0.1
+	pkgver = r55.d53e42a
 	pkgrel = 1
 	url = https://github.com/dylmeadows/EonTimer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = eontimer-git
 	depends = sfml
 	provides = eontimer
 	conflicts = eontimer
-	source = eontimer-git-2.0.1::git+https://github.com/dylmeadows/EonTimer.git
+	source = eontimer-git-r55.d53e42a::git+https://github.com/dylmeadows/EonTimer.git
 	sha256sums = SKIP
 
 pkgname = eontimer-git

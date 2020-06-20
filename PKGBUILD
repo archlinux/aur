@@ -2,7 +2,7 @@
 
 _pkgname=EonTimer
 pkgname=eontimer-git
-pkgver=2.0.1
+pkgver=r55.d53e42a
 pkgrel=1
 pkgdesc='A Pokemon RNG timer'
 arch=(x86_64)
@@ -22,6 +22,15 @@ provides=('eontimer')
 
 source=("$pkgname-$pkgver::git+https://github.com/dylmeadows/EonTimer.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname-$pkgver"
+  # Technically, version 3.0 is in development at the time of writing, but the
+  # earlier 2.*-tags are not reachable anymore.  Since `git describe` won't
+  # work, we fall back to counting revisions.  This is forward compatible with
+  # future versions `v3.*.*`.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd $pkgname-$pkgver
