@@ -2,8 +2,8 @@
 
 pkgname=sctd
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="A Daemon to change the display color temperature based on time of day"
+pkgrel=2
+pkgdesc="A daemon to change the display color temperature based on time of day"
 url="https://github.com/amir/sctd"
 arch=(x86_64 i686)
 license=(custom)
