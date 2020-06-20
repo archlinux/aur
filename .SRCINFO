@@ -1,0 +1,33 @@
+pkgbase = autojump-rs
+	pkgdesc = A faster way to navigate your filesystem from the command line (in Rust)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/xen0n/autojump-rs
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = python>=3.8
+	provides = autojump
+	conflicts = autojump
+	source = autojump-rs-0.4.0.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/0.4.0/autojump-0.4.0-x86_64-unknown-linux-musl.tar.gz
+	source = autojump-22.5.3.tar.gz::https://github.com/wting/autojump/archive/release-v22.5.3.tar.gz
+	md5sums = b7ab473f1dc541c0d8503b32f969a2f4
+	md5sums = 29f1a7df736814c747645703bf00ce48
+	source_arm = autojump-rs-0.4.0.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/0.4.0/autojump-0.4.0-x86_64-unknown-linux-gnueabi.tar.gz
+	source_arm = autojump-22.5.3.tar.gz::https://github.com/wting/autojump/archive/release-v22.5.3.tar.gz
+	md5sums_arm = b7ab473f1dc541c0d8503b32f969a2f4
+	md5sums_arm = 29f1a7df736814c747645703bf00ce48
+	source_armv7h = autojump-rs-0.4.0.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/0.4.0/autojump-0.4.0-armv7-unknown-linux-gnueabihf.tar.gz
+	source_armv7h = autojump-22.5.3.tar.gz::https://github.com/wting/autojump/archive/release-v22.5.3.tar.gz
+	md5sums_armv7h = b7ab473f1dc541c0d8503b32f969a2f4
+	md5sums_armv7h = 29f1a7df736814c747645703bf00ce48
+	source_aarch64 = autojump-rs-0.4.0.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/0.4.0/autojump-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	source_aarch64 = autojump-22.5.3.tar.gz::https://github.com/wting/autojump/archive/release-v22.5.3.tar.gz
+	md5sums_aarch64 = b7ab473f1dc541c0d8503b32f969a2f4
+	md5sums_aarch64 = 29f1a7df736814c747645703bf00ce48
+
+pkgname = autojump-rs
+
