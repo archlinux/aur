@@ -3,7 +3,7 @@
 _pkgname=netease-cloud-music-gtk
 
 pkgname=netease-cloud-music-gtk-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 noextract=("${_pkgname}-${pkgver}-1.1.x86_64.rpm")
 sha256sums=(
-  '2a19372ea3a8db3609d55eb22960ae0fc9315caa7fcfe00448eb60f72972905a'
+  '673da0f7466c266467427da58f3d570317241bfe25a7dc58e36ed59b70173e0b'
   '5ffd318e287d37c2ab62739cc974bc9b2ebd2b42cf8a20c8dbbf26f944c6b744'
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
