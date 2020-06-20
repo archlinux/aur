@@ -13,7 +13,7 @@ makedepends=('unzip')
 options=('!strip')
 optdepends=('apache: A high performance Unix-based HTTP server' 
             'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
-install=post_install
+install=prestashop.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/PrestaShop/PrestaShop/releases/download/${_pkgver}/prestashop_${_pkgver}.zip"
     'prestashop.conf')
 sha256sums=('e47702ba38c295935262f7c7b2b2282dbe081b8535750013745adca98cd4047c'
