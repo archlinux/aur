@@ -1,6 +1,6 @@
 pkgbase = sl-sh-git
 	pkgdesc = simple lisp based shell
-	pkgver = 0.8.66
+	pkgver = 0.8.67
 	pkgrel = 1
 	url = https://github.com/sstanfield/slsh
 	arch = x86_64
