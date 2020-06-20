@@ -1,0 +1,22 @@
+diff --git a/widget/src/widgetstyle.rs b/widget/src/widgetstyle.rs
+index 5dd6235..083b204 100644
+--- a/widget/src/widgetstyle.rs
++++ b/widget/src/widgetstyle.rs
+@@ -141,7 +141,7 @@ pub fn set_widget_style(cx: &mut Cx, opt: &StyleOptions) {
+         TextEditor::color_defocus().set(cx, color256(128, 128, 128));
+     //}
+     
+-    let font = cx.load_font("resources/Ubuntu-R.ttf");
++    let font = cx.load_font("%%USR_SHARE_PKG%%/resources/Ubuntu-R.ttf");
+     Theme::text_style_unscaled().set(cx, TextStyle {
+         font: font,
+         font_size: 8.0,
+@@ -157,7 +157,7 @@ pub fn set_widget_style(cx: &mut Cx, opt: &StyleOptions) {
+         ..Theme::text_style_unscaled().get(cx)
+     });
+     
+-    let font = cx.load_font("resources/LiberationMono-Regular.ttf");
++    let font = cx.load_font("%%USR_SHARE_PKG%%/resources/LiberationMono-Regular.ttf");
+     Theme::text_style_fixed().set(cx, TextStyle {
+         font: font,
+         brightness: 1.1,
