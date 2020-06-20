@@ -1,0 +1,39 @@
+From 9019b7fcfa89e5944e6c1ffba4a2e1f53899f4fa Mon Sep 17 00:00:00 2001
+From: Darren Ng <darren19970810@gmail.com>
+Date: Sat, 20 Jun 2020 20:43:51 +0800
+Subject: [PATCH] extern
+
+---
+ src/vpcs.c | 2 ++
+ src/vpcs.h | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/vpcs.c b/src/vpcs.c
+index d3d3841..4ed18da 100644
+--- a/src/vpcs.c
++++ b/src/vpcs.c
+@@ -57,6 +57,8 @@ const char *ver = "0.8c";
+ /* track the binary */
+ static const char *ident = "$Id$";
+ 
++pcs vpc[MAX_NUM_PTHS];
++
+ int pcid = 0;  /* current vpc id */
+ int devtype = 0;
+ int lport = 20000;
+diff --git a/src/vpcs.h b/src/vpcs.h
+index e246ce5..5c16614 100644
+--- a/src/vpcs.h
++++ b/src/vpcs.h
+@@ -136,7 +136,7 @@ struct echoctl {
+ 	int bgcolor;
+ };
+ 
+-pcs vpc[MAX_NUM_PTHS];
++extern pcs vpc[MAX_NUM_PTHS];
+ 
+ #define delay_ms(s) usleep(s * 1000)
+ 
+-- 
+2.27.0
+
