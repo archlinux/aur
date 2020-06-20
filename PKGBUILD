@@ -20,17 +20,17 @@ source=("opendiablo2::git+https://github.com/OpenDiablo2/OpenDiablo2")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/OpenDiablo2"
+  cd "${srcdir}/opendiablo2"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/OpenDiablo2"
+  cd "${srcdir}/opendiablo2"
   mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/OpenDiablo2"
+  cd "${srcdir}/opendiablo2"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/OpenDiablo2"
+  cd "${srcdir}/opendiablo2"
   install -Dm644 opendiablo2.desktop "${pkgdir}/usr/share/applications/opendiablo2.desktop"
   install -Dm755 build/OpenDiablo2 "${pkgdir}/usr/bin/opendiablo2"
   install -Dm644 d2logo.png "${pkgdir}/usr/share/pixmaps/opendiablo2.png"
