@@ -3,7 +3,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=waves-backgrounds
 _pkgname=desktop-backgrounds
-pkgver=31.0.0
+pkgver=32.0.0
 _string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/d" | grep "${_pkgname}" | cut -d '"' -f 6)
 _rhver=$(echo ${_string} | sed "s/${_pkgname}-//g" | sed 's/.src.rpm//g')
 pkgrel=$(echo ${_rhver} | cut -d '-' -f 2 | sed 's/.fc[0-9]*//g')
