@@ -1,6 +1,6 @@
 pkgbase = alma-git
 	pkgdesc = Create Arch Linux based live USB
-	pkgver = r102.c8b151f
+	pkgver = r108.3ca2e01
 	pkgrel = 1
 	url = https://github.com/r-darwish/alma
 	arch = x86_64

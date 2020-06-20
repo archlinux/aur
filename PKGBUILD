@@ -3,7 +3,7 @@
 
 _pkgname="alma"
 pkgname="alma-git"
-pkgver=r102.c8b151f
+pkgver=r108.3ca2e01
 pkgrel=1
 pkgdesc='Create Arch Linux based live USB'
 arch=('x86_64')
