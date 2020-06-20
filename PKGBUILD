@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 pkgver=83.0.4103.106
-pkgrel=1
+pkgrel=2
 _pkgname=chromium
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -19,9 +19,10 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-                             'clang' 'lld' 'gn' 'java-runtime-headless'
+                             'libva' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
+            'libva: experimental hardware-accelerated video decode'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -185,6 +186,7 @@ build() {
     'use_custom_libcxx=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
+    'use_vaapi=true'
     'enable_nacl=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
