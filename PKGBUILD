@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 provides=('shell2http')
 makedepends=('go' 'git')
-source=("git+${url}")
+source=("shell2http::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

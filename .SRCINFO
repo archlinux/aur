@@ -9,7 +9,7 @@ pkgbase = shell2http-git
 	makedepends = git
 	depends = glibc
 	provides = shell2http
-	source = git+https://github.com/msoap/shell2http
+	source = shell2http::git+https://github.com/msoap/shell2http
 	sha256sums = SKIP
 
 pkgname = shell2http-git
