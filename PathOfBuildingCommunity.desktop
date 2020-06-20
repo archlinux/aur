@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Path of Building (Community)
+Comment=Offline build planer for Path of Exile
+Exec=PathOfBuildingCommunity
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=PathOfBuildingCommunity
+Categories=Games;
+Keywords=poe;pob;pobc;path;exile;

@@ -1,7 +1,7 @@
 pkgbase = path-of-building-community-git
 	pkgdesc = An offline build planner for Path of Exile using PoBFrontent, LocalIdentity's fork
-	pkgver = 1.4.159.1.r1187.37.479
-	pkgrel = 1
+	pkgver = 1.4.169.3.r1701.37.479
+	pkgrel = 2
 	url = https://github.com/PathOfBuildingCommunity/PathOfBuilding
 	arch = x86_64
 	license = MIT
@@ -23,6 +23,9 @@ pkgbase = path-of-building-community-git
 	source = lzip-linux.patch
 	source = PathOfBuilding-force-disable-devmode.patch
 	source = pobfrontend.patch
+	source = PathOfBuilding-logo.svg
+	source = PathOfBuilding-logo.png
+	source = PathOfBuildingCommunity.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -31,6 +34,9 @@ pkgbase = path-of-building-community-git
 	sha256sums = 9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd
 	sha256sums = 4b37acb9f25f6841726d6b73e6b893d1376c858e879dd6daf35a1bbae8bc2faf
 	sha256sums = 87cbc36ace84ebd746a5b8ec5a88ffde5b03cea7c633a4d437d46b5434ae86da
+	sha256sums = 2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194
+	sha256sums = a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc
+	sha256sums = 431554f5c929156d2e351a80898acc60a827a7fe906230ce828c72e90fbf8a38
 
 pkgname = path-of-building-community-git
 
