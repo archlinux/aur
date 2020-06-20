@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-bubblemail-git
 	pkgdesc = Unread mail notification service: Gnome shell extension
-	pkgver = 1.0.r2
-	pkgrel = 1
+	pkgver = 1.1.r1
+	pkgrel = 0
 	url = https://framagit.org/razer/bubblemail-gnome-shell/
 	arch = any
 	license = GPL2
