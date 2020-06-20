@@ -1,5 +1,5 @@
 pkgbase = fedora-wallpapers
-	pkgdesc = The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 31.
+	pkgdesc = The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 32.
 	pkgver = 32
 	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Wallpapers

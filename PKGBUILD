@@ -1,10 +1,10 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail.com>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=fedora-wallpapers
 pkgver=32
 pkgrel=1
-pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 31."
+pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 32."
 arch=("any")
 url="https://fedoraproject.org/wiki/Wallpapers"
 license=("CC-BY-SA")
