@@ -26,7 +26,7 @@ makedepends=('python-setuptools' 'git')
 replaces=('weboob-headless')
 provides=('weboob-headless')
 conflicts=('weboob-headless')
-source=("git+https://git.weboob.org/weboob/weboob")
+source=("weboob::git+https://git.weboob.org/weboob/weboob")
 sha256sums=('SKIP')
 
 pkgver() {

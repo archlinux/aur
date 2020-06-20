@@ -23,7 +23,7 @@ pkgbase = weboob-git
 	provides = weboob-headless
 	conflicts = weboob-headless
 	replaces = weboob-headless
-	source = git+https://git.weboob.org/weboob/weboob
+	source = weboob::git+https://git.weboob.org/weboob/weboob
 	sha256sums = SKIP
 
 pkgname = weboob-git
