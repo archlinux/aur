@@ -1,6 +1,6 @@
 pkgbase = pbincli
 	pkgdesc = A command line client for PrivateBin
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/r4sas/PBinCLI
 	arch = any
@@ -11,15 +11,9 @@ pkgbase = pbincli
 	depends = python-pycryptodome
 	depends = python-requests
 	depends = python-sjcl
-	source = https://files.pythonhosted.org/packages/source/P/PBinCLI/PBinCLI-0.3.0.tar.gz
-	source = requirements.txt
-	source = LICENSE
-	sha1sums = 844fd7b46f4f437f1ab4de62c4ea3c018b60bfc0
-	sha1sums = c3409930f9cc1b2f86873d299f54a4ad818a86c1
-	sha1sums = 5a9f9ba2f34d243125d05d36361a407257cb528d
-	sha256sums = 261b05dfcd471675d6442fed8eb779a7f8c2817fe29b5204ff9fc8a03b47d089
-	sha256sums = b9c0f5fe9a218463a4a1fe687efe7a351a6ffec083961a2dde007d0ded0e350f
-	sha256sums = ad9f1d1dbb64e58c270f73a65b4945d430a74b41c01f643ed6bb550071b50969
+	source = https://files.pythonhosted.org/packages/source/P/PBinCLI/PBinCLI-0.3.1.tar.gz
+	sha1sums = b06e1e7130143eee98a69a3e210c3b4f58b528b5
+	sha256sums = a7db80ef1c842f73db04996602db32085e65a9026115cf534b08a650d2f05dc5
 
 pkgname = pbincli
 
