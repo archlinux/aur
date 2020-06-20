@@ -12,7 +12,7 @@ pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 _tag='a47534aa62edfddb2df86e2d0c208979f24dc8c2' # git rev-parse v${pkgver}
 pkgver=245.6
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -262,11 +262,10 @@ package_systemd-selinux() {
   install -D -m0644 initcpio-install-udev "$pkgdir"/usr/lib/initcpio/install/udev
   install -D -m0644 initcpio-hook-udev "$pkgdir"/usr/lib/initcpio/hooks/udev
 
-  # ensure proper permissions for /var/log/journal
-  # The permissions are stored with named group by tar, so this works with
-  # users and groups populated by systemd-sysusers. This is only to prevent a
-  # warning from pacman as permissions are set by systemd-tmpfiles anyway.
-  install -d -o root -g systemd-journal -m 2755 "$pkgdir"/var/log/journal
+  # The group 'systemd-journal' is allocated dynamically and may have varying
+  # gid on different systems. Let's install with gid 0 (root), systemd-tmpfiles
+  # will fix the permissions for us. (see /usr/lib/tmpfiles.d/systemd.conf)
+  install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
 
   # match directory owner/group and mode from [extra]/polkit
   install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
