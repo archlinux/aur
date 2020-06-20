@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=85.0.4168.2
+pkgver=85.0.4173.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
          'vulkan-icd-loader'
          'libpulse'
          'libwebp'
-         'libvpx'
+#          'libvpx'
          'opus'
          'bluez-libs'
          'libnet'
@@ -80,7 +80,7 @@ source=(
         # Patch form Gentoo.
 
         # Misc Patches.
-        'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
+
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         )
@@ -92,7 +92,7 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
+
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             )
@@ -226,6 +226,8 @@ _keeplibs=(
            'third_party/libsrtp'
            'third_party/libsync'
            'third_party/libudev'
+           'third_party/libvpx'
+           'third_party/libvpx/source/libvpx/third_party/x86inc'
            'third_party/libwebm'
            'third_party/libxml/chromium'
            'third_party/libyuv'
@@ -397,7 +399,7 @@ _use_system=(
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
              'libjpeg'
              'libpng'
-             'libvpx'
+#              'libvpx'
              'libwebp'
              'libxml'
              'libxslt'
@@ -518,9 +520,6 @@ prepare() {
       -i third_party/blink/renderer/core/xml/*.cc \
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
-
-  # Attemp to fix build with wayland
-  patch -p1 -i "${srcdir}/fix_vaapi_wayland.patch"
 
   # # Patch from Gentoo
 
