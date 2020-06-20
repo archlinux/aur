@@ -13,15 +13,15 @@ depends=(
 	"python-cheroot>=6.0.0"
 )
 
-checkdepends=(
-	"python-pytest>=4.6.2"
+# checkdepends=(
+# 	"python-pytest>=4.6.2"
 
-	Omitted to disable DB tests
-	"python-dbutils"
-	"python-pymysql>=0.9.3"
-	"python-mysql-connector>=8.0.19"
-	"python-psycopg2>=2.8.4"
-)
+# 	# Omitted to disable DB tests
+# 	"python-dbutils"
+# 	"python-pymysql>=0.9.3"
+# 	"python-mysql-connector>=8.0.19"
+# 	"python-psycopg2>=2.8.4"
+# )
 
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/webpy/webpy/archive/$pkgver.tar.gz"

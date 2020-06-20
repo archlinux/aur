@@ -5,16 +5,6 @@ pkgbase = python-webpy
 	url = https://webpy.org/
 	arch = any
 	license = custom
-	checkdepends = python-pytest>=4.6.2
-	checkdepends = Omitted
-	checkdepends = to
-	checkdepends = disable
-	checkdepends = DB
-	checkdepends = tests
-	checkdepends = python-dbutils
-	checkdepends = python-pymysql>=0.9.3
-	checkdepends = python-mysql-connector>=8.0.19
-	checkdepends = python-psycopg2>=2.8.4
 	depends = python-cheroot>=6.0.0
 	source = python-webpy-0.51.tar.gz::https://github.com/webpy/webpy/archive/0.51.tar.gz
 	sha256sums = 550ed5fb18c7626c578cc2119fd45a9a898b7815fc81a4ac85ae2ed383a0ec5f
