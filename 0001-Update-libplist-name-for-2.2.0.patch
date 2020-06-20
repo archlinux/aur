@@ -1,0 +1,26 @@
+From bb72040f4938eaeaf25197ef4eb54ffb94898c66 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 20 Jun 2020 19:36:37 +0200
+Subject: [PATCH] Update libplist name for 2.2.0
+
+Fixes #44
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6ded879..f5ccaf6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -36,7 +36,7 @@ CFLAGS+=" -std=c11"
+ 
+ # Checks for libraries.
+ OPENSSL_REQUIRES_STR="openssl >= 0.9.8"
+-LIBPLIST_REQUIRES_STR="libplist >= 2.0.0"
++LIBPLIST_REQUIRES_STR="libplist-2.0 >= 2.2.0"
+ LIBGENERAL_REQUIRES_STR="libgeneral >= 26"
+ PKG_CHECK_MODULES(openssl, $OPENSSL_REQUIRES_STR, have_openssl=yes, have_openssl=no)
+ PKG_CHECK_MODULES(libplist, $LIBPLIST_REQUIRES_STR, have_plist=yes, have_plist=no)
+-- 
+2.27.0
+
