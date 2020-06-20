@@ -1,7 +1,7 @@
 pkgbase = slock-bgimage
 	pkgdesc = A simple screen locker for X(patched to allow background images)
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://tools.suckless.org/slock
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = slock-bgimage
 	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
 	source = slock-image.patch
 	sha256sums = b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
-	sha256sums = 2eb67544256fc1e036e844b87779914e77327aabf23036b0c6a0895fc878378a
+	sha256sums = b782b0117c966b32d95cd0bd8b3acf570d2455a133e6b9033854ffc7c9ac81ca
 
 pkgname = slock-bgimage
 

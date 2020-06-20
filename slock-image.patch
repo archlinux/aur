@@ -59,7 +59,7 @@
  		lock->colors[i] = color.pixel;
  	}
  
-+	if(image || use_bg_image == 1) {
++	if(image && use_bg_image == 1) {
 +		lock->bgmap = XCreatePixmap(dpy, lock->root, DisplayWidth(dpy, lock->screen), DisplayHeight(dpy, lock->screen), DefaultDepth(dpy, lock->screen));
 +		imlib_context_set_image(image);
 +		imlib_context_set_display(dpy);
