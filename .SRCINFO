@@ -1,0 +1,17 @@
+pkgbase = tutti-quanti-shelf
+	pkgdesc = Collection of miscellaneous developer-oriented utilities wrapped into one single app, built with Electron
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://github.com/tonton-pixel/tutti-quanti-shelf
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = gendesk
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	source = tutti-quanti-shelf-1.13.1.tar.gz::https://github.com/tonton-pixel/tutti-quanti-shelf/archive/v1.13.1.tar.gz
+	sha256sums = 23d3d2a1e91302da82f7378cd3354f1faee1281f42751df4efc4cce6def3097e
+
+pkgname = tutti-quanti-shelf
+
