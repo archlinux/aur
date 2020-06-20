@@ -1,12 +1,12 @@
 # Maintainer: bcareil <baptiste.careil@gmail.com>
 
 pkgname='path-of-building-git'
-pkgrel=2
+pkgrel=3
 pkgdesc='An offline build planner for Path of Exile using PoBFrontent'
 arch=('x86_64')
 url='https://github.com/Openarl/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.159.r1015.37.479
+pkgver=1.4.170.r1028.37.479
 
 depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl')
 makedepends=('meson' 'ninja' 'unzip' 'rsync')
@@ -20,6 +20,9 @@ source=(
 	'lzip-linux.patch'
 	'PathOfBuilding-force-disable-devmode.patch'
 	'pobfrontend.patch'
+	'PathOfBuilding-logo.svg'
+	'PathOfBuilding-logo.png'
+	'PathOfBuilding.desktop'
 )
 sha256sums=(
 	'SKIP'
@@ -30,6 +33,9 @@ sha256sums=(
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'4b37acb9f25f6841726d6b73e6b893d1376c858e879dd6daf35a1bbae8bc2faf'
 	'87cbc36ace84ebd746a5b8ec5a88ffde5b03cea7c633a4d437d46b5434ae86da'
+	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
+	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
+	'2f987cb604ed9de24b00a218198e46160b62e725e41942d92c9781b1d90356db'
 )
 noextract=(
 	'PathOfBuilding-runtime-src.zip'
@@ -100,6 +106,10 @@ package() {
 	install -s -m755 "${srcdir}/pobfrontend/build/pobfrontend" -t "${dst_dir}"
 	# install shell script
 	install -D -m755 "${srcdir}/PathOfBuilding.sh" "${pkgdir}/usr/bin/PathOfBuilding"
+	# install desktop file and icons
+	install -D -m644 "${srcdir}/PathOfBuilding.desktop" "${pkgdir}/usr/share/applications/PathOfBuilding.desktop"
+	install -D -m644 "${srcdir}/PathOfBuilding-logo.svg" "${pkgdir}/usr/share/pixmaps/PathOfBuilding.svg"
+	install -D -m644 "${srcdir}/PathOfBuilding-logo.png" "${pkgdir}/usr/share/pixmaps/PathOfBuilding.png"
 	# licenses
 	install -D -m644 "${srcdir}/Lua-cURLv3/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/Lua-cURLv3-LICENSE"
 	install -D -m644 "${srcdir}/pobfrontend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/pobfrontend-LICENSE"
