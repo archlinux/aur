@@ -1,7 +1,7 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.transip.nl/stack/
 	arch = x86_64
 	license = GPL2
@@ -20,9 +20,11 @@ pkgbase = stack-client
 	source = client-v2.6.4.tar.gz::https://github.com/nextcloud/client/archive/v2.6.4.tar.gz
 	source = http://mirror.transip.net/stack/software/source/stack-client-source-2.6.4.20200506.tar.gz
 	source = APPLICATION_NAME.patch
+	source = qt5.15_missing_qpainterpath_include.patch
 	sha256sums = aea4dff6bf2a6bd2b783a6175ac2393ffcae2949536b15def7aae4372f0c24ef
 	sha256sums = b6dc38ad1830b3b1b99863c853117bd03198bf0c15ecbe06da30b644c5c8f14d
 	sha256sums = 65a37003112bbc07bb372693793ff5a2dba86199d0da845e7203096ecc33c559
+	sha256sums = 449c798e17b9e6bea8ab0021383a9c97422e28bebae1db0166fab3f8971e4fc0
 
 pkgname = stack-client
 

@@ -1,0 +1,11 @@
+diff -upr desktop-2.6.4-orig/src/libsync/networkjobs.cpp desktop-2.6.4/src/libsync/networkjobs.cpp
+--- a/desktop-2.6.4/src/libsync/networkjobs.cpp	2020-06-20 21:00:43.636264023 +0200
++++ b/desktop-2.6.4/src/libsync/networkjobs.cpp	2020-06-20 21:01:01.126316908 +0200
+@@ -31,6 +31,7 @@
+ #include <QJsonDocument>
+ #include <QJsonObject>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include "networkjobs.h"
+ #include "account.h"
