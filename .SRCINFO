@@ -12,7 +12,7 @@ pkgbase = lua51-lgi-git
 	depends = gobject-introspection-runtime
 	provides = lua51-lgi
 	conflicts = luajit-lgi
-	source = git+https://github.com/pavouk/lgi
+	source = lua51-lgi::git+https://github.com/pavouk/lgi
 	sha256sums = SKIP
 
 pkgname = lua51-lgi-git

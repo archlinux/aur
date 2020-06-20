@@ -15,7 +15,7 @@ depends=("lua${_luaver//./}"
          'gobject-introspection-runtime')
 makedepends=('gobject-introspection' 'git')
 conflicts=('luajit-lgi')
-source=("git+${url}")
+source=("lua51-lgi::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
