@@ -18,7 +18,6 @@ package() {
 	mkdir -p "$pkgdir/opt" \
 		 "$pkgdir/usr/bin" \
 		 "$pkgdir/usr/share/applications" \
-		 "$pkgdir/usr/share/icons/hicolor/32x32/apps"
 
 	cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
 
