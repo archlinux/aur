@@ -1,0 +1,11 @@
+pkgbase = miga
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/chapsuk/miga
+	arch = x86_64
+	makedepends = go
+	source = https://github.com/chapsuk/miga/archive/v0.7.2.tar.gz
+	sha256sums = 27f786158090eb4e7df590bbdaa74b3345d219bb089e6b5cfe8ca5a32507376a
+
+pkgname = miga
+
