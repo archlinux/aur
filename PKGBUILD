@@ -10,7 +10,7 @@ url='https://github.com/sggts04/dankcli'
 license=('MIT')
 depends=('python-pillow')
 makedepends=('python-setuptools')
-source=("git+${url}")
+source=("dankcli::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

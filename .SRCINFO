@@ -8,7 +8,7 @@ pkgbase = dankcli-git
 	makedepends = python-setuptools
 	depends = python-pillow
 	provides = dankcli
-	source = git+https://github.com/sggts04/dankcli
+	source = dankcli::git+https://github.com/sggts04/dankcli
 	sha256sums = SKIP
 
 pkgname = dankcli-git
