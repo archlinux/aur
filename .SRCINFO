@@ -13,6 +13,7 @@ pkgbase = lib32-sdl2-hg
 	makedepends = lib32-wayland
 	makedepends = lib32-libxkbcommon
 	makedepends = wayland-protocols
+	makedepends = lib32-libxxf86vm
 	makedepends = lib32-libxss
 	makedepends = cmake
 	makedepends = mercurial

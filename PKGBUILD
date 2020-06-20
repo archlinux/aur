@@ -13,7 +13,7 @@ license=('MIT')
 depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl'
          'lib32-libxcursor' 'sdl2')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr'
-             'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon' 'wayland-protocols'
+             'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon' 'wayland-protocols' 'lib32-libxxf86vm'
              'lib32-libxss' 'cmake' 'mercurial')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
