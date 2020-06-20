@@ -10,7 +10,7 @@ license=('MIT')
 provides=('nucleon')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("git+${url}")
+source=("nucleon::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

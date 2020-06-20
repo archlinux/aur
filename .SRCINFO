@@ -9,7 +9,7 @@ pkgbase = nucleon-git
 	makedepends = rust
 	depends = gcc-libs
 	provides = nucleon
-	source = git+https://github.com/NicolasLM/nucleon
+	source = nucleon::git+https://github.com/NicolasLM/nucleon
 	sha256sums = SKIP
 
 pkgname = nucleon-git
