@@ -1,0 +1,15 @@
+pkgbase = python-qtsass
+	pkgdesc = Compile SCSS files to Qt stylesheets
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/spyder-ide/qtsass
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = python-setuptools
+	depends = python-libsass
+	source = https://files.pythonhosted.org/packages/source/q/qtsass/qtsass-0.3.0.tar.gz
+	md5sums = SKIP
+
+pkgname = python-qtsass
+
