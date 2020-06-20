@@ -16,7 +16,7 @@ pkgbase = lua-sitegen-git
 	depends = lua-ansicolors
 	depends = lua-web_sanitize
 	provides = sitegen
-	source = git+https://github.com/leafo/sitegen
+	source = lua-sitegen::git+https://github.com/leafo/sitegen
 	sha256sums = SKIP
 
 pkgname = lua-sitegen-git

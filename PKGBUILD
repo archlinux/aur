@@ -17,7 +17,7 @@ depends=('lua-cosmo'
        'lua-ansicolors'
        'lua-web_sanitize')
 makedepends=('luarocks' 'git')
-source=("git+https://github.com/leafo/sitegen")
+source=("lua-sitegen::git+https://github.com/leafo/sitegen")
 sha256sums=('SKIP')
 
 pkgver() {
