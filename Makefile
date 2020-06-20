@@ -5,7 +5,8 @@ colorpicker: main.c
 
 install: colorpicker
 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
-	cp -f colorpicker $(DESTDIR)$(PREFIX)/bin/
+	mv colorpicker $(DESTDIR)$(PREFIX)/bin/
+	chmod +x $(DESTDIR)$(PREFIX)/bin/colorpicker
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/colorpicker

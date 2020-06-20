@@ -67,12 +67,12 @@ int main(int argc, char *argv[]) {
 	XWindowAttributes gwa;
 	XGetWindowAttributes(display, root, &gwa);
 
-	XImage *image = XGetImage(display, root, 0, 0, gwa.width, gwa.height, AllPlanes, ZPixmap);
 	XGrabKeyboard(display, root, 0, GrabModeAsync, GrabModeAsync, CurrentTime);
 
 	for(;;) {
 		XEvent e;
 		XNextEvent(display, &e);
+		XImage *image = XGetImage(display, root, 0, 0, gwa.width, gwa.height, AllPlanes, ZPixmap);
 		if (e.type == ButtonPress && e.xbutton.button == Button1) {
 				unsigned long pixel = XGetPixel(image, e.xbutton.x_root, e.xbutton.y_root);
 				if (output_format & 0x1) {
@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
 				(e.type == KeyPress && (e.xkey.keycode == 53 || quit_on_keypress))) {
 			break;
 		}
+		XDestroyImage(image);
 	}
 
 	/* will be done on connection close anw */
@@ -96,9 +97,6 @@ int main(int argc, char *argv[]) {
 	XUngrabKeyboard(display, CurrentTime);
 
 	XFreeCursor(display, cursor);
-
 	XDestroyWindow(display, root);
-	XDestroyImage(image);
-
 	XCloseDisplay(display);
 }
