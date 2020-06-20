@@ -11,7 +11,7 @@ pkgbase = symphonium-git
 	depends = qt5-base
 	depends = timidity++
 	provides = symphonium
-	source = git+https://github.com/ttdm/Symphonium
+	source = symphonium::git+https://github.com/ttdm/Symphonium
 	sha256sums = SKIP
 
 pkgname = symphonium-git

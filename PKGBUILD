@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme'
          'qt5-base'
          'timidity++')
 makedepends=('qt5-base')
-source=("git+https://github.com/ttdm/Symphonium")
+source=("symphonium::git+https://github.com/ttdm/Symphonium")
 sha256sums=('SKIP')
 
 pkgver() {
