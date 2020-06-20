@@ -15,7 +15,7 @@ pkgbase = rednukem-git
 	depends = sdl2_mixer
 	depends = libvpx
 	depends = gtk2
-	source = git+https://github.com/nukeykt/NRedneck
+	source = rednukem::git+https://github.com/nukeykt/NRedneck
 	sha256sums = SKIP
 	makedepends_i686 = nasm
 
