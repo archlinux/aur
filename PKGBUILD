@@ -23,5 +23,5 @@ build() {
 
 package() {
 	cd qpdftools
-	sudo make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 }
