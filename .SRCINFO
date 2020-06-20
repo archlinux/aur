@@ -9,7 +9,7 @@ pkgbase = simplehttp-git
 	makedepends = git
 	depends = glibc
 	provides = simplehttp
-	source = git+https://github.com/snwfdhmp/simplehttp
+	source = simplehttp::git+https://github.com/snwfdhmp/simplehttp
 	sha256sums = SKIP
 
 pkgname = simplehttp-git

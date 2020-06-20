@@ -10,7 +10,7 @@ license=('Apache')
 provides=('simplehttp')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+${url}")
+source=("simplehttp::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
