@@ -20,17 +20,17 @@ source=('vlang::git+https://github.com/vlang/v')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/v"
+  cd "${srcdir}/vlang"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/v"
+  cd "${srcdir}/vlang"
   make
 }
 
 package() {
-  cd "${srcdir}/v"
+  cd "${srcdir}/vlang"
   install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 v "$pkgdir/usr/lib/vlang"
