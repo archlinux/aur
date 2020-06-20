@@ -1,6 +1,6 @@
 pkgbase = buildaur
 	pkgdesc = A AUR helper
-	pkgver = 15.b307043
+	pkgver = 16.10bcf3d
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/buildaur
 	arch = any
