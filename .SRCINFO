@@ -1,0 +1,19 @@
+pkgbase = autosub-git
+	pkgdesc = Command-line utility for auto-generating subtitles for any video file
+	pkgver = r81.d32389c
+	pkgrel = 1
+	url = https://github.com/agermanidis/autosub
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-google-api-python-client
+	depends = python-requests
+	depends = python-pysrt
+	depends = python-progressbar
+	depends = python-six
+	provides = autosub
+	source = autosub::git+https://github.com/agermanidis/autosub
+	sha256sums = SKIP
+
+pkgname = autosub-git
+
