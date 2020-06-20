@@ -14,7 +14,7 @@ depends=('gtkmm'
      'libxml++2.6'
      'libsamplerate')
 makedepends=('meson' 'ninja' 'gcc')
-source=("git+${url}")
+source=("showq::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

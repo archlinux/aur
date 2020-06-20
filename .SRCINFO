@@ -14,7 +14,7 @@ pkgbase = showq-git
 	depends = jack
 	depends = libxml++2.6
 	depends = libsamplerate
-	source = git+https://github.com/evandelisle/showq
+	source = showq::git+https://github.com/evandelisle/showq
 	sha256sums = SKIP
 
 pkgname = showq-git
