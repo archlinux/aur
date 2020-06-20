@@ -48,7 +48,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=78.0b7
+pkgver=78.0b8
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=78.0
@@ -71,9 +71,9 @@ conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop)
-sha256sums=('6e3411d888804f7112069a9905e554eb86ba96fea0e665802ea4cbc564b347b6'
+sha256sums=('a1454d39ecc50b7d194269b92a1995759f6b9afd34759efc2d1ec49768a67cac'
             'SKIP'
-            'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
+            '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # RC
@@ -99,6 +99,9 @@ prepare() {
   mkdir mozbuild
   cd firefox-$_pkgver
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
@@ -110,8 +113,8 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-export CC=clang
-export CXX=clang++
+export CC='clang --target=x86_64-unknown-linux-gnu'
+export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
@@ -123,8 +126,8 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${pkgname}
-unset MOZ_TELEMETRY_REPORTING
+export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
@@ -189,9 +192,11 @@ END
 
     echo "Building optimized browser..."
     cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
 END
   else
     cat >.mozconfig ../mozconfig

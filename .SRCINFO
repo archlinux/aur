@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 78.0b7
+	pkgver = 78.0b8
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	arch = i686
@@ -42,18 +42,18 @@ pkgbase = firefox-beta
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=78.0b7
+	provides = firefox=78.0b8
 	conflicts = firefox-beta-bin
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0b7/source/firefox-78.0b7.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0b7/source/firefox-78.0b7.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/78.0b8/source/firefox-78.0b8.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/78.0b8/source/firefox-78.0b8.source.tar.xz.asc
 	source = firefox-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 6e3411d888804f7112069a9905e554eb86ba96fea0e665802ea4cbc564b347b6
+	sha256sums = a1454d39ecc50b7d194269b92a1995759f6b9afd34759efc2d1ec49768a67cac
 	sha256sums = SKIP
-	sha256sums = d6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd
+	sha256sums = 54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1
 
 pkgname = firefox-beta
 
