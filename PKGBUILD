@@ -51,13 +51,11 @@ prepare() {
 build() {
   cd matrix-js-sdk
   yarn install
-  yarn build
   yarn link
   cd ..
 
   cd matrix-react-sdk
   yarn install
-  yarn build
   yarn link
   cd ..
 
@@ -65,13 +63,11 @@ build() {
   yarn link matrix-js-sdk
   yarn link matrix-react-sdk
   yarn install
-  yarn build
 
   cd ../riot-desktop
   yarn install
   yarn run build:native
   yarn add electron
-  yarn run build
 }
 
 package_revolution-web-git() {
