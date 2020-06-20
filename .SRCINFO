@@ -1,7 +1,7 @@
 pkgbase = vector-bin
 	pkgdesc = A lightweight and ultra-fast tool for building observability pipelines
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vector.dev
 	arch = x86_64
 	license = Apache
