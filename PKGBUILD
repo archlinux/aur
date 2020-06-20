@@ -17,7 +17,7 @@ depends=('java-environment=8'
      'lib32-libxcursor')
 options=('!strip')
 provides=('alice3')
-install=post_install
+install=alice.install
 source=("${pkgname}-${pkgver}.sh::http://www.alice.org/wp-content/uploads/2019/04/Alice3_unix_3_5.sh")
 noextract=("${pkgname}-${pkgver}.sh")
 sha256sums=('dc7f80bb33e8fca32e0f8961ba815c69af07cee740421927d93026e5137ee79d')
