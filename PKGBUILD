@@ -10,7 +10,7 @@ depends=('openssl')
 makedepends=('git' 'cargo' 'snappy' 'capnproto')
 arch=('x86_64')
 license=('BSD')
-source=("git+${url}")
+source=("flowgger::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -11,7 +11,7 @@ pkgbase = flowgger-git
 	makedepends = capnproto
 	depends = openssl
 	provides = flowgger
-	source = git+https://github.com/awslabs/flowgger
+	source = flowgger::git+https://github.com/awslabs/flowgger
 	sha256sums = SKIP
 
 pkgname = flowgger-git
