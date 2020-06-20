@@ -2,7 +2,7 @@
 
 _pkgname='validity-sensors-tools'
 pkgname="${_pkgname}-git"
-pkgver=0.5.r25.gaf54569
+pkgver=0.5.r28.g101afda
 pkgrel=1
 pkgdesc='Linux tool to flash and pair Validity fingerprint sensors 009x'
 arch=('x86_64')
@@ -18,9 +18,8 @@ depends=(
 )
 makedepends=('python-setuptools')
 provides=("$_pkgname" "python-proto9x" "python-proto9x-git")
-# TODO: change to 3v1n0's repo once he merges the setuptools changes
 source=(
-  "$_pkgname::git+https://github.com/Depau/python-validity.git"
+  "$_pkgname::git+https://github.com/3v1n0/python-validity.git"
   "0001-Monkey-patch-time-to-fix-bug-in-pycrypto.patch"
 )
 sha256sums=('SKIP'
