@@ -6,7 +6,7 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey-git
-pkgver=v1.1.r5.g467662b
+pkgver=1.1.r5.g467662b
 pkgrel=1
 pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
 arch=('any')
@@ -23,7 +23,7 @@ replaces=('screenkey')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed 's/^screenkey-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
