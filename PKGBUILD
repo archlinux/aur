@@ -1,4 +1,4 @@
-pkgname=gamejolt-bin
+pkgname=gamejolt-client-bin
 pkgver=0.48.7
 pkgrel=1
 epoch=
