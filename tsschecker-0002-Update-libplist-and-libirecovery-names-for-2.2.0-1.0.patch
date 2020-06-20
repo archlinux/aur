@@ -1,0 +1,32 @@
+From 9fef42d139e0cbc5ea90a82479f4cf2d43a807e1 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 20 Jun 2020 22:30:08 +0200
+Subject: [PATCH 2/2] Update libplist and libirecovery names for 2.2.0/1.0.0
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e9e2384..a3962b6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,13 +42,13 @@ AC_ARG_WITH(
+     ]
+ )
+ 
+-PKG_CHECK_MODULES(libplist, libplist >= 2.0.0)
++PKG_CHECK_MODULES(libplist, libplist-2.0 >= 2.2.0)
+ PKG_CHECK_MODULES(libcurl, libcurl >= 1.0)
+ PKG_CHECK_MODULES(libfragmentzip, libfragmentzip >= 48)
+ AS_IF([test "x$with_libcrypto" != xno],
+     [PKG_CHECK_MODULES(libcrypto, libcrypto >= 1.0)]
+ )
+-PKG_CHECK_MODULES(libirecovery, libirecovery >= 0.2.0)
++PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >= 1.0.0)
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([getopt.h stddef.h stdio.h])
+-- 
+2.27.0
+

@@ -1,7 +1,7 @@
 From b014224a07540ce0d75b745fed486c33c8d4611f Mon Sep 17 00:00:00 2001
 From: 0x9fff00 <0x9fff00+git@protonmail.ch>
 Date: Fri, 8 Nov 2019 23:30:28 +0100
-Subject: [PATCH] Fix incorrect language standard
+Subject: [PATCH 1/2] Fix incorrect language standard
 
 ---
  configure.ac | 4 ++--
@@ -23,5 +23,5 @@ index 38965fb..f0b2683 100644
  AC_DEFUN([AX_UNPRECIOUS], [
      m4_define([_AC_PRECIOUS_VARS], m4_bpatsubst(_AC_PRECIOUS_VARS, [$1], []))
 -- 
-2.25.0
+2.27.0
 

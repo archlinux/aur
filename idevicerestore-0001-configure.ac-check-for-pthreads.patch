@@ -1,7 +1,7 @@
-From f93a009c0209cd56a1932affeccc4d223ae44bec Mon Sep 17 00:00:00 2001
+From df75590cdc872a412506d29685b72a44f0cfc294 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx100@gmail.com>
 Date: Fri, 25 Sep 2015 23:37:27 +0300
-Subject: [PATCH] configure.ac: check for pthreads
+Subject: [PATCH 1/2] configure.ac: check for pthreads
 
 Fixes building at least on Arch.
 ---
@@ -9,16 +9,17 @@ Fixes building at least on Arch.
  1 file changed, 1 insertion(+)
 
 diff --git a/configure.ac b/configure.ac
-index aa26bb2..153c9e5 100644
+index 48eace0..99d22c1 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -36,6 +36,7 @@ AM_PROG_CC_C_O
  AC_PROG_LIBTOOL
-
+ 
  # Checks for libraries.
 +AC_SEARCH_LIBS([pthread_create], [pthread])
  PKG_CHECK_MODULES(libirecovery, libirecovery >= $LIBIRECOVERY_VERSION)
  PKG_CHECK_MODULES(libimobiledevice, libimobiledevice-1.0 >= $LIBIMOBILEDEVICE_VERSION)
  PKG_CHECK_MODULES(libplist, libplist >= $LIBPLIST_VERSION)
---
-2.24.0
+-- 
+2.27.0
+

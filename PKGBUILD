@@ -3,13 +3,12 @@
 _name=futurerestore
 pkgname=$_name-git
 pkgver=r182.88861b6
-pkgrel=2
+pkgrel=3
 pkgdesc='iOS upgrade and downgrade tool utilizing SHSH blobs - git version'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_name"
 license=('LGPL3')
-# require libimobiledevice-git since libimobiledevice/preboard.h added in 5086a97 is needed
-depends=('libplist' 'libzip' 'libimobiledevice-git' 'libfragmentzip' 'libirecovery' 'curl' 'openssl' 'zlib' 'img4tool' 'libgeneral')
+depends=('libplist' 'libzip' 'libimobiledevice' 'libfragmentzip' 'libirecovery' 'curl' 'openssl' 'zlib' 'img4tool' 'libgeneral')
 makedepends=('git')
 provides=("$_name")
 conflicts=("$_name")
@@ -18,15 +17,21 @@ source=("git+$url.git"
         'git+https://github.com/tihmstar/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
         "$_name-0001-Fix-incorrect-language-standard.patch"
+        "$_name-0002-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch"
         'tsschecker-0001-Fix-incorrect-language-standard.patch'
-        'idevicerestore-0001-configure.ac-check-for-pthreads.patch')
+        'tsschecker-0002-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch'
+        'idevicerestore-0001-configure.ac-check-for-pthreads.patch'
+        'idevicerestore-0002-Update-libirecovery-and-libplist-names-for-1.0.0-2.2.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '18ff40ea773b1af3cf37fed3964e2f8d0a8badfb908c3e9697e920be08901883'
-            '3fcde7558ae9f5ebfa930a2b02074251a6817e2a984c8d0e18113baa0ea708a5'
-            '0e40eb0567a96a619fce0f2daf8bb4779a9753554ed7356bd04cf0ea15d18296')
+            '65a5830a7a3bbf7c7d0a8168eeadf5017b0b315abc821f6de41af6f300c426ff'
+            '2dc476eece883053a4021113fd19da6f49fd59202f8c8395b101c4f4f090c77f'
+            'f82391e9711521eb786c559cc44c989edd11682a81c48dd84e7519871d2f285a'
+            '310b39992b2391e81458190f5299ad629d31152ffe2621221b5451ae32068614'
+            'c800d9beaa459b7ff7b1bfa2f22731c56d29dbef457a0b6470bf24cd89a488cc'
+            '312820af5af7989e2b3094ff7be8e7f009005a197b14b5517d33c60f78dbf74d')
 
 pkgver() {
   cd "$_name"
