@@ -13,7 +13,7 @@ pkgbase = gamejolt-client-bin
 	source = https://www.dropbox.com/s/r4uuxqx781j0m1a/game-jolt-client?dl=0
 	source = https://www.dropbox.com/s/ql11hzb1vn76nhw/data-376715-852660.tar.gz?dl=0
 	md5sums = 3a9a554baff1a5072910f9d6efb6c22a
-	md5sums = 961eb10db3bb4893592b47376d5d91d7
+	md5sums = 5f7066d74246f59ccf0661f8f65d0a1a
 	md5sums = 4c975528cb791ee16e5c62edbbf28287
 	md5sums = bc5ce421d3288c1982cade5a456a392e
 	md5sums = ca105e91b3013aa926c256491a661239
