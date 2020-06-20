@@ -1,0 +1,27 @@
+From d219ad12f3bc63ebbce4077337e9fa0684506724 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 20 Jun 2020 23:20:46 +0200
+Subject: [PATCH 2/2] Update libirecovery and libusbmuxd names for 1.0.0/2.0.2
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f5727ed..027edfc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,8 +24,8 @@ CFLAGS+=" -D IGETNONCE_VERSION_SHA=\\\"$(git rev-parse HEAD | tr -d '\n')\\\""
+ 
+ # Checks for libraries.
+ PKG_CHECK_MODULES(libimobiledevice, libimobiledevice-1.0 >= 1.2.1)
+-PKG_CHECK_MODULES(libirecovery, libirecovery >= 0.2.0)
+-PKG_CHECK_MODULES(libusbmuxd, libusbmuxd >= 0.29.1)
++PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >= 1.0.0)
++PKG_CHECK_MODULES(libusbmuxd, libusbmuxd-2.0 >= 2.0.2)
+ PKG_CHECK_MODULES(openssl, openssl >= 0.9.8)
+ 
+ # Checks for header files.
+-- 
+2.27.0
+
