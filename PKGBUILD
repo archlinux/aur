@@ -8,7 +8,7 @@ pkgdesc='Extending Riot Web with native capabilities'
 arch=('x86_64')
 license=('MIT')
 depends=("firefox"
-         "radical-native-bin")
+         "radical-native-bin>=1:0.1beta14")
 _repo="stoically/$_name"
 url="https://github.com/$_repo"
 _rawurl="https://raw.githubusercontent.com/$_repo"

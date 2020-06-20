@@ -7,7 +7,7 @@ pkgbase = firefox-extension-radical-native
 	arch = x86_64
 	license = MIT
 	depends = firefox
-	depends = radical-native-bin
+	depends = radical-native-bin>=1:0.1beta14
 	noextract = radical_native-0.1beta14-fx.xpi
 	source = https://github.com/stoically/radical-native/releases/download/v0.1beta14/radical_native-0.1beta14-fx.xpi
 	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1beta14/LICENSE
