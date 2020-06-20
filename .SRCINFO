@@ -1,0 +1,16 @@
+pkgbase = ti-pru-swpkg-git
+	pkgdesc = PRU code generation tools
+	pkgver = r175.a9bff6f
+	pkgrel = 1
+	url = https://www.ti.com/tool/PRU-SWPKG
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom
+	makedepends = git
+	provides = ti-pru-swpkg
+	source = git://git.ti.com/pru-software-support-package/pru-software-support-package.git
+	md5sums = SKIP
+
+pkgname = ti-pru-swpkg-git
+
