@@ -10,7 +10,7 @@ license=('GPL2' 'custom:BUILD SOURCE CODE LICENSE TERMS')
 depends=('sdl2_mixer' 'libvpx' 'gtk2')
 makedepends=('mesa' 'glu' 'gendesk' 'imagemagick')
 makedepends_i686=('nasm')
-install=post_install
+install=rednukem.install
 source=("git+${url}")
 sha256sums=('SKIP')
 
