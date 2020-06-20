@@ -1,16 +1,17 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r582.479d51d
+pkgver=r620.6d585d3
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
 depends=('qt5-base' 'libusb' 'hidapi')
+makedepends=('git' 'make' 'binutils' 'pkgconf')
 optdepends=('i2c-piix4-aura-dkms: AMD motherboard support standalone'
-            'linux-openrgb: Patched kernel for AMD & intel')
-makedepends=('git' 'make')
+            'linux-openrgb: Patched kernel for AMD & intel'
+            'i2c-tools: Motherboard & RAM access')
 conflicts=('openrgb')
 provides=('openrgb')
 source=("openrgb::git+https://gitlab.com/CalcProgrammer1/openrgb.git"
