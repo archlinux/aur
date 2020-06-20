@@ -3,8 +3,8 @@
 # Contributor: spookykidmm <https://github.com/spookykidmm>
 
 pkgname=bumblebee-status
-pkgver=1.10.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Modular, theme-able status line generator for the i3 window manager'
 arch=('any')
 url=https://github.com/tobi-wan-kenobi/bumblebee-status
@@ -22,19 +22,23 @@ optdepends=('xorg-xbacklight: to display a displays brightness'
             'iputils: display a ping'
             'i3ipc-python: display titlebar'
             'fakeroot: dependency of the pacman module'
-            'pytz: timezone conversion for datetimetz module'
-            'tzlocal: retrieve system timezone for datetimetz module'
+            'python-pytz: timezone conversion for datetimetz module'
+            'python-tzlocal: retrieve system timezone for datetimetz module'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3675bea10c183a658b0fde6b6aeddb3612ba08a52824c131e4a5cfd4bfc7145cb2ea293d33ceaf46bcbfbf5e876b438900c132cadd42ca9ac9e2b93b9e29f08b')
+sha512sums=('24dd5a40a9ed6abaf6b91bd45d0eae772768a6052fa3208f01f417f28ff1128c99e83805837c1dc755b076ef6448118cc3e1342bc121b0b99d194f0a1b8b1d91')
 
 package() {
   install -d "$pkgdir"/usr/bin \
-    "$pkgdir"/usr/share/$pkgname/{bumblebee/modules,themes/icons}
+    "$pkgdir"/usr/share/$pkgname/bumblebee_status/{core,util} \
+    "$pkgdir"/usr/share/$pkgname/bumblebee_status/modules/{core,contrib} \
+    "$pkgdir"/usr/share/$pkgname/themes/icons
   ln -s /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
+  ln -s /usr/share/$pkgname/bumblebee-ctl "$pkgdir"/usr/bin/bumblebee-ctl
 
   cd $pkgname-$pkgver
-  cp -a --parents $pkgname bumblebee/{,modules/}*.py themes/{,icons/}*.json $pkgdir/usr/share/$pkgname
+  cp -a --parents $pkgname bumblebee_status/{,core/,util/,modules/core/,modules/contrib/}*.py \
+    themes/{,icons/}*.json $pkgdir/usr/share/$pkgname
   cp -r bin $pkgdir/usr/share/$pkgname/
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE

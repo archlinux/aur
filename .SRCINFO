@@ -1,7 +1,7 @@
 pkgbase = bumblebee-status
 	pkgdesc = Modular, theme-able status line generator for the i3 window manager
-	pkgver = 1.10.4
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status
 	arch = any
 	license = MIT
@@ -21,10 +21,10 @@ pkgbase = bumblebee-status
 	optdepends = iputils: display a ping
 	optdepends = i3ipc-python: display titlebar
 	optdepends = fakeroot: dependency of the pacman module
-	optdepends = pytz: timezone conversion for datetimetz module
-	optdepends = tzlocal: retrieve system timezone for datetimetz module
-	source = bumblebee-status-1.10.4.tar.gz::https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v1.10.4.tar.gz
-	sha512sums = 3675bea10c183a658b0fde6b6aeddb3612ba08a52824c131e4a5cfd4bfc7145cb2ea293d33ceaf46bcbfbf5e876b438900c132cadd42ca9ac9e2b93b9e29f08b
+	optdepends = python-pytz: timezone conversion for datetimetz module
+	optdepends = python-tzlocal: retrieve system timezone for datetimetz module
+	source = bumblebee-status-2.0.0.tar.gz::https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.0.0.tar.gz
+	sha512sums = 24dd5a40a9ed6abaf6b91bd45d0eae772768a6052fa3208f01f417f28ff1128c99e83805837c1dc755b076ef6448118cc3e1342bc121b0b99d194f0a1b8b1d91
 
 pkgname = bumblebee-status
 
