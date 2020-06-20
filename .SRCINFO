@@ -1,0 +1,20 @@
+pkgbase = perl-mime-detect
+	pkgdesc = MIME::Detect - MIME file type identification
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/pod/MIME::Detect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	depends = perl-file-sharedir
+	depends = perl-file-sharedir-install
+	depends = perl-moo
+	depends = perl-filter-signatures
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/MIME-Detect-0.10.tar.gz
+	md5sums = 61a027f7c625e5694ac1e8d1e03d70b3
+
+pkgname = perl-mime-detect
+
