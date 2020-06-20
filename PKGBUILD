@@ -22,5 +22,5 @@ package()
 {
   mkdir -p ${pkgdir}/usr/local ${pkgdir}/usr/bin
   cp -rf ./OctaneForBlender/usr/local/OctaneServer ${pkgdir}/usr/local/
-  ln -s ${pkgdir}/usr/local/OctaneServer/OctaneServer ${pkgdir}/usr/bin/OctaneServer
+  ln -s /usr/local/OctaneServer/OctaneServer ${pkgdir}/usr/bin/OctaneServer
 }
