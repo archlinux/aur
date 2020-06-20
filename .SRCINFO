@@ -1,6 +1,6 @@
 pkgbase = alerta
 	pkgdesc = A tool used to consolidate and de-duplicate alerts from multiple sources
-	pkgver = 7.5.1
+	pkgver = 7.5.5
 	pkgrel = 1
 	url = https://github.com/alerta/alerta
 	arch = any
@@ -24,10 +24,10 @@ pkgbase = alerta
 	optdepends = python-psycopg2
 	optdepends = postgresql
 	optdepends = mongodb
-	source = https://github.com/alerta/alerta/archive/v7.5.1.tar.gz
+	source = https://github.com/alerta/alerta/archive/v7.5.5.tar.gz
 	source = alertad.service
 	source = alerta.sysusers
-	sha256sums = 0953b1c944633639342474e47896df2453c8d44e48bc0a30f6a513c69e167b7e
+	sha256sums = 96825d1ece5cd0a6b8c3282e441a1be246751626b90166439fe6d7972757fb85
 	sha256sums = 4449acb346807229e4cbfeed68d9ba6006a165e65dec09487fb6e627088016c2
 	sha256sums = f0a2f76266ba07275ab2baeab1497dfb2946305e85ae68e3b34dd14e2ac47423
 
