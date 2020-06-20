@@ -1,0 +1,14 @@
+pkgbase = selenoid-bin
+	pkgdesc = Selenium Hub successor running browsers within containers. Scalable, immutable, self hosted Selenium-Grid on any platform with single binary
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://aerokube.com/selenoid
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = selenoid
+	source = selenoid-1.10.0::https://github.com/aerokube/selenoid/releases/download/1.10.0/selenoid_linux_amd64
+	sha256sums = 1464e0a2c3aea0adc364269f2eac8b8f89b10a25db4b82fecfc822e973dd2d18
+
+pkgname = selenoid-bin
+
