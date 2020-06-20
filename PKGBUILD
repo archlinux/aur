@@ -1,14 +1,14 @@
 # Maintainer: bcareil <baptiste.careil@gmail.com>
 
 pkgname='path-of-building-git'
-pkgrel=3
+pkgrel=4
 pkgdesc='An offline build planner for Path of Exile using PoBFrontent'
 arch=('x86_64')
 url='https://github.com/Openarl/PathOfBuilding'
 license=('MIT')
 pkgver=1.4.170.r1028.37.479
 
-depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl')
+depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync')
 
 source=(

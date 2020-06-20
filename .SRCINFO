@@ -1,7 +1,7 @@
 pkgbase = path-of-building-git
 	pkgdesc = An offline build planner for Path of Exile using PoBFrontent
 	pkgver = 1.4.170.r1028.37.479
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Openarl/PathOfBuilding
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,8 @@ pkgbase = path-of-building-git
 	depends = luajit
 	depends = libgl
 	depends = curl
+	depends = ttf-liberation
+	depends = ttf-bitstream-vera
 	noextract = PathOfBuilding-runtime-src.zip
 	source = git+https://github.com/Openarl/PathOfBuilding
 	source = git+https://github.com/philroberts/pobfrontend
