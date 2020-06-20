@@ -9,7 +9,7 @@ pkgbase = apicompat-git
 	makedepends = go
 	depends = glibc
 	provides = apicompat
-	source = git+https://github.com/bradleyfalzon/apicompat
+	source = apicompat::git+https://github.com/bradleyfalzon/apicompat
 	sha256sums = SKIP
 
 pkgname = apicompat-git

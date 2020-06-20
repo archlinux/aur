@@ -11,7 +11,7 @@ license=('MIT')
 provides=('apicompat')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+https://github.com/bradleyfalzon/apicompat")
+source=("apicompat::git+https://github.com/bradleyfalzon/apicompat")
 sha256sums=('SKIP')
 
 pkgver() {
