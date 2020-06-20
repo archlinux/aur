@@ -1,0 +1,15 @@
+pkgbase = testmace
+	pkgdesc = A modern powerful crossplatform tool for working with an API and creating automated API tests
+	pkgver = latest
+	pkgrel = 1
+	url = https://testmace.com
+	arch = x86_64
+	license = custom:testmace
+	depends = zlib
+	noextract = testmace-latest.AppImage
+	options = !strip
+	source = testmace-latest.AppImage::https://download.testmace.com/TestMace.AppImage
+	sha256sums = SKIP
+
+pkgname = testmace
+
