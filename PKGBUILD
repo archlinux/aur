@@ -27,10 +27,5 @@ package() {
   export CARGO_HOME=$pkgdir/opt/rust
   $srcdir/rustup-init.sh --default-toolchain nightly --profile complete --no-modify-path -y
   $pkgdir/opt/rust/bin/cargo install racer rustsym ripgrep cargo-xbuild bootimage
-  
-  mkdir -p $pkgdir/usr/bin
-  for i in $(ls $pkgdir/opt/rust/bin); do
-    ln -s /opt/rust/bin/$i $pkgdir/usr/bin/$i
-  done
   chmod -R a+rw $pkgdir/opt/rust # rustup and cargo won't run as an ordinary user otherwise
 }

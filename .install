@@ -1,0 +1,5 @@
+post_install() {
+  for i in $(ls /opt/rust/bin); do
+    ln -s /opt/rust/bin/$i /usr/bin/$i
+  done
+}
