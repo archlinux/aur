@@ -15,7 +15,7 @@ source=("flatery-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/Flatery"
+  cd "${srcdir}/flatery-icon-theme"
   ( 
    set -o pipefail
    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,10 +24,10 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/Flatery/Flatery"
+  cd "${srcdir}/flatery-icon-theme/Flatery"
   install -dm755 "${pkgdir}/usr/share/icons/Flatery"
   cp -drf --no-preserve='ownership' * "${pkgdir}/usr/share/icons/Flatery"
-  cd "$srcdir/Flatery/Flatery-Dark"
+  cd "$srcdir/flatery-icon-theme/Flatery-Dark"
   install -dm755 "${pkgdir}/usr/share/icons/Flatery-Dark"
   cp -drf --no-preserve='ownership' * "${pkgdir}/usr/share/icons/Flatery-Dark"
   cd "${pkgdir}/usr/share/icons/Flatery-Dark"
