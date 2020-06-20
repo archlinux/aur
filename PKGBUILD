@@ -2,15 +2,15 @@
 
 
 pkgname=fcitx5-bing-input-color
-pkgver=0.0.0.20200619
-_commit=0704f3e486fda2ea87069acc9354d2efafa014fc
+pkgver=0.0.0.20200620
+_commit=10a5fba51899dbbe756528b0bb60f941aa56140c
 pkgrel=1
 pkgdesc="一款模仿Windows10 2004自带浅色输入法的Fcitx5皮肤."
 arch=('any')
 url="https://github.com/skykeyjoker/Fcitx5-Bing-Input-Color"
 license=('MIT')
 source=("https://github.com/skykeyjoker/Fcitx5-Bing-Input-Color/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha512sums=('e0bfbfaae2f62272bada56c0120cb624710f6f011955338c692e0a45c7b836dd763e3a06bdfd906c421d44d3c4c3463241c2804bbf4a3a3c1023d57fe8b78513')
+sha512sums=('9860df8be91726b07d3a75dc4f17b17cafc3eca34a2e3889c1c94833262d279a933bf654e9bbd3cd37e3d3fee4080679d3edf28f99ee34ad51b0119452715048')
 
 
 package() {
