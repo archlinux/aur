@@ -16,22 +16,22 @@ source=("symphonium::git+https://github.com/ttdm/Symphonium")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd Symphonium
+  cd symphonium
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd Symphonium
+  cd symphonium
   sed -i '22,24 s/^/#/' Symphonium.pro
 }
 
 build() {
-  cd Symphonium
+  cd symphonium
   qmake PREFIX="/usr"
   make
 }
 
 package() {
-  cd Symphonium
+  cd symphonium
   make INSTALL_ROOT="${pkgdir}" install
 }
