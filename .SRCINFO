@@ -1,6 +1,6 @@
 pkgbase = sys-pc-tool
 	pkgdesc = SYS PC Tool is a software for downloading flights recorded inside Syrides instruments.
-	pkgver = 6.17
+	pkgver = 6.18
 	pkgrel = 1
 	url = https://www.syride.com/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = sys-pc-tool
 	depends = p11-kit
 	depends = openssl
 	depends = libcurl-gnutls
-	source = https://www.syride.com/downloads/sys-pc-tool-6.17-1_amd64.deb
-	md5sums = d47193058fa4c396136c1f7801cc0c94
+	source = https://www.syride.com/downloads/sys-pc-tool-6.18-1_amd64.deb
+	md5sums = bea4552ff923a877bf73c5fa1d116d6a
 
 pkgname = sys-pc-tool
 
