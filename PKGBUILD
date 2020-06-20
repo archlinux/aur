@@ -11,7 +11,7 @@ license=(MIT)
 depends=('sudo' 'git' 'curl')
 makedepends=()
 optdepends=()
-conflicts=('rust-bin' 'rust-git' 'rust-nightly' 'rust-nightly-bin' 'rust-nightly-src' 'rust-src' 'rust-src-git')
+conflicts=('rust-bin' 'rust-git' 'rust-nightly' 'rust-nightly-bin' 'rust-nightly-src' 'rust-src' 'rust-src-git' 'rust-nightly-osdev')
 sha256sums=('SKIP')
 source=("https://sh.rustup.rs")
 

@@ -15,6 +15,7 @@ pkgbase = rust-nightly-rustup
 	conflicts = rust-nightly-src
 	conflicts = rust-src
 	conflicts = rust-src-git
+	conflicts = rust-nightly-osdev
 	source = https://sh.rustup.rs
 	sha256sums = SKIP
 
