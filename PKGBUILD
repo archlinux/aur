@@ -17,7 +17,7 @@ depends=('ffmpeg'
          'lua')
 makedepends=('luarocks' 'gendesk')
 provides=('gifine')
-source=("git+${url}")
+source=("lua51-gifine::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
