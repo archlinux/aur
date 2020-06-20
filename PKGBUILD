@@ -4,11 +4,11 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.3'
+_svt_av1_ver='c40ee249286f182f29bab717686c300e2912adfe'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.3.r98097.g9dfb19baeb
+pkgver=4.4.r98264.g548ef7a12b
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -38,9 +38,6 @@ makedepends=(
         'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang'
     # AUR:
         'decklink-sdk' 'amf-headers'
-
-    # Sphinxbase
-        'texlive-latexextra'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -50,15 +47,13 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
         "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
-        '050-ffmpeg-fix-svt-av1.patch'
+        #"040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
         'LICENSE')
 sha256sums=('SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'cbcf51f37b17355b228b62862cfde141b0701f260d8bc3502a922f0f91303f9e'
-            '462a5f6bf588c199fb0a162fc00a4de22b5a2506dc811cfd6e989f54166b0ad8'
+            #'69e0456b56429a422977d24a914e7e167a38397b2ab40aec575eee332b0e739c'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -67,8 +62,7 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-svt-av1.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
 }
 
 pkgver() { 
@@ -161,7 +155,7 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
-        --enable-libsvtav1 \
+        #--enable-libsvtav1 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
@@ -210,9 +204,7 @@ build() {
         --enable-omx \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau \
-        
-        
+        --enable-vdpau      
     make
     make tools/qt-faststart
 }
