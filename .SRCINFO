@@ -9,7 +9,7 @@ pkgbase = f4go-git
 	makedepends = go
 	depends = glibc
 	provides = f4go
-	source = git+https://github.com/Konstantin8105/f4go
+	source = f4go::git+https://github.com/Konstantin8105/f4go
 	sha256sums = SKIP
 
 pkgname = f4go-git

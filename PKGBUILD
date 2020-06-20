@@ -11,7 +11,7 @@ license=('MIT')
 provides=('f4go')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("f4go::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
