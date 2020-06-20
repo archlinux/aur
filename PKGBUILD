@@ -14,6 +14,11 @@ depends=(
     "linux-headers"
     "linux-docs"
 
+    #Linux LTS if the latest kernel is broken
+    "linux-lts"
+    "linux-lts-headers"
+    "linux-lts-docs"
+
     #Arch
     "base"
     "arch-wiki-docs"
