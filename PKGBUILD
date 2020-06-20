@@ -20,10 +20,6 @@ build(){
 
 package(){
     local sdir="$srcdir/$_reponame-$pkgver"
-    find "$sdir/target/release" \
-        -maxdepth 1 \
-        -executable \
-        -type f \
-        -exec install -m 755 "{}" "${pkgdir}/usr/bin/" \;
-    install -Dm 644 "$sdir/linux/logdna-agent.service" "$pkgdir/usr/lib/systemd/system/logdna-agent.service"
+    install -Dm 755 -t "$pkgdir/usr/bin/" "$sdir/target/release/logdna-agent"
+    install -Dm 644 -t "$pkgdir/usr/lib/systemd/system/logdna-agent.service" "$sdir/linux/logdna-agent.service"
 }
