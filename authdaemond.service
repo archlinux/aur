@@ -7,7 +7,7 @@ User=courier
 Group=courier
 ExecStart=/usr/bin/authdaemond start
 ExecStop=/usr/bin/authdaemond stop
-PIDFile=/var/run/authdaemon/pid
+PIDFile=/run/authdaemon/pid
 AmbientCapabilities=CAP_DAC_OVERRIDE
 
 [Install]
