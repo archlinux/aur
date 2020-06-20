@@ -19,7 +19,7 @@ source=("cloudforest::git+https://github.com/ryanbressler/CloudForest")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/CloudForest"
+  cd "${srcdir}/cloudforest"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -27,12 +27,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/CloudForest"
+  cd "${srcdir}/cloudforest"
   mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/CloudForest"
+  cd "${srcdir}/cloudforest"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/CloudForest"
+  cd "${srcdir}/cloudforest"
   install -Dm755 build/leafcount "${pkgdir}/usr/bin/leafcount"
   install -Dm755 build/growforest "${pkgdir}/usr/bin/growforest"
   install -Dm755 build/applyforest "${pkgdir}/usr/bin/applyforest"
