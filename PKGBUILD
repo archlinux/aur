@@ -18,7 +18,7 @@ makedepends=('boost'
              'lapack'
              'rang'
              'catch2')
-source=("git+https://github.com/d-SEAMS/seams-core")
+source=("dseams::git+https://github.com/d-SEAMS/seams-core")
 sha256sums=('SKIP')
 
 pkgver() {

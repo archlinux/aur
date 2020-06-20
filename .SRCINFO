@@ -16,7 +16,7 @@ pkgbase = dseams-git
 	depends = lua
 	depends = gsl
 	provides = dseams
-	source = git+https://github.com/d-SEAMS/seams-core
+	source = dseams::git+https://github.com/d-SEAMS/seams-core
 	sha256sums = SKIP
 
 pkgname = dseams-git
