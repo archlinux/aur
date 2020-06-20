@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=("python-setuptools" 'python-six')
 provides=('python-py-stackexchange' 'python-stackexchange')
 conflicts=("python-py-stackexchange" "${pkgname}")
-source=("git+${url}")
+source=("python-py-stackexchange::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

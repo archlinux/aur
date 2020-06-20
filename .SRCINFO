@@ -11,7 +11,7 @@ pkgbase = python-py-stackexchange-git
 	provides = python-stackexchange
 	conflicts = python-py-stackexchange
 	conflicts = python-py-stackexchange-git
-	source = git+https://github.com/lucjon/Py-StackExchange
+	source = python-py-stackexchange::git+https://github.com/lucjon/Py-StackExchange
 	sha256sums = SKIP
 
 pkgname = python-py-stackexchange-git
