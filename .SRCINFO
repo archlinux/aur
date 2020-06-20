@@ -6,6 +6,7 @@ pkgbase = breath2-git
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
+	makedepends = plasma-framework
 	depends = hicolor-icon-theme
 	optdepends = breath-gtk-git: Breath widget style for GTK applications
 	source = git+https://gitlab.manjaro.org/artwork/themes/breath2
