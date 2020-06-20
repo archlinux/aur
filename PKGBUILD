@@ -2,7 +2,7 @@
 
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
-pkgver=1.0.12.2.r4.gcb6a65c6
+pkgver=2.0.0.r6.g46f6e4b3
 pkgrel=2
 pkgdesc="runtime for axoloti"
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=('!strip')
 install="$pkgname.install"
 
 _chibios_version=2.6.9
-_chibios=ChibiOS_${_chibios_version}
+_chibios=ChibiOS-ver${_chibios_version}
 _chibios_archive=${_chibios}.zip
 _toolchain=gcc-arm-none-eabi-4_9-2015q2
 _toolchain_archive=${_toolchain}-20150609-linux.tar.bz2
@@ -27,7 +27,7 @@ _dfu_util_archive=${_dfu_util}.tar.gz
 
 source=(
   "${_gitname}::git+https://github.com/axoloti/axoloti.git"
-  "https://sourceforge.net/projects/chibios/files/ChibiOS%20GPL3/Version%20${_chibios_version}/${_chibios_archive}"
+  "https://github.com/ChibiOS/ChibiOS/archive/ver${_chibios_version}.zip"
   "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q2-update/+download/${_toolchain_archive}"
   "${_libusb_archive}::http://sourceforge.net/projects/libusb/files/libusb-1.0/${_libusb}/${_libusb_archive}/download"
   "http://dfu-util.sourceforge.net/releases/${_dfu_util_archive}"
@@ -35,7 +35,7 @@ source=(
 
 sha512sums=(
     SKIP
-    9724896d82cec1f0eb222bebb7b9b97173ec9b536d7f7bad36cebff24323a8c439db1693ba45107ac6087c9cc339da0b420392deea458ef2f383cd72e2916d9d
+    d3e936d85315a2184e2a13d60265d2a6487079d4c5fca54888510f38a068476ea729b574b53fcd9d3d22f6c3421275834fbdddc09ff58552bf94615da43d78f6
     73fbd6c2ba6350422b8b708456e2344d785344aa57777bcd7b5a4d9b8524eeed13d5b10eb47e1c13513519e1e670db726e7f969c4ca9124f33c9dfe04e6e7a8a
     f42f0187bfec16ebabad64efef7a7651ee85dcf2af1b7cbe543b7de615f9c6432f7eea5fcc6b23335591dcad287c905eb9bd56199cc5d3b47435027ad678f2c1
     a192019654a03f816c8270257785d504bd88ca279844d7d01082b1b1eb219a87135691ccb7cec5de951a87e0864fc39b55f1774c78b4c851940ba467412bee6e
@@ -72,7 +72,7 @@ package() {
     cp -r "$srcdir/$_gitname/platform_linux/"{arm-none-eabi,bin,include,lib} "$pkgdir/opt/$_gitname/platform_linux/"
     cp -r "$srcdir/$_gitname/firmware" "$pkgdir/opt/$_gitname/"
     cp -r "$srcdir/$_gitname/chibios" "$pkgdir/opt/$_gitname/chibios/"
-    cp -r "$srcdir/$_gitname/CMSIS" "$pkgdir/opt/$_gitname/CMSIS"
+    cp -r "$srcdir/$_gitname/api" "$pkgdir/opt/$_gitname/api"
     rm -rf "$pkgdir/opt/$_gitname/platform_linux/arm-none-eabi/lib/"{armv6-m,armv7-ar,armv7-m}
     rm -rf "$pkgdir/opt/$_gitname/platform_linux/lib/gcc/arm-none-eabi/4.9.3/"{armv6-m,armv7-ar,armv7-m}
     install -Dm755 "$srcdir/$_gitname/platform_linux/compile_firmware.sh" "$pkgdir/opt/$_gitname/platform_linux/compile_firmware.sh"
