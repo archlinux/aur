@@ -10,6 +10,7 @@ license=("custom:${pkgname}")
 depends=('gtk2'
          'libsm'
          'libpng12')
+makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::http://www.fsoft.it/FSPViewer/dwn-files/FSPViewer-${pkgver}-64.tar.gz"
         'fspviewer.png')
 sha256sums=('3bb70c654037225c4f9b8198eb893ab5b21dbaf6b2917a17fa1792b4d5adcde6'

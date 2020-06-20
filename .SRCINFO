@@ -5,6 +5,7 @@ pkgbase = fspviewer
 	url = http://www.fsoft.it/FSPViewer
 	arch = x86_64
 	license = custom:fspviewer
+	makedepends = gendesk
 	depends = gtk2
 	depends = libsm
 	depends = libpng12
