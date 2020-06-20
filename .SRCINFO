@@ -1,6 +1,6 @@
 pkgbase = linus-meta
 	pkgdesc = Packages i always need so i dont forget or uninstall them
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -58,6 +58,9 @@ pkgbase = linus-meta
 	depends = networkmanager
 	depends = cups
 	depends = cups-pdf
+	depends = bluez-cups
+	depends = cups-pk-helper
+	depends = system-config-printer
 	depends = kde-applications-meta
 	depends = libreoffice-fresh
 	depends = krita

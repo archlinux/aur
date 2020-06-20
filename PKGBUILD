@@ -2,7 +2,7 @@
 
 pkgname="linus-meta"
 pkgdesc="Packages i always need so i dont forget or uninstall them"
-pkgver="3"
+pkgver="4"
 pkgrel="1"
 arch=("x86_64")
 license=("GPL3")
@@ -75,6 +75,9 @@ depends=(
     #Printer
     "cups"
     "cups-pdf"
+    "bluez-cups" #Bluetooth printer
+    "cups-pk-helper" #Polkit support for cups
+    "system-config-printer" #Configure printers in KDE System Settings
 
     #Applications
     "kde-applications-meta"
