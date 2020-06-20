@@ -15,7 +15,7 @@ depends=('libxrandr'
          'sdl2_mixer'
          'sdl2_net')
 makedepends=('go' 'gendesk')
-install=post_install
+install=opendiablo2.install
 source=("git+https://github.com/OpenDiablo2/OpenDiablo2")
 sha256sums=('SKIP')
 
