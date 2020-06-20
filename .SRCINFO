@@ -9,7 +9,7 @@ pkgbase = winrm-cli-git
 	makedepends = go
 	depends = glibc
 	provides = winrm-cli
-	source = git+https://github.com/masterzen/winrm-cli
+	source = winrm-cli::git+https://github.com/masterzen/winrm-cli
 	sha256sums = SKIP
 
 pkgname = winrm-cli-git

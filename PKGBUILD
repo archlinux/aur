@@ -10,7 +10,7 @@ license=('Apache')
 provides=("${pkgname%-git}")
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("winrm-cli::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
