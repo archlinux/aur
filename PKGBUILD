@@ -3,7 +3,7 @@
 _pkgname='validity-sensors-tools'
 pkgname="${_pkgname}-git"
 pkgver=0.5.r28.g101afda
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux tool to flash and pair Validity fingerprint sensors 009x'
 arch=('x86_64')
 url='https://github.com/3v1n0/python-validity'
@@ -17,7 +17,8 @@ depends=(
   'usbutils'
 )
 makedepends=('python-setuptools')
-provides=("$_pkgname" "python-proto9x" "python-proto9x-git")
+provides=("$_pkgname" "python-proto9x")
+conflicts=("$_pkgname" "python-proto9x")
 source=(
   "$_pkgname::git+https://github.com/3v1n0/python-validity.git"
   "0001-Monkey-patch-time-to-fix-bug-in-pycrypto.patch"
