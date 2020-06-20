@@ -1,0 +1,15 @@
+pkgbase = python-imagecodecs
+	pkgdesc = A Python library that provides block-oriented, in-memory buffer transformation, compression, and decompression functions for use in the tifffile, czifile, and other scientific imaging modules
+	pkgver = 2020.2.18
+	pkgrel = 1
+	url = https://pypi.org/project/imagecodecs
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-pip
+	depends = python
+	source = https://files.pythonhosted.org/packages/cp38/i/imagecodecs/imagecodecs-2020.2.18-cp38-cp38-manylinux2014_x86_64.whl
+	sha256sums = e0f3cfc2fc77c19118e173dca6af0dbed4a3cef75d3296762db687fd00fb7921
+
+pkgname = python-imagecodecs
+
