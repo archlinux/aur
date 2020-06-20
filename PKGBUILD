@@ -9,7 +9,7 @@ url='https://github.com/jaksi/sshesame'
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
-source=("git+https://github.com/jaksi/sshesame")
+source=("sshesame::git+https://github.com/jaksi/sshesame")
 sha256sums=('SKIP')
 
 pkgver() {

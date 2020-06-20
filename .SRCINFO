@@ -7,7 +7,7 @@ pkgbase = sshesame-git
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/jaksi/sshesame
+	source = sshesame::git+https://github.com/jaksi/sshesame
 	sha256sums = SKIP
 
 pkgname = sshesame-git
