@@ -1,0 +1,23 @@
+pkgbase = rust-nightly-osdev
+	pkgdesc = Nightly build of the Rust programming language along with the rustup utility and phil-opp's OS kernel development tools
+	pkgver = 1.44.1
+	pkgrel = 1
+	url = https://rustup.rs
+	arch = x86_64
+	license = MIT
+	depends = sudo
+	depends = git
+	depends = curl
+	conflicts = rust-bin
+	conflicts = rust-git
+	conflicts = rust-nightly
+	conflicts = rust-nightly-bin
+	conflicts = rust-nightly-src
+	conflicts = rust-src
+	conflicts = rust-src-git
+	conflicts = rust-nightly-rustup
+	source = https://sh.rustup.rs
+	sha256sums = SKIP
+
+pkgname = rust-nightly-osdev
+
