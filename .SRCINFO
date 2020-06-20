@@ -9,7 +9,7 @@ pkgbase = copy-pasta-git
 	makedepends = go
 	depends = glibc
 	provides = copy-pasta
-	source = git+https://github.com/jutkko/copy-pasta
+	source = copy-pasta::git+https://github.com/jutkko/copy-pasta
 	sha256sums = SKIP
 
 pkgname = copy-pasta-git

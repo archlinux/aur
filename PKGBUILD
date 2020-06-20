@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-git}")
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("copy-pasta::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
