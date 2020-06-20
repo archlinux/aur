@@ -1,7 +1,7 @@
 # Maintainer: Brenden Davidson <davidson.brenden15@gmail.com>
 pkgname=python-webpy
 pkgver=0.51
-pkgrel=2
+pkgrel=3
 pkgdesc="A web framework for Python"
 arch=("any")
 url="https://webpy.org/"
@@ -16,11 +16,11 @@ depends=(
 checkdepends=(
 	"python-pytest>=4.6.2"
 
-	# Omitted to disable DB tests
-	# "python-dbutils"
-	# "python-pymysql>=0.9.3"
-	# "python-mysql-connector>=8.0.19"
-	# "python-psycopg2>=2.8.4"
+	Omitted to disable DB tests
+	"python-dbutils"
+	"python-pymysql>=0.9.3"
+	"python-mysql-connector>=8.0.19"
+	"python-psycopg2>=2.8.4"
 )
 
 source=(
@@ -35,11 +35,11 @@ build() {
 	/usr/bin/python setup.py build
 }
 
-# DB tests have been purposefully disabled by removing their dependencies.
-check() {
-	cd "$_name-$pkgver"
-	py.test tests $*
-}
+# Tests have been purposefully disabled due to them requiring a test database.
+# check() {
+# 	cd "$_name-$pkgver"
+# 	py.test tests $*
+# }
 
 package() {
 	cd "$_name-$pkgver"
