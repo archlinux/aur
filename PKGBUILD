@@ -3,6 +3,7 @@ _name=radical-native
 _ext_id='@radical-native'
 pkgver=0.1beta14
 pkgrel=1
+epoch=1
 pkgdesc='Extending Riot Web with native capabilities'
 arch=('x86_64')
 license=('MIT')
