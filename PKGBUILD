@@ -4,7 +4,7 @@ pkgname=tetrio-desktop
 pkgver=1.0.0
 # sometimes, they release without bumping the version
 _release=2
-pkgrel=5
+pkgrel=6
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('unknown' 'APACHE' 'MIT')
@@ -28,9 +28,10 @@ package() {
     rm "$pkgdir/opt/$pkgname/LICENSE.electron.txt"
 
     # fix permissions
-    find "$pkgdir/opt/$pkgname" -type f \
-        -not \( -name '*.so' -o -name tetrio-desktop \) \
-        -exec chmod 644 {} +
+    chmod -R 644 "$pkgdir/opt/$pkgname"
+    find "$pkgdir/opt/$pkgname" \
+        \( -type d -o -name '*.so' -o -name tetrio-desktop -o -name chrome-sandbox \) \
+        -exec chmod 755 {} +
 
     install -Dm644 tetrio-desktop.png "$pkgdir/usr/share/pixmaps/tetrio-desktop.png"
     install -Dm644 tetrio-desktop.desktop "$pkgdir/usr/share/applications/tetrio-desktop.desktop"

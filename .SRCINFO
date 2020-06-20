@@ -1,7 +1,7 @@
 pkgbase = tetrio-desktop
 	pkgdesc = TETR.IO desktop client
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tetr.io/
 	arch = x86_64
 	license = unknown
