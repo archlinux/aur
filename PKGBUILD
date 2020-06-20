@@ -1,7 +1,7 @@
 # Maintainer: kirillz kzasorin@gmail.com
 
 pkgname=joplin-appimage
-pkgver=1.0.221
+pkgver=1.0.223
 pkgrel=1
 pkgdesc="The latest released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
