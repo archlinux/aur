@@ -1,6 +1,6 @@
 pkgbase = silentdragon
 	pkgdesc = HUSH desktop full node GUI wallet that supports zaddrs
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = http://github.com/MyHush/SilentDragon
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = silentdragon
 	depends = qt5-websockets
 	depends = qt5-base
 	depends = qt5-tools
-	source = https://github.com/MyHush/SilentDragon/archive/v0.9.1.tar.gz
-	sha256sums = 7cf67937bce5ba4a7f21c513df3ddebb4dbb510ab57ca3fa9494c33e45363367
+	source = https://github.com/MyHush/SilentDragon/archive/v0.9.2.tar.gz
+	sha256sums = 488dad66535320675e795ada9ee8d903aa64721a9a866c41a66fb3d7647d9de8
 
 pkgname = silentdragon
 	install = silentdragon.install
