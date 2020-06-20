@@ -7,7 +7,7 @@ pkgdesc="The most advanced Data Warehouse Client for data analytics teams.
 Optimized for Snowflake, Presto, BigQuery, and Redshift"
 arch=('x86_64')
 url='https://www.querypie.com'
-license=('custom:${pkgname}')
+license=("custom:${pkgname}")
 depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
