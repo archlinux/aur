@@ -1,7 +1,7 @@
 pkgbase = freac
 	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://www.freac.org
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = freac
 	depends = libgudev
 	depends = boca
 	depends = hicolor-icon-theme
-	source = freac-1.1.1.tar.gz::https://github.com/enzo1982/freac/archive/v1.1.1.tar.gz
-	sha256sums = 3f3eb00ef03c71a02c7f0e501b801b85d8584c1ea9ef017f9a4eaef8bcd43892
+	source = freac-1.1.2.tar.gz::https://github.com/enzo1982/freac/archive/v1.1.2.tar.gz
+	sha256sums = d275d15969429034f1589930ee052b3bdf2baacdccfee9a7ad24aa25206955df
 
 pkgname = freac
 
