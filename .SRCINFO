@@ -1,0 +1,16 @@
+pkgbase = perl-filter-signatures
+	pkgdesc = Filter::signatures - very simplistic signatures for Perl < 5.20
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/pod/Filter::signatures
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	depends = perl-filter-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Filter-signatures-0.15.tar.gz
+	md5sums = 97d59b3749ac1f4bafdcd0dce8ab7765
+
+pkgname = perl-filter-signatures
+
