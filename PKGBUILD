@@ -13,14 +13,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juzzlin/Heimer/archive/
 sha256sums=('252487933f7ba12348e6bc215b4679b83314440caa991a667dba06b3e929a74c')
 
 build() {
-	cd "Heimer-${pkgver}"
+  cd "Heimer-${pkgver}"
   rm -rf build
-	mkdir build
+  mkdir build
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
-	cd "Heimer-${pkgver}/build"
-	make DESTDIR="${pkgdir}/" install
+  cd "Heimer-${pkgver}/build"
+  make DESTDIR="${pkgdir}/" install
 }
