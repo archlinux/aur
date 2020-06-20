@@ -1,0 +1,17 @@
+[Unit]
+Description=An open source integration manager for matrix clients.
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Environment=NODE_ENV=production
+Environment=NODE_CONFIG_DIR=/etc/dimension
+Type=simple
+ExecStart=/usr/bin/node /usr/share/webapps/dimension/build/app/index.js
+WorkingDirectory=/var/lib/dimension
+DynamicUser=true
+ConfigurationDirectory=dimension
+StateDirectory=dimension
+
+[Install]
+WantedBy=multi-user.target
