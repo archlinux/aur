@@ -1,0 +1,17 @@
+post_install() {
+  for i in $(ls /opt/rust/bin); do
+    ln -s /opt/rust/bin/$i /usr/bin/$i
+  done
+}
+
+post_upgrade() {
+  for i in $(ls /opt/rust/bin); do
+    ln -s /opt/rust/bin/$i /usr/bin/$i
+  done
+}
+
+pre_remove() {
+  for i in $(ls /opt/rust/bin); do
+    unlink /usr/bin/$i
+  done
+}

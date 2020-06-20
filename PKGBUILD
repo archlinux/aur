@@ -14,6 +14,7 @@ optdepends=()
 conflicts=('rust-bin' 'rust-git' 'rust-nightly' 'rust-nightly-bin' 'rust-nightly-src' 'rust-src' 'rust-src-git' 'rust-nightly-rustup')
 sha256sums=('SKIP')
 source=("https://sh.rustup.rs")
+install='rust-nightly-osdev.install'
 
 prepare() {
   mv $srcdir/sh.rustup.rs $srcdir/rustup-init.sh
