@@ -1,0 +1,10 @@
+--- a/src/libs/ui/searchitemdelegate.cpp
++++ b/src/libs/ui/searchitemdelegate.cpp
+@@ -27,6 +27,7 @@
+ #include <QFontMetrics>
+ #include <QHelpEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QToolTip>
+ 
+ using namespace Zeal::WidgetUi;
