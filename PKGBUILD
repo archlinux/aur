@@ -25,7 +25,7 @@ depends=('appstream-glib'
          'python-peewee'
          'gst-plugins-good')
 makedepends=('meson' 'ninja' 'git')
-source=("git+https://github.com/geigi/cozy")
+source=("cozy-audiobooks::git+https://github.com/geigi/cozy")
 sha256sums=('SKIP')
 
 pkgver() {
