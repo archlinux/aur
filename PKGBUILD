@@ -11,7 +11,7 @@ license=('MIT')
 provides=('align')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("align::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

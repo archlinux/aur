@@ -9,7 +9,7 @@ pkgbase = align-git
 	makedepends = go
 	depends = glibc
 	provides = align
-	source = git+https://github.com/Guitarbum722/align
+	source = align::git+https://github.com/Guitarbum722/align
 	sha256sums = SKIP
 
 pkgname = align-git
