@@ -14,7 +14,7 @@ pkgbase = elementary-icon-theme-git
 	provides = elementary-icon-theme
 	conflicts = elementary-icon-theme
 	options = !emptydirs
-	source = git+https://github.com/elementary/icons.git
+	source = elementary-icon-theme::git+https://github.com/elementary/icons.git
 	sha256sums = SKIP
 
 pkgname = elementary-icon-theme-git

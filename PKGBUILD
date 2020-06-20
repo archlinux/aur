@@ -14,7 +14,7 @@ makedepends=('git' 'meson' 'inkscape' 'xorg-xcursorgen')
 provides=('elementary-icon-theme')
 conflicts=('elementary-icon-theme')
 options=('!emptydirs')
-source=("git+${url}.git")
+source=("elementary-icon-theme::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
