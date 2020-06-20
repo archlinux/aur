@@ -8,7 +8,7 @@ pkgbase = licen-git
 	makedepends = python-setuptools
 	depends = python-docopt
 	depends = python-jinja
-	source = git+https://github.com/lord63/licen
+	source = licen::git+https://github.com/lord63/licen
 	sha256sums = SKIP
 
 pkgname = licen-git

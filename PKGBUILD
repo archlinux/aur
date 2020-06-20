@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-docopt'
          'python-jinja')
 makedepends=('python-setuptools')
-source=("git+${url}")
+source=("licen::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
