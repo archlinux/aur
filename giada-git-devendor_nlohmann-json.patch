@@ -1,0 +1,55 @@
+diff -ruN a/src/core/conf.cpp b/src/core/conf.cpp
+--- a/src/core/conf.cpp	2020-02-18 22:26:06.000000000 +0100
++++ b/src/core/conf.cpp	2020-02-20 20:00:59.845504376 +0100
+@@ -29,7 +29,7 @@
+ #include <cassert>
+ #include <string>
+ #include <FL/Fl.H>
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include "utils/fs.h"
+ #include "utils/log.h"
+ #include "core/const.h"
+@@ -314,4 +314,4 @@
+     ofs << j;
+ 	return true;
+ }
+-}}}; // giada::m::conf::
+\ No newline at end of file
++}}}; // giada::m::conf::
+diff -ruN a/src/core/init.cpp b/src/core/init.cpp
+--- a/src/core/init.cpp	2020-02-18 22:26:06.000000000 +0100
++++ b/src/core/init.cpp	2020-02-20 19:59:55.206135824 +0100
+@@ -35,7 +35,7 @@
+ 	#include <X11/Xlib.h> // For XInitThreads
+ #endif
+ #include <FL/Fl.H>
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include "gui/updater.h"
+ #include "utils/log.h"
+ #include "utils/fs.h"
+diff -ruN a/src/core/midiMapConf.cpp b/src/core/midiMapConf.cpp
+--- a/src/core/midiMapConf.cpp	2020-02-18 22:26:06.000000000 +0100
++++ b/src/core/midiMapConf.cpp	2020-02-20 20:01:20.878632255 +0100
+@@ -30,7 +30,7 @@
+ #include <string>
+ #include <cstring>
+ #include <dirent.h>
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include "utils/string.h"
+ #include "utils/log.h"
+ #include "utils/fs.h"
+diff -ruN a/src/core/patch.cpp b/src/core/patch.cpp
+--- a/src/core/patch.cpp	2020-02-18 22:26:06.000000000 +0100
++++ b/src/core/patch.cpp	2020-02-20 20:00:40.602359018 +0100
+@@ -26,7 +26,7 @@
+ 
+ 
+ #include <fstream>
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include "utils/math.h"
+ #include "utils/log.h"
+ #include "core/mixer.h"
