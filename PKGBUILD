@@ -20,7 +20,7 @@ sha256sums=('25ada71fef14b23fa03a0a5bcce87e36161f4f2488f34aa256634e5973d8e66b'
 build() {
     cd ${pkgname}-${pkgver}
 
-    cmake -B build -DLIBOBS_INCLUDE_DIR=obs-studio-${_obsver}/libobs -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DLIBOBS_INCLUDE_DIR=${srcdir}/obs-studio-${_obsver}/libobs -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
