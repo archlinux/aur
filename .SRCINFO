@@ -1,6 +1,6 @@
 pkgbase = elm-live
 	pkgdesc = A flexible dev server for Elm
-	pkgver = 3.2.3
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/architectcodes/elm-live
 	arch = any
