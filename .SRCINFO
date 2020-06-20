@@ -32,7 +32,7 @@ pkgbase = hunter-git
 	optdepends = fzf: Default file finder
 	provides = hunter
 	conflicts = hunter
-	source = git+https://github.com/rabite0/hunter
+	source = hunter::git+https://github.com/rabite0/hunter
 	sha256sums = SKIP
 
 pkgname = hunter-git

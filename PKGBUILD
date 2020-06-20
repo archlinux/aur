@@ -33,7 +33,7 @@ optdepends=('gst-plugins-good: Media support'
             'poppler: PDF support'
             'mupdf-tools: PDF support'
             'fzf: Default file finder')
-source=("git+${url}")
+source=("hunter::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
