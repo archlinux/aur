@@ -13,7 +13,7 @@ pkgbase = python-pydantic-git
 	optdepends = python-ujson: Faster JSON parsing in pure Python
 	optdepends = python-email-validator: Enable email validation
 	provides = python-pydantic
-	source = git+https://github.com/samuelcolvin/pydantic
+	source = python-pydantic::git+https://github.com/samuelcolvin/pydantic
 	sha256sums = SKIP
 
 pkgname = python-pydantic-git

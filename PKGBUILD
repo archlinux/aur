@@ -13,7 +13,7 @@ makedepends=('cython' 'git')
 optdepends=('python-ujson: Faster JSON parsing in pure Python'
             'python-email-validator: Enable email validation')
 checkdepends=('python-pytest-cov' 'mypy')
-source=("git+https://github.com/samuelcolvin/pydantic")
+source=("python-pydantic::git+https://github.com/samuelcolvin/pydantic")
 sha256sums=('SKIP')
 
 pkgver() {
