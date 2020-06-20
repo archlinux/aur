@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r563.88305e0
+pkgver=r580.4c359a3
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=(lib{gee,wnck3} 'cogl')
-makedepends=('meson' 'libgranite.so' 'git' 'vala')
+makedepends=('meson' 'libgranite.so' 'git' 'vala' 'nano')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
             wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"
@@ -24,13 +24,13 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
         'autohide.patch'
-        'reverse-105c1d0.patch'
+        'fix-for-openbox.patch'
         'no-mutter-typelib.patch')
 sha256sums=('SKIP'
-            '69d564a34766b2bc16f9756b5915223da33cfd66c46b206aa6c4342f94404ba9'
+            '96076d8eab47bf9fe4bfaea58e79c98550c4f8e595a26fe052e59d755ae884b8'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
             'cbea39c2f11ecaf8f6d86f79253746575da479bdd25a166a36ee82f09f9135a0'
-            '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394'
+            'aa15974b87a1000ab432bb048bc8a6ba0f36edd24e682d4e57833179c7b93f45'
             '5b29e24b4dc9076d54621334b839d2dbfa6a6adce1e8b444e38c2412f314f8c7')
 
 pkgver() {
@@ -47,9 +47,9 @@ prepare() {
   patch -Np1 < ../autohide.patch
   #patch -Np2 < ../autohide-testing.patch
 
-  #Reverse 105c1d0 (restores Ayatana indicator submenus)
-  #msg2 "Reverse commit 105c1d0"
-  #patch -Np1 < ../reverse-105c1d0.patch
+  #Fixes
+  msg2 "Fix multiple-monitor strut method for openbox"
+  patch -Np1 < ../fix-for-openbox.patch
 
   #Standalone patches
   msg2 "Remove Gala dependecies"
