@@ -12,7 +12,7 @@ pkgbase = terminalpp-git
 	depends = libxft
 	depends = hicolor-icon-theme
 	provides = terminalpp
-	source = git+https://github.com/terminalpp/terminalpp
+	source = terminalpp::git+https://github.com/terminalpp/terminalpp
 	sha256sums = SKIP
 
 pkgname = terminalpp-git

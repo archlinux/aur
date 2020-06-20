@@ -10,7 +10,7 @@ provides=('terminalpp')
 license=('MIT')
 depends=('libxft' 'hicolor-icon-theme')
 makedepends=('gcc8' 'imagemagick' 'cloc' 'git')
-source=("git+https://github.com/terminalpp/terminalpp")
+source=("terminalpp::git+https://github.com/terminalpp/terminalpp")
 sha256sums=('SKIP')
 
 pkgver() {
