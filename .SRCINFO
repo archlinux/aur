@@ -1,6 +1,6 @@
 pkgbase = texlive-cleanthesis
 	pkgdesc = A beautiful clean LaTeX style
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://cleanthesis.der-ric.de/
 	install = texlive.install
@@ -8,8 +8,8 @@ pkgbase = texlive-cleanthesis
 	license = LPPL
 	depends = texlive-core
 	depends = texlive-latexextra
-	source = cleanthesis-0.4.0.tar.gz::https://github.com/derric/cleanthesis/archive/v0.4.0.tar.gz
-	sha256sums = 5268d224595c25924e7df83edc91675e5538606c35664f29ab899c748205d399
+	source = cleanthesis-0.4.1.tar.gz::https://github.com/derric/cleanthesis/archive/v0.4.1.tar.gz
+	sha256sums = 9c669bdce79bcb2442cbf7b4d99b93ce2750a85dbb5f8e1610e2b3e0e7f887b9
 
 pkgname = texlive-cleanthesis
 

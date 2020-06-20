@@ -3,7 +3,7 @@
 
 _name=cleanthesis
 pkgname=texlive-${_name}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A beautiful clean LaTeX style"
 arch=("any")
@@ -11,7 +11,7 @@ url="http://cleanthesis.der-ric.de/"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/derric/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('5268d224595c25924e7df83edc91675e5538606c35664f29ab899c748205d399')
+sha256sums=('9c669bdce79bcb2442cbf7b4d99b93ce2750a85dbb5f8e1610e2b3e0e7f887b9')
 install=texlive.install
 
 package() {
