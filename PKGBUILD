@@ -3,15 +3,16 @@
 pkgname='matterircd'
 _github_path="github.com/42wim/${pkgname}"
 _go_pkg_path="src/${_github_path}"
-pkgver='0.19.2'
-pkgrel='2'
+pkgver='0.19.4'
+pkgrel='1'
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url='https://github.com/42wim/matterircd'
 license=('MIT')
 depends=('glibc')
-makedepends=('go-pie>=1.8')
+makedepends=('go>=1.8')
 backup=("etc/${pkgname}/config.toml")
+validpgpkeys=('CC7D978417C1AEA1E4CDD7240E41AB4BF4C610B4')
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://${_github_path}/archive/v${pkgver}.tar.gz"
@@ -21,7 +22,7 @@ source=(
 )
 
 sha512sums=(
-    '43f9f73a2932a3be3c843d3325ecc8787f55647b89834cde93afff07f98cf6a1c76cb660390f6875802f56e0b59090df6b7972c6a0c424c54bac3ae4821c2b7e'
+    'a259414d865398fb23a2de1c156e81740b1b420f0b0d3a8510034f4f2c1718a0827a8d128084eccc921c34658dd489c087ceade830c1709f3e5b423346db6f63'
     'SKIP'
     'a1c8947ca8ed510b0abd94e1eb3f049a7179a596e20975f343f1fd6a034512b3e7d5daa082ed0e7662757d416b3b10f318de5a8fe9c44923d2cfbd15742d3ba0'
     '80db251f5b087ba6bcdd6f266063fb749107a441f794678d645acf32d44aba7b53c2c9ef7a9c3962abfd6e8af20a2d29e93bde1c15358d9f2011ce98b68e56dc'
