@@ -7,11 +7,11 @@ pkgdesc="A colourful flat theme designed for Plasma desktop"
 arch=('any')
 url='https://www.opencode.net/fabianalexis/kuyen-icons'
 license=('CCPL')
-makedepends=('git')
-source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
+makedepends=('git')
+source=("kuyen-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
