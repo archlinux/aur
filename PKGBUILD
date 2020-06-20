@@ -17,17 +17,17 @@ source=("canonical-multipass::git+https://github.com/canonical/multipass")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd multipass
+  cd canonical-multipass
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd multipass
+  cd canonical-multipass
   git submodule update --init --recursive
 }
 
 build() {
-  cd multipass
+  cd canonical-multipass
   mkdir -p "build"
   cd "build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-  cd multipass/build
+  cd canonical-multipass/build
   make DESTDIR="${pkgdir}" install
 }                                                                                                               
