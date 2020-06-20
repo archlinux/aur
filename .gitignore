@@ -1,0 +1,12 @@
+
+# The remote git repo
+lbry-desktop
+
+# Generated packages
+*.tar
+*.gz
+*.xz
+
+src
+pkg
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=LBRY
+Exec=/opt/LBRY/lbry %U
+Terminal=false
+Type=Application
+Icon=lbry
+StartupWMClass=LBRY
+MimeType=x-scheme-handler/lbry;
+Comment=A browser for the LBRY network, a digital marketplace controlled by its users
+Categories=Network;AudioVideo;Video;
+Keywords=download;marketplace;lbry;torrent;video;
