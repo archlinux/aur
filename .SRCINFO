@@ -9,14 +9,14 @@ pkgbase = idevicerestore-git
 	license = LGPL3
 	makedepends = git
 	depends = libirecovery-git
-	depends = libimobiledevice-git
+	depends = libimobiledevice
 	depends = libzip
 	depends = openssl
 	depends = curl
 	source = git+https://github.com/libimobiledevice/idevicerestore
 	source = 0001-configure.ac-check-for-pthreads.patch
 	sha256sums = SKIP
-	sha256sums = c259a9f977de42fbfde75ad0c9a4d813b7d39bf217ee416902409403cd6d7931
+	sha256sums = d7fcc4e46a175d309298bd95d330c027fcca7dba3226f3e1b802c8ebe8d8ed15
 
 pkgname = idevicerestore-git
 
