@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-radical-native
 	pkgdesc = Extending Riot Web with native capabilities
 	pkgver = 0.1beta14
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/stoically/radical-native
 	arch = x86_64
