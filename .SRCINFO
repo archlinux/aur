@@ -1,6 +1,6 @@
 pkgbase = prob
 	pkgdesc = ProB Animator and Model Checker
-	pkgver = 1.7.1
+	pkgver = 1.9.3
 	pkgrel = 3
 	url = https://www3.hhu.de/stups/prob/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = prob
 	depends = java-runtime
 	optdepends = graphviz: visualizations
 	optdepends = gv: PostScript visualizations
-	source_x86_64 = http://www3.hhu.de/stups/downloads/prob/tcltk/releases/1.7.1/ProB.linux64.tar.gz
-	md5sums_x86_64 = eb74b2991967f0a8ed8669c4186ac1fa
+	source_x86_64 = http://www3.hhu.de/stups/downloads/prob/tcltk/releases/1.9.3/ProB.linux64.tar.gz
+	md5sums_x86_64 = cb18f35657af81db39413b8e2033f729
 
 pkgname = prob
 
