@@ -1,6 +1,6 @@
 pkgbase = mycrypto-bin
 	pkgdesc = Open-source, client-side tool for generating Ether Wallets, handling ERC-20 tokens, and interacting with the blockchain more easily
-	pkgver = 1.7.10
+	pkgver = 1.7.11
 	pkgrel = 1
 	url = https://github.com/MyCryptoHQ/MyCrypto
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mycrypto-bin
 	depends = gconf
 	provides = mycrypto
 	conflicts = mycrypto
-	source = https://github.com/MyCryptoHQ/MyCrypto/releases/download/1.7.10/linux-x86-64_1.7.10_MyCrypto.AppImage
+	source = https://github.com/MyCryptoHQ/MyCrypto/releases/download/1.7.11/linux-x86-64_1.7.11_MyCrypto.AppImage
 	source = LICENSE
-	sha256sums = 2096310e7ce00b5cadc58e2a59d877fac262dfb6db03efaeafa2566b3bf23f55
+	sha256sums = c0634467f425027b3b5caaed5f5fd1b9138d1e3e886bc7e2f573176c7cbd3b4d
 	sha256sums = 1b0a4ebe6200441fe008bba2b60bb227b944cd77427b3f9c60f6f7e32120a65d
 
 pkgname = mycrypto-bin
