@@ -1,0 +1,16 @@
+pkgbase = perl-glib-io
+	pkgdesc = Perl bindings to the GIO library
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/pod/Glib::IO
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = perl
+	depends = perl-glib-object-introspection
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-IO-0.001.tar.gz
+	md5sums = 8628744ae27b20a2f45dbe2d620cb89c
+
+pkgname = perl-glib-io
+
