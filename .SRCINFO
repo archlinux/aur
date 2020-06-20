@@ -9,7 +9,7 @@ pkgbase = slingr-git
 	makedepends = cargo
 	depends = gcc-libs
 	provides = slingr
-	source = git+https://github.com/yuvadm/slingr
+	source = slingr::git+https://github.com/yuvadm/slingr
 	sha256sums = SKIP
 
 pkgname = slingr-git

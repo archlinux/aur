@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('slingr')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("git+${url}")
+source=("slingr::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
