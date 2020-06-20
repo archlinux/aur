@@ -10,7 +10,7 @@ license=('BSD')
 provides=('ergo')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+${url}")
+source=("ergo::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

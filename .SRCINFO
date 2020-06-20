@@ -9,7 +9,7 @@ pkgbase = ergo-git
 	makedepends = git
 	depends = glibc
 	provides = ergo
-	source = git+https://github.com/beatlabs/ergo
+	source = ergo::git+https://github.com/beatlabs/ergo
 	sha256sums = SKIP
 
 pkgname = ergo-git
