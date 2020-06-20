@@ -1,16 +1,16 @@
 pkgbase = firefox-extension-radical-native
 	pkgdesc = Extending Riot Web with native capabilities
-	pkgver = 0.1.0beta13
+	pkgver = 0.1beta14
 	pkgrel = 1
 	url = https://github.com/stoically/radical-native
 	arch = x86_64
 	license = MIT
 	depends = firefox
 	depends = radical-native-bin
-	noextract = radical_native-0.1beta13-fx.xpi
-	source = https://github.com/stoically/radical-native/releases/download/v0.1.0beta13/radical_native-0.1beta13-fx.xpi
-	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1.0beta13/LICENSE
-	sha512sums = 868bc573a41ebe6afda15940fae2c84963b5afe947d85bce4b6d6a570da467ecbdd2b3987e9fcc2ee1c6ef95d4b71d7612b4810b37bc00ad69943c8622766d92
+	noextract = radical_native-0.1beta14-fx.xpi
+	source = https://github.com/stoically/radical-native/releases/download/v0.1beta14/radical_native-0.1beta14-fx.xpi
+	source = https://raw.githubusercontent.com/stoically/radical-native/v0.1beta14/LICENSE
+	sha512sums = f9da2a8360d473950956bf4cb0968f567fc353ffb6f882d3bdb14127cdba1e504b5c46427dd019477b5a1671bb148c9a3b0cfabf809c9cf5fea5bf143fe6fda9
 	sha512sums = 4b7ddd854dff49b640b8dad9b8bb7cda64ed02a1aa4f0299498a57fe372e042f4969e2e2bfa2449064e8c9bfb8909d8f4e6644365672a819b61c324302130049
 
 pkgname = firefox-extension-radical-native
