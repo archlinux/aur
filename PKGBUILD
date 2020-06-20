@@ -48,6 +48,20 @@ package() {
 	Version=1.0
 	END
 
+	cat <<-END > "$pkgdir/usr/share/applications/subsretimer.desktop"
+	[Desktop Entry]
+	Name=Subs Re-Timer
+	Comment=Re-time a subtitle file based on the timings of another subtitle file
+	GenericName=Subs Re-Timer
+	Exec=mono /opt/subs2srs/Utils/SubsReTimer/SubsReTimer.exe
+	Icon=subsretimer
+	Categories=Education;Languages;AudioVideo;Audio;Video;
+	Terminal=false
+	Type=Application
+	StartupNotify=true
+	Version=1.0
+	END
+
 	ln -sf /usr/bin/ffmpeg     "$pkgdir/opt/subs2srs/Utils/ffmpeg/ffmpeg.exe"
 	ln -sf /usr/bin/mp3gain    "$pkgdir/opt/subs2srs/Utils/mp3gain/mp3gain.exe"
 	ln -sf /usr/bin/mkvextract "$pkgdir/opt/subs2srs/Utils/mkvtoolnix/mkvextract.exe"
