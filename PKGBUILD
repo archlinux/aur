@@ -1,7 +1,7 @@
 pkgname=gtkcord3-git
 _pkgname=gtkcord3
-pkgver=r195.2ad3c4c
-pkgrel=2
+pkgver=r245.1897d38
+pkgrel=1
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
@@ -37,7 +37,7 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname"
 	go test
 }
 

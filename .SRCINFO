@@ -1,7 +1,7 @@
 pkgbase = gtkcord3-git
 	pkgdesc = Discord client written in go and gtk3
-	pkgver = r195.2ad3c4c
-	pkgrel = 2
+	pkgver = r245.1897d38
+	pkgrel = 1
 	url = https://github.com/diamondburned/gtkcord3
 	arch = any
 	license = GPL3
