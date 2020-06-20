@@ -10,7 +10,7 @@ license=('BSD')
 provides=("${pkgname%-git}")
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("dogo::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

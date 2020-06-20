@@ -9,7 +9,7 @@ pkgbase = dogo-git
 	makedepends = go
 	depends = glibc
 	provides = dogo
-	source = git+https://github.com/liudng/dogo
+	source = dogo::git+https://github.com/liudng/dogo
 	sha256sums = SKIP
 
 pkgname = dogo-git
