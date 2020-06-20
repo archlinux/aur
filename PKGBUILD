@@ -8,16 +8,17 @@ arch=('x86_64')
 url="https://github.com/IntelPython/mkl_random"
 license=('custom')
 depends=('intel-mkl' 'python-numpy')
-makedepends=('cython' 'git' 'intel-compiler-base' 'python-numpy' 'python-setuptools')
+makedepends=('cython' 'git' 'python-numpy' 'python-setuptools')
 source=("git+$url#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${_pkgname}"
-  python setup.py build
+  CFLAGS='-I /opt/intel/mkl/include -L/opt/intel/mkl/lib/intel64' \
+    python setup.py build
 }
 
-package_python-mkl-random() {
+package() {
   cd "$srcdir/${_pkgname}"
   python setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

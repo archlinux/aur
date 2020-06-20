@@ -7,7 +7,6 @@ pkgbase = python-mkl-random
 	license = custom
 	makedepends = cython
 	makedepends = git
-	makedepends = intel-compiler-base
 	makedepends = python-numpy
 	makedepends = python-setuptools
 	depends = intel-mkl
