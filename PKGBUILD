@@ -2,7 +2,7 @@
 
 pkgname=fontship
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/$pkgname"
@@ -25,6 +25,7 @@ depends=('entr'
          'python-zopfli' # fonttools optdepends
          'sfnt2woff-zopfli'
          'ttfautohint'
+         'woff2'
          'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b2e0ca5bb818afa5d4df075066f6f950b7e13df3ec50244ee97e91916a885b6e')
