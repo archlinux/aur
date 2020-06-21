@@ -1,0 +1,14 @@
+pkgbase = i3-cheat
+	pkgdesc = cheat sheet for i3wm
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/TheCynicalTeam/i3-cheat
+	arch = any
+	license = GNU General Public License v3.0
+	depends = Gtk3
+	depends = i3wm
+	source = i3-cheat
+	sha256sums = 6191bcf3ab277b8b97bf3119346258a3d9ec7640a37ee25efebe4cefa40dc987
+
+pkgname = i3-cheat
+
