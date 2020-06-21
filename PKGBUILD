@@ -88,6 +88,7 @@ build() {
     --enable-build-localization \
     --disable-static-system-lib \
     --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
+    FFLAGS="-fallow-argument-mismatch" \
 
   make -j1
   make doc
