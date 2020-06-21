@@ -8,7 +8,8 @@ pkgbase = multimonitorlock-gui
 	depends = python-pyqt5
 	depends = multimonitorlock
 	depends = gtk-engine-murrine
-	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/1.0.0-1.tar.gz
-	sha256sums = 8e907e37aee1388fa9cf8b4656e5291e2d37968e6d149fe728bddd5cfa650c52
+	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/v1.1.0-1.tar.gz
+	sha256sums = 2220850dd73bd7daa5c3781a1e7bb0079760ebee0b6b6ca9361a1e26bfd8039e
 
 pkgname = multimonitorlock-gui
+
