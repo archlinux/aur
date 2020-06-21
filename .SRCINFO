@@ -1,6 +1,6 @@
 pkgbase = i3-maim
 	pkgdesc = simple screenshot script using maim
-	pkgver = 1.3.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-maim
 	arch = any

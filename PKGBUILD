@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-maim
-pkgver=1.3.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="simple screenshot script using maim"
 arch=('any')
