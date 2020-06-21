@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r103.6bacc27
+pkgver=r159.2b36fff
 pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
@@ -9,7 +9,7 @@ url='https://gitlab.com/Arthapz/stormkit'
 license=('MIT')
 
 provides=('stormkit')
-depends=('microsoft-gsl' 'glm' 'fmt' 'vulkan-headers' 'range-v3')
+depends=('microsoft-gsl' 'gli' 'fmt' 'vulkan-headers' 'range-v3')
 makedepends=('cmake' 'git' 'ninja' 'meson' 'libxcb' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util')
 optdepends=('libpng' 'libjpeg')
 conflicts=('stormkit')
@@ -28,8 +28,8 @@ pkgver() {
 prepare() {
     cd 'stormkit'
     export DESTDIR=/usr
-    meson builddir-debug --prefix /usr -Dbuildtype=debug -Denable_examples=false -Dexamples_data_dir='/usr/share/'
-    meson builddir-release --prefix /usr -Dbuildtype=release -Denable_examples=true -Dexamples_data_dir='/usr/share/'
+    meson builddir-debug --prefix /usr -Dbuildtype=debug -Denable_examples=false -Dexamples_data_dir='/usr/share/' -Dgli_include_dir=/usr/include
+    meson builddir-release --prefix /usr -Dbuildtype=release -Denable_examples=true -Dexamples_data_dir='/usr/share/' -Dgli_include_dir=/usr/include
 }
 
 build() {
