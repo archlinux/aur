@@ -1,0 +1,14 @@
+pkgbase = punch-bin
+	pkgdesc = Holepunch CLI Tool
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://holepunch.io
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = punch
+	source = punch-bin-0.2.2.zip::https://github.com/CypherpunkArmory/punch/releases/download/0.2.2/punch-linux-amd64.zip
+	sha256sums = 7b2c10154692a95ee72fc7f9a9487efc934d519afad7a0f9c57b4d3105d5e26f
+
+pkgname = punch-bin
+
