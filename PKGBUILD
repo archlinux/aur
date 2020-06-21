@@ -4,7 +4,7 @@
 pkgname=perl-date-simple
 _dist=Date-Simple
 pkgver=3.03
-pkgrel=8
+pkgrel=9
 pkgdesc="Perl module for simple Date objects"
 arch=('x86_64')
 url="https://metacpan.org/release/${_dist}"
