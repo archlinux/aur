@@ -10,6 +10,7 @@ pkgbase = ytmdesktop
 	depends = electron
 	optdepends = libnotify: for desktop notifications
 	optdepends = libappindicator-gtk3: for tray icon
+	optdepends = nss-mdns: for companion server
 	source = ytmdesktop-1.11.0.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/v1.11.0.tar.gz
 	source = ytmdesktop.sh
 	source = ytmdesktop.desktop

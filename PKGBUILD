@@ -9,7 +9,8 @@ license=('CC0 1.0 Universal')
 depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('libnotify: for desktop notifications'
-            'libappindicator-gtk3: for tray icon')
+            'libappindicator-gtk3: for tray icon'
+            'nss-mdns: for companion server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
