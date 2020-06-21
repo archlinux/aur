@@ -1,0 +1,21 @@
+pkgbase = caffviewer
+	pkgdesc = The de·caff Viewer version 3.x is a pure Java program for viewing AutoCAD® DWG, DXF and SHX files
+	pkgver = 3.13.08
+	pkgrel = 1
+	url = https://caff.de/projects/caffviewer/
+	arch = x86_64
+	license = Apache
+	license = custom:caffviewer
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = bash
+	noextract = caffviewer-3.13.08.jar
+	source = caffviewer-3.13.08.jar::https://caff.de/projects/caffviewer/caffviewer.jar
+	source = LICENSE
+	source = caffviewer.png
+	sha256sums = 394ae976c6909ffa56da523c1ec8e30c090e72e797425a696af570d23688de64
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = caffviewer
+
