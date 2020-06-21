@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 _pkgname=multimonitorlock
 pkgname=multimonitorlock
-pkgver=1.0.0
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')

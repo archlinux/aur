@@ -1,6 +1,6 @@
 pkgbase = multimonitorlock
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = 1.0.0
+	pkgver = v1.1.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock
 	install = multimonitorlock.install
@@ -20,4 +20,3 @@ pkgbase = multimonitorlock
 	md5sums = SKIP
 
 pkgname = multimonitorlock
-
