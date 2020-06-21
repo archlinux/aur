@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-term-ss11
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v3.1.1/ttf-iosevka-term-ss11-3.1.1.zip
-	source = ttf-iosevka-term-ss11-3.1.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.1.1/LICENSE.md
-	sha256sums = 6e928de360aa955906615204d530740730ade66720a9be48ecb29b51d634e068
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.2.0/ttf-iosevka-term-ss11-3.2.0.zip
+	source = ttf-iosevka-term-ss11-3.2.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.2.0/LICENSE.md
+	sha256sums = 508834f61e814ce8682aba7f15d51d09ab355d96f9c86456740f2e6570ab816c
 	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttf-iosevka-term-ss11
