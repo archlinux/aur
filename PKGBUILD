@@ -20,30 +20,20 @@ source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment
 sha256sums=('SKIP'
             '7a1f874a018428979b3bc66288790497be4b30635f6c6b608d48d28ebd84fd35')
 
-#pkgver() {
-#  cd ${srcdir}/${pkgname}
-#  # cutting off 'V' prefix that presents in the git tag
-#  git describe --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
-
 prepare() {
-  cd ${srcdir}/${pkgname}
-  git apply -v ${srcdir}/*.diff
- sed -i -e 's/CC=gcc/CC=gcc-8/' -e 's/CXX=g++/CXX=g++-8/' Makefile
+  git -C ${pkgname} apply -v "${srcdir}"/*.diff
 }
 
 build() {
-  cd ${srcdir}/${pkgname}
-  
-  make
+  make -C ${pkgname} CC=gcc-8 CXX=g++-8
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
-  install -Dm755 Bin/Linux/PoissonRecon ${pkgdir}/usr/bin/poisson-recon
-  install -Dm755 Bin/Linux/SSDRecon ${pkgdir}/usr/bin/ssd-recon
-  install -Dm755 Bin/Linux/SurfaceTrimmer ${pkgdir}/usr/bin/surface-trimmer
+  cd ${pkgname}
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -Dm755 Bin/Linux/PoissonRecon "${pkgdir}"/usr/bin/poisson-recon
+  install -Dm755 Bin/Linux/SSDRecon "${pkgdir}"/usr/bin/ssd-recon
+  install -Dm755 Bin/Linux/SurfaceTrimmer "${pkgdir}"/usr/bin/surface-trimmer
 }
 
 # vim:set ts=2 sw=2 et:
