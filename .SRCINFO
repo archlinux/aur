@@ -1,21 +1,21 @@
 pkgbase = virtio-win
 	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests and floppy images for Windows XP
-	pkgver = 0.1.173.9
+	pkgver = 0.1.185.1
 	pkgrel = 1
 	url = https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
 	changelog = virtio-win.changelog
 	arch = any
 	license = BSD-3-Clause
 	optdepends = qemu
-	noextract = virtio-win-0.1.173-9.iso
-	noextract = virtio-win-0.1.173-9_amd64.vfd
-	noextract = virtio-win-0.1.173-9_x86.vfd
-	source = virtio-win-0.1.173-9.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.173-9/virtio-win.iso
-	source = virtio-win-0.1.173-9_amd64.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.173-9/virtio-win_amd64.vfd
-	source = virtio-win-0.1.173-9_x86.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.173-9/virtio-win_x86.vfd
-	sha256sums = ef48ecd2bd02515ee50f1709004f6c3dde7840315cc835d2dbbdb35d7ed1ad1a
-	sha256sums = 4a1f7a66ae4b6337d50eb4bf84822114cd3b25ed7df203786b8f61cd8e1d4d68
-	sha256sums = a2bc33c2943fb944ff668245bdc278ef736b652a8ff42026a8f6e0728dfaeac7
+	noextract = virtio-win-0.1.185-1.iso
+	noextract = virtio-win-0.1.185-1_amd64.vfd
+	noextract = virtio-win-0.1.185-1_x86.vfd
+	source = virtio-win-0.1.185-1.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.185-1/virtio-win.iso
+	source = virtio-win-0.1.185-1_amd64.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.185-1/virtio-win_amd64.vfd
+	source = virtio-win-0.1.185-1_x86.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.185-1/virtio-win_x86.vfd
+	sha256sums = e20a645df49607e7c9cebcc9840d3634b25b32832e45be1f11a73123590fa9fb
+	sha256sums = 3c2782916a4f2fa3220eaa81776e11865e1c5aa7742fff45508cc797425844ce
+	sha256sums = 01f67c92c8009ce8fb38a2e98ee90e2793843211c7ca0e51dcf5d2a5f4197fe6
 
 pkgname = virtio-win
 
