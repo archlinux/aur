@@ -7,7 +7,7 @@ pkgdesc='Lightweight Music Server. Access your self-hosted music using a web int
 arch=('x86_64')
 url='http://lms.demo.poupon.io'
 install=lms.install
-license=('custom:unknown')
+license=('GPL3')
 depends=('ffmpeg'
          'libconfig'
          'taglib'
