@@ -1,0 +1,101 @@
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=qt5-base-fractional-fix
+_qtver=5.15.0
+pkgver=${_qtver/-/}
+pkgrel=3
+arch=('x86_64')
+url='https://www.qt.io'
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+pkgdesc='A cross-platform application and UI framework'
+depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libgl' 'fontconfig' 'xdg-utils'
+         'shared-mime-info' 'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'mesa'
+         'tslib' 'libinput' 'libxkbcommon-x11' 'libproxy' 'libcups' 'double-conversion' 'md4c')
+makedepends=('libfbclient' 'mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
+             'gtk3' 'libpulse' 'cups' 'freetds' 'vulkan-headers')
+optdepends=('qt5-svg: to use SVG icon themes'
+            'qt5-wayland: to run Qt applications in a Wayland session'
+            'qt5-translations: for some native UI translations'
+            'postgresql-libs: PostgreSQL driver'
+            'mariadb-libs: MariaDB driver'
+            'unixodbc: ODBC driver'
+            'libfbclient: Firebird/iBase driver'
+            'freetds: MS SQL driver'
+            'gtk3: GTK platform plugin'
+            'perl: for fixqt4headers and syncqt')
+conflicts=('qtchooser')
+provides=('qt5-base')
+conflicts=('qt5-base')
+_pkgfqn="qtbase-everywhere-src-${_qtver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        "qt5-base-QTBUG-82910.patch::https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=patch;h=54aa63be9b74e8de72db9efbe6809ab1a97b29a7"
+         qt5-base-cflags.patch
+         qtbug-74252.patch
+         qtbug-78966.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=777f2a1c"
+         qtbug-82601.patch)
+sha256sums=('9e7af10aece15fa9500369efde69cb220eee8ec3a6818afe01ce1e7d484824c5'
+            'abb94453c9fe54fde4811bc5475b88796c8db1f5cd75ddc68918aff20139b1aa'
+            'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
+            '0c489d2faedd35670232a2c028c5c78a606ab81bb6f40f58e3cfe2bc6b6ac3b2'
+            'd7d58b2cadd6e79c3dfb69da664ecac9c95a78d6e142cb8687fce68e24a10776'
+            'edc040e258040851067fe26ff82f6979b65c97a01efc467dc9e2e87ffa395769')
+
+prepare() {
+  cd ${_pkgfqn}
+
+  patch -p1 -i ../qt5-base-QTBUG-82910.patch # https://codereview.qt-project.org/c/qt/qtbase/+/299182
+  patch -p1 -i ../qtbug-74252.patch # Fix displaying custom icons
+  patch -p1 -i ../qtbug-78966.patch # Fix QToolButton menus on multi-screen systems
+  patch -p1 -i ../qt5-base-cflags.patch # Use system CFLAGS
+  patch -p1 -i ../qtbug-82601.patch # Workaround broken fractional scaling in some circumstances
+}
+
+build() {
+  cd ${_pkgfqn}
+
+  ./configure -confirm-license -opensource -v \
+    -prefix /usr \
+    -docdir /usr/share/doc/qt \
+    -headerdir /usr/include/qt \
+    -archdatadir /usr/lib/qt \
+    -datadir /usr/share/qt \
+    -sysconfdir /etc/xdg \
+    -examplesdir /usr/share/doc/qt/examples \
+    -plugin-sql-{psql,mysql,sqlite,odbc,ibase} \
+    -system-sqlite \
+    -openssl-linked \
+    -nomake examples \
+    -no-rpath \
+    -dbus-linked \
+    -system-harfbuzz \
+    -journald \
+    -no-mimetype-database \
+    -no-use-gold-linker \
+    -reduce-relocations
+  make
+}
+
+package() {
+  pkgdesc='A cross-platform application and UI framework'
+
+  cd ${_pkgfqn}
+  make INSTALL_ROOT="${pkgdir}" install
+
+  install -Dm644 LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "${pkgdir}/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  # Fix wrong qmake path in pri file
+  sed -i "s|${srcdir}/${_pkgfqn}|/usr|" \
+    "${pkgdir}"/usr/lib/qt/mkspecs/modules/qt_lib_bootstrap_private.pri
+
+  # Symlinks for backwards compatibility
+  for b in "${pkgdir}"/usr/bin/*; do
+    ln -s $(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt5
+  done
+}
+

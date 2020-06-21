@@ -1,0 +1,13 @@
+diff --git a/src/gui/kernel/qhighdpiscaling_p.h b/src/gui/kernel/qhighdpiscaling_p.h
+index 55ad6df5c9da3d11a8900754eebc27528aec90ec..9c3d0cdba28a1dd51c18d3fcc0350a11f8000ebc 100644
+--- a/src/gui/kernel/qhighdpiscaling_p.h
++++ b/src/gui/kernel/qhighdpiscaling_p.h
+@@ -204,7 +204,7 @@ inline QRegion scale(const QRegion &region, qreal scaleFactor, QPoint origin = Q
+ 
+     QRegion scaled;
+     for (const QRect &rect : region)
+-        scaled += scale(rect, scaleFactor, origin);
++        scaled += scale(QRectF(rect), scaleFactor, origin).toRect();
+     return scaled;
+ }
+ 
