@@ -5,16 +5,16 @@
 # Contributor: arjan <arjan@archlinux.org>
 
 pkgname=allegro-git
-pkgver=r11492.96c3d24c8
+pkgver=r11630.ce68911b4
 pkgrel=1
 pkgdesc='Portable library mainly aimed at video game and multimedia programming'
 arch=(x86_64)
 url='https://liballeg.org/'
-license=('ZLIB')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-makedepends=(cmake git glu libtheora mesa-libgl ninja opusfile pandoc)
-depends=(dumb gtk2 jack libgl libpulse libtheora libwebp libxpm libxxf86dga opusfile physfs)
+license=(custom)
+makedepends=(cmake glu libtheora mesa-libgl opusfile pandoc xorgproto)
+depends=(dumb gtk2 jack libgl libpulse libtheora libwebp libxpm opusfile physfs)
+conflicts=(allegro)
+replaces=(allegro)
 source=("git+https://github.com/liballeg/allegro5.git")
 md5sums=('SKIP')
 
@@ -26,22 +26,17 @@ pkgver() {
 build() {
   mkdir -p build
   cd build
-  cmake "../allegro5" \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake ../allegro5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWANT_DOCS_HTML=OFF \
-    -G Ninja
-  ninja
+    -DWANT_DOCS_HTML=OFF
+  make
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "allegro5/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir"/allegro5/LICENSE.txt -t "$pkgdir"/usr/share/licenses/allegro
 
   # Fix man path
   mv -v -f "$pkgdir/usr/man" "$pkgdir/usr/share/man"
 }
-
-# getver: liballeg.org/a5docs/trunk
-# vim: ts=2 sw=2 et:
