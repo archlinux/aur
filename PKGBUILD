@@ -14,7 +14,7 @@ depends=('cblas' 'lapack' 'python')
 optdepends=('python-nose: testsuite'
             'openblas: faster linear algebra')
 makedepends=('python-setuptools' 'gcc-fortran' 'python-nose' 'cython')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-hypothesis')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
 sha512sums=('e4bbea4473f118615db5c2af4cfbe65901e4520486330378b4ae9ec13e3c0ddcd593b5d5337b94e517a59fd027c44702d0842d1ac2013c804899d141aebd1b4c')
