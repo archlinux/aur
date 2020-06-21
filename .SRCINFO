@@ -1,6 +1,6 @@
 pkgbase = colmsg
 	pkgdesc = A CLI tool for 欅坂/日向坂メッセージアプリ
-	pkgver = 0.1.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/proshunsuke/colmsg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = colmsg
 	makedepends = git
 	makedepends = rust
 	depends = libssh2
-	source = git+https://github.com/proshunsuke/colmsg#commit=26601f1107568f779669d9de9937c17f838962d5
+	source = git+https://github.com/proshunsuke/colmsg#commit=66ac78388da115bf902655488fd680eab489add8
 	sha256sums = SKIP
 
 pkgname = colmsg
