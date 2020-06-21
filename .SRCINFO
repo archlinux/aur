@@ -1,6 +1,6 @@
 pkgbase = opennic-up-git
 	pkgdesc = OpenNIC auto DNS updater
-	pkgver = 0.93.r0.g167db7d
+	pkgver = 0.97.r0.g4909019
 	pkgrel = 1
 	url = https://github.com/kewlfft/opennic-up
 	arch = any
