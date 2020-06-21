@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.16.r0.g25d64f7
+pkgver=v0.16.r2.g46fb9ba
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
@@ -33,13 +33,13 @@ build(){
     git submodule update
 
     # build libexecsnoop.so
-    cd "${srcdir}/${pkgname}/execsnoop-libbpf"
-    make clean
-    make CFLAGS="-O2 -Wall" libexecsnoop.so
+    # cd "${srcdir}/${pkgname}/execsnoop-libbpf"
+    # make clean
+    # make CFLAGS="-O2 -Wall" libexecsnoop.so
 
     # build main binary
     cd "${srcdir}/${pkgname}"
-    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make
+    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ .. && make
 }
 
 package_cgproxy-git(){
