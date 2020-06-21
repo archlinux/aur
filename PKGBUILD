@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 
