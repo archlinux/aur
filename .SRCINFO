@@ -7,7 +7,7 @@ pkgbase = i3-swallow
 	license = GNU General Public License v3.0
 	makedepends = git
 	depends = xdo
-	conflicts = i3-swallow
+	conflicts = i3-swallow-git
 	source = git+https://github.com/TheCynicalTeam/i3-swallow.git
 	md5sums = SKIP
 
