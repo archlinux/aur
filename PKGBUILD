@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
 depends=('electron')
-makedepends=('git' 'npm')
+makedepends=('npm')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')

@@ -5,7 +5,6 @@ pkgbase = ytmdesktop
 	url = https://ytmdesktop.app
 	arch = x86_64
 	license = CC0 1.0 Universal
-	makedepends = git
 	makedepends = npm
 	depends = electron
 	optdepends = libnotify: for desktop notifications
