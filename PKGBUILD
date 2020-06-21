@@ -15,9 +15,11 @@ options=()
 _github="https://github.com/${pkgname}hq/${pkgname}"
 source=("${_github}/archive/${_pkgver}.tar.gz"
         "cmake.extra.install.dirs.remove.patch"
+        "boost_107200.patch"
         )
 sha256sums=('5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898'
-            '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
+            '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301'
+            '074a27a07b033ba218b665a13d7a26f8ab36c715935b01e922694fd58358e48b')
 
 
 CMAKE_FLAGS=( -DWITH_EMBREE=ON
