@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer:  Brenton Horne <brentonhorne77@gmail.com>
+# Maintainer:  Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: t3ddy  <t3ddy1988 "at" gmail {dot} com>
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
