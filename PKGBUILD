@@ -2,13 +2,13 @@
 pkgname=zstd-git
 _pkgname=zstd
 pkgver=1.4.4.r598.gf03192c1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/facebook/zstd'
 license=('custom:BSD3' 'GPL2')
 groups=()
-depends=('glibc')
+depends=('xz' 'zlib' 'lz4')
 makedepends=('git')
 conflicts=('zstd')
 provides=('zstd')
