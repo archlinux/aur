@@ -1,14 +1,14 @@
 pkgbase = nixfmt
 	pkgdesc = A formatter for Nix code
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nixfmt.serokell.io/
 	arch = x86_64
 	license = MPL2
 	makedepends = ghc
 	makedepends = cabal-install
 	source = nixfmt-0.4.0.tar.gz::https://github.com/serokell/nixfmt/archive/v0.4.0.tar.gz
-	sha512sums = 33b602e0537286c5b84c702c9b6304255d2279cdc4dfa3ed7f6dfa1877116e0afc7424053595c9f327b798eccae0165eca407869e9755402c539a69a68ad5296
+	b2sums = fbb2c7f4fe4b42cce604bc2f349fe086b34a983b4be98d256e23379b8a86007bba1b3912b35ecf92f11a6a11f6be61071dfbd95fc12f2b573df0d158943df112
 
 pkgname = nixfmt
 
