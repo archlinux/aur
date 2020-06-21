@@ -1,23 +1,52 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 _name=imagecodecs
-_py=cp38
 pkgname=python-imagecodecs
-pkgver=2020.2.18
-pkgrel=1
-pkgdesc="A Python library that provides block-oriented, in-memory buffer transformation, compression, and decompression functions for use in the tifffile, czifile, and other scientific imaging modules"
+pkgver=2020.5.30
+pkgrel=2
+pkgdesc='Image transformation, compression, and decompression codecs'
 arch=('x86_64')
-url="https://pypi.org/project/imagecodecs"
+url='https://github.com/cgohlke/imagecodecs'
 license=('BSD')
-depends=(python)
-makedepends=(python-pip)
-checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/${_py}/${_name::1}/${_name}/${_name/-/_}-${pkgver}-${_py}-${_py}-manylinux2014_x86_64.whl")
-sha256sums=('e0f3cfc2fc77c19118e173dca6af0dbed4a3cef75d3296762db687fd00fb7921')
+depends=(
+  blosc
+  brotli
+  charls
+  jxrlib
+  lcms2
+  libaec
+  libjpeg
+  libmng
+  libpng
+  libtiff
+  libwebp
+  openjpeg2
+  python-numpy
+  snappy
+  zfp
+  zopfli
+)
+makedepends=(python-setuptools cython)
+source=("${_name}-${pkgver}.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v${pkgver}.tar.gz"
+    '0001-fix-setup.patch::https://github.com/hubutui/imagecodecs/commit/e5ae4f1458b7a33dbaefb1b6b75c44d14b0fa79a.patch'
+    )
+sha256sums=('4d750b4eb6b2bb33ae14897d6d5affe8ae22f5a6e8a04823f19bb1a05619a4b4'
+            'a2eeb124a594f1a2d2f0303c4a51758a713fd84bd9ab6b16841c72e95f74b828')
+
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  patch -p1 -i "${srcdir}/0001-fix-setup.patch"
+}
+
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps *.whl
-  python -O -m compileall "${pkgdir}"
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:ts=2:sw=2:et:
