@@ -1,13 +1,13 @@
 pkgbase = lilypond-devel-docs
-	pkgdesc = Offline documentation for lilypond
-	pkgver = 2.21.1
+	pkgdesc = Offline documentation for the unstable version of lilypond
+	pkgver = 2.21.2
 	pkgrel = 1
 	url = http://lilypond.org
 	arch = any
 	license = GPL
 	options = !strip
-	source = http://lilypond.org/downloads/binaries/documentation/lilypond-2.21.1-1.documentation.tar.bz2
-	sha256sums = 405d9fa66e02c0578d2d183d3b2d4d30b9629beadefa5b6dcd031e3a432c375b
+	source = http://lilypond.org/downloads/binaries/documentation/lilypond-2.21.2-1.documentation.tar.bz2
+	sha256sums = aec95f88512ab1b13d1e47981cce0d39d61a57e3961814763c9f2bbfceaf1f00
 
 pkgname = lilypond-devel-docs
 
