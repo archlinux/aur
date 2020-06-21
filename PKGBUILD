@@ -2,8 +2,8 @@
 
 pkgname=sfd2ufo
 _pkgname=sfdLib
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='An SFD to UFO converter providing sdflib'
 arch=('any')
 url="https://github.com/alif-type/$_pkgname"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 provides=('python-sfdlib')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a41d8a96ac69bd4fd434e3607bc442eb0cbee2af2e407f65efc307f31491852b')
+sha256sums=('42a19d0eb8bc0cc81df387a3cc763faaae2c2bcd9c25ff0e228e500037268e2c')
 
 build() {
 	cd "$_pkgname-$pkgver"
