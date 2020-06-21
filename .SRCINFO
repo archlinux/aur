@@ -7,7 +7,7 @@ pkgbase = sp0-bin
 	license = MIT
 	provides = sp0
 	source = sp0-bin-0.1.0::https://github.com/JohnnyCrazy/sp0/releases/download/0.1.0/sp0-linux-x64
-	sha256sums = 66e401380fe68d3c677a31cb2a2f0b80e282f0e367c42646f4ce10ea8ec6388d
+	sha256sums = a915d51d98ce5e1a0a1524805769b37f52c224584ef42a68685d7d32e59e49ec
 
 pkgname = sp0-bin
 

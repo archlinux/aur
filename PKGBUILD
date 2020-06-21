@@ -9,7 +9,7 @@ url='https://github.com/JohnnyCrazy/Sp0'
 license=('MIT')
 provides=("sp0")
 source=("${pkgname}-${pkgver}::https://github.com/JohnnyCrazy/sp0/releases/download/$pkgver/sp0-linux-x64")
-sha256sums=('66e401380fe68d3c677a31cb2a2f0b80e282f0e367c42646f4ce10ea8ec6388d')
+sha256sums=('a915d51d98ce5e1a0a1524805769b37f52c224584ef42a68685d7d32e59e49ec')
 
 package() {
   install -Dm 0755 ${pkgname}-${pkgver} "$pkgdir/usr/bin/sp0"
