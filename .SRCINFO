@@ -1,0 +1,15 @@
+pkgbase = dhall-to-cabal
+	pkgdesc = Compile Dhall expressions to Cabal files
+	pkgver = 1.3.4.0
+	pkgrel = 1
+	url = https://github.com/dhall-lang/dhall-to-cabal
+	arch = x86_64
+	license = MIT
+	makedepends = stack
+	depends = gmp
+	depends = zlib
+	source = dhall-to-cabal-1.3.4.0.tar.gz::https://github.com/dhall-lang/dhall-to-cabal/archive/1.3.4.0.tar.gz
+	sha256sums = 84692e4202a0908fb667021116a1c2a3b786e6cb5e2d82d5460040eb4ef4b380
+
+pkgname = dhall-to-cabal
+
