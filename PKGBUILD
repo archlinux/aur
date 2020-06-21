@@ -3,14 +3,14 @@
 _name=vsts-cd-manager
 pkgname=python-$_name
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft Visual Studio Team Services Continuous Delivery Manager"
 arch=('any')
 url="https://github.com/Microsoft/$_name"
 license=('MIT')
 depends=('python-msrest' 'python-mock')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('0bb09059cd553e1c206e92ef324cb0dcf92334846d646c44c684f6256b86447b')
+b2sums=('085ba16e70a0df2a228c00e70573d474ce5c565949c800f9fe0b77d4b0a1af52534099577f9f3bf6df7fea18297f53465222e62aa577d8e89f2b320ef2f63ec4')
 
 build() {
   cd "$srcdir/$_name-$pkgver"

@@ -1,14 +1,14 @@
 pkgbase = python-vsts-cd-manager
 	pkgdesc = Microsoft Visual Studio Team Services Continuous Delivery Manager
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Microsoft/vsts-cd-manager
 	arch = any
 	license = MIT
 	depends = python-msrest
 	depends = python-mock
 	source = https://files.pythonhosted.org/packages/source/v/vsts-cd-manager/vsts-cd-manager-1.0.2.tar.gz
-	sha256sums = 0bb09059cd553e1c206e92ef324cb0dcf92334846d646c44c684f6256b86447b
+	b2sums = 085ba16e70a0df2a228c00e70573d474ce5c565949c800f9fe0b77d4b0a1af52534099577f9f3bf6df7fea18297f53465222e62aa577d8e89f2b320ef2f63ec4
 
 pkgname = python-vsts-cd-manager
 
