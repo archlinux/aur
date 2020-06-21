@@ -1,7 +1,7 @@
 pkgbase = lib32-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (32 bit)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = x86_64
 	license = BSD

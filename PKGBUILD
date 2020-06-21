@@ -3,7 +3,7 @@
 _pkgbasename=dav1d
 pkgname=lib32-$_pkgbasename
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
@@ -63,5 +63,18 @@ package() {
   cd ${_pkgbasename}-${pkgver}
 
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -r "$pkgdir"/usr/{include,bin}
+
+  # Keep files in bin since this is not a library only package. 
+  # Use the same naming scheme as proposed in Arch's wiki:  https://wiki.archlinux.org/index.php/32-bit_package_guidelines
+  # which is "--program-suffix="-32" with Autoconf
+  for i in "${pkgdir}/usr/bin/"*; do
+    mv "$i" "$i"-32
+  done
+
+  rm -r "$pkgdir"/usr/include
+
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/usr/share/doc/${_pkgbasename}/"README.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  ln -s "/usr/share/licenses/${_pkgbasename}/"COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
