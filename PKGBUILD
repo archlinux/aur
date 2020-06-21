@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=barva-git
 _pkgname=${pkgname%-git}
-pkgver=0.2
+pkgver=0.2.r4.g0071663
 pkgrel=1
 pkgdesc="An audio visualizer that pulses the background of your terminal."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -25,15 +25,13 @@ build() {
 }
 
 package() {
-    install -Dm755 \
-    "${srcdir}/${_pkgname}/barva" \
-    "${pkgdir}/usr/bin/barva"
+    cd "${srcdir}/${_pkgname}"
+    install -Dm755 barva "${pkgdir}/usr/bin/barva"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 
-    install -Dm755 \
-    "${srcdir}/${_pkgname}/pa-get-default-monitor.sh" \
-    "${pkgdir}/usr/bin/pa-get-default-monitor"
+    cd scripts
+    for _SCRIPT in *; do
+        install -Dm755 "$_SCRIPT" "${pkgdir}/usr/share/${_pkgname}/${_SCRIPT}"
+    done
 
-    install -Dm644 \
-    "${srcdir}/${_pkgname}/README.rst" \
-    "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
