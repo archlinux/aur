@@ -53,10 +53,10 @@ package() {
     cp README.md "$pkgdir/usr/share/doc/${pkgname%%-git}"
     cp LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
 
-    # Install games as /usr/bin/nbsd_* to avoid conflicts
+    # Install games as /usr/bin/nb* to avoid conflicts
     mkdir -p "$pkgdir/usr/bin"
     find sources -type f -executable | while read f
     do
-        cp "$f" "$pkgdir/usr/bin/nbsd_$(basename "$f")"
+        cp "$f" "$pkgdir/usr/bin/nb$(basename "$f")"
     done
 }
