@@ -1,8 +1,8 @@
-# Maintainer: Andreas Schliebitz <schliebitz.andreas at gmail dot com>
+# Maintainer: Andreas Schliebitz <schliebitz dot andreas at gmail dot com>
 
 pkgbase=stardog-studio
 pkgname=stardog-studio-bin
-pkgver=1.21.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='IDE for the Stardog graph database management system.'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     stardog-studio.desktop
     stardog-studio.png)
     
-b2sums=('cff4f9f20a6cbeda899750b71df05fa3f61dd00a8e830b0891e568e1488a96227b1bb54ba679659002fc563e51b838471126dc7618cf3e47f575a6f1b3ebf6fe'
+b2sums=('3429c18709291e827e7ae90be376006d50189ad77ddfb660a84591f9559ac578d50aef107470f69de337e5005d4150f71323ec8753a960ed4f49e46c08e4ed10'
 
 '6d355359ea74002f7c6be304e163ac0d9904a50e6673be53f562b456cb62a0643cbe3d5498652b43dbebba123d1ca4feb560f46e3ba7959d7c751b259775217e'
 
