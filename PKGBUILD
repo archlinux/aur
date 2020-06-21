@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
-pkgver=v1.9.0
+pkgver=v1.10.0
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
@@ -13,12 +13,6 @@ conflicts=('i3-swallow-git')
 changelog=
 source=("git+${url}.git")
 md5sums=('SKIP')
-
-pkgver()
-{
-  cd "$_pkgname"
-  printf "v1.%s.0" "$(git rev-list --count HEAD)"
-}
 
 package() {
   cd "$srcdir/${pkgname}"
