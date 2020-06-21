@@ -1,0 +1,20 @@
+From af58db0cd8b4074fe83506f0112f75e01935cd1d Mon Sep 17 00:00:00 2001
+From: div72 <60045611+div72@users.noreply.github.com>
+Date: Sun, 14 Jun 2020 14:47:51 +0300
+Subject: [PATCH] Add QPainterPath header
+
+---
+ src/qt/trafficgraphwidget.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qt/trafficgraphwidget.cpp b/src/qt/trafficgraphwidget.cpp
+index b1a698f11..6a2e68524 100644
+--- a/src/qt/trafficgraphwidget.cpp
++++ b/src/qt/trafficgraphwidget.cpp
+@@ -2,6 +2,7 @@
+ #include "clientmodel.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QColor>
+ #include <QTimer>

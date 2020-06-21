@@ -14,9 +14,16 @@ license=('custom:gridcoin')
 
 _sourcename="Gridcoin-Research-$pkgver"
 
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz"
+        "trafficgraphwidget.cpp.patch")
 
-sha256sums=('b2908f907227cae735a42dd5aadad26d6999077e6997ee42d9cb0e50738bec43')
+sha256sums=('b2908f907227cae735a42dd5aadad26d6999077e6997ee42d9cb0e50738bec43'
+        "5077dd9c08cadb7bc1cb99598618d6b762c4dda9efb9795153533186794d07c9")
+
+prepare() {
+    cd "$srcdir/$_sourcename"
+    patch --strip=1 --input="../trafficgraphwidget.cpp.patch"
+}
 
 build() {
   cd "$srcdir/$_sourcename"
