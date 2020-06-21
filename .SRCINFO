@@ -1,11 +1,11 @@
 pkgbase = libdecoration-git
 	pkgdesc = Help Wayland clients draw window decorations for them.
-	pkgver = r61.5510717
+	pkgver = r62.0c70968
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jadahl/libdecoration
 	arch = i686
 	arch = x86_64
-	license = jonas
+	license = MIT
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
