@@ -1,0 +1,18 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+  echo "Creating dedicated system user 'lms'"
+  sudo useradd -M -U lms
+  echo "Creating directory /var/lms"
+  install -d /var/lms
+  echo "Changing directory ownership to 'lms'"
+  sudo chown lms:lms /var/lms
+}
+
+post_remove() {
+  echo "Removing dedicated system user 'lms'"
+  sudo systemctl stop lms.service >> /dev/null
+  sudo userdel lms
+  echo "Removing directory /var/lms"
+  sudo rm -rf /var/lms
+}
