@@ -8,6 +8,7 @@ pkgbase = rezound-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = boost
 	makedepends = bison
 	makedepends = flex
 	depends = libpulse

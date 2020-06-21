@@ -1,8 +1,7 @@
 #!/bin/bash
 ### -- Above shabeng-line for automatic syntax-highlighting in some editors. -- ###
 
-# Maintainer: donarturo <arturwrona91(at)gmail(dot)com>
-# Contributor:  dreieck
+# Maintainer:  dreieck
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 
@@ -35,6 +34,7 @@ depends=(
         )
 makedepends=(
              'git'
+	     'boost'
              'bison'
              'flex'
             )
