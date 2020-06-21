@@ -8,11 +8,13 @@ pkgbase = scilab-git
 	license = BSD
 	license = custom:CeCILL
 	license = GPL2
-	makedepends = apache-ant
-	makedepends = git
-	makedepends = ocaml
-	makedepends = java-environment>=8
+	makedepends = java-environment=8
+	makedepends = ant>=1.9.0
+	makedepends = ocaml-findlib
+	makedepends = ocaml-num
 	makedepends = gcc-fortran
+	makedepends = time
+	makedepends = git
 	depends = suitesparse>=4.4.1
 	depends = arpack
 	depends = fftw
@@ -20,15 +22,16 @@ pkgbase = scilab-git
 	depends = hdf5
 	depends = libmatio
 	depends = tk
+	depends = bwidget
 	depends = curl
+	depends = inetutils
 	depends = java-runtime>=8
-	depends = apache-lucene>=7
 	depends = beanshell
 	depends = eclipse-ecj
 	depends = java-flexdock>=1.2.4
 	depends = fop-hyph
 	depends = jeuclid-core
-	depends = jgraphx>=2.0.0.1
+	depends = jgraphx-jre8
 	depends = javahelp2
 	depends = saxon-he
 	depends = jlatexmath-fop>=1.0.3
@@ -40,7 +43,9 @@ pkgbase = scilab-git
 	depends = xalan-java
 	depends = docbook-xsl
 	depends = jogl>=2.3.2
+	depends = apache-lucene>=7
 	depends = java-batik>=1.8
+	depends = java-xmlgraphics-commons>=2.0.1
 	provides = scilab
 	conflicts = scilab
 	source = git://git.scilab.org/scilab#branch=master

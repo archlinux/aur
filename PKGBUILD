@@ -11,17 +11,20 @@ pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
 license=('BSD' 'custom:CeCILL' 'GPL2')
-depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
-         'hdf5'
-         'libmatio' 'tk' 'curl'
+depends=('suitesparse>=4.4.1' 'arpack' 'fftw' 'eigen'
+         'hdf5' 'libmatio'
+         'tk' 'bwidget'
+         'curl' 'inetutils'
          'java-runtime>=8'
-         'apache-lucene>=7'
          'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
-         'jeuclid-core' 'jgraphx>=2.0.0.1' 'javahelp2'
+         'jeuclid-core' 'jgraphx-jre8' 'javahelp2'
          'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
          'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
-         'jogl>=2.3.2' 'java-batik>=1.8')
-makedepends=('apache-ant' 'git' 'ocaml' 'java-environment>=8' 'gcc-fortran')
+         'jogl>=2.3.2' 'apache-lucene>=7'
+         'java-batik>=1.8' 'java-xmlgraphics-commons>=2.0.1')
+makedepends=('java-environment=8' 'ant>=1.9.0'
+             'ocaml-findlib' 'ocaml-num' 'gcc-fortran'
+             'time' 'git')
 provides=('scilab')
 conflicts=('scilab')
 source=("git://git.scilab.org/scilab${_fragment}"
