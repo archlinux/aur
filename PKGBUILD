@@ -10,7 +10,7 @@ depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon')
-source=("https://github.com/ytmdesktop/ytmdesktop/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('cea7684aa76caa7e62a9124f6070249b9d90d41ce998f7ebd7d994a3bf25a2bd'
