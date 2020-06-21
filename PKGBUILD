@@ -92,7 +92,7 @@ build() {
     CFLAGS="$CFLAGS -fcommon" \
     CXXFLAGS="$CXXFLAGS -fcommon" \
 
-  make -j1
+  make
   make doc
 }
 
