@@ -13,8 +13,8 @@ url='https://liballeg.org/'
 license=(custom)
 makedepends=(cmake glu libtheora mesa-libgl opusfile pandoc xorgproto)
 depends=(dumb gtk2 jack libgl libpulse libtheora libwebp libxpm opusfile physfs)
-conflicts=(allegro)
-replaces=(allegro)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+https://github.com/liballeg/allegro5.git")
 md5sums=('SKIP')
 

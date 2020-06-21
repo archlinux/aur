@@ -22,8 +22,8 @@ pkgbase = allegro-git
 	depends = libxpm
 	depends = opusfile
 	depends = physfs
+	provides = allegro
 	conflicts = allegro
-	replaces = allegro
 	source = git+https://github.com/liballeg/allegro5.git
 	md5sums = SKIP
 
