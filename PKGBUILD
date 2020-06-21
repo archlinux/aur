@@ -5,13 +5,13 @@
 
 pkgname=xdg-su
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Run a program as root with the most environment appropriate available graphical authentication agent"
 arch=('any')
 url="https://github.com/tarakbumba/xdg-su"
 license=('MIT')
 depends=('sh')
-makedepends=('links' 'xmlto' 'docbook-xsl')
+makedepends=('lynx' 'xmlto' 'docbook-xsl')
 source=("https://github.com/tarakbumba/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
 sha1sums=('e92fd399b39f7b38d7bbfc7b834c78e551b2eee5')
  
