@@ -4,7 +4,7 @@
 
 pkgname=jrommanager
 _gitname=JRomManager
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
@@ -50,4 +50,3 @@ package() {
   install -Dm644 $srcdir/$_gitname.desktop "$pkgdir/usr/share/applications/$_gitname.desktop"
   install -Dm644 $srcdir/$_gitname.png "$pkgdir/usr/share/pixmaps/$_gitname.png"
 }
-
