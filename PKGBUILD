@@ -2,10 +2,9 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.3.r97777.g3b5a36c56d
+pkgver=4.4.r98276.gfdac3c80ac
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -24,7 +23,7 @@ depends=(
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1' 'svt-vp9'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc'
         'glslang' 'librabbitmq-c' 'vulkan-icd-loader'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
@@ -42,22 +41,20 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        "ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        # Removed 010 because is for AMD
+        "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         'LICENSE')
 sha256sums=('SKIP'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-   # add svt codec support for hevc and av1
     rm -f ffmpeg/libavcodec/libsvt_{hevc,av1}.c
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
+    # AMD specific patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
 }
 
 pkgver() {
@@ -148,7 +145,6 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
-        --enable-libsvtav1 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
