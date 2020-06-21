@@ -1,4 +1,4 @@
-# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=openra-ca-git
 _pkgname=${pkgname/-git}
