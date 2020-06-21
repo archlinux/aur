@@ -16,7 +16,17 @@ pkgbase = julia-beta-bin
 	conflicts = julia-nightly-bin
 	options = !strip
 	source = https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.0-beta1-linux-x86_64.tar.gz
+	source = 16x16.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/16.png
+	source = 32x32.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/32.png
+	source = 128x128.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/128.png
+	source = 256x256.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/256.png
+	source = 512x512.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/512.png
 	sha256sums = 7a81c386de7b0e8f291bfbe77cbb8e1679a03d974db2093806c78a2067b97ed9
+	sha256sums = 85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed
+	sha256sums = 0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612
+	sha256sums = aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f
+	sha256sums = 001f5fe2478572c69ddcf135d460fab18fc851723e529b056fd9b9852b47f3a5
+	sha256sums = 3994d4d59d46e2d226d59f372e5b68eb23e8dc074529e870796f1132f5df8a5b
 
 pkgname = julia-beta-bin
 
