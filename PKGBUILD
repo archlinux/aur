@@ -2,26 +2,33 @@
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
 pkgbase=qemu-pinning
+_pkgname=qemu
 pkgname=(qemu-pinning qemu-pinning-headless qemu-pinning-arch-extra qemu-pinning-headless-arch-extra
          qemu-pinning-block-{iscsi,rbd,gluster} qemu-pinning-guest-agent)
-_pkgname=qemu
-pkgdesc="A generic and open source machine emulator and virtualizer. Patch from saveriomiroddi/qemu-pinning applied"
-pkgver=4.1.0
-pkgrel=1
+pkgdesc="A generic and open source machine emulator and virtualizer. Patch from saveriomiroddi/qemu-pinning applied."
+pkgver=5.0.0
+pkgrel=7
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.qemu.org/"
-_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
-               lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
-provides=(qemu)
-depends=(virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
-makedepends=(spice-protocol python2 ceph libiscsi glusterfs python-sphinx)
+_headlessdeps=(seabios gnutls libpng libaio numactl libnfs
+               lzo snappy curl vde2 libcap-ng spice libcacard usbredir libslirp
+               libssh zstd liburing)
+depends=(virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
+makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx xfsprogs)
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
+        iouring-1.patch::https://github.com/qemu/qemu/commit/de137e44f75d9868f5b548638081850f6ac771f2.patch
+        iouring-2.patch::https://github.com/qemu/qemu/commit/ba607ca8bff4d2c2062902f8355657c865ac7c29.patch
+        hostmem.patch::https://github.com/qemu/qemu/commit/70b6d525dfb51d5e523d568d1139fc051bc223c5.patch
         qemu-ga.service
         65-kvm.rules
-        https://github.com/saveriomiroddi/qemu-pinning/commit/3c467032dca13f9a4b4a2316dbf904112dd2b364.diff)
-sha512sums=('82fd51702a7b9b1b00b2f1bd3b4a832b80249018dbba1add0b0a73e7d4bee452afd45574b4d8df7ce4477d8711f3bda4ca072a1a6de25895c93eb21cf78fc4b2'
+        https://github.com/saveriomiroddi/qemu-pinning/commit/76241abfe8c5c71bc02a7e268ff3d3ca0734308c.diff)
+provides=(qemu)
+sha512sums=('21ef0cbe107c468a40f0fa2635db2a40048c8790b629dfffca5cd62bb1b502ea8eb133bfc40df5ecf1489e2bffe87f6829aee041cb8a380ff04a8afa23b39fcf'
             'SKIP'
+            '533010ba4adb2678e232febaa0ae476556a2d319d431ab14c83985510e3a0f8159fca20a926df0f8b30e02c7859e1b33ffd8f7fcd6144dc87f09ea62a177b82b'
+            'ffea3356fcc5c42a5e3d811f47ff1a0add6f3e3c96de7ee11a6a17c9667b4e5b2f1f0e9eabb59b448e421824d02a3038d1149d02398986e1ec7a752c7e71e9b1'
+            'ddbd9e141ae918c52a97c1e28da372e939848223951f00dc84e1d0980ce87b90e4b9b2289c2100976c94042f04eaa234f201ab605e430e970da98e98879e4b2c'
             '269c0f0bacbd06a3d817fde02dce26c99d9f55c9e3b74bb710bd7e5cdde7a66b904d2eb794c8a605bf9305e4e3dee261a6e7d4ec9d9134144754914039f176e4'
             'bdf05f99407491e27a03aaf845b7cc8acfa2e0e59968236f10ffc905e5e3d5e8569df496fd71c887da2b5b8d1902494520c7da2d3a8258f7fd93a881dd610c99'
             'SKIP')
@@ -38,9 +45,14 @@ prepare() {
 
   cd ${_pkgname}-${pkgver}
 
-  patch -p1 < ../3c467032dca13f9a4b4a2316dbf904112dd2b364.diff
+  # FS#66578 FS#66710
+  patch -p1 < ../iouring-1.patch
+  patch -p1 < ../iouring-2.patch
 
-  #sed -i 's/vte-2\.90/vte-2.91/g' configure
+  # FS#66646
+  patch -p1 < ../hostmem.patch
+
+  patch -p1 < ../76241abfe8c5c71bc02a7e268ff3d3ca0734308c.diff
 }
 
 build() {
@@ -49,10 +61,10 @@ build() {
 
   _build headless \
     --audio-drv-list= \
-    --disable-bluez \
     --disable-sdl \
     --disable-gtk \
     --disable-vte \
+    --disable-brlapi \
     --disable-opengl \
     --disable-virglrenderer
 }
@@ -60,22 +72,17 @@ build() {
 _build() (
   cd build-$1
 
-  # qemu vs. make 4 == bad
-  export ARFLAGS=rv
-
-  # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=" -fPIC -march=native -Ofast"
-
   ../${_pkgname}-${pkgver}/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib/qemu \
-    --python=/usr/bin/python2 \
+    --extra-ldflags="$LDFLAGS" \
     --smbd=/usr/bin/smbd \
     --enable-modules \
     --enable-sdl \
-    --enable-jemalloc \
+    --enable-slirp=system \
+    --enable-xfsctl \
     "${@:2}"
 
   make
@@ -104,7 +111,7 @@ _package() {
                'qemu-block-rbd: RBD block support'
                'qemu-block-gluster: glusterfs block support')
   install=qemu.install
-  options=(!strip)
+  options=(!strip !emptydirs)
 
   make -C build-$1 DESTDIR="$pkgdir" install "${@:2}"
 
@@ -116,7 +123,6 @@ _package() {
   rm -r var
 
   cd usr/lib
-  tidy_strip
 
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
@@ -126,7 +132,6 @@ _package() {
   rm qemu/block-{iscsi,rbd,gluster}.so
 
   cd ../bin
-  tidy_strip
 
   # remove extra arch
   for _bin in qemu-*; do
@@ -137,7 +142,7 @@ _package() {
       ga) rm "$_bin"; continue ;;
 
       # tools
-      img|io|nbd) continue ;;
+      edid|img|io|keymap|nbd|pr-helper|storage-daemon) continue ;;
 
       # core emu
       system-${_corearch}) continue ;;
@@ -152,25 +157,31 @@ _package() {
 
     case $_blob in
       # provided by seabios package
-      bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
+      bios.bin|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
       vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin|vgabios-bochs-display.bin|\
       vgabios-ramfb.bin) rm "$_blob"; continue ;;
+
+      # provided by edk2-ovmf package
+      edk2-*) rm "$_blob"; continue ;;
 
       # iPXE ROMs
       efi-*|pxe-*) continue ;;
 
       # core blobs
-      kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
+      bios-microvm.bin|kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
 
       # Trace events definitions
       trace-events*) continue ;;
-
-      # Logos
-      *.bmp|*.svg) continue ;;
     esac
 
     mv "$_blob" "$srcdir/extra-arch-$1/usr/share/qemu"
   done
+
+  # provided by edk2-ovmf package
+  rm -r firmware
+
+  cd ..
+  if [ "$1" = headless ]; then rm -r {applications,icons}; fi
 }
 
 package_qemu-pinning-arch-extra() {
@@ -193,14 +204,14 @@ package_qemu-pinning-headless-arch-extra() {
 
 package_qemu-pinning-block-iscsi() {
   pkgdesc="QEMU iSCSI block module"
-  depends=(glib2 libiscsi jemalloc)
+  depends=(glib2 libiscsi)
 
   install -D build-full/block-iscsi.so "$pkgdir/usr/lib/qemu/block-iscsi.so"
 }
 
 package_qemu-pinning-block-rbd() {
   pkgdesc="QEMU RBD block module"
-  depends=(glib2 ceph)
+  depends=(glib2 ceph-libs)
 
   install -D build-full/block-rbd.so "$pkgdir/usr/lib/qemu/block-rbd.so"
 }
@@ -214,7 +225,7 @@ package_qemu-pinning-block-gluster() {
 
 package_qemu-pinning-guest-agent() {
   pkgdesc="QEMU Guest Agent"
-  depends=(gcc-libs glib2)
+  depends=(gcc-libs glib2 libudev.so)
 
   install -D build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
   install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
