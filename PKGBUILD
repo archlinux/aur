@@ -16,7 +16,7 @@ source=(
   "ymp.desktop"
   "ymp.sh"
 )
-sha1sums=('8ea55a3b9562281ed17d70adf2204be0b2fc84cf'
+sha1sums=('4d6814f076f656d712ddc92c80a9bdd0c7f42d3d'
           'a10d6976131fa866a68366c5ce2e74542f54c86e')
 sha1sums_x86_64=('c7aa95f96f4e4c3a8a0797201d5eee8d9c03d813')
 
