@@ -1,0 +1,14 @@
+pkgbase = backer-bin
+	pkgdesc = A simple program to automate rsync backups to multiple devices on OSX and Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.getlazarus.org/apps/backer
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	provides = backer
+	source = backer-bin-1.0-2.tar.gz::https://cache.getlazarus.org/debs/backer_1.0-2-amd64.deb
+	sha256sums = SKIP
+
+pkgname = backer-bin
+
