@@ -1,13 +1,14 @@
 pkgbase = sp0-bin
 	pkgdesc = A cross-platform CLI Tool for requesting the Spotify Web API, with a focus on automation.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/JohnnyCrazy/Sp0
 	arch = x86_64
 	license = MIT
 	provides = sp0
-	source = sp0-bin-0.1.0::https://github.com/JohnnyCrazy/sp0/releases/download/0.1.0/sp0-linux-x64
-	sha256sums = a915d51d98ce5e1a0a1524805769b37f52c224584ef42a68685d7d32e59e49ec
+	options = !strip
+	source = sp0-bin-0.1.1::https://github.com/JohnnyCrazy/sp0/releases/download/0.1.1/sp0-linux-x64
+	sha256sums = 9431604469f35c241cdec2b50423f0f0cd12e615b4a2cd73ac79a57978c7cef3
 
 pkgname = sp0-bin
 
