@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
-conflicts=('appleseed-git')
+conflicts=('appleseed')
 depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio openimageio 'openshadinglanguage>=1.8.9' xerces-c zlib)
 makedepends=(cmake)
 options=()
