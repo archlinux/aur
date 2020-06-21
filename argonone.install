@@ -1,0 +1,51 @@
+pre_install() {
+  echo "Checking Hardware Model..."
+  if [[ $(grep "Raspberry Pi 3" /proc/device-tree/model) || $(grep "Raspberry Pi 4" /proc/device-tree/model) ]] ; then
+    echo "Building New Virtual Environment in /opt/argonone..."
+    python -m venv --clear /opt/argonone
+    /opt/argonone/bin/python3 -m pip install pysmbus RPi.GPIO
+
+    echo "Enabling i2C..."
+    BOOT_CFG="/boot/config.txt"
+    if [[ ! -e "${BOOT_CFG}" ]]; then
+      touch "${BOOT_CFG}"
+    fi
+    if ! grep "dtparam=i2c_arm=on" "${BOOT_CFG}" >/dev/null 2>&1 ; then
+      echo "dtparam=i2c_arm=on" >> "${BOOT_CFG}"
+    fi
+
+    if [[ (! $(lsmod | grep i2c_dev)) || (! $(lsmod | grep i2c_bcm2835)) ]] ; then
+      MODULE_CFG="/etc/modules-load.d/i2c.conf"
+      if [ ! -e "${MODULE_CFG}" ] ; then
+        touch "${MODULE_CFG}"
+        chmod 644 "${MODULE_CFG}"
+      fi
+    fi
+    if [[ ! $(lsmod | grep i2c_dev) ]] ; then
+      echo "i2c_dev" >> "${MODULE_CFG}"
+    fi
+    if [[ ! $(lsmod | grep i2c_bcm2835) ]] ; then
+      echo "i2c_bcm2835" >> "${MODULE_CFG}"
+    fi
+  else
+    echo "Not a Raspberry Pi Model 3 or 4!"
+    /usr/bin/false
+  fi
+}
+
+post_install() {
+  echo "Please reboot before first use."
+  echo "Configuration file: /etc/argononed.conf"
+  echo "Enable power button and fan control service with:"
+  echo "  sudo systemctl enable argononed.service"
+}
+
+pre_remove() {
+  systemctl stop argononed.service
+}
+
+post_remove() {
+  echo "Removing Virtual Environment in /opt/argonone..."
+  rm -rf /opt/argonone
+  echo "Software removed. Please remember to disable I2C if not needed any more."
+}

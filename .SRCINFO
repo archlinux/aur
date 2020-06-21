@@ -1,0 +1,19 @@
+pkgbase = argonone-git
+	pkgdesc = Argon One Service and Control Scripts por Raspberry Pi
+	pkgver = r25.ff51561
+	pkgrel = 1
+	url = https://download.argon40.com/argon1.sh
+	install = argonone.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = i2c-tools
+	depends = lm_sensors
+	depends = python>=3.3
+	depends = raspberrypi-userland-aarch64-git
+	provides = argonone
+	source = git+https://github.com/Elrondo46/argonone
+	sha256sums = SKIP
+
+pkgname = argonone-git
+
