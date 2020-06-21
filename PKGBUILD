@@ -1,8 +1,8 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=trivy-bin
 _pkgname=trivy
-pkgver=0.9.0
-pkgrel=1
+pkgver=0.9.1
+pkgrel=2
 pkgdesc="A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI"
 arch=(x86_64)
 url="https://github.com/aquasecurity/trivy"
