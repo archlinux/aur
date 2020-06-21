@@ -1,6 +1,6 @@
 pkgbase = otf-libertinus-git
 	pkgdesc = The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math
-	pkgver = 6.11.r19.g61f0348
+	pkgver = 6.11.r75.gbbc3717
 	pkgrel = 1
 	url = https://github.com/alif-type/libertinus
 	arch = any
@@ -8,13 +8,14 @@ pkgbase = otf-libertinus-git
 	makedepends = mupdf-tools
 	makedepends = psautohint
 	makedepends = python
+	makedepends = python-cffsubr
 	makedepends = python-fonttools
 	makedepends = python-fs
 	makedepends = python-lxml
 	makedepends = python-skia-pathops
 	makedepends = python-ufo2ft
-	makedepends = python-ufolib2>=0.6.2
-	makedepends = sfd2ufo
+	makedepends = python-ufolib2>=0.7.1
+	makedepends = sfd2ufo>=1.0.4
 	makedepends = texlive-core
 	provides = otf-libertinus
 	conflicts = otf-libertinus
