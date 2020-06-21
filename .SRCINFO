@@ -1,0 +1,16 @@
+pkgbase = vieb-bin
+	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://vieb.dev
+	arch = x86_64
+	license = GPL3
+	depends = libxss
+	depends = gtk3
+	depends = nss
+	provides = vieb
+	source = vieb-bin-2.2.1.deb::https://github.com/Jelmerro/Vieb/releases/download/2.2.1/vieb_2.2.1_amd64.deb
+	sha256sums = 15cb922dd0096a34c2e7206e6ee8026d0211c1780d12ba2f8536ee5f5fc1afc8
+
+pkgname = vieb-bin
+
