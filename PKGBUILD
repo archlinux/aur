@@ -1,6 +1,6 @@
 # Maintainer: jtheoof <contact@jtheoof.me>
 pkgname=swappy
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
@@ -24,7 +24,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jtheoof/swappy/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  'a4c9b336e9a99d1d26a072e1b4b2a4ae12d568ccaf401cabff55392d8a99b49d'
+  '68813485df9f1d0f7413ce0f5500c0641eb55d8425fbe39dca594f773fcafeec'
 )
 
 build() {
