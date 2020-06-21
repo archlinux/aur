@@ -40,7 +40,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-sigfpe.patch
+        sagemath-ecl-20.04.patch
         sagemath-no-dict-sorting.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
@@ -57,7 +57,7 @@ sha256sums=('SKIP'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
+            '1fabc86d066310988a90083aaedceb9690822df8ff80c16501692231daa96e33'
             'f9721c66d1a0267bb19923f5084d40f8121fcada6db1d1c37484dab70b655544'
             'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
             'e55bb5df7d6ce65fc9d124b6b59407071f0c55d88f730e9467398f10cc87e66d'
@@ -82,8 +82,8 @@ prepare(){
   patch -p1 -i ../sagemath-cremona.patch
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
-  patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# Fix build with ECL 20.04 https://trac.sagemath.org/ticket/22191
+  patch -p1 -i ../sagemath-ecl-20.04.patch
 # Fix doc build with sphinx 3 https://trac.sagemath.org/ticket/28856
   patch -p1 -i ../sagemath-sphinx-3.patch
 # Port to sympy 1.6 changes https://trac.sagemath.org/ticket/29730
@@ -122,10 +122,7 @@ prepare(){
 build() {
   cd sage/src
 
-  export CC=gcc \
-         SAGE_ROOT="$PWD" \
-         SAGE_SRC="$PWD" \
-         SAGE_NUM_THREADS=10
+  export SAGE_NUM_THREADS=10
   python setup.py build
 }
 
@@ -135,10 +132,6 @@ package_sagemath-git() {
   provides=(sagemath)
 
   cd sage/src
-
-  export SAGE_ROOT="$PWD" \
-         SAGE_LOCAL="/usr"
-
   python setup.py install --root="$pkgdir" --optimize=1
 
   mkdir -p "$pkgdir"/usr/bin
