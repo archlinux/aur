@@ -100,6 +100,7 @@ package() {
   cd "${srcdir}/${_pkgname}/${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install-data install-html
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   install -Dm644 COPYING-BSD "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-BSD"
