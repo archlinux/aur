@@ -5,14 +5,14 @@ pkgname=komorebi
 pkgver=2.1
 pkgrel=2
 pkgdesc="Parallax backgrounds manager"
-url="https://github.com/iabem97/komorebi"
+url="https://github.com/Komorebi-Fork/komorebi"
 depends=("desktop-file-utils" "glib2>=2.38" "gtk3>=3.14" "hicolor-icon-theme" "libgtop" "libgee" "libwnck" "clutter" "clutter-gtk" "clutter-gst" "webkit2gtk")
 makedepends=("git" "cmake" "vala" "gendesk")
 provides=("komorebi")
 license=("GPL")
 arch=("x86_64" "i686")
 md5sums=("2fd707711373f77c45ea4583a40e56aa")
-source=("https://github.com/iabem97/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/Komorebi-Fork/${pkgname}/archive/v${pkgver}.tar.gz")
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="/usr/bin/komorebi"
