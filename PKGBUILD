@@ -16,7 +16,7 @@ provides=(warpd)
 source=("git+$url")
 
 package() {
-    cd warp
+    cd warpd
     make
 }
 
