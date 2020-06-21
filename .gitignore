@@ -1,0 +1,6 @@
+swappy-git/
+swappy/
+src/
+
+*.tar.xz
+*.tar.gz

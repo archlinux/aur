@@ -1,0 +1,20 @@
+pkgbase = swappy
+	pkgdesc = Grab and edit screenshots from a Wayland compositor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jtheoof/swappy
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = git
+	depends = cairo
+	depends = gtk3
+	depends = pango
+	optdepends = libnotify
+	optdepends = otf-font-awesome
+	source = swappy-1.0.0.tar.gz::https://github.com/jtheoof/swappy/archive/v1.0.0.tar.gz
+	sha256sums = a4c9b336e9a99d1d26a072e1b4b2a4ae12d568ccaf401cabff55392d8a99b49d
+
+pkgname = swappy
+
