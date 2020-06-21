@@ -2,7 +2,7 @@
 # https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot/
 pkgname=cura-lulzbot
 pkgver=3.6.21
-pkgrel=4
+pkgrel=5
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://www.lulzbot.com/cura'
@@ -12,6 +12,7 @@ md5sums=('SKIP')
 conflicts=("cura-lulzbot-git")
 depends=('cython'
          'gcc-fortran'
+         'libffi6'
          'libsavitar'
          'openblas'
          'python'
@@ -28,7 +29,7 @@ depends=('cython'
          'qt5-graphicaleffects'
          'qt5-quickcontrols'
          'qt5-quickcontrols2'
-		 'qt5-svg')
+		     'qt5-svg')
 makedepends=('cmake'
              'git'
              'python-sip'
