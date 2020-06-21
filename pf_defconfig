@@ -1,5 +1,4 @@
 CONFIG_SCHED_BMQ=y
-# CONFIG_LOCALVERSION is not set
 # CONFIG_LOCALVERSION_AUTO is not set
 # CONFIG_AUDIT is not set
 # CONFIG_HZ_300 is not set

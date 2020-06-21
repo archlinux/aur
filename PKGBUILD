@@ -73,15 +73,15 @@ _CPUSUFFIXES_KBUILD=(
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
   IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
 pkgname=('linux-pf')
-pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
+pkgdesc="Linux with the pf-kernel patch (uksm, BMQ)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
 options=('!strip')
-makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
+makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils' 'inetutils' 'pahole')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
 	      'config.x86_64'
         'config.i686'
@@ -102,25 +102,6 @@ prepare() {
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
   patch -Np1 < ${srcdir}/${_bmppatchname}
-
-  # linux-ARCH patches
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  
-  # fixed by -pf now
-  # disable USER_NS for non-root users by default
-  #patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  
-  # https://bugs.archlinux.org/task/56711
-  #patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  # end
-
-  # end linux-ARCH patches
-  
-  # fix ci  invalid PC card inserted issue hopefully
-  #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
-
   
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
@@ -154,8 +135,12 @@ prepare() {
   # merge our changes to arches kernel config
   ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
 
+  # Set localversion to pkgrel
+  echo "-$pkgrel" > localversion.10-pkgrel
+
   # get kernel version
-  #make prepare
+  make -s kernelrelease > version
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
@@ -298,36 +283,23 @@ build() {
     export LCPU
   fi
   
-  #----------------------------------------
-
-  # Strip config of uneeded localversion
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${_kernelname}\"|g" ./.config
-    sed -i "s/CONFIG_LOCALVERSION_AUTO=.*/CONFIG_LOCALVERSION_AUTO=n/" ./.config
-  fi
-
   # rewrite configuration
-  yes "" | make config >/dev/null #FIXME
+  make olddefconfig
 
   # Build
-  # Want extreme and non-sensical optimization? Uncomment the following line!
-  # export KCFLAGS="-march=native -Ofast"
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make all
 }
 
 _package() {
-  _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
-  pkgdesc=${_pkgdesc}
+  pkgdesc="The $pkgdesc kernel and modules"
   groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
-  optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
-	            'crda: to set the correct wireless channels of your country'
-	            'pm-utils: utilities and scripts for suspend and hibernate power management'
+  optdepends=('crda: to set the correct wireless channels of your country'
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
 	            'nvidia-beta-all: NVIDIA drivers for all installed kernels'
               'uksmd: Userspace KSM helper daemon'
 	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
-  provides=('linux-tomoyo')
+  provides=('linux-tomoyo' VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=('kernel26-pf')
 
   cd "${srcdir}/linux-${_basekernel}"
@@ -444,52 +416,40 @@ _package() {
   KARCH=x86
 
   echo # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  kernver="$(<version)"
 
   mkdir -p "${pkgdir}"/usr/lib/modules
   make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
 
   msg2 "Installing boot image..."
-  local image="$pkgdir/boot/vmlinuz-$pkgbase"
-  install -Dm644 "$(make -s image_name)" "$image"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  ln -sr "$image" "${pkgdir}/usr/lib/modules/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
-  
-  # make room for external modules
-  local _extramodules="extramodules-${_basekernel}-${_kernelname:-ARCH}"
-  ln -s "../${_extramodules}" \
-     "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  # add real version for building modules and running depmod from hook
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin \
-            "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  echo "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
-  
   # remove build and source links
-  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-  
-  # add vmlinux
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
-  
+  rm "$modulesdir"/{source,build}
   # end c/p
 }
 
 ### package_linux-pf-headers
 _package-headers() {
   pkgname=${pkgbase}-headers
-  pkgdesc="Header files and scripts for building modules for linux-pf kernel."
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
   
   cd "${srcdir}/${_srcname}"
+  local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
+
 
   # only install objtool when stack validation is enabled
   if grep -q CONFIG_STACK_VALIDATION=y .config   ; then
@@ -499,7 +459,8 @@ _package-headers() {
 
   msg2 "Installing build files..."
   install -dm755 "${_builddir}" 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
+  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers System.map version \
+          vmlinux localversion.*
   install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
   
@@ -521,8 +482,6 @@ _package-headers() {
 
   # fix permissions on scripts dir
   chmod og-w -R "${_builddir}/scripts"
-  mkdir -p "${_builddir}/.tmp_versions"
-
 
   install -D -m644 -t "${_builddir}/arch/${KARCH}/kernel/" arch/${KARCH}/kernel/asm-offsets.s
 
@@ -551,44 +510,47 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "${_builddir}/"{fs/xfs,mm}
 
-  msg2 "Installing KConfig files..."
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
-    
-  # strip scripts directory
-  find "${_builddir}/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-    esac
-  done
-  
-  msg2 "Removing unneeded architectures..."
+  echo "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$_builddir/{}" \;
+
+  echo "Removing unneeded architectures..."
   local arch
-  for arch in "$_builddir"/arch/*/; do
+  for arch in "${_builddir}"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
 
-  # remove files already in linux-docs package
-  msg2 "Removing documentation..."
-  rm -r "$_builddir/Documentation"
-  
-  # Add version.h for dumb binary blob installers which aren't
-  cd "${_builddir}/include/linux/"
-  [[ -e version.h ]] || ln -s ../generated/uapi/linux/version.h
+  echo "Removing documentation..."
+  rm -r "${_builddir}/Documentation"
 
+  echo "Removing broken symlinks..."
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Adding symlink..."
+  echo "Removing loose objects..."
+  find "${_builddir}" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+  echo "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "${_builddir}" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "${_builddir}/vmlinux"
+
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$_builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
-
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  ln -sr "${_builddir}" "$pkgdir/usr/src/$pkgbase"
 }
 _package-preset-default()
 {
@@ -657,9 +619,9 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 
 
 sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
-            'e78bfa9f5a1065d93396a37d59043bd79805f4681df27ef44dcddea8de092818'
-            '35b1eea04b02c8072568bce49468eb8487e1217a0f5a3cd979cff9af569ab2ef'
-            '9b52e6b04ec3b5d89c20a8db2279d2f4c8799b710af78937540d3e42afab4b94'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
+            'a6fdd147eb529a9e9aa090b13b7d339605d75d7b12900b8b5f1b895aabc6b05c'
+            'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '2c3a80e1a0e5c90e05d8f03d8c11853f47f7d3e61afb324095e883691a5f74ec'
             '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
