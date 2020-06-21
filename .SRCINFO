@@ -1,13 +1,14 @@
 pkgbase = codelite-bin
 	pkgdesc = A cross platform C/C++/PHP and Node.js IDE written in C++
-	pkgver = 13.0
+	pkgver = 14.0
 	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = x86_64
 	license = GPL
 	makedepends = tar
-	makedepends = xz
+	makedepends = lz4
 	depends = wxgtk3
+	depends = wxgtk2
 	depends = webkit2gtk
 	depends = clang
 	depends = lldb
@@ -19,6 +20,7 @@ pkgbase = codelite-bin
 	depends = curl
 	depends = python2
 	depends = hunspell
+	depends = uchardet
 	optdepends = graphviz: callgraph visualization
 	optdepends = clang: compiler
 	optdepends = gcc: compiler
@@ -31,9 +33,9 @@ pkgbase = codelite-bin
 	conflicts = codelite-git
 	replaces = codelite
 	replaces = codelite-svn
-	noextract = codelite-13.0-1-x86_64.pkg.tar.xz
-	source = https://www.lesviallon.fr/download/packages/x86_64/codelite-13.0-1-x86_64.pkg.tar.xz
-	md5sums = 9fa46209a6f90e8d96a0092b7406493a
+	noextract = codelite-14.0-1-x86_64.pkg.tar.lz4
+	source = https://mirror.lesviallon.fr/aviallon/x86_64/codelite-14.0-1-x86_64.pkg.tar.lz4
+	sha256sums = bfc2c5472ea5a45c169c93af2e2e3f17d9cf10483e620adaf0e9c66e1b3770a5
 
 pkgname = codelite-bin
 
