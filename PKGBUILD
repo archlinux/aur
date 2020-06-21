@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 
 prepare() {
-    # Configure jewels and pipes to store scores in ~/.local/games/nbsdgames
+    # Configure games to store scores in ~/.local/games/nbsdgames
     # (more appropriate for single-user systems) and save a message about it
     savedir="$HOME/.local/games/${pkgname%%-git}"
 
