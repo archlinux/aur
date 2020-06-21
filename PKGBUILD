@@ -1,5 +1,6 @@
 #@IgnoreInspection BashAddShebang
-# Maintainer: Jérémy "Vrakfall" Lecocq <jeremy at artphotolaurent dot be>
+# Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Contributor: Jérémy "Vrakfall" Lecocq <jeremy at artphotolaurent dot be>
 # Contributor: farwayer <farwayer@gmail.com>
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
@@ -13,7 +14,7 @@
 _apilevel=29
 _sdkShortVer=10
 _sdkver="${_sdkShortVer}.0.0"
-_rev='r03'
+_rev='r04'
 #_sdkver_char='Q' Not using it yet as it hasn't been revealed. Will probably be Q. Let me know if you find out.
 pkgname="android-platform-${_apilevel}"
 pkgver="${_apilevel}_${_sdkver}_${_rev}" # I use this version labeling scheme as an attempt to work with all notations.
@@ -28,8 +29,8 @@ license=('custom') # TODO: Link to the license.
 depends=('android-sdk' 'android-sdk-platform-tools')
 options=('!strip')
 source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('670e2e104333dae90e16ea3b615f0b63da5883ae')
-sha256sums=('40407df6142ea30da51a3ed48cad9c4ec3bcd6877ea66f69a1faab6f000f43f8')
+sha1sums=('8d644c39902038e0bd529165d5ba4f5a8607daea')
+sha256sums=('c9eaf2ce4e8fa6f5a8036bd3c95363d003733bf0a1bd349718cadf802db44c69')
 
 package() {
 	_destdir="${pkgdir}/opt/android-sdk/platforms"
