@@ -1,15 +1,15 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
-pkgver=r10.09d16e7
+pkgver=r9.a957f2f
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
 url="https://github.com/TheCynicalTeam/i3-swallow"
 license=('GNU General Public License v3.0')
-depends=('i3-wm' 'python-i3ipc')
+depends=('xdo')
 makedepends=('git')
-conflicts=('i3-swallow-git')
+conflicts=('i3-swallow')
 changelog=
 source=("git+${url}.git")
 md5sums=('SKIP')
