@@ -4,8 +4,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-dkms-git
-pkgver=0.8.0.r709.g5a42ef04f
-pkgrel=1
+pkgver=0.8.0.r858.g1c08fa8b5
+pkgrel=2
 epoch=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
