@@ -8,15 +8,20 @@ pkgbase = vc4c-git
 	makedepends = wget
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = llvm
 	makedepends = clang
+	makedepends = opencl-headers
+	depends = llvm
+	depends = clinfo
+	depends = ocl-icd
 	provides = opencl-pi
 	provides = opencl-vc4
 	provides = opencl-driver
 	source = VC4C.tar.gz::https://github.com/doe300/VC4C/archive/master.tar.gz
 	source = VC4CLStdLib.tar.gz::https://github.com/doe300/VC4CLStdLib/archive/master.tar.gz
+	source = auto_dummy.patch
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = e409cafcdc79aa53aef1484e53bd25e7
 
 pkgname = vc4c-git
 

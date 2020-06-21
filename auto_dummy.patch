@@ -1,0 +1,12 @@
+--- ProcessUtil.cpp	2020-06-21 22:41:53.008149222 +0200
++++ ProcessUtil.cpp.bak	2020-06-21 22:40:22.793443863 +0200
+@@ -247,8 +247,7 @@
+         {
+             in.read(buffer.data(), buffer.size());
+             numBytes = in.gcount();
+-            auto dummy = write(pipes[STD_IN][WRITE], buffer.data(), static_cast<std::size_t>(in.gcount()));
+-            (void)dummy;
++            write(pipes[STD_IN][WRITE], buffer.data(), static_cast<std::size_t>(in.gcount()));
+             if(numBytes != buffer.size())
+                 break;
+         }
