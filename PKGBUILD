@@ -7,7 +7,7 @@
 # Contributor: Luis Pablo Gasparotto <lpgasparotto(at)gmail(dot)com>
 
 pkgname=abcm2ps
-pkgver=8.14.7
+pkgver=8.14.9
 pkgrel=1
 pkgdesc="Convert ABC music notation files to PostScript from the commandline"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('python-docutils')
 conflicts=('abcm2ps-devel')
 groups=(abc)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/leesavide/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('2ebc81cabb5303da3d9a172b87005c42e88933e7e7378d84ce8f1a2463760249')
+sha256sums=('9d91c215d59bb3704fe174ba0729f634e656ab42210cfabf02f0c5c4e0c9d877')
 
 build() {
   cd "${pkgname}-${pkgver}"
