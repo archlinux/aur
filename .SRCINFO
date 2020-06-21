@@ -1,5 +1,5 @@
-pkgbase = libfprint-vfs0090-git
-	pkgdesc = Library for fingerprint readers (includes libre vfs0090 driver)
+pkgbase = libfprint-vfs009x-git
+	pkgdesc = Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)
 	pkgver = 1.90.1.r0.g82aed23
 	pkgrel = 1
 	epoch = 1
@@ -17,12 +17,19 @@ pkgbase = libfprint-vfs0090-git
 	depends = gnutls
 	depends = openssl
 	optdepends = fprintd: D-Bus daemon that manages fingerprint readers
+	optdepends = validity-sensors-tools: Flash, factory reset and pair Validity fingerprint sensors 009x
 	provides = libfprint
 	provides = libfprint-2.so=2-64
+	provides = libfprint-vfs009x
+	provides = libfprint-vfs0090
+	provides = libfprint-vfs0097
 	conflicts = libfprint
+	replaces = libfprint
+	replaces = libfprint-vfs009x
 	replaces = libfprint-vfs0090
+	replaces = libfprint-vfs0097
 	source = git+https://github.com/3v1n0/libfprint.git#branch=vfs0090
 	md5sums = SKIP
 
-pkgname = libfprint-vfs0090-git
+pkgname = libfprint-vfs009x-git
 
