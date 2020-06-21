@@ -1,16 +1,16 @@
 pkgbase = yubikey-agent
 	pkgdesc = A seamless ssh-agent for YubiKeys
-	pkgver = 0.1.1
-	pkgrel = 5
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://filippo.io/yubikey-agent
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = pcsclite
 	depends = pinentry
-	source = https://github.com/FiloSottile/yubikey-agent/archive/v0.1.1.tar.gz
+	source = https://github.com/FiloSottile/yubikey-agent/archive/v0.1.2.tar.gz
 	source = yubikey-agent.service
-	sha256sums = ba105395ec8321512742f69ce9cf7fc2fe4e107cf667c2b48d13749efff23d5c
+	sha256sums = 0ce2bb4ca2140d225420e4121b17e2c9fd6ddb1e25f0dc61741ba832e9e857a6
 	sha256sums = f50e0876cb6d13d7cbbb325053f3c6702aabc16948e266cc7c92a0ffc9ace0b9
 
 pkgname = yubikey-agent
