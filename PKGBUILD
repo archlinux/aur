@@ -2,8 +2,8 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 
 pkgname=recycle-cli
-pkgver=1.0.0
-pkgrel=2
+pkgver=v1.1.0
+pkgrel=1
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
 url="https://aur.archlinux.org/packages/recycle-cli/"
