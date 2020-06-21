@@ -1,0 +1,22 @@
+pkgbase = julia-nightly-bin
+	pkgdesc = High-level, high-performance, dynamic programming language - official nightly binaries
+	pkgver = 20200620
+	pkgrel = 1
+	url = https://julialang.org/
+	arch = x86_64
+	license = MIT
+	depends = gmp
+	depends = suitesparse
+	depends = hicolor-icon-theme
+	depends = libssh2
+	provides = julia-nightly
+	conflicts = julia
+	conflicts = julia-git
+	conflicts = julia-beta-bin
+	conflicts = julia-bin
+	options = !strip
+	source = julia-nightly-bin-20200620.tar.gz::https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz
+	sha256sums = SKIP
+
+pkgname = julia-nightly-bin
+
