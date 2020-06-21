@@ -1,0 +1,15 @@
+pkgbase = libfprint-2-tod1-xps9300-bin
+	pkgdesc = Proprietary driver for the fingerprint reader on the Dell XPS 13 9300 - direct from Dell's Ubuntu repo
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/+git/libfprint-2-tod1-goodix/
+	arch = x86_64
+	groups = fprint
+	license = custom
+	makedepends = git
+	depends = libfprint-tod
+	source = git+https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/+git/libfprint-2-tod1-goodix/#branch=devel
+	sha256sums = SKIP
+
+pkgname = libfprint-2-tod1-xps9300-bin
+
