@@ -1,4 +1,6 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 _name=poissonrecon
 _fragment="#commit=c1b1214"
 pkgname=${_name}
