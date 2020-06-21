@@ -1,0 +1,17 @@
+pkgbase = beagle-logic-firmware-git
+	pkgdesc = A logic analyzer for the PRUs on the BeagleBone / BeagleBone Black
+	pkgver = r216.c52845a
+	pkgrel = 1
+	url = http://www.beaglelogic.net
+	arch = armv7h
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = ti-pru-cgt
+	makedepends = ti-pru-swpkg
+	provides = beagle-logic-firmware
+	source = beagle-logic::git+https://github.com/gpollo/BeagleLogic#branch=cmake
+	md5sums = SKIP
+
+pkgname = beagle-logic-firmware-git
+
