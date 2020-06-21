@@ -1,6 +1,6 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
@@ -12,20 +12,20 @@ pkgbase = sudo-selinux
 	depends = pam-selinux
 	depends = libldap
 	depends = libselinux
-	provides = sudo=1.9.0-1
-	provides = selinux-sudo=1.9.0-1
+	provides = sudo=1.9.1-1
+	provides = selinux-sudo=1.9.1-1
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/pam.d/sudo
 	backup = etc/sudo.conf
 	backup = etc/sudo_logsrvd.conf
 	backup = etc/sudoers
-	source = https://www.sudo.ws/sudo/dist/sudo-1.9.0.tar.gz
-	source = https://www.sudo.ws/sudo/dist/sudo-1.9.0.tar.gz.sig
+	source = https://www.sudo.ws/sudo/dist/sudo-1.9.1.tar.gz
+	source = https://www.sudo.ws/sudo/dist/sudo-1.9.1.tar.gz.sig
 	source = sudo_logsrvd.service
 	source = sudo.pam
 	validpgpkeys = 59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB
-	sha256sums = ab231439c5dfdf4ecbef74f10d5f7e9686c2255c2f3887085b5c5e13281bf95c
+	sha256sums = 294116cefe10a02773917fc7440d8384b925955bc96a6e0eaa1977c83b34adff
 	sha256sums = SKIP
 	sha256sums = 8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
