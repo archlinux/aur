@@ -1,7 +1,7 @@
 pkgbase = packer-builder-arm-image
 	pkgdesc = Packer plugin for ARM images
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solo-io/packer-builder-arm-image
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = packer-builder-arm-image
 	depends = multipath-tools
 	depends = qemu-user-static
 	source = packer-builder-arm-image-0.1.6.tar.gz::https://github.com/solo-io/packer-builder-arm-image/archive/v0.1.6.tar.gz
-	sha256sums = 73160cb96ca6ed059c89deab73df2647e4b96399084b98339a185aa574e26922
+	b2sums = e563eb298286bc990bbb26e58944c37aec688eded6ea84300156e6e663888de8b29bdd7bb867ac0acc3f7d8dd6733d6cceded777d42ffa0767885aca157a0313
 
 pkgname = packer-builder-arm-image
 
