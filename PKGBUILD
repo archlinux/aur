@@ -32,7 +32,7 @@ sha256sums=('9fe0eb72d7acf5921c94cd554ebdfecd8a2c1db5bc88d9126eda758a7eb232ef'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
 
-# DLAGENTS=("https::./dlagent $url %u %o")
+DLAGENTS=("https::./dlagent $url %u %o")
 
 prepare() {
 # wxgtk < 3.1.0
