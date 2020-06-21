@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kactivities
 pkgname=$_pkgname-git
-pkgver=v5.70.0.r5.g82a8883
+pkgver=v5.71.0.r1.g699fbc5
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Core components for the KDE's Activities"
@@ -34,7 +34,7 @@ build() {
   cmake ../ \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
