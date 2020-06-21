@@ -2,7 +2,7 @@
 pkgname=swappy-git
 _pkgname=swappy
 pkgver=r168.2adcf94
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
 makedepends=("meson" "scdoc" "git")
@@ -41,7 +41,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   if [ -f LICENSE ]; then
-    install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -D -m 644 -t "$pkgdir/usr/share/licenses/${_pkgname}" LICENSE
   fi
 
   DESTDIR="$pkgdir/" ninja -C build install
