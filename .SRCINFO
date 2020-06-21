@@ -1,6 +1,6 @@
 pkgbase = i3-swallow
 	pkgdesc = Swallow a terminal window after a blocking application is run in i3
-	pkgver = r9.a957f2f
+	pkgver = v1.8.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-swallow
 	arch = any

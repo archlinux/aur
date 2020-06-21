@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
-pkgver=r9.a957f2f
+pkgver=v1.8.0
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver()
 {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "v1.%s.0" "$(git rev-list --count HEAD)"
 }
 
 package() {
