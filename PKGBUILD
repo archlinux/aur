@@ -1,4 +1,5 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
+# Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: soloturn@gmail.com
 
 pkgbase=swift-language
