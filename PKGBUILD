@@ -1,8 +1,8 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=qt-logout
-pkgver=v1.1.0
-_pkgver=1.1.0
+pkgver=v1.2.0
+_pkgver=1.2.0
 pkgrel=1
 pkgdesc='Logout script for qt5'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('f791e2fc8439f10b89c557fef1300b554925198c6b4b11de856f7fc7385dc496')
+sha256sums=('7712ec407686122aa6422159abb9c3524f8710a46175fb9fc1b137e7ac288881')
 
 package() {
   cp -a $srcdir/$pkgname-$_pkgver-$pkgrel/etc $pkgdir/etc
