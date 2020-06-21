@@ -1,24 +1,32 @@
 pkgname=seaweedfs
-pkgver=1.79
+pkgver=1.82
 pkgrel=1
 pkgdesc="SeaweedFS is a simple and highly scalable distributed file system"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://github.com/chrislusf/seaweedfs"
 license=('APACHE')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('cab9296b27d12727e5e5cca2c537aeb0da8981775b999a7e2e55f7efd0bf97e7')
-
-export CGO_LDFLAGS="$LDFLAGS"
-export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        ldflags.patch)
+sha256sums=('9660f9296b57dd790f3970b8f2fb03c0bbdc54c563081105104ab713441acf2c'
+            '64db3c34767099aab8ec385c0b6796a2745ed66fa35159df0e8108da31e710db')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  patch -Np1 -i ../ldflags.patch
+
   export GOPATH="${SRCDEST:-$srcdir}"
   go mod vendor
 }
 
 build() {
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+
   cd $pkgname-$pkgver
   make GOPATH="${SRCDEST:-$srcdir}"
 }
