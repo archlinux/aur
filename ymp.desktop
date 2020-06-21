@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Yandex.Music Player
+GenericName=Music Player
+Comment=Yandex.Music Player
+Exec=/bin/ymp %U
+Type=Application
+StartupNotify=true
+Categories=udio;Music;Player;AudioVideo;
+StartupWMClass=Yandex.Music
