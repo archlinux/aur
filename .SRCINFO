@@ -1,6 +1,6 @@
 pkgbase = zotero-arm-bin
 	pkgdesc = Zotero Standalone is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources (ARM Binaries)
-	pkgver = 5.0.84
+	pkgver = 5.0.88
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero.install
@@ -8,17 +8,16 @@ pkgbase = zotero-arm-bin
 	arch = armv7h
 	license = GPL3
 	depends = dbus-glib
-	depends = gtk2
 	depends = gtk3
 	depends = nss
 	depends = libxt
 	optdepends = poppler: PDF indexing
-	provides = zotero=5.0.84
+	provides = zotero=5.0.88
 	conflicts = zotero
 	source = zotero.desktop
-	source = Zotero-5.0.84_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.84
+	source = Zotero-5.0.88_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.88
 	sha256sums = 2e700ebe97d332a894be80d232b037b0117d84b38c5fa99dffc727cb10918228
-	sha256sums = 96cafb3e982b894a4f56f124b0fbfc7c22e19097a5b23984997b0feebc247f56
+	sha256sums = c248bb3b5165f4b03c7e38673aa928f1f29796a8d8ba1b335699803c559529a7
 	source_aarch64 = firefox.deb::http://launchpadlibrarian.net/373617392/firefox_60.0.2+build1-0ubuntu0.18.04.1_arm64.deb
 	sha256sums_aarch64 = cad6ea6f971431ece476bda7499b30293dc6b533c1c35a41d1c90f46a0393729
 	source_armv7h = firefox.deb::http://launchpadlibrarian.net/373609086/firefox_60.0.2+build1-0ubuntu0.18.04.1_armhf.deb
