@@ -40,6 +40,3 @@ package() {
     install -Dm644 $srcdir/${i}x${i}.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/julia.png
   done
 }
-
-# vim: ts=2 sw=2 et:
-
