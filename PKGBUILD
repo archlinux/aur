@@ -1,17 +1,17 @@
 pkgname=coin-or-alps
-pkgver=1.5.6
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="COIN-OR High-Performance Parallel Search Framework"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://projects.coin-or.org/Alps"
 license=('EPL')
 groups=('coin-or')
-depends=('coin-or-cgl' 'coin-or-clp')
-source=("https://www.coin-or.org/download/source/Alps/CHiPPS-Alps-${pkgver}.tgz")
-sha1sums=('88b359d8bc998d0940728961f4eeb608eabc775c')
+depends=('coin-or-coinutils')
+source=("https://github.com/coin-or/CHiPPS-ALPS/archive/releases/$pkgver.tar.gz")
+sha256sums=('43f38b04699d4e70bde27f8dd024804e8a33ea7f521e5a5f121f373e2a60493a')
 
 build() {
-  cd "$srcdir/CHiPPS-Alps-$pkgver"
+  cd "$srcdir/CHiPPS-ALPS-releases-$pkgver"
   COIN_SKIP_PROJECTS="Sample" \
   ./configure --prefix=/usr \
               --with-osi-lib="$(pkg-config --libs osi)" \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/CHiPPS-Alps-$pkgver"
+  cd "$srcdir/CHiPPS-ALPS-releases-$pkgver"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
   make DESTDIR="$pkgdir/" install
 }
