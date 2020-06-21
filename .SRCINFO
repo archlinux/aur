@@ -1,0 +1,20 @@
+pkgbase = gosync-git
+	pkgdesc = An Opensource Google Drive client written in Python
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://hschauhan.github.io/gosync/
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = gendesk
+	depends = python-google-api-python-client
+	depends = python-google-auth-httplib2
+	depends = python-google-auth-oauthlib
+	depends = python-watchdog
+	depends = python-wxpython
+	provides = gosync
+	source = gosync::git+https://github.com/hschauhan/gosync
+	sha256sums = SKIP
+
+pkgname = gosync-git
+
