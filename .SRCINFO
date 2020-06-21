@@ -1,0 +1,14 @@
+pkgbase = scanrepo
+	pkgdesc = CLI tool that finds secrets accidentally committed to a git repo, eg passwords, private keys
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/UKHomeOffice/repo-security-scanner
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = scanrepo-0.4.0.tar.gz::https://github.com/UKHomeOffice/repo-security-scanner/archive/0.4.0.tar.gz
+	sha256sums = 56338926727798a45c8dac8649953e638131ff77a2ad7ae8a7d2b12b0ecc60ac
+
+pkgname = scanrepo
+
