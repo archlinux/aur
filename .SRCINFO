@@ -1,0 +1,17 @@
+pkgbase = perl-www-curl
+	pkgdesc = Perl/CPAN Module WWW::Curl
+	pkgver = 4.17
+	pkgrel = 10
+	url = https://search.cpan.org/dist/WWW-Curl/
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = curl
+	options = !emptydirs
+	source = https://search.cpan.org/CPAN/authors/id/S/SZ/SZBALINT/WWW-Curl-4.17.tar.gz
+	source = curl-7.50.2.patch
+	md5sums = 997ac81cd6b03b30b36f7cd930474845
+	md5sums = 84916bb88dd596cf9ec1a0924cd97913
+
+pkgname = perl-www-curl
+
