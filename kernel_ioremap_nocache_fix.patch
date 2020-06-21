@@ -1,0 +1,88 @@
+commit 581f3d57fd2debe52b7647145334bfdd79212e7c
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Sun Jun 21 18:36:51 2020 +0100
+
+    Fix use of deprecated ioremap_nocache()
+    
+    The kernel has provided non-cached semantics by default since v2.6. And
+    the additional interface has been removed since early 2020 from the
+    kernel.
+
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index cd0c50a..1e698c8 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
+@@ -1854,17 +1854,17 @@ static int ixx_act_ib_xxx_probe(struct pci_dev *pdev,
+         intf->memlen = pci_resource_len(pdev, 2);
+ 
+         request_mem_region(intf->reg1add, intf->reg1len, "IXXAT PCI Registers");
+-        intf->reg1vadd = ioremap_nocache(intf->reg1add, intf->reg1len);
++        intf->reg1vadd = ioremap(intf->reg1add, intf->reg1len);
+         if (!intf->reg1vadd) {
+-                printk("reg1vadd ioremap_nocache failed\n");
++                printk("reg1vadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_reg1;
+         }
+ 
+         request_mem_region(intf->memadd, intf->memlen, "IXXAT PCI Memory");
+-        intf->memvadd = ioremap_nocache(intf->memadd, intf->memlen);
++        intf->memvadd = ioremap(intf->memadd, intf->memlen);
+         if (!intf->memvadd) {
+-                printk("memvadd ioremap_nocache failed\n");
++                printk("memvadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_memreg;
+         }
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c
+index d3a4da1..7a3514f 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
+@@ -1193,17 +1193,17 @@ static int ixx_pas_ib_fd_xxx_probe(struct pci_dev *pdev,
+         intf->memlen = pci_resource_len(pdev, 2);
+ 
+         request_mem_region(intf->memadd, intf->memlen, "IXXAT PCI Memory");
+-        intf->memvadd = ioremap_nocache(intf->memadd, intf->memlen);
++        intf->memvadd = ioremap(intf->memadd, intf->memlen);
+         if (!intf->memvadd) {
+-                printk("memvadd ioremap_nocache failed\n");
++                printk("memvadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_memreg;
+         }
+ 
+         request_mem_region(intf->reg1add, intf->reg1len, "IXXAT PCI Registers");
+-        intf->reg1vadd = ioremap_nocache(intf->reg1add, intf->reg1len);
++        intf->reg1vadd = ioremap(intf->reg1add, intf->reg1len);
+         if (!intf->reg1vadd) {
+-                printk("reg1vadd ioremap_nocache failed\n");
++                printk("reg1vadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_reg1;
+         }
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c
+index 27b2b7d..fb08c03 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
+@@ -1221,17 +1221,17 @@ static int ixx_pas_ib_xxx_probe(struct pci_dev *pdev,
+         intf->memlen = pci_resource_len(pdev, 2);
+ 
+         request_mem_region(intf->memadd, intf->memlen, "IXXAT PCI Memory");
+-        intf->memvadd = ioremap_nocache(intf->memadd, intf->memlen);
++        intf->memvadd = ioremap(intf->memadd, intf->memlen);
+         if (!intf->memvadd) {
+-                printk("memvadd ioremap_nocache failed\n");
++                printk("memvadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_memreg;
+         }
+ 
+         request_mem_region(intf->reg1add, intf->reg1len, "IXXAT PCI Registers");
+-        intf->reg1vadd = ioremap_nocache(intf->reg1add, intf->reg1len);
++        intf->reg1vadd = ioremap(intf->reg1add, intf->reg1len);
+         if (!intf->reg1vadd) {
+-                printk("reg1vadd ioremap_nocache failed\n");
++                printk("reg1vadd ioremap failed\n");
+                 err = -ENOBUFS;
+                 goto release_reg1;
+         }

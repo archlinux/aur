@@ -1,18 +1,19 @@
+commit 06cf40760506f7aeda1daee7fe8e5e330915daaa
 Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
 Date:   Tue Jun 18 18:37:17 2019 +0200
 
-    Fix compilation against newer kernel driver's API
-
+    Fix use of deprecated do_gettimeofday()
+    
     do_gettimeofday() is deprecated because of the year 2038 overflow. Since
     this driver uses it extensively and it's no longer available in recent
     kernels, we need to convert it to something else.
-
+    
     The code could be improved, this is a least effort, half scripted fix.
 
-diff --git a/can-ibxxx_socketcan/ixx_pci_core.c b/can-ibxxx_socketcan/ixx_pci_core.c
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c
 index d6d4228..7f019fb 100644
---- a/can-ibxxx_socketcan/ixx_pci_core.c
-+++ b/can-ibxxx_socketcan/ixx_pci_core.c
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c	
 @@ -235,24 +235,14 @@ void ixxat_dump_mem(char *prompt, void *p, int l)
          DUMP_WIDTH, 1, p, l, false);
  }
@@ -95,10 +96,10 @@ index d6d4228..7f019fb 100644
                  free_candev(netdev);
          }
  }
-diff --git a/can-ibxxx_socketcan/ixx_pci_core.h b/can-ibxxx_socketcan/ixx_pci_core.h
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.h b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.h
 index 8e94b34..0f0f3e2 100644
---- a/can-ibxxx_socketcan/ixx_pci_core.h
-+++ b/can-ibxxx_socketcan/ixx_pci_core.h
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.h	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.h	
 @@ -241,7 +241,7 @@ struct ixx_canfd_msg {
  } __packed;
  
@@ -108,10 +109,10 @@ index 8e94b34..0f0f3e2 100644
          u32 ts_dev_0;
          u32 ts_dev_last;
  };
-diff --git a/can-ibxxx_socketcan/ixx_pci_ib_active.c b/can-ibxxx_socketcan/ixx_pci_ib_active.c
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
 index 6cc4985..cd0c50a 100644
---- a/can-ibxxx_socketcan/ixx_pci_ib_active.c
-+++ b/can-ibxxx_socketcan/ixx_pci_ib_active.c
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
 @@ -369,7 +369,7 @@ static int ixx_act_ib_xxx_rcv_cmd(struct ixx_pci_interface *intf, u32 *rx_fifo,
          u32* res_size;
          struct ixx_dal_req *res_dal_req;
@@ -146,10 +147,10 @@ index 6cc4985..cd0c50a 100644
  
          return err;
  }
-diff --git a/usb-to-can_socketcan/ixx_usb_core.c b/usb-to-can_socketcan/ixx_usb_core.c
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c
 index 5d542a3..696e5d4 100644
---- a/usb-to-can_socketcan/ixx_usb_core.c
-+++ b/usb-to-can_socketcan/ixx_usb_core.c
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c	
 @@ -94,24 +94,14 @@ void ixxat_dump_mem(char *prompt, void *p, int l)
          DUMP_WIDTH, 1, p, l, false);
  }
@@ -277,10 +278,10 @@ index 5d542a3..696e5d4 100644
                  *intf = (struct usb_interface*)to_usb_interface(d);
          struct ixx_usb_device *dev;
  
-diff --git a/usb-to-can_socketcan/ixx_usb_core.h b/usb-to-can_socketcan/ixx_usb_core.h
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.h b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.h
 index 60dc02d..577f276 100644
---- a/usb-to-can_socketcan/ixx_usb_core.h
-+++ b/usb-to-can_socketcan/ixx_usb_core.h
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.h	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.h	
 @@ -193,7 +193,7 @@ struct ixx_usb_adapter {
  };
  

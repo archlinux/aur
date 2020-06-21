@@ -1,7 +1,7 @@
 pkgbase = ixxat-socketcan
 	pkgdesc = SocketCAN driver for IXXAT USB-to-CAN v2
 	pkgver = 1.1.148.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan
 	install = ixxat-socketcan.install
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = ixxat-socketcan
 	license = GPL2
 	makedepends = linux-headers
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
-	source = https://www.ixxat.com/docs/librariesprovider8/default-document-library/downloads/other-drivers/socketcan.zip?sfvrsn=c486dcd6_22
-	source = kernel_api_fix.patch
-	md5sums = c42d19b75802691b057a8163606903af
-	md5sums = 94db6b37a2b8f07ef116352e73dbd88a
+	source = https://cdn.hms-networks.com/docs/librariesprovider8/ixxat-english-new/pc-can-interfaces/linux-drivers/socketcan-linux.zip?sfvrsn=3eb48d7_8
+	source = kernel_do_gettimeofday_fix.patch
+	source = kernel_ioremap_nocache_fix.patch
+	md5sums = 4875b7dcfddfb76279ec61477765dd04
+	md5sums = 918f3a220153599c2a4c3fad7de86cc1
+	md5sums = 25ef511b0f11a7d84ce9ffc6020293c3
 
 pkgname = ixxat-socketcan
 
