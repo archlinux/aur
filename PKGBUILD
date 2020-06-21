@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.2.0.rc1.r152.g0f19d70
+pkgver=v0.2.0.rc1.r179.g402b178
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -14,19 +14,22 @@ depends=('dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'fontconfig' 'gtk3' 'libevdev'
 makedepends=('git' 'dotnet-sdk>=3.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
+install="reload-systemd.install"
 source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
         'git+https://github.com/InfinityGhost/OpenTabletDriver-udev'
         "$_spkgname"
         "$_spkgname-gui"
         "$_lpkgname.service"
-        "$_pkgname.desktop")
+        "$_pkgname.desktop"
+        "reload-systemd.install")
 
 sha256sums=('SKIP'
             'SKIP'
             '3b4e49ee69a632538869f0e21446da16d21aa5075241c5c35545cecb485134d8'
             '0407c3d546a382a8715318a785e11140c11a94f44edef3f730cb0f27ed7cff62'
             'f115b727640f78a8d641fab5554305b6e064d73dc4c3f869db85bcaf412f98f1'
-            '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834')
+            '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
+            '1570586c391e9d0d923cc7e6af01f92a9a95e04fd510cf5c33080a55656f2ad6')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
