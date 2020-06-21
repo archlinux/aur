@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kdelibs4support
 pkgname=$_pkgname-git
-pkgver=r941.9eab2bc6
+pkgver=r945.b17aa990
 pkgrel=1
 pkgdesc='Porting aid from KDELibs4 (Git)'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ build() {
   cmake ../ \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {

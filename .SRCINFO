@@ -1,6 +1,6 @@
 pkgbase = kdelibs4support-git
 	pkgdesc = Porting aid from KDELibs4 (Git)
-	pkgver = r941.9eab2bc6
+	pkgver = r945.b17aa990
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686
