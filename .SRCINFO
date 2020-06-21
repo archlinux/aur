@@ -1,6 +1,6 @@
 pkgbase = hunspell-da
 	pkgdesc = Danish hunspell dictionaries
-	pkgver = 2.4
+	pkgver = 2.5.101
 	pkgrel = 1
 	url = http://www.stavekontrolden.dk/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = hunspell-da
 	license = LGPL2.1
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary/2.4/@@download/file/dict-da-2-4.oxt
-	sha256sums = c08a7c53dcbae49f5ebb3274e673ec983f623f52c9f8d6f471887de7e4a62476
+	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt
+	b2sums = 93ef8286c60e8eb89178b2959321dd7bd50b4289ff92f0ccbeda22efd55b82697e82ccc157e1954859207942401556d4542a826265988f32fa21e288b1d7fc7f
 
 pkgname = hunspell-da
 
