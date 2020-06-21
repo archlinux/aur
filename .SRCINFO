@@ -1,6 +1,6 @@
 pkgbase = i3session
 	pkgdesc = Remembers what's running in your i3 workspaces by saving a session file
-	pkgver = v1.7.0
+	pkgver = v1.8.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3session
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = i3session
 	md5sums = SKIP
 
 pkgname = i3session
-
