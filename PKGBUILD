@@ -1,4 +1,4 @@
-# Maintainer: Tony Fettes <tonyfettes@tonyfettes.tk>
+# Maintainer: Tony Fettes <tonyfettes@feihaoxiang2014@gmail.com>
 # Contributor: Elrondo46 (https://github.com/Elrondo46)
 # Contributor: kounch (https://github.com/kounch)
 
