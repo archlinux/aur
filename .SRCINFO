@@ -1,11 +1,12 @@
 pkgbase = duplicati-latest
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
 	pkgver = 2.0.5.107
-	pkgrel = 1
+	pkgrel = 2
 	url = http://duplicati.com
 	install = duplicati.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	depends = gtk-sharp-2
 	depends = mono
