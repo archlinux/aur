@@ -226,156 +226,49 @@ index 048b2f4..6e9f5fe 100644
          b = true;
      }
 diff --git a/utils/system_stat.cpp b/utils/system_stat.cpp
-index 90395fb..bfea2c4 100644
+index 90395fb..00c0d24 100644
 --- a/utils/system_stat.cpp
 +++ b/utils/system_stat.cpp
-@@ -43,7 +43,7 @@
- 
- #define MAX_NAME_LEN 128
- 
--auto print_err = [](decltype(errno) e, const QString &msg)
-+auto print_err_system = [](decltype(errno) e, const QString &msg)
- {
-     qDebug() << QString("Error: [%1] %2, ").arg(e).arg(strerror(e)) << msg;
- };
-@@ -58,7 +58,7 @@ bool SystemStat::readLoadAvg(qreal &loadAvg1, qreal &loadAvg5, qreal &loadAvg15)
- 
+@@ -52,25 +52,27 @@ auto print_err = [](decltype(errno) e, const QString &msg)
+ bool SystemStat::readLoadAvg(qreal &loadAvg1, qreal &loadAvg5, qreal &loadAvg15) {
+     bool b = false;
+     FILE *fp;
+-    char buf[128];
+-    int rc;
+-    double avg1, avg5, avg15;
+-
++    char buf[256];
++    double load[3];
++    int i;
      errno = 0;
-     if ((fp = fopen(PROC_PATH_LOADAVG, "r")) == nullptr) {
+-    if ((fp = fopen(PROC_PATH_LOADAVG, "r")) == nullptr) {
 -        print_err(errno, QString("open %1 failed").arg(PROC_PATH_LOADAVG));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_LOADAVG));
-         return b;
-     }
+-        return b;
+-    }
  
-@@ -73,7 +73,7 @@ bool SystemStat::readLoadAvg(qreal &loadAvg1, qreal &loadAvg5, qreal &loadAvg15)
-     }
-     fclose(fp);
-     if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_LOADAVG));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_LOADAVG));
-     }
- 
-     return b;
-@@ -90,7 +90,7 @@ bool SystemStat::readUpTime(qulonglong &uptime)
- 
-     errno = 0;
-     if ((fp = fopen(PROC_PATH_UPTIME, "r")) == nullptr) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_UPTIME));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_UPTIME));
-         return b;
-     }
- 
-@@ -103,7 +103,7 @@ bool SystemStat::readUpTime(qulonglong &uptime)
-     }
-     fclose(fp);
-     if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_UPTIME));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_UPTIME));
-     }
- 
-     return b;
-@@ -119,7 +119,7 @@ bool SystemStat::readBootTime(time_t &btime)
- 
-     errno = 0;
-     if (!(fp = fopen(PROC_PATH_STAT, "r"))) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_STAT));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_STAT));
-         return b;
-     }
- 
-@@ -130,7 +130,7 @@ bool SystemStat::readBootTime(time_t &btime)
+-    if (fgets(buf, sizeof(buf), fp)) {
+-        rc = sscanf(buf, "%lf %lf %lf", &avg1, &avg5, &avg15);
+-        if (rc == 3) {
+-            loadAvg1 = avg1;
+-            loadAvg5 = avg5;
+-            loadAvg15 = avg15;
++    if ((fp = fopen(PROC_PATH_LOADAVG, "r")) != nullptr) {
++    	if((fgets(buf, sizeof(buf), fp)) != nullptr) {
++    		load[0] = strtod(strtok(buf, " \n"), NULL);
++    		for(i=1;i<3;i++){
++            	load[i] = strtod(strtok(NULL, " \n"), NULL);
++    		}
++    		loadAvg1 = load[0];
++    		loadAvg5 = load[1];
++    		loadAvg15 = load[2];
+             b = true;
          }
-     }
-     if (ferror(fp)) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_STAT));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_STAT));
-     }
-     fclose(fp);
- 
-@@ -152,7 +152,7 @@ bool SystemStat::readCPUStats(CPUStat &cpuStat, CPUStatMap &cpuStatMap)
-     cpuStatMap.clear();
- 
-     if ((fp = fopen(PROC_PATH_CPU, "r")) == nullptr) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_CPU));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_CPU));
-         return false;
-     }
- 
-@@ -198,7 +198,7 @@ bool SystemStat::readCPUStats(CPUStat &cpuStat, CPUStatMap &cpuStatMap)
-     b = !ferror(fp) && b;
+-    }
++        else {
++        	print_err(errno, QString("open %1 failed").arg(PROC_PATH_LOADAVG));
++        	return b;
++    	}
++  	}
      fclose(fp);
      if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_CPU));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_CPU));
-     }
- 
-     return b;
-@@ -213,7 +213,7 @@ bool SystemStat::readMemStats(MemStat &memStat)
-     bool b = true;
- 
-     if ((fp = fopen(PROC_PATH_MEM, "r")) == nullptr) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_MEM));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_MEM));
-         return false;
-     }
- 
-@@ -283,7 +283,7 @@ bool SystemStat::readMemStats(MemStat &memStat)
-     b = !ferror(fp) && b;
-     fclose(fp);
-     if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_MEM));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_MEM));
-     }
- 
-     return b;
-@@ -315,7 +315,7 @@ bool SystemStat::readDiskIOStats(DiskIOStat &statSum, DiskIOStatMap &statIOMap)
-     };
- 
-     if ((fp = fopen(PROC_PATH_DISK, "r")) == nullptr) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_DISK));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_DISK));
-         return b;
-     }
- 
-@@ -360,7 +360,7 @@ bool SystemStat::readDiskIOStats(DiskIOStat &statSum, DiskIOStatMap &statIOMap)
-     b = !ferror(fp) && b;
-     fclose(fp);
-     if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_DISK));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_DISK));
-     }
- 
-     return b;
-@@ -376,7 +376,7 @@ bool SystemStat::readNetIfStats(NetIFStat &statSum, NetIFStatMap &statNetIfMap)
-     int rc;
- 
-     if ((fp = fopen(PROC_PATH_NET, "r")) == nullptr) {
--        print_err(errno, QString("open %1 failed").arg(PROC_PATH_NET));
-+        print_err_system(errno, QString("open %1 failed").arg(PROC_PATH_NET));
-         return b;
-     }
- 
-@@ -427,7 +427,7 @@ bool SystemStat::readNetIfStats(NetIFStat &statSum, NetIFStatMap &statNetIfMap)
-     b = !ferror(fp) && b;
-     fclose(fp);
-     if (!b) {
--        print_err(errno, QString("read %1 failed").arg(PROC_PATH_NET));
-+        print_err_system(errno, QString("read %1 failed").arg(PROC_PATH_NET));
-     }
- 
-     return b;
-diff --git a/utils/utils.h b/utils/utils.h
-index caa4e49..b58732f 100644
---- a/utils/utils.h
-+++ b/utils/utils.h
-@@ -32,7 +32,10 @@
- #include <QString>
- #include <unordered_set>
- #include "find_window_title.h"
-+#include <QtGlobal>
-+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
- #include "hashqstring.h"
-+#endif
- #include <QDebug>
- #include <QPainterPath>
- 
+         print_err(errno, QString("read %1 failed").arg(PROC_PATH_LOADAVG));
