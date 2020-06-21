@@ -1,6 +1,10 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
+# Contributor: Gábor Sebestyén <segabor@gmail.com>
+# Contributor: soloturn@gmail.com
+
+
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.04.a.r63.g932a91e0c56
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.19.a.r24.g90cb347cd95
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
