@@ -1,7 +1,7 @@
 # Maintainer: phpusr
 pkgname=yandex-music-player
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Yandex Music desktop Electron application with MPRIS support'
 arch=('x86_64')
 url='https://github.com/phpusr/yandex-music-player'
