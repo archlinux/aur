@@ -2,7 +2,7 @@
 # Maintainer: Alexandru Ianu <alexandru.ianu at gmail.com>
 
 pkgname=pdf2img-c
-pkgver=6.7003d7e
+pkgver=7.3996db9
 pkgrel=1
 pkgdesc="Easily convert PDF to multiple image formats with a single click. C version of pdf2img."
 arch=('any')
@@ -12,13 +12,12 @@ conflicts=('pdf2img' 'pdf2img-git')
 replaces=('pdf2img')
 depends=('gtk3' 'glibc' 'ghostscript')
 makedepends=('git' 'pkg-config' 'gcc' 'gettext' 'intltool' 'autoconf')
-source=('git+https://github.com/wifiextender/pdf2img-c.git')
+source=('git+https://github.com/su8/pdf2img-c.git')
 md5sums=('SKIP')
 
 build() {
   cd $srcdir/pdf2img-c/
-  chmod +x bootstrap
-  ./bootstrap
+  autoreconf -if
   chmod +x configure
   ./configure --prefix=/usr --enable-button-images
 }
@@ -31,7 +30,7 @@ package() {
   mkdir -p $pkgdir/usr/share/pixmaps
   cp $srcdir/pdf2img-c/src/pdf2img $pkgdir/usr/bin/
   cp $srcdir/pdf2img-c/pdf2img.desktop $pkgdir/usr/share/applications/
-  cp $srcdir/pdf2img-c/pdf2img_c_icon.xpm $pkgdir/usr/share/pixmaps/
+  cp $srcdir/pdf2img-c/img/pdf2img_c_icon.xpm $pkgdir/usr/share/pixmaps/
 }
 
 pkgver() {
