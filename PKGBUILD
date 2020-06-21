@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=appleseed
-pkgrel=1
+pkgrel=2
 pkgver=2.1.0
 _pkgver=${pkgver}-beta
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects."
