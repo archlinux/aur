@@ -8,17 +8,19 @@ arch=('x86_64')
 url="https://wiki.gnome.org/GXml"
 license=('LGPL')
 depends=('glib2' 'libgee' 'libxml2')
-makedepends=('gobject-introspection' 'vala' 'intltool')
+makedepends=('gobject-introspection' 'meson' 'vala')
 source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
 sha256sums=('bac5bc82c39423c1dbbfd89235f4a9b03b69cfcd3188905359ce81747b6400ed')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr
-  make
+  arch-meson $pkgname-$pkgver build
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
