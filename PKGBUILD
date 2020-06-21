@@ -3,12 +3,13 @@
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 
 _pkgname=scilab
-pkgname=scilab-git
+_fragment="#branch=master"
+pkgname=${_pkgname}-git
 pkgver=6.0.0.r296.g2f851190556
 pkgrel=1
-pkgdesc='A scientific software package for numerical computations'
+pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
-url="https://www.scilab.org/"
+url='https://www.scilab.org'
 license=('custom:CeCILL' 'BSD')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
          'hdf5'
@@ -23,7 +24,7 @@ depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
 makedepends=('apache-ant' 'git' 'ocaml' 'java-environment>=8' 'gcc-fortran')
 provides=('scilab')
 conflicts=('scilab')
-source=("git://git.scilab.org/scilab"
+source=("git://git.scilab.org/scilab${_fragment}"
         "${_pkgname}-jogl-2.3.2.patch"
         "${_pkgname}-LD_LIBRARY_PATH.patch"
         "${_pkgname}-strict-jar.patch"
@@ -97,10 +98,8 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/COPYING" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/COPYING-BSD" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-BSD"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING-BSD "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-BSD"
 }
 
 # vim:set ts=2 sw=2 et:
