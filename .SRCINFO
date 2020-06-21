@@ -1,6 +1,6 @@
 pkgbase = zmusic
 	pkgdesc = GZDoom's music system as a standalone library
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
@@ -17,14 +17,14 @@ pkgbase = zmusic
 	depends = mpg123
 	depends = zlib
 	optdepends = soundfont-fluid: default soundfont for FluidSynth
-	source = ZMusic-1.1.1.tar.gz::https://github.com/coelckers/ZMusic/archive/1.1.1.tar.gz
+	source = ZMusic-1.1.2.tar.gz::https://github.com/coelckers/ZMusic/archive/1.1.2.tar.gz
 	source = 0001-Use-correct-soundfont-path.patch
-	sha256sums = 98552b840063ba67da4a86fc2f22d0262ec41838323da83ab24f8ddcc6afe90e
+	sha256sums = 951940fe63ee386fdea044f2543c7460977921ce3e60d282b87be81546078e07
 	sha256sums = 6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f
-	source_x86_64 = libzmusic.so.1-1.1.0-x86_64.dump.gz
-	source_x86_64 = libzmusiclite.so.1-1.1.0-x86_64.dump.gz
-	sha256sums_x86_64 = eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35
-	sha256sums_x86_64 = d490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123
+	source_x86_64 = libzmusic.so.1-1.1.1-x86_64.dump.gz
+	source_x86_64 = libzmusiclite.so.1-1.1.1-x86_64.dump.gz
+	sha256sums_x86_64 = 648c4f9462877a2b9dab1b8bd2fad7967c09fee3307f5f24adaa1f4532842780
+	sha256sums_x86_64 = 2abc6f5c128f023699210f6cfb22257a6a26375f0b206d92de1272302a84bbcf
 
 pkgname = zmusic
 

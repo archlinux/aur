@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64')
@@ -11,15 +11,15 @@ optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('cmake')
 checkdepends=('abi-compliance-checker')
 _srcname=ZMusic-${pkgver}
-_checkver=1.1.0
+_checkver=1.1.1
 source=("${_srcname}.tar.gz::https://github.com/coelckers/ZMusic/archive/${pkgver}.tar.gz"
         '0001-Use-correct-soundfont-path.patch')
 source_x86_64=("libzmusic.so.1-${_checkver}-x86_64.dump.gz"
                "libzmusiclite.so.1-${_checkver}-x86_64.dump.gz")
-sha256sums=('98552b840063ba67da4a86fc2f22d0262ec41838323da83ab24f8ddcc6afe90e'
+sha256sums=('951940fe63ee386fdea044f2543c7460977921ce3e60d282b87be81546078e07'
             '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f')
-sha256sums_x86_64=('eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35'
-                   'd490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123')
+sha256sums_x86_64=('648c4f9462877a2b9dab1b8bd2fad7967c09fee3307f5f24adaa1f4532842780'
+                   '2abc6f5c128f023699210f6cfb22257a6a26375f0b206d92de1272302a84bbcf')
 
 prepare() {
     cd $_srcname
