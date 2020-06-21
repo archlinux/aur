@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r159.2b36fff
+pkgver=r163.0ad7d9c
 pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
@@ -9,8 +9,8 @@ url='https://gitlab.com/Arthapz/stormkit'
 license=('MIT')
 
 provides=('stormkit')
-depends=('microsoft-gsl' 'gli' 'fmt' 'vulkan-headers' 'range-v3')
-makedepends=('cmake' 'git' 'ninja' 'meson' 'libxcb' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util')
+depends=('microsoft-gsl' 'glm' 'fmt' 'vulkan-headers' 'range-v3')
+makedepends=('cmake' 'git' 'ninja' 'meson' 'libxcb' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util' 'gli')
 optdepends=('libpng' 'libjpeg')
 conflicts=('stormkit')
 
