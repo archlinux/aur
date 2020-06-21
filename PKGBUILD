@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
-pkgver=v1.8.0
+pkgver=v1.9.0
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
