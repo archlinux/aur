@@ -7,8 +7,8 @@ pkgbase = poissonrecon-git
 	arch = x86_64
 	groups = photogrametry
 	license = MIT
-	makedepends = gcc8
 	makedepends = git
+	makedepends = gcc8
 	depends = glibc
 	depends = gcc8-libs
 	depends = libpng
@@ -18,7 +18,7 @@ pkgbase = poissonrecon-git
 	provides = surfacetrimmer
 	options = !makeflags
 	source = poissonrecon-git::git+https://github.com/mkazhdan/PoissonRecon.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = poissonrecon-git
 
