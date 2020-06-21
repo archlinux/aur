@@ -1,7 +1,7 @@
 pkgbase = dde-dock-netspeed
 	pkgdesc = Net speed plugin for Deepin Linux dock
 	pkgver = r7.3647c93
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/v-svg/dde-dock-netspeed
 	arch = x86_64
 	license = GPL

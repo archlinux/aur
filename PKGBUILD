@@ -2,7 +2,7 @@
 
 pkgname=dde-dock-netspeed
 pkgver=r7.3647c93
-pkgrel=0
+pkgrel=2
 pkgdesc="Net speed plugin for Deepin Linux dock"
 arch=('x86_64')
 url="https://github.com/v-svg/dde-dock-netspeed"
@@ -33,5 +33,5 @@ build() {
 
 package() {
   cd ${pkgname}
-  install -Dm 644 "libnetspeed.so" "${pkgdir}/usr/lib/dde-dock/plugins/libnetspeed.so"
+  install -Dm 755 "libnetspeed.so" "${pkgdir}/usr/lib/dde-dock/plugins/libnetspeed.so"
 }
