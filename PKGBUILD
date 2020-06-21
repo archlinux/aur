@@ -1,4 +1,6 @@
+#!/hit/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 pkgname=appleseed
 pkgrel=1
 pkgver=2.1.0

@@ -1,0 +1,6 @@
+# allow unsafe `cd `
+disable=SC2164
+# allow unused variable (pkgname,pkgver etc.)
+disable=SC2034
+# allow uninitialized variable (srcdir,pkgdir)
+disable=SC2154
