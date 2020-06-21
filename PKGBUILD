@@ -26,6 +26,7 @@ package() {
   install -Dm755 "${srcdir}"/"${_gitname}"/argonone-config "${pkgdir}"/usr/bin/argonone-config
   install -Dm755 "${srcdir}"/"${_gitname}"/argononed-poweroff.py "${pkgdir}"/usr/lib/systemd/system-shutdown/argononed-poweroff.py
   install -Dm644 "${srcdir}"/"${_gitname}"/argononed.conf "${pkgdir}"/etc/argononed.conf
+  install -Dm644 "${srcdir}"/"${_gitname}"/argononed.conf "${pkgdir}"/opt/argonone/argononed.conf
   install -Dm755 "${srcdir}"/"${_gitname}"/argononed.py "${pkgdir}"/opt/argonone/bin/argononed.py
   install -Dm644 "${srcdir}"/"${_gitname}"/argononed.service "${pkgdir}"/usr/lib/systemd/system/argononed.service
 }
