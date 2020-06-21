@@ -3,7 +3,7 @@
 
 pkgname=kconfig-git
 pkgver=v5.71.0.rc1.r4.ga316687
-pkgrel=1
+pkgrel=2
 pkgdesc='KConfig'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kconfig'
@@ -34,7 +34,7 @@ build() {
     -DKDE_INSTALL_LIBEXECDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
