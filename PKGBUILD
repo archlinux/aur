@@ -1,6 +1,8 @@
+# Maintainer: Roboron <robertoms258 at gmail dot com >
+
 pkgname=simutrans-pak192.comic
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution graphics set for Simutrans, with a comic style"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -14,5 +16,5 @@ package() {
 
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans"
-  cp -r pak192.comic.$pkgver "$pkgdir/usr/share/games/simutrans"
+  cp -r pak192.comic.$pkgver.zip "$pkgdir/usr/share/games/simutrans"
 }

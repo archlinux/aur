@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak192.comic
 	pkgdesc = High resolution graphics set for Simutrans, with a comic style
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = CC-BY-SA
