@@ -1,6 +1,6 @@
 pkgbase = kded-git
 	pkgdesc = KDE Daemon
-	pkgver = r54.d53b508
+	pkgver = r322.2c766d8
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kded
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kded-git
 	depends = kinit-git
 	provides = kded
 	conflicts = kded
-	source = git://anongit.kde.org/kded.git
+	source = git+https://github.com/KDE/kded.git
 	md5sums = SKIP
 
 pkgname = kded-git

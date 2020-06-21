@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kded-git
-pkgver=r54.d53b508
+pkgver=r322.2c766d8
 pkgrel=1
 pkgdesc='KDE Daemon'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 groups=('kf5')
 conflicts=(kded)
 provides=(kded)
-source=('git://anongit.kde.org/kded.git')
+source=('git+https://github.com/KDE/kded.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,7 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
