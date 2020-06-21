@@ -4,8 +4,8 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
-_ffver=76.0.1
-_revision=835.10
+_ffver=77.0.1
+_revision=1.1
 pkgver=${_ffver}_0_${_revision}
 pkgrel=1
 epoch=2  # Because of update 76.0.1-833.1
@@ -29,8 +29,8 @@ optdepends=("networkmanager: Location detection via available WiFi networks"
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse")
 options=()
-source=("https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_ffver}-${_revision}.x86_64.rpm")
-sha512sums=('9cc069699603427ec71b35a0ccc8bd603ba089125c449915f8bc22a3814e88462600c2687a4fac801ff2b5be25ecb9dfc537f23dd758015c39fcb3064c5e8218')
+source=("https://download.opensuse.org/repositories/openSUSE:/Factory/standard/x86_64/MozillaFirefox-${_ffver}-${_revision}.x86_64.rpm")
+sha512sums=('68c022dc50d0b96752d120109267846d9731b59946a3d536762b16b79e941ad5435d3b32feefeface1073fbea7a7e6019705e2fc1926bec4ff40573877384e0e')
 
 
 package() {
