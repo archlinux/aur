@@ -1,15 +1,13 @@
 pkgbase = newsie
 	pkgdesc = A command line utility for accessing Arch newsfeed posts.
-	pkgver = 0.2
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/cbbond/newsie
-	arch = any
+	url = https://github.com/cbbond/newsie-go
+	arch = x86_64
 	license = MIT
-	depends = python
-	depends = python-docopt
-	depends = python-feedparser
-	source = https://github.com/cbbond/newsie/archive/0.2.tar.gz
-	md5sums = 631c2d2a62488885aafb2ba941cb041a
+	makedepends = go
+	source = newsie-1.1.tar.gz::https://github.com/cbbond/newsie-golang/archive/v1.1.tar.gz
+	md5sums = e3a1b94cb342bdf76b2aba542ef147e6
 
 pkgname = newsie
 
