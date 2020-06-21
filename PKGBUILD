@@ -4,7 +4,7 @@
 
 pkgname=argonone
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Argon One Service and Control Scripts For Raspberry Pi"
 arch=('any')
 url='https://download.argon40.com/argon1.sh'
