@@ -1,11 +1,9 @@
-pkgbase = qt5-base
+pkgbase = qt5-base-fractional-fix
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 5.15.0
 	pkgrel = 3
 	url = https://www.qt.io
 	arch = x86_64
-	groups = qt
-	groups = qt5
 	license = GPL3
 	license = LGPL3
 	license = FDL
@@ -52,7 +50,8 @@ pkgbase = qt5-base
 	optdepends = freetds: MS SQL driver
 	optdepends = gtk3: GTK platform plugin
 	optdepends = perl: for fixqt4headers and syncqt
-	conflicts = qtchooser
+	provides = qt5-base
+	conflicts = qt5-base
 	source = https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtbase-everywhere-src-5.15.0.tar.xz
 	source = qt5-base-QTBUG-82910.patch::https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=patch;h=54aa63be9b74e8de72db9efbe6809ab1a97b29a7
 	source = qt5-base-cflags.patch
@@ -66,13 +65,6 @@ pkgbase = qt5-base
 	sha256sums = d7d58b2cadd6e79c3dfb69da664ecac9c95a78d6e142cb8687fce68e24a10776
 	sha256sums = edc040e258040851067fe26ff82f6979b65c97a01efc467dc9e2e87ffa395769
 
-pkgname = qt5-base
+pkgname = qt5-base-fractional-fix
 	pkgdesc = A cross-platform application and UI framework
-
-pkgname = qt5-xcb-private-headers
-	pkgdesc = Private headers for Qt5 Xcb
-	groups = 
-	depends = qt5-base=5.15.0
-	optdepends = 
-	conflicts = 
 
