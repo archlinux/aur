@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=multimonitorlock-gui
-pkgver=1.0.0
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc='GUI for multimonitorlock to set the background'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = multimonitorlock-gui
 	pkgdesc = GUI for multimonitorlock to set the background
-	pkgver = 1.0.0
+	pkgver = v1.1.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock-gui
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = multimonitorlock-gui
 	sha256sums = 8e907e37aee1388fa9cf8b4656e5291e2d37968e6d149fe728bddd5cfa650c52
 
 pkgname = multimonitorlock-gui
-
