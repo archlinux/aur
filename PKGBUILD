@@ -86,7 +86,8 @@ build() {
     --with-install-help-xml \
     --enable-build-help \
     --enable-build-localization \
-    --disable-static-system-lib
+    --disable-static-system-lib \
+    --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
 
   make -j1
   make doc
