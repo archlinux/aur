@@ -1,12 +1,13 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
 license=('MIT')
-makedepends=('libelf' 'cmake' 'cuda')
+makedepends=('libelf' 'cmake')
+depends=('cuda')
 provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
