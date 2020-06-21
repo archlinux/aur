@@ -88,6 +88,7 @@ build() {
     --enable-build-help \
     --enable-build-localization \
     --disable-static-system-lib \
+    --enable-silent-rules \
     --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
     FFLAGS="-fallow-argument-mismatch" \
     CFLAGS="$CFLAGS -fcommon" \
