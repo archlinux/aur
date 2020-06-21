@@ -1,6 +1,6 @@
 pkgbase = krunner-git
 	pkgdesc = Framework for providing different actions given a string query
-	pkgver = r432.7c36535
+	pkgver = r445.1875502
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686

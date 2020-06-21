@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=krunner
 pkgname=$_pkgname-git
-pkgver=r432.7c36535
+pkgver=r445.1875502
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ build() {
   cmake ../ \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
