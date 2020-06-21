@@ -1,7 +1,7 @@
 pkgbase = validity-sensors-tools-git
 	pkgdesc = Linux tool to flash and pair Validity fingerprint sensors 009x
-	pkgver = 0.5.r28.g101afda
-	pkgrel = 2
+	pkgver = 0.5.r27.g5ba2094
+	pkgrel = 1
 	url = https://github.com/3v1n0/python-validity
 	arch = x86_64
 	license = unknown

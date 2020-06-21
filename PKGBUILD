@@ -2,8 +2,8 @@
 
 _pkgname='validity-sensors-tools'
 pkgname="${_pkgname}-git"
-pkgver=0.5.r28.g101afda
-pkgrel=2
+pkgver=0.5.r27.g5ba2094
+pkgrel=1
 pkgdesc='Linux tool to flash and pair Validity fingerprint sensors 009x'
 arch=('x86_64')
 url='https://github.com/3v1n0/python-validity'
@@ -33,7 +33,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git am < ../0001-Monkey-patch-time-to-fix-bug-in-pycrypto.patch
+  patch -p1 < ../0001-Monkey-patch-time-to-fix-bug-in-pycrypto.patch
 }
 
 build() {
