@@ -6,7 +6,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.24
+pkgver=10.25
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -24,15 +24,15 @@ source=(
 	dlagent
 	)
 
-sha256sums=('fba28a46bcce434c8a9a171e1b3c954163bda8c28705249e9502aef668ca73dd'
+sha256sums=('9fe0eb72d7acf5921c94cd554ebdfecd8a2c1db5bc88d9126eda758a7eb232ef'
             '0f9a9a6b2c3c460bbde7425bd62273c925259db1cc9dc18c6013aae99fb15cd8'
-            '474088f1eb7c8a25230e3d4e2f5b0ae81a65f526cd17a1c1d42e732a89ec6953'
+            '17e7db683662809882db6d6b3d855eb4372ca1bd05e15c4c490970a0b4b127c0'
             '2942c0e74be2b15cdd83e36fa524c3b6c68d4b4da2042f1b0cf7c13d3b806eac'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
 
-DLAGENTS=("https::./dlagent $url %u %o")
+# DLAGENTS=("https::./dlagent $url %u %o")
 
 prepare() {
 # wxgtk < 3.1.0
