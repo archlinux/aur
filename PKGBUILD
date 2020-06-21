@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=script-git
 pkgver=r4.42b1d41
-pkgrel=1
+pkgrel=2
 pkgdesc="Command to supervise interactive execution of another command, such as the shell."
 arch=('i686' 'x86_64')
 url="https://github.com/robpike/script"
@@ -25,7 +25,7 @@ check() {
 
 package() {
 	cd "$srcdir"
-	install -D -m755 bin/script "$pkgdir/usr/bin/script"
+	install -D -m755 bin/script "$pkgdir/usr/bin/go-script"
 	install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
 	install -D -m644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
