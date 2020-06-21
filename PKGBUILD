@@ -1,17 +1,17 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=sibs-git
-pkgver=r264.db5724a
+pkgver=r265.b2f1b85
 pkgrel=1
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
-url="https://dec05eba.com/sibs"
+url="https://git.dec05eba.com/sibs"
 license=('GPL3')
 depends=('curl' 'libarchive' 'libgit2' 'ninja' 'cmake' 'ccache')
 optdepends=('git')
 provides=('sibs')
 conflicts=('sibs')
-source=("git+https://dec05eba.com/sibs")
+source=("git+https://git.dec05eba.com/sibs")
 sha512sums=('SKIP')
 
 pkgver() {
