@@ -1,0 +1,26 @@
+pkgbase = djpdf
+	pkgdesc = Create small, searchable PDFs from scanned documents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Unrud/djpdf
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = imagemagick
+	depends = jbig2enc
+	depends = pyside2
+	depends = python-colorama
+	depends = python-dbus
+	depends = python-pdfrw
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-webcolors
+	depends = python-xmp-toolkit
+	depends = qpdf
+	depends = tesseract
+	source = https://github.com/Unrud/djpdf/archive/0.1.1/djpdf-0.1.1.tar.gz
+	sha256sums = acc433c66abb3c906c55b35c27bee88a249ec2ff6f887a4ca734c8973aad0ed6
+
+pkgname = djpdf
+
