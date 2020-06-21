@@ -1,0 +1,22 @@
+pkgbase = hdf5-git
+	pkgdesc = General purpose library and file format for storing scientific data
+	pkgver = r36008.gf745476aa5
+	pkgrel = 1
+	url = https://www.hdfgroup.org/solutions/hdf5/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = bash
+	depends = libaec
+	depends = zlib
+	provides = hdf5
+	conflicts = hdf5
+	options = staticlibs
+	source = git+https://github.com/HDFGroup/hdf5.git
+	sha256sums = SKIP
+
+pkgname = hdf5-git
+
