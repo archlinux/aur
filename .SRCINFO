@@ -1,6 +1,6 @@
 pkgbase = libretro-81-git
 	pkgdesc = A port of the EightyOne ZX81 Emulator to libretro (WIP)
-	pkgver = 153.9fe3728
+	pkgver = 160.7d769d0
 	pkgrel = 1
 	url = https://github.com/libretro/81-libretro.git
 	arch = i686
