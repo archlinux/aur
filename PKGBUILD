@@ -1,8 +1,8 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/$pkgname"
@@ -28,7 +28,7 @@ depends=('entr'
          'woff2'
          'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b2e0ca5bb818afa5d4df075066f6f950b7e13df3ec50244ee97e91916a885b6e')
+sha256sums=('1b38c54e47715bcec78fa6b7a04f8fc29b7e2fbab569ede8c99d062ba0315c24')
 
 prepare() {
     cd "$pkgname-$pkgver"
