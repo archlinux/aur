@@ -17,8 +17,8 @@ options=(!makeflags)
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
 source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}"
         "patch.diff::https://github.com/mkazhdan/PoissonRecon/commit/2fcb16ac782fac312dc3225bea33227cbc0d7488.diff")
-md5sums=('SKIP'
-         '2d86278cd9928c3ce7701c6b043d4d5d')
+sha256sums=('SKIP'
+            '7a1f874a018428979b3bc66288790497be4b30635f6c6b608d48d28ebd84fd35')
 
 #pkgver() {
 #  cd ${srcdir}/${pkgname}
