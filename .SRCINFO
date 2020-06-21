@@ -1,0 +1,23 @@
+pkgbase = vopono-git
+	pkgdesc = Run applications through VPN connections in network namespaces
+	pkgver = r35.9f0c334
+	pkgrel = 1
+	url = https://github.com/jamesmcm/vopono
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = nftables
+	depends = iptables
+	depends = procps-ng
+	depends = coreutils
+	depends = findutils
+	optdepends = openvpn: for OpenVPN connections
+	optdepends = wireguard-tools: for Wireguard connections
+	provides = vopono
+	conflicts = vopono
+	source = git+https://github.com/jamesmcm/vopono
+	sha256sums = SKIP
+
+pkgname = vopono-git
+
