@@ -98,8 +98,8 @@ package() {
   sed -i 's/Icon=gimp/&-2.99/' "${pkgdir}"/usr/share/applications/gimp-2.99.desktop
 
   #fix icons
-  for icon in "${pkgdir}"/usr/share/icons/*.png; do
-    mv "${icon}" "${icon%.png}-2.99.png"
+  for icon in $(find "${pkgdir}"/usr/share/icons/ -type f); do
+    mv "${icon}" "${icon%.*}-2.99.${icon##*.}"
   done
 
   #fix man
