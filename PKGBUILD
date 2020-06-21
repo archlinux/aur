@@ -1,4 +1,6 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 pkgname=poissonrecon-git
 pkgver=8.0.r61.gc95c01f
 pkgrel=1
