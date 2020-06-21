@@ -1,12 +1,12 @@
 # Maintainer: ChungZH <chungzh07 at gmail dot com>
 pkgname=notepanda
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple cross-platform notepad. Based on Qt and C++."
 arch=('x86_64')
 url="https://github.com/ChungZH/notepanda"
 license=('MIT')
-depends=('syntax-highlighting' 'qt5-base>5.11.0' 'qt5-svg')
+depends=('syntax-highlighting' 'qt5-base>5.14.0' 'qt5-svg')
 makedepends=('cmake' 'which' 'make' 'git' 'qt5-tools' 'qt5-declarative' 'gcc' 'ninja')
 provides=('notepanda')
 conflicts=('notepanda')
