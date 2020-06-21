@@ -1,10 +1,11 @@
 pkgbase = zstd-git
 	pkgdesc = A fast and efficient compression algorithm.
-	pkgver = 1.4.4.r152.g49c6d492
+	pkgver = 1.4.4.r598.gf03192c1
 	pkgrel = 1
 	url = https://github.com/facebook/zstd
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:BSD3
 	license = GPL2
 	makedepends = git

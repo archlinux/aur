@@ -1,10 +1,10 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd-git
 _pkgname=zstd
-pkgver=1.4.4.r152.g49c6d492
+pkgver=1.4.4.r598.gf03192c1
 pkgrel=1
 pkgdesc='A fast and efficient compression algorithm.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/facebook/zstd'
 license=('custom:BSD3' 'GPL2')
 groups=()
