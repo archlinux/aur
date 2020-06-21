@@ -1,6 +1,6 @@
 pkgbase = i3-maim
 	pkgdesc = simple screenshot script using maim
-	pkgver = 1.3.0
+	pkgver = v1.3.0
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-maim
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = i3-maim
 	sha256sums = 7f2b69b1b6641b047170b43e5837959e62ded967b97071887debc9c47a170634
 
 pkgname = i3-maim
-
