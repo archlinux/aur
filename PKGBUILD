@@ -12,7 +12,8 @@ conflicts=('appleseed')
 depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio openimageio 'openshadinglanguage>=1.8.9' xerces-c zlib)
 makedepends=(cmake)
 options=()
-source=("https://github.com/${pkgname}hq/${pkgname}/archive/${_pkgver}.tar.gz"
+_github="https://github.com/${pkgname}hq/${pkgname}"
+source=("${_github}/archive/${_pkgver}.tar.gz"
         "cmake.extra.install.dirs.remove.patch"
         )
 sha256sums=('5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898'
