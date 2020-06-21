@@ -13,6 +13,9 @@ depends=(
 
   # chisel/verilog IDE and simulation
   'intellij-idea-community-edition' 'verilator' 'mill' 'sbt'
+  
+  # riscv
+  'riscv64-linux-gnu-binutils' 'riscv64-linux-gnu-gcc' 'riscv64-linux-gnu-gdb' 'riscv64-linux-gnu-glibc'
 
   # Hammer
   'python-jsonschema' 'python-jsonschema-objects' 'python-yaml' 'python-gdspy'
