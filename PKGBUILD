@@ -14,6 +14,7 @@ optdepends=()
 conflicts=('rust-bin' 'rust-git' 'rust-nightly' 'rust-nightly-bin' 'rust-nightly-src' 'rust-src' 'rust-src-git' 'rust-nightly-osdev')
 sha256sums=('SKIP')
 source=("https://sh.rustup.rs")
+install="rust-nightly-rustup.install"
 
 prepare() {
   mv $srcdir/sh.rustup.rs $srcdir/rustup-init.sh
@@ -26,10 +27,5 @@ package() {
   export RUSTUP_HOME=$pkgdir/opt/rust
   export CARGO_HOME=$pkgdir/opt/rust
   $srcdir/rustup-init.sh --default-toolchain nightly --profile complete --no-modify-path -y
-  
-  mkdir -p $pkgdir/usr/bin
-  for i in $(ls $pkgdir/opt/rust/bin); do
-    ln -s /opt/rust/bin/$i $pkgdir/usr/bin/$i
-  done
   chmod -R a+rw $pkgdir/opt/rust # rustup and cargo won't run as an ordinary user otherwise
 }
