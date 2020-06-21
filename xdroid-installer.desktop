@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/xdroid-installer/xDroidInstall-x86_64/install.sh
+Icon=package
+Hidden=false
+NoDisplay=false
+Name=Install xDroid
+Name[zh_CN]=安装 xDroid
+Comment=Install xDroid
+Comment[zh_CN]=安装 xDroid

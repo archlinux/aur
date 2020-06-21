@@ -1,0 +1,34 @@
+extract() {
+    cd /opt/xdroid-installer
+    tar -xzvf xdroid.tar.gz
+    chmod -R 777 xDroidInstall-x86_64
+}
+
+rm_dir() {
+    rm -rf /opt/xdroid-installer/xDroidInstall-x86_64
+    #find /home -maxdepth 2 -name ".xdroid-installer" -exec rm -rf \{\}
+}
+
+post_install() {
+    extract
+    echo
+    echo "WARNING!!!"
+    echo
+    echo "There's a bug in xDroid's closed source uninstaller (/opt/xdroid/remove-xdroid-launcher)."
+    echo "Once installed, it can hardly be fully removed. SO USE IT AT YOUR OWN RISK!!"
+    echo
+    echo "After installing xDroid, you can remove xdroid-installer safely."
+    echo "But don't remove the dependencies, because they're for xDroid."
+    echo
+    echo "Good luck!"
+    echo
+}
+
+post_upgrade() {
+    rm_dir
+    extract
+}
+
+pre_remove() {
+    rm_dir
+}

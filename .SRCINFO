@@ -1,0 +1,27 @@
+pkgbase = xdroid-installer
+	pkgdesc = The installer and of xDroid, a closed source Android container that uses similar techniques to Anbox.
+	pkgver = 4.0012
+	pkgrel = 1
+	url = https://www.linzhuotech.com/index.php/home/index/xdroid.html
+	install = xdroid-installer.install
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = gtk3
+	depends = qt5-wayland
+	depends = qt5-virtualkeyboard
+	depends = openssl-1.0
+	depends = tar
+	optdepends = fcitx-qt5: Asian input method support
+	noextract = xDroidInstall-x86_64-v4.0012-20200527143515.tar.gz
+	source = https://github.com/SamLukeYes/xdroid-installer/releases/download/v4.0012/xDroidInstall-x86_64-v4.0012-20200527143515.tar.gz
+	source = xdroid-installer.desktop
+	source = LICENSE
+	source = xdroid-installer.install
+	md5sums = a269cff11068cd6f4898f74a48bf8a15
+	md5sums = afd3661413c83b55bf160d0ea5244366
+	md5sums = 08c8f971fe3ae5cac148ef220975291b
+	md5sums = 6593491b69238c60428a928e54d3a5ad
+
+pkgname = xdroid-installer
+
