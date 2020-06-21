@@ -1,6 +1,6 @@
 pkgbase = poissonrecon-git
 	pkgdesc = Screened Poisson Surface Reconstruction (and Smoothed Signed Distance Reconstruction)
-	pkgver = 8.0.r61.gc95c01f
+	pkgver = 8.0.r69.g99e3d90
 	pkgrel = 1
 	url = http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version9.0/
 	arch = i686
