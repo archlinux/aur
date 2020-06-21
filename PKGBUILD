@@ -20,7 +20,7 @@ depends=('suitesparse>=4.4.1' 'arpack' 'fftw' 'eigen'
          'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
          'jeuclid-core' 'jgraphx-jre8' 'javahelp2'
          'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
-         'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
+         'java-skinlf' 'xalan-java' 'docbook-xsl'
          'jogl>=2.3.2' 'apache-lucene>=7'
          'java-batik>=1.8' 'java-xmlgraphics-commons>=2.0.1')
 makedepends=('java-environment=8' 'ant>=1.9.0'

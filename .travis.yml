@@ -64,8 +64,8 @@ archlinux:
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
      export NINJA_STATUS="[%p₋|₋%f<%r<%u₋|₋%obps₋]₋"
 # Java-testng fail in check()
-  - sudo archlinux-java set java-8-openjdk
-  - yay -S --noconfirm --needed --useask --mflags="--nocheck" java-testng
+# - sudo archlinux-java se t java-8-openjdk
+# - yay -S --noconfirm --needed --useask --mflags="--nocheck" java-testng
 # Build
   - 'echo "Travis initialization time:      $travis_uptime seconds"'
   - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
