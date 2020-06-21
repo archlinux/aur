@@ -3,7 +3,7 @@
 _pkgname=libfprint
 pkgname=libfprint-vfs0090-git
 epoch=1
-pkgver=1.90.r0.gb8e684e
+pkgver=1.90.1.r0.g82aed23
 pkgrel=1
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 driver)"
 arch=(i686 x86_64)
@@ -21,8 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/^V_//;s/\([0-9]*-g\)/r\1/;s/[-_]/./g' \
-    | sed 's/0.90/1.90/g'   # Quick fix until upstream updates the version number
+  git describe --long --tags 2>/dev/null | sed -e 's/^V_//;s/\([0-9]*-g\)/r\1/;s/[-_]/./g' -e 's/^v//g' -e 's/+vfs009.\..//g'
 }
 
 build() {
