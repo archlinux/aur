@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3session
-pkgver=1.0.0
+pkgver=v1.3.0
 pkgrel=1
 pkgdesc="Remembers what's running in your i3 workspaces by saving a session file"
 arch=('any')
@@ -12,9 +12,10 @@ makedepends=('git')
 source=("git://github.com/TheCynicalTeam/$pkgname.git")
 md5sums=('SKIP')
 
-pkgver() {
+pkgver()
+{
   cd "${srcdir}/${pkgname}"
-  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
+  printf "v1.%s.0" "$(git rev-list --count HEAD)"
 }
 
 package() {
