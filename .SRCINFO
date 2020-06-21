@@ -9,6 +9,9 @@ pkgbase = opennic-up-git
 	depends = fping
 	depends = ldns
 	optdepends = networkmanager
+	provides = opennic-up
+	conflicts = opennic-up
+	backup = etc/opennic-up.conf
 	source = git+https://github.com/kewlfft/opennic-up.git
 	sha256sums = SKIP
 
