@@ -4,6 +4,7 @@ pkgbase = qt5-styleplugins
 	pkgrel = 22
 	url = https://github.com/qt/qtstyleplugins
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	depends = qt5-base
 	depends = gtk2
