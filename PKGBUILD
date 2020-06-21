@@ -1,11 +1,12 @@
 #!/hint/bash
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
-# Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
+# Maintainer : eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor : Victor Dmitriyev <mrvvitek@gmail.com>
+# Contributor : bartus <scilab-aur@bartus.33mail.com>
 
 _pkgname=scilab
 _fragment="#branch=master"
 pkgname=${_pkgname}-git
-pkgver=6.0.0.r296.g2f851190556
+pkgver=6.1.0.r10.g8937019ec74
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
