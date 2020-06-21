@@ -1,6 +1,6 @@
 pkgbase = hip-nvcc
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = hip-nvcc
 	makedepends = cuda
 	provides = hip
 	conflicts = hip
-	source = hip-nvcc-3.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.5.0.tar.gz
-	sha256sums = ae8384362986b392288181bcfbe5e3a0ec91af4320c189bd83c844ed384161b3
+	source = hip-nvcc-3.5.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.5.1.tar.gz
+	sha256sums = f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000
 
 pkgname = hip-nvcc
 

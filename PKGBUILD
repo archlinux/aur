@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -9,25 +9,33 @@ license=('MIT')
 makedepends=('libelf' 'cmake' 'cuda')
 provides=('hip')
 conflicts=('hip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-$pkgver.tar.gz")
-sha256sums=('ae8384362986b392288181bcfbe5e3a0ec91af4320c189bd83c844ed384161b3')
+_git='https://github.com/ROCm-Developer-Tools/HIP'
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000')
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+  cmake -B build -Wno-dev \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+        -DHIP_COMPILER=clang \
         "$srcdir/HIP-rocm-$pkgver"
-  make
+  make -C build
+
+  # https://github.com/rocm-arch/rocm-arch/issues/263
+  sed -i '/hipInfo/d' $srcdir/build/cmake_install.cmake
 }
 
 package() {
-  cd "$srcdir/build"
+  DESTDIR="$pkgdir" make -C build install
 
-  make DESTDIR="$pkgdir" install
+  # add links (hipconfig is for rocblas with tensile)
+  install -d "$pkgdir/usr/bin"
+  local _fn
+  for _fn in hipcc hipconfig; do
+    ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+  done
 
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  cat << EOF > "$pkgdir/etc/ld.so.conf.d/hip.conf"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/hip.conf" <<EOF
 /opt/rocm/hip/lib
 EOF
+  install -Dm644 "$srcdir/HIP-rocm-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
