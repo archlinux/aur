@@ -3,3 +3,5 @@ raclassic
 pkg
 src
 *.gz
+chroot
+*.log
