@@ -1,7 +1,7 @@
 # Maintainer: phpusr
 pkgname=yandex-music-player
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Yandex Music desktop Electron application with MPRIS support'
 arch=('x86_64')
 url='https://github.com/phpusr/yandex-music-player'
@@ -10,7 +10,7 @@ depends=('electron')
 makedepends=('npm')
 provides=('yandex-music-player')
 source_x86_64=(
-  "yandex-music-player.zip::${url}/archive/v${pkgver}.tar.gz"
+  "yandex-music-player.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 source=(
   "ymp.desktop"
@@ -27,11 +27,11 @@ package() {
   npm install
 
   # Install app resources
-  find . -type f -exec install -Dm644 {} "${pkgver}/usr/share/ymp/{}" \;
+  find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/ymp/{}" \;
 
   # Install bin
-  install -Dm755 "${srcdir}/ymp.sh" "${pkgver}/usr/bin/ymp"
+  install -Dm755 "${srcdir}/ymp.sh" "${pkgdir}/usr/bin/ymp"
 
   # Install desktop
-  install -Dm755 "${srcdir}/ymp.desktop" "${pkgver}/usr/share/applications/ymp.desktop"
+  install -Dm755 "${srcdir}/ymp.desktop" "${pkgdir}/usr/share/applications/ymp.desktop"
 }
