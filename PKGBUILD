@@ -1,4 +1,4 @@
-# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=jupyterlab-git
 pkgver=19630.git.732de5f
@@ -21,6 +21,11 @@ pkgver() {
     printf "${no}.git.${hash}"
 }
 
+prepare() {
+  cd $srcdir/jupyterlab
+  sed -e 's|~=|>=|' -i setup.py
+}
+
 build() {
   cd $srcdir/jupyterlab
   python setup.py build 
@@ -30,13 +35,9 @@ build() {
 
 package() {
   cd $srcdir/jupyterlab
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  # symlink to fix assets
-  install -d "$pkgdir"/usr/share/jupyter
-  ln -s `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`/jupyterlab "$pkgdir"/usr/share/jupyter/lab
 
   install -d "$pkgdir"/usr/share/{pixmaps,doc/${pkgname}}
   install -Dm644 examples/notebook/jupyter.png "$pkgdir"/usr/share/pixmaps/jupyter.png
