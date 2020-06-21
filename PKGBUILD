@@ -2,18 +2,18 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=2.0.r21.g6e19132_score_patch
+pkgver=3.r2.g78f5b08_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
-url="https://github.com/untakenstupidnick/nbsdgames"
+url="https://github.com/abakh/nbsdgames"
 license=('custom')
 depends=('ncurses')
 makedepends=('git' 'make')
 provides=('nbsdgames')
 conflicts=('nbsdgames')
 install=nbsdgames-git.install
-source=("git+https://github.com/untakenstupidnick/nbsdgames.git")
+source=("git+https://github.com/abakh/nbsdgames.git")
 md5sums=('SKIP')
 
 

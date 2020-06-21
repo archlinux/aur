@@ -1,8 +1,8 @@
 pkgbase = nbsdgames-git
 	pkgdesc = A collection of curses-based console games
-	pkgver = 2.0.r21.g6e19132_score_patch
+	pkgver = 3.r2.g78f5b08_score_patch
 	pkgrel = 1
-	url = https://github.com/untakenstupidnick/nbsdgames
+	url = https://github.com/abakh/nbsdgames
 	install = nbsdgames-git.install
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = nbsdgames-git
 	depends = ncurses
 	provides = nbsdgames
 	conflicts = nbsdgames
-	source = git+https://github.com/untakenstupidnick/nbsdgames.git
+	source = git+https://github.com/abakh/nbsdgames.git
 	md5sums = SKIP
 
 pkgname = nbsdgames-git
