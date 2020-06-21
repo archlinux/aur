@@ -3,7 +3,7 @@
 
 pkgname=zotero-arm-bin
 pkgver=5.0.88
-pkgrel=1
+pkgrel=2
 pkgdesc="Zotero Standalone is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources (ARM Binaries)"
 arch=('aarch64' 'armv7h')
 url="http://www.zotero.org/download"
@@ -12,7 +12,6 @@ depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
 provides=("zotero=${pkgver}")
 conflicts=('zotero')
 optdepends=(
-  'poppler: PDF indexing'
 )
 
 install='zotero.install'
@@ -54,7 +53,7 @@ package() {
   sed -i -r 's/^("\$CALLDIR\/zotero-bin" -app "\$CALLDIR\/application.ini" "\$@")/exec \1/' "$pkgdir"/usr/lib/zotero/zotero
 
   # Remove poppler binaries
-  rm "${pkgdir}/usr/lib/zotero/"{pdftotext,pdfinfo}
+  rm -r "${pkgdir}/usr/lib/zotero/"{pdftotext,pdfinfo,poppler-data}
 
   # Replace Firefox binaries
   #

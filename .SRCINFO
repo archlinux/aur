@@ -1,7 +1,7 @@
 pkgbase = zotero-arm-bin
 	pkgdesc = Zotero Standalone is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources (ARM Binaries)
 	pkgver = 5.0.88
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zotero.org/download
 	install = zotero.install
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = zotero-arm-bin
 	depends = gtk3
 	depends = nss
 	depends = libxt
-	optdepends = poppler: PDF indexing
 	provides = zotero=5.0.88
 	conflicts = zotero
 	source = zotero.desktop
