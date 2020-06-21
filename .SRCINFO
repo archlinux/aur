@@ -1,6 +1,6 @@
 pkgbase = kconfig-git
 	pkgdesc = KConfig
-	pkgver = v4.100.0.rc1.r500.gec20733
+	pkgver = v5.71.0.rc1.r4.ga316687
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kconfig
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kconfig-git
 	depends = qt5-base
 	provides = kconfig
 	conflicts = kconfig
-	source = git://anongit.kde.org/kconfig.git
+	source = git+https://github.com/KDE/kconfig.git
 	md5sums = SKIP
 
 pkgname = kconfig-git

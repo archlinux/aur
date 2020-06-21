@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfig-git
-pkgver=v4.100.0.rc1.r500.gec20733
+pkgver=v5.71.0.rc1.r4.ga316687
 pkgrel=1
 pkgdesc='KConfig'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kconfig)
 provides=(kconfig)
-source=('git://anongit.kde.org/kconfig.git')
+source=('git+https://github.com/KDE/kconfig.git')
 md5sums=('SKIP')
 
 pkgver() {
