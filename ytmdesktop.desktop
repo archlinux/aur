@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=YouTube Music
+Comment=A desktop app for YouTube Music
+GenericName=YouTube Music
+Exec=ytmdesktop %U
+Icon=ytmdesktop
+Type=Application
+StartupNotify=true
+Categories=AudioVideo;Player;Audio;
+StartupWMClass=youtube-music-desktop-app
+Name[en_US]=YouTube Music
