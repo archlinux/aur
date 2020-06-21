@@ -89,6 +89,8 @@ build() {
     --disable-static-system-lib \
     --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
     FFLAGS="-fallow-argument-mismatch" \
+    CFLAGS="$CFLAGS -fcommon" \
+    CXXFLAGS="$CXXFLAGS -fcommon" \
 
   make -j1
   make doc
