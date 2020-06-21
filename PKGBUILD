@@ -7,7 +7,7 @@ pkgdesc="cheat sheet for i3wm"
 arch=('any')
 url="https://github.com/TheCynicalTeam/i3-cheat"
 license=('GNU General Public License v3.0')
-depends=('Gtk3' 'i3wm')
+depends=('Gtk3' 'i3-wm')
 source=('i3-cheat')
 sha256sums=('6191bcf3ab277b8b97bf3119346258a3d9ec7640a37ee25efebe4cefa40dc987')
 
