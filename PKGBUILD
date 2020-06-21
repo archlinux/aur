@@ -2,12 +2,12 @@
 
 _basename=libdecoration
 pkgname="$_basename-git"
-pkgver=r61.5510717
+pkgver=r62.0c70968
 pkgrel=1
 pkgdesc="Help Wayland clients draw window decorations for them."
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/jadahl/libdecoration"
-license=('jonas')
+license=('MIT')
 makedepends=('git' 'meson' 'ninja')
 conflicts=("$_basename")
 provides=("$_basename")
