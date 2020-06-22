@@ -3,6 +3,7 @@ Name=Yandex Music Player
 GenericName=Music Player
 Comment=Yandex Music Player
 Exec=/bin/ymp %U
+Icon=ymp
 Type=Application
 StartupNotify=true
 Categories=udio;Music;Player;AudioVideo;
