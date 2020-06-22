@@ -2,7 +2,7 @@
 
 pkgname=browserstack-local-x64
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BrowserStack Local Testing binary - 64bit"
 arch=("x86_64")
 license=('commercial')
