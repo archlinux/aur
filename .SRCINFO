@@ -1,25 +1,21 @@
 pkgbase = powerword-bin
 	pkgdesc = A Chinese-English dictionary tool.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.iciba.com
-	install = powerword-bin.install
+	install = powerword.install
 	arch = x86_64
-	groups = 
-	license = custom
-	depends = nss
-	depends = openssl-1.0
-	depends = qt4
-	depends = libbsd
-	depends = sdl2
-	depends = tar
+	license = unknown
+	depends = sdl2_mixer
+	depends = qtwebkit
+	depends = ffmpeg
+	depends = qrencode
 	optdepends = ttf-ms-fonts: font support
 	provides = powerword
-	provides = com.kingsoft.powerword
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.kingsoft.powerword/com.kingsoft.powerword_1.2_amd64.deb
-	source = powerword-bin.install
+	source = powerword-bin.deb::https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.kingsoft.powerword/com.kingsoft.powerword_1.2_amd64.deb
+	source = powerword.install
 	md5sums = 8712bbccce4ff5eebc7f04d2c250a581
-	md5sums = 7d8361adfa0c369ee5bc7ae5403d7a4c
+	md5sums = 2f1a949dad8635177f2fbb8fbb887cd8
 
 pkgname = powerword-bin
 
