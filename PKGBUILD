@@ -8,7 +8,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_utdicdate=20200611
+_utdicdate=20200622
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 
@@ -28,7 +28,7 @@ source=(
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  https://osdn.net/downloads/users/26/26429/mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2
+  'https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26474%2Fmozcdic-ut-20200622.1.tar.bz2'
 )
 
 sha1sums=(
@@ -40,7 +40,7 @@ sha1sums=(
   '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
   '63a2b10e7d209c6216e2d912b2629efc44c637ea'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  'c61180076bbf61b4fab53c4bbc4ecf6f7cf23724'
+  'SKIP'
 )
 
 prepare() {
