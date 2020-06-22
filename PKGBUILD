@@ -3,7 +3,7 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc')
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python')
 checkdepends=('netperf' 'iperf')
 source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-src-with-submodule.tar.gz")
-sha512sums=('f1093894069507ab149d452cce9c2ffe3dbb8dff14481d61031dda5e67f0b1676ea13beb6cd806fc4839dad2172efab782558b7c6d78b39979411552d6faa805')
+sha512sums=('f2482553639d271091a000f244f9fb443c04035f95be74db0745a7df2ef1085f04b57747f6acbb8c062fa11b32fec5a811e957583b98786bd3b531a8bbe9f7e5')
 
 build() {
 	cd "${srcdir}/${pkgbase}"
