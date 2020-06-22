@@ -1,6 +1,6 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A GTK based Jack audio mixer (GTK3 git version)
-	pkgver = 11.r270.94b4b21
+	pkgver = 12.r285.5e45976
 	pkgrel = 1
 	url = https://rdio.space/jackmixer/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jack_mixer-git
 	depends = python-gobject
 	depends = hicolor-icon-theme
 	provides = jack_mixer
-	source = jack_mixer::git+https://repo.or.cz/jack_mixer.git
+	source = jack_mixer::git+https://github.com/jack-mixer/jack_mixer.git
 	sha256sums = SKIP
 
 pkgname = jack_mixer-git

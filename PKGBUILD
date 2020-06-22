@@ -2,7 +2,7 @@
 
 _pkgname=jack_mixer
 pkgname="${_pkgname}-git"
-pkgver=11.r270.94b4b21
+pkgver=12.r285.5e45976
 pkgrel=1
 pkgdesc="A GTK based Jack audio mixer (GTK3 git version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libjack.so' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${_pkgname}")
 conflictss=("${_pkgname}")
-source=("${_pkgname}::git+https://repo.or.cz/jack_mixer.git")
+source=("${_pkgname}::git+https://github.com/jack-mixer/jack_mixer.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make install DESTDIR="${pkgdir}" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" install
   # Install documentation
   install -Dm644 AUTHORS README NEWS \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
