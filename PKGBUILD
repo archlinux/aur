@@ -7,14 +7,12 @@ pkgname=${_name}
 pkgver=1.0
 pkgrel=1
 pkgdesc="Open Multi-View Stereo reconstruction library with simple and automatic set of tools"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
-license=('GPL')
-depends=('glew' 'glfw' 'suitesparse' 'blas' 'google-glog' 'opencv' 'boost-libs')
-makedepends=('git' 'cmake' 'cuda' 'boost' 'gflags' 'eigen' 'ceres-solver' 'cgal' 'nvidia-utils')
-optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
-            )
-
+license=(GPL)
+depends=(glew glfw suitesparse blas google-glog opencv boost-libs)
+makedepends=(git cmake cuda boost gflags eigen ceres-solver cgal nvidia-utils)
+optdepends=('nvidia-utils: GPU optimized mesh reconstruction code')
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
