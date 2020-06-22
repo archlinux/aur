@@ -1,0 +1,16 @@
+pkgbase = green-tunnel-bin
+	pkgdesc = An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://github.com/SadeghHayeri/GreenTunnel
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	source = green-tunnel-bin-1.7.4.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v1.7.4/green-tunnel-debian.zip
+	sha256sums = 9b7da96908ead5252f233713c16967ddcc3a6eff0282a43cf91e5e623c596b6c
+
+pkgname = green-tunnel-bin
+
