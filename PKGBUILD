@@ -5,7 +5,7 @@
 # Maitainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fzf-git
-pkgver=0.21.1.r21.g06d63a8
+pkgver=0.21.1.r24.g4ec144c
 pkgrel=1
 epoch=1
 pkgdesc="Command-line fuzzy finder"
@@ -35,7 +35,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  GOPATH="$srcdir" TMPDIR=/tmp go get -u github.com/junegunn/fzf/...
+  go build -o fzf .
 }
 
 package() {
@@ -43,38 +43,38 @@ package() {
 
   msg2 'Installing documentation...'
   for _doc in README.md install uninstall; do
-    install -Dm 644 $_doc -t "$pkgdir/usr/share/doc/fzf"
+    install -Dm 644 $_doc -t "$pkgdir"/usr/share/doc/fzf
   done
 
   msg2 'Installing wiki...'
-  cp -dpr --no-preserve=ownership "$srcdir/fzf.wiki" \
-    "$pkgdir/usr/share/doc/fzf/wiki"
+  cp -dpr --no-preserve=ownership "$srcdir"/fzf.wiki \
+    "$pkgdir"/usr/share/doc/fzf/wiki
 
   msg2 'Installing manual...'
-  install -Dm 644 "man/man1/fzf.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 "man/man1/fzf-tmux.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 man/man1/fzf.1 -t "$pkgdir"/usr/share/man/man1
+  install -Dm 644 man/man1/fzf-tmux.1 -t "$pkgdir"/usr/share/man/man1
 
   msg2 'Installing executables...'
-  install -Dm 755 "$srcdir/bin/fzf" -t "$pkgdir/usr/bin"
-  install -Dm 755 "bin/fzf-tmux" -t "$pkgdir/usr/bin"
+  install -Dm 755 fzf -t "$pkgdir"/usr/bin
+  install -Dm 755 bin/fzf-tmux -t "$pkgdir"/usr/bin
 
   msg2 'Installing bash completion and keybindings...'
-  install -Dm 644 "shell/completion.bash" \
-    "$pkgdir/usr/share/bash-completion/completions/fzf"
-  install -Dm 755 "shell/key-bindings.bash" "$pkgdir/etc/profile.d/fzf.bash"
+  install -Dm 644 shell/completion.bash \
+    "$pkgdir"/usr/share/bash-completion/completions/fzf
+  install -Dm 755 shell/key-bindings.bash "$pkgdir"/etc/profile.d/fzf.bash
 
   msg2 'Installing fish keybindings...'
-  install -Dm 644 "shell/key-bindings.fish" \
-    "$pkgdir/usr/share/fish/functions/fzf.fish"
+  install -Dm 644 shell/key-bindings.fish \
+    "$pkgdir"/usr/share/fish/functions/fzf.fish
 
   msg2 'Installing vimfiles...'
-  install -Dm 644 "plugin/fzf.vim" \
-    "$pkgdir/usr/share/vim/vimfiles/plugin/fzf.vim"
+  install -Dm 644 plugin/fzf.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/plugin/fzf.vim
 
   msg2 'Installing zsh completion and keybindings...'
-  install -Dm 644 "shell/completion.zsh" \
-    "$pkgdir/usr/share/zsh/site-functions/_fzf"
-  install -Dm 755 "shell/key-bindings.zsh" "$pkgdir/etc/profile.d/fzf.zsh"
+  install -Dm 644 shell/completion.zsh \
+    "$pkgdir"/usr/share/zsh/site-functions/_fzf
+  install -Dm 755 shell/key-bindings.zsh "$pkgdir"/etc/profile.d/fzf.zsh
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
