@@ -3,7 +3,7 @@
 pkgname=('vst-video-bin')
 _pkgname='vst-video'
 pkgver=2.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates a cloud playback platform for Linux."
 arch=('x86_64')
 url="https://github.com/xymov/vst-video"
@@ -14,9 +14,11 @@ depends=('qt5-multimedia')
 makedepends=('tar')
 optdepends=()
 source=("https://github.com/xymov/vst-video/releases/download/V${pkgver}/${_pkgname}.deb"
-        "vst-video.desktop")
+        "${_pkgname}.desktop"
+        "${_pkgname}.sh")
 md5sums=('a12bc1fb1d82e0f2ad57ad2310f04176'
-         '85395127ed4ce23f7dddfe437fcf9166')
+         'a5973c32a3023e69c026ffc149d48958'
+         'a8a7962f0bf293dcf6d73153dfe6f9a8')
 install=
 
 prepare() {
@@ -27,7 +29,8 @@ prepare() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/lib/vst-video ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/icons/vst-video
+    install -d ${pkgdir}/usr/bin ${pkgdir}/usr/lib/vst-video ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/icons/vst-video
+    install -m755 ${srcdir}/vst-video.sh /${pkgdir}/usr/bin/vst-video
     install -m755 ${srcdir}/usr/src/vst-video/vst-video ${pkgdir}/usr/lib/vst-video
     install -m755 ${srcdir}/vst-video.desktop ${pkgdir}/usr/share/applications
     install -m644 ${srcdir}/usr/share/icons/vst-video/icon.svg ${pkgdir}/usr/share/icons/vst-video
