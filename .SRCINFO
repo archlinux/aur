@@ -1,6 +1,6 @@
 pkgbase = python-octaviaclient
 	pkgdesc = OpenStack Client plugin for Octavia, an OpenStack Load Balancing project
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-octaviaclient/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-octaviaclient
 	checkdepends = python-mock
 	checkdepends = python-oslotest
 	checkdepends = python-stestr
+	checkdepends = python-hacking
 	depends = python-appdirs
 	depends = python-babel
 	depends = python-cliff
@@ -36,8 +37,8 @@ pkgbase = python-octaviaclient
 	depends = python-six
 	depends = python-stevedore
 	depends = python-wrapt
-	source = https://github.com/openstack/python-octaviaclient/archive/2.0.0.tar.gz
-	sha512sums = 74ed919191b8ca626a99d5789e7de18c1ee070b83ba59dcbcc11bd2e952cafe0a2eb701aa7a19f6464ae4fd8372c16b5f0d59e4310528696d4e74aef63acd5fd
+	source = https://github.com/openstack/python-octaviaclient/archive/2.1.0.tar.gz
+	sha512sums = c65266630a9c5fe4d7b81db9f3c2b3d933c4abb403861025e7c36cff21b42346cae6e50fec3ebf70cd1297eab272148296acbc25ac9fb1927cae407a0bc671d4
 
 pkgname = python-octaviaclient
 
