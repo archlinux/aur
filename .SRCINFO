@@ -1,7 +1,7 @@
 pkgbase = dwm-kian-git
 	pkgdesc = A customized version of dwm by Kian Kasad
 	pkgver = 6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kdkasad/dwm.git
 	arch = any
 	license = MIT

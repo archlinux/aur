@@ -1,7 +1,8 @@
 # Maintainer: Kian Kasad <kdkasad@gmail.com>
 pkgname=dwm-kian-git
 pkgver=6.2
-pkgrel=1
+_pkgver=6.2
+pkgrel=2
 pkgdesc="A customized version of dwm by Kian Kasad"
 arch=('any')
 url="https://gitlab.com/kdkasad/dwm.git"
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-kian-git}"
-	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
