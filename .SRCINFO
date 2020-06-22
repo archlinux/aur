@@ -1,7 +1,7 @@
 pkgbase = lib32-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (32 bit)
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = x86_64
 	license = BSD
@@ -10,10 +10,6 @@ pkgbase = lib32-dav1d
 	makedepends = nasm
 	makedepends = doxygen
 	makedepends = vulkan-headers
-	depends = dav1d
-	depends = lib32-glibc
-	depends = lib32-vulkan-icd-loader
-	provides = libdav1d.so
 	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.1/dav1d-0.7.1.tar.xz
 	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.1/dav1d-0.7.1.tar.xz.asc
 	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
@@ -21,4 +17,14 @@ pkgbase = lib32-dav1d
 	sha512sums = SKIP
 
 pkgname = lib32-dav1d
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (32 bit)
+	depends = lib32-glibc
+	depends = lib32-libdav1d
+
+pkgname = lib32-libdav1d
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness - library (32 bit)
+	depends = dav1d
+	depends = lib32-glibc
+	provides = lib32-dav1d
+	provides = libdav1d.so
 
