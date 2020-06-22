@@ -2,12 +2,12 @@
 
 pkgname=vtk9
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('x86_64')
 url="http://vtk.org"
 license=('BSD')
-depends=('ospray' 'openimagedenoise' 'libxt' 'double-conversion' 'glew' 'eigen' 'expat' 'lz4' 'hdf5' 'proj' 'utf8cpp' 'pugixml' 'netcdf' 'pegtl' 'gl2ps')
+depends=('freetype2' 'jsoncpp' 'libharu' 'libjpeg-turbo' 'libogg' 'libpng' 'libtheora' 'libtiff' 'libxml2' 'lzip' 'python' 'sqlite' 'zlib' 'ospray' 'openimagedenoise' 'libxt' 'double-conversion' 'glew' 'eigen' 'expat' 'lz4' 'hdf5' 'proj' 'utf8cpp' 'pugixml' 'netcdf' 'pegtl' 'gl2ps')
 makedepends=('cmake')
 provides=('vtk')
 source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz")
