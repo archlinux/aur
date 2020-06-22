@@ -5,67 +5,14 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 _pkgbasename=ffmpeg
-pkgname=lib32-$_pkgbasename
+pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL3')
-depends=(
-      "$_pkgbasename"
-      'lib32-alsa-lib'
-      'lib32-aom'
-      'lib32-bzip2'
-      'lib32-fontconfig'
-      'lib32-fribidi'
-      'lib32-glibc'
-      'lib32-gmp'
-      'lib32-gnutls'
-      'lib32-gsm'
-      'lib32-jack'
-      'lib32-lame'
-      'lib32-libass'
-      'lib32-libavc1394'
-      'lib32-libbluray'
-      'lib32-dav1d'
-      'lib32-libdrm'
-      'lib32-freetype2'
-      'lib32-libiec61883'
-#      'lib32-libmfx'
-      'lib32-libmodplug'
-      'lib32-libomxil-bellagio'
-      'lib32-libpulse'
-      'lib32-libraw1394'
-#      'lib32-libsoxr'
-#      'lib32-libssh'
-      'lib32-libtheora'
-      'lib32-libva'
-      'lib32-libvdpau'
-#      'lib32-vid.stab'
-      'lib32-libvorbis'
-      'lib32-libvpx'
-      'lib32-libwebp'
-      'lib32-libx11'
-      'lib32-x264>=0.159'
-      'lib32-x265>=3.3'
-      'lib32-libxcb'
-      'lib32-libxext'
-      'lib32-libxml2'
-      'lib32-libxv'
-      'lib32-xvidcore'
-      'lib32-opencore-amr'
-      'lib32-openjpeg2'
-      'lib32-opus'
-      'lib32-sdl2'
-      'lib32-speex'
-      'lib32-srt'
-      'lib32-v4l-utils'
-      'lib32-vmaf'
-      'lib32-xz'
-      'lib32-zlib'
-)
 makedepends=(
       'ffnvcodec-headers'
       'git'
@@ -76,16 +23,6 @@ optdepends=(
 #      'intel-media-sdk: Intel QuickSync support'
       'lib32-ladspa: LADSPA filters'
       'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
-)
-provides=(
-      'libavcodec.so'
-      'libavdevice.so'
-      'libavfilter.so'
-      'libavformat.so'
-      'libavutil.so'
-      'libpostproc.so'
-      'libswresample.so'
-      'libswscale.so'
 )
 source=(
       "git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
@@ -172,7 +109,137 @@ build() {
   make
 }
 
-package() {
+package_lib32-libffmpeg() {
+  pkgdesc="Complete solution to record, convert and stream audio and video - library (32 bit)"
+  provides=(
+    'libavcodec.so'
+    'libavdevice.so'
+    'libavfilter.so'
+    'libavformat.so'
+    'libavutil.so'
+    'libpostproc.so'
+    'libswresample.so'
+    'libswscale.so'
+    'lib32-ffmpeg'
+  )
+  depends=(
+      "$_pkgbasename"
+      'lib32-alsa-lib'
+      'lib32-aom'
+      'lib32-bzip2'
+      'lib32-fontconfig'
+      'lib32-fribidi'
+      'lib32-glibc'
+      'lib32-gmp'
+      'lib32-gnutls'
+      'lib32-gsm'
+      'lib32-jack'
+      'lib32-lame'
+      'lib32-libass'
+      'lib32-libavc1394'
+      'lib32-libbluray'
+      'lib32-libdav1d'
+      'lib32-libdrm'
+      'lib32-freetype2'
+      'lib32-libiec61883'
+#      'lib32-libmfx'
+      'lib32-libmodplug'
+      'lib32-libomxil-bellagio'
+      'lib32-libpulse'
+      'lib32-libraw1394'
+#      'lib32-libsoxr'
+#      'lib32-libssh'
+      'lib32-libtheora'
+      'lib32-libva'
+      'lib32-libvdpau'
+#      'lib32-vid.stab'
+      'lib32-libvorbis'
+      'lib32-libvpx'
+      'lib32-libwebp'
+      'lib32-libx11'
+      'lib32-x264>=0.159'
+      'lib32-x265>=3.3'
+      'lib32-libxcb'
+      'lib32-libxext'
+      'lib32-libxml2'
+      'lib32-libxv'
+      'lib32-xvidcore'
+      'lib32-opencore-amr'
+      'lib32-openjpeg2'
+      'lib32-opus'
+      'lib32-sdl2'
+      'lib32-speex'
+      'lib32-srt'
+      'lib32-v4l-utils'
+      'lib32-vmaf'
+      'lib32-xz'
+      'lib32-zlib'
+  )
+
+  cd ${_pkgbasename}
+
+  make DESTDIR="${pkgdir}" install
+
+  rm -r "${pkgdir}"/usr/{include,bin,share}
+}
+
+package_lib32-ffmpeg() {
+  pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
+  depends=(
+      "$_pkgbasename"
+      'lib32-alsa-lib'
+      'lib32-aom'
+      'lib32-bzip2'
+      'lib32-fontconfig'
+      'lib32-fribidi'
+      'lib32-glibc'
+      'lib32-gmp'
+      'lib32-gnutls'
+      'lib32-gsm'
+      'lib32-jack'
+      'lib32-lame'
+      'lib32-libass'
+      'lib32-libavc1394'
+      'lib32-libbluray'
+      'lib32-libdav1d'
+      'lib32-libdrm' 
+      'lib32-libffmpeg' 
+      'lib32-freetype2'
+      'lib32-libiec61883'
+#      'lib32-libmfx'
+      'lib32-libmodplug'
+      'lib32-libomxil-bellagio'
+      'lib32-libpulse'
+      'lib32-libraw1394'
+#      'lib32-libsoxr'
+#      'lib32-libssh'
+      'lib32-libtheora'
+      'lib32-libva'
+      'lib32-libvdpau'
+#      'lib32-vid.stab'
+      'lib32-libvorbis'
+      'lib32-libvpx'
+      'lib32-libwebp'
+      'lib32-libx11'
+      'lib32-x264>=0.159'
+      'lib32-x265>=3.3'
+      'lib32-libxcb'
+      'lib32-libxext'
+      'lib32-libxml2'
+      'lib32-libxv'
+      'lib32-xvidcore'
+      'lib32-opencore-amr'
+      'lib32-openjpeg2'
+      'lib32-opus'
+      'lib32-sdl2'
+      'lib32-speex'
+      'lib32-srt'
+      'lib32-v4l-utils'
+      'lib32-vmaf'
+      'lib32-xz'
+      'lib32-zlib'
+  )
+
   cd ${_pkgbasename}
 
   make DESTDIR="${pkgdir}" install
@@ -184,5 +251,5 @@ package() {
     mv "$i" "$i"-32
   done
 
-  rm -r "${pkgdir}"/usr/{include,share}
+  rm -r "${pkgdir}"/usr/{include,lib32,share}
 }
