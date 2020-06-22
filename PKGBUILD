@@ -7,7 +7,6 @@ arch=('x86_64' 'i686')
 url="https://github.com/sasagawa888/eisl"
 license=("custom")
 depends=("sh" "gcc" "make")
-optdepends=("edlis: editor for eisl")
 
 source=("https://github.com/sasagawa888/eisl/archive/v${pkgver}.tar.gz")
 sha256sums=('ab7df7195b4e234196d5427ea5e0f1a3e8b44430b999fce66395f9350ddf8f9c')
