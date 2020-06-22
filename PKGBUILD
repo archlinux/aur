@@ -2,17 +2,17 @@
 
 pkgname=gpxviewer-git
 arch=('i686' 'x86_64')
-pkgver=r315.640382e
+pkgver=r319.905f33f
 pkgrel=1
 pkgdesc="a simple program to visualize a gpx file (git)"
 license=('GPL2')
 # url="http://blog.sarine.nl/gpx-viewer/"
-url="https://github.com/jose1711/gpx-viewer"
+url="https://github.com/DaveDavenport/gpx-viewer"
 depends=('vala' 'libchamplain' 'intltool' 'gdl')
 conflicts=(gpxviewer-bzr)
 replaces=(gpxviewer-bzr)
-makedepends=('git')
-source=("${pkgname}"::git+https://github.com/jose1711/gpx-viewer.git)
+makedepends=('git' 'meson')
+source=("${pkgname}"::git+https://github.com/DaveDavenport/gpx-viewer.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,15 +21,12 @@ pkgver() {
 }
 
 build() {
-cd ${srcdir}/${pkgname}
-./autogen.sh
-./configure --prefix=/usr
-make
+  cd ${srcdir}/${pkgname}
+  meson --prefix /usr --buildtype=plain . builddir
+  ninja -C builddir
 }
 
 package() {
-cd $srcdir/$pkgname
-make DESTDIR=$pkgdir install
-rm -r ${pkgdir}/usr/share/mime
-rm ${pkgdir}/usr/share/applications/mimeinfo.cache
+  cd $srcdir/$pkgname
+  DESTDIR="$pkgdir" ninja -C builddir install
 }
