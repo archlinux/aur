@@ -9,7 +9,7 @@ arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('java-runtime' 'bash')
-makedepends=('git' 'git-lfs' 'maven' 'jdk11-openjdk' 'protobuf')
+makedepends=('git' 'git-lfs' 'jdk11-openjdk')
 source=("bisq.desktop")
 sha256sums=('687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
 
