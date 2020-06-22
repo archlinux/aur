@@ -1,16 +1,16 @@
 pkgname=xmr-stak-rx
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner (no cuda)"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
-makedepends=('git' 'cmake' 'opencl-headers')
+makedepends=('git' 'cmake')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'ocl-icd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fireice-uk/xmr-stak/archive/$pkgver-rx.tar.gz"
 	'xmr-stak-rx.service')
-sha256sums=('f2a84cbb0fa20dec71c59bcc7c3fa63ff119dc5d4c168b4ec5a5dba579b93f05'
-            'a2feac52177bc7ac2f2f3cc846c19fd817b8962a2e4758b66c7954228536fd58')
+sha256sums=('3f343527593bb9182c94a9af33edfacb23f42e255ac01edf516ac6b4d85bf12f'
+            'SKIP')
 
 build() {
     cd "$srcdir/xmr-stak-$pkgver-rx"
@@ -27,7 +27,6 @@ package() {
     cd "$srcdir/xmr-stak-$pkgver-rx/build"
 
     install -D -m755 "bin/xmr-stak-rx" -t "$pkgdir/usr/bin/"
-    install -D -m644 "bin/libxmrstakrx_opencl_backend.so" -t "$pkgdir/usr/lib"
 
     install -m755 -d ${pkgdir}/usr/lib/systemd/system
     install -m644  $startdir/xmr-stak-rx.service ${pkgdir}/usr/lib/systemd/system
