@@ -13,3 +13,4 @@ pkg/
 julia/
 *.pkg
 *.asc
+chroot

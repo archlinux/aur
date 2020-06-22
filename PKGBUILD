@@ -5,18 +5,18 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.5.0.DEV.r46344.ga66db76b653
+pkgver=1.6.0.DEV.r47011.gf6d34c3c32c
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
 depends=(cblas hicolor-icon-theme libgit2 libunwind libutf8proc openblas
+         libssh2 lapack curl gmp 
          suitesparse mbedtls mpfr openlibm pcre2
-         xdg-utils desktop-file-utils gtk-update-icon-cache) # 'llvm' 'patchelf' 'intel-mkl'
-makedepends=(cmake gcc-fortran gmp python git)
-# Needed if building the documentation
-#makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
+         xdg-utils desktop-file-utils 
+         gtk-update-icon-cache)
+makedepends=(cmake gcc-fortran python git)
 source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
         julia-system-cblas.patch
@@ -65,9 +65,7 @@ build() {
 
   # Building doc
   cd $_pkgbase/doc
-  #make man
-  #make latexpdf
-  #make info
+  make
 }
 
 check() {
@@ -94,14 +92,22 @@ package_julia-git() {
     libexecdir=/usr/lib \
     sysconfdir=/etc
 
-  # Documentation is in the julia-docs package.
+  # Documentation is in the julia-git-docs package.
   # Man pages in /usr/share/julia/doc/man are duplicate.
-  rm -rf "$pkgdir/usr/share/"{doc,julia/doc}
+  rm -rf "$pkgdir/usr/share/"{doc,julia/doc,icons/hicolor/scalable}
 
+  # Install icons
+  for i in 16 32 128 256 512
+  do
+    mkdir -p $pkgdir/usr/share/icons/hicolor/${i}x${i}
+    install -Dm644 $srcdir/julia/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/$i.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${i}x${i}.png
+  done
+
+  # Install licence
   install -Dm644 "$_pkgbase/LICENSE.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
-  # Remove files that don't belong into the package
+  # Rm files that don't belong into the package
   find ${pkgdir} -name ".gitignore" -delete
 }
 
@@ -118,13 +124,23 @@ package_julia-git-docs() {
   install -Dm644 "$_pkgbase/LICENSE.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
-  # Installing built docs. Adjust it accordingly to your changes in build()
+  # Installing built docs; adj accord to changes in build()
   cd "$_pkgbase/doc/_build"
   cp -dpr --no-preserve=ownership html $pkgdir/usr/share/doc/julia/
-  #install -D -m644 man/julialanguage.1 $pkgdir/usr/share/man/man1/julialanguage.1
-  #install -D -m644 texinfo/JuliaLanguage.info $pkgdir/usr/share/info/julialanguage.info
-  #install -D -m644 latex/JuliaLanguage.pdf $pkgdir/usr/share/julia/doc/julialanguage.pdf
 
-  # Remove files that don't belong into the package
+  # Fix symlinks that point to the build directory
+  for i in $(ls -lR $pkgdir | grep "^l" | grep "src/julia" | cut -d '>' -f 1 | rev | cut -d ' ' -f 2 | rev)
+  do
+    I=$(find $pkgdir -name "$i")
+    L=$(ls -ld $I)
+    syml=$(echo $L | rev | cut -d '>' -f 2 | rev | sed 's/.*pkg\/julia\-git\-docs//g' | sed 's/ -//g')
+    symd=$(echo $L | rev | cut -d '>' -f 1 | rev | sed 's/.*julia-git\/src\/julia//g')
+    ln -sf $symd $pkgdir/$syml
+  done
+
+  # Rm duplicate/unused files
+  rm -rf $pkgdir/usr/share/doc/julia/{build,_build,deps,src}
+  rm $pkgdir/usr/share/doc/julia/{make.jl,Makefile,Manifest.toml,NEWS-update.jl,Project.toml,README.md,UnicodeData.txt}
+  # Rm files that don't belong in the package
   find ${pkgdir} -name ".gitignore" -delete
 }
