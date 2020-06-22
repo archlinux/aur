@@ -18,6 +18,7 @@ conflicts=("bisq-bin" "bisq-git")
 provides=("bisq")
 
 prepare() {
+  git lfs install
   rm -rf "${srcdir}/${pkgname}-${pkgver}"
   git clone --depth=1 --branch=v${pkgver} https://github.com/bisq-network/bisq.git ${pkgname}-${pkgver}
 }
