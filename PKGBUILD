@@ -6,7 +6,7 @@ _fragment="#tag=v1.0"
 pkgname=${_name}
 pkgver=1.0
 pkgrel=1
-pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
+pkgdesc="Open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
 license=('GPL')
