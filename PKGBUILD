@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=0.8.0.r710.g4a21ec056
+pkgver=0.8.0.r858.g1c08fa8b5
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -120,16 +120,13 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  local _f
-  for _f in "${source[@]}"; do
-    _f="${_f%%::*}"
-    _f="${_f##*/}"
-    case "${_f}" in
-    *.patch)
-      set +u; msg2 "Patch ${_f}"; set +u
-      patch -Nup1 -i "${srcdir}/${_f}"
-      ;;
-    esac
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    if [[ "${_pt}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_pt}"; set -u
+      patch -Nup1 -i "${srcdir}/${_pt}"
+    fi
   done
 
   # DKMS install customized all the way back to autoconf
@@ -316,6 +313,7 @@ _del_modules() {
 package_zfs-utils-git() {
   set -u
   pkgdesc='Userspace utilities for the Zettabyte File System.'
+  depends=('systemd')
   optdepends=(
     'python: for arcstat/arc_summary/dbufstat'
   )
