@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: erbridge <f@erbridge.co.uk>
 pkgname=amulet
-pkgver=1.21.8
+pkgver=1.21.9
 pkgrel=1
 pkgdesc="Lua-based audio / visual toolkit for small-scope games and experimentation"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.amulet.xyz/"
 license=('MIT')
 depends=('gcc-libs-multilib')
 source=("https://github.com/ianmaclarty/amulet/releases/download/v${pkgver}/amulet-v${pkgver}-linux.zip")
-md5sums=('c572543b7d67f41d0d24038d956daadd')
+md5sums=('322a76bea3bba24162a16b3f743ea699')
 options=('!strip')
 
 package() {
