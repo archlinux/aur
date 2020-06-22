@@ -1,6 +1,6 @@
 pkgbase = python-magnumclient
 	pkgdesc = Python client library for Magnum
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://docs.openstack.org/python-magnumclient/
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = python-magnumclient
 	depends = python-prettytable
 	depends = python-cryptography
 	depends = python-decorator
-	source = https://github.com/openstack/python-magnumclient/archive/3.0.0.tar.gz
-	sha512sums = d3934de111f4d9e3d2fd44ae20c151feef3e9cd8c6a890845112dcdee5016e6df0a205afc5dc44c550b796059371f310d45a7251f7f1b6e6ac5d227387162ad7
+	source = https://github.com/openstack/python-magnumclient/archive/3.1.0.tar.gz
+	sha512sums = 64ef0d2676155eea2940f8c2917b7b5f99698b8b82f472eb0e9737688ac97432ddd30e70c01eb3e10687ba62bdaf3e2422033029872de9525a9023befd4f49b2
 
 pkgname = python-magnumclient
 
