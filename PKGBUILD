@@ -12,7 +12,7 @@ license=('GPL')
 depends=('curl' 'glib2')
 provides=('megatools')
 conflicts=('megatools')
-makedepends=('asciidoc' 'docbook2x' 'meson')
+makedepends=('git' 'asciidoc' 'docbook2x' 'meson')
 source=("git+https://megous.com/git/megatools")
 sha256sums=('SKIP')
 

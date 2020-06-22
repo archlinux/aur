@@ -7,6 +7,7 @@ pkgbase = megatools-git
 	arch = x86_64
 	arch = armv7h
 	license = GPL
+	makedepends = git
 	makedepends = asciidoc
 	makedepends = docbook2x
 	makedepends = meson
