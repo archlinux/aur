@@ -1,6 +1,6 @@
 pkgbase = stormkit-git
 	pkgdesc = Arthapz personal C++ TooKit
-	pkgver = r188.2465df8
+	pkgver = r190.08bc01b
 	pkgrel = 1
 	url = https://gitlab.com/Arthapz/stormkit
 	arch = any
