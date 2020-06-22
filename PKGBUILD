@@ -14,17 +14,17 @@ sha256sums=(
 )
 
 prepare() {
-	cd "GitQlient-$pkgver"
+    cd "GitQlient-$pkgver"
 
-	sed -ie '/include(QLogger\/QLogger.pri)/d' GitQlient.pro
+    sed -ie '/include(QLogger\/QLogger.pri)/d' GitQlient.pro
 
-	# Use QLogger from other package instead of cloning it as submodule
-	echo 'LIBS += -lQLogger' >> GitQlient.pro
+    # Use QLogger from other package instead of cloning it as submodule
+    echo 'LIBS += -lQLogger' >> GitQlient.pro
 
-	# Install into /usr/bin instead of /opt/GitQlient/bin
-	echo 'target.path = /usr/bin' >> GitQlient.pro
+    # Install into /usr/bin instead of /opt/GitQlient/bin
+    echo 'target.path = /usr/bin' >> GitQlient.pro
 
-	qmake
+    qmake
     sed -Eie 's/-Werror//g' Makefile
 
     # Fix missing include
@@ -33,15 +33,15 @@ prepare() {
 }
 
 build() {
-	cd "GitQlient-$pkgver"
+    cd "GitQlient-$pkgver"
     make
 }
 
 package() {
-	cd "GitQlient-$pkgver"
-	# Actually this make install only one file: the executable...
-	make INSTALL_ROOT="${pkgdir}" install
-	# So we need to install other files by ourselves
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/gitqlient/LICENSE"
-	cp -r "AppImage/GitQlient/usr" "${pkgdir}"
+    cd "GitQlient-$pkgver"
+    # This only install one file: the executable...
+    make INSTALL_ROOT="${pkgdir}" install
+    # ... so we need to install other files by ourselves
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/gitqlient/LICENSE"
+    cp -r "AppImage/GitQlient/usr" "${pkgdir}"
 }
