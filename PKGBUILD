@@ -8,7 +8,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_utdicdate=20200611
+_utdicdate=20200622
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 
@@ -28,7 +28,7 @@ source=(
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  https://osdn.net/downloads/users/26/26435/mozcdic-ut-neologd-${_utdicdate}.${pkgrel}.tar.bz2
+  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26472%2Fmozcdic-ut-neologd-20200622.1.tar.bz2'
 )
 
 sha1sums=(
@@ -40,7 +40,7 @@ sha1sums=(
   '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
   '63a2b10e7d209c6216e2d912b2629efc44c637ea'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  '9f4271df6e5b5506f3485a547432f52755cd496c'
+  'SKIP'
 )
 
 prepare() {
@@ -73,10 +73,10 @@ package_mozc-neologd-ut() {
   pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd Dictionary"
   arch=('i686' 'x86_64')
   depends=('qt5-base' 'zinnia')
-  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'mozc-ut-unified' 'fcitx-mozc-ut-unified')
   cd mozc-${_mozcver}+dfsg/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
+  install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/share/licenses/$pkgname/"
   install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -86,7 +86,7 @@ package_fcitx-mozc-neologd-ut() {
   pkgdesc="Fcitx engine module for Mozc with NEologd Dictionary"
   arch=('i686' 'x86_64')
   depends=("mozc-neologd-ut=${pkgver}" 'fcitx')
-  replaces=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-ut')
+  replaces=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-ut' 'fcitx-mozc-ut-unified')
 
   cd mozc-${_mozcver}+dfsg/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
