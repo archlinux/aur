@@ -2,9 +2,10 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=openmvs
-_fragment="#tag=v1.0"
+_tag=v1.1
+_fragment="#tag=${_tag}"
 pkgname=${_name}
-pkgver=1.0
+pkgver=${_tag#v}
 pkgrel=1
 pkgdesc="Open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=(i686 x86_64)
