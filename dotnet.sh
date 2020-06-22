@@ -1,6 +1,4 @@
 #!/bin/sh
 
-export DOTNET_ROOT=/opt/dotnet
-exec /opt/dotnet/dotnet "$@"
-
-# vim: ts=2 sw=2 et:
+export DOTNET_ROOT=/usr/share/dotnet
+exec /usr/share/dotnet/dotnet "$@"
