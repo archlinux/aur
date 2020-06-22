@@ -11,7 +11,7 @@ depends=('libstrophe' 'glib2' 'gpgme' 'gtk3' 'libvc')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('eagle::git+https://codeberg.org/eagle/eagle.git'
+source=("$_pkgname::git+https://codeberg.org/eagle/eagle.git"
 	'release-mode.diff')
 md5sums=('SKIP'
          'b8bc92ebfd51c8bde4fd256dc57d7116')
