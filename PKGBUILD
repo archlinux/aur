@@ -28,7 +28,13 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib" -S "${srcdir}/${pkgname}" -B build
+  CMAKE_FALGS+=(
+                -DCMAKE_BUILD_TYPE=Release
+                -DCMAKE_INSTALL_PREFIX=/usr
+                -DINSTALL_BIN_DIR=/usr/bin
+                -DVCG_ROOT="${srcdir}/vcglib"
+               )
+  cmake "${CMAKE_FALGS[@]}" -S "$srcdir"/$pkgname -B build
   make -C "${srcdir}/build"
 }
 
