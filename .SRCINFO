@@ -1,16 +1,16 @@
 pkgbase = quasar-cli
 	pkgdesc = CLI management tool for development with the Quasar framework
-	pkgver = 1.0.7
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://quasar.dev
 	arch = any
 	license = MIT
 	makedepends = npm>=5.0.0
 	depends = nodejs>=10.0.0
 	optdepends = npm: JS package management support
-	noextract = quasar-cli-1.0.7.tar.gz
-	source = quasar-cli-1.0.7.tar.gz::https://registry.npmjs.org/@quasar/cli/-/cli-1.0.7.tgz
-	sha1sums = 0bb8de2f74d822c9e1ee237ae4036efed559c67d
+	noextract = quasar-cli-1.1.0.tar.gz
+	source = quasar-cli-1.1.0.tar.gz::https://registry.npmjs.org/@quasar/cli/-/cli-1.1.0.tgz
+	sha1sums = e6e5eedd70ff196aadbddfc8ce161c92dc2ff60b
 
 pkgname = quasar-cli
 
