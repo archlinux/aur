@@ -23,11 +23,12 @@ package() {
   cd "$pkgdir"
   install -Dm644 "${srcdir}/$_android/NOTICE.txt" usr/share/licenses/$pkgname/NOTICE.txt
   # mkdir -p opt etc/profile.d
-  # echo 'export PATH=$PATH:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.sh
-  # echo 'setenv PATH ${PATH}:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.csh
+  # echo 'export PATH=$PATH:/opt/$_sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.sh
+  # echo 'setenv PATH ${PATH}:/opt/$_sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.csh
   # chmod 755 etc/profile.d/${pkgname}.{csh,sh}
 
-  mkdir -p opt/$_sdk/build-tools/$_ver
-  cp -r "$srcdir/$_android/"* "$pkgdir/opt/$_sdk/build-tools/$_ver"
-  chmod +Xr -R "$pkgdir/opt/$_sdk/build-tools/$_ver"
+  target="$pkgdir/opt/$_sdk/build-tools/$_ver"
+  mkdir -p "$target"
+  cp -r "$srcdir/$_android/"* "$target"
+  chmod +Xr -R "$target"
 }
