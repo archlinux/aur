@@ -1,0 +1,13 @@
+#!/bin/bash
+
+##
+# Watch for events from Fcitx.
+#
+# Because this script won't stop, I have to put the event handling part
+# in another file named `react`.
+##
+
+PATH="/bin:/opt/polybar-fcitx-scripts"
+
+# Need --line-buffered to avoid messages being hold in buffer
+gdbus monitor --session --dest org.fcitx.Fcitx | grep --line-buffered / | react

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+##
+# List all input methods added to Fcitx
+##
+
+PATH="/bin"
+
+value="'([^']++)'"
+pattern="${value}, ${value}, ${value}"
+gdbus call --session --dest org.fcitx.Fcitx \
+    --object-path /inputmethod \
+    --method org.freedesktop.DBus.Properties.Get org.fcitx.Fcitx.InputMethod IMList |
+    grep -Po "\($pattern, true\)" |
+    sed -Ee "s/\($pattern.+\)/\\1,\\2,\\3/g"

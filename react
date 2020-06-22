@@ -1,0 +1,24 @@
+#!/bin/bash
+
+##
+# This script wait for events from `watch` and
+# update the text by printing a new line.
+##
+
+PATH="/bin:/opt/polybar-fcitx-scripts"
+
+# Strip `Keyboard - ` part from IM name then print
+print_pretty_name() {
+    imlist | sed -Ee 's/^Keyboard - //g' | grep "$(current)" | cut -d',' -f1
+}
+
+# Without this, Polybar will display empty
+# string until you switch input method.
+print_pretty_name
+
+# Track input method changes. Each new line read is an event fired from IM switch
+while true
+do
+    read -r unused
+    print_pretty_name
+done

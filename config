@@ -1,0 +1,24 @@
+[bar/keyboard]
+foreground = #0af
+width = 350
+modules-left = fcitx keyboard
+padding-left = 2
+padding-right = 2
+font-0 = "Segoe UI Symbol:size=12;2"
+
+[module/fcitx]
+type = custom/script
+exec = polybar-fcitx-watch
+tail = true
+interval = 0
+format-prefix = "%{F#f94}⌨ %{F-}"
+
+[module/keyboard]
+type = internal/xkeyboard
+blacklist-0 = scroll lock
+label-layout = 
+label-indicator-on-numlock = "%{F#f94}[Num]%{F-}"
+label-indicator-off-numlock = 
+label-indicator-on-capslock = "%{F#f94}[Caps]%{F-}"
+label-indicator-off-capslock = 
+
