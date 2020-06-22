@@ -6,7 +6,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=8.0.426.26
+pkgver=8.3.110.13
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
@@ -19,11 +19,15 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-	"d8")
+        "v8-icu67.patch"
+        "template-utils-fix.patch"
+        "d8")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
+            '14ad0b8cb494a6bd73bbb792a2da8a9e3e521b5f62678ae15b9324516c5c897e'
+            '75b59cbb31fa15302aaf698f8a681c212b670af3c47973868960ce1fa6ebdb98'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
 
 #
@@ -112,11 +116,17 @@ prepare()
     ./build/linux/unbundle/replace_gn_files.py --undo --system-libraries icu
   fi
 
-  msg2 "Syncing, this can take a while..."
-  gclient sync --revision ${pkgver}
+  msg2 "Syncing, this might take a while..."
+  gclient sync -D --revision ${pkgver}
 
   msg2 "Using system libraries for ICU"
   ./build/linux/unbundle/replace_gn_files.py --system-libraries icu
+
+  msg2 "Applying fix for ICU 67.1"
+  patch -p2 < ../v8-icu67.patch
+
+  msg2 "Applying fix for templates"
+  patch -p2 < ../template-utils-fix.patch
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"

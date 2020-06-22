@@ -1,0 +1,12 @@
+diff --git a/v8/src/base/template-utils.h b/src/base/template-utils.h
+index 8f89672e1a..64a4cb0996 100644
+--- a/v8/src/base/template-utils.h
++++ b/v8/src/base/template-utils.h
+@@ -6,6 +6,7 @@
+ #define V8_BASE_TEMPLATE_UTILS_H_
+ 
+ #include <array>
++#include <ostream>
+ #include <functional>
+ #include <type_traits>
+ #include <utility>

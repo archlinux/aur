@@ -1,6 +1,6 @@
 pkgbase = v8
 	pkgdesc = Fast and modern Javascript engine used in Google Chrome.
-	pkgver = 8.0.426.26
+	pkgver = 8.3.110.13
 	pkgrel = 1
 	url = https://v8.dev
 	arch = i686
@@ -32,11 +32,15 @@ pkgbase = v8
 	source = v8.pc
 	source = v8_libbase.pc
 	source = v8_libplatform.pc
+	source = v8-icu67.patch
+	source = template-utils-fix.patch
 	source = d8
 	sha256sums = SKIP
 	sha256sums = 3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75
 	sha256sums = efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3
 	sha256sums = ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb
+	sha256sums = 14ad0b8cb494a6bd73bbb792a2da8a9e3e521b5f62678ae15b9324516c5c897e
+	sha256sums = 75b59cbb31fa15302aaf698f8a681c212b670af3c47973868960ce1fa6ebdb98
 	sha256sums = 6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0
 
 pkgname = v8
