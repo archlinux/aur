@@ -1,7 +1,7 @@
 pkgbase = sigfox-radio-signal-analyzer
 	pkgdesc = Sigfox Radio Signal Analyser for use with Sigfox SDR stick
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = GPL
