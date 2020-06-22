@@ -1,0 +1,17 @@
+pkgbase = flatpak-xdg-utils-git
+	pkgdesc = Utilities for containerized apps to launch programs outside the container
+	pkgver = 1.0.1.r7.g4fdd2e2
+	pkgrel = 1
+	url = https://github.com/flatpak/flatpak-xdg-utils
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	source = git+https://github.com/flatpak/flatpak-xdg-utils.git
+	sha256sums = SKIP
+
+pkgname = flatpak-xdg-utils-git
+

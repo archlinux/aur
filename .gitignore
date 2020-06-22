@@ -1,0 +1,4 @@
+pkg/
+src/
+flatpak-xdg-utils/
+*.pkg.tar.xz
