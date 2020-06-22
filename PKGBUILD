@@ -2,7 +2,7 @@
 
 pkgname=libdeflate
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression"
 arch=('i686' 'x86_64')
 url="https://github.com/ebiggers/libdeflate"
@@ -29,5 +29,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
