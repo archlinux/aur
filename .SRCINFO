@@ -8,6 +8,7 @@ pkgbase = openmvs
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = cuda
 	makedepends = boost
 	makedepends = gflags

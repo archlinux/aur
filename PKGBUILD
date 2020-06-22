@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
 license=(GPL)
 depends=(glew glfw suitesparse blas google-glog opencv boost-libs qt5-base)
-makedepends=(git cmake cuda boost gflags eigen ceres-solver cgal nvidia-utils)
+makedepends=(git cmake ninja cuda boost gflags eigen ceres-solver cgal nvidia-utils)
 optdepends=('nvidia-utils: GPU optimized mesh reconstruction code')
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
@@ -34,12 +34,13 @@ build() {
                 -DINSTALL_BIN_DIR=/usr/bin
                 -DVCG_ROOT="${srcdir}/vcglib"
                )
-  cmake "${CMAKE_FALGS[@]}" -S "$srcdir"/$pkgname -B build
-  make -C "${srcdir}/build"
+  cmake "${CMAKE_FALGS[@]}" -S "$srcdir"/$pkgname -B build -G Ninja
+# shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
+  ninja -C "$srcdir"/build $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}")
 }
 
 package() {
-  make DESTDIR="$pkgdir/" -C "${srcdir}/build" install
+  DESTDIR="$pkgdir/" ninja -C "$srcdir"/build install
 }
 
 # vim:set ts=2 sw=2 et:
