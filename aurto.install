@@ -57,6 +57,7 @@ pre_remove() {
   echo 'aurto: Removing systemd timer update tasks' >&2
   systemctl disable --now check-aurto-git-trigger.timer || true
   systemctl disable --now update-aurto.timer || true
+  systemctl disable update-aurto-startup.timer || true
 }
 
 post_remove() {
