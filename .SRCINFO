@@ -1,7 +1,7 @@
 pkgbase = vst-video-bin
 	pkgdesc = Creates a cloud playback platform for Linux.
 	pkgver = 2.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xymov/vst-video
 	arch = x86_64
 	groups = 
@@ -11,8 +11,10 @@ pkgbase = vst-video-bin
 	provides = vst-video
 	source = https://github.com/xymov/vst-video/releases/download/V2.55/vst-video.deb
 	source = vst-video.desktop
+	source = vst-video.sh
 	md5sums = a12bc1fb1d82e0f2ad57ad2310f04176
-	md5sums = 85395127ed4ce23f7dddfe437fcf9166
+	md5sums = a5973c32a3023e69c026ffc149d48958
+	md5sums = a8a7962f0bf293dcf6d73153dfe6f9a8
 
 pkgname = vst-video-bin
 
