@@ -1,6 +1,6 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=marktext-appimg
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
     "https://github.com/marktext/marktext/releases/download/v${pkgver}/marktext-${arch}.AppImage"
 )
 
-sha256sums=('373080e22e6c0aa9fa9394c91b6cf1036898a17595e629983912bbced89653ec')
+sha256sums=('27a35e16099f9019b7bc77955efb096628ffba663f5f5cfb6e674ab1374d6e47')
 
 prepare() {
     chmod u+x ./marktext-${arch}.AppImage
