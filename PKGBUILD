@@ -36,30 +36,37 @@ makedepends=(
 )
 
 package() {
-  tar -xf data.tar.xz -C "$pkgdir"
-  echo "checkra1n requires old versions of libirecovery, libplist and libusbmuxd. "
+  tar -xf data.tar.xz -C "$pkgdir" 
+  
+  echo "checkra1n requires old versions of libirecovery, libplist and libusbmuxd. " 
   echo "So, we need to create some symlinks to old libraries."
-  if whereis libusbmuxd-2.0.so.6 | grep "^libusbmuxd-2.0.so: .*/libusbmuxd-2.0.so.6" > /dev/null; then
+  
+  if whereis libusbmuxd-2.0.so.6 | grep "^libusbmuxd-2.0.so: .*/libusbmuxd-2.0.so.6" > /dev/null; then 
     echo "Symlinking libusbmuxd"
-    nlb=$(whereis libusbmuxd-2.0.so.6 | cut -d' ' -f2)
-    new_library=${nlb// / }
+    
+    new_library=$(whereis libusbmuxd-2.0.so.6 | cut -d' ' -f2)
     library_path=$(dirname "$new_library")
+    
     mkdir -p  "$pkgdir$library_path/"
     ln -sr "$pkgdir$library_path/$(basename $new_library)" "$pkgdir$library_path/libusbmuxd.so.6"
   fi
+  
   if whereis libirecovery-1.0.so.3 | grep "^libirecovery-1.0.so: .*/libirecovery-1.0.so.3" > /dev/null; then
     echo "Symlinking libirecovery"
+    
     new_library=$(whereis libirecovery-1.0.so.3 | cut -d' ' -f2)
     library_path=$(dirname "$new_library")
-    echo "library path: $library_path;  new library: $new_library}"
+    
     mkdir -p  "$pkgdir$library_path/"
     ln -sr "$pkgdir$library_path/$(basename $new_library)" "$pkgdir$library_path/libirecovery.so.3"
   fi
+  
   if whereis libplist-2.0.so.3 | grep "^libplist-2.0.so: .*/libplist-2.0.so.3" > /dev/null; then
     echo "Symlinking libplist"
-    nlb=$(whereis libplist-2.0.so.3 | cut -d' ' -f2)
-    new_library=${nlb// / }
+    
+    new_library=$(whereis libplist-2.0.so.3 | cut -d' ' -f2)
     library_path=$(dirname "$new_library")
+    
     mkdir -p  "$pkgdir$library_path/"
     ln -sr "$pkgdir$library_path/$(basename $new_library)" "$pkgdir$library_path/libplist.so.3"
   fi
