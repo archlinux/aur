@@ -4,7 +4,7 @@
 _pkgname=realmd
 pkgname=$_pkgname-git
 pkgver=0.16.3.r35.g517fa76
-pkgrel=2
+pkgrel=3
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms (Git)"
 arch=(i686 x86_64)
 url="https://freedesktop.org/software/realmd/"
@@ -22,6 +22,8 @@ sha256sums=('SKIP'
             'a659dfcf8e4f91123832ae89b9ac92bbcc9ea8d90a698533ca25dff9ec610d90'
             'e49fc613594d4fb540f0a562778e2fd45711548cbe3dc9769f5aa0773de16319')
 validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 
 pkgver() {
   cd "$_pkgname"
