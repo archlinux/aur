@@ -1,6 +1,6 @@
 pkgbase = exec-helper
 	pkgdesc = How To Get Coffee In Peace: a shell meta-wrapper
-	pkgver = 0.5.1_0_g8869989
+	pkgver = 0.6.0_0_g8869989
 	pkgrel = 1
 	url = https://github.com/bverhagen/exec-helper
 	changelog = exec-helper.changelog
