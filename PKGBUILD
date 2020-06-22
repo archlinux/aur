@@ -2,7 +2,7 @@
 pkgname=ftx-prog-git
 pkgver=r54.31cfa4d
 pkgrel=1
-pkgdesc=""
+pkgdesc="A Linux command-line alternative to the FTProg utility for FTDI's FT-X series of USB interfaces."
 arch=(x86_64)
 url="https://github.com/richardeoin/ftx-prog"
 license=('GPL')
