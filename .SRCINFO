@@ -1,13 +1,14 @@
 pkgbase = git-imerge-git
 	pkgdesc = Incremental merge for git
-	pkgver = 1.1.0.r2.g269969e
+	pkgver = 1.1.0.r20.g9d51192
 	pkgrel = 1
 	url = https://github.com/mhagger/git-imerge
 	changelog = git-imerge-git.changelog
 	arch = any
 	license = GPL2
-	makedepends = git
-	depends = python2
+	makedepends = python-setuptools
+	makedepends = bash-completion
+	depends = python
 	depends = git
 	source = git+https://github.com/mhagger/git-imerge.git
 	sha256sums = SKIP
