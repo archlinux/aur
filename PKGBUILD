@@ -3,9 +3,9 @@
 
 pkgname=qogir-icon-theme
 _pkgname=Qogir-icon-theme
-pkgver=2020.02.21
+pkgver=2020.06.22
 _pkgver=2020-06-22
-pkgrel=1
+pkgrel=2
 pkgdesc="A colorful design icon theme for linux desktops"
 arch=('any')
 url="https://www.pling.com/p/1279924"
