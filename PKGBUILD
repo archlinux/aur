@@ -7,6 +7,7 @@ url="http://www.gotlisp.com/lambda/"
 arch=("any")
 license=("custom")
 depends=("fortune-mod")
+groups=("fortune-mods")
 source=("http://www.gotlisp.com/lambda/lambda.dat"
         "http://www.gotlisp.com/lambda/lambda.txt")
 

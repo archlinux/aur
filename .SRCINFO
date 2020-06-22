@@ -4,6 +4,7 @@ pkgbase = fortune-mod-lambda
 	pkgrel = 1
 	url = http://www.gotlisp.com/lambda/
 	arch = any
+	groups = fortune-mods
 	license = custom
 	depends = fortune-mod
 	source = http://www.gotlisp.com/lambda/lambda.dat
