@@ -1,0 +1,26 @@
+pkgbase = magiccap-bin
+	pkgdesc = An open-source, versatile image/GIF capture suite for Mac and Linux
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://magiccap.me
+	arch = x86_64
+	license = MPL2
+	makedepends = unzip
+	makedepends = gendesk
+	depends = nodejs
+	depends = libwebp
+	depends = libjpeg-turbo
+	depends = libxss
+	depends = libcroco
+	depends = libgsf
+	depends = gtk3
+	depends = nss
+	depends = python2
+	depends = libexif
+	depends = orc
+	noextract = magiccap-bin-2.1.2.zip
+	source = magiccap-bin-2.1.2.zip::https://github.com/MagicCap/MagicCap/releases/download/v2.1.2/magiccap-linux.zip
+	sha256sums = 969d4fc8cf8086000371c6190e0423ed5765427bf6d9de74c45ca88705c2a68a
+
+pkgname = magiccap-bin
+
