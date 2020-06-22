@@ -1,7 +1,7 @@
 pkgbase = azerothcore
     pkgdesc = AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore
     pkgver = 3.0
-    pkgrel = 3
+    pkgrel = 4
     url = http://www.azerothcore.org
     arch = i686
     arch = x86_64
