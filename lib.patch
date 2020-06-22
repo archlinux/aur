@@ -1,41 +1,32 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 71ac4a5..d4a3727 100644
+index 09c11a9..1211935 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -44,9 +44,7 @@ endif()
- include_directories(
+@@ -54,8 +54,7 @@ include_directories(
    ${PROJECT_SOURCE_DIR}/generated/
    ${PROJECT_SOURCE_DIR}/third_party/
--  ${PROJECT_SOURCE_DIR}/third_party/Catch2/single_include
+   ${PROJECT_SOURCE_DIR}/third_party/Catch2/single_include
 -  ${PROJECT_SOURCE_DIR}/third_party/yaml-cpp/include
 -  ${PROJECT_SOURCE_DIR}/third_party/antlr4/runtime/Cpp/runtime/src
 +  /usr/include/antlr4-runtime
    ${PROJECT_SOURCE_DIR}/src/
    )
  
-@@ -60,16 +58,6 @@ set(src_dir
-   ${PROJECT_SOURCE_DIR}/generated/LuaBaseVisitor.cpp
- )
+@@ -77,8 +76,6 @@ file(GLOB_RECURSE yaml-cpp-src
+   ${PROJECT_SOURCE_DIR}/third_party/yaml-cpp/src/*.cpp
+   )
  
--file(GLOB_RECURSE antlr4-cpp-src
--   ${PROJECT_SOURCE_DIR}/third_party/antlr4/runtime/Cpp/runtime/src/*.cpp
--)
--
--file(GLOB_RECURSE yaml-cpp-src
--   ${PROJECT_SOURCE_DIR}/third_party/yaml-cpp/src/*.cpp
--)
--
 -add_library (antlr4-cpp-runtime ${antlr4-cpp-src})
 -add_library (yaml-cpp ${yaml-cpp-src})
  
  add_executable(lua-format ${src_dir} src/main.cpp)
  
-@@ -80,7 +68,7 @@ endif()
+@@ -89,7 +86,7 @@ endif()
  
  set_target_properties(lua-format PROPERTIES LINKER_LANGUAGE CXX)
  
--target_link_libraries(lua-format yaml-cpp antlr4-cpp-runtime)
-+target_link_libraries(lua-format yaml-cpp antlr4-runtime)
+-target_link_libraries(lua-format yaml-cpp antlr4-cpp-runtime ${extra-libs})
++target_link_libraries(lua-format yaml-cpp antlr4-runtime ${extra-libs})
  
  install(TARGETS lua-format
    RUNTIME DESTINATION bin
