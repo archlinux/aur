@@ -1,7 +1,7 @@
 pkgbase = gridcoinresearch
 	pkgdesc = A cryptocurrency that rewards users for participating on the BOINC network
 	pkgver = 4.0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gridcoin.us
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
 pkgver=4.0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
