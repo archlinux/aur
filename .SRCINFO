@@ -1,6 +1,6 @@
 pkgbase = qt5-declarative-git
 	pkgdesc = Qt5 declarative module
-	pkgver = 5.15.0_beta1.r20.gd8f6f41c33
+	pkgver = 5.15.0_rc2.r93.g1a7457e033
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = qt5-declarative-git
 	license = custom
 	makedepends = git
 	makedepends = python
+	makedepends = vulkan-headers
 	depends = qt5-base
 	provides = qt5-declarative
 	conflicts = qt5-declarative

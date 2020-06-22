@@ -5,14 +5,14 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-declarative-git
-pkgver=5.15.0_beta1.r20.gd8f6f41c33
+pkgver=5.15.0_rc2.r93.g1a7457e033
 pkgrel=1
 pkgdesc="Qt5 declarative module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'vulkan-headers')
 provides=('qt5-declarative')
 conflicts=('qt5-declarative')
 source=("git+https://code.qt.io/qt/qtdeclarative.git#branch=5.15")
