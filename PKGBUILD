@@ -2,13 +2,13 @@
 # Contributor: Fredrik Haikarainen <fredrik.haikarainen@gmail.com>
 
 pkgname=light-git
-pkgver=1.1.2.r67.g1be06a4
+pkgver=1.2.2.r2.g33f2316
 pkgrel=1
 pkgdesc='Program to easily change brightness on backlight-controllers.'
 arch=('i686' 'x86_64')
 url="https://github.com/haikarainen/light"
 license=('GPL3')
-makedepends=('git')
+makedepends=(git autoconf automake)
 conflicts=('light')
 provides=('light')
 source=('git+https://github.com/haikarainen/light.git')
