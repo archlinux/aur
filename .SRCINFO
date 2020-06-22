@@ -1,12 +1,13 @@
 pkgbase = python-futurist
 	pkgdesc = Code from the future, delivered to you in the now.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/futurist/
 	arch = any
 	license = Apache
 	checkdepends = python-eventlet
 	checkdepends = python-oslotest
+	checkdepends = python-stestr
 	checkdepends = python-testrepository
 	checkdepends = python-testscenarios
 	checkdepends = python-testtools
