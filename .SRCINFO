@@ -1,6 +1,6 @@
 pkgbase = projecteur
 	pkgdesc = Linux Desktop Application for the Logitech Spotlight device.
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/jahnf/Projecteur
 	install = projecteur.install
@@ -12,9 +12,9 @@ pkgbase = projecteur
 	depends = udev
 	provides = projecteur
 	conflicts = projecteur-git
-	source = https://github.com/jahnf/Projecteur/archive/v0.7.tar.gz
+	source = https://github.com/jahnf/Projecteur/releases/download/v0.8/projecteur-0.8_source.tar.gz
 	source = projecteur.install
-	sha256sums = e2582b908c54f3b0f1f66247dd7f24174a40f5764385662b7b70acdeccd03ebc
+	sha256sums = bc0439f6279db269e319d6f0634331d382e9d520fc17a9c76e3cb34bd9abc10f
 	sha256sums = a8d406a61d84834358aba36718547be20eb6ee1d055c4ffdb28fe9f56d22aaaf
 
 pkgname = projecteur
