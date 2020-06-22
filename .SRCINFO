@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview
 	pkgver = 5.0.0+100+preview.5.20279.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -51,7 +51,7 @@ pkgname = dotnet-runtime-preview
 
 pkgname = dotnet-sdk-preview
 	pkgdesc = The .NET Core SDK (preview, binary)
-	depends = dotnet-sdk=3.1
+	depends = dotnet-sdk-3.1
 	depends = dotnet-runtime-preview
 	depends = glibc
 	provides = dotnet-sdk-preview

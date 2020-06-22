@@ -8,7 +8,7 @@ pkgname=('dotnet-host-preview' 'aspnet-runtime-preview' 'dotnet-runtime-preview'
 pkgver=5.0.0+100+preview.5.20279.10
 _runtimever=5.0.0-preview.5.20278.1
 _sdkver=5.0.100-preview.5.20279.10
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -61,7 +61,7 @@ package_aspnet-runtime-preview() {
 
 package_dotnet-sdk-preview() {
   pkgdesc='The .NET Core SDK (preview, binary)'
-  depends=('dotnet-sdk=3.1' 'dotnet-runtime-preview' 'glibc')
+  depends=('dotnet-sdk-3.1' 'dotnet-runtime-preview' 'glibc')
   provides=("dotnet-sdk-preview" "dotnet-sdk=${_sdkver%-*}" "dotnet-sdk-5.0")
   conflicts=("dotnet-sdk-preview" "dotnet-sdk=${_sdkver%-*}" "dotnet-sdk-5.0")
 
