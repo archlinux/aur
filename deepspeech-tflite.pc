@@ -1,5 +1,5 @@
 Name: libdeepspeech-tflite
 Description: A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files (for TFLite models).
-Version: 0.7.3
-Libs: /usr/lib/libdeepspeech-tflite.so.0.7.3
+Version: 0.7.4
+Libs: /usr/lib/libdeepspeech-tflite.so.0.7.4
 Cflags: -I/usr/include

@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Brown <brown.benjam@husky.neu.edu>
 pkgname=deepspeech-bin
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/mozilla/DeepSpeech"
@@ -16,15 +16,15 @@ _raw_base_url="https://raw.githubusercontent.com/mozilla/DeepSpeech/v$pkgver/"
 
 # Reused checksums.
 _header_sum='16563959019ce823249b1c8772528936f4aa61d89daa5a9a9544b37b95348f0c6fefa5836b7eb7d3b41eb90c1998fb94ccb9e9b02dec4f0df8f693efd706ec4f'
-_pc_sum='40228c9459fa7643ee7d58993d9ff594b8b74e7153c1b21118fc9f37e5565c7f9a476a19b864c59f1b7059503d2cd82a24c54eaf494206a435e3d239a228fb17'
-_pc_tflite_sum='9e03307012e376291406992e8a312351e8b86391b6e19c0900d5d1cbe942395c11201386b6b22f7663f8148088c9d558c9ca1d9e16e711e37d901272d209aa8e'
+_pc_sum='b156d5149268022deff5076d01c3965d8a17c791547e431126455a3ed8a4f210f716b1f46ee2b14be43f71c9e882cdc53630cdd36fe56f76eb9f14ac9100a7d5'
+_pc_tflite_sum='744eb89c34522fa5a1c0c9c2ba75a9b048b0d2f8f3c254234ec729050a61bb492ecde0124fc1005e4b1206f79696cc6ab0467fea30b141d23a6c135fd156ea83'
 
 # amd64
 source_x86_64=("$_src_base_url/native_client.amd64.cpu.linux.tar.xz"
                "$_raw_base_url/native_client/deepspeech.h"
                "deepspeech.pc"
                "deepspeech-tflite.pc")
-sha512sums_x86_64=('a9a79cdddab861fe06ae595471b63af92f7b1c6b320948e1c9bf4bf707e484e22800c30144f068af80f14c748d840d4268fe0901bc4e4a4ba920734bdc312b07'
+sha512sums_x86_64=('3943ec4cfc20464f5628f78186cef0c574880dd4d1b9fcb05469d6668a0f645906e675e3a2764e4815cce4f57902adbbdee12459531a10ed8a86dcd1ba9543f4'
                    "$_header_sum"
                    "$_pc_sum"
                    "$_pc_tflite_sum")
@@ -33,7 +33,7 @@ sha512sums_x86_64=('a9a79cdddab861fe06ae595471b63af92f7b1c6b320948e1c9bf4bf707e4
 source_armv7h=("$_src_base_url/native_client.rpi3.cpu.linux.tar.xz"
                "$_raw_base_url/native_client/deepspeech.h"
                "deepspeech.pc")
-sha512sums_armv7h=('0871b9cf1d3b1298a3281d5e62fe70b5bb5e994dbf03402a90162ab54871658238b61b580c7f64d1b9e9eba6870b8153c60c2e7beca6914cb8322fc8baf5ca42'
+sha512sums_armv7h=('70ef783e22dd9955fbdf3ba6343e41d216b76cc28dc4af9ad613dbc7b9f1942bb3f1175887c94f63a79580f9c940f0c6b60b6d8af9f3f4491a8ad3c5d8bd7cfc'
                    "$_header_sum"
                    "$_pc_sum")
 
@@ -41,7 +41,7 @@ sha512sums_armv7h=('0871b9cf1d3b1298a3281d5e62fe70b5bb5e994dbf03402a90162ab54871
 source_aarch64=("$_src_base_url/native_client.arm64.cpu.linux.tar.xz"
                 "$_raw_base_url/native_client/deepspeech.h"
                 "deepspeech.pc")
-sha512sums_aarch64=('ada530a74adf023879a6312c67529f4119bb58b6edd55581a2be0333bfd88bb4130cbf23b423a744e5181ef871f07506856df7e24739d1f6b6dc29c64e465de8'
+sha512sums_aarch64=('87b080871a210e5361af276f62af05f52c178df7315ecc8c9d37d9189d4d539684688829b46e2c311bb2e9c8efac9f8d6d0d595a78899e4e96371f81957f814b'
                     "$_header_sum"
                     "$_pc_sum")
 
@@ -63,8 +63,8 @@ package() {
     # Make a directory and extract the library.
     local tf_dir="$srcdir/tflite"
     local tf_lib_path="$tf_dir/libdeepspeech.so"
-    local tf_lib_sum="0ffdf49d8be17b27c98d840b46f8241c6b9c11aedcbabdb3edbffef8c76720a8c1b3cf3ce27eca0a05800edf61fb9a4a6f55b5ac19ee2c7522ec74563ee7f656"
-    mkdir "$tf_dir"
+    local tf_lib_sum="214cc1ced28bae99fcb4c08202ba9d48eeb66a922926ea7517b073726f16bd8f4d5fa711e801ea1db8527305e65a0d1ea72f65abf55d61a95ad26223469af7df"
+    mkdir -p "$tf_dir"
     tar -xvf "$srcdir/$nc_tflite_fname" -C "$tf_dir" --wildcards 'libdeepspeech.so'
 
     # Ensure the library's checksum is correct.
