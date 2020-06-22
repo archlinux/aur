@@ -1,0 +1,16 @@
+diff --git a/gui.py b/gui.py
+index 9b555e1..8d9c3b6 100644
+--- a/gui.py
++++ b/gui.py
+@@ -16,10 +16,10 @@
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ import gi
+-gi.require_version('GConf', '2.0')
+ from gi.repository import GObject
+ 
+ try:
++    gi.require_version('GConf', '2.0')
+     from gi.repository import GConf
+ except:
+     print("Cannot load Python bindings for GConf, your preferences will not be preserved across jack_mixer invocations")

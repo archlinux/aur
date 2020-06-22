@@ -1,17 +1,32 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A GTK based Jack audio mixer (GTK3 git version)
 	pkgver = 12.r285.5e45976
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rdio.space/jackmixer/
 	arch = x86_64
+	groups = pro-audio
 	license = GPL2
 	makedepends = git
-	depends = libjack.so
+	makedepends = glib2
+	makedepends = jack
+	depends = gcc-libs
+	depends = python-cairo
 	depends = python-gobject
 	depends = hicolor-icon-theme
 	provides = jack_mixer
+	conflicts = jack_mixer
 	source = jack_mixer::git+https://github.com/jack-mixer/jack_mixer.git
+	source = jack_mixer-12-remove_gconf.patch
+	source = jack_mixer-no-gconf-gui.patch
 	sha256sums = SKIP
+	sha256sums = 87f41eb0e73e764af6cd9ce392c1b9a59376b120242178239dd8ad05218e258c
+	sha256sums = e4284bfc4b0e09a6bdfe3e5a6f8bc1c73f1468f45ef2a977a4d0d5e2324f1b92
 
 pkgname = jack_mixer-git
+	depends = gcc-libs
+	depends = python-cairo
+	depends = python-gobject
+	depends = hicolor-icon-theme
+	depends = libglib-2.0.so
+	depends = libjack.so
 

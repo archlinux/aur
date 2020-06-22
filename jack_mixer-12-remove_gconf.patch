@@ -1,0 +1,25 @@
+diff -ruN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2020-06-22 14:51:45.000000000 +0200
++++ b/Makefile.am	2020-06-22 18:57:58.556361735 +0200
+@@ -59,21 +59,9 @@
+ test: _jack_mixer_c.so
+ 	@./test.py
+ 
+-schemadir = @GCONF_SCHEMA_FILE_DIR@
+-schema_DATA = jack_mixer.schemas
+-
+ install-exec-hook:
+ 	ln -vfs jack_mixer.py $(DESTDIR)$(bindir)/jack_mixer
+ 
+-if GCONF_SCHEMAS_INSTALL
+-install-data-hook:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+-
+-uninstall-hook:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-uninstall-rule $(srcdir)/$(schema_DATA)
+-	rm -vf $(DESTDIR)$(bindir)/jack_mixer
+-endif
+-
+ pacoinstall:
+ 	test `whoami` == root # test for root
+ 	-paco -rvB jack_mixer
