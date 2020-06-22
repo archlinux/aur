@@ -1,13 +1,13 @@
 # Maintainer: bilabila <bilabila@qq.com>
 _src=LuaFormatter
 _pkg=lua-format
-_pkgver=1.3.3
+_pkgver=1.3.4
 _lib=args
 _libver=6.2.2
 _patch=lib.patch
 pkgname=$_pkg
 pkgver=$_pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc='LuaFormatter - Code formatter for Lua'
 arch=(x86_64)
 url=https://github.com/Koihik/LuaFormatter
@@ -20,9 +20,9 @@ source=($_pkg-$pkgver::https://github.com/Koihik/$_src/archive/$_pkgver.tar.gz
   $_lib-$_libver::https://github.com/Taywee/$_lib/archive/$_libver.tar.gz
   $_patch
 )
-sha512sums=(e9dc1ae7f05aac99af66dd61f71c00f2511db96cc65219a9ac9f777196cd688b093f867a0565627cf47f3c0416b1475cd4ecdd2ffcc88048842a5f93bbe5bbdb
+sha512sums=(520c787b0b44abd3ff31ef6e745d3ef59d2b3d62e53d8221b3c00d687c1f5c5bf5299012487c542dfe3063f9121e2a11eeb63072f698f0e0176af8b791024ae3
   29b0f53316fe35f65ab92c807180c1e6cc6084dfed9f635aa2e3e848137ee8e5d24ec6831cf19189c6432335f73d1466564e0bc9bc259c98f3f0de264637f971
-  ccc16949cceb6bb6a0961694921105e80fba3b478cc34d522d57277d5bbedfafeeb2d9638225fcbe9ae8d87cf01696eb22872e88cce078bdcc600bbef3c5efbd
+  0c75d3df60ecb77c08eb86cf6a16e69d12286652ec454e237ad8ac76afce110302bd023bde76d2a53a71d681081023fb3cf3e1bd5c72d23a74a3c5a135f869d3
 )
 _src=$_src-$pkgver
 prepare() {
