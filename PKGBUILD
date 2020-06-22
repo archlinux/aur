@@ -28,11 +28,6 @@ pkgver() {
 
 }
 
-#prepare() {
-#  cd ${srcdir}/${pkgname}
-#}
-
-
 build() {
   cd ${srcdir}
   mkdir -p build
