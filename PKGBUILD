@@ -4,7 +4,7 @@
 pkgname=qogir-icon-theme
 _pkgname=Qogir-icon-theme
 pkgver=2020.02.21
-_pkgver=2020-02-21
+_pkgver=2020-06-22
 pkgrel=1
 pkgdesc="A colorful design icon theme for linux desktops"
 arch=('any')
