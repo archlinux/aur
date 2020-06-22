@@ -1,7 +1,7 @@
 pkgbase = zfs-dkms-git-any
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 0.8.0.r709.g5a42ef04f
-	pkgrel = 1
+	pkgver = 0.8.0.r858.g1c08fa8b5
+	pkgrel = 2
 	epoch = 1
 	url = https://zfsonlinux.org/
 	arch = any
