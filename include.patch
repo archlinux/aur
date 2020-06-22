@@ -1,0 +1,9 @@
+--- src/history/RepositoryViewDelegate.cpp	2020-05-09 14:53:56.000000000 +0700
++++ src/history/RepositoryViewDelegate.cpp.new	2020-06-23 02:45:37.931201274 +0700
+@@ -1,5 +1,6 @@
+ ﻿#include "RepositoryViewDelegate.h"
+ 
++#include <QPainterPath>
+ #include <GitQlientStyles.h>
+ #include <lanes.h>
+ #include <CommitInfo.h>
