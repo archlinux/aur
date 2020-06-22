@@ -1,23 +1,21 @@
 pkgbase = mpop-gnome
-	pkgdesc = A small, fast POP3 client suitable as a fetchmail replacement with GNOME keyring support
-	pkgver = 1.2.6
+	pkgdesc = A small, fast POP3 client with GNOME Keyring support
+	pkgver = 1.4.10
 	pkgrel = 1
-	url = http://mpop.sourceforge.net/
+	url = https://marlam.de/mpop/
 	install = mpop-gnome.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gnutls
-	depends = libidn
 	depends = libsecret
 	provides = mpop
 	conflicts = mpop
 	replaces = mpop
-	source = http://downloads.sourceforge.net/mpop/mpop-1.2.6.tar.xz
-	source = http://downloads.sourceforge.net/mpop/mpop-1.2.6.tar.xz.sig
-	validpgpkeys = 2F788CDEF4181652720EF132F4926138953E5294
-	md5sums = 2298ddcf1defbf8e7097a1869c8d39d3
-	md5sums = SKIP
+	source = https://marlam.de/mpop/releases/mpop-1.4.10.tar.xz
+	source = https://marlam.de/mpop/releases/mpop-1.4.10.tar.xz.sig
+	validpgpkeys = 2F61B4828BBA779AECB3F32703A2A4AB1E32FD34
+	sha256sums = 9e9b6523f08df50a3d3eec75d94d4c0104ee016c0c913baaf8fbf178bf828388
+	sha256sums = SKIP
 
 pkgname = mpop-gnome
 

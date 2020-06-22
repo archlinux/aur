@@ -4,21 +4,22 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=mpop-gnome
-pkgver=1.2.6
+pkgver=1.4.10
 pkgrel=1
-pkgdesc="A small, fast POP3 client suitable as a fetchmail replacement with GNOME keyring support"
-arch=('i686' 'x86_64')
-url="http://mpop.sourceforge.net/"
+pkgdesc="A small, fast POP3 client with GNOME Keyring support"
+arch=('x86_64')
+url="https://marlam.de/mpop/"
 license=('GPL3')
-depends=('gnutls' 'libidn' 'libsecret')
+depends=('gnutls' 'libsecret')
 provides=('mpop')
 conflicts=('mpop')
 replaces=('mpop')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/mpop/mpop-$pkgver.tar.xz"{,.sig})
-md5sums=('2298ddcf1defbf8e7097a1869c8d39d3'
-         'SKIP')
-validpgpkeys=('2F788CDEF4181652720EF132F4926138953E5294')
+source=("https://marlam.de/mpop/releases/mpop-$pkgver.tar.xz"{,.sig})
+sha256sums=('9e9b6523f08df50a3d3eec75d94d4c0104ee016c0c913baaf8fbf178bf828388'
+            'SKIP')
+validpgpkeys=('2F61B4828BBA779AECB3F32703A2A4AB1E32FD34')
+              # Martin Lambers <marlam@marlam.de>
 
 build() {
   cd "$srcdir/mpop-$pkgver"
