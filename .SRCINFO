@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r54763.392dcf7331e
+	pkgver = r55364.c9847530029
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = kodi-git
 	makedepends = bluez-libs
 	makedepends = cmake
 	makedepends = curl
+	makedepends = dav1d
 	makedepends = doxygen
 	makedepends = glew
 	makedepends = gperf
@@ -51,13 +52,13 @@ pkgbase = kodi-git
 	makedepends = meson
 	makedepends = gtest
 	makedepends = wayland-protocols
-	makedepends = waylandpp>=0.2.7-1
-	makedepends = libinput
+	makedepends = waylandpp
 	makedepends = libxkbcommon
+	makedepends = libinput
 	noextract = libdvdcss-1.4.2-Leia-Beta-5.tar.gz
 	noextract = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz
 	noextract = libdvdread-6.0.0-Leia-Alpha-3.tar.gz
-	noextract = ffmpeg-4.2.2-Matrix-Alpha1.tar.gz
+	noextract = ffmpeg-4.3-Matrix-Alpha1.tar.gz
 	noextract = fmt-6.1.2.tar.gz
 	noextract = crossguid-8f399e8bd4.tar.gz
 	noextract = fstrcmp-0.7.D001.tar.gz
@@ -67,7 +68,7 @@ pkgbase = kodi-git
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
-	source = ffmpeg-4.2.2-Matrix-Alpha1.tar.gz::https://github.com/xbmc/FFmpeg/archive/4.2.2-Matrix-Alpha1.tar.gz
+	source = ffmpeg-4.3-Matrix-Alpha1.tar.gz::https://github.com/xbmc/FFmpeg/archive/4.3-Matrix-Alpha1.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/fmt-6.1.2.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/crossguid-8f399e8bd4.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
@@ -79,7 +80,7 @@ pkgbase = kodi-git
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
 	sha256sums = a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf
-	sha256sums = 0dba571f9809588cfbdc29d6a551dab4cd5736701653d9263847c9ac67bcde86
+	sha256sums = 8e159cdf1dfd3de2ac838fdaecb1fbb315e47f2ee2c542cd9d6efeb545c2b916
 	sha256sums = 1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365
 	sha256sums = 3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10
 	sha256sums = e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476
@@ -105,7 +106,7 @@ pkgname = kodi-git
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r54763.392dcf7331e
+	provides = kodi=r55364.c9847530029
 	conflicts = kodi
 
 pkgname = kodi-git-bin
@@ -156,7 +157,7 @@ pkgname = kodi-git-wayland
 	depends = tinyxml
 	depends = waylandpp>=0.2.7-1
 	depends = kodi-git
-	provides = kodi-git-bin=r54763.392dcf7331e
+	provides = kodi-git-bin=r55364.c9847530029
 	conflicts = kodi-wayland
 
 pkgname = kodi-git-gbm
@@ -182,14 +183,14 @@ pkgname = kodi-git-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-git
-	provides = kodi-git-bin=r54763.392dcf7331e
+	provides = kodi-git-bin=r55364.c9847530029
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r54763.392dcf7331e
+	provides = kodi-eventclients=r55364.c9847530029
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -198,12 +199,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r54763.392dcf7331e
+	provides = kodi-tools-texturepacker=r55364.c9847530029
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r54763.392dcf7331e
+	provides = kodi-dev=r55364.c9847530029
 	conflicts = kodi-dev
 
