@@ -1,0 +1,15 @@
+pkgbase = konstruktor-font
+	pkgdesc = A narrow cousin of another constructivist typeface, Red October
+	pkgver = 1.004
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/konstruktor-free-typeface
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = konstruktor-1.004.zip::https://dl.dafont.com/dl/?f=konstruktor
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = 494b9309f5a98d891a206376046ffc19486fafe4044ef92a1b08b62567fa6e61
+	sha256sums = SKIP
+
+pkgname = ttf-konstruktor
+
