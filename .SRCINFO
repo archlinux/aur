@@ -1,7 +1,7 @@
 pkgbase = deepspeech-bin
 	pkgdesc = A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files.
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/DeepSpeech
 	arch = x86_64
 	arch = armv7h
