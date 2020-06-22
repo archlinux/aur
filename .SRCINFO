@@ -1,0 +1,15 @@
+pkgbase = arkitech-stencil-font
+	pkgdesc = Futuristic architectural sans font, stencil variant
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/arkitech-stencil-medium
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = arkitech-stencil-1.000.zip::https://www.neogrey.com/fonts-download/arkitech_stencil_medium.zip
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = b20ced0a17a7f89c73f5b8e73b931c83b2afcf7b7e99b1f41459a92f33f8ecbb
+	sha256sums = 361126c13cb9008eb61ad2818b478ab1c612ab30f1f9b77ac840bf49b538a48b
+
+pkgname = ttf-arkitech-stencil
+
