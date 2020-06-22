@@ -2,12 +2,11 @@
      
 pkgname=nvidia-pf
 pkgver=440.82
-pkgrel=5
+pkgrel=6
 _goodkver=5.7
 _badkver=5.8
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 #_pf_headers=$(pacman -Qqo ${_SYSSRC})
 
 pkgdesc="NVIDIA drivers for linux-pf."
@@ -38,12 +37,11 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
-  pwd
   patch -Np1 -i "${srcdir}/nvidia-kernel-5.7.patch"
 }
 
 build() {
-  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  _kernver="$(</usr/src/linux-pf/version)"
   cd "${_pkg}"/kernel
   make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
