@@ -1,0 +1,15 @@
+pkgbase = hptools-git
+	pkgdesc = Tools from HP for assembling Saturn Assembly Language and compiling SysRPL.
+	pkgver = r4.dfa489f
+	pkgrel = 1
+	url = https://github.com/martinyrm/hptools
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = hptools
+	conflicts = hptools
+	source = hptools-git::git+https://github.com/martinyrm/hptools#branch=master
+	md5sums = SKIP
+
+pkgname = hptools-git
+
