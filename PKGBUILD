@@ -11,7 +11,7 @@ makedepends=('go')
 depends=('glibc')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('6e62ba3398f9d456e6b764af674077e7a50535736a31af8e64167a95b957242c')
-
+ 
 build() {
   cd $pkgname-$pkgver
   go build \
