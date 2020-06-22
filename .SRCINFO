@@ -1,6 +1,6 @@
 pkgbase = ftx-prog-git
 	pkgdesc = A Linux command-line alternative to the FTProg utility for FTDI's FT-X series of USB interfaces.
-	pkgver = r54.31cfa4d
+	pkgver = 0.3.r0.g68e915d
 	pkgrel = 1
 	url = https://github.com/richardeoin/ftx-prog
 	arch = x86_64

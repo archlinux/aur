@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <aur at codyps.com>
 pkgname=ftx-prog-git
-pkgver=r54.31cfa4d
+pkgver=0.3.r0.g68e915d
 pkgrel=1
 pkgdesc="A Linux command-line alternative to the FTProg utility for FTDI's FT-X series of USB interfaces."
 arch=(x86_64)
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
