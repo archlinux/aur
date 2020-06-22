@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=AudioVideo;Application;
+Comment=vst-video player
+Exec=/usr/lib/vst-video/vst-video %u
+Icon=/usr/share/icons/vst-video/icon.svg
+Name=vst-video
+Name[zh_CN]=全聚合影视
+Path=/tmp/
+Terminal=false
+Type=Application
+MimeType=application/ogg;application/vnd.apple.mpegurl;application/vnd.rn-realmedia;application/x-extension-mp4;application/x-flac;application/x-matroska;application/x-ogg;application/xspf+xml;image/vnd.rn-realpix;misc/ultravox;video/3gpp;video/dv;video/mp2t;video/mp4;video/x-m4v;video/mp4v-es;video/mpeg;video/msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/webm;video/x-anim;video/x-avi;video/x-flc;video/x-fli;video/x-flv;video/x-matroska;video/x-mpeg;video/x-ms-asf;video/x-msvideo;video/x-ms-wmv;video/x-nsv;video/x-ogm+ogg;video/x-theora+ogg;x-content/video-dvd;x-content/video-svcd;x-content/video-vcd;x-scheme-handler/mms;x-scheme-handler/rtmp;x-scheme-handler/rtsp;
+
+
