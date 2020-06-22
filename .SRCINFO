@@ -1,0 +1,15 @@
+pkgbase = syntha-font
+	pkgdesc = A rounded display typeface inspired by vintage synthesizer abbreviations
+	pkgver = 1.008
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/syntha
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = syntha-1.008.zip::https://dl.dafont.com/dl/?f=syntha
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = 8d159c26bb3e98d186f66c1f5c02bbed93bd3c8dd7bb3dce489d1518de7442dc
+	sha256sums = SKIP
+
+pkgname = ttf-syntha
+
