@@ -42,8 +42,10 @@ optdepends=('tor: tor hidden node support'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5')
+source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
+        "bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch")
+sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5'
+            'c8e53fb677f5438600a78e4bef4ee2aa6d837c1dfdff033545e087dd2d3e2280')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv3-opt')
@@ -73,6 +75,8 @@ fi
 
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
+
+	patch -p1 --ignore-whitespace -i "${srcdir}"/bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch
 
 	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro || true
 }

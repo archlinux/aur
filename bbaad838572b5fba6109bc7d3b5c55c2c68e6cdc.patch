@@ -1,0 +1,65 @@
+backport of
+
+From bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc Mon Sep 17 00:00:00 2001
+From: Phenom <retrosharephenom@gmail.com>
+Date: Mon, 1 Jun 2020 13:44:43 +0200
+Subject: [PATCH] Fix build with Qt 5.15+
+
+---
+ retroshare-gui/src/gui/elastic/elnode.h        |  8 +++++---
+ .../src/gui/gxs/GxsCommentTreeWidget.cpp       | 16 +++++++++-------
+ retroshare-gui/src/gui/gxs/GxsIdDetails.cpp    | 18 ++++++++++--------
+ 3 files changed, 24 insertions(+), 18 deletions(-)
+
+diff --git a/retroshare-gui/src/gui/elastic/elnode.h b/retroshare-gui/src/gui/elastic/elnode.h
+index 1e0edd1a8..b881baed6 100644
+--- a/retroshare-gui/src/gui/elastic/elnode.h
++++ b/retroshare-gui/src/gui/elastic/elnode.h
+@@ -34,6 +34,8 @@
+ #include <retroshare/rstypes.h>
+ #include "graphwidget.h"
+ 
++#include <QPainterPath>
++
+ class Edge;
+ QT_BEGIN_NAMESPACE
+ class QGraphicsSceneMouseEvent;
+diff --git a/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp b/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp
+index e5d714860..a3187d4d9 100644
+--- a/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp
++++ b/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp
+@@ -18,6 +18,14 @@
+  *                                                                             *
+  *******************************************************************************/
+ 
++#include "GxsCommentTreeWidget.h"
++
++#include "gui/common/FilesDefs.h"
++#include "gui/common/RSElidedItemDelegate.h"
++#include "gui/common/RSTreeWidgetItem.h"
++#include "gui/gxs/GxsCreateCommentDialog.h"
++#include "gui/gxs/GxsIdTreeWidgetItem.h"
++
+ #include <QAbstractTextDocumentLayout>
+ #include <QApplication>
+ #include <QClipboard>
+@@ -25,6 +33,7 @@
+ #include <QMenu>
+ #include <QMimeData>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTextDocument>
+ 
+ #include "gui/common/RSElidedItemDelegate.h"
+diff --git a/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp b/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
+index 6168090eb..1bbab7f82 100644
+--- a/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
++++ b/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include <iostream>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ /* Images for tag icons */
+ #define IMAGE_LOADING     ":/images/folder-draft.png"
