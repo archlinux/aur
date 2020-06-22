@@ -1,46 +1,62 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=cowrie
-pkgver=1.1.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
 license=('BSD')
-depends=('python2-twisted' 'python2-zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
-         'python2-gmpy2' 'python2-pyopenssl' 'mysql-python' 'python2-dateutil' 'python2-tftpy'
-         'python2-configparser' 'python2-service-identity' 'python2-requests')
-backup=('etc/cowrie.cfg')
+# from the requirements.txt
+depends=(
+  'python-appdirs'
+  'python-attrs'
+  'python-bcrypt'
+#  'python-configparser'
+  'python-cryptography'
+  'python-packaging'
+  'python-pyasn1-modules'
+  'python-pyopenssl'
+  'python-pyparsing'
+  'python-dateutil'
+  'python-service-identity'
+  'python-tftpy'
+  'python-treq'
+  'python-twisted'
+  )
+
+backup=('etc/cowrie/cowrie.cfg')
 install=cowrie.install
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('da6cb2e25f57dd5a1e9b7ff02a39ae4d6955ee2be03b0054f92f07b429a1a12b938c571862b05d5ccbe9949d132185079bd93644bd38469e841cb9a8cc95dfbd')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz
+  '0001-patch-service.patch')
+sha512sums=('b1d4a76beffb9e03e1c1f0299eea858d9d245f15eca10146410d4b3fee0f76ff4cb7e3017643cba719a677d3c0591a267a6d6df261c2a66d99a677c10720e4de'
+            '76bfbd8cdf78e7365e95fb017e241ec23015b56f7ac292370d90cfabbd0086e7c199278f6956aabfc9e658fdbaacb16ac22699c39d042d6973a5963add0812ee')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  sed -e 's|env python$|env python2|g' -i bin/* cowrie/commands/tftp.py
-  sed -e 's|/home/cowrie|/opt|g' -i doc/systemd/cowrie.service
-  sed -e '/PIDFile/d' -i doc/systemd/cowrie.service
-  sed -r 's|(cowrie)$|\1 -c /etc/cowrie.cfg|g' -i start.sh
+  patch -p1 -Ni '../0001-patch-service.patch'
 }
 
 build() {
   cd ${pkgname}-${pkgver}
-  python2 -m compileall .
-  python2 -O -m compileall .
+  python setup.py build
 }
 
 package() {
   cd ${pkgname}-${pkgver}
 
-  install -Dm 644 cowrie.cfg.dist "${pkgdir}/etc/cowrie.cfg"
-  install -Dm 644 doc/systemd/cowrie.service -t "${pkgdir}/usr/lib/systemd/system"
+  mkdir -p "${pkgdir}/etc/cowrie"
+  install -Dm 644 etc/cowrie.cfg.dist "${pkgdir}/etc/cowrie/cowrie.cfg"
+  install -Dm 644 docs/systemd/etc/systemd/system/cowrie.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 docs/systemd/etc/systemd/system/cowrie.socket  -t "${pkgdir}/usr/lib/systemd/system"
 
   install -d "${pkgdir}/opt/cowrie"
   cp -a . "${pkgdir}/opt/cowrie"
-  rm -r "${pkgdir}/opt/cowrie/cowrie.cfg.dist"
+  rm "${pkgdir}/opt/cowrie/etc/cowrie.cfg.dist"
 
-  install -Dm 644 doc/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md INSTALL.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -a docs/* "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

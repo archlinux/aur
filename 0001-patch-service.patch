@@ -1,0 +1,83 @@
+From 726fe83fac7f451bac14fae80de272bc0d00dabe Mon Sep 17 00:00:00 2001
+From: Cody P Schafer <dev@codyps.com>
+Date: Mon, 22 Jun 2020 01:52:25 -0400
+Subject: [PATCH] patch service
+
+---
+ .../systemd/etc/systemd/system/cowrie.service | 25 ++++++++++++++-----
+ etc/cowrie.cfg.dist                           |  4 +--
+ 2 files changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/docs/systemd/etc/systemd/system/cowrie.service b/docs/systemd/etc/systemd/system/cowrie.service
+index b8b2fd4..934e77d 100644
+--- a/docs/systemd/etc/systemd/system/cowrie.service
++++ b/docs/systemd/etc/systemd/system/cowrie.service
+@@ -1,24 +1,37 @@
+ [Unit]
+ Description=A SSH and Telnet honeypot service
+ After=network.target
+-After=rsyslog.service
+ Requires=cowrie.socket
+ 
+ [Service]
+ User=cowrie
+ Group=cowrie
+ 
++NoNewPrivileges=true
++ProtectSystem=strict
++ProtectHome=true
++ReadOnlyPaths=/opt/cowrie
++ReadWritePaths=/opt/cowrie/var
++PrivateDevices=true
++ProtectClock=true
++#ProtectHostname=true
++#PrivateUsers=true
++ProtectKernelTunables=true
++ProtectKernelLogs=true
++ProtectKernelModules=true
++ProtectControlGroups=true
++RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
++LockPersonality=yes
++RestrictRealtime=true
++RestrictSUIDSGID=true
++
+ Restart=always
+ RestartSec=5
+ 
+ Environment=PYTHONPATH=/opt/cowrie/src
+ WorkingDirectory=/opt/cowrie
+ 
+-ExecStart=/opt/cowrie-env/bin/python /opt/cowrie-env/bin/twistd --umask 0022 --nodaemon --pidfile= -l - cowrie
+-
+-StandardOutput=syslog
+-StandardError=syslog
+-SyslogIdentifier=cowrie
++ExecStart=/usr/bin/twistd3 --umask 0022 --nodaemon --pidfile= -l - cowrie
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/etc/cowrie.cfg.dist b/etc/cowrie.cfg.dist
+index 7139aa1..f044c47 100644
+--- a/etc/cowrie.cfg.dist
++++ b/etc/cowrie.cfg.dist
+@@ -590,7 +590,7 @@ compression = zlib@openssh.com,zlib,none
+ # e.g listen_endpoints = "tcp:2222:interface=0.0.0.0 tcp:1022:interface=0.0.0.0" will result listening both on ports 2222 and 1022
+ # use authbind for port numbers under 1024
+ 
+-listen_endpoints = tcp:2222:interface=0.0.0.0
++listen_endpoints = systemd:domain=INET6:index=0
+ 
+ # Enable the SFTP subsystem
+ # (default: true)
+@@ -665,7 +665,7 @@ enabled = false
+ # e.g "listen_endpoints = tcp:2223:interface=0.0.0.0 tcp:2323:interface=0.0.0.0" will result listening both on ports 2223 and 2323
+ # use authbind for port numbers under 1024
+ 
+-listen_endpoints = tcp:2223:interface=0.0.0.0
++listen_endpoints = systemd:domain=INET6:index=1
+ 
+ 
+ # Source Port to report in logs (useful if you use iptables to forward ports to Cowrie)
+-- 
+2.27.0
+
