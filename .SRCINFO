@@ -1,7 +1,7 @@
 pkgbase = update-notifier-service
 	pkgdesc = Update notifier systemd user service and timer
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	install = update-notifier.install
 	arch = any
 	license = GPL

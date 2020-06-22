@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=update-notifier-service
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Update notifier systemd user service and timer"
 arch=('any')
 license=('GPL')
