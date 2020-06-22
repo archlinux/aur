@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-go-grpc
 	pkgdesc = gRPC bindings generator for Go language
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grpc/grpc-go
 	arch = i686
 	arch = x86_64
