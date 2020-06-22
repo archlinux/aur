@@ -10,7 +10,7 @@ url="https://www.browserstack.com/local-testing/"
 conflicts=("browserstack-local-x32")
 depends=("gcc-libs")
 source=(https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip)
-sha512sums=('bc0fddc959087cc07f262b752870d3e0df599970765d1de9d2ba8b74227ce521e94e9eb6871ce730e8b931310a85f9efd3e255caece752db43c21bf74bf79cb5')
+sha512sums=('7608f148a4600e0d771d49dbd617aca95f81498613166f696f0503a3b191b80b1fc61d29b750e623b82c52aeb646aae4d1e1f8951d196f7e71bee8558613d4d1')
 
 package() {
   install -Dm755 BrowserStackLocal "$pkgdir/usr/bin/BrowserStackLocal"
