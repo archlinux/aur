@@ -1,0 +1,15 @@
+pkgbase = jsimugate
+	pkgdesc = Simulate standard logic and more
+	pkgver = 0.70
+	pkgrel = 1
+	url = https://github.com/innovation-plantation/jsimugate
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	depends = java-environment>=8
+	depends = bash
+	source = jsimugate-0.70.tar.gz::https://github.com/innovation-plantation/jsimugate/archive/0.70.tar.gz
+	sha256sums = 37a217c4d775b00565c8a5c5808dd83d13399da64f626e19a8773a81d6c08f76
+
+pkgname = jsimugate
+
