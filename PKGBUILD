@@ -3,7 +3,7 @@
 
 _basename=check
 pkgname="lib32-$_basename"
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A unit testing framework for C (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://libcheck.github.io/check/"
 license=('LGPL')
 depends=('lib32-glibc' "${_basename}")
 makedepends=('git' 'gcc-multilib' 'lib32-gcc-libs')
-_commit=d86594e5b29d50ddbd6276ab2d2cf5c278f7656c  # tags/0.14.0
+_commit=aa8657b149ad290bee7c6855ad97f10f1522ebbb  # tags/0.15.0
 source=("git+https://github.com/libcheck/check#commit=$_commit")
 md5sums=('SKIP')
 
