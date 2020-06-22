@@ -1,7 +1,8 @@
 # Maintainer: xgdgsc <xgdgsc @t gmail dot com>
 
 pkgname=android-sdk-build-tools
-_ver=29.0.3
+#_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
+_ver=30.0.0
 pkgver=r$_ver
 pkgrel=1
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
@@ -12,9 +13,9 @@ depends=('gcc-libs' 'zlib')
 optdepends=('lib32-gcc-libs' 'lib32-zlib')
 _sdk=android-sdk
 
-source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
-sha512sums=('845e527b3ef809d5e32bdce0023401ae80c545504f152d7c05ccef64e4006def6cbda07a295a66518356e992abbbe8f30522c5e63d6eb12a1651c614643602d8')
-_android=android-10
+source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver:0:3}-linux.zip")
+sha512sums=('242b115b32d65847093e71ae78244e5c51673d49821afd933782558c6fb706c0b1b114981edef89a8213fe2d8ca53bfbc51015bdde4ee3ced43b7fe0748ed655')
+_android=android-11
 options=('!strip')
 
 package() {
@@ -25,8 +26,8 @@ package() {
   # echo 'export PATH=$PATH:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.sh
   # echo 'setenv PATH ${PATH}:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.csh
   # chmod 755 etc/profile.d/${pkgname}.{csh,sh}
-  ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
-  mkdir -p opt/$_sdk/build-tools/$ver
-  cp -r "$srcdir/$_android/"* "$pkgdir/opt/$_sdk/build-tools/$ver"
-  chmod +Xr -R "$pkgdir/opt/$_sdk/build-tools/$ver"
+
+  mkdir -p opt/$_sdk/build-tools/$_ver
+  cp -r "$srcdir/$_android/"* "$pkgdir/opt/$_sdk/build-tools/$_ver"
+  chmod +Xr -R "$pkgdir/opt/$_sdk/build-tools/$_ver"
 }
