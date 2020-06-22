@@ -1,0 +1,21 @@
+pkgbase = vrwm-git
+	pkgdesc = A virtual reality video player for X11. Supports "unlimited" virtual monitors.
+	pkgver = r17.fad81ac
+	pkgrel = 1
+	url = https://git.dec05eba.com/vrwm
+	arch = x86_64
+	license = GPL3
+	makedepends = sibs
+	depends = glm
+	depends = glew
+	depends = sdl2
+	depends = openvr
+	depends = libx11
+	depends = libxcomposite
+	provides = vrwm
+	conflicts = vrwm
+	source = git+https://git.dec05eba.com/vrwm
+	sha512sums = SKIP
+
+pkgname = vrwm-git
+
