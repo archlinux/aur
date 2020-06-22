@@ -1,0 +1,15 @@
+pkgbase = ronduit-capitals-font
+	pkgdesc = An elegant modular display typeface
+	pkgver = 1.006
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/ronduit-capitals-light
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = ronduit-capitals-1.006.zip::https://dl.dafont.com/dl/?f=ronduit_capitals
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = ea7afef3130ee85d0bbd9886e03e0e4d972438bea605780d3804c3044e0cf6fe
+	sha256sums = SKIP
+
+pkgname = otf-ronduit-capitals
+
