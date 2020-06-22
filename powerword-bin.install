@@ -1,0 +1,17 @@
+post_install() {
+    tar xf /opt/powerword/data.tar.xz -C /
+    cp /opt/apps/com.kingsoft.powerword/entries/applications/com.kingsoft.powerword.desktop /usr/share/applications
+}
+
+pre_remove() {
+    rm /usr/share/applications/com.kingsoft.powerword.desktop
+    rm -rf /opt/apps/com.kingsoft.powerword
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
+}
