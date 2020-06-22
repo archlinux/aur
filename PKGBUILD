@@ -3,7 +3,7 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="Mini version of Anaconda Python distribution."
 arch=('x86_64')
