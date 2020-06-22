@@ -1,4 +1,6 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 _name=openmvs
 _fragment="#tag=v1.0"
 pkgname=${_name}
