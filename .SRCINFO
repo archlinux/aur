@@ -1,7 +1,7 @@
 pkgbase = nodejs-jshint
 	pkgdesc = Static analysis tool for JavaScript
-	pkgver = 2.11.0
-	pkgrel = 6
+	pkgver = 2.11.1
+	pkgrel = 1
 	url = https://jshint.com/
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = nodejs-jshint
 	makedepends = jq
 	makedepends = moreutils
 	depends = nodejs
-	noextract = jshint-2.11.0.tgz
-	source = https://registry.npmjs.org/jshint/-/jshint-2.11.0.tgz
-	sha256sums = 1a7fa84101fb2212110a41543e88bca26d3b9762bce63c95627ac0dbdf4d5a3a
+	noextract = jshint-2.11.1.tgz
+	source = https://registry.npmjs.org/jshint/-/jshint-2.11.1.tgz
+	sha256sums = 4fe606547383c377e41314eee52f52dc22890ded8ff532dcb38bbb14bdd74b4f
 
 pkgname = nodejs-jshint
 
