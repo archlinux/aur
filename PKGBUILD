@@ -1,14 +1,14 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=automedia-git
-pkgver=r65.8fd9226
+pkgver=r66.fc394eb
 pkgrel=1
 pkgdesc='Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.'
 arch=('any')
 url="https://git.dec05eba.com/AutoMedia"
 license=('GPL3')
 depends=('python' 'python-feedparser' 'python-transmissionrpc' 'python-lxml' 'python-requests' 'python-protobuf' 'transmission-cli')
-optdepends=('notify-send')
+optdepends=('libnotify')
 provides=('automedia')
 conflicts=('automedia')
 source=("git+https://git.dec05eba.com/AutoMedia")
