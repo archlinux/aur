@@ -2,7 +2,7 @@
 
 pkgname=gigalixir-cli
 _name=gigalixir
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 epoch=
 pkgdesc="CLI tool for Gigalixir hosting service"
@@ -17,7 +17,7 @@ depends=('python'
   'python-pygments')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("e7a00aa5420cb63d47beb9f6cfb8dca08bf9621fc73780a80a4a97ad2fb7b170")
+sha256sums=("65f10f7f04da2d101bb22deb65c57f671bce32fe40eb812e7bf630e9b37bb063")
 
 prepare() {
   cd "$_name-$pkgver"
