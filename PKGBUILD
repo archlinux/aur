@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lite
-pkgver=1.08
+pkgver=1.09
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('sdl2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-path-fix.patch")
-sha256sums=('e89dba314e437c9bf129bcf4ef631d6db8810db18f382048987d3a0a944d804b'
+sha256sums=('1fea6af8829220fef884d32c01b881f823051a7ae17b2cd3e01c2d2499e6c6c9'
             'a874de709bf2201816f96807aa50f6b1a15a19aa7989084f01422dd5fe488055')
 
 prepare() {
