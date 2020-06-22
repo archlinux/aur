@@ -1,6 +1,6 @@
 pkgbase = paraview-git
 	pkgdesc = Open-source, multi-platform data analysis and visualization application
-	pkgver = v5.8.0.r235.g8ee4b222a2
+	pkgver = v5.8.1.RC1.r819.g08210ebaca
 	pkgrel = 1
 	url = https://www.paraview.org
 	arch = x86_64
@@ -44,9 +44,11 @@ pkgbase = paraview-git
 	depends = pdal
 	depends = libtiff
 	depends = zlib
+	depends = pegtl
 	optdepends = python-matplotlib
 	provides = paraview
 	conflicts = paraview
+	conflicts = vtk
 	source = git+https://gitlab.kitware.com/paraview/paraview.git
 	sha512sums = SKIP
 
