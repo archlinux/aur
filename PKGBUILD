@@ -22,23 +22,18 @@ sha256sums=('SKIP'
            )
 
 pkgver() {
-  cd "$pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$srcdir"/$pkgname describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
 build() {
-  cd ${srcdir}
-  mkdir -p build
-  cd build
-  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
-  make
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib" -S "${srcdir}/${pkgname}" -B build
+  make -C "${srcdir}/build"
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" -C "${srcdir}/build" install
 }
 
 # vim:set ts=2 sw=2 et:
