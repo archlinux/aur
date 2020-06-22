@@ -1,0 +1,15 @@
+pkgbase = red-october-font
+	pkgdesc = Constructivist typeface inspired by Russian propaganda posters
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/red-october
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = red-october-2.000.zip::https://dl.dafont.com/dl/?f=red_october
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = b1a2c78630b6027444d18651eb56aa667a3babb16222e44cf06ac08489dc1157
+	sha256sums = SKIP
+
+pkgname = ttf-red-october
+
