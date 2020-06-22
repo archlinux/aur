@@ -1,14 +1,14 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 
 pkgname=simpletools
-pkgver=2.0v.67c990f
-_commit=67c990f
+_commit=8e38d80
+pkgver=2.0v.${_commit}
 pkgrel=1
 pkgdesc="Handy command line tools for ntuple manipulation and analysis"
 arch=('i686' 'x86_64')
 url="https://github.com/cofitzpa/simpletools"
 license=('GPL2')
-makedepends=('boost' 'cmake' 'git' 'root')
+makedepends=('cmake' 'git')
 depends=('boost' 'root')
 source=("${pkgname}::git+https://github.com/cofitzpa/simpletools#commit=${_commit}"
         'settings.cmake')
