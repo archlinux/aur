@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
 url="https://github.com/protocolbuffers/protobuf-go"
 license=('BSD')
 depends=('protobuf')
-makedepends=('go' 'git')
+makedepends=('go')
 source=("https://github.com/protocolbuffers/protobuf-go/archive/v${pkgver}.tar.gz")
 
 build() {

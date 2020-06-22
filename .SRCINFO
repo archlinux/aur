@@ -10,7 +10,6 @@ pkgbase = protoc-gen-go
 	arch = armv71
 	license = BSD
 	makedepends = go
-	makedepends = git
 	depends = protobuf
 	source = https://github.com/protocolbuffers/protobuf-go/archive/v1.24.0.tar.gz
 	sha256sums = 318e54ee12d09e9c76fc11cf85f6297360e6444b74a6a7882450501bb952ba56
