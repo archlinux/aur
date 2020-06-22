@@ -1,6 +1,6 @@
 pkgbase = bitfetch-git
 	pkgdesc = Simple fetch written in C.
-	pkgver = 3.1
+	pkgver = 3.1.r1.ga6aff19
 	pkgrel = 1
 	url = https://gitlab.com/bit9tream/bitfetch
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch-git
-pkgver=3.1
+pkgver=3.1.r1.ga6aff19
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
