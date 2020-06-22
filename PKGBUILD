@@ -10,33 +10,31 @@ url="https://github.com/betaflight/betaflight-configurator"
 license=('GPL3')
 depends=('nwjs-bin')
 makedepends=('yarn' 'npm' 'git')
-source=("https://github.com/betaflight/betaflight-configurator/archive/$pkgver.zip"
+source=("git+https://github.com/betaflight/betaflight-configurator.git#tag=$pkgver"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha512sums=('1e57309c6da41b6b00fb1790aca6211e4e69af3ec721b15a27c808af9a4cf43ae88fcf92b7deaedcd9db194e9fb0aaefaee848d4cc01ae364dfe2aae8b7875ed'
+sha512sums=('SKIP'
             '1f9113fce812355d1f8cc614d4905845c601622b87aad2b6e74b62913582018a87059727a333db0673a4b767a10564389eece1f588658d171dc4d8446055a0e9'
             '79e5ab59cf8520ce7e20fb2bd89ee99ce3debba69e7da892bf219912cc32c7056a7c8fd6dae19eebfe4956c948d0bc75ece40911b203fcc2f34e43f2d8329532')
 options=(!strip)
 install=$pkgname.install
 
 prepare() {
-	cd $pkgname-$pkgver
+	cd $pkgname
 	
 	# Allow higher node version
 	sed 's#"node": "#&>=#' -i package.json
 }
 
 build() {
-	cd $pkgname-$pkgver
-	#The build process saves the git commit hash for analytics
-        git init && git add -A && git commit -m 'Gitinfo workaround'
+	cd $pkgname
 
 	yarn install
 	./node_modules/.bin/gulp dist --linux64
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd $pkgname
 	install -d "$pkgdir/usr/share/$pkgname/"
 	cp -r dist/* "$pkgdir/usr/share/$pkgname/"
 	install -Dm644 "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
