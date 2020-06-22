@@ -62,6 +62,8 @@ build() {
         -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
         -DVTK_SMP_IMPLEMENTATION_TYPE=TBB \
         -DVTKm_ENABLE_MPI=ON \
+        -DVTK_MODULE_ENABLE_VTK_IOGDAL=YES \
+        -DVTK_MODULE_ENABLE_VTK_IOPDAL=YES \
         -GNinja
 
     ninja ${MAKEFLAGS}
