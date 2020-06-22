@@ -15,7 +15,7 @@ source=("$_font-$pkgver.zip::https://dl.dafont.com/dl/?f=${_font/-/_}"
 sha256sums=('ea7afef3130ee85d0bbd9886e03e0e4d972438bea605780d3804c3044e0cf6fe'
             'SKIP')
 
-build() {
+prepare() {
     hq article text < font-licenses.html > FFPU.txt
 }
 
