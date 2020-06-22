@@ -1,6 +1,6 @@
 pkgbase = php-compat-info
 	pkgdesc = Library that find out the minimum version and the extensions required for a piece of code to run.
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = http://php5.laurent-laville.org/compatinfo/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = php-compat-info
 	makedepends = php-composer
 	depends = php
 	depends = php-intl
-	source = php-compat-info-5.1.0::https://github.com/llaville/php-compat-info/archive/5.1.0.tar.gz
-	sha512sums = 54d77d4a5ca392ae4ef64ade657d7e73ebd61f648e796bc38e1606d4acdf0e0b300a4d9e0e48db598c4b1d607801eb7f50e46e596e348664cb8cebf43483473a
+	source = php-compat-info-5.2.0::https://github.com/llaville/php-compat-info/archive/5.2.0.tar.gz
+	sha512sums = 86d5e79757b7e9c427ab466191e9b5fc2ba9e493969bd449b9ae7322516af8683a26dc536485bd4e1fde87211cf1218df9da1b23381d0843fc76f50072ff57a1
 
 pkgname = php-compat-info
 
