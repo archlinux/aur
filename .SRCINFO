@@ -1,0 +1,22 @@
+pkgbase = python-visions
+	pkgdesc = Type System for Data Analysis in Python
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/dylan-profiler/visions
+	arch = any
+	license = BSD
+	checkdepends = mypy
+	checkdepends = python-black
+	checkdepends = python-isort
+	checkdepends = python-recommonmark
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-tangled-up-in-unicode
+	source = visions-0.4.4.tar.gz::https://github.com/dylan-profiler/visions/archive/v0.4.4.tar.gz
+	sha512sums = b9bec32786a5bf9d7c4e26bd6d13f03bf1bee227d697b8416f659f9b7b15f2f346b046d3b65a56988564658d187e0add9cef08368bf303400397b8aa5914a299
+
+pkgname = python-visions
+
