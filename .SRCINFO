@@ -1,0 +1,15 @@
+pkgbase = mapcli-git
+	pkgdesc = A command line tool to get srg mappings
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/illyohs/mapcli
+	arch = x86_64
+	license = BSD2
+	depends = sudo
+	depends = git
+	provides = mapcli
+	source = mapcli-git::git+https://github.com/illyohs/mapcli
+	md5sums = SKIP
+
+pkgname = mapcli-git
+
