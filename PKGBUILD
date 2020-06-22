@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tokei-bin
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc="Display statistics about your code"
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv7h')
@@ -16,11 +16,11 @@ source_aarch64=("https://github.com/XAMPPRocky/tokei/releases/download/v$pkgver/
 source_arm=("https://github.com/XAMPPRocky/tokei/releases/download/v$pkgver/tokei-arm-unknown-linux-gnueabi.tar.gz")
 source_armv7h=("https://github.com/XAMPPRocky/tokei/releases/download/v$pkgver/tokei-armv7-unknown-linux-gnueabihf.tar.gz")
 sha256sums=('SKIP')
-sha256sums_i686=('2c6287fa3a7f451a75e88944ae2e9282c5416123f0dbf9a33c9ddfd8dcf0390f')
-sha256sums_x86_64=('4653d1c8308f70e5bd87888f23ef2008de480e40be4f1aa3d7c16bd9c2ca449c')
-sha256sums_aarch64=('34f97b97451bbf01c681e624ba11b1a3cd1766507b9acdd97249a43ef1e0a7a0')
-sha256sums_arm=('9eaad069b2d500a57bac080dc4769c035e4312265bea0a82715acbb48e328b49')
-sha256sums_armv7h=('fa1acbebf88ea1b6e1793679f309ed805c751a4fd7767746eedd753abf55140d')
+sha256sums_i686=('8bba5dfaf411b4f8150c9fc3c8472442a07b112681f4ef39378e87fec3d444d2')
+sha256sums_x86_64=('dca19d28efcca7bd579534b9999d66df3644147881d6529c6da0f51a618ed4cd')
+sha256sums_aarch64=('cee32618f917844cdab4796cc3ea406450cd8d9866e8c5cf49d7dd320362d37c')
+sha256sums_arm=('ca2dd89ba3c0d8c80529f232fe54452e9556a5856d5043b796b2fa7cf71a4792')
+sha256sums_armv7h=('5af1ef18a829052bc3dc0917ed83f0a7ccf8f9179a30e3fd04197223dcbd3078')
 
 
 package() {
