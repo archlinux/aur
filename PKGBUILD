@@ -1,7 +1,7 @@
 # Maintainer: Anthony Anderson <aantony4122@gmail.com>
 pkgname=mapcli-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to get srg mappings"
 arch=('x86_64')
 url="https://github.com/illyohs/mapcli"
@@ -10,6 +10,7 @@ depends=(
   'sudo'
   'git'
 )
+makedepends=('go')
 source=("$pkgname::git+https://github.com/illyohs/mapcli")
 provides=('mapcli')
 md5sums=("SKIP")
