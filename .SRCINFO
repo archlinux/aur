@@ -1,0 +1,13 @@
+pkgbase = tomlcheck-bin
+	pkgdesc = A syntax checker for TOML files
+	pkgver = 0.1.0.38
+	pkgrel = 1
+	url = https://github.com/vmchale/tomlcheck
+	arch = x86_64
+	license = BSDv3
+	provides = tomlcheck
+	source = https://github.com/vmchale/tomlcheck/releases/download/0.1.0.38/tomlcheck-x86_64-unkown-linux-gnu
+	sha256sums = 118d26a04f8e463a21f53ddd7fd0394dadfe2164bb1c686d4f861d92862f2575
+
+pkgname = tomlcheck-bin
+
