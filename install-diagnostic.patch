@@ -1,0 +1,29 @@
+From ef0797e5ed116a98cc074a6d4e1d1d6b6e6384db Mon Sep 17 00:00:00 2001
+From: Stef Walter <stefw@redhat.com>
+Date: Mon, 7 Sep 2015 12:53:02 +0200
+Subject: [PATCH 1/2] service: Fix issue where diagnostics about package
+ install hidden
+
+Due to the recent refactoring the diagnostics about package
+installation were hidden (even when --verbose).
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1258745
+---
+ service/realm-packages.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/service/realm-packages.c b/service/realm-packages.c
+index 9da852c..321921a 100644
+--- a/service/realm-packages.c
++++ b/service/realm-packages.c
+@@ -615,6 +615,7 @@ realm_packages_install_async (const gchar **package_sets,
+ 	task = g_task_new (NULL, NULL, callback, user_data);
+ 	install = g_new0 (InstallClosure, 1);
+ 	install->automatic = realm_options_automatic_install ();
++	install->invocation = invocation ? g_object_ref (invocation) : NULL;
+ 	install->connection = g_object_ref (connection);
+ 	g_task_set_task_data (task, install, install_closure_free);
+ 
+-- 
+2.4.3
+

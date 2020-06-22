@@ -1,0 +1,1500 @@
+From 4f3c02dc14300c0b8e51a55d627c57f73c108f64 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 10:36:19 +0200
+Subject: [PATCH 1/7] doc: make sure cross-reference ids are predictable
+
+To make sure the cross-reference ids are predictable in the
+auto-generated DBus documentation as well the xsl and css files form the
+gtk-doc package are updated as well.
+---
+ doc/manual/devhelp2.xsl                      | 173 ++++++++
+ doc/manual/gtk-doc.xsl                       | 436 ++++++++-----------
+ doc/manual/realm.xml                         |  14 +-
+ doc/manual/realmd-guide-active-directory.xml |   4 +-
+ doc/manual/realmd-guide-ipa.xml              |   2 +-
+ doc/manual/realmd-guide-kerberos.xml         |   2 +-
+ doc/manual/realmd.conf.xml                   |   4 +-
+ doc/manual/static/gtk-doc.css                | 420 +++++++++++++-----
+ 8 files changed, 688 insertions(+), 367 deletions(-)
+ create mode 100644 doc/manual/devhelp2.xsl
+
+diff --git a/doc/manual/devhelp2.xsl b/doc/manual/devhelp2.xsl
+new file mode 100644
+index 0000000..bab6692
+--- /dev/null
++++ b/doc/manual/devhelp2.xsl
+@@ -0,0 +1,173 @@
++<?xml version='1.0'?> <!--*- mode: xml -*-->
++<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
++                version='1.0'
++                xmlns="http://www.devhelp.net/book"
++                xmlns:str="http://exslt.org/strings"
++                exclude-result-prefixes="str">
++
++  <xsl:template name="generate.devhelp2">
++    <xsl:call-template name="write.chunk">
++      <xsl:with-param name="filename">
++        <xsl:choose>
++          <xsl:when test="$gtkdoc.bookname">
++            <xsl:value-of select="$gtkdoc.bookname"/>
++          </xsl:when>
++          <xsl:otherwise>
++            <xsl:text>book</xsl:text>
++          </xsl:otherwise>
++        </xsl:choose>
++        <xsl:text>.devhelp2</xsl:text>
++      </xsl:with-param>
++      <xsl:with-param name="method" select="'xml'"/>
++      <xsl:with-param name="indent" select="'yes'"/>
++      <xsl:with-param name="encoding" select="'utf-8'"/>
++      <xsl:with-param name="doctype-public"/>
++      <xsl:with-param name="content">
++        <xsl:call-template name="devhelp2"/>
++      </xsl:with-param>
++    </xsl:call-template>
++  </xsl:template>
++
++  <xsl:variable name="gtkdoc.refsect2" select="//refsect2"/>
++
++  <xsl:template name="devhelp2">
++    <xsl:variable name="title">
++      <xsl:apply-templates select="." mode="generate.devhelp2.toc.title.mode"/>
++    </xsl:variable>
++    <xsl:variable name="link">
++      <xsl:call-template name="href.target"/>
++    </xsl:variable>
++    <xsl:variable name="author">
++      <xsl:if test="articleinfo|bookinfo">
++        <xsl:apply-templates mode="generate.devhelp2.authors"
++                             select="articleinfo|bookinfo"/>
++      </xsl:if>
++    </xsl:variable>
++    <xsl:variable name="online">
++      <xsl:value-of select="/book/bookinfo/releaseinfo/ulink[@role='online-location']/@url"/>
++    </xsl:variable>
++    <xsl:variable name="toc.nodes" select="part|reference|preface|chapter|
++                                           appendix|article|bibliography|
++                                           glossary|index|refentry|
++                                           bridgehead|sect1"/>
++
++    <book title="{$title}" link="{$link}" author="{$author}" name="{$gtkdoc.bookname}" version="2" language="c">
++      <xsl:if test="$online != ''">
++        <xsl:attribute name="online"><xsl:value-of select="$online"/></xsl:attribute>
++      </xsl:if>
++      <xsl:if test="$toc.nodes">
++        <chapters>
++          <xsl:apply-templates select="$toc.nodes"
++                               mode="generate.devhelp2.toc.mode"/>
++        </chapters>
++      </xsl:if>
++      <functions>
++        <xsl:apply-templates select="$gtkdoc.refsect2[@role]"
++                             mode="generate.devhelp2.index.mode"/>
++        <xsl:apply-templates select="$gtkdoc.refsect2/refsect3[@role='enum_members']/informaltable/tgroup/tbody/row[@role='constant']"
++                             mode="generate.devhelp2.index.mode"/>
++        <xsl:apply-templates select="$gtkdoc.refsect2/refsect3[@role='struct_members']/informaltable/tgroup/tbody/row[@role='member']"
++                             mode="generate.devhelp2.index.mode"/>
++      </functions>
++    </book>
++  </xsl:template>
++
++  <xsl:template match="*" mode="generate.devhelp2.toc.mode">
++    <xsl:variable name="title">
++      <xsl:apply-templates select="." mode="generate.devhelp2.toc.title.mode"/>
++    </xsl:variable>
++    <xsl:variable name="target">
++      <xsl:variable name="anchor" select="title/anchor"/>
++      <xsl:choose>
++        <xsl:when test="$anchor">
++          <xsl:call-template name="href.target">
++            <xsl:with-param name="object" select="$anchor"/>
++          </xsl:call-template>
++        </xsl:when>
++        <xsl:otherwise>
++          <xsl:call-template name="href.target"/>
++        </xsl:otherwise>
++      </xsl:choose>
++    </xsl:variable>
++
++    <sub name="{$title}" link="{$target}">
++      <xsl:apply-templates select="section|sect1|
++                                   refentry|refsect|
++                                   bridgehead|part|chapter|glossary|index"
++                           mode="generate.devhelp2.toc.mode"/>
++    </sub>
++  </xsl:template>
++
++  <xsl:template match="*" mode="generate.devhelp2.index.mode">
++    <xsl:variable name="title" select="title|
++                                       term/literal|
++                                       entry[@role='enum_member_name']/para|
++                                       entry[@role='struct_member_name']/para/structfield/@id"/>
++    <xsl:variable name="anchor" select="title/anchor|
++                                        entry[@role='enum_member_name']/para|
++                                        entry[@role='struct_member_name']/para/structfield"/>
++    <xsl:variable name="type" select="@role"/>
++    <xsl:variable name="condition" select="@condition"/>
++    <xsl:variable name="target">
++      <xsl:choose>
++        <xsl:when test="$anchor">
++          <xsl:call-template name="href.target">
++            <xsl:with-param name="object" select="$anchor"/>
++          </xsl:call-template>
++        </xsl:when>
++        <xsl:otherwise>
++          <xsl:call-template name="href.target"/>
++        </xsl:otherwise>
++      </xsl:choose>
++    </xsl:variable>
++    <keyword type="{$type}" name="{$title}" link="{$target}">
++      <xsl:if test="$condition">
++        <xsl:for-each select="str:split($condition,'|')">
++          <xsl:variable name="attrname">
++            <xsl:value-of select="substring-before(.,':')"/>
++          </xsl:variable>
++          <xsl:choose>
++            <xsl:when test="string-length($attrname)=0">
++              <xsl:variable name="attrname2">
++                <xsl:value-of select="."/>
++              </xsl:variable>
++              <xsl:attribute name="{$attrname2}"/>
++            </xsl:when>
++            <xsl:otherwise>
++              <xsl:attribute name="{$attrname}">
++                <xsl:value-of select="substring-after(.,':')"/>
++              </xsl:attribute>
++            </xsl:otherwise>
++          </xsl:choose>
++        </xsl:for-each>
++     </xsl:if>
++    </keyword>
++  </xsl:template>
++
++  <!-- get title -->
++  <xsl:template match="article" mode="generate.devhelp2.toc.title.mode">
++    <xsl:value-of select="articleinfo/title"/>
++  </xsl:template>
++  <xsl:template match="book" mode="generate.devhelp2.toc.title.mode">
++    <xsl:value-of select="bookinfo/title"/>
++  </xsl:template>
++  <xsl:template match="refentry" mode="generate.devhelp2.toc.title.mode">
++    <xsl:value-of select="refmeta/refentrytitle"/>
++  </xsl:template>
++  <xsl:template match="*" mode="generate.devhelp2.toc.title.mode">
++    <xsl:value-of select="title"/>
++  </xsl:template>
++
++  <!-- generate list of authors ... -->
++  <xsl:template match="articleinfo|bookinfo" mode="generate.devhelp2.authors">
++    <xsl:for-each select="authorgroup/author">
++      <xsl:value-of select="firstname"/>
++      <xsl:text> </xsl:text>
++      <xsl:value-of select="surname"/>
++      <xsl:if test="not(last())">
++        <xsl:text>, </xsl:text>
++      </xsl:if>
++    </xsl:for-each>
++  </xsl:template>
++
++</xsl:stylesheet>
+diff --git a/doc/manual/gtk-doc.xsl b/doc/manual/gtk-doc.xsl
+index 9c0901b..3471e6c 100644
+--- a/doc/manual/gtk-doc.xsl
++++ b/doc/manual/gtk-doc.xsl
+@@ -5,20 +5,19 @@
+                 version="1.0">
+ 
+   <!-- import the chunked XSL stylesheet -->
+-  <!-- http://www.sagehill.net/docbookxsl/Chunking.html says we should use
+-       "chunkfast.xsl", but I can see a difference -->
++  <!-- http://www.sagehill.net/docbookxsl/Chunking.html#FastChunking says we should use
++       "chunkfast.xsl", but I can't see a difference. Also it is not clear wheter
++       one should still set "chunk.fast". Again, no meassuable difference. -->
+   <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl"/>
++  <xsl:include href="devhelp2.xsl"/>
+   <xsl:include href="version-greater-or-equal.xsl"/>
+ 
+-  <xsl:key name="acronym.key"
+-	   match="glossentry/glossterm"
+-	   use="."/>
+-  <xsl:key name="gallery.key"
+-	   match="para[@role='gallery']/link"
+-	   use="@linkend"/>
++  <xsl:key name="acronym.key" match="glossentry/glossterm" use="."/>
++  <xsl:key name="gallery.key" match="para[@role='gallery']/link" use="@linkend"/>
+ 
+   <!-- change some parameters -->
+   <!-- http://docbook.sourceforge.net/release/xsl/current/doc/html/index.html -->
++  <xsl:param name="admon.style"/>
+   <xsl:param name="toc.section.depth">2</xsl:param>
+   <xsl:param name="generate.toc">
+     book	toc
+@@ -28,16 +27,17 @@
+     part	toc
+     reference toc
+   </xsl:param>
++  <xsl:param name="process.empty.source.toc">1</xsl:param>
+ 
+   <xsl:param name="chunker.output.encoding" select="'UTF-8'"/>
+   <xsl:param name="chunker.output.indent" select="'yes'"/>
+   <xsl:param name="chunker.output.doctype-public" select="'-//W3C//DTD HTML 4.01 Transitional//EN'"/>
+   <xsl:param name="chunk.fast" select="1"/>
+-  <xsl:param name="chunk.quietly" select="1"/>
+ 
+   <xsl:param name="default.encoding" select="'UTF-8'"/>
+   <xsl:param name="chapter.autolabel" select="0"/>
+   <xsl:param name="use.id.as.filename" select="1"/>
++  <xsl:param name="generate.consistent.ids" select="1"/>
+   <xsl:param name="html.ext" select="'.html'"/>
+   <xsl:param name="refentry.generate.name" select="0"/>
+   <xsl:param name="refentry.generate.title" select="1"/>
+@@ -60,6 +60,9 @@
+   <xsl:param name="gtkdoc.version" select="''"/>
+   <xsl:param name="gtkdoc.bookname" select="''"/>
+ 
++  <!-- Override the typical template to prevent showing titles -->
++  <xsl:param name="admon.textlabel" select="0"/>
++
+   <!-- ========================================================= -->
+ 
+   <!-- l10n is slow, we don't ue it, so we'd like to turn it off
+@@ -68,12 +71,8 @@
+ 
+   <xsl:param name="gtkdoc.l10n.xml" select="document('http://docbook.sourceforge.net/release/xsl/current/common/en.xml')"/>
+ 
+-  <xsl:key name="gtkdoc.gentext.key"
+-	   match="l:gentext[@key]"
+-	   use="@key"/>
+-  <xsl:key name="gtkdoc.context.key"
+-	   match="l:context[@name]"
+-	   use="@name"/>
++  <xsl:key name="gtkdoc.gentext.key" match="l:gentext[@key]" use="@key"/>
++  <xsl:key name="gtkdoc.context.key" match="l:context[@name]" use="@name"/>
+ 
+   <xsl:template name="gentext">
+     <xsl:param name="key" select="local-name(.)"/>
+@@ -250,7 +249,6 @@
+         </xsl:if>
+       </xsl:variable>
+ 
+-
+       <xsl:variable name="is.title-unnumbered">
+         <xsl:if test="$is.title = 0 and $is.title-numbered = 0">
+           <xsl:call-template name="gentext.template.exists">
+@@ -309,52 +307,8 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+     </xsl:if>
+     <xsl:apply-imports/>
+ 
+-    <!-- generate the index.sgml href index -->
+-    <xsl:call-template name="generate.index"/>
+-  </xsl:template>
+-
+-  <xsl:template name="generate.index">
+-    <xsl:call-template name="write.text.chunk">
+-      <xsl:with-param name="filename" select="'index.sgml'"/>
+-      <xsl:with-param name="content">
+-        <xsl:apply-templates select="/book/bookinfo/releaseinfo/ulink"
+-                             mode="generate.index.mode"/>
+-        <!-- check all anchor and refentry elements -->
+-	<!--
+-	    The obvious way to write this is //anchor|//refentry|etc...
+-	    The obvious way is slow because it causes multiple traversals
+-	    in libxslt. This take about half the time.
+-	-->
+-	<xsl:apply-templates select="//*[name()='anchor' or name()='refentry' or name()='refsect1' or
+-				         name() = 'refsect2' or name()='refsynopsisdiv' or
+-					 name()='varlistentry']"
+-                             mode="generate.index.mode"/>
+-      </xsl:with-param>
+-      <xsl:with-param name="default.encoding" select="'UTF-8'"/>
+-      <xsl:with-param name="chunker.output.indent" select="'no'"/>
+-    </xsl:call-template>
+-  </xsl:template>
+-
+-  <xsl:template match="*" mode="generate.index.mode">
+-    <xsl:if test="not(@href) and count(@id) > 0">
+-      <xsl:text>&lt;ANCHOR id=&quot;</xsl:text>
+-      <xsl:value-of select="@id"/>
+-      <xsl:text>&quot; href=&quot;</xsl:text>
+-        <xsl:if test="$gtkdoc.bookname">
+-          <xsl:value-of select="$gtkdoc.bookname"/>
+-          <xsl:text>/</xsl:text>
+-        </xsl:if>
+-        <xsl:call-template name="href.target"/>
+-        <xsl:text>&quot;&gt;&#10;</xsl:text>
+-    </xsl:if>
+-  </xsl:template>
+-
+-  <xsl:template match="/book/bookinfo/releaseinfo/ulink" mode="generate.index.mode">
+-    <xsl:if test="@role='online-location'">
+-      <xsl:text>&lt;ONLINE href=&quot;</xsl:text>
+-      <xsl:value-of select="@url"/>
+-      <xsl:text>&quot;&gt;&#10;</xsl:text>
+-    </xsl:if>
++    <!-- generate $book.devhelp2 -->
++    <xsl:call-template name="generate.devhelp2"/>
+   </xsl:template>
+ 
+   <!-- ========================================================= -->
+@@ -387,6 +341,15 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+     <xsl:apply-imports/>
+   </xsl:template>
+ 
++  <xsl:template name="user.head.title">
++   <xsl:param name="node" select="."/>
++   <xsl:param name="title"/>
++   <xsl:variable name="home" select="/*[1]"/>
++   <title>
++     <xsl:copy-of select="$title"/>: <xsl:apply-templates select="$home" mode="object.title.markup"/>
++   </title>
++  </xsl:template>
++
+   <xsl:template name="user.head.content">
+     <xsl:if test="$gtkdoc.version">
+       <meta name="generator" content="GTK-Doc V{$gtkdoc.version} (XML mode)"/>
+@@ -399,10 +362,10 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+       <hr />
+       <xsl:choose>
+         <xsl:when test="$gtkdoc.version">
+-          Generated by GTK-Doc V<xsl:copy-of select="$gtkdoc.version" />
++          <xsl:text>Generated by GTK-Doc V</xsl:text><xsl:copy-of select="$gtkdoc.version" />
+         </xsl:when>
+         <xsl:otherwise>
+-          Generated by GTK-Doc
++          <xsl:text>Generated by GTK-Doc</xsl:text>
+         </xsl:otherwise>
+       </xsl:choose>
+     </div>
+@@ -451,21 +414,119 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+ 
+     <xsl:if test="$suppress.navigation = '0' and $home != .">
+       <table class="navigation" id="top" width="100%"
+-             summary = "Navigation header" cellpadding="2" cellspacing="2">
++             summary = "Navigation header" cellpadding="2" cellspacing="5">
+         <tr valign="middle">
++          <td width="100%" align="left" class="shortcuts">
++            <!--<xsl:if test="name()='refentry'"-->
++            <xsl:choose>
++              <xsl:when test="count($refsections) > 0">
++                <a href="#" class="shortcut">Top</a>
++                <xsl:if test="count($sect_desc) > 0">
++                  <span id="nav_description">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.description" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='desc']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_object_hierarchy) > 0">
++                  <span id="nav_hierarchy">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.object-hierarchy" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='object_hierarchy']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_impl_interfaces) > 0">
++                  <span id="nav_interfaces">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.implemented-interfaces" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='impl_interfaces']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_prerequisites) > 0">
++                  <span id="nav_prerequisites">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.prerequisites" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='prerequisites']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_derived_interfaces) > 0">
++                  <span id="nav_derived_interfaces">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.derived-interfaces" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='derived_interfaces']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_implementations) > 0">
++                  <span id="nav_implementations">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.implementations" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='implementations']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_properties) > 0">
++                  <span id="nav_properties">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.properties" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='properties']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_child_properties) > 0">
++                  <span id="nav_child_properties">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.child-properties" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='child_properties']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_style_properties) > 0">
++                  <span id="nav_style_properties">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.style-properties" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='style_properties']/title"/>
++                  </a></span>
++                </xsl:if>
++                <xsl:if test="count($sect_signal_proto) > 0">
++                  <span id="nav_signals">&#160;&#160;<span class="dim">|</span>&#160;
++                  <a href="#{$section_id}.signals" class="shortcut">
++                    <xsl:value-of select="./refsect1[@role='signal_proto']/title"/>
++                  </a></span>
++                </xsl:if>
++              </xsl:when>
++              <!-- this is not yet very nice, as it requires all glossdic/indexdiv
++                   elements having a anchor element. maybe we can customize the xsl
++                   to automaticaly create local anchors
++              -->
++              <xsl:when test="count($glssections) > 0">
++                <span id="nav_glossary">
++                <xsl:for-each select="./glossdiv">
++                  <xsl:if test="position() > 1">
++                    &#160;<span class="dim">|</span>&#160;
++                  </xsl:if>
++                  <a class="shortcut">
++                    <xsl:attribute name="href">#gls<xsl:value-of select="./title"/></xsl:attribute>
++                    <xsl:value-of select="./title"/>
++                  </a>
++                </xsl:for-each>
++                </span>
++              </xsl:when>
++              <xsl:when test="count($idxsections) > 0">
++                <span id="nav_index">
++                <xsl:for-each select="./indexdiv/indexdiv">
++                  <xsl:if test="position() > 1">
++                    &#160;<span class="dim">|</span>&#160;
++                  </xsl:if>
++                  <a class="shortcut">
++                    <xsl:attribute name="href">#idx<xsl:value-of select="./title"/></xsl:attribute>
++                    <xsl:value-of select="./title"/>
++                  </a>
++                </xsl:for-each>
++                </span>
++              </xsl:when>
++            </xsl:choose>
++          </td>
+           <xsl:choose>
+-            <xsl:when test="count($prev) > 0">
++            <xsl:when test="$home != .">
+               <td>
+-                <a accesskey="p">
++                <a accesskey="h">
+                   <xsl:attribute name="href">
+                     <xsl:call-template name="href.target">
+-                      <xsl:with-param name="object" select="$prev"/>
++                      <xsl:with-param name="object" select="$home"/>
+                     </xsl:call-template>
+                   </xsl:attribute>
+-                  <img src="left.png" width="24" height="24" border="0">
++                  <img src="home.png" width="16" height="16" border="0">
+                     <xsl:attribute name="alt">
+                       <xsl:call-template name="gentext">
+-                        <xsl:with-param name="key">nav-prev</xsl:with-param>
++                        <xsl:with-param name="key">nav-home</xsl:with-param>
+                       </xsl:call-template>
+                     </xsl:attribute>
+                   </img>
+@@ -485,7 +546,7 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+                       <xsl:with-param name="object" select="$up"/>
+                     </xsl:call-template>
+                   </xsl:attribute>
+-                  <img src="up.png" width="24" height="24" border="0">
++                  <img src="up.png" width="16" height="16" border="0">
+                     <xsl:attribute name="alt">
+                       <xsl:call-template name="gentext">
+                         <xsl:with-param name="key">nav-up</xsl:with-param>
+@@ -496,22 +557,22 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+               </td>
+             </xsl:when>
+             <xsl:otherwise>
+-              <td>&#160;</td>
++              <td><img src="up-insensitive.png" width="16" height="16" border="0"/></td>
+             </xsl:otherwise>
+           </xsl:choose>
+           <xsl:choose>
+-            <xsl:when test="$home != .">
++            <xsl:when test="count($prev) > 0">
+               <td>
+-                <a accesskey="h">
++                <a accesskey="p">
+                   <xsl:attribute name="href">
+                     <xsl:call-template name="href.target">
+-                      <xsl:with-param name="object" select="$home"/>
++                      <xsl:with-param name="object" select="$prev"/>
+                     </xsl:call-template>
+                   </xsl:attribute>
+-                  <img src="home.png" width="24" height="24" border="0">
++                  <img src="left.png" width="16" height="16" border="0">
+                     <xsl:attribute name="alt">
+                       <xsl:call-template name="gentext">
+-                        <xsl:with-param name="key">nav-home</xsl:with-param>
++                        <xsl:with-param name="key">nav-prev</xsl:with-param>
+                       </xsl:call-template>
+                     </xsl:attribute>
+                   </img>
+@@ -519,12 +580,9 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+               </td>
+             </xsl:when>
+             <xsl:otherwise>
+-              <td>&#160;</td>
++              <td><img src="left-insensitive.png" width="16" height="16" border="0"/></td>
+             </xsl:otherwise>
+           </xsl:choose>
+-          <th width="100%" align="center">
+-            <xsl:apply-templates select="$home" mode="object.title.markup"/>
+-          </th>
+           <xsl:choose>
+             <xsl:when test="count($next) > 0">
+               <td>
+@@ -534,7 +592,7 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+                       <xsl:with-param name="object" select="$next"/>
+                     </xsl:call-template>
+                   </xsl:attribute>
+-                  <img src="right.png" width="24" height="24" border="0">
++                  <img src="right.png" width="16" height="16" border="0">
+                     <xsl:attribute name="alt">
+                       <xsl:call-template name="gentext">
+                         <xsl:with-param name="key">nav-next</xsl:with-param>
+@@ -545,148 +603,10 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+               </td>
+             </xsl:when>
+             <xsl:otherwise>
+-              <td>&#160;</td>
++              <td><img src="right-insensitive.png" width="16" height="16" border="0"/></td>
+             </xsl:otherwise>
+           </xsl:choose>
+         </tr>
+-        <!--<xsl:if test="name()='refentry'"-->
+-        <xsl:choose>
+-          <xsl:when test="count($refsections) > 0">
+-            <tr>
+-              <td colspan="5" class="shortcuts">
+-                <xsl:if test="count($sect_synopsis) > 0">
+-                  <a href="#{$section_id}.synopsis" class="shortcut">Top</a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_desc) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.description" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='desc']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_object_hierarchy) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.object-hierarchy" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='object_hierarchy']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_impl_interfaces) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.implemented-interfaces" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='impl_interfaces']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_prerequisites) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.prerequisites" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='prerequisites']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_derived_interfaces) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.derived-interfaces" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='derived_interfaces']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_implementations) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.implementations" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='implementations']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_properties) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.properties" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='properties']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_child_properties) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.child-properties" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='child_properties']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_style_properties) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.style-properties" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='style_properties']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <xsl:if test="count($sect_signal_proto) > 0">
+-                  &#160;|&#160;
+-                  <a href="#{$section_id}.signals" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@role='signal_proto']/title"/>
+-                  </a>
+-                </xsl:if>
+-                <!--
+-                <xsl:if test="count($sect_details) > 0">
+-                  <a href="#details" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@id='details']/title"/>
+-                  </a>
+-                  &#160;|&#160;
+-                </xsl:if>
+-                <xsl:if test="count($sect_property_details) > 0">
+-                  <a href="#property_details" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@id='property_details']/title"/>
+-                  </a>
+-                  &#160;|&#160;
+-                </xsl:if>
+-                <xsl:if test="count($sect_child_property_details) > 0">
+-                  <a href="#child_property_details" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@id='property_child_details']/title"/>
+-                  </a>
+-                  &#160;|&#160;
+-                </xsl:if>
+-                <xsl:if test="count($sect_style_property_details) > 0">
+-                  <a href="#style_property_details" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@id='style_property_details']/title"/>
+-                  </a>
+-                  &#160;|&#160;
+-                </xsl:if>
+-                <xsl:if test="count($sect_signals) > 0">
+-                  <a href="#signals" class="shortcut">
+-                    <xsl:value-of select="./refsect1[@id='signals']/title"/>
+-                  </a>
+-                  &#160;|&#160;
+-                </xsl:if>
+-                -->
+-              </td>
+-            </tr>
+-          </xsl:when>
+-          <!-- this is not yet very nice, as it requires all glossdic/indexdiv
+-          elements having a anchor element. maybe we can customize the xsl
+-          to automaticaly create local anchors
+-          -->
+-          <xsl:when test="count($glssections) > 0">
+-            <tr>
+-              <td colspan="5" class="shortcuts">
+-                 <xsl:for-each select="./glossdiv">
+-                   <xsl:if test="position() > 1">
+-                     &#160;|&#160;
+-                   </xsl:if>
+-                   <a class="shortcut">
+-                     <xsl:attribute name="href">#gls<xsl:value-of select="./title"/></xsl:attribute>
+-                     <xsl:value-of select="./title"/>
+-                   </a>
+-                 </xsl:for-each>
+-              </td>
+-            </tr>
+-          </xsl:when>
+-          <xsl:when test="count($idxsections) > 0">
+-            <tr>
+-              <td colspan="5" class="shortcuts">
+-                 <xsl:for-each select="./indexdiv/indexdiv">
+-                   <xsl:if test="position() > 1">
+-                     &#160;|&#160;
+-                   </xsl:if>
+-                   <a class="shortcut">
+-                     <xsl:attribute name="href">#idx<xsl:value-of select="./title"/></xsl:attribute>
+-                     <xsl:value-of select="./title"/>
+-                   </a>
+-                 </xsl:for-each>
+-              </td>
+-            </tr>
+-          </xsl:when>
+-        </xsl:choose>
+       </table>
+     </xsl:if>
+   </xsl:template>
+@@ -758,32 +678,32 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+       <table width="100%">
+         <tr><td valign="top">
+           <xsl:call-template name="anchor"/>
+-            <xsl:choose>
+-              <xsl:when test="$refentry.generate.name != 0">
+-                <h2>
+-                <xsl:call-template name="gentext">
+-                    <xsl:with-param name="key" select="'RefName'"/>
+-                  </xsl:call-template>
+-                </h2>
+-              </xsl:when>
+-              <xsl:when test="$refentry.generate.title != 0">
+-                <h2>
+-                  <xsl:choose>
+-                    <xsl:when test="../refmeta/refentrytitle">
+-                      <xsl:apply-templates select="../refmeta/refentrytitle"/>
+-                    </xsl:when>
+-                    <xsl:otherwise>
+-                      <xsl:apply-templates select="refname[1]"/>
+-                    </xsl:otherwise>
+-                  </xsl:choose>
+-                </h2>
+-              </xsl:when>
+-            </xsl:choose>
+-            <p>
++          <xsl:choose>
++            <xsl:when test="$refentry.generate.name != 0">
++              <h2>
++              <xsl:call-template name="gentext">
++                  <xsl:with-param name="key" select="'RefName'"/>
++                </xsl:call-template>
++              </h2>
++            </xsl:when>
++            <xsl:when test="$refentry.generate.title != 0">
++              <h2>
++                <xsl:choose>
++                  <xsl:when test="../refmeta/refentrytitle">
++                    <xsl:apply-templates select="../refmeta/refentrytitle"/>
++                  </xsl:when>
++                  <xsl:otherwise>
++                    <xsl:apply-templates select="refname[1]"/>
++                  </xsl:otherwise>
++                </xsl:choose>
++              </h2>
++            </xsl:when>
++          </xsl:choose>
++          <p>
+             <xsl:apply-templates/>
+           </p>
+         </td>
+-        <td valign="top" align="right">
++        <td class="gallery_image" valign="top" align="right">
+           <xsl:choose>
+             <xsl:when test="../refmeta/refmiscinfo/inlinegraphic">
+               <xsl:apply-templates select="../refmeta/refmiscinfo/inlinegraphic"/>
+@@ -795,7 +715,7 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+                    - use it here
+                 -->
+               <xsl:variable name="refentryid" select="../@id"/>
+-	      <xsl:apply-templates select="key('gallery.key', $refentryid)/inlinegraphic"/>
++              <xsl:apply-templates select="key('gallery.key', $refentryid)/inlinegraphic"/>
+             </xsl:otherwise>
+           </xsl:choose>
+         </td></tr>
+@@ -803,6 +723,21 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+      </div>
+   </xsl:template>
+ 
++  <!-- a copy from refentry.xsl to add the missing mode attribute,
++       see bug/729911, https://sourceforge.net/p/docbook/bugs/1358/
++       fixed in: https://sourceforge.net/p/docbook/code/9962/
++  -->
++  <xsl:template match="refpurpose" mode="no.anchor.mode">
++    <xsl:if test="node()">
++      <xsl:text> </xsl:text>
++      <xsl:call-template name="dingbat">
++        <xsl:with-param name="dingbat">em-dash</xsl:with-param>
++      </xsl:call-template>
++      <xsl:text> </xsl:text>
++      <xsl:apply-templates mode="no.anchor.mode"/>
++    </xsl:if>
++  </xsl:template>
++
+   <!-- add anchors for index sections -->
+   <xsl:template match="indexdiv">
+     <a><xsl:attribute name="name">idx<xsl:value-of select="./title"/></xsl:attribute></a>
+@@ -825,12 +760,12 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+       <span class="extralinks">
+         <xsl:for-each select="../ulink[@role='extralinks']">
+           <xsl:if test="position() = 1">[&#160;</xsl:if>
+-          <xsl:if test="position() > 1">&#160;|&#160;</xsl:if>
++          <xsl:if test="position() > 1">&#160;&#160;<span class="dim">|</span>&#160;</xsl:if>
+           <a>
+             <xsl:attribute name="href"><xsl:value-of select="@url"/></xsl:attribute>
+             <xsl:copy-of select="text()" />
+           </a>
+-          <xsl:if test="position() = last()">&#160;]</xsl:if>
++          <xsl:if test="position() = last()">&#160;&#160;]</xsl:if>
+         </xsl:for-each>
+       </span>
+     </xsl:if>
+@@ -861,11 +796,6 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+     <xsl:param name="acronym">
+       <xsl:apply-templates/>
+     </xsl:param>
+-    <!--
+-      We use for-each to change context to the database document because key()
+-      only locates elements in the same document as the context node!
+-    -->
+-
+     <xsl:param name="value" >
+       <xsl:value-of select="key('acronym.key', $acronym)/../glossdef/para[1]" />
+     </xsl:param>
+@@ -878,7 +808,7 @@ Get a newer version at http://docbook.sourceforge.net/projects/xsl/
+         <a>
+           <xsl:attribute name="href">
+             <xsl:text>http://foldoc.org/</xsl:text>
+-	        <xsl:value-of select="$acronym"/>
++	          <xsl:value-of select="$acronym"/>
+           </xsl:attribute>
+           <xsl:call-template name="inline.charseq"/>
+         </a>
+diff --git a/doc/manual/realm.xml b/doc/manual/realm.xml
+index 9d9136a..7b73331 100644
+--- a/doc/manual/realm.xml
++++ b/doc/manual/realm.xml
+@@ -49,7 +49,7 @@
+ 	</cmdsynopsis>
+ </refsynopsisdiv>
+ 
+-<refsect1>
++<refsect1 id="man-description">
+ 	<title>Description</title>
+ 	<para><command>realm</command> is a command line tool that
+ 	can be used to manage enrollment in kerberos realms, like Active
+@@ -81,7 +81,7 @@
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-discover">
+ 	<title>Discover</title>
+ 
+ 	<para>Discover a realm and its capabilities.</para>
+@@ -138,7 +138,7 @@ $ realm discover domain.example.com
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-join">
+ 	<title>Join</title>
+ 
+ 	<para>Configure the local machine for use with a realm.</para>
+@@ -263,7 +263,7 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-leave">
+ 	<title>Leave</title>
+ 
+ 	<para>Deconfigure the local machine for use with a realm.</para>
+@@ -313,7 +313,7 @@ $ realm leave domain.example.com
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-list">
+ 	<title>List</title>
+ 
+ 	<para>List all the discovered and configured realms.</para>
+@@ -345,7 +345,7 @@ $ realm list
+ 	</variablelist>
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-permit">
+ 	<title>Permit</title>
+ 
+ 	<para>Permit local login by users of the realm.</para>
+@@ -392,7 +392,7 @@ $ realm permit --withdraw user@example.com
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="man-deny">
+ 	<title>Deny</title>
+ 
+ 	<para>Deny local login by realm accounts.</para>
+diff --git a/doc/manual/realmd-guide-active-directory.xml b/doc/manual/realmd-guide-active-directory.xml
+index 362cf94..c88e8af 100644
+--- a/doc/manual/realmd-guide-active-directory.xml
++++ b/doc/manual/realmd-guide-active-directory.xml
+@@ -69,7 +69,7 @@ $ <command>realm discover --verbose domain.example.com</command>
+ 		<ulink url="http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">Winbind</ulink>.
+ 		By default SSSD is used.</para>
+ 
+-		<section>
++		<section id="using-sssd-with-active-directory">
+ 			<title>Using SSSD with Active Directory</title>
+ 			<para><ulink url="https://fedorahosted.org/sssd/">SSSD</ulink>
+ 			provides client software for various kerberos and/or LDAP
+@@ -91,7 +91,7 @@ $ <command>realm join --client-software=sssd domain.example.com</command>
+ 			</informalexample>
+ 		</section>
+ 
+-		<section>
++		<section id="using-winbind-with-active-directory">
+ 			<title>Using Winbind with Active Directory</title>
+ 			<para>Samba
+ 			<ulink url="http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">Winbind</ulink>
+diff --git a/doc/manual/realmd-guide-ipa.xml b/doc/manual/realmd-guide-ipa.xml
+index bba6504..c3ad450 100644
+--- a/doc/manual/realmd-guide-ipa.xml
++++ b/doc/manual/realmd-guide-ipa.xml
+@@ -13,7 +13,7 @@
+ 	users locally, and log into the local machine with IPA domain
+ 	credentials.</para>
+ 
+-	<section>
++	<section id="discovering-ipa-domains">
+ 		<title>Discovering IPA domains</title>
+ 		<para><command>realmd</command> discovers which domains or
+ 		realms it can use or configure. It can discover and identify
+diff --git a/doc/manual/realmd-guide-kerberos.xml b/doc/manual/realmd-guide-kerberos.xml
+index a57e964..5b9d4b1 100644
+--- a/doc/manual/realmd-guide-kerberos.xml
++++ b/doc/manual/realmd-guide-kerberos.xml
+@@ -12,7 +12,7 @@
+ 	Since there is no standard way to enroll a computer against a Kerberos
+ 	server, it is not possible to do this with <command>realmd</command>.</para>
+ 
+-	<section>
++	<section id="discovering-kerberos-realms">
+ 		<title>Discovering Kerberos realms</title>
+ 		<para><command>realmd</command> discovers which domains or
+ 		realms it can use or configure. It can discover and identify
+diff --git a/doc/manual/realmd.conf.xml b/doc/manual/realmd.conf.xml
+index a2b577c..f0b0879 100644
+--- a/doc/manual/realmd.conf.xml
++++ b/doc/manual/realmd.conf.xml
+@@ -28,7 +28,7 @@
+ 	<refpurpose>Tweak behavior of realmd</refpurpose>
+ </refnamediv>
+ 
+-<refsect1>
++<refsect1 id="realmd-conf-file">
+ 	<title>Configuration File</title>
+ 
+ 	<para><command>realmd</command> can be tweaked by network administrators
+@@ -297,7 +297,7 @@ DOMAIN\user:*:13445:13446:Name:/home/DOMAIN/user:/bin/bash
+ 
+ </refsect1>
+ 
+-<refsect1>
++<refsect1 id="realmd-conf-specific-settings">
+ 	<title>Realm specific settings</title>
+ 	<para>These options should go in an section with the same name
+ 	as the realm in the <filename>/etc/realmd.conf</filename> file.
+diff --git a/doc/manual/static/gtk-doc.css b/doc/manual/static/gtk-doc.css
+index 5618926..af6ce9c 100644
+--- a/doc/manual/static/gtk-doc.css
++++ b/doc/manual/static/gtk-doc.css
+@@ -1,15 +1,23 @@
++body
++{
++  font-family: cantarell, sans-serif;
++}
+ .synopsis, .classsynopsis
+ {
+   /* tango:aluminium 1/2 */
+   background: #eeeeec;
+-  border: solid 1px #d3d7cf;
++  background: rgba(238, 238, 236, 0.5);
++  border: solid 1px rgb(238, 238, 236);
+   padding: 0.5em;
+ }
+ .programlisting
+ {
+   /* tango:sky blue 0/1 */
++  /* fallback for no rgba support */
+   background: #e6f3ff;
+   border: solid 1px #729fcf;
++  background: rgba(114, 159, 207, 0.1);
++  border: solid 1px rgba(114, 159, 207, 0.2);
+   padding: 0.5em;
+ }
+ .variablelist
+@@ -22,86 +30,8 @@
+   vertical-align: top;
+ }
+ 
+-@media screen {
+-  sup a.footnote
+-  {
+-    position: relative;
+-    top: 0em ! important;
+-  }
+-  /* this is needed so that the local anchors are displayed below the naviagtion */
+-  div.footnote a[name], div.refnamediv a[name], div.refsect1 a[name], div.refsect2 a[name], div.index a[name], div.glossary a[name], div.sect1 a[name]
+-  {
+-    display: inline-block;
+-    position: relative;
+-    top:-5em;
+-  }
+-  /* this seems to be a bug in the xsl style sheets when generating indexes */
+-  div.index div.index
+-  {
+-    top: 0em;
+-  }
+-  /* make space for the fixed navigation bar and add space at the bottom so that
+-   * link targets appear somewhat close to top
+-   */
+-  body
+-  {
+-    padding-top: 3.2em;
+-    padding-bottom: 20em;
+-  }
+-  /* style and size the navigation bar */
+-  table.navigation#top
+-  {
+-    position: fixed;
+-    /* tango:scarlet red 0/1 */
+-    background: #ffe6e6;
+-    border: solid 1px #ef2929;
+-    margin-top: 0;
+-    margin-bottom: 0;
+-    top: 0;
+-    left: 0;
+-    height: 3em;
+-    z-index: 10;
+-  }
+-  .navigation a, .navigation a:visited
+-  {
+-    /* tango:scarlet red 3 */
+-    color: #a40000;
+-  }
+-  .navigation a:hover
+-  {
+-    /* tango:scarlet red 1 */
+-    color: #ef2929;
+-  }
+-  td.shortcuts
+-  {
+-    /* tango:scarlet red 1 */
+-    color: #ef2929;
+-    font-size: 80%;
+-    white-space: nowrap;
+-  }
+-}
+-@media print {
+-  table.navigation {
+-    visibility: collapse;
+-    display: none;
+-  }
+-  div.titlepage table.navigation {
+-    visibility: visible;
+-    display: table;
+-    /* tango:scarlet red 0/1 */
+-    background: #ffe6e6;
+-    border: solid 1px #ef2929;
+-    margin-top: 0;
+-    margin-bottom: 0;
+-    top: 0;
+-    left: 0;
+-    height: 3em;
+-  }
+-}
+-
+-.navigation .title
+-{
+-  font-size: 200%;
++span.nowrap {
++  white-space: nowrap;
+ }
+ 
+ div.gallery-float
+@@ -131,6 +61,72 @@ a:hover
+   color: #729fcf;
+ }
+ 
++div.informaltable table
++{
++  border-collapse: separate;
++  border-spacing: 1em 0.3em;
++  border: none;
++}
++
++div.informaltable table td, div.informaltable table th
++{
++  vertical-align: top;
++}
++
++.function_type,
++.variable_type,
++.property_type,
++.signal_type,
++.parameter_name,
++.struct_member_name,
++.union_member_name,
++.define_keyword,
++.datatype_keyword,
++.typedef_keyword
++{
++  text-align: right;
++}
++
++/* dim non-primary columns */
++.c_punctuation,
++.function_type,
++.variable_type,
++.property_type,
++.signal_type,
++.define_keyword,
++.datatype_keyword,
++.typedef_keyword,
++.property_flags,
++.signal_flags,
++.parameter_annotations,
++.enum_member_annotations,
++.struct_member_annotations,
++.union_member_annotations
++{
++  color: #888a85;
++}
++
++.function_type a,
++.function_type a:visited,
++.function_type a:hover,
++.property_type a,
++.property_type a:visited,
++.property_type a:hover,
++.signal_type a,
++.signal_type a:visited,
++.signal_type a:hover,
++.signal_flags a,
++.signal_flags a:visited,
++.signal_flags a:hover
++{
++ color: #729fcf;
++}
++
++td p
++{
++  margin: 0.25em;
++}
++
+ div.table table
+ {
+   border-collapse: collapse;
+@@ -153,14 +149,44 @@ div.table table th
+   background-color: #d3d7cf;
+ }
+ 
++h4
++{
++  color: #555753;
++  margin-top: 1em;
++  margin-bottom: 1em;
++}
++
+ hr
+ {
+-  /* tango:aluminium 3 */
+-  color: #babdb6;
+-  background: #babdb6;
++  /* tango:aluminium 1 */
++  color: #d3d7cf;
++  background: #d3d7cf;
+   border: none 0px;
+   height: 1px;
+   clear: both;
++  margin: 2.0em 0em 2.0em 0em;
++}
++
++dl.toc dt
++{
++  padding-bottom: 0.25em;
++}
++
++dl.toc > dt
++{
++  padding-top: 0.25em;
++  padding-bottom: 0.25em;
++  font-weight: bold;
++}
++
++dl.toc > dl
++{
++  padding-bottom: 0.5em;
++}
++
++.parameter
++{
++  font-style: normal;
+ }
+ 
+ .footer
+@@ -172,31 +198,70 @@ hr
+   font-size: 80%;
+ }
+ 
++.informalfigure,
++.figure
++{
++  margin: 1em;
++}
++
++.informalexample,
++.example
++{
++  margin-top: 1em;
++  margin-bottom: 1em;
++}
++
+ .warning
+ {
+   /* tango:orange 0/1 */
+   background: #ffeed9;
++  background: rgba(252, 175, 62, 0.1);
+   border-color: #ffb04f;
++  border-color: rgba(252, 175, 62, 0.2);
+ }
+ .note
+ {
+   /* tango:chameleon 0/0.5 */
+   background: #d8ffb2;
++  background: rgba(138, 226, 52, 0.1);
+   border-color: #abf562;
++  border-color: rgba(138, 226, 52, 0.2);
+ }
+-.note, .warning
++div.blockquote
++{
++  border-color: #eeeeec;
++}
++.note, .warning, div.blockquote
+ {
+   padding: 0.5em;
+   border-width: 1px;
+   border-style: solid;
++  margin: 2em;
+ }
+-.note h3, .warning h3
++.note p, .warning p
+ {
+-  margin-top: 0.0em
++  margin: 0;
+ }
+-.note p, .warning p
++
++div.warning h3.title,
++div.note h3.title
++{
++  display: none;
++}
++
++p + div.section
++{
++  margin-top: 1em;
++}
++
++div.refnamediv,
++div.refsynopsisdiv,
++div.refsect1,
++div.refsect2,
++div.toc,
++div.section
+ {
+-  margin-bottom: 0.0em
++  margin-bottom: 1em;
+ }
+ 
+ /* blob links */
+@@ -209,33 +274,52 @@ h2 .extralinks, h3 .extralinks
+   font-weight: normal;
+ }
+ 
++.lineart
++{
++  color: #d3d7cf;
++  font-weight: normal;
++}
++
+ .annotation
+ {
+   /* tango:aluminium 5 */
+   color: #555753;
+-  font-size: 80%;
+   font-weight: normal;
+ }
+ 
++.structfield
++{
++  font-style: normal;
++  font-weight: normal;
++}
++
++acronym,abbr
++{
++  border-bottom: 1px dotted gray;
++}
++
+ /* code listings */
+ 
+-.listing_code .programlisting .cbracket   { color: #a40000; } /* tango: scarlet red 3 */
+-.listing_code .programlisting .comment    { color: #a1a39d; } /* tango: aluminium 4 */
+-.listing_code .programlisting .function   { color: #000000; font-weight: bold; }
+-.listing_code .programlisting .function a { color: #11326b; font-weight: bold; } /* tango: sky blue 4 */
+-.listing_code .programlisting .keyword    { color: #4e9a06; } /* tango: chameleon 3  */
++.listing_code .programlisting .normal,
++.listing_code .programlisting .normal a,
++.listing_code .programlisting .number,
++.listing_code .programlisting .cbracket,
++.listing_code .programlisting .symbol     { color: #555753; }
++.listing_code .programlisting .comment,
+ .listing_code .programlisting .linenum    { color: #babdb6; } /* tango: aluminium 3 */
+-.listing_code .programlisting .normal     { color: #000000; }
+-.listing_code .programlisting .number     { color: #75507b; } /* tango: plum 2 */
++.listing_code .programlisting .function,
++.listing_code .programlisting .function a,
+ .listing_code .programlisting .preproc    { color: #204a87; } /* tango: sky blue 3  */
+-.listing_code .programlisting .string     { color: #c17d11; } /* tango: chocolate 2 */
+-.listing_code .programlisting .type       { color: #000000; }
+-.listing_code .programlisting .type a     { color: #11326b; } /* tango: sky blue 4 */
+-.listing_code .programlisting .symbol     { color: #ce5c00; } /* tango: orange 3 */
++.listing_code .programlisting .string     { color: #ad7fa8; } /* tango: plum */
++.listing_code .programlisting .keyword,
++.listing_code .programlisting .usertype,
++.listing_code .programlisting .type,
++.listing_code .programlisting .type a     { color: #4e9a06; } /* tango: chameleon 3  */
+ 
+ .listing_frame {
+   /* tango:sky blue 1 */
+   border: solid 1px #729fcf;
++  border: solid 1px rgba(114, 159, 207, 0.2);
+   padding: 0px;
+ }
+ 
+@@ -247,18 +331,152 @@ h2 .extralinks, h3 .extralinks
+ .listing_lines {
+   /* tango:sky blue 0.5 */
+   background: #a6c5e3;
++  background: rgba(114, 159, 207, 0.2);
+   /* tango:aluminium 6 */
+   color: #2e3436;
+ }
+ .listing_code {
+   /* tango:sky blue 0 */
+   background: #e6f3ff;
++  background: rgba(114, 159, 207, 0.1);
+ }
+ .listing_code .programlisting {
+   /* override from previous */
+   border: none 0px;
+   padding: 0px;
++  background: none;
+ }
+ .listing_lines pre, .listing_code pre {
+   margin: 0px;
+ }
++
++@media screen {
++  /* these have a <sup> as a first child, but since there are no parent selectors
++   * we can't use that. */
++  a.footnote
++  {
++    position: relative;
++    top: 0em ! important;
++  }
++  /* this is needed so that the local anchors are displayed below the naviagtion */
++  div.footnote a[name], div.refnamediv a[name], div.refsect1 a[name], div.refsect2 a[name], div.index a[name], div.glossary a[name], div.sect1 a[name]
++  {
++    display: inline-block;
++    position: relative;
++    top:-5em;
++  }
++  /* this seems to be a bug in the xsl style sheets when generating indexes */
++  div.index div.index
++  {
++    top: 0em;
++  }
++  /* make space for the fixed navigation bar and add space at the bottom so that
++   * link targets appear somewhat close to top
++   */
++  body
++  {
++    padding-top: 2.5em;
++    padding-bottom: 500px;
++    max-width: 60em;
++  }
++  p
++  {
++    max-width: 60em;
++  }
++  /* style and size the navigation bar */
++  table.navigation#top
++  {
++    position: fixed;
++    background: #e2e2e2;
++    border-bottom: solid 1px #babdb6;
++    border-spacing: 5px;
++    margin-top: 0;
++    margin-bottom: 0;
++    top: 0;
++    left: 0;
++    z-index: 10;
++  }
++  table.navigation#top td
++  {
++    padding-left: 6px;
++    padding-right: 6px;
++  }
++  .navigation a, .navigation a:visited
++  {
++    /* tango:sky blue 3 */
++    color: #204a87;
++  }
++  .navigation a:hover
++  {
++    /* tango:sky blue 2 */
++    color: #3465a4;
++  }
++  td.shortcuts
++  {
++    /* tango:sky blue 2 */
++    color: #3465a4;
++    font-size: 80%;
++    white-space: nowrap;
++  }
++  td.shortcuts .dim
++  {
++    color: #babdb6;
++  }
++  .navigation .title
++  {
++    font-size: 80%;
++    max-width: none;
++    margin: 0px;
++    font-weight: normal;
++  }
++}
++@media screen and (min-width: 60em) {
++  /* screen larger than 60em */
++  body { margin: auto; }
++}
++@media screen and (max-width: 60em) {
++  /* screen less than 60em */
++  #nav_hierarchy { display: none; }
++  #nav_interfaces { display: none; }
++  #nav_prerequisites { display: none; }
++  #nav_derived_interfaces { display: none; }
++  #nav_implementations { display: none; }
++  #nav_child_properties { display: none; }
++  #nav_style_properties { display: none; }
++  #nav_index { display: none; }
++  #nav_glossary { display: none; }
++  .gallery_image { display: none; }
++  .property_flags { display: none; }
++  .signal_flags { display: none; }
++  .parameter_annotations { display: none; }
++  .enum_member_annotations { display: none; }
++  .struct_member_annotations { display: none; }
++  .union_member_annotations { display: none; }
++  /* now that a column is hidden, optimize space */
++  col.parameters_name { width: auto; }
++  col.parameters_description { width: auto; }
++  col.struct_members_name { width: auto; }
++  col.struct_members_description { width: auto; }
++  col.enum_members_name { width: auto; }
++  col.enum_members_description { width: auto; }
++  col.union_members_name { width: auto; }
++  col.union_members_description { width: auto; }
++  .listing_lines { display: none; }
++}
++@media print {
++  table.navigation {
++    visibility: collapse;
++    display: none;
++  }
++  div.titlepage table.navigation {
++    visibility: visible;
++    display: table;
++    background: #e2e2e2;
++    border: solid 1px #babdb6;
++    margin-top: 0;
++    margin-bottom: 0;
++    top: 0;
++    left: 0;
++    height: 3em;
++  }
++}
+-- 
+2.25.1
+

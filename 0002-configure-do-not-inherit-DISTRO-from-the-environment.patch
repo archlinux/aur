@@ -1,0 +1,32 @@
+From 506887297ea33339d8ad8b274be643d220bf22f8 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Thu, 28 Nov 2019 18:51:30 +0100
+Subject: [PATCH 2/7] configure: do not inherit DISTRO from the environment
+
+The argument of the --with-distro configure option is stored in the
+variable DISTRO. If DISTRO is already set in the build environment it
+should not be used hence DISTRO must be cleared by the configure script
+if not set by --with-distro.
+
+Related to https://bugzilla.redhat.com/show_bug.cgi?id=1638396
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e335247..a424a49 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,7 +31,8 @@ AC_ARG_WITH([distro],
+             [AS_HELP_STRING([--with-distro],
+                             [Configure for a specific distribution (eg: redhat)]
+                            )],
+-            [DISTRO=$withval])
++            [DISTRO=$withval],
++            [DISTRO=])
+ 
+ if test -z $DISTRO; then
+ 	AC_CHECK_FILE(/etc/redhat-release, [DISTRO="redhat"])
+-- 
+2.25.1
+

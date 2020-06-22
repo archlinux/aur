@@ -1,0 +1,26 @@
+From ab41e2830d2f7540d58370b5f35f85c2808c1871 Mon Sep 17 00:00:00 2001
+From: Stef Walter <stefw@redhat.com>
+Date: Fri, 11 Sep 2015 12:32:36 +0200
+Subject: [PATCH] tests: Fix duplicate test case path
+
+GLib is now stricter about this
+---
+ tests/test-safe-format.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test-safe-format.c b/tests/test-safe-format.c
+index 02aa5f1..204e10d 100644
+--- a/tests/test-safe-format.c
++++ b/tests/test-safe-format.c
+@@ -194,7 +194,7 @@ main (int argc,
+ 		else
+ 			escaped = g_strdup (fixtures[i].format);
+ 		g_strdelimit (escaped, " =\\/", '_');
+-		name = g_strdup_printf ("/realmd/safe-format/%s", escaped);
++		name = g_strdup_printf ("/realmd/safe-format/%d-%s", i, escaped);
+ 		g_free (escaped);
+ 
+ 		g_test_add_data_func (name, fixtures + i, test_safe_format_string_cb);
+-- 
+2.4.3
+

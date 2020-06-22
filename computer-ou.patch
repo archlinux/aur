@@ -1,0 +1,894 @@
+From 3db35ad73ec57c8af499a0dcef96ffd4da914236 Mon Sep 17 00:00:00 2001
+From: Stef Walter <stefw@redhat.com>
+Date: Mon, 7 Sep 2015 13:49:10 +0200
+Subject: [PATCH 2/2] service: Fully qualify --computer-ou DN before passing to
+ adcli
+
+This allows us to have a similar behavior for both the Samba and
+adcli membership software.
+---
+ service/Makefile.am          |   4 +-
+ service/realm-adcli-enroll.c |  11 +-
+ service/realm-dn-util.c      | 239 +++++++++++++++++++++++++++++++++++++++++++
+ service/realm-dn-util.h      |  32 ++++++
+ service/realm-samba-enroll.c |   4 +-
+ service/realm-samba-util.c   | 172 -------------------------------
+ service/realm-samba-util.h   |  29 ------
+ tests/Makefile.am            |  16 +--
+ tests/test-dn-util.c         | 129 +++++++++++++++++++++++
+ tests/test-samba-ou-format.c |  89 ----------------
+ 11 files changed, 422 insertions(+), 305 deletions(-)
+ create mode 100644 service/realm-dn-util.c
+ create mode 100644 service/realm-dn-util.h
+ delete mode 100644 service/realm-samba-util.c
+ delete mode 100644 service/realm-samba-util.h
+ create mode 100644 tests/test-dn-util.c
+ delete mode 100644 tests/test-samba-ou-format.c
+
+diff --git a/service/Makefile.am b/service/Makefile.am
+index 06a95ef..88ee780 100644
+--- a/service/Makefile.am
++++ b/service/Makefile.am
+@@ -43,6 +43,8 @@ realmd_SOURCES = \
+ 	service/realm-disco-mscldap.h \
+ 	service/realm-disco-rootdse.c \
+ 	service/realm-disco-rootdse.h \
++	service/realm-dn-util.c \
++	service/realm-dn-util.h \
+ 	service/realm-errors.c \
+ 	service/realm-errors.h \
+ 	service/realm-example.c \
+@@ -79,8 +81,6 @@ realmd_SOURCES = \
+ 	service/realm-samba-enroll.h \
+ 	service/realm-samba-provider.c \
+ 	service/realm-samba-provider.h \
+-	service/realm-samba-util.c \
+-	service/realm-samba-util.h \
+ 	service/realm-samba-winbind.c \
+ 	service/realm-samba-winbind.h \
+ 	service/realm-service.c \
+diff --git a/service/realm-adcli-enroll.c b/service/realm-adcli-enroll.c
+index 7448647..ef1b563 100644
+--- a/service/realm-adcli-enroll.c
++++ b/service/realm-adcli-enroll.c
+@@ -18,6 +18,7 @@
+ #include "realm-command.h"
+ #include "realm-daemon.h"
+ #include "realm-diagnostics.h"
++#include "realm-dn-util.h"
+ #include "realm-errors.h"
+ #include "realm-ini-config.h"
+ #include "realm-options.h"
+@@ -82,6 +83,7 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
+ 	gchar *ccache_arg = NULL;
+ 	gchar *upn_arg = NULL;
+ 	gchar *server_arg = NULL;
++	gchar *ou_arg = NULL;
+ 
+ 	g_return_if_fail (cred != NULL);
+ 	g_return_if_fail (disco != NULL);
+@@ -120,9 +122,13 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
+ 	}
+ 
+ 	computer_ou = realm_options_computer_ou (options, disco->domain_name);
+-	if (computer_ou) {
++	if (computer_ou != NULL) {
++		ou_arg = realm_dn_util_build_qualified (computer_ou, disco->domain_name);
+ 		g_ptr_array_add (args, "--computer-ou");
+-		g_ptr_array_add (args, (gpointer)computer_ou);
++		if (ou_arg)
++			g_ptr_array_add (args, ou_arg);
++		else
++			g_ptr_array_add (args, (gpointer)computer_ou);
+ 	}
+ 
+ 	os = realm_settings_value ("active-directory", "os-name");
+@@ -190,6 +196,7 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
+ 	free (ccache_arg);
+ 	free (upn_arg);
+ 	free (server_arg);
++	free (ou_arg);
+ }
+ 
+ gboolean
+diff --git a/service/realm-dn-util.c b/service/realm-dn-util.c
+new file mode 100644
+index 0000000..85bcdb9
+--- /dev/null
++++ b/service/realm-dn-util.c
+@@ -0,0 +1,239 @@
++/* realmd -- Realm configuration service
++ *
++ * Copyright 2012 Red Hat Inc
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published
++ * by the Free Software Foundation; either version 2 of the licence or (at
++ * your option) any later version.
++ *
++ * See the included COPYING file for more information.
++ *
++ * Author: Stef Walter <stefw@gnome.org>
++ */
++
++#include "config.h"
++
++#include "realm-dn-util.h"
++
++#include <glib.h>
++
++#include <ldap.h>
++
++static gboolean
++berval_is_string (const struct berval *bv,
++                  const gchar *string,
++                  gsize length)
++{
++	return (bv->bv_len == length &&
++	        g_ascii_strncasecmp (bv->bv_val, string, length) == 0);
++
++}
++
++static gboolean
++berval_case_equals (const struct berval *v1,
++                    const struct berval *v2)
++{
++	return (v1->bv_len == v2->bv_len &&
++	        g_ascii_strncasecmp (v1->bv_val, v2->bv_val, v1->bv_len) == 0);
++}
++
++static gboolean
++dn_equals_domain (LDAPDN dn,
++                  const gchar *domain_dn_str,
++                  const gchar *domain)
++{
++	LDAPDN domain_dn;
++	gboolean ret;
++	int rc;
++	gint i, j;
++
++	rc = ldap_str2dn (domain_dn_str, &domain_dn, LDAP_DN_FORMAT_LDAPV3);
++	g_return_val_if_fail (rc == LDAP_SUCCESS, FALSE);
++
++	for (i = 0; dn[i] != NULL && domain_dn[i] != NULL; i++) {
++		for (j = 0; dn[i][j] != NULL && domain_dn[i][j] != NULL; j++) {
++			if (!berval_case_equals (&(dn[i][j]->la_attr), &(domain_dn[i][j]->la_attr)) ||
++			    !berval_case_equals (&(dn[i][j]->la_value), &(domain_dn[i][j]->la_value)))
++				break;
++		}
++
++		if (dn[i][j] != NULL && domain_dn[i][j] != NULL)
++			break;
++	}
++
++	/* Did we reach end of both DNs? */
++	ret = (dn[i] == NULL && domain_dn[i] == NULL);
++
++	ldap_dnfree (domain_dn);
++
++	return ret;
++}
++
++gchar *
++realm_dn_util_build_samba_ou (const gchar *ldap_dn,
++                              const gchar *domain)
++{
++	gchar *domain_dn_str = NULL;
++	GArray *parts;
++	GString *part;
++	gchar **strv;
++	gchar *str;
++	LDAPAVA* ava;
++	gboolean ret;
++	LDAPDN dn;
++	int rc;
++	gint i, j;
++
++	/*
++	 * Here we convert a standard LDAP DN to the strange samba net format,
++	 * as "documented" here:
++	 *
++	 * createcomputer=OU  Precreate the computer account in a specific OU.
++	 *                    The OU string read from top to bottom without RDNs and delimited by a '/'.
++	 *                    E.g. "createcomputer=Computers/Servers/Unix"
++	 *                    NB: A backslash '\' is used as escape at multiple levels and may
++	 *                        need to be doubled or even quadrupled.  It is not used as a separator.
++	 */
++
++	/* ldap_str2dn doesn't like empty strings */
++	while (g_ascii_isspace (ldap_dn[0]))
++		ldap_dn++;
++	if (g_str_equal (ldap_dn, ""))
++		return NULL;
++
++	rc = ldap_str2dn (ldap_dn, &dn, LDAP_DN_FORMAT_LDAPV3);
++	if (rc != LDAP_SUCCESS)
++		return NULL;
++
++	ret = TRUE;
++	parts = g_array_new (TRUE, TRUE, sizeof (gchar *));
++
++	for (i = 0; dn[i] != NULL; i++) {
++		ava = dn[i][0];
++
++		/*
++		 * Make sure this is a valid DN, we only support one value per
++		 * RDN, string values, and must be an OU. DC values are allowed
++		 * but only at the end of the DN.
++		 */
++
++		if (ava == NULL || dn[i][1] != NULL || !(ava->la_flags & LDAP_AVA_STRING)) {
++			ret = FALSE;
++			break;
++
++		/* A DC, remainder must match the domain */
++		} else if (berval_is_string (&ava->la_attr, "DC", 2)) {
++			rc = ldap_domain2dn (domain, &domain_dn_str);
++			if (rc != LDAP_SUCCESS)
++				ret = FALSE;
++			else
++				ret = dn_equals_domain (dn + i, domain_dn_str, domain);
++			break;
++
++		/* An OU, include */
++		} else if (berval_is_string (&ava->la_attr, "OU", 2)) {
++			part = g_string_sized_new (ava->la_value.bv_len);
++			for (j = 0; j < ava->la_value.bv_len; j++) {
++				switch (ava->la_value.bv_val[j]) {
++				case '\\':
++					g_string_append (part, "\\\\");
++					break;
++				case '/':
++					g_string_append (part, "\\/");
++					break;
++				default:
++					g_string_append_c (part, ava->la_value.bv_val[j]);
++					break;
++				}
++			}
++			str = g_string_free (part, FALSE);
++			g_array_insert_val (parts, 0, str);
++
++		/* Invalid, stop */
++		} else {
++			ret = FALSE;
++			break;
++		}
++	}
++
++	ldap_dnfree (dn);
++	if (domain_dn_str)
++		ldap_memfree (domain_dn_str);
++
++	strv = (gchar **)g_array_free (parts, FALSE);
++	str = NULL;
++
++	/* Loop completed successfully */
++	if (ret)
++		str = g_strjoinv ("/", strv);
++
++	g_strfreev (strv);
++
++	return str;
++}
++
++gchar *
++realm_dn_util_build_qualified (const gchar *ldap_dn,
++                               const gchar *domain)
++{
++	gchar *domain_dn_str = NULL;
++	gboolean had_dc = FALSE;
++	gchar *str;
++	LDAPAVA* ava;
++	gboolean ret;
++	LDAPDN dn;
++	int rc;
++	gint i;
++
++	/* ldap_str2dn doesn't like empty strings */
++	while (g_ascii_isspace (ldap_dn[0]))
++		ldap_dn++;
++	if (g_str_equal (ldap_dn, ""))
++		return NULL;
++
++	rc = ldap_str2dn (ldap_dn, &dn, LDAP_DN_FORMAT_LDAPV3);
++	if (rc != LDAP_SUCCESS)
++		return NULL;
++
++	rc = ldap_domain2dn (domain, &domain_dn_str);
++	if (rc != LDAP_SUCCESS) {
++		ldap_dnfree (dn);
++		return NULL;
++	}
++
++	ret = TRUE;
++
++	for (i = 0; dn[i] != NULL; i++) {
++		ava = dn[i][0];
++
++		/*
++		 * Make sure this is a valid DN, we only support one value per
++		 * RDN, string values. DC values are allowed but only at the end of the DN.
++		 */
++
++		if (ava == NULL || dn[i][1] != NULL || !(ava->la_flags & LDAP_AVA_STRING)) {
++			ret = FALSE;
++			break;
++
++		/* A DC, remainder must match the domain */
++		} else if (berval_is_string (&ava->la_attr, "DC", 2)) {
++			had_dc = TRUE;
++			ret = dn_equals_domain (dn + i, domain_dn_str, domain);
++			break;
++		}
++	}
++
++	ldap_dnfree (dn);
++
++	if (!ret)
++		return NULL;
++
++	if (had_dc)
++		str = g_strdup (ldap_dn);
++	else
++		str = g_strdup_printf ("%s,%s", ldap_dn, domain_dn_str);
++
++	ldap_memfree (domain_dn_str);
++	return str;
++}
+diff --git a/service/realm-dn-util.h b/service/realm-dn-util.h
+new file mode 100644
+index 0000000..f5e5e69
+--- /dev/null
++++ b/service/realm-dn-util.h
+@@ -0,0 +1,32 @@
++/* realmd -- Realm configuration service
++ *
++ * Copyright 2012 Red Hat Inc
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published
++ * by the Free Software Foundation; either version 2 of the licence or (at
++ * your option) any later version.
++ *
++ * See the included COPYING file for more information.
++ *
++ * Author: Stef Walter <stefw@gnome.org>
++ */
++
++#include "config.h"
++
++#ifndef __REALM_DN_UTIL_H__
++#define __REALM_DN_UTIL_H__
++
++#include <gio/gio.h>
++
++G_BEGIN_DECLS
++
++gchar *           realm_dn_util_build_samba_ou     (const gchar *ldap_dn,
++                                                    const gchar *domain);
++
++gchar *           realm_dn_util_build_qualified    (const gchar *ldap_dn,
++                                                    const gchar *domain);
++
++G_END_DECLS
++
++#endif /* __REALM_DN_UTIL_H__ */
+diff --git a/service/realm-samba-enroll.c b/service/realm-samba-enroll.c
+index e8739d7..e749764 100644
+--- a/service/realm-samba-enroll.c
++++ b/service/realm-samba-enroll.c
+@@ -18,12 +18,12 @@
+ #include "realm-daemon.h"
+ #include "realm-dbus-constants.h"
+ #include "realm-diagnostics.h"
++#include "realm-dn-util.h"
+ #include "realm-errors.h"
+ #include "realm-options.h"
+ #include "realm-samba-config.h"
+ #include "realm-samba-enroll.h"
+ #include "realm-samba-provider.h"
+-#include "realm-samba-util.h"
+ #include "realm-settings.h"
+ 
+ #include <glib/gstdio.h>
+@@ -314,7 +314,7 @@ begin_join (GTask *task,
+ 
+ 	computer_ou = realm_options_computer_ou (options, join->disco->domain_name);
+ 	if (computer_ou != NULL) {
+-		strange_ou = realm_samba_util_build_strange_ou (computer_ou, join->disco->domain_name);
++		strange_ou = realm_dn_util_build_samba_ou (computer_ou, join->disco->domain_name);
+ 		if (strange_ou) {
+ 			if (!g_str_equal (strange_ou, ""))
+ 				join->join_args[at++] = g_strdup_printf ("createcomputer=%s", strange_ou);
+diff --git a/service/realm-samba-util.c b/service/realm-samba-util.c
+deleted file mode 100644
+index 3f6a53e..0000000
+--- a/service/realm-samba-util.c
++++ /dev/null
+@@ -1,172 +0,0 @@
+-/* realmd -- Realm configuration service
+- *
+- * Copyright 2012 Red Hat Inc
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU Lesser General Public License as published
+- * by the Free Software Foundation; either version 2 of the licence or (at
+- * your option) any later version.
+- *
+- * See the included COPYING file for more information.
+- *
+- * Author: Stef Walter <stefw@gnome.org>
+- */
+-
+-#include "config.h"
+-
+-#include "realm-samba-util.h"
+-
+-#include <glib.h>
+-
+-#include <ldap.h>
+-
+-static gboolean
+-berval_is_string (const struct berval *bv,
+-                  const gchar *string,
+-                  gsize length)
+-{
+-	return (bv->bv_len == length &&
+-	        g_ascii_strncasecmp (bv->bv_val, string, length) == 0);
+-
+-}
+-
+-static gboolean
+-berval_case_equals (const struct berval *v1,
+-                    const struct berval *v2)
+-{
+-	return (v1->bv_len == v2->bv_len &&
+-	        g_ascii_strncasecmp (v1->bv_val, v2->bv_val, v1->bv_len) == 0);
+-}
+-
+-static gboolean
+-dn_equals_domain (LDAPDN dn,
+-                  const gchar *domain)
+-{
+-	LDAPDN domain_dn;
+-	gchar *domain_dn_str;
+-	gboolean ret;
+-	int rc;
+-	gint i, j;
+-
+-	rc = ldap_domain2dn (domain, &domain_dn_str);
+-	g_return_val_if_fail (rc == LDAP_SUCCESS, FALSE);
+-
+-	rc = ldap_str2dn (domain_dn_str, &domain_dn, LDAP_DN_FORMAT_LDAPV3);
+-	g_return_val_if_fail (rc == LDAP_SUCCESS, FALSE);
+-
+-	ldap_memfree (domain_dn_str);
+-
+-	for (i = 0; dn[i] != NULL && domain_dn[i] != NULL; i++) {
+-		for (j = 0; dn[i][j] != NULL && domain_dn[i][j] != NULL; j++) {
+-			if (!berval_case_equals (&(dn[i][j]->la_attr), &(domain_dn[i][j]->la_attr)) ||
+-			    !berval_case_equals (&(dn[i][j]->la_value), &(domain_dn[i][j]->la_value)))
+-				break;
+-		}
+-
+-		if (dn[i][j] != NULL && domain_dn[i][j] != NULL)
+-			break;
+-	}
+-
+-	/* Did we reach end of both DNs? */
+-	ret = (dn[i] == NULL && domain_dn[i] == NULL);
+-
+-	ldap_dnfree (domain_dn);
+-
+-	return ret;
+-}
+-
+-gchar *
+-realm_samba_util_build_strange_ou (const gchar *ldap_dn,
+-                                   const gchar *domain)
+-{
+-	GArray *parts;
+-	GString *part;
+-	gchar **strv;
+-	gchar *str;
+-	LDAPAVA* ava;
+-	gboolean ret;
+-	LDAPDN dn;
+-	int rc;
+-	gint i, j;
+-
+-	/*
+-	 * Here we convert a standard LDAP DN to the strange samba net format,
+-	 * as "documented" here:
+-	 *
+-	 * createcomputer=OU  Precreate the computer account in a specific OU.
+-	 *                    The OU string read from top to bottom without RDNs and delimited by a '/'.
+-	 *                    E.g. "createcomputer=Computers/Servers/Unix"
+-	 *                    NB: A backslash '\' is used as escape at multiple levels and may
+-	 *                        need to be doubled or even quadrupled.  It is not used as a separator.
+-	 */
+-
+-	/* ldap_str2dn doesn't like empty strings */
+-	while (g_ascii_isspace (ldap_dn[0]))
+-		ldap_dn++;
+-	if (g_str_equal (ldap_dn, ""))
+-		return NULL;
+-
+-	rc = ldap_str2dn (ldap_dn, &dn, LDAP_DN_FORMAT_LDAPV3);
+-	if (rc != LDAP_SUCCESS)
+-		return NULL;
+-
+-	ret = TRUE;
+-	parts = g_array_new (TRUE, TRUE, sizeof (gchar *));
+-
+-	for (i = 0; dn[i] != NULL; i++) {
+-		ava = dn[i][0];
+-
+-		/*
+-		 * Make sure this is a valid DN, we only support one value per
+-		 * RDN, string values, and must be an OU. DC values are allowed
+-		 * but only at the end of the DN.
+-		 */
+-
+-		if (ava == NULL || dn[i][1] != NULL || !(ava->la_flags & LDAP_AVA_STRING)) {
+-			ret = FALSE;
+-			break;
+-
+-		/* A DC, remainder must match the domain */
+-		} else if (berval_is_string (&ava->la_attr, "DC", 2)) {
+-			ret = dn_equals_domain (dn + i, domain);
+-			break;
+-
+-		/* An OU, include */
+-		} else if (berval_is_string (&ava->la_attr, "OU", 2)) {
+-			part = g_string_sized_new (ava->la_value.bv_len);
+-			for (j = 0; j < ava->la_value.bv_len; j++) {
+-				switch (ava->la_value.bv_val[j]) {
+-				case '\\':
+-					g_string_append (part, "\\\\");
+-					break;
+-				case '/':
+-					g_string_append (part, "\\/");
+-					break;
+-				default:
+-					g_string_append_c (part, ava->la_value.bv_val[j]);
+-					break;
+-				}
+-			}
+-			str = g_string_free (part, FALSE);
+-			g_array_insert_val (parts, 0, str);
+-
+-		/* Invalid, stop */
+-		} else {
+-			ret = FALSE;
+-			break;
+-		}
+-	}
+-
+-	ldap_dnfree (dn);
+-
+-	strv = (gchar **)g_array_free (parts, FALSE);
+-	str = NULL;
+-
+-	/* Loop completed successfully */
+-	if (ret)
+-		str = g_strjoinv ("/", strv);
+-
+-	g_strfreev (strv);
+-
+-	return str;
+-}
+diff --git a/service/realm-samba-util.h b/service/realm-samba-util.h
+deleted file mode 100644
+index 2a680e7..0000000
+--- a/service/realm-samba-util.h
++++ /dev/null
+@@ -1,29 +0,0 @@
+-/* realmd -- Realm configuration service
+- *
+- * Copyright 2012 Red Hat Inc
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU Lesser General Public License as published
+- * by the Free Software Foundation; either version 2 of the licence or (at
+- * your option) any later version.
+- *
+- * See the included COPYING file for more information.
+- *
+- * Author: Stef Walter <stefw@gnome.org>
+- */
+-
+-#include "config.h"
+-
+-#ifndef __REALM_SAMBA_UTIL_H__
+-#define __REALM_SAMBA_UTIL_H__
+-
+-#include <gio/gio.h>
+-
+-G_BEGIN_DECLS
+-
+-gchar *           realm_samba_util_build_strange_ou   (const gchar *ldap_dn,
+-                                                       const gchar *suffix_dn);
+-
+-G_END_DECLS
+-
+-#endif /* __REALM_SAMBA_UTIL_H__ */
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index ddeba4d..3b05066 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -12,11 +12,11 @@ TEST_LIBS = \
+ 	$(GLIB_LIBS)
+ 
+ TEST_PROGS = \
++	test-dn-util \
+ 	test-ini-config \
+ 	test-sssd-config \
+ 	test-safe-format \
+ 	test-login-name \
+-	test-samba-ou-format \
+ 	test-settings \
+ 	$(NULL)
+ 
+@@ -27,6 +27,13 @@ noinst_PROGRAMS +=  \
+ 	frob-install-packages \
+ 	$(NULL)
+ 
++test_dn_util_SOURCES = \
++	tests/test-dn-util.c \
++	service/realm-dn-util.c \
++	$(NULL)
++test_dn_util_LDADD = $(TEST_LIBS)
++test_dn_util_CFLAGS = $(TEST_CFLAGS)
++
+ test_ini_config_SOURCES = \
+ 	tests/test-ini-config.c \
+ 	service/realm-ini-config.c \
+@@ -59,13 +66,6 @@ test_login_name_SOURCES = \
+ test_login_name_LDADD = $(TEST_LIBS)
+ test_login_name_CFLAGS = $(TEST_CFLAGS)
+ 
+-test_samba_ou_format_SOURCES = \
+-	tests/test-samba-ou-format.c \
+-	service/realm-samba-util.c \
+-	$(NULL)
+-test_samba_ou_format_LDADD = $(TEST_LIBS)
+-test_samba_ou_format_CFLAGS = $(TEST_CFLAGS)
+-
+ test_settings_SOURCES = \
+ 	tests/test-settings.c \
+ 	service/realm-settings.c \
+diff --git a/tests/test-dn-util.c b/tests/test-dn-util.c
+new file mode 100644
+index 0000000..c62a40f
+--- /dev/null
++++ b/tests/test-dn-util.c
+@@ -0,0 +1,129 @@
++/* realmd -- Realm configuration service
++ *
++ * Copyright 2012 Red Hat Inc
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published
++ * by the Free Software Foundation; either version 2 of the licence or (at
++ * your option) any later version.
++ *
++ * See the included COPYING file for more information.
++ *
++ * Author: Stef Walter <stefw@gnome.org>
++ */
++
++#include "config.h"
++
++#include "service/realm-dn-util.h"
++
++#include <glib/gstdio.h>
++
++#include <string.h>
++
++typedef struct {
++	const gchar *ldap_dn;
++	const gchar *domain;
++	const gchar *result;
++} Fixture;
++
++static void
++test_samba_ou_format (gconstpointer user_data)
++{
++	const Fixture *fixture = user_data;
++	gchar *result;
++
++	result = realm_dn_util_build_samba_ou (fixture->ldap_dn, fixture->domain);
++	g_assert_cmpstr (result, ==, fixture->result);
++	g_free (result);
++}
++
++static const Fixture samba_ou_fixtures[] = {
++	{ "OU=One", "domain.example.com", "One" },
++	{ "OU=One,ou=two", "domain.example.com", "two/One" },
++	{ "Ou=One Long,OU=two", "domain.example.com", "two/One Long" },
++	{ "Ou=One,OU=two, ou=Three", "domain.example.com", "Three/two/One" },
++	{ "Ou=Test/Escape,Ou=Two", "domain.example.com", "Two/Test\\/Escape" },
++	{ "Ou=Test\\\\Escape,Ou=Two", "domain.example.com", "Two/Test\\\\Escape" },
++	{ "OU=One,DC=domain,dc=example,Dc=COM", "domain.example.com", "One" },
++	{ "OU=One,OU=Two Here,DC=domain,dc=example,Dc=COM", "domain.example.com", "Two Here/One" },
++	{ "OU=One,OU=Two Here,DC=invalid,Dc=COM", "domain.example.com", NULL },
++	{ " ", "domain.example.com", NULL },
++	{ "", "domain.example.com", NULL },
++	{ "OU", "domain.example.com", NULL },
++	{ "OU=One,", "domain.example.com", NULL },
++	{ "CN=Unsupported", "domain.example.com", NULL },
++	{ "OU=One+CN=Unsupported", "domain.example.com", NULL },
++	{ "DC=radi07, DC=segad, DC=lab, DC=sjc, DC=redhat, DC=com", "radi08.segad.lab.sjc.redhat.com", NULL },
++
++};
++
++static void
++test_qualify_dn (gconstpointer user_data)
++{
++	const Fixture *fixture = user_data;
++	gchar *result;
++
++	result = realm_dn_util_build_qualified (fixture->ldap_dn, fixture->domain);
++	g_assert_cmpstr (result, ==, fixture->result);
++	g_free (result);
++}
++
++static const Fixture qualify_fixtures[] = {
++	{ "OU=One", "domain.example.com", "OU=One,dc=domain,dc=example,dc=com" },
++	{ "OU=One,ou=two", "domain.example.com", "OU=One,ou=two,dc=domain,dc=example,dc=com" },
++	{ "Ou=One Long,OU=two", "domain.example.com", "Ou=One Long,OU=two,dc=domain,dc=example,dc=com" },
++	{ "OU=One,DC=domain,dc=example,Dc=COM", "domain.example.com", "OU=One,DC=domain,dc=example,Dc=COM" },
++	{ "OU=One,OU=Two Here,DC=domain,dc=example,Dc=COM", "domain.example.com", "OU=One,OU=Two Here,DC=domain,dc=example,Dc=COM" },
++	{ "OU=One,OU=Two Here,DC=invalid,Dc=COM", "domain.example.com", NULL },
++	{ " ", "domain.example.com", NULL },
++	{ "", "domain.example.com", NULL },
++	{ "OU", "domain.example.com", NULL },
++	{ "OU=One,", "domain.example.com", NULL },
++	{ "CN=Test", "domain.example.com", "CN=Test,dc=domain,dc=example,dc=com" },
++	{ "OU=One+CN=Unsupported", "domain.example.com", NULL },
++	{ "DC=radi07, DC=segad, DC=lab, DC=sjc, DC=redhat, DC=com", "radi08.segad.lab.sjc.redhat.com", NULL },
++};
++
++int
++main (int argc,
++      char **argv)
++{
++	gchar *escaped;
++	gchar *name;
++	gint i;
++
++#if !GLIB_CHECK_VERSION(2, 36, 0)
++	g_type_init ();
++#endif
++
++	g_test_init (&argc, &argv, NULL);
++	g_set_prgname ("test-dn-util");
++
++	for (i = 0; i < G_N_ELEMENTS (samba_ou_fixtures); i++) {
++		if (g_str_equal (samba_ou_fixtures[i].ldap_dn, ""))
++			escaped = g_strdup ("_empty_");
++		else
++			escaped = g_strdup (samba_ou_fixtures[i].ldap_dn);
++		g_strdelimit (escaped, ", =\\/", '_');
++		name = g_strdup_printf ("/realmd/samba-ou-format/%s", escaped);
++		g_free (escaped);
++
++		g_test_add_data_func (name, samba_ou_fixtures + i, test_samba_ou_format);
++		g_free (name);
++	}
++
++	for (i = 0; i < G_N_ELEMENTS (qualify_fixtures); i++) {
++		if (g_str_equal (qualify_fixtures[i].ldap_dn, ""))
++			escaped = g_strdup ("_empty_");
++		else
++			escaped = g_strdup (qualify_fixtures[i].ldap_dn);
++		g_strdelimit (escaped, ", =\\/", '_');
++		name = g_strdup_printf ("/realmd/qualify-dn/%s", escaped);
++		g_free (escaped);
++
++		g_test_add_data_func (name, qualify_fixtures + i, test_qualify_dn);
++		g_free (name);
++	}
++
++	return g_test_run ();
++}
+diff --git a/tests/test-samba-ou-format.c b/tests/test-samba-ou-format.c
+deleted file mode 100644
+index 0a482ee..0000000
+--- a/tests/test-samba-ou-format.c
++++ /dev/null
+@@ -1,89 +0,0 @@
+-/* realmd -- Realm configuration service
+- *
+- * Copyright 2012 Red Hat Inc
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU Lesser General Public License as published
+- * by the Free Software Foundation; either version 2 of the licence or (at
+- * your option) any later version.
+- *
+- * See the included COPYING file for more information.
+- *
+- * Author: Stef Walter <stefw@gnome.org>
+- */
+-
+-#include "config.h"
+-
+-#include "service/realm-samba-util.h"
+-
+-#include <glib/gstdio.h>
+-
+-#include <string.h>
+-
+-typedef struct {
+-	const gchar *ldap_dn;
+-	const gchar *domain;
+-	const gchar *ou_format;
+-} Fixture;
+-
+-static void
+-test_samba_ou_format (gconstpointer user_data)
+-{
+-	const Fixture *fixture = user_data;
+-	gchar *result;
+-
+-	result = realm_samba_util_build_strange_ou (fixture->ldap_dn, fixture->domain);
+-	g_assert_cmpstr (result, ==, fixture->ou_format);
+-	g_free (result);
+-}
+-
+-static const Fixture samba_ou_fixtures[] = {
+-	{ "OU=One", "domain.example.com", "One" },
+-	{ "OU=One,ou=two", "domain.example.com", "two/One" },
+-	{ "Ou=One Long,OU=two", "domain.example.com", "two/One Long" },
+-	{ "Ou=One,OU=two, ou=Three", "domain.example.com", "Three/two/One" },
+-	{ "Ou=Test/Escape,Ou=Two", "domain.example.com", "Two/Test\\/Escape" },
+-	{ "Ou=Test\\\\Escape,Ou=Two", "domain.example.com", "Two/Test\\\\Escape" },
+-	{ "OU=One,DC=domain,dc=example,Dc=COM", "domain.example.com", "One" },
+-	{ "OU=One,OU=Two Here,DC=domain,dc=example,Dc=COM", "domain.example.com", "Two Here/One" },
+-	{ "OU=One,OU=Two Here,DC=invalid,Dc=COM", "domain.example.com", NULL },
+-	{ " ", "domain.example.com", NULL },
+-	{ "", "domain.example.com", NULL },
+-	{ "OU", "domain.example.com", NULL },
+-	{ "OU=One,", "domain.example.com", NULL },
+-	{ "CN=Unsupported", "domain.example.com", NULL },
+-	{ "OU=One+CN=Unsupported", "domain.example.com", NULL },
+-	{ "DC=radi07, DC=segad, DC=lab, DC=sjc, DC=redhat, DC=com", "radi08.segad.lab.sjc.redhat.com", NULL },
+-
+-};
+-
+-int
+-main (int argc,
+-      char **argv)
+-{
+-	gchar *escaped;
+-	gchar *name;
+-	gint i;
+-
+-#if !GLIB_CHECK_VERSION(2, 36, 0)
+-	g_type_init ();
+-#endif
+-
+-	g_test_init (&argc, &argv, NULL);
+-	g_set_prgname ("test-samba-ou-format");
+-
+-	for (i = 0; i < G_N_ELEMENTS (samba_ou_fixtures); i++) {
+-		if (g_str_equal (samba_ou_fixtures[i].ldap_dn, ""))
+-			escaped = g_strdup ("_empty_");
+-		else
+-			escaped = g_strdup (samba_ou_fixtures[i].ldap_dn);
+-		g_strdelimit (escaped, ", =\\/", '_');
+-		name = g_strdup_printf ("/realmd/samba-ou-format/%s", escaped);
+-		g_free (escaped);
+-
+-		g_test_add_data_func (name, samba_ou_fixtures + i, test_samba_ou_format);
+-		g_free (name);
+-	}
+-
+-	return g_test_run ();
+-}
+-- 
+2.4.3
+

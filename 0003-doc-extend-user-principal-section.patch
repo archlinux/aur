@@ -1,0 +1,75 @@
+From d6d1ce2f8b1c81903115b018973c61fc71235b7b Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 29 Nov 2019 18:10:03 +0100
+Subject: [PATCH 3/7] doc: extend user-principal section
+
+Related to https://bugzilla.redhat.com/show_bug.cgi?id=1643814
+---
+ doc/manual/realm.xml       | 21 +++++++++++++++++++--
+ doc/manual/realmd.conf.xml | 15 ++++++++++-----
+ 2 files changed, 29 insertions(+), 7 deletions(-)
+
+diff --git a/doc/manual/realm.xml b/doc/manual/realm.xml
+index 7b73331..55a7640 100644
+--- a/doc/manual/realm.xml
++++ b/doc/manual/realm.xml
+@@ -238,10 +238,27 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
+ 		</varlistentry>
+ 		<varlistentry>
+ 			<term><option>--user-principal=<parameter>host/name@REALM</parameter></option></term>
+-			<listitem><para>Set the userPrincipalName field of the
++			<listitem><para>Set the
++			<option>userPrincipalName</option> field of the
+ 			computer account to this kerberos principal. If you omit
+ 			the value for this option, then a principal will be set
+-			in the form of <literal>host/shortname@REALM</literal></para></listitem>
++			based on the defaults of the membership software.</para>
++			<para>AD makes a distinction between user and service
++			principals. Only with user principals you can request a
++			Kerberos Ticket-Granting-Ticket (TGT), i.e. only user
++			principals can be used with the <command>kinit</command>
++			command. By default the user principal and the canonical
++			principal name of an AD computer account is
++			<code>shortname$@AD.DOMAIN</code>, where shortname is
++			the NetBIOS name which is limited to 15 characters.</para>
++			<para>If there are applications which are not aware of
++			the AD default and are using a hard-coded default
++			principal the <option>--user-principal</option> can be
++			used to make AD aware of this principal. Please note
++			that <option>userPrincipalName</option> is a single
++			value LDAP attribute, i.e. only one alternative user
++			principal besides the AD default user principal can be
++			set.</para></listitem>
+ 		</varlistentry>
+ 		<varlistentry>
+ 			<term><option>--os-name=xxx</option></term>
+diff --git a/doc/manual/realmd.conf.xml b/doc/manual/realmd.conf.xml
+index f0b0879..a26a60c 100644
+--- a/doc/manual/realmd.conf.xml
++++ b/doc/manual/realmd.conf.xml
+@@ -365,12 +365,17 @@ computer-name = SERVER01
+ 	</listitem>
+ 	</varlistentry>
+ 	<varlistentry>
+-	<term><option>user-prinicpal</option></term>
++	<term><option>user-principal</option></term>
+ 	<listitem>
+-		<para>Set the <option>user-prinicpal</option> to <code>yes</code>
+-		to create <option>userPrincipalName</option> attributes for the
+-		computer account in the realm, in the form
+-		<code>host/computer@REALM</code></para>
++		<para>Set the <option>user-principal</option> to <code>yes</code>
++		to create <option>userPrincipalName</option> attribute for the
++		computer accounts in the realm. The exact value depends on the
++		defaults of the used membership software. To have full control
++		over the value please use the
++		<option>--user-principal</option> option of the
++		<command>realm</command> command, see
++		<citerefentry><refentrytitle>realm</refentrytitle>
++		<manvolnum>8</manvolnum></citerefentry> for details.</para>
+ 
+ 		<informalexample>
+ <programlisting language="js">
+-- 
+2.25.1
+

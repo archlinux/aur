@@ -1,0 +1,24 @@
+From 9675cc5b6318f848ddf7237d50d02606e16d8003 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 11:17:07 +0200
+Subject: [PATCH 6/7] service: avoid dereferencing a NULL pointer
+
+---
+ service/realm-kerberos.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/service/realm-kerberos.c b/service/realm-kerberos.c
+index a8b3553..3294932 100644
+--- a/service/realm-kerberos.c
++++ b/service/realm-kerberos.c
+@@ -251,6 +251,7 @@ is_credential_supported (RealmKerberosMembershipIface *iface,
+ 	gboolean found = FALSE;
+ 	gint i;
+ 
++	g_assert (iface != NULL);
+ 	g_assert (iface->join_creds != NULL);
+ 	g_assert (iface->leave_creds != NULL);
+ 
+-- 
+2.25.1
+

@@ -1,0 +1,39 @@
+From 5ae42c176e7bb550fc6cf10f29e75f58c733ae4f Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 2 Aug 2019 12:10:43 +0200
+Subject: [PATCH] Remove support for deprecated gtester format
+
+Support for the already deprecated gtester format was remove from recent
+versions of glib2 but the test still call the tab-gtester conversion
+tool.
+
+This patch removes tab-gtester and the tab format is used directly.
+
+Related to https://gitlab.freedesktop.org/realmd/realmd/issues/21
+---
+ Makefile.am       |   3 +-
+ build/tap-gtester | 204 ----------------------------------------------
+ 2 files changed, 1 insertion(+), 206 deletions(-)
+ delete mode 100755 build/tap-gtester
+
+diff --git a/Makefile.am b/Makefile.am
+index 27e3494..4ffd5b4 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -161,7 +161,7 @@ endif
+ #
+ 
+ LOG_DRIVER = $(top_srcdir)/build/tap-driver
+-LOG_COMPILER = $(top_srcdir)/build/tap-gtester
++LOG_COMPILER = sh -c '"$$0" "$$@" --tap'
+ 
+ VALGRIND_ARGS = --trace-children=no --quiet --error-exitcode=33 \
+ 	--suppressions=valgrind-suppressions --gen-suppressions=all \
+@@ -183,7 +183,6 @@ recheck-memory: valgrind-suppressions
+ 
+ EXTRA_DIST += \
+ 	$(LOG_DRIVER) \
+-	$(LOG_COMPILER) \
+ 	$(VALGRIND_SUPPRESSIONS) \
+ 	$(NULL)
+ 

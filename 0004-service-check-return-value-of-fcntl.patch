@@ -1,0 +1,36 @@
+From f4636827818d514ebc2f73df2a55b22e7bc8ab89 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 11:00:30 +0200
+Subject: [PATCH 4/7] service: check return value of fcntl()
+
+---
+ service/realm-command.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/service/realm-command.c b/service/realm-command.c
+index 2fe02ab..5257caa 100644
+--- a/service/realm-command.c
++++ b/service/realm-command.c
+@@ -361,6 +361,7 @@ on_unix_process_child_setup (gpointer user_data)
+ 	int *child_fds = user_data;
+ 	long val;
+ 	guint i;
++	int ret;
+ 
+ 	/*
+ 	 * Become a process leader in order to close the controlling terminal.
+@@ -378,7 +379,10 @@ on_unix_process_child_setup (gpointer user_data)
+ 	for (i = 0; i < NUM_FDS; i++) {
+ 		if (child_fds[i] >= 0) {
+ 			val = fcntl (child_fds[i], F_GETFD);
+-			fcntl (child_fds[i], F_SETFD, val & ~FD_CLOEXEC);
++			ret = fcntl (child_fds[i], F_SETFD, val & ~FD_CLOEXEC);
++			if (ret != 0) {
++				/* ignore */
++			}
+ 		}
+ 	}
+ }
+-- 
+2.25.1
+

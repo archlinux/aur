@@ -1,0 +1,26 @@
+From 878e40f5a3b50d37a0ed981a4f0872a9d5d99e6b Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 29 Nov 2019 18:49:15 +0100
+Subject: [PATCH 4/7] doc: fix discover name-only
+
+Related to https://bugzilla.redhat.com/show_bug.cgi?id=1625001
+---
+ doc/manual/realmd.conf.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/manual/realmd.conf.xml b/doc/manual/realmd.conf.xml
+index a26a60c..fc6a785 100644
+--- a/doc/manual/realmd.conf.xml
++++ b/doc/manual/realmd.conf.xml
+@@ -308,7 +308,7 @@ DOMAIN\user:*:13445:13446:Name:/home/DOMAIN/user:/bin/bash
+ 
+ 	<informalexample>
+ <screen>
+-$ <command>realm discover --name DOMAIN.example.com</command>
++$ <command>realm discover --name-only DOMAIN.example.com</command>
+ domain.example.com
+ ...
+ </screen>
+-- 
+2.25.1
+

@@ -1,0 +1,27 @@
+From 81b5e3478269ea47d66ddb98f7cbebd06fe950e6 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 2 Aug 2019 13:18:37 +0200
+Subject: [PATCH 1/7] Add missing xsl file to Makefile.am
+
+In commit 4f3c02dc14300c0b8e51a55d627c57f73c108f64 it was forgotten to
+add the new file devhelp2.xsl to the Makefile to make sure it is
+include in the tar ball.
+---
+ doc/manual/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/doc/manual/Makefile.am b/doc/manual/Makefile.am
+index 39e1581..8b33fdd 100644
+--- a/doc/manual/Makefile.am
++++ b/doc/manual/Makefile.am
+@@ -37,6 +37,7 @@ MANUAL_XSLT = \
+ 	doc/manual/gdbus-fix-bugs.xsl \
+ 	doc/manual/gtk-doc.xsl \
+ 	doc/manual/version-greater-or-equal.xsl \
++	doc/manual/devhelp2.xsl \
+ 	$(NULL)
+ 
+ EXTRA_DIST += \
+-- 
+2.25.1
+

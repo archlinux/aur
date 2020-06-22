@@ -1,0 +1,104 @@
+From 98a69ca00e3441128b181b59c06bb06e8c362360 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 29 Nov 2019 21:57:02 +0100
+Subject: [PATCH 6/7] doc: extend description of config handling
+
+Related to https://bugzilla.redhat.com/show_bug.cgi?id=1625005
+---
+ doc/manual/Makefile.am     |  8 ++++++++
+ doc/manual/realmd.conf.xml | 15 +++++++++++----
+ doc/privatedir.xml.in      |  1 +
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+ create mode 100644 doc/privatedir.xml.in
+
+diff --git a/doc/manual/Makefile.am b/doc/manual/Makefile.am
+index 8b33fdd..9812c45 100644
+--- a/doc/manual/Makefile.am
++++ b/doc/manual/Makefile.am
+@@ -1,14 +1,20 @@
++XSLTPROC_FLAGS = --path $(abs_builddir):$(abs_srcdir):$(abs_builddir)/doc
+ 
+ man8_MANS += \
+ 	doc/manual/realm.8
+ man5_MANS += \
+ 	doc/manual/realmd.conf.5
+ 
++$(man5_MANS): doc/privatedir.xml
++
+ MAN_IN_FILES = \
+ 	$(man8_MANS:.8=.xml) \
+ 	$(man5_MANS:.5=.xml) \
+ 	$(NULL)
+ 
++doc/privatedir.xml: doc/privatedir.xml.in
++	$(V_SED) $(MKDIR_P) $(dir $@) && $(SED_SUBST) $< > $@
++
+ MANUAL_DOCBOOK = doc/manual/realmd-docs.xml
+ 
+ MANUAL_INCLUDES = \
+@@ -41,6 +47,7 @@ MANUAL_XSLT = \
+ 	$(NULL)
+ 
+ EXTRA_DIST += \
++	doc/privatedir.xml.in \
+ 	$(MANUAL_DOCBOOK) \
+ 	$(MANUAL_INCLUDES) \
+ 	$(MAN_IN_FILES) \
+@@ -50,6 +57,7 @@ EXTRA_DIST += \
+ 
+ CLEANFILES += \
+ 	realmd-org.freedesktop.realmd.generated \
++	doc/privatedir.xml \
+ 	$(DBUS_DOC_GENERATED) \
+ 	$(DBUS_ESCAPED) \
+ 	$(man8_MANS) \
+diff --git a/doc/manual/realmd.conf.xml b/doc/manual/realmd.conf.xml
+index 1592291..9062252 100644
+--- a/doc/manual/realmd.conf.xml
++++ b/doc/manual/realmd.conf.xml
+@@ -1,6 +1,9 @@
+ <?xml version='1.0'?>
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+-        "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
++        "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
++[
++<!ENTITY privatedir SYSTEM "privatedir.xml">
++]>
+ 
+ <refentry id="realmd-conf">
+ 
+@@ -35,7 +38,9 @@
+ 	to act in specific ways. This is done by placing settings in a
+ 	<filename>/etc/realmd.conf</filename>. This file does not exist by
+ 	default. The syntax of this file is the same as an INI file or
+-	Desktop Entry file.</para>
++	Desktop Entry file. If the file is changed and
++	<command>realmd</command> is running <command>realmd</command> must be
++	restarted to read the new values.</para>
+ 
+ 	<para>In general, settings in this file only apply at the point of
+ 	joining a domain or realm. Once the realm has been setup the settings
+@@ -46,8 +51,10 @@
+ 
+ 	<para>Only specify the settings you wish to override in the
+ 	<filename>/etc/realmd.conf</filename> file. Settings not specified will
+-	be loaded from their packaged defaults. Only override the settings
+-	below. You may find other settings if you look through the
++	be loaded from their packaged defaults which can be found in
++	<filename>&privatedir;/realmd-defaults.conf</filename> and
++	<filename>&privatedir;/realmd-distro.conf</filename>. Only override the
++	settings below. You may find other settings if you look through the
+ 	<command>realmd</command> source code. However these are not guaranteed
+ 	to remain stable.</para>
+ 
+diff --git a/doc/privatedir.xml.in b/doc/privatedir.xml.in
+new file mode 100644
+index 0000000..7f71afe
+--- /dev/null
++++ b/doc/privatedir.xml.in
+@@ -0,0 +1 @@
++@privatedir@
+\ No newline at end of file
+-- 
+2.25.1
+

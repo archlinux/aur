@@ -1,0 +1,39 @@
+From 7a1711b180a746ba574bdbfc814ec706a474cda8 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 11:07:03 +0200
+Subject: [PATCH 5/7] service: avoid dereference of a null pointer
+
+---
+ service/realm-kerberos.c | 2 +-
+ service/realm-provider.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/service/realm-kerberos.c b/service/realm-kerberos.c
+index 252e256..a8b3553 100644
+--- a/service/realm-kerberos.c
++++ b/service/realm-kerberos.c
+@@ -720,7 +720,7 @@ realm_kerberos_get_disco (RealmKerberos *self)
+ 		if (!disco->kerberos_realm)
+ 			disco->kerberos_realm = g_strdup (realm_kerberos_get_realm_name (self));
+ 		klass = REALM_KERBEROS_GET_CLASS (self);
+-		if (klass->discover_myself)
++		if (klass && klass->discover_myself)
+ 			(klass->discover_myself) (self, disco);
+ 		self->pv->disco = disco;
+ 	}
+diff --git a/service/realm-provider.c b/service/realm-provider.c
+index 258e8e1..6d7cf96 100644
+--- a/service/realm-provider.c
++++ b/service/realm-provider.c
+@@ -450,7 +450,7 @@ realm_provider_get_realms (RealmProvider *self)
+ 
+ 	g_return_val_if_fail (REALM_IS_PROVIDER (self), NULL);
+ 	klass = REALM_PROVIDER_GET_CLASS (self);
+-	g_return_val_if_fail (klass->get_realms != NULL, NULL);
++	g_return_val_if_fail (klass != NULL && klass->get_realms != NULL, NULL);
+ 
+ 	return (klass->get_realms) (self);
+ }
+-- 
+2.25.1
+

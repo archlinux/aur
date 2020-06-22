@@ -1,0 +1,33 @@
+From 4cd0cc0ace4a346444dd34e7f3c6a23fd654fef4 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 11:00:13 +0200
+Subject: [PATCH 3/7] service: remove dead code
+
+---
+ service/realm-samba.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/service/realm-samba.c b/service/realm-samba.c
+index 5cf2aa8..e2a3608 100644
+--- a/service/realm-samba.c
++++ b/service/realm-samba.c
+@@ -180,7 +180,6 @@ on_join_do_winbind (GObject *source,
+ 	GTask *task = G_TASK (user_data);
+ 	EnrollClosure *enroll = g_task_get_task_data (task);
+ 	RealmSamba *self = g_task_get_source_object (task);
+-	GHashTable *settings = NULL;
+ 	GError *error = NULL;
+ 	const gchar *name;
+ 	const gchar *computer_name;
+@@ -215,8 +214,6 @@ on_join_do_winbind (GObject *source,
+ 		g_task_return_error (task, error);
+ 	}
+ 
+-	if (settings)
+-		g_hash_table_unref (settings);
+ 	g_object_unref (task);
+ }
+ 
+-- 
+2.25.1
+

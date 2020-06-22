@@ -1,0 +1,46 @@
+From 799821650c538754aae842d400df75d3bd8864bf Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 29 Nov 2019 18:49:51 +0100
+Subject: [PATCH 5/7] doc: add see also to man pages
+
+Related to https://bugzilla.redhat.com/show_bug.cgi?id=1625001
+---
+ doc/manual/realm.xml       | 7 +++++++
+ doc/manual/realmd.conf.xml | 7 +++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/doc/manual/realm.xml b/doc/manual/realm.xml
+index 55a7640..e5d4608 100644
+--- a/doc/manual/realm.xml
++++ b/doc/manual/realm.xml
+@@ -440,4 +440,11 @@ $ realm deny --all
+ 
+ </refsect1>
+ 
++<refsect1 id='realm_see_also'>
++	<title>SEE ALSO</title>
++
++	<para><citerefentry><refentrytitle>realmd.conf</refentrytitle>
++	<manvolnum>5</manvolnum></citerefentry></para>
++</refsect1>
++
+ </refentry>
+diff --git a/doc/manual/realmd.conf.xml b/doc/manual/realmd.conf.xml
+index fc6a785..1592291 100644
+--- a/doc/manual/realmd.conf.xml
++++ b/doc/manual/realmd.conf.xml
+@@ -471,4 +471,11 @@ fully-qualified-names = no
+ 	</variablelist>
+ </refsect1>
+ 
++<refsect1 id='realmd_conf_see_also'>
++	<title>SEE ALSO</title>
++
++	<para><citerefentry><refentrytitle>realm</refentrytitle>
++	<manvolnum>8</manvolnum></citerefentry></para>
++</refsect1>
++
+ </refentry>
+-- 
+2.25.1
+

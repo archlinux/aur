@@ -1,0 +1,25 @@
+From 6b41b3292bb826d90fd7986e4a66b20b6fb658b3 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Fri, 28 Sep 2018 10:39:13 +0200
+Subject: [PATCH 2/7] tools: remove duplicated va_start()
+
+---
+ tools/realm.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tools/realm.c b/tools/realm.c
+index ed8ab3e..4d76a94 100644
+--- a/tools/realm.c
++++ b/tools/realm.c
+@@ -52,8 +52,6 @@ realm_print_error (const gchar *format,
+ 	GString *message;
+ 	va_list va;
+ 
+-	va_start (va, format);
+-
+ 	message = g_string_new ("");
+ 	g_string_append_printf (message, "%s: ", g_get_prgname ());
+ 
+-- 
+2.25.1
+
