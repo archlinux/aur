@@ -1,6 +1,6 @@
 pkgbase = exec-helper
 	pkgdesc = How To Get Coffee In Peace: a shell meta-wrapper
-	pkgver = 0.5.0_0_g4571947
+	pkgver = 0.5.1_0_g8869989
 	pkgrel = 1
 	url = https://github.com/bverhagen/exec-helper
 	changelog = exec-helper.changelog
@@ -12,15 +12,15 @@ pkgbase = exec-helper
 	makedepends = cmake
 	makedepends = boost
 	makedepends = make
-	makedepends = doxygen
-	makedepends = graphviz
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = microsoft-gsl
 	makedepends = lsb-release
 	depends = yaml-cpp
 	depends = boost-libs
-	source = exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=457194703c49bc2982cc68c671ed4831285fe03c
+	source = exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=8869989a59b352f340406ae8859958bf343be776
 	md5sums = SKIP
 
 pkgname = exec-helper

@@ -2,6 +2,22 @@ Changelog
 =========
 
 
+0.5.1 (2020-06-18)
+------------------
+
+New
+~~~
+- Usr: Added a command line option to keep on executing commands, even
+  if they fail. [Bart Verhagen]
+
+  Use the --keep-going or -k option for this
+- Usr: Using sphinx for usage documentation. [Bart Verhagen]
+
+  The result is now hosted on readthedocs at https://exec-helper.readthedocs.io
+- Usr: Added the Docker plugin. [Bart Verhagen]
+- Usr: Added the CMake plugin. [Bart Verhagen]
+
+
 0.5.0 (2020-04-25)
 ------------------
 
