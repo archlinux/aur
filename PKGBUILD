@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-troveclient
-pkgver='3.0.0'
-pkgrel='1'
+pkgver=4.1.0
+pkgrel=1
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -14,18 +14,16 @@ checkdepends=('python-fixtures' 'python-oslotest' 'python-openstackclient'
               'python-requests-mock' 'python-stestr' 'python-testscenarios'
               'python-testtools' 'python-mock' 'python-httplib2')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz"
-        'trove.bash_completion'
-        'skip-failing-py37-tests.patch')
-sha512sums=('25eb83d2bb1079077bc5eeb92d2a37e0cc534272aa9af892d790145fb8e44392a9c6dcfbaf981342ef14212e4ba7c3e67bf7b198da6810a74d1af456736dcc77'
-            '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9'
-            '33eb1e68cccf282ed2b0ba40a44efedd6fa10e9b9c670c3ccd1473fce38c5e5a648da9e1388b7eb2601095f84078b2638f46819ac1e4d20ba3a8dd55ac16aabe')
+        'trove.bash_completion')
+sha512sums=('5d1bbbf4442fef93896a4941118dcc09cd4e1970618078a9326436720a2a1f497f21f8e4671cd293feeb3ed0eeab714315e0d570c355980e0e8c9953db21c818'
+            '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9')
 
 export PBR_VERSION=$pkgver
 
 prepare() {
   cd $pkgname-$pkgver
   sed -i '/simplejson/d' requirements.txt
-  patch -p1 -i $srcdir/skip-failing-py37-tests.patch
+  sed -i 's/assertItemsEqual/assertCountEqual/g' troveclient/tests/osc/v1/test_database_logs.py
 }
 
 build() {
