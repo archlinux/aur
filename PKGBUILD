@@ -9,17 +9,17 @@ _projectname='recordmydesktop'
 pkgname="qt-$_projectname"
 _commit='r602'
 pkgver="0.3.8.$_commit"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Qt4 frontend for recordMyDesktop'
 arch=('any')
 url="http://$_projectname.sourceforge.net"
 license=('GPL3' 'LGPL3')
 depends=('python' 'python-pyqt4' 'qt4' 'recordmydesktop>=0.3.8.1' 'xorg-xwininfo')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::https://sourceforge.net/code-snapshots/svn/${_projectname:0:1}/${_projectname:0:2}/$_projectname/svn/$_projectname-svn-$_commit-trunk.zip"
+	"$pkgname-$pkgver-$pkgrel.zip::https://sourceforge.net/code-snapshots/svn/${_projectname:0:1}/${_projectname:0:2}/$_projectname/svn/$_projectname-svn-$_commit-trunk.zip"
 	'python3-port.diff'
 )
-sha256sums=('5ceb035449410c127cc1e7e87f781ac42a1f26fb6f51caf0e72eaafc39b65821'
+sha256sums=('19e1b5cd5f381f73050f041b6533b6ce61e0d83269c633eb200737307e54a142'
             '9597526e04e6c90072b194ff95b87fd3109888c013b04063b14743a140fa7bab')
 
 _sourcedirectory="$_projectname-svn-$_commit-trunk/$pkgname"

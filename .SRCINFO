@@ -1,7 +1,7 @@
 pkgbase = qt-recordmydesktop
 	pkgdesc = Qt4 frontend for recordMyDesktop
 	pkgver = 0.3.8.r602
-	pkgrel = 1
+	pkgrel = 2
 	url = http://recordmydesktop.sourceforge.net
 	arch = any
 	license = GPL3
@@ -11,9 +11,9 @@ pkgbase = qt-recordmydesktop
 	depends = qt4
 	depends = recordmydesktop>=0.3.8.1
 	depends = xorg-xwininfo
-	source = qt-recordmydesktop-0.3.8.r602-1.tar.gz::https://sourceforge.net/code-snapshots/svn/r/re/recordmydesktop/svn/recordmydesktop-svn-r602-trunk.zip
+	source = qt-recordmydesktop-0.3.8.r602-2.zip::https://sourceforge.net/code-snapshots/svn/r/re/recordmydesktop/svn/recordmydesktop-svn-r602-trunk.zip
 	source = python3-port.diff
-	sha256sums = 5ceb035449410c127cc1e7e87f781ac42a1f26fb6f51caf0e72eaafc39b65821
+	sha256sums = 19e1b5cd5f381f73050f041b6533b6ce61e0d83269c633eb200737307e54a142
 	sha256sums = 9597526e04e6c90072b194ff95b87fd3109888c013b04063b14743a140fa7bab
 
 pkgname = qt-recordmydesktop
