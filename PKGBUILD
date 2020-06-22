@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-manilaclient
-pkgver='2.1.0'
-pkgrel='1'
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Client library for OpenStack Manila API'
 arch=('any')
 url="http://docs.openstack.org/$pkgname"
@@ -14,7 +14,7 @@ depends=('python-oslo-config' 'python-oslo-log' 'python-oslo-serialization'
 checkdepends=('python-ddt' 'python-fixtures' 'python-mock' 'python-os-testr'
               'python-tempest' 'python-testtools' 'python-openstackclient')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('126d7997c94500a911c837428802927fd44b941ccad3e7036d2a81f3755e858403eb0503551bbd40830691cdb3918d9c32e7339e9c982ab688fe1fdb0df8eb1f')
+sha512sums=('586d65609e098b68e0d5805d4dbf8b93755cd7de091d223fb61417be48187e0fed8b55b71cacd9f35f68b7340851e4c7e3c945e11edf7b69f389a2db90919a74')
 
 export PBR_VERSION=$pkgver
 
