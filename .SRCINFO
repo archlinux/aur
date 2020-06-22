@@ -1,7 +1,7 @@
 pkgbase = r8168-dkms
 	pkgdesc = A kernel module for Realtek 8168 network cards (DKMS version)
-	pkgver = 8.048.02
-	pkgrel = 4
+	pkgver = 8.048.03
+	pkgrel = 1
 	url = https://github.com/simonbcn/r8168-dkms
 	install = r8168-dkms.install
 	arch = i686
