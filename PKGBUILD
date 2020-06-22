@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -17,15 +17,12 @@ options=('!buildflags')
 source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2")
 sha512sums=('d6f57d2084c29c43d55608f4eea3b8a0e0dab708ae2f035f5d5ae54effc28211787b08f1ed6e8aee3799a1f35a550d28168b90545e4b59f8d880e8d580764fe6')
 
-prepare() {
-  mkdir "${srcdir}/arrayfire-full-${pkgver}"/build
-}
-
 build() {
-  cd "${srcdir}/arrayfire-full-${pkgver}"/build
+  cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  cmake .. \
+  cmake . \
       -GNinja \
+      -Bbuild \
       -DUSE_CPU_MKL=ON \
       -DGOOGLETEST_VERSION=1.9.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
@@ -36,18 +33,18 @@ build() {
       -DAF_WITH_NONFREE=ON \
       -DAF_BUILD_EXAMPLES=ON \
       -DAF_BUILD_DOCS=ON \
-      -DCUDA_architecture_build_targets="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5" \
+      -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCUDA_HOST_COMPILER=/usr/bin/gcc \
       -DBoost_NO_BOOST_CMAKE=ON
 
-  ninja
+  ninja -C build
 }
 
 check() {
-  cd "${srcdir}/arrayfire-full-${pkgver}/build"
+  cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  make test
+  ninja -C build test
 }
 
 package() {
@@ -55,8 +52,6 @@ package() {
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-  cd build
-
-  DESTDIR="${pkgdir}/" ninja install
+  DESTDIR="${pkgdir}/" ninja -C build install
   rm -r "${pkgdir}"/usr/LICENSES
 }
