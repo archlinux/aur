@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=202.5428.19
+pkgver=202.5792.58
 _pkgname=RubyMine
 _pkgver=2020.2
 pkgrel=1
@@ -15,31 +15,26 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('a97bd61907fe09b3605ee836b24478d708c26102bad6e54219df75aa77a473e3'
-            '3daf0808e001e780bf610e4c9726a0ed190ab6293a30d0ed13aa63d88209c954'
+sha256sums=('27f1672d311ffc47e59f4d6fd8916274fb00e8a1bb5356ab3175ce7005f9e9f7'
+            '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    #Remove non-linux libs
-    rm -rf "lib/libpty/macosx"
-    rm -rf "lib/libpty/win"
-
+    rm Install-Linux-tar.txt
+    rm help/ReferenceCardForMac.pdf
     #Remove bin/libs if architecture doesn't match
     if [[ $CARCH = 'i686' ]]; then
-        rm -f "bin/fsnotifier64"
-        rm -f "bin/libbreakgen64.so"
-        rm -f "bin/libyjpagent-linux64.so"
-        rm -f "bin/rubymine64.vmoptions"
-        rm -rf "lib/libpty/linux/x86_64"
+        rm bin/fsnotifier64
+        rm bin/libdbm64.so
+        rm bin/rubymine64.vmoptions
+        rm -rf lib/pty4j-native/linux/x86_64
     fi
     if [[ $CARCH = 'x86_64' ]]; then
-        rm -f "bin/fsnotifier"
-        rm -f "bin/libbreakgen.so"
-        rm -f "bin/libyjpagent-linux.so"
-        rm -f "bin/rubymine.vmoptions"
-        rm -rf "lib/libpty/linux/x86"
+        rm bin/fsnotifier
+        rm bin/rubymine.vmoptions
+        rm -rf lib/pty4j-native/linux/x86
     fi
 }
 
@@ -47,15 +42,16 @@ package() {
     cd "${srcdir}"
     [ $CARCH == "x86_64" ] && SUFFIX=64
 
+    install -d ${pkgdir}/{opt,usr/share}
+
     #Pre-packaged program files
-    install -d -m 755 "${pkgdir}/usr/share"
-    cp -a "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+    cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
 
     #Desktop application
-    install -Dm644 "${pkgdir}/usr/share/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
     install -d -m 755 "${pkgdir}/usr/bin"
-    ln -s "/usr/share/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/jetbrains-${pkgname}"
+    ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     #License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
@@ -63,6 +59,6 @@ package() {
         install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
     #Java config
-    sed -i 's/lcd/on/' "${pkgdir}/usr/share/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
-    echo "-Dswing.aatext=true" >> "${pkgdir}/usr/share/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+    sed -i 's/lcd/on/' "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+    echo "-Dswing.aatext=true" >> "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
 }

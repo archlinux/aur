@@ -2,9 +2,9 @@
 Name=RubyMine EAP
 Comment=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
 GenericName=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
-Exec=/usr/bin/jetbrains-rubymine-eap
+Exec="/usr/bin/rubymine-eap" %f
 Icon=rubymine-eap
 Terminal=false
 Type=Application
 Categories=Development;IDE;Ruby
-StartupWMClass=jetbrains-rubymine-eap
+StartupWMClass=jetbrains-rubymine
