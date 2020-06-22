@@ -2,7 +2,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=0.94.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
 	    )
 # OptDeps to upload on AUR: python-oss2, 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a884a3e26891ef164ab7d75b297edcef8bcf894a6df945d76325085a5f17f953')
+sha256sums=('d143d7adc00b190be60a161687a03efc1b98b14eecd023d1287640dd050277e6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -38,10 +38,4 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-
-  install -Dm644 scripts/completion/dvc.zsh \
-    "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-
-  install -Dm644 scripts/completion/dvc.bash \
-    "${pkgdir}/etc/bash_completion.d/${pkgname}"
 }
