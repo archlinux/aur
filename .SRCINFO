@@ -1,12 +1,12 @@
 pkgbase = python-hbmqtt
 	pkgdesc = MQTT client/broker using Python asynchronous I/O
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beerfactory/hbmqtt
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python-transitions
 	depends = python-websockets
 	depends = python-passlib
