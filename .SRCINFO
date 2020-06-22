@@ -1,0 +1,14 @@
+pkgbase = reflex
+	pkgdesc = Run a command when files change
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cespare/reflex
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = reflex-0.2.0.tar.gz::https://github.com/cespare/reflex/archive/v0.2.0.tar.gz
+	sha256sums = 528ef2a0160528d8514f86ce0353497ade0219017a6407e4c08878264b87d4a4
+
+pkgname = reflex
+
