@@ -1,4 +1,5 @@
 # Maintainer: xgdgsc <xgdgsc @t gmail dot com>
+# Maintainer: mynacol <paul ät dismail _ de>
 
 pkgname=android-sdk-build-tools
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
