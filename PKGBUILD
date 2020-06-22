@@ -1,8 +1,8 @@
 # Maintainer: jtheoof <contact@jtheoof.me>
 pkgname=swappy-git
 _pkgname=swappy
-pkgver=r168.2adcf94
-pkgrel=3
+pkgver=r211.af8231e
+pkgrel=1
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
 makedepends=("meson" "scdoc" "git")
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  meson --prefix=/usr . build
+  arch-meson build
   ninja -C build
 }
 
