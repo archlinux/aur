@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-go
 	pkgdesc = Go support for Google's protocol buffers
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protocolbuffers/protobuf-go
 	arch = i686
 	arch = x86_64
