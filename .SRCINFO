@@ -1,0 +1,17 @@
+pkgbase = hd-git
+	pkgdesc = Small hex dumper utility (with optional HexII output)
+	pkgver = 1.0.0.r5.g4bc9165
+	pkgrel = 1
+	url = https://github.com/kastelo/hd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	provides = hd
+	conflicts = hd
+	source = hd::git+https://github.com/kastelo/hd
+	sha256sums = SKIP
+
+pkgname = hd-git
+
