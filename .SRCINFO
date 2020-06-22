@@ -1,7 +1,7 @@
 pkgbase = miniconda3
 	pkgdesc = Mini version of Anaconda Python distribution.
 	pkgver = 4.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://conda.io/en/latest/miniconda.html
 	install = miniconda3.install
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = miniconda3
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = Miniconda3.sh::https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh
+	source = miniconda3-4.8.3.sh::https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh
 	source = miniconda3.install
-	sha256sums = 5bbb193fd201ebe25f4aeb3c58ba83feced6a25982ef4afa86d5506c3656c142
+	sha256sums = 879457af6a0bf5b34b48c12de31d4df0ee2f06a8e68768e5758c3293b2daf688
 	sha256sums = 6d6d8b5f4d2e9ca3c69464e903e292fa020c10ea6920aff5c32ebb021b84d865
 
 pkgname = miniconda3
