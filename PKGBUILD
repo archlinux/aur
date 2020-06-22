@@ -3,7 +3,7 @@
 pkgbase=webos-sdk
 pkgname=('webos-cli' 'webos-emulator' 'webos-ide')
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://webostv.developer.lge.com/sdk/installation/'
 # TODO: Licence
@@ -62,7 +62,7 @@ package_webos-cli() {
 
 package_webos-emulator() {
   pkgdesc='LG webOS Emulator'
-  depends=('virtualbox' 'webos-cli' 'java')
+  depends=('virtualbox' 'webos-cli' 'java-runtime')
 
   install -dm 755 "${pkgdir}"/usr/share/{webOS_TV_SDK/Emulator/v5.0.0,applications,pixmaps}
   install -dm 777 "${pkgdir}"/usr/share/webOS_TV_SDK/Emulator/Logs # For virtualbox

@@ -1,6 +1,6 @@
 pkgbase = webos-sdk
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://webostv.developer.lge.com/sdk/installation/
 	arch = x86_64
 	license = custom:LG Software Development Kit License Agreement
@@ -27,7 +27,7 @@ pkgname = webos-emulator
 	pkgdesc = LG webOS Emulator
 	depends = virtualbox
 	depends = webos-cli
-	depends = java
+	depends = java-runtime
 
 pkgname = webos-ide
 	pkgdesc = LG webOS IDE based on Eclipse
