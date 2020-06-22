@@ -1,0 +1,23 @@
+pkgbase = eagle-git
+	pkgdesc = XMPP eagle Application
+	pkgver = r15.6f673c2
+	pkgrel = 1
+	url = https://pages.codeberg.org/eagle/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = libstrophe
+	depends = glib2
+	depends = gpgme
+	depends = gtk3
+	depends = libvc
+	provides = eagle
+	conflicts = eagle
+	source = eagle::git+https://codeberg.org/eagle/eagle.git
+	source = release-mode.diff
+	md5sums = SKIP
+	md5sums = b8bc92ebfd51c8bde4fd256dc57d7116
+
+pkgname = eagle-git
+

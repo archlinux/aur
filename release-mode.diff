@@ -1,0 +1,15 @@
+Index: eagle/configure.ac
+===================================================================
+--- eagle.orig/configure.ac
++++ eagle/configure.ac
+@@ -10,8 +10,8 @@ AM_INIT_AUTOMAKE([foreign subdir-objects
+ # - release - release version
+ # - development - development only
+ 
+-#PACKAGE_STATUS="release"
+-PACKAGE_STATUS="development"
++PACKAGE_STATUS="release"
++#PACKAGE_STATUS="development"
+ 
+ # Checking programs 
+ AC_PROG_CC
