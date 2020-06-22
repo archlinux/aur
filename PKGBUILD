@@ -1,5 +1,5 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
-_pkgname=eagle
+_pkgname=eagle-xmpp
 pkgname=$_pkgname-git
 pkgver=r15.6f673c2
 pkgrel=1

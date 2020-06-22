@@ -1,4 +1,4 @@
-pkgbase = eagle-git
+pkgbase = eagle-xmpp-git
 	pkgdesc = XMPP eagle Application
 	pkgver = r15.6f673c2
 	pkgrel = 1
@@ -12,12 +12,12 @@ pkgbase = eagle-git
 	depends = gpgme
 	depends = gtk3
 	depends = libvc
-	provides = eagle
-	conflicts = eagle
+	provides = eagle-xmpp
+	conflicts = eagle-xmpp
 	source = eagle::git+https://codeberg.org/eagle/eagle.git
 	source = release-mode.diff
 	md5sums = SKIP
 	md5sums = b8bc92ebfd51c8bde4fd256dc57d7116
 
-pkgname = eagle-git
+pkgname = eagle-xmpp-git
 
