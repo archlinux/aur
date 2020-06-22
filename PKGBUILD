@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc='A new multiboot USB solution (Binary)'
 url='http://www.ventoy.net/'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
         "${pkgname%-bin}" 'sanitize.patch')
 sha256sums=('37c64873454ef7126d8f0012030df16f9fa8a31ff87a301750a4118e324860c7'
-            '2d4e038bed31571604a7745459156543bfec475c4bbc9d9f11a332d84b48e2f8'
+            'f9f333e21ec211318ab40018e0da3a44d8bae16e36dd6132e7891f8c9df52f1c'
             'c32c24809c3c14520c1a8470dca89c44a2e7fc8b40ce07f705b424a7f2015383')
 
 prepare() {
