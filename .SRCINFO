@@ -1,7 +1,8 @@
 pkgbase = ubuntustudio-controls-git
-	pkgver = r212.1a1d7ce
+	pkgdesc = An audio setup utility.
+	pkgver = 1.8.r50.gdcbbd7f
 	pkgrel = 1
-	url = https://launchpad.net/ubuntustudio-controls
+	url = https://github.com/ovenwerks/studio-controls
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -9,11 +10,7 @@ pkgbase = ubuntustudio-controls-git
 	depends = python
 	depends = python-gobject
 	depends = python-jack-client
-	provides = ubuntustudio-controls-git
-	provides = ubuntustudio-controls-git-git
-	conflicts = ubuntustudio-controls-git
-	conflicts = ubuntustudio-controls-git-git
-	source = git+https://git.launchpad.net/ubuntustudio-controls
+	source = git+https://github.com/ovenwerks/studio-controls
 	md5sums = SKIP
 
 pkgname = ubuntustudio-controls-git

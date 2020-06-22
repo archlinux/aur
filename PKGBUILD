@@ -1,22 +1,22 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=ubuntustudio-controls
 pkgname=${_pkgname}-git
-pkgver=r212.1a1d7ce
+pkgver=1.8.r50.gdcbbd7f
 pkgrel=1
-pkgdesc=""
+pkgdesc="An audio setup utility."
 arch=('x86_64')
-url="https://launchpad.net/ubuntustudio-controls"
+url="https://github.com/ovenwerks/studio-controls"
 license=('GPL')
 groups=()
 depends=('jack2' 'python' 'python-gobject' 'python-jack-client')
 makedepends=('git')
-provides=("${pkgname%}" "${pkgname%}-git")
-conflicts=("${pkgname%}" "${pkgname%}-git")
+provides=()
+conflicts=()
 replaces=()
 backup=()
 options=()
 install=
-source=('git+https://git.launchpad.net/ubuntustudio-controls')
+source=('git+https://github.com/ovenwerks/studio-controls')
 noextract=()
 md5sums=('SKIP')
 
