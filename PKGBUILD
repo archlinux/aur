@@ -1,7 +1,8 @@
 # Maintainer: Kian Kasad <kdkasad@gmail.com>
 pkgname=dmenu-kian-git
 pkgver=4.9
-pkgrel=2
+_pkgver=4.9
+pkgrel=3
 pkgdesc="A customized build of dmenu by Kian Kasad"
 arch=('any')
 url="https://gitlab.com/kdkasad/dmenu.git"
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-kian-git}"
-	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
