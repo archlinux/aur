@@ -1,0 +1,19 @@
+pkgbase = lausanne-font
+	pkgdesc = A luxury serif typeface borrowing from classic Didot with a hint of Copperplate
+	pkgver = 1.005
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/lausanne-free-font
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = lausanne-1.005.zip::https://dl.dafont.com/dl/?f=lausanne
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = 47b9da93f9f34b596cbcf832a04bb3a2285075d9588f0133946f6e38ec3a18f5
+	sha256sums = SKIP
+
+pkgname = otf-lausanne
+	provides = lausanne-font
+
+pkgname = ttf-lausanne
+	provides = lausanne-font
+
