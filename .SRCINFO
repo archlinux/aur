@@ -1,6 +1,6 @@
 pkgbase = texlive-most-doc
 	pkgdesc = Most TeXLive documentation
-	pkgver = 20191023
+	pkgver = 20200622
 	pkgrel = 1
 	url = http://tug.org/texlive/
 	arch = any

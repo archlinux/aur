@@ -3,7 +3,7 @@
 # original code by Sunday87: https://bbs.archlinux.org/viewtopic.php?pid=1253365#p1253365
 
 pkgname=texlive-most-doc
-pkgver=20191023
+pkgver=20200622
 pkgrel=1
 pkgdesc="Most TeXLive documentation"
 url="http://tug.org/texlive/"
