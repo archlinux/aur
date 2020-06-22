@@ -1,16 +1,16 @@
 pkgbase = epubcheck
 	pkgdesc = A tool to validate epub files
-	pkgver = 4.2.2
-	pkgrel = 3
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = https://github.com/w3c/epubcheck
 	arch = any
 	license = BSD
 	makedepends = maven
 	depends = java-environment
-	source = epubcheck-4.2.2.tar.gz::https://github.com/w3c/epubcheck/archive/v4.2.2.tar.gz
+	source = epubcheck-4.2.3.tar.gz::https://github.com/w3c/epubcheck/archive/v4.2.3.tar.gz
 	source = epubcheck
 	source = epubcheck.1
-	sha512sums = ba122677c6d0250d4b94d2c280f6613a4673d8fccee9b2919ce9e2cd738f7c2c914e9144f5d5da67c853427b7fd303aedcc3389ca2a5ac0f208b104e01a948cf
+	sha512sums = a9d67f0d9601c51ba3423bb75906dd5b9ca2868fb070a690fa1c3b3f58c975234663fb71fec5c507a1f29f3ca9bb920141417e3fd86138f92d970433f71ae4cd
 	sha512sums = 04d10c21a57678e996c8da196c880455b21e97cf973c952a14d7b80504aa7ca5dfdd51ad9b9eccdf2de15d5c7e57a76ae698a80ac910fa325722747ce50b0670
 	sha512sums = eaca0a730f65572e7756599ba01168fa0d07f228fc4b7e950e00eba2372490c6fc898749015800fc56e70be0640c53401f9d40500231d72d83abb5d8cbca99b3
 
