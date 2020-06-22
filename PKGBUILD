@@ -70,9 +70,11 @@ provides=("firefox=$pkgver")
 conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
+        0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
 sha256sums=('46b339cc5f737cbaa112a318665c21ee4509299db005bf0ff6f0d4e6314c26f6'
             'SKIP'
+            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
