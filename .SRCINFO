@@ -22,6 +22,7 @@ pkgbase = openmvs
 	depends = google-glog
 	depends = opencv
 	depends = boost-libs
+	depends = qt5-base
 	optdepends = nvidia-utils: GPU optimized mesh reconstruction code
 	source = openmvs::git+https://github.com/cdcseacave/openMVS.git#tag=v1.0
 	source = vcglib::git+https://github.com/cdcseacave/VCG.git
