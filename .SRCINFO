@@ -1,6 +1,6 @@
 pkgbase = python-qulacs
 	pkgdesc = Simulate quantum circuits for Python
-	pkgver = 0.1.10
+	pkgver = 0.1.10.1
 	pkgrel = 1
 	url = https://docs.qulacs.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-qulacs
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	source = python-qulacs-0.1.10.tar.gz::https://github.com/qulacs/qulacs/archive/v0.1.10.tar.gz
-	sha512sums = 1801a958fbf6995cfb4b3c204a89916fa231d15cb66adae9625a959a27803cac8b48cbad872d0d6f48b2929b586da0be4e3329c899707b9084d2c842f23d93d5
+	source = python-qulacs-0.1.10.1.tar.gz::https://github.com/qulacs/qulacs/archive/v0.1.10.1.tar.gz
+	sha512sums = 2eef707bcd6a6fca763ef5f11a662661123ae622cc4aa1e5b78a849260b1fa3d36c7f0b8379641763504ede6aadc397f1df501d83b150a4d43d56bb4aa21ca14
 
 pkgname = python-qulacs
 
