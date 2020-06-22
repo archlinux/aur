@@ -1,7 +1,7 @@
 pkgbase = dmenu-kian-git
 	pkgdesc = A customized build of dmenu by Kian Kasad
-	pkgver = 4.9.r7.8c36dad
-	pkgrel = 1
+	pkgver = 4.9
+	pkgrel = 2
 	url = https://gitlab.com/kdkasad/dmenu.git
 	arch = any
 	license = MIT

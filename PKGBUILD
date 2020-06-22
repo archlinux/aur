@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad <kdkasad@gmail.com>
 pkgname=dmenu-kian-git
-pkgver=4.9.r7.8c36dad
-pkgrel=1
+pkgver=4.9
+pkgrel=2
 pkgdesc="A customized build of dmenu by Kian Kasad"
 arch=('any')
 url="https://gitlab.com/kdkasad/dmenu.git"
