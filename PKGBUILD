@@ -3,7 +3,7 @@
 
 _pkgname=ddcutil
 pkgname=ddcutil-git
-pkgver=v0.9.8.r262.g4685e63c
+pkgver=v0.9.9.r0.gdf01384d
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB (development version).'
 url='http://ddcutil.com/'
@@ -11,6 +11,7 @@ license=('GPL2')
 source=('git+https://github.com/rockowitz/ddcutil.git#branch=0.9.9-dev')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
+provides=('ddcutil')
 
 depends=(
   'libdrm'
