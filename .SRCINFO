@@ -1,6 +1,6 @@
 pkgbase = habitat
 	pkgdesc = Application automation framework that allows you to build applications that have automation built-in
-	pkgver = 1.6.39
+	pkgver = 1.6.56
 	pkgrel = 1
 	url = https://www.habitat.sh/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = habitat
 	provides = habitat
 	conflicts = habitat-bin
 	conflicts = habitat-git
-	source = habitat::git+https://github.com/habitat-sh/habitat.git#tag=1.6.39
+	source = habitat::git+https://github.com/habitat-sh/habitat.git#tag=1.6.56
 	sha256sums = SKIP
 
 pkgname = habitat

@@ -1,7 +1,7 @@
 # Maintainer: Ryan Cragun <me@ryan.ec>
 # http://packages.chef.io/files/stable/habitat/latest/manifest.json
 pkgname=habitat
-pkgver=1.6.39
+pkgver=1.6.56
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
