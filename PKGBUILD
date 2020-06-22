@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-neutronclient
-pkgver='7.1.1'
-pkgrel='1'
+pkgver=7.2.0
+pkgrel=1
 pkgdesc='Python client library for Neutron'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -18,7 +18,7 @@ checkdepends=('python-mock' 'python-oslotest' 'python-osprofiler'
               'python-testtools' 'python-tempest')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz"
         'skip-failing-py37-tests.patch')
-sha512sums=('b3639aa35ba208b1995acfd5286612bdec51fcc76f21fd1853369f97dda2e5d5a54803942230b45b12a189c884ce16b977bc88895eca93251a75fcdca6db4f39'
+sha512sums=('ba7776421c1102ff057fcf2017eb76cb3a15fb8946b509281d893906aa4685da164bf846a5ebe7a25d1546b3fc4ab6ca10a2c02cd1d39f4595aee8b611360fe6'
             'b1dde9fe60d8e47335984f350b01116d3d477aa7108790ca14ffc5d6e7f11180f202e2b59985ce05e4dff788f167c7a094361b5e823f5038d70a955b5ad84b2e')
 
 export PBR_VERSION=$pkgver
