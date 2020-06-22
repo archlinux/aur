@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=systemd-swap-git
-pkgver=4.1.r42.g47829e4
+pkgver=4.2.2.r5.g292cd1b
 pkgrel=1
 pkgdesc="Script for creating hybrid swap space from zram swaps, swap files and swap partitions"
 arch=('any')
@@ -25,5 +25,5 @@ pkgver() {
 package() {
   cd "systemd-swap"
 
-  make PREFIX="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
