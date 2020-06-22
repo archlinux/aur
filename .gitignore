@@ -1,4 +1,4 @@
-deepspeech-*.tar.*z
+*.tar.*z
 *.pbmm
 *.tflite
 *.scorer
