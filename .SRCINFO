@@ -1,7 +1,7 @@
 pkgbase = qsync
 	pkgdesc = QNap's synchronization client
 	pkgver = 1.0.5.0305
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.qnap.com/en/utilities/essentials
 	arch = x86_64
@@ -9,8 +9,12 @@ pkgbase = qsync
 	optdepends = nautilus: this client has nautlius integration
 	source = qsync-1.0.5.0305.deb::https://download.qnap.com/Storage/Utility/QNAPQsyncClientUbuntux64-1.0.5.0305.deb
 	source = kde-open5
+	source = Qsync.sh.patch
+	source = QsyncRestart.sh.patch
 	md5sums = 9c34cb93a86e1d3364c12a4a1270232d
-	md5sums = 8ae7948a1de080bd0320c9b126c91075
+	md5sums = ef5abc8367e97f42313bb4545d6acadf
+	md5sums = 923af1881c03c429c4623305d108a5b5
+	md5sums = cfa6be2d8391bde792381740542176b2
 
 pkgname = qsync
 

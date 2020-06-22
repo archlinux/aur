@@ -1,0 +1,18 @@
+--- Qsync.sh	2020-03-05 06:57:56.000000000 +0100
++++ Qsync.sh	2020-06-21 22:00:00.000000000 +0200
+@@ -1,6 +1,5 @@
+ #!/bin/bash
+ 
+-#!/bin/sh
+ 
+ ulimit -n 4096
+ 
+@@ -13,5 +12,7 @@
+ dirname=$PWD/$dirname
+ fi
+ LD_LIBRARY_PATH="$dirname/lib"
+-export LD_LIBRARY_PATH=/usr/local/lib/QNAP/QsyncClient
++export LD_LIBRARY_PATH=/usr/local/lib/QNAP/QsyncClient:/usr/lib:$LD_LIBRARY_PATH
++export PATH=$dirname:$PATH
++
+ $dirname/$appname "$@"

@@ -1,0 +1,9 @@
+--- QsyncRestart.sh	2020-03-05 06:57:56.000000000 +0100
++++ QsyncRestart.sh	2020-06-21 22:00:00.000000000 +0200
+@@ -19,4 +19,6 @@
+ fi
+ LD_LIBRARY_PATH="$dirname/lib"
+ export LD_LIBRARY_PATH=/usr/local/lib/QNAP/QsyncClient
++export PATH=$dirname:$PATH
++
+ $dirname/Qsync "$@"

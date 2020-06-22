@@ -1,3 +1,7 @@
-#!/bin/bash    
-export LD_LIBRARY_PATH=/usr/lib
-/usr/bin/kde-open5 $@
+#!/bin/bash
+
+QTLIBS_PATH=`pkg-config --variable=libdir Qt5Core`
+QTBIN_PATH=`pkg-config --variable=host_bins Qt5Core`
+
+export LD_LIBRARY_PATH=${QTLIBS_PATH}:${LD_LIBRARY_PATH}
+${QTBIN_PATH}/kde-open5 $@
