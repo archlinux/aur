@@ -1,0 +1,26 @@
+pkgbase = pianoteq
+	pkgdesc = Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions.
+	pkgver = 6.7.3
+	pkgrel = 1
+	url = https://www.pianoteq.com/pianoteq
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	makedepends = wget
+	makedepends = p7zip
+	depends = alsa-lib
+	depends = freetype2
+	depends = ttf-font
+	depends = libxext
+	provides = pianoteq
+	conflicts = pianoteq
+	conflicts = pianoteq-stage
+	conflicts = pianoteq-standard-trial-bin
+	source = local://pianoteq_linux_v673.7z
+	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
+	b2sums = 4b40d0a35ee42d75705dba1d71f0ceb71c1cbb69e66f02de4e8a5dbc2e2b09fc2509d1d744f8350f035980fdf5559557f0b0942aa754d0f9f8cc8c8dceadc2cf
+	b2sums = bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d
+
+pkgname = pianoteq
+
