@@ -1,0 +1,15 @@
+pkgbase = sigfox-radio-signal-analyzer
+	pkgdesc = Sigfox Radio Signal Analyser for use with Sigfox SDR stick
+	pkgver = 2.0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = squashfs-tools
+	makedepends = cdrtools
+	depends = fftw
+	depends = qt5-svg
+	depends = alsa-lib
+
+pkgname = sigfox-radio-signal-analyzer
+
