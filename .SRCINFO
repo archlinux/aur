@@ -1,19 +1,24 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.16.2
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = http://scikit-image.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-flake8
+	checkdepends = python-pytest-localserver
 	makedepends = cython>=0.23.4
-	depends = python-numpy>=1.14
-	depends = python-scipy>=0.19.0
+	depends = python-numpy>=1.15
+	depends = python-scipy>=1.0.1
 	depends = python-matplotlib>3.0.0
 	depends = python-networkx>=2.0
 	depends = python-pillow>=4.3.0
-	depends = python-pywavelets>=0.4.0
+	depends = python-pywavelets>=1.1.1
 	depends = python-imageio>=2.3.0
+	depends = python-tifffile>=2019.7.26
 	optdepends = python-pyqt5: for imshow(x, fancy=True) and skivi
 	optdepends = python-qtpy
 	optdepends = freeimage: for reading various types of image file formats
@@ -22,8 +27,8 @@ pkgbase = python-scikit-image
 	optdepends = python-imread: Optional I/O plugin providing most standard formats
 	optdepends = python-simpleitk: Optional I/O plugin providing a wide variety of formats. including specialized formats using in medical imaging
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.16.2.tar.gz
-	sha256sums = dd7fbd32da74d4e9967dc15845f731f16e7966cee61f5dc0e12e2abb1305068c
+	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.17.2.tar.gz
+	sha256sums = bd954c0588f0f7e81d9763dc95e06950e68247d540476e06cb77bcbcd8c2d8b3
 
 pkgname = python-scikit-image
 
