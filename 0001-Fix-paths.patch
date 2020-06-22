@@ -88,19 +88,6 @@ index db62f939..b9b39768 100644
 +
 +package.path  = tostring(rootPath / script / '?.lua')
 +      .. ';' .. tostring(rootPath / script / '?' / 'init.lua')
-diff --git a/script/workspace.lua b/script/workspace.lua
-index f9b243ad..bcc5ffc7 100644
---- a/script/workspace.lua
-+++ b/script/workspace.lua
-@@ -186,7 +186,7 @@ function mt:init(rootUri)
-     end
-     log.info('Workspace inited, root: ', self.root)
-     log.info('Workspace inited, uri: ', rootUri)
--    local logPath = ROOT / 'log' / (rootUri:gsub('[/:]+', '_') .. '.log')
-+    local logPath = LOG_PATH / (rootUri:gsub('[/:]+', '_') .. '.log')
-     log.info('Log path: ', logPath)
-     log.init(ROOT, logPath)
-
 diff --git a/test.lua b/test.lua
 index c1ac7993..7d20a6e3 100644
 --- a/test.lua
