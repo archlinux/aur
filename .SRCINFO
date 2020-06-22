@@ -1,7 +1,7 @@
 pkgbase = distccd-x86_64
 	pkgdesc = Toolchain for x86_64 builds on Arch ARM volunteers via distcc
 	pkgver = 10.1.0.20200514
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graysky2/crosstool-ng_for_distcc
 	install = readme.install
 	arch = armv7h
@@ -21,7 +21,7 @@ pkgbase = distccd-x86_64
 	sha256sums = ea406b82e10b7084192d0a480ec24ee889a6a592ea3e339dc81cf3a6f1058bf9
 	source_armv7h = http://repo-ck.com/PKG_source/x-tools86-armv7h-20200514.tar.zst
 	source_armv7h = http://repo-ck.com/PKG_source/x-tools86-armv7h-20200514.tar.zst.sig
-	sha256sums_armv7h = 0e51e1cc45f2db002b4a50bd402848780dbf86719cc3204a7679d85540885e29
+	sha256sums_armv7h = 214ace690917dc373c473baa1b61dde0e81f7bd5621bb1653756a44ac2c3c86c
 	sha256sums_armv7h = SKIP
 	source_aarch64 = http://repo-ck.com/PKG_source/x-tools86-aarch64-20200514.tar.zst
 	source_aarch64 = http://repo-ck.com/PKG_source/x-tools86-aarch64-20200514.tar.zst.sig
