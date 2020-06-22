@@ -1,7 +1,7 @@
 pkgbase = cudatext-gtk2-bin
 	pkgdesc = Cross-platform text editor, written in Lazarus
-	pkgver = 1.104.0
-	pkgrel = 2
+	pkgver = 1.105.5
+	pkgrel = 1
 	url = http://uvviewsoft.com/cudatext
 	arch = x86_64
 	license = MPL2
@@ -9,8 +9,8 @@ pkgbase = cudatext-gtk2-bin
 	depends = python
 	provides = cudatext
 	options = !strip
-	source = local://cudatext_1.104.0.0-1_gtk2_amd64.deb
-	sha256sums = 3c5decfc2714a71299e5acc9569bcefb84f722569adeb6fbe9c38317771fde1b
+	source = local://cudatext_1.105.5.5-1_gtk2_amd64.deb
+	sha256sums = da82396e8700f2425b7eb73a1be0df4ed17d3309960c0c3d7a4e8b057a2d2a33
 
 pkgname = cudatext-gtk2-bin
 
