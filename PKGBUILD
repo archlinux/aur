@@ -1,6 +1,6 @@
-# Maintainer: Benjamin Brown <brown.benjam@husky.neu.edu>
+# Maintainer: Benjamin Brown <brown.benjam@northeastern.edu>
 pkgname=deepspeech-models
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - models and supporting files."
 arch=('any')
