@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-3d-git
-pkgver=5.15.0_beta1.r5.ge9291b119
+pkgver=5.15.0_rc2.r23.g5f83aa911
 pkgrel=1
 pkgdesc="Qt5 3D module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL' 'custom')
 depends=('qt5-declarative' 'assimp')
-makedepends=('git')
+makedepends=('git' 'vulkan-headers')
 provides=('qt5-3d')
 conflicts=('qt5-3d')
 source=("git+https://code.qt.io/qt/qt3d.git#branch=5.15")

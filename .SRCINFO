@@ -1,6 +1,6 @@
 pkgbase = qt5-3d-git
 	pkgdesc = Qt5 3D module
-	pkgver = 5.15.0_beta1.r5.ge9291b119
+	pkgver = 5.15.0_rc2.r23.g5f83aa911
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = qt5-3d-git
 	license = LGPL
 	license = custom
 	makedepends = git
+	makedepends = vulkan-headers
 	depends = qt5-declarative
 	depends = assimp
 	provides = qt5-3d
