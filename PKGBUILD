@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=ssrt
-pkgver=2020.06.22.22
+pkgver=2020.06.22.25
 pkgrel=1
 pkgdesc='simplescreenreocrder - now even simpler'
 arch=('any')
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('61d8e7da155d57e27d2396c68c87b49e6aa867be30263ab9b42070092fd96135')
+sha256sums=('e2326f908b46e5d3d3700303701879f2f295392c3e9a9d4311e21c87f0dc92df')
 
 package() {
   ls
