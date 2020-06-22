@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  ln -sT "linux-syscall-support" "$pkgname/src/third_party/lss" || true # Don't fail if it exists
+  ln -sfT "${srcdir}/linux-syscall-support" "$pkgname/src/third_party/lss"
 }
 
 pkgver() {
