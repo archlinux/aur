@@ -2,17 +2,16 @@
 
 pkgorg='gepetto'
 pkgname=('example-robot-data' 'example-robot-data-docs')
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
 arch=('any')
 url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
 depends=('pinocchio')
-optdepends=('doxygen')
 makedepends=('cmake')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig} example-robot-data.sh)
-sha256sums=('SKIP' 'SKIP' '9edd03411b3a5744aafe6ff6a1c3a0bb8e26b04d0a7f1429557e23fffa235a23')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
@@ -32,12 +31,15 @@ check() {
 package_example-robot-data() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
-    install -Dm755 "$srcdir/example-robot-data.sh" "$pkgdir/etc/profile.d/example-robot-data.sh"
+    install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     rm -rf $pkgdir/usr/share/doc
 }
 
 package_example-robot-data-docs() {
+    depends=()
+
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
+    install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     rm -rf $pkgdir/usr/{lib,include}
 }
