@@ -8,18 +8,18 @@
 _pkgname=paraview
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=v5.8.0.r235.g8ee4b222a2
+pkgver=v5.8.1.RC1.r819.g08210ebaca
 pkgdesc="Open-source, multi-platform data analysis and visualization application"
 arch=(x86_64)
 url="https://www.paraview.org"
 provides=(paraview)
-conflicts=(paraview)
+conflicts=(paraview vtk)
 license=(BSD custom)
 depends=(boost-libs qt5-tools qt5-x11extras qt5-svg intel-tbb openmpi ffmpeg
          ospray python-numpy cgns protobuf
          double-conversion expat freetype2 gdal glew hdf5 libjpeg jsoncpp
          libjsoncpp.so libxml2 lz4 xz python-mpi4py netcdf libpng pdal
-         libtiff zlib)
+         libtiff zlib pegtl)
 #        gl2ps
 #        libharu
 optdepends=(python-matplotlib)
@@ -56,7 +56,7 @@ build() {
         -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
         -DPARAVIEW_USE_MPI=ON \
         -DPARAVIEW_USE_PYTHON=ON \
-        -DPARAVIEW_USE_RAYTRACING=ON \
+        -DPARAVIEW_ENABLE_RAYTRACING=ON \
         -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
         -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
         -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
