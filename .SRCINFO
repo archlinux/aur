@@ -1,0 +1,15 @@
+pkgbase = arkitech-font
+	pkgdesc = Futuristic architectural sans font
+	pkgver = 1.005
+	pkgrel = 1
+	url = https://www.neogrey.com/portfolio/arkitech-2
+	arch = any
+	license = custom:FFPU
+	makedepends = hq
+	source = arkitech-1.005.zip::https://dl.dafont.com/dl/?f=arkitech
+	source = font-licenses.html::https://www.neogrey.com/font-licenses
+	sha256sums = cb73fb29e4318055e3ed1db90d6d9a60a7a75985fbf6011b8e324f83e002e033
+	sha256sums = SKIP
+
+pkgname = ttf-arkitech
+
