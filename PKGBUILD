@@ -19,9 +19,9 @@ options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
         )
-md5sums=('SKIP'
-         'SKIP'
-        )
+sha256sums=('SKIP'
+            'SKIP'
+           )
 
 pkgver() {
   cd "$pkgname"
