@@ -1,6 +1,6 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=datamanager-cli-git
-pkgver=1.4.r206.3c8b365
+pkgver=1.5.r206.3c8b365
 pkgrel=1
 epoch=
 pkgdesc="The official cli client for the datamanager system"
@@ -22,7 +22,7 @@ md5sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/DataManagerCLI"
-	printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
