@@ -7,7 +7,7 @@ pkgdesc="Kubernetes.io client binary"
 pkgver=1.18.4
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
-url="http://kubernetes.io"
+url="https://kubernetes.io"
 license=('apache')
 conflicts=('kubectl' 'kubernetes>=1.4.6')
 provides=('kubectl=$pkgver')
