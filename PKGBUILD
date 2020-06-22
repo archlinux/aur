@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A new multiboot USB solution (Binary)'
 url='http://www.ventoy.net/'
 arch=('i686' 'x86_64')
@@ -51,8 +51,8 @@ package() {
   ln -svf /usr/bin/hexdump "$pkgdir/opt/${pkgname%-bin}/tool/"
   ln -svf /usr/bin/mkfs.exfat "$pkgdir/opt/${pkgname%-bin}/tool/mkextfatfs_32"
   ln -svf /usr/bin/mkfs.exfat "$pkgdir/opt/${pkgname%-bin}/tool/mkextfatfs_64"
-  ln -svf /usr/bin/mount.exfat-fuse "$pkgdir/opt/${pkgname%-bin}/tool/mkextfatfs_32"
-  ln -svf /usr/bin/mount.exfat-fuse "$pkgdir/opt/${pkgname%-bin}/tool/mkextfatfs_64"
+  ln -svf /usr/bin/mount.exfat-fuse "$pkgdir/opt/${pkgname%-bin}/tool/mount.exfat-fuse_32"
+  ln -svf /usr/bin/mount.exfat-fuse "$pkgdir/opt/${pkgname%-bin}/tool/mount.exfat-fuse_64"
 
   msg2 "Creating /usr/bin entries..."
   install -Dm755 "$srcdir/${pkgname%-bin}" -t "$pkgdir"/usr/bin/
