@@ -5,7 +5,7 @@
      IF (USE_PYTHON_3)
          MESSAGE("++ Looking for System Boost::python3")
 -        FIND_PACKAGE(Boost COMPONENTS python3 log log_setup REQUIRED)
-+        FIND_PACKAGE(Boost COMPONENTS python38 log log_setup REQUIRED)
++        FIND_PACKAGE(Boost COMPONENTS python log log_setup REQUIRED)
      ELSE (USE_PYTHON_3)
          MESSAGE("++ Looking for System Boost::python (py2)")
 -        FIND_PACKAGE(Boost COMPONENTS python log log_setup REQUIRED)
