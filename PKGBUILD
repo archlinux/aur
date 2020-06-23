@@ -9,6 +9,11 @@ url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
 depends=('python-telegram' 'python3')
 makedepends=('git' 'python-dephell')
+optdepends=(
+	'libnotify: for notifications, you could also use other programs: see config'
+	'ffmpeg: to record voice msgs and upload videos correctly'
+	'urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/paul-nameless/tg.git")
