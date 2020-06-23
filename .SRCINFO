@@ -19,6 +19,8 @@ pkgbase = lib32-gtk2-git
 	depends = lib32-libxcomposite
 	depends = lib32-libxdamage
 	depends = gtk2
+	provides = lib32-gtk2
+	conflicts = lib32-gtk2
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git
 	sha256sums = SKIP
 
