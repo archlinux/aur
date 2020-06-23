@@ -1,0 +1,24 @@
+pkgbase = brother-dcpj968n
+	pkgdesc = Driver for the Brother DCP-J968N wifi multifuncional printer
+	pkgver = 1.0.0_0
+	pkgrel = 1
+	url = https://support.brother.co.jp/j/b/producttop.aspx?c=jp&lang=ja&prod=dcpj968n
+	install = brother-dcpj968n.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf102835/dcpj968nlpr-1.0.0-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf102843/dcpj968ncupswrapper-1.0.0-0.i386.rpm
+	source = eula.txt
+	source = fix_lp.patch
+	md5sums = a7fbbaa67ccbaa17a81f2f6db0be660e
+	md5sums = 545e8cdcd598cd2d21e3c3e1dd990033
+	md5sums = 8f3fd8004f2345afe1e009bfb9d36f00
+	md5sums = 0eeafd97723bd243e0c8bdc0e49f7dc9
+
+pkgname = brother-dcpj968n
+

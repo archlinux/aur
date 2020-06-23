@@ -1,0 +1,26 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcpj968n/inf/setupPrintcapij dcpj968n -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj968n/cupswrapper/cupswrapperdcpj968n
+	
+	systemctl restart org.cups.cupsd.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpj968n/inf/setupPrintcapij dcpj968n -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj968n/cupswrapper/cupswrapperdcpj968n -e
+}
+
+op=$1
+shift
+
+$op "$@"
