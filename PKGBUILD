@@ -2,8 +2,8 @@
 
 _pkgname='linux-gpib'
 pkgname=("$_pkgname-svn")
-pkgver=r1862
-pkgrel=2
+pkgver=r1913
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_kernDir}"
   
-  curl https://gist.githubusercontent.com/greyltc/3571d194a506c040e3a05de6867eb814/raw/5de02bf21fcbd29148b89b522c55abfb82f16d4f/linux-gpib.patch | patch -p1
+  #curl https://gist.githubusercontent.com/greyltc/3571d194a506c040e3a05de6867eb814/raw/5de02bf21fcbd29148b89b522c55abfb82f16d4f/linux-gpib.patch | patch -p1
   #./bootstrap
   #./configure
   make clean

@@ -1,7 +1,7 @@
 pkgbase = linux-gpib-svn
 	pkgdesc = A support package for GPIB (IEEE 488) hardware -- built from the svn source tree
-	pkgver = r1862
-	pkgrel = 2
+	pkgver = r1913
+	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	arch = x86_64
 	license = GPL
