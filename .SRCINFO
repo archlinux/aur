@@ -1,6 +1,6 @@
 pkgbase = serpent-browser
 	pkgdesc = Unbranded version of Basilisk web browser
-	pkgver = 2020.05.08
+	pkgver = 2020.06.10
 	pkgrel = 1
 	url = https://www.basilisk-browser.org/
 	arch = x86_64
@@ -28,19 +28,15 @@ pkgbase = serpent-browser
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
 	provides = basilisk
-	provides = basilisk-bin
 	conflicts = basilisk
-	conflicts = basilisk-bin
-	replaces = basilisk
-	replaces = basilisk-bin
 	options = !emptydirs
 	options = !makeflags
-	source = https://github.com/MoonchildProductions/Basilisk/archive/v2020.05.08.tar.gz
-	source = https://github.com/MoonchildProductions/UXP/archive/RELBASE_20200506.tar.gz
-	source = serpent-browser.desktop
-	sha512sums = 5416d00309c2f62852f1acda58debe570f275d16cb6197f82adb5c96471996dab6b369f061fadb35b28dc1c1bd6397e88fcb577fde3ad63416328cd69226827a
-	sha512sums = 14ab79df0ee4098f1cb5e9396438595c3db25f66e2cbcaf4fc6a159fad870cad52959ae35c635fdbd457a8d18c07363e5cd3b43198794c3381e477355cdbb5b3
-	sha512sums = c30a3b149adada481165c2f207e25144ff55791d93dd9febfc6a15dbafac907277d9e0fa63b284abdf71dd5ffeb11fca8bcdec4e859d497364fb9524921d0073
+	source = https://github.com/MoonchildProductions/Basilisk/archive/v2020.06.10.tar.gz
+	source = https://github.com/MoonchildProductions/UXP/archive/8797b20746cd80c51cc56225f70ddea6c6b94f9d.tar.gz
+	source = https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/1f08c80172805b68ac36dd368a36f1e6828fc662/palemoon/branding/official/palemoon.desktop
+	sha256sums = 95bf84ed387e1fd57d6008e4eb18d9359b0c647c523722942d9faf897d67c11d
+	sha256sums = cd22f27ec1f2dfadafd2c512268ab8f437504a432c9a32adf491945b09d6c1c9
+	sha256sums = 98fce6e155a0c0243886b09364ab925d742cdc97d631bfd1019a2c597aed42fc
 
 pkgname = serpent-browser
 
