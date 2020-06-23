@@ -1,49 +1,42 @@
 # Maintainer: Mihai-Drosi Câju at cajum dot bugs at yandex dot com
 pkgname=juju
-pkgver=2.7.5
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Simple, secure devops tooling built to manage today's complex applications wherever you run your software."
 arch=('x86_64')
 url="https://github.com/juju/juju"
 license=('AGPL3')
-_pkgpath="github.com/juju/juju"
 
 makedepends=(
-	"git"
-	"go-pie>=1.11"
+	"go>=1.11"
 )
 depends=(
 	"lxd"
 )
 source=(
-	"${pkgname}-${pkgver}::git+https://${_pkgpath}#tag=${pkgname}-${pkgver}"
+	"${url}/archive/${pkgname}-${pkgver}.tar.gz"
 	"build.patch"
 )
 sha512sums=(
-	"SKIP"
-	"0fdd06f3265cf71c30bcd8b6f6cc58ec481fbfda024d73d8b93a90be39b15f46a66d0ed1671ba7fd86ff6b8350795188ab09473635dbcf633b7f0eb42c31d89b"
+	"b47b3a096ff738da409ece6fedccfa7008900c7ce0b7faf37ec84ef0285491a16397b03255e029a96ae4d39bae2241707e36970e6070784d443ae7f7c4056d91"
+	"8cdd75296e3d2b3f9dd58b83dbac0f642e9f073eb1ef0cf89823ae287a680aa3311248a860dccf5acfe78bfed67fe9d14cdf5d52799ea5b6c6e3ee34073b4c26"
 )
 
 prepare () {
-	export GOPATH="${srcdir}/go"
-	cd "${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 	patch --forward --strip=1 --input="${srcdir}/build.patch"
-	mkdir -p "$GOPATH/src/${_pkgpath}"
-	cp -r . "$GOPATH/src/${_pkgpath}"
 }
 build () {
+	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 	export GOPATH="${srcdir}/go"
-	cd "$GOPATH/src/${_pkgpath}"
 	make release-install
 }
-check () {
-	echo "No tests are run because juju's integration tests require a running lxd server without IPv6"
-}
 package() {
+	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 	export GOPATH="${srcdir}/go"
 	install -D -m755 "${GOPATH}/bin/juju" "${pkgdir}/usr/bin/juju"
 	install -D -m755 "${GOPATH}/bin/jujud" "${pkgdir}/usr/bin/jujud"
 	install -D -m755 "${GOPATH}/bin/juju-metadata" "${pkgdir}/usr/bin/juju-metadata"
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/etc/bash_completion.d/juju" "${pkgdir}/usr/share/bash-completion/completions/juju"
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/etc/bash_completion.d/juju-version" "${pkgdir}/usr/share/bash-completion/completions/juju-version"
+	install -D -m644 "${srcdir}/${pkgname}-${pkgname}-${pkgver}/etc/bash_completion.d/juju" "${pkgdir}/usr/share/bash-completion/completions/juju"
+	install -D -m644 "${srcdir}/${pkgname}-${pkgname}-${pkgver}/etc/bash_completion.d/juju-version" "${pkgdir}/usr/share/bash-completion/completions/juju-version"
 }

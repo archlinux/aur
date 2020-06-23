@@ -1,13 +1,13 @@
---- juju-2.7.5/Makefile
-+++ juju-2.7.5-patches/Makefile
-@@ -48,8 +48,8 @@ ifeq ($(DEBUG_JUJU), 1)
-     COMPILE_FLAGS = -gcflags "all=-N -l"
-     LINK_FLAGS = -ldflags "-X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
- else
--    COMPILE_FLAGS =
--    LINK_FLAGS = -ldflags "-s -w -X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
-+    COMPILE_FLAGS = -trimpath
-+    LINK_FLAGS = -ldflags "-s -w -extldflags '$(LDFLAGS)' -X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
- endif
+--- a/Makefile	2020-06-23 12:58:20.036488630 +0300
++++ b/Makefile	2020-06-23 13:01:04.593152669 +0300
+@@ -53,8 +53,8 @@
  
- define DEPENDENCIES
+ # Compile with debug flags if requested.
+ ifeq ($(DEBUG_JUJU), 1)
+-    COMPILE_FLAGS = -gcflags "all=-N -l"
+-    LINK_FLAGS = -ldflags "-X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
++    COMPILE_FLAGS = -gcflags "all=-N -l" -trimpath -gccgoflags "$(CFLAGS)
++    LINK_FLAGS = -ldflags "-extldflags '$(LDFLAGS)' -X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
+ else
+ ifeq ($(shell go env GOARCH | sed -E 's/.*(ppc64le|ppc64).*/golang/'), golang)
+ 	# disable optimizations on ppc64le due to https://golang.org/issue/39049
