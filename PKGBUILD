@@ -7,7 +7,7 @@
 # Contributor: Anders Bennehag
 
 pkgname=nix
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=2
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +19,7 @@ makedepends=('bzip2' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz"
         'ldflags.patch')
-sha256sums=('1c626a0de0acc69830b1891ec4d3c96aabe673b2a9fd04cef84f2304d05ad00d'
+sha256sums=('05e90529c9dc9f4bf656cbceae61cafdca49935bb79cd291c8f078a095701d89'
             '42350237d98785b30b0ee099405f2f1f7412f8a816162c22bd232ed3dbbe0305')
 
 prepare() {
