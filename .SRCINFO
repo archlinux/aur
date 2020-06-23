@@ -1,0 +1,13 @@
+pkgbase = ttf-goldmansans
+	pkgver = 2020.06.23
+	pkgrel = 1
+	url = https://design.gs.com/d/design-system/foundation/typography/
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://design.gs.com/d/GoldmanSans.zip
+	sha512sums = 986c32d0611de90720243d87420bb3dc2fec8279d60921e17285cc0b6d8ac53547eb2b8d4d4785ad91024b7ca4bfe2ba4bd3ae7435bb77630a2fab051a214d37
+
+pkgname = ttf-goldmansans
+
