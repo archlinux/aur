@@ -1,8 +1,9 @@
 pkgbase = fbmenugen
 	pkgdesc = A simple menu generator for the Fluxbox Window Manager (with support for icons).
 	pkgver = 0.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trizen/fbmenugen
+	install = readme.install
 	arch = any
 	license = GPL3
 	depends = perl>=5.14.0
@@ -10,6 +11,7 @@ pkgbase = fbmenugen
 	depends = perl-data-dump
 	depends = perl-linux-desktopfiles>=0.25
 	optdepends = gtk2-perl: support for icons
+	optdepends = perl-gtk3: support for icons (with `use_gtk3 = 1`)
 	optdepends = perl-file-desktopentry: locale support
 	source = fbmenugen-0.85.tar.gz::https://github.com/trizen/fbmenugen/archive/0.85.tar.gz
 	sha256sums = 99ea3bf39a153c1c05bcd7881d7708fc575c485855e8d8b022520b43013ceb26
