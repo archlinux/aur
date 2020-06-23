@@ -1,7 +1,7 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 10.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefilesync.org
 	arch = i686
 	arch = x86_64
@@ -14,18 +14,18 @@ pkgbase = freefilesync-bin
 	provides = freefilesync
 	conflicts = freefilesync
 	options = !strip
+	source = dlagent
 	source = freefilesync-bin-10.25.tar.gz::https://freefilesync.org/download/FreeFileSync_10.25_Linux.tar.gz
 	source = FreeFileSync.desktop
 	source = FreeFileSync.png
 	source = RealTimeSync.desktop
 	source = RealTimeSync.png
-	source = dlagent
+	sha256sums = 3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a
 	sha256sums = 30615e761743321f344e17ff7d773ead7efb1ea018602d429dc1cba160046373
 	sha256sums = d46ae777a53c6e1d8e4baa088af4ad2eb798ff9064c2b4bc3768b7192d400eea
 	sha256sums = b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30
 	sha256sums = 11315b1735c4f6af91f3aaaf3b37800c54ce24f10a3e674d94f88048605e4da8
 	sha256sums = 23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6
-	sha256sums = 3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a
 
 pkgname = freefilesync-bin
 
