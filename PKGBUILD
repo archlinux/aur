@@ -1,6 +1,6 @@
 pkgname=otrs
 pkgver=6.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
@@ -9,6 +9,7 @@ license=("GPLv3")
 depends=("perl"
          "perl-gd"
          "perl-dbi"
+         "perl-moo"
          "perl-ldap"
          "perl-ntlm"
          "perl-dbd-pg"
@@ -30,6 +31,7 @@ depends=("perl"
          "perl-yaml-libyaml"
          "perl-mail-imapclient"
          "perl-template-toolkit"
+         "perl-crypt-eksblowfish"
          "perl-lwp-protocol-https"
          "perl-bytes-random-secure")
 optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
