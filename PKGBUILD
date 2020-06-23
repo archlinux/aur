@@ -3,7 +3,7 @@
 
 _pkgname="lazr.uri"
 pkgname=("python-lazr-uri")
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel="1"
 pkgdesc="A self-contained, easily reusable library for parsing, manipulating, and generating URIs."
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 makedepends=('python-setuptools')
 depends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz")
-sha256sums=('5c620b5993c8c6a73084176bfc51de64972b8373620476ed841931a49752dc8b')
+sha256sums=('02838f2328e87e1093528d62ffbd9b540f7f3a2b9d42c7439a29c20db2f831bf')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
