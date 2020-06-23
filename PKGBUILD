@@ -1,18 +1,19 @@
-# Maintainer: Zack Emmert <zemmert@fastmail.com>
-# Contributor Alexandre Bouvier <contact@amb.tf>
+# Maintainer: Nico <desoxhd@gmail.com>
+# Contributor: Zack Emmert <zemmert@fastmail.com>
+# Contributor: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 # Contributor: Jamesjon <universales@protonmail.com>
 pkgname=plymouth-kcm
-pkgver=5.18.5
+pkgver=5.19.1
 pkgrel=1
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('any')
-url="https://cgit.kde.org/plymouth-kcm.git/"
+url="https://invent.kde.org/plasma/plymouth-kcm.git"
 license=('GPL')
 depends=('plymouth' 'knewstuff' 'kconfig' 'kconfigwidgets' 'ki18n' 'kdeclarative' 'kcmutils')
 makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e8f75dd8c8a45cd706a0a6e62826d1eb4fff9c3912cbaadba8c06e9de915d2e3'
+sha256sums=('f8d89e9e281edb44b03bf5d281ef5f40148788bd97af652dc6c4dc8f047dcc27'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
 
