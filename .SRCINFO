@@ -1,0 +1,18 @@
+pkgbase = telegram-tg-git
+	pkgdesc = terminal telegram client that really works
+	pkgver = r299.73bb8b2
+	pkgrel = 1
+	url = https://github.com/paul-nameless/tg
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = python-dephell
+	depends = python-telegram
+	depends = python3
+	provides = telegram-tg
+	conflicts = telegram-tg
+	source = telegram-tg::git+https://github.com/paul-nameless/tg.git
+	md5sums = SKIP
+
+pkgname = telegram-tg-git
+
