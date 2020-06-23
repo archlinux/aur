@@ -1,0 +1,12 @@
+pkgbase = otf-apfel-grotezk
+	pkgdesc = Apfel Grotezk is a round and airy sans serif family, inspired by neo–grotesque and geometric typefaces.
+	pkgver = 1
+	pkgrel = 1
+	url = http://collletttivo.it
+	arch = any
+	license = OFL
+	source = http://collletttivo.it/assets/download/apfelGrotezk.zip
+	sha256sums = 33392d45666fd2c9d36cb75ea14514f486929777c97c1735b4f422c027685d0b
+
+pkgname = otf-apfel-grotezk
+
