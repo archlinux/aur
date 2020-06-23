@@ -39,5 +39,6 @@ package() {
     mkdir -p ~/.local/share/rofi/rofi-shortcuts/
 	  cp "${srcdir}"/rofi-shortcuts/rofi-shortcuts.conf ~/.config/rofi/rofi-shortcuts/rofi-shortcuts.conf
 	  cp "${srcdir}"/rofi-shortcuts/rofi-shortcuts.sh ~/.local/share/rofi/rofi-shortcuts/rofi-shortcuts.sh
+	  chmod 644 ~/.local/share/rofi/rofi-shortcuts/rofi-shortcuts.sh
     ln -sf ~/.local/share/rofi/rofi-shortcuts/rofi-shortcuts.sh ~/.local/bin/rofi-shortcuts
 }
