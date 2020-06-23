@@ -5,10 +5,10 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-git
-pkgver=83.0.4103.61.1.r0.gc732887
+pkgver=83.0.4103.106.1.r0.gf08ce8b
 pkgrel=1
 _pkgname=ungoogled-chromium
-_pkgver=83.0.4103.61
+_pkgver=83.0.4103.106
 _ungoogled_ver=master
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
@@ -19,10 +19,11 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
+             'libpipewire02' 'libva' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
+            'libva: hardware-accelerated video decode (experimental)'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -44,7 +45,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('4961f20c4ee6a94490e823f1b1c4128147068f1ce9cfc509e81815f2101405bc'
+sha256sums=('cfd153a2e10b0bb0fb3b7e6be543aef0915181f5fbdbea893d08465afd097e2f'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
@@ -203,7 +204,6 @@ build() {
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
     'use_vaapi=true'
-    'enable_swiftshader=false'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -251,21 +251,41 @@ package() {
   install -Dm644 chrome/app/resources/manpage.1.in \
     "$pkgdir/usr/share/man/man1/chromium.1"
   sed -i \
-    -e "s/@@MENUNAME@@/Chromium/g" \
-    -e "s/@@PACKAGE@@/chromium/g" \
-    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    -e 's/@@MENUNAME@@/Chromium/g' \
+    -e 's/@@PACKAGE@@/chromium/g' \
+    -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
-  cp \
-    out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/{*.bin,chromedriver} \
-    "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+  sed -ni \
+    -e 's/chromium-browser\.desktop/chromium.desktop/' \
+    -e '/<update_contact>/d' \
+    -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
+    -e '/^<?xml/,$p' \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+
+  local toplevel_files=(
+    chrome_100_percent.pak
+    chrome_200_percent.pak
+    resources.pak
+    v8_context_snapshot.bin
+
+    # ANGLE
+    libEGL.so
+    libGLESv2.so
+
+    chromedriver
+  )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+    toplevel_files+=(icudtl.dat)
   fi
+
+  cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
