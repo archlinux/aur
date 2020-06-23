@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=jupyterlab-git
-pkgver=19649.git.8fb048d
+pkgver=2.1.0.r1034.g8fb048d9c
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
@@ -16,9 +16,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd $srcdir/jupyterlab
-    no=$(git rev-list --count HEAD)
-    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
-    printf "${no}.git.${hash}"
+    git describe --match "v*" --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
