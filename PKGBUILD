@@ -8,7 +8,7 @@ arch=(x86_64)
 url="http://www.prestopalette.com/"
 license=(MIT)
 depends=(hicolor-icon-theme qt5-multimedia)
-makedepends=(imagemagick)
+makedepends=(icoutils)
 source=(https://github.com/PrestoPalette/PrestoPalette/releases/download/$pkgver/$pkgname-$pkgver.tar.gz
         PrestoPalette.desktop
         PrestoPalette.appdata.xml)
@@ -18,7 +18,6 @@ sha256sums=('656a1e7df7fae23dbb823609b9f8d24f8112cc3b6ca780883b6085b650168495'
 
 build() {
   cd $pkgname-$pkgver
-  convert graphics/favicon.ico +set date:create +set date:modify graphics/favicon.png
   qmake PrestoPalette.pro
   make
 }
@@ -30,10 +29,9 @@ package() {
   install -Dm644 ../PrestoPalette.appdata.xml "$pkgdir/usr/share/metainfo/PrestoPalette.appdata.xml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 graphics/favicon-0.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/PrestoPalette.png"
-  install -Dm644 graphics/favicon-1.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/PrestoPalette.png"
-  install -Dm644 graphics/favicon-2.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/PrestoPalette.png"
-  install -Dm644 graphics/favicon-3.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/PrestoPalette.png"
-  install -Dm644 graphics/favicon-4.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/PrestoPalette.png"
-  install -Dm644 graphics/favicon-5.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/PrestoPalette.png"
+  icotool -x graphics/favicon.ico
+  for res in 16 32 48 64 128 256; do
+    install -Dm644 favicon_*"_${res}x${res}x32.png" \
+      "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/PrestoPalette.png"
+  done
 }
