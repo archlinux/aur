@@ -1,0 +1,84 @@
+From 18d45632d742557ddae47637015954340de18601 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Kr=C3=B6ning?= <m.kroening@hotmail.de>
+Date: Sun, 8 Sep 2019 15:52:51 +0200
+Subject: [PATCH 2/2] Use standard tomcrypt header
+
+---
+ .github/workflows/ci.yml | 3 +--
+ src/CMakeLists.txt       | 3 +++
+ src/CryptHelpers.h       | 2 +-
+ src/CryptManager.cpp     | 5 +++--
+ 4 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 930e3c4b17..1f9f947fbf 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -59,7 +59,6 @@ jobs:
+           ninja-build
+       - name: Configure
+         # TODO: png: https://github.com/stepmania/stepmania/issues/1881
+-        # TODO: tomcrypt: https://github.com/stepmania/stepmania/issues/1885
+         run: cmake -G Ninja -B build
+           -DWITH_SYSTEM_FFMPEG=ON
+           -DWITH_SYSTEM_GLEW=ON
+@@ -69,7 +68,7 @@ jobs:
+           -DWITH_SYSTEM_OGG=ON
+           -DWITH_SYSTEM_PCRE=ON
+           -DWITH_SYSTEM_PNG=ON
+-          -DWITH_SYSTEM_TOMCRYPT=OFF
++          -DWITH_SYSTEM_TOMCRYPT=ON
+           -DWITH_SYSTEM_TOMMATH=ON
+           -DWITH_SYSTEM_ZLIB=ON
+       - name: Build
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 398e3e78b1..c9f551d6bf 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -683,6 +683,9 @@ if(NOT WITH_SYSTEM_PNG)
+   list(APPEND SM_INCLUDE_DIRS "${SM_EXTERN_DIR}/libpng")
+ endif()
+ 
++if(NOT WITH_SYSTEM_TOMCRYPT)
++  list(APPEND SM_INCLUDE_DIRS "${SM_SRC_DIR}/libtomcrypt/src/headers")
++endif()
+ 
+ target_include_directories("${SM_EXE_NAME}" PUBLIC ${SM_INCLUDE_DIRS})
+ 
+diff --git a/src/CryptHelpers.h b/src/CryptHelpers.h
+index 5171f54e2f..c09daf8824 100644
+--- a/src/CryptHelpers.h
++++ b/src/CryptHelpers.h
+@@ -3,7 +3,7 @@
+ 
+ #if !defined(DISABLE_CRYPTO)
+ 
+-#include "libtomcrypt/src/headers/tomcrypt.h"
++#include <tomcrypt.h>
+ 
+ class PRNGWrapper
+ {
+diff --git a/src/CryptManager.cpp b/src/CryptManager.cpp
+index f61b467760..fa882d51bd 100644
+--- a/src/CryptManager.cpp
++++ b/src/CryptManager.cpp
+@@ -1,4 +1,7 @@
+ #include "global.h"
++
++#include <tomcrypt.h>
++
+ #include "CryptManager.h"
+ #include "RageUtil.h"
+ #include "RageLog.h"
+@@ -9,8 +12,6 @@
+ #include "LuaReference.h"
+ #include "LuaManager.h"
+ 
+-#include "libtomcrypt/src/headers/tomcrypt.h"
+-
+ CryptManager*	CRYPTMAN	= nullptr;	// global and accessible from anywhere in our program
+ 
+ static const RString PRIVATE_KEY_PATH = "Data/private.rsa";
+-- 
+2.27.0
+

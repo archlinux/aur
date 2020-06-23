@@ -9,20 +9,22 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 _pkgname=stepmania
 pkgname=$_pkgname-git
-pkgver=5.1.0.b2.r490.a21ebbd053
+pkgver=5.1.0.b2.r510.1f1fa3c2a9
 pkgrel=1
 pkgdesc="An advanced rhythm game designed for both home and arcade use."
 arch=(x86_64)
 url=https://www.$_pkgname.com/
 license=(MIT)
-depends=(ffmpeg glew gtk2 libmad libtommath libvorbis)
+depends=(ffmpeg glew gtk2 jsoncpp libmad libtomcrypt libvorbis)
 makedepends=(cmake git ninja)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+https://github.com/$_pkgname/$_pkgname.git
-        0001-Don-t-require-assembler-for-system-FFmpeg.patch)
+        0001-Don-t-require-assembler-for-system-FFmpeg.patch
+        0002-Use-standard-tomcrypt-header.patch)
 sha256sums=('SKIP'
-            '6cf4f1f917fab4f1931fdbe5271e1253cdad0e789cb651ede575cb6d1f6c64b7')
+            '99237c08a2d15ba56ef2763161181fbac356dc2e76bb6c1c7ccef1c8e30636b8'
+            '6b915e4b54f7405e97e5333c134334030d46c6ed68afe09b097a965a28d6c7a6')
 
 pkgver() {
     cd $_pkgname
@@ -35,14 +37,12 @@ prepare() {
     # Related issue: https://github.com/stepmania/stepmania/issues/2016
     patch -p1 -i "$srcdir"/0001-Don-t-require-assembler-for-system-FFmpeg.patch
 
-    # Related issue: https://github.com/stepmania/stepmania/issues/1881
-    rm -r extern/libpng
+    # Related issue: https://github.com/stepmania/stepmania/issues/1885
+    patch -p1 -i "$srcdir"/0002-Use-standard-tomcrypt-header.patch
 }
 
 build() {
     # Related issues
-    # jsoncpp: https://github.com/stepmania/stepmania/issues/1883
-    # tomcrypt: https://github.com/stepmania/stepmania/issues/1885
     cmake -G Ninja -S $_pkgname -B build \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
@@ -53,12 +53,12 @@ build() {
         -DWITH_SYSTEM_FFMPEG=ON \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_SYSTEM_JPEG=ON \
-        -DWITH_SYSTEM_JSONCPP=OFF \
+        -DWITH_SYSTEM_JSONCPP=ON \
         -DWITH_SYSTEM_MAD=ON \
         -DWITH_SYSTEM_OGG=ON \
         -DWITH_SYSTEM_PCRE=ON \
         -DWITH_SYSTEM_PNG=ON \
-        -DWITH_SYSTEM_TOMCRYPT=OFF \
+        -DWITH_SYSTEM_TOMCRYPT=ON \
         -DWITH_SYSTEM_TOMMATH=ON \
         -DWITH_SYSTEM_ZLIB=ON \
         -Wno-dev

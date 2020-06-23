@@ -1,7 +1,7 @@
-From e4726e3fcf2f0d506d0caebc6e92643bc8620a32 Mon Sep 17 00:00:00 2001
+From b5ba7e1986a8dd921a5f65ce9408157cffe71a63 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Martin=20Kr=C3=B6ning?= <mkroening@posteo.net>
 Date: Sun, 14 Jun 2020 14:03:37 +0200
-Subject: [PATCH] Don't require assembler for system FFmpeg
+Subject: [PATCH 1/2] Don't require assembler for system FFmpeg
 
 ---
  StepmaniaCore.cmake | 2 +-
