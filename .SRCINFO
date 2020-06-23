@@ -1,6 +1,6 @@
 pkgbase = python-gaphas-git
 	pkgdesc = Diagramming widget library for Python
-	pkgver = 2.0.0.r3.g2be8a97
+	pkgver = 2.0.0.r21.g80f542f
 	pkgrel = 1
 	url = https://github.com/gaphor/gaphas
 	arch = x86_64
