@@ -1,0 +1,16 @@
+pkgbase = powerupp-git
+	pkgdesc = Simple GUI for UPP
+	pkgver = r78.0a12022
+	pkgrel = 1
+	url = https://github.com/azeam/powerupp
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = upliftpowerplay
+	depends = gtk3
+	provides = powerupp-git
+	source = powerupp-git::git+https://github.com/azeam/powerupp.git#branch=master
+	md5sums = SKIP
+
+pkgname = powerupp-git
+
