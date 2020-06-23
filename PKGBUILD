@@ -5,7 +5,7 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=0.6.0.r22.g9d507b2d
+pkgver=0.6.1.r0.gebf4d1c3
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
@@ -43,6 +43,6 @@ package() {
   # install man page
   mandir=/usr/share/man/man6
   mkdir -p  ${pkgdir}/${mandir}
-  gzip -c "${srcdir}/${pkgbase}/xmoto.6" > "${pkgdir}/${mandir}/xmoto.6.gz"
+  gzip -c "${srcdir}/${pkgbase}/doc/xmoto.6" > "${pkgdir}/${mandir}/xmoto.6.gz"
 }
 
