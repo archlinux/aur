@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -10,10 +10,10 @@ checkdepends=('check')
 depends=('libxkbcommon' 'wayland' 'pixman')
 source=(https://codeberg.org/dnkl/foot/archive/1.3.0.tar.gz
         https://codeberg.org/dnkl/tllist/archive/1.0.1.tar.gz
-        https://codeberg.org/dnkl/fcft/archive/2.1.2.tar.gz)
+        https://codeberg.org/dnkl/fcft/archive/2.1.3.tar.gz)
 sha256sums=('a5a521d49745e599fe68ad1efa80d7103a7e5c47d8bc35ae967dd2a09031a920'
             'baa94259ee6a8cc9114cf59cf58395a7f6537d36909e8bed036f0da7457b6a0e'
-            '556916161216e1b92b236aedbc08639964b4855274a0e1328720b3332bdc9ed1')
+            '7f083d5445d9b0db14b396f77bd6354c4864e446867184cdd42f645fb782f883')
 
 build() {
   cd foot
