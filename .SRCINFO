@@ -1,0 +1,14 @@
+pkgbase = python-registry
+	pkgdesc = A pure Python library that provides read-only access to Windows NT Registry files.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/williballenthin/python-registry
+	arch = any
+	license = Apache
+	depends = python-unicodecsv
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/python-registry/python-registry-1.3.1.tar.gz
+	md5sums = 8325d219f0f5c1721a9d4efd7997ceee
+
+pkgname = python-registry
+
