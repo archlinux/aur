@@ -1,4 +1,4 @@
-# Maintainer: neeshy <neeshy@tfwno.gf>
+# Contributor: neeshy <neeshy@tfwno.gf>
 # Contributor: Charadon <dev at iotib dot net>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 pkgname=serpent-browser
