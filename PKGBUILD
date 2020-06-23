@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=440.82
-pkgrel=6
+pkgrel=7
 _goodkver=5.7
 _badkver=5.8
 _modver=${_goodkver}-pf
@@ -48,22 +48,25 @@ build() {
 
 
 package() {
+  _kernver="$(</usr/src/linux-pf/version)"
+  _extradir="/usr/lib/modules/${_kernver}/extramodules"
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
-          "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+          "${pkgdir}/${_extradir}/nvidia.ko"
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
-          "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
+          "${pkgdir}/${_extradir}/nvidia-modeset.ko"
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-drm.ko" \
-         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-drm.ko"
+          "${pkgdir}/${_extradir}/nvidia-drm.ko"
 
 
   if [[ "$CARCH" = "x86_64" ]]; then
-      install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
-              "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
+            "${pkgdir}/${_extradir}/nvidia-uvm.ko"
   fi
 
-  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
+  # compress each module individually
+  find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
   install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
- 
+  
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
