@@ -11,16 +11,16 @@ provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
 makedepends=('git')
-source=("ex-impression-icon-theme::git+${url}")
+source=("${pkgname%-git}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/ex-impression-icon-theme"
+  cd "${pkgname%-git}"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/ex-impression-icon-theme"
+  cd "${pkgname%-git}"
   rm *.md
   rm LICENSE
   rm -rf "theme extras"
@@ -28,7 +28,6 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}"
   install -dm755 "${pkgdir}/usr/share/icons/"
   cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
 }
