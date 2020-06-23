@@ -9,7 +9,6 @@ pkgbase = schismtracker
 	arch = armv7h
 	license = GPL
 	makedepends = python
-	depends = desktop-file-utils
 	depends = libxv
 	depends = sdl
 	conflicts = schismtracker-git
