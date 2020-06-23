@@ -1,0 +1,13 @@
+pkgbase = python2-cgen
+	pkgdesc = A C/C++ source generation from an AST
+	pkgver = 2020.1
+	pkgrel = 1
+	url = https://github.com/inducer/cgen
+	arch = any
+	license = MIT
+	depends = python>=3.6
+	source = python2-cgen-2020.1.tar.gz::https://github.com/inducer/cgen/archive/v2020.1.tar.gz
+	sha256sums = 3d7309225294b989a4759a9362a5cb8487ac69d97ef3a49e850905fa1c8d852f
+
+pkgname = python2-cgen
+
