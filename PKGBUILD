@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=jupyterlab-git
-pkgver=19641.git.2eb45f0
+pkgver=19647.git.882a66a
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
