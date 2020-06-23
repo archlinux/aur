@@ -1,6 +1,6 @@
 pkgbase = stmm-games
 	pkgdesc = C++ 2D games library
-	pkgver = 0.24
+	pkgver = 0.25
 	pkgrel = 1
 	url = https://efanomars.com/libraries/stmm-games
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = stmm-games
 	depends = gtkmm3
 	depends = librsvg
 	depends = libxml++2.6
-	source = https://efanomars.com/sources/stmm-games-0.24.tar.gz
-	sha256sums = 95c9f7fd9d2fd2578161bcc653bda147261da8b64cd5a287b57e4b755e240d74
+	source = https://efanomars.com/sources/stmm-games-0.25.tar.gz
+	sha256sums = 6fa5b6ae82223ad0568ea56f5cf4bd115dd2d4152015db7ae1b2dd614e07012c
 
 pkgname = stmm-games
 
