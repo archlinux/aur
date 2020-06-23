@@ -1,5 +1,5 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-pkgname=python2-cgen
+pkgname=python-cgen
 _pkgname=cgen
 pkgver=2020.1
 pkgrel=1
