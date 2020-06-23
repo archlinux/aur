@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=5.4.44
-_rtpatchver=27
+_pkgver=5.4.47
+_rtpatchver=28
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -24,18 +24,14 @@ source=(
   'sphinx-workaround.patch'
 )
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
-  '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
-  '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
-  'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+  '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
 )
-sha256sums=('97c2bbce51c73294cf150f26401d47a2d32d3095f3afb0ddb693f21fb6b68439'
+sha256sums=('970b9d393d9a8d45eafdec9c6ab0d9880c20c703eeb9b0ac409892c8bc418d6c'
             'SKIP'
-            '2351c94ede85deed399f76d8d93d12dc658ef68c068b8cda184b363f9ab7a0bf'
+            'dadc1379e816e8a23f09713884f8889f0177f291974487f33efc9a646082c562'
             'SKIP'
-            'c59bd37a65ca30c9f496d5c8a71985e85612d04a4b663e6a45c6de136e80dcc6'
+            'ee4fc37fd667ffc17dcc35f6b03e6f09e91267618ace8aa95e1fc6e9c56dc479'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
 
