@@ -1,0 +1,10 @@
+#parmas of dnsproxy-adguard
+ADDRESS="127.0.0.1"
+PORT="5353"
+UPSTREAMS="-u tls://8.8.8.8 \
+           -u tls://8.8.4.4 \
+           -u https://mozilla.cloudflare-dns.com/dns-query \
+           -u https://dns.adguard.com/dns-query \
+           -u tls://9.9.9.9 \
+           -u tls://dns.adguard.com"
+OTHER_PARAMS="--cache --all-servers"

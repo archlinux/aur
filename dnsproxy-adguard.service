@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 User=nobody
 Group=nobody
-ExecStart=/usr/bin/dnsproxy-adguard -l 127.0.0.1 -p 5353 -u tls://8.8.8.8 -u tls://8.8.4.4 -u https://mozilla.cloudflare-dns.com/dns-query -u https://dns.adguard.com/dns-query -u tls://9.9.9.9 -u tls://dns.adguard.com --cache --all-servers 
+EnvironmentFile=/etc/conf.d/dnsproxy-adguard
+ExecStart=/usr/bin/dnsproxy-adguard -l $ADDRESS -p $PORT $UPSTREAMS $OTHER_PARAMS 
 
 [Install]
 WantedBy=default.target
