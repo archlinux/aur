@@ -1,8 +1,8 @@
 pkgbase = perl-text-qrcode
 	pkgdesc = Text-QRCode for Perl
-	pkgver = 0.04
-	pkgrel = 5
-	url = http://search.cpan.org/~kurihara/Text-QRCode-0.04/
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-QRCode
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
@@ -11,8 +11,8 @@ pkgbase = perl-text-qrcode
 	depends = perl
 	depends = qrencode
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KU/KURIHARA/Text-QRCode-0.04.tar.gz
-	sha256sums = a38e28c739b2fc5b14440c8ce4bff4309d8d639f71651bbee0b903ee4a13443c
+	source = http://search.cpan.org/CPAN/authors/id/K/KU/KURIHARA/Text-QRCode-0.05.tar.gz
+	sha256sums = 0d5471bed596ddcd891df271c1b7983a4e39373c984d0f1ed9cb2ec4d730a173
 
 pkgname = perl-text-qrcode
 
