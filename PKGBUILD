@@ -1,5 +1,4 @@
-
-# Maintainer: BrainDamage <braindamage springlobby.info>
+# Maintainer: Haoda Wang <haoda.wang jpl.nasa.gov>
 
 pkgname=cspice
 pkgver="N0066"
