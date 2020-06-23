@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjpeg-turbo-git
-pkgver=2.0.1.r19.ge2442e07
+pkgver=2.0.4.r16.gae87a958
 pkgrel=1
 pkgdesc="JPEG codec with SIMD accelerated compression and decompression"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libjpeg-turbo.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('git' 'cmake' 'nasm')
-provides=('libjpeg-turbo')
+provides=('libjpeg-turbo' 'libjpeg')
 conflicts=('libjpeg-turbo')
 options=('staticlibs')
 source=("git+https://github.com/libjpeg-turbo/libjpeg-turbo.git")
@@ -36,22 +36,21 @@ build() {
 }
 
 check() {
-  cd "libjpeg-turbo/_build"
+  cd "libjpeg-turbo"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
-  cd "libjpeg-turbo/_build"
+  cd "libjpeg-turbo"
 
   make \
+    -C "_build" \
     DESTDIR="$pkgdir" \
     docdir="/usr/share/doc/libjpeg-turbo" \
 		exampledir="/usr/share/doc/libjpeg-turbo" \
     install
 
-  cd ..
   install -Dm644 "jpegint.h" "$pkgdir/usr/include"  # required by other software
-
-  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/libjpeg-turbo/LICENSE.md"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/libjpeg-turbo"
 }
