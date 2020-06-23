@@ -1,23 +1,21 @@
 pkgbase = clipto-bin
 	pkgdesc = Effortless, super fast and flexible notes taking app and clipboard manager.
-	pkgver = 2.9.0
-	pkgrel = 1
+	pkgver = 2.9.1
+	pkgrel = 2
 	url = https://clipto.pro
 	arch = x86_64
 	license = custom
-	depends = nss
-	depends = libxss
-	depends = libxtst
-	depends = libappindicator-gtk3
-	depends = libnotify
+	depends = electron
+	optdepends = libnotify: for desktop notifications
+	optdepends = libappindicator-gtk3: for tray icon
 	provides = clipto
 	conflicts = clipto
 	conflicts = clipto.pro
 	replaces = clipto.pro
-	source = https://github.com/clipto-pro/Desktop/releases/download/v2.9.0/clipto-2.9.0.AppImage
+	source = https://github.com/clipto-pro/Desktop/releases/download/v2.9.1/clipto-2.9.1.AppImage
 	source = clipto
-	sha256sums = 622dd5af4e361577128aa856722e283941a250613d8c31ce1ba0fdce7a6fef42
-	sha256sums = a68ea565595fca737ff54b7a29e04f5059e5897955ab15c09ca9f36eb70fcfdb
+	sha256sums = 31b274d91007b5216004616f59369f1f93db7943432a68472f8f72c0467c881b
+	sha256sums = 9a741f1a1760de706698cb1576e3bb08846876c359aedd5d8854e69d913f0635
 
 pkgname = clipto-bin
 
