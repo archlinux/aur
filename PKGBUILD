@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-fontmake'
 _pkgname='fontmake'
-pkgver='2.1.3'
+pkgver='2.2.0'
 pkgrel=1
 pkgdesc="Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)"
 url="https://github.com/googlefonts/fontmake"
@@ -12,7 +12,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('dd66c202dc1d1d5210ac027b02cd6340ae4704241b93fdeac308f7873fe671ee')
+sha256sums=('e7a39524ec4cfdbd9cdf9590997f848aac85ccb22583c8b9f933e78eec32a626')
 
 package() {
     cd "${_pkgname}-${pkgver}"
