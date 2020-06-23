@@ -1,5 +1,5 @@
 pkgbase = vst-video-bin
-	pkgdesc = Creates a cloud playback platform for Linux.
+	pkgdesc = A cloud playback platform.
 	pkgver = 2.55
 	pkgrel = 2
 	url = https://github.com/xymov/vst-video
