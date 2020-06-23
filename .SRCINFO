@@ -1,13 +1,12 @@
 pkgbase = powerword-bin
 	pkgdesc = A Chinese-English dictionary tool.
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.iciba.com
 	arch = x86_64
 	license = unknown
 	depends = sdl2_mixer
 	depends = qtwebkit
-	depends = ffmpeg
 	depends = qrencode
 	optdepends = ttf-ms-fonts: font support
 	provides = powerword
