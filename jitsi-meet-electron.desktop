@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jitsi Meet
+Exec=jitsi-meet-electron
+Icon=jitsi-meet-electron
+Categories=Network;AudioVideo;
+Terminal=false
+Type=Application
+

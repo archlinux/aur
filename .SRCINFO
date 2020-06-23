@@ -8,7 +8,9 @@ pkgbase = jitsi-meet-electron
 	depends = npm
 	optdepends = nodejs-webpack: build-time dependency, to avoid re-downloading it
 	optdepends = nodejs-webpack-cli: build-time dependency, to avoid re-downloading it
+	source = jitsi-meet-electron.desktop
 	source = jitsi-meet-electron-2.2.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.2.0.tar.gz
+	sha256sums = d4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf
 	sha256sums = 3d4c71f84f2b9fb8c9bb7d3d86cfadd0b3bc3096c7dbf2513adb2b662c3d6804
 
 pkgname = jitsi-meet-electron

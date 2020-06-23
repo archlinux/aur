@@ -12,9 +12,15 @@ optdepends=(
     'nodejs-webpack: build-time dependency, to avoid re-downloading it'
     'nodejs-webpack-cli: build-time dependency, to avoid re-downloading it'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=(
+  jitsi-meet-electron.desktop
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+)
 
-sha256sums=('3d4c71f84f2b9fb8c9bb7d3d86cfadd0b3bc3096c7dbf2513adb2b662c3d6804')
+sha256sums=(
+  'd4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
+  '3d4c71f84f2b9fb8c9bb7d3d86cfadd0b3bc3096c7dbf2513adb2b662c3d6804'
+)
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -27,6 +33,9 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
+
+    mkdir -p -- "$pkgdir"/usr/share/applications
+    cp -a --dereference -- ../jitsi-meet-electron.desktop "$pkgdir"/usr/share/applications/
 
     mkdir -p -- "$pkgdir"/usr/share
     cp -aT -- ./dist/linux-unpacked "$pkgdir"/usr/share/jitsi-meet-electron
