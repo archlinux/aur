@@ -1,4 +1,7 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
