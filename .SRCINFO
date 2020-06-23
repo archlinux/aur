@@ -1,0 +1,14 @@
+pkgbase = python-django-select2
+	pkgdesc = Django integration for Select2
+	pkgver = 7.4.2
+	pkgrel = 1
+	url = https://github.com/codingjoe/django-select2
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = git+https://github.com/codingjoe/django-select2/
+	sha512sums = SKIP
+
+pkgname = python-django-select2
+
