@@ -1,7 +1,7 @@
 # Maintainer: Jasper Smit <jrhrsmit at gmail dot com>
 
 pkgname=('llvm-tce' 'llvm-tce-libs')
-pkgver=10.0.0_r339798.d32170dbd5b
+pkgver=10.0.1_r339900.8f299fd2cff
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -111,15 +111,11 @@ package_llvm-tce() {
 package_llvm-tce-libs() {
     pkgdesc="runtime libraries for llvm-tce, LLVM 10 patched for TCE"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-    # doesn't currently provide llvm-libs or llvm-libs-git, as these are on
-    # version 9 and 11, and this package provides 10.
+    provides=('llvm-libs')
+    conflicts=('llvm-libs' 'llvm-libs-git')
 
     install -d "$pkgdir"/usr/lib
     cp -P \
         "$srcdir"/lib{LLVM,LTO}*.so* \
         "$pkgdir"/usr/lib/
-
-    # remove symlinks that would conflict with llvm9 libs
-    rm "$pkgdir"/usr/lib/libLLVM.so 
-    rm "$pkgdir"/usr/lib/libLTO.so
 }
