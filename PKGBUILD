@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=poissonrecon-git
-pkgver=8.0.r69.g99e3d90
+pkgver=8.0.r70.ga5c7d35
 pkgrel=1
 pkgdesc="Screened Poisson Surface Reconstruction (and Smoothed Signed Distance Reconstruction)"
 arch=('i686' 'x86_64')
