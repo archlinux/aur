@@ -1,7 +1,7 @@
 pkgbase = editorconfig-geany-git
 	pkgdesc = EditorConfig plugin for Geany
-	pkgver = r18.9dce3bb
-	pkgrel = 3
+	pkgver = r26.f03782f
+	pkgrel = 1
 	url = https://github.com/editorconfig/editorconfig-geany
 	arch = i686
 	arch = x86_64

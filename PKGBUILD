@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=editorconfig-geany-git
-pkgver=r18.9dce3bb
-pkgrel=3
+pkgver=r26.f03782f
+pkgrel=1
 pkgdesc="EditorConfig plugin for Geany"
 arch=('i686' 'x86_64')
 url="https://github.com/editorconfig/editorconfig-geany"
@@ -24,11 +24,11 @@ pkgver() {
 build() {
   cd "editorconfig-geany"
 
-  make EDITORCONFIG_PREFIX=/usr
+  make EDITORCONFIG_PREFIX="/usr"
 }
 
 package() {
   cd "editorconfig-geany"
 
-  install -Dm644 "editorconfig-geany.so" "$pkgdir/usr/lib/geany/editorconfig-geany.so"
+  install -Dm644 "editorconfig-geany.so" -t "$pkgdir/usr/lib/geany"
 }
