@@ -1,12 +1,13 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 2.3.15_rc20
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-arena
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	license = GPL
+	makedepends = openmp
 	makedepends = pango
 	depends = libcdr
 	depends = libgl
@@ -17,20 +18,8 @@ pkgbase = openfx-arena
 	depends = opencolorio
 	depends = poppler-glib
 	depends = sox
-	source = openfx-arena_276386a.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/276386a
-	source = lodepng_e34ac04.tar.gz::https://github.com/lvandeve/lodepng/tarball/e34ac04
-	source = openfx_db5aa97.tar.gz::https://github.com/NatronGitHub/openfx/tarball/db5aa97
-	source = openfx-supportext_53c12bd.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/53c12bd
-	source = openfx-io_4b84d12.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/4b84d12
-	source = SequenceParsing_1bbcd07.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/1bbcd07
-	source = tinydir_3aae922.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/3aae922
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = openfx-arena-Natron-2.3.15.tar.xz::https://github.com/NatronGitHub/openfx-arena/releases/download/Natron-2.3.15/openfx-arena-Natron-2.3.15.tar.xz
+	sha512sums = d115a4d5bd96dc01e7af3337510b4cf69f8e1e7a69269f068ae07c300782c8dae78a38b3ad11bceda15a7f555e9a522bd499442362650aa326aaa752cc1fe915
 
 pkgname = openfx-arena
 

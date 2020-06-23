@@ -2,71 +2,27 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_arena_commit=276386a
-_lodepng_commit=e34ac04
-_openfx_commit=db5aa97
-_openfx_io_commit=4b84d12
-_openfx_supportext_commit=53c12bd
-_SequenceParsing_commit=1bbcd07
-_tinydir_commit=3aae922
-
 pkgname=openfx-arena
-pkgver=2.3.15_rc20
+pkgver=2.3.15
+_pkgname="${pkgname}-Natron-${pkgver}"
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
-depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' \
-        'opencolorio' 'poppler-glib' 'sox')
-makedepends=('pango')
-source=("openfx-arena_$_openfx_arena_commit.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/$_openfx_arena_commit"
-        "lodepng_$_lodepng_commit.tar.gz::https://github.com/lvandeve/lodepng/tarball/$_lodepng_commit"
-        "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
-        "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit"
-        "openfx-io_$_openfx_io_commit.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/$_openfx_io_commit"
-        "SequenceParsing_$_SequenceParsing_commit.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/$_SequenceParsing_commit"
-        "tinydir_$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
-
-_pkgname="NatronGitHub-$pkgname-$_openfx_arena_commit"
-
-prepare() {
-  tar -xzf "$srcdir/lodepng_$_lodepng_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/lodepng"
-
-  tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX/"
-  tar -xzf "$srcdir/openfx-io_$_openfx_io_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX-IO/"
-  tar -xzf "$srcdir/openfx-supportext_$_openfx_supportext_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/SupportExt/"
-
-  tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX-IO/openfx/"
-  tar -xzf "$srcdir/openfx-supportext_$_openfx_supportext_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX-IO/SupportExt/"
-
-  tar -xzf "$srcdir/SequenceParsing_$_SequenceParsing_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX-IO/IOSupport/SequenceParsing/"
-  tar -xzf "$srcdir/tinydir_$_tinydir_commit.tar.gz" --strip 1 \
-      -C   "$srcdir/$_pkgname/OpenFX-IO/IOSupport/SequenceParsing/tinydir/"
-}
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio' 'poppler-glib' 'sox')
+makedepends=('openmp' 'pango')
+source=("${_pkgname}.tar.xz::${url}/releases/download/Natron-${pkgver}/${_pkgname}.tar.xz")
+sha512sums=('d115a4d5bd96dc01e7af3337510b4cf69f8e1e7a69269f068ae07c300782c8dae78a38b3ad11bceda15a7f555e9a522bd499442362650aa326aaa752cc1fe915')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   make CONFIG=release
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p "$pkgdir/usr/OFX/Plugins"
-  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
+  cd "${srcdir}/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/OFX/Plugins"
+  make install PLUGINPATH="${pkgdir}/usr/OFX/Plugins" \
                CONFIG=release
 }
