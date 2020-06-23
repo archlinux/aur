@@ -1,4 +1,5 @@
-# Maintainer: Andrei Alexeyev <akari@alienslab.net>
+# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Andrei Alexeyev <akari@alienslab.net>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Lukas Weber <laochailan@web.de>
 
