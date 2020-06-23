@@ -3,10 +3,10 @@
 
 pkgname=perl-authen-simple
 pkgver=0.5
-pkgrel=5
+pkgrel=9
 pkgdesc='Authen-Simple for Perl'
 arch=('any')
-url="http://search.cpan.org/~chansen/Authen-Simple-${pkgver}/"
+url='https://metacpan.org/release/Authen-Simple'
 license=('PerlArtistic' 'GPL')
 makedepends=('perl-module-install')
 depends=('perl' 'perl-try-tiny' 'perl-params-validate' 'perl-class-accessor' 'perl-class-data-inheritable' 'perl-passwd-md5')
