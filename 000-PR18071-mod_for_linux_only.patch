@@ -1,0 +1,51 @@
+From 84bb46f393dde388031daef78724a0ed2d6f8c4e Mon Sep 17 00:00:00 2001
+From: Lukas Rusak <lorusak@gmail.com>
+Date: Wed, 17 Jun 2020 12:14:12 -0700
+Subject: [PATCH] FFmpeg: Bump to 4.3-Matrix-Alpha1
+
+---
+ cmake/modules/FindFFMPEG.cmake                | 16 ++--
+ .../patches/0001-ffmpeg-detect-openssl.patch  |  4 +-
+ .../0002-ffmpeg-zlib-config-conflict.patch    |  9 +-
+ .../patches/0004-ffmpeg-w32pthreads.patch     | 93 -------------------
+ .../patches/0005-ffmpeg-detect-dav1d.patch    |  6 +-
+ tools/depends/target/ffmpeg/FFMPEG-VERSION    |  2 +-
+ 9 files changed, 28 insertions(+), 118 deletions(-)
+
+diff --git a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
+index 387b3f926f02..7597ba76e201 100644
+--- a/cmake/modules/FindFFMPEG.cmake
++++ b/cmake/modules/FindFFMPEG.cmake
+@@ -33,14 +33,14 @@
+ #
+ 
+ # required ffmpeg library versions
+-set(REQUIRED_FFMPEG_VERSION 4.2)
+-set(_avcodec_ver ">=58.54.100")
+-set(_avfilter_ver ">=7.57.100")
+-set(_avformat_ver ">=58.29.100")
+-set(_avutil_ver ">=56.31.100")
+-set(_swscale_ver ">=5.5.100")
+-set(_swresample_ver ">=3.5.100")
+-set(_postproc_ver ">=55.5.100")
++set(REQUIRED_FFMPEG_VERSION 4.3)
++set(_avcodec_ver ">=58.91.100")
++set(_avfilter_ver ">=7.85.100")
++set(_avformat_ver ">=58.45.100")
++set(_avutil_ver ">=56.51.100")
++set(_swscale_ver ">=5.7.100")
++set(_swresample_ver ">=3.7.100")
++set(_postproc_ver ">=55.7.100")
+ 
+ 
+ # Allows building with external ffmpeg not found in system paths,
+diff --git a/tools/depends/target/ffmpeg/FFMPEG-VERSION b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+index d105be356ec5..95c44362ea87 100644
+--- a/tools/depends/target/ffmpeg/FFMPEG-VERSION
++++ b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+@@ -1,4 +1,4 @@
+ LIBNAME=ffmpeg
+ BASE_URL=https://github.com/xbmc/FFmpeg
+-VERSION=4.2.2-Matrix-Alpha1
++VERSION=4.3-Matrix-Alpha1
+ ARCHIVE=$(LIBNAME)-$(VERSION).tar.gz
