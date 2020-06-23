@@ -1,6 +1,6 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 pkgname=bkcrack-git
-pkgver=r38.50ab495
+pkgver=r48.3f520e2
 pkgrel=1
 pkgdesc="Crack legacy zip encryption with Biham and Kocher's known plaintext attack."
 arch=('x86_64')
@@ -28,10 +28,8 @@ package() {
 	cd "$srcdir/bkcrack"
 	make DESTDIR="$pkgdir/" install
 
-	install -D "$pkgdir/usr/local/bkcrack" "$pkgdir/usr/bin/bkcrack"
-	install -d "$pkgdir/usr/share/doc/bkcrack-git/html"
-	install -D $pkgdir/usr/local/doc/html/* "$pkgdir/usr/share/doc/bkcrack-git/html"
-	install -D "$pkgdir/usr/local/license.txt" "$pkgdir/usr/share/licenses/bkcrack-git/license.txt"
-
-	rm -rdf "$pkgdir/usr/local"
+	mkdir -p "$pkgdir/usr/share" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/bkcrack"
+	mv "$pkgdir/usr/local" "$pkgdir/usr/share/bkcrack"
+	mv "$pkgdir/usr/share/bkcrack/bkcrack" "$pkgdir/usr/bin/bkcrack"
+	mv "$pkgdir/usr/share/bkcrack/license.txt" "$pkgdir/usr/share/licenses/bkcrack/license.txt"
 }
