@@ -1,6 +1,6 @@
 pkgbase = wallchanger
 	pkgdesc = Automatic wallpaper changer
-	pkgver = 1.4.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.nongnu.org/wallchanger/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = wallchanger
 	license = GPL3
 	depends = json-c>=0.12.1
 	depends = gtk3>=3.22.0
-	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.4.9.tar.gz
-	md5sums = f738cefea96b1a725ba051e17152ebb5
+	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.5.0.tar.gz
+	md5sums = 1ed348ef34e56b2919f1017584475391
 
 pkgname = wallchanger
 
