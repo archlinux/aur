@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=golang-mockery
 _pkgname=${pkgname##golang-}
-pkgver=1.1.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/vektra/mockery'
 license=('BSD')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d2516fad4774252604f3a1708a1ac8f5f0162a9a1613bc65870c4018c98ed17a')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d8ad0e7d29abc3d71f4b8602d8fd036180cd4cad2f50c221425b3616175ae3ed')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o bin/${_pkgname} -ldflags "-X github.com/vektra/mockery/mockery.SemVer=${pkgver}" ./cmd/${_pkgname}
+  go build -o bin/${_pkgname} -ldflags "-X github.com/vektra/mockery/mockery.SemVer=${pkgver}"
 }
 
 check() {
