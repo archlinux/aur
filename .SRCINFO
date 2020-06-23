@@ -1,6 +1,6 @@
 pkgbase = tabs-app
 	pkgdesc = Persistent and separate browser tabs in one window
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.com/ArisuOngaku/tabs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tabs-app
 	depends = xorg-xinput
 	provides = tabs-app
 	conflicts = tabs-app
-	source = tabs-src::git://github.com/ArisuOngaku/tabs.git#tag=v1.1.1
+	source = tabs-src::git://github.com/ArisuOngaku/tabs.git#tag=v1.1.2
 	source = tabs-app
 	source = tabs-app.desktop
 	sha512sums = SKIP
