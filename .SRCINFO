@@ -1,6 +1,6 @@
 pkgbase = bbswitch-monitor
 	pkgdesc = System tray icon to monitor external GPU on/off status with Bumblebee
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MicroDroid/bbswitch-monitor
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = bbswitch-monitor
 	makedepends = qt5-base
 	depends = bbswitch
 	provides = bbswitch-monitor
-	source = bbswitch-monitor-0.1.1.tar.gz::https://github.com/MicroDroid/bbswitch-monitor/archive/v0.1.1.tar.gz
-	sha256sums = 964ed445ffbb2e91e36e5ecbd1a88bf5c9647fdb630cf5cf601bb6eed35bad90
+	source = bbswitch-monitor-0.1.2.tar.gz::https://github.com/MicroDroid/bbswitch-monitor/archive/v0.1.2.tar.gz
+	sha512sums = ebee8b42526f038581f25be0d71d94b30c6744b147a93858e3a1f08bd8d25ebc19e9d5a32b31eb19806616ef8a9c513d7d461fa0727548963db4333d8c5be567
 
 pkgname = bbswitch-monitor
 
