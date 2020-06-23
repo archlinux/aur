@@ -15,12 +15,12 @@ source=("ex-impression-icon-theme::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/EX-Impression"
+  cd "${srcdir}/ex-impression-icon-theme"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/EX-Impression"
+  cd "${srcdir}/ex-impression-icon-theme"
   rm *.md
   rm LICENSE
   rm -rf "theme extras"
