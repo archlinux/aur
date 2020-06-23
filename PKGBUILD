@@ -8,7 +8,7 @@ arch=('any')
 url="http://subs2srs.sourceforge.net/"
 license=('GPL')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
-optdepends=('anki')
+optdepends=('anki' 'noto-fonts-cjk: display japanese characters')
 makedepends=('p7zip' 'icoutils')
 source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download")
 sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1')
@@ -18,7 +18,8 @@ package() {
 	mkdir -p "$pkgdir/opt" \
 		 "$pkgdir/usr/bin" \
 		 "$pkgdir/usr/share/applications" \
-		 "$pkgdir/usr/share/licenses/$pkgname"
+		 "$pkgdir/usr/share/licenses/$pkgname" \
+		 "$pkgdir/etc/fonts/conf."{avail,d}
 
 	cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
 
@@ -86,4 +87,18 @@ package() {
 	rm ./*.ico ./*.png
 
 	mv "$pkgdir/opt/subs2srs/gpl.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+	cat <<END > "$pkgdir/etc/fonts/conf.avail/90-avoid-microsoft-sans-serif.conf"
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+	<match>
+		<test name="family"><string>Microsoft Sans Serif</string></test>
+		<edit name="family" mode="assign" binding="strong">
+			<string>Noto Sans CJK JP</string>
+		</edit>
+	</match>
+</fontconfig>
+END
+	ln -s "$pkgdir/etc/fonts/conf."{avail,d}"/90-avoid-microsoft-sans-serif.conf"
 }
