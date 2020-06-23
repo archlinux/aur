@@ -13,6 +13,8 @@ license=('MIT')
 groups=('photogrametry')
 depends=('glibc' 'gcc8-libs' 'libpng' 'libjpeg')
 makedepends=('git' 'gcc8')
+# use ccache-ext to make gcc8 cacheable if using options=(ccache)
+[[ "${BUILDENV[*]}" =~ [^!]+ccache ]] && makedepends+=('ccache-ext')
 options=(!makeflags)
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
 source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}"
