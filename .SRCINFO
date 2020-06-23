@@ -1,0 +1,21 @@
+pkgbase = python-gphotos-sync
+	pkgdesc = Google Photos and Albums backup with Google Photos Library API
+	pkgver = 2.14.2
+	pkgrel = 1
+	url = https://github.com/gilesknap/gphotos-sync
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-attrs
+	depends = python-exif
+	depends = python-appdirs
+	depends = python-requests-oauthlib
+	depends = python-pyaml
+	depends = python-psutil
+	source = https://github.com/gilesknap/gphotos-sync/archive/2.14.2.tar.gz
+	md5sums = 88fd01f0852c3410106ca75c4d4c92e8
+
+pkgname = python-gphotos-sync
+
