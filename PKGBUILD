@@ -64,7 +64,7 @@ prepare() {
   cd mozilla-unified
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1547595
-  hg export -r c413912c4f0e | patch -Rp1
+  hg export -r 372abda7c202 | patch -Rp1
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
