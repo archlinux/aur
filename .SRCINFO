@@ -1,8 +1,8 @@
 pkgbase = kid3-cli
 	pkgdesc = An MP3, Ogg/Vorbis and FLAC tag editor, CLI version
-	pkgver = 3.8.2
+	pkgver = 3.8.3
 	pkgrel = 1
-	url = http://kid3.sourceforge.net/
+	url = https://kid3.kde.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -24,8 +24,8 @@ pkgbase = kid3-cli
 	provides = kid3
 	conflicts = kid3-kde
 	conflicts = kid3-qt
-	source = http://downloads.sourceforge.net/kid3/kid3-3.8.2.tar.gz
-	sha256sums = 7967c920a60902386ada5faf1e6b13edc5611da19fbf7244d731c5cbf5393e14
+	source = http://downloads.sourceforge.net/kid3/kid3-3.8.3.tar.gz
+	sha256sums = 6a1aa06d2f225f6d8a139cfd3c3d382f82170fa17196517690d28caaeb220c44
 
 pkgname = kid3-cli
 
