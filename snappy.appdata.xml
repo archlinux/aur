@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 Luis de Bethencourt <luis@debethencourt.com> -->
+<application>
+  <id type="desktop">snappy.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>snappy</name>
+  <summary>Powerful media player with a minimalistic interface</summary>
+  <description>
+    <p>
+      snappy is an open source media player that gathers the power and
+      flexibility of gstreamer inside the comfort of a minimalistic
+      clutter interface.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">http://i.imgur.com/BrCY1YB.png</screenshot>
+  </screenshots>
+  <url type="homepage">https://wiki.gnome.org/Apps/Snappy</url>
+  <updatecontact>luia_at_debethencourt.com</updatecontact>
+</application>
