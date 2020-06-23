@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.7.2.arch1
+pkgver=5.7.4.arch1
 pkgrel=1
 pkgdesc='Linux witch patches for ASUS ROG Zephyrus G14/G15'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -22,8 +22,8 @@ source=(
   amdgpu-backlight.patch
   k10-temp.patch
   asus-wmi.patch
-  i8042.patch
-  #asus-wmi-g15.patch
+  i8042v2.patch
+  amdgpu-drm-next.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,7 +37,11 @@ sha256sums=('SKIP'
             '8f9bb0be13e47b8fff55702bb4ea6f4d88eed5b5350d6e7025519f4dcb3cff79'
             '28d35438857ffe9fccab8d05e22cd9c590f3b52172809e78d726f035f4b5557f'
             '00e785b1f72de3387eab601d142664e47b5c53f13dd68a256d56a12c69621e21'
-            '03afc868493b7a7a066aaf2113662fd29ffde7a5665dee8539fe3982048788e4')
+            'bfa48d1d986acf6ab99600dcffff87ab9d595e80a90027eb2328b71d137b2f21'
+            'a70d0907eb55f9db1e4d945ad738bf12c249b2e98ec9a9b9d813ddb27302adff')
+
+
+
 
 
 
