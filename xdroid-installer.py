@@ -14,7 +14,7 @@ def install():
     sys.exit(os.system('tar -xzvf /opt/xdroid-installer/xdroid.tar.gz -C /tmp \
                         && /tmp/xDroidInstall-x86_64/install.sh'))
 
-if os.getuid == 0:
+if os.getuid() == 0:
     err = "Don't run this installer as root!"
     if dialogs:
         eg.msgbox(err, "Error!")
@@ -32,7 +32,7 @@ if os.path.isfile(uninstaller):
 
     if option == "Reinstall":
         install()
-    else:
+    elif option == "Uninstall":
         os.system(uninstaller)
 
 else:

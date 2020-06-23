@@ -29,7 +29,7 @@ md5sums=('f6941c16177c72e376ffd105677cd75c'
          'e467770854d49aea2d94c451a443471e'
          '08c8f971fe3ae5cac148ef220975291b'
          '025974b0e37da69e031e6ec1e346fef8'
-         'e55a42b96e3a8d975df5770e6e0bf28b')
+         '74c526e3fadfeb135faf1f2826daf33b')
 
 package() {
   #_target=${pkgdir}/opt/${pkgname}
