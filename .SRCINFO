@@ -1,6 +1,6 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.3.15_rc19
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = i686
@@ -10,16 +10,8 @@ pkgbase = openfx-io
 	depends = ffmpeg
 	depends = openimageio
 	depends = seexpr1-2
-	source = openfx-io_4b84d12.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/4b84d12
-	source = openfx_db5aa97.tar.gz::https://github.com/NatronGitHub/openfx/tarball/db5aa97
-	source = openfx-supportext_53c12bd.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/53c12bd
-	source = SequenceParsing_1bbcd07.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/1bbcd07
-	source = tinydir_3aae922.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/3aae922
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = openfx-io-Natron-2.3.15.tar.xz::https://github.com/NatronGitHub/openfx-io/releases/download/Natron-2.3.15/openfx-io-Natron-2.3.15.tar.xz
+	sha512sums = c5c2dde19f9b2eec4852f217ebded06fdaa5496e0e49a40172d8d14b8c998ed1fa22f361fe4e4ea39b1308d8489ada192e960386913b024033fc78752ae18425
 
 pkgname = openfx-io
 
