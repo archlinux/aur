@@ -1,0 +1,131 @@
+Description: This patch fixes a bug in the DenoiseSharpen plugin that causes Natron to crash under certain conditions.
+
+<https://github.com/NatronGitHub/Natron/issues/300>
+<https://github.com/NatronGitHub/openfx-misc/commit/42fbb836da1e6573d601dc0685309e880cc594c7>
+
+diff --unified --recursive --text openfx-misc-Natron-2.3.15-orig/DenoiseSharpen/DenoiseSharpen.cpp openfx-misc-Natron-2.3.15-new/DenoiseSharpen/DenoiseSharpen.cpp
+--- openfx-misc-Natron-2.3.15-orig/DenoiseSharpen/DenoiseSharpen.cpp	2020-06-07 17:29:17.000000000 -0300
++++ openfx-misc-Natron-2.3.15-new/DenoiseSharpen/DenoiseSharpen.cpp	2020-06-23 01:29:23.146640797 -0300
+@@ -417,9 +417,18 @@
+ 
+ #if defined(_OPENMP)
+ #define abort_test() if ( !omp_get_thread_num() && abort() ) { throwSuiteStatusException(kOfxStatFailed); }
+-#define abort_test_loop() if ( abort() ) { if ( !omp_get_thread_num() ) {throwSuiteStatusException(kOfxStatFailed);} \
+-                                           else { continue;} \
+-}
++// OpenMP 2.5 specs (https://www.openmp.org/wp-content/uploads/spec25.pdf):
++// "The for-loop must be a structured block, and in addition, its execution
++// must not be terminated by a break statement."
++// So we must use continue instead of break.
++// Besides, it seems like even throwing an exception from the master thread is risky,
++// so let's wait till the loop is finished.
++// Version that throws an exception from the master thread:
++// #define abort_test_loop() if ( abort() ) { if ( !omp_get_thread_num() ) {throwSuiteStatusException(kOfxStatFailed);} \
++//                                           else { continue;} \
++// }
++// Version that never throws an exception inside a loop:
++#define abort_test_loop() if ( abort() ) { continue;}
+ #else
+ #define abort_test() if ( abort() ) { throwSuiteStatusException(kOfxStatFailed); }
+ #define abort_test_loop() abort_test()
+@@ -2028,6 +2037,7 @@
+                     fimg_sat[i] = prevsq;
+                 }
+             }
++            abort_test();
+             // IntegralCols
+ #           ifdef _OPENMP
+ #           pragma omp parallel for
+@@ -2041,6 +2051,7 @@
+                     fimg_sat[i] = prev;
+                 }
+             }
++            abort_test();
+             // ApplyThresholdAdaptive
+ #           ifdef _OPENMP
+ #           pragma omp parallel for
+@@ -2088,9 +2099,9 @@
+ #endif // ifdef kUseMultithread
+         }
+         hpass = lpass;
++        abort_test();
+     } // for(lev)
+ 
+-    abort_test();
+     // add the last smoothed image to the image
+ #ifdef kUseMultithread
+     {
+@@ -2139,8 +2150,8 @@
+ #pragma omp parallel for
+ #endif
+         for (unsigned int row = 0; row < iheight; ++row) {
+-            float* temp = new float[iwidth];
+             abort_test_loop();
++            float* temp = new float[iwidth];
+             hat_transform (temp, fimg[hpass] + row * iwidth, 1, iwidth, b3, 1 << lev);
+             for (unsigned int col = 0; col < iwidth; ++col) {
+                 unsigned int i = row * iwidth + col;
+@@ -2159,8 +2170,8 @@
+ #pragma omp parallel for
+ #endif
+         for (unsigned int col = 0; col < iwidth; ++col) {
+-            float* temp = new float[iheight];
+             abort_test_loop();
++            float* temp = new float[iheight];
+             hat_transform (temp, fimg[lpass] + col, iwidth, iheight, b3, 1 << lev);
+             for (unsigned int row = 0; row < iheight; ++row) {
+                 unsigned int i = row * iwidth + col;
+@@ -2559,6 +2570,8 @@
+         }
+     }
+ 
++    abort_test();
++
+     // denoise
+ 
+     if ( (nComponents != 1) && (p.process[0] || p.process[1] || p.process[2]) ) {
+@@ -2567,8 +2580,8 @@
+             if (!( (p.colorModel == eColorModelRGB) || (p.colorModel == eColorModelLinearRGB) ) || p.process[c]) {
+                 assert(fimgcolor[c]);
+                 float* fimg[4] = { fimgcolor[c], fimgtmp[0], fimgtmp[1], (p.adaptiveRadius > 0) ? fimgtmp[2] : NULL};
+-                abort_test();
+                 wavelet_denoise(fimg, iwidth, iheight, p.b3, p.noiseLevel[c], p.adaptiveRadius, p.denoise_amount[c], p.sharpen_amount[c], p.sharpen_radius, p.startLevel, (float)c / nComponents, 1.f / nComponents);
++                abort_test();
+             }
+         }
+     }
+@@ -2576,8 +2589,8 @@
+         assert(fimgalpha);
+         // process alpha
+         float* fimg[4] = { fimgalpha, fimgtmp[0], fimgtmp[1], (p.adaptiveRadius > 0) ? fimgtmp[2] : NULL };
+-        abort_test();
+         wavelet_denoise(fimg, iwidth, iheight, p.b3, p.noiseLevel[3], p.adaptiveRadius, p.denoise_amount[3], p.sharpen_amount[3], p.sharpen_radius, p.startLevel, (float)(nComponents - 1) / nComponents, 1.f / nComponents);
++        abort_test();
+     }
+ 
+     // store back into the result
+@@ -3172,6 +3185,8 @@
+         }
+     }
+ 
++    abort_test();
++
+     // set noise levels
+ 
+     if (nComponents != 1) {
+@@ -3181,6 +3196,7 @@
+             float* fimg[4] = { fimgcolor[c], fimgtmp[0], fimgtmp[1], fimgtmp[2] };
+             double sigma_n[4];
+             sigma_mad(fimg, bimgmask, iwidth, iheight, b3, sigma_n, (float)c / nComponents, 1.f / nComponents);
++            abort_test();
+             for (unsigned f = 0; f < 4; ++f) {
+                 _noiseLevel[c][f]->setValue(sigma_n[f]);
+             }
+@@ -3192,6 +3208,7 @@
+         float* fimg[4] = { fimgalpha, fimgtmp[0], fimgtmp[1], fimgtmp[2] };
+         double sigma_n[4];
+         sigma_mad(fimg, bimgmask, iwidth, iheight, b3, sigma_n, (float)(nComponents - 1) / nComponents, 1.f / nComponents);
++        abort_test();
+         for (unsigned f = 0; f < 4; ++f) {
+             _noiseLevel[3][f]->setValue(sigma_n[f]);
+         }

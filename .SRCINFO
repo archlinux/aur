@@ -1,7 +1,7 @@
 pkgbase = openfx-misc
 	pkgdesc = Miscellaneous OpenFX plugins
 	pkgver = 2.3.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronGitHub/openfx-misc
 	arch = i686
 	arch = pentium4
@@ -11,7 +11,9 @@ pkgbase = openfx-misc
 	depends = libgl
 	optdepends = natron-plugins-git: More presets for the Shadertoy plugin
 	source = openfx-misc-Natron-2.3.15.tar.xz::https://github.com/NatronGitHub/openfx-misc/releases/download/Natron-2.3.15/openfx-misc-Natron-2.3.15.tar.xz
+	source = openfx-misc-2.3.15-DenoiseSharpen.patch
 	sha512sums = 614b12da180ceb4df2ea3a309b434d52eaa4ea6d2bf79ababb00b4b53c637b21c5b96f88ea7e74a2f05a0ef6df4ec1d32484f2c83ee390a193638379c5b868bf
+	sha512sums = e95ee15c7a7215b99d2ab57b8a2b04ff1f504df6993f195a142b4623287ab999c00a9cc767718eb64a072ac4bef16eef1b4646884e9321d3ae652669e9a823cc
 
 pkgname = openfx-misc
 
