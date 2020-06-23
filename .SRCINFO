@@ -1,6 +1,6 @@
 pkgbase = responsively-bin
 	pkgdesc = A modified browser that helps in responsive web development
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://responsively.app
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = responsively-bin
 	makedepends = gendesk
 	depends = zlib
 	provides = responsively
-	noextract = responsively-bin-0.2.0.AppImage
+	noextract = responsively-bin-0.3.0.AppImage
 	options = !strip
-	source = responsively-bin-0.2.0.AppImage::https://github.com/manojVivek/responsively-app/releases/download/v0.2.0/ResponsivelyApp-0.2.0.AppImage
-	sha256sums = 4bd488a0b2537e6c0137da058d4e2413864ef66c5535fbfbb09405cde209c8cf
+	source = responsively-bin-0.3.0.AppImage::https://github.com/manojVivek/responsively-app/releases/download/v0.3.0/ResponsivelyApp-0.3.0.AppImage
+	sha256sums = 0463c55e2cac21ac60c5c9afaf8ff4f2f0c95b3b5954cf6800eb000e368649ac
 
 pkgname = responsively-bin
 
