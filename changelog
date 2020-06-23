@@ -1,3 +1,12 @@
+2020-06-23 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.2.1-1:
+    Fixed ASF being unable to fetch info about newer non-public packages requiring access token (#1827). This was required due to recent Steam change, making it impossible for ASF to work like previously.
+    Added a workaround for ASF-ui and localization regression in docker containers (#1812).
+    Added /Api/{Bots}/Input API endpoint.
+    It's now possible to put currently farmed AppID and GameName in CustomGamePlayedWhileFarming, refer to updated configuration section on the wiki for that.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-06-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.2.0-1:
     Fixed ASF being unable to fetch info about newer non-public packages requiring access token (#1827). This was required due to recent Steam change, making it impossible for ASF to work like previously.

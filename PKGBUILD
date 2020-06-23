@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="4.2.2.0"
+pkgver="4.2.2.1"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
