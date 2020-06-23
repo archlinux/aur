@@ -1,13 +1,14 @@
 pkgbase = hip-nvcc
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 3.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
 	license = MIT
 	makedepends = libelf
 	makedepends = cmake
 	depends = cuda
+	depends = llvm-amdgpu
 	provides = hip
 	conflicts = hip
 	source = hip-nvcc-3.5.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.5.1.tar.gz
