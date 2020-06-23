@@ -1,0 +1,12 @@
+pkgbase = libusbmuxd6
+	pkgdesc = Compatibility symlinks for libusbmuxd.so.6
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.libimobiledevice.org/
+	arch = any
+	license = LGPL2.1
+	license = GPL2
+	depends = libusbmuxd
+
+pkgname = libusbmuxd6
+
