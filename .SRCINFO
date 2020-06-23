@@ -2,6 +2,7 @@ pkgbase = jupyterlab-git
 	pkgdesc = JupyterLab computational environment
 	pkgver = 2.1.0.r1034.g8fb048d9c
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/jupyterlab/jupyterlab
 	arch = any
 	license = custom

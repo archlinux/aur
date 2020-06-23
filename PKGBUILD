@@ -3,6 +3,7 @@
 pkgname=jupyterlab-git
 pkgver=2.1.0.r1034.g8fb048d9c
 pkgrel=1
+epoch=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
 url="https://github.com/jupyterlab/jupyterlab"
