@@ -1,7 +1,7 @@
 pkgbase = subs2srs
 	pkgdesc = A small utility that allows you to create Anki (flash card software) import files based on your favorite foreign language movies and TV shows to aid in the language learning process.
 	pkgver = 29.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://subs2srs.sourceforge.net/
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = subs2srs
 	depends = mp3gain
 	depends = mkvtoolnix-cli
 	optdepends = anki
+	optdepends = noto-fonts-cjk: display japanese characters
 	source = subs2srs_v29.7.zip::https://sourceforge.net/projects/subs2srs/files/subs2srs/subs2srs_v29.7/subs2srs_v29.7.zip/download
 	sha256sums = b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1
 
