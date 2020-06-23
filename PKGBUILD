@@ -4,17 +4,15 @@ _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=1.2.0.r532.g357674e2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 source=(
 	"${_pkgname}::git+${url}.git#branch=master"
-	"https://raw.githubusercontent.com/gaphor/${_name}/master/logos/org.gaphor.Gaphor.svg"
 )
-md5sums=('SKIP'
-         '5ddbbeefd433a880ce740efb7dd47c48')
+md5sums=('SKIP')
 depends=(
 	'python-gaphas'
 	'python-typing_extensions'
@@ -47,7 +45,7 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location .
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
-	install -Dm644 "$srcdir/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
+	install -Dm644 "$srcdir/${_pkgname}/logos/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
 }
 
 # vim: ft=PKGBUILD

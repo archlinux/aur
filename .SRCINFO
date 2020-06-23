@@ -1,7 +1,7 @@
 pkgbase = python-gaphor-git
 	pkgdesc = Simple and easy to use modeling tool for UML using GTK3
 	pkgver = 1.2.0.r532.g357674e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaphor/gaphor
 	arch = x86_64
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = python-gaphor-git
 	provides = python-gaphor
 	conflicts = python-gaphor
 	source = python-gaphor::git+https://github.com/gaphor/gaphor.git#branch=master
-	source = https://raw.githubusercontent.com/gaphor/gaphor/master/logos/org.gaphor.Gaphor.svg
 	md5sums = SKIP
-	md5sums = 5ddbbeefd433a880ce740efb7dd47c48
 
 pkgname = python-gaphor-git
 
