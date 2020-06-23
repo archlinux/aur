@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.6.0.DEV.r47019.g8db94953f2c
+pkgver=1.6.0.DEV.r47020.gb59417235f5
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
