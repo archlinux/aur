@@ -1,0 +1,5 @@
+mautrix-whatsapp/
+pkg/
+src/
+*.gz
+*.zst
