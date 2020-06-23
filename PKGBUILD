@@ -2,7 +2,7 @@
 # Contributer: Ignacio Felipe <djkork@gmail.com>
 pkgname=qsync
 pkgver=1.0.5.0305
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="QNap's synchronization client"
 url="https://www.qnap.com/en/utilities/essentials"
@@ -31,7 +31,7 @@ package() {
 
 	tar -xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m 755 -o root "${srcdir}/kde-open5" "${pkgdir}/usr/local/bin/kde-open5"
+	install -D -m 755 -o root "${srcdir}/kde-open5" "${pkgdir}/usr/local/bin/QNAP/QsyncClient/kde-open5"
 
     qnapdir="${pkgdir}/usr/local/bin/QNAP/QsyncClient"
     patch "${qnapdir}/Qsync.sh" < "${srcdir}/Qsync.sh.patch"

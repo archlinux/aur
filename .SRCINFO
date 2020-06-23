@@ -1,7 +1,7 @@
 pkgbase = qsync
 	pkgdesc = QNap's synchronization client
 	pkgver = 1.0.5.0305
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.qnap.com/en/utilities/essentials
 	arch = x86_64
