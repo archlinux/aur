@@ -24,7 +24,7 @@ source=(
 sha256sums=('49d7e73968f7f5ac9ba7763daca31167ac0efc69ead95bfe40d12d5a7fb2bd6c')
 
 package() {
-  cd tool
+  cd "reuse-tool-${pkgver}"
 
   python setup.py -q install --root="${pkgdir}" --optimize=1
 }
