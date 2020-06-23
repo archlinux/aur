@@ -1,7 +1,7 @@
 pkgbase = vegastrike-engine-git
 	pkgdesc = A spaceflight simulator in massive universe
 	pkgver = rev.13926
-	pkgrel = 1
+	pkgrel = 2
 	url = www.vega-strike.org
 	arch = i686
 	arch = x86_64
