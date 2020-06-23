@@ -1,3 +1,5 @@
 *.tar*
 src/
 pkg/
+*.deb
+.fuse*

@@ -1,42 +1,45 @@
 # Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
 pkgname=xdroid-installer
-pkgver=4.0012
+pkgver=4.0078
 pkgrel=1
-pkgdesc="The installer and of xDroid, a closed source Android container that uses similar techniques to Anbox."
+pkgdesc="The installer and uninstaller of xDroid, a closed source Android container that uses similar techniques to Anbox."
 arch=('x86_64')
 url="https://www.linzhuotech.com/index.php/home/index/xdroid.html"
 license=('custom')
 groups=()
-depends=('bash' 'gtk3' 'qt5-wayland' 'qt5-virtualkeyboard' 'openssl-1.0' 'tar')
+depends=('gtk3' 'qt5-wayland' 'qt5-virtualkeyboard' 'openssl-1.0' 'tar' 'python')
 makedepends=()
-optdepends=('fcitx-qt5: Asian input method support')
+optdepends=('fcitx-qt5: Asian input method support'
+            'python-easygui: for choosing to reinstall or uninstall after the first installation')
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
-install="xdroid-installer.install"
+install="${pkgname}.install"
 changelog=
-_filename="xDroidInstall-x86_64-v${pkgver}-20200527143515.tar.gz"
+_filename="xDroidInstall-x86_64-v${pkgver}-20200620101733.tar.gz"
 source=("https://github.com/SamLukeYes/xdroid-installer/releases/download/v${pkgver}/${_filename}"
-        "xdroid-installer.desktop"
+        "${pkgname}.desktop"
         "LICENSE"
-        "xdroid-installer.install")
+        "${pkgname}.install"
+        "${pkgname}.py")
 noextract=(${_filename})
-md5sums=('a269cff11068cd6f4898f74a48bf8a15'
-         'afd3661413c83b55bf160d0ea5244366'
+md5sums=('f6941c16177c72e376ffd105677cd75c'
+         'e467770854d49aea2d94c451a443471e'
          '08c8f971fe3ae5cac148ef220975291b'
-         '6593491b69238c60428a928e54d3a5ad')
+         '025974b0e37da69e031e6ec1e346fef8'
+         'e55a42b96e3a8d975df5770e6e0bf28b')
 
 package() {
   #_target=${pkgdir}/opt/${pkgname}
-  install -d ${pkgdir}/opt/${pkgname}
+  cd ${pkgdir}
+  install -d usr/bin opt/${pkgname} usr/share/applications usr/share/licenses/${pkgname}
   #tar -xzvf ${srcdir}/${_filename} -C ${pkgdir}/opt
   #chmod -R 755 ${pkgdir}/opt
-  install -Dm644 ${srcdir}/${_filename} ${pkgdir}/opt/${pkgname}/xdroid.tar.gz
-  install -d ${pkgdir}/usr/share/applications
-  install -Dm755 ${srcdir}/"xdroid-installer.desktop" ${pkgdir}/usr/share/applications/
+  install -m755 ${srcdir}/${pkgname}.py usr/bin/${pkgname}
+  install -m644 ${srcdir}/${_filename} opt/${pkgname}/xdroid.tar.gz
+  install -m755 ${srcdir}/"${pkgname}.desktop" usr/share/applications/
   #install -Dm755 ${srcdir}/"xdroid-uninstaller.desktop" ${pkgdir}/usr/share/applications/
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  install -Dm755 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+  install -m755 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
