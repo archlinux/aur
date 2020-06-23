@@ -12,8 +12,8 @@ pkgbase = argonone-git
 	depends = python>=3.3
 	depends = raspberrypi-userland-aarch64-git
 	provides = argonone
-	backup = etc/argonone.conf
-	source = git+https://github.com/Elrondo46/argonone
+	backup = etc/argononed.conf
+	source = git+https://github.com/kounch/argonone.git#branch=feature/RaspberryPi4
 	sha256sums = SKIP
 
 pkgname = argonone-git

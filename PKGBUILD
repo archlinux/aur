@@ -15,7 +15,7 @@ depends=('i2c-tools' 'lm_sensors' 'python>=3.3' 'raspberrypi-userland-aarch64-gi
 provides=('argonone')
 backup=('etc/argononed.conf')
 install=argonone.install
-source=("git+https://github.com/Elrondo46/argonone")
+source=("git+https://github.com/kounch/argonone.git#branch=feature/RaspberryPi4")
 sha256sums=('SKIP')
 
 pkgver() {
