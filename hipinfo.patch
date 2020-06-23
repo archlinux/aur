@@ -1,0 +1,68 @@
+diff --unified --recursive --text HIP-rocm-3.5.1/bin/hipconfig HIP-rocm-3.5.1.new/bin/hipconfig
+--- HIP-rocm-3.5.1/bin/hipconfig	2020-06-16 11:44:26.000000000 -0400
++++ HIP-rocm-3.5.1.new/bin/hipconfig	2020-06-22 20:44:28.932530458 -0400
+@@ -96,12 +96,12 @@
+     $HIP_INFO_PATH= "$HIP_PATH/lib/.hipInfo"; # use actual file
+ }
+ #---
+-#HIP_PLATFORM controls whether to use NVCC or HCC for compilation:
+-$HIP_PLATFORM=$ENV{'HIP_PLATFORM'};
+ # Read .hipInfo
+ my %hipInfo = ();
+ parse_config_file("$HIP_INFO_PATH", \%hipInfo);
+ # Prioritize Env first, otherwise use the hipInfo config file
++#HIP_PLATFORM controls whether to use NVCC or HCC for compilation:
++$HIP_PLATFORM = $ENV{'HIP_PLATFORM'} // $hipInfo{'HIP_PLATFORM'} // "hcc";
+ $HIP_COMPILER = $ENV{'HIP_COMPILER'} // $hipInfo{'HIP_COMPILER'} // "hcc";
+ $HIP_RUNTIME = $ENV{'HIP_RUNTIME'} // $hipInfo{'HIP_RUNTIME'} // "HCC";
+ 
+diff --unified --recursive --text HIP-rocm-3.5.1/CMakeLists.txt HIP-rocm-3.5.1.new/CMakeLists.txt
+--- HIP-rocm-3.5.1/CMakeLists.txt	2020-06-16 11:44:26.000000000 -0400
++++ HIP-rocm-3.5.1.new/CMakeLists.txt	2020-06-22 20:43:27.635570691 -0400
+@@ -106,6 +106,7 @@
+     endif()
+ endif()
+ message(STATUS "HIP Platform: " ${HIP_PLATFORM})
++add_to_config(_buildInfo HIP_PLATFORM)
+ 
+ # Determine HIP_COMPILER
+ # Either hcc or clang; default is hcc
+@@ -300,7 +301,6 @@
+ 
+     include_directories(${PROJECT_SOURCE_DIR}/include)
+     add_subdirectory(rocclr)
+-    file(WRITE "${PROJECT_BINARY_DIR}/.hipInfo" ${_buildInfo})
+ 
+ 
+ # set(ROCclr_CXX_FLAGS  "-hc -fno-gpu-rdc --amdgpu-target=gfx803 --amdgpu-target=gfx900 --amdgpu-target=gfx906 --amdgpu-target=gfx908 ")
+@@ -404,14 +404,15 @@
+     else()
+         target_link_libraries(device INTERFACE host)
+     endif()
+-
+-    # Generate .hipInfo
+-    file(WRITE "${PROJECT_BINARY_DIR}/.hipInfo" ${_buildInfo})
+ endif()
+ 
+ if(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "rocclr")
+     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/lpl_ca)
+ endif()
++
++# Generate .hipInfo
++file(WRITE "${PROJECT_BINARY_DIR}/.hipInfo" ${_buildInfo})
++
+ # Generate .hipVersion
+ file(WRITE "${PROJECT_BINARY_DIR}/.hipVersion" ${_versionInfo})
+ 
+@@ -445,11 +446,6 @@
+ endif()
+ 
+ # Install .hipInfo
+-if(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "rocclr")
+-    install(FILES ${PROJECT_BINARY_DIR}/.hipInfo DESTINATION lib)
+-endif()
+-
+-# Install .hipInfo
+ install(FILES ${PROJECT_BINARY_DIR}/.hipInfo DESTINATION lib)
+ 
+ # Install .hipVersion

@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
@@ -11,18 +11,23 @@ depends=('cuda')
 provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000')
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        "hipinfo.patch")
+sha256sums=('f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000'
+            'f94d8b2426d5f8eecd420698a2b7f3d66ddc0531afe313a572f0b644f6e45b64')
+
+prepare() {
+  cd "${srcdir}/HIP-rocm-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/hipinfo.patch"
+}
 
 build() {
   cmake -B build -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+        -DHIP_PLATFORM=nvcc \
         -DHIP_COMPILER=clang \
         "$srcdir/HIP-rocm-$pkgver"
   make -C build
-
-  # https://github.com/rocm-arch/rocm-arch/issues/263
-  sed -i '/hipInfo/d' $srcdir/build/cmake_install.cmake
 }
 
 package() {

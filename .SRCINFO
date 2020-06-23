@@ -1,7 +1,7 @@
 pkgbase = hip-nvcc
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 3.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,9 @@ pkgbase = hip-nvcc
 	provides = hip
 	conflicts = hip
 	source = hip-nvcc-3.5.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.5.1.tar.gz
+	source = hipinfo.patch
 	sha256sums = f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000
+	sha256sums = f94d8b2426d5f8eecd420698a2b7f3d66ddc0531afe313a572f0b644f6e45b64
 
 pkgname = hip-nvcc
 
