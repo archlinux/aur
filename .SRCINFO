@@ -1,0 +1,15 @@
+pkgbase = pascha-git
+	pkgdesc = A simple shell script to calculate and display the date of Pascha (Easter)
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://gitlab.com/cmmescher/pascha.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = pascha
+	conflicts = pascha
+	source = git+https://gitlab.com/cmmescher/pascha.git
+	md5sums = SKIP
+
+pkgname = pascha-git
+
