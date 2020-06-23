@@ -1,7 +1,7 @@
 pkgbase = powerword-bin
 	pkgdesc = A Chinese-English dictionary tool.
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.iciba.com
 	arch = x86_64
 	license = unknown
