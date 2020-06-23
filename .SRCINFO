@@ -5,7 +5,6 @@ pkgbase = sfk-bin
 	url = http://stahlworks.com/dev/swiss-file-knife.html
 	arch = x86_64
 	license = BSD
-	makedepends = awk
 	depends = gcc-libs
 	provides = sfk
 	conflicts = sfk

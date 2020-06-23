@@ -1,4 +1,5 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
+
 pkgname=sfk-bin
 pkgver=1.9.7.0
 pkgrel=1
@@ -7,7 +8,6 @@ arch=('x86_64')
 url='http://stahlworks.com/dev/swiss-file-knife.html'
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('awk')
 provides=('sfk')
 conflicts=('sfk')
 _bin='sfk197-linux-64.exe'
