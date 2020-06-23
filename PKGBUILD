@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='python-boolean.py'
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 pkgdesc='Implements boolean algebra in one module'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-tox')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bastikr/boolean.py/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('9b4638c17f70eab189ebf3be326b893281dd8e47e408457a70293f7eea1b8cdc')
+sha256sums=('9edea850c4e2a6a2c6e4a8653f9f694c9a0c385ef4493d72bcc5aff794d000b3')
 
 check() {
   cd "$srcdir/boolean.py-$pkgver"
