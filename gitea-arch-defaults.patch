@@ -1,6 +1,6 @@
---- a/custom/conf/app.ini.sample
-+++ b/custom/conf/app.ini.sample
-@@ -8,12 +8,12 @@
+--- a/custom/conf/app.example.ini
++++ b/custom/conf/app.example.ini
+@@ -7,12 +7,12 @@
  ; App name that shows in every page title
  APP_NAME = Gitea: Git with a cup of tea
  ; Change it if you run locally
@@ -14,9 +14,9 @@
 -ROOT =
 +ROOT = /var/lib/gitea/repos
  SCRIPT_TYPE = bash
- ; Default ANSI charset
- ANSI_CHARSET =
-@@ -280,7 +280,7 @@ CERT_FILE = https/cert.pem
+ ; DETECTED_CHARSETS_ORDER tie-break order for detected charsets.
+ ; If the charsets have equal confidence, tie-breaking will be done by order in this list
+@@ -315,7 +315,7 @@
  KEY_FILE = https/key.pem
  ; Root directory containing templates and static files.
  ; default is the path where Gitea is executed
@@ -25,8 +25,7 @@
  ; Default path for App data
  APP_DATA_PATH = data
  ; Application level GZIP support
-
-@@ -341,7 +341,7 @@
+@@ -385,7 +385,7 @@
  ; For iterate buffer, default is 50
  ITERATE_BUFFER_SIZE = 50
  ; Show the database generated SQL
@@ -35,7 +34,7 @@
  ; Maximum number of DB Connect retries
  DB_RETRIES = 10
  ; Backoff time per DB retry (time.Duration)
-@@ -696,10 +696,10 @@
+@@ -761,10 +761,10 @@
  DEFAULT_UI_LOCATION =
  
  [log]
@@ -48,7 +47,7 @@
  ; Buffer length of the channel, keep it as it is if you don't know what it is.
  BUFFER_LEN = 10000
  REDIRECT_MACARON_LOG = false
-@@ -724,7 +724,7 @@
+@@ -789,7 +789,7 @@
  
  ; For "console" mode only
  [log.console]

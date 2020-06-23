@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.13.0_dev_174_gb682a2c1b
+pkgver=v1.13.0_dev_234_gd9aa007a9
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -36,7 +36,7 @@ sha512sums=('SKIP'
             '89bf119a91fd48ed35c06131c67de1b4300bd2e79522c47aee9a73d7f1ebb08d9bceadc37408bd2425475d92c8bf59d87a799f2ce0a46bee860bf9fc7a904103'
             '0b93ddbb88ff843014f583a36c00156c011cca568cb69b61eb4c576c557b21ecdab1b105815a5dfdd08349e4e3b0976c8bdf87c8d3b201edae95de9070200352'
             '77f672ed82bc8f78ca04b1e2b7c7d026cb897da6e4f057817adbe1242bf8a67875061553806e6b027cdb3266cdf217ee3993efd9242a66c5802ed34344b5ded1'
-            'fc415c8284e23bc6cbb440713d4d1165a3c3159fb1f3ebf80ffc9a016c02c4415ec532e3ed4f34667e3b53ab474e34e69289cfc275bf666ae0135b5310e90de1')
+            'a91acf8b8627b29ebc23ae5dfc7a26d62e5dc8443dcc47e2f13d2290b2c2bc96ebddcc83419aa571ed5890304dfc15a82ebec771b05e3c9c6900b48d855d6cc7')
 install=gitea.install
 
 pkgver() {
@@ -74,7 +74,7 @@ package() {
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
   install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-  install -D ${_pkgname}/custom/conf/app.ini.sample "${pkgdir}"/etc/gitea/app.ini
+  install -D ${_pkgname}/custom/conf/app.example.ini "${pkgdir}"/etc/gitea/app.ini
 }
 
 # vim: ts=2 sw=2 et:
