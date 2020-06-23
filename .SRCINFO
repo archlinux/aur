@@ -1,6 +1,6 @@
 pkgbase = python-gaphas
 	pkgdesc = Diagramming widget library for Python
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/gaphor/gaphas
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-gaphas
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-importlib-metadata
-	source = https://files.pythonhosted.org/packages/py3/g/gaphas/gaphas-2.0.0-py3-none-any.whl
-	sha256sums = 721888ed6eae2539fffc0a34f10a6593904223b2b334052808f5e799480d96ee
+	source = https://files.pythonhosted.org/packages/py3/g/gaphas/gaphas-2.1.0-py3-none-any.whl
+	sha256sums = 18ab25c540d5f58339b912d4df26f8fa8a09a0ac6ea22d6d2e8bbeb53658e644
 
 pkgname = python-gaphas
 
