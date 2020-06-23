@@ -1,7 +1,7 @@
 pkgbase = retroarch-rbp4
 	pkgdesc = Reference frontend for the libretro API (Raspberry Pi 4)
-	pkgver = 1.8.8
-	pkgrel = 2
+	pkgver = 1.8.9
+	pkgrel = 1
 	url = http://www.libretro.com/
 	arch = armv7h
 	groups = libretro
@@ -28,11 +28,11 @@ pkgbase = retroarch-rbp4
 	optdepends = python: retroarch-cg2glsl
 	optdepends = retroarch-assets-ozone: Ozone menu assets
 	optdepends = retroarch-assets-xmb: XMB menu assets
-	provides = retroarch=1.8.8
+	provides = retroarch=1.8.9
 	conflicts = retroarch
 	conflicts = retroarch-rbp
 	backup = etc/retroarch.cfg
-	source = git+https://github.com/libretro/RetroArch.git#tag=9552f87157120252a9fad2e2c108ab08c2d3735e
+	source = git+https://github.com/libretro/RetroArch.git#tag=2e115baf36058d6f099db1ae7cf6dbdacb21c53c
 	source = retroarch-config.patch
 	source = service
 	source = sysusers.conf
