@@ -2,7 +2,7 @@
 # Contributor: darkgrin <darkgrin at yahoo dot com>
 pkgname=subs2srs
 pkgver=29.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A small utility that allows you to create Anki (flash card software) import files based on your favorite foreign language movies and TV shows to aid in the language learning process."
 arch=('any')
 url="http://subs2srs.sourceforge.net/"
