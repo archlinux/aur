@@ -6,6 +6,7 @@ pkgbase = triton
 	arch = x86_64
 	license = Apache
 	makedepends = boost
+	makedepends = cmake
 	depends = boost-libs
 	depends = capstone
 	depends = z3

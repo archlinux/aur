@@ -9,7 +9,7 @@ url='https://triton.quarkslab.com/'
 arch=('x86_64')
 license=('Apache')
 depends=('boost-libs' 'capstone' 'z3' 'python')
-makedepends=('boost')
+makedepends=('boost' 'cmake')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JonathanSalwan/${_pkgname}/archive/v${pkgver}.tar.gz)
 sha512sums=('04336327c59c6e37ccf6a05046f5ca0ece5b513f03f5c42abcfb309f8b76b14f75d0021dd09c848396ae889849edbffaa5df790e542bcfca26cc727a70c4e810')
 
