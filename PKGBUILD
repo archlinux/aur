@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-retrodream
-pkgver=1096
+pkgver=1104
 pkgrel=1
 pkgdesc='Sega Dreamcast core'
 arch=(x86_64)
@@ -17,7 +17,8 @@ makedepends=(
   mesa
 )
 replaces=(libretro-redream)
-source=(libretro-retrodream::git+https://github.com/libretro/retrodream.git#commit=f7814c2f0faaf56a5081b62f660f64c5e123227e)
+_commit=bf4d812daf326c56e99208a4c30acae1475fd701
+source=(libretro-retrodream::git+https://github.com/libretro/retrodream.git#commit=${_commit})
 sha256sums=(SKIP)
 
 pkgver() {
