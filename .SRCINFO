@@ -1,6 +1,6 @@
 pkgbase = tuxedo-control-center
 	pkgdesc = An application helping you to tune your TUXEDO
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-control-center
 	install = tuxedo-control-center.install
@@ -9,11 +9,11 @@ pkgbase = tuxedo-control-center
 	makedepends = rpmextract
 	depends = tuxedo-cc-wmi
 	options = !strip
-	source = https://rpm.tuxedocomputers.com/opensuse/15.1/x86_64/tuxedo-control-center_1.0.2.rpm
+	source = https://rpm.tuxedocomputers.com/opensuse/15.1/x86_64/tuxedo-control-center_1.0.3.rpm
 	source = tuxedo-control-center.install
-	sha256sums = 2362324af022fb21c89dea793f3e5b2b8563ea97d18b02d37bd04e980c83f7de
+	sha256sums = b1535c7cdcfaaaa6c0c1891d7e71b0c33c33143535b9e4abd40558641444f141
 	sha256sums = fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3
-	sha512sums = f4e77a8ffe2046f325bdf0a97b57649124124ce8e839d4468e8017be0f424719139b1eee6da42e60eb967b89673124ce574dc2c618874fdf7c099b052b763d5e
+	sha512sums = cc76fe1b65f8b8bd8c43352cd64400c635e7b8db0fd07b71fff6caef690d9c3f415350cba5dbdab14c8dca5aadf045d458ab399bc58cb070b0ee2d11563252c0
 	sha512sums = b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a
 
 pkgname = tuxedo-control-center
