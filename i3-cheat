@@ -53,8 +53,8 @@ category={}
 for num, match in enumerate(matches2, start=1):
     lines = match.group(1).splitlines()
 
-    str_category = lines[0].replace('## Category: ', '').replace(';', '').strip()
-    str_description = lines[1].replace('# Description: ', '').replace(';', '').strip()
+    str_category = do_replacements(lines[0].replace('## Category: ', '').replace(';', '').strip())
+    str_description = do_replacements(lines[1].replace('# Description: ', '').replace(';', '').strip())
     str_keybind = do_replacements(lines[2].replace('\\', '').strip())
     str_command = do_replacements(lines[3].replace('\\', '').strip())
     # create category if not exist
