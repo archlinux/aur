@@ -1,6 +1,6 @@
 pkgbase = cinnamon-control-center-slim
 	pkgdesc = The Control Center for Cinnamon
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-control-center
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = cinnamon-control-center-slim
 	depends = libgnomekbd
 	optdepends = cinnamon-translations: i18n
 	optdepends = gnome-color-manager: for color management tasks
-	provides = cinnamon-control-center=4.6.0
+	provides = cinnamon-control-center=4.6.1
 	conflicts = cinnamon-control-center
 	replaces = cinnamon-control-center
 	options = !emptydirs
-	source = cinnamon-control-center-4.6.0.tar.gz::https://github.com/linuxmint/cinnamon-control-center/archive/4.6.0.tar.gz
+	source = cinnamon-control-center-4.6.1.tar.gz::https://github.com/linuxmint/cinnamon-control-center/archive/4.6.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = cinnamon-control-center-slim
