@@ -1,5 +1,5 @@
 pkgbase = llvm-tce
-	pkgver = 10.0.0_r339798.d32170dbd5b
+	pkgver = 10.0.1_r339900.8f299fd2cff
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = llvm-tce
 
 pkgname = llvm-tce
 	pkgdesc = LLVM 10 patched for TCE
-	depends = llvm-tce-libs=10.0.0_r339798.d32170dbd5b-1
+	depends = llvm-tce-libs=10.0.1_r339900.8f299fd2cff-1
 	depends = perl
 	provides = llvm
 	provides = clang
@@ -39,4 +39,7 @@ pkgname = llvm-tce-libs
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
+	provides = llvm-libs
+	conflicts = llvm-libs
+	conflicts = llvm-libs-git
 
