@@ -1,6 +1,6 @@
 # Maintainer: David Cristofaro <david@dtcristo.com>
 pkgname=lucky
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='A web framework written in Crystal'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('crystal' 'shards')
 conflicts=('lucky-git')
 source=("lucky_cli-$pkgver.tar.gz::https://github.com/luckyframework/lucky_cli/archive/v$pkgver.tar.gz")
-sha256sums=('6f11b0f3dff036640461ac2e63750ee21255af9d093f65770b659bf2a7d95b08')
+sha256sums=('e856232b1bf061524ce9fa1459b2259ff0ffd3022cc8b0bb40e4fb16ab2e88df')
 
 build() {
   cd "lucky_cli-$pkgver"
