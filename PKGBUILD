@@ -3,13 +3,13 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.3.r335.ge16e2184
+pkgver=1.3.r398.g8480d41b
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('libpng' 'libwebp' 'sdl2_mixer' 'freetype2' 'libzip' 'hicolor-icon-theme')
+depends=('sdl2' 'libpng' 'libwebp' 'opusfile' 'freetype2' 'libzip' 'hicolor-icon-theme')
 provides=('taisei')
 conflicts=('taisei')
 makedepends=('git' 'meson' 'python-docutils')
@@ -30,7 +30,7 @@ prepare() {
   git config submodule.gamecontrollerdb.url ../SDL_GameControllerDB
   git config submodule.external/koishi.url ../koishi
   git submodule update
-  arch-meson build
+  arch-meson build -Dvalidate_glsl=false
 }
 
 build() {
