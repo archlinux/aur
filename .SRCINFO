@@ -1,7 +1,7 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
 	pkgver = 2020.5.30
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = python-imagecodecs
 	makedepends = cython
 	depends = blosc
 	depends = brotli
+	depends = brunsli
 	depends = charls
 	depends = jxrlib
 	depends = lcms2
@@ -19,14 +20,15 @@ pkgbase = python-imagecodecs
 	depends = libtiff
 	depends = libwebp
 	depends = openjpeg2
+	depends = python-imread
 	depends = python-numpy
 	depends = snappy
 	depends = zfp
 	depends = zopfli
 	source = imagecodecs-2020.5.30.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2020.5.30.tar.gz
-	source = 0001-fix-setup.patch::https://github.com/hubutui/imagecodecs/commit/e5ae4f1458b7a33dbaefb1b6b75c44d14b0fa79a.patch
+	source = 0001-fix-setup.patch::https://github.com/hubutui/imagecodecs/commit/eba1710c1ef1345db09a3e2e4146e7d31fb9fb10.patch
 	sha256sums = 4d750b4eb6b2bb33ae14897d6d5affe8ae22f5a6e8a04823f19bb1a05619a4b4
-	sha256sums = a2eeb124a594f1a2d2f0303c4a51758a713fd84bd9ab6b16841c72e95f74b828
+	sha256sums = 5789a344db6fe16d3e43695937bda3d42d254d9a255ff99c21f7f87b82f1344a
 
 pkgname = python-imagecodecs
 
