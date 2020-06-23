@@ -23,7 +23,7 @@ makepkg --printsrcinfo > .SRCINFO
 
 echo "Commit files"
 git add .SRCINFO PKGBUILD
-git commit -m "vim-runtime version $VERSION"
+git commit --author "ncoif <ncoif@gmx.com>" -m "vim-runtime version $VERSION"
 
 echo "clean-up"
 rm -v vim-$VERSION.tar.gz
