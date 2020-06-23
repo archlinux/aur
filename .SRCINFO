@@ -1,15 +1,15 @@
 pkgbase = editorconfig-core-c-git
 	pkgdesc = EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)
-	pkgver = 0.12.1.r16.g6f3c40d
-	pkgrel = 2
+	pkgver = 0.12.3.r38.ge70d90d
+	pkgrel = 1
 	url = https://github.com/editorconfig/editorconfig-core-c
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = cmake>=2.8.7
+	makedepends = cmake
 	depends = glibc
-	depends = pcre
+	depends = pcre2
 	provides = editorconfig-core-c
 	conflicts = editorconfig-core-c
 	source = git+https://github.com/editorconfig/editorconfig-core-c.git
