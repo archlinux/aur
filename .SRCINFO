@@ -1,17 +1,16 @@
 pkgbase = juju
 	pkgdesc = Simple, secure devops tooling built to manage today's complex applications wherever you run your software.
-	pkgver = 2.7.5
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/juju/juju
 	arch = x86_64
 	license = AGPL3
-	makedepends = git
-	makedepends = go-pie>=1.11
+	makedepends = go>=1.11
 	depends = lxd
-	source = juju-2.7.5::git+https://github.com/juju/juju#tag=juju-2.7.5
+	source = https://github.com/juju/juju/archive/juju-2.8.0.tar.gz
 	source = build.patch
-	sha512sums = SKIP
-	sha512sums = 0fdd06f3265cf71c30bcd8b6f6cc58ec481fbfda024d73d8b93a90be39b15f46a66d0ed1671ba7fd86ff6b8350795188ab09473635dbcf633b7f0eb42c31d89b
+	sha512sums = b47b3a096ff738da409ece6fedccfa7008900c7ce0b7faf37ec84ef0285491a16397b03255e029a96ae4d39bae2241707e36970e6070784d443ae7f7c4056d91
+	sha512sums = 8cdd75296e3d2b3f9dd58b83dbac0f642e9f073eb1ef0cf89823ae287a680aa3311248a860dccf5acfe78bfed67fe9d14cdf5d52799ea5b6c6e3ee34073b4c26
 
 pkgname = juju
 
