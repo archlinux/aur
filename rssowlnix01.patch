@@ -1,0 +1,73 @@
+diff --unified --recursive --text package.orig/org.rssowl.feature.dependencies/feature.xml package.new/org.rssowl.feature.dependencies/feature.xml
+--- package.orig/org.rssowl.feature.dependencies/feature.xml	2020-06-22 13:49:48.809089355 -0600
++++ package.new/org.rssowl.feature.dependencies/feature.xml	2020-06-22 11:42:03.046115611 -0600
+@@ -282,7 +282,7 @@
+          fragment="true"
+          unpack="false"/>
+ 
+-   <plugin
++   <!-- <plugin
+          id="org.eclipse.equinox.security.macosx"
+          os="macosx"
+          download-size="16"
+@@ -309,7 +309,7 @@
+          install-size="65"
+          version="0.0.0"
+          fragment="true"
+-         unpack="false"/>
++   unpack="false"/> -->
+ 
+    <plugin
+          id="org.eclipse.equinox.ds"
+diff --unified --recursive --text package.orig/org.rssowl.feature.dependencies.updater/feature.xml package.new/org.rssowl.feature.dependencies.updater/feature.xml
+--- package.orig/org.rssowl.feature.dependencies.updater/feature.xml	2020-06-22 14:44:18.038935986 -0600
++++ package.new/org.rssowl.feature.dependencies.updater/feature.xml	2020-06-22 11:42:53.166113263 -0600
+@@ -537,7 +537,7 @@
+          fragment="true"
+          unpack="false"/>
+ 
+-   <plugin
++   <!-- <plugin
+          id="org.eclipse.equinox.security.macosx"
+          os="macosx"
+          download-size="16"
+@@ -564,7 +564,7 @@
+          install-size="65"
+          version="0.0.0"
+          fragment="true"
+-         unpack="false"/>
++   unpack="false"/> -->
+ 
+    <plugin
+          id="org.eclipse.equinox.p2.ui.sdk"
+diff --unified --recursive --text package.orig/releng/configuration/pom.xml package.new/releng/configuration/pom.xml
+--- package.orig/releng/configuration/pom.xml	2020-06-22 13:48:35.945759435 -0600
++++ package.new/releng/configuration/pom.xml	2020-06-22 10:31:40.489587762 -0600
+@@ -66,16 +66,19 @@
+ 						</artifact>
+ 					</target>
+ 					<environments>
++                        <!--
+ 						<environment>
+ 							<os>linux</os>
+ 							<ws>gtk</ws>
+ 							<arch>x86</arch>
+ 						</environment>
++                        -->
+ 						<environment>
+ 							<os>linux</os>
+ 							<ws>gtk</ws>
+ 							<arch>x86_64</arch>
+ 						</environment>
++                        <!--
+ 						<environment>
+ 							<os>macosx</os>
+ 							<ws>cocoa</ws>
+@@ -91,6 +94,7 @@
+ 							<ws>win32</ws>
+ 							<arch>x86_64</arch>
+ 						</environment>
++                        -->
+ 					</environments>
+ 				</configuration>
+ 			</plugin>

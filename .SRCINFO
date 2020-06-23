@@ -1,0 +1,19 @@
+pkgbase = rssowlnix
+	pkgdesc = Organize, search and read your RSS, RDF & Atom news feeds in a comfortable way
+	pkgver = 2.8.0_beta
+	pkgrel = 1
+	url = https://github.com/Xyrio/RSSOwlnix
+	arch = any
+	license = EPL
+	makedepends = java-environment=8
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime>=8
+	depends = webkit2gtk
+	source = git+https://github.com/Xyrio/RSSOwlnix.git#tag=2.8.0
+	source = rssowlnix01.patch
+	md5sums = SKIP
+	md5sums = a1f7369dfebe543dcf1e2079e3925c7d
+
+pkgname = rssowlnix
+
