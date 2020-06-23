@@ -1,6 +1,6 @@
 pkgbase = tinyssh-git
 	pkgdesc = Minimalistic SSH server
-	pkgver = 20190101.r6.g8fc6eff
+	pkgver = 20190101.r14.g7e2b402
 	pkgrel = 1
 	url = https://tinyssh.org/
 	arch = i686

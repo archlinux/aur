@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyssh-git
-pkgver=20190101.r6.g8fc6eff
+pkgver=20190101.r14.g7e2b402
 pkgrel=1
 pkgdesc="Minimalistic SSH server"
 arch=('i686' 'x86_64')
@@ -21,6 +21,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 
+prepare() {
+  cd "tinyssh"
+
+  echo "/usr/bin" > "conf-bin"
+}
+
 pkgver() {
   cd "tinyssh"
 
@@ -38,13 +44,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-	mv "$pkgdir"/usr/{s,}bin
-
   install -d "$pkgdir/etc/tinyssh"
 
-  install -d "$pkgdir/usr/lib/systemd/system"
-	install -m 644 -t "$pkgdir/usr/lib/systemd/system" \
-		"$srcdir"/{tinysshgenkeys.service,tinyssh@.service,tinyssh@.socket}
+  install -Dm644 "$srcdir"/{tinysshgenkeys.service,tinyssh@.service,tinyssh@.socket} \
+    -t "$pkgdir/usr/lib/systemd/system"
 
-  install -Dm644 "LICENCE" "$pkgdir/usr/share/licenses/tinyssh/LICENCE"
+  install -Dm644 "LICENCE" -t "$pkgdir/usr/share/licenses/tinyssh"
 }
