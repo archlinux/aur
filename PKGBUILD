@@ -100,5 +100,5 @@ package() {
 	</match>
 </fontconfig>
 END
-	ln -s "$pkgdir/etc/fonts/conf."{avail,d}"/90-avoid-microsoft-sans-serif.conf"
+	ln -sr "$pkgdir/etc/fonts/conf."{avail,d}"/90-avoid-microsoft-sans-serif.conf"
 }
