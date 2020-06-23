@@ -1,6 +1,6 @@
 pkgbase = editorconfig-gedit-git
 	pkgdesc = EditorConfig plugin for gedit
-	pkgver = 0.5.3.r8.g53d469c
+	pkgver = 0.5.3.r195.ga7190f7
 	pkgrel = 1
 	url = https://editorconfig.org/
 	arch = any

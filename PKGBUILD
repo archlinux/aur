@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=editorconfig-gedit-git
-pkgver=0.5.3.r8.g53d469c
+pkgver=0.5.3.r195.ga7190f7
 pkgrel=1
 pkgdesc="EditorConfig plugin for gedit"
 arch=('any')
@@ -25,11 +25,11 @@ package() {
   cd "editorconfig-gedit"
 
   _installdir="$pkgdir/usr/lib/gedit/plugins"
-  mkdir -p "$_installdir"
+  install -d "$_installdir"
 
   cp -r "editorconfig_plugin/" "$_installdir"
-  cp "editorconfig.plugin" "$_installdir"
-  cp "editorconfig_gedit3.py" "$_installdir"
+  install "editorconfig.plugin" -t "$_installdir"
+  install "editorconfig_gedit3.py" -t "$_installdir"
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/editorconfig-gedit/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/editorconfig-gedit"
 }
