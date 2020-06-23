@@ -1,0 +1,19 @@
+pkgbase = aptpik
+	pkgdesc = a pikaur wrapper with syntax from debian's apt
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/daemonspudguy/aptpik
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = sudo
+	depends = pikaur
+	conflicts = apt
+	conflicts = apt-git
+	conflicts = aptpac-git
+	conflicts = aptpac
+	source = https://github.com/daemonspudguy/aptpik/releases//download/1.0/v1.0.zip
+	md5sums = SKIP
+
+pkgname = aptpik
+
