@@ -1,0 +1,20 @@
+pkgbase = beagle-logic-dkms-git
+	pkgdesc = A logic analyzer for the PRUs on the BeagleBone / BeagleBone Black
+	pkgver = r216.c52845a
+	pkgrel = 1
+	url = http://www.beaglelogic.net
+	arch = armv7h
+	license = custom
+	makedepends = git
+	depends = dkms
+	depends = beagle-logic-firmware
+	provides = beagle-logic-firmware
+	source = beagle-logic::git+https://github.com/gpollo/BeagleLogic#branch=update-kernel
+	source = Makefile
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 712700704d517c7310f86823e28a31b7
+	md5sums = 22169a1c11b8e2b4787d8274c02641e9
+
+pkgname = beagle-logic-dkms-git
+
