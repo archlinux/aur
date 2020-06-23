@@ -7,7 +7,7 @@ pkgver=2020.06.10
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
-url="https://www.basilisk-browser.org"
+url="https://www.basilisk-browser.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
@@ -130,6 +130,5 @@ package() {
 
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  local _mozhome="$pkgdir/usr/lib/basilisk-$(< basilisk/config/version.txt)"
-  ln -sf basilisk "$_mozhome/basilisk-bin"
+  ln -sf basilisk "$pkgdir/usr/lib/basilisk-$(< basilisk/config/version.txt)/basilisk-bin"
 }
