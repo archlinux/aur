@@ -3,11 +3,11 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=83.0.4103.97
+pkgver=83.0.4103.106
 pkgrel=1
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
-_ungoogled_ver=83.0.4103.97-1
+_ungoogled_ver=83.0.4103.106-1
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -17,10 +17,11 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
+             'libpipewire02' 'libva' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
+            'libva: hardware-accelerated video decode (experimental)'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -43,8 +44,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('12c405f61284cfc78f8c2b6600f3c1ae61a83b639c41087bb4f74fcaab036f83'
-            '21767f015d14d024884b8780a975f0d8b4b2e31dd11d5eaec6a09938a5a2480f'
+sha256sums=('cfd153a2e10b0bb0fb3b7e6be543aef0915181f5fbdbea893d08465afd097e2f'
+            '0f4a0466e098184f850c167b29d2a25b99136a414104d47e58133f88271edb17'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
