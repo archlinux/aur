@@ -1,0 +1,17 @@
+pkgbase = abstreet-git
+	pkgdesc = A traffic simulation game exploring how small changes to roads affect everyone
+	pkgver = r4259.2630fabf
+	pkgrel = 1
+	url = https://github.com/dabreegster/abstreet
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	depends = libxcb
+	source = git+https://github.com/dabreegster/abstreet.git
+	source = abstreet.desktop
+	sha256sums = SKIP
+	sha256sums = 8c20072d6d4270c380207c738d773682450b2b060fcfda0f994cab522087327f
+
+pkgname = abstreet-git
+
