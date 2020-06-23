@@ -4,8 +4,8 @@ _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}"
 conflicts=("python-${_name}-git")
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
 url="https://github.com/InnoGames/${_srcname}"
@@ -19,7 +19,7 @@ source=(
   'adminapi-only.patch'
 )
 sha256sums=(
-  'aad9999e3b9ef37389025435c7dd20323b0420dc50786c247e731e18a13e08e2'
+  '6894667093950f9120961e530cc74514575655c6fb2b8c7f010308d4743f1c4c'
   '086a0f7a7b935b27e1ece35d99202b4db10f6b5a4406dd45affba2bfaf89a08e'
 )
 
