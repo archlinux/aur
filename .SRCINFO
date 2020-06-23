@@ -1,6 +1,6 @@
 pkgbase = perl-mail-milter-authentication
 	pkgdesc = A Perl Mail Authentication Milter
-	pkgver = 2.20200602.2
+	pkgver = 2.20200612.2
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-Milter-Authentication
 	arch = any
@@ -43,9 +43,9 @@ pkgbase = perl-mail-milter-authentication
 	replaces = perl-mail-milter-authentication-handler-arc
 	options = !emptydirs
 	backup = etc/authentication_milter.json
-	source = http://cpan.perl.org/modules/by-module/Mail/Mail-Milter-Authentication-2.20200602.2.tar.gz
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-Milter-Authentication-2.20200612.2.tar.gz
 	source = authentication_milter.service
-	sha256sums = 1382c36660f4f2df0418efe90d619a0f23d4904e786f4fc1c91cf0ba622864c5
+	sha256sums = bf2fbdc38cf33a43264d958b92118a2c15b4ff234d0c71fa95bd3c322f0248df
 	sha256sums = 8715d45d62859fb3838d0fd31878d59b47da2cb62d55675f828f8b812845526d
 
 pkgname = perl-mail-milter-authentication
