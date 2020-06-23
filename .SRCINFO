@@ -1,0 +1,19 @@
+pkgbase = python-imagehash
+	pkgdesc = A Python Perceptual Image Hashing Module
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/JohannesBuchner/imagehash
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pywavelets
+	depends = python-scipy
+	depends = python-six
+	source = imagehash-4.0.tar.gz::https://github.com/JohannesBuchner/imagehash/archive/4.0.tar.gz
+	sha512sums = 99ea6cb8c0cc9076b8cf4343ab192c1cd1462808ce9e9b66b53b817346b82dfec640738fbeea92854ea73ce3f78f25c1b3b0cfa6969f0fd2fef87af5a4678f20
+
+pkgname = python-imagehash
+
