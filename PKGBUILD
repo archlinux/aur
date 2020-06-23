@@ -40,49 +40,55 @@
 # This package should probably follow chutzpah@gentoo's patches in the future
 
 pkgname=openssh-hpn
-_openssh_ver=8.1p1
-_hpn_ver=hpn14v20
+_openssh_ver=8.3p1
+_hpn_ver=hpn14v22
 #_pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 _pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=3
+pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
 arch=('x86_64' 'i486' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-depends=('krb5' 'ldns>=1.7.1' 'libedit' 'openssl' 'pam')
-makedepends=('git')
+depends=('krb5' 'ldns' 'libedit' 'openssl')
+makedepends=('git' 'libfido2')
 optdepends=('xorg-xauth: X11 forwarding'
-            'x11-ssh-askpass: input passphrase in X')
+            'x11-ssh-askpass: input passphrase in X'
+            'libfido2: FIDO/U2F support')
 provides=('openssh'
           'openssh-hpn')
 conflicts=('openssh'
            'openssh-hpn'
            'openssh-hpn-git')
-source=("https://github.com/rapier1/openssh-portable/archive/hpn-${_pkgver}.tar.gz"
-        'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
-        #'openssl11.patch'
-        'hpn-banner.patch'
-        'glibc-2.31.patch'
-        'sshdgenkeys.service'
-        'sshd@.service'
-        'sshd.service'
-        'sshd.socket'
-        'sshd.pam')
+source=(
+  "https://github.com/rapier1/openssh-portable/archive/hpn-${_pkgver}.tar.gz"
+  'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
+  #'openssl11.patch'
+  #'hpn-banner.patch'
+  'glibc-2.31.patch'
+  'hpn14v22-globals-cleanup.patch'
+  'sshdgenkeys.service'
+  'sshd@.service'
+  'sshd.service'
+  'sshd.socket'
+  'sshd.pam')
 backup=('etc/ssh/ssh_config'
         'etc/ssh/sshd_config'
         'etc/pam.d/sshd')
 
-sha256sums=('3772ec2c7fa9f25753daf265700df2e153de655a0accedcc645d5a02d39e9d94'
-            '007a8888855570296c36716df18e986b7265c283e8fc8f6dfd4b3c411905fdb3'
-            #'6c6deb799fc918b4d90899d664a23b3a99e2973d61b5a2cf68e1ea9a6604ca9a'
-            '57bb8c4800afc5314ad1f3ac24bc838f1f63c626171d3c5ad4b843bfef2391fe'
-            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93'
-            'ff3cbdd0e59ff7dac4dc797d5c0f2b1db4117ddbb49d52f1c4f1771961903878'
-            '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
-            'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
-            'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
-            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
+sha256sums=(
+  '6478c70d4c0cabaf51550b9d8bc8931553efcca3e7572adde5a2d8e3c5ec9912'
+  '007a8888855570296c36716df18e986b7265c283e8fc8f6dfd4b3c411905fdb3'
+  #'6c6deb799fc918b4d90899d664a23b3a99e2973d61b5a2cf68e1ea9a6604ca9a'
+  #'57bb8c4800afc5314ad1f3ac24bc838f1f63c626171d3c5ad4b843bfef2391fe'
+  '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93'
+  '9c5a150fa3d7c23699a3f37980603e220783fc12595fdf25db9ef7eb4e91ff96'
+  'ff3cbdd0e59ff7dac4dc797d5c0f2b1db4117ddbb49d52f1c4f1771961903878'
+  '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
+  'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
+  'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
+  '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846'
+)
 
 install=$pkgname.install
 
@@ -100,6 +106,7 @@ build() {
   #patch -Np1 < ${srcdir}/hpn-banner.patch
 
   patch -Np1 < ${srcdir}/glibc-2.31.patch
+  patch -Np1 < ${srcdir}/hpn14v22-globals-cleanup.patch
   autoreconf -fi
 
   ./configure \
@@ -107,8 +114,10 @@ build() {
     --sbindir=/usr/bin \
     --libexecdir=/usr/lib/ssh \
     --sysconfdir=/etc/ssh \
+    --disable-strip \
     --with-ldns \
     --with-libedit \
+    --with-security-key-builtin \
     --with-ssl-engine \
     --with-pam \
     --with-privsep-user=nobody \

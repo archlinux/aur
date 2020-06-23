@@ -29,4 +29,14 @@ EOF
 
 post_upgrade() {
 	post_install
+
+	if (( $(vercmp $2 8.2p1-3) < 0 )); then
+		if systemctl is-active sshd.service >/dev/null; then
+			cat <<EOF
+==> After this upgrade, your existing SSH daemon may be unable to accept
+==> new connections. To fix this, your SSH daemon will now be restarted.
+EOF
+			systemctl restart sshd.service
+		fi
+	fi
 }
