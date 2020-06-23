@@ -1,0 +1,19 @@
+pkgbase = gmsynth-modcc
+	pkgdesc = General MIDI LV2 Synth (modCC). Modified version of gmsynth from x42
+	pkgver = r6.f1112bf
+	pkgrel = 1
+	url = https://github.com/donarturo11/gmsynth-modCC.lv2
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	license = GPL2
+	makedepends = lv2
+	makedepends = git
+	depends = glibc
+	depends = glib2
+	depends = libfluidsynth.so
+	source = git+https://github.com/donarturo11/gmsynth-modCC.lv2.git
+	sha512sums = SKIP
+
+pkgname = gmsynth-modcc
+
