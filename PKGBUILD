@@ -1,4 +1,4 @@
-# Maintainer: neeshy <neeshy@tfwno.gf>
+# Contributor: neeshy <neeshy@tfwno.gf>
 # Contributor: Figue <ffigue@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
