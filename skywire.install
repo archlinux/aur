@@ -11,6 +11,10 @@ post_install() {
     skywire-hypervisor gen-config -ro /etc/skywire-hypervisor.json
     local hvisorkey=$(cat /etc/skywire-hypervisor.json | grep "public_key" | awk '{print substr($2,2,66)}')
     echo "Setting hypervisor key to $hvisorkey"
+    #setting key and cert in hypervisor config file
+    sed -i 's+"enable_tls": false,+"enable_tls": true,+g' /etc/skywire-hypervisor.json
+    sed -i 's+"tls_cert_file": "",+"tls_cert_file": "/etc/skywire-hypervisor/cert.pem",+g' /etc/skywire-hypervisor.json
+    sed -i 's+"tls_key_file": ""+"tls_key_file": "/etc/skywire-hypervisor/key.pem"+g' /etc/skywire-hypervisor.json
     echo "Starting hypervisor on 127.0.0.1:8000"
     systemctl enable --now skywire-hypervisor.service
   fi
