@@ -1,6 +1,6 @@
 pkgbase = swappy
 	pkgdesc = Grab and edit screenshots from a Wayland compositor
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jtheoof/swappy
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = swappy
 	depends = pango
 	optdepends = libnotify
 	optdepends = otf-font-awesome
-	source = swappy-1.0.1.tar.gz::https://github.com/jtheoof/swappy/archive/v1.0.1.tar.gz
-	sha256sums = 68813485df9f1d0f7413ce0f5500c0641eb55d8425fbe39dca594f773fcafeec
+	source = swappy-1.1.0.tar.gz::https://github.com/jtheoof/swappy/archive/v1.1.0.tar.gz
+	sha256sums = b17cd548209947f10c4f8391f2a9dd4de16544abda00fc2290b4fd3815d70a50
 
 pkgname = swappy
 
