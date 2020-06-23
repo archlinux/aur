@@ -1,16 +1,21 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-cheat
-pkgver=v1.1.0
+pkgver=v1.0.0
+_pkgver=1.0.0
 pkgrel=1
 pkgdesc="cheat sheet for i3wm"
 arch=('any')
-url="https://github.com/TheCynicalTeam/i3-cheat"
+url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('gtk3' 'i3-wm')
-source=('i3-cheat')
-sha256sums=('735e5c407e9102f336441ff2383041c71a69206e5f95aa65b6cb0cbd39ad34b0')
+source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+sha256sums=('a0a6d85bbf63c39ab48e6a92836beec75b8a6d069af3377dee088309a18eb067')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cp -a $srcdir/$pkgname-$_pkgver-$pkgrel/etc $pkgdir/etc
+  mkdir -p $pkgdir/usr/local
+	cp -a $srcdir/$pkgname-$_pkgver-$pkgrel/usr/local/bin $pkgdir/usr/local/bin
+  mkdir -p $pkgdir/usr/lib
+	cp -a $srcdir/$pkgname-$_pkgver-$pkgrel/usr/lib/i3-cheat $pkgdir/usr/lib/i3-cheat
 }
