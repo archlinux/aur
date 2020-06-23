@@ -12,6 +12,7 @@ pkgbase = otf-libertinus-git
 	makedepends = python-fonttools
 	makedepends = python-fs
 	makedepends = python-lxml
+	makedepends = python-pcpp
 	makedepends = python-skia-pathops
 	makedepends = python-ufo2ft
 	makedepends = python-ufolib2>=0.7.1

@@ -15,6 +15,7 @@ _py_deps=('cffsubr'
           'fonttools'
           'fs'
           'lxml'
+          'pcpp'
           'skia-pathops'
           'ufo2ft'
           'ufolib2>=0.7.1')
@@ -39,7 +40,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  make
+  make -j$(nproc)
   make dist DIST=dist
 }
 
