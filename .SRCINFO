@@ -14,6 +14,7 @@ pkgbase = ibus-clean
 	makedepends = cldr-emoji-annotation
 	makedepends = unicode-character-database
 	makedepends = unicode-emoji
+	makedepends = git
 	depends = dconf
 	depends = gtk3
 	depends = hicolor-icon-theme

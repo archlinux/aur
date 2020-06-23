@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('dconf' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'python-dbus' 'python-gobject'
          'iso-codes' 'librsvg')
 makedepends=('gobject-introspection' 'vala' 'intltool' 'gnome-common' 'gtk-doc' 'qt5-base'
-             'cldr-emoji-annotation' 'unicode-character-database' 'unicode-emoji')
+             'cldr-emoji-annotation' 'unicode-character-database' 'unicode-emoji' 'git')
 options=('!emptydirs')
 _commit=f591381e3c892947ecaffe9131b9039ab9014498  # master
 source=("git+https://github.com/ibus/ibus#commit=$_commit")
