@@ -12,6 +12,11 @@ bootstrap_install() {
     for eta in ./eve-transl${qtver}-??.tar.gz ;do
 	install -m 0644 "$eta" "$libdir"
     done
+    if [ -f "./dxvk-1.7.tar.gz" ] ;then
+	install -d "$libdir/dxvk/"
+	tar xf ./dxvk-1.7.tar.gz -C $libdir/dxvk/ --strip-components=1 \
+	    dxvk-1.7/x32 dxvk-1.7/x64
+    fi
     install -m 0644 "./evesetup.shlib" "$libdir"
     install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
     install -m 0644 "./evelauncher.kwinrule" "$docdir"
@@ -59,25 +64,18 @@ bootstrap_remove() {
 	    rm -f "$prefix/share/applications/${cmd%.*}.desktop"
 	fi
     done
-    rm -rfv "$destdir"
+    printf "\nRemove $destdir...\n"
+    rm -rf "$destdir"
 }
 
 build_lib() {
     if [ ! -r "./evelauncher-$elver.tar.gz" ] ;then
-	if [ -x "$(which curl 2>/dev/null)" ] ;then
-	    echo "Curl version $(curl -V | head -n1 | cut -d' ' -f2) found."
-	else
-	    echo "Curl not found. Curl are needed for downloading evelauncher binaries."
-	    echo " Please install curl with your Package Manager."
-	    printf "\nLeaving.\n\n"
-	    exit 0
-	fi
 	printf "\nDownload evelauncher-$elver.tar.gz...\n\n"
 	curl -L -O https://binaries.eveonline.com/evelauncher-$elver.tar.gz
     fi
     rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"
     if [ "$rcsum" != "$elcsum" ] ;then
-	printf "\n\nError: Checksum from evelauncher-$elver.tar.gz doesn't match!"
+	printf "\n\nError: Checksum evelauncher-$elver.tar.gz mismatch!"
 	printf "\nLeaving.\n\n"
 	exit 0
     fi
@@ -121,11 +119,31 @@ build_lib() {
     echo "done."
 }
 
+get_dxvk() {
+    if [ ! -r "./dxvk-1.7.tar.gz" ] ;then
+	printf "\nDownload dxvk-1.7.tar.gz...\n\n"
+	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v1.7/dxvk-1.7.tar.gz
+    fi
+    rcsum="$(sha256sum ./dxvk-1.7.tar.gz| cut -d' ' -f1)"
+    if [ "$rcsum" != "$dvcsum" ] ;then
+	printf "\n\nWarning: Checksum dxvk-1.7.tar.gz mismatch, ignored.\n"
+	rm ./dxvk-1.7.tar.gz 2>/dev/null || true
+    fi
+}
+
 check_req() {
     if [ -x "$(which 7z 2>/dev/null)" ] ;then
 	echo "$(7z | head -n2 | cut -d: -f1 | tr -d [:cntrl:])found."
     else
 	echo "p7zip not found. Please install p7zip with your Package Manager."
+	printf "\nLeaving.\n\n"
+	exit 0
+    fi
+    if [ -x "$(which curl 2>/dev/null)" ] ;then
+	echo "Curl version $(curl -V | head -n1 | cut -d' ' -f2) found."
+    else
+	echo "Curl not found. Curl are needed for downloading evelauncher binaries."
+	echo " Please install curl with your Package Manager."
 	printf "\nLeaving.\n\n"
 	exit 0
     fi
@@ -147,6 +165,7 @@ docdir="$destdir/doc"
 qtver="5.11"
 elver=""
 elcsum=""
+dvcsum=""
 rcsum=""
 key=""
 
@@ -170,6 +189,7 @@ else
 	printf "\nInstalling...\n\n"
 	check_req
 	build_lib
+	get_dxvk
 	printf "\n"
 	bootstrap_install
 	printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"

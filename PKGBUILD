@@ -1,17 +1,17 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=11
+pkgrel=12
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
 license=('custom')
 
-depends=('p7zip' 'wine')
+depends=('p7zip' 'vulkan-icd-loader' 'wine')
 
 optdepends=('libnotify' 'winetricks')
 
-conflicts=('evelauncher' 'evesetup_dev')
+conflicts=('evelauncher' 'evesetup_dev' 'evesetup-beta')
 
 source=("evelauncher.desktop"
         "evelauncher.sh"
@@ -38,6 +38,7 @@ source=("evelauncher.desktop"
         "eve-transl5.11-ru.tar.gz"
         "eve-transl5.11-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
+        "https://github.com/doitsujin/dxvk/releases/download/v1.7/dxvk-1.7.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
 noextract=('eve-transl5.11-de.tar.gz'
@@ -50,8 +51,9 @@ noextract=('eve-transl5.11-de.tar.gz'
 
 package() {
         install -d "${pkgdir}/opt/${pkgname}/bin"
-        install -d "${pkgdir}/opt/${pkgname}/lib"
         install -d "${pkgdir}/opt/${pkgname}/doc"
+        install -d "${pkgdir}/opt/${pkgname}/lib"
+        install -d "${pkgdir}/opt/${pkgname}/lib/dxvk"
         install -d "${pkgdir}/usr/bin"
         install -d "${pkgdir}/usr/share/applications"
         install -d "${pkgdir}/usr/share/icons"
@@ -81,6 +83,8 @@ package() {
         cp ${srcdir}/eve-transl5.11* ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
+        cp -r ${srcdir}/dxvk-1.7/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        cp -r ${srcdir}/dxvk-1.7/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
         rm -f ${srcdir}/evelauncher/*.a ${srcdir}/evelauncher/*.la
@@ -113,7 +117,7 @@ package() {
 sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             'b1faa042a96746fe80ea5d85a0c26e80b29353394897774f45b9e48e0639a1d8'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            '4eaceb0661dd38354c3738411bdbe48e29bab103bb09b8f959d16f1073904625'
+            '1745e38174a91714ff3061608002a986f216360d8b04b86cdcae7c5457b740c2'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             '9079fd9ed7967479b7a78643d43537c04f9275303cd713651d2481bf4c658653'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
@@ -124,8 +128,8 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            '481e70f5ddba4f2d811534ab5b341a0911a836ab08a2631e648cae36b58fd0e0'
-            '85e36c8fbb51b20aa55eb56c773cacae21c508c1725b02d876fa177294f4ec44'
+            '0a39c2fce60e2464440cdcaf8288d98d6c79eb6f489da6598a1f709837f98cd1'
+            'f4a9e044d349e0363d5eeb1d308736c287bb1a0335476fab6f46d50a0a688429'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
@@ -135,4 +139,5 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
             '1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
+            '67d78239906c24bd50a5ecbc2fd792c1721e274a7a60dd22f74b21b08ca4c7a1'
             '6d49defd626b0643dce83fcd258f3bf3ece8f8e6cefbea37b3b61c8ae0752d85')

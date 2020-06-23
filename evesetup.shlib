@@ -71,7 +71,12 @@ check_wine() {
 	CUSTOMWP=${SHAREDIR}wine
 	WINEPATH=${SHAREDIR}wine/bin
     fi
-    if [ ! -x "$WINEPATH/wine" ] ;then
+    if [ -x "$WINEPATH/wine64" ] ;then
+	WINE=$WINEPATH/wine64
+    else
+	WINE=$WINEPATH/wine
+    fi
+    if [ ! -x "$WINE" ] ;then
 	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
 	exit 1
     fi
@@ -80,26 +85,39 @@ check_wine() {
     WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
     WINEDATE=$(getdate $WINECONF)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
-	desktop_msg "Preparing wine in $WINEPREFIX"
+	desktop_msg "Preparing wine environment for EVE"
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml=d" \
-	    $WINEPATH/wine wineboot
+	    $WINE wineboot
 	env WINEPREFIX=$WINEPREFIX \
-	    $WINEPATH/wine reg add \
+	    $WINE reg add \
 	    'HKCU\Software\Wine\FileOpenAssociations' \
 	    /v Enable /d N /f >/dev/null
     fi
     if [ "x$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "x0" ] ;then
-	if [ -x "$WINEPATH/wine64" ] ;then
-	    WINE=$WINEPATH/wine64
-	else
-	    WINE=$WINEPATH/wine
-	fi
 	env WINEPREFIX=$WINEPREFIX \
 	    $WINE reg delete \
 	    'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
 	    /v winemenubuilder /f >/dev/null
+    fi
+    DXVKLIBDIR=$SETUPDIR/lib/dxvk
+    WINESYSDIR=$WINEPREFIX/drive_c/windows/system32
+    if [ -r "$DXVKLIBDIR" -a ! -r "$WINESYSDIR/d3d11.dll.old" ] ;then
+	desktop_msg "Setup DXVK in EVE's wine environment"
+	for DXVKFILE in d3d10core d3d11 dxgi ;do
+	    mv $WINESYSDIR/$DXVKFILE.dll $WINESYSDIR/$DXVKFILE.dll.old
+	    cp $DXVKLIBDIR/x64/$DXVKFILE.dll $WINESYSDIR/$DXVKFILE.dll
+	    if [ -d "${WINESYSDIR%/*}/syswow64" ] ;then
+		mv ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll \
+		    ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll.old
+		cp $DXVKLIBDIR/x32/$DXVKFILE.dll ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll
+	    fi
+	    env WINEPREFIX=$WINEPREFIX \
+		$WINE reg add \
+		'HKCU\Software\Wine\DllOverrides' \
+		/v $DXVKFILE /d native >/dev/null
+	done
     fi
 }
 
