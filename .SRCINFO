@@ -1,6 +1,6 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 1.6.0.DEV.r47017.gbe72a571a63
+	pkgver = 1.6.0.DEV.r47019.g8db94953f2c
 	pkgrel = 1
 	url = https://julialang.org/
 	arch = x86_64
