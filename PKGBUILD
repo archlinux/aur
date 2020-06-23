@@ -2,7 +2,7 @@
 
 pkgname=libjpeg-turbo-git
 pkgver=2.0.4.r16.gae87a958
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG codec with SIMD accelerated compression and decompression"
 arch=('i686' 'x86_64')
 url="https://libjpeg-turbo.org/"
@@ -48,7 +48,7 @@ package() {
     -C "_build" \
     DESTDIR="$pkgdir" \
     docdir="/usr/share/doc/libjpeg-turbo" \
-		exampledir="/usr/share/doc/libjpeg-turbo" \
+    exampledir="/usr/share/doc/libjpeg-turbo" \
     install
 
   install -Dm644 "jpegint.h" "$pkgdir/usr/include"  # required by other software
