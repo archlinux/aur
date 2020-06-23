@@ -1,6 +1,6 @@
 pkgbase = xmoto
 	pkgdesc = A challenging 2D motocross platform game, where physics play an important role.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = http://xmoto.tuxfamily.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = xmoto
 	makedepends = git
 	depends = libjpeg
 	depends = libpng
-	depends = lua51
+	depends = lua
 	depends = sdl_mixer
 	depends = ode
 	depends = curl
@@ -23,8 +23,8 @@ pkgbase = xmoto
 	depends = libxml2
 	provides = xmoto
 	conflicts = xmoto
-	source = xmoto-0.6.0.tar.gz::https://github.com/xmoto/xmoto/archive/0.6.0.tar.gz
-	sha1sums = SKIP
+	source = xmoto-0.6.1.tar.gz::https://github.com/xmoto/xmoto/archive/0.6.1.tar.gz
+	sha256sums = 209c8c38b1742d0620d40f90365c7a56f67c86da826c80a76d37fa46ee9c9b66
 
 pkgname = xmoto
 
