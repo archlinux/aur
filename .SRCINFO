@@ -1,5 +1,5 @@
 pkgbase = rofi-shortcuts-git
-	pkgdesc = Customizable cheatsheet based on rofi.
+	pkgdesc = Customizable cheatsheet based on rofi
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Zeioth/rofi-shortcuts.git
