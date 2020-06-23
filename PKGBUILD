@@ -4,7 +4,7 @@
 # Contributor: itsme <mymail@ishere.ru>
 
 pkgname=debops
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
@@ -19,8 +19,8 @@ optdepends=(
   'python-passlib: required by Ansible "password" lookup plugin')
 makedepends=('python-setuptools')
 conflicts=('depops-git')
-source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('bee849a162606efce600b77ac56c754f6b5d9b473d6459f9070c224c78cc7b8b3733125bc1d5318d446d1bed19c0f503a8972f191b1dc2b66e56c61f55a086c8')
+source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
+sha512sums=('8c4b6067139c39e0a367afc00414b899cce6d83a7943802ea03c08c22b6b0a30e7433b230af1e39648c18b8aa192f6a4ab44f5d2586905ec34daccc54b6da546')
 
 build() {
   cd "$pkgname-$pkgver"
