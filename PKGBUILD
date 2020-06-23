@@ -7,25 +7,26 @@
 # Contributor: Tomas A. Schertel <tschertel@gmail.com>
 
 pkgname=cherrytree
-pkgver=0.39.3
+pkgver=0.39.4
 pkgrel=1
-pkgdesc='Hierarchical note taking application featuring rich text and syntax highlighting'
+pkgdesc="Hierarchical note taking application featuring rich text and syntax highlighting"
 arch=('any')
-url='https://www.giuspen.com/cherrytree/'
+url="https://www.giuspen.com/cherrytree/"
 license=('GPL3')
-depends=('python2-gtksourceview2' 'python2-dbus')
+depends=('python2-gtksourceview2' 
+	 'python2-dbus')
 optdepends=('python2-pyenchant: for spell checking support'
             'p7zip: for password protection support'
 	    'enchant-hspell: spell checking')
 source=(https://www.giuspen.com/software/$pkgname-$pkgver.tar.xz)
-sha256sums=('0665cc3c6ca97e5eb7c9b116dd5c81102075a81dd111c77ed01237d83303c35e')
+sha256sums=('6db3d17c49dfd3c7d83ad2cc8b8be28350497566acfe827e6f178538669b4f76')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   python2 setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
