@@ -72,7 +72,7 @@ package() {
 	icotool -x '3.ico' '4.ico'
 	for size in 16 32; do
 		install -Dm644 \
-		?"_1_${size}x${size}x24.png" \
+		./?"_1_${size}x${size}x24.png" \
 		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
 	done
 
@@ -80,7 +80,7 @@ package() {
 	icotool -x ./*.ico
 	for size in 16 32 48; do
 		install -Dm644 \
-		?"_1_${size}x${size}x32.png" \
+		./?"_1_${size}x${size}x32.png" \
 		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/subsretimer.png"
 	done
 
