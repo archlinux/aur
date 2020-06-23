@@ -23,8 +23,14 @@ pkgver() {
 }
 
 prepare(){
+cd "${srcdir}"/Vega-Strike-Engine-Source
+git revert --no-commit 04f99ab64535fc0146a90ac9e226d71cbbac0095
+#git revert -m 2 --no-commit 59deb3002e69a9f443d6d7ba1bb61c31f898fa7f
+cd ..
+pwd
+
 mkdir -p build
-patch -Np1 -i ../python3_compile.patch
+patch -Np1 -i ../Boost_lib_detection.patch
 patch -Np1 -i ../vegastrike_install.patch
 patch -Np1 -i ../vegasettings_install.patch
 patch -Np1 -i ../mesh_tool_install.patch
@@ -36,7 +42,7 @@ build(){
 	-DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
 	-DENABLE_PIE=ON \
-	-DUSE_PYTHON_3=ON 
+	-DUSE_PYTHON_3=ON
 	make
 }
 

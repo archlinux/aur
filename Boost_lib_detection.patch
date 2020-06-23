@@ -1,0 +1,15 @@
+--- src/Vega-Strike-Engine-Source/engine/CMakeLists.txt.orig	2020-06-23 13:28:02.931169600 +0200
++++ src/Vega-Strike-Engine-Source/engine/CMakeLists.txt	2020-06-23 13:26:33.149153133 +0200
+@@ -720,10 +720,10 @@
+     UNSET(Boost_python_FOUND CACHE)
+     IF (USE_PYTHON_3)
+         MESSAGE("++ Looking for System Boost::python3")
+-        FIND_PACKAGE(Boost COMPONENTS python3 log log_setup REQUIRED)
++        FIND_PACKAGE(Boost COMPONENTS python38 log log_setup REQUIRED)
+     ELSE (USE_PYTHON_3)
+         MESSAGE("++ Looking for System Boost::python (py2)")
+-        FIND_PACKAGE(Boost COMPONENTS python log log_setup REQUIRED)
++        FIND_PACKAGE(Boost COMPONENTS python27 log log_setup REQUIRED)
+     ENDIF (USE_PYTHON_3)
+ 
+     IF (Boost_FOUND)
