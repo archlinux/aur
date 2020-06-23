@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell
-	pkgver = 3.36.3+8+gbda8ba5ed
+	pkgver = 3.36.3+10+gc02d0f3a7
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -40,10 +40,10 @@ pkgbase = gnome-shell-performance
 	optdepends = evolution-data-server: Evolution calendar integration
 	optdepends = gjs-git: Needed if using MR !1164
 	provides = gnome-shell
-	provides = gnome-shell=3.36.3+8+gbda8ba5ed
-	provides = gnome-shell=1:3.36.3+8+gbda8ba5ed
+	provides = gnome-shell=3.36.3+10+gc02d0f3a7
+	provides = gnome-shell=1:3.36.3+10+gc02d0f3a7
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=bda8ba5ed1768ef9bbd5fdf9a9933ef77ed1f94f
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=c02d0f3a7d80ab2173df576fd8a7befd2d68870f
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = 1126.diff
 	sha256sums = SKIP
@@ -71,3 +71,4 @@ pkgname = gnome-shell-performance
 	depends = gnome-autoar
 	depends = gnome-disk-utility
 	depends = libmutter-6.so
+
