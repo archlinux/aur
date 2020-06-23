@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LiquidityC/Blightmud/archive/v$pkgver.tar.gz")
-md5sums=('84c1c114e646efe74850cb136a5aab2e')
+md5sums=('de66e18910279bb13dca73bb23dadbba')
 
 prepare() {
 	mv Blightmud-$pkgver $pkgname-$pkgver

@@ -11,7 +11,7 @@ pkgbase = blightmud
 	provides = blightmud
 	conflicts = blightmud
 	source = blightmud-0.4.4.tar.gz::https://github.com/LiquidityC/Blightmud/archive/v0.4.4.tar.gz
-	md5sums = 84c1c114e646efe74850cb136a5aab2e
+	md5sums = de66e18910279bb13dca73bb23dadbba
 
 pkgname = blightmud
 
