@@ -1,13 +1,13 @@
 pkgbase = editorconfig-gedit
 	pkgdesc = EditorConfig plugin for gedit
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://editorconfig.org/
 	arch = any
 	license = BSD
 	depends = gedit
 	depends = python-editorconfig
-	source = https://github.com/editorconfig/editorconfig-gedit/archive/v0.5.3.tar.gz
+	source = editorconfig-gedit-0.5.3.tar.gz::https://github.com/editorconfig/editorconfig-gedit/archive/v0.5.3.tar.gz
 	sha256sums = d6c88a400bfbab36355ab6674db65c0d4997c970fc58a08752c1b331bea625e3
 
 pkgname = editorconfig-gedit
