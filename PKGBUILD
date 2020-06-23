@@ -3,7 +3,7 @@
 
 pkgname=editorconfig-gedit
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="EditorConfig plugin for gedit"
 arch=('any')
 url="https://editorconfig.org/"
@@ -17,11 +17,11 @@ package() {
   cd "$pkgname-$pkgver"
 
   _installdir="$pkgdir/usr/lib/gedit/plugins"
-  mkdir -p "$_installdir"
+  install -d "$_installdir"
 
   cp -r "editorconfig_plugin/" "$_installdir"
-  cp "editorconfig.plugin" "$_installdir"
-  cp "editorconfig_gedit3.py" "$_installdir"
+  install "editorconfig.plugin" -t "$_installdir"
+  install "editorconfig_gedit3.py" -t "$_installdir"
 
   sed -i 's/python/python3/' "$_installdir/editorconfig.plugin"
 

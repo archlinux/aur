@@ -1,7 +1,7 @@
 pkgbase = editorconfig-gedit
 	pkgdesc = EditorConfig plugin for gedit
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://editorconfig.org/
 	arch = any
 	license = BSD
