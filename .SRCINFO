@@ -1,6 +1,6 @@
 pkgbase = python-vcstool
 	pkgdesc = A version control system tool designed to make working with multiple repositories easier
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/dirk-thomas/vcstool
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-vcstool
 	depends = python
 	depends = python-yaml
 	conflicts = python2-vcstool
-	source = https://github.com/dirk-thomas/vcstool/archive/0.2.10.tar.gz
-	sha256sums = 5740f6f40bab847d6a108eb29b6ef639d87ac86b9e6f321e52bd42adab4f745f
+	source = https://github.com/dirk-thomas/vcstool/archive/0.2.11.tar.gz
+	sha256sums = 9cc0693e2726acba6dd46e9c3c8c471ddcde9fc506df169bd426d92450673aa4
 
 pkgname = python-vcstool
 
