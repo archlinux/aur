@@ -3,8 +3,8 @@
 # Contributor: Ng Oon-Ee
 
 pkgname=nvidia-beta-all
-pkgver=440.82
-pkgrel=2
+pkgver=450.51
+pkgrel=1
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -17,8 +17,8 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '010-nvidia-kernel-5.7.patch')
-sha256sums=('89feda0c3e54c9c0d0528760bbb5cf4d8e57408fb3df2728653f3a1b73c110a9'
-            '58c735ff7a1ad4a5d6729246444de6bd2be1c4a9eec2e9b3adcc9ef2a3389d38')
+sha256sums=('7e08a97f68e9d4b8fbae9811926fdfbff216fa37252aa114425bc1aa85730d22'
+            '37cf072fdaee3f9f0c5a8b4d5f2dac722c7b96720fc317bc2da947bde52fb946')
 
 prepare() {
     # extract the source file

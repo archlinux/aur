@@ -1,22 +1,22 @@
 pkgbase = nvidia-beta-all
 	pkgdesc = NVIDIA drivers for all kernels on the system (beta version)
-	pkgver = 440.82
-	pkgrel = 2
+	pkgver = 450.51
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = linux
 	makedepends = linux-headers
-	depends = nvidia-utils-beta>=440.82
+	depends = nvidia-utils-beta>=450.51
 	depends = libglvnd
-	provides = nvidia=440.82
-	provides = nvidia-beta=440.82
+	provides = nvidia=450.51
+	provides = nvidia-beta=450.51
 	conflicts = nvidia
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/440.82/NVIDIA-Linux-x86_64-440.82-no-compat32.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/450.51/NVIDIA-Linux-x86_64-450.51-no-compat32.run
 	source = 010-nvidia-kernel-5.7.patch
-	sha256sums = 89feda0c3e54c9c0d0528760bbb5cf4d8e57408fb3df2728653f3a1b73c110a9
-	sha256sums = 58c735ff7a1ad4a5d6729246444de6bd2be1c4a9eec2e9b3adcc9ef2a3389d38
+	sha256sums = 7e08a97f68e9d4b8fbae9811926fdfbff216fa37252aa114425bc1aa85730d22
+	sha256sums = 37cf072fdaee3f9f0c5a8b4d5f2dac722c7b96720fc317bc2da947bde52fb946
 
 pkgname = nvidia-beta-all
 
