@@ -1,10 +1,12 @@
 pkgbase = r-xfun
 	pkgdesc = Miscellaneous Functions by Yihui Xie
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xfun
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
+	makedepends = gcc
 	depends = r
 	optdepends = r-testit
 	optdepends = r-rstudioapi
@@ -13,11 +15,10 @@ pkgbase = r-xfun
 	optdepends = r-markdown
 	optdepends = r-knitr
 	optdepends = r-htmltools
-	optdepends = r-base64enc
 	optdepends = r-remotes
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/xfun_0.14.tar.gz
-	md5sums = 5c73bf64761c796a29f054ece0f3afb4
+	source = https://cran.r-project.org/src/contrib/xfun_0.15.tar.gz
+	md5sums = 3cff8e23b7dea2956c33e4d43f7a46ad
 
 pkgname = r-xfun
 

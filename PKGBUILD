@@ -1,18 +1,19 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=xfun
-_cranver=0.14
+_cranver=0.15
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc='Miscellaneous Functions by Yihui Xie'
-arch=(any)
+arch=(i686 x86_64)
 url='https://cran.r-project.org/package=xfun'
 license=(MIT)
 depends=(r)
-optdepends=(r-testit r-rstudioapi r-tinytex r-mime r-markdown r-knitr r-htmltools r-base64enc r-remotes r-rmarkdown)
+makedepends=(gcc)
+optdepends=(r-testit r-rstudioapi r-tinytex r-mime r-markdown r-knitr r-htmltools r-remotes r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('5c73bf64761c796a29f054ece0f3afb4')
+md5sums=('3cff8e23b7dea2956c33e4d43f7a46ad')
 
 build(){
     cd "${srcdir}"
