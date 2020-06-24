@@ -2,7 +2,7 @@
 
 pkgname=sonic-pi
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
@@ -30,7 +30,7 @@ prepare() {
   gendesk -n \
           --pkgname ${pkgname} \
           --pkgdesc "${pkgdesc}" \
-          --name sonic-pi \
+          --name "Sonic Pi" \
           --categories "AudioVideo;Audio"
   rm -rvf app/server/native
   # patch app/gui/qt/{model/sonicpitheme,mainwindow}.cpp to set path to
@@ -213,6 +213,8 @@ package() {
   rm -fv "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/Rakefile
   # xdg
   install -vDm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -vDm 644 app/gui/qt/images/icon-smaller.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
   # license
   install -vDm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
