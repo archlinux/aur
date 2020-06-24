@@ -1,7 +1,7 @@
 pkgbase = yozo-office
 	pkgdesc = 永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office Suite
 	pkgver = 8.0.1331.101ZH.S1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yozosoft.com/product-officelinux.html
 	arch = x86_64
 	license = custom
@@ -21,7 +21,6 @@ pkgname = yozo-office
 	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
 	optdepends = ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.
 	optdepends = yozo-office-fonts: UI Fonts
-	optdepends = yozo-office-2019-templates: Templates files
 
 pkgname = yozo-office-fonts
 	pkgdesc = 永中办公界面字体 | UI Fonts provided by Yozo Office 2019

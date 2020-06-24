@@ -1,8 +1,8 @@
 post_install() {
-  cd /usr/lib/jvm/java-8-openjdk/jre/lib
+  cd /usr/lib/jvm/default/lib
   for i in *; do
       if [ "$i" != "ext" ]; then
-          ln -sf /usr/lib/jvm/java-8-openjdk/jre/lib/$i /opt/Yozosoft/Yozo_Office/Jre/lib/$i
+          ln -sf /usr/lib/jvm/default/lib/$i /opt/Yozosoft/Yozo_Office/Jre/lib/$i
       fi
   done
   echo "------------------- 温馨提示 --------------------"
