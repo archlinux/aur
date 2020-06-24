@@ -1,6 +1,6 @@
 pkgbase = flat-remix-gnome
 	pkgdesc = Flat Remix is a GNOME Shell theme inspired by material design. It is mostly flat using a colorful palette with some shadows, highlights, and gradients for some depth.
-	pkgver = 20200617
+	pkgver = 20200624
 	pkgrel = 1
 	url = https://drasite.com/flat-remix-gnome
 	install = flat-remix-gnome.install
@@ -10,7 +10,7 @@ pkgbase = flat-remix-gnome
 	depends = glib2
 	depends = imagemagick
 	options = !strip
-	source = https://github.com/daniruiz/flat-remix-gnome/archive/20200617.tar.gz
+	source = https://github.com/daniruiz/flat-remix-gnome/archive/20200624.tar.gz
 	sha256sums = SKIP
 
 pkgname = flat-remix-gnome
