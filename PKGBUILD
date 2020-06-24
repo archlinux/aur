@@ -6,7 +6,7 @@
 
 pkgname=mod_perl
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache module that embeds the Perl interpreter within the server'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://perl.apache.org/'

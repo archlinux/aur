@@ -1,7 +1,7 @@
 pkgbase = mod_perl
 	pkgdesc = Apache module that embeds the Perl interpreter within the server
 	pkgver = 2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://perl.apache.org/
 	arch = i686
 	arch = x86_64
