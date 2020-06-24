@@ -9,8 +9,8 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.8.6
-pkgrel=2
+pkgver=4.8.7
+pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -35,7 +35,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
-sha256sums=('89df0d170e960d859512d2cdb601e99049bcb84423441d9b92a1cf47dd0a9d84'
+sha256sums=('ff8d0efa98f5b4cb57777be0fb80157b9e9627c2ab98a6c44cb41b1f8eb6774e'
             '07571a3899e4403a404ffe2ad96816f9978dc4c8efc3204df9748784623f253b'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
@@ -70,7 +70,9 @@ build() {
                 --with-vendor-suffix=-arch-${pkgrel} \
                 --disable-server \
                 --without-ipatests \
-                --disable-pylint --without-jslint
+                --disable-pylint --without-jslint \
+		--with-ipaplatform=arch
+
     mkdir -p ../install
 
     # Please put as much logic as possible into make install. It allows:
