@@ -1,13 +1,13 @@
 pkgbase = advancedgenieeditor-git
 	pkgdesc = A program for editing data of genie files.
-	pkgver = r716.aa19eb9
+	pkgver = r753.58ecae1
 	pkgrel = 1
 	url = http://aok.heavengames.com/blacksmith/showfile.php?fileid=11002
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = git
-	depends = genieutils-git>=5
+	depends = genieutils-git>=9
 	depends = sfml
 	depends = wxgtk2
 	provides = advancedgenieeditor
