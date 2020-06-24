@@ -1,7 +1,7 @@
 pkgbase = helmsman
 	pkgdesc = Helm Charts as Code
 	pkgver = 3.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64
 	arch = i686

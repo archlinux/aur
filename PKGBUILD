@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
 url='https://github.com/Praqma/helmsman'
@@ -41,4 +41,8 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # README, docs and examples
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -a docs examples -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
