@@ -1,4 +1,4 @@
-pkg
-src
-*.pkg.*
-*.rpm
+*
+
+!.SRCINFO
+!PKGBUILD
