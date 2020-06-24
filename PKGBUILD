@@ -1,46 +1,44 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-dump-streamer'
-pkgver='2.38'
+pkgver='2.40'
 pkgrel='1'
 pkgdesc="Accurately serialize a data structure as Perl code."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-b-utils')
+depends=('perl' 'perl-b-utils>=0')
 makedepends=()
-url='http://search.mcpan.org/dist/Data-Dump-Streamer'
-source=('http://search.mcpan.org/CPAN/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.38.tar.gz')
-md5sums=('ca6fa9ef3a29a9c423f78db3a4ff126a')
-sha512sums=('1a1e248e4fc6687ca99b1cb105b4ffc13f8f0a3d39c85c4eb82fc465d18b92815b7a9f10bb6b1e31c6d1553e3bdbb24eaefd850b0bdfafc058859882ddf5a51b')
-_distdir="Data-Dump-Streamer-2.38"
+url='https://metacpan.org/release/Data-Dump-Streamer'
+source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-$pkgver.tar.gz")
+md5sums=('2578bf0e5c3def403152d223aeebb618')
+sha512sums=('db21f42ba477cc644cf1e0c572ad5cace072b35d4760e85edccd4a7ae313d1eee19158dbbdd82f42de47ab26ca5f7528882a2a983df3cc44ea3b57f8bc832f64')
+_distdir="Data-Dump-Streamer-$pkgver"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+  cd "$srcdir/$_distdir"
+   /usr/bin/perl Build.PL
+   /usr/bin/perl Build
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
+  /usr/bin/perl Build test
 }
 
 package() {
   cd "$srcdir/$_distdir"
   /usr/bin/perl Build install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:

@@ -1,17 +1,18 @@
 pkgbase = perl-data-dump-streamer
 	pkgdesc = Accurately serialize a data structure as Perl code.
-	pkgver = 2.38
+	pkgver = 2.40
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Data-Dump-Streamer
+	url = https://metacpan.org/release/Data-Dump-Streamer
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
-	depends = perl-b-utils
+	depends = perl
+	depends = perl-b-utils>=0
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.38.tar.gz
-	md5sums = ca6fa9ef3a29a9c423f78db3a4ff126a
-	sha512sums = 1a1e248e4fc6687ca99b1cb105b4ffc13f8f0a3d39c85c4eb82fc465d18b92815b7a9f10bb6b1e31c6d1553e3bdbb24eaefd850b0bdfafc058859882ddf5a51b
+	source = https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.40.tar.gz
+	md5sums = 2578bf0e5c3def403152d223aeebb618
+	sha512sums = db21f42ba477cc644cf1e0c572ad5cace072b35d4760e85edccd4a7ae313d1eee19158dbbdd82f42de47ab26ca5f7528882a2a983df3cc44ea3b57f8bc832f64
 
 pkgname = perl-data-dump-streamer
 
