@@ -4,7 +4,7 @@
 
 pkgname=('soldat-git')
 _installdir='/usr/share/soldat'
-pkgver=1.8.0.4.g6dee4d0
+pkgver=1.8.0.alpha.initial.3.g6dee4d0
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
 arch=('x86_64')
@@ -20,8 +20,9 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
-  # git describe --tags | sed 's/^v//;s/-/./g'
-  echo "1.8.0.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//;s/[-+]/./g'
+  # OLD VERSION BEFORE TAGS
+  # echo "1.8.0.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
