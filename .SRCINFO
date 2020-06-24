@@ -13,6 +13,7 @@ pkgbase = setzer-git
     depends = poppler-glib
     depends = texlive-core
     depends = gspell
+    depends = python-pyxdg
 	source = git+https://github.com/cvfosammmm/Setzer
 	md5sums = SKIP
 
