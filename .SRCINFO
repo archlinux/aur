@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-poe
 	pkgdesc = The Illicit Love Child of Moose and POE
 	pkgver = 0.215
-	pkgrel = 5
+	pkgrel = 6
 	url = https://metacpan.org/release/MooseX-POE
 	arch = i686
 	arch = x86_64
