@@ -1,7 +1,7 @@
 pkgbase = perl-geoip
 	pkgdesc = GeoIP Perl API
 	pkgver = 1.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxmind/geoip-api-perl
 	arch = i686
 	arch = x86_64
