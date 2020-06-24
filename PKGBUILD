@@ -1,8 +1,8 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python2-rosinstall_generator')
-pkgver='0.1.19'
-pkgrel=2
+pkgver='0.1.20'
+pkgrel=1
 pkgdesc='A tool for generating rosinstall files'
 arch=('any')
 url='https://github.com/ros-infrastructure/rosinstall_generator'
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 provides=('python2-rosinstall-generator')
 conflicts=('python-rosinstall_generator' 'python2-rosinstall-generator')
 source=("https://github.com/ros-infrastructure/rosinstall_generator/archive/${pkgver}.tar.gz")
-sha256sums=('97f23bd869feea8a2f92749e275f5776829484bd5040fd8ca3b148cc0e9551e0')
+sha256sums=('eaf8eaa65416ec02809cc44d15f317de9b8f1f5e5f37da3c4227896c254832ec')
 
 _module='rosinstall_generator'
 
