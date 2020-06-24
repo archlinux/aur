@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libndi-git
-pkgver=r4.g8e5ea1e
+pkgver=r14.gb2297ff
 pkgrel=1
-pkgdesc='Library and tool to interact with Network Device Interface (NDI) streams (git version)'
+pkgdesc='Library to interact with Network Device Interface (NDI) streams (git version)'
 arch=('x86_64')
 url='https://code.videolan.org/jbk/libndi/'
 license=('LGPL')

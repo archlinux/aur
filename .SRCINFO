@@ -1,6 +1,6 @@
 pkgbase = libndi-git
-	pkgdesc = Library and tool to interact with Network Device Interface (NDI) streams (git version)
-	pkgver = r4.g8e5ea1e
+	pkgdesc = Library to interact with Network Device Interface (NDI) streams (git version)
+	pkgver = r14.gb2297ff
 	pkgrel = 1
 	url = https://code.videolan.org/jbk/libndi/
 	arch = x86_64
