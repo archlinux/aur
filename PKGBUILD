@@ -7,7 +7,7 @@
 pkgname=yacy
 pkgver=1.922
 _pkgextraver=20191013_9964
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer to peer search engine"
 arch=('any')
 url=http://www.yacy.net/
@@ -20,7 +20,7 @@ source=("http://latest.yacy.net/yacy_v${pkgver}_${_pkgextraver}.tar.gz"
         'yacy.service')
 options=(!emptydirs)
 sha512sums=('cc21a5513a25da9941c9bac6d1006eee733290ccb1fa4038e3a7228bfb384344985797cb23b643772feffadcb55f6a1b972f52b9e386a15bf3a9029fa1dfce05'
-            'ba15bcb3ee1873bae57881ca4d96f65ee1fa5b40cff0f0c21c542cad6a7983a057ec83faae9452b426d5441aad02f80e3633d1798d7f0d84a680ed2233adb11f'
+            'd6aeed6a12589e60d9d3632931672f1ea05f1387184d5bd59c08cab225e8104e4519489135175e4f58cd00a5a3341c229f38eabeb7ff1d68b6b786881631bc34'
             '754b6224ef2a640cbfb50a3d46e92c04955dac3e683239872d2a5c9ba92016a1511c6049903322dd8a21e6d2cc51e2f4e9bd3339b4ef4aada68ae20b3acc189b')
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = yacy
 	pkgdesc = Peer to peer search engine
 	pkgver = 1.922
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yacy.net/
 	install = yacy.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = yacy
 	source = yacy.sh
 	source = yacy.service
 	sha512sums = cc21a5513a25da9941c9bac6d1006eee733290ccb1fa4038e3a7228bfb384344985797cb23b643772feffadcb55f6a1b972f52b9e386a15bf3a9029fa1dfce05
-	sha512sums = ba15bcb3ee1873bae57881ca4d96f65ee1fa5b40cff0f0c21c542cad6a7983a057ec83faae9452b426d5441aad02f80e3633d1798d7f0d84a680ed2233adb11f
+	sha512sums = d6aeed6a12589e60d9d3632931672f1ea05f1387184d5bd59c08cab225e8104e4519489135175e4f58cd00a5a3341c229f38eabeb7ff1d68b6b786881631bc34
 	sha512sums = 754b6224ef2a640cbfb50a3d46e92c04955dac3e683239872d2a5c9ba92016a1511c6049903322dd8a21e6d2cc51e2f4e9bd3339b4ef4aada68ae20b3acc189b
 
 pkgname = yacy

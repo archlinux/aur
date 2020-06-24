@@ -1,10 +1,15 @@
 #!/bin/sh
 YACY_HOME=/usr/share/yacy
-JAVA_ARGS="-server -Xss256k -XX:MaxPermSize=256m -XX:ReservedCodeCacheSize=1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:-UseGCOverheadLimit -XX:+UseAdaptiveSizePolicy -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -Dfile.encoding=UTF-8"
+
+# [AUR] Funilrys: 24.06.2020 ==> Old version. Reason: https://aur.archlinux.org/packages/yacy/#comment-752601
+# JAVA_ARGS="-server -Xss256k -XX:MaxPermSize=256m -XX:ReservedCodeCacheSize=1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:-UseGCOverheadLimit -XX:+UseAdaptiveSizePolicy -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -Dfile.encoding=UTF-8"
+
+JAVA_ARGS="-server -Xss256k -XX:ReservedCodeCacheSize=1024m -XX:-UseGCOverheadLimit -XX:+UseAdaptiveSizePolicy -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -Dfile.encoding=UTF-8"
+
 #check if system supports large memory pages and enable it if possible
 HUGEPAGESTOTAL="$(cat /proc/meminfo | grep HugePages_Total | sed s/[^0-9]//g)"
 if [ -n "$HUGEPAGESTOTAL" ] && [ $HUGEPAGESTOTAL -ne 0 ]
-then 
+then
 	JAVA_ARGS="$JAVA_ARGS -XX:+UseLargePages"
 fi
 
