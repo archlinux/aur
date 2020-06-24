@@ -1,10 +1,10 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
 pkgname=bracmat-git
-pkgver=6.7.4r237
-pkgrel=1
+pkgver=6.7.4.r237
+pkgrel=2
 pkgdesc='Programming language for symbolic computation with pattern matching features'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='https://github.com/BartJongejan/Bracmat'
 license=('GPL2')
 makedepends=('git')
@@ -16,7 +16,7 @@ md5sums=('SKIP'
          'f595a0ccdef5980c45433127c1bc37b4')
 
 pkgver() {
-  sed -nr 'N;s/#define VERSION "(.+)"\n#define BUILD "(.+)"/\1r\2/p'\
+  sed -nr 'N;s/#define VERSION "(.+)"\n#define BUILD "(.+)"/\1.r\2/p'\
           "$srcdir/Bracmat/src/bracmat.c"
 }
 
