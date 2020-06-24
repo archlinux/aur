@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python2-vcstool')
-pkgver='0.2.10'
+pkgver='0.2.11'
 pkgrel=1
 pkgdesc='A version control system tool designed to make working with multiple repositories easier'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 
 conflicts=('python-vcstool')
 source=("https://github.com/dirk-thomas/vcstool/archive/${pkgver}.tar.gz")
-sha256sums=('5740f6f40bab847d6a108eb29b6ef639d87ac86b9e6f321e52bd42adab4f745f')
+sha256sums=('9cc0693e2726acba6dd46e9c3c8c471ddcde9fc506df169bd426d92450673aa4')
 
 _module='vcstool'
 
