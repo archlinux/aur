@@ -1,7 +1,7 @@
 # Maintainer: Steffen Fritz <aur AT fritz DOT wtf>
 # Packager: Steffen Fritz <aur AT fritz DOT wtf>
 pkgname=pacaudit
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="This package audits installed packages against known vulnerabilities."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go')
 options=('!strip')
 
-sha256sums=('388555adb1179684fadca27d3dbd2eed766688ac1c25cd6eb94a8639c6f05f28')
+sha256sums=('3aedbef361bb9bbe01cfa89464b75237c2446aa5c538f0996f4c9fb5ad393f52')
 
 source=("https://github.com/steffenfritz/pacaudit/archive/v$pkgver.tar.gz")
 
