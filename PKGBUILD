@@ -1,27 +1,21 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 # Contributor: Jacob Alexander    haata at kiibohd dot com
+# Contributor: Pellegrino Prevete    pellegrinoprevete at gmail dot com
 pkgname=('python-apt' 'python2-apt')
 _pkgname=python-apt
 _pkgname2=python2-apt
-pkgver=1.4.0~beta3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Python binding of libapt-pkg"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://tracker.debian.org/pkg/python-apt"
 license=('GPL2')
 depends=('apt>=1.4')
 makedepends=('python-distutils-extra' 'python2-distutils-extra')
 conflicts=()
 options=(!emptydirs)
-source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
-fix-pydebug.patch)
-sha256sums=('ee5d237a3ab91292e44dc9edf593e906bd5ca67953f828c3aa19b921b42f8485'
-            '8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646')
-
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  patch -N -p1 < ../fix-pydebug.patch
-}
+source=(https://salsa.debian.org/apt-team/python-apt/-/archive/${pkgver}/python-apt-${pkgver}.tar.gz)
+sha256sums=('76dacd47431f6f34cf2c017051217daab498c6a3c87b4861052640c2eef92dd2')
 
 package_python-apt() {
   depends+=('python')
