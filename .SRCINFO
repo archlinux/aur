@@ -1,6 +1,6 @@
 pkgbase = hyperspace-bin
 	pkgdesc = The fluffiest client for the fediverse
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://hyperspace.marquiskurt.net/
@@ -14,9 +14,9 @@ pkgbase = hyperspace-bin
 	depends = xdg-utils
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://github.com/hyperspacedev/hyperspace/releases/download/v1.1.2/hyperspace_1.1.2_amd64.deb
+	source = https://github.com/hyperspacedev/hyperspace/releases/download/v1.1.3/hyperspace_1.1.3_amd64.deb
 	source = LICENSE.txt
-	sha256sums = 71de070a8cd09194e5c7bb184584f492f10ba21227ee8fe073d65ecb0cdd4b8b
+	sha256sums = e330c191d3cf7a45bc207068cfe416d4a092ca88c87402526e3bee707e810ccb
 	sha256sums = f49ae3685bf4635b0eb6f07fe684ed1b30f5b2a2c9b5b05b589fb9edfead8d35
 
 pkgname = hyperspace-bin
