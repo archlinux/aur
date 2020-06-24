@@ -1,16 +1,16 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (beta version)
-	pkgver = 440.82
+	pkgver = 450.51
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/440.82/NVIDIA-Linux-x86_64-440.82-no-compat32.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/450.51/NVIDIA-Linux-x86_64-450.51-no-compat32.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
 	source = nvidia-settings-beta-change-desktop-paths.patch
-	sha256sums = 89feda0c3e54c9c0d0528760bbb5cf4d8e57408fb3df2728653f3a1b73c110a9
+	sha256sums = 7e08a97f68e9d4b8fbae9811926fdfbff216fa37252aa114425bc1aa85730d22
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a
@@ -23,11 +23,11 @@ pkgname = nvidia-utils-beta
 	optdepends = nvidia-settings-beta: for the configuration tool
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-beta: for OpenCL support
-	provides = nvidia-utils=440.82
+	provides = nvidia-utils=450.51
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=440.82
-	provides = nvidia-libgl-beta=440.82
+	provides = nvidia-libgl=450.51
+	provides = nvidia-libgl-beta=450.51
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -35,17 +35,17 @@ pkgname = nvidia-utils-beta
 pkgname = opencl-nvidia-beta
 	pkgdesc = OpenCL implemention for NVIDIA (beta version)
 	depends = zlib
-	depends = nvidia-utils-beta>=440.82
+	depends = nvidia-utils-beta>=450.51
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=440.82
+	provides = opencl-nvidia=450.51
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-settings-beta
 	pkgdesc = Tool for configuring the NVIDIA graphics driver (beta version)
-	depends = nvidia-utils-beta>=440.82
+	depends = nvidia-utils-beta>=450.51
 	depends = gtk3
-	provides = nvidia-settings=440.82
-	provides = nvidia-settings-beta=440.82
+	provides = nvidia-settings=450.51
+	provides = nvidia-settings-beta=450.51
 	conflicts = nvidia-settings
 
