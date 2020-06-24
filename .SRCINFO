@@ -1,26 +1,26 @@
 pkgbase = lib32-nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (32-bit, beta version)
-	pkgver = 440.82
+	pkgver = 450.51
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-utils-beta>=440.82
+	makedepends = nvidia-utils-beta>=450.51
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/440.82/NVIDIA-Linux-x86_64-440.82.run
-	sha256sums = edd415acf2f75a659e0f3b4f27c1fab770cf21614e84a18152d94f0d004a758e
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/450.51/NVIDIA-Linux-x86_64-450.51.run
+	sha256sums = c25155bc5ad0121f1665047d5719cb17c60c9453b9a8fad9dea9cb334eaaea9e
 
 pkgname = lib32-nvidia-utils-beta
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-utils-beta>=440.82
+	depends = nvidia-utils-beta>=450.51
 	optdepends = lib32-opencl-nvidia-beta: for OpenCL support
-	provides = lib32-nvidia-utils=440.82
+	provides = lib32-nvidia-utils=450.51
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
-	provides = lib32-nvidia-libgl=440.82
-	provides = lib32-nvidia-libgl-beta=440.82
+	provides = lib32-nvidia-libgl=450.51
+	provides = lib32-nvidia-libgl-beta=450.51
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-nvidia-libgl
 	replaces = lib32-nvidia-libgl
@@ -29,9 +29,9 @@ pkgname = lib32-opencl-nvidia-beta
 	pkgdesc = OpenCL implemention for NVIDIA (32-bit, beta version)
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	depends = lib32-nvidia-utils-beta>=440.82
+	depends = lib32-nvidia-utils-beta>=450.51
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=440.82
+	provides = lib32-opencl-nvidia=450.51
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
 
