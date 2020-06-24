@@ -1,11 +1,11 @@
-# Maintainer: Synhme <dmitry@synh.me>
+# Maintainer: Dmitry <dmitry@ykkz.de>
 
 pkgname=ttf-apple-emoji
 pkgver=1
 pkgrel=13
 pkgdesc='Apple Color Emoji is a color typeface used by iOS and macOS to display emoji'
 arch=('any')
-url='https://git.synh.me/dmitry/AUR'
+url='https://gitlab.com/ykkzde/AUR'
 license=('unknown')
 provides=(emoji-font)
 depends=()

@@ -2,7 +2,7 @@ pkgbase = ttf-apple-emoji
 	pkgdesc = Apple Color Emoji is a color typeface used by iOS and macOS to display emoji
 	pkgver = 1
 	pkgrel = 13
-	url = https://git.synh.me/dmitry/AUR
+	url = https://gitlab.com/ykkzde/AUR
 	arch = any
 	license = unknown
 	provides = emoji-font
@@ -10,7 +10,7 @@ pkgbase = ttf-apple-emoji
 	conflicts = ttf-symbola
 	conflicts = ttf-joypixels
 	conflicts = ttf-twemoji-color
-	source = apple-color-emoji.ttc::https://git.synh.me/dmitry/AUR/-/raw/master/files/ttf-apple-emoji/apple-color-emoji.ttc
+	source = apple-color-emoji.ttc::https://gitlab.com/ykkzde/AUR/-/raw/master/files/ttf-apple-emoji/apple-color-emoji.ttc
 	sha512sums = 2ba06969f12b5450e8c040bbc61e8880869ec754839634afe834a459b324dca617b28d36ad9b244057e011f27108bee48b7373c9e77c6859aae751589f122a0d
 
 pkgname = ttf-apple-emoji
