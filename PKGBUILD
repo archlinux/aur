@@ -3,7 +3,7 @@
 _pkgname=canvas
 pkgname=$_pkgname-git
 pkgver=r19.e74dda7
-pkgrel=4
+pkgrel=5
 pkgdesc="A bash script to generate and apply different types of gradient & blured wallpapers."
 arch=(any)
 url="https://github.com/dylanaraps/$_pkgname"
@@ -12,7 +12,6 @@ makedepends=("git")
 depends=("imagemagick" "feh" "colorpicker")
 optdepends=("xorg-xrandr: to use it with xfce")
 provides=("$_pkgname")
-conflicts=("pfetch")
 
 source=("$_pkgname::git+https://github.com/adi1090x/$_pkgname.git")
 md5sums=('SKIP')
