@@ -1,7 +1,7 @@
 pkgbase = perl-event
 	pkgdesc = Event loop processing
 	pkgver = 1.27
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.mcpan.org/dist/Event
 	arch = i686
 	arch = x86_64
