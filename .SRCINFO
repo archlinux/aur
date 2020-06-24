@@ -1,11 +1,10 @@
 pkgbase = checkra1n
 	pkgdesc = checkra1n is a semi-tethered jailbreak, developed primarily by Luca Todesco (qwertyoruiop). It's based on the checkm8 bootrom exploit released by axi0mx. checkra1n supports iOS 12.3 and newer.
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://checkra.in
 	arch = x86_64
 	license = unknown
-	makedepends = patchelf
 	depends = glibc>=2.24
 	depends = ncurses5-compat-libs>=6.0
 	depends = pango>=1.37.0
@@ -18,7 +17,7 @@ pkgbase = checkra1n
 	depends = libusb>=1.0.19
 	depends = libusbmuxd>=2.0.1
 	depends = libplist>=2.1.0
-	depends = libirecovery>=1.0.0
+	depends = libirecovery3
 	depends = usbmuxd>=1.1.0
 	provides = checkra1n-cli
 	conflicts = checkra1n-cli
