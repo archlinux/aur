@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=20.04.9
+pkgver=20.04.11
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   'cli.patch'
   'wayland.patch')
 sha1sums=(
-  'f43b27983c93646a0a7389374b57b5c78734eb01'
+  '32fccb6fd1aba0fa3247b85a565dc45363b637d3'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
   '4825b80d13555742c30d197e4de56638eef162e6')
@@ -70,13 +70,12 @@ package() {
 
   # Install daemons and executables
   install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
-  install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/${pkgname}/system76-backlight-daemon
+  install -m755 -D system76-user-daemon ${pkgdir}/usr/lib/${pkgname}/system76-user-daemon
   install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
 
   # Install systemd unit files
   # Note: system76-driver* service files shortened to system76*
   install -m644 -D debian/system76-driver.service ${pkgdir}/usr/lib/systemd/system/system76.service
-  install -m644 -D debian/system76-driver-backlight.service ${pkgdir}/usr/lib/systemd/user/system76-backlight.service
 
   # Install scripts and configuration
   install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
@@ -84,7 +83,7 @@ package() {
   install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
 
   # Install application launchers
-  install -m644 -D system76-driver-backlight.desktop ${pkgdir}/etc/xdg/autostart/system76-backlight.desktop
+  install -m644 -D system76-user-daemon.desktop ${pkgdir}/etc/xdg/autostart/system76-user-daemon.desktop
 
   # Create /var/lib/system76-driver directory for brightness settings saving
   install -m755 -d ${pkgdir}/var/lib/${pkgname}

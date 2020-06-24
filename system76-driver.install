@@ -30,10 +30,6 @@ cat << EOF
 
         system76.service             System76 airplane-mode hotkey and LED support
 
-    And the following user services:
-
-        system76-backlight.service   Backlight Daemon for NVIDIA 9 Series on GNOME
-
     (!) To use system76.service, you must add "ec_sys.write_support=1" to your kernel command line
 
     (!) For Clevo W740SU BIOS/Firmware users on Galago UltraPro: your will need to create /etc/system76-daemon.json
@@ -65,16 +61,10 @@ pre_remove() {
   _disable_services
 
   # Remove symlinks if target points to package files
-  _remove_symlink /etc/xdg/autostart/system76-driver-backlight.desktop /usr/share/applications/system76-driver-backlight.desktop
   _remove_symlink /lib/systemd/system-sleep/system76-nm-restart /usr/lib/system76-driver/system76-nm-restart
   _remove_symlink /lib/systemd/system-sleep/system76-thunderbolt-reload /usr/lib/system76-driver/system76-thunderbolt-reload
 }
 
 post_remove() {
   /usr/bin/systemctl daemon-reload >/dev/null 2>&1
-  cat << EOF
-
-    Be sure to stop and disable all running System76 user services.
-
-EOF
 }
