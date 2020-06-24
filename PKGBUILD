@@ -1,12 +1,12 @@
 # Maintainer: Devin Bayer <dev@doubly.so>
 pkgname=fake-sudo
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A drop-in replacement for sudo that pretends to be root with user namespaces"
 arch=('any')
 url="https://github.com/0ex/fake-sudo"
 license=('GPL')
-depends=()
+depends=('sh' 'util-linux')
 provides=('sudo')
 conflicts=('sudo')
 makedepends=()

@@ -1,10 +1,12 @@
 pkgbase = fake-sudo
 	pkgdesc = A drop-in replacement for sudo that pretends to be root with user namespaces
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0ex/fake-sudo
 	arch = any
 	license = GPL
+	depends = sh
+	depends = util-linux
 	provides = sudo
 	conflicts = sudo
 	source = fake-sudo.sh
