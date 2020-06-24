@@ -1,18 +1,31 @@
 post_install() {
-    function byellow(){
-    echo -e "\033[33m\033[01m$1 \033[0m"
-    }
-    if [ "$LANG" = "zh_CN.UTF-8" ]; then
-        byellow "如果你以前没有手动将数据文件复制到用户目录，"
-        byellow "请使用以下代码复制数据，否则输入法无法正常运行。 \n"
-    else
-        byellow "If you didn't manually copy data files to your user home before,"
-        byellow "just do it by the following code, or it won't work. \n"
-    fi
-    byellow "mkdir -p ~/.config/BaiduPY.user/data"
-    byellow "cp -r /tmp/data ~/.config/BaiduPY.user"
-    printf "\n"
+    for dir in /home/*
+    do
+        if test -d $dir
+        then
+            if [ ! -d "$dir/.config/BaiduPY.user" ]; then
+                mkdir $dir/.config/BaiduPY.user
+            fi
+            if [ -d "$dir/.config/BaiduPY.user/data" ]; then
+                rm -rf $dir/.config/BaiduPY.user/data
+            fi
+            ln -s  /opt/fcitx-baidupinyin/data $dir/.config/BaiduPY.user/
+        fi
+    done
 }
-pre_upgrade() {
+
+post_upgrade() {
     post_install
+}
+
+post_remove() {
+    for dir in /home/*
+    do
+        if test -d $dir
+        then
+            if [ -d "$dir/.config/BaiduPY.user/" ]; then
+                rm -rf $dir/.config/BaiduPY.user/data
+            fi
+        fi
+    done
 }
