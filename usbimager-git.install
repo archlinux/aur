@@ -1,7 +1,7 @@
 post_install() {
 	echo
 	echo "==> In oder to use usbimager you have to be a member of the disk group"
-	echo "==> if you aren't run"
+	echo "==> Alternatively, you can try buidling with UDISKS2 support. To add a group run"
 	echo "==> sudo gpasswd -a $USER disk"
 	echo "==> and re-login"
 	echo
