@@ -1,0 +1,19 @@
+pkgbase = libunarr-bin
+	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection, using upstream binary.
+	pkgver = 1.0.1
+	pkgrel = 4.184
+	url = http://www.yacreader.com
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = poppler-qt5
+	provides = libunarr
+	provides = libunarr-git
+	replaces = libunarr
+	replaces = libunarr-git
+	source = https://download.opensuse.org/repositories/home:/selmf:/yacreader-rpm/Fedora_Rawhide/x86_64/libunarr-1.0.1-4.184.x86_64.rpm
+	b2sums = ebfc77f2c733e50baaaf3e7b0680225aaacd0272b5d377837df2aa9f24af5de4073afb8691fc0ecc4ee9e8182f629bf47c9c110920123d79d7492d1a542170ef
+
+pkgname = libunarr-bin
+
