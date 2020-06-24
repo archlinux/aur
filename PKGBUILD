@@ -1,3 +1,4 @@
+# Maintainer: thasibule <guillaume.horel@gmail.com>
 # Contributor: ptrr <piksarv .at. gmail.com>
 # Contributor: lobisquit <enricolovisotto@gmail.com>
 # Contributor: chmgtr1 <chmgtr1@gmail.com>
@@ -9,16 +10,19 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname="python-scipy-openblas"
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
 makedepends=('gcc-fortran' 'python-numpy-openblas' 'python-setuptools' 'openblas-lapack' 'pybind11')
 checkdepends=('python-pytest')
+optdepends=('python-pillow: for image saving module')
+provides=("python-scipy=$pkgver")
+conflicts=('python-scipy')
 source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz")
-sha512sums=('79407a2cbb4ba29c0941570181df4d7835e5791e50a3abef9b63c2fc5b15308a2e4964eb71cdebbee8cd2dcb8e497cf92fe50ee21fb12cac3013ea5e0466b25d')
+sha512sums=('4c981a3125a88593cbc5a17417022a5db8f6ccb4c1c24e78afeb9bb26428b81d2d0fe9965caa418753b1bbbda2fa30533fa1307aac6ab168458d68f7b46049be')
 
 
 build() {
@@ -49,11 +53,7 @@ check() {
   python -c "from scipy import test; test('full')"
 }
 
-package_python-scipy-openblas() {
-  depends=('python-numpy-openblas' 'openblas-lapack')
-  provides=('python3-scipy' 'python-scipy')
-  optdepends=('python-pillow: for image saving module')
-  conflicts=('python-scipy')
+package() {
   
   cd scipy-${pkgver}
   export Atlas=None
