@@ -1,6 +1,6 @@
 # Maintainer: Dario Pellegrini <pellegrini.dario at gmail dot com>
 pkgname=python-anticaptcha
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Client library for solving captchas with anticaptcha.com support."
 arch=('any')
@@ -13,8 +13,8 @@ conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/d2/62/e7f745bd75e8614822d91312fa89bdf43fbcf17ea422c7712f49cb357ebe/python-anticaptcha-0.6.0.tar.gz")
-md5sums=('604305bea94354aa6e32086e404eea75')
+source=("https://files.pythonhosted.org/packages/28/f1/8e08b3e7cc0b67f774c62a5011efe3bd8cb234e4ef1364b1e12868613d7c/python-anticaptcha-0.7.0.tar.gz")
+md5sums=('11c216f6fbf2236834536901092b364a')
 
 package() {
   cd "$srcdir/python-anticaptcha-$pkgver"
