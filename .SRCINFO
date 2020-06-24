@@ -1,0 +1,13 @@
+pkgbase = contemporary-kwin-decoration
+	pkgdesc = Contemporary KWin window decoration
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://vicr123.github.io/contemporary
+	arch = any
+	license = gplv3
+	depends = kwin
+	source = contemporary-kwin-decoration-1.0::https://github.com/vicr123/contemporary-kwin/archive/v1.0.tar.gz
+	sha256sums = a63bf7e701098f4c98786ab0792a249addcf2705b9d926e392155bb6097b8d51
+
+pkgname = contemporary-kwin-decoration
+
