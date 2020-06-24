@@ -1,4 +1,4 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
+# Maintainer: Dmitry <dmitry@ykkz.de>
 
 pkgname=ttf-spectral
 pkgver=2.003
