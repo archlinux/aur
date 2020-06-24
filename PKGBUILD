@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=2.1.11
+pkgver=2.1.13
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'libdbusmenu-qt5' 'lz4'
          'minizip' 'openal' 'qt5-imageformats' 'xxhash')
-makedepends=('cmake' 'git' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
+makedepends=('cmake' 'git' 'gtk3' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=('telegram-desktop')
