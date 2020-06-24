@@ -1,4 +1,4 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
+# Maintainer: Dmitry <dmitry@ykkz.de>
 
 pkgname=ttf-exo-2
 pkgver=1.100
