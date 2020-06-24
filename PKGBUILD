@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-liberation-mono
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Liberation Mono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -13,7 +13,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/LiberationMono.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('6cfd7cd5be33b9f39afa2bd14987ff72ca3a664c'
+sha1sums=('23ab5997664bf0e087e453699d236f375045d43f'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
 
 package() {
