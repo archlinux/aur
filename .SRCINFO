@@ -14,6 +14,7 @@ pkgbase = aws-cli-v2
 	makedepends = python-prompt_toolkit
 	provides = aws-cli
 	conflicts = aws-cli
+	conflicts = aws-cli-git
 	conflicts = aws-cli-v2-bin
 	source = aws-cli-v2-2.0.25.tar.gz::https://github.com/aws/aws-cli/archive/2.0.25.tar.gz
 	sha256sums = 403328981ddc538b2448c867cfaac1ff22e06b3d102ae3c7d4a4274f2b7d40d3
