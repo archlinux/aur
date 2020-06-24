@@ -1,20 +1,18 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='3.7.1.20200129'
-pkgrel='3'
+pkgver='3.8.0.20200623'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         extrae-issue-27-fix-pie-address-translation.patch
-        extrae-Fix-references-to-the-build-directory.patch
-        extrae-Fix-up-bfd_get_section_-macros-due-to-binutils-2.34.patch)
-sha512sums=(b1a72a0a813de179946b83cea0a64c918654e6a6a2211e097b306dda13d69b4a8707d0390c225418fe4e92750cc7822a258c247e2472aab2415deecb50a4f53c
+        extrae-Fix-references-to-the-build-directory.patch)
+sha512sums=(d38f6833fe82df16fa5320c89b0951c023bb8d0ce9e86a2d79d570984d777b66bb47073791c816e103c7ad59102572ea847a65366ae0edca0d08c56fdd85860a
             3b0fae157fcc6e85be3a5565c2ea3abe8bf35e130de96435a93ba7b3f4b6c30df8982823d36c494633a2c16671664112558393faeead05226b96aa521bb14fba
-            1f4e5ab8b375cd456c3f4d0356e33f99d3fd49152b3147a0fdc5317368b1df11bdbda809720c38959c698e885615e961d37a87d3ad6b6b85a3a2caf0c1117db1
-            0f622819dd204fb77f9dc6f5ca612b44296b783c347d37e845d09b5c447214e2537fa6608367dba4c8e928c81e640b88daf019ea15c7ca83bb9308899e997b8c)
+            a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
@@ -22,7 +20,6 @@ prepare() {
 	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
 	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
-	patch -Np1 -i "$srcdir/extrae-Fix-up-bfd_get_section_-macros-due-to-binutils-2.34.patch"
 
 	autoreconf -i -f
 }

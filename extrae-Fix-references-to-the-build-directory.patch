@@ -10,19 +10,6 @@ Subject: [PATCH] Fix references to the build directory that remain in the
  tests/overhead/Makefile.am | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/others/Makefile.am b/src/others/Makefile.am
-index cb2a75b..c52d434 100644
---- a/src/others/Makefile.am
-+++ b/src/others/Makefile.am
-@@ -40,7 +40,7 @@ endif
- 
- install-data-hook:
- 	cp pyextrae/common/extrae.py.in pyextrae/common/extrae.py
--	$(top_srcdir)/substitute $(SED) "@sub_PREFIX@" $(DESTDIR)${prefix} pyextrae/common/extrae.py
-+	$(top_srcdir)/substitute $(SED) "@sub_PREFIX@" ${prefix} pyextrae/common/extrae.py
- #if HAVE_PAPI
- 	$(top_srcdir)/substitute $(SED) "@sub_Extrae_eventandcounters@" Extrae_eventandcounters pyextrae/common/extrae.py
- 	$(top_srcdir)/substitute $(SED) "@sub_Extrae_neventandcounters@" Extrae_neventandcounters pyextrae/common/extrae.py
 diff --git a/tests/overhead/Makefile.am b/tests/overhead/Makefile.am
 index 67b3c92..093c177 100644
 --- a/tests/overhead/Makefile.am
