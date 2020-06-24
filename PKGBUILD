@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _gitname=browser-f
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -24,8 +24,10 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=f0a7ecdbfe3df6bf8b25621efcdccc68fb6a8f15')
-sha256sums=('90b746da10e849dbe3d2dbc0736bc640759c9234c0162c25c0df43551f7382ae'
+        '0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch?h=packages/firefox&id=b4b266ae186a92a0516b69a33f2f0e17c31a6d9f'
+        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=b4b266ae186a92a0516b69a33f2f0e17c31a6d9f')
+sha256sums=('712e28b767da88bb3defcab9c65b21af85c439aa2fb503161ce53b17903a048e'
+            '215ca2cd2994d787c4748b8e76acdc21932700ab43fa6a32aa8de3ce4b380111'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
@@ -40,7 +42,7 @@ prepare() {
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" mozilla.desktop
   sed -i "s/@MOZ_APP_REMOTINGNAME@/$pkgname/g" mozilla.desktop
   sed -i "s|^Exec=${pkgname}$|Exec=/usr/lib/${pkgname}/${pkgname} %u|" mozilla.desktop
-  sed -i 's|^MimeType=.*$|MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;|' mozilla.desktop
+  sed -i 's|^MimeType=.*$|MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;|' mozilla.desktop
 
   cat >> mozilla.desktop <<END
 Keywords=Internet;WWW;Browser;Web;Explorer
@@ -59,6 +61,9 @@ Exec=/usr/lib/cliqz/cliqz --private-window %u
 END
 
   cd "$srcdir/${_gitname}-$pkgver/mozilla-release"
+
+  # https://bugs.archlinux.org/task/66549
+  patch -Np1 -i "$srcdir/0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
