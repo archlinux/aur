@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=amazon-workspaces-bin
-pkgver=3.0.1.234
-pkgrel=4
+pkgver=3.0.7.470
+pkgrel=5
 pkgdesc='Amazon Workspace Client'
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
@@ -15,7 +15,7 @@ makedepends=(
   'tar'
 )
 source=('workspaces-client.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb')
-sha256sums=('339e1d861e67f5e8a3ee46c408a962b4c86615914098e806c8d0ed6a88871276')
+sha256sums=('046fbeb2977395b9f420b1e2b2f6667d0182d7517848e340395ca943be694fdb')
 
 build() {
     cd "$srcdir"
