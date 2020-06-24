@@ -1,7 +1,7 @@
 pkgbase = perl-app-sqitch
 	pkgdesc = Sane database change management
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sqitch.org/
 	arch = any
 	license = MIT
