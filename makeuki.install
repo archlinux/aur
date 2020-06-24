@@ -1,5 +1,6 @@
 pre_install() {
     mkdir /etc/mkinitcpio.d/old
+    mkdir -p /var/lib/makeuki/include
     mv -vf /etc/mkinitcpio.d/*.preset /etc/mkinitcpio.d/old
 }
 post_install(){

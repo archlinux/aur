@@ -1,14 +1,14 @@
 # Maintainer: dorianpb <dorian.peanut.butter@gmail.com>
 pkgname='makeuki'
-pkgver=v1.1
-pkgrel=3
+pkgver=v1.2
+pkgrel=1
 pkgdesc="A script that simplifies the creation of unified kernel images."
 license=('GPL3')
 arch=('any')
 depends=('jq' 'mkinitcpio' 'pacman-contrib')
 install="makeuki.install"
 source=("makeuki.tar.gz")
-sha256sums=('f87a2e98efa11f7811cd17d09a3b58ed961088b6ab8b9bc22404cb43d87c85e0')
+sha256sums=('304cc5a7c9d5f7c9d29b1e674041a3490b9192b944a8d8d00e7e087933da999c')
 
 package() {
     cd "${srcdir}"
