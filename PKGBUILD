@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=shiny
-_cranver=1.4.0.2
+_cranver=1.5.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,10 +9,10 @@ pkgdesc="Web Application Framework for R"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=('r>=3.0.2' 'r-httpuv>=1.5.2' 'r-mime>=0.3' 'r-jsonlite>=0.9.16' r-xtable r-digest 'r-htmltools>=0.4.0' 'r-r6>=2.0' r-sourcetools 'r-later>=1.0.0' 'r-promises>=1.1.0' r-crayon 'r-rlang>=0.4.0' 'r-fastmap>=1.0.0')
-optdepends=(r-cairo r-testthat r-knitr r-markdown r-rmarkdown r-ggplot2 r-reactlog r-magrittr r-yaml)
+depends=('r>=3.0.2' 'r-httpuv>=1.5.2' 'r-mime>=0.3' 'r-jsonlite>=0.9.16' r-xtable r-digest 'r-htmltools>=0.4.0.9003' 'r-r6>=2.0' r-sourcetools 'r-later>=1.0.0' 'r-promises>=1.1.0' r-crayon 'r-rlang>=0.4.0' 'r-fastmap>=1.0.0' r-withr 'r-commonmark>=1.7' 'r-glue>=1.3.2')
+optdepends=(r-cairo r-testthat r-knitr r-markdown r-rmarkdown r-ggplot2 r-reactlog r-magrittr r-shinytest r-yaml r-future r-dygraphs r-ragg r-showtext)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('b9f24697906a59e3e3e6bddede129105')
+md5sums=('16cfbd1671b03cb75cbc0407ad6ebfbc')
 
 build() {
   cd "${srcdir}"
