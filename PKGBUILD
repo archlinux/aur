@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=0.21.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
