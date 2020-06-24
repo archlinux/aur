@@ -1,7 +1,7 @@
 pkgbase = perl-x-osd
 	pkgdesc = Perl extension to the X On Screen Display library (xosd)
 	pkgver = 0.7
-	pkgrel = 9
+	pkgrel = 10
 	url = http://search.cpan.org/dist/X-Osd/
 	arch = i686
 	arch = x86_64
