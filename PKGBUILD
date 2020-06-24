@@ -4,10 +4,10 @@
 _plasma=false
 
 # Submodule versions
-_singleapplication=3.1.3
+_singleapplication=3.1.3.1
 
 pkgname=optimus-manager-qt
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
@@ -17,8 +17,8 @@ depends=(qt5-base qt5-svg qt5-x11extras 'optimus-manager>=1.3')
 makedepends=(qt5-tools extra-cmake-modules libxrandr)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
         SingleApplication-$_singleapplication.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/v$_singleapplication.tar.gz)
-sha256sums=(3067d6dad33bdaf838eec01b1f5c02f9a2b4897e0e7304ca2a0a1bed6f7e7bd8
-            4585f02fbfba61626e4ed4f1815b847c72f1593bffac6015f6e75f514094f148)
+sha256sums=(32f8aa6040a87e415f10da8b917385c2a763584382fd0f8040c48978c305fa7e
+            bbc20faa3e914cda8fe94b5d0bf98af640d3298a791a16cad4571a9ccbf1d030)
 
 if [ $_plasma == true ]
 then
