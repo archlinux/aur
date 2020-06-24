@@ -49,8 +49,8 @@ index 69f9b403d..44e2dc039 100644
    sendf.c setopt.c sha256.c share.c slist.c smb.c smtp.c socketpair.c socks.c \
    socks_gssapi.c socks_sspi.c speedcheck.c splay.c strcase.c strdup.c         \
    strerror.c strtok.c strtoofft.c system_win32.c telnet.c tftp.c timeval.c    \
--  transfer.c urlapi.c version.c warnless.c wildcard.c x509asn1.c
-+  transfer.c urlapi.c version.c warnless.c wildcard.c x509asn1.c pathtools.c
+-  transfer.c urlapi.c version.c warnless.c wildcard.c x509asn1.c dynbuf.c
++  transfer.c urlapi.c version.c warnless.c wildcard.c x509asn1.c dynbuf.c pathtools.c
  
  LIB_HFILES = altsvc.h amigaos.h arpa_telnet.h asyn.h conncache.h connect.h    \
    content_encoding.h cookie.h curl_addrinfo.h curl_base64.h curl_ctype.h      \
@@ -58,8 +58,8 @@ index 69f9b403d..44e2dc039 100644
    smb.h smtp.h sockaddr.h socketpair.h socks.h speedcheck.h splay.h strcase.h \
    strdup.h strerror.h strtok.h strtoofft.h system_win32.h telnet.h tftp.h     \
    timeval.h transfer.h urlapi-int.h urldata.h warnless.h wildcard.h           \
--  x509asn1.h
-+  x509asn1.h pathtools.h
+-  x509asn1.h dynbuf.h
++  x509asn1.h dynbuf.h pathtools.h
  
  LIB_RCFILES = libcurl.rc
  
@@ -679,10 +679,10 @@ diff --git a/lib/url.c b/lib/url.c
 index 945d4e327..981e60d26 100644
 --- a/lib/url.c
 +++ b/lib/url.c
-@@ -120,6 +120,9 @@
- #include "strdup.h"
+@@@ -123,6 +123,9 @@
  #include "setopt.h"
  #include "altsvc.h"
+ #include "dynbuf.h"
 +#if defined(__MINGW32__)
 +#include "pathtools.h"
 +#endif
