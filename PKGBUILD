@@ -2,7 +2,7 @@
 pkgname=fake-sudo
 pkgver=1
 pkgrel=1
-pkgdesc="A drop-in replacement for sudo that pretents to be root with user namespaces"
+pkgdesc="A drop-in replacement for sudo that pretends to be root with user namespaces"
 arch=('any')
 url="https://github.com/0ex/fake-sudo"
 license=('GPL')
