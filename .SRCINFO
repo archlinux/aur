@@ -1,11 +1,11 @@
 pkgbase = yacreader-bin
-	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection, using upstream binary.
+	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection, using upstream binaries.
 	pkgver = 9.6.2.1909283
 	pkgrel = 7.27
 	url = http://www.yacreader.com
 	arch = x86_64
 	license = GPL3
-	depends = libunarr
+	depends = libunarr-bin
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = poppler-qt5
