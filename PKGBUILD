@@ -3,7 +3,7 @@
 pkgname=glade-perl
 _cpanname=Gtk2-GladeXML
 pkgver=1.007
-pkgrel=18
+pkgrel=18.1
 pkgdesc="Gtk2-GladeXML perl bindings for glade 2.x"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
