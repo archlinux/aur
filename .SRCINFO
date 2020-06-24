@@ -1,11 +1,12 @@
 pkgbase = miopen-opencl
 	pkgdesc = AMD's Machine Intelligence Library (OpenCL backend)
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = opencl-headers
+	makedepends = rocm-cmake
 	makedepends = cmake
 	makedepends = half
 	makedepends = miopengemm
