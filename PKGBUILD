@@ -2,7 +2,7 @@
 
 pkgname=vc4c-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
@@ -11,6 +11,7 @@ groups=()
 depends=('llvm' 'clinfo' 'ocl-icd')
 makedepends=('wget' 'gcc' 'cmake' 'clang' 'opencl-headers')
 optdepends=()
+conflicts=('vc4clstdlib-git')
 provides=('opencl-pi' 'opencl-vc4' 'opencl-driver')
 source=("VC4C.tar.gz::https://github.com/doe300/VC4C/archive/master.tar.gz" "VC4CLStdLib.tar.gz::https://github.com/doe300/VC4CLStdLib/archive/master.tar.gz" "auto_dummy.patch")
 md5sums=('SKIP' 'SKIP' 'e409cafcdc79aa53aef1484e53bd25e7')

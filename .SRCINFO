@@ -1,7 +1,7 @@
 pkgbase = vc4c-git
 	pkgdesc = Compiler for the VC4CL OpenCL-implementation
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doe300/VC4C
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = vc4c-git
 	provides = opencl-pi
 	provides = opencl-vc4
 	provides = opencl-driver
+	conflicts = vc4clstdlib-git
 	source = VC4C.tar.gz::https://github.com/doe300/VC4C/archive/master.tar.gz
 	source = VC4CLStdLib.tar.gz::https://github.com/doe300/VC4CLStdLib/archive/master.tar.gz
 	source = auto_dummy.patch
