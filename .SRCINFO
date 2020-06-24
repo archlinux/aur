@@ -1,7 +1,7 @@
 pkgbase = perl-b-c
 	pkgdesc = Perl compiler's C backend
 	pkgver = 1.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/B-C
 	arch = i686
 	arch = x86_64
