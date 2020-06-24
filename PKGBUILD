@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/i3-maim"
 license=('GNU General Public License v3.0')
 depends=('libnotify' 'maim' 'xdg-user-dirs' 'xdotool')
 source=('i3-maim')
-sha256sums=('7f2b69b1b6641b047170b43e5837959e62ded967b97071887debc9c47a170634')
+sha256sums=('21d3e466b8bbfe1542f8210e42f1f17a268ee6c8464c9d6b701308c297caf09e')
 
 package() {
   install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"

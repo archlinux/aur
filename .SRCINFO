@@ -10,6 +10,6 @@ pkgbase = i3-maim
 	depends = xdg-user-dirs
 	depends = xdotool
 	source = i3-maim
-	sha256sums = 7f2b69b1b6641b047170b43e5837959e62ded967b97071887debc9c47a170634
+	sha256sums = 21d3e466b8bbfe1542f8210e42f1f17a268ee6c8464c9d6b701308c297caf09e
 
 pkgname = i3-maim
