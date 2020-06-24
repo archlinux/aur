@@ -1,6 +1,6 @@
 pkgbase = radarr-aphrodite
 	pkgdesc = Movie download automation for usenet and torrents.
-	pkgver = 3.0.0.3073
+	pkgver = 3.0.0.3083
 	pkgrel = 1
 	url = https://github.com/Radarr/Radarr
 	arch = x86_64
@@ -30,12 +30,12 @@ pkgbase = radarr-aphrodite
 	sha512sums = 2ef38a061f4438349f7dafe209328fe9de5f44712f16435805e2622050be45a3fffd1838d9fccef2d6aa7603cf05b01280df6fed957b66d2d67ceaeeedcd5f6f
 	sha512sums = c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e
 	sha512sums = 525e3b46f0c947b42bddee85b5a6f50dd3e31921530ba3eb68473136c98bc068f277e7a72f3298165a316a6e0606518865c24f4c130d78e8883832235f8706c6
-	source_x86_64 = Radarr.aphrodite.3.0.0.3073.linux-core-x64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3073&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = 3528fb30fd8564d15f1c8bca05a4d435509616fff8fd5b38dce7ba1afaca6303dde09ea34f63eacf74a4cb154093193da0b8c50c3541e361bdf9d30b3e94e559
-	source_aarch64 = Radarr.aphrodite.3.0.0.3073.linux-core-arm64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3073&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = c68a702f5bd5a1c35c2994d7d3735a2d0290381469587b47ace7d2a3ea4417be67d04cca3ddbcd1b45deb4a4836f29f673061b4be416e39395fbf7b9b833ebcc
-	source_armv7h = Radarr.aphrodite.3.0.0.3073.linux-core-arm.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3073&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 02a669bf58215d391941c2fa2aaf3e43cc9ac74e38386ec540515f8d329ef29bd370b85ebb243a74689038f678e9205a95f912a04727992e01a3e25c126fd41a
+	source_x86_64 = Radarr.aphrodite.3.0.0.3083.linux-core-x64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3083&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = c5a86305ee972200b4b72a6aa199bce7025019f3bbad1a77baeb24a39c9257f3d0104de54e92e792215937cb3303d7a637dedea358d4ba1d3e77ac3fdf34a552
+	source_aarch64 = Radarr.aphrodite.3.0.0.3083.linux-core-arm64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3083&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = 67adc65cc6d16771e436d9f23c5f947a7e6b72c96388d2eab1f7c44276900f9b6522ab01b5ee89aa081f6aad5e1bd35109f8e473f26dba09a291ab8d417951a1
+	source_armv7h = Radarr.aphrodite.3.0.0.3083.linux-core-arm.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.3083&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = 562b91036668618a4f094051b944b186d0d87538d4a92822657664759796d17e004a84687b8d97303b109ab3ba9a316c1aac7704032737fcc559f19593d5a1a7
 
 pkgname = radarr-aphrodite
 
