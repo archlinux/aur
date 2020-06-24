@@ -1,6 +1,6 @@
 pkgname=radical-native-bin
 _name=radical-native
-pkgver=0.1beta14
+pkgver=0.1beta15
 pkgrel=1
 epoch=1
 pkgdesc='Extending Riot Web with native capabilities'
@@ -14,7 +14,7 @@ _rawurl="https://raw.githubusercontent.com/$_repo"
 source=("$url/releases/download/v$pkgver/${_name}_v${pkgver}_x86-amd64.deb"
         "$_rawurl/v$pkgver/LICENSE")
 
-sha512sums=('ea0249ce92c7a9ba7c33d70bfbfc5dfeb4b407ce9292a327538bd578b3b73800e7b1588d84bb0806ad98a9691dacd8a39dcd2e73f2a01ff6a8c378b261ea8d6e'
+sha512sums=('d52ce5705e6d62bdb6ecb74898877126fee2ee4124bce663ed636c9add886c6b1ca13ab82043144c3dbe073bc9a7c42098cbf67602c3a56a64085e51cf001e39'
             '4b7ddd854dff49b640b8dad9b8bb7cda64ed02a1aa4f0299498a57fe372e042f4969e2e2bfa2449064e8c9bfb8909d8f4e6644365672a819b61c324302130049')
 
 package() {
