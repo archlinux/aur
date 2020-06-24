@@ -1,7 +1,7 @@
 pkgbase = rtlwifi_new-rtw88-dkms
 	pkgdesc = Newest Realtek rtlwifi codes, rtw88 branch
-	pkgver = r333.79393b9
-	pkgrel = 2
+	pkgver = r357.1659b85
+	pkgrel = 1
 	url = https://github.com/lwfinger/rtlwifi_new
 	install = rtlwifi_new-rtw88-dkms.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = rtlwifi_new-rtw88-dkms
 	source = git+https://github.com/lwfinger/rtlwifi_new.git#branch=rtw88
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 33ec7df7b2f2e4b00ace0d5223bb10faac09452687013de5bc51517a03f0a83c
+	sha256sums = c3380328a4fec0e329025ab2b002940f1941039de10da8eda6d3a6648228c3f2
 
 pkgname = rtlwifi_new-rtw88-dkms
 
