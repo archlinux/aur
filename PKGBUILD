@@ -2,7 +2,7 @@
 # Contributor: Lucas Paul <reilithion+aur@gmail.com>
 pkgname=otf-hasklig
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A font with symbol ligatures, intended for Haskell code"
 arch=('any')
 url="https://github.com/i-tu/Hasklig"
@@ -28,5 +28,6 @@ package()
 	install -D -m644 "${srcdir}/Hasklig-MediumIt.otf" "${pkgdir}/usr/share/fonts/OTF/Hasklig-MediumIt.otf"
 	install -D -m644 "${srcdir}/Hasklig-Regular.otf" "${pkgdir}/usr/share/fonts/OTF/Hasklig-Regular.otf"
 	install -D -m644 "${srcdir}/Hasklig-It.otf" "${pkgdir}/usr/share/fonts/OTF/Hasklig-It.otf"
+	install -D -m644 "${srcdir}/Hasklig-Semibold.otf" "${pkgdir}/usr/share/fonts/OTF/Hasklig-Semibold.otf"
 	install -D -m644 "${srcdir}/Hasklig-SemiboldIt.otf" "${pkgdir}/usr/share/fonts/OTF/Hasklig-SemiboldIt.otf"
 }
