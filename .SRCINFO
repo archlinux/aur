@@ -1,0 +1,17 @@
+pkgbase = smithay-git
+	pkgdesc = A smithy for rusty wayland compositors
+	pkgver = v0.2.0.r245.ge402af48
+	pkgrel = 1
+	url = https://github.com/Smithay/smithay
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = smithay
+	conflicts = smithay
+	source = smithay-git::git://github.com/Smithay/smithay.git
+	sha1sums = SKIP
+
+pkgname = smithay-git
+
