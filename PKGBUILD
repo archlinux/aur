@@ -8,7 +8,7 @@ license=('GPL3')
 arch=('any')
 
 # version-specific information
-pkgrel=1
+pkgrel=2
 pkgver=1.0.1
 
 # dependencies are stated in https://gitlab.com/akkuscm/akku/-/blob/master/README.md
@@ -16,6 +16,7 @@ depends=('git' 'curl' 'guile>=2.2')
 makedepends=('pkg-config' 'make')
 
 # source URLs for latest versions can be found at https://gitlab.com/akkuscm/akku/-/releases
+options=(!strip) # disable stripping
 source=("https://gitlab.com/akkuscm/akku/uploads/7d34b733d5a6518d7842016e878ab8fc/$pkgname-$pkgver.tar.gz"
         "https://gitlab.com/akkuscm/akku/uploads/d8db897d2f28a112cc941f00711ff7a3/$pkgname-$pkgver.tar.gz.sig")
 noextract=('$pkgname-$pkgver.tar.gz.sig')

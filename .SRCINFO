@@ -1,7 +1,7 @@
 pkgbase = akku
 	pkgdesc = Language package manager for Scheme
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://akkuscm.org/
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = akku
 	depends = curl
 	depends = guile>=2.2
 	noextract = $pkgname-$pkgver.tar.gz.sig
+	options = !strip
 	source = https://gitlab.com/akkuscm/akku/uploads/7d34b733d5a6518d7842016e878ab8fc/akku-1.0.1.tar.gz
 	source = https://gitlab.com/akkuscm/akku/uploads/d8db897d2f28a112cc941f00711ff7a3/akku-1.0.1.tar.gz.sig
 	validpgpkeys = 08272FBB54EEB5072D5BA930E33E61A2E9B8C3A2
