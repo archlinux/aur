@@ -2,10 +2,10 @@
 
 pkgname=pupil-eye-tracking-bin
 
-_major=1
-_minor=22
-_patch=7
-_commit=bcfbf7d
+_major=2
+_minor=0
+_patch=177
+_commit=07b3481
 
 pkgver="${_major}.${_minor}.${_patch}"
 pkgrel=1
@@ -19,7 +19,7 @@ _version="${_major_minor}-${_patch}-g${_commit}"
 _source="pupil_${_version}_linux_x64"
 
 source=("https://github.com/pupil-labs/pupil/releases/download/${_major_minor}/${_source}.zip")
-sha256sums=('945ed6a758056d09ad4292a57c5686c9975e278ee80ec320bdf6bfe1c243c2e5')
+sha256sums=('678a950ca89fb4589ed34596d677317259e625ef5b778a4afeb39fb803f54ce8')
 options=('!strip')
 
 package() {
