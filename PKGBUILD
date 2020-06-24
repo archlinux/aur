@@ -10,13 +10,13 @@
 pkgname=xf86-video-dummy-xpra-patch
 _pkgname_orig=${pkgname%-xpra-patch}
 pkgver=0.3.8
-pkgrel=1
+pkgrel=4
 pkgdesc="X.org dummy video driver with xpra constant dpi and pointer limits patches applied"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'xf86dgaproto')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'xorgproto')
 provides=("${_pkgname_orig}=${pkgver}")
 conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25' 'xf86-video-dummy')
 groups=('xorg-drivers')
