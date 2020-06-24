@@ -2,12 +2,12 @@
 
 _pkgname=pfetch
 pkgname=$_pkgname-git
-pkgver=r292.9f55ffb
+pkgver=r340.e18a095
 pkgrel=1
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=(any)
 url="https://github.com/dylanaraps/$_pkgname"
-license=('GPL3')
+license=('MIT')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("pfetch")
