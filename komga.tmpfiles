@@ -1,0 +1,4 @@
+d /var/lib/komga 0755 komga komga
+Z /var/lib/komga - komga komga
+Z /usr/share/java/komga - komga komga
+L /var/log/komga.log - - - - /var/lib/komga/komga.log

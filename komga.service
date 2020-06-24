@@ -1,0 +1,17 @@
+[Unit]
+Description=Komga daemon
+After=network.target
+
+[Service]
+User=komga
+Group=komga
+Restart=always
+RestartSec=5
+Type=simple
+Environment=XDG_CONFIG_HOME=/var/lib/komga
+EnvironmentFile=-/etc/komga.conf
+WorkingDirectory=/var/lib/komga
+ExecStart=/usr/bin/komga -Xmx1G --spring.profiles.active=claim --spring.datasource.url=jdbc:h2:/var/lib/komga/database.h2 --komga.database-backup.path=/var/lib/komga/database-backup.zip
+
+[Install]
+WantedBy=multi-user.target
