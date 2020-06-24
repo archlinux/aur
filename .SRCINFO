@@ -1,7 +1,7 @@
 pkgbase = perl-www-offliberty
 	pkgdesc = a simple interface to the offliberty.com download service
 	pkgver = 1.000008
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/WWW-Offliberty
 	arch = any
 	license = PerlArtistic
