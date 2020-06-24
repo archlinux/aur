@@ -9,6 +9,8 @@ pkgbase = vibrant-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = check
+	makedepends = libxrandr
+	makedepends = libxnvctrl
 	source = vibrant-git::git+https://gitlab.com/Scrumplex/vibrant.git
 	sha512sums = SKIP
 

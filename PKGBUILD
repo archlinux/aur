@@ -8,7 +8,7 @@ pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://gitlab.com/Scrumplex/vibrant"
 license=("GPL3" "custom:MIT")
-makedepends=("git" "cmake" "check")
+makedepends=("git" "cmake" "check" "libxrandr" "libxnvctrl")
 source=("${pkgbase}::git+https://gitlab.com/Scrumplex/vibrant.git")
 sha512sums=('SKIP')
 
