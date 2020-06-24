@@ -2,18 +2,19 @@
 
 pkgname=vc4cl-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
 license=('MIT')
 groups=()
-depends=('llvm' 'gcc' 'opencl-headers' 'ocl-icd')
-makedepends=('cmake' 'git' 'make')
+depends=('llvm' 'clinfo' 'ocl-icd')
+makedepends=('wget' 'gcc' 'cmake' 'clang' 'opencl-headers')
 optdepends=()
+conflicts=('vc4c-git' 'vc4clstdlib-git')
 provides=('opencl-pi' 'opencl-vc4' 'opencl-driver')
-source=("VC4C::git+https://github.com/doe300/VC4C/" "VC4CL::git+https://github.com/doe300/VC4CL/" "VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib/")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=("VC4C::git+https://github.com/doe300/VC4C/" "VC4CL::git+https://github.com/doe300/VC4CL/" "VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib/" "auto_dummy.patch")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'e409cafcdc79aa53aef1484e53bd25e7')
 
 build() {
     mkdir -p $srcdir/VC4CL/build
@@ -31,6 +32,10 @@ build() {
     cmake ..
     make
     cd ../..
+}
+
+prepare() {
+	patch -R $srcdir/VC4C/src/ProcessUtil.cpp $srcdir/auto_dummy.patch
 }
 
 package() {
