@@ -1,7 +1,7 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
 url="https://github.com/protocolbuffers/protobuf-go"
@@ -12,11 +12,11 @@ source=("https://github.com/protocolbuffers/protobuf-go/archive/v${pkgver}.tar.g
 
 build() {
   cd protobuf-go-${pkgver}
-  go build -trimpath ./cmd/protoc-gen-go
+  go build -trimpath -mod=readonly -modcacherw ./cmd/protoc-gen-go
 }
 
 package() {
   install -Dm755 "protobuf-go-${pkgver}/protoc-gen-go" "${pkgdir}/usr/bin/protoc-gen-go"
 }
 
-sha256sums=('318e54ee12d09e9c76fc11cf85f6297360e6444b74a6a7882450501bb952ba56')
+sha256sums=('c1c04d6e36c0d0fb6f3374197f9025d7e6df13f38a974098be020617c00fbaf2')
