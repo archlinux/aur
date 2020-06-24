@@ -12,8 +12,7 @@ options=('!strip')
 
 sha256sums=('3aedbef361bb9bbe01cfa89464b75237c2446aa5c538f0996f4c9fb5ad393f52')
 
-source=("https://github.com/steffenfritz/pacaudit/archive/v$pkgver.tar.gz")
-
+source=("https://github.com/steffenfritz/pacaudit/releases/latest/download/$pkgname-$pkgver.tar.gz")
 
 prepare(){
   mkdir -p src/github.com/steffenfritz

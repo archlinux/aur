@@ -8,7 +8,7 @@ pkgbase = pacaudit
 	license = GPL3
 	makedepends = go
 	options = !strip
-	source = https://github.com/steffenfritz/pacaudit/archive/v1.2.0.tar.gz
+	source = https://github.com/steffenfritz/pacaudit/releases/latest/download/pacaudit-1.2.0.tar.gz
 	sha256sums = 3aedbef361bb9bbe01cfa89464b75237c2446aa5c538f0996f4c9fb5ad393f52
 
 pkgname = pacaudit
