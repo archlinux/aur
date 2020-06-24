@@ -1,0 +1,21 @@
+pkgbase = usbimager-git
+	pkgdesc = USBImager is a really really simple GUI application that writes compressed disk images to USB drives and creates backups.
+	pkgver = 1.0.4.r0.g1cfeeb8
+	pkgrel = 1
+	url = https://gitlab.com/bztsrc/usbimager
+	install = usbimager-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxdmcp
+	depends = libxcb
+	provides = usbimager
+	conflicts = usbimager
+	source = usbimager-git::git+https://gitlab.com/bztsrc/usbimager.git
+	md5sums = SKIP
+
+pkgname = usbimager-git
+
