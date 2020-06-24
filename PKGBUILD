@@ -2,7 +2,7 @@
 
 pkgname=perl-ev-glib
 pkgver=2.01
-pkgrel=14
+pkgrel=15
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?EV::Glib'
