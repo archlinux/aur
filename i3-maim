@@ -25,17 +25,17 @@ case "$1" in
 	--fullscreen|-f|$NULL)
 	  $cmd "$maim_dir/$(date +%s).png" &&
 		sleep 1 &&
-		notify-send "screenshot has been saved in $maim_dir"
+		notify-send "screenshot has been saved in $maim_dir" -a "i3-maim"
 		;;
 	--window|-w)
 		$cmd -i $(xdotool getactivewindow) "$maim_dir/$(date +%s).png" &&
 		sleep 1 &&
-		notify-send "screenshot has been saved in $maim_dir"
+		notify-send "screenshot has been saved in $maim_dir" -a "i3-maim"
 		;;
 	--select|-s)
-		notify-send 'select an area for the screenshot' &
+		notify-send 'select an area for the screenshot' -a "i3-maim" &
 		$cmd -s "$maim_dir/$(date +%s).png" &&
-		sleep 1 && notify-send "screenshot has been saved in $maim_dir"
+		sleep 1 && notify-send "screenshot has been saved in $maim_dir" -a "i3-maim"
 		;;
 	--help|-h)
 		echo "
