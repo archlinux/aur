@@ -1,0 +1,28 @@
+Description: FFMpeg (AVFrame) - This patch changes the field "pkt_pts" (deprecated) to "pts" in the source code.
+
+<https://lists.ffmpeg.org/pipermail/ffmpeg-cvslog/2016-October/102365.html>
+
+diff --unified --recursive --text olive-0.1.2-orig/rendering/cacher.cpp olive-0.1.2-new/rendering/cacher.cpp
+--- olive-0.1.2-orig/rendering/cacher.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/rendering/cacher.cpp	2020-06-23 16:08:47.307076532 -0300
+@@ -254,7 +254,7 @@
+                     dout << "starting rev_frame";
+ #endif
+                     rev_frame->nb_samples = 0;
+-                    rev_frame->pts = frame_->pkt_pts;
++                    rev_frame->pts = frame_->pts;
+                   }
+                   int offset = rev_frame->nb_samples * av_get_bytes_per_sample(static_cast<AVSampleFormat>(rev_frame->format)) * rev_frame->channels;
+ #ifdef AUDIOWARNINGS
+@@ -277,9 +277,9 @@
+                   /*
+ #ifdef AUDIOWARNINGS
+                   dout << "time for the end of rev cache" << rev_frame->nb_samples << clip->rev_target << frame_->pts << frame_->pkt_duration << frame_->nb_samples;
+-                  dout << "diff:" << (frame_->pkt_pts + frame_->pkt_duration) - clip->rev_target;
++                  dout << "diff:" << (frame_->pts + frame_->pkt_duration) - clip->rev_target;
+ #endif
+-                  int cutoff = qRound64((((frame_->pkt_pts + frame_->pkt_duration) - reverse_target) * timebase) * audio_output->format().sampleRate());
++                  int cutoff = qRound64((((frame_->pts + frame_->pkt_duration) - reverse_target) * timebase) * audio_output->format().sampleRate());
+                   if (cutoff > 0) {
+ #ifdef AUDIOWARNINGS
+                     dout << "cut off" << cutoff << "samples (rate:" << audio_output->format().sampleRate() << ")";

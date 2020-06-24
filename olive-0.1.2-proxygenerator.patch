@@ -1,0 +1,21 @@
+Description: This patch creates a structure to capture the return of function "avformat_write_header"
+             and make the appropriate treatment if the execution fails.
+
+diff --unified --recursive --text olive-0.1.2-orig/project/proxygenerator.cpp olive-0.1.2-new/project/proxygenerator.cpp
+--- olive-0.1.2-orig/project/proxygenerator.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/project/proxygenerator.cpp	2020-06-23 21:07:29.808353198 -0300
+@@ -167,7 +167,13 @@
+   }
+ 
+   // write video header
+-  avformat_write_header(output_fmt_ctx, nullptr);
++  int error_code;
++  error_code = avformat_write_header(output_fmt_ctx, nullptr);
++  if (error_code < 0) {
++    qWarning() << "Failed to write video header";
++    cancelled = true;
++    skip = true;
++  }
+ 
+   // packet that av_read_frame will dump file packets into
+   AVPacket packet;

@@ -1,0 +1,47 @@
+Description: This patch corrects an error when compiling with the Qt 5.15 library,
+             including the "QPainterPath" class in the files that need it.
+
+diff --unified --recursive --text olive-0.1.2-orig/effects/internal/texteffect.cpp olive-0.1.2-new/effects/internal/texteffect.cpp
+--- olive-0.1.2-orig/effects/internal/texteffect.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/effects/internal/texteffect.cpp	2020-06-23 03:57:45.377783457 -0300
+@@ -25,6 +25,7 @@
+ #include <QOpenGLTexture>
+ #include <QTextEdit>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPushButton>
+ #include <QColorDialog>
+ #include <QFontDatabase>
+diff --unified --recursive --text olive-0.1.2-orig/effects/internal/timecodeeffect.cpp olive-0.1.2-new/effects/internal/timecodeeffect.cpp
+--- olive-0.1.2-orig/effects/internal/timecodeeffect.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/effects/internal/timecodeeffect.cpp	2020-06-23 05:44:58.589605133 -0300
+@@ -25,6 +25,7 @@
+ #include <QOpenGLTexture>
+ #include <QTextEdit>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPushButton>
+ #include <QColorDialog>
+ #include <QFontDatabase>
+diff --unified --recursive --text olive-0.1.2-orig/ui/graphview.cpp olive-0.1.2-new/ui/graphview.cpp
+--- olive-0.1.2-orig/ui/graphview.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/graphview.cpp	2020-06-23 05:48:06.800458024 -0300
+@@ -21,6 +21,7 @@
+ #include "graphview.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QtMath>
+ #include <cfloat>
+diff --unified --recursive --text olive-0.1.2-orig/ui/timelineheader.cpp olive-0.1.2-new/ui/timelineheader.cpp
+--- olive-0.1.2-orig/ui/timelineheader.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/timelineheader.cpp	2020-06-23 05:48:36.440594616 -0300
+@@ -21,6 +21,7 @@
+ #include "timelineheader.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QScrollBar>
+ #include <QtMath>

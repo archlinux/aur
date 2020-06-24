@@ -1,0 +1,32 @@
+Description: This patch updates the "appdata" and "desktop" files used by Olive.
+
+- Linux/appdata: update release
+<https://github.com/olive-editor/olive/commit/30747af47eebdd18f2280fa992d634ff2d5bd60d>
+
+- Linux/.desktop: add %f
+<https://github.com/olive-editor/olive/commit/4bc54930b95033af10ceb71e4b53188f9523e1be>
+
+diff --unified --recursive --text olive-0.1.2-orig/packaging/linux/org.olivevideoeditor.Olive.appdata.xml olive-0.1.2-new/packaging/linux/org.olivevideoeditor.Olive.appdata.xml
+--- olive-0.1.2-orig/packaging/linux/org.olivevideoeditor.Olive.appdata.xml	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/packaging/linux/org.olivevideoeditor.Olive.appdata.xml	2020-06-23 22:02:58.793224798 -0300
+@@ -31,7 +31,6 @@
+   </screenshots>
+   <content_rating type="oars-1.1" />
+   <releases>
+-    <release version="20181223" date="2018-12-23"></release>
+-    <release version="20181130" date="2018-11-30"></release>
++    <release version="0.1.2" date="2019-11-11"/>
+   </releases>
+ </component>
+diff --unified --recursive --text olive-0.1.2-orig/packaging/linux/org.olivevideoeditor.Olive.desktop olive-0.1.2-new/packaging/linux/org.olivevideoeditor.Olive.desktop
+--- olive-0.1.2-orig/packaging/linux/org.olivevideoeditor.Olive.desktop	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/packaging/linux/org.olivevideoeditor.Olive.desktop	2020-06-23 22:03:16.533367553 -0300
+@@ -3,7 +3,7 @@
+ Comment=Professional open-source non-linear video editor
+ Comment[it]=Programma di montaggio video professionale open-source
+ Comment[id]=Aplikasi edit video yang non-linier, profesional serta sumbernya terbuka.
+-Exec=olive-editor
++Exec=olive-editor %f
+ Icon=org.olivevideoeditor.Olive
+ Terminal=false
+ Type=Application

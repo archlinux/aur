@@ -1,0 +1,125 @@
+Description: Qt (QFontMetrics): This patch changes the references of the function "width" (deprecated) to "horizontalAdvance".
+
+<https://doc.qt.io/qt-5.15/qfontmetrics-obsolete.html#width>
+
+diff --unified --recursive --text olive-0.1.2-orig/effects/internal/texteffect.cpp olive-0.1.2-new/effects/internal/texteffect.cpp
+--- olive-0.1.2-orig/effects/internal/texteffect.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/effects/internal/texteffect.cpp	2020-06-23 17:41:00.714422192 -0300
+@@ -183,11 +183,11 @@
+   if (word_wrap_field->GetBoolAt(timecode)) {
+     for (int i=0;i<lines.size();i++) {
+       QString s(lines.at(i));
+-      if (fm.width(s) > width) {
++      if (fm.horizontalAdvance(s) > width) {
+         int last_space_index = 0;
+         for (int j=0;j<s.length();j++) {
+           if (s.at(j) == ' ') {
+-            if (fm.width(s.left(j)) > width) {
++            if (fm.horizontalAdvance(s.left(j)) > width) {
+               break;
+             } else {
+               last_space_index = j;
+@@ -211,11 +211,11 @@
+ 
+     switch (halign_field->GetValueAt(timecode).toInt()) {
+     case Qt::AlignLeft: text_x = 0; break;
+-    case Qt::AlignRight: text_x = width - fm.width(lines.at(i)); break;
++    case Qt::AlignRight: text_x = width - fm.horizontalAdvance(lines.at(i)); break;
+     case Qt::AlignJustify:
+       // add spaces until the string is too big
+       text_x = 0;
+-      while (fm.width(lines.at(i)) < width) {
++      while (fm.horizontalAdvance(lines.at(i)) < width) {
+         bool space = false;
+         QString spaced(lines.at(i));
+         for (int i=0;i<spaced.length();i++) {
+@@ -228,7 +228,7 @@
+             while (i < spaced.length() && spaced.at(i) == ' ') i++;
+           }
+         }
+-        if (fm.width(spaced) > width || !space) {
++        if (fm.horizontalAdvance(spaced) > width || !space) {
+           break;
+         } else {
+           lines[i] = spaced;
+@@ -237,7 +237,7 @@
+       break;
+     case Qt::AlignHCenter:
+     default:
+-      text_x = (width/2) - (fm.width(lines.at(i))/2);
++      text_x = (width/2) - (fm.horizontalAdvance(lines.at(i))/2);
+       break;
+     }
+ 
+diff --unified --recursive --text olive-0.1.2-orig/effects/internal/timecodeeffect.cpp olive-0.1.2-new/effects/internal/timecodeeffect.cpp
+--- olive-0.1.2-orig/effects/internal/timecodeeffect.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/effects/internal/timecodeeffect.cpp	2020-06-23 17:41:51.815020590 -0300
+@@ -117,7 +117,7 @@
+ 
+   int text_x, text_y, rect_y, offset_x, offset_y;
+   int text_height = fm.height();
+-  int text_width = fm.width(display_timecode);
++  int text_width = fm.horizontalAdvance(display_timecode);
+   QColor background_color = color_bg_val->GetColorAt(timecode);
+   int alpha_val = qCeil(bg_alpha->GetDoubleAt(timecode)*2.55);
+   background_color.setAlpha(alpha_val);
+diff --unified --recursive --text olive-0.1.2-orig/ui/graphview.cpp olive-0.1.2-new/ui/graphview.cpp
+--- olive-0.1.2-orig/ui/graphview.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/graphview.cpp	2020-06-23 17:38:31.572539882 -0300
+@@ -175,7 +175,7 @@
+ void GraphView::draw_line_text(QPainter &p, bool vert, int line_no, int line_pos, int next_line_pos) {
+   // draws last line's text
+   QString str = QString::number(line_no*kGraphSize);
+-  int text_sz = vert ? fontMetrics().height() : fontMetrics().width(str);
++  int text_sz = vert ? fontMetrics().height() : fontMetrics().horizontalAdvance(str);
+   if (text_sz < (next_line_pos - line_pos)) {
+     QRect text_rect = vert ? QRect(0, line_pos-50, 50, 50) : QRect(line_pos, height()-50, 50, 50);
+     p.drawText(text_rect, Qt::AlignBottom | Qt::AlignLeft, str);
+diff --unified --recursive --text olive-0.1.2-orig/ui/sourceiconview.cpp olive-0.1.2-new/ui/sourceiconview.cpp
+--- olive-0.1.2-orig/ui/sourceiconview.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/sourceiconview.cpp	2020-06-23 17:42:48.155657141 -0300
+@@ -140,7 +140,7 @@
+       painter->setPen(text_fgcolor);
+ 
+       QString duration_str = index.data(Qt::UserRole).toString();
+-      int timecode_width = fm.width(duration_str);
++      int timecode_width = fm.horizontalAdvance(duration_str);
+       int max_name_width = option.rect.width();
+ 
+       if (timecode_width < option.rect.width() / 2) {
+diff --unified --recursive --text olive-0.1.2-orig/ui/timelineheader.cpp olive-0.1.2-new/ui/timelineheader.cpp
+--- olive-0.1.2-orig/ui/timelineheader.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/timelineheader.cpp	2020-06-23 17:43:45.496282517 -0300
+@@ -390,7 +390,7 @@
+       bool draw_text = false;
+       if (text_enabled && lineX-textWidth > lastTextBoundary) {
+         timecode = frame_to_timecode(frame + in_visible, olive::CurrentConfig.timecode_view, viewer->seq->frame_rate);
+-        fullTextWidth = fm.width(timecode);
++        fullTextWidth = fm.horizontalAdvance(timecode);
+         textWidth = fullTextWidth>>1;
+ 
+         text_x = lineX;
+diff --unified --recursive --text olive-0.1.2-orig/ui/timelinewidget.cpp olive-0.1.2-new/ui/timelinewidget.cpp
+--- olive-0.1.2-orig/ui/timelinewidget.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/timelinewidget.cpp	2020-06-23 17:39:05.582988929 -0300
+@@ -3162,7 +3162,7 @@
+             }
+             if (clip->linked.size() > 0) {
+               int underline_y = olive::timeline::kClipTextPadding + p.fontMetrics().height() + clip_rect.top();
+-                int underline_width = qMin(text_rect.width() - 1, p.fontMetrics().width(clip->name()));
++                int underline_width = qMin(text_rect.width() - 1, p.fontMetrics().horizontalAdvance(clip->name()));
+               p.drawLine(text_rect.x(), underline_y, text_rect.x() + underline_width, underline_y);
+             }
+             QString name = clip->name();
+diff --unified --recursive --text olive-0.1.2-orig/ui/viewerwindow.cpp olive-0.1.2-new/ui/viewerwindow.cpp
+--- olive-0.1.2-orig/ui/viewerwindow.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/viewerwindow.cpp	2020-06-23 17:44:21.156661091 -0300
+@@ -172,7 +172,7 @@
+     p.setPen(Qt::white);
+     p.setBrush(QColor(0, 0, 0, 128));
+ 
+-    int text_width = fm.width(fs_str);
++    int text_width = fm.horizontalAdvance(fs_str);
+     int text_x = (width()/2)-(text_width/2);
+     int text_y = fm.height()+fm.ascent();
+ 

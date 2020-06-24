@@ -1,0 +1,25 @@
+Description: Qt (QFontMetrics): This patch changes the references of the function "pos" (deprecated) to "position".
+
+<https://doc.qt.io/qt-5.15/qwheelevent-obsolete.html#pos>
+
+diff --unified --recursive --text olive-0.1.2-orig/ui/graphview.cpp olive-0.1.2-new/ui/graphview.cpp
+--- olive-0.1.2-orig/ui/graphview.cpp	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/graphview.cpp	2020-06-23 17:55:37.852888364 -0300
+@@ -795,7 +795,7 @@
+     new_y_zoom = y_zoom + (zoom_diff * (delta_v / 120.0));
+ 
+     // Center zoom around the mouse cursor vertically
+-    int true_mouse_y = height()-event->pos().y();
++    int true_mouse_y = height()-event->position().y();
+     set_scroll_y(qRound((double(y_scroll + true_mouse_y) / y_zoom) * new_y_zoom) - true_mouse_y);
+ 
+     redraw = true;
+@@ -807,7 +807,7 @@
+     new_x_zoom = x_zoom + (zoom_diff * (delta_h / 120.0));
+ 
+     // Center zoom around the mouse cursor horizontally
+-    set_scroll_x(qRound((double(x_scroll + event->pos().x()) / x_zoom) * new_x_zoom) - event->pos().x());
++    set_scroll_x(qRound((double(x_scroll + event->position().x()) / x_zoom) * new_x_zoom) - event->position().x());
+ 
+     redraw = true;
+   }

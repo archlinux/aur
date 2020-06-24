@@ -1,7 +1,7 @@
 pkgbase = olive
 	pkgdesc = Free non-linear video editor
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olivevideoeditor.org/
 	arch = i686
 	arch = pentium4
@@ -15,7 +15,23 @@ pkgbase = olive
 	optdepends = frei0r-plugins
 	optdepends = olive-community-effects-git
 	source = olive-0.1.2.tar.gz::https://github.com/olive-editor/olive/archive/0.1.2.tar.gz
+	source = olive-0.1.2-appdata-desktop.patch
+	source = olive-0.1.2-cacher.patch
+	source = olive-0.1.2-clickablelabel.patch
+	source = olive-0.1.2-FlowLayout.patch
+	source = olive-0.1.2-proxygenerator.patch
+	source = olive-0.1.2-QFontMetrics.patch
+	source = olive-0.1.2-QPainterPath.patch
+	source = olive-0.1.2-QWheelEvent.patch
 	sha512sums = 48cf44b5ba1bd95e20efb5312d61d6c37e6dedc1f02156ef436ab51705be4bdaf5bb68875b55b06337c25a34aee23eac645fe295d08ab0038872adccf12fc95e
+	sha512sums = f5face64c14e9ca15f9a9cff4e20bf8bb3de50970dfec0d378f62132f3898693da522bda59d128ea49f3ea44e4334acc76433bde08fc24a1a13f95bb3ed76586
+	sha512sums = 70ae31b4fde6e064bdbbb6aa28319a680dda3fe63cf5e31f6e4cafc0f08fc67e12478827f966f7393502980262934431d8c0a2e050e78bcca85af84e4e3563cd
+	sha512sums = 349a4e2ef16a5b6c21eb253c8a291adb379ede3fa4daaaaf197b2cc1c9d733b80cc5eaf3caa2839bb717f0aa2ee8489093101b8cecf8e6505f8f7cf877dc0a06
+	sha512sums = 5eab5828f98dfb59c82de67a63b9b34ea4f007bfec789a8fdeb7f61c13975994bb29a0e2334c3547844ca25d9a7a4b3ae0f97b163ffbc0b4b429246a99fa8323
+	sha512sums = a15bda394ad1e8ba3a18d7b9802db18245ef228247d3d935d769515a2b1f2adae8a1299bd59a50e7417ff05145488ee28279b47f13b1cd776f641c585dc82525
+	sha512sums = a3923b3ddf1979228a99945ecee4c2c777f6281c443a4d1a57f44317a7e21c2f626fec0e145f21c963629f76e7c8ccf431b46c1da4423cd24c7ade7ab3653add
+	sha512sums = a75d2328ed7710cca757a8cf2f00687c3340b7794741d9a54c3068ee076c29fb8c63cec7efba7b7415a9576a8e330876673c1152f36d765e65e31a9adf3ecdc8
+	sha512sums = a1141acea989e6182c53b8a6532029ef8566c00565c1cfdeadc1eff0f1a84e96e233ae80eb80e0aad9e847c8e7638b2fbcbd14b895f77d54275fe79c6e22cf75
 
 pkgname = olive
 

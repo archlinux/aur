@@ -1,0 +1,18 @@
+Description: This patch changes the value of Qt::WindowFlags to a constant, instead of an integer.
+
+<https://doc.qt.io/qt-5/qt.html#WindowType-enum>
+
+diff --unified --recursive --text olive-0.1.2-orig/ui/clickablelabel.h olive-0.1.2-new/ui/clickablelabel.h
+--- olive-0.1.2-orig/ui/clickablelabel.h	2019-11-11 03:05:02.000000000 -0300
++++ olive-0.1.2-new/ui/clickablelabel.h	2020-06-23 14:12:08.786765041 -0300
+@@ -31,8 +31,8 @@
+ class ClickableLabel : public QLabel {
+ 	Q_OBJECT
+ public:
+-	ClickableLabel(QWidget * parent = 0, Qt::WindowFlags f = 0);
+-	ClickableLabel(const QString & text, QWidget * parent = 0, Qt::WindowFlags f = 0);
++	ClickableLabel(QWidget * parent = 0, Qt::WindowFlags f = Qt::Widget);
++	ClickableLabel(const QString & text, QWidget * parent = 0, Qt::WindowFlags f = Qt::Widget);
+ 	void mousePressEvent(QMouseEvent *ev);
+ signals:
+ 	void clicked();
