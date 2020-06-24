@@ -8,8 +8,8 @@ pkgname=('nvidia-full-beta-all'
          'nvidia-settings-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
-pkgver=440.82
-pkgrel=2
+pkgver=450.51
+pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -22,10 +22,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-utils-full-beta-all.sysusers'
         '010-nvidia-kernel-5.7.patch'
         '110-nvidia-settings-full-beta-all-change-desktop-paths.patch')
-sha256sums=('edd415acf2f75a659e0f3b4f27c1fab770cf21614e84a18152d94f0d004a758e'
+sha256sums=('c25155bc5ad0121f1665047d5719cb17c60c9453b9a8fad9dea9cb334eaaea9e'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '58c735ff7a1ad4a5d6729246444de6bd2be1c4a9eec2e9b3adcc9ef2a3389d38'
+            '37cf072fdaee3f9f0c5a8b4d5f2dac722c7b96720fc317bc2da947bde52fb946'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -52,6 +52,7 @@ prepare() {
     
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
+    gunzip nvidia-{cuda-mps-control,modprobe,persistenced,settings,smi,xconfig}.1.gz
     mv kernel kernel-orig
     
     # create a build directory for each installed kernel
@@ -110,7 +111,7 @@ package_nvidia-settings-full-beta-all() {
     cd "$_pkg"
     
     install -D -m755 nvidia-settings         -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-settings.1.gz    -t "${pkgdir}/usr/share/man/man1"
+    install -D -m644 nvidia-settings.1       -t "${pkgdir}/usr/share/man/man1"
     install -D -m644 nvidia-settings.png     -t "${pkgdir}/usr/share/pixmaps"
     install -D -m644 nvidia-settings.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m755 "libnvidia-gtk3.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -168,7 +169,7 @@ package_nvidia-utils-full-beta-all() {
     install -D -m755 "libEGL_nvidia.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libGLESv1_CM_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libGLESv2_nvidia.so.${pkgver}"    -t "${pkgdir}/usr/lib"
-    install -D -m644 "10_nvidia.json"                   -t "${pkgdir}/usr/share/glvnd/egl_vendor.d"
+    install -D -m644 10_nvidia.json                     -t "${pkgdir}/usr/share/glvnd/egl_vendor.d"
     
     # OpenGL core library
     install -D -m755 "libnvidia-glcore.so.${pkgver}"  -t "${pkgdir}/usr/lib"
@@ -200,9 +201,6 @@ package_nvidia-utils-full-beta-all() {
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
     install -D -m755 "libnvidia-ptxjitcompiler.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
-    # Fat (multiarchitecture) binary loader
-    install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    
     # raytracing
     install -D -m755 "libnvoptix.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-rtcore.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -211,33 +209,36 @@ package_nvidia-utils-full-beta-all() {
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
+    # NGX
+    install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    
     # DEBUG
     install -D -m755 nvidia-debugdump -t "${pkgdir}/usr/bin"
     
     # nvidia-xconfig
-    install -D -m755 nvidia-xconfig      -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-xconfig.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -D -m755 nvidia-xconfig   -t "${pkgdir}/usr/bin"
+    install -D -m644 nvidia-xconfig.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-bug-report
     install -D -m755 nvidia-bug-report.sh -t "${pkgdir}/usr/bin"
     
     # nvidia-smi
-    install -D -m755 nvidia-smi      -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-smi.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -D -m755 nvidia-smi   -t "${pkgdir}/usr/bin"
+    install -D -m644 nvidia-smi.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-cuda-mps
-    install -D -m755 nvidia-cuda-mps-server       -t "${pkgdir}/usr/bin"
-    install -D -m755 nvidia-cuda-mps-control      -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-cuda-mps-control.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -D -m755 nvidia-cuda-mps-server    -t "${pkgdir}/usr/bin"
+    install -D -m755 nvidia-cuda-mps-control   -t "${pkgdir}/usr/bin"
+    install -D -m644 nvidia-cuda-mps-control.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-modprobe
     # This should be removed if nvidia fixed their uvm module!
-    install -D -m4755 nvidia-modprobe     -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-modprobe.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -D -m4755 nvidia-modprobe  -t "${pkgdir}/usr/bin"
+    install -D -m644 nvidia-modprobe.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-persistenced
-    install -D -m755 nvidia-persistenced      -t "${pkgdir}/usr/bin"
-    install -D -m644 nvidia-persistenced.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -D -m755 nvidia-persistenced   -t "${pkgdir}/usr/bin"
+    install -D -m644 nvidia-persistenced.1 -t "${pkgdir}/usr/share/man/man1"
     install -D -m644 nvidia-persistenced-init/systemd/nvidia-persistenced.service.template "${pkgdir}/usr/lib/systemd/system/nvidia-persistenced.service"
     sed -i 's/__USER__/nvidia-persistenced/' "${pkgdir}/usr/lib/systemd/system/nvidia-persistenced.service"
     
@@ -248,6 +249,7 @@ package_nvidia-utils-full-beta-all() {
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
     install -D -m644 NVIDIA_Changelog -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 supported-gpus.json -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname}/"
     #ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-utils"
     
@@ -327,9 +329,6 @@ package_lib32-nvidia-utils-full-beta-all() {
     
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
     install -D -m755 "libnvidia-ptxjitcompiler.so.${pkgver}" -t "${pkgdir}/usr/lib32"
-    
-    # Fat (multiarchitecture) binary loader
-    install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib32"
