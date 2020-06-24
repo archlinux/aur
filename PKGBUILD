@@ -5,7 +5,7 @@
 
 # Maintainer: Faye Jackson <justalittleepsilon@gmail.com>
 pkgname=pleroma
-pkgver=2.0.5
+pkgver=2.0.7
 pkgrel=1
 _tagver="v$pkgver"
 pkgdesc="The Pleroma Server (ActivityPub Compatible)"

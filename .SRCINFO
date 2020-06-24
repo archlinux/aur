@@ -1,6 +1,6 @@
 pkgbase = pleroma
 	pkgdesc = The Pleroma Server (ActivityPub Compatible)
-	pkgver = 2.0.5
+	pkgver = 2.0.7
 	pkgrel = 1
 	install = pleroma.install
 	arch = x86_64
