@@ -1,6 +1,6 @@
 pkgbase = srt-git
 	pkgdesc = Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)
-	pkgver = 1.4.1.r16.g8519cb68
+	pkgver = 1.4.1.r254.g3e87ca1c
 	pkgrel = 1
 	url = https://www.srtalliance.org/
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = srt-git
 	provides = srt
 	conflicts = srt
 	source = git+https://github.com/Haivision/srt.git
-	source = 010-srt-git-remove-insecure-rpath.patch
 	sha256sums = SKIP
-	sha256sums = dbe07877e49f5894f70c195b67177645e39a6a0cda3f2ba356cc82240e4f91a9
 
 pkgname = srt-git
 

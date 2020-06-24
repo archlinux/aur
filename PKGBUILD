@@ -2,7 +2,7 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-pkgver=1.4.1.r16.g8519cb68
+pkgver=1.4.1.r254.g3e87ca1c
 pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('x86_64')
@@ -12,14 +12,8 @@ depends=('openssl')
 makedepends=('git' 'cmake')
 provides=('srt')
 conflicts=('srt')
-source=('git+https://github.com/Haivision/srt.git'
-        '010-srt-git-remove-insecure-rpath.patch')
-sha256sums=('SKIP'
-            'dbe07877e49f5894f70c195b67177645e39a6a0cda3f2ba356cc82240e4f91a9')
-
-prepare() {
-    patch -d srt -Np1 -i "${srcdir}/010-srt-git-remove-insecure-rpath.patch"
-}
+source=('git+https://github.com/Haivision/srt.git')
+sha256sums=('SKIP')
 
 pkgver() {
     cd srt
