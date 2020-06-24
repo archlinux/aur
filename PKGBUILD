@@ -2,14 +2,13 @@
 
 pkgname=vr-video-player-git
 pkgver=r35.c3e9670
-pkgrel=4
+pkgrel=5
 pkgdesc='A virtual reality video player for x11 on Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
 license=('custom:BSD3')
-makedepends=('git')
+makedepends=('git' 'sibs')
 depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite')
-makedepends=('sibs')
 provides=('vr-video-player')
 conflicts=('vr-video-player')
 source=("git+https://git.dec05eba.com/vr-video-player")
