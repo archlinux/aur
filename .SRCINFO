@@ -1,7 +1,7 @@
 pkgbase = perl-test-taint
 	pkgdesc = Tools to test taintedness
 	pkgver = 1.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-Taint
 	arch = i686
 	arch = x86_64
