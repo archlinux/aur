@@ -2,12 +2,12 @@
 
 pkgname=miopen-hip
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
 license=('custom:NCSAOSL')
-depends=('rocblas' 'boost' 'llvm-amdgpu' 'rocm-clang-ocl')
+depends=('rocblas' 'boost' 'llvm-amdgpu' 'rocm-clang-ocl' 'hip')
 makedepends=('cmake' 'rocm-cmake' 'half' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
