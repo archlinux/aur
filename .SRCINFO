@@ -1,6 +1,6 @@
 pkgbase = yarn-nightly
-	pkgdesc = Fast, reliable, and secure dependency management
-	pkgver = 1.23.0.20200205.1242
+	pkgdesc = Fast, reliable, and secure dependency management (Bleeding Edge)
+	pkgver = 1.23.0.20200615.1917
 	pkgrel = 1
 	url = https://yarnpkg.com/en/docs/nightly
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = yarn-nightly
 	depends = nodejs
 	provides = yarn
 	conflicts = yarn
-	source = https://nightly.yarnpkg.com/yarn-v1.23.0-20200205.1242.tar.gz
-	source = https://nightly.yarnpkg.com/yarn-v1.23.0-20200205.1242.tar.gz.asc
+	source = https://nightly.yarnpkg.com/yarn-v1.23.0-20200615.1917.tar.gz
+	source = https://nightly.yarnpkg.com/yarn-v1.23.0-20200615.1917.tar.gz.asc
 	validpgpkeys = 72ECF46A56B4AD39C907BBB71646B01B86E50310
-	sha512sums = e87897d10e162ba0129c5873a96c4cad38dcf59df2d464819504f6ce5417e6f55f59404eb37adcde86ac09932a5a7c60bf19182ee2e5459849c586fd23960e8b
-	sha512sums = SKIP
+	md5sums = 7330f70b365d538aee7d86df05649f55
+	md5sums = SKIP
 
 pkgname = yarn-nightly
 
