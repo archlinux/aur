@@ -1,0 +1,10 @@
+*.src.tar.*
+*.pkg.tar.*
+*.orig
+*.rej
+*.swp
+*.part
+*.tar.gz
+*.asc
+src
+pkg
