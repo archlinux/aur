@@ -1,7 +1,7 @@
 pkgbase = perl-sys-gamin
 	pkgdesc = Sys::Gamin - Perl interface to Gamin (File Access Monitor implementation)
 	pkgver = 0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://metacpan.org/release/Sys-Gamin
 	arch = i686
 	arch = x86_64
