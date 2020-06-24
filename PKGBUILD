@@ -27,7 +27,7 @@ build() {
 	
 	# Taken from the JabRef AUR package
 	export JAVA_HOME=$(archlinux-java-run -a 13 -f jdk -j)
-	echo "Using JDK from $JAVA_HOME to build JabRef."
+	echo "Using JDK from $JAVA_HOME to build BlockMap."
 	
 	# This *must* be in separate commands
 	./gradlew clean
