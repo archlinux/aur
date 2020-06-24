@@ -1,6 +1,6 @@
 pkgbase = msync
 	pkgdesc = A low bandwidth store and forward Mastodon / Pleroma API command line client
-	pkgver = 0.9.9.1
+	pkgver = 0.9.9.2
 	pkgrel = 1
 	url = http://github.com/Kansattica/msync
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = msync
 	depends = libcurl3-gnutls
 	provides = msync
 	conflicts = msync-git
-	source = https://github.com/Kansattica/msync/releases/download/v0.9.9.1/msync-v0.9.9.1-install-linux-x64-gcc
-	md5sums = 8f28a14507b1fdeade60164fc6883f9c
+	source = https://github.com/Kansattica/msync/releases/download/v0.9.9.2/msync-v0.9.9.2-install-linux-x64-gcc
+	md5sums = 36805caf7677919bf4428656e74dc74a
 
 pkgname = msync
 
