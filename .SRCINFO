@@ -1,7 +1,7 @@
 pkgbase = python-elasticsearch-dsl
 	pkgdesc = High-level Python client for Elasticsearch
-	pkgver = 7.2.0
-	pkgrel = 2
+	pkgver = 7.2.1
+	pkgrel = 1
 	url = https://elasticsearch-dsl.readthedocs.org
 	arch = any
 	license = Apache
@@ -13,8 +13,8 @@ pkgbase = python-elasticsearch-dsl
 	depends = python
 	depends = python-elasticsearch
 	depends = python-dateparser
-	source = python-elasticsearch-dsl-7.2.0.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/7.2.0.tar.gz
-	sha512sums = 33e39f4ffb29e2638e301c376650dfde8267ff4ee3177d83bdad672b4c9cce53c99187d0d982d78074e4edeaf3240c49eba37c7d9e60fbcc99605403d9f45ec9
+	source = python-elasticsearch-dsl-7.2.1.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/7.2.1.tar.gz
+	sha512sums = 295ad76a776e9ee1914ab94492c8463836c4ac98d60d869310c26e368f09c2051ecf6b691e365b6e1df70013c9c95a8ef83dbdb94ca553d47b0f4709bbc028b1
 
 pkgname = python-elasticsearch-dsl
 

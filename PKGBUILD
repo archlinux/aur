@@ -2,8 +2,8 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=python-elasticsearch-dsl
-pkgver=7.2.0
-pkgrel=2
+pkgver=7.2.1
+pkgrel=1
 pkgdesc='High-level Python client for Elasticsearch'
 arch=(any)
 url=https://elasticsearch-dsl.readthedocs.org
@@ -12,7 +12,7 @@ depends=(python python-elasticsearch python-dateparser)
 makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme)
 checkdepends=(python-mock python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/$pkgver.tar.gz)
-sha512sums=('33e39f4ffb29e2638e301c376650dfde8267ff4ee3177d83bdad672b4c9cce53c99187d0d982d78074e4edeaf3240c49eba37c7d9e60fbcc99605403d9f45ec9')
+sha512sums=('295ad76a776e9ee1914ab94492c8463836c4ac98d60d869310c26e368f09c2051ecf6b691e365b6e1df70013c9c95a8ef83dbdb94ca553d47b0f4709bbc028b1')
 
 build() {
   cd ${pkgname/python-/}-py-$pkgver
