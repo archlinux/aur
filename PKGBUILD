@@ -1,9 +1,10 @@
-# Maintainer: 咸粽子 <xianzongzi aliyun.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: 咸粽子 <xianzongzi aliyun.com>
 # Based on [AUR]'s thunderbird-beta-bin
 
 pkgname=thunderbird-beta-bin-zh-cn
 _pkgname=thunderbird-beta
-pkgver=78.0b1
+pkgver=78.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -19,12 +20,14 @@ provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta'
 	   'thunderbird-beta-bin')
 install=$pkgname.install
-source=("https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/$pkgver/linux-x86_64/zh-CN/thunderbird-$pkgver.tar.bz2"
-        'thunderbird-beta-bin-zh-cn.desktop'
-        'vendor.js')
-sha512sums=('6350104202821c63a911bce018fb8644de2eade9062550fe1517e624376d613ebaec5c05a15cf74f8a86ec2be148d1c4487b9ca749f5b404648e9eaefc50402c'
+source=(https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/$pkgver/linux-x86_64/zh-CN/thunderbird-$pkgver.tar.bz2{,.asc}
+        thunderbird-beta-bin-zh-cn.desktop
+        vendor.js)
+sha512sums=('78d2a8d7581bde55a71c46b682a460835d033a2fb082310a69f4bbf28c21c522b9309d86ca722125744d84d85d69af5d5b87715745d6233a494653c49480f0d2'
+            'SKIP'
             '5639d9808d543f151eebb5b79246dbac9c5a3f68a2e1fc28190da62867e02a07b96e8409e460ecb5398aab37ea4959d5eeb7d2fc592014779c3b6791a0b50b93'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 # RC
 if [[ $_build = ? ]]; then
   source[0]="thunderbird-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/thunderbird-$_major.tar.bz2"
