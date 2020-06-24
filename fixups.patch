@@ -1,0 +1,58 @@
+diff -up src/Net-Pcap-0.18/Makefile.PL.orig src/Net-Pcap-0.18/Makefile.PL
+--- src/Net-Pcap-0.18/Makefile.PL.orig	2016-05-09 15:23:13.000000000 -0600
++++ src/Net-Pcap-0.18/Makefile.PL	2018-02-20 21:56:00.000000000 -0700
+@@ -62,40 +62,6 @@ Or get and install the WinPcap developer
+   http://www.winpcap.org/install/
+         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ REASON
+-
+-} else { # other systems (Unix)
+-    die <<"REASON" unless have_library('pcap');
+-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-You appear to lack the pcap(3) library. \a
+-
+-If it is installed in a non-standard location, please try setting the LIBS 
+-and INC values on the command line.
+-
+-Or get the sources and install the pcap library from http://www.tcpdump.org/
+-
+-If you install the pcap library using a system package, make sure to also 
+-install the corresponding -devel package, which contains the C headers needed 
+-to compile this module. 
+-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-REASON
+-
+-    die <<"REASON" unless have_library('pcap', 'pcap_lib_version');
+-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-You appear to have an old version of the pcap library. \a
+-
+-This module need a recent version of the pcap library in order to provide 
+-access to all its features. You can still compile it with your old pcap 
+-library but some functions won't be available, and trying to use them in 
+-Perl programs will generate errors. Programs only using the old functions 
+-should perform as previously. If not, don't hesitate to fill a bug. 
+-
+-You can get the latest sources of the pcap library at http://www.tcpdump.org/
+-
+-If you install the pcap library using a system package, make sure to also 
+-install the corresponding -devel package, which contains the C headers needed 
+-to compile this module. 
+-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-REASON
+ }
+ 
+ # Now trying to detect which functions are actually available. 
+diff -up src/Net-Pcap-0.18/Pcap.pm.orig src/Net-Pcap-0.18/Pcap.pm
+--- src/Net-Pcap-0.18/Pcap.pm.orig	2016-05-15 07:24:03.000000000 -0600
++++ src/Net-Pcap-0.18/Pcap.pm	2018-02-20 21:56:00.000000000 -0700
+@@ -714,6 +714,10 @@ Close the savefile associated with the d
+ 
+ =over
+ 
++=item B<pcap_list_datalinks($pcap)>
++
++Returns a list of link layer types supported by the given pcap descriptor.
++
+ 
+ =item B<pcap_datalink($pcap)>
+ 

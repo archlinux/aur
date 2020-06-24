@@ -1,0 +1,11 @@
+diff -up Net-Pcap-0.18/Makefile.PL.orig Net-Pcap-0.18/Makefile.PL
+--- Net-Pcap-0.18/Makefile.PL.orig	2019-06-13 00:50:15.000000000 -0600
++++ Net-Pcap-0.18/Makefile.PL	2019-06-13 01:00:15.000000000 -0600
+@@ -107,6 +107,7 @@ REASON
+ # corresponding tests. 
+ my @funcs = have_functions(find_functions());
+ $options{DEFINE} .= cpp_defines(@funcs);
++$options{DEFINE} .= " -DPCAP_API=\"\" -UPCAP_OPEN -UPCAP_SETSAMPLING";
+ open(FUNCS, '>funcs.txt') or warn "warning: can't write 'funcs.txt': $!\n";
+ print FUNCS join("\n", @funcs), "\n";
+ close(FUNCS);

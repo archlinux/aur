@@ -1,0 +1,12 @@
+diff -up src/Net-Pcap-0.18/Pcap.xs.orig src/Net-Pcap-0.18/Pcap.xs
+--- src/Net-Pcap-0.18/Pcap.xs.orig	2020-04-05 01:33:02.900000000 -0600
++++ src/Net-Pcap-0.18/Pcap.xs	2020-04-05 01:33:11.070000000 -0600
+@@ -937,7 +937,7 @@ pcap_parsesrcstr(source, type, host, por
+ 
+ pcap_t *
+ pcap_open(source, snaplen, flags, read_timeout, auth, err)
+-    char *source
++    const char *source
+     int snaplen
+     int flags
+     int read_timeout
