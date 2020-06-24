@@ -1,15 +1,15 @@
 pkgbase = ruby-jekyll-feed
 	pkgdesc = A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/jekyll-feed
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = jekyll
-	noextract = jekyll-feed-0.13.0.gem
-	source = https://rubygems.org/downloads/jekyll-feed-0.13.0.gem
-	sha256sums = 3906c7d7365f6a15c42d86caa5d75fb72ece7c36a068b346e581a206e7b6a8d3
+	noextract = jekyll-feed-0.14.0.gem
+	source = https://rubygems.org/downloads/jekyll-feed-0.14.0.gem
+	sha256sums = acd06883c80273dacc3de71d76b3c265fae7792299e1a57903c631c478f90b3a
 
 pkgname = ruby-jekyll-feed
 
