@@ -1,9 +1,10 @@
 # Maintainer: Trivernis <trivernis@gmail.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=yuna
-pkgver=1.4.16
+pkgver=1.4.17
 pkgrel=1
-pkgdesc='Anime player integating AniList, Crunchyroll, and Hidive'
+pkgdesc='Anime player & list manager integrating AniList, Simkl, Crunchyroll, and Hidive'
 arch=(x86_64)
 url=https://yuna.moe
 license=(AGPL3)
@@ -15,7 +16,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/BeeeQueue/yuna/archive/v$pkgver.tar.gz
         electron-builder.patch
         yuna.desktop)
-sha512sums=('0caab31395eaa09fc7272b0096da8588696375ea27802b3d757f76b82762d44de32f1531755090bfe5407ed746b46656ca91a4180d3d80858ece13eee5924565'
+sha512sums=('fdcb92814ea93c6edec170d7405c3e0b4437ea52f270e53bdfd290416326cee51c902610fabcfb5388ac220a76ca9fa8225fdba195a4bf0a56685560f2e70ada'
             '893065948029906084e5a7f94982a666fc553b294d2a423dc1642d6c67b1755e1f6ac0304adf726ff26c6b1ce74fbb8fc76a8bd129527abb3d7529ca59ebf643'
             '1853e9eac6b6a3b0734711d0803135902f118168603c795543de3296928293773d2be7a2aef05b045b737305d6cb50273e01843544de53d9caf06d0b4dc3e982')
 
@@ -27,7 +28,7 @@ prepare() {
 
   # Remove GIT_TAG const since this is an archive download
   # Remove Sentry source maps config since we don't have project info
-  sed -r '6,10d;70,90d' -i vue.config.js
+  sed -r '6,13d;71,91d' -i vue.config.js
 }
 
 build() {
