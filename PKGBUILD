@@ -20,4 +20,6 @@ source_i686=("$pkgname-$pkgver.tar.gz::https://github.com/yakyak/yakyak/releases
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
+  mkdir "${pkgdir}/usr/bin/"
+  ln -s "${pkgdir}/opt/yakyak/yakyak" "${pkgdir}/usr/bin/yakyak"
 }
