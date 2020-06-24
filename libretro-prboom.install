@@ -1,13 +1,9 @@
+# shellcheck shell=bash
 post_install() {
-cat << 'EOM'
-
-   Copy prboom.wad from /usr/share/libretro/prboom_libretro
-   to the same location as your doom WADs
-
-EOM
+	echo ">> Copy https://github.com/libretro/libretro-prboom/raw/master/prboom.wad"
+	echo ">> into your frontend's (e.g. RetroArch) system directory"
 }
 
 post_upgrade() {
- post_install
+	post_install
 }
-

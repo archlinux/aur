@@ -1,34 +1,38 @@
-# Maintainer:  prettyvanilla <prettyvanilla@posteo.at>
-# Contributor:  Johnathan Jenkins <twodopeshaggy@gmail.com>
-# Contributor: almostalive   <almostalive2003 at gmail dot com>
-
-pkgname=libretro-prboom-git
-pkgver=299.e09831c
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: prettyvanilla <prettyvanilla@posteo.at>
+# Contributor: Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Contributor: almostalive <almostalive2003 at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-prboom
+pkgname=$_pkgname-git
+pkgver=r630.9cbbebe
 pkgrel=1
-pkgdesc="libretro implementation of PrBoom. (Doom)"
-groups=('libretro')
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+epoch=1
+pkgdesc="Port of prboom to libretro - plays Doom, Doom II, Final Doom and other Doom IWAD mods"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-prboom"
-license=('GPL')
-depends=('libretro-core-info')
+license=('GPL2')
+groups=('libretro')
+depends=('libretro-core-info' 'glibc')
 makedepends=('git')
-install=libretro-prboom.install
-_libname=prboom_libretro
-_gitname=libretro-prboom
-source=("git+https://github.com/libretro/${_gitname}.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install=$_pkgname.install
+source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make
+	cd $_pkgname
+	make
 }
 
 package() {
-  install -Dm644 "${_gitname}/prboom.wad" "${pkgdir}/usr/share/libretro/${_libname}/prboom.wad"
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+	cd $_pkgname
+	# shellcheck disable=SC2154
+	make DESTDIR="$pkgdir" install
 }
