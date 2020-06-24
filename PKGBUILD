@@ -3,14 +3,14 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@osvaldobarrera.com.ar>
 pkgname=ocamlfuse
 pkgver=2.7.1
-pkgrel=8
+pkgrel=9
 pkgdesc="An ocaml binding for fuse."
 arch=('x86_64' 'i686')
 url='https://github.com/astrada/ocamlfuse/'
 license=('GPL2')
 depends=(
 'fuse>=2.7'
-'ocaml>=3.08'
+'ocaml>=4.02.3'
 'camlidl>=1.05'
 'ocaml-findlib'
 )
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=('staticlibs')
 source=('https://github.com/astrada/ocamlfuse/archive/master.zip')
-sha256sums=('3e610dc52442900aae6b684c1afb0f2b990da10bbceca5413889ed71689a0967')
+sha256sums=('d8a1bfacec0d248a025c4aeed38a039dfc634382b82620998ec58dcce7c29600')
 
 build() {
 	cd "$srcdir/$pkgname-master"
