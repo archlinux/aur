@@ -1,0 +1,29 @@
+_service='ipsec.service'
+_pkgname='libreswan'
+
+post_upgrade() {
+  if ! systemctl -q is-enabled "${_service}"; then
+    echo "  systemctl enable '${_service}'"
+  fi
+  if ! systemctl -q is-active "${_service}"; then
+    echo "  systemctl start '${_service}'"
+  else
+    echo "  systemctl restart '${_service}'"
+  fi
+}
+
+post_install() {
+  sysctl -p "/usr/lib/sysctl.d/${_pkgname}-icmp-redirects.conf"
+  echo '  ipsec verify'
+  post_upgrade
+}
+
+pre_remove() {
+  if systemctl -q is-active "${_service}"; then
+    echo "  systemctl stop '${_service}'"
+  fi
+  if systemctl -q is-enabled "${_service}"; then
+    echo "  systemctl disable '${_service}'"
+  fi
+  sysctl -p "/usr/lib/sysctl.d/${_pkgname}-icmp-redirects.conf.revert"
+}
