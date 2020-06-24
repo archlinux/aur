@@ -6,10 +6,10 @@ pkgver=r114.58be873
 pkgrel=1
 pkgdesc="Terminal interface for StackExchange"
 arch=('i686' 'x86_64')
-url="https://github.com/samtay/so"
+url="https://github.com/samtay/so-hs"
 license=('custom')
 makedepends=('stack')
-source=("${_pkgname}"::'git+https://github.com/samtay/so')
+source=("${_pkgname}"::'git+https://github.com/samtay/so-hs')
 md5sums=('SKIP')
 
 pkgver() {
