@@ -6,7 +6,7 @@ pkgdesc="A powerful, lightweight, real-time, pattern-based MIDI sequencer"
 arch=('x86_64')
 url="https://non.tuxfamily.org/"
 license=('GPL3')
-groups=('pro-audio')
+groups=('non-daw' 'pro-audio')
 depends=('cairo' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libjack.so'
 'liblo.so' 'libntk.so' 'libntk_images.so' 'libsigc++' 'libx11')
 makedepends=('waf')
