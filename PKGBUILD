@@ -3,10 +3,10 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0rc9.r21.1aa65b9
+pkgver=1.0.0rc11.r0.714aa31
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
 makedepends=('git' 'dep' 'go' 'python-setuptools' 'python-grpcio-tools')
