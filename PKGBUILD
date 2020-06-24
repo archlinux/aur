@@ -1,15 +1,12 @@
 # Maintainer: t-ask <t-ask-aur at cixera.com>
 
 pkgname=substance-alchemist
-pkgver=2019.1.2
+pkgver=2.2.0
 pkgrel=1
 
-# pkgver can't contain dashes etc, so we have to simplify that for now (until Alchemist is released for real).
-# _tag looks like something that will change, previous packages usually had the standard-full/commercial suffix
-_version=2019.1.2
-_main=2019
-_build=rc.2-23
-_tag=Release-e1da3d20
+_main=2
+_build=rc.3-64
+_tag=2f489679
 
 pkgdesc="Experimental PBR material authoring, generation, manipulation and management tool"
 arch=('x86_64')
@@ -17,11 +14,11 @@ url='https://www.substance3d.com/products/substance-alchemist'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
-source=("https://download.allegorithmic.com/substance-alchemist/${_main}.x/Substance_Alchemist-${_version}-${_build}-linux-x64-standard-${_tag}.rpm"
+source=("https://download.substance3d.com/substance-alchemist/${_main}.x/Substance_Alchemist-${pkgver}-${_build}-linux-x64-standard-Release-${_tag}.rpm"
         'substance-alchemist-icon.png'
         'substance-alchemist.desktop'
         'substance-alchemist')
-sha256sums=('0bb991e278ae172f2db3766c2443a96f9cac2e9884d7e9c3bb1a6e59775156eb'
+sha256sums=('0e42d28bba0f3084ccc0307987c1f94c3fd6b5940e1911a2b1ba017ac009ee74'
             'b0c9cc1be9e784641810e163d4f580dba45c36ecc73381988317c2cec4e93276'
             '17350182c0f7527be52db14f3a92f8074a7ea69857d6088c198478943132c8a4'
             '4aabc0246f0e985d278ce5773c39b378d7b5117430c029cd4da069175c5c2c1b')
