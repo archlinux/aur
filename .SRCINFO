@@ -1,6 +1,6 @@
 pkgbase = optimus-manager
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = optimus-manager
 	optdepends = bbswitch: alternative power switching method
 	optdepends = acpi_call: alternative power switching method
 	optdepends = xf86-video-intel: provides the Xorg intel driver
-	provides = optimus-manager=1.3
+	provides = optimus-manager=1.3.1
 	conflicts = optimus-manager-git
 	backup = etc/optimus-manager/xorg-intel.conf
 	backup = etc/optimus-manager/xorg-nvidia.conf
@@ -25,7 +25,7 @@ pkgbase = optimus-manager
 	backup = etc/optimus-manager/nvidia-enable.sh
 	backup = etc/optimus-manager/nvidia-disable.sh
 	backup = var/lib/optimus-manager/persistent/startup_mode
-	source = git+https://github.com/Askannz/optimus-manager.git#branch=master
+	source = git+https://github.com/Askannz/optimus-manager.git#tag=v1.3.1
 	sha256sums = SKIP
 
 pkgname = optimus-manager
