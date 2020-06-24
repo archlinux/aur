@@ -1,14 +1,14 @@
 # Maintainer: Marcel Schramm <marcelschr@protonmail.com>
 
 pkgname=cordless-git
-pkgver=2020.01.05
+pkgver=2020.06.24
 pkgrel=1
 pkgdesc='A Discord TUI client.'
 arch=('x86_64')
 url="https://github.com/Bios-Marcel/cordless"
 license=('BSD-3')
 source=("$pkgname::git+https://github.com/Bios-Marcel/cordless.git")
-depends=('glibc' 'go')
+makedepends=('glibc' 'go')
 md5sums=('SKIP')
 
 pkgver() {
