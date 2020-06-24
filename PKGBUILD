@@ -3,7 +3,7 @@
 # -> disable check() until #63 is fixed
 
 #Configuration variables
-# CUDA_ARCH : sm_50, sm_50 ...
+# CUDA_ARCH : 50, 52 ...
 _DISABLE_CHECK=${DISABLE_CHECK:-1}
 
 _name=popsift
