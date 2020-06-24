@@ -1,7 +1,7 @@
 pkgbase = otf-hasklig
 	pkgdesc = A font with symbol ligatures, intended for Haskell code
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/i-tu/Hasklig
 	install = otf-hasklig.install
 	arch = any
