@@ -1,17 +1,22 @@
 pkgbase = aws-cli-v2
-	pkgdesc = Universal Command Line Interface for Amazon Web Services version 2
-	pkgver = 2.0.0
-	pkgrel = 3
-	url = https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
-	arch = i686
+	pkgdesc = Universal Command Line Interface for Amazon Web Services (version 2)
+	pkgver = 2.0.25
+	pkgrel = 1
+	url = https://github.com/aws/aws-cli
 	arch = x86_64
 	license = Apache
-	makedepends = unzip
-	depends = less
+	makedepends = python-botocore-v2-git
+	makedepends = python-colorama
+	makedepends = python-docutils
+	makedepends = python-cryptography
+	makedepends = python-s3transfer
+	makedepends = python-ruamel-yaml
+	makedepends = python-prompt_toolkit
 	provides = aws-cli
 	conflicts = aws-cli
-	source = https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-	md5sums = SKIP
+	conflicts = aws-cli-v2-bin
+	source = aws-cli-v2-2.0.25.tar.gz::https://github.com/aws/aws-cli/archive/2.0.25.tar.gz
+	sha256sums = 403328981ddc538b2448c867cfaac1ff22e06b3d102ae3c7d4a4274f2b7d40d3
 
 pkgname = aws-cli-v2
 
