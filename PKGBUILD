@@ -2,13 +2,23 @@
 # Emacs Application Framework written by Andy Stewart <lazycat.manatee@gmail.com>
 
 pkgname="emacs-eaf"
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-dbus' 'python-xlib' 'python-qtpy' 'python-pyqtwebengine' 'python-qrcode' 'python-feedparser' 'python-pymupdf' 'python-grip' 'python-pydbus')
+depends=('emacs' 'python-dbus' 'python-pyqt5' 'python-pyqtwebengine')
+optdepends=('python-pymupdf: for pdf viewer'
+	    'python-grip: for markdown preview'
+	    'python-qrcode: for qr codes'
+	    'python-feedparser: for rss reader'
+	    'python-pyinotify: for mermaid'
+	    'python-markdown: for mermaid'
+	    'nodejs: for terminal'
+	    'aria2: for browser'
+	    'libreoffice: doc viewer'
+	    'filebrowser-bin: for file browser')
 makedepends=('git')
 provides=('emacs-eaf')
 conflicts=('emacs-eaf')
