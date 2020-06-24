@@ -1,0 +1,21 @@
+pkgbase = sfml2.3
+	pkgdesc = A cross platform, fast, multimedia library
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://www.sfml-dev.org/
+	arch = x86_64
+	license = custom
+	depends = freetype2
+	depends = xorg-server
+	depends = xorg-xrandr
+	depends = mesa
+	depends = flac
+	depends = libvorbis
+	depends = openal
+	depends = libpthread-stubs
+	options = !strip
+	source = https://www.sfml-dev.org/files/SFML-2.3.2-linux-gcc-64-bit.tar.gz
+	sha256sums = eaa87f108e62e1a0b988d187a2ea4138c017fbf7d62d857ddd2de25cd51ebc68
+
+pkgname = sfml2.3
+
