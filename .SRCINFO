@@ -1,7 +1,7 @@
 pkgbase = perl-spread-client-constant
 	pkgdesc = CPAN/Spread::Client::Constant - Spread::Client constants
 	pkgver = 0.02
-	pkgrel = 11
+	pkgrel = 12
 	url = https://metacpan.org/module/Spread::Client::Constant
 	arch = i686
 	arch = x86_64
