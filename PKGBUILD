@@ -1,6 +1,6 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-electron7-git
-pkgver=0.4.4
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="electron-7-based desktop client for Google Chat, electron 7 patch for Cinnamon systray"
 arch=('x86_64' 'i686')
