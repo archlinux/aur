@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.10.95
+	pkgver = 1.10.97
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -25,21 +25,22 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.10.95
+	source = git+https://github.com/brave/brave-browser.git#tag=v1.10.97
 	source = brave-vaapi-enable.patch
 	source = chromium-no-history.patch
 	source = brave-launcher
 	source = brave-browser.desktop
-	source = clean-up-a-call-to-set_utf8.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/clean-up-a-call-to-set_utf8.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = iwyu-std-numeric_limits-is-defined-in-limits.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iwyu-std-numeric_limits-is-defined-in-limits.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = add-missing-algorithm-header-in-crx_install_error.cc.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-missing-algorithm-header-in-crx_install_error.cc.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = include-memory-header-to-get-the-definition-of-std-u.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/include-memory-header-to-get-the-definition-of-std-u.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = make-some-of-blink-custom-iterators-STL-compatible.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/make-some-of-blink-custom-iterators-STL-compatible.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = avoid-double-destruction-of-ServiceWorkerObjectHost.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/avoid-double-destruction-of-ServiceWorkerObjectHost.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = v8-remove-soon-to-be-removed-getAllFieldPositions.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/v8-remove-soon-to-be-removed-getAllFieldPositions.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = chromium-83-gcc-10.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-83-gcc-10.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
-	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=41b7e682bd3a4445ccc97ede268834a4255f3c3f
+	source = clean-up-a-call-to-set_utf8.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/clean-up-a-call-to-set_utf8.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = iwyu-std-numeric_limits-is-defined-in-limits.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iwyu-std-numeric_limits-is-defined-in-limits.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = add-missing-algorithm-header-in-crx_install_error.cc.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-missing-algorithm-header-in-crx_install_error.cc.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = include-memory-header-to-get-the-definition-of-std-u.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/include-memory-header-to-get-the-definition-of-std-u.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = make-some-of-blink-custom-iterators-STL-compatible.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/make-some-of-blink-custom-iterators-STL-compatible.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = avoid-double-destruction-of-ServiceWorkerObjectHost.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/avoid-double-destruction-of-ServiceWorkerObjectHost.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = v8-remove-soon-to-be-removed-getAllFieldPositions.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/v8-remove-soon-to-be-removed-getAllFieldPositions.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = chromium-fix-vaapi-on-intel.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-fix-vaapi-on-intel.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = chromium-83-gcc-10.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-83-gcc-10.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
 	source = vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77
 	sha256sums = SKIP
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
@@ -54,6 +55,7 @@ pkgbase = brave
 	sha256sums = 3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7
 	sha256sums = d793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f
 	sha256sums = e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2
+	sha256sums = e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a
 	sha256sums = 3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 	sha256sums = 0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a

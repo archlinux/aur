@@ -26,7 +26,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.10.95
+pkgver=1.10.97
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -45,7 +45,7 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=41b7e682bd3a4445ccc97ede268834a4255f3c3f
+arch_revision=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
 for Patches in \
         clean-up-a-call-to-set_utf8.patch \
         iwyu-std-numeric_limits-is-defined-in-limits.patch \
@@ -55,6 +55,7 @@ for Patches in \
         make-some-of-blink-custom-iterators-STL-compatible.patch \
         avoid-double-destruction-of-ServiceWorkerObjectHost.patch \
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch \
+        chromium-fix-vaapi-on-intel.patch \
         chromium-83-gcc-10.patch \
         chromium-skia-harmony.patch
 do
@@ -77,6 +78,7 @@ sha256sums=('SKIP'
             '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
             'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
             'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
+            'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
             '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
@@ -138,6 +140,9 @@ prepare() {
 
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
+
+    # Patch from rpmfusion: chromium-freeworld
+    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch
 
     # Fix VA-API on Nvidia
     patch -Np1 -i "${srcdir}"/vdpau-support.patch
