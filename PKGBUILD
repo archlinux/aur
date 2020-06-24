@@ -1,7 +1,7 @@
 # Maintainer: piegames <aur@piegames.de>
 pkgname=blockmap-git
 pkgver=2.0.0.r6.a900ba5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft map viewer/renderer"
 arch=('any')
 url="https://github.com/Minecraft-Technik-Wiki/BlockMap"
@@ -26,14 +26,16 @@ build() {
 	cd "$srcdir/${pkgname}"
 	
 	# Taken from the JabRef AUR package
+	mkdir -p ${srcdir}/gradle
+	export GRADLE_USER_HOME=${srcdir}/gradle
 	export JAVA_HOME=$(archlinux-java-run -a 13 -f jdk -j)
 	echo "Using JDK from $JAVA_HOME to build BlockMap."
 	
 	# This *must* be in separate commands
-	./gradlew clean
-	./gradlew generateData
-	./gradlew jar
-	./gradlew copyLibs
+	./gradlew --no-daemon clean
+	./gradlew --no-daemon generateData
+	./gradlew --no-daemon jar
+	./gradlew --no-daemon copyLibs
 }
 
 package() {
