@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=gower
-_cranver=0.2.1
+_cranver=0.2.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=(r)
 makedepends=(gcc)
 optdepends=(r-tinytest)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e264a32ea2b7f74fac4094973eb5875a')
+md5sums=('91f9106578a8a485f91e8b03763605cc')
 
 build() {
   cd "${srcdir}"
