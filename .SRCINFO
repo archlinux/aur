@@ -1,7 +1,7 @@
 pkgbase = perl-linux-inotify2
 	pkgdesc = scalable directory/file change notification
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Linux-Inotify2
 	arch = i686
 	arch = x86_64
