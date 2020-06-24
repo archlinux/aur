@@ -5,7 +5,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgver=1.3.r1.gfc63458
+pkgver=1.3.r2.g6fda292
 pkgrel=1
 
 pkgdesc="A simple shell script to calculate and display the date of Pascha (Easter)"
