@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd macemu/
-  patch -p1 -i "$srcdir/unsigned_bug.patch"
+  #patch -p1 -i "$srcdir/unsigned_bug.patch" # patch merged upstream
 }
 
 build() {
