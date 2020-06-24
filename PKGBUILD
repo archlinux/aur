@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=13.2.4
+pkgver=13.3.1
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=(electron libnotify)
 makedepends=(yarn ant)
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('938af4b628de7f18c0337a3b45838b270b08f11e5be429d9db4a3dce1a262d74'
-            '267c8b8e83917db6fbbd359f95d96df7e0e6bed57a0931a90aa5ef2bd8f26389')
+sha256sums=('8fa20608c918e825c6ebf011749fee2448966b06248831d93c1a6da03fc4a6ef'
+            '1229efa912677463bf50ea73296e2f343de8f2b9a90263c6b0fdd3dc7a5d0244')
 
 build() {
   cd "$srcdir/drawio-$pkgver"/etc/build
