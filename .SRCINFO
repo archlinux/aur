@@ -1,7 +1,7 @@
 pkgbase = perl-audio-mixer
 	pkgdesc = Sound mixer control using ioctl
 	pkgver = 0.7
-	pkgrel = 17
+	pkgrel = 18
 	url = https://metacpan.org/release/Audio-Mixer
 	arch = i686
 	arch = x86_64
