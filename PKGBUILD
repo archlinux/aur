@@ -4,7 +4,7 @@
 pkgname=perl-net-rawip
 _cpanname='Net-RawIP'
 pkgver=0.25
-pkgrel=13
+pkgrel=14
 pkgdesc="Perl extension to manipulate raw IP packets with interface to B<libpcap>"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
