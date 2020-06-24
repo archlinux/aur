@@ -1,13 +1,13 @@
 pkgbase = rabs
 	pkgdesc = Generic imperative build system
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
 	license = MIT
 	depends = gc
 	provides = rabs
-	source = git+https://github.com/wrapl/rabs#tag=v2.9.0
+	source = git+https://github.com/wrapl/rabs#tag=v2.10.0
 	md5sums = SKIP
 
 pkgname = rabs
