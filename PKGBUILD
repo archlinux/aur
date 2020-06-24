@@ -4,13 +4,13 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=2.4.5
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('java-environment>=6' 'java-environment<9')
+depends=('java-environment>=6' 'java-environment<=11')
 optdepends=('python2: python2 support for pyspark'
             'ipython2: ipython2 support for pyspark'
             'python: python3 support for pyspark'
@@ -28,7 +28,7 @@ source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-b
         'run-master.sh'
         'run-slave.sh')
 
-sha256sums=('020be52524e4df366eb974d41a6e18fcb6efcaba9a51632169e917c74267dd81'
+sha256sums=('98f6b92e5c476d7abb93cc179c2616aa5dc897da25753bd197e20ef54a28d945'
             'e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183'
             'e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b'
             '0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb'
