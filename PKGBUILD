@@ -16,7 +16,7 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=202.5428.22
+_buildver=202.5792.28
 _veryear=2020
 _verrelease=1
 _verextra=2
