@@ -1,29 +1,33 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 _pkgname=face_recognition
 pkgname=python-$_pkgname
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The world's simplest facial recognition api for Python and the command line"
 url="https://github.com/ageitgey/face_recognition"
-depends=('python-click>=6.0'
-         'python-dlib>=19.3'
+depends=('python-click'
+         'python-dlib'
          'python-face_recognition_models'
          'python-numpy'
          'python-pillow'
-         'python-scipy>=0.19.0')
+         'python-scipy')
 makedepends=('python-setuptools')
 license=(MIT)
 arch=(any)
-source=("https://files.pythonhosted.org/packages/a3/f3/99c0fdebe04ab2ed12a6b9a6b6c568a6ae9c757da700215a24aaa8ab9070/face_recognition-1.2.3.tar.gz")
-sha256sums=(a03eb709d1280bc3ca648add274ff741761b4c56f5317167252fc90cb519eda1)
+source=("https://files.pythonhosted.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=('4e54f245f8fe4751a9f0ef5301a7cd40')
 
 build(){
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py build
+  cd $srcdir/$_pkgname-$pkgver
+  python setup.py build
 }
 
 package(){
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  cd $srcdir/$_pkgname-$pkgver
+  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/license/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
