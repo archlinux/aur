@@ -1,7 +1,7 @@
 pkgbase = perl-x11-aosd
 	pkgdesc = libaosd binding for Cairo powered on screen display
 	pkgver = 0.03
-	pkgrel = 8
+	pkgrel = 9
 	url = https://metacpan.org/release/X11-Aosd/
 	arch = i686
 	arch = x86_64
