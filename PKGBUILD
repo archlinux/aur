@@ -3,13 +3,13 @@
 
 pkgname=hollywood
 pkgver=1.21
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
 arch=('any')
 
-url="https://launchpad.net/hollywood"
+url="https://github.com/dustinkirkland/hollywood"
 license=('Apache' 'Custom:CC0-1.0')
 
 depends=(
