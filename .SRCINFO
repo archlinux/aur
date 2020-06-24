@@ -1,14 +1,14 @@
 pkgbase = jdtls
 	pkgdesc = Eclipse Java language server
-	pkgver = 0.55.0
+	pkgver = 0.57.0
 	pkgrel = 1
 	url = https://github.com/eclipse/eclipse.jdt.ls
 	arch = any
 	license = EPL
 	depends = java-runtime
-	source = http://download.eclipse.org/jdtls/milestones/0.55.0/jdt-language-server-0.55.0-202004300028.tar.gz
+	source = http://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz
 	source = launcher.sh
-	sha256sums = fc848a0e22e1e3496e38b48d1324286a6583f7cddb2309165bfd6fec0f25bd4f
+	sha256sums = 897e4499bb7992edb6ad453039aa8fe6f4fc9b41aa99ae18b49bfae2d73573fb
 	sha256sums = 813801c237676764f6fb005df3ccaaee33c7cc0ab54fc1c73ef3cf4cee5a65de
 
 pkgname = jdtls
