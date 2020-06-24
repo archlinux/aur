@@ -1,7 +1,7 @@
 pkgbase = perl-b-flags
 	pkgdesc = Friendlier flags for B
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/B-Flags
 	arch = i686
 	arch = x86_64
