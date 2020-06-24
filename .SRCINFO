@@ -1,7 +1,7 @@
 pkgbase = perl-prima
 	pkgdesc = a perl multiplatform graphic toolkit
 	pkgver = 1.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Prima
 	arch = i686
 	arch = x86_64
