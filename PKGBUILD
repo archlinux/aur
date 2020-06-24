@@ -14,13 +14,15 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin.install)
+        bitcoin.install
+        20200624-fix-qpainterpath-on-recent-qt.patch)
 sha256sums=('a4f959edc39523423e6f791aef5a448b5c2ab9ca3319f329fd6facc7af422843'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'abef8a36e4990b85b3a556f546ea8f8349bb7c9d10dbbd7ff8013ae0b931a849')
+            'abef8a36e4990b85b3a556f546ea8f8349bb7c9d10dbbd7ff8013ae0b931a849'
+            'f76f4ff434632c19e39d9ff7627786f304bed2ee33cfba843ae06e5c003dc60e')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt' 'bitcoin-seeder')
@@ -29,6 +31,8 @@ install=bitcoin.install
 
 build() {
   cd "$srcdir/bitcoin-cash-node-$pkgver"
+
+  patch -Np1 < ../20200624-fix-qpainterpath-on-recent-qt.patch
 
   msg2 'Building...'
   mkdir -p build
