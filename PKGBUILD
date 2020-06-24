@@ -10,7 +10,7 @@ depends=('python>=3.5.0', 'python-i3ipc')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/{$_module}/${_module}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_module:0:1}/$_module/$_module-${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
