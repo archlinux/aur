@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-remove-dropdown-arrows
-pkgver=9
+pkgver=13
 pkgrel=1
 pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows/archive/version/${pkgver}.tar.gz")
-sha256sums=('a1049c82a710765acca89a0e5c3c8f9806ffeddb7b5259583a7368fb6b436eeb')
+sha256sums=('ee6c20da79d26529db3d6d6e5030c26892902183983f80337f390b6e6b3ac53f')
 
 package() {
   _uuid='remove-dropdown-arrows@mpdeimos.com'
