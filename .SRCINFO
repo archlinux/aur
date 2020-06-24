@@ -1,6 +1,6 @@
 pkgbase = lua-language-server-git
 	pkgdesc = Lua Language Server coded by Lua
-	pkgver = r2459.3c4203ac
+	pkgver = r2460.a782eb79
 	pkgrel = 2
 	url = https://github.com/sumneko/lua-language-server
 	arch = x86_64
@@ -10,11 +10,9 @@ pkgbase = lua-language-server-git
 	depends = lua
 	source = git+https://github.com/sumneko/lua-language-server.git
 	source = 0001-Fix-paths.patch
-	source = 0002-Disable-Test-Target.patch
 	source = wrapper
 	sha256sums = SKIP
-	sha256sums = d0f384fccc0ff6a6422af75d7380af4f67522a08efac7632d42cdf4921d70f4e
-	sha256sums = 7dde63f7c372a06ec951e705b5690ed5500a8dab601266dcca57d603cd0675a6
+	sha256sums = 3db93904aaa53c635da41f74e1c2bb59b524671c1d236f3c6fd8887e73b91ecd
 	sha256sums = 6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa
 
 pkgname = lua-language-server-git
