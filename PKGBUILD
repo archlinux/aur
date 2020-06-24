@@ -13,7 +13,7 @@ url="https://www.yozosoft.com/product-officelinux.html"
 options=('!strip')
 license=("custom")
 arch=('x86_64') 
-repalces=('yozo-office-2019')
+replaces=('yozo-office-2019')
 conflicts=('yozo-office-2019')
 source_x86_64=("http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_${pkgver}_amd64.deb")
 md5sums_x86_64=('cf22531071e607019c02a1a046f70e5c')
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package_yozo-office() {
-    depends=('jre8-openjdk-headless' 'libxtst' 'libxt')
+    depends=('java-runtime=8' 'libxt' 'libxmu' 'gtk2' 'libglvnd')
     optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
     		'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
     		'yozo-office-fonts: UI Fonts'
@@ -47,21 +47,33 @@ package_yozo-office() {
     rm -rf usr/share/mime
     rm -rf usr/share/applications/yozo-uninstall.desktop
     rm -rf opt/Yozosoft/Yozo_Office/Templates
+    #Translate pathname
+    #cd opt/Yozosoft/Yozo_Office/ScienceEditorImages
+    #find . -type f -exec iconv * -f gb18030 -t utf8 {} \;
     #Split fonts files
     cd "${srcdir}"
     install -d usr/share/fonts/truetype
-    mv "${pkgdir}/usr/share/fonts/truetype/yozo" usr/share/fonts/truetype
+    mv "${pkgdir}"/usr/share/fonts/truetype/yozo usr/share/fonts/truetype
     
     #Replace Java bin
-    rm -rf "${pkgdir}/opt/Yozosoft/Yozo_Office/Jre/bin"
-    ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin "${pkgdir}/opt/Yozosoft/Yozo_Office/Jre/bin"
+    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
+    ln -sf /usr/lib/jvm/default/bin "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
     cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
     for j in *; do
         if [ "$j" != "ext" ]; then
             rm -rf $j
         fi
     done
-
+    #Verify that All World-Writable Directories Have Sticky Bits Set
+    find "${pkgdir}" -xdev -type d \( -perm -0002 -a ! -perm -1000 \) -print0 | xargs -0 chmod +t
+    #Move VLC plugin lib
+    mkdir -p "${pkgdir}"/usr/lib/Yozo_Office/
+    mv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/* "${pkgdir}"/usr/lib/Yozo_Office
+    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib
+    ln -sf "${pkgdir}"/usr/lib/Yozo_Office "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib
+    
+    install -Dm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    
     targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
     unpackP="${targetP}/Jre/bin/unpack200"
     libP="${targetP}/Jre/lib"
@@ -70,6 +82,6 @@ package_yozo-office() {
 package_yozo-office-fonts() {
     pkgdesc="永中办公界面字体 | UI Fonts provided by Yozo Office 2019"
     cd "${srcdir}"
-    install -d "${pkgdir}/usr/share/fonts/truetype"
-    mv usr/share/fonts/truetype/yozo "${pkgdir}/usr/share/fonts/truetype"
+    install -d "${pkgdir}"/usr/share/fonts/truetype
+    mv usr/share/fonts/truetype/yozo "${pkgdir}"/usr/share/fonts/truetype
 }

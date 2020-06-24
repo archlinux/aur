@@ -6,15 +6,18 @@ pkgbase = yozo-office
 	arch = x86_64
 	license = custom
 	conflicts = yozo-office-2019
+	replaces = yozo-office-2019
 	options = !strip
 	source_x86_64 = http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_8.0.1331.101ZH.S1_amd64.deb
 	md5sums_x86_64 = cf22531071e607019c02a1a046f70e5c
 
 pkgname = yozo-office
 	install = yozo-office.install
-	depends = jre8-openjdk-headless
-	depends = libxtst
+	depends = java-runtime=8
 	depends = libxt
+	depends = libxmu
+	depends = gtk2
+	depends = libglvnd
 	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
 	optdepends = ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.
 	optdepends = yozo-office-fonts: UI Fonts
