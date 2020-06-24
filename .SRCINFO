@@ -1,16 +1,16 @@
 pkgbase = python-sphinxcontrib-spelling
 	pkgdesc = Sphinx spelling extension
-	pkgver = 4.2.0
+	pkgver = 5.1.2
 	pkgrel = 1
-	url = https://bitbucket.org/dhellmann/sphinxcontrib-spelling
+	url = https://github.com/sphinx-contrib/spelling
 	arch = any
 	license = BSD
+	makedepends = unzip
 	depends = python-sphinx
 	depends = python-pyenchant
-	depends = python-six
-	noextract = sphinxcontrib_spelling-4.2.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sphinxcontrib_spelling/sphinxcontrib_spelling-4.2.0-py3-none-any.whl
-	sha256sums = e25182225d8380c886000e544024f8513a2e7dad130f8297b8c23db80e31b6ed
+	noextract = sphinxcontrib_spelling-5.1.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sphinxcontrib_spelling/sphinxcontrib_spelling-5.1.2-py3-none-any.whl
+	sha256sums = 4c17bc16cdb08a50b430245dfe351d6e5b61b5e86aa5432956f0e4ab41dabc41
 
 pkgname = python-sphinxcontrib-spelling
 
