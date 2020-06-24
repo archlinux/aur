@@ -1,7 +1,7 @@
 pkgbase = perl-x11-idletime
 	pkgdesc = Get the idle time of X11
 	pkgver = 0.09
-	pkgrel = 5
+	pkgrel = 6
 	url = https://metacpan.org/release/X11-IdleTime
 	arch = i686
 	arch = x86_64
