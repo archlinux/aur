@@ -1,7 +1,7 @@
 pkgbase = noweb
 	pkgdesc = A Simple, Extensible Tool for Literate Programming build against ICON libs and texlive
 	pkgver = 2_12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nrnrnr/noweb
 	arch = i686
 	arch = x86_64
