@@ -1,6 +1,6 @@
 pkgbase = python-openrgb-git
 	pkgdesc = A python client for the OpenRGB SDK
-	pkgver = v0.0.5.r1.gf32661a
+	pkgver = v0.0.7.r1.g801c085
 	pkgrel = 1
 	url = https://github.com/jath03/openrgb-python
 	arch = any

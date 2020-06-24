@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/jath03/openrgb-python
 
 pkgname=python-openrgb-git
-pkgver=v0.0.5.r1.gf32661a
+pkgver=v0.0.7.r1.g801c085
 pkgrel=1
 pkgdesc="A python client for the OpenRGB SDK"
 arch=('any')
