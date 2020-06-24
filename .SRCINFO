@@ -1,0 +1,18 @@
+pkgbase = git-sizer
+	pkgdesc = Compute various size metrics for a Git repository, flagging those that might cause problems
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/github/git-sizer
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = git
+	source = https://github.com/github/git-sizer/archive/951a51bd37e5e3454850d471b05d9d51d4851b74.tar.gz
+	sha256sums = 22491d77f5a694b9e1ea0596884a99fe5b1e409e9bed6b07cb834b5361311f77
+
+pkgname = git-sizer
+
