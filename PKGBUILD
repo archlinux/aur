@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer
-pkgver=2.2.51.1
+pkgver=2.2.51.2
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -15,7 +15,7 @@ makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cma
 source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "superslicer.desktop"
 		"0001-wxgtk3-is-broken-on-wayland.patch")
-sha512sums=('8bb2de525ad67a5a4a0821d631bab33a8a9d6f0ce3e7a604b409427752ba854dec0bd55798e812fa4ab83b1e749f0c11e55aa95405a318a5c3fd9a87f4d7ae62'
+sha512sums=('fbcfa98bee8f3284c36eb33eb715ab03979c26778656d16b56485ba553f5c5702e1fb59b2b43ce0e1e0ddea1d15f278b007c7a064824df16b95d8a2f9647e928'
             '18b39d66b12453686ac0b411bac4a7c3000c541aeb0de2cacf37552a0e2435858c9ce2d3da10fa05ab6ab0e5e714f78f6a011f894435ab7195ae5f3ed8bc5623'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5')
 
