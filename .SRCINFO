@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn
 	pkgdesc = The Mullvad VPN client app for desktop
-	pkgver = 2020.4
-	pkgrel = 3
+	pkgver = 2020.5
+	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mullvad-vpn
 	depends = libappindicator-gtk3
 	depends = libxss
 	depends = nss
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.4?signed
-	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=ca17805ec31da8201982ef3e9082ca3376395b52?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.5?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=f9c55513f372de96223fad3ab6bd2aa78d517387?signed
 	source = mullvad-vpn.sh
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
 	sha256sums = SKIP
