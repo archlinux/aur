@@ -1,18 +1,20 @@
 pkgbase = python2-translate-toolkit-lib
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
-	pkgver = 2.4.0
+	pkgver = 2.5.1
 	pkgrel = 1
-	url = http://toolkit.translatehouse.org/
+	url = https://toolkit.translatehouse.org/
 	arch = any
 	license = GPL
 	makedepends = python2-setuptools
-	depends = bash
-	depends = python2-lxml
 	depends = python2-six
-	depends = python2-diff-match-patch
+	depends = python2-lxml
+	depends = python2-levenshtein
+	depends = python2-chardet
+	depends = python2-pycountry
+	depends = python2-backports.csv
 	depends = python2-cheroot
-	source = translate-toolkit-2.4.0.tar.gz::https://github.com/translate/translate/archive/2.4.0.tar.gz
-	sha256sums = 7f1d6a9566bb512fd88d51bd8bc920f42e379c91a4686761dbe89762f8a3a51d
+	source = translate-toolkit-2.5.1.tar.gz::https://github.com/translate/translate/archive/2.5.1.tar.gz
+	sha256sums = f86a34e40c52dcdf1ce516687180736e24a52e44164df1d3d1570c8ac223561f
 
 pkgname = python2-translate-toolkit-lib
 
