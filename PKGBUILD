@@ -18,7 +18,7 @@ validpgpkeys=('3F464391498FE874BDB5D98F2124AA1983785C90')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	
+
 	autoreconf -f -i
 	./configure --prefix=/usr
 	make
