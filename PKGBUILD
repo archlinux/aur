@@ -3,13 +3,13 @@
 _pkgname=jack_mixer
 pkgname="${_pkgname}-git"
 pkgver=12.r290.d5c0bc6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based Jack audio mixer (git version)"
 arch=('x86_64')
 url="https://rdio.space/jackmixer/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('gcc-libs' 'hicolor-icon-theme' 'python-cairo' 'python-gobject' 'python-xdg')
+depends=('gcc-libs' 'hicolor-icon-theme' 'python-cairo' 'python-gobject' 'python-pyxdg')
 makedepends=('git' 'glib2' 'jack')
 optdepends=('new-session-manager: NSM session management support')
 provides=("${_pkgname}")

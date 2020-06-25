@@ -1,7 +1,7 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A GTK based Jack audio mixer (git version)
 	pkgver = 12.r290.d5c0bc6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rdio.space/jackmixer/
 	arch = x86_64
 	groups = pro-audio
@@ -13,7 +13,7 @@ pkgbase = jack_mixer-git
 	depends = hicolor-icon-theme
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-xdg
+	depends = python-pyxdg
 	optdepends = new-session-manager: NSM session management support
 	provides = jack_mixer
 	conflicts = jack_mixer
@@ -25,7 +25,7 @@ pkgname = jack_mixer-git
 	depends = hicolor-icon-theme
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = libglib-2.0.so
 	depends = libjack.so
 
