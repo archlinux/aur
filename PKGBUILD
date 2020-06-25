@@ -6,9 +6,9 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2020.5
-_channel=beta
-pkgver=${_pkgver}.${_channel}2
-pkgrel=2
+_channel=stable
+pkgver=${_pkgver}.${_channel}
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='f9c55513f372de96223fad3ab6bd2aa78d517387'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$_pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -104,13 +104,13 @@ build() {
 	npm run pack:linux
 }
 
-#check() {
-#	cd "$srcdir/mullvadvpn-app"
-#	cargo test --release --locked
-#
+check() {
+	cd "$srcdir/mullvadvpn-app"
+	cargo test --release --locked
+
 #	cd gui
 #	npm test
-#}
+}
 
 package() {
 	cd "$srcdir/mullvadvpn-app"
@@ -141,7 +141,7 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
+	ar x "MullvadVPN-$_pkgver.0_amd64.deb"
 	tar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
