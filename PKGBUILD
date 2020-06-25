@@ -1,7 +1,8 @@
 # Maintainer: Romain Gallet <rgallet@grumlimited.co.uk>
 # Contributor: Romain Gallet <rgallet@grumlimited.co.uk>
 _packager="Romain Gallet <rgallet@grumlimited.co.uk>"
-pkgname=authenticator-rs-bin
+_deb_pkgname=authenticator-rs
+pkgname=$_deb_pkgname-bin
 md5sums=('17d6b7d2a086c21377a3f6f4be697c87')
 pkgver=0.2.1
 pkgrel=2
