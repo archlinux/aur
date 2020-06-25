@@ -1,0 +1,19 @@
+pkgbase = usbimager
+	pkgdesc = Minimal GUI application to write compressed disk images to USB drives
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://gitlab.com/bztsrc/usbimager
+	install = groups.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = sudo
+	depends = udisks2
+	source = https://gitlab.com/bztsrc/usbimager/-/archive/1.0.4/usbimager-1.0.4.tar.gz
+	sha256sums = 1dc151d08e99f298b4b1cb9000b6adb94ab765a2816da4b33c8ccc52f08ec99d
+
+pkgname = usbimager
+

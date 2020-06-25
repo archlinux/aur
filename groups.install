@@ -1,0 +1,3 @@
+post_install() {
+  sudo chgrp disk /usr/bin/usbimager
+}
