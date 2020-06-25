@@ -1,6 +1,6 @@
 pkgbase = oink-git
 	pkgdesc = Oink is an implementation of modern parity game solvers written in C++.
-	pkgver = r114.f80978d
+	pkgver = r120.0eadb9e
 	pkgrel = 1
 	url = https://github.com/trolando/oink
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = oink-git
 	makedepends = cmake
 	makedepends = boost
 	depends = boost-libs
-	source = oink-git::git+https://github.com/trolando/oink#commit=f80978d
+	source = oink-git::git+https://github.com/trolando/oink#commit=0eadb9e
 	md5sums = SKIP
 
 pkgname = oink-git
