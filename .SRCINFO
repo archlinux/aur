@@ -1,13 +1,13 @@
 pkgbase = zfs-linux
-	pkgver = 0.8.4_5.7.4.arch1.1
+	pkgver = 0.8.4_5.7.5.arch1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.7.4.arch1-1
+	makedepends = linux-headers=5.7.5.arch1-1
 	depends = kmod
 	depends = zfs-utils=0.8.4
-	depends = linux=5.7.4.arch1-1
+	depends = linux=5.7.5.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.4/zfs-0.8.4.tar.gz
 	sha256sums = 2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb
 
