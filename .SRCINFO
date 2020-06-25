@@ -1,22 +1,13 @@
 pkgbase = ros-build-tools
 	pkgdesc = Utilities for building Arch packages for ROS stacks.
-	pkgver = 0.3.1
-	pkgrel = 3
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/acxz/pkgbuilds/tree/master/ros-build-tools
 	arch = any
 	license = BSD
 	depends = bash
-	optdepends = python
-	optdepends = python-argparse
-	optdepends = python-yaml
-	optdepends = python-termcolor
-	optdepends = python-certifi
-	source = fix-python-scripts.sh
 	source = clear-ros-env.sh
-	source = create_pkgbuild.py
-	sha256sums = 5528486d640d91136276edda2075aefc06f360e6297e556051bae57b9479aeda
 	sha256sums = 9626b8e5f3865f5640660f4a7f6a00afc4db8448b95329b4d5a64bd691677a88
-	sha256sums = 6171500f4e807e170f3705277032107b3902502a7fcccf8ab5b300a35580ebf7
 
 pkgname = ros-build-tools
 
