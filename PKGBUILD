@@ -9,13 +9,13 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=gerbil-scheme-git
 pkgver=0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
 license=('LGPLv2.1' 'Apache 2.0')
 groups=()
-depends=()
+depends=('gambit-c')
 makedepends=('git' 'gambit-c')
 provides=()
 conflicts=()

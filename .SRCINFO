@@ -1,7 +1,7 @@
 pkgbase = gerbil-scheme-git
 	pkgdesc = Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime.
 	pkgver = 0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vyzo/gerbil
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = gerbil-scheme-git
 	license = Apache 2.0
 	makedepends = git
 	makedepends = gambit-c
+	depends = gambit-c
 
 pkgname = gerbil-scheme-git
 
