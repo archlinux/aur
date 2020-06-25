@@ -12,9 +12,8 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
 +jmespath~=0.9, >=0.9.5
  PyYAML~=5.1
 -cookiecutter~=1.6.0
--aws-sam-translator==1.24.0
 +cookiecutter~=1.6
-+aws-sam-translator~=1.24.0
+ aws-sam-translator==1.25.0
  docker~=4.0
  dateparser~=0.7
 -python-dateutil~=2.6, <2.8.1
@@ -23,7 +22,7 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
 -aws_lambda_builders==0.9.0
 -tomlkit==0.5.8
 +python-dateutil~=2.6
-+requests~=2.23.0
++requests~=2.23
 +serverlessrepo~=0.1.9
 +aws_lambda_builders~=0.9.0
 +tomlkit~=0.5, >=0.5.8
