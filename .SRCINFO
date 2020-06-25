@@ -1,17 +1,17 @@
 pkgbase = ruby-parallel
 	pkgdesc = Run any kind of code in parallel processes
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 1
-	url = https://gitlab.redox-os.org/redox-os/parallel
+	url = https://github.com/grosser/parallel
 	arch = any
 	license = MIT
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = parallel-1.19.1.gem
+	noextract = parallel-1.19.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/parallel-1.19.1.gem
-	sha256sums = c27ee2925978e8100f49063fd60f625522a6e96b08541ac26e7f2a72d594518a
+	source = https://rubygems.org/downloads/parallel-1.19.2.gem
+	sha256sums = 54dc19bef898b700b6f51ac1a025b0d310708a5e1c1b127ec35ed4dafb11619d
 
 pkgname = ruby-parallel
 
