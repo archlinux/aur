@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -16,10 +16,13 @@ depends=('entr'
          'python'
          'python-brotli' # fonttools optdepends
          'python-click'
+         'python-cffsubr' # ufo2ft optdepends
          'python-fontmake'
          'python-fonttools'
          'python-fs' # fonttools optdepends
          'python-lxml' # fonttools optdepends
+         'python-skia-pathops' # ufo2ft optdepends
+         'python-ufo2ft'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
          'python-zopfli' # fonttools optdepends
@@ -28,7 +31,7 @@ depends=('entr'
          'woff2'
          'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('215b6bbea3a3ade86c923861c3e232974877d561d2aca705947d7fbfff7aea31')
+sha256sums=('697701e104b6c3d133c11f42a23d2d9214c2cbfcfed683455cfb8db4aeead2ab')
 
 prepare() {
     cd "$pkgname-$pkgver"
