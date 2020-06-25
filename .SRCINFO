@@ -1,7 +1,7 @@
 pkgbase = rog-core
 	pkgdesc = A utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flukejones/rog-core
 	arch = x86_64
 	license = MPL2

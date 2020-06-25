@@ -2,7 +2,7 @@
 pkgname=rog-core
 pkgbase=rog-core
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW"
 arch=('x86_64')

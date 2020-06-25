@@ -11,6 +11,7 @@ if [ "$pkgver" != "$VERSION" ]
 then
     echo $pkgver "->" $VERSION
     sed -i "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
+    sed -i "s/^pkgrel=.*$/pkgrel=1/" PKGBUILD
     sed -i "s/^sha256sums=.*/"$(makepkg --geninteg 2> /dev/null)"/" PKGBUILD
     makepkg --printsrcinfo > .SRCINFO
 
