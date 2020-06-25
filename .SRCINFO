@@ -1,0 +1,19 @@
+pkgbase = gilde-player
+	pkgdesc = Simple and minimalistic media player relying on GStreamer for the multimedia support and GTK+ for the user interface
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/philn/glide
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gtk3
+	source = https://github.com/philn/glide/releases/download/0.5.6/glide-0.5.6.tar.xz
+	sha256sums = a031dd6c309a95154709990d27a94ec13eb064ec5b05f6ba0c74946d0501af53
+
+pkgname = gilde-player
+
