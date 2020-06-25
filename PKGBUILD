@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
 pkgver=2.0.25
-pkgrel=4
+pkgrel=5
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
 url='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html'
@@ -26,7 +26,7 @@ package() {
 
   # Fix symlinks
   BIN_DIR="/usr/share/aws-cli/v2/current/bin"
-  for i in "$pkgdir/$BIN_DIR/*"; do
+  for i in $pkgdir/$BIN_DIR/*; do
     ln -sf "$BIN_DIR/$(basename $i)" "$pkgdir/usr/bin/"
   done
 
