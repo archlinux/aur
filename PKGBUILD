@@ -1,7 +1,7 @@
 # Maintainer: Franco Masotti <franco dot masotti at live dot com>
 # Contributor: Franco Masotti <franco dot masotti at live dot com>
 pkgname=python-fpyutils
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A collection of useful non-standard Python functions which aim to be simple to use"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('python' 'python-atomicwrites=1.4.0')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("${pkgname}.tar.gz::https://github.com/frnmst/fpyutils/archive/${pkgver}.tar.gz")
-sha256sums=('7f2db6439abcf9994be19b73c146739f7189f9864a828f9f05141cd349f7bf37')
+source=("https://frnmst.gitlab.io/software/fpyutils-${pkgver}.tar.gz.sig" "https://frnmst.gitlab.io/software/fpyutils-${pkgver}.tar.gz")
+sha512sums=('SKIP' '7f2fba593c5b05b84f631626b67d71bda85692813f6743d35e33fcb4b8bca0ed7093eacd783d068b4e531a79be6e0da7bd10d617e61fabed89611028711c2436')
 
 check() {
   cd "${srcdir}"/fpyutils-"${pkgver}"
