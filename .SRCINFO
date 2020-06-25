@@ -1,6 +1,6 @@
 pkgbase = ruby-parser
 	pkgdesc = A Ruby parser written in pure Ruby.
-	pkgver = 2.7.0.2
+	pkgver = 2.7.1.4
 	pkgrel = 1
 	url = https://rubygems.org/gems/parser
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-parser
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-ast
-	noextract = parser-2.7.0.2.gem
+	noextract = parser-2.7.1.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/parser-2.7.0.2.gem
-	sha256sums = d11a7ca1bebe72fdc738ade09ffd2e004be69b9a20d074e66a6dd9b5b2d9b490
+	source = https://rubygems.org/downloads/parser-2.7.1.4.gem
+	sha256sums = b6629f5772e6e4d1c83ce56dfb48a20f9ad589c5462ebe751ad64db8a1fd6080
 
 pkgname = ruby-parser
 
