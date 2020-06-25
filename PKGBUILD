@@ -7,6 +7,8 @@ pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=(i686)
 url="https://zoom.us/"
+provides=('zoom')
+conflicts=('zoom')
 license=('custom')
 depends=('fontconfig' 'glib2' 'libpulse' 'libsm' 'ttf-font' 'libx11' 'libxcb'
     'libxcomposite' 'libxfixes' 'libxi' 'libxcursor' 'libxkbcommon-x11' 'libxrandr'
