@@ -1,0 +1,19 @@
+pkgbase = python-orgformat
+	pkgdesc = Utility library for providing functions to generate and modify Org mode syntax elements like links, time-stamps, or date-stamps.
+	pkgver = 2019.12.29.1
+	pkgrel = 00
+	url = https://github.com/novoid/orgformat
+	arch = any
+	license = GPL
+	makedepends = python-pip
+	depends = python
+	noextract = orgformat-2019.12.29.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/be/46/5aaaf1e5c927e63172ba36bbca37c0cbce0cbe79a1abbf26958f6776342c/orgformat-2019.12.29.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 6c098bbbdfdf7b095b0096475b1575f2
+	md5sums = d32239bcb673463ab874e80d47fae504
+
+pkgname = python-orgformat
+
