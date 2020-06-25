@@ -1,10 +1,11 @@
 pkgbase = refl-cpp
 	pkgdesc = A modern compile-time reflection library for C++ with support for overloads, templates, attributes and proxies
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veselink1/refl-cpp
 	arch = any
 	license = MIT
+	makedepends = dos2unix
 	source = refl-cpp-0.11.0.tar.gz::https://github.com/veselink1/refl-cpp/archive/v0.11.0.tar.gz
 	sha256sums = b298f226d3733d3fe0c661d2662d600f061b74f7343a790f48ea225f3c03f946
 
