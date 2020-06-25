@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cvassistant-git
-pkgver=r155.58cf141
+pkgver=3.1.0.r155.58cf141
 pkgrel=1
 pkgdesc="Helps you create specialized resumes in Word .docx format fast and easy"
 arch=('x86_64')
@@ -15,12 +15,13 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "3.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	qmake
+	make
 }
 
 package() {

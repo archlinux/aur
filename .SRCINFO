@@ -1,6 +1,6 @@
 pkgbase = cvassistant-git
 	pkgdesc = Helps you create specialized resumes in Word .docx format fast and easy
-	pkgver = r155.58cf141
+	pkgver = 3.1.0.r155.58cf141
 	pkgrel = 1
 	url = https://cvassistant.sourceforge.io
 	arch = x86_64
