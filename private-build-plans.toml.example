@@ -6,7 +6,7 @@
 # ss## stylistic sets:
 # https://raw.githubusercontent.com/be5invis/Iosevka/master/images/stylesets.png
 
-# cv## character variants:
+# cv## and VX__ character variants:
 # https://raw.githubusercontent.com/be5invis/Iosevka/master/images/charvars.png
 
 # ligset-* ligature sets:
@@ -38,8 +38,14 @@ design = [                         # Common styles
   "cv92",                          # toothless G
   "cv93",                          # backslash 0
   "cv95",                          # curly λ
-  "cv97",                          # open 9
   "cv98",                          # sans j
+  "VXAF",                          # open curved 6
+  "VXAL",                          # flat top &
+  "VXAT",                          # semi open 4
+  "VXAQ",                          # bottom heavy B
+  "VXBA",                          # tailed q
+  "VXBC",                          # straight 9
+  "VXBE",                          # crossed zZ
 ]
 
 # upright = []                     # Upright-only styles
@@ -74,8 +80,14 @@ design = [                         # Common styles
   "cv92",                          # toothless G
   "cv93",                          # backslash 0
   "cv95",                          # curly λ
-  "cv97",                          # open 9
   "cv98",                          # sans j
+  "VXAF",                          # open curved 6
+  "VXAL",                          # flat top &
+  "VXAT",                          # semi open 4
+  "VXAQ",                          # bottom heavy B
+  "VXBA",                          # tailed q
+  "VXBC",                          # straight 9
+  "VXBE",                          # crossed zZ
 
 ]
 # upright = []                     # Upright-only styles
@@ -110,8 +122,14 @@ design = [                         # Common styles
   "cv92",                          # toothless G
   "cv93",                          # backslash 0
   "cv95",                          # curly λ
-  "cv97",                          # open 9
   "cv98",                          # sans j
+  "VXAF",                          # open curved 6
+  "VXAL",                          # flat top &
+  "VXAT",                          # semi open 4
+  "VXAQ",                          # bottom heavy B
+  "VXBA",                          # tailed q
+  "VXBC",                          # straight 9
+  "VXBE",                          # crossed zZ
 
 ]
 # upright = []                     # Upright-only styles
