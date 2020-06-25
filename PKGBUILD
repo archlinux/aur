@@ -7,7 +7,7 @@
 
 pkgname=dolphin-root-git
 _pkgname=${pkgname%-root-git}
-pkgver=76f9d9a5f5c6b2a26d4e7e927a39f52ebf88960c
+pkgver=d1baf3398e53931735b724672d5ae48649b44a18
 pkgrel=1
 pkgdesc="KDE File Manager, patched to be able to run as root, based on dolphin-git sources"
 arch=(armv7h i686 x86_64)
