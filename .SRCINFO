@@ -1,7 +1,7 @@
 pkgbase = xfce4-panel-devel
 	pkgdesc = Panel for the Xfce desktop environment (development release)
-	pkgver = 4.15.2
-	pkgrel = 3
+	pkgver = 4.15.3
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -19,12 +19,10 @@ pkgbase = xfce4-panel-devel
 	depends = libwnck3
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = xfce4-panel=4.15.2
+	provides = xfce4-panel=4.15.3
 	conflicts = xfce4-panel
-	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.15/xfce4-panel-4.15.2.tar.bz2
-	source = vala_0.48_build_fix.patch::https://git.xfce.org/xfce/xfce4-panel/patch/?id=659d61ee2901ffe1e34f7dbcf5d8213b7a17d142
-	sha256sums = a668b5315268ba5b14b6574edbe00c522f879dea659b75c7742da7140cc3657f
-	sha256sums = 5837420637f100ec5f5170c992932a9f930e958cb34f647d993b031543138b02
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.15/xfce4-panel-4.15.3.tar.bz2
+	sha256sums = 4746c7153c7c7ff53273a36a8ab88eb77acab303890c76f12c4ebffd7e6d9cef
 
 pkgname = xfce4-panel-devel
 
