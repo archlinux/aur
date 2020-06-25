@@ -1,0 +1,23 @@
+pkgbase = gnome-shell-extension-todotxt-git
+	pkgdesc = Todo.txt GUI for gnome-shell
+	pkgver = v30.r9.g6ec0377
+	pkgrel = 1
+	url = https://gitlab.com/bartl/todo-txt-gnome-shell-extension
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = python-lxml
+	makedepends = python-jsonschema
+	makedepends = python-six
+	makedepends = moreutils
+	makedepends = glib2
+	makedepends = jq
+	depends = gnome-shell
+	provides = gnome-shell-extension-todotxt
+	conflicts = gnome-shell-extension-todotxt
+	source = todo-txt::git+https://gitlab.com/bartl/todo-txt-gnome-shell-extension.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-todotxt-git
+
