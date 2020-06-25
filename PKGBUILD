@@ -2,8 +2,8 @@
 
 pkgname=moe-kde-git
 _gitname=moe-theme
-pkgver=r27.ad4b763
-pkgrel=3
+pkgver=r91.29c375c
+pkgrel=1
 pkgdesc='A Light theme, with blur transparencies and red tones with gradients for KDE'
 arch=('any')
 url='https://www.opencode.net/jomada/moe-theme'
@@ -20,7 +20,7 @@ optdepends=('plasma-desktop: for a plasma desktop theme'
             'plasma5-applets-window-title: for Latte dock'
             'plasma5-applets-latte-separator: for Latte dock'
             'plasma5-applets-window-buttons: for Latte dock'
-            'plasma5-applets-chiliclock: Chili Clock on Latte dock')
+            'plasma5-applets-betterinlineclock: Better inline (Chili) Clock on Latte dock')
 makedepends=('git')
 provides=('moe-kde')
 conflicts=('moe-kde')
