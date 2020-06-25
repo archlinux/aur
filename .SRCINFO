@@ -1,7 +1,7 @@
 pkgbase = perl-encode-detect
 	pkgdesc = An Encode::Encoding subclass that detects the encoding of data
 	pkgver = 1.01
-	pkgrel = 6
+	pkgrel = 7
 	url = https://metacpan.org/release/Encode-Detect
 	arch = any
 	license = GPL
