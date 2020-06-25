@@ -64,7 +64,7 @@ prepare() {
     for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
                 integration-tests
     do
-        rm -rf ${sdir}
+        rm -rf swift-${sdir}
         mv swift-${sdir}-swift-${_swiftver} swift-${sdir}
     done
     rm -rf swift swiftpm
@@ -80,7 +80,7 @@ _common_build_params=(
     --xctest
     --foundation
     --libdispatch
-    --extra-cmake-options="-DSWIG_EXECUTABLE=/usr/bin/swig-3"
+    --extra-cmake-options="-DSWIG_EXECUTABLE=/usr/bin/swig"
 )
 
 _build_script_wrapper() {
