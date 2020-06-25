@@ -17,6 +17,8 @@ pkgbase = clang-format-static-bin
 	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-8_linux-amd64
 	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-9_linux-amd64
 	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-10_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/LICENSE.TXT.clang-8-and-lower
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/LICENSE.TXT.clang-9-and-higher
 	sha256sums = 2f34b784dc99e6ebc9e9af6e6eb0bef9a035b98dc67d56adc79307cca467df43
 	sha256sums = 0127f653a16191aa1cc41f4ea79d7014141ecfcda1c85091bdccb750703d5dda
 	sha256sums = 86a0582ff8ea3b1f471df98d93093fd4b5e717f9188d67bd09c4cee3a4412a53
@@ -26,6 +28,8 @@ pkgbase = clang-format-static-bin
 	sha256sums = f0ed013b4a5b404c45ab89c0c434e84a824b8ba0880c28cce11ebc79cd974cfb
 	sha256sums = bcea4e9aa5088db7778e1d5ece6fd14c75648dfbd725568524942d46ed18da54
 	sha256sums = e4268dfe6aae8c160791af86eed0cd04e737b5dc0a47c71291f3a9a28e4fd574
+	sha256sums = 2050acfe8b8d5ae1ef971b6ab419cd9f46e3f2d779a09966105622b3112600d9
+	sha256sums = ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47
 
 pkgname = clang-format-static-bin
 
