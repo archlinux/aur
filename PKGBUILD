@@ -3,8 +3,8 @@
 
 _gemname=gh
 pkgname=ruby-$_gemname
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='layered github client'
 arch=(any)
 url='https://github.com/travis-ci/gh'
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('02b022c6f3dc8e8661a80a1debfb723880fbd9f9a0b71c56bb62b7640243450d4a66d1f3f78c23e78460a55b2a7ad484a82a677895b6569d6ae50c318fa4cab7')
+sha512sums=('f0b04bf32db52ebb1b27714dacb00e07c78115fbe60681df06f3f503d41c62c683245cee6653480dcb865f0292f2fa85c4b62c0a85e230953606af517b76b045')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
