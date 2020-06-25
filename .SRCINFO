@@ -1,27 +1,17 @@
 pkgbase = libvc
 	pkgdesc = vCard library.
-	pkgver = 003
-	pkgrel = 3
-	url = http://rolo.sourceforge.net
+	pkgver = 006
+	pkgrel = 1
+	url = https://github.com/libvc/libvc
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = glibc
-	source = http://downloads.sourceforge.net/rolo/libvc-003.tar.gz
-	source = count-vcards-buffer-overflow.diff
-	source = field-names-comply-with-vCard2.1diff
-	source = manpage-Lb-definition.diff
-	source = accept-line-folding.diff
-	md5sums = 3c9f0fb512d02d179f57a9eadcfa1043
-	md5sums = 98b3c99555f1e69a0d07152cb800da4f
-	md5sums = d5bd5ff0720cc726998694c2e01e495e
-	md5sums = 1366acdbc5569cd18079d823eb91782c
-	md5sums = 8cf005aac291836e574751f49b5fa32b
-	sha256sums = c5e75ff0ad63b723179dfcc62849adedcfa575473b784f3bca982b2c481e0b9b
-	sha256sums = 78466514046a2c04e3c50b51d4a8e1d7c0f4ae781b0d1221078b9e9ba46dbab2
-	sha256sums = bfeb6c52aece423646454ca17905fdf2c351eb56fa19a79db51c4c0c08420c5e
-	sha256sums = 08798202bcc7c8453eeb13f5328ec1a135527f55920b67d05ec1674692191691
-	sha256sums = 62e8ab67b03d4140ced02ec894a460bf3a0d06f86f1d4ab804132d71cc8b0e7d
+	source = https://github.com/libvc/libvc/archive/v006.tar.gz
+	source = https://github.com/libvc/libvc/releases/download/v006/v006.tar.gz.sig
+	validpgpkeys = 3F464391498FE874BDB5D98F2124AA1983785C90
+	md5sums = 4fb0ba25badf35fcf394513734e98048
+	md5sums = SKIP
 
 pkgname = libvc
 
