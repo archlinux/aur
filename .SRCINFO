@@ -1,0 +1,32 @@
+pkgbase = congress-git
+	pkgdesc = Public domain data collectors for the work of Congress, including legislation, amendments, and votes.
+	pkgver = r728.f327c0a
+	pkgrel = 1
+	url = https://github.com/unitedstates/congress/wiki
+	arch = any
+	license = CC0
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = libxml2
+	depends = libxslt
+	depends = zlib
+	depends = python-pyaml
+	depends = python-iso8601
+	depends = python-dateutil
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-cssselect
+	depends = python-scrapelib
+	depends = python-mechanize
+	depends = python-beautifulsoup4
+	depends = python-mock
+	depends = python-xmltodict
+	depends = python-rtyaml
+	provides = congress
+	conflicts = congress
+	source = git+https://github.com/unitedstates/congress.git
+	sha256sums = SKIP
+
+pkgname = congress-git
+
