@@ -1,0 +1,17 @@
+pkgbase = sfeed-curses-git
+	pkgdesc = Curses UI front-end for sfeed RSS and Atom parser
+	pkgver = 0.1.r0.g239d2c9
+	pkgrel = 1
+	url = https://www.codemadness.org/sfeed_curses-ui.html
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = ncurses
+	optdepends = sfeed: RSS and Atom parser
+	provides = sfeed_curses
+	options = !buildflags
+	source = git://git.codemadness.org/sfeed_curses
+	sha256sums = SKIP
+
+pkgname = sfeed-curses-git
+
