@@ -26,12 +26,6 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "glibc-includes.patch"
-    "repl_swift-dl.patch"
-    "swiftpm-glibc.patch"
-    "swift-tests-glibc.patch"
-    "cmark-python38.patch"
-    "sanitizer-glibc2.31.patch"
 )
 sha256sums=(
     'SKIP'
@@ -43,12 +37,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
-    '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
-    '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
-    'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55'
-    'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc'
-    '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b'
 )
 
 prepare() {
