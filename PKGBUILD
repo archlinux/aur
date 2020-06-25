@@ -5,7 +5,7 @@ pkgdesc='A browser plugin designed for the viewing of premium video content (ver
 pkgver=4.10.1679.0
 pkgrel=1
 #list od current images https://dl.google.com/dl/edgedl/chromeos/recovery/recovery.conf
-_chromeos_ver=13020.67.0
+_chromeos_ver=13020.82.0
 _chromeos_file="chromeos_${_chromeos_ver}_elm_recovery_stable-channel_mp-v2.bin"
 _rootfs_img="ROOT-A.img"
 _libwidevine="libwidevinecdm.so"
@@ -21,7 +21,8 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
         "https://dl.google.com/dl/edgedl/chromeos/recovery/${_chromeos_file}.zip")
 noextract=("${_chromeos_file}.zip")
 sha256sums=(SKIP
-            '199fa040d8f583164f7f47b495d20cf75923214a51cb24b917b44707733952bc')
+            '991e14bc613b38684c025fdeee456a2f51580dd1a744a362fd86ac0c73ccdb18')
+
 
 prepare() {
   gcc ../get_cdm_version.c -o get_cdm_version -ldl
