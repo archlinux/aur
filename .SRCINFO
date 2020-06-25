@@ -1,5 +1,5 @@
 pkgbase = poe-overlay-community-bin
-	pkgdesc = A Overlay for Path of Exile. Built with Electron and Angular.
+	pkgdesc = An overlay for Path of Exile. Built with Electron and Angular.
 	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork
