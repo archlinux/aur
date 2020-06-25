@@ -1,7 +1,7 @@
 # Contributor: Daniel Müllner <daniel@danifold.net>
 pkgname=perl-crypt-random-tesha2
 pkgver=0.01
-pkgrel=4
+pkgrel=5
 pkgdesc='Random numbers using timer/schedule entropy.'
 _dist=Crypt-Random-TESHA2
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-random-tesha2
 	pkgdesc = Random numbers using timer/schedule entropy.
 	pkgver = 0.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Crypt-Random-TESHA2
 	arch = any
 	license = GPL
