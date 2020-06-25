@@ -1,6 +1,6 @@
 # Maintainer: Matthias Loibl <mail@matthiasloibl.com>
 pkgname=cuelang-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Validate and define text-based and dynamic configuration"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 provides=("cuelang=${pkgver}")
 conflicts=("cuelang-cue-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cuelang/cue/releases/download/v${pkgver}/cue_${pkgver}_Linux_${arch}.tar.gz")
-sha256sums=('36c454c8ab48e3fe1d0bb10a461b8b4e362566b50048a5e2808e221248f373d5')
+sha256sums=('40078d02559595eec8e5a873f09ca89545502019bcac6f892f5a30bb8d49286c')
 
 package() {
   cd ${srcdir}/
