@@ -1,38 +1,35 @@
-# Maintainer: pzl <alsoelp@gmail.com>
-# Contributor: Nicolas Avrutin <nicolasavru@gmail.com>
-# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
 
 pkgname=hidapi-git
-pkgver=374.a6a622f
+pkgver=0.9.0.r57.g24a822c
 pkgrel=1
-pkgdesc="A Simple library for communicating with USB and Bluetooth HID devices."
-arch=(any)
-url="http://www.signal11.us/oss/hidapi/"
+pkgdesc='Simple library for communicating with USB and Bluetooth HID devices'
+arch=(x86_64)
+url='https://github.com/libusb/hidapi'
 license=('GPL3' 'BSD' 'custom')
-depends=('systemd-tools' 'libusb' 'fox')
+depends=('libusb')
+makedepends=('git')
 conflicts=('hidapi')
 provides=('hidapi')
-makedepends=('git')
-options=('!libtool')
-
-source=("$pkgname"::"git://github.com/signal11/hidapi")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/hidapi\.//'
 }
 
 build() {
     cd "$srcdir/$pkgname"
     ./bootstrap
-    ./configure --enable-testgui --prefix=/usr
+    ./configure --prefix=/usr
     make
 }
 
 package() {
     cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir/" install
-    install -D -m644 LICENSE-bsd.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-bsd.txt"
-    install -D -m644 LICENSE-orig.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-orig.txt"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    rm -f "${pkgdir}/usr/share/doc/hidapi/"LICENSE*
+    install -m0644 LICENSE.txt LICENSE-bsd.txt LICENSE-orig.txt "$pkgdir/usr/share/licenses/$pkgname"
 }
