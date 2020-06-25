@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://naev.org/"
 depends=('sdl2_image' 'sdl2_mixer' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'binutils' 'libgl' 'libzip' 'luajit')
-makedepends=('git')
+makedepends=('git' 'intltool' 'zip')
 provides=('naev' 'naev-data')
 conflicts=('naev' 'naev-data')
 
