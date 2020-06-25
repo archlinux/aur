@@ -1,6 +1,6 @@
 pkgbase = ucm-bin
 	pkgdesc = Unison language code manager
-	pkgver = M1l
+	pkgver = M1m
 	pkgrel = 1
 	url = https://www.unisonweb.org
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ucm-bin
 	depends = ncurses5-compat-libs
 	depends = gmp
 	depends = zlib
-	source = ucm-M1l::https://github.com/unisonweb/unison/releases/download/release/M1l/unison-linux64.tar.gz
-	source = https://raw.githubusercontent.com/unisonweb/unison/release/M1l/LICENSE
-	sha256sums = 1d74ccb90403f30258e739d02d336e3db4e8529c70fd679110d75b22cffe5e94
+	source = ucm-M1m::https://github.com/unisonweb/unison/releases/download/release/M1m/unison-linux64.tar.gz
+	source = https://raw.githubusercontent.com/unisonweb/unison/release/M1m/LICENSE
+	sha256sums = ecb03e7b8f7c3f2a97a588cd330c3cff4fc4b14eee8601fe24a31580b0db57e3
 	sha256sums = 6dd1702f5e06317fef9577559ff85dae2aba622b0bc66f18db88c66ffeb693a2
 
 pkgname = ucm-bin
