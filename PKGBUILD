@@ -1,48 +1,48 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=devtools-qemu
-pkgver=14.0298784
+pkgver=12.3c44e3c
 pkgrel=1
 pkgdesc='QEMU based cross-build tools for Arch Linux ARM package maintainers'
 arch=('x86_64')
-url='https://github.com/arch4edu/devtools-qemu'
+url='https://aur.archlinux.org/packages/devtools-qemu'
 license=('GPL')
-depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools-alarm>=20191227' 'qemu-user-static-bin')
+depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools' 'qemu-user-static-bin')
 makedepends=('git')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/arch4edu/devtools-arch4edu-extra.git"
+	"archbuild-qemu.patch"
+)
+sha256sums=('SKIP'
+            '0d8549497ff97e2d11ca73c3d6463e134ce590cb7767b76b3c54eceab19c831e')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  echo "$(git rev-list --count master).$(git rev-parse --short master)"
+	cd "$srcdir/$pkgname"
+	echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
 
 build() {
-  cd $srcdir/$pkgname
+	cd $srcdir/$pkgname
 
-  cp /usr/bin/archbuild qemu_archbuild
-  patch qemu_archbuild < qemu.patch
+	cp /usr/bin/archbuild archbuild-qemu
+	patch archbuild-qemu < $srcdir/archbuild-qemu.patch
 
-  for i in armv6h armv7h aarch64
-  do
-    cp /usr/share/devtools/pacman-extra.conf pacman-extra-$i.conf
-    cp /usr/share/devtools/makepkg-x86_64.conf makepkg-$i.conf
-    patch pacman-extra-$i.conf < pacman-extra-$i.conf.patch
-    patch makepkg-$i.conf < makepkg-$i.conf.patch
-  done
+	for i in armv6h armv7h aarch64
+	do
+		sed -i '/^Include/s/$/.alarm/' pacman-extra-$i.conf
+	done
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/devtools
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/share/devtools
+	mkdir -p $pkgdir/etc/pacman.d
 
-  cp $srcdir/$pkgname/qemu_archbuild $pkgdir/usr/bin
-  cp $srcdir/$pkgname/mirrorlist $pkgdir/usr/share/devtools/qemu_mirrorlist
-  cp $srcdir/$pkgname/qemu_archbuild.sh $pkgdir/usr/share/devtools/qemu_archbuild.sh
+	cp $srcdir/$pkgname/archbuild-qemu $pkgdir/usr/bin
+	cp $srcdir/$pkgname/mirrorlist $pkgdir/etc/pacman.d/mirrorlist.alarm
 
-  for i in armv6h armv7h aarch64
-  do
-    cp $srcdir/$pkgname/pacman-extra-$i.conf $pkgdir/usr/share/devtools/
-    cp $srcdir/$pkgname/makepkg-$i.conf $pkgdir/usr/share/devtools/
-    ln -sf /usr/bin/qemu_archbuild $pkgdir/usr/bin/extra-$i-build
-  done
+	for i in armv6h armv7h aarch64
+	do
+		cp $srcdir/$pkgname/pacman-extra-$i.conf $pkgdir/usr/share/devtools/
+		cp $srcdir/$pkgname/makepkg-$i.conf $pkgdir/usr/share/devtools/
+		ln -sf /usr/bin/archbuild-qemu $pkgdir/usr/bin/extra-$i-build
+	done
 }
