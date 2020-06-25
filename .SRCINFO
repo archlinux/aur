@@ -1,7 +1,7 @@
 pkgbase = micro-bin
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 2.0.5
-	pkgrel = 3
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://github.com/zyedidia/micro
 	arch = x86_64
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = micro-bin
 	sha256sums = e753edc9899152ab1c70926b8f096d0bdcd1efa9213dd27fcef2e0b85236153e
 	sha256sums = 3fd83fda3c2a6711edbc5e4158db5ba0898e8b59760d30f8e3bce7642e071be7
 	sha256sums = 88686fe20569951f401191c0cf232e1d4a915b549137127681b7b1c5a9c30a2b
-	source_x86_64 = https://github.com/zyedidia/micro/releases/download/v2.0.5/micro-2.0.5-linux64.tar.gz
-	sha256sums_x86_64 = 4f159a4b8a08c48559bd94b3aacdca9a6188af0f9919fec61e01dde44f0f4fa0
-	source_i686 = https://github.com/zyedidia/micro/releases/download/v2.0.5/micro-2.0.5-linux32.tar.gz
-	sha256sums_i686 = 6b60ca069e9b28d1d8ddb3d70a191bab8a588b5eb8903b1fab794789521bf37d
+	source_x86_64 = https://github.com/zyedidia/micro/releases/download/v2.0.6/micro-2.0.6-linux64.tar.gz
+	sha256sums_x86_64 = af330834fd2f6ce0ab11515f36d07658b8ec0e1959fcaea6f7e29d8ba49d4c87
+	source_i686 = https://github.com/zyedidia/micro/releases/download/v2.0.6/micro-2.0.6-linux32.tar.gz
+	sha256sums_i686 = a6db6c6a1dbefec939137b754e88741d47ffd9aa8e8ca3f94088eb6889f72590
 
 pkgname = micro-bin
 
