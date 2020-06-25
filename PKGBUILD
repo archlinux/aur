@@ -1,7 +1,8 @@
 # Owner: Marcel Radzio <info@nordgedanken.de>
 # Maintainer: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=riot-desktop-git
-pkgver=v1.6.6.rc.1.r0.gd12f33fb
+_vers=v1.6.6
+pkgver=v1.6.6.r0.g42c6a26e
 pkgrel=1
 pkgname=(riot-web-git riot-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
@@ -13,8 +14,8 @@ makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'elect
 provides=('riot-desktop')
 backup=("etc/riot/config.json")
 _giturl='git://github.com/vector-im'
-source=("riot-web::${_giturl}/riot-web.git#tag=v1.6.6-rc.1"
-        "riot-desktop::${_giturl}/riot-desktop.git#tag=v1.6.6-rc.1"
+source=("riot-web::${_giturl}/riot-web.git#tag=${_vers}"
+        "riot-desktop::${_giturl}/riot-desktop.git#tag=${_vers}"
         "riot-desktop.desktop"
         "riot-desktop.sh")
 sha256sums=('SKIP'
@@ -41,6 +42,7 @@ prepare() {
   cd ../riot-web
   # Disable auto updating
   sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' riot.im/app/config.json
+
   yarn install
 }
 
