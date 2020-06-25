@@ -15,9 +15,8 @@ arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses' 'libblocksruntime')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python-six' 'perl'
-             'python-sphinx' 'python-requests' 'rsync')
+         'sqlite' 'ncurses')
+makedepends=('git' 'cmake' 'ninja' 'swig')
 
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
