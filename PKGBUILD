@@ -1,7 +1,7 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r620.6d585d3
+pkgver=r650.899b90d
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
@@ -9,9 +9,7 @@ url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
 depends=('qt5-base' 'libusb' 'hidapi')
 makedepends=('git' 'make' 'binutils' 'pkgconf')
-optdepends=('i2c-piix4-aura-dkms: AMD motherboard support standalone'
-            'linux-openrgb: Patched kernel for AMD & intel'
-            'i2c-tools: Motherboard & RAM access')
+optdepends=('i2c-tools: Motherboard & RAM access')
 conflicts=('openrgb')
 provides=('openrgb')
 source=("openrgb::git+https://gitlab.com/CalcProgrammer1/openrgb.git"
@@ -41,6 +39,6 @@ package() {
     install -Dm755 OpenRGB "$pkgdir"/usr/bin/openrgb
     install -Dm644 qt/OpenRGB.png "$pkgdir"/usr/share/pixmaps/openrgb.png
     install -Dm644 -t "$pkgdir"/usr/share/applications ../openrgb.desktop
-    install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d 99-openrgb.rules
+    install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d 60-openrgb.rules
     install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d ../openrgb.conf
 }
