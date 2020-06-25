@@ -1,0 +1,14 @@
+pkgbase = colemak-mod-dh-git
+	pkgdesc = A Colemak mod for more comfortable typing
+	pkgver = r51.9a0a7f1
+	pkgrel = 1
+	url = https://colemakmods.github.io/mod-dh/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = moreutils
+	source = colemak-mod-dh-git::git+https://github.com/ColemakMods/mod-dh
+	md5sums = SKIP
+
+pkgname = colemak-mod-dh-git
+
