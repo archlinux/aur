@@ -1,7 +1,7 @@
 # Maintainer: Marcel Schramm <marcelschr@protonmail.com>
 
 pkgname=cordless-git
-pkgver=2020.06.24
+pkgver=2020.06.26
 pkgrel=1
 pkgdesc='A Discord TUI client.'
 arch=('x86_64')
