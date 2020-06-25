@@ -20,7 +20,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
             'konsole: terminal panel' 'purpose: share context menu')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("https://anongit.kde.org/dolphin.git"
+source=("https://invent.kde.org/system/dolphin.git"
         '0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch' 'Dolphin-Root-Git.desktop')
 sha512sums=('SKIP'
             'SKIP'
