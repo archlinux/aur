@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-roslz4
 	pkgdesc = ROS - A Python and C++ implementation of the LZ4 streaming format.
-	pkgver = 1.15.4
+	pkgver = 1.15.7
 	pkgrel = 1
 	url = https://wiki.ros.org/roslz4
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = ros-noetic-roslz4
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-cpp-common
 	makedepends = lz4
 	depends = lz4
-	source = ros-noetic-roslz4-1.15.4.tar.gz::https://github.com/ros/ros_comm/archive/1.15.4.tar.gz
-	sha256sums = d5c96a81e0c8554b77666bca5dcc68e03083a761a117038ff9b65f9643751c9e
+	source = ros-noetic-roslz4-1.15.7.tar.gz::https://github.com/ros/ros_comm/archive/1.15.7.tar.gz
+	sha256sums = 80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4
 
 pkgname = ros-noetic-roslz4
 
