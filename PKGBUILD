@@ -1,8 +1,9 @@
 # Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
 # Maintainer: Rodrigo Fuentealba <dev-rfc83@protonmail.com>
+# Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=rapidminer-studio
-pkgver=9.7.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc="Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment"
 arch=('any')
@@ -12,7 +13,7 @@ depends=('java-runtime=8')
 makedepends=('unzip' 'gendesk')
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         rapidminer-studio.sh)
-sha256sums=('521062064b8748cdee6985ad05e2067f1ffd269e6a36a0115c87d7acf1f0abc8'
+sha256sums=('37fbec4f40fea703981ae952ce3979c8a8d45829b0663102a3f106a2f8227ead'
             'd3d76353c1ae15eec44c2fc638bbde98a192b70447bd467763f6d41cf24b6e5a')
 
 prepare() {
