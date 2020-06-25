@@ -2,7 +2,7 @@
 
 _pipname=babelfont
 pkgname=python-$_pipname-git
-pkgver=0.0.0.r1.g9da1313
+pkgver=0.0.2.r0.g7ae5cc4
 pkgrel=1
 pkgdesc='Interrogate and manipulate UFO, TTF and OTF fonts with a common interface'
 arch=('any')
@@ -21,14 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git tag | grep -Fqx 'v0.0.0' || git tag 'v0.0.0' d862c3a
-    git describe --tags --abbrev=7 --match="v*" HEAD |
+    git describe --long --abbrev=7 --tags --match="v*" HEAD |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare () {
-    cd "$pkgname"
-    sed -i -e 's/Lib/lib/g' setup.py
 }
 
 build() {
