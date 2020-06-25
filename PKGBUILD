@@ -4,8 +4,11 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.2.4-RELEASE
-pkgver=${_swiftver//-RELEASE/}
+#_swiftver=5.2.4-RELEASE
+#pkgver=${_swiftver//-RELEASE/}
+_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-06-24-a
+#_swiftver=DEVELOPMENT-SNAPSHOT-2020-06-24-a
+pkgver=5.3
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
@@ -18,14 +21,14 @@ makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python-six' 'perl'
 
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
-    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
-    "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
+    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
+    "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
 )
 sha256sums=(
     'SKIP'
@@ -44,6 +47,7 @@ prepare() {
     pip install diagnostics
 
     # Use directory names which build-script expects
+    rm -rf llvm-project
     ln -sf llvm-project-swift-${_swiftver} llvm-project
 
     for sdir in cmark llbuild
