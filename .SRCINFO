@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-git
 	pkgdesc = Data parsing and validation using Python type hints
-	pkgver = 1.5.1.r13.g5067508e
+	pkgver = 1.5.1.r41.g70d531ff
 	pkgrel = 1
 	url = https://pydantic-docs.helpmanual.io
 	arch = x86_64
