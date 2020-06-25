@@ -97,13 +97,6 @@ build() {
 
 check() {
     cd "$srcdir/swift"
-
-    # Fix the lldb swig binding's import path (matches Arch LLDB package)
-    # Need to do this here as well as the install since the test suite
-    # uses the lldb python bindings directly from the build dir
-    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
-        "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
-
     _build_script_wrapper -R -t
 }
 
@@ -155,12 +148,6 @@ package_swift-lldb() {
     _build_script_wrapper -R "${_common_build_params[@]}" \
         --install-destdir="$pkgdir" \
         --install-lldb
-
-    # Fix the lldb swig binding's import path (matches Arch LLDB package)
-    # We have to do this again because the build-script recreates the "bad"
-    # version of the source file.
-    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
-        "${pkgdir}/usr/lib/python2.7/site-packages/lldb/__init__.py"
 
     # This should be provided from python2-six
     rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
