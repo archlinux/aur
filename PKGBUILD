@@ -4,12 +4,12 @@
 # Maintainer: Ferdi265 <theferdi265@gmail.com>
 pkgname=libwm-git
 pkgver=1.0.r4.g208dfb8
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for X windows manipulation."
 url="https://github.com/wmutils/libwm"
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('libxcb' 'xcb-util-wm')
+depends=('libxcb' 'xcb-util-wm' 'xcb-util-cursor')
 provides=('libwm')
 conflicts=('libwm')
 makedepends=('git')
