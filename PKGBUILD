@@ -1,7 +1,7 @@
 # Contributor: Daniel Müllner <daniel@danifold.net>
 pkgname=perl-bytes-random-secure
 pkgver=0.29
-pkgrel=4
+pkgrel=5
 pkgdesc='Perl extension to generate cryptographically-secure random bytes.'
 _dist=Bytes-Random-Secure
 arch=('any')
