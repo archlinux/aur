@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.7.6
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,6 +83,7 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-efi-libstub-Fix-path-separator-regression.patch
   "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
 )
 validpgpkeys=(
@@ -91,11 +92,12 @@ validpgpkeys=(
 )
 sha256sums=('9fd4c93dc6df53efa904134aa2ede6100f7453c11383490dd32ebbed84f610e6'
             'SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
+            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
-            '3b5de5bf70a63a6549f986d071f3d9572b19707548cd205a3b8ecdb7dcba3f1c'
+            '2fd54c37df600221909e9af84cecae85b843913fb0e206e5f996a43c40d2dcc8'
+            'de7ad8b9b265dbb70daddd49943ddb06799b491dbb53dce50540a840191f3f4b'
             '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328')
 
 export KBUILD_BUILD_HOST=archlinux
