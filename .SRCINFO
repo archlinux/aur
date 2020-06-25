@@ -1,7 +1,7 @@
 pkgbase = perl-text-csv-xs
 	pkgdesc = Comma-separated values manipulation routines
 	pkgver = 1.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Text-CSV_XS
 	arch = i686
 	arch = x86_64
