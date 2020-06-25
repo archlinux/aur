@@ -8,19 +8,21 @@
 
 pkgname=firefox-hg
 _pkgname=firefox
-pkgver=r542876+.4d8cee124c4e+
+pkgver=r591370+.fdd919d10609+
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding)"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse)
+depends=(gtk3 mozilla-common libxt mime-types dbus-glib
+         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         libvpx libpng libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm)
+             python nodejs python2-psutil cbindgen nasm libpipewire02)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
+            'xdg-desktop-portal: Required for screen sharing'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
@@ -29,11 +31,14 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo"
-        0001-Use-remoting-name-for-GDK-application-names.patch
-        $_pkgname.desktop
-        $_pkgname-symbolic.svg)
+        '0001-Use-remoting-name-for-GDK-application-names.patch'
+        '0002-Pipewire.patch'
+        '0003-Disable-netwerk-test-http3server.patch'
+        $_pkgname.desktop $_pkgname-symbolic.svg)
 sha512sums=('SKIP'
-            '40c931b8abbe5880122dbcc93d457e04e9b4f2bc3e0275e9e3e35dd347fe0658f9446c89e99553203be8a8c9ab6f4ca872a7aedc514920c107b9235c04df91dc'
+            '6ee43f89227e2ff5cbb1bee7f1bee58f15ea6e868926660d265c2267890b35f1b9cbac637f4516603199d13457dbe205139c28d2a0942f339ce9332bfd0004b1'
+            '44165f754d7ff05a23390e453654fb93b328cb6168724e24325e688da284b355ef2629e3eaa70456157e0fe086fb6243ab240f39c90b935d611bd5d4f025daea'
+            'c8aeaa17bdb6564eb9c3e5cec60a0d09b8537f6b53a6daa4df47e4b09fca66c289dcc3656fa849be081dd6f252d2e286d8d1f3012c1f9307b1a6ab37b03c9308'
             'a2b36adff18d1108023cd31f420681f9adea3cfb337183e425dbeaa17e4a0271ed182e54bda19a3a2e11feed35cd040411be1795f5c1487331130bcb321c474d'
             'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
 
@@ -58,8 +63,18 @@ prepare() {
     mkdir -p mozbuild
     cd mozilla-unified
 
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1547595
+    hg export -r 372abda7c202 | patch -Rp1
+
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
     patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
+    # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
+    patch -Np1 -i ../0002-Pipewire.patch
+
+    # https://aur.archlinux.org/packages/firefox-wayland-hg/#comment-737331
+    patch -Np1 -i ../0003-Disable-netwerk-test-http3server.patch
 
     echo -n "$_google_api_key" >google-api-key
     echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -104,13 +119,18 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
 
 # Features
+ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 END
 }
