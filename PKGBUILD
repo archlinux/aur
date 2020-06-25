@@ -2,7 +2,7 @@
 _gittag=master-5b56bb49
 pkgname=clang-format-static-bin
 pkgver=3.5b56bb49
-pkgrel=3
+pkgrel=4
 pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
@@ -21,7 +21,7 @@ source=("archlinux-clang-format"
         "https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-10_linux-amd64"
         "https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-8-and-lower"
         "https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-9-and-higher")
-sha256sums=('2f34b784dc99e6ebc9e9af6e6eb0bef9a035b98dc67d56adc79307cca467df43'
+sha256sums=('cba2926c0b1983332ef1db7921714f3f6f5f8acb46532319ef566919f141cfa8'
             '0127f653a16191aa1cc41f4ea79d7014141ecfcda1c85091bdccb750703d5dda'
             '86a0582ff8ea3b1f471df98d93093fd4b5e717f9188d67bd09c4cee3a4412a53'
             'da2c9fa70fb1e9a4fafa74b20291f0772578378e8d2a4ca6fbf5e88c63ebde2a'
@@ -36,7 +36,8 @@ sha256sums=('2f34b784dc99e6ebc9e9af6e6eb0bef9a035b98dc67d56adc79307cca467df43'
 package()
 {
     mkdir -p "$pkgdir/opt/clang-format-static"
-    cp -L "$srcdir/archlinux-clang-format" "$pkgdir/opt/clang-format-static/archlinux-clang-format"
+    mkdir -p "$pkgdir/usr/bin"
+    cp -L "$srcdir/archlinux-clang-format" "$pkgdir/usr/bin/archlinux-clang-format"
     cp -L "$srcdir/clang-format-3.9_linux-amd64" "$pkgdir/opt/clang-format-static/clang-format-3.9"
     cp -L "$srcdir/clang-format-4_linux-amd64" "$pkgdir/opt/clang-format-static/clang-format-4"
     cp -L "$srcdir/clang-format-5_linux-amd64" "$pkgdir/opt/clang-format-static/clang-format-5"

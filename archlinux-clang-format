@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-SELF_PATH=`dirname "$(readlink -f $0)"`
-pushd $SELF_PATH >/dev/null
+pushd /opt/clang-format-static >/dev/null
 
 set -euo pipefail
 
