@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cdir-git
 pkgver=1.3.r51.ff3e2bf
 pkgrel=1
