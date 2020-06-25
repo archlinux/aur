@@ -1,0 +1,19 @@
+pkgbase = brother-dcpj525w
+	pkgdesc = Driver for the Brother DCP-J525W wifi multifuncional printer
+	pkgver = 3.0.1
+	pkgrel = 4
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpj525w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = brscan4
+	source = https://download.brother.com/welcome/dlf005602/dcpj525wlpr-3.0.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf005604/dcpj525wcupswrapper-3.0.0-1.i386.rpm
+	md5sums = b92cace621e8bc34c7ba83b7574bedd0
+	md5sums = 6e9a5f01a51dbae298b41494a12f6fef
+
+pkgname = brother-dcpj525w
+
