@@ -1,6 +1,6 @@
 pkgbase = topgrade
 	pkgdesc = Invoke the upgrade procedure of multiple package managers
-	pkgver = 4.8.0
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://github.com/r-darwish/topgrade
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = topgrade
 	arch = armv7
 	license = GPL3
 	makedepends = rust
-	source = topgrade-4.8.0.tar.gz::https://github.com/r-darwish/topgrade/archive/v4.8.0.tar.gz
-	sha256sums = c0658a78cdc69d9c2684a500bc53080804f7da1600a74ff06c7116b03946ee02
+	source = topgrade-4.9.0.tar.gz::https://github.com/r-darwish/topgrade/archive/v4.9.0.tar.gz
+	sha256sums = 0466843e340e7614c1824ad97beab504dfab0d4392620cf269a7c13c3c4351be
 
 pkgname = topgrade
 
