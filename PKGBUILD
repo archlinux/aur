@@ -51,7 +51,7 @@ _major=5.7
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-efi-libstub-Fix-path-separator-regression.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -322,9 +323,10 @@ sha512sums=('83b6622634508caf02f782688c86138cca741daad7f7b5a87a55f1f33a59d0a93ba
             'SKIP'
             'c7c5b222578a95cf4df69f9e8fa4ae2fb83075c26f0379676bf78e110f113c6f4ce5fe9d61eaf1c0d04563522e9d5998acd75bedba47866725e89cbbf64a1bba'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            '1f04c499a1dc00860ce515b105683daf9081d137bc6830ac6f9e68c8791e5032e583ecb628b5c35a6af80863cbda6222ed3515c6a55a24d193b2a11aa6766668'
+            '5f697643fc7c58c722fc85f7588883cf604a2151a1498e7e4d1854f73e5be5da2f5a87261f2e7d21802ce3b955f88b600cd2c267ba36ab8ce048f4aa82807867'
+            '6730292e83973ff33b5541fe9c9b5a32404686c73dc8f9744465d4b5481272668645a6247334468a5843ebf7fc5c0e9c2782da05f255f2ec8fe465a273c3f6a4'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '33dd992fdf886dc458ef43ca836b04514c5a5b9031d4dacf8dd992f46ed88cc55a5872b079ac715e6060e6bfbb7fe5ac21e0a10939770e56455e5148b103cd6f')
+            'f33694ddf2b9552d5ca186911b04647a8902d0b515d3098ecb8950aa95c5c16cab89e13a7eeb24eeb363795a4c7de212997dcbe609e84d38133a1bfc498ef928')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
