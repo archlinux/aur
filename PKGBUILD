@@ -1,7 +1,7 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=pcsc-cyberjack
-_sp=SP13
+_sp=SP14
 pkgver=3.99.5_${_sp}
 _pkgver=3.99.5final.${_sp}
 pkgrel=1
@@ -14,7 +14,7 @@ conflicts=('ctapi-cyberjack')
 depends=('libusb' 'pcsclite')
 options=('!libtool' '!docs')
 source=("http://support.reiner-sct.de/downloads/LINUX/V${pkgver}/pcsc-cyberjack_${_pkgver}.tar.gz")
-sha256sums=('6b34b4a98c37643bcb5981013e4c7d1e70febb9faa18aacf91e7c74cbe5ba4d3')
+sha256sums=('625348b36ab8b2de78fa4a04b23c6eb7168ca5ba4aeccaf7c6a9f55db39d1529')
 
 prepare() {
     cd "${pkgname}-${_pkgver}"
