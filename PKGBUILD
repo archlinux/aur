@@ -1,7 +1,7 @@
 # Maintainer: Matthew Leach <matthew at mattleach dot net>
 
 pkgname=ite-backlight
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Programs to manage ITE (8291) keyboard backlight devices"
 url='https://github.com/hexagonal-sun/ite-backlight'
@@ -26,5 +26,5 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
 }
 
-md5sums=('88ff3b9df1489de7f69e2c11ca821b86'
+md5sums=('dbe437d8e40a25a6904761d8306a03b7'
          '7867b4c7d1b354c34a06ffbfe8fc8d32')

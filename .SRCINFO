@@ -1,6 +1,6 @@
 pkgbase = ite-backlight
 	pkgdesc = Programs to manage ITE (8291) keyboard backlight devices
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/hexagonal-sun/ite-backlight
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = ite-backlight
 	makedepends = meson
 	makedepends = boost
 	depends = libusb
-	source = https://github.com/hexagonal-sun/ite-backlight/archive/v1.0.tar.gz
+	source = https://github.com/hexagonal-sun/ite-backlight/archive/v1.1.tar.gz
 	source = 10-ite-backlight.rules
-	md5sums = 88ff3b9df1489de7f69e2c11ca821b86
+	md5sums = dbe437d8e40a25a6904761d8306a03b7
 	md5sums = 7867b4c7d1b354c34a06ffbfe8fc8d32
 
 pkgname = ite-backlight
