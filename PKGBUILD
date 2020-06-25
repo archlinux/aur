@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: archlinux.info:tdy
 # Contributor: Patrick Burroughs (Celti) <celticmadman@gmail.com>
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
