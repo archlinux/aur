@@ -10,7 +10,7 @@
 _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=('libfreerdp2.so' 'libfreerdp-client2.so' 'libfreerdp-server2'
 'libwinpr-tools2.so' 'libuwac0.so' 'freerdp')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         "${_pkgname}-2.0.0-manpage_formatting.patch")
-sha512sums=('e3e667f9a1f954ce914e7dcd24ba4d171fd147e812883ebcb67363dde4054e2d3cbe5fe4e7104fe52f84453c67e32281b5ee62889ba68850ba762196549855ba'
+sha512sums=('11589f75bbdc270cbb0c79de9e3ba54950801ac8f281c9a35133165a25313b4cc8c0a7710275b9131f0e2bc2d7f8425b4c01b5b93010f75e827447b44a0eb6b9'
             'd960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7')
 
 prepare() {
@@ -40,8 +40,10 @@ prepare() {
 
 build() {
   cd "${_name}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_LIBDIR='lib' \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DPROXY_PLUGINDIR='/usr/lib/freerdp2/server/proxy/plugins' \
         -DWITH_DSP_FFMPEG=ON \
         -DWITH_FFMPEG=ON \
         -DWITH_PULSE=ON \
@@ -54,7 +56,7 @@ build() {
         -DWITH_CLIENT_CHANNELS=ON \
         -DWITH_SERVER_CHANNELS=ON \
         -DCHANNEL_URBDRC_CLIENT=ON \
-        -DPROXY_PLUGINDIR=/usr/lib/freerdp2/server/proxy/plugins \
+        -Wno-dev \
         -B build \
         -S .
   make VERBOSE=1 -C build

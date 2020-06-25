@@ -1,6 +1,6 @@
 pkgbase = freerdp-gstfree
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://www.freerdp.com/
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = freerdp-gstfree
 	provides = libuwac0.so
 	provides = freerdp
 	conflicts = freerdp
-	source = freerdp-2.1.1.tar.gz::https://github.com/freerdp/freerdp/archive/2.1.1.tar.gz
+	source = freerdp-2.1.2.tar.gz::https://github.com/freerdp/freerdp/archive/2.1.2.tar.gz
 	source = freerdp-2.0.0-manpage_formatting.patch
-	sha512sums = e3e667f9a1f954ce914e7dcd24ba4d171fd147e812883ebcb67363dde4054e2d3cbe5fe4e7104fe52f84453c67e32281b5ee62889ba68850ba762196549855ba
+	sha512sums = 11589f75bbdc270cbb0c79de9e3ba54950801ac8f281c9a35133165a25313b4cc8c0a7710275b9131f0e2bc2d7f8425b4c01b5b93010f75e827447b44a0eb6b9
 	sha512sums = d960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7
 
 pkgname = freerdp-gstfree
