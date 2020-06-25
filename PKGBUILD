@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.30.2
+pkgver=2.30.3
 pkgrel=2
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
-makedepends=(git go)
-source=("git+$url#commit=7327318e7c6837fe7aab4014a812223ba4a584a8") # tag: 2.30.2
+fmakedepends=(git go)
+source=("git+$url#commit=638c7174f7ab9b03a4bc667a5910c2795fd03444") # tag: 2.30.3
 sha256sums=('SKIP')
 options=(!strip)
 optdepends=('cxx: for compiling C++'
@@ -24,8 +24,10 @@ optdepends=('cxx: for compiling C++'
             'asciidoctor: for writing man pages'
             'pandoc: for exporting Markdown to PDF'
             'guessica: for updating PKGBUILD files'
-            'kotlin: for compiling Kotlin code'
-            'crystal: for compiling Crystal code')
+            'kotlin: for compiling Kotlin'
+            'crystal: for compiling Crystal'
+            'java-environment: for compiling Java'
+            'google-java-format: for formatting Java')
 
 build() {
   cd $pkgname
