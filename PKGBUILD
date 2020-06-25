@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Laramy Black <laramy2020@gmail.com>
 pkgname=nuvolaruntime-mse
 pkgver=4.16.0
@@ -7,9 +8,10 @@ pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=('any')
 url="https://nuvola.tiliado.eu"
 license=('BSD 2-Clause "Simplified"')
-depends=("diorite=$pkgver" 'python-gobject' 'json-glib' 'webkit2gtk-mse' 'libnotify'
-         'gst-plugins-ugly' 'libdri2' 'libdrm' 'libsecret')
-makedepends=('git' 'waf' 'valacef')
+depends=("diorite=$pkgver" 'python-gobject' 'json-glib' 'webkit2gtk-mse'
+         'python-javascriptcore4' 'libnotify' 'gst-plugins-ugly' 'libdri2'
+         'libdrm' 'libsecret' 'libappindicator-gtk3')
+makedepends=('git' 'valacef')
 optdepends=('libappindicator-gtk3: Tray icon support'
             'engine.io-client'
             'unit.js: for JavaScript unit tests')
@@ -26,15 +28,14 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	waf configure \
+	./waf configure \
 		--prefix=/usr \
 		--libdir=/usr/lib \
 		--no-vala-lint \
 		--no-js-lint \
 		--no-unity \
-		--no-appindicator \
 		--webkitgtk-supports-mse
-	waf build
+	./waf build
 }
 
 check() {
@@ -44,7 +45,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	waf install --destdir="$pkgdir"
+	./waf install --destdir="$pkgdir"
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
