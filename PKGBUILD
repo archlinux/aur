@@ -2,15 +2,15 @@
 
 pkgbase=python2-user-agents
 pkgname=('python-user-agents' 'python2-user-agents')
-pkgver=1.1.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
 arch=('any')
 url="https://pypi.python.org/pypi/user-agents"
 license=('MIT')
 makedepends=('python' 'python2')
-source=("https://pypi.python.org/packages/be/ff/886a1e2570784ee63b1c4b0fd77037b84087ffe7b7b45f9751285418be34/user-agents-${pkgver}.tar.gz")
-sha256sums=('643d16772280052b546d956971d719989ef6dc9b17d9ff0386aa21391a038039')
+source=("https://files.pythonhosted.org/packages/1b/be/82e4d20a7716d8e5de98b948edcecff9bb237e6718c3831bd92794fe9821/user-agents-${pkgver}.tar.gz")
+sha256sums=('da54371d856c35d8ead0622da24ad5ef6d667eda3629a750e3373a3e847a054b')
 
 build() {
   cd $srcdir
