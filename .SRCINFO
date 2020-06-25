@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-ocsms
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/ocsms/releases/download/2.1.3/ocsms-2.1.3.tar.gz
+	source = https://github.com/nextcloud/ocsms/releases/download/2.1.8/ocsms-2.1.8.tar.gz
 	sha512sums = 99ffa20f90947045a7ad6d25dbc84e792b2afab0a230df5f45582501b698428a65c5a02665e54ae4b09fbded84f5361363193bdfbca8a963ab61ab5df9400a8e
 
 pkgname = nextcloud-app-ocsms
