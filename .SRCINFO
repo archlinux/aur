@@ -1,7 +1,7 @@
 pkgbase = perl-bytes-random-secure
 	pkgdesc = Perl extension to generate cryptographically-secure random bytes.
 	pkgver = 0.29
-	pkgrel = 5
+	pkgrel = 6
 	url = https://metacpan.org/release/Bytes-Random-Secure
 	arch = any
 	license = GPL
