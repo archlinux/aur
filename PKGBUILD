@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='3.8.0.20200623'
+pkgver='3.8.0.20200625'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -10,7 +10,7 @@ depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         extrae-issue-27-fix-pie-address-translation.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(d38f6833fe82df16fa5320c89b0951c023bb8d0ce9e86a2d79d570984d777b66bb47073791c816e103c7ad59102572ea847a65366ae0edca0d08c56fdd85860a
+sha512sums=(3d2fef430721644f14a3adfd3a0adcc2b5d7d89a5627f7d14c78076e3b5c16df268732e511cd7afc837c10fd9ff718144de973d0f90d7c830e313698337e6eee
             3b0fae157fcc6e85be3a5565c2ea3abe8bf35e130de96435a93ba7b3f4b6c30df8982823d36c494633a2c16671664112558393faeead05226b96aa521bb14fba
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
