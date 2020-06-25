@@ -2,16 +2,15 @@
 pkgname=gst-plugin-viper4linux-git
 _gitname=gst-plugin-viperfx
 pkgver=r32.f6b4d8b
-pkgrel=2
+pkgrel=3
 pkgdesc="ViPER FX core wrapper plugin for gstreamer"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/gst-plugin-viperfx"
 license=('custom')
 depends=('gstreamer' 'libviperfx')
 makedepends=('git' 'cmake')
-provides=("${pkgname%-git}" "$_gitname" 'libgstviperfx')
-conflicts=("${pkgname%-git}" "$_gitname" 'libgstviperfx' 'gst-plugin-jamesdsp' )
-replaces=("$_gitname")
+provides=("${pkgname%-git}" "$_gitname" 'libgstviperfx.so')
+conflicts=("${pkgname%-git}" "$_gitname" 'gst-plugin-jamesdsp' )
 source=('git+https://github.com/Audio4Linux/gst-plugin-viperfx.git')
 sha256sums=('SKIP')
 
@@ -20,15 +19,11 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/$_gitname"
-	mkdir -p build
-}
-
 build() {
-	cd "$srcdir/$_gitname/build"
-	cmake ..
-	make
+	cd "$srcdir/$_gitname"
+	cmake -B build -S . \
+		-Wno-dev
+	make -C build
 }
 
 package() {
