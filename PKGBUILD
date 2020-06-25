@@ -2,13 +2,13 @@
 
 pkgname=checkupdates+aur
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='combines checkupdates and checkupdates-aur with separator as argument'
 arch=('any')
 license=('LGPL3')
 depends=('checkupdates-aur')
 source=("checkupdates+aur.bash")
-sha512sums=('c2fbcb0845e8f1b77d1414fc28c4f38693ef5460025cd317ddbd4940724b2b1045c8deed3d73233af49bda83864aa8e5915956712efe70355e3ffcefc605e837')
+sha512sums=('353363969ac84d6b597eb9f2f487616a8852114ac0ce4710d26a10e8690f2a64df263323d64990dea96df56ae0be2b50ad0dfe181bd595ae11346b795990cf7b')
 
 package() {
 	install -D -m755 "$srcdir/checkupdates+aur.bash" "$pkgdir/usr/bin/checkupdates+aur"
