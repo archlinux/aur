@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.7.4.arch1
+	pkgver = 5.7.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.7.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.7.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.7.4-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.7.6-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = sphinx-workaround.patch
@@ -27,7 +27,7 @@ pkgbase = linux-pds
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = dc32266d4d8145e27c4ec34307c884aa14c4819225000103e6da56fd08d85320ccd4a8b253c8f69c5946e1eec9b99745424a55777936f72351a983defc00ea9f
+	sha512sums = 960d1c184d53ef17e506db89410bc86e715b0486b34716fb4f7a627926f587bbd8533a799118d8c7edc9ee48680924d364479c3107d250f66a7b176f07081afc
 	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
 	sha512sums = c4ca80f506c01bc1d13d9d7bc7336f9ff77a24aa8343c40cd02e073ae5cf280dbabf1a9ddbd2064edf054de383fd510a8915b7d8f47b5bc76147109a5f424e92
 	sha512sums = dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c
