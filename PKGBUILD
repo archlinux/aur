@@ -1,7 +1,7 @@
 # Maintainer: Aston <astonbitecode at gmail dot com>
 
 pkgname="rust-keylock-ui"
-pkgver="0.8.2"
+pkgver="0.12.0"
 pkgrel=1
 epoch=
 pkgdesc="Password manager with goals to be Secure, Simple to use, Portable and Extensible"
@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://rust-keylock.github.io/"
 license=("GPL")
 groups=()
-depends=("openssl" "java-runtime>=8" "libxfixes" "libxrender")
+depends=("openssl" "java-runtime>=11" "libxfixes" "libxrender")
 makedepends=("gendesk" "rust" "maven" "libxcb" "python")
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/rust-keylock/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=("e468d6f31785523528f0545e067699af0b4352a58490bb4e176eda477b6e8530420b598ccc15fb56909c50dffead218cca257100f1d0f9f5789ad57a7c7bde20")
+sha512sums=("c02bd39991b3ec9be76d7bad6d8adcf49ec21b3a550c495bfe5cacfb1068b4d4d735e043d3a3892e97be20bdfdaec8e6a6dcae7e6a09e52353e6d546dda7558a")
 validpgpkeys=()
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	mvn install -f scala/pom.xml
+	mvn install -f java/pom.xml
 	cargo build --release --manifest-path=rust/Cargo.toml
 }
 
@@ -44,9 +44,8 @@ package() {
 	cp $srcdir/$pkgname-$pkgver/rust/target/release/rust-keylock-ui $pkgdir/opt/$pkgname/
 	cp $srcdir/$pkgname-$pkgver/rust/target/release/deps/libj4rs-*.so $pkgdir/opt/$pkgname/deps/
 	cp -R $srcdir/$pkgname-$pkgver/rust/target/release/jassets $pkgdir/opt/$pkgname/
-	cp -R $srcdir/$pkgname-$pkgver/rust/target/release/scalaassets $pkgdir/opt/$pkgname/
-	
+
 	ln -s /opt/$pkgname/rust-keylock-ui $pkgdir/usr/bin/rust-keylock-ui
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/scala/src/main/resources/images/rkl.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/java/src/main/resources/images/rkl.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
