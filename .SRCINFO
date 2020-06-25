@@ -1,8 +1,8 @@
 pkgbase = perl-par
 	pkgdesc = Perl Archive Toolkit
 	pkgver = 1.016
-	pkgrel = 1
-	url = http://search.cpan.org/dist/PAR
+	pkgrel = 2
+	url = https://metacpan.org/release/PAR
 	arch = any
 	license = GPL
 	license = PerlArtistic
