@@ -1,6 +1,6 @@
 pkgbase = godot-rc-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel.
-	pkgver = 3.2.2_rc3
+	pkgver = 3.2.2_rc4
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = godot-rc-bin
 	provides = godot-rc-bin
 	source = godot-rc.desktop
 	sha512sums = 162275bd69f7d3fd4c408ed98734bfddaa4eb4684f3d81355da9255adbdeea01f1ed223999abeb329fb06fccd17d0d1442caba26c259e1d3833130f10afc5388
-	source_i686 = godot-rc-bin-3.2.2_rc3::https://downloads.tuxfamily.org/godotengine/3.2.2/rc3/Godot_v3.2.2-rc3_x11.32.zip
-	sha512sums_i686 = 547a45e3e00edfbfa38f660c2677fd7255e1c7d6bd8637dd196d8015e891f33502311a0a481e636919732bd54b3f02cc37d4cb3a01a3da0ee8fa673a3109d6b9
-	source_x86_64 = godot-rc-bin-3.2.2_rc3::https://downloads.tuxfamily.org/godotengine/3.2.2/rc3/Godot_v3.2.2-rc3_x11.64.zip
-	sha512sums_x86_64 = 03ef4c0562758d07ec28f2aee4625f4795b1158a95305c8200a01859287a70d288721efca3366015b4d69e8cc00a7708f82231346f044cc2eb4cd9bd463e317e
+	source_i686 = godot-rc-bin-3.2.2_rc4::https://downloads.tuxfamily.org/godotengine/3.2.2/rc4/Godot_v3.2.2-rc4_x11.32.zip
+	sha512sums_i686 = 0319e917a4260fd79f7364dd38d1ce62a8d46bd4f55f17adbefbb1f5a161b4ef7623764f32e2d75ae7ebc25c81abbe3b3f99c2bda3b23785ab03106c87101744
+	source_x86_64 = godot-rc-bin-3.2.2_rc4::https://downloads.tuxfamily.org/godotengine/3.2.2/rc4/Godot_v3.2.2-rc4_x11.64.zip
+	sha512sums_x86_64 = 7587b1450cacb7b0a3e52de918c0b8d88e6de4f6a6f251197acd1583d7cd9ec4d8dc33a638ab0330e03bf4a6862d0c9618dd30ee35b3a5a61a9c8bcd9060a012
 
 pkgname = godot-rc-bin
 
