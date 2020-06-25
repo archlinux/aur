@@ -6,6 +6,9 @@ pkgbase = rog-core
 	arch = x86_64
 	license = MPL2
 	makedepends = rust
+	makedepends = clang
+	depends = dbus
+	depends = libusb
 	source = https://github.com/flukejones/rog-core/archive/v1.11.1.tar.gz
 	sha256sums = 4719818e26db6d65ce3eb684485e9cd146cc84d81283723fe8b4472518bdd835
 
