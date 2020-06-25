@@ -33,21 +33,23 @@ source=(
     "cmark-python38.patch"
     "sanitizer-glibc2.31.patch"
 )
-sha256sums=('94c44101c3dd6774887029110269bbaf9aff68cce5ea0783588157cc08d82ed8'
-            'e36edc6c19e013a81b9255e329e9d6ffe7dfd89e8f8f23e1d931464c5f717d3a'
-            'd5f656777961390987ed04de2120e73e032713bbd7b616b5e43eb3ae6e209cb5'
-            '66b5374a15998a80cd72e7c1312766a8cbfe427a850f7b97d39b5d0508306e6c'
-            '383bf75f6dea96c4d48b2242bd3116154365e0e032aa3dce968f2c434732446c'
-            'e41e685a854ad15c98035d0a3608dfcce219c95d73df6144f4d9b3dbe3ca1454'
-            'b917634ec51fc670ba42121e77c159d1eb412d1384a18acc12a857a075d89cfb'
-            'fa81aa11b490643b95b472d0c01b01fd6a8a1b286fece6e8128ab78e764e9eaa'
-            '26a9be6c6a46f065ca1eb6aa05e3b9ce2a5ab092efc7cfa02fe4926681832c77'
-            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
-            '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
-            '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
-            'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55'
-            'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc'
-            '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
+    '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
+    '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
+    'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55'
+    'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc'
+    '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b'
+)
 
 prepare() {
     # not sure where diagnostics is included, pip install it
