@@ -2,22 +2,26 @@
 # Contributor: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan
-pkgver=3.62.0
+pkgver=3.63.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=2
+pkgrel=1
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=(x86_64)
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=(GPL3)
 depends=(sane gtkmm graphicsmagick boost-libs)
-makedepends=(boost)
+makedepends=(boost systemd)
 optdepends=('tesseract: OCR support')
-source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_$pkgver.orig.tar.gz)
-sha256sums=('683204986061c8833a30482b1ec7cd183aac079f464bd7d0a591ca0f97067e32')
+source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_$pkgver.orig.tar.gz
+        imagescan-gcc10.patch)
+sha256sums=('439fb18054293b6e743b168739d85f2ceba66498d68590cfa68dbbc7ad971a94'
+            'de64458187846d40e0c5dd06fa0c32962a22863803929d7ae61419153a5272bf')
 backup=('etc/utsushi/utsushi.conf')
 
 prepare() {
   cd utsushi-$_utsushiver
+
+  patch -p1 -i ../imagescan-gcc10.patch # Fix build with GCC 10
   sed -e 's|-Werror||g' -i configure.ac
   rm -r upstream/boost # Remove vendored libraries
   autoreconf -vif
