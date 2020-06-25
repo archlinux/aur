@@ -1,6 +1,6 @@
 pkgbase = xdroid-installer
 	pkgdesc = The installer and uninstaller of xDroid, a closed source Android container that uses similar techniques to Anbox.
-	pkgver = 4.0078
+	pkgver = 4.0082
 	pkgrel = 1
 	url = https://www.linzhuotech.com/index.php/home/index/xdroid.html
 	install = xdroid-installer.install
@@ -11,20 +11,19 @@ pkgbase = xdroid-installer
 	depends = qt5-virtualkeyboard
 	depends = openssl-1.0
 	depends = tar
-	depends = python
+	depends = python-easygui
 	optdepends = fcitx-qt5: Asian input method support
-	optdepends = python-easygui: for choosing to reinstall or uninstall after the first installation
-	noextract = xDroidInstall-x86_64-v4.0078-20200620101733.tar.gz
-	source = https://github.com/SamLukeYes/xdroid-installer/releases/download/v4.0078/xDroidInstall-x86_64-v4.0078-20200620101733.tar.gz
+	noextract = xDroidInstall-x86_64-v4.0082-20200624145405.tar.gz
+	source = https://github.com/SamLukeYes/xdroid-installer/releases/download/v4.0082/xDroidInstall-x86_64-v4.0082-20200624145405.tar.gz
 	source = xdroid-installer.desktop
 	source = LICENSE
 	source = xdroid-installer.install
 	source = xdroid-installer.py
-	md5sums = f6941c16177c72e376ffd105677cd75c
+	md5sums = 05b605ec88b235ec81b42ef85f0945de
 	md5sums = e467770854d49aea2d94c451a443471e
 	md5sums = 08c8f971fe3ae5cac148ef220975291b
-	md5sums = da271d861635cabc2bafac5b01b0fa13
-	md5sums = e55a42b96e3a8d975df5770e6e0bf28b
+	md5sums = 0daa8ce21eef5c3c4b7ffcca1433d4b1
+	md5sums = f84a84c2627ac973a3af96bd918a8f02
 
 pkgname = xdroid-installer
 

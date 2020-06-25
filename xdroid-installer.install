@@ -8,14 +8,6 @@ post_install() {
     echo "#############################################################################"
 }
 
-pre_upgrade() {
-    rm -rf /opt/xdroid-installer
-}
-
-post_upgrade() {
-    post_install
-}
-
 post_remove() {
     echo "Note: you can still uninstall xDroid by executing /opt/xdroid/remove-xdroid-launcher after removing xdroid-installer"
 }

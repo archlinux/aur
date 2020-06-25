@@ -5,10 +5,12 @@ import os, sys
 try:
     import easygui as eg
     dialogs = True
-except:
+except ModuleNotFoundError:
     dialogs = False
 
 uninstaller = '/opt/xdroid/remove-xdroid-launcher'
+reinstall = 'Upgrade/Reinstall'
+uninstall = 'Uninstall'
 
 def install():
     sys.exit(os.system('tar -xzvf /opt/xdroid-installer/xdroid.tar.gz -C /tmp \
@@ -25,14 +27,15 @@ if os.getuid() == 0:
 if os.path.isfile(uninstaller):
 
     if dialogs:
-        option = eg.choicebox("Do you want to reinstall or uninstall xDroid?", "xDroid Installer",
-                            choices=["Reinstall", "Uninstall"])
+        option = eg.choicebox("You have xDroid installed already. What do you want to do next?", 
+                            title="xDroid Installer",
+                            choices=[reinstall, uninstall])
     else:
-        option = "Uninstall"
+        option = uninstall
 
-    if option == "Reinstall":
+    if option == reinstall:
         install()
-    elif option == "Uninstall":
+    elif option == uninstall:
         os.system(uninstaller)
 
 else:
