@@ -4,7 +4,7 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v4.1.0.r49.g742f60b4
+pkgver=v4.3.4.r85.g7bc22353
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-setuptools'
          'python-colorama'
          'python-pyserial'
          'python-requests'
-         'python-semantic-version>=2.8.1'
+         'python-semantic-version'
          'python-tabulate'
          'python-pyelftools'
          'python-marshmallow')
