@@ -6,7 +6,7 @@ _build_i686=1256
 _build_x86_64=1279
 _build_arm=1222
 pkgver="${_pkgver}b${_build_x86_64}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
@@ -33,9 +33,19 @@ sha512sums=('4b4161558343dd2ec4d6b2be41b958e061df2a41961d9476ac1d38f28530043f997
 sha512sums_i686=('edd6659600eb6b45ce82f96ac4ddc9b1e77dc480e5909735bfd9f723569ce9236093a0d8601f33449d233573ecb33833680f06fd7f98152e1c22b919ab43e26b')
 sha512sums_x86_64=('6d75f5ec3de52ac02288f3694509808d1540179e21befada158ad32392909d3a11c6549182011737969687198a403437b9fac09348a0b94009438b177647070a')
 sha512sums_armv7h=('51d131faa04250d2f37c254c449dd53a5bd03f7678cf990cf3eaf9924ed7dfcba63026427b81c4f6b6d10fa14263bcba0fb7258b06956cd4258b283b77d98416')
+noextract=("Cuberite.b${_build_i686}_i686.tar.gz"
+	"Cuberite.b${_build_x86_64}_x86_64.tar.gz"
+	"Cuberite.b${_build_armv7h}_armv7h.tar.gz")
 
 _game="cuberite"
 _server_root="/srv/cuberite"
+
+prepare() {
+	rm -rf Server
+	mkdir -p Server
+	_build="_build_${CARCH}"
+	bsdtar -xf "Cuberite.b${!_build}_${CARCH}.tar.gz" -C Server
+}
 
 package() {
 	install -Dm644 ${_game}.conf              "${pkgdir}/etc/conf.d/${_game}"
