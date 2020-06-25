@@ -1,6 +1,6 @@
 pkgbase = dxhd-bin
 	pkgdesc = An X11 Hotkey Daemon
-	pkgver = 20.06.2020_17.14
+	pkgver = 25.06.2020_22.02
 	pkgrel = 0
 	url = https://github.com/dakyskye/dxhd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dxhd-bin
 	depends = util-linux
 	provides = dxhd
 	conflicts = dxhd-git
-	source = https://github.com/dakyskye/dxhd/releases/download/20.06.2020_17.14/dxhd
+	source = https://github.com/dakyskye/dxhd/releases/download/25.06.2020_22.02/dxhd
 	md5sums = SKIP
 
 pkgname = dxhd-bin
