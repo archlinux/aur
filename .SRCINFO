@@ -1,14 +1,14 @@
 pkgbase = perl-par-packer
 	pkgdesc = PAR Packager
 	pkgver = 1.050
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/PAR-Packer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-extutils-makemaker>=6.62
-	depends = perl=5.30.3
+	depends = perl=5.32.0
 	depends = perl-archive-zip>=1
 	depends = perl-getopt-argvfile>=1.07
 	depends = perl-ipc-run3>=0.048

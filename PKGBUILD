@@ -4,7 +4,7 @@
 
 pkgname=perl-par-packer
 pkgver=1.050
-pkgrel=3
+pkgrel=4
 pkgdesc="PAR Packager"
 _dist=PAR-Packer
 arch=(i686 x86_64)
