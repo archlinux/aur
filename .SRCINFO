@@ -1,7 +1,7 @@
 pkgbase = clang-format-static-bin
 	pkgdesc = clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)
 	pkgver = 3.5b56bb49
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/muttleyxd/clang-format-static-binaries
 	install = clang-format-static-bin.install
 	arch = x86_64
