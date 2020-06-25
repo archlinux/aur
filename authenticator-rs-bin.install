@@ -1,0 +1,12 @@
+post_install() {
+
+	chmod +x /usr/bin/authenticator-rs
+
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+}
