@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-cvs-patched-wideglyphs
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and wide glyphs patch (cvs version)
 	pkgver = 20170412
-	pkgrel = 8
+	pkgrel = 9
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
