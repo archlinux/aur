@@ -25,14 +25,14 @@ pkgbase = dolphin-root-git
 	optdepends = purpose: share context menu
 	provides = dolphin
 	conflicts = dolphin
-	source = https://invent.kde.org/system/dolphin.git
+	source = https://invent.kde.org/system/dolphin/-/archive/d1baf3398e53931735b724672d5ae48649b44a18/dolphin-d1baf3398e53931735b724672d5ae48649b44a18.tar
 	source = 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 	source = Dolphin-Root-Git.desktop
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha256sums = 034f60c5e859209805762f149b90a893cf2eca2dda71daa14bceed6070784ed3
+	sha256sums = bb043810c2777be4657a8c4f386a6497ed6169b0857f214c35aac435da040401
+	sha256sums = SKIP
 
 pkgname = dolphin-root-git
 
