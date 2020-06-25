@@ -18,6 +18,7 @@ pkgname = yozo-office
 	depends = libxmu
 	depends = gtk2
 	depends = libglvnd
+	depends = vlc
 	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
 	optdepends = ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.
 	optdepends = yozo-office-fonts: UI Fonts

@@ -19,7 +19,7 @@ source_x86_64=("http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo
 md5sums_x86_64=('cf22531071e607019c02a1a046f70e5c')
 
 package_yozo-office() {
-    depends=('java-runtime=8' 'libxt' 'libxmu' 'gtk2' 'libglvnd')
+    depends=('java-runtime=8' 'libxt' 'libxmu' 'gtk2' 'libglvnd' 'vlc')
     optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
     		    'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
                 'yozo-office-fonts: UI Fonts')
@@ -47,24 +47,24 @@ package_yozo-office() {
     
     #Redirect Java bin
     rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
-    ln -sf /usr/lib/jvm/default/bin "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
+    ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
     cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
     for j in *; do
         if [ "$j" != "ext" ]; then
             rm -rf $j
         fi
     done
-    #Move VLC plugin lib
-    mkdir -p "${pkgdir}"/usr/lib/Yozo_Office/
-    mv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/* "${pkgdir}"/usr/lib/Yozo_Office
-    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib
-    ln -sf /usr/lib/Yozo_Office "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib
+    #Redirect VLC lib
+    #mkdir -p "${pkgdir}"/usr/lib/Yozo_Office/
+    #mv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/* "${pkgdir}"/usr/lib/Yozo_Office
+    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
+    ln -sf /usr/lib/vlc "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
     
     install -Dm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     
-    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
-    unpackP="${targetP}/Jre/bin/unpack200"
-    libP="${targetP}/Jre/lib"
+#    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
+#    unpackP="${targetP}/Jre/bin/unpack200"
+#    libP="${targetP}/Jre/lib"
 }
 
 package_yozo-office-fonts() {
