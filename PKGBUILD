@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://www.codemadness.org/sfeed_curses-ui.html'
 license=('ISC')
 depends=('ncurses')
+optdepends=('sfeed: RSS and Atom parser')
 options=('!buildflags')
 source=("https://codemadness.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('e436421b6e598caa9809d888694e0fa1cb38cf742c2bfdb6dbe9362a174537b7')
