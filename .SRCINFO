@@ -1,17 +1,17 @@
 pkgbase = polkadot-bin
 	pkgdesc = Binary builds of the Polkadot Node Implementation
-	pkgver = 0.8.7
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = https://github.com/paritytech/polkadot
 	arch = x86_64
 	license = GPL3
 	provides = polkadot
 	conflicts = polkadot
-	source = https://github.com/paritytech/polkadot/releases/download/v0.8.7/polkadot
-	source = https://github.com/paritytech/polkadot/releases/download/v0.8.7/polkadot.asc
+	source = https://github.com/paritytech/polkadot/releases/download/v0.8.12/polkadot
+	source = https://github.com/paritytech/polkadot/releases/download/v0.8.12/polkadot.asc
 	validpgpkeys = 9D4B2B6EB8F97156D19669A9FF0812D491B96798
-	sha256sums = 360e339ab8c32b862bf21aca2bed1e20a90b44ed9cab1428d5e9f0ce1dad9502
-	sha256sums = 522f4a265893bfba21eb59920086af4145464edbdc20bb18c56c351809ee7f68
+	sha256sums = 6b438baf4992e813ba6c4336f1084435234a897163936e93615e9cb5a06c2bbf
+	sha256sums = d43772d5d1c736a12240fd7d16f15481ffcece0899bb1ef5712b23a564aed8e3
 
 pkgname = polkadot-bin
 
