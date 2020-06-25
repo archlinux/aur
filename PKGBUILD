@@ -2,7 +2,7 @@
 _pkgname=nngpp
 pkgname=${_pkgname}-git
 pkgver=1.3.00cc5d264
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrapper around the nanomsg NNG API "
 arch=('x86_64')
 url="https://github.com/cwzx/nngpp"
@@ -20,13 +20,7 @@ pkgver() {
 	git describe --long --tags | tr -d 'nng\-v' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd "${_pkgname}"
-	make
-}
-
 check() {
-	# cd "${_pkgname}/build"
 	cd "${_pkgname}"
 	make test
 }
