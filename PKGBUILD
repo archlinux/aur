@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 _npmname=@gridsome/cli
 pkgname=gridsome-cli
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A command line tool for creating new Gridsome projects."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 provides=('gridsome')
 source=("https://registry.npmjs.org/$_npmname/-/cli-$pkgver.tgz")
-md5sums=('d9f4d0f6d1e8839b191abc0526d766eb')
+md5sums=('da324a21eebd8dbdf8dff71a3753b559')
 
 package() {
     npm install -g --cache $srcdir/npm-cache --user root --prefix $pkgdir/usr $srcdir/cli-$pkgver.tgz
