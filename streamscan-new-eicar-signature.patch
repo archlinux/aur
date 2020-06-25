@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/t/05streamscan.t b/t/05streamscan.t
+--- a/t/05streamscan.t	2016-07-16 00:55:24.000000000 +0300
++++ b/t/05streamscan.t	2020-06-25 14:16:17.654995837 +0300
+@@ -40,7 +40,7 @@
+ my ($ans, $vir) = $av->streamscan($data);
+ 
+ cmp_ok($ans, 'eq', 'FOUND', "Positive hit");
+-cmp_ok($vir, 'eq', 'Eicar-Test-Signature', "Match correct sig");
++cmp_ok($vir, 'eq', 'Win.Test.EICAR_HDB-1', "Match correct sig");
+ 
+ ok(kill(9 => $pid), "Kill ok");
+ 

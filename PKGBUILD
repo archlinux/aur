@@ -6,7 +6,7 @@ pkgdesc="File::Scan::ClamAV - Connect to a local Clam Anti-Virus clamd service"
 url="https://metacpan.org/release/$_dist"
 
 pkgver=1.95
-pkgrel=3
+pkgrel=4
 
 arch=('any')
 license=('PerlArtistic')
@@ -22,13 +22,19 @@ checkdepends=(
 
 source=(
     "https://cpan.metacpan.org/authors/id/E/ES/ESAYM/$_dist-$pkgver.tar.gz"
+    "streamscan-new-eicar-signature.patch"
 )
 sha256sums=(
     "d2418fcc8022fb541da609df47393219514b02c4968bd92d6372d2f836639f85"
+    "8f6fb96274a67c322c26a8a19be25e7d0ea3befd5d51015f5f996280479db191"
 )
 
 options=('!emptydirs' purge)
 
+prepare() {
+    cd "$srcdir/$_dist-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/streamscan-new-eicar-signature.patch"
+}
 
 build() {
     cd "$srcdir/$_dist-$pkgver"

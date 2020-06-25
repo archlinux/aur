@@ -1,7 +1,7 @@
 pkgbase = perl-file-scan-clamav
 	pkgdesc = File::Scan::ClamAV - Connect to a local Clam Anti-Virus clamd service
 	pkgver = 1.95
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/File-Scan-ClamAV
 	arch = any
 	license = PerlArtistic
@@ -12,7 +12,9 @@ pkgbase = perl-file-scan-clamav
 	options = !emptydirs
 	options = purge
 	source = https://cpan.metacpan.org/authors/id/E/ES/ESAYM/File-Scan-ClamAV-1.95.tar.gz
+	source = streamscan-new-eicar-signature.patch
 	sha256sums = d2418fcc8022fb541da609df47393219514b02c4968bd92d6372d2f836639f85
+	sha256sums = 8f6fb96274a67c322c26a8a19be25e7d0ea3befd5d51015f5f996280479db191
 
 pkgname = perl-file-scan-clamav
 
