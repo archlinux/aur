@@ -1,0 +1,16 @@
+pkgbase = python-scrapelib
+	pkgdesc = a library for scraping things
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://scrapelib.readthedocs.io/en/stable/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = python-scrapelib-1.2.0.tar.gz::https://files.pythonhosted.org/packages/84/df/60b520ee1af5180fe93b07e1c1b27263bec1b141fd878ff8f8eca969753f/scrapelib-1.2.0.tar.gz
+	sha256sums = 9a30f1404f3473488e1b9af99824316d4c79a94cc39e99e1f9c331a7fae15e8d
+
+pkgname = python-scrapelib
+
