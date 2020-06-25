@@ -33,7 +33,6 @@ build() {
   cd build
 #  export SUNSHINE_EXECUTABLE_PATH=/usr/bin/
   cmake ..
-nano
   make
   sed 's/\@SUNSHINE_EXECUTABLE_PATH\@/\/usr\/bin\/sunshine \/etc\/sunshine.conf/g' ../sunshine.service.in > sunshine.service
 }
