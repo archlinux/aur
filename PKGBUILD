@@ -5,7 +5,7 @@ url='https://wiki.ros.org/realtime_tools'
 pkgname='ros-noetic-realtime-tools'
 pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -32,7 +32,7 @@ sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111'
 
 prepare() {
     cd "${srcdir}/${_dir}"
-    patch -uN CMakeLists.txt ../../tests.patch || return 1
+    patch -uN CMakeLists.txt ${srcdir}/tests.patch || return 1
 }
 
 build() {
