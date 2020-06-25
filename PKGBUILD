@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.18.0.r24.g19f5c9080b
+pkgver=4.19.0.r33.gc6b4140231
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -23,7 +23,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
 _py2_deps=("${_py_deps[@]}" 'ipaddress')
 _py3_deps=("${_py_deps[@]}" 'zeroconf')
 depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
-         'libwmf' 'mathjax2' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
+         'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
 makedepends=('git' "${_py2_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
@@ -81,7 +81,7 @@ build() {
     LANG='en_US.UTF-8' python2 setup.py translations
     LANG='en_US.UTF-8' python2 setup.py gui
     LANG='en_US.UTF-8' python2 setup.py resources \
-        --path-to-mathjax /usr/share/mathjax2 --system-mathjax \
+        --path-to-mathjax /usr/share/mathjax --system-mathjax \
         --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
     LANG='en_US.UTF-8' python2 setup.py man_pages
 
