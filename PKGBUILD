@@ -2,7 +2,7 @@
 
 pkgluaname=mtmsg
 pkgname=lua-$pkgluaname
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 rockrel=1
 pkgdesc="Low-level in-memory message buffers for inter-thread communication for Lua."
@@ -23,4 +23,4 @@ package() {
 	rm -rf "$pkgdir/usr/lib/luarocks"
 }
 
-md5sums=('3c3e935baf7a28362ec7a092fdb8b56f')
+md5sums=('c3c1c9a63c6b3a99e769ef2404efe8f7')

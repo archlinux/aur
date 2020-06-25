@@ -1,6 +1,6 @@
 pkgbase = lua-mtmsg
 	pkgdesc = Low-level in-memory message buffers for inter-thread communication for Lua.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/osch/lua-mtmsg#mtmsg
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = lua-mtmsg
 	license = MIT
 	makedepends = luarocks
 	depends = lua
-	source = https://github.com/osch/lua-mtmsg/archive/v0.3.1.tar.gz
-	md5sums = 3c3e935baf7a28362ec7a092fdb8b56f
+	source = https://github.com/osch/lua-mtmsg/archive/v0.4.0.tar.gz
+	md5sums = c3c1c9a63c6b3a99e769ef2404efe8f7
 
 pkgname = lua-mtmsg
 
