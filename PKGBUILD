@@ -4,7 +4,7 @@
 
 pkgname=linuxcnc
 pkgver=2.7.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -38,6 +38,10 @@ prepare() {
    --without-libmodbus --prefix=/usr \
    --with-python=/usr/bin/python2.7 \
    --enable-non-distributable=yes
+   # Compile time error fix
+   sed -i "159s|FileName|FileNameArr|" hal/classicladder/files_project.c
+   sed -i "170s|FileName|FileNameArr|" hal/classicladder/files_project.c
+   sed -i "171s|FileName|FileNameArr|" hal/classicladder/files_project.c
 }
 
 build () {
