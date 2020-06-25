@@ -1,6 +1,6 @@
 pkgbase = git-buildpackage
 	pkgdesc = Tools from Debian to integrate the package build system with Git
-	pkgver = 0.9.17
+	pkgver = 0.9.19
 	pkgrel = 1
 	url = https://honk.sigxcpu.org/piki/projects/git-buildpackage/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = git-buildpackage
 	depends = python-dateutil
 	depends = rpm-org
 	backup = etc/git-buildpackage/gbp.conf
-	source = git+https://github.com/agx/git-buildpackage.git#tag=debian/0.9.17
+	source = git+https://github.com/agx/git-buildpackage.git#tag=debian/0.9.19
 	sha256sums = SKIP
 
 pkgname = git-buildpackage
