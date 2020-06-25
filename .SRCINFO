@@ -1,7 +1,7 @@
 pkgbase = nvidia-full-beta-all
 	pkgdesc = Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)
 	pkgver = 450.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom

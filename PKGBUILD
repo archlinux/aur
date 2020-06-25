@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
 pkgver=450.51
-pkgrel=1
+pkgrel=2
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
