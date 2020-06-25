@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 build() {
     cd asf
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
-    ./cc.sh
+    ./cc.sh --no-pull --no-asf-ui
 }
 
 package() {
