@@ -9,7 +9,7 @@ pkgbase = picterm
 	depends = libx11
 	optdepends = libjpeg: JPEG images support
 	optdepends = libpng: PNG images support
-	optdepends = libgif: GIF images support
+	optdepends = giflib: GIF images support
 	source = picterm-1.0.tar.gz::https://github.com/artemsen/picterm/archive/v1.0.tar.gz
 	md5sums = 34b1cab4c5b9109df798de4a57e1fa76
 
