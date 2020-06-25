@@ -104,13 +104,13 @@ build() {
 	npm run pack:linux
 }
 
-check() {
-	cd "$srcdir/mullvadvpn-app"
-	cargo test --release --locked
-
+#check() {
+#	cd "$srcdir/mullvadvpn-app"
+#	cargo test --release --locked
+#
 #	cd gui
 #	npm test
-}
+#}
 
 package() {
 	cd "$srcdir/mullvadvpn-app"
