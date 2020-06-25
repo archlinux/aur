@@ -1,0 +1,17 @@
+pkgbase = plasma5-applets-betterinlineclock-git
+	pkgdesc = The hottest clock around on a single line!
+	pkgver = r24.bbad71b
+	pkgrel = 1
+	url = https://github.com/MarianArlt/kde-plasmoid-betterinlineclock
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	provides = plasma5-applets-betterinlineclock
+	conflicts = plasma5-applets-betterinlineclock
+	source = git+https://github.com/MarianArlt/kde-plasmoid-betterinlineclock.git
+	sha256sums = SKIP
+
+pkgname = plasma5-applets-betterinlineclock-git
+
