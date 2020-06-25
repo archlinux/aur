@@ -1,12 +1,12 @@
 pkgbase = otf-bravura
 	pkgdesc = An SMuFL compliant music font designed by Daniel Spreadbury at Steinberg
-	pkgver = 1.360
+	pkgver = 1.380
 	pkgrel = 1
 	url = https://www.smufl.org/fonts/
 	arch = any
 	license = OFL
-	source = https://github.com/steinbergmedia/bravura/archive/bravura-1.360.tar.gz
-	sha256sums = 898e3f7b2ed3ba108e1daa1deaeb02ab9878a11b0e9436b8a737451f89a92a01
+	source = https://github.com/steinbergmedia/bravura/archive/bravura-1.380.tar.gz
+	sha256sums = 469b76e221237e7204fe63c24a796c14c20d116ff7c2c50678e62434d9766fdb
 
 pkgname = otf-bravura
 
