@@ -1,4 +1,5 @@
-# Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
+# Submitted by: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
+# Maintainer: Oliver Weissbarth <mail ät oweissbarth.de>
 
 pkgname=checkupdates+aur
 pkgver=1
@@ -8,7 +9,7 @@ arch=('any')
 license=('LGPL3')
 depends=('checkupdates-aur')
 source=("checkupdates+aur.bash")
-sha512sums=('353363969ac84d6b597eb9f2f487616a8852114ac0ce4710d26a10e8690f2a64df263323d64990dea96df56ae0be2b50ad0dfe181bd595ae11346b795990cf7b')
+sha512sums=('84a9e643085c144945cb016017cc6e35609abc9a283f6636175ebb6eb61944e1c6fa31608181a4cd53d486cb99e4f8e6096372ba5c804db283d4fa1f295c7268')
 
 package() {
 	install -D -m755 "$srcdir/checkupdates+aur.bash" "$pkgdir/usr/bin/checkupdates+aur"

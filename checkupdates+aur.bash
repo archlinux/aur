@@ -1,3 +1,4 @@
 #!/usr/bin/bash
-/usr/bin/checkupdates 
+/usr/bin/checkupdates
+printf "$1"
 /usr/bin/checkupdates-aur
