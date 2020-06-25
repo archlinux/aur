@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=24265.208614343
+pkgver=24279.78b6587c4
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
@@ -46,8 +46,8 @@ package() {
   ## TODO: Delete when https://github.com/OpenTTD/OpenTTD/pull/8218 will be merged
   cd "$pkgdir"
   mv usr/share/games/openttd usr/share/openttd-git
-  mv usr/share/doc/openttd usr/share/doc/openttd-git
-  mv usr/share/man/openttd usr/share/man/man6
+  # mv usr/share/doc/openttd usr/share/doc/openttd-git
+  mv usr/share/doc/OpenTTD usr/share/doc/openttd-git
   mv usr/share/man/man6/openttd.6 usr/share/man/man6/openttd-git.6
   mv usr/bin/openttd usr/bin/openttd-git
   rm -r usr/share/games
