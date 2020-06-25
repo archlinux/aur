@@ -46,7 +46,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-dev
-# pkgname=('linux-bfq-dev' 'linux-bfq-headers-dev' 'linux-bfq-docs-dev')
+# pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.7
 _minor=6
 pkgver=${_major}.${_minor}
@@ -222,11 +222,11 @@ _package() {
 }
 
 _package-headers() {
-   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-   depends=('linux-bfq-dev')
-   replaces=('linux-bfq-headers')
-   conflicts=('linux-bfq-headers')
-   provides=('linux-bfq-headers')
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    depends=('linux-bfq-dev')
+    replaces=('linux-bfq-headers')
+    conflicts=('linux-bfq-headers')
+    provides=('linux-bfq-headers')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
