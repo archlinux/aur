@@ -11,7 +11,7 @@ conflicts=('dotenv-linter-git')
 makedepends=('curl')
 md5sums=('SKIP')
 
-source=("https://github.com/dotenv-linter/dotenv-linter/releases/download/v${pkgver}/dotenv-linter-linux-x86_64.tar.gz")
+source=("https://github.com/dotenv-linter/dotenv-linter/releases/download/${pkgver}/dotenv-linter-linux-x86_64.tar.gz")
 
 package() {
   # Extract binary
