@@ -1,0 +1,20 @@
+pkgbase = gnome-ssh-askpass3
+	pkgdesc = A GTK3 passphrase requesters for ssh-add.
+	pkgver = 8.3p1
+	pkgrel = 1
+	url = http://www.openssh.org/portable.html
+	arch = x86_64
+	license = custom:2-term BSD licence
+	depends = gtk3
+	provides = x11-ssh-askpass
+	conflicts = x11-ssh-askpass
+	conflicts = ssh-askpass-fullscreen
+	conflicts = gnome-ssh-askpass
+	conflicts = gnome-ssh-askpass2
+	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.3p1.tar.gz
+	source = gnome-ssh-askpass3.sh
+	sha256sums = f2befbe0472fe7eb75d23340eb17531cb6b3aac24075e2066b41f814e12387b2
+	sha256sums = 8a18ef3a2c6e61f117db49aabef4e191fea47df43907872113fd64536d2f4c11
+
+pkgname = gnome-ssh-askpass3
+
