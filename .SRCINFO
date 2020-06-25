@@ -1,13 +1,13 @@
 pkgbase = operator-sdk
 	pkgdesc = SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/operator-framework/operator-sdk
 	arch = x86_64
 	license = Apache
 	conflicts = operator-sdk-git
-	source = https://github.com/operator-framework/operator-sdk/releases/download/v0.18.1/operator-sdk-v0.18.1-x86_64-linux-gnu
-	sha256sums = ec540aaffa9f304c574437cba74dc2d58b2151ad6771e7ac294849c0982509e8
+	source = https://github.com/operator-framework/operator-sdk/releases/download/v0.18.2/operator-sdk-v0.18.2-x86_64-linux-gnu
+	sha256sums = 40d35ea77b7b0cb5d2f88b97bb8c5b0684af4a54b9d7056790ecaa5e4a70a0d4
 
 pkgname = operator-sdk
 
