@@ -1,8 +1,8 @@
 pkgbase = azdrawing
 	pkgdesc = Painting software for line art and comics.
 	pkgver = 1.5
-	pkgrel = 4
-	url = https://osdn.net/projects/azdrawing/
+	pkgrel = 5
+	url = http://azsky2.html.xdomain.jp/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = azdrawing
 	depends = libjpeg-turbo
 	depends = libxi
 	depends = libxft
-	source = https://osdn.net/dl/azdrawing/azdrawing-1.5.tar.bz2
-	sha256sums = bea6e70f3850b10d6ec1401f4bebc4e50c0699e8bf5339ec5c642094e1db194c
+	source = http://azsky2.html.xdomain.jp/arc/azdrawing-1.5.tar.bz2
+	md5sums = 93941ba7344bba236f658fbd69d99cfb
 
 pkgname = azdrawing
 
