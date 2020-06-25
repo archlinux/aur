@@ -1,3 +1,17 @@
+2020-06-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.3.3-1:
+    Added Steam Summer Sale 2020 to SalesBlacklist (#1853).
+    ASF now comes bundled with its first official plugin, SteamTokenDumperPlugin. Check out our wiki for exact details on the plugin, including how to activate it. People using docker might need to rebuild their containers with docker volume rm on old ASF volumes.
+    We've slightly changed our MatchActively algorithm to increase chance of finding rare matches, you can read more about that on our wiki.
+    Fixed an issue of ASF running into a possible deadlock with cross-process limiters on Windows machines.
+    Fixed ASF being unable to fetch app info for non-public apps (e.g. publisher banned).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    Includes bugfix for #1862.\
+    pkg: package dir changed to conform with build script output
+    pkg: replace custom launch script with upstream's
+    pkg: prevent build script from pulling git repos
 2020-06-23 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.2.1-1:
     Fixed ASF being unable to fetch info about newer non-public packages requiring access token (#1827). This was required due to recent Steam change, making it impossible for ASF to work like previously.
