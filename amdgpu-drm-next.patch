@@ -136,21 +136,3 @@ index c7c9e07962b9..623745b2d8b3 100644
  		vega20_reg_base_init(adev);
  		break;
  		
-diff --git a/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_resource.c b/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_resource.c
-index 0e638a77b5ee..babc966cdabd 100644
---- a/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_resource.c
-+++ b/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_resource.c
-@@ -1709,12 +1709,8 @@ static int dcn21_populate_dml_pipes_from_context(
- {
- 	uint32_t pipe_cnt = dcn20_populate_dml_pipes_from_context(dc, context, pipes);
- 	int i;
--	struct resource_context *res_ctx = &context->res_ctx;
- 
--	for (i = 0; i < dc->res_pool->pipe_count; i++) {
--
--		if (!res_ctx->pipe_ctx[i].stream)
--			continue;
-+	for (i = 0; i < pipe_cnt; i++) {
- 
- 		pipes[i].pipe.src.hostvm = 1;
- 		pipes[i].pipe.src.gpuvm = 1;

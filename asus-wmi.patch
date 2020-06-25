@@ -1,5 +1,5 @@
 diff --git a/drivers/platform/x86/asus-nb-wmi.c b/drivers/platform/x86/asus-nb-wmi.c
-index c4404d9c1de4..e449f4b050c2 100644
+index c4404d9c1de4..e53c258acf68 100644
 --- a/drivers/platform/x86/asus-nb-wmi.c
 +++ b/drivers/platform/x86/asus-nb-wmi.c
 @@ -110,6 +110,18 @@ static struct quirk_entry quirk_asus_forceals = {
@@ -21,52 +21,46 @@ index c4404d9c1de4..e449f4b050c2 100644
  static int dmi_matched(const struct dmi_system_id *dmi)
  {
  	pr_info("Identified laptop model '%s'\n", dmi->ident);
-@@ -411,7 +423,34 @@ static const struct dmi_system_id asus_quirks[] = {
+@@ -411,6 +423,42 @@ static const struct dmi_system_id asus_quirks[] = {
  		},
  		.driver_data = &quirk_asus_forceals,
  	},
--	{},
 +	{
-+               .callback = dmi_matched,
-+               .ident = "ASUSTeK COMPUTER INC. GA401IV",
-+               .matches = {
-+                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
-+                       DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
-+               },
-+               .driver_data = &quirk_asus_ga401i,
-+       },
-+       {
-+               .callback = dmi_matched,
-+               .ident = "ASUSTeK COMPUTER INC. GA401IU",
-+               .matches = {
-+                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
-+                       DMI_MATCH(DMI_PRODUCT_NAME, "GA401IU"),
-+               },
-+               .driver_data = &quirk_asus_ga401i,
-+       },
-+       {
-+               .callback = dmi_matched,
-+               .ident = "ASUSTeK COMPUTER INC. GA502IU",
-+               .matches = {
-+                       DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
-+                       DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
-+               },
-+               .driver_data = &quirk_asus_ga502i,
-+      },
-+       {},
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA401IV",
++		.matches = {
++				DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++				DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
++		},
++		.driver_data = &quirk_asus_ga401i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA401IU",
++		.matches = {
++				DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++				DMI_MATCH(DMI_PRODUCT_NAME, "GA401IU"),
++		},
++		.driver_data = &quirk_asus_ga401i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA502IU",
++		.matches = {
++				DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++				DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
++		},
++		.driver_data = &quirk_asus_ga502i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA502IV",
++		.matches = {
++				DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++				DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
++		},
++		.driver_data = &quirk_asus_ga502i,
++	},
+ 	{},
  };
  
- static void asus_nb_wmi_quirks(struct asus_wmi_driver *driver)
-diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 01becbe2a9a8..acbc3626852b 100644
---- a/drivers/platform/x86/asus-wmi.c
-+++ b/drivers/platform/x86/asus-wmi.c
-@@ -116,6 +116,8 @@ struct bios_args {
- 	u32 arg0;
- 	u32 arg1;
- 	u32 arg2; /* At least TUF Gaming series uses 3 dword input buffer. */
-+        u32 arg3; /* At least ROG Zephyrus G14 series uses 5 dword input buffer */
-+        u32 arg4;
- } __packed;
- 
- /*
