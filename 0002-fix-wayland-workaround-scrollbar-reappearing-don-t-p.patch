@@ -1,0 +1,61 @@
+From 3557d7e76c52cda0b0b6aaee4cbb68859feb5dd3 Mon Sep 17 00:00:00 2001
+From: Ferdinand Bachmann <theferdi265@gmail.com>
+Date: Thu, 25 Jun 2020 22:52:13 +0200
+Subject: [PATCH] fix(wayland): workaround scrollbar reappearing, don't
+ propagateSize too often
+
+---
+ src/TerminalDisplay.cpp | 14 ++++++++++----
+ src/TerminalDisplay.h   |  2 +-
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index d7fa78ec..3739ea37 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -2091,11 +2091,13 @@ void TerminalDisplay::setScrollBarPosition(Enum::ScrollBarPositionEnum position)
+     applyScrollBarPosition();
+ }
+ 
+-void TerminalDisplay::applyScrollBarPosition() {
++void TerminalDisplay::applyScrollBarPosition(bool propagate) {
+     _scrollBar->setHidden(_scrollbarLocation == Enum::ScrollBarHidden);
+ 
+-    propagateSize();
+-    update();
++    if (propagate) {
++        propagateSize();
++        update();
++    }
+ }
+ 
+ void TerminalDisplay::scrollBarPositionChanged(int)
+@@ -2739,7 +2741,11 @@ void TerminalDisplay::wheelEvent(QWheelEvent* ev)
+         _scrollWheelState.addWheelEvent(ev);
+ 
+         _scrollBar->event(ev);
+-        applyScrollBarPosition();
++
++        // reapply scrollbar position since the scrollbar event handler
++        // sometimes makes the scrollbar visible when set to hidden
++        // don't propagateSize and update, since nothing actually changed
++        applyScrollBarPosition(false);
+ 
+         Q_ASSERT(_sessionController != nullptr);
+ 
+diff --git a/src/TerminalDisplay.h b/src/TerminalDisplay.h
+index 4ac7f992..516bbf98 100644
+--- a/src/TerminalDisplay.h
++++ b/src/TerminalDisplay.h
+@@ -680,7 +680,7 @@ private:
+ 
+     // applies changes to scrollbarLocation to the scroll bar and propagates size
+     // information
+-    void applyScrollBarPosition();
++    void applyScrollBarPosition(bool propagate = true);
+ 
+     // scrolls the image by a number of lines.
+     // 'lines' may be positive ( to scroll the image down )
+-- 
+2.27.0
+

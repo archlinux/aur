@@ -1,7 +1,7 @@
 pkgbase = konsole-scrollbar-fix-git
 	pkgdesc = KDE's terminal emulator
-	pkgver = r7153.1b08f305
-	pkgrel = 1
+	pkgver = r7247.91204ff0
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/applications/konsole
 	arch = i686
 	arch = x86_64
@@ -39,10 +39,12 @@ pkgbase = konsole-scrollbar-fix-git
 	conflicts = konsole
 	conflicts = kdebase-konsole
 	conflicts = konsole-git
-	source = git://anongit.kde.org/konsole.git
+	source = konsole::git+https://anongit.kde.org/konsole.git
 	source = 0001-fix-scrollbar-sometimes-reappearing-when-scrolling.patch
+	source = 0002-fix-wayland-workaround-scrollbar-reappearing-don-t-p.patch
 	md5sums = SKIP
 	md5sums = 028ba655f3a0ce5b42654fc0ee5fd742
+	md5sums = 15b881f618a9fbc1d7d3c87854dafcad
 
 pkgname = konsole-scrollbar-fix-git
 

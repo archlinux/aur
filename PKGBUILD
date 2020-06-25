@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole-scrollbar-fix-git
-pkgver=r7049.9babfb2e
-pkgrel=1
+pkgver=r7247.91204ff0
+pkgrel=2
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/applications/konsole'
@@ -12,8 +12,16 @@ depends=('kbookmarks' 'kcompletion' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kc
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 provides=('konsole')
 conflicts=('konsole' 'kdebase-konsole' 'konsole-git')
-source=('git://anongit.kde.org/konsole.git' '0001-fix-scrollbar-sometimes-reappearing-when-scrolling.patch')
-md5sums=('SKIP' '028ba655f3a0ce5b42654fc0ee5fd742')
+source=(
+    'konsole::git+https://anongit.kde.org/konsole.git'
+    '0001-fix-scrollbar-sometimes-reappearing-when-scrolling.patch'
+    '0002-fix-wayland-workaround-scrollbar-reappearing-don-t-p.patch'
+)
+md5sums=(
+    'SKIP'
+    '028ba655f3a0ce5b42654fc0ee5fd742'
+    '15b881f618a9fbc1d7d3c87854dafcad'
+)
 
 pkgver() {
   cd konsole
