@@ -1,7 +1,7 @@
 pkgbase = plex-media-player
 	pkgdesc = Next generation Plex Desktop Client
 	pkgver = 2.58.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
 	arch = x86_64
