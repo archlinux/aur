@@ -102,16 +102,16 @@ check_wine() {
 	    /v winemenubuilder /f >/dev/null
     fi
     DXVKLIBDIR=$SETUPDIR/lib/dxvk
-    WINESYSDIR=$WINEPREFIX/drive_c/windows/system32
-    if [ -r "$DXVKLIBDIR" -a ! -r "$WINESYSDIR/d3d11.dll.old" ] ;then
+    WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
+    W32SYSDIR=${WINSYSDIR%/*}/syswow64
+    if [ -r "$DXVKLIBDIR" -a ! -r "$WINSYSDIR/d3d11.dll.old" ] ;then
 	desktop_msg "Setup DXVK in EVE's wine environment"
 	for DXVKFILE in d3d10core d3d11 dxgi ;do
-	    mv $WINESYSDIR/$DXVKFILE.dll $WINESYSDIR/$DXVKFILE.dll.old
-	    cp $DXVKLIBDIR/x64/$DXVKFILE.dll $WINESYSDIR/$DXVKFILE.dll
-	    if [ -d "${WINESYSDIR%/*}/syswow64" ] ;then
-		mv ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll \
-		    ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll.old
-		cp $DXVKLIBDIR/x32/$DXVKFILE.dll ${WINESYSDIR%/*}/syswow64/$DXVKFILE.dll
+	    mv $WINSYSDIR/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll.old
+	    cp $DXVKLIBDIR/x64/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll
+	    if [ -d "$W32SYSDIR" ] ;then
+		mv $W32SYSDIR/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll.old
+		cp $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
 	    fi
 	    env WINEPREFIX=$WINEPREFIX \
 		$WINE reg add \
