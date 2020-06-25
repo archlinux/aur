@@ -1,6 +1,6 @@
 pkgbase = man-pages-fr-git
 	pkgdesc = French man pages (Git version)
-	pkgver = r9783.6449a0ee1
+	pkgver = r10158.22d941b2f
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	changelog = man-pages-fr-git.changelog
