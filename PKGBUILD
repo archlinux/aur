@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.10_pre1.r12413
+pkgver=0.9.10_pre1.r12414
 pkgrel=1
 epoch=3
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
@@ -15,7 +15,7 @@ depends=('zlib' 'gdbm' 'libatomic_ops' 'gauche' 'slib')
 makedepends=('bash' 'git') 
 provides=('gauche')
 conflicts=('gauche')
-source=('git+https://github.com/shirok/Gauche.git#commit=951c82830442f6f7c389f01bc62601c6f9fc89eb')
+source=('git+https://github.com/shirok/Gauche.git')
 md5sums=('SKIP')
 _gitname='Gauche'
 options=('!makeflags' '!emptydirs')
