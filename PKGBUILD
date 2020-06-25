@@ -9,13 +9,13 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 _pkgname=stepmania
 pkgname=$_pkgname-git
-pkgver=5.1.0.b2.r510.1f1fa3c2a9
+pkgver=5.1.0.b2.r514.89229ed915
 pkgrel=1
 pkgdesc="An advanced rhythm game designed for both home and arcade use."
 arch=(x86_64)
 url=https://www.$_pkgname.com/
 license=(MIT)
-depends=(ffmpeg glew gtk2 jsoncpp libmad libtomcrypt libvorbis)
+depends=(ffmpeg glew gtk3 jsoncpp libmad libtomcrypt)
 makedepends=(cmake git ninja)
 provides=($_pkgname)
 conflicts=($_pkgname)
