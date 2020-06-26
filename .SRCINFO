@@ -1,0 +1,17 @@
+pkgbase = g3kb-switch-git
+	pkgdesc = a keyboard layout switcher for Gnome 3
+	pkgver = 20200108
+	pkgrel = 1
+	url = https://github.com/lyokha/g3kb-switch
+	arch = x86_64
+	license = Unknown
+	makedepends = cmake
+	makedepends = git
+	depends = clang
+	depends = glib2
+	depends = glibc
+	source = git+https://github.com/lyokha/g3kb-switch.git
+	md5sums = SKIP
+
+pkgname = g3kb-switch-git
+
