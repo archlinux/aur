@@ -6,7 +6,6 @@ pkgbase = dict-freedict-eng-fra
 	install = dict-freedict-eng-fra.install
 	arch = any
 	license = GPL
-	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	source = https://download.freedict.org/dictionaries/eng-fra/0.1.6/freedict-eng-fra-0.1.6.src.tar.xz
