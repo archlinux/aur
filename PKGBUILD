@@ -2,7 +2,7 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
-pkgver=1.0.4.r3.g127df47
+pkgver=1.1.0.r0.gce8c98e
 pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
@@ -38,8 +38,9 @@ package() {
     cp -vf COPYING "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
     cp -vf COPYING "${pkgdir}/usr/share/licenses/${_pkgbase}"
-    mkdir -p "${pkgdir}/etc/${_pkgbase}"
+    mkdir -p "${pkgdir}/etc/${_pkgbase}/examples"
     cp -vf share/config_example.ini "${pkgdir}/etc/${_pkgbase}"
+    cp -vf share/examples/output.c "${pkgdir}/etc/${_pkgbase}/examples"
     cd "${srcdir}/${_pkgbase}/src"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
