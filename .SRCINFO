@@ -1,13 +1,14 @@
 pkgbase = nextcloud-app-cospend
 	pkgdesc = Shared budget manager Nextcloud app
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/eneiluj/cospend-nc
 	arch = any
 	license = AGPL3
+	makedepends = npm
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-cospend-0.5.5.tar.gz::https://gitlab.com/eneiluj/cospend-nc/-/archive/v0.5.5/cospend-nc-v0.5.5.tar.gz
+	source = https://gitlab.com/eneiluj/cospend-nc/-/archive/v0.5.5/cospend-nc-v0.5.5.tar.gz
 	sha512sums = 09c202bdca7bc0ae1268b7660e5df790b326456439338328ff4ebf64370b7f1f5847bf0b66fa43f93c03d8484707be2fc819bbca15526b68a6c9d03337c33cce
 
 pkgname = nextcloud-app-cospend
