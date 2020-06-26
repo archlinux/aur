@@ -1,7 +1,7 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 
 pkgname=ormolu
-pkgver=0.1.1.0
+pkgver=0.1.2.0
 pkgrel=1
 pkgdesc="A formatter for Haskell source code"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gmp')
 makedepends=('stack')
 source=("${url}/archive/${pkgver}.tar.gz"
         'stack.yaml')
-sha256sums=('78ba022a461aace178b428442d2840b513c4f6d672fbbae9b9743dd623271c09'
+sha256sums=('ef7164d1d32f59e2a3317d82978fb7b66b496dd2c9ed618d224dc9b6ec15123c'
             '40ff63b6c6be436d2e659c09032f4ce992a24fca713ea1f9d59d075388d62999')
 
 prepare() {
