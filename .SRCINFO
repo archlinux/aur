@@ -1,13 +1,12 @@
 pkgbase = dict-freedict-eng-spa-svn
 	pkgdesc = English -> Spanish dictionary for dictd et al. from Freedict.org
-	pkgver = r1775
-	pkgrel = 2
+	pkgver = r1870
+	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-eng-spa-svn.install
 	arch = any
 	license = GPL
 	makedepends = subversion
-	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	provides = dict-freedict-eng-spa
