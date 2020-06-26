@@ -2,19 +2,19 @@
 pkgname=moodledesktop
 _pkgname=moodleapp
 _electron=electron4
-pkgver=3.8.2
+pkgver=3.9.0
 pkgrel=1
-pkgdesc="The official app for Moodle."
+pkgdesc='The official app for Moodle.'
 arch=(any)
-url='https://download.moodle.org/desktop/'
+url=https://download.moodle.org/desktop/
 license=(Apache)
 depends=($_electron)
-makedepends=(git jq moreutils npm)
+makedepends=(git jq moreutils nodejs-lts-erbium npm)
 _pathstem=$_pkgname-$pkgver
-source=("$_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('0f4e721bc50672fd6618218f17b145c6b2d2384f9078d5daa7f6b06fc4fee2d9'
+source=($_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz
+        $pkgname.sh
+        $pkgname.desktop)
+sha256sums=('d246c910aa943227eb828271c9b4fa3f5f927d50ff49e04fbefe1c30d8add003'
             'ae04368f6573a0aec419bf1d013a60cfaf7375ed9db2a73e04d0a65904746fdd'
             'ca4bcbbfb0b6f40e4fa8eaed0b02e5c1d1ba609a43f8aaed8cefd16c8af4ba86')
 
@@ -22,17 +22,17 @@ prepare() {
   cd $_pathstem
 
   local dist=/usr/lib/$_electron
-  local version="$(sed 's/^v//' $dist/version)"
-  jq '.name = $name | .build.electronDist = $dist | .build.electronVersion = $version' \
+  local version="$(cat $dist/version)"
+  jq '.name = $name | .build.electronDist = $dist | .build.electronVersion = $version | .engines.node = "12.x"' \
       --arg name $pkgname \
-      --arg dist "$dist" \
-      --arg version "$version" \
+      --arg dist $dist \
+      --arg version $version \
       package.json | sponge package.json
 }
 
 build() {
   cd $_pathstem
-  export npm_config_cache="$srcdir/npm-cache"
+  export npm_config_cache="$srcdir"/npm-cache
 
   npm install node-sass
   npm install
