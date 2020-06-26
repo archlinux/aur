@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.7.5.arch1
+	pkgver = 5.7.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.7.5-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.7.6-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-5.7.5.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-5.7.5.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-5.7.5.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 2b446b19fd09ed169ee41d58cf3c94e3b3630ec0fc6c9aea38d879aebf5905d9
-	sha256sums = f1d85ff3d0263c1f563ce075661232c1407fff8a7c4145b409c902c3d2d75e35
-	sha256sums = 2e91cef4eefa115418851c413c758e59efd61e6598d0849611ac816cb6e5d9b7
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.7.6.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.7.6.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.7.6.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 351c45b24d33b59349e59456ccb40e833ee72170d2eef63eed2d90f5b75c5f46
+	sha256sums = 0e52fcc6e4dcaa9ecd88eb8db3f524af9d4bdf0597ca66897e89e26d5e6a3031
+	sha256sums = a05a0be3ecf11b86038cbc0545703931e1e30f51c31d67133e2f8a0503c812d6
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.7.5.arch1-1-bin
-	depends = linux5.7.5.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.7.6.arch1-1-bin
+	depends = linux5.7.6.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.7.5.arch1-1-headers-bin
-	depends = linux5.7.5.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.7.6.arch1-1-headers-bin
+	depends = linux5.7.6.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.7.5.arch1-1-docs-bin
-	depends = linux5.7.5.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.7.6.arch1-1-docs-bin
+	depends = linux5.7.6.arch1-1-docs-bin
 
-pkgname = linux5.7.5.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.7.5-arch1-1
+pkgname = linux5.7.6.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.7.6-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.7.5.arch1-1-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux
 
-pkgname = linux5.7.5.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.7.5-arch1-1
+pkgname = linux5.7.6.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.7.6-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.7.5.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.7.5-arch1-1
+pkgname = linux5.7.6.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.7.6-arch1-1
 	conflicts = linux-docs
 
