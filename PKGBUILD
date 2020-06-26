@@ -3,7 +3,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
@@ -22,7 +22,7 @@ fi
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
 )
-sha256sums=('0f9635e5c014713340160d8bd0cbfc6d34a36d39402a84eaa0d8c5dee4d1c6f0')
+sha256sums=('9a071aba23fc912976203d35212a94207b7cb667c0b5353b3525f9b7e6899017')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
@@ -48,4 +48,3 @@ package() {
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/LICENSE.txt "${pkgdir}"/usr/share/licenses/godot/LICENSE
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/godot.6 "${pkgdir}"/usr/share/man/man6/godot.6
 }
-
