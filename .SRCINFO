@@ -1,6 +1,6 @@
 pkgbase = magnum-extras-git
 	pkgdesc = Extras for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = 2019.10.r0.g44b6309
+	pkgver = 2019.10.r54.g0c4be49
 	pkgrel = 1
 	url = https://magnum.graphics
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = magnum-extras-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = magnum-git
 	provides = magnum-extras
 	conflicts = magnum-extras
