@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=needrestart-git
-pkgver=3.4.r37.gd44354c
+pkgver=3.5.r0.gdfc7c12
 pkgrel=1
 pkgdesc='Restart daemons after library updates.'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/liske/needrestart"
 license=('GPL')
 depends=('perl-module-find' 'perl-term-readkey' 'perl-proc-processtable'
          'perl-sort-naturally' 'perl-module-scandeps' 'perl-libintl-perl')
-optdepends=('iucode-tool: for outdated microcode detection')
+optdepends=('iucode-tool: for outdated Intel microcode detection')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!emptydirs)
