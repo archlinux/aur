@@ -1,9 +1,9 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 pkgname="brlaser"
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS driver for the Brother DCP-7065DN"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pdewacht/brlaser"
 license=('GPL2')
 depends=('cups')
