@@ -8,6 +8,7 @@ pkgbase = kristall
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = openssl
+	depends = qt5-svg
 	provides = kristall
 	source = https://github.com/MasterQ32/kristall/archive/V0.3.tar.gz
 	md5sums = 40b08c53df0b445e5307ee61b5f5f05b
