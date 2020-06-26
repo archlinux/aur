@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta1.r0.ge2dcdeeabb
+pkgver=9.2.beta2.r0.g69d2b2da28
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -41,31 +41,23 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-20.04.patch
-        sagemath-no-dict-sorting.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
         sagemath-gap-4.11.patch
-        sagemath-pari-2.11.3.patch
-        sagemath-sphinx-3.patch
-        sagemath-sympy-1.6.patch
         sagemath-flint-2.6.patch
         sagemath-cython-0.29.20.patch)
 sha256sums=('SKIP'
-            '5034676c4ce46181723f261d6bd180a795adea417f485c5e3e361b3aaef498ec'
+            '5dbff7afecbc78e8ff7749b2ac929e8d2104e205bb2193f05a9687ce5ce65cf4'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            '1fabc86d066310988a90083aaedceb9690822df8ff80c16501692231daa96e33'
-            'f9721c66d1a0267bb19923f5084d40f8121fcada6db1d1c37484dab70b655544'
+            'c50b6bd6ee6e00fc15ec267ac3187e234e5564f6c346c74d7ddaa5dc5f1fcd22'
             'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
             'e55bb5df7d6ce65fc9d124b6b59407071f0c55d88f730e9467398f10cc87e66d'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
-            'f6b3f52748d0f692f109c29724b402149b74960d8954e244ab770c85af832b6c'
-            '688345dd88174cc82a196a9ecace86f3b4f28bb2fae2d7196a40a76ff724f92e'
-            'c9fa4f136a8e4fa9832524bb0ee4a7fbb3c6e992595a3b10c7c627ba9161b4ce'
-            'ade7f86abc8b04b6a01c1a495b644a034d27bacdfdfa62813f4f8945bb96a8fe'
+            'aeb6bb7a8d40f3d3b3547ee5f1e67e876051d9463cd1e0000b497c4d0f3e2fe9'
             'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
             '6bc0eb8a54800d745474d7d371efedfd96838574f32fb9e2714ab268ccad2df7')
 
@@ -84,12 +76,6 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix build with ECL 20.04 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-20.04.patch
-# Fix doc build with sphinx 3 https://trac.sagemath.org/ticket/28856
-  patch -p1 -i ../sagemath-sphinx-3.patch
-# Port to sympy 1.6 changes https://trac.sagemath.org/ticket/29730
-  patch -p1 -i ../sagemath-sympy-1.6.patch
-# Sort dicts in doctests https://trac.sagemath.org/ticket/29042
-  patch -p1 -i ../sagemath-no-dict-sorting.patch
 # Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
   patch -p1 -i ../sagemath-flint-2.6.patch
 
@@ -110,8 +96,6 @@ prepare(){
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 # Fix gap.version() and doctests with GAP 4.11
   patch -p1 -i ../sagemath-gap-4.11.patch
-# Fix doctests with pari 2.11.3
-  patch -p1 -i ../sagemath-pari-2.11.3.patch
 # Fix crash with cython 0.29.20
   patch -p1 -i ../sagemath-cython-0.29.20.patch
 

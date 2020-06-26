@@ -62,15 +62,6 @@ diff --git a/src/sage/libs/ecl.pxd b/src/sage/libs/ecl.pxd
 index 4dd273f..f0b30de 100644
 --- a/src/sage/libs/ecl.pxd
 +++ b/src/sage/libs/ecl.pxd
-@@ -30,7 +30,7 @@ cdef extern from "ecl/ecl.h":
-     ctypedef long int cl_fixnum
-     ctypedef cl_fixnum cl_narg
-     ctypedef void *cl_object
--    ctypedef unsigned int cl_index
-+    ctypedef unsigned long int cl_index
- 
-     ctypedef enum ecl_option:
-         ECL_OPT_INCREMENTAL_GC = 0,
 @@ -39,7 +39,6 @@ cdef extern from "ecl/ecl.h":
          ECL_OPT_TRAP_SIGINT,
          ECL_OPT_TRAP_SIGILL,
@@ -87,29 +78,8 @@ index 4dd273f..f0b30de 100644
          ECL_OPT_HEAP_SIZE,
          ECL_OPT_HEAP_SAFETY_AREA,
          ECL_OPT_THREAD_INTERRUPT_SIGNAL,
-@@ -127,6 +125,7 @@ cdef extern from "ecl/ecl.h":
-     cl_object cl_cddr(cl_object x)
-     cl_object cl_rplaca(cl_object x, cl_object v)
-     cl_object cl_rplacd(cl_object x, cl_object v)
-+    cl_object ecl_list1(cl_object a)
- 
-     # string parsing and string IO
- 
-@@ -147,6 +146,10 @@ cdef extern from "ecl/ecl.h":
-     int ecl_nvalues "NVALUES"
-     cl_object ecl_values "VALUES"(int n)
- 
--    #Common Lisp "EQUAL" compatible hash function
-+    # Common Lisp "EQUAL" compatible hash function
- 
-     cl_object cl_sxhash(cl_object key)
-+
-+    # symbols
-+
-+    cl_object ecl_make_symbol(const char *name, const char *package)
-\ No newline at end of file
 diff --git a/src/sage/libs/ecl.pyx b/src/sage/libs/ecl.pyx
-index 1f05f4a..978e19b 100644
+index e408866..fa24ac0 100644
 --- a/src/sage/libs/ecl.pyx
 +++ b/src/sage/libs/ecl.pyx
 @@ -15,7 +15,7 @@ Library interface to Embeddable Common Lisp (ECL)
@@ -121,7 +91,7 @@ index 1f05f4a..978e19b 100644
  from libc.signal cimport raise_ as signal_raise
  from posix.signal cimport sigaction, sigaction_t
  cimport cysignals.signals
-@@ -47,9 +47,16 @@ cdef extern from "eclsig.h":
+@@ -47,9 +47,14 @@ cdef extern from "eclsig.h":
      void ecl_sig_off()
      cdef sigaction_t ecl_sigint_handler
      cdef sigaction_t ecl_sigbus_handler
@@ -129,25 +99,13 @@ index 1f05f4a..978e19b 100644
      cdef sigaction_t ecl_sigsegv_handler
      cdef mpz_t ecl_mpz_from_bignum(cl_object obj)
      cdef cl_object ecl_bignum_from_mpz(mpz_t num)
-+    cdef cl_object conditions_to_handle_clobj
-+    void safe_cl_boot(int argc, char** argv)
-+    cl_object safe_cl_funcall(cl_object *error, cl_object fun, cl_object arg)
-+    cl_object safe_cl_apply(cl_object *error, cl_object fun, cl_object args)
-+    cl_object safe_cl_eval(cl_object *error, cl_object form)
-+
++    cdef int fegetexcept()
++    cdef int feenableexcept(int)
++    cdef int fedisableexcept(int)
++    cdef int ecl_feflags
  
  cdef cl_object string_to_object(char * s):
      return ecl_read_from_cstring(s)
-@@ -93,9 +100,6 @@ cdef void remove_node(cl_object node):
- 
- cdef cl_object list_of_objects
- 
--cdef cl_object safe_eval_clobj         #our own error catching eval
--cdef cl_object safe_apply_clobj        #our own error catching apply
--cdef cl_object safe_funcall_clobj      #our own error catching funcall
- cdef cl_object read_from_string_clobj  #our own error catching reader
- 
- cdef bint ecl_has_booted = 0
 @@ -139,7 +143,6 @@ def test_ecl_options():
          ECL_OPT_TRAP_SIGINT = 1
          ECL_OPT_TRAP_SIGILL = 1
@@ -182,19 +140,13 @@ index 1f05f4a..978e19b 100644
      print('ECL_OPT_HEAP_SIZE = {0}'.format(
          ecl_get_option(ECL_OPT_HEAP_SIZE)))
      print('ECL_OPT_HEAP_SAFETY_AREA = {0}'.format(
-@@ -231,10 +229,8 @@ def init_ecl():
-         RuntimeError: ECL is already initialized
-     """
-     global list_of_objects
--    global safe_eval_clobj
--    global safe_apply_clobj
--    global safe_funcall_clobj
-     global read_from_string_clobj
-+    global conditions_to_handle_clobj
+@@ -238,14 +243,12 @@ def init_ecl():
      global ecl_has_booted
      cdef char *argv[1]
      cdef sigaction_t sage_action[32]
-@@ -243,9 +239,6 @@ def init_ecl():
++    cdef int sage_fpes
+     cdef int i
+ 
      if ecl_has_booted:
          raise RuntimeError("ECL is already initialized")
  
@@ -204,19 +156,25 @@ index 1f05f4a..978e19b 100644
      #we keep our own GMP memory functions. ECL should not claim them
      ecl_set_option(ECL_OPT_SET_GMP_MEMORY_FUNCTIONS,0);
  
-@@ -259,19 +252,14 @@ def init_ecl():
+@@ -257,6 +263,8 @@ def init_ecl():
+     for i in range(1,32):
+         sigaction(i, NULL, &sage_action[i])
  
++    sage_fpes = fegetexcept()
++
      #initialize ECL
      ecl_set_option(ECL_OPT_SIGNAL_HANDLING_THREAD, 0)
--    cl_boot(1, argv)
-+    safe_cl_boot(1, argv)
- 
+     cl_boot(1, argv)
+@@ -264,14 +272,12 @@ def init_ecl():
      #save signal handler from ECL
      sigaction(SIGINT, NULL, &ecl_sigint_handler)
      sigaction(SIGBUS, NULL, &ecl_sigbus_handler)
 +    sigaction(SIGFPE, NULL, &ecl_sigfpe_handler)
      sigaction(SIGSEGV, NULL, &ecl_sigsegv_handler)
  
++    #save ECL's floating point exception flags
++    ecl_feflags = fegetexcept()
++
 -    #verify that no SIGCHLD handler was installed
 -    cdef sigaction_t sig_test
 -    sigaction(SIGCHLD, NULL, &sig_test)
@@ -226,113 +184,56 @@ index 1f05f4a..978e19b 100644
      #and put the Sage signal handlers back
      for i in range(1,32):
          sigaction(i, &sage_action[i], NULL)
-@@ -293,32 +281,8 @@ def init_ecl():
+@@ -276,6 +288,9 @@ def init_ecl():
+     for i in range(1,32):
+         sigaction(i, &sage_action[i], NULL)
  
-     read_from_string_clobj=cl_eval(string_to_object(b"(symbol-function 'read-from-string)"))
- 
--    cl_eval(string_to_object(b"""
--        (defun sage-safe-eval (form)
--            (handler-case
--                (values (eval form))
--                (serious-condition (cnd)
--                    (values nil (princ-to-string cnd)))))
--        """))
--    safe_eval_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-eval)"))
++    fedisableexcept(ecl_feflags)
++    feenableexcept(sage_fpes)
++
+     #initialise list of objects and bind to global variable
+     # *SAGE-LIST-OF-OBJECTS* to make it rooted in the reachable tree for the GC
+     list_of_objects=cl_cons(Cnil,cl_cons(Cnil,Cnil))
+@@ -319,7 +334,6 @@ def init_ecl():
+                     (values nil (princ-to-string cnd)))))
+         """))
+     safe_funcall_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-funcall)"))
 -
--    cl_eval(string_to_object(b"""
--        (defun sage-safe-apply (func args)
--            (handler-case
--                (values (apply func args))
--                (serious-condition (cnd)
--                    (values nil (princ-to-string cnd)))))
--        """))
--
--    safe_apply_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-apply)"))
--    cl_eval(string_to_object(b"""
--        (defun sage-safe-funcall (func arg)
--            (handler-case
--                (values (funcall func arg))
--                (serious-condition (cnd)
--                    (values nil (princ-to-string cnd)))))
--        """))
--    safe_funcall_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-funcall)"))
-+    conditions_to_handle_clobj=ecl_list1(ecl_make_symbol(b"SERIOUS-CONDITION", b"COMMON-LISP"))
-+    insert_node_after(list_of_objects,conditions_to_handle_clobj)
- 
      ecl_has_booted = 1
  
-@@ -339,45 +303,46 @@ cdef cl_object ecl_safe_eval(cl_object form) except NULL:
-         ...
-         RuntimeError: ECL says: Console interrupt.
-     """
--    cdef cl_object s
-+    cdef cl_object ret, error = NULL
-+
-     ecl_sig_on()
--    cl_funcall(2,safe_eval_clobj,form)
-+    ret = safe_cl_eval(&error,form)
-     ecl_sig_off()
- 
--    if ecl_nvalues > 1:
--        s = si_coerce_to_base_string(ecl_values(1))
-+    if error != NULL:
-+        error = si_coerce_to_base_string(error)
-         raise RuntimeError("ECL says: {}".format(
--            char_to_str(ecl_base_string_pointer_safe(s))))
-+            char_to_str(ecl_base_string_pointer_safe(error))))
-     else:
--        return ecl_values(0)
-+        return ret
- 
- cdef cl_object ecl_safe_funcall(cl_object func, cl_object arg) except NULL:
--    cdef cl_object l, s
--    l = cl_cons(func,cl_cons(arg,Cnil));
-+    cdef cl_object ret, error = NULL
- 
-     ecl_sig_on()
--    cl_apply(2,safe_funcall_clobj,cl_cons(func,cl_cons(arg,Cnil)))
-+    ret = safe_cl_funcall(&error,func,arg)
-     ecl_sig_off()
- 
--    if ecl_nvalues > 1:
--        s = si_coerce_to_base_string(ecl_values(1))
-+    if error != NULL:
-+        error = si_coerce_to_base_string(error)
-         raise RuntimeError("ECL says: {}".format(
--            char_to_str(ecl_base_string_pointer_safe(s))))
-+            char_to_str(ecl_base_string_pointer_safe(error))))
-     else:
--        return ecl_values(0)
-+        return ret
- 
- cdef cl_object ecl_safe_apply(cl_object func, cl_object args) except NULL:
--    cdef cl_object s
-+    cdef cl_object ret, error = NULL
-+
-     ecl_sig_on()
--    cl_funcall(3,safe_apply_clobj,func,args)
-+    ret = safe_cl_apply(&error,func,args)
-     ecl_sig_off()
- 
--    if ecl_nvalues > 1:
--        s = si_coerce_to_base_string(ecl_values(1))
-+    if error != NULL:
-+        error = si_coerce_to_base_string(error)
-         raise RuntimeError("ECL says: {}".format(
--            char_to_str(ecl_base_string_pointer_safe(s))))
-+            char_to_str(ecl_base_string_pointer_safe(error))))
-     else:
--        return ecl_values(0)
-+        return ret
- 
- cdef cl_object ecl_safe_read_string(char * s) except NULL:
-     cdef cl_object o
+ cdef cl_object ecl_safe_eval(cl_object form) except NULL:
 diff --git a/src/sage/libs/eclsig.h b/src/sage/libs/eclsig.h
-index f9f2690..e249ccf 100644
+index f9f2690..a7e1f40 100644
 --- a/src/sage/libs/eclsig.h
 +++ b/src/sage/libs/eclsig.h
-@@ -11,15 +11,18 @@
+@@ -9,24 +9,66 @@
+ 
+ 
  #include <signal.h>
++
++/* Rummage around to determine how ECL was configured */
++#define ECL_AVOID_FPE_H  /* Prevent some local includes */
++#include <ecl/config-internal.h>
++
++#ifdef HAVE_FENV_H
++#include <fenv.h>
++#ifndef FE_ALL_EXCEPT
++#define FE_ALL_EXCEPT FE_DIVBYZERO | FE_OVERFLOW | FE_UNDERFLOW | FE_INVALID
++#endif
++#else
++#ifndef FE_ALL_EXCEPT
++#define FE_ALL_EXCEPT 0
++#endif
++#define feclearexcept(flags) do {} while (0)
++#endif
++
++#ifndef HAVE_FEENABLEEXCEPT
++/* These are GNU extensions */
++#define fegetexcept() 0
++#define feenablexcept(flags) do {} while (0)
++#define fdisableexcept(flags) do {} while (0)
++#endif
++
  static struct sigaction ecl_sigint_handler;
  static struct sigaction ecl_sigbus_handler;
 +static struct sigaction ecl_sigfpe_handler;
@@ -341,6 +242,8 @@ index f9f2690..e249ccf 100644
  static struct sigaction sage_sigbus_handler;
 +static struct sigaction sage_sigfpe_handler;
  static struct sigaction sage_sigsegv_handler;
++static int ecl_feflags;
++static int sage_feflags;
  
  static inline void set_ecl_signal_handler(void)
  {
@@ -348,66 +251,25 @@ index f9f2690..e249ccf 100644
      sigaction(SIGBUS, &ecl_sigbus_handler, &sage_sigbus_handler);
 +    sigaction(SIGFPE, &ecl_sigfpe_handler, &sage_sigfpe_handler);
      sigaction(SIGSEGV, &ecl_sigsegv_handler, &sage_sigsegv_handler);
++
++    /* first clear pending floating point exceptions, if any */
++    feclearexcept(FE_ALL_EXCEPT);
++
++    /* sage_feflags should be 0; we don't set them otherwise */
++    sage_feflags = fedisableexcept(FE_ALL_EXCEPT);
++    feenableexcept(ecl_feflags);
  }
  
-@@ -27,6 +30,7 @@ static inline void unset_ecl_signal_handler(void)
+ static inline void unset_ecl_signal_handler(void)
  {
++    /* clear pending exceptions and restore previous exception mask */
++    feclearexcept(FE_ALL_EXCEPT);
++    ecl_feflags = fedisableexcept(FE_ALL_EXCEPT);
++    feenableexcept(sage_feflags);
++
      sigaction(SIGINT, &sage_sigint_handler, NULL);
      sigaction(SIGBUS, &sage_sigbus_handler, NULL);
 +    sigaction(SIGFPE, &sage_sigfpe_handler, NULL);
      sigaction(SIGSEGV, &sage_sigsegv_handler, NULL);
  }
  
-@@ -49,3 +53,52 @@ cl_object ecl_bignum_from_mpz(mpz_t num)
-     mpz_set(ecl_mpz_from_bignum(z), num);
-     return _ecl_big_register_copy(z);
- }
-+
-+static inline void safe_cl_boot(int argc, char** argv) {
-+   ECL_WITH_LISP_FPE_BEGIN {
-+      cl_boot(argc, argv);
-+   } ECL_WITH_LISP_FPE_END;
-+}
-+
-+/* List of conditions to catch in the following functions. Is
-+ * initialized after cl_boot in init_ecl. */
-+static cl_object conditions_to_handle_clobj = ECL_NIL;
-+
-+static inline cl_object safe_cl_funcall(cl_object *error, cl_object fun, cl_object arg) {
-+   cl_object ret = NULL;
-+   cl_env_ptr the_env = ecl_process_env();
-+   ECL_WITH_LISP_FPE_BEGIN {
-+       ECL_HANDLER_CASE_BEGIN(the_env, conditions_to_handle_clobj) {
-+           ret = cl_funcall(2, fun, arg);
-+       } ECL_HANDLER_CASE(1, condition) {
-+           *error = cl_princ_to_string(condition);
-+       } ECL_HANDLER_CASE_END;
-+   } ECL_WITH_LISP_FPE_END;
-+   return ret;
-+}
-+
-+static inline cl_object safe_cl_apply(cl_object *error, cl_object fun, cl_object args) {
-+   cl_object ret = NULL;
-+   cl_env_ptr the_env = ecl_process_env();
-+   ECL_WITH_LISP_FPE_BEGIN {
-+       ECL_HANDLER_CASE_BEGIN(the_env, conditions_to_handle_clobj) {
-+           ret = cl_apply(2, fun, args);
-+       } ECL_HANDLER_CASE(1, condition) {
-+           *error = cl_princ_to_string(condition);
-+       } ECL_HANDLER_CASE_END;
-+   } ECL_WITH_LISP_FPE_END;
-+   return ret;
-+}
-+
-+static inline cl_object safe_cl_eval(cl_object *error, cl_object form) {
-+   cl_object ret = NULL;
-+   cl_env_ptr the_env = ecl_process_env();
-+   ECL_WITH_LISP_FPE_BEGIN {
-+       ECL_HANDLER_CASE_BEGIN(the_env, conditions_to_handle_clobj) {
-+           ret = cl_eval(form);
-+       } ECL_HANDLER_CASE(1, condition) {
-+           *error = cl_princ_to_string(condition);
-+       } ECL_HANDLER_CASE_END;
-+   } ECL_WITH_LISP_FPE_END;
-+   return ret;
-+}

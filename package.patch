@@ -1,13 +1,11 @@
 --- src/module_list.py
 +++ src/module_list.py
-@@ -525,12 +525,6 @@ ext_modules = [
+@@ -449,10 +449,6 @@ ext_modules = [
      Extension('sage.libs.ecl',
                sources = ["sage/libs/ecl.pyx"]),
  
 -    OptionalExtension("sage.libs.fes",
 -             ["sage/libs/fes.pyx"],
--             language = "c",
--             libraries = ['fes'],
 -             package = 'fes'),
 -
      Extension('sage.libs.flint.flint',
