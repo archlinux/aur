@@ -1,7 +1,7 @@
 PACKAGER='Simone Scalabrino <s.scalabrino9@gmail.com>'
 pkgname=silos
 _gitname=pyqtws
-_gittag=0.1.35
+_gittag=0.1.36
 pkgver=$_gittag
 pkgrel=1
 pkgdesc='Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay),  productivity suites (Microsoft Office 365, Skype, Google Office, Trello, and Gmail), and others (WhatsApp web and Wikipedia)'
