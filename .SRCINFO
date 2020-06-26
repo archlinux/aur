@@ -7,6 +7,8 @@ pkgbase = thenewplayerfree-bin
 	license = unknown
 	depends = qt5-base
 	depends = qt5-multimedia
+	depends = libvdpau
+	depends = libva
 	source = https://github.com/sudormroot/thenewplayer_builds/releases/download/tnpfree_v1_6_1_amd64_linux/thenewplayerfree_linux_1.6.1-1_all.deb
 	sha512sums = d1c694013fdda6b4482ce10164bba0e60e6ab3d5a2e55b3d2f061c6e558da91df6e0ee22e1981873bdf10029f1ad6eddb84106d58152167af6a9995e8090bc8f
 
