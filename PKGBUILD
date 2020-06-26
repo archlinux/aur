@@ -2,7 +2,7 @@
 # Contributor: Alex Gentilucci <alexander.gentilucci@gmail.com>
 
 pkgname=ft2-clone
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc="portable Fasttracker II clone written in C"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=("libicns")
 depends=("alsa-lib" "sdl2")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/8bitbubsy/ft2-clone/archive/v${pkgver}.tar.gz"
         "ft2-clone.desktop")
-sha256sums=('53c35c3097d2499228fdaea704923f9b19799ec2567b9977abeb6e01efffd604'
+sha256sums=('0c2436779ffbf00ec7d1b2a3919cc8358c23f0d8b051c08156233c0298dd462a'
             '930fc87987840f878a926e6017fc60a2e58f1676f4d2d6cf9e24d14afb8d3552')
 
 
