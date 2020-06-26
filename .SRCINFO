@@ -1,0 +1,17 @@
+pkgbase = fzmp-git
+	pkgdesc = Info script for minimal *nix systems.
+	pkgver = r140.ec9569c
+	pkgrel = 1
+	url = https://github.com/DanielFGray/fzf-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = mpd
+	depends = mpc
+	depends = fzf
+	provides = fzmp
+	source = git+https://github.com/DanielFGray/fzf-scripts.git
+	sha256sums = SKIP
+
+pkgname = fzmp-git
+
