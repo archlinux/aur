@@ -57,7 +57,7 @@ index c4404d9c1de4..e53c258acf68 100644
 +		.ident = "ASUSTeK COMPUTER INC. GA502IV",
 +		.matches = {
 +				DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
-+				DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
++				DMI_MATCH(DMI_PRODUCT_NAME, "GA502IV"),
 +		},
 +		.driver_data = &quirk_asus_ga502i,
 +	},
