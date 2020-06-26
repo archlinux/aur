@@ -1,0 +1,14 @@
+pkgbase = kwin-scripts-maxmize-to-new-desktop
+	pkgdesc = KWin script that moves fullscreened window to a new virtual desktop, emulating macOS like maximize to new desktop.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://store.kde.org/p/1171196/
+	arch = any
+	license = BSD 2-Clause
+	depends = kdesignerplugin
+	depends = kwin
+	source = https://github.com/Aetf/kwin-maxmize-to-new-desktop/archive/v0.2.2.tar.gz
+	sha512sums = 9220420878a2e70012786af62c00a791b0fddb38190f2b9eafc30ce1a908652bdf257eec392e16ed0263cf39a686279d3dcd94c8bbfa1c67ea105ac9fa494eab
+
+pkgname = kwin-scripts-maxmize-to-new-desktop
+
