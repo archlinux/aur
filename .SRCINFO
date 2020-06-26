@@ -1,7 +1,7 @@
 pkgbase = klatexformula
 	pkgdesc = Provides GUI for generating images from LaTeX equations
-	pkgver = 4.0.0
-	pkgrel = 7
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = http://klatexformula.sourceforge.net
 	install = klatexformula.install
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = klatexformula
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-svg
-	source = http://sourceforge.net/projects/klatexformula/files/klatexformula/klatexformula-4.0.0/klatexformula-4.0.0.tar.gz
+	source = http://sourceforge.net/projects/klatexformula/files/klatexformula/klatexformula-4.1.0/klatexformula-4.1.0.tar.gz
 	source = klfbackend.patch
-	md5sums = e69d2153e846acf3700ce7473e4a47fb
+	md5sums = 6c17a3f3f415221bf6630cec2cd7485d
 	md5sums = c4549b8d521b97010d1dc99ba5265fec
 
 pkgname = klatexformula
