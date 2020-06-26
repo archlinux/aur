@@ -3,7 +3,7 @@
 pkgname=slic3r-dev
 _pkgver=1.3.1_dev
 pkgver=$_pkgver
-pkgrel=3
+pkgrel=4
 pkgdesc="Development build of Slic3r, a 3D Printer Toolpath Generator"
 arch=('x86_64')
 url="https://slic3r.org"
@@ -14,7 +14,7 @@ conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
 provides=('slic3r')
 source=("master.json::https://api.github.com/repos/alexrj/slic3r/branches/master"
         "slic3r.desktop")
-sha512sums=('d0e3826dfde1faa001345aca402f58f18235d4316b0eaa8dfd7af06dcde2f802102c38fb98fdf2453d904a2145549aa5fe2502fd93cc8dc3aedba39cb747704d'
+sha512sums=('SKIP'
             '0a3c840681077cf052fe7335d7275e2967d3f753082036f8a59bc1ab7b704874e481f33764a39ad4c481adc280ee3b9f594a0f3047659ef2c95aa708ead43593')
 
 pkgver()
