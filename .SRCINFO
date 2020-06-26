@@ -9,7 +9,6 @@ pkgbase = python-kornia
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	depends = python-pytorch
-	depends = python-torchvision
 	depends = python-numpy
 	options = !emptydirs
 	source = kornia-0.3.1.tar.gz::https://github.com/kornia/kornia/archive/v0.3.1.tar.gz
