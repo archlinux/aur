@@ -1,7 +1,7 @@
 pkgbase = unciv
 	pkgdesc = Open-source remake of Civilization V
 	pkgver = 3.9.6.REL
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/yairm210/Unciv
 	arch = any
 	license = MPL-2.0
