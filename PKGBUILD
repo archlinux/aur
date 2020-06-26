@@ -28,7 +28,7 @@ build() {
   cd build
   BUILD_TYPE=Release
   if [[ " ${OPTIONS[@]} " =~ " debug " ]]; then
-    BUILD_TYPE=Debug
+    BUILD_TYPE=RelDebug
   elif [[ " ${OPTIONS[@]} " =~ " !strip " ]]; then
     BUILD_TYPE=RelDebug
   fi
