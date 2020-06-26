@@ -1,6 +1,7 @@
 pkgbase = extrakto
+	pkgdesc = tmux clipboard copy and output completions
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laktak/extrakto
 	arch = x86_64
 	license = MIT
