@@ -8,3 +8,4 @@ Exec="/opt/webstorm-eap/bin/webstorm.sh" %f
 Terminal=false
 Type=Application
 Categories=Development
+StartupWMClass=jetbrains-webstorm
