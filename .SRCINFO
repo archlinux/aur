@@ -6,7 +6,6 @@ pkgbase = dict-freedict-deu-eng
 	install = dict-freedict-deu-eng.install
 	arch = any
 	license = GPL
-	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	source = https://download.freedict.org/dictionaries/deu-eng/0.3.5/freedict-deu-eng-0.3.5.src.tar.xz
