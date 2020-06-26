@@ -1,6 +1,6 @@
 pkgbase = kubelet-bin
 	pkgdesc = Kubernetes.io kubelet binary
-	pkgver = 1.18.4
+	pkgver = 1.18.5
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = kubelet-bin
 	conflicts = kubernetes
 	conflicts = kubernetes-bin
 	source = kubelet.service
-	source = kubelet-bin-1.18.4::https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/linux/amd64/kubelet
+	source = kubelet-bin-1.18.5::https://storage.googleapis.com/kubernetes-release/release/v1.18.5/bin/linux/amd64/kubelet
 	sha256sums = 3ea2a2c44642a584d9ae603fd4dccd401b06bf82338dba893c82a3ed41401a29
-	sha256sums = 42bcd6a8fe1abeab12cbe9be0f16d4a7b15017937a5de66eb67a38073de7eb72
+	sha256sums = 8c328f65d30f0edd0fd4f529b09d6fc588cfb7b524d5c9f181e36de6e494e19c
 
 pkgname = kubelet-bin
 
