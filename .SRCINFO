@@ -6,7 +6,6 @@ pkgbase = dict-freedict-spa-eng
 	install = dict-freedict-spa-eng.install
 	arch = any
 	license = GPL
-	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	source = https://download.freedict.org/dictionaries/spa-eng/0.3.1/freedict-spa-eng-0.3.1.src.tar.xz
