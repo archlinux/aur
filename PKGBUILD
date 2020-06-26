@@ -1,6 +1,6 @@
 # Maintainer: Stefan J. Betz <info@stefan-betz.net>
 pkgname=subnetcalc
-pkgver=2.4.15
+pkgver=2.4.16
 pkgrel=1
 pkgdesc="Subnet Calculator for IPv4/IPv6"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://www.uni-due.de/~be0001/subnetcalc/"
 depends=('geoip')
 makedepends=('cmake')
 source=("https://www.uni-due.de/~be0001/subnetcalc/download/subnetcalc-$pkgver.tar.xz")
-md5sums=('c3db6b1d569f847d27f3801a0a2e5800')
-sha512sums=('b2c7c39073a4e63d5b3c3930fa80bf1148b6759c1d7940552222f9d28b8c642acaded19ed91e6b5fc30d76303c75510ddf93636c838d4fc2bb0cc0734d5ee5ae')
+md5sums=('e8afbb2b212bbed5644f1298a123c9ea')
+sha512sums=('5adbd45963885d6f344dffb6f6c7922e576e4341c5db4c299fca8f1227188aaf2d485dbee947af38c7223dddc95898b6433a67558cc2c8474285630e9036098a')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
