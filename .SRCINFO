@@ -1,6 +1,6 @@
 pkgbase = canonical-multipass-git
 	pkgdesc = Multipass orchestrates virtual Ubuntu instances
-	pkgver = 1.3.0.dev.r52.g47fdc439
+	pkgver = 1.3.0.r94.g9c272679
 	pkgrel = 1
 	url = https://multipass.run
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = canonical-multipass-git
 	depends = hicolor-icon-theme
 	depends = libssh
 	source = canonical-multipass::git+https://github.com/canonical/multipass
+	source = 0001-Update-to-Qt-5.15-API.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = canonical-multipass-git

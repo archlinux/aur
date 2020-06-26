@@ -1,0 +1,86 @@
+From e5a0eb7a89cdea5c0c0ac7bef0420872690c866e Mon Sep 17 00:00:00 2001
+From: Dimitris Kiziridis <ragouel@outlook.com>
+Date: Fri, 26 Jun 2020 02:07:39 +0300
+Subject: [PATCH] Update to Qt 5.15 API
+
+---
+ src/client/cli/cmd/mount.cpp                         | 2 +-
+ src/network/local_socket_reply.cpp                   | 6 +++---
+ src/platform/backends/shared/linux/backend_utils.cpp | 3 ++-
+ src/sshfs_mount/sshfs_server.cpp                     | 2 +-
+ 4 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/client/cli/cmd/mount.cpp b/src/client/cli/cmd/mount.cpp
+index 754feb28..c3dd5cc1 100644
+--- a/src/client/cli/cmd/mount.cpp
++++ b/src/client/cli/cmd/mount.cpp
+@@ -153,7 +153,7 @@ mp::ParseCode cmd::Mount::parse_args(mp::ArgParser* parser)
+ 
+     for (auto i = 1; i < parser->positionalArguments().count(); ++i)
+     {
+-        auto parsed_target = QString(parser->positionalArguments().at(i)).split(":", QString::SkipEmptyParts);
++        auto parsed_target = QString(parser->positionalArguments().at(i)).split(":", Qt::SkipEmptyParts);
+ 
+         auto entry = request.add_target_paths();
+         entry->set_instance_name(parsed_target.at(0).toStdString());
+diff --git a/src/network/local_socket_reply.cpp b/src/network/local_socket_reply.cpp
+index 04908e58..8e4439fa 100644
+--- a/src/network/local_socket_reply.cpp
++++ b/src/network/local_socket_reply.cpp
+@@ -112,7 +112,7 @@ void mp::LocalSocketReply::abort()
+     close();
+ 
+     setError(OperationCanceledError, "Operation canceled");
+-    emit error(OperationCanceledError);
++    emit errorOccurred(OperationCanceledError);
+ 
+     setFinished(true);
+     emit finished();
+@@ -228,7 +228,7 @@ void mp::LocalSocketReply::parse_status(const QByteArray& status)
+     {
+         setError(QNetworkReply::ProtocolFailure, "Malformed HTTP response from server");
+ 
+-        emit error(QNetworkReply::ProtocolFailure);
++        emit errorOccurred(QNetworkReply::ProtocolFailure);
+ 
+         return;
+     }
+@@ -242,6 +242,6 @@ void mp::LocalSocketReply::parse_status(const QByteArray& status)
+ 
+         setError(error_code, http_status_match.captured("message"));
+ 
+-        emit error(error_code);
++        emit errorOccurred(error_code);
+     }
+ }
+diff --git a/src/platform/backends/shared/linux/backend_utils.cpp b/src/platform/backends/shared/linux/backend_utils.cpp
+index 0331b778..8ed52215 100644
+--- a/src/platform/backends/shared/linux/backend_utils.cpp
++++ b/src/platform/backends/shared/linux/backend_utils.cpp
+@@ -223,8 +223,9 @@ QString mp::backend::cpu_arch()
+ void mp::backend::check_for_kvm_support()
+ {
+     QProcess check_kvm;
++
+     check_kvm.setProcessChannelMode(QProcess::MergedChannels);
+-    check_kvm.start(QDir(QCoreApplication::applicationDirPath()).filePath("check_kvm_support"));
++    check_kvm.start(QDir(QCoreApplication::applicationDirPath()).filePath("check_kvm_support"), QStringList{});
+     check_kvm.waitForFinished();
+ 
+     if (check_kvm.error() == QProcess::FailedToStart)
+diff --git a/src/sshfs_mount/sshfs_server.cpp b/src/sshfs_mount/sshfs_server.cpp
+index 6a0cbe05..e97e5df4 100644
+--- a/src/sshfs_mount/sshfs_server.cpp
++++ b/src/sshfs_mount/sshfs_server.cpp
+@@ -40,7 +40,7 @@ unordered_map<int, int> deserialise_id_map(const char* in)
+ {
+     unordered_map<int, int> id_map;
+     QString input(in);
+-    auto maps = input.split(',', QString::SkipEmptyParts);
++    auto maps = input.split(',', Qt::SkipEmptyParts);
+     for (auto map : maps)
+     {
+         auto ids = map.split(":");
+-- 
+2.27.0
+
