@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NoteDown
+Exec=/usr/bin/notedown %&
+Terminal=false
+Type=Application
+Icon=notedown
+StartupWMClass=NoteDown
+Categories=GNOME;GTK;Network;InstantMessaging;
