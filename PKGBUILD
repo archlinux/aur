@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
-pkgver=0.6.alpha.1310.gb75e6ed
+pkgver=0.6.alpha.1319.gaa4dc1a
 pkgrel=1
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
@@ -21,22 +21,17 @@ pkgver() {
 	git describe --long | sed 's/^release-//;s/^0.5-/0.6-alpha-/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p build
-}
-
 build() {
-	cd "$srcdir/${pkgname%-git}/build"
-	cmake \
+	cd "$srcdir/${pkgname%-git}"
+	cmake -B build -S . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DHARDINFO_GTK3=1 \
-		..
-	make
+		-Wno-dev
+	make -C build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	make DESTDIR="$pkgdir" install
+	cd "$srcdir/${pkgname%-git}"
+	make -C build DESTDIR="$pkgdir" install
 }
