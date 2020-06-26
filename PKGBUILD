@@ -10,7 +10,7 @@ depends=('electron')
 makedepends=('git')
 source=($url "notedown.desktop" "icon.png")
 noextract=()
-md5sums=('SKIP' '647ca7e77794a5f19c47b5c37261372e' '760e3507b86c1379f33f8d38ea894dc3')
+md5sums=('SKIP' '647ca7e77794a5f19c47b5c37261372e' 'e6c3159888655d4ad8efcfc0816a0285')
 
 package() {
   echo $srcdir
