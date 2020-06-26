@@ -1,7 +1,7 @@
 # Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
 pkgname=nyrna
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple program to pause games & applications'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
@@ -18,7 +18,7 @@ prepare(){
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver/build"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
