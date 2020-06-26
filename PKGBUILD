@@ -21,11 +21,11 @@ sha256sums=('56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492'
 
 prepare() {
 	patch -p1 < 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
-	NOCONFIGURE=1 ./autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 }
 
 build() {
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 	make
 }
 
