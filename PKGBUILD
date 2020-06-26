@@ -8,7 +8,8 @@ url="https://gitlab.gnome.org/somas/apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo' 'gobject-introspection')
-makedepends=('git' 'meson' 'appstream-glib')
+makedepends=('git' 'meson')
+checkdepends=('appstream')
 optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview'
             'otf-fira-mono: Recommended font (OTF)'
@@ -18,9 +19,13 @@ sha256sums=('79b7aa4913eceaf3a81baa23fe1071ae462b17f6b0f77d8e69f3d554474b4cab')
 
 build() {
 	arch-meson "$pkgname-v$pkgver" build
-	ninja -C build
+	meson compile -C build
+}
+
+check() {
+	meson test -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
