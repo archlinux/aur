@@ -1,7 +1,7 @@
 # Maintainer: Joan Moreau <jom@grosjo.net>
 pkgname=tomboy-reborn-bin
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 _pkgstate=beta
 pkgdesc="A 'drop-in', straightforward, replacement of deprecated , but extremely usefull, /Gnome Tomboy/"
 arch=('x86_64')
