@@ -1,7 +1,7 @@
 # Maintainer: Ethan Baker <mail@ethanbaker.dev>
 # Contributor: Ethan Baker <mail@ethanbaker.dev>
 pkgname='cpick'
-pkgver=v0.9.5
+pkgver=v1.0.0
 pkgrel=1
 pkgdesc="Extensive color picker in the terminal."
 arch=('x86_64')
