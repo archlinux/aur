@@ -1,13 +1,13 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=2019.10.r0.g8412e8f99
+pkgver=2019.10.r760.gc74e49b3f
 pkgrel=1
 pkgdesc="C++11/C++14 graphics middleware for games and data visualization (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
 depends=('corrade-git' 'openal' 'glfw' 'sdl2' 'vulkan-icd-loader')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 provides=('magnum')
 conflicts=('magnum')
 source=("git+git://github.com/mosra/magnum.git")
@@ -36,6 +36,7 @@ build() {
         -DWITH_ANYAUDIOIMPORTER=ON \
         -DWITH_ANYIMAGECONVERTER=ON \
         -DWITH_ANYIMAGEIMPORTER=ON \
+        -DWITH_ANYSCENECONVERTER=ON \
         -DWITH_ANYSCENEIMPORTER=ON \
         -DWITH_MAGNUMFONT=ON \
         -DWITH_MAGNUMFONTCONVERTER=ON \
@@ -46,12 +47,14 @@ build() {
         -DWITH_DISTANCEFIELDCONVERTER=ON \
         -DWITH_FONTCONVERTER=ON \
         -DWITH_IMAGECONVERTER=ON \
+        -DWITH_SCENECONVERTER=ON \
         -DWITH_GL_INFO=ON \
-        -DWITH_AL_INFO=ON
-    make
+        -DWITH_AL_INFO=ON \
+        -G Ninja
+    ninja
 }
 
 package() {
     cd "$srcdir/build"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" ninja install
 }
