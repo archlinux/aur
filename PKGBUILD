@@ -1,7 +1,8 @@
-# Maintainer: Alex Taber <aft dot pokemon at gmail dot com>
+# Maintainer: Alexander Eisele <alexander at eiselecloud dot de>
+# Contributor: Alex Taber <aft dot pokemon at gmail dot com>
 
-pkgname=teamviewer
-pkgver=15.6.7
+pkgname=teamviewer14
+pkgver=14.7.39531
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,7 +10,7 @@ url='http://www.teamviewer.com'
 license=('custom')
 options=('!strip')
 provides=('teamviewer')
-conflicts=('teamviewer-beta')
+conflicts=('teamviewer-beta' 'teamviewer')
 # /opt/teamviewer/tv_bin/script/teamviewer_setup checklibs can check deps for each TV component:
 # TV_DMN, TV_DESK, TV_GUI
 depends=(
@@ -29,13 +30,13 @@ depends=(
 #depends_i686=()
 #depends_armv7h=()
 install=teamviewer.install
-source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
-source_i686=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
-source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
-#source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
-sha256sums_i686=('4bc7913e88b0e1543895769649ee5de809c5e3b5c83798a0c990acc6f26ab80e')
-sha256sums_x86_64=('97cb80523e6d1f769698987a15eaed367ea00f002fec3bd02737e86216003602')
-sha256sums_armv7h=('9645c052dfb8812e8f5cc7cf6566a6ce4d737d4b96d507e725e4083b5aa0065f')
+source_x86_64=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
+source_i686=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
+source_armv7h=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
+sha256sums_i686=('477f31ce43d76bf3c59fbe4dafda815811c775bc95dfc5f5e2d6fb9f044d474d')
+sha256sums_x86_64=('d5877a44a2498c628b24d52a136a6e5b4e77fbfbe87dd3618db03bbb65908dac')
+sha256sums_armv7h=('34048ef8b1c62c88593ee495fcae606f9ef83ea72ec0fb6f2907b1b75c220987')
+#source_armv7h=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
 
 prepare() {
 	warning "If the install fails, you need to uninstall previous major version of Teamviewer"
