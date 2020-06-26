@@ -1,14 +1,14 @@
 pkgbase = thenewplayerfree-bin
 	pkgdesc = The best video/streaming media player under UNIX
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sudormroot/thenewplayer_builds
 	arch = x86_64
 	license = unknown
 	depends = qt5-base
 	depends = qt5-multimedia
-	source = https://raw.githubusercontent.com/sudormroot/thenewplayer_builds/master/releases/linux/thenewplayerfree.v1_6_1.i386.tgz
-	sha512sums = c2d4515aef29ab47b448b1487de76f2998900e6eca13d3941cd6e5c0b6a1d28f598fbad7bc31fc2aafece85c4ba5b3045f456ffd88a65cb848547df67b88886a
+	source = https://github.com/sudormroot/thenewplayer_builds/releases/download/tnpfree_v1_6_1_amd64_linux/thenewplayerfree_linux_1.6.1-1_all.deb
+	sha512sums = d1c694013fdda6b4482ce10164bba0e60e6ab3d5a2e55b3d2f061c6e558da91df6e0ee22e1981873bdf10029f1ad6eddb84106d58152167af6a9995e8090bc8f
 
 pkgname = thenewplayerfree-bin
 
