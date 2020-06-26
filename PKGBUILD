@@ -1,13 +1,14 @@
 # bootloader files for raspberry pi from git
 # Maintainer: Greyson Christoforo
 
-pkgname=rasberrypi-bootloader-git
+pkgname=raspberrypi-bootloader-git
 pkgver=r968
 pkgrel=1
 pkgdesc="Bootloader files for raspberry pi from git"
 arch=('any')
 url="https://github.com/raspberrypi/firmware"
 license=('custom')
+makedepends=('curl')
 provides=('raspberrypi-bootloader' 'raspberrypi-bootloader-x' )
 conflicts=('raspberrypi-bootloader' 'raspberrypi-bootloader-x')
 _ncommits="$(curl -s -I -k "https://api.github.com/repos/raspberrypi/firmware/commits?per_page=1" | sed -n '/^[Ll]ink:/ s/.*"next".*page=\([0-9]*\).*"last".*/\1/p')"
