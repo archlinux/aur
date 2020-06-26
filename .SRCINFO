@@ -1,6 +1,6 @@
 pkgbase = viper4linux-gui
 	pkgdesc = Official UI for Viper4Linux
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/Audio4Linux/Viper4Linux-GUI
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = viper4linux-gui
 	depends = qt5-multimedia
 	depends = mesa
 	optdepends = libappindicator-gtk3: tray icon support
-	source = viper4linux-gui-2.0.tar.gz::https://github.com/Audio4Linux/Viper4Linux-GUI/archive/2.0.tar.gz
+	source = viper4linux-gui-2.1.tar.gz::https://github.com/Audio4Linux/Viper4Linux-GUI/archive/2.1.tar.gz
 	source = viper4linux-gui.desktop
-	sha256sums = 2cfec5ce2d46de9f70f278e214cad7de6f01847bc08c288d3647568ae4cea55b
+	sha256sums = bb4534565d8d71307b878b90c9066a39685c59bfbde8b71c07d47db7c03b24ee
 	sha256sums = 05a46b8ad3508e9275388d9255247cda09977eb8087fa5dd96d04bc25c17a77c
 
 pkgname = viper4linux-gui
