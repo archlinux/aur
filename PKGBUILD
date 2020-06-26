@@ -22,7 +22,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT5=ON .
+	cmake -S . \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_WITH_QT5=ON \
+		-Wno-dev
 	make
 }
 
