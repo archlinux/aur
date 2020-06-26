@@ -1,7 +1,7 @@
 pkgbase = hipsparse
 	pkgdesc = rocSPARSE marshalling library.
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#hipsparse
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,11 @@ pkgbase = hipsparse
 	depends = hip-rocclr
 	depends = rocsparse
 	source = hipsparse-3.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/hipSPARSE/archive/rocm-3.5.0.tar.gz
+	source = fix_hcc_compress.patch::https://github.com/ROCmSoftwarePlatform/hipSPARSE/commit/e79985dccde22d826aceb3badfc643a3227979d2.patch
+	source = fix_nvcc_compress.patch::https://github.com/ROCmSoftwarePlatform/hipSPARSE/commit/530047af4a0f437dafc02f76b3a17e3b1536c7ec.patch
 	sha256sums = fa16b2a307a5d9716066c2876febcbc1cef855bf0c96d235d2d8f2206a0fb69d
+	sha256sums = 6b7493f0caa1b8042ef43c1a4cee6584abeeb9319c53a79e8b2e558cd1076992
+	sha256sums = db755df3ae712d33d4954b7d302d656b1bdc8f226c063ee701d3b4d835297686
 
 pkgname = hipsparse
 
