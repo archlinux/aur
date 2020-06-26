@@ -1,0 +1,22 @@
+pkgbase = tanka-git
+	pkgdesc = Flexible, reusable and concise configuration for Kubernetes using Jsonnet
+	pkgver = v0.10.0.r11.g62b18e4
+	pkgrel = 0
+	url = https://tanka.dev
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = diffutils
+	depends = kubectl
+	optdepends = jsonnet-bundler-bin: jsonnet package manager
+	provides = tanka
+	conflicts = tanka-bin
+	source = git+https://github.com/grafana/tanka.git
+	md5sums = SKIP
+
+pkgname = tanka-git
+
