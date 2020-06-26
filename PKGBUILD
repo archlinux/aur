@@ -194,7 +194,6 @@ END
 
     echo "Building optimized browser..."
     cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
