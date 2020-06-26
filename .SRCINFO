@@ -1,0 +1,22 @@
+pkgbase = pufferpanel-bin
+	pkgdesc = PufferPanel: A web-base game management system (binary version).
+	pkgver = 2.0.0_alpha.3
+	pkgrel = 1
+	url = https://github.com/PufferPanel/PufferPanel
+	arch = x86_64
+	license = Apache
+	optdepends = nginx: TLS support
+	optdepends = postgres: Dedicated database
+	optdepends = docker: Container support
+	optdepends = sqlite: Database support
+	provides = pufferpanel
+	conflicts = pufferpanel
+	source = https://github.com/PufferPanel/PufferPanel/releases/download/v2.0.0-alpha.3/pufferpanel_2.0.0-alpha.3_amd64.zip
+	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.0.0-alpha.3/systemd/servicefiles/pufferpanel.service
+	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.0.0-alpha.3/config.linux.json
+	b2sums = ff2e7bb2d8dcc9e7ce01b7d110790a1151a46af484ade3839780c4f2c641ae77562161ac7f9d96a29686db07d0ee05107ce7b182d0c492cccd76887907c3d354
+	b2sums = ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141
+	b2sums = deab865a5dabfc82d448928bcaf92c3cc693a7345aad148f255a4e8a3ecf94ad39b41d6e47a69026af4b063c0bb978c0a388f3fae9adcb45facde637bdd2933b
+
+pkgname = pufferpanel-bin
+

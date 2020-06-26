@@ -1,0 +1,15 @@
+[Unit]
+Description=pufferpanel
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/pufferpanel
+ExecStart=/usr/sbin/pufferpanel run
+ExecStop=/usr/sbin/pufferpanel shutdown --pid $MAINPID
+User=pufferpanel
+Group=pufferpanel
+TimeoutStopSec=5m
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

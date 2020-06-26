@@ -1,0 +1,11 @@
+d /etc/pufferpanel 0755 pufferpanel pufferpanel
+z /etc/pufferpanel - pufferpanel pufferpanel
+
+d /var/log/pufferpanel 0755 pufferpanel pufferpanel
+z /var/log/pufferpanel - pufferpanel pufferpanel
+
+z /etc/pufferpanel/config.json 755 pufferpanel pufferpanel
+
+d /var/www/pufferpanel 0755 pufferpanel pufferpanel
+z /var/www/pufferpanel - pufferpanel pufferpanel
+
