@@ -1,7 +1,7 @@
 # Maintainer Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=libxsmm
-pkgver=1.15
+pkgver=1.16.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A library for small dense and small sparse matrix-matrix multiplications"
@@ -12,7 +12,7 @@ makedepends=('gcc-fortran' 'python')
 checkdepends=('blas' 'lapack')
 conflicts=('libxsmm-git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('499e5adfbf90cd3673309243c2b56b237d54f86db2437e1ac06c8746b55ab91c')
+sha256sums=('93dc7a3ec40401988729ddb2c6ea2294911261f7e6cd979cf061b5c3691d729d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
