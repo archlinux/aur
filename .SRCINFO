@@ -1,7 +1,7 @@
 pkgbase = python-graph-tool
 	pkgdesc = A Python module for manipulation and statistical analysis of graphs
 	pkgver = 2.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://graph-tool.skewed.de
 	arch = i686
 	arch = x86_64
