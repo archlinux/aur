@@ -2,7 +2,7 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.2.0.3.r0.gdaf77a6
+pkgver=2.2.0.3.r29.gd5a9fdc
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
@@ -10,7 +10,8 @@ url="https://gitlab.gnome.org/somas/apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo' 'gobject-introspection')
-makedepends=('git' 'meson' 'appstream-glib')
+makedepends=('git' 'meson')
+checkdepends=('appstream')
 optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview'
             'otf-fira-mono: Recommended font (OTF)'
@@ -27,9 +28,13 @@ pkgver() {
 
 build() {
 	arch-meson "${pkgname%-git}" build
-	ninja -C build
+	meson compile -C build
+}
+
+check() {
+	meson test -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
