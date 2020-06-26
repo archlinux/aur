@@ -1,6 +1,6 @@
 pkgbase = godot-headless
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = godot-headless
 	conflicts = godot
 	conflicts = godot-git
 	conflicts = godot-pulse
-	source = https://github.com/godotengine/godot/archive/3.2.1-stable.tar.gz
-	sha256sums = 0f9635e5c014713340160d8bd0cbfc6d34a36d39402a84eaa0d8c5dee4d1c6f0
+	source = https://github.com/godotengine/godot/archive/3.2.2-stable.tar.gz
+	sha256sums = 9a071aba23fc912976203d35212a94207b7cb667c0b5353b3525f9b7e6899017
 
 pkgname = godot-headless
 
