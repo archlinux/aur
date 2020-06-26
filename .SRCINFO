@@ -1,5 +1,5 @@
 pkgbase = xpointerbarrier-git
-	pkgdesc = Rofi user script for accessing gists synced by gister
+	pkgdesc = This program creates four pointer barriers around each XRandR screen, thus effectively jailing your mouse pointer to one physical screen.
 	pkgver = r19.f4b2be1
 	pkgrel = 1
 	url = https://github.com/hwangeug/rofi-gister
