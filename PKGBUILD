@@ -2,7 +2,7 @@
 
 pkgname=matrix-mirage-git
 _name=mirage
-pkgver=r1754.5b192e34
+pkgver=r1811.0ddeacb1
 pkgrel=1
 pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.'
 arch=('any')
