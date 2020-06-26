@@ -19,14 +19,15 @@ prepare() {
 
 package() {
 
-    install -Dm755 "$srcdir/usr/local/thenewplayerfree/bin/thenewplayerfree" "$pkgdir/usr/lib/thenewplayerfree/thenewplayerfree"
+    install -Dm755 "$srcdir/usr/local/thenewplayerfree/bin/thenewplayerfree" "$pkgdir/opt/thenewplayerfree/bin/thenewplayerfree"
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "$pkgdir/usr/lib/thenewplayerfree/thenewplayerfree" "$pkgdir/usr/bin/thenewplayerfree"
+    ln -s "$pkgdir/opt/thenewplayerfree/bin/thenewplayerfree" "$pkgdir/usr/bin/thenewplayerfree"
 
     install -Dm644 "$srcdir/usr/local/thenewplayerfree/images/logo.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/thenewplayerfree.png"
 
-    mkdir -p "$pkgdir/usr/lib/thenewplayerfree/languages/"
-    install -Dm644 "$srcdir/usr/local/thenewplayerfree/languages/"* "$pkgdir/usr/lib/thenewplayerfree/languages/"
+    mkdir -p "$pkgdir/opt/thenewplayerfree/languages/"
+    install -Dm644 "$srcdir/usr/local/thenewplayerfree/languages/"* "$pkgdir/opt/thenewplayerfree/languages/"
+    ln -s "$pkgdir/opt/thenewplayerfree/languages/" "$pkgdir/opt/thenewplayerfree/bin/"
 
     echo "[Desktop Entry]
 Version=1.6.1
