@@ -1,18 +1,18 @@
 # Maintainer: Abigail G <dev@kb6.ee>
 
 pkgname=js8call
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
 url="https://groups.io/g/js8call"
 license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
-# depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw hamlib)
-depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw hamlib-git)
+depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw hamlib)
+# depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw hamlib-git)
 # source=($pkgname-$pkgver.tar.gz::https://bitbucket.org/widefido/$pkgname/get/v$pkgver.tar.gz)
 source=($pkgname-$pkgver.tar.gz::https://bitbucket.org/widefido/$pkgname/get/v$pkgver-ga.tar.gz)
-md5sums=('6176ce8e50ee5109d38f2099ab603d76')
+md5sums=('000b6d7da83f49b85560fab14e09db21')
 
 build() {
     mv $srcdir/widefido-js8call* $srcdir/$pkgname-$pkgver
