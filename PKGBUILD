@@ -126,7 +126,7 @@ build() {
     --with-mantype=man \
     --with-md5-passwords \
     --with-pid-dir=/run \
-
+    --host="${CHOST}"
   make
 }
 
