@@ -13,10 +13,11 @@ source=("$pkgname::git+https://github.com/dakyskye/dxhd.git")
 md5sums=('SKIP')
 
 build() {
+	cd "${pkgname}"
 	make fast
 }
 
 package() {
 	install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%????}/LICENSE"
-	install -Dm755 dxhd "${pkgdir}/usr/bin/dxhd"
+	install -Dm755 "${pkgname}/dxhd" "${pkgdir}/usr/bin/dxhd"
 }
