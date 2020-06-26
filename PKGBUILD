@@ -2,7 +2,7 @@
 # Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
-pkgver=1.1.1.r29.g56f5996
+pkgver=1.1.1.r39.gb370769
 pkgrel=1
 pkgdesc='A network utility that monitors the devices on your network,
          checks bandwidth and speed details.'
@@ -11,7 +11,8 @@ url='https://github.com/babluboy/nutty'
 license=('GPL3')
 depends=('granite' 'libnotify' 'libxml2' 'libgee' 'sqlite' 'net-tools' 'nethogs'
          'nmap' 'traceroute' 'vnstat' 'wireless_tools' 'iproute2' 'pciutils')
-makedepends=('git' 'meson' 'vala' 'appstream')
+makedepends=('git' 'meson' 'vala')
+#checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
@@ -25,11 +26,15 @@ pkgver() {
 
 build() {
 	arch-meson "${pkgname%-git}" build
-	ninja -C build
+	meson compile -C build
 }
 
+#check() {
+#	meson test -C build
+#}
+
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 
 	ln -s /usr/bin/com.github.babluboy.nutty "$pkgdir/usr/bin/${pkgname%-git}"
 }
