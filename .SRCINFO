@@ -1,6 +1,6 @@
 pkgbase = magnum-integration-git
 	pkgdesc = Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = 2019.10.r0.g5e103b5
+	pkgver = 2019.10.r62.gd7a931b
 	pkgrel = 1
 	url = https://magnum.graphics
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = magnum-integration-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = magnum-git
 	depends = bullet
 	depends = eigen
@@ -15,7 +16,9 @@ pkgbase = magnum-integration-git
 	provides = magnum-integration
 	conflicts = magnum-integration
 	source = git+git://github.com/mosra/magnum-integration.git
+	source = https://github.com/ocornut/imgui/archive/v1.76.tar.gz
 	sha1sums = SKIP
+	sha1sums = 6d5d7688197e8002d916da8ddee81bfdd471176d
 
 pkgname = magnum-integration-git
 
