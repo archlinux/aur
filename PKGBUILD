@@ -25,8 +25,8 @@ pkgver() {
 
 prepare() {
   cd canonical-multipass
-  git am < "${srcdir}/0001-Update-to-Qt-5.15-API.patch"
   git submodule update --init --recursive
+  git am < "${srcdir}/0001-Update-to-Qt-5.15-API.patch"
 }
 
 build() {
