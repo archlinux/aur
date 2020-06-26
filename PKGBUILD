@@ -9,7 +9,7 @@ pkgver=4.14.4
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
 depends=('exo' 'garcon' 'libxfce4ui' 'libwnck' 'hicolor-icon-theme'
@@ -17,7 +17,7 @@ depends=('exo' 'garcon' 'libxfce4ui' 'libwnck' 'hicolor-icon-theme'
 makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
-source=(http://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2
+source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
 	  fix-scrolling2.patch
 	  fix-scrolling3.patch
 	  pager-dimensions.patch

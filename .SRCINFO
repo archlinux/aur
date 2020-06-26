@@ -2,7 +2,7 @@ pkgbase = xfce4-panel-compiz
 	pkgdesc = Panel for the Xfce desktop environment with fixes for Compiz
 	pkgver = 4.14.4
 	pkgrel = 1
-	url = http://www.xfce.org/
+	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
 	groups = xfce4
@@ -19,7 +19,7 @@ pkgbase = xfce4-panel-compiz
 	depends = libwnck3
 	provides = xfce4-panel=4.14.4
 	conflicts = xfce4-panel
-	source = http://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.4.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.4.tar.bz2
 	source = fix-scrolling2.patch
 	source = fix-scrolling3.patch
 	source = pager-dimensions.patch
