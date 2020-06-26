@@ -1,7 +1,7 @@
 # Maintainer: Kevin McCormack <harlemsquirrel@gmail.com>
 # https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot/
 pkgname=cura-lulzbot-git
-pkgver=v3.6.21.1.g711e5d9
+pkgver=v3.6.21.10.g9bc5c13
 pkgrel=1
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
@@ -12,9 +12,11 @@ md5sums=('SKIP')
 conflicts=("cura-lulzbot")
 depends=('cython'
          'gcc-fortran'
+         'libffi6'
          'libsavitar'
          'openblas'
          'python'
+         'python-cx_freeze'
          'python-nose'
          'python-numpy'
          'python-numpy-stl'
@@ -26,7 +28,8 @@ depends=('cython'
          'python-typing_extensions'
          'qt5-graphicaleffects'
          'qt5-quickcontrols'
-         'qt5-quickcontrols2')
+         'qt5-quickcontrols2'
+         'qt5-svg')
 makedepends=('cmake'
              'git'
              'python-sip'
@@ -44,28 +47,16 @@ pkgver() {
 }
 
 build() {
-  # Until this is updated, we have to replace the old paths
-  grep -rl 'code.alephobjects.com/source/arcus' . | xargs \
-    sed -i 's/code.alephobjects.com\/source\/arcus/gitlab.com\/lulzbot3d\/cura-le\/libarcus/g'
-  grep -rl 'code.alephobjects.com/diffusion/U/uranium' . | xargs \
-    sed -i 's/code.alephobjects.com\/diffusion\/U\/uranium/gitlab.com\/lulzbot3d\/cura-le\/uranium/g'
-  grep -rl 'code.alephobjects.com/diffusion/CBD/cura-binary-data' . | xargs \
-    sed -i 's/code.alephobjects.com\/diffusion\/CBD\/cura-binary-data/gitlab.com\/lulzbot3d\/cura-le\/cura-binary-data/g'
-  grep -rl 'code.alephobjects.com/source/curaengine-lulzbot' . | xargs \
-    sed -i 's/code.alephobjects.com\/source\/curaengine-lulzbot/gitlab.com\/lulzbot3d\/cura-le\/cura-engine-le/g'
-  grep -rl 'code.alephobjects.com/source' . | xargs \
-    sed -i 's/code.alephobjects.com\/source/gitlab.com\/lulzbot3d\/cura-le/g'
-
   mkdir -p curabuild-lulzbot/build
   cd curabuild-lulzbot/build
   sed -i 's/DCURA_ENGINE_VERSION=${CURA_VERSION}/DCURA_ENGINE_VERSION=${CURA_VERSION} -DENABLE_OPENMP=OFF/' ../CMakeLists.txt
-  sed -i '33,34d' ../setup_linux.py.in #remove missing paths from using system python
-  sed -i '57,58d' ../setup_linux.py.in #remove missing qt plugins when using system version
+  sed -i '33,34 s/^/#pkgbuild /' ../setup_linux.py.in # Disable missing paths from using system python
+  sed -i '57,60 s/^/#pkgbuild /' ../setup_linux.py.in # Disable missing qt plugins when using system version
   sed -i 's/get_commit_hash("Savitar", cmake_binary_dir)/"4.1.0"/' ../scripts/cura_version.py #fake hash when using system libsavitar
 
-  sed -i 's/6a4ffb2f90ef7bbd3f20f2a1db4948630ad37dc8/v3.11.0/' ../CMakeLists.txt # Protobuf v3.7.0
+  sed -i 's/6a4ffb2f90ef7bbd3f20f2a1db4948630ad37dc8/v3.11.0/' ../CMakeLists.txt # Protobuf
 
-  sed -i '1216,1233d' ../CMakeLists.txt # Remove external cx_Freeze build
+  sed -i '1224,1241 s/^/#pkgbuild /' ../CMakeLists.txt # Disable external cx_Freeze build
 
   cmake -DTAG_OR_BRANCH=master ../ \
         -DBUILD_PYTHON=OFF \
@@ -109,8 +100,18 @@ package() {
   cp -r _CPack_Packages/Linux/DEB/cura-lulzbot-*-Linux/usr $pkgdir/
 }
 
-# Update md5sum
+## Update md5sum
 # updpkgsums
 
 ## Update .SRCINFO
 # makepkg --printsrcinfo | tee .SRCINFO
+
+##
+# Build in a clean chroot
+# https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot
+#
+# We need to install libffi6 and python-numpy-stl from AUR.
+# We also need to manually install openblas to avoid a conflict with blas.
+#
+# Ex.
+# extra-x86_64-build -- -c -I ~/builds/libffi6/libffi6-3.2.1-1-x86_64.pkg.tar.xz -I ~/builds/python-numpy-stl/python-numpy-stl-2.10.1-1-any.pkg.tar.xz -I /var/cache/pacman/pkg/openblas-0.3.10-1-x86_64.pkg.tar.zst
