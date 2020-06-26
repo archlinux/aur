@@ -9,7 +9,7 @@ depends=('util-linux')
 provides=('dxhd')
 conflicts=('dxhd-git')
 source=("https://github.com/dakyskye/dxhd/releases/download/$pkgver/dxhd_amd64" "https://raw.githubusercontent.com/dakyskye/dxhd/master/LICENSE")
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 
 package() {

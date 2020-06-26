@@ -10,6 +10,7 @@ pkgbase = dxhd-bin
 	source = https://github.com/dakyskye/dxhd/releases/download/26.06.2020_20.44/dxhd_amd64
 	source = https://raw.githubusercontent.com/dakyskye/dxhd/master/LICENSE
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = dxhd-bin
 
