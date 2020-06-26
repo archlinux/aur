@@ -1,0 +1,18 @@
+pkgbase = xpointerbarrier-git
+	pkgdesc = Rofi user script for accessing gists synced by gister
+	pkgver = r19.f4b2be1
+	pkgrel = 1
+	url = https://github.com/hwangeug/rofi-gister
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxfixes
+	depends = libxrandr
+	provides = xpointerbarrier
+	conflicts = xpointerbarrier
+	options = !buildflags
+	source = git+https://www.uninformativ.de/git/xpointerbarrier.git
+	sha256sums = SKIP
+
+pkgname = xpointerbarrier-git
+
