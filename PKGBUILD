@@ -1,7 +1,7 @@
 # Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
 pkgname=nyrna
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple program to pause games & applications'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
