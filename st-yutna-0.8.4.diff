@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 0e01717..10ffc1d 100644
+index 6df36e2..323146d 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -11,7 +11,7 @@ index 0e01717..10ffc1d 100644
  static int borderpx = 2;
  
  /*
-@@ -134,8 +134,8 @@ static unsigned int cursorshape = 2;
+@@ -137,8 +137,8 @@ static unsigned int cursorshape = 2;
   * Default columns and rows numbers
   */
  
@@ -22,4 +22,3 @@ index 0e01717..10ffc1d 100644
  
  /*
   * Default colour and shape of the mouse cursor
-  

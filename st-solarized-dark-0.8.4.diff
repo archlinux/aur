@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index 0e01717..0fe81d4 100644
+index 6f05dce..6df36e2 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -84,31 +84,23 @@ unsigned int tabspaces = 8;
+@@ -95,31 +95,23 @@ unsigned int tabspaces = 8;
  
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
@@ -31,7 +31,7 @@ index 0e01717..0fe81d4 100644
 -	/* more colors can be added after 255 to use with DefaultXX */
 -	"#cccccc",
 -	"#555555",
-+    /* solarized dark */
++	/* solarized dark */
 +	"#073642",  /*  0: black    */
 +	"#dc322f",  /*  1: red      */
 +	"#859900",  /*  2: green    */
@@ -51,7 +51,7 @@ index 0e01717..0fe81d4 100644
  };
  
  
-@@ -116,10 +108,10 @@ static const char *colorname[] = {
+@@ -127,10 +119,10 @@ static const char *colorname[] = {
   * Default colors (colorname index)
   * foreground, background, cursor, reverse cursor
   */
