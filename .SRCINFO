@@ -4,11 +4,11 @@ pkgbase = dxhd-bin
 	pkgrel = 0
 	url = https://github.com/dakyskye/dxhd
 	arch = x86_64
-	license = MIT
 	depends = util-linux
 	provides = dxhd
 	conflicts = dxhd-git
 	source = https://github.com/dakyskye/dxhd/releases/download/26.06.2020_20.44/dxhd_amd64
+	source = https://raw.githubusercontent.com/dakyskye/dxhd/master/LICENSE
 	md5sums = SKIP
 
 pkgname = dxhd-bin
