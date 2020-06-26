@@ -1,7 +1,7 @@
 pkgbase = vegastrike-py2-engine-git
 	pkgdesc = A spaceflight simulator in massive universe, python2 version
-	pkgver = rev.13926
-	pkgrel = 2
+	pkgver = rev.13933
+	pkgrel = 3
 	url = www.vega-strike.org
 	arch = i686
 	arch = x86_64
