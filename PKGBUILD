@@ -2,7 +2,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=kolourpaint-git
-pkgver=r2290.75f54996
+pkgver=r2305.dddf80a5
 pkgrel=1
 pkgdesc="Paint Program. (GIT version)"
 url='http://kde.org/applications/graphics/kolourpaint'
@@ -22,7 +22,7 @@ conflicts=('kdegraphics-kolourpaint'
            'kolourpaint'
            )
 provides=('kolourpaint')
-source=('git://anongit.kde.org/kolourpaint')
+source=('git+https://anongit.kde.org/kolourpaint')
 sha1sums=('SKIP')
 
 pkgver() {
