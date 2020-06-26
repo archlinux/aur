@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=terminalpp-git
-pkgver=0.6.0.r131.gdcc11e8
+pkgver=0.7.2.r2.ge4d24de
 pkgrel=1
 pkgdesc='Minimalist, fast, cross-platform terminal emulator'
 arch=('x86_64')
@@ -20,20 +20,22 @@ pkgver() {
 
 build() {
   cd terminalpp
+  rm -rf build/release
   mkdir -p build/release
   cd build/release
-  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=terminalpp
-  cmake --build . --target packages
-  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-ropen
-  cmake --build . --target packages
-  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-bypass
-  cmake --build . --target packages
-  make
+  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8
+  cmake --build .
+  
 }
 
 package() {
-  cd terminalpp/build/release
-  make DESTDIR="${pkgdir}" install
+  cd terminalpp/build/release/
+  install -Dm755 terminalpp/terminalpp "${pkgdir}/usr/bin/terminalpp"
+  install -Dm644 "${srcdir}"/terminalpp/resources/terminalpp.desktop -t "${pkgdir}/usr/share/applications"
+  for i in 64 48 128 256; do
+    install -Dm644 "${srcdir}/terminalpp/resources/icons/icon_${i}x${i}.png" \
+     "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/terminalpp.png"
+  done
   install -Dm644 "${srcdir}/terminalpp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
