@@ -1,7 +1,7 @@
 pkgbase = makeuki
 	pkgdesc = A script that simplifies the creation of unified kernel images.
 	pkgver = v1.2
-	pkgrel = 1
+	pkgrel = 2
 	install = makeuki.install
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = makeuki
 	depends = mkinitcpio
 	depends = pacman-contrib
 	source = makeuki.tar.gz
-	sha256sums = 304cc5a7c9d5f7c9d29b1e674041a3490b9192b944a8d8d00e7e087933da999c
+	sha256sums = fb4b94245383931d7983856333646fc8c618eb3ac6533b805353f2e59a91fd5c
 
 pkgname = makeuki
 
