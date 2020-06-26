@@ -2,22 +2,22 @@
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
 makedepends=('python-setuptools')
-depends=('python-pytorch' 'python-torchvision' 'opencv' 'python-matplotlib' 'ipython' 'jupyter')
-checkdepends=('python-pytest')
+depends=('python-pytorch' 'python-torchvision' 'python-numpy')
+checkdepends=('python-pytest' 'python-pytest-runner')
 options=(!emptydirs)
 source=(${_name}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('95eb4c5f84325e4fff887ef1a8a9f8aeb634bd014031e0c3c08bcd18a5d3cd24')
+sha256sums=('b9d45114e14f23cbe24d965f3095e0159b06d5672787959b81d6f9b4242e6c5d')
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
-  pytest 
+  pytest -v --device all --dtype all test/
 }
 
 package() {
