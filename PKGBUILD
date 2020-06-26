@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.7.5.arch1
+pkgver=5.7.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -31,11 +31,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
+            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '551d2ec326df256256a9e30d336a074493435fe0dbca77fd18216f9e91c0dd00'
             'ccb814e2c382a59b907ccb183836eda72f21214484e489b5f473beca97856704'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
-
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -97,7 +96,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
 }
 
 _package-headers() {
@@ -176,7 +174,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
 
 _package-docs() {
@@ -193,11 +190,9 @@ _package-docs() {
     install -Dm644 "$src" "$dst"
   done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
