@@ -24,12 +24,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./cmd/...
+  go build
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  go test ./...
 }
 
 package() {
