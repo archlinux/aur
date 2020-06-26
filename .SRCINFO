@@ -1,6 +1,6 @@
 pkgbase = edytornc-git
 	pkgdesc = Text editor for CNC programmers
-	pkgver = r188.aed5f68
+	pkgver = r191.bebe49f
 	pkgrel = 1
 	url = https://github.com/u-235/edytornc
 	arch = x86_64

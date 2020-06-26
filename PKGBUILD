@@ -2,7 +2,7 @@
 
 pkgname=edytornc-git
 _pkgname=edytornc
-pkgver=r188.aed5f68
+pkgver=r191.bebe49f
 pkgrel=1
 pkgdesc="Text editor for CNC programmers"
 arch=('x86_64')
@@ -23,13 +23,18 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${_pkgname}"
+  git submodule update --init --recursive
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}"
-  qmake PREFIX="/usr"
+  cd "${_pkgname}"
+  qmake PREFIX="/usr" -r
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   make INSTALL_ROOT="${pkgdir}" install
 }
