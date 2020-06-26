@@ -9,7 +9,9 @@ pkgbase = python-kiss-headers
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.org/packages/source/k/kiss-headers/kiss-headers-2.2.3.tar.gz
+	source = https://github.com/Ousret/kiss-headers/raw/2.2.3/LICENSE
 	sha256sums = 7744b7c1e1de7c0b5778605f05f9e136cf6282eba917cce1ea643d9bbf14eba6
+	sha256sums = 7aef43a03de81d80473aa3def05303584c56f30a652b5f3b3ce4367887d78bb1
 
 pkgname = python-kiss-headers
 
