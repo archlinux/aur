@@ -2,7 +2,7 @@
 pkgbase=python-iminuit
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.4.2
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cython' 'python-numpy')
 checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('60a520895c1708023695960d2d6c97d6')
+md5sums=('36e779e1811ada1767b531baf8a24f7c')
 
 prepare() {
     export _pyver=$(python -V | cut -c 8-10)
