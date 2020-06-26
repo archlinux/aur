@@ -1,7 +1,7 @@
 pkgbase = thenewplayerfree-bin
 	pkgdesc = The best video/streaming media player under UNIX
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sudormroot/thenewplayer_builds
 	arch = x86_64
 	license = unknown
