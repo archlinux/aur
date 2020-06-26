@@ -6,7 +6,6 @@ pkgbase = fzmp-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = mpd
 	depends = mpc
 	depends = fzf
 	provides = fzmp
