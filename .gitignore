@@ -2,3 +2,4 @@
 *.tar
 pkg/
 src/
+test.pdf

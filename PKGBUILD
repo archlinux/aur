@@ -2,7 +2,7 @@
 # Based on the brscan4 PKGBUILD by Harey
 
 pkgname=brscan5
-pkgver=1.2.2_0
+pkgver=1.2.3_0
 pkgrel=1
 pkgdesc='SANE drivers from Brother for brscan5 compatible models'
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ md5sums=(
   '90bf4aa2e87b68ba2ea1aa7e43b019d9'
 )
 
-source_x86_64=("https://download.brother.com/welcome/dlf104036/${pkgname}-${pkgver/_/-}.x86_64.rpm")
-md5sums_x86_64=('ced6a131a5bb5277ebe4d2b3935c4910')
-source_i686=("https://download.brother.com/welcome/dlf104035/${pkgname}-${pkgver/_/-}.i386.rpm")
-md5sums_i686=('42187c00a4073570f07c888c180e4dc1')
+source_x86_64=("https://download.brother.com/welcome/dlf105160/${pkgname}-${pkgver/_/-}.x86_64.rpm")
+md5sums_x86_64=('70a89e2c142fc318d66b6046e0b38320')
+source_i686=("https://download.brother.com/welcome/dlf105159/${pkgname}-${pkgver/_/-}.i386.rpm")
+md5sums_i686=('b753b6a67aa5e787639ba8cc2c452e77')
 install="brscan5.install"
 
 build() {
@@ -43,15 +43,15 @@ package() {
   install -D -m644 "brother5.conf" "$pkgdir/etc/sane.d/dll.d/brother5.conf"
 
   mkdir -p "$pkgdir/usr/lib/sane"
-  cd "$pkgdir/usr/lib/sane"
+  cd "$pkgdir/usr/lib/sane" || exit 1
   mv "$pkgdir/opt/brother/scanner/brscan5/libsane-brother5.so.1.0.7" "$pkgdir/usr/lib/sane"
   ln -sf libsane-brother5.so.1.0.7 libsane-brother5.so.1
   ln -sf libsane-brother5.so.1 libsane-brother5.so
 
-  cd "$pkgdir/usr/lib"
-  mv "$pkgdir/opt/brother/scanner/brscan5/libLxBsScanCoreApi.so.2.0.0" "$pkgdir/usr/lib"
-  ln -sf "libLxBsScanCoreApi.so.2.0.0" "libLxBsScanCoreApi.so.2"
-  ln -sf "libLxBsScanCoreApi.so.2" "libLxBsScanCoreApi.so"
+  cd "$pkgdir/usr/lib" || exit 1
+  mv "$pkgdir/opt/brother/scanner/brscan5/libLxBsScanCoreApi.so.3.0.0" "$pkgdir/usr/lib"
+  ln -sf "libLxBsScanCoreApi.so.3.0.0" "libLxBsScanCoreApi.so.3"
+  ln -sf "libLxBsScanCoreApi.so.3" "libLxBsScanCoreApi.so"
 
   libs=(libLxBsNetDevAccs libLxBsDeviceAccs libLxBsUsbDevAccs)
   for lib in "${libs[@]}"; do
