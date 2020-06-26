@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=corrade-git
-pkgver=2019.10.r0.g162d6a7d
+pkgver=2019.10.r267.g282b432a
 pkgrel=1
 pkgdesc="C++11/C++14 multiplatform utility library (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics/corrade/"
 license=('MIT')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 provides=('corrade')
 conflicts=('corrade')
 source=("git+git://github.com/mosra/corrade.git")
@@ -23,11 +23,12 @@ build() {
 
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
-    make
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -G Ninja
+    ninja
 }
 
 package() {
     cd "$srcdir/build"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" ninja install
 }
