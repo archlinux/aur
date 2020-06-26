@@ -6,6 +6,7 @@ pkgbase = ytmdesktop
 	arch = x86_64
 	license = CC0 1.0 Universal
 	makedepends = npm
+	makedepends = python
 	depends = electron
 	optdepends = libnotify: for desktop notifications
 	optdepends = libappindicator-gtk3: for tray icon
