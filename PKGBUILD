@@ -24,6 +24,6 @@ package() {
   cp "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/notedown.png"
 
   # link executable to /usr/bin
-  ln -s "${pkgdir}/opt/${pkgname}/notedown" "${pkgdir}"/usr/bin/notedown
+  ln -s "/opt/${pkgname}/notedown" "${pkgdir}"/usr/bin/notedown
 
 }
