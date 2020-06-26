@@ -6,9 +6,8 @@
 
 pkgbase='mplayer-svn'
 pkgname=('mplayer-svn' 'mencoder-svn')
-pkgver=38184M
-pkgrel=1
-_ffmpegver=4.2
+pkgver=38192M
+pkgrel=2
 pkgdesc='Media player for Linux'
 url='http://www.mplayerhq.hu/'
 arch=('i686' 'x86_64')
@@ -28,12 +27,10 @@ makedepends=('xorgproto' 'libxxf86vm' 'libmad' 'libxinerama' 'libmng' 'libxss'
              'libmpeg2')
 options=('!emptydirs')
 source=("mplayer::svn://svn.mplayerhq.hu/mplayer/trunk"
-        "https://ffmpeg.org/releases/ffmpeg-$_ffmpegver.tar.bz2"
         'mplayer.desktop'
 	include-samba-4.0.patch
         revert-icl-fixes.patch)
 sha512sums=('SKIP'
-            '74d06a420af61e05d9e076f4f433e8316590c3b850ada96e74c1df39431db1595f74315bdef624153edb160b8bef8683a4e9f35d69714cde4b5ec72aeb1d28e1'
             'd3c5cbf0035279c6f307e4e225473d7b77f9b56566537a26aa694e68446b9e3240333296da627ad5af83b04cc8f476d1a3f8c05e4cf81cd6e77153feb4ed74bc'
             '9debb8c58b996f6c716c22c86c720bf9dc49b4ee9b76c57519f791667ae1de2cc6f5add878fbf4ac02c6b6fd1865e1bcfa6105e75de4bf7ec596c338ed0cae99'
             '0cae0b26d3d97fd4c962962c43a481de20335369cbca406cadfc9bda1a0608b32f5374e76c477cb9a85bda83a568a1ed17126df224ae61579d0a402c1824aea8')
@@ -45,7 +42,6 @@ pkgver() {
 
 prepare() {
   cd "mplayer"
-  mv "../ffmpeg-$_ffmpegver" ffmpeg
 
   patch -p1 < "../include-samba-4.0.patch"
   patch -p0 < "../revert-icl-fixes.patch"
@@ -124,7 +120,7 @@ package_mencoder-svn() {
   conflicts=('mencoder')
   provides=('mencoder')
 
-  make -C ${pkgbase}-${pkgver} DESTDIR="${pkgdir}" install-mencoder install-mencoder-man
+  make -C mplayer DESTDIR="${pkgdir}" install-mencoder install-mencoder-man
   find "${pkgdir}/usr/share/man" -name mplayer.1 -exec rename mplayer.1 mencoder.1 {} +
 }
 
