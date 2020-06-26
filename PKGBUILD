@@ -2,15 +2,15 @@
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=0.2.1.r1.g9797eca
+pkgver=v0.3.1.r10.gf4f70fe
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
 makedepends=('git' 'python-setuptools')
-depends=('python-pytorch' 'python-torchvision' 'opencv' 'python-matplotlib' 'ipython' 'jupyter')
-checkdepends=('python-pytest')
+depends=('python-pytorch' 'python-numpy')
+checkdepends=('python-pytest' 'python-pytest-runner')
 provides=('python-kornia')
 conflicts=('python-kornia')
 options=(!emptydirs)
@@ -23,8 +23,8 @@ pkgver() {
 }
 
 check() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  pytest
+  cd "${srcdir}/${_name}"
+  pytest -v --device all --dtype float32,float64 test/
 }
 
 package() {
