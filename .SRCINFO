@@ -1,6 +1,6 @@
 pkgbase = python-github-binary-upload
 	pkgdesc = A Python package which creates simple interactive menus on the command line.
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/sciapp/github-binary-upload
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-github-binary-upload
 	depends = python
 	depends = python-requests
 	depends = python-yacl
-	source = https://github.com/sciapp/github-binary-upload/archive/v0.1.3.tar.gz
-	sha256sums = 30414c7dcc94780603559bcde538e4e2351f0e26eb21e520768baf38750f9232
+	source = https://github.com/sciapp/github-binary-upload/archive/v0.1.4.tar.gz
+	sha256sums = 35d8c226173dcbd94a1d771f69b5cae5e122cdb49795efac1ac3dff6c86216e5
 
 pkgname = python-github-binary-upload
 
