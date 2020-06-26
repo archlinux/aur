@@ -12,7 +12,7 @@ conflicts=('exoscale-cli')
 
 source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('624ded1eeef5b5bd410f38fa8a4f4dd8b97ee7685689b122677d3a5117077f1f')
+sha256sums=('ae2598053a54e97db05ed722dc6dbbe7b0e8e4f10802b3ee6320014d66d4422f')
 
 package() {
   install -Dm755 "${srcdir}/exo" "${pkgdir}/usr/bin/exo"
