@@ -3,7 +3,7 @@
 pkgname=python-kornia
 _name=kornia
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
@@ -17,7 +17,7 @@ sha256sums=('b9d45114e14f23cbe24d965f3095e0159b06d5672787959b81d6f9b4242e6c5d')
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
-  pytest -v --device all --dtype all test/
+  pytest -v --device all --dtype float32,float64 test/
 }
 
 package() {
