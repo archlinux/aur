@@ -1,0 +1,18 @@
+pkgbase = pingtunnel-git
+	pkgdesc = A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding.
+	pkgver = 2.3.r0.ga575bab
+	pkgrel = 1
+	url = https://github.com/esrrhs/pingtunnel
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = geoip-database: geolite country database
+	provides = pingtunnel
+	conflicts = pingtunnel
+	source = pingtunnel::git+https://github.com/esrrhs/pingtunnel.git
+	sha512sums = SKIP
+
+pkgname = pingtunnel-git
+
