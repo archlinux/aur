@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=featherpad
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Lightweight Qt5 plain text editor for Linux'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-svg' 'qt5-x11extras' 'hunspell' 'desktop-file-utils' 'gtk-update-i
 makedepends=('qt5-tools')
 optdepends=('qt5-translations: localized keyboard shortcuts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tsujan/FeatherPad/archive/V$pkgver.tar.gz")
-sha256sums=('922305e8724062ca2996b4aa8ada8a24e8c178ecb84adca86a51a560e5c29b52')
+sha256sums=('c32d662003591d612731e7c7086a5c7d8c59093141c414ec970d68605099c74f')
 
 build() {
   rm -Rf build && mkdir build
