@@ -1,6 +1,6 @@
 pkgbase = featherpad
 	pkgdesc = Lightweight Qt5 plain text editor for Linux
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/tsujan/FeatherPad
 	arch = i686
@@ -13,8 +13,11 @@ pkgbase = featherpad
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = qt5-translations: localized keyboard shortcuts
-	source = featherpad-0.13.1.tar.gz::https://github.com/tsujan/FeatherPad/archive/V0.13.1.tar.gz
-	sha256sums = 34e39d02bba664371824888e82173bae79925c10a72f0602fdd7d64b8c64b790
+	source = https://github.com/tsujan/FeatherPad/releases/download/V0.14.0/FeatherPad-0.14.0.tar.xz
+	source = https://github.com/tsujan/FeatherPad/releases/download/V0.14.0/FeatherPad-0.14.0.tar.xz.asc
+	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
+	sha256sums = 729b027b03bde765eaff5b72ab5b16209c4a16411b7f919431b4f0f43e0551e4
+	sha256sums = SKIP
 
 pkgname = featherpad
 
