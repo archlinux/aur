@@ -1,32 +1,39 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.3.2
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
 depends=('electron6')
-makedepends=('npm' 'nodejs' 'git' 'rustup' 'python2')
+makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 conflicts=("deltachat-desktop-git")
 source=(
     "deltachat-desktop-${pkgver}.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v${pkgver}.tar.gz"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
+    "no-git-checkout.patch"
 )
 
 sha256sums=(
-    "05279fb1bf96ae6a877a47440dff1bc11d3c6369db76063bc0915ba6609927e7"
+    "346ed1e0b135bb41b916a422d02a6cd329242cb2ea6085ae1a16f9aa483f9161"
     "39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1"
     "5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59"
+    "35461ad7e2db569764866f798481aeef96656c363463fd6f5d8cef6bc29f1d79"
 )
 
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/no-git-checkout.patch"
+}
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
 
-    npm install --verbose
+    npm install
     npm run build
 
     # Delete development dependencies, we don't need them anymore
