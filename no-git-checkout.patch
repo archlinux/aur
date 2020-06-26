@@ -1,52 +1,17 @@
-diff -ruN deltachat-desktop-1.4.2/package.json deltachat-desktop-1.4.2-no-git-patch/package.json
---- deltachat-desktop-1.4.2/package.json	2020-06-26 12:47:23.000000000 +0000
-+++ deltachat-desktop-1.4.2-no-git-patch/package.json	2020-06-26 15:28:02.957637266 +0000
-@@ -15,9 +15,8 @@
-     "start": "electron . --debug --log-debug --log-to-console --disable-http-cache --translation-watch",
-     "clean": "rm -rf ./tsc-dist ./html-dist ./dist",
-     "build": "npm run build:shared && npm run build:backend && npm run build:frontend",
--    "build:shared": "npm run build:shared:translations && npm run build:shared:version",
-+    "build:shared": "npm run build:shared:translations",
-     "build:shared:translations": "node ./bin/build-shared-convert-translations.js ./_locales",
--    "build:shared:version": "node ./bin/build-shared-version-info.js",
-     "build:backend": "tsc --build src/main",
-     "build:frontend": "npm run build:frontend:ts && npm run build:frontend:themes && npm run build:frontend:static && npm run build:frontend:scss",
-     "build:frontend:ts": "node ./bin/build-frontend-ts.js",
-diff -ruN deltachat-desktop-1.4.2/src/main/deltachat/controller.ts deltachat-desktop-1.4.2-no-git-patch/src/main/deltachat/controller.ts
---- deltachat-desktop-1.4.2/src/main/deltachat/controller.ts	2020-06-26 12:47:23.000000000 +0000
-+++ deltachat-desktop-1.4.2-no-git-patch/src/main/deltachat/controller.ts	2020-06-26 15:28:28.924663902 +0000
-@@ -21,7 +21,8 @@
- import Extras from './extras'
- import { EventId2EventName as eventStrings } from 'deltachat-node/dist/constants'
- 
--import { VERSION, BUILD_TIMESTAMP } from '../../shared/build-info'
-+const VERSION = '1.4.2'
-+const BUILD_TIMESTAMP = Date.now()
- import { Timespans, DAYS_UNTIL_UPDATE_SUGGESTION } from '../../shared/constants'
- import { LocaleData } from '../../shared/localize'
- 
-diff -ruN deltachat-desktop-1.4.2/src/renderer/components/CrashScreen.tsx deltachat-desktop-1.4.2-no-git-patch/src/renderer/components/CrashScreen.tsx
---- deltachat-desktop-1.4.2/src/renderer/components/CrashScreen.tsx	2020-06-26 12:47:23.000000000 +0000
-+++ deltachat-desktop-1.4.2-no-git-patch/src/renderer/components/CrashScreen.tsx	2020-06-26 15:29:10.341888558 +0000
-@@ -1,6 +1,7 @@
- import React from 'react'
- import { runtime } from '../runtime'
--import { VERSION, GIT_REF } from '../../shared/build-info'
-+const VERSION = "1.4.2"
-+const GIT_REF = "None"
- export class CrashScreen extends React.Component {
-   state = {
-     hasError: false,
-diff -ruN deltachat-desktop-1.4.2/src/renderer/components/dialogs/About.tsx deltachat-desktop-1.4.2-no-git-patch/src/renderer/components/dialogs/About.tsx
---- deltachat-desktop-1.4.2/src/renderer/components/dialogs/About.tsx	2020-06-26 12:47:23.000000000 +0000
-+++ deltachat-desktop-1.4.2-no-git-patch/src/renderer/components/dialogs/About.tsx	2020-06-26 15:28:55.601692171 +0000
-@@ -4,7 +4,8 @@
- import { getLogger } from '../../../shared/logger'
- import DeltaDialog, { DeltaDialogBody, DeltaDialogFooter } from './DeltaDialog'
- import { gitHubUrl, gitHubLicenseUrl } from '../../../shared/constants'
--import { VERSION, GIT_REF } from '../../../shared/build-info'
-+const VERSION = "1.4.2"
-+const GIT_REF = "None"
- import ClickableLink from '../helpers/ClickableLink'
- import { DeltaBackend } from '../../delta-remote'
- 
+diff --unified --recursive --text deltachat-desktop-1.4.2-orig/bin/build-shared-version-info.js deltachat-desktop-1.4.2-no-git/bin/build-shared-version-info.js
+--- deltachat-desktop-1.4.2-orig/bin/build-shared-version-info.js	2020-06-26 12:55:04.000000000 +0000
++++ deltachat-desktop-1.4.2-no-git/bin/build-shared-version-info.js	2020-06-26 16:04:17.587613647 +0000
+@@ -6,7 +6,12 @@
+   const { status, stdout, stderr } = spawnSync('git', ['describe'])
+   if (status !== 0) {
+     console.log(stderr)
+-    throw new Error('getting git commit failed')
++    const package = await fs.readJSON(join(__dirname, '../package.json'))
++    return {
++      VERSION: package.version,
++      BUILD_TIMESTAMP: Date.now(),
++      GIT_REF: "None",
++    }
+   }
+   const package = await fs.readJSON(join(__dirname, '../package.json'))
+   return {
