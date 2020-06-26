@@ -1,7 +1,7 @@
-.PHONY: update
-update:
-	makepkg -g >> PKGBUILD
+.PHONY: get-checksum
+get-checksum:
+	updpkgsums
 
-.PHONY: srcinfo
-srcinfo:
+.PHONY: update
+update: get-checksum
 	makepkg --printsrcinfo > .SRCINFO
