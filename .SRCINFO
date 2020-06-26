@@ -1,6 +1,6 @@
 pkgbase = mads
 	pkgdesc = MADS is a multi-pass crossassembler designed for 6502 and 65816 processors
-	pkgver = 2.0.9
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://mads.atari8.info/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mads
 	makedepends = fpc
 	depends = glibc
 	provides = mads
-	source = http://mads.atari8.info/mads_209src.7z
-	sha256sums = 76b1130e1cbfe5965d0d427baa1ccd111b45a67fb277f1ad26aa4fd13311fffb
+	source = https://github.com/tebe6502/Mad-Assembler/archive/2.1.0.tar.gz
+	sha256sums = bba2aa102e41d131adec6f01bb525e874ea6cdb3769f9a31426419587e87d7fa
 
 pkgname = mads
 

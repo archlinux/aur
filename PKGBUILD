@@ -1,18 +1,18 @@
 # Maintainer: Marcin Nowak <marcin [dot] j [dot] nowak (at) gmail [dot] com>
 
 pkgname=mads
-pkgver=2.0.9
+pkgver=2.1.0
 madver=209
 pkgrel=1
 pkgdesc="MADS is a multi-pass crossassembler designed for 6502 and 65816 processors"
 arch=('x86_64')
 url="http://mads.atari8.info/"
 source=(
-    http://mads.atari8.info/mads_$(echo $pkgver | sed "s/\.//g")src.7z
+    https://github.com/tebe6502/Mad-Assembler/archive/$pkgver.tar.gz
     )
 
 sha256sums=(
-    '76b1130e1cbfe5965d0d427baa1ccd111b45a67fb277f1ad26aa4fd13311fffb'
+    'bba2aa102e41d131adec6f01bb525e874ea6cdb3769f9a31426419587e87d7fa'
     )
 license=('unknown')
 provides=('mads')
