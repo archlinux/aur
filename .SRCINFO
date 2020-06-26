@@ -1,6 +1,6 @@
 pkgbase = tuned
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
-	pkgver = 2.13.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/redhat-performance/tuned
 	install = tuned.install
@@ -23,8 +23,8 @@ pkgbase = tuned
 	optdepends = virt-what: For use with virtual machines
 	optdepends = systemtap: Disk and net statistic monitoring systemtap scripts
 	backup = etc/tuned/active_profile
-	source = https://github.com/redhat-performance/tuned/archive/v2.13.0.tar.gz
-	sha256sums = 528b34ef0d2c219def11cea8bd8dbba83dce04adb78ab4b78ef65cf63885496d
+	source = https://github.com/redhat-performance/tuned/archive/v2.14.0.tar.gz
+	sha256sums = 2a36aea3115c7f50faf05b1a34218eeab6d61c808056cb6625cc20d0fcf2c74c
 
 pkgname = tuned
 
