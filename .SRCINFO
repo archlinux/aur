@@ -1,12 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = notedown
+	pkgver = 1.5
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/subvisual/notedown/releases/download/v1.5/notedown-1.0.0.tar.gz
+	arch = any
+	license = MPL
+	makedepends = git
+	depends = electron
+	source = https://github.com/subvisual/notedown/releases/download/v1.5/notedown-1.0.0.tar.gz
+	source = notedown.desktop
+	source = icon.png
+	md5sums = SKIP
+	md5sums = 647ca7e77794a5f19c47b5c37261372e
+	md5sums = 760e3507b86c1379f33f8d38ea894dc3
 
-pkgname = yarxi
+pkgname = notedown
 
