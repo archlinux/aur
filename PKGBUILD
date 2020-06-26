@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-py2-engine-git
 pkgver=rev.13926
-pkgrel=1
+pkgrel=2
 pkgdesc="A spaceflight simulator in massive universe, python2 version"
 arch=('i686' 'x86_64')
 url="www.vega-strike.org"
@@ -22,6 +22,11 @@ pkgver() {
 }
 
 prepare(){
+cd "${srcdir}"/Vega-Strike-Engine-Source
+git revert --no-commit 04f99ab64535fc0146a90ac9e226d71cbbac0095
+#git revert -m 2 --no-commit 59deb3002e69a9f443d6d7ba1bb61c31f898fa7f
+cd ..
+
 mkdir -p build
 patch -Np1 -i ../python2_compile.patch
 patch -Np1 -i ../vegastrike_install.patch
