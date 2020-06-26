@@ -1,6 +1,6 @@
 pkgbase = ne
 	pkgdesc = The nice editor, a fast small powerful and simple to use editor
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://ne.di.unimi.it
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ne
 	license = GPL3
 	depends = ncurses
 	depends = texinfo
-	source = https://github.com/vigna/ne/archive/3.2.1.tar.gz
-	sha512sums = 66def9f7b19fc19b7237344eb67c067b34f5cf9632b3b41440381371a220fd18ccb066e05b5147718060cb6d37c44d146041e1d0e7bd153a637727452887f6ad
+	source = https://github.com/vigna/ne/archive/3.3.0.tar.gz
+	sha512sums = 2bdaf7aa30f0d997cc4e21ad79cd3aafaf4a7df450ffc1ee8129f76450875ed1140c6601ef0b568e1bbc0ee4f40c05305a83d9e303a97fb2ce02d01a56a46a05
 
 pkgname = ne
 
