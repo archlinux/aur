@@ -37,8 +37,12 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go get -d -v ./...
   go build -o build ./...
+  go clean -modcache # Clean go cache
 }
 
 package() {
