@@ -1,41 +1,36 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.4.0.r938.gc47b75312
+pkgver=0.6.0.r813.g130c7fd23
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
-url='http://ziglang.org'
+url='https://ziglang.org'
 license=('MIT')
-depends=('clang' 'llvm')
+depends=('clang' 'llvm>=10' 'lld')
 makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git")
+source=("git+https://github.com/zig-lang/zig.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$provides"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C zig describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$provides"
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../zig -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DZIG_PREFER_CLANG_CPP_DYLIB=ON
     make DESTDIR=.
 }
 
 check() {
-    cd "$srcdir/$provides/build"
-
     # omit full compiler test since it takes ages
-    ./zig version
+    build/zig version
 }
 
 package() {
-    cd "$srcdir/$provides/build"
-    install -Dm644 "$srcdir/$provides/LICENSE" "$pkgdir/usr/share/licenses/$provides/LICENSE"
-    make DESTDIR="$pkgdir" install
+    install -Dm644 zig/LICENSE "$pkgdir/usr/share/licenses/$provides/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
 }
