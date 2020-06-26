@@ -3,7 +3,7 @@
 pkgname=terraformer-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to generate terraform files from existing infrastructure (reverse Terraform)'
 arch=('x86_64')
 _goos='linux'
@@ -14,7 +14,7 @@ depends=('terraform')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-all-$_goos-$_goarch")
-sha256sums=('13ec1725f3eff6f241ffbd128a75b13d9eb9bf358b04901a7e8eb7da16d148b8')
+sha256sums=(8dae56c8994d0b64eeb59c981964d09b5b95ce9bab33f989cb9138cc91d59a9a)
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
