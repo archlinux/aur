@@ -1,5 +1,5 @@
 pkgbase = fzmp-git
-	pkgdesc = Info script for minimal *nix systems.
+	pkgdesc = FZF driven MPD client
 	pkgver = r140.ec9569c
 	pkgrel = 1
 	url = https://github.com/DanielFGray/fzf-scripts
