@@ -1,7 +1,7 @@
 pkgbase = libhandy1
 	pkgdesc = Library full of GTK+ widgets for mobile phones (1.0, can be installed alongside 0.0)
 	pkgver = 0.82.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/libhandy
 	arch = i686
 	arch = x86_64
