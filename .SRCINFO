@@ -32,6 +32,7 @@ pkgbase = remmina-git
 	optdepends = avahi
 	optdepends = libxkbfile
 	optdepends = telepathy-glib
+	optdepends = gobject-introspection
 	provides = remmina
 	provides = grdc
 	provides = grdc=1.4.7.r6.gef3ef1bf
