@@ -12,17 +12,11 @@ conflicts=('dxhd-bin')
 source=("$pkgname::git+https://github.com/dakyskye/dxhd.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git rev-parse --short HEAD
-}
-
 build() {
-	cd "$pkgname"
 	make fast
 }
 
 package() {
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%????}/LICENSE"
+	install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%????}/LICENSE"
 	install -Dm755 dxhd "${pkgdir}/usr/bin/dxhd"
 }
