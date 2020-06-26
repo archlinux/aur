@@ -3,6 +3,7 @@
 # Set root partition to the second partition of boot device
 part uuid ${devtype} ${devnum}:2 uuid
 
+setenv fdtfile /dtbs/broadcom/bcm2711-rpi-4-b.dtb
 setenv bootargs console=ttyS1,115200 console=tty0 root=PARTUUID=${uuid} rw rootwait smsc95xx.macaddr="${usbethaddr}"
 
 if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /Image; then
