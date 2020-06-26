@@ -13,15 +13,11 @@ makedepends=('cmake' 'qt5-base')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e596f1b1577ff3e83a779e6181252ae2f09731f513d17dd6b95cbc2cf204654f')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	mkdir -p build
-}
-
 build() {
-	cd "$pkgname-$pkgver/build"
-	cmake ..
-	make
+	cd "$pkgname-$pkgver"
+	cmake -B build -S . \
+		-Wno-dev
+	make -C build
 }
 
 package() {
