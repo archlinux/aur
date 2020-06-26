@@ -1,12 +1,14 @@
 pkgbase = buildaur
-	pkgdesc = A AUR helper
-	pkgver = 18.1f7bc86
+	pkgdesc = An AUR helper
+	pkgver = 22.8d40dcf
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/buildaur
 	arch = any
 	license = GPL v3
 	makedepends = git
 	depends = pacman
+	depends = asp
+	depends = devtools
 	source = buildaur::git+https://github.com/lxgr-linux/buildaur.git
 	md5sums = SKIP
 
