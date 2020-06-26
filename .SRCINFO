@@ -1,6 +1,6 @@
 pkgbase = python-anesthetic
 	pkgdesc = nested sampling visualisation
-	pkgver = 1.3.1
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/williamjameshandley/anesthetic
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-anesthetic
 	depends = python-pandas
 	depends = python-fastkde
 	options = !emptydirs
-	source = https://github.com/williamjameshandley/anesthetic/archive/1.3.1.tar.gz
-	sha256sums = 2f5d700047d1c31fcbb55d566f059aef63edd8bafce347350ca6d5a9f5d27b15
+	source = https://github.com/williamjameshandley/anesthetic/archive/1.3.3.tar.gz
+	sha256sums = fd9acebb41f9c83530032eac469fb8745b6c8a6f2f41d2b4c5a3575731e8e177
 
 pkgname = python-anesthetic
 
