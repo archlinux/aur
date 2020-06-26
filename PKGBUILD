@@ -5,14 +5,14 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=bin32-openjk-git
-pkgver=r3645.52030235f
-pkgrel=2
+pkgver=r3652.24c5b279c
+pkgrel=3
 pkgdesc="Open Source Jedi Knight II + III Engine (32-bit version)"
 arch=('i686' 'x86_64')
 url="https://github.com/JACoders/OpenJK"
 license=('GPL2')
 depends=('lib32-sdl2' 'lib32-libjpeg' 'lib32-libpng' 'lib32-glu')
-makedepends=('cmake' 'git' 'libpng')
+makedepends=('cmake' 'git')
 provides=('openjk' 'bin32-openjk')
 conflicts=('openjk')
 source=(
@@ -48,7 +48,7 @@ build() {
   cd build
 
   cmake .. \
-    -DCMAKE_TOOLCHAIN_FILE=CMakeModules/Toolchains/linux-i686.cmake \
+    -DCMAKE_TOOLCHAIN_FILE=cmake/Toolchains/linux-i686.cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/opt/openjk" \
     -DBuildJK2SPEngine=on \
