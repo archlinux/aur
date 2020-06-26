@@ -1,4 +1,4 @@
-authenticator-rs-0.2.1-x86_64.deb
-authenticator-rs-bin-0.2.1-2-x86_64.pkg.tar.xz
+*.deb
+*.xz
 pkg/
 src/
