@@ -23,6 +23,7 @@ pkgver() {
 prepare() {
   cd symphonium
   sed -i '22,24 s/^/#/' Symphonium.pro
+  sed -i "7a#include <QPainterPath>" displayarea.cpp
 }
 
 build() {
