@@ -8,9 +8,8 @@ arch=('i686' 'x86_64')
 url="https://metacpan.org/pod/distribution/Gtk2-AppIndicator/lib/Gtk2/AppIndicator.pm"
 license=('PerlArtistic')
 depends=('libappindicator-gtk2' 'gtk2-perl')
-source=(https://cpan.metacpan.org/authors/id/O/OE/OESTERHOL/Gtk2-AppIndicator-${pkgver}.tar.gz)
+source=("https://cpan.metacpan.org/authors/id/O/OE/OESTERHOL/Gtk2-AppIndicator-${pkgver}.tar.gz")
 md5sums=('a90db45394d50d4b2656cfb292710265')
-sha1sums=('8a63d442a7bcb31a832363d06b6ac185a7852566')
 
 build() {
     cd "$srcdir/Gtk2-AppIndicator-${pkgver}"
