@@ -1,13 +1,15 @@
 pkgbase = python-fpyutils
 	pkgdesc = A collection of useful non-standard Python functions which aim to be simple to use
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frnmst/fpyutils
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
 	depends = python-atomicwrites=1.4.0
+	depends = python-yaml=5.3.1
+	depends = python-requests=2.24.0
 	options = !emptydirs
 	source = https://frnmst.gitlab.io/software/fpyutils-1.2.0.tar.gz.sig
 	source = https://frnmst.gitlab.io/software/fpyutils-1.2.0.tar.gz
