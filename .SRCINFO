@@ -1,19 +1,17 @@
 pkgbase = lkrg-dkms
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
-	pkgver = 0.7
-	pkgrel = 3
+	pkgver = 0.8
+	pkgrel = 1
 	url = https://www.openwall.com/lkrg/
 	arch = x86_64
 	license = GPL2
 	depends = dkms
-	source = https://www.openwall.com/lkrg//lkrg-0.7.tar.gz
-	source = https://www.openwall.com/lkrg//lkrg-0.7.tar.gz.sign
-	source = kernel-5.6.patch
+	source = https://www.openwall.com/lkrg//lkrg-0.8.tar.gz
+	source = https://www.openwall.com/lkrg//lkrg-0.8.tar.gz.sign
 	source = dkms.conf
 	validpgpkeys = 297AD21CF86C948081520C1805C027FD4BDC136E
-	sha512sums = 6f856d31aa79705e38a5436a47cb4e3f414a7734794713e6831426f1eda0f36ff1800e94dbfa9b211ab5b85055716c9b4839a8e46d292c9de95fc57b6cc02519
+	sha512sums = 2ff5666e3bd6c0d232524bb378185ff95a5251c24619e976fe2bab77b632471abc1ead8c6e9eabb6cfb224fa0f5a4aadf25c67f5ff2c025ce632c82b7aaabcf6
 	sha512sums = SKIP
-	sha512sums = cfbd6e2f8f8ced230939ad4773328e5ad00bc92c99c2174d57115aeb1e0bcad756fa609f380e37d345db8eaeebaac662458b9ea95777dfca541388d2e1d169e6
 	sha512sums = ee259ac7e15fb6f6947ce6e64be808d6a1107d481ec0a7b4a35266bd720b639909c92e580fae2cecefe5318ce081a4d7431b5f941d1827f7783bee0a3206c5e8
 
 pkgname = lkrg-dkms
