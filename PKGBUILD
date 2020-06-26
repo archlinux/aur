@@ -4,7 +4,7 @@
 # Contributor: mar77i <mar77i at protonmail dot ch>
 
 pkgname=micro
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=("armv6h" "armv7h" "i686" "x86_64")
@@ -12,7 +12,7 @@ url="https://github.com/zyedidia/${pkgname}"
 license=("MIT")
 depends=("glibc")
 makedepends=("git" "go")
-optdepends=('xclip: Required for copying/pasting text')
+optdepends=("xclip: Required for copying/pasting text")
 source=(
   "${pkgname}-${pkgver}::git+https://github.com/zyedidia/${pkgname}.git#tag=v${pkgver}"
   "semver::git+https://github.com/blang/semver"
