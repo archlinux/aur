@@ -1,7 +1,7 @@
 pkgname=notedown
 pkgver=1.5
 filever=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc=""
 arch=('any')
 url="https://github.com/subvisual/notedown/releases/download/v$pkgver/$pkgname-$filever.tar.gz"
