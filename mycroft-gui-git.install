@@ -1,0 +1,3 @@
+post_install() {
+  echo "You have to have a ~/mycroft-core folder in your home directory! See https://github.com/MycroftAI/Mycroft-GUI for more information!"
+}

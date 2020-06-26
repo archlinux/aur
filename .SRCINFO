@@ -1,0 +1,32 @@
+pkgbase = mycroft-gui-git
+	pkgdesc = Mycroft Graphical User Interface for Mycroft AI
+	pkgver = r01.4c9fa11
+	pkgrel = 1
+	url = https://github.com/MycroftAI/mycroft-gui/
+	install = mycroft-gui-git.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = APACHE
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = plasma-framework
+	makedepends = kio
+	makedepends = kio-extras
+	depends = qt5-base
+	depends = qt5-websockets
+	depends = qt5-quickcontrols2
+	depends = qt5-multimedia
+	depends = qt5-webengine
+	depends = qt5-declarative
+	depends = qt5-webview
+	optdepends = mycroft-core: for using "Installed Using Mycroft Package"
+	provides = mycroft-gui
+	conflicts = mycroft-gui
+	source = git+https://github.com/MycroftAI/mycroft-gui
+	sha512sums = SKIP
+
+pkgname = mycroft-gui-git
+
