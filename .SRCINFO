@@ -1,13 +1,12 @@
 pkgbase = dict-freedict-deu-eng-svn
 	pkgdesc = German -> English dictionary for dictd et al. from Freedict.org
-	pkgver = r1788
+	pkgver = r1870
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-deu-eng-svn.install
 	arch = any
 	license = GPL
 	makedepends = subversion
-	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	provides = dict-freedict-deu-eng
