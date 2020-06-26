@@ -3,11 +3,10 @@ pkgname=dxhd-git
 pkgver=master
 pkgrel=0
 pkgdesc="An X11 Hotkey Daemon"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/dakyskye/dxhd"
-license=('MIT')
 depends=('util-linux')
-makedepends=('git' 'go')
+makedepends=('make' 'git' 'go')
 provides=('dxhd')
 conflicts=('dxhd-bin')
 source=("$pkgname::git+https://github.com/dakyskye/dxhd.git")
@@ -20,10 +19,10 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	GOOS=linux GOARCH=amd64 go build -ldflags "-s -w -X main.version=master-$pkgver" -o $pkgname .
+	make fast
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm755 $pkgname "$pkgdir"/usr/bin/dxhd
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%????}/LICENSE"
+	install -Dm755 dxhd "${pkgdir}/usr/bin/dxhd"
 }
