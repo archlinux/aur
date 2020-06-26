@@ -1,0 +1,14 @@
+pkgbase = nyrna
+	pkgdesc = Simple program to pause games & applications
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Merrit/nyrna
+	arch = x86_64
+	license = GPL3 or any later version
+	makedepends = go
+	optdepends = libappindicator-gtk3: Tray icon support on GNOME
+	source = nyrna-1.0.tar.gz::https://github.com/Merrit/nyrna/archive/v1.0.tar.gz
+	sha256sums = e35f28ef2f76a25e8aaa7182c222e48063d208178b49a7e8d249ef947ab14a22
+
+pkgname = nyrna
+
