@@ -1,6 +1,6 @@
 pkgbase = konsole-git
 	pkgdesc = KDE's terminal emulator
-	pkgver = r6607.473461f0
+	pkgver = r7247.91204ff0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/applications/konsole
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = konsole-git
 	provides = konsole
 	conflicts = konsole
 	conflicts = kdebase-konsole
-	source = git://anongit.kde.org/konsole.git
+	source = git+https://invent.kde.org/utilities/konsole.git
 	md5sums = SKIP
 
 pkgname = konsole-git

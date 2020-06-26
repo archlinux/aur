@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole-git
-pkgver=r6607.473461f0
+pkgver=r7247.91204ff0
 pkgrel=1
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('kbookmarks' 'kcompletion' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kc
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 provides=('konsole')
 conflicts=('konsole' 'kdebase-konsole')
-source=('git://anongit.kde.org/konsole.git')
+source=('git+https://invent.kde.org/utilities/konsole.git')
 md5sums=('SKIP')
 
 pkgver() {
