@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (mingw-w64)
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = i686
@@ -18,12 +18,12 @@ pkgbase = mingw-w64-dav1d
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.0/dav1d-0.7.0.tar.xz
-	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.0/dav1d-0.7.0.tar.xz.asc
+	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.1/dav1d-0.7.1.tar.xz
+	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.1/dav1d-0.7.1.tar.xz.asc
 	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
-	sha512sums = a2c6981ba5ad5ffe8382e32d6afb943fdd3ee2801751e4d84718171ccaeeef28ae4822b2ae282b301f4806351526cd83aa72b2535fa3a99ec534996458508521
+	sha512sums = fe7f4a4a547d1239e62025bb40d2f7f97e9fbdfde1d32f9930497801b703a68050ee2fa79793c1cd0c4723678a0736f32431e1b711f63f5de782fe675e5c82de
 	sha512sums = SKIP
-	b2sums = c601c8b03d712291e3e3357cac87fb7d4a2352503966f949bc023967a9fbeec6199477fa18381ac3eea7991de1df93e0c0ce95469d6400c0d1acbb8dc2b457a9
+	b2sums = 9f69741cf87c7f4f0044890514fdf8261936f6d65653ccbd5669cbbbc1cff3dcee165b96da6dac39000e790d003062368967b1282d5f0955fdaeef5a6e2905ca
 	b2sums = SKIP
 
 pkgname = mingw-w64-dav1d
