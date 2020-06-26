@@ -1,0 +1,14 @@
+pkgbase = prometheus-systemd-exporter
+	pkgdesc = Prometheus exporter for systemd units, written in Go.
+	pkgver = 0.4.0
+	pkgrel = 0
+	url = https://github.com/povilasv/systemd_exporter
+	arch = x86_64
+	license = Apache
+	source = prometheus-systemd-exporter-0.4.0.tar.gz::https://github.com/povilasv/systemd_exporter/releases/download/v0.4.0/systemd_exporter-0.4.0.linux-amd64.tar.gz
+	source = prometheus-systemd-exporter.service
+	sha256sums = e417e279c55789e7c0bd6dc68643ae164dc819425116e84c8a7e0c5a316cae03
+	sha256sums = c821d8a3a93241c6ee9b2dd8d3cc0ab0c3e6e23159bed7dc43ca7b84a9b8119b
+
+pkgname = prometheus-systemd-exporter
+

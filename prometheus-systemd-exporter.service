@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for systemd units, written in Go.
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/prometheus-systemd-exporter --web.listen-address=127.0.0.1:9558
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
