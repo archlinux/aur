@@ -14,5 +14,5 @@ md5sums=('SKIP' 'SKIP')
 
 package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%????}/LICENSE"
-	install -Dm755 "${pkgdir}/usr/bin/dxhd_amd64" "/usr/bin/dxhd"
+	install -Dm755 dxhd_amd64 "${pkgdir}/usr/bin/dxhd"
 }
