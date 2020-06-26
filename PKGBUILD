@@ -10,7 +10,7 @@ url='https://www.racedepartment.com/threads/1964-austin-mini-beta.62339/'
 depends=('racer-cg')
 makedepends=('unrar')
 download="austin_mini.rar"
-source=("http://www.tracciontrasera.net/descargas/racer/coches/austin_mini.rar")
+source=("https://www.tracciontrasera.net/descargas/racer/coches/austin_mini.rar")
 md5sums=('9cb98afa2794612de4e532d750aee33c')
 noextract=(${download})
 package(){

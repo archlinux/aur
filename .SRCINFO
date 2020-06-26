@@ -8,7 +8,7 @@ pkgbase = racer-cg-car-64-austin-mini
 	makedepends = unrar
 	depends = racer-cg
 	noextract = austin_mini.rar
-	source = http://www.tracciontrasera.net/descargas/racer/coches/austin_mini.rar
+	source = https://www.tracciontrasera.net/descargas/racer/coches/austin_mini.rar
 	md5sums = 9cb98afa2794612de4e532d750aee33c
 
 pkgname = racer-cg-car-64-austin-mini
