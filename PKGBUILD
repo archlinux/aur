@@ -5,7 +5,7 @@
 
 pkgname=plantuml-bin
 _pkgname=plantuml
-pkgver=1.2020.5
+pkgver=1.2020.14
 pkgrel=1
 pkgdesc="Component that allows to quickly write uml diagrams"
 arch=(any)
@@ -13,10 +13,11 @@ url="http://plantuml.com/"
 license=('GPL')
 depends=("graphviz")
 makedepends=("apache-ant" "java-environment>=8")
-conflicts=(plantuml)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("http://downloads.sourceforge.net/project/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz"
         "$_pkgname.run")
-sha256sums=('5950536487f2c8cd91d296807e92b8a005c8cae59f96a9c7cd150f0b4d125beb'
+sha256sums=('140198f9e2a62ea1ed6f58d96086f1fac53f8c847747e8f88999ce3e52fcc63f'
 'a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8')
 optdepends=('plantuml-ascii-math: allow use AsciiMath or JLaTeXMath notation'
             'ditaa: allow use ditaa notation'
