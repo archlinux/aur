@@ -1,7 +1,7 @@
 # Maintainer: dorianpb <dorian.peanut.butter@gmail.com>
 pkgname='makeuki'
 pkgver=v1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A script that simplifies the creation of unified kernel images."
 license=('GPL3')
 arch=('any')
