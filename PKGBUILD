@@ -15,19 +15,10 @@ makedepends=('dos2unix' 'git' 'unzip')
 provides=("${_pkgname}")
 options=(!strip)
 source=("git+${url}.git"
-# The following file needs to be downloaded manually from
-# Maxmind, see https://dev.maxmind.com/geoip/geoip2/geolite2/
-# for details
-"local://GeoLite2-Country.mmdb.gz"
-"fetch-engine.patch"
-"Makefile.patch"
 "${_pkgname}"
 "${_pkgname}.appdata.xml"
 "${_pkgname}.desktop")
 md5sums=('SKIP'
-         'efb8c043dfa095146f373fec367aef64'
-         '711019044fbb1c1e3aa5edc58b54343d'
-         'feae017ba5765215cd151a892362e6b1'
          '8974b3935a56e8fd957ee5dc9404595c'
          'd3c7476b79a6b07522e597f05eaa8ae7'
          '40267bdbbcde926b3524e99cce966592')
@@ -42,7 +33,6 @@ pkgver() {
 prepare() {
     cd $srcdir/Generals-Alpha
     dos2unix *.md
-    patch -Np1 -i $srcdir/fetch-engine.patch
 }
 
 build() {
@@ -57,7 +47,6 @@ package() {
     cd $srcdir/Generals-Alpha
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/${_pkgname},share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/${_pkgname}
-    cp $srcdir/GeoLite2-Country.mmdb.gz $pkgdir/usr/lib/${_pkgname}
     cp -r generals-alpha-engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/${_pkgname}
     cp -r mods/gen $pkgdir/usr/lib/${_pkgname}/mods
     cp -r generals-alpha-engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
