@@ -18,7 +18,7 @@ optdepends=(
 )
 
 provides=(tanka)
-conflicts=(tanka-bin)
+conflicts=(tanka)
 
 md5sums=('SKIP')
 

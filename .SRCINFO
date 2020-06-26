@@ -14,7 +14,7 @@ pkgbase = tanka-git
 	depends = kubectl
 	optdepends = jsonnet-bundler-bin: jsonnet package manager
 	provides = tanka
-	conflicts = tanka-bin
+	conflicts = tanka
 	source = git+https://github.com/grafana/tanka.git
 	md5sums = SKIP
 
