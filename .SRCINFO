@@ -11,7 +11,7 @@ pkgbase = notedown
 	source = icon.png
 	md5sums = SKIP
 	md5sums = 647ca7e77794a5f19c47b5c37261372e
-	md5sums = 760e3507b86c1379f33f8d38ea894dc3
+	md5sums = e6c3159888655d4ad8efcfc0816a0285
 
 pkgname = notedown
 
