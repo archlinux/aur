@@ -25,7 +25,6 @@ build() {
   cd build/release
   cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8
   cmake --build .
-  
 }
 
 package() {
