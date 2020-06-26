@@ -1,6 +1,6 @@
 pkgbase = r-jsonlite
 	pkgdesc = A Robust, High Performance JSON Parser and Generator for R
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=jsonlite
 	arch = i686
@@ -15,9 +15,10 @@ pkgbase = r-jsonlite
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-r.rsp
+	optdepends = r-sf
 	optdepends = r-sp
-	source = https://cran.r-project.org/src/contrib/jsonlite_1.6.1.tar.gz
-	md5sums = d5b3fc66e5db9a5ae8b2541712f05c70
+	source = https://cran.r-project.org/src/contrib/jsonlite_1.7.0.tar.gz
+	md5sums = 0953651356dab9697915b01fb8008925
 
 pkgname = r-jsonlite
 
