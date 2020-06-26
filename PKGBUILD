@@ -4,12 +4,12 @@
 _pkgname=gnome-usage
 pkgname=$_pkgname-git
 pkgver=3.33.2.50.g1ed5136
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME application to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
 license=(GPL3)
-depends=(gtk3 libgtop libdazzle tracker libhandy)
+depends=(gtk3 libgtop libdazzle tracker libhandy1)
 makedepends=(git meson vala)
 optdepends=('accountsservice: show user tags for processes')
 provides=("$_pkgname")
