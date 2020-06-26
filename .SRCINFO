@@ -1,6 +1,6 @@
 pkgbase = fdns
 	pkgdesc = Firejail DNS-over-HTTPS proxy server
-	pkgver = 0.9.62.6
+	pkgver = 0.9.62.8
 	pkgrel = 1
 	url = https://github.com/netblue30/fdns
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = fdns
 	optdepends = bash-completion: bash completion
 	optdepends = firejail: seamless integration support
 	optdepends = systemd: run fdns as a systemd service
-	source = https://github.com/netblue30/fdns/releases/download/v0.9.62.6/fdns-0.9.62.6.tar.xz
-	source = https://github.com/netblue30/fdns/releases/download/v0.9.62.6/fdns-0.9.62.6.tar.xz.asc
+	source = https://github.com/netblue30/fdns/releases/download/v0.9.62.8/fdns-0.9.62.8.tar.xz
+	source = https://github.com/netblue30/fdns/releases/download/v0.9.62.8/fdns-0.9.62.8.tar.xz.asc
 	validpgpkeys = F951164995F5C4006A73411E2CCB36ADFC5849A7
-	sha256sums = 886a1fe8fdd205961a570b6ada4b18edcadaaaaacf827f9f6f6728776d717cf1
+	sha256sums = 92195841f34ac916474757a4cf62ae82207b8707d767fb22f72f34f99987d463
 	sha256sums = SKIP
 
 pkgname = fdns
