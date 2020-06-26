@@ -1,0 +1,13 @@
+pkgbase = assdraw
+	pkgdesc = Tool to produce ASSA-format vector drawings
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Aegisub/assdraw
+	arch = x86_64
+	depends = wxgtk2
+	depends = agg
+	source = assdraw::git+https://github.com/Yesterday17/assdraw.git
+	md5sums = SKIP
+
+pkgname = assdraw
+
