@@ -1,6 +1,6 @@
 pkgbase = magnum-examples-git
 	pkgdesc = Examples for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = 2019.10.r0.g4a83ecb
+	pkgver = 2019.10.r171.g0b8cf1d
 	pkgrel = 1
 	url = https://magnum.graphics
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = magnum-examples-git
 	license = custom:Public Domain
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = magnum-git
 	depends = magnum-plugins-git
 	depends = magnum-integration-git
