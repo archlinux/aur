@@ -1,7 +1,7 @@
 # Maintainer: haha662 <haha662 at outlook dot com>
 
 _cranname=blogdown
-_cranver=0.19
+_cranver=0.20
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=("r" "hugo" "pandoc" "r-rmarkdown>=1.16" "r-bookdown>=0.14" "r-knitr>=1.
 # makedepends=()
 optdepends=("r-testit" "r-shiny" "r-miniui" "r-stringr" "r-rstudioapi" "r-processx" "r-later" "r-whoami" )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("db806a42717384304b76b11e3aefa19060dc17767e33d71d33e985089bf36296")
+sha256sums=("cd64ce67e3e0e6ead8f6e26103f3c4809d10e66dc8060efb089acc7f5d8be447")
 
 build() {
   cd "${srcdir}"
