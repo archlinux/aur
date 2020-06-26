@@ -1,6 +1,6 @@
 pkgbase = notedown
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subvisual/notedown/releases/download/v1.5/notedown-1.0.0.tar.gz
 	arch = any
 	license = MPL
