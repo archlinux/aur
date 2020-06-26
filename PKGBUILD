@@ -1,7 +1,7 @@
 # Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
 pkgname=nyrna
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Simple program to pause games & applications'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
@@ -34,6 +34,6 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 $pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "../$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "../../$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 }
