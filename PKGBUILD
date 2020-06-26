@@ -2,7 +2,7 @@
 # Contributor: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=sequeler
-pkgver=0.7.91
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Friendly SQL Client'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('granite' 'libgda-mysql' 'libgda-postgres')
 makedepends=('meson' 'vala')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0214b1767488d0290c5c1d673cd604ba6ecdaa011e4871b02171c63e1c25bf48')
+sha256sums=('471fdf63fda568d4caddf6182897518e4b7abc1b4f5dfb466bd1dfc86d380f0c')
 
 build() {
   cd "${pkgname}-${pkgver}"
