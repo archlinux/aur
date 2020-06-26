@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
 depends=('gobject-introspection' 'gtk3' 'nemo-python')
-makedepends=('gnome-common' 'meson' 'appstream-glib')
+makedepends=('gnome-common' 'meson')
+#checkdepends=('appstream')
 conflicts=('nemo-ext-git')
             # See https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/34
 options=('!emptydirs')
@@ -26,6 +27,11 @@ build() {
 	arch-meson builddir -Dfile_manager=nemo
 	ninja -C builddir
 }
+
+#check() {
+#	cd "$pkgname-$pkgver"
+#	ninja test -C builddir
+#}
 
 package() {
 	cd "$_gitname-$pkgver"

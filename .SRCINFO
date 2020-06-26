@@ -8,7 +8,6 @@ pkgbase = nemo-folder-icons
 	license = GPL3
 	makedepends = gnome-common
 	makedepends = meson
-	makedepends = appstream-glib
 	depends = gobject-introspection
 	depends = gtk3
 	depends = nemo-python
