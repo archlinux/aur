@@ -1,0 +1,19 @@
+pkgbase = googletest
+	pkgdesc = Google Testing and Mocking Framework
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = sh
+	provides = gmock
+	provides = gtest
+	conflicts = gmock
+	conflicts = gtest
+	source = googletest-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+	sha256sums = 9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb
+
+pkgname = googletest
+
