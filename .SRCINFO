@@ -6,7 +6,6 @@ pkgbase = gnome-network-displays
 	arch = any
 	license = GPL3
 	makedepends = meson
-	makedepends = appstream-glib
 	depends = gtk3
 	depends = faac
 	depends = gst-plugins-ugly
