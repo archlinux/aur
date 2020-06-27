@@ -221,11 +221,6 @@ package() {
     chrome_200_percent.pak
     resources.pak
     v8_context_snapshot.bin
-
-    # ANGLE
-    libEGL.so
-    libGLESv2.so
-
     chromedriver
   )
 
