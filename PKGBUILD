@@ -1,7 +1,9 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=gaia-hub
-pkgver=2.6.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A decentralized high-performance storage system"
 arch=("any")
@@ -26,7 +28,6 @@ sha512sums=('SKIP'
             '9932bc1cad558cf86f107b3069e81d4034d6c3fced6d94af899da25b7309806efcc2d2a52572a3b755c893278fd440ac6ee6b723fb8ce736bd51968096138736'
             '34c7aee63c3dc87f608019489441be0fc06299fc802d1b5d587f92f7d6c515daa384911458f7bef7db8c927e4c960052567e7b176e70e882a604776ff3b82257'
             '3b77e638815acc2eebd9a0480d20100a0dfef9cecaeb12f4c45fa8624cd7d96c3ae6b5c5a741d656f47d7df9c019862a3a5dddb8e3e4ca47c22d34a16f669d18')
-
 
 prepare() {
     cd "$srcdir/$pkgname/hub"
