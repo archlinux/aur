@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
 pkgver=r5821.11665af
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'openslp' 'kdoctools-git')
 conflicts=('kio-extras')
 provides=('kio-extras')
 install=$pkgname.install
-source=('git://anongit.kde.org/kio-extras.git')
+source=('git+https://github.com/KDE/kio-extras.git')
 md5sums=('SKIP')
 
 pkgver() {
