@@ -1,5 +1,4 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
-# Maintainer: Mark Wagie <mark@manjaro.org>
+# Maintainer: Elliot <CheeseEBoi@mailo.com>
 
 pkgname=xfce-theme-greybird-geeko
 pkgver=3.22.11
