@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ki18n-git
-pkgver=v4.100.0.rc1.r325.gb3a39a9
+pkgver=v4.100.0.rc1.r338.g9bfef8a
 pkgrel=1
 pkgdesc='Ki18n'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(ki18n)
 provides=(ki18n)
-source=('git://anongit.kde.org/ki18n.git')
+source=('git+https://github.com/KDE/ki18n.git')
 md5sums=('SKIP')
 
 pkgver() {

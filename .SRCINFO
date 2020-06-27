@@ -1,6 +1,6 @@
 pkgbase = ki18n-git
 	pkgdesc = Ki18n
-	pkgver = v4.100.0.rc1.r325.gb3a39a9
+	pkgver = v4.100.0.rc1.r338.g9bfef8a
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/ki18n
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ki18n-git
 	depends = qt5-script
 	provides = ki18n
 	conflicts = ki18n
-	source = git://anongit.kde.org/ki18n.git
+	source = git+https://github.com/KDE/ki18n.git
 	md5sums = SKIP
 
 pkgname = ki18n-git
