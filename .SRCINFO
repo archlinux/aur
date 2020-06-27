@@ -1,6 +1,6 @@
 pkgbase = kde-cli-tools-git
 	pkgdesc = Tools based on KDE Frameworks 5 to better interact with the system (Git)
-	pkgver = r1766.075a5e4
+	pkgver = r1769.5b2f620
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686

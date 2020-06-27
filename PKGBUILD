@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 _pkgname=kde-cli-tools
 pkgname=$_pkgname-git
-pkgver=r1766.075a5e4
+pkgver=r1769.5b2f620
 pkgrel=1
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system (Git)"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules git kdoctools plasma-workspace)
 optdepends=('plasma-workspace: for kcmshell5')
 conflicts=(kde-cli-tools)
 provides=(kde-cli-tools)
-source=("git+https://github.com/KDE/kde-cli-tools.git")
+source=('git+https://github.com/KDE/kde-cli-tools.git')
 groups=(plasma)
 sha256sums=('SKIP')
 
