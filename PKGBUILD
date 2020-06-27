@@ -12,7 +12,7 @@ depends=('gcc-libs' 'systemd' 'which' 'iproute2')
 provides=('cgproxy')
 conflicts=('cgproxy')
 
-source=("${pkgname}::git+https://github.com/springzfx/cgproxy#tag=${pkgver}")
+source=("${pkgname}::git+https://github.com/springzfx/cgproxy#tag=v${pkgver}")
 md5sums=('SKIP')
 
 backup=('etc/cgproxy/config.json')

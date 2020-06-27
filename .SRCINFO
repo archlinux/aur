@@ -19,7 +19,7 @@ pkgbase = cgproxy
 	provides = cgproxy
 	conflicts = cgproxy
 	backup = etc/cgproxy/config.json
-	source = cgproxy::git+https://github.com/springzfx/cgproxy#tag=0.16
+	source = cgproxy::git+https://github.com/springzfx/cgproxy#tag=v0.16
 	md5sums = SKIP
 
 pkgname = cgproxy
