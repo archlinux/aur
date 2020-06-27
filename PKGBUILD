@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content'
 arch=('i686' 'x86_64')
 url='https://github.com/b-crawl/bcrawl'
+groups=('games')
 depends=('lua51' 'sdl2_image' 'sqlite' 'glu' 'ttf-dejavu')
 makedepends=('flex' 'gendesk' 'mesa')
 optdepends=('advancecomp: for recompressing the tilesheets'

@@ -5,6 +5,7 @@ pkgbase = bcrawl
 	url = https://github.com/b-crawl/bcrawl
 	arch = i686
 	arch = x86_64
+	groups = games
 	license = GPL
 	license = BSD
 	license = MIT
