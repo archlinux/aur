@@ -1,0 +1,17 @@
+pkgbase = xxiivv-orca-git
+	pkgdesc = A two-dimensional esoteric programming language in which every letter of the alphabet is an operator
+	pkgver = r988.105371b
+	pkgrel = 1
+	url = https://wiki.xxiivv.com/site/orca.html
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = portmidi
+	depends = ncurses
+	depends = portmidi
+	provides = xxiivv-orca
+	source = xxiivv-orca::git+https://git.sr.ht/~rabbits/orca
+	sha256sums = SKIP
+
+pkgname = xxiivv-orca-git
+
