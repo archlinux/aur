@@ -7,7 +7,6 @@ pkgbase = vgrive
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
-	makedepends = appstream-glib
 	depends = gtk3
 	depends = granite
 	depends = libsoup
