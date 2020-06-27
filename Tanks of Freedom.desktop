@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tanks of Freedom
+Exec=tanks-of-freedom
+Comment=A classic turn-based strategy game with two armies fighting against each other.
+Terminal=false
+Icon=/usr/share/icons/tanks-of-freedom-1024.png
+Type=Application
+Categories=Game;

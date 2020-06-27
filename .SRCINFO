@@ -1,0 +1,18 @@
+pkgbase = tanks-of-freedom
+	pkgdesc = Indie Turn Based Strategy in Isometric Pixel Art
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/w84death/Tanks-of-Freedom
+	arch = x86_64
+	license = MIT
+	makedepends = godot2
+	options = !strip
+	source = https://github.com/w84death/Tanks-of-Freedom/archive/0.7.0-beta.tar.gz
+	source = https://downloads.tuxfamily.org/godotengine/2.1.6/Godot_v2.1.6-stable_export_templates.tpz
+	source = Tanks of Freedom.desktop
+	sha512sums = 8d71981fe1fa79e5734204bcca7f0ef088c529e25d78bcdc619ed689a8d341223dd2d75328f16d8ff59c0b478117d689fab59f21e12a5056bf8336b18749cad6
+	sha512sums = 97bbc24dcdaeba7051a6e1846301b6da5f7876e72bbb2e524c3c063434d830c289bb5b3c7ae7b2e2a0c5c72d0e12aefc0662c30ebf2ccb5185368f4ce8ca09cf
+	sha512sums = 68c69aed77b8b2d295e6af28f2b82a131368d0aa3620f365f2462ba4b6de51fae34c1a9bc0daa982a81f70a91e8d2f4edc8a6b8efa4a3c5e316126d6220ea9f5
+
+pkgname = tanks-of-freedom
+
