@@ -1,7 +1,7 @@
 pkgbase = timecamp-bin
 	pkgdesc = Client application for TimeCamp software (Binary).
 	pkgver = 1.4.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.timecamp.com/en/desktop-app
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = timecamp-bin
 	source = https://timecamp.s3.amazonaws.com/downloadsoft/1.4.6.2/TimeCampSetup_LinAmd64.tar.gz
 	source = LICENSE.html::https://docs.google.com/document/d/e/2PACX-1vSj_4_AJgXCuyKze5XFckN9-DwR8Jobo5lUyrgimRgKXjgpGdxUkFetSK8Nogxe7YkuPySCpUhRfrjz/pub?embedded=true
 	md5sums = 10c0a76dd883e9e39fadcb6da5e7dc91
-	md5sums = 11ba2f09367a42afed608efd8742045d
+	md5sums = SKIP
 
 pkgname = timecamp-bin
 
