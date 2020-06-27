@@ -1,0 +1,14 @@
+pkgbase = python-pylnk3
+	pkgdesc = Python library for reading and writing Windows shortcut files (.lnk).
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/pylnk3/
+	arch = any
+	license = LGPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = pylnk3-0.3.0.tar.gz::https://files.pythonhosted.org/packages/66/88/099931184b02b4eee2195f23c333c0bb1e0cc3d00cc08112deef901c12a7/pylnk3-0.3.0.tar.gz
+	sha256sums = 6202a2b4bd9c6efe6d070dd9d93d501702f48f27d4873e2dfddc8d996499b684
+
+pkgname = python-pylnk3
+
