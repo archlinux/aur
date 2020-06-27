@@ -1,16 +1,16 @@
 pkgbase = ntfd-bin
 	pkgdesc = A lightweight notification daemon for fancy desktop integrations
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/kamek-pf/ntfd
 	arch = x86_64
 	license = GPL
 	depends = ttf-weather-icons
 	provides = ntfd
-	source = ntfd::https://github.com/kamek-pf/ntfd/releases/download/0.2.1/ntfd-x86_64-unknown-linux-musl
-	source = config.toml::https://raw.githubusercontent.com/kamek-pf/ntfd/0.2.1/config.toml
-	sha256sums = 3dba1f38f38772a23b2803782e245473c06fa8de8ffe33f08ebaed2d8666bc5d
-	sha256sums = 7d181f1c27ab95aa9b216dcac55aaffc3c92b3eb81ab60c6ab62fd8700b362f1
+	source = ntfd::https://github.com/kamek-pf/ntfd/releases/download/0.2.2/ntfd-x86_64-unknown-linux-musl
+	source = config.toml::https://raw.githubusercontent.com/kamek-pf/ntfd/0.2.2/config.toml
+	sha256sums = a2afa7b550112fc805809b9859c4426d5d3478f85933bb9630d3ea8defc4f225
+	sha256sums = 4d2c00c071efb810d1b4ec3e96652a27c1101000843b44ff1476a33ab62839f2
 
 pkgname = ntfd-bin
 
