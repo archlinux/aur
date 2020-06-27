@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kplotting-git
-pkgver=r42.d4a1a1b
-pkgrel=2
+pkgver=r237.fb4af72
+pkgrel=1
 pkgdesc='KPlotting'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kplotting'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=('kplotting')
 provides=('kplotting')
-source=('git://anongit.kde.org/kplotting.git')
+source=('git+https://github.com/KDE/kplotting.git')
 md5sums=('SKIP')
 
 pkgver() {
