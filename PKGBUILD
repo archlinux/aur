@@ -6,13 +6,13 @@
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
 pkgver=r298.8827197
-pkgrel=1
+pkgrel=2
 pkgdesc="Improved mupen64plus libretro core reimplementation"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL2')
 groups=('libretro')
-depends=('libretro-core-info' 'libgl')
+depends=('libretro-core-info' 'libgl' 'minizip' 'libpng' 'xxhash' 'zlib')
 makedepends=('git' 'nasm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -27,13 +27,8 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	if [[ $CARCH == x86_64 ]]; then
-		make WITH_DYNAREC=x86_64 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
-	elif [[ $CARCH == i686 ]]; then
-		make WITH_DYNAREC=x86 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
-	else
-		make WITH_DYNAREC=arm
-	fi
+	make HAVE_PARALLEL_RDP=1 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1 LLE=1 \
+		SYSTEM_MINIZIP=1 SYSTEM_LIBPNG=1 SYSTEM_XXHASH=1 SYSTEM_ZLIB=1
 }
 
 package() {
