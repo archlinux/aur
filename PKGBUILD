@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=multimonitorlock-gui
-pkgver=2020.6.27
+pkgver=2020.6.22
 pkgrel=1
 pkgdesc='GUI for multimonitorlock to set the background'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('3d89b92d4a0a9993f82ad2ce9bbc916f292cf41553ed1f8167a6830401c2ef60')
+sha256sums=('file:///home/dt/.aur/multimonitorlock-gui/src/2020.6.22-1.tar.gz')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
