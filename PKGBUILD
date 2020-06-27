@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=kldap
 pkgname=$_gitname-git
-pkgver=r427.9b3971b
+pkgver=r728.0383348
 pkgrel=1
 pkgdesc="LDAP access API for KDE"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ depends=('kcompletion' 'ki18n' 'kmbox-git')
 makedepends=('extra-cmake-modules-git' 'git' 'python')
 conflicts=("$_gitname")
 provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
+source=('git+https://github.com/KDE/kldap.git')
 md5sums=('SKIP')
 
 pkgver() {
