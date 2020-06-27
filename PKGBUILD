@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdbusaddons-git
-pkgver=v4.100.0.rc1.r233.gde0c9db
+pkgver=v5.71.0.rc1.r1.g756b052
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kdbusaddons)
 provides=(kdbusaddons)
-source=('git://anongit.kde.org/kdbusaddons.git')
+source=('git+https://github.com/KDE/kdbusaddons.git')
 md5sums=('SKIP')
 
 pkgver() {

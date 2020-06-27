@@ -1,6 +1,6 @@
 pkgbase = kdbusaddons-git
 	pkgdesc = Addons to QtDBus
-	pkgver = v4.100.0.rc1.r233.gde0c9db
+	pkgver = v5.71.0.rc1.r1.g756b052
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kdbusaddons
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kdbusaddons-git
 	depends = qt5-x11extras
 	provides = kdbusaddons
 	conflicts = kdbusaddons
-	source = git://anongit.kde.org/kdbusaddons.git
+	source = git+https://github.com/KDE/kdbusaddons.git
 	md5sums = SKIP
 
 pkgname = kdbusaddons-git
