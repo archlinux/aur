@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-pkgver=v5.68.0.rc1.r1.g17d4092
+pkgver=v5.71.0.r1.ga6647c4
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(karchive)
 provides=(karchive)
-source=('git://anongit.kde.org/karchive.git')
+source=('git+https://github.com/KDE/karchive.git')
 md5sums=('SKIP')
 
 pkgver() {
