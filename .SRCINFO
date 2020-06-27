@@ -1,0 +1,17 @@
+pkgbase = python-lsassy
+	pkgdesc = Python library to remotely extract credentials on a set of hosts
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/Hackndo/lsassy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = impacket
+	depends = python-netaddr
+	depends = python-pypykatz
+	source = lsassy-2.1.2.tar.gz::https://github.com/Hackndo/lsassy/archive/v2.1.2.tar.gz
+	sha256sums = 7f56af989c944c5e687af1c850cd66949bf79221ae940885e5204da6b8eabcad
+
+pkgname = python-lsassy
+
