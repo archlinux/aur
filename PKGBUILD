@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=khtml-git
-pkgver=r233.093c96c
-pkgrel=2
+pkgver=r501.cbe1aed
+pkgrel=1
 pkgdesc='KHtml'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/khtml'
@@ -13,7 +14,7 @@ optdepends=('java-environment')
 groups=('kf5-aids')
 conflicts=('khtml')
 provides=('khtml')
-source=('git://anongit.kde.org/khtml.git')
+source=('git+https://github.com/KDE/khtml.git')
 md5sums=('SKIP')
 
 pkgver() {
