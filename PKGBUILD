@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kservice-git
-pkgver=v4.100.0.rc1.r589.g64ae188
+pkgver=v4.100.0.rc1.r628.ga8413c5
 pkgrel=1
 pkgdesc='KService'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kservice)
 provides=(kservice)
-source=('git://anongit.kde.org/kservice.git')
+source=('git+https://github.com/KDE/kservice.git')
 md5sums=('SKIP')
 
 pkgver() {
