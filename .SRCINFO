@@ -1,6 +1,6 @@
 pkgbase = kwalletmanager-git
 	pkgdesc = Wallet management tool
-	pkgver = r849.38f95a7
+	pkgver = r1111.c3d198c
 	pkgrel = 1
 	url = http://www.kde.org/applications/system/kwalletmanager/
 	install = kwalletmanager-git.install
@@ -16,7 +16,7 @@ pkgbase = kwalletmanager-git
 	provides = kwalletmanager
 	conflicts = kwalletmanager
 	conflicts = kdeutils-kwalletmanager
-	source = git://anongit.kde.org/kwalletmanager.git
+	source = git+https://github.com/KDE/kwalletmanager.git
 	md5sums = SKIP
 
 pkgname = kwalletmanager-git
