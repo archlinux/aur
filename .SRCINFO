@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-intensityfix
 	pkgdesc = A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)
 	pkgver = 9.22
-	pkgrel = 13
+	pkgrel = 14
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
