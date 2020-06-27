@@ -17,8 +17,8 @@ package() {
 	_src="$srcdir/$pkgname"
 	mkdir -p "$_src"
 	cd $_src
-	tar -xvf "$srcdir/data.tar.xz"
+	tar -xf "$srcdir/data.tar.xz"
 
-	cp -vr "./usr/share" "$pkgdir/usr/"
+	cp -r "./usr/share" "$pkgdir/usr/"
 	install -Dm755 "usr/bin/tomboy-reborn" "$pkgdir/usr/bin/tomboy-reborn"
 }
