@@ -2,7 +2,7 @@
 
 _pyname=conda-build
 pkgname=python-conda-build
-pkgver=3.18.2
+pkgver=3.19.3
 pkgrel=1
 pkgdesc="Commands and tools for building conda packages"
 arch=('any')
@@ -31,7 +31,7 @@ depends=(
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/conda/$_pyname/archive/$pkgver.tar.gz)
-sha512sums=('b0fd94db0add4589a756d28019107269d185219d96c3deffb6cd9b7780c8924ff0bdda89b00fde28536fca8f8c78bb6543dd87f7a2993b226206d91eb05de63d')
+sha512sums=('28e6825418c5c6eccdb7ce9b599a2f42202a640f2ae97876e8c7192223237a0c85ec8ca95f6ee500477bb7c8951f6808cdf35eb592f6f47119254f5c5f23c43a')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
