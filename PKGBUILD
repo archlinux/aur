@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kcontacts
 pkgname=$_pkgname-git
-pkgver=r3166.e47750b7
+pkgver=r3175.53a4ef81
 pkgrel=1
 pkgdesc="Address book API for KDE"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(kcoreaddons kconfig ki18n kcodecs iso-codes)
 makedepends=(extra-cmake-modules git doxygen qt5-tools qt5-doc)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kcontacts.git')
 sha256sums=('SKIP')
 
 pkgver() {
