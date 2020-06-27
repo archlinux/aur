@@ -9,7 +9,7 @@ pkgdesc="A package resource and symbol loading helper library, for Python"
 url="https://pypi.org/project/pywerview/"
 arch=('any')
 license=('GPLv3')
-depends=('python' 'impacket' 'python-pyopenssl' 'python-pyasn1' 'python-pycrypto'
+depends=('python' 'impacket' 'python-pyopenssl' 'python-pyasn1' 'python-pycryptodome'
 'python-pyopenssl' 'python-beautifulsoup4')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/${_pypidir}/${_pypiname}-${pkgver}.tar.gz")
