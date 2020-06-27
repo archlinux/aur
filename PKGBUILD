@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreen-git
-pkgver=r735.f04d6d3
+pkgver=r1266.65f342d
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules' 'git' 'python')
 provides=(kscreen)
 conflicts=(kscreen)
 install=$pkgname.install
-source=('git://anongit.kde.org/kscreen.git')
+source=('git+https://github.com/KDE/kscreen.git')
 groups=('plasma')
 md5sums=('SKIP')
 
