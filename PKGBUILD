@@ -27,13 +27,13 @@ noextract=()
 sha256sums=('45b6085e7e8d368a4bc4e935cebb3d3b6aea3922020e07a7e7441de2622b40b0')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
