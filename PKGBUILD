@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=ksysguard-git
-pkgver=r2800.cbcd0f2
+pkgver=r3293.97811cdd
 pkgrel=1
 pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=('knewstuff-git' 'kdelibs4support-git' 'libksysguard-git' 'lm_sensors')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools')
 conflicts=('ksysguard' 'kdebase-workspace')
 provides=('ksysguard')
-source=('git://anongit.kde.org/ksysguard.git')
+source=('git+https://github.com/KDE/ksysguard.git')
 groups=('plasma')
 md5sums=('SKIP')
 
