@@ -1,8 +1,9 @@
 pkgbase = xf86-input-cmt-git
 	pkgdesc = Chromium OS multitouch input driver for Xorg X server
-	pkgver = 2.0.6
-	pkgrel = 2
-	url = https://github.com/hugegreenbug/xf86-input-cmt
+	pkgver = 1.0.r17.g6537abb
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/GalliumOS/xf86-input-cmt
 	install = xf86-input-cmt-git.install
 	arch = i686
 	arch = x86_64
@@ -17,11 +18,11 @@ pkgbase = xf86-input-cmt-git
 	depends = xf86-input-evdev
 	depends = libgestures
 	depends = libevdev
-	depends = libevdevc-git
-	provides = xf86-input-cmt-git=2.0.6
+	depends = libevdevc
+	provides = xf86-input-cmt=1.0.r17.g6537abb
 	conflicts = xf86-input-synaptics
-	source = xf86-input-cmt::git+https://github.com/hugegreenbug/xf86-input-cmt.git
-	md5sums = SKIP
+	source = xf86-input-cmt::git+https://github.com/GalliumOS/xf86-input-cmt.git
+	sha512sums = SKIP
 
 pkgname = xf86-input-cmt-git
 
