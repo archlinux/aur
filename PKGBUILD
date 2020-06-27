@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjs-git
-pkgver=r95.50a015d
-pkgrel=3
+pkgver=r288.6be4429
+pkgrel=1
 pkgdesc='Support for JS scripting in applications'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kjs'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 groups=('kf5-aids')
 conflicts=('kjs')
 provides=('kjs')
-source=('git://anongit.kde.org/kjs.git')
+source=('git+https://github.com/KDE/kjs.git')
 md5sums=('SKIP')
 
 pkgver() {
