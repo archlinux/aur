@@ -1,0 +1,14 @@
+pkgbase = python-winacl
+	pkgdesc = ACL/ACE/Security Descriptor manipulation library in pure Python
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://pypi.org/project/winacl/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = winacl-0.0.6.tar.gz::https://files.pythonhosted.org/packages/bf/a7/00aeab9ccc901b49786a9e8ca8ae8b22734b3367c58a0093661b460322c6/winacl-0.0.6.tar.gz
+	sha256sums = 9fe05da7c18124ba0e47a39c377e8224dc5e645464cbf257672af522d76d1138
+
+pkgname = python-winacl
+
