@@ -14,7 +14,7 @@ provides=('uml_utilities')
 conflicts=('uml_utilities')
 url="http://user-mode-linux.sourceforge.net/"
 source=(
-    "http://user-mode-linux.sourceforge.net/${pkgname}_${pkgver}.tar.bz2"
+    "http://user-mode-linux.sourceforge.net/uml_utilities_${pkgver}.tar.bz2"
     "uml_utilities.patch")
 license=('GPL2')
 md5sums=(
