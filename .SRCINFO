@@ -1,6 +1,6 @@
 pkgbase = grub2-theme-vimix-git
 	pkgdesc = Grub2 theme Vimix
-	pkgver = 2019.10.01.r1.g9b431ca
+	pkgver = 2020.06.23.r0.gb82c7a2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes/
 	install = grub2-theme-vimix-git.install

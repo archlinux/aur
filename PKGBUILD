@@ -1,10 +1,11 @@
-# Maintainer: mads256h <mads256h(at)gmail(dot)com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: mads256h <mads256h(at)gmail(dot)com>
 # Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: se7enday(87635645#qq.com)
-# I'm going to sleep. I'll work on it tomorrow.
+
 pkgname=grub2-theme-vimix-git
-pkgver=2019.10.01.r1.g9b431ca
+pkgver=2020.06.23.r0.gb82c7a2
 pkgrel=1
 pkgdesc="Grub2 theme Vimix"
 url='https://github.com/vinceliuice/grub2-themes/'
@@ -34,7 +35,7 @@ package() {
 
     install -dm644 "assets/assets-white/icons" "${pkgdir}/boot/grub/themes/${_theme}/icons"
 
-    cd "${srcdir}/${pkgname}/assets/assets-white/select"
+    cd "${srcdir}/${pkgname}/assets/assets-white/select-1080p"
     for file in *.png; do
         install -m644 "${file}" "${pkgdir}/boot/grub/themes/${_theme}/${file}"
     done
