@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=r97.2ca90f6
+pkgver=r223.94b9e27
 pkgrel=1
 pkgdesc='Unlock KWallet using PAM'
 url='https://projects.kde.org/kwallet-pam'
@@ -12,7 +13,7 @@ depends=('kwallet-git' 'socat' 'pam' 'libgcrypt')
 makedepends=('extra-cmake-modules-git' 'git')
 conflicts=('kwallet-pam')
 provides=('kwallet-pam')
-source=('git://anongit.kde.org/kwallet-pam.git')
+source=('git+https://github.com/KDE/kwallet-pam.git')
 md5sums=('SKIP')
 
 pkgver() {
