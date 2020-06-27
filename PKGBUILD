@@ -1,7 +1,8 @@
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kfilemetadata-git
-pkgver=r255.c2f7249
+pkgver=r704.3a0cc71
 pkgrel=1
 pkgdesc="A library for extracting file metadata"
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git)
 provides=(kfilemetadata)
 conflicts=(kfilemetadata)
 groups=(kf5)
-source=('git://anongit.kde.org/kfilemetadata.git')
+source=('git+https://github.com/KDE/kfilemetadata.git')
 md5sums=('SKIP')
 
 pkgver() {

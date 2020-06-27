@@ -1,6 +1,6 @@
 pkgbase = kfilemetadata-git
 	pkgdesc = A library for extracting file metadata
-	pkgver = r255.c2f7249
+	pkgver = r704.3a0cc71
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdelibs/kfilemetadata
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = kfilemetadata-git
 	depends = ebook-tools
 	provides = kfilemetadata
 	conflicts = kfilemetadata
-	source = git://anongit.kde.org/kfilemetadata.git
+	source = git+https://github.com/KDE/kfilemetadata.git
 	md5sums = SKIP
 
 pkgname = kfilemetadata-git
