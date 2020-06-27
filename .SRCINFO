@@ -7,6 +7,8 @@ pkgbase = python-gfycat-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
+	provides = python-gfycat
+	provides = python-py-gfycat
 	source = python-gfycat::git+https://github.com/ankeshanand/py-gfycat
 	sha256sums = SKIP
 

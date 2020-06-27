@@ -7,6 +7,7 @@ pkgdesc='A Python client for the Gfycat API'
 arch=('any')
 url="https://github.com/ankeshanand/py-gfycat"
 license=('MIT')
+provides=('python-gfycat' 'python-py-gfycat')
 depends=('python-requests')
 makedepends=('python-setuptools')
 source=("${pkgname%-git}::git+https://github.com/ankeshanand/py-gfycat")
