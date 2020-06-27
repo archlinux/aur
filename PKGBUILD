@@ -1,9 +1,10 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdnssd-git
-pkgver=r66.0f5f15e
-pkgrel=2
+pkgver=r259.1caeab4
+pkgrel=1
 pkgdesc='Abstraction to system DNSSD features'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdnssd'
@@ -13,7 +14,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=('kdnssd')
 provides=('kdnssd')
-source=('git://anongit.kde.org/kdnssd.git')
+source=('git+https://github.com/KDE/kdnssd.git')
 md5sums=('SKIP')
 
 pkgver() {
