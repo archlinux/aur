@@ -1,6 +1,6 @@
 pkgbase = kde-syndication-git
 	pkgdesc = RSS/Atom parser library
-	pkgver = r766.4e90576
+	pkgver = r769.db7a4f7
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686

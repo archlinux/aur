@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=syndication
 pkgname=kde-$_pkgname-git
-pkgver=r766.4e90576
+pkgver=r769.db7a4f7
 pkgrel=1
 pkgdesc="RSS/Atom parser library"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=(kcodecs)
 makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc)
 conflicts=("kde-$_pkgname")
 provides=("kde-$_pkgname" "syndication")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/syndication.git')
 sha256sums=('SKIP')
 
 pkgver() {
