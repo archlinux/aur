@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=mozregression-gui
+Comment=Regression range finder for Firefox
+GenericName=Regression range finder for Firefox
+Keywords=Internet;Regression;Firefox;
+Exec=mozregression-gui %u
+Terminal=false
+X-MuiltpleArgs=false
+Type=Application
+Icon=mozregression-gui
+Categories=Network;Utility;
+StartupNotify=true
