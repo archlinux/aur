@@ -1,11 +1,16 @@
 pkgbase = telegram-tdlib-purple-git
 	pkgdesc = libpurple/pidgin Telegram plugin implemented using official tdlib client library.
 	pkgver = r275.66f9c98
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ars3niy/tdlib-purple
 	arch = any
 	license = GPL2
 	license = LGPL2.1
+	license = custom:FTL
+	license = custom:PIX
+	license = custom:RPD
+	license = custom:SKIA
+	license = custom:STB
 	makedepends = git
 	depends = libpurple
 	depends = libpng
