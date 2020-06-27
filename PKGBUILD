@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesu-git
-pkgver=r190.ae84292
-pkgrel=2
+pkgver=r400.5b2f4a7
+pkgrel=1
 pkgdesc='KDE Su'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdesu'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kdesu)
 provides=(kdesu)
-source=('git://anongit.kde.org/kdesu.git')
+source=('git+https://github.com/KDE/kdesu.git')
 md5sums=('SKIP')
 
 pkgver() {
