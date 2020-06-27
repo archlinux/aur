@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3session
-pkgver=v1.8.0
+pkgver=2020.6.27
 pkgrel=1
 pkgdesc="Remembers what's running in your i3 workspaces by saving a session file"
 arch=('any')
