@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: carstene1ns <archi@carsten-teibes.de>
 
 pkgname=reicast
-pkgver=r19.07.4
+pkgver=20.04
 pkgrel=1
 pkgdesc='A Sega Dreamcast emulator'
 arch=(x86_64)
@@ -15,14 +16,8 @@ depends=(
   python
 )
 makedepends=(git)
-source=(git+https://github.com/reicast/reicast-emulator.git#tag=29e1c8eaaa2686f2be54a59c84bf8c54bdf527d2)
-sha256sums=(SKIP)
-
-pkgver() {
-  cd reicast-emulator
-
-  git describe --tags
-}
+source=(git+https://github.com/reicast/reicast-emulator.git#tag=r${pkgver})
+sha256sums=('SKIP')
 
 prepare() {
   sed "s/CFLAGS :=/CFLAGS := ${CFLAGS}/; s/LDFLAGS :=/LDFLAGS := ${LDFLAGS}/" -i reicast-emulator/reicast/linux/Makefile
