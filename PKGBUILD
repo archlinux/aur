@@ -6,7 +6,7 @@
 # Socket path is "${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock"
 
 pkgname=yubikey-agent
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   'yubikey-agent.service'
 )
 sha256sums=(
-  '0ce2bb4ca2140d225420e4121b17e2c9fd6ddb1e25f0dc61741ba832e9e857a6'
+  '58c597551daf0c429d7ea63f53e72b464f8017f5d7f88965d4dae397ce2cb70a'
   'f50e0876cb6d13d7cbbb325053f3c6702aabc16948e266cc7c92a0ffc9ace0b9'
 )
 
