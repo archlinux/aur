@@ -1,4 +1,4 @@
-# Maintainer: Barry <brrtsm at gmail . com>
+# Contributor: Barry <brrtsm at gmail . com>
 # Contributor: dmerej <d.merej@gmail.com>
 
 pkgname=hollywood
@@ -33,7 +33,7 @@ depends=(
 )
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/trunk/${pkgver}/+download/${pkgname}_${pkgver}.orig.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://launchpad.net/hollywood/trunk/${pkgver}/+download/${pkgname}_${pkgver}.orig.tar.gz"
   "license.txt"
 )
 
