@@ -1,0 +1,27 @@
+pkgbase = tomboy
+	pkgdesc = Desktop note-taking application for Linux and Unix
+	pkgver = 1.15.9
+	pkgrel = 1
+	url = http://www.gnome.org/projects/tomboy/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gnome-doc-utils
+	makedepends = git
+	makedepends = yelp-tools
+	makedepends = autoconf-archive
+	depends = gtk2
+	depends = gtkspell
+	depends = gconf
+	depends = gconf-sharp
+	depends = dbus-sharp-glib
+	depends = mono-addins
+	depends = hicolor-icon-theme
+	options = !emptydirs
+	options = !makeflags
+	source = git+https://git.gnome.org/browse/tomboy#commit=c22bfefd5855634bdba7b40b3d97aaa0965c6997
+	sha256sums = SKIP
+
+pkgname = tomboy
+
