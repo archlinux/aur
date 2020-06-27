@@ -1,6 +1,6 @@
 pkgbase = kparts-git
 	pkgdesc = KParts
-	pkgver = v4.100.0.rc1.r324.g9be743e
+	pkgver = v4.100.0.rc1.r357.gaf3323c
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kparts
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kparts-git
 	depends = kio-git
 	provides = kparts
 	conflicts = kparts
-	source = git://anongit.kde.org/kparts.git
+	source = git+https://github.com/KDE/kparts.git
 	md5sums = SKIP
 
 pkgname = kparts-git

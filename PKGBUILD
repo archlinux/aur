@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kparts-git
-pkgver=v4.100.0.rc1.r324.g9be743e
+pkgver=v4.100.0.rc1.r357.gaf3323c
 pkgrel=1
 pkgdesc='KParts'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(kparts)
 provides=(kparts)
-source=('git://anongit.kde.org/kparts.git')
+source=('git+https://github.com/KDE/kparts.git')
 md5sums=('SKIP')
 
 pkgver() {
