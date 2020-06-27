@@ -1,4 +1,5 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
+# Maintainer: Scott K Logan <logans@cottsay.net>
 pkgname=openelp
 pkgver=0.8.0
 pkgrel=1
