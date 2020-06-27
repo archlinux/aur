@@ -33,7 +33,7 @@ build() {
   cmake ../ \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
