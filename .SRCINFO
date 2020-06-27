@@ -1,0 +1,24 @@
+pkgbase = libretro-mupen64plus-next-git
+	pkgdesc = Improved mupen64plus libretro core reimplementation
+	pkgver = r298.8827197
+	pkgrel = 1
+	url = https://github.com/libretro/mupen64plus-libretro-nx
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	makedepends = nasm
+	depends = libretro-core-info
+	depends = libgl
+	provides = libretro-mupen64plus-next
+	conflicts = libretro-mupen64plus-next
+	replaces = libretro-mupen64plus-nx-git
+	source = libretro-mupen64plus-next::git+https://github.com/libretro/mupen64plus-libretro-nx.git
+	md5sums = SKIP
+
+pkgname = libretro-mupen64plus-next-git
+
