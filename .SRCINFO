@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-git
 	pkgdesc = KDE Plasma Workspace
-	pkgver = r8769.34c3a7022
-	pkgrel = 2
+	pkgver = r9154.cb03cd7ca
+	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	arch = i686
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = plasma-workspace-git
 	conflicts = plasma-workspace
 	conflicts = plasma-wayland-session
 	conflicts = kdebase-workspace
-	source = git://anongit.kde.org/plasma-workspace.git
+	source = git+https://github.com/KDE/plasma-workspace.git
 	md5sums = SKIP
 
 pkgname = plasma-workspace-git
