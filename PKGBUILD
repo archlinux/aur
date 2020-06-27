@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas 
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas 
 
 pkgname=kpeople-git
-pkgver=r1036.a728097
-pkgrel=2
+pkgver=r1257.c68b83b
+pkgrel=1
 pkgdesc='A library that provides access to all contacts and the people who hold them'
 arch=(i686 x86_64)
 url='http://community.kde.org/KTp/libkpeople'
@@ -11,7 +12,7 @@ depends=(kwidgetsaddons-git kitemviews-git)
 makedepends=(extra-cmake-modules-git git python)
 conflicts=(kpeople)
 provides=(kpeople)
-source=("git://anongit.kde.org/kpeople.git")
+source=('git+https://github.com/KDE/kpeople.git')
 sha256sums=('SKIP')
 
 pkgver() {
