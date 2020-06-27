@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff-git
-pkgver=v4.100.0.rc1.r737.g707ef317
+pkgver=v4.100.0.rc1.r791.gee3330a8
 pkgrel=1
 pkgdesc='KNewStuff'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(knewstuff)
 provides=(knewstuff)
-source=('git://anongit.kde.org/knewstuff.git')
+source=('git+https://github.com/KDE/knewstuff.git')
 md5sums=('SKIP')
 
 pkgver() {
