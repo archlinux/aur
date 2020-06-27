@@ -1,6 +1,6 @@
 pkgbase = kauth-git
 	pkgdesc = KAuth
-	pkgver = v4.100.0.rc1.r293.ge6877df
+	pkgver = v5.71.0.rc1.r2.gfd24c32
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kauth
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kauth-git
 	depends = polkit-qt5
 	provides = kauth
 	conflicts = kauth
-	source = git://anongit.kde.org/kauth.git
+	source = git+https://github.com/KDE/kauth.git
 	md5sums = SKIP
 
 pkgname = kauth-git

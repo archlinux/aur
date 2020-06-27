@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kauth-git
-pkgver=v4.100.0.rc1.r293.ge6877df
+pkgver=v5.71.0.rc1.r2.gfd24c32
 pkgrel=1
 pkgdesc='KAuth'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kauth)
 provides=(kauth)
-source=('git://anongit.kde.org/kauth.git')
+source=('git+https://github.com/KDE/kauth.git')
 md5sums=('SKIP')
 
 pkgver() {
