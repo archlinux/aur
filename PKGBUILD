@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kyoutubetomp3
-pkgver=3.11.1.3500
+pkgver=3.12.4.3690
 pkgrel=1
 pkgdesc="Extract audio from YouTube, Vimeo, Facebook and other online video hosting services."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.png"
         "fix_symlink_path.patch")
-sha256sums=('8167e322e5a4b59f53df67d8ef975a2ef7972ebc3659fff7f59ac8c36634e87f'
+sha256sums=('c898ca8c1277eee40d7d5e10d2296c253ffd0e9251bfbf10bb89754ae804520e'
             '386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828'
             'b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd'
             '1bc2c992e21bae6c51f3176f4c3e04577b3297ea98ffc45fb56ce802423cf6cb')
@@ -48,9 +48,16 @@ package() {
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5DBus.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Gui.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Network.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Positioning.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5PrintSupport.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Qml.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QmlModels.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Quick.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QuickWidgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Widgets.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebChannel.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineCore.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineWidgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5XcbQpa.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Xml.so.5"
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/platforms"
