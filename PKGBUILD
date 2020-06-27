@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kidletime-git
-pkgver=v5.68.0.rc1.r3.gabb8f91
+pkgver=v5.71.0.r1.gb7c5b1c
 pkgrel=1
 pkgdesc='KIdleTime'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kidletime)
 provides=(kidletime)
-source=('git://anongit.kde.org/kidletime.git')
+source=('git+https://github.com/KDE/kidletime.git')
 md5sums=('SKIP')
 
 pkgver() {
