@@ -1,6 +1,6 @@
 pkgbase = paleofetch-git
 	pkgdesc = neofetch, but written in C
-	pkgver = r17.add6a41
+	pkgver = r162.a7edef8
 	pkgrel = 1
 	url = https://github.com/otreblan/paleofetch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = paleofetch-git
 	provides = paleofetch
 	conflicts = paleofetch
 	source = paleofetch-git::git+https://github.com/otreblan/paleofetch.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = paleofetch-git
 

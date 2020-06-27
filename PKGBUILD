@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=paleofetch-git
-pkgver=r17.add6a41
+pkgver=r162.a7edef8
 pkgrel=1
 epoch=
 pkgdesc="neofetch, but written in C "
@@ -15,11 +15,11 @@ checkdepends=()
 optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+${url}.git")
-md5sums=('SKIP')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-	mkdir -p "${pkgname}/build"
+	mkdir -p "$srcdir/$pkgname/build"
 }
 
 pkgver() {
@@ -31,18 +31,21 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/build" || exit 1
+	cd "$srcdir/$pkgname/build"
+
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_UNITY_BUILD=ON \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		..
+
 	make
 }
 
 package() {
-	cd "${pkgname}/build" || exit 1
+	cd "$srcdir/$pkgname/build"
 	make DESTDIR="$pkgdir/" install
 
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	cd "$srcdir/$pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
