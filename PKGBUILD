@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libksysguard-git
-pkgver=r1507.e52a86f
-pkgrel=2
+pkgver=r1892.beae817
+pkgrel=1
 pkgdesc='Libksysguard'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -11,7 +12,7 @@ depends=('libxres' 'plasma-framework-git' 'qt5-webkit')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 provides=('libksysguard')
 conflicts=('libksysguard' 'kdebase-workspace')
-source=('git://anongit.kde.org/libksysguard.git')
+source=('git+https://github.com/KDE/libksysguard.git')
 md5sums=('SKIP')
 
 pkgver() {
