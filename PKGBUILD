@@ -3,7 +3,7 @@
 pkgname=xfce-theme-greybird-geeko
 pkgver=3.22.11
 pkgrel=1
-pkgdesc="OpenSUSE's Modified 'Desktop Suite for Xfce"
+pkgdesc="OpenSUSE's Modified Desktop Suite for Xfce"
 arch=('any')
 url="https://shimmerproject.org"
 license=('GPL')
