@@ -30,7 +30,7 @@ if [ $_enable_mysql -eq 1 ]; then
 fi
 
 build() {
-    [ -d build ] && rm -rf build; mkdir build
+    mkdir -p build
     cd build
     cmake ../DDNet-$pkgver          \
         -DCMAKE_BUILD_TYPE=Release  \
@@ -38,7 +38,7 @@ build() {
         -DAUTOUPDATE=OFF            \
         -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
-        -DUPNP=ON          \
+        -DUPNP=ON                   \
         -GNinja                     \
         $_mysql_opt
     ninja
