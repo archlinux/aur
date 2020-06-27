@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kguiaddons-git
-pkgver=v5.68.0.rc1.r0.g6c5ee03
+pkgver=v5.71.0.r1.gddc2c55
 pkgrel=1
 pkgdesc='KGuiAddons'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kguiaddons)
 provides=(kguiaddons)
-source=('git://anongit.kde.org/kguiaddons.git')
+source=('git+https://github.com/KDE/kguiaddons.git')
 md5sums=('SKIP')
 
 pkgver() {

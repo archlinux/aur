@@ -1,6 +1,6 @@
 pkgbase = kguiaddons-git
 	pkgdesc = KGuiAddons
-	pkgver = v5.68.0.rc1.r0.g6c5ee03
+	pkgver = v5.71.0.r1.gddc2c55
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kguiaddons
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kguiaddons-git
 	depends = qt5-x11extras
 	provides = kguiaddons
 	conflicts = kguiaddons
-	source = git://anongit.kde.org/kguiaddons.git
+	source = git+https://github.com/KDE/kguiaddons.git
 	md5sums = SKIP
 
 pkgname = kguiaddons-git
