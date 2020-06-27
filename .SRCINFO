@@ -1,6 +1,6 @@
 pkgbase = kitemviews-git
 	pkgdesc = KItemViews
-	pkgver = v4.100.0.rc1.r220.g1de1402
+	pkgver = v4.100.0.rc1.r231.gecd837c
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kitemviews
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kitemviews-git
 	depends = qt5-base
 	provides = kitemviews
 	conflicts = kitemviews
-	source = git://anongit.kde.org/kitemviews.git
+	source = git+https://github.com/KDE/kitemviews.git
 	md5sums = SKIP
 
 pkgname = kitemviews-git

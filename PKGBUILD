@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemviews-git
-pkgver=v4.100.0.rc1.r220.g1de1402
+pkgver=v4.100.0.rc1.r231.gecd837c
 pkgrel=1
 pkgdesc='KItemViews'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kitemviews)
 provides=(kitemviews)
-source=('git://anongit.kde.org/kitemviews.git')
+source=('git+https://github.com/KDE/kitemviews.git')
 md5sums=('SKIP')
 
 pkgver() {
