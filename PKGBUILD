@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=r1354.d0a2cb8
+pkgver=r2008.dfc8155
 pkgrel=1
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 arch=(i686 x86_64)
@@ -13,7 +14,7 @@ optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'breeze
 conflicts=(breeze)
 provides=(breeze)
 groups=(plasma)
-source=('git://git.kde.org/breeze.git')
+source=('git+https://github.com/KDE/breeze.git')
 md5sums=('SKIP')
 install=$pkgname.install
 
