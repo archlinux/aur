@@ -1,7 +1,7 @@
 pkgbase = nyrna
 	pkgdesc = Simple program to pause games & applications
 	pkgver = 1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
 	license = GPL3 or any later version
