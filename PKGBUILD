@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.90-bin
-pkgver=2.90.200621.f2b5f731d559
+pkgver=2.90.200626.b7b57e7155ee
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -28,7 +28,7 @@ _setvars() {
 	local regex="blender-${_upstreamversion}[^-]*-([^-]+)-linux64.tar.xz" && [[ $(cat $_webpage) =~ $regex ]]
 	_full=${BASH_REMATCH[0]}
 	_commit=${BASH_REMATCH[1]}
-	local regex="([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+) - $_commit" && [[ $(cat $_webpage) =~ $regex ]]
+	local regex="([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+)[^-]*-\s*$_commit" && [[ $(cat $_webpage) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]//,}" "+%y%m%d")
 }
 
