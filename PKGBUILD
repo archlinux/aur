@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesignerplugin-git
-pkgver=r78.5b1f761
-pkgrel=3
+pkgver=r284.02b377a
+pkgrel=1
 pkgdesc='KDesignerPlugin'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdesignerplugin'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'kdoctools-git' 'python
 groups=('kf5')
 conflicts=('kdesignerplugin')
 provides=('kdesignerplugin')
-source=('git://anongit.kde.org/kdesignerplugin.git')
+source=('git+https://github.com/KDE/kdesignerplugin.git')
 md5sums=('SKIP')
 
 pkgver() {
