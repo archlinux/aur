@@ -28,10 +28,12 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        force-mp3-files-to-have-a-start-time-of-zero.patch
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-skia-harmony.patch)
 sha256sums=('4961f20c4ee6a94490e823f1b1c4128147068f1ce9cfc509e81815f2101405bc'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
@@ -89,6 +91,9 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
+  patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
 
   # https://crbug.com/v8/10393
   patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
