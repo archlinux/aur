@@ -3,7 +3,7 @@
 _pyname=conda-verify
 pkgname=python-${_pyname}
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Verify conda recipes and packages"
 arch=('any')
 url="https://github.com/conda/conda-verify"
@@ -19,7 +19,7 @@ depends=(
 options=(!emptydirs)
 install=
 source=(https://github.com/conda/$_pyname/archive/$pkgver.tar.gz)
-sha512sums=('f70e2d372f241ba6e8104be774e5d7391395ddc856bcbcadcf68763f1ab61725f6840f50f18d1bffa84b6ee9ac1cf1ff5019d95a042cd5a87d64bf9a7d7bec4c')
+sha512sums=('8bdbb4d45982d5bc31995016a4b180a4288753c7d811de26d3841a114c35404041b27f5a06288866716404a45134a2bc3ac0e8d0c8bf6a1e36363c2b3f326d65')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
