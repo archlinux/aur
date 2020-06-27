@@ -1,0 +1,22 @@
+pkgbase = emptty-git
+	pkgdesc = Dead simple Display Manager running in CLI as TTY login, that starts Xorg or Wayland
+	pkgver = 0.2.0.r2.gfcc48d0
+	pkgrel = 1
+	url = https://github.com/tvrzna/emptty
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	makedepends = pam
+	depends = pam
+	optdepends = xorg-server
+	optdepends = xorg-xauth: required if using xorgserver
+	optdepends = wayland: alternative to xorg
+	provides = emptty=0.2.0.r2.gfcc48d0
+	backup = etc/emptty/conf
+	source = git+https://github.com/tvrzna/emptty.git
+	sha256sums = SKIP
+
+pkgname = emptty-git
+
