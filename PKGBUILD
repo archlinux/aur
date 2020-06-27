@@ -11,6 +11,7 @@ depends=(pam)
 makedepends=(git go make pam)
 optdepends=('xorg-server'
             'xorg-xauth: required if using xorg-server'
+            'util-linux: (mcookie) required if using xorg-server'
             'wayland: alternative to xorg-server')
 provides=("emptty")
 backup=('etc/emptty/conf')
