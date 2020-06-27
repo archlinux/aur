@@ -1,0 +1,19 @@
+pkgbase = python-pypykatz
+	pkgdesc = Partial Mimikatz implementation in pure Python.
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://pypi.org/project/pypykatz/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-minidump
+	depends = python-minikerberos
+	depends = python-winsspi
+	depends = python-msldap
+	depends = python-aiowinreg
+	source = pypykatz-0.3.9.tar.gz::https://files.pythonhosted.org/packages/75/69/94eda8fa0ed711e395ae62e05bd7b416111b55bb298d0d4cf29aaacc406e/pypykatz-0.3.9.tar.gz
+	sha256sums = 6429db4c6587ef449331852fc31fd1cc3d7313dcbfb1ec3fca1f1290ee5e8cfb
+
+pkgname = python-pypykatz
+
