@@ -1,13 +1,13 @@
 pkgbase = minitimer
 	pkgdesc = Mini Timer - A timer in your terminal
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://git.sr.ht/~emvigo/minitimer
 	arch = x86_64
 	license = APACHE
 	depends = glibc
-	source = https://git.sr.ht/~emvigo/minitimer/archive/2.4.0.tar.gz
-	sha256sums = 4962365d8b5e22e24044086229a66c47c84ea0558296daa7cb68d7773846409d
+	source = https://git.sr.ht/~emvigo/minitimer/archive/2.4.1.tar.gz
+	sha256sums = 89e52d8545c3f596e5ef56945cb35fa22017287248c17c5e11ff428dfcde2bb5
 
 pkgname = minitimer
 
