@@ -1,6 +1,6 @@
 pkgbase = kwrited-git
 	pkgdesc = KDE daemon listening for wall and write messages
-	pkgver = r424.0124ec6
+	pkgver = r426.a0aac9f
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686

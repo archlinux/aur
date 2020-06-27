@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kwrited
 pkgname=$_pkgname-git
-pkgver=r424.0124ec6
+pkgver=r426.a0aac9f
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules git kdoctools)
 groups=(plasma)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kwrited.git')
 sha256sums=('SKIP')
 
 pkgver() {
