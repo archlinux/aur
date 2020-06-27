@@ -1,0 +1,15 @@
+[Unit]
+Description=Zinc Server
+Documentation=https://github.com/typesafehub/zinc
+
+[Service]
+EnvironmentFile=/etc/conf.d/zincer.conf
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=zincer
+ExecStart=/opt/zinc/zincer.sh
+Restart=on-failure
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target

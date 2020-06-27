@@ -1,57 +1,50 @@
-# Maintainer: François Garillot <francois[@]garillot.net>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: François Garillot <francois[@]garillot.net>
 
-pkgname=zinc-git
-pkgver=0.3.13
+_pkgname=zinc
+pkgname=${_pkgname}-git
+pkgver=1.4.0.M6.r27.gdd8ce9132
 pkgrel=1
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler."
+url='https://github.com/sbt/zinc'
+arch=('any')
 license=('Apache')
-url='https://github.com/typesafehub/zinc'
-arch=('i686' 'x86_64')
+depends=('java-environment')
 provides=('zinc')
 conflicts=('zinc')
-depends=('sbt')
 makedepends=('git')
-options=(!libtool)
+source=("git+https://github.com/sbt/zinc.git"
+	"zincer.sh" # server launcher
+	"zincer.conf" # service env vars
+	"zincer.service" # systemd service
+)
+backup=(
+    'etc/conf.d/zincer.conf'
+)
+md5sums=('SKIP'
+         '5fd9435289f20d368e13b71ff3ac941b'
+         '70035ee248ad6915559d8caeb6e695b0'
+         '45be73549f17e852af77fc3de01487d4')
+options=('!strip')
 
-_gitroot="git://github.com/typesafehub/zinc.git"
-_gitname="zinc"
-
-build() {
-        cd $srcdir
-        msg "Connecting to the GIT server...."
-        if [[ -d $srcdir/$_gitname ]] ; then
-                cd $_gitname
-                git checkout master
-                git pull origin
-                msg "The local files are updated."
-        else
-                git clone $_gitroot $_gitname
-        fi
-
-        rm -rf $srcdir/$pkgname-build
-        git clone $srcdir/$_gitname $srcdir/$pkgname-build
-        cd $srcdir/$pkgname-build
-        git checkout v$pkgver
-        sbt universal:packageZipTarball
+pkgver() {
+  cd "$_pkgname"
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-        cd $srcdir/$pkgname-build/target/universal
-        tar -xvf ${pkgname%-git}-$pkgver.tgz
-        cd ${pkgname%-git}-$pkgver
-        install -dm755 "$pkgdir/usr/bin"
-        install -dm755 "$pkgdir/usr/bin/ng"
-        if [[ "$(uname -m)" = "x86_64" ]] ; then
-          install -dm755 "$pkgdir/usr/bin/ng/linux64"
-          install -Dm755 "bin/ng/linux64/ng" "$pkgdir/usr/bin/ng/linux64/"
-        else
-          install -dm755 "$pkgdir/usr/bin/ng/linux32"
-          install -Dm755 "bin/ng/linux32/ng" "$pkgdir/usr/bin/ng/linux32/"
-        fi
-        install -dm644 "$pkgdir/usr/lib"
-        for i in lib/*; do
-          install -m 0644 $i "$pkgdir/usr/lib"
-        done
-        install -Dm755 "bin/zinc" "bin/nailgun" "$pkgdir/usr/bin"
-        rm -rf $srcdir/$pkgname-build
+  local home="/opt/zinc"
+  local target="$pkgdir/$home"
+    
+  mkdir -p "$target"
+  cp -a "$_pkgname/." "$target/"
+    
+  install -D -m755 zincer.sh         "$target/zincer.sh"
+  install -D -m644 zincer.conf       "$pkgdir/etc/conf.d/zincer.conf"
+  install -D -m644 zincer.service    "$pkgdir/usr/lib/systemd/system/zincer.service"
+    
+  mkdir -p $pkgdir/usr/bin
+  ln -s "$home/bin/zinc"             "$pkgdir/usr/bin/zinc"
+  ln -s "$home/zincer.sh"            "$pkgdir/usr/bin/zincer"
 }
