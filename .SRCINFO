@@ -1,6 +1,6 @@
 pkgbase = assemblyscript
 	pkgdesc = TypeScript to WebAssembly compiler
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://assemblyscript.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = assemblyscript
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	source = git+https://github.com/AssemblyScript/assemblyscript.git#tag=v0.12.4
+	source = git+https://github.com/AssemblyScript/assemblyscript.git#tag=v0.12.5
 	sha256sums = SKIP
 
 pkgname = assemblyscript
