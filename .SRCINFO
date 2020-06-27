@@ -1,7 +1,7 @@
 pkgbase = morty-git
 	pkgdesc = Web content sanitizer/proxy (git)
-	pkgver = 0.2.0+r18+gc23dae9
-	pkgrel = 1
+	pkgver = 0.2.0+r32+g74a0548
+	pkgrel = 2
 	url = https://github.com/asciimoo/morty
 	arch = i686
 	arch = x86_64
