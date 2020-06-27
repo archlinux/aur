@@ -1,0 +1,14 @@
+pkgbase = python-aiowinreg
+	pkgdesc = Windows registry file reader, written in python
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/winacl/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = aiowinreg-0.0.3.tar.gz::https://files.pythonhosted.org/packages/6c/4d/7a2eae3210db5abfe89b7efa0e4f29e803231fe4384a916392f46bdcfb48/aiowinreg-0.0.3.tar.gz
+	sha256sums = c96a886c3c4634907a2c7abc346ffc62f6372193c11dfd6a0ed9fb426aeab03f
+
+pkgname = python-aiowinreg
+
