@@ -1,6 +1,6 @@
 pkgbase = libanimation
 	pkgdesc = Library that provides animation calculations
-	pkgver = 3.7.8
+	pkgver = 3.8.3
 	pkgrel = 1
 	url = https://github.com/endlessm/libanimation
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = libanimation
 	makedepends = gmock
 	makedepends = gtest
 	depends = glib2
-	source = https://github.com/endlessm/libanimation/archive/Release_3.7.8.tar.gz
-	sha256sums = cb890ec9710df457354b5b297dca05601043f6222695df911e73a2f533de9966
+	source = https://github.com/endlessm/libanimation/archive/Release_3.8.3.tar.gz
+	sha256sums = 41c4ff7f65e862b8d3ca792ba20f66f6161d976d4b3259c50c250b0f028b996b
 
 pkgname = libanimation
 

@@ -1,7 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libanimation
-pkgver=3.7.8
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Library that provides animation calculations"
 arch=(i686 x86_64 armv7h aarch64)
@@ -13,7 +14,7 @@ makedepends=(meson
              gmock
              gtest)
 source=("https://github.com/endlessm/libanimation/archive/Release_${pkgver}.tar.gz")
-sha256sums=('cb890ec9710df457354b5b297dca05601043f6222695df911e73a2f533de9966')
+sha256sums=('41c4ff7f65e862b8d3ca792ba20f66f6161d976d4b3259c50c250b0f028b996b')
 
 build() {
     arch-meson ${pkgname}-Release_${pkgver} build
