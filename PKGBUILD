@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcmutils-git
-pkgver=v4.100.0.rc1.r321.gcce381b
+pkgver=v5.71.0.rc1.r4.g0d4ea51
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=('kcmutils')
 provides=('kcmutils')
-source=('git://anongit.kde.org/kcmutils.git')
+source=('git+https://github.com/KDE/kcmutils.git')
 md5sums=('SKIP')
 
 pkgver() {

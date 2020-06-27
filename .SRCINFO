@@ -1,6 +1,6 @@
 pkgbase = kcmutils-git
 	pkgdesc = Utilities for interacting with KCModules
-	pkgver = v4.100.0.rc1.r321.gcce381b
+	pkgver = v5.71.0.rc1.r4.g0d4ea51
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kcmutils
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kcmutils-git
 	depends = kdeclarative-git
 	provides = kcmutils
 	conflicts = kcmutils
-	source = git://anongit.kde.org/kcmutils.git
+	source = git+https://github.com/KDE/kcmutils.git
 	md5sums = SKIP
 
 pkgname = kcmutils-git
