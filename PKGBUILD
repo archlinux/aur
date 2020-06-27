@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=v4.100.0.rc1.r351.ga15b9f7
+pkgver=v4.100.0.rc1.r364.g19d2ec4
 pkgrel=1
 pkgdesc='KIconThemes'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(kiconthemes)
 provides=(kiconthemes)
-source=('git://anongit.kde.org/kiconthemes.git')
+source=('git+https://github.com/KDE/kiconthemes.git')
 md5sums=('SKIP')
 
 pkgver() {

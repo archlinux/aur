@@ -1,6 +1,6 @@
 pkgbase = kiconthemes-git
 	pkgdesc = KIconThemes
-	pkgver = v4.100.0.rc1.r351.ga15b9f7
+	pkgver = v4.100.0.rc1.r364.g19d2ec4
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kiconthemes
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = kiconthemes-git
 	depends = karchive-git
 	provides = kiconthemes
 	conflicts = kiconthemes
-	source = git://anongit.kde.org/kiconthemes.git
+	source = git+https://github.com/KDE/kiconthemes.git
 	md5sums = SKIP
 
 pkgname = kiconthemes-git
