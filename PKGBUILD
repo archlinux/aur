@@ -1,31 +1,38 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-casd
-pkgver=0.0.8
+pkgver=0.0.11.r4.gb86e76f
 pkgrel=1
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
 url="https://buildgrid.build"
 license=('Apache')
 depends=('buildbox-common')
-makedepends=('cmake' )
-source=("https://gitlab.com/BuildGrid/buildbox/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('48613dfef451291f447c9c7c7ad7ea29b3ea1e35ce25d47771c1761d9985eda3')
+makedepends=('cmake' 'git')
+_commit=b86e76fd09eda010f3c6121221519ad4b196386a # 0.0.11 + check fix
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#commit=$_commit")
+sha256sums=('SKIP')
 
-build() {
-    [ -d build ] && rm -rf build; mkdir build
-    cd build
-    cmake ../"$pkgname-$pkgver"     \
-        -DCMAKE_BUILD_TYPE=Release  \
-        -DCMAKE_INSTALL_PREFIX=/usr
-    make
+pkgver() {
+  cd $pkgname
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  mkdir -p build
+  cd build
+  cmake ../$pkgname             \
+    -DCMAKE_BUILD_TYPE=Release  \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+# tests failing for 0.0.11
 check() {
-    cd build
-    make -k test
+  cd build
+  make -k test
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir/" install
+  cd build
+  make DESTDIR="$pkgdir/" install
 }
