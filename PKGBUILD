@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcrash-git
-pkgver=v5.68.0.rc1.r0.g4035afe
+pkgver=v5.71.0.r7.g4008e6a
 pkgrel=1
 pkgdesc='KCrash'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kcrash)
 provides=(kcrash)
-source=('git://anongit.kde.org/kcrash.git')
+source=('git+https://github.com/KDE/kcrash.git')
 md5sums=('SKIP')
 
 pkgver() {
