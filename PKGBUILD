@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/pipr-git"
-    cargo build --release --locked --all-features
+    cargo build --release --all-features
 }
 
 package() {
