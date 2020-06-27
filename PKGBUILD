@@ -1,6 +1,7 @@
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 pkgname=kactivities-stats-git
-pkgver=r78.4c7ecc1
-pkgrel=2
+pkgver=r285.6ad7fc2
+pkgrel=1
 pkgdesc="Core components for the KDE's Activities"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kactivities'
@@ -9,7 +10,7 @@ depends=('kactivities-git')
 provides=('kactivities-stats')
 conflicts=('kactivities-stats')
 makedepends=('extra-cmake-modules-git' 'git' 'boost')
-source=('git://anongit.kde.org/kactivities-stats.git')
+source=('git+https://github.com/KDE/kactivities-stats.git')
 md5sums=('SKIP')
 
 pkgver() {
