@@ -1,6 +1,6 @@
 pkgbase = kio-git
 	pkgdesc = Resource and network access abstraction
-	pkgver = v4.100.0.rc1.r2525.g4b4ed81c
+	pkgver = v4.100.0.rc1.r3340.gcea57a5b
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kio
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = kio-git
 	depends = desktop-file-utils
 	provides = kio
 	conflicts = kio
-	source = git://anongit.kde.org/kio.git
+	source = git+https://github.com/KDE/kio.git
 	md5sums = SKIP
 
 pkgname = kio-git

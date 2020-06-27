@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=v4.100.0.rc1.r2525.g4b4ed81c
+pkgver=v4.100.0.rc1.r3340.gcea57a5b
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kio)
 provides=(kio)
-source=('git://anongit.kde.org/kio.git')
+source=('git+https://github.com/KDE/kio.git')
 md5sums=('SKIP')
 
 pkgver() {
