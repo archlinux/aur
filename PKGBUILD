@@ -1,16 +1,15 @@
-# Maintainer: Leon Kowarschick <lkowarschick at gmail dot com>
+# Maintainer: Leon Kowarschick <thereal.elkowar at gmail dot com>
 pkgname=pipr-bin
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 conflicts=('pipr-git')
 makedepends=()
-#depends=('gcc-libs')
 depends=()
 optdepends=('bubblewrap: run commands in isolation. STRONGLY RECOMMENDED!')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A commandline-utility to interactively build complex shell pipelines"
 license=('MIT')
-source=('pipr::https://gitlab.com/Elkowar/pipr/uploads/9a4eb309170edb8880d550187e87a8a9/pipr'
+source=('pipr::https://gitlab.com/Elkowar/pipr/uploads/00023095ec8fc86d2af15be0ad07c51b/pipr'
         'pipr-git::git+https://gitlab.com/Elkowar/pipr.git')
 url="https://gitlab.com/Elkowar/pipr"
 md5sums=('SKIP'

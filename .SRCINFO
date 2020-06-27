@@ -1,6 +1,6 @@
 pkgbase = pipr-bin
 	pkgdesc = A commandline-utility to interactively build complex shell pipelines
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://gitlab.com/Elkowar/pipr
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = pipr-bin
 	license = MIT
 	optdepends = bubblewrap: run commands in isolation. STRONGLY RECOMMENDED!
 	conflicts = pipr-git
-	source = pipr::https://gitlab.com/Elkowar/pipr/uploads/9a4eb309170edb8880d550187e87a8a9/pipr
+	source = pipr::https://gitlab.com/Elkowar/pipr/uploads/00023095ec8fc86d2af15be0ad07c51b/pipr
 	source = pipr-git::git+https://gitlab.com/Elkowar/pipr.git
 	md5sums = SKIP
 	md5sums = SKIP
