@@ -6,7 +6,7 @@
 _pkgname=krunner
 pkgname=$_pkgname-git
 pkgver=r445.1875502
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework for providing different actions given a string query'
 arch=('i686' 'x86_64')
 url='https://community.kde.org/Frameworks'
@@ -34,7 +34,7 @@ build() {
   cmake ../ \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
