@@ -2,8 +2,8 @@
 
 pkgname=spfft
 _pkgname=SpFFT
-pkgver=0.9.10
-pkgrel=2
+pkgver=0.9.11
+pkgrel=1
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=("x86_64")
 url="https://github.com/eth-cscs/SpFFT"
@@ -14,7 +14,7 @@ optdepends=('cuda: GPU support')
 provides=('spfft')
 conflicts=('spfft-cuda-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b4a5cbdf69b5dd97202f269f24e2337b333a45d6ff001aabfca64c7ec412c15d')
+sha256sums=('880aeddb6e88b4ce2ff88e78c6cac349359af10de0f4e909f305908852693593')
 
 prepare() {
   mkdir "$srcdir/build"
@@ -36,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/build
+  cd "$srcdir/build"
   cmake ../$_pkgname-$pkgver \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DSPFFT_FORTRAN=ON \
@@ -48,8 +48,8 @@ build() {
 }
 
 package() {
-  cd $srcdir/build
+  cd "$srcdir/build"
   make DESTDIR="$pkgdir" install
-  install -dm755 $pkgdir/usr/share/licenses/$pkgname
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install ../$_pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname
 }
