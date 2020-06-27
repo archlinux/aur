@@ -1,6 +1,6 @@
 pkgbase = kmbox-git
 	pkgdesc = Library for accessing mail storages in MBox format
-	pkgver = r433.8569cdf
+	pkgver = r443.eef349b
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = i686
