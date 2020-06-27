@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=83.0.4103.61
+pkgver=83.0.4103.116
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         force-mp3-files-to-have-a-start-time-of-zero.patch
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-skia-harmony.patch)
-sha256sums=('4961f20c4ee6a94490e823f1b1c4128147068f1ce9cfc509e81815f2101405bc'
+sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
