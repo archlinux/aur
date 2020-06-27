@@ -1,6 +1,6 @@
 pkgbase = kjobwidgets-git
 	pkgdesc = KJobWidgets
-	pkgver = v4.100.0.rc1.r237.gc8b284d
+	pkgver = v4.100.0.rc1.r252.g4a3a066
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kjobwidgets
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = kjobwidgets-git
 	depends = qt5-x11extras
 	provides = kjobwidgets
 	conflicts = kjobwidgets
-	source = git://anongit.kde.org/kjobwidgets.git
+	source = git+https://github.com/KDE/kjobwidgets.git
 	md5sums = SKIP
 
 pkgname = kjobwidgets-git
