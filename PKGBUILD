@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemmodels-git
-pkgver=r49.680c777
-pkgrel=2
+pkgver=r431.3d00a7e
+pkgrel=1
 pkgdesc='KItemModels'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kitemmodels'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kitemmodels)
 provides=(kitemmodels)
-source=('git://anongit.kde.org/kitemmodels.git')
+source=('git+https://github.com/KDE/kitemmodels.git')
 md5sums=('SKIP')
 
 pkgver() {
