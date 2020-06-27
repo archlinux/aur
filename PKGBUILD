@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=polkit-kde-agent-git
-pkgver=r318.c96fb60
-pkgrel=2
+pkgver=r442.14f09c4
+pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/polkit-kde-agent-1'
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git kdoctools-git python)
 conflicts=(polkit-kde-agent polkit-kde-git)
 provides=(polkit-kde-agent)
 replaces=(polkit-kde-git)
-source=('git://anongit.kde.org/polkit-kde-agent-1.git')
+source=('git+https://github.com/KDE/polkit-kde-agent-1.git')
 groups=('plasma')
 md5sums=('SKIP')
 
