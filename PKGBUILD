@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knotifications-git
-pkgver=v4.100.0.rc1.r426.g1b93a36
+pkgver=v4.100.0.rc1.r459.ged8dbab
 pkgrel=1
 pkgdesc='KNotifications'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git qt5-tools python)
 groups=(kf5)
 conflicts=(knotifications)
 provides=(knotifications)
-source=('git://anongit.kde.org/knotifications.git')
+source=('git+https://github.com/KDE/knotifications.git')
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = knotifications-git
 	pkgdesc = KNotifications
-	pkgver = v4.100.0.rc1.r426.g1b93a36
+	pkgver = v4.100.0.rc1.r459.ged8dbab
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/knotifications
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = knotifications-git
 	depends = kcoreaddons-git
 	provides = knotifications
 	conflicts = knotifications
-	source = git://anongit.kde.org/knotifications.git
+	source = git+https://github.com/KDE/knotifications.git
 	md5sums = SKIP
 
 pkgname = knotifications-git
