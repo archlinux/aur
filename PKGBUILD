@@ -32,7 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DBUILD_TESTING=OFF
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
