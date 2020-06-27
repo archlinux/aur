@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=kpimtextedit
 pkgname=$_gitname-git
-pkgver=r486.c9727c0
+pkgver=r1241.9cd49c7
 pkgrel=1
 pkgdesc="A textedit with PIM-specific features"
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ depends=(kdelibs4support grantlee-qt5)
 makedepends=(extra-cmake-modules-git git python kdoctools)
 conflicts=("$_gitname")
 provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
+source=('git+https://github.com/KDE/kpimtextedit.git')
 md5sums=('SKIP')
 
 pkgver() {
