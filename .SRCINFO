@@ -1,0 +1,19 @@
+pkgbase = breaktimer-bin
+	pkgdesc = Manage periodic breaks. Avoid eye-strain and RSI
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://breaktimer.app
+	arch = x86_64
+	license = GPL3
+	makedepends = tar
+	depends = nss
+	depends = python
+	depends = gtk3
+	depends = libxss
+	depends = nodejs
+	provides = breaktimer
+	source = breaktimer-0.7.3.deb::https://github.com/tom-james-watson/breaktimer-app/releases/download/v0.7.3/BreakTimer.deb
+	sha256sums = fecdf9f784cb76cbc2ce80ff73a753e15625a982dc5a243c9cc9f407abf5359c
+
+pkgname = breaktimer-bin
+
