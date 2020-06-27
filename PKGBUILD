@@ -22,8 +22,10 @@ package() {
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt/${_pkgname}}
 
   cp -r ./${_pkgname}/* "${pkgdir}"/opt/${_pkgname}/
-  ln -s "/opt/${_pkgname}/${_pkgname}" \
-         "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${_pkgname}" <<END
+#!/bin/sh
+exec /opt/${_pkgname}/${_pkgname} "\$@"
+END
   install -m644 "${srcdir}"/${_pkgname}.desktop "${pkgdir}"/usr/share/applications/
   install -m644 "${srcdir}"/app_icon.png "${pkgdir}"/usr/share/pixmaps/${_pkgname}.png
 }
