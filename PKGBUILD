@@ -23,15 +23,15 @@ options=('!strip')
 _bldarch=amd64
 # [[ $CARCH = i686 ]] && _bldarch=i386
 
-_url=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.10
+_url=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.04
 source=(${_url}/all/${_pkgname}-common_${_pkgver}_all.deb)
 #source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
 #        ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('6f763a2fb87b517ee0b29b912d03f7ff8de7ba608aa1680399a5f31592cc73f3')
-sha256sums_x86_64=('069e77c494b889e3be8c649da8b41f7219363e37d26213612e09c232bd542040'
-                   '90b1c7e2bd4e2841a27e791621aca89c5572c0ae42cc47d93411e88067dfb6b2')
+sha256sums=('1f675e11104d9fb6a47c77039c7f9baa9dc05789409002c6ea93e0d15b2fd816')
+sha256sums_x86_64=('b580caf6e8c732f8d88283b2b500426c1f9973bc677ef70b2d946f2514f5f3ed'
+                   '270bbef6a1dbd181b101009678cae9bd6cb9cde964efeb12438f36037d2774d0')
 #sha256sums_i686=('8c37694b5c0623511104d8dc584fb9a904b4368919cd6a2ac5b5cdbef4266f0e'
 #                 'd7379824666e9152cd99b02bc626cf6815af096aad2e6e5bf1d99e7c523ccb9c')
 

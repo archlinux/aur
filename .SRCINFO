@@ -23,12 +23,12 @@ pkgbase = doublecmd-gtk2-alpha-bin
 	noextract = doublecmd-plugins_1.0.0~0+svn9477_amd64.deb
 	noextract = doublecmd-common_1.0.0~0+svn9477_all.deb
 	options = !strip
-	source = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.10/all/doublecmd-common_1.0.0~0+svn9477_all.deb
-	sha256sums = 6f763a2fb87b517ee0b29b912d03f7ff8de7ba608aa1680399a5f31592cc73f3
-	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.10/amd64/doublecmd-gtk_1.0.0~0+svn9477_amd64.deb
-	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.10/amd64/doublecmd-plugins_1.0.0~0+svn9477_amd64.deb
-	sha256sums_x86_64 = 069e77c494b889e3be8c649da8b41f7219363e37d26213612e09c232bd542040
-	sha256sums_x86_64 = 90b1c7e2bd4e2841a27e791621aca89c5572c0ae42cc47d93411e88067dfb6b2
+	source = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.04/all/doublecmd-common_1.0.0~0+svn9477_all.deb
+	sha256sums = 1f675e11104d9fb6a47c77039c7f9baa9dc05789409002c6ea93e0d15b2fd816
+	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.04/amd64/doublecmd-gtk_1.0.0~0+svn9477_amd64.deb
+	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.04/amd64/doublecmd-plugins_1.0.0~0+svn9477_amd64.deb
+	sha256sums_x86_64 = b580caf6e8c732f8d88283b2b500426c1f9973bc677ef70b2d946f2514f5f3ed
+	sha256sums_x86_64 = 270bbef6a1dbd181b101009678cae9bd6cb9cde964efeb12438f36037d2774d0
 
 pkgname = doublecmd-gtk2-alpha-bin
 
