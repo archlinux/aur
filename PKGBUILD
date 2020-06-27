@@ -4,10 +4,9 @@
 # »The graphics library was moved out of the compiler distribution.«
 # This package contains it.
 
-# v5.1.0 requires dune 2.0 to be in the Arch repository
 pkgname=ocaml-graphics
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Graphics library from OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml/graphics"
@@ -15,8 +14,7 @@ license=('LGPL2.1')
 depends=('ocaml>=4.0.9')
 makedepends=('dune')
 source=("https://github.com/ocaml/graphics/archive/${pkgver}.tar.gz")
-sha256sums=('07f5861381f85c2f2c0611a86f483807ce43195959c40963028dafaa3abf33ab')
-options=(!strip)
+sha256sums=('132e0597f42b11ef5d9b0a523fee2edab7c55efd9c3f198d5574349b4595fafb')
 
 build() {
   cd "${srcdir}/graphics-${pkgver}"
