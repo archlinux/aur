@@ -9,7 +9,6 @@ url="https://github.com/Hackndo/lsassy"
 arch=('any')
 license=('MIT')
 depends=('python' 'impacket' 'python-netaddr' 'python-pypykatz')
-# Needed pypykatz
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/Hackndo/lsassy/archive/v${pkgver}.tar.gz")
 sha256sums=('7f56af989c944c5e687af1c850cd66949bf79221ae940885e5204da6b8eabcad')
