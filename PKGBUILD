@@ -1,28 +1,32 @@
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jan Oliver Oelerich <janoliver@oelerich.org>
 
 pkgname=samsung-ml-1915
-pkgver=1
+pkgver=1.00.39
 pkgrel=1
-pkgdesc="Samsung ML-1915 CUPS driver"
+pkgdesc="CUPS driver for Samsung ML-1915"
 arch=('i686' 'x86_64')
+url="https://support.hp.com/us-en/drivers/selfservice/samsung-ml-1915-laser-printer-series/17156956"
+license=('custom:samsung')
 depends=('cups' 'ghostscript')
-license='custom:samsung'
-url="http://www.samsung.com"
-source=("http://downloadcenter.samsung.com/content/DR/200911/20091118142414703/UnifiedLinuxDriver_1.02.tar.gz")
-md5sums=('49e44d27a7a63ddb8ba1a5d4f650b35e')
+conflicts=('samsung-printers')
+source=("https://ftp.hp.com/pub/softlib/software13/printers/SS/SL-C4010ND/uld_V${pkgver}_01.17.tar.gz")
+sha512sums=('8667c1aedd19188db2db461dba3c8ec09b1d7dd7994df7f348ed0819e39e5d5f68a59a4e70f90586b71f6f4e27953e25f50b768c94ae84d52c6bac8e415c3bd8')
 
-build() {
-    cd $startdir/src/ || return 1
-    # fix wrong modes in archive
-    chmod u=rwX,g=rX cdroot -R
-    chown root:root cdroot -R
-    install -m 644 -D "$startdir/src/cdroot/Linux/noarch/at_opt/share/ppd/ML-191xspl2.ppd" \
-    "$startdir/pkg/usr/share/cups/model/ML-191xspl2.ppd"
-    if [ "$CARCH" = "x86_64" ]; then
-        install -m 755 -D "$startdir/src/cdroot/Linux/x86_64/at_root/usr/lib64/cups/filter/rastertosamsungspl" \
-        "$startdir/pkg/usr/lib/cups/filter/rastertosamsungspl"
-    else
-        install -m 755 -D "$startdir/src/cdroot/Linux/i386/at_root/usr/lib/cups/filter/rastertosamsungspl" \
-        "$startdir/pkg/usr/lib/cups/filter/rastertosamsungspl"
-    fi
+package() {
+	cd $srcdir
+
+	install -m 644 -D \
+		${srcdir}/uld/noarch/share/ppd/Samsung_ML-191x_Series.ppd \
+		${pkgdir}/usr/share/cups/model/Samsung_ML-191x_Series.ppd
+	if [ "$CARCH" = "x86_64" ]; then
+		install -m 755 -D \
+			${srcdir}/uld/x86_64/rastertospl \
+			${pkgdir}/usr/lib/cups/filter/rastertospl
+	else
+		install -m 755 -D \
+			${srcdir}/uld/i386/rastertospl \
+			${pkgdir}/usr/lib/cups/filter/rastertospl
+	fi
 }

@@ -1,15 +1,16 @@
 pkgbase = samsung-ml-1915
-	pkgdesc = Samsung ML-1915 CUPS driver
-	pkgver = 1
+	pkgdesc = CUPS driver for Samsung ML-1915
+	pkgver = 1.00.39
 	pkgrel = 1
-	url = http://www.samsung.com
+	url = https://support.hp.com/us-en/drivers/selfservice/samsung-ml-1915-laser-printer-series/17156956
 	arch = i686
 	arch = x86_64
 	license = custom:samsung
 	depends = cups
 	depends = ghostscript
-	source = http://downloadcenter.samsung.com/content/DR/200911/20091118142414703/UnifiedLinuxDriver_1.02.tar.gz
-	md5sums = 49e44d27a7a63ddb8ba1a5d4f650b35e
+	conflicts = samsung-printers
+	source = https://ftp.hp.com/pub/softlib/software13/printers/SS/SL-C4010ND/uld_V1.00.39_01.17.tar.gz
+	sha512sums = 8667c1aedd19188db2db461dba3c8ec09b1d7dd7994df7f348ed0819e39e5d5f68a59a4e70f90586b71f6f4e27953e25f50b768c94ae84d52c6bac8e415c3bd8
 
 pkgname = samsung-ml-1915
 
