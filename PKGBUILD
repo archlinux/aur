@@ -15,7 +15,8 @@ md5sums=('6c53dd1fc35c330d3f970122fd91849c')
 build() {
 	cd "$pkgname-$pkgver"
 	mkdir build && cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+	cmake .. -DCMAKE_INSTALL_PREFIX="/usr" \
+		-DSYSCONF_INSTALL_DIR:PATH="/etc"
 	make
 }
 
@@ -26,8 +27,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver/build"
-	make install
-	install -Dt "$pkgdir/etc/" "$pkgdir/usr/etc/ELProxy.conf"
-	rm -r "$pkgdir/usr/etc"
+	make DESTDIR="$pkgdir" install
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname-$pkgver/LICENSE"
 }
