@@ -4,7 +4,7 @@
 
 pkgname=hollywood
 pkgver=1.21
-pkgrel=4
+pkgrel=5
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
