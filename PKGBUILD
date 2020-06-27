@@ -8,6 +8,7 @@ pkgdesc='An open-source desktop application for bloggers and content writers'
 arch=('x86_64')
 url='https://github.com/aswinrajeev/blogly'
 license=('BSD')
+provides=('blogly')
 depends=('nss'
          'gtk3'
          'libxss')
