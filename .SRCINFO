@@ -1,7 +1,7 @@
 pkgbase = tutanota-desktop
 	pkgdesc = Official Tutanota email client
 	pkgver = 3.74.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tutanota.com
 	arch = x86_64
 	license = GPL3
