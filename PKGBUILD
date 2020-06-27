@@ -1,9 +1,11 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 
 pkgname=agg
 pkgver=2.5
-pkgrel=10
+pkgrel=11
 pkgdesc='High Quality Rendering Engine for C++'
 arch=('x86_64')
 url='https://src.fedoraproject.org/rpms/agg'
