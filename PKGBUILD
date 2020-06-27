@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcoreaddons-git
-pkgver=v5.58.0.rc2.r133.gb8a4402
+pkgver=v5.71.0.rc1.r2.g2e07a74
 pkgrel=1
 pkgdesc='KCoreAddons'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ groups=('kf5')
 conflicts=(kcoreaddons)
 provides=(kcoreaddons)
 install=kcoreaddons.install
-source=('git://anongit.kde.org/kcoreaddons.git')
+source=('git+https://github.com/KDE/kcoreaddons.git')
 md5sums=('SKIP')
 
 pkgver() {

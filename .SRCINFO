@@ -1,6 +1,6 @@
 pkgbase = kcoreaddons-git
 	pkgdesc = KCoreAddons
-	pkgver = v5.58.0.rc2.r133.gb8a4402
+	pkgver = v5.71.0.rc1.r2.g2e07a74
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kcoreaddons
 	install = kcoreaddons.install
@@ -16,7 +16,7 @@ pkgbase = kcoreaddons-git
 	depends = gamin
 	provides = kcoreaddons
 	conflicts = kcoreaddons
-	source = git://anongit.kde.org/kcoreaddons.git
+	source = git+https://github.com/KDE/kcoreaddons.git
 	md5sums = SKIP
 
 pkgname = kcoreaddons-git
