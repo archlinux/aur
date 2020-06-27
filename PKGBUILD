@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-gitlab-registry-usage"
-pkgver="0.2.7"
+pkgver="0.2.8"
 pkgrel="1"
 pkgdesc="A package for querying the size of repositories in a GitLab registry."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-pyopenssl" "python-requests")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/gitlab-registry-usage/archive/v${pkgver}.tar.gz")
-sha256sums=("51e899baef01afb20585c388a56a2dc76fcd98aa3c2af0d50048bd10d61a2ecf")
+sha256sums=("2b3505e6138e5771935091b5d38da54ffa26ab28403060f22359a449736e838c")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
