@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwindowsystem-git
-pkgver=v4.100.0.rc1.r395.g0e2b1dd
+pkgver=v4.100.0.rc1.r413.gfa31de1
 pkgrel=1
 pkgdesc='KWindowSystem'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kwindowsystem)
 provides=(kwindowsystem)
-source=('git://anongit.kde.org/kwindowsystem.git')
+source=('git+https://github.com/KDE/kwindowsystem.git')
 md5sums=('SKIP')
 
 pkgver() {

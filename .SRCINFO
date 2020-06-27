@@ -1,6 +1,6 @@
 pkgbase = kwindowsystem-git
 	pkgdesc = KWindowSystem
-	pkgver = v4.100.0.rc1.r395.g0e2b1dd
+	pkgver = v4.100.0.rc1.r413.gfa31de1
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kwindowsystem
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kwindowsystem-git
 	depends = libxfixes
 	provides = kwindowsystem
 	conflicts = kwindowsystem
-	source = git://anongit.kde.org/kwindowsystem.git
+	source = git+https://github.com/KDE/kwindowsystem.git
 	md5sums = SKIP
 
 pkgname = kwindowsystem-git
