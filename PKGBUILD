@@ -2,7 +2,7 @@
 
 pkgname=timecamp-bin
 pkgver=1.4.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Client application for TimeCamp software (Binary).'
 arch=('x86_64')
 url='https://www.timecamp.com/en/desktop-app'
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
     '10c0a76dd883e9e39fadcb6da5e7dc91'
-    '11ba2f09367a42afed608efd8742045d'
+    'SKIP'
 )
 
 prepare() {
