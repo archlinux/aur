@@ -1,13 +1,13 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=4b3507539c342e39c5dd78e20e8111675e2f4438
-_gitsha256='9671ee169b42b6f558ce41d8478c59d28685f38f6b6c3c7e14bc27b977a21fdd'
+_gitcommit=363374f639e5bcb42affab6f74128d667a5b54c2
+_gitsha256='5f5d26daef4663b7d2cf7289975aa0a944b4579865073043a9b37425d231fa05'
 
 pkgbase=octopi-notifier-frameworks
 pkgname=('octopi-notifier-frameworks')
 pkgver=0.9.0
-pkgrel=26
+pkgrel=27
 pkgdesc="Notifier for Octopi with Knotifications support"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
@@ -23,7 +23,7 @@ prepare() {
   cd "${srcdir}/${_pkggit}-${_gitcommit}"
   
   # set Knotifications
-  sed -i 's|#KSTATUS|KSTATUS|' notifier/octopi-notifier.pro
+  sed -e "s|DEFINES += ALPM_BACKEND #KSTATUS|DEFINES += ALPM_BACKEND KSTATUS|" -i notifier/octopi-notifier.pro
 }
 
 build() {
