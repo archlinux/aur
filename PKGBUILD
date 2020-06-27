@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfigwidgets-git
-pkgver=v4.100.0.rc1.r397.g9cc9e17
+pkgver=v5.71.0.rc1.r5.g9c1bf40
 pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kconfigwidgets)
 provides=(kconfigwidgets)
-source=('git://anongit.kde.org/kconfigwidgets.git')
+source=('git+https://github.com/KDE/kconfigwidgets.git')
 md5sums=('SKIP')
 
 pkgver() {

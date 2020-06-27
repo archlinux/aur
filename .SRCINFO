@@ -1,6 +1,6 @@
 pkgbase = kconfigwidgets-git
 	pkgdesc = Widgets for KConfig
-	pkgver = v4.100.0.rc1.r397.g9cc9e17
+	pkgver = v5.71.0.rc1.r5.g9c1bf40
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kconfigwidgets
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = kconfigwidgets-git
 	depends = kwidgetsaddons-git
 	provides = kconfigwidgets
 	conflicts = kconfigwidgets
-	source = git://anongit.kde.org/kconfigwidgets.git
+	source = git+https://github.com/KDE/kconfigwidgets.git
 	md5sums = SKIP
 
 pkgname = kconfigwidgets-git
