@@ -1,4 +1,5 @@
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: raku <raczkow@gmail.com>
 
