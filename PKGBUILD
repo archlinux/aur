@@ -95,7 +95,7 @@ package() {
 	done
 
 	install -D -m 755 out_linux/${build_mode}/fcitx5-mozc.so "${pkgdir}/usr/lib/fcitx5/fcitx5-mozc.so"
-	install -D -m 644 unix/fcitx5/mozc-addon.conf "${pkgdir}/usr/share/fcitx5/addon/mozc-addon.conf"
+	install -D -m 644 unix/fcitx5/mozc-addon.conf "${pkgdir}/usr/share/fcitx5/addon/mozc.conf"
 	install -D -m 644 unix/fcitx5/mozc.conf "${pkgdir}/usr/share/fcitx5/inputmethod/mozc.conf"
 	install -d "${pkgdir}/usr/share/fcitx5/mozc/icon"
 	install -m 644 "$srcdir/fcitx-mozc-icons/mozc.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc.png"
