@@ -11,7 +11,7 @@ url="https://git.harting.dev/IdleGandalf/alsa-lib/commit/646bc80a63b0220300678a3
 license=('LGPL2.1')
 depends=('glibc' 'alsa-topology-conf' 'alsa-ucm-conf')
 provides=('libasound.so' 'libatopology.so' 'alsa-lib')
-conflicts=('alsa-lib')
+conflicts=('alsa-lib=$pkgver')
 source=("https://www.alsa-project.org/files/pub/lib/${pkgname%-a52pcm}-$pkgver.tar.bz2"
         "pcm-config-parsing-workaround.patch")
 sha512sums=('567c094914833af511bd7b175b0865ae4e4483ae68a7d4f90a34b12d7f077782835eec24257a7928631c104c78eff588f7b92068aade37e3c4806d79353758a8'
