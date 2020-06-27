@@ -1,6 +1,6 @@
 pkgbase = pipr-git
 	pkgdesc = A commandline-utility to interactively build complex shell pipelines
-	pkgver = r101.1fd53cc
+	pkgver = r105.f753d0a
 	pkgrel = 1
 	url = https://gitlab.com/Elkowar/pipr
 	arch = i686
