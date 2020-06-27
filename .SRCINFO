@@ -1,0 +1,14 @@
+pkgbase = python-bs4
+	pkgdesc = Beautiful Soup. bs4 name required by CrackMapExec trunk
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/bs4/
+	arch = any
+	license = custom:unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/10/ed/7e8b97591f6f456174139ec089c769f89a94a1a4025fe967691de971f314/bs4-0.0.1.tar.gz
+	sha1sums = b309d9b50489cc64263d11491e6a19c29c3a484d
+
+pkgname = python-bs4
+
