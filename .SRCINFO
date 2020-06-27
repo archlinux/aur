@@ -11,6 +11,7 @@ pkgbase = neovide-git
 	makedepends = cmake
 	makedepends = sdl2
 	makedepends = make
+	depends = neovim
 	depends = fontconfig
 	depends = freetype2
 	depends = libglvnd
