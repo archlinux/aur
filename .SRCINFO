@@ -1,0 +1,14 @@
+pkgbase = netctl-obfuscate
+	pkgdesc = A tool wrapping wpa_passphrase to convert plaintext keys in netctl config files to a PSK.
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/gryffyn/netctl-obfuscate
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = netctl-obfuscate::git+https://github.com/gryffyn/netctl-obfuscate#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = netctl-obfuscate
+
