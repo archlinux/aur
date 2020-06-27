@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kross-git
-pkgver=r95.78b3de7
+pkgver=r282.9d539fd
 pkgrel=1
 pkgdesc='Multi-language application scripting'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
 groups=(kf5-aids)
 conflicts=(kross)
 provides=(kross)
-source=('git://anongit.kde.org/kross.git')
+source=('git+https://github.com/KDE/kross.git')
 md5sums=('SKIP')
 
 pkgver() {

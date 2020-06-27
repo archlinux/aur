@@ -1,6 +1,6 @@
 pkgbase = kross-git
 	pkgdesc = Multi-language application scripting
-	pkgver = r95.78b3de7
+	pkgver = r282.9d539fd
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kross
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kross-git
 	depends = kparts-git
 	provides = kross
 	conflicts = kross
-	source = git://anongit.kde.org/kross.git
+	source = git+https://github.com/KDE/kross.git
 	md5sums = SKIP
 
 pkgname = kross-git
