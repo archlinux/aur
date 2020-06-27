@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=(kf5)
 provides=('kactivities' 'kactivities-frameworks')
 conflicts=('kactivities')
-source=("git+https://github.com/KDE/kactivities.git")
+source=('git+https://github.com/KDE/kactivities.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,7 +34,7 @@ build() {
   cmake ../ \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
