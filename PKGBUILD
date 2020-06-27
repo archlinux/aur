@@ -1,16 +1,14 @@
 pkgname=notedown
 pkgver=1.5
 filever=1.0.0
-pkgrel=3
-pkgdesc=""
+pkgrel=4
+pkgdesc="A simple, keyboard-driven, markdown note-taking app"
 arch=('any')
-url="https://github.com/subvisual/notedown/releases/download/v$pkgver/$pkgname-$filever.tar.gz"
+url="https://github.com/subvisual/notedown"
 license=('MPL')
 depends=('electron')
-makedepends=('git')
-source=($url "notedown.desktop" "icon.png")
-noextract=()
-md5sums=('SKIP' '647ca7e77794a5f19c47b5c37261372e' 'e6c3159888655d4ad8efcfc0816a0285')
+source=("$url/releases/download/v$pkgver/$pkgname-$filever.tar.gz" "notedown.desktop" "icon.png")
+sha256sums=('aab72870f8d9916e011a51aa860318c0e8c3d70daca01d36ddcfef9ea7ed6762' '9d8a2c3d6997360dc3d46bd7fe070d3cd55ff1c86f28abc1705703bf7cdbe4ea' '237f69269de51f3c36405a3ea95307793699c5e1730767cdab726d4e1c2fc11a')
 
 package() {
   echo $srcdir
