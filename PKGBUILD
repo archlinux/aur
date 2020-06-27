@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kcalutils
 pkgname=$_pkgname-git
-pkgver=r723.715a0b0cf
+pkgver=r733.7e4db111c
 pkgrel=1
 pkgdesc="The KDE calendar utility library"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(kcalendarcore kidentitymanagement)
 makedepends=(extra-cmake-modules git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kcalutils.git')
 sha256sums=('SKIP')
 
 pkgver() {
