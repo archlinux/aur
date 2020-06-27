@@ -2,17 +2,17 @@
 # Maintainer: Ryozuki <ryo@ryozuki.xyz>
 
 pkgname=ddnet-git
-pkgver=13.0.2.r18.g602bd2731
+pkgver=14.0.2.r3.g3ada0111b
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify')
+depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc')
 makedepends=('git' 'cmake' 'ninja' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: A collection with more than 700 custom tee skins.'
-            'ddnet-maps-git: All the maps used on the official DDNet Servers')
+            'ddnet-maps-git: All the maps used on the official DDNet Servers.')
 provides=('ddnet')
 conflicts=('ddnet')
 source=("git+https://github.com/ddnet/ddnet"
@@ -41,7 +41,7 @@ pkgver() {
 }
 
 build() {
-    [ -d build ] && rm -rf build; mkdir build
+    mkdir -p build
     cd build
     cmake ../ddnet                  \
         -DCMAKE_BUILD_TYPE=Release  \
@@ -49,6 +49,7 @@ build() {
         -DAUTOUPDATE=OFF            \
         -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
+        -DUPNP=ON                   \
         -GNinja                     \
         $_mysql_opt
     ninja
