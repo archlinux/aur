@@ -1,31 +1,17 @@
 # Maintainer: Howard Cheung <mail@h-cheung.cf>
 
 pkgname=fcitx5-pinyin-moegirl-rime
-pkgver=20200526
+pkgver=20200620
 _reponame=fcitx5-pinyin-moegirl
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org for rime"
 arch=('any')
-url="https://github.com/felixonmars/fcitx5-pinyin-zhwiki"
-license=('custom')
+url="https://github.com/outloudvi/fcitx5-pinyin-moegirl"
+license=('cc-by-nc-sa-3.0')
 #makedepends=('libime' 'opencc' 'pypinyin')
-source=("git+https://github.com/outloudvi/fcitx5-pinyin-moegirl"
-        "https://github.com/outloudvi/fcitx5-pinyin-moegirl/releases/download/0.1/moegirl.raw"
-        )
-md5sums=('SKIP'
-         '43630a7508ed5af781a1e7dc82d03d98')
-
-prepare() {
-  cd $_reponame
-  cp ../moegirl.raw ./
-}
-
-build() {
-  cd $_reponame
-  make VERSION=$pkgver moegirl.dict.yaml -o moegirl.raw
-}
+source=("https://github.com/outloudvi/${_reponame}/releases/download/v${pkgver}/moegirl.dict.yaml")
+md5sums=("0828609ad5fb79a46bd63c21b6c51289")
 
 package() {
-  cd $_reponame
-  make VERSION=$pkgver DESTDIR="$pkgdir" install_rime_dict -o moegirl.dict.yaml
+  install -Dm644 moegirl.dict.yaml -t $pkgdir/usr/share/rime-data/
 }
