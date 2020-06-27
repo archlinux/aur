@@ -1,6 +1,6 @@
 pkgbase = kmime-git
 	pkgdesc = Library for handling mail messages and newsgroup articles
-	pkgver = r1335.c18e5dc
+	pkgver = r1345.d31917f
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = i686

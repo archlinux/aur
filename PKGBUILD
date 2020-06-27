@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kmime
 pkgname=$_pkgname-git
-pkgver=r1335.c18e5dc
+pkgver=r1345.d31917f
 pkgrel=1
 pkgdesc="Library for handling mail messages and newsgroup articles"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(ki18n kcodecs)
 makedepends=(extra-cmake-modules git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kmime.git')
 sha256sums=('SKIP')
 
 pkgver() {
