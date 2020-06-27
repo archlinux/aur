@@ -4,8 +4,8 @@
 
 pkgname='xmrig-nvidia-git'
 pkgver=2.14.5.r0.ga047dc3
-pkgrel=1
-pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
+pkgrel=2
+pkgdesc='XMRig is high performance Monero (XMR) NVIDIA mine'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
 depends=('libuv' 'cuda')
