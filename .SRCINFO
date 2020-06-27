@@ -1,7 +1,7 @@
 pkgbase = mads
 	pkgdesc = MADS is a multi-pass crossassembler designed for 6502 and 65816 processors
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mads.atari8.info/
 	arch = x86_64
 	license = unknown
