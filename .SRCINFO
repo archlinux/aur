@@ -9,7 +9,7 @@ pkgbase = multimonitorlock-gui
 	depends = multimonitorlock
 	depends = gtk-engine-murrine
 	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/2020.6.22-1.tar.gz
-	sha256sums = file:///home/dt/.aur/multimonitorlock-gui/src/2020.6.22-1.tar.gz
+	sha256sums = c8833cc04465fb8b8e520f8cfd5d2da1954f7c47a24152471c87c53444d72ffe
 
 pkgname = multimonitorlock-gui
 

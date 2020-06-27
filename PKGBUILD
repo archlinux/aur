@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('file:///home/dt/.aur/multimonitorlock-gui/src/2020.6.22-1.tar.gz')
+sha256sums=('c8833cc04465fb8b8e520f8cfd5d2da1954f7c47a24152471c87c53444d72ffe')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
