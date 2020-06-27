@@ -10,8 +10,8 @@ pkgdesc="User Mode Linux Utilities (Debian package uml-utilities). It contains u
 arch=(i686 x86_64)
 depends=('fuse' 'readline')
 # Damn! You can't leave empty lines there for years!
-# provides=('')
-# conflicts=('')
+provides=('uml_utilities')
+conflicts=('uml_utilities')
 url="http://user-mode-linux.sourceforge.net/"
 source=(
     "http://user-mode-linux.sourceforge.net/${pkgname}_${pkgver}.tar.bz2"
