@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khelpcenter-git
-pkgver=r2331.f7fdf7c
-pkgrel=2
+pkgver=r2606.26f94bc9
+pkgrel=1
 pkgdesc="Application to show KDE Applications' documentation"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/khelpcenter'
@@ -11,7 +12,7 @@ depends=('khtml-git' 'kdelibs4support-git' 'kcmutils-git' 'grantlee-qt5' 'xapian
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 conflicts=('khelpcenter' 'kdebase-runtime-doc')
 provides=('khelpcenter')
-source=('git://anongit.kde.org/khelpcenter.git')
+source=('git+https://github.com/KDE/khelpcenter.git')
 groups=('plasma')
 md5sums=('SKIP')
 
