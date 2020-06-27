@@ -1,7 +1,7 @@
 pkgbase = omnetpp
 	pkgdesc = Component-based simulation package designed for modeling communication networks
-	pkgver = 5.5.1
-	pkgrel = 3
+	pkgver = 5.6.2
+	pkgrel = 1
 	url = http://www.omnetpp.org
 	install = omnetpp.install
 	arch = i686
