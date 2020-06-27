@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit-git
-pkgver=v4.100.0.rc1.r256.g7601ffd
+pkgver=v4.100.0.rc1.r266.g786ff48
 pkgrel=1
 pkgdesc='KInit'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=('kinit')
 provides=('kinit')
-source=('git://anongit.kde.org/kinit.git')
+source=('git+https://github.com/KDE/kinit.git')
 md5sums=('SKIP')
 
 pkgver() {

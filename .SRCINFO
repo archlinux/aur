@@ -1,6 +1,6 @@
 pkgbase = kinit-git
 	pkgdesc = KInit
-	pkgver = v4.100.0.rc1.r256.g7601ffd
+	pkgver = v4.100.0.rc1.r266.g786ff48
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kinit
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kinit-git
 	depends = kio-git
 	provides = kinit
 	conflicts = kinit
-	source = git://anongit.kde.org/kinit.git
+	source = git+https://github.com/KDE/kinit.git
 	md5sums = SKIP
 
 pkgname = kinit-git
