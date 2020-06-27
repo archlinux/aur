@@ -1,0 +1,19 @@
+pkgbase = netlify-application
+	pkgdesc = Unofficial Netlify desktop application
+	pkgver = 1.0.3
+	pkgrel = 2
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = netlify-application
+	conflicts = netlify-application
+	source = git+https://gitlab.com/netlify-desktop/netlify-application
+	sha256sums = SKIP
+
+pkgname = netlify-application
+
