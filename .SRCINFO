@@ -1,6 +1,6 @@
 pkgbase = kwidgetsaddons-git
 	pkgdesc = KWidgetsAddons
-	pkgver = v4.100.0.rc1.r555.g578588a
+	pkgver = v4.100.0.rc1.r614.gaf8c544
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kwidgetsaddons
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kwidgetsaddons-git
 	depends = qt5-base
 	provides = kwidgetsaddons
 	conflicts = kwidgetsaddons
-	source = git://anongit.kde.org/kwidgetsaddons.git
+	source = git+https://github.com/KDE/kwidgetsaddons.git
 	md5sums = SKIP
 
 pkgname = kwidgetsaddons-git

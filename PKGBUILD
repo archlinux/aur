@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwidgetsaddons-git
-pkgver=v4.100.0.rc1.r555.g578588a
+pkgver=v4.100.0.rc1.r614.gaf8c544
 pkgrel=1
 pkgdesc='KWidgetsAddons'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kwidgetsaddons)
 provides=(kwidgetsaddons)
-source=('git://anongit.kde.org/kwidgetsaddons.git')
+source=('git+https://github.com/KDE/kwidgetsaddons.git')
 md5sums=('SKIP')
 
 pkgver() {
