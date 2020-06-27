@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdoctools-git
-pkgver=v5.2.0.r370.g70832b7
+pkgver=v5.2.0.r384.g8b6ec34
 pkgrel=1
 pkgdesc='KDocTools'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git perl-uri)
 conflicts=(kdoctools)
 provides=(kdoctools)
 options=(staticlibs)
-source=('git://anongit.kde.org/kdoctools.git')
+source=('git+https://github.com/KDE/kdoctools.git')
 md5sums=('SKIP')
 
 pkgver() {

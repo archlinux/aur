@@ -1,6 +1,6 @@
 pkgbase = kdoctools-git
 	pkgdesc = KDocTools
-	pkgver = v5.2.0.r370.g70832b7
+	pkgver = v5.2.0.r384.g8b6ec34
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kdoctools
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kdoctools-git
 	provides = kdoctools
 	conflicts = kdoctools
 	options = staticlibs
-	source = git://anongit.kde.org/kdoctools.git
+	source = git+https://github.com/KDE/kdoctools.git
 	md5sums = SKIP
 
 pkgname = kdoctools-git
