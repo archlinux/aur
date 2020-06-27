@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.7.r34.g8cb64241
+pkgver=1.0.4155.r113.g036fb054
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
@@ -9,47 +9,35 @@ arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
 depends=('llvm-libs' 'intel-opencl-clang')
-makedepends=('git' 'cmake' 'clang' 'llvm' 'zlib' 'python2')
+makedepends=('git' 'cmake' 'clang' 'llvm' 'zlib' 'python')
 provides=('intel-graphics-compiler')
 conflicts=('intel-graphics-compiler')
 options=('!emptydirs')
-source=('git+https://github.com/intel/intel-graphics-compiler.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/intel/intel-graphics-compiler.git'
+        '010-igc-gcc10-fix.patch'::'https://github.com/intel/intel-graphics-compiler/commit/f4efb15429bdaca0122640ae63042a8950b491df.patch')
+sha256sums=('SKIP'
+            'dd9fb728757a83f9d61770b77b4a17685dade697767a37826c8dc1e8fa78728c')
 
 prepare() {
-    mkdir -p build
+    patch -d intel-graphics-compiler -Np1 -i "${srcdir}/010-igc-gcc10-fix.patch"
 }
 
 pkgver() {
-    cd intel-graphics-compiler
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc\.//'
+    git -C intel-graphics-compiler describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc\.//'
 }
 
 build() {
-    cd build
-    
-    cmake \
+    cmake -B build -S intel-graphics-compiler \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_INSTALL_LIBDIR='lib' \
         -DIGC_OPTION__ARCHITECTURE_TARGET='Linux64' \
-        -DIGC_PREFERRED_LLVM_VERSION='8.0.0' \
-        -Wno-dev \
-        ../intel-graphics-compiler
-        
-    make
-           
-    # license
-    sed -n '2,20p' IGC/AdaptorOCL/igc.opencl.h > LICENSE # create file
-    sed -i '1,22s/^.\{,3\}//' LICENSE # erase C comments
+        -DIGC_PREFERRED_LLVM_VERSION='10.0.0' \
+        -DINSTALL_GENX_IR='ON' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd build
-    
-    make DESTDIR="$pkgdir" install
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 intel-graphics-compiler/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

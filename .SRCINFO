@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = 1.0.7.r34.g8cb64241
+	pkgver = 1.0.4155.r113.g036fb054
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -11,14 +11,16 @@ pkgbase = intel-graphics-compiler-git
 	makedepends = clang
 	makedepends = llvm
 	makedepends = zlib
-	makedepends = python2
+	makedepends = python
 	depends = llvm-libs
 	depends = intel-opencl-clang
 	provides = intel-graphics-compiler
 	conflicts = intel-graphics-compiler
 	options = !emptydirs
 	source = git+https://github.com/intel/intel-graphics-compiler.git
+	source = 010-igc-gcc10-fix.patch::https://github.com/intel/intel-graphics-compiler/commit/f4efb15429bdaca0122640ae63042a8950b491df.patch
 	sha256sums = SKIP
+	sha256sums = dd9fb728757a83f9d61770b77b4a17685dade697767a37826c8dc1e8fa78728c
 
 pkgname = intel-graphics-compiler-git
 
