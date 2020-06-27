@@ -2,19 +2,21 @@
 
 pkgname=squidanalyzer
 pkgver=6.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Squid proxy native log analyser and reports generator"
 arch=('any')
 url='http://squidanalyzer.darold.net/'
 license=('GPL')
 options=('!emptydirs' 'purge')
-depends=('cron' 'perl')
+depends=('perl')
 source=("http://downloads.sourceforge.net/project/squid-report/squid-report/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.cron"
-	daterange.patch
+        'squidanalyzer.service'
+        'squidanalyzer.timer'
+        'daterange.patch'
        )
 md5sums=('d70f5c747d0666a92410fdca734c494b'
-         'e8c2657f7a2eb544d6c246f5eca02e8b'
+         'ce973423ada4ddcde5a512c511e425a8'
+         '9b554dfa2aad2ff210f18f2bc599660c'
          '6849c57c38774b2c115f5421c7a3fd4f')
 backup=(
     'etc/squidanalyzer/excluded'
@@ -23,6 +25,7 @@ backup=(
     'etc/squidanalyzer/squidanalyzer.conf'
     'etc/squidanalyzer/user-aliases'
     )
+install=squidanalyzer.install
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -58,6 +61,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  install -dm755 "${pkgdir}"/etc/cron.daily
-  install -Dm700 ../${pkgname}.cron "${pkgdir}"/etc/cron.daily/${pkgname}
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system ../squidanalyzer.{service,timer}
 }

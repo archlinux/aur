@@ -1,0 +1,5 @@
+post_upgrade() {
+  if (( $(vercmp $2 6.6-6) < 0)); then
+    systemctl --now enable squidanalyzer.timer
+  fi
+}
