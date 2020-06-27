@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tela-icon-theme
 _pkgname=Tela-icon-theme
-pkgver=2020.06.25
 _pkgver=2020-06-25
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
