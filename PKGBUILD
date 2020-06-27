@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=v5.68.0.rc1.r1.g8db4570
+pkgver=v5.71.0.r1.g396d014
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=('qt5-base')
 makedepends=('extra-cmake-modules-git' 'git')
 provides=('kwayland')
 conflicts=('kwayland')
-source=('git://anongit.kde.org/kwayland.git')
+source=('git+https://github.com/KDE/kwayland.git')
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = kwayland-git
 	pkgdesc = Qt-style Client and Server library wrapper for the Wayland libraries
-	pkgver = v5.68.0.rc1.r1.g8db4570
+	pkgver = v5.71.0.r1.g396d014
 	pkgrel = 1
 	url = http://www.kde.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kwayland-git
 	depends = qt5-base
 	provides = kwayland
 	conflicts = kwayland
-	source = git://anongit.kde.org/kwayland.git
+	source = git+https://github.com/KDE/kwayland.git
 	md5sums = SKIP
 
 pkgname = kwayland-git
