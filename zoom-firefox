@@ -1,10 +1,8 @@
 #!/bin/sh
 
-A="zoommtg://zoom.us/join?action=join&confno=258072517&uid=cPfLg0DOSsGcOL--S-kkkg&uname=Jeroen%20Op%20't%20Eynde&pk=hVnA0mY0sBvflWPemirWRfdrYI_deNfm0lVhmbB6nzDJTm1gLwj9PeUIRLxoOuj7a48aLI72BMqHh23TJwgM4GwY9nmuk1IWCoSs1ijsZUQ9z3Tbvscw2TqFNCa_y9HxRBbcVdiGQQ%3D%3D&zc=0&mcv=0.92.11227.0929&confid=ZW1haWw9amVyb2VuJTQwZ3JhZmFuYS5jb20mdXNzPWhWbkEwbVkwc0JrVEdOR2RzQjZGQl9kLWJPSzFLcld3MnlNQS1QSU4wazZ3VUxOYUtDUURDckE2b28zRDFiaS1QSVklM0QmdGlkPTYxMzk3YTgyOTcxYTRiYTY4OWY5Njk3ODIzZGQwZjg0JmFwcD1maXJlZm94&browser=firefox&t=1592491602005"
 saveIFS=$IFS
 IFS='=&'
-parm=($A)
+parm=($1)
 IFS=$saveIFS
-#https://zoom.us/wc/258072517/join
 
 /usr/bin/firefox "https://grafana.zoom.us/wc/${parm[3]}/join"
