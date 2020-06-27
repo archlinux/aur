@@ -10,7 +10,7 @@ Description=oauth2-proxy daemon service
 User=oauth2_proxy
 Group=oauth2_proxy
 
-ExecStart=/usr/bin/oauth2-proxy -config=/etc/oauth2_proxy.cfg
+ExecStart=/usr/bin/oauth2-proxy --config /etc/oauth2_proxy.cfg
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

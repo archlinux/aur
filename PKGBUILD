@@ -12,7 +12,7 @@ install=oauth2_proxy.install
 source=("https://github.com/oauth2-proxy/oauth2-proxy/archive/v$pkgver.tar.gz"
         'oauth2_proxy.service')
 md5sums=('fe9b237bf06bde19375af80a5fd8c328'
-         '14de508241b8c55087a2491241382424')
+         'd74991327448729ed64c1369724f7857')
 
 build() {
   mkdir -p github.com/oauth2-proxy
