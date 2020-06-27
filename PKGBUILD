@@ -1,6 +1,6 @@
 # Maintainer: Jeff Wright <jeff@teamjk.page>
 pkgname=diskonaut
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="TUI disk space navigator written in rust"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
 	install -Dm 644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('50a1c28f3739b916aee00d557a559a20')
+md5sums=('94b7ac6cf8500dddcf0cc3c647c02b05')
