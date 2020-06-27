@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmenuedit-git
-pkgver=r754.389b7dc
+pkgver=r929.4289215
 pkgrel=1
 pkgdesc='KDE menu editor'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 conflicts=('kmenuedit' 'kdebase-workspace')
 provides=('kmenuedit')
 install=$pkgname.install
-source=('git://anongit.kde.org/kmenuedit.git')
+source=('git+https://github.com/KDE/kmenuedit.git')
 groups=('plasma')
 md5sums=('SKIP')
 
