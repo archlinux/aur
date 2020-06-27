@@ -13,14 +13,14 @@ source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgv
 sha256sums=('47bc06f85174d0caa18a7e52ad05c53c14e43225f8be173c731bdd73d8d1fad1')
 
 build() {
-    arch-meson $pkgname-$pkgver build
-    ninja -C build
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 check() {
-    ninja test -C build
+  meson test -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
