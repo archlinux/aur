@@ -1,0 +1,20 @@
+pkgbase = youtube
+	pkgdesc = Unnofficial Youtube desktop application
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/coreybruce/youtube
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = youtube
+	conflicts = youtube
+	source = git+https://gitlab.com/coreybruce/youtube.git
+	sha256sums = SKIP
+
+pkgname = youtube
+
