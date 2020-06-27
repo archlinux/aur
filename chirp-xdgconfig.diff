@@ -1,0 +1,22 @@
+--- a/chirp/platform.py	2020-06-25 22:08:20.101976074 -0700
++++ b/chirp/platform.py	2020-06-25 22:10:19.398639875 -0700
+@@ -275,8 +275,17 @@ class UnixPlatform(Platform):
+     """A platform module suitable for UNIX systems"""
+     def __init__(self, basepath):
+         if not basepath:
+-            basepath = os.path.abspath(os.path.join(self.default_dir(),
+-                                                    ".chirp"))
++            try:
++                basepath = os.path.abspath(os.path.join(
++                    os.environ["XDG_CONFIG_HOME"],
++                    "chirp"
++                ))
++            except KeyError:
++                basepath = os.path.abspath(os.path.join(
++                    self.default_dir(),
++                    ".config",
++                    "chirp"
++                ))
+ 
+         if not os.path.isdir(basepath):
+             os.mkdir(basepath)

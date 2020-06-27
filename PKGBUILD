@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad (kdkasad@gmail.com)
 pkgname=chirp-daily-latest
-pkgver=20200603
-pkgrel=1
+pkgver=20200622
+pkgrel=2
 pkgdesc="Latest build of Chirp - a GUI tool for programming ham radios"
 arch=('any')
 url="https://chirp.danplanet.com/"
@@ -11,19 +11,22 @@ optdepends=('hamradio-menus')
 options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
-sha1sums=(SKIP)
-source=("https://trac.chirp.danplanet.com/chirp_daily/LATEST/chirp-daily-${pkgver}.tar.gz")
+sha256sums=(
+	'SKIP'
+	'68dbeb5e23e277fb164111ca9a6a04ee3715c07c94b43c1d648222b2b25211fa'
+)
+source=(
+	"https://trac.chirp.danplanet.com/chirp_daily/daily-${pkgver}/chirp-daily-${pkgver}.tar.gz"
+	'chirp-xdgconfig.diff'
+)
 
 pkgver() {
 	curl -s https://trac.chirp.danplanet.com/chirp_daily/LATEST/ | grep -o 'chirp-daily-202[0-9]\{5\}\.tar\.gz' | sed 's/chirp-daily-//; s/\.tar\.gz//; 1q'
 }
 
 prepare() {
-	echo "${sha1sums}"
-}
-
-build() {
-	tar xvf ${pkgname%-latest}-${pkgver}.tar.gz
+	cd "chirp-daily-${pkgver}"
+	patch -p1 -i ../chirp-xdgconfig.diff
 }
 
 package() {
