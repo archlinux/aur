@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules git)
 conflicts=(kdecoration)
 provides=(kdecoration)
 groups=(plasma)
-source=("git+https://github.com/KDE/kdecoration.git")
+source=('git+https://github.com/KDE/kdecoration.git')
 sha256sums=('SKIP')
 
 pkgver() {
