@@ -5,6 +5,7 @@ pkgbase = elfio-git
 	url = https://github.com/serge1/ELFIO
 	arch = any
 	license = MIT
+	checkdepends = boost
 	makedepends = git
 	provides = elfio
 	conflicts = elfio

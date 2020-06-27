@@ -9,6 +9,7 @@ url="https://github.com/serge1/ELFIO"
 license=('MIT')
 depends=()
 makedepends=('git')
+checkdepends=('boost')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=()
