@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideodownloader
-pkgver=4.11.3.3420
-pkgrel=2
+pkgver=4.12.5.3670
+pkgrel=1
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-videodownloader"
@@ -13,7 +13,7 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.png"
         "fix_symlink_path.patch")
-sha256sums=('9a27ab67819a770199acf823a0557cd781aa302032fd7aa8ade68e40604ce1d0'
+sha256sums=('e79049d635292aca7c6e6e706ce08b9d4fad09fcd4a9bc51b4f8fd047e3c5f34'
             '6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952'
             '56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be'
             '2b5a9c262ff7b832eafbfb0e027b676a8be44f9c527b99ac00bd8379fc709668')
@@ -49,8 +49,11 @@ package() {
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Gui.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Network.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Positioning.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5PrintSupport.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Qml.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QmlModels.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Quick.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QuickWidgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebChannel.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineCore.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineWidgets.so.5"
