@@ -1,0 +1,14 @@
+pkgbase = python-gfycat-git
+	pkgdesc = A Python client for the Gfycat API
+	pkgver = r35.45c9fd4
+	pkgrel = 1
+	url = https://github.com/ankeshanand/py-gfycat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	source = python-gfycat::git+https://github.com/ankeshanand/py-gfycat
+	sha256sums = SKIP
+
+pkgname = python-gfycat-git
+
