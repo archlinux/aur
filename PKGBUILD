@@ -52,6 +52,6 @@ package() {
   cp ../boot.txt.v3 ../boot.txt
   echo "enable_uart=1" > ${pkgdir}/boot/config.txt
 
-  tools/mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}"/boot/boot.scr
+  tools/mkimage -A arm64 -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}"/boot/boot.scr
   cp ../{boot.txt,mkscr} "${pkgdir}"/boot
 }
