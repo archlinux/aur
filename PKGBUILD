@@ -1,11 +1,12 @@
 # Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
 pkgname=nyrna
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple program to pause games & applications'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3 or any later version')
+depends=('gendesk')
 optdepends=('libappindicator-gtk3: Tray icon support on GNOME')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/v$pkgver.tar.gz")
