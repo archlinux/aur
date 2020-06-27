@@ -11,11 +11,6 @@ depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('2a5a75e5319333138a678ceed8c6d41d3b5380ae3f503bf21de9028a442df66c')
 
-pkgver() {
-    cd "$pkgname"
-    git describe --tags `git rev-list --tags --max-count=1` | sed 's/-/./g'
-}
-
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
   mkdir -p $pkgdir/usr/local
