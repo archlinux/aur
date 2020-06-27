@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
-pkgver=r5821.11665af
-pkgrel=2
+pkgver=r6788.7763a1e0
+pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/kio-extras'
