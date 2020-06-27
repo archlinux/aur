@@ -1,6 +1,6 @@
 pkgbase = fontship-git
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.1.0.r17.gcdac314
+	pkgver = 0.1.1.r22.geff9d42
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = fontship-git
 	depends = libarchive
 	depends = make
 	depends = python
+	depends = python-babelfont
 	depends = python-brotli
 	depends = python-click
 	depends = python-cffsubr

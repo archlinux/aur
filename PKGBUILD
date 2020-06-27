@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.1.0.r17.gcdac314
+pkgver=0.1.1.r22.geff9d42
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -14,6 +14,7 @@ depends=('entr'
          'libarchive'
          'make'
          'python'
+         'python-babelfont'
          'python-brotli' # fonttools optdepends
          'python-click'
          'python-cffsubr' # ufo2ft optdepends
