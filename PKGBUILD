@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kimap
 pkgname=$_pkgname-git
-pkgver=r980.183349c
+pkgver=r990.aaf8977
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers (Git)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=(kmime kio)
 makedepends=(extra-cmake-modules git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kimap.git')
 sha256sums=('SKIP')
 
 pkgver() {
