@@ -12,9 +12,14 @@ depends=('hicolor-icon-theme'
          'qt5-webkit')
 makedepends=('qt5-base'
              'recode'
-             'googletest')
+             'gtest')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/wedesoft/anymeal/archive/v${pkgver}.tar.gz")
 sha256sums=('955852e050d7fe8810aed95088490e3b05cc3d9d4484efb612dc4b5cecefac40')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  sed -i "24s|googletest/googletest|googletest|" configure.ac
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
