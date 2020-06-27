@@ -1,6 +1,6 @@
 pkgbase = bluedevil-git
 	pkgdesc = KDE bluetooth framework
-	pkgver = r1821.eed7586
+	pkgver = r2124.020c8ab5
 	pkgrel = 1
 	url = https://projects.kde.org/projects/extragear/base/bluedevil
 	install = bluedevil-git.install
@@ -14,7 +14,7 @@ pkgbase = bluedevil-git
 	depends = kio-git
 	provides = bluedevil
 	conflicts = bluedevil
-	source = git://anongit.kde.org/bluedevil.git
+	source = git+https://github.com/KDE/bluedevil.git
 	sha256sums = SKIP
 
 pkgname = bluedevil-git

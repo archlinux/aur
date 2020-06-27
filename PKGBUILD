@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bluedevil-git
-pkgver=r1821.eed7586
+pkgver=r2124.020c8ab5
 pkgrel=1
 pkgdesc='KDE bluetooth framework'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ makedepends=(extra-cmake-modules-git git)
 provides=(bluedevil)
 conflicts=(bluedevil)
 install=$pkgname.install
-source=("git://anongit.kde.org/bluedevil.git")
+source=('git+https://github.com/KDE/bluedevil.git')
 groups=('plasma')
 sha256sums=('SKIP')
 
