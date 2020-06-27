@@ -1,14 +1,13 @@
 pkgbase = glcs-git
 	pkgdesc = OpenGL and ALSA Screencast Tool, based in GLC
 	pkgver = r511aeb71fa
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/lano1106/glcs/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
 	depends = libpng
 	depends = alsa-lib
 	depends = libgl

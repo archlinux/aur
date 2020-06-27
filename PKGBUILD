@@ -1,7 +1,7 @@
 # Maintainer: Jimmy Stelzer <jimmy.stelzer@gmail.com>
 pkgname=glcs-git
 pkgver=r511aeb71fa
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenGL and ALSA Screencast Tool, based in GLC"
 arch=('i686' 'x86_64')
 url="https://github.com/lano1106/glcs/"
@@ -22,6 +22,7 @@ md5sums=('SKIP')
 prepare(){
 	cd "${srcdir}/glcs"
 
+	sed -i 's/nullkey/ienorand/' .gitmodules
 	git submodule init
 	git submodule update
 }
