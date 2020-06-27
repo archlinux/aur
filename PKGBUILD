@@ -1,7 +1,8 @@
-# Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kdav-git
-pkgver=r1005.ce77993
+pkgver=r1228.3f8958e
 pkgrel=1
 pkgdesc='A DAV protocol implementation with KJobs '
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=('qt5-base')
 makedepends=('extra-cmake-modules' 'git')
 conflicts=(kdav)
 provides=(kdav)
-source=("git://anongit.kde.org/kdav.git")
+source=('git+https://github.com/KDE/kdav.git')
 sha256sums=('SKIP')
 
 pkgver() {
