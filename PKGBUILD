@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kglobalaccel-git
-pkgver=v4.100.0.rc1.r308.g16d6708
+pkgver=v4.100.0.rc1.r323.ge6790ab
 pkgrel=1
 pkgdesc='KGlobalAccel'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kglobalaccel)
 provides=(kglobalaccel)
-source=('git://anongit.kde.org/kglobalaccel.git')
+source=('git+https://github.com/KDE/kglobalaccel.git')
 md5sums=('SKIP')
 
 pkgver() {

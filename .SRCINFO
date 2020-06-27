@@ -1,6 +1,6 @@
 pkgbase = kglobalaccel-git
 	pkgdesc = KGlobalAccel
-	pkgver = v4.100.0.rc1.r308.g16d6708
+	pkgver = v4.100.0.rc1.r323.ge6790ab
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kglobalaccel
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = kglobalaccel-git
 	depends = kwindowsystem-git
 	provides = kglobalaccel
 	conflicts = kglobalaccel
-	source = git://anongit.kde.org/kglobalaccel.git
+	source = git+https://github.com/KDE/kglobalaccel.git
 	md5sums = SKIP
 
 pkgname = kglobalaccel-git
