@@ -9,7 +9,7 @@
 
 pkgname="omnetpp"
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Component-based simulation package designed for modeling communication networks"
 url="http://www.omnetpp.org"
 license=("Academic Public License")
@@ -26,11 +26,11 @@ DLAGENTS=(
   "https::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u"
 )
 source=(
-    omnetpp-5.5.1-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.5.1/omnetpp-5.5.1-src-linux.tgz"
+    omnetpp-${pkgver}-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-src-linux.tgz"
     OMNeT++.desktop
     )
-md5sums=('f7abe260ff47ec02a665e287c653db86'
-         '4e51f984f1a7114ab1f0b6f88fa4e0bc')
+sha512sums=('d36e1e1aee75ddaba3e61340e3fdd71beb00fc0d8bbf934ac4781ed65a2a9697495855f5fa3d7a5e54745cfc50c6df71e9538b274a8d3eaa341f408e5260991f'
+            'd92f9f791d6347317a1e833ca52a5423f30feaac6212ea5d280ad334541bcd8786252076598d45551b3c41d4b64423d9f4c05e67fe1a535bb03d951881f7e544')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
