@@ -14,7 +14,7 @@ _merge_requests_to_use=('1124' '1003' '1267') # safe pick
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.3+6+g44a335812
+pkgver=3.36.3+29+g3a70ba7ae
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=44a3358125317dbe2151cf0ac70ec2c382236881 # tags/3.36.3^6
+_commit=3a70ba7ae23489cca6dd12e6868c6e734155b974 # tags/3.36.3^29
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         "fix_clutter_actor_set_allocation_spam.patch")
 sha256sums=('SKIP'
