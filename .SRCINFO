@@ -1,7 +1,7 @@
 pkgbase = hmcl
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular
-	pkgver = 3.2.149
-	pkgrel = 2
+	pkgver = 3.3.172
+	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
@@ -11,10 +11,10 @@ pkgbase = hmcl
 	conflicts = hmcl
 	source = hmcl-launch-script
 	source = hmcl.desktop
-	source = hmcl-3.2.149.tgz::https://github.com/huanghongxun/HMCL/archive/8b16e8be4de9e7c81d62cea2fa665d6b1bbac6fd.tar.gz
+	source = hmcl-3.3.172.tgz::https://github.com/huanghongxun/HMCL/archive/bd18355a1a02a8f6a927edd7dadadbf18857e6e9.tar.gz
 	sha256sums = 5565dafda05a2f15e6d6c58aedc3a4c9191fa2f165796c9d9fc32fdf5efa1ab2
 	sha256sums = 5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e
-	sha256sums = 673d65ccf9790d62b1a6a771bb2ed09ddcd3e768408e01de2104813c960555a9
+	sha256sums = e8e092205541e142b3d31975afc89330fb27b1d367f90d5a66758b1b08816290
 
 pkgname = hmcl
 
