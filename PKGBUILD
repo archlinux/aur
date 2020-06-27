@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 groups=(kf5)
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kcalcore.git')
 sha256sums=('SKIP')
 
 pkgver() {
