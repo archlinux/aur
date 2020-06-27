@@ -4,7 +4,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts
-pkgver=2019.4.0f1
+pkgver=2019.4.1f1
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)"

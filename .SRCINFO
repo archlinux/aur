@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)
-	pkgver = 2019.4.0f1
+	pkgver = 2019.4.1f1
 	pkgrel = 1
 	epoch = 1
 	url = https://unity3d.com/
@@ -31,7 +31,7 @@ pkgbase = unity-editor-lts
 	optdepends = unityhub
 	optdepends = jq: needed for UnityHub integration helpers --register/--deregister
 	options = !strip
-	source = 2019.4.0f1.tar.xz::https://download.unity3d.com/download_unity/0af376155913/LinuxEditorInstaller/Unity.tar.xz
+	source = 2019.4.1f1.tar.xz::https://download.unity3d.com/download_unity/0af376155913/LinuxEditorInstaller/Unity.tar.xz
 	source = unity-editor-lts
 	source = unity-editor-lts.desktop
 	source = unity-editor-lts-icon.png
