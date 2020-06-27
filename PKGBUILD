@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=plasma-browser-integration
 pkgname=$_gitname-git
-pkgver=r301.9d6056c
+pkgver=r1114.365e08e6
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ depends=(krunner)
 makedepends=(extra-cmake-modules git python)
 conflicts=(plasma-browser-integration)
 provides=(plasma-browser-integration)
-source=("git://git.kde.org/$_gitname.git")
+source=('git+https://github.com/KDE/plasma-browser-integration.git')
 sha256sums=('SKIP')
 
 pkgver() {
