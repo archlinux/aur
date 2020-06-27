@@ -1,13 +1,14 @@
 pkgbase = cephadm
 	pkgdesc = Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers
 	pkgver = 15.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ceph.com/
 	arch = any
 	license = GPL2
 	license = LGPL2.1
 	license = LGPL3
 	depends = lvm2
+	depends = python>=3
 	optdepends = podman: container backend
 	optdepends = docker: container backend
 	optdepends = chrony: time sync service

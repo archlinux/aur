@@ -2,12 +2,12 @@
 
 pkgname=cephadm
 pkgver=15.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers'
 arch=('any')
 url="https://ceph.com/"
 license=('GPL2' 'LGPL2.1' 'LGPL3')
-depends=('lvm2')
+depends=('lvm2' 'python>=3')
 optdepends=('podman: container backend'
             'docker: container backend'
             'chrony: time sync service'
