@@ -1,0 +1,44 @@
+pkgbase = fcitx5-mozc
+	pkgdesc = Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
+	pkgver = 2.23.2815.102+0.0.0.20200626
+	pkgrel = 3
+	url = https://github.com/fcitx/mozc
+	arch = x86_64
+	license = custom
+	makedepends = pkg-config
+	makedepends = python2
+	makedepends = curl
+	makedepends = gtk2
+	makedepends = mesa
+	makedepends = subversion
+	makedepends = ninja
+	makedepends = git
+	makedepends = clang
+	depends = qt5-base
+	depends = fcitx5
+	depends = zinnia
+	conflicts = mozc
+	conflicts = mozc-server
+	conflicts = mozc-utils-gui
+	conflicts = mozc-fcitx
+	conflicts = fcitx-mozc
+	replaces = mozc-fcitx
+	source = git+https://github.com/fcitx/mozc.git#commit=f09c4e2ed57484cbc1dae75c4e02db2235718365
+	source = japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=
+	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=4ec6c4e3a94bd04a6da2858163d40b2429b8aad1
+	source = git+https://github.com/google/protobuf.git#commit=92a7e778e7394386f413cec28d67a07630f784b1
+	source = pr444.patch::https://fars.ee/2is4
+	source = https://downloads.sourceforge.net/pnsft-aur/x-ken-all-201810.zip
+	source = https://downloads.sourceforge.net/pnsft-aur/jigyosyo-201810.zip
+	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = fcitx5-mozc
+
