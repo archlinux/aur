@@ -1,8 +1,8 @@
 pkgbase = ruby-resque
 	pkgdesc = Resque is a Redis-backed queueing system.
-	pkgver = 1.25.2
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = http://github.com/defunkt/resque
+	url = https://github.com/resque/resque
 	arch = any
 	depends = ruby
 	depends = ruby-redis-namespace
@@ -10,10 +10,10 @@ pkgbase = ruby-resque
 	depends = ruby-sinatra
 	depends = ruby-multi_json
 	depends = ruby-mono_logger
-	noextract = resque-1.25.2.gem
+	noextract = resque-2.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/resque-1.25.2.gem
-	sha1sums = d380b4a3384a64fe6cffa9fa497de4fa3cc577f5
+	source = https://rubygems.org/downloads/resque-2.0.0.gem
+	sha512sums = a38750f285173d825a180f1a31745a353043119b03c235393bff33d06f1aa6038f92d389f73c7f286a7f7c602e95c0d8475fdb426b228aee9e37fee45363f165
 
 pkgname = ruby-resque
 
