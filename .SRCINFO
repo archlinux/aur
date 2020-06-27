@@ -1,5 +1,5 @@
 pkgbase = xfce-theme-greybird-geeko
-	pkgdesc = OpenSUSE's Modified 'Desktop Suite for Xfce
+	pkgdesc = OpenSUSE's Modified Desktop Suite for Xfce
 	pkgver = 3.22.11
 	pkgrel = 1
 	url = https://shimmerproject.org
