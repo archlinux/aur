@@ -12,7 +12,7 @@ makedepends=(git go make pam)
 optdepends=('xorg-server'
             'xorg-xauth: required if using xorgserver'
             'wayland: alternative to xorg')
-provides=("emptty=$pkgver")
+provides=("emptty")
 backup=('etc/emptty/conf')
 source=("git+${url}.git")
 sha256sums=('SKIP')

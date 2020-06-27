@@ -13,7 +13,7 @@ pkgbase = emptty-git
 	optdepends = xorg-server
 	optdepends = xorg-xauth: required if using xorgserver
 	optdepends = wayland: alternative to xorg
-	provides = emptty=0.2.0.r2.gfcc48d0
+	provides = emptty
 	backup = etc/emptty/conf
 	source = git+https://github.com/tvrzna/emptty.git
 	sha256sums = SKIP
