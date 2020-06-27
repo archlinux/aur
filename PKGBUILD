@@ -1,7 +1,7 @@
 # Maintainer: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=komga
-pkgver=0.40.1
+pkgver=0.41.1
 pkgrel=2
 pkgdesc="Media server for comics/mangas/BDs with API and OPDS support "
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://github.com/gotson/komga/releases/download/v${pkgver}/komga-${pk
         "komga.service"
         "komga.tmpfiles"
         "komga.env")
-md5sums=('c5690deb34ab4ea86330d4b740502afb'
+md5sums=('9a1b075c9145299d2ab4dd5ac89ad5df'
          'e5713c297be47045511f06664574754f'
          'cce81e91d6710d7413f4c934834ef8e4'
          '537b1c70998d793639a3132345af33f6'
