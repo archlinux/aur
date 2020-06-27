@@ -15,6 +15,18 @@ pkgbase = yanone-kaffeesatz-font
 	sha256sums = 82cfa4d8d6ab06d97b3d2e39d5631154c153dd29bc747669d05e5039d217943f
 	sha256sums = 6b7bc5cd5c13770e073c1d49da13bd5df98a88916acb2dadbfb07aeb636c50c9
 
+pkgname = otf-yanone-kaffeesatz
+	pkgdesc = Reminiscent of 1920s coffee house typography, bridges the gap to present times (OTF)
+	provides = yanone-kaffeesatz-font
+	conflicts = otf-yanone-kaffeesatz-ibx<2
+
+pkgname = otf-yanone-kaffeesatz-infinality
+	pkgdesc = Reminiscent of 1920s coffee house typography, bridges the gap to present times (OTF infinality configuration files)
+	groups = infinality-bundle-fonts-extra
+	depends = otf-yanone-kaffeesatz
+	provides = otf-yanone-kaffeesatz-ibx
+	replaces = otf-yanone-kaffeesatz-ibx
+
 pkgname = ttf-yanone-kaffeesatz
 	pkgdesc = Reminiscent of 1920s coffee house typography, bridges the gap to present times (TTF)
 	provides = yanone-kaffeesatz-font

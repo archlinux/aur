@@ -4,7 +4,7 @@
 
 _font=yanone-kaffeesatz
 pkgbase=$_font-font
-pkgname=(ttf-$_font{,-infinality}) # Add otf back when AUR merge complete
+pkgname=(otf-$_font{,-infinality} ttf-$_font{,-infinality})
 pkgver=2.001
 _sha=342dc8badffc187b2116099c5060e46c81eaf80d
 pkgrel=1
