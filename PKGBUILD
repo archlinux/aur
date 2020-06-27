@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=kgamma5
 pkgname=$_gitname-git
-pkgver=r294.89ebd8b
+pkgver=r422.a49ea60
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=(i686 x86_64)
@@ -13,7 +14,7 @@ makedepends=(extra-cmake-modules git kdoctools)
 conflicts=(kgamma5 kdegraphics-kgamma kgamma-git)
 provides=(kgamma5)
 replaces=(kgamma-git)
-source=("git://anongit.kde.org/$_gitname.git")
+source=('git+https://github.com/KDE/kgamma5.git')
 md5sums=('SKIP')
 
 pkgver() {

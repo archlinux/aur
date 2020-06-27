@@ -1,6 +1,6 @@
 pkgbase = kgamma5-git
 	pkgdesc = Adjust your monitor's gamma settings
-	pkgver = r294.89ebd8b
+	pkgver = r422.a49ea60
 	pkgrel = 1
 	url = https://projects.kde.org/kgamma5
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = kgamma5-git
 	provides = kgamma5
 	conflicts = kgamma5
 	conflicts = kdegraphics-kgamma
-	source = git://anongit.kde.org/kgamma5.git
+	conflicts = kgamma-git
+	replaces = kgamma-git
+	source = git+https://github.com/KDE/kgamma5.git
 	md5sums = SKIP
 
 pkgname = kgamma5-git
