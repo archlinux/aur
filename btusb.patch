@@ -1,26 +1,20 @@
---- a/btusb.c
-+++ b/btusb.c
-@@ -1591,7 +1591,8 @@ static int btusb_setup_csr(struct hci_dev *hdev)
+--- a/btusb.c	2020-06-27 17:40:20.667192656 -0300
++++ b/btusb.c	2020-06-27 17:50:51.051754917 -0300
+@@ -1652,6 +1652,7 @@
  
  	/* Detect controllers which aren't real CSR ones. */
  	if (le16_to_cpu(rp->manufacturer) != 10 ||
--	    le16_to_cpu(rp->lmp_subver) == 0x0c5c) {
 +	    le16_to_cpu(rp->lmp_subver) == 0x0811 ||
-+	    le16_to_cpu(rp->lmp_subver) == 0x0c5c) {
+ 	    le16_to_cpu(rp->lmp_subver) == 0x0c5c) {
  		/* Clear the reset quirk since this is not an actual
  		 * early Bluetooth 1.1 device from CSR.
- 		 */
-@@ -3229,7 +3230,9 @@ static int btusb_probe(struct usb_interface *intf,
+@@ -3892,7 +3893,8 @@
  			set_bit(HCI_QUIRK_RESET_ON_CLOSE, &hdev->quirks);
  
  		/* Fake CSR devices with broken commands */
 -		if (bcdDevice <= 0x100 || bcdDevice == 0x134)
-+		if (bcdDevice <= 0x100 ||
-+		    bcdDevice == 0x134 ||
++		if (bcdDevice <= 0x100 || bcdDevice == 0x134 ||
 +		    bcdDevice == 0x8891)
  			hdev->setup = btusb_setup_csr;
  
  		set_bit(HCI_QUIRK_SIMULTANEOUS_DISCOVERY, &hdev->quirks);
--- 
-2.22.0
-
