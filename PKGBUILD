@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
-source=("$pkgname::git+https://github.com/TheCynicalTeam/$pkgname.git")
-sha256sums=('8d6572a9f739a375e3895d0a766e40995a79f0376cc25e97a4af66c3aaf0eba7')
+source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+sha256sums=('7712ec407686122aa6422159abb9c3524f8710a46175fb9fc1b137e7ac288881')
 
 pkgver() {
     cd "$pkgname"
