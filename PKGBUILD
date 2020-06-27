@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khotkeys-git
-pkgver=r1758.4822573
-pkgrel=2
+pkgver=r1995.6629094
+pkgrel=1
 pkgdesc='KHotKeys'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -11,7 +12,7 @@ depends=('plasma-workspace-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools')
 conflicts=('khotkeys' 'kdebase-workspace')
 provides=('khotkeys')
-source=('git://anongit.kde.org/khotkeys.git')
+source=('git+https://github.com/KDE/khotkeys.git')
 groups=('plasma')
 md5sums=('SKIP')
 
