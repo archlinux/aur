@@ -1,6 +1,6 @@
 pkgbase = kidentitymanagement-git
 	pkgdesc = KDE PIM libraries
-	pkgver = r3678.e41aac31
+	pkgver = r3689.0f983efd
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = i686
