@@ -1,8 +1,9 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=17.11.90.r77.e778f08
+pkgver=17.11.90.r175.dbe18f1
 pkgrel=1
 pkgdesc="KDE library to assist determining when holidays occur"
 arch=("armv6h" "armv7h" "i686" "x86_64")
@@ -12,7 +13,7 @@ depends=("kdelibs4support")
 makedepends=("extra-cmake-modules-git" "git" "python")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("${pkgname%-git}::git://anongit.kde.org/${pkgname%-git}.git")
+source=('git+https://github.com/KDE/kholidays.git')
 sha256sums=("SKIP")
 
 pkgver() {
