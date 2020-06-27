@@ -1,6 +1,6 @@
 pkgbase = i3-maim
 	pkgdesc = simple screenshot script using maim
-	pkgver = v1.3.0
+	pkgver = 2020.6.27
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-maim
 	arch = any
