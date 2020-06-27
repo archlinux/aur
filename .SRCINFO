@@ -1,6 +1,6 @@
 pkgbase = kxmlrpcclient-git
 	pkgdesc = XML-RPC client library for KDE
-	pkgver = r397.63347b4b3
+	pkgver = r400.1005c7036
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/kxmlrpcclient
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kxmlrpcclient-git
 	depends = kio
 	provides = kxmlrpcclient
 	conflicts = kxmlrpcclient
-	source = git://anongit.kde.org/kxmlrpcclient.git
+	source = git+https://github.com/KDE/kxmlrpcclient.git
 	md5sums = SKIP
 
 pkgname = kxmlrpcclient-git

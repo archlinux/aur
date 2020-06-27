@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kxmlrpcclient
 pkgname=$_pkgname-git
-pkgver=r397.63347b4b3
+pkgver=r400.1005c7036
 pkgrel=1
 pkgdesc="XML-RPC client library for KDE"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('kio')
 makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git://anongit.kde.org/$_pkgname.git")
+source=('git+https://github.com/KDE/kxmlrpcclient.git')
 md5sums=('SKIP')
 
 pkgver() {
