@@ -1,9 +1,10 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=kpackage-git
-pkgver=r198.09e0ac7
-pkgrel=2
+pkgver=r584.d8c432a
+pkgrel=1
 pkgdesc="Framework that lets applications manage user installable packages of non-binary assets"
 arch=(i686 x86_64)
 url="https://projects.kde.org/projects/frameworks/kpackage"
@@ -13,7 +14,7 @@ makedepends=(extra-cmake-modules-git git qt5-tools python kdoctools-git)
 groups=(kf5)
 conflicts=(kpackage)
 provides=(kpackage)
-source=("git://anongit.kde.org/kpackage.git")
+source=('git+https://github.com/KDE/kpackage.git')
 md5sums=('SKIP')
 
 pkgver() {
