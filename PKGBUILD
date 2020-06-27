@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksshaskpass-git
 pkgver=r30.d44b1e0
@@ -11,7 +12,7 @@ depends=(kwallet)
 makedepends=(extra-cmake-modules git python kdoctools)
 conflicts=(ksshaskpass)
 provides=(ksshaskpass)
-source=('git://anongit.kde.org/ksshaskpass.git' 'ksshaskpass.sh')
+source=('git+https://github.com/KDE/ksshaskpass.git')
 groups=('plasma')
 md5sums=('SKIP'
          'aef2815fb704c98737f23eead3b4e894')

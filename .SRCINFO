@@ -14,8 +14,7 @@ pkgbase = ksshaskpass-git
 	depends = kwallet
 	provides = ksshaskpass
 	conflicts = ksshaskpass
-	source = git://anongit.kde.org/ksshaskpass.git
-	source = ksshaskpass.sh
+	source = git+https://github.com/KDE/ksshaskpass.git
 	md5sums = SKIP
 	md5sums = aef2815fb704c98737f23eead3b4e894
 
