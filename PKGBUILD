@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbookmarks-git
-pkgver=v4.100.0.rc1.r271.g8dea7ca
+pkgver=v5.71.0.rc1.r1.g31e2e33
 pkgrel=1
 pkgdesc='KBookmarks'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kbookmarks)
 provides=(kbookmarks)
-source=('git://anongit.kde.org/kbookmarks.git')
+source=('git+https://github.com/KDE/kbookmarks.git')
 md5sums=('SKIP')
 
 pkgver() {

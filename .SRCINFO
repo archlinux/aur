@@ -1,6 +1,6 @@
 pkgbase = kbookmarks-git
 	pkgdesc = KBookmarks
-	pkgver = v4.100.0.rc1.r271.g8dea7ca
+	pkgver = v5.71.0.rc1.r1.g31e2e33
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kbookmarks
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kbookmarks-git
 	depends = kxmlgui-git
 	provides = kbookmarks
 	conflicts = kbookmarks
-	source = git://anongit.kde.org/kbookmarks.git
+	source = git+https://github.com/KDE/kbookmarks.git
 	md5sums = SKIP
 
 pkgname = kbookmarks-git
