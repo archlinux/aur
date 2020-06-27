@@ -1,0 +1,66 @@
+From 95f3676aaad77c3a2c19eec5db73b42d3762b53a Mon Sep 17 00:00:00 2001
+From: Tomasz Torcz <tomek@pipebreaker.pl>
+Date: Wed, 29 Jan 2020 20:28:56 +0100
+Subject: [PATCH] move persistence_mutex variable to the file where it is used
+ most
+
+  GCC 10 default to -fno-common, which uncovers following errors:
+/usr/bin/ld: from_client.o:/builddir/build/BUILD/owfs-3.2p3/module/owserver/src/c/../include/owserver.h:21:
+multiple definition of `persistence_mutex';
+owserver.o:/builddir/build/BUILD/owfs-3.2p3/module/owserver/src/c/../include/owserver.h:21: first defined here
+
+  This can be fixed by moving variable definition from .h into .c file,
+and using "extern" for other uses of the variable. For more info
+see https://bugzilla.redhat.com/show_bug.cgi?id=1794368
+
+Note: this commit partially reverts 34276f3412a3cdbe0f98142420ad271fab0ec5d3
+---
+ module/owserver/src/c/handler.c        | 4 ++++
+ module/owserver/src/c/owserver.c       | 3 +++
+ module/owserver/src/include/owserver.h | 4 ----
+ 3 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/module/owserver/src/c/handler.c b/module/owserver/src/c/handler.c
+index 56c2da1e..b6aa4d93 100644
+--- a/module/owserver/src/c/handler.c
++++ b/module/owserver/src/c/handler.c
+@@ -36,6 +36,10 @@
+ 
+ #include "owserver.h"
+ 
++pthread_mutex_t persistence_mutex ;
++#define PERSISTENCELOCK    _MUTEX_LOCK(   persistence_mutex ) ;
++#define PERSISTENCEUNLOCK  _MUTEX_UNLOCK( persistence_mutex ) ;
++
+ /* Counters for persistent connections */
+ int persistent_connections = 0;
+ int handler_count = 0 ;
+diff --git a/module/owserver/src/c/owserver.c b/module/owserver/src/c/owserver.c
+index db29988e..1714f459 100644
+--- a/module/owserver/src/c/owserver.c
++++ b/module/owserver/src/c/owserver.c
+@@ -36,6 +36,9 @@
+ 
+ #include "owserver.h"
+ 
++/* defined in handler.c */
++extern pthread_mutex_t persistence_mutex ;
++
+ /* --- Prototypes ------------ */
+ static void SetupAntiloop(int argc, char **argv);
+ 
+diff --git a/module/owserver/src/include/owserver.h b/module/owserver/src/include/owserver.h
+index 8be582f0..a6f085a7 100644
+--- a/module/owserver/src/include/owserver.h
++++ b/module/owserver/src/include/owserver.h
+@@ -18,10 +18,6 @@
+ #include "ow.h"
+ #include "ow_connection.h"
+ 
+-pthread_mutex_t persistence_mutex ;
+-#define PERSISTENCELOCK    _MUTEX_LOCK(   persistence_mutex ) ;
+-#define PERSISTENCEUNLOCK  _MUTEX_UNLOCK( persistence_mutex ) ;
+-
+ #define TOCLIENTLOCK(hd) _MUTEX_LOCK( (hd)->to_client )
+ #define TOCLIENTUNLOCK(hd) _MUTEX_UNLOCK( (hd)->to_client )
+ 
