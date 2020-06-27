@@ -8,7 +8,6 @@ pkgbase = alsa-lib-a52pcm
 	depends = glibc
 	depends = alsa-topology-conf
 	depends = alsa-ucm-conf
-	depends = libavresample
 	provides = libasound.so
 	provides = libatopology.so
 	provides = alsa-lib
