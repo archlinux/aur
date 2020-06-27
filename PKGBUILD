@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktextwidgets-git
-pkgver=v4.100.0.rc1.r259.g598e8bf
+pkgver=v4.100.0.rc1.r284.gf8e301e
 pkgrel=1
 pkgdesc='KTextWidgets'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(ktextwidgets)
 provides=(ktextwidgets)
-source=('git://anongit.kde.org/ktextwidgets.git')
+source=('git+https://github.com/KDE/ktextwidgets.git')
 md5sums=('SKIP')
 
 pkgver() {

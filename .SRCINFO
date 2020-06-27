@@ -1,6 +1,6 @@
 pkgbase = ktextwidgets-git
 	pkgdesc = KTextWidgets
-	pkgver = v4.100.0.rc1.r259.g598e8bf
+	pkgver = v4.100.0.rc1.r284.gf8e301e
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/ktextwidgets
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ktextwidgets-git
 	depends = sonnet-git
 	provides = ktextwidgets
 	conflicts = ktextwidgets
-	source = git://anongit.kde.org/ktextwidgets.git
+	source = git+https://github.com/KDE/ktextwidgets.git
 	md5sums = SKIP
 
 pkgname = ktextwidgets-git
