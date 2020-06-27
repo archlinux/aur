@@ -1,13 +1,14 @@
 pkgbase = ipe
 	pkgdesc = The extensible drawing editor
 	pkgver = 7.2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ipe.otfried.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = lua
 	depends = qt5-base
+	depends = qt5-svg
 	depends = freetype2
 	depends = zlib
 	depends = poppler
