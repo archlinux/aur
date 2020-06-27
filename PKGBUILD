@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=v5.18.2.r117.ga97d4e099
+pkgver=v5.19.2.r110.g898bd496d
 pkgrel=1
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
@@ -13,7 +14,7 @@ makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
 conflicts=(kwin kdebase-workspace)
 provides=(kwin)
 install=$pkgname.install
-source=('git://anongit.kde.org/kwin.git')
+source=('git+https://github.com/KDE/kwin.git')
 groups=('plasma')
 md5sums=('SKIP')
 
