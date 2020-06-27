@@ -8,7 +8,6 @@ pkgbase = i3-balance-workspace
 	makedepends = python-setuptools
 	depends = python>=3.5.0,
 	depends = python-i3ipc
-	replaces = i3-balance-workspace-git
 	source = https://files.pythonhosted.org/packages/source/i/i3-balance-workspace/i3-balance-workspace-1.6.3.tar.gz
 	md5sums = f3543e2285aec87d63856b978e63f233
 
