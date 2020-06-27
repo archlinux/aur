@@ -1,16 +1,17 @@
-# Maintainer: Antoine GIRARD <sapk AT sapk.fr>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Antoine GIRARD <sapk AT sapk.fr>
 
 pkgname='xmrig-nvidia-git'
-pkgver=r92.97ebe8b
+pkgver=2.14.5.r0.ga047dc3
 pkgrel=1
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
 depends=('libuv' 'cuda')
 optdepends=('monero: wallet')
-makedepends=('git' 'cmake' 'libuv' 'cuda')
+makedepends=('git' 'cmake' 'libuv' 'cuda' 'gcc8')
 license=('GPL')
-changelog=CHANGELOG.md
 source=("git+https://github.com/xmrig/xmrig-nvidia.git")
 sha256sums=('SKIP')
 provides=('xmrig-nvidia')
@@ -18,7 +19,8 @@ conflicts=('xmrig-nvidia')
 
 pkgver() {
   cd "$srcdir/xmrig-nvidia"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -26,14 +28,13 @@ prepare() {
 
   # create build dir
   [ -d build ] || mkdir build
-
-  # reset default donate level
-  sed -i -e 's/constexpr const int kDonateLevel = 5;/constexpr const int kDonateLevel = 0;/g' src/donate.h
 }
 
 build() {
   cd "${srcdir}/xmrig-nvidia/build"
-  cmake -DWITH_HTTPD=OFF -DCMAKE_C_COMPILER=gcc-6 -DCMAKE_CXX_COMPILER=g++-6 ..
+
+  # CUDA on ArchLinux uses GCC 8.0
+  cmake -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 ..
   make
 }
 
