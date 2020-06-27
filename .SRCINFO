@@ -1,0 +1,22 @@
+pkgbase = xfce-theme-greybird-geeko
+	pkgdesc = OpenSUSE's Modified 'Desktop Suite for Xfce
+	pkgver = 3.22.11
+	pkgrel = 1
+	url = https://shimmerproject.org
+	arch = any
+	license = GPL
+	makedepends = librsvg
+	makedepends = meson
+	makedepends = ruby-sass
+	makedepends = sassc
+	depends = gtk-engine-murrine
+	depends = gtk3
+	optdepends = elementary-xfce-icons: matching icon set; use the dark icon theme
+	optdepends = lightdm-gtk-greeter: required for the LightDM GTK theme
+	optdepends = shimmer-wallpapers: contains the Greybird wallpaper, among others
+	optdepends = lib32-gtk-engine-murrine: required for multilib
+	source = xfce-theme-greybird-geeko-3.22.11.tar.gz::https://github.com/shimmerproject/Greybird-Geeko/archive/v3.22.11.tar.gz
+	sha256sums = 3c71ae4377cc86d16093fb7d796b2762f869d8b6d2281649ea41b4aaab595cf9
+
+pkgname = xfce-theme-greybird-geeko
+
