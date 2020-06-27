@@ -1,7 +1,7 @@
 pkgbase = theia-electron
 	pkgdesc = Cloud & Desktop IDE Platform
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theia-ide.org/
 	arch = any
 	license = EPL2
@@ -29,7 +29,7 @@ pkgbase = theia-electron
 	md5sums = 54b30057095cf131ec7296b0d0bd2046
 	md5sums = b316dead79fa33f45c8d689a1c940dab
 	md5sums = 1dde0e422484895d3509f4ee9bb8d980
-	md5sums = 6befbd553f609c8f4e48805013bc71c7
+	md5sums = 84e52389f141be88a24bcfdd44c91a19
 
 pkgname = theia-electron
 
