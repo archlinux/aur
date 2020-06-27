@@ -1,13 +1,11 @@
 pkgbase = elfio-git
 	pkgdesc = ELFIO is a small, header-only C++ library that provides a simple interface for reading and generating files in ELF binary format
-	pkgver = Release_3.3.r23.g155d986
+	pkgver = Release_3.3.r39.gfd081b0
 	pkgrel = 1
 	url = https://github.com/serge1/ELFIO
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
-	depends = gcc-libs
 	provides = elfio
 	conflicts = elfio
 	source = elfio-git::git+https://github.com/serge1/ELFIO.git

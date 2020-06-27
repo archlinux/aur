@@ -1,13 +1,13 @@
 # Maintainer: Otreblan <oteblain@gmail.com>
 
 pkgname=elfio-git
-pkgver=Release_3.3.r23.g155d986
+pkgver=Release_3.3.r39.gfd081b0
 pkgrel=1
 pkgdesc="ELFIO is a small, header-only C++ library that provides a simple interface for reading and generating files in ELF binary format"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/serge1/ELFIO"
 license=('MIT')
-depends=('gcc-libs')
+depends=()
 makedepends=('git')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
 	autoreconf --install
 	./configure --prefix=/usr
@@ -32,12 +32,17 @@ build() {
 }
 
 check() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname/ELFIOTest"
+
+	autoreconf --install
+	./configure
 	make -k check
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
+
+	rm -rf "$pkgdir/usr/bin"
 	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
