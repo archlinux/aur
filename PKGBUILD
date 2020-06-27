@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=2.0.1064.975a49b34
+pkgver=.1145.0ff88bbab
 pkgrel=1
 pkgdesc="KDialog can be used to show nice dialog boxes from shell scripts. (GIT version)"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ conflicts=('kdebase-kdialog'
            'kdialog'
            )
 provides=('kdialog')
-source=('git+https://anongit.kde.org/kdialog')
+source=('git+https://github.com/KDE/kdialog.git')
 sha256sums=('SKIP')
 
 pkgver() {
