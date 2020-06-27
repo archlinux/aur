@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=r3581.6455c02
-pkgrel=2
+pkgver=r7717.4c4ce2dbc
+pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -16,7 +17,7 @@ conflicts=(plasma-desktop kdebase-workspace kdebase-kdepasswd kcm-touchpad-frame
 provides=(plasma-desktop)
 replaces=(kcm-touchpad-git)
 install=$pkgname.install
-source=('git://anongit.kde.org/plasma-desktop.git')
+source=('git+https://github.com/KDE/plasma-desktop.git')
 groups=('plasma')
 md5sums=('SKIP')
 
