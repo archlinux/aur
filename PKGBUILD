@@ -28,9 +28,11 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        force-mp3-files-to-have-a-start-time-of-zero.patch
         chromium-skia-harmony.patch)
 sha256sums=('6a38f142ffd5c222e7019a55602df89016ec8a2160fba75b4575e2ad17824b12'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -86,6 +88,9 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
+  patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -146,7 +151,6 @@ build() {
     'use_system_libwayland=true'
     'use_vaapi=false'
     'enable_nacl=false'
-    'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
@@ -189,21 +193,36 @@ package() {
   install -Dm644 chrome/app/resources/manpage.1.in \
     "$pkgdir/usr/share/man/man1/chromium.1"
   sed -i \
-    -e "s/@@MENUNAME@@/Chromium/g" \
-    -e "s/@@PACKAGE@@/chromium/g" \
-    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    -e 's/@@MENUNAME@@/Chromium/g' \
+    -e 's/@@PACKAGE@@/chromium/g' \
+    -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
-  cp \
-    out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/{*.bin,chromedriver} \
-    "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+  sed -ni \
+    -e 's/chromium-browser\.desktop/chromium.desktop/' \
+    -e '/<update_contact>/d' \
+    -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
+    -e '/^<?xml/,$p' \
+    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+
+  local toplevel_files=(
+    chrome_100_percent.pak
+    chrome_200_percent.pak
+    resources.pak
+    v8_context_snapshot.bin
+    chromedriver
+  )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+    toplevel_files+=(icudtl.dat)
   fi
+
+  cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
