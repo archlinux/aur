@@ -1,0 +1,17 @@
+pkgbase = uml_utilities-fixed
+	pkgdesc = User Mode Linux Utilities (Debian package uml-utilities). It contains uml_net, uml_mconsole, uml_switch, tunctl, … and the lib port-helper.
+	pkgver = 20070815
+	pkgrel = 1
+	url = http://user-mode-linux.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fuse
+	depends = readline
+	source = http://user-mode-linux.sourceforge.net/uml_utilities-fixed_20070815.tar.bz2
+	source = uml_utilities.patch
+	md5sums = b0468ac8b79cef53f36f5f9517907462
+	md5sums = 8fbcca01953da90c48f5ec06f564480f
+
+pkgname = uml_utilities-fixed
+
