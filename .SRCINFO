@@ -1,6 +1,6 @@
 pkgbase = android-sdk-cmdline-tools-latest
 	pkgdesc = Android SDK Command-line Tools (latest)
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://developer.android.com/studio
 	install = android-sdk-cmdline-tools-latest.install
@@ -12,10 +12,10 @@ pkgbase = android-sdk-cmdline-tools-latest
 	optdepends = android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx
 	optdepends = android-udev: udev rules for Android devices
 	provides = android-sdk
-	source = https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
+	source = https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 	source = android-sdk-cmdline-tools-latest.sh
 	source = android-sdk-cmdline-tools-latest.csh
-	sha1sums = 14b2114c6eae9e10686a18138d2bb468c46f8e0c
+	sha1sums = 9172381ff070ee2a416723c1989770cf4b0d1076
 	sha1sums = d16076f0a7cbc78605b5669d0928963a9866e7f4
 	sha1sums = 3e844b22bfcbc159280c5f9e8dfb07ff9559dde5
 
