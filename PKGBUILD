@@ -10,8 +10,8 @@ license=('MIT')
 depends=(pam)
 makedepends=(git go make pam)
 optdepends=('xorg-server'
-            'xorg-xauth: required if using xorgserver'
-            'wayland: alternative to xorg')
+            'xorg-xauth: required if using xorg-server'
+            'wayland: alternative to xorg-server')
 provides=("emptty")
 backup=('etc/emptty/conf')
 source=("git+${url}.git")
