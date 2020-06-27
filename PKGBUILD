@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
-pkgver=r46
+pkgver=r47
 pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ pkgver(){
 
 build(){
 	cd "$srcdir/${pkgname%-*}/lib-src/libsndfile"
+	sed -i "s/am__api_version='1.15'/am__api_version='1.16'/" configure
 	chmod +x configure
 	./configure --disable-external-libs
 	make
@@ -35,7 +36,7 @@ build(){
 	./configure --with-alsa
 	make
 	cd ..
-	ln -sf rtaudio/librtaudio.a .
+	ln -sf rtaudio/.libs/librtaudio.a .
 	cd ../src
 	g++ -D__LINUX_ALSA__ -o LoopAuditioneer LoopAuditioneer.cpp MyFrame.cpp \
 	MyPanel.cpp CueMarkers.cpp LoopMarkers.cpp FileHandling.cpp MySound.cpp \
