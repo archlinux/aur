@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcompletion-git
-pkgver=v4.100.0.rc1.r267.g897e77e
+pkgver=v5.71.0.rc1.r3.g30919db
 pkgrel=1
 pkgdesc='KCompletion'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kcompletion)
 provides=(kcompletion)
-source=('git://anongit.kde.org/kcompletion.git')
+source=('git+https://github.com/KDE/kcompletion.git')
 md5sums=('SKIP')
 
 pkgver() {
