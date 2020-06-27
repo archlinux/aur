@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kinfocenter-git
-pkgver=r1115.bf81b3e
-pkgrel=2
+pkgver=r1709.7d6656c
+pkgrel=1
 pkgdesc='KInfocenter'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -11,7 +12,7 @@ depends=('kdelibs4support-git' 'kcmutils-git' 'kwayland-git' 'pciutils' 'glu' 'l
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'plasma-framework-git')
 conflicts=('kinfocenter' 'kdebase-workspace')
 provides=('kinfocenter')
-source=('git://anongit.kde.org/kinfocenter.git')
+source=('git+https://github.com/KDE/kinfocenter.git')
 groups=('plasma')
 md5sums=('SKIP')
 
