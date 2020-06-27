@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=v4.100.0.rc1.r482.g7209b45
+pkgver=v4.100.0.rc1.r506.gbb4bab8
 pkgrel=1
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(kxmlgui)
 provides=(kxmlgui)
-source=('git://anongit.kde.org/kxmlgui.git')
+source=('git+https://github.com/KDE/kxmlgui.git')
 md5sums=('SKIP')
 
 pkgver() {

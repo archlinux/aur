@@ -1,6 +1,6 @@
 pkgbase = kxmlgui-git
 	pkgdesc = KXmlGUI
-	pkgver = v4.100.0.rc1.r482.g7209b45
+	pkgver = v4.100.0.rc1.r506.gbb4bab8
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kxmlgui
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = kxmlgui-git
 	depends = attica-git
 	provides = kxmlgui
 	conflicts = kxmlgui
-	source = git://anongit.kde.org/kxmlgui.git
+	source = git+https://github.com/KDE/kxmlgui.git
 	md5sums = SKIP
 
 pkgname = kxmlgui-git
