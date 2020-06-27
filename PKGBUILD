@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kunitconversion-git
-pkgver=r87.366d2ff
-pkgrel=3
+pkgver=r312.db967cf
+pkgrel=1
 pkgdesc='KUnitConversion'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kunitconversion'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=('kunitconversion')
 provides=('kunitconversion')
-source=('git://anongit.kde.org/kunitconversion.git')
+source=('git+https://github.com/KDE/kunitconversion.git')
 md5sums=('SKIP')
 
 pkgver() {
