@@ -1,6 +1,6 @@
 pkgname=twitch
 _pkgname=Twitch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
 arch=('x86_64')
