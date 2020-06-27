@@ -1,6 +1,6 @@
 pkgbase = cgproxy-git
 	pkgdesc = A transparent proxy program powered by cgroup2 and tproxy
-	pkgver = v0.16.r2.g46fb9ba
+	pkgver = v0.16.r5.ga4628cf
 	pkgrel = 1
 	url = https://github.com/springzfx/cgproxy
 	install = cgproxy.install
@@ -14,6 +14,8 @@ pkgbase = cgproxy-git
 	makedepends = bpf
 	depends = gcc-libs
 	depends = systemd
+	depends = which
+	depends = iproute2
 	provides = cgproxy
 	conflicts = cgproxy
 	backup = etc/cgproxy/config.json
