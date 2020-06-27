@@ -8,8 +8,8 @@ pkgbase = qt-logout
 	depends = python-pyqt5
 	depends = multimonitorlock
 	depends = gtk-engine-murrine
-	source = https://github.com/TheCynicalTeam/qt-logout/archive/2020.6.27-1.tar.gz
-	sha256sums = 7712ec407686122aa6422159abb9c3524f8710a46175fb9fc1b137e7ac288881
+	source = qt-logout::git+https://github.com/TheCynicalTeam/qt-logout.git
+	sha256sums = 8d6572a9f739a375e3895d0a766e40995a79f0376cc25e97a4af66c3aaf0eba7
 
 pkgname = qt-logout
 
