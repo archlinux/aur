@@ -1,0 +1,14 @@
+pkgbase = python-asysocks
+	pkgdesc = Socks5/Socks4 client and server python library
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/asysocks
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = asysocks-0.0.4.tar.gz::https://files.pythonhosted.org/packages/87/ea/2a265b8c071d268836434fc729152ccce8e3a5205558d9fefa7adcfca393/asysocks-0.0.4.tar.gz
+	sha256sums = a754905b98a8cdad1d53e3cb8092b5df77c8021e1a09623e93ea1a5565494b62
+
+pkgname = python-asysocks
+
