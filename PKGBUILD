@@ -2,7 +2,7 @@
 
 pkgname=deepin.com.qq.qqmusic
 pkgver=17.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQMusic Client on Deepin Wine"
 arch=('i686' 'x86_64')
 url="https://github.com/gorquan/QQMusic"
@@ -16,4 +16,5 @@ prepare() {
 package() {
     cd "$srcdir"
     mv opt usr "$pkgdir"
+    sed -i 's|Categories=media;|Categories=AudioVideo;Player;|' "$pkgdir"/usr/share/applications/qqmusic.desktop
 }
