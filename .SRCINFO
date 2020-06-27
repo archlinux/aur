@@ -1,6 +1,6 @@
 pkgbase = kdeclarative-git
 	pkgdesc = KDeclarative
-	pkgver = v4.100.0.rc1.r568.g0dad857
+	pkgver = v5.71.0.rc1.r2.g087286f
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kdeclarative
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kdeclarative-git
 	depends = libepoxy
 	provides = kdeclarative
 	conflicts = kdeclarative
-	source = git://anongit.kde.org/kdeclarative.git
+	source = git+https://github.com/KDE/kdeclarative.git
 	md5sums = SKIP
 
 pkgname = kdeclarative-git

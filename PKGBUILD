@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdeclarative-git
-pkgver=v4.100.0.rc1.r568.g0dad857
+pkgver=v5.71.0.rc1.r2.g087286f
 pkgrel=1
 pkgdesc='KDeclarative'
 arch=(i686 x86_64)
@@ -11,7 +12,7 @@ depends=('kpackage-git' 'kio-git' 'libepoxy')
 makedepends=('extra-cmake-modules-git' 'git' 'python')
 conflicts=('kdeclarative')
 provides=('kdeclarative')
-source=('git://anongit.kde.org/kdeclarative.git')
+source=('git+https://github.com/KDE/kdeclarative.git')
 md5sums=('SKIP')
 
 pkgver() {
