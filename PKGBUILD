@@ -1,9 +1,10 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _pkgname=ksystemlog
 pkgname=${_pkgname}-git
-pkgver=0.4.r325.7b08ba7
+pkgver=.r475.0e1ad31
 pkgrel=1
 pkgdesc='KDE SystemLog Application. (GIT version)'
 arch=('i686' 'x86_64')
@@ -12,8 +13,8 @@ license=(GPL)
 depends=('kio')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('kdeadmin-ksystemlog' 'ksystemlog' 'ksystemlog-frameworks-git')
-provides=${_pkgname}
-source=("${_pkgname}::git://anongit.kde.org/ksystemlog.git")
+provides=("${_pkgname}")
+source=('git+https://github.com/KDE/ksystemlog.git')
 sha1sums=('SKIP')
 install=${pkgname}.install
 

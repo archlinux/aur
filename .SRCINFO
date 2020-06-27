@@ -1,6 +1,6 @@
 pkgbase = ksystemlog-git
 	pkgdesc = KDE SystemLog Application. (GIT version)
-	pkgver = 0.4.r325.7b08ba7
+	pkgver = .r475.0e1ad31
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdeadmin/ksystemlog
 	install = ksystemlog-git.install
@@ -16,7 +16,7 @@ pkgbase = ksystemlog-git
 	conflicts = kdeadmin-ksystemlog
 	conflicts = ksystemlog
 	conflicts = ksystemlog-frameworks-git
-	source = ksystemlog::git://anongit.kde.org/ksystemlog.git
+	source = git+https://github.com/KDE/ksystemlog.git
 	sha1sums = SKIP
 
 pkgname = ksystemlog-git
