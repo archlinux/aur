@@ -2,6 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 
 pkgname=xwingridselect
+_gitname=xwingridselect
 pkgver=2020.6.27
 pkgrel=1
 pkgdesc="X11 window switcher with fancy look"
@@ -16,12 +17,12 @@ source=('git+https://github.com/TheCynicalTeam/xwingridselect.git')
 md5sums=('SKIP')
 
 build() {
-  cd $pkgname
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SCRIPTS=ON "$srcdir/$pkgname"
+  cd $_gitname
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SCRIPTS=ON "$srcdir/$_gitname"
   make || return 1
 }
 
 package() {
-  cd $pkgname
+  cd $_gitname
   make DESTDIR="$pkgdir" install
 }
