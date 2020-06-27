@@ -1,7 +1,7 @@
 pkgbase = oauth2_proxy
 	pkgdesc = A reverse proxy that provides authentication with Google, Github or other providers.
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oauth2-proxy/oauth2-proxy
 	install = oauth2_proxy.install
 	arch = i686
