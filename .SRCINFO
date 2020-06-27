@@ -1,0 +1,15 @@
+pkgbase = openelp
+	pkgdesc = Open source EchoLink Proxy
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/cottsay/openelp
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = pcre2
+	backup = etc/ELProxy.conf
+	source = openelp-0.8.0.tar.gz::https://github.com/cottsay/openelp/archive/v0.8.0.tar.gz
+	md5sums = 6c53dd1fc35c330d3f970122fd91849c
+
+pkgname = openelp
+
