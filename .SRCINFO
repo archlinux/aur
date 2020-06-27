@@ -1,0 +1,14 @@
+pkgbase = python-minidump
+	pkgdesc = Python library to parse and read Microsoft minidump file format
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://pypi.org/project/minidump
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = minidump-0.0.13.tar.gz::https://files.pythonhosted.org/packages/a9/cb/8465e1f2b3ea39764dce7726543ed8519b0bd8cef4aede075298a01e0ac9/minidump-0.0.13.tar.gz
+	sha256sums = ba8a988f915e53005f8b4747515269e7ab7c937bc74ab09fec949edf04f423f1
+
+pkgname = python-minidump
+
