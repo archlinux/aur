@@ -1,0 +1,14 @@
+pkgbase = python-neobolt
+	pkgdesc = Neo4j Bolt connector for Python
+	pkgver = 1.7.17
+	pkgrel = 1
+	url = https://pypi.org/project/neobolt/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = neobolt-1.7.17.tar.gz::https://files.pythonhosted.org/packages/8b/f9/d92485b99ffd557d5020bd30e9f8dae49abdad23623b15113d72f2fbe18f/neobolt-1.7.17.tar.gz
+	sha256sums = 1d0d5efce7221fc4f0ffc4a315bc5272708be5aa2aef5434269e800372d8db89
+
+pkgname = python-neobolt
+
