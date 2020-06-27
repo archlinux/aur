@@ -1,6 +1,6 @@
 pkgbase = frameworkintegration-git
 	pkgdesc = Framework providing components to allow applications to integrate with a KDE Workspace
-	pkgver = r519.b8098a8
+	pkgver = r525.a17c1af
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686

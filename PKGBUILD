@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=frameworkintegration
 pkgname=$_pkgname-git
-pkgver=r519.b8098a8
+pkgver=r525.a17c1af
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules appstream-qt git packagekit-qt5)
 groups=('kf5')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/frameworkintegration.git')
 sha256sums=('SKIP')
 
 pkgver() {
