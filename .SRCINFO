@@ -1,0 +1,19 @@
+pkgbase = ada_language_server
+	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
+	pkgver = 21.0.11
+	pkgrel = 1
+	url = https://github.com/AdaCore/ada_language_server/
+	arch = any
+	license = GPL3
+	makedepends = gcc-ada
+	makedepends = gprbuild
+	depends = libadalang
+	provides = ada_language_server
+	conflicts = ada_language_server-git
+	source = ada_language_server-21.0.11.tar.gz::https://github.com/AdaCore/ada_language_server/archive/21.0.11.tar.gz
+	source = Makefile.patch
+	sha1sums = d1e29d21162d465b92c4dce33c3a8a0b787baeee
+	sha1sums = f8afe12dedcef533b6888aa227da2a5dbe199376
+
+pkgname = ada_language_server
+

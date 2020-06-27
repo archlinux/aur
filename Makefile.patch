@@ -1,0 +1,21 @@
+Index: Makefile
+===================================================================
+--- Makefile
++++ Makefile
+@@ -52,11 +52,14 @@ ifeq ($(LIBRARY_TYPE), static)
+ 		  -XGPR_BUILD=static \
+ 		  -XOS=$(OS)
+ else
+-    LIBRARY_FLAGS=-XBUILD_MODE=$(BUILD_MODE) -XOS=$(OS)
++    LIBRARY_FLAGS=-XBUILD_MODE=$(BUILD_MODE) -XLIBRARY_TYPE=relocatable -XOS=$(OS)
+ endif
+ 
+ BUILD_FLAGS=$(LIBRARY_FLAGS)
+
++ifeq ($(COVERAGE),)
++	COVERAGE_BUILD_FLAGS= $(LIBRARY_FLAGS)
++	COVERAGE_BUILD_FLAGS=$(LIBRARY_FLAGS)
++else
+-ifneq ($(COVERAGE),)
+ 	COVERAGE_BUILD_FLAGS= $(LIBRARY_FLAGS) \
+ 		--implicit-with=gnatcov_rts_full \
