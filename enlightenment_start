@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 export EINA_LOG_BACKTRACE=999
