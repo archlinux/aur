@@ -1,6 +1,6 @@
 pkgbase = chronojump-git
 	pkgdesc = Measurement, management and statistics of sport short-time tests
-	pkgver = 1.9.0.803.g8807c0ee
+	pkgver = 1.9.0.1202.g8c3585bc
 	pkgrel = 1
 	url = http://chronojump.org/
 	install = chronojump-git.install
