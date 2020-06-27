@@ -1,6 +1,6 @@
 pkgbase = annie
 	pkgdesc = A fast, simple and clean video downloader written in Go
-	pkgver = 0.9.8
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/iawia002/annie
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = annie
 	conflicts = annie
 	options = !strip
 	options = !emptydirs
-	source = annie::git+https://github.com/iawia002/annie#tag=0.9.8
+	source = annie::git+https://github.com/iawia002/annie#tag=0.10.2
 	md5sums = SKIP
 
 pkgname = annie
