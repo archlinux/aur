@@ -1,33 +1,33 @@
 # Maintainer: Luiz Ribeiro <luizribeiro@gmail.com>, Tom Wambold <tom5760@gmail.com>
 pkgname=oauth2_proxy
-pkgver=5.1.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A reverse proxy that provides authentication with Google, Github or other providers."
 arch=('i686' 'x86_64')
-url="https://github.com/pusher/oauth2_proxy"
+url="https://github.com/oauth2-proxy/oauth2-proxy"
 license=('MIT')
 makedepends=(go go-gpm)
 backup=('etc/oauth2_proxy.cfg')
 install=oauth2_proxy.install
-source=("https://github.com/pusher/$pkgname/archive/v$pkgver.tar.gz"
+source=("https://github.com/oauth2-proxy/oauth2-proxy/archive/v$pkgver.tar.gz"
         'oauth2_proxy.service')
-md5sums=('d1ac2f30007d7fc54fa85b18531950fe'
-         '810f64058c2af8fe2f81614f09dbe3c6')
+md5sums=('fe9b237bf06bde19375af80a5fd8c328'
+         '14de508241b8c55087a2491241382424')
 
 build() {
-  mkdir -p github.com/pusher
+  mkdir -p github.com/oauth2-proxy
 
-  mv "oauth2-proxy-$pkgver" github.com/pusher/oauth2_proxy
+  mv "oauth2-proxy-$pkgver" github.com/oauth2-proxy/oauth2-proxy
 
   mkdir -p deps
   mkdir -p dist
 
   export GOPATH="$(pwd)/deps:$(realpath $(pwd)/..)"
 
-  cd github.com/pusher/oauth2_proxy
+  cd github.com/oauth2-proxy/oauth2-proxy
   go-gpm install
 
-  go build -o ../../../dist/oauth2_proxy -trimpath
+  go build -o ../../../dist/oauth2-proxy -trimpath
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
   mkdir -p "$pkgdir/etc"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
 
-  install dist/oauth2_proxy "$pkgdir/usr/bin/oauth2_proxy"
-  install github.com/pusher/oauth2_proxy/contrib/oauth2_proxy.cfg.example "$pkgdir/etc/oauth2_proxy.cfg"
+  install dist/oauth2-proxy "$pkgdir/usr/bin/oauth2-proxy"
+  install github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.cfg.example "$pkgdir/etc/oauth2_proxy.cfg"
   install oauth2_proxy.service "$pkgdir/usr/lib/systemd/system/oauth2_proxy.service"
 }
