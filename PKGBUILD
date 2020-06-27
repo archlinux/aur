@@ -20,9 +20,7 @@ package() {
 	tar xf "$srcdir/data.tar.xz"
 
 	mkdir -p "$pkgdir/usr/share"
-	for dir in applications icons; do
-		cp -r "usr/share/$dir" "$pkgdir/usr/share"
-	done
+	cp -r "usr/share/*" "$pkgdir/usr/share/"
 
 	install -Dm755 "usr/bin/tomboy-reborn" "$pkgdir/usr/bin/tomboy-reborn"
 }
