@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knotifyconfig-git
-pkgver=r62.9fcec57
-pkgrel=2
+pkgver=r289.fd4482e
+pkgrel=1
 pkgdesc='KNotifyConfig'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/knotifyconfig'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(knotifyconfig)
 provides=(knotifyconfig)
-source=('git://anongit.kde.org/knotifyconfig.git')
+source=('git+https://github.com/KDE/knotifyconfig.git')
 md5sums=('SKIP')
 
 pkgver() {
