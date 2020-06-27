@@ -15,6 +15,7 @@ pkgbase = ksshaskpass-git
 	provides = ksshaskpass
 	conflicts = ksshaskpass
 	source = git+https://github.com/KDE/ksshaskpass.git
+	source = ksshaskpass.sh
 	md5sums = SKIP
 	md5sums = aef2815fb704c98737f23eead3b4e894
 

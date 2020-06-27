@@ -12,7 +12,7 @@ depends=(kwallet)
 makedepends=(extra-cmake-modules git python kdoctools)
 conflicts=(ksshaskpass)
 provides=(ksshaskpass)
-source=('git+https://github.com/KDE/ksshaskpass.git')
+source=('git+https://github.com/KDE/ksshaskpass.git' 'ksshaskpass.sh')
 groups=('plasma')
 md5sums=('SKIP'
          'aef2815fb704c98737f23eead3b4e894')
