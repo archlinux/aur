@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python-catkin_lint')
-pkgver='1.6.9'
+pkgver='1.6.10'
 pkgrel=1
 pkgdesc='Check catkin packages for common errors'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('python-catkin-lint')
 conflicts=('python2-catkin_lint' 'python-catkin-lint')
 source=("https://github.com/fkie/catkin_lint/archive/${pkgver}.tar.gz")
-sha256sums=('d06b2120bcc72d3549b2e0cd7b7af2f8037cca644d18e45e46465f8891af288c')
+sha256sums=('c9cf4908bf0a9822153d44058ebf1c7359305335ad09ebdc6632818dd9632c7e')
 
 _module='catkin_lint'
 
