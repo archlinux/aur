@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libclsp-git
-pkgver=r111.f79de0c
+pkgver=v0.1.3.r222.g195f98e
 pkgrel=1
 epoch=
 pkgdesc="A C++17 library for language servers"
@@ -15,15 +15,16 @@ checkdepends=()
 optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+${url}.git")
-md5sums=('SKIP')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-	mkdir -p "${pkgname}/build"
+	mkdir -p "$srcdir/$pkgname/build"
 }
 
 pkgver() {
 	cd "$srcdir/$pkgname"
+
 	( set -o pipefail
 	git describe --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -31,16 +32,19 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/build" || exit 1
+	cd "$srcdir/$pkgname/build"
+
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_UNITY_BUILD=ON \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		..
+
 	make
 }
 
 package() {
-	cd "${pkgname}/build" || exit 1
+	cd "$srcdir/$pkgname/build"
+
 	make DESTDIR="$pkgdir/" install
 }
