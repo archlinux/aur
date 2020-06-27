@@ -12,11 +12,9 @@ pkgbase = uboot-raspberrypi4-rc
 	backup = boot/boot.scr
 	backup = boot/config.txt
 	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2020.07-rc5.tar.bz2
-	source = boot.txt.v2
-	source = boot.txt.v3
+	source = boot.txt
 	source = mkscr
 	md5sums = 3b10951fa62e91433d0045a29a8588b0
-	md5sums = 69e883f0b8d1686b32bdf79684623f06
 	md5sums = 364b0d31dfa497efa18ee71676a73145
 	md5sums = 96d327ad1824134515d3ec25b4ffd7c6
 

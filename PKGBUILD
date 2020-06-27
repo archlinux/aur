@@ -16,11 +16,9 @@ makedepends=('bc' 'dtc' 'git')
 conflicts_armv7h=('linux-raspberrypi')
 _commit=f4b58692fef0b9c16bd4564edb980fff73a758b3
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
-        'boot.txt.v2'
-        'boot.txt.v3'
+        'boot.txt'
         'mkscr')
 md5sums=('3b10951fa62e91433d0045a29a8588b0'
-         '69e883f0b8d1686b32bdf79684623f06'
          '364b0d31dfa497efa18ee71676a73145'
          '96d327ad1824134515d3ec25b4ffd7c6')
 
@@ -40,17 +38,20 @@ build() {
   make rpi_4_config
   echo 'CONFIG_IDENT_STRING=" Arch Linux ARM"' >> .config
   make EXTRAVERSION=-${pkgrel}
+  make tools-all
 }
 
 package() {
   cd u-boot-${pkgver/rc/-rc}
 
   mkdir -p "${pkgdir}"/boot
-
-  cp u-boot.bin ${pkgdir}/boot/kernel8.img
-  #cp ../*.dtb ${pkgdir}/boot
-  cp ../boot.txt.v3 ../boot.txt
+  
+  cp u-boot.bin ${pkgdir}/boot/.
   echo "enable_uart=1" > ${pkgdir}/boot/config.txt
+  echo "arm_64bit=1" >> ${pkgdir}/boot/config.txt
+  echo "kernel=u-boot.bin" >> ${pkgdir}/boot/config.txt
+  #echo "kernel=Image"
+  
 
   tools/mkimage -A arm64 -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}"/boot/boot.scr
   cp ../{boot.txt,mkscr} "${pkgdir}"/boot
