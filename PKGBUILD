@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=84.0.4147.30
+pkgver=84.0.4147.68
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         force-mp3-files-to-have-a-start-time-of-zero.patch
         chromium-skia-harmony.patch)
-sha256sums=('14d2b6240eb307f8907c8d9900dddfab530a84324bda0b6f5a10d7a6c809c5ff'
+sha256sums=('ebb4a4780a45204a3c64c31f4bce0069d74d94abc06a98110ac5cd5dd0888947'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
