@@ -1,6 +1,6 @@
 pkgbase = kontactinterface-git
 	pkgdesc = Kontact Plugin Interface Library
-	pkgver = r530.bb0ce06
+	pkgver = r537.5f426a9
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = i686

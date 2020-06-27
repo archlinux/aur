@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kontactinterface
 pkgname=$_pkgname-git
-pkgver=r530.bb0ce06
+pkgver=r537.5f426a9
 pkgrel=1
 pkgdesc="Kontact Plugin Interface Library"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(kparts)
 makedepends=(extra-cmake-modules git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=('git+https://github.com/KDE/kontactinterface.git')
 sha256sums=('SKIP')
 
 pkgver() {
