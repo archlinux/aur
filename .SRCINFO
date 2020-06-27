@@ -1,0 +1,17 @@
+pkgbase = python-ldapdomaindump
+	pkgdesc = Active Directory information dumper via LDAP, written in python
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/dirkjanm/ldapdomaindump/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-future
+	depends = python-dnspython
+	depends = python-ldap3
+	source = ldapdomaindump-0.9.3.tar.gz::https://github.com/dirkjanm/ldapdomaindump/archive/v0.9.3.tar.gz
+	sha256sums = 30d269f8c638a1446d7a71d01c41e2a03ea0b9742ada471414db91bd77927f40
+
+pkgname = python-ldapdomaindump
+
