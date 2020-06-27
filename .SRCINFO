@@ -12,7 +12,7 @@ pkgbase = kimap2-git
 	depends = kmime
 	provides = kimap2
 	conflicts = kimap2
-	source = git://anongit.kde.org/kimap2.git
+	source = git+https://github.com/KDE/kimap2.git
 	md5sums = SKIP
 
 pkgname = kimap2-git

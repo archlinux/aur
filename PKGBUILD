@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 # Contributor: Jens Staal <staal1978@gmail.com>
 
@@ -17,7 +18,7 @@ depends=('kmime')
 makedepends=('extra-cmake-modules' 'git' 'python')
 conflicts=('kimap2')
 provides=('kimap2')
-source=("git://anongit.kde.org/kimap2.git")
+source=('git+https://github.com/KDE/kimap2.git')
 md5sums=('SKIP')
 
 pkgver() {
