@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=powerdevil-git
-pkgver=r1860.ab31821
-pkgrel=2
+pkgver=r2318.7575fea0
+pkgrel=1
 pkgdesc='KDE power management tools'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -11,7 +12,7 @@ depends=('plasma-workspace-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 conflicts=('powerdevil')
 provides=('powerdevil')
-source=('git://anongit.kde.org/powerdevil.git')
+source=('git+https://github.com/KDE/powerdevil.git')
 groups=('plasma')
 md5sums=('SKIP')
 
