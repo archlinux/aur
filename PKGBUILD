@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kpty-git
-pkgver=r46.b4630c1
+pkgver=r262.3ddc0be
 pkgrel=1
 pkgdesc='KPty'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kpty)
 provides=(kpty)
-source=('git://anongit.kde.org/kpty.git')
+source=('git+https://github.com/KDE/kpty.git')
 md5sums=('SKIP')
 
 pkgver() {

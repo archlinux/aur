@@ -1,6 +1,6 @@
 pkgbase = kpty-git
 	pkgdesc = KPty
-	pkgver = r46.b4630c1
+	pkgver = r262.3ddc0be
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kpty
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kpty-git
 	depends = libutempter
 	provides = kpty
 	conflicts = kpty
-	source = git://anongit.kde.org/kpty.git
+	source = git+https://github.com/KDE/kpty.git
 	md5sums = SKIP
 
 pkgname = kpty-git
