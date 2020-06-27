@@ -1,0 +1,16 @@
+pkgbase = evjs
+	pkgdesc = Joystick auto-calibration and testing utility for evdev and joydev
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shumatech/evjs
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	depends = ncurses
+	depends = sqlite3
+	provides = evjs
+	source = https://github.com/shumatech/evjs/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = evjs
+
