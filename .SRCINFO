@@ -1,7 +1,7 @@
 pkgbase = pterodactyl-panel
 	pkgdesc = Open-source game server management panel
-	pkgver = 0.7.15
-	pkgrel = 5
+	pkgver = 0.7.17
+	pkgrel = 1
 	url = https://github.com/pterodactyl/panel
 	arch = any
 	depends = mariadb
@@ -12,10 +12,10 @@ pkgbase = pterodactyl-panel
 	depends = redis
 	depends = composer
 	depends = dialog
-	source = https://github.com/pterodactyl/panel/releases/download/v0.7.15/panel.tar.gz
+	source = https://github.com/pterodactyl/panel/releases/download/v0.7.17/panel.tar.gz
 	source = pterodactyl.conf
 	source = pterodactyl-panel.sh
-	sha256sums = 0beb6e5c5056255fc34eb199127a24d412bd66d3a6622b311b763adb14629c4b
+	sha256sums = b3e37e5cf34b3fbcec73cab8947300dd55f1ba289a83501c76f198dd4e6c3750
 	sha256sums = 9c412eb73baff0ba32cb15e8b86e52b40ec5a3fda5768e6b034b08ccbf2edc75
 	sha256sums = 8ac1252a2357927bd95f5091502907e1b7d6a335b8809e9f49d8dbbce306f244
 
