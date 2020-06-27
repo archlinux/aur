@@ -1,6 +1,6 @@
 pkgbase = libkscreen-git
 	pkgdesc = KDE screen management software
-	pkgver = r1261.90d8ee2
+	pkgver = r1524.9da1c6a
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/workspace/libkscreen
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libkscreen-git
 	depends = libxrandr
 	provides = libkscreen
 	conflicts = libkscreen
-	source = git://anongit.kde.org/libkscreen.git
+	source = git+https://github.com/KDE/libkscreen.git
 	md5sums = SKIP
 
 pkgname = libkscreen-git

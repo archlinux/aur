@@ -1,7 +1,8 @@
-# Maintainer: Matthias Blaicher <matthias at blaicher dot com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=libkscreen-git
-pkgver=r1261.90d8ee2
+pkgver=r1524.9da1c6a
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(i686 x86_64)
@@ -11,7 +12,7 @@ depends=(qt5-x11extras libxrandr)
 makedepends=(extra-cmake-modules git)
 provides=(libkscreen)
 conflicts=(libkscreen)
-source=('git://anongit.kde.org/libkscreen.git')
+source=('git+https://github.com/KDE/libkscreen.git')
 md5sums=('SKIP')
 
 pkgver() {
