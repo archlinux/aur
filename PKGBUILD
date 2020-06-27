@@ -1,19 +1,19 @@
 # Maintainer: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=deepin.com.qq.qqmusic
-pkgver=2.0.0
-_pkgver=2.0.0deepin4
-pkgrel=2
+pkgver=17.66
+pkgrel=1
 pkgdesc="Tencent QQMusic Client on Deepin Wine"
 arch=('i686' 'x86_64')
 url="https://github.com/gorquan/QQMusic"
 license=('custom')
 depends=('deepin-wine')
-source=("https://raw.githubusercontent.com/gorquan/QQMusic/master/${pkgname}_${_pkgver}_i386.deb")
-sha256sums=('caaca319d8e153a7062e992008d27affdbdd79c6ef4dd103ac03f0dd5890bd2d')
-package() {
-    tar xJf data.tar.xz -C "${pkgdir}"
-    sed -i '15a\export LC_CTYPE=en_US.UTF-8' "${pkgdir}"/opt/deepinwine/apps/Deepin-QQMusic/run.sh
-    sed -i 's/Categories=media;/Categories=AudioVideo;Player;/' "$pkgdir"/usr/share/applications/deepin.com.qq.qqmusic.desktop
+source=("https://github.com/gorquan/QQMusic/releases/download/${pkgver}/qqmusic-${pkgver}-wine.deb")
+sha256sums=('4152033ccd75f4bbde998570fcc02196288231c589223b4415d41f0b2a0841c8')
+prepare() {
+    bsdtar -xf "$srcdir"/data.tar.xz
 }
-
+package() {
+    cd "$srcdir"
+    mv opt usr "$pkgdir"
+}
