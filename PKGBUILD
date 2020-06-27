@@ -1,4 +1,4 @@
-# Maintainer: Excitable Snowball <excitablesnowball@gmail.com>
+# Maintainer: Duologic <jeroen@simplistic.be>
 
 pkgname=zoom-firefox
 pkgver=0.0.2
