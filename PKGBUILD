@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=vkbasalt
-pkgver=0.3.2
+pkgver=0.3.2.1
 pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
@@ -30,7 +30,6 @@ build() {
 
   msg "Building 32b"
   ASFLAGS=--32 CFLAGS=-m32 CXXFLAGS=-m32 PKG_CONFIG_PATH=/usr/lib32/pkgconfig meson --prefix=/usr --buildtype=release --libdir=lib32 -Dwith_json=false builddir.32
-  sed -i "s|/usr/lib/|/usr/lib32/|" builddir.32/build.ninja
   ninja -C builddir.32
 }
 
