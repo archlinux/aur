@@ -1,7 +1,7 @@
 pkgbase = hollywood
 	pkgdesc = Fill your console with Hollywood melodrama technobabble.
 	pkgver = 1.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dustinkirkland/hollywood
 	arch = any
 	license = Apache
@@ -25,8 +25,8 @@ pkgbase = hollywood
 	depends = util-linux
 	source = hollywood-1.21.tar.gz::https://launchpad.net/hollywood/trunk/1.21/+download/hollywood_1.21.orig.tar.gz
 	source = license.txt
-	md5sums = c337ce86c017a8ba0231c24f7ce1eb7d
-	md5sums = 65d3616852dbf7b1a6d4b53b00626032
+	sha256sums = 793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb
+	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
 pkgname = hollywood
 
