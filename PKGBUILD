@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kemoticons-git
-pkgver=r62.54fe167
-pkgrel=3
+pkgver=r325.5379921
+pkgrel=1
 pkgdesc='KEmoticons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kemoticons'
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kemoticons)
 provides=(kemoticons)
-source=('git://anongit.kde.org/kemoticons.git')
+source=('git+https://github.com/KDE/kemoticons.git')
 md5sums=('SKIP')
 
 pkgver() {
