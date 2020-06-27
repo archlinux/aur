@@ -1,6 +1,6 @@
 pkgbase = plasma-nm-git
 	pkgdesc = Plasma applet written in QML for managing network connections
-	pkgver = r1770.edc29fb
+	pkgver = r2894.0702dc01
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/workspace/plasma-nm
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = plasma-nm-git
 	optdepends = openconnect: Cisco AnyConnect VPN
 	provides = plasma-nm
 	conflicts = plasma-nm
-	source = git://anongit.kde.org/plasma-nm.git
+	source = git+https://github.com/KDE/plasma-nm.git
 	sha256sums = SKIP
 
 pkgname = plasma-nm-git

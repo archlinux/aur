@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-nm-git
-pkgver=r1770.edc29fb
+pkgver=r2894.0702dc01
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'qt5-tools' 'openconnect')
 optdepends=('mobile-broadband-provider-info: Database of mobile broadband service providers' 'openconnect: Cisco AnyConnect VPN') 
 provides=('plasma-nm')
 conflicts=('plasma-nm')
-source=("git://anongit.kde.org/plasma-nm.git")
+source=('git+https://github.com/KDE/plasma-nm.git')
 groups=('plasma')
 sha256sums=('SKIP')
 
