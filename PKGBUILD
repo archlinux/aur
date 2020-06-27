@@ -1,18 +1,19 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=libzypp
-pkgver=17.11.1
+pkgver=17.23.8
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
-depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
+depends=('libsolv' 'openssl' 'curl' 'libsystemd')
 makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
              'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
 provides=('libzypp')
 source=("https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
-sha256sums=('c9660508de47fbc135e58d05279ce8addcbd8562060d755feeb70102bbf15635')
+sha256sums=('6c0d4a1dad77017263b48f097d835f152afed50b513652c8e7ee03d93ae5093d')
 
 build() {
   cd "${pkgname}-${pkgver}"
