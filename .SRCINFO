@@ -1,0 +1,16 @@
+pkgbase = frozen-git
+	pkgdesc = Header-only C++ library that provides 0 cost initialization for immutable containers
+	pkgver = 1.0.0.r10.g3d2b025
+	pkgrel = 1
+	url = https://github.com/serge-sans-paille/frozen
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = frozen
+	conflicts = frozen
+	source = frozen-git::git+https://github.com/serge-sans-paille/frozen.git
+	sha256sums = SKIP
+
+pkgname = frozen-git
+
