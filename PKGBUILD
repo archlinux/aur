@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -111,10 +111,6 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-
-  # lavf/mp3dec: don't adjust start time; packets are not adjusted
-  # https://crbug.com/1062037
-  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
 
   # backport avisynthplus support
   git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
