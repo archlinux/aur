@@ -1,0 +1,18 @@
+diff --git a/src/config.c b/src/config.c
+index 8ddfe26..537ae11 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -325,7 +325,12 @@ load_config( const char *where, int pseudo )
+ 
+ 	if (!where) {
+ 		assert( !pseudo );
+-		nfsnprintf( path, sizeof(path), "%s/." EXE "rc", Home );
++		char *configdir;
++		configdir = getenv("XDG_CONFIG_HOME");
++		if (configdir == NULL)
++			nfsnprintf( path, sizeof(path), "%s/.config/mbsync/" EXE "rc", Home );
++		else
++			nfsnprintf( path, sizeof(path), "%s/mbsync/" EXE "rc", configdir );
+ 		cfile.file = path;
+ 	} else
+ 		cfile.file = where;
