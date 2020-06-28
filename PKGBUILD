@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Censor private information."
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/obfuscate"
-license=('GPL')
+license=('MIT')
 depends=('gtk3' 'appstream-glib')
 makedepends=('git' 'meson' 'rust' 'cmake')
 provides=(${pkgname%-git})
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd obfuscate
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
