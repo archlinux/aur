@@ -1,6 +1,8 @@
 *
+!README.md
 !PKGBUILD
 !upbge.install
 !upbge.desktop
+!embree.patch
 !.SRCINFO
 !.gitignore

@@ -1,12 +1,8 @@
 [Desktop Entry]
-Name=Blender-git
-Comment=A 3D program
-Comment[cs]=Program pro 3D modeling a animaci
-Comment[es]=Un programa de 3D
-Comment[no]=Et 3d-program
-Comment[da]=Et program til 3d-modelering
+Name=UPBGE
+Comment=Uchronia Project Blender Game Engine
 Exec=blender
-Icon=blender
+Icon=upbge
 Terminal=false
 X-MultipleArgs=false
 Type=Application
