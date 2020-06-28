@@ -19,3 +19,25 @@ pkgbase = webrecorder-desktop-appimg
 
 pkgname = webrecorder-desktop-appimg
 
+pkgbase = webrecorder-desktop-appimg
+	pkgdesc = The Webrecorder Desktop App is a complete packaging of Webrecorder hosted service as an Electron application, with an integrated Chromium browser.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/webrecorder/webrecorder-desktop
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = redis
+	provides = webrecorder
+	conflicts = webrecorder
+	noextract = Webrecorder.AppImage
+	options = !strip
+	source = Webrecorder.AppImage::https://github.com/webrecorder/webrecorder-desktop/releases/download/v2.0.2/Webrecorder-2.0.2.AppImage
+	source = webrecorder.desktop
+	source = webrecorder.ico
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = webrecorder-desktop-appimg
+
