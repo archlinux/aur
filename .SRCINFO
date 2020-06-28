@@ -1,0 +1,15 @@
+pkgbase = emeus
+	pkgdesc = Constraint-based layout manager for GTK+
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://ebassi.github.io/emeus
+	arch = any
+	groups = gnome
+	license = GPL
+	makedepends = meson
+	depends = gtk3
+	source = git+https://github.com/ebassi/emeus
+	sha256sums = SKIP
+
+pkgname = emeus
+
