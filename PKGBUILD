@@ -249,9 +249,6 @@ package() {
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
-  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
-    "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
-
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
   install -Dm644 chrome/app/resources/manpage.1.in \
