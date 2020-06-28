@@ -1,0 +1,18 @@
+pkgbase = python-desert
+	pkgdesc = Implements boolean algebra in one module
+	pkgver = 2020.1.6
+	pkgrel = 1
+	url = https://github.com/bastikr/boolean.py
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dataclasses
+	depends = python-marshmallow
+	depends = python-attrs
+	depends = python-typing_inspect
+	source = https://files.pythonhosted.org/packages/source/d/desert/desert-2020.1.6.tar.gz
+	sha512sums = 8975c4358fb23a4f638d353c74578f386c113c6d0d317f6c66122197d4295aecc03c72c814cca68504d87e64f08064b9905f12816972300b962f7558015acc73
+
+pkgname = python-desert
+
