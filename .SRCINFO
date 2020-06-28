@@ -2,13 +2,14 @@ pkgbase = librand
 	pkgdesc = 'True' random number generation library for linux
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://gitlab.com/dennismitten/librand.git
+	url = https://gitlab.com/dennismitten/librand
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = gcc
-	source = git+https://gitlab.com/dennismitten/librand.git#tag=master
-	sha256sums = SKIP
+	provides = librand
+	source = git+https://gitlab.com/dennismitten/librand#tag=0.1
+	md5sums = SKIP
 
 pkgname = librand
 
