@@ -15,6 +15,10 @@ install="$pkgname.install"
 # Choose one of the mirrors from http://mirrors.thedarkmod.com/tdm_mirrors.txt
 _mirror='https://darkmod.taaaki.za.net/release'
 
+source=("$pkgname-$pkgver-tdm_shared_stuff.zip::$_mirror/tdm_shared_stuff.zip"
+        'thedarkmod.sh'
+        'thedarkmod.desktop')
+
 # The list of game assets can be obtained by running the command
 # curl -s "$_mirror/crc_info.txt" | awk -F ' |]' '/\[File .*pk4\]/ { print "         '\''" $2 "'\''" }'
 _assets=('fms/newjob/newjob.pk4'
@@ -80,12 +84,15 @@ _assets=('fms/newjob/newjob.pk4'
          'tdm_textures_window01.pk4'
          'tdm_textures_wood01.pk4')
 
-source=("$_mirror/tdm_shared_stuff.zip"
-        "${_assets[@]/#/$_mirror/}"
-        'thedarkmod.sh'
-        'thedarkmod.desktop')
-noextract=("${_assets[@]##*/}")
+for _asset in "${_assets[@]}"
+do
+	source+=("$pkgname-$pkgver-${_asset##*/}::${_asset/#/$_mirror/}")
+	noextract+=("$pkgname-$pkgver-${_asset##*/}")
+done
+
 sha512sums=('e3afacae65a6452fb0cc0f4eff211f14e141534e595dc59ee0069395ab83df7a64330acecdad6d8cb9a81e7cd4416dd0d0c1532d8264e9e055e26b756c51a2d2'
+            '6ae720990201a314f72b0ff5fb686a7088d456ada7e1090d770e23d709c314c275405b4c73256682ee11fd6c73283257e832febb6add3a50f1b50183df1df0e6'
+            '48927cfb6bf83e427aec47f1cd549c6730d1cbeecec82b7555df51a2ba57599c7abe0120ab51bc9195146abad9450c5701b7047b32cc342f7545b4221d2f4f8e'
             '15acf92756fe5b8acb6b260f4d1a8ee14ef7937e7364335f39a7a0a262c758bd57126a482ac4e6fc7b8e26e3aefbf31fdbbaa55f6561318dcb492adfbd7082cf'
             'bad1714575d422250fa8d138b636a9091670446f537539849765543b8f53f2bb9e1420a5c669ad2a82c8526744eb673d8a0887351a99e73dff495416554abf9b'
             '260226abe7ca642275dd22ed1179a9bc9967ec03d457b26e0bbfa092fe4161c03aab7d76b7beeb3add4aafa62b5f9f05c5be2d94c1922667e9123df5ef12ac5a'
@@ -147,9 +154,7 @@ sha512sums=('e3afacae65a6452fb0cc0f4eff211f14e141534e595dc59ee0069395ab83df7a643
             '377dfac252aba07eb18dd4258eee36a353608330de3fa0c52f1dc3e00da86322cfc7623ca6ebc5b91e68a5ef6a1b1dea0e9dac9ffce8a1cbed45215c87fbfcdd'
             '6bd8fcfb9e6d005b54efbc3e9ec2eeec90d53c3fdb47f785abfd2cc1aa32c505ebfc9d886a258999dc0c5d6220b6fa826c71906d4df790037a405aaf15d3eb14'
             '3e908f68f3e703ad54e0653ba1e75736da4d9c6e2eedcd62c72e432461ed2b3208324e9aee8c5bd2253e228bb75b3e6fff32030c4ee7401e518ebd3179108b61'
-            '98baa189ece80011ae567d9151c01afa735692c1091f18bd7721baf77589afee8f912fb8e4a674fb036f46f326c064721c48c24086d44f680447d7bbef9ffccc'
-            '6ae720990201a314f72b0ff5fb686a7088d456ada7e1090d770e23d709c314c275405b4c73256682ee11fd6c73283257e832febb6add3a50f1b50183df1df0e6'
-            '48927cfb6bf83e427aec47f1cd549c6730d1cbeecec82b7555df51a2ba57599c7abe0120ab51bc9195146abad9450c5701b7047b32cc342f7545b4221d2f4f8e')
+            '98baa189ece80011ae567d9151c01afa735692c1091f18bd7721baf77589afee8f912fb8e4a674fb036f46f326c064721c48c24086d44f680447d7bbef9ffccc')
 
 prepare() {
 	convert TDM_icon.ico thedarkmod.png
@@ -159,7 +164,7 @@ package() {
 	install -Dm755 thedarkmod.x64 -t "$pkgdir/opt/thedarkmod"
 	for _asset in "${_assets[@]}"
 	do
-		install -Dm644 "${_asset##*/}" "$pkgdir/opt/thedarkmod/$_asset"
+		install -Dm644 "$pkgname-$pkgver-${_asset##*/}" "$pkgdir/opt/thedarkmod/$_asset"
 	done
 	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 
