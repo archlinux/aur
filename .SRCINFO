@@ -1,6 +1,6 @@
 pkgbase = newsboat-sendmail
 	pkgdesc = A companion script that sends unread RSS items in Newsboat through email
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/lenormf/newsboat-sendmail
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = newsboat-sendmail
 	depends = newsboat
 	depends = python
 	depends = python-beautifulsoup4
-	source = https://github.com/lenormf/newsboat-sendmail/archive/v2.0.tar.gz
-	sha256sums = 0ccf7a655bef1a20f109bc10fa51a6483b3285367716bda7d0c8f683630b4408
+	source = https://github.com/lenormf/newsboat-sendmail/archive/v2.1.tar.gz
+	sha256sums = c4673cf4c4bd28872aa4dcae2875840ddb83e16047a5735235ae1d6dbe0df1e0
 
 pkgname = newsboat-sendmail
 
