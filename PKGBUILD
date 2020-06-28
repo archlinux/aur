@@ -19,7 +19,7 @@ source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Linux.zip"
 		"$pkgname-data-editor"
 		"$pkgname-data-indexer"
 		)
-md5sums=('4ffe4972ac4c259e6a918459320888ee'
+md5sums=('b97e14493028c282933333af4bb62cd7'
          '5e1ccb89db05b234416ba112bbd02372'
          '2b54d275f9be4e57b4e605f8871c38e6'
          '9af5e7e2a8444882061520d09af0af84'
