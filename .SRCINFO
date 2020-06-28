@@ -1,6 +1,6 @@
 pkgbase = majsoul-plus-beta-bin
-	pkgdesc = [2.x] Majsoul browser (Binary)(beta)
-	pkgver = 2.0.0.beta.1
+	pkgdesc = Majsoul browser (beta versions)
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = majsoul-plus-beta-bin
 	conflicts = majsoul-plus-beta
 	source = https://github.com/MajsoulPlus/majsoul-plus/raw/master/assets/bin/icons/icon.png
 	sha256sums = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
-	source_i686 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0-beta.1/majsoul-plus-client-2.0.0-beta.1-ia32.tar.gz
-	sha256sums_i686 = 1695c18a7949ab0600056946c228af7fbaecbf5fa2aa947e238dfc0a96fdd6e1
-	source_x86_64 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0-beta.1/majsoul-plus-client-2.0.0-beta.1.tar.gz
-	sha256sums_x86_64 = f463779ed1b4ffd13cd4cfe3b2515fe9a11aaa89d401dfed2ba93a1157aabe7b
+	source_i686 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0/Majsoul_Plus-2.0.0-linux-ia32.tar.gz
+	sha256sums_i686 = 61010c8886fe717942a53fa2bb4f1e6ce4ad56974a122c4a9d32c25861f340d8
+	source_x86_64 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0/Majsoul_Plus-2.0.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 364b825025933a8792465ab6e708af091dbb24cd54f8da78877367d59d9ab1ac
 
 pkgname = majsoul-plus-beta-bin
 
