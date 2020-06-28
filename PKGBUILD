@@ -1,31 +1,41 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Artjom Simon <artjom.simon@gmail.com>
 # Contributor: Wèi Cōngruì <crvv.pku@gmail.com>
 
+_pkgname=postgresql
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=12beta3
+pkgver=13beta2
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('aarch64' 'i686' 'x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd' 'libldap')
+makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
+        postgresql-perl-rpath.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
-        postgresql-check-db-dir)
-sha256sums=('e4a4079c75bf049349c70a02f705beecbb8263684ff2d4e13a582a3ff50332aa'
-            '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
+        postgresql-check-db-dir
+        postgresql.sysusers
+        postgresql.tmpfiles)
+sha256sums=('51b8c64f4c354728555144a7bfbdced96afb86e5cfa80a26b5e96a1d9081ee9f'
+            '719d24c09c5ea17701cbd49b77f40c58bde52b603c3c8b85a708d277175d27b8'
+            '5bcc0bcedfa0271afaa05c35e7f651416a2a818c28069c51c2d0de0aa7d0dfdb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
-            'ad025a5fb623b1a1e9dff0cc62cc63f66244bb27d81370a6251aa29e8574be94'
-            '2bbd8c4e51b70223d274fef3a167af096f44af3d3c41ae505ad11c606674e7c5')
+            '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
+            '7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5'
+            '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
+            '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
+  patch -p1 < ../postgresql-perl-rpath.patch
 }
 
 build() {
@@ -47,8 +57,10 @@ build() {
     --with-icu
     --with-systemd
     --with-ldap
+    --with-llvm
     --enable-nls
     --enable-thread-safety
+    --disable-rpath
   )
 
   # only build plpython3 for now
@@ -71,6 +83,20 @@ build() {
   make world
 }
 
+#_postgres_check() {
+#  make "${1}" || (find . -name regression.diffs | \
+#    while read -r line; do
+#      error "make ${1} failure: ${line}"
+#      cat "${line}"
+#    done; exit 1)
+#}
+
+#check() {
+#  cd postgresql-${pkgver}
+#  _postgres_check check
+#  _postgres_check check-world
+#}
+
 package_postgresql-beta-libs() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib' 'libldap')
@@ -80,7 +106,7 @@ package_postgresql-beta-libs() {
   cd postgresql-${pkgver}
 
   # install license
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   # install libs and non-server binaries
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
@@ -117,7 +143,7 @@ package_postgresql-beta-docs() {
 
   cd postgresql-${pkgver}
 
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
   chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
@@ -130,14 +156,13 @@ package_postgresql-beta-docs() {
 package_postgresql-beta() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-beta-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'libsystemd' 'libldap')
+  depends=("postgresql-beta-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs')
   optdepends=('python2: for PL/Python 2 support'
               'python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
               'postgresql-old-upgrade: upgrade from previous major version using pg_upgrade')
   options=('staticlibs')
-  install=postgresql.install
 
   cd postgresql-${pkgver}
 
@@ -163,19 +188,23 @@ package_postgresql-beta() {
     rm "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+
+  cd "${srcdir}"
+  install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/usr/bin"
+
+  install -Dm 644 ${_pkgname}.pam "${pkgdir}/etc/pam.d/${_pkgname}"
+  install -Dm 644 ${_pkgname}.logrotate "${pkgdir}/etc/logrotate.d/${_pkgname}"
+
+  install -Dm 644 ${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 ${_pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm 644 ${_pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
   # clean up unneeded installed items
   rm -rf "${pkgdir}/usr/include/postgresql/internal"
   rm -rf "${pkgdir}/usr/include/libpq"
   find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
   rmdir "${pkgdir}/usr/share/doc/postgresql/html"
-
-  install -Dm 644 "${srcdir}/postgresql.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 755 "${srcdir}/postgresql-check-db-dir" -t "${pkgdir}/usr/bin"
-
-  install -Dm 644 "${srcdir}/postgresql.pam" "${pkgdir}/etc/pam.d/postgresql"
-  install -Dm 644 "${srcdir}/postgresql.logrotate" "${pkgdir}/etc/logrotate.d/postgresql"
-
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
