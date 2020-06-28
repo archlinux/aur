@@ -1,7 +1,3 @@
-v1.3.8
+v1.3.9
 ======
-- Back to the classic appearance.
-- Fix language codes.
-- Improve the way translations files are setting.
-- The width and height are shown in each photo.
-- Fix greeter don't getting wallpaper set via Fondo.
+- Delete photos from history

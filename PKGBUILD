@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname='fondo'
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Wallpaper App for Linux'
 arch=('x86_64')
