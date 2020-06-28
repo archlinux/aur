@@ -4,7 +4,6 @@
 buildarch=8
 
 pkgname=uboot-raspberrypi4-rc
-#_pkgver="2020.07-rc5"
 pkgver=2020.07rc5
 pkgrel=1
 pkgdesc="U-Boot for Raspberry Pi 4"
@@ -12,9 +11,11 @@ arch=('aarch64')
 url='http://www.denx.de/wiki/U-Boot/WebHome'
 license=('GPL')
 backup=('boot/boot.txt' 'boot/boot.scr' 'boot/config.txt')
+provides=('uboot-tools')
+conflicts=('uboot-tools')
 makedepends=('bc' 'dtc' 'git')
-conflicts_armv7h=('linux-raspberrypi')
-_commit=f4b58692fef0b9c16bd4564edb980fff73a758b3
+depends=('linux-aarch64')
+options=(!strip)
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
         'mkscr')
@@ -50,9 +51,12 @@ package() {
   echo "enable_uart=1" > ${pkgdir}/boot/config.txt
   echo "arm_64bit=1" >> ${pkgdir}/boot/config.txt
   echo "kernel=u-boot.bin" >> ${pkgdir}/boot/config.txt
-  #echo "kernel=Image"
-  
 
   tools/mkimage -A arm64 -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}"/boot/boot.scr
   cp ../{boot.txt,mkscr} "${pkgdir}"/boot
+
+  install -dm755 ${pkgdir}/{usr/{bin,share/man/man1},etc}
+  install -m755 tools/{fit_{check_sign,info},dumpimage,mkimage,mkenvimage,netconsole,ncb,proftool,env/fw_printenv} ${pkgdir}/usr/bin
+  ln -s /usr/bin/fw_printenv ${pkgdir}/usr/bin/fw_setenv
+  install -m644 doc/mkimage.1 ${pkgdir}/usr/share/man/man1
 }
