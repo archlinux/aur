@@ -1,6 +1,6 @@
 pkgbase = akd
 	pkgdesc = A Keyboard userspace daemon
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Shatur95/akd
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = akd
 	makedepends = cmake
 	depends = libx11
 	depends = boost
-	source = akd-2.1.1.tar.gz::https://github.com/Shatur95/akd/archive/2.1.1.tar.gz
-	sha256sums = aa5f3d1b05409d0def6f001972f482ca8a05563f0a9ce0d2e76897360492b729
+	source = akd-2.2.0.tar.gz::https://github.com/Shatur95/akd/archive/2.2.0.tar.gz
+	sha256sums = 5966c69c2a435a5716675df8b8aa62a831b8b4aab620fde516b4aef178db4c37
 
 pkgname = akd
 
