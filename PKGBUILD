@@ -14,7 +14,8 @@ depends=(
 makedepends=(
   'go'
 )
-replaces=("yay")
+provides=("yay")
+conflicts=("yay")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.jojii.de/jojii/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha256sums=('08e4d894268cd002979b0967835a5337097a092ca97c5074b4bd9db39ac5874d')
 

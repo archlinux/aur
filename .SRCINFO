@@ -14,7 +14,8 @@ pkgbase = yayim
 	depends = libalpm.so>=12
 	depends = sudo
 	depends = git
-	replaces = yay
+	provides = yay
+	conflicts = yay
 	source = yayim-10.0.2_2.tar.gz::https://git.jojii.de/jojii/yayim/-/archive/v10.0.2_2/yayim-v10.0.2_2.tar.gz
 	sha256sums = 08e4d894268cd002979b0967835a5337097a092ca97c5074b4bd9db39ac5874d
 
