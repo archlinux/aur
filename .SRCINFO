@@ -1,6 +1,6 @@
 pkgbase = ultrastardxwp-git
 	pkgdesc = UltraStar Deluxe WorldParty is a free and open source karaoke game. It allows up to six players to sing along with music using microphones in order to score points, depending on the pitch of the voice and the rhythm of singing.
-	pkgver = r428.de63680
+	pkgver = r367.532b1ca
 	pkgrel = 1
 	url = http://ultrastar-es.org
 	install = ultrastardxwp-git.install
@@ -25,7 +25,7 @@ pkgbase = ultrastardxwp-git
 	conflicts = ultrastardxwp-git
 	options = !buildflags
 	source = ultrastardxwp.desktop
-	source = ultrastardxwp::git+https://github.com/ultrastares/usdxworldparty#branch=alfa
+	source = ultrastardxwp::git+https://github.com/ultrastares/usdxworldparty
 	md5sums = 45e724d9c3ab756ed908774daedfac24
 	md5sums = SKIP
 
