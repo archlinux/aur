@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-  meson --prefix=/usr --buildtype=plain obfuscate build
+  arch-meson obfuscate build
   meson compile -C build
 }
 
