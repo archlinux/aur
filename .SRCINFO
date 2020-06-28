@@ -1,7 +1,7 @@
 pkgbase = jamulus
 	pkgdesc = Internet jam session software
-	pkgver = 3.5.6
-	pkgrel = 2
+	pkgver = 3.5.7
+	pkgrel = 1
 	url = http://llcon.sourceforge.net/
 	arch = x86_64
 	license = GPL2
@@ -9,8 +9,8 @@ pkgbase = jamulus
 	depends = glibc
 	depends = gcc-libs
 	depends = qt5-base
-	source = jamulus-3.5.6.tar.gz::https://github.com/corrados/jamulus/archive/r3_5_6.tar.gz
-	sha1sums = f3d704710b3531b765bad6fb4a152c55c77fd193
+	source = jamulus-3.5.7.tar.gz::https://github.com/corrados/jamulus/archive/r3_5_7.tar.gz
+	sha1sums = d8100f5ab119d784243829d7b432e9923a795f44
 
 pkgname = jamulus
 	depends = glibc
