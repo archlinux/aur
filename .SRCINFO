@@ -1,6 +1,6 @@
 pkgbase = i3-balance-workspace
 	pkgdesc = Balance windows and workspaces in i3wm
-	pkgver = 1.6.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/atreyasha/i3-balance-workspace
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = i3-balance-workspace
 	makedepends = python-setuptools
 	depends = python>=3.5.0,
 	depends = python-i3ipc
-	source = https://files.pythonhosted.org/packages/source/i/i3-balance-workspace/i3-balance-workspace-1.6.3.tar.gz
-	md5sums = f3543e2285aec87d63856b978e63f233
+	source = https://files.pythonhosted.org/packages/source/i/i3-balance-workspace/i3-balance-workspace-1.7.0.tar.gz
+	md5sums = 64a5799c775130fc4097afd75f5dc29a
 
 pkgname = i3-balance-workspace
 
