@@ -22,7 +22,8 @@ pkgver() {
 
 package_mcmanjaro-kde-git() {
     provides=('mcmanjaro-kde')
-    optdepends=('kvantum-theme-mcmanjaro: Sweet theme for Kvantum Qt style (recommended)')
+    optdepends=('kvantum-theme-mcmanjaro: Sweet theme for Kvantum Qt style (recommended)'
+                'mcmojave-circle-icon-theme-git: Matching icon theme')
 
     cd $_pkgname
 
@@ -31,6 +32,7 @@ package_mcmanjaro-kde-git() {
     
     cp -r aurorae "$pkgdir"/usr/share
     cp -r color-schemes "$pkgdir"/usr/share
+    cp -r konsole "$pkgdir"/usr/share
     cp -r plasma "$pkgdir"/usr/share
 }
 
