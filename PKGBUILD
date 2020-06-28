@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('Apache')
 url="https://github.com/birdayz/kaf"
 source=("$pkgname"::"https://github.com/birdayz/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('75680f6853ba1ecb2d18dcdf3ccb902c')
+md5sums=('b337b6ee83bb07ccc9539ff09b5d0e5c')
 
 prepare() {
   cd "$pkgname-$pkgver"
