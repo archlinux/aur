@@ -1,7 +1,7 @@
 # Maintainer:  Alois Nespor <alium at artixlinux.org>
 
 pkgname=pdfarranger-git
-pkgver=r240.fb7758d
+pkgver=r413.9d911eb
 pkgrel=1
 pkgdesc="Helps merge or split pdf documents and rotate, crop and rearrange pages."
 arch=('any')
@@ -29,11 +29,11 @@ package () {
 
     rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
 
-    install -Dm 644 "data/icons/hicolor/scalable/apps/pdfarranger.svg" \
+    install -Dm 644 "data/icons/hicolor/scalable/apps/com.github.jeromerobert.pdfarranger.svg" \
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/pdfarranger.svg"
 
     for _size in "16x16" "32x32" "48x48" "256x256" ; do
-        install -Dm 644 "data/icons/hicolor/$_size/apps/pdfarranger.png" \
+        install -Dm 644 "data/icons/hicolor/$_size/apps/com.github.jeromerobert.pdfarranger.png" \
                         "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfarranger.png"
     done
 }
