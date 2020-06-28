@@ -1,8 +1,9 @@
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=labplot-git
-pkgver=2.7.0.r43.g3d5066e07
+pkgver=2.7.0.r805.g2b12b7900
 pkgrel=1
 arch=('x86_64')
 pkgdesc="KDE Application for interactive graphing and analysis of scientific data, build from git"
@@ -12,7 +13,7 @@ depends=('netcdf' 'cfitsio' 'fftw' 'gsl' 'qt5-serialport' 'libcerf')
 makedepends=('extra-cmake-modules' 'kdelibs4support' 'kdesignerplugin' 'kdoctools' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=(git://anongit.kde.org/labplot.git)
+source=('git+https://github.com/KDE/labplot.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  [ -d build ] || mkdir build
+  [[ -d build ]] || mkdir build
   cd build
   cmake ../${pkgname%-git} \
 	-DCMAKE_INSTALL_PREFIX=/usr \
