@@ -4,14 +4,14 @@
 
 pkgname='peazip-qt-build'
 pkgver=7.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license=('GPL3')
 url='http://peazip.org'
 arch=('i686' 'x86_64')
-depends=( 'qt4pas' 'desktop-file-utils' 'balz' 'lazarus-qt5' 'paq8o' 'p7zip' 'upx' 'zpaq')
+depends=('desktop-file-utils' 'balz' 'paq8o' 'p7zip' 'upx' 'zpaq')
 optdepends=('quad' 'unace')
-makedepends=('icoutils')
+makedepends=('icoutils' 'lazarus' 'qt4pas')
 provides=('peazip' 'peazip-qt')
 conflicts=('peazip' 'peazip-gtk2' 'peazip-gtk2-build' 'peazip-gtk2-portable' 'peazip-qt' 'peazip-qt-opensuse-latest')
 options=('!strip')
