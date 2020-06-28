@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=torf-cli
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='A tool for creating, reading and editing torrent files'
 arch=('any')
@@ -10,8 +10,14 @@ license=('GPL3')
 depends=('python' 'python-torf' 'python-pyxdg')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rndusr/torf-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('2d14e777c3d218bdacf435328da036f39858658b844b8ad672bb25332e74324c')
+source=("https://github.com/rndusr/torf-cli/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "torf-cli-${pkgver}-fix-tests.patch"::'https://github.com/rndusr/torf-cli/commit/51db64a6e8a5c773ffa4f6cf9fd3d6deb3bcf432.patch')
+sha256sums=('5a39fd950223a133f8ecab2942d27e7a2eb896c8fa144ee921cb7545c3c6ae4b'
+            'f274d1536b6c98f276f8e7ad671b2742af15f7733d36f5076fd14dc126e30335')
+
+prepare() {
+    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/torf-cli-${pkgver}-fix-tests.patch"
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
