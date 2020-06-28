@@ -10,7 +10,7 @@ url="https://github.com/ampledata/kiss"
 license=('Apache')
 depends=(python python-pyserial)
 source=("https://files.pythonhosted.org/packages/source/k/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('04acf4d8fe50d9150d19ead55a25c015')
+md5sums=('dce6aa68437f19e7092434b2c4700b4b')
 
 package() {
     cd $_pkgname-$pkgver/

@@ -8,7 +8,7 @@ pkgbase = python-kiss
 	depends = python
 	depends = python-pyserial
 	source = https://files.pythonhosted.org/packages/source/k/kiss/kiss-7.0.0.tar.gz
-	md5sums = 04acf4d8fe50d9150d19ead55a25c015
+	md5sums = dce6aa68437f19e7092434b2c4700b4b
 
 pkgname = python-kiss
 
