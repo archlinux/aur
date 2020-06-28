@@ -1,6 +1,6 @@
 pkgbase = raspberrypi-bootloader-git
 	pkgdesc = Bootloader files for raspberry pi from git
-	pkgver = r968
+	pkgver = r969
 	pkgrel = 1
 	url = https://github.com/raspberrypi/firmware
 	arch = any
@@ -11,9 +11,8 @@ pkgbase = raspberrypi-bootloader-git
 	conflicts = raspberrypi-bootloader
 	conflicts = raspberrypi-bootloader-x
 	options = !strip
-	options = staticlibs
-	source = 969.tar.gz::https://api.github.com/repos/raspberrypi/firmware/tarball
-	md5sums = 8b297682bc3b62877f5c93697f07e41c
+	source = https://github.com/raspberrypi/firmware/archive/9d4f640625529b104303a31482f5ccbd2d8da51b.zip
+	md5sums = 3339ff79177a4a3f5efd3644213564b8
 
 pkgname = raspberrypi-bootloader-git
 
