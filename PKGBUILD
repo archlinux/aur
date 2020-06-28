@@ -1,7 +1,7 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=batify2
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight battery notification"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('f6b09865dadc392b189b323d759ac032')
+md5sums=('5f770fd754e97726c866cca5e46c484d')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
