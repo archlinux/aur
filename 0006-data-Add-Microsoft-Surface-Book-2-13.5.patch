@@ -1,12 +1,11 @@
-From ac4dc86a56e6a046a282fd84fefed5d7c03a01e2 Mon Sep 17 00:00:00 2001
+From 02712dc4d0aa1b5a153133c7e3d2549c8d1b5b32 Mon Sep 17 00:00:00 2001
 From: qzed <qzed@users.noreply.github.com>
 Date: Sat, 1 Jun 2019 21:48:02 +0200
 Subject: [PATCH 6/8] data: Add Microsoft Surface Book 2 (13.5")
 
 ---
  data/surface-book2-13.tablet | 14 ++++++++++++++
- meson.build                  |  1 +
- 2 files changed, 15 insertions(+)
+ 1 file changed, 14 insertions(+)
  create mode 100644 data/surface-book2-13.tablet
 
 diff --git a/data/surface-book2-13.tablet b/data/surface-book2-13.tablet
@@ -29,18 +28,6 @@ index 0000000..dc1353e
 +Stylus=true
 +Touch=true
 +Buttons=0
-diff --git a/meson.build b/meson.build
-index 04f58e0..84f4316 100644
---- a/meson.build
-+++ b/meson.build
-@@ -349,6 +349,7 @@ data_files = [
- 	'data/one-by-wacom-s-p2.tablet',
- 	'data/serial-wacf004.tablet',
- 	'data/surface-book.tablet',
-+	'data/surface-book2-13.tablet',
- 	'data/surface-pro4.tablet',
- 	'data/surface-pro5.tablet',
- 	'data/surface-pro6.tablet',
 -- 
-2.26.0
+2.27.0
 

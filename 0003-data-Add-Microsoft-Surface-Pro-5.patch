@@ -1,12 +1,11 @@
-From d89c414a70db49e6ca7672d05d5647159b8b29a2 Mon Sep 17 00:00:00 2001
+From a66716aa122b99f2c3c12b9d487640c120be7426 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 22:09:47 +0200
 Subject: [PATCH 3/8] data: Add Microsoft Surface Pro 5
 
 ---
  data/surface-pro5.tablet | 14 ++++++++++++++
- meson.build              |  1 +
- 2 files changed, 15 insertions(+)
+ 1 file changed, 14 insertions(+)
  create mode 100644 data/surface-pro5.tablet
 
 diff --git a/data/surface-pro5.tablet b/data/surface-pro5.tablet
@@ -29,18 +28,6 @@ index 0000000..2ad6539
 +Stylus=true
 +Touch=true
 +Buttons=0
-diff --git a/meson.build b/meson.build
-index b1de7ed..41f29c3 100644
---- a/meson.build
-+++ b/meson.build
-@@ -349,6 +349,7 @@ data_files = [
- 	'data/one-by-wacom-s-p2.tablet',
- 	'data/serial-wacf004.tablet',
- 	'data/surface-pro4.tablet',
-+	'data/surface-pro5.tablet',
- 	'data/wacom-one.tablet',
- 	'data/xp-pen-star03.tablet',
- ]
 -- 
-2.26.0
+2.27.0
 

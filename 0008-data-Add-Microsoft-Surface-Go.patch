@@ -1,12 +1,11 @@
-From a2086130d8ee8655c8dc5ad77e14b4ab2dbc5ddb Mon Sep 17 00:00:00 2001
+From 7c2a08fe22b287add99d0c16c22e0538077f865e Mon Sep 17 00:00:00 2001
 From: Ivo Damjanovic <ivo@damjanovic.it>
 Date: Fri, 10 Jan 2020 00:36:33 +0100
 Subject: [PATCH 8/8] data: Add Microsoft Surface Go
 
 ---
  data/surface-go.tablet | 14 ++++++++++++++
- meson.build            |  1 +
- 2 files changed, 15 insertions(+)
+ 1 file changed, 14 insertions(+)
  create mode 100644 data/surface-go.tablet
 
 diff --git a/data/surface-go.tablet b/data/surface-go.tablet
@@ -29,18 +28,6 @@ index 0000000..0db7a78
 +Stylus=true
 +Touch=true
 +Buttons=0
-diff --git a/meson.build b/meson.build
-index 55f40af..3a1c548 100644
---- a/meson.build
-+++ b/meson.build
-@@ -351,6 +351,7 @@ data_files = [
- 	'data/surface-book.tablet',
- 	'data/surface-book2-13.tablet',
- 	'data/surface-book2-15.tablet',
-+	'data/surface-go.tablet',
- 	'data/surface-pro4.tablet',
- 	'data/surface-pro5.tablet',
- 	'data/surface-pro6.tablet',
 -- 
-2.26.0
+2.27.0
 

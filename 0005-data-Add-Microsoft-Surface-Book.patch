@@ -1,12 +1,11 @@
-From 9535ce6363534d7bf7c964a9bcc305515b0df5eb Mon Sep 17 00:00:00 2001
+From 122fcb323532c576fb3913b6c2230dc57cf35b12 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Mon, 3 Jun 2019 00:45:41 +0200
 Subject: [PATCH 5/8] data: Add Microsoft Surface Book
 
 ---
  data/surface-book.tablet | 14 ++++++++++++++
- meson.build              |  1 +
- 2 files changed, 15 insertions(+)
+ 1 file changed, 14 insertions(+)
  create mode 100644 data/surface-book.tablet
 
 diff --git a/data/surface-book.tablet b/data/surface-book.tablet
@@ -29,18 +28,6 @@ index 0000000..45e17db
 +Stylus=true
 +Touch=true
 +Buttons=0
-diff --git a/meson.build b/meson.build
-index 49bb185..04f58e0 100644
---- a/meson.build
-+++ b/meson.build
-@@ -348,6 +348,7 @@ data_files = [
- 	'data/one-by-wacom-s-p.tablet',
- 	'data/one-by-wacom-s-p2.tablet',
- 	'data/serial-wacf004.tablet',
-+	'data/surface-book.tablet',
- 	'data/surface-pro4.tablet',
- 	'data/surface-pro5.tablet',
- 	'data/surface-pro6.tablet',
 -- 
-2.26.0
+2.27.0
 

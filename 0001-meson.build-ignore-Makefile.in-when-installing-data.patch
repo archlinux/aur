@@ -1,0 +1,39 @@
+From b0acb98c410b46372b835726130498585e03ff81 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 24 Jun 2020 10:51:05 +1000
+Subject: [PATCH libwacom] meson.build: ignore Makefile.in when installing data
+
+A tarball generated with autotools has a generated Makefile.in in every
+directory we have a Makefile.am. Using install_subdir() we end up installing
+that file unless we explicitly exclude it. This doesn't happen when building
+from git (unless the git tree is dirty from a previous autotools setup).
+
+And sneak a "space before tab" whitespace change in while we're in that
+vincinity.
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+---
+ meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 7453256..9254bcf 100644
+--- a/meson.build
++++ b/meson.build
+@@ -94,10 +94,12 @@ install_subdir('data',
+ 	       install_dir: dir_data,
+ 	       strip_directory: true,
+ 	       exclude_files: ['wacom.example',
+-		       	       'check-files-in-git.sh',
++			       'check-files-in-git.sh',
+ 			       'check-svg-exists.sh',
+ 			       'Makefile.am',
++			       'Makefile.in',
+ 			       'layouts/Makefile.am',
++			       'layouts/Makefile.in',
+ 			       'layouts/README'])
+ 
+ test('files-in-git',
+-- 
+2.26.2
+

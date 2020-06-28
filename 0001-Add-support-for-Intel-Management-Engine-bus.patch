@@ -1,4 +1,4 @@
-From 435a6d9547d5b24a73da93cdba0d7bb5c513b6c1 Mon Sep 17 00:00:00 2001
+From 5bf2b290f25006f5e97c868f4423048074d96dbe Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 1/8] Add support for Intel Management Engine bus
@@ -14,10 +14,10 @@ the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
  4 files changed, 11 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index ebc0605..37e797a 100644
+index 9f2657b..6084818 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
-@@ -112,6 +112,8 @@ bus_from_str (const char *str)
+@@ -130,6 +130,8 @@ bus_from_str (const char *str)
  		return WBUSTYPE_BLUETOOTH;
  	if (streq(str, "i2c"))
  		return WBUSTYPE_I2C;
@@ -26,7 +26,7 @@ index ebc0605..37e797a 100644
  	return WBUSTYPE_UNKNOWN;
  }
  
-@@ -130,6 +132,8 @@ bus_to_str (WacomBusType bus)
+@@ -148,6 +150,8 @@ bus_to_str (WacomBusType bus)
  		return "bluetooth";
  	case WBUSTYPE_I2C:
  		return "i2c";
@@ -36,7 +36,7 @@ index ebc0605..37e797a 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index c4a50a8..bd6b63f 100644
+index 627354c..c52daed 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -147,6 +147,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -59,7 +59,7 @@ index c4a50a8..bd6b63f 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index 8035e17..799e9b2 100644
+index a848133..af0f134 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
 @@ -117,6 +117,7 @@ typedef enum {
@@ -71,10 +71,10 @@ index 8035e17..799e9b2 100644
  
  /**
 diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
-index 8ee41e2..42e5f54 100644
+index 65b87c0..745c46d 100644
 --- a/test/test-tablet-validity.c
 +++ b/test/test-tablet-validity.c
-@@ -172,6 +172,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
+@@ -177,6 +177,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
  			/* fall through */
  		case WBUSTYPE_BLUETOOTH:
  		case WBUSTYPE_I2C:
@@ -83,5 +83,5 @@ index 8ee41e2..42e5f54 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.26.0
+2.27.0
 
