@@ -1,4 +1,4 @@
-export PATH=$PATH:_alteradir/quartus/bin:_alteradir/modelsim_ase/bin
+export PATH=$PATH:_alteradir/quartus/bin
 
 # Detect if a 64bit machine and activate quartus
 # depending on it.

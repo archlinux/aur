@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=ModelSim-Altera Starter Edition
-Comment=ModelSim simulation software for Altera FPGA's
+Name=ModelSim-Intel FPGA Starter Edition
+Comment=ModelSim simulation software for Intel FPGAs
 Exec=_alteradir/modelsim_ase/bin/vsim -gui -l /dev/null
 Icon=_alteradir/modelsim_ase/modesim.gif
 Terminal=false
