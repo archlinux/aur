@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Webrecorder
+GenericName=Webrecorder
+Type=Application
+Icon=webrecorder
+Exec=Webrecorder.AppImage
+Categories=Electron;Utility;Recorder;
+Keywords=Task;Productivity;Recorder;
+StartupNotify=true
