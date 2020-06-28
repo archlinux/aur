@@ -1,8 +1,8 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 pkgname=freetennis
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tennis simulation game"
 arch=('x86_64')
 url="http://freetennis.sourceforge.net/"
