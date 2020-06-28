@@ -2,8 +2,8 @@
 
 pkgname=python-pytest-httpserver
 pkgver=0.3.4
-pkgrel=1
-pkgdesc='Python module for testing http clients without contacting the real http server'
+pkgrel=2
+pkgdesc='Pytest plugin for testing http clients without contacting the real http server'
 arch=('any')
 url='https://github.com/csernazs/pytest-httpserver/'
 license=('MIT')
