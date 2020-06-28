@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-git
-	pkgdesc = Modded Minecraft launcher built with Electron/React (git version)
-	pkgver = 0.12.4.r8.ge7354f30
-	pkgrel = 1
+	pkgdesc = Modded Minecraft launcher built with Electron/React (legacy git version)
+	pkgver = 1.0.0.beta.1.r0.ge7354f30
+	pkgrel = 2
 	url = https://gdevs.io
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = gdlauncher-git
 	provides = gdlauncher
 	conflicts = gdlauncher
 	conflicts = gdlauncher-appimage
-	source = git+https://github.com/gorilla-devs/GDLauncher.git
+	source = git+https://github.com/gorilla-devs/GDLauncher.git#branch=GDLauncher_old
 	sha256sums = SKIP
 
 pkgname = gdlauncher-git
