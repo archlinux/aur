@@ -8,15 +8,18 @@ pkgdesc="OpenStopMotion Animation Capture"
 arch=('x86_64')
 url="https://www.pfp.de/osm/"
 license=('GPL')
-depends=('pcre' 'libtiff')
-makedepends=('pacman>=4.2.0')
-provides=("openstopmotion=$pkgver")
+makedepends=(qt5-base qt5-tools 'pcre' 'libtiff')
 install="$pkgname.install"
-source=("https://downloads.sourceforge.net/project/openstopmotion/Ubuntu%2012.04/OpenStopMotion-0.6.3-Ubuntu-12.04-amd64.deb")
-sha256sums=('bfc614f76fede8ee4074b738682db4a22cf8754979f72baea2609cdd175dea37')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pfedick/openstopmotion/archive/REL_${pkgver//./_}.tar.gz")
+sha256sums=('e7b9f59471f438ad11163760acfcfb87871d6970f70f835e429ed4d187b7ca33')
+
+build() {
+  cd $pkgname-REL_${pkgver//./_}
+  qmake OpenStopMotion.pro PREFIX=/usr
+  make
+}
 
 package() {
-	bsdtar -xzf data.tar.gz -C "$pkgdir/"
-  chmod -R 755 "$pkgdir/"
+  cd $pkgname-REL_${pkgver//./_}
+  make INSTALL_ROOT="$pkgdir" install
 }
-# vim:set ts=2 sw=2 et:

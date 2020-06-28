@@ -6,12 +6,12 @@ pkgbase = openstopmotion
 	install = openstopmotion.install
 	arch = x86_64
 	license = GPL
-	makedepends = pacman>=4.2.0
-	depends = pcre
-	depends = libtiff
-	provides = openstopmotion=0.6.3
-	source = https://downloads.sourceforge.net/project/openstopmotion/Ubuntu%2012.04/OpenStopMotion-0.6.3-Ubuntu-12.04-amd64.deb
-	sha256sums = bfc614f76fede8ee4074b738682db4a22cf8754979f72baea2609cdd175dea37
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = pcre
+	makedepends = libtiff
+	source = openstopmotion-0.6.3.tar.gz::https://github.com/pfedick/openstopmotion/archive/REL_0_6_3.tar.gz
+	sha256sums = e7b9f59471f438ad11163760acfcfb87871d6970f70f835e429ed4d187b7ca33
 
 pkgname = openstopmotion
 
