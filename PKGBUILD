@@ -3,7 +3,7 @@
 pkgname=non-euclidean-git
 pkgver=r8.e09f089
 pkgrel=1
-pkgdesc="Non-Euclidean engine"
+pkgdesc="Tiny Non-Euclidean engine"
 arch=('any')
 url="https://github.com/CzechBlueBear/NonEuclidean"
 license=('MIT')
