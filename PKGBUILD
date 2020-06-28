@@ -5,7 +5,7 @@ _pkgver_major=5
 _pkgver_minor=6
 _pkgver_patch=0
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
-pkgrel=1
+pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
-	sed -i /set\(eCAL_VERSION_MAJOR\ /s/\$\{GIT_REVISION_MAYOR\}/"$_pkgver_major"/g CMakeLists.txt
+	sed -i /set\(eCAL_VERSION_MAJOR\ /s/\$\{GIT_REVISION_MAJOR\}/"$_pkgver_major"/g CMakeLists.txt
 	sed -i /set\(eCAL_VERSION_MINOR\ /s/\$\{GIT_REVISION_MINOR\}/"$_pkgver_minor"/g CMakeLists.txt
 	sed -i /set\(eCAL_VERSION_PATCH\ /s/\$\{GIT_REVISION_PATCH\}/"$_pkgver_patch"/g CMakeLists.txt
 	mkdir -p _build
