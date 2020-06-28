@@ -2,12 +2,12 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=fcitx-baidupinyin
 pkgver=1.0.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Fcitx wrapper for Baidu Pinyin IM engine"
 arch=("x86_64")
 url="https://srfsh.baidu.com/site/guanwang_linux/index.html"
 license=("custom")
-depends=('glibc' 'glib2' 'fcitx-qt5' 'qt5-quickcontrols')
+depends=('fcitx-qt5' 'qt5-quickcontrols')
 #Depends shown in .deb: libc6 (>= 2.4), fcitx-bin, fcitx-data (>= 1:4.2.0), fcitx-modules,  libglib2.0-0 (>= 2.12.0), libqt5core5a (>= 5.7.1), qml-module-qtquick-controls (>= 5.5.1)
 install=fcitx-baidupinyin.install
 source=(
@@ -52,6 +52,9 @@ package(){
     mv "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/files/share/data "$pkgdir"/opt/fcitx-baidupinyin/
     
     install -Dm644 "${srcdir}/LICENSE"  "${pkgdir}/usr/share/licenses/fcitx-baidupinyin/LICENSE"
+    
+    # fix owners.
+    chown -R root:root $pkgdir/
     
     # clean up unused files
     rm -rf "$pkgdir"/opt/apps
