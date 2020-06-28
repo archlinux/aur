@@ -1,16 +1,17 @@
 pkgbase = thenewplayerfree-bin
-	pkgdesc = The best video/streaming media player under UNIX
-	pkgver = 1.6.1
-	pkgrel = 4
+	pkgdesc = The best IPTV/vide/iso/blue-ray player for macOS and Linux
+	pkgver = 1.6.6
+	pkgrel = 3
 	url = https://github.com/sudormroot/thenewplayer_builds
 	arch = x86_64
-	license = unknown
-	depends = qt5-base
+	license = custom
 	depends = qt5-multimedia
 	depends = libvdpau
 	depends = libva
-	source = https://github.com/sudormroot/thenewplayer_builds/releases/download/tnpfree_v1_6_1_amd64_linux/thenewplayerfree_linux_1.6.1-1_all.deb
-	sha512sums = d1c694013fdda6b4482ce10164bba0e60e6ab3d5a2e55b3d2f061c6e558da91df6e0ee22e1981873bdf10029f1ad6eddb84106d58152167af6a9995e8090bc8f
+	depends = openjpeg2
+	depends = hicolor-icon-theme
+	source = https://github.com/sudormroot/thenewplayer_builds/releases/download/thenewplayerfree-bin.linux.dynamic-build.1.6.6-3.amd64/thenewplayerfree-bin.linux.dynamic-build.1.6.6-3.amd64.deb
+	sha512sums = 2238d1ec9e2f41ef36cc05c838dd18b29ceac81f63c7c553819ceda2bebdf53e1210738139c9ec08b58134a2f23a11839f89c389249d42943c192aa52374b18c
 
 pkgname = thenewplayerfree-bin
 
