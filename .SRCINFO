@@ -1,7 +1,7 @@
 pkgbase = perl-text-chm
 	pkgdesc = Perl Text::CHM - Extension for handling MS Compiled HtmlHelp Files
 	pkgver = 0.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Text-CHM
 	arch = i686
 	arch = x86_64
