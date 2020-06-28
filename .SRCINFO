@@ -1,7 +1,7 @@
 pkgbase = pgadmin3
-	pkgdesc = Comprehensive design and management interface for PostgreSQL
+	pkgdesc = Comprehensive design and management interface for PostgreSQL (legacy)
 	pkgver = 1.22.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.pgadmin.org
 	arch = x86_64
 	license = custom
@@ -17,9 +17,9 @@ pkgbase = pgadmin3
 	source = https://ftp.postgresql.org/pub/pgadmin/pgadmin3/v1.22.2/src/pgadmin3-1.22.2.tar.gz.sig
 	source = pgadmin3-fix-segfault.patch
 	validpgpkeys = E0C4CEEB826B1FDA4FB468E024ADFAAF698F1519
-	sha256sums = 9b68b0e3d3f0a261344fb8196825967d1e7acaca1d8cc82c42e12368ca5844ac
-	sha256sums = SKIP
-	sha256sums = b175869b77bcbfa43f1bc256277966882789883792c4f9dd26038ec248def6a2
+	sha512sums = dcfc72cc2e33dbf1c9d1ce287f9d1d46eb047c99a165372cb74ef1716098f90f2ce2a8d0cd21b511a1ac8c0569dc7b3c0593208a74641f5a8f29dc9c04e40bbd
+	sha512sums = SKIP
+	sha512sums = c0fe3d3cc5c1c29f69f3b81b0c78fbe2cf6e484e3ace9e35a3352d93246fc8227047c7c59a168bedfdc7b4f67d3db800c8b1d7cd962d7952436e080a2ea1e083
 
 pkgname = pgadmin3
 
