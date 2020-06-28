@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-flexible'
-pkgver='0.30'
+pkgver='0.32'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module DateTime::Format::Flexible: Flexibly parse strings and turn them into DateTime objects."
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=()
 checkdepends=('perl-test-exception' 'perl-test-mocktime' 'perl-test-nowarnings')
 url='https://metacpan.org/release/DateTime-Format-Flexible'
 source=("http://search.cpan.org/CPAN/authors/id/T/TH/THINC/DateTime-Format-Flexible-$pkgver.tar.gz")
-md5sums=('192315e122aeb050ec2ed0440bfc70a7')
-sha512sums=('647f071c43e611fcdc462df2de429d11460b95c0ea4d59705817c53c57d500b9146125cf026e659f9128ce35142078bb58d97432e4488ee90f635e514ee40435')
+md5sums=('557c8aa64838884857cbce4727d18321')
+sha512sums=('90e0e83cecff5daab132860c2da2d77c92c0791fe8d0d6aa9275c1e0d603b644a8531848d8fb4bad8e1800c02a4e571ceda1a4bf4b8ee9bd7ac0215898db2882')
 _distdir="DateTime-Format-Flexible-$pkgver"
 
 build() {
