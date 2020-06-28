@@ -1,0 +1,19 @@
+pkgbase = telegram-tg
+	pkgdesc = terminal telegram client that really works
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/paul-nameless/tg
+	arch = any
+	license = Unlicense
+	makedepends = python-dephell
+	depends = python-telegram
+	depends = python3
+	optdepends = libnotify: for notifications, you could also use other programs: see config
+	optdepends = ffmpeg: to record voice msgs and upload videos correctly
+	optdepends = urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin
+	conflicts = telegram-tg-git
+	source = telegram-tg-0.1.3.tar.gz::https://github.com/paul-nameless/tg/archive/v0.1.3.tar.gz
+	md5sums = c40a1446ddac757d7e1469d0192cd915
+
+pkgname = telegram-tg
+
