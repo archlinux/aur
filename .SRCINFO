@@ -1,0 +1,17 @@
+pkgbase = python-mapnik-git
+	pkgdesc = Python3 bindings for Mapnik
+	pkgver = 3.0.16
+	pkgrel = 1
+	url = https://github.com/mapnik/python-mapnik
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	depends = mapnik
+	depends = python-cairo
+	depends = python-pypdf2
+	source = git+https://github.com/mapnik/python-mapnik.git#branch=v3.0.x
+	sha1sums = SKIP
+
+pkgname = python-mapnik-git
+
