@@ -1,7 +1,7 @@
 # Maintainer: saxonbeta <saxonbeta at gmail _ com>
 #Contributor: Thomas Jost  <schnouki at schnouki _ net>
 pkgname=qnotero
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A Qt application which provides access to your Zotero references"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=(https://github.com/ealbiter/qnotero/archive/v${pkgver}.tar.gz)
-sha256sums=('14cdaaae1298be907d7a3e65b69faa067d14a4e25b5f0439421c152815bf20f5')
+sha256sums=('f987fb3368e7dfa3789da46e20766b95f65c6a4521bf006386d875be7d28dfff')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
