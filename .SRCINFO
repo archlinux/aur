@@ -1,0 +1,13 @@
+pkgbase = nomarch
+	pkgdesc = Extract, list, and test files from the old '.arc' archive format
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.svgalib.org/rus/nomarch.html
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://ibiblio.org/pub/Linux/utils/compress/nomarch-1.4.tar.gz
+	sha256sums = fe20da34e0d3ba0cf6388701f44ac22224cf65130ddbc5fcbc27bc4949a6e1ad
+
+pkgname = nomarch
+
