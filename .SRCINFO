@@ -1,0 +1,15 @@
+pkgbase = fontlink-bin
+	pkgdesc = Program to install fonts temporarily on Unix-like systems
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://danpla.github.io/fontlink
+	arch = any
+	license = ZLIB
+	makedepends = tar
+	depends = python
+	provides = fontlink
+	source = fontlink-1.0.3.deb::https://github.com/danpla/fontlink/releases/download/v1.0.3/fontlink_1.0.3-1_all.deb
+	sha256sums = b9ea47bc671baedd32b3555e0e2e2113925788da9cbb3ab47574ac9615f13436
+
+pkgname = fontlink-bin
+
