@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Web Recorder
+GenericName=Web Recorder
+Exec=webrecorder
+Categories=Utility;Productivity;
+Icon=webrecorder.ico
+Keywords=Productivity;Web;webrecorder;
+StartupNotify=true
+Terminal=false
+Type=Application
+

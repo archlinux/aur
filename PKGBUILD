@@ -1,0 +1,35 @@
+# Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
+
+pkgname=webrecorder-appimg
+_pkgname=Webrecorder
+pkgver=2.0.2
+pkgrel=1
+pkgdesc="A note taking and to-do application with synchronization capabilities"
+provides=('webrecorder')
+conflicts=('webrecorder')
+arch=('x86_64')
+url="https://github.com/webrecorder/webrecorder-desktop"
+license=(unknown)
+depends=('redis')
+noextract=('Webrecorder.AppImage')
+options=(!strip)
+_appimg="Webrecorder.AppImage"
+
+source=(
+    "Webrecorder.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "webrecorder.desktop"
+    "webrecorder.ico"
+    )
+
+sha512sums=(
+    SKIP
+    SKIP
+    SKIP
+)
+
+
+package() {
+    install -Dm755 $_appimg "${pkgdir}/usr/bin/webrecorder"
+    install -Dm755 webrecorder.desktop "${pkgdir}/usr/share/applications/webrecorder.desktop"
+    install -Dm644 webrecorder.ico "${pkgdir}/usr/share/icons/webrecorder.png"
+    }
