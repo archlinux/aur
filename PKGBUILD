@@ -1,19 +1,21 @@
-# Maintainer: GodronGR <ntheo1979@gmail.com>
+# Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
+# Contributor: GodronGR <ntheo1979@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+_pkgbasename=x264
 pkgname=lib32-x264
 pkgver=0.159.r2999.296494a
-pkgrel=2
+pkgrel=3
 epoch=3
-pkgdesc='Open Source H264/AVC video encoder (lib32)'
+pkgdesc='Open Source H264/AVC video encoder (32 bit)'
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('x264')
+depends=('x264' 'lib32-glibc')
 makedepends=('git' 'l-smash' 'nasm' 'lib32-gcc-libs')
 provides=('lib32-libx264' 'libx264.so')
 conflicts=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
@@ -43,12 +45,12 @@ build() {
 
     ../x264/configure \
         --prefix='/usr' \
+        --libdir=/usr/lib32 \
+        --host=i686-linux-gnu \
         --enable-shared \
         --enable-pic \
         --enable-lto \
         --disable-avs \
-        --libdir=/usr/lib32 \
-        --host=i686-linux-gnu \
         --extra-cflags="-flto -ffat-lto-objects"
     make
 }
