@@ -11,8 +11,8 @@ pkgbase = raspberrypi-bootloader-git
 	conflicts = raspberrypi-bootloader
 	conflicts = raspberrypi-bootloader-x
 	options = !strip
-	source = https://github.com/raspberrypi/firmware/archive/9d4f640625529b104303a31482f5ccbd2d8da51b.zip
-	md5sums = 3339ff79177a4a3f5efd3644213564b8
+	source = 969.tar.gz::https://api.github.com/repos/raspberrypi/firmware/tarball
+	md5sums = skip
 
 pkgname = raspberrypi-bootloader-git
 
