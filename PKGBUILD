@@ -1,7 +1,7 @@
 # Maintainer: Yamato Kobayashi <yk.ymadd@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
-pkgname=webrecorder-desktop-appimg
+pkgname=webrecorder-desktop-appimage
 _pkgname=Webrecorder
 pkgver=2.0.2
 pkgrel=1
