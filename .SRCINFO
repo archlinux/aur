@@ -1,0 +1,18 @@
+pkgbase = uboot-tools-rc
+	pkgdesc = U-Boot tools RCs
+	pkgver = 2020.07rc5
+	pkgrel = 1
+	url = http://www.denx.de/wiki/U-Boot/WebHome
+	arch = x86_64
+	license = GPL
+	makedepends = bc
+	makedepends = dtc
+	makedepends = git
+	provides = uboot-tools
+	conflicts = uboot-tools
+	options = !strip
+	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2020.07-rc5.tar.bz2
+	md5sums = 3b10951fa62e91433d0045a29a8588b0
+
+pkgname = uboot-tools-rc
+
