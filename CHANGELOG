@@ -1,5 +1,6 @@
-v1.0.1
+v2.0.0
 ======
-- Wizard: Don't default to ~/Projects/Icons
-- Wider default size
-- Other bug fixes and translations updates
+- Rewrite in Rust
+- Support previewing exported icons
+- Hide the template baseplate/grid layers
+- Optimize SVG when exporting
