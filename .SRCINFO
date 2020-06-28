@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 245.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	groups = selinux
@@ -66,7 +66,7 @@ pkgbase = systemd-selinux
 	sha512sums = e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4
 	sha512sums = 85d11bbbb5c10016e4a67eec051315e2e292939844f260bf698018c5bd1c516c28444f635eb15832a23e26891c4beda14bacfa57fdeda45c00f1b653abe3b123
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = d0218d51c557a8456e8f41a56fa057b525bbcfcfa580cbd58efb14f356854172a8e1f31779e023350645a5e28cd4b9d94b0d7a8a3d2ee22db181c65d8f661a2e
+	sha512sums = 80ac350fb4dc58c52d4c1ce77a1f91b8cd64d4c99a1c1e24194acac56f9e4a69b2304b13113e93d38459041fa073fe97840776d99ed7e4ce99aa76a3adb39583
 	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
@@ -127,7 +127,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=245.6
 	provides = udev=245.6
-	provides = systemd=245.6-7
+	provides = systemd=245.6-8
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -160,7 +160,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=245.6-7
+	provides = systemd-libs=245.6-8
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -172,16 +172,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=245.6-7
+	provides = systemd-resolvconf=245.6-8
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=245.6-7
+	conflicts = systemd-resolvconf=245.6-8
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=245.6-7
-	provides = selinux-systemd-sysvcompat=245.6-7
+	provides = systemd-sysvcompat=245.6-8
+	provides = selinux-systemd-sysvcompat=245.6-8
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
