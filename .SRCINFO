@@ -1,6 +1,6 @@
 pkgbase = ruby-other_video_transcoding
 	pkgdesc = Other Video Transcoding is a package of tools to transcode videos.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/donmelton/other_video_transcoding
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-other_video_transcoding
 	depends = ruby
 	depends = mkvtoolnix-cli
 	depends = ffmpeg
-	noextract = other_video_transcoding-0.3.0.gem
+	noextract = other_video_transcoding-0.3.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/other_video_transcoding-0.3.0.gem
-	sha1sums = 532df4e6f061fe2b794840a3bee915c769aaf4e1
+	source = https://rubygems.org/downloads/other_video_transcoding-0.3.1.gem
+	sha1sums = 45217ff50cdac5e147b86f0988e749787ce30642
 
 pkgname = ruby-other_video_transcoding
 
