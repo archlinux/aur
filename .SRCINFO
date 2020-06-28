@@ -1,0 +1,18 @@
+pkgbase = finalcrypt
+	pkgdesc = The World's Strongest Encryption
+	pkgver = 6.3.8
+	pkgrel = 1
+	url = http://www.finalcrypt.org
+	arch = x86_64
+	license = CCPL
+	makedepends = tar
+	depends = java-runtime>=8
+	depends = gtk2
+	depends = libnet
+	depends = ffmpeg
+	depends = gtk3
+	source = finalcrypt-6.3.8.deb::http://www.finalcrypt.org/downloads/linux/finalcrypt_linux_x86_64_debian_based.deb
+	sha256sums = e44a18990c793eff06580757bd66be777f052cc10d13dfc9be187f6157129c87
+
+pkgname = finalcrypt
+
