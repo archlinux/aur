@@ -1,6 +1,6 @@
 pkgbase = peazip-qt-build
 	pkgdesc = Free cross-platform file archiver (compiles from source)
-	pkgver = 7.2.1
+	pkgver = 7.3.2
 	pkgrel = 1
 	url = http://peazip.org
 	install = peazip.install
@@ -27,8 +27,8 @@ pkgbase = peazip-qt-build
 	conflicts = peazip-qt
 	conflicts = peazip-qt-opensuse-latest
 	options = !strip
-	source = https://github.com/giorgiotani/PeaZip/releases/download/7.2.1/peazip-7.2.1.src.zip
-	sha512sums = 6376199557e96b6627c790e38057d44dc2c3e3e5ed8e7ad4477329304c2fbc9ecc4f76af4bfb83e6bc7578296de375f8741fa2bbfcbcc5aed1347d35a155c526
+	source = https://github.com/giorgiotani/PeaZip/releases/download/7.3.2/peazip-7.3.2.src.zip
+	sha512sums = fc47b2b051ce8cde5d1c51e4957c0ecf60a2ced6fbe0d1bd8f189d75b0e3c5a6a59d12b023328047434fa13a600753c9d7354adb10ef8e9b8ee8b5bae17c9add
 
 pkgname = peazip-qt-build
 
