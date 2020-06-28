@@ -11,10 +11,8 @@ arch=('aarch64')
 url='http://www.denx.de/wiki/U-Boot/WebHome'
 license=('GPL')
 backup=('boot/boot.txt' 'boot/boot.scr' 'boot/config.txt')
-provides=('uboot-tools')
-conflicts=('uboot-tools')
 makedepends=('bc' 'dtc' 'git')
-depends=('linux-aarch64')
+depends=('linux-aarch64' 'uboot-tools-rc')
 options=(!strip)
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
@@ -39,7 +37,6 @@ build() {
   make rpi_4_config
   echo 'CONFIG_IDENT_STRING=" Arch Linux ARM"' >> .config
   make EXTRAVERSION=-${pkgrel}
-  make tools-all
 }
 
 package() {
@@ -54,9 +51,4 @@ package() {
 
   tools/mkimage -A arm64 -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}"/boot/boot.scr
   cp ../{boot.txt,mkscr} "${pkgdir}"/boot
-
-  install -dm755 ${pkgdir}/{usr/{bin,share/man/man1},etc}
-  install -m755 tools/{fit_{check_sign,info},dumpimage,mkimage,mkenvimage,netconsole,ncb,proftool,env/fw_printenv} ${pkgdir}/usr/bin
-  ln -s /usr/bin/fw_printenv ${pkgdir}/usr/bin/fw_setenv
-  install -m644 doc/mkimage.1 ${pkgdir}/usr/share/man/man1
 }
