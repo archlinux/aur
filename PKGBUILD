@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideotomp3
-pkgver=2.6.1.913
+pkgver=2.6.2.915
 pkgrel=1
 pkgdesc="Extract audio in high-quality MP3 from any video."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('8ad5ebe96913dba30fa7662a8e156f0fb8e5d9ff3d4f8b2024aea63e611bf926'
+sha256sums=('b6e1f12eab71bacd290fc3a5b58b0756d37c7171b1b02d4a0ba9915a091286ac'
             'a53e776426f30fd1d35b5d78df95f3608f25a8637a7c5f0c731ff538226c2185'
             '3aa5efcf8111c63fde7397f491d2b85ff47d50fd531f7792842d94016b814a4c')
 
