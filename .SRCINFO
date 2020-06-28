@@ -1,0 +1,16 @@
+pkgbase = solunar2-git
+	pkgdesc = Calculate sun and moon, rise and set times
+	pkgver = r1.93ccb31
+	pkgrel = 1
+	url = https://github.com/kevinboone/solunar2
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = solunar2
+	conflicts = solunar2
+	conflicts = solunar
+	source = git+https://github.com/kevinboone/solunar2.git
+	sha256sums = SKIP
+
+pkgname = solunar2-git
+
