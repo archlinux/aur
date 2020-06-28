@@ -2,7 +2,7 @@
 
 pkgname=zoom-firefox
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc=".desktop file for running Zoom in Firefox"
 arch=('x86_64')
 license=('MIT')

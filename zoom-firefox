@@ -5,4 +5,4 @@ IFS='=&'
 parm=($1)
 IFS=$saveIFS
 
-/usr/bin/firefox "https://grafana.zoom.us/wc/${parm[3]}/join"
+/usr/bin/firefox "https://zoom.us/wc/${parm[3]}/join"
