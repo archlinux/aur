@@ -1,0 +1,15 @@
+pkgbase = txt2epub-git
+	pkgdesc = Convert one or more plain text files into an EPUB document
+	pkgver = 0.0.1.r0.g73b0c60
+	pkgrel = 1
+	url = https://github.com/kevinboone/txt2epub
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	provides = txt2epub
+	source = git+https://github.com/kevinboone/txt2epub.git
+	sha256sums = SKIP
+
+pkgname = txt2epub-git
+
