@@ -1,6 +1,6 @@
 pkgbase = qt-installer-framework
 	pkgdesc = The Qt Installer Framework used for the Qt SDK installer
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://qt-project.org/wiki/Qt-Installer-Framework
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = qt-installer-framework
 	makedepends = qt5-tools
 	makedepends = qt5-declarative
 	makedepends = clang
-	source = https://download.qt.io/official_releases/qt-installer-framework/3.2.2/qt-installer-framework-opensource-src-3.2.2.tar.gz
-	sha256sums = d4793b891acaa06938e4bfc5367e024bc132108f819b48da0e8a97feab555ce9
+	source = qt-installer-framework-3.2.3.tar.gz::https://github.com/qtproject/installer-framework/archive/3.2.3.tar.gz
+	sha256sums = a3185fa27a3ad26aa48898878039d11c167bc440a882d899d7d5fa59d7331c32
 
 pkgname = qt-installer-framework
 	pkgdesc = The Qt Installer Framework used for the Qt SDK installer
