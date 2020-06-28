@@ -22,7 +22,7 @@ pkgver() {
 
 package_mcmanjaro-kde-git() {
     provides=('mcmanjaro-kde')
-    optdepends=('kvantum-theme-mcmanjaro: Sweet theme for Kvantum Qt style (recommended)'
+    optdepends=('kvantum-theme-mcmanjaro: McManjaro theme for Kvantum Qt style (recommended)'
                 'mcmojave-circle-icon-theme-git: Matching icon theme')
 
     cd $_pkgname

@@ -11,7 +11,7 @@ pkgbase = mcmanjaro-kde-git
 	sha256sums = SKIP
 
 pkgname = mcmanjaro-kde-git
-	optdepends = kvantum-theme-mcmanjaro: Sweet theme for Kvantum Qt style (recommended)
+	optdepends = kvantum-theme-mcmanjaro: McManjaro theme for Kvantum Qt style (recommended)
 	optdepends = mcmojave-circle-icon-theme-git: Matching icon theme
 	provides = mcmanjaro-kde
 
