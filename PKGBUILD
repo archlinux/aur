@@ -1,29 +1,23 @@
-# Maintainer: quellen <lodgerz@gmail.com>
-pkgname=epub2txt
-pkgver=12.4f1cc12
-pkgrel=1
-pkgdesc="Extract text from EPUB documents"
-arch=('i686' 'x86_64')
-url="https://github.com/kevinboone/epub2txt2"
-license=('GPL')
-makedepends=('git')
-_gitname=epub2txt2
-source=("git+https://github.com/kevinboone/${_gitname}.git")
-sha256sums=('SKIP')
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: quellen <lodgerz@gmail.com>
 
-pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+pkgname=epub2txt
+pkgver=2.01
+pkgrel=1
+pkgdesc='Extract text from EPUB documents'
+arch=('x86_64' 'i686')
+url='https://github.com/kevinboone/epub2txt2'
+license=('GPL3')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('82c96c713c8a6e10d7b37e96db83a9d5f50fcb4b65034b4a1df1024776b6591f')
 
 build() {
-  cd "${_gitname}"
-  make
+  make -C "${pkgname}2-${pkgver}"
 }
 
 package() {
-mkdir -p "$pkgdir/usr/bin"
-mkdir -p "$pkgdir/usr/share/man/man1"
-cp -p "${_gitname}/epub2txt" "$pkgdir/usr/bin/"
-install -Dm644 "${_gitname}/man1/epub2txt.1" "$pkgdir/usr/share/man/man1/"
-} 
+  make DESTDIR="${pkgdir}" -C "${pkgname}2-${pkgver}" install
+  install -Dm644 "${pkgname}2-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+# vim: ts=2 sw=2 et:
