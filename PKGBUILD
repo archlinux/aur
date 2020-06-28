@@ -3,8 +3,8 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-bin"
 _pkgname="gdlauncher"
-pkgver="1.0.6"
-pkgrel=2
+pkgver="1.0.8"
+pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
