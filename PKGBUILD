@@ -1,11 +1,11 @@
-# Maintainer: rafaelff <rafaelff@gnome.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=direvent-git
-pkgver=5.1.90.r144.d744882
+pkgver=5.2.r2.g152e1ec
 pkgrel=1
 pkgdesc="Daemon that monitors events in the file system directories"
 arch=('x86_64')
-url="http://www.gnu.org.ua/software/direvent/"
+url="https://www.gnu.org.ua/software/direvent/"
 license=("GPL")
 conflicts=('direvent')
 provides=('direvent')
@@ -17,18 +17,14 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd direvent
-    
-  v=`grep AC_INIT configure.ac | cut -d[ -f3 | cut -d] -f1` # get version
-  r=`git rev-list --count HEAD` # get git revision
-  h=`git rev-parse --short HEAD` # get sha1's short output
-  printf "$v.r$r.$h"
+  git describe --long | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd direvent
 
   git submodule init
-  git config submodule.grecs.url $srcdir/grecs
+  git config submodule.grecs.url "$srcdir"/grecs
   git submodule update
 
   ./bootstrap
@@ -42,7 +38,7 @@ build() {
 
 check() {
   cd direvent
-  make check
+  make -k check
 }
 
 package() {
