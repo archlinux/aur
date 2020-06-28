@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-playstore-x86-system-image
 	pkgdesc = Android with Google APIs and Play Store x86 Atom System Image, latest API
-	pkgver = 29_r08
+	pkgver = 30_r05
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = android-google-apis-playstore-x86-system-image
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-google-apis-playstore-x86-system-image-29
-	conflicts = android-google-apis-playstore-x86-system-image-29
+	provides = android-google-apis-playstore-x86-system-image-30
+	conflicts = android-google-apis-playstore-x86-system-image-30
 	options = !strip
-	source = http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86-29_r08-linux.zip
+	source = android-google-apis-playstore-x86-system-image-30_r05.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86-30_r05-linux.zip
 	source = package.xml
-	sha256sums = dae714e77b7944630e01f7e9fad5ef185e506ec85a75815d893e8927d7a8ed35
-	sha256sums = cfac246ffe1e5149af7b8b8da2108f31fa705fe373743baae713ce59ae52776e
+	sha256sums = c8aeab7869617a9e006b45a886c4c5d0300c35aaa8335bca76e08c675b2fd357
+	sha256sums = c2c242fe911802433de165b558059a6a56980da776dc394e524bc1b31f6c8946
 
 pkgname = android-google-apis-playstore-x86-system-image
 
