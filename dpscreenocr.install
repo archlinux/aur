@@ -1,0 +1,6 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+  echo -e "Please install OCR language data in order to use this software
+  ex. '\e[32mpacman -S tesseract-data-eng\e[37m' for English language support"
+}
