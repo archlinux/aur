@@ -1,6 +1,6 @@
 pkgbase = amulet-map-editor-bin
 	pkgdesc = A new Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7.
-	pkgver = 0.6.7.0
+	pkgver = 0.6.9.2
 	pkgrel = 1
 	url = https://www.amulet-editor.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = amulet-map-editor-bin
 	depends = libxtst
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
-	source_x86_64 = Amulet-v0.6.7.0-linux.zip::https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/v0.6.7.0/Amulet-v0.6.7.0-linux.zip
+	source_x86_64 = Amulet-v0.6.9.2-linux.zip::https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/v0.6.9.2/Amulet-v0.6.9.2-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = amulet-map-editor-bin

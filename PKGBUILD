@@ -1,13 +1,12 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="amulet-map-editor-bin"
-pkgver="0.6.7.0"
+pkgver="0.6.9.2"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A new Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7."
 url="https://www.amulet-editor.com/"
 license=('MIT')
 makedepends=('gendesk' 'dos2unix' 'wget')
-depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 
 source_x86_64=(
     "Amulet-v${pkgver}-linux.zip::https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/v${pkgver}/Amulet-v${pkgver}-linux.zip"
