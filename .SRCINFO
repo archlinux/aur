@@ -1,0 +1,13 @@
+pkgbase = txt2epub
+	pkgdesc = Convert one or more plain text files into an EPUB document
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kevinboone/txt2epub
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	source = https://github.com/kevinboone/txt2epub/archive/v0.0.1.tar.gz
+	sha256sums = 75f60c70eefcadd0e8ada8a7f842d98935f270d5641063e391fd589f091b0169
+
+pkgname = txt2epub
+
