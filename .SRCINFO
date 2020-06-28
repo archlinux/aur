@@ -1,6 +1,6 @@
 pkgbase = random-case-git
-	pkgdesc = Simple fetch script for pacman based distros. Written in Rust.
-	pkgver = 1.0.2
+	pkgdesc = Randize case of your input text. Totally useless, but written in Rust.
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/ykkzde/random-case
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = random-case-git
 	depends = gcc-libs
 	provides = random-case
 	conflicts = random-case-bin
-	source = random-case-git-1.0.2-1::git+https://gitlab.com/ykkzde/random-case.git
-	sha512sums = SKIP
+	source = random-case-git-1.0.4-1.tar.gz::https://gitlab.com/ykkzde/random-case/-/archive/v1.0.4/random-case-v1.0.4.tar.gz
+	sha512sums = 484a5d8b0e9132bec8259081e4d93b82ecf63fe8e4a8899ca2c06a39517e295646f7732954b1f711387712e6d0b46b851b2785ca04d0a1d0501b39a106a86f76
 
 pkgname = random-case-git
 
