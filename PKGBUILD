@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=jaeles
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc='The Swiss Army knife for automated Web Application Testing'
 arch=('x86_64' 'i686')
@@ -10,13 +10,19 @@ license=('MIT')
 provides=('jaeles')
 conflicts=('jaeles')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/beta-v${pkgver}.tar.gz")
-sha256sums=('18cb64ee3a7e3a2516b7e3d6568588f11112c8e8e21801e258fd9454496abf60')
+sha256sums=('a81781c329fd6bdd55430062cf3c678dbeb241e30ba2df846c69868cd1412bea')
 
 build() {
   cd ${pkgname}-beta-v${pkgver}
-  go build -trimpath -ldflags "-extldflags ${LDFLAGS}" .
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
