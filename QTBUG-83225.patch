@@ -1,0 +1,10 @@
+--- a/src/3rdparty/mapbox-gl-native/src/mbgl/util/convert.cpp	2017-11-29 18:38:56.000000000 +0000
++++ b/src/3rdparty/mapbox-gl-native/src/mbgl/util/convert.cpp	2020-06-28 22:11:06.958226834 +0100
+@@ -1,5 +1,7 @@
+ #include <mbgl/util/convert.hpp>
+ 
++#include <stdint.h>
++
+ namespace mbgl {
+ namespace util {
+ 

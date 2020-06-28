@@ -1,0 +1,11 @@
+--- a/src/3rdparty/mapbox-gl-native/platform/default/bidi.cpp	2017-11-29 18:38:56.000000000 +0000
++++ b/src/3rdparty/mapbox-gl-native/platform/default/bidi.cpp	2020-06-28 21:43:14.985331541 +0100
+@@ -6,6 +6,8 @@
+ 
+ #include <memory>
+ 
++#include <stdexcept>
++
+ namespace mbgl {
+ 
+ class BiDiImpl {

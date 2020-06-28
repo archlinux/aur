@@ -5,7 +5,7 @@
 pkgname=qt5-location-595
 _qtver=5.9.5
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -13,11 +13,19 @@ pkgdesc='Provides access to position, satellite and area monitoring classes (v5.
 depends=('qt5-declarative-595')
 makedepends=()
 _pkgfqn="qtlocation-opensource-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('41f0390e1709140e3590bed434e63ec00406fac2051529c400c756acbb70a80e')
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        "GCC10.patch"
+        "QTBUG-83225.patch")
+sha256sums=('41f0390e1709140e3590bed434e63ec00406fac2051529c400c756acbb70a80e'
+            '5528fea7e49f1bb5d66b231dd2686b7d5351293232b92ca9015b6008b90caa12'
+            '2ec9270a95e8d1adf606d797cc92bca04e6802c03167c87d24c178838d77a3ba')
 
 prepare() {
   mkdir -p build
+
+  cd ${_pkgfqn}
+  patch -p1 -i ../GCC10.patch
+  patch -p1 -i ../QTBUG-83225.patch
 }
 
 build() {
