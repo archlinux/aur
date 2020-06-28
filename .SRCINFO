@@ -1,0 +1,15 @@
+pkgbase = non-euclidean-git
+	pkgdesc = Non-Euclidean engine
+	pkgver = r8.e09f089
+	pkgrel = 1
+	url = https://github.com/CzechBlueBear/NonEuclidean
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = glew
+	depends = sdl2
+	source = git+https://github.com/CzechBlueBear/NonEuclidean.git
+	sha256sums = SKIP
+
+pkgname = non-euclidean-git
+
