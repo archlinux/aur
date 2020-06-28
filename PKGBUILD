@@ -3,7 +3,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=d1x-rebirth
-pkgver=20191227
+pkgver=20200601
 pkgrel=1
 pkgdesc="An enhanced engine to play with Descent1 data."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-sr
         "https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa"
         "https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa")
 noextract=("d1xr-hires.dxa" "d1xr-sc55-music.dxa")
-md5sums=('2d3e71762998f910a90f058668184afe'
+md5sums=('2ad2c8c77ffc18b64bbee024bc0a51f5'
          '7d978ce3875995e54cbf426167e88b94'
          'bf54b45a648052b2531bbb95c001403b')
 
