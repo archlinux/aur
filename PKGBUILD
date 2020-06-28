@@ -1,10 +1,10 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=webrecorder-appimg
+pkgname=webrecorder-desktop-appimg
 _pkgname=Webrecorder
 pkgver=2.0.2
 pkgrel=1
-pkgdesc="A note taking and to-do application with synchronization capabilities"
+pkgdesc="The Webrecorder Desktop App is a complete packaging of Webrecorder hosted service as an Electron application, with an integrated Chromium browser."
 provides=('webrecorder')
 conflicts=('webrecorder')
 arch=('x86_64')
