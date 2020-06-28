@@ -19,7 +19,7 @@
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.3.r431.g38ead7418
+pkgver=2.4.beta1.r0.g2393bc8f3
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."

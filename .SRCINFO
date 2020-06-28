@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.3.r431.g38ead7418
+	pkgver = 2.4.beta1.r0.g2393bc8f3
 	pkgrel = 1
 	epoch = 2
 	url = https://www.luxcorerender.org/
@@ -24,7 +24,7 @@ pkgbase = luxcorerender-git
 	optdepends = opencl-driver: for gpu acceleration
 	optdepends = pyside2: for pyluxcoretools gui
 	provides = luxrays
-	provides = luxcorerender=2:2.3
+	provides = luxcorerender=2:2.4.beta1
 	conflicts = luxcorerender
 	options = !buildflags
 	source = luxcorerender::git+https://github.com/LuxCoreRender/LuxCore.git
