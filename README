@@ -1,0 +1,8 @@
+This package builds a kernel with a modified code to prevent the "Unknown PCI header type 127" which occurs among others on AMD Navi cards when working with vfio.
+This experimental patch was developed by Geoffrey McRae (@gnif from Level1Techs) and has been successfully tested with the "RX 5700 XT" and the "RX 5700 Anniversary Edition".
+ 
+When you build the kernel it will install itself as another kernel in your /boot/ directory (or whichever you choose to use) as "vmlinuz-linux-fix_navi_reset".
+You will then have to change the entry in your bootloader to boot this kernel file. It will then boot the patched version which should make your AMD Navi card
+work with vfio.
+
+Should you have any more questions, you can contact the maintainer of this package.

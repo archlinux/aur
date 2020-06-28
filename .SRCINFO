@@ -1,0 +1,48 @@
+pkgbase = linux-fix_navi_reset
+	pkgdesc = experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae
+	pkgver = 5.7.6.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.7.6-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.7.6-arch1
+	source = config
+	source = sphinx-workaround.patch
+	source = navi_reset.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = SKIP
+	sha256sums = 623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = 4725968648c12546cbd19f71ab2e37507484316d8f85270ff2741ba8def60da1
+
+pkgname = linux-fix_navi_reset
+	pkgdesc = The experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-fix_navi_reset-headers
+	pkgdesc = Headers and scripts for building modules for the experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel
+
+pkgname = linux-fix_navi_reset-docs
+	pkgdesc = Documentation for the experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel
+

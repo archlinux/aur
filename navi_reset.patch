@@ -1,0 +1,152 @@
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 44c4ae1abd00..a3325beff5a6 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -3825,6 +3825,131 @@ static int delay_250ms_after_flr(struct pci_dev *dev, int probe)
+ 	return 0;
+ }
+ 
++/*
++ * AMD Navi 10 series GPUs require a vendor specific reset procedure.
++ * According to AMD a PSP mode 2 reset should be enough however at this
++ * time the details of how to perform this are not available to us.
++ * Instead we can signal the SMU to enter and exit BACO which has the same
++ * desired effect.
++ */
++static int reset_amd_navi10(struct pci_dev *dev, int probe)
++{
++	const int mmMP0_SMN_C2PMSG_81 = 0x16091;
++	const int mmMP1_SMN_C2PMSG_66 = 0x16282;
++	const int mmMP1_SMN_C2PMSG_82 = 0x16292;
++	const int mmMP1_SMN_C2PMSG_90 = 0x1629a;
++
++	u16 cfg;
++	resource_size_t mmio_base, mmio_size;
++	uint32_t __iomem * mmio;
++	unsigned int sol;
++	unsigned int timeout;
++
++	/*
++	 * if the device has FLR return -ENOTTY indicating that we have no
++	 * device-specific reset method.
++	 */
++	if (pcie_has_flr(dev))
++		return -ENOTTY;
++
++	/* bus resets still cause navi to flake out */
++	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
++
++	if (probe)
++		return 0;
++
++	/* map BAR5 */
++	mmio_base = pci_resource_start(dev, 5);
++	mmio_size = pci_resource_len(dev, 5);
++	mmio = ioremap(mmio_base, mmio_size);
++	if (mmio == NULL) {
++		pci_disable_device(dev);
++		pci_err(dev, "Navi10: cannot iomap device\n");
++		return 0;
++	}
++
++	/* save the PCI state and enable memory access */
++	pci_read_config_word(dev, PCI_COMMAND, &cfg);
++	pci_write_config_word(dev, PCI_COMMAND, cfg | PCI_COMMAND_MEMORY);
++
++	#define SMU_WAIT() \
++	for(timeout = 1000; timeout && (readl(mmio + mmMP1_SMN_C2PMSG_90) & 0xFFFFFFFFL) == 0; --timeout) \
++		udelay(1000); \
++	if (readl(mmio + mmMP1_SMN_C2PMSG_90) != 0x1) \
++		pci_info(dev, "Navi10: SMU error 0x%x (line %d)\n", \
++				readl(mmio + mmMP1_SMN_C2PMSG_90), __LINE__);
++
++	pci_set_power_state(dev, PCI_D0);
++
++	/* it's important we wait for the SOC to be ready */
++	for(timeout = 1000; timeout; --timeout) {
++		sol = readl(mmio + mmMP0_SMN_C2PMSG_81);
++		if (sol != 0xFFFFFFFF)
++			break;
++		udelay(1000);
++	}
++
++	if (sol == 0xFFFFFFFF)
++		pci_warn(dev, "Navi10: timeout waiting for wakeup, continuing anyway\n");
++
++	/* check the sign of life indicator */
++	if (sol == 0x0) {
++		goto out;
++	}
++
++	pci_info(dev, "Navi10: performing BACO reset\n");
++
++	/* save the state around the reset */
++	pci_save_state(dev);
++
++	/* the SMU might be busy already, wait for it */
++	SMU_WAIT();
++
++	/* send PPSMC_MSG_ArmD3 with param */
++	writel(0x00, mmio + mmMP1_SMN_C2PMSG_90);
++	writel(0x00, mmio + mmMP1_SMN_C2PMSG_82); // BACO_SEQ_BACO
++	writel(0x46, mmio + mmMP1_SMN_C2PMSG_66);
++	SMU_WAIT();
++
++	/* send PPSMC_MSG_EnterBaco with param */
++	writel(0x00, mmio + mmMP1_SMN_C2PMSG_90);
++	writel(0x00, mmio + mmMP1_SMN_C2PMSG_82); // BACO_SEQ_BACO
++	writel(0x18, mmio + mmMP1_SMN_C2PMSG_66);
++	SMU_WAIT();
++
++	/* wait for the regulators to shutdown */
++	mdelay(1000);
++
++	/* send PPSMC_MSG_ExitBaco */
++	writel(0x00, mmio + mmMP1_SMN_C2PMSG_90);
++	writel(0x19, mmio + mmMP1_SMN_C2PMSG_66);
++	SMU_WAIT();
++
++	#undef SMU_WAIT
++
++	/* wait for the SOC register to become valid */
++	for(timeout = 1000; timeout; --timeout) {
++		sol = readl(mmio + mmMP0_SMN_C2PMSG_81);
++		if (sol != 0xFFFFFFFF)
++			break;
++		udelay(1000);
++	}
++
++	if (sol != 0x0) {
++		pci_err(dev, "Navi10: sol register = 0x%x\n", sol);
++		goto out;
++	}
++
++out:
++	/* unmap BAR5 */
++	iounmap(mmio);
++
++	/* restore the state and command register */
++	pci_restore_state(dev);
++	pci_write_config_word(dev, PCI_COMMAND, cfg);
++	return 0;
++}
++
+ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
+ 	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF,
+ 		 reset_intel_82599_sfp_virtfn },
+@@ -3836,6 +3961,13 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
+ 	{ PCI_VENDOR_ID_INTEL, 0x0953, delay_250ms_after_flr },
+ 	{ PCI_VENDOR_ID_CHELSIO, PCI_ANY_ID,
+ 		reset_chelsio_generic_dev },
++	{ PCI_VENDOR_ID_ATI, 0x7310, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x7312, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x7318, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x7319, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x731a, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x731b, reset_amd_navi10 },
++	{ PCI_VENDOR_ID_ATI, 0x731f, reset_amd_navi10 },
+ 	{ 0 }
+ };
+ 
+-- 
+2.20.1
