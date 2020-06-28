@@ -1,0 +1,22 @@
+pkgbase = tradermaster
+	pkgdesc = 超强行情分析软件
+	pkgver = 3.0
+	pkgrel = 0
+	url = http://jiaoyixia.com/
+	arch = x86_64
+	depends = glfw-x11
+	depends = glew
+	depends = fontconfig
+	depends = freetype2
+	depends = libzip
+	depends = libpng
+	depends = curl
+	depends = openssl
+	depends = libxcb
+	depends = glib2
+	provides = tradermaster
+	source = tradermaster.deb::https://cdn.jin10.com/linuxclient/TraderMaster_20_04.deb
+	sha512sums = 9846035301fd6fe7298ee26686c74fefe5ebe6fc15b967ab26ee3cd98c0645f4ea3443411eb324f2a0df302e758548a150fb06755e634a631fb5fdf363827d39
+
+pkgname = tradermaster
+
