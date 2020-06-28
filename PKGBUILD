@@ -19,7 +19,7 @@ sha256sums=('0eaff456508b06a1daad6408e2fe91828af988d591a165e6d863ef116bc60a3e'
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -Np1 -i "${srcdir}/modifiers.patch"
+    patch -Np1 -i "${srcdir}/revert.patch"
 }
 
 package() {
