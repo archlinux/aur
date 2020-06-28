@@ -2,7 +2,7 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 pkg="nazca"
 pkgname="python-$pkg"
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Nazca module for photonic integrated circuit design."
 arch=(any)
@@ -23,5 +23,5 @@ package() {
 	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
 }
 
-md5sums=('e75c1fd1d27cccd7419d242d5670c11b')
-sha256sums=('81bba18a1fc8d495af137b79f9726bcdb6349a95fa9c58f6878a8459e3bb4c7e')
+md5sums=('b95a924115c7b97d0e51239fb5b15f7d')
+sha256sums=('454f5bb9b3519e6b8657c64df7508cf6a5d0df03385a49cdff01e187d3eedd94')
