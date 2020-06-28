@@ -1,0 +1,33 @@
+pkgbase = torrserver-bin
+	pkgdesc = Torrent to http. Streams media torrent files as media streams without fully downloading
+	pkgver = 1.1.76
+	pkgrel = 1
+	url = https://github.com/YouROK/TorrServer
+	install = torrserver.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = glibc
+	provides = torrserver=1.1.76
+	conflicts = torrserver
+	source = https://raw.githubusercontent.com/YouROK/TorrServer/master/torrserver.service
+	sha256sums = c41cfcb7e585e54f496b590723b4cbe0f9fd771d12b0ab3e0c551fa3232e58a4
+	source_x86_64 = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-amd64
+	sha256sums_x86_64 = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+	source_i686 = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-386
+	sha256sums_i686 = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+	source_arm = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-arm5
+	sha256sums_arm = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+	source_armv6h = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-arm6
+	sha256sums_armv6h = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+	source_armv7h = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-arm7
+	sha256sums_armv7h = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+	source_aarch64 = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.76/TorrServer-linux-arm64
+	sha256sums_aarch64 = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
+
+pkgname = torrserver-bin
+

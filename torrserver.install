@@ -1,0 +1,20 @@
+post_install() {
+	# Load service file
+	systemctl --quiet daemon-reload
+	}
+
+post_upgrade() {
+	# Reload service file
+	systemctl --quiet daemon-reload
+}
+
+pre_remove() {
+	# Stop service
+	systemctl --quiet --no-reload disable --now torrserver.service
+}
+
+post_remove() {
+	# Unload service
+	systemctl --quiet daemon-reload
+}
+
