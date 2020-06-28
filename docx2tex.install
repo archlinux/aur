@@ -1,0 +1,5 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_remove() {
+  rm -rf /opt/docx2tex
+}
