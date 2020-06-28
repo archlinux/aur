@@ -5,7 +5,7 @@
 pkgname=rtlwifi_new-rtw88-dkms
 _pkgname=rtlwifi_new
 pkgver=r357.1659b85
-pkgrel=1
+pkgrel=2
 pkgdesc='Newest Realtek rtlwifi codes, rtw88 branch'
 arch=('i686' 'x86_64')
 url='https://github.com/lwfinger/rtlwifi_new'
@@ -15,10 +15,8 @@ provides=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git')
 conflicts=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git')
 replaces=('rtlwifi_new-extended-dkms-git')
 install=${pkgname}.install
-source=("git+https://github.com/lwfinger/rtlwifi_new.git#branch=rtw88" 
-	"dkms.conf")
-sha256sums=('SKIP'
-            'c3380328a4fec0e329025ab2b002940f1941039de10da8eda6d3a6648228c3f2')
+source=("git+https://github.com/lwfinger/rtlwifi_new.git#branch=rtw88")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -28,9 +26,6 @@ pkgver() {
 package() {
 	install -dm 755 "${pkgdir}/usr/src"
 	cp -dr --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-	
-	#fix wrong dkms config
-	cp  "${srcdir}"/dkms.conf "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
 	
 	# Set name and version
 	sed -e "s/0.6/${pkgver}/" \
