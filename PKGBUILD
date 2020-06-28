@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=openssl
-_cranver=1.4.1
+_cranver=1.4.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=(r r-askpass 'openssl>=1.0.1')
 makedepends=(gcc)
 optdepends=(r-testthat r-digest r-knitr r-rmarkdown r-jsonlite r-jose r-sodium)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('776426687d74e645334542f30757f5a6')
+md5sums=('3087675338bb8e54388a873afc6673cd')
 
 build() {
   cd "${srcdir}"
