@@ -14,12 +14,17 @@ license=('GPL')
 makedepends=(git)
 conflicts=(blender-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
-source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}")
-sha256sums=("SKIP")
+source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}"
+        "denoise.patch")
+sha256sums=('SKIP'
+            '63103ec3bf77c502a54f6f74cad020a448c9641be90202944c46bda0a1ff8bfe')
+
+prepare() {
+  git -C "${_name}" apply -v  "${srcdir}/denoise.patch"
+}
 
 pkgver() {
-  cd "${srcdir}/${_name}"
-  git describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${_name}" describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
