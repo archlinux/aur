@@ -1,14 +1,14 @@
 pkgbase = lite
 	pkgdesc = A lightweight text editor written in Lua
-	pkgver = 1.09
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/rxi/lite
 	arch = any
 	license = MIT
 	makedepends = sdl2
-	source = lite-1.09.tar.gz::https://github.com/rxi/lite/archive/v1.09.tar.gz
+	source = lite-1.10.tar.gz::https://github.com/rxi/lite/archive/v1.10.tar.gz
 	source = lite-path-fix.patch
-	sha256sums = 1fea6af8829220fef884d32c01b881f823051a7ae17b2cd3e01c2d2499e6c6c9
+	sha256sums = 643aa9a1253cab0d1acceeb9235904da1bb80be59f54f7f018bb4e5115ba71dc
 	sha256sums = a874de709bf2201816f96807aa50f6b1a15a19aa7989084f01422dd5fe488055
 
 pkgname = lite
