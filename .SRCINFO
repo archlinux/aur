@@ -1,6 +1,6 @@
 pkgbase = libreoffice-extension-languagetool
 	pkgdesc = An Open Source style and grammar checker (more than 30 languages)
-	pkgver = 4.8
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://www.languagetool.org/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = libreoffice-extension-languagetool
 	depends = libreoffice
 	depends = java-runtime>=8
 	optdepends = jre8-openjdk: java 8 or greater is required
-	noextract = LanguageTool-4.8.oxt
-	source = https://www.languagetool.org/download/LanguageTool-4.8.oxt
-	sha512sums = 0f1e430388e648057ea9ee91dea1171e83de6b601806c1499600693085c7ef3cee5051477efcf341976af85e36f263da0f4f5c2e5b55eb410346d359538b5baa
+	noextract = LanguageTool-5.0.oxt
+	source = https://www.languagetool.org/download/LanguageTool-5.0.oxt
+	sha512sums = 8493100684598aaa7c422360e0f00b5cff0c1be22aca4bee6c7e0e12d509916bc3c7f8df052b86702f6177ffffc227d1a5dbe6b2592fa1cbdb79f4666dc22c16
 
 pkgname = libreoffice-extension-languagetool
 
