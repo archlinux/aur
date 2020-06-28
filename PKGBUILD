@@ -12,6 +12,11 @@ makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('ac9ea5b5b5a8743133b4fd11fcc2b51418756e2d53530c71c0f663f44e24a56f')
 
+prepare() {
+  # https://github.com/lagmoellertim/unsilence/commit/30581844096967a736cc0ea8e17abb3dbd8f81ee
+  sed -i 's/ffmpeg version /ffmpeg version \\D\?/' "${pkgname}-${pkgver}/unsilence/lib/tools/ffmpeg_version.py"
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
