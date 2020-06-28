@@ -4,7 +4,7 @@
 _pkgname=audacity
 pkgname=$_pkgname-git
 pkgver=2.4.2.r0.g16d52f63a
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
 url="http://www.audacityteam.org/"
@@ -35,8 +35,10 @@ depends=('expat'
     'libvamp-hostsdk.so'
     'libvorbis.so'
     'libvorbisenc.so'
-    'libvorbisfile.so')
+    'libvorbisfile.so'
+    'wxgtk2')
 makedepends=('alsa-lib'
+    'clang'
     'cmake'
     'ffmpeg'
     'flac'
@@ -87,7 +89,7 @@ build() {
     audacity_use_vorbis:STRING=system \
     audacity_use_lv2:STRING=local \
     ..
-    cmake --build .
+  cmake --build .
   make .
 }
 
