@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer:  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ocamlsdl
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OCaml interface to the SDL (Simple DirectMedia Layer) library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ocamlsdl/"
