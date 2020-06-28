@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=roxygen2
-_cranver=7.1.0
+_cranver=7.1.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.2' r-brew r-commonmark 'r-desc>=1.2.0' r-digest r-knitr 'r-pkgloa
 makedepends=(gcc)
 optdepends=(r-covr r-devtools r-rmarkdown r-testthat r-r.methodss3 r-r.oo)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('5de172eee2223d402fbc4f71fe345185')
+md5sums=('cca1a6b60fe12b26b76b7b88a13eeef2')
 
 build() {
   cd "${srcdir}"

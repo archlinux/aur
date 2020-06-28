@@ -1,6 +1,6 @@
 pkgbase = r-roxygen2
 	pkgdesc = In-Line Documentation for R
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=roxygen2
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-r.methodss3
 	optdepends = r-r.oo
-	source = https://cran.r-project.org/src/contrib/roxygen2_7.1.0.tar.gz
-	md5sums = 5de172eee2223d402fbc4f71fe345185
+	source = https://cran.r-project.org/src/contrib/roxygen2_7.1.1.tar.gz
+	md5sums = cca1a6b60fe12b26b76b7b88a13eeef2
 
 pkgname = r-roxygen2
 
