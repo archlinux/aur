@@ -1,8 +1,9 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 _pkgname=emeus
+_commit=5d38cc3
 pkgname=$_pkgname
-pkgver=1.0
+pkgver=1.0+$_commit
 pkgrel=1
 pkgdesc="Constraint-based layout manager for GTK+"
 url="https://ebassi.github.io/emeus"
@@ -11,7 +12,7 @@ license=(GPL)
 depends=(gtk3)
 makedepends=(meson)
 groups=(gnome)
-source=("git+https://github.com/ebassi/emeus")
+source=("git+https://github.com/ebassi/emeus#commit=${_commit}")
 sha256sums=('SKIP')
 
 build() {
