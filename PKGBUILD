@@ -1,7 +1,7 @@
 # Maintainer: Ykkzde <dmitry@ykkz.de>
 
 pkgname=random-case-git
-pkgver=0.0.5
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
 url="https://gitlab.com/ykkzde/random-case"

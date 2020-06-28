@@ -1,6 +1,6 @@
 pkgbase = random-case-git
 	pkgdesc = Simple fetch script for pacman based distros. Written in Rust.
-	pkgver = 0.0.5
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/ykkzde/random-case
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = random-case-git
 	depends = gcc-libs
 	provides = random-case
 	conflicts = random-case-bin
-	source = random-case-git-0.0.5-1::git+https://gitlab.com/ykkzde/random-case.git
+	source = random-case-git-1.0.2-1::git+https://gitlab.com/ykkzde/random-case.git
 	sha512sums = SKIP
 
 pkgname = random-case-git
