@@ -2,7 +2,7 @@
 
 pkgname=python-kiss
 _pkgname=kiss
-pkgver=6.5.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="A Python Module that implementations the KISS Protocol for communicating with KISS-enabled devices (such as Serial or TCP TNCs)."
 arch=('any')
