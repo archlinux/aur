@@ -25,6 +25,7 @@ pkgbase = mint-backgrounds
 	depends = mint-backgrounds-tessa
 	depends = mint-backgrounds-tina
 	depends = mint-backgrounds-tricia
+	depends = mint-backgrounds-ulyana
 
 pkgname = mint-backgrounds
 

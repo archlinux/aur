@@ -28,4 +28,5 @@ depends=(
   'mint-backgrounds-tessa'
   'mint-backgrounds-tina'
   'mint-backgrounds-tricia'
+  'mint-backgrounds-ulyana'
 )
