@@ -1,0 +1,21 @@
+pkgbase = python-pytest-httpserver
+	pkgdesc = Python module for testing http clients without contacting the real http server
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/csernazs/pytest-httpserver/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-coverage
+	checkdepends = python-requests
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-werkzeug
+	source = https://github.com/csernazs/pytest-httpserver/archive/0.3.4/pytest-httpserver-0.3.4.tar.gz
+	sha256sums = 94e7d93d554cc86963bd0215602954fa4c1c8642292845c68837069c5ea5c610
+
+pkgname = python-pytest-httpserver
+
