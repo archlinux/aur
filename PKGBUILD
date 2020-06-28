@@ -1,13 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.20.1.r22.g7f2006a9
+pkgver=1.20.1.r32.ga87537d4
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
 license=('GPL')
-makedepends=('gcc9' 'git' 'libisoburn' 'mtools' 'syslinux' 'xz')
+makedepends=('git' 'libisoburn' 'mtools' 'syslinux' 'xz')
 provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
@@ -70,24 +70,24 @@ build() {
 	cd ipxe/src/
 
 	# default targets (ipxe.{lkrn,dsk,iso,usb}, undionly.kpxe)
-	make CC=gcc-9 all
+	make all
 
 	# this includes drivers, but is bigger
 	# build targets with embedded scripts first and rename
-	make CC=gcc-9 bin/ipxe.pxe EMBED=${srcdir}/chain-default.ipxe
+	make bin/ipxe.pxe EMBED=${srcdir}/chain-default.ipxe
 	mv bin/ipxe.pxe bin/ipxe-default.pxe
 
-	make CC=gcc-9 bin/ipxe.pxe EMBED=${srcdir}/chain-default-3928.ipxe
+	make bin/ipxe.pxe EMBED=${srcdir}/chain-default-3928.ipxe
 	mv bin/ipxe.pxe bin/ipxe-default-3928.pxe
 
-	make CC=gcc-9 bin/ipxe.pxe
+	make bin/ipxe.pxe
 
 	# EFI
-	make CC=gcc-9 bin-i386-efi/ipxe.efi bin-x86_64-efi/ipxe.efi
+	make bin-i386-efi/ipxe.efi bin-x86_64-efi/ipxe.efi
 
 	# ipxe.liso and ipxe.eiso
 	# build after EFI!
-	make CC=gcc-9 bin/ipxe.liso bin/ipxe.eiso
+	make bin/ipxe.liso bin/ipxe.eiso
 }
 
 package() {

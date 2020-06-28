@@ -1,12 +1,11 @@
 pkgbase = ipxe-git
 	pkgdesc = iPXE open source boot firmware - git checkout
-	pkgver = 1.20.1.r22.g7f2006a9
+	pkgver = 1.20.1.r32.ga87537d4
 	pkgrel = 1
 	url = http://www.ipxe.org/
 	install = ipxe.install
 	arch = any
 	license = GPL
-	makedepends = gcc9
 	makedepends = git
 	makedepends = libisoburn
 	makedepends = mtools
