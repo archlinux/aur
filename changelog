@@ -1,3 +1,105 @@
+
+Proton-5.11-GE-1-MF
+
+@GloriousEggroll GloriousEggroll released this April 26, 2020
+
+Game fixes:
+-Origin 5.11 hang fixed
+-Origin fixes ported from Proton 5.0.9
+-Path of Exile Vulkan Renderer in-game swap fixed (for radv you will need mesa-git for upstream graphical glitch fixes)
+-StarCitizen hang fixed
+-Divinity Original Sin 2 hang fixed
+-Mount and Blade: Bannerlord launcher fix added
+-Persona 4 protonfixes fixed (thanks Pobega)
+-Warframe launcher download hang fixed (broke in 5.10, still does not show progress bar)
+-Sea of Thieves proper websockets implementation patches added (no longer needs win7)
+-Partial fix for Catherine -- game now opens and can reach menus. Hangs on new game, waiting on EVR implementation in wine
+-Deep Rock Galactic (and other games) libffi dependency fixed that was causing various crashes -- note, please do not use steam-native if you are on arch, steam-runtime should always be used.
+-Protonfixes added for Assetto Corsa, should now work OOTB
+
+Build additions:
+-'wmp9_x86_64' winetricks verb imported to protonfixes from upstream winetricks that allows wmp9 to be installed in 64 bit prefixes
+-hotfix added to use normal username instead of 'steamuser' when run with non-steam games. This also seems to fix issues with origin and other platforms not being able to save game (such as running Jedi Fallen Order origin version in lutris with proton)
+-vkd3d updated
+-dxvk updated
+-FAudio updated
+
+Build removals:
+-Temporary removal of fshack, currently breaks MK11
+-Temporary removal of esync, 5.10+ did a large rework of ntdll which broke compatibility with esync. The patchset needs to be rebased. It is currently disabled in staging.
+-Temporary removal of fsync - fsync relies on esync. No esync = no fsync.
+
+Known issues but playable:
+-MK11 - no audio in custscenes -- needs SAR fixes, online matches broken
+-Injustice 2 - no audio in custscenes -- needs SAR fixes
+-Broken sound in Borderlands 3 Marcus new game intro -- can be skipped.
+-Age of Empires II WMV videos don't play
+-Street Fighter V intro videos don't play
+
+Still broken:
+-Seven (hangs on new game)
+-Catherine (hangs on new game)
+-Soul Calibur VI (hangs at main menu, needs SAR fixes)
+-Nioh videos don't play, gameplay untested
+
+Marking this as release as it has a lot of regression fixes and should be quite stable, despite the ongoing media foundation work and esync/fsync being disabled.
+
+
+Proton-5.9-GE-2-MF
+
+@GloriousEggroll GloriousEggroll released this April 06, 2020
+
+--HOTFIX--
+6/10/2020 7:17 PM MST:
+After reviewing the issue tracker again for Sea of Thieves I found via ga2mer's comments that it becomes working/playable after login if the prefix is set to Win7. I tested this and it did indeed allow me to login and get past the previous journal issue/became playable. I've added a hotfix in protonfixes that should do this automagically. Updated Proton-5.9-GE-2-MF.tar.gz again.
+--HOTFIX--
+6/10/2020 10:15 AM MST:
+I accidentally applied part 1 of a 2 part patch for RE3 twice instead of both 1st and 2nd parts, so I just corrected that and recompiled + reattached Proton-5.9-GE-2-MF.tar.gz. RE3 credits should work now
+
+Hi all, I'm marking this as another pre-release as we still have some audio issues with media foundation, and a few other pending issues, however we also have quite a few fixes:
+
+-Fullscreen hack is disabled still for compatibility with MK11.
+-Rawinput re-enabled
+-Nier/sekiro winex11 patch re-enabled
+-winevulkan patches re-enabled
+-The weird Skyrim mouse reverse input issue was fixed in 5.10, so I've backported it.
+-There is some heavy work being done on wined3d and dxgi, which causes some additional issues, so TOXIKK and Killer Instinct require wined3d to currently run properly. Protonfixes have been added to do that automatically, so those games both work with wined3d currently.
+-There is also some heavy work being done on ntdll in 5.10+, which cause esync and fsync patchsets to not be compatible. Due to this, I'm currently working with 5.9 and backporting specific changes necessary to retain esync and fsync compatibility.
+-A dxgi native override was also added in protonfixes so that Metal Gear Solid V: Phantom Pain now works
+-A fix has been added for the RE3 credits crash - thanks vitorhnn!
+-A fix has been added for the MK11 and Injustice 2 video color issue - thanks vitorhnn!
+-A partial fix for websockets has been added for Sea of Thieves so that login now works, however it is currently crashing after login on 'Opening the Journal' - thanks ga2mer!
+-5.10 media foundation patches have been backported
+-Remi Bernon's free range memory allocation patches have been backported which increases performance in We Happy Few and some other games.
+-Proton 5.0.8 changes backported
+-DXVK updated
+-vkd3d updated
+-FAudio updated
+
+Known issues:
+-Fullscreen hack still disabled for the time being to retain compatiblity with MK11
+-Path of Exile cannot switch to vulkan renderer when using RADV, but works with AMDVLK. This is something else tied to fullscreen hack, as patching in fullscreen hack allows it to switch. RADV currently has a lot of graphical glitches with PoE anyway, so for the time being AMDVLK is the better option to use.
+-Soul Calibur VI still hangs at intro due to incomplete SAR work in media foundation
+-Injustice 2 and MK11 cut scene audio is missing due to incomplete SAR work in media foundation
+-Borderlands 3 Marcus intro on new game audio is distorted due to incomplete SAR work in media foundation, but is skippable.
+-Seven still only plays intro audio, no video, and crashes after starting new game due to incomplete SAR work in media foundation.
+-libffi6 is still needed for some rolling release distros such as arch
+-As mentioned, due to work being done with wined3d, dxgi is in an odd state. If a game works in proton, but does not work in proton-ge, try adding WINEDLLOVERRIDES=dxgi=n %command% to the options. If it works, let me know and I can add a protonfixes override for it.
+
+Currently I would say this should be ok to use for most games except Soul Calibur VI and Seven
+
+
+Proton-5.9-GE-1-NR
+
+@GloriousEggroll GloriousEggroll released this on May 28, 2020
+
+-Fullscreen hack was found to be the cause of Mortal Kombat 11 not working. This also requires a few other patches to be disabled such as some additional vulkan patches and raw input, as well as the Sekiro patch. Fullscreen hack used to work with this game, so this is just a temporary disable until I can figure out what in the patchset is causing MK11 to not work.
+-Spyro audio is fully working now
+-BL3 Markus intro has audio issues still but is skippable
+-Soul Calibur VI freezes at the intro screen currently due to an issue with SAR audio.
+-Seven actually launches now. Audio for intro movie plays but shows black screen. New game results in crash, again due to SAR audio.
+-PC Building Simulator no longer freezes when running 3dmark on low settings. It just skips the video.
+
 Proton-5.8-GE-2-MF
 
 This is an update to 5.8-GE-1 in regards to media foundation work:
@@ -8,6 +110,32 @@ Completed:
 -Power Rangers Battle for the grid chipmunk voices fixed
 -Monster Hunter World tutorial movies fixed
 -Super Lucky's Tale -- Fixed an issue with bink videos not playing in GE builds which work in proton
+
+
+Proton-5.8-GE-2-MF
+
+@GloriousEggroll GloriousEggroll released this on May 13, 2020
+
+This is an update to 5.8-GE-1 in regards to media foundation work:
+
+Completed:
+-RE3: Bathroom scene fixed
+-Dangonronpa v3 fixed
+-Power Rangers Battle for the grid chipmunk voices fixed
+-Monster Hunter World tutorial movies fixed
+-Super Lucky's Tale -- Fixed an issue with bink videos not playing in GE builds which work in proton
+
+WIP (work in progress):
+Borderlands 3 Marcus intro video
+Darksiders Warmastered Edition opening videos play now play, but New Game movie crashes
+Street Fighter V intro videos don't play
+Seven intro videos don't play
+
+Todo:
+-Age of Empires II WMV videos don't play - check if MF or quartz
+-Catherine Classic does not play, opens small black box for game window - check if MF or quartz
+-Nioh videos don't play - check if MF or quartz
+
 
 Proton-5.8-GE-1-MF
 

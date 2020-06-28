@@ -2,10 +2,10 @@
 ## Co-Maintainer:  Jaja <jaja@mailbox.org>
 
 ## pkginfo
-pkgdesc="A fancy custom distribution of Valves Proton with various patches(Stable Branch)"
+pkgdesc="A fancy custom distribution of Valves Proton with various patches (stable branch)"
 pkgname=proton-ge-custom-stable-bin
-pkgver=5.8_GE_2_MF
-pkgrel=2
+pkgver=5.11_GE_1_MF
+pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
@@ -49,12 +49,10 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
-md5sums=('7a1f5d052f99c396323f813515ba0e55'
-         '3ae457f1acc34660244975884b2e0f68')
+md5sums=('0092d8ba6150b299fd7163b1007cc5d9'
+         '757d3936d17804f36bc7357b29b2f6b4')
 
 build() {
-## remove unused: dist_lock, extract_tarball(), make_default_prefix()
-patch ${_srcdir}/proton patches/distlock-extract-defaultpfx.patch
 ## setup paths
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
 sed -i "s|self.path(\"dist/share/default_pfx/\")|\"/${_pfxdir}/\"|" ${_srcdir}/proton
