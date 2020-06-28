@@ -1,35 +1,35 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Sebastian Voecking <voeck@web.de>
 
+# NOTE: config.sh detects during the build which libraries (gtk, qt5, ...) are available
+
 pkgbase=mp-5
 pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
-pkgver=5.36
+pkgver=5.41
 pkgrel=1
 arch=('x86_64')
-url="http://www.triptico.com/software/mp.html"
-license=('GPL')
+url="https://triptico.com/software/mp.html"
+license=('Unlicense')
 #'mp_doccer' 'perl-grutatxt'
 makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
-#source=(https://github.com/angelortega/mp-5.x/archive/$pkgver.tar.gz)
-source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz)
-md5sums=('74717998237eae0ce5c5e5184c13f5e5')
+source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
+md5sums=('f088e46e156a88adf3cccf752805348e')
 
 prepare() {
   # Patch hard-coded install paths
   sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
 
-  rm -rf mp-5-gtk
-  cp -a mp-$pkgver mp-5-gtk
-
-  rm -rf mp-5-nc
-  cp -a mp-$pkgver mp-5-nc
-
-  rm -rf mp-5-qt5
-  cp -a mp-$pkgver mp-5-qt5
+  # Copy source files for each package
+  # Patch: move subfolders "mpdm" and "mpsl" one folder up
+  for DIR in mp-5-gtk mp-5-nc mp-5-qt5; do
+    rm -rf "$DIR"
+    cp -a mp-$pkgver "$DIR"
+    rm -rf "$DIR/"{mpdm,mpsl}
+  done
+  cp -a mp-$pkgver/{mpdm,mpsl} .
 }
 
-# Note: config.sh detects during the build which libraries are available
 build() {
   cd "$srcdir/mp-5-gtk"
   ./config.sh --prefix=/usr --without-curses --without-kde4 --without-qt

@@ -1,15 +1,15 @@
 pkgbase = mp-5
-	pkgver = 5.35
+	pkgver = 5.41
 	pkgrel = 1
-	url = http://www.triptico.com/software/mp.html
+	url = https://triptico.com/software/mp.html
 	arch = x86_64
-	license = GPL
+	license = Unlicense
 	makedepends = gtk3
 	makedepends = ncurses
 	makedepends = qt5-base
 	options = !makeflags
-	source = http://triptico.com/download/mp/mp-5.35.tar.gz
-	md5sums = e85bb76213ad622cc740009c1f681d90
+	source = https://triptico.com/download/mp/mp-5.41.tar.gz
+	md5sums = f088e46e156a88adf3cccf752805348e
 
 pkgname = mp-5-gtk
 	pkgdesc = Text editor for programmers (GTK front-end)
