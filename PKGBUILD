@@ -2,7 +2,7 @@
 
 binname='dcos'
 pkgname="$binname-cli-bin"
-pkgver='0.7.3'
+pkgver='1.1.2'
 pkgrel=1
 pkgdesc='The DC/OS command line interface utility'
 url='https://docs.mesosphere.com/latest/cli/'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('Apache')
 conflicts=('dcos-cli')
 source=("https://downloads.dcos.io/binaries/cli/linux/x86-64/$pkgver/$binname")
-sha256sums=('859af639f3e65b1882726657788c6a5160d8d6965fdc1e3873c8d8d80c76e18a')
+sha256sums=('feaa251744c2346fb4da834fd223de3291c53bccaf8ea225a7bc2ebc5edf1190')
 
 package() {
     install -Dm755 "$srcdir/$binname" -t "$pkgdir/usr/bin"
