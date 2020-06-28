@@ -1,11 +1,12 @@
 pkgbase = peazip-gtk2-portable
 	pkgdesc = Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.peazip.org/peazip-linux-64.html
 	install = peazip.install
 	arch = x86_64
 	license = LGPL3
+	makedepends = desktop-file-utils
 	depends = gtk2
 	depends = lib32-gcc-libs
 	provides = peazip
