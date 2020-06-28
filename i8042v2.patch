@@ -1,8 +1,8 @@
 diff --git a/drivers/input/serio/i8042-x86ia64io.h b/drivers/input/serio/i8042-x86ia64io.h
-index 7e048b557462..ee19299ed081 100644
+index 7e048b557462..5cbc3db95834 100644
 --- a/drivers/input/serio/i8042-x86ia64io.h
 +++ b/drivers/input/serio/i8042-x86ia64io.h
-@@ -698,6 +698,34 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
+@@ -698,6 +698,41 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
  			DMI_MATCH(DMI_BOARD_VENDOR, "MICRO-STAR INTERNATIONAL CO., LTD"),
  		},
  	},
@@ -18,6 +18,13 @@ index 7e048b557462..ee19299ed081 100644
 +		.matches = {
 +			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 +            DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
++		},
++	},
++	{
++		/* ASUS ROG Zephyreus G14 GA401II */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++            DMI_MATCH(DMI_PRODUCT_NAME, "GA401II"),
 +		},
 +	},
 +	{

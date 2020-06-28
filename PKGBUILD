@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.7.5.arch1
+pkgver=5.7.6.arch1
 pkgrel=2
 pkgdesc='Linux witch patches for ASUS ROG Zephyrus G14/G15'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,7 +19,6 @@ source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  amdgpu-backlight.patch
   asus-wmi.patch
   i8042v2.patch
   amdgpu-drm-next.patch
@@ -33,9 +32,8 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '8f9bb0be13e47b8fff55702bb4ea6f4d88eed5b5350d6e7025519f4dcb3cff79'
-            '8f54e8693cb661715173fda27b9f4a8baab0ce77175dd5146131a337f4213ea6'
-            '554246e9b44e2ecf153959ef5b505d2085d2b5aa2852a4c4de5b595c8e8a9d96'
+            '75d09f8c4fded209201e928efe718db28c84732fce0c30b56bcf6e4f4e407101'
+            'd7a9b7f05a85f4e78eada4fdb0de93902d860aaabc545485e18c30263d0866a1'
             '419913c6b686c6b98fbac82ac9c2ea3c30d130f94de3bb28d6a58bd1c5234814')
 
 

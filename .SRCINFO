@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux witch patches for ASUS ROG Zephyrus G14/G15
-	pkgver = 5.7.5.arch1
+	pkgver = 5.7.6.arch1
 	pkgrel = 2
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = linux-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.7.5-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.7.6-arch1
 	source = config
 	source = sphinx-workaround.patch
-	source = amdgpu-backlight.patch
 	source = asus-wmi.patch
 	source = i8042v2.patch
 	source = amdgpu-drm-next.patch
@@ -25,9 +24,8 @@ pkgbase = linux-g14
 	sha256sums = SKIP
 	sha256sums = 623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e
 	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
-	sha256sums = 8f9bb0be13e47b8fff55702bb4ea6f4d88eed5b5350d6e7025519f4dcb3cff79
-	sha256sums = 8f54e8693cb661715173fda27b9f4a8baab0ce77175dd5146131a337f4213ea6
-	sha256sums = 554246e9b44e2ecf153959ef5b505d2085d2b5aa2852a4c4de5b595c8e8a9d96
+	sha256sums = 75d09f8c4fded209201e928efe718db28c84732fce0c30b56bcf6e4f4e407101
+	sha256sums = d7a9b7f05a85f4e78eada4fdb0de93902d860aaabc545485e18c30263d0866a1
 	sha256sums = 419913c6b686c6b98fbac82ac9c2ea3c30d130f94de3bb28d6a58bd1c5234814
 
 pkgname = linux-g14
