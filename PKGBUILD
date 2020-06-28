@@ -1,4 +1,4 @@
-# Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
+# Maintainer: Yamato Kobayashi <yk.ymadd@gmail.com>
 
 pkgname=webrecorder-desktop-appimg
 _pkgname=Webrecorder
