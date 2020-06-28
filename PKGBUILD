@@ -1,11 +1,12 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Manolis Kapernaros (kapcom01) <kapcom01@protonmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Nikolay Rysev <mad.f3ka@gmail.com>
 # Modified for vfs_proprietary by Daniel Kamil Kozar <dkk089@gmail.com>
 
 pkgname=fprintd-vfs_proprietary
 pkgname_=fprintd
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus service to access fingerprint readers, modified for the vfs_proprietary plugin"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fprint/fprintd"
@@ -18,10 +19,12 @@ _commit=9e32cd525724f21eebf2336a06b13a39c6616ab0  # tags/V_0_8_1^0
 source=(
   "git+https://gitlab.freedesktop.org/libfprint/fprintd.git#commit=$_commit"
   'disable-systemd-protection.patch'
+  'gcc10-workaround.patch'
 )
 sha256sums=(
   'SKIP'
   '034ded26596473b418fdfcfeb0838fef131819025660d047d41cf343f8c35116'
+  'eef023908190da9bc53abf274a17cb2575d80f48a3a8b258b9cd7d5459de4247'
 )
 
 pkgver() {
@@ -32,6 +35,7 @@ pkgver() {
 prepare() {
   cd $pkgname_
   patch -p1 -i "${srcdir}/disable-systemd-protection.patch"
+  patch -p1 -i "${srcdir}/gcc10-workaround.patch"
   NOCONFIGURE=1 ./autogen.sh
 }
 

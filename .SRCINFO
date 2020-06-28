@@ -1,7 +1,7 @@
 pkgbase = fprintd-vfs_proprietary
 	pkgdesc = D-Bus service to access fingerprint readers, modified for the vfs_proprietary plugin
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
 	arch = x86_64
 	groups = fprint
@@ -16,8 +16,10 @@ pkgbase = fprintd-vfs_proprietary
 	conflicts = fprintd
 	source = git+https://gitlab.freedesktop.org/libfprint/fprintd.git#commit=9e32cd525724f21eebf2336a06b13a39c6616ab0
 	source = disable-systemd-protection.patch
+	source = gcc10-workaround.patch
 	sha256sums = SKIP
 	sha256sums = 034ded26596473b418fdfcfeb0838fef131819025660d047d41cf343f8c35116
+	sha256sums = eef023908190da9bc53abf274a17cb2575d80f48a3a8b258b9cd7d5459de4247
 
 pkgname = fprintd-vfs_proprietary
 

@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 9c8d979..069b496 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,6 +10,7 @@ AC_PREREQ([2.50])
+ AC_PROG_LIBTOOL
+ AC_PROG_CC
+ AM_PROG_CC_C_O
++CFLAGS+=" -fcommon"
+ 
+ GETTEXT_PACKAGE=fprintd
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], [Define to the Gettext package name])
