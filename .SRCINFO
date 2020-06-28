@@ -1,6 +1,6 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
-	pkgver = 5.5.5
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = https://github.com/continental/ecal
 	arch = x86_64
@@ -9,20 +9,24 @@ pkgbase = ecal
 	makedepends = asio
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = fineftp-server
 	makedepends = git
 	makedepends = graphviz
+	makedepends = gtest
 	makedepends = simpleini
 	makedepends = spdlog
 	makedepends = tclap
+	makedepends = tinyxml2
+	depends = curl
 	depends = protobuf
 	depends = qt5-base
 	depends = hdf5
 	backup = etc/ecal/ecal.ini
 	backup = etc/ecal/ecaltime.ini
-	source = https://github.com/continental/ecal/archive/v5.5.5.tar.gz
+	source = https://github.com/continental/ecal/archive/v5.6.0.tar.gz
 	source = arch-linux-compat.diff
-	sha256sums = 35c58f8f22a2743d976484b6b2284542bdc21103c197cf8e816ea81658bbc061
-	sha256sums = 5681be1564c288f5ad0afb0aef1c10c848b77a2f6a198a673a401d5271989ffa
+	sha256sums = 9f36eaf456a5840e2417561842a0161d55b85511f47eb1848b2aad969eb8eb92
+	sha256sums = 44a534b6c2b1bbc615a1f878c569d44c4919f0085df496224286921dc877ce28
 
 pkgname = ecal
 

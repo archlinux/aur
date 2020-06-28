@@ -1,26 +1,12 @@
-diff --git a/app/play/play_core/include/ecal_play_logger.h b/app/play/play_core/include/ecal_play_logger.h
-index 2541ce3..4802d54 100644
---- a/app/play/play_core/include/ecal_play_logger.h
-+++ b/app/play/play_core/include/ecal_play_logger.h
-@@ -21,6 +21,8 @@
+diff --git a/app/rec/rec_server_core/CMakeLists.txt b/app/rec/rec_server_core/CMakeLists.txt
+index bc280d2..22f3e1a 100644
+--- a/app/rec/rec_server_core/CMakeLists.txt
++++ b/app/rec/rec_server_core/CMakeLists.txt
+@@ -18,6 +18,7 @@
  
- #include <string>
- #include <spdlog/fmt/ostr.h>
-+#include <spdlog/sinks/stdout_sinks.h>
-+#include <spdlog/sinks/rotating_file_sink.h>
- #include <spdlog/spdlog.h>
- #include <iostream>
- 
-diff --git a/app/rec/rec_core/include/rec_core/ecal_rec_logger.h b/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
-index 3b7aa62..138538c 100644
---- a/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
-+++ b/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
-@@ -21,6 +21,8 @@
- 
- #include <string>
- #include <spdlog/fmt/ostr.h>
-+#include <spdlog/sinks/stdout_sinks.h>
-+#include <spdlog/sinks/rotating_file_sink.h>
- #include <spdlog/spdlog.h>
- #include <iostream>
- 
+ find_package(Threads REQUIRED)
+ find_package(Protobuf REQUIRED)
++find_package(asio REQUIRED)
+ find_package(spdlog REQUIRED)
+ find_package(fineftp REQUIRED)
+ find_package(tinyxml2 REQUIRED)
