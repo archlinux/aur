@@ -2,13 +2,13 @@
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=davmail
 pkgver=5.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://$pkgname.sourceforge.net/"
 license=('GPL')
 makedepends=('unzip')
-depends=('java-runtime')
+depends=('java-runtime' 'swt')
 optdepends=('java-openjfx: Office 365 browser based authentication')
 _rev=3299
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-$_rev.zip
