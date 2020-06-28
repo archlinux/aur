@@ -1,9 +1,9 @@
 # Maintainer: Ykkzde <dmitry@ykkz.de>
 
 pkgname=random-case-bin
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
+pkgdesc="Randize case of your input text. Totally useless, but written in Rust."
 url="https://gitlab.com/ykkzde/random-case"
 license=('GPL3')
 provides=('random-case')
@@ -15,7 +15,7 @@ depends=(
 source=("random-case-$pkgver::https://github.com/ykkzde/random-case/releases/download/v$pkgver/random-case-v$pkgver-linux-x64")
 
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('92fe37003d90b2bae473ecbc6b56543ccf541dfcb3222e72cf99e68c36f7c13a82d0b70e399bda0da08ea8e81b73fe9e0b8fdb9eaed76f7fef5b472e9e85154a')
+sha512sums=('8a67f4d99aedac440cd58c5d916ed1dfcec199629cfb7474e65fe17cad41ad860a5027268a0e32ee15c02ab2142a24b3d0cedd35990a35f33fb67c3393606040')
 
 arch=('x86_64')
 
