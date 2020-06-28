@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 
 pkgname=trakt-scrobbler
-pkgver=1.0.0b9
+pkgver=1.0.0b10
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -13,7 +13,7 @@ depends=('systemd' $(curl -s https://pypi.org/pypi/trakt-scrobbler/$pkgver/json|
 optdepends=('libnotify: Provides Desktop Notifications.')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz
     trakts-man.md)
-sha256sums=('dc7a14220cc539ecdf80113eca9e5be43a0a02599b3bf3ce2fbd01a0336249e0'
+sha256sums=('8057f7cad2e95c72c8c43edfc01499b633320106d305bf25e80793399ffae0d4'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
