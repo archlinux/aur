@@ -1,0 +1,14 @@
+pkgbase = unappimage-git
+	pkgdesc = A lightweight AppImage extractor
+	pkgver = r1889.d7f86f2
+	pkgrel = 1
+	url = https://github.com/refi64/unappimage
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libelf
+	source = unappimage::git+https://github.com/refi64/unappimage.git
+	sha256sums = SKIP
+
+pkgname = unappimage-git
+
