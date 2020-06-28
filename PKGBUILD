@@ -3,11 +3,11 @@
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
 pkgver=r107.35c708f
-pkgrel=2
+pkgrel=3
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 depends=('gcc' 'dkms')
 optdepends=(
     'linux-rt-headers: Needed for build the module for Arch kernel'
