@@ -1,0 +1,21 @@
+pkgbase = mcmanjaro-kde-git
+	pkgdesc = A KDE Plasma customize theme
+	pkgver = r38.506ac29
+	pkgrel = 1
+	url = https://github.com/MiguelRAvila/mcmanjaro
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/MiguelRAvila/mcmanjaro.git
+	sha256sums = SKIP
+
+pkgname = mcmanjaro-kde-git
+	optdepends = kvantum-theme-mcmanjaro: Sweet theme for Kvantum Qt style (recommended)
+	provides = mcmanjaro-kde
+
+pkgname = kvantum-theme-mcmanjaro-git
+	pkgdesc = McManjaro theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-mcmanjaro
+
