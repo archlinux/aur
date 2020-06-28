@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name=Web Recorder
-GenericName=Web Recorder
+Name=Webrecorder
 Exec=webrecorder
-Categories=Utility;Productivity;
-Icon=webrecorder.ico
-Keywords=Productivity;Web;webrecorder;
-StartupNotify=true
 Terminal=false
 Type=Application
-
+Icon=webrecorder
+StartupWMClass=Webrecorder
+X-AppImage-Version=2.0.2.109
+Comment=Standalone Webrecorder Desktop App
+Categories=Archiving;Utility;
