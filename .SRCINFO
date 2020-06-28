@@ -1,0 +1,21 @@
+pkgbase = yayim
+	pkgdesc = A modified version of yay with additional features
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = https://git.jojii.de/jojii/yayim
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = libalpm.so>=12
+	depends = sudo
+	depends = git
+	source = yayim-10.0.2.tar.gz::https://git.jojii.de/jojii/yayim/-/archive/v10.0.2/yayim-v10.0.2.tar.gz
+	sha256sums = 9984ab5db9e88175b34ef168ba626b7c5bc5db7fe4088dd8628bc22d8e864d00
+
+pkgname = yayim
+
