@@ -2,7 +2,7 @@
 
 _name=gnome-2048
 pkgname=$_name-git
-pkgver=3.31.4+30+g9179407
+pkgver=3.37.1.r5.g4fc9c07
 pkgrel=1
 pkgdesc="Obtain the 2048 tile"
 arch=(x86_64)
@@ -17,14 +17,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_name
-  git describe --tags | sed 's/-/+/g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $_name build -D b_pie='false'
-  ninja -C build
+  arch-meson $_name build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }

@@ -1,6 +1,6 @@
 pkgbase = gnome-2048-git
 	pkgdesc = Obtain the 2048 tile
-	pkgver = 3.31.4+30+g9179407
+	pkgver = 3.37.1.r5.g4fc9c07
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/2048
 	arch = x86_64
