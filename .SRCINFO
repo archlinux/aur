@@ -1,13 +1,13 @@
 pkgbase = tomboy-reborn-bin
 	pkgdesc = A drop-in, straightforward, replacement of deprecated, but extremely usefull, Gnome Tomboy
-	pkgver = 1.0.beta5
-	pkgrel = 2
+	pkgver = 1.0.beta6
+	pkgrel = 1
 	url = https://github.com/grosjo/tomboy-reborn
 	arch = x86_64
 	license = LGPL
 	depends = libcanberra
-	source = https://github.com/grosjo/tomboy-reborn/releases/download/1.0.beta5/tomboy-reborn_1.0.beta5-2_amd64.deb
-	sha256sums = 8570fbccbb50dc3890efe9d1a89697cb4e87d03f23c8c4daa51708c3daa82a99
+	source = https://github.com/grosjo/tomboy-reborn/releases/download/1.0.beta6/tomboy-reborn_1.0.beta6-1_amd64.deb
+	sha256sums = 3b246d3717b23f9e936d058c930283d130877358742173712ad9a0317a32c6fc
 
 pkgname = tomboy-reborn-bin
 

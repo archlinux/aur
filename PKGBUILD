@@ -1,7 +1,7 @@
 # Maintainer: Joan Moreau <jom@grosjo.net>
 pkgname=tomboy-reborn-bin
-pkgver=1.0.beta5
-pkgrel=2
+pkgver=1.0.beta6
+pkgrel=1
 pkgdesc="A drop-in, straightforward, replacement of deprecated, but extremely usefull, Gnome Tomboy"
 arch=('x86_64')
 license=('LGPL')
@@ -10,7 +10,7 @@ depends=(libcanberra)
 makedepends=()
 optdepends=()
 source=( "https://github.com/grosjo/tomboy-reborn/releases/download/${pkgver}/tomboy-reborn_${pkgver}-${pkgrel}_amd64.deb" )
-sha256sums=( "8570fbccbb50dc3890efe9d1a89697cb4e87d03f23c8c4daa51708c3daa82a99" )
+sha256sums=( "3b246d3717b23f9e936d058c930283d130877358742173712ad9a0317a32c6fc" )
 
 package() {
 	_src="$srcdir/$pkgname"
