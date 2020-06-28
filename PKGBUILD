@@ -1,27 +1,33 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=daggy
-pkgver=1.1.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Run multiple commands on remote servers simultaneously and save output locally'
 arch=('x86_64')
-depends=('qt5-base' 'botan' 'yaml-cpp')
+depends=('qt5-base' 'yaml-cpp' 'libssh2')
+makedepends=('cmake')
 license=('MIT')
 url='https://docs.daggy.dev/'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/synacker/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('559a9d7916988edf67be50625d89b38c311edaa322c3238e0107883dc315f0c6')
+sha256sums=('52533067684db505b567a794bbefc688684ce64db8a7e4726976125cd26534b4')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  sed -i 's|kainjow/mustache.hpp|mustache.hpp|' "src/Daggy/Precompiled.h"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
-  qmake-qt5 BINDIR="${pkgdir}/usr/bin" LIBDIR="{pkgdir}/usr/lib" VERSION="${pkgver}" BUILD_NUMBER=0 CONFIG+=release
+  cmake -DVERSION=${pkgver} -DCMAKE_INSTALL_PREFIX=/usr src
   make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make install
+  make DESTDIR="${pkgdir}" install
 
   # Install license file
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING "ssh/LICENSE.GPL3-EXCEPT.txt"
+  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
