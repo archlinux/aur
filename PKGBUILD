@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gst
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="System utility designed to stress and monitoring various hardware components"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('meson' 'appstream-glib')
 provides=()
 conflicts=('smalltalk')
 source=("https://gitlab.com/leinardi/gst/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('695a282929b9bcbf22b90b7dad2844a61f35dd03482cdb795b81ef1cd6c7bd30')
+sha256sums=('47f47ac4ea1d497975fe326f95f55b3d6c9e32aa00acbea0952561d1179b1562')
 
 build() {
 	if [[ -d "$srcdir/build" ]]; then
