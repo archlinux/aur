@@ -1,7 +1,7 @@
 pkgbase = texlab-git
 	pkgdesc = An implementation of the Language Server Protocol for LaTeX
-	pkgver = r776.d752c2f
-	pkgrel = 2
+	pkgver = r1267.8ae99ec
+	pkgrel = 3
 	url = https://github.com/latex-lsp/texlab
 	arch = any
 	license = MIT
