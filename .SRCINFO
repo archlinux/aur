@@ -1,7 +1,7 @@
 pkgbase = hip-rocclr
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
 	license = MIT
