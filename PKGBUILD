@@ -1,9 +1,9 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.0.6"
+pkgver="1.0.8"
 pkgrel=1
-commitsha="e774ea7edd744ebac2ad99fd89474545bbbc661b"
+commitsha="735449de98c198e128409c6481979dc0e06adecc"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
