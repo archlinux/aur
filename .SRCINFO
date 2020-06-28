@@ -11,6 +11,7 @@ pkgbase = raspberrypi-bootloader-git
 	conflicts = raspberrypi-bootloader
 	conflicts = raspberrypi-bootloader-x
 	options = !strip
+	options = staticlibs
 	source = 969.tar.gz::https://api.github.com/repos/raspberrypi/firmware/tarball
 	md5sums = 8b297682bc3b62877f5c93697f07e41c
 
