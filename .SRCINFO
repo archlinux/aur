@@ -5,7 +5,6 @@ pkgbase = xubuntu-community-artwork
 	url = https://launchpad.net/xubuntu-community-artwork
 	arch = any
 	license = custom
-	optdepends = xfce4: xfce desktop
 	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_20.04.0.tar.xz
 	sha256sums = 2a40074fae8754babc4e7c7e141ad2163f1f40cdf0e5ac6b267f432658d09dd1
 

@@ -8,7 +8,6 @@ pkgdesc='Xubuntu community wallpapers'
 arch=(any)
 url='https://launchpad.net/xubuntu-community-artwork'
 license=('custom')
-optdepends=('xfce4: xfce desktop')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('2a40074fae8754babc4e7c7e141ad2163f1f40cdf0e5ac6b267f432658d09dd1')
 
