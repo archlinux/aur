@@ -1,7 +1,7 @@
 pkgbase = qt5-location-595
 	pkgdesc = Provides access to position, satellite and area monitoring classes (v5.9.5)
 	pkgver = 5.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
