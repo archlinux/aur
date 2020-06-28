@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r691-g22ac983
+pkgver=0.1.r691.g22ac983
 pkgrel=1
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
