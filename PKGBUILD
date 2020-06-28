@@ -1,6 +1,6 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-obfuscate-git
-pkgver=0.0.2.r5.g45e1e37
+pkgver=0.0.2.r8.gb71967e
 pkgrel=1
 pkgdesc="Censor private information."
 arch=(x86_64)
@@ -8,13 +8,8 @@ url="https://gitlab.gnome.org/World/obfuscate"
 license=('GPL')
 depends=('gtk3' 'appstream-glib')
 makedepends=('git' 'meson' 'rust' 'cmake')
-checkdepends=()
-optdepends=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-backup=()
-options=()
-install=
 source=("git+${url}.git")
 md5sums=('SKIP')
 
@@ -25,9 +20,9 @@ pkgver() {
 
 build() {
   meson --prefix=/usr --buildtype=plain obfuscate build
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
