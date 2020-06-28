@@ -12,7 +12,8 @@ url='http://www.denx.de/wiki/U-Boot/WebHome'
 license=('GPL')
 backup=('boot/boot.txt' 'boot/boot.scr' 'boot/config.txt')
 makedepends=('bc' 'dtc' 'git')
-depends=('linux-aarch64' 'uboot-tools-rc')
+depends=('linux-aarch64')
+optdepends=('uboot-tools-rc')
 options=(!strip)
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
