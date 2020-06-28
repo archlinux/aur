@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/webrecorder/webrecorder-desktop"
 license=(unknown)
 depends=('redis')
+makedepends('git')
 noextract=('Webrecorder.AppImage')
 options=(!strip)
 _appimg="Webrecorder.AppImage"
