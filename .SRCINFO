@@ -1,7 +1,7 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scikit-image.org/
 	arch = i686
 	arch = x86_64
