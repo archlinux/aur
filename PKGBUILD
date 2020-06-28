@@ -2,7 +2,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.3-6
+_cranver=3.3-7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.5.0' 'r-sp>=1.4.1' r-rcpp)
 makedepends=('gcc>=4.8')
 optdepends=(r-rgdal r-rgeos r-ncdf4 r-igraph r-rastervis r-sf r-testthat r-gstat r-fields)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('498f6c0437856536781c9f65ef039b02')
+md5sums=('2fcbb3d67f77946280b264a39eda25e7')
 
 build() {
   cd "${srcdir}"
