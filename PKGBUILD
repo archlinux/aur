@@ -3,7 +3,7 @@
 pkgname="python-desert"
 _pkgname="${pkgname#python-}"
 pkgver=2020.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Deserialize to objects while staying DRY'
 arch=('any')
 url='https://github.com/python-desert/desert'
@@ -22,6 +22,9 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # fix file permissions
+  find "$pkgdir" -type f -exec chmod 0644 {} \;
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

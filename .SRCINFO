@@ -1,7 +1,7 @@
 pkgbase = python-desert
 	pkgdesc = Deserialize to objects while staying DRY
 	pkgver = 2020.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/python-desert/desert
 	arch = any
 	license = MIT
