@@ -30,7 +30,7 @@ pkgbase = spacefm-git
 	source = git+https://github.com/IgnorantGuru/spacefm.git#branch=alpha
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/spacefm-glibc-2.28-compatibility.patch
 	sha256sums = SKIP
-	sha256sums = 9f5c1e981279e677612b8b45260bdf0d3a496cb0a43c1e6365269f2a291b1e0e
+	sha256sums = 12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e
 
 pkgname = spacefm-git
 
