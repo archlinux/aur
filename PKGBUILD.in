@@ -75,7 +75,6 @@ pkgver() {
 
 prepare() {
   export CFLAGS CXXFLAGS LDFLAGS
-  mkdir "${srcdir}/build" -p
   meson "${srcdir}/${_pkgname}"\
         "${srcdir}/build"\
         --prefix=/usr
