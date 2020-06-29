@@ -1,0 +1,13 @@
+diff --git a/tlpkg/TeXLive/TLConfig.pm b/tlpkg/TeXLive/TLConfig.pm
+index e27f70b..b6e5101 100644
+--- a/tlpkg/TeXLive/TLConfig.pm
++++ b/tlpkg/TeXLive/TLConfig.pm
+@@ -57,7 +57,7 @@ BEGIN {
+ 
+ # the year of our release, will be used in the location of the
+ # network packages, and in menu names, and other places.
+-$ReleaseYear = 2019;
++$ReleaseYear = 2020;
+ 
+ # users can upgrade from this year to the current year; might be the
+ # same as the release year, or any number of releases earlier.
