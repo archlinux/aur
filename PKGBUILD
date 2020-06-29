@@ -14,6 +14,8 @@ depends=(
 'system76-dkms'
 )
 makedepends=('rust')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=(
 "https://github.com/pop-os/${pkgname%-*}/archive/${pkgver}.tar.gz"
 'system76-power'
