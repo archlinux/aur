@@ -1,6 +1,6 @@
 pkgbase = mcfly
 	pkgdesc = Fly through your shell history
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/cantino/mcfly
 	install = mcfly.install
@@ -11,8 +11,8 @@ pkgbase = mcfly
 	makedepends = cargo
 	depends = sh
 	optdepends = zsh: for zsh support
-	source = mcfly-0.4.0.tar.gz::https://github.com/cantino/mcfly/archive/v0.4.0.tar.gz
-	sha256sums = 233d33e2cde70f6bd76800becf7a718404e7ed19712bdee1d20b92a7486f6536
+	source = mcfly-0.4.1.tar.gz::https://github.com/cantino/mcfly/archive/v0.4.1.tar.gz
+	sha256sums = 46881eef97f871f6ac40940cb364a205cb7457c7253a36a728fa47dabc7d50ca
 
 pkgname = mcfly
 
