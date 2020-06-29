@@ -1,6 +1,6 @@
 pkgbase = rtbth-dkms-git
 	pkgdesc = rtbth Kernel module sources for Ralink RT3290 bluetooth, lomiu's solution.
-	pkgver = 3.9.4.4_8aa074e
+	pkgver = 3.9.6.r7.gce4e65d
 	pkgrel = 1
 	url = http://www.mediatek.com/
 	install = rtbth-dkms.install
