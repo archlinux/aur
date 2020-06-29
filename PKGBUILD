@@ -7,8 +7,8 @@
 # Contributor: archtux <antonio.arias99999 at gmail.com>
 
 pkgname=bitfighter
-pkgver=019g
-pkgrel=3
+pkgver=021
+pkgrel=1
 pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
@@ -32,6 +32,7 @@ source=("http://${pkgname}.org/files/${pkgname}-${pkgver/./}.tar.gz"
         "$pkgname.png"
         "$pkgname.desktop")
 build() {
+  echo " ${CPPFLAGS}"
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
   cmake -B build -S "bitfighter-${pkgver}" \
@@ -60,7 +61,7 @@ package() {
 }
 
 
-md5sums=('6081f45765205cb80212b5c076af6f79'
+md5sums=('2d2c33abca2e322c1d6c8e1998add3c3'
          'cb32039b47026e176d3f1f3639bd1a9f'
          '8b28490af9deadd0a1a104ae372f5b08'
          '657e0ff146dd3dac682e15be5a74fbf0')
