@@ -1,7 +1,7 @@
 _pkgname=cri-o
 pkgname=cri-o-git
-pkgver=20200426
-pkgrel=4
+pkgver=20200629
+pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64 aarch64)
 url='https://github.com/cri-o/cri-o'
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 prepare() {
 	mkdir -p $srcdir/go/src/github.com/cri-o
 	ln -sf "$srcdir/$_pkgname" "$srcdir/go/src/github.com/cri-o/cri-o"
+	cd $srcdir/$_pkgname && git pull origin master
 }
 
 build() {
