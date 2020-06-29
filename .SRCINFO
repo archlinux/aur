@@ -1,23 +1,28 @@
 pkgbase = vlfeat
 	pkgdesc = An open library of computer vision algorithms
 	pkgver = 0.9.21
-	pkgrel = 6
+	pkgrel = 9
 	url = https://www.vlfeat.org/
 	arch = x86_64
 	license = BSD
-	makedepends = clang
 	makedepends = git
 	makedepends = octave
 	makedepends = patchelf
-	depends = openmp
+	depends = gcc-libs
 	source = vlfeat::git+https://github.com/vlfeat/vlfeat.git
+	source = 0001-fix-openmp-building-with-gcc.patch::https://github.com/vlfeat/vlfeat/pull/200.patch
+	source = 0002-fix-pgm-max-value.patch::https://github.com/vlfeat/vlfeat/pull/170.patch
+	source = 0003-fix-typo-in-makefile.patch::https://github.com/vlfeat/vlfeat/pull/191.patch
 	sha512sums = SKIP
+	sha512sums = 181814a521b28e3c6fcdcff354f66f32f597db24a738e6db3bbb6418f62d4ab80a13b7b99707851f4e33d887cf906ce823f707d9cee20e2a34e4db9896a9b880
+	sha512sums = d6c11b979785b1ed26655fbfc20ecfc0cce249c03fe54168a6580503b54e325a85c3e841a0e230a57c9fb21f73884d38a22020bd999b1a68841e09a8cd8c506e
+	sha512sums = 420c032aab1b6f32f6aabf319ad27bd66749a587deb36f7e60d3efa1512f6c3c56b680ffa5b510cb40c9bf895b1fd408599eda5ed23cdaec7626640bd69085f3
 
 pkgname = vlfeat
 
 pkgname = octave-vlfeat
 	pkgdesc = An open library of computer vision algorithms (octave package)
-	depends = openmp
+	depends = gcc-libs
 	depends = vlfeat
 	depends = octave
 
