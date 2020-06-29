@@ -1,0 +1,37 @@
+pkgbase = enve-git
+	pkgdesc = 2D animation software
+	pkgver = continuous.windows.r175.gf691b357
+	pkgrel = 1
+	url = https://maurycyliebner.github.io/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gn
+	makedepends = intltool
+	makedepends = ninja
+	makedepends = openmp
+	depends = ffmpeg
+	depends = gperftools
+	depends = qscintilla-qt5
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-webengine
+	depends = quazip
+	source = git+https://github.com/MaurycyLiebner/enve.git
+	source = git+https://github.com/gperftools/gperftools.git
+	source = git+https://github.com/mypaint/libmypaint.git
+	source = git+https://skia.googlesource.com/skia.git
+	source = enve-QPainterPath.patch
+	source = enve-quazip-qscintilla.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = a6ec4054ee0b91a02e99e8dcd0dab08afe0d72bb00065b9df3425081247be37da25635e7b9faf55039e380582c0a40a3ff73b79f29df0c7d6c7c45b8117c3ad6
+	sha512sums = ba321de43cf07aaf009d4f05e5962b9de578d65be8b8b58fed5c4f4b85d3ce0121715816263c3848d5c164906370cac35cbffbaee2472c188d54c44b3ed3db5a
+
+pkgname = enve-git
+

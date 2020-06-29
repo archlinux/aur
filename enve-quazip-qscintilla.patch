@@ -1,0 +1,61 @@
+Description: Changes the include paths for qscintilla and quazip to "/usr/include/..."
+
+diff --unified --recursive --text enve.orig/src/app/app.pro enve.new/src/app/app.pro
+--- enve.orig/src/app/app.pro	2020-06-28 16:35:40.420742370 -0300
++++ enve.new/src/app/app.pro	2020-06-28 16:37:46.877404810 -0300
+@@ -31,7 +31,7 @@
+ include(../core/core.pri)
+ 
+ ENVE_CORE_FOLDER = ../core
+-QSCINTILLA_FOLDER = $$THIRD_PARTY_FOLDER/qscintilla/Qt4Qt5
++QSCINTILLA_FOLDER = /usr/include/qt
+ 
+ INCLUDEPATH += $$ENVE_CORE_FOLDER
+ DEPENDPATH += $$ENVE_CORE_FOLDER
+diff --unified --recursive --text enve.orig/src/core/core.pri enve.new/src/core/core.pri
+--- enve.orig/src/core/core.pri	2020-06-28 16:17:57.960777695 -0300
++++ enve.new/src/core/core.pri	2020-06-28 16:21:39.570770341 -0300
+@@ -16,7 +16,7 @@
+ THIRD_PARTY_FOLDER = $$ENVE_FOLDER/third_party
+ SKIA_FOLDER = $$THIRD_PARTY_FOLDER/skia
+ LIBMYPAINT_FOLDER = $$THIRD_PARTY_FOLDER/libmypaint
+-QUAZIP_FOLDER = $$THIRD_PARTY_FOLDER/quazip
++QUAZIP_FOLDER = /usr/include/quazip5
+ 
+ INCLUDEPATH += $$SKIA_FOLDER
+ QMAKE_CFLAGS += -isystem $$SKIA_FOLDER
+@@ -25,7 +25,9 @@
+ LIBS += -L$$LIBMYPAINT_FOLDER/.libs -lmypaint
+ 
+ INCLUDEPATH += $$QUAZIP_FOLDER
+-LIBS += -L$$QUAZIP_FOLDER/quazip -lquazip
++LIBS += -L$$QUAZIP_FOLDER -lquazip5
++
++INCLUDEPATH += $$THIRD_PARTY_FOLDER
+ 
+ CONFIG(debug, debug|release) {
+     LIBS += -L$$SKIA_FOLDER/out/Debug
+diff --unified --recursive --text enve.orig/src/core/zipfileloader.h enve.new/src/core/zipfileloader.h
+--- enve.orig/src/core/zipfileloader.h	2020-06-28 16:22:32.970768566 -0300
++++ enve.new/src/core/zipfileloader.h	2020-06-28 16:23:20.730766976 -0300
+@@ -17,7 +17,7 @@
+ #ifndef ZIPFILELOADER_H
+ #define ZIPFILELOADER_H
+ 
+-#include <quazip/quazipfile.h>
++#include <quazip5/quazipfile.h>
+ 
+ #include <QDir>
+ 
+diff --unified --recursive --text enve.orig/src/core/zipfilesaver.h enve.new/src/core/zipfilesaver.h
+--- enve.orig/src/core/zipfilesaver.h	2020-06-28 16:22:45.310768159 -0300
++++ enve.new/src/core/zipfilesaver.h	2020-06-28 16:23:31.327433290 -0300
+@@ -17,7 +17,7 @@
+ #ifndef ZIPFILESAVER_H
+ #define ZIPFILESAVER_H
+ 
+-#include <quazip/quazipfile.h>
++#include <quazip5/quazipfile.h>
+ 
+ #include "exceptions.h"
+ 

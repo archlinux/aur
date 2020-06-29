@@ -1,0 +1,46 @@
+Description: Add missing QPainterPath includes in the source code
+
+diff --unified --recursive --text enve.orig/src/app/GUI/segment1deditor.h enve.new/src/app/GUI/segment1deditor.h
+--- enve.orig/src/app/GUI/segment1deditor.h	2020-06-25 11:37:51.855680920 -0300
++++ enve.new/src/app/GUI/segment1deditor.h	2020-06-27 02:34:00.788732826 -0300
+@@ -18,6 +18,7 @@
+ #define SEGMENT1DEDITOR_H
+ 
+ #include <QWidget>
++#include <QPainterPath>
+ #include "Segments/qcubicsegment1d.h"
+ #include "Animators/qcubicsegment1danimator.h"
+ #include "conncontextptr.h"
+diff --unified --recursive --text enve.orig/src/core/Animators/graphanimator.h enve.new/src/core/Animators/graphanimator.h
+--- enve.orig/src/core/Animators/graphanimator.h	2020-06-25 11:37:51.945680917 -0300
++++ enve.new/src/core/Animators/graphanimator.h	2020-06-27 02:28:30.608743848 -0300
+@@ -17,6 +17,7 @@
+ #ifndef GRAPHANIMATOR_H
+ #define GRAPHANIMATOR_H
+ #include "animator.h"
++#include <QPainterPath>
+ #define GetAsGK(key) static_cast<GraphKey*>(key)
+ 
+ class GraphKey;
+diff --unified --recursive --text enve.orig/src/core/Animators/qrealanimator.h enve.new/src/core/Animators/qrealanimator.h
+--- enve.orig/src/core/Animators/qrealanimator.h	2020-06-25 11:37:51.955680917 -0300
++++ enve.new/src/core/Animators/qrealanimator.h	2020-06-27 02:28:56.342076328 -0300
+@@ -19,6 +19,7 @@
+ #include "graphanimator.h"
+ #include "qrealsnapshot.h"
+ #include "../conncontextptr.h"
++#include <QPainterPath>
+ 
+ class QrealKey;
+ class Expression;
+diff --unified --recursive --text enve.orig/src/core/Boxes/textbox.cpp enve.new/src/core/Boxes/textbox.cpp
+--- enve.orig/src/core/Boxes/textbox.cpp	2020-06-25 11:37:51.965680916 -0300
++++ enve.new/src/core/Boxes/textbox.cpp	2020-06-27 02:31:42.512070779 -0300
+@@ -17,6 +17,7 @@
+ #include "Boxes/textbox.h"
+ #include <QInputDialog>
+ #include <QMenu>
++#include <QPainterPath>
+ #include "canvas.h"
+ #include "Animators/gradientpoints.h"
+ #include "Animators/qstringanimator.h"
