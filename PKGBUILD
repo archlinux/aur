@@ -4,7 +4,7 @@ _gitname=fritzbox_exporter
 _pkgname=prometheus-fritzbox-exporter
 pkgname=${_pkgname}-git
 pkgver=r21.834e250
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus UPnP exporter for Fritz!Box routers"
 arch=('x86_64' 'i686')
 url="https://github.com/ndecker/fritzbox_exporter"
@@ -14,7 +14,7 @@ makedepends=('go' 'git')
 source=("git+https://github.com/ndecker/fritzbox_exporter.git"
         "prometheus-fritzbox-exporter.service")
 sha256sums=('SKIP'
-            '3b65f0e3fc9da83c58838caef5d16e3b5464efc9bd30f1e7716920273674f46f')
+            '39c76549474c9e1aa12d4800431b03024cfe1d9e258cb04db9e4377a7db9e00b')
 
 pkgver() {
   cd "$_gitname"

@@ -3,6 +3,8 @@ Description=Prometheus UPnP exporter for Fritz!Box routers
 
 [Service]
 ExecStart=/usr/bin/prometheus_fritzbox_exporter
+User=fbexporter
+DynamicUser=yes
 
 [Install]
 WantedBy=default.target
