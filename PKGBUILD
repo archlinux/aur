@@ -3,7 +3,7 @@
 pkgname=superproductivity-git
 _pkgname=superproductivity
 _reponame=super-productivity
-pkgver=5.1.2.r1.g70cd2a8e
+pkgver=5.4.2.r0.gb77473a6
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -65,12 +65,12 @@ build() {
 	electronVer=$(electron --version | tail -c +2)
 
 	# Building angular
-	# node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --aot --prod --base-href=''
+	node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --aot --prod --base-href=''
 	# Building electron-builder
-	# yarn electron:build && yarn electron-builder
+	yarn electron:build && yarn electron-builder
 	# Building the app
-	# npx electron-builder --linux dir --x64 --dir dist \
-	# -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
+	npx electron-builder --linux dir --x64 --dir dist \
+	 -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
 }
 
 package() {
