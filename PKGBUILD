@@ -2,12 +2,11 @@
 
 pkgname=ttf-proggy-clean
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospaced fonts for programming'
 arch=(any)
 url='https://github.com/bluescan/proggyfonts/'
 license=(MIT)
-depends=(fontconfig)
 makedepends=(git)
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
