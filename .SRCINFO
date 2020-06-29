@@ -12,6 +12,7 @@ pkgbase = enve-git
 	makedepends = intltool
 	makedepends = ninja
 	makedepends = openmp
+	makedepends = python2
 	depends = ffmpeg
 	depends = gperftools
 	depends = qscintilla-qt5

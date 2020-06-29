@@ -9,7 +9,7 @@ pkgdesc="2D animation software"
 url="https://maurycyliebner.github.io/"
 license=('GPL3')
 depends=('ffmpeg' 'gperftools' 'qscintilla-qt5' 'qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'quazip')
-makedepends=('git' 'gn' 'intltool' 'ninja' 'openmp')
+makedepends=('git' 'gn' 'intltool' 'ninja' 'openmp' 'python2')
 source=("git+https://github.com/MaurycyLiebner/enve.git"
         "git+https://github.com/gperftools/gperftools.git"
         "git+https://github.com/mypaint/libmypaint.git"
