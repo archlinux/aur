@@ -10,7 +10,7 @@ makedepends=()
 url="https://home.otoy.com/render/octane-render/demo/"
 source=(https://render.otoy.com/downloads/f3/90/5a/70/octane_blender_2020.1.3-21.9-stable.run)
 noextract=('octane_blender_2020.1.3-21.9-stable.run')
-md5sums=('920af44e399161c0acf4360051e57c8a')
+md5sums=('4be6f23dac3ca2417f1681eee4e297af')
 
 prepare()
 {
