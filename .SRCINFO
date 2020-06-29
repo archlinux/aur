@@ -14,12 +14,10 @@ pkgbase = gitkraken
 	provides = gitkraken
 	source = gitkraken-7.0.1.tar.gz::https://release.axocdn.com/linux/GitKraken-v7.0.1.tar.gz
 	source = GitKraken.desktop
-	source = gitkraken.png
 	source = eula.html
 	source = gitkraken.sh
 	sha256sums = 0d0cb27e7daad4ca08e70c773181e89b7a0241041f6024ddfad4e21fa13ec027
 	sha256sums = 81b32ad2fae47fcdf8adb4fdb5c734430ed993f712e75bd62297ae8540fdf889
-	sha256sums = a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902
 	sha256sums = 9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1
 	sha256sums = 6e6c6ac37287e1ec5d5266689a49d18899488be901b21f5cb9749f545453626f
 
