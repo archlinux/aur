@@ -2,14 +2,14 @@ pkgbase = kendryte-toolchain-bin
 	pkgdesc = RISC-V 64bit toolchain for Kendryte K210
 	pkgver = 8.2.0_20190213
 	pkgrel = 1
-	url = https://kendryte.com/downloads/
+	url = https://github.com/kendryte/kendryte-gnu-toolchain/
 	arch = x86_64
 	license = GPL
 	depends = mpfr
 	depends = isl19
 	noextract = kendryte-toolchain-ubuntu-amd64-8.2.0-20190213.tar.gz
 	options = !strip
-	source = https://s3.cn-north-1.amazonaws.com.cn/dl.kendryte.com/documents/kendryte-toolchain-ubuntu-amd64-8.2.0-20190213.tar.gz
+	source = https://github.com/kendryte/kendryte-gnu-toolchain/releases/download/v8.2.0-20190213/kendryte-toolchain-ubuntu-amd64-8.2.0-20190213.tar.gz
 	sha512sums = 6721687837d408d9b118e4ff9a96d4910615675cc4c2f36e4774c2241ac728ea2a982b81a9b86e8f3d49325f0fc2f3b71975c4937968efd2fc3568e76b5b46ab
 
 pkgname = kendryte-toolchain-bin
