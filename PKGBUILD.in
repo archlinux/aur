@@ -84,11 +84,6 @@ build() {
  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
 
-check() {
-#shellcheck disable=SC2086
-  ninja -C "${srcdir}/build" ${MAKEFLAGS:--j1} test
-}
-
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
