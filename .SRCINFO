@@ -1,6 +1,6 @@
 pkgbase = vna_j
 	pkgdesc = GUI for various vector network analyzers
-	pkgver = 3.3.4
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = http://vnaj.dl2sba.com/
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = vna_j
 	depends = java-environment>=10
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: desktop & menu shortcut support
-	noextract = vnaJ.3.3.4.jar
-	source = http://download.dl2sba.com/vnaj/3.3.4/vnaJ.3.3.4.jar
+	noextract = vnaJ.3.4.2.jar
+	source = http://download.dl2sba.com/vnaj/3.4.2/vnaJ.3.4.2.jar
 	source = vnaJ.sh
 	source = vnaJ.desktop
-	source = http://download.dl2sba.com/vnaj/3.3.4/logo.ico
-	sha256sums = adb2e8714835d603c9545d594b8849096efe570bea42dfd63cb1b0ba52fe632c
+	source = http://download.dl2sba.com/vnaj/3.4.2/logo.ico
+	sha256sums = 2a7e20ee63ef064149af51c5f04f1c1c662a5253c90006ee208a9d08db52dd54
 	sha256sums = cf188ba0153e9227a8db441c03f8566dee523c65e42097ea1f7d8041f1b68e43
 	sha256sums = a1a4b6cc03a832d0d0d564a8e4ce07c58532ff5e7d9a1bdeaf7e5acbfb8907a6
 	sha256sums = e4868277a6f4f1da10cfeaba58086d6f76b79a057be4ba7a72aab9d9f686f7fb
