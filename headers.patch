@@ -1,0 +1,12 @@
+diff -aur a/src/ladspa_plugin/ladspa++.h b/src/ladspa_plugin/ladspa++.h
+--- a/src/ladspa_plugin/ladspa++.h	2020-06-29 22:50:27.092876342 +0100
++++ b/src/ladspa_plugin/ladspa++.h	2020-06-29 22:56:07.769181379 +0100
+@@ -21,6 +21,8 @@
+ #include <tuple>
+ #include <array>
+ #include <cassert>
++#include <cstddef>
++#include <cstdint>
+ 
+ #include "ladspa.h"
+ 
