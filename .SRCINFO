@@ -1,14 +1,14 @@
 pkgbase = headroom
 	pkgdesc = Manager for license headers in source code files
-	pkgver = 0.2.2.1
+	pkgver = 0.3.0.0
 	pkgrel = 1
 	url = https://github.com/vaclavsvejcar/headroom
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = stack
-	source = https://github.com/vaclavsvejcar/headroom/archive/v0.2.2.1.tar.gz
-	sha256sums = 0577d9a03f6e44137a42645c945e868a29a96baaf93902ad83c5cdde5a6c1c7d
+	source = https://github.com/vaclavsvejcar/headroom/archive/v0.3.0.0.tar.gz
+	sha256sums = d9246981dc56bbea9faa2f1edc82f21480208fc9feb79d1c8f25da49b4594f68
 
 pkgname = headroom
 
