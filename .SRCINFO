@@ -1,17 +1,13 @@
 pkgbase = front-panel-designer-eu
 	pkgdesc = Free CAD software for front panel design
-	pkgver = 6.2.1
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = http://www.schaeffer-ag.de/en/
 	arch = any
 	license = custom
 	depends = libpng12
-	source = https://assets.schaeffer-ag.de/fpd/Version-6.2.1/FrontDesign-EU-6.2.1-amd64.tgz
-	source = front-panel-express-eu.desktop
-	source = front-panel-express-order-eu.desktop
-	md5sums = 1a7f5858141c90e02b07298bc7617ff3
-	md5sums = d34b7ed5d87a206fe8b50fd4a8f8e167
-	md5sums = 8bb49915edf0a5c611494b7753f9103f
+	noextract = FrontDesign-EU-6.3.0-amd64.AppImage
+	options = !strip
 
 pkgname = front-panel-designer-eu
 
