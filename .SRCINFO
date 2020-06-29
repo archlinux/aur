@@ -1,0 +1,20 @@
+pkgbase = minirss-git
+	pkgdesc = A minuscule RSS notifier
+	pkgver = r3.2af2112
+	pkgrel = 1
+	url = https://github.com/132ikl/minirss
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xmlstarlet
+	depends = notification-daemon
+	depends = bash>=4.0
+	depends = xdg-utils
+	optdepends = dunst: enable middle click open link functionality
+	provides = minirss
+	conflicts = minirss
+	source = git+https://github.com/132ikl/minirss.git
+	md5sums = SKIP
+
+pkgname = minirss-git
+
