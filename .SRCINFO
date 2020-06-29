@@ -1,7 +1,7 @@
 pkgbase = vc4c-git
 	pkgdesc = Compiler for the VC4CL OpenCL-implementation
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/doe300/VC4C
 	arch = any
 	license = MIT
