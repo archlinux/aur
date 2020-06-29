@@ -1,0 +1,15 @@
+pkgbase = zsh-autocomplete-git
+	pkgdesc = IDE-style type-ahead completion for Zsh
+	pkgver = r102.5c0313e
+	pkgrel = 1
+	url = https://github.com/marlonrichert/zsh-autocomplete
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-autocomplete
+	source = git+https://github.com/marlonrichert/zsh-autocomplete.git
+	sha512sums = SKIP
+
+pkgname = zsh-autocomplete-git
+
