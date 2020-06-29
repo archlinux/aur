@@ -1,0 +1,11 @@
+#!/usr/bin/openrc-run
+
+description="System76 Power Daemon"
+pidfile="/run/system76/system76-power.pid"
+command="/usr/bin/system76-power"
+command_args="daemon"
+
+depend()
+{
+    need dbus
+}

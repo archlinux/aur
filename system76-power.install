@@ -1,0 +1,58 @@
+_services="system76-power"
+
+_stop_services() {
+  /usr/bin/rc-service $_services stop >/dev/null 2>&1
+}
+
+_disable_services() {
+  /usr/bin/rc-update del $_services >/dev/null 2>&1
+}
+
+_restore_services() {
+  for service in $_services; do
+      rc-status -u | grep -q $service \
+          || /usr/bin/rc-service $service start > /dev/null 2>&1
+  done
+}
+
+post_install() {
+cat << EOF
+
+    The System76 Power package provides the following system services:
+
+        system76-power    System76 power support
+
+    And the following application
+
+        system76-power    System76 power CLI interface
+
+    If you are using a NVIDIA graphics card, you may need to add additional
+    X11 config to make the GPU switching work, see below:
+
+        https://wiki.archlinux.org/index.php/NVIDIA_Optimus#Use_NVIDIA_graphics_only
+
+EOF
+}
+
+pre_upgrade() {
+  _stop_services
+}
+
+post_upgrade() {
+  _restore_services
+  post_install
+}
+
+pre_remove() {
+  _stop_services
+  _disable_services
+}
+
+post_remove() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+  cat << EOF
+
+    Be sure to stop and disable all running System76 user services.
+
+EOF
+}

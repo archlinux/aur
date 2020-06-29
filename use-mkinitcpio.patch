@@ -1,0 +1,22 @@
+--- a/src/graphics.rs
++++ b/src/graphics.rs
+@@ -58,7 +58,7 @@ pub enum GraphicsDeviceError {
+     Rescan(io::Error),
+     #[error(display = "failed to unbind {} on PCI driver {}: {}", func, driver, why)]
+     Unbind { func: String, driver: String, why: io::Error },
+-    #[error(display = "update-initramfs failed with {} status", _0)]
++    #[error(display = "mkinitcpio failed with {} status", _0)]
+     UpdateInitramfs(ExitStatus),
+ }
+
+@@ -295,9 +295,9 @@ impl Graphics {
+         }
+
+         info!("Updating initramfs");
+-        const UPDATE_INITRAMFS_CMD: &str = "update-initramfs";
++        const UPDATE_INITRAMFS_CMD: &str = "mkinitcpio";
+         let status = process::Command::new(UPDATE_INITRAMFS_CMD)
+-            .arg("-u")
++            .arg("-P")
+             .status()
+             .map_err(|why| GraphicsDeviceError::Command { cmd: UPDATE_INITRAMFS_CMD, why })?;
