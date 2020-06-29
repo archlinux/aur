@@ -2,7 +2,7 @@
 
 _pkgname=buildtools
 pkgname=buildozer
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A command line tool to rewrite Bazel BUILD files using standard conventions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(
   'git'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('bc6937fc34d06bf038861c43502ce74c')
+md5sums=('c8221f4df763429d68950af5b4311ca0')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
