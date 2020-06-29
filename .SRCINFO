@@ -1,0 +1,22 @@
+pkgbase = kara
+	pkgdesc = Open Source Voice Assistant
+	pkgver = 1.2.0.beta
+	pkgrel = 1
+	url = https://github.com/emileclarkb/Kara
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-speechrecognition
+	depends = python-pyttsx3
+	depends = python-pyaudio
+	depends = python-wheel
+	depends = python-pathlib
+	depends = python-termcolor
+	depends = python-colorama
+	depends = python-ffmpeg
+	depends = python-geocoder
+	source = kara-1.2.0-beta.tar.gz::https://github.com/emileclarkb/Kara/archive/v1.2.0-beta.tar.gz
+	sha256sums = 8c712059650a8f4ee3ef35b5f8f5ab38e84b5ae9edb8e340931bc964a86c4a9e
+
+pkgname = kara
+
