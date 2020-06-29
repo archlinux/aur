@@ -29,7 +29,7 @@ optdepends=('dbus: dbus integration'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/spacefm-glibc-2.28-compatibility.patch")
 sha256sums=('fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
-            '9f5c1e981279e677612b8b45260bdf0d3a496cb0a43c1e6365269f2a291b1e0e')
+            '12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e')
 
 export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
 
