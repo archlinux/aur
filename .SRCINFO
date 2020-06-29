@@ -1,14 +1,14 @@
 pkgbase = credit-bin
 	pkgdesc = A fast tool for measuring Github repository contributions.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/fosskers/credit
 	arch = x86_64
 	license = MIT
 	provides = credit
 	options = strip
-	source = https://github.com/fosskers/credit/releases/download/v1.0.0/credit-1.0.0-x86_64.tar.gz
-	sha256sums = c90e6cdd3828a83de27f3cf27f42c9779c921dfe3f768a3a94957210a448da6b
+	source = https://github.com/fosskers/credit/releases/download/v1.1.0/credit-1.1.0-x86_64.tar.gz
+	sha256sums = 4aeaaa7fd126169ac38c3ec3807310ccc824c33aeadd30c4e9509858c18708cf
 
 pkgname = credit-bin
 
