@@ -1,8 +1,8 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=pdfquirk
-pkgver=0.91
-pkgrel=3
+pkgver=0.93
+pkgrel=1
 pkgdesc='Create PDFs from images or scanner'
 arch=('x86_64')
 url='https://dragotin.github.io/quirksite/'
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'imagemagick' 'qt5-base')
 makedepends=('extra-cmake-modules' 'glu')
 optdepends=('sane: scanning support')
 source=("https://github.com/dragotin/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f6aed0c2f5eb2056c47948ef321f614b9fba7b44fe968bb878661e7469ca3bfa')
+sha256sums=('d961493b2fea213e630e25a312b80f2326ac6578346e5a11458ad31c80ebfd83')
 
 build() {
   export CFLAGS+=" ${CPPFLAGS}"
