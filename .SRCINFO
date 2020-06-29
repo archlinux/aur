@@ -1,11 +1,11 @@
 pkgbase = perl-latexml-git
 	pkgdesc = LaTeX to XML converter
-	pkgver = 0.8.3.r112.ga3a0f218
+	pkgver = 0.8.4.r112.gfaac379e
 	pkgrel = 1
 	url = http://dlmf.nist.gov/LaTeXML/
 	arch = any
 	license = custom
-	depends = perl
+	depends = perl-pod-parser
 	depends = perl-parse-recdescent
 	depends = perl-text-unidecode
 	depends = imagemagick
