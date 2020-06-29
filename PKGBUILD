@@ -4,14 +4,14 @@
 
 pkgname=mutt-wizard-git
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r774.ge69a7ad
-pkgrel=2
+pkgver=r799.g497839b
+pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/lukesmithxyz/mutt-wizard'
 license=('GPL3')
 
@@ -39,10 +39,11 @@ install="${pkgname%-git}.install"
 source=("git+$url")
 sha256sums=('SKIP')
 
+
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make PREFIX=/usr DESTDIR="$pkgdir" -s install
-  install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
 
 
