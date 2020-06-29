@@ -15,6 +15,7 @@ pkgbase = chordpro-dev-git
 	depends = perl-app-packager
 	depends = perl-file-loadlines
 	depends = perl-text-layout
+	depends = perl-pdf-builder
 	provides = chordpro-dev-git
 	conflicts = chordpro-git
 	options = !emptydirs
