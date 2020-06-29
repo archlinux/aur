@@ -36,7 +36,7 @@ depends=(
 	'gegl>=0.4.24'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
-        'gobject-introspection>=1.32.0'
+	'gobject-introspection>=1.32.0'
 	)
 makedepends=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
