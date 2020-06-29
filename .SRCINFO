@@ -1,0 +1,17 @@
+pkgbase = cadmus-appimage
+	pkgdesc = A GUI frontend for @werman's Pulse Audio real-time noise suppression plugin
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/josh-richardson/cadmus/
+	arch = x86_64
+	license = GPL-3.0
+	depends = zlib
+	noextract = cadmus-appimage-0.0.1.AppImage
+	options = !strip
+	source_x86_64 = cadmus-appimage-0.0.1.AppImage::https://github.com/josh-richardson/cadmus/releases/download/0.0.1/cadmus.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/josh-richardson/cadmus/0.0.1/LICENSE
+	sha256sums_x86_64 = 1008ec442062439e93d3d06178135b84a1260ee9f4c7fe0657d991a6386c187f
+	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = cadmus-appimage
+
