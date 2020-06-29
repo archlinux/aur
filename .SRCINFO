@@ -1,7 +1,7 @@
 pkgbase = caddy2
 	pkgdesc = Powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	license = Apache
@@ -10,20 +10,17 @@ pkgbase = caddy2
 	depends = glibc
 	provides = caddy
 	backup = etc/caddy/Caddyfile
-	backup = etc/caddy2/Caddyfile
-	source = git+https://github.com/caddyserver/caddy#tag=v2.0.0?signed
+	source = git+https://github.com/caddyserver/caddy#tag=v2.1.0?signed
 	source = caddy-a509155e3cff18af793f6af5f930a71c89e05df8-index.html::https://raw.githubusercontent.com/caddyserver/dist/a509155e3cff18af793f6af5f930a71c89e05df8/welcome/index.html
 	source = caddy.service
 	source = caddy.tmpfiles
 	source = Caddyfile
-	source = WarningCaddyfile
 	validpgpkeys = 29D0817A67156E4F25DC24782A349DD577D586A5
 	sha512sums = SKIP
 	sha512sums = 2abccd41f770daebf61285dc017249f20c707877ea3c870f4a2375bbbd2bf481a8652d1fd3c7afd7d6b5c54838e9d8474a33e2c9790ef67dcf9d79c4e52953b4
 	sha512sums = cbda05e4472ac07455dd0a384dec2e7d2b1fbae356d6aa0f08e3de6d4fad06b51bee0352565861d57f3af5f83a39b84e14c9456eabf5f1ea940c4c06986c620a
 	sha512sums = 2c45974647859a6fa9096aeb9ec0a32270adc863b90932133886eadd87d94a9f59713e185b86e8c8f01c8e11742cabac2cc3abadeef9ebd2534ac2acb9b20061
 	sha512sums = 7599f0b0af3b0380d90d805a5b4b9ab8d377727f4a1f6d59d1d30cd4c767aa45b9bbde56dafc88936640fb375fed265ed0489a5039e2c9f5aafd53bd692031e5
-	sha512sums = f130d00b269b919a2a8c533834b62c87462501b33a7a4e585c433535767494a525900732de93c5cd4151bdb68bc6d97a909c6364c312bfa5340b9de6110ec45d
 
 pkgname = caddy2
 
