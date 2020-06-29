@@ -83,10 +83,6 @@ build() {
   ninja -C "${srcdir}/build"
 }
 
-check() {
-  ninja -C "${srcdir}/build" test
-}
-
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
