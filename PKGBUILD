@@ -1,5 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Maintainer: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
+# Contributor: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
 # Contributor: David Birks <david@tellus.space>
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 # Contributor: dpeukert
@@ -7,13 +7,13 @@
 
 pkgname=marktext-git
 _pkgname=${pkgname%-git}
-pkgver=0.16.0.r6.g90fdd28
+pkgver=0.16.2.r0.g1e7ff90
 pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
 license=('MIT')
-depends=('electron'
+depends=('electron7'
          'libxkbfile'
          'libsecret'
          'ripgrep')
@@ -29,19 +29,18 @@ source=("$pkgname::git+https://github.com/$_pkgname/${pkgname/-/.}"
         "$_pkgname.sh"
         "$_pkgname-arg-handling.patch")
 sha256sums=('SKIP'
-            'c5af6eabe525af458df2ccfac6098092746dd0ae23225c131100bb6e37170f86'
+            '15a964fcc3f6bd7bf1c03566d35201032aecde994446533cad1f810e9b880f14'
             'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
-
-_electronDist=$(dirname $(realpath $(which electron)))
-_electronVersion=$(electron --version | sed -e 's/^v//')
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --abbrev=7 --match="v*" HEAD |
+    git describe --long --tags --abbrev=7 --match="v*" HEAD |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
+    local _electronDist=$(dirname $(realpath $(which electron7)))
+    local _electronVersion=$(electron7 --version | sed -e 's/^v//')
     cd "$pkgname"
     jq 'del(.devDependencies["electron"], .scripts["preinstall", "postinstall"])' \
         package.json | sponge package.json
