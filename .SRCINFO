@@ -1,14 +1,14 @@
 pkgbase = python-debugpy
 	pkgdesc = A debugger for Python used with Visual Studio and Visual Studio Code
-	pkgver = 1.0.0b11
+	pkgver = 1.0.0b12
 	pkgrel = 1
 	url = https://github.com/microsoft/debugpy
 	arch = x86_64
 	license = MIT
 	makedepends = python-pip
 	depends = python>=3.5
-	source = python-debugpy-1.0.0b11.tar.gz::https://github.com/microsoft/debugpy/archive/v1.0.0b11.tar.gz
-	sha1sums = 489233411fd1e0668f53520137f92f5afa9a4efd
+	source = python-debugpy-1.0.0b12.tar.gz::https://github.com/microsoft/debugpy/archive/v1.0.0b12.tar.gz
+	sha1sums = 48a359e7e6ee0ec2579f76c4fe816632edb9c922
 
 pkgname = python-debugpy
 
