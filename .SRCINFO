@@ -1,6 +1,6 @@
 pkgbase = freifunk-meet-desktop-bin
 	pkgdesc = Freifunk Meet desktop application powered by Electron
-	pkgver = 2.0.17
+	pkgver = 2.0.23
 	pkgrel = 1
 	url = https://github.com/freifunkMUC/jitsi-meet-electron
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = freifunk-meet-desktop-bin
 	provides = freifunk-meet-desktop
 	conflicts = freifunk-meet-desktop
 	options = !strip
-	source = ffmuc-meet-x86_64-2.0.17.AppImage::https://github.com/freifunkMUC/jitsi-meet-electron/releases/download/v2.0.17/ffmuc-meet-x86_64.AppImage
+	source = ffmuc-meet-x86_64-2.0.23.AppImage::https://github.com/freifunkMUC/jitsi-meet-electron/releases/download/v2.0.23/ffmuc-meet-x86_64.AppImage
 	source = freifunk-meet-desktop.desktop
-	sha256sums = c5af978eef785485bf76439a3ef68a265b01aa844e93e86ed64605328665a6b8
+	sha256sums = b915af1f5e41960d25edfc00fb99e703b71a8b259dd8fee761ac1721161f142a
 	sha256sums = d180773e67b25db81c6279ca34d0c2dad0b8d0172554723105ad54f4c939d573
 
 pkgname = freifunk-meet-desktop-bin
