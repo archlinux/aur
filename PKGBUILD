@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=downlords-faf-client
-pkgver=1.1.7
+pkgver=1.1.8
 _pkgver_major=$(echo $pkgver | cut -d . -f 1)
 _pkgver_minor=$(echo $pkgver | cut -d . -f 2)
 _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
@@ -26,7 +26,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/downlords-faf-client/releases/download/v$_pkgver/$_filename" "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png" 'DownlordsFafClient.desktop' 'downlords-faf-client')
-sha256sums=('0fb9ecc93ee4f576684a6b81235012eee395b66bcf66e889ee701aa642726db4'
+sha256sums=('b61848c6ee49a021220321be647744acc8207fc1d557fc13745e9c6aea97f15b'
             '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d'
             '3fd2b21da9de9f9c02dd89ee07f49c559dbb2de15f4e86a9b31f6353f608ffa6'
             '8e3ce2f65aefc16fccf9f9ec3e1a96c954710faa38b23b81dd298f79e6760bd7')
