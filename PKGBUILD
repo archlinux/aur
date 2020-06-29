@@ -14,7 +14,7 @@ arch=(x86_64)
 url=https://github.com/crow-translate/crow-translate
 license=(GPL3)
 depends=(qt5-base qt5-svg qt5-multimedia qt5-x11extras gst-plugins-good openssl)
-makedepends=(qt5-tools)
+makedepends=(qt5-tools extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
         QOnlineTranslator-$_qonlinetranslator.tar.gz::https://github.com/Shatur95/QOnlineTranslator/archive/$_qonlinetranslator.tar.gz
         QHotkey-$_qhotkey.tar.gz::https://github.com/Skycoder42/QHotkey/archive/$_qhotkey.tar.gz

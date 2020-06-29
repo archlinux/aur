@@ -6,6 +6,7 @@ pkgbase = crow-translate
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
+	makedepends = extra-cmake-modules
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-multimedia
