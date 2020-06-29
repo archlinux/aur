@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-git
-	pkgdesc = More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE
-	pkgver = 68.0+944d245aafaf
+	pkgdesc = Private and optimized Firefox fork based on the LTS Release of Firefox.
+	pkgver = 68.0+c405ea0e0150
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox-current.install
