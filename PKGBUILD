@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://bitcoincore.org"
@@ -24,8 +24,8 @@ source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
 sha256sums=('ec5a2358ee868d845115dc4fc3ed631ff063c57d5e0a713562d083c5c45efb28'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
-            'a25e1a1e42d21f97282a53b8e571f0cef2081ce365dd70743131288ccc579b5c'
-            'a04799dece0dc3decaa8c3bdab39fb8bdb074187f9b506a1e25603b572e58ae7'
+            '7429a9db1da6bc2eed1ae87f61ab9faecaa3d5d6113422f99a146cc1d8e4b5fd'
+            'b5ef856ccf61fd784afa136387d4cf867988b5f525375a0706072e6262166d83'
             'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a'
             '0b4f7ec41cf88aa1278d089a03f116c33bac62dec038903f4ced58da67afb980'
             'f1c3727220df06993a61cc9f4ef25c83cdaf3624179b5ead8383bc9ef7109e70'
