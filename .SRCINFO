@@ -1,18 +1,19 @@
 pkgbase = hamster-time-tracker_legacy
 	pkgdesc = Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track (Legacy 1.04 version)
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projecthamster/hamster
 	arch = any
 	license = GPL
 	makedepends = intltool
-	makedepends = gnome-doc-utils
 	depends = python2-dbus
 	depends = python2-gconf
 	depends = python2-notify
 	depends = python2-wnck
 	depends = python2-xdg
 	depends = desktop-file-utils
+	provides = hamster-time-tracker
+	conflicts = hamster-time-tracker
 	source = https://github.com/projecthamster/hamster/archive/hamster-time-tracker-1.04.tar.gz
 	md5sums = 148ffee0c26c5c4ddfa4ebc9a21fa860
 
