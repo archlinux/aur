@@ -1,15 +1,15 @@
 pkgbase = vc4clstdlib-git
 	pkgdesc = VC4CL implementation of the OpenCL standard-library and is required to build the VC4C compiler
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 0
+	pkgrel = 3
 	url = https://github.com/doe300/VC4CLStdLib
 	arch = any
 	license = MIT
-	makedepends = wget
+	makedepends = git
 	makedepends = make
 	provides = vc4clstdlib
 	provides = vc4-libraries
-	source = https://github.com/doe300/VC4CLStdLib/archive/master.tar.gz
+	source = VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib
 	md5sums = SKIP
 
 pkgname = vc4clstdlib-git
