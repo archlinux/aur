@@ -7,6 +7,7 @@ pkgbase = uconv-c-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	provides = uconv-c
 	conflicts = uconv-c
 	source = git+https://github.com/kevinboone/uconv.git

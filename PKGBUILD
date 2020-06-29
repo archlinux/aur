@@ -12,6 +12,7 @@ pkgdesc='General unit converter for the command line'
 arch=('x86_64' 'i686')
 url='https://github.com/kevinboone/uconv'
 license=('GPL3')
+makedepends=('git')
 provides=("${__pkgname}")
 conflicts=("${__pkgname}")
 install='info.install'
