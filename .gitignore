@@ -1,2 +1,4 @@
 teamcity.json
 *.tar.gz
+*.tar
+*.log
