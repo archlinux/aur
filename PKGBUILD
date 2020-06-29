@@ -1,8 +1,9 @@
-# Maintainer: Mastacheata <benedikt "at" xenzilla "dot" de>
+# Maintainer: Xuanow <xuanwo@archlinuxcn.org>
+# Contributor: Mastacheata <benedikt "at" xenzilla "dot" de>
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2018.1.1
+pkgver=2020.1.1
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -10,13 +11,13 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=('https://download.jetbrains.com/teamcity/TeamCity-2018.1.1.tar.gz'
+source=('https://download.jetbrains.com/teamcity/TeamCity-2020.1.1.tar.gz'
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('063d0fc2ca1ca2e4c95007732b4ba4a6d3419296042d271f796842b233fea53a'
+sha256sums=('bd6f6d61c6414a1f2de726cac69d7080e90a23d5b828d0e68a3ce5aa4e0851cc'
             'b66ca4d1963138be8f88c4bf7cf358b1bf096711a618f2f501ce9805fafdbb20'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
