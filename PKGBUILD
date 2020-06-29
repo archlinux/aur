@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Hannes Graeuler < hgraeule [at] uos [dot] de >
 
 pkgname=sfcgal
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('sfcgal')
 depends=('cgal>=4.1' 'boost' 'gmp' 'mpfr' 'openscenegraph')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Oslandia/SFCGAL/archive/v${pkgver}.tar.gz")
-sha256sums=('30ea1af26cb2f572c628aae08dd1953d80a69d15e1cac225390904d91fce031b')
+sha256sums=('5154bfc67a5e99d95cb653d70d2b9d9293d3deb3c8f18b938a33d68fec488a6d')
 
 build() {
   cd ${srcdir}/SFCGAL-${pkgver}
