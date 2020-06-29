@@ -1,7 +1,22 @@
+Proton-5.11-GE-2-MF
+
+GloriousEggroll released this Jun 29, 2020
+
+This is a minor hotfix/stability release:
+
+-Fixed issue with steam overlay causing mouse lag after 30+ minutes (issue present since 5.9, was missing from rawinput patches)
+-Fixed issue with mouse hitting 'invisible walls' (issue present since 5.9, was missing from rawinput patches)
+-Fixed issue with prefixes not generating properly causing some games not to be able to save due to the recent user name changes
+-Ashes of the Singularity now works, vulkan renderer does not. Need to use DX11/12
+-Jurassic World: Evolution now works
+
+NOTE: If you want to allow your save games to work when using proton within lutris, you need to set WINEUSERNAME environment variable
+NOTE: If you want proton's media foundation to work in lutris, you need to set GST_PLUGIN_SYSTEM_PATH_1_0 and WINE_GST_REGISTRY_DIR environment variables.
+
 
 Proton-5.11-GE-1-MF
 
-@GloriousEggroll GloriousEggroll released this April 26, 2020
+GloriousEggroll released this Jun 26, 2020
 
 Game fixes:
 -Origin 5.11 hang fixed
@@ -47,7 +62,7 @@ Marking this as release as it has a lot of regression fixes and should be quite 
 
 Proton-5.9-GE-2-MF
 
-@GloriousEggroll GloriousEggroll released this April 06, 2020
+GloriousEggroll released this Jun 06, 2020
 
 --HOTFIX--
 6/10/2020 7:17 PM MST:
@@ -91,7 +106,7 @@ Currently I would say this should be ok to use for most games except Soul Calibu
 
 Proton-5.9-GE-1-NR
 
-@GloriousEggroll GloriousEggroll released this on May 28, 2020
+GloriousEggroll released this on May 28, 2020
 
 -Fullscreen hack was found to be the cause of Mortal Kombat 11 not working. This also requires a few other patches to be disabled such as some additional vulkan patches and raw input, as well as the Sekiro patch. Fullscreen hack used to work with this game, so this is just a temporary disable until I can figure out what in the patchset is causing MK11 to not work.
 -Spyro audio is fully working now
@@ -100,21 +115,10 @@ Proton-5.9-GE-1-NR
 -Seven actually launches now. Audio for intro movie plays but shows black screen. New game results in crash, again due to SAR audio.
 -PC Building Simulator no longer freezes when running 3dmark on low settings. It just skips the video.
 
-Proton-5.8-GE-2-MF
-
-This is an update to 5.8-GE-1 in regards to media foundation work:
-
-Completed:
--RE3: Bathroom scene fixed
--Dangonronpa v3 fixed
--Power Rangers Battle for the grid chipmunk voices fixed
--Monster Hunter World tutorial movies fixed
--Super Lucky's Tale -- Fixed an issue with bink videos not playing in GE builds which work in proton
-
 
 Proton-5.8-GE-2-MF
 
-@GloriousEggroll GloriousEggroll released this on May 13, 2020
+GloriousEggroll released this on May 13, 2020
 
 This is an update to 5.8-GE-1 in regards to media foundation work:
 
