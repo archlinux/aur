@@ -1,5 +1,5 @@
 pkgname=asciidoc-py3
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc='Text document format for short documents, articles, books and UNIX man pages. (python3 version)'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('lilypond: music-filter'
 conflicts=('asciidoc')
 provides=('asciidoc')
 source=("$url/archive/$pkgver.tar.gz")
-b2sums=('7f93161887c17aa2b9d99863a97b8eabc76c58910cd81fb2b3e408a0f7b242dd792c6d26510a61a4a275f482c38a2b2fc277a52bdc22580b7b3694d524ae1f13')
+b2sums=('b318f44c1d392c1c77212da0a5feafa0b1c20d70ac94535181d6c9d22f4025c74bffee16c4bd1e4866348fb4e49da951816b7efd8e359b38430c1c8f7d75a019')
 
 build() {
   cd ${pkgname}-${pkgver}
