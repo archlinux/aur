@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+[ -d "$XDG_DATA_HOME/sm64ex" ] || mkdir "$XDG_DATA_HOME/sm64ex"
+cd "$XDG_DATA_HOME/sm64ex"
+/usr/bin/sm64ex.bin "$@"

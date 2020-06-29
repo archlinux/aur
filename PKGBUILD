@@ -5,15 +5,15 @@ pkgver=r299.55e2a3ba
 pkgrel=1
 pkgdesc='Super Mario 64-PC - OpenGL adaptation of n64decomp/sm64'
 arch=('any')
-url='https://github.com/sm64pc/sm64pc'
+url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
 depends=('python' 'audiofile' 'sdl2' 'glew')
-provides=(sm64pc)
+provides=(sm64ex)
 
-_gitname=sm64pc
+_gitname=sm64ex
 _region=us
 
-source=('git+https://github.com/sm64pc/sm64pc.git')
+source=('git+https://github.com/sm64pc/sm64ex.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,8 +38,8 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/../sm64pc-xdg" "${pkgdir}/usr/bin/sm64pc"
-	install -Dm755 "$srcdir/$_gitname/build/${_region}_pc/sm64.${_region}".* "${pkgdir}/usr/bin/sm64pc.bin"
-	install -Dm755 "$srcdir/../sm64pc.desktop" "${pkgdir}/usr/share/applications/sm64pc.desktop"
+	install -Dm755 "$srcdir/../sm64ex-xdg" "${pkgdir}/usr/bin/sm64ex"
+	install -Dm755 "$srcdir/$_gitname/build/${_region}_pc/sm64.${_region}".* "${pkgdir}/usr/bin/sm64ex.bin"
+	install -Dm755 "$srcdir/../sm64ex.desktop" "${pkgdir}/usr/share/applications/sm64ex.desktop"
 	install -Dm755 "$srcdir/../SuperMario64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/SuperMario64.png"
 }
