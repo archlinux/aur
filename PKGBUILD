@@ -1,10 +1,10 @@
 # Maintainer: dudemanguy <random342@airmail.cc>
 # Contributer: Wolfgang Frisch (wfr) <wfrisch@riseup.net>
-# Contributer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.20
+pkgver=3.24.21
 pkgrel=1.1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -22,7 +22,7 @@ makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 
 license=(LGPL)
 install=gtk3.install
-_commit=db39ce2b1699acaf5d0ba160cf7cc68ccf6e16d6  # tags/3.24.20^0
+_commit=ab4b85f88cf822d6dbb9cda9c4d71fd10a5d3d99  # tags/3.24.21^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -51,7 +51,7 @@ build() {
     -D colord=yes \
     -D gtk_doc=true \
     -D man=true
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
