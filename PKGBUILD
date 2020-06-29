@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.35.0.r12.g01dafa331
+pkgver=0.35.1.r29.g56ab08621
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,7 @@ optdepends=('shards: To make the crystal deps command work'
 conflicts=('crystal')
 provides=('crystal')
 source=("git+https://github.com/crystal-lang/crystal.git")
-source_aarch64=("https://dev.alpinelinux.org/archive/crystal/crystal-0.35.0-aarch64-alpine-linux-musl.tar.gz"
-	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9401.patch"
-	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9430.patch"
-	"https://patch-diff.githubusercontent.com/raw/crystal-lang/crystal/pull/9422.patch")
+source_aarch64=("https://dev.alpinelinux.org/archive/crystal/crystal-0.35.0-aarch64-alpine-linux-musl.tar.gz")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
@@ -90,7 +87,4 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_aarch64=('de903f2b53eec558cb77520cd9d52bde357bffae37fc6120308b4ddd8a7d65f9'
-                    'e478e82388437d86e3d6921e0f1e8786232f472484e77aee393e7b634059b6d0'
-                    '5198112f76c58954112bc434e1165d1134adef9cc42abcd2d8f45d99e2309303'
-                    '5044d1a22687c712ee8bfb152fd2336b5333d6709bdb98c9450fbcf19cc5ddad')
+sha256sums_aarch64=('de903f2b53eec558cb77520cd9d52bde357bffae37fc6120308b4ddd8a7d65f9')
