@@ -32,4 +32,4 @@ UMask=0177
 RuntimeDirectory=yubikey-agent
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
