@@ -6,5 +6,34 @@ ExecStart=/usr/bin/prometheus_fritzbox_exporter
 User=fbexporter
 DynamicUser=yes
 
+# filesystem sandbox
+ProtectSystem=strict
+TemporaryFileSystem=/etc
+BindReadOnlyPaths=/etc/resolv.conf
+
+# misc. sandboxing/mitigations
+CapabilityBoundingSet=
+LockPersonality=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@keyring @privileged @raw-io @resources @setuid
+SystemCallErrorNumber=EPERM
+SystemCallArchitectures=native
+
 [Install]
 WantedBy=default.target

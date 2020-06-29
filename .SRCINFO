@@ -11,7 +11,7 @@ pkgbase = prometheus-fritzbox-exporter-git
 	source = git+https://github.com/ndecker/fritzbox_exporter.git
 	source = prometheus-fritzbox-exporter.service
 	sha256sums = SKIP
-	sha256sums = 39c76549474c9e1aa12d4800431b03024cfe1d9e258cb04db9e4377a7db9e00b
+	sha256sums = 4630542c0ff89bf93ea430bde255d4557a09dbf7162dc877d7eb37b85d50715e
 
 pkgname = prometheus-fritzbox-exporter-git
 
