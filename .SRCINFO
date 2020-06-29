@@ -1,0 +1,21 @@
+pkgbase = kimageannotator
+	pkgdesc = Tool for annotating images
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/DamirPorobic/kImageAnnotator
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kcolorpicker>=0.1.4
+	depends = qt5-base
+	depends = qt5-svg
+	depends = kcolorpicker>=0.1.4
+	conflicts = kimageannotator-git
+	source = kimageannotator-0.3.1.tar.gz::https://github.com/ksnip/kImageAnnotator/archive/v0.3.1.tar.gz
+	sha256sums = 483bc305631c018c4d7fe835fe0d1c5b39b350b66b55698f5868d4879131a776
+
+pkgname = kimageannotator
+
