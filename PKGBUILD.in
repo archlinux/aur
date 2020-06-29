@@ -1,5 +1,5 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
@@ -66,8 +66,11 @@ sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
+# shellcheck disable=SC2183,SC2046
+  printf "%s.%s.%s.r%s.%s" \
+    $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' ${_pkgname}/configure.ac) \
+    "$(git -C $_pkgname rev-list "$(git -C $_pkgname describe --abbrev=0)"..HEAD --count)" \
+    "$(git -C $_pkgname log --pretty=format:'%h' -n 1)"
 }
 
 prepare() {
