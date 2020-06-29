@@ -1,11 +1,11 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=julia-beta-bin
-_pkgver=1.5.0-beta1
+_pkgver=1.5.0-rc1
 pkgver=$(echo $_pkgver | sed 's/-/./g')
 pkgrel=1
 arch=('x86_64')
-pkgdesc='High-level, high-performance, dynamic programming language - official beta binaries'
+pkgdesc='High-level, high-performance, dynamic programming language - official pre-release binaries'
 provides=(julia)
 conflicts=(julia julia-bin julia-git julia-nightly-bin)
 depends=('gmp' 'suitesparse' 'hicolor-icon-theme' 'libssh2')
@@ -17,7 +17,7 @@ source=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:3}/julia-${
 128x128.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/128.png
 256x256.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/256.png
 512x512.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/512.png)
-sha256sums=('7a81c386de7b0e8f291bfbe77cbb8e1679a03d974db2093806c78a2067b97ed9'
+sha256sums=('a4ea36aa86269116992393067e5afc182707cb4f26eac9fddda08e04a9c7b94d'
             '85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed'
             '0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612'
             'aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f'
