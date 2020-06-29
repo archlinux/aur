@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <fatmike303 at gmail dot com>
 pkgname=droid64
 _pkgname=droiD64
-pkgver=0.15b
+pkgver=0.17b
 pkgrel=1
 pkgdesc='A graphical filemanager for D64 files (Commodore 64 and others)'
 arch=(any)
@@ -15,7 +15,7 @@ source=(
 	http://${pkgname}.sourceforge.net/data/${_pkgname}_icons.tar.gz
 )
 sha256sums=(
-  2857e2e1256e16d96efeeb062138ea3047e3ed36435d8a2f9fac3eade4b2962e
+  e6489b73e72c78540be625eca62bbe6afeef262d9f931920308b91696cc09761
   2f1315b3ea0b3f3ee3b605e16e3f0dc5c29a043a2e03477cefad085927f8fe90
 )
 
