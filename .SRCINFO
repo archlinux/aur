@@ -1,12 +1,10 @@
 pkgbase = otf-textfonts
 	pkgdesc = Text faces based on early Greek editions
 	pkgver = 13.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dn-works.com/ufas/
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	conflicts = ttf-alexander
 	conflicts = ttf-alfios
 	conflicts = ttf-anaktoria

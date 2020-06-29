@@ -5,12 +5,12 @@
 
 pkgname=otf-textfonts
 pkgver=13.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
 url="https://dn-works.com/ufas/"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 conflicts=('ttf-alexander' 'ttf-alfios' 'ttf-anaktoria' 'ttf-aroania' 'ttf-atavyros' 'ttf-avdira' 'ttf-asea' 'ttf-textfonts')
 replaces=('ttf-textfonts')
 source=("${pkgname}-${pkgver}.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Textfonts.zip"
