@@ -1,12 +1,11 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=oldschool-pc-fonts
 pkgver=1.01
 pkgrel=1
 pkgdesc="world's biggest collection of classic text mode fonts, system fonts and BIOS fonts from DOS-era IBM PCs and compatibles"
 url="https://int10h.org/oldschool-pc-fonts/"
 arch=('any')
-license=('CC BY-SA 4.0')
-makedepends=('fontconfig' 'xorg-font-utils')
+license=('CCPL')
+makedepends=('fontconfig')
 source=("https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v${pkgver}.zip")
 md5sums=('7f3dc5d7fbfebad7f893da57d4986452')
  

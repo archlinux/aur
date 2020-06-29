@@ -4,9 +4,8 @@ pkgbase = oldschool-pc-fonts
 	pkgrel = 1
 	url = https://int10h.org/oldschool-pc-fonts/
 	arch = any
-	license = CC BY-SA 4.0
+	license = CCPL
 	makedepends = fontconfig
-	makedepends = xorg-font-utils
 	source = https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.01.zip
 	md5sums = 7f3dc5d7fbfebad7f893da57d4986452
 
