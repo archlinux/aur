@@ -2,8 +2,8 @@
 
 pkgname=dnscontrol-git
 pkgver=3.2.0.r812.0a36cb7f
-pkgrel=1
-pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
+pkgrel=2
+pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (master branch)"
 arch=('x86_64')
 url="https://github.com/StackExchange/dnscontrol.git"
 license=('MIT')

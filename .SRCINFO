@@ -1,7 +1,7 @@
 pkgbase = dnscontrol-git
-	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL
+	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL (master branch)
 	pkgver = 3.2.0.r812.0a36cb7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StackExchange/dnscontrol.git
 	arch = x86_64
 	license = MIT
