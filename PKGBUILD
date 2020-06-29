@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/shazow/ssh-chat'
 license=('MIT')
 provides=("${_pkgname}")
-source=("${url}/releases/download/v${pkgver}/${_pkgname}-linux_amd64.tgz")
+source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux_amd64.tgz")
 sha256sums=('7231019c043f16b4bb93c35ad9f3d84ac786b6b6749b043b2dd697f85989ab5f')
 
 package() {

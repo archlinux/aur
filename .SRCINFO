@@ -6,7 +6,7 @@ pkgbase = ssh-chat-bin
 	arch = x86_64
 	license = MIT
 	provides = ssh-chat
-	source = https://github.com/shazow/ssh-chat/releases/download/v1.9/ssh-chat-linux_amd64.tgz
+	source = ssh-chat-1.9::https://github.com/shazow/ssh-chat/releases/download/v1.9/ssh-chat-linux_amd64.tgz
 	sha256sums = 7231019c043f16b4bb93c35ad9f3d84ac786b6b6749b043b2dd697f85989ab5f
 
 pkgname = ssh-chat-bin
