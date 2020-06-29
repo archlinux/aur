@@ -1,15 +1,3 @@
-post_install() {
-	echo '--------------------------------------------------------------------------'
-	echo ' See the manpage for usage and setup: man modprobed-db'
-	echo '--------------------------------------------------------------------------'
-}
-
-post_remove() {
-	echo '-----------------------------------------------------------------------'
-	echo ' Remember to remove the entry in your crontab if you made one!'
-	echo '-----------------------------------------------------------------------'
-}
-
 # $1: The new package version
 # $2: The old package version
 
