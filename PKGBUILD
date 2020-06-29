@@ -3,7 +3,7 @@
 # 
 
 pkgname=idris2-git
-pkgver=0.2.0.r100.ge4c6aa2
+pkgver=0.2.0.r404.g31b486c
 pkgrel=1
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
@@ -50,7 +50,7 @@ package() {
 
     PREFIX="$pkgdir/usr/lib" make install-idris2
     PREFIX="$pkgdir/usr/lib" make install-support
-    for lib in prelude base network contrib ; do
+    for lib in prelude base contrib network ; do
         cd libs/$lib
         IDRIS2_PREFIX="$pkgdir/usr/lib" ../../build/exec/idris2 --install $lib.ipkg
         cd ../..
