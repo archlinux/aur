@@ -1,15 +1,15 @@
 # Maintainer: minus <minus@mnus.de>
 
 pkgname=sshign
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Small program to sign & verify files with your SSH key"
 arch=('any')
 url="https://git.sr.ht/~minus/sshign"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'scdoc')
 source=("https://git.sr.ht/~minus/sshign/archive/$pkgver.tar.gz")
-sha256sums=('cef741b11e43d275a7366f5cfb56c570044f764ec3a2099262e2167f94468f0f')
+sha256sums=('baa7654788e850523a55ee5568cc7c1cbc87f3d5468a34df54fe8fc8cfad3d03')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
