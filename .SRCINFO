@@ -1,7 +1,7 @@
 pkgbase = grub2-theme-preview
 	pkgdesc = Preview a full GRUB 2.x theme (or just a background image) using KVM/QEMU
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hartwork/grub2-theme-preview
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = grub2-theme-preview
 	depends = qemu
 	depends = mtools
 	depends = python
+	depends = python-distro
 	depends = libisoburn
 	depends = edk2-ovmf
 	source = git+https://github.com/hartwork/grub2-theme-preview.git#tag=1.4.4
