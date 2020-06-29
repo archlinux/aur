@@ -1,7 +1,7 @@
 pkgbase = scrnsvr
 	pkgdesc = Yet Another X Screensaver/locker
 	pkgver = 0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/koraynilay/scrnsvr
 	arch = x86_64
 	license = WTFPL
