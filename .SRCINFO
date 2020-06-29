@@ -1,7 +1,7 @@
 pkgbase = bitfighterd
 	pkgdesc = A fast-paced team-based outer-space multi-player combat game - server and base program
-	pkgver = 019g
-	pkgrel = 3
+	pkgver = 021
+	pkgrel = 1
 	url = http://bitfighter.org/
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = bitfighterd
 	depends = libvorbis
 	depends = libmodplug
 	depends = speex
-	source = http://bitfighter.org/files/bitfighter-019g.tar.gz
+	source = http://bitfighter.org/files/bitfighter-021.tar.gz
 	source = http://bitfighter.org/files/classic_level_pack.zip
-	md5sums = 6081f45765205cb80212b5c076af6f79
+	md5sums = 2d2c33abca2e322c1d6c8e1998add3c3
 	md5sums = cb32039b47026e176d3f1f3639bd1a9f
 
 pkgname = bitfighterd

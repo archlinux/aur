@@ -7,8 +7,8 @@
 # Contributor: archtux <antonio.arias99999 at gmail.com>
 
 pkgname=bitfighterd
-pkgver=019g
-pkgrel=3
+pkgver=021
+pkgrel=1
 pkgdesc="A fast-paced team-based outer-space multi-player combat game - server
 and base program"
 arch=('i686' 'x86_64')
@@ -60,5 +60,5 @@ package() {
 }
 
 
-md5sums=('6081f45765205cb80212b5c076af6f79'
+md5sums=('2d2c33abca2e322c1d6c8e1998add3c3'
          'cb32039b47026e176d3f1f3639bd1a9f')
