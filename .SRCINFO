@@ -1,0 +1,17 @@
+pkgbase = theframe
+	pkgdesc = Animation Tool
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/theframe
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = the-libs
+	depends = qt5-svg
+	depends = ffmpeg
+	source = theframe-1.0::https://github.com/vicr123/theFrame/archive/v1.0.tar.gz
+	sha256sums = 4c27200f3736dacee9cfe27b6cfabfbaddc27a2b696954d596b9b48cd33bbfdd
+
+pkgname = theframe
+
