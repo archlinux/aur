@@ -3,7 +3,7 @@
 pkgname=sm64pc-git
 pkgver=r504.f5005418
 pkgrel=1
-pkgdesc='Super Mario 64-PC - OpenGL adaptation of n64decomp/sm64'
+pkgdesc='Super Mario 64 PC (sm64ex aka. sm64pc) - OpenGL adaptation of n64decomp/sm64'
 arch=('any')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
