@@ -1,6 +1,6 @@
 pkgbase = chordpro-git
 	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets.
-	pkgver = R0_974.r7.ge5d0da5
+	pkgver = R0_974.r497.g2e186a0
 	pkgrel = 1
 	url = https://github.com/ChordPro/chordpro
 	arch = any
