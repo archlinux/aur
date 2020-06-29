@@ -1,0 +1,13 @@
+pkgbase = vim-nftables-git
+	pkgdesc = vim nftables syntax
+	pkgver = r16.26f8a50
+	pkgrel = 1
+	url = https://github.com/nfnty/vim-nftables
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/nfnty/vim-nftables.git
+	sha512sums = SKIP
+
+pkgname = vim-nftables-git
+
