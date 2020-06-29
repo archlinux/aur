@@ -1,12 +1,12 @@
 # Maintainer: Nick Skelsey <nskelsey@gmail.com>
 pkgname=monopticon
-pkgver=0.3.4
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Ethernet traffic visualizer for zeek"
 arch=('x86_64')
 url="https://github.com/nskelsey/monopticon"
 license=('GPL')
-depends=("zeek" "magnum-git" "corrade-git" "magnum-plugins-git" "imgui-src" "monopticon-magnum-integration")
+depends=("zeek")
 source=("git+https://github.com/nskelsey/monopticon")
 md5sums=('SKIP')
 
