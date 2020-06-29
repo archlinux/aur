@@ -22,10 +22,10 @@ prepare() {
 
   # Copy source files for each package
   # Patch: move subfolders "mpdm" and "mpsl" one folder up
-  for DIR in mp-5-gtk mp-5-nc mp-5-qt5; do
-    rm -rf "$DIR"
-    cp -a mp-$pkgver "$DIR"
-    rm -rf "$DIR/"{mpdm,mpsl}
+  for dir in mp-5-gtk mp-5-nc mp-5-qt5; do
+    rm -rf "$dir"
+    cp -a mp-$pkgver "$dir"
+    rm -rf "$dir/"{mpdm,mpsl}
   done
   cp -a mp-$pkgver/{mpdm,mpsl} .
 }
