@@ -1,13 +1,11 @@
 pkgbase = redhat-fonts
 	pkgdesc = Red Hat fonts
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RedHatOfficial/RedHatFont
 	arch = any
 	license = OFL
 	license = CC-BY-SA
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = redhat-fonts-2.3.2.tar.gz::https://github.com/RedHatOfficial/RedHatFont/archive/2.3.2.tar.gz
 	source = 64-redhat-display-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/64-redhat-display-fontconfig.conf
 	source = 64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/64-redhat-text-fontconfig.conf
