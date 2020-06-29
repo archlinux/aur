@@ -2,13 +2,14 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.2.1.r8.geedf73e
+epoch=1
+pkgver=0.3.6.r17.a84a1b8
 pkgrel=1
 pkgdesc="Losslessly convert images to PDF without unnecessarily increasing file size by re-encoding JPEG files."
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
-depends=('python-pillow')
+depends=('python-pillow' 'python-pikepdf')
 makedepends=('git' 'python-setuptools')
 conflicts=("${pkgname%-*}" "python-${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
@@ -18,7 +19,8 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+
 }
 
 build() {
