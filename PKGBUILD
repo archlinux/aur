@@ -1,6 +1,6 @@
 # Maintainer: Michael Clayfield <me@michaelclayfield.com>
 pkgname=python-alerta-client
-pkgver=7.5.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Unified CLI, terminal GUI and python SDK for the Alerta monitoring system"
 arch=('any')
@@ -9,7 +9,7 @@ license=('APACHE')
 makedepends=('python-setuptools')
 depends=('python' 'python-click' 'python-pytz' 'python-requests' 'python-tabulate' 'python-requests-hawk')
 source=("https://github.com/alerta/python-alerta-client/archive/v$pkgver.tar.gz")
-sha256sums=('8ca1847aaf1b06356e9ee2d4bd80db9b95e1906cb4f5ed23f8152e59690b1ba8')
+sha256sums=('bb8382cb2e6b9b585ed98f5bca14381a60a3fec6993d78dc06d2157afd1c8a7c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
