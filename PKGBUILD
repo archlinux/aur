@@ -2,13 +2,13 @@
 
 _pkgname=filezilla
 pkgname=$_pkgname-svn
-pkgver=7603
+pkgver=9847
 pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
 license=('GPL')
-depends=('libfilezilla' 'pugixml' 'wxgtk' 'xdg-utils')
+depends=('libfilezilla' 'pugixml' 'wxgtk3' 'xdg-utils')
 makedepends=('subversion')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -29,7 +29,7 @@ pkgver() {
 build() {
     cd $_pkgname
     autoreconf -i
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk3
     make
 }
 
