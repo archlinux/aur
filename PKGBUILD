@@ -1,5 +1,5 @@
 pkgname=octane-blender-prime
-pkgver=2020.1_21.8
+pkgver=2020.1.3_21.9
 pkgrel=1
 pkgdesc="The free tier OctaneRender intergrated Blender"
 arch=('x86_64')
@@ -8,14 +8,14 @@ depends=('octane-server-prime')
 optdepends=()
 makedepends=()
 url="https://home.otoy.com/render/octane-render/demo/"
-source=(https://render.otoy.com/downloads/c7/d6/77/85/octane_blender_2020.1-21.8-stable.run)
-noextract=('octane_blender_2020.1-21.8-stable.run')
+source=(https://render.otoy.com/downloads/f3/90/5a/70/octane_blender_2020.1.3-21.9-stable.run)
+noextract=('octane_blender_2020.1.3-21.9-stable.run')
 md5sums=('920af44e399161c0acf4360051e57c8a')
 
 prepare()
 {
-  chmod +x octane_blender_2020.1-21.8-stable.run
-  ./octane_blender_2020.1-21.8-stable.run -e
+  chmod +x octane_blender_2020.1.3-21.9-stable.run
+  ./octane_blender_2020.1.3-21.9-stable.run -e
 }
 
 package()
