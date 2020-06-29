@@ -2,8 +2,8 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.4.3+4+g0466346
-pkgrel=1
+pkgver=v5.4.3+5+gb86412f
+pkgrel=2
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 arch=('any')
 url="https://keystore-explorer.org/"
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('java-environment' 'bash' 'desktop-file-utils')
 makedepends=( 'unzip' 'gradle' 'java-environment')
 conflicts=('keystore-explorer' 'keystore-explorer-bin')
-source=('git+https://github.com/kaikramer/keystore-explorer.git')
+source=('git+file:///tmp/keystore-explorer')
 sha256sums=('SKIP')
 _pkgname=keystore-explorer
 _short_pkgname=kse
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}/${_short_pkgname}"
-  sh gradlew zip 
+  gradle zip # -g .gradle
   cd "${srcdir}"
   unzip -o ${_pkgname}/${_short_pkgname}/build/distributions/${_short_pkgname}-${_short_pkgver}.zip
 }
