@@ -1,7 +1,7 @@
 # Maintainer: Hekuran https://github.com/narukeh
 
 pkgname=sm64pc-git
-pkgver=r299.55e2a3ba
+pkgver=r504.f5005418
 pkgrel=1
 pkgdesc='Super Mario 64-PC - OpenGL adaptation of n64decomp/sm64'
 arch=('any')
