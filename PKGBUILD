@@ -5,12 +5,11 @@
 
 pkgname=ttf-freebanglafont
 pkgver=20130212
-pkgrel=4
+pkgrel=5
 pkgdesc='Bengali fonts'
 url='https://www.ekushey.org/'
 license=('GPL')
 arch=('any')
-depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
 source=("https://sources.archlinux.org/other/packages/${pkgname}/ttf-freebanglafont-20130212-2.src.tar.gz")
 b2sums=('a20699d72c7a6886b1cdad65f6dcffac279c74085005b2e53248fbc44058dc9aef4d04ea8a581202811a2dfbf9fadc31e49def97962b6e37a096dde5049f13d0')
 
