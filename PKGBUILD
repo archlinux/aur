@@ -39,7 +39,7 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/$_gitname/build/${_region}_pc/sm64.${_region}".* "${pkgdir}/usr/bin/sm64ex"
-	ln -sf "${pkgdir}/usr/bin/sm64ex" "${pkgdir}/usr/bin/sm64pc"
+	ln -sf "/usr/bin/sm64ex" "${pkgdir}/usr/bin/sm64pc"
 	install -Dm755 "$srcdir/../sm64ex.desktop" "${pkgdir}/usr/share/applications/sm64ex.desktop"
 	install -Dm755 "$srcdir/../SuperMario64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/SuperMario64.png"
 }
