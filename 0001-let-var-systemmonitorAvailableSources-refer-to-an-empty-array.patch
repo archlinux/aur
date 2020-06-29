@@ -1,0 +1,25 @@
+From b389b886a7ee759d06c9eb0e6a3b6abbea400035 Mon Sep 17 00:00:00 2001
+From: raochsinai <roachsinai@qq.com>
+Date: Mon, 21 Jan 2019 11:26:31 +0800
+Subject: [PATCH] let var systemmonitorAvailableSources refer to an empty
+ array.
+
+---
+ package/contents/ui/main.qml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/package/contents/ui/main.qml b/package/contents/ui/main.qml
+index 67e3f4c..75ae04d 100644
+--- a/package/contents/ui/main.qml
++++ b/package/contents/ui/main.qml
+@@ -190,6 +190,10 @@ Item {
+ 
+         temperatureModel.clear()
+ 
++        if (!systemmonitorAvailableSources) {
++            systemmonitorAvailableSources = []
++        }
++
+         if (!systemmonitorSourcesToAdd) {
+             systemmonitorSourcesToAdd = []
+         }

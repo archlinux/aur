@@ -1,0 +1,154 @@
+From 17aaaa5956837335ef677c066c8af4584292f85f Mon Sep 17 00:00:00 2001
+From: Zach Himsel <zach@himsel.net>
+Date: Mon, 29 Jun 2020 08:59:46 -0600
+Subject: [PATCH] Fix Plasmashell crash when opening config
+
+Written by /u/DGLS575 on Reddit:
+https://www.reddit.com/r/kdeneon/comments/gkyuij/attempting_to_configure_thermal_monitor_widget/ft3gsvq/
+---
+ .../contents/ui/config/ConfigTemperatures.qml | 103 +++++++++---------
+ 1 file changed, 52 insertions(+), 51 deletions(-)
+
+diff --git a/package/contents/ui/config/ConfigTemperatures.qml b/package/contents/ui/config/ConfigTemperatures.qml
+index 79b6204..341fad5 100644
+--- a/package/contents/ui/config/ConfigTemperatures.qml
++++ b/package/contents/ui/config/ConfigTemperatures.qml
+@@ -524,83 +524,84 @@ Item {
+         engine: 'executable'
+         
+         connectedSources: [ ModelUtils.UDISKS_DEVICES_CMD ]
+-        
++        property bool prepared: false
++
+         onNewData: {
+-            connectedSources.length = 0
+-            
+-            if (data['exit code'] > 0) {
+-                print('New data incomming. Source: ' + sourceName + ', ERROR: ' + data.stderr);
+-                return
+-            }
+-            
+-            print('New data incomming. Source: ' + sourceName + ', data: ' + data.stdout);
+-            
+-            var pathsToCheck = ModelUtils.parseUdisksPaths(data.stdout)
+-            pathsToCheck.forEach(function (pathObj) {
+-                var cmd = ModelUtils.UDISKS_VIRTUAL_PATH_PREFIX + pathObj.name
+-                comboboxModel.append({
+-                    text: cmd,
+-                    val: cmd
++            if (!prepared)
++            {
++                //connectedSources.length = 0
++                
++                if (data['exit code'] > 0) {
++                    print('New data incomming. Source: ' + sourceName + ', ERROR: ' + data.stderr);
++                    return
++                }
++                
++                print('New data incomming. Source: ' + sourceName + ', data: ' + data.stdout);
++                
++                var pathsToCheck = ModelUtils.parseUdisksPaths(data.stdout)
++                pathsToCheck.forEach(function (pathObj) {
++                    var cmd = ModelUtils.UDISKS_VIRTUAL_PATH_PREFIX + pathObj.name
++                    comboboxModel.append({
++                        text: cmd,
++                        val: cmd
++                    })
+                 })
+-            })
+-            
++                prepared = true
++            }
+         }
+-        
+-        interval: 500
++        //interval: 500
+     }
+-    
++
+     PlasmaCore.DataSource {
+         id: nvidiaDS
+         engine: 'executable'
+         
+         connectedSources: [ 'nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader' ]
+-        
+         property bool prepared: false
+         
+         onNewData: {
+-            nvidiaDS.connectedSources.length = 0
+-            
+-            if (data['exit code'] > 0) {
++            if (!prepared)
++            {
++                //nvidiaDS.connectedSources.length = 0
++                if (data['exit code'] > 0) {
++                    prepared = true
++                    return
++                }
++                
++                comboboxModel.append({
++                    text: 'nvidia-smi',
++                    val: 'nvidia-smi'
++                })
+                 prepared = true
+-                return
+             }
+-            
+-            comboboxModel.append({
+-                text: 'nvidia-smi',
+-                val: 'nvidia-smi'
+-            })
+-            
+-            prepared = true
+         }
+-        
+-        interval: 500
++        //interval: 500
+     }
+-    
++
+     PlasmaCore.DataSource {
+         id: atiDS
+         engine: 'executable'
+         
+         connectedSources: [ 'aticonfig --od-gettemperature' ]
+-        
+         property bool prepared: false
+         
+         onNewData: {
+-            atiDS.connectedSources.length = 0
+-            
+-            if (data['exit code'] > 0) {
++            if (!prepared)
++            {
++                //atiDS.connectedSources.length = 0
++                if (data['exit code'] > 0) {
++                    prepared = true
++                    return
++                }
++                
++                comboboxModel.append({
++                    text: 'aticonfig',
++                    val: 'aticonfig'
++                })
+                 prepared = true
+-                return
+             }
+-            
+-            comboboxModel.append({
+-                text: 'aticonfig',
+-                val: 'aticonfig'
+-            })
+-            
+-            prepared = true
+         }
+-        
+-        interval: 500
++        //interval: 500
+     }
+-    
++        
+ }
+-- 
+2.27.0
+
