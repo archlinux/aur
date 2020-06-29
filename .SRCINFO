@@ -1,6 +1,6 @@
 pkgbase = riot-desktop-git
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
-	pkgver = v1.6.6.r0.g42c6a26e
+	pkgver = v1.6.7.r0.g70e981f5
 	pkgrel = 1
 	url = https://riot.im
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = riot-desktop-git
 	depends = electron
 	provides = riot-desktop
 	backup = etc/riot/config.json
-	source = riot-web::git://github.com/vector-im/riot-web.git#tag=v1.6.6
-	source = riot-desktop::git://github.com/vector-im/riot-desktop.git#tag=v1.6.6
+	source = riot-web::git://github.com/vector-im/riot-web.git#tag=v1.6.7
+	source = riot-desktop::git://github.com/vector-im/riot-desktop.git#tag=v1.6.7
 	source = riot-desktop.desktop
 	source = riot-desktop.sh
 	sha256sums = SKIP
@@ -33,7 +33,7 @@ pkgname = riot-web-git
 
 pkgname = riot-desktop-git
 	pkgdesc = Glossy Matrix collaboration client for the desktop.
-	depends = riot-web-git=v1.6.6.r0.g42c6a26e
+	depends = riot-web-git=v1.6.7.r0.g70e981f5
 	depends = electron
 	depends = sqlcipher
 	backup = etc/riot/config.json
