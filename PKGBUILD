@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.16.r5.ga4628cf
+pkgver=v0.16.r7.g82663d6
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
@@ -39,7 +39,7 @@ build(){
 
     # build main binary
     cd "${srcdir}/${pkgname}"
-    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ .. && make
+    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make
 }
 
 package_cgproxy-git(){
