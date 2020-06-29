@@ -10,7 +10,7 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r17041.9497dce25
+pkgver=r17436.8265ffb5c
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -27,6 +27,8 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'gst-plugins-ugly: for video/voice support'
             'gst-libav: for video/voice support'
             'gst-python: for video/voice support'
+            'gst-plugin-gtk: for video support'
+            'gsound: for notification sounds'
             'gspell: for spell checking support'
             'libxss: for idle time checking on X11'
             'notification-daemon: for desktop notifications'
