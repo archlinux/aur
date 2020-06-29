@@ -1,6 +1,6 @@
 pkgbase = ksnip
 	pkgdesc = Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux
-	pkgver = 1.6.2
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/DamirPorobic/ksnip
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = ksnip
 	makedepends = qt5-tools
 	depends = qt5-x11extras
 	depends = kcolorpicker-git
-	depends = kimageannotator-git
+	depends = kimageannotator
 	conflicts = ksnip-git
-	source = ksnip-1.6.2.tar.gz::https://github.com/DamirPorobic/ksnip/archive/v1.6.2.tar.gz
-	sha256sums = fd06f9fd54ab4a373f9be8b42af02b69d0287ae4e3acff7738410b77c375630c
+	source = ksnip-1.7.1.tar.gz::https://github.com/DamirPorobic/ksnip/archive/v1.7.1.tar.gz
+	sha256sums = 43c18bd8110caa9a778878d56df4e5a2716b8c51a3edf65f3077413fe9f0dbac
 
 pkgname = ksnip
 
