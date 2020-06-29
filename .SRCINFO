@@ -1,0 +1,15 @@
+pkgbase = python-fbs
+	pkgdesc = Python and Qt-based lightweight alternative to Electron
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://build-system.fman.io/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = fbs-0.8.6.tar.gz::https://github.com/mherrmann/fbs/archive/v0.8.6.tar.gz
+	sha256sums = 5ea208705e1190f01d0b12a1be81e6ff8f6a36cc7f22a4e35d176350b26070ee
+	sha512sums = 12d2b6ef9515cb363617dd479ba2f021ef89d27cfd580e8c445a70b01ea8088dd25e7ae6128230a048bb1e8bdb25dbfeaca13113a6fb1feefb050157f66cb17c
+
+pkgname = python-fbs
+
