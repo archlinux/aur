@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-fanspeed-monitor-git
 	pkgdesc = Plasmoid for Plasma 5. Monitors temperature of existing sensors including CPU, GPU and HDD.
 	pkgver = r7.61be467
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dwardor/plasma-applet-fanspeed-monitor
 	arch = any
 	license = GPL
@@ -12,7 +12,9 @@ pkgbase = plasma5-applets-fanspeed-monitor-git
 	provides = plasma5-applets-fanspeed-monitor
 	conflicts = plasma5-applets-fanspeed-monitor
 	source = git+https://github.com/dwardor/plasma-applet-fanspeed-monitor.git#branch=master
-	md5sums = SKIP
+	source = 0001-Fix-Plasmashell-crash-when-opening-config.patch
+	sha256sums = SKIP
+	sha256sums = f2e84c0201f401c04668f78e315530909d2f076460a2b553b6f4bdabdd411872
 
 pkgname = plasma5-applets-fanspeed-monitor-git
 

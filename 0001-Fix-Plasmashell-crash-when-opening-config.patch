@@ -1,0 +1,97 @@
+From b39300e49acd836865231374ddc1d849dcf8e8c2 Mon Sep 17 00:00:00 2001
+From: Zach Himsel <zach@himsel.net>
+Date: Mon, 29 Jun 2020 09:23:00 -0600
+Subject: [PATCH] Fix Plasmashell crash when opening config
+
+Written by /u/DGLS575 on Reddit
+https://www.reddit.com/r/kdeneon/comments/gkyuij/attempting_to_configure_thermal_monitor_widget/fuozkth/
+---
+ .../contents/ui/config/ConfigFanspeeds.qml    | 57 +++++++++----------
+ 1 file changed, 27 insertions(+), 30 deletions(-)
+
+diff --git a/package/contents/ui/config/ConfigFanspeeds.qml b/package/contents/ui/config/ConfigFanspeeds.qml
+index 51e30ed..3cf7570 100644
+--- a/package/contents/ui/config/ConfigFanspeeds.qml
++++ b/package/contents/ui/config/ConfigFanspeeds.qml
+@@ -326,26 +326,25 @@ Item {
+         connectedSources: [ 'nvidia-smi --query-gpu=fan.speed --format=csv,noheader' ]
+         
+         property bool prepared: false
+-        
+         onNewData: {
+-            nvidiaDS.connectedSources.length = 0
+-            
+-            if (data['exit code'] > 0) {
++            if (!prepared)
++            {
++                //nvidiaDS.connectedSources.length = 0
++                if (data['exit code'] > 0) {
++                    prepared = true
++                    return
++                }
++                
++                comboboxModel.append({
++                    text: 'nvidia-smi',
++                    val: 'nvidia-smi'
++                })
+                 prepared = true
+-                return
+             }
+-            
+-            comboboxModel.append({
+-                text: 'nvidia-smi',
+-                val: 'nvidia-smi'
+-            })
+-            
+-            prepared = true
+         }
+-        
+-        interval: 500
++        //interval: 500
+     }
+-    
++
+     PlasmaCore.DataSource {
+         id: atiDS
+         engine: 'executable'
+@@ -353,24 +352,22 @@ Item {
+         connectedSources: [ 'aticonfig --pplib-cmd "get fanspeed 0" | grep Result | sed -e "s/.*: *//" -e "s/%//"' ]
+         
+         property bool prepared: false
+-        
+         onNewData: {
+-            atiDS.connectedSources.length = 0
+-            
+-            if (data['exit code'] > 0) {
++            if (!prepared)
++            {
++                //atiDS.connectedSources.length = 0
++                if (data['exit code'] > 0) {
++                    prepared = true
++                    return
++                }
++                
++                comboboxModel.append({
++                    text: 'aticonfig',
++                    val: 'aticonfig'
++                })
+                 prepared = true
+-                return
+             }
+-            
+-            comboboxModel.append({
+-                text: 'aticonfig',
+-                val: 'aticonfig'
+-            })
+-            
+-            prepared = true
+         }
+-        
+-        interval: 500
++        //interval: 500
+     }
+-    
+ }
+-- 
+2.27.0
+
