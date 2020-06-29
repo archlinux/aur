@@ -1,14 +1,14 @@
 pkgbase = python-enlighten
 	pkgdesc = A console progress bar module for Python
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/Rockhopper-Technologies/enlighten
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
 	depends = python-blessed
-	source = https://files.pythonhosted.org/packages/source/e/enlighten/enlighten-1.5.1.tar.gz
-	sha256sums = 836b92850aa1fa1ff9de45d7736f77ed253210928fe423898e5994cb51b755ee
+	source = https://files.pythonhosted.org/packages/source/e/enlighten/enlighten-1.6.0.tar.gz
+	sha256sums = 1f69366a9cf0525ea58145c22e8312d0de855cd83416d65ba6d8f6220de0b436
 
 pkgname = python-enlighten
 
