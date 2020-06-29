@@ -1,0 +1,16 @@
+pkgbase = uconv-c-git
+	pkgdesc = General unit converter for the command line
+	pkgver = 0.0.1.r6.g2173c6e
+	pkgrel = 1
+	url = https://github.com/kevinboone/uconv
+	install = info.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	provides = uconv-c
+	conflicts = uconv-c
+	source = git+https://github.com/kevinboone/uconv.git
+	sha256sums = SKIP
+
+pkgname = uconv-c-git
+

@@ -1,0 +1,8 @@
+post_install() {
+  cat << EOF
+
+==> To avoid conflict with uconv from https://www.archlinux.org/packages/core/x86_64/icu/
+==> uconv has been installed with the name of uconv-c
+
+EOF
+}
