@@ -2,7 +2,7 @@
 
 pkgname=vc4cl-git
 pkgver=0
-pkgrel=4
+pkgrel=5
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
@@ -14,6 +14,11 @@ optdepends=()
 provides=('opencl-pi' 'opencl-vc4' 'opencl-driver' 'vc4-opencl' 'vc4cl')
 source=("VC4CL::git+https://github.com/doe300/VC4CL" "VC4CL.icd")
 md5sums=('SKIP' 'SKIP')
+
+pkgver() {
+	cd "$srcdir/VC4CLStdLib"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     mkdir -p $srcdir/VC4CL/build
