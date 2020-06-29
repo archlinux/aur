@@ -2,7 +2,7 @@
 
 pkgname=vc4c-git
 pkgver=0
-pkgrel=7
+pkgrel=8
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
@@ -14,6 +14,11 @@ optdepends=()
 provides=('vc4c' 'vc4-compiler' 'opencl-compiler')
 source=("VC4C::git+https://github.com/doe300/VC4C" "auto_dummy.patch")
 md5sums=('SKIP' 'e409cafcdc79aa53aef1484e53bd25e7')
+
+pkgver() {
+	cd "$srcdir/VC4CLStdLib"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	patch -R $srcdir/VC4C/src/ProcessUtil.cpp $srcdir/auto_dummy.patch
