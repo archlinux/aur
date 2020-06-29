@@ -1,6 +1,6 @@
 pkgbase = creeptifica
 	pkgdesc = A 4px wide terminal font for nerds.
-	pkgver = 3.9
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/akuma-dev/creeptifica
 	arch = any
