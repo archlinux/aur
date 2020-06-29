@@ -1,6 +1,6 @@
 pkgbase = python-sanic
 	pkgdesc = Async Python 3.6+ web server/framework | Build fast. Run fast.
-	pkgver = 20.6.2
+	pkgver = 20.6.3
 	pkgrel = 1
 	url = https://sanicframework.org/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-sanic
 	depends = python-httpx
 	depends = python-uvloop
 	depends = python-ujson
-	source = https://github.com/huge-success/sanic/archive/v20.6.2.tar.gz
-	sha256sums = 75bbda4086fa5a4b4d42cb8616f9272bbf9ab059d32548f4dd378976221364bf
+	source = https://github.com/huge-success/sanic/archive/v20.6.3.tar.gz
+	sha256sums = d54d590173b8aafba4459e8dc9e2b3bb75a1ab700c56751529776aeaa759916d
 
 pkgname = python-sanic
 
