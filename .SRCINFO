@@ -1,6 +1,6 @@
 pkgbase = notcurses
-	pkgdesc = Modern TUI library
-	pkgver = 1.5.2
+	pkgdesc = Blingful TUI/character graphics library
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Notcurses
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = notcurses
 	makedepends = qrcodegen
 	depends = ncurses
 	depends = ffmpeg
-	source = https://github.com/dankamongmen/notcurses/archive/v1.5.2.tar.gz
-	sha256sums = 23131e3c438aa165786e383f974ea8be2cf3f64e3b80c558c316024a21b2e68d
+	source = https://github.com/dankamongmen/notcurses/archive/v1.5.3.tar.gz
+	sha256sums = f9be9d0acdc675fd6bfffac463bd555e84b7d8989a9a07ae40a6c3b2fedab762
 
 pkgname = notcurses
 
