@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Andrea Pierangeli <andrea.pierangeli@gmail.com>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: Travis Hegner <travis.hegner@gmail.com>
@@ -8,7 +9,7 @@ pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.10
 pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
-arch=('x86_64' 'armv7h' 'i686')
+arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
 license=('GPL')
 makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
@@ -30,6 +31,9 @@ prepare() {
 build() {
   cd "$pkgbase-$pkgver"
   export CXXFLAGS="$CXXFLAGS -fPIC"
+  if [ "$CARCH" = "aarch64" ]; then
+    arch_opts=(--disable-libwebrtc)
+  fi
   if [ "$CARCH" = "i686" ]; then
     export CXXFLAGS="$CXXFLAGS -march=i686"
     arch_opts=(--disable-libwebrtc)
