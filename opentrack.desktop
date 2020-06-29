@@ -2,7 +2,7 @@
 Version=3.1.0
 Type=Application
 Name=Opentrack
-Exec=/opt/opentrack/opentrack.bin
+Exec=/usr/bin/opentrack
 Icon=/opt/opentrack/contrib/cute-octopus-vector-material_15-1831.jpg
 Terminal=false
 StartupNotify=true
