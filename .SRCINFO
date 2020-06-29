@@ -1,6 +1,6 @@
 pkgbase = libpurple-signald-git
 	pkgdesc = Pidgin libpurple bridge to signald.
-	pkgver = 0.2.0.r48.40d1ac9
+	pkgver = 0.3.0.r1.g6ba26ff
 	pkgrel = 1
 	url = https://github.com/hoehermann/libpurple-signald
 	arch = any
