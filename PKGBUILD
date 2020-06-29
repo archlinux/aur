@@ -2,8 +2,8 @@
 
 pkgname=dnscontrol-bin
 pkgver=3.2.0
-pkgrel=1
-pkgdesc="A system for maintaining DNS zones from StackExchange (binary release)"
+pkgrel=2
+pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (binary release)"
 arch=('x86_64')
 url="https://stackexchange.github.io/dnscontrol/"
 license=('MIT')
