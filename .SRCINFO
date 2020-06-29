@@ -1,7 +1,8 @@
 pkgbase = cowspeak
 	pkgdesc = Display an animal with a random quote or your own text
 	pkgver = 2.81
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/Souravgoswami/cowspeak-root
 	arch = any
 	depends = ruby
 	provides = cowspeak
