@@ -8,7 +8,7 @@ arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="2D animation software"
 url="https://maurycyliebner.github.io/"
 license=('GPL3')
-depends=('ffmpeg' 'gperftools' 'qscintilla-qt5' 'qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'quazip')
+depends=('gperftools' 'qscintilla-qt5' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'quazip')
 makedepends=('git' 'gn' 'intltool' 'ninja' 'openmp' 'python2')
 source=("git+https://github.com/MaurycyLiebner/enve.git"
         "git+https://github.com/gperftools/gperftools.git"
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 prepare() {
-# Git submodules
+  # Git submodules
   cd $_pkgname
   git submodule init
   git config submodule.third_party/gperftools.url $srcdir/gperftools
@@ -96,6 +96,6 @@ package() {
   for file in 'Blur' 'Linearize' 'Shadow'; do
     find "$srcdir/$_pkgname/build/Release/examples" \
          -type f -name "libe${file}.so*" \
-         -exec mv {} "$pkgdir/usr/lib" \;
+         -exec cp -pa {} "$pkgdir/usr/lib" \;
   done
 }
