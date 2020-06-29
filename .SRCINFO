@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-tbb
+	pkgdesc = High level abstract threading library (mingw-w64)
+	pkgver = 2020.2
+	pkgrel = 1
+	url = https://github.com/oneapi-src/oneTBB
+	arch = any
+	license = APACHE
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	conflicts = mingw-w64-intel-tbb
+	replaces = mingw-w64-intel-tbb
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/oneapi-src/oneTBB/archive/v2020.2.tar.gz
+	sha256sums = 4804320e1e6cbe3a5421997b52199e3c1a3829b2ecb6489641da4b8e32faf500
+
+pkgname = mingw-w64-tbb
+
