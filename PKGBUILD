@@ -2,7 +2,7 @@
 
 pkgname=superproductivity
 _reponame=super-productivity
-pkgver=5.1.2
+pkgver=5.4.2
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/${_reponame}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('c92b49c3fbfec52c2fbca6d8083f0ecd'
+md5sums=('f4c8211859b8118dd58a499089f0ae8e'
          '2497ef16691da7fe4dc3c9d6ce6a8bcf'
          '6532676c1c13ae77f24205b3e3e97db9')
 
