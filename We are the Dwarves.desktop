@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=We are the Dwarves
+Exec=we-are-the-dwarves
+Comment=An action-based tactical adventure with active pause (extreme slowdown of time) placing you in control of three Dwarven astronauts.
+Terminal=false
+Icon=/usr/share/pixmaps/gog-we-are-the-dwarves.png
+Type=Application
+Categories=Game;
