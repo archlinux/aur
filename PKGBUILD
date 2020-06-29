@@ -25,7 +25,7 @@ build() {
         -DHIPIPE_BUILTIN_RANGEV3=OFF \
         -DHIPIPE_BUILD_TEST=OFF \
         -DCMAKE_BUILD_TYPE=Release
-    make -j8
+    make -j2
 }
 
 package() {
