@@ -1,7 +1,7 @@
 pkgbase = trakt-scrobbler
 	pkgdesc = Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!
 	pkgver = 1.0.0b10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iamkroot/trakt-scrobbler
 	arch = any
 	license = GPL2
@@ -26,6 +26,7 @@ pkgbase = trakt-scrobbler
 	depends = python-confuse>=1.1.0
 	depends = python-confuse<2.0.0
 	optdepends = libnotify: Provides Desktop Notifications.
+	optdepends = python-gobject: Provides Updatable Notifications.
 	source = https://files.pythonhosted.org/packages/source/t/trakt-scrobbler/trakt-scrobbler-1.0.0b10.tar.gz
 	source = trakts-man.md
 	sha256sums = 8057f7cad2e95c72c8c43edfc01499b633320106d305bf25e80793399ffae0d4
