@@ -1,19 +1,21 @@
-# Maintainer: Edward Pacman <edward@edward-p.xyz>
+# Contributor: katt <magunasu.b97@gmail.com>
+# Contributor: Edward Pacman <edward@edward-p.xyz>
 _pkgname='consolas-with-yahei'
-pkgname=ttf-consolas-with-yahei-powerline-git
+pkgname=ttf-$_pkgname-powerline-git
 pkgver=r14.b6e9163
 pkgrel=1
 pkgdesc="Consolas-with-Yahei with powerline patched with nerd-fonts)"
 arch=(any)
-url=https://github.com/crvdgc/Consolas-with-Yahei
-depends=(fontconfig xorg-font-utils)
-conflicts=(ttf-consolas-with-yahei)
-install=$pkgname.install
-source=("git+https://github.com/crvdgc/Consolas-with-Yahei.git")
+url='https://github.com/crvdgc/Consolas-with-Yahei'
+license=(unknown)
+makedepends=(git)
+provides=(ttf-$_pkgname)
+conflicts=(ttf-$_pkgname)
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Consolas-with-Yahei"
+  cd "Consolas-with-Yahei"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
