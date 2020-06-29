@@ -1,0 +1,21 @@
+pkgbase = mudita24-git
+	pkgdesc = Improved Control Panel for Ice1712 Audio Cards
+	pkgver = r16.e38b1a3
+	pkgrel = 1
+	url = https://github.com/NielsMayer/mudita24
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = alsa-lib
+	depends = gtk2
+	source = git+https://github.com/NielsMayer/mudita24
+	source = mudita24.desktop
+	source = mudita24.png
+	sha256sums = SKIP
+	sha256sums = 4fdfcf2d92ee0424fa2af5e06cf21fb07ac5bc9938db224a38a4687cb5c44637
+	sha256sums = a659ff56346e3d11bd0c386efd55b183c5e07c9ae8e03e5de15caf6c1be09513
+
+pkgname = mudita24-git
+

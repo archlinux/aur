@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mudita24
+GenericName=Mudita24
+Comment=Control Panel for Ice1712 Audio Cards.
+Exec=mudita24
+Icon=/usr/share/pixmaps/mudita24.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;X-Sound;
