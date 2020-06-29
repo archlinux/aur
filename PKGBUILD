@@ -1,12 +1,13 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Ben Morgan <neembi@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=repoctl-git
-pkgver=0.16.r0.gc8fd238
+pkgver=0.16.r39.g717a4e1
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
@@ -17,40 +18,36 @@ source=("$pkgname::git+https://github.com/cassava/repoctl.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
+  cd "$srcdir/$pkgname"
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  local dest="$srcdir/src/github.com/cassava"
-
+  dest="$srcdir/src/github.com/cassava"
   mkdir -p "$dest"
   mv "$srcdir/$pkgname" "$dest/repoctl"
-
   cd "$srcdir"
   ln -s "$dest/repoctl" "$pkgname"
 }
 
 build() {
-  local src="$srcdir/src/github.com/cassava/repoctl"
-
+  src="$srcdir/src/github.com/cassava/repoctl"
   cd "$src/cmd/repoctl"
-  GOPATH="$srcdir" go build
-
-  cd "$src/cmd/repols"
   GOPATH="$srcdir" go build
 }
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   # Install repoctl program
-  install -Dm755 cmd/repoctl/repoctl -t "$pkgdir/usr/bin/"
-  install -Dm755 cmd/repols/repols -t "$pkgdir/usr/bin/"
+  install -d "$pkgdir/usr/bin"
+  install -m755 cmd/repoctl/repoctl "$pkgdir/usr/bin/"
 
   # Install other documentation
-  install -Dm644 README.md NEWS.md -t "$pkgdir/usr/share/doc/repoctl/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/repoctl/"
+  install -d "$pkgdir/usr/share/doc/repoctl"
+  install -m644 README.md NEWS.md "$pkgdir/usr/share/doc/repoctl/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/repoctl/LICENSE"
 
   # Install completion files
   install -Dm644 contrib/repoctl_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_repoctl"
