@@ -1,25 +1,28 @@
-# Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Stephen Martin <stephenSRMMartin at gmail dot com>
+
 pkgname=jamovi-git
 _pkgname=jamovi
-pkgver=r716.8774368
+pkgver=r1277.7744a02
 pkgrel=1
-pkgdesc="Open Source Software to bridge the gap between researcher and statistician"
+pkgdesc="Open Source Software to bridge the gap between researcher and statistician (Git)"
 arch=('any')
 url="https://www.jamovi.org/"
 license=('GPL')
-depends=('electron' 'python' 'python-protobuf' 'python-tornado' 'python-nanomsg' 'python-yaml' 'boost-libs' 'python-chardet' 'python-scipy' 'r-cran-rinside' 'gcc6-libs') #gcc6 libs added for libgfortran.so.3
+depends=('electron' 'python' 'python-protobuf' 'python-tornado' 'python-nanomsg' 'python-yaml' 'boost-libs' 'python-chardet' 'python-scipy' 'r-rinside' 'gcc6-libs') #gcc6 libs added for libgfortran.so.3
 optdepends=("jamovi-rbundle: R backend for various analyses")
-makedepends=('boost' 'npm' 'cython' 'git' 'r-cran-rinside')
+makedepends=('boost' 'npm' 'cython' 'git' 'r-rinside')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+https://github.com/jamovi/jamovi.git 
 	"env.conf" 
 	"jamovi.sh"
 	"rinclude.patch")
-md5sums=('SKIP'
-         '75dc797390f0697fd9bc71c82563f857'
-         '38fec18885de4ecbb91aef1f201c20d7'
-         'f873dbb9ac296cd6f563ed03f018fe97')
+sha512sums=('SKIP'
+            '22b77987ace79ed7ddfa51319f61da3090e200c364cf6a3715a8d412757943bd0aa4d212178713afd3c55670414854314aa45c94a4ed788281e73cefbec0f1d5'
+            'e4a3cc021f2914779e7521c0b3c462aa53af24b1e3eda79396e64f681ddd887c23ac439607235a2f4400ae57242aa8d8360c1390026a491143d00f5fd3dca3ab'
+            '4fce631eb557420525ab5d138124cf48c6a20627b419f66c6c07bcc38bccc979d081e5e2ca75392a0dd84450ef29871183628174043aefc61b2fe6d55a4abb55')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -44,6 +47,7 @@ build() {
 	npm install
 	# Engine
 	cd ../engine
+	./configure --prefix=/usr
 	make
 }
 

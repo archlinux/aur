@@ -1,24 +1,23 @@
-diff --git a/engine/Makefile b/engine/Makefile
-index e7dce5b..7ec569f 100644
---- a/engine/Makefile
-+++ b/engine/Makefile
-@@ -35,9 +35,9 @@ ifeq ($(os),OSX)
- 
+diff --git a/engine/Makefile.in b/engine/Makefile.in
+@@ -52,11 +52,11 @@
+ 	CXXFLAGS += -mmacosx-version-min=10.10
  else
  ifeq ($(os),Linux)
--	R_HOME = $(SRCDIR)/../../../lib/R
-+	R_HOME = /usr/lib/R
- 	LIBS  = -L$(R_HOME)/lib \
--			-L$(SRCDIR)/../../modules/base/R/RInside/lib \
-+			-L$(R_HOME)/library/RInside/lib \
- 			-lboost_filesystem \
- 			-lboost_system \
- 			-lpthread \
-@@ -65,6 +65,7 @@ INCLUDES += \
+-	R_HOME ?= $(SRCDIR)/../../../lib/R
++	R_HOME ?= /usr/lib/R
+ 	BASE_MODULE_PATH ?= $(SRCDIR)/../../modules/base/R
+ 	R_PATH ?= $$ORIGIN/../lib  $$ORIGIN/../Resources/modules/base/R/RInside/lib
+ 	LDFLAGS +=	-L$(R_HOME)/lib \
+-				-L$(BASE_MODULE_PATH)/RInside/lib \
++				-L$(R_HOME)/library/RInside/lib \
+ 				-lboost_filesystem \
+ 				-lboost_system \
+ 				-lpthread \
+@@ -84,6 +84,7 @@
  	-I$(SRCDIR)/../../../include \
  	-I$(SRCDIR)/../server/jamovi/common \
  	-I$(R_HOME)/include \
 +	-I /usr/include/R \
- 	-I$(SRCDIR)/../../modules/base/R/RInside/include \
- 	-I$(SRCDIR)/../../modules/base/R/Rcpp/include \
- 	-I$(R_HOME)/library/RInside/include \
+ 	-I$(BASE_MODULE_PATH)/RInside/include \
+ 	-I$(BASE_MODULE_PATH)/Rcpp/include \
+ 	-I/usr/share/R/include
