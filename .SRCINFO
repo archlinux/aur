@@ -1,13 +1,13 @@
 pkgbase = copytranslator-appimage
 	pkgdesc = Foreign language reading and translation assistant based on copy and translate.
-	pkgver = 9.0.2
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://copytranslator.github.io
-	arch = any
-	noextract = copytranslator-9.0.2.AppImage
+	arch = x86_64
+	noextract = copytranslator-9.1.0.AppImage
 	options = !strip
-	source = https://github.com/CopyTranslator/CopyTranslator/releases/download/v9.0.2/copytranslator-9.0.2.AppImage
-	sha256sums = 38abb1add4f24a77afca17c1cd752d670b7675589709785076f762ca92378b48
+	source = https://github.com/CopyTranslator/CopyTranslator/releases/download/v9.1.0/copytranslator-9.1.0.AppImage
+	sha256sums = 146a43d0c215c654a8def1c39351fc5d9878fcb2663386e331c96912474f94f3
 
 pkgname = copytranslator-appimage
 

@@ -1,16 +1,16 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 pkgname=copytranslator-appimage
 _installdir=/opt/${pkgname}
-pkgver=9.0.2
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
-arch=("any")
+arch=("x86_64")
 url="https://copytranslator.github.io"
 _pkgname="copytranslator-${pkgver}.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
 source=("https://github.com/CopyTranslator/CopyTranslator/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("38abb1add4f24a77afca17c1cd752d670b7675589709785076f762ca92378b48")
+sha256sums=("146a43d0c215c654a8def1c39351fc5d9878fcb2663386e331c96912474f94f3")
 
 prepare() {
     cd "${srcdir}"
