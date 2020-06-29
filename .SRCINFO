@@ -1,0 +1,17 @@
+pkgbase = kcolorpicker
+	pkgdesc = Qt basd Color Picker with popup menu
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/DamirPorobic/kColorPicker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = qt5-base
+	conflicts = kcolorpicker-git
+	source = kcolorpicker-0.1.4.tar.gz::https://github.com/ksnip/kColorPicker/archive/v0.1.4.tar.gz
+	sha256sums = 3036d00cce2a8cc6a0bc87a9a3ff629e21adbdaa509e41f23a2ef1661d537c72
+
+pkgname = kcolorpicker
+
