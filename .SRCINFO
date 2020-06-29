@@ -1,6 +1,6 @@
 pkgbase = rtbth-dkms
-	pkgdesc = rtbth Kernel module sources for Ralink RT3290 bluetooth
-	pkgver = 3.9.4.1
+	pkgdesc = rtbth Kernel module sources for Ralink RT3290 bluetooth, lomiu's solution.
+	pkgver = 3.9.6
 	pkgrel = 1
 	url = http://www.mediatek.com/
 	install = rtbth-dkms.install
@@ -11,8 +11,9 @@ pkgbase = rtbth-dkms
 	optdepends = bluez: Canonical implementation of bluetooth protocol
 	optdepends = bluez-utils: Utilities for Bluez
 	provides = rtbth
-	source = https://github.com/f1u77y/rtbth-dkms-aur/archive/3.9.4.1.tar.gz
-	md5sums = 740a7aed7439cc4a94f8132bbd6e49eb
+	conflicts = rtbth-dkms-git
+	source = https://github.com/loimu/rtbth-dkms/archive/3.9.6.tar.gz
+	sha512sums = caea78393365e16a1a8ab163e14710f221dae0f1d132737c4b85da717dc4fcbbe468bcc0f49cb3d75c740c25df2055baeb461878bc2c99d1c16359dabda3d117
 
 pkgname = rtbth-dkms
 
