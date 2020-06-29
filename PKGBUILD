@@ -33,7 +33,7 @@ arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
-makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
             'libpipewire02: WebRTC desktop sharing under Wayland'

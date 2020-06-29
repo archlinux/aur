@@ -13,6 +13,7 @@ pkgbase = brave
 	makedepends = gperf
 	makedepends = java-runtime-headless
 	makedepends = clang
+	makedepends = python2-setuptools
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
