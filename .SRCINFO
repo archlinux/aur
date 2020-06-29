@@ -1,0 +1,15 @@
+pkgbase = oauth2token
+	pkgdesc = Simple cli utility to create and use oauth2 tokens
+	pkgver = 0.0.2.post1
+	pkgrel = 1
+	url = https://pypi.org/project/oauth2token/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-google-auth-oauthlib
+	depends = python-pyxdg
+	source = https://files.pythonhosted.org/packages/source/o/oauth2token/oauth2token-0.0.2.post1.tar.gz
+	sha512sums = e2f6ea385d80e885431f0a8385c629020b2ea5dbe20b3356260b658841c64de3966511ee17a7b0c6e3ac86c2a279fd1dea83ce89be961dcda4c5f34e5c152f23
+
+pkgname = oauth2token
+
