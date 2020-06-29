@@ -1,12 +1,12 @@
 # Maintainer: Sourav Goswami <souravgoswami@protonmail.com>
 pkgname=cowspeak
 pkgver=2.81
-pkgrel=2
+pkgrel=3
 pkgdesc="Display an animal with a random quote or your own text"
 arch=('any')
 url="https://github.com/Souravgoswami/cowspeak-root"
 licence=('MIT')
-depends=('ruby')
+depends=('ruby>=2.5')
 provides=('cowspeak')
 source=("https://github.com/Souravgoswami/cowspeak-root/raw/master/tarballs/cowspeak-v${pkgver}.tar.xz")
 
