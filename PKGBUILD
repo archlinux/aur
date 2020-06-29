@@ -1,19 +1,18 @@
-# Maintainer: skydrome
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: skydrome
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
-
-GTK=3
 
 pkgname=spacefm-git
 pkgver=1.0.6.r80.ge257d15
-pkgrel=1
-pkgdesc="A multi-panel tabbed file manager - git branch"
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="Multi-panel tabbed file manager"
+arch=(i686 x86_64)
 url="https://ignorantguru.github.io/spacefm"
-license=('GPL3')
-conflicts=("spacefm")
-provides=("spacefm")
-makedepends=('intltool' 'gettext')
-depends=('startup-notification' 'ffmpegthumbnailer' 'hicolor-icon-theme' 'shared-mime-info' 'desktop-file-utils' 'cairo' 'pango' 'udevil' 'udisks2')
+license=(GPL3)
+conflicts=(spacefm)
+provides=(spacefm)
+makedepends=(intltool git gcc8)
+depends=(gtk3 startup-notification ffmpegthumbnailer)
 optdepends=('dbus: dbus integration'
             'util-linux: disk eject support'
             'lsof: device processes'
@@ -27,36 +26,34 @@ optdepends=('dbus: dbus integration'
             'gphotofs: mount cameras'
             'ifuse: mount your iPhone/iPod Touch'
             'fuseiso: mount ISO files')
-
-if [[ "$GTK" = 2 ]]; then
-    depends+=('gtk2'); _opts='--with-gtk2'
-else
-    depends+=('gtk3'); _opts='--with-gtk3'
-fi
-
 source=("git+https://github.com/IgnorantGuru/spacefm.git#branch=alpha"
-        "glibc_2.28.patch")
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/spacefm-glibc-2.28-compatibility.patch")
 sha256sums=('SKIP'
-            '12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e')
+            '9f5c1e981279e677612b8b45260bdf0d3a496cb0a43c1e6365269f2a291b1e0e')
+
+export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
 
 pkgver() {
-    cd "spacefm"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "spacefm"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "spacefm"
-    patch -Np1 -i ../glibc_2.28.patch
-    ./autogen.sh --prefix=/usr "$_opts"
+  cd "spacefm"
+  patch -Np1 -i ../spacefm-glibc-2.28-compatibility.patch
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd "spacefm"
-    make
+  cd "spacefm"
+  ./configure \
+    --prefix=/usr \
+    --with-gtk3
+  make
 }
 
 package() {
-    cd "spacefm"
-    make DESTDIR="$pkgdir" install
-    rm -f "$pkgdir"/usr/bin/spacefm-installer
+  cd "spacefm"
+  make DESTDIR="$pkgdir" install
+  rm -f "$pkgdir"/usr/bin/spacefm-installer
 }
