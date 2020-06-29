@@ -1,32 +1,27 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
+_pkgname='consolas-with-yahei'
 pkgname=ttf-consolas-with-yahei-powerline-git
-pkgver=r2.28cedd6
+pkgver=r14.b6e9163
 pkgrel=1
 pkgdesc="Consolas-with-Yahei with powerline patched with nerd-fonts)"
 arch=(any)
 url=https://github.com/crvdgc/Consolas-with-Yahei
 depends=(fontconfig xorg-font-utils)
 conflicts=(ttf-consolas-with-yahei)
-makedepends=(tar)
-fontname='consolas-with-yahei'
 install=$pkgname.install
+source=("git+https://github.com/crvdgc/Consolas-with-Yahei.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/Consolas-with-Yahei"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-	git clone --depth=1 https://github.com/crvdgc/Consolas-with-Yahei.git
-}
 package() {
-	mkdir -p "$pkgdir"/usr/share/fonts/$fontname
-	chmod -R 755 "$pkgdir"/usr/
-	cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$fontname/consnerd.ttf
-	cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Bold\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$fontname/consnerdb.ttf
-	cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Italic\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$fontname/consnerdi.ttf
-	cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Bold\ Italic\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$fontname/consnerdz.ttf
+  mkdir -p "$pkgdir"/usr/share/fonts/$_pkgname
+  chmod -R 755 "$pkgdir"/usr/
+  cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$_pkgname/consnerd.ttf
+  cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Bold\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$_pkgname/consnerdb.ttf
+  cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Italic\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$_pkgname/consnerdi.ttf
+  cp Consolas-with-Yahei/ttf/Consolas-with-Yahei\ Bold\ Italic\ Nerd\ Font.ttf "$pkgdir"/usr/share/fonts/$_pkgname/consnerdz.ttf
 }

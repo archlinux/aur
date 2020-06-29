@@ -1,14 +1,15 @@
 pkgbase = ttf-consolas-with-yahei-powerline-git
 	pkgdesc = Consolas-with-Yahei with powerline patched with nerd-fonts)
-	pkgver = r2.28cedd6
+	pkgver = r14.b6e9163
 	pkgrel = 1
 	url = https://github.com/crvdgc/Consolas-with-Yahei
 	install = ttf-consolas-with-yahei-powerline-git.install
 	arch = any
-	makedepends = tar
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = ttf-consolas-with-yahei
+	source = git+https://github.com/crvdgc/Consolas-with-Yahei.git
+	md5sums = SKIP
 
 pkgname = ttf-consolas-with-yahei-powerline-git
 
