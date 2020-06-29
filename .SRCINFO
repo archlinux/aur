@@ -1,6 +1,6 @@
 pkgbase = opencpn-git
 	pkgdesc = Open Source Chart Plotting / Marine Navigation - Git version
-	pkgver = 5.1.529.Beta.r32.gaf5f5b644
+	pkgver = 5.1.529.Beta.r92.g978eb07b4
 	pkgrel = 1
 	url = http://opencpn.org
 	install = opencpn.install
@@ -18,7 +18,7 @@ pkgbase = opencpn-git
 	depends = lsb-release
 	provides = opencpn
 	conflicts = opencpn
-	source = opencpn-git::git+https://github.com/OpenCPN/OpenCPN.git#commit=af5f5b644
+	source = opencpn-git::git+https://github.com/OpenCPN/OpenCPN.git
 	sha1sums = SKIP
 
 pkgname = opencpn-git

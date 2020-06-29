@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-git
-pkgver=5.1.529.Beta.r32.gaf5f5b644
+pkgver=5.1.529.Beta.r92.g978eb07b4
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation - Git version"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ provides=('opencpn')
 
 url="http://opencpn.org"
 install=opencpn.install
-source=("$pkgname::git+https://github.com/OpenCPN/OpenCPN.git#commit=af5f5b644")
+source=("$pkgname::git+https://github.com/OpenCPN/OpenCPN.git")
 sha1sums=('SKIP')
 
 
