@@ -1,0 +1,22 @@
+pkgbase = ant-dracula-kde-theme-git
+	pkgdesc = Ant Dracula theme for KDE Plasma
+	pkgver = v1.3.0.r57.g1eb71ee
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/dracula/gtk.git
+	sha256sums = SKIP
+
+pkgname = ant-dracula-kde-theme-git
+	optdepends = ant-dracula-gtk-theme: Matching GTK theme
+	optdepends = ant-dracula-kvantum-theme-git: Ant Dracula theme for Kvantum Qt style (recommended)
+	provides = ant-dracula-kde-theme
+
+pkgname = ant-dracula-kvantum-theme-git
+	pkgdesc = Ant Dracula theme for Kvantum Qt style
+	depends = kvantum-qt5
+	provides = ant-dracula-kvantum-theme
+
