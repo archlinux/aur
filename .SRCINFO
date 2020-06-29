@@ -1,17 +1,17 @@
 pkgbase = gdash
 	pkgdesc = A Boulder Dash clone, intended to be as close to the original as possible.
-	pkgver = 20130427unstable
+	pkgver = 20180129unstable
 	pkgrel = 1
 	url = https://bitbucket.org/czirkoszoltan/gdash
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = sdl
+	depends = sdl2
 	depends = gtk2
-	depends = sdl_image
-	depends = sdl_mixer
-	source = https://bitbucket.org/czirkoszoltan/gdash/downloads/gdash-20130427unstable.tar.gz
-	md5sums = 9f92790fe2d1f41d78167da7b4f4fac2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	source = https://bitbucket.org/czirkoszoltan/gdash/downloads/gdash-20180129unstable.tar.gz
+	sha256sums = 7d4bc188d26b6cfce2c94c17dada22282a7108482c5a0f87d37f6ac6db76298e
 
 pkgname = gdash
 
