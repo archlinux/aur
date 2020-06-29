@@ -3,17 +3,17 @@
 
 pkgbase=('wownero-git')
 pkgname=('wownero-git')
-pkgver=v0.8.0.r0.1271a7e
+pkgver=v0.8.0.1.c70878b54e
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('custom:Cryptonote')
 arch=('x86_64')
-url="http://wownero.org/"
+url="https://wownero.org/"
 depends=('openssl' 'libpgm' 'unbound' 'libsodium')
 makedepends=('git' 'cmake' 'boost')
 provides=('wownero-git')
 
-source=("${pkgname}"::"git+https://github.com/wownero/wownero")
+source=("${pkgname}"::"git+https://git.wownero.com/wownero/wownero")
 
 sha256sums=('SKIP')
 

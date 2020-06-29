@@ -1,8 +1,8 @@
 pkgbase = wownero-git
 	pkgdesc = a fairly launched privacy-centric meme coin with no premine and a finite supply
-	pkgver = v0.8.0.r0.1271a7e
+	pkgver = v0.8.0.1.c70878b54e
 	pkgrel = 1
-	url = http://wownero.org/
+	url = https://wownero.org/
 	arch = x86_64
 	license = custom:Cryptonote
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = wownero-git
         depends = unbound
         depends = libsodium
 	provides = wownero-git
-	source = wownero-git::git+https://github.com/wownero/wownero
+	source = wownero-git::git+https://git.wownero.com/wownero/wownero
 	sha256sums = SKIP
 
 pkgname = wownero-git
