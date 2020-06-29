@@ -2,7 +2,7 @@
 
 DLAGENTS=('https::/usr/bin/curl -A "Mozilla/4.0" -fLC - -o %o %u')
 pkgname=pycom-firmware-updater
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Pycom firmware updater for WiPy and LoPy IOT boards"
 url="https://www.pycom.io/"
@@ -18,9 +18,9 @@ source_x86_64=("https://software.pycom.io/downloads/pycom_firmware_update_${pkgv
 source_i686=("https://software.pycom.io/downloads/pycom_firmware_update_${pkgver}-i386.tar.gz"
              'pycom-fwtool.desktop')
 
-md5sums_x86_64=('19b443eac1bb9e7cb75ef23d75ff8b1c'
+md5sums_x86_64=('f962b59d8d94c290cc9535676bcf6680'
                 'b9adb203ada3eb0ba6f1aaa0b74d609a')
-md5sums_i686=('1dc902deb74fadd9fb524b3c1bd22d36'
+md5sums_i686=('9df5338090308645b0cc1d9c8aee71c9'
               'b9adb203ada3eb0ba6f1aaa0b74d609a')
 
 
