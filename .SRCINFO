@@ -1,14 +1,14 @@
 pkgbase = python-elpy
 	pkgdesc = Package to bring powerful Python editing to Emacs. Python library only.
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgenschaefer/elpy
 	install = python-elpy.install
 	arch = any
 	license = GPL
 	depends = python-epc
 	optdepends = flake8: The modular source code checker: pep8, pyflakes and co
-	optdepends = python-autopep8: format code according to PEP8
+	optdepends = autopep8: format code according to PEP8
 	optdepends = python-jedi: autocompletion library support
 	optdepends = python-rope: refactory library support
 	optdepends = yapf: Python style guide checker
