@@ -1,18 +1,17 @@
 pkgbase = thecalculator
 	pkgdesc = Calculator
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 0
 	url = https://github.com/vicr123/thecalculator
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = bison
 	makedepends = flex
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = the-libs
-	source = thecalculator-2.1::git+https://github.com/vicr123/thecalculator#branch=master
-	md5sums = SKIP
+	source = thecalculator-2.2::https://github.com/vicr123/thecalculator/archive/v2.2.tar.gz
+	sha256sums = 913ff3ae453dda137205d89cf6a334a224745a5f2961402afabbf0bec5df4678
 
 pkgname = thecalculator
 
