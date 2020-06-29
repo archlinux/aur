@@ -2,7 +2,7 @@
 
 pkgname=vc4cl-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
@@ -11,38 +11,19 @@ groups=()
 depends=('llvm' 'clinfo' 'ocl-icd')
 makedepends=('wget' 'gcc' 'cmake' 'clang' 'opencl-headers')
 optdepends=()
-conflicts=('vc4c-git' 'vc4clstdlib-git')
-provides=('opencl-pi' 'opencl-vc4' 'opencl-driver')
-source=("VC4C::git+https://github.com/doe300/VC4C/" "VC4CL::git+https://github.com/doe300/VC4CL/" "VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib/" "auto_dummy.patch")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'e409cafcdc79aa53aef1484e53bd25e7')
+requires=('vc4c-git')
+provides=('opencl-pi' 'opencl-vc4' 'opencl-driver' 'vc4-opencl')
+source=("VC4CL.tar.gz::https://github.com/doe300/VC4CL/archive/master.tar.gz")
+md5sums=('SKIP')
 
 build() {
-    mkdir -p $srcdir/VC4CL/build
-	mkdir -p $srcdir/VC4C/build
-	mkdir -p $srcdir/VC4CLStdLib/build
-	cd $srcdir/VC4CLStdLib/build
-	cmake ..
+    mkdir -p $srcdir/VC4CL-master/build
+	cd $srcdir/VC4CL-master/build
+	cmake "$srcdir/VC4CL-master" -DCMAKE_BUILD_TYPE=Release -DMULTI_THREADED=true -DCLANG_FOUND=/usr/bin/clang -DVC4CL_STDLIB_DIR=/usr/local/include/vc4cl-stdlib
 	make
-	cd ../..
-    cd VC4C/build
-	cmake ..
-	make
-    cd ../..
-    cd VC4CL/build
-    cmake ..
-    make
-    cd ../..
-}
-
-prepare() {
-	patch -R $srcdir/VC4C/src/ProcessUtil.cpp $srcdir/auto_dummy.patch
 }
 
 package() {
-	cd $srcdir/VC4CLStdLib/build
-	make DESTDIR="$pkgdir"/ install
-	cd $srcdir/VC4C/build
-	make DESTDIR="$pkgdir"/ install
-    cd $srcdir/VC4CL/build
+    cd $srcdir/VC4CL-master/build
     make DESTDIR="$pkgdir"/ install
 }
