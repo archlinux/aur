@@ -10,6 +10,7 @@ pkgbase = vc4c-git
 	makedepends = cmake
 	makedepends = clang
 	makedepends = opencl-headers
+	depends = vc4clstdlib-git
 	depends = llvm
 	depends = clinfo
 	depends = ocl-icd
