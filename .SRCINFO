@@ -1,0 +1,21 @@
+pkgbase = concorde-glpk
+	pkgdesc = Travelling Salesman Problem Solver (GLPK back-end)
+	pkgver = 03.12.19
+	pkgrel = 1
+	url = http://www.math.uwaterloo.ca/tsp/concorde/index.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = glpk
+	provides = concorde
+	options = staticlibs
+	options = !buildflags
+	source = http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz
+	source = https://ftp.gnu.org/gnu/glpk/glpk-4.65.tar.gz
+	sha384sums = b6eaf8ec6cc6f28f03851169b47e790dcb7352611578052c7fa891073a778af1b28a69c4f4f6598d4a5d5cf9f39ac8d3
+	sha384sums = 0bc17f10390343c6bf0c4149f1eab794dfd669e73e00db63822ee4723567f9a8dedcaae1b6be7fb211f145e90caab287
+
+pkgname = concorde-glpk
+
