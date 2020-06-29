@@ -1,0 +1,11 @@
+--- configure.orig	2020-06-29 12:28:37.152167480 +0200
++++ configure	2020-06-29 12:28:49.102098966 +0200
+@@ -9187,7 +9187,7 @@
+ 	elif test "x$enable_network" = xserver; then
+                 mytclient="-DSH_WITH_SERVER"
+ 		yulectl_prg="yulectl"
+-		samhainadmin_prg="scripts/samhainadmin.pl"
++		samhainadmin_prg=
+                 setpwd_prg="samhain_setpwd"
+                 sh_main_prg="yule"
+ 		if test "x${sh_have_gmp}" = xyes
