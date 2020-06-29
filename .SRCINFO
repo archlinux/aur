@@ -1,7 +1,7 @@
 pkgbase = github-desktop-bin
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
