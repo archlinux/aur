@@ -6,6 +6,7 @@ pkgbase = perl-pdf-builder
 	arch = any
 	license = LGPL
 	depends = perl-test-exception
+	depends = perl-test-memory-cycle
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PM/PMPERRY/PDF-Builder-3.018.tar.gz
 	sha512sums = da367aa520a0e779d70293ab3b270fc539d7467bfd7066bc2b7cc299bf018596dcd2859208368eb30ebcd3028321d141c41f8dc4b7913dc4fdc31f49c0533be5
