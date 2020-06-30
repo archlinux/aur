@@ -3,42 +3,33 @@
 
 pkgname=rccl
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rccl"
-license=('custom:NCSAOSL')
+license=('custom')
 depends=('hip')
 makedepends=('cmake' 'python' 'rocminfo')
-source=("$pkgname-$pkgver::https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('290b57a66758dce47d0bfff3f5f8317df24764e858af67f60ddcdcadb9337253')
+_dirname="$(basename $url)-$(basename ${source[0]} .tar.gz)"
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
+  CXX=/opt/rocm/hip/bin/hipcc \
+  cmake -B build -Wno-dev \
+        -S "$_dirname" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DBUILD_TESTS=OFF
 
-  # fix broken build with stack protection
-  export CFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CFLAGS")"
-  export CXXFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CXXFLAGS")"
-  export CPPFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CPPFLAGS")"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rccl \
-        -DBUILD_TESTS=OFF \
-        "$srcdir/rccl-rocm-$pkgver"
-
-  make
+  make -C build
 }
 
 package() {
-  cd "$srcdir/build"
+  DESTDIR="$pkgdir" make -C build install
 
-  make DESTDIR="$pkgdir" install
-
-  install -d "$pkgdir/opt/rocm/include"
-  ln -s /opt/rocm/rccl/include/rccl.h "$pkgdir/opt/rocm/include"
-
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  cat << EOF > "$pkgdir/etc/ld.so.conf.d/rccl.conf"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/rccl.conf" <<EOF
 /opt/rocm/rccl/lib
 EOF
+
+  install -Dm644 "$srcdir/$_dirname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
