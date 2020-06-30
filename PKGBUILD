@@ -24,9 +24,9 @@ package() {
   rm "${pkgname%-bin}/resources/youtube-dl/youtube-dl"
   rm "${pkgname%-bin}/resources/ffmpeg/ffmpeg"
   rm "${pkgname%-bin}/resources/ffmpeg/ffprobe"
-  ln -s /usr/bin/ffmpeg "${pkgname%-bin}/resources/youtube-dl/youtube-dl"
-  ln -s /usr/bin/youtube-dl "${pkgname%-bin}/resources/ffmpeg/ffmpeg"
-  ln -s /usr/bin/youtube-dl "${pkgname%-bin}/resources/ffmpeg/ffprobe"
+  ln -s /usr/bin/youtube-dl "${pkgname%-bin}/resources/youtube-dl/youtube-dl"
+  ln -s /usr/bin/ffmpeg "${pkgname%-bin}/resources/ffmpeg/ffmpeg"
+  ln -s /usr/bin/ffprobe "${pkgname%-bin}/resources/ffmpeg/ffprobe"
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" \
    "${pkgdir}/usr/share/applications" \
    "${pkgdir}/usr/share/pixmaps"
