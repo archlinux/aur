@@ -1,13 +1,10 @@
 pkgbase = nerd-fonts-dejavu-complete
 	pkgdesc = All variants of Nerd-Font-patched DejaVu Sans Mono
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
-	install = nerd-fonts-dejavu-complete.install
 	arch = any
 	license = MIT
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = ttf-font
 	source = DejaVu-Sans-Mono-Bold-Nerd-Font-Complete.ttf::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf
 	source = DejaVu-Sans-Mono-Bold-Nerd-Font-Complete-Mono.ttf::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
