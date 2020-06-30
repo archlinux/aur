@@ -12,7 +12,8 @@ depends=('polkit' 'libgee06' 'gtk2' 'startup-notification' 'dbus-glib' 'xorg-xau
 makedepends=('git' 'gtk-doc' 'vala' 'intltool')
 provides=('gksu-polkit')
 conflicts=('gksu-polkit')
-source=("$pkgname::git://git.debian.org/~kov/gksu-polkit.git"
+source=("$pkgname::git://git.debian.org/~kov/gksu-polkit.git")
+source=("$pkgname::git+https://github.com/fhdk/gksu-polkit.git"
         "gksu-polkit-0.0.3-policy.patch"
         "gksu-polkit-dbus.patch"
         "gksu-polkit.service")
