@@ -1,6 +1,6 @@
 pkgbase = nixnote2-git
 	pkgdesc = Evernote clone (formerly Nevernote) - git checkout
-	pkgver = 2.1.1.r3.gf5e206dd
+	pkgver = 2.1.6.r1.gaa5cfeb8
 	pkgrel = 1
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
@@ -15,15 +15,15 @@ pkgbase = nixnote2-git
 	depends = poppler-qt5
 	depends = tidy
 	depends = qt5-webkit
-	provides = nixnote=2.1.1
-	provides = nixnote2=2.1.1
+	provides = nixnote=2.1.6
+	provides = nixnote2=2.1.6
 	replaces = nevernote
 	replaces = nixnote
 	replaces = nixnote-beta
 	source = git+https://github.com/robert7/nixnote2.git
 	source = tidy-source-dir-location.patch
 	sha256sums = SKIP
-	sha256sums = 75410b80f3c06ca61842eade4e2da1fb869a3da7c269116a4b5a7703a196e621
+	sha256sums = 8cb8e5c3d3d320ffb0991d34a5c155b631dd83b9a94d530815da4f92c5ebd5ff
 
 pkgname = nixnote2-git
 

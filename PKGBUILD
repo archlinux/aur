@@ -3,7 +3,7 @@
 
 _pkgname=nixnote2
 pkgname=${_pkgname}-git
-pkgver=2.1.1.r3.gf5e206dd
+pkgver=2.1.6.r1.gaa5cfeb8
 pkgrel=1
 pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
@@ -14,7 +14,7 @@ makedepends=(boost gcc git qt5-tools)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
 source=("git+${url}.git"  tidy-source-dir-location.patch)
-sha256sums=(SKIP  75410b80f3c06ca61842eade4e2da1fb869a3da7c269116a4b5a7703a196e621)
+sha256sums=(SKIP  8cb8e5c3d3d320ffb0991d34a5c155b631dd83b9a94d530815da4f92c5ebd5ff)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
