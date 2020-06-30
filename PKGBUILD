@@ -14,6 +14,7 @@ and base program"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
 license=('GPL')
+conflicts=('bitfighter')
 depends=(
     'sqlite'
 	'sdl2'
