@@ -1,6 +1,6 @@
 diff -ruN a/Makefile b/Makefile
---- a/Makefile	2020-04-15 09:55:07.000000000 -0300
-+++ b/Makefile	2020-04-18 10:31:59.424670791 -0300
+--- a/Makefile	2020-06-30 09:50:04.478042566 -0300
++++ b/Makefile	2020-06-30 09:50:57.596484557 -0300
 @@ -52,7 +52,7 @@
  all:	$(PLAT)
  
@@ -10,9 +10,21 @@ diff -ruN a/Makefile b/Makefile
  
  install: dummy
  	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
+diff -ruN a/src/luaconf.h b/src/luaconf.h
+--- a/src/luaconf.h	2020-06-30 09:50:04.480042583 -0300
++++ b/src/luaconf.h	2020-06-30 09:51:20.970680775 -0300
+@@ -227,7 +227,7 @@
+ 
+ #else			/* }{ */
+ 
+-#define LUA_ROOT	"/usr/local/"
++#define LUA_ROOT	"/usr/"
+ #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR "/"
+ #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR "/"
+ 
 diff -ruN a/src/Makefile b/src/Makefile
---- a/src/Makefile	2020-04-15 10:00:29.000000000 -0300
-+++ b/src/Makefile	2020-04-18 10:33:15.608253222 -0300
+--- a/src/Makefile	2020-06-30 09:50:04.480042583 -0300
++++ b/src/Makefile	2020-06-30 09:50:57.597484566 -0300
 @@ -33,6 +33,7 @@
  PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
  

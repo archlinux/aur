@@ -1,6 +1,6 @@
 pkgbase = lua54
 	pkgdesc = Powerful lightweight programming language designed for extending applications
-	pkgver = 5.4.0.rc2
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://www.lua.org/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = lua54
 	depends = readline
 	options = !emptydirs
 	options = !strip
-	source = https://www.lua.org/work/lua-5.4.0-rc2.tar.gz
+	source = https://www.lua.org/ftp/lua-5.4.0.tar.gz
 	source = liblua.so.patch
 	source = lua.pc
 	source = LICENSE
-	sha512sums = 1823e953adc3ad34a479a6cc67bdcf4dbb85d483aab2a51f71db70ad6e6a34576f2db986d7540b529eef92a43bfa9c16587e2e2426e66b12650c26e2a1ac5c21
-	sha512sums = b53d289255cedde25608bcfe0ab21838744af08f99210543b1c56bbc70ba5fb1e1816581717b56fc173aa2b5f6f8ffc7a31408287d1d0fc7ef2f61a72c11591d
+	sha512sums = 22aa0f9fcf953fc49c97bf50a4cee708b458e8a95447f881037b2c6ddd60e40368a807f2575671c6cd7497cedc2cf5716a8959c196445bf9a359fe7ebcd65465
+	sha512sums = 45ac0e43f200b2dc10d4bebf2d92c920f9082a3cb9d96ad4d6171fc8f0c625dbb9cf650d596042630246b1f9103bf2d912caae4161c1c0f032e10bcb017b31a3
 	sha512sums = a3ae5f5c63a27956a2c69464cf966512be7404aef72d49b0b3b17e35999ceed04ec7be12ef19269f4cac908141b98dd5d16df9c238823fe0c1e068212914657a
 	sha512sums = bef221ae96e72d11785ec608ce96fa688ce4e12fecaaadc8c3e38d7d153922f4fdd2cf06a47e9f8840a165d42d9aa31f44c322f5c6c8402e8e31475de4e5893b
 
