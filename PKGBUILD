@@ -1,8 +1,8 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
 pkgname=vc4clstdlib-git
-pkgver=0
-pkgrel=3
+pkgver=r65.8a12d22
+pkgrel=1
 pkgdesc="VC4CL implementation of the OpenCL standard-library and is required to build the VC4C compiler"
 arch=('any')
 url="https://github.com/doe300/VC4CLStdLib"
