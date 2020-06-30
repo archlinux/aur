@@ -1,0 +1,26 @@
+pkgbase = gog-factorio
+	pkgdesc = A game in which you build and maintain factories
+	pkgver = 0.17.79
+	pkgrel = 1
+	url = https://www.gog.com/game/factorio
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libx11
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxcursor
+	depends = alsa-lib
+	depends = libpulse
+	conflicts = factorio
+	conflicts = factorio-demo
+	conflicts = factorio-experimental
+	conflicts = factorio-headless
+	conflicts = factorio-headless-experimental
+	source = factorio_0_17_79_34050.sh::gogdownloader://factorio/en3installer0
+	source = Factorio.desktop
+	sha512sums = 1fb966d424c46b504533a9fce87832076746ede8a5fa1e25140a59c4ba221d8622243829b7bf6e5a3127676e9daaae50863547b2f6e03fbc0b62fa11e2acc400
+	sha512sums = 32df74d21fdd19b70b3b81beb5b5735e82602c002e55eb40b77a365472f68294bbefbdf44c2fb6e6bfa1ff454f87751094506009d754a20697789f610cadb71a
+
+pkgname = gog-factorio
+

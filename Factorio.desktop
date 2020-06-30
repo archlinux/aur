@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Factorio
+Exec=factorio
+Comment=A game in which you build and maintain factories
+Terminal=false
+Icon=/usr/share/pixmaps/gog-factorio.png
+Type=Application
+Categories=Game;
