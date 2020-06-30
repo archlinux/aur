@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.8.6pre3
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,10 +15,10 @@ depends=('openafs')
 makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=("http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2"
+source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2"
         0001-Temporary-fix-for-compilation-with-GCC-10.patch)
 install=openafs-modules.install
-sha256sums=('9477ac1674bf75553f268d4ee36725c9fde731f5c5e5d26aa96b089cc6b721a8'
+sha256sums=('8b4e9d3180f1ecd752753da17ac630df04eb7007c90a921a5f6403c0339d2945'
             'b067b59bf856d15ded1ee786d303eb7b7ff47edb5b3e078b1d43862b8db62368')
 
 # Heuristic to determine version of installed kernel
