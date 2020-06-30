@@ -1,14 +1,10 @@
 pkgbase = ttf-meslo-nerd-font-powerlevel10k
 	pkgdesc = Meslo Nerd Font patched for Powerlevel10k
 	pkgver = 1.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/romkatv/powerlevel10k-media
 	arch = any
-	groups = nerd-fonts
-	license = MIT
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	license = Apache
 	provides = nerd-fonts-meslo-p10k
 	source = MesloLGS-NF-Bold-1.000.ttf::https://github.com/romkatv/powerlevel10k-media/raw/28dd1bd968b0c9cd4add7a3b80b264acdc53bcc7/MesloLGS%20NF%20Bold.ttf
 	source = MesloLGS-NF-Bold-Italic-1.000.ttf::https://github.com/romkatv/powerlevel10k-media/raw/28dd1bd968b0c9cd4add7a3b80b264acdc53bcc7/MesloLGS%20NF%20Bold%20Italic.ttf
