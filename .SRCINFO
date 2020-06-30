@@ -1,6 +1,6 @@
 pkgbase = caddy2
 	pkgdesc = Powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = caddy2
 	depends = glibc
 	provides = caddy
 	backup = etc/caddy/Caddyfile
-	source = git+https://github.com/caddyserver/caddy#tag=v2.1.0?signed
+	source = git+https://github.com/caddyserver/caddy#tag=v2.1.1?signed
 	source = caddy-a509155e3cff18af793f6af5f930a71c89e05df8-index.html::https://raw.githubusercontent.com/caddyserver/dist/a509155e3cff18af793f6af5f930a71c89e05df8/welcome/index.html
 	source = caddy.service
 	source = caddy.tmpfiles
