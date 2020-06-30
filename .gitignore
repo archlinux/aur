@@ -1,6 +1,0 @@
-src/
-pkg/
-*.zip
-*.tar.xz
-mjkey.txt
-mujoco200_resourcelicense.txt
