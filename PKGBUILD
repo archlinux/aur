@@ -3,7 +3,7 @@
 
 _basename=libwacom
 pkgname="lib32-$_basename"
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Library to identify Wacom tablets and their features (32-bit)"
 arch=('x86_64')
@@ -13,9 +13,9 @@ depends=('lib32-glib2' 'lib32-systemd' 'lib32-libgudev' "$_basename")
 makedepends=('lib32-libxml2')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF')
 source=(https://github.com/linuxwacom/libwacom/releases/download/${_basename}-${pkgver}/${_basename}-${pkgver}.tar.bz2{,.sig})
-sha1sums=('99c54d0b8cd259dd82368883997d5aafd18689a1'
+sha1sums=('33ab70bd4f49eee31c9f3c9153bac76e57e145d9'
           'SKIP')
-sha256sums=('90061797ccde3ccf9960ffdc4d0e7e767dedacd68c039ed35450d5ea593066e6'
+sha256sums=('07839c542940776c402168c7b73c04b346ba7557eb3f25a23a49893aff86ab08'
             'SKIP')
 
 build() {
