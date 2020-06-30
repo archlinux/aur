@@ -1,0 +1,14 @@
+pkgbase = xorg-font-utils
+	pkgdesc = Transitional package depending on xorg font utilities
+	pkgver = 7.6
+	pkgrel = 6
+	url = http://xorg.freedesktop.org/
+	arch = any
+	license = GPL
+	depends = xorg-bdftopcf
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	depends = xorg-font-util
+
+pkgname = xorg-font-utils
+
