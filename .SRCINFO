@@ -1,14 +1,14 @@
 pkgbase = nominatim-data-postcodes-gb
 	pkgdesc = Optional postcode (GB) data to use with nominatim
-	pkgver = 20191119
-	pkgrel = 2
+	pkgver = 20200602
+	pkgrel = 0
 	url = https://nominatim.org
 	arch = any
 	license = unknown
 	depends = nominatim
 	noextract = gb_postcode_data.sql.gz
 	source = https://www.nominatim.org/data/gb_postcode_data.sql.gz
-	sha256sums = 49e15831f7d88d2e02496f15a69a935281ddec5d6da79d3537b42f7fa9fd3170
+	sha256sums = e6e45dfb2d9e99d6cb56b1b961b88dc3038e7b63d723f789b3dcee10ff109383
 
 pkgname = nominatim-data-postcodes-gb
 
