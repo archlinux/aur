@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>cr3.desktop</id>
+  <name>CoolReader</name>
+  <project_license>GPL-2.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>
+    Cross platform open source e-book reader
+  </summary>
+  <description>
+    <p>
+      CoolReader is fast and small cross-platform XML/CSS based eBook reader
+      for desktops and handheld devices. Supported formats: FB2, TXT, RTF,
+      DOC, TCR, HTML, EPUB, CHM, PDB, MOBI.
+    </p>
+    <p>
+      Supports table of contents, search, bookmarks.
+    </p>
+    <p>
+      Supports window and fullscreen modes, paperbook-like pages or scroll view.
+      Book formatting is customizable using CSS files.
+    </p>
+  </description>
+  <url type="homepage">https://github.com/buggins/coolreader</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://gist.github.com/avsej/eaea5ae3d5ed045261e9f36d2c9964b5/raw/d251fab97400a8d708c01d51018ca7925e75e971/screenshot-2019-02-24_10-09-26.1550992166.png</image>
+    </screenshot>
+  </screenshots>
+</component>
