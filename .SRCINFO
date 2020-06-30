@@ -1,10 +1,11 @@
 pkgbase = newsflash-git
 	pkgdesc = The spiritual successor to FeedReader
-	pkgver = 473.cd41e93
+	pkgver = 617.edae91e
 	pkgrel = 1
 	url = https://gitlab.com/news-flash/news_flash_gtk
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = cargo
 	makedepends = libhandy
 	makedepends = meson
