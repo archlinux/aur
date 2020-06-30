@@ -1,7 +1,7 @@
 pkgbase = nominatim
 	pkgdesc = Geocoding tool using OpenStreetmap data
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://nominatim.org
 	install = nominatim.install
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = nominatim
 	depends = protozero
 	depends = proj
 	depends = pyosmium
+	depends = python-psycopg2
 	optdepends = nominatim-data-wikipedia: optional auxiliary data source to help indicate the importance of OSM features
 	optdepends = nominatim-data-postcodes-gb: improve searches that involve a UK postcode
 	optdepends = nominatim-data-postcodes-us: improve searches that involve a US postcode

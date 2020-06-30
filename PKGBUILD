@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.5.1
-pkgrel=1
+pkgrel=3
 
 arch=("x86_64")
 license=("GPL2")
@@ -30,6 +30,7 @@ depends=(
     "protozero"
     "proj"
     "pyosmium"
+    "python-psycopg2"
 )
 optdepends=(
     "nominatim-data-wikipedia: optional auxiliary data source to help indicate the importance of OSM features"
@@ -118,6 +119,7 @@ package() {
         "data-sources" \
         "lib" \
         "munin" \
+        "nominatim" \
 	    "settings" \
         "sql" \
         "utils" \

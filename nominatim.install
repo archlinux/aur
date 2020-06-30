@@ -9,10 +9,3 @@ post_install() {
     
 	EOF
 }
-
-pre_upgrade() {
-    if [[ -e "/usr/share/webapps/nominatim/settings/local.php" ]]; then
-        mkdir -p "/var/lib/nominatim/bin/settings/"
-        mv "/usr/share/webapps/nominatim/settings/local.php" "/var/lib/nominatim/bin/settings/local.php"
-    fi
-}
