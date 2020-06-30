@@ -6,8 +6,10 @@
 #
 pkgname=java-openjdk-loom-ea-bin
 
-# loom is currently based on JDK 15
-_majorver=15
+# loom is currently based on JDK 16
+_majorver=16
+# Remi erroneously still uses version 15
+_remiver=15
 
 # upstream release identifier
 _commit="9ea7329fedb32080d7e5"
@@ -15,7 +17,7 @@ _commit="9ea7329fedb32080d7e5"
 _buildver=$(echo ${_commit} | cut -c1-7)
 
 pkgver=${_majorver}_${_buildver}
-pkgrel=1
+pkgrel=2
 # must use epoch as upstream breaks version comparisons
 epoch=33
 
@@ -44,7 +46,8 @@ provides=(
 )
 
 _prefix=untagged-
-source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_majorver}-loom-linux.tar.gz")
+#source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_majorver}-loom-linux.tar.gz")
+source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_remiver}-loom-linux.tar.gz")
 
 sha256sums=('7f02a6bf744c78c6c3970531de23b5fde118d85efd81dd6980a1d86045635082')
 
@@ -55,7 +58,8 @@ package() {
 
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_majorver}-loom
+#  cd jdk-${_majorver}-loom
+  cd jdk-${_remiver}-loom
   cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
 
   # Link JKS keystore from ca-certificates-utils
