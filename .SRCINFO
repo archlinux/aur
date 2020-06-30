@@ -1,6 +1,6 @@
 pkgbase = satyr
 	pkgdesc = Automatic problem management with anonymous reports
-	pkgver = 0.27
+	pkgver = 0.30
 	pkgrel = 1
 	url = https://github.com/abrt/satyr
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = satyr
 	license = GPL
 	makedepends = python-sphinx
 	makedepends = rpm-org
+	depends = gperf
+	depends = json-c
 	depends = libelf
 	depends = python
-	source = satyr-0.27.tar.xz::https://github.com/abrt/satyr/archive/0.27.tar.gz
-	sha256sums = 8a2b2d63d0733ebf799604580c7aee9a54818847feedecf150a55f12d80f1819
+	source = satyr-0.30.tar.xz::https://github.com/abrt/satyr/archive/0.30.tar.gz
+	sha256sums = 86315b614fdd3445417df99c357f121dce82b22944ec8d61635e171c4dbb624d
 
 pkgname = satyr
 
