@@ -1,6 +1,6 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 pkgname=pmbootstrap-git
-pkgver=0.9.r437.g8a02187a
+pkgver=1.20.0.r42.g8a02187a
 pkgrel=1
 pkgdesc='Sophisticated chroot/build/flash tool to develop and install postmarketOS'
 arch=(any)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
