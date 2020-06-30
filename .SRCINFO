@@ -1,21 +1,21 @@
 pkgbase = terjira
 	pkgdesc = Terjira is interactive command line application for Jira
-	pkgver = 0.4.5
-	pkgrel = 2
+	pkgver = 0.4.6
+	pkgrel = 1
 	url = https://github.com/keepcosmos/terjira
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-thor-0.20.0
+	depends = ruby-thor
 	depends = ruby-jira-ruby
-	depends = ruby-activesupport-5.2.3
+	depends = ruby-activesupport
 	depends = ruby-tty-table
 	depends = ruby-tty-prompt
 	depends = ruby-tty-spinner
-	noextract = terjira-0.4.5.gem
+	noextract = terjira-0.4.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/terjira-0.4.5.gem
-	sha1sums = 30f31433b15d179114fe42d2a4ff097939f94129
+	source = https://rubygems.org/downloads/terjira-0.4.6.gem
+	sha1sums = 51b64ca1515c57c2f61c816a04f3472cc0286447
 
 pkgname = terjira
 
