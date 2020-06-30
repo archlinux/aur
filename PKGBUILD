@@ -9,6 +9,7 @@ url=https://font.gohu.org
 license=(custom:WTFPL)
 conflicts=(gohufont gohu-ttf gohufont-powerline)
 source=(https://font.gohu.org/gohufont-$pkgver-otb.tar.gz)
+md5sums=('154921c092ac5a4e1806e04d84d6707d')
 
 package() {
     cd "$srcdir/gohufont-$pkgver-otb"
