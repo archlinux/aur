@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=deheader
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Find and optionally remove unneeded includes in C or C++ source files'
 arch=('any')
 url='http://www.catb.org/~esr/deheader/'
