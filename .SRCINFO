@@ -9,11 +9,13 @@ pkgbase = devilspie2
 	depends = lua>=5.1
 	depends = gtk3
 	depends = libwnck3
-	source = http://download.savannah.gnu.org/releases/devilspie2/devilspie2_0.43-src.tar.gz
-	source = http://download.savannah.gnu.org/releases/devilspie2/devilspie2_0.43-src.tar.gz.asc
+	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2_0.43-src.tar.gz
+	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2_0.43-src.tar.gz.asc
+	source = devilspie2-0.43-lua-5.4.patch
 	validpgpkeys = DB306E4B10FFD98EF4DB55D7194B631AB2DA2888
 	md5sums = 26eed0b5b4af5c7e13c551eceaeab832
 	md5sums = SKIP
+	md5sums = 8fd96127706934b138af50aaa2da0664
 
 pkgname = devilspie2
 
