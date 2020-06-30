@@ -1,5 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=linux-wifi-hotspot
 pkgver=2.0.0
 pkgrel=4
@@ -17,7 +18,7 @@ conflicts=('create_ap' 'wihotspot')
 provides=('create_ap' 'wihotspot')
 install="$pkgname.install"
 optdepends=('haveged: For random MAC generation'
-            'iwconfig: if iw cannot recognize your adapter')
+            'wireless_tools: If iw cannot recognize your adapter')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
 sha256sums=('c364b3ac184f7939a8ed2d545e958791cfabc94ea9d5dcc077ca8625ef9b96c0')
