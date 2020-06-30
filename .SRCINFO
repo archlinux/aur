@@ -1,7 +1,7 @@
 pkgbase = hipsparse
 	pkgdesc = rocSPARSE marshalling library.
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#hipsparse
 	arch = x86_64
 	license = MIT
