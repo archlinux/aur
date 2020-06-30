@@ -1,9 +1,9 @@
 # Maintainer: AdmiringWorm <kim.nordmo@gmail.com>
-# Maintainer: Max Shaughnessy <msh@lap.is>
+# Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64')
 url="https://stackexchange.github.io/${pkgname}/"
