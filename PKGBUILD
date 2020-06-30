@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.5.1
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64")
 license=("GPL2")
@@ -37,16 +37,6 @@ optdepends=(
     "nominatim-data-postcodes-gb: improve searches that involve a UK postcode"
     "nominatim-data-postcodes-us: improve searches that involve a US postcode"
 )
-# checkdepends=(
-#     "php-codesniffer"
-#     "phpunit"
-#     "python-behave"
-#     "python-nose"
-#     "python-pip"
-#     "python-psycopg2"
-#     "python-setuptools"
-#     "python-tidylib"
-# )
 
 source=(
     "https://nominatim.org/release/Nominatim-${pkgver}.tar.bz2"
@@ -95,11 +85,6 @@ build() {
         "../Nominatim-${pkgver}"
     make
 }
-
-# check() {
-#     cd "${srcdir}/Nominatim-${pkgver}/test"
-#     make
-# }
 
 package() {
     cd "${srcdir}/build/"
@@ -174,7 +159,6 @@ package() {
 
     # single files (binaries) to copy to /var/lib
     install -Dm755 "${srcdir}/build/module/nominatim.so" -t "${pkgdir}/var/lib/${pkgname}/bin/module/"
-    #install -Dm755 "${srcdir}/build/nominatim/nominatim" -t "${pkgdir}/var/lib/${pkgname}/bin/nominatim/"
 
     # repair symlinks pointing to ${srcdir}
     for _link in \

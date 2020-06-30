@@ -1,7 +1,7 @@
 pkgbase = nominatim
 	pkgdesc = Geocoding tool using OpenStreetmap data
 	pkgver = 3.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nominatim.org
 	install = nominatim.install
 	arch = x86_64
