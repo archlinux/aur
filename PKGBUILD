@@ -4,16 +4,16 @@
 
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=6.1.4
-pkgrel=7
+pkgver=6.1.10
+pkgrel=1
 case "$CARCH" in
   x86_64)
     _linux_major=5
     _linux_minor=4
     ;;
   i686)
-    _linux_major=4
-    _linux_minor=19
+    _linux_major=5
+    _linux_minor=4
     ;;
 esac
 arch=('x86_64' 'i686')
