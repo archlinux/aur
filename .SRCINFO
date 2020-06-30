@@ -1,14 +1,14 @@
 pkgbase = envoyproxy-bin
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://envoyproxy.io
 	arch = x86_64
 	license = Apache2
 	provides = envoyproxy
 	conflicts = envoyproxy
-	source = https://dl.bintray.com/tetrate/getenvoy-deb/pool/stable/g/getenvoy-envoy/getenvoy-envoy_1.14.2.p0.g1a0363c-1p66.gfbeeb15_amd64.deb
-	sha512sums = ae66060729b9a5dcb142e50be00155924cf4278965d5643deeec83110edf7df71bfdf2a36cb43c7abc3a4f30f230146d21f894f513db5831840da2eb9469b05e
+	source = https://dl.bintray.com/tetrate/getenvoy-deb/pool/stable/g/getenvoy-envoy/getenvoy-envoy_1.14.3.p0.g8fed485-1p67.g2aa564b_amd64.deb
+	sha512sums = a805ec65869943432a1245d6d5d42bffc499d8dd0cb508ce429cad3c98256dc100fcc5527ef30a013d17281c67c027f0a5a31df4432d2d0caf35fbdc072a6444
 
 pkgname = envoyproxy-bin
 
