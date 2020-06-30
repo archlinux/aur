@@ -1,6 +1,6 @@
 pkgbase = r-tikzdevice
 	pkgdesc = R Graphics Output in LaTeX Format
-	pkgver = 0.12.3
+	pkgver = 0.12.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tikzDevice
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = r-tikzdevice
 	optdepends = r-stringr
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/tikzDevice_0.12.3.tar.gz
-	md5sums = 1772db47dad3ecbe23b2a0523ba4b4e8
+	source = https://cran.r-project.org/src/contrib/tikzDevice_0.12.3.1.tar.gz
+	md5sums = 1f1cfeea483220306944046dff5eafe9
 
 pkgname = r-tikzdevice
 
