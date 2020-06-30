@@ -1,13 +1,12 @@
 pkgbase = otf-san-francisco
 	pkgdesc = The system font for macOS, iOS, watchOS, and tvOS
-	pkgver = 1.0
-	pkgrel = 6
+	pkgver = 2
+	pkgrel = 1
 	epoch = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = SFPro-1.0.zip::https://developer.apple.com/fonts/downloads/SFPro.zip
 	sha512sums = 7001638787c7580a7cd1c40d92af8c680187ebfad832fe0ec4e97ccc15d925a9928e97b1e5bfd39db1789eb955bf0fcbb954a990b2ef2b56b41da7a13a6bd6cd
 
