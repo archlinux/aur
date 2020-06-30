@@ -74,22 +74,22 @@ build() {
   cd libs/openFrameworksCompiled/project
 
   msg2 "Building openFrameworks Debug version"
-  make Debug
+  make -s Debug
 
   msg2 "Building openFrameworks Release version"
-  make Release
+  make -s Release
 
   cd ${srcdir}/${_name}
 
   msg2 "Building OF Project Generator tool..."
   cd apps/projectGenerator/commandLine
-  make Release
+  make -s Release
 
   cd ${srcdir}/${_name}
 
   msg2 "Building OF Project Generator interface..."
   cd libs/openFrameworksCompiled/project
-  make Release
+  make -s Release
 }
 
 package() {
