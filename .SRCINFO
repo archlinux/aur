@@ -1,11 +1,14 @@
 pkgbase = blender-plugin-luxcorerender-git
 	pkgdesc = LuxCoreRender exporter plugin for Blender
-	pkgver = 2.4.beta1.r1.g504867b
+	pkgver = 2.4.beta1.r2.g4532c9d
 	pkgrel = 1
 	url = https://luxcorerender.org/
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = python-certifi
+	depends = python-requests
+	depends = python-numpy
 	provides = blender-plugin-luxcorerender
 	conflicts = blender-plugin-luxcorerender
 	source = luxcorerender::git+https://github.com/LuxCoreRender/BlendLuxCore.git
@@ -14,6 +17,9 @@ pkgbase = blender-plugin-luxcorerender-git
 	sha256sums = 5f73821fc8c38c0bfe9f09d5b3e5ed4c7263c3b92b03526ce0746cd34bc9e5ce
 
 pkgname = blender-plugin-luxcorerender-git
+	depends = python-certifi
+	depends = python-requests
+	depends = python-numpy
 	depends = blender>=2.80
 	depends = luxcorerender>=2.4.beta1
 

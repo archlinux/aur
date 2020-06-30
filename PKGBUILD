@@ -5,12 +5,13 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.4.beta1.r1.g504867b
+pkgver=2.4.beta1.r2.g4532c9d
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="https://luxcorerender.org/"
 license=('GPL')
+depends=(python-certifi python-requests python-numpy)
 makedepends=(git)
 conflicts=(blender-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
@@ -28,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  depends=("blender>=2.80" "luxcorerender>=${pkgver%.r*}")
+  depends+=("blender>=2.80" "luxcorerender>=${pkgver%.r*}")
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
   cp -a "${srcdir}/${_name}/" "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
