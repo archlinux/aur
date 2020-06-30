@@ -13,6 +13,7 @@ pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
 license=('GPL')
+conflicts=('bitfighterd')
 depends=(
     'sqlite'
 	'sdl2'

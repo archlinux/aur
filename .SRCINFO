@@ -16,6 +16,7 @@ pkgbase = bitfighter
 	depends = libvorbis
 	depends = libmodplug
 	depends = speex
+	conflicts = bitfighterd
 	source = http://bitfighter.org/files/bitfighter-021.tar.gz
 	source = http://bitfighter.org/files/classic_level_pack.zip
 	source = bitfighter.png
