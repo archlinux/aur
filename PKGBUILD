@@ -4,7 +4,7 @@
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.19.a.r24.g90cb347cd95
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.29.a.r38.g30ccb529485
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -19,37 +19,40 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/apple/swift'
-        'cmark::git+https://github.com/apple/swift-cmark'
-        'llbuild::git+https://github.com/apple/swift-llbuild'
-        'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
-        'swift-driver::git+https://github.com/apple/swift-driver'
-        'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core'
-        'swiftpm::git+https://github.com/apple/swift-package-manager'
-        'swift-syntax::git+https://github.com/apple/swift-syntax'
-        'swift-stress-tester::git+https://github.com/apple/swift-stress-tester'
-        'swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest'
-        'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation'
-        'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
-        'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
-        'llvm-project::git+https://github.com/apple/llvm-project'
-       )
+source=(
+    'git+https://github.com/apple/swift#commit=30ccb5294'
+    'cmark::git+https://github.com/apple/swift-cmark'
+    'llbuild::git+https://github.com/apple/swift-llbuild'
+    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
+    'swift-driver::git+https://github.com/apple/swift-driver'
+    'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core'
+    'swiftpm::git+https://github.com/apple/swift-package-manager'
+    'swift-syntax::git+https://github.com/apple/swift-syntax'
+    'swift-stress-tester::git+https://github.com/apple/swift-stress-tester'
+    'swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest'
+    'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation'
+    'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
+    'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
+#    'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
+    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
+)
 noextract=()
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-        )
+md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "$srcdir/swift"
