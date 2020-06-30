@@ -1,15 +1,13 @@
 pkgbase = ruget-bin
 	pkgdesc = Alternative to wget written in Rust
-	pkgver = 0.3.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/ksk001100/ruget
 	arch = x86_64
 	license = MIT
-	depends = glibc
-	depends = gcc-libs
 	depends = openssl-1.0
-	source = https://github.com/ksk001100/ruget/releases/download/v0.3.1/ruget-v0.3.1-x86_64-unknown-linux-gnu.zip
-	sha256sums = b0065b62fc66d26e63f8e4d714b5d91b4650308e0ad9191887d3f2813d42d856
+	source = https://github.com/ksk001100/ruget/releases/download/v0.4.2/ruget-v0.4.2-x86_64-unknown-linux-gnu.zip
+	sha256sums = aabb757d036eec3a1e4df4e1d067b99a12a14ad9ba5a54f018c809334466fa66
 
 pkgname = ruget-bin
 
