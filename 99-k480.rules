@@ -1,0 +1,1 @@
+ACTION== "add", KERNEL=="hidraw[0-9]*", RUN+="/usr/bin/k480-function-keys-conf-enable.sh /dev/%k"
