@@ -1,16 +1,12 @@
 pkgbase = fonts-tlwg
 	pkgdesc = Collection of scalable Thai fonts
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tlwg/fonts-tlwg/
 	arch = any
 	license = GPL
 	license = custom
 	makedepends = fontforge
-	depends = xorg-fonts-encodings
-	depends = xorg-fonts-alias
-	depends = xorg-font-utils
-	depends = fontconfig
 	provides = ttf-tlwg
 	conflicts = ttf-tlwg
 	replaces = ttf-tlwg

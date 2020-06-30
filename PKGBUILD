@@ -3,13 +3,12 @@
 
 pkgname=fonts-tlwg
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of scalable Thai fonts'
 url='https://github.com/tlwg/fonts-tlwg/'
 arch=('any')
 license=('GPL' 'custom')
 makedepends=('fontforge')
-depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
 source=("https://github.com/tlwg/fonts-tlwg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('07cdb99b4ccd4c1cf03be24c399718ac1489a855')
 
