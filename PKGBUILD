@@ -5,21 +5,21 @@
 
 _pkgname=avahi
 pkgname=avahi-gtk2
-pkgver=0.7+18+g1b5f401
-pkgrel=2
+pkgver=0.8+15+ge8a3dd0
+pkgrel=1
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='https://github.com/lathiat/avahi'
 license=(LGPL)
 arch=(x86_64 i686)
 options=('!emptydirs')
-depends=(expat libdaemon glib2 libcap gdbm dbus)
+depends=(expat libdaemon glib2 libcap gdbm dbus libevent)
 makedepends=(git intltool gobject-introspection gtk2 xmltoman)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
             'nss-mdns: NSS support for mDNS')
 backup=(etc/avahi/{hosts,avahi-daemon.conf,avahi-{autoip,dnsconf}d.action})
-_commit=1b5f401f64d7bed40c4335b0327acf4125da3086  # pull/115/merge~2
+_commit="e8a3dd0d480a754318e312e6fa66fea249808187"
 source=("git+https://github.com/lathiat/avahi#commit=$_commit")
 sha512sums=('SKIP')
 
@@ -30,10 +30,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-
-  # CVE-2017-6519 CVE-2018-100084
-  git cherry-pick -n e111def44a7df4624a4aa3f85fe98054bffb6b4f
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
