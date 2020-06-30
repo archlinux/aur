@@ -1,13 +1,12 @@
 pkgbase = ttf-pf-agora-sans-pro-git
 	pkgdesc = A free font from profont.net
 	pkgver = r4.1613ca7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://profont.net/family/pf-agora-sans-pro.html
 	install = ttf-pf-agora-sans-pro-git.install
 	arch = any
 	license = unknown
 	makedepends = git
-	depends = fontconfig
 	source = git+https://gitlab.com/benoliver999/pf-agora-sans-pro.git
 	md5sums = SKIP
 
