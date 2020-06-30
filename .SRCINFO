@@ -1,0 +1,43 @@
+pkgbase = manjaro-asian-input-support
+	pkgdesc = A fork of Manjaro Asian input support.
+	pkgver = 2020.06
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support
+	arch = any
+	license = GPL
+	conflicts = manjaro-asian-input-support-gtk
+	conflicts = manjaro-asian-input-support-qt
+	conflicts = manjaro-asian-input-support-ibus
+	conflicts = manjaro-asian-input-support-fcitx
+	source = enable-ibus.sh
+	source = enable-fcitx.sh
+	source = ibus.desktop
+	md5sums = b974be25b7f91c392009cb8d9f1bd5b4
+	md5sums = fdbfae1bba8012daf984a76d7004ae3e
+	md5sums = f1a9f3406f8268383149889f4816cd52
+
+pkgname = ibus-input-support
+	pkgdesc = A fork of Manjaro Asian input support for ibus, with dependencies set to optional.
+	optdepends = ibus-libpinyin: a Chinese IME
+	optdepends = ibus-anthy: a Japanese IME
+	optdepends = ibus-hangul: a Korean IME
+	optdepends = ibus-unikey: a Vietnamese IME
+	optdepends = ibus-m17n: other languages provided by M17n (http://www.nongnu.org/m17n/)
+	provides = manjaro-asian-input-support-ibus
+
+pkgname = fcitx-input-support
+	pkgdesc = A fork of Manjaro Asian input support for fcitx, with dependencies set to optional.
+	optdepends = fcitx-qt5: QT input module
+	optdepends = fcitx-gtk3: GTK input module
+	optdepends = fcitx-configtool: GUI configuration tool
+	optdepends = fcitx-qt4: required by some closed source Chinese IMEs
+	optdepends = fcitx-googlepinyin: a Chinese IME
+	optdepends = fcitx-cloudpinyin: Internet resources to provide candidate input for Chinese
+	optdepends = fcitx-mozc: a Japanese IME
+	optdepends = fcitx-hangul: a Korean IME
+	optdepends = fcitx-unikey: a Vietnamese IME
+	optdepends = fcitx-sayura: a Sinhalese IME
+	optdepends = fcitx-m17n: other languages provided by M17n (http://www.nongnu.org/m17n/)
+	optdepends = kcm-fcitx: KDE configuration module
+	provides = manjaro-asian-input-support-fcitx
+
