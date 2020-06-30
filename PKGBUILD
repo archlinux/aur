@@ -1,6 +1,6 @@
 _npmname=@kruhlmann/nodelock
 _npmver=1.1.5
-pkgname=nodelock
+pkgname=nodelock-git
 pkgver=1.1.5
 pkgrel=1
 pkgdesc="Locking utility for smart cards"
@@ -9,7 +9,7 @@ url="https://github.com/kruhlmann/nodelock"
 license=()
 depends=('nodejs' 'npm' 'xscreensaver')
 optdepends=()
-source=(https://registry.npmjs.org/$_npmname/-/$pkgname-$_npmver.tgz)
+source=(https://registry.npmjs.org/$_npmname/-/nodelock-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
 sha1sums=(7814094cc215799542ae31229929df8747dc742d)
 
