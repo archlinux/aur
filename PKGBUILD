@@ -1,12 +1,12 @@
 # Maintainer: Ben Oliver <ben@bfoliver.com>
 pkgname=ttf-pf-agora-sans-pro-git
-pkgrel=4
+pkgrel=5
 pkgver=r4.1613ca7
 pkgdesc="A free font from profont.net"
 arch=('any')
 url='https://profont.net/family/pf-agora-sans-pro.html'
 license=('unknown')
-depends=(fontconfig xorg-font-utils )
+depends=('fontconfig')
 makedepends=('git')
 conflicts=()
 install=$pkgname.install
