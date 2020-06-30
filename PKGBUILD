@@ -5,48 +5,55 @@
 pkgbase=thunarx-python
 pkgname=('python2-thunarx' 'python-thunarx')
 epoch=1
-pkgver=0.5.1
+pkgver=0.5.1+5+g0d16722
 pkgrel=1
 pkgdesc="Thunarx Python Bindings"
-arch=('i686' 'x86_64')
-url='http://goodies.xfce.org/projects/bindings/thunarx-python'
-makedepends=('thunar>=1.7.0' 'python2-gobject' 'python-gobject')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url='https://gitlab.xfce.org/bindings/thunarx-python'
+makedepends=('thunar>=1.7.0' 'python2-gobject' 'python-gobject' 'git' 'xfce4-dev-tools')
 license=('GPL')
-sha256sums=('721fd6c305354d904d601be106ead60605a9d611b3a68965ed7b51d0216b1339')
-source=("https://archive.xfce.org/src/bindings/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.bz2")
+_commit='0d167220adb5c3a4a80da5e801611d13d12d29f1'
+source=("git+https://gitlab.xfce.org/bindings/thunarx-python.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgbase}"
+  git describe --long --tags | sed -r "s:^${pkgbase}.::;s/^v//;s/^xfce-//;s/-/+/g"
+}
 
 prepare() {
-  [ -d "${pkgbase}-${pkgver}"-py2 ] && rm -fr "${pkgbase}-${pkgver}"-py2
-  cp -r "${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}"-py2
+  [ -d "${pkgbase}"-py2 ] && rm -fr "${pkgbase}"-py2
+  cp -r "${pkgbase}" "${pkgbase}"-py2
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  PYTHON=python ./configure --prefix=/usr
+  cd "${srcdir}/${pkgbase}"
+  PYTHON=python ./autogen.sh --prefix=/usr
   make
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"-py2
-  PYTHON=python2 ./configure --prefix=/usr
+  cd "${srcdir}/${pkgbase}"-py2
+  PYTHON=python2 ./autogen.sh --prefix=/usr
   make
 }
 
 package_python2-thunarx() {
-  pkgdesc="${pkgdesc/Python/Python 2}"
+  pkgdesc="${pkgdesc} (python 2)"
   depends=('thunar>=1.7.0' 'python2-gobject')
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
   replaces=("${pkgbase}")
 
-  cd "${pkgbase}-${pkgver}"-py2
+  cd "${pkgbase}"-py2
   make DESTDIR="${pkgdir}" install
 }
 
 package_python-thunarx() {
+  pkgdesc="${pkgdesc} (python 3)"
   depends=('thunar>=1.7.0' 'python-gobject')
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
 }
 
