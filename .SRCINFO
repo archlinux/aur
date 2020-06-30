@@ -1,7 +1,7 @@
 pkgbase = motioneye
 	pkgdesc = web-based user interface for motion
 	pkgver = 0.42.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ccrisan/motioneye/
 	install = motioneye.install
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = motioneye
 	depends = python2-futures
 	depends = python2-jinja
 	depends = python2-pycurl
+	depends = python2-pytz
 	depends = python2-pillow
 	depends = mime-types
 	options = emptydirs
