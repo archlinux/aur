@@ -1,0 +1,16 @@
+pkgbase = comixed
+	pkgdesc = An application for managing digital comics
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mcpierce/comixed
+	arch = any
+	license = GPL3
+	depends = java-runtime>=8
+	depends = bash
+	source = comixed-0.6.0.zip::https://github.com/comixed/comixed/releases/download/v0.6.0-1/comixed-app-0.6.0-1-RELEASE.zip
+	source = comixed.service
+	sha256sums = 55a2132f64ae82a1d333263d7399d892487dead77a0593fad45c75297d34f7f8
+	sha256sums = SKIP
+
+pkgname = comixed
+
