@@ -1,17 +1,17 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('pkgbuild-assistant')
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A PKGBUILD Assistant written by Qt5."
+pkgdesc="A PKGBUILD Assistant written in Qt5."
 provides=("pkgbuild-assistant")
 url='https://github.com/skykeyjoker/PKGBUILD-Assistant'
 arch=('x86_64')
 
 depends=('qt5-base' 'harfbuzz' 'graphite')
-source=("https://github.com/skykeyjoker/PKGBUILD-Assistant/releases/download/1.1.0/PKGBUILD-Assistant.tar.gz"
+source=("https://github.com/skykeyjoker/PKGBUILD-Assistant/releases/download/2.0.0/PKGBUILD-Assistant.tar.gz"
 )
-sha512sums=('ed34b499dbaf8f2ae5c45aa2dde8473c78692b3c8a821a9f873aa21751d7040f08dc7b534ac381eca6a5f66b4e36d03c88b800c360b2b4747840bbd698f62145'
+sha512sums=('f9c669e1b0d9170943d36fcb6b1d877276e8ffbf66188ad482fdc39acea1967abefe8f923e142a9db41f8a0f9aae9f494bf3fd48e3347eaea8d96277747abc5f'
 )
 
 package(){
