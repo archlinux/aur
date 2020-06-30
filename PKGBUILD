@@ -1,8 +1,8 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
 pkgname=vc4c-git
-pkgver=0
-pkgrel=8
+pkgver=r683.f986061
+pkgrel=1
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
