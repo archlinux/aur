@@ -4,7 +4,7 @@
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8h' 'armv6l' 'armv7l' 'armv8l')
 pkgname=aacgain-cvs
 pkgver=20130814
-pkgrel=4
+pkgrel=5
 conflicts=('aacgain')
 provides=('aacgain')
 makedepends=('git')
@@ -38,7 +38,7 @@ build() {
     cd ../mp4v2
     patch -p0 <$srcdir/aacgain-cvs/fix_missing_ptr_deref.patch
     ./configure
-    make libmp4v2.la
+    make libmp4v2.la CXXFLAGS=-Wno-narrowing
 
     msg "Building faad2..."
     cd ../faad2

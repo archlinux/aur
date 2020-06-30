@@ -1,7 +1,7 @@
 pkgbase = aacgain-cvs
 	pkgdesc = Adjusts the volume of music files (mp4/m4a/QT/mp3) using ReplayGain algorithm.
 	pkgver = 20130814
-	pkgrel = 4
+	pkgrel = 5
 	url = http://altosdesign.com/aacgain
 	arch = i686
 	arch = x86_64
