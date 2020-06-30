@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=growlight
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
@@ -10,9 +10,8 @@ arch=('x86_64')
 # ncurses and readline are found without our help. Don't explicitly list them.
 # The same goes for device-mapper.
 depends=('cryptsetup' 'libatasmart' 'libpciaccess' 'pciutils' 'notcurses>=1.3.2')
-makedepends=('cunit' 'docbook-xsl' 'autoconf-archive' 'libxslt' 'autoconf')
-optdepends=('jfsutils: JFS manipulation'
-            'xfsprogs: XFS manipulation'
+makedepends=('cunit' 'docbook-xsl' 'cmake' 'libxslt')
+optdepends=('jfsutils: JFS manipulation' 'xfsprogs: XFS manipulation'
             'mdadm: Linux MDRAID manipulation'
             'btrfs-progs: Btrfs manipulation'
             'hfsprogs: HFS (MacOS) manipulation'
@@ -23,26 +22,25 @@ optdepends=('jfsutils: JFS manipulation'
             'zfs-utils: ZFS-on-Linux manipulation')
 source=("https://github.com/dankamongmen/growlight/archive/v${pkgver}.tar.gz")
 
-build() {
-  cd "$pkgname-$pkgver"
-  autoreconf -fis
+prepare() {
+  mkdir -p "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
   if pkg-config --modversion libzfs > /dev/null 2>&1 ; then
-    ./configure --prefix=/usr
+    cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
   else
     echo "Building without ZFS support..."
-    ./configure --prefix=/usr --disable-zfs
+    cmake .. -DUSE_LIBZFS=off -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
   fi
+}
+
+build() {
+  cd "${pkgname}-${pkgver}/build"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${pkgname}-${pkgver}/build"
+  make install DESTDIR="$pkgdir"
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" check
-}
-
-sha256sums=('61803dbf2c424e42e29913b03364d68e272fa65bf8042a44c87811a5f1503f05')
+sha256sums=('01cd0abbf42376c949ccf3126e5cb9aafcf15aac0a583e1a7c7c4a5fe879ac61')
