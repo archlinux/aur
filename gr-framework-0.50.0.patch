@@ -1,0 +1,12 @@
+diff --git a/lib/gks/plugin/qt5plugin.cxx b/lib/gks/plugin/qt5plugin.cxx
+index de9cd3d2..301d7fb9 100644
+--- a/lib/gks/plugin/qt5plugin.cxx
++++ b/lib/gks/plugin/qt5plugin.cxx
+@@ -6,6 +6,7 @@
+ 
+ #include <QtWidgets/QWidget>
+ #include <QtGui/QPainter>
++#include <QtGui/QPainterPath>
+ #include <QtGui/QImage>
+ #include <QtGui/QGuiApplication>
+ #include <QtGui/QScreen>
