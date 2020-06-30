@@ -1,6 +1,7 @@
 # Maintainer: Steven Spangler <132@ikl.sh>
-pkgname="minirss-git"
-pkgver=r3.2af2112
+_pkgname="minirss"
+pkgname="${_pkgname}-git"
+pkgver=v1.0.0.r1.g2af2112
 pkgrel=1
 pkgdesc="A minuscule RSS notifier"
 arch=("any")
@@ -15,11 +16,12 @@ source=("git+${url}.git")
 md5sums=("SKIP")
 
 pkgver()  {
-    printf "r%s.%s" "$(git -C minirss rev-list --count HEAD)" "$(git -C minirss rev-parse --short HEAD)"
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/usr/lib/systemd/user/"
-    install -m755 "minirss/minirss" "${pkgdir}/usr/bin/minirss"
-    install -m644 "minirss/minirss.service" "${pkgdir}/usr/lib/systemd/user/minirss.service"
+    install -m755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -m644 "${_pkgname}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 }

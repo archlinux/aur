@@ -1,7 +1,7 @@
 pkgbase = minirss-git
 	pkgdesc = A minuscule RSS notifier
-	pkgver = r3.2af2112
-	pkgrel = 1
+	pkgver = v1.1.0.r0.g08fe361
+	pkgrel = 2
 	url = https://github.com/132ikl/minirss
 	arch = any
 	license = GPL3
