@@ -1,0 +1,25 @@
+pkgbase = easytag
+	pkgdesc = Simple application for viewing and editing tags in audio files
+	pkgver = 2.4.3
+	pkgrel = 3
+	url = https://wiki.gnome.org/Apps/EasyTAG
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = id3lib
+	depends = libid3tag
+	depends = gtk3
+	depends = libvorbis
+	depends = flac
+	depends = speex
+	depends = wavpack
+	depends = taglib
+	depends = desktop-file-utils
+	depends = opusfile
+	source = https://download.gnome.org/sources/easytag/2.4/easytag-2.4.3.tar.xz
+	sha256sums = fc51ee92a705e3c5979dff1655f7496effb68b98f1ada0547e8cbbc033b67dd5
+
+pkgname = easytag
+
