@@ -1,0 +1,22 @@
+pkgbase = gftools-git
+	pkgdesc = Misc tools for working with the Google Fonts library
+	pkgver = 0.3.14.r2.gb26c5c5
+	pkgrel = 1
+	url = https://github.com/googlefonts/gftools
+	arch = any
+	license = Apache
+	makedepends = python-setuptools-scm
+	depends = absl-py
+	depends = python
+	depends = python-fonttools
+	depends = python-fs
+	depends = python-protobuf
+	depends = python-pygithub
+	depends = python-vttlib
+	provides = gftools
+	conflicts = gftools
+	source = gftools-git::git+https://github.com/googlefonts/gftools.git
+	sha256sums = SKIP
+
+pkgname = gftools-git
+
