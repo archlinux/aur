@@ -1,0 +1,1272 @@
+From c4890065a33ac265184400ab83743702efbaf291 Mon Sep 17 00:00:00 2001
+From: AnhQuan Nguyen <j4qfrost@gmail.com>
+Date: Wed, 6 May 2020 23:12:35 -0700
+Subject: [PATCH] clippy suggestions
+
+---
+ Cargo.toml                                    |   2 +-
+ src/bridge/layouts/mod.rs                     |  10 +-
+ src/bridge/ui_commands.rs                     |   6 +-
+ src/editor/grid.rs                            |   2 +-
+ src/editor/mod.rs                             |   7 +-
+ src/renderer/caching_shaper.rs                |  21 +-
+ .../cursor_renderer/animation_utils.rs        |   2 +-
+ src/renderer/cursor_renderer/cursor_vfx.rs    | 868 +++++++++---------
+ src/renderer/cursor_renderer/mod.rs           |   8 +-
+ src/renderer/font_options.rs                  |   4 +-
+ src/renderer/mod.rs                           |   8 +-
+ src/settings/mod.rs                           |   8 +-
+ src/window.rs                                 |  36 +-
+ 13 files changed, 485 insertions(+), 497 deletions(-)
+
+diff --git a/src/bridge/layouts/mod.rs b/src/bridge/layouts/mod.rs
+index 6d91d69..d4b0ed3 100644
+--- a/src/bridge/layouts/mod.rs
++++ b/src/bridge/layouts/mod.rs
+@@ -59,12 +59,12 @@ fn append_modifiers(
+     gui: bool,
+ ) -> String {
+     let mut result = keycode_text.to_string();
+-    let mut special = special;
+-
+-    if result == "<" {
++    let mut special = if result == "<" {
+         result = "lt".to_string();
+-        special = true;
+-    }
++        true
++    } else {
++        special
++    };
+ 
+     if shift {
+         special = true;
+diff --git a/src/bridge/ui_commands.rs b/src/bridge/ui_commands.rs
+index 77f6774..79767b1 100644
+--- a/src/bridge/ui_commands.rs
++++ b/src/bridge/ui_commands.rs
+@@ -42,7 +42,7 @@ impl UiCommand {
+                 action,
+                 position: (grid_x, grid_y),
+             } => {
+-                if { EDITOR.lock().mouse_enabled } {
++                if EDITOR.lock().mouse_enabled {
+                     nvim.input_mouse("left", &action, "", 0, grid_y as i64, grid_x as i64)
+                         .await
+                         .expect("Mouse Input Failed");
+@@ -52,14 +52,14 @@ impl UiCommand {
+                 direction,
+                 position: (grid_x, grid_y),
+             } => {
+-                if { EDITOR.lock().mouse_enabled } {
++                if EDITOR.lock().mouse_enabled {
+                     nvim.input_mouse("wheel", &direction, "", 0, grid_y as i64, grid_x as i64)
+                         .await
+                         .expect("Mouse Scroll Failed");
+                 }
+             }
+             UiCommand::Drag(grid_x, grid_y) => {
+-                if { EDITOR.lock().mouse_enabled } {
++                if EDITOR.lock().mouse_enabled {
+                     nvim.input_mouse("left", "drag", "", 0, grid_y as i64, grid_x as i64)
+                         .await
+                         .expect("Mouse Drag Failed");
+diff --git a/src/editor/grid.rs b/src/editor/grid.rs
+index 77a947d..7357d20 100644
+--- a/src/editor/grid.rs
++++ b/src/editor/grid.rs
+@@ -79,7 +79,7 @@ impl CharacterGrid {
+     }
+ 
+     pub fn set_characters_all(&mut self, value: GridCell) {
+-        let cloned_value = value.clone();
++        let cloned_value = value;
+         self.characters.clear();
+         self.characters
+             .resize_with((self.width * self.height) as usize, || {
+diff --git a/src/editor/mod.rs b/src/editor/mod.rs
+index 23b71e0..b02580c 100644
+--- a/src/editor/mod.rs
++++ b/src/editor/mod.rs
+@@ -301,11 +301,8 @@ impl Editor {
+ 
+     fn set_option(&mut self, gui_option: GuiOption) {
+         trace!("Option set {:?}", &gui_option);
+-        match gui_option {
+-            GuiOption::GuiFont(guifont) => {
+-                self.guifont = Some(guifont);
+-            }
+-            _ => {}
++        if let GuiOption::GuiFont(guifont) = gui_option {
++            self.guifont = Some(guifont);
+         }
+     }
+ }
+diff --git a/src/renderer/caching_shaper.rs b/src/renderer/caching_shaper.rs
+index e38355a..f947e05 100644
+--- a/src/renderer/caching_shaper.rs
++++ b/src/renderer/caching_shaper.rs
+@@ -79,7 +79,7 @@ impl ExtendedFontFamily {
+     pub fn from_normal_font_family(fonts: &[Handle]) -> ExtendedFontFamily {
+         let mut family = ExtendedFontFamily::new();
+ 
+-        for font in fonts.into_iter() {
++        for font in fonts.iter() {
+             if let Ok(font) = font.load() {
+                 family.add_font(SkriboFont::new(font));
+             }
+@@ -88,11 +88,11 @@ impl ExtendedFontFamily {
+         family
+     }
+ 
+-    pub fn to_normal_font_family(self) -> FontFamily {
++    pub fn to_normal_font_family(&self) -> FontFamily {
+         let mut new_family = FontFamily::new();
+ 
+-        for font in self.fonts {
+-            new_family.add_font(font);
++        for font in &self.fonts {
++            new_family.add_font(font.clone());
+         }
+ 
+         new_family
+@@ -113,17 +113,18 @@ impl FontLoader {
+     }
+ 
+     fn get(&mut self, font_name: &str) -> Option<ExtendedFontFamily> {
+-        return self.cache.get(&String::from(font_name)).cloned();
++        self.cache.get(&String::from(font_name)).cloned()
+     }
+ 
+     #[cfg(feature = "embed-fonts")]
+     fn load_from_asset(&mut self, font_name: &str) -> Option<ExtendedFontFamily> {
+         let mut family = ExtendedFontFamily::new();
+ 
+-        Asset::get(font_name)
++        if let Some(font) = Asset::get(font_name)
+             .and_then(|font_data| Font::from_bytes(font_data.to_vec().into(), 0).ok())
+-            .map(|font| family.add_font(SkriboFont::new(font)));
+-
++        {
++            family.add_font(SkriboFont::new(font))
++        }
+         self.cache.put(String::from(font_name), family);
+         self.get(font_name)
+     }
+@@ -162,7 +163,7 @@ struct ShapeKey {
+ 
+ pub fn build_collection_by_font_name(
+     loader: &mut FontLoader,
+-    fallback_list: &Vec<String>,
++    fallback_list: &[String],
+     bold: bool,
+     italic: bool,
+ ) -> FontCollection {
+@@ -212,7 +213,7 @@ struct FontSet {
+ }
+ 
+ impl FontSet {
+-    fn new(fallback_list: &Vec<String>, mut loader: &mut FontLoader) -> FontSet {
++    fn new(fallback_list: &[String], mut loader: &mut FontLoader) -> FontSet {
+         FontSet {
+             normal: build_collection_by_font_name(&mut loader, fallback_list, false, false),
+             bold: build_collection_by_font_name(&mut loader, fallback_list, true, false),
+diff --git a/src/renderer/cursor_renderer/animation_utils.rs b/src/renderer/cursor_renderer/animation_utils.rs
+index 0a410f0..b812842 100644
+--- a/src/renderer/cursor_renderer/animation_utils.rs
++++ b/src/renderer/cursor_renderer/animation_utils.rs
+@@ -58,7 +58,7 @@ pub fn ease_in_expo(t: f32) -> f32 {
+ 
+ #[allow(dead_code)]
+ pub fn ease_out_expo(t: f32) -> f32 {
+-    if t == 1.0 {
++    if (t - 1.0).abs() < f32::EPSILON {
+         1.0
+     } else {
+         1.0 - 2.0f32.powf(-10.0 * t)
+diff --git a/src/renderer/cursor_renderer/cursor_vfx.rs b/src/renderer/cursor_renderer/cursor_vfx.rs
+index 2113e73..e2a1358 100644
+--- a/src/renderer/cursor_renderer/cursor_vfx.rs
++++ b/src/renderer/cursor_renderer/cursor_vfx.rs
+@@ -1,434 +1,434 @@
+-use log::error;
+-use skulpin::skia_safe::{paint::Style, BlendMode, Canvas, Color, Paint, Point, Rect};
+-
+-use super::animation_utils::*;
+-use super::CursorSettings;
+-use crate::editor::{Colors, Cursor};
+-use crate::settings::*;
+-
+-pub trait CursorVfx {
+-    fn update(
+-        &mut self,
+-        settings: &CursorSettings,
+-        current_cursor_destination: Point,
+-        font_size: (f32, f32),
+-        dt: f32,
+-    ) -> bool;
+-    fn restart(&mut self, position: Point);
+-    fn render(
+-        &self,
+-        settings: &CursorSettings,
+-        canvas: &mut Canvas,
+-        cursor: &Cursor,
+-        colors: &Colors,
+-        font_size: (f32, f32),
+-    );
+-}
+-
+-#[derive(Clone, PartialEq)]
+-pub enum HighlightMode {
+-    SonicBoom,
+-    Ripple,
+-    Wireframe,
+-}
+-
+-#[derive(Clone, PartialEq)]
+-pub enum TrailMode {
+-    Railgun,
+-    Torpedo,
+-    PixieDust,
+-}
+-
+-#[derive(Clone, PartialEq)]
+-pub enum VfxMode {
+-    Highlight(HighlightMode),
+-    Trail(TrailMode),
+-    Disabled,
+-}
+-
+-impl FromValue for VfxMode {
+-    fn from_value(&mut self, value: Value) {
+-        if value.is_str() {
+-            *self = match value.as_str().unwrap() {
+-                "sonicboom" => VfxMode::Highlight(HighlightMode::SonicBoom),
+-                "ripple" => VfxMode::Highlight(HighlightMode::Ripple),
+-                "wireframe" => VfxMode::Highlight(HighlightMode::Wireframe),
+-                "railgun" => VfxMode::Trail(TrailMode::Railgun),
+-                "torpedo" => VfxMode::Trail(TrailMode::Torpedo),
+-                "pixiedust" => VfxMode::Trail(TrailMode::PixieDust),
+-                "" => VfxMode::Disabled,
+-                value => {
+-                    error!("Expected a VfxMode name, but received {:?}", value);
+-                    return;
+-                }
+-            };
+-        } else {
+-            error!("Expected a VfxMode string, but received {:?}", value);
+-        }
+-    }
+-}
+-
+-impl From<VfxMode> for Value {
+-    fn from(mode: VfxMode) -> Self {
+-        match mode {
+-            VfxMode::Highlight(HighlightMode::SonicBoom) => Value::from("sonicboom"),
+-            VfxMode::Highlight(HighlightMode::Ripple) => Value::from("ripple"),
+-            VfxMode::Highlight(HighlightMode::Wireframe) => Value::from("wireframe"),
+-            VfxMode::Trail(TrailMode::Railgun) => Value::from("railgun"),
+-            VfxMode::Trail(TrailMode::Torpedo) => Value::from("torpedo"),
+-            VfxMode::Trail(TrailMode::PixieDust) => Value::from("pixiedust"),
+-            VfxMode::Disabled => Value::from(""),
+-        }
+-    }
+-}
+-
+-pub fn new_cursor_vfx(mode: &VfxMode) -> Option<Box<dyn CursorVfx>> {
+-    match mode {
+-        VfxMode::Highlight(mode) => Some(Box::new(PointHighlight::new(mode))),
+-        VfxMode::Trail(mode) => Some(Box::new(ParticleTrail::new(mode))),
+-        VfxMode::Disabled => None,
+-    }
+-}
+-
+-pub struct PointHighlight {
+-    t: f32,
+-    center_position: Point,
+-    mode: HighlightMode,
+-}
+-
+-impl PointHighlight {
+-    pub fn new(mode: &HighlightMode) -> PointHighlight {
+-        PointHighlight {
+-            t: 0.0,
+-            center_position: Point::new(0.0, 0.0),
+-            mode: mode.clone(),
+-        }
+-    }
+-}
+-
+-impl CursorVfx for PointHighlight {
+-    fn update(
+-        &mut self,
+-        _settings: &CursorSettings,
+-        _current_cursor_destination: Point,
+-        _font_size: (f32, f32),
+-        dt: f32,
+-    ) -> bool {
+-        self.t = (self.t + dt * 5.0).min(1.0); // TODO - speed config
+-        self.t < 1.0
+-    }
+-
+-    fn restart(&mut self, position: Point) {
+-        self.t = 0.0;
+-        self.center_position = position;
+-    }
+-
+-    fn render(
+-        &self,
+-        settings: &CursorSettings,
+-        canvas: &mut Canvas,
+-        cursor: &Cursor,
+-        colors: &Colors,
+-        font_size: (f32, f32),
+-    ) {
+-        if self.t == 1.0 {
+-            return;
+-        }
+-
+-        let mut paint = Paint::new(skulpin::skia_safe::colors::WHITE, None);
+-        paint.set_blend_mode(BlendMode::SrcOver);
+-
+-        let base_color: Color = cursor.background(&colors).to_color();
+-        let alpha = ease(ease_in_quad, settings.vfx_opacity, 0.0, self.t) as u8;
+-        let color = Color::from_argb(alpha, base_color.r(), base_color.g(), base_color.b());
+-
+-        paint.set_color(color);
+-
+-        let size = 3.0 * font_size.1;
+-        let radius = self.t * size;
+-        let hr = radius * 0.5;
+-        let rect = Rect::from_xywh(
+-            self.center_position.x - hr,
+-            self.center_position.y - hr,
+-            radius,
+-            radius,
+-        );
+-
+-        match self.mode {
+-            HighlightMode::SonicBoom => {
+-                canvas.draw_oval(&rect, &paint);
+-            }
+-            HighlightMode::Ripple => {
+-                paint.set_style(Style::Stroke);
+-                paint.set_stroke_width(font_size.1 * 0.2);
+-                canvas.draw_oval(&rect, &paint);
+-            }
+-            HighlightMode::Wireframe => {
+-                paint.set_style(Style::Stroke);
+-                paint.set_stroke_width(font_size.1 * 0.2);
+-                canvas.draw_rect(&rect, &paint);
+-            }
+-        }
+-    }
+-}
+-
+-#[derive(Clone)]
+-struct ParticleData {
+-    pos: Point,
+-    speed: Point,
+-    rotation_speed: f32,
+-    lifetime: f32,
+-}
+-
+-pub struct ParticleTrail {
+-    particles: Vec<ParticleData>,
+-    previous_cursor_dest: Point,
+-    trail_mode: TrailMode,
+-    rng: RngState,
+-}
+-
+-impl ParticleTrail {
+-    pub fn new(trail_mode: &TrailMode) -> ParticleTrail {
+-        ParticleTrail {
+-            particles: vec![],
+-            previous_cursor_dest: Point::new(0.0, 0.0),
+-            trail_mode: trail_mode.clone(),
+-            rng: RngState::new(),
+-        }
+-    }
+-
+-    fn add_particle(&mut self, pos: Point, speed: Point, rotation_speed: f32, lifetime: f32) {
+-        self.particles.push(ParticleData {
+-            pos,
+-            speed,
+-            rotation_speed,
+-            lifetime,
+-        });
+-    }
+-
+-    // Note this method doesn't keep particles in order
+-    fn remove_particle(&mut self, idx: usize) {
+-        self.particles[idx] = self.particles[self.particles.len() - 1].clone();
+-        self.particles.pop();
+-    }
+-}
+-
+-impl CursorVfx for ParticleTrail {
+-    fn update(
+-        &mut self,
+-        settings: &CursorSettings,
+-        current_cursor_dest: Point,
+-        font_size: (f32, f32),
+-        dt: f32,
+-    ) -> bool {
+-        // Update lifetimes and remove dead particles
+-        let mut i = 0;
+-        while i < self.particles.len() {
+-            let particle: &mut ParticleData = &mut self.particles[i];
+-            particle.lifetime -= dt;
+-            if particle.lifetime <= 0.0 {
+-                self.remove_particle(i);
+-            } else {
+-                i += 1;
+-            }
+-        }
+-
+-        // Update particle positions
+-        for i in 0..self.particles.len() {
+-            let particle = &mut self.particles[i];
+-            particle.pos += particle.speed * dt;
+-            particle.speed = rotate_vec(particle.speed, dt * particle.rotation_speed);
+-        }
+-
+-        // Spawn new particles
+-        if current_cursor_dest != self.previous_cursor_dest {
+-            let travel = current_cursor_dest - self.previous_cursor_dest;
+-            let travel_distance = travel.length();
+-
+-            // Increase amount of particles when cursor travels further
+-            let particle_count = ((travel_distance / font_size.0).powf(1.5)
+-                * settings.vfx_particle_density
+-                * 0.01) as usize;
+-
+-            let prev_p = self.previous_cursor_dest;
+-
+-            for i in 0..particle_count {
+-                let t = i as f32 / (particle_count as f32);
+-
+-                let speed = match self.trail_mode {
+-                    TrailMode::Railgun => {
+-                        let phase = t / 3.141592
+-                            * settings.vfx_particle_phase
+-                            * (travel_distance / font_size.0);
+-                        Point::new(phase.sin(), phase.cos()) * 2.0 * settings.vfx_particle_speed
+-                    }
+-                    TrailMode::Torpedo => {
+-                        let mut travel_dir = travel;
+-                        travel_dir.normalize();
+-                        let mut particle_dir = self.rng.rand_dir_normalized() - travel_dir * 1.5;
+-                        particle_dir.normalize();
+-                        particle_dir * settings.vfx_particle_speed
+-                    }
+-                    TrailMode::PixieDust => {
+-                        let base_dir = self.rng.rand_dir_normalized();
+-                        let dir = Point::new(base_dir.x * 0.5, 0.4 + base_dir.y.abs());
+-                        dir * 3.0 * settings.vfx_particle_speed
+-                    }
+-                };
+-
+-                // Distribute particles along the travel distance
+-                let pos = match self.trail_mode {
+-                    TrailMode::Railgun => prev_p + travel * t,
+-                    TrailMode::PixieDust | TrailMode::Torpedo => {
+-                        prev_p + travel * self.rng.next_f32() + Point::new(0.0, font_size.1 * 0.5)
+-                    }
+-                };
+-
+-                let rotation_speed = match self.trail_mode {
+-                    TrailMode::Railgun => std::f32::consts::PI * settings.vfx_particle_curl,
+-                    TrailMode::PixieDust | TrailMode::Torpedo => {
+-                        (self.rng.next_f32() - 0.5)
+-                            * std::f32::consts::FRAC_PI_2
+-                            * settings.vfx_particle_curl
+-                    }
+-                };
+-
+-                self.add_particle(
+-                    pos,
+-                    speed,
+-                    rotation_speed,
+-                    t * settings.vfx_particle_lifetime,
+-                );
+-            }
+-
+-            self.previous_cursor_dest = current_cursor_dest;
+-        }
+-
+-        // Keep animating as long as there are particles alive
+-        !self.particles.is_empty()
+-    }
+-
+-    fn restart(&mut self, _position: Point) {}
+-
+-    fn render(
+-        &self,
+-        settings: &CursorSettings,
+-        canvas: &mut Canvas,
+-        cursor: &Cursor,
+-        colors: &Colors,
+-        font_size: (f32, f32),
+-    ) {
+-        let mut paint = Paint::new(skulpin::skia_safe::colors::WHITE, None);
+-        match self.trail_mode {
+-            TrailMode::Torpedo | TrailMode::Railgun => {
+-                paint.set_style(Style::Stroke);
+-                paint.set_stroke_width(font_size.1 * 0.2);
+-            }
+-            _ => {}
+-        }
+-
+-        let base_color: Color = cursor.background(&colors).to_color();
+-
+-        paint.set_blend_mode(BlendMode::SrcOver);
+-
+-        self.particles.iter().for_each(|particle| {
+-            let l = particle.lifetime / settings.vfx_particle_lifetime;
+-            let alpha = (l * settings.vfx_opacity) as u8;
+-            let color = Color::from_argb(alpha, base_color.r(), base_color.g(), base_color.b());
+-            paint.set_color(color);
+-
+-            let radius = match self.trail_mode {
+-                TrailMode::Torpedo | TrailMode::Railgun => font_size.0 * 0.5 * l,
+-                TrailMode::PixieDust => font_size.0 * 0.2,
+-            };
+-
+-            let hr = radius * 0.5;
+-            let rect = Rect::from_xywh(particle.pos.x - hr, particle.pos.y - hr, radius, radius);
+-
+-            match self.trail_mode {
+-                TrailMode::Torpedo | TrailMode::Railgun => {
+-                    canvas.draw_oval(&rect, &paint);
+-                }
+-                TrailMode::PixieDust => {
+-                    canvas.draw_rect(&rect, &paint);
+-                }
+-            }
+-        });
+-    }
+-}
+-
+-// Random number generator based on http://www.pcg-random.org/
+-struct RngState {
+-    state: u64,
+-    inc: u64,
+-}
+-
+-impl RngState {
+-    fn new() -> RngState {
+-        RngState {
+-            state: 0x853C49E6748FEA9Bu64,
+-            inc: (0xDA3E39CB94B95BDBu64 << 1) | 1,
+-        }
+-    }
+-    fn next(&mut self) -> u32 {
+-        let old_state = self.state;
+-
+-        // Implementation copied from:
+-        // https://rust-random.github.io/rand/src/rand_pcg/pcg64.rs.html#103
+-        let new_state = old_state
+-            .wrapping_mul(6_364_136_223_846_793_005u64)
+-            .wrapping_add(self.inc);
+-
+-        self.state = new_state;
+-
+-        const ROTATE: u32 = 59; // 64 - 5
+-        const XSHIFT: u32 = 18; // (5 + 32) / 2
+-        const SPARE: u32 = 27; // 64 - 32 - 5
+-
+-        let rot = (old_state >> ROTATE) as u32;
+-        let xsh = (((old_state >> XSHIFT) ^ old_state) >> SPARE) as u32;
+-        xsh.rotate_right(rot)
+-    }
+-
+-    fn next_f32(&mut self) -> f32 {
+-        let v = self.next();
+-
+-        // In C we'd do ldexp(v, -32) to bring a number in the range [0,2^32) down to [0,1) range.
+-        // But as we don't have ldexp in Rust, we're implementing the same idea (subtracting 32
+-        // from the floating point exponent) manually.
+-
+-        // First, extract exponent bits
+-        let float_bits = (v as f64).to_bits();
+-        let exponent = (float_bits >> 52) & ((1 << 11) - 1);
+-
+-        // Set exponent for [0-1) range
+-        let new_exponent = exponent.max(32) - 32;
+-
+-        // Build the new f64 value from the old mantissa and sign, and the new exponent
+-        let new_bits = (new_exponent << 52) | (float_bits & 0x801F_FFFF_FFFF_FFFFu64);
+-
+-        f64::from_bits(new_bits) as f32
+-    }
+-
+-    // Produces a random vector with x and y in the [-1,1) range
+-    // Note: Vector is not normalized.
+-    fn rand_dir(&mut self) -> Point {
+-        let x = self.next_f32();
+-        let y = self.next_f32();
+-
+-        Point::new(x * 2.0 - 1.0, y * 2.0 - 1.0)
+-    }
+-
+-    fn rand_dir_normalized(&mut self) -> Point {
+-        let mut v = self.rand_dir();
+-        v.normalize();
+-        v
+-    }
+-}
+-
+-fn rotate_vec(v: Point, rot: f32) -> Point {
+-    let sin = rot.sin();
+-    let cos = rot.cos();
+-
+-    Point::new(v.x * cos - v.y * sin, v.x * sin + v.y * cos)
+-}
++use log::error;
++use skulpin::skia_safe::{paint::Style, BlendMode, Canvas, Color, Paint, Point, Rect};
++
++use super::animation_utils::*;
++use super::CursorSettings;
++use crate::editor::{Colors, Cursor};
++use crate::settings::*;
++
++pub trait CursorVfx {
++    fn update(
++        &mut self,
++        settings: &CursorSettings,
++        current_cursor_destination: Point,
++        font_size: (f32, f32),
++        dt: f32,
++    ) -> bool;
++    fn restart(&mut self, position: Point);
++    fn render(
++        &self,
++        settings: &CursorSettings,
++        canvas: &mut Canvas,
++        cursor: &Cursor,
++        colors: &Colors,
++        font_size: (f32, f32),
++    );
++}
++
++#[derive(Clone, PartialEq)]
++pub enum HighlightMode {
++    SonicBoom,
++    Ripple,
++    Wireframe,
++}
++
++#[derive(Clone, PartialEq)]
++pub enum TrailMode {
++    Railgun,
++    Torpedo,
++    PixieDust,
++}
++
++#[derive(Clone, PartialEq)]
++pub enum VfxMode {
++    Highlight(HighlightMode),
++    Trail(TrailMode),
++    Disabled,
++}
++
++impl FromValue for VfxMode {
++    fn from_value(&mut self, value: Value) {
++        if value.is_str() {
++            *self = match value.as_str().unwrap() {
++                "sonicboom" => VfxMode::Highlight(HighlightMode::SonicBoom),
++                "ripple" => VfxMode::Highlight(HighlightMode::Ripple),
++                "wireframe" => VfxMode::Highlight(HighlightMode::Wireframe),
++                "railgun" => VfxMode::Trail(TrailMode::Railgun),
++                "torpedo" => VfxMode::Trail(TrailMode::Torpedo),
++                "pixiedust" => VfxMode::Trail(TrailMode::PixieDust),
++                "" => VfxMode::Disabled,
++                value => {
++                    error!("Expected a VfxMode name, but received {:?}", value);
++                    return;
++                }
++            };
++        } else {
++            error!("Expected a VfxMode string, but received {:?}", value);
++        }
++    }
++}
++
++impl From<VfxMode> for Value {
++    fn from(mode: VfxMode) -> Self {
++        match mode {
++            VfxMode::Highlight(HighlightMode::SonicBoom) => Value::from("sonicboom"),
++            VfxMode::Highlight(HighlightMode::Ripple) => Value::from("ripple"),
++            VfxMode::Highlight(HighlightMode::Wireframe) => Value::from("wireframe"),
++            VfxMode::Trail(TrailMode::Railgun) => Value::from("railgun"),
++            VfxMode::Trail(TrailMode::Torpedo) => Value::from("torpedo"),
++            VfxMode::Trail(TrailMode::PixieDust) => Value::from("pixiedust"),
++            VfxMode::Disabled => Value::from(""),
++        }
++    }
++}
++
++pub fn new_cursor_vfx(mode: &VfxMode) -> Option<Box<dyn CursorVfx>> {
++    match mode {
++        VfxMode::Highlight(mode) => Some(Box::new(PointHighlight::new(mode))),
++        VfxMode::Trail(mode) => Some(Box::new(ParticleTrail::new(mode))),
++        VfxMode::Disabled => None,
++    }
++}
++
++pub struct PointHighlight {
++    t: f32,
++    center_position: Point,
++    mode: HighlightMode,
++}
++
++impl PointHighlight {
++    pub fn new(mode: &HighlightMode) -> PointHighlight {
++        PointHighlight {
++            t: 0.0,
++            center_position: Point::new(0.0, 0.0),
++            mode: mode.clone(),
++        }
++    }
++}
++
++impl CursorVfx for PointHighlight {
++    fn update(
++        &mut self,
++        _settings: &CursorSettings,
++        _current_cursor_destination: Point,
++        _font_size: (f32, f32),
++        dt: f32,
++    ) -> bool {
++        self.t = (self.t + dt * 5.0).min(1.0); // TODO - speed config
++        self.t < 1.0
++    }
++
++    fn restart(&mut self, position: Point) {
++        self.t = 0.0;
++        self.center_position = position;
++    }
++
++    fn render(
++        &self,
++        settings: &CursorSettings,
++        canvas: &mut Canvas,
++        cursor: &Cursor,
++        colors: &Colors,
++        font_size: (f32, f32),
++    ) {
++        if (self.t - 1.0).abs() < f32::EPSILON {
++            return;
++        }
++
++        let mut paint = Paint::new(skulpin::skia_safe::colors::WHITE, None);
++        paint.set_blend_mode(BlendMode::SrcOver);
++
++        let base_color: Color = cursor.background(&colors).to_color();
++        let alpha = ease(ease_in_quad, settings.vfx_opacity, 0.0, self.t) as u8;
++        let color = Color::from_argb(alpha, base_color.r(), base_color.g(), base_color.b());
++
++        paint.set_color(color);
++
++        let size = 3.0 * font_size.1;
++        let radius = self.t * size;
++        let hr = radius * 0.5;
++        let rect = Rect::from_xywh(
++            self.center_position.x - hr,
++            self.center_position.y - hr,
++            radius,
++            radius,
++        );
++
++        match self.mode {
++            HighlightMode::SonicBoom => {
++                canvas.draw_oval(&rect, &paint);
++            }
++            HighlightMode::Ripple => {
++                paint.set_style(Style::Stroke);
++                paint.set_stroke_width(font_size.1 * 0.2);
++                canvas.draw_oval(&rect, &paint);
++            }
++            HighlightMode::Wireframe => {
++                paint.set_style(Style::Stroke);
++                paint.set_stroke_width(font_size.1 * 0.2);
++                canvas.draw_rect(&rect, &paint);
++            }
++        }
++    }
++}
++
++#[derive(Clone)]
++struct ParticleData {
++    pos: Point,
++    speed: Point,
++    rotation_speed: f32,
++    lifetime: f32,
++}
++
++pub struct ParticleTrail {
++    particles: Vec<ParticleData>,
++    previous_cursor_dest: Point,
++    trail_mode: TrailMode,
++    rng: RngState,
++}
++
++impl ParticleTrail {
++    pub fn new(trail_mode: &TrailMode) -> ParticleTrail {
++        ParticleTrail {
++            particles: vec![],
++            previous_cursor_dest: Point::new(0.0, 0.0),
++            trail_mode: trail_mode.clone(),
++            rng: RngState::new(),
++        }
++    }
++
++    fn add_particle(&mut self, pos: Point, speed: Point, rotation_speed: f32, lifetime: f32) {
++        self.particles.push(ParticleData {
++            pos,
++            speed,
++            rotation_speed,
++            lifetime,
++        });
++    }
++
++    // Note this method doesn't keep particles in order
++    fn remove_particle(&mut self, idx: usize) {
++        self.particles[idx] = self.particles[self.particles.len() - 1].clone();
++        self.particles.pop();
++    }
++}
++
++impl CursorVfx for ParticleTrail {
++    fn update(
++        &mut self,
++        settings: &CursorSettings,
++        current_cursor_dest: Point,
++        font_size: (f32, f32),
++        dt: f32,
++    ) -> bool {
++        // Update lifetimes and remove dead particles
++        let mut i = 0;
++        while i < self.particles.len() {
++            let particle: &mut ParticleData = &mut self.particles[i];
++            particle.lifetime -= dt;
++            if particle.lifetime <= 0.0 {
++                self.remove_particle(i);
++            } else {
++                i += 1;
++            }
++        }
++
++        // Update particle positions
++        for i in 0..self.particles.len() {
++            let particle = &mut self.particles[i];
++            particle.pos += particle.speed * dt;
++            particle.speed = rotate_vec(particle.speed, dt * particle.rotation_speed);
++        }
++
++        // Spawn new particles
++        if current_cursor_dest != self.previous_cursor_dest {
++            let travel = current_cursor_dest - self.previous_cursor_dest;
++            let travel_distance = travel.length();
++
++            // Increase amount of particles when cursor travels further
++            let particle_count = ((travel_distance / font_size.0).powf(1.5)
++                * settings.vfx_particle_density
++                * 0.01) as usize;
++
++            let prev_p = self.previous_cursor_dest;
++
++            for i in 0..particle_count {
++                let t = i as f32 / (particle_count as f32);
++
++                let speed = match self.trail_mode {
++                    TrailMode::Railgun => {
++                        let phase = t / std::f32::consts::PI
++                            * settings.vfx_particle_phase
++                            * (travel_distance / font_size.0);
++                        Point::new(phase.sin(), phase.cos()) * 2.0 * settings.vfx_particle_speed
++                    }
++                    TrailMode::Torpedo => {
++                        let mut travel_dir = travel;
++                        travel_dir.normalize();
++                        let mut particle_dir = self.rng.rand_dir_normalized() - travel_dir * 1.5;
++                        particle_dir.normalize();
++                        particle_dir * settings.vfx_particle_speed
++                    }
++                    TrailMode::PixieDust => {
++                        let base_dir = self.rng.rand_dir_normalized();
++                        let dir = Point::new(base_dir.x * 0.5, 0.4 + base_dir.y.abs());
++                        dir * 3.0 * settings.vfx_particle_speed
++                    }
++                };
++
++                // Distribute particles along the travel distance
++                let pos = match self.trail_mode {
++                    TrailMode::Railgun => prev_p + travel * t,
++                    TrailMode::PixieDust | TrailMode::Torpedo => {
++                        prev_p + travel * self.rng.next_f32() + Point::new(0.0, font_size.1 * 0.5)
++                    }
++                };
++
++                let rotation_speed = match self.trail_mode {
++                    TrailMode::Railgun => std::f32::consts::PI * settings.vfx_particle_curl,
++                    TrailMode::PixieDust | TrailMode::Torpedo => {
++                        (self.rng.next_f32() - 0.5)
++                            * std::f32::consts::FRAC_PI_2
++                            * settings.vfx_particle_curl
++                    }
++                };
++
++                self.add_particle(
++                    pos,
++                    speed,
++                    rotation_speed,
++                    t * settings.vfx_particle_lifetime,
++                );
++            }
++
++            self.previous_cursor_dest = current_cursor_dest;
++        }
++
++        // Keep animating as long as there are particles alive
++        !self.particles.is_empty()
++    }
++
++    fn restart(&mut self, _position: Point) {}
++
++    fn render(
++        &self,
++        settings: &CursorSettings,
++        canvas: &mut Canvas,
++        cursor: &Cursor,
++        colors: &Colors,
++        font_size: (f32, f32),
++    ) {
++        let mut paint = Paint::new(skulpin::skia_safe::colors::WHITE, None);
++        match self.trail_mode {
++            TrailMode::Torpedo | TrailMode::Railgun => {
++                paint.set_style(Style::Stroke);
++                paint.set_stroke_width(font_size.1 * 0.2);
++            }
++            _ => {}
++        }
++
++        let base_color: Color = cursor.background(&colors).to_color();
++
++        paint.set_blend_mode(BlendMode::SrcOver);
++
++        self.particles.iter().for_each(|particle| {
++            let l = particle.lifetime / settings.vfx_particle_lifetime;
++            let alpha = (l * settings.vfx_opacity) as u8;
++            let color = Color::from_argb(alpha, base_color.r(), base_color.g(), base_color.b());
++            paint.set_color(color);
++
++            let radius = match self.trail_mode {
++                TrailMode::Torpedo | TrailMode::Railgun => font_size.0 * 0.5 * l,
++                TrailMode::PixieDust => font_size.0 * 0.2,
++            };
++
++            let hr = radius * 0.5;
++            let rect = Rect::from_xywh(particle.pos.x - hr, particle.pos.y - hr, radius, radius);
++
++            match self.trail_mode {
++                TrailMode::Torpedo | TrailMode::Railgun => {
++                    canvas.draw_oval(&rect, &paint);
++                }
++                TrailMode::PixieDust => {
++                    canvas.draw_rect(&rect, &paint);
++                }
++            }
++        });
++    }
++}
++
++// Random number generator based on http://www.pcg-random.org/
++struct RngState {
++    state: u64,
++    inc: u64,
++}
++
++impl RngState {
++    fn new() -> RngState {
++        RngState {
++            state: 0x853C49E6748FEA9Bu64,
++            inc: (0xDA3E39CB94B95BDBu64 << 1) | 1,
++        }
++    }
++    fn next(&mut self) -> u32 {
++        let old_state = self.state;
++
++        // Implementation copied from:
++        // https://rust-random.github.io/rand/src/rand_pcg/pcg64.rs.html#103
++        let new_state = old_state
++            .wrapping_mul(6_364_136_223_846_793_005u64)
++            .wrapping_add(self.inc);
++
++        self.state = new_state;
++
++        const ROTATE: u32 = 59; // 64 - 5
++        const XSHIFT: u32 = 18; // (5 + 32) / 2
++        const SPARE: u32 = 27; // 64 - 32 - 5
++
++        let rot = (old_state >> ROTATE) as u32;
++        let xsh = (((old_state >> XSHIFT) ^ old_state) >> SPARE) as u32;
++        xsh.rotate_right(rot)
++    }
++
++    fn next_f32(&mut self) -> f32 {
++        let v = self.next();
++
++        // In C we'd do ldexp(v, -32) to bring a number in the range [0,2^32) down to [0,1) range.
++        // But as we don't have ldexp in Rust, we're implementing the same idea (subtracting 32
++        // from the floating point exponent) manually.
++
++        // First, extract exponent bits
++        let float_bits = (v as f64).to_bits();
++        let exponent = (float_bits >> 52) & ((1 << 11) - 1);
++
++        // Set exponent for [0-1) range
++        let new_exponent = exponent.max(32) - 32;
++
++        // Build the new f64 value from the old mantissa and sign, and the new exponent
++        let new_bits = (new_exponent << 52) | (float_bits & 0x801F_FFFF_FFFF_FFFFu64);
++
++        f64::from_bits(new_bits) as f32
++    }
++
++    // Produces a random vector with x and y in the [-1,1) range
++    // Note: Vector is not normalized.
++    fn rand_dir(&mut self) -> Point {
++        let x = self.next_f32();
++        let y = self.next_f32();
++
++        Point::new(x * 2.0 - 1.0, y * 2.0 - 1.0)
++    }
++
++    fn rand_dir_normalized(&mut self) -> Point {
++        let mut v = self.rand_dir();
++        v.normalize();
++        v
++    }
++}
++
++fn rotate_vec(v: Point, rot: f32) -> Point {
++    let sin = rot.sin();
++    let cos = rot.cos();
++
++    Point::new(v.x * cos - v.y * sin, v.x * sin + v.y * cos)
++}
+diff --git a/src/renderer/cursor_renderer/mod.rs b/src/renderer/cursor_renderer/mod.rs
+index d49fd75..1751552 100644
+--- a/src/renderer/cursor_renderer/mod.rs
++++ b/src/renderer/cursor_renderer/mod.rs
+@@ -118,7 +118,7 @@ impl Corner {
+         }
+ 
+         // Check first if animation's over
+-        if self.t > 1.0 {
++        if (self.t - 1.0).abs() < f32::EPSILON {
+             return false;
+         }
+ 
+@@ -154,7 +154,7 @@ impl Corner {
+ 
+         let direction_alignment = travel_direction.dot(corner_direction);
+ 
+-        if self.t == 1.0 {
++        if (self.t - 1.0).abs() < f32::EPSILON {
+             // We are at destination, move t out of 0-1 range to stop the animation
+             self.t = 2.0;
+         } else {
+@@ -238,12 +238,12 @@ impl CursorRenderer {
+         &mut self,
+         cursor: Cursor,
+         default_colors: &Colors,
+-        font_width: f32,
+-        font_height: f32,
++        font_size: (f32, f32),
+         shaper: &mut CachingShaper,
+         canvas: &mut Canvas,
+         dt: f32,
+     ) {
++        let (font_width, font_height) = font_size;
+         let render = self.blink_status.update_status(&cursor);
+         let settings = SETTINGS.get::<CursorSettings>();
+ 
+diff --git a/src/renderer/font_options.rs b/src/renderer/font_options.rs
+index 4f359ae..337c879 100644
+--- a/src/renderer/font_options.rs
++++ b/src/renderer/font_options.rs
+@@ -32,7 +32,7 @@ impl FontOptions {
+                 .map(|fallback| fallback.to_string())
+                 .collect();
+ 
+-            if parsed_fallback_list.len() > 0 && self.fallback_list != parsed_fallback_list {
++            if parsed_fallback_list.is_empty() && self.fallback_list != parsed_fallback_list {
+                 self.fallback_list = parsed_fallback_list;
+                 updated = true;
+             }
+@@ -40,7 +40,7 @@ impl FontOptions {
+ 
+         for part in parts {
+             if part.starts_with('h') && part.len() > 1 {
+-                if let Some(size) = part[1..].parse::<f32>().ok() {
++                if let Ok(size) = part[1..].parse::<f32>() {
+                     if (self.size - size).abs() > std::f32::EPSILON {
+                         self.size = size;
+                         updated = true;
+diff --git a/src/renderer/mod.rs b/src/renderer/mod.rs
+index 7cf994f..f1d77b5 100644
+--- a/src/renderer/mod.rs
++++ b/src/renderer/mod.rs
+@@ -201,7 +201,7 @@ impl Renderer {
+         for command in draw_commands.iter() {
+             self.draw_background(
+                 &mut canvas,
+-                command.grid_position.clone(),
++                command.grid_position,
+                 command.cell_width,
+                 &command.style,
+                 &default_style,
+@@ -212,7 +212,7 @@ impl Renderer {
+             self.draw_foreground(
+                 &mut canvas,
+                 &command.text,
+-                command.grid_position.clone(),
++                command.grid_position,
+                 command.cell_width,
+                 &command.style,
+                 &default_style,
+@@ -234,8 +234,8 @@ impl Renderer {
+         self.cursor_renderer.draw(
+             cursor,
+             &default_style.colors,
+-            self.font_width,
+-            self.font_height,
++            (self.font_width,
++            self.font_height),
+             &mut self.shaper,
+             gpu_canvas,
+             dt,
+diff --git a/src/settings/mod.rs b/src/settings/mod.rs
+index 08d1130..7897681 100644
+--- a/src/settings/mod.rs
++++ b/src/settings/mod.rs
+@@ -68,12 +68,8 @@ impl Settings {
+                 if arg == "--log" {
+                     log_to_file = true;
+                     false
+-                } else if arg.starts_with("--geometry=") {
+-                    false
+-                } else if arg == "--wsl" {
+-                    false
+                 } else {
+-                    true
++                    !(arg.starts_with("--geometry=") || arg == "--wsl")
+                 }
+             })
+             .collect::<Vec<String>>();
+@@ -133,7 +129,7 @@ impl Settings {
+         write_lock.insert(type_id, Box::new(t));
+     }
+ 
+-    pub fn get<'a, T: Clone + Send + Sync + 'static>(&'a self) -> T {
++    pub fn get<T: Clone + Send + Sync + 'static>(&'_ self) -> T {
+         let read_lock = self.settings.read();
+         let boxed = &read_lock
+             .get(&TypeId::of::<T>())
+diff --git a/src/window.rs b/src/window.rs
+index 22ea34e..0d2b20f 100644
+--- a/src/window.rs
++++ b/src/window.rs
+@@ -64,8 +64,7 @@ pub fn window_geometry() -> Result<(u64, u64), String> {
+     let prefix = "--geometry=";
+ 
+     std::env::args()
+-        .filter(|arg| arg.starts_with(prefix))
+-        .next()
++        .find(|arg| arg.starts_with(prefix))
+         .map_or(Ok(INITIAL_DIMENSIONS), |arg| {
+             let input = &arg[prefix.len()..];
+             let invalid_parse_err = format!(
+@@ -78,7 +77,7 @@ pub fn window_geometry() -> Result<(u64, u64), String> {
+                 .map(|dimension| {
+                     dimension
+                         .parse::<u64>()
+-                        .or(Err(invalid_parse_err.as_str()))
++                        .or_else(|_| Err(invalid_parse_err.as_str()))
+                         .and_then(|dimension| {
+                             if dimension > 0 {
+                                 Ok(dimension)
+@@ -242,7 +241,7 @@ impl WindowWrapper {
+         let transparency = { SETTINGS.get::<WindowSettings>().transparency };
+ 
+         if let Ok(opacity) = self.window.opacity() {
+-            if opacity != transparency {
++            if (opacity - transparency).abs() > std::f32::EPSILON {
+                 self.window.set_opacity(transparency).ok();
+                 self.transparency = transparency;
+             }
+@@ -311,12 +310,10 @@ impl WindowWrapper {
+     }
+ 
+     pub fn handle_mouse_wheel(&mut self, x: i32, y: i32) {
+-        let vertical_input_type = if y > 0 {
+-            Some("up")
+-        } else if y < 0 {
+-            Some("down")
+-        } else {
+-            None
++        let vertical_input_type = match y {
++            _ if y > 0 => Some("up"),
++            _ if y < 0 => Some("down"),
++            _ => None,
+         };
+ 
+         if let Some(input_type) = vertical_input_type {
+@@ -326,12 +323,10 @@ impl WindowWrapper {
+             });
+         }
+ 
+-        let horizontal_input_type = if x > 0 {
+-            Some("right")
+-        } else if x < 0 {
+-            Some("left")
+-        } else {
+-            None
++        let horizontal_input_type = match y {
++            _ if x > 0 => Some("right"),
++            _ if x < 0 => Some("left"),
++            _ => None,
+         };
+ 
+         if let Some(input_type) = horizontal_input_type {
+@@ -369,8 +364,7 @@ impl WindowWrapper {
+ 
+         if REDRAW_SCHEDULER.should_draw() || SETTINGS.get::<WindowSettings>().no_idle {
+             let renderer = &mut self.renderer;
+-
+-            if self
++            let error = self
+                 .skulpin_renderer
+                 .draw(&sdl_window_wrapper, |canvas, coordinate_system_helper| {
+                     let dt = 1.0 / (SETTINGS.get::<WindowSettings>().refresh_rate as f32);
+@@ -379,14 +373,14 @@ impl WindowWrapper {
+                         handle_new_grid_size(current_size, &renderer)
+                     }
+                 })
+-                .is_err()
+-            {
++                .is_err();
++            if error {
+                 error!("Render failed. Closing");
+                 return false;
+             }
+         }
+ 
+-        return true;
++        true
+     }
+ }
+ 
