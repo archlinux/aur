@@ -1,15 +1,15 @@
 pkgbase = sec
 	pkgdesc = A logfile monitoring tool with support for event correlation, written in perl
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://simple-evcorr.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = perl
-	source = https://github.com/simple-evcorr/sec/releases/download/2.8.2/sec-2.8.2.tar.gz
+	source = https://github.com/simple-evcorr/sec/releases/download/2.8.3/sec-2.8.3.tar.gz
 	source = sec.service
-	sha256sums = ec7b30b77221f58de4c91df115b07a9f5de91813f904fd01007632389672aa3c
+	sha256sums = b376b64ed5be19b28101d974ac4d60c06a1f52cc3d8ba63829a18a6f903dfd29
 	sha256sums = d69d000433162aa82a1d184df823185d739e2ab8a2d631b6adb2189f9e1839c4
 
 pkgname = sec
