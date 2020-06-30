@@ -1,5 +1,5 @@
 pkgbase = fzmp-git
-	pkgdesc = FZF driven MPD client
+	pkgdesc = FZF or SKIM driven MPD client
 	pkgver = r140.ec9569c
 	pkgrel = 1
 	url = https://github.com/DanielFGray/fzf-scripts
@@ -7,7 +7,8 @@ pkgbase = fzmp-git
 	license = GPL3
 	makedepends = git
 	depends = mpc
-	depends = fzf
+	optdepends = fzf
+	optdepends = skim
 	provides = fzmp
 	source = git+https://github.com/DanielFGray/fzf-scripts.git
 	sha256sums = SKIP

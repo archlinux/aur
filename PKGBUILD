@@ -3,13 +3,14 @@ pkgname=fzmp-git
 _pkgname=fzmp
 pkgver=r140.ec9569c
 pkgrel=1
-pkgdesc="FZF driven MPD client"
+pkgdesc="FZF or SKIM driven MPD client"
 arch=('any')
 url="https://github.com/DanielFGray/fzf-scripts"
 license=('GPL3')
 provides=($_pkgname)
-depends=('mpc' 'fzf')
+depends=('mpc')
 makedepends=('git')
+optdepends=('fzf' 'skim')
 source=("git+https://github.com/DanielFGray/fzf-scripts.git")
 sha256sums=('SKIP')
 
