@@ -4,8 +4,8 @@
 pkgbase=python-neo
 pkgname=('python-neo' 'python2-neo')
 _name=${pkgbase#python-}
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Neo is a package for representing electrophysiology data in Python, together with support for reading a wide range of neurophysiology file formats"
 arch=('any')
 url="https://pypi.org/project/neo/#files"
