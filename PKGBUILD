@@ -8,7 +8,7 @@ pkgdesc="Spinnaker implementation of PyNN"
 arch=('any')
 url="https://pypi.org/project/sPyNNaker/#files"
 license=('GPL')
-makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
+makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools' 'git')
 depends=('python2' 'python' 'python2-lazyarray' 'python-lazyarray' 'python-neo' 'python2-neo' 'python-quantities' 'python2-quantities' 'python-lxml' 'python2-lxml' 'python-jsonschema' 'python2-jsonschema' 'python-future' 'python2-future' 'python2-futures' 'python2-sortedcontainers' 'python-sortedcontainers' 'python2-sortedcollections' 'python-sortedcollections' 'python-requests' 'python2-requests')
 source=( 
 "spalloc::git+https://github.com/SpiNNakerManchester/spalloc.git"
@@ -24,7 +24,7 @@ source=(
 "spinnaker_tools::git+https://github.com/SpiNNakerManchester/spinnaker_tools.git"
 "SpiNNakerGraphFrontEnd::git+https://github.com/SpiNNakerManchester/SpiNNakerGraphFrontEnd.git"
 "spynnaker8::git+https://github.com/SpiNNakerManchester/sPyNNaker8.git"
-"https://files.pythonhosted.org/packages/source/P/PyNN/PyNN-0.9.4.tar.gz"
+"https://files.pythonhosted.org/packages/source/P/PyNN/PyNN-0.9.5.tar.gz"
 )
 
 sha256sums=(
@@ -41,7 +41,7 @@ sha256sums=(
 'SKIP'
 'SKIP'
 'SKIP'
-'eb6172235ace66d825afeb99da90a4fe64796a81e46cfda64c67c542e41f2c47')
+'91af2126b639a6a795bfc2709ac49423278c4794b6d0da143908b9afcb415f80')
 
 pkgver() {
   printf "%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s" $(git -C sPyNNaker rev-list --count HEAD) $(git -C sPyNNaker rev-parse --short HEAD) $(git -C SpiNNFrontEndCommon rev-list --count HEAD) $(git -C SpiNNFrontEndCommon rev-parse --short HEAD) $(git -C spinn_common rev-list --count HEAD) $(git -C spinn_common rev-parse --short HEAD) $(git -C spinnaker_tools rev-list --count HEAD) $(git -C spinnaker_tools rev-parse --short HEAD) $(git -C SpiNNakerGraphFrontEnd rev-list --count HEAD) $(git -C SpiNNakerGraphFrontEnd rev-parse --short HEAD) $(git -C spynnaker8 rev-list --count HEAD) $(git -C spynnaker8 rev-parse --short HEAD) $(git -C spalloc rev-list --count HEAD) $(git -C spalloc rev-parse --short HEAD) $(git -C SpiNNaker_DataSpecification rev-list --count HEAD) $(git -C SpiNNaker_DataSpecification rev-parse --short HEAD) $(git -C SpiNNaker_PACMAN rev-list --count HEAD) $(git -C SpiNNaker_PACMAN rev-parse --short HEAD) $(git -C SpiNNMachine rev-list --count HEAD) $(git -C SpiNNMachine rev-parse --short HEAD) $(git -C SpiNNMan rev-list --count HEAD) $(git -C SpiNNMan rev-parse --short HEAD) $(git -C SpiNNStorageHandlers rev-list --count HEAD) $(git -C SpiNNStorageHandlers rev-parse --short HEAD) $(git -C SpiNNUtilities rev-list --count HEAD) $(git -C SpiNNUtilities rev-parse --short HEAD)
@@ -93,8 +93,6 @@ prepare()
 }
 
 package_python2-spynnaker-git() {
-  depends+=('python2')
-
   cd "${srcdir}/spalloc"
   python2 setup.py install --root="${pkgdir}"
   
@@ -122,10 +120,10 @@ package_python2-spynnaker-git() {
   cd "${srcdir}/SpiNNakerGraphFrontEnd"
   python2 setup.py install --root="${pkgdir}"
   
-  cd "${srcdir}/sPyNNaker"
+  cd "${srcdir}/${_name}"
   python2 setup.py install --root="${pkgdir}"
   
-  cd "${srcdir}/PyNN-0.9.4"
+  cd "${srcdir}/PyNN-0.9.5"
   python2 setup.py install --root="${pkgdir}"
   
   cd "${srcdir}/spynnaker8"
@@ -141,11 +139,11 @@ package_python2-spynnaker-git() {
   currentpath=`pwd`
   python2 -c "import sys; import os; sys.path.insert(0,os.getcwd()); import spynnaker8.setup_pynn"
   
-  if [ -d "${pkgdir}/${python2sitepackagesdir}/pyNN/nest/_build/" ]; then
-    cd "${pkgdir}/${python2sitepackagesdir}/pyNN/nest/_build/"
-    mv pynn_extensions.so "${pkgdir}/usr/lib"
-    mv libpynn_extensions.so "${pkgdir}/usr/lib"
-  fi
+#  if [ -d "${pkgdir}/${python2sitepackagesdir}/pyNN/nest/_build/" ]; then
+#    cd "${pkgdir}/${python2sitepackagesdir}/pyNN/nest/_build/"
+#    mv pynn_extensions.so "${pkgdir}/usr/lib"
+#    mv libpynn_extensions.so "${pkgdir}/usr/lib"
+#  fi
   
   cd "${pkgdir}/usr/bin"
   mv get_cores_in_run_state get_cores_in_run_state2
@@ -157,8 +155,6 @@ package_python2-spynnaker-git() {
 } 
 
 package_python-spynnaker-git() {
-  depends+=('python')
-
   cd "${srcdir}/spalloc"
   python setup.py install --root="${pkgdir}"
   
@@ -186,10 +182,10 @@ package_python-spynnaker-git() {
   cd "${srcdir}/SpiNNakerGraphFrontEnd"
   python setup.py install --root="${pkgdir}"
   
-  cd "${srcdir}/sPyNNaker"
+  cd "${srcdir}/${_name}"
   python setup.py install --root="${pkgdir}"
   
-  cd "${srcdir}/PyNN-0.9.4"
+  cd "${srcdir}/PyNN-0.9.5"
   python setup.py install --root="${pkgdir}"
   
   cd "${srcdir}/spynnaker8"
@@ -200,9 +196,9 @@ package_python-spynnaker-git() {
   echo -n "directory to install python3 packages: "
   echo ${python3sitepackagesdir}
   
-  if [ -d "${pkgdir}/${python3sitepackagesdir}/pyNN/nest/_build/" ]; then
-    cd "${pkgdir}/${python3sitepackagesdir}/pyNN/nest/_build/"
-    rm pynn_extensions.so
-    rm libpynn_extensions.so
-  fi
+#  if [ -d "${pkgdir}/${python3sitepackagesdir}/pyNN/nest/_build/" ]; then
+#    cd "${pkgdir}/${python3sitepackagesdir}/pyNN/nest/_build/"
+#    rm pynn_extensions.so
+#    rm libpynn_extensions.so
+#  fi
 }
