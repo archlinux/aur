@@ -4,12 +4,12 @@
 pkgname=ttf-mph-2b-damase
 pkgver=001.000.4.dfsg.2
 _pkgver=001.000.dfsg.2+ds1
-pkgrel=7
+pkgrel=8
 pkgdesc='Unicode font covering full plane 1, and numerous scripts'
 url="http://packages.debian.org/unstable/x11/ttf-mph-2b-damase" 
 license=('custom:Public_Domain')
 arch=('any')
-depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
+depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
 source=("http://ftp.gnome.org/mirror/cdimage/snapshot/Debian/pool/main/t/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz")
 sha1sums=('8663d937dabce9bebb9c46b6e985102d03830fd4')
 
