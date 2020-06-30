@@ -9,12 +9,12 @@ DLAGENTS=(
 
 pkgname=ttf-courier-prime
 pkgver=1.203
-pkgrel=3
+pkgrel=4
 pkgdesc='Monospace Courier font alternative optimized for screenplays'
 arch=('any')
 url='https://quoteunquoteapps.com/courierprime/'
 license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 source=('https://quoteunquoteapps.com/courierprime/downloads/courier-prime.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-sans.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip'
