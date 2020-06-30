@@ -1,24 +1,25 @@
+# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Contributor: Andrea Orru <andrea at orru dot io>
 # Python package author: Steven Myint <UNKNOWN>
+_name=autoflake
 pkgname=python-autoflake
-_pkgname=autoflake
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="Removes unused imports and unused variables"
+pkgrel=2
+pkgdesc='Removes unused imports and unused variables'
 arch=(any)
-url="https://github.com/myint/autoflake"
+url="https://github.com/myint/$_name"
 license=("MIT")
-depends=("python-pyflakes")
-makedepends=("python")
-source=("https://github.com/myint/autoflake/archive/v1.3.1.tar.gz")
+depends=('python-pyflakes')
+makedepends=('python')
+source=("https://github.com/myint/$_name/archive/v1.3.1.tar.gz")
+sha256sums=('c271b46565e61cd6f754ed456cb1139d88615a821c6f31a6c621eccd15c7fa84')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-md5sums=('2cb19c3c27bd6ce8c8e8771c5b522abb')
