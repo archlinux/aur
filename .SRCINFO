@@ -1,0 +1,17 @@
+pkgbase = panda-launcher
+	pkgdesc = launcher for PandaDE
+	pkgver = 0.0.0.WTF
+	pkgrel = 1
+	url = https://github.com/pandaos/panda-launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = qt5-x11extras
+	depends = qt5-svg
+	source = panda-launcher-98152e4c11f8b4e0784abe157c8f3bcad4791d78.tar.gz::https://github.com/pandaos/panda-launcher/archive/98152e4c11f8b4e0784abe157c8f3bcad4791d78.tar.gz
+	sha512sums = 018b25cadfb4b3df98d3d8d9ac1c658bcb64b575cebdf6df08d0ea7023e7c120f4028b1b35f796507d828da6a384f117ff46228ad0d7871d02a28bf67a781b0c
+
+pkgname = panda-launcher
+
