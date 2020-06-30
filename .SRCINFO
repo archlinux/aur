@@ -1,6 +1,6 @@
 pkgbase = apulse
 	pkgdesc = PulseAudio emulation for ALSA
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/i-rinat/apulse
 	install = apulse.install
@@ -10,9 +10,9 @@ pkgbase = apulse
 	makedepends = cmake
 	depends = alsa-lib
 	depends = glib2
-	source = apulse-0.1.12.tar.gz::https://github.com/i-rinat/apulse/archive/v0.1.12.tar.gz
+	source = apulse-0.1.13.tar.gz::https://github.com/i-rinat/apulse/archive/v0.1.13.tar.gz
 	source = asoundrc.sample
-	sha256sums = cfcadfe971abd785ed3ca24e576fcbaade185525c1eda76daf32dbf298e52892
+	sha256sums = 9234ec4e10e408b9c01d5f4ea768ad1fc15494217c932db2c435202a9c7b5efd
 	sha256sums = e851197ec9ebff528154210751cd6d5c426abfc2b1aa34343580407b1ea789a4
 
 pkgname = apulse
