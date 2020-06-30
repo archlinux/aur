@@ -1,30 +1,24 @@
 # Maintainer: Yigit Dallilar <yigit.dallilar@gmail.com>
-# Maintainer: Prasad Kumar
-# Contributor: Philip Müller <philm@manjaro.org>
-
-# Taken From here: https://gitlab.manjaro.org/packages/community/microsoft-office-online-jak/blob/master/PKGBUILD
+# Retrieved from
+# https://gitlab.manjaro.org/packages/community/microsoft-office-online-jak.git
 
 pkgname=('ms-office-online')
-pkgver=19.06.2
-pkgrel=6
+pkgver=20.1.0
+pkgrel=1
+#epoch=1
+_commit=f0be4ad4886df7a8c346efcfca82337e5e97e835
 pkgdesc="Microsoft Office Suite Online as a native application"
 url="https://www.office.com/"
-depends=('jade-application-kit' 'qt5-webengine')
+depends=('jade-application-kit>=3.0.0')
 license=('GPL3' 'CC')
 arch=('any')
-provides=('ms-office-online')
-source=("https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/archive/${pkgver}/ms-office-online-launcher-${pkgver}.tar.gz"
-        add-mslogin.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/afa0d9e64bef5711180fe5072e48536a05ed313d.patch
-        sharepoint.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/0c3f2a441b1f83daeaaaf51d956daba7ef156b63.patch)
-sha256sums=('b72b31e199ce6467fdce821ecff9344fe7f1b314db03e09db162b39558c43c2b'
-            '67f5dbb3ef35940a72307ced8e1a11495ef26c67c129a92c01d89d96f00f2e00'
-            '5fb660b7964fd95b55c67236b4f7ed87bd063d4b4a8e1850edcad4875270d7ca')
+replaces=('ms-office-online')
+conflicts=('ms-office-online')
+source=("https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/archive/$_commit/ms-office-online-launcher-$_commit.tar.gz")
+sha256sums=('4bcea8753c296148f605519e4c3d3fd0362d24cc02dbb581db288abe805e75b6')
 
 prepare() {
-    cd "ms-office-online-launcher-${pkgver}"
-    patch -p1 -i ../add-mslogin.patch
-    patch -p1 -i ../sharepoint.patch
-
+    mv "ms-office-online-launcher-$_commit" "ms-office-online-launcher-$pkgver" 
 }
 
 package() {
@@ -34,7 +28,5 @@ package() {
     cp launcher.desktop $pkgdir/usr/share/applications/ms-office-online.desktop
     cp icons/office.png $pkgdir/usr/share/pixmaps/ms-office.png
     cp ms-office-online $pkgdir/usr/bin
-    chmod a+x $pkgdir/usr/bin
+    chmod a+x $pkgdir/usr/bin/ms-office-online
 }
-
-
