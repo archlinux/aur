@@ -14,7 +14,7 @@ conflicts=($_pkgname)
 install="${pkgname}.install"
 source=("espanso-linux-${pkgver}.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v${pkgver}/espanso-linux.tar.gz"
         "https://raw.githubusercontent.com/federico-terzi/espanso/v${pkgver}/src/res/linux/systemd.service")
-sha512sums=('8c11fc938ca6af7833813ed5e01d85c54eacfb291a86f23b1e055e87cb6e714481c91ae80f84825e92d47d8fd9247444451ff0275d70d125c1d6d03e98cbd2e1'
+sha512sums=('dcb8dee8e083b8f08448f1d7fd5d36a1beb596bce74b515cf2a0bdb1fbf9f37235ab6b842e85c89344d0059b384af8e1d224f7130ed9378032ce06f3c84405ae'
             '8f30ebc5dbb633f9cdd464765df38e6ef3fa008ba6d2fa83d66eed992a9e2c8be41fadbeb1d3048738078357bb72c78663900b5970f5061a0175c72cd5053dad')
 
 
