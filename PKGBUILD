@@ -3,15 +3,15 @@
 _pkgname=harmattan
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
-pkgver=1.001
-pkgrel=4
+pkgver=2.000
+pkgrel=1
 pkgdesc='An Arabic script font designed for use by languages in West Africa'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('OFL')
 conflicts=('ttf-sil-fonts<=6')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
-sha256sums=('bf4b24e5e38c7df908ddff1344de732b20c9f3aafd724e112f4315597aaf6be3')
+sha256sums=('0b2e1fad07b6101bfb140801a71bc53956105376fd8ac261dd76eab178280a5c')
 
 package() {
     cd "$_fname-$pkgver"
