@@ -1,7 +1,8 @@
-diff -Naur BlendLuxCore-blendluxcore_v2.2/draw/viewport.py BlendLuxCore-blendluxcore_v2.2-patch/draw/viewport.py
---- BlendLuxCore-blendluxcore_v2.2/draw/viewport.py	2019-09-30 12:40:01.000000000 +0200
-+++ BlendLuxCore-blendluxcore_v2.2-patch/draw/viewport.py	2019-11-28 08:19:28.433741235 +0100
-@@ -8,6 +8,7 @@
+diff --git a/draw/viewport.py b/draw/viewport.py
+index a28cf9f..f7fd34c 100644
+--- a/draw/viewport.py
++++ b/draw/viewport.py
+@@ -8,6 +8,7 @@ import tempfile
  from ..bin import pyluxcore
  from .. import utils
  from ..utils import pfm
@@ -9,13 +10,13 @@ diff -Naur BlendLuxCore-blendluxcore_v2.2/draw/viewport.py BlendLuxCore-blendlux
  
  NULL = 0
  
-@@ -72,8 +73,7 @@
+@@ -72,8 +73,7 @@ class FrameBuffer(object):
          self._albedo_file_path = self._make_denoiser_filepath("albedo")
          self._normal_file_path = self._make_denoiser_filepath("normal")
          self._denoised_file_path = self._make_denoiser_filepath("denoised")
 -        current_dir = os.path.dirname(os.path.realpath(__file__))
 -        self._denoiser_path = os.path.join(os.path.dirname(current_dir), "bin", "denoise")
-+        self._denoiser_path = which('denoise')
++        self._denoiser_path = which('oidnDenoise')
          if platform.system() == "Windows":
              self._denoiser_path += ".exe"
          self._denoiser_process = None
