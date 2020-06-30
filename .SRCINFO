@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ffmpeg.org/
 	arch = x86_64
 	license = custom: nonfree and unredistributable
@@ -130,7 +130,7 @@ pkgbase = ffmpeg-full
 	source = 010-ffmpeg-fix-vmaf-model-path.patch
 	source = 020-ffmpeg-add-svt-hevc-1.4.3.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.4.3/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
 	source = 030-ffmpeg-add-svt-hevc-docs-1.4.3.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.4.3/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch
-	source = 040-ffmpeg-add-svt-av1-gc40ee24.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/c40ee249286f182f29bab717686c300e2912adfe/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch
+	source = 040-ffmpeg-add-svt-av1-0.8.4.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.8.4/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch
 	source = LICENSE
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = 1d0ad06484f44bcb97eba5e93c40bcb893890f9f64aeb43e46cd9bb4cbd6795d
@@ -138,7 +138,7 @@ pkgbase = ffmpeg-full
 	sha256sums = b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02
 	sha256sums = 878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6
 	sha256sums = 1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0
-	sha256sums = 69e0456b56429a422977d24a914e7e167a38397b2ab40aec575eee332b0e739c
+	sha256sums = 65240283f30906482f8002c1f0d2763e5a2501008179480cc94afa4bdaab5ed5
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
 pkgname = ffmpeg-full

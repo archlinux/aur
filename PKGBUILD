@@ -2,11 +2,11 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='c40ee249286f182f29bab717686c300e2912adfe'
+_svt_av1_ver='0.8.4'
 
 pkgname=ffmpeg-full
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -45,14 +45,14 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-fix-vmaf-model-path.patch'
         "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-av1-g${_svt_av1_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
         'LICENSE')
 sha256sums=('1d0ad06484f44bcb97eba5e93c40bcb893890f9f64aeb43e46cd9bb4cbd6795d'
             'SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '69e0456b56429a422977d24a914e7e167a38397b2ab40aec575eee332b0e739c'
+            '65240283f30906482f8002c1f0d2763e5a2501008179480cc94afa4bdaab5ed5'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -61,7 +61,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-g${_svt_av1_ver:0:7}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
 }
 
 build() {
