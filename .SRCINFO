@@ -24,7 +24,7 @@ pkgbase = stremio-beta
 	conflicts = stremio-beta
 	conflicts = stremio-legacy
 	conflicts = stremio
-	source = stremio::git+https://github.com/Stremio/stremio-shell.git#tag=4.4.116
+	source = stremio::git+https://github.com/Stremio/stremio-shell.git#tag=v4.4.116
 	md5sums = SKIP
 
 pkgname = stremio-beta
