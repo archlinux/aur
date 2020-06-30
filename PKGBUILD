@@ -2,8 +2,8 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Contributor: bebehei <bebe@bebehei.de>
 
-pkgname='icinga2'
-pkgver=2.11.3
+pkgname=icinga2
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -46,7 +46,7 @@ source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
         'https://www.boost.org/patches/1_72_0/0001-revert-cease-dependence-on-range.patch'
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
-sha256sums=('03c46c9af9cb8763ec02428f87a38ab3d7876f56cc10dc5eac5bda0c182f6a76'
+sha256sums=('a762523233d3748f3f16901202593ce979698c6ee059e962efbf0a2621693cd7'
             'da7950df251a9d785a84c0092fb7ac4f68f6872c6172cccb303a5453e0ef98fd'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
