@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "git+https://github.com/cheat/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
 sha256sums=('98242fa3efd4b5fd57d6ad7e69a2570e7defacb580e30ae274deec3e1939f494'
-            'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
+            'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 

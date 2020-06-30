@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = cheat
 	source = git+https://github.com/cheat/cheatsheets.git
 	source = https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt
 	sha256sums = 98242fa3efd4b5fd57d6ad7e69a2570e7defacb580e30ae274deec3e1939f494
-	sha256sums = efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212
+	sha256sums = a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5
 	sha256sums = SKIP
 	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
