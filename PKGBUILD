@@ -3,12 +3,12 @@
 
 pkgname=ttf-essays
 pkgver=2.100
-pkgrel=1
+pkgrel=2
 pkgdesc="A font based on the typeface used in a 1743 English translation of Montaigne's Essays."
 arch=('any')
 license=('LGPL')
 url="https://www.thibault.org/fonts/essays/"
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
+depends=()
 source=("https://www.thibault.org/fonts/essays/essays1743-${pkgver}-1-ttf.tar.gz")
 sha256sums=('94b336fbf5ea092a050144f88300c68235f9891c66e97e036b03d285fec03fa8')
 
