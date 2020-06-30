@@ -1,0 +1,16 @@
+pkgbase = iphonebackuptools
+	pkgdesc = extract
+	pkgver = 1.78
+	pkgrel = 1
+	url = https://github.com/richinfante/iphonebackuptools
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = python
+	depends = nodejs
+	depends = sqlite
+	source = https://github.com/richinfante/iphonebackuptools/archive/c5573a3e5446ea420a56d2477ef78550cee224fb.tar.gz
+	sha256sums = 6cc52d2fe0b09a5b5fa8f9f80f4de77d9cc7dbf130057432a7267c9093372828
+
+pkgname = iphonebackuptools
+
