@@ -2,7 +2,7 @@
 
 pkgname=ttf-apple-emoji
 pkgver=1
-pkgrel=16
+pkgrel=17
 pkgdesc='Apple Color Emoji is a color typeface used by iOS and macOS to display emoji'
 arch=('any')
 url='https://github.com/samuelngs/apple-emoji-linux'
@@ -14,7 +14,6 @@ conflicts=(
 'ttf-symbola'
 'ttf-joypixels'
 'ttf-twemoji-color'
-'noto-fonts'
 )
 
 source=(
