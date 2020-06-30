@@ -6,8 +6,8 @@ _short=78
 # work around until upstream versions
 # https://github.com/richinfante/iphonebackuptools/issues/68
 pkgver=1.$_short
-pkgrel=1
-pkgdesc="extract"
+pkgrel=2
+pkgdesc="Extract messages, notes, photo locations and more from unencrypted iOS backups"
 arch=('any')
 url="https://github.com/richinfante/iphonebackuptools"
 license=('MIT')
