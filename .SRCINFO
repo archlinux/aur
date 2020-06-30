@@ -1,22 +1,23 @@
 pkgbase = archiso-git
-	pkgdesc = Arch Linux livecd/liveusb generation scripts
-	pkgver = 33.1.g59c2573
+	pkgdesc = Tools for creating Arch Linux live and install iso images
+	pkgver = 44.r18.gb08f168
 	pkgrel = 1
-	url = http://archlinux.org
+	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = libisoburn
-	depends = squashfs-tools
-	depends = btrfs-progs
-	depends = dosfstools
-	depends = lynx
 	depends = arch-install-scripts
-	optdepends = qemu: quickly test isos
-	provides = archiso
+	depends = curl
+	depends = dosfstools
+	depends = edk2-shell
+	depends = libisoburn
+	depends = lynx
+	depends = squashfs-tools
+	provides = archiso=44.r18.gb08f168
 	conflicts = archiso
-	source = git://projects.archlinux.org/archiso.git
-	md5sums = SKIP
+	source = git+https://gitlab.archlinux.org/archlinux/archiso.git
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha512sums = SKIP
 
 pkgname = archiso-git
 

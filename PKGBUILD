@@ -1,31 +1,31 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: nl6720 <nl6720@archlinux.org>
+# Contributor: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
-_pkgname=archiso
-pkgname="${_pkgname}-git"
-pkgver=33.1.g59c2573
+pkgname='archiso-git'
+pkgver=44.r18.gb08f168
 pkgrel=1
-pkgdesc="Arch Linux livecd/liveusb generation scripts"
+pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
-url="http://archlinux.org"
+url="https://gitlab.archlinux.org/archlinux/archiso"
 license=('GPL')
-depends=('libisoburn' 'squashfs-tools' 'btrfs-progs' 'dosfstools' 'lynx' 'arch-install-scripts')
-optdepends=('qemu: quickly test isos')
+depends=('arch-install-scripts' 'curl' 'dosfstools' 'edk2-shell' 'libisoburn' 'lynx' 'squashfs-tools')
 makedepends=('git')
-provides=('archiso')
-conflicts=('archiso')
-source=("git://projects.archlinux.org/${_pkgname}.git")
-md5sums=('SKIP')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
+source=('git+https://gitlab.archlinux.org/archlinux/archiso.git')
+validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long | sed 's/-/./g;s/v//'
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
+  cd "${srcdir}/${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sw=2 et:
