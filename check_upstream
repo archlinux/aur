@@ -4,7 +4,7 @@
 
 set -e
 
-fname=$_pkgname-$pkgver-$_upstream_pkgrel-${arch[0]}.pkg.tar.xz
+fname=$_pkgname-$pkgver-$_upstream_pkgrel-${arch[0]}.pkg.tar.zst
 url=https://www.archlinux.org/packages/extra/${arch[0]}/$_pkgname/download/
 remote_fname=$(curl -s -I "$url" | tr -d '\r' | awk -F/ 'tolower($0) ~ /^location:/ {print $NF}')
 
