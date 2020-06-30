@@ -2,7 +2,7 @@
 
 pkgname=downline-bin
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform video and audio downloader for YouTube, Vimeo, Dailymotion, SoundCloud and many other sites'
 arch=('x86_64')
 url='https://jarbun.github.io/downline'
