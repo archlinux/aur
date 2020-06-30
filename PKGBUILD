@@ -2,18 +2,18 @@
 
 _name=future-fstrings
 pkgname=python-$_name
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A backport of fstrings to python<3.6'
 arch=(any)
 url="https://github.com/asottile/$_name"
 license=(MIT)
-depends=(python)
+depends=(python python-tokenize-rt)
 makedepends=(install-wheel-scripts)
 _pyarch=py2.py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('928aac9e1879a9fc49b8d873cae4638ce5a70673a79199a9e3b97c821a61de11')
+sha256sums=('90e49598b553d8746c4dc7d9442e0359d038c3039d802c91c0a55505da318c63')
 noextract=("$_wheel")
 
 package() {
