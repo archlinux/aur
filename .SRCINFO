@@ -1,6 +1,6 @@
 pkgbase = borg-arm-bin
 	pkgdesc = Borg backup - prebuilt standalone ARM binary
-	pkgver = 1.1.11
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary
 	arch = armv8h
@@ -13,16 +13,16 @@ pkgbase = borg-arm-bin
 	conflicts = borg
 	conflicts = borgbackup
 	conflicts = borg-bin
-	source = borg-arm-bin-1.1.11-README.txt::https://github.com/borgbackup/borg/releases/download/1.1.11/README.txt
-	sha256sums = 5ccff5fa1ba183447a9de47cba6cea95bb25905ebd39edc30371cac761ffaf12
-	source_armv8h = borg-arm-bin-1.1.11-armv8h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.11-arm64
-	sha256sums_armv8h = fd6198503312f584506454414530b540fa0f48bd615d2306a9d868da979c7ca0
-	source_armv7h = borg-arm-bin-1.1.11-armv7h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.11-armv6
-	sha256sums_armv7h = 40d2465c10b7c49a5c26117f2698bdc98a44ac5c5c79abe937d4b69a83fd8cf9
-	source_armv6h = borg-arm-bin-1.1.11-armv6h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.11-armv6
-	sha256sums_armv6h = 40d2465c10b7c49a5c26117f2698bdc98a44ac5c5c79abe937d4b69a83fd8cf9
-	source_armv5h = borg-arm-bin-1.1.11-armv5h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.11-armv5
-	sha256sums_armv5h = 3344cb088309635343a11a2f9092c801b6d1be84c594534ec6258fd45313417a
+	source = borg-arm-bin-1.1.13-README.txt::https://github.com/borgbackup/borg/releases/download/1.1.13/README.txt
+	sha256sums = f7fe86af86f15a4114b822666d12309ee63ed9b5dd1f696526c202c647bcce51
+	source_armv8h = borg-arm-bin-1.1.13-armv8h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.13-arm64
+	sha256sums_armv8h = d942f2815cc6b8acbd6c0f08920160a6e850d9dbb84178af8b72f4eb9e5f9cae
+	source_armv7h = borg-arm-bin-1.1.13-armv7h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.13-armv6
+	sha256sums_armv7h = 7724c7adcc412465d9a3a8a5a8b1ce69af21e01bac92fe15e07a3d44aae16bea
+	source_armv6h = borg-arm-bin-1.1.13-armv6h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.13-armv6
+	sha256sums_armv6h = 7724c7adcc412465d9a3a8a5a8b1ce69af21e01bac92fe15e07a3d44aae16bea
+	source_armv5h = borg-arm-bin-1.1.13-armv5h::https://dl.bintray.com/borg-binary-builder/borg-binaries/borg-1.1.13-armv5
+	sha256sums_armv5h = 925a50349edb8ceea002c95d68ea4c6771b78bc4743d32aed4668ecacca54e48
 
 pkgname = borg-arm-bin
 
