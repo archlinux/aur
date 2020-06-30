@@ -14,7 +14,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron7
-pkgver=1.44.1
+pkgver=1.46.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -31,13 +31,11 @@ source=("$_pkgname::git+$url.git#tag=$pkgver"
         'code.js'
         'code.sh'
         'product_json.diff'
-        'enable-proposed-apis.diff'
         'transparent.diff')
 sha512sums=('SKIP'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
             '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
-            'b267dcedaf51067a782d0f14007663b706973c1538f7fb91f093475134c2145fd0ffd5ed2b47ad7f01c6167a78a4af285d2818d7850fc67a7f7a473324824664'
             '680804ebe32b653df274a71b68f10a72eb478141095e8d360dcb45ad8139f2f3a31d4eeac6ddc9a5a9e615b79a3584e1fa5cdb98ff32884313337aa27da3b957')
 
 # Even though we don't officially support other archs, let's
@@ -76,10 +74,6 @@ prepare() {
   local _commit=$(git rev-parse HEAD)
   local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
   sed -e "s/@COMMIT@/$_commit/" -e "s/@DATE@/$_datestamp/" -i product.json
-
-  # See https://github.com/MicrosoftDocs/live-share/issues/262 for details
-  # Also, https://github.com/microsoft/vscode/issues/48946
-  patch -p1 < ../enable-proposed-apis.diff
 
   # Build native modules for system electron
   local _target=$(</usr/lib/$_electron/version)
