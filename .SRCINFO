@@ -1,6 +1,6 @@
 pkgbase = libreport
 	pkgdesc = Generic library for reporting various problems
-	pkgver = 2.10.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/abrt/libreport
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = libreport
 	depends = nss
 	optdepends = python: python 3.x bindings
 	optdepends = python2: python 2.x bindings
-	source = libreport-2.10.0.tar.gz::https://github.com/abrt/libreport/archive/2.10.0.tar.gz
-	sha256sums = 7fe9d34816579d15dac153aa4e36e661297a650994f2edff8ca35344c830ba27
+	source = libreport-2.13.1.tar.gz::https://github.com/abrt/libreport/archive/2.13.1.tar.gz
+	sha256sums = ac3a4f0822d1cc5dab562801b7ab3a0753c0705378ce23cb4664ab10379ff72c
 
 pkgname = libreport
 
