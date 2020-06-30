@@ -3,12 +3,12 @@
 
 pkgname=culmus
 pkgver=0.133
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of Type1 and TrueType Hebrew fonts"
 arch=('any')
 url="http://culmus.sourceforge.net"
 license=('GPL2')
-depends=('fontconfig' 'xorg-fonts-alias' 'xorg-font-utils' 'xorg-fonts-encodings')
+depends=('xorg-fonts-encodings')
 source=(
   "http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}-0.121-fontconfig_fix.patch"
@@ -20,6 +20,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # fix due to fontconfig 2.10.1 update - patch mailed to upstream
+  # see also: http://culmus.sourceforge.net/faq.html#fcwarn
   patch culmus.conf "${srcdir}/${pkgname}-0.121-fontconfig_fix.patch"
 }
 
