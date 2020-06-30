@@ -1,9 +1,9 @@
-# Maintainers: goetzc, Skycoder42
+# Maintainer: goetzc, Skycoder42, Kppqju77
 # Contributors: lestb, Philipp Wolfer, Joel Pedraza, Jakub Schmidtke
 
 pkgname=android-platform
-_apilevel=29
-_rev=r04
+_apilevel=30
+_rev=r01
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
@@ -14,9 +14,9 @@ depends=('android-sdk' 'android-sdk-platform-tools')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('8d644c39902038e0bd529165d5ba4f5a8607daea')
-sha384sums=('9308ff2278b1beafe7096985825d331977694163f2e2b69b222cc4772fb44ac3bceeeca4a009bfec045d86a552cdb3cc')
+source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
+sha1sums=('63aed027a1aa272ff894545af8106255e84f2140')
+sha384sums=('c3d9fe96b6d9a36f91a123689465f7c33d4ff2035b2de7510f596ace9f4f1f15135eb8f26b3713df6e55214d9a482723')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
