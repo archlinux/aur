@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.1.16.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -12,7 +12,7 @@ depends=(
 	"mingw-w64-libtiff"
 	"mingw-w64-libpng"
 	"mingw-w64-libjpeg-turbo"
-	"mingw-w64-intel-tbb"
+	"mingw-w64-tbb"
 	"mingw-w64-giflib"
 	"mingw-w64-libwebp"
 	"mingw-w64-libsquish"
