@@ -1,7 +1,7 @@
 pkgbase = nominatim
 	pkgdesc = Geocoding tool using OpenStreetmap data
 	pkgver = 3.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nominatim.org
 	install = nominatim.install
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = nominatim
 	optdepends = nominatim-data-wikipedia: optional auxiliary data source to help indicate the importance of OSM features
 	optdepends = nominatim-data-postcodes-gb: improve searches that involve a UK postcode
 	optdepends = nominatim-data-postcodes-us: improve searches that involve a US postcode
+	optdepends = nominatim-data-tiger: improves searches that involve US house numbers
 	noextract = country_grid.sql.gz
 	backup = etc/webapps/nominatim/settings/local.php
 	source = https://nominatim.org/release/Nominatim-3.5.1.tar.bz2

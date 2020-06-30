@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.5.1
-pkgrel=4
+pkgrel=5
 
 arch=("x86_64")
 license=("GPL2")
@@ -36,6 +36,7 @@ optdepends=(
     "nominatim-data-wikipedia: optional auxiliary data source to help indicate the importance of OSM features"
     "nominatim-data-postcodes-gb: improve searches that involve a UK postcode"
     "nominatim-data-postcodes-us: improve searches that involve a US postcode"
+    "nominatim-data-tiger: improves searches that involve US house numbers"
 )
 
 source=(
