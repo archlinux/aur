@@ -1,0 +1,19 @@
+pkgbase = brother-dcpj582n
+	pkgdesc = Brother DCP-J582N CUPS driver
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = http://brother.co.jp/
+	install = brother-dcpj582n.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = a2ps
+	depends = lib32-gcc-libs
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf104685/dcpj582npdrv-1.0.5-0.i386.rpm
+	md5sums = 341b0c2528985336ec0a0f539809a87b
+	md5sums = 0877c76c218a9f2e0709f58fcd70c3a5
+
+pkgname = brother-dcpj582n
+
