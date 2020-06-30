@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Debertolis <as3ii@gmail.com>
 pkgname=emptty-git
 _name=emptty
-pkgver=0.2.0.r7.gca0a20c
+pkgver=0.2.0.r9.g78966f3
 pkgrel=1
 pkgdesc="Dead simple Display Manager running in CLI as TTY login, that starts Xorg or Wayland"
 arch=(x86_64)
