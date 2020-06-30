@@ -1,8 +1,8 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
 pkgname=vc4cl-git
-pkgver=0
-pkgrel=5
+pkgver=r170.eec7e57
+pkgrel=1
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
