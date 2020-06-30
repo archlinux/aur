@@ -1,0 +1,27 @@
+From fd81223a2f878757158b5266c362da71d43abee5 Mon Sep 17 00:00:00 2001
+From: Maarten Bent <MaartenBent@users.noreply.github.com>
+Date: Thu, 16 Aug 2018 20:08:56 +0200
+Subject: [PATCH] Fix c++11-narrowing error when using clang on Windows
+
+Case value 0xfffffd9f results in the following error:
+error: case value evaluates to 4294966687, which cannot be narrowed to type
+'DISPID' (aka 'long') [-Wc++11-narrowing]
+---
+ src/msw/mediactrl_am.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/msw/mediactrl_am.cpp b/src/msw/mediactrl_am.cpp
+index 1b8c9e6bd7f..5379eda8afc 100644
+--- a/src/msw/mediactrl_am.cpp
++++ b/src/msw/mediactrl_am.cpp
+@@ -1530,7 +1530,9 @@ void wxAMMediaBackend::Move(int WXUNUSED(x), int WXUNUSED(y),
+ //---------------------------------------------------------------------------
+ void wxAMMediaEvtHandler::OnActiveX(wxActiveXEvent& event)
+ {
+-    switch(event.GetDispatchId())
++    // cast to unsigned long to fix narrowing error with case 0xfffffd9f
++    // when using clang
++    switch (static_cast<unsigned long>(event.GetDispatchId()))
+     {
+     case 0x00000001: // statechange in IActiveMovie
+     case 0x00000bc4: // playstatechange in IMediaPlayer

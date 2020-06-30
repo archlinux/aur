@@ -14,10 +14,17 @@ depends=(mingw-w64-crt mingw-w64-expat mingw-w64-libpng mingw-w64-libjpeg-turbo 
 options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
-source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha1sums=('406ac736f61d88a3a866aa501e01e408a642c6e7')
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
+        "fix-narrowing.patch")
+sha1sums=('406ac736f61d88a3a866aa501e01e408a642c6e7'
+          '8657efb04e2c7befb83c3c9e5981f99b8484babf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/wxWidgets-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/fix-narrowing.patch"
+}
 
 build() {
   local _build_flags="\

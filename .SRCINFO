@@ -20,7 +20,9 @@ pkgbase = mingw-w64-wxmsw
 	options = !strip
 	options = !buildflags
 	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5.1/wxWidgets-3.0.5.1.tar.bz2
+	source = fix-narrowing.patch
 	sha1sums = 406ac736f61d88a3a866aa501e01e408a642c6e7
+	sha1sums = 8657efb04e2c7befb83c3c9e5981f99b8484babf
 
 pkgname = mingw-w64-wxmsw
 
