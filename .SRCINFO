@@ -1,13 +1,13 @@
 pkgbase = lightdm-webkit2-theme-glorious
 	pkgdesc = a modern and glorified lightdm webkit2 theme
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/manilarome/lightdm-webkit2-theme-glorious
 	arch = any
 	license = GPL3
 	depends = lightdm
 	depends = lightdm-webkit2-greeter>=2.2.5-2
-	source = https://github.com/manilarome/the-glorious-lightdm-webkit2-theme/archive/v1.1.tar.gz
+	source = https://github.com/manilarome/the-glorious-lightdm-webkit2-theme/archive/v1.2.tar.gz
 	md5sums = SKIP
 
 pkgname = lightdm-webkit2-theme-glorious
