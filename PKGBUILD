@@ -1,5 +1,5 @@
 pkgname=digestif
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 arch=(any)
 url="https://github.com/astoff/$pkgname"
@@ -7,7 +7,7 @@ pkgdesc='A code analyzer and Language Server Protocol implementation for [La|Con
 depends=(lua lua-lpeg lua-dkjson)
 makedepends=(luarocks)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('eb7cf6e277e9eab68a5eeace2d904d5689b9d93ba7dff975da77d71a522c6140')
+sha256sums=('b9897958a847c78ef8e6cf7c3b180679d8edc87c2ae82aa22ef78aa0f2693c7e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
