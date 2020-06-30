@@ -1,0 +1,18 @@
+pkgbase = purple-battlenet-git
+	pkgdesc = A Pidgin plugin to login and send whispers to Battle.net v2 users.
+	pkgver = 0.r39.g9847134
+	pkgrel = 1
+	url = https://github.com/EionRobb/purple-battlenet
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = libpurple
+	makedepends = glib2
+	makedepends = protobuf-c
+	makedepends = git
+	depends = pidgin
+	source = git+https://github.com/EionRobb/purple-battlenet.git
+	md5sums = SKIP
+
+pkgname = purple-battlenet-git
+
