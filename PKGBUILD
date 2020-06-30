@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.6pre3
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,13 +21,13 @@ backup=(etc/conf.d/openafs
         etc/openafs/CellServDB)
 options=(!emptydirs)
 install=openafs.install
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
-        http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
+source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
+        http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
         0001-Temporary-fix-for-compilation-with-GCC-10.patch
         0002-Adjust-RedHat-config-and-service-files.patch)
-sha256sums=('9477ac1674bf75553f268d4ee36725c9fde731f5c5e5d26aa96b089cc6b721a8'
-            'f69112878e8159b18e38287f977f7d61e0444a417ec5b013fe045cef62c5dbd6'
+sha256sums=('8b4e9d3180f1ecd752753da17ac630df04eb7007c90a921a5f6403c0339d2945'
+            'e34fa28d9ee06b47d080e4ed0c1f55fe2629ce974f1a7a7ec60dd6e87a9d21e9'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
             'ebd26d2434689ca7f1c71434cf9a524cf8f2457faa2ba93b90723f4244092451'
             '86b0560369e0d41e6c384fcdeed4ddf2d0a1da3e2ca55145ca9b1c0f2611e22a')
