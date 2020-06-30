@@ -6,7 +6,7 @@ pkgbase=manjaro-asian-input-support
 pkgname=('ibus-input-support' 'fcitx-input-support')
 pkgver=2020.06
 pkgrel=1
-pkgdesc="A fork of Manjaro Asian input support."
+pkgdesc="Manjaro Asian input support"
 arch=('any')
 url="https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support"
 license=('GPL')
@@ -17,7 +17,7 @@ md5sums=('b974be25b7f91c392009cb8d9f1bd5b4'
 conflicts=("${pkgbase}-gtk" "${pkgbase}-qt" "${pkgbase}-ibus" "${pkgbase}-fcitx")
 
 package_ibus-input-support() {
-	pkgdesc='A fork of Manjaro Asian input support for ibus, with dependencies set to optional.'
+	pkgdesc='Manjaro Asian input support for ibus, with dependencies set to optional.'
 	#depends=('ibus')
 	optdepends=(
 		'ibus-libpinyin: a Chinese IME'
@@ -33,7 +33,7 @@ package_ibus-input-support() {
 }
 
 package_fcitx-input-support() {
-	pkgdesc='A fork of Manjaro Asian input support for fcitx, with dependencies set to optional.'
+	pkgdesc='Manjaro Asian input support for fcitx, with dependencies set to optional.'
 	optdepends=(
 		'fcitx-qt5: QT input module'
 		'fcitx-gtk3: GTK input module'
