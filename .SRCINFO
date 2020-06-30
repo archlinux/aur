@@ -1,7 +1,7 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = nheko
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
 	depends = hicolor-icon-theme
 	depends = lmdb
 	depends = cmark
