@@ -14,7 +14,7 @@ url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('i686' 'x86_64')
 depends=('gtk2' 'gtk3' 'libxt' 'dbus-glib' 'nss')
 makedepends=()
-provides=('firefox=68')
+provides=('firefox=78')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
