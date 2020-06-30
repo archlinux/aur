@@ -13,9 +13,7 @@ source=("https://download.bas21.no/bas21/bas21-$pkgver.tar.xz")
 
 prepare() {
   gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "pkgdesc" --name='BAS21'
-#  install -Dm644 "bascore.ico" "${pkgdir}/usr/share/icons/bas21.ico"
 }
-  
 
 package() { 
   install -d "${pkgdir}/opt/${pkgname%-bin}"
