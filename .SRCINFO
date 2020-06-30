@@ -1,0 +1,15 @@
+pkgbase = moonmodeler
+	pkgdesc = Data modeling tool for MongoDB, MariaDB & GraphQL (Trial)
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://www.datensen.com/data-modeling/moon-modeler-for-databases.html
+	arch = x86_64
+	license = custom:moonmodeler
+	depends = zlib
+	noextract = moonmodeler-2.3.0.AppImage
+	options = !strip
+	source = moonmodeler-2.3.0.AppImage::https://www.datensen.com/downloads/Moon%20Modeler-2.3.0.AppImage
+	sha256sums = 7bc1b70ab8a3dceb8363f50c29e00d48f4bcb6624a3d5eb0b8e4635e1b7668c2
+
+pkgname = moonmodeler
+
