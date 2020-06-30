@@ -1,0 +1,25 @@
+pkgbase = panda-topbar
+	pkgdesc = topbar for PandaDE
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pandaos/panda-topbar
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = qt5-base
+	makedepends = libxcomposite
+	makedepends = libxcb
+	makedepends = libxrender
+	makedepends = kdbusaddons
+	makedepends = libdbusmenu-qt5
+	makedepends = libxdamage
+	makedepends = libxtst
+	depends = kwindowsystem
+	depends = qt5-x11extras
+	depends = qt5-svg
+	source = panda-topbar-d41e96e2fd9d72b60847cc702aa83fb2bfb7f5c3.tar.gz::https://github.com/pandaos/panda-topbar/archive/d41e96e2fd9d72b60847cc702aa83fb2bfb7f5c3.tar.gz
+	sha512sums = 6a4174c2bd2e0eb5d8a48742bbc24dcaf13cc0f4593c2a55a83ea6f89d0048e2f7bef106a809f710e232c8899a99c03ed7503afd9279aeb3e00d776e42d04ac7
+
+pkgname = panda-topbar
+
