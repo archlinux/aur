@@ -1,0 +1,15 @@
+pkgbase = nodelock
+	pkgdesc = Locking utility for smart cards
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/kruhlmann/nodelock
+	arch = any
+	depends = nodejs
+	depends = npm
+	depends = xscreensaver
+	noextract = @kruhlmann/nodelock-1.1.5.tgz
+	source = https://registry.npmjs.org/@kruhlmann/nodelock/-/nodelock-1.1.5.tgz
+	sha1sums = 7814094cc215799542ae31229929df8747dc742d
+
+pkgname = nodelock
+
