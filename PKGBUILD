@@ -1,6 +1,6 @@
 # Maintainer: Shakib <hello@shakib.tech>
 pkgname=local-by-flywheel-bin
-pkgver=5.2.7
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
@@ -14,11 +14,11 @@ depends=(
   'nettle6'
 )
 options=('emptydirs')
-source=("https://local-by-flywheel-flywheel.netdna-ssl.com/releases/5-2-7/local-5-2-7-linux.rpm")
-sha1sums=('300d3274e96927c834bad14e8a530699d25d2945')
+source=("https://cdn.localwp.com/releases-stable/5.6.2+4213/local-5.6.2-linux.rpm")
+sha1sums=('cbb9e2488f727986e24b98e501a0ae40d96b8525')
 
 package() {
-rpmextract.sh ../local-5-2-7-linux.rpm
+rpmextract.sh ../local-5-6-2-linux.rpm
 mv $srcdir/usr $pkgdir/ # /usr & /opt are top-level dirs in the package
 mv $srcdir/opt $pkgdir/ 
 cd $pkgdir/
