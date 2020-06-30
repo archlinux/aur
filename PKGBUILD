@@ -16,7 +16,7 @@ conflicts=("${pkgname}" "stremio-legacy" "stremio")
 
 install=${_pkgname}.install
 
-source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#tag=${pkgver}")
+source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}")
 noextract=()
 md5sums=("SKIP")
 
@@ -29,9 +29,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
-	if [ -n "$BRANCH" ]; then
-		git checkout "$BRANCH"
-	fi
 
 	git submodule update --init
 	make -f release.makefile clean
