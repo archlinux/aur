@@ -1,8 +1,8 @@
-# Maintainer: Max Shaughnessy <msh@lap.is>
+# Maintainer: Max Shaughnessy <max@lap.is>
 
 pkgname=dnscontrol-git
 pkgver=3.2.0.r812.0a36cb7f
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (master branch)"
 arch=('x86_64')
 url="https://github.com/StackExchange/dnscontrol.git"
