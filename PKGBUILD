@@ -34,8 +34,8 @@ sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             'e98506a3880da2d8b54ccbafbb3acac1bbc6b8f2552de37b658a4bfac7f498ad')
 
 prepare() {
-	cd "$srcdir/${_pkgname}_$pkgver"
-	patch -p1 < ../natspec.patch
+  cd "$srcdir/${_pkgname}_$pkgver"
+  patch -p1 < ../natspec.patch
 
   # https://sourceforge.net/p/p7zip/bugs/185/
   patch -Np1 -i ../CVE-2016-9296.patch
