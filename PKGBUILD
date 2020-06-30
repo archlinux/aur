@@ -26,11 +26,13 @@ makedepends=(python-twisted python-jinja python-zope-interface
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "reproducible-html.diff")
+        "reproducible-html.diff"
+        "sqlalchemy-1.13.18.diff")
 sha256sums=('e5ef72bba5eee9f84f5c2df45fb6238537714c7ce9f9838418d385a3722948c9'
             'SKIP'
             'SKIP'
-            'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864')
+            'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864'
+            'cd6119e8f8346ad2bcfedb3bfdbfcdcbb9908ea1db9f3ec09d323f6c9d13d9df')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -39,6 +41,7 @@ validpgpkeys=(
 prepare() {
   cd buildbot-$pkgver
   patch -Np1 -i ../reproducible-html.diff
+  patch -Np1 -i ../sqlalchemy-1.13.18.diff
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile

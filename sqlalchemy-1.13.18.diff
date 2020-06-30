@@ -1,0 +1,13 @@
+diff --git a/master/buildbot/db/enginestrategy.py b/master/buildbot/db/enginestrategy.py
+index 7cd014e37..cb835602b 100644
+--- a/master/buildbot/db/enginestrategy.py
++++ b/master/buildbot/db/enginestrategy.py
+@@ -216,7 +216,7 @@ class BuildbotEngineStrategy(strategies.PlainEngineStrategy):
+                 raise TypeError("Buildbot requires use_unicode=True " +
+                                 "(and adds it automatically)")
+         else:
+-            u.query['use_unicode'] = True
++            u.query['use_unicode'] = "True"
+ 
+         if 'charset' in u.query:
+             if u.query['charset'] != "utf8":
