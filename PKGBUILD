@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=borg-bin
-pkgver=1.1.11
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="Borg backup - prebuilt standalone binary"
 url="https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary"
@@ -13,9 +13,9 @@ _baseurl="https://github.com/borgbackup/borg/releases/download"
 source=("$_tgt-README.txt::$_baseurl/$pkgver/README.txt")
 source_x86_64=("$_tgt-x86_64::$_baseurl/$pkgver/borg-linux64")
 source_i686=("$_tgt-i686::$_baseurl/$pkgver/borg-linux32")
-sha256sums=('5ccff5fa1ba183447a9de47cba6cea95bb25905ebd39edc30371cac761ffaf12')
-sha256sums_x86_64=('7848d1788b5d7f2ae99a599a87992cab4f01584fe5eb393819fceaecf076433b')
-sha256sums_i686=('3626501dc9715324c70a20b5140a8993b70f0f8530066ab18fb8b75eb4250a72')
+sha256sums=('f7fe86af86f15a4114b822666d12309ee63ed9b5dd1f696526c202c647bcce51')
+sha256sums_x86_64=('60a662bef3669ed16bb29dadf6b59b74ff664f983d5fa71de7f1fb05a4fec7c0')
+sha256sums_i686=('a4932a4bd94931137405533f86a744fea9c50cad0c6eb1b7220bb9d6098c6f9b')
 
 package() {
     install -D $_tgt-$CARCH $pkgdir/usr/bin/borg
