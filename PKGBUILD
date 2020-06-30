@@ -1,12 +1,12 @@
-# Maintainer: antsa <asss1924@gmail.com>
+# Maintainer: antsa <asss1924 <plus> aur <at> gmail <dot> com>
 # Contributor: Gordin <9ordin@gmail.com>
 
 pkgname=firefox-nightly-de
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
-pkgver=79.0a1.20200602
+pkgver=80.0a1.20200629
 pkgrel=1
-_version=79.0a1
+_version=80.0a1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
