@@ -1,6 +1,6 @@
 pkgbase = emptty-git
 	pkgdesc = Dead simple Display Manager running in CLI as TTY login, that starts Xorg or Wayland
-	pkgver = 0.2.0.r2.gfcc48d0
+	pkgver = 0.2.0.r7.gca0a20c
 	pkgrel = 1
 	url = https://github.com/tvrzna/emptty
 	arch = x86_64
