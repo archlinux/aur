@@ -1,7 +1,7 @@
 pkgbase = allsorts-tools
 	pkgdesc = Font debugging tools based on the allsorts font shaping engine
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yeslogic/allsorts-tools
 	arch = i686
 	arch = x86_64

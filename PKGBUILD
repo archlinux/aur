@@ -2,7 +2,7 @@
 
 pkgname=allsorts-tools
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Font debugging tools based on the allsorts font shaping engine'
 arch=('i686' 'x86_64')
 url="https://github.com/yeslogic/allsorts-tools"
@@ -15,7 +15,7 @@ sha256sums=('93c32dd0ce7fbef23a48e08d258977b4d2d06ffa8d26ac08585adf2e6bd62896')
 
 build() {
   cd "$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --locked
+  cargo build --release --locked
 }
 
 package() {
