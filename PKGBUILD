@@ -1,7 +1,7 @@
 # Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=gojq
-pkgver=0.10.1
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='Pure go implementation of jq'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/itchyny/gojq/archive/v${pkgver}.tar.gz")
-sha256sums=('9a5676cf3132cd4eef1f48b36b480cd07e4e57cd1ef1d0304edd242b4f6ff0f4')
+sha256sums=('ae1cd847becf85bf4a6e4d710043ec369cc9670d06fc3e1056eebc7af641151f')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
