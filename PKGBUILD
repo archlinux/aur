@@ -8,6 +8,7 @@ pkgdesc="An action-based tactical adventure with active pause (extreme slowdown 
 arch=('x86_64')
 url="https://www.gog.com/game/we_are_the_dwarves"
 license=('custom')
+depends=('libx11' 'libxinerama' 'libxcursor' 'libxrandr' 'libxi' 'alsa-lib' 'libpulse' 'libglvnd' 'glibc')
 source=("gogdownloader://we_are_the_dwarves/en3installer4"
         "We are the Dwarves.desktop"
         "start-we-are-the-dwarves.sh")
