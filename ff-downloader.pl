@@ -267,7 +267,7 @@ my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
 my $sha512s;
 for (@sha512_file)
 {
-    if ($_ =~ /([a-z0-9]+)\s{2}[\.\/]*$search_string/)
+    if ($_ =~ /b'([a-z0-9]+)'\s{2}[\.\/]*$search_string/)
     {
         $sha512s= $1;
         last;
