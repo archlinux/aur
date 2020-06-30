@@ -21,8 +21,8 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20200602
-_pkgver="2Jun2020"
+pkgver=20200630
+_pkgver="30Jun2020"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
