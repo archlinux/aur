@@ -3,8 +3,8 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=3.10.1.r0.g8e602b0
-pkgrel=2
+pkgver=4.0.1.r0.g278a5d9
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -20,7 +20,7 @@ source=('git+https://github.com/cheat/cheat.git'
         'git+https://github.com/cheat/cheatsheets.git'
         "https://raw.githubusercontent.com/${pkgname%-git}/cheatsheets/master/.github/LICENSE.txt")
 sha256sums=('SKIP'
-            'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
+            'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
