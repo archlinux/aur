@@ -4,8 +4,8 @@ pkgname="nominatim"
 pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
-pkgver=3.5.0
-pkgrel=0
+pkgver=3.5.1
+pkgrel=1
 
 arch=("x86_64")
 license=("GPL2")
@@ -19,12 +19,15 @@ depends=(
     "boost"
     "boost-libs"
     "expat"
+    "fmt"
     "git"
+    "libosmium"
     "php"
     "php-intl"
     "php-pgsql"
     "postgis"
     "postgresql"
+    "protozero"
     "proj"
     "pyosmium"
 )
@@ -46,6 +49,7 @@ optdepends=(
 
 source=(
     "https://nominatim.org/release/Nominatim-${pkgver}.tar.bz2"
+    "https://www.nominatim.org/data/country_grid.sql.gz"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
     "apache.conf"
@@ -54,13 +58,17 @@ source=(
     "webapps-paths.patch"
 )
 sha256sums=(
-    "042c249a5857741cd289e7a78e13e388500ef7016736e0eef438cba38599425c"
+    "9e4e8d58e6c0a4fd0270ca34657226a19bde33fb0fcfbeb91a215c739faddde5"
+    "fe66393aaf561749255cebf4c61d13a8425e326b8ce50409d88c4035165de049"
     "7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d"
     "50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8"
     "8dd94ea1a88156bc55dc41e4f4df878df4f28c23c31bfda36c89470e2f5997d0"
     "37c4b17463f8317d39bb741b07bbb693afc0bbf584eec590f89b849542b98b7d"
     "c51857c2aa9d1373b5b66cd695b9b30a916ecd05570d92cf631af5efc63ed472"
     "e35272be9414661c79659da8bd1c8028e859c460efbf52236a4bb84f018b9a57"
+)
+noextract=(
+    "country_grid.sql.gz"
 )
 
 install="${pkgname}.install"
@@ -71,12 +79,18 @@ backup=(
 prepare() {
     mkdir -p "${srcdir}/build"
     patch -d "${srcdir}/Nominatim-${pkgver}" -p1 < webapps-paths.patch
+
+    cp "country_grid.sql.gz" "${srcdir}/Nominatim-${pkgver}/data/country_grid.sql.gz"
 }
 
 build() {
     cd "${srcdir}/build"
     cmake \
+        -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DEXTERNAL_LIBOSMIUM="ON" \
+        -DEXTERNAL_PROTOZERO="ON" \
+        -DEXTERNAL_FMT="ON" \
         "../Nominatim-${pkgver}"
     make
 }
@@ -87,7 +101,7 @@ build() {
 # }
 
 package() {
-    cd "${srcdir}/build"
+    cd "${srcdir}/build/"
     make DESTDIR="${pkgdir}/" install
 
     # install is a bit of a mess;
@@ -107,8 +121,7 @@ package() {
 	    "settings" \
         "sql" \
         "utils" \
-        "website" \
-        "wikidata"
+        "website"
     do
         install \
             -Ddm755 \
@@ -159,7 +172,7 @@ package() {
 
     # single files (binaries) to copy to /var/lib
     install -Dm755 "${srcdir}/build/module/nominatim.so" -t "${pkgdir}/var/lib/${pkgname}/bin/module/"
-    install -Dm755 "${srcdir}/build/nominatim/nominatim" -t "${pkgdir}/var/lib/${pkgname}/bin/nominatim/"
+    #install -Dm755 "${srcdir}/build/nominatim/nominatim" -t "${pkgdir}/var/lib/${pkgname}/bin/nominatim/"
 
     # repair symlinks pointing to ${srcdir}
     for _link in \
