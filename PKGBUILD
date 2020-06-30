@@ -1,7 +1,7 @@
 # Maintainer: Sourav Goswami <souravgoswami@protonmail.com>
 pkgname=cowspeak
-pkgver=2.81
-pkgrel=3
+pkgver=2.82
+pkgrel=1
 pkgdesc="Display an animal with a random quote or your own text"
 arch=('any')
 url="https://github.com/Souravgoswami/cowspeak-root"
@@ -20,4 +20,4 @@ package() {
 	cp -dpr --no-preserve=ownership "${usr}/share/" "${pkgdir}/usr/"
 }
 
-md5sums=('71d952d230de2a2a3de74651fc436869')
+md5sums=('6362e50394d8c7c60fd8744a626d6839')
