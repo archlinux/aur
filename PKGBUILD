@@ -11,7 +11,7 @@ depends=('qt5-base' 'opencv')
 makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja')
 provides=('opentrack')
 conflicts=('opentrack')
-source=("git+https://github.com/LevitatingBusinessMan/opentrack.git" "opentrack.desktop")
+source=("git+https://github.com/opentrack/opentrack.git" "opentrack.desktop")
 sha256sums=('SKIP'
             '40f856cae6f8651fbbc37666b9d5ef35c3aa2399cd28f8b89d411bfc1ad871e7')
 
@@ -35,7 +35,7 @@ build() {
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DSDK_XPLANE=xplane_sdk \
-      -DSDK_WINE_PREFIX=/ \
+      -DSDK_WINE=ON \
       -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
