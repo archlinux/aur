@@ -1,15 +1,15 @@
 pkgbase = inpulse-to-talk
 	pkgdesc = Push-to-Talk with libinput + Pulseaudio
-	pkgver = v1.1
-	pkgrel = 3
+	pkgver = v1.2
+	pkgrel = 1
 	url = https://gitlab.com/somini/inpulse-to-talk
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-libinput>0.1.0
 	depends = pulseaudio-ctl
-	source = inpulse-to-talk-v1.1.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/v1.1/inpulse-to-talk-v1.1.tar.gz
-	sha256sums = 34de9359f100b665a588b6889a6f6fbd377386f3a34b2703a0ec0870419c9bb0
+	source = inpulse-to-talk-v1.2.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/v1.2/inpulse-to-talk-v1.2.tar.gz
+	sha256sums = 7ad584e6a13751bb8e46c539d0c91d9e1014a16354e08f51a5f7934a559aae07
 
 pkgname = inpulse-to-talk
 
