@@ -19,7 +19,6 @@ pkgbase = prosody-hg
 	depends = lua52-expat
 	depends = lua52-filesystem
 	depends = lua52-sec
-	depends = openssl
 	optdepends = lua52-event: libevent support
 	provides = prosody
 	conflicts = prosody

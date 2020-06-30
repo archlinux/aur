@@ -20,8 +20,7 @@ depends=(
   'lua52-socket'
   'lua52-expat'
   'lua52-filesystem'
-  'lua52-sec'
-  'openssl')
+  'lua52-sec')
 makedepends=('mercurial')
 checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
 conflicts=('prosody')
