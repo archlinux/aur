@@ -1,7 +1,7 @@
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi@gmail.com>
 
 pkgbase=linux-x570-vfio
-pkgver=5.7.2.arch1
+pkgver=5.7.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
