@@ -1,6 +1,6 @@
 pkgbase = ma1sd
 	pkgdesc = Federated Matrix Identity Server Daemon
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/ma1uta/ma1sd
 	install = ma1sd.install
@@ -9,10 +9,10 @@ pkgbase = ma1sd
 	makedepends = gradle
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
-	source = https://github.com/ma1uta/ma1sd/archive/2.3.0.tar.gz
+	source = https://github.com/ma1uta/ma1sd/archive/2.4.0.tar.gz
 	source = ma1sd
 	source = ma1sd.tmpfiles
-	sha512sums = 4aedefc7d91aabe4cc406f16036d86ace49673c11873a7c70f7b8d51b9eafb8a6eedd64c07626ac1b08e7d60d9f1c2a9415dccac7e501b9e55542535aeb3e3f7
+	sha512sums = ed24f5b4a9f242845832a9824476e0d2a8b378380461a3e03dc9d29e3daf70da6a45e47c16ef75c6ce0d65bbd8b4e226e0d0206234caff71d6c82ac42f3e4215
 	sha512sums = 750584c682fea1a4d96950eba1528abdd564ff12b73fc12e0f4755049c5b1b9b29c9efb52ded207cdd992b2804a6559a444b83b0fa92cbf5c7870734b2862704
 	sha512sums = 201df7ac9573191b032788d39131638913c69db3523cdf5ed11aa982518602a82b72d8e0c252e0b84c3bbb81371c279cf0515107c0ae4ab60456a2ddb312b96c
 
