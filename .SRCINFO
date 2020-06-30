@@ -1,7 +1,7 @@
 pkgbase = archlinux32-keyring
 	pkgdesc = Arch Linux 32 PGP keyring
 	pkgver = 20200408
-	pkgrel = 1
+	pkgrel = 1.0
 	url = https://archlinux32.org
 	install = archlinux32-keyring.install
 	arch = any

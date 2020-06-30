@@ -1,7 +1,7 @@
 # Maintainer: Erich Eckner <deep42thought@archlinux32.org>
 pkgname=archlinux32-keyring
 pkgver='20200408'
-pkgrel='1'
+pkgrel='1.0'
 pkgdesc='Arch Linux 32 PGP keyring'
 arch=('any')
 url='https://archlinux32.org'
