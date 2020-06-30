@@ -1,6 +1,6 @@
 pkgbase = 9menu
 	pkgdesc = Simple and easily configurable X-menu / program launcher.
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = ftp://freefriends.org/arnold/Source/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = 9menu
 	license = custom
 	makedepends = imake
 	depends = libxext
-	source = ftp://freefriends.org/arnold/Source/9menu-1.9.shar.gz
-	md5sums = 39b18a247c8b1b72332aa136fc4ec17c
+	source = ftp://freefriends.org/arnold/Source/9menu-1.10.shar.gz
+	md5sums = ea9590432b933a5666d0e007af5cf55d
 
 pkgname = 9menu
 
