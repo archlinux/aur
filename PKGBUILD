@@ -2,7 +2,7 @@
 
 pkgname=system76-power-openrc
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Power Management - with OpenRC init"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -24,7 +24,7 @@ source=(
 sha256sums=(
 '3b05850fe1f0af36cf8699bd7d13eea141b89d6fa386cb3997d79932daea82f6'
 '6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891'
-'1479ddfdf1f6c477b1361c3ebe429bc0d5d32b5bc68e4c5addca0cb095519f93'
+'bf21e08d5be367d0bbff359877cf7ab36b5df2151aee760e5ce5b1cb001d2f1d'
 )
 
 prepare() {

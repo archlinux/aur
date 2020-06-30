@@ -1,7 +1,7 @@
 pkgbase = system76-power-openrc
 	pkgdesc = System76 Power Management - with OpenRC init
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = system76-power-openrc
 	source = system76-power
 	sha256sums = 3b05850fe1f0af36cf8699bd7d13eea141b89d6fa386cb3997d79932daea82f6
 	sha256sums = 6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891
-	sha256sums = 1479ddfdf1f6c477b1361c3ebe429bc0d5d32b5bc68e4c5addca0cb095519f93
+	sha256sums = bf21e08d5be367d0bbff359877cf7ab36b5df2151aee760e5ce5b1cb001d2f1d
 
 pkgname = system76-power-openrc
 
