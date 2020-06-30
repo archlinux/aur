@@ -1,7 +1,7 @@
 pkgbase = gohufont-otb
 	pkgdesc = OpenType bitmap conversion of Gohufont
 	pkgver = 2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://font.gohu.org
 	arch = any
 	license = custom:WTFPL
