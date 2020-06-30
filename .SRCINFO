@@ -20,8 +20,8 @@ pkgbase = easytag-opensuse-ogg-patch
 	depends = opusfile
 	provides = easytag
 	conflicts = easytag
-	source = https://download.gnome.org/sources/easytag-opensuse-ogg-patch/2.4/easytag-opensuse-ogg-patch-2.4.3.tar.xz
-	source = 0001-easytag-revert-open-handle-ogg.patch
+	source = https://download.gnome.org/sources/easytag/2.4/easytag-2.4.3.tar.xz
+	source = 0001-easytag-revert-open-handle-ogg.rpatch
 	sha256sums = fc51ee92a705e3c5979dff1655f7496effb68b98f1ada0547e8cbbc033b67dd5
 	sha256sums = 114188c02e3641374b7c6fa5a662215a66fbe6d55e195d192a8856aab3ebdca0
 

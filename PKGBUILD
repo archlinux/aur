@@ -3,6 +3,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 
+_pkgname=easytag
 pkgname=easytag-opensuse-ogg-patch
 pkgver=2.4.3
 pkgrel=3
@@ -16,8 +17,8 @@ depends=('id3lib' 'libid3tag' 'gtk3' 'libvorbis' 'flac' 'speex' 'wavpack' 'tagli
 conflicts=(easytag)
 provides=(easytag)
 source=(
-    https://download.gnome.org/sources/${pkgname}/${pkgver:0:3}/${pkgname}-${pkgver}.tar.xz
-    0001-easytag-revert-open-handle-ogg.patch
+    https://download.gnome.org/sources/${_pkgname}/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.xz
+    0001-easytag-revert-open-handle-ogg.rpatch
 )
 sha256sums=(
     'fc51ee92a705e3c5979dff1655f7496effb68b98f1ada0547e8cbbc033b67dd5'
@@ -25,24 +26,24 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  for f in "${srcdir}"/*.patch; do
-    patch -p1 < "$f"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  for f in "${srcdir}"/*.rpatch; do
+    patch -p1 -R < "$f"
   done
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make -k check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
