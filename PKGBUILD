@@ -1,4 +1,5 @@
-# Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Maintainer: SanskritFritz
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Wenzhi Liang <wenzhi.liang@gmail.com>
 
