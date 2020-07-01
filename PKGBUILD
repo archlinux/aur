@@ -46,11 +46,7 @@ build() {
 
     msg2 "Building binary"
 
-    go build -trimpath -v
-    
-    msg2 "Cleaning residual"
-    chmod 777 -R $GOPATH/pkg/mod
-    rm -rf $GOPATH/pkg/mod
+    go build -trimpath -v -modcacherw
 }
 
 package() {
