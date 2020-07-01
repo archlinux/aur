@@ -5,7 +5,7 @@
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
 pkgver=6.1.10
-pkgrel=1
+pkgrel=2
 case "$CARCH" in
   x86_64)
     _linux_major=5
