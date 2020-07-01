@@ -1,6 +1,6 @@
 pkgbase = chromium-ublock-origin
 	pkgdesc = An efficient blocker for Chromium
-	pkgver = 1.27.10
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	install = chromium-ublock-origin.install
@@ -10,8 +10,8 @@ pkgbase = chromium-ublock-origin
 	makedepends = zip
 	optdepends = chromium: open-source web browser from Google
 	optdepends = google-chrome: Google's freeware web browser
-	source = https://github.com/gorhill/uBlock/releases/download/1.27.10/uBlock0_1.27.10.chromium.zip
-	md5sums = a0e7ce035fe51b53af2746153144f0da
+	source = https://github.com/gorhill/uBlock/releases/download/1.28.0/uBlock0_1.28.0.chromium.zip
+	md5sums = e5045c2530c911addd300848bd35d588
 
 pkgname = chromium-ublock-origin
 
