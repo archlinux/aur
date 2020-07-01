@@ -4,7 +4,7 @@
 
 pkgname=firefox-esr
 pkgver=78.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -89,7 +89,7 @@ ac_add_options --with-system-nss
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-crashreporter
+ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
@@ -145,8 +145,8 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
 
-  echo "Building symbol archive..."
-  ./mach buildsymbols
+#  echo "Building symbol archive..."
+#  ./mach buildsymbols
 }
 
 package() {
@@ -212,13 +212,13 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
-  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
-  else
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      cp -fvt "$startdir" {} +
-  fi
+#  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
+#    find . -name '*crashreporter-symbols-full.zip' -exec \
+#      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
+#  else
+#    find . -name '*crashreporter-symbols-full.zip' -exec \
+#      cp -fvt "$startdir" {} +
+#  fi
 }
 
 # vim:set sw=2 et:
