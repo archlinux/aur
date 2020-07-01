@@ -3,11 +3,11 @@
 
 pkgname='ttf-monoid'
 pkgver=0.61
-pkgrel=4
+pkgrel=5
 pkgdesc='A customisable coding font'
 arch=('any')
 license=('MIT' 'custom:OFL')
-depends=('xorg-font-utils' 'fontconfig')
+depends=('fontconfig')
 makedepends=('fontforge' 'python')
 url='http://larsenwork.com/monoid/'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/larsenwork/monoid/archive/${pkgver}.tar.gz"
