@@ -25,7 +25,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/fir
         ${pkgname}.desktop 0001-Use-remoting-name-for-GDK-application-names.patch upload-symbol-archive)
 sha256sums=('075520299f276dbb2dca6a6bc0edff1b5f09d0a74151c1415876217197ce7b99'
             'SKIP'
-            'ba8a1610fe3ccc65cb58f2651df0ae9df632ecc17b3af8d13670950e9e2d27d8'
+            'd86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             'eb9b9c058d1505e5b82526a8cad63f98e04fc17c4715f6b4cfc778e10fcfaf27')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
