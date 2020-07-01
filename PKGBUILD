@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
 depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull openvdb cgal) #wxgtk3)
-makedepends=(cmake boost cereal eigen3 expat gtest libpng systemd)
+makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}.desktop)
