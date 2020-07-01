@@ -26,9 +26,7 @@ prepare()
   mkdir -p "$srcdir/build"
   cd "$srcdir/Tanks-of-Freedom-$_pkgtag-beta"
 
-  echo "[platform:Linux X11]" >> export.cfg
-  echo "" >> export.cfg
-  echo "resources/pack_mode=0" >> export.cfg
+  cp buildConfig/export_desktop.cfg export.cfg
 }
 
 build()
