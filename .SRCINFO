@@ -1,0 +1,15 @@
+pkgbase = passman
+	pkgdesc = Super-secure, easy-to-use password manager.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/binex-dsk/passman-aur
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-sqlalchemy
+	provides = passman
+	source = git+https://github.com/binex-dsk/passman-aur.git
+	md5sums = SKIP
+
+pkgname = passman
+
