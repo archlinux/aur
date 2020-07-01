@@ -3,6 +3,7 @@
 _update() {
     echo "Please configure thinkfan in: /etc/thinkfan.conf"
     echo "Have a look at the examples in: /usr/share/doc/thinkfan/examples for details."
+		echo "Note that the old syntax is now deprecated, and you should switch to the YAML-based config syntax."
 }
 
 ## arg 1:  the new package version
