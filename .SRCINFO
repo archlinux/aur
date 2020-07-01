@@ -1,0 +1,23 @@
+pkgbase = tsid
+	pkgdesc = Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/stack-of-tasks/tsid
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = eigen
+	depends = pinocchio
+	depends = eiquadprog
+	optdepends = doxygen
+	source = https://github.com/stack-of-tasks/tsid/releases/download/v1.3.1/tsid-1.3.1.tar.gz
+	source = https://github.com/stack-of-tasks/tsid/releases/download/v1.3.1/tsid-1.3.1.tar.gz.sig
+	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tsid
+
+pkgname = tsid-docs
+
