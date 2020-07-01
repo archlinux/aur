@@ -11,14 +11,13 @@ url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 # gauche only needed if this is the first build of gauche-git,
 # afterwards gauche-git will provide gauche
-depends=('zlib' 'gdbm' 'libatomic_ops' 'gauche' 'slib') 
+depends=('mbedtls' 'gdbm' 'libatomic_ops' 'gauche' 'slib') 
 makedepends=('bash' 'git') 
 provides=('gauche')
 conflicts=('gauche')
 source=('git+https://github.com/shirok/Gauche.git')
 md5sums=('SKIP')
 _gitname='Gauche'
-#options=('!makeflags' '!emptydirs')
 
 pkgver() {
   cd "$_gitname"
@@ -28,6 +27,7 @@ pkgver() {
   
 build() {
   cd "$_gitname"
+  LANG=C
   ./DIST gen
   CONFIG_SHELL=/bin/bash ./configure --prefix=/usr \
     --enable-multibyte=utf-8 --enable-threads=pthreads 
