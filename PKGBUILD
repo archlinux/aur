@@ -1,42 +1,32 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Maintainer: Zanny <lordzanny@gmail.com>
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcodecs-git
-pkgver=r202.3dcea8a
+_name=${pkgname%-git}
+pkgver=v5.71.0.rc1.r6.g982b8e6
 pkgrel=1
 pkgdesc='Plugins allowing Qt applications to access further types of images'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url='https://projects.kde.org/projects/frameworks/kcodecs'
-license=('LGPL')
-depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'gperf' 'git' 'qt5-tools')
-groups=('kf5')
+license=(LGPL)
+depends=(qt5-base)
+makedepends=(extra-cmake-modules gperf git qt5-tools)
+groups=(kf5)
 conflicts=(kcodecs)
 provides=(kcodecs)
-source=('git://anongit.kde.org/kcodecs.git')
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd kcodecs
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../kcodecs \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
