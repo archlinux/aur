@@ -1,14 +1,12 @@
 pkgbase = ttf-merriweather
 	pkgdesc = A typeface that is pleasant to read on screens by Sorkin Type Co
 	pkgver = 2.005
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://sorkintype.com/
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = ttf-merriweather-ib
 	source = Merriweather-Black-2.005.ttf::https://github.com/SorkinType/Merriweather/raw/ae0bf55e53517ac98cc74c375a383ad4c36f937a/fonts/ttfs/Merriweather-Black.ttf
