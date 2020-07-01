@@ -12,7 +12,6 @@ pkgrel=1
 arch=('any')
 license=('custom:HCo')
 url='https://www.typography.com/fonts/operator/overview/'
-depends=('fontconfig' 'xorg-font-utils')
 source=("local://OperatorMono-Bold.otf"
         "local://OperatorMono-BoldItalic.otf"
         "local://OperatorMono-Book.otf"
