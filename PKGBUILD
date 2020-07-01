@@ -4,7 +4,7 @@
 
 pkgname=teamcity
 pkgver=2020.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
 url="http://www.jetbrains.com/teamcity/"
@@ -24,7 +24,6 @@ sha256sums=('bd6f6d61c6414a1f2de726cac69d7080e90a23d5b828d0e68a3ce5aa4e0851cc'
             'f6d9b522a2730f9e6b6e044cb6f76fa31767788a4f7f21ab4e751dc1f88f6143'
             '7d140cac121eb725990edc2323682a0dbaeb15393b8fda10fb043af994843248')
 options=('!strip')
-PKGEXT='.pkg.tar'
 
 package() {
   mkdir -p "$pkgdir/usr/share/licenses"

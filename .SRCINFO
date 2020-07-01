@@ -1,7 +1,7 @@
 pkgbase = teamcity
 	pkgdesc = Continuous integration server from JetBrains
 	pkgver = 2020.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/teamcity/
 	install = teamcity.install
 	arch = any
