@@ -12,7 +12,8 @@ options=('!strip')
 source=("https://download.bas21.no/bas21/bas21-$pkgver.tar.xz")
 
 prepare() {
-  gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "pkgdesc" --name='BAS21'
+  gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "$pkgdesc" --name='BAS21'
+  install -Dm644 "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 }
 
 package() { 
