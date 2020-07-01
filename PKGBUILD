@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 _pkgname=eiquadprog
 pkgname=(${_pkgname} ${_pkgname}-docs)
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Quadratic Programing solver with eigen"
 arch=('any')
