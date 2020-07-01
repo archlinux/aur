@@ -1,22 +1,29 @@
 pkgname=systemc-ams
-pkgver=2.1
-pkgrel=4
+pkgver=2.3
+pkgrel=1
 pkgdesc="SystemC-AMS is an Analog and Mixed-Signal extension library for SystemC"
 url="http://www.accellera.org/activities/working-groups/systemc-ams"
 arch=('x86_64' 'i686')
 license=('Apache License Version 2.0, January 2004')
 depends=('systemc')
 optdepends=()
-makedepends=()
+makedepends=('tar')
 conflicts=()
 provides=('systemc-ams')
-source=("http://www.coseda-tech.com/files/coside/user_files/Files/Proof-of-Concepts/systemc-ams-2.1.tar.gz")
-md5sums=('ae88cb42dc5216e3c8e3e36dd1fc2f7c')
+source=("https://www.coseda-tech.com/files/coside/user_files/Files/Proof-of-Concepts/${pkgname}-${pkgver}.tar.gz")
+md5sums=('b9f17695e2ef1677a4555fcd17efc741')
+
+noextract=("${pkgname}-${pkgver}.tar.gz")
+
+prepare() {
+    tar -xf ${pkgname}-${pkgver}.tar.gz
+}
+
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=${pkgdir}/usr --with-layout=unix CXXFLAGS="-DSC_INCLUDE_EXTRA_STD_HEADERS"
-  make
+  ./configure --prefix=${pkgdir}/usr --with-layout=unix
+  make -j $(getconf _NPROCESSORS_ONLN)
 }
 
 package() {

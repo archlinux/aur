@@ -1,15 +1,17 @@
 pkgbase = systemc-ams
 	pkgdesc = SystemC-AMS is an Analog and Mixed-Signal extension library for SystemC
-	pkgver = 2.1
-	pkgrel = 4
+	pkgver = 2.3
+	pkgrel = 1
 	url = http://www.accellera.org/activities/working-groups/systemc-ams
 	arch = x86_64
 	arch = i686
 	license = Apache License Version 2.0, January 2004
+	makedepends = tar
 	depends = systemc
 	provides = systemc-ams
-	source = http://www.coseda-tech.com/files/coside/user_files/Files/Proof-of-Concepts/systemc-ams-2.1.tar.gz
-	md5sums = ae88cb42dc5216e3c8e3e36dd1fc2f7c
+	noextract = systemc-ams-2.3.tar.gz
+	source = https://www.coseda-tech.com/files/coside/user_files/Files/Proof-of-Concepts/systemc-ams-2.3.tar.gz
+	md5sums = b9f17695e2ef1677a4555fcd17efc741
 
 pkgname = systemc-ams
 
