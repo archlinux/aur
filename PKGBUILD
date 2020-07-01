@@ -2,14 +2,14 @@
 pkgname=compcert-git
 _basepkgname=${pkgname%-*}
 _dirname=CompCert
-pkgver=3.6.r1.gf1637021
-pkgrel=3
+pkgver=3.7.r35.gbb9fa555
+pkgrel=4
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="http://compcert.inria.fr"
 license=('custom:INRIA Non-Commercial License Agreement')
 depends=('gcc')
-makedepends=('coq>=8.6.1' 'ocaml>=4.0.2'
+makedepends=('coq>=8.8.0' 'ocaml>=4.05.0'
              'ocaml-menhir>=20190626'
              'ocaml-findlib' # See: https://github.com/AbsInt/CompCert/issues/281
              'git')

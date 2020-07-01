@@ -1,18 +1,18 @@
 pkgbase = compcert-git
 	pkgdesc = The formally verified C compiler
-	pkgver = 3.6.r1.gf1637021
-	pkgrel = 3
+	pkgver = 3.7.r35.gbb9fa555
+	pkgrel = 4
 	url = http://compcert.inria.fr
 	arch = x86_64
 	license = custom:INRIA Non-Commercial License Agreement
 	checkdepends = parallel
-	makedepends = coq>=8.6.1
-	makedepends = ocaml>=4.0.2
+	makedepends = coq>=8.8.0
+	makedepends = ocaml>=4.05.0
 	makedepends = ocaml-menhir>=20190626
 	makedepends = ocaml-findlib
 	makedepends = git
 	depends = gcc
-	provides = compcert=3.6.r1.gf1637021
+	provides = compcert=3.7.r35.gbb9fa555
 	conflicts = compcert
 	source = git+https://github.com/AbsInt/CompCert.git
 	sha1sums = SKIP
