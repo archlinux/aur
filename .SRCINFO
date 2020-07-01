@@ -1,0 +1,23 @@
+pkgbase = python-pyne
+	pkgdesc = The Nuclear Engineering Toolkit
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://pyne.io/
+	arch = any
+	license = BSD
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = python-numpy
+	depends = python-scipy
+	depends = cython
+	depends = hdf5
+	depends = python-pytables
+	source = python-pyne-0.5.11.tar.gz::https://github.com/pyne/pyne/archive/0.5.11.tar.gz
+	source = nuc_data.h5::https://github.com/pyne/data/raw/d00f5529bdc8af55638c5d2abb3271c896e08f16/prebuilt_nuc_data.h5
+	source = destdir.patch
+	sha256sums = ba05917b0de446ec520857655e77967a783e3bc723299faf5989f532d6b0647a
+	sha256sums = 8deb26f04ba4bee15355a7443711148b0f7185e7ef4f19ce111b87e85dc29275
+	sha256sums = dc380f2dcb8ab2f3acef85af7dd155a96f37c99f27889f50d99968655a7b8de5
+
+pkgname = python-pyne
+
