@@ -1,6 +1,6 @@
 pkgbase = gopls
 	pkgdesc = Language server for Go programming language
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 0
 	url = https://github.com/golang/tools/blob/master/gopls
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = gopls
 	provides = gopls
 	conflicts = go-tools
 	conflicts = go-tools-complete-git
-	source = gopls-0.4.1.tar.gz::https://github.com/golang/tools/archive/gopls/v0.4.1.tar.gz
-	sha256sums = da0594c469cb558f8059dd8edaf9fd662310ec4bc7ae41bb9b0a7266501472ad
+	source = gopls-0.4.2.tar.gz::https://github.com/golang/tools/archive/gopls/v0.4.2.tar.gz
+	sha256sums = bce85aed296569fa4342845b6248ee100a71adefde17fbbc75c32deaec64f058
 
 pkgname = gopls
 
