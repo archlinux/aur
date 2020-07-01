@@ -1,7 +1,7 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=2
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -14,19 +14,12 @@ source=(
     "deltachat-desktop-${pkgver}.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v${pkgver}.tar.gz"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
-    "no-git-checkout.patch"
 )
 
-sha256sums=('8b5018004e5727e6efbd5f00e823405e5a431d1fbf1fd034df6a6b55956948c1'
+sha256sums=('1a424f1ce520689c7a08a17b401f852e99bb3d236453f45d29b5e9de0ea7abf6'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
-            '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59'
-            '73c384c3ed882acaa90cdf1efb70d206abbe2bfda55d43c97b87344ef8605583')
+            '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59')
 
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/no-git-checkout.patch"
-}
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
