@@ -1,0 +1,25 @@
+From bbc7da208ccf2fbb6bafa5b1a07e6e141cbe8e09 Mon Sep 17 00:00:00 2001
+From: Alberto Fanjul <albertofanjul@gmail.com>
+Date: Wed, 1 Jul 2020 11:10:28 +0200
+Subject: [PATCH] Avoid warning with beautifulsoup
+
+---
+ sj4000.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sj4000.py b/sj4000.py
+index b5d66e7..282822e 100755
+--- a/sj4000.py
++++ b/sj4000.py
+@@ -215,7 +215,7 @@ class camera:
+ 				return False, 'Timeout!'
+ 			if resp.status_code != 200:
+ 				return False, resp
+-			soup= BeautifulSoup(resp.text)
++			soup= BeautifulSoup(resp.text, features="lxml")
+ 			try:
+ 				table= soup.findChildren('table')[0]
+ 			except:
+-- 
+2.27.0
+

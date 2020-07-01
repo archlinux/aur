@@ -1,0 +1,22 @@
+From 354e53021e7cd374f5cf24de603b976a25cb6976 Mon Sep 17 00:00:00 2001
+From: Alberto Fanjul <albertofanjul@gmail.com>
+Date: Wed, 1 Jul 2020 11:10:46 +0200
+Subject: [PATCH] Force run under python2
+
+---
+ sjcam | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sjcam b/sjcam
+index dac447d..72277eb 100755
+--- a/sjcam
++++ b/sjcam
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ #  sjcam - SJCAM WiFi Camera CLI utility - control SJCAM sports cameras over WiFi connection
+ # 
+-- 
+2.27.0
+

@@ -15,12 +15,23 @@ replaces=(sjcam)
 backup=()
 options=()
 install=
-source=("$pkgname::git+https://github.com/AdamLaurie/sjcam")
+source=("$pkgname::git+https://github.com/AdamLaurie/sjcam"
+        "Avoid-warning-with-beautifulsoup.patch"
+        "Force-run-under-python2.patch"
+)
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '3cb7c894c3610c1893d9c1be246bff94'
+         'd7bb9be4165e48a51f4e52d99e2a386b')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
+
+prepare() {
+   cd "$srcdir/${pkgname}"
+   patch -p1 -i "$srcdir/Avoid-warning-with-beautifulsoup.patch"
+   patch -p1 -i "$srcdir/Force-run-under-python2.patch"
+}
 
 pkgver() {
    cd "$srcdir/${pkgname}"
@@ -34,10 +45,10 @@ pkgver() {
 
 build() {
    cd "$srcdir/${pkgname}"
-   python setup.py build
+   python2 setup.py build
 }
 
 package() {
    cd "$srcdir/${pkgname}"
-   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
