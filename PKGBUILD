@@ -2,7 +2,7 @@
 
 _name=pytest-metadata
 pkgname=python-pytest-metadata
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Plugin for accessing test session metadata"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('python-pytest')
 makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('d36a40870d3d991d6726e46a984c9bafc6f131d0b2149a7426a6418b16a18807d32afe77458d7b6b5c332677cef288e29e161ad9ffc3a14d26553a066d6a6694')
+sha512sums=('e421d12f9cfb160fcc4dd959187b7c5b12f7b7ff8747313933afda1c4c7bfeedbf609ced551f90c05142745dd95e767a51d8440c789f57e6e3062741a77f5adc')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
