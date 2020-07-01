@@ -12,7 +12,7 @@ source=(https://dl.bintray.com/palantir/releases/com/palantir/javaformat/palanti
         palantir-java-format)
 md5sums=('386a65231527a3962e142edb7cbf2c24'
          '4e42c4135eab5f4d7557e3d19607f452'
-         '3a3e71f95efa491a730c6cfe7679e4db')
+         '86828c1f441b9c1a97674d7d3d035625')
 
 package() {
   mkdir -p "$pkgdir/usr/share/java/$pkgname/"

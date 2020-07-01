@@ -1,7 +1,4 @@
 #!/bin/sh
-
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-
 exec /usr/bin/java  \
     -cp /usr/share/java/palantir-java-format/palantir-java-format.jar:/usr/share/java/palantir-java-format/palantir-java-format-spi.jar:/usr/share/java/google-java-format/google-java-format.jar \
     com.palantir.javaformat.java.Main "${@}"

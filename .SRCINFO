@@ -11,7 +11,7 @@ pkgbase = palantir-java-format
 	source = palantir-java-format
 	md5sums = 386a65231527a3962e142edb7cbf2c24
 	md5sums = 4e42c4135eab5f4d7557e3d19607f452
-	md5sums = 3a3e71f95efa491a730c6cfe7679e4db
+	md5sums = 86828c1f441b9c1a97674d7d3d035625
 
 pkgname = palantir-java-format
 
