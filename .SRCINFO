@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.06.04.a.r65.gcc84c7b740a
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.06.29.a.r38.g30ccb529485
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = swift-language-git
 	depends = ncurses
 	provides = swift-language
 	conflicts = swift-language-bin
-	source = git+https://github.com/apple/swift
+	source = git+https://github.com/apple/swift#commit=30ccb5294
 	source = cmark::git+https://github.com/apple/swift-cmark
 	source = llbuild::git+https://github.com/apple/swift-llbuild
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser
@@ -31,7 +31,7 @@ pkgbase = swift-language-git
 	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation
 	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests
-	source = llvm-project::git+https://github.com/apple/llvm-project
+	source = llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
