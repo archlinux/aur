@@ -1,21 +1,26 @@
 # Maintainer: JustKidding <jk@vin.ovh>
+
+# Based on aur/chromium-vaapi, with ungoogled-chromium patches
+
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
-pkgver=83.0.4103.106
-pkgrel=1
+pkgver=83.0.4103.116
+pkgrel=2
 _pkgname=ungoogled-chromium
-_ungoogled_ver=83.0.4103.106-1
+# sometimes an ungoogled patches can be combined with a new chromium release
+# only if the release only includes security fixes
+_ungoogled_ver=83.0.4103.116-1
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium-archlinux"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'libpipewire02' 'libva' 'clang' 'lld' 'gn' 'java-runtime-headless'
@@ -30,10 +35,9 @@ provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+        https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
-        vdpau-support.patch
-        fix-intel-vaapi-wayland.patch
         clean-up-a-call-to-set_utf8.patch
         iwyu-std-numeric_limits-is-defined-in-limits.patch
         add-missing-algorithm-header-in-crx_install_error.cc.patch
@@ -41,14 +45,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         include-memory-header-to-get-the-definition-of-std-u.patch
         make-some-of-blink-custom-iterators-STL-compatible.patch
         avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+        force-mp3-files-to-have-a-start-time-of-zero.patch
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+        intel-vp9-quirk.patch
+        wayland-egl.patch
+        nvidia-vdpau.patch
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('cfd153a2e10b0bb0fb3b7e6be543aef0915181f5fbdbea893d08465afd097e2f'
+sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
+            'a8cff01fae3bc0823841c242c85746346619f684aff7968ebeb4886345395f24'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
-            'f6335d1e14e4ed865f37695d67df18008c8664778620e698bb46c35b88a8b4c2'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
             '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
             '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
@@ -56,13 +63,15 @@ sha256sums=('cfd153a2e10b0bb0fb3b7e6be543aef0915181f5fbdbea893d08465afd097e2f'
             '071326135bc25226aa165639dff80a03670a17548f2d2ff5cc4f40982b39c52a'
             '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
             'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
+            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
+            '326b8ad8f1100ad11213ee916effab43dfd7b0229ee8bed2c1c8c3132866bcae'
+            '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
+            '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
             '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
-source+=($_pkgname-$_ungoogled_ver.zip::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.zip
-         fix-vaapi-ozone-build.patch)
-sha256sums+=('7fd3357d6917c9533b6996169c593af910f68af5b9d9adfd46268cdc2acdd3b9'
-             '4e7f98b093518cc402448bdc2e35deec5cd047c0dad5bcc7b1ff2e5ba7da98aa')
+source+=(fix-vaapi-ozone-build.patch)
+sha256sums+=('4e7f98b093518cc402448bdc2e35deec5cd047c0dad5bcc7b1ff2e5ba7da98aa')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -125,6 +134,9 @@ prepare() {
   # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
   patch -Np1 -i ../avoid-double-destruction-of-ServiceWorkerObjectHost.patch
 
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
+  patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
+
   # https://crbug.com/v8/10393
   patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
 
@@ -134,11 +146,14 @@ prepare() {
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-83-gcc-10.patch
 
-  # Fix VA-API on Nvidia
-  patch -Np1 -i ../vdpau-support.patch
+  # Intel KabyLake/GeminiLake VP9 quirk
+  patch -Np1 -i ../intel-vp9-quirk.patch
 
-  # Fix VA-API on Intel on Wayland
-  patch -Np1 -i ../fix-intel-vaapi-wayland.patch
+  # Wayland/EGL regression (crbug #1071528 #1071550)
+  patch -Np1 -i ../wayland-egl.patch
+
+  # NVIDIA vdpau-wrapper
+  patch -Np1 -i ../nvidia-vdpau.patch
 
   # Fix vaapi linkage error
   patch -Np1 -i ../fix-vaapi-ozone-build.patch
@@ -146,8 +161,11 @@ prepare() {
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   _utils="${_ungoogled_repo}/utils"
+  msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
+  msg2 'Applying patches'
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
+  msg2 'Applying domain substitution'
   python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
@@ -222,7 +240,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/ungoogled-chromium-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
@@ -234,7 +252,9 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
+  msg2 'Configuring Chromium'
   gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  msg2 'Building Chromium'
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
 
@@ -278,10 +298,6 @@ package() {
     chrome_200_percent.pak
     resources.pak
     v8_context_snapshot.bin
-
-    # ANGLE
-    #libEGL.so
-    #libGLESv2.so
 
     chromedriver
   )
