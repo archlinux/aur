@@ -42,5 +42,5 @@ build() {
 
 package() {
     cd DobieStation && cd build
-    sudo make install
+    make install
 }
