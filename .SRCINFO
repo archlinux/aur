@@ -1,14 +1,14 @@
 pkgbase = step-cli-bin
 	pkgdesc = A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
-	pkgver = 0.14.4
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = https://smallstep.com/cli
 	arch = x86_64
 	license = Apache
-	source = https://github.com/smallstep/cli/releases/download/v0.14.4/step_linux_0.14.4_amd64.tar.gz
-	source = https://github.com/smallstep/cli/raw/v0.14.4/autocomplete/bash_autocomplete
-	source = https://github.com/smallstep/cli/raw/v0.14.4/autocomplete/zsh_autocomplete
-	sha256sums = 583dd45d16a28f40f9d518bd84d1863ed849c70a4a1f4e89a793a48add107370
+	source = https://github.com/smallstep/cli/releases/download/v0.14.5/step_linux_0.14.5_amd64.tar.gz
+	source = https://github.com/smallstep/cli/raw/v0.14.5/autocomplete/bash_autocomplete
+	source = https://github.com/smallstep/cli/raw/v0.14.5/autocomplete/zsh_autocomplete
+	sha256sums = 4633754ad6b09c87e3e6b82ff01e80b3463059bf6aba6bf7dadc3d5da550dfe1
 	sha256sums = add3e078e394e265f6b6a3bf12af81cc7897410ae5e6a0d4ee7714a5b856a7be
 	sha256sums = 3e65c7f99484497e39d20eed3e4ceb4006e8db62dc9987f83a789bb575636e18
 
