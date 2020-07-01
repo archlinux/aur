@@ -1,0 +1,14 @@
+pkgbase = timenaut
+	pkgdesc = Desktop time tracking application for Windows, Mac and Linux that does not invade your privacy
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://timenaut.app/
+	arch = x86_64
+	depends = fuse2
+	noextract = timenaut-0.4.1.AppImage
+	options = !strip
+	source_x86_64 = timenaut-0.4.1.AppImage::https://github.com/kmteras/timenaut/releases/download/v0.4.1/Timenaut-0.4.1.AppImage
+	sha256sums_x86_64 = 1acb647b07b44c140c010c6c6216a7f886ae58b8a089baa9c6325671893f1a96
+
+pkgname = timenaut
+
