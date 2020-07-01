@@ -5,7 +5,6 @@
 pkgname=ttf-typicons
 pkgver=2.0.9
 pkgrel=1
-depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="336 pixel perfect, all-purpose vector icons in a web-font kit"
 arch=('any')
 license=("CC BY-SA 3.0")
