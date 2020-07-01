@@ -1,6 +1,6 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.14.13
+	pkgver = 4.14.14
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = sdrangel-bin
 	optdepends = ffmpeg: DATV demodulator
 	provides = sdrangel
 	conflicts = sdrangel-git
-	source = https://github.com/f4exb/sdrangel/releases/download/v4.14.13/sdrangel-161-master.tar.gz
+	source = https://github.com/f4exb/sdrangel/releases/download/v4.14.14/sdrangel-176-master.tar.gz
 	sha256sums = 35e8fa0dc75ceced5ddf0401265aca2d4b9bc0f51bd7bb8060616640600e6783
 
 pkgname = sdrangel-bin
