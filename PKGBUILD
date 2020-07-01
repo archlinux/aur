@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.7
-_minor=6
+_minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-efi-libstub-Fix-path-separator-regression.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -318,12 +317,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('83b6622634508caf02f782688c86138cca741daad7f7b5a87a55f1f33a59d0a93ba832da46a2cb36bafaf38c31be7c7420479cf2137da928c6ccf798428fbc36'
+sha512sums=('49db85a1ce14e00411215d5d5bfda6db3d24ed2e0f2bd8e6603c18b3226614f45040856b21b4d6b525c44bb4463ab08fb594a06de6deca109d512588389cc3fd'
             'SKIP'
             'd383ff21c59aaccffbf9fac412495383118612ddbe6bf06691e2038d2b886754d2ba85b29f970f548103e1d0be519d114ba4641f29d329b604c7456db36ff193'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            '5f697643fc7c58c722fc85f7588883cf604a2151a1498e7e4d1854f73e5be5da2f5a87261f2e7d21802ce3b955f88b600cd2c267ba36ab8ce048f4aa82807867'
-            '6730292e83973ff33b5541fe9c9b5a32404686c73dc8f9744465d4b5481272668645a6247334468a5843ebf7fc5c0e9c2782da05f255f2ec8fe465a273c3f6a4'
+            '1f04c499a1dc00860ce515b105683daf9081d137bc6830ac6f9e68c8791e5032e583ecb628b5c35a6af80863cbda6222ed3515c6a55a24d193b2a11aa6766668'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '552608d223390a5093ec64e3d4ecb303d1a0708cbe1f5a6d1eabd07c8862b10dfc75306fbaf635d6e785627af113af954f1244c04e161979e291440c3349ccde')
 
