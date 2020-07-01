@@ -1,0 +1,15 @@
+pkgbase = kickassembler
+	pkgdesc = An advanced MOS 65xx assembler combined with a Java Script like script language.
+	pkgver = 5.16
+	pkgrel = 1
+	url = http://www.theweb.dk/KickAssembler/Main.html
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = kickassembler-5.16.zip::http://www.theweb.dk/KickAssembler/KickAssembler.zip
+	source = kickass
+	md5sums = a79b4cd3cdbe2d0ef450ee742dcf1638
+	md5sums = 885cea5372b31ba633e2baedd71e64a4
+
+pkgname = kickassembler
+
