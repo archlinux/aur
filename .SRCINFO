@@ -4,12 +4,12 @@ pkgbase = psync
 	pkgrel = 1
 	url = https://github.com/jnphilipp/psync
 	arch = any
-	license = GPL3
+	license = GPL3+
 	makedepends = git
 	makedepends = help2man
 	depends = python-lxml
 	depends = rsync
-	source = psync::git://github.com/jnphilipp/psync.git
+	source = git://github.com/jnphilipp/psync.git
 	md5sums = SKIP
 
 pkgname = psync
