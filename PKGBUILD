@@ -1,17 +1,17 @@
 # Maintainer: Nico Beierle <nico dot beierle at gmail dot com>
 pkgname="hornet-bin"
 _pkgname="hornet"
-pkgver="0.4.1_rc4"
-_pkgver="0.4.1-rc4"
+pkgver="0.4.1"
+_pkgver="0.4.1"
 pkgrel="1"
 pkgdesc="Powerful IOTA fullnode software (official precompiled binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gohornet/hornet"
 license=("Apache")
 source_x86_64=("https://github.com/gohornet/hornet/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums_x86_64=("3422440edd5a592efd55128668182d84f5335e3b1e8648febe335c5917910cfc")
+sha256sums_x86_64=("c13b16f2ff62fe92b6653669d5b5789dd877ea8442861778347be10a202aacb9")
 source_aarch64=("https://github.com/gohornet/hornet/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
-sha256sums_aarch64=("1b6c20e9ce2181b72805b7a256ec8e7dbfb085e0af67271e03f2b371e07c3bf5")
+sha256sums_aarch64=("86545cd7af93fc00509b92e76211616bd1c180855a25f76ce6d8fef6cfb62654")
 backup=('var/lib/hornet/config_comnet.json' 'var/lib/hornet/config.json' 'var/lib/hornet/mqtt_config.json' 'var/lib/hornet/peering.json' 'var/lib/hornet/profiles.json' 'etc/default/hornet')
 install=hornet.install
 
