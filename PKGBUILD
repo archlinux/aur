@@ -1,9 +1,10 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 # Thanks: Peter Cai <peter at typeblog dot net>
+# Thanks: unknown78 <Schmusekater78 at hotmail dot com>
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=3753v0.8.0b
+pkgver=3862v0.8.1
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='http://shatteredpixel.tumblr.com'
@@ -43,6 +44,6 @@ build() {
 package() {
   install -Dm755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 $_pkgname/desktop/src/main/assets/icon_256.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 $_pkgname/desktop/src/main/assets/icons/icon_256.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 $_pkgname/desktop/build/libs/desktop-*.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
 }
