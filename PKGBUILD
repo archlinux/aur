@@ -1,7 +1,7 @@
 # Maintainer: Viachaslau Khalikin <khalikin'at'yandex>
 
 pkgname=icecat-ublock-origin
-pkgver=1.27.10
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('icecat-addons')
 source=("https://github.com/gorhill/uBlock/releases/download/${pkgver}/uBlock0_${pkgver}.firefox.xpi")
 noextract=("${source##*/}")
-sha256sums=('673c8b617124f863f60be49b15c89d050028cbcf6f8430e0ef31625b739360a5')
+sha256sums=('dabdb01185a4cd9b2274c8ff62f8541659047f8b080b2f0c5b8c4e280fe690f5')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/icecat/browser/extensions/uBlock0@raymondhill.net.xpi
