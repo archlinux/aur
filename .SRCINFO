@@ -1,0 +1,19 @@
+pkgbase = iex-git
+	pkgdesc = C++17 library for querying IEX Cloud API.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aokellermann/iex
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = nlohmann-json
+	optdepends = doxygen: documentation
+	provides = iex
+	conflicts = iex
+	source = git://github.com/aokellermann/iex
+	md5sums = SKIP
+
+pkgname = iex-git
+
