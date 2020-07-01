@@ -1,12 +1,10 @@
 pkgbase = ttf-selawik
 	pkgdesc = Selawik font as a fallback to Segoe UI
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/winjs/bootstrap-winjs/tree/master/src/fonts
 	arch = any
 	license = custom
-	makedepends = fontconfig
-	makedepends = xorg-font-utils
 	source = https://github.com/winjs/bootstrap-winjs/archive/11fb35582ac3b9f750738da93c44293ffaaa0294.zip
 	md5sums = 03eea616523d7a315dd87e6d625a6f7f
 
