@@ -1,0 +1,15 @@
+pkgbase = midivisualizer-git
+	pkgdesc = A small MIDI visualizer tool, using OpenGL
+	pkgver = 4.1.r6.g5dc541a
+	pkgrel = 1
+	url = https://github.com/kosua20/MIDIVisualizer
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gtk3
+	provides = midivisualizer
+	source = midivisualizer::git+https://github.com/kosua20/MIDIVisualizer
+	sha256sums = SKIP
+
+pkgname = midivisualizer-git
+
