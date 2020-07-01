@@ -6,13 +6,13 @@ pkgname=librime
 pkgver=1.5.3
 _octagramcommit=3664bc9d0426397541e6dcfb7c3c7d6aaad73b2e
 _luacommit=d284336635330c2cba499d4ece7445cfd4928370
-pkgrel=10
+pkgrel=11
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
 url="https://github.com/rime/librime"
 license=('GPL3')
-depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'lua' 'google-glog' 'marisa')
+depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'lua53' 'google-glog' 'marisa')
 makedepends=('cmake' 'boost' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rime/librime/archive/$pkgver.tar.gz"
         "https://github.com/lotem/librime-octagram/archive/$_octagramcommit/librime-octagram-$_octagramcommit.tar.gz"
