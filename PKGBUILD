@@ -2,19 +2,13 @@
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Tammer Ibrahim <t at tammeri dot net>
 
-DLAGENTS=(
-  'http::/usr/bin/curl --insecure -fLC - --retry 3 --retry-delay 3 -o %o %u'
-  'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
-)
-
 pkgname=ttf-courier-prime
 pkgver=1.203
-pkgrel=4
-pkgdesc='Monospace Courier font alternative optimized for screenplays'
+pkgrel=5
+pkgdesc="Monospace Courier font alternative. It’s Courier, just better"
 arch=('any')
 url='https://quoteunquoteapps.com/courierprime/'
-license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings')
+license=('OFL')
 source=('https://quoteunquoteapps.com/courierprime/downloads/courier-prime.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-sans.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip'
@@ -26,14 +20,18 @@ sha256sums=('d5d4faf1bee0d1f52bab1103cbfdfb354976331c86f999c110c22a098cb12d73'
 
 package() {
   cd "$srcdir"
+
+  # Install fonts
   install -d "$pkgdir/usr/share/fonts/TTF"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
-  cd "$srcdir/ttf"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
-  cd "$srcdir/CourierPrimeSans-master/ttf"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
-  cd "$srcdir/Courier Prime"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
+  # Courier Prime fonts expand to directory `Courier Prime`
+  # Courier Prime Sans fonts expand to directory `CourierPrimeSans-master/ttf`
+  # Courier Prime Code fonts expand to directory `ttf`
+  # Courier Prime Medium & Semi-Bold fonts expand to base directory
+  install -m644 {Courier\ Prime/,CourierPrimeSans-master/ttf/,ttf/,}*.ttf "$pkgdir/usr/share/fonts/TTF"
+
+  # Install licences
+  # Courier Prime has two files, Sans has different license, last two have none
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 LICENSE/* "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 Courier\ Prime/LICENSE/* "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 CourierPrimeSans-master/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/CourierPrimeSans_LICENSE.md"
 }
