@@ -1,7 +1,7 @@
 pkgbase = firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - official prebuilt binary
-	pkgver = 77.0.1
-	pkgrel = 3
+	pkgver = 78.0.1
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/new/
 	arch = x86_64
 	license = MPL
@@ -19,15 +19,15 @@ pkgbase = firefox-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=77.0.1
+	provides = firefox=78.0.1
 	conflicts = firefox
 	options = !strip
-	source = https://ftp.mozilla.org/pub/firefox/releases/77.0.1/linux-x86_64/en-US/firefox-77.0.1.tar.bz2
-	source = https://ftp.mozilla.org/pub/firefox/releases/77.0.1/linux-x86_64/en-US/firefox-77.0.1.tar.bz2.asc
+	source = https://ftp.mozilla.org/pub/firefox/releases/78.0.1/linux-x86_64/en-US/firefox-78.0.1.tar.bz2
+	source = https://ftp.mozilla.org/pub/firefox/releases/78.0.1/linux-x86_64/en-US/firefox-78.0.1.tar.bz2.asc
 	source = firefox.sh
 	source = firefox.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 03859fd56f79cb520e30bae2433b6f61f806c8f95e7576092894eb1d644e6ff1
+	sha256sums = 3ea7d58def9fc05f1e217674ddf647d6f781ff2c4ace7aa5a4e913fcacb8ec38
 	sha256sums = SKIP
 	sha256sums = 9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703
 	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
