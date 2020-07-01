@@ -1,13 +1,10 @@
 pkgbase = ttf-alte-haas-grotesk
 	pkgdesc = A typeface that looks like a helvetica printed in an old Muller-Brockmann book.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yannlecoroller.com/
-	install = ttf.install
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = http://dl.1001fonts.com/alte-haas-grotesk.zip
 	md5sums = 9bdbc794a33acd478f2261f112ba971b
 

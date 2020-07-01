@@ -2,13 +2,11 @@
 
 pkgname=ttf-alte-haas-grotesk
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A typeface that looks like a helvetica printed in an old Muller-Brockmann book."
 arch=('any')
 url="http://www.yannlecoroller.com/"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=(http://dl.1001fonts.com/alte-haas-grotesk.zip)
 md5sums=('9bdbc794a33acd478f2261f112ba971b')
 
