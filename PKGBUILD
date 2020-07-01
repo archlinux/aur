@@ -18,11 +18,12 @@ sha256sums=('302aa81b8868133ff5a0f3e3e897f71d425bc628c0d7439addb623f12c277bea')
 
 build() {
   cd 'pdmenu'
+  CFLAGS="${CFLAGS} -fcommon" \
   ./configure --prefix='/usr' --sysconfdir='/etc'
   make -s
 }
 
 package() {
   cd 'pdmenu'
-  make INSTALL_PREFIX="${pkgdir}" install
+  make -j1 INSTALL_PREFIX="${pkgdir}" install
 }
