@@ -1,6 +1,6 @@
 pkgbase = smlsharp
 	pkgdesc = A new programming language in the Standard ML family
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = http://www.pllab.riec.tohoku.ac.jp/smlsharp/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = smlsharp
 	depends = llvm>=3.9.1
 	options = libtool
 	options = staticlibs
-	source = http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/smlsharp-3.5.0.tar.gz
+	source = http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/smlsharp-3.6.0.tar.gz
 	source = remove-tz-test.patch
-	sha256sums = 0ef9861685b6b02b6ea81e659563f955c48f156b75b92782e769bb25f07b2ad8
+	sha256sums = 83790d5e6b468a08f7fb221f0c2682f4243aaff063c4c43533734e4232e7720b
 	sha256sums = 9ad167dd7582349a84218c1d61347376e439d476cca1ffa26b6addeaf162dc6c
 
 pkgname = smlsharp
