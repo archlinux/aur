@@ -1,3 +1,4 @@
+# Maintainer Zan <zan@420blaze.it>
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdevelop-pg-qt-git
