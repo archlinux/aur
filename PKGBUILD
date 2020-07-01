@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator-git
-pkgver=0.1.2+45+g943d7aa
-pkgrel=2
+pkgver=0.2.0+rc.1
+pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
 arch=("x86_64")
 url="https://github.com/systemd/zram-generator"
@@ -9,7 +9,7 @@ provides=('zram-generator')
 conflicts=('zram-generator')
 license=('MIT')
 depends=("systemd")
-makedepends=('git' 'rust')
+makedepends=('git' 'rust' 'ruby-ronn-ng')
 install='zram-generator.install'
 source=("${pkgname%-git}::git+https://github.com/systemd/zram-generator.git#branch=master"
         'half-memory.conf.example'
