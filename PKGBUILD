@@ -19,7 +19,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=78.0b8
+pkgver=78.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -41,10 +41,10 @@ depends=('mozilla-common' 'libxt' 'mime-types'
          'libevent'
         )
 
-makedepends=('unzip' 'zip' 'diffutils' 'python2-setuptools' 'yasm' 'mesa' 'imake'
+makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust'
-             'cargo' 'mercurial' 'llvm' 'clang'
-             'gtk2' 'nodejs' 'cbindgen' 'nasm' 'python' 'python2-psutil' 'xz')
+             'cargo' 'mercurial' 'llvm' 'clang' 'jack'
+             'gtk2' 'nodejs' 'cbindgen' 'nasm' 'python' 'python-psutil' 'xz')
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
