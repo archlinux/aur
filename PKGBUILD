@@ -1,7 +1,7 @@
 # Maintainer: Karol Fuksiewicz <kfuks2@gmail.com>
 
 pkgname=telegram-desktop-wide
-pkgver=2.1.14
+pkgver=2.1.15
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch)
-sha512sums=('4c48e235ac790ecd2d5e7344de9641d0e843e7d2e46a3883f8016587034bc7f5aebd4e1b26c701a225dfb3777b610d69a2ccc685aaa5ee08a163fdd49fee1e9e'
+sha512sums=('f2874776203ea1bd02f3e856d1e770fd9dffd171545c2b7a6668daddbb4a8926d981c759435ac0cd1077d6b7387fe165162035f7b7da9e648eb4de99ab929ba0'
             'd350450a1e3b950a6df34a24caa340c848c83e0aa93acf95d80b1e5a5c39fe7e2ab122025a718861751541a0d8bfee35482cc13f261ea0fbce874e214213ddae')
 
 prepare() {
