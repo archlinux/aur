@@ -1,13 +1,11 @@
 pkgbase = ttf-oswald
 	pkgdesc = Sans-serif typeface from Google by Vernon Adams
 	pkgver = 4.101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Oswald
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = otf-oswald-ib
 	source = Oswald-Bold-4.101.ttf::https://github.com/google/fonts/raw/dbb34644e36024fef3def6d268d30ead8f0ce113/ofl/oswald/static/Oswald-Bold.ttf
