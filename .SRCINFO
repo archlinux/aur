@@ -1,4 +1,4 @@
-pkgbase = xmind-2020
+pkgbase = xmind-zen
 	pkgdesc = XMind 2020 (ZEN) - The most popular mind mapping software
 	pkgver = 10.1.2
 	pkgrel = 2
@@ -13,6 +13,7 @@ pkgbase = xmind-2020
 	depends = libxkbfile
 	depends = nodejs
 	provides = xmind
+	provides = xmind-2020
 	provides = xmind-zen
 	conflicts = xmind-zen
 	replaces = xmind-zen
@@ -21,5 +22,5 @@ pkgbase = xmind-2020
 	sha256sums = ca19a6bddcb1ea547e905f12ce045a535235cac12058fc0adcf22bd222dc1638
 	sha256sums = 833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d
 
-pkgname = xmind-2020
+pkgname = xmind-zen
 

@@ -1,7 +1,7 @@
 # Maintainer: alpha0x00 <li_tking@163.com>
 # Maintainer: WhiredPlanck
 
-pkgname=xmind-2020
+pkgname=xmind-zen
 _name=XMind-2020
 # the versin is from deb package
 pkgver=10.1.2
@@ -14,7 +14,7 @@ license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3' 'libxkbfile' 'nodejs')
 conflicts=('xmind-zen')
 replaces=('xmind-zen')
-provides=('xmind' 'xmind-zen')
+provides=('xmind' 'xmind-2020' 'xmind-zen')
 
 source=("https://www.xmind.net/xmind/downloads/${_name}-for-Linux-amd-64bit-${pkgver}-${_release}.deb"
         'xmind.xml')
