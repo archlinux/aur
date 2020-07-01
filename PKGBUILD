@@ -1,13 +1,14 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 # Thanks: Peter Cai <peter at typeblog dot net>
 # Thanks: unknown78 <Schmusekater78 at hotmail dot com>
+# Thanks: Moxon <sascha at meta-x dot de>
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
 pkgver=3862v0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Shattered fork of the popular rogue-like game'
-url='http://shatteredpixel.tumblr.com'
+url='https://shatteredpixel.com'
 license=('GPL3')
 depends=('java-runtime' 'bash')
 makedepends=('git' 'java-environment')
