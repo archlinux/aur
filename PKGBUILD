@@ -2,7 +2,7 @@
 
 _pkgname=solunar2
 pkgname=${_pkgname}-git
-pkgver=r1.93ccb31
+pkgver=r3.ace69a7
 pkgrel=1
 pkgdesc='Calculate sun and moon, rise and set times'
 arch=('x86_64')
@@ -24,7 +24,6 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/man/man1"
   make DESTDIR="${pkgdir}" PREFIX="usr"  -C "${_pkgname}" install
   install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
