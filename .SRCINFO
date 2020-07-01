@@ -1,0 +1,12 @@
+pkgbase = ttf-kh-dotfont
+	pkgdesc = 15 japanese bitmap fonts with sizes from 12px to 32px
+	pkgver = 1.00.20150527
+	pkgrel = 1
+	url = http://jikasei.me/font/kh-dotfont/
+	arch = any
+	license = OFL
+	source = http://mirrors.dotsrc.org/osdn/users/8/8545/khdotfont-20150527.7z
+	sha256sums = 37e07933056c0d5882924cb4cfea0989532dfa0436d7b840025443e7f7e16032
+
+pkgname = ttf-kh-dotfont
+
