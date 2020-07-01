@@ -1,13 +1,11 @@
 pkgbase = ttf-gelasio-ib
 	pkgdesc = Gelasio is designed to be metrics compatible with Georgia in its Regular, Bold, Italic and Bold Italic weights. Interpolated Medium, medium Italic, SemiBold and SemiBold Italic have now been added as well.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sorkintype.com/
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = Gelasio-Bold-0.2.ttf::https://github.com/SorkinType/Gelasio/raw/5bced461d54bcf8e900bb3ba69455af35b0d2ff1/Gelasio-Bold.ttf
 	source = Gelasio-BoldItalic-0.2.ttf::https://github.com/SorkinType/Gelasio/raw/5bced461d54bcf8e900bb3ba69455af35b0d2ff1/Gelasio-BoldItalic.ttf
 	source = Gelasio-Italic-0.2.ttf::https://github.com/SorkinType/Gelasio/raw/5bced461d54bcf8e900bb3ba69455af35b0d2ff1/Gelasio-Italic.ttf
