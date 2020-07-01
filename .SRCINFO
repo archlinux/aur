@@ -1,5 +1,5 @@
 pkgbase = abook-configdir
-	pkgdesc = Text-based addressbook designed for use with Mutt
+	pkgdesc = abook patched to store configuration in ~/.config
 	pkgver = 0.6.1
 	pkgrel = 6
 	url = https://abook.sourceforge.net/
