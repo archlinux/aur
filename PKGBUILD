@@ -2,7 +2,7 @@
 # Contributor: Samadi van Koten
 
 pkgname=umoci
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Umoci Modifies Open Container Images"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ makedepends=('go' 'go-md2man' 'docker')
 conflicts=()
 provides=()
 options=()
-source=("https://github.com/openSUSE/$pkgname/releases/download/v$pkgver/umoci.tar.xz")
-sha256sums=('aa84f8e6f3c4a7ec40b9c829372c416993c4cc3acedcd893f7ce7c4aeff63e74')
+source=("https://github.com/opencontainers/$pkgname/releases/download/v$pkgver/umoci.tar.xz")
+sha256sums=('d0b495ee61781c23ad9f0e1f431646cfd74fa10ca35f0547004c7b6cb9eb071b')
 
-_repo_name="github.com/openSUSE/$pkgname"
+_repo_name="github.com/opencontainers/$pkgname"
 
 prepare() {
   rm -rf "$srcdir/src/$_repo_name"
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "$srcdir/src/$_repo_name"
   GOPATH="$srcdir" make
-  GOPATH="$srcdir" make doc
+  GOPATH="$srcdir" make docs
 }
 
 package() {
