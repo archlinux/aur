@@ -1,2 +1,2 @@
-#!/bin/sh
-mono /usr/lib/steamguard-cli/steamguard $@
+#!/bin/bash
+exec mono /usr/lib/steamguard-cli/steamguard $@
