@@ -1,7 +1,7 @@
 pkgbase = iphonebackuptools
 	pkgdesc = Extract messages, notes, photo locations and more from unencrypted iOS backups
 	pkgver = 1.78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/richinfante/iphonebackuptools
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = iphonebackuptools
 	makedepends = python
 	depends = nodejs
 	depends = sqlite
+	noextract = c5573a3e5446ea420a56d2477ef78550cee224fb.tar.gz
 	source = https://github.com/richinfante/iphonebackuptools/archive/c5573a3e5446ea420a56d2477ef78550cee224fb.tar.gz
 	sha256sums = 6cc52d2fe0b09a5b5fa8f9f80f4de77d9cc7dbf130057432a7267c9093372828
 
