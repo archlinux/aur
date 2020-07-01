@@ -13,7 +13,7 @@ source=("https://download.bas21.no/bas21/bas21-$pkgver.tar.xz")
 
 prepare() {
   gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "$pkgdesc" --name='BAS21'
-  icotool -x "${srcdir}/${pkgname%-bin}-${pkgver}/bascore.ico --index=1"
+  icotool -x "${srcdir}/${pkgname%-bin}-${pkgver}/bascore.ico" --index=1
 }
 
 package() { 
@@ -23,6 +23,6 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname%-bin}/bas21" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-  install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/bascore_1_256x256x32.png" "${pkgdir}/usr/share/icons/${pkgname%-bin}.png"
+  install -Dm644 "${srcdir}/bascore_1_256x256x32.png" "${pkgdir}/usr/share/icons/${pkgname%-bin}.png"
   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
