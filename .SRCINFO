@@ -7,7 +7,9 @@ pkgbase = litemanager
 	license = custom
 	makedepends = gendesk
 	source = http://litemanager.com/soft/LiteManager_linux.zip
-	md5sums = SKIP
+	source = litemanager.png
+	md5sums = 86a62c72f7b4e7adf6a008a0eddf4995
+	md5sums = ce19ee278e856d0e17610979ede081b4
 
 pkgname = litemanager
 

@@ -24,9 +24,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://litemanager.com/soft/LiteManager_linux.zip")
+source=("http://litemanager.com/soft/LiteManager_linux.zip"
+litemanager.png)
+
 noextract=()
-md5sums=('SKIP')
+md5sums=('86a62c72f7b4e7adf6a008a0eddf4995'
+         'ce19ee278e856d0e17610979ede081b4')
+
 validpgpkeys=()
 
 prepare() {
@@ -35,17 +39,19 @@ prepare() {
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
     --categories="GTK;GNOME;X-GNOME-NetworkSettings;Network;" \
-    --icon "${_pkgname}" \
+    --icon "${_pkgname}.png" \
     --exec "litemanager"
 	
 }
 
 
+
 package() {
+ # mv "litemanager.png" "${srcdir}/litemanager.png"
   install -d "${pkgdir}/" "$pkgdir/opt/${pkgname}"
   install -Dm755 "${srcdir}/LiteManager" "$pkgdir/opt/litemanager/litemanager"
   mkdir -p $pkgdir/usr/bin
   ln -s "/opt/litemanager/litemanager" "$pkgdir/usr/bin/litemanager"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  #install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  install -Dm644 "${srcdir}/litemanager.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
