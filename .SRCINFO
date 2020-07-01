@@ -1,0 +1,15 @@
+pkgbase = python-b4
+	pkgdesc = A tool to work with public-inbox and patch archives
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/b4/b4.git
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/b4/b4-0.5.1.tar.gz
+	sha256sums = 7f13f2239dd942f2d14f6edf4bc9139dd0c03b6f705af00cb10abc9007eccb15
+
+pkgname = python-b4
+	depends = python
+
