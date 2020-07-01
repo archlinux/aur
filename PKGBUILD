@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2020.05
+pkgver=2020.06
 pkgrel=1
 pkgdesc="High-level environment to create compilers and libraries for virtual machines (MoarVM backend)"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('nqp-moarvm')
 conflicts=('nqp-moarvm')
 options=('!makeflags')
 source=("https://github.com/Raku/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('d73bb5cf5dcd2f0e0d42928fb12382428355f3c19bbcd015950c2a9e49ab73c215ce8ce21f3686283866c387823f1cbb3ba8179de8f7a66dca43afae94a45a42')
+b2sums=('0cc378bd5be89bdc8e8b1a72ae64a8d93ccd189811540fc29a72105df1024790deab649349fdc96087f2ce8f3b57eef97e0edf56ee98d7ba3c329e6d47386c46')
 
 build() {
 	cd "$pkgname-$pkgver"

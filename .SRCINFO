@@ -1,19 +1,19 @@
 pkgbase = nqp
 	pkgdesc = High-level environment to create compilers and libraries for virtual machines (MoarVM backend)
-	pkgver = 2020.05
+	pkgver = 2020.06
 	pkgrel = 1
 	url = https://github.com/Raku/nqp#readme
 	arch = any
 	license = PerlArtistic
 	makedepends = perl>=5.8
 	depends = bash
-	depends = moarvm>=2020.05
+	depends = moarvm>=2020.06
 	provides = nqp-moarvm
 	conflicts = nqp-moarvm
 	replaces = nqp-moarvm
 	options = !makeflags
-	source = https://github.com/Raku/nqp/releases/download/2020.05/nqp-2020.05.tar.gz
-	b2sums = d73bb5cf5dcd2f0e0d42928fb12382428355f3c19bbcd015950c2a9e49ab73c215ce8ce21f3686283866c387823f1cbb3ba8179de8f7a66dca43afae94a45a42
+	source = https://github.com/Raku/nqp/releases/download/2020.06/nqp-2020.06.tar.gz
+	b2sums = 0cc378bd5be89bdc8e8b1a72ae64a8d93ccd189811540fc29a72105df1024790deab649349fdc96087f2ce8f3b57eef97e0edf56ee98d7ba3c329e6d47386c46
 
 pkgname = nqp
 
