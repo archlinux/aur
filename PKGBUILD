@@ -1,38 +1,28 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
-_gitname=ktp-call-ui
 pkgname=telepathy-kde-call-ui-git
-pkgver=v0.8.80.r33.g1e1ff29
+_name=ktp-call-ui
+pkgver=v20.04.2.r0.g8815182
 pkgrel=1
 pkgdesc="Voice/Video Call UI for Telepathy"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="http://community.kde.org/Real-Time_Communication_and_Collaboration"
-license=('GPL')
-depends=('telepathy-kde-common-internals-git' 'qt5-gstreamer')
-makedepends=('extra-cmake-modules' 'git' 'boost')
-source=("git://anongit.kde.org/$_gitname")
+license=(GPL)
+depends=(telepathy-kde-common-internals-git qt-gstreamer)
+makedepends=(extra-cmake-modules git boost)
+source=("git+https://invent.kde.org/network/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $_name
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
