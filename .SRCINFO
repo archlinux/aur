@@ -1,0 +1,14 @@
+pkgbase = jc
+	pkgdesc = serializes the output of command line tools to structured JSON
+	pkgver = 1.11.8
+	pkgrel = 1
+	url = https://github.com/kellyjonbrazil/jc
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-wheel
+	source = https://github.com/kellyjonbrazil/jc/archive/v1.11.8.tar.gz
+	sha256sums = 9ab5da16aedd06c77585e39e2062d5a730b9a66ea72df131eac65521cae92059
+
+pkgname = jc
+
