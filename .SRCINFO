@@ -17,6 +17,7 @@ pkgbase = debhelpergit
 	depends = man-db>=2.5.1
 	depends = perl>=5.6.0
 	depends = po-debconf
+	depends = perl-pod-parser
 	optdepends = dh-make
 	source = git+https://salsa.debian.org/debian//debhelper.git#tag=debian/13
 	md5sums = SKIP
