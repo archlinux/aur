@@ -4,7 +4,7 @@
 # Contributor: Eric Waller <ewwaller@gmail.com>
 
 pkgname=basic256
-pkgver=2.0.0.1
+pkgver=2.0.0.11
 pkgrel=1
 pkgdesc="Educational BASIC programming environment"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-serialport' 'sdl_mixer' '
 makedepends=('bison' 'flex')
 source=(http://downloads.sourceforge.net/kidbasic/${pkgname}_${pkgver}.orig.tar.gz
         "basic256.desktop")
-sha256sums=('720e08c9b7a60cbcf6cc342dcf25d8c98e271903e0b1ab96422968fa981d041f'
+sha256sums=('58a3d01afb800d2ca89bedf970afc376beb273420ef824a1d0962c654f157584'
             '601fe0147cc4b394e2c01afa20e371f7dffc9e7787ce9360ae0332545f6e62ec')
 
 build () {
