@@ -1,7 +1,7 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 projectname=skycoin
-pkgname=skywire-git
+pkgname=skywire
 pkgname1=skywire
 githuborg=SkycoinProject
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
