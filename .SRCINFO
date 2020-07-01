@@ -2,8 +2,8 @@
 # Mon Feb 26 02:36:50 UTC 2018
 pkgbase = lib32-gnu-efi-libs
 	pkgdesc = Library for building UEFI Applications using GNU toolchain
-	pkgver = 3.0.6
-	pkgrel = 1
+	pkgver = 3.0.12
+	pkgrel = 2
 	url = http://sourceforge.net/projects/gnu-efi/
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = lib32-gnu-efi-libs
 	options = !strip
 	options = !makeflags
 	options = !buildflags
-	source = http://download.sourceforge.net/gnu-efi/gnu-efi-3.0.6.tar.bz2
-	sha1sums = 9f0f75b64c84423f3386da6f3200f5ed7471d9cb
+	source = http://download.sourceforge.net/gnu-efi/gnu-efi-3.0.12.tar.bz2
+	sha1sums = 46a513b9ba07a8841e5f6b4865a99d1fed081ba1
 
 pkgname = lib32-gnu-efi-libs
 

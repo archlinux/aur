@@ -4,10 +4,10 @@
 
 _EFI_ARCH="ia32"
 
-_pkgver="3.0.6"
+_pkgver="3.0.12"
 pkgname="lib32-gnu-efi-libs"
 pkgver="${_pkgver}"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Library for building UEFI Applications using GNU toolchain"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
@@ -15,7 +15,7 @@ arch=('x86_64')
 options=('!strip' '!makeflags' '!buildflags')
 makedepends=('pciutils')
 source=("http://download.sourceforge.net/gnu-efi/gnu-efi-${pkgver}.tar.bz2")
-sha1sums=('9f0f75b64c84423f3386da6f3200f5ed7471d9cb')
+sha1sums=('46a513b9ba07a8841e5f6b4865a99d1fed081ba1')
 
 # override the CFLAGS to build a libefi compatible with i586
 _CFLAGS="-march=i586 -mtune=i586 -fno-stack-protector"
