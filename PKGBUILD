@@ -1,4 +1,4 @@
-# Maintainer: Xuanow <xuanwo@archlinuxcn.org>
+# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Contributor: Mastacheata <benedikt "at" xenzilla "dot" de>
 # Contributor: Yegorius <yegorius@domic.us>
 
