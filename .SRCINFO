@@ -1,6 +1,6 @@
 pkgbase = dupeguru-git
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.0.4.r40.gd5a6ca74
+	pkgver = 4.0.4.r59.g092cf147
 	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
@@ -20,9 +20,7 @@ pkgbase = dupeguru-git
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
 	source = git+https://github.com/arsenetar/dupeguru.git
-	source = fix-flake8-error.patch::https://github.com/arsenetar/dupeguru/commit/e921b9827e3ea77f925a2289392708d622df505c.patch
 	sha256sums = SKIP
-	sha256sums = 7e7adbeea51e892e4e662082bbd1792c0a15b825de7aadb13c36d45b7cb71c9e
 
 pkgname = dupeguru-git
 

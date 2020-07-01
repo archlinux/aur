@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.0.4.r40.gd5a6ca74
+pkgver=4.0.4.r59.g092cf147
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -11,21 +11,14 @@ depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsau
          'libxkbcommon-x11')
 makedepends=('git' 'python-sphinx')
 checkdepends=('python-tox')
-source=('git+https://github.com/arsenetar/dupeguru.git'
-        'fix-flake8-error.patch::https://github.com/arsenetar/dupeguru/commit/e921b9827e3ea77f925a2289392708d622df505c.patch')
-sha256sums=('SKIP'
-            '7e7adbeea51e892e4e662082bbd1792c0a15b825de7aadb13c36d45b7cb71c9e')
+source=('git+https://github.com/arsenetar/dupeguru.git')
+sha256sums=('SKIP')
 provides=('dupeguru')
 conflicts=('dupeguru' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-  patch -Np1 <../fix-flake8-error.patch
 }
 
 build() {
