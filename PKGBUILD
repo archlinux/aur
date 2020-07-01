@@ -7,6 +7,7 @@
 
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 provides=('pidgin' 'libpurple' 'finch')
+conflicts=('pidgin' 'libpurple' 'finch')
 pkgbase=pidgin
 pkgver=2.14.1
 pkgrel=2
