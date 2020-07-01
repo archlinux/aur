@@ -1,5 +1,5 @@
 pkgbase = bcache-tools
-	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md
+	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md.
 	pkgver = 1.1
 	pkgrel = 1
 	url = http://bcache.evilpiepirate.org/
