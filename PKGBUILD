@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=zim-tools
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Various ZIM command line tools"
 license=('GPL3')
 arch=('x86_64')
