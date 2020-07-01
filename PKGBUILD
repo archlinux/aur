@@ -2,13 +2,11 @@
 # Contributor: Lucas Paul <reilithion+aur@gmail.com>
 pkgname=otf-hasklig
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A font with symbol ligatures, intended for Haskell code"
-arch=('any')
+arch=(any)
 url="https://github.com/i-tu/Hasklig"
-license=('custom:SIL Open Font License')
-depends=('fontconfig' 'xorg-font-utils')
-install=$pkgname.install
+license=(OFL)
 source=("https://github.com/i-tu/Hasklig/releases/download/1.1/Hasklig-1.1.zip" "LICENSE")
 sha512sums=('7621747399c1155faf3f1ba5c73dc4ce829141730fd22c58e97e2f3acf79a45b49dc1cf314af80226dbf3bfbf9a38ceb2de812b46a5d424b6181582429bcc081'
             '25f5196ce0954bd91a3da62fc5044a28a2a1d372c02be5328f74d672005de51f542eb1178f8ab8b0ba1da879ad5c8b67102b555ffb25209238ac0ae0eebe8e74')
