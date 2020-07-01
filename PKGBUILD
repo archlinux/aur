@@ -2,7 +2,7 @@
 
 _name=FoxDot
 pkgname=foxdot
-pkgver=0.8.9
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="Live Coding with Python"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('sc3-plugins: use additional UGens')
 # pypi sdist doesn't contain tests: https://github.com/Qirky/FoxDot/issues/188
 # source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_name}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Qirky/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('5cf22a518cddfbfab0476c94c2ccb71d529674da495a0a6dc5c997ca91953dbe7232deb0da47512494dc4047fe1b0e0443e90497d44fb30f8e392c3f498aebdd')
+sha512sums=('4f1bea5839ac14509dccad395054325f6fce0354ff012d9948800f4cddd08f5d4da29cfc009de42c785d7969fbda215530e9fba3c41d80d68c042d6daf6baa4d')
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
@@ -33,11 +33,12 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   python setup.py build
+  convert -verbose FoxDot/lib/Workspace/img/icon.gif "${pkgname}.png"
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  py.test
+  pytest -v
 }
 
 package() {
@@ -48,8 +49,7 @@ package() {
                           --root="${pkgdir}" \
                           --verbose
   install -vDm 644 *.desktop -t "${pkgdir}/usr/share/applications"
-  install -dm755 "${pkgdir}/usr/share/pixmaps"
-  convert FoxDot/lib/Workspace/img/icon.gif "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -vDm 644 "${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -vDm 644 {README.md,changelog} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
