@@ -1,12 +1,13 @@
 pkgbase = nerd-fonts-complete
 	pkgdesc = Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
-	depends = fontconfig
-	depends = xorg-font-utils
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-bdftopcf
+	makedepends = xorg-font-util
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete-mono-glyphs
 	source = fix-installer-font-dir.patch

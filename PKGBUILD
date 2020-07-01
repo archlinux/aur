@@ -6,12 +6,12 @@
 _gitname='nerd-fonts'
 pkgname='nerd-fonts-complete'
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils')
+makedepends=('xorg-mkfontscale' 'xorg-bdftopcf' 'xorg-font-util')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs')
 source=(
   'fix-installer-font-dir.patch'
@@ -30,7 +30,6 @@ build() {
   cd "$srcdir/$_gitname-$pkgver"
 
   bash install.sh \
-    --quiet \
     --clean \
     --otf \
     --complete
