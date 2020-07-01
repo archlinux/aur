@@ -1,12 +1,10 @@
 pkgbase = ttf-typicons
 	pkgdesc = 336 pixel perfect, all-purpose vector icons in a web-font kit
 	pkgver = 2.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://typicons.com/
 	arch = any
 	license = CC BY-SA 3.0
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://github.com/stephenhutchings/typicons.font/archive/v2.0.9.tar.gz
 	md5sums = 4c434d77a88e7bad125faa1f49bd0283
 
