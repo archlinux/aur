@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   python setup.py build
-  convert -verbose FoxDot/lib/Workspace/img/icon.gif "${pkgname}.png"
+  convert -verbose FoxDot/lib/Workspace/img/icon.gif +set date:create +set date:modify "${pkgname}.png"
 }
 
 check() {
