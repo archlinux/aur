@@ -1,7 +1,7 @@
 pkgbase = zim-tools
 	pkgdesc = Various ZIM command line tools
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openzim/zim-tools
 	arch = x86_64
 	license = GPL3
