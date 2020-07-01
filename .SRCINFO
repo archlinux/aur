@@ -1,6 +1,6 @@
 pkgbase = terragrunt-bin
 	pkgdesc = A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules
-	pkgver = 0.23.30
+	pkgver = 0.23.31
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/terragrunt
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = terragrunt-bin
 	depends = terraform
 	provides = terragrunt
 	conflicts = terragrunt
-	source = https://raw.githubusercontent.com/gruntwork-io/terragrunt/v0.23.30/LICENSE.txt
-	source = terragrunt_linux_amd64-0.23.30::https://github.com/gruntwork-io/terragrunt/releases/download/v0.23.30/terragrunt_linux_amd64
+	source = https://raw.githubusercontent.com/gruntwork-io/terragrunt/v0.23.31/LICENSE.txt
+	source = terragrunt_linux_amd64-0.23.31::https://github.com/gruntwork-io/terragrunt/releases/download/v0.23.31/terragrunt_linux_amd64
 	sha256sums = a462de65463e142a430b65770650f5f028d28b60e13a830ac8092506ff2c7146
-	sha256sums = f1bfad3ba53eeb913002cc1f8d5380498eb8cb9b1b2a9758b57594378514d99d
+	sha256sums = efd124c2b9f406c0eb81b646e6b9eb32056095b38a130e6dc9a27d4be9bc25d9
 
 pkgname = terragrunt-bin
 
