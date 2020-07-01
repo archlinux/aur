@@ -1,14 +1,10 @@
 pkgbase = ttf-mph-2b-damase
 	pkgdesc = Unicode font covering full plane 1, and numerous scripts
 	pkgver = 001.000.4.dfsg.2
-	pkgrel = 8
+	pkgrel = 9
 	url = http://packages.debian.org/unstable/x11/ttf-mph-2b-damase
-	install = install
 	arch = any
 	license = custom:Public_Domain
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	depends = fontconfig
 	source = http://ftp.gnome.org/mirror/cdimage/snapshot/Debian/pool/main/t/ttf-mph-2b-damase/ttf-mph-2b-damase_001.000.dfsg.2+ds1.orig.tar.gz
 	sha1sums = 8663d937dabce9bebb9c46b6e985102d03830fd4
 
