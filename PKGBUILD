@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Maintainer: leoneii leoneii@mail.ru
+# Maintainer: leoneii comdir@infonix.info
 
 # copy of "de" lang pack, thenks:
 # Sibren Vasse <arch at sibrenvasse dot nl>
@@ -18,7 +18,7 @@ _install_name='openoffice4'
 _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
-pkgver=4.1.3
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Russian language pack for OpenOffice.org"
 arch=('i686' 'x86_64')
@@ -39,11 +39,11 @@ sha256sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='debc085ecc77d948d202f646bbbb373d'
+	md5sums[0]='SKIP'
 	#sha256sums[0]='e195758b7872e0cb04ff9fe869587a1ce81d2216'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='cb7326233b8f6cd04144bceacf538c26'
+	md5sums[0]='cf706a91951b9edc2601a9e2a9146e9e'
 	#sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
 esac
 
