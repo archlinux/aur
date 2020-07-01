@@ -2,7 +2,7 @@
 
 pkgname=perl-file-extattr
 pkgver='1.09'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Perl extension for accessing extended attributes of files"
 arch=("i686" "x86_64" "arm")
 url="http://search.cpan.org/dist/File-ExtAttr"
