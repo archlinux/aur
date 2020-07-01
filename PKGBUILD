@@ -10,6 +10,8 @@ arch=('x86_64')
 license=('GPL2')
 makedepends=('git')
 depends=('readline')
+provides=('abook')
+conflicts=('abook')
 validpgpkeys=('3552E46F58F5FEC69A2CD85A5B4E2D0DD7F62B21')
 source=(
 	"http://abook.sourceforge.net/devel/${_pkgname}-${pkgver}.tar.gz"{,.asc}
