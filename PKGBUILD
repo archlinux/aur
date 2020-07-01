@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.06
+pkgver=2020.07
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -25,7 +25,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=29877042dd393774197b134426e37cb0dbabef34
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
-_commit=4c3d7f33dca71704885d120167646b2681024e80
+_commit=a9ff8a87b824791dfeddf82e6609f35677db8008
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
