@@ -1,0 +1,36 @@
+pkgbase = skywire-bin
+	pkgdesc = Skywire: Building a New Internet. Skycoin.com
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/SkycoinProject/skywire-mainnet
+	install = skywire.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	arch = armv8
+	arch = armv7l
+	arch = armv7h
+	makedepends = git
+	makedepends = skycoin-keyring
+	provides = skywire
+	source = skywire-scripts.tar.gz
+	source = PKGBUILD.sig
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	validpgpkeys = 98F934F04F9334B81DFA3398913BBD5206B19620
+	sha256sums = fff8b9f7d4e60c8993497a963161f934d445f4d7cf2ff47bc787dcb459c8b351
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 985711605361caf7ddd24e82a632d56cfb33252afbc5e1740a54c4db7048a455
+	source_aarch64 = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9a41a13604dab1971e0c4a8200fbaa6d0bb77d8c19d6d6e5702bbd02e661078d
+	source_armv7 = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-arm.tar.gz
+	sha256sums_armv7 = 30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809
+	source_armv8 = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-arm64.tar.gz
+	sha256sums_armv8 = 9a41a13604dab1971e0c4a8200fbaa6d0bb77d8c19d6d6e5702bbd02e661078d
+	source_armv7l = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-arm.tar.gz
+	sha256sums_armv7l = 30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809
+	source_armv7h = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.3/skywire-v0.2.3-linux-arm.tar.gz
+	sha256sums_armv7h = 30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809
+
+pkgname = skywire-bin
+
