@@ -11,7 +11,7 @@ PLUGINS=""
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
-pkgver=5.2.2.0.ged9fdd9
+pkgver=5.2.2.3.ge86c094
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
+  git checkout develop > /dev/null
   git describe --tags --long | sed 's/-/./g'
 }
 
