@@ -2,7 +2,7 @@
 _pkgname=camouflage
 pkgname=$_pkgname-git
 pkgver=2.0.0.r2.gfcea1f8
-pkgrel=2
+pkgrel=3
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
@@ -44,9 +44,15 @@ build() {
     export GOPROXY=https://goproxy.cn,direct
     go mod download
 
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+
     msg2 "Building binary"
 
-    go build -trimpath -v -modcacherw
+    msg2 "Cleaning residual"
+    chmod 777 -R $GOPATH/pkg/mod
+    rm -rf $GOPATH/pkg/mod
+
+    go build -v
 }
 
 package() {
