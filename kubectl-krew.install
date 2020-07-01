@@ -1,0 +1,4 @@
+post_install() {
+  echo "To disable Krew version checks, add the following to your .bashrc or .zshrc"
+  echo "export KREW_NO_UPGRADE_CHECK=1"
+}
