@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=7.71.0
+pkgver=7.71.1
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -76,4 +76,4 @@ package() {
   # libquice is requried
   install -Dm755 quiche/target/release/libquiche.so "${pkgdir}/usr/lib/libquiche.so"
 }
-sha512sums=(c983a2a71bf5037a0f2b7f55b7638fbc1f43b4bd56db5c407ae42482b0dc9b94ae90a108c48e0526a5fa580d992d9c1a96b35d35f82ba0d4c982f9bf5ab695f6             SKIP)
+sha512sums=(614f8d67e6ee942cb5e57f2da1a3faaf84ebff549ffe383aaf3751a4de3c8874ff482076afa27a52e910a137dec9b0f6e98265dc7d4ad7c95845b63f39236fd4             SKIP)
