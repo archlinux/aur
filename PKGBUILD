@@ -1,5 +1,5 @@
 # Maintainer: nomisge <nomisge @ live . de>
-# Maintainer:  chet <chetgurevitch @ protonmail . com>
+# Contributor: chet <chetgurevitch @ protonmail . com>
 # Contributor: teacher4711 <inverness1 @ gmx . de>
 # Contributor: fheday <fheday @ gmail . com>
 # Contributor: seishinryohosha <seishinryohosha @ gmail . com>
