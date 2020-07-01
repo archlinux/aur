@@ -1,7 +1,6 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 pkgname=julia-nightly-bin
-pkgver=20200626
-_pkgver=$(curl -sL https://julialangnightlies-s3.julialang.org/ | sed 's/<\/Contents>/<\/Contents>\n/g' | grep "julia-latest-freebsd64.tar.gz" | cut -d '>' -f 5 | sed 's/<.*//g' | sed 's/T.*//g' | head -n 1 | sed 's/-//g')
+pkgver=20200701
 pkgrel=1
 arch=('x86_64')
 pkgdesc='High-level, high-performance, dynamic programming language - official nightly binaries'
@@ -10,23 +9,19 @@ conflicts=(julia julia-git julia-beta-bin julia-bin)
 depends=('gmp' 'suitesparse' 'hicolor-icon-theme' 'libssh2')
 url='https://julialang.org/'
 license=('MIT')
-source=($pkgname-$_pkgver.tar.gz::"https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz"
+source=($pkgname-$pkgver.tar.gz::"https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz"
 16x16.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/16.png
 32x32.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/32.png
 128x128.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/128.png
 256x256.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/256.png
 512x512.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/512.png)
-sha256sums=('SKIP'
+sha256sums=('6c84d53c51d045f39535095bca1ed7ac513eea8cbe22e136d031b2cfdc9f60e4'
             '85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed'
             '0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612'
             'aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f'
             '001f5fe2478572c69ddcf135d460fab18fc851723e529b056fd9b9852b47f3a5'
             '3994d4d59d46e2d226d59f372e5b68eb23e8dc074529e870796f1132f5df8a5b')
 options=(!strip)
-
-pkgver() {
-  curl -sL https://julialangnightlies-s3.julialang.org/ | sed 's/<\/Contents>/<\/Contents>\n/g' | grep "julia-latest-freebsd64.tar.gz" | cut -d '>' -f 5 | sed 's/<.*//g' | sed 's/T.*//g' | head -n 1 | sed 's/-//g'
-}
 
 package() {
   hash=$(ls -ld $srcdir/* | grep -v tar | tail -n 1 | rev | cut -d '-' -f 1 | rev)
