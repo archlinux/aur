@@ -2,42 +2,32 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kaccounts-providers
 pkgname=kaccounts-providers-git
-pkgver=v15.12.0.r10.gd7f438c
+_name=kaccounts-providers
+pkgver=v19.12.1.r40.ga530020
 pkgrel=1
 pkgdesc='Small system to administer web accounts for the sites and services across the KDE desktop, including: Google, Facebook, Owncloud, IMAP, 
 Jabber and others'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://projects.kde.org/projects/playground/base/kde-accounts/kaccounts-providers'
-license=('GPL')
-depends=('kaccounts-integration')
-makedepends=('extra-cmake-modules' 'git' 'intltool')
-provides=('kaccounts-providers')
-conflicts=('kaccounts-providers')
-install=$pkgname.install
-source=("git://anongit.kde.org/$_gitname")
+license=(GPL)
+depends=(kaccounts-integration)
+makedepends=(extra-cmake-modules git intltool)
+provides=(kaccounts-providers)
+conflicts=(kaccounts-providers)
+source=("git+https://invent.kde.org/network/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $_name
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
