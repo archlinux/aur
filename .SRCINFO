@@ -7,8 +7,8 @@ pkgbase = python-pulse-control-git
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-pulse-control-git::git+http://github.com/mk-fg/python-pulse-control.git
-	md5sums = SKIP
+	source = git+http://github.com/mk-fg/python-pulse-control.git
+	sha256sums = SKIP
 
 pkgname = python-pulse-control-git
 	depends = python
