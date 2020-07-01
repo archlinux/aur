@@ -1,7 +1,7 @@
 pkgbase = squashfs-tools-ng
 	pkgdesc = A new set of tools and libraries for working with SquashFS images
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://infraroot.at/projects/squashfs-tools-ng/index.html
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,16 @@ pkgbase = squashfs-tools-ng
 	depends = zlib
 	source = https://infraroot.at/pub/squashfs/squashfs-tools-ng-1.0.0.tar.xz
 	source = https://infraroot.at/pub/squashfs/squashfs-tools-ng-1.0.0.tar.xz.asc
+	source = https://infraroot.at/pub/squashfs/patches-1.0.0/0001-fix-sqfsbrowse-build.patch
+	source = https://infraroot.at/pub/squashfs/patches-1.0.0/0001-fix-sqfsbrowse-build.patch.asc
+	source = https://infraroot.at/pub/squashfs/patches-1.0.0/0002-Fix-block-bounds-checking-in-libsquashfs-data-reader.patch
+	source = https://infraroot.at/pub/squashfs/patches-1.0.0/0002-Fix-block-bounds-checking-in-libsquashfs-data-reader.patch.asc
 	validpgpkeys = 13063F723C9E584AEACD5B9BBCE5DC3C741A02D1
 	sha512sums = 536f12aa53214f88739cea0d26c55e04434c284935ff1d59ee8f5108acd92fc11e800e42e3a112524d09dbd1fa50c4f15c3211ff5d02ae50b7fa137600d2ae15
+	sha512sums = SKIP
+	sha512sums = 2eda78858456305946fad7ca72e56d843d2c27201f3d441b347cd41ba1680ec1d8779455256e2370b160a456bb2d5fc35c782eea7af3fe08dcaccfc4b6856d8b
+	sha512sums = SKIP
+	sha512sums = c01b2b1562970398f39d1acac7f65ec91f6711b2dbda59e9c7a5cb8ed6cd14fa31a8a3c1ea1f78df4015f0745ea086f591c763feb189676df885c8621597ac8f
 	sha512sums = SKIP
 
 pkgname = squashfs-tools-ng
