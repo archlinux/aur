@@ -4,11 +4,11 @@
 
 pkgname=noto-fonts-sc
 pkgver=2.001
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Noto CJK-SC fonts for Simplified Chinese"
 arch=(any)
-depends=(fontconfig xorg-font-utils)
+depends=()
 source=("https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansCJKsc-Regular.otf"
         "https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansMonoCJKsc-Regular.otf"
         "https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/LICENSE")
