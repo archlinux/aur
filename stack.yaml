@@ -3,7 +3,7 @@ packages:
 
 extra-deps:
 - ConfigFile-1.1.4
-- broadcast-chan-0.2.0.2
+- broadcast-chan-0.2.1
 - dbus-hslogger-0.1.0.1
 - gio-0.13.4.1
 - gtk-sni-tray-0.1.6.0
@@ -11,7 +11,7 @@ extra-deps:
 - libxml-sax-0.7.5
 - rate-limit-1.4.1
 - spool-0.1
-- status-notifier-item-0.3.0.1
+- status-notifier-item-0.3.0.5
 - time-units-1.0.0
 - xml-helpers-1.0.0
 - gi-cairo-connector-0.0.1
@@ -20,6 +20,9 @@ extra-deps:
 - gi-dbusmenugtk3-0.4.5
 - gi-gdkx11-3.0.5
 - gi-xlib-2.0.5
-resolver: lts-14.27
+- MissingH-1.4.3.0
+- xdg-desktop-entry-0.1.1.1
+
+resolver: lts-15.10
 
 ghc-options: {"$locals": -ddump-to-file -ddump-hi}

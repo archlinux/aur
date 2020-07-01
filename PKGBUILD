@@ -1,8 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.2.2
+pkgrel=1
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -17,10 +17,10 @@ source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example"
         )
 
-sha256sums=('51ca3f4dd505a9d5fb03a3150898bcd090e037ca851f04a4ce4185135bf537ca'
+sha256sums=('6e703c50535ad6ab80a60c4dcfcecb95b85670676bd5f6457643e5fb03d5eed6'
             '554340a052abecb78fbb959d1a05b8f4f4db947fc151e7f0f8c49f2300f1ab6d'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
-            '7a9ed0c527e2306b193f9e38bba3d740b60d6c8e17869a172daa752c79df3ad1'
+            '557fa41b3e005451c7334ebb14ce476d4f7d0fcbdfad25c984db9a49b18da529'
             '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
 
 # PKGBUILD functions
