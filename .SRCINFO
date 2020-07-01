@@ -1,6 +1,6 @@
 pkgbase = r-fs
 	pkgdesc = Cross-Platform File System Operations Based on 'libuv'
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fs
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = r-fs
 	optdepends = r-knitr
 	optdepends = r-withr
 	optdepends = r-spelling
-	source = https://cran.r-project.org/src/contrib/fs_1.4.1.tar.gz
-	md5sums = fa176594fe282dbc067d10e493a8b023
+	source = https://cran.r-project.org/src/contrib/fs_1.4.2.tar.gz
+	md5sums = 717d6e7184843b1690cf42c3682ca163
 
 pkgname = r-fs
 
