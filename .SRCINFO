@@ -1,15 +1,15 @@
 pkgbase = pop-sound-theme-bin
 	pkgdesc = System76 Pop Sound Theme
 	pkgver = 5.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
 	license = GPL2
 	license = CCPL:by-sa
 	provides = pop-sound-theme
 	conflicts = pop-sound-theme
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-sound-theme_5.2.0~1588203971~20.04~d94d9ec_all.deb
-	sha256sums = f941a997b8b81ad9f7d8846c7b725e766549ca46cb5a4f1888548e7a4df2e86a
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-sound-theme_5.2.0~1593549084~20.04~8c31be9_all.deb
+	sha256sums = 566ba46423ee0da32379f779b87a684f038cb1a3eea318d4cefe6956402e50ab
 
 pkgname = pop-sound-theme-bin
 
