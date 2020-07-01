@@ -1,0 +1,15 @@
+pkgbase = reilysiegel-bear-git
+	pkgdesc = A simple utility for easy sleep
+	pkgver = r2.0bc6ce2
+	pkgrel = 1
+	url = https://github.com/ReilySiegel/bear
+	arch = x86_64
+	license = EPL
+	makedepends = clojure
+	makedepends = native-image-jdk11-bin
+	makedepends = git
+	source = reilysiegel-bear-git::git+https://github.com/ReilySiegel/bear.git#branch=master
+	md5sums = SKIP
+
+pkgname = reilysiegel-bear-git
+
