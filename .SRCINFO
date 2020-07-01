@@ -1,13 +1,11 @@
 pkgbase = ttf-signika
 	pkgdesc = Sans-serif typeface from Google by Anna Giedryś
 	pkgver = 1.002
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/Signika
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = ttf-signika-family-ib
 	source = Signika-Bold-1.002.ttf::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/Signika-Bold.ttf
