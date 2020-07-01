@@ -1,0 +1,10 @@
+# makepkg directories
+/src/*
+/pkg/*
+
+# Built packages
+*.tar.xz
+
+# Downloaded sources
+*.phar
+*.phar.asc
