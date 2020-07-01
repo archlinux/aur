@@ -1,0 +1,19 @@
+pkgbase = noaftodo-git
+	pkgdesc = An ncurses TODO manager that No-One-Asked-For.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/gregthemadmonk/noaftodo.git
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = sed
+	depends = ncurses
+	optdepends = libnotify: provides notify-send commandused in default config
+	optdepends = dunst: possible notification daemon for notify-send to work
+	source = git+https://github.com/gregthemadmonk/noaftodo.git#branch=pkg
+	md5sums = SKIP
+
+pkgname = noaftodo-git
+
