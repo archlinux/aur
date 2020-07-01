@@ -3,7 +3,7 @@
 pkgname=tanks-of-freedom
 pkgver=0.7.0
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Indie Turn Based Strategy in Isometric Pixel Art"
 arch=('x86_64')
 url="https://github.com/w84death/Tanks-of-Freedom"
