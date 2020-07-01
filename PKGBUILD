@@ -11,7 +11,7 @@ swa swe syr tam tel tgk tgl tha tir tur uig ukr urd uzb uzb_cyrl vie yid)
 
 pkgbase=tesseract-data
 pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}; done))
-epoch=1
+epoch=2
 pkgver=4.0.0
 pkgrel=1
 pkgdesc="An OCR programm"
