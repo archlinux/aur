@@ -4,7 +4,7 @@ clean:
 	rm -r src pkg || true
 
 geninteg:
-	sed -i '/sums=(/,$$d' PKGBUILD
+	sed -i '/.*sums=(/,$$d' PKGBUILD
 	makepkg --geninteg >> PKGBUILD
 
 srcinfo:
