@@ -1,0 +1,25 @@
+pkgbase = ruby-ronn-ng
+	pkgdesc = Manual page formatter that generates man pages from markdown
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/apjanke/ronn-ng
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-hpricot
+	depends = ruby-rdiscount
+	depends = ruby-mustache
+	depends = ruby-kramdown
+	depends = ruby-nokogiri
+	provides = ruby-ronn
+	conflicts = ruby-ronn
+	noextract = ronn-ng-0.9.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ronn-ng-0.9.1.gem
+	source = 0001-allow-mustache-1.0.patch
+	sha256sums = d04d8fe205e018dea9bb97e3bcf60d9853a326f90714ee5082752976ca739dea
+	sha256sums = 9151397a0dc51392065de74bd52ab8e76e3ea5e3e810d0e557f2a67734633ea5
+
+pkgname = ruby-ronn-ng
+
