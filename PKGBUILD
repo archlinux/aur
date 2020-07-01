@@ -1,21 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.2.0.r3.g1e65b98
+pkgver=0.4.0.r6.ga9825bd
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 depends=('feedbackd'
-         'gcr'
-         'gnome-desktop'
          'libhandy'
-         'libnm'
-         'libpulse'
-         'libsecret'
-         'phoc'
-         'upower')
+         'phoc')
 makedepends=('ctags'
              'git'
              'meson'
@@ -41,14 +35,14 @@ prepare() {
 }
 
 build() {
-    arch-meson phosh build
+    arch-meson phosh build # -Dtests=false
     ninja -C build
 }
 
 # check() {
-#     ninja -C build test
+#     meson test -C build --print-errorlogs
 # }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+    DESTDIR="${pkgdir}" meson install -C build
 }
