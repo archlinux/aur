@@ -12,7 +12,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(solid)
 provides=(solid)
-source=('git://anongit.kde.org/solid.git')
+source=('git+https://anongit.kde.org/solid.git')
 md5sums=('SKIP')
 
 pkgver() {
