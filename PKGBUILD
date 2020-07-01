@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
-depends=("zfs-utils-any=0.8.3" "dkms")
+depends=("zfs-utils-any=${pkgver}" "dkms")
 license=('CDDL')
 conflicts=("zfs-dkms" "zfs")
 provides=("zfs-dkms" "zfs")
@@ -36,7 +36,7 @@ prepare() {
     sed -ri "/AC_CONFIG_FILES/,/]\)/{
 /AC_CONFIG_FILES/n
 /]\)/n
-/^\s*(module\/.*)?(${pkgname%-dkms-any}.release|Makefile)/!d
+/^\s*(module\/.*|${pkgname%-dkms-any}.release|Makefile)/!d
 }" configure.ac
 
     autoreconf -fi
