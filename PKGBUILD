@@ -1,34 +1,40 @@
 # Maintainer: alpha0x00 <li_tking@163.com>
+# Maintainer: WhiredPlanck
 
-pkgname=xmind-zen
+pkgname=xmind-2020
+_name=XMind-2020
 # the versin is from deb package
-pkgver=10.0.0
+pkgver=10.1.2
+_release=202004142327
 pkgrel=2
-pkgdesc="XMind ZEN - The most popular mind mapping software"
+pkgdesc="XMind 2020 (ZEN) - The most popular mind mapping software"
 arch=("x86_64")
 url="https://www.xmind.net/"
 license=('custom')
-depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3')
+depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3' 'libxkbfile' 'nodejs')
+conflicts=('xmind-zen')
+replaces=('xmind-zen')
+provides=('xmind' 'xmind-zen')
 
-source=("https://dl2.xmind.cn/XMind-ZEN-for-Linux-amd-64bit-$pkgver-201911260056.deb"
+source=("https://www.xmind.net/xmind/downloads/${_name}-for-Linux-amd-64bit-${pkgver}-${_release}.deb"
         'xmind.xml')
 
-sha256sums=('6c8283e23d9d57d3eb3b8f3bddf8208d99e6c6ecffe537e69293027bd0c56ed0'
+sha256sums=('ca19a6bddcb1ea547e905f12ce045a535235cac12058fc0adcf22bd222dc1638'
             '833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d')
 
 package() {
     tar xf data.tar.xz -C ${pkgdir}/
 
-    chmod 755 ${pkgdir}"/opt/XMind ZEN/" \
-              ${pkgdir}"/opt/XMind ZEN/locales/" \
-              ${pkgdir}"/opt/XMind ZEN/resources/"
+    chmod 755 ${pkgdir}"/opt/XMind/" \
+              ${pkgdir}"/opt/XMind/locales/" \
+              ${pkgdir}"/opt/XMind/resources/"
 
     mkdir -p ${pkgdir}/usr/bin/
-    ln -s "/opt/XMind ZEN/XMind" ${pkgdir}/usr/bin/xmind-zen
+    ln -s "/opt/XMind/XMind" ${pkgdir}/usr/bin/xmind
 
     mkdir -p ${pkgdir}/usr/share/mime/packages
     install -Dm644 xmind.xml ${pkgdir}/usr/share/mime/packages/
 
-    mkdir -p ${pkgdir}/usr/share/licenses/xmind-zen
-    cp ${pkgdir}"/opt/XMind ZEN/resources/app.asar.unpacked/static/license/"license{-cn,}.pdf ${pkgdir}/usr/share/licenses/xmind-zen/
+    mkdir -p ${pkgdir}/usr/share/licenses/xmind-2020
+    cp ${pkgdir}"/opt/XMind/resources/app.asar.unpacked/static/license/"license{-cn,}.pdf ${pkgdir}/usr/share/licenses/xmind-2020/
 }
