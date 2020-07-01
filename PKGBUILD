@@ -3,7 +3,7 @@
 _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
-pkgver=4.0.r29027.0a8dbe7f75
+pkgver=4.0.dev
 pkgrel=1
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
@@ -36,8 +36,8 @@ build() {
   scons platform=linuxbsd tools=no target=release_debug bits=64 CXX=clang++ werror=no -j$(nproc)
 
   # 64 bit headless server
-  #scons platform=server tools=no target=release bits=64 CXX=clang++ werror=no -j$(nproc)
-  #scons platform=server tools=no target=release_debug bits=64 CXX=clang++ werror=no -j$(nproc)
+  scons platform=server tools=no target=release bits=64 CXX=clang++ werror=no -j$(nproc)
+  scons platform=server tools=no target=release_debug bits=64 CXX=clang++ werror=no -j$(nproc)
 
   # 32 bit client
   #scons platform=linuxbsd tools=no target=release bits=32 CXX=clang++ werror=no -j$(nproc)
@@ -53,8 +53,8 @@ package() {
   install -Dm644 bin/godot.linuxbsd.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 64 bit server
-  #install -Dm644 bin/godot_server.linuxbsd.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
-  #install -Dm644 bin/godot_server.linuxbsd.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm644 bin/godot_server.linuxbsd.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm644 bin/godot_server.linuxbsd.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 32 bit client
   #install -Dm644 bin/godot.linuxbsd.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
