@@ -6,7 +6,7 @@
 
 pkgname=grafana-bin
 _pkgname=grafana
-pkgver=7.0.2
+pkgver=7.0.5
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version"
 url="http://grafana.org"
@@ -22,10 +22,10 @@ source_armv6h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv6
 source_armv7h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv7.tar.gz")
 source_aarch64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-arm64.tar.gz")
 sha256sums=('07512df687b1cf622c1a71b67f3cdf286ba02d7b87a844a4c51f89e0228074f2')
-sha256sums_x86_64=('bcd9e935432c32b8f8ac66849aea324026f1736bfa88efac03f81e04b6fedfe5')
-sha256sums_armv6h=('6335b04b54235b21f796c768129f278d058c13db2166de8351e130c4df91a92f')
-sha256sums_armv7h=('16e4d0dfbeaaad70fa7be6d2f3e34c644ec37fc570f83c52fda5509b2e632c57')
-sha256sums_aarch64=('a2264f2fd5ea4e4f71c100cff1793677662fbd1c005d6f2db2f409b2e75eebf0')
+sha256sums_x86_64=('66ec0dd770db0fbf985978f769b85be663d426914b6943c61ebb8b5980ed0f8e')
+sha256sums_armv6h=('4eb5ea896243c111adc8faa9aa25b45b04c7c90ab57db7d21e52c3f510ea9e25')
+sha256sums_armv7h=('f458c13ae2ed346a3d690752bbcc4d714351351fdd6b17da1c98aa89d477e518')
+sha256sums_aarch64=('1c00c2b4f4b88eedbc29e9ef3289f90f8a93be812a4bef26b9196082eea9ea59')
 
 
 package() {
