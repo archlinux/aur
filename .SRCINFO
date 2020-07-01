@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter
 	pkgdesc = Raw Converter forked from RawTherapee including blackfoxx-theme
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = art-rawconverter
 	depends = libiptcdata
 	depends = desktop-file-utils
 	conflicts = art-rawconverter-git
-	source = art-rawconverter_1.4::git+https://bitbucket.org/agriggio/art.git#tag=1.4
+	source = art-rawconverter_1.4.1::git+https://bitbucket.org/agriggio/art.git#tag=1.4.1
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
 	sha256sums = SKIP
 	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
