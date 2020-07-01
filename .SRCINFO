@@ -1,16 +1,16 @@
 pkgbase = palantir-java-format
 	pkgdesc = Reformats Java source code to comply with Palantir Java Style
-	pkgver = 0.3.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/palantir/palantir-java-format
 	arch = any
 	depends = java-runtime
 	depends = google-java-format
-	source = https://dl.bintray.com/palantir/releases/com/palantir/javaformat/palantir-java-format/0.3.0/palantir-java-format-0.3.0.jar
-	source = https://dl.bintray.com/palantir/releases/com/palantir/javaformat/palantir-java-format-spi/0.3.0/palantir-java-format-spi-0.3.0.jar
+	source = https://dl.bintray.com/palantir/releases/com/palantir/javaformat/palantir-java-format/1.0.1/palantir-java-format-1.0.1.jar
+	source = https://dl.bintray.com/palantir/releases/com/palantir/javaformat/palantir-java-format-spi/1.0.1/palantir-java-format-spi-1.0.1.jar
 	source = palantir-java-format
-	md5sums = 6805ca0f4e5f157582c161b8ef788f0d
-	md5sums = f4a068e2eb5bb261a23c4dc59fb62cc5
+	md5sums = 386a65231527a3962e142edb7cbf2c24
+	md5sums = 4e42c4135eab5f4d7557e3d19607f452
 	md5sums = 86828c1f441b9c1a97674d7d3d035625
 
 pkgname = palantir-java-format
