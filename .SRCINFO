@@ -9,7 +9,7 @@ pkgbase = hunspell-da
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
 	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt
-	b2sums = 17883b117fc0367bbd5885b03c54ce0e0970ff3ceb96d81cc30621ea7d619070f5992c18ca9ce811ed1088d2e7f09b7801f82ccff5775eda5958b25c87ab6079
+	b2sums = 295de85577dc9e573bdfb670e294888495d5387853499437ec22039b228263fa72af74a8266c02295e2710713c6d5b5783b7cdd0cea3823a181904437dddc6c6
 
 pkgname = hunspell-da
 
