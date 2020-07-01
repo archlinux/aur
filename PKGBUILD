@@ -1,57 +1,49 @@
-# Maintainer: Justin Dray <justin@dray.be>
-# Previous maintainer: bobpaul (bobpaul on archlinux forumsBoohbah <boohbah at gmail.com>)
+# Maintainer: TankMissile <alecfeldman@disroot.org>
+# Contributor: Justin Dray <justin@dray.be>
+# Contributor: bobpaul <boohbah@gmail.com>
 # Contributor: Mikeserv
 
-_gitname=bcache-tools
-pkgname=${_gitname}-git
+_pkgname=bcache-tools
+pkgname=$_pkgname-git
 pkgver=1.0.8.r0.ga73679b
 pkgrel=1
-pkgdesc="Userspace tools for bcache until bcache merges with either dm or md"
 changelog=bcache-tools-git.changelog
-arch=('i686' 'x86_64')
+pkgdesc="Userspace tools for bcache until bcache merges with either dm or md (git version)."
 url="http://bcache.evilpiepirate.org/"
-license=('GPL')
-depends=('util-linux')
-makedepends=('git')
-provides=('bcache-tools')
-conflicts=('bcache-tools')
-install="${pkgname}.install"
-source=("git+https://github.com/g2p/${_gitname}.git"
-        'crc64.patch'
-        'initcpio-arch.patch')
-md5sums=('SKIP'
-         '265f3d6ad0bd1596eac8a2c3512f2d87'
-         '208d7024340b8db3cf21325df40b6267')
-
-# set _gitrev to a git revision (man gitrevisions) like a tag, a commit sha1
-# hash or a branch name to build from this tree instead of master
-
-# _gitrev=""
-#_gitrev="89f11b135d1"
+arch=("i686" "x86_64")
+license=("GPL")
+depends=("util-linux")
+makedepends=("git")
+provides=("bcache-tools")
+conflicts=("bcache-tools")
+install="$pkgname.install"
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/colyli/$_pkgname.git"
+        "initcpio-dracut-arch.patch")
+sha256sums=("SKIP"
+            "fea3ddfcef7aaac6cc6dd0c5497bc5f69f799d4f9f286e978ebd4b9326347f9c")
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	[[ -n $_gitrev ]] && git reset --hard "$_gitrev"
-	git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/${_gitname}"
-	patch -Np1 -i "${srcdir}/initcpio-arch.patch"
-	patch -Np1 -i "${srcdir}/crc64.patch"
+  cd $_pkgname
+  patch -Np1 -i "$srcdir/initcpio-dracut-arch.patch"
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	make
+  cd $_pkgname
+  make
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
-	mkdir -p "${pkgdir}/usr/share/man/man8"
-	mkdir -p "${pkgdir}/usr/lib/initcpio/install"
+  cd $_pkgname
+  install -d \
+    "$pkgdir/usr/bin" \
+    "$pkgdir/usr/lib/udev/rules.d" \
+    "$pkgdir/usr/share/man/man8" \
+    "$pkgdir/usr/lib/initcpio/install"
 
-	make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }

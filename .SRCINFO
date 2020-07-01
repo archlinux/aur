@@ -1,5 +1,5 @@
 pkgbase = bcache-tools-git
-	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md
+	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md (git version).
 	pkgver = 1.0.8.r0.ga73679b
 	pkgrel = 1
 	url = http://bcache.evilpiepirate.org/
@@ -12,10 +12,10 @@ pkgbase = bcache-tools-git
 	depends = util-linux
 	provides = bcache-tools
 	conflicts = bcache-tools
-	source = git+https://github.com/g2p/bcache-tools.git
-	source = initcpio-arch.patch
-	md5sums = SKIP
-	md5sums = 208d7024340b8db3cf21325df40b6267
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git
+	source = initcpio-dracut-arch.patch
+	sha256sums = SKIP
+	sha256sums = fea3ddfcef7aaac6cc6dd0c5497bc5f69f799d4f9f286e978ebd4b9326347f9c
 
 pkgname = bcache-tools-git
 
