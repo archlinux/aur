@@ -1,4 +1,4 @@
-# Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
+# Maintainer: Charles L <charliehogger31@gmail.com>
 
 pkgname=minitimer
 pkgver=2.5.0
