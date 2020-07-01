@@ -1,4 +1,5 @@
 # Maintainer: SharkEzz <icraft640@gmail.com>
+# Co-Maintainer: guzzisti <rwagner at rw-net dot de>
 # Contributor: James Bunton <jamesbunton@delx.net.au>
 
 
@@ -6,7 +7,7 @@
 # $ curl -s https://bluejeans.com/downloads | grep 'desktop/linux'
 
 pkgname=bluejeans
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
@@ -70,7 +71,7 @@ depends=('alsa-lib'
          'zlib')
 install=bluejeans.install
 source=(BlueJeans-${pkgver}.rpm::https://swdl.bluejeans.com/desktop-app/linux/${pkgver}/BlueJeans.rpm)
-sha256sums=('47091aa31b967ebe41fee36617cc781eb8749235527bca05bd1f40a4debc8c1a')
+sha256sums=('e0a14407e666e35f14cb503f6d30ec0c9d9dc9b12e6b6bbcb18e3f4b0a6210a0')
 
 package() {
   # add bluejeans wrapper to /usr/bin
