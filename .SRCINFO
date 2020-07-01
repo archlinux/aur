@@ -1,13 +1,10 @@
 pkgbase = otf-bitter
 	pkgdesc = A font specially designed for comfortably reading on any computer or device.
 	pkgver = 1.300
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.huertatipografica.com/fonts/bitter-ht
 	arch = any
 	license = custom:OFL
-	makedepends = unzip
-	depends = fontconfig
-	depends = xorg-font-utils
 	conflicts = otf-google-fonts-hg
 	source = bitter.zip::http://www.fontsquirrel.com/fonts/download/bitter
 	sha256sums = SKIP
