@@ -1,6 +1,6 @@
 pkgbase = ttf-iosevka-git
 	pkgdesc = A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.
-	pkgver = r1461.43a8ca6d
+	pkgver = r1808.057cac08
 	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
@@ -11,8 +11,6 @@ pkgbase = ttf-iosevka-git
 	makedepends = npm
 	makedepends = otfcc
 	makedepends = ttfautohint
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = ttf-iosevka
 	conflicts = ttf-iosevka
 	source = git+https://github.com/be5invis/Iosevka
