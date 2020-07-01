@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('qt5-base' 'harfbuzz' 'tree' 'pacman-contrib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 )
-sha512sums=('da349cc4df7f45d5159fcbf72628c573aba6098f8a7d0a504bb492cbbdae36f1d1c3cd99c5a51cabe0926310f79dcb431047a48453be413b3395d9969fcded13'
+sha512sums=('c1e06f4757bd85dd5506da37a24666f63b60c6d7d3b82ac70e65cc51739c83bfe762a81f8f7b7b1c1da94f569fbe4a9ce680889ba747f84aa7a0c0466bf0acdf'
 )
 
 build(){
