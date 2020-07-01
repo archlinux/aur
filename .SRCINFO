@@ -1,7 +1,7 @@
 pkgbase = litemanager
 	pkgdesc = remote access software for remote administration of computers over the Internet or remote control in a local network, for distant learning, providing remote support to users and supervising work activity of employees.
 	pkgver = 4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.litemanager.com
 	arch = x86_64
 	license = custom

@@ -6,7 +6,7 @@
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=litemanager
 pkgver=4.9
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="remote access software for remote administration of computers over the Internet or remote control in a local network, for distant learning, providing remote support to users and supervising work activity of employees."
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
     --categories="GTK;GNOME;X-GNOME-NetworkSettings;Network;" \
-    --icon "${_pkgname}.png" \
+    --icon "/usr/share/pixmaps/${pkgname}.png" \
     --exec "litemanager"
 	
 }
