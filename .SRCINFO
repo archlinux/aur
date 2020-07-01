@@ -1,4 +1,4 @@
-pkgbase = dmenu-rs
+pkgbase = dmenu-rs-git
 	pkgdesc = The development branch of dmenu-rs. Likely has unstable features.
 	pkgver = 5.2.2.0.ged9fdd9
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = dmenu-rs
 	source = dmenu-rs::git+https://github.com/Shizcow/dmenu-rs.git
 	md5sums = SKIP
 
-pkgname = dmenu-rs
+pkgname = dmenu-rs-git
 

@@ -9,7 +9,8 @@
 PLUGINS=""
 
 _pkgname=dmenu
-pkgname=$_pkgname-rs
+_pkgbase=$_pkgname-rs
+pkgname=$_pkgbase-git
 pkgver=5.2.2.0.ged9fdd9
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
@@ -20,27 +21,27 @@ depends=('sh' 'libxinerama' 'libxft')
 makedepends=('rust' 'git' 'clang')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${pkgname}::git+${url}.git")
+source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgbase
   git describe --tags --long | sed 's/-/./g'
 }
 
 prepare() (
-    cd dmenu-rs
-    git config advice.detachedHead false
+  cd $_pkgbase
+  git config advice.detachedHead false
 )
 
 build() (
-    cd dmenu-rs
-    git checkout develop
-    make PLUGINS="$PLUGINS"
+  cd $_pkgbase
+  git checkout develop
+  make PLUGINS="$PLUGINS"
 )
 
 package() (
-  cd $pkgname
+  cd $_pkgbase
   make PREFIX=/usr DESTDIR="$pkgdir" PLUGINS="$PLUGINS" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 )
