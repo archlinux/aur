@@ -2,17 +2,17 @@
 # Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
 url="https://developer.amd.com/amd-aocc/"
 source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
-depends=('ncurses5-compat-libs' 'env-modules')
+depends=('env-modules')
 install=aocc.install
-md5sums=("8f0349c1138949c511a15bfa5850af10" "SKIP")
+md5sums=("7fb6fb1efb36bd8af9a9c2273544f09c" "SKIP")
 
 aocc_prefix=/opt/aocc
 
