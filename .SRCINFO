@@ -1,0 +1,21 @@
+pkgbase = dmenu-rs
+	pkgdesc = The development branch of dmenu-rs. Likely has unstable features.
+	pkgver = 5.2.2.0.ged9fdd9
+	pkgrel = 1
+	url = https://github.com/Shizcow/dmenu-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = clang
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu-rs::git+https://github.com/Shizcow/dmenu-rs.git
+	md5sums = SKIP
+
+pkgname = dmenu-rs
+
