@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.17.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -20,6 +20,8 @@ sha512sums=('13479bd48ef8a8c95277a62b4f42e63152a5979292a98b5456022ca42ad3963cad7
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -p1 -i ../cmake-cppflags.patch # Honor CPPFLAGS https://gitlab.kitware.com/cmake/cmake/issues/12928
+
+  sed -i 's/LUA_VERSIONS5 5.3/LUA_VERSIONS5 5.4 5.3/' Modules/FindLua.cmake # Add Lua 5.4 to search list
 }
 
 build() {
