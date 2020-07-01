@@ -1,4 +1,4 @@
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Charles L <charliehogger31@gmail.com>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
