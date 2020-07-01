@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='catt'
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Send videos from many, many online sources to your Chromecast'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'youtube-dl>=2019.01.24')
 makedepends=('python' 'python-setuptools')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/skorokithakis/"${pkgname}"/archive/v"${pkgver}".tar.gz)
-sha256sums=('f20c1f0b946c712b622135a1712a84831c22816c0c915aa990ad5168d8cea364')
+sha256sums=('e9cdce0fb1992b3d09535cee25f557413bc5d70fb5b5e952ce660ea914933294')
 
 build(){
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
