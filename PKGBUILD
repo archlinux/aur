@@ -13,8 +13,8 @@ pkgdesc="A collection of programs that can be used in a debian/rules file to aut
 arch=('any')
 url="https://salsa.debian.org/debian/debhelper.git/"
 license=('GPL2' 'GPL3')
-depends=('binutils' 'dpkg>=1.16.2' 'file>=3.23' 'html2text' 'man-db>=2.5.1' 'perl>=5.6.0' 'po-debconf' 'perl-pod-parser')
-makedepends=('po4a>=0.24' 'man-db>=2.5.1' 'file>=3.23' 'git')
+depends=('binutils' 'dpkg>=1.16.2' 'file>=3.23' 'html2text' 'man-db>=2.5.1' 'perl>=5.6.0' 'po-debconf')
+makedepends=('po4a>=0.24' 'man-db>=2.5.1' 'file>=3.23' 'git' 'perl-pod-parser>=1.63')
 optdepends=('dh-make')
 source=("git+https://salsa.debian.org/debian//debhelper.git#tag=debian/$pkgver")
 md5sums=('SKIP')
