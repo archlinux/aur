@@ -2,7 +2,7 @@
 
 pkgname=mmctl
 pkgver=v5.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A remote CLI tool for Mattermost"
 arch=('x86_64')
 url="https://github.com/mattermost/mmctl"
@@ -13,11 +13,6 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattermost/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('f4e5f7debeb7e0cbb6cd3c3e6a73938269683be4473fb28a8edbfb0a940927c8')
 
-# pkgver() {
-#   cd "${srcdir}/${_pkgname}"
-#   git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-# }
-
 build() {
   echo "${srcdir}"/${pkgname}-${pkgver:1}
   cd "${srcdir}"/${pkgname}-${pkgver:1}
@@ -25,7 +20,7 @@ build() {
 	go mod vendor
 	go mod tidy
   EXTLDFLAGS=${LDFLAGS}
-  LDFLAGS="-X \"github.com/mattermost/mmctl/commands.BuildHash=${sha256sums[0]}\""
+  LDFLAGS="-X \"github.com/mattermost/mmctl/commands.BuildHash=release-source-build\""
   CACHE="${srcdir}/cache" go build -trimpath -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}" -mod=vendor
 }
 

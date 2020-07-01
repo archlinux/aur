@@ -1,7 +1,7 @@
 pkgbase = mmctl
 	pkgdesc = A remote CLI tool for Mattermost
 	pkgver = v5.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattermost/mmctl
 	arch = x86_64
 	license = Apache
