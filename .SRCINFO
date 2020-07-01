@@ -1,12 +1,11 @@
 pkgbase = ttf-zelda
 	pkgdesc = A collection of fonts from the Legend of Zelda universe
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zeldauniverse.net/media/fonts/
 	arch = any
 	license = GPL
-	depends = fontconfig
-	depends = xorg-font-utils
+	provides = ttf-font
 	source = http://www.zeldauniverse.net/media-files/typography/Triforce.ttf
 	source = http://www.zeldauniverse.net/media-files/typography/HylianSymbols.ttf
 	source = http://www.zeldauniverse.net/media-files/typography/Pretendo.ttf

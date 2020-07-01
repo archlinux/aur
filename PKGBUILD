@@ -1,12 +1,12 @@
 # Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
 pkgname=ttf-zelda
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of fonts from the Legend of Zelda universe"
 arch=('any')
 url="http://www.zeldauniverse.net/media/fonts/"
+provides=('ttf-font')
 license=('GPL')
-depends=('fontconfig' 'xorg-font-utils')
 noextract=()
 
 _source_base_url=http://www.zeldauniverse.net/media-files/typography/
@@ -46,6 +46,10 @@ md5sums=('3cf0469a6f23aefd25032f8bbc3587e5'
 
 package() {
   cd "$srcdir"
-  find . -iname \*.ttf -exec install -Dm644 '{}' "$pkgdir/usr/share/fonts/TTF/{}" \;
-  find . -iname \*.otf -exec install -Dm644 '{}' "$pkgdir/usr/share/fonts/TTF/{}" \;
+
+  rm -r "__MACOSX"
+
+  mkdir -p "$pkgdir/usr/share/fonts/TTF/"
+  find . -iname \*.ttf -exec install -Dm644 "{}" "$pkgdir/usr/share/fonts/TTF/" \;
+  find . -iname \*.otf -exec install -Dm644 "{}" "$pkgdir/usr/share/fonts/TTF/" \;
 }
