@@ -27,6 +27,7 @@ prepare()
   cd "$srcdir/Tanks-of-Freedom-$_pkgtag-beta"
 
   cp buildConfig/export_desktop.cfg export.cfg
+  #cp -f buildConfig/engine_desktop.cfg engine.cfg
 }
 
 build()
