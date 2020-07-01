@@ -1,7 +1,7 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
 	pkgver = 20200630
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	license = custom:Public Domain
@@ -24,7 +24,6 @@ pkgbase = all-repository-fonts
 	depends = cantarell-fonts
 	depends = dina-font
 	depends = font-bh-ttf
-	depends = font-bitstream-speedo
 	depends = gentium-plus-font
 	depends = gnu-free-fonts
 	depends = gsfonts

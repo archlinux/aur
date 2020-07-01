@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
 pkgver=20200630
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -27,7 +27,6 @@ depends=('adobe-source-code-pro-fonts'
          'cantarell-fonts'
          'dina-font'
          'font-bh-ttf'
-         'font-bitstream-speedo'
          'gentium-plus-font'
          'gnu-free-fonts'
          'gsfonts'
