@@ -1,0 +1,15 @@
+pkgbase = mmctl
+	pkgdesc = A remote CLI tool for Mattermost
+	pkgver = v5.24
+	pkgrel = 1
+	url = https://github.com/mattermost/mmctl
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = gcc-libs
+	options = !strip
+	source = mmctl-v5.24.tar.gz::https://github.com/mattermost/mmctl/archive/v5.24.tar.gz
+	sha256sums = f4e5f7debeb7e0cbb6cd3c3e6a73938269683be4473fb28a8edbfb0a940927c8
+
+pkgname = mmctl
+
