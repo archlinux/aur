@@ -22,7 +22,7 @@ provides=(firefox=${pkgver})
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        ${pkgname}.desktop firefox-symbolic.svg 0001-Use-remoting-name-for-GDK-application-names.patch upload-symbol-archive)
+        ${pkgname}.desktop 0001-Use-remoting-name-for-GDK-application-names.patch upload-symbol-archive)
 sha256sums=('cc5d177899899b25c0d37d55592962e2dfa1666e784825d4de04bf53bb497309'
             'SKIP'
             'ba8a1610fe3ccc65cb58f2651df0ae9df632ecc17b3af8d13670950e9e2d27d8'
