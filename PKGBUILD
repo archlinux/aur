@@ -10,7 +10,7 @@ PLUGINS=""
 
 _pkgname=dmenu
 pkgname=$_pkgname-rs
-pkgver=5.2.0.0.g38a8ad8
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="A 1:1 port of dmenu, rewritten in Rust"
 arch=('i686' 'x86_64')
@@ -25,11 +25,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --long | sed 's/-/./g'
+  git describe --tags
 }
+
+prepare() (
+    cd dmenu-rs
+    git config advice.detachedHead false
+)
 
 build() (
     cd dmenu-rs
+    git checkout $pkgver
     make PLUGINS="$PLUGINS"
 )
 
