@@ -1,0 +1,16 @@
+pkgbase = lexmark-network-scan
+	pkgdesc = Lexmark proprietary Network scan driver for Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.lexmark.com/
+	install = lexmark-network-scan.install
+	arch = x86_64
+	license = custom,proprietary
+	noextract = lexmark_network-scan-linux-glibc2_04082019_x86_64.deb
+	source = https://downloads.lexmark.com/downloads/drivers/lexmark_network-scan-linux-glibc2_04082019_x86_64.deb
+	md5sums = 9defe10f3d5a09ab99edb2fd92997b06
+	depends_x86_64 = sane
+	depends_x86_64 = xsane
+
+pkgname = lexmark-network-scan
+
