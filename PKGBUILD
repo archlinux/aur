@@ -2,7 +2,7 @@
 # Co-Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
 pkgname=solarwallet
 _pkgname="Solar Wallet"
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('satoshipay-stellar-wallet')
 replaces=('satoshipay-stellar-wallet')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/satoshipay/solar/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('a7bcb3ef5f3a6820f681a45a070162ee1075b1def92f6f58cea8553b2a240a61'
+sha256sums=('d677dde1d057a439313e47b4945f4b45a607ed7978a675bd15ad4bad1aabd7ef'
             'b6c574362d009c52ab9f9b0bdb4b2af9f1a8f79f0c8f68b897e9a19df46abc75')
 
 build() {
