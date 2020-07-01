@@ -69,11 +69,6 @@ build() {
     LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
 }
 
-check() {
-  cd "$srcdir/swift"
-  python utils/build-script -t
-}
-
 package() {
   cd "$srcdir/build"
   mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
