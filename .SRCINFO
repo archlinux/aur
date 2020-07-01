@@ -1,13 +1,11 @@
 pkgbase = ttf-quintessential
 	pkgdesc = Calligraphic typeface from Google by Brian J. Bonislawsky
 	pkgver = 1.001
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fonts.google.com/specimen/Quintessential
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = otf-quintessential-ib
 	source = Quintessential-Regular-1.001.ttf::https://github.com/google/fonts/raw/883939708704a19a295e0652036369d22469e8dc/ofl/quintessential/Quintessential-Regular.ttf
