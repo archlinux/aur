@@ -1,0 +1,15 @@
+pkgbase = go-dsp-guitar
+	pkgdesc = A cross-platform multichannel multi-effects processor for electric guitars and other instruments
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/beatlabs/go-dsp-guitar
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = openssl
+	depends = jack
+	source = go-dsp-guitar-1.6.0.tar.gz::https://github.com/andrepxx/go-dsp-guitar/archive/v1.6.0.tar.gz
+	sha256sums = f0530573de2e1d5f074a2026e7af33b6d9b6294db810b039cad302c601cde0ec
+
+pkgname = go-dsp-guitar
+
