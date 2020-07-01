@@ -1,6 +1,6 @@
 pkgname=dobiestation
 pkgrel=1
-pkgver=r1755.987d1b7
+pkgver=r1760.ff3a064
 pkgdesc='A Dog based emulator for the ps2'
 arch=(x86_64)
 url=https://github.com/PSI-Rockin/DobieStation/
@@ -32,7 +32,7 @@ prepare()
     git clone https://github.com/PSI-Rockin/DobieStation.git
     cd DobieStation
     mkdir build && cd build
-    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
@@ -42,5 +42,5 @@ build() {
 
 package() {
     cd DobieStation && cd build
-    make install
+    make DESTDIR="$pkgdir" install
 }
