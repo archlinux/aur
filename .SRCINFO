@@ -10,7 +10,7 @@ pkgbase = telepathy-kde-accounts-kcm-git
 	depends = telepathy-qt
 	depends = kaccounts-integration
 	conflicts = telepathy-kde-accounts-kcm
-	source = git+https://github.com/KDE/ktp-accounts-kcm.git
+	source = git+https://invent.kde.org/network/ktp-accounts-kcm.git
 	sha256sums = SKIP
 
 pkgname = telepathy-kde-accounts-kcm-git

@@ -13,7 +13,7 @@ license=(GPL)
 depends=(telepathy-qt kaccounts-integration)
 makedepends=(extra-cmake-modules intltool)
 conflicts=(telepathy-kde-accounts-kcm)
-source=("git+https://github.com/KDE/$_name.git")
+source=("git+https://invent.kde.org/network/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
