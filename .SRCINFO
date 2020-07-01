@@ -1,7 +1,7 @@
 pkgbase = zimwriterfs
 	pkgdesc = A tool for creating ZIM files based on contents on a local filesystem
 	pkgver = 1.3.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/openzim/zimwriterfs
 	arch = x86_64
 	license = GPL3
