@@ -1,6 +1,6 @@
 pkgbase = passman
 	pkgdesc = Super-secure, easy-to-use password manager.
-	pkgver = 1.0.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/binex-dsk/passman-aur
 	arch = any
