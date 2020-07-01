@@ -1,32 +1,26 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator
-pkgver=0.1.2
+pkgver=0.2.0+rc.1
 pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
 arch=("x86_64")
 url="https://github.com/systemd/zram-generator"
 license=('MIT')
 depends=("systemd")
-makedepends=('git' 'rust')
-_commit=edcbbd5415beadf53f5110c14d9e01e153f233a5 # tags/0.1.2^0
+makedepends=('git' 'rust' 'ruby-ronn-ng')
+_commit=3821c08f9e236da549ed0eae5d75d2c08a1e7502 # tags/0.2.0-rc.1^0
 install='zram-generator.install'
 source=("${pkgname%-git}::git+https://github.com/systemd/zram-generator.git#commit=$_commit"
         'half-memory.conf.example'
         'zram-generator.install')
 sha256sums=('SKIP'
-            '1d8939e449d7a09c4f6e1783039f6324fc3fe1969e0573ff4ed9d27b8b9d43f9'
+            '1aa3e7a47303c0b2dff6d74cc569c12e8009ed4642301db67fb389cb313141cf'
             '17f510e96f763d1c9aa8c0de757ad38dbe089465fb802e3c34682793f060bf77')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	printf "%s" "$(git describe --tags | sed 's/^v//;s/-/+/g')"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-
-	rm .cargo/config # Remove upstream hacks with a registry overriding
 }
 
 build() {
@@ -44,8 +38,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 target/release/zram-generator "$pkgdir/usr/lib/systemd/system-generators/zram-generator"
-	install -Dm644 zram-generator.conf.example "$pkgdir/usr/share/doc/zram-generator/zram-generator.conf.example"
-	install -Dm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
+	make DESTDIR="$pkgdir" install
+	install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dpm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
 }
