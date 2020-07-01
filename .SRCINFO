@@ -1,6 +1,6 @@
 pkgbase = yakyak
 	pkgdesc = Desktop chat client for Google Hangouts
-	pkgver = 1.5.7
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = yakyak
 	makedepends = npm
 	depends = electron
 	optdepends = emojione-color-font: Emoji support
-	source = yakyak-1.5.7.tar.gz::https://github.com/yakyak/yakyak/archive/v1.5.7.tar.gz
+	source = yakyak-1.5.9.tar.gz::https://github.com/yakyak/yakyak/archive/v1.5.9.tar.gz
 	source = yakyak.desktop
 	source = yakyak.sh
-	sha256sums = c3871129ffddbc942f11bf2c340a68dc85dac08207bb7590b5a65b26fc2f4f0b
+	sha256sums = 9a8e171e3129f52aa6028761fbe247a6b0dafc47b94851b2df58c88f38eba420
 	sha256sums = 12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360
 	sha256sums = 0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046
 
