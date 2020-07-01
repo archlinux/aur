@@ -1,8 +1,9 @@
-# Maintainer: Aleix Pol Gonzalez <aleixpol@kde.org>
 # Maintainer: zanny <lordzanny@gmail.com>
+# Maintainer: Aleix Pol Gonzalez <aleixpol@kde.org>
 
 pkgname=kirigami-git
-pkgver=r1320.ed36d6d
+_name=${pkgname%-git}
+pkgver=v2.2.0.r1242.gfd6e6138
 pkgrel=1
 pkgdesc='A set of QML components for mobile/desktop convergent applications made by KDE'
 arch=('i686' 'x86_64')
@@ -12,30 +13,20 @@ depends=(qt5-quickcontrols2)
 makedepends=(extra-cmake-modules git)
 conflicts=(kirigami2)
 provides=(kirigami2)
-source=('git://anongit.kde.org/kirigami.git')
 groups=(plasma)
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd kirigami
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../kirigami \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
