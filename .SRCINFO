@@ -1,12 +1,11 @@
 pkgbase = ttf-font-icons
 	pkgdesc = A non-overlapping mix of Ionicons and Awesome iconic fonts
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kageurufu.net/icons.pdf
 	arch = any
 	license = MIT
 	depends = fontconfig
-	depends = xorg-font-utils
 	options = !strip
 	source = icons.ttf
 	md5sums = 800c09709d456a127bc9160ec1ecddf6

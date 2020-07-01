@@ -2,12 +2,12 @@
 
 pkgname=ttf-font-icons
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A non-overlapping mix of Ionicons and Awesome iconic fonts"
 url="http://kageurufu.net/icons.pdf"
 # Alternative URL: https://drive.google.com/file/d/0B3iQeXAmzOoLaERrZ1BQX0FreDg/view?usp=sharing
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 options=("!strip")
 arch=('any')
 source=('icons.ttf')
