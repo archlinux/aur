@@ -1,12 +1,12 @@
 pkgbase = nfpm
 	pkgdesc = A simple deb and rpm packager written in Go
-	pkgver = v1.3.1
+	pkgver = v1.3.2
 	pkgrel = 1
 	url = https://github.com/goreleaser/nfpm
 	arch = x86_64
 	license = MIT
-	source = https://github.com/goreleaser/nfpm/releases/download/v1.3.1/nfpm_1.3.1_linux_x86_64.tar.gz
-	sha256sums = f39197b9001b84409218d4bf884a368ef62d9898577d97d1b7dae54cae74cdf4
+	source = https://github.com/goreleaser/nfpm/releases/download/v1.3.2/nfpm_1.3.2_linux_x86_64.tar.gz
+	sha256sums = 47aa4970578aaf1df7b492e0df78068ed9fb27a562e4e0e9ac2cbc3f816af7d2
 
 pkgname = nfpm
 
