@@ -6,8 +6,6 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
-provides=('pidgin' 'libpurple' 'finch')
-conflicts=('pidgin' 'libpurple' 'finch')
 pkgbase=pidgin
 pkgver=2.14.1
 pkgrel=2
@@ -48,9 +46,12 @@ build() {
 
 package_pidgin-gnutls(){
   pkgdesc="Multi-protocol instant messaging client"
-  depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
+  provides=('pidgin')
+  conflicts=('pidgin')
+  depends=('libpurple-gnutls' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
            'gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme')
-  optdepends=('aspell: for spelling correction')
+  optdepends=('aspell: for spelling correction'
+              'purple-hangouts-hg: for Google Hangouts connectivity')
 
   cd $pkgbase-$pkgver
 
@@ -68,7 +69,9 @@ package_pidgin-gnutls(){
 
 package_libpurple-gnutls(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'nss'
+  provides=('libpurple')
+  conflicts=('libpurple')
+  depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'gnutls'
            'libnm')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
@@ -84,7 +87,9 @@ package_libpurple-gnutls(){
 
 package_finch-gnutls(){
   pkgdesc="A ncurses-based messaging client"
-  depends=('libpurple' 'libgnt' 'libx11')
+  provides=('finch')
+  conflicts=('finch')
+  depends=('libpurple-gnutls' 'libgnt' 'libx11')
 
   cd $pkgbase-$pkgver
 
