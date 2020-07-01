@@ -10,6 +10,7 @@ url="https://github.com/w84death/Tanks-of-Freedom"
 license=('MIT')
 options=('!strip')
 makedepends=('godot2')
+depends=('libx11' 'libxinerama' 'libxcursor' 'libxrandr' 'libxi' 'alsa-lib' 'libpulse' 'libglvnd' 'glibc')
 source=("https://github.com/w84death/Tanks-of-Freedom/archive/$_pkgtag-beta.tar.gz"
         "https://downloads.tuxfamily.org/godotengine/2.1.6/Godot_v2.1.6-stable_export_templates.tpz"
         "Tanks of Freedom.desktop")
@@ -27,7 +28,7 @@ prepare()
   cd "$srcdir/Tanks-of-Freedom-$_pkgtag-beta"
 
   cp buildConfig/export_desktop.cfg export.cfg
-  #cp -f buildConfig/engine_desktop.cfg engine.cfg
+  cp -f buildConfig/engine_desktop.cfg engine.cfg
 }
 
 build()
