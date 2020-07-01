@@ -4,7 +4,7 @@
 
 pkgname=noto-fonts-sc
 pkgver=2.001
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Noto CJK-SC fonts for Simplified Chinese"
 arch=(any)
@@ -16,7 +16,6 @@ sha256sums=('ee85a1e4126e287a373625cce025b3235cdebf96f71b78f5ef165893c6f8c99f'
             '1be3c018da41e6545090882625457c9a5d01a03a9115a6be49820d154585989a'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2')
 url="https://www.google.com/get/noto/help/cjk/"
-install=${pkgname}.install
 license=("custom: SIL")
 
 package() {
