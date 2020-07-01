@@ -1,0 +1,100 @@
+diff -up a/abook.1 b/abook.1
+--- a/abook.1	2015-10-03 19:37:39.000000000 -0700
++++ b/abook.1	2020-07-01 11:17:07.093266899 -0700
+@@ -22,10 +22,10 @@ equally useful on its own.
+ Show usage.
+ .TP
+ \fB\-C \-\-config\fP \fI<filename>\fR
+-Use an alternative configuration file (default is \fI$HOME/.abook/abookrc\fR).
++Use an alternative configuration file (default is \fI$HOME/.config/abook/abookrc\fR).
+ .TP
+ \fB\-\-datafile\fP \fI<filename>\fR
+-Use an alternative addressbook file (default is \fI$HOME/.abook/addressbook\fR).
++Use an alternative addressbook file (default is \fI$HOME/.config/abook/addressbook\fR).
+ .TP
+ \fB\-\-mutt\-query\fP \fI<string>\fR [ \fB\-\-outformat\fP \fI<outputformat>\fR ]
+ Make a query for mutt (search the addressbook for \fI<string>\fR).
+diff -up a/abook.h b/abook.h
+--- a/abook.h	2015-10-03 19:37:39.000000000 -0700
++++ b/abook.h	2020-07-01 11:17:31.299932987 -0700
+@@ -21,7 +21,7 @@ int		strncasecmp (const char *, const ch
+ #define MIN_COLS	70
+ 
+ #define DEFAULT_UMASK	066
+-#define DIR_IN_HOME	".abook"
++#define DIR_IN_HOME	".config/abook"
+ #define DATAFILE	"addressbook"
+ 
+ #define RCFILE		"abookrc"
+diff -up a/abookrc.5 b/abookrc.5
+--- a/abookrc.5	2015-10-03 19:37:39.000000000 -0700
++++ b/abookrc.5	2020-07-01 11:17:07.093266899 -0700
+@@ -1,7 +1,7 @@
+ .TH ABOOKRC 5 "Oct 25, 2005"
+ .nh
+ .SH NAME
+-\fB$HOME/.abook/abookrc\fP \- configuration file for abook address book program
++\fB$HOME/.config/abook/abookrc\fP \- configuration file for abook address book program
+ .SH DESCRIPTION
+ This manual page documents briefly the
+ .B abookrc
+@@ -13,7 +13,7 @@ is the (optional) configuration file for
+ address book program.
+ 
+ .B abookrc
+-is stored in a user's $HOME/.abook directory. It follows a format of
++is stored in a user's $HOME/.config/abook directory. It follows a format of
+ \(lq\fBset option=value\fP\(rq.
+ The following information lists each of these options and the values they
+ may take.
+Common subdirectories: a/autom4te.cache and b/autom4te.cache
+diff -up a/ChangeLog b/ChangeLog
+--- a/ChangeLog	2015-10-03 19:37:39.000000000 -0700
++++ b/ChangeLog	2020-07-01 11:17:45.773265972 -0700
+@@ -100,7 +100,7 @@ git
+  - abook can be compiled with g++
+  - attempt to improve --datafile behavior
+  - html filter update (Morten Brix Pedersen)
+- - store rcfile and addressbook to .abook directory
++ - store rcfile and addressbook to .config/abook directory
+ 2002-02-04
+  - use getopt to parse command line (also new options added)
+  - use strcoll instead of strcmp for sorting entries
+@@ -257,7 +257,7 @@ git
+  - html export filter
+  - improved cursor behavior
+  - fixed misc.c
+- - new configuration system ( ~/.abook.conf )
++ - new configuration system ( ~/.config/abook.conf )
+  - improved memory allocation functions
+  - added invert selection command 
+  - minor filter updates
+Common subdirectories: a/doc and b/doc
+diff -up a/FAQ b/FAQ
+--- a/FAQ	2015-10-03 19:37:39.000000000 -0700
++++ b/FAQ	2020-07-01 11:17:07.093266899 -0700
+@@ -57,8 +57,8 @@ A: Yes, the version 0.5.2 added a multib
+      If you have used abook previously with ISO-8859-1 encoding you can
+      convert the addressbook files with iconv(1). For example:
+ 
+-     $ iconv -f ISO-8859-1 -t UTF-8 < ~/.abook/addressbook.old > \
+-     ~/.abook/addressbook.new
++     $ iconv -f ISO-8859-1 -t UTF-8 < ~/.config/abook/addressbook.old > \
++     ~/.config/abook/addressbook.new
+ 
+    - Filters will output strings using multibyte representation of the used
+      locale. This is incorrect for (most of) filters. You can again use
+Common subdirectories: a/m4 and b/m4
+Common subdirectories: a/po and b/po
+diff -up a/README b/README
+--- a/README	2015-10-03 19:37:39.000000000 -0700
++++ b/README	2020-07-01 11:17:07.093266899 -0700
+@@ -56,7 +56,7 @@ See RELEASE_NOTES .
+ UPGRADING FROM VERSION 0.4
+ 
+ You must import your abook 0.4 addressbook file because it is stored
+-to a different location. Configuration file is now located to $HOME/.abook/
++to a different location. Configuration file is now located to $HOME/.config/abook/
+ directory and it's called abookrc . (without leading dot)
+ 
+ NOTES
