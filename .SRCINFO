@@ -1,17 +1,16 @@
 pkgbase = pkgbuild-assistant
-	pkgdesc = A PKGBUILD Assistant written in Qt5.
-	pkgver = 2.1.0
+	pkgdesc = An auxiliary tool for writing PKGBUILD files
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/skykeyjoker/PKGBUILD-Assistant
 	arch = x86_64
 	depends = qt5-base
 	depends = harfbuzz
-	depends = graphite
 	depends = tree
 	depends = pacman-contrib
 	provides = pkgbuild-assistant
-	source = https://github.com/skykeyjoker/PKGBUILD-Assistant/releases/download/2.1.0/PKGBUILD-Assistant.tar.gz
-	sha512sums = 3914477ce9044aa3337fd3a5c18481efac72c8adf25359e67fc7b86981d6ca9595a3a59fdd5925d4dd82091234d576d8d2db9865f222f2fb61f7121259d9a27a
+	source = pkgbuild-assistant-2.2.0.tar.gz::https://github.com/skykeyjoker/PKGBUILD-Assistant/archive/2.2.0.tar.gz
+	sha512sums = da349cc4df7f45d5159fcbf72628c573aba6098f8a7d0a504bb492cbbdae36f1d1c3cd99c5a51cabe0926310f79dcb431047a48453be413b3395d9969fcded13
 
 pkgname = pkgbuild-assistant
 
