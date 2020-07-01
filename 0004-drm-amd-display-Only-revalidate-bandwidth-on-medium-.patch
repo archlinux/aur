@@ -1,0 +1,43 @@
+From 7fab9d4206e54d19b578c70cd0529045ad642f25 Mon Sep 17 00:00:00 2001
+From: Nicholas Kazlauskas <nicholas.kazlauskas@amd.com>
+Date: Mon, 29 Jun 2020 13:03:52 -0400
+Subject: [PATCH 4/5] drm/amd/display: Only revalidate bandwidth on medium and
+ fast updates
+
+[Why]
+Changes that are fast don't require updating DLG parameters making
+this call unnecessary. Considering this is an expensive call it should
+not be done on every flip.
+
+[How]
+Guard the validation to only happen if update type isn't FAST.
+
+Signed-off-by: Nicholas Kazlauskas <nicholas.kazlauskas@amd.com>
+---
+ drivers/gpu/drm/amd/display/dc/core/dc.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/core/dc.c b/drivers/gpu/drm/amd/display/dc/core/dc.c
+index 4acaf4be8a81..c825d383f0f1 100644
+--- a/drivers/gpu/drm/amd/display/dc/core/dc.c
++++ b/drivers/gpu/drm/amd/display/dc/core/dc.c
+@@ -2533,10 +2533,12 @@ void dc_commit_updates_for_stream(struct dc *dc,
+ 
+ 	copy_stream_update_to_stream(dc, context, stream, stream_update);
+ 
+-	if (!dc->res_pool->funcs->validate_bandwidth(dc, context, false)) {
+-		DC_ERROR("Mode validation failed for stream update!\n");
+-		dc_release_state(context);
+-		return;
++	if (update_type > UPDATE_TYPE_FAST) {
++		if (!dc->res_pool->funcs->validate_bandwidth(dc, context, false)) {
++			DC_ERROR("Mode validation failed for stream update!\n");
++			dc_release_state(context);
++			return;
++		}
+ 	}
+ 
+ 	commit_planes_for_stream(
+-- 
+2.27.0
+

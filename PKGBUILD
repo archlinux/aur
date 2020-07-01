@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.6
-pkgrel=2
+pkgver=5.7.7
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,21 +83,25 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-efi-libstub-Fix-path-separator-regression.patch
+  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
+  0004-drm-amd-display-Only-revalidate-bandwidth-on-medium-.patch
   "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('9fd4c93dc6df53efa904134aa2ede6100f7453c11383490dd32ebbed84f610e6'
+sha256sums=('f840b9679283343c165516585c3070ebb277528721c890e9410a58e9d071ee7f'
             'SKIP'
             'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
-            '2fd54c37df600221909e9af84cecae85b843913fb0e206e5f996a43c40d2dcc8'
-            'de7ad8b9b265dbb70daddd49943ddb06799b491dbb53dce50540a840191f3f4b'
+            '1716e59693757f339fda588b268ff6f5edc3f2ad61bbe8a61832692572e25b1a'
+            '040420a533f7024b49633c4cf397ec95e9c915827e6230abe99890fcd769b009'
+            '97a961d9394fcfed39986798432a4170a8dd460d26eeef4c992810f1680e7f9c'
+            'cf50d4a3f343074bfacca9b148df7b034c15732057ada962fb73c94d80bb1229'
             '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328')
 
 export KBUILD_BUILD_HOST=archlinux
