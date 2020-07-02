@@ -1,17 +1,17 @@
 pkgbase = ros-noetic-kdl-conversions
 	pkgdesc = ROS - Conversion functions between KDL and geometry_msgs types.
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/kdl_conversions
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-noetic-orocos-kdl
 	makedepends = ros-noetic-catkin
 	makedepends = ros-noetic-geometry-msgs
-	depends = ros-noetic-orocos-kdl
+	makedepends = orocos-kdl
 	depends = ros-noetic-geometry-msgs
+	depends = orocos-kdl
 	source = ros-noetic-kdl-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
 	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
 

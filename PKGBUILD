@@ -7,11 +7,10 @@ pkgname='ros-noetic-kdl-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-orocos-kdl
 	ros-noetic-catkin
 	ros-noetic-geometry-msgs
 )
@@ -20,15 +19,16 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
+	orocos-kdl
 )
 
 ros_depends=(
-	ros-noetic-orocos-kdl
 	ros-noetic-geometry-msgs
 )
 
 depends=(
 	${ros_depends[@]}
+	orocos-kdl
 )
 
 _dir="geometry-${pkgver}/kdl_conversions"
