@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=libxaw3dxft 
 _pkgname=libXaw3dXft 
-pkgver=1.6.2e
+pkgver=1.6.2g
 pkgrel=1
 epoch=1
 pkgdesc="xaw3d library for xpaint"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libxft' 'libxmu' 'libxpm')
 makedepends=('xorg-util-macros')
 source=("http://sourceforge.net/projects/sf-xpaint/files/$pkgname/${_pkgname}-$pkgver.tar.bz2")
-sha256sums=('7aefff68d2ba5a97080a6cdbb652c8cabb2fe0c1b792531f707c737cbb9d67fe')
+sha256sums=('5e49ba018d5fac7faf5b78844eed11f52c73c5e0651630620abad8feec8aad00')
 
 build() {
   cd ${_pkgname}-$pkgver
