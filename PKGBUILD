@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.80d
-pkgrel=0
+pkgrel=1
 epoch=28
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
@@ -38,18 +38,16 @@ package(){
             "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/lib/" \
             "${pkgdir}/usr/bin/" \
-            "${pkgdir}/etc/" \
             "${pkgdir}/usr/lib/udev/rules.d/" \
             "${pkgdir}/usr/share/doc/${pkgname}/"
 
     cd "${srcdir}/JLink"
 
     # Bulk copy everything
-    cp --preserve=mode -r J* Doc Samples Devices ThirdParty README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+    cp --preserve=mode -r J* Doc Samples ETC Devices ThirdParty README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
     fi
-    cp --preserve=mode -r ETC/JFlash "${pkgdir}/etc"
 
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/LicenseIncGUI.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
