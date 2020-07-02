@@ -2,10 +2,10 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.15.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc='file manager for xfce'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
@@ -21,7 +21,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2b05b5e38324b7e21828f5d2a4998e3b2ea0f2eaadd73afed06e12d441902cc2')
+sha256sums=('2d0e361c54a5237cf2edfe5f9489420678ff222fa9285a1b57a65895d34d1751')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
