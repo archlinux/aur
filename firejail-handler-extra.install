@@ -1,0 +1,5 @@
+# firejail-handler-extra installation file
+
+post_install() {
+  echo "Enable the custom 'MimeType' handlers and configure your web browser(s) accordingly. Re-login to autostart the inotifywait script(s) via the relevant XDG desktop file(s) or start things manually by other means."
+}
