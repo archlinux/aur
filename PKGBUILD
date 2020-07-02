@@ -1,8 +1,8 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
 pkgname=bpftrace-git
 _pkgname=bpftrace
-pkgver=r723.89eb329
-pkgrel=2
+pkgver=r1690.c4619d0a
+pkgrel=1
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/iovisor/bpftrace"
@@ -13,6 +13,7 @@ conflicts=('bpftrace')
 provides=('bpftrace')
 source=("git+https://github.com/iovisor/bpftrace.git")
 sha512sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

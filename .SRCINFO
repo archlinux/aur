@@ -1,7 +1,7 @@
 pkgbase = bpftrace-git
 	pkgdesc = High-level tracing language for Linux eBPF
-	pkgver = r723.89eb329
-	pkgrel = 2
+	pkgver = r1690.c4619d0a
+	pkgrel = 1
 	url = https://github.com/iovisor/bpftrace
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = bpftrace-git
 	depends = bcc
 	provides = bpftrace
 	conflicts = bpftrace
+	options = !strip
 	source = git+https://github.com/iovisor/bpftrace.git
 	sha512sums = SKIP
 
