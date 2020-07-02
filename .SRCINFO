@@ -1,0 +1,14 @@
+pkgbase = chromium-extension-https-everywhere
+	pkgdesc = Plugin for chromium which ensures you are using https whenever it's possible
+	pkgver = 2020.5.20
+	pkgrel = 1
+	url = https://www.eff.org/https-everywhere
+	arch = any
+	license = GPL2
+	depends = chromium
+	noextract = chromium-extension-https-everywhere-2020.5.20.crx
+	source = chromium-extension-https-everywhere-2020.5.20.crx::https://www.eff.org/files/https-everywhere-chrome-2020.5.20.crx
+	b2sums = f12885ce55ec08c0cac514a75c9d74efc448811b7b7b3539a439563a2c7dcba443a4278fbd4c158aea2a2dc45c3816f392299a167e622dc116a15c0caa5527a6
+
+pkgname = chromium-extension-https-everywhere
+
