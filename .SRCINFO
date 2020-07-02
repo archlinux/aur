@@ -1,7 +1,7 @@
 pkgbase = jeex
 	pkgdesc = Simple GTK+ hex editor
 	pkgver = 12.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/
 	arch = x86_64
 	license = GPL3
