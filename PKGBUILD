@@ -3,10 +3,10 @@
 
 pkgname=python-yalafi
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/matze-dd/YaLafi"
-depends=('python3' )
+depends=('python3' 'languagetool')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
