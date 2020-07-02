@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=r26402.48d133718
+pkgver=r26627.3461639c7
 gitname="linux"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
