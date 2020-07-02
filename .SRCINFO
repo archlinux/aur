@@ -1,0 +1,18 @@
+pkgbase = ruby-rubocop-ast
+	pkgdesc = RuboCop's Node and NodePattern classes.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://rubocop.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-parser
+	noextract = rubocop-ast-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubocop-ast-0.1.0.gem
+	sha256sums = fec0cfbd07cbfd70ffdc5fb611eb239db6507eaaadddd2cfec113ec1c8151f93
+
+pkgname = ruby-rubocop-ast
+
