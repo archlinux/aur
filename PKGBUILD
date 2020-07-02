@@ -11,7 +11,7 @@ url='https://gitlab.com/h-cheung/caps2esc/'
 depends=('interception-tools')
 makedepends=('cmake' 'gcc')
 conflicts=('caps2esc' 'interception-caps2esc')
-provide=('caps2esc' 'interception-caps2esc')
+provides=('caps2esc' 'interception-caps2esc')
 source=("$pkgname::git+https://gitlab.com/h-cheung/caps2esc/")
 md5sums=("SKIP")
 
