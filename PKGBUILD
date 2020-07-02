@@ -7,7 +7,7 @@ url='https://wiki.ros.org/tf2_sensor_msgs'
 pkgname='ros-noetic-tf2-sensor-msgs'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -26,12 +26,12 @@ ros_depends=(
   ros-noetic-sensor-msgs
   ros-noetic-tf2
   ros-noetic-tf2-ros
-  ros-noetic-python-orocos-kdl
   ros-noetic-rospy
 )
 
 depends=(
   ${ros_depends[@]}
+  orocos-kdl-python
 )
 
 _dir="geometry2-${pkgver}/tf2_sensor_msgs"

@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-tf2-sensor-msgs
 	pkgdesc = ROS - Small lib to transform sensor_msgs with tf. Most notably, PointCloud2
 	pkgver = 0.6.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/tf2_sensor_msgs
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-noetic-tf2-sensor-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-tf2
 	depends = ros-noetic-tf2-ros
-	depends = ros-noetic-python-orocos-kdl
 	depends = ros-noetic-rospy
+	depends = orocos-kdl-python
 	source = ros-noetic-tf2-sensor-msgs-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 
