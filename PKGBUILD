@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -21,6 +21,8 @@ depends=(
     openssl
     pango
     sdl2
+    # XXX: temporary
+    openssl-1.0
 )
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
         "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
@@ -40,6 +42,10 @@ install="install.sh"
 
 # avoid caching in makepkg!
 SRCDEST=$startdir
+
+# XXX: temporary LD_PRELOAD
+unset install
+makedepends=(gcc)
 
 _verify_repo() {
     if (( SKIPPGPCHECK )); then
@@ -111,6 +117,14 @@ prepare() {
     bsdtar xvf ../data.tar.xz
 }
 
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    # XXX: temporary
+    echo 'int SSLv3_client_method() { return -1; }' > libfakesslv3.c
+    gcc -shared -o libfakesslv3.so libfakesslv3.c
+}
+
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
@@ -122,6 +136,13 @@ package() {
     #sed -i 's,/usr/share/games,/usr/lib,' "$pkgdir"/usr/bin/runescape-launcher
 
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+    # XXX: temporary
+    install -Dm0644 libfakesslv3.so "$pkgdir"/usr/share/games/runescape-launcher/libfakesslv3.so
+    sed -i '1aexport LD_PRELOAD=/usr/share/games/runescape-launcher/libfakesslv3.so' \
+        "$pkgdir"/usr/bin/runescape-launcher
+    sed -i '1aif [ -e ~/Jagex/launcher/rs2client ]; then echo "Removing file capabilities from ~/Jagex/launcher/rs2client"; truncate -r ~/Jagex/launcher/rs2client{,}; fi' \
+        "$pkgdir"/usr/bin/runescape-launcher
 }
 
 # vim: ft=sh:ts=4:sw=4:et:nowrap
