@@ -4,12 +4,11 @@
 
 pkgname=ttf-luculent
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Luculent is a family of scalable (vector), monospaced, geometric sans-serif screen fonts designed for programmers"
 arch=('any')
 url="http://eastfarthing.com/luculent/"
 license=('OFL')
-depends=('fontconfig' 'xorg-font-utils')
 source=(http://eastfarthing.com/luculent/luculent.tar.xz)
 sha256sums=('e8dc4b9d3067bc799351315adb05b402e28f11b0aacda590ca21559c5d2c06a5')
 
