@@ -7,7 +7,7 @@ pkgname='ros-noetic-tf2-kdl'
 pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -15,7 +15,6 @@ ros_makedepends=(
 	ros-noetic-cmake-modules
 	ros-noetic-catkin
 	ros-noetic-tf2-ros
-	ros-noetic-orocos-kdl
 )
 
 makedepends=(
@@ -23,10 +22,10 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	eigen
+	orocos-kdl
 )
 
 ros_depends=(
-	ros-noetic-orocos-kdl
 	ros-noetic-tf2
 	ros-noetic-tf2-ros
 )
@@ -34,6 +33,7 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	eigen
+	orocos-kdl
 )
 
 _dir="geometry2-${pkgver}/tf2_kdl"
