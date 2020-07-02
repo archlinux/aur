@@ -6,7 +6,7 @@ url='https://github.com/mavlink/mavros'
 pkgname='ros-noetic-test-mavros'
 pkgver='0.32.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, GPLv3, LGPLv3')
 
 ros_makedepends=(ros-noetic-mavros-extras
@@ -22,7 +22,7 @@ ros_makedepends=(ros-noetic-mavros-extras
   ros-noetic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-noetic-mavros-extras
   ros-noetic-mavros
@@ -33,7 +33,7 @@ ros_depends=(ros-noetic-mavros-extras
   ros-noetic-geometry-msgs
   ros-noetic-control-toolbox)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/noetic/test_mavros/${pkgver}-${_pkgver_patch}
