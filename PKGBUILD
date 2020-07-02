@@ -3,7 +3,7 @@
 _pkgname=whirlpool-gui
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Desktop GUI for Whirlpool by Samourai-Wallet"
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=('custom:Unlicense')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/Samourai-Wallet/whirlpool-gui/releases/download/${pkgver}/whirlpool-gui-${pkgver}.AppImage"
-               "https://raw.githubusercontent.com/Samourai-Wallet/whirlpool-gui/${pkgver}/LICENSE"
+source_x86_64=("${_appimage}::https://code.samourai.io/whirlpool/whirlpool-gui/uploads/f48f95d2022733a8b10cd0a57cc36cb3/whirlpool-gui-${pkgver}.AppImage"
+               "https://code.samourai.io/whirlpool/whirlpool-gui/-/raw/${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('78b7431bc5658a420e9df9a02afc638cef78ac21a8d2db2c6420e10839c22067'
+sha256sums_x86_64=('de3f529563cc52ae24cc768d77e9bd6693bf9620583d6d30f5c4f2a82e12b3b0'
                    '60d2c28d19d2bdf7bbaa59829e7a595234265e8111a01ccb74d25d6c4d2d013a')
 
 prepare() {
