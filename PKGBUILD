@@ -2,7 +2,7 @@
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tidb
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed HTAP database compatible with the MySQL protocol'
 makedepends=('go' 'make')
 arch=('x86_64')
@@ -30,21 +30,25 @@ prepare() {
   rm -rf "$GOPATH/src/$_gopkgname"
   mkdir -p `dirname "$GOPATH/src/$_gopkgname"`
   mv -Tv "$srcdir/tidb-${pkgver}" "$GOPATH/src/$_gopkgname"
+
+  # patch Makefile
+  sed -i '/shell git /d' "$GOPATH/src/$_gopkgname/Makefile"
 }
 
 build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd $GOPATH/src/$_gopkgname
 
-  # Remove all git operations.
-  sed -i '/(shell git /d' Makefile
   _LDFLAGS="-X github.com/pingcap/parser/mysql.TiDBReleaseVersion=$pkgver -X $_gopkgname/util/printer.TiDBGitHash=v$pkgver -X $_gopkgname/util/printer.TiDBGitBranch=release"
-  _BUILD_FLAG="-trimpath"
 
-  BUILD_FLAG=$_BUILD_FLAG LDFLAGS=$_LDFLAGS make server
+  BUILD_FLAG=$GOFLAGS LDFLAGS=$_LDFLAGS make server
 }
 
 package() {
