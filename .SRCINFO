@@ -1,7 +1,7 @@
 pkgbase = blockmap-git
 	pkgdesc = Minecraft map viewer/renderer
-	pkgver = 2.0.0.r6.a900ba5
-	pkgrel = 2
+	pkgver = 2.0.0.r11.6eab338
+	pkgrel = 1
 	url = https://github.com/Minecraft-Technik-Wiki/BlockMap
 	arch = any
 	license = MIT
