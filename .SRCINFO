@@ -1,0 +1,14 @@
+pkgbase = dec-decode-git
+	pkgdesc = An iso.dec decoder written in Go.
+	pkgver = r10.cf3ccaf
+	pkgrel = 1
+	url = https://github.com/sammiq/dec-decode
+	arch = x86_64
+	license = Unlicense
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/sammiq/dec-decode.git
+	sha256sums = SKIP
+
+pkgname = dec-decode-git
+
