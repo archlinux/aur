@@ -1,4 +1,4 @@
-pkgbase = yalafi
+pkgbase = python-yalafi
 	pkgdesc = Yet another LaTeX filter
 	pkgver = 1.1.2
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = yalafi
 	source = https://files.pythonhosted.org/packages/0f/57/57827ab252b49616253bb007e823b810005a9a4873b8c0ff0f70ef1954d7/yalafi-1.1.2.tar.gz
 	md5sums = ca429ef24e46735d3db67583cfa1a79a
 
-pkgname = yalafi
+pkgname = python-yalafi
 
