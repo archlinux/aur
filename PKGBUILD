@@ -11,7 +11,7 @@ PLUGINS=""
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
-pkgver=5.2.2.11.g3493cbe
+pkgver=5.2.3.3493cbe
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
@@ -26,8 +26,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
+  # first get the most recent tag from master
+  git checkout master > /dev/null
+  git describe --tags | tr -d '\n'
+  # then get the commit hash from development branch
+  printf "."
   git checkout develop > /dev/null
-  git describe --tags --long | sed 's/-/./g'
+  git rev-parse --short HEAD
 }
 
 prepare() (
