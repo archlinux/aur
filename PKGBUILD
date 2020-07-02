@@ -1,13 +1,13 @@
 # Maintainer: Jonathan Kotta <jpkotta at gmail dot com>
 pkgname=mpich2
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="An improved implementation of the Message Passing Interface (legacy version)."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://mpich.org"
 license=('custom')
 groups=()
-depends=(python2 gcc-fortran libxml2 openssh numactl pciutils)
+depends=(gcc8-fortran libxml2 numactl pciutils)
 makedepends=(libtool make coreutils texlive-core sowing)
 optdepends=(java-environment)
 provides=()
@@ -24,7 +24,7 @@ source=(
 )
 md5sums=('c60146aa6691005f2fb25973e144cfdc'
          '661f5a993e1afb6c51fdd5ad529d628b'
-         'fb934502236ca58705f69db1749feb59')
+         '5cbf7c44567242e925ea3795262671e5')
 noextract=()
 
 build() {
@@ -38,15 +38,23 @@ build() {
   export MPICH2LIB_CFLAGS="$CFLAGS";      unset CFLAGS
   export MPICH2LIB_CXXFLAGS="$CXXFLAGS";  unset CXXFLAGS
   export MPICH2LIB_FFLAGS="$FFLAGS";      unset FFLAGS
-  export MPICH2LIB_F90FLAGS="$F90FLAGS";  unset F90FLAGS
+  export MPICH2LIB_FCFLAGS="$FCFLAGS";  unset FCFLAGS
   export MPICH2LIB_LDFLAGS="$LDFLAGS";    unset LDFLAGS
 
-  ./configure --prefix=/opt/$pkgname --enable-shared --enable-sharedlibs=gcc \
+  ./configure \
+    --prefix=/opt/$pkgname \
+    --enable-shared --enable-sharedlibs=gcc \
     --enable-error-checking=runtime --enable-error-messages=all \
+    --enable-fc  --enable-f77 --enable-cxx \
+    --enable-g=meminit \
+    --with-pm=hydra:gforker:mpd \
     --enable-timer-type=clock_gettime \
-    --with-pm=hydra:gforker:mpd --with-python=python2 \
-    --disable-rpath \
-    --enable-fc  --enable-f77 --enable-cxx
+    --disable-wrapper-rpath \
+    --with-device=ch3:nemesis \
+    CC=gcc-8 CXX=g++-8 F77=gfortran-8 FC=gfortran-8 \
+    FFLAGS=-Wno-argument-mismatch \
+    FCFLAGS=-Wno-argument-mismatch
+
   make
 }
 
