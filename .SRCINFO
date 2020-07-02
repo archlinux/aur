@@ -1,13 +1,12 @@
 pkgbase = nerd-fonts-terminus
 	pkgdesc = Patched font Terminus (Terminess) from the nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
 	license = MIT
 	depends = fontconfig
-	depends = xorg-font-utils
 	provides = nerd-fonts-terminus
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
