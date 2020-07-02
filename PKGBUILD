@@ -7,7 +7,7 @@ url='https://wiki.ros.org/tf2_sensor_msgs'
 pkgname='ros-noetic-tf2-sensor-msgs'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -18,7 +18,7 @@ ros_makedepends=(
 makedepends=(
   'cmake'
   'ros-build-tools'
-  'eigen3'
+  'eigen'
   ${ros_makedepends[@]}
 )
 
