@@ -1,6 +1,6 @@
 pkgbase = pnp4nagios
 	pkgdesc = Nagios addon to create graphs from performance data
-	pkgver = 0.6.25
+	pkgver = 0.6.26
 	pkgrel = 1
 	url = http://pnp4nagios.org
 	arch = i686
