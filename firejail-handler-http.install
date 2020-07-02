@@ -1,0 +1,5 @@
+# firejail-handler-http installation file
+
+post_install() {
+  echo "Configure your firejailed application to use 'firejail-handler-http' as web browser. Re-login to autostart 'firejail-handler-http-ctl.desktop' or start it manually."
+}

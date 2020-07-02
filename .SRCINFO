@@ -1,0 +1,21 @@
+pkgbase = firejail-handler-http
+	pkgdesc = HTTP(S) URL handler for Firejail
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/glitsj16/firejail-handler-http
+	install = firejail-handler-http.install
+	arch = x86_64
+	license = GPL2
+	depends = firejail
+	depends = inotify-tools
+	depends = xdg-utils
+	options = libtool
+	options = !purge
+	options = staticlibs
+	options = !strip
+	options = !zipman
+	source = firejail-handler-http-0.1.0.tar.gz::https://github.com/glitsj16/firejail-handler-http/archive/v0.1.0.tar.gz
+	sha256sums = c31c8d8bba0e526b8f2d794f269c1875dd519c0dcfc11e7df15c8f17e3bf2a12
+
+pkgname = firejail-handler-http
+
