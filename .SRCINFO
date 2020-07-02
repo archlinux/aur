@@ -1,13 +1,14 @@
 pkgbase = ttf-ancient-semitic
 	pkgdesc = Ancient Semitic fonts including Samaritan
 	pkgver = 0.06
-	pkgrel = 2
+	pkgrel = 3
 	url = http://culmus.sourceforge.net
 	install = ttf-ancient-semitic.install
 	arch = any
 	license = GPL2
 	depends = fontconfig
-	depends = xorg-fonts-alias
+	depends = xorg-fonts-alias-100dpi
+	depends = xorg-fonts-alias-75dpi
 	depends = xorg-font-utils
 	depends = xorg-fonts-encodings
 	source = http://downloads.sourceforge.net/culmus/AncientSemiticFonts-0.06-1.TTF.tgz
