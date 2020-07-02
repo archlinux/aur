@@ -2,8 +2,9 @@
 
 pkgname=sourcetrail
 _pkgname=Sourcetrail
-pkgver=2020.1.117
+pkgver=2020.2.43
 _pkgver=${pkgver/\./\_}
+_pkgver=${_pkgver/\./\_}
 pkgrel=1
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
@@ -14,10 +15,11 @@ replaces=('coati')
 makedepends=('rsync')
 provides=("${pkgname}=${pkgver}")
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
+_url="https://github.com/CoatiSoftware/Sourcetrail/releases/download"
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgver}/${_pkgname}_${_pkgver}_Linux_64bit.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('a9d88e8d695381b6bde1f7e9b4b863345c80c055394b5b0dfbfd362d23223bf0'
-            '9254abd7c73b70d3b81a40a6993b8c305cd24535aafe0eedffcd280f7fae2a3d')
+sha256sums=('d042dfaf34db1719fa09761f978dd8fa42a9b9ee3a97a9c5db70b1346a06f07d'
+            '34d978813c1bba26ed243b15af11ea22800c5d95e4acc430496025d4caf4cc71')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
@@ -29,35 +31,11 @@ prepare() {
 package() {
   rsync -rtl "${srcdir}/opt" "${pkgdir}"
 
-  # mimetypes icons setup
-  mkdir -p "${pkgdir}/usr/"
-  mv "${pkgdir}/opt/sourcetrail/setup/share" "${pkgdir}/usr/"
-
-  hicolor_dir="${pkgdir}/usr/share/icons/hicolor"
-  for icon_size in 128x128 256x256 512x512 64x64; do
-    mkdir "${hicolor_dir}/${icon_size}/mimetypes"
-    ln -s "${hicolor_dir}/${icon_size}/apps/${pkgname}.png" \
-      "${hicolor_dir}/${icon_size}/mimetypes/${pkgname}.png"
-  done
-
-  mkdir -p "${pkgdir}/usr/bin/"
-  mkdir -p "${pkgdir}/usr/share/applications/"
-  mkdir -p "${pkgdir}/usr/share/pixmaps/"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-
+  mkdir -p "${pkgdir}/usr/share/applications"
   install -m 644 "${srcdir}/${pkgname}.desktop" \
             "${pkgdir}/usr/share/applications/"
-
-  # logo
-  ln -s "/opt/${pkgname}/data/gui/icon/logo_1024_1024.png" \
-            "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
   # license
-  ln -s "/opt/${pkgname}/EULA.txt" \
-            "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  # binary
-  ln -s "/opt/${pkgname}/${_pkgname}.sh" \
-            "${pkgdir}/usr/bin/${pkgname}"
-
+  #mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  #ln -s "/opt/${pkgname}/EULA.txt" \
+  #          "${pkgdir}/usr/share/licenses/${pkgname}"
 }
