@@ -2,7 +2,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=2020.06
+pkgver=2020.07
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -60,4 +60,4 @@ END
 }
 
 sha256sums=('b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548'
-            'cfa2fff022500d005fb3fb800281e0876c44b05e470576cd7ff7078b0e1b63ca')
+            '6088a3ee3ae282545b44d04218f5af7d9da288b6659a79ec3706111c8a0c6760')
