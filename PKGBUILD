@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.5.2.r54.g2d618f9
+pkgver=6.5.2.r55.g230b473
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('qt5-base>=5.15.0')
 makedepends=(
 	"cmake"
 	"git"
+	"ninja"
 	"python3"
 	"qt5-tools"
 )
@@ -54,11 +55,11 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPORTABLE_VERSION=Off -DCMAKE_BUILD_TYPE=Release -GNinja
 	cmake --build build -j$(nproc)
 }
 
 package() {
 	cd "$_pkgname/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir/" ninja install
 }

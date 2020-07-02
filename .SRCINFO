@@ -1,12 +1,13 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.5.2.r54.g2d618f9
+	pkgver = 6.5.2.r55.g230b473
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = python3
 	makedepends = qt5-tools
 	depends = qt5-base>=5.15.0
