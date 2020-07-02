@@ -2,14 +2,14 @@
 
 _pkgname=mpv-webm
 pkgname=$_pkgname-git
-pkgver=r81.777218d
+pkgver=r84.9b5da33
 pkgrel=1
 pkgdesc="Simple WebM maker for mpv"
 arch=('any')
 url="https://github.com/ekisu/mpv-webm"
 license=('MIT')
 depends=('mpv')
-makedepends=('moonscript')
+makedepends=('git' 'moonscript')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
