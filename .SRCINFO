@@ -1,15 +1,15 @@
 pkgbase = epson-alc1100-filter
 	pkgdesc = Print driver for Epson ALC1100 colour laser printer
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
 	license = custom:EAPL
 	makedepends = coreutils
 	optdepends = cups: printing support
-	source = http://download.ebz.epson.net/dsc/f/01/00/01/58/64/87f759442ccaa26a3be70620d1aab13e7f713d60/Epson-ALC1100-filter-1.2.tar.gz
-	md5sums = 59d2925146af0e5f9770d600a8dea173
+	source = https://download3.ebz.epson.net/dsc/f/03/00/11/33/07/4027e99517b5c388d444b8444d719b4b77f7e9db/Epson-ALC1100-filter-1.2.tar.gz
+	md5sums = d3206f9a2b4d73133ab5baadad0dbe5c
 	depends_i686 = libstdc++5
 	depends_i686 = ghostscript
 	depends_i686 = psutils
