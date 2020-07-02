@@ -1,0 +1,17 @@
+pkgbase = xboxeepromeditor-git
+	pkgdesc = Original Xbox EEPROM Editor
+	pkgver = r7.e94ed9a
+	pkgrel = 1
+	url = https://github.com/Ernegien/XboxEepromEditor
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = mono
+	source = XboxEepromEditor::git+https://github.com/Ernegien/XboxEepromEditor.git
+	source = xboxeepromeditor
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xboxeepromeditor-git
+
