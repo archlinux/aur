@@ -13,7 +13,7 @@ url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
 arch=('x86_64')
 options=('!strip' '!makeflags' '!buildflags')
-makedepends=('pciutils')
+makedepends=('pciutils' 'lib32-glibc')
 source=("http://download.sourceforge.net/gnu-efi/gnu-efi-${pkgver}.tar.bz2")
 sha1sums=('46a513b9ba07a8841e5f6b4865a99d1fed081ba1')
 
