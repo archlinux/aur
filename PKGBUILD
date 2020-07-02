@@ -7,7 +7,7 @@ pkgname='ros-noetic-laser-geometry'
 pkgver='1.6.4'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -24,7 +24,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	boost
-	eigen3
+	eigen
 )
 
 ros_depends=(
@@ -37,7 +37,7 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	boost
-	eigen3
+	eigen
 	python-numpy
 )
 
