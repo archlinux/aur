@@ -6,3 +6,13 @@ post_install() {
     echo "  sudo chown -R tautulli: /var/lib/tautulli"
   fi
 }
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  # Version 2.5.2 switched to python 3, but the .pyc files need to be cleaned.
+  if (( $(vercmp "2.5.2" "$2") >= 0 )); then
+    echo "Removing .pyc files in /usr/lib/tautulli."
+    find /usr/lib/tautulli -type f -iname '*.pyc' -delete
+  fi
+}
