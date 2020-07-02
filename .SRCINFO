@@ -1,8 +1,8 @@
 pkgbase = linux-zencjk
 	pkgdesc = Linux ZEN with CJK Patch
-	pkgver = 5.7.6.zen1
+	pkgver = 5.7.7.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.7.6-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.7.7-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-zencjk
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.7.6-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.7.7-zen1
 	source = config
 	source = sphinx-workaround.patch
 	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
