@@ -1,7 +1,7 @@
 pkgbase = stremio-beta
 	pkgdesc = Watch videos, movies, TV series and TV channels instantly. (Beta Version)
 	pkgver = 4.4.116
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.stremio.com
 	install = stremio.install
 	arch = any

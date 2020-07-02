@@ -3,7 +3,7 @@
 _pkgname=stremio
 pkgname=${_pkgname}-beta
 pkgver=4.4.116
-pkgrel=1
+pkgrel=3
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=(any)
 url="https://www.stremio.com"
