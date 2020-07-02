@@ -1,0 +1,14 @@
+pkgbase = chromium-extension-decentraleyes
+	pkgdesc = Local emulation of Content Delivery Networks
+	pkgver = 2.0.13
+	pkgrel = 1
+	url = https://git.synz.io/Synzvato/decentraleyes
+	arch = any
+	license = MPL2
+	depends = chromium
+	noextract = chromium-extension-decentraleyes-2.0.13.crx
+	source = chromium-extension-decentraleyes-2.0.13.crx::https://git.synz.io/Synzvato/decentraleyes/uploads/7038d13b79b312c606719ed60550e492/Decentraleyes.v2.0.13-chromium.crx
+	b2sums = 154af1a6c6b5dfda98954c3c01b3a42e1d11d33cba96425a016fccdc6a3f25e14cecdd165b7fefbe165df960c572a031790093796dc020f5daac6944581e7b85
+
+pkgname = chromium-extension-decentraleyes
+
