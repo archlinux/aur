@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/iotang/Project_LemonLime"
 license=('GPL3')
 groups=()
-depends=('qt5-base')
+depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
 checkdepends=()
 optdepends=()
@@ -65,8 +65,8 @@ package() {
 	cd "$srcdir/Project_LemonLime"
 	install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
 
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
+	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -D -m644 pics/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
 	install -D -m755 ../$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
