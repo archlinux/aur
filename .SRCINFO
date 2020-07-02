@@ -1,6 +1,6 @@
 pkgbase = umenu
 	pkgdesc = command-line menu (a la dmenu, slmenu) with single-keypress interaction
-	pkgver = 1.0.1.1.g9cafc89
+	pkgver = 1.1.2.g1d7c154
 	pkgrel = 1
 	url = https://github.com/JCoMcL/umenu.git
 	arch = x86_64
