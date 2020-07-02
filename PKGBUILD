@@ -2,12 +2,12 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.0.5
+pkgver=1.0.6
 _pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
 arch=("x86_64")
-url="http://packages.linuxmint.com/pool/main/w/${pkgname}"
+url="http://packages.linuxmint.com/pool/backport/w/${pkgname}"
 license=("GPL")
 depends=(
     gtk3
@@ -33,7 +33,7 @@ conflicts=(
     warpinator-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
-sha256sums=('b736d6a608d1c5dff496680ab8550f3db9fa5dbf3068577787fcc1605dc27448')
+sha256sums=('f511a75765ef02345635598cab00457c1054e4cf5810291eea254f91e425937d')
 
 prepare() {
 	cd "$srcdir/warpinator"
