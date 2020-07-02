@@ -1,7 +1,7 @@
 pkgbase = gnome-ssh-askpass3
 	pkgdesc = A GTK3 passphrase requesters for ssh-add.
 	pkgver = 8.3p1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openssh.org/portable.html
 	arch = x86_64
 	license = custom:2-term BSD licence
