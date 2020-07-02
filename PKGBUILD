@@ -2,7 +2,7 @@
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tikv-pd
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage and schedule the TiKV cluster.'
 makedepends=('go' 'make' 'git' 'unzip')
 arch=('x86_64')
@@ -31,17 +31,23 @@ prepare() {
   mv -Tv "$srcdir/pd-${pkgver}" "$GOPATH/src/$_gopkgname"
 
   # patch Makefile
-  sed -i 's/go build/go build -trimpath/g' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i 's/go build/go build $(GOFLAGS)/g' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i 's/CGO_ENABLED=0/CGO_ENABLED=1/g' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i 's/BUILD_CGO_ENABLED := 0/BUILD_CGO_ENABLED := 1/g' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i '/shell git /d' "$GOPATH/src/$_gopkgname/Makefile"
 }
 
 build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
-  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd $GOPATH/src/$_gopkgname
 
-  sed -i '/shell git /d' Makefile
   _LDFLAGS="-X $_gopkgname/v4/server.PDReleaseVersion=$pkgver -X $_gopkgname/v4/server.PDGitBranch=release -X $_gopkgname/v4/server.PDGitHash=v$pkgver"
 
   LDFLAGS=$_LDFLAGS make build tools
