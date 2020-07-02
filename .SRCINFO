@@ -1,0 +1,17 @@
+pkgbase = gphoto2pp-git
+	pkgdesc = A C++ wrapper for libgphoto2
+	pkgver = 34.b66be5c
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/maldworth/gphoto2pp
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = libgphoto2
+	provides = gphoto2pp
+	conflicts = gphoto2pp
+	source = gphoto2pp::git+https://github.com/maldworth/gphoto2pp
+	sha256sums = SKIP
+
+pkgname = gphoto2pp-git
+
