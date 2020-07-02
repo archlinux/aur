@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=typiskt
-pkgver=2020.07.01.15
+pkgver=2020.07.02.1
 pkgrel=1
 pkgdesc='touchtype training in the terminal'
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('74bb10fec2e5d0e289730d8ea76c9327a85401807b756d0111b4e37c0d5efce5')
+sha256sums=('3593d4b2bddbec16f1ba7032e7fcf9bc4347071732a1962253dcaf71ddeb79fe')
 
 package() {
   ls
