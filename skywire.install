@@ -19,7 +19,7 @@ post_install() {
     echo "Starting hypervisor on 127.0.0.1:8000"
     systemctl enable --now skywire-hypervisor.service
   fi
-  sed -i 's/"hypervisors".*/"hypervisors": [{"'"${hvisorkey}"'"}],/' /etc/skywire-visor.json
+  sed -i 's/"hypervisors".*/"hypervisors": ["'"${hvisorkey}"'"],/' /etc/skywire-visor.json
   systemctl enable --now skywire-visor.service
 }
 
