@@ -1,0 +1,17 @@
+pkgbase = ruby-rexml
+	pkgdesc = An XML toolkit for Ruby
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = https://github.com/ruby/rexml
+	arch = any
+	license = BSD
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = rexml-3.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rexml-3.2.4.gem
+	sha256sums = 036b31f3c052be42b7a2e6914f3322daaecce46b172806f38fea4297389b7bd6
+
+pkgname = ruby-rexml
+
