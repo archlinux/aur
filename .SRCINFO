@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-moveit-ros-visualization
 	pkgdesc = ROS - Components of MoveIt that offer visualization.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = ros-noetic-moveit-ros-visualization
 	makedepends = ros-noetic-geometric-shapes
 	makedepends = ros-noetic-catkin
 	makedepends = ros-noetic-moveit-ros-perception
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = pkg-config
 	depends = ros-noetic-object-recognition-msgs
 	depends = ros-noetic-pluginlib

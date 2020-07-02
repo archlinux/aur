@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-noetic-moveit-ros-visualization'
 pkgver='1.0.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-object-recognition-msgs
@@ -22,7 +22,7 @@ ros_makedepends=(ros-noetic-object-recognition-msgs
   ros-noetic-moveit-ros-perception)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3
+  eigen
   pkg-config)
 
 ros_depends=(ros-noetic-object-recognition-msgs
