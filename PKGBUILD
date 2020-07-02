@@ -20,7 +20,7 @@ license=('GPL3'
           'UBL'
           'LPPL'
           'GPL2')
-depends=('fontconfig' 'xorg-fonts-alias' 'xorg-font-utils' 'xorg-fonts-encodings')
+depends=()
 
 #Confling packages whos fonts are contained in oppensiddur-hebrew-fonts
 conflicts=('culmus'
