@@ -2,8 +2,8 @@
 
 pkgname=limnoria
 _pkgname=Limnoria
-pkgver=20200501
-_pkgver=2020-05-01
+pkgver=20200701
+_pkgver=2020-07-01
 pkgrel=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=("python-charade: Detect page's encoding"
     "python-cryptography: ECDSA support")
 conflicts=('limnoria-python3' 'limnoria-git' 'limnoria-python3-git')
 source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
-md5sums=('003f77f8151c0341e4b12cbfe7d03e87')
+md5sums=('f823c153c3613278e4809c3b9be71b4e')
 install=".install"
 
 build() {
