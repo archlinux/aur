@@ -1,0 +1,22 @@
+pkgbase = kweather-git
+	pkgdesc = Weather application for Plasma Mobile
+	pkgver = v0.1.r22.g1843d79
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/kweather
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	depends = knotifications
+	depends = kirigami2
+	provides = kweather
+	conflicts = kweather
+	source = git+https://invent.kde.org/plasma-mobile/kweather.git
+	sha256sums = SKIP
+
+pkgname = kweather-git
+
