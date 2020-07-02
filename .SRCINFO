@@ -1,0 +1,18 @@
+pkgbase = rubiks_cube
+	pkgdesc = A rubiks cube that runs in the terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/been-jamming/rubiks_cube
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	depends = ncurses
+	source = https://sourceforge.net/projects/terminal-rubiks-cube/files/rubiks_cube-1.0.tar.gz
+	md5sums = 0c963f30eab06c7b12ca265992e70814
+
+pkgname = rubiks_cube
+
