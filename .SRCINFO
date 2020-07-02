@@ -1,13 +1,12 @@
 pkgbase = ttf-input
 	pkgdesc = Fonts for Code, from Font Bureau
 	pkgver = 20191031
-	pkgrel = 1
+	pkgrel = 2
 	url = http://input.fontbureau.com/
 	arch = any
 	license = custom:Font Software License Agreement
 	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = Input_Fonts_20191031.zip::http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
 	sha256sums = 6bdc29a3d727147041689ab52bf73c315dbecaa6e5393f8f662dfe7d94e82a83
 
