@@ -2,7 +2,7 @@
 
 pkgname=switch-tools
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper tools for Switch homebrew development"
 arch=('x86_64')
 url="https://github.com/switchbrew/switch-tools"
@@ -21,5 +21,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
