@@ -4,40 +4,37 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='https://wiki.ros.org/kdl_parser_py'
 
 pkgname='ros-noetic-kdl-parser-py'
-pkgver='1.13.1'
-_pkgver_patch=0
+pkgver='1.14.0'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-orocos-kdl
-	ros-noetic-urdf
 	ros-noetic-catkin
+	ros-noetic-urdfdom-py
 	ros-noetic-rostest
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
+	python-setuptools
 	python-catkin_pkg
 )
 
 ros_depends=(
-	ros-noetic-orocos-kdl
-	ros-noetic-urdf
-	ros-noetic-python-orocos-kdl
 	ros-noetic-urdfdom-py
 )
 
 depends=(
 	${ros_depends[@]}
+	orocos-kdl-python
 )
 
 _dir="kdl_parser-${pkgver}/kdl_parser_py"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/kdl_parser/archive/${pkgver}.tar.gz")
-sha256sums=('51378b09efc288ad91870322930f032f31a82e4a436865222b9990470995f67a')
+sha256sums=('e4a60c17e5adf7453c18fa5ec723e41c3cee71c80ec401e2482ab5e09139549d')
 
 build() {
 	# Use ROS environment variables.
