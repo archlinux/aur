@@ -1,6 +1,6 @@
 pkgbase = mutter-dev
 	pkgdesc = A window manager for GNOME.
-	pkgver = 3.35.91
+	pkgver = 3.37.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
