@@ -15,12 +15,15 @@ pkgbase = xygrib-git
 	depends = proj
 	depends = qt5-base
 	depends = openjpeg2
+	depends = qt5-tools
 	provides = xygrib
 	conflicts = xygrib
 	source = xygrib-git::git+https://github.com/opengribs/XyGrib.git
 	source = xygrib.install
+	source = skewt.patch
 	sha1sums = SKIP
 	sha1sums = 58925746bf6ac941ab34e268517581f1e01e9cff
+	sha1sums = 1fa4cf6b72863c9f33a80946d9f4afe7f855df6a
 
 pkgname = xygrib-git
 

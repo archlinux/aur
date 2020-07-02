@@ -10,12 +10,13 @@ arch=('x86_64' 'aarch64')
 license=("GPL3")
 conflicts=('xygrib')
 provides=('xygrib')
-depends=('libnova' 'qwt' 'proj' 'qt5-base' 'openjpeg2')
+depends=('libnova' 'qwt' 'proj' 'qt5-base' 'openjpeg2' 'qt5-tools')
 makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
-source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "xygrib.install")
+source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "xygrib.install" "skewt.patch")
 sha1sums=('SKIP'
-          '58925746bf6ac941ab34e268517581f1e01e9cff')
+          '58925746bf6ac941ab34e268517581f1e01e9cff'
+          '1fa4cf6b72863c9f33a80946d9f4afe7f855df6a')
 
 pkgver() {
   cd $pkgname
@@ -24,6 +25,7 @@ pkgver() {
 
 build() {
   cd $pkgname
+  patch --strip=1 -i $srcdir/skewt.patch
   mkdir -p build
   cd build
   cmake ../
