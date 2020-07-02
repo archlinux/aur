@@ -1,0 +1,12 @@
+pkgbase = nullfs-dkms
+	pkgdesc = nullfsvfs is a null filesystem that acts like /dev/null but can be mounted
+	pkgver = 1
+	pkgrel = 2
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = https://github.com/Finermeerkat137/nullfsvfs/archive/1-2.tar.gz
+	md5sums = ac61125d3d0a8643944899d10759e7e0
+
+pkgname = nullfs-dkms
+
