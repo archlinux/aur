@@ -5,7 +5,7 @@
 
 pkgname=pnp4nagios
 pkgver=0.6.26
-pkgrel=1
+pkgrel=4
 pkgdesc="Nagios addon to create graphs from performance data"
 arch=('i686' 'x86_64')
 url="http://pnp4nagios.org"

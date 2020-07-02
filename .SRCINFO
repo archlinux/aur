@@ -1,7 +1,7 @@
 pkgbase = pnp4nagios
 	pkgdesc = Nagios addon to create graphs from performance data
 	pkgver = 0.6.26
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pnp4nagios.org
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,14 @@ pkgbase = pnp4nagios
 	backup = etc/pnp4nagios/config_local.php
 	backup = etc/pnp4nagios/npcd.cfg
 	backup = etc/pnp4nagios/process_perfdata.cfg
-	source = http://downloads.sourceforge.net/pnp4nagios/pnp4nagios-0.6.25.tar.gz
+	source = http://downloads.sourceforge.net/pnp4nagios/pnp4nagios-0.6.26.tar.gz
 	source = npcd.service
-	md5sums = 0cdd3f77606738883af99e5a08986c70
+        source = phpfix.patch
+        source = nagiospass.patch
+	md5sums = 7a71b47f70e4e99d52c3b1df334e0342
 	md5sums = 69f82fa4aeebc8c1164d67e4399c0932
+        md5sums = 0d85f8cf7eba29dd3cf3f51b397041fb
+        md5sums = 523a17c14cad60aafe6e6f6786a53a2a
 
 pkgname = pnp4nagios
 
