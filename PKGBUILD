@@ -6,7 +6,7 @@ url='http://wiki.ros.org/geometric_shapes'
 pkgname='ros-noetic-geometric-shapes'
 pkgver='0.6.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-noetic-resource-retriever
@@ -20,7 +20,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qhull
   assimp
-  eigen3
+  eigen
   boost
   console-bridge
   pkg-config)
@@ -34,7 +34,7 @@ ros_depends=(ros-noetic-resource-retriever
 depends=(${ros_depends[@]}
   assimp
   boost
-  eigen3
+  eigen
   console-bridge
   qhull)
 
