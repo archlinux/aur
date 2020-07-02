@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-tf-conversions
 	pkgdesc = ROS - This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries.
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/tf_conversions
 	arch = any
 	license = BSD
@@ -12,13 +12,13 @@ pkgbase = ros-noetic-tf-conversions
 	makedepends = ros-noetic-tf
 	makedepends = ros-noetic-orocos-kdl
 	makedepends = ros-noetic-geometry-msgs
-	makedepends = eigen3
+	makedepends = eigen
 	depends = ros-noetic-kdl-conversions
 	depends = ros-noetic-python-orocos-kdl
 	depends = ros-noetic-tf
 	depends = ros-noetic-orocos-kdl
 	depends = ros-noetic-geometry-msgs
-	depends = eigen3
+	depends = eigen
 	source = ros-noetic-tf-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
 	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
 
