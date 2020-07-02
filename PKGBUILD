@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rotate_recovery'
 pkgname='ros-noetic-rotate-recovery'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-noetic-nav-core
@@ -17,7 +17,7 @@ ros_makedepends=(ros-noetic-nav-core
   ros-noetic-pluginlib)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-noetic-nav-core
   ros-noetic-tf
@@ -26,7 +26,7 @@ ros_depends=(ros-noetic-nav-core
   ros-noetic-costmap-2d
   ros-noetic-tf2-geometry-msgs)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 _dir="navigation-${pkgver}/rotate_recovery"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")

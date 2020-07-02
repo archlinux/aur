@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rotate-recovery
 	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot.
 	pkgver = 1.16.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.ros.org/rotate_recovery
 	arch = i686
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = ros-noetic-rotate-recovery
 	makedepends = ros-noetic-cmake-modules
 	makedepends = ros-noetic-tf
 	makedepends = ros-noetic-pluginlib
-	makedepends = eigen3
+	makedepends = eigen
 	depends = ros-noetic-nav-core
 	depends = ros-noetic-tf
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-costmap-2d
 	depends = ros-noetic-tf2-geometry-msgs
-	depends = eigen3
+	depends = eigen
 	source = ros-noetic-rotate-recovery-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
 	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
 
