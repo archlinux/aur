@@ -1,0 +1,20 @@
+diff -up src/PieDock-1.6.9/configure.ac.orig src/PieDock-1.6.9/configure.ac
+--- src/PieDock-1.6.9/configure.ac.orig	2017-09-25 13:17:10.000000000 -0600
++++ src/PieDock-1.6.9/configure.ac	2020-07-02 04:06:43.090000000 -0600
+@@ -47,14 +47,8 @@ AC_ARG_ENABLE(
+ 
+ # Checks for Freetype
+ if test "x$XFT" = "xtrue"; then
+-	AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
+-
+-	if test x$FREETYPE_CONFIG = xno; then
+-		AC_MSG_ERROR([*** freetype-config not found])
+-	fi
+-
+-	FREETYPE_CFLAGS="`$FREETYPE_CONFIG --cflags`"
+-	FREETYPE_LIBS="`$FREETYPE_CONFIG --libs`"
++	PKG_CHECK_MODULES([FREETYPE],[freetype2])
++	CXXFLAGS="$CXXFLAGS $FREETYPE_CFLAGS"
+ 	CXXFLAGS="$CXXFLAGS $FREETYPE_CFLAGS"
+ fi
+ 

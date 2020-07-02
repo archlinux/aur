@@ -1,7 +1,7 @@
 pkgbase = piedock
 	pkgdesc = A task bar and application launcher in shape of a circular pie menu.
-	pkgver = 1.6.3
-	pkgrel = 2
+	pkgver = 1.6.9
+	pkgrel = 1
 	url = http://www.markusfisch.de/
 	install = piedock.install
 	arch = i686
@@ -9,13 +9,14 @@ pkgbase = piedock
 	license = custom:MIT
 	depends = libxft
 	depends = libxmu
+	depends = freetype2
 	optdepends = gnome-icon-theme: default icons
-	source = http://www.markusfisch.de/downloads/piedock-1.6.3.tar.bz2
+	source = piedock-1.6.9.tar.gz::https://github.com/markusfisch/PieDock/archive/1.6.9.tar.gz
 	source = piedock.desktop
-	source = piedock-libpng16.patch
-	sha256sums = 252e58bb36122e09aafbd9297b2d17054e60d548d21fb548e53317ca03180be9
+	source = freetype-config.patch
+	sha256sums = c20070d9fdf66caf30f954d4435b2d8522ec848a2d00ddb1541c1b39e28842cd
 	sha256sums = 3b1b6e248eecf4591eb0502e914a79e2449e405655fe1f54c8f593b1b6cbcfe4
-	sha256sums = 9e86635ba37a77d0e1e1814b3cd6dd86be7c30a4b1f1888f50688d0eafadc370
+	sha256sums = 73ddf4930c1e3716975868504c354a45594bf147454ff73a234b68068d4a9b10
 
 pkgname = piedock
 

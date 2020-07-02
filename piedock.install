@@ -1,5 +1,4 @@
 post_install() {
-  update-desktop-database -q
   cat << EOF
 
 >>> To run PieDock, you have to copy and edit a sample configuration file in your home folder

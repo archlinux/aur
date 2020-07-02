@@ -1,36 +1,38 @@
-# Maintainer: speps <speps at aur dot archlinux dot org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=piedock
-pkgver=1.6.3
-pkgrel=2
+_pkgname=PieDock
+pkgver=1.6.9
+pkgrel=1
 pkgdesc="A task bar and application launcher in shape of a circular pie menu."
 arch=(i686 x86_64)
 url="http://www.markusfisch.de/"
 license=('custom:MIT')
-depends=('libxft' 'libxmu')
+depends=('libxft' 'libxmu' 'freetype2')
 optdepends=('gnome-icon-theme: default icons')
 install="$pkgname.install"
-source=("${url}downloads/$pkgname-$pkgver.tar.bz2"
+# source=("${url}downloads/$pkgname-$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/markusfisch/$_pkgname/archive/$pkgver.tar.gz"
         "$pkgname.desktop"
-        "$pkgname-libpng16.patch")
-sha256sums=('252e58bb36122e09aafbd9297b2d17054e60d548d21fb548e53317ca03180be9'
-         '3b1b6e248eecf4591eb0502e914a79e2449e405655fe1f54c8f593b1b6cbcfe4'
-         '9e86635ba37a77d0e1e1814b3cd6dd86be7c30a4b1f1888f50688d0eafadc370')
+        "freetype-config.patch")
+sha256sums=('c20070d9fdf66caf30f954d4435b2d8522ec848a2d00ddb1541c1b39e28842cd'
+            '3b1b6e248eecf4591eb0502e914a79e2449e405655fe1f54c8f593b1b6cbcfe4'
+            '73ddf4930c1e3716975868504c354a45594bf147454ff73a234b68068d4a9b10')
 
 prepare() {
-  cd $pkgname-$pkgver
-  # libpng 1.6 support
-  patch -p0 < ../piedock-libpng16.patch
+  cd $_pkgname-$pkgver
+  patch -Np2 -b -z .orig <../freetype-config.patch
+  autoreconf -fiv
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   ./configure --prefix=/usr
-  make
+  make V=0
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
 
   # configuration file
