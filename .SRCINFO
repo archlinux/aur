@@ -1,7 +1,7 @@
 pkgbase = endpoint-verification
 	pkgdesc = Endpoint Verification Helper for Chromium
 	pkgver = 2019.10.07.c273328186_00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
 	arch = x86_64
 	license = unknown
@@ -17,4 +17,5 @@ pkgname = endpoint-verification-chrome
 	pkgdesc = Endpoint verification Helper for Google Chrome
 	depends = google-chrome
 	provides = endpoint-verification
+	conflicts = endpoint-verification
 

@@ -4,7 +4,7 @@ pkgbase=endpoint-verification
 pkgname=(endpoint-verification endpoint-verification-chrome)
 _pkgver=2019.10.07.c273328186-00
 pkgver=2019.10.07.c273328186_00
-pkgrel=1
+pkgrel=2
 pkgdesc="Endpoint Verification Helper for Chromium"
 arch=(x86_64)
 url="https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg"
@@ -35,6 +35,7 @@ package_endpoint-verification-chrome() {
 	pkgdesc="Endpoint verification Helper for Google Chrome"
 	depends=(google-chrome)
 	provides=(endpoint-verification)
+	conflicts=(endpoint-verification)
 	
 	cp -a "$srcdir/data/opt" "$pkgdir"
 	cp -a "$srcdir/data/usr" "$pkgdir"
