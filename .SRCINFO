@@ -1,18 +1,16 @@
 pkgbase = motrix-bin
-	pkgdesc = elegent downloading tool frontend for aria2c, using vue (binary version)
-	pkgver = 1.4.1
-	pkgrel = 2
-	url = https://motrix.app/
+	pkgdesc = A full-featured download manager (binary version)
+	pkgver = 1.5.15
+	pkgrel = 1
+	url = https://github.com/agalwood/Motrix
 	arch = x86_64
 	license = MIT
-	makedepends = p7zip
 	depends = gtk3
-	depends = nss
-	depends = libxss
+	depends = libxcb
 	conflicts = motrix
 	conflicts = motrix-git
-	source = https://dl.motrix.app/release/Motrix-1.4.1-x86_64.AppImage
-	sha512sums = 1e3e1cd053453f4bd4440729ec6f95e91e6da3ceafe801cab800b1ae157c89dd50be818e44fb7a6685ca7826dfb530dc698f51cfc0015892a0893fc2abc2c15f
+	source = https://github.com/agalwood/Motrix/releases/download/v1.5.15/Motrix_1.5.15_amd64.deb
+	sha512sums = f20d2c9a22de21e57d4f444f320a76ef1e98ba48caef6ff0634e6f9ea69c29b156760e61030317e875423e52249a87cf1be80803166134a62e5f6856d34970a8
 
 pkgname = motrix-bin
 

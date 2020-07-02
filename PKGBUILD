@@ -1,46 +1,34 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
-pkgver=1.4.1
-pkgrel=2
-pkgdesc="elegent downloading tool frontend for aria2c, using vue (binary version)"
+pkgver=1.5.15
+pkgrel=1
+pkgdesc="A full-featured download manager (binary version)"
 arch=('x86_64')
-url="https://motrix.app/"
+url="https://github.com/agalwood/Motrix"
 license=('MIT')
 conflicts=(
     'motrix'
     'motrix-git'
 )
-makedepends=(
-    'p7zip'
-)
 depends=(
     'gtk3'
-    'nss'
-    'libxss'
+    'libxcb'
 )
 source=(
-    "https://dl.motrix.app/release/Motrix-$pkgver-x86_64.AppImage"
+    "https://github.com/agalwood/Motrix/releases/download/v${pkgver}/Motrix_${pkgver}_amd64.deb"
 )
 sha512sums=(
-    '1e3e1cd053453f4bd4440729ec6f95e91e6da3ceafe801cab800b1ae157c89dd50be818e44fb7a6685ca7826dfb530dc698f51cfc0015892a0893fc2abc2c15f'
+    'f20d2c9a22de21e57d4f444f320a76ef1e98ba48caef6ff0634e6f9ea69c29b156760e61030317e875423e52249a87cf1be80803166134a62e5f6856d34970a8'
 )
 
 package() {
-    7z x "Motrix-$pkgver-x86_64.AppImage" -o"$pkgdir/opt/Motrix/"
+    tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
 
-    chmod -R 755 "$pkgdir/opt/"
-
-    mkdir -p "$pkgdir/usr"
-    mv "$pkgdir/opt/Motrix/usr/share" "$pkgdir/usr/share"
-
-    sed -i 's/Exec=AppRun/Exec=\/opt\/Motrix\/motrix/' "$pkgdir/opt/Motrix/motrix.desktop"
-    install -Dm644 "$pkgdir/opt/Motrix/motrix.desktop" "$pkgdir/usr/share/applications/motrix.desktop"
-
+    # Link to the binary
     mkdir -p "$pkgdir/usr/bin"
-    ln -s /opt/Motrix/motrix "$pkgdir/usr/bin/motrix"
+    ln -sf '/opt/Motrix/motrix' "$pkgdir/usr/bin/motrix"
 
-    rm "$pkgdir/opt/Motrix/AppRun"
-    rm "$pkgdir/opt/Motrix/motrix.png"
-    rm "$pkgdir/opt/Motrix/motrix.desktop"
+    # SUID chrome-sandbox for Electron 5+
+    chmod 4755 "$pkgdir/opt/Motrix/chrome-sandbox"
 }
