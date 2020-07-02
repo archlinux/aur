@@ -1,0 +1,16 @@
+pkgbase = halcogen
+	pkgdesc = Hardware Abstraction Layer Code Generator for Hercules MCUs
+	pkgver = 04.07.01
+	pkgrel = 1
+	url = https://www.ti.com/tool/HALCOGEN/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	source = https://www.ti.com/lit/sw/spnc030g/spnc030g.zip
+	source = halcogen.sh
+	md5sums = e521ca88416a99717637280417f93350
+	md5sums = 44a08dbac4143ed758146bfb59bc00df
+
+pkgname = halcogen
+
