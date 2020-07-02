@@ -1,43 +1,36 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ignuit
-pkgver=2.24.3
+pkgver=0.0.14
 pkgrel=1
-pkgdesc="A memorization aid based on the Leitner flashcard system"
-arch=('i686' 'x86_64')
-url="http://homepages.ihug.co.nz/~trmusson/programs.html#ignuit"
-license=('GPL')
-depends=('gconf' 'gnome-doc-utils' 'gstreamer0.10-base' 'hicolor-icon-theme' 'intltool' 'libgnomeui' 'libglade' 'libxslt')
-source=(http://homepages.ihug.co.nz/~trmusson/stuff/$pkgname-$pkgver.tar.gz
-        $pkgname.desktop
-        http://homepages.ihug.co.nz/~trmusson/$pkgname/countries_and_capitals-en.xml
-        http://homepages.ihug.co.nz/~trmusson/$pkgname/numbers_days_months-en_ru-without_audio.xml)
-sha256sums=('0333024c74ba04903701500e342cadf5efba85ebfb738222a3364c592bba33c7'
-            '89c160391f5d39b47a9b0ce6dc28080d96acebee356d1a7372a18a8511fea935'
-            '60f82b36b02bfa504f5a3f9f0c1c1d96856f675470ecd5fd56dbf4c185e381e7'
-            '77523badda6c08af9728f1f45defc04c1c609154cdb285088228f96dc1930191')
+pkgdesc='A memorization aid based on the Leitner flashcard system'
+arch=('x86_64')
+url='https://savannah.gnu.org/projects/ignuit'
+license=('GPL3')
+depends=('libgnomeui'
+         'gstreamer0.10'
+         'libgnomeui'
+         'libxslt')
+makedepends=('perl-xml-parser'
+             'gnome-doc-utils'
+             'libgnomeui'
+             'libglade'
+             'libxslt'
+             'gconf'
+             'gstreamer0.10')
+source=("${pkgname}-${pkgver}.tar.xz::http://ftp.gnu.org/gnu/ignuit/ignuit-${pkgver}.tar.gz")
+sha256sums=('e2c817d27dc8c7a52cdc42a76d87ce81de28e5edf22c2278a78a7e3853e72dac')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  ./configure --prefix=/usr --with-gconf-schema-file-dir=/etc/gconf/schemas
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-
-  rm -r "${pkgdir}"/usr/share/locale
-
-#example files
-  install -Dm644 "${srcdir}"/countries_and_capitals-en.xml \
-    "${pkgdir}"/usr/share/$pkgname/examples/countries_and_capitals-en.xml
-  install -Dm644 "${srcdir}"/numbers_days_months-en_ru-without_audio.xml \
-    "${pkgdir}"/usr/share/$pkgname/examples/numbers_days_months-en_ru-without_audio.xml
-
-#.desktop file
-  install -Dm644 "${srcdir}"/$pkgname.desktop \
-    "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
+  rm -rf "${pkgdir}/usr/share/locale"
 }
+# vim:set ts=2 sw=2 et:
