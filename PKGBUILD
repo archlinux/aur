@@ -6,15 +6,13 @@ url='https://wiki.ros.org/tf2_ros'
 pkgname='ros-noetic-tf2-geometry-msgs'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
 	ros-noetic-tf2
-	ros-noetic-python-orocos-kdl
 	ros-noetic-catkin
 	ros-noetic-tf2-ros
-	ros-noetic-orocos-kdl
 	ros-noetic-geometry-msgs
 )
 
@@ -22,18 +20,20 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
+	orocos-kdl
+	orocos-kdl-python
 )
 
 ros_depends=(
 	ros-noetic-tf2
-	ros-noetic-python-orocos-kdl
 	ros-noetic-tf2-ros
-	ros-noetic-orocos-kdl
 	ros-noetic-geometry-msgs
 )
 
 depends=(
 	${ros_depends[@]}
+	orocos-kdl
+	orocos-kdl-python
 )
 
 _dir="geometry2-${pkgver}/tf2_geometry_msgs"
