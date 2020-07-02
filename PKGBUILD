@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='7.5.2.81'
+pkgver='7.5.3.52'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('libarchive')
 install="${pkgname}-client.install"
 _channel=stable
 source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.xz")
-sha256sums=('d94996e9a58a03ca8b1a0d464434d9d8c1c61f78ba83f711331d677f9251fa43')
+sha256sums=('a207515587d22c7696b221371dcfc12dfd04645cf3d996c80b1dfc63439ca667')
 
 package() {
   install -Dm 755 "${srcdir}/opt/${pkgname}/TrueConf" "${pkgdir}/opt/${pkgname}/TrueConf"
