@@ -3,13 +3,15 @@
 
 pkgname=orocos-kdl-git
 pkgver=r931.546d04d
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/kdl"
 license=('GPL')
 depends=(eigen)
 makedepends=(cmake)
+provides=(orocos-kdl)
+conflicts=(orocos-kdl)
 source=(git+https://github.com/orocos/orocos_kinematics_dynamics)
 sha256sums=('SKIP')
 
