@@ -1,0 +1,4 @@
+2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
+
+	* 1.4.0-2 :
+	Fixed a crash when entering DETAILS mode on an empty list.
