@@ -4,7 +4,7 @@ pkgbase=ttf-twcns-fonts
 pkgname=(${pkgbase}{,-doc})
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
 pkgver=20200513
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://data.gov.tw/node/5961'
 license=('custom')
@@ -29,7 +29,6 @@ prepare() {
 }
 
 package_ttf-twcns-fonts() {
-    depends=(freetype2 fontconfig)
     cd "${srcdir}"/Open_Data/
     msg 'Installing the fonts'
     install -dm755 "${pkgdir}"/usr/share/fonts/TTF
