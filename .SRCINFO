@@ -3,16 +3,15 @@ pkgbase = imgpatchtools
 	pkgver = 0.3.r11.g30dcd07
 	pkgrel = 1
 	url = https://github.com/erfanoabdi/imgpatchtools
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = gcc
-	makedepends = make
-	depends = zlib
-	depends = bzip2
-	depends = openssl
+	makedepends = zlib
+	makedepends = bzip2
+	makedepends = openssl
 	source = git+https://github.com/erfanoabdi/imgpatchtools.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = imgpatchtools
 
