@@ -6,6 +6,7 @@ pkgbase = timenaut-appimage
 	arch = x86_64
 	license = GPL
 	depends = zlib
+	depends = fuse2
 	noextract = timenaut-appimage-0.4.0.AppImage
 	options = !strip
 	source_x86_64 = timenaut-appimage-0.4.0.AppImage::https://github.com/kmteras/timenaut/releases/download/v0.4.0/Timenaut-0.4.0.AppImage
