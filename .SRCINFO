@@ -1,0 +1,19 @@
+pkgbase = kirigami-addons-git
+	pkgdesc = Add-ons for the Kirigami framework
+	pkgver = r19.a445f08
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kirigami-addons
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kirigami2
+	provides = kirigami-addons
+	conflicts = kirigami-addons
+	source = git+https://invent.kde.org/libraries/kirigami-addons.git
+	sha256sums = SKIP
+
+pkgname = kirigami-addons-git
+
