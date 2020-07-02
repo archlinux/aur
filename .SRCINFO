@@ -1,7 +1,7 @@
 pkgbase = st-yutna
 	pkgdesc = Simple terminal emulator.
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://st.suckless.org/
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,12 @@ pkgbase = st-yutna
 	source = st-yutna-0.8.4.diff
 	source = st-no-bold-colors-0.8.4.diff
 	source = st-solarized-dark-0.8.4.diff
+	source = st-no-terminfo-0.8.4.diff
 	sha256sums = d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6
 	sha256sums = 681b24332e93fbe6a48a6440a682f51db69e43f9ad606a8c2d657bbad409cde2
 	sha256sums = 4edca37de88f0c39e2686153f1180252af1d4c47b202cebea01e2776e25bac4a
 	sha256sums = 9aa1095d208bdf38f26d4fa49d690210c3111e78a299ccac4b89097c176bd8c8
+	sha256sums = e5358f1331d9d598c2e24a91c5d7d296cc68d25632c73f69f883f1655e58780b
 
 pkgname = st-yutna
 

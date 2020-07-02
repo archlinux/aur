@@ -3,7 +3,7 @@
 pkgname=st-yutna
 _pkgname=st
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal emulator."
 arch=("x86_64")
 url="https://st.suckless.org/"
@@ -13,17 +13,20 @@ provides=("st")
 source=(https://dl.suckless.org/st/$_pkgname-$pkgver.tar.gz
     st-yutna-$pkgver.diff
     st-no-bold-colors-$pkgver.diff
-    st-solarized-dark-$pkgver.diff)
+    st-solarized-dark-$pkgver.diff
+    st-no-terminfo-$pkgver.diff)
 sha256sums=("d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6"
     "681b24332e93fbe6a48a6440a682f51db69e43f9ad606a8c2d657bbad409cde2"
     "4edca37de88f0c39e2686153f1180252af1d4c47b202cebea01e2776e25bac4a"
-    "9aa1095d208bdf38f26d4fa49d690210c3111e78a299ccac4b89097c176bd8c8")
+    "9aa1095d208bdf38f26d4fa49d690210c3111e78a299ccac4b89097c176bd8c8"
+    "e5358f1331d9d598c2e24a91c5d7d296cc68d25632c73f69f883f1655e58780b")
 
 prepare() {
     cd $srcdir/$_pkgname-$pkgver
     patch -p1 -i $srcdir/st-yutna-$pkgver.diff
     patch -p1 -i $srcdir/st-no-bold-colors-$pkgver.diff
     patch -p1 -i $srcdir/st-solarized-dark-$pkgver.diff
+    patch -p1 -i $srcdir/st-no-terminfo-$pkgver.diff
 }
 
 build() {
