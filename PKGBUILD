@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.7
-pkgrel=1
+pkgrel=3
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
