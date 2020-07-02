@@ -11,6 +11,6 @@ update: get-checksum
 .PHONY: build
 build:
 	@echo "updating ${CHROOT}/root chroot environment..."
-	@arch-nspawn $CHROOT/root pacman -Syu
+	@arch-nspawn ${CHROOT}/root pacman -Syu
 	@echo "building package in isolation"
-	makechrootpkg -c -r $CHROOT
+	makechrootpkg -c -r ${CHROOT}
