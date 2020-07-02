@@ -2,13 +2,14 @@
 
 _pkgname=ksysguard-gpu
 pkgname=$_pkgname-git
-pkgver=0.3.r7.g2099048
+pkgver=0.5.r1.g53dc730
 pkgrel=1
 pkgdesc="gpu visualization for ksysguard"
 arch=(any)
 url="https://github.com/lestofante/ksysguard-gpu"
 license=('GPL3')
 depends=('python')
+makedepends=('git')
 optdepends=('ksysguard: For connecting to script as intended'
 			'radeontop: AMD card support'
 			'intel-gpu-tools: Intel card support'

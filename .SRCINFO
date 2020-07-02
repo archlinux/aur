@@ -1,10 +1,11 @@
 pkgbase = ksysguard-gpu-git
 	pkgdesc = gpu visualization for ksysguard
-	pkgver = 0.3.r7.g2099048
+	pkgver = 0.5.r1.g53dc730
 	pkgrel = 1
 	url = https://github.com/lestofante/ksysguard-gpu
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python
 	optdepends = ksysguard: For connecting to script as intended
 	optdepends = radeontop: AMD card support
