@@ -7,11 +7,10 @@ pkgname='ros-noetic-eigen-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-orocos-kdl
 	ros-noetic-std-msgs
 	ros-noetic-catkin
 	ros-noetic-geometry-msgs
@@ -22,10 +21,10 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	eigen
+	orocos-kdl
 )
 
 ros_depends=(
-	ros-noetic-orocos-kdl
 	ros-noetic-std-msgs
 	ros-noetic-geometry-msgs
 )
@@ -33,6 +32,7 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	eigen
+	orocos-kdl
 )
 
 _dir="geometry-${pkgver}/eigen_conversions"
