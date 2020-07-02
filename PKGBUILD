@@ -7,14 +7,13 @@ pkgname='ros-noetic-tf-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
 	ros-noetic-kdl-conversions
 	ros-noetic-catkin
 	ros-noetic-tf
-	ros-noetic-orocos-kdl
 	ros-noetic-geometry-msgs
 )
 
@@ -23,19 +22,20 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	eigen
+	orocos-kdl
 )
 
 ros_depends=(
 	ros-noetic-kdl-conversions
-	ros-noetic-python-orocos-kdl
 	ros-noetic-tf
-	ros-noetic-orocos-kdl
 	ros-noetic-geometry-msgs
 )
 
 depends=(
 	${ros_depends[@]}
 	eigen
+	orocos-kdl
+	orocos-kdl-python
 )
 
 _dir="geometry-${pkgver}/tf_conversions"
