@@ -1,30 +1,30 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer : Simon Shi <simonsmh@gmail.com>
 
 pkgname=imgpatchtools
-pkgver=0.3.r5.g64a745d
+pkgver=0.3.r11.g30dcd07
 pkgrel=1
 pkgdesc="Patch img files with system.patch.dat, like OTA zip on PC"
-arch=('any')
+arch=(x86_64 aarch64)
 url="https://github.com/erfanoabdi/imgpatchtools"
-license=('GPL')
-depends=('zlib' 'bzip2' 'openssl')
-makedepends=('git')
+license=(GPL3)
+makedepends=(git zlib bzip2 openssl)
 source=("git+https://github.com/erfanoabdi/$pkgname.git")
-md5sums=('SKIP')
+sha256sums=(SKIP)
 
 pkgver() {
-	cd "${srcdir}/$pkgname"
-
+	cd "$pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/$pkgname"
+	cd "$pkgname"
 	make all
 }
 
 package() {
-	cd "${srcdir}/$pkgname"
-	install -d "${pkgdir}/usr/bin/"
-	install -Dm0755 ./bin/* "${pkgdir}/usr/bin/"
+	cd "$pkgname"
+	install -d "$pkgdir"/usr/bin/
+	install -Dm755 bin/* "$pkgdir"/usr/bin/
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
