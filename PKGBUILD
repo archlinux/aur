@@ -2,45 +2,39 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='https://wiki.ros.org/kdl_parser'
 
 pkgname='ros-noetic-kdl-parser'
-pkgver='1.13.1'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-cmake-modules
 	ros-noetic-catkin
-	ros-noetic-urdf
+	ros-noetic-cmake-modules
 	ros-noetic-rosconsole
-	ros-noetic-orocos-kdl
-	ros-noetic-rostest
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
-	tinyxml
-	tinyxml2
 	urdfdom-headers
 )
 
 ros_depends=(
-	ros-noetic-orocos-kdl
-	ros-noetic-urdf
 	ros-noetic-rosconsole
+	ros-noetic-urdf
 )
 
 depends=(
 	${ros_depends[@]}
+	orocos-kdl
 	tinyxml
 	tinyxml2
-	urdfdom-headers
 )
 
 _dir="kdl_parser-${pkgver}/kdl_parser"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/kdl_parser/archive/${pkgver}.tar.gz")
-sha256sums=('51378b09efc288ad91870322930f032f31a82e4a436865222b9990470995f67a')
+sha256sums=('e4a60c17e5adf7453c18fa5ec723e41c3cee71c80ec401e2482ab5e09139549d')
 
 build() {
 	# Use ROS environment variables.
