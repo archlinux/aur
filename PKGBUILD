@@ -5,7 +5,7 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.4.beta1.r2.g4532c9d
+pkgver=2.4.beta1.r9.g0e3aec2
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
@@ -15,14 +15,8 @@ depends=(python-certifi python-requests python-numpy)
 makedepends=(git)
 conflicts=(blender-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
-source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}"
-        "denoise.patch")
-sha256sums=('SKIP'
-            '5f73821fc8c38c0bfe9f09d5b3e5ed4c7263c3b92b03526ce0746cd34bc9e5ce')
-
-prepare() {
-  git -C "${_name}" apply -v  "${srcdir}/denoise.patch"
-}
+source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}")
+sha256sums=('SKIP')
 
 pkgver() {
   git -C "${_name}" describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/beta/.beta/;s/\([^-]*-g\)/r\1/;s/-/./g'
