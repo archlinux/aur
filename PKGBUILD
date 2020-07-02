@@ -4,9 +4,9 @@
 
 pkgname=jeex
 pkgver=12.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple GTK+ hex editor"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 #url="http://www.hds619.net/jeex.php"
 url="http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/"
 license=('GPL3')
@@ -16,6 +16,9 @@ source=(http://sourceforge.net/projects/slackbuildsdirectlinks/files/$pkgname/$p
 md5sums=('7a6035de61d04b0dabb4b31fc356ac52')
 
 _srcdir=$pkgname-${pkgver:0:4}
+
+# Workaround for GCC 10
+export CFLAGS="$CFLAGS -fcommon"
 
 build() {
   cd $_srcdir
