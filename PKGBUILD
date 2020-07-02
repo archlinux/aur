@@ -5,7 +5,7 @@
 
 pkgname=pnp4nagios
 pkgver=0.6.26
-pkgrel=5
+pkgrel=6
 pkgdesc="Nagios addon to create graphs from performance data"
 arch=('i686' 'x86_64')
 url="http://pnp4nagios.org"
@@ -25,7 +25,7 @@ md5sums=('7a71b47f70e4e99d52c3b1df334e0342'
          '69f82fa4aeebc8c1164d67e4399c0932'
          '0d85f8cf7eba29dd3cf3f51b397041fb'
          '523a17c14cad60aafe6e6f6786a53a2a'
-         '38d41f66c4f1704a0af385c9d380b288'
+         '3b893852a8a59f2709b76c42d22585c1'
         )
 
 prepare() {
