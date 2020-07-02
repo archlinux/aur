@@ -1,6 +1,6 @@
 pkgname=fdroidserver
 pkgver=1.1.9
-epoch=1
+epoch=2
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
