@@ -1,6 +1,6 @@
 pkgbase = alligator-git
 	pkgdesc = Kirigami-based RSS reader
-	pkgver = v1.1.r77.gfa18968
+	pkgver = r183.237a6d6
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/alligator
 	arch = x86_64

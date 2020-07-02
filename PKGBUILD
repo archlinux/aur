@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=alligator-git
-pkgver=v1.1.r77.gfa18968
+pkgver=r183.237a6d6
 pkgrel=1
 pkgdesc="Kirigami-based RSS reader"
 arch=(x86_64)
