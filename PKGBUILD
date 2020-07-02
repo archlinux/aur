@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tikv-pd
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Manage and schedule the TiKV cluster.'
 makedepends=('go' 'make' 'git' 'unzip')
@@ -10,12 +10,13 @@ url='https://github.com/pingcap/pd'
 license=('Apache')
 provides=('pd-server')
 backup=(etc/pd/pd.toml)
+install=pd.install
 source=(pd-${pkgver}.tar.gz::https://github.com/pingcap/pd/archive/v${pkgver}.tar.gz
         pd.service
         pd-sysusers.conf
         pd-tmpfiles.conf
         pd.toml)
-sha256sums=('8ccd9456b2b6df47f11555b06f84fe73c7672d921a0f949aa94bf24c3925fe62'
+sha256sums=('5b08661eafabe27671760de44f898625eebfdc4a5052fe1615e02ad78c67b18f'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '5edd250ba9e70a4f8d27581ed658f0fbfeca58ca62429dec12bb5fffc0919b67'
             '15633aaa2d7726375112a1b5af88105878f09c176a542cde6d0e5f0c4eee4495'
@@ -36,7 +37,7 @@ prepare() {
 build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
-  export CGO_ENABLED=0
+  export CGO_LDFLAGS="$LDFLAGS"
 
   cd $GOPATH/src/$_gopkgname
 
