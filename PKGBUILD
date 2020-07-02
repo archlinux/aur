@@ -1,8 +1,8 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
-pkgver=3.0.1.r23.gec09dbf
-_gitver=ec09dbfb2547e8b2521ade99d802fbc76c4e1849
+pkgver=3.1.0.r0.g5875e10
+_gitver=5875e10479379be1a82f5e07002802a1cb721ced
 _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="VDR output plugin with CUDA and Opengl"
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+  export _CFLAGS="-fcommon"
   cd "${srcdir}/vdr-plugin-${_plugname}"
   make clean
   make CUVID=1
