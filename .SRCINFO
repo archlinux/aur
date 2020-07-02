@@ -8,6 +8,7 @@ pkgbase = lemon-lime-git
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	provides = lemon-lime
 	conflicts = lemon-lime
 	source = Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git
