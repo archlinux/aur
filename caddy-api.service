@@ -1,20 +1,14 @@
-# caddy.service
+# caddy-api.service
 #
-# For using Caddy with a config file.
+# For using Caddy with its API.
 #
-# Make sure the ExecStart and ExecReload commands are correct
-# for your installation.
+# This unit is "durable" in that it will automatically resume
+# the last active configuration if the service is restarted.
 #
 # See https://caddyserver.com/docs/install for instructions.
-#
-# WARNING: This service does not use the --resume flag, so if you
-# use the API to make changes, they will be overwritten by the
-# Caddyfile next time the service is restarted. If you intend to
-# use Caddy's API to configure it, add the --resume flag to the
-# `caddy run` command or use the caddy-api.service file instead.
 
 [Unit]
-Description=Caddy webserver
+Description=Caddy API Server
 Documentation=https://caddyserver.com/docs/
 After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
@@ -25,9 +19,8 @@ StartLimitBurst=10
 User=caddy
 Group=caddy
 Environment=XDG_DATA_HOME=/var/lib
-Environment=XDG_CONFIG_HOME=/etc
-ExecStart=/usr/bin/caddy run --adapter caddyfile --environ --config /etc/caddy/caddy.conf
-ExecReload=/usr/bin/caddy reload --adapter caddyfile --config /etc/caddy/caddy.conf
+Environment=XDG_CONFIG_HOME=/var/lib
+ExecStart=/usr/bin/caddy run --environ --resume
 
 # Do not allow the process to be restarted in a tight loop. If the
 # process fails to start, something critical needs to be fixed.

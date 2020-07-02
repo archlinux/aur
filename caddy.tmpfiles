@@ -1,2 +1,2 @@
-d /var/lib/caddy 0750 http http
-d /var/log/caddy 0750 http http
+d /var/lib/caddy 0750 caddy caddy
+d /var/log/caddy 0750 caddy caddy
