@@ -1,0 +1,16 @@
+pkgbase = pgpgram
+	pkgdesc = PGP encrypted backups on Telegram Cloud
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/tallero/pgpgram
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setproctitle
+	depends = telegram-tdlib
+	source = pgpgram::git+https://github.com/tallero/pgpgram.git
+	sha256sums = SKIP
+
+pkgname = pgpgram
+
