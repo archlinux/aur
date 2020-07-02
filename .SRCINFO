@@ -1,0 +1,16 @@
+pkgbase = python-spatialmedia
+	pkgdesc = Specifications and tools for 360 video and spatial audio.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/google/spatial-media
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = python-spatialmedia-2.1.tar.gz::https://github.com/google/spatial-media/archive/v2.1.tar.gz
+	source = spatialmedia.sh
+	sha256sums = 38c682060bc5e348a73af2a9a77eab6fcb76ce33f9e5122915c30336b4a59654
+	sha256sums = 8dd415f42d56533f360781391cd70368d7db74b938b30142187075af96aa29bc
+
+pkgname = python-spatialmedia
+
