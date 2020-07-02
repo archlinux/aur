@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=paleofetch-git
-pkgver=r162.a7edef8
+pkgver=r185.f5340ca
 pkgrel=1
 epoch=
 pkgdesc="neofetch, but written in C "
@@ -31,6 +31,11 @@ pkgver() {
 }
 
 build() {
+	cd "$srcdir/$pkgname"
+
+	# Batery path
+	export CFLAGS+=" -D"$(./config_scripts/battery_config.sh)
+
 	cd "$srcdir/$pkgname/build"
 
 	cmake \

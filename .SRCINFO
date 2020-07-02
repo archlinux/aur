@@ -1,6 +1,6 @@
 pkgbase = paleofetch-git
 	pkgdesc = neofetch, but written in C
-	pkgver = r162.a7edef8
+	pkgver = r185.f5340ca
 	pkgrel = 1
 	url = https://github.com/otreblan/paleofetch
 	arch = x86_64
