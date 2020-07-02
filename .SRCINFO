@@ -1,6 +1,6 @@
 pkgbase = linux-fix_navi_reset
 	pkgdesc = experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae
-	pkgver = 5.7.6.arch1
+	pkgver = 5.7.7777777.arch1
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.7.6-arch1
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = linux-fix_navi_reset
 	sha256sums = 4725968648c12546cbd19f71ab2e37507484316d8f85270ff2741ba8def60da1
 
 pkgname = linux-fix_navi_reset
-	pkgdesc = The experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel and modules
+	pkgdesc = "Experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae"
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,10 +39,3 @@ pkgname = linux-fix_navi_reset
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
-
-pkgname = linux-fix_navi_reset-headers
-	pkgdesc = Headers and scripts for building modules for the experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel
-
-pkgname = linux-fix_navi_reset-docs
-	pkgdesc = Documentation for the experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae kernel
-

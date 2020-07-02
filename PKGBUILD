@@ -1,9 +1,9 @@
 # Maintainer: 1400Blank <1400blank@gmail.com>
 
 pkgbase=linux-fix_navi_reset
-pkgver=5.7.6.arch1
+pkgver=5.7.7.arch1
 pkgrel=1
-pkgdesc='experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae'
+pkgdesc='experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
@@ -67,7 +67,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="$pkgdesc"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
