@@ -1,6 +1,6 @@
 pkgbase = motrix-bin
 	pkgdesc = A full-featured download manager (binary version)
-	pkgver = 1.5.15
+	pkgver = v1.5.15
 	pkgrel = 1
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64

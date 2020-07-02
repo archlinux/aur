@@ -1,7 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
-pkgver=1.5.15
+pkgver=v1.5.15
+_pkgver=1.5.15
 pkgrel=1
 pkgdesc="A full-featured download manager (binary version)"
 arch=('x86_64')
@@ -16,7 +17,7 @@ depends=(
     'libxcb'
 )
 source=(
-    "https://github.com/agalwood/Motrix/releases/download/v${pkgver}/Motrix_${pkgver}_amd64.deb"
+    "https://github.com/agalwood/Motrix/releases/download/${pkgver}/Motrix_${_pkgver}_amd64.deb"
 )
 sha512sums=(
     'f20d2c9a22de21e57d4f444f320a76ef1e98ba48caef6ff0634e6f9ea69c29b156760e61030317e875423e52249a87cf1be80803166134a62e5f6856d34970a8'
