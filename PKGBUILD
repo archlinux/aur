@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://geek1011.github.io/kepubify'
 license=('MIT')
 conflicts=('kepubify-bin')
+makedepends=('go')
 source=("https://github.com/geek1011/kepubify/archive/v$pkgver.tar.gz")
 sha256sums=('69f02af0846eb5c153db73a1c07b53ba478986ca07f87af400d66e5f47699f81')
 
