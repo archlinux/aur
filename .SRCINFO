@@ -1,6 +1,6 @@
 pkgbase = picosvg
 	pkgdesc = CLI tool to simplify SVG files, intended for use as part of a font build
-	pkgver = 0.3.13
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/googlefonts/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = picosvg
 	depends = python
 	depends = python-lxml
 	depends = python-skia-pathops
-	source = https://files.pythonhosted.org/packages/source/p/picosvg/picosvg-0.3.13.tar.gz
-	sha256sums = 969249e6edc235a1876ee8242128096cf898b44d1291fb5e92163708015ff0af
+	source = https://files.pythonhosted.org/packages/source/p/picosvg/picosvg-0.4.0.tar.gz
+	sha256sums = 66c782aee7929d6e3104327d40f63de615c184b090f6b8c5f4dadccc94387683
 
 pkgname = picosvg
 
