@@ -1,0 +1,47 @@
+diff --unified --recursive --text pnp4nagios-0.6.26/lib/kohana/system/libraries/Input.php pnp4nagios-0.6.26.good/lib/kohana/system/libraries/Input.php
+--- pnp4nagios-0.6.26/lib/kohana/system/libraries/Input.php	2020-07-02 11:33:24.255879852 -0400
++++ pnp4nagios-0.6.26.good/lib/kohana/system/libraries/Input.php	2020-07-02 11:29:00.428092290 -0400
+@@ -54,20 +54,19 @@
+ 		if (Input::$instance === NULL)
+ 		{
+ 			// magic_quotes_runtime is enabled
+-			if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+-				if (get_magic_quotes_runtime())
+-				{
+-					set_magic_quotes_runtime(0);
+-					Kohana::log('debug', 'Disable magic_quotes_runtime! It is evil and deprecated: http://php.net/magic_quotes');
+-				}
++			if (get_magic_quotes_runtime())
++			{
++				set_magic_quotes_runtime(0);
++				Kohana::log('debug', 'Disable magic_quotes_runtime! It is evil and deprecated: http://php.net/magic_quotes');
++			}
+ 
+-				// magic_quotes_gpc is enabled
+-				if (get_magic_quotes_gpc())
+-				{
+-					$this->magic_quotes_gpc = TRUE;
+-					Kohana::log('debug', 'Disable magic_quotes_gpc! It is evil and deprecated: http://php.net/magic_quotes');
+-				}
++			// magic_quotes_gpc is enabled
++			if (get_magic_quotes_gpc())
++			{
++				$this->magic_quotes_gpc = TRUE;
++				Kohana::log('debug', 'Disable magic_quotes_gpc! It is evil and deprecated: http://php.net/magic_quotes');
+ 			}
++
+ 			// register_globals is enabled
+ 			if (ini_get('register_globals'))
+ 			{
+diff --unified --recursive --text pnp4nagios-0.6.26/share/pnp/application/models/data.php pnp4nagios-0.6.26.good/share/pnp/application/models/data.php
+--- pnp4nagios-0.6.26/share/pnp/application/models/data.php	2020-07-02 11:35:55.220333338 -0400
++++ pnp4nagios-0.6.26.good/share/pnp/application/models/data.php	2020-07-02 11:29:00.404758268 -0400
+@@ -976,7 +976,7 @@
+     */
+     public function getFirstPage(){
+         $pages = $this->getPages();
+-        if(is_array($pages) && sizeof($pages) > 0 ){
++        if(sizeof($pages) > 0 ){
+             return urldecode($pages[0]);
+         }else{
+             return FALSE;
