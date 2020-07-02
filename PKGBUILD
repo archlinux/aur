@@ -1,22 +1,20 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rng-tools-git
-pkgver=6.7.r0.g7435d12
+pkgver=6.10.r22.g5c68cbb
 pkgrel=1
 pkgdesc="Random number generator daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/nhorman/rng-tools"
 license=('GPL3')
-depends=('glibc' 'libgcrypt' 'curl' 'jitterentropy' 'libp11' 'libxml2' 'sysfsutils')
+depends=('glibc' 'curl' 'jansson' 'jitterentropy' 'libp11' 'libxml2' 'openssl' 'sysfsutils')
 makedepends=('git')
 provides=('rng-tools')
 conflicts=('rng-tools')
 backup=('etc/conf.d/rngd')
 source=("git+https://github.com/nhorman/rng-tools.git"
-        "rngd.conf::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.conf?h=packages/rng-tools"
-        "rngd.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.service?h=packages/rng-tools")
+        "rngd.conf::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.conf?h=packages/rng-tools")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 
@@ -31,7 +29,8 @@ build() {
 
   ./autogen.sh
   ./configure \
-    --prefix="/usr" --sbindir="/usr/bin"
+    --prefix="/usr" \
+    --sbindir="/usr/bin"
   make
 }
 
@@ -46,6 +45,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/rngd.service" "$pkgdir/usr/lib/systemd/system/rngd.service"
+  install -Dm644 "rngd.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 "$srcdir/rngd.conf" "$pkgdir/etc/conf.d/rngd"
 }
