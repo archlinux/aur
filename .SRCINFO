@@ -1,0 +1,22 @@
+pkgbase = calindori-git
+	pkgdesc = Calendar for Plasma Mobile
+	pkgver = v1.1.r77.gfa18968
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/calindori
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kcalendarcore
+	depends = kirigami2
+	provides = calindori
+	conflicts = calindori
+	source = git+https://invent.kde.org/plasma-mobile/calindori.git
+	sha256sums = SKIP
+
+pkgname = calindori-git
+
