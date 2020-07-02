@@ -3,7 +3,7 @@
 
 pkgname=konsole-scrollbar-fix-git
 pkgver=r7247.91204ff0
-pkgrel=2
+pkgrel=1
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/applications/konsole'
@@ -13,7 +13,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 provides=('konsole')
 conflicts=('konsole' 'kdebase-konsole' 'konsole-git')
 source=(
-    'konsole::git+https://anongit.kde.org/konsole.git'
+    'konsole::git+https://invent.kde.org/utilities/konsole.git'
     '0001-fix-scrollbar-sometimes-reappearing-when-scrolling.patch'
     '0002-fix-wayland-workaround-scrollbar-reappearing-don-t-p.patch'
 )
@@ -41,7 +41,7 @@ build() {
   cd build
   BUILD_TYPE=Release
   if [[ " ${OPTIONS[@]} " =~ " debug " ]]; then
-    BUILD_TYPE=Debug
+    BUILD_TYPE=RelDebug
   elif [[ " ${OPTIONS[@]} " =~ " !strip " ]]; then
     BUILD_TYPE=RelDebug
   fi
