@@ -7,7 +7,7 @@
 
 pkgname=opensiddur-hebrew-fonts
 pkgver=1.18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Siddur Project's Unicode Hebrew font pack.
 A large collection of open source Hebrew fonts, as well as a few for Latin, Greek, Cyrillic, Arabic, and Amharic"
 
