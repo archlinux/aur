@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd $_gitname
   sed -i -e 's+#!/usr/bin/env python$+#!/usr/bin/env python2+' ./test/gtest/gtest-*/scripts/*.py
-  cmake .
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
