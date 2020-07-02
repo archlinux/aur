@@ -1,0 +1,21 @@
+pkgbase = daetools-bin
+	pkgdesc = Equation-based object-oriented modelling, simulation and optimisation software
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://www.daetools.com
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python2
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-lxml
+	depends = python-pandas
+	depends = python-openpyxl
+	provides = daetools
+	source = daetools-1.9.0.tar.gz::https://sourceforge.net/projects/daetools/files/daetools/1.9.0/daetools-1.9.0-gnu_linux-x86_64.tar.gz/download
+	sha256sums = 10cc8129d28aa9595bf5b798df13761751800fab558cb9a35ed558265d12a5f6
+
+pkgname = daetools-bin
+
