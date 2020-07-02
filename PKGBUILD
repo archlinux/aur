@@ -5,13 +5,13 @@
 
 pkgname=tautulli
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/Tautulli/Tautulli"
 license=('GPL')
 makedepends=('curl')
-depends=('python2' 'python2-setuptools' 'python2-pytz')
+depends=('python' 'python-setuptools' 'python-pytz')
 conflicts=('plexpy-git' 'tautulli-beta' 'plexpy')
 provides=("tautulli")
 replaces=("plexpy")
