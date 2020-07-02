@@ -7,7 +7,7 @@ pkgname='ros-noetic-eigen-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	eigen3
+	eigen
 )
 
 ros_depends=(
@@ -32,7 +32,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	eigen3
+	eigen
 )
 
 _dir="geometry-${pkgver}/eigen_conversions"
