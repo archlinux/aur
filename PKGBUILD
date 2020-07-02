@@ -2,14 +2,13 @@
 
 pkgname=ttf-mathtype
 pkgver=6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts supplied with MathType"
 url="http://www.dessci.com/en/dl/fonts/"
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 makedepends=('cabextract')
 arch=('any')
 license=('custom')
-install=ttf.install
 source=("http://www.dessci.com/en/dl/DS_Fonts_${pkgver}_(TT).exe"
         "http://www.dessci.com/en/dl/DS_Fonts_${pkgver}_(PS).exe"
         'license.txt')
