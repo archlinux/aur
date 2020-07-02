@@ -1,0 +1,22 @@
+pkgbase = alligator-git
+	pkgdesc = Kirigami-based RSS reader
+	pkgver = v1.1.r77.gfa18968
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/alligator
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kconfig
+	depends = syndication
+	depends = kirigami2
+	provides = alligator
+	conflicts = alligator
+	source = git+https://invent.kde.org/plasma-mobile/alligator.git
+	sha256sums = SKIP
+
+pkgname = alligator-git
+
