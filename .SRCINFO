@@ -1,0 +1,21 @@
+pkgbase = acp3x-rn-dkms
+	pkgdesc = Renoir audio co-processor drivers from release candidate 5.8
+	pkgver = 5.8rc3
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/sound/soc/amd?h=v5.8-rc3
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = linux>=5.8.0
+	noextract = linux-5.8-rc3.tar.gz
+	source = https://git.kernel.org/torvalds/t/linux-5.8-rc3.tar.gz
+	source = dkms.conf
+	source = dkms.conf.sig
+	validpgpkeys = 8A144654AD99CA9E984F4156EC74EAEC196A648E
+	sha256sums = 3b983f9c93c791424e4d0894031625d1d6b5ec04ec09a09de0248b374329ef05
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = acp3x-rn-dkms
+
