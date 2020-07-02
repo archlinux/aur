@@ -5,7 +5,7 @@ url='https://wiki.ros.org/robot_localization'
 pkgname='ros-noetic-robot-localization'
 pkgver='2.6.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-tf2-ros
@@ -27,7 +27,7 @@ ros_makedepends=(ros-noetic-tf2-ros
   ros-noetic-eigen-conversions)
 makedepends=('ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3
+  eigen
   cmake)
 
 ros_depends=(ros-noetic-tf2-ros
@@ -46,7 +46,7 @@ ros_depends=(ros-noetic-tf2-ros
   ros-noetic-tf2
   ros-noetic-eigen-conversions)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 _dir="robot_localization-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz")
