@@ -1,20 +1,16 @@
 pkgbase = python-livereload
 	pkgdesc = An awesome tool for web developers.
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/lepture/python-livereload
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/l/livereload/livereload-2.6.1.tar.gz
-	sha256sums = 89254f78d7529d7ea0a3417d224c34287ebfe266b05e67e51facaf82c27f0f66
-
-pkgname = python-livereload
 	depends = python-six
 	depends = python-tornado
+	source = https://files.pythonhosted.org/packages/source/l/livereload/livereload-2.6.2.tar.gz
+	sha256sums = d1eddcb5c5eb8d2ca1fa1f750e580da624c0f7fcb734aa5780dc81b7dcbd89be
 
-pkgname = python2-livereload
-	depends = python2-six
-	depends = python2-tornado
+pkgname = python-livereload
 

@@ -1,0 +1,5 @@
+*.tar.gz
+*.tar.xz
+python-livereload-3.6.2-1-any.pkg.tar.xz
+pkg/
+src/
