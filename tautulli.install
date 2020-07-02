@@ -1,6 +1,8 @@
 post_install() {
-  echo "To migrate your plexpy config and db, run the following commands:"
-  echo "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
-  echo "  sudo sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
-  echo "  sudo chown -R tautulli: /var/lib/tautulli"
+  if [[ -d /var/lib/plexpy ]]; then
+    echo "To migrate your plexpy config and db, run the following commands:"
+    echo "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
+    echo "  sudo sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
+    echo "  sudo chown -R tautulli: /var/lib/tautulli"
+  fi
 }
