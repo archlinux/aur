@@ -7,7 +7,7 @@ pkgname='ros-noetic-pcl-ros'
 pkgver='1.7.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-rosconsole
@@ -29,7 +29,7 @@ ros_makedepends=(ros-noetic-rosconsole
   ros-noetic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3
+  eigen
   pcl)
 
 ros_depends=(ros-noetic-pcl-conversions
@@ -46,7 +46,7 @@ ros_depends=(ros-noetic-pcl-conversions
   ros-noetic-sensor-msgs
   ros-noetic-tf)
 depends=(${ros_depends[@]}
-  eigen3
+  eigen
   pcl)
 
 # Git version (e.g. for debugging)
