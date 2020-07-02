@@ -2,13 +2,14 @@
 
 pkgname=neovide
 pkgver=0.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
 url='https://github.com/Kethku/neovide'
 license=('MIT')
 depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio')
 makedepends=('rust' 'gtk3' 'cmake' 'sdl2' 'make')
+optdepends=("vulkan-intel: vulkan support for intel")
 provides=("neovide")
 conflicts=("neovide-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"

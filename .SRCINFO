@@ -1,7 +1,7 @@
 pkgbase = neovide
 	pkgdesc = No Nonsense Neovim Client in Rust
 	pkgver = 0.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Kethku/neovide
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = neovide
 	depends = freetype2
 	depends = libglvnd
 	depends = sndio
+	optdepends = vulkan-intel: vulkan support for intel
 	provides = neovide
 	conflicts = neovide-git
 	source = neovide-0.6.0.tar.gz::https://github.com/Kethku/neovide/archive/0.6.0.tar.gz
