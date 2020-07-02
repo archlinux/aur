@@ -9,7 +9,7 @@ pkgdesc="Desktop time tracking application that does not invade your privacy"
 arch=('x86_64')
 url="https://timenaut.app/"
 license=("GPL")
-depends=('zlib')
+depends=('zlib' 'fuse2')
 options=(!strip)
 source_x86_64=(
   "${pkgname}-${pkgver}.AppImage::https://github.com/kmteras/timenaut/releases/download/v${pkgver}/Timenaut-${pkgver}.AppImage"
