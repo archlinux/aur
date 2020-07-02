@@ -4,38 +4,41 @@ pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfi
 url='https://wiki.ros.org/rqt_reconfigure'
 
 pkgname='ros-noetic-rqt-reconfigure'
-pkgver='0.5.2'
+pkgver='0.5.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
 	ros-noetic-catkin
+	ros-noetic-roslint
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
+	python-setuptools
 )
 
 ros_depends=(
-	ros-noetic-rqt-py-common
-	ros-noetic-rqt-gui-py
 	ros-noetic-dynamic-reconfigure
-	ros-noetic-rqt-console
 	ros-noetic-python-qt-binding
-	ros-noetic-rqt-gui
 	ros-noetic-rospy
+	ros-noetic-rqt-console
+	ros-noetic-rqt-gui
+	ros-noetic-rqt-gui-py
+	ros-noetic-rqt-py-common
 )
 
 depends=(
 	${ros_depends[@]}
+	python-pyaml
 )
 
 _dir="rqt_reconfigure-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('a21f8d077add53beb5e25f8054d591678ca7ac3d326136560863ad7c28e5412d')
+sha256sums=('07e4b46a71fc881a855250b73a97a13fb8e54fac74f6d09b5fd2365e2b7ab79a')
 
 build() {
 	# Use ROS environment variables.
