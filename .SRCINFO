@@ -1,0 +1,16 @@
+pkgbase = python-discord-argparse
+	pkgdesc = Arbitrarily ordered arguments for commands in discord.py
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/lukeciel/discord-argparse
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-discord>=1.0.0
+	depends = python
+	noextract = discord_argparse-1.0.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/d/discord-argparse/discord_argparse-1.0.1-py3-none-any.whl
+	sha256sums = 0bc4dfd47cf0048dad40525a623abb979fee506bbe0513071d0d82663183f849
+
+pkgname = python-discord-argparse
+
