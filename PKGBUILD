@@ -2,7 +2,7 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 pkgname=swamp-wine
 pkgver=3.8E
-pkgrel=1
+pkgrel=2
 pkgdesc="First-person Audio Shooter"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'pentium4')
 url="https://kaldobsky.com/audiogames"
@@ -34,7 +34,7 @@ prepare() {
   if [ "$pkgver" != "$_fullver" ] ; then
     _patchver=$pkgver
     [ ! -f swamp-patch-${_fullver}-to-${_patchver}.zip ] && wget 'https://kaldobsky.com/audiogames/SwampPatch.zip' -O swamp-patch-${_fullver}-to-${_patchver}.zip
-    _patchsum=070ebbcebb8b72023eb0130ac30c8877
+    _patchsum=3cd33a805aac615b9f6b9abb82c2f804
     if [ "$_patchsum" = "$(md5sum swamp-patch-${_fullver}-to-${_patchver}.zip | cut -d\  -f1)" ] ; then
       unzip -o -q -d swamp swamp-patch-${_fullver}-to-${_patchver}.zip
     else
