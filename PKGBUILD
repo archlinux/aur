@@ -14,11 +14,6 @@ source=("git+$url#branch=pkg")
 changelog=CHANGELOG
 md5sums=('SKIP')
 
-pkgver() {
-	cd noaftodo
-	printf "1.4.0_%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd noaftodo
 	make
