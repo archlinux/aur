@@ -1,13 +1,14 @@
 pkgbase = nerd-fonts-iosevka
 	pkgdesc = Patched Iosevka font from the nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	install = nerd-fonts-iosevka.install
 	arch = any
 	license = MIT
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
 	source = Iosevka-v2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip

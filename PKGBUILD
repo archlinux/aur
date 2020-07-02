@@ -2,12 +2,12 @@
 # Contributor: Sri Harsha <toletysriharsha9@gmail.com>
 pkgname=nerd-fonts-iosevka
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Patched Iosevka font from the nerd-fonts library'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-mkfontdir' 'xorg-mkfontscale')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 install=$pkgname.install
 source=("Iosevka-v${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/Iosevka.zip"
@@ -26,4 +26,3 @@ package() {
     install -Dm644 "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/TTF"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
