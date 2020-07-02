@@ -12,7 +12,7 @@ depends_i686=('libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
 depends_x86_64=('lib32-libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
 makedepends=()
 optdepends=('cups: printing support')
-source=("https://download3.ebz.epson.net/dsc/f/03/00/11/33/07/4027e99517b5c388d444b8444d719b4b77f7e9db/Epson-ALC1100-filter-1.2.tar.gz")
+source=("https://download3.ebz.epson.net/dsc/f/03/00/11/33/07/4027e99517b5c388d444b8444d719b4b77f7e9db/Epson-ALC1100-filter-$pkgver.tar.gz")
 md5sums=('d3206f9a2b4d73133ab5baadad0dbe5c')
 
 package() {
