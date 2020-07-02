@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-noetic-rviz'
 pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -17,7 +17,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	eigen3
+	eigen
 	qt5-base
 	urdfdom
 	urdfdom-headers

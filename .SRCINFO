@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rviz
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ros-noetic-rviz
 	makedepends = ros-noetic-catkin
 	makedepends = ros-noetic-cmake-modules
 	makedepends = ros-noetic-message-generation
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = qt5-base
 	makedepends = urdfdom
 	makedepends = urdfdom-headers
