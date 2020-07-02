@@ -1,7 +1,7 @@
 pkgbase = pnp4nagios
 	pkgdesc = Nagios addon to create graphs from performance data
 	pkgver = 0.6.26
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pnp4nagios.org
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,12 @@ pkgbase = pnp4nagios
 	source = npcd.service
         source = phpfix.patch
         source = nagiospass.patch
+        source = pnp4nagios.install
 	md5sums = 7a71b47f70e4e99d52c3b1df334e0342
 	md5sums = 69f82fa4aeebc8c1164d67e4399c0932
         md5sums = 0d85f8cf7eba29dd3cf3f51b397041fb
         md5sums = 523a17c14cad60aafe6e6f6786a53a2a
+        md5sums = 38d41f66c4f1704a0af385c9d380b288
 
 pkgname = pnp4nagios
 
