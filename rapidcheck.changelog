@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-r1002.258d907
+r1006.7bc7d30
 ------------
 
 Fix
@@ -17,6 +17,27 @@ Fix
 
 Other
 ~~~~~
+- Merge pull request #251 from dartdart26/variadic_macro_last_arg.
+  [emil-e]
+
+  Add argument for "..." in variadic assert macros
+- Add argument for "..." in variadic assert macros. [Petar Ivanov]
+
+  As per GCC's error message: ISO C++11 requires at least one argument for
+  the "..." in a variadic macro. This can be noticed if compiling with
+  -pedantic, producing a warning. If -Werror is added, it becomes an
+  error. This PR adds a dummy last argument in all cases using the
+  RC_INTERNAL_CONDITIONAL_RESULT macro without one.
+- Merge pull request #253 from gebart/fix-Wimplicit-int-float-
+  conversion. [emil-e]
+- Numeric: Fix Wimplicit-int-float-conversion with clang-10. [Joakim
+  Nohlgård]
+
+  Avoid warning by using explicit casting to double
+
+  ../include/rapidcheck/gen/Numeric.hpp:46:43: warning: implicit conversion from 'std::__1::numeric_limits<unsigned long long>::type' (aka 'unsigned long long') to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-int-float-conversion]
+        (stream.next<uint64_t>() * scale) / std::numeric_limits<uint64_t>::max();
+                                          ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Merge pull request #233 from Cypher1/master. [emil-e]
 
   Fix type error detected by GCC-9.1.0
