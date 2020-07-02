@@ -6,7 +6,7 @@ url='https://wiki.ros.org/pcl_conversions'
 pkgname='ros-noetic-pcl-conversions'
 pkgver='1.7.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -18,7 +18,7 @@ ros_depends=(ros-noetic-pcl-msgs
   ros-noetic-sensor-msgs
   ros-noetic-std-msgs)
 depends=(${ros_depends[@]}
-  eigen3
+  eigen
   pcl)
 
 # Git version (e.g. for debugging)
