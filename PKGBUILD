@@ -16,9 +16,15 @@ backup=('etc/httpd/conf/extra/pnp4nagios.conf' 'etc/pnp4nagios/config.php'
   'etc/pnp4nagios/process_perfdata.cfg')
 install=pnp4nagios.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-        npcd.service)
+        npcd.service
+        phpfix.patch
+        nagiospass.patch
+        )
 md5sums=('7a71b47f70e4e99d52c3b1df334e0342'
-         '69f82fa4aeebc8c1164d67e4399c0932')
+         '69f82fa4aeebc8c1164d67e4399c0932'
+         '0d85f8cf7eba29dd3cf3f51b397041fb'
+         '523a17c14cad60aafe6e6f6786a53a2a'
+        )
 
 prepare() {
     cd "$pkgname-$pkgver"
