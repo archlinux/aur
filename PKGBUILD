@@ -35,6 +35,7 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
 #    'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
     'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
+    '0001-not-build-ninja-icu.patch'
 )
 noextract=()
 md5sums=(
@@ -52,7 +53,12 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
 )
+
+prepare () {
+    ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
+}
 
 pkgver() {
     cd "$srcdir/swift"
@@ -60,13 +66,14 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/swift"
+    cd "$srcdir"
     # Fix /usr/include error
     find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
-    LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
+    #LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
+    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build" installable_package="$srcdir/swift-arch-pkg.tar.gz"
 }
 
 package() {

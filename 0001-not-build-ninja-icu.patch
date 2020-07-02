@@ -1,0 +1,36 @@
+From 996d99a5bfe207759ccbdb67c28ae63718c908f6 Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Thu, 2 Jul 2020 04:15:26 +0200
+Subject: [PATCH] not build ninja, icu
+
+---
+ utils/build-presets.ini | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/utils/build-presets.ini b/utils/build-presets.ini
+index 23c50fd2ef2..ecd82cfa89d 100644
+--- a/utils/build-presets.ini
++++ b/utils/build-presets.ini
+@@ -792,19 +792,16 @@ mixin-preset=
+ llbuild
+ swiftpm
+ xctest
+-libicu
+ libcxx
+ 
+ dash-dash
+ 
+-build-ninja
+ install-llvm
+ install-swift
+ install-lldb
+ install-llbuild
+ install-swiftpm
+ install-xctest
+-install-libicu
+ install-prefix=/usr
+ install-libcxx
+ install-sourcekit-lsp
+-- 
+2.27.0
+
