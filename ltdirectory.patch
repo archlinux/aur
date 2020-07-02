@@ -1,0 +1,12 @@
+diff -ruN a/yalafi/shell/shell.py b/yalafi/shell/shell.py
+--- a/yalafi/shell/shell.py	2020-05-27 17:32:05.000000000 +0200
++++ b/yalafi/shell/shell.py	2020-07-02 21:29:01.241960928 +0200
+@@ -34,7 +34,7 @@
+ # - Java has to be installed,
+ #   under Cygwin the Windows version is used
+ #
+-ltdirectory = '../LT/LanguageTool-4.7/'
++ltdirectory = '/usr/share/java/languagetool'
+ ltcommand = 'java -jar languagetool-commandline.jar'
+ 
+ # on option --server lt: address of server hosted by LT

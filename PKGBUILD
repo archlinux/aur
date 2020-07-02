@@ -3,22 +3,36 @@
 
 pkgname=python-yalafi
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/matze-dd/YaLafi"
 depends=('python3' )
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/0f/57/57827ab252b49616253bb007e823b810005a9a4873b8c0ff0f70ef1954d7/yalafi-1.1.2.tar.gz')
-md5sums=('ca429ef24e46735d3db67583cfa1a79a')
+source=(
+    'https://files.pythonhosted.org/packages/0f/57/57827ab252b49616253bb007e823b810005a9a4873b8c0ff0f70ef1954d7/yalafi-1.1.2.tar.gz'
+    'ltdirectory.patch'
+    'ltserver_local_cmd.patch'
+)
+md5sums=(
+    'ca429ef24e46735d3db67583cfa1a79a'
+    SKIP
+    SKIP
+)
+
+prepare() {
+    cd "$srcdir/yalafi-1.1.2"
+    patch -p1 < "$srcdir/ltdirectory.patch"
+    patch -p1 < "$srcdir/ltserver_local_cmd.patch"
+}
 
 build() {
-    cd $srcdir/yalafi-1.1.2
+    cd "$srcdir/yalafi-1.1.2"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/yalafi-1.1.2
+    cd "$srcdir/yalafi-1.1.2"
     python setup.py install --root="$pkgdir" --optimize=1 
 }
