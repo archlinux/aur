@@ -1,11 +1,11 @@
 pkgbase = dmenu-rs
 	pkgdesc = A 1:1 port of dmenu, rewritten in Rust
 	pkgver = 5.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shizcow/dmenu-rs
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = GPL
 	makedepends = rust
 	makedepends = git
 	makedepends = clang
