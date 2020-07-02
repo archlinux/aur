@@ -1,0 +1,21 @@
+pkgbase = tweet-tray-bin
+	pkgdesc = Tweet quickly from the desktop without any distractions
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/jonathontoon/tweet-tray
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = gtk2
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = tweet-tray
+	source = tweet-tray-1.1.5.deb::https://github.com/jonathontoon/tweet-tray/releases/download/v1.1.5/tweet-tray-1.1.5.deb
+	source = LICENSE::https://github.com/jonathontoon/tweet-tray/raw/master/LICENSE.md
+	sha256sums = 51a7903e11aba5860848a1b0e64e6746a0632235562d375ce402673624ff2ffe
+	sha256sums = bd3d4086d1b3e914291e55349490a61a4903a2ba51dc8bbb5a70429015e33927
+
+pkgname = tweet-tray-bin
+
