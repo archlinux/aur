@@ -1,6 +1,6 @@
 pkgbase = ignuit
 	pkgdesc = A memorization aid based on the Leitner flashcard system
-	pkgver = 0.0.14
+	pkgver = 2.24.3
 	pkgrel = 1
 	url = https://savannah.gnu.org/projects/ignuit
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = ignuit
 	makedepends = libglade
 	makedepends = libxslt
 	makedepends = gconf
-	makedepends = gstreamer0.10
+	makedepends = gstreamer
+	makedepends = intltool
 	depends = libgnomeui
-	depends = gstreamer0.10
+	depends = gstreamer
 	depends = libgnomeui
 	depends = libxslt
-	source = ignuit-0.0.14.tar.xz::http://ftp.gnu.org/gnu/ignuit/ignuit-0.0.14.tar.gz
-	sha256sums = e2c817d27dc8c7a52cdc42a76d87ce81de28e5edf22c2278a78a7e3853e72dac
+	source = ignuit-2.24.3.tar.xz::http://ftp.gnu.org/gnu/ignuit/ignuit-2.24.3.tar.gz
+	sha256sums = 0333024c74ba04903701500e342cadf5efba85ebfb738222a3364c592bba33c7
 
 pkgname = ignuit
 
