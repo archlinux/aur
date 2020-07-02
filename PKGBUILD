@@ -1,8 +1,8 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='lego'
-pkgver=v3.7.0
-pkgrel=3
+pkgver=v3.8.0
+pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -37,7 +37,7 @@ build() {
   # the make command doesn't work because the command use git to build the version.
   # make build
 
-  go build -v -trimpath -ldflags "-X \"main.version=${pkgver}-src\"" -o dist/lego ./cmd/lego/
+  go build -v -trimpath -ldflags "-X \"main.version=${pkgver}-src\"" -o "dist/${pkgname}" "./cmd/${pkgname}/"
 
   go clean -modcache
 }
