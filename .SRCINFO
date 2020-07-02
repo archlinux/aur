@@ -1,6 +1,6 @@
 pkgbase = libspatialindex-git
 	pkgdesc = C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
-	pkgver = r571.2f79e35
+	pkgver = r581.8956c14
 	pkgrel = 1
 	url = http://libspatialindex.github.com/
 	arch = i686
