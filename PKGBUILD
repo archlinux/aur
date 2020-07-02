@@ -7,7 +7,7 @@ pkgname='ros-noetic-robot-state-publisher'
 pkgver='1.14.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -19,7 +19,6 @@ ros_makedepends=(
 	ros-noetic-rosconsole
 	ros-noetic-roscpp
 	ros-noetic-kdl-parser
-	ros-noetic-orocos-kdl
 	ros-noetic-sensor-msgs
 )
 
@@ -29,6 +28,7 @@ makedepends=(
 	${ros_makedepends[@]}
 	eigen
 	urdfdom-headers
+	orocos-kdl
 )
 
 ros_depends=(
@@ -40,13 +40,13 @@ ros_depends=(
 	ros-noetic-rosconsole
 	ros-noetic-roscpp
 	ros-noetic-kdl-parser
-	ros-noetic-orocos-kdl
 	ros-noetic-sensor-msgs
 )
 
 depends=(
 	${ros_depends[@]}
 	eigen
+	orocos-kdl
 )
 
 _dir="robot_state_publisher-${pkgver}"
