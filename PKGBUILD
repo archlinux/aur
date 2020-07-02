@@ -28,7 +28,8 @@ md5sums=('7a71b47f70e4e99d52c3b1df334e0342'
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/phpfix.patch"
+    #messed up the first patch, and it is a reversed patch
+    patch -R --forward --strip=1 --input="${srcdir}/phpfix.patch"
     patch --forward --strip=1 --input="${srcdir}/nagiospass.patch"
 }
 
