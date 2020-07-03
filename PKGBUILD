@@ -20,14 +20,13 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	mkdir -p bin
 	for dir in "applypatch" "android-base" "edify" "minzip" "otafault" "blockimg"
 	do
 		pushd $dir
-		make -j
+		make
 		popd
 	done
-	make all -j
+	make all
 }
 
 package() {
