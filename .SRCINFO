@@ -1,8 +1,8 @@
 pkgbase = dotbare
 	pkgdesc = Manage your dotfiles interactively with fzf
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://github.com/denisidoro/navi
+	pkgrel = 2
+	url = https://github.com/kazhala/dotbare
 	arch = any
 	license = MIT
 	depends = fzf

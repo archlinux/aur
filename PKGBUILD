@@ -3,9 +3,9 @@
 pkgname=dotbare
 pkgdesc="Manage your dotfiles interactively with fzf"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=("any")
-url="https://github.com/denisidoro/navi"
+url="https://github.com/kazhala/dotbare"
 license=("MIT")
 depends=('fzf')
 source=("https://github.com/kazhala/dotbare/archive/v${pkgver}.tar.gz" "${pkgname}")
