@@ -1,0 +1,13 @@
+pkgbase = python-wordpress-xmlrpc
+	pkgdesc = WordPress XML-RPC API Integration Library
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/maxcutler/python-wordpress-xmlrpc/
+	arch = any
+	license = BSD
+	provides = python-wordpress-xmlrpc
+	source = https://files.pythonhosted.org/packages/source/p/python-wordpress-xmlrpc/python-wordpress-xmlrpc-2.3.zip
+	sha256sums = e15a8e9aca16db169369e5967299c29965570ed83c7c3ad418ed59b5ad1471bd
+
+pkgname = python-wordpress-xmlrpc
+
