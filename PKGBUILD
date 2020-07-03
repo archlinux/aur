@@ -3,12 +3,11 @@
 
 pkgname=iran-nastaliq-fonts
 pkgver=20150704
-pkgrel=2
+pkgrel=3
 pkgdesc="A free Unicode calligraphic Persian font."
 url="https://github.com/font-store/font-IranNastaliq"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 makedepends=('git')
 provides=('ttf-iran-nastaliq' "$pkgname")
 conflicts=('ttf-iran-nastaliq' "$pkgname")
