@@ -1,0 +1,15 @@
+pkgbase = quarter
+	pkgdesc = Coin GUI binding for Qt.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/coin3d/quarter
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = coin
+	depends = qt5-base
+	source = https://github.com/coin3d/quarter/releases/download/Quarter-1.1.0/quarter-1.1.0-src.tar.gz
+	md5sums = 68bbb69c370106ef4fbb62956c842c17
+
+pkgname = quarter
+
