@@ -5,6 +5,7 @@ pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
 replaces=('mingw-w64-intel-tbb')
 conflicts=('mingw-w64-intel-tbb')
+provides=('mingw-w64-intel-tbb')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')

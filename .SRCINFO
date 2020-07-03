@@ -7,6 +7,7 @@ pkgbase = mingw-w64-tbb
 	license = APACHE
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
+	provides = mingw-w64-intel-tbb
 	conflicts = mingw-w64-intel-tbb
 	replaces = mingw-w64-intel-tbb
 	options = !buildflags
