@@ -1,8 +1,8 @@
 # Maintainer: ml <ml@visu.li>
 # TODO systemd service
 pkgname=keys-pub
-pkgver=0.0.47
-pkgrel=3
+pkgver=0.0.48
+pkgrel=1
 pkgdesc='keys.pub CLI client and service (keys, keysd)'
 arch=('x86_64' 'i686')
 url='https://keys.pub/'
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('libfido2')
 makedepends=('git' 'go')
 optdepends=('org.freedesktop.secrets: storing secrets')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keys-pub/keys-ext/archive/v${pkgver}.tar.gz")
-sha256sums=('c9ada22e3bb7424c06838fa299288b5a2506ed7d659a5230ddc1e08a29f66cd2')
+source=("https://github.com/keys-pub/keys-ext/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('032428f4c0e7c6a31bc0da05229ef23b820ff55bbc0583561e3acf36db78425b')
 
 prepare() {
   # lots of the components fetch an older version of themselves. not gonna use the replace directive
