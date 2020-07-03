@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tf2-kdl
 	pkgdesc = ROS - KDL binding for tf2.
 	pkgver = 0.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/tf2
 	arch = any
 	license = BSD
@@ -12,11 +12,11 @@ pkgbase = ros-melodic-tf2-kdl
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-tf2-ros
 	makedepends = ros-melodic-orocos-kdl
-	makedepends = eigen3
+	makedepends = eigen
 	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-tf2
 	depends = ros-melodic-tf2-ros
-	depends = eigen3
+	depends = eigen
 	source = ros-melodic-tf2-kdl-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 
