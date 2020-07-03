@@ -1,5 +1,5 @@
 pkgbase = chronoengine
-	pkgdesc = C++ library for physics simulation
+	pkgdesc = An Open Source Multi-physics Simulation Engine
 	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://projectchrono.org/
