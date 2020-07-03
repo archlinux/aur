@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=domination
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Java version of the classic Risk board game."
 arch=('any')
@@ -13,9 +13,9 @@ depends=('java-runtime')
 source=("https://downloads.sourceforge.net/project/domination/Domination/${pkgver}/Domination_${pkgver}.zip"
     'Domination.sh'
 'domination.desktop')
-sha256sums=('fdc5bd4b23b3f626b74115e28980096c5ecf2a8c95ae7905522f70198a6a70c1'
+sha256sums=('c3a4e5c3e6b8db567c31b281c008ed4cc348393026e4790436a6660f22a338a8'
     'f408672cdd5494732b95dad1db8db07a7c98d3fab5db7fa3925b0ebbe1b40e00'
-'13e4aa125de43f5750e88e8e7a1abf95c3ddef5bcb6c9ea136511c9c05c77012')
+'2f9e6435b41bbcdc212c651549729681a13ac51477e0b482a99c392cd0e63759')
 
 package() {
     install -d "${pkgdir}/usr/share"
