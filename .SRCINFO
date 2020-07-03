@@ -1,0 +1,19 @@
+pkgbase = lazagne
+	pkgdesc = An open source application used to retrieve lots of passwords stored on a local computer
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/AlessandroZ/LaZagne
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python-psutil
+	depends = python-secretstorage
+	depends = python-pyasn1
+	depends = python-pycryptodome
+	depends = python-pypykatz
+	depends = python-rsa
+	source = lazagne-2.4.3.tar.gz::https://github.com/AlessandroZ/LaZagne/archive/2.4.3.tar.gz
+	sha256sums = 2057ec5697f44556dcc5d42321fa70244343859571f5ac98ad3e48a8ac44a90b
+
+pkgname = lazagne
+
