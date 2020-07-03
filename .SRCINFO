@@ -1,0 +1,14 @@
+pkgbase = proj-datumgrid-world
+	pkgdesc = Worldwide Proj datum grids
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/OSGeo/proj-datumgrid
+	arch = any
+	license = custom
+	depends = proj
+	noextract = proj-datumgrid-world-1.0.zip
+	source = https://download.osgeo.org/proj/proj-datumgrid-world-1.0.zip
+	sha256sums = cbffb31faecb16f3f7acbfe7e85e81440aa8d6eae670de7ec2d19a13c02b4681
+
+pkgname = proj-datumgrid-world
+
