@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A native client for web media. Works with youtube, 4chan and several manga sites.
-	pkgver = r146.2023d64
+	pkgver = r147.4aafdff
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
