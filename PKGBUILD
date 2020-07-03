@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://toolshed.sourceforge.net"
 license=('PerlArtistic')
 depends=('fuse2')
-makedepends=('mercurial' 'discount')
+makedepends=('discount')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('ab7201970e9c13e1cbdb9c8398bd888f870e75e33055b7a308bb039f67614c69')
 

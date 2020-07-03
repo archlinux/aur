@@ -5,7 +5,6 @@ pkgbase = toolshed
 	url = http://toolshed.sourceforge.net
 	arch = x86_64
 	license = PerlArtistic
-	makedepends = mercurial
 	makedepends = discount
 	depends = fuse2
 	source = https://downloads.sourceforge.net/toolshed/toolshed-2.2.tar.gz
