@@ -1,5 +1,5 @@
 pkgbase = python-pywerview
-	pkgdesc = A package resource and symbol loading helper library, for Python(Python3 fork)
+	pkgdesc = A (partial) Python rewriting of PowerSploit's PowerView.(Python3 fork)
 	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/mpgn/pywerview
