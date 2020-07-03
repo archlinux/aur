@@ -1,8 +1,8 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=ttf-twemoji-color
 pkgver=12.0.1
-pkgrel=1
-pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
+pkgrel=2
+pkgdesc="A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/twemoji-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
@@ -14,7 +14,7 @@ optdepends=('ttf-bitstream-vera: default fallback font used for configuration')
 
 replaces=('twemoji-color-font')
 conflicts=('twemoji-color-font')
-provides=('twemoji-color-font')
+provides=('twemoji-color-font' 'emoji-font')
 
 _pkgver=${pkgver//_/-}
 _archive=TwitterColorEmoji-SVGinOT-Linux-${_pkgver}
