@@ -3,8 +3,8 @@
 
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4
-pkgrel=3
+pkgver=0.10.5
+pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -41,10 +41,10 @@ depends+=('libfreetype.so'
           'libicuio.so'
           'libicuuc.so'
           'libtexpdf.so')
-checkdepends=('lua-busted')
+checkdepends=('poppler')
 provides=('libtexpdf.so')
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('d136fbe9bc86c3e235d34db170d48af14779c36e8b0b03f542ffdbabcdde4222')
+sha256sums=('a14fe23af242ba723aed699048b10abf60d1809390ac543140b80e057c4b4b9b')
 
 build () {
     cd "$pkgname-$pkgver"
@@ -56,7 +56,7 @@ build () {
 
 check () {
     cd "$pkgname-$pkgver"
-    make busted
+    make check
 }
 
 package () {
