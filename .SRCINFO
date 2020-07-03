@@ -1,0 +1,14 @@
+pkgbase = proj-datumgrid-oceania
+	pkgdesc = Proj datum grids for Oceania
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/OSGeo/proj-datumgrid
+	arch = any
+	license = custom
+	depends = proj
+	noextract = proj-datumgrid-oceania-1.2.zip
+	source = https://download.osgeo.org/proj/proj-datumgrid-oceania-1.2.zip
+	sha256sums = 7da6829ed2067cc7f294e06b57c86fc258e7355230d88e6dbf830854e768d942
+
+pkgname = proj-datumgrid-oceania
+
