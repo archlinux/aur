@@ -4,12 +4,11 @@ _fontname=spleen
 
 pkgname=spleen-font
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospaced bitmap fonts"
 arch=('any')
 license=('BSD')
 url="https://www.cambus.net/spleen-monospaced-bitmap-fonts/"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('bdf-spleen')
 source=(
   "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
