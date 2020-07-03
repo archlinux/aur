@@ -5,7 +5,6 @@ pkgdesc='A free Caslon font designed by Pablo Impallari'
 arch=('any')
 url='http://www.impallari.com/librecaslon'
 license=('custom:OFL')
-depends=('fontconfig')
 textbase='https://github.com/impallari/Libre-Caslon-Text/raw/c31e21f7e8cf91f18d90f778ce20e66c68219c74'
 displaybase='https://github.com/impallari/Libre-Caslon-Display/raw/3491f6a9cfde2bc15e736463b0bc7d93054d5da1'
 source=(
