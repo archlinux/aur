@@ -1,0 +1,20 @@
+pkgbase = stitch-gear360-git
+	pkgdesc = Stitching tool for 360° videos captured by the Samsung Gear 360 (SM-C200)
+	pkgver = r3.f2c2941
+	pkgrel = 1
+	url = https://github.com/bilde2910/stitch-gear360
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fisheye-stitcher
+	depends = fisheye-mls-map-3840x1920
+	depends = python-spatialmedia
+	depends = ffmpeg
+	depends = ncurses
+	provides = stitch-gear360
+	conflicts = stitch-gear360
+	source = git+https://github.com/bilde2910/stitch-gear360.git
+	sha256sums = SKIP
+
+pkgname = stitch-gear360-git
+
