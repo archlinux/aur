@@ -1,0 +1,17 @@
+pkgbase = opencpn-plugin-oesenc-git
+	pkgdesc = O-charts.org plugin for OpenCPN
+	pkgver = 4.0.5.r112.gaa16607
+	pkgrel = 1
+	url = https://opencpn.org/OpenCPN/plugins/oesenc.html
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = opencpn
+	conflicts = opencpn-plugin-oesenc
+	source = opencpn-plugin-oesenc-git::git+https://github.com/bdbcat/oesenc_pi.git
+	sha1sums = SKIP
+
+pkgname = opencpn-plugin-oesenc-git
+
