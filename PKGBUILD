@@ -6,7 +6,7 @@
 
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=4.0.0.r388.g2d25965db
+pkgver=5.0.1.r397.g21725cc0b
 #_fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="An Open Source Multi-physics Simulation Engine"
