@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _pkgname=chronoengine
@@ -71,15 +72,14 @@ CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 prepare() {
   cd ${pkgname}
   git submodule init
-  git config submodule.src/chrono_thirdparty/googlebenchmark.url ${srcdir}/benchmark
-  git config submodule.src/chrono_thirdparty/googletest.url ${srcdir}/googletest
+  git config submodule.src/chrono_thirdparty/googlebenchmark.url "${srcdir}"/benchmark
+  git config submodule.src/chrono_thirdparty/googletest.url "${srcdir}"/googletest
   git submodule update
-  files=($(find -name CMakeLists.txt))
-  files+=($(find -name \*.cmake\*))
-  sed -i 's/lib64/lib/' ${files[@]}
+  mapfile -t files < <(find . -name CMakeLists.txt)
+  mapfile -t -O ${#files[@]} files < <(find . -name \*.cmake\*)
+  sed -i 's/lib64/lib/' "${files[@]}"
   sed -i 's|share/chrono/bin|bin/chronoengine|' CMakeLists.txt
-  git apply ${srcdir}/glm.patch
-#  git apply ${srcdir}/opencascade.patch
+  git apply -v "${srcdir}"/glm.patch
 }
 
 pkgver() {
@@ -88,18 +88,16 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build 
-  cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_SKIP_INSTALL_RPATH=ON \
-	${CMAKE_FLAGS[@]} \
-        ../${pkgname}
-  make
+	-DCMAKE_SKIP_INSTALL_RPATH=ON \
+	"${CMAKE_FLAGS[@]}" \
+	-S ${pkgname} \
+	-B build
+  make -C build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-  install -D -m644 "../${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
-  install -D -m644 "../chronoengine.sh" "${pkgdir}/etc/profile.d/chronoengine.sh"  
+  make -C build DESTDIR="$pkgdir" install
+  install -D -m644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "chronoengine.sh" "${pkgdir}/etc/profile.d/chronoengine.sh"
 }
