@@ -3,12 +3,11 @@
 
 pkgname=samim-fonts
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font based on Vazir font."
 url="https://github.com/rastikerdar/samim-font"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-samim' "$pkgname")
 conflicts=('ttf-samim' "$pkgname")
 replaces=('ttf-samim')

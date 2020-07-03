@@ -1,11 +1,10 @@
 pkgbase = samim-fonts
 	pkgdesc = A beautiful Persian font based on Vazir font.
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rastikerdar/samim-font
 	arch = any
 	license = OFL
-	depends = fontconfig
 	provides = ttf-samim
 	provides = samim-fonts
 	conflicts = ttf-samim
