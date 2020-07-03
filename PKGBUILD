@@ -6,7 +6,7 @@
 
 pkgname=qdl
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/andersson/qdl'
@@ -28,4 +28,7 @@ package(){
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 
+  # Package documentation
+  install -d "${pkgdir}/usr/share/doc/${pkgname}/"
+  install README "${pkgdir}/usr/share/doc/${pkgname}/"
 }
