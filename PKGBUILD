@@ -1,23 +1,10 @@
 pkgname=beanstalkd-cli-bin
 pkgver=0.3.0
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc="Simple to use commandline tool for Beanstalkd"
 arch=('i686' 'x86_64')
-url=""
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+url="https://github.com/schickling/beanstalkd-cli/"
+license=('MIT')
 source=("https://github.com/schickling/beanstalkd-cli/releases/download/${pkgver}/beanstalkd-cli-linux.tar.gz")
 md5sums=('1eb9be95e2124651464d6cfe8065faf5')
 
