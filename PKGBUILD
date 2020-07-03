@@ -3,8 +3,8 @@
 pkgname=libhandy1
 _author=GNOME
 _gitname=libhandy
-pkgver=0.82.0
-pkgrel=3
+pkgver=0.83.0
+pkgrel=1
 pkgdesc="Library full of GTK+ widgets for mobile phones (1.0, can be installed alongside 0.0)"
 url="https://gitlab.gnome.org/GNOME/libhandy"
 license=(LGPL2.1)
@@ -13,7 +13,7 @@ depends=(gtk3)
 conflicts=(libhandy-git)
 makedepends=(git glade gobject-introspection meson vala)
 source=("https://gitlab.gnome.org/$_author/$_gitname/-/archive/$pkgver/$_gitname-$pkgver.tar.gz")
-sha256sums=('cf73a1f1dec6347627b0d12d70c12ce7f9ce947066280e57654ffa13fe3b71c1')
+sha256sums=('64b4036a97fc89430ef2388dcded2a89a0d2728b9f0d7c03f5990cb0a05a8b9c')
 
 build() {
     arch-meson $_gitname-$pkgver build -Dgtk_doc=true -Dexamples=false
