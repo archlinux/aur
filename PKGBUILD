@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ncurses')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 source=("https://sourceforge.net/projects/terminal-rubiks-cube/files/$pkgname-$pkgver.tar.gz")
-md5sums=('0c963f30eab06c7b12ca265992e70814')
+md5sums=('b11707e9f87d60d66aae75b3ef909bce')
 
 build() {
 	cd "$pkgname-$pkgver"

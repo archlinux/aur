@@ -12,7 +12,7 @@ pkgbase = rubiks_cube
 	license = MIT
 	depends = ncurses
 	source = https://sourceforge.net/projects/terminal-rubiks-cube/files/rubiks_cube-1.0.tar.gz
-	md5sums = 0c963f30eab06c7b12ca265992e70814
+	md5sums = b11707e9f87d60d66aae75b3ef909bce
 
 pkgname = rubiks_cube
 
