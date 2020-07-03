@@ -1,8 +1,6 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
-
 pkgname=ttf-mononoki
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospace font for programmers, successor of monoOne"
 arch=('any')
 url="https://madmalik.github.io/mononoki/"
