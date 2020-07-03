@@ -12,7 +12,7 @@ _android_platform=21
 _prefix=/opt/android-libs/$_pkg_arch
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=5.69.0
+pkgver=5.71.0
 pkgrel=1
 pkgdesc="A QtQuick based components set (Android, $_pkg_arch)"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('cmake' 'android-ndk' 'android-sdk' 'extra-cmake-modules')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('8cf742d8f695c5ff6c7bcb5da1baddb50f5f5a0e96e879d8243704c847cd1443'
+sha256sums=('f323efb96a809dc9e572a0e68e04c4f485fc27f9ae65ffa3988830e348151356'
             'SKIP')
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 options=(!buildflags staticlibs !strip !emptydirs)
