@@ -14,6 +14,7 @@ pkgbase = python-pywerview-git
 	depends = python-pyopenssl
 	depends = python-beautifulsoup4
 	provides = python-pywerview
+	conflicts = python-pywerview
 	source = git+https://github.com/mpgn/pywerview.git
 	sha256sums = SKIP
 
