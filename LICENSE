@@ -1,0 +1,152 @@
+Sencha Cmd
+Copyright (c) 2012-2020 Sencha Inc.
+All rights reserved.
+licensing@sencha.com
+
+http://www.sencha.com/legal/sencha-tools-software-license-agreement
+
+
+Commercial License
+------------------------------------------------------------------------------------------
+Sencha Cmd is licensed commercially for free. See
+http://www.sencha.com/legal/sencha-tools-software-license-agreement for
+license terms.
+
+
+Third Party Content
+------------------------------------------------------------------------------------------
+The following third party software is distributed with Sencha Cmd and is
+provided under other licenses and/or has source available from other
+locations.
+
+YUI Compressor (BSD licensed)
+Site: https://github.com/yui/yuicompressor
+[Enter]
+
+License: https://github.com/yui/yuicompressor/blob/master/LICENSE.TXT
+
+PhantomJS (BSD)
+Site: http://www.phantomjs.org
+License: https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD
+
+Google Closure Compiler (Apache)
+Site: http://code.google.com/p/closure-compiler/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Open-Vcdiff (Apache)
+Site: http://code.google.com/p/open-vcdiff/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Mozilla Rhino (MPL)
+Site: https://developer.mozilla.org/en-US/docs/Rhino
+License: http://www.mozilla.org/MPL/2.0/
+
+GSON (Apache)
+Site: http://code.google.com/p/google-gson/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+JANSI (Apache)
+[Enter]
+
+Site: https://github.com/fusesource/jansi
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Ant-contrib (Apache)
+Site: http://ant-contrib.sourceforge.net/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Ant (Apache)
+Site: http://ant.apache.org/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Apache Velocity (Apache)
+Site: http://velocity.apache.org/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+Commons-io (Apache)
+Site: http://commons.apache.org/io/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+slf4j (MIT)
+Site: http://www.slf4j.org/
+License: http://www.slf4j.org/license.html
+
+[Enter]
+
+Compass (MIT)
+Site: http://github.com/chriseppstein/compass
+License:
+http://github.com/chriseppstein/compass/blob/stable/LICENSE.markdown
+
+Sass (MIT)
+Site: http://rubygems.org/gems/sass
+License: http://sass-lang.com/documentation/file.MIT-LICENSE.html
+
+FSSM (MIT)
+Site:http://github.com/ttilley/fssm/blob/master/LICENSE
+License: https://github.com/ttilley/fssm/blob/master/LICENSE
+
+ChunkyPNG (MIT)
+Site: http://github.com/wvanbergen/chunky_png/wiki
+License: https://github.com/wvanbergen/chunky_png/blob/master/LICENSE
+
+BSJSONAdditions (MIT)
+Site: http://github.com/blakeseely/bsjsonadditions
+License: http://sheepsystems.com/bookmacster/HelpBook/LicenseBlakeSeely.html
+
+Reachability (MIT)
+Site: http://developer.apple.com/library/ios/#samplecode/Reachability
+[Enter]
+
+License:
+https://developer.apple.com/library/content/samplecode/Reachability/Listings/LICENSE_txt.html#//apple_ref/doc/uid/DTS40007324-LICENSE_txt-DontLinkElementID_3
+
+Apache Ant for Windows (Apache)
+Site: http://ant.apache.org/bindownload.cgi
+License: http://ant.apache.org/license.html
+
+phloc-css (Apache)
+Site: https://code.google.com/p/phloc-css/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+xfiledialog (Apache)
+Site: https://code.google.com/p/xfiledialog/
+License: http://www.apache.org/licenses/LICENSE-2.0
+
+7-Zip (LGPL)
+Site: http://www.7-zip.org/sdk.html
+License: http://www.7-zip.org/license.txt
+
+ES6 Module Loader (MIT)
+Site: https://github.com/ModuleLoader/es6-module-loader
+License:
+https://github.com/ModuleLoader/es6-module-loader/blob/master/LICENSE-MIT
+[Enter]
+
+
+systemjs (MIT)
+Site: https://github.com/systemjs/systemjs
+License: https://github.com/systemjs/systemjs/blob/master/LICENSE
+
+Node.js (MIT)
+Site: https://nodejs.org/en/
+License: https://raw.githubusercontent.com/nodejs/node/master/LICENSE
+
+WebKit (LGPL) Copyright (C) 1991 Free Software Foundation, Inc
+Site: http://www.webkit.org/
+License: http://www.webkit.org/coding/lgpl-license.html
+
+Bouncy Castle (MIT)
+Site: https://www.bouncycastle.org/
+License: https://www.bouncycastle.org/
+
+--
+
+THIS SOFTWARE IS DISTRIBUTED "AS-IS" WITHOUT ANY WARRANTIES, CONDITIONS AND
+REPRESENTATIONS WHETHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
+IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, MERCHANTABLE QUALITY,
+FITNESS FOR A PARTICULAR PURPOSE, DURABILITY, NON-INFRINGEMENT, PERFORMANCE
+[Enter]
+
+AND THOSE ARISING BY STATUTE OR FROM CUSTOM OR USAGE OF TRADE OR COURSE OF
+DEALING.
