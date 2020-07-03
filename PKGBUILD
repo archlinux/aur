@@ -1,6 +1,9 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+# Notes:
+# MUMPS need some work to be able to link corectly with deps of mumps (scotch,mpi)
+
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
 pkgver=4.0.0.r388.g2d25965db
@@ -22,6 +25,7 @@ makedepends+=(thrust)      # MODULE_PARALLEL required
 makedepends+=(oce)         # MODULE_CASCADE
 makedepends+=(mumps)       # MODULE_MUMPS
 makedepends+=(blas)        # MODULE_MUMPS required
+makedepends+=(intel-mkl)   # MODULE_MKL
 optdepends+=(	"irrlicht: Runtime visualization with Irrlicht."
 		"glew: Runtime visualization with OpenGL."
 		"glfw: Runtime visualization with OpenGL."
@@ -29,8 +33,8 @@ optdepends+=(	"irrlicht: Runtime visualization with Irrlicht."
 		"python: Python bindings"
 		"nvidia-utils: CUDA support in PARALLEL module"
 		"opencascade: add 3D CAD file support (STEP format)"
+		"intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)"
 		)
-#optdepends+=("intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)")
 source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}"
 	"git+https://github.com/google/benchmark.git"
 	"git+https://github.com/google/googletest.git"
@@ -56,7 +60,8 @@ CMAKE_FLAGS=(	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_OPENGL=ON
 		-DENABLE_MODULE_PARALLEL=ON
 		-DTHRUST_INCLUDE_DIR=/opt/thrust
-		-DENABLE_MODULE_MKL=OFF
+		-DENABLE_MODULE_MKL=ON
+		-DINTEL_ROOT=/opt/intel/mkl
 		-DENABLE_MODULE_COSIMULATION=ON
 		-DENABLE_MODULE_FSI=ON
 		-DENABLE_MODULE_MUMPS=OFF
