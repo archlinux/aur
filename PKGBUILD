@@ -3,7 +3,7 @@
 
 pkgname=versionist
 pkgdesc='Flexible CHANGELOG generation toolkit that adapts to your commit conventions'
-pkgver=6.1.2
+pkgver=6.1.5
 pkgrel=1
 arch=('any')
 url='https://github.com/balena-io/versionist'
@@ -13,7 +13,7 @@ depends=('nodejs>=4.0.0')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('2e0e099f3964423a13aabe323fc3ab8f0be54cac160382c165bafe89f7bb6f7b')
+sha256sums=('6cea94e472878829728ca533d11f992d15c70c13262c92782620c703237a2c31')
 
 package() {
   npm install --global --only=production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
