@@ -1,7 +1,7 @@
 pkgbase = cloudcompare
 	pkgdesc = A 3D point cloud (and triangular mesh) processing software
-	pkgver = 2.10.3
-	pkgrel = 2
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = http://www.danielgm.net/cc/
 	arch = i686
 	arch = x86_64
@@ -26,10 +26,12 @@ pkgbase = cloudcompare
 	depends = qt5-svg
 	depends = vxl
 	optdepends = pcl
-	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git#tag=v2.10.3
+	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git#tag=v2.11.0
+	source = constexpr.patch
 	source = CloudCompare.desktop
 	source = ccViewer.desktop
 	md5sums = SKIP
+	md5sums = 7b254561200ba7d51817e4860f589426
 	md5sums = 379e09f6996b2b397429c0661c409bd0
 	md5sums = b6dcb0dee15cc67011166a2fc774c5ef
 

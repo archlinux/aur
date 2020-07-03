@@ -6,9 +6,9 @@
 
 name=cloudcompare
 pkgname=${name}
-_fragment="#tag=v2.10.3"
-pkgver=2.10.3
-pkgrel=2
+_fragment="#tag=v2.11.0"
+pkgver="${_fragment###tag=v}"
+pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -17,14 +17,17 @@ depends=('cgal' 'ffmpeg' 'glew' 'glu' 'mesa' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-
 makedepends=('cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
+        constexpr.patch
         CloudCompare.desktop
         ccViewer.desktop)
 md5sums=('SKIP'
+         '7b254561200ba7d51817e4860f589426'
          '379e09f6996b2b397429c0661c409bd0'
          'b6dcb0dee15cc67011166a2fc774c5ef')
 
 prepare() {
   git -C "${srcdir}/${name}" submodule update --init --recursive
+  git -C "${srcdir}/${name}" apply -v "${srcdir}"/*patch
 }
 
 pkgver() {
