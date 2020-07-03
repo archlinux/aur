@@ -6,12 +6,11 @@ _gitcommit=914ac905494891fb6aefff78b9d91f5362da67e6
 
 pkgname=kose-font
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Chinese Font derived from SetoFont / Naikai Font"
 arch=('any')
 license=('custom:SIL')
 url="https://github.com/lxgw/kose-font"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=(
   "git+${url}.git#commit=${_gitcommit}"
 )
