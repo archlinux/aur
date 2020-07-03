@@ -1,7 +1,7 @@
 pkgbase = beanstalkd-cli-bin
 	pkgdesc = Simple to use commandline tool for Beanstalkd
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schickling/beanstalkd-cli/
 	arch = i686
 	arch = x86_64
