@@ -1,25 +1,25 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgname=opentyrian-hg
-pkgver=1114
+pkgname=opentyrian-git
+pkgver=1132
 pkgrel=1
-pkgdesc="Port of the classic DOS game Tyrian"
-url="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
+pkgdesc="Open-source port of the DOS shoot-em-up Tyrian"
+url="https://github.com/opentyrian/opentyrian"
 arch=(i686 x86_64)
-license=(GPL3 GPL2)
+license=(GPL2)
 depends=(sdl2 sdl2_net)
-makedepends=(mercurial)
+makedepends=(git)
 provides=(opentyrian)
 conflicts=(opentyrian)
-replaces=(opentyrian-svn)
-source=("opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian#branch=sdl2"
+replaces=(opentyrian-svn opentyrian-hg)
+source=("git+https://github.com/opentyrian/opentyrian"
         http://www.camanis.net/opentyrian/tyrian21.zip)
-md5sums=('SKIP'
-         '2a3b206a6de25ed4b771af073f8ca904')
+sha256sums=('SKIP'
+            '7790d09a2a3addcd33c66ef063d5900eb81cc9c342f4807eb8356364dd1d9277')
 
 pkgver() {
   cd opentyrian
-  hg id -n
+  git rev-list --count HEAD
 }
 
 package() {
@@ -29,15 +29,15 @@ package() {
     CFLAGS="-pedantic -MMD $CFLAGS" \
     LDFLAGS="$LDFLAGS"
 
-  install -Dm644 linux/opentyrian.desktop "$pkgdir/usr/share/applications/opentyrian.desktop"
+  install -Dt "$pkgdir/usr/share/applications" -m644 linux/opentyrian.desktop
   for _x in 22 24 32 48 128; do
-    install -D -m644 "linux/icons/tyrian-$_x.png" \
+    install -Dm644 "linux/icons/tyrian-$_x.png" \
       "$pkgdir/usr/share/icons/hicolor/${_x}x${_x}/apps/opentyrian.png"
   done
 
   cd ../tyrian21
-  mkdir -p "$pkgdir/usr/share/games/tyrian"
-  for _x in *.dat *.lvl *.shp *.snd demo.* music.mus tyrend.anm tyrian.{cdt,hdt,pic} tshp2.pcx; do
-    install -m644 "$_x" "$pkgdir/usr/share/games/tyrian"
-  done
+  install -Dt "$pkgdir/usr/share/games/tyrian" -m644 *.dat *.lvl *.shp *.snd \
+    demo.* music.mus tyrend.anm tyrian.{cdt,hdt,pic} tshp2.pcx
 }
+
+# vim:set sw=2 et:
