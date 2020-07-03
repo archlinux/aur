@@ -3,12 +3,11 @@
 
 pkgname=ir-standard-fonts
 pkgver=20170121
-pkgrel=2
+pkgrel=3
 pkgdesc="Iran Supreme Council of Information and Communication Technology (SCICT) standard Persian fonts."
 url="https://github.com/molaeiali/ir-standard-fonts"
 arch=(any)
 license=('unknown')
-depends=('fontconfig')
 makedepends=('git')
 provides=('ttf-irfonts' "$pkgname")
 conflicts=('ttf-irfonts' "$pkgname")
