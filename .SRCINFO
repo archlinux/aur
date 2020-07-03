@@ -1,11 +1,10 @@
 pkgbase = nahid-fonts
 	pkgdesc = A Persian (Farsi) Font.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rastikerdar/nahid-font
 	arch = any
 	license = OFL
-	depends = fontconfig
 	provides = ttf-nahid
 	conflicts = ttf-nahid
 	source = nahid-fonts-0.3.0.zip::https://github.com/rastikerdar/nahid-font/releases/download/v0.3.0/nahid-font-v0.3.0.zip

@@ -1,14 +1,12 @@
-# $Id$
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=nahid-fonts
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Persian (Farsi) Font."
 url="https://github.com/rastikerdar/nahid-font"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-nahid')
 conflicts=('ttf-nahid')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/nahid-font-v${pkgver}.zip")
@@ -18,4 +16,3 @@ package() {
   install -Dt "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" -m644 ./{,**/}*.ttf
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ./LICENSE
 }
-# vim:set ts=2 sw=2 et:
