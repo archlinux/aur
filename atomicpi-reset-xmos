@@ -1,2 +1,0 @@
-#!/bin/sh
-systemctl restart atomicpi-hold-xmos
