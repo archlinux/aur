@@ -1,0 +1,17 @@
+pkgbase = gittools-git
+	pkgdesc = A package with 3 tools for pwn'ing websites with .git repositories available
+	pkgver = r61.71ea557
+	pkgrel = 1
+	url = https://github.com/internetwache/GitTools
+	arch = any
+	license = MIT
+	depends = git
+	depends = python
+	depends = python-requests
+	depends = curl
+	provides = gittools
+	source = gittools-git::git+https://github.com/internetwache/GitTools
+	sha256sums = SKIP
+
+pkgname = gittools-git
+
