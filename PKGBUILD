@@ -1,8 +1,6 @@
-# on the base of Gentoo gwyddion ebuild
-# http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.55
+pkgver=2.56
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
@@ -22,23 +20,8 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
             'openexr: import and export of OpenEXR HDR images')
-source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz gwyddion-2.55-xml.patch)
-sha256sums=('b1f1fe5ade7d667d005078f25c1b8b1523d18307ac451176ccd7c6b7bffe0050'
-            'b6e70a95d999e6c9eb419b91695f0e31f43f4248f08e40aa178662e203a5b445')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  patch -Np2 -i "${srcdir}/gwyddion-2.55-xml.patch"
-
-  # python2 fix
-  for file in $(find . -name '*.py' -print); do
-      sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-      sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
-
-
-}
+source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
+sha256sums=('22dc4433fde58b502b7efeb076efab3f50ccfcc2d8198d746b65cfe6e2b8037d')
 
 build() {
   cd $pkgname-$pkgver
