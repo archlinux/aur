@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -10,13 +10,14 @@ makedepends=('cargo'
 			 'cmake')
 depends=('qt5-base'
      	 'polkit')
+conflicts=("netctl-tray-auto")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('6764bc400a56ddcd136fb56c1fdf9749')
+md5sums=('9d191cd2ab8359603786fc32b5b45d87')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
   RUSTUP_TOOLCHAIN=nightly \
-    cargo build --release --locked
+    cargo +nightly build --release --locked
 }
 
 package() {

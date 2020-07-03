@@ -1,7 +1,7 @@
 pkgbase = netctl-tray
 	pkgdesc = A lightweight netctl tray app with notifications
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/PonasKovas/netctl-tray
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,9 @@ pkgbase = netctl-tray
 	makedepends = cmake
 	depends = qt5-base
 	depends = polkit
-	source = netctl-tray-0.2.0.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/0.2.0.tar.gz
-	md5sums = 6764bc400a56ddcd136fb56c1fdf9749
+	conflicts = netctl-tray-auto
+	source = netctl-tray-0.2.1.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/0.2.1.tar.gz
+	md5sums = 9d191cd2ab8359603786fc32b5b45d87
 
 pkgname = netctl-tray
 
