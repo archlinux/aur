@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = rrot
 	pkgdesc = Rot encoder written in rust
 	pkgver = 1.0
 	pkgrel = 1
