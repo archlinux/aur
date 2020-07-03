@@ -1,6 +1,6 @@
 pkgbase = nojava-ipmi-kvm-docker
 	pkgdesc = A tool to access Java based ipmi kvm consoles without a local Java installation (Docker dependency).
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/sciapp/nojava-ipmi-kvm
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = nojava-ipmi-kvm-docker
 	depends = python-requests
 	depends = python-yacl
 	optdepends = python-pyqtwebengine: GUI support
-	provides = nojava-ipmi-kvm=0.7.2
+	provides = nojava-ipmi-kvm=0.8.0
 	conflicts = nojava-ipmi-kvm-podman
-	source = https://github.com/sciapp/nojava-ipmi-kvm/archive/v0.7.2.tar.gz
-	sha256sums = f3791ad8d78780ebf27e3e37bbcbf9ea80b5a522086a6e7e630b7f4f7db0a0a3
+	source = https://github.com/sciapp/nojava-ipmi-kvm/archive/v0.8.0.tar.gz
+	sha256sums = e03a8002ec36942f6a1b4af66fdfa48f2ea12f96dacb7e115ff1572b6dbebb8e
 
 pkgname = nojava-ipmi-kvm-docker
 
