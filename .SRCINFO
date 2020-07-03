@@ -5,6 +5,7 @@ pkgbase = lens_calibrate
 	url = https://gitlab.com/cryptomilk/lens_calibrate
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python-exiv2>=0.2.1
 	depends = python-numpy
 	depends = python-scipy

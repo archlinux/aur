@@ -7,8 +7,8 @@ pkgdesc='Script to calculate lens calibration data for the lensfun project'
 arch=('any')
 url="https://gitlab.com/cryptomilk/lens_calibrate"
 license=('GPL3')
-groups=()
 depends=('python-exiv2>=0.2.1' 'python-numpy' 'python-scipy' 'python-pypdf2' 'darktable' 'hugin>=2018' 'imagemagick' 'gnuplot')
+makedepends=('git')
 source=("git+https://gitlab.com/cryptomilk/lens_calibrate.git#tag=$pkgname-$pkgver")
 sha512sums=('SKIP')
 
