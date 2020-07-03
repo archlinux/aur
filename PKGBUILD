@@ -8,6 +8,22 @@
 #   or run `make plugins` in the cloned repo
 PLUGINS=""
 
+
+# -------------------------------------------------------
+#                        DEPENDS
+# -------------------------------------------------------
+# If you want a super-minimal system, some of the following
+# dependencies can be disabled
+# Always required:
+depends=('libxft')
+# Required for plugins which copy to clip perminantly
+#   this includes: calc, spellcheck
+depends+=('xclip')
+# Requred for the spellcheck plugin
+depends+=('aspell')
+# Required for Xinerama (requires editing config.mk to disable)
+depends+=('libxinerama')
+
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
@@ -17,7 +33,6 @@ pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
 url="https://github.com/Shizcow/dmenu-rs"
 license=('GPL')
-depends=('sh' 'libxinerama' 'libxft')
 makedepends=('rust' 'git' 'clang')
 provides=($_pkgname)
 conflicts=($_pkgname)
