@@ -1,0 +1,28 @@
+Description: Use installed libffi_pic.a
+Author: NIIBE Yutaka <gniibe@fsij.org>
+Reviewed-By: NIIBE Yutaka <gniibe@fsij.org>
+Last-Update: 2013-01-25
+
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -20,9 +20,9 @@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ 
+-CPPFLAGS       = -I./libffi/include -DGAUCHE_API_0_8_8 @CPPFLAGS@
++CPPFLAGS       = -DGAUCHE_API_0_8_8 @CPPFLAGS@
+ LDFLAGS        = @LDFLAGS@
+-LIBS           = libffi/.libs/libffi.a @LIBS@
++LIBS           = /usr/lib/libffi.so @LIBS@
+ 
+ YACC           = @YACC@
+ 
+@@ -38,7 +38,7 @@
+ SCMFILES  = 
+ HEADERS   = 
+ 
+-TARGET    = libffi/.libs/libffi.a $(ARCHFILES)
++TARGET    = $(ARCHFILES)
+ GENERATED = libffi
+ CONFIG_GENERATED = libffi/Makefile Makefile cwcompile
+ 

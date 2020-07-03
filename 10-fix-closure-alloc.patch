@@ -1,0 +1,73 @@
+Index: gauche-c-wrapper/src/closure_alloc.c
+===================================================================
+--- gauche-c-wrapper.orig/src/closure_alloc.c
++++ gauche-c-wrapper/src/closure_alloc.c
+@@ -45,11 +45,15 @@ typedef struct FreeNodeRec {
+ 
+ static FreeNode *free_list_start = NULL;
+ 
++static int page_size;
++
+ static void expand_area()
+ {
+     void *area;
+     FreeNode *node;
+-    int page_size = getpagesize();
++
++    if (!page_size)
++      page_size = getpagesize();
+ 
+     area =  mmap(NULL, page_size, PROT_EXEC | PROT_READ | PROT_WRITE,
+                  MAP_PRIVATE | MAP_ANON, -1, 0);
+@@ -80,12 +84,16 @@ ffi_closure *closure_alloc()
+     }
+ 
+     node = free_list_start;
+-    ptr = node->start + (node->n - 1)*CLOSURE_SIZE;
+-    if (node->n == 1) {
++    if (node->n < 0) {
++        ptr = node->start;
+         free_list_start = node->next;
+         free(node);
+     } else {
+         --(node->n);
++	ptr = node->start + node->n*CLOSURE_SIZE;
++	if (node->n == 0) {
++            expand_area();
++	}
+     }
+ 
+     return ptr;
+@@ -93,18 +101,25 @@ ffi_closure *closure_alloc()
+ 
+ void closure_free(ffi_closure *ptr)
+ {
+-    FreeNode *node = free_list_start;
++    FreeNode *node;
+ 
+-    while (node != NULL) {
+-        if ((node->start + node->n*CLOSURE_SIZE) == (void*) ptr) {
+-            ++(node->n);
+-            return;
+-        }
++    for (node = free_list_start; node; node = node->next) {
++	if (node->n < 0) {
++	    if (node->start == (void *)ptr) {
++		free_list_start = node->next;
++		free (node);
++		return;
++	    }
++	} else if (node->n < page_size / CLOSURE_SIZE
++		   && (node->start + node->n*CLOSURE_SIZE) == (void *)ptr) {
++	    ++(node->n);
++	    return;
++	}
+     }
+ 
+     node = malloc(sizeof(FreeNode));
+     node->start = (void*) ptr;
+-    node->n = 1;
++    node->n = -1;
+     node->next = free_list_start;
+     free_list_start = node;
+ }

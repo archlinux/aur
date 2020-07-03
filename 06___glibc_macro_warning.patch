@@ -1,0 +1,24 @@
+From: Jens Thiele <karme@karme.de>
+To: Adrian Bunk <bunk@debian.org>
+Cc: 882328@bugs.debian.org, Naoki KOGURO <naoki@koguro.net>
+Subject: Re: [Pkg-gauche-devel] Bug#882328: gauche-c-wrapper FTBFS with glibc 2.25
+Date: Sat, 25 Nov 2017 13:50:06 +0100
+Message-ID: <87d146jzep.fsf@karme.de>
+
+diff -Nur gauche-c-wrapper-0.6.1.orig/lib/c-wrapper/c-parser.scm gauche-c-wrapper-0.6.1/lib/c-wrapper/c-parser.scm
+--- gauche-c-wrapper-0.6.1.orig/lib/c-wrapper/c-parser.scm      2009-08-08 16:44:52.000000000 +0200
++++ gauche-c-wrapper-0.6.1/lib/c-wrapper/c-parser.scm   2017-11-24 21:57:47.071382470 +0100
+@@ -1115,7 +1115,10 @@
+                 (raise e))))
+      (call-with-gcc-io include-dirs headers options
+                        (lambda (in out)
+-                         (let ((macro-list (queue->list (macro-queue))))
++                         (let ((macro-list (filter (lambda(x)
++                                                    (not (string=? (car x)
++                                                                   "__glibc_macro_warning(message)")))
++                                                  (queue->list (macro-queue)))))
+                            (for-each (lambda (macro-def)
+                                        (display (car macro-def) out)
+                                        (newline out))
+
+

@@ -1,0 +1,761 @@
+diff --unified --recursive --text c-wrapper-0.6.1/doc/c-wrapper-ref.texi c-wrapper-0.6.1.new/doc/c-wrapper-ref.texi
+--- c-wrapper-0.6.1/doc/c-wrapper-ref.texi	2009-08-08 16:44:52.000000000 +0200
++++ c-wrapper-0.6.1.new/doc/c-wrapper-ref.texi	2020-07-03 18:00:02.635910159 +0200
+@@ -9,12 +9,12 @@
+ @end direntry
+ @c JP
+ @setfilename c-wrapper-refj.info
+-@settitle c-wrapper ¥ê¥Õ¥¡¥ì¥ó¥¹¥Ş¥Ë¥å¥¢¥ë
++@settitle c-wrapper ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒãƒ‹ãƒ¥ã‚¢ãƒ«
+ @dircategory The Algorithmic Language Scheme
+ @direntry
+ * c-wrapper reference: (c-wrapper-refj.info).	A generic wrapper for C libraries.
+ @end direntry
+-@documentencoding euc-jp
++@documentencoding UTF-8
+ @c COMMON
+ @comment %**end of header
+ 
+@@ -35,7 +35,7 @@
+ @subtitle version @VERSION@
+ @author KOGURO, Naoki (naoki@@koguro.net)
+ @c JP
+-@title c-wrapper ¥ê¥Õ¥¡¥ì¥ó¥¹¥Ş¥Ë¥å¥¢¥ë
++@title c-wrapper ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒãƒ‹ãƒ¥ã‚¢ãƒ«
+ @subtitle version @VERSION@
+ @author KOGURO, Naoki (naoki@@koguro.net)
+ @c COMMON
+@@ -52,7 +52,7 @@
+ @c EN
+ This is a reference manual of c-wrapper.
+ @c JP
+-ËÜ¥É¥­¥å¥á¥ó¥È¤Ïc-wrapper¤Î¥ê¥Õ¥¡¥ì¥ó¥¹¥Ş¥Ë¥å¥¢¥ë¤Ç¤¹¡£
++æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯c-wrapperã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã§ã™ã€‚
+ @c COMMON
+ @end ifnottex
+ 
+@@ -88,7 +88,7 @@
+ @c EN
+ @code{c-wrapper} is the module which enables to use C libraries.
+ @c JP
+-@code{c-wrapper}¤È¤Ï¡¢C¤Î¥é¥¤¥Ö¥é¥ê¤òGauche¤«¤é»È¤¨¤ë¤è¤¦¤Ë¤¹¤ë¤¿¤á¤Î¥â¥¸¥å¡¼¥ë¤Ç¤¹¡£
++@code{c-wrapper}ã¨ã¯ã€Cã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’Gaucheã‹ã‚‰ä½¿ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚
+ @c COMMON
+ 
+ @menu
+@@ -106,34 +106,34 @@
+ Load one or more shared libraries. If you omit the extension, c-wrapper add
+ a extension (.so, .dylib, and so on) automatically.
+ @c JP
+-¶¦Í­¥é¥¤¥Ö¥é¥ê¤òÆÉ¤ß¹ş¤ß¤Ş¤¹¡£ @var{file-or-list} ¤Ç¥ê¥¹¥È¤òÅÏ¤¹¤ÈÊ£¿ô¤Î¥é¥¤¥Ö¥é¥ê¤¬ÆÉ¤ß¹ş¤Ş¤ì¤Ş¤¹¡£
+-¤Ş¤¿³ÈÄ¥»Ò¤ò¾ÊÎ¬¤·¤¿¾ì¹ç¡¢´Ä¶­¤Ë±ş¤¸¤¿³ÈÄ¥»Ò (.so ¤ä .dylib ¤Ê¤É ) ¤¬ÉÕ²Ã¤µ¤ì¤Ş¤¹¡£
++å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚ @var{file-or-list} ã§ãƒªã‚¹ãƒˆã‚’æ¸¡ã™ã¨è¤‡æ•°ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒèª­ã¿è¾¼ã¾ã‚Œã¾ã™ã€‚
++ã¾ãŸæ‹¡å¼µå­ã‚’çœç•¥ã—ãŸå ´åˆã€ç’°å¢ƒã«å¿œã˜ãŸæ‹¡å¼µå­ (.so ã‚„ .dylib ãªã© ) ãŒä»˜åŠ ã•ã‚Œã¾ã™ã€‚
+ @c COMMON
+ 
+ @c EN
+ Keyword arguments are:
+ @c JP
+-¥­¡¼¥ï¡¼¥É°ú¿ô¤Ë¤Ï°Ê²¼¤Î¤â¤Î¤òÍ¿¤¨¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰å¼•æ•°ã«ã¯ä»¥ä¸‹ã®ã‚‚ã®ã‚’ä¸ãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @table @code
+ @item :option option-string
+ @c EN
+ Specify library names and library load paths with ld like option.
+ @c JP
+-ld¤ËÍ¿¤¨¤ë¥ª¥×¥·¥ç¥ó¤Î¤è¤¦¤Ê·Á¼°¤Ç¶¦Í­¥é¥¤¥Ö¥é¥ê¤äÆÉ¤ß¹ş¤ß¥Ñ¥¹¤Î»ØÄê¤ò¹Ô¤¤¤Ş¤¹¡£¸½¾õ»È¤¨¤ë¤Î¤Ï°Ê²¼¤Î¥ª¥×¥·¥ç¥ó¤Ç¤¹¡£
++ldã«ä¸ãˆã‚‹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®ã‚ˆã†ãªå½¢å¼ã§å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚„èª­ã¿è¾¼ã¿ãƒ‘ã‚¹ã®æŒ‡å®šã‚’è¡Œã„ã¾ã™ã€‚ç¾çŠ¶ä½¿ãˆã‚‹ã®ã¯ä»¥ä¸‹ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ã™ã€‚
+ @c COMMON
+ @table @code
+ @item -llibrary       
+ @c EN
+ Load the library named @var{library}. For example, -lc means to load 'libc'.
+ @c JP
+-¶¦Í­¥é¥¤¥Ö¥é¥ê @var{library} ¤òÆÉ¤ß¹ş¤ß¤Ş¤¹¡£Îã¤¨¤Ğ¡¢-lc ¤Î¤è¤¦¤Ë»ØÄê¤¹¤ë¤È libc ¤¬ÆÉ¤ß¹ş¤Ş¤ì¤Ş¤¹¡£
++å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒª @var{library} ã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚ä¾‹ãˆã°ã€-lc ã®ã‚ˆã†ã«æŒ‡å®šã™ã‚‹ã¨ libc ãŒèª­ã¿è¾¼ã¾ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @item -Ldir
+ @c EN
+ Add directory @var{dir} to the library search paths.
+ @c JP
+-¶¦Í­¥é¥¤¥Ö¥é¥ê¤Î¥µ¡¼¥Á¥ê¥¹¥È¤Ë¥Ç¥£¥ì¥¯¥È¥ê @var{dir} ¤òÄÉ²Ã¤·¤Ş¤¹¡£
++å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª @var{dir} ã‚’è¿½åŠ ã—ã¾ã™ã€‚
+ @c COMMON
+ @end table
+ @end table
+@@ -143,7 +143,7 @@
+ @c EN
+ This function is the same (c-load-library '() :option option-string). and is designed to use with a command returning linker flags like pkg-config.
+ @c JP
+-(c-load-library '() :option option-string) ¤ÈÆ±¤¸¤Ç¤¹¡£¤³¤Î´Ø¿ô¤Ï pkg-config ¤Ê¤É¤Î¤è¤¦¤Ê¥ê¥ó¥«¤Î¥Õ¥é¥°¤òÊÖ¤¹¥³¥Ş¥ó¥É¤ÈÁÈ¤ß¹ç¤ï¤»¤Æ»È¤¦¤³¤È¤òÁÛÄê¤·¤Æ¤¤¤Ş¤¹¡£
++(c-load-library '() :option option-string) ã¨åŒã˜ã§ã™ã€‚ã“ã®é–¢æ•°ã¯ pkg-config ãªã©ã®ã‚ˆã†ãªãƒªãƒ³ã‚«ã®ãƒ•ãƒ©ã‚°ã‚’è¿”ã™ã‚³ãƒãƒ³ãƒ‰ã¨çµ„ã¿åˆã‚ã›ã¦ä½¿ã†ã“ã¨ã‚’æƒ³å®šã—ã¦ã„ã¾ã™ã€‚
+ @c COMMON
+ @example
+ (c-ld (process-output->string "pkg-config Wand --libs"))
+@@ -159,50 +159,50 @@
+ Load one or more header files and define functions, global variables, constants
+ , type definitions and macros in the current module. 
+ @c JP
+-»ØÄê¤µ¤ì¤¿¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹ş¤ß¡¢´Ø¿ô¡¦¥°¥í¡¼¥Ğ¥ëÊÑ¿ô¡¦Äê¿ô¡¦·¿ÄêµÁ¡¦¥Ş¥¯¥í¤ò¥«¥ì¥ó¥È¥â¥¸¥å¡¼¥ë¤ËÄêµÁ¤·¤Ş¤¹¡£
++æŒ‡å®šã•ã‚ŒãŸãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€é–¢æ•°ãƒ»ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ãƒ»å®šæ•°ãƒ»å‹å®šç¾©ãƒ»ãƒã‚¯ãƒ­ã‚’ã‚«ãƒ¬ãƒ³ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å®šç¾©ã—ã¾ã™ã€‚
+ 
+ @c EN
+ Keyword arguments are:
+ @c JP
+-keyword °ú¿ô¤Ë¤Ï°Ê²¼¤Î¤â¤Î¤ò»ØÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++keyword å¼•æ•°ã«ã¯ä»¥ä¸‹ã®ã‚‚ã®ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @table @code
+ @item :include-dirs
+ @c EN
+ Sets up include directories. You can specify either a string file name or a list of string file names.
+ @c JP
+-¥¤¥ó¥¯¥ë¡¼¥É¥Ñ¥¹¤ò»ØÄê¤·¤Ş¤¹¡£Ê¸»úÎó¤â¤·¤¯¤ÏÊ¸»úÎó¤Î¥ê¥¹¥È¤¬»ØÄê²ÄÇ½¤Ç¤¹¡£
++ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ã€‚æ–‡å­—åˆ—ã‚‚ã—ãã¯æ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆãŒæŒ‡å®šå¯èƒ½ã§ã™ã€‚
+ @c COMMON
+ @item :option
+ @c EN
+ Sets up C preprocessor options.
+ @c JP
+- C¥×¥ê¥×¥í¥»¥Ã¥µ¤ËÅÏ¤¹¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤·¤Ş¤¹¡£Ê¸»úÎó¤¬»ØÄê²ÄÇ½¤Ç¤¹¡£
++ Cãƒ—ãƒªãƒ—ãƒ­ã‚»ãƒƒã‚µã«æ¸¡ã™ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æŒ‡å®šã—ã¾ã™ã€‚æ–‡å­—åˆ—ãŒæŒ‡å®šå¯èƒ½ã§ã™ã€‚
+ @c COMMON
+ @item :import
+ @c EN
+ Sets up symbols which you want to define. You can specify a symbol, a string, a regexp, a procedure or a list of them.
+ If you put a procedure, it is called with two arguments, a header file name and a symbol. When the procedure returns @code{#f}, the symbol is ignored, and the symbol is defined otherwise.
+ @c JP
+-¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤«¤éÆÉ¤ß¹ş¤à¥·¥ó¥Ü¥ë¤ò»ØÄê¤·¤Ş¤¹¡£
+-°ú¿ô¤È¤·¤Æ¡¢¥·¥ó¥Ü¥ë¡¢Ê¸»úÎó¡¢Àµµ¬É½¸½¡¢¼êÂ³¤­¤È¡¢¤½¤ì¤é¤Î¥ê¥¹¥È¤¬»ØÄê²ÄÇ½¤Ç¤¹¡£
+-¼êÂ³¤­¤¬ÅÏ¤µ¤ì¤¿¾ì¹ç¤Ï¡¢¥·¥ó¥Ü¥ë¤¬¸«¤Ä¤«¤ë¤¿¤Ó¤Ë¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤Î¥Ñ¥¹Ì¾¤È¥·¥ó¥Ü¥ëÌ¾¤ò°ú¿ô¤È¤·¤Æ¡¢¤½¤Î¼êÂ³¤­¤¬¸Æ¤Ó½Ğ¤µ¤ì¤Ş¤¹¡£
+-¼êÂ³¤­¤¬@code{#f}¤òÊÖ¤·¤¿¾ì¹ç¤½¤Î¥·¥ó¥Ü¥ë¤ÏÌµ»ë¤µ¤ì¡¢¤½¤ì°Ê³°¤ÎÃÍ¤Î¾ì¹ç¤Ë¥·¥ó¥Ü¥ë¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£
++ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚·ãƒ³ãƒœãƒ«ã‚’æŒ‡å®šã—ã¾ã™ã€‚
++å¼•æ•°ã¨ã—ã¦ã€ã‚·ãƒ³ãƒœãƒ«ã€æ–‡å­—åˆ—ã€æ­£è¦è¡¨ç¾ã€æ‰‹ç¶šãã¨ã€ãã‚Œã‚‰ã®ãƒªã‚¹ãƒˆãŒæŒ‡å®šå¯èƒ½ã§ã™ã€‚
++æ‰‹ç¶šããŒæ¸¡ã•ã‚ŒãŸå ´åˆã¯ã€ã‚·ãƒ³ãƒœãƒ«ãŒè¦‹ã¤ã‹ã‚‹ãŸã³ã«ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹åã¨ã‚·ãƒ³ãƒœãƒ«åã‚’å¼•æ•°ã¨ã—ã¦ã€ãã®æ‰‹ç¶šããŒå‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚
++æ‰‹ç¶šããŒ@code{#f}ã‚’è¿”ã—ãŸå ´åˆãã®ã‚·ãƒ³ãƒœãƒ«ã¯ç„¡è¦–ã•ã‚Œã€ãã‚Œä»¥å¤–ã®å€¤ã®å ´åˆã«ã‚·ãƒ³ãƒœãƒ«ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @item :export?
+ @c EN
+ Specifies whether symbols in header files are exported or not. If you put @code{#t}, the symbols are exported automatically, and otherwise they are not exported.
+ @c JP
+-ÄêµÁ¤·¤¿¥·¥ó¥Ü¥ë¤ò@code{export}¤¹¤ë¤«¤É¤¦¤«¤ò»ØÄê¤·¤Ş¤¹¡£
+-@code{#t}¤Î¾ì¹ç¤ÏÄêµÁ¤·¤¿¥·¥ó¥Ü¥ë¤ËÂĞ¤·¼«Æ°Åª¤Ë@code{export}¤¬¼Â¹Ô¤µ¤ì¤Ş¤¹¡£@code{#f}¤Î¾ì¹ç¤Ï²¿¤â¤·¤Ş¤»¤ó¡£
++å®šç¾©ã—ãŸã‚·ãƒ³ãƒœãƒ«ã‚’@code{export}ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã—ã¾ã™ã€‚
++@code{#t}ã®å ´åˆã¯å®šç¾©ã—ãŸã‚·ãƒ³ãƒœãƒ«ã«å¯¾ã—è‡ªå‹•çš„ã«@code{export}ãŒå®Ÿè¡Œã•ã‚Œã¾ã™ã€‚@code{#f}ã®å ´åˆã¯ä½•ã‚‚ã—ã¾ã›ã‚“ã€‚
+ @c COMMON
+ @item :compiled-lib 
+ @c EN
+ Sets up a shared library file name which cwcompile command generates.
+ At runtime, if the library is exists, loads it instead of parsing the header files. Otherwise, parses the header files.
+ @c JP
+-cwcompile¥³¥Ş¥ó¥É¤Ë¤è¤êºîÀ®¤µ¤ì¤ë¥Ñ¡¼¥ººÑ¤ß¤Î¶¦Í­¥é¥¤¥Ö¥é¥ê¤ÎÌ¾Á°¤ò»ØÄê¤·¤Ş¤¹¡£
+-¤³¤³¤Ç»ØÄê¤µ¤ì¤¿¶¦Í­¥é¥¤¥Ö¥é¥ê¤¬Â¸ºß¤¹¤ë¾ì¹ç¡¢¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥Ñ¡¼¥º¤¹¤ëÂå¤ï¤ê¤Ë¤½¤Î¶¦Í­¥é¥¤¥Ö¥é¥ê¤òÆÉ¤ß¹ş¤ß¤Ş¤¹¡£¶¦Í­¥é¥¤¥Ö¥é¥ê¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¤Ï¡¢¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥º¤¬¹Ô¤ï¤ì¤Ş¤¹¡£
++cwcompileã‚³ãƒãƒ³ãƒ‰ã«ã‚ˆã‚Šä½œæˆã•ã‚Œã‚‹ãƒ‘ãƒ¼ã‚ºæ¸ˆã¿ã®å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åå‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚
++ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸå…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒå­˜åœ¨ã™ã‚‹å ´åˆã€ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‘ãƒ¼ã‚ºã™ã‚‹ä»£ã‚ã‚Šã«ãã®å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚ºãŒè¡Œã‚ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @end table
+ 
+@@ -230,24 +230,24 @@
+ @end table
+ 
+ @c JP
+-¥Ø¥Ã¥À¥Õ¥¡¥¤¥ëÆÉ¤ß¹ş¤ß»ş¤Ë¡¢°Ê²¼¤Î¾ğÊó¤ò¼ı½¸¤·´Ø¿ô¤äÊÑ¿ô¤Ê¤É¤òÄêµÁ¤·¤Æ¤¤¤­¤Ş¤¹¡£
++ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿æ™‚ã«ã€ä»¥ä¸‹ã®æƒ…å ±ã‚’åé›†ã—é–¢æ•°ã‚„å¤‰æ•°ãªã©ã‚’å®šç¾©ã—ã¦ã„ãã¾ã™ã€‚
+ @table @asis
+-@item ´Ø¿ô¤Î¥×¥í¥È¥¿¥¤¥×Àë¸À
+-´Ø¿ôÌ¾¤ÈÆ±Ì¾¤Î¥·¥ó¥Ü¥ë¤Ç´Ø¿ô¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£¤Ê¤ª¤³¤Î´Ø¿ô¤Ï°ú¿ô¤ËÂĞ¤·¤Æ@code{cast}¤òÌá¤êÃÍ¤ËÂĞ¤·¤Æ@code{scm-cast}¤òÅ¬ÍÑ¤·¤Ş¤¹¡£
+-@item ³°ÉôÊÑ¿ôÄêµÁ
+-ÊÑ¿ôÌ¾¤ÈÆ±Ì¾¤Î¥·¥ó¥Ü¥ë¤Ç³°ÉôÊÑ¿ô¤ò»²¾È¤¹¤ë¥ª¥Ö¥¸¥§¥¯¥È¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£
++@item é–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
++é–¢æ•°åã¨åŒåã®ã‚·ãƒ³ãƒœãƒ«ã§é–¢æ•°ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚ãªãŠã“ã®é–¢æ•°ã¯å¼•æ•°ã«å¯¾ã—ã¦@code{cast}ã‚’æˆ»ã‚Šå€¤ã«å¯¾ã—ã¦@code{scm-cast}ã‚’é©ç”¨ã—ã¾ã™ã€‚
++@item å¤–éƒ¨å¤‰æ•°å®šç¾©
++å¤‰æ•°åã¨åŒåã®ã‚·ãƒ³ãƒœãƒ«ã§å¤–éƒ¨å¤‰æ•°ã‚’å‚ç…§ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚
+ @item @code{enum}
+-Äê¿ôÌ¾¤ÈÆ±Ì¾¤Î¥·¥ó¥Ü¥ë¤ÇÄê¿ô¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£
++å®šæ•°åã¨åŒåã®ã‚·ãƒ³ãƒœãƒ«ã§å®šæ•°ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚
+ @item @code{struct}
+-¹½Â¤ÂÎ¤Î¥¯¥é¥¹¤òÄêµÁ¤·¤Ş¤¹¡£¤³¤Î¥¯¥é¥¹¤Ï@code{(c-struct tagname)}¤Ç»²¾È¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++æ§‹é€ ä½“ã®ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã¯@code{(c-struct tagname)}ã§å‚ç…§ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @item @code{union}
+-¶¦ÍÑÂÎ¤Î¥¯¥é¥¹¤òÄêµÁ¤·¤Ş¤¹¡£¤³¤Î¥¯¥é¥¹¤Ï@code{(c-union tagname)}¤Ç»²¾È¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++å…±ç”¨ä½“ã®ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã¯@code{(c-union tagname)}ã§å‚ç…§ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @item @code{typedef}
+-@code{<typename>}¤È¤¤¤¦¥·¥ó¥Ü¥ë¤ÇC¤Î·¿¤ËÂĞ±ş¤¹¤ë¥¯¥é¥¹¤òÄêµÁ¤·¤Ş¤¹¡£
+-@item ¥ª¥Ö¥¸¥§¥¯¥È·Á¼° (objectlike) ¤Î¥Ş¥¯¥í
+-¥Ş¥¯¥í¤ÎÆâÍÆ¤¬¼°¤Ç¤¢¤ê¡¢»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë¼±ÊÌ»Ò¤¬¤¹¤Ù¤ÆÀë¸ÀºÑ¤ß¤Ç¤¢¤ê¡¢¤«¤ÄÉûºîÍÑ¤òµÚ¤Ü¤¹¼°¤Ç¤Ê¤¤¾ì¹ç¤Ë¡¢¥Ş¥¯¥íÌ¾¤ÈÆ±Ì¾¤Î¥·¥ó¥Ü¥ë¤ÇÃÍ¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£¤Ê¤ª¡¢C¸À¸ì¤Ç¤Î¥Ş¥¯¥í¤È¤Ï°ÕÌ£¤¬°Û¤Ê¤ê¡¢¤³¤ÎÃÍ¤Ï¥Ø¥Ã¥À¥Õ¥¡¥¤¥ëÆÉ¤ß¹ş¤ß»şÅÀ¤Ç¤ÎÃÍ¤Ç¤¢¤ê¡¢¥Ş¥¯¥í»ÈÍÑ»şÅÀ¤Ç¤ÎÃÍ¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó¡£
+-@item ´Ø¿ô·Á¼° (functionlike) ¤Î¥Ş¥¯¥í
+-¥Ş¥¯¥í¤ÎÆâÍÆ¤¬¼°¤â¤·¤¯¤ÏÊ¸¤Ç¤¢¤ê»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë¼±ÊÌ»Ò¤¬¤¹¤Ù¤ÆÀë¸ÀºÑ¤ß¤Î¾ì¹ç¤Ë¤Î¤ß¡¢¥Ş¥¯¥íÌ¾¤ÈÆ±Ì¾¤Î¥·¥ó¥Ü¥ë¤Ç¥Ş¥¯¥í¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£
++@code{<typename>}ã¨ã„ã†ã‚·ãƒ³ãƒœãƒ«ã§Cã®å‹ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
++@item ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå½¢å¼ (objectlike) ã®ãƒã‚¯ãƒ­
++ãƒã‚¯ãƒ­ã®å†…å®¹ãŒå¼ã§ã‚ã‚Šã€ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹è­˜åˆ¥å­ãŒã™ã¹ã¦å®£è¨€æ¸ˆã¿ã§ã‚ã‚Šã€ã‹ã¤å‰¯ä½œç”¨ã‚’åŠã¼ã™å¼ã§ãªã„å ´åˆã«ã€ãƒã‚¯ãƒ­åã¨åŒåã®ã‚·ãƒ³ãƒœãƒ«ã§å€¤ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚ãªãŠã€Cè¨€èªã§ã®ãƒã‚¯ãƒ­ã¨ã¯æ„å‘³ãŒç•°ãªã‚Šã€ã“ã®å€¤ã¯ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿æ™‚ç‚¹ã§ã®å€¤ã§ã‚ã‚Šã€ãƒã‚¯ãƒ­ä½¿ç”¨æ™‚ç‚¹ã§ã®å€¤ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
++@item é–¢æ•°å½¢å¼ (functionlike) ã®ãƒã‚¯ãƒ­
++ãƒã‚¯ãƒ­ã®å†…å®¹ãŒå¼ã‚‚ã—ãã¯æ–‡ã§ã‚ã‚Šä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹è­˜åˆ¥å­ãŒã™ã¹ã¦å®£è¨€æ¸ˆã¿ã®å ´åˆã«ã®ã¿ã€ãƒã‚¯ãƒ­åã¨åŒåã®ã‚·ãƒ³ãƒœãƒ«ã§ãƒã‚¯ãƒ­ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚
+ @end table
+ 
+ @c COMMON
+@@ -258,14 +258,14 @@
+ Loads libraries, parses header files and defines functions, global variables, constants, type definitions and macros in current module.
+ This macro does @code{c-load-library} and @code{c-include} at once.
+ @c JP
+-»ØÄê¤µ¤ì¤¿¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤È¥é¥¤¥Ö¥é¥ê¤òÆÉ¤ß¹ş¤ß¡¢´Ø¿ô¡¦¥°¥í¡¼¥Ğ¥ëÊÑ¿ô¡¦Äê¿ô¡¦·¿ÄêµÁ¡¦¥Ş¥¯¥í¤ò¥«¥ì¥ó¥È¥â¥¸¥å¡¼¥ë¤ËÄêµÁ¤·¤Ş¤¹¡£
+-@code{c-load-library}¤È@code{c-include}¤ò°ìÅÙ¤Ë¹Ô¤¦¤â¤Î¤Ç¤¹¡£
++æŒ‡å®šã•ã‚ŒãŸãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã¿ã€é–¢æ•°ãƒ»ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ãƒ»å®šæ•°ãƒ»å‹å®šç¾©ãƒ»ãƒã‚¯ãƒ­ã‚’ã‚«ãƒ¬ãƒ³ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å®šç¾©ã—ã¾ã™ã€‚
++@code{c-load-library}ã¨@code{c-include}ã‚’ä¸€åº¦ã«è¡Œã†ã‚‚ã®ã§ã™ã€‚
+ @c COMMON
+ 
+ @c EN
+ Keyword arguments are:
+ @c JP
+-keyword °ú¿ô¤Ë¤Ï°Ê²¼¤Î¤â¤Î¤ò»ØÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++keyword å¼•æ•°ã«ã¯ä»¥ä¸‹ã®ã‚‚ã®ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @table @code
+ @item :cflags
+@@ -275,7 +275,7 @@
+ @c EN
+ Sets up flags for parsing header files and loading libraries, @code{:cppflags} is passed to the preprocessor and @code{:ldflags} and @code{:libs} are used for loading libraries. cwcompile uses these flags, too.
+ @c JP
+-¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥º¤È¥é¥¤¥Ö¥é¥ê¤Î¥í¡¼¥É¤Ç»È¤¦¤¿¤á¤Î³Æ¼ï¥Õ¥é¥°¤ò»ØÄê¤·¤Ş¤¹¡£@code{:cppflags}¤Ï¥×¥ê¥×¥í¥»¥Ã¥µ¤ËÅÏ¤µ¤ì¡¢@code{:ldflags}, @code{:libs}¤Ï¥é¥¤¥Ö¥é¥ê¤Î¥í¡¼¥É¤Ç»ÈÍÑ¤µ¤ì¤Ş¤¹¡£¤³¤ì¤é¤Î¥Õ¥é¥°¤Ïcwcompile¤Ç¤â»È¤ï¤ì¤Ş¤¹¡£
++ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚ºã¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒ­ãƒ¼ãƒ‰ã§ä½¿ã†ãŸã‚ã®å„ç¨®ãƒ•ãƒ©ã‚°ã‚’æŒ‡å®šã—ã¾ã™ã€‚@code{:cppflags}ã¯ãƒ—ãƒªãƒ—ãƒ­ã‚»ãƒƒã‚µã«æ¸¡ã•ã‚Œã€@code{:ldflags}, @code{:libs}ã¯ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒ­ãƒ¼ãƒ‰ã§ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚ã“ã‚Œã‚‰ã®ãƒ•ãƒ©ã‚°ã¯cwcompileã§ã‚‚ä½¿ã‚ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @item :cflags-cmd
+ @itemx :cppflags-cmd
+@@ -284,7 +284,7 @@
+ @c EN
+ Sets up commands which returns the flags. For example, if you want to parse gtk's header file, you can do the following:
+ @c JP
+-³Æ¼ï¥Õ¥é¥°¤ò¼èÆÀ¤¹¤ë¤¿¤á¤Î¥³¥Ş¥ó¥É¤ò»ØÄê¤·¤Ş¤¹¡£Îã¤¨¤Ğ¡¢gtk¤Î¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥Ñ¡¼¥º¤¹¤ë¤È¤­¤Ëpkg-config¤ò»È¤Ã¤Æ°Ê²¼¤Î¤è¤¦¤Ë¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++å„ç¨®ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚ä¾‹ãˆã°ã€gtkã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‘ãƒ¼ã‚ºã™ã‚‹ã¨ãã«pkg-configã‚’ä½¿ã£ã¦ä»¥ä¸‹ã®ã‚ˆã†ã«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @example
+ (c-load "gtk/gtk/h"
+@@ -299,24 +299,24 @@
+ Sets up symbols which you want to define. You can specify a symbol, a string, a regexp, a procedure or a list of them.
+ If you put a procedure, it is called with two arguments, a header file name and a symbol. When the procedure returns @code{#f}, the symbol is ignored, and the symbol is defined otherwise.
+ @c JP
+-¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤«¤éÆÉ¤ß¹ş¤à¥·¥ó¥Ü¥ë¤ò»ØÄê¤·¤Ş¤¹¡£
+-°ú¿ô¤È¤·¤Æ¡¢¥·¥ó¥Ü¥ë¡¢Ê¸»úÎó¡¢Àµµ¬É½¸½¡¢¼êÂ³¤­¤È¡¢¤½¤ì¤é¤Î¥ê¥¹¥È¤¬»ØÄê²ÄÇ½¤Ç¤¹¡£
+-¼êÂ³¤­¤¬ÅÏ¤µ¤ì¤¿¾ì¹ç¤Ï¡¢¥·¥ó¥Ü¥ë¤¬¸«¤Ä¤«¤ë¤¿¤Ó¤Ë¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤Î¥Ñ¥¹Ì¾¤È¥·¥ó¥Ü¥ëÌ¾¤ò°ú¿ô¤È¤·¤Æ¡¢¤½¤Î¼êÂ³¤­¤¬¸Æ¤Ó½Ğ¤µ¤ì¤Ş¤¹¡£
+-¼êÂ³¤­¤¬@code{#f}¤òÊÖ¤·¤¿¾ì¹ç¤½¤Î¥·¥ó¥Ü¥ë¤ÏÌµ»ë¤µ¤ì¡¢¤½¤ì°Ê³°¤ÎÃÍ¤Î¾ì¹ç¤Ë¥·¥ó¥Ü¥ë¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£
++ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚·ãƒ³ãƒœãƒ«ã‚’æŒ‡å®šã—ã¾ã™ã€‚
++å¼•æ•°ã¨ã—ã¦ã€ã‚·ãƒ³ãƒœãƒ«ã€æ–‡å­—åˆ—ã€æ­£è¦è¡¨ç¾ã€æ‰‹ç¶šãã¨ã€ãã‚Œã‚‰ã®ãƒªã‚¹ãƒˆãŒæŒ‡å®šå¯èƒ½ã§ã™ã€‚
++æ‰‹ç¶šããŒæ¸¡ã•ã‚ŒãŸå ´åˆã¯ã€ã‚·ãƒ³ãƒœãƒ«ãŒè¦‹ã¤ã‹ã‚‹ãŸã³ã«ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹åã¨ã‚·ãƒ³ãƒœãƒ«åã‚’å¼•æ•°ã¨ã—ã¦ã€ãã®æ‰‹ç¶šããŒå‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚
++æ‰‹ç¶šããŒ@code{#f}ã‚’è¿”ã—ãŸå ´åˆãã®ã‚·ãƒ³ãƒœãƒ«ã¯ç„¡è¦–ã•ã‚Œã€ãã‚Œä»¥å¤–ã®å€¤ã®å ´åˆã«ã‚·ãƒ³ãƒœãƒ«ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @item :hide-symbols
+ @c EN
+ Specifies symbols which doesn't export to other module. These symbols are defined internally, so you can lookup them with @code{c-symbol}.
+ @c JP
+-³°Éô¤Ë¸ø³«¤·¤Ê¤¤¥·¥ó¥Ü¥ë¤ò¥ê¥¹¥È¤Ç»ØÄê¤·¤Ş¤¹¡£ÄêµÁ¤ÏÆâÉôÅª¤Ë¹Ô¤ï¤ì¤ë¤Î¤Ç¡¢@code{c-symbol}¤Ç»²¾È¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++å¤–éƒ¨ã«å…¬é–‹ã—ãªã„ã‚·ãƒ³ãƒœãƒ«ã‚’ãƒªã‚¹ãƒˆã§æŒ‡å®šã—ã¾ã™ã€‚å®šç¾©ã¯å†…éƒ¨çš„ã«è¡Œã‚ã‚Œã‚‹ã®ã§ã€@code{c-symbol}ã§å‚ç…§ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @item :compiled-lib 
+ @c EN
+ Sets up a shared library file name which cwcompile command generates.
+ At runtime, if the library is exists, loads it instead of parsing the header files. Otherwise, parses the header files.
+ @c JP
+-cwcompile¥³¥Ş¥ó¥É¤Ë¤è¤êºîÀ®¤µ¤ì¤ë¥Ñ¡¼¥ººÑ¤ß¤Î¶¦Í­¥é¥¤¥Ö¥é¥ê¤ÎÌ¾Á°¤ò»ØÄê¤·¤Ş¤¹¡£
+-¤³¤³¤Ç»ØÄê¤µ¤ì¤¿¶¦Í­¥é¥¤¥Ö¥é¥ê¤¬Â¸ºß¤¹¤ë¾ì¹ç¡¢¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥Ñ¡¼¥º¤¹¤ëÂå¤ï¤ê¤Ë¤½¤Î¶¦Í­¥é¥¤¥Ö¥é¥ê¤òÆÉ¤ß¹ş¤ß¤Ş¤¹¡£¶¦Í­¥é¥¤¥Ö¥é¥ê¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¤Ï¡¢¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥º¤¬¹Ô¤ï¤ì¤Ş¤¹¡£
++cwcompileã‚³ãƒãƒ³ãƒ‰ã«ã‚ˆã‚Šä½œæˆã•ã‚Œã‚‹ãƒ‘ãƒ¼ã‚ºæ¸ˆã¿ã®å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åå‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚
++ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸå…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒå­˜åœ¨ã™ã‚‹å ´åˆã€ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‘ãƒ¼ã‚ºã™ã‚‹ä»£ã‚ã‚Šã«ãã®å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚å…±æœ‰ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚ºãŒè¡Œã‚ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @item :module
+ @c EN
+@@ -325,10 +325,10 @@
+ @code{#f} means that @code{c-load} defines symbols in current module.
+ a module means that @code{c-load} defines symbols in the specified module and doesn't import it.
+ @c JP
+-C¥ª¥Ö¥¸¥§¥¯¥È¤Î¥µ¥ó¥É¥Ü¥Ã¥¯¥¹¥â¥¸¥å¡¼¥ë¤òÀ©¸æ¤·¤Ş¤¹¡£°ú¿ô¤È¤·¤Æ¡¢@code{#t}¡¢@code{#f}¡¢¥â¥¸¥å¡¼¥ë¤¬»ØÄê²ÄÇ½¤Ç¤¹¡£
+-@code{#t}¤ò»ØÄê¤·¤¿¾ì¹ç¤Ï¡¢@code{c-load}¤ò¼Â¹Ô¤¹¤ë¤¿¤Ó¤Ë¥µ¥ó¥É¥Ü¥Ã¥¯¥¹¥â¥¸¥å¡¼¥ë¤¬ºîÀ®¤µ¤ì¡¢¤½¤ÎÃæ¤ËC¤Î¥ª¥Ö¥¸¥§¥¯¥È¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£¤½¤·¤Æ¡¢¼«Æ°Åª¤Ë¥«¥ì¥ó¥È¥â¥¸¥å¡¼¥ë¤Ø¥¤¥ó¥İ¡¼¥È¤µ¤ì¤Ş¤¹¡£¤³¤ì¤¬¡¢¥Ç¥Õ¥©¥ë¥È¤ÎÆ°ºî¤Ç¤¹¡£
+-@code{#f}¤ò»ØÄê¤·¤¿¾ì¹ç¤Ï¡¢C¤Î¥ª¥Ö¥¸¥§¥¯¥È¤Ï¥«¥ì¥ó¥È¥â¥¸¥å¡¼¥ë¤ËÄêµÁ¤µ¤ì¤Ş¤¹¡£
+-¥â¥¸¥å¡¼¥ë¤¬»ØÄê¤µ¤ì¤¿¾ì¹ç¤Ï¡¢C¤Î¥ª¥Ö¥¸¥§¥¯¥È¤Ï»ØÄê¤µ¤ì¤¿¥â¥¸¥å¡¼¥ë¤ËÄêµÁ¤µ¤ì¤Ş¤¹¡£¤Ê¤ª¡¢@code{c-load}¤Ç¤Ï¡¢¥¤¥ó¥İ¡¼¥È¤ò¹Ô¤Ê¤¤¤Ş¤»¤ó¡£
++Cã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚µãƒ³ãƒ‰ãƒœãƒƒã‚¯ã‚¹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’åˆ¶å¾¡ã—ã¾ã™ã€‚å¼•æ•°ã¨ã—ã¦ã€@code{#t}ã€@code{#f}ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæŒ‡å®šå¯èƒ½ã§ã™ã€‚
++@code{#t}ã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€@code{c-load}ã‚’å®Ÿè¡Œã™ã‚‹ãŸã³ã«ã‚µãƒ³ãƒ‰ãƒœãƒƒã‚¯ã‚¹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒä½œæˆã•ã‚Œã€ãã®ä¸­ã«Cã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚ãã—ã¦ã€è‡ªå‹•çš„ã«ã‚«ãƒ¬ãƒ³ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¸ã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚Œã¾ã™ã€‚ã“ã‚ŒãŒã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å‹•ä½œã§ã™ã€‚
++@code{#f}ã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€Cã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã‚«ãƒ¬ãƒ³ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å®šç¾©ã•ã‚Œã¾ã™ã€‚
++ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ã€Cã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯æŒ‡å®šã•ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å®šç¾©ã•ã‚Œã¾ã™ã€‚ãªãŠã€@code{c-load}ã§ã¯ã€ã‚¤ãƒ³ãƒãƒ¼ãƒˆã‚’è¡Œãªã„ã¾ã›ã‚“ã€‚
+ @c COMMON
+ @end table
+ 
+@@ -343,7 +343,7 @@
+ @c EN
+ This is a basic class for the classes related with C types.
+ @c JP
+-C¤Î·¿¤ËÂĞ±ş¤·¤¿¥¯¥é¥¹¤Î´ğÄì¥¯¥é¥¹¤Ç¤¹¡£
++Cã®å‹ã«å¯¾å¿œã—ãŸã‚¯ãƒ©ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -351,7 +351,7 @@
+ @c EN
+ This is a meta class for the classes related with C types. All the classes are instances of @code{<c-type-meta>}.
+ @c JP
+-C¤Î·¿¤ËÂĞ±ş¤·¤¿¥¯¥é¥¹¤Î¥á¥¿¥¯¥é¥¹¤Ç¤¹¡£C¤Î·¿¤Î¥¯¥é¥¹¤Ï¤¹¤Ù¤Æ @code{<c-type-meta>} ¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤È¤Ê¤ê¤Ş¤¹¡£
++Cã®å‹ã«å¯¾å¿œã—ãŸã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚¿ã‚¯ãƒ©ã‚¹ã§ã™ã€‚Cã®å‹ã®ã‚¯ãƒ©ã‚¹ã¯ã™ã¹ã¦ @code{<c-type-meta>} ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ãªã‚Šã¾ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -382,7 +382,7 @@
+ @c EN
+ These are classes for arithmetic types in C. you can use @code{make} to make an instance of the class.
+ @c JP
+-C¸À¸ì¤Î»»½Ñ·¿ (Arithmetic types) ¤ËÂĞ±ş¤¹¤ë¥¯¥é¥¹¤Ç¤¹¡£ @code{make} ¤ò»È¤Ã¤Æ¥¤¥ó¥¹¥¿¥ó¥¹¤òºîÀ®¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++Cè¨€èªã®ç®—è¡“å‹ (Arithmetic types) ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚ @code{make} ã‚’ä½¿ã£ã¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -391,7 +391,7 @@
+ @c EN
+ This is a meta class for the classes related with C arithmetic types.
+ @c JP
+-C¸À¸ì¤Î»»½Ñ·¿ (Arithmetic types) ¤ËÂĞ±ş¤¹¤ë¥¯¥é¥¹¤Î¥á¥¿¥¯¥é¥¹¤Ç¤¹¡£
++Cè¨€èªã®ç®—è¡“å‹ (Arithmetic types) ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚¿ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -399,7 +399,7 @@
+ @c EN
+ Returns the value of @var{obj}.
+ @c JP
+-@var{obj} ¤ÎÃÍ¤òÊÖ¤·¤Ş¤¹¡£
++@var{obj} ã®å€¤ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -407,7 +407,7 @@
+ @c EN
+ Sets @var{value} to @var{obj}.
+ @c JP
+-@var{obj} ¤ËÃÍ @var{value} ¤òÀßÄê¤·¤Ş¤¹¡£
++@var{obj} ã«å€¤ @var{value} ã‚’è¨­å®šã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -415,7 +415,7 @@
+ @c EN
+ This is a class for void type in C.
+ @c JP
+-C¸À¸ì¤Î void ·¿¤ËÂĞ±ş¤¹¤ë¥¯¥é¥¹¤Ç¤¹¡£
++Cè¨€èªã® void å‹ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -423,7 +423,7 @@
+ @c EN
+ This is an abstract class for pointer type in C. If you use a pointer type, make a concrete class with @code{ptr}.
+ @c JP
+-C¸À¸ì¤Î¥İ¥¤¥ó¥¿·¿¤ËÂĞ±ş¤¹¤ëÃê¾İ¥¯¥é¥¹¤Ç¤¹¡£¼Âºİ¤Ë¥İ¥¤¥ó¥¿·¿¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¤Ï¡¢¸å½Ò¤¹¤ë @code{ptr} ¤ò»ÈÍÑ¤·¤Æ @code{<c-ptr>} ¤Î¶ñ¾İ¥¯¥é¥¹¤òºîÀ®¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
++Cè¨€èªã®ãƒã‚¤ãƒ³ã‚¿å‹ã«å¯¾å¿œã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã™ã€‚å®Ÿéš›ã«ãƒã‚¤ãƒ³ã‚¿å‹ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€å¾Œè¿°ã™ã‚‹ @code{ptr} ã‚’ä½¿ç”¨ã—ã¦ @code{<c-ptr>} ã®å…·è±¡ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -431,7 +431,7 @@
+ @c EN
+ Makes a class for a pointer type of @var{class}, and it is a subclass of @code{<c-ptr>}. You can use @code{make} to make an instance of the class.
+ @c JP
+-@var{class} ¤Ç»ØÄê¤µ¤ì¤¿·¿¤Î¥İ¥¤¥ó¥¿·¿¤ËÂĞ±ş¤¹¤ë¥¯¥é¥¹¤òÀ¸À®¤·¤Ş¤¹¡£¤³¤Î¥¯¥é¥¹¤Ï @code{<c-ptr>} ¤Î¥µ¥Ö¥¯¥é¥¹¤È¤Ê¤ê¤Ş¤¹¡£@code{make} ¤ò»È¤Ã¤ÆºîÀ®¤·¤¿¥¯¥é¥¹¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òºîÀ®¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++@var{class} ã§æŒ‡å®šã•ã‚ŒãŸå‹ã®ãƒã‚¤ãƒ³ã‚¿å‹ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã¯ @code{<c-ptr>} ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ãªã‚Šã¾ã™ã€‚@code{make} ã‚’ä½¿ã£ã¦ä½œæˆã—ãŸã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -439,7 +439,7 @@
+ @c EN
+ Returns a pointer object for @var{obj}.
+ @c JP
+-@var{obj} ¤Î¥İ¥¤¥ó¥¿¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤·¤Ş¤¹¡£
++@var{obj} ã®ãƒã‚¤ãƒ³ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -449,9 +449,9 @@
+ 
+ @code{<c-array>} is a subclass of @code{<sequence>}, and you can use the operations of sequence framework (@code{gauche.sequence} module).
+ @c JP
+-C¸À¸ì¤ÎÇÛÎó¤ËÂĞ±ş¤¹¤ëÃê¾İ¥¯¥é¥¹¤Ç¤¹¡£¼Âºİ¤ËÇÛÎó¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¤Ï¡¢¸å½Ò¤¹¤ë @code{c-array} ¤ò»ÈÍÑ¤·¤Æ¡¢@code{<c-array>} ¤Î¶ñ¾İ¥¯¥é¥¹¤òºîÀ®¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
++Cè¨€èªã®é…åˆ—ã«å¯¾å¿œã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã™ã€‚å®Ÿéš›ã«é…åˆ—ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€å¾Œè¿°ã™ã‚‹ @code{c-array} ã‚’ä½¿ç”¨ã—ã¦ã€@code{<c-array>} ã®å…·è±¡ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+ 
+-¤Ş¤¿ @code{<c-array>} ¤Ï @code{<sequence>} ¤ò·Ñ¾µ¤·¤Æ¤ª¤ê¡¢¥·¡¼¥±¥ó¥¹¥Õ¥ì¡¼¥à¥ï¡¼¥¯ (@code{gauche.sequence} ¥â¥¸¥å¡¼¥ë) ¤ÇÄêµÁ¤µ¤ì¤Æ¤¤¤ëÁàºî¤ò»ÈÍÑ¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++ã¾ãŸ @code{<c-array>} ã¯ @code{<sequence>} ã‚’ç¶™æ‰¿ã—ã¦ãŠã‚Šã€ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ (@code{gauche.sequence} ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«) ã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹æ“ä½œã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -459,7 +459,7 @@
+ @c EN
+ Makes a class for an array type of @var{class}, and it is a subclass of @code{<c-array>}. You can use @code{make} to make an instance of the class.
+ @c JP
+-@var{class} ·¿¤ÇÂç¤­¤µ @var{size} ¤ÎÇÛÎó¥¯¥é¥¹¤òÀ¸À®¤·¤Ş¤¹¡£¤³¤Î¥¯¥é¥¹¤Ï @code{<c-array>} ¤Î¥µ¥Ö¥¯¥é¥¹¤È¤Ê¤ê¤Ş¤¹¡£@code{make} ¤ò»È¤Ã¤ÆºîÀ®¤·¤¿¥¯¥é¥¹¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òºîÀ®¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
++@var{class} å‹ã§å¤§ãã• @var{size} ã®é…åˆ—ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã¯ @code{<c-array>} ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ãªã‚Šã¾ã™ã€‚@code{make} ã‚’ä½¿ã£ã¦ä½œæˆã—ãŸã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -467,7 +467,7 @@
+ @c EN
+ This is an abstract class for struct type in C. 
+ @c JP
+-C¸À¸ì¤Î¹½Â¤ÂÎ¤ËÂĞ±ş¤¹¤ëÃê¾İ¥¯¥é¥¹¤Ç¤¹¡£
++Cè¨€èªã®æ§‹é€ ä½“ã«å¯¾å¿œã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -475,7 +475,7 @@
+ @c EN
+ This is an abstract class for union type in C. 
+ @c JP
+-C¸À¸ì¤Î¶¦ÍÑÂÎ¤ËÂĞ±ş¤¹¤ëÃê¾İ¥¯¥é¥¹¤Ç¤¹¡£
++Cè¨€èªã®å…±ç”¨ä½“ã«å¯¾å¿œã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -483,7 +483,7 @@
+ @c EN
+ Returns the struct class named @var{tagname}.
+ @c JP
+-@var{tagname}¤È¤¤¤¦Ì¾Á°¤Î¹½Â¤ÂÎ¥¯¥é¥¹¤òÊÖ¤·¤Ş¤¹¡£
++@var{tagname}ã¨ã„ã†åå‰ã®æ§‹é€ ä½“ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -491,7 +491,7 @@
+ @c EN
+ Returns the union class named @var{tagname}.
+ @c JP
+-@var{tagname}¤È¤¤¤¦Ì¾Á°¤Î¶¦ÍÑÂÎ¥¯¥é¥¹¤òÊÖ¤·¤Ş¤¹¡£
++@var{tagname}ã¨ã„ã†åå‰ã®å…±ç”¨ä½“ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -500,7 +500,7 @@
+ @c EN
+ Returns the value of the @var{member} of the struct or union @var{obj}. If the type of the member is arithmetic type, the type of the return value is casted to @code{<real>} or @code{<integer>}.
+ @c JP
+-¹½Â¤ÂÎ¤â¤·¤¯¤Ï¶¦ÍÑÂÎ¤Î¥á¥ó¥Ğ @var{member} ¤ÎÃÍ¤òÊÖ¤·¤Ş¤¹¡£¥á¥ó¥Ğ¤¬»»½Ñ·¿ (Arithmetic types) ¤Î¾ì¹ç¤Ï @code{<real>} ¤â¤·¤¯¤Ï @code{<integer>} ¤ØÊÑ´¹¤µ¤ì¤¿ÃÍ¤¬ÊÖ¤ê¤Ş¤¹¡£
++æ§‹é€ ä½“ã‚‚ã—ãã¯å…±ç”¨ä½“ã®ãƒ¡ãƒ³ãƒ @var{member} ã®å€¤ã‚’è¿”ã—ã¾ã™ã€‚ãƒ¡ãƒ³ãƒãŒç®—è¡“å‹ (Arithmetic types) ã®å ´åˆã¯ @code{<real>} ã‚‚ã—ãã¯ @code{<integer>} ã¸å¤‰æ›ã•ã‚ŒãŸå€¤ãŒè¿”ã‚Šã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -509,7 +509,7 @@
+ @c EN
+ Sets @var{value} to the @var{member} of the struct or union @var{obj}.
+ @c JP
+-¹½Â¤ÂÎ¤â¤·¤¯¤Ï¶¦ÍÑÂÎ¤Î¥á¥ó¥Ğ @var{member} ¤ØÃÍ¤ò¥»¥Ã¥È¤·¤Ş¤¹¡£
++æ§‹é€ ä½“ã‚‚ã—ãã¯å…±ç”¨ä½“ã®ãƒ¡ãƒ³ãƒ @var{member} ã¸å€¤ã‚’ã‚»ãƒƒãƒˆã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -517,7 +517,7 @@
+ @c EN
+ This is an abstract class for function pointer in C.
+ @c JP
+-C¸À¸ì¤Î´Ø¿ô¥İ¥¤¥ó¥¿¤ËÂĞ±ş¤¹¤ëÃê¾İ¥¯¥é¥¹¤Ç¤¹¡£
++Cè¨€èªã®é–¢æ•°ãƒã‚¤ãƒ³ã‚¿ã«å¯¾å¿œã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ @c COMMON
+ @end deftp
+ 
+@@ -525,7 +525,7 @@
+ @c EN
+ Returns a deference object of @var{ptrobj}. ('*' operator in C)
+ @c JP
+-¥İ¥¤¥ó¥¿¥ª¥Ö¥¸¥§¥¯¥È @var{ptrobj} ¤Î»²¾È¤òÊÖ¤·¤Ş¤¹¡£
++ãƒã‚¤ãƒ³ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ @var{ptrobj} ã®å‚ç…§ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -534,7 +534,7 @@
+ @c EN
+ Returns a size of @var{class} or @var{obj}.
+ @c JP
+-@var{class}¤â¤·¤¯¤Ï@var{obj}¤Î¥µ¥¤¥º¤òÊÖ¤·¤Ş¤¹¡£
++@var{class}ã‚‚ã—ãã¯@var{obj}ã®ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -619,82 +619,82 @@
+ @end multitable
+ 
+ @c JP
+-@var{obj} ¤«¤é @var{class} ·¿¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Ş¤¹¡£À¸À®¤Î¥ë¡¼¥ë¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£
++@var{obj} ã‹ã‚‰ @var{class} å‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚ç”Ÿæˆã®ãƒ«ãƒ¼ãƒ«ã¯ä»¥ä¸‹ã®é€šã‚Šã§ã™ã€‚
+ 
+ @multitable @columnfractions 0.2 0.2 0.6
+-@item @var{class} @tab @var{obj}¤Î·¿ @tab ÀâÌÀ
++@item @var{class} @tab @var{obj}ã®å‹ @tab èª¬æ˜
+ 
+-@item @code{<c-value>} ¤ò·Ñ¾µ¤·¤¿¥¯¥é¥¹
++@item @code{<c-value>} ã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹
+ @tab @code{<real>}
+-@tab @var{obj} ¤ÈÆ±¤¸ÃÍ¤ò»ı¤Ä @var{class} ¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Ş¤¹
++@tab @var{obj} ã¨åŒã˜å€¤ã‚’æŒã¤ @var{class} ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™
+ 
+-@item @code{<c-value>} ¤ò·Ñ¾µ¤·¤¿¥¯¥é¥¹
++@item @code{<c-value>} ã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹
+ @tab @code{<boolean>}
+-@tab @var{obj} ¤¬ @code{#t} ¤Î»ş¤Ï 1¡¢@code{#f} ¤Î»ş¤Ï 0 ¤ÎÃÍ¤ò»ı¤Ä @var{class} ¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ãŒ @code{#t} ã®æ™‚ã¯ 1ã€@code{#f} ã®æ™‚ã¯ 0 ã®å€¤ã‚’æŒã¤ @var{class} ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+-@item @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
++@item @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
+ @tab @code{<integer>}
+-@tab @var{obj} ¤Î¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹
++@tab @var{obj} ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™
+ 
+-@item @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
+-@tab @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
+-@tab @var{obj} ¤ÈÆ±¤¸¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹
++@item @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
++@tab @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
++@tab @var{obj} ã¨åŒã˜ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™
+ 
+-@item @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
++@item @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
+ @tab @code{<c-array>}
+-@tab @var{obj} ¤ÎÀèÆ¬¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-ptr>}
+ @tab @code{<string>}
+-@tab C¤ÎÊ¸»úÎó¤òÀ¸À®¤·¡¢¤½¤ÎÀèÆ¬¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab Cã®æ–‡å­—åˆ—ã‚’ç”Ÿæˆã—ã€ãã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-ptr>}
+ @tab @code{<uvector>}
+-@tab @var{obj} ¤ÎÀèÆ¬¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-ptr>}
+ @tab @code{<sequence>}
+-@tab @var{obj} ¤ÈÆ±¤¸ÆâÍÆ¤ÎÇÛÎó¤òÀ¸À®¤·¡¢¤½¤ÎÀèÆ¬¥¢¥É¥ì¥¹¤ò»ı¤Ä¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ã¨åŒã˜å†…å®¹ã®é…åˆ—ã‚’ç”Ÿæˆã—ã€ãã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒã¤ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-array>}
+ @tab @code{<sequence>}
+-@tab @var{obj} ¤ÈÆ±¤¸ÆâÍÆ¤ÎÇÛÎó¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ã¨åŒã˜å†…å®¹ã®é…åˆ—ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-array>}
+ @tab @code{<c-ptr>}
+-@tab ¥İ¥¤¥ó¥¿¤¬»Ø¤¹¥á¥â¥êÎÎ°è¤òÇÛÎó¤È¸«¤Ê¤·¤Æ @var{class} ¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab ãƒã‚¤ãƒ³ã‚¿ãŒæŒ‡ã™ãƒ¡ãƒ¢ãƒªé ˜åŸŸã‚’é…åˆ—ã¨è¦‹ãªã—ã¦ @var{class} ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<c-func-ptr>}
+ @tab @code{<procedure>}
+-@tab @var{obj} ¤ò¼Â¹Ô¤¹¤ë´Ø¿ô¤Î¥İ¥¤¥ó¥¿¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @var{obj} ã‚’å®Ÿè¡Œã™ã‚‹é–¢æ•°ã®ãƒã‚¤ãƒ³ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+-@item @code{<integer>} ¤Ş¤¿¤Ï @code{<real>}
++@item @code{<integer>} ã¾ãŸã¯ @code{<real>}
+ @tab @code{<c-value>}
+-@tab @var{obj} ¤ÈÆ±¤¸ÃÍ¤Î¿ôÃÍ¤òÊÖ¤·¤Ş¤¹¡£
++@tab @var{obj} ã¨åŒã˜å€¤ã®æ•°å€¤ã‚’è¿”ã—ã¾ã™ã€‚
+ 
+ @item @code{<boolean>}
+-@tab @code{<c-value>} ¤Ş¤¿¤Ï @code{<real>}
+-@tab ÃÍ¤¬ 0 ¤Î¤È¤­ @code{#f} ¤¬¡¢¤½¤¦¤Ç¤Ê¤±¤ì¤Ğ @var{#t} ¤¬ÊÖ¤ê¤Ş¤¹¡£
++@tab @code{<c-value>} ã¾ãŸã¯ @code{<real>}
++@tab å€¤ãŒ 0 ã®ã¨ã @code{#f} ãŒã€ãã†ã§ãªã‘ã‚Œã° @var{#t} ãŒè¿”ã‚Šã¾ã™ã€‚
+ 
+ @item @code{<integer>}
+-@tab @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
+-@tab ¥İ¥¤¥ó¥¿¤Î¥¢¥É¥ì¥¹¤¬ÊÖ¤ê¤Ş¤¹¡£
++@tab @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
++@tab ãƒã‚¤ãƒ³ã‚¿ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒè¿”ã‚Šã¾ã™ã€‚
+ 
+ @item @code{<integer>}
+ @tab @code{<c-array>}
+-@tab ÇÛÎó¤ÎÀèÆ¬¥¢¥É¥ì¥¹¤¬ÊÖ¤ê¤Ş¤¹¡£
++@tab é…åˆ—ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒè¿”ã‚Šã¾ã™ã€‚
+ 
+ @item @code{<string>}
+-@tab @code{<c-ptr>} ¤Ş¤¿¤Ï @code{<c-func-ptr>}
+-@tab ¥İ¥¤¥ó¥¿¤¬»Ø¤·¼¨¤¹ÎÎ°è¤¬0½ªÃ¼¤µ¤ì¤¿Ê¸»úÎó¤È¸«¤Ê¤·¡¢Ê¸»úÎó¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab @code{<c-ptr>} ã¾ãŸã¯ @code{<c-func-ptr>}
++@tab ãƒã‚¤ãƒ³ã‚¿ãŒæŒ‡ã—ç¤ºã™é ˜åŸŸãŒ0çµ‚ç«¯ã•ã‚ŒãŸæ–‡å­—åˆ—ã¨è¦‹ãªã—ã€æ–‡å­—åˆ—ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<string>}
+ @tab @code{<c-array>}
+-@tab ÇÛÎó¤ÎÆâÍÆ¤¬0½ªÃ¼¤µ¤ì¤¿Ê¸»úÎó¤È¸«¤Ê¤·¡¢Ê¸»úÎó¤òÀ¸À®¤·¤Ş¤¹¡£
++@tab é…åˆ—ã®å†…å®¹ãŒ0çµ‚ç«¯ã•ã‚ŒãŸæ–‡å­—åˆ—ã¨è¦‹ãªã—ã€æ–‡å­—åˆ—ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+ 
+ @item @code{<collection>}
+ @tab @code{<c-array>}
+-@tab ÇÛÎó¤ÎÆâÍÆ¤ò»ı¤Ä @var{class} ¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Ş¤¹¡£³ÆÍ×ÁÇ¤ÎÃÍ¤Ï @code{scm-cast} ¤Ç¥­¥ã¥¹¥È¤µ¤ì¤Ş¤¹¡£
++@tab é…åˆ—ã®å†…å®¹ã‚’æŒã¤ @var{class} ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚å„è¦ç´ ã®å€¤ã¯ @code{scm-cast} ã§ã‚­ãƒ£ã‚¹ãƒˆã•ã‚Œã¾ã™ã€‚
+ @end multitable
+ 
+ @c COMMON
+@@ -704,7 +704,7 @@
+ @c EN
+ Returns the value of @var{obj} if @var{obj} is an instance of @code{<c-value>}. Otherwise, returns @var{obj}.
+ @c JP
+-@var{obj} ¤¬ @code{<c-value>} ·¿¤Ç¤¢¤ë»ş¤Ï¿ôÃÍ¤òÊÖ¤·¤Ş¤¹¡£¤½¤¦¤Ç¤Ê¤±¤ì¤Ğ @var{obj} ¤ò¤½¤Î¤Ş¤ŞÊÖ¤·¤Ş¤¹¡£
++@var{obj} ãŒ @code{<c-value>} å‹ã§ã‚ã‚‹æ™‚ã¯æ•°å€¤ã‚’è¿”ã—ã¾ã™ã€‚ãã†ã§ãªã‘ã‚Œã° @var{obj} ã‚’ãã®ã¾ã¾è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -712,7 +712,7 @@
+ @c EN
+ Returns NULL pointer.
+ @c JP
+-NULL¥İ¥¤¥ó¥¿¤òÊÖ¤·¤Ş¤¹¡£
++NULLãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -720,7 +720,7 @@
+ @c EN
+ Returns @code{#t} if @var{obj} is a NULL pointer, @code{#f} otherwise.
+ @c JP
+-@var{obj} ¤¬NULL¥İ¥¤¥ó¥¿¤Ç¤¢¤ì¤Ğ @code{#t} ¤¬¡¢¤½¤¦¤Ç¤Ê¤±¤ì¤Ğ @code{#f} ¤¬ÊÖ¤µ¤ì¤Ş¤¹¡£
++@var{obj} ãŒNULLãƒã‚¤ãƒ³ã‚¿ã§ã‚ã‚Œã° @code{#t} ãŒã€ãã†ã§ãªã‘ã‚Œã° @code{#f} ãŒè¿”ã•ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -728,7 +728,7 @@
+ @c EN
+ Register the finalizer @var{proc} to @var{ptrobj}. It is called when @var{ptrobj} is GCed.
+ @c JP
+-@var{ptrobj} ¤Ë¥Õ¥¡¥¤¥Ê¥é¥¤¥¶ @var{proc} ¤òÅĞÏ¿¤·¤Ş¤¹¡£@var{ptrobj} ¤¬GC¤µ¤ì¤ë¤È¤­¤Ë @var{proc} ¤¬¸Æ¤Ğ¤ì¤Ş¤¹¡£
++@var{ptrobj} ã«ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ @var{proc} ã‚’ç™»éŒ²ã—ã¾ã™ã€‚@var{ptrobj} ãŒGCã•ã‚Œã‚‹ã¨ãã« @var{proc} ãŒå‘¼ã°ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -736,7 +736,7 @@
+ @c EN
+ Deletes the finalizer of @var{ptrobj}.
+ @c JP
+-@var{ptrobj} ¤Î¥Õ¥¡¥¤¥Ê¥é¥¤¥¶¤òºï½ü¤·¤Ş¤¹¡£
++@var{ptrobj} ã®ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ã‚’å‰Šé™¤ã—ã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -744,7 +744,7 @@
+ @c EN
+ Calls the finalizer of @var{ptrobj}, and deletes it from @var{ptrobj}.
+ @c JP
+-@var{ptrobj} ¤Î¥Õ¥¡¥¤¥Ê¥é¥¤¥¶¤ò¼Â¹Ô¤·¤Ş¤¹¡£¤³¤ì¤Ë¤è¤ê @var{ptrobj} ¤Î¥Õ¥¡¥¤¥Ê¥é¥¤¥¶¤Ïºï½ü¤µ¤ì¤Ş¤¹¡£
++@var{ptrobj} ã®ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Š @var{ptrobj} ã®ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ã¯å‰Šé™¤ã•ã‚Œã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -755,7 +755,7 @@
+ @c EN
+ @code{objc-wrapper} is the module which enables to use Objective-C libraries.
+ @c JP
+-@code{objc-wrapper} ¤È¤Ï Objective-C ¤Î¥é¥¤¥Ö¥é¥ê¤ò Gauche ¤«¤é»È¤¨¤ë¤è¤¦¤Ë¤¹¤ë¤¿¤á¤Î¥â¥¸¥å¡¼¥ë¤Ç¤¹¡£
++@code{objc-wrapper} ã¨ã¯ Objective-C ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ Gauche ã‹ã‚‰ä½¿ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚
+ @c COMMON
+ 
+ @menu
+@@ -777,7 +777,7 @@
+ @end example
+ 
+ @c JP
+-¥Õ¥ì¡¼¥à¥ï¡¼¥¯¥é¥¤¥Ö¥é¥ê @var{framework} ¤òÆÉ¤ß¹ş¤ß¤Ş¤¹¡£
++ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ãƒ©ã‚¤ãƒ–ãƒ©ãƒª @var{framework} ã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚
+ 
+ @example
+ (c-load-framework "Foundation")
+@@ -796,9 +796,9 @@
+ 
+ If Objective-C class @code{Foo} is defined in the header file, @code{c-include} defines two symbols @code{Foo} and @code{<Foo>}. @code{Foo} is an instance of @code{<c-struct:objc_object>} and indicates the Objective-C class @code{Foo}. @code{<Foo>} is an alias of the type @code{<id>}.
+ @c JP
+-@code{objc-wrapper} ¥â¥¸¥å¡¼¥ë¤Î @code{c-include} ¤Ç¤Ï Objective-C ¤Î¥¯¥é¥¹ÄêµÁ¤ä¥á¥½¥Ã¥ÉÄêµÁ¤Î³ÈÄ¥¤¬¹Ô¤ï¤ì¤Æ¤¤¤Ş¤¹¡£
++@code{objc-wrapper} ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã® @code{c-include} ã§ã¯ Objective-C ã®ã‚¯ãƒ©ã‚¹å®šç¾©ã‚„ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ã®æ‹¡å¼µãŒè¡Œã‚ã‚Œã¦ã„ã¾ã™ã€‚
+ 
+-Objective-C ¤Î¥¯¥é¥¹ @code{Foo} ¤¬¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ÇÄêµÁ¤µ¤ì¤Æ¤¤¤¿¾ì¹ç¡¢ @code{Foo} ¤È @code{<Foo>} ¤Î2¤Ä¤Î¥·¥ó¥Ü¥ë¤¬ÄêµÁ¤µ¤ì¤Ş¤¹¡£@code{Foo} ¤Ï @code{<c-struct:objc_objcect>} ·¿¤Î¥ª¥Ö¥¸¥§¥¯¥È¤Ç¥¯¥é¥¹ @code{Foo} ¤½¤Î¤â¤Î¤ò»Ø¤·¤Æ¤¤¤Ş¤¹¡£@code{<Foo>} ¤Ï @code{<id>} ¤Î¥¨¥¤¥ê¥¢¥¹¤È¤Ê¤ê¤Ş¤¹¡£
++Objective-C ã®ã‚¯ãƒ©ã‚¹ @code{Foo} ãŒãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã§å®šç¾©ã•ã‚Œã¦ã„ãŸå ´åˆã€ @code{Foo} ã¨ @code{<Foo>} ã®2ã¤ã®ã‚·ãƒ³ãƒœãƒ«ãŒå®šç¾©ã•ã‚Œã¾ã™ã€‚@code{Foo} ã¯ @code{<c-struct:objc_objcect>} å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚¯ãƒ©ã‚¹ @code{Foo} ãã®ã‚‚ã®ã‚’æŒ‡ã—ã¦ã„ã¾ã™ã€‚@code{<Foo>} ã¯ @code{<id>} ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã¨ãªã‚Šã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -810,7 +810,7 @@
+ @c EN
+ Defines Objective-C class @var{class-name} whose super class is @var{super-class-name}.
+ @c JP
+-@var{super-class-name}¤ò·Ñ¾µ¤·¤¿Objective-C¤Î¥¯¥é¥¹@var{class-name}¤òÄêµÁ¤·¤Ş¤¹¡£
++@var{super-class-name}ã‚’ç¶™æ‰¿ã—ãŸObjective-Cã®ã‚¯ãƒ©ã‚¹@var{class-name}ã‚’å®šç¾©ã—ã¾ã™ã€‚
+ @c COMMON
+ @end deffn
+ 
+@@ -820,9 +820,9 @@
+ 
+ In the body, you can use two variables @var{self} and @var{super}. @var{self} is the receiver object and @var{super} is the object which is casted to its super class.
+ @c JP
+-¥á¥Ã¥»¡¼¥¸¥­¡¼¥ï¡¼¥É¤¬@var{message-keyword}¤Ç¤¢¤êÌá¤êÃÍ¤Î·¿¤¬@var{ret-type}¤Ç¤¢¤ë¤è¤¦¤Ê@var{objc-class}¤Î¥á¥½¥Ã¥É¤òÄêµÁ¤·¤Ş¤¹¡£@var{varspec}¤Ï(ÊÑ¿ôÌ¾ ÊÑ¿ô·¿)¤Î¥ê¥¹¥È¤ò»ØÄê¤·¤Ş¤¹¡£
++ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒ@var{message-keyword}ã§ã‚ã‚Šæˆ»ã‚Šå€¤ã®å‹ãŒ@var{ret-type}ã§ã‚ã‚‹ã‚ˆã†ãª@var{objc-class}ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚@var{varspec}ã¯(å¤‰æ•°å å¤‰æ•°å‹)ã®ãƒªã‚¹ãƒˆã‚’æŒ‡å®šã—ã¾ã™ã€‚
+ 
+-@var{body}¤Ç¤Ï@var{self}¤È@var{super}¤Î2¤Ä¤ÎÊÑ¿ô¤¬»È¤¨¤Ş¤¹¡£¤½¤ì¤¾¤ì¡¢¥ì¥·¡¼¥Ğ¥ª¥Ö¥¸¥§¥¯¥È¡¢¥ì¥·¡¼¥Ğ¤ò¥¹¡¼¥Ñ¥¯¥é¥¹¤Ë¥­¥ã¥¹¥È¤·¤¿¥ª¥Ö¥¸¥§¥¯¥È¤ò»Ø¤·¤Æ¤¤¤Ş¤¹¡£
++@var{body}ã§ã¯@var{self}ã¨@var{super}ã®2ã¤ã®å¤‰æ•°ãŒä½¿ãˆã¾ã™ã€‚ãã‚Œãã‚Œã€ãƒ¬ã‚·ãƒ¼ãƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€ãƒ¬ã‚·ãƒ¼ãƒã‚’ã‚¹ãƒ¼ãƒ‘ã‚¯ãƒ©ã‚¹ã«ã‚­ãƒ£ã‚¹ãƒˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã—ã¦ã„ã¾ã™ã€‚
+ @c COMMON
+ 
+ @example
+@@ -845,7 +845,7 @@
+ @end example
+ 
+ @c JP
+-@var{obj} ¤Î¥á¥½¥Ã¥É¤ò¸Æ¤Ó½Ğ¤·¤Ş¤¹¡£
++@var{obj} ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚
+ 
+ @example
+ [[NSString :alloc] :init]
+@@ -859,7 +859,7 @@
+ @c EN
+ Returns Objective-C string.
+ @c JP
+-Objective-CÊ¸»úÎó¤òÊÖ¤·¤Ş¤¹¡£
++Objective-Cæ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+@@ -867,7 +867,7 @@
+ @c EN
+ Returns a selector of @var{method-name}.
+ @c JP
+-¥á¥½¥Ã¥ÉÌ¾ @var{method-name} ¤Î¥»¥ì¥¯¥¿¤òÊÖ¤·¤Ş¤¹¡£
++ãƒ¡ã‚½ãƒƒãƒ‰å @var{method-name} ã®ã‚»ãƒ¬ã‚¯ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
+ @c COMMON
+ @end defun
+ 
+diff --unified --recursive --text c-wrapper-0.6.1/doc/extract c-wrapper-0.6.1.new/doc/extract
+--- c-wrapper-0.6.1/doc/extract	2009-08-08 16:44:52.000000000 +0200
++++ c-wrapper-0.6.1.new/doc/extract	2020-07-03 18:00:02.635910159 +0200
+@@ -43,7 +43,7 @@
+             (push! *node-table* (cons current-node jn))
+             (push! *header-table* (cons current-header jh))))
+          (#/^@include\s+(\S+)/ (#f file)
+-           (with-input-from-file file (cut scan-nodes) :encoding 'euc-jp))
++           (with-input-from-file file (cut scan-nodes) :encoding 'utf8))
+          ))
+      read-line)))
+ 
+@@ -55,7 +55,7 @@
+       (pattern-out () (out (read-line)))
+       (#/^@include\s+(\S+)/ (#f file)
+         (with-input-from-file file (cut filter pattern-in pattern-out)
+-                              :encoding 'euc-jp)
++                              :encoding 'utf8)
+         (in (read-line)))
+       (#/^@c COMMON$/ () (in (read-line)))
+       (test (lambda _ (eq? *lang* 'en))
+@@ -138,12 +138,12 @@
+         ((en) (filter #/^@c EN$/ #/^@c JP$/))
+         ((jp) (filter #/^@c JP$/ #/^@c EN$/))))
+ 
+-    (define outenc (if (eq? *lang* 'jp) 'euc-jp 'utf8))
++    (define outenc (if (eq? *lang* 'jp) 'utf8 'utf8))
+     
+     (unless (= (length a) 1) (usage))
+ 
+     (when (eq? *lang* 'jp)
+-      (with-input-from-file (car a) scan-nodes :encoding 'euc-jp))
++      (with-input-from-file (car a) scan-nodes :encoding 'utf8))
+     
+     (with-input-from-file (car a)
+       (lambda ()
+@@ -153,7 +153,7 @@
+                      (current-output-port) outenc)
+             (with-output-to-port out do-it)
+             (close-output-port out))))
+-      :encoding 'euc-jp)
++      :encoding 'utf8)
+     0))
+ 
+ ;; Local variables:

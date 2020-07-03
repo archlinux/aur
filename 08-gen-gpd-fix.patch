@@ -1,0 +1,13 @@
+Index: gauche-c-wrapper/configure.ac
+===================================================================
+--- gauche-c-wrapper.orig/configure.ac
++++ gauche-c-wrapper/configure.ac
+@@ -146,7 +146,7 @@ AC_SUBST(CYGWIN_FLAG)
+ AC_SUBST(CWCOMPILE_DEFAULT_LIBS)
+ 
+ dnl Creating gpd (gauche package description) file
+-GAUCHE_PACKAGE_CONFIGURE_ARGS="`echo ""$ac_configure_args"" | sed 's/[\\""\`\$]/\\\&/g'`"
++GAUCHE_PACKAGE_CONFIGURE_ARGS=`echo "$ac_configure_args" | sed 's/@<:@\\"\`\$@:>@/\\\\&/g' 's/-f@<:@a-z@:>@*-prefix-map=@<:@^ @:>@* //'`
+ AC_MSG_NOTICE([creating ${PACKAGE_NAME}.gpd])
+ $GAUCHE_PACKAGE make-gpd "$PACKAGE_NAME" \
+   -version "$PACKAGE_VERSION" \

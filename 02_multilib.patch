@@ -1,0 +1,20 @@
+Description: workaround for multilib on i486-pc-linux-gnu or sparc-unknown-linux-gnu
+Author: NIIBE Yutaka <gniibe@fsij.org>
+Reviewed-By: NIIBE Yutaka <gniibe@fsij.org>
+Last-Update: 2013-01-25
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -86,6 +86,12 @@
+ 	    enable_objc="yes"
+ 	fi	
+         ;;
++    i?86-*-linux*|sparc*-*-linux*)
++        CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
++        if test "X$LDCONFIG" != "X" -a "X$SED" != "X"; then
++            LDCONFIG_CMD="$LDCONFIG -p | $SED -n -e '/lib64/n' -e '/^	/s/^.*=> //p'"
++        fi
++        ;;
+     *linux*)
+         CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
+         if test "X$LDCONFIG" != "X" -a "X$SED" != "X"; then

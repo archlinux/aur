@@ -1,0 +1,30 @@
+Description: Fix missing CFLAGS
+Author: NIIBE Yutaka <gniibe@fsij.org>
+Last-Update: 2016-10-26
+
+Index: gauche-c-wrapper/lib/Makefile.in
+===================================================================
+--- gauche-c-wrapper.orig/lib/Makefile.in
++++ gauche-c-wrapper/lib/Makefile.in
+@@ -20,6 +20,9 @@ GAUCHE_CONFIG  = @GAUCHE_CONFIG@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ 
++CFLAGS   = @CFLAGS@
++CPPFLAGS = @CPPFLAGS@
++
+ # Other parameters
+ SOEXT  = @SOEXT@
+ OBJEXT = @OBJEXT@
+Index: gauche-c-wrapper/src/Makefile.in
+===================================================================
+--- gauche-c-wrapper.orig/src/Makefile.in
++++ gauche-c-wrapper/src/Makefile.in
+@@ -20,6 +20,7 @@ GAUCHE_CONFIG  = @GAUCHE_CONFIG@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ 
++CFLAGS         = @CFLAGS@
+ CPPFLAGS       = -DGAUCHE_API_0_8_8 @CPPFLAGS@
+ LDFLAGS        = @LDFLAGS@
+ LIBS           = /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/libffi_pic.a @LIBS@

@@ -1,0 +1,15 @@
+Index: gauche-c-wrapper/testsuite/Makefile.in
+===================================================================
+--- gauche-c-wrapper.orig/testsuite/Makefile.in
++++ gauche-c-wrapper/testsuite/Makefile.in
+@@ -20,8 +20,8 @@ GAUCHE_CONFIG  = @GAUCHE_CONFIG@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ CC             = @CC@
+-CFLAGS         = @TESTLIB_CFLAGS@
+-LDFLAGS        = @TESTLIB_LDFLAGS@
++CFLAGS         = @CPPFLAGS@ @CFLAGS@ @TESTLIB_CFLAGS@
++LDFLAGS        = @LDFLAGS@ @TESTLIB_LDFLAGS@
+ 
+ # Other parameters
+ SOEXT  = @SOEXT@
