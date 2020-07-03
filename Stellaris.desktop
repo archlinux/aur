@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Stellaris
+Exec=stellaris
+Comment=A strategy game with space exploration at its core
+Terminal=false
+Icon=/usr/share/pixmaps/gog-stellaris.png
+Type=Application
+Categories=Game;
