@@ -1,6 +1,6 @@
 _name=sollya
 pkgname=$_name-git
-pkgver=svn_legacy_branch_optimLists.r1204.g4dde1139
+pkgver=svn_legacy_branch_optimLists.r1206.g23d6eedf
 pkgrel=1
 
 pkgdesc="A tool environment and a library for safe floating-point code development"
@@ -8,7 +8,7 @@ arch=('any')
 url="http://sollya.gforge.inria.fr/"
 license=('CeCILL-C')
 
-depends=('gmp' 'mpfr' 'mpfi' 'libxml2' 'libfplll')
+depends=('gmp' 'mpfr' 'mpfi' 'libxml2' 'fplll')
 optdepends=(
   'gnuplot: for using the plot and externalplot commands'
  )
