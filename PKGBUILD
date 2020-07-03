@@ -6,15 +6,15 @@
 
 pkgname=ttf-meslo
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Meslo LG is a customized version of Apple's Menlo font with various line gap and dotted zero"
 arch=('any')
 url="http://github.com/andreberg/Meslo-Font"
 license=('Apache')
 source=(${pkgname}-${pkgver}.zip::${url}/blob/master/dist/v${pkgver}/Meslo%20LG%20v${pkgver}.zip?raw=true
         ${pkgname}-dz-${pkgver}.zip::${url}/blob/master/dist/v${pkgver}/Meslo%20LG%20DZ%20v${pkgver}.zip?raw=true)
-md5sums=('07615beca5ddd4d2cf1d789518c6a292'
-         'e4ab271b44d1a36812170f916282aa45')
+sha256sums=('d0bcb7668dda8fa1a0f8162d626adb434c32854e243b5bd52a717cf569af08d0'
+            'e5201a6816281872c23a2b2f43ac91dc8c1f9d91e9f4b82d64e9bfcb769ecb52')
 
 package()
 {
