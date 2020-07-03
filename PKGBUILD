@@ -4,7 +4,7 @@
 
 pkgname=opencpn-plugin-oesenc-git
 pkgver=4.0.5.r112.gaa16607
-pkgrel=1
+pkgrel=2
 pkgdesc="O-charts.org plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
 license=("GPL3")
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/oesenc.html"
 source=("$pkgname::git+https://github.com/bdbcat/oesenc_pi.git" "CMakeLists.patch")
 sha1sums=('SKIP'
-          'ee6eed6c699f37897c927d8a81a93da8abdf7b91')
+          'ef99cd55434a26699a6a35a78bbcd357719ac430')
 
 pkgver() {
   cd $pkgname
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  patch --strip=1 $srcdir/CMakeLists.patch
+  patch --strip=1 --binary -i $srcdir/CMakeLists.patch
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
