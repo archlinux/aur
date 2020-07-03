@@ -4,11 +4,11 @@
 pkgname=otf-libertinus
 _pkgname="${pkgname#*-}"
 pkgver=6.12
-pkgrel=1
+pkgrel=2
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
 license=('OFL')
-url="https://github.com/alif-type/$_pkgname"
+url="https://github.com/alerque/$_pkgname"
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.zip")
 sha256sums=('62cd83cb2198d946d1a66f590c4bcd3321a0a82c63aa2efb6951ca784bd3ec1a')
 
