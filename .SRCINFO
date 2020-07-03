@@ -20,7 +20,7 @@ pkgbase = chronoengine-git
 	makedepends = swig
 	makedepends = blaze
 	makedepends = cuda
-	makedepends = opencascade
+	makedepends = oce
 	depends = openmpi
 	depends = boost-libs
 	optdepends = irrlicht: Runtime visualization with Irrlicht.
@@ -35,13 +35,11 @@ pkgbase = chronoengine-git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh
 	source = glm.patch
-	source = opencascade.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a
 	sha256sums = 4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe
-	sha256sums = bfe6cc1f8018eabc2998c76a12096ba26722c32b8f3244dbc23ec653a5cfe958
 
 pkgname = chronoengine-git
 

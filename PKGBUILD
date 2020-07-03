@@ -15,7 +15,9 @@ makedepends=(cmake eigen git boost glm glew glfw irrlicht glut openmpi)
 makedepends+=(python swig) # -DENABLE_MODULE_PYTHON requirement
 makedepends+=(blaze) # -DENABLE_MODULE_PARALLEL=ON requirement
 makedepends+=(cuda) # -DENABLE_MODULE_PARALLEL=ON optional
-makedepends+=(opencascade) # -DENABLE_MODULE_CASCADE=ON required (version<=7.2)
+#makedepends+=(opencascade) # -DENABLE_MODULE_CASCADE=ON required (version<=7.2)
+                           # use oce (opencascade comunitiy edition)
+makedepends+=(oce)         # MODULE_CASCADE
 #makedepends+=(intel-mkl) # -DENABLE_MODULE_MKL=ON requirement
 optdepends=( 	 
 		"irrlicht: Runtime visualization with Irrlicht."
@@ -32,22 +34,21 @@ source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}
 	"git+https://github.com/google/googletest.git"
 	"chronoengine.sh"
 	"glm.patch"
-	"opencascade.patch"
 	)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a'
-            '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe'
-            'bfe6cc1f8018eabc2998c76a12096ba26722c32b8f3244dbc23ec653a5cfe958')
+            '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe')
 
 CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_VEHICLE=ON
 		-DENABLE_MODULE_FEA=ON
 		-DENABLE_MODULE_PYTHON=ON
 		-DENABLE_MODULE_IRRLICHT=ON
-		-DENABLE_MODULE_CASCADE=OFF
-		-DCH_CASCADE_DIR=/opt/opencascade7
+		-DENABLE_MODULE_CASCADE=ON
+		-DCASCADE_ROOT=/opt/oce
+		-DCASCADE_INCLUDE_DIR=/opt/oce/include/oce
 		-DENABLE_MODULE_OPENGL=ON
 		-DENABLE_MODULE_PARALLEL=ON
 		-DENABLE_MODULE_MKL=OFF
