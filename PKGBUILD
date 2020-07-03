@@ -3,12 +3,11 @@
 
 pkgname=vazir-fonts
 pkgver=26.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font based on DejaVu font."
 url="https://github.com/rastikerdar/vazir-font"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-vazir')
 conflicts=('ttf-vazir')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/vazir-font-v${pkgver}.zip")
