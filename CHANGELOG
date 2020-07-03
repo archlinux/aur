@@ -1,8 +1,15 @@
 2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
 
+	* 1.4.1-1
+	- Added meta options for a task to ignore global events.
+	- Added signal handling. Yep, you can close daemon with Ctrl+C and not run
+	noaftodo-k after.
+	- Package built from AUR will now have corresponding fuccix to its version
+	- Unnnecessary screen updates are now skipped.
+
 	* 1.4.0-3
-	Added "warn_time" task meta property (for custom "upcoming" time)
-	Fixed last default config string not being executed
+	- Added "warn_time" task meta property (for custom "upcoming" time)
+	- Fixed last default config string not being executed
 
 	* 1.4.0-2 :
-	Fixed a crash when entering DETAILS mode on an empty list.
+	- Fixed a crash when entering DETAILS mode on an empty list.
