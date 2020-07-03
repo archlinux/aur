@@ -2,7 +2,7 @@
 
 pkgname=digilent.adept.utilities
 pkgver='2.3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Adept configuration tools"
 arch=('x86_64' 'i686')
 url='https://reference.digilentinc.com/digilent_adept_2'

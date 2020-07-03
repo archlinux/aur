@@ -1,7 +1,7 @@
 pkgbase = digilent.adept.utilities
 	pkgdesc = The Adept configuration tools
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reference.digilentinc.com/digilent_adept_2
 	arch = x86_64
 	arch = i686
