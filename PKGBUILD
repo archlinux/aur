@@ -1,12 +1,12 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
 license=('MIT')
-makedepends=('cargo'
+makedepends=('rustup'
 			 'cmake')
 depends=('qt5-base'
      	 'polkit')
@@ -16,6 +16,8 @@ md5sums=('9d191cd2ab8359603786fc32b5b45d87')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
+  rustup toolchain install nightly
+  rustup update
   RUSTUP_TOOLCHAIN=nightly \
     cargo +nightly build --release --locked
 }
