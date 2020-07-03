@@ -18,5 +18,4 @@ provides=("arch-matrix-grub-theme-git=$pkgver")
 package() {
     install -dm 755 $pkgdir/boot/grub/themes/arch-matrix
     cp -r --no-preserve=ownership arch-matrix-grub-theme-git/arch-matrix $pkgdir/boot/grub/themes/
-    rm -rf arch-matrix-grub-theme-git
 }
