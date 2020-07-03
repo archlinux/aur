@@ -12,7 +12,9 @@ linux-cjktty-?.*.patch
 
 pkg/*
 src/*
+debug-*.*.*
 linux-shmilee-*.log
 linux-shmilee-*.src.tar.gz
 linux-shmilee-*.pkg.tar.xz
+linux-shmilee-*.pkg.tar
 linux.install.pkg

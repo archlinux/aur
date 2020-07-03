@@ -10,6 +10,18 @@
 _LLL_VER=5.4
 _LLL_SUBVER=50
 
+# Bisect debug, v5.4.47 -> v5.4.48
+_Bisect_debug=off # on, test, off
+if [ "$_Bisect_debug" == "on" ]; then
+  _burlbase=https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  _bcommit=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc #Peter, 8 x
+# _bcommit=2e256dd5b05561b051e895121530d2a0062c7a0f #Jann, 10 v
+# _bdiff="$_burlbase/diff/?h=linux-${_LLL_VER}.y&id2=v${_LLL_VER}.${_LLL_SUBVER}&id=$_bcommit"
+  _bpatch="$_burlbase/rawdiff/?h=linux-${_LLL_VER}.y&id2=v${_LLL_VER}.${_LLL_SUBVER}&id=$_bcommit"
+  msg "Bisect debug on: v${_LLL_VER}.${_LLL_SUBVER} --> $_bcommit"
+  msg "Bisect debug patch: $_bpatch"
+fi
+
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
 # Most users can disable NUMA.
@@ -38,10 +50,13 @@ _CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}::${_CJKTTY_PATCH_URL}"
 _PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
 pkgbase=linux-shmilee
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+if [ "$_Bisect_debug" == "off" ]; then
+  pkgname+=("${pkgbase}-docs")
+fi
 _srcname=linux-${_LLL_VER}
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -59,6 +74,7 @@ source=(
         'sphinx-workaround.patch'
         'uksm-patch-for-5.4.33+.patch'
         'linux-cjktty-patch-for-5.4.36+.patch'
+        'broken-sleep-5.4.48+.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -79,6 +95,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '6826624f65276927de012f040e77b02231fe6345b9da7c702deacd9372ea001e'
             '573f1c40951a6ee4cf6b07a6a8a1123b00fcd8bff29843905cf191e08f1d87f2'
+            '9f9ec5becca27bc7b65b372254bcd4c64069deff1d3b7fa15e6e416595163654'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -86,11 +103,29 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
 
 _kernelname=${pkgbase#linux}
 
+if [ "$_Bisect_debug" != "off" ]; then
+  makedepends+=('wget' 'modprobed-db')
+  PKGEXT='.pkg.tar'
+fi
+
 prepare() {
   cd ${_srcname}
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+
+  # Bisect debug
+  if [ "$_Bisect_debug" == "on" ]; then
+    msg "Patching upstream v$pkgver --> $_bcommit"
+    if [ ! -f "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit" ]; then
+      wget "$_bpatch" -O "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
+    fi
+    patch -p1 -i "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
+  fi
+  # Bisect debug result
+  if [ "$_Bisect_debug" != "on" ]; then
+    patch -R -p1 -i "../broken-sleep-5.4.48+.patch"
+  fi
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -157,6 +192,10 @@ prepare() {
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
+  if [ "$_Bisect_debug" != "off" ]; then
+    make LSMOD=$HOME/.config/modprobed.db localmodconfig
+  fi
+
   # rewrite configuration
   yes "" | make config >/dev/null
 }
@@ -164,7 +203,11 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules htmldocs
+  if [ "$_Bisect_debug" == "off" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules htmldocs
+  else
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  fi
 }
 
 _package() {
