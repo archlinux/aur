@@ -11,7 +11,7 @@ url="https://github.com/ToadKing/wii-u-gc-adapter"
 license=('MIT')
 depends=('libusb')
 makedepends=('git')
-source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git'
+source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git#commit=ae6b46d7a2b32068e746f1d2d816f4b3d6a7ac80'
         '51-ignore-gc-controller.conf'
         'wii-u-gc-adapter.service')
 sha512sums=('SKIP'
