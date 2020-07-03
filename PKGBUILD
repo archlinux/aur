@@ -4,12 +4,12 @@
 
 pkgname=ttf-monaco
 pkgver=6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The Monaco monospaced sans-serif typeface with special characters added"
 arch=('any')
 license=('unknown')
 url="https://github.com/todylu/monaco.ttf"
-source=("Monaco_Linux.ttf::https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf?raw=true")
+source=(Monaco_Linux.ttf::"${url}/blob/master/monaco.ttf?raw=true")
 md5sums=('5152b5a652b84e8572c5d527aa590e82')
 
 package() {

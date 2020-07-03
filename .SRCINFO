@@ -1,7 +1,7 @@
 pkgbase = ttf-monaco
 	pkgdesc = The Monaco monospaced sans-serif typeface with special characters added
 	pkgver = 6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/todylu/monaco.ttf
 	arch = any
 	license = unknown
