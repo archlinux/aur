@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/xrdesktop'
 depends=('gxr-git')
 provides=("$basename="$pkgver)
 conflicts=("$basename")
-makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers')
+makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers' 'pygobject-devel')
 license=('MIT')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git')

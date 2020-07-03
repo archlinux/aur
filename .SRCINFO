@@ -11,6 +11,7 @@ pkgbase = xrdesktop-git
 	makedepends = glslang
 	makedepends = gtk-doc
 	makedepends = vulkan-headers
+	makedepends = pygobject-devel
 	depends = gxr-git
 	provides = xrdesktop=0.15.0.829.0b0d42f
 	conflicts = xrdesktop
