@@ -1,6 +1,6 @@
 pkgbase = yoda
 	pkgdesc = A particle physics package for data analysis (specifically histogramming) classes.
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://yoda.hepforge.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = yoda
 	makedepends = cython
 	depends = python
 	optdepends = python2: For Python2 module in addition to Python3
-	source = http://www.hepforge.org/archive/yoda/YODA-1.8.1.tar.gz
-	md5sums = 4a2f0b5562bad12e02b656dac6fd62f6
+	source = http://www.hepforge.org/archive/yoda/YODA-1.8.3.tar.gz
+	md5sums = 8a86bd9895be9f0e33c0a41222b2ff46
 
 pkgname = yoda
 
