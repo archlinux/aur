@@ -2,12 +2,11 @@
 
 pkgname=mikhak-fonts
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="simple monoline Arabic-Latin semi handwriting typeface"
 url="https://aminabedi68.github.io/Mikhak/"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-mikhak')
 conflicts=('ttf-mikhak')
 source=("${pkgname}-${pkgver}.zip::https://github.com/aminabedi68/Mikhak/releases/download/v${pkgver}/Mikhak-v${pkgver}.zip"
