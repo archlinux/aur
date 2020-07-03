@@ -36,12 +36,14 @@ source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}
 	"git+https://github.com/google/googletest.git"
 	"chronoengine.sh"
 	"glm.patch"
+	"fsi.patch"
 	)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a'
-            '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe')
+            '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe'
+            '30b72d0004f784950ef8496a10cc491de8d98a855c6db97ac8fe2e73d01c1579')
 
 CMAKE_FLAGS=(	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_HDF5=ON
@@ -74,6 +76,7 @@ prepare() {
   sed -i 's/lib64/lib/' "${files[@]}"
   sed -i 's|share/chrono/bin|bin/chronoengine|' CMakeLists.txt
   git apply -v "${srcdir}"/glm.patch
+  git apply -v "${srcdir}"/fsi.patch
 }
 
 pkgver() {
