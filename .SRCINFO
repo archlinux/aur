@@ -5,6 +5,7 @@ pkgbase = cobang
 	url = https://github.com/hongquan/CoBang
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
 	makedepends = meson
 	makedepends = python-setuptools
 	depends = gst-python

@@ -10,7 +10,7 @@ depends=('gst-python' 'gobject-introspection' 'gtk3' 'gst-plugins-good' 'libnm'
          'python-pillow>=7.1.2' 'python-logbook' 'python-single-version'
          'python-zbar' 'python-kiss-headers')
 makedepends=('meson' 'python-setuptools')
-#checkdepends=('appstream')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('5b4504c40b313891fddedd78dac9fcd1b3e4c8c9bae68f998cc4ba4e6ac9ba33')
 
@@ -22,10 +22,10 @@ build() {
 	python setup.py build
 }
 
-#check() {
-#	cd "CoBang-$pkgver"
-#	meson test -C build
-#}
+check() {
+	cd "CoBang-$pkgver"
+	pytest
+}
 
 package() {
 	cd "CoBang-$pkgver"
