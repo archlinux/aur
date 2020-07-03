@@ -1,11 +1,10 @@
 pkgbase = estedad-fonts
 	pkgdesc = A Sans Serif Arabic-Latin text typeface
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aminabedi68/Estedad
 	arch = any
 	license = OFL
-	depends = fontconfig
 	source = estedad-fonts-4.0.zip::https://github.com/aminabedi68/Estedad/releases/download/4.0/Estedad.V4.0.zip
 	source = LICENSE
 	sha256sums = 78f2f2e73da4520b48d02bf86480d641d02461f7bb471d3b987efb495cf0c803
