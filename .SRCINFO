@@ -1,0 +1,21 @@
+pkgbase = qilin-bin
+	pkgdesc = Fully hackable text editor developed for exact sciences with built-in KaTeX and AsciiMath support. Extensible via plugins and themes. Exportable as HTML, PDF and GFM
+	pkgver = 0.4.0.alpha
+	pkgrel = 1
+	url = https://github.com/qilin-editor/qilin-app
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = qilin
+	source = qilin-bin-0.4.0.alpha.zip::https://github.com/qilin-editor/qilin-app/releases/download/v0.4.0-alpha/qilin-linux.zip
+	source = LICENSE::https://github.com/qilin-editor/qilin-app/raw/development/LICENSE
+	source = qilin.jpg
+	sha256sums = ecbece01202b798b302888c90afc1f17a724724e7a2804c7b6099a2878e146b9
+	sha256sums = ec0396128f95d9c57076bbcc334684707c145530bc799ce5c55abdd903935bfe
+	sha256sums = SKIP
+
+pkgname = qilin-bin
+
