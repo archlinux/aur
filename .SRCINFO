@@ -1,6 +1,6 @@
 pkgbase = sollya-git
 	pkgdesc = A tool environment and a library for safe floating-point code development
-	pkgver = svn_legacy_branch_optimLists.r1204.g4dde1139
+	pkgver = svn_legacy_branch_optimLists.r1206.g23d6eedf
 	pkgrel = 1
 	url = http://sollya.gforge.inria.fr/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sollya-git
 	depends = mpfr
 	depends = mpfi
 	depends = libxml2
-	depends = libfplll
+	depends = fplll
 	optdepends = gnuplot: for using the plot and externalplot commands
 	provides = sollya
 	conflicts = sollya
