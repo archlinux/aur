@@ -1,7 +1,8 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor:  Serge K <arch@phnx47.net>
 
 pkgname=ledger-live
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Open source companion app for your Ledger devices"
 arch=('x86_64')
@@ -11,7 +12,7 @@ makedepends=(yarn python nodejs-lts-erbium)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('95b9f5901a3786a6224177b00b29f4204c61056e02da69e3c01c58b5099065f8f264175f13ed2884ac3fba78a4fab82c68f00eb726533e95502ee4547ab3e76f'
+sha512sums=('f8171db24aa7b2ee8c1ea36e49bf06fbedecd6e1b863a82d9db75f5f902018092a60edcff01205ce779193e8e7d27db44b08a1ac85814ebbeca9044308560eca'
             '282faf948b4ab1204f61d838e8362c398ffa731533c75f2b42056a53b939255de89b82e4a9553c161874694f27089070217e56cad18a258e0b18796ab4722955')
 # TODO sign with ledger pgp
 validpgpkeys=()
