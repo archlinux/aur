@@ -1,0 +1,14 @@
+pkgbase = proj-datumgrid-north-america
+	pkgdesc = Proj datum grids for North America
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/OSGeo/proj-datumgrid
+	arch = any
+	license = custom
+	depends = proj
+	noextract = proj-datumgrid-north-america-1.4.zip
+	source = https://download.osgeo.org/proj/proj-datumgrid-north-america-1.4.zip
+	sha256sums = eb8a1b6fa96580e88555fb1ce3e61aa6d02e07b7d6d0023aecf2cebfa575becf
+
+pkgname = proj-datumgrid-north-america
+
