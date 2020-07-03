@@ -1,0 +1,12 @@
+pkgbase = rbase64
+	pkgdesc = Base64 encoder written in rust
+	pkgver = r7.7cdb331
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3.0
+	provides = rbase64
+	source = git+https://github.com/niktob560/rbase64
+	sha1sums = SKIP
+
+pkgname = rbase64
+
