@@ -3,7 +3,7 @@ pkgname=moodledesktop
 _pkgname=moodleapp
 _electron=electron4
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The official app for Moodle.'
 arch=(any)
 url=https://download.moodle.org/desktop/
@@ -14,7 +14,7 @@ _pathstem=$_pkgname-$pkgver
 source=($_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('6b4a8b0765c888de64576afc1c266a8e489f0c9f75e9e64237c5193af8909a5c'
+sha256sums=('ce7c068e83e987dcf4204447a2408a7545e162cb92ed44cf6364640ab133153e'
             'ae04368f6573a0aec419bf1d013a60cfaf7375ed9db2a73e04d0a65904746fdd'
             'ca4bcbbfb0b6f40e4fa8eaed0b02e5c1d1ba609a43f8aaed8cefd16c8af4ba86')
 
