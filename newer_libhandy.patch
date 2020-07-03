@@ -154,12 +154,12 @@ index 478a3ffabd634fd0a57c44e8b1773f692f9a9347..b5b7567d2a96efd1e5ef0cd78bcd4d86
      translators=('GrownNed (Russian)', 'Heimen Stoffels (Dutch)', 'VaGNaroK (Brazilian Portuguese)', 'Valéry Febvre (French)', ),
  )
  
-@@ -46,7 +46,7 @@
+@@ -46,7 +46,8 @@
          GLib.set_application_name(_('Komikku'))
          GLib.set_prgname(self.application_id)
  
 -        Handy.Column()  # Init Handy
-+        Handy.Clamp()  # Init Handy
++        Handy.init()  # Init Handy
          Notify.init(_('Komikku'))
  
      def do_activate(self):
