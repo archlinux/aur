@@ -1,10 +1,11 @@
 pkgbase = daty-git
 	pkgdesc = Daty Wikidata Editor
-	pkgver = 0.1
+	pkgver = 1.0beta+78+g81b9736
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/daty
 	arch = any
 	license = AGPLv3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = libhandy
 	depends = python-appdirs
@@ -17,7 +18,7 @@ pkgbase = daty-git
 	provides = daty
 	conflicts = daty
 	source = daty::git+https://gitlab.gnome.org/World/Daty.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = daty-git
 
