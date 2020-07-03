@@ -2,13 +2,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elektra-git
-pkgver=0.9.1.r176.g5cf9b3cf8
+pkgver=0.9.2.r91.ga40ba50ca
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store from git master"
 url="https://www.libelektra.org"
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-depends=('yajl' 'qt5-base' 'python' 'curl' 'boost' 'swig' 'libuv' 'libgit2' 'libev' 'zeromq' 'gpgme')
+depends=('yajl' 'qt5-declarative' 'qt5-base' 'python' 'boost' 'swig' 
+	'libuv' 'libgit2' 'libev' 'zeromq' 'gpgme' 'hicolor-icon-theme'
+	'discount' 'xerces-c')
 optdepends=('ruby: for ruby bindings'
 	    'python2: for python2-bindings'
 	    'xerces-c: for python2-bindings'
