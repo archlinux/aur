@@ -15,7 +15,7 @@ source=("http://downloads.sourceforge.net/project/sweethome3d/FurnitureLibraryEd
         'furniturelibraryeditor'
         'furniturelibraryeditor.desktop')
 md5sums=('ceaf0dbe8288894a56ea58c49eacd9dc'
-         'c8980c9deb00e2b167115f795876d7db'
+         'b5b638846f984ba39fb58387a6f44a07'
          '152c91ee7b4098c11492f80a587ed64a')
 
 prepare() {
