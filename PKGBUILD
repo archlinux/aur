@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4.r17.g2c879c9
+pkgver=0.10.4.r40.g6fb42db
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -46,7 +46,6 @@ makedepends=('git'
              'poppler'
              'ttf-gentium-basic'
              'ttf-sil-scheherazade')
-checkdepends=('lua-busted')
 provides=('libtexpdf.so' "${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
@@ -55,7 +54,8 @@ sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --tags --abbrev=7 --match="v*" HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
@@ -78,7 +78,7 @@ build () {
 
 check () {
     cd "${pkgname%-git}"
-    make busted
+    make check
 }
 
 package () {

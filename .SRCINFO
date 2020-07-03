@@ -1,11 +1,10 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.10.4.r17.g2c879c9
+	pkgver = 0.10.5.r0.g69c498a
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
-	checkdepends = lua-busted
 	makedepends = git
 	makedepends = noto-fonts-cjk
 	makedepends = poppler
@@ -42,7 +41,7 @@ pkgbase = sile-git
 	depends = libicuuc.so
 	depends = libtexpdf.so
 	provides = libtexpdf.so
-	provides = sile=0.10.4.r17.g2c879c9
+	provides = sile=0.10.5.r0.g69c498a
 	conflicts = sile
 	source = git://github.com/sile-typesetter/sile.git
 	source = git://github.com/sile-typesetter/libtexpdf.git
