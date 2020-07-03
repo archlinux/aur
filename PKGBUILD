@@ -1,6 +1,7 @@
+# Maintainter: Everett B. everettbutts@hotmail.com 
 pkgname=arch-matrix-grub-theme-git
 _gitname="arch-matrix"
-pkgver=r2.130002
+pkgver=r2.130003
 pkgrel=1
 pkgdesc="Arch Matrix Grub theme."
 arch=('any')
