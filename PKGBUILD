@@ -2,13 +2,12 @@
 
 pkgname=ttf-choc
 pkgver=20090526
-pkgrel=1
+pkgrel=2
 pkgdesc="Font based on the traditions of Japanese brush calligraphy, thick yet graceful"
 arch=('any')
 url="https://www.ffonts.net/Choc.font"
 license=('unknown')
-groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 source=("$pkgname-$pkgver.zip::${url}.zip")
 sha1sums=('27aff590700aebc46b8eb268a619e7e1b2a2a828')
 
