@@ -3,12 +3,11 @@
 
 pkgname=vazir-code-fonts
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful monospace Persian font based on Vazir and Inconsolata fonts."
 url="https://github.com/rastikerdar/vazir-code-font"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-vazir-code')
 conflicts=('ttf-vazir-code')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/vazir-code-font-v${pkgver}.zip")
