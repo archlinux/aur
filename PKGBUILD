@@ -1,8 +1,8 @@
 # Owner: Marcel Radzio <info@nordgedanken.de>
 # Maintainer: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=riot-desktop-git
-_vers=v1.6.7
-pkgver=v1.6.7.r0.g70e981f5
+_vers=v1.6.8-rc.1
+pkgver=v1.6.8.rc.1.r0.g1726615b
 pkgrel=1
 pkgname=(riot-web-git riot-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
