@@ -1,7 +1,7 @@
 pkgbase = xbindkeys-git
 	pkgdesc = xbindkeys is a program that allows you to launch shell commands with your keyboard or your mouse under X Windows
-	pkgver = git
-	pkgrel = 1
+	pkgver = v1.8.7.r1.g75909d9
+	pkgrel = 2
 	url = https://www.nongnu.org/xbindkeys/xbindkeys.html
 	arch = any
 	license = GPL2
