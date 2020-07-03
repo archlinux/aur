@@ -1,0 +1,14 @@
+pkgbase = proj-datumgrid-europe
+	pkgdesc = Proj datum grids for Europe
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/OSGeo/proj-datumgrid
+	arch = any
+	license = custom
+	depends = proj
+	noextract = proj-datumgrid-europe-1.6.zip
+	source = https://download.osgeo.org/proj/proj-datumgrid-europe-1.6.zip
+	sha256sums = c596ad4cc995c19c407f24a9a76a714300240b7691bf86fd3393ab0f65ba15a0
+
+pkgname = proj-datumgrid-europe
+
