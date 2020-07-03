@@ -3,10 +3,10 @@
 
 pkgname=ttf-dpcustommono2
 pkgver=2.01
-pkgrel=2
+pkgrel=3
 pkgdesc="PGDP font with exaggerated clarity to aid proofreading"
 arch=(any)
-depends=(fontconfig xorg-font-utils)
+depends=(fontconfig)
 url="http://www.pgdp.net/wiki/DPCustomMono2"
 source=(LICENCE https://www.pgdp.net/c/faq/DPCustomMono2.ttf)
 install=$pkgname.install

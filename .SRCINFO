@@ -1,13 +1,12 @@
 pkgbase = ttf-dpcustommono2
 	pkgdesc = PGDP font with exaggerated clarity to aid proofreading
 	pkgver = 2.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pgdp.net/wiki/DPCustomMono2
 	install = ttf-dpcustommono2.install
 	arch = any
 	license = custom
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = LICENCE
 	source = https://www.pgdp.net/c/faq/DPCustomMono2.ttf
 	md5sums = f5df9c45b5f3b8c8b6d959270b90b3ba
