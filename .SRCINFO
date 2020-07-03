@@ -11,7 +11,9 @@ pkgbase = opencpn-plugin-oesenc-git
 	depends = opencpn
 	conflicts = opencpn-plugin-oesenc
 	source = opencpn-plugin-oesenc-git::git+https://github.com/bdbcat/oesenc_pi.git
+	source = CMakeLists.patch
 	sha1sums = SKIP
+	sha1sums = ee6eed6c699f37897c927d8a81a93da8abdf7b91
 
 pkgname = opencpn-plugin-oesenc-git
 
