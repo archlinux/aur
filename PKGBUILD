@@ -1,6 +1,6 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
-pkgname=ciel-git 
-pkgver=r332.14efc0a
+pkgname=ciel-git
+pkgver=r411.4e7a824
 pkgrel=1
 pkgdesc="A tool for controlling multi-layer file systems and containers."
 arch=('i686' 'x86_64')
@@ -24,7 +24,6 @@ build() {
     cd $pkgname
     make
     make PREFIX=${srcdir}/build install
-    make clean
 }
 
 package() {
