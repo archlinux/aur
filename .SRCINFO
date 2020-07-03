@@ -1,16 +1,16 @@
 pkgbase = arch-matrix-grub-theme-git
 	pkgdesc = Arch Matrix Grub theme.
-	pkgver = r2.130001
+	pkgver = r2.130002
 	pkgrel = 1
 	url = https://github.com/Can221-ParOS/arch-matrix-grub-theme-git.git
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = grub
-	provides = arch-matrix-grub-theme-git=r2.130001
+	provides = arch-matrix-grub-theme-git=r2.130002
 	conflicts = arch-matrix-grub-theme-git
 	source = git+https://github.com/Can221-ParOS/arch-matrix-grub-theme-git.git
-	sha512sums = 13FCBDF64ADA57575772ABE574650E6680ADEA8D99767629F60E43FDB51BB4EA3FBBE03C293523AE50A79950FF115497CC0E72F5AD357323C49BF009B6C8B1B8
+	sha512sums = SKIP
 
 pkgname = arch-matrix-grub-theme-git
 
