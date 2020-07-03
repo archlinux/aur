@@ -1,6 +1,6 @@
 pkgbase = eidklient
 	pkgdesc = Slovak eID Client
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://www.slovensko.sk/
 	install = eidklient.install
@@ -15,9 +15,6 @@ pkgbase = eidklient
 
 pkgname = eidklient
 	depends = glibc
-	depends = qt4
 	depends = pcsclite
-	depends = qt5-imageformats
 	depends = ccid
-	depends = chrpath
 

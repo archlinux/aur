@@ -1,7 +1,7 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
@@ -26,16 +26,8 @@ pkgver() {
 }
 
 package() {
-        depends=("glibc" "qt4" "pcsclite" "qt5-imageformats" "ccid" "chrpath")
+        depends=("glibc" "pcsclite" "ccid" )
 
-	ar p ${srcdir}/Aplikacia_pre_eID_${upstream_arch}_debian.deb data.tar.gz | tar -xz -C "${pkgdir}"
+	ar p ${srcdir}/Aplikacia_pre_eID_${upstream_arch}_debian.deb data.tar.xz | tar -xJ -C "${pkgdir}"
 	
-	# The application requires the libraries in a specific location
-	ln -sf /usr/lib/qt/plugins/imageformats/libqtga.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqgif.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqico.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqjpeg.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqmng.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqsvg.so ${pkgdir}/usr/lib/eac_mw_klient/
-	ln -sf /usr/lib/qt4/plugins/imageformats/libqtiff.so ${pkgdir}/usr/lib/eac_mw_klient/
 }
