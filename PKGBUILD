@@ -1,6 +1,6 @@
 pkgname=arch-matrix-grub-theme-git
 _gitname="arch-matrix"
-pkgver=r2.1200067
+pkgver=r2.130000
 pkgrel=1
 pkgdesc="Arch Matrix Grub theme."
 arch=('any')
