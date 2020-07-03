@@ -6,7 +6,7 @@
 
 pkgname=python-bundlewrap
 _pkgname=bundlewrap
-pkgver=3.7.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Agent-less configuration management"
 arch=('any')
@@ -21,7 +21,7 @@ depends=('python-cryptography'
 	 'python-six')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3e6557dcb18f248dbf3384d73e75eeb1673601cd26a1797df3c570bff0197c81')
+sha512sums=('4d696a97e6d612839315d3820e4efd1db73c59ac88db816e19a619dec54f94f84cb28517ee57bcbc26ee6436ea887c73cc906479132ba41cc31755f76e2e4c85')
 
 build(){
   cd "$srcdir/bundlewrap-$pkgver"
