@@ -1,19 +1,21 @@
 #!/bin/sh
-#Simple script to start iwscanner
+
+# Simple iwscanner launch script
+
+CMD=/usr/share/iwscanner/iwscanner.py
+
+if [ "$(id -ru)" -eq 0 ]; then
+   # Already root user
+   exec $CMD
+fi
 
 GKSU=/usr/bin/gksu
 KDESU=/usr/bin/kdesu
-GKSUDO=/usr/bin/gksudo
-
-if [ -e "$GKSU" ]
-   then
-   $GKSU /usr/share/iwscanner/iwscanner.py
-elif [ -e "$KDESU" ]
-   then
-   $KDESU -c /usr/share/iwscanner/iwscanner.py
-elif [ -e "$GKSUDO" ]
-   then
-   $GKSUDO -c /usr/share/iwscanner/iwscanner.py
+if [ -e "$GKSU" ]; then
+   exec $GKSU $CMD
+elif [ -e "$KDESU" ]; then
+   exec $KDESU -c $CMD
 else
-   echo "Unable to find suitable su application, please install gksu"
+   printf "Unable to find suitable su application, please install gksu or kde-cli-tools (kdesu)\n" 1>&2
 fi
+

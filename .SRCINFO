@@ -1,21 +1,22 @@
 pkgbase = iwscanner
 	pkgdesc = Wireless scanner with an easy to use graphic interface and using the iwlist tool
 	pkgver = 0.2.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://kuthulu.com/iwscanner
 	arch = any
 	license = LGPL
 	depends = pygtk
 	depends = python2
 	depends = wireless_tools
-	optdepends = kdesu: privilege escalation to use wireless tools
+	optdepends = gksu: privilege escalation to use wireless tools
+	optdepends = kde-cli-tools: privilege escalation (kdesu) to use wireless tools
 	options = !emptydirs
 	source = http://kuthulu.com/iwscanner/iwscanner-0.2.4.tgz
 	source = iwscanner
 	source = iwscanner.desktop
 	source = setup.py
 	md5sums = 436d37e5a1bf2d26bcd0e77e2ebaeb3a
-	md5sums = 7dcbc65395faba817a3653db7d07224a
+	md5sums = a7a7fb1ca440e000ef97c96515be29db
 	md5sums = d0613547024a89444c34ef2b34d8427c
 	md5sums = 470cb6fb4539e7d580086178304c95a9
 
