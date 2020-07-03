@@ -1,0 +1,21 @@
+pkgbase = python-pywerview-git
+	pkgdesc = A (partial) Python rewriting of PowerSploit's PowerView.(Python3 fork)
+	pkgver = r183.2fd83cf
+	pkgrel = 1
+	url = https://github.com/mpgn/pywerview
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = impacket
+	depends = python-pyopenssl
+	depends = python-pyasn1
+	depends = python-pycryptodome
+	depends = python-pyopenssl
+	depends = python-beautifulsoup4
+	provides = python-pywerview
+	source = git+https://github.com/mpgn/pywerview.git
+	sha256sums = SKIP
+
+pkgname = python-pywerview-git
+
