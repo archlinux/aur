@@ -1,6 +1,6 @@
 # Maintainer Arthur Shevchenko <niktob560@yandex.ru>
 
-pkgbase=pkgbase
+pkgbase=rrot
 pkgname=rrot
 pkgver=1.0
 pkgrel=1
