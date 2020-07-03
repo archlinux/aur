@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=4
-_clr=964
+_minor=7
+_clr=967
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33400
+_clear_version=33460
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=74f0500b3b4d74198a194a114716d1530122362cb7abc37328def52a131f3f6c
+_config_hash=5edb38e33559a6c3b008b7974796a292aabe04e5d0b434cfce409897838d83d6
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -94,3 +94,6 @@ b2sums=('bc0a80c91535d31719a13c78820afefa309b4bd481b3cdf1576dce2b93d57efce556aa0
 b2sums=('17aeef4d3c3c63fc3ef7b4bd32dec9883986275ce7906cb01c3e1a3c8d62730c35f118551e6081aa1323eab16856c78e22f3e74995ca5b703b444a629d6c68f0'
         'df0cfb7d45c73a85d5007ff25bf897f13b89a0249fd7a29bed82a5e90a903f0a3e052d11e09cf8f103ce85e8d8d91bdbe6cfccd636b11d8124796fb2bf892050'
         '6b25abb38e1952a6c053fdfa84f0a2ec43dbbe2f25f69cab508c02cf16d8f6c2ec779fac8d71fd346bf38b37c3898224868bdb5425f76b3f867085b69578fd02')
+b2sums=('eb0cb20936e43a4f61ff5c9e2db113efaf1070293e28a50a744de0e24c8c3552461866b26ad2292c61126ad721b7e116ef9e40ebcfa2ff902c5b360d198649ae'
+        '013afd934ac6d9f6787c552b090f036983fc279d0efe33baeb32b2a317ee25ed32602c0dce1e923b3968048f8097d98e0975496cff838d1772ac09461a73fa5e'
+        '610a24a995ae1b244f3546a39a42615aa2d45b8bbf8c168fff0ff5451a26a5281b6b0964a73cd11a815cb5e132b4e314ab4341d7b195cdd61bf1aae37346df32')
