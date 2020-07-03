@@ -3,14 +3,14 @@
 # Maintainer (bin-version): Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-bin
-pkgver=77.0.1
+pkgver=78.0.1
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
-depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('mozilla-common' 'libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
 	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
@@ -39,7 +39,7 @@ validpgpkeys=(
 )
 
 sha256sums=(
-	'696815303d519479d03d098441cbba2caefb8d9eb2d0528a18d13da9855b7097'
+	'5d2b46c5b734124c6789ec01bea8c8e1897fb708309705a9e5b37e47c597df88'
 	'SKIP'
 )
 
