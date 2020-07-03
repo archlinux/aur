@@ -13,6 +13,7 @@ pkgbase = perl-net-cups
 	depends = krb5>=1.13.7
 	depends = libcups>=2.2.3
 	depends = zlib>=1:1.2.11
+	depends = cups-filters
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/N/NI/NINE/Net-CUPS-0.64.tar.gz
 	sha256sums = d7bc77ff0f62bf874c843c590eb12a80bbd44749a2fb74dbed445c35d0e85a85

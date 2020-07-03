@@ -9,7 +9,7 @@ pkgdesc="Common Unix Printing System Interface"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'e2fsprogs>=1.43.4' 'glibc>=2.25' 'krb5>=1.13.7' 'libcups>=2.2.3' 'zlib>=1:1.2.11')
+depends=('perl' 'e2fsprogs>=1.43.4' 'glibc>=2.25' 'krb5>=1.13.7' 'libcups>=2.2.3' 'zlib>=1:1.2.11' 'cups-filters')
 makedepends=()
 url='https://metacpan.org/release/Net-CUPS'
 source=('http://search.cpan.org/CPAN/authors/id/N/NI/NINE/Net-CUPS-0.64.tar.gz')
