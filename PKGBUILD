@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-melodic-rviz'
 pkgver='1.13.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -38,7 +38,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	yaml-cpp
-	eigen3
+	eigen
 	ogre-1.9
 	assimp
 	mesa
@@ -75,7 +75,7 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	yaml-cpp
-	eigen3
+	eigen
 	ogre-1.9
 	assimp
 	mesa
