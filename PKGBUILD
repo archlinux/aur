@@ -3,15 +3,15 @@
 
 pkgname=bitwarden
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 _jslibcommit='57ace4084556758fdc2989cf1a8cf6a5d1736a29'
 _nodeversion='10.20.1'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-makedepends=('expac' 'git' 'npm' 'python' 'nvm' 'jq' 'patch')
-depends=('alsa-lib' 'electron' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss')
+makedepends=('expac' 'pkgconf' 'git' 'npm' 'python' 'nvm' 'jq' 'patch')
+depends=('alsa-lib' 'electron' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
