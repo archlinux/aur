@@ -1,15 +1,17 @@
-pkgbase = xbindkeys
-	pkgdesc = Launch shell commands with your keyboard or your mouse under X
-	pkgver = 1.8.7
+pkgbase = xbindkeys-git
+	pkgdesc = xbindkeys is a program that allows you to launch shell commands with your keyboard or your mouse under X Windows
+	pkgver = git
 	pkgrel = 1
 	url = https://www.nongnu.org/xbindkeys/xbindkeys.html
-	arch = x86_64
-	license = GPL
-	depends = libx11
+	arch = any
+	license = GPL2
+	makedepends = git
 	depends = guile
-	optdepends = tk: xbindkeys_show
-	source = https://www.nongnu.org/xbindkeys/xbindkeys-1.8.7.tar.gz
-	sha256sums = a29b86a8ec91d4abc83b420e547da27470847d0efe808aa6e75147aa0adb82f2
+	depends = libx11
+	optdepends = tk
+	provides = xbindkeys
+	source = git+https://git.savannah.nongnu.org/git/xbindkeys.git
+	sha256sums = SKIP
 
-pkgname = xbindkeys
+pkgname = xbindkeys-git
 
