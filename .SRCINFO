@@ -1,8 +1,8 @@
 pkgbase = ttf-cheapskate
 	pkgdesc = TTF Fonts by Dustin Norlander
 	pkgver = 2.0
-	pkgrel = 17
-	url = https://www.fontspace.com/cheapskate-fonts
+	pkgrel = 18
+	url = https://dustinn.1001fonts.com
 	arch = any
 	license = GPL
 	source = balker-2.0.zip::https://dl.1001fonts.com/balker.zip
