@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.5.184
+pkgver=8.6.53
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://v8.dev"
 license=('BSD')
 depends=('icu')
 optional=('rlwrap')
-makedepends=('clang' 'clang-tools-extra' 'lld' 'llvm' 'python2' 'git' 'wget')
+makedepends=('clang' 'clang-tools-extra' 'lld' 'llvm' 'python2' 'python3' 'git' 'wget')
 conflicts=('v8' 'v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
 provides=('v8')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -38,13 +38,14 @@ prepare() {
   export CC=/usr/bin/clang
   export CXX=/usr/bin/clang++
 
-  # Switching to python2 system environment
-  mkdir -p bin
-  ln -sf /usr/bin/python2 ./bin/python
-  ln -sf /usr/bin/python2-config ./bin/python-config
-  msg2 "Using: `which python`"
+  # # Switching to python2 system environment
+  # mkdir -p bin
+  # ln -sf /usr/bin/python2 ./bin/python
+  # ln -sf /usr/bin/python2-config ./bin/python-config
+  # msg2 "Using: `which python`"
 
-  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  #export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  export PATH=`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
@@ -98,7 +99,8 @@ prepare() {
 build() {
   export CC=/usr/bin/clang
   export CXX=/usr/bin/clang++
-  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  # export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  export PATH=`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
 
@@ -117,10 +119,10 @@ check() {
   cd $srcdir/v8
 
   msg2 "Testing, this will also take a while..."
-  tools/run-tests.py --no-presubmit \
-                     --outdir=out.gn \
-                     --arch="x64" \
-                     --mode=Release || true
+  python2 tools/run-tests.py --no-presubmit \
+                             --outdir=out.gn \
+                             --arch="x64" \
+                             --mode=Release || true
 }
 
 package() {
@@ -156,11 +158,11 @@ package() {
   install -d ${pkgdir}/usr/share/licenses/v8
   install -m644 LICENSE* ${pkgdir}/usr/share/licenses/v8
 
-  cd $srcdir
-  if [ -d "bin" ]; then
-    msg2 "cleanup leftover python binaries"
-    rm -rf "bin"
-  fi
+  # cd $srcdir
+  # if [ -d "bin" ]; then
+  #   msg2 "cleanup leftover python binaries"
+  #   rm -rf "bin"
+  # fi
 
 }
 
