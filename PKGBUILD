@@ -3,12 +3,11 @@
 
 pkgname=sahel-fonts
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font."
 url="https://github.com/rastikerdar/sahel-font"
 arch=(any)
 license=('OFL')
-depends=('fontconfig')
 provides=('ttf-sahel')
 conflicts=('ttf-sahel')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver//_/-}/sahel-font-v${pkgver//_/-}.zip")
