@@ -1,24 +1,21 @@
 pkgname=beanstalkd
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 epoch=
 pkgdesc="Fast, simple message queue server"
 arch=('i686' 'x86_64')
-url=""
+url="https://beanstalkd.github.io/"
 license=('GPL')
 depends=()
 makedepends=()
 conflicts=('beanstalkd-git')
 backup=('etc/conf.d/beanstalkd')
-options=()
-install=
-changelog=
 source=("https://github.com/kr/beanstalkd/archive/v${pkgver}.tar.gz"
 	"beanstalkd@.service"
 	"beanstalkd.service"
 	"beanstalkd.conf"
 	"wno-error.patch")
-sha256sums=('5e3414e49d00e9ef9530897983e56bdba98da6f8f1f30f5fe7e6064b2f68c544'
+sha256sums=('f43a7ea7f71db896338224b32f5e534951a976f13b7ef7a4fb5f5aed9f57883f'
             'a58cb94c7524f48a4f37244dd37593fc74186168796d472db67326387510979e'
             'e18b2c5d959027560f597022b4afe56bc337c20c98c76ecec6d2e05097188627'
             'b59792b451554e6b7de54543448fcd6dd0b76dbe5babb94068864f063f7efbfc'
