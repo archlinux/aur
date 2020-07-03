@@ -2,12 +2,12 @@
 
 pkgbase=rrot
 pkgname=rrot
-pkgver=1.0
+pkgver=r7.7cdb331
 pkgrel=1
 pkgdesc="Rot encoder written in rust"
 license=('GPL3.0')
-_source=(
-    "https://github.com/niktob560/rrot"
+source=(
+    "git+https://github.com/niktob560/rrot"
 )
 arch=('x86_64')
 provides=('rrot')
@@ -18,18 +18,18 @@ makedeps=(
 )
 
 build() {
-    cd $srcdir
-    cargo build --release
+    cd $srcdir/$pkgname
+    cargo build --release --locked --all-features
 }
 
 package() {
-    cd $srcdir
+    cd $srcdir/$pkgname
     mkdir -p $pkgdir/usr/bin/
-    install -m 0555 $srcdir/target/release/$pkgname $pkgdir/usr/bin/$pkgname
+    install -m 0555 $srcdir/$pkgname/target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
 
 pkgver() {
-    cd $srcdir
+    cd $srcdir/$pkgname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
