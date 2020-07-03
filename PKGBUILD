@@ -6,11 +6,11 @@
 
 pkgname=qdl
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/andersson/qdl'
-license=('BSD')
+license=('BSD3')
 depends=('libxml2')
 source=("https://github.com/andersson/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('561b6ffaf26d063f107a0769b41d0ed02f1f6c4656b6284e653e8baf69b2f34d5f6051e54bb45ab55c028bb8bfa9b4e5218b796dbdb7ab7686576168b1b11d77')
