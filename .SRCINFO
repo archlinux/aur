@@ -1,10 +1,10 @@
 pkgbase = python-bundlewrap
 	pkgdesc = Agent-less configuration management
-	pkgver = 3.6.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://bundlewrap.org/
 	arch = any
-	license = GPLv3
+	license = GPL3
 	depends = python-cryptography
 	depends = python-jinja
 	depends = python-mako
@@ -13,8 +13,8 @@ pkgbase = python-bundlewrap
 	depends = python-requests
 	depends = python-six
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/00/a6/677563dc39553b116b528c96d94e3e17ec1218d415e5337dc50f0ee924f4/bundlewrap-3.6.1.tar.gz
-	sha256sums = 8c33bbf69750f75a9240c8e9d6bbfb9b6db8c3c62f8527481df0d8bf8c6bbadb
+	source = https://files.pythonhosted.org/packages/source/b/bundlewrap/bundlewrap-4.0.0.tar.gz
+	sha512sums = 4d696a97e6d612839315d3820e4efd1db73c59ac88db816e19a619dec54f94f84cb28517ee57bcbc26ee6436ea887c73cc906479132ba41cc31755f76e2e4c85
 
 pkgname = python-bundlewrap
 
