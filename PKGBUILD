@@ -16,12 +16,12 @@ md5sums=('SKIP')
 
 build() {
 	cd noaftodo
-	make
+	V_SUFFIX=AUR make
 }
 
 package() {
 	cd noaftodo
-	V_SUFFIX=AUR PKGROOT="$pkgdir" make install
+	PKGROOT="$pkgdir" make install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 noaftodo.conf.template -t "$pkgdir/etc/$pkgname"
 	install -Dm644 scripts/* -t "$pkgdir/etc/$pkgname/scripts"
