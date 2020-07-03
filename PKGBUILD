@@ -1,15 +1,16 @@
-# Maintainer: Isaac Freund <ifreund@ifreund.xyz>
+# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=cozette-ttf
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
 url='https://github.com/slavfox/Cozette'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 source=("https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/CozetteFonts.zip")
-sha256sums=('71fb1d65519a8fd51583b864fdef16aef6f106e082cd1bdffe2e9e316217ab5b')
+sha256sums=('eb92125d1defca47e8cca57db47534fbbf0afa725adc1738c6263beb92f81769')
 
 package() {
     cd "${srcdir}/CozetteFonts"
