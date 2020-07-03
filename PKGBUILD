@@ -2,15 +2,15 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=typiskt
-pkgver=2020.07.02.6
+pkgver=2020.07.03.8
 pkgrel=1
 pkgdesc='touchtype training in the terminal'
 arch=('any')
 url='https://github.com/budlabs/typiskt'
 license=('BSD')
 groups=()
-depends=('bash>=4.0.0')
-makedepends=()
+depends=('bash>=4.0.0',bc,gawk,paste,wc,getopt)
+makedepends=(m4)
 optdepends=()
 provides=()
 conflicts=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('1ca93b61ffc83a03c86ec14609f4be3cfcefc0ad38d5e6936b18349f7120646c')
+sha256sums=('5de1a0e4230e26673118b5c0e4fa0a440704812448d2a9951c36571589bb2b3f')
 
 package() {
   ls
