@@ -3,11 +3,11 @@
 
 _pkgname=libertinus
 pkgname="otf-$_pkgname-git"
-pkgver=6.11.r75.gbbc3717
+pkgver=6.12.r3.gddf6c2f
 pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
-url="https://github.com/alif-type/$_pkgname"
+url="https://github.com/alerque/$_pkgname"
 license=('OFL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

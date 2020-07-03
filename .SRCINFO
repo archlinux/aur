@@ -1,8 +1,8 @@
 pkgbase = otf-libertinus-git
 	pkgdesc = The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math
-	pkgver = 6.11.r75.gbbc3717
+	pkgver = 6.12.r3.gddf6c2f
 	pkgrel = 1
-	url = https://github.com/alif-type/libertinus
+	url = https://github.com/alerque/libertinus
 	arch = any
 	license = OFL
 	makedepends = mupdf-tools
@@ -20,7 +20,7 @@ pkgbase = otf-libertinus-git
 	makedepends = texlive-core
 	provides = otf-libertinus
 	conflicts = otf-libertinus
-	source = otf-libertinus-git::git+https://github.com/alif-type/libertinus
+	source = otf-libertinus-git::git+https://github.com/alerque/libertinus
 	md5sums = SKIP
 
 pkgname = otf-libertinus-git
