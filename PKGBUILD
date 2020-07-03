@@ -2,7 +2,7 @@
 
 _pkgname=laigter
 pkgname=${_pkgname}-appimage
-pkgver=1.9
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Automatic normal/specular/parallax/occlussion map generator for sprites!"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/azagaya/${_pkgname}/releases/download/$pkgver/${_pkg
         "https://raw.githubusercontent.com/azagaya/${_pkgname}/master/LICENSE"
         )
 sha256sums=(
-	681af17219a1570ea3a149146e1ebc1f9465fce23c6b41641eb2ba2d15f0880a
+	6d99fe0e72a3ee723d0c6dc47f96796144eb2b06905e31869705bee7bcc91da3
 	5576a91fe9ee4b3ebc0c6e527144449711e497594a93830e2bd7206424910d7b
 	)
 
