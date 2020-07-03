@@ -2,13 +2,14 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=('gmsh' 'gmsh-docs')
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="http://gmsh.info/"
 license=('custom')
 makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
-             'fltk' 'lapack' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann')
+             'fltk' 'lapack' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+             'glu')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
 sha256sums=('0f2c55e50fb6c478ebc8977f6341c223754cbf3493b7b0d683b4395ae9f2ad1c'
@@ -42,7 +43,8 @@ build() {
 }
 
 package_gmsh() {
-   depends=('fltk' 'lapack' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann')
+   depends=('fltk' 'lapack' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+            'glu')
    optdepends=('gmsh-docs: docs for gmsh'
             'python2: for onelab.py'
             'python: for onelab.py')
