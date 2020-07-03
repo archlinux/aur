@@ -1,4 +1,4 @@
-pkgbase = imgpatchtools
+pkgbase = imgpatchtools-git
 	pkgdesc = Patch img files with system.patch.dat, like OTA zip on PC
 	pkgver = 0.3.r11.g30dcd07
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = imgpatchtools
 	source = git+https://github.com/erfanoabdi/imgpatchtools.git
 	sha256sums = SKIP
 
-pkgname = imgpatchtools
+pkgname = imgpatchtools-git
 
