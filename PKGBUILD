@@ -18,7 +18,7 @@ source=("portainer.service"
         "${url}/releases/download/${pkgver}/portainer-${pkgver}-linux-amd64.tar.gz")
 sha256sums=('38f8e91194fb3c07275b26a7b4a0215bab454baa556b0fece37cdce58317b16e'
             '8e7dfcd69d4b400d5c2170545bb4c8d89a2dc3aecc6b48a1e6fe3350c90f1db1'
-            '99b568b32d70b24da4ffd791b809eb1927af5b81af1ad1b7fbe129c4377e300b')
+            '8f86223049019edc83ff0da37499cd099eec386604b5c468a589bef383df94c9')
 
 package() {
   install -Dm644 "${srcdir}/portainer-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
