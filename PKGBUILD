@@ -8,20 +8,20 @@ pkgdesc='TTF Fonts by Dustin Norlander'
 arch=('any')
 url='https://www.fontspace.com/cheapskate-fonts'
 license=('GPL')
-source=("flatline-$pkgver.zip::https://www.fontspace.com/get/family/86xp"
-        "wargames-$pkgver.zip::https://www.fontspace.com/get/family/64le"
-        "dustismo-roman-$pkgver.zip::https://www.fontspace.com/get/family/jw14"
-        "penguin-attack-$pkgver.zip::https://www.fontspace.com/get/family/djqr"
-        "dustismo-$pkgver.zip::https://www.fontspace.com/get/family/l7zn"
-        "it-wasnt-me-$pkgver.zip::https://www.fontspace.com/get/family/nn0q"
-        "domestic-manners-$pkgver.zip::https://www.fontspace.com/get/family/z0gz"
-        "balker-$pkgver.zip::https://www.fontspace.com/get/family/m07e"
-        "junkyard-$pkgver.zip::https://www.fontspace.com/get/family/ozn0"
-        "winks-$pkgver.zip::https://www.fontspace.com/get/family/96d1"
-        "el-abogado-loco-$pkgver.zip::https://www.fontspace.com/get/family/pmzz"
-        "marked-fool-$pkgver.zip::https://www.fontspace.com/get/family/xydl"
-        "swift-$pkgver.zip::https://www.fontspace.com/get/family/ropq"
-        "progenisis-$pkgver.zip::https://www.fontspace.com/get/family/g9w7")
+source=("balker-$pkgver.zip::https://dl.1001fonts.com/balker.zip"
+        "domestic-manners-$pkgver.zip::https://dl.1001fonts.com/domestic-manners.zip"
+        "dustismo-$pkgver.zip::https://dl.1001fonts.com/dustismo.zip"
+        "dustismo-roman-$pkgver.zip::https://dl.1001fonts.com/dustismo-roman.zip"
+        "el-abogado-loco-$pkgver.zip::https://dl.1001fonts.com/el-abogado-loco.zip"
+        "flatline-$pkgver.zip::https://dl.1001fonts.com/flatline.zip"
+        "it-wasnt-me-$pkgver.zip::https://dl.1001fonts.com/it-wasnt-me.zip"
+        "junkyard-$pkgver.zip::https://dl.1001fonts.com/junkyard.zip"
+        "marked-fool-$pkgver.zip::https://dl.1001fonts.com/marked-fool.zip"
+        "penguin-attack-$pkgver.zip::https://dl.1001fonts.com/penguin-attack.zip"
+        "progenisis-$pkgver.zip::https://dl.1001fonts.com/progenisis.zip"
+        "swift-$pkgver.zip::https://dl.1001fonts.com/swift.zip"
+        "wargames-$pkgver.zip::https://dl.1001fonts.com/wargames.zip"
+        "winks-$pkgver.zip::https://dl.1001fonts.com/winksfilled.zip")
 sha256sums=('e8ff7f1bb0994dd630b087ce7042fffb6a42fae38734ebd99414c2181e019b1a'
             '2e832e695acd74c1fe05c72fcca365ae70e047c175a9eb65a0bb225e26608180'
             'b8fd523dc6ed992d4e5e9b9e257602c80c30a0f9beb2d74c04a6201af08d0ac8'
@@ -39,7 +39,5 @@ sha256sums=('e8ff7f1bb0994dd630b087ce7042fffb6a42fae38734ebd99414c2181e019b1a'
 
 package() {
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" misc/license.txt
-    cd "$pkgdir/usr/share/fonts/TTF/"
-    for f in *.ttf; do mv $f ${f//-*/.ttf}; done
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" license.txt
 }
