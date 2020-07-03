@@ -1,7 +1,7 @@
 pkgname=notedown
-pkgver=1.5
-filever=1.0.0
-pkgrel=4
+pkgver=1.7
+filever=1.7.0
+pkgrel=1
 pkgdesc="A simple, keyboard-driven, markdown note-taking app"
 arch=('any')
 url="https://github.com/subvisual/notedown"
