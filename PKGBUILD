@@ -5,7 +5,7 @@
 
 pkgname=('python2-pycountry')
 _name=${pkgname#python2-}
-pkgver=20.7.2
+pkgver=20.7.3
 pkgrel=1
 pkgdesc="ISO country, subdivision, language, currency and script definitions and their translations"
 arch=('any')
@@ -14,7 +14,7 @@ license=('LGPL2.1')
 makedepends=('python2' 'python2-setuptools')
 checkdepends=('python2-pytest' 'python2-pytest-runner')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('2de04812a8fc738e8aed6b3d23bfefa1585a534594427fb6c2dd54e6eebbfa8a6c21c20cd5dcca052d8e5fb59071dabffbfa508db4ff65b3af499db61f48ec29')
+sha512sums=('df88a34307a4275267a7f3af282b73ca5e762c49ad158bfcd39b97c5d852bf045bcfe72351fc6f232c55003a7c4b0a04801eb562ba65ed5d599bd45b2bd3bc58')
 
 build(){
   cd "${srcdir}/pycountry-${pkgver}"
