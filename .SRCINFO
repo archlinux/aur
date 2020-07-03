@@ -1,6 +1,6 @@
 pkgbase = upower-nocritical
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)
-	pkgver = 0.99.10
+	pkgver = 0.99.11
 	pkgrel = 1
 	url = http://upower.freedesktop.org
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = upower-nocritical
 	provides = upower
 	conflicts = upower
 	backup = etc/UPower/UPower.conf
-	source = git+https://gitlab.freedesktop.org/upower/upower.git#commit=215049e7b80c5f24cb35cd229a445c6cf19bd381
+	source = git+https://gitlab.freedesktop.org/upower/upower.git#commit=e1548bba61206a05bbc318b3d49ae24571755ac6
 	source = 0001-Add-a-critical-action-Ignore.patch
 	md5sums = SKIP
 	md5sums = 69fbeb7e5906a59fd39f702d01f83815

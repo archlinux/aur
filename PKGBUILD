@@ -1,9 +1,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Star Brilliant <m13253@hotmail.com>
+# Contributor: Star Brilliant <m13253@hotmail.com>
 
 pkgname=upower-nocritical
 _pkgname=upower
-pkgver=0.99.10
+pkgver=0.99.11
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2' 'git' 'g
 provides=('upower')
 conflicts=('upower')
 backup=('etc/UPower/UPower.conf')
-_commit=215049e7b80c5f24cb35cd229a445c6cf19bd381  # tags/UPOWER_0_99_10^0
+_commit=e1548bba61206a05bbc318b3d49ae24571755ac6  # tags/UPOWER_0_99_11^0
 source=("git+https://gitlab.freedesktop.org/upower/upower.git#commit=$_commit"
         0001-Add-a-critical-action-Ignore.patch)
 md5sums=('SKIP'
@@ -28,19 +28,19 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -p1 < "$srcdir/0001-Add-a-critical-action-Ignore.patch"
+  sed -e 's|libplist >= 0.12|libplist-2.0 >= 2.2|' -i configure.ac # support libplist 2.2
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $_pkgname
-
-  NOCONFIGURE=1 ./autogen.sh
-
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib/$_pkgname \
-    --disable-static
+    --libexecdir=/usr/lib \
+    --disable-static \
+    --enable-gtk-doc
   make
 }
 
