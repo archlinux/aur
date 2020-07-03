@@ -1,12 +1,12 @@
 # Maintainer: P Sherbet <psherbet at psherbet dot com>
 pkgname=nerd-fonts-source-code-pro
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font SourceCodePro from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/SourceCodePro.zip"
     "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
