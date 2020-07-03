@@ -2,7 +2,7 @@
 # Contributor: Christian Steinhaus <aur@anwarias.de>
 
 pkgname=nextcloud-app-end_to_end_encryption
-pkgver=1.1.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Nextcloud End-to-End-Encryption App"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/end_to_end_encryption/releases/download/v${pkgver}/end_to_end_encryption-${pkgver}.tar.gz")
-sha512sums=("cbef0e8cbe647ad9ee8e4ce7a38626b0e365689741f715222a59d26bdce4f1edf4300a34e53ee2da791f2a994e28907971015c0e508f767b5e20b174e769b0fa")
+sha512sums=('ecaabeadee469028465abca9a745148bd16f4ab202eea43b07a15edde85c7068bf4047c404f09d73ef3171afd16dbb59cd3b497c1a966ab3e2196b52a2f94929')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
