@@ -8,6 +8,7 @@ pkgbase = pgpgram
 	makedepends = python-setuptools
 	depends = python
 	depends = python-setproctitle
+	depends = python-sqlitedict
 	depends = telegram-tdlib
 	source = pgpgram::git+https://github.com/tallero/pgpgram.git
 	sha256sums = SKIP
