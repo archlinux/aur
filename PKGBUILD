@@ -6,7 +6,7 @@ pkgname=${_pkgname}-git
 pkgver=4.0.0.r388.g2d25965db
 #_fragment="#tag=${pkgver}"
 pkgrel=1
-pkgdesc="C++ library for physics simulation"
+pkgdesc="An Open Source Multi-physics Simulation Engine"
 license=('custom')
 arch=('i686' 'x86_64')
 url="https://projectchrono.org/"
@@ -25,13 +25,8 @@ optdepends=(
 		"python: Python bindings"
 		"nvidia-utils: CUDA support in PARALLEL module"
 		"opencascade: add 3D CAD file support (STEP format)"
-	)
+		)
 #optdepends+=("intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)")
-#options=(!buildflags) # discard arch buildflags as -fno-plt is not supported by gcc5 (cuda host compiler)
-#CPPFLAGS="-D_FORTIFY_SOURCE=2"
-#CXXFLAGS="-O2 -pipe -fstack-protector-strong"
-#CFLAGS=${CXXFLAGS}
-
 source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}"
 	"git+https://github.com/google/benchmark.git"
 	"git+https://github.com/google/googletest.git"
@@ -61,13 +56,6 @@ CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_FSI=ON
 		-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
 		)
-#		-DCMAKE_C_COMPILER=/usr/bin/gcc-5
-#		-DCMAKE_CXX_COMPILER=/usr/bin/g++-5
-#		)
-#		-DCUDA_PROPAGATE_HOST_FLAGS=OFF
-#		)
-#CUDA_PROPAGATE_HOST_FLAGS=OFF also could be used to discard arch buildflags but drops also all internaly defined ones.
-#MKL works but building intel-mkl is such a paint that I skipped this feature
 
 prepare() {
   cd ${pkgname}
