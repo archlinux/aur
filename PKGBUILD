@@ -1,11 +1,11 @@
 pkgname=ttf-anka-coder-condensed
 pkgver=1.100
-pkgrel=1
+pkgrel=2
 pkgdesc="A monospaced font"
 arch=('any')
 url="https://code.google.com/archive/p/anka-coder-fonts"
 license=('SIL Open Font License, 1.1')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util')
 install=ttf.install
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/anka-coder-fonts/AnkaCoderCondensed.zip")
 sha256sums=('985bf9a091bbdab93515c897289c885db7adef2a8756554110b5c3d0618cf955')
