@@ -10,6 +10,8 @@ pkgbase = pgpgram
 	depends = python-setproctitle
 	depends = python-sqlitedict
 	depends = telegram-tdlib
+	depends = trovotutto
+	optdepends = youtube-dl
 	source = pgpgram::git+https://github.com/tallero/pgpgram.git
 	sha256sums = SKIP
 
