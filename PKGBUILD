@@ -7,11 +7,10 @@ _gitcommit=e948fb4c46c83571199b9e779dc186b5a6c72799
 
 pkgname=ttf-i.ming
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="I.Ming ( I.明體 / 一點明體 / 一点明朝 / 一点明体 )"
 url="https://github.com/ichitenfont/I.Ming"
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
 license=('custom')
 source=("git+${url}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
