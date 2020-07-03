@@ -10,7 +10,7 @@ pkgbase=eclipse
 pkgname=(eclipse-{common,java,jee,cpp,php,javascript,rust})
 pkgver=4.15
 pkgrel=6
-_release=2020-03/R
+_release=2020-06/R
 pkgdesc="Highly extensible IDE"
 license=(EPL)
 arch=(x86_64)
@@ -18,17 +18,16 @@ url="https://eclipse.org"
 makedepends=(python3)
 source=(commonify)
 sha256sums=('a68cccdf182449dfb4aef595ab26fe6542902421aef42a79672483865cbbd0ea')
-sha256sums_x86_64=('72fde94154999df569cbd30551bc784341391b9753209cd563829a6c8674383e'  # Java
-                   '1f6b44cc8a8665f452170f395523486e3555570174768d96d8ca7e2bacc3f31d'  # Jee
-                   '3cc546c7bd9214ca834cf5d8bcd16e300ae0fa95f1bf49e15c52ea47235b7f01'  # C++
-                   '0d6662d7a57585320f441029358261c23e570bf7779cbe34ee2f91208b2aff54'  # PHP
-                   '25a2e502e33c0a4b6629b35dfb140d5bd772d932ca472e554f672524d189caec'  # JS
-                   'c52860b6134e083aa263d1c1eb80f4a904cdf284d25f7aaee472950386347109') # Rust
+sha256sums_x86_64=('dc52b7486715cf13aa2642b7e96fc7d2ea1d0544c070110dd52b2644ec869e76'  # Java
+                   'ae2e0f79eef3c18d80503deee52d9cb8aad9a932dfac0ff5f12d2b9fa7a05c8b'  # Jee
+                   'ab98dd2b409b7ca31f97377b282d365b50ae1878639b81d618c1b795ac2cf9b9'  # C++
+                   '2801ebb557ac3ab3640acef60c7423c968f6c4fd5c3683ea8ddc5119dfcdbd83'  # PHP
+                   '8cee9f9577b4545ff9b6813a5bd03c07b1fd51e8c80f0b028e5a3c3ff3aed134'  # JS
+                   '6dc50b31ccdf2dbdba67b0c55fd3c685f7b68a7f58c89e91fd691c1a680718fe') # Rust
 
 _sourcename() {
   case $1 in
     eclipse-common) return 1 ;;
-    eclipse-rust|eclipse-cpp|eclipse-jee|eclipse-javascript) echo $1-${_release//\//-}-incubation-linux-gtk-x86_64.tar.gz ;;
     *             ) echo $1-${_release//\//-}-linux-gtk-x86_64.tar.gz ;;
   esac
 }
