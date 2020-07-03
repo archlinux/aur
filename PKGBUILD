@@ -2,19 +2,19 @@
 
 pkgname=python-pywerview
 _pypiname=pywerview
-_pypidir="8b/ca/fc13415e41427f5bc925ccbe80361af2bdf4c6f21c9683e28c12d0703f72"
+#_pypidir="8b/ca/fc13415e41427f5bc925ccbe80361af2bdf4c6f21c9683e28c12d0703f72"
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="A package resource and symbol loading helper library, for Python"
-url="https://pypi.org/project/pywerview/"
+pkgrel=2
+pkgdesc="A (partial) Python rewriting of PowerSploit's PowerView.(Python3 fork)"
+url="https://github.com/mpgn/pywerview"
 arch=('any')
 license=('GPLv3')
 depends=('python' 'impacket' 'python-pyopenssl' 'python-pyasn1' 'python-pycryptodome'
 'python-pyopenssl' 'python-beautifulsoup4')
 makedepends=('python-setuptools')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/${_pypidir}/${_pypiname}-${pkgver}.tar.gz")
+source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/mpgn/pywerview/archive/v${pkgver}.tar.gz")
 
-sha256sums=('9b254fe6911071484a83eea3bd2e25b2436773efc255bac74c0abaa1400132b8')
+sha256sums=('2ea4a8f6d4c3858f88b352cb8d1d3a4962abc3f829b3789eedf9c455fc36898a')
 
 package() {
   cd ${_pypiname}-${pkgver}

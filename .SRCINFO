@@ -1,8 +1,8 @@
 pkgbase = python-pywerview
-	pkgdesc = A package resource and symbol loading helper library, for Python
+	pkgdesc = A package resource and symbol loading helper library, for Python(Python3 fork)
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://pypi.org/project/pywerview/
+	pkgrel = 2
+	url = https://github.com/mpgn/pywerview
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
@@ -13,8 +13,8 @@ pkgbase = python-pywerview
 	depends = python-pycryptodome
 	depends = python-pyopenssl
 	depends = python-beautifulsoup4
-	source = pywerview-0.2.0.tar.gz::https://files.pythonhosted.org/packages/8b/ca/fc13415e41427f5bc925ccbe80361af2bdf4c6f21c9683e28c12d0703f72/pywerview-0.2.0.tar.gz
-	sha256sums = 9b254fe6911071484a83eea3bd2e25b2436773efc255bac74c0abaa1400132b8
+	source = pywerview-0.2.0.tar.gz::https://github.com/mpgn/pywerview/archive/v0.2.0.tar.gz
+	sha256sums = 2ea4a8f6d4c3858f88b352cb8d1d3a4962abc3f829b3789eedf9c455fc36898a
 
 pkgname = python-pywerview
 
