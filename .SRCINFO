@@ -1,0 +1,16 @@
+pkgbase = graph-cli
+	pkgdesc = A CLI utility to create graphs from CSV files.
+	pkgver = 0.1.6
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mcastorina/graph-cli
+	arch = any
+	license = GPL3
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/source/g/graph-cli/graph_cli-0.1.6.tar.gz
+	sha256sums = c3ed350f3089be108fbb6a1bd38d44d5ec38aa301202c661fe3783a64c98bc8d
+
+pkgname = graph-cli
+
