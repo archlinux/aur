@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,17 +23,10 @@ install=$pkgname.install
 
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz")
  
-md5sums=('ce4e8926f3c2e7d75c0d767a7cdce7f9')
-
-prepare() {
-        cd "$srcdir"/$pkgname-$pkgver
-}
+md5sums=('a2d0f4eed3b331d8470e138e85d580cb')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-	#PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-	#CFLAGS+=" -I/usr/include/openssl-1.0" \
-	#LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
 	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic"
 	make
 }
