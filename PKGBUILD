@@ -3,13 +3,13 @@
 
 pkgname=typiskt
 pkgver=2020.07.03.8
-pkgrel=1
+pkgrel=2
 pkgdesc='touchtype training in the terminal'
 arch=('any')
 url='https://github.com/budlabs/typiskt'
 license=('BSD')
 groups=()
-depends=('bash>=4.0.0',bc,gawk,paste,wc,getopt)
+depends=('bash>=4.0.0' bc gawk paste wc getopt)
 makedepends=(m4)
 optdepends=()
 provides=()
