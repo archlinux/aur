@@ -1,0 +1,16 @@
+pkgbase = zwcad-bin
+	pkgdesc = ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要
+	pkgver = 2.0.91
+	pkgrel = 2
+	url = https://www.zwcad.com
+	arch = x86_64
+	license = unknown
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	depends = glu
+	provides = zwcad
+	source = zwcad-bin.deb::https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.zwsoft.zwcad/com.zwsoft.zwcad_2.0.91-2_amd64.deb
+	sha512sums = a69fcab2fae3ced6deb2a03294bdad3cf673c5928e3c7f6efe651d6ff170ab7047481342f176520b16a7f673b95461f6c3de8c2432d3b075dd6f2e5e75bc8f61
+
+pkgname = zwcad-bin
+
