@@ -3,13 +3,18 @@
 pkgname=webots-bin
 pkgname=webots
 pkgver=2020a.rev1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile robot simulation software."
 arch=('x86_64')
 url="https://cyberbotics.com/"
 license=('Apache')
 groups=('')
-depends=('alsa-lib' 'atk>=1.9.0' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'ffmpeg' 'fontconfig' 'freeimage>=3.15.4' 'freetype2' 'gcc' 'gd' 'gdk-pixbuf2' 'glib2>=2.10.0' 'glu' 'gtk3' 'hicolor-icon-theme' 'jre-openjdk-headless' 'libcups' 'libglvnd' 'libjpeg-turbo' 'libpulse' 'libssh' 'libx11' 'libxaw' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'libxrender' 'libxslt' 'libxtst' 'make' 'nspr' 'nss' 'openal' 'openssl' 'pango' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-multimedia' 'qt5-webchannel' 'qt5-webengine' 'qt5-websockets' 'xorg-server' 'zlib' 'zziplib>=0.13.62')
+depends=("make" "gcc" "atk>=1.9.0" "ffmpeg" "dbus" "freeimage>=3.15.4" "glib2>2.10.0" "glu"
+         "gtk3" "nss" "gcc-libs" "libxaw" "libxrandr" "libxrender"
+         "zziplib>=0.13.62" "libssh" "libzip" "libx11" "xorg-server" "libxslt" "gd"
+         "freetype2")
+optdepends=('alsa-lib' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'fontconfig' 'gdk-pixbuf2' 'hicolor-icon-theme' 'jre-openjdk-headless' 'libcups' 'libglvnd' 'libjpeg-turbo' 'libpulse' 'libxaw' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'libxrender' 'libxtst' 'nspr' 'nss' 'openal' 'openssl' 'pango' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-multimedia' 'qt5-webchannel' 'qt5-webengine' 'qt5-websockets' 'xorg-server' 'zlib')
+
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/cyberbotics/webots/releases/download/R2020a-rev1/webots_2020a-rev1_amd64.deb")
