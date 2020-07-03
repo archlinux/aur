@@ -1,6 +1,6 @@
 pkgbase = kiwix-tools-bin
 	pkgdesc = kiwix command line tools (kiwix-serve, kiwix-search, kiwix-manage, kiwix-read) as statically linked binaries
-	pkgver = 3.0.3
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://www.kiwix.org/en/downloads/kiwix-serve/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = kiwix-tools-bin
 	license = GPL3
 	provides = kiwix
 	conflicts = kiwix
-	source = https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-x86_64-3.0.3.tar.gz
-	sha256sums = f92fe2e1c345b0ffc2fe4de7cb0ec5d923f3d751eb98c7eff452d3b1e31fa4d5
+	source = https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-x86_64-3.1.2.tar.gz
+	sha256sums = 63d3e32f184fbc1fdfe4c206575daf3d39b9d949ed7fa38e7ea18bab64e5364e
 
 pkgname = kiwix-tools-bin
 
