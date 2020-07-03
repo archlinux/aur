@@ -1,0 +1,12 @@
+pkgbase = rssfs
+	pkgdesc = Mirror RSS and Atom feeds as file systems
+	pkgver = r22.7c77092
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	provides = rssfs
+	source = git+https://github.com/dertuxmalwieder/rssfs
+	sha1sums = SKIP
+
+pkgname = rssfs
+
