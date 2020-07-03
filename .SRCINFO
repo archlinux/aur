@@ -1,7 +1,7 @@
 pkgbase = d2x-rebirth
 	pkgdesc = An enhanced engine to play with Descent2 data.
 	pkgver = 20200601
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dxx-rebirth.com/
 	install = d2x-rebirth.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = d2x-rebirth
 	depends = sdl_mixer
 	depends = mesa
 	depends = physfs
+	depends = sdl_image
 	noextract = d2xr-sc55-music.dxa
 	source = https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_20200601-src.tar.xz
 	source = https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa

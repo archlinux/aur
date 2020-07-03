@@ -4,12 +4,12 @@
 
 pkgname=d2x-rebirth
 pkgver=20200601
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced engine to play with Descent2 data."
 arch=('x86_64')
 url="https://www.dxx-rebirth.com/"
 license=('custom:D2x' 'LGPL' 'custom:as-is')
-depends=('sdl' 'sdl_mixer' 'mesa' 'physfs')
+depends=('sdl' 'sdl_mixer' 'mesa' 'physfs' 'sdl_image')
 makedepends=('scons' 'unzip')
 install="$pkgname.install"
 source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-src.tar.xz"
