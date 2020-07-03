@@ -1,6 +1,6 @@
 pkgbase = ocrmypdf
 	pkgdesc = A tool to add an OCR text layer to scanned PDF files, allowing them to be searched
-	pkgver = 9.8.2
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://github.com/jbarlow83/OCRmyPDF
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ocrmypdf
 	depends = python
 	depends = python-cffi
 	depends = img2pdf
-	depends = python-pillow
+	depends = python-pillow>=7.0.0
 	depends = tesseract
 	depends = ghostscript
 	depends = unpaper
@@ -19,9 +19,11 @@ pkgbase = ocrmypdf
 	depends = python-reportlab
 	depends = python-pdfminer
 	depends = python-tqdm
+	depends = python-pluggy
+	depends = python-coloredlogs
 	optdepends = jbig2enc: Better compression algorithm; results in smaller PDF files
-	source = https://files.pythonhosted.org/packages/source/o/ocrmypdf/ocrmypdf-9.8.2.tar.gz
-	sha256sums = ab67b6780a32add781c1a21c9fc9ac7957b958ac0ffd32bb2fc6ea5be6c369cd
+	source = https://files.pythonhosted.org/packages/source/o/ocrmypdf/ocrmypdf-10.2.0.tar.gz
+	sha256sums = eb9defb761ff221e3cf724823772dc7495db9bb4bf1aca9b4312b1b4bc583cd7
 
 pkgname = ocrmypdf
 
