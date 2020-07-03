@@ -35,12 +35,12 @@ pkgbase = chronoengine
 	source = chronoengine.sh
 	source = glm.patch
 	source = opencascade.patch
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = 8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81
-	sha1sums = 277e41186ff356fcc8c15153453d17ea61eca56a
-	sha1sums = 95fa0215ee6d29075dcf01c297b88f8f88864d38
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a
+	sha256sums = 4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe
+	sha256sums = bfe6cc1f8018eabc2998c76a12096ba26722c32b8f3244dbc23ec653a5cfe958
 
 pkgname = chronoengine
 
