@@ -1,16 +1,23 @@
 pkgbase = python-crds
 	pkgdesc = Calibration Reference Data System for HST and JWST
-	pkgver = 7.4.1.3
+	pkgver = 7.5.0.0
 	pkgrel = 1
 	url = https://hst-crds.stsci.edu/static/users_guide/index.html
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-lockfile
+	checkdepends = python-filelock
+	checkdepends = python-mock
+	checkdepends = python-astropy
+	checkdepends = python-nose
+	checkdepends = python-pylint
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/crds/crds-7.4.1.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/crds/crds-7.5.0.0.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/crds/master/LICENSE
-	md5sums = c525338ad0e2f0f726eb6de008448da3
-	md5sums = eeff2e5869a14213d19ee6776441af35
+	md5sums = 064cb2d2879321a93f96836759201139
+	md5sums = SKIP
 
 pkgname = python-crds
 	depends = python-filelock
