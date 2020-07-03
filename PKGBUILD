@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray-auto"
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight netctl tray app with notifications (netctl-auto)"
 arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -19,7 +19,7 @@ build () {
   rustup toolchain install nightly
   rustup update
   RUSTUP_TOOLCHAIN=nightly \
-    cargo +nightly build --release --locked --features "auto"
+    cargo +nightly build --release --features "auto"
 }
 
 package() {
