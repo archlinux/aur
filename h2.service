@@ -1,0 +1,11 @@
+[Unit]
+Description=H2 Database server
+
+[Service]
+Type=simple
+User=h2
+ExecStart=/usr/bin/java -cp /usr/share/java/h2/h2.jar org.h2.tools.Server -baseDir /var/lib/h2 -tcp -web -ifNotExists -tcpPassword h2
+ExecStop=/usr/bin/java -cp /usr/share/java/h2/h2.jar org.h2.tools.Server -tcpShutdown tcp://localhost -tcpPassword h2
+
+[Install]
+WantedBy=multi-user.target
