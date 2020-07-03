@@ -1,6 +1,6 @@
 pkgbase = chronoengine
 	pkgdesc = An Open Source Multi-physics Simulation Engine
-	pkgver = 4.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = chronoengine
 	optdepends = nvidia-utils: CUDA support in PARALLEL module
 	optdepends = opencascade: add 3D CAD file support (STEP format)
 	optdepends = intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)
-	source = chronoengine::git+https://github.com/projectchrono/chrono.git#tag=4.0.0
+	source = chronoengine::git+https://github.com/projectchrono/chrono.git#tag=5.0.1
 	source = git+https://github.com/google/benchmark.git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh

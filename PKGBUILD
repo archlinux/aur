@@ -5,7 +5,7 @@
 # MUMPS need some work to be able to link corectly with deps of mumps (scotch,mpi)
 
 pkgname=chronoengine
-pkgver=4.0.0
+pkgver=5.0.1
 _fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="An Open Source Multi-physics Simulation Engine"
