@@ -15,7 +15,7 @@ makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
 source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "xygrib.install" "skewt.patch")
 sha1sums=('SKIP'
-          '58925746bf6ac941ab34e268517581f1e01e9cff'
+          '97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe'
           '1fa4cf6b72863c9f33a80946d9f4afe7f855df6a')
 
 pkgver() {
