@@ -8,6 +8,7 @@ pkgbase = trovotutto
 	makedepends = python-setuptools
 	depends = python
 	depends = python-nltk
+	depends = python-pyxdg
 	depends = python-setproctitle
 	source = trovotutto::git+https://github.com/tallero/trovotutto.git
 	sha256sums = SKIP
