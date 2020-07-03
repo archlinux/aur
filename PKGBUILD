@@ -34,13 +34,12 @@ source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}
 	"glm.patch"
 	"opencascade.patch"
 	)
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          '8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81'
-          '277e41186ff356fcc8c15153453d17ea61eca56a'
-          '95fa0215ee6d29075dcf01c297b88f8f88864d38'
-	)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a'
+            '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe'
+            'bfe6cc1f8018eabc2998c76a12096ba26722c32b8f3244dbc23ec653a5cfe958')
 
 CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_VEHICLE=ON
