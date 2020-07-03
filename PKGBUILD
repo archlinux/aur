@@ -1,9 +1,9 @@
-# Maintainer: BrLi <brli at chakralinux dot org>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr-git
 _name=Zettlr
-pkgver=1.6.0
+pkgver=1.7.0.r0.ge4ccee4
 pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('electron'
          'ttf-webhostinghub-glyphs')
 makedepends=('gendesk'
              'git'
+             'gulp'
              'node-prune'
              'yarn')
 optdepends=('pandoc: For exporting to various format'
@@ -30,7 +31,8 @@ _categories=Office
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --abbrev=7 --match="v*" HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

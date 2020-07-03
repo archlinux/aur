@@ -1,12 +1,13 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
-	pkgver = 1.6.0
+	pkgver = 1.7.0.r0.ge4ccee4
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
 	makedepends = git
+	makedepends = gulp
 	makedepends = node-prune
 	makedepends = yarn
 	depends = electron
