@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/tallero/pgpgram'
 license=('AGPL3')
 depends=('python' 'python-setproctitle' 'python-sqlitedict' 'telegram-tdlib' 'trovotutto')
+optdepends=('youtube-dl')
 makedepends=('python-setuptools')
 source=('pgpgram::git+https://github.com/tallero/pgpgram.git')
 sha256sums=('SKIP')
