@@ -3,13 +3,13 @@
 pkgname=shutter-git
 _pkgname=shutter
 pkgver=r1449.9c086723
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful screenshot tool, git version without gnome-perl dependency"
 arch=('any')
 url="https://shutter-project.org/"
 license=('GPL3')
 conflicts=('shutter')
-depends=(xdg-utils imagemagick procps librsvg gtk2-perl desktop-file-utils
+depends=(xdg-utils imagemagick procps librsvg gtk2-perl desktop-file-utils gnomecanvas-perl
          perl-{glib-object-introspection,gnome2-wnck,gtk2-{imageview,unique},number-bytes-human,x11-protocol}
          perl-{proc-{simple,processtable},net-dbus}
          perl-{sort-naturally,json,json-maybexs,xml-simple,www-mechanize,locale-gettext}
