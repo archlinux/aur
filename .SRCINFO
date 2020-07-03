@@ -1,0 +1,20 @@
+pkgbase = esteem-bin
+	pkgdesc = Alternative mobile & desktop Steem Blockchain client
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://esteem.app
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = gtk3
+	depends = libxss
+	depends = gconf
+	depends = nss
+	provides = esteem
+	source = esteem-2.2.7.deb::https://github.com/ecency/esteem-surfer/releases/download/2.2.7/esteem-surfer_2.2.7_amd64.deb
+	source = LICENSE::https://github.com/ecency/esteem-surfer/raw/master/LICENSE
+	sha256sums = 6df953b1f2eff906daf914cd3a6839c7df5ca50185724ca6326ebaee939e2cfd
+	sha256sums = e15ab9cfb465d6bb5613a69fca9565e247d9e511b25ee2d8d3d7e80586b10cdc
+
+pkgname = esteem-bin
+
