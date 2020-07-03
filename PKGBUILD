@@ -10,7 +10,7 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=r19815.b87d8aceb
+pkgver=0.4.9.1181.g4cc334807
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
@@ -26,7 +26,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^with.FreeOrionSDK.v11-//;s/^/0.4.9./;s/-/./g'
 }
 
 prepare() {
