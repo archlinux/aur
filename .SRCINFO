@@ -1,7 +1,7 @@
 pkgbase = qdl
 	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andersson/qdl
 	arch = armv7h
 	arch = i686
