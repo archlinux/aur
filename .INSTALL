@@ -1,0 +1,19 @@
+#!/bin/sh
+
+post_install() {
+echo "*****************************************************************************************"
+echo " "
+echo "注：如果遇到图标变成口，请在钉钉的设置中打开SVG支持"
+echo "Note: If the icon becomes garbled, please turn on SVG support in the settings of dingtalk"
+echo " "
+echo "*****************************************************************************************"
+}
+
+post_upgrade() {
+echo "*****************************************************************************************"
+echo " "
+echo "注：如果遇到图标变成口，请在钉钉的设置中打开SVG支持"
+echo "Note: If the icon becomes garbled, please turn on SVG support in the settings of dingtalk"
+echo " "
+echo "*****************************************************************************************"
+}
