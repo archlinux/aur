@@ -1,8 +1,8 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=sibs-git
-pkgver=r265.b2f1b85
-pkgrel=2
+pkgver=r267.d580544
+pkgrel=1
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
 url="https://git.dec05eba.com/sibs"
@@ -29,8 +29,8 @@ build() {
   cd "$srcdir/sibs/cmake"
   mkdir release
   cd release
-  cmake -DCMAKE_BUILD_TYPE=Release ../../
-  make
+  cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../../
+  ninja
 }
 
 package() {
