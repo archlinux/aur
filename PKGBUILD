@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org"
 
 pkgname=coreshot
-pkgver=2.9.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A screen capture utility from the CoreApps family."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('375766d24a5494dfdc7c8c85ef07bd0e')
+md5sums=('fc005e52f943a90bce1d7262374b43f3')
 
 prepare() {
   mkdir -p build
