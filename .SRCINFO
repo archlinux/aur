@@ -1,0 +1,18 @@
+pkgbase = islide
+	pkgdesc = slider for instantOS
+	pkgver = 202005101801
+	pkgrel = 1
+	url = https://github.com/instantos/islide
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = islide
+	conflicts = islide
+	source = islide::git+https://github.com/instantOS/islide.git
+	sha256sums = SKIP
+
+pkgname = islide
+
