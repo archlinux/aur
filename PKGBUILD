@@ -6,7 +6,7 @@ url='https://wiki.ros.org/pcl_conversions'
 pkgname='ros-melodic-pcl-conversions'
 pkgver='1.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -18,7 +18,7 @@ ros_depends=(ros-melodic-pcl-msgs
   ros-melodic-sensor-msgs
   ros-melodic-std-msgs)
 depends=(${ros_depends[@]}
-  eigen3
+  eigen
   pcl)
 
 # Git version (e.g. for debugging)
