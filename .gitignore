@@ -1,2 +1,5 @@
 src/
 pkg/
+
+*.ttf
+*.tar.xz
