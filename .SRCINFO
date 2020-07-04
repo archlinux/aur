@@ -1,0 +1,29 @@
+pkgbase = steamtinkerlaunch-git
+	pkgdesc = Wrapper script for Steam custom launch options
+	pkgver = 0.91.r32.c1f6d09
+	pkgrel = 1
+	url = https://github.com/frostworx/steamtinkerlaunch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	optdepends = strace
+	optdepends = zenity
+	optdepends = gamemode
+	optdepends = mangohud
+	optdepends = vkbasalt
+	optdepends = winetricks
+	optdepends = wget: for optional reshade download
+	optdepends = unzip: for optional reshade download
+	optdepends = git: for pulling optional shaders
+	optdepends = xdotool: for playing regular games side-by-side in VR
+	optdepends = xorg-xwininfo: for playing regular games side-by-side in VR
+	optdepends = vr-video-player: for playing regular games side-by-side in VR
+	optdepends = xdg-utils: for opening the ProtonDB URL of started game
+	provides = steamtinkerlaunch
+	conflicts = steamtinkerlaunch
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git
+	sha1sums = SKIP
+
+pkgname = steamtinkerlaunch-git
+
