@@ -1,0 +1,15 @@
+pkgbase = steamtinkerlaunch
+	pkgdesc = SteamTinkerLaunch or short stl - is a linux wrapper script for steam. It creates/reads game config files on the fly, making it very easy to setup and use, but still giving you the possibility to fully customize game configurations live on game start.
+	pkgver = c1f6d094b7c5456211bed42dfa5ac62253670e84
+	pkgrel = 1
+	url = https://github.com/frostworx/steamtinkerlaunch
+	arch = any
+	license = GPL3
+	depends = bash
+	backup = etc/sshuttle/tunnel.conf
+	backup = etc/sshuttle/prefixes.conf
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git
+	sha1sums = SKIP
+
+pkgname = steamtinkerlaunch
+
