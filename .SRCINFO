@@ -1,13 +1,12 @@
 pkgbase = spacefm
 	pkgdesc = Multi-panel tabbed file manager
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ignorantguru.github.io/spacefm/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
-	makedepends = gcc8
 	depends = gtk3
 	depends = startup-notification
 	depends = ffmpegthumbnailer
@@ -25,8 +24,10 @@ pkgbase = spacefm
 	optdepends = ifuse: mount your iPhone/iPod Touch
 	optdepends = fuseiso: mount ISO files
 	source = spacefm-1.0.6.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz
+	source = https://github.com/FabioLolix/AUR-artifacts/raw/master/spacefm-Fix-GCC-10-build.patch
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/spacefm-glibc-2.28-compatibility.patch
 	sha256sums = fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9
+	sha256sums = 16622d0d56c40e87e846a81709d9c2c8303f189e53a783bf20ccdb57b8f9465f
 	sha256sums = 12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e
 
 pkgname = spacefm

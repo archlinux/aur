@@ -6,13 +6,13 @@
 
 pkgname=spacefm
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-panel tabbed file manager'
 arch=(i686 x86_64)
 url="https://ignorantguru.github.io/spacefm/"
 license=(GPL3)
 depends=(gtk3 startup-notification ffmpegthumbnailer)
-makedepends=(intltool gcc8)
+makedepends=(intltool)
 optdepends=('dbus: dbus integration'
             'util-linux: disk eject support'
             'lsof: device processes'
@@ -27,15 +27,16 @@ optdepends=('dbus: dbus integration'
             'ifuse: mount your iPhone/iPod Touch'
             'fuseiso: mount ISO files')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/${pkgver}.tar.gz"
+        "https://github.com/FabioLolix/AUR-artifacts/raw/master/spacefm-Fix-GCC-10-build.patch"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/spacefm-glibc-2.28-compatibility.patch")
 sha256sums=('fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
+            '16622d0d56c40e87e846a81709d9c2c8303f189e53a783bf20ccdb57b8f9465f'
             '12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e')
-
-export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
   patch -Np1 -i ../spacefm-glibc-2.28-compatibility.patch
+  patch -Np1 -i ../spacefm-Fix-GCC-10-build.patch
 }
 
 build() {
@@ -49,4 +50,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  rm -f "$pkgdir"/usr/bin/spacefm-installer
 }
