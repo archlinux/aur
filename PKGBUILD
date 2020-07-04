@@ -3,7 +3,7 @@
 
 pkgname=mhwd-nvidia
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="mhwd-nvidia pci id"
 arch=("any")
 url="https://garuda.org/"
