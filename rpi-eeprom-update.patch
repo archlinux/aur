@@ -1,0 +1,8 @@
+--- rpi-eeprom-update.clean	2019-11-23 06:15:37.986151577 +0000
++++ rpi-eeprom-update	2019-11-23 06:15:45.906017778 +0000
+@@ -1,4 +1,5 @@
+ #!/bin/sh
++PATH="$PATH:/opt/vc/bin"
+ 
+ # Raspberry Pi4 boot EEPROM updater.
+ 
