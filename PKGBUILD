@@ -17,8 +17,7 @@ package() {
   make
   install -D build/kristall "$pkgdir/usr/bin/kristall"
   install -D LICENSE "$pkgdir/usr/share/licenses/kristall/LICENSE"
-  cp Kristall.desktop "$HOME/.local/share/applications/kristall.desktop"
-  update-desktop-database "$HOME/.local/share/applications"
+  install -Dm644 Kristall.desktop "$pkgdir/usr/share/applications/kristall.desktop"
 }
 
 md5sums=('40b08c53df0b445e5307ee61b5f5f05b')
