@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=python2-protobuf
-pkgver=3.12.0
+pkgver=3.12.3
 pkgrel=1
 pkgdesc='Python 2 bindings for Google Protocol Buffers'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('unzip'
              'python2-setuptools'
              )
 source=("https://github.com/protocolbuffers/protobuf/releases/download/v${pkgver}/protobuf-all-${pkgver}.tar.gz")
-sha512sums=('5752329c13a903ef3015b1383632f0eba50521669052c5b3d834e798e3d3d3bca37b175a93d83516d1a9b96960ceb2087fe8577aaa71015decc8f9f4741471a2')
+sha512sums=('08701c1f421f410561c6ef8d027ba5834b6b36359c51bcc941d299d3064bf9e0cf52eb65cd73fa8155cf6cb341be251fb0781ace051d5bcb72b24a8d1df9c7ea')
 
 prepare() {
   cd "protobuf-${pkgver}"
