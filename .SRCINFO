@@ -1,6 +1,6 @@
 pkgbase = mhwd-db-garuda-git
 	pkgdesc = mhwd-db-garuda(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)
-	pkgver = r4.eedf094
+	pkgver = r17.e3f7adf
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/mhwd-db-garuda
 	arch = any
@@ -20,6 +20,9 @@ pkgname = mhwd-db-garuda-git
 	depends = mhwd-ati
 	depends = mhwd-amdgpu
 	provides = mhwd-db
+	provides = mhwd-db-garuda
 	conflicts = mhwd-db
-	replaces = mhwd-db-catalyst
+	conflicts = mhwd-db-garuda
+	replaces = mhwd-db
+	replaces = mhwd-db-garuda
 
