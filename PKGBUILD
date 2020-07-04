@@ -7,7 +7,7 @@ pkgname='ros-melodic-robot-state-publisher'
 pkgver='1.14.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -27,7 +27,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	eigen3
+	eigen
 	urdfdom-headers
 )
 
@@ -46,7 +46,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	eigen3
+	eigen
 )
 
 _dir="robot_state_publisher-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-robot-state-publisher
 	pkgdesc = ROS - This package allows you to publish the state of a robot to tf.
 	pkgver = 1.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/robot_state_publisher
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ros-melodic-robot-state-publisher
 	makedepends = ros-melodic-kdl-parser
 	makedepends = ros-melodic-orocos-kdl
 	makedepends = ros-melodic-sensor-msgs
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = urdfdom-headers
 	depends = ros-melodic-tf2-kdl
 	depends = ros-melodic-rostime
@@ -33,7 +33,7 @@ pkgbase = ros-melodic-robot-state-publisher
 	depends = ros-melodic-kdl-parser
 	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-sensor-msgs
-	depends = eigen3
+	depends = eigen
 	source = ros-melodic-robot-state-publisher-1.14.1.tar.gz::https://github.com/ros/robot_state_publisher/archive/1.14.1.tar.gz
 	sha256sums = 68b3cf75308f17cc53a1d8b132b1b327afff46c2d1b373a998cd9a0f73bf2ec1
 
