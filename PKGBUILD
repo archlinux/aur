@@ -19,7 +19,7 @@ source=(
 	'ibus.desktop'
 )
 md5sums=('fdbfae1bba8012daf984a76d7004ae3e'
-         'a647ba08173b10b0dfaf1fdd693035e9'
+         '8bc36e42f521ddf2c1ac0b98ff7ee394'
          'b974be25b7f91c392009cb8d9f1bd5b4'
          '97a5be2b8ff8c0fc895d9ef21531e698'
          '3578677a7102c9f8be3b9f7ea7d3d06f'
