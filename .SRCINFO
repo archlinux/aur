@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-redshift-control-git
 	pkgdesc = Plasmoid for Plasma 5 for controlling redshift.
-	pkgver = r34.2476d6e
+	pkgver = r38.3ab6f9a
 	pkgrel = 1
 	epoch = 1
 	url = https://phabricator.kde.org/source/plasma-redshift-control
@@ -13,7 +13,7 @@ pkgbase = plasma5-applets-redshift-control-git
 	depends = redshift
 	provides = plasma5-applets-redshift-control
 	conflicts = plasma5-applets-redshift-control
-	source = git+git://anongit.kde.org/plasma-redshift-control
+	source = git+https://anongit.kde.org/plasma-redshift-control
 	md5sums = SKIP
 
 pkgname = plasma5-applets-redshift-control-git
