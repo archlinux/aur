@@ -6,7 +6,7 @@
 # Maintainer: Krzysztof Sobczyk <sobczyk.kris@gmail.com>
 # Old Contributor: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Patrick Pflug / Sakaschi <patrickpflug92@gmail.com>
-pkgname=ideamaker
+pkgname=ideamaker-stable
 pkgver=3.6.1
 pkgbuild=4415
 pkgversion=${pkgver}.${pkgbuild}

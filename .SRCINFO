@@ -1,4 +1,4 @@
-pkgbase = ideamaker
+pkgbase = ideamaker-stable
 	pkgdesc = Fast and user friendly 3D slicer for FDM printers
 	pkgver = 3.6.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = ideamaker
 	source = https://download.raise3d.com/ideamaker/release/3.6.1/ideaMaker_3.6.1.4415-ubuntu_amd64.deb
 	sha512sums = 5386bd1b8952d141b50ef25974c81f1abd0a3a449ac9f494156f9ce048f6a419ab920d98cd009105bdae22c1b0b43ae257ea9b0155b0d92f3cd8f3dbac5837fb
 
-pkgname = ideamaker
+pkgname = ideamaker-stable
 
