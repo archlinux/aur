@@ -20,7 +20,6 @@ source=("git+${url}.git"
 "openra-raplus.desktop")
 md5sums=('SKIP'
          'd48259a154b7a72b2377ac1a632ec1d3'
-         'feae017ba5765215cd151a892362e6b1'
          'e79c9aebc225384175810be58d9f9ddf'
          '9400d5c8bea3196e9af96f6aa5c2f879')
 
