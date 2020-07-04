@@ -1,4 +1,4 @@
-pkgbase = monaco-powerline-font-git
+pkgbase = otf-monaco-powerline-font-git
 	pkgdesc = Monaco Powerline fonts for X11 and the console
 	pkgver = r16.616d338
 	pkgrel = 4
@@ -7,9 +7,11 @@ pkgbase = monaco-powerline-font-git
 	license = CPL
 	makedepends = git
 	provides = monaco-powerline-font
+	provides = otf-monaco-powerline-font
 	conflicts = monaco-powerline-font
+	conflicts = otf-monaco-powerline-font
 	source = monaco-powerline-font::git+http://gist.github.com/229a0729ec79c6fcec81
 	md5sums = SKIP
 
-pkgname = monaco-powerline-font-git
+pkgname = otf-monaco-powerline-font-git
 

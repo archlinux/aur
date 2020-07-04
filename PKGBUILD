@@ -1,11 +1,11 @@
 _gitname=monaco-powerline-font
-pkgname="${_gitname}-git"
+pkgname="otf-${_gitname}-git"
 pkgver=r16.616d338
 pkgrel=4
 pkgdesc="Monaco Powerline fonts for X11 and the console"
 arch=('any')
-conflicts=("${_gitname}")
-provides=("${_gitname}")
+conflicts=("${_gitname}" "otf-${_gitname}")
+provides=("${_gitname}" "otf-${_gitname}")
 url='https://gist.github.com/arkhan/229a0729ec79c6fcec81'
 source=("${_gitname}::git+http://gist.github.com/229a0729ec79c6fcec81")
 md5sums=('SKIP')
