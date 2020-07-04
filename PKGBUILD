@@ -6,9 +6,9 @@ pkgver=0.4_5_g0b31dfd
 pkgrel=1
 license=("GPL3")
 pkgdesc="Simplistic cli music player built on mpv and curses"
-makedepends=("meson" "scdoc" "ninja")
+makedepends=("meson")
 depends=("ffmpeg" "mpv" "ncurses")
-optdepends=()
+optdepends=("scdoc: for manpages")
 arch=("x86_64")
 url="https://github.com/Dudemanguy/vmn"
 source=("${_pkgname}::git+https://github.com/Dudemanguy/vmn.git")
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	arch-meson "$srcdir/build"
+	arch-meson --auto-features auto "$srcdir/build"
 	meson compile -C "$srcdir/build"
 }
 

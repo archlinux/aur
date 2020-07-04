@@ -6,11 +6,10 @@ pkgbase = vmn-git
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	makedepends = scdoc
-	makedepends = ninja
 	depends = ffmpeg
 	depends = mpv
 	depends = ncurses
+	optdepends = scdoc: for manpages
 	source = vmn::git+https://github.com/Dudemanguy/vmn.git
 	sha512sums = SKIP
 
