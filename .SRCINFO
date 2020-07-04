@@ -1,0 +1,17 @@
+pkgbase = heir-git
+	pkgdesc = Utility to launch new terminals in the same working directory as the currently focused one under Sway.
+	pkgver = r5.4697214
+	pkgrel = 1
+	url = https://github.com/thestr4ng3r/heir
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = sway
+	depends = json-c
+	source = heir-git::git+https://github.com/thestr4ng3r/heir.git
+	source = sway::git+https://github.com/swaywm/sway.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = heir-git
+
