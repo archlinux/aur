@@ -5,8 +5,10 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=7.3.1
+pkgver=7.3.2
 pkgrel=1
+pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
+"
 arch=('i686' 'x86_64')
 url='http://www.peazip.org/peazip-linux.html'
 license=('LGPL3')
@@ -29,12 +31,10 @@ optdepends=('quad: A ROLZ-based file compressor'
             'arc: Support for arc files')
 provides=('peazip')
 conflicts=('peazip'
-           'peazip-gtk2-build'
            'peazip-qt'
-           'peazip-qt-build'
            'peazip-qt-opensuse-latest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt.tar.gz")
-sha256sums=('8bac9c2cb6d7d7736ad26fe0ae6db600cdfe302efd3cf1e34b4674ecd2895878')
+sha256sums=('3b45fefbe0f645ea2934c2af7f370432b94d57e7b7024bb1fa6aa9554c324811')
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"

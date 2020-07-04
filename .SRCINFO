@@ -1,5 +1,6 @@
 pkgbase = peazip-qt-bin
-	pkgver = 7.3.1
+	pkgdesc = File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
+	pkgver = 7.3.2
 	pkgrel = 1
 	url = http://www.peazip.org/peazip-linux.html
 	arch = i686
@@ -23,14 +24,12 @@ pkgbase = peazip-qt-bin
 	optdepends = arc: Support for arc files
 	provides = peazip
 	conflicts = peazip
-	conflicts = peazip-gtk2-build
 	conflicts = peazip-qt
-	conflicts = peazip-qt-build
 	conflicts = peazip-qt-opensuse-latest
 	options = !emptydirs
 	options = !strip
-	source = peazip-qt-bin-7.3.1.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/7.3.1/peazip_portable-7.3.1.LINUX.Qt.tar.gz
-	sha256sums = 8bac9c2cb6d7d7736ad26fe0ae6db600cdfe302efd3cf1e34b4674ecd2895878
+	source = peazip-qt-bin-7.3.2.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/7.3.2/peazip_portable-7.3.2.LINUX.Qt.tar.gz
+	sha256sums = 3b45fefbe0f645ea2934c2af7f370432b94d57e7b7024bb1fa6aa9554c324811
 
 pkgname = peazip-qt-bin
 
