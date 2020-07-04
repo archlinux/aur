@@ -2,7 +2,7 @@
 Name=Zoom (Firejail)
 Comment=Zoom Video Conference
 Exec=/usr/bin/zoom-firejail %U
-Icon=Zoom.png
+Icon=Zoom
 Terminal=false
 Type=Application
 Encoding=UTF-8
