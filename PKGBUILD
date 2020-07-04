@@ -1,18 +1,18 @@
 # Maintainer: n3e <n3e at thathat dot net>
 #
-# Adopted parts of glabels PKGBUILD
+# Adopted parts of glabels PKGBUILD (original contributors)
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Damir Perisa <damir@archlinux.org>
 #
-# Adopted parts of barcode PKGBUILD
+# Adopted parts of barcode PKGBUILD (original contributors)
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 #
 # Fingers crossed?
 
 pkgname=glabels3-gnubarcode
 pkgver=3.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Creating labels and business cards the very easy way. Now with GNU barcode support."
 arch=('x86_64')
 
@@ -50,18 +50,33 @@ build() {
   # Configure & build barcode-0.99
 
   cd "${srcdir}/barcode-0.99"
+
+  # GCC 10 fixes,
+  #
+  # As per https://bugs.gentoo.org/707686 (a hint in the right direction)
+  # As per https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common (solution)
+  #
+  # With gcc-10 '-fno-common' becomes default, 
+  # we must include '-fcommon' for backwards compatibility.
+
+  # The usual way of things
+
   ./configure --prefix=/usr 
-  make
+
+  # AM_CFLAGS seemed like the best insertion point for -fcommon
+
+  make AM_CFLAGS='-Ilib -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -DHAVE_CONFIG_H -fcommon'
 
   # Extract header files we'll need when linking against GNU barcode
 
   cd "${srcdir}/barcode-0.99" && mkdir -p 4glabels
   cp barcode.h config.h lib/gettext.h 4glabels
 
-  # Configure & build glabels, include GNU barcode headers & libraries
+  # Configure & build glabels, include GNU barcode headers & libraries,
+  # include the gcc-10 fix.
 
-  export  CFLAGS="-I${srcdir}/barcode-0.99/4glabels"
-  export LDFLAGS="-L${srcdir}/barcode-0.99/.libs"
+  export  CFLAGS="-I${srcdir}/barcode-0.99/4glabels -fcommon"
+  export LDFLAGS="-L${srcdir}/barcode-0.99/.libs    -fcommon"
 
   cd "${srcdir}/glabels-${pkgver}"
   ./configure \
