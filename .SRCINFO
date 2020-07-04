@@ -1,14 +1,14 @@
 pkgbase = caire
 	pkgdesc = Content aware image resize library based on Seam Carving
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/esimov/caire
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = caire-1.2.5.tar.gz::https://github.com/esimov/caire/archive/v1.2.5.tar.gz
-	sha256sums = a975bf4088e60a6f8dd8beb340164762762fc20d062378550954b2ac8b09f1ae
+	source = caire-1.2.6.tar.gz::https://github.com/esimov/caire/archive/v1.2.6.tar.gz
+	sha256sums = 897dc62e48e73ac527458f7e11e7d3279cc7d9f4fa728741ae444b87e1c49183
 
 pkgname = caire
 
