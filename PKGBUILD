@@ -5,7 +5,7 @@ url='https://wiki.ros.org/base_local_planner'
 pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=14
+pkgrel=15
 license=('BSD')
 
 ros_makedepends=(ros-melodic-angles
@@ -29,7 +29,7 @@ ros_makedepends=(ros-melodic-angles
   ros-melodic-tf2-ros
   ros-melodic-visualization-msgs
   ros-melodic-voxel-grid)
-makedepends=('cmake' 'ros-build-tools' 'eigen3'
+makedepends=('cmake' 'ros-build-tools' 'eigen'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-angles
@@ -51,7 +51,7 @@ ros_depends=(ros-melodic-angles
   ros-melodic-tf2-ros
   ros-melodic-visualization-msgs
   ros-melodic-voxel-grid)
-depends=(${ros_depends[@]} 'eigen3')
+depends=(${ros_depends[@]} 'eigen')
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/base_local_planner/${pkgver}-${_pkgver_patch}
