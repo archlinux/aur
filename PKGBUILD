@@ -14,7 +14,7 @@ arch=("i686" "x86_64")
 url="http://cristal.inria.fr/~fpottier/menhir/"
 license=('GPL' 'QPL')
 depends=('ocaml>=4.02')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'dune')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'dune>=2.0')
 options=(!strip !makeflags)
 source=("https://gitlab.inria.fr/fpottier/menhir/-/archive/${pkgver}/menhir-${pkgver}.tar.gz")
 sha256sums=('cd89c21c0b5e5255d4b4ea2e51473a60aaecd4552609d14b637e79e247f65516')
