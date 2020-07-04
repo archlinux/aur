@@ -9,7 +9,7 @@ arch=("any")
 url="https://garuda.org/"
 license=('GPL2')
 source=('nvidia-440xx.ids')
-sha256sums=('SKIP')
+sha256sums=('44bfd99df2ea02e0ab8cc966a27f86fa12b9c21366ffa5ab6a6e2681608c9ae3')
 provides=('mhwd-nvidia-440xx')
 conflicts=('mhwd-nvidia-440xx')
 package() {
