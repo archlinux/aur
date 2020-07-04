@@ -12,7 +12,7 @@
 
 pkgname=glabels3-gnubarcode
 pkgver=3.4.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Creating labels and business cards the very easy way. Now with GNU barcode support."
 arch=('x86_64')
 
@@ -65,7 +65,13 @@ build() {
 
   # AM_CFLAGS seemed like the best insertion point for -fcommon
 
-  make AM_CFLAGS='-Ilib -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -DHAVE_CONFIG_H -fcommon'
+  sed '/^AM_CFLAGS/ s/$/ -fcommon/' Makefile*
+
+  # We could just run 
+  # make AM_CFLAGS='-Ilib -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -DHAVE_CONFIG_H -fcommon'
+  # but this could break on non-x86-64 builds.
+
+  make
 
   # Extract header files we'll need when linking against GNU barcode
 

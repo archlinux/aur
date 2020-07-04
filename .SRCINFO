@@ -1,7 +1,7 @@
 pkgbase = glabels3-gnubarcode
 	pkgdesc = Creating labels and business cards the very easy way. Now with GNU barcode support.
 	pkgver = 3.4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://glabels.org/
 	arch = x86_64
 	license = GPL
