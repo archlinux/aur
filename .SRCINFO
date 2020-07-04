@@ -1,19 +1,26 @@
 pkgbase = aomp-amdgpu
 	pkgdesc = Clang/LLVM based compiler with added support for the OpenMP API on Radeon GPUs
-	pkgver = 3.5.0
+	pkgver = 11.6.2
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/aomp
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
+	makedepends = git
 	makedepends = cmake
-	depends = pciutils
+	makedepends = python
+	depends = z3
 	depends = numactl
+	depends = pciutils
 	depends = libelf
 	depends = libffi
-	depends = python
-	depends = openmpi
-	source = aomp-amdgpu-3.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/aomp/archive/rocm-3.5.0.tar.gz
-	sha256sums = e4526489833896bbc47ba865e0d115fab278ce269789a8c99a97f444595f5f6a
+	options = staticlibs
+	options = !strip
+	source = aomp-amdgpu-11.6.2.tar.gz::https://github.com/ROCm-Developer-Tools/aomp/archive/rel_11.6-2.tar.gz
+	source = disable_ocl_tests.patch
+	source = adjust_rpath.patch
+	sha256sums = e4623ecfbe743676d068b17b113aadce4524a79be31b0540a216f9597cbd9fe5
+	sha256sums = bf3aab8fc2c828554ba76ab1876179130704f1c35906228fcf7e94239f5e4170
+	sha256sums = 94c670cd991c95a7b6312feb77d32a11c1ac1b839218bcd251042563b7af1a44
 
 pkgname = aomp-amdgpu
 
