@@ -18,6 +18,14 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
+	export GOPATH="$srcdir/gopath"
+	go clean -modcache
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	go build \
@@ -27,6 +35,9 @@ build() {
 		-modcacherw \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-o "${pkgname%-git}" .
+
+	# Clean now to ensure makepkg --clean works
+	go clean -modcache
 }
 
 package() {
