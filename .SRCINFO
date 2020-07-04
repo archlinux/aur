@@ -1,14 +1,26 @@
 pkgbase = steamtinkerlaunch
-	pkgdesc = SteamTinkerLaunch or short stl - is a linux wrapper script for steam. It creates/reads game config files on the fly, making it very easy to setup and use, but still giving you the possibility to fully customize game configurations live on game start.
-	pkgver = c1f6d094b7c5456211bed42dfa5ac62253670e84
-	pkgrel = 1
+	pkgdesc = Wrapper script for Steam custom launch options
+	pkgver = 0.91
+	pkgrel = 2
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = bash
-	backup = etc/sshuttle/tunnel.conf
-	backup = etc/sshuttle/prefixes.conf
-	source = git+https://github.com/frostworx/steamtinkerlaunch.git
+	optdepends = strace
+	optdepends = zenity
+	optdepends = gamemode
+	optdepends = mangohud
+	optdepends = vkbasalt
+	optdepends = winetricks
+	optdepends = wget: for optional reshade download
+	optdepends = unzip: for optional reshade download
+	optdepends = git: for pulling optional shaders
+	optdepends = xdotool: for playing regular games side-by-side in VR
+	optdepends = xorg-xwininfo: for playing regular games side-by-side in VR
+	optdepends = vr-video-player: for playing regular games side-by-side in VR
+	optdepends = xdg-utils: for opening the ProtonDB URL of started game
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=c1f6d094b7c5456211bed42dfa5ac62253670e84
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch

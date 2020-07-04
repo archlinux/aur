@@ -1,32 +1,44 @@
-# Contributor: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Contributor: Mark Wagie <mark.wagie@tutanota.com>
 
+# https://aur.archlinux.org/packages/steamtinkerlaunch
 pkgname=steamtinkerlaunch
-pkgver=c1f6d094b7c5456211bed42dfa5ac62253670e84
-#_commit=e433c599e40bc47c7b0e4d16934815c84b26eea8
-pkgrel=1
-pkgdesc='SteamTinkerLaunch or short stl - is a linux wrapper script for steam. It creates/reads game config files on the fly, making it very easy to setup and use, but still giving you the possibility to fully customize game configurations live on game start.'
+pkgver=0.91
+pkgrel=2
+pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
 depends=('bash')
-backup=('etc/sshuttle/tunnel.conf' 'etc/sshuttle/prefixes.conf')
-source=("git+https://github.com/frostworx/steamtinkerlaunch.git")
+makedepends=('git')
+optdepends=(
+    'strace'
+    'zenity'
+    'gamemode'
+    'mangohud'
+    'vkbasalt'
+    'winetricks'
+    'wget: for optional reshade download'
+    'unzip: for optional reshade download'
+    'git: for pulling optional shaders'
+    'xdotool: for playing regular games side-by-side in VR'
+    'xorg-xwininfo: for playing regular games side-by-side in VR'
+    'vr-video-player: for playing regular games side-by-side in VR'
+    'xdg-utils: for opening the ProtonDB URL of started game'
+)
+_commit='c1f6d094b7c5456211bed42dfa5ac62253670e84'
+source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
 pkgver() {
-        cd "$pkgname"
-        cat .git/refs/heads/master
+  cd "$srcdir/$pkgname"
+  printf $(grep 'PROGVERS=' stl | head -n1 | cut -d\" -f2 | sed 's/^v//')
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
+  install -Dm755 stl -t "$pkgdir/usr/bin"
 
-  # Make directories to install into
-  install -d "$pkgdir/usr/local/share/stl"
-  install -d "$pkgdir/usr/local/bin"
-
-  # Install package files
-  install -m755 "stl" "$pkgdir/usr/local/bin/stl"
-
-  find . -maxdepth 1 -type d -not -name '.git' -and -not -name '.' -print0 | xargs -i'{}' -0 cp -R {} "$pkgdir/usr/local/share/stl"
+  install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -r *.md sbs tweaks "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
