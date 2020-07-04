@@ -1,0 +1,14 @@
+pkgbase = liquid
+	pkgdesc = Clojure Text Editor, for editing clojure code and markdown. Written entirely in Clojure with inspiration from Emacs and Vim
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/dundalek/liquid
+	arch = any
+	license = EPL
+	depends = java-runtime>=8
+	depends = bash
+	source = liquid-2.0.3.jar::https://github.com/mogenslund/liquid/releases/download/v2.0.3/liquid-2.0.3-standalone.jar
+	sha256sums = 4e491972752d3ff1593923e1754d3dc101e6c923201c031389abc7479faa0c78
+
+pkgname = liquid
+
