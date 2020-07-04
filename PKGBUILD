@@ -1,7 +1,7 @@
 pkgname=openra-mw-git
 _pkgname=${pkgname/-git}
-pkgver=267.git.fc62353
-pkgrel=2
+pkgver=274.git.8c9f6d6
+pkgrel=1
 pkgdesc="An mod of OpenRA depicting medieval warfare"
 arch=('any')
 url="https://github.com/CombinE88/Medieval-Warfare"
