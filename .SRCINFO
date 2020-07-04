@@ -22,5 +22,9 @@ pkgname = mhwd-garuda-git
 	depends = pacman
 	optdepends = lib32-mesa: for 32bit libgl support
 	provides = mhwd
+	provides = mhwd-garuda
 	conflicts = mhwd
+	conflicts = mhwd-garuda
+	replaces = mhwd
+	replaces = mhwd-garuda
 

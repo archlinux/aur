@@ -38,8 +38,9 @@ build() {
 package_mhwd-garuda-git() {
   pkgdesc="mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)"
   depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'uvesafb-dkms' 'pacman')
-  provides=("mhwd")
-  conflicts=("mhwd")
+  provides=("mhwd" "mhwd-garuda")
+  conflicts=("mhwd" "mhwd-garuda")
+  replaces=("mhwd" "mhwd-garuda")
   if [ "${CARCH}" = "x86_64" ]; then
      optdepends=('lib32-mesa: for 32bit libgl support')
   fi
