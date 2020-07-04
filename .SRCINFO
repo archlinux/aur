@@ -1,7 +1,7 @@
 pkgbase = komikku
 	pkgdesc = Online/offline Manga reader for GNOME, built for the Librem 5
 	pkgver = 0.17.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/valos/Komikku
 	arch = any
 	license = GPL3
@@ -24,7 +24,7 @@ pkgbase = komikku
 	source = https://gitlab.com/valos/Komikku/-/archive/v0.17.0/Komikku-v0.17.0.tar.gz
 	source = newer_libhandy.patch
 	sha256sums = 4deb5a90ed80c1ee98266f4f3bdff4d2ffb6610b42975ce96209b3c2be14a734
-	sha256sums = 531a480f781014c531950e641494c393e4b9173358075f5655e330c60a812d56
+	sha256sums = 0b4e541c22ea716f3ceea253dd0bf9bc01ee79f053ac5be639e07f6ccf695216
 
 pkgname = komikku
 
