@@ -3,7 +3,7 @@
 pkgbase=python2-user-agents
 pkgname=('python-user-agents' 'python2-user-agents')
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
 arch=('any')
 url="https://pypi.python.org/pypi/user-agents"
