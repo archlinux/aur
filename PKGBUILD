@@ -13,10 +13,10 @@ depends=('libxinerama'
          'libglvnd'
          'libxrandr')
 provides=('aminal')
-source=("https://github.com/liamg/aminal/releases/download/${_pkgver}/aminal-linux-amd64")
+source=("${pkgname%-bin}-${pkgver}::https://github.com/liamg/aminal/releases/download/${_pkgver}/aminal-linux-amd64")
 sha256sums=('d605bae58fa2f005daaf7c060e6f4c28dac465bb2c4da5a60b47109703d9740b')
 
 package() {
-  install -Dm755 "${srcdir}"/aminal-* "${pkgdir}/usr/bin/aminal"
+  install -Dm755 ${pkgname%-bin}-${pkgver} "${pkgdir}/usr/bin/aminal"
 }
 # vim:set ts=2 sw=2 et:
