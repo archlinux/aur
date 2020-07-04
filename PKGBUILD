@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -18,7 +18,7 @@ license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
          'ruby' 'xz' 'perl')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
@@ -46,7 +46,12 @@ build() {
 
   cd "$INSTALLERS_DIR"/vagrant_substrate/files/launcher
   go get github.com/mitchellh/osext
-  go build -o vagrant
+
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
+    -o vagrant
 }
 
 package() {
