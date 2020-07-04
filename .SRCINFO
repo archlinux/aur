@@ -1,6 +1,6 @@
 pkgbase = typiskt
 	pkgdesc = touchtype training in the terminal
-	pkgver = 2020.07.03.30
+	pkgver = 2020.07.04.5
 	pkgrel = 1
 	url = https://github.com/budlabs/typiskt
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = typiskt
 	depends = bash
 	depends = bc
 	depends = gawk
-	depends = util-linux
 	depends = ncurses
-	source = https://github.com/budlabs/typiskt/archive/2020.07.03.30/typiskt-2020.07.03.30.tar.gz
-	sha256sums = 60670723505e49e74318fef82b4aa05e1636afe0b8e50982b149eda5d0b02b6f
+	source = https://github.com/budlabs/typiskt/archive/2020.07.04.5/typiskt-2020.07.04.5.tar.gz
+	sha256sums = 697823b16eb7713d865c18b5f2f0af4ed8414762d8be13a64ec344112a234a3d
 
 pkgname = typiskt
 
