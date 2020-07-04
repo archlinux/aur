@@ -2,7 +2,7 @@
 # Contributer: Vicente Reyes <vreyesvaldivieso@gmail.com>
 pkgname=vmn-git
 _pkgname=vmn
-pkgver=0.4_2_g58448b7
+pkgver=0.4_5_g0b31dfd
 pkgrel=1
 license=("GPL3")
 pkgdesc="Simplistic cli music player built on mpv and curses"
@@ -21,13 +21,11 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	meson \
-		--prefix /usr \
-		"$srcdir/build"
-	ninja -C "$srcdir/build"
+	arch-meson "$srcdir/build"
+	meson compile -C "$srcdir/build"
 }
 
 package() {
 	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" meson install -C "$srcdir/build"
 }
