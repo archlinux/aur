@@ -10,7 +10,9 @@ pkgdesc="An astronomical world map that shows day and night and the Sun and Moon
 arch=('i686' 'x86_64')
 url="https://www.spinnaker.de/debian/sunclock.html"
 license=('GPL')
-depends=('libjpeg-turbo' 'libpng' 'libxpm')
+depends=('libjpeg-turbo'
+         'libpng'
+         'libxpm')
 makedepends=('imake' 'tar' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://www.spinnaker.de/debian/sunclock_${pkgver}.orig.tar.gz"
         "disable_zlib.patch")
