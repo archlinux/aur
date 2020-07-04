@@ -3,7 +3,7 @@
 
 _pkgname=xst
 pkgname=${_pkgname}-git
-pkgver=20180816.1c9a2e8
+pkgver=20200704.da50afd
 pkgrel=1
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
@@ -34,6 +34,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 doc/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 readme.org "${pkgdir}/usr/share/doc/${pkgname}/README"
 }

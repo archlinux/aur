@@ -1,6 +1,6 @@
 pkgbase = xst-git
 	pkgdesc = st fork fork with xresources support and other patches
-	pkgver = 20180816.1c9a2e8
+	pkgver = 20200704.da50afd
 	pkgrel = 1
 	url = https://github.com/neeasade/xst
 	arch = i686
