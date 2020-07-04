@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-git
-pkgver=0.0.0.r29.e74d8c2
+pkgver=0.0.0.r39.b3d6df5
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -27,4 +27,5 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/tuigreet/target/release/tuigreet" "${pkgdir}/usr/bin/tuigreet"
+  install -Dm644 "${srcdir}/tuigreet/LICENSE" "${pkgdir}/usr/share/licenses/tuigreet/LICENSE"
 }
