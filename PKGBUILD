@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=coretoppings
-pkgver=2.9.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=('ffmpeg: For media'
 			'xdg-utils: Lockscreen')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('a38fb3ae32c6e0d2ea44378ee4a8a1cb')
+md5sums=('d2c8a7e0f21c26407a291db30566a9e5')
 
 prepare() {
   mkdir -p build
