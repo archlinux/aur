@@ -5,25 +5,26 @@
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
 pkgname=ppsspp
-pkgver=1.9.4
-pkgrel=5
+pkgver=1.10
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
 license=(GPL2)
 depends=(
-  gcc-libs
   glew
   glibc
   hicolor-icon-theme
   libgl
   libzip
   qt5-base
+  qt5-multimedia
   sdl2
   snappy
   zlib
 )
 makedepends=(
+  clang
   cmake
   git
   libglvnd
@@ -42,8 +43,9 @@ replaces=(
   ppsspp-headless
   ppsspp-qt
 )
+_tag=4abf5c14845f009146ae5961f9ddb6299a370713
 source=(
-  git+https://github.com/hrydgard/ppsspp.git#tag=e3c9793cb3a68ec9f44371c7ebb45a0abed1ecca
+  git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
@@ -102,6 +104,8 @@ prepare() {
 }
 
 build() {
+  export CC=clang
+  export CXX=clang++
   cmake -S ppsspp -B build-sdl \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
