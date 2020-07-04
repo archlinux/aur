@@ -3,7 +3,7 @@
 # Contributor: defkeh <defkeh@gmail.com>
 
 pkgname=rivalcfg
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='SteelSeries Rival gaming mouse configuration utility'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/flozz/rivalcfg'
 license=('custom:WTFPL')
 depends=('python' 'hidapi' 'python-hidapi' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2aa4b62c26ebab2cd2f090f64edb314b611e4ad65d0726621c196c461d720eda4b28e2cdd159cdbc9beded7fe4c1f98c4ee301be143af1669556efcad61abbc4')
+sha512sums=('f6efe6c8a2ee574b1c54f17ee9cd77066ce3812bd9f51c3f3d86cb2588b27947043809d6cfb35c5ec527dbd28389a92acc1a0ef65e2b5cc343d978586d600995')
 
 build() {
   cd $pkgname-$pkgver
