@@ -1,6 +1,6 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
 pkgname=white_dune
-pkgver=1.874
+pkgver=1.890 
 pkgrel=1
 epoch=
 pkgdesc="A graphical VRML97/X3D editor, simple NURBS/Superformula 3D modeller, animation tool and VRML97/X3DV commandline compiler"
@@ -8,6 +8,7 @@ arch=('any')
 url="http://wdune.ourproject.org/"
 license=('GPL')
 groups=()
+optdepends=('aqsis')
 depends=(xorg-fonts-misc
          xorg-fonts-alias
 )
@@ -62,9 +63,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("ftp://ftp.ourproject.org/pub/wdune/$pkgname-$pkgver.tar.bz2")
+source=("ftp://ftp.ourproject.org/pub/wdune/wdune-$pkgver.tar.bz2")
 noextract=()
-md5sums=('e41b7775f42558b342138c0cc20a1546')
+md5sums=('d1e92909b9da03f1c04a537a7e96fbfd')
 validpgpkeys=()
 
 build() {
