@@ -39,14 +39,14 @@ build() {
 
 	cd "$GOPATH/src/$pkgname-$pkgver"
 	go build \
-    	-trimpath \
-    	-buildmode=pie \
+		-trimpath \
+		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
-    	-o "$pkgname"
+		-o "$pkgname"
 
-    # Clean now to ensure makepkg --clean works
+	# Clean now to ensure makepkg --clean works
 	go clean -modcache
 }
 
