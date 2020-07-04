@@ -1,10 +1,13 @@
 pkgbase = sdformat-6
 	pkgdesc = SDF Converter for gazebo
 	pkgver = 6.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
@@ -17,8 +20,8 @@ pkgbase = sdformat-6
 	depends = python-psutil
 	optdepends = urdfdom
 	provides = sdformat=6
-	source = http://bitbucket.org/osrf/sdformat/get/sdformat6_6.2.0.tar.bz2
-	sha256sums = d607eeaff0cf91800a73d2cb79c462611b5afcd7745c60dbf6804210f807550b
+	source = http://bitbucket.org/osrf-migrated/sdformat/get/sdformat6_6.2.0.tar.bz2
+	sha256sums = 43894eaa1d9cc4a486879e09870c4f3adec33a3fc87cc06d62fad74a0ae061dd
 
 pkgname = sdformat-6
 

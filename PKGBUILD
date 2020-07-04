@@ -1,9 +1,9 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgname=sdformat-6
 pkgver=6.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="SDF Converter for gazebo"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://sdformat.org/"
 license=('Apache')
 depends=('boost' 'tinyxml' 'ignition-math=4' 'python-psutil')
@@ -11,10 +11,10 @@ optdepends=('urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake=0' 'ignition-tools' 'ruby>=1.9.1')
 provides=('sdformat=6')
 _name="sdformat"
-source=("http://bitbucket.org/osrf/${_name}/get/${_name}6_${pkgver}.tar.bz2")
-sha256sums=('d607eeaff0cf91800a73d2cb79c462611b5afcd7745c60dbf6804210f807550b')
+source=("http://bitbucket.org/osrf-migrated/${_name}/get/${_name}6_${pkgver}.tar.bz2")
+sha256sums=('43894eaa1d9cc4a486879e09870c4f3adec33a3fc87cc06d62fad74a0ae061dd')
 
-_dir="osrf-sdformat-d4d9796600b9"
+_dir="osrf-migrated-sdformat-d4d9796600b9"
 prepare(){
   cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
