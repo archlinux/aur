@@ -8,7 +8,6 @@ pkgbase = 3270-fonts
 	license = BSD
 	makedepends = fontforge
 	depends = xorg-fonts-encodings
-	depends = xorg-fonts-alias
 	depends = xorg-font-utils
 	depends = fontconfig
 	source = git://github.com/rbanffy/3270font.git
