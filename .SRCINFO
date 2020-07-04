@@ -1,0 +1,55 @@
+pkgbase = gazebo-10
+	pkgdesc = A multi-robot simulator for outdoor environments
+	pkgver = 10.2.0
+	pkgrel = 1
+	url = http://gazebosim.org/
+	install = gazebo.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	depends = boost>=1.40.0
+	depends = curl>=4.0
+	depends = freeglut
+	depends = freeimage>=3.0
+	depends = intel-tbb>=3.0
+	depends = libccd>=1.4
+	depends = libltdl>=2.4.2
+	depends = libtar>=1.2
+	depends = libxml2>=2.7.7
+	depends = ogre-1.9
+	depends = protobuf>=2.3.0
+	depends = sdformat=6
+	depends = ignition-math=4
+	depends = ignition-transport=4
+	depends = ignition-cmake-0
+	depends = ignition-common=1
+	depends = ignition-fuel_tools=1
+	depends = ignition-msgs=1
+	depends = tinyxml2
+	depends = qwt
+	optdepends = bullet: Bullet support
+	optdepends = cegui: Design custom graphical interfaces
+	optdepends = ffmpeg: Playback movies on textured surfaces
+	optdepends = gdal: Digital elevation terrains support
+	optdepends = libdart: DART support
+	optdepends = libspnav: space navigator joystick support
+	optdepends = libusb: USB peripherals support
+	optdepends = ruby-ronn: Generate manpages
+	optdepends = simbody: Simbody support
+	optdepends = urdfdom: Load URDF files
+	provides = gazebo
+	conflicts = gazebo
+	source = https://github.com/osrf/gazebo/archive/gazebo10_10.2.0.tar.gz
+	source = fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw
+	source = cmake-policy.patch
+	sha256sums = 8fbba7008be004f6df93f279c26d03910b3b07768881a7e9b0df80b6db738552
+	sha256sums = 4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72
+	sha256sums = c8c122405a91013f960a7795784ae7332f333f09031bf83887053740ea35fbc9
+
+pkgname = gazebo-10
+
