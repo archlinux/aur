@@ -5,7 +5,7 @@ _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
 pkgver='30.0'
 _tag="v${pkgver}"
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
@@ -15,9 +15,8 @@ makedepends=('git' 'cmake' 'gcc' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'ba
 _provides=('rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
            'srptools' 'infiniband-diags' 'libibmad')
-provides=("${_provides[@]}")
-conflicts=("${_provides[@]}")
-replaces=("${_provides[@]}")
+provides=("rdma-core" "${_provides[@]}")
+conflicts=("rdma-core" "${_provides[@]}")
 backup=('etc/rdma/'{'rmda.conf','mlx4.conf','sriov-vfs'})
 
 source=("${_srcname}::git+${url}.git#tag=${_tag}")
