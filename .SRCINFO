@@ -1,6 +1,6 @@
 pkgbase = apt
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org
 	arch = i686
 	arch = x86_64

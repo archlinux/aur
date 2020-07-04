@@ -1,5 +1,5 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Contributor: Felix Golatofski <contact@xdfr.de>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Mark Weiman <mark.weiman@markzz.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Tony Lambiris <tony@critialstack.com>
@@ -7,7 +7,7 @@
 pkgbase=apt
 pkgname=('apt' 'apt-docs')
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
 license=('GPL2')
@@ -33,7 +33,7 @@ build() {
   cd "$srcdir/$pkgname"
 
   # docbook xsl is stored with the version on Arch
-  DOCBOOK_XSL_VER=`ls -d /usr/share/xml/docbook/xsl-stylesheets-* | xargs basename`
+  DOCBOOK_XSL_VER=`ls -d /usr/share/xml/docbook/xsl-stylesheets-* | sort | head -1 | xargs basename`
 
   cmake -B build \
   	-DCMAKE_INSTALL_PREFIX="/usr" \
