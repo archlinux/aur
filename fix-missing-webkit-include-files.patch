@@ -1,0 +1,23 @@
+diff --git a/src/webpage.cpp b/src/webpage.cpp
+index fc235bc..2151e4e 100644
+--- a/src/webpage.cpp
++++ b/src/webpage.cpp
+@@ -45,12 +45,12 @@
+ #include <QNetworkRequest>
+ #include <QPainter>
+ #include <QtPrintSupport/QPrinter>
+-#include <QWebHistory>
+-#include <QWebHistoryItem>
+-#include <QWebElement>
+-#include <QWebFrame>
+-#include <QWebPage>
+-#include <QWebInspector>
++#include <QtWebKit/QWebHistory>
++#include <QtWebKit/QWebHistoryItem>
++#include <QtWebKit/QWebElement>
++#include <QtWebKitWidgets/QWebFrame>
++#include <QtWebKitWidgets/QWebPage>
++#include <QtWebKitWidgets/QWebInspector>
+ #include <QMapIterator>
+ #include <QBuffer>
+ #include <QDebug>
