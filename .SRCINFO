@@ -1,13 +1,13 @@
 pkgbase = ttf-alef
-	pkgdesc = A free multi-lingual font designed specifically for screens.
+	pkgdesc = A free multi-lingual sans-serif font designed specifically for screens.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alef.hagilda.com/
 	install = ttf-alef.install
 	arch = any
 	license = SIL Open Font License (OFL)
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontscale
 	source = http://alef.hagilda.com/Alef.zip
 	md5sums = 968845a7f0d90f496550944639f09d59
 
