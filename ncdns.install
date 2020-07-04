@@ -1,0 +1,13 @@
+post_install() {
+    # We do create a dedicated user, but by default the default service will
+    # run the daemon as root, because that's the only way to bind to :53 (which
+    # is a desirable default). Eventually, hopefully, upstream will provide a
+    # priviledge drop feature.
+    getent passwd ncdns &>/dev/null || {
+        echo -n ">>> Creating ncdns user... "
+        useradd --system --user-group -m --home /var/lib/ncdns ncdns
+        echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+    echo ">>> Edit the configuration file before starting service: /etc/ncdns.conf"
+}
