@@ -9,8 +9,8 @@
 pkgname=ideamaker-stable
 pkgversion=3.6.1
 pkgbuild=4415
+pkgrel=5
 pkgver=${pkgversion}.${pkgbuild}
-pkgrel=2
 epoch=
 pkgdesc="Fast and user friendly 3D slicer for FDM printers"
 arch=('x86_64')
