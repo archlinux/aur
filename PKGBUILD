@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=corehunt
-pkgver=2.9.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A file finder utility from the CoreApps family."
 arch=('x86_64' 'aarch64')
