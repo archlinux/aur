@@ -7,7 +7,7 @@ pkgdesc="Generate GIF animations from asciicasts (asciinema recordings)"
 arch=('any')
 license=('MIT')
 url="https://github.com/asciinema/asciicast2gif"
-depends=('nodejs' 'gifsicle')
+depends=('nodejs' 'imagemagick' 'gifsicle')
 makedepends=('npm')
 
 package() {

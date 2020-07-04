@@ -7,6 +7,7 @@ pkgbase = asciicast2gif
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = imagemagick
 	depends = gifsicle
 
 pkgname = asciicast2gif
