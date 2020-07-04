@@ -1,6 +1,6 @@
 pkgbase = vixl44-git
-	pkgdesc = A general purpose application for vixl44ing text
-	pkgver = r83.
+	pkgdesc = Create pixel art inside your terminal using vim movements
+	pkgver = r83r
 	pkgrel = 1
 	url = https://sebashwa.github.io/vixl44
 	arch = x86_64

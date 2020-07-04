@@ -2,9 +2,9 @@
 
 pkgname=vixl44-git
 _pkgname=vixl44
-pkgver=r83.
+pkgver=r83r
 pkgrel=1
-pkgdesc="A general purpose application for vixl44ing text"
+pkgdesc="Create pixel art inside your terminal using vim movements"
 arch=('x86_64')
 url='https://sebashwa.github.io/vixl44'
 license=('GPL3')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HE  AD)"
+  printf "r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HE  AD)"
 }
 
 prepare() {
