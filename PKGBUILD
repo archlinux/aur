@@ -40,7 +40,6 @@ package() {
         CFCA_EV_ROOT:2.4.24.74.204.214.tmp-p11-kit \
         Verisign_Class_1_Public_Primary_Certification_Authority_-_G3:2.17.0.139.91.117.86.132.84.133.11.0.207.175.56.72.206.177.164.tmp-p11-kit \
         Verisign_Class_2_Public_Primary_Certification_Authority_-_G3:2.16.97.112.203.73.140.95.152.69.41.231.176.166.217.80.91.122.tmp-p11-kit \
-        Verisign_Class_3_Public_Primary_Certification_Authority_-_G3:2.17.0.155.126.6.73.163.62.98.185.213.238.144.72.113.41.239.87.tmp-p11-kit \
         VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4:2.16.47.128.254.35.140.14.34.15.72.103.18.40.145.135.172.179.tmp-p11-kit \
         VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5:2.16.24.218.209.158.38.125.232.187.74.33.88.205.204.107.59.74.tmp-p11-kit \
         VeriSign_Universal_Root_Certification_Authority:2.16.64.26.196.100.33.179.19.33.3.14.187.228.18.26.197.29.tmp-p11-kit
