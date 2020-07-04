@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 SyslogIdentifier=autoupdate
-ExecStart=/usr/bin/nice -n 19 /usr/bin/pacman -Syuwq --noconfirm
+ExecStart=nice -n 19 pacman -Syuq --noconfirm
 TimeoutStopSec=300
 KillMode=process
 KillSignal=SIGINT

@@ -1,7 +1,7 @@
 # Maintainer: philanecros <philanecros@gmail.com>
 
 pkgname=autoupdate
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Download packages to update automatically."
 arch=('any')
@@ -10,9 +10,9 @@ license=('GPL')
 install=autoupdate.install
 source=(autoupdate.service
         autoupdate.timer)
-md5sums=('3d9f8d9a766ed6d6b997f61ced458127'
+md5sums=('5239b232d6c877887c3f87a99ffa1ab8'
          '129db06fab0fd9478ef3a4cf6a5baa96')
-
+depends=(timeshift-autosnap)
 package() {
   targetdir="$pkgdir/usr/lib/systemd/system/"
   install -m 755 -d $targetdir
