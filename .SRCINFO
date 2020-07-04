@@ -1,6 +1,6 @@
 pkgbase = psync
 	pkgdesc = Python wrapper for rsync
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/jnphilipp/psync
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = psync
 	makedepends = help2man
 	depends = python-lxml
 	depends = rsync
+	optdepends = python-notify2: Desktop notifications
 	source = git://github.com/jnphilipp/psync.git
 	md5sums = SKIP
 
