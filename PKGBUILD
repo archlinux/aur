@@ -2,7 +2,7 @@
 # Contributer: Vicente Reyes <vreyesvaldivieso@gmail.com>
 pkgname=vmn-git
 _pkgname=vmn
-pkgver=0.4_b25ae8e
+pkgver=0.4_2_g58448b7
 pkgrel=1
 license=("GPL3")
 pkgdesc="Simplistic cli music player built on mpv and curses"
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	printf "%s_%s" "$(git describe --tags)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --tags)" | sed s/-/_/g
 }
 
 build() {
