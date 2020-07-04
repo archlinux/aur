@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.5.1
-pkgrel=5
+pkgrel=6
 
 arch=("x86_64")
 license=("GPL2")
@@ -48,6 +48,7 @@ source=(
     "php.ini"
     "settings-local.php"
     "webapps-paths.patch"
+    "std-runtimeerror.patch"
 )
 sha256sums=(
     "9e4e8d58e6c0a4fd0270ca34657226a19bde33fb0fcfbeb91a215c739faddde5"
@@ -58,6 +59,7 @@ sha256sums=(
     "37c4b17463f8317d39bb741b07bbb693afc0bbf584eec590f89b849542b98b7d"
     "c51857c2aa9d1373b5b66cd695b9b30a916ecd05570d92cf631af5efc63ed472"
     "e35272be9414661c79659da8bd1c8028e859c460efbf52236a4bb84f018b9a57"
+    "7d5eb8dada043384e267fd2cd4ad621916ef62d5dd81e4f00c3989302a4b5a2b"
 )
 noextract=(
     "country_grid.sql.gz"
@@ -71,6 +73,7 @@ backup=(
 prepare() {
     mkdir -p "${srcdir}/build"
     patch -d "${srcdir}/Nominatim-${pkgver}" -p1 < webapps-paths.patch
+    patch -d "${srcdir}/Nominatim-${pkgver}" -p1 < std-runtimeerror.patch
 
     cp "country_grid.sql.gz" "${srcdir}/Nominatim-${pkgver}/data/country_grid.sql.gz"
 }

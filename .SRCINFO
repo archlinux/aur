@@ -1,7 +1,7 @@
 pkgbase = nominatim
 	pkgdesc = Geocoding tool using OpenStreetmap data
 	pkgver = 3.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://nominatim.org
 	install = nominatim.install
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = nominatim
 	source = php.ini
 	source = settings-local.php
 	source = webapps-paths.patch
+	source = std-runtimeerror.patch
 	sha256sums = 9e4e8d58e6c0a4fd0270ca34657226a19bde33fb0fcfbeb91a215c739faddde5
 	sha256sums = fe66393aaf561749255cebf4c61d13a8425e326b8ce50409d88c4035165de049
 	sha256sums = 7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d
@@ -46,6 +47,7 @@ pkgbase = nominatim
 	sha256sums = 37c4b17463f8317d39bb741b07bbb693afc0bbf584eec590f89b849542b98b7d
 	sha256sums = c51857c2aa9d1373b5b66cd695b9b30a916ecd05570d92cf631af5efc63ed472
 	sha256sums = e35272be9414661c79659da8bd1c8028e859c460efbf52236a4bb84f018b9a57
+	sha256sums = 7d5eb8dada043384e267fd2cd4ad621916ef62d5dd81e4f00c3989302a4b5a2b
 
 pkgname = nominatim
 
