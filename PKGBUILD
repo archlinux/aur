@@ -6,18 +6,18 @@ url='http://eigen.tuxfamily.org/dox/TopicUnalignedArrayAssert.html'
 pkgname='ros-melodic-eigen-stl-containers'
 pkgver='0.1.8'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
   ros-melodic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 _dir="eigen_stl_containers-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/eigen_stl_containers/archive/${pkgver}.tar.gz")
