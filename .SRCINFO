@@ -1,7 +1,7 @@
 pkgbase = python2-scons
 	pkgdesc = Extensible Python-based build utility. Python2 version
-	pkgver = 3.1.1
-	pkgrel = 3
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://scons.org
 	arch = any
 	license = MIT
@@ -29,8 +29,8 @@ pkgbase = python2-scons
 	makedepends = python-lxml
 	makedepends = texlive-latexextra
 	depends = python
-	source = scons-3.1.1.tar.gz::https://github.com/scons/scons/archive/3.1.1.tar.gz
-	sha512sums = 3347a7ec5c6c7b596c0d51bb4a9654b971734736febe3834df0f40e7839e1f0578dafeae838d5ddd9f3319ac3d17b6790666fa1602c30480eba25122355179a5
+	source = scons-3.1.2.tar.gz::https://github.com/scons/scons/archive/3.1.2.tar.gz
+	sha512sums = b096501ea37e62f596f16b46b4022ad7979f359b10849d4c5fa17731a6c3ec34e0890374de175a8aa7539ae677777142ccf5dfae39a74696efcdbcc00e89bccf
 
 pkgname = python2-scons
 	depends = python2

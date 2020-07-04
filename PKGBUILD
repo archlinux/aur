@@ -7,21 +7,21 @@
 
 _pkgbase=scons
 pkgname=python2-${_pkgbase}
-pkgver=3.1.1
-pkgrel=3
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Extensible Python-based build utility. Python2 version"
 arch=('any')
 url="https://scons.org"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends+=('python-setuptools' 'python2-setuptools')
 makedepends+=('docbook2x' 'epydoc' 'fop' 'texlive-bin' 'graphviz' 'ghostscript'
 'lynx' 'python-lxml' 'texlive-latexextra')
 # potential additions include ipkg, rpm
 checkdepends=('clang' 'gdc' 'dmd' 'ldc' 'lib32-glibc' 'nasm' 'swig' 'zip'
 'python-pytest' 'python-virtualenv' 'python2-pytest' 'python2-virtualenv')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha512sums=('3347a7ec5c6c7b596c0d51bb4a9654b971734736febe3834df0f40e7839e1f0578dafeae838d5ddd9f3319ac3d17b6790666fa1602c30480eba25122355179a5')
+sha512sums=('b096501ea37e62f596f16b46b4022ad7979f359b10849d4c5fa17731a6c3ec34e0890374de175a8aa7539ae677777142ccf5dfae39a74696efcdbcc00e89bccf')
 
 prepare() {
    cd "${_pkgbase}-${pkgver}"
