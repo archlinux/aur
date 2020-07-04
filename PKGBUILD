@@ -2,15 +2,12 @@
 
 pkgname=xolonium-fonts
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Xolonium Fonts created for Xonotic <http://www.xonotic.org>"
 arch=('any')
 url="https://fontlibrary.org/en/font/xolonium"
 license=('custom: SIL Open Font License')
-depends=('fontconfig' 'xorg-font-utils')
-provides=('ttf-font')
-install=${pkgname}.install
-source=("xolonium-${pkgver}.zip::https://fontlibrary.org/assets/downloads/xolonium/e00c124f3e1b130e5ec2a7eee2f4f1b8/xolonium.zip")
+source=("${pkgname}-${pkgver}.zip::https://fontlibrary.org/assets/downloads/xolonium/e00c124f3e1b130e5ec2a7eee2f4f1b8/xolonium.zip")
 sha256sums=('c3fe7355675f40c0f66379e772a0b0a1e4c346eb43b6b719cf160a61d3b0b046')
 
 package() {
