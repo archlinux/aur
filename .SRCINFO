@@ -1,6 +1,6 @@
 pkgbase = gphoto2pp-git
 	pkgdesc = A C++ wrapper for libgphoto2
-	pkgver = 34.b66be5c
+	pkgver = 36.9634427
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/maldworth/gphoto2pp

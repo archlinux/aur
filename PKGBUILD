@@ -1,6 +1,6 @@
 _pkgname="gphoto2pp"
 pkgname="${_pkgname}-git"
-pkgver=34.b66be5c
+pkgver=36.9634427
 pkgrel=1
 pkgdesc="A C++ wrapper for libgphoto2"
 arch=('x86_64')
@@ -20,17 +20,19 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}"
-	./cmake_release.sh
+	[ -d build ] && rm -rf build
+	mkdir build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE ..
 }
 
 build() {
-	cd "${_pkgname}/build/release"
+	cd "${_pkgname}/build"
 	make
 }
 
 package() {
 	cd "${_pkgname}"
-	(cd build/release && make PREFIX=/usr DESTDIR="${pkgdir}/" install)
+	(cd build && make DESTDIR="${pkgdir}/" install)
 	install -m644 -D "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
