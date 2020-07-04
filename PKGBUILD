@@ -1,9 +1,9 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 pkgname=qtvlm-bin
 pkgver=5.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Navigation and Weather Routing software"
-arch=("x86_64" "aarch64")
+arch=("x86_64")
 url="https://www.meltemus.com/index.php/"
 license=('unknown')
 options=("!strip")
