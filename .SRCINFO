@@ -1,0 +1,17 @@
+pkgbase = ewmh_m2m
+	pkgdesc = An EWMH-compliant move to monitor utility
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/AlexisBRENON/ewmh_m2m
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-xcffib
+	depends = python-xpybutil
+	source = ewmh_m2m-1.1.3.tar.gz::https://github.com/AlexisBRENON/ewmh_m2m/archive/v1.1.3.tar.gz
+	md5sums = 00e51440fd2913b91a92292d89929748
+
+pkgname = ewmh_m2m
+
