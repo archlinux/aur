@@ -10,7 +10,7 @@ arch=(x86_64 armv7h)
 license=(GPL-3)
 
 depends=(libcap)
-optdepends=('namecoin: the Namecoin node')
+optdepends=('namecoin-core: the Namecoin node')
 makedepends=(go)
 install="ncdns.install"
 backup=("etc/ncdns.conf")
