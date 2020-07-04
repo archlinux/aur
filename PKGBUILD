@@ -26,8 +26,6 @@ md5sums=('fdbfae1bba8012daf984a76d7004ae3e'
          'f1a9f3406f8268383149889f4816cd52')
 install=input-support.install
 conflicts=(
-			"${pkgbase}-gtk"
-			"${pkgbase}-qt"
 			"${pkgbase}-ibus"
 			"${pkgbase}-fcitx"
 			"${pkgbase}-fcitx5"
