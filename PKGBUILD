@@ -29,5 +29,4 @@ package(){
 
 	install -Dm755 tu2/Projektverwaltung "${pkgdir}"/usr/bin/tu2
 	install -Dm755 tu2/tu2.desktop "${pkgdir}"/usr/share/applications/tu2.desktop
-	chmod +x "${pkgdir}"/usr/share/applications/tu2.desktop
 }
