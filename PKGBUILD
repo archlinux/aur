@@ -2,14 +2,14 @@
 
 pkgname=gazebo-10
 pkgver=10.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
-         'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
+         'tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
          'ogre-1.9' 'protobuf>=2.3.0' 'sdformat=6' 'ignition-math=4' 'ignition-transport=4'
          'ignition-cmake-0' 'ignition-common=1' 'ignition-fuel_tools=1' 'ignition-msgs=1' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
