@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
-	pkgver = 5.9.GE.1.NR
-	pkgrel = 2
+	pkgver = 5.11.GE.2.MF
+	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
 	license = custom
@@ -172,8 +172,8 @@ pkgbase = proton-ge-custom
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	noextract = wine-mono-5.0.1-x86.tar.xz
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=5.9-GE-1-NR
+	noextract = wine-mono-5.1.0-x86.tar.xz
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=47db5f75cb1b650985934db626b75173486602da
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = vkd3d::git+https://github.com/HansKristian-Work/vkd3d.git
@@ -193,7 +193,7 @@ pkgbase = proton-ge-custom
 	source = gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
 	source = gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
 	source = gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-5.0.1/wine-mono-5.0.1-x86.tar.xz
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-5.1.0/wine-mono-5.1.0-x86.tar.xz
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
@@ -218,9 +218,9 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c899f176cbb7b1c411abbc103e17ae05702df21a502534c6f71c891ebde7b604
-	sha256sums = 6696b090e1b3ee854e52880f51210267d8139631d26e7604a4db519a4db076f1
-	sha256sums = b3013734f6c551bb669b6236ccdc0c38dde25b946b1b518e77c9b2a6adfb1166
+	sha256sums = 7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f
+	sha256sums = 403bd4f6cb7b7c2508dfce9444ea6d3a1eee625d21f8ac27620b099e6612217c
+	sha256sums = 9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98
 

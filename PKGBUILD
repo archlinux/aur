@@ -1,11 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=5.9-GE-1-NR
+_srctag=5.11-GE-2-MF
+_commit=47db5f75cb1b650985934db626b75173486602da
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
-_monover=5.0.1
-pkgrel=2
+_monover=5.1.0
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -92,7 +93,7 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 #install=${pkgname%-git}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     vkd3d::git+https://github.com/HansKristian-Work/vkd3d.git
@@ -142,9 +143,9 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    'c899f176cbb7b1c411abbc103e17ae05702df21a502534c6f71c891ebde7b604'
-    '6696b090e1b3ee854e52880f51210267d8139631d26e7604a4db519a4db076f1'
-    'b3013734f6c551bb669b6236ccdc0c38dde25b946b1b518e77c9b2a6adfb1166'
+    '7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f'
+    '403bd4f6cb7b7c2508dfce9444ea6d3a1eee625d21f8ac27620b099e6612217c'
+    '9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
 )
@@ -217,7 +218,7 @@ prepare() {
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 
-    ./patches/protonprep.sh
+    ./patches/protonprep-nofshack.sh
 }
 
 build() {
