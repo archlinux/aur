@@ -2,7 +2,7 @@
 
 pkgname=lyricsx
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="free, open source, cross-platform software for editing lyrics"
 url="https://github.com/timxx/lyricsx"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ build() {
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
+        -DLRCX_WARN_AS_ERROR=OFF \
         "${srcdir}/${pkgname}-${pkgver}"
 
     make
