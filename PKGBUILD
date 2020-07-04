@@ -24,7 +24,7 @@ source=('git://github.com/kripken/emscripten.git'
 	'emscripten.config')
 sha256sums=('SKIP'
             'SKIP'
-            '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
+            '9108d609fee1a7fb7687c13d8d30eb26c0866e8f665c74000f131d3518af1de2'
             '770f6c6322efeb280789e4d069ca19ad6621bb3867d3d51c86fe9f2256fb2fb0'
             '9e5b24e9b39f2c6f6ae23b1bb130630d930b290b31e6c543024cb998678dee16'
             'f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f')
