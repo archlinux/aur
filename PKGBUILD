@@ -6,7 +6,7 @@ url='https://moveit.ros.org/'
 pkgname='ros-melodic-moveit-ros-occupancy-map-monitor'
 pkgver='1.0.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -18,7 +18,7 @@ ros_makedepends=(ros-melodic-catkin
                  ros-melodic-octomap)
 makedepends=('cmake' 'ros-build-tools'
              ${ros_makedepends[@]}
-             eigen3)
+             eigen)
 
 ros_depends=(ros-melodic-geometric-shapes
              ros-melodic-tf2-ros

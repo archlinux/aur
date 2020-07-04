@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-occupancy-map-monitor
 	pkgdesc = ROS - Components of MoveIt! connecting to occupancy map.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ros-melodic-moveit-ros-occupancy-map-monitor
 	makedepends = ros-melodic-moveit-msgs
 	makedepends = ros-melodic-pluginlib
 	makedepends = ros-melodic-octomap
-	makedepends = eigen3
+	makedepends = eigen
 	depends = ros-melodic-geometric-shapes
 	depends = ros-melodic-tf2-ros
 	depends = ros-melodic-moveit-core
