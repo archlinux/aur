@@ -1,14 +1,14 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.16.r7.g6cb1695
+pkgver=v0.17.r0.gf5dc84e
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL')
 groups=('')
-makedepends=('llvm' 'clang' 'cmake' 'nlohmann-json' 'bpf')
-depends=('gcc-libs' 'systemd' 'which' 'iproute2')
+makedepends=('llvm' 'clang' 'cmake' 'nlohmann-json' 'libbpf')
+depends=('gcc-libs' 'systemd' 'which' 'iproute2' 'libbpf')
 provides=('cgproxy')
 conflicts=('cgproxy')
 
@@ -29,8 +29,8 @@ install="cgproxy.install"
 build(){
     cd ${srcdir}/${pkgname}
     # init submodule
-    git submodule init
-    git submodule update
+    # git submodule init
+    # git submodule update
 
     # build libexecsnoop.so
     # cd "${srcdir}/${pkgname}/execsnoop-libbpf"
