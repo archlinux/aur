@@ -1,6 +1,6 @@
 # Maintainer: Oliver Giles <web ohwg net>
 pkgname=laminar
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Fast and lightweight Continuous Integration server"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'boost' 'rapidjson')
 options=('strip')
 source=("https://github.com/ohwgiles/laminar/archive/$pkgver.tar.gz")
 install=laminar.install
-md5sums=('0596efb88ad4d3b76dfd5fb29c6beeac')
+md5sums=('fbf8afd48b35171c89d8719430447631')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/ -DSYSTEMD_UNITDIR=/usr/lib/systemd/system .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DLAMINAR_VERSION=$pkgver -DSYSTEMD_UNITDIR=/usr/lib/systemd/system .
 	make
 }
 
