@@ -5,7 +5,7 @@
 pkgname=opensnitch-git
 pkgver=1.0.0rc11.r0.714aa31
 pkgrel=1
-pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
+pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
@@ -29,7 +29,12 @@ prepare() {
     mkdir -p gopath/src/github.com/gustavo-iniguez-goya
     ln -rTsf "$srcdir/${pkgname%-git}" \
         "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}"
-    export GOPATH="$srcdir"/gopath
+
+    # Prevent creation of a `go` directory in one's home.
+    # Sometimes this directory cannot be removed with even `rm -rf` unless
+    # one becomes root or changes the write permissions.
+    export GOPATH="$srcdir/gopath"
+    go clean -modcache
 
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
     dep ensure -v
@@ -39,15 +44,16 @@ prepare() {
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath
-
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
     go build \
         -v \
         -trimpath \
-		-buildmode=pie \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
+        -buildmode=pie \
+        -ldflags "-extldflags \"${LDFLAGS}\"" \
         -o opensnitchd .
+
+    # Clean now to ensure makepkg --clean works
+    go clean -modcache
 
     cd "$srcdir/${pkgname%-git}/proto"
     make
