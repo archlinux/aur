@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/rbanffy/$_gitname"
 license=('BSD')
 makedepends=('fontforge')
-depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
+depends=('xorg-fonts-encodings' 'xorg-mkfontdir' 'xorg-mkfontscale' 'fontconfig')
 source=("git://github.com/rbanffy/3270font.git")
 md5sums=('SKIP')
 
