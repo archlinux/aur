@@ -2,7 +2,7 @@
 # Contributor: Karmenzind
 pkgname=otf-nerd-fonts-monacob-mono
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='MonacoB fonts patched with nerd-fonts'
 arch=('any')
 url='https://github.com/vjpr/monaco-bold'

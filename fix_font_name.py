@@ -24,8 +24,6 @@ if font.fontname == "MonacoBItalic":
 else:
     new_name = "{}-{}".format(font.fullname.split(" ")[0], font.weight)
 
-pretty_path = "{}/{}".format(os.path.basename(os.path.dirname(font_path)), os.path.basename(font_path))
-
 print(">>> {}: [{}] Renaming font: '{}' -> '{}'".format(script_name, pretty_path, font.fontname, new_name))
 print(">>> {}: [{}] Fixing font properties...".format(script_name, pretty_path))
 
