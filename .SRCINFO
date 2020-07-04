@@ -1,4 +1,4 @@
-pkgbase = tu2-git
+pkgbase = tu2
 	pkgdesc = Simple Project Management System (english translation pending)
 	pkgver = 10.0f2aac2
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = tu2-git
 	source = git+https://github.com/ntropy83/tu2.git
 	md5sums = SKIP
 
-pkgname = tu2-git
+pkgname = tu2
 

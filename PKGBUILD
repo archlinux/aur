@@ -1,5 +1,5 @@
 # Maintainer: Oliver Sagner <oliver.sagner@jwo.com.de>
-pkgname='tu2-git'
+pkgname='tu2'
 pkgver=10.0f2aac2
 pkgrel=1
 pkgdesc="Simple Project Management System (english translation pending)"
