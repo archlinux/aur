@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r691.g22ac983
+pkgver=0.1.r693.gbcd2899
 pkgrel=1
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
@@ -20,6 +20,9 @@ optdepends=(
 	'libnotify: to show GUI notifications'
 	'sudo: to show GUI notifications if nohang started with UID=0'
 	'logrotate: maintaining a separate log is one of the options'
+)
+makedepends=(
+	'git'
 )
 conflicts=("${_pkgname}")
 backup=(
