@@ -1,0 +1,31 @@
+pkgbase = smf-dsp-git
+	pkgdesc = Advanced MIDI file player, including various chip music synths
+	pkgver = 0.0.0.r201.ge28e01e
+	pkgrel = 1
+	url = https://github.com/jpcima/smf-dsp
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = jack
+	depends = alsa-lib
+	depends = libuv
+	depends = icu
+	depends = xdg-utils
+	source = git+https://github.com/jpcima/smf-dsp.git
+	source = git+https://github.com/Wohlstand/libADLMIDI.git
+	source = git+https://github.com/Wohlstand/libOPNMIDI.git
+	source = git+https://github.com/jpcima/scc.git
+	source = git+https://github.com/munt/munt.git
+	source = git+https://github.com/divideconcept/FluidLite.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = smf-dsp-git
+
