@@ -1,0 +1,9 @@
+[Unit]
+Description=Namecoin to DNS bridge daemon
+
+[Service]
+ExecStart=/usr/bin/ncdns
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
