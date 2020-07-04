@@ -11,7 +11,7 @@ depends=('gtk2')
 makedepends=('gendesk')
 provides=('notepas')
 options=('!strip')
-source=("https://github.com/beNative/Notepas/releases/download/v${pkgver}/notepas-${pkgver}.x86_64-linux-gtk2.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::https://github.com/beNative/Notepas/releases/download/v${pkgver}/notepas-${pkgver}.x86_64-linux-gtk2.zip")
 sha256sums=('c09fa3bb4e79b2b45894be3863d0bcc7f3b882424f0e898e58bfd8b305d0ae70')
 
 package() {
