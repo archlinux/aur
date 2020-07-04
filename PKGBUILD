@@ -1,19 +1,18 @@
-# Maintainer: Marco Pompili <aur (at) mg.odd.red>
-# Maintainer: TDY <tdy@gmx.com>
+# Maintainer: Marco Pompili <aur@mg.odd.red>
+# Contributor: TDY <tdy@gmx.com>
 
 pkgname=ttf-atarismall
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A very small 4x8 font, originally desinged for the Atari 800 terminal emulator"
 arch=('any')
 url="http://www.aiei.ch/atari/"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
 source=(http://www.aiei.ch/atari/atarismall.ttf
         LICENSE)
-md5sums=('020ab43770cadc51695114d791c3973e'
-         '1a008f174523a385684cf5d3bb48f2eb')
+sha256sums=('5ff9b92e344c0de3b647de567a59e5ccf93ba2b127057824072c4c0a310a1eb1'
+            'a54bc430e906a8ae51fc0192ff0439deb686953de7b239f551a31757ee44d1ef')
 
 package() {
   cd "$srcdir"
