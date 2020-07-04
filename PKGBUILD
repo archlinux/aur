@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=libcsys
-pkgver=2.9.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Library for managing drive and getting system resource information in real time."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'udisks2')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('43ac1deec42a8e084b08cacb86458ef8')
+md5sums=('b4dad5c9b7c729af45d1aa77a37350a3')
 
 prepare() {
   mkdir -p build
