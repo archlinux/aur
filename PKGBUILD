@@ -17,23 +17,18 @@ sha256sums=('490915d02b64143ee1372511b675671e57c386c50c4cec04771ed8740bc67298'
             'SKIP')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
-prepare() {
-  mkdir build-qt4
-}
-
 build() {
-  cd build-qt4
-  cmake ../${pkgname/-qt4/-backend}-$pkgver \
+  cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -D__KDE_HAVE_GCC_VISIBILITY=NO \
-    -DPLUGIN_INSTALL_DIR=/usr/lib/kde4
-  make
+    -DPLUGIN_INSTALL_DIR=/usr/lib/kde4 \
+    -S ${pkgname/-qt4/}-$pkgver \
+    -B build-qt4
+  make -C build-qt4
 }
 
 package() {
-
-  cd build-qt4
-  make DESTDIR="$pkgdir" install
+  make -C build-qt4 DESTDIR="$pkgdir" install
 }
