@@ -2,8 +2,8 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=corestuff
-pkgver=2.9.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="An activity viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
@@ -13,7 +13,7 @@ makedepends=('git')
 replaces=('corebox')
 groups=('coreapps')
 source=( #"https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-		"git+https://gitlab.com/cubocore/$pkgname.git#tag=v2.9.0")
+		"git+https://gitlab.com/cubocore/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {

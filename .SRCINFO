@@ -1,7 +1,7 @@
 pkgbase = corestuff
 	pkgdesc = An activity viewer from the CoreApps family.
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/corestuff
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = corestuff
 	depends = libcsys>=2.7.1
 	depends = libcprime>=2.7.1
 	replaces = corebox
-	source = git+https://gitlab.com/cubocore/corestuff.git#tag=v2.9.0
+	source = git+https://gitlab.com/cubocore/corestuff.git#tag=v3.0.1
 	md5sums = SKIP
 
 pkgname = corestuff
