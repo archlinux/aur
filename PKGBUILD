@@ -4,7 +4,7 @@
 
 pkgname=opencpn-plugin-oesenc-git
 pkgver=4.0.5.r112.gaa16607
-pkgrel=3
+pkgrel=4
 pkgdesc="O-charts.org plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
 license=("GPL3")
