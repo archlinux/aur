@@ -5,86 +5,11 @@
 # Contributor: nTia89       <mattia.b89@gmail.com>
 # Contributor: Mark E. Lee  <mark@markelee.com>
 
-## Changelog :
-## changed build function to package function (since nothing is built)
-## removed rpmextract dependency since bsdtar can already extract rpms (per Red_Squirrel's advice)
-## removed double posting query
-## fixed up pkgver and pkgrel variables
-## updated to libreoffice 4.0.1
-## added libnp12 as a dependency due to <https://bugassistant.libreoffice.org/show_bug.cgi?id=61571> as reported by xavier114fch
-## fixed up some file permissions for :
-##    FILE/DIR                        PERMISSIONS
-##    --------                        -----------
-##    /usr/bin/                          755
-##    /opt/libreoffice4.0/LICENSE        644
-##    /opt/libreoffice4.0/CREDITS.odt    644
-##    /opt/libreoffice4.0/LICENSE.odt    644
-## Using package defaults for rest
-## Updated to pkgver 4.0.2
-## Updated to pkgver 4.0.3
-## Updated to pkgver 4.0.4
-## Changed ${pkgver%.3} to $(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')  for easy upgrades (just change the pkver and pkgrel variable)
-## Updated to pkgver 4.1.0
-## Moved language packs to prepare function
-## removed code to extract 4.0 desktop integration; it is now extracted in a usr directory; added code to copy the usr directory
-## changed directory copying code to copy all */ in the RPMS directories
-## updated to upstream 4.1.1
-## updated to upstream 4.1.2
-## updated to upstream 4.1.3
-## updated to upstream 4.1.4
-## switched to sha256 sums + PGP sigs (see mailing list : <https://mailman.archlinux.org/pipermail/arch-general/2014-January/034744.html>)
-## using custom linux kernel version check in package() due usage of custom kernels (the issue was brought up by nachoig, the fix was from Mark E. Lee)
-## updated to upstream 4.2.0
-## using curl instead of wget due to Arch upstream change as requested by nTia89
-## updated to upstream 4.2.1
-## updated to upstream 4.2.2
-## updated to upstream 4.2.3
-## updated to upstream 4.2.4
-## updated to upstream 4.2.5
-## removed gnome from opt-depends and added gstreamer0.10-plugins per nachoig's suggestion
-## removed gstreamer0.10-plugins and added gst-plugins per nachoig's suggestion
-## updated to upstream 4.3.0
-## changed pkgname to libreoffice-fresh-rpm per nachoig's suggestion
-## updated to upstream 4.3.1
-## updated to upstream 4.3.2
-## updated to upstream 4.3.3
-## updated to upstream 4.3.4
-## updated to upstream 4.3.5
-## updated to upstream 4.4.0
-## temporarily removing GPG sig checks
-## updated to upstream 4.4.1
-## updated to upstream 4.4.2
-## updated to remove "Y2K" problem. Credit to FadeMind for reporting the error. Credit to Mark Lee for identifying the cause and fix.
-## updated to upstream 4.4.3
-## updated to upstream 4.4.4
-## updated to upstream 5.0.0
-## updated to upstream 5.0.1
-## updated to upstream 5.0.2
-## updated to upstream 5.0.2
-## updated to upstream 5.0.4
-## updated to upstream 5.1.0
-## updated to upstream 5.1.1
-## updated to upstream 5.1.2
-## updated to upstream 5.1.3
-## updated to upstream 5.2.0
-## updated to upstream 5.2.1
-## updated to upstream 5.2.3
-## updated to upstream 5.3.0
-## updated to upstream 6.0.1
-## updated to upstream 6.0.2
-## updated to upstream 6.0.3
-## updated to upstream 6.0.4
-## updated to upstream 6.3.0 and drop x86 support
-## updated to upstream 6.3.4
-## updated to upstream 6.4.2
-## updated to upstream 6.4.3
-## updated to upstream 6.4.4
-
 ## Check for new LibreOffice releases:
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.4.4
+pkgver=6.4.5
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
@@ -95,7 +20,7 @@ makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('ecf56288d67ddfd609ac4982947c2679738cc3fae508460af0d67d3dffb88c7d')
+sha256sums=('adcbc3c598cfc58785c6a838ab6c1bcca5ddea0c42bd897b41abd198d110d319')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
