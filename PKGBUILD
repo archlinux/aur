@@ -7,6 +7,8 @@ pkgver=7_beta.r63.gee9ae86
 pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
+provides=('openvpn3')
+conflicts=('openvpn3')
 url="https://github.com/OpenVPN/$_pkgname"
 license=('AGPL3')
 depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'libutil-linux>=2.23.2')

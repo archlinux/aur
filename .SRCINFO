@@ -23,6 +23,8 @@ pkgbase = openvpn3-git
 	optdepends = mbedtls: mbed TLS version
 	optdepends = python-dbus
 	optdepends = python-gobject
+	provides = openvpn3
+	conflicts = openvpn3
 	source = git+https://github.com/OpenVPN/openvpn3-linux.git
 	sha256sums = SKIP
 
