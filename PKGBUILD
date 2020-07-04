@@ -1,12 +1,12 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=ttf-literata
 pkgver=2.201
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's default typeface for Play Books. Truetype, open source (OFL) distribution."
 arch=('any')
 url="https://github.com/googlefonts/literata"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util')
 conflicts=('otf-literata')
 replaces=('otf-literata')
 #source=("https://github.com/googlefonts/literata/releases/download/$pkgver/Literata-v$pkgver.zip")
