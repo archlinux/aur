@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rotate_recovery'
 pkgname='ros-melodic-rotate-recovery'
 pkgver='1.16.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nav-core
@@ -17,7 +17,7 @@ ros_makedepends=(ros-melodic-nav-core
   ros-melodic-pluginlib)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-melodic-nav-core
   ros-melodic-tf
@@ -26,7 +26,7 @@ ros_depends=(ros-melodic-nav-core
   ros-melodic-costmap-2d
   ros-melodic-tf2-geometry-msgs)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 _dir="navigation-${pkgver}/rotate_recovery"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
