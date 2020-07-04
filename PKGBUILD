@@ -29,14 +29,20 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
 prepare() {
 	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
-	git submodule init dist-assets/binaries
-	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
+	git submodule init tools/go-bindata
+	git config submodule.go-bindata.url "$srcdir/go-bindata"
 	git submodule update
 
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
 	mkdir -p dist-assets/shell-completions
+
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
+	export GOPATH="$srcdir/gopath"
+	go clean -modcache
 }
 
 build() {
@@ -58,6 +64,9 @@ build() {
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
 		-buildmode c-archive
+
+	# Clean now to ensure makepkg --clean works
+	go clean -modcache
 
 	cd "$srcdir/mullvadvpn-app"
 	echo "Updating version in metadata files..."
@@ -147,6 +156,6 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512 1024; do
 		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir/$icons_dir
-		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
+		install -m644 $icons_dir/$pkgname.png -t $pkgdir/$icons_dir
 	done
 }
