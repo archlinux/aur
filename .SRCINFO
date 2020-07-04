@@ -1,12 +1,13 @@
 pkgbase = ttf-twcns-fonts
 	pkgdesc = Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.
 	pkgver = 20200513
-	pkgrel = 2
+	pkgrel = 3
 	url = https://data.gov.tw/node/5961
 	arch = any
 	license = custom
 	makedepends = dos2unix
 	makedepends = convmv
+	makedepends = wget
 	source = https://www.cns11643.gov.tw/AIDB/Open_Data.zip
 	source = 53-twcns.conf
 	source = LICENSE-zh_TW

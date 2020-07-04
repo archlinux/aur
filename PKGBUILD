@@ -4,11 +4,11 @@ pkgbase=ttf-twcns-fonts
 pkgname=(${pkgbase}{,-doc})
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
 pkgver=20200513
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://data.gov.tw/node/5961'
 license=('custom')
-makedepends=(dos2unix convmv)
+makedepends=(dos2unix convmv wget)
 source=('https://www.cns11643.gov.tw/AIDB/Open_Data.zip'
         '53-twcns.conf' # grab from older version of rpm
         'LICENSE-zh_TW'
@@ -17,8 +17,8 @@ sha1sums=('c497949d109af23517afa1094a99bc416028978b'
           'e9a1bf83c957966941a1a3bb7e406169d47facde'
           '08c5ee06a2248340613d9bd7314a824883851bd1'
           '6be77081aa46e90e417ec73027e0477c3297a1c9')
-#DLAGENTS=('/usr/bin/curl -gqb "" -fLC - --retry 999 -o %o %u') # not tested yet
-DLAGENTS=('/usr/bin/wget -N -nc -c -O %o %u')
+#DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 999 -o %o %u') # not tested yet
+DLAGENTS=('https::/usr/bin/wget -nv --progress=bar -N -c -O %o %u')
 
 prepare() {
     cd "${srcdir}"/Open_Data/
@@ -54,5 +54,5 @@ package_ttf-twcns-fonts-doc() {
     done
     install -dm755 "${pkgdir}"/usr/share/licenses/
     ln -sf /usr/share/licenses/"${pkgbase}" "${pkgdir}"/usr/share/licenses/"${pkgname}"
-    install -Dm644 資料更新說明.txt "${pkgdir}"/usr/share/doc/"${pkgbase}"/changelog
+    install -Dm644 '資料更新說明.txt' "${pkgdir}"/usr/share/doc/"${pkgbase}"/changelog
 }
