@@ -1,8 +1,9 @@
 pkgbase = libcurl-openssl-1.0
 	pkgdesc = An URL retrieval library (without versioned symbols, built against openssl-1.0)
 	pkgver = 7.71.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.haxx.se
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = curl

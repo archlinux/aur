@@ -6,9 +6,9 @@
 
 pkgname=libcurl-openssl-1.0
 pkgver=7.71.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrieval library (without versioned symbols, built against openssl-1.0)"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('curl' 'glibc' 'krb5' 'libssh2' 'openssl-1.0' 'libpsl' 'zlib'
