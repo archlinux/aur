@@ -1,0 +1,108 @@
+diff -r 7b8fc8a59fd2 -r 6940419eb16f amide-current/configure.ac
+--- a/amide-current/configure.ac	Tue Jan 24 01:21:11 2017 -0800
++++ b/amide-current/configure.ac	Fri Jan 12 10:02:49 2018 +0100
+@@ -1,4 +1,4 @@
+-dnl ===============================================================================
++gdnl ===============================================================================
+ dnl              Configure script for AMIDE
+ dnl ===============================================================================
+ AC_PREREQ(2.59)
+@@ -346,7 +346,7 @@
+ dnl Let people compile without jpeg2000 library
+ AC_ARG_ENABLE(
+ 	libopenjp2, 
+-	[ --enable-libopenjp2	Compile in jpeg2000 support [default=yes]], 
++	[  --enable-libopenjp2	Compile in jpeg2000 support [default=yes]], 
+ 	enable_libopenjp2="$enableval", 
+ 	enable_libopenjp2=yes)
+ 
+@@ -375,22 +375,46 @@
+ 
+ ## add in gconf if not on win32 or macos x 
+ ## gconf stuff is encapsulated in amide_gconf.c
++
++
++
+ if (test $native_win32 = no) && (test $enable_native_gtk_osx = no); then
+-   PKG_CHECK_MODULES(AMIDE_GTK_EXTRA_GCONF,[
++   AC_ARG_ENABLE(
++	gconf, 
++	[  --enable-gconf  Compile in gconf support [default=yes]], 
++	enable_gconf="$enableval", 
++	enable_gconf=yes)
++
++   if test "x$enable_gconf" = "xyes" ; then  
++	PKG_CHECK_MODULES(AMIDE_GTK_EXTRA_GCONF,[
+ 		gconf-2.0	>= 2.14.0
+-   ])
+-   AMIDE_GTK_LIBS="$AMIDE_GTK_LIBS $AMIDE_GTK_EXTRA_GCONF_LIBS"
+-   AMIDE_GTK_CFLAGS="$AMIDE_GTK_CFLAGS $AMIDE_GTK_EXTRA_GCONF_CFLAGS"
++   	], [AC_DEFINE(AMIDE_USE_GCONF, 1, Use gconf for storing configutation)
++            AMIDE_GTK_LIBS="$AMIDE_GTK_LIBS $AMIDE_GTK_EXTRA_GCONF_LIBS"
++   	    AMIDE_GTK_CFLAGS="$AMIDE_GTK_CFLAGS $AMIDE_GTK_EXTRA_GCONF_CFLAGS"
++   	])
++   	
++   else 
++        echo "Don't use gconf"
++   fi	
+ fi
+ 
+ ## add in gnome-vfs if not on win32 or gtk-osx
+ ## gnome-vfs is only used by amide_gnome.c and only on unix
+ if (test $native_win32 = no) && (test $enable_native_gtk_osx = no); then
+-   PKG_CHECK_MODULES(AMIDE_GTK_EXTRA_GVFS,[
++   AC_ARG_ENABLE(gnome-vfs, 
++	[  --enable-gnome-vfs  Compile in gnome-vfs support [default=yes]], 
++	enable_gnome_vfs="$enableval", 
++	enable_gnome_vfs=yes)
++    if test "x$enable_gnome_vfs" = "xyes"; then 
++       PKG_CHECK_MODULES(AMIDE_GTK_EXTRA_GVFS,[
+ 		gnome-vfs-2.0   >= 2.16.0
+-   ])
+-   AMIDE_GTK_LIBS="$AMIDE_GTK_LIBS $AMIDE_GTK_EXTRA_GVFS_LIBS"
+-   AMIDE_GTK_CFLAGS="$AMIDE_GTK_CFLAGS $AMIDE_GTK_EXTRA_GVFS_CFLAGS"
++       ], [AC_DEFINE(AMIDE_USE_GNOME_VFS, 1, Use gnome-vfs for spawning help process)
++          AMIDE_GTK_LIBS="$AMIDE_GTK_LIBS $AMIDE_GTK_EXTRA_GVFS_LIBS"
++          AMIDE_GTK_CFLAGS="$AMIDE_GTK_CFLAGS $AMIDE_GTK_EXTRA_GVFS_CFLAGS"
++       ])
++    else 
++        echo "Don't use gnome-vfs"
++    fi
+ fi
+  
+ AC_SUBST(AMIDE_GTK_LIBS)
+diff -r 7b8fc8a59fd2 -r 6940419eb16f amide-current/src/amide_gconf.c
+--- a/amide-current/src/amide_gconf.c	Tue Jan 24 01:21:11 2017 -0800
++++ b/amide-current/src/amide_gconf.c	Fri Jan 12 10:02:49 2018 +0100
+@@ -449,9 +449,7 @@
+   return return_val;
+ }
+ 
+-
+-
+-#elif defined(AMIDE_NATIVE_GTK_OSX)
++#elif defined(AMIDE_NATIVE_GTK_OSX) || !defined(AMIDE_USE_GCONF)
+ 
+ /* --------------------- flatfile version ----------------- */
+ 
+diff -r 7b8fc8a59fd2 -r 6940419eb16f amide-current/src/amide_gnome.c
+--- a/amide-current/src/amide_gnome.c	Tue Jan 24 01:21:11 2017 -0800
++++ b/amide-current/src/amide_gnome.c	Fri Jan 12 10:02:49 2018 +0100
+@@ -36,7 +36,7 @@
+ #include "amitk_common.h"
+ #include "amide_gnome.h"
+ 
+-#if !defined(G_OS_WIN32) && !defined(AMIDE_NATIVE_GTK_OSX)
++#if !defined(G_OS_WIN32) && !defined(AMIDE_NATIVE_GTK_OSX) && defined(AMIDE_USE_GNOME_VFS)
+ #include <libgnomevfs/gnome-vfs-utils.h>
+ #include <libgnomevfs/gnome-vfs-uri.h>
+ //#else
+@@ -66,7 +66,7 @@
+ 
+ 
+ static gboolean amide_gnome_url_show_with_env (const char  *url,  char       **envp, GError     **error) {
+-#if !defined(G_OS_WIN32) && !defined(AMIDE_NATIVE_GTK_OSX)
++#if !defined(G_OS_WIN32) && !defined(AMIDE_NATIVE_GTK_OSX) && defined(AMIDE_USE_GNOME_VFS)
+ 	GnomeVFSResult result;
+ 	GnomeVFSURI *vfs_uri;
+ 
