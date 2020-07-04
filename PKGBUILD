@@ -8,38 +8,46 @@ arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD')
 depends=("libgit2=1:$_lg2ver" "libgit2-glib=$_lg2ver")
-makedepends=('go-pie' 'git' 'cmake')
+makedepends=('go' 'git' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz"
         "libgit2-$_lg2ver.tar.gz::https://github.com/libgit2/libgit2/archive/v$_lg2ver.tar.gz")
 sha256sums=('65bc6f56ef9c8527763ef72d4a334238dbcb60ce2962c319af169236f136b39e'
             '8313873d49dc01e8b880ec334d7430ae67496a89aaa8c6e7bbd3affb47a00c76')
 
 prepare() {
-	export GOPATH="$srcdir/go"
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
+	export GOPATH="$srcdir/gopath"
+	go clean -modcache
+
 	mkdir -p "$GOPATH/src"
 	ln -s "$srcdir/libgit2-$_lg2ver" "$GOPATH/src/libgit2-$_lg2ver"
 	ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname-$pkgver"
 
 	cd "$GOPATH/src/libgit2-$_lg2ver"
 	git submodule update --init
-
-	mkdir -p build
 }
 
 build() {
-	export GOPATH="$srcdir/go"
 	cd "$GOPATH/src/libgit2-$_lg2ver/build"
-	cmake \
+	cmake -B build -S . \
 		-DTHREADSAFE=ON \
 		-DBUILD_CLAR=OFF \
-		-DCMAKE_BUILD_TYPE="RelWithDebInfo" ..
-	make
+		-Wno-dev
+	make -C build
 
 	cd "$GOPATH/src/$pkgname-$pkgver"
 	go build \
     	-trimpath \
-    	-ldflags "-extldflags $LDFLAGS" \
-    	-o $pkgname
+    	-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags \"${LDFLAGS}\"" \
+    	-o "$pkgname"
+
+    # Clean now to ensure makepkg --clean works
+	go clean -modcache
 }
 
 package() {
