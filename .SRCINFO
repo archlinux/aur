@@ -17,7 +17,7 @@ pkgbase = phonon-qt4-gstreamer
 	optdepends = gst-libav: libav codec
 	provides = phonon-qt4-backend
 	source = http://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.9.1/phonon-backend-gstreamer-4.9.1.tar.xz
-	sha256sums = cec3e5ece1261d344b68363ef0606ebf49772628ba94bb55b0c0d18773b885f1
+	sha256sums = 3fcca9cb284ff12de70a65ffc1f85ddf8f278cd4ba06021e11666ac8bffb6ea2
 
 pkgname = phonon-qt4-gstreamer
 

@@ -16,7 +16,7 @@ optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio suppo
 	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
 makedepends=(gst-plugins-base extra-cmake-modules phonon-qt4)
 source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/$pkgver/phonon-backend-gstreamer-$pkgver.tar.xz")
-sha256sums=('cec3e5ece1261d344b68363ef0606ebf49772628ba94bb55b0c0d18773b885f1')
+sha256sums=('3fcca9cb284ff12de70a65ffc1f85ddf8f278cd4ba06021e11666ac8bffb6ea2')
 
 build() {
   cmake \
