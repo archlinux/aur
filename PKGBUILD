@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 
 pkgname=sfz
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A simple static file serving command-line tool written in Rust'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'APACHE')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c69aca99acc9dfc6ea73605df4632fd81db13b3bc14cec8bef63d6ac863b16100cc2d09fc61079f0f7f9b89cb59c6df9e01b947cb1f3528dcb82a2ce2b4e7a7f')
+sha512sums=('3b58bb7ad4724f47deca07360cfdd19b38ad33767d8265b5ed4df6b04c75e51430ee500665a3bd3cbd96ac4d92e104c23edac4c88795cbf956118ed01aeafa1a')
 
 build() {
   cd "$pkgname-$pkgver"
