@@ -4,7 +4,7 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
 pkgver=9_beta.r27.gb9331ea
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
 provides=('openvpn3')
