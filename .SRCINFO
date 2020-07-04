@@ -1,0 +1,12 @@
+pkgbase = cl-asdf-flv
+	pkgdesc = Extension to ASDF to provide file-local variables.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://www.lrde.epita.fr/~didier/software/lisp/misc.php#asdf-flv
+	arch = any
+	license = custom:FSFAP
+	source = https://github.com/didierverna/asdf-flv/archive/version-2.1.tar.gz
+	sha1sums = 081d1e115ee4214453fb62b992c8024b7d830fde
+
+pkgname = cl-asdf-flv
+

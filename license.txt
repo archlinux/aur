@@ -1,0 +1,4 @@
+The project itself does not contain a license file.
+
+But based on the note on the webpage, the package is distributed under the 
+GNU All Permissive license.
