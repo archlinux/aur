@@ -1,6 +1,6 @@
 # Maintainer: Oliver Sagner <oliver.sagner@jwo.com.de>
 pkgname='tu2'
-pkgver=10.0f2aac2
+pkgver=12.226db41
 pkgrel=1
 pkgdesc="Simple Project Management System (english translation pending)"
 arch=('i686' 'x86_64')
@@ -29,4 +29,5 @@ package(){
 
 	install -Dm755 tu2/Projektverwaltung "${pkgdir}"/usr/bin/tu2
 	install -Dm755 tu2/tu2.desktop "${pkgdir}"/usr/share/applications/tu2.desktop
+	chmod +x "${pkgdir}"/usr/share/applications/tu2.desktop
 }
