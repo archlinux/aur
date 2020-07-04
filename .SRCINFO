@@ -1,0 +1,16 @@
+pkgbase = sad
+	pkgdesc = Space Age seD
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/cheat/cheat
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	optdepends = fzf: for tui usage
+	optdepends = diff-so-fancy: diff colourizer
+	optdepends = git-delta-git: diff colourizer
+	source = sad-0.4.5.tar.gz::https://github.com/ms-jpq/sad/archive/0.4.5.tar.gz
+	sha256sums = 65bcf6c3a40bdc139d68d73cb58d1aad2585f019e90485c31188177efe77fe66
+
+pkgname = sad
