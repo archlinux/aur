@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=sibs-git
-pkgver=r267.d580544
+pkgver=r269.4094ff2
 pkgrel=1
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
