@@ -65,7 +65,7 @@ build() {
 
   # AM_CFLAGS seemed like the best insertion point for -fcommon
 
-  sed '/^AM_CFLAGS/ s/$/ -fcommon/' Makefile*
+  sed '/^AM_CFLAGS/ s/$/ -fcommon/' -i Makefile*
 
   # We could just run 
   # make AM_CFLAGS='-Ilib -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -DHAVE_CONFIG_H -fcommon'
