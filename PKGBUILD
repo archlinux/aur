@@ -6,13 +6,12 @@
 
 pkgname=ttf-times-new-roman
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Times New Roman font from Microsoft"
 arch=('any')
 url="http://corefonts.sourceforge.net/"
 license=('custom:microsoft')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('libarchive')
+makedepends=('xorg-font-util')
 _sfpath="http://downloads.sourceforge.net/corefonts"
 source=($_sfpath/times32.exe Licen.TXT)
 sha256sums=('db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab'

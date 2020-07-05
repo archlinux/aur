@@ -1,14 +1,11 @@
 pkgbase = ttf-times-new-roman
 	pkgdesc = Times New Roman font from Microsoft
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://corefonts.sourceforge.net/
 	arch = any
 	license = custom:microsoft
-	makedepends = libarchive
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	makedepends = xorg-font-util
 	conflicts = ttf-ms-fonts
 	source = http://downloads.sourceforge.net/corefonts/times32.exe
 	source = Licen.TXT
