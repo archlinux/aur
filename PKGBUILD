@@ -1,10 +1,11 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: soloturn@gmail.com
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.06.29.a.r38.g30ccb529485
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.02.a.r23.gb85ffd39f29
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -20,7 +21,8 @@ backup=()
 options=()
 install=
 source=(
-    'git+https://github.com/apple/swift#commit=30ccb5294'
+    'git+https://github.com/apple/swift'
+    #'git+https://github.com/apple/swift#commit=30ccb5294'
     'cmark::git+https://github.com/apple/swift-cmark'
     'llbuild::git+https://github.com/apple/swift-llbuild'
     'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
@@ -33,8 +35,8 @@ source=(
     'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation'
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
-#    'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
-    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
+    'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
+#    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     '0001-not-build-ninja-icu.patch'
 )
 noextract=()
