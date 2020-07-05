@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=MegaBasterd
+Comment=Yet another unofficial (and ugly) cross-platform MEGA downloader/uploader/streaming suite.
 Icon=megabasterd
 TryExec=megabasterd
 Exec=megabasterd
