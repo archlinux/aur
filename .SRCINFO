@@ -1,6 +1,6 @@
 pkgbase = diskonaut
 	pkgdesc = TUI disk space navigator written in rust
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/imsnif/diskonaut
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = diskonaut
 	checkdepends = cargo
 	makedepends = cargo
 	depends = gcc-libs
-	source = diskonaut-0.6.0.tar.gz::https://github.com/imsnif/diskonaut/archive/0.6.0.tar.gz
-	md5sums = 82e59d07f8887a5d0228d6e30ac8c2fb
+	source = diskonaut-0.7.0.tar.gz::https://github.com/imsnif/diskonaut/archive/0.7.0.tar.gz
+	md5sums = 0baf816b1b3126173ea5729914e72e48
 
 pkgname = diskonaut
 
