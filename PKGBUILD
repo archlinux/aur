@@ -1,11 +1,10 @@
-# Maintainer:
-# Contributor: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Matthias Lisin <ml@visu.li>
 # Contributor: Chris Nixon <chris.nixon@sigma.me.uk>
 
 _pkgname=pyenv
 pkgname=$_pkgname-git
-pkgver=1.2.18.r19.gcf81e5a0
+pkgver=1.2.19.r4.g366c9801
 pkgrel=1
 pkgdesc="Easily switch between multiple versions of Python (Git)"
 arch=('any')
