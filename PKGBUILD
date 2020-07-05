@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=tldr-sh
 pkgver=r71.6bd83e6
-pkgrel=3
+pkgrel=4
 pkgdesc="A fully-functional POSIX shell client for tldr."
 arch=(any)
 url="https://github.com/raylee/tldr-sh-client"
@@ -27,7 +27,7 @@ source=(
 	'tldr.zsh'
 )
 sha256sums=('SKIP'
-            '681728c6e56fac2ab2f5702ce8791418928ade4b54b6ee0d0b3cd1815a394d57')
+            '9b187a7a8955c602694de859a65a60739784ccebbd04181bce22e0737d880eb5')
 
 pkgver()
 {

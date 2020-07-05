@@ -1,6 +1,6 @@
 #compdef tldr
 #
-# Zsh auto complete function for zsh
+# Zsh auto complete function for tldr
 #
 
 local state
