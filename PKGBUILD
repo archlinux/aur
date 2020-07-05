@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.7.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
@@ -14,15 +14,12 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git://github.com/listen1/listen1_chrome_extension.git"
 )
-sha256sums=('e284b1315e3a2e321fe99d05f153cb5bdad6a6c94f1a2602f35beb847b083baa'
+sha256sums=('8d653be422c3294eb74f0d55622aafd17c923dcc559e19f288d8c5f46395f49a'
             'SKIP')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
 	electronDist="\/usr\/lib\/electron"
-	sed -i '/"tar.gz",/d' package.json
-    sed -i '/"deb"/d' package.json
-	sed -i 's/"appImage",/"dir"/' package.json
 	sed -i "s/\"productName\": \"Listen1\",/\"productName\": \"Listen1\",\"electronDist\": \"$electronDist\",/" package.json
 	rmdir app/listen1_chrome_extension
 	cp -r "$srcdir/listen1_chrome_extension" app/listen1_chrome_extension
@@ -31,7 +28,7 @@ prepare() {
 build() {
 	cd "${pkgname/-/_}-$pkgver"
 	npm install
-	npm run dist:linux64
+	npm run dist:linux64 -- --dir
 }
 
 package() {
