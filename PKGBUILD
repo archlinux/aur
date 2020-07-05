@@ -1,11 +1,11 @@
 # Maintainer: WhiredPlanck
 # Contributor: Bruce Zhang
 
-pkgname=slack-desktop
+pkgname=slack-electron
 _pkgname=slack
 pkgver=4.7.0
 pkgrel=1
-pkgdesc="Slack Desktop (Beta) for Linux"
+pkgdesc="Slack Desktop (Beta) for Linux, modified to use the system 'electron' package instead of its own"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom: Slack')
