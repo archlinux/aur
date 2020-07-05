@@ -1,7 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
+_fragment="#tag=v3.0.1"
 pkgname=('seexpr' 'seexpr-doc')
-_fragment="#tag=v3.0.0"
-pkgver=3.0.0
+pkgver=${_fragment###tag=v}
 pkgrel=1
 pkgdesc="An embeddable expression evaluation engine"
 arch=('i686' 'x86_64')
@@ -13,30 +14,38 @@ optdepends+=('boost-libs: Python bindings')
 makedepends=('boost' 'llvm' 'python-pyqt5' 'doxygen' 'libpng' 'cmake' 'git' 'sip' 'python-sip' 'gtest')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+https://github.com/wdas/SeExpr.git${_fragment}")
-md5sums=('SKIP')
+source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
+	"llvm10.0.0.patch")
+sha256sums=('SKIP'
+            'e93da9176d30da97461825e8b9970f20a68aa652f032ea1d8a16076884ff20cb')
+
+prepare() {
+  git -C SeExpr apply -v ${srcdir}/llvm10.0.0.patch
+}
 
 build() {
-  cd "$srcdir/SeExpr"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' -DPYQT_SIP_DIR='/usr/share/sip/PyQt5' -DENABLE_SLOW_TESTS=ON ..
-  make
+  cmake \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DUSE_PYTHON=OFF \
+    -DENABLE_SLOW_TESTS=ON \
+    -DGTEST_DIR=/usr \
+    -S SeExpr \
+    -B build
+  make -C build
 }
 
 check() {
-  cd "$srcdir/SeExpr/build"
-  make test
+  make -C build test
 }
 
 package_seexpr() {
-  cd "$srcdir/SeExpr/build"
-  make DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="$pkgdir/" install
   # remove doc
   mkdir -p ${pkgdir}/../tmp/usr/share/
   mv ${pkgdir}/usr/share/doc ${pkgdir}/../tmp/usr/share/
   # Copy custom Apache license
-  install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "SeExpr/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_seexpr-doc() {
@@ -47,8 +56,7 @@ package_seexpr-doc() {
   provides=()
   conflicts=()
 
-  cd ${srcdir}/SeExpr/build
-  mkdir -p ${pkgdir}/usr/share/
+  install -dm644 ${pkgdir}/usr/share
   mv ${pkgdir}/../tmp/usr/share/doc ${pkgdir}/usr/share/
-  install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "SeExpr/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

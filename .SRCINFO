@@ -1,6 +1,6 @@
 pkgbase = seexpr
 	pkgdesc = An embeddable expression evaluation engine
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://www.disneyanimation.com/technology/seexpr.html
 	arch = i686
@@ -23,8 +23,10 @@ pkgbase = seexpr
 	optdepends = boost-libs: Python bindings
 	provides = seexpr
 	conflicts = seexpr
-	source = git+https://github.com/wdas/SeExpr.git#tag=v3.0.0
-	md5sums = SKIP
+	source = git+https://github.com/wdas/SeExpr.git#tag=v3.0.1
+	source = llvm10.0.0.patch
+	sha256sums = SKIP
+	sha256sums = e93da9176d30da97461825e8b9970f20a68aa652f032ea1d8a16076884ff20cb
 
 pkgname = seexpr
 

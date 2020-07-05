@@ -1,0 +1,76 @@
+From 6faaea4559ffb4c376243fcac74aefb3b00b6ec6 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Sun, 19 Jul 2020 18:10:40 +0200
+Subject: [PATCH 1/2] Switch to c++14 for llvm10 compatibility.
+
+---
+ CMakeLists.txt                | 2 +-
+ src/SeExpr2/UI/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index acaec29..7081c9d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,7 +174,7 @@ else()
+     add_definitions(-Wall -Wextra -Wno-unused-parameter)
+     add_definitions(-pthread)
+ 
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -g -std=c++11")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -g -std=c++14")
+     if (ENABLE_SSE4)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.1")
+     endif()
+diff --git a/src/SeExpr2/UI/CMakeLists.txt b/src/SeExpr2/UI/CMakeLists.txt
+index 678aafc..0cb3372 100644
+--- a/src/SeExpr2/UI/CMakeLists.txt
++++ b/src/SeExpr2/UI/CMakeLists.txt
+@@ -166,7 +166,7 @@ if (Qt5_FOUND OR QT4_FOUND)
+ 
+         set(CMAKE_INSTALL_PYTHON "${PYTHON_SITE}/SeExpr2" )
+ 
+-        set(CMAKE_CXX_FLAGS "-std=c++11")
++        set(CMAKE_CXX_FLAGS "-std=c++14")
+         include_directories(${SIP_INCLUDE_DIR}
+                             ${PYQT_SIP_DIR}
+                             ${PYTHON_INCLUDE_DIR})
+-- 
+2.27.0
+
+
+From 023af0cc68f0314b24a94ca06a6dae58ce94cc53 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Sun, 19 Jul 2020 18:12:30 +0200
+Subject: [PATCH 2/2] Revert "Noise: revert to explicit conversions for clang
+ compatibility"
+
+This reverts commit 6d8479583a8072856e0e98b5fcf178b33e58d9c1.
+---
+ src/SeExpr2/Noise.cpp | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/SeExpr2/Noise.cpp b/src/SeExpr2/Noise.cpp
+index 17c7c5d..88722b9 100644
+--- a/src/SeExpr2/Noise.cpp
++++ b/src/SeExpr2/Noise.cpp
+@@ -28,14 +28,10 @@ namespace {
+ namespace SeExpr2 {
+ 
+ #ifdef __SSE4_1__
+-inline double floorSSE(double val)
+-{
+-    return _mm_cvtsd_f64(_mm_floor_sd(_mm_set_sd(0.0), _mm_set_sd(val)));
+-}
++inline double floorSSE(double val) { return _mm_floor_sd(_mm_set_sd(0.0), _mm_set_sd(val))[0]; }
+ 
+-inline double roundSSE(double val)
+-{
+-    return _mm_cvtsd_f64(_mm_round_sd(_mm_set_sd(0.0), _mm_set_sd(val), _MM_FROUND_TO_NEAREST_INT));
++inline double roundSSE(double val) {
++    return _mm_round_sd(_mm_set_sd(0.0), _mm_set_sd(val), _MM_FROUND_TO_NEAREST_INT)[0];
+ }
+ #else
+ #define floorSSE floor
+-- 
+2.27.0
+
