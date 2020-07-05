@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pingo
-pkgver=0.99.rc2.40
+pkgver=0.99.rc2.45
 pkgrel=1
 pkgdesc='PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
 noextract=("pingo-win64-${pkgver}.zip")
-sha256sums=('af297b8fb3c838b861b5037b35cfa90c922bce476594b9bc25bd20940db10ff9'
+sha256sums=('e0f82008b81241c17030c392f29f451b8ad69fcaa1fd2d830c5a1fa56e5900d6'
             'SKIP')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -24,14 +24,9 @@ _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' -LC - --retry 3 --retry-delay 3 \
-              -H authority:\ css-ig.net \
-              -H upgrade-insecure-requests:\ 1 \
+              -H Upgrade-Insecure-Requests:\ 1 \
               -H ${_useragent} \
-              -H accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3 \
-              -H referer:\ https://css-ig.net/pingo \
-              -H accept-encoding:\ gzip,\ deflate,\ br \
-              -H accept-language:\ en-US,en;q=0.9,pt;q=0.8 \
-              -H cookie:\ HttpOnly;\ SERVERID105614=1420122|XSyhV|XSyhV \
+              -H Referer:\ https://www.css-ig.net/pingo \
               --compressed \
               --output %o \
               %u")
