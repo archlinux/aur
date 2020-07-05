@@ -45,5 +45,4 @@ package() {
 	cd "$srcdir"
 	install -Dm755 "$pkgname/tldr" "$pkgdir/usr/bin/tldr"
 	install -Dm755 "tldr.zsh" "$pkgdir/usr/share/zsh/site-functions/_tldr"
-
 }
