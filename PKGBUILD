@@ -1,33 +1,31 @@
-# Author wizbright
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Lex Black <autumn-wind@web.de>
+# Contributor: Stoyan Minaev <stoyan.minaev@gmail.com>
 
 pkgname=waybox
-pkgver=0.0.1
+pkgver=0.0.2.1
 pkgrel=1
-pkgdesc='An openbox clone on Wayland (WP)'
-license=('MIT')
-source=("$pkgname::git+https://github.com/wizbright/waybox.git" "Makefile")
-md5sums=('SKIP' 'ae4c2c8642d0abe7af9b511b746ad9c8')
+pkgdesc='Openbox clone on Wayland'
+url="https://github.com/wizbright/waybox"
 arch=('x86_64')
-makedepends=('gcc' 'git')
-depends=('wlroots' 'wayland' 'pixman')
+license=('MIT')
+depends=('wlroots' 'wayland')
+makedepends=('meson')
+# use tags from Keith Bowes personal dev repo
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/keithbowes/${pkgname}/archive/${pkgver}.tar.gz)
+md5sums=('dfd258fbfb69518f04c6042d2c816ec2')
 
-prepare() {
-	cd "$srcdir"
-	cp Makefile waybox/
-}
 
 build() {
-	cd "$srcdir/$pkgname"
-	make
+  cd "$pkgname-${pkgver}"
+  arch-meson ../build
+  ninja -v -C ../build
 }
 
 package() {
-	cd "$pkgdir"
-	cp "$srcdir/$pkgname/waybox_binary" $pkgname
-	cp "$srcdir/$pkgname/LICENSE" LICENSE
-	mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/licenses/$pkgname
-	install -m 755 $pkgname $pkgdir/usr/bin/
-	install -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname
+  cd "$pkgname-${pkgver}"
+  DESTDIR="${pkgdir}" meson install -C ../build
+
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  install -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname
 }
 
