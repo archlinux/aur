@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=qt-scrcpy
 _name=QtScrcpy
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/barry-ran/$_name/archive/v$pkgver.tar.gz"
 	binaries.patch
 )
-sha256sums=('1ed0475205a0af5c292d7eb763de6cd828ab5baa0898ba819b9711e114dc3111'
+sha256sums=('452e7da5600b3245c2854c88883af193b15dfac73a7ec3c681546bdfd4e40330'
             '1fa61a24bf59a62db1b29a3d3ec49186ef6f539ff8d09dd04534d939cb30aedd')
 
 prepare() {
@@ -26,6 +26,8 @@ build() {
 	mkdir build
 	cd build
 	qmake ../all.pro CONFIG+=qtquickcompiler
+	make qmake_all
+	sed -ie '/^CXXFLAGS/s/$/ -Wno-deprecated-declarations/' QtScrcpy/Makefile
 	make
 }
 
