@@ -12,7 +12,7 @@ license=('custom: Slack')
 depends=('electron')
 provides=('slack' 'slack-desktop')
 conflicts=('slack-desktop')
-source=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb")
+source=("https://downloads.slack-edge.com/linux_releases/${_pkgname}-desktop-${pkgver}-amd64.deb")
 sha256sums=('83a7fc575f77faca1771762cb97eaa8649092295f33ac62098e92bc5c0a19edb')
 
 prepare() {
