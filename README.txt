@@ -11,5 +11,5 @@ java.
 If you encounter a gray/blank screen when you start the client, see here for a possible solution
 https://www.reddit.com/r/XMage/comments/9k2t9o/new_install_blank_screen_when_launching_client/
 
-The package comes with a systemd unit file to load mage-server on boot. 
+The package comes with a systemd unit file to load mage-server on boot. The service restarts if mage-server crashes or closes unexpectedly. 
 It is automatically installed to /usr/lib/systemd/system/mage-server.service
