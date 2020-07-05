@@ -1,0 +1,16 @@
+pkgbase = networkmanager-dispatcher-openntpd
+	pkgdesc = Dispatcher Script for openntpd
+	pkgver = 1.0
+	pkgrel = 6
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = any
+	license = MIT
+	depends = networkmanager
+	depends = openntpd
+	source = 10-openntpd
+	source = LICENSE
+	md5sums = dd166c51a2bff847e4157455e15b2083
+	md5sums = bade437c691452a83923e5064da20757
+
+pkgname = networkmanager-dispatcher-openntpd
+

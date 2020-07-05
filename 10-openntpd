@@ -1,0 +1,37 @@
+#!/bin/bash
+
+
+if [ -e /sys/fs/cgroup/systemd ]; then
+        case "$2" in
+                up)
+                        systemctl start openntpd.service
+                ;;
+                vpn-up)
+                        systemctl start openntpd.service
+                ;;
+                down)
+                        systemctl stop openntpd.service
+                ;;
+                vpn-down)
+                        systemctl stop openntpd.service
+                ;;
+        esac
+else
+
+  if [ -e "/etc/rc.d/openntpd" ]; then
+          case "$2" in
+                  up)
+                          /etc/rc.d/openntpd start
+                  ;;
+                  vpn-up)
+                          /etc/rc.d/openntpd start
+                  ;;
+                  down)
+                          /etc/rc.d/openntpd stop
+                  ;;
+                  vpn-down)
+                          /etc/rc.d/openntpd stop
+                  ;;
+          esac
+  fi
+fi
