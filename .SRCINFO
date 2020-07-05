@@ -1,6 +1,6 @@
 pkgbase = ptxdist
 	pkgdesc = Embedded Linux build system
-	pkgver = 2020.03.0
+	pkgver = 2020.07.0
 	pkgrel = 1
 	url = http://www.ptxdist.org
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = ptxdist
 	depends = patch
 	depends = python2
 	depends = wget
-	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2020.03.0.tar.bz2
-	md5sums = 8905d698bf5f54862c7eddf76e67e9ce
-	sha512sums = 535fc8262a5cc1f9f2ec49e5f76d98376f0aa72acb966b11e23cb1a2cc96d0b695380a2e8438bc28fca6634edb062e06c27f54a79415506620174e9c45ff14de
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2020.07.0.tar.bz2
+	md5sums = 1de82b19b8c404bb061c508c20c08bfb
+	sha512sums = 981a05bfb9369587f3ec7d25e9f921957edb4240ba592a8eebb3747c42a4d3a417f3f936a7c504d41941392d61a65f7f01bfb3ecb68edd8da5ae9fb2ad5d09d2
 
 pkgname = ptxdist
 
