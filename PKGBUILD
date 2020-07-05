@@ -1,7 +1,7 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
 pkgname=white_dune
 pkgver=1.900
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A graphical VRML97/X3D editor, simple NURBS/Superformula 3D modeller, animation tool and VRML97/X3DV commandline compiler"
 arch=('any')
@@ -16,13 +16,13 @@ depends=(xorg-fonts-misc
 makedepends=( 
 # the following are part of base-devel
              fakeroot
-             gcc
              flex
              bison
              gawk
              m4
              make
 # end part of base-devel
+             clang
              glu
              mesa
              libx11
@@ -66,10 +66,12 @@ install=
 changelog=
 source=("ftp://ftp.ourproject.org/pub/wdune/wdune-$pkgver.tar.bz2")
 noextract=()
-md5sums=('2eab1ef80af031ac49c4afb569c16515')
+md5sums=('af953ae716562c575270d20dc701bc7e')
 validpgpkeys=()
 
 build() {
+        export CC=clang
+        export CXX=clang++
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --without-devil --with-uninstallcomment="pacman -R white_dune" --with-optimization --with-helpurl="/usr/share/doc/$pkgname/docs" --with-protobaseurl="/usr/share/doc/$pkgname/docs" --with-checkincommand="ci"
         make
