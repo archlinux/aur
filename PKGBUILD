@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=typiskt
-pkgver=2020.07.04.5
+pkgver=2020.07.05.12
 pkgrel=1
 pkgdesc='touchtype training in the terminal'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 groups=()
 depends=('bash' 'bc' 'gawk' 'ncurses')
 makedepends=()
-optdepends=()
+optdepends=('curl')
 provides=()
 conflicts=()
 replaces=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('697823b16eb7713d865c18b5f2f0af4ed8414762d8be13a64ec344112a234a3d')
+sha256sums=('1221b1a831358d566087d7334e48bfb65db86826370e4368ad54f48235250f73')
 
 package() {
   ls
