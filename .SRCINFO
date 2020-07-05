@@ -1,0 +1,57 @@
+pkgbase = deepin-wine5
+	pkgdesc = Deepin Wine5
+	pkgver = 5.0.6
+	pkgrel = 1
+	url = http://www.deepin.org
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	noextract = deepin-wine5_5.0.6-1_i386.deb
+	noextract = deepin-wine5-i386_5.0.6-1_i386.deb
+	noextract = deepin-wine5-tools_5.0.6-1_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5_5.0.6-1_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5-i386_5.0.6-1_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5-tools_5.0.6-1_i386.deb
+	md5sums = 9bc918d968916180db34528de8b2b9d6
+	md5sums = eb277f9aebc6bcd57590611044fec759
+	md5sums = cde153ff6127409929cf58ee42bf37d8
+
+pkgname = deepin-wine5
+	depends = deepin-wine5-i386
+
+pkgname = deepin-wine5-i386
+	depends = lib32-alsa-plugins
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = libgphoto2
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-lcms2
+	depends = lib32-libldap
+	depends = lib32-mpg123
+	depends = lib32-openal
+	depends = lib32-libpcap
+	depends = lib32-libcanberra-pulse
+	depends = lib32-libudev0-shim
+	depends = lib32-libusb
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = lib32-libxml2
+	depends = lib32-ocl-icd
+	depends = deepin-udis86
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-fontconfig
+	depends = lib32-freetype2
+	depends = lib32-gettext
+	depends = lib32-libxcursor
+	depends = lib32-mesa
+	depends = lib32-libjpeg6
+	depends = lib32-libxrandr
+	depends = lib32-libxi
+	depends = lib32-glu
+
+pkgname = deepin-wine5-tools
+	depends = deepin-wine5
+	conflicts = wine
+
