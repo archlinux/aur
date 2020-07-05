@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=assaultcube-reloaded-git
-pkgver=717.dddd73b
+pkgver=760.6cffc51
 pkgrel=1
 pkgdesc='AssaultCube Reloaded (Development)'
 arch=('i686' 'x86_64')
