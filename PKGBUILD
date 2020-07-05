@@ -1,21 +1,19 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=boston-icon-theme
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 _upname=Boston
-_gitname=Boston-Icons
-_gitrel=b7a4b17361c4af4c9a440b4d79872e205f40c7db
 pkgdesc="A highly minimalist icon theme, with a sober color palette inspired on basic hues and forms."
 arch=('any')
 url="https://www.opendesktop.org/p/1012402"
 license=('CCPL:by-sa')
-source=("https://github.com/heychrisd/$_gitname/archive/$_gitrel.tar.gz")
-sha256sums=('74f97985442a745d214e9eeef5265f0a5dc0dac7b2343e9b3791be1b75cffe64')
+source=("https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODg4ODU3NzgiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjIzOTJmYzEwNzAzMTM5ODNiZGNjMzUzNzBiYmM5ZDM0ODRiYzRhMTk0OTZjN2JhNGYyODFiMDk5Yzg4MjI2NjNlMGVhZWUwYTJmMmM2OTgwMmNjYzFhNDUyMTk0YmU2OWU0MDQ0ODYxYTU1ZGVkYmNlZDJmYzVjNzNkOTNiZjMxIiwidCI6MTU5Mzk1ODc5MSwic3RmcCI6IjU5NzgxNGUwN2RkYTliNzJmMmI5MTRhMmJkMzVhOWIyIiwic3RpcCI6IjJhMDE6Y2IwNTo4ZmQ5OjFlMDA6ZjVhYTphM2E6NDU5ZjozMjU1In0.aijbVuTcpSAmPpflcICIchM8JriF_rkCi7crYnyj0tI/Boston-Icons-$pkgver.tar.xz")
+sha256sums=('e4d1a9c74c593afcb30cf43759ed2dd6d37e52a901d982bb43bc286ef0604456')
 options=(!emptydirs)
 
 package() {
-    cd "$srcdir/${_gitname}-${_gitrel}"
+    cd "$srcdir/${_upname}"
 
     install -d -m755 $pkgdir/usr/share/licenses/$pkgname
     install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
