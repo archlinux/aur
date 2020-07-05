@@ -1,3 +1,18 @@
+Proton-5.11-GE-3-MF
+
+Fixes:
+-Re-enable rawinput (seems staging had it disabled in the previous build)
+-Re-enable FakeDLLs and SECCOMP (seems staging had it disabled in the previous build) - needed for Doom Eternal,Detroit:BH, Origin
+-Re-enable HideWineExports (seems staging had it disabled in the previous build) - needed for FFXIV
+-Fix issue with not being able to regain focus after alt+tab in various games
+-Fix issue with GTA V keyboard input not working
+-Fix issue with rawinput not working properly within a virtual desktop
+-Fix issue with Warframe and SWTOR not rendering correctly in dxvk on nvidia
+-Added patch that allows Indiana Jones and the Emperor's Tomb to run
+-Added patch that allows MGS: Ground Zeroes to run (keyboard+mouse input is currently broken, needs more work. Works with controller)
+-Added workaround for Warframe launcher rendering all black in wined3d mode (game still crashes in wined3d) - Thanks Iglu47
+-README has been overhauled. Thank you TheEvilSkeleton!
+
 Proton-5.11-GE-2-MF
 
 GloriousEggroll released this Jun 29, 2020
