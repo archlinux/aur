@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=golangci-lint-bin
 pkgdesc='Linters Runner for Go. 5x faster than gometalinter.'
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url=https://github.com/golangci/golangci-lint
@@ -14,11 +14,11 @@ source_i686=("$_src"-386.tar.gz)
 source_aarch64=("$_src"-arm64.tar.gz)
 source_armv6h=("$_src"-armv6.tar.gz)
 source_armv7h=("$_src"-armv7.tar.gz)
-sha256sums_x86_64=('8d345e4e88520e21c113d81978e89ad77fc5b13bfdf20e5bca86b83fc4261272')
-sha256sums_i686=('5f37e2b33914ecddb7cad38186ef4ec61d88172fc04f930fa0267c91151ff306')
-sha256sums_aarch64=('90205fc42ab5ed0096413e790d88ac9b4ed60f4c47e576d13dc0660f7ed4b013')
-sha256sums_armv6h=('38e1e3dadbe3f56ab62b4de82ee0b88e8fad966d8dfd740a26ef94c2edef9818')
-sha256sums_armv7h=('d998a84eea42f2271aca792a7b027ca5c1edfcba229e8e5a844c9ac3f336df35')
+sha256sums_x86_64=('179d34edf4baf6454a7081fbaaf74dc99397a3be8e1a535dee04d835a977bf76')
+sha256sums_i686=('05e511883e573ef44281716fd3f5e2ecf1ae4843b465465231577ff70bf6df96')
+sha256sums_aarch64=('101ac21fb47ddb064f740a03265c38b9049882165baa0bd6bfa7bd6df6203448')
+sha256sums_armv6h=('8ff305a2cb7c419f6d1515c24fbcb1e41762e6c640eb5e8350c8530c9f0fcb77')
+sha256sums_armv7h=('c79c945d123d3fbfad40a4049146cf192bee2e7c87094a7ca76541658a04bdec')
 
 package() {
   local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
