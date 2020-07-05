@@ -1,9 +1,9 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage-beta
-pkgver=1.4.38.dev_2019_09_21_06_22
+pkgver=mage_full_1.4.44.dev_2020_07_03_03_25
 pkgrel=0
-_pkg_location="$(wget -qO- http://xmage.today/ | grep "files/" | head -n 1 | cut -c 62- | head -c -32)"
+_pkg_location="$(wget -qO- http://xmage.today/ | grep "files/" | head -n 1 | grep -o 'mage-full.*zip')" 
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -12,7 +12,7 @@ url="http://xmage.today"
 license=('MIT')
 
 
-source=("http://xmage.today/files/mage-full_$_pkg_location.zip"
+source=("http://xmage.today/files/$_pkg_location"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
 sha256sums=("SKIP"
@@ -44,7 +44,8 @@ optdepends=('wmname: change window manager name for compatibility with certain W
 install="${pkgname}.install"
 
 pkgver() {
-	wget -qO- http://xmage.today/ | grep "files/" | head -n 1 | cut -c 62- | head -c -32 | sed s/-/_/g
+	#  pkgver is not allowed to contain colons, forward slashes, hyphens or whitespace
+	wget -qO- http://xmage.today/ | grep "files/" | head -n 1 | grep -o 'mage-full.*zip' | sed 's/.zip//' | sed 's/-/_/g'
 }
 
 package() {
@@ -52,11 +53,11 @@ package() {
 	cd "${srcdir}"
 	
 	msg2 "removing mage folders from previous builds..."
-	if [[ -f mage-client ]] ; then 
+	if [[ -d ./mage-client ]] ; then 
 		rm -r mage-client
 	fi
 	
-	if [[ -f mage-server ]] ; then
+	if [[ -d ./mage-server ]] ; then
 		rm -r mage-server
 	fi
 
