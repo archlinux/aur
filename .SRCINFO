@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 5.5.5
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/taiko2k/tauonmb
 	arch = any
@@ -33,10 +33,11 @@ pkgbase = tauon-music-box
 	optdepends = ffmpeg: File transcoding
 	optdepends = p7zip: 7z archive extraction support
 	optdepends = unrar: RAR archive extraction support
-	optdepends = python-plexapi: PLEX client streaming
+	optdepends = python-plexapi: PLEX streaming
+	optdepends = python-tekore: Spotify playback control
 	optdepends = picard: Tag editing
-	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.5.5/Tauon.Music.Box.v5.5.5.Linux.zip
-	sha1sums = cc0c4d07857f69777b544732d8d6679ef02d451d
+	source = https://github.com/Taiko2k/tauonmb/releases/download/v6.0.0/Tauon.Music.Box.v6.0.0.Linux.zip
+	sha1sums = 1e2fde321454a02721d3bd59ec820e76d4c7831f
 
 pkgname = tauon-music-box
 
