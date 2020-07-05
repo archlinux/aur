@@ -6,13 +6,13 @@ pkgname=go-bindata-hashicorp
 _pkgname=go-bindata
 _commit=bf7910af899725e4938903fb32048c7c0b15f12e
 pkgver=3.0.7+bf7910af
-pkgrel=2
+pkgrel=3
 pkgdesc="A small utility which generates Go code from any file (Hashicorp version)"
 arch=('x86_64')
 url='https://github.com/hashicorp/go-bindata'
 license=('CC0 1.0')
 depends=('glibc')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("git+https://github.com/hashicorp/go-bindata#commit=${_commit}")
 sha512sums=('SKIP')
 provides=('go-bindata')
@@ -25,6 +25,11 @@ prepare() {
 
 build() {
     cd "${srcdir}/src/github.com/hashicorp/go-bindata/go-bindata"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     GOPATH="${srcdir}" go build
 }
 
