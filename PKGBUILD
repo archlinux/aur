@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
-pkgver=r47
+pkgver=r49
 pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ pkgver(){
 
 build(){
 	cd "$srcdir/${pkgname%-*}/lib-src/libsndfile"
-	sed -i "s/am__api_version='1.15'/am__api_version='1.16'/" configure
+	aclocal
+	automake
 	chmod +x configure
 	./configure --disable-external-libs
 	make
