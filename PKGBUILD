@@ -5,7 +5,7 @@
 
 pkgbase=dbus-x11
 pkgname=(dbus-x11 dbus-x11-docs)
-pkgver=1.12.18
+pkgver=1.12.20
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -13,7 +13,7 @@ arch=(x86_64)
 license=(GPL custom)
 depends=(systemd-libs expat audit)
 makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive libx11)
-_commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36  # tags/dbus-1.12.18^0
+_commit=ab88811768f750777d1a8b9d9ab12f13390bfd3a  # tags/dbus-1.12.20^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
         dbus-reload.hook)
 sha256sums=('SKIP' 'SKIP')
