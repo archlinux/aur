@@ -1,6 +1,6 @@
 pkgbase = lens-bin
 	pkgdesc = The Kubernetes IDE (previously Kontena Lens)
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lens-bin
 	depends = libxtst
 	provides = lens
 	conflicts = lens
-	source = https://github.com/lensapp/lens/releases/download/v3.5.0/Lens-3.5.0.AppImage
+	source = https://github.com/lensapp/lens/releases/download/v3.5.1/Lens-3.5.1.AppImage
 	source = lens.desktop
 	source = lens.sh
 	sha512sums = fc642ef02afdc4a8c7ef53a9b316a3f7745b1da1ad9dcd29d875d5c0b45cf1e8a1bbe54faf035adb081b0177dd00ff8a0b005fc2542c359796506e9c1d177ea9
