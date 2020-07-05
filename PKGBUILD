@@ -1,0 +1,35 @@
+# Author: Robert Tari <robert at tari dot in>
+# Maintainer: Robert Tari <robert at tari dot in>
+
+pkgname="lampswitch"
+pkgver=20.7.5.34
+pkgrel=1
+pkgdesc="Indicator and control applet for Apache"
+arch=("any")
+url="https://tari.in/www/software/lampswitch"
+license=("GPL3")
+depends=("gobject-introspection" "gtk3" "python-gobject" "libappindicator-gtk3" "desktop-file-utils")
+makedepends=("breezy" "python-setuptools" "python-polib")
+optdepends=("mate-ayatana-indicator-applet"  "libayatana-appindicator-gtk3")
+install="${pkgname}.install"
+source=("bzr+lp:/${pkgname}/trunk")
+md5sums=("SKIP")
+
+pkgver()
+{
+    cd trunk
+    echo "$(cat ${pkgname/\-/}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
+}
+
+build()
+{
+    cd trunk
+    python setup.py build
+}
+
+package()
+{
+    cd trunk
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+}

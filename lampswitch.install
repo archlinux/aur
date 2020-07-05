@@ -1,0 +1,43 @@
+post_install()
+{
+    if which pycompile >/dev/null 2>&1; then
+        pycompile -p lampswitch
+    fi
+
+    chmod +x /usr/share/lampswitch/services.sh
+    if systemctl is-active httpd --quiet; then systemctl disable httpd --quiet; fi
+    if systemctl is-active postgresql --quiet; then systemctl disable postgresql --quiet; fi
+    if systemctl is-active mysql --quiet; then systemctl disable mysql --quiet; fi
+    if systemctl is-active postgresql --quiet; then systemctl disable postgresql --quiet; fi
+    if systemctl is-active mariadb --quiet; then systemctl disable mariadb --quiet; fi
+
+    gtk-update-icon-cache -q -f usr/share/icons/hicolor
+    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-dark
+    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-light
+    update-desktop-database -q
+}
+
+post_upgrade()
+{
+    post_install
+}
+
+pre_remove()
+{
+    if which pyclean >/dev/null 2>&1; then
+        pyclean -p lampswitch
+    else
+        pacman -Qql lampswitch | grep '\.py$' | while read file
+        do
+            rm -f "${file}"[co] >/dev/null
+        done
+    fi
+}
+
+post_remove()
+{
+    gtk-update-icon-cache -q -f usr/share/icons/hicolor
+    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-dark
+    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-light
+    update-desktop-database -q
+}
