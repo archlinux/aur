@@ -1,14 +1,16 @@
 pkgbase = inotify-daemon
 	pkgdesc = A daemon to trigger system-tasks upon preconfigured inotify-events.
-	pkgver = 20191219.3.r0.g70e0802
+	pkgver = 20200705.1.r1.g719005d
 	pkgrel = 1
 	url = http://matcha.cakeisaweso.me/ast/inotify-daemon
+	install = inotify-daemon.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = rust
 	makedepends = fakeroot
+	makedepends = coreutils
 	backup = etc/inotify-daemon.yml
 	source = git+http://matcha.cakeisaweso.me/ast/inotify-daemon.git
 	source = inotify-daemon.example.yml
