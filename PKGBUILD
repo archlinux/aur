@@ -10,7 +10,7 @@ depends=('openssl' 'libxcb' 'fontconfig')
 provides=()
 conflicts=("$pkgname-git")
 source=(
-    "https://www.songtronix.com/download/airshipper-${pkgver}.zip"
+    "https://github.com/Songtronix/Airshipper/releases/download/v${pkgver}/airshipper-linux.zip"
     'airshipper.desktop'
     'veloren.png'
 )
