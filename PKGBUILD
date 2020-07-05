@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=rog-core
 pkgbase=rog-core
-pkgver=0.14.1
+pkgver=0.14.3
 pkgrel=1
 epoch=
 pkgdesc="A utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW"
@@ -20,7 +20,7 @@ install=
 changelog=
 
 source=("https://github.com/flukejones/rog-core/archive/v$pkgver.tar.gz")
-sha256sums=('86eb387b9522b2d2e1751f0520da327655c73cdef6b109890add3ad47f18c1f4')
+sha256sums=('e16a9871928bed7fead912fd48944a6603cd8bf180028d4bae0ab1b1e463d96a')
 noextract=()
 validpgpkeys=()
 
