@@ -10,6 +10,7 @@ pkgbase = ecwolf-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = sdl
+	makedepends = sdl2
 	depends = libvorbis
 	depends = flac
 	depends = opusfile
