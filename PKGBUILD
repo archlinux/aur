@@ -2,7 +2,7 @@
 
 pkgname=colout-git
 _pkgname=colout
-pkgver=r3.0d51599
+pkgver=r245.88b1770
 pkgrel=1
 pkgdesc="Reads text on stdin and produces colorized and stylized output"
 arch=('any')
