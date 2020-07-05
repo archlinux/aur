@@ -1,13 +1,13 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=tldr-sh
 pkgver=r71.6bd83e6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully-functional POSIX shell client for tldr."
 arch=(any)
 url="https://github.com/raylee/tldr-sh-client"
 license=('MIT')
 depends=('curl')
-provides=('tldr' 'tldr-sh')
+provides=('tldr')
 conflicts=(
 	'tldr'
 	'tldr++'
@@ -22,8 +22,14 @@ conflicts=(
 	'tldr-go-client-git'
 	'tldr-python-client'
 )
-source=('tldr-sh::git+https://github.com/raylee/tldr-sh-client')
-md5sums=(SKIP)
+source=(
+	'tldr-sh::git+https://github.com/raylee/tldr-sh-client'
+	'tldr.zsh'
+)
+sha256sums=(
+	'SKIP'
+	'681728c6e56fac2ab2f5702ce8791418928ade4b54b6ee0d0b3cd1815a394d57'
+)
 
 pkgver()
 {
@@ -36,6 +42,8 @@ pkgver()
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	install -Dm755 tldr "$pkgdir/usr/bin/tldr"
+	cd "$srcdir"
+	install -Dm755 "$pkgname/tldr" "$pkgdir/usr/bin/tldr"
+	install -Dm755 "tldr.zsh" "$pkgdir/usr/share/zsh/site-functions/_tldr"
+
 }

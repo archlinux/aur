@@ -1,13 +1,12 @@
 pkgbase = tldr-sh
 	pkgdesc = A fully-functional POSIX shell client for tldr.
 	pkgver = r71.6bd83e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raylee/tldr-sh-client
 	arch = any
 	license = MIT
 	depends = curl
 	provides = tldr
-	provides = tldr-sh
 	conflicts = tldr
 	conflicts = tldr++
 	conflicts = tldr-git
@@ -21,7 +20,9 @@ pkgbase = tldr-sh
 	conflicts = tldr-go-client-git
 	conflicts = tldr-python-client
 	source = tldr-sh::git+https://github.com/raylee/tldr-sh-client
-	md5sums = SKIP
+	source = tldr.zsh
+	sha256sums = SKIP
+	sha256sums = 681728c6e56fac2ab2f5702ce8791418928ade4b54b6ee0d0b3cd1815a394d57
 
 pkgname = tldr-sh
 
