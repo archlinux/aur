@@ -1,0 +1,14 @@
+pkgbase = zhisu_ocr-appimage
+	pkgdesc = 智速OCR文字识别，可以识别图片文字
+	pkgver = 1.11.11
+	pkgrel = 1
+	url = https://ocr.psing.tech/
+	arch = x86_64
+	depends = libappimage
+	provides = zhisu_ocr
+	options = !strip
+	source = http://cdn.psing.tech/zhisu_ocr_linux_x64.AppImage
+	sha512sums = bb3ead6339135b306a415085c0172b69f140b48598a305838382731245174a79d361fe447e2e801b8fbfccbdccf88c003aad248caba7cb374006d265adb7d4af
+
+pkgname = zhisu_ocr-appimage
+
