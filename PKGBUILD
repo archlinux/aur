@@ -1,6 +1,6 @@
 # Maintainer: Alexey Trifonov <otaku [at] rambler dot ru>
 pkgname=zesarux-bin
-pkgver=8.2beta1
+pkgver=8.2beta2
 pkgrel=1
 pkgdesc="Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary." 
 arch=('x86_64')
@@ -9,10 +9,10 @@ license=('GPL3')
 optdepends=('pulseaudio' 'sdl')
 conflicts=('zesarux' 'zesarux-git')
 provides=('zesarux')
-source=("https://github.com/chernandezba/zesarux/releases/download/8.2-21052020/ZEsarUX_linux-8.2-beta1-debian10_x64.tar.gz"
+source=("https://github.com/chernandezba/zesarux/releases/download/8.2-02072020/ZEsarUX_linux-8.2-beta2-debian10_x64.tar.gz"
         "Zesarux.desktop"
         "zesarux.png")
-sha256sums=('a69e28962d2679d7c43fb4f5f6ce9195a62f9239d9f956ba07b9e54766e1d4ba'
+sha256sums=('7aa1dad9e9d31c3d41e1b26b1ba341490e3afcfeec1caddefc029ffc07dd9c12'
             '5168eeb04e4641ddfb6652865c7105382f1da498e0e1b57dfd9f680b7016a941'
             'ab9e0749862c3b2c50fcb41ed542c86917964c864d39f1d409466ca362c4386c')
 package() {
