@@ -1,6 +1,6 @@
 pkgbase = iio-sensor-proxy-git
 	pkgdesc = IIO accelerometer sensor to input device proxy
-	pkgver = 2.8.r12.9fdbb36
+	pkgver = 3.0.r17.0e5ae37
 	pkgrel = 1
 	url = https://github.com/hadess/iio-sensor-proxy
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = iio-sensor-proxy-git
 	makedepends = git
 	makedepends = gnome-common
 	makedepends = gtk-doc
+	makedepends = meson
 	depends = libgudev
 	depends = gtk3
 	depends = systemd

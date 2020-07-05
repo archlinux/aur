@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
-pkgver=2.8.r12.9fdbb36
+pkgver=3.0.r17.0e5ae37
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 provides=('iio-sensor-proxy')
 conflicts=('iio-sensor-proxy')
 depends=('libgudev' 'gtk3' 'systemd')
-makedepends=('git' 'gnome-common' 'gtk-doc')
+makedepends=('git' 'gnome-common' 'gtk-doc' 'meson')
 source=("git+https://gitlab.freedesktop.org/hadess/iio-sensor-proxy.git")
 md5sums=('SKIP')
 
@@ -21,19 +21,10 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    ./autogen.sh
-    ./configure \
-    --prefix=/usr \
-    --sysconfdir=/usr/share \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib \
-    --with-dbuspolicydir
+    arch-meson $_pkgname --reconfigure
+    meson compile -C build
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" meson install -C build
 }
