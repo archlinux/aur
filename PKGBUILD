@@ -1,26 +1,27 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-# NOTE (1):
+# NOTE 1:
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
 # For more information about DPS being obsolete please visit:
-# http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
+# https://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
-# NOTE (2): linking to ghostscript libs (gslib) is disabled due to
-# security issues. ImageMagick will call 'gs' executable directly
-# instead. See: https://bugs.archlinux.org/task/62171
+# NOTE 2:
+# Linking to ghostscript libs (gslib) is disabled due to security
+# issues. ImageMagick will call 'gs' executable directly instead.
+# See: https://bugs.archlinux.org/task/62171
 
-# NOTE (3):
+# NOTE 3:
 # change font directories in build() to match yours:
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='be59c09eac3339f1e5a6803804e8960480a22639'
+_commit='d2ab2437784f28b832863731745d61c82a16c983'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.10.22
+pkgver=7.0.10.23
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
