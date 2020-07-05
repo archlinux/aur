@@ -1,0 +1,19 @@
+pkgbase = libsidplayfp-experimental-svn
+	pkgdesc = Library to play Commodore 64 music, derived from libsidplay2, experimental development version
+	pkgver = r2731
+	pkgrel = 1
+	url = https://sourceforge.net/projects/sidplay-residfp/
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = vice
+	makedepends = xa
+	makedepends = unittestpp
+	optdepends = vice: better SID support
+	provides = libsidplayfp=2.0.4
+	conflicts = libsidplayfp
+	source = libsidplayfp-experimental-svn::svn://svn.code.sf.net/p/sidplay-residfp/code/branches/libsidplayfp-experimental
+	md5sums = SKIP
+
+pkgname = libsidplayfp-experimental-svn
+
