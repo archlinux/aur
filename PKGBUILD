@@ -2,7 +2,7 @@
 pkgname=otf-inconsolata-dz-powerline
 pkgver=1.0
 pkgrel=3
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util' 'xorg-bdftopcf' 'xorg-mkfontdir' 'xorg-mkfontscale')
 pkgdesc="Inconsolata-dz-Powerline"
 arch=('any')
 url='https://github.com/Ema0/ttf-inconsolata-dz-powerline'
