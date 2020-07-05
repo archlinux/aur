@@ -9,8 +9,8 @@ pkgbase = nnls-chroma
 	groups = vamp-plugins
 	license = GPL
 	depends = vamp-plugin-sdk
-	source = nnls-chroma-1.1.tar.gz::https://code.soundsoftware.ac.uk/hg/nnls-chroma/archive/v1.1.tar.gz
-	md5sums = 00bc45e52dce4a846403fe81e4f3c215
+	source = nnls-chroma-1.1.tar.gz::https://code.soundsoftware.ac.uk/hg/nnls-chroma/archive/82d5d11b68d7.tar.gz
+	md5sums = f4f16758613965cfe5787a3f8f7d3ca4
 
 pkgname = nnls-chroma
 
