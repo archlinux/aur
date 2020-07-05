@@ -1,0 +1,27 @@
+# Colored makepkg-like functions by Det
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    java -jar /usr/lib/lombok-common/lombok.jar install /opt/sts-*/ || exit 1
+    note "You must add lombok.jar or lombok-api.jar to the build path of each Lombok-dependent project."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    java -jar /usr/lib/lombok-common/lombok.jar uninstall /opt/sts-*/ || exit 1
+}
+
