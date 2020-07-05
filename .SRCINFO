@@ -1,6 +1,6 @@
 pkgbase = filet-git
 	pkgdesc = A fucking fast file manager for your terminal
-	pkgver = r69.722613d
+	pkgver = r11.53c32cf
 	pkgrel = 1
 	url = https://github.com/buffet/filet
 	arch = i686
