@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 #mindmaster 中文版
 
-pkgname=mindmaster-cn
+pkgname=mindmaster_cn
 pkgver=8.0.2
 pkgrel=1
 arch=('x86_64')
