@@ -6,7 +6,7 @@ url='https://github.com/ros/ros_comm'
 pkgname='ros-melodic-roscpp'
 pkgver='1.14.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -50,7 +50,7 @@ conflicts=(
 	'ros-melodic-roscpp-git'
 )
 
-_dir="ros_comm-${pkgver}/roscpp"
+_dir="ros_comm-${pkgver}/clients/roscpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
 sha256sums=('49849315ca55247c656a5a50cd5caa5f33f7d212766ff09b62eae48f1dc6c3e7')
 
