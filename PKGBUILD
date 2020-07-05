@@ -52,6 +52,7 @@ build() {
   export CFLAGS="$CFLAGS -fvisibility=hidden"
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
 
+  # this is so this will build on ALARM on a raspberry pi with 1GB RAM...
   MEM=`free -m | head -2 | tail -1 | awk '{printf("%s", $7);}'`
   if test "$MEM" -lt 300; then MEM=300; fi
   J=`expr $MEM / 300`
