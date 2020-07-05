@@ -2,7 +2,7 @@
 
 pkgname="linus-meta"
 pkgdesc="Packages i always need so i dont forget or uninstall them"
-pkgver="5"
+pkgver="6"
 pkgrel="1"
 arch=("x86_64")
 license=("GPL3")
@@ -36,12 +36,21 @@ depends=(
     "nano"
     "git"
     "cmake"
+    "extra-cmake-modules"
     "playerctl"
     "ripgrep"
     "zip"
     "unzip"
     "curl"
     "wget"
+    "ccache"
+    "bluez-utils"
+    "bridge-utils"
+    "logrotate"
+    "npm"
+    "python-pip"
+    "reflector"
+    "smartmontools"
 
     #Java
     "jdk-openjdk"
@@ -76,6 +85,7 @@ depends=(
     "xdg-user-dirs"
     "flite" #Narrator support
     "networkmanager"
+    "icoutils"
 
     #Printer
     "cups"
