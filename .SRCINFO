@@ -1,6 +1,6 @@
 pkgbase = zram-generator
 	pkgdesc = Systemd unit generator for zram devices
-	pkgver = 0.2.0+rc.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/systemd/zram-generator
 	install = zram-generator.install
@@ -10,7 +10,7 @@ pkgbase = zram-generator
 	makedepends = rust
 	makedepends = ruby-ronn-ng
 	depends = systemd
-	source = zram-generator::git+https://github.com/systemd/zram-generator.git#commit=3821c08f9e236da549ed0eae5d75d2c08a1e7502
+	source = zram-generator::git+https://github.com/systemd/zram-generator.git#commit=294217a7758ae8cfd99870eac36f422f782f1237
 	source = half-memory.conf.example
 	source = zram-generator.install
 	sha256sums = SKIP
