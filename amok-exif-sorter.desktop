@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=amok-exif-sorter
+Name=Amok Exif Sorter
+Icon=/usr/share/amok-exif-sorter/amok-exif-sorter.ico
+Categories=Application;Graphics;
+
