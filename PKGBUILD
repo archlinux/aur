@@ -1,13 +1,13 @@
 # Maintainer: Cauê Baasch de Souza <cauebs@pm.me>
 pkgname=durt-bin
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Command line tool for calculating the size of files and directories"
 arch=('x86_64')
 url="https://github.com/cauebs/durt"
 license=('GPL-3.0')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/durt-$arch-unknown-linux-gnu.tar.gz")
-sha512sums=('9bcfda324985b72298079b56d799ef64505dfbe6da4f4704515d621fb88162b89e2e8bf58904ea1ae425ce70105f3a8e62c23a0486cd9fbddaf1ec279b28eaba')
+sha512sums=('6929f0d3481bb84441d2af8d8ce31dec6bedc8fa9f2230f8ebb3c982eaf64801e7b5e570c3a2fe86d5dbf464d105f0d3fa3e95527eff1ebde4a618f54b13d499')
 
 package() {
     cd durt-$arch-unknown-linux-gnu
