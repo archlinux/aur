@@ -3,7 +3,7 @@
 
 pkgname=elektra-git
 pkgver=0.9.2.r91.ga40ba50ca
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal hierarchical configuration store from git master"
 url="https://www.libelektra.org"
 license=('custom:BSD')
