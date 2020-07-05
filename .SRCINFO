@@ -1,11 +1,12 @@
 pkgbase = libheif-git
 	pkgdesc = HEIF file format decoder and encoder (git version)
-	pkgver = 1.6.2.r0.g3824054
+	pkgver = 1.7.0.r0.g82eccc9
 	pkgrel = 1
 	url = https://github.com/strukturag/libheif/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	makedepends = libjpeg
 	makedepends = libpng
 	depends = libde265
