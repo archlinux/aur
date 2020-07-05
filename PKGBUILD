@@ -4,17 +4,17 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 _pkgname=pytoml
-pkgbase=python-pytoml
-pkgname=('python-pytoml' 'python2-pytoml')
+pkgname=python-pytoml
 pkgver=0.1.21
 _test_commit=bbfef3b9277eac47e5d6e9e507c99f0a40a61f8a
-pkgrel=3
+pkgrel=4
 pkgdesc="A TOML-0.4.0 parser/writer for Python."
 arch=('any')
 url="https://github.com/avakar/${_pkgname}"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('python-pytest' 'python2-pytest')
+depends=('python')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://github.com/avakar/toml-test/archive/${_test_commit}.tar.gz")
 sha512sums=('6e261e7f979b7beb835061a90d098036b968b9f2e5b4ef74302e7bf59b49651d92e32fb0488831c0bc1325f14a2512e0b7681e8e2bbf59804835179812203875'
@@ -33,7 +33,6 @@ build() {
     cd "${srcdir}"/${_pkgname}-${pkgver}
 
     python setup.py build
-    python2 setup.py build
 }
 
 check() {
@@ -41,22 +40,11 @@ check() {
 
     python -m pytest
     PYTHONPATH=$PWD python test/test.py
-    python2 -m pytest
-    PYTHONPATH=$PWD python2 test/test.py
 }
 
-package_python-pytoml() {
-    depends=('python')
-
+package() {
     cd "${srcdir}"/${_pkgname}-${pkgver}
+
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-}
-
-package_python2-pytoml() {
-    depends=('python2')
-
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
