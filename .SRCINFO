@@ -1,11 +1,10 @@
 pkgbase = adobe-source-han-mono-fonts
 	pkgdesc = Adobe Source Han Mono - A set of Pan-CJK fonts designed to complement Source Code Pro
 	pkgver = 1.002
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/adobe-fonts/source-han-mono
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
 	source = 44-source-han-mono-otc.conf
 	source = https://github.com/adobe-fonts/source-han-mono/releases/download/1.002/SourceHanMono.ttc
 	source = 44-source-han-mono-jp.conf
@@ -48,6 +47,7 @@ pkgbase = adobe-source-han-mono-fonts
 	source = https://github.com/adobe-fonts/source-han-mono/raw/9a10a4fe9797b9777dd9b77cd093e8f76dd55e1d/Medium/OTC/SourceHanMonoHC-Medium.otf
 	source = https://github.com/adobe-fonts/source-han-mono/raw/9a10a4fe9797b9777dd9b77cd093e8f76dd55e1d/Normal/OTC/SourceHanMonoHC-Normal.otf
 	source = https://github.com/adobe-fonts/source-han-mono/raw/9a10a4fe9797b9777dd9b77cd093e8f76dd55e1d/Regular/OTC/SourceHanMonoHC-Regular.otf
+	source = https://github.com/adobe-fonts/source-han-mono/raw/9a10a4fe9797b9777dd9b77cd093e8f76dd55e1d/LICENSE.md
 	sha256sums = 34eb9b5060f6eaece4995aa51e6a6be9fcf2a8cd1e2a5388f1d8d2283585abfa
 	sha256sums = 0c192448de90848f11eb8336876883a9a36dc65b8965e489600cfcc7a67358c1
 	sha256sums = a262b1646e81e04b448d07610b83ed9ecb0aefef604b8a3ee0c155c5603be7b6
@@ -90,6 +90,7 @@ pkgbase = adobe-source-han-mono-fonts
 	sha256sums = 2eec8c27fc357a120c9aff40a7d4a08af9a07586ae42007b2f261fe8d285b5c9
 	sha256sums = e82cad8e32048ec757cdef92f0f150d12ffd2fb310b3fb7b0b7b9d0b88897f77
 	sha256sums = 920351def2dfff03955a5b2f9044800049920cf19a7696d59ba263fe11780e9d
+	sha256sums = 0983abed9371adc8958c321bf8d8036324b4a2e8cc324682b0fe0c699e63a009
 
 pkgname = adobe-source-han-mono-jp-fonts
 
