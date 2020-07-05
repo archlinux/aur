@@ -1,0 +1,33 @@
+--- a/inference-engine/src/inference_engine/CMakeLists.txt
++++ b/inference-engine/src/inference_engine/CMakeLists.txt
+@@ -230,30 +230,6 @@ ie_developer_export_targets(${TARGET_NAME} ${TARGET_NAME}_plugin_api xbyak)
+ 
+ list(APPEND core_components ngraph)
+ 
+-if(THREADING STREQUAL "TBB" OR THREADING STREQUAL "TBB_AUTO")
+-    ie_cpack_add_component(tbb REQUIRED)
+-    list(APPEND core_components tbb)
+-
+-    install(DIRECTORY "${TBB}/include"
+-            DESTINATION ${IE_CPACK_IE_DIR}/external/tbb
+-            COMPONENT tbb)
+-    install(DIRECTORY "${TBB}/lib"
+-            DESTINATION ${IE_CPACK_IE_DIR}/external/tbb
+-            COMPONENT tbb)
+-    if(EXISTS "${TBB}/bin")
+-      install(DIRECTORY "${TBB}/bin"
+-              DESTINATION ${IE_CPACK_IE_DIR}/external/tbb
+-              COMPONENT tbb)
+-    endif()
+-    install(FILES "${TBB}/LICENSE"
+-            DESTINATION ${IE_CPACK_IE_DIR}/external/tbb
+-            COMPONENT tbb)
+-    install(FILES "${TBB}/cmake/TBBConfig.cmake"
+-                  "${TBB}/cmake/TBBConfigVersion.cmake"
+-            DESTINATION ${IE_CPACK_IE_DIR}/external/tbb/cmake
+-            COMPONENT tbb)
+-endif()
+-
+ ie_cpack_add_component(core REQUIRED DEPENDS ${core_components})
+ 
+ install(DIRECTORY "${IE_MAIN_SOURCE_DIR}/include" DESTINATION ${IE_CPACK_IE_DIR}
