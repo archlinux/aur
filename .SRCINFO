@@ -1,7 +1,7 @@
 pkgbase = arxiv2bib
 	pkgdesc = Get a BibTeX entry from an arXiv id number
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nathangrigg.github.io/arxiv2bib/
 	arch = any
 	license = BSD

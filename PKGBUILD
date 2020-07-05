@@ -1,9 +1,9 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=arxiv2bib
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Get a BibTeX entry from an arXiv id number"
 arch=('any')
 url="http://nathangrigg.github.io/arxiv2bib/"
@@ -15,19 +15,16 @@ source=(https://github.com/nathangrigg/arxiv2bib/archive/$pkgver.tar.gz)
 md5sums=('268d263800cad636870110a891ccd405')
 
 build() {
-  cd "$srcdir/arxiv2bib-$pkgver"
+  cd arxiv2bib-$pkgver
   python setup.py build
 }
 
 check() {
-  cd "$srcdir/arxiv2bib-$pkgver"
+  cd arxiv2bib-$pkgver
   nosetests3
 }
 
-
 package(){
-  cd "$srcdir/arxiv2bib-$pkgver"
+  cd arxiv2bib-$pkgver
   python setup.py install --root="${pkgdir}"
 }
-
-# vim:ts=2:sw=2:et:
