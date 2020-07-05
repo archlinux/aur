@@ -1,0 +1,16 @@
+pkgbase = slack-desktop
+	pkgdesc = Slack Desktop (Beta) for Linux
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://slack.com/downloads
+	arch = x86_64
+	license = custom: Slack
+	depends = electron
+	provides = slack
+	provides = slack-desktop
+	conflicts = slack-desktop
+	source = https://downloads.slack-edge.com/linux_releases/slack-desktop-4.7.0-amd64.deb
+	sha256sums = 83a7fc575f77faca1771762cb97eaa8649092295f33ac62098e92bc5c0a19edb
+
+pkgname = slack-desktop
+
