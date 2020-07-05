@@ -10,7 +10,7 @@ license=('GPL')
 groups=()
 optdepends=('aqsis')
 depends=(xorg-fonts-misc
-         xorg-fonts-alias.misc
+         xorg-fonts-alias-misc
          povray
 )
 makedepends=( 
