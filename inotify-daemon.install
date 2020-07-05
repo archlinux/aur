@@ -1,0 +1,14 @@
+post_install() {
+	systemctl enable inotify-daemon
+}
+
+post_upgrade() {
+	echo "Upgraded inotify-daemon"
+	echo "Restarting inotify-daemon"
+	systemctl restart inotify-daemon
+}
+
+pre_remove() {
+	systemctl disable inotify-daemon
+	systemctl stop inotify-daemon
+}

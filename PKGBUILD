@@ -8,7 +8,7 @@
 
 # Maintainer: geekbeat <geekbeat@bitbucket.org>
 pkgname=inotify-daemon # '-bzr', '-git', '-hg' or '-svn'
-pkgver=20191219.3.r0.g70e0802
+pkgver=20200705.1.r1.g719005d
 pkgrel=1
 pkgdesc="A daemon to trigger system-tasks upon preconfigured inotify-events."
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ url="http://matcha.cakeisaweso.me/ast/inotify-daemon"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('git' 'rust' 'fakeroot') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'rust' 'fakeroot' 'coreutils')
 backup=('etc/inotify-daemon.yml')
-install=
+install=$pkgname.install
 source=(
 	'git+http://matcha.cakeisaweso.me/ast/inotify-daemon.git' 
 	'inotify-daemon.example.yml'
@@ -27,7 +27,6 @@ md5sums=(
 	'SKIP' 
 	39929e16227a365eca33116ae4530d60
 )
-
 
 pkgver() {
   cd "$pkgname"
