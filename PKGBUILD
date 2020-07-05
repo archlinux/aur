@@ -4,9 +4,9 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='https://github.com/ros/ros_comm'
 
 pkgname='ros-melodic-roscpp'
-pkgver='1.14.5'
+pkgver='1.14.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -51,8 +51,15 @@ conflicts=(
 )
 
 _dir="ros_comm-${pkgver}/clients/roscpp"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('49849315ca55247c656a5a50cd5caa5f33f7d212766ff09b62eae48f1dc6c3e7')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+	"boost-version-check.patch"::"https://github.com/ros/ros_comm/commit/fe0b38d6a806946d1be3b2a7539707811a0d74f3.diff")
+sha256sums=('30228310727ed3a027a5a0a745df8f451f3a5db08897b452769e2fe7dee9173e'
+	    'b286f2e055f1cef29db77d27f298bbb6e74009666854caf292807207954d7341')
+
+prepare() {
+	cd ${srcdir}/ros_comm-${pkgver}
+	patch --strip=1 --input=${srcdir}/boost-version-check.patch
+}
 
 build() {
 	# Use ROS environment variables.
