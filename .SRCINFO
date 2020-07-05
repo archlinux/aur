@@ -1,5 +1,5 @@
 pkgbase = nrf5x-sniffer
-	pkgdesc = nRF-based 802.15.4 sniffer (firmware and software)
+	pkgdesc = nRF-based 802.15.4 sniffer (firmware and Wireshark plugin)
 	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/NordicSemiconductor/nRF-Sniffer-for-802.15.4
