@@ -20,7 +20,7 @@ pkgbase = eruption-roccat-vulcan-git
 	backup = etc/eruption/eruption.conf
 	backup = src/scripts/lib/themes/*
 	backup = src/scripts/lib/macros/*
-	source = git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=59ea90bbb8e733ad3d327e605c0f73c7e661f2cc
+	source = git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=65a1c3606e507494ab64c8f00c4774547a61e858
 	sha512sums = SKIP
 
 pkgname = eruption-roccat-vulcan-git
