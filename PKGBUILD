@@ -7,7 +7,7 @@ pkgdesc="KoPub TrueType multilingual fonts."
 arch=('any')
 license=('custom')
 url="http://www.kopus.org/Biz/electronic/Font.aspx"
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 source=('http://www.kopus.org/Download_font.aspx?font_id=13&name=KOPUBWORLD_TTF_FONTS.zip'
         'LICENSE::http://www.kopus.org/Download/%EC%84%9C%EC%B2%B4_%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4.pdf')
 md5sums=('9dea0943591b07357f369dd9d2a55c7f'
