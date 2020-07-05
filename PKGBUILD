@@ -5,9 +5,8 @@ url='https://wiki.ros.org/rosbuild'
 
 pkgname='ros-melodic-rosbuild'
 pkgver='1.14.8'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,7 +30,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-${pkgver}/rosbuild"
+_dir="ros-${pkgver}/core/rosbuild"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
 sha256sums=('998c79df7d7ce015eee28fb768b28b68cc37a98b4a4b8daef16a1280cccb5bee')
 
