@@ -1,6 +1,6 @@
 pkgbase = chronoengine-git
 	pkgdesc = An Open Source Multi-physics Simulation Engine
-	pkgver = 5.0.1.r397.g21725cc0b
+	pkgver = 5.0.1.r400.g873d569b5
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
@@ -43,13 +43,11 @@ pkgbase = chronoengine-git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh
 	source = glm.patch
-	source = fsi.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a
 	sha256sums = 4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe
-	sha256sums = 30b72d0004f784950ef8496a10cc491de8d98a855c6db97ac8fe2e73d01c1579
 
 pkgname = chronoengine-git
 
