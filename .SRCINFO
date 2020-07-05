@@ -1,0 +1,20 @@
+pkgbase = rtpmidid-git
+	pkgdesc = RTP MIDI User Space Driver Daemon
+	pkgver = r287.978e076
+	pkgrel = 1
+	url = https://github.com/davidmoreno/rtpmidid
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = alsa-lib
+	depends = fmt
+	depends = avahi
+	provides = rtpmidid
+	conflicts = rtpmidid
+	source = rtpmidid-git::git+https://github.com/davidmoreno/rtpmidid.git
+	sha256sums = SKIP
+
+pkgname = rtpmidid-git
+
