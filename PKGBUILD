@@ -1,13 +1,11 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Message and service data structures."
 url='https://github.com/tuw-robotics/tuw_msgs'
 
 pkgname='ros-melodic-tuw-gazebo-msgs'
+
 pkgver='0.0.13'
-_pkgver_patch=0
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -32,13 +30,6 @@ ros_depends=(ros-melodic-std-msgs
   ros-melodic-rospy)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/tuw_gazebo_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/tuw-robotics/tuw_msgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="tuw_msgs-${pkgver}/tuw_gazebo_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/tuw-robotics/tuw_msgs/archive/${pkgver}.tar.gz")
 sha256sums=('b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6')
@@ -53,14 +44,14 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
