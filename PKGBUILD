@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
@@ -10,18 +10,16 @@ depends=('openssl')
 conflicts=('mdcat-git')
 makedepends=('cargo' 'jq')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('2e50dbb8f80b74dbed1cc69c731d8c782df35f2e968fc833b11640272d00f3cf')
+sha256sums=('c62e3fbe7461410b72b3fd27dcaa543aa0bec99cbfd78c87aa8fe441972e79ff')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable \
-    cargo build --release --locked
+  cargo build --release --locked
 }
 
 package() {
   cd "$pkgname-$pkgname-$pkgver"
 
-  RUSTUP_TOOLCHAIN=stable
   OUT_DIR="$(cargo build --release --locked --message-format=json-render-diagnostics | \
     jq -r 'select(.out_dir) | select(.package_id | startswith("mdcat ")) | .out_dir')"
 
