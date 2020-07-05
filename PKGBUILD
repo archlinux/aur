@@ -3,8 +3,8 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.9'
-pkgrel='1'
+pkgver='0.1.10'
+pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -17,7 +17,7 @@ optdepends=()
 provides=('eruption-roccat-vulcan')
 conflicts=('eruption-roccat-vulcan')
 replaces=()
-backup=(etc/eruption/eruption.conf src/scripts/lib/macros/{modifiers.lua,user-macros.lua})
+backup=(etc/eruption/eruption.conf src/scripts/lib/themes/* src/scripts/lib/macros/*)
 options=()
 install='eruption.install'
 changelog=
@@ -145,6 +145,8 @@ package() {
     install -m 644 "src/scripts/lib/debug.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "src/scripts/lib/utilities.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "src/scripts/lib/declarations.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "src/scripts/lib/themes/default.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
+    install -m 644 "src/scripts/lib/themes/gaming.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
     install -m 644 "src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
