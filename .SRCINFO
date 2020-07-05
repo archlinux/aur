@@ -4,6 +4,7 @@ pkgbase = tradermaster
 	pkgrel = 1
 	url = http://jiaoyixia.com
 	arch = x86_64
+	license = unknown
 	depends = brotli
 	depends = libbsd
 	depends = libssh

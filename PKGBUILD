@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="超强行情分析软件"
 provides=("tradermaster")
 url='http://jiaoyixia.com'
+license=('unknown')
 arch=('x86_64')
 depends=('brotli' 'libbsd' 'libssh' 'sqlite' 'rtmpdump' 'gnutls' 'glfw-x11' 'glew' 'fontconfig' 'freetype2' 'libzip')
 source=("${pkgname}.deb::https://cdn.jin10.com/linuxclient/TraderMaster_20_04.deb"
@@ -45,9 +46,7 @@ package(){
 	 
 	 chmod 0755 "${pkgdir}"/usr
 	 chmod -R 0755 "${pkgdir}"/usr/share
-	 
-	 
-	 
+	 chown -R root:root "${pkgdir}"/usr
 	 
 	 
 }
