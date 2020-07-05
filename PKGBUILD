@@ -17,7 +17,6 @@ sha256sums=('e324456e64b788951b714d6ee7c2ecb1f6bda2355973548fe49d4a14db5d15fe')
 
 build() {
   cd "$pkgname-$pkgver"
-
   ./autogen.sh --prefix=/usr
   make
 }
