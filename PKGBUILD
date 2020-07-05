@@ -3,7 +3,7 @@
 pkgname=abrowser-bin
 s_pkgname=${pkgname%-*}
 pkgver=78.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -15,7 +15,7 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
 makedepends=(curl)
 _pkgver_x86_64=$(curl -s 'http://archive.trisquel.info/trisquel/pool/main/f/firefox/?C=M;O=D' | grep abrowser_$pkgver | cut -d+ -f2,3 | cut -d'"' -f1 | grep amd64 | head -1)
 source=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${_pkgver_x86_64}")
-sha256sums=('f37f49cd907424258e9836e0f6d8ba27a8913c6ba561defdf2ec95b08acdaa9d')
+sha256sums=('6d8fd0e453fa42de003ebd4e2fb12e61dbe915bc4b75fbdf0ce0d001dca17299')
 
 package() {
   tar xJf ${srcdir}/data.tar.xz -C ${pkgdir}/
