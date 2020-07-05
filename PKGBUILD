@@ -1,7 +1,8 @@
-# Maintainer: Soukyuu <chrno-sphered at hotmail dot com>
+# Maintainer: ToadKing <toadking at toadking dot com>
+# Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r7453.446177f6
+pkgver=r9352.447108249
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="http://deadbeef.sourceforge.net"
@@ -36,7 +37,8 @@ optdepends=('gtk2: for the GTK2 interface'
             'libsidplay: for SID player plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'libzip: for vfs_zip plugin'
-	    'ffmpeg: for ffmpeg plugin')
+	    'ffmpeg: for ffmpeg plugin'
+	    'opusfile: for opus plugin')
 install='deadbeef.install'
 options=('!libtool')
 conflicts=('deadbeef')
@@ -46,6 +48,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/deadbeef"
+  git submodule update --init external/mp4p
  
   ./autogen.sh
   ./configure --prefix=/usr
