@@ -11,11 +11,115 @@ index d519d37b61..6a477f755c 100644
          """
          Division by coefficients.
  
+diff --git a/src/sage/algebras/weyl_algebra.py b/src/sage/algebras/weyl_algebra.py
+index 67965111f6..a267923655 100644
+--- a/src/sage/algebras/weyl_algebra.py
++++ b/src/sage/algebras/weyl_algebra.py
+@@ -567,8 +567,6 @@ class DifferentialWeylAlgebraElement(AlgebraElement):
+ 
+         return self.__class__(F, {t: D[t]._divide_if_possible(x) for t in D})
+ 
+-    __div__ = __truediv__
+-
+     def factor_differentials(self):
+         """
+         Return a dict representing ``self`` with the differentials
+diff --git a/src/sage/categories/examples/lie_algebras.py b/src/sage/categories/examples/lie_algebras.py
+index 695bd7c1b1..3bcdd817da 100644
+--- a/src/sage/categories/examples/lie_algebras.py
++++ b/src/sage/categories/examples/lie_algebras.py
+@@ -261,7 +261,7 @@ class LieAlgebraFromAssociative(Parent, UniqueRepresentation):
+                 return self.__class__(self.parent(), self.value * scalar)
+             return self.__class__(self.parent(), scalar * self.value)
+ 
+-        def __div__(self, x, self_on_left=False):
++        def __truediv__(self, x, self_on_left=False):
+             """
+             Division by coefficients.
+ 
+diff --git a/src/sage/combinat/binary_tree.py b/src/sage/combinat/binary_tree.py
+index cb2b1376c7..774a758a6f 100644
+--- a/src/sage/combinat/binary_tree.py
++++ b/src/sage/combinat/binary_tree.py
+@@ -3183,7 +3183,6 @@ class BinaryTree(AbstractClonableTree, ClonableArray,
+         else:
+             return B([self[0], self[1].over(bt)])
+ 
+-    __div__ = over
+     __truediv__ = over
+ 
+     @combinatorial_map(name="Under operation on Binary Trees")
+diff --git a/src/sage/combinat/partition.py b/src/sage/combinat/partition.py
+index 0513e23409..f2572c077a 100644
+--- a/src/sage/combinat/partition.py
++++ b/src/sage/combinat/partition.py
+@@ -1054,8 +1054,6 @@ class Partition(CombinatorialElement):
+ 
+         return SkewPartition([self[:], p])
+ 
+-    __div__ = __truediv__
+-
+     def power(self, k):
+         r"""
+         Return the cycle type of the `k`-th power of any permutation
+diff --git a/src/sage/combinat/tableau.py b/src/sage/combinat/tableau.py
+index da464af764..59c23d3852 100644
+--- a/src/sage/combinat/tableau.py
++++ b/src/sage/combinat/tableau.py
+@@ -785,8 +785,6 @@ class Tableau(ClonableList, metaclass=InheritComparisonClasscallMetaclass):
+         from sage.combinat.skew_tableau import SkewTableau
+         return SkewTableau(st)
+ 
+-    __div__ = __truediv__
+-
+     def __call__(self, *cell):
+         r"""
+ 
 diff --git a/src/sage/ext/fast_callable.pyx b/src/sage/ext/fast_callable.pyx
-index 86033d983b..43dafee742 100644
+index 86033d983b..580f115692 100644
 --- a/src/sage/ext/fast_callable.pyx
 +++ b/src/sage/ext/fast_callable.pyx
-@@ -960,28 +960,6 @@ cdef class Expression:
+@@ -422,39 +422,6 @@ def fast_callable(x, domain=None, vars=None,
+         Traceback (most recent call last):
+             ...
+         TypeError: unable to simplify to float approximation
+-
+-    Check :trac:`24805`--if a fast_callable expression involves division
+-    on a Python object, it will always prefer Python 3 semantics (e.g.
+-    ``x / y`` will try ``x.__truediv__`` instead of ``x.__div__``, as if
+-    ``from __future__ import division`` is in effect).  However, for
+-    classes that implement ``__div__`` but not ``__truediv__`` it will still
+-    fall back on ``__div__`` for backwards-compatibility, but reliance on
+-    this functionality is deprecated::
+-
+-        sage: from sage.ext.fast_callable import ExpressionTreeBuilder
+-        sage: etb = ExpressionTreeBuilder('x')
+-        sage: x = etb.var('x')
+-        sage: class One(object):
+-        ....:     def __div__(self, other):
+-        ....:         if not isinstance(other, Integer):
+-        ....:             return NotImplemented
+-        ....:         return 1 / other
+-        sage: expr = One() / x
+-        sage: f = fast_callable(expr, vars=[x])
+-        sage: f(2)  # py2
+-        doctest:warning...:
+-        DeprecationWarning: use of __truediv__ should be preferred over __div__
+-        See https://trac.sagemath.org/24805 for details.
+-        1/2
+-        sage: class ModernOne(One):
+-        ....:     def __truediv__(self, other):
+-        ....:         if not isinstance(other, Integer):
+-        ....:             return NotImplemented
+-        ....:         return 1 / other
+-        sage: expr = ModernOne() / x
+-        sage: f = fast_callable(expr, vars=[x])
+-        sage: f(2)
+-        1/2
+     """
+     cdef Expression et
+     if isinstance(x, Expression):
+@@ -960,28 +927,6 @@ cdef class Expression:
          """
          return _expression_binop_helper(s, o, op_truediv)
  
@@ -66,11 +170,24 @@ index 1d2c1bf447..d4e736b83e 100644
      def __pow__(FastDoubleFunc left, right, dummy):
          """
          EXAMPLES::
+diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
+index 8e82e94168..ee3a8b5cfb 100644
+--- a/src/sage/geometry/polyhedron/base.py
++++ b/src/sage/geometry/polyhedron/base.py
+@@ -4932,8 +4932,6 @@ class Polyhedron_base(Element):
+         """
+         return self.dilation(1/scalar)
+ 
+-    __div__ = __truediv__
+-
+     @coerce_binop
+     def convex_hull(self, other):
+         """
 diff --git a/src/sage/libs/mpmath/ext_main.pyx b/src/sage/libs/mpmath/ext_main.pyx
-index 298d289fee..29704c0904 100644
+index ac89834fee..694cc089e7 100644
 --- a/src/sage/libs/mpmath/ext_main.pyx
 +++ b/src/sage/libs/mpmath/ext_main.pyx
-@@ -1590,19 +1590,6 @@ cdef class mpnumber:
+@@ -1586,19 +1586,6 @@ cdef class mpnumber:
          """
          return binop(OP_MUL, self, other, global_opts)
  
@@ -91,10 +208,10 @@ index 298d289fee..29704c0904 100644
          """
          Division of mpmath numbers. Compatible numerical types
 diff --git a/src/sage/libs/ntl/ntl_GF2.pyx b/src/sage/libs/ntl/ntl_GF2.pyx
-index 5aa701f451..92742493ea 100644
+index 21f69956b7..1a03ed5ebd 100644
 --- a/src/sage/libs/ntl/ntl_GF2.pyx
 +++ b/src/sage/libs/ntl/ntl_GF2.pyx
-@@ -150,9 +150,6 @@ cdef class ntl_GF2(object):
+@@ -153,9 +153,6 @@ cdef class ntl_GF2(object):
          GF2_div(r.x, (<ntl_GF2>self).x, (<ntl_GF2>other).x)
          return r
  
@@ -105,10 +222,10 @@ index 5aa701f451..92742493ea 100644
          """
              sage: o = ntl.GF2(1)
 diff --git a/src/sage/libs/ntl/ntl_GF2E.pyx b/src/sage/libs/ntl/ntl_GF2E.pyx
-index ee6ab1c6ad..97005292e9 100644
+index f45ad616a9..f9072cbc61 100644
 --- a/src/sage/libs/ntl/ntl_GF2E.pyx
 +++ b/src/sage/libs/ntl/ntl_GF2E.pyx
-@@ -281,9 +281,6 @@ cdef class ntl_GF2E(object):
+@@ -284,9 +284,6 @@ cdef class ntl_GF2E(object):
          GF2E_div(r.x, self.x, (<ntl_GF2E>other).x)
          return r
  
@@ -119,10 +236,10 @@ index ee6ab1c6ad..97005292e9 100644
          """
          EXAMPLES::
 diff --git a/src/sage/libs/ntl/ntl_GF2X.pyx b/src/sage/libs/ntl/ntl_GF2X.pyx
-index 19dee74769..255ba60466 100644
+index f3817f9cac..b80766b4ec 100644
 --- a/src/sage/libs/ntl/ntl_GF2X.pyx
 +++ b/src/sage/libs/ntl/ntl_GF2X.pyx
-@@ -221,9 +221,6 @@ cdef class ntl_GF2X(object):
+@@ -224,9 +224,6 @@ cdef class ntl_GF2X(object):
              raise ArithmeticError("self (=%s) is not divisible by b (=%s)" % (self, b))
          return q
  
@@ -133,10 +250,10 @@ index 19dee74769..255ba60466 100644
          """
          EXAMPLES::
 diff --git a/src/sage/libs/ntl/ntl_ZZX.pyx b/src/sage/libs/ntl/ntl_ZZX.pyx
-index 228da08044..ef8ce2ba2c 100644
+index 22e945814a..4d602df903 100644
 --- a/src/sage/libs/ntl/ntl_ZZX.pyx
 +++ b/src/sage/libs/ntl/ntl_ZZX.pyx
-@@ -357,9 +357,6 @@ cdef class ntl_ZZX(object):
+@@ -360,9 +360,6 @@ cdef class ntl_ZZX(object):
          result = make_ZZX_sig_off(q)
          return result
  
@@ -147,10 +264,10 @@ index 228da08044..ef8ce2ba2c 100644
          """
          Given polynomials a, b in ZZ[X], there exist polynomials q, r
 diff --git a/src/sage/libs/ntl/ntl_ZZ_pEX.pyx b/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
-index 07efc9ea16..e6f8b32b86 100644
+index b8f07db7c7..78b4216ac9 100644
 --- a/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
 +++ b/src/sage/libs/ntl/ntl_ZZ_pEX.pyx
-@@ -376,9 +376,6 @@ cdef class ntl_ZZ_pEX(object):
+@@ -379,9 +379,6 @@ cdef class ntl_ZZ_pEX(object):
              raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
          return r
  
@@ -161,10 +278,10 @@ index 07efc9ea16..e6f8b32b86 100644
          """
          Given polynomials a, b in ZZ_pE[X], if p is prime and the defining modulus irreducible,
 diff --git a/src/sage/libs/ntl/ntl_ZZ_pX.pyx b/src/sage/libs/ntl/ntl_ZZ_pX.pyx
-index b2336c1c9a..a3ac93fa81 100644
+index a31f9a4c80..0d18d06c4f 100644
 --- a/src/sage/libs/ntl/ntl_ZZ_pX.pyx
 +++ b/src/sage/libs/ntl/ntl_ZZ_pX.pyx
-@@ -404,9 +404,6 @@ cdef class ntl_ZZ_pX(object):
+@@ -407,9 +407,6 @@ cdef class ntl_ZZ_pX(object):
              raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
          return r
  
@@ -175,10 +292,10 @@ index b2336c1c9a..a3ac93fa81 100644
          """
          Given polynomials a, b in ZZ_p[X], if p is prime, then there exist polynomials q, r
 diff --git a/src/sage/libs/ntl/ntl_lzz_p.pyx b/src/sage/libs/ntl/ntl_lzz_p.pyx
-index 7809288152..e6c2b5a305 100644
+index 582e6f088f..6363f05f79 100644
 --- a/src/sage/libs/ntl/ntl_lzz_p.pyx
 +++ b/src/sage/libs/ntl/ntl_lzz_p.pyx
-@@ -250,9 +250,6 @@ cdef class ntl_zz_p(object):
+@@ -253,9 +253,6 @@ cdef class ntl_zz_p(object):
          sig_off()
          return q
  
@@ -189,10 +306,10 @@ index 7809288152..e6c2b5a305 100644
          """
          Return the n-th nonnegative power of self.
 diff --git a/src/sage/libs/ntl/ntl_lzz_pX.pyx b/src/sage/libs/ntl/ntl_lzz_pX.pyx
-index c063e30548..72fa99ae7a 100644
+index d953a55248..1f2be8bd60 100644
 --- a/src/sage/libs/ntl/ntl_lzz_pX.pyx
 +++ b/src/sage/libs/ntl/ntl_lzz_pX.pyx
-@@ -349,9 +349,6 @@ cdef class ntl_zz_pX(object):
+@@ -352,9 +352,6 @@ cdef class ntl_zz_pX(object):
              raise ArithmeticError("self (=%s) is not divisible by other (=%s)" % (self, other))
          return q
  
@@ -202,11 +319,42 @@ index c063e30548..72fa99ae7a 100644
      def __mod__(ntl_zz_pX self, other):
          """
          Given polynomials a, b in ZZ[X], there exist polynomials q, r
+diff --git a/src/sage/manifolds/differentiable/tensorfield.py b/src/sage/manifolds/differentiable/tensorfield.py
+index e136fb8055..a7b526dd83 100644
+--- a/src/sage/manifolds/differentiable/tensorfield.py
++++ b/src/sage/manifolds/differentiable/tensorfield.py
+@@ -2750,7 +2750,7 @@ class TensorField(ModuleElement):
+             f: M --> R
+             on U: (x, y) |--> 1/(x^2 + y^2 + 1)
+             on V: (u, v) |--> 2/(u^2 + v^2 + 2)
+-            sage: s = a.__div__(f); s
++            sage: s = a.__truediv__(f); s
+             Tensor field of type (1,1) on the 2-dimensional differentiable
+              manifold M
+             sage: s.display(e_xy)
+@@ -2761,7 +2761,7 @@ class TensorField(ModuleElement):
+ 
+         Division by a number::
+ 
+-            sage: s = a.__div__(2); s
++            sage: s = a.__truediv__(2); s
+             Tensor field of type (1,1) on the 2-dimensional differentiable
+              manifold M
+             sage: s.display(e_xy)
+@@ -2780,8 +2780,6 @@ class TensorField(ModuleElement):
+             resu._restrictions[dom] = rst / scalar
+         return resu
+ 
+-    __div__ = __truediv__
+-
+     def __call__(self, *args):
+         r"""
+         The tensor field acting on 1-forms and vector fields as a
 diff --git a/src/sage/matrix/matrix_gfpn_dense.pyx b/src/sage/matrix/matrix_gfpn_dense.pyx
-index ed9c0aaf09..97a9db20ff 100644
+index 42af34dc10..698af79b55 100644
 --- a/src/sage/matrix/matrix_gfpn_dense.pyx
 +++ b/src/sage/matrix/matrix_gfpn_dense.pyx
-@@ -1390,7 +1390,7 @@ cdef class Matrix_gfpn_dense(Matrix_dense):
+@@ -1392,7 +1392,7 @@ cdef class Matrix_gfpn_dense(Matrix_dense):
              sig_off()
          return new_mtx(mat, self)
  
@@ -239,7 +387,7 @@ index d274d9eec5..6c8e736e80 100644
          r"""
          Shorthand for ``self.contract(X)``.
 diff --git a/src/sage/misc/lazy_import.pyx b/src/sage/misc/lazy_import.pyx
-index 16f04bfe8d..13453d79f1 100644
+index 6e2c662476..f759d953d9 100644
 --- a/src/sage/misc/lazy_import.pyx
 +++ b/src/sage/misc/lazy_import.pyx
 @@ -640,19 +640,6 @@ cdef class LazyImport(object):
@@ -262,11 +410,24 @@ index 16f04bfe8d..13453d79f1 100644
      def __floordiv__(left, right):
          """
          TESTS::
+diff --git a/src/sage/misc/sage_input.py b/src/sage/misc/sage_input.py
+index 6c671e50f6..a9997770a0 100644
+--- a/src/sage/misc/sage_input.py
++++ b/src/sage/misc/sage_input.py
+@@ -1497,8 +1497,6 @@ class SageInputExpression(object):
+         """
+         return self._sie_binop('/', other)
+ 
+-    __div__ = __truediv__
+-
+     def __add__(self, other):
+         r"""
+         Compute an expression tree for ``self + other``.
 diff --git a/src/sage/modules/with_basis/indexed_element.pyx b/src/sage/modules/with_basis/indexed_element.pyx
-index 94d57d67e2..ebbcf3e1d9 100644
+index 4026f1947b..ad29f997e8 100644
 --- a/src/sage/modules/with_basis/indexed_element.pyx
 +++ b/src/sage/modules/with_basis/indexed_element.pyx
-@@ -883,20 +883,6 @@ cdef class IndexedFreeModuleElement(ModuleElement):
+@@ -886,20 +886,6 @@ cdef class IndexedFreeModuleElement(ModuleElement):
          x_inv = B(x) ** -1
          return type(self)(F, scal(x_inv, D))
  
@@ -287,6 +448,47 @@ index 94d57d67e2..ebbcf3e1d9 100644
  def _unpickle_element(C, d):
      """
      Unpickle an element in ``C`` given by ``d``.
+diff --git a/src/sage/plot/colors.py b/src/sage/plot/colors.py
+index 84da272fbb..9f12c0dbdb 100644
+--- a/src/sage/plot/colors.py
++++ b/src/sage/plot/colors.py
+@@ -801,7 +801,7 @@ class Color(object):
+             RGB color (0.29166666666666663, 0.286437908496732, 0.07794117647058824)
+             sage: vector((papayawhip / 2).rgb()) == vector((papayawhip * 0.5).rgb())
+             True
+-            sage: yellow.__div__(1/4)
++            sage: yellow.__truediv__(1/4)
+             RGB color (0.0, 0.0, 0.0)
+ 
+         TESTS::
+@@ -822,27 +822,6 @@ class Color(object):
+         """
+         return self * (1 / float(right))
+ 
+-    def __div__(self, right):
+-        """
+-        Return a color whose RGB coordinates are this color's
+-        coordinates divided by a scalar.
+-
+-        INPUT:
+-
+-        - ``right`` -- a float-convertible, non-zero number
+-
+-        OUTPUT:
+-
+-        - a **new** instance of :class:`Color`
+-
+-        EXAMPLES::
+-
+-            sage: from sage.plot.colors import yellow
+-            sage: yellow.__div__(4)
+-            RGB color (0.25, 0.25, 0.0)
+-        """
+-        return self / right
+-
+     def __int__(self):
+         """
+         Return the integer representation of this colour.
 diff --git a/src/sage/quivers/algebra_elements.pyx b/src/sage/quivers/algebra_elements.pyx
 index 25968539fc..33f73a7820 100644
 --- a/src/sage/quivers/algebra_elements.pyx
@@ -317,10 +519,10 @@ index 9514b16c4b..ec301dd731 100644
              Traceback (most recent call last):
              ...
 diff --git a/src/sage/rings/complex_mpc.pyx b/src/sage/rings/complex_mpc.pyx
-index 84546c2239..ceb052131f 100644
+index 108eb25989..748bdc0c24 100644
 --- a/src/sage/rings/complex_mpc.pyx
 +++ b/src/sage/rings/complex_mpc.pyx
-@@ -1596,7 +1596,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
+@@ -1573,7 +1573,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
          mpc_norm(x.value, self.value, (<RealField_class>x._parent).rnd)
          return x
  
@@ -329,7 +531,7 @@ index 84546c2239..ceb052131f 100644
          r"""
          Returns the quotient of ``left`` with ``self``, that is: ``left/self``
          as a complex number.
-@@ -1609,7 +1609,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
+@@ -1586,7 +1586,7 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
  
              sage: MPC = MPComplexField()
              sage: a = MPC(2, 2)
@@ -339,7 +541,7 @@ index 84546c2239..ceb052131f 100644
              sage: MPC(1)/a
              0.250000000000000 - 0.250000000000000*I
 diff --git a/src/sage/rings/complex_number.pyx b/src/sage/rings/complex_number.pyx
-index bc87388c1c..2b00351ffc 100644
+index 526f88d2fd..1e58da9183 100644
 --- a/src/sage/rings/complex_number.pyx
 +++ b/src/sage/rings/complex_number.pyx
 @@ -836,7 +836,7 @@ cdef class ComplexNumber(sage.structure.element.FieldElement):
@@ -361,10 +563,10 @@ index bc87388c1c..2b00351ffc 100644
              sage: CC(1)/a
              0.500000000000000
 diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
-index 44936e6a6a..0cdea51d47 100644
+index 624122569b..e59f099586 100644
 --- a/src/sage/rings/integer.pyx
 +++ b/src/sage/rings/integer.pyx
-@@ -2024,7 +2024,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
+@@ -2012,7 +2012,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
              mpz_mul(x.value, self.value, (<Integer>right).value)
          return x
  
@@ -373,11 +575,24 @@ index 44936e6a6a..0cdea51d47 100644
          r"""
          TESTS::
  
+diff --git a/src/sage/rings/padics/lattice_precision.py b/src/sage/rings/padics/lattice_precision.py
+index 6cb4f04d17..6e89a622b1 100644
+--- a/src/sage/rings/padics/lattice_precision.py
++++ b/src/sage/rings/padics/lattice_precision.py
+@@ -397,8 +397,6 @@ class pRational:
+             val = self._valuation - other._valuation
+         return self.__class__(self.p, self.x / other.x, self.exponent - other.exponent, valuation=val)
+ 
+-    __div__ = __truediv__
+-
+     def _quo_rem(self, other):
+         """
+         Quotient with remainder.
 diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
-index 3d657d1f94..9f31b91f05 100644
+index 924cc71986..b7f6ce35cd 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx
 +++ b/src/sage/rings/polynomial/polynomial_element.pyx
-@@ -2247,9 +2247,6 @@ cdef class Polynomial(CommutativeAlgebraElement):
+@@ -2227,9 +2227,6 @@ cdef class Polynomial(CommutativeAlgebraElement):
          return wrapperdescr_fastcall(RingElement.__truediv__,
                  left, (right,), <object>NULL)
  
@@ -388,10 +603,10 @@ index 3d657d1f94..9f31b91f05 100644
          """
          EXAMPLES::
 diff --git a/src/sage/rings/rational.pyx b/src/sage/rings/rational.pyx
-index 30b50ea497..a4f04d6edf 100644
+index 6a4b3eacb2..e922b82f8e 100644
 --- a/src/sage/rings/rational.pyx
 +++ b/src/sage/rings/rational.pyx
-@@ -2435,7 +2435,7 @@ cdef class Rational(sage.structure.element.FieldElement):
+@@ -2403,7 +2403,7 @@ cdef class Rational(sage.structure.element.FieldElement):
              mpq_mul(x.value, self.value, (<Rational>right).value)
          return x
  
@@ -452,10 +667,10 @@ index fdca7ec591..ec16091b33 100644
      r"""
      Return a tuple of strings of variable names of length ngens given
 diff --git a/src/sage/structure/element.pyx b/src/sage/structure/element.pyx
-index 0791c72a70..8105a3a8ab 100644
+index b1a64b9cbb..f190233b28 100644
 --- a/src/sage/structure/element.pyx
 +++ b/src/sage/structure/element.pyx
-@@ -1600,77 +1600,6 @@ cdef class Element(SageObject):
+@@ -1606,77 +1606,6 @@ cdef class Element(SageObject):
          """
          return coercion_model.bin_op(self, n, mul)
  
@@ -533,7 +748,7 @@ index 0791c72a70..8105a3a8ab 100644
      def __truediv__(left, right):
          """
          Top-level true division operator for :class:`Element` invoking
-@@ -3419,9 +3348,6 @@ cdef class Vector(ModuleElement):
+@@ -3425,9 +3354,6 @@ cdef class Vector(ModuleElement):
      cpdef _pairwise_product_(Vector left, Vector right):
          raise TypeError("unsupported operation for '%s' and '%s'"%(parent(left), parent(right)))
  
@@ -543,7 +758,7 @@ index 0791c72a70..8105a3a8ab 100644
      def __truediv__(self, right):
          right = py_scalar_to_element(right)
          if isinstance(right, RingElement):
-@@ -3777,59 +3703,6 @@ cdef class Matrix(ModuleElement):
+@@ -3783,59 +3709,6 @@ cdef class Matrix(ModuleElement):
              return left * ~right
          return coercion_model.bin_op(left, right, truediv)
  
@@ -603,3 +818,60 @@ index 0791c72a70..8105a3a8ab 100644
      cdef _vector_times_matrix_(matrix_right, Vector vector_left):
          raise TypeError
  
+diff --git a/src/sage/structure/factorization.py b/src/sage/structure/factorization.py
+index b163e81a29..e50dc26a94 100644
+--- a/src/sage/structure/factorization.py
++++ b/src/sage/structure/factorization.py
+@@ -1173,8 +1173,6 @@ class Factorization(SageObject):
+             return self / Factorization([(other, 1)])
+         return self * other**-1
+ 
+-    __div__ = __truediv__
+-
+     def value(self):
+         """
+         Return the product of the factors in the factorization, multiplied out.
+diff --git a/src/sage/tensor/modules/comp.py b/src/sage/tensor/modules/comp.py
+index dd28a630d2..ad60a401a9 100644
+--- a/src/sage/tensor/modules/comp.py
++++ b/src/sage/tensor/modules/comp.py
+@@ -1889,7 +1889,7 @@ class Components(SageObject):
+             sage: from sage.tensor.modules.comp import Components
+             sage: a = Components(QQ, [1,2,3], 1)
+             sage: a[:] = 1, 0, -3
+-            sage: s = a.__div__(3) ; s
++            sage: s = a.__truediv__(3) ; s
+             1-index components w.r.t. [1, 2, 3]
+             sage: s[:]
+             [1/3, 0, -1]
+@@ -1907,8 +1907,6 @@ class Components(SageObject):
+             result._comp[ind] = val / other
+         return result
+ 
+-    __div__ = __truediv__
+-
+     def trace(self, pos1, pos2):
+         r"""
+         Index contraction.
+diff --git a/src/sage/tensor/modules/free_module_tensor.py b/src/sage/tensor/modules/free_module_tensor.py
+index daed9b8955..cdfe8f5f9d 100644
+--- a/src/sage/tensor/modules/free_module_tensor.py
++++ b/src/sage/tensor/modules/free_module_tensor.py
+@@ -2263,7 +2263,7 @@ class FreeModuleTensor(ModuleElement):
+             sage: e = M.basis('e')
+             sage: a = M.tensor((2,0), name='a')
+             sage: a[:] = [[4,0], [-2,5]]
+-            sage: s = a.__div__(4) ; s
++            sage: s = a.__truediv__(4) ; s
+             Type-(2,0) tensor on the 2-dimensional vector space M over the
+              Rational Field
+             sage: s[:]
+@@ -2280,8 +2280,6 @@ class FreeModuleTensor(ModuleElement):
+             result._components[basis] = self._components[basis] / other
+         return result
+ 
+-    __div__ = __truediv__
+-
+     def __call__(self, *args):
+         r"""
+         The tensor acting on linear forms and module elements as a multilinear

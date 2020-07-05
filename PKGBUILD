@@ -7,14 +7,14 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta2.r0.g69d2b2da28
+pkgver=9.2.beta3.r0.ga79b0fc01d
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
-  python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-future python-sphinx
+  python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica three.js)
@@ -40,7 +40,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-20.04.patch
+        sagemath-ecl-20.4.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
@@ -53,13 +53,13 @@ sha256sums=('SKIP'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            'c50b6bd6ee6e00fc15ec267ac3187e234e5564f6c346c74d7ddaa5dc5f1fcd22'
+            '516fd1ed21e08ca4b16faf34e8998583ff8408128518073443e59622958e5a93'
             'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
-            'e55bb5df7d6ce65fc9d124b6b59407071f0c55d88f730e9467398f10cc87e66d'
+            'e3d394b818bb575c509f5113ccfab9a5283c7d43bda9d1503951c820cd7fd472'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'aeb6bb7a8d40f3d3b3547ee5f1e67e876051d9463cd1e0000b497c4d0f3e2fe9'
             'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
-            '6bc0eb8a54800d745474d7d371efedfd96838574f32fb9e2714ab268ccad2df7')
+            '5bd813b8cde1604a471687571e3872595ceeee2d21cb8ae21db33aab53e49adf')
 
 pkgver() {
   cd sage
@@ -74,8 +74,8 @@ prepare(){
   patch -p1 -i ../sagemath-cremona.patch
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix build with ECL 20.04 https://trac.sagemath.org/ticket/22191
-  patch -p1 -i ../sagemath-ecl-20.04.patch
+# Fix build with ECL 20.4 https://trac.sagemath.org/ticket/22191
+  patch -p1 -i ../sagemath-ecl-20.4.patch
 # Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
   patch -p1 -i ../sagemath-flint-2.6.patch
 
