@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=18
-pkgrel=3
+pkgrel=4
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -22,14 +22,14 @@ source=(${_buildenv[@]}
         ${_executable[@]}
         ${_tidy[@]}
         ${_conf[@]})
-sha1sums=('2b746b2d8bf57691f1b25afce96a2752f6eee7e5'
+sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           '61c765080f3d41dbae15be9212667f9e6364550b'
           'd7a3801037333c582dba976db27cf8896bc1b401'
           'c99d9cb49dd31924a1cb298bcfe142cef31a9fd3'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
-          '2e69ac6c8e3674faf7e5d1739f9d772d50332fc0'
+          'cf79c015d16f839ef8014cc45944613972552dc9'
           '0022423564ed30dfe91bb3faa7f0c03ddcf4f25f'
           'fbd6ee512b6486320d41a007b9670dcf5a3430b6'
           '4d11331aeff1c1ec3de3759710acc060769ef274'

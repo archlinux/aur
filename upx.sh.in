@@ -20,16 +20,17 @@ tidy_upx() {
     local binary
     find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
       [ $(jobs -p|wc -l) -gt $(getconf _NPROCESSORS_ONLN) ] && wait -n
-      mime=$(file --brief --mime-type "$binary")
-      case "$mime" in
-        application/x-executable | application/x-dosexec )
-          { upx "${UPXFLAGS[@]}" "$binary" &>/dev/null ||
+      case "$(file -S --brief --mime-type "$binary")" in
+        application/x-executable | application/x-dosexec | \
+        application/x-pie-executable | application/x-sharedlib )
+          { upx "${UPXFLAGS[@]}" "$binary" &>/dev/null &&
+            info "$(gettext "Compressed binary : %s")" "${binary/$pkgdir\//}" ||
             warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"; } &
         ;;
-        application* )
-          warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
-            "${binary/$pkgdir\//}"
-        ;;
+        #application* )
+        #  warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
+        #    "${binary/$pkgdir\//}"
+        #;;
       esac
     done
     wait

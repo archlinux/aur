@@ -36,6 +36,7 @@ buildenv_pgo() {
       [[ -d $PROFDEST/$pkgbase.used ]] && rm -rf $PROFDEST/$pkgbase.used
       mv $PROFDEST/$pkgbase.{gen,used}
       pgoflags=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
+      pgoldflags=" -lgcov"
       msg2 "Profile data will be applied."
     fi
 
