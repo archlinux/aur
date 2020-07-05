@@ -1,15 +1,15 @@
-# Maintainer: Matthias Lisin <ml@visu.li>
+# Maintainer: ml <ml@visu.li>
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'go' 'gzip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/archive/v${pkgver}.tar.gz")
-sha256sums=('11a23b60416cab57a7d83c97d723212ec3c430c4d9fdfc698e5f5276cd5ac15a')
+makedepends=('git' 'go')
+source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ecaf05a1194e1fb2724be9fc70fccb88cd98cc9fd8403d7694e1d8ed7622d661')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   local _commit _flags
-  _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
+  _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
     -X=main.version=$pkgver
     -X=main.commit=${_commit::7}
