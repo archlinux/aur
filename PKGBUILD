@@ -1,8 +1,8 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=novprog
-pkgver=3.1.6
-pkgrel=2
+pkgver=3.1.7
+pkgrel=1
 pkgdesc="A tool to graph your progress in writing a NaNoWriMo style novel"
 arch=('i686' 'x86_64')
 url="https://gottcode.org/novprog/"
@@ -13,7 +13,7 @@ source=("https://gottcode.org/novprog/novprog-${pkgver}-src.tar.bz2"
         "https://gottcode.org/novprog/novprog-${pkgver}-src.tar.bz2.asc")
 pkg_sha=$(curl -s https://gottcode.org/novprog/ | sed -n '/id="osSource"/{:loop;n;/<b>SHA-256:/{s|^.*<span class="shasum">\([0-9a-f]*\)</span>.*$|\1|p;q};b loop}')
 sha256sums=("$pkg_sha"
-            '1b31bfd8724a22b75e102388504fcd8aa2393895d5a30b2031d16b2992804c78')
+            '4a2bc44c7e22c1b7a745c3bb9bd68ab4325aa21762a424256a995a6245113dd0')
 validpgpkeys=('57E4D43C10CD7EDB8360C84774FFC7F02C4F6B37')
 install=novprog.install
 
