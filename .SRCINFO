@@ -1,0 +1,20 @@
+pkgbase = certbot-dns-powerdns
+	pkgdesc = PowerDNS DNS Authenticator plugin for Certbot
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/certbot-dns-powerdns
+	arch = any
+	license = Apache
+	depends = certbot
+	depends = dns-lexicon
+	depends = python-acme
+	depends = python-mock
+	depends = python-setuptools
+	depends = python-zope-interface
+	depends = python-dnspython
+	depends = python-requests
+	source = https://pypi.io/packages/source/c/certbot-dns-powerdns/certbot-dns-powerdns-0.2.0.tar.gz
+	sha256sums = bc44490aa29985d39d49bb253155c88ae8fd71edb61cf347fb575e4773a120f1
+
+pkgname = certbot-dns-powerdns
+
