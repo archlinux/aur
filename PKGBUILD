@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.39.17.r16.gf15e4874e
+pkgver=1.39.18.r59.g2bee818f2
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -68,7 +68,8 @@ package() {
   cd "$srcdir"/emscripten
   install -d "$pkgdir"/usr/lib/emscripten
   cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
-
+  install -Dm644 "$srcdir"/llvm-project/llvm/build/lib/libclang.so.10svn "$pkgdir"/usr/lib/libclang.so.10svn
+  
   # Remove clutter
   rm "$pkgdir"/usr/lib/emscripten/*.bat
 
