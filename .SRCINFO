@@ -6,7 +6,6 @@ pkgbase = spoqa-han-sans
 	arch = any
 	license = sil
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://github.com/spoqa/spoqa-han-sans/releases/download/v2.1.2/SpoqaHanSans_original.zip
 	md5sums = 882bb716e0364a5e50a367ae59fde857
 
