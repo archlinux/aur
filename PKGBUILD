@@ -2,7 +2,7 @@
 
 pkgname=matrix-appservice-telegram
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-telethon-session-sqlalchemy' 'python-telethon>=1.14.0' 'python-ruamel-yaml' 'python-commonmark' 'python-alembic' 'python-mautrix>=0.5.0' 'python-aiohttp' 'python-magic-ahupp')
@@ -21,9 +21,11 @@ backup=('etc/mautrix-telegram/alembic.ini'
         'etc/mautrix-telegram/config.yaml'
         'etc/mautrix-telegram/registration.yaml')
 source=("https://github.com/tulir/mautrix-telegram/archive/v${pkgver/_rc/-rc}.tar.gz"
-        'mautrix-telegram.service')
+        'mautrix-telegram.service'
+        'fix_telethon_version.patch')
 sha256sums=('b5ce8449fd6872bd950b04569f8927656c739f2ab472f2ea02b1b1ec6909ae14'
-            '24daf5ff2dd16bea5b8a8a27f40c3a99e2c586e48fee10aacdc966f88daf7623')
+            '52b9e24a238bb34daa4966f033593516089ae1e7a72b373e5fa0a08a25082123'
+            '6707c769836c5f27f00ec99bc949b469bb34092338363e37e852aee533320276')
 
 prepare() {
     cd $srcdir/mautrix-telegram-${pkgver/_rc/-rc}
@@ -48,6 +50,7 @@ package() {
     mkdir -pm0755 ${pkgdir}/etc/mautrix-telegram ${pkgdir}/usr/lib/systemd/system/
     mv ${pkgdir}/usr/lib/python3.8/site-packages/mautrix_telegram/example-config.yaml ${pkgdir}/etc/mautrix-telegram/
     mv ${pkgdir}/usr/{alembic,alembic.ini} ${pkgdir}/etc/mautrix-telegram/
-    rm -rf ${pkgdir}/usr/lib/python3.8/site-packages/tests
+    sed -i -e "s|script_location = alembic|script_location = /etc/mautrix-telegram/alembic/|" ${pkgdir}/etc/mautrix-telegram/alembic.ini
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests
     cp ../mautrix-telegram.service ${pkgdir}/usr/lib/systemd/system/
 }
