@@ -6,6 +6,7 @@ pkgbase = mindmaster_cn
 	arch = x86_64
 	license = Commercial
 	conflicts = mindmaster
+	conflicts = mindmaster-cn
 	options = !strip
 	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/mindmaster_8.0.2_cn_x86_64.deb
 	sha256sums_x86_64 = 20c475284cddc0d45c87c1d75016ab395b4b4842c01361269d4b81da23c45b47
