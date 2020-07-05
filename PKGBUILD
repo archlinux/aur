@@ -27,26 +27,19 @@ backup=('etc/cgproxy/config.json')
 install="cgproxy.install"
 
 build(){
-    cd ${srcdir}/${pkgname}
-    # init submodule
-    # git submodule init
-    # git submodule update
-
-    # build libexecsnoop.so
-    # cd "${srcdir}/${pkgname}/execsnoop-libbpf"
-    # make clean
-    # make CFLAGS="-O2 -Wall" libexecsnoop.so
-
-    # build main binary
-    cd "${srcdir}/${pkgname}"
-    mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make
+    mkdir -p "${srcdir}/${pkgname}/build"
+    cd "${srcdir}/${pkgname}/build"
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -Dbuild_execsnoop_dl=ON \
+          -Dbuild_static=OFF \
+          .. 
+    make
 }
 
 package_cgproxy-git(){
     cd "${srcdir}/$pkgname"/build
     make DESTDIR=$pkgdir install
-    # cd "${srcdir}/${pkgname}/execsnoop-libbpf"
-    # make DESTDIR=$pkgdir install
 }
 
 
