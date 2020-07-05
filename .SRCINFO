@@ -1,7 +1,7 @@
 pkgbase = libretro-mame-git
 	pkgdesc = libretro implementation of MAME. (Arcade)
-	pkgver = 71661.abca8f7ac5
-	pkgrel = 2
+	pkgver = 71674.a8b7451980
+	pkgrel = 1
 	url = https://github.com/libretro/mame
 	arch = i686
 	arch = x86_64
