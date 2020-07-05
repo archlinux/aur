@@ -1,0 +1,15 @@
+pkgbase = gpu-manager-git
+	pkgdesc = GPU Manager is used for managing the nvidia GPU devices in Kubernetes cluster.
+	pkgver = 26
+	pkgrel = 1
+	url = https://github.com/tkestack/gpu-manager
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = cuda
+	source = gpu-manager::git+https://github.com/tkestack/gpu-manager.git#branch=master
+	md5sums = SKIP
+
+pkgname = gpu-manager-git
+
