@@ -3,8 +3,8 @@
 
 pkgname=gmt6
 _pkgname=gmt
-pkgver=6.0.0
-pkgrel=4
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data"
 arch=(x86_64)
 url="https://www.generic-mapping-tools.org"
@@ -22,14 +22,11 @@ install='gmt.install'
 #source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iris.washington.edu/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
-source=("https://github.com/GenericMappingTools/gmt/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz"
-        "https://github.com/GenericMappingTools/gmt/commit/2e159324ecfa38093c72119f62e9edb72f6f7424.patch")
-sha512sums=('9719c8e3206a1c2b8ed05816e728549099c73673ae0c03fb3fbbb984bc7e0b20154ac93f6a74ed8e442d07636aba517818520cec41d4ffab1859e8fdb3435db2'
-            '0ac53589b116a55b84879d3e6f7c6f119b3bee616e909c6ca01c8d20a7ed3015cda0b14444aa1c2679b2e9fa686250629768e32c76553c4d919a98c92ff2ea7c')
+source=("https://github.com/GenericMappingTools/gmt/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz")
+sha512sums=('6cc0d606bc6fe1d08e47e613ae595d07512280d162a0ea4c2a62d0fd4859be25c1ae5c8237c5968e0c2a19103b94f4493b20e8adfd2ef1069b64380fe91ee4d9')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/2e159324ecfa38093c72119f62e9edb72f6f7424.patch"
   rm -fr build && mkdir build
 }
 
@@ -52,11 +49,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
   make "DESTDIR=${pkgdir}" install || return 1
-  install -d -m 0755 ${pkgdir}/usr/share/gmt/{html,pdf}
-  install -d -m 0755 ${pkgdir}/usr/share/man/man1
-  find "${srcdir}/${_pkgname}-${pkgver}/doc_release/html" -type f -exec install -m 0755 "{}" "${pkgdir}/usr/share/gmt/html" \;
-  find "${srcdir}/${_pkgname}-${pkgver}/doc_release/pdf"  -type f -exec install -m 0755 "{}" "${pkgdir}/usr/share/gmt/pdf" \;
-  find "${srcdir}/${_pkgname}-${pkgver}/man_release" -name "*.1.gz" -type f -exec install -m 0755 "{}" "${pkgdir}/usr/share/man/man1" \;
 }
 
 # vim:set ts=2 sw=2 et:
