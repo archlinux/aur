@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MindMaster
+Icon=mindmaster
+Exec=mindmaster
+Comment=多功能，高颜值，易使用的专业思维导图软件
+Categories=Office;Graphics;
+Terminal=false
