@@ -30,8 +30,10 @@ build() {
   cd lib${pkgname%-git} 
   [[ -d build ]] || mkdir build
   cd build
+  JAVA_HOME=/usr/lib/jvm/`archlinux-java get`
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DPLUGINS:STRING="ALL;-ruby" \
+	-DCMAKE_INSTALL_RPATH:PATH=/usr/lib \
+	-DPLUGINS:STRING="ALL;-ruby;-jni" \
         -DTOOLS:STRING="ALL" \
         -DBUILD_STATIC:STRING=OFF \
         -DBINDINGS:STRING="ALL;-ruby" \
@@ -45,5 +47,6 @@ build() {
 package() {
   cd lib${pkgname%-git}/build
   make DESTDIR="$pkgdir" install
+  
   install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
