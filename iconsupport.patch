@@ -158,9 +158,9 @@ index 790baba..cc88ee7 100644
      DLOG("Managing window 0x%08x\n", window);
  
 @@ -177,6 +180,7 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
-     window_update_class(cwindow, xcb_get_property_reply(conn, class_cookie, NULL), true);
-     window_update_name_legacy(cwindow, xcb_get_property_reply(conn, title_cookie, NULL), true);
-     window_update_name(cwindow, xcb_get_property_reply(conn, utf8_title_cookie, NULL), true);
+     window_update_class(cwindow, xcb_get_property_reply(conn, class_cookie, NULL));
+     window_update_name_legacy(cwindow, xcb_get_property_reply(conn, title_cookie, NULL));
+     window_update_name(cwindow, xcb_get_property_reply(conn, utf8_title_cookie, NULL));
 +    window_update_icon(cwindow, xcb_get_property_reply(conn, wm_icon_cookie, NULL));
      window_update_leader(cwindow, xcb_get_property_reply(conn, leader_cookie, NULL));
      window_update_transient_for(cwindow, xcb_get_property_reply(conn, transient_cookie, NULL));
@@ -284,7 +284,7 @@ index 790baba..cc88ee7 100644
      const int deco_width = (int)con->deco_rect.width;
 +
 +    /* Draw the icon */
-+    if (win->icon) {
++    if (win && win->icon) {
 +        uint16_t icon_size = con->deco_rect.height - 2 * logical_px(1);
 +
 +        int icon_offset_y = (con->deco_rect.height - icon_size) / 2;

@@ -7,7 +7,7 @@
 
 pkgname=i3-wm-iconpatch
 _pkgsourcename=i3
-pkgver=4.17.1
+pkgver=4.18.1
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager (with titlebar icon patch)'
 arch=('i686' 'x86_64')
@@ -29,9 +29,9 @@ options=('docs' '!strip')
 source=("http://i3wm.org/downloads/${_pkgsourcename}-${pkgver}.tar.bz2"
         "http://i3wm.org/downloads/${_pkgsourcename}-${pkgver}.tar.bz2.asc"
         "iconsupport.patch")
-sha1sums=('1834ce349a2aea2fbb0d44d9ed820fa9e1a394ab'
+sha1sums=('7a9d3fb235ca9916065751b9bfe2307c25875e7c'
           'SKIP'
-          'd314df1acdd30d9297aaf7b2c1956908f0152d2c')
+          'a5bcc549ef1e429485d9f247b4ed20dde6f88a8a')
 validpgpkeys=('424E14D703E7C6D43D9D6F364E7160ED4AC8EE1D') # Michael Stapelberg
 
 prepare() {
