@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gnudatalanguage/gdl
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = gnudatalanguage
 	depends = pslib
 	depends = eccodes
 	depends = udunits
-	depends = eigen3
+	depends = eigen
 	depends = libtirpc
 	depends = libmagick6
 	depends = libgeotiff
