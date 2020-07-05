@@ -1,0 +1,18 @@
+pkgbase = paperbash
+	pkgdesc = it's like pip but bash and a little shitty
+	pkgver = d400d26
+	pkgrel = 1
+	url = https://github.com/paperbenni/bash
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	depends = sh
+	depends = bash
+	provides = paperbash
+	conflicts = paperbash
+	source = paperbash::git+https://github.com/paperbenni/bash.git
+	sha256sums = SKIP
+
+pkgname = paperbash
+
