@@ -4,13 +4,14 @@
 
 pkgname=aerc
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
 license=('MIT')
-depends=('w3m' 'dante' 'notmuch')
+depends=('notmuch')
 makedepends=('go' 'git' 'scdoc')
+optdepends=('w3m: html viewer support' 'dante: proxy support')
 provides=('aerc')
 conflicts=('aerc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
@@ -29,4 +30,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR=$pkgdir install
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
