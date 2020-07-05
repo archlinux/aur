@@ -2,12 +2,12 @@
 
 pkgname=ttf-shlomo
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Derivatives of the Ezra SIL SR hebrew font."
 arch=('any')
 url="https://sites.google.com/site/orlaeinayim/introduction-to-fonts-with-hebrew-cantillation-marks"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 source=("Schlomo.ttf::https://sites.google.com/site/orlaeinayim/Shlomo.ttf?attredirects=0" \
 	"SchlomoLightBold.ttf::https://sites.google.com/site/orlaeinayim/ShlomoLightBold.ttf?attredirects=0" \
 	"SchlomoBold.ttf::https://sites.google.com/site/orlaeinayim/ShlomoBold.ttf?attredirects=0" \
