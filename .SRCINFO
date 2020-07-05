@@ -1,0 +1,14 @@
+pkgbase = autohosts
+	pkgdesc = Automate hosts file updates on Linux and MacOS. Block Firefox telemetry, Google snooping and web trackers at the root
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/angela-d/autohosts
+	arch = any
+	license = GPL2
+	makedepends = tar
+	depends = bash
+	source = autohosts-3.0.1.deb::https://github.com/angela-d/autohosts/releases/download/3.0.1/autohosts.deb
+	sha256sums = e3016fd00d9cf4cca44e7e7c435f5f6ec1526d043567408ab8593da42fda701a
+
+pkgname = autohosts
+
