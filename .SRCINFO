@@ -1,14 +1,19 @@
 pkgbase = so-git
-	pkgdesc = Terminal interface for StackExchange
-	pkgver = r114.58be873
+	pkgdesc = A terminal interface for StackOverflow
+	pkgver = r109.1b0b2f9
 	pkgrel = 1
-	url = https://github.com/samtay/so-hs
-	arch = i686
-	arch = x86_64
-	license = custom
-	makedepends = stack
-	source = so::git+https://github.com/samtay/so-hs
-	md5sums = SKIP
+	url = https://github.com/samtay/so
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	provides = so
+	conflicts = so
+	conflicts = so-bin
+	source = git+https://github.com/samtay/so
+	sha256sums = SKIP
 
 pkgname = so-git
 
