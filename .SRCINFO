@@ -1,6 +1,6 @@
 pkgbase = libserial-git
 	pkgdesc = A library for accessing serial ports on POSIX systems (git version)
-	pkgver = r530.2acb0c4
+	pkgver = r532.ddbf39c
 	pkgrel = 1
 	url = https://github.com/crayzeewulf/libserial/
 	arch = x86_64

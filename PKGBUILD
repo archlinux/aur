@@ -4,7 +4,7 @@
 
 _gitname=libserial
 pkgname="${_gitname}-git"
-pkgver=r530.2acb0c4
+pkgver=r532.ddbf39c
 pkgrel=1
 pkgdesc="A library for accessing serial ports on POSIX systems (git version)"
 arch=('x86_64')
@@ -37,9 +37,7 @@ build() {
 
   mkdir -p build
   cd build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 
