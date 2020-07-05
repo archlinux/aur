@@ -11,8 +11,8 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-mock')
-source=(https://github.com/nathangrigg/arxiv2bib/archive/$pkgver.tar.gz)
-md5sums=('268d263800cad636870110a891ccd405')
+source=($pkgname-$pkgver.tar.gz::https://github.com/nathangrigg/arxiv2bib/archive/$pkgver.tar.gz)
+sha256sums=('82cbf2283249dcce1f9c1e9f8ddcd7222f472c28699eab9320f2ff0c00e53126')
 
 build() {
   cd arxiv2bib-$pkgver
