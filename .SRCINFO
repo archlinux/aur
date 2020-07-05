@@ -1,6 +1,6 @@
 pkgbase = cabbage
 	pkgdesc = A framework for audio software development
-	pkgver = 2.3.44.git
+	pkgver = 2.3.45.git
 	pkgrel = 1
 	url = http://cabbageaudio.com/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cabbage
 	provides = cabbage
 	conflicts = cabbage
 	source = git+https://github.com/rorywalsh/cabbage.git#branch=develop
-	source = git+https://github.com/WeAreROLI/JUCE.git
+	source = git+https://github.com/WeAreROLI/JUCE.git#commit=1e71c07a492f01022f9064560c95c2bcd938847c
 	source = http://cabbageaudio.com/beta/CabbageManual.zip
 	source = cabbage.png
 	source = Cabbage.desktop
