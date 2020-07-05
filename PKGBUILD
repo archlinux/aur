@@ -105,6 +105,9 @@ _backports=(
   '64126925181809e7c0b8916471186c0bfa19d6ce'
   # basic/user-util: always use base 10 for user/group numbers 
   '9498903de6c1f7b0c3e5f1654d0ee451a304c59d'
+
+  # Fix build with µhttpd 0.9.71
+  'd17eabb1052e7c8c432331a7a782845e36164f01'
 )
 
 _reverts=(
