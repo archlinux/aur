@@ -1,12 +1,13 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-git
-pkgver=0.0.0.r39.b3d6df5
+pkgver=0.1.0.r47.82415d6
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/apognu/tuigreet'
 license=(GPL3)
+conflicts=(greetd-tuigreet greetd-tuigreet-bin)
 
 arch=(x86_64)
 depends=()
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tuigreet
-  printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
