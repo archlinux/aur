@@ -4,7 +4,7 @@
 pkgname=gmt6
 _pkgname=gmt
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data"
 arch=(x86_64)
 url="https://www.generic-mapping-tools.org"
@@ -34,12 +34,14 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
   # -DLICENSE_RESTRICTED=off \
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGSHHG_ROOT=/usr/share/gmt/coast \
     -DGMT_LIBDIR=lib \
-    -DDCW_ROOT=/usr/share/gmt/dcw \
     -DGMT_DATADIR=share/gmt \
     -DGMT_MANDIR=share/man \
     -DGMT_DOCDIR=share/doc/gmt \
+    -DGSHHG_ROOT=/usr/share/gmt/coast \
+    -DDCW_ROOT=/usr/share/gmt/dcw \
+    -DCOPY_GSHHG=OFF \
+    -DCOPY_DCW=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DGMT_OPENMP=ON \
     ..
