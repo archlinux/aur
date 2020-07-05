@@ -2,7 +2,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.0.0b10
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('8057f7cad2e95c72c8c43edfc01499b633320106d305bf25e80793399ffae0d4'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
-            'db26192ab3f8bdafe6a153cddd3c933410d0c566b54b9ce3491edfe2d789eac8')
+            '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py build

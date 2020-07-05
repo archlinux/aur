@@ -1,6 +1,6 @@
 #compdef trakts
 #
-# Zsh auto complete function for zsh
+# Zsh auto complete function for trakts
 #
 
 # Section: trakts autostart
