@@ -1,12 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
-pkgname=vapoursynth-editor-git
-pkgver=r18.0.ga511db5
+pkgname=vapoursynth-editor-sandsmark-git
+pkgver=r19.34.ga4a2a4d
 pkgrel=1
-pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
+pkgdesc="Editor for VapourSynth scripts, sandsmark's fork with vim support and other niceties"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?p=1688477'
+url='https://github.com/sandsmark/vapoursynth-editor'
 license=('CCPL' 'MIT' 'LGPL')
 depends=('qt5-base'
          'qt5-websockets'
@@ -15,7 +15,7 @@ depends=('qt5-base'
 makedepends=('git')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
-source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
+source=('git+https://github.com/sandsmark/vapoursynth-editor.git'
         'vsedit.desktop'
         'vsedit_server_watch.desktop'
         )
@@ -30,24 +30,23 @@ pkgver() {
 }
 
 prepare() {
-  cd vapoursynth-editor/pro
-  qmake-qt5
+  mkdir -p build && cd build
+  cmake ../vapoursynth-editor
 }
 
 build() {
-  cd vapoursynth-editor/pro
+  cd build
   make
 }
 
 package() {
   install -Dm644 vsedit.desktop "${pkgdir}/usr/share/applications/vsedit.desktop"
-  install -Dm644 vsedit_server_watch.desktop "${pkgdir}/usr/share/applications/vsedit_server_watch.desktop"
 
-  cd "vapoursynth-editor/build/release-64bit-gcc"
+  cd build
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
-  install -Dm755 vsedit-job-server "${pkgdir}/usr/bin/vsedit-job-server"
-  install -Dm755 vsedit-job-server-watcher "${pkgdir}/usr/bin/vsedit-job-server-watcher"
-  install -Dm644 vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
+
+  cd ../vapoursynth-editor
+  install -Dm644 resources/vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README "${pkgdir}/usr/share/doc/vsedit/README"
 }
