@@ -1,4 +1,6 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: loqs
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=ecwolf-git
 _pkgname=ecwolf
