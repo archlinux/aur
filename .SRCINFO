@@ -1,0 +1,16 @@
+pkgbase = networkmanager-dispatcher-sshd
+	pkgdesc = Dispatcher Script for sshd
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = any
+	license = MIT
+	depends = networkmanager
+	depends = openssh
+	source = 10-sshd
+	source = LICENSE
+	md5sums = 32b05542b6dca22e2958bd9e1198b08b
+	md5sums = bade437c691452a83923e5064da20757
+
+pkgname = networkmanager-dispatcher-sshd
+

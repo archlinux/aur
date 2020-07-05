@@ -1,0 +1,37 @@
+#!/bin/bash
+
+
+if [ -e /sys/fs/cgroup/systemd ]; then
+        case "$2" in
+                up)
+                        systemctl start sshd.service
+                ;;
+                vpn-up)
+                        systemctl start sshd.service
+                ;;
+                down)
+                        systemctl stop sshd.service
+                ;;
+                vpn-down)
+                        systemctl stop sshd.service
+                ;;
+        esac
+else
+
+  if [ -e "/etc/rc.d/sshd" ]; then
+          case "$2" in
+                  up)
+                          /etc/rc.d/sshd start
+                  ;;
+                  vpn-up)
+                          /etc/rc.d/sshd start
+                  ;;
+                  down)
+                          /etc/rc.d/sshd stop
+                  ;;
+                  vpn-down)
+                          /etc/rc.d/sshd stop
+                  ;;
+          esac
+  fi
+fi
