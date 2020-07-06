@@ -16,7 +16,7 @@ pkgbase = lampswitch
 	depends = desktop-file-utils
 	optdepends = mate-ayatana-indicator-applet
 	optdepends = libayatana-appindicator-gtk3
-	source = bzr+lp:/lampswitch/trunk
+	source = bzr+lp:lampswitch
 	md5sums = SKIP
 
 pkgname = lampswitch

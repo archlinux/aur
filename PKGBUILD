@@ -12,24 +12,24 @@ depends=("gobject-introspection" "gtk3" "python-gobject" "libappindicator-gtk3" 
 makedepends=("breezy" "python-setuptools" "python-polib")
 optdepends=("mate-ayatana-indicator-applet"  "libayatana-appindicator-gtk3")
 install="${pkgname}.install"
-source=("bzr+lp:/${pkgname}/trunk")
+source=("bzr+lp:${pkgname}")
 md5sums=("SKIP")
 
 pkgver()
 {
-    cd trunk
+    cd ${srcdir}/${pkgname}
     echo "$(cat ${pkgname/\-/}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
 }
 
 build()
 {
-    cd trunk
+    cd ${srcdir}/${pkgname}
     python setup.py build
 }
 
 package()
 {
-    cd trunk
+    cd ${srcdir}/${pkgname}
     python setup.py install --root="${pkgdir}" --optimize=1
 
 }
