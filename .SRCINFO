@@ -5,13 +5,14 @@ pkgbase = odio-sacd
 	url = https://tari.in/www/software/odio-sacd
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL3
-	makedepends = bzr
+	makedepends = breezy
 	makedepends = gcc
 	makedepends = libodiosacd
 	depends = libodiosacd
 	options = !emptydirs
-	source = bzr+lp:/odio-sacd/trunk
+	source = bzr+lp:odio-sacd
 	md5sums = SKIP
 
 pkgname = odio-sacd
