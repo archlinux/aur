@@ -7,7 +7,7 @@ pkgbase = gpu-manager-git
 	license = Apache
 	makedepends = git
 	makedepends = go
-	makedepends = cuda
+	makedepends = cuda>=10.2
 	source = gpu-manager::git+https://github.com/tkestack/gpu-manager.git#branch=master
 	md5sums = SKIP
 
