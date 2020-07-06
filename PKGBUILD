@@ -1,13 +1,13 @@
 # Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bitshift.io -> https://github.com/bit-shift-io
 pkgname=qweather-git
-pkgver=r76.e81d73d
+pkgver=r77.f7c65f0
 pkgrel=1
 pkgdesc="A simple weather application. Using BOM Australia weather provider. Written in QT/QML and C++."
 arch=('any')
 url="https://github.com/bit-shift-io/qweather"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('git' 'qt5-tools' 'qt5-graphicaleffects')
+depends=('qt5-declarative')
+makedepends=('git' 'cmake' 'qt5-svg')
 provides=('qweather')
 source=("${pkgname}::git+https://github.com/bit-shift-io/qweather.git")
 md5sums=('SKIP')
