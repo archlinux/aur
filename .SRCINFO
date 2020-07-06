@@ -6,7 +6,6 @@ pkgbase = tu2
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = qt5-base
 	source = https://github.com/ntropy83/tu2/archive/1.1.1.tar.gz
 	md5sums = SKIP
