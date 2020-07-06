@@ -5,23 +5,23 @@ pkgname="odio-edit"
 pkgver="20.5.11.19"
 pkgrel="3"
 pkgdesc="A lightweight audio wave editor"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/odio-edit"
 license=("GPL3")
 depends=("gst-plugins-base" "gtk3" "dconf" "gst-libav" "libodiosacd")
-makedepends=("bzr" "gcc" "gst-plugins-base-libs" "gtk3" "libodiosacd")
-source=("bzr+lp:/${pkgname}/trunk")
+makedepends=("breezy" "gcc" "gst-plugins-base-libs" "gtk3" "libodiosacd")
+source=("bzr+lp:${pkgname}")
 md5sums=("SKIP")
 options=("!emptydirs")
 
 build()
 {
-    cd trunk
+    cd ${srcdir}/${pkgname}
     make
 }
 
 package()
 {
-    cd trunk
+    cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
