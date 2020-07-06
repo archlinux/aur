@@ -1,6 +1,6 @@
 # Maintainer: Stephan Hilb <stephan@ecshi.net>
 pkgname=hts-engine-cvs
-pkgver=1.10.r201512230818
+pkgver=1.10.r201707251428
 pkgrel=1
 pkgdesc="Engine to synthesize speech waveform from HMMs trained by hts."
 arch=('i686' 'x86_64')
@@ -25,8 +25,6 @@ _cvsfetch() {
 }
 
 pkgver() {
-    # run here, because prepare() is called too late
-    _cvsfetch 2&> /dev/null
     cd "$srcdir/$pkgname"
 
     printf "%s.r%s" \
@@ -35,6 +33,8 @@ pkgver() {
 }
 
 prepare() {
+    _cvsfetch 2&> /dev/null
+
     cd "$srcdir/$pkgname/src"
 
     [[ -f ChangeLog ]] || ln -s NEWS ChangeLog
