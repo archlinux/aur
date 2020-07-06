@@ -7,7 +7,7 @@ pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/foonathan/standardese"
 license=('MIT')
-depends=('clang>=3.7.1' 'boost-libs>=1.55' 'cmark')
+depends=('clang>=3.7.1' 'boost-libs>=1.55' 'cmark' 'llvm')
 makedepends=('git' 'cmake' 'boost>=1.55')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'spdlog-git')
