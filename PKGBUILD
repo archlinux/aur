@@ -4,7 +4,7 @@
 pkgname=trojan-qt5-appimage
 provides=('trojan-qt5')
 conflicts=('trojan-qt5')
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A cross-platform Trojan GUI Client"
@@ -13,7 +13,7 @@ url='https://github.com/TheWanderingCoel/Trojan-Qt5'
 options=(!strip)
 makedepends=('gendesk')
 source=("$url/releases/download/v$pkgver/Trojan-Qt5-Linux.7z")
-sha512sums=('7e60da4ed4e9eb62cfebced5821384930b516ff274e37ccfcdeb51b66fecfdb0736ea745885b4fb7fc7b9bd0316718e1ff12be780e12c282f626be9750a08075')
+sha512sums=('0f75373939257771edee714a35d1fea298c9a0f437d6a35287c446946fd0fb84683e9352b96bc28c0ce51e4ae5388a592b7ff91f294461f876da6d041b7d7648')
 
 prepare() {
     gendesk -f -n --pkgname trojan-qt5 --pkgdesc "${pkgdesc}" --categories "Network" --icon "trojan-qt5" --exec "/opt/Trojan-Qt5-Linux.AppImage"
