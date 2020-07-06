@@ -1,6 +1,6 @@
 pkgbase = tu2
 	pkgdesc = Simple Project Management System (english translation pending)
-	pkgver = 12.226db41
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://github.com/ntropy83/tu2
 	arch = i686

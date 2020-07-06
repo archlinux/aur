@@ -1,6 +1,6 @@
 # Maintainer: Oliver Sagner <oliver.sagner@jwo.com.de>
 pkgname='tu2'
-pkgver=12.226db41
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Simple Project Management System (english translation pending)"
 arch=('i686' 'x86_64')
@@ -10,11 +10,6 @@ depends=('qt5-base')
 makedepends=('git')
 source=("git+https://github.com/ntropy83/tu2.git")
 md5sums=('SKIP')
-
-pkgver() {
-	cd "tu2"
-	echo $(git rev-list --count master).$(git rev-parse --short master)
-}
 
 build() {
 	cd "$srcdir/tu2"
