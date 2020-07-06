@@ -1,6 +1,6 @@
 pkgbase = meteo-qt
 	pkgdesc = System tray application for weather status information
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/dglent/meteo-qt
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = meteo-qt
 	depends = python-sip
 	depends = python-urllib3
 	optdepends = qt5-translations: translations of some native UI components
-	source = meteo-qt-1.7.tar.gz::https://github.com/dglent/meteo-qt/archive/v1.7.tar.gz
-	sha256sums = c7c4f81bdbbe402b6c72a277b9156f3f1c0cf0380733366bc6fcce1ce512d9a0
+	source = meteo-qt-1.8.tar.gz::https://github.com/dglent/meteo-qt/archive/v1.8.tar.gz
+	sha256sums = 192e2bceb3b1ec423c1904b104eac845abfee3d3c14c3f6532596e2cda94ae8f
 
 pkgname = meteo-qt
 
