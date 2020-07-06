@@ -1,15 +1,16 @@
 # Maintainer: RedTide <redtid3@gmail.com>
+# Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r802.4b116e8
+pkgver=r2043.fa610c1f
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
 arch=('x86_64')
 license=('custom:BSD-2-Clause' 'custom:ISC')
 makedepends=('git' 'cmake')
-depends=('libsndfile' 'jack')
+depends=('libsndfile' 'jack' 'libx11' 'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'cairo' 'freetype2')
 provides=('sfizz')
 conflicts=('sfizz')
 source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
@@ -25,10 +26,10 @@ prepare() {
 build() {
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" "${srcdir}/${pkgname}"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -DSFIZZ_JACK=ON -DSFIZZ_LV2=ON -DSFIZZ_VST=ON "${srcdir}/${pkgname}"
     cmake --build . --target all
 }
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
