@@ -1,5 +1,6 @@
 pkgbase = mpvz-git
-	pkgver = 0.r143.g2b3d66a
+	pkgdesc = Qt5/QML based GUI for libmpv. Based on the Tethys theme for Bomi.
+	pkgver = 0.r147.g1eea404
 	pkgrel = 1
 	url = https://github.com/Zren/mpvz
 	arch = i686

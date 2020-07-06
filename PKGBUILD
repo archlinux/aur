@@ -3,8 +3,9 @@
 _pkgname=mpvz
 _github="Zren/${_pkgname}"
 pkgname=${_pkgname}-git
-pkgver=0.r143.g2b3d66a
+pkgver=0.r147.g1eea404
 pkgrel=1
+pkgdesc='Qt5/QML based GUI for libmpv. Based on the Tethys theme for Bomi.'
 arch=('i686' 'x86_64')
 url="https://github.com/${_github}"
 license=('GPL2')
