@@ -6,10 +6,10 @@ pkgrel=3
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-         'python-pyxdg' 'python-blinker' 'python-natsort')
+		 'python-pyxdg' 'python-blinker' 'python-natsort')
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
-            'python-setproctitle: prettifies the process name')
+			'python-setproctitle: prettifies the process name')
 license=('GPL')
 arch=('any')
 
@@ -18,17 +18,17 @@ source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver
 sha256sums=('cf2f57486fa980407b9762750e669099857069e6e17dd97860b5beada735efeb')
 
 prepare(){
-    cd "stig-${pkgver}"
-    sed -i 's/urwidtrees>=1.0.3dev0/urwidtrees>=1.0.2/' setup.py
+	cd "stig-${pkgver}"
+	sed -i 's/urwidtrees>=1.0.3dev0/urwidtrees>=1.0.2/' setup.py
 	rm .python-version
 }
 
 build() {
-    cd "stig-${pkgver}"
-    python setup.py build
+	cd "stig-${pkgver}"
+	python setup.py build
 }
 
 package() {
-    cd "stig-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	cd "stig-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
