@@ -1,0 +1,16 @@
+pkgbase = mpvz-git
+	pkgver = 0.r143.g2b3d66a
+	pkgrel = 1
+	url = https://github.com/Zren/mpvz
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-x11extras
+	depends = qt5-quickcontrols
+	depends = mpv
+	source = mpvz::git://github.com/Zren/mpvz
+	sha256sums = SKIP
+
+pkgname = mpvz-git
+
