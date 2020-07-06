@@ -1,7 +1,7 @@
 pkgbase = swgemu
 	pkgdesc = Launcher for Star Wars Galaxies Emulator
-	pkgver = 0.18
-	pkgrel = 5
+	pkgver = 0.23
+	pkgrel = 6
 	url = http://www.swgemu.com
 	install = launchpad.install
 	arch = any
@@ -12,13 +12,17 @@ pkgbase = swgemu
 	source = launchpad.desktop
 	source = launchpad.install
 	source = icon.png
+	source = removeicon.patch
 	source = http://launchpad2.net/SWGEmuLaunchpad_ubuntu_x86_64.tar.gz
+	source = Launchpad::git+https://review.swgemu.com/p/Launchpad.git
 	validpgpkeys = 120206848BD3375043BF1B253209FA22E33FF70C
-	md5sums = b7041ff9bef465687f6df5a6fb9053db
-	md5sums = 3d5fff82e58d1a1ff548f72a0cb466ea
-	md5sums = 4a855d869afa0fe7eb21bb1beb015b0a
-	md5sums = 4df75531fbf01652c5ac53d4d7978187
-	md5sums = c1fbbcef48ba61ea3c17692a19084c62
+	sha256sums = b25d19e4b20d41e640f4adef0d8cb54e7fdd713bb36b9c7adc0a9d8b03bd8bd9
+	sha256sums = 1f46fe25911879b3ead1349f0f66b85adaa4974542db6a1e268d4343278f2ce4
+	sha256sums = af45f7c63e2eb89c42355731db15ae92dbfbeb274283d4d57cd29e9a46a132aa
+	sha256sums = 1b7e5ef6fcd387f7b10ce88abb78dc89e6368b53aaf8a23acfef05652ea20e97
+	sha256sums = 0376bb4d77b13719177f166537ad105fcd01f0947ff96d1f9bde53d09ebd760c
+	sha256sums = ec30edbee4b3563f7d7a75c1e35e8b68792eb80c9b313d9982cedcf0e83d5455
+	sha256sums = SKIP
 
 pkgname = swgemu
 

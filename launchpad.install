@@ -8,7 +8,9 @@ post_install() {
 # Inform the user that their files still remain, and to
 # remove them if they wish
 post_remove() {
-	echo ">>> Please note, that removing swgemu-launchpad"
+	rm -rf /usr/share/pixmaps/SWGEMU
+	rm -rf /usr/share/applications/launchpad.desktop
+	echo ">>> Please note, that removing swgemu"
 	echo ">>> Does not remove any files you've installed"
 	echo ">>> During the SWG install process or any files"
 	echo ">>> SWGEmuLaunchpad may have installed. Please"
