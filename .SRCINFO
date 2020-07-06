@@ -1,0 +1,14 @@
+pkgbase = miraiok-bin
+	pkgdesc = miraiOK二进制文件的打包
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/LXY1226/MiraiOKhttps://github.com/LXY1226/MiraiOK
+	arch = x86_64
+	license = AGPL3
+	depends = jdk8-openjdk
+	noextract = http://t.imlxy.net:64724/mirai/MiraiOK/miraiOK_linux_amd64
+	source = http://t.imlxy.net:64724/mirai/MiraiOK/miraiOK_linux_amd64
+	md5sums = 114eef36cea19e2846ecb149e88899ac
+
+pkgname = miraiok-bin
+
