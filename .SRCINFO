@@ -1,6 +1,6 @@
 pkgbase = ocaml-ppx_tools
 	pkgdesc = Tools for authors of ppx rewriters and other syntactic tools
-	pkgver = 6.1+4.10.0
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppx_tools
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = ocaml-ppx_tools
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=1.6.0
-	depends = ocaml>=4.10.0
+	depends = ocaml>=4.08.0
 	options = !strip
-	source = ocaml-ppx_tools-6.1+4.10.0-1.tar.gz::https://github.com/ocaml-ppx/ppx_tools/archive/6.1+4.10.0.tar.gz
-	sha256sums = 8fe028e66f5f5e644234386b0587100102a54de00f32e5c6de0aaa426e242fab
+	source = ocaml-ppx_tools-6.2-1.tar.gz::https://github.com/ocaml-ppx/ppx_tools/archive/6.2.tar.gz
+	sha256sums = 59e47d43b09b81c1349cb51a56eba7a91e2ba4935bae577605266af44a8bda10
 
 pkgname = ocaml-ppx_tools
