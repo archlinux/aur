@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 0.91
-	pkgrel = 2
+	pkgver = 0.92
+	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = xorg-xwininfo: for playing regular games side-by-side in VR
 	optdepends = vr-video-player: for playing regular games side-by-side in VR
 	optdepends = xdg-utils: for opening the ProtonDB URL of started game
-	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=c1f6d094b7c5456211bed42dfa5ac62253670e84
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=806f915facabeef1a6e72d4647995123df2b6daf
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch

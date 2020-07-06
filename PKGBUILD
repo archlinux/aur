@@ -3,8 +3,8 @@
 
 # https://aur.archlinux.org/packages/steamtinkerlaunch
 pkgname=steamtinkerlaunch
-pkgver=0.91
-pkgrel=2
+pkgver=0.92
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -26,7 +26,7 @@ optdepends=(
     'vr-video-player: for playing regular games side-by-side in VR'
     'xdg-utils: for opening the ProtonDB URL of started game'
 )
-_commit='c1f6d094b7c5456211bed42dfa5ac62253670e84'
+_commit='806f915facabeef1a6e72d4647995123df2b6daf'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
