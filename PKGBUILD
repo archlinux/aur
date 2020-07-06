@@ -9,7 +9,7 @@ license=('custom')
 depends=('gcc-libs' 'open-jtalk-voice')
 provides=("${pkgname%-cvs}=${pkgver%.*}")
 conflicts=("${pkgname%-cvs}")
-makedepends=('cvs' 'hts-engine>=1.09')
+makedepends=('cvs' 'hts-engine>=1.10')
 source=()
 sha256sums=()
 
