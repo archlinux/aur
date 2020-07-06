@@ -2,11 +2,11 @@
 
 pkgname=stig
 pkgver=0.11.2a0
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-         'python-xdg' 'python-blinker' 'python-natsort')
+         'python-pyxdg' 'python-blinker' 'python-natsort')
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
             'python-setproctitle: prettifies the process name')
