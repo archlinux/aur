@@ -1,4 +1,4 @@
-function() {
+post_install() {
     echo ""
     echo "---------------------------- TIPS ----------------------------"
     echo "In order to use python-easyocr, you need to go to the official"
@@ -9,5 +9,3 @@ function() {
     echo "site-packages/easyocr/model/)"
     echo ""
 }
-
-function()
