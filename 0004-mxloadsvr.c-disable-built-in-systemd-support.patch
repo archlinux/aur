@@ -1,0 +1,26 @@
+--- mxloadsvr.c.orig	2020-07-05 12:38:21.920006951 -0400
++++ mxloadsvr.c	2020-07-05 12:38:40.634029739 -0400
+@@ -424,10 +424,11 @@ int main(int arg, char *argv[])
+             system(tmpstr);
+             system("chmod +x /usr/lib/npreal2/driver/load_npreal2.sh");
+ 
+             f = fopen( "/usr/lib/npreal2/tmp/npreal2.service", "r+");
+             if( f == NULL ){
++              if (0) {
+                 system("touch /usr/lib/npreal2/tmp/npreal2.service");
+                 system("echo '[Unit]' >> /usr/lib/npreal2/tmp/npreal2.service 2>&1");
+                 system("echo 'Description=Moxa NPort Driver' >> /usr/lib/npreal2/tmp/npreal2.service 2>&1");
+                 system("echo 'Requires=systemd-hostnamed.service' >> /usr/lib/npreal2/tmp/npreal2.service 2>&1");
+                 system("echo 'After=remote-fs.target' >> /usr/lib/npreal2/tmp/npreal2.service 2>&1");
+@@ -439,10 +440,11 @@ int main(int arg, char *argv[])
+                 system("cp /usr/lib/npreal2/tmp/npreal2.service /etc/systemd/system 2>&1");
+                 system("chmod 664 /etc/systemd/system/npreal2.service 2>&1");
+                 system("systemctl daemon-reload > /dev/null 2>&1");
+                 system("systemctl enable npreal2.service > /dev/null 2>&1");
+                 system("rm -f /usr/lib/npreal2/tmp/npreal2.service > /dev/null 2>&1");
++              }
+             } else {
+                 fclose(f);
+             }
+         }
+     }

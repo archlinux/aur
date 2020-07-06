@@ -1,9 +1,16 @@
 _tp_config="/etc/npreal2/npreal2d.cf"
 _tp_configps="${_tp_config}.pacsave"
-_tp_log='/var/log/npreal2d.log'
+#_tp_log='/var/log/npreal2d.log'
+
+# It's the only way to be sure
+_nuke_it_from_orbit() {
+  # Remove broken systemd support placed by mxloadsvr.c
+  rm -f '/etc/systemd/system/npreal2.service'
+}
 
 post_upgrade() {
   set -u
+  _nuke_it_from_orbit
   systemctl daemon-reload
   # Handle the module update if DKMS doesn't
   if [ ! -d /usr/src/npreal2-*/ ]; then
@@ -31,6 +38,7 @@ post_install() {
 
 pre_upgrade() {
   set -u
+  _nuke_it_from_orbit
   if [ ! -d /usr/src/npreal2-*/ ]; then
     systemctl stop 'npreal2.service' # also rmmod the module
   fi
@@ -39,6 +47,7 @@ pre_upgrade() {
 
 pre_remove() {
   set -u
+  _nuke_it_from_orbit
   systemctl stop 'npreal2.service' # pre_upgrade
   # Unfortunately this when blank is changed after install which makes pacman think that it needs to be saved
   if ! grep -q '^[0-9]' "${_tp_config}"; then
@@ -49,6 +58,7 @@ pre_remove() {
 
 post_remove() {
   set -u
+  _nuke_it_from_orbit
   systemctl daemon-reload
   set +u
 }

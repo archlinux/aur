@@ -80,42 +80,45 @@ _opt_defaultmode='666' # default: 666
 set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
-pkgver='1.19'; _build='17110917'
-pkgrel='5'
+pkgver='5.0'; # _build='17110917'
+pkgrel='2'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
-url='https://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
+url='https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/terminal-servers/nport-6100-6200-series'
 #url="https://github.com/rchovan/${pkgname}"
 license=('GPL' 'custom')
 depends=('glibc' 'gawk' 'perl' 'psmisc' 'openssl')
-#makedepends=('git')
+#makedepends+=('git')
 backup=("etc/npreal2/npreal2d.cf")
 install="${pkgname}-install.sh"
 _srcdir='moxa'
-source=("https://www.moxa.com/drivers/IDC_SW/DeviceServer/Driver/NPort%20Real%20TTY%20Driver%20for%20Linux/Mainline/ver${pkgver}/npreal2_mainline_v${pkgver}_build_${_build}.tgz")
-#_srcdir="${pkgname}"
-#source=("git+${url}.git#commit=${_commit}")
-#_srcdir="${pkgname}-${_commit}"
-#source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz")
-source+=('npreal2.sh')
-_patches=(
+#source=("https://www.moxa.com/drivers/IDC_SW/DeviceServer/Driver/NPort%20Real%20TTY%20Driver%20for%20Linux/Mainline/ver${pkgver}/npreal2_mainline_v${pkgver}_build_${_build}.tgz")
+source=(
+  "https://www.moxa.com/Moxa/media/PDIM/S100000217/moxa-real-tty-drivers-for-linux-5.x.x-driver-v${pkgver}.tgz"
   #'0000-SSL-destroy-cf-configuration.patch'
   '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
   '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
   '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
+  'npreal2.sh'
 )
-source+=("${_patches[@]}")
-md5sums=('3852c44f8e6bc5a1194536eb846f4e60'
-         '2490e453084bd4e3157c8c3a621c3f40'
+#_srcdir="${pkgname}"
+#source=("git+${url}.git#commit=${_commit}")
+#_srcdir="${pkgname}-${_commit}"
+#source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz")
+md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          '043dac91330a15c38e41bb2e2e1d5598'
          '9cda38abdd17b2af80475ed06bdf0889'
-         'bcd835765a6451989195a3518d53088d')
-sha256sums=('f99f38ef5618469a1d6f4824e41856616ee65ab8359069daa70d8d481f364462'
-            '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372'
+         'bcd835765a6451989195a3518d53088d'
+         '0c53bb8e2df459fabbca10b567981a93'
+         '90ac27b669542c11b0a9b6763f6e0d9b')
+sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
             '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e'
-            'c3f8502c3e7e600ccc3e778ec25875ddda3a20ed3cb62bc56505e609ac346d79')
+            'c3f8502c3e7e600ccc3e778ec25875ddda3a20ed3cb62bc56505e609ac346d79'
+            'e1856e4a410af0b112dd8beee58edd2516bb5cd7607d84b06bc25133b8bd8f15'
+            '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -151,8 +154,8 @@ prepare() {
       -e 's: /lib/: /usr/lib/:g' \
       -e '# Cut some of the warnings we dont want to fix' \
       -e '#s:^CC+=.*$:& -Wno-misleading-indentation:g' \
-      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
-      -e 's:SUBDIRS=:M=$(PWD) &:g' \
+      -e '# Add back SUBDIRS= for dkms detection' \
+      -e '/ modules/ s: M=: SUBDIRS=$(PWD)&:g' \
     -i 'Makefile'
   ! test -s 'Makefile.Arch' || echo "${}"
 
@@ -190,6 +193,8 @@ prepare() {
       -e 's:^LINUX_DIS=:#&:g' \
       -e '# Enable SSL' \
       -e 's:^read check:check="Y" # &:g' \
+      -e '# Disable interactive response to kernel version mismatch' \
+      -e 's:^read any:#&:g' \
     -i 'mxinst'
   ! test -s 'mxinst.Arch' || echo "${}"
 
@@ -202,6 +207,8 @@ prepare() {
       -e '# Move config file in mx utils. Another sed will provide this #define' \
       -e '/npreal2d.cf/ s:DRIVERPATH:CONFIGPATH:g' \
     -i mx*.c
+  # force the use of systemd
+  sed -e 's:^int isinitproc:static int isinitproc() { return 0; }\nstatic &_disabled:g' -i 'mxaddsvr.c' 'mxdelsvr.c' 'mxloadsvr.c' 'mxsetsec.c'
   sed -e '# Move config file in mx daemons' \
       -e '/npreal2d.cf/ s:workpath:"/etc/npreal2":g' \
       -e '# Move log file' \
@@ -221,11 +228,15 @@ prepare() {
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0002-kernel-5.0.0-access_ok.patch'
-  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
+  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
   patch -Nbup0 -i "${srcdir}/0003-kernel-5.6-proc_dir_entry-proc_ops.patch"
+
+  #cp -p 'mxloadsvr.c'{,.orig}; false
+  #diff -pNau5 'mxloadsvr.c'{.orig,} > '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
+  patch -Nbup0 -i "${srcdir}/0004-mxloadsvr.c-disable-built-in-systemd-support.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \
@@ -305,9 +316,10 @@ package() {
 
   # Place start stop scripts
   install -Dpm744 /dev/null "${pkgdir}/etc/npreal2/rc.local" # the mx utils chmod this +x. The 0-length file triggers the configuration on the first start
-  install -Dpm744 "${srcdir}/npreal2.sh" -t "${pkgdir}/etc/npreal2/"
+  install -Dpm744 "${srcdir}/npreal2.sh" -t "${pkgdir}/usr/lib/npreal2/driver/"
 
   # Move configuration files to /etc
+  install -d "${pkgdir}/etc/npreal2/"
   mv "${pkgdir}/usr/lib/npreal2/driver"/{'npreal2d.cf','config'} "${pkgdir}/etc/npreal2/"
 
   # Place empty log file.
@@ -336,9 +348,9 @@ After=network.target
 
 [Service]
 Type=notify
-ExecStart=/etc/npreal2/npreal2.sh start
-ExecStop=/etc/npreal2/npreal2.sh stop
-ExecReload=/etc/npreal2/npreal2.sh reload
+ExecStart=/usr/bin/bash /usr/lib/npreal2/driver/npreal2.sh start
+ExecStop=/usr/bin/bash /usr/lib/npreal2/driver/npreal2.sh stop
+ExecReload=/usr/bin/bash /usr/lib/npreal2/driver/npreal2.sh reload
 RemainAfterExit=yes
 
 [Install]

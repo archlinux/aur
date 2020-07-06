@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/usr/bin/bash
+
+set -u
+set +e
 
 case "$1" in
 'start'|'restart')
@@ -24,7 +27,9 @@ case "$1" in
   killall -s SIGTERM 'npreal2d' 'npreal2d_redund' # doesn't work
   killall -q -s SIGINT 'npreal2d' 'npreal2d_redund'
   killall -q -s SIGKILL 'npreal2d' 'npreal2d_redund'
-  rmmod 'npreal2'
+  if rmmod 'npreal2'; then
+    echo 'Module removed'
+  fi
   systemd-notify --ready
   exit 0
   ;;
