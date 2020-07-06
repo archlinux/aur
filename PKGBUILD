@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=3661cee1cd2781cd31ac096be7e157f2e661b36b  # tags/2.49.2
+_commit=e5760d450ac862e6f639575bc2861b6fac191d60  # tags/2.48.8
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.49.2
+pkgver=2.48.8
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
@@ -34,6 +34,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/librsvg"
+  sed 's/rsvg_c_api.lib/librsvg_c_api.a/g' -i Makefile.am
   NOCONFIGURE=1 ./autogen.sh
 }
 
