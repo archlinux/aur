@@ -1,0 +1,36 @@
+pkgbase = the-glorious-dotfiles
+	pkgdesc = A glorified personal dot files
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/manilarome/the-glorious-dotfiles
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = awesome-git
+	depends = rofi-git
+	depends = picom-tryone-git
+	optdepends = light-git: Brightness widget and OSD
+	optdepends = alsa-utils: Volume widget and OSD
+	optdepends = acpi: Power/Battery Widgets
+	optdepends = acpid: Power/Battery Widgets
+	optdepends = acpi_call: Power/Battery Widgets
+	optdepends = mpd: Music widget
+	optdepends = mpc: Music widget
+	optdepends = maim: Screenshot tool
+	optdepends = xclip: Will be used in saving the screenshots to clipboard
+	optdepends = imagemagick: Music widget/Extracts hardcoded album cover from songs
+	optdepends = blueman: Default launch application for bluetooth widget
+	optdepends = redshift: Blue light widget
+	optdepends = xfce4-power-manager: Default launch application for battery widget
+	optdepends = upower: Battery widget
+	optdepends = archlinux-xdg-menu: Menu Module/Useful for generating app list manually
+	optdepends = awesome-freedesktop-git: Menu Module/Useful for generating app list automatically
+	optdepends = jq: Read weather
+	optdepends = noto-fonts-emoji: Emoji support for notification center
+	optdepends = nerd-fonts-fantasque-sans-mono: Rofi unicode font
+	optdepends = xdg-user-dirs: xdg-folders widget
+	source = git+https://github.com/manilarome/the-glorious-dotfiles.git
+	sha256sums = SKIP
+
+pkgname = the-glorious-dotfiles
+
