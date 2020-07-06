@@ -1,13 +1,12 @@
 pkgbase = oblogout-py3-git
 	pkgdesc = Openbox Logout Menu, ported to Python 3.
-	pkgver = 0.01
+	pkgver = 0.02
 	pkgrel = 1
 	url = https://github.com/trizen/oblogout-py3
 	install = oblogout.install
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = python-distlib
 	makedepends = python-distutils-extra
 	depends = python-pillow
 	depends = python-configparser
