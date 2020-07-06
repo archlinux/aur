@@ -13,6 +13,11 @@ sha512sums=('SKIP')
 conflicts=( "natural-wallpaper-collection-git")
 provides=("natural-wallpaper-collection-git=$pkgver")
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed '/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
     install -dm 755 $pkgdir/usr/share/backgrounds/natural-wallpaper-collection
     cp -r --no-preserve=ownership natural-wallpaper-collection-git/natural-wallpaper-collection $pkgdir/usr/share/backgrounds
