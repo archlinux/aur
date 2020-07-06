@@ -1,6 +1,6 @@
 pkgname=mingw-w64-suitesparse
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="http://www.cise.ufl.edu/research/sparse/SuiteSparse/"
 arch=('any')
