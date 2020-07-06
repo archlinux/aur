@@ -2,7 +2,7 @@
 pkgname=passgen-git
 pkgver=v1.01.r0.gd4a5e45
 pkgrel=1
-pkdesc=("A simple cli tool that generates passwords of a user defined length. Can currently create Random String & Secure Token String passwords")
+pkgdesc='A simple cli tool that generates passwords of a user defined length. Can currently create Random String & Secure Token String passwords'
 url="https://github.com/Can221-ParOS/passgen-git.git"
 license=('GPL3')
 depends=("python")
