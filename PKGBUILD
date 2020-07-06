@@ -2,16 +2,16 @@
 _pkgname=neo4j-python-driver
 __pkgname=neo4j-driver
 pkgname=python-$__pkgname
-pkgver=1.7.6
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Neo4j Bolt driver for Python"
 arch=(any)
 url="https://github.com/neo4j/neo4j-python-driver"
 license=('Apache')
-depends=('python' 'python-pytz')
+depends=('python' 'python-pytz' 'python-neotime' 'python-neobolt')
 makedepends=('python-setuptools')
 source=("https://github.com/neo4j/$_pkgname/archive/$pkgver.zip")
-sha256sums=('00752aef0b36b54ec5badbebda68d8a0c9df3f8101aa2a49f5dbf975c59d1b4b')
+sha256sums=('ac21559546202cac03a21891c0b44ac6cc5a96f0deb0d4fbbdbc026851d61763')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
