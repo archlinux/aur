@@ -1,12 +1,10 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
 	pkgver = 30_r01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
-	depends = android-sdk
-	depends = android-sdk-platform-tools
 	provides = android-platform-30
 	conflicts = android-platform-30
 	options = !strip
@@ -18,4 +16,6 @@ pkgbase = android-platform
 	sha384sums = 801ca80cee0aec1f658a121dfce88a111675a629df96da8a8d694210d33c8e03cb9e1bb364d259633c47c89003e29510
 
 pkgname = android-platform
+	depends = android-sdk
+	depends = android-sdk-platform-tools
 
