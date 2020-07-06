@@ -6,7 +6,7 @@ pkgbase = caja-rename
 	install = caja-rename.install
 	arch = any
 	license = GPL3
-	makedepends = bzr
+	makedepends = breezy
 	makedepends = python-setuptools
 	makedepends = python-polib
 	depends = caja
@@ -16,7 +16,7 @@ pkgbase = caja-rename
 	depends = gobject-introspection
 	depends = gtk3
 	options = !emptydirs
-	source = bzr+lp:/cajarename/trunk
+	source = bzr+lp:cajarename
 	md5sums = SKIP
 
 pkgname = caja-rename
