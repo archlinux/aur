@@ -1,7 +1,7 @@
 #Mantainer: emnl
 pkgname=otf-inconsolata-dz-powerline
 pkgver=1.0
-pkgrel=3
+pkgrel=5
 depends=('fontconfig' 'xorg-font-util' 'xorg-bdftopcf' 'xorg-mkfontdir' 'xorg-mkfontscale')
 pkgdesc="Inconsolata-dz-Powerline"
 arch=('any')
