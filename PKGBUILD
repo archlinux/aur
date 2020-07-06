@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -13,7 +13,7 @@ arch=(x86_64)
 
 source=("https://github.com/apognu/tuigreet/releases/download/${pkgver}/tuigreet-${pkgver}-x86_64"
         "https://raw.githubusercontent.com/apognu/tuigreet/${pkgver}/LICENSE")
-sha256sums=('241232cb5e67ae78c0216b2032a3c00f3ddf90d6cb944dfa81d995c62dce76dc'
+sha256sums=('5ed92bda64e595e0d051e1f8c5dbe3a663820f4c08f710ef172ac80eaea55fb5'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
