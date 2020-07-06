@@ -28,6 +28,6 @@ prepare() {
 package() {
   depends+=('python')
   cd ${_name}-${pkgver}
-  python setup.py install --root="${pkgdir}" --skip-build
+  python setup.py install --root="${pkgdir}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
