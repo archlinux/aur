@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='getgarfield'
-_pkgverUpstream="0.2.1"
+_pkgverUpstream="0.2.2"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Java application that downloads all Garfield comic strips"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-runtime-headless>=8' 'bash')
 makedepends=('java-environment>=8')
 source=("https://eomanis.duckdns.org/permshare/getgarfield/getgarfield-${_pkgverUpstream}.tar.gz")
-sha384sums=('aafa5cb7caa2232fe5a17093f2520aaf5b07064418f4e67475f8a9e35113b4800b36f053e05c86a623fb5b42fbcfaa83')
+sha384sums=('9ddd57b2bef90198439c5c8f9b7dea668eed38ca3e4e6b8ca9f4a0662e140f2ef1acb37efbd970cb1156c4bd3e4b250c')
 
 build() {
     local IFS=$'\n'
