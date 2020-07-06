@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=gitui
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
@@ -10,12 +10,11 @@ depends=('libgit2')
 conflicts=('gitui-git')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3491730ddbbc886940f20e6cf419c689de3e196f678127807ef69c4de479742e')
+sha256sums=('a1819b39334e1a4f4cdcece9fced6cf34b781c7d5439acd04a4cc1d8eecf5a17')
 
 build() {
   cd "$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable LIBGIT2_SYS_USE_PKG_CONFIG=1 \
-    cargo build --release --locked
+  LIBGIT2_SYS_USE_PKG_CONFIG=1 cargo build --release --locked
 }
 
 package() {
