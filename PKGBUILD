@@ -1,21 +1,22 @@
-# Maintainer: Kazuo Teramoto <kaz.rag at gmail dot com>
+# Maintainer: Christian Zugno < chriszugno [at] gmail [dot] com >
 
 pkgname=stig-git
-pkgver=0.10.0a.r84.da65b1f
+pkgver=0.11.2a0.r0.7ab3df0c
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-         'python-xdg' 'python-blinker' 'python-natsort')
+         'python-pyxdg' 'python-blinker' 'python-natsort')
 makedepends=('git' 'python-setuptools')
-optdepends=('python-maxminddb: shows country codes in peer lists'
-            'python-pprofile: profiling'
+optdepends=('python-pprofile: profiling'
             'python-setproctitle: prettifies the process name')
 license=('GPL')
 arch=('any')
 provides=('stig')
 conflicts=('stig')
+
 source=("git+https://github.com/rndusr/stig.git")
+
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,4 +38,3 @@ package() {
     cd stig
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-

@@ -1,6 +1,6 @@
 pkgbase = stig-git
 	pkgdesc = TUI and CLI client for the Transmission daemon
-	pkgver = 0.10.0a.r84.da65b1f
+	pkgver = 0.11.2a0.r0.7ab3df0c
 	pkgrel = 1
 	url = https://github.com/rndusr/stig
 	arch = any
@@ -11,10 +11,9 @@ pkgbase = stig-git
 	depends = python-urwid
 	depends = python-urwidtrees
 	depends = python-aiohttp
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python-blinker
 	depends = python-natsort
-	optdepends = python-maxminddb: shows country codes in peer lists
 	optdepends = python-pprofile: profiling
 	optdepends = python-setproctitle: prettifies the process name
 	provides = stig
@@ -23,4 +22,3 @@ pkgbase = stig-git
 	sha256sums = SKIP
 
 pkgname = stig-git
-
