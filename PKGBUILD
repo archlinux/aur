@@ -2,9 +2,9 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
 
 pkgname=ruby-tomlrb
-pkgver=1.2.9
+pkgver=1.3.0
 _gemname=${pkgname#ruby-}
-pkgrel=2
+pkgrel=1
 pkgdesc="A racc based toml parser"
 arch=(any)
 url="https://rubygems.org/gems/${_gemname}"
@@ -12,7 +12,7 @@ license=("MIT")
 depends=('ruby')
 makedepends=(rubygems)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('efe5bd8e86c5cf091c5801e3ed3727456c01525963f07a35aa9348cd0af6535a')
+sha256sums=('68666bf53fa70ba686a48a7435ce7e086f5227c58c4c993bd9792f4760f2a503')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
