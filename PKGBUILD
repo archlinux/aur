@@ -3,8 +3,8 @@
 # Contributor: Manuel Kehl <https://launchpad.net/~mank319, https://github.com/mank319/>
 
 pkgname=go-for-it
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='A stylish to-do list with built-in productivity timer.'
 arch=('i686' 'x86_64')
 url='https://github.com/mank319/Go-For-It'
@@ -14,7 +14,7 @@ makedepends=('vala' 'cmake' 'intltool')
 conflicts=('go-for-it-git')
 install='go-for-it.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mank319/Go-For-It/archive/${pkgver}.tar.gz")
-sha256sums=('582ec27876dbfdab71c5fc681a74c3e4f5a4d0d73cd634a0c5db64e5c4c51ea7')
+sha256sums=('26020c7f1d9915a183c7c1b0d9b263ba8bef390c66952371603e152ca6208ebe')
 
 build() {
     cd "Go-For-It-$pkgver"
