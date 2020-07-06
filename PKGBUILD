@@ -1,78 +1,37 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 # Contributor: Vlad M. <vlad@archlinex.net>
 # Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+pkgname='flow'
+pkgver='0.128.0'
+pkgrel='1'
+pkgdesc='A static type checker for JavaScript'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://$pkgname.org/"
+license=('MIT')
+optdepends=('bash-completion: Bash completion')
+makedepends=('ocaml>=4.07.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base' 'ocaml-core_kernel>=0.11.1' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-migrate-parsetree' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppx_tools_versioned' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
+checkdepends=('ocaml-ounit')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('91a6c83840ce7daa36d1c67272c5526b7118ce24ae106a4fb93e692f0f58f530')
 
-pkgname=flow
-pkgver=0.50.0
-pkgrel=1
-pkgdesc="A static typechecker for JavaScript"
-arch=('i686' 'x86_64')
-depends=('libelf' 'ocaml')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-sedlex')
-url="http://flowtype.org"
-license=('BSD')
-provides=('flow')
-conflicts=('flow-bin')
-replaces=('flow-bin')
-_patches=(
-		'Makefile-no-flow-check.patch'
-)
-source=(
-		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
-)
-source+=( "${_patches[@]}" )
-sha256sums=(
-		'859b6f5e1fce4d5813591fbc08e60605630d0b15e1825f877876ecd1476b8fdd'
-		'29e38d7412a920858945df56850bc227bd06d50965d620313912bf2fdeb3d045'
-)
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	for f in "${_patches[@]}"; do
-		msg2 "Applying patch ${f}"
-		patch -p0 <"${srcdir}/../${f}"
-	done
-}
+_sourcedirectory="$pkgname-$pkgver"
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	make
+	cd "$srcdir/$_sourcedirectory"
+	# ignore warnings that upstream escalates to errors for some reason
+	OCAMLPARAM='_,warn-error=-60-67' make
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	# This ugly hack comes after conversations on #flowtype suggest that the
-	# incremental tests are not necessarily reliable - they fail when they
-	# shouldn't, and not reliably, and with different frequencies on different
-	# platforms. So let's be done with them for now...
-	rm -r tests/incremental*
-
-	# This is failing for some unknown reason. Checking with #flowtype on
-	# freende suggests it should be OK but file a task if incremental mode
-	# doesn't work.
-	rm -r tests/recheck
-
-	msg 'Checking...'
-	if test -z "${FLOW_RUNTESTS_PARALLELISM}" ; then
-		/usr/bin/env FLOW_RUNTESTS_PARALLELISM=2 make test
-	else
-		make test
-	fi
+	cd "$srcdir/$_sourcedirectory/"
+	./runtests.sh "bin/$pkgname"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	msg2 'Installing license...'
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	msg2 'Installing documentation...'
-	install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}"
-	cp -dpr --no-preserve=ownership examples "${pkgdir}/usr/share/doc/${pkgname}"
-
-	msg2 'Installing...'
-	install -Dm 755 bin/flow "${pkgdir}/usr/bin/flow"
+	cd "$srcdir/$_sourcedirectory"
+	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 'resources/shell/bash-completion' "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
