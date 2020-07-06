@@ -1,13 +1,13 @@
 
 pkgname=gwyddion
 pkgver=2.56
-pkgrel=1
+pkgrel=2
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=(gtkglext pygtk fftw libunique minizip)
-makedepends=('pkgconf' 'gconf')
+makedepends=('pkgconf')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
             'perl: development of plug-in'
@@ -43,11 +43,6 @@ package() {
   cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 PYTHON=python2 install
-
-  install -m755 -d "${pkgdir}/usr/share/gconf/schemas"
-
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain gwyddion ${pkgdir}/etc/gconf/schemas/*.schemas
-  rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
 
 
