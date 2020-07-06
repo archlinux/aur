@@ -7,6 +7,7 @@ pkgdesc="netease cloud music terminal client by rust"
 arch=('x86_64')
 url="https://github.com/betta-cyber/netease-music-tui"
 license=('MIT')
+depends=('alsa-lib' 'openssl')
 provides=('netease-music-tui')
 conflicts=('netease-music-tui')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/betta-cyber/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux.tar.gz"
