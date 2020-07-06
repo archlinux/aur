@@ -3,7 +3,8 @@
 
 _pkgname=xst
 pkgname=${_pkgname}-git
-pkgver=20200704.da50afd
+epoch=1
+pkgver=0.8.4.r0.gda50afd
 pkgrel=1
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
@@ -23,7 +24,7 @@ conflicts=(
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
