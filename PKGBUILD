@@ -1,8 +1,8 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=automedia-git
-pkgver=r66.fc394eb
-pkgrel=2
+pkgver=r67.fe39ea8
+pkgrel=1
 pkgdesc='Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.'
 arch=('any')
 url="https://git.dec05eba.com/AutoMedia"
