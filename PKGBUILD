@@ -1,24 +1,30 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=mp4joiner
 pkgver=3.8
-pkgrel=1
-pkgdesc="A collection of cross-platform free tools to manipulate MP4 files."
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="A collection of tools to manipulate MP4 files"
+arch=('x86_64')
 url="http://www.mp4joiner.org/"
 license=('GPL')
-makedepends=('gpac')
-depends=('wxgtk2>=2.8.7' 'wxsvg>=1.1.13')
-source=('mp4joiner.desktop' "MP4Tools-$pkgver.tar.bz2::http://sourceforge.net/projects/mp4joiner/files/MP4Tools/$pkgver/MP4Tools-$pkgver.tar.bz2/download?nowrap")
-sha256sums=('00b6c08644c335340e5bd433606efe9ba6bcbe235390c486cced15462ac257af' '6a64d4c02b84affb6b6e1f17aaca78a41d319576b7f428b50b55a6ba2ce64b3e')
+depends=('gpac' 'wxsvg')
+source=("http://downloads.sourceforge.net/mp4joiner/MP4Tools-$pkgver.tar.bz2"
+        'mp4joiner.desktop'
+        'mp4splitter.desktop')
+sha256sums=('6a64d4c02b84affb6b6e1f17aaca78a41d319576b7f428b50b55a6ba2ce64b3e'
+            'dc8dcb73b65c9ba34ff03a1a7a26034f353d8904aa5c54a398a3668b058cb867'
+            '54bc415026a90c22a3a4e0840ca0dad5e43d0f1ab5dcac7c5eb9a4503454137b')
 
 build() {
   cd MP4Tools-$pkgver
-  ./configure --prefix=/usr && make
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk3
+  make
 }
 
 package() {
   cd MP4Tools-$pkgver
-  install -Dm644 $srcdir/mp4joiner.desktop $pkgdir/usr/share/applications/mp4joiner.desktop
-  install -Dm644 resources/mp4joiner.png $pkgdir/usr/share/icons/hicolor/48x48/apps/mp4joiner.png
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
+  install -Dm644 ../mp4joiner.desktop "$pkgdir/usr/share/applications/mp4joiner.desktop"
+  install -Dm644 ../mp4splitter.desktop "$pkgdir/usr/share/applications/mp4splitter.desktop"
+  install -Dm644 resources/mp4joiner.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/mp4joiner.png"
+  install -Dm644 resources/mp4splitter.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/mp4splitter.png"
 }

@@ -1,18 +1,18 @@
 pkgbase = mp4joiner
-	pkgdesc = A collection of cross-platform free tools to manipulate MP4 files.
+	pkgdesc = A collection of tools to manipulate MP4 files
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mp4joiner.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gpac
-	depends = wxgtk2>=2.8.7
-	depends = wxsvg>=1.1.13
+	depends = gpac
+	depends = wxsvg
+	source = http://downloads.sourceforge.net/mp4joiner/MP4Tools-3.8.tar.bz2
 	source = mp4joiner.desktop
-	source = MP4Tools-3.8.tar.bz2::http://sourceforge.net/projects/mp4joiner/files/MP4Tools/3.8/MP4Tools-3.8.tar.bz2/download?nowrap
-	sha256sums = 00b6c08644c335340e5bd433606efe9ba6bcbe235390c486cced15462ac257af
+	source = mp4splitter.desktop
 	sha256sums = 6a64d4c02b84affb6b6e1f17aaca78a41d319576b7f428b50b55a6ba2ce64b3e
+	sha256sums = dc8dcb73b65c9ba34ff03a1a7a26034f353d8904aa5c54a398a3668b058cb867
+	sha256sums = 54bc415026a90c22a3a4e0840ca0dad5e43d0f1ab5dcac7c5eb9a4503454137b
 
 pkgname = mp4joiner
 

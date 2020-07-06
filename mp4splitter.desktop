@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=MP4Joiner
-Comment=Join multiple MP4 files
-Exec=mp4joiner
-Icon=mp4joiner
+Name=MP4Splitter
+Comment=Split MP4 files
+Exec=mp4splitter
+Icon=mp4splitter
 Type=Application
 Terminal=false
 Categories=AudioVideoEditing;Video;AudioVideo;
