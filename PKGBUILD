@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn-client-manager
-pkgver=v4.29_9680
-_realpkgver=${pkgver//_/-}-rtm-2019.02.28
+pkgver=v4.34_9745
+_realpkgver=${pkgver//_/-}-rtm-2020.04.05
 _exe="softether-vpnclient-${_realpkgver}-windows-x86_x64-intel.exe"
 pkgrel=1
 pkgdesc="SoftEther VPN Client Manager"
@@ -10,13 +10,13 @@ url="https://www.softether.org/"
 license=('Apache')
 depends=('desktop-file-utils' 'wine')
 makedepends=('gzip' 'icoutils')
-source=("https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/${pkgver//_/-}-rtm/${_exe}"
+source=("https://www.softether-download.com/files/softether/${_realpkgver}-tree/Windows/SoftEther_VPN_Client/${_exe}"
         'vpncmgr.desktop'
         'vpncmgr.png'
         'vpncmgr.sh'
         'vpncmgr-remote.desktop'
         'vpncmgr-remote.sh')
-md5sums=('36c1991bc2477ea6c581fa6484b72d5d'
+md5sums=('095e53536f25f3bc6780c06958c94d3b'
          '98c8ca04d44309eb6902e6db718a78e3'
          '2700860e1d40d685894aa88b0e0d42f1'
          '72769397b0ca79ff92de136dbf8ec7ad'
