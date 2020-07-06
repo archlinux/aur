@@ -4,7 +4,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('pssh: for use with some tools'
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('e23f38e02aea0aefdfff44a61036397882bf4019e32b5f7e24f2b53af9454e4dbd4b52879134d5005f6754fdde9f2391dcc6fb51d3142b92ec2444295d4bd544'
+sha512sums=('fbff3b5ab05ad52d469304d5bc7fca518df2f491a1176a24735cd1a9b46f7ff90dc5aeae65e5e29feb86e8a210e69e528261138847d6f8773933fb557e71133d'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
@@ -53,6 +53,8 @@ build() {
     --with-configdir=/etc/pacemaker
 #   --with-nagios-plugin-dir=DIR
 #   --with-nagios-metadata-dir=DIR
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
