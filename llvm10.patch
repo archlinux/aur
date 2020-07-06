@@ -1,0 +1,358 @@
+diff -upr beignet.orig/backend/src/backend/program.cpp beignet/backend/src/backend/program.cpp
+--- beignet.orig/backend/src/backend/program.cpp	2020-04-16 03:44:21.153955099 +0300
++++ beignet/backend/src/backend/program.cpp	2020-04-16 03:47:50.369205839 +0300
+@@ -694,9 +694,14 @@ namespace gbe {
+ #endif
+                 );
+ 
++    llvm::cl::ResetAllOptionOccurrences();
+     clang::CompilerInvocation::CreateFromArgs(*CI,
++#if LLVM_VERSION_MAJOR < 10
+                                               &args[0],
+                                               &args[0] + args.size(),
++#else
++                                              clang::ArrayRef<const char*>(args),
++#endif
+                                               Diags);
+     // Create the compiler instance
+     clang::CompilerInstance Clang;
+@@ -1242,8 +1247,12 @@ EXTEND_QUOTE:
+       // Create the compiler invocation
+       std::unique_ptr<clang::CompilerInvocation> CI(new clang::CompilerInvocation);
+       return clang::CompilerInvocation::CreateFromArgs(*CI,
++#if LLVM_VERSION_MAJOR < 10
+                                                        &args[0],
+                                                        &args[0] + args.size(),
++#else
++                                                       clang::ArrayRef<const char*>(args),
++#endif
+                                                        Diags);
+     }
+ #endif
+Only in beignet/backend/src/backend: program.cpp.orig
+Only in beignet.orig/backend/src: CMakeLists.txt.orig
+diff -upr beignet.orig/backend/src/llvm/llvm_gen_backend.cpp beignet/backend/src/llvm/llvm_gen_backend.cpp
+--- beignet.orig/backend/src/llvm/llvm_gen_backend.cpp	2020-04-16 03:44:21.783970632 +0300
++++ beignet/backend/src/llvm/llvm_gen_backend.cpp	2020-04-16 03:45:04.141685867 +0300
+@@ -575,11 +575,13 @@ namespace gbe
+         has_errors(false),
+         legacyMode(true)
+     {
++#if LLVM_VERSION_MAJOR < 10
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 37
+       initializeLoopInfoWrapperPassPass(*PassRegistry::getPassRegistry());
+ #else
+       initializeLoopInfoPass(*PassRegistry::getPassRegistry());
+ #endif
++#endif
+       pass = PASS_EMIT_REGISTERS;
+     }
+ 
+diff -upr beignet.orig/backend/src/llvm/llvm_gen_backend.hpp beignet/backend/src/llvm/llvm_gen_backend.hpp
+--- beignet.orig/backend/src/llvm/llvm_gen_backend.hpp	2020-04-16 03:44:21.177289008 +0300
++++ beignet/backend/src/llvm/llvm_gen_backend.hpp	2020-04-16 03:45:04.135019035 +0300
+@@ -130,10 +130,10 @@ namespace gbe
+   llvm::FunctionPass *createGenPass(ir::Unit &unit);
+ 
+   /*! Remove the GEP instructions */
+-  llvm::BasicBlockPass *createRemoveGEPPass(const ir::Unit &unit);
++  llvm::FunctionPass *createRemoveGEPPass(const ir::Unit &unit);
+ 
+   /*! Merge load/store if possible */
+-  llvm::BasicBlockPass *createLoadStoreOptimizationPass();
++  llvm::FunctionPass *createLoadStoreOptimizationPass();
+ 
+   /*! Scalarize all vector op instructions */
+   llvm::FunctionPass* createScalarizePass();
+@@ -141,7 +141,7 @@ namespace gbe
+   llvm::ModulePass* createBarrierNodupPass(bool);
+ 
+   /*! Convert the Intrinsic call to gen function */
+-  llvm::BasicBlockPass *createIntrinsicLoweringPass();
++  llvm::FunctionPass *createIntrinsicLoweringPass();
+ 
+   /*! Passer the printf function call. */
+   llvm::FunctionPass* createPrintfParserPass(ir::Unit &unit);
+diff -upr beignet.orig/backend/src/llvm/llvm_intrinsic_lowering.cpp beignet/backend/src/llvm/llvm_intrinsic_lowering.cpp
+--- beignet.orig/backend/src/llvm/llvm_intrinsic_lowering.cpp	2020-04-16 03:44:21.783970632 +0300
++++ beignet/backend/src/llvm/llvm_intrinsic_lowering.cpp	2020-04-16 03:45:04.135019035 +0300
+@@ -29,12 +29,12 @@
+ using namespace llvm;
+ 
+ namespace gbe {
+-    class InstrinsicLowering : public BasicBlockPass
++    class InstrinsicLowering : public FunctionPass
+     {
+     public:
+       static char ID;
+       InstrinsicLowering() :
+-        BasicBlockPass(ID) {}
++        FunctionPass(ID) {}
+ 
+       void getAnalysisUsage(AnalysisUsage &AU) const {
+ 
+@@ -93,9 +93,9 @@ namespace gbe {
+         CI->eraseFromParent();
+         return NewCI;
+       }
+-      virtual bool runOnBasicBlock(BasicBlock &BB)
++      virtual bool runOnFunction(Function &F)
+       {
+-        bool changedBlock = false;
++        for (BasicBlock &BB : F) {
+         Module *M = BB.getParent()->getParent();
+ 
+         DataLayout TD(M);
+@@ -159,13 +159,14 @@ namespace gbe {
+             }
+           }
+         }
+-        return changedBlock;
++        }
++        return true;
+       }
+     };
+ 
+     char InstrinsicLowering::ID = 0;
+ 
+-    BasicBlockPass *createIntrinsicLoweringPass() {
++    FunctionPass *createIntrinsicLoweringPass() {
+       return new InstrinsicLowering();
+     }
+ } // end namespace
+diff -upr beignet.orig/backend/src/llvm/llvm_loadstore_optimization.cpp beignet/backend/src/llvm/llvm_loadstore_optimization.cpp
+--- beignet.orig/backend/src/llvm/llvm_loadstore_optimization.cpp	2020-04-16 03:44:21.177289008 +0300
++++ beignet/backend/src/llvm/llvm_loadstore_optimization.cpp	2020-04-16 03:45:38.645879307 +0300
+@@ -26,13 +26,13 @@
+ 
+ using namespace llvm;
+ namespace gbe {
+-  class GenLoadStoreOptimization : public BasicBlockPass {
++  class GenLoadStoreOptimization : public FunctionPass {
+ 
+   public:
+     static char ID;
+     ScalarEvolution *SE;
+     const DataLayout *TD;
+-    GenLoadStoreOptimization() : BasicBlockPass(ID) {}
++    GenLoadStoreOptimization() : FunctionPass(ID) {}
+ 
+     void getAnalysisUsage(AnalysisUsage &AU) const {
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 38
+@@ -45,7 +45,9 @@ namespace gbe {
+       AU.setPreservesCFG();
+     }
+ 
+-    virtual bool runOnBasicBlock(BasicBlock &BB) {
++    virtual bool runOnFunction(Function &F) {
++        bool changedAnyBlock = false;
++        for (BasicBlock &BB : F) {
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 38
+       SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
+ #else
+@@ -59,7 +61,9 @@ namespace gbe {
+       #else
+         TD = getAnalysisIfAvailable<DataLayout>();
+       #endif
+-      return optimizeLoadStore(BB);
++           changedAnyBlock = optimizeLoadStore(BB) | changedAnyBlock;
++        }
++        return changedAnyBlock;
+     }
+     Type *getValueType(Value *insn);
+     Value *getPointerOperand(Value *I);
+@@ -159,7 +163,11 @@ namespace gbe {
+       values.push_back(merged[i]);
+     }
+     LoadInst *ld = cast<LoadInst>(first);
++#if LLVM_VERSION_MAJOR < 10
+     unsigned align = ld->getAlignment();
++#else
++    MaybeAlign align = ld->getAlign();
++#endif
+     unsigned addrSpace = ld->getPointerAddressSpace();
+     // insert before first load
+     Builder.SetInsertPoint(ld);
+@@ -352,7 +360,11 @@ namespace gbe {
+ 
+     unsigned addrSpace = st->getPointerAddressSpace();
+ 
++#if LLVM_VERSION_MAJOR < 10
+     unsigned align = st->getAlignment();
++#else
++    MaybeAlign align = st->getAlign();
++#endif
+     // insert before the last store
+     Builder.SetInsertPoint(last);
+ 
+@@ -466,7 +478,7 @@ namespace gbe {
+     return changed;
+   }
+ 
+-  BasicBlockPass *createLoadStoreOptimizationPass() {
++  FunctionPass *createLoadStoreOptimizationPass() {
+     return new GenLoadStoreOptimization();
+   }
+ };
+Only in beignet/backend/src/llvm: llvm_loadstore_optimization.cpp.orig
+Only in beignet/backend/src/llvm: llvm_loadstore_optimization.cpp.rej
+diff -upr beignet.orig/backend/src/llvm/llvm_passes.cpp beignet/backend/src/llvm/llvm_passes.cpp
+--- beignet.orig/backend/src/llvm/llvm_passes.cpp	2020-04-16 03:44:21.177289008 +0300
++++ beignet/backend/src/llvm/llvm_passes.cpp	2020-04-16 03:45:04.135019035 +0300
+@@ -37,7 +37,7 @@
+ #include "sys/map.hpp"
+ 
+ using namespace llvm;
+-
++template class cfg::Update<BasicBlock *>;
+ namespace gbe
+ {
+   bool isKernelFunction(const llvm::Function &F) {
+@@ -219,13 +219,13 @@ namespace gbe
+     return offset;
+   }
+ 
+-  class GenRemoveGEPPasss : public BasicBlockPass
++  class GenRemoveGEPPasss : public FunctionPass
+   {
+ 
+    public:
+     static char ID;
+     GenRemoveGEPPasss(const ir::Unit &unit) :
+-      BasicBlockPass(ID),
++      FunctionPass(ID),
+       unit(unit) {}
+     const ir::Unit &unit;
+     void getAnalysisUsage(AnalysisUsage &AU) const {
+@@ -242,16 +242,18 @@ namespace gbe
+ 
+     bool simplifyGEPInstructions(GetElementPtrInst* GEPInst);
+ 
+-    virtual bool runOnBasicBlock(BasicBlock &BB)
++    virtual bool runOnFunction(Function &F)
+     {
+-      bool changedBlock = false;
++      bool changedAnyBlock = false;
++        for (BasicBlock &BB : F) {
+       iplist<Instruction>::iterator I = BB.getInstList().begin();
+       for (auto nextI = I, E = --BB.getInstList().end(); I != E; I = nextI) {
+         iplist<Instruction>::iterator I = nextI++;
+         if(GetElementPtrInst* gep = dyn_cast<GetElementPtrInst>(&*I))
+-          changedBlock = (simplifyGEPInstructions(gep) || changedBlock);
++          changedAnyBlock = (simplifyGEPInstructions(gep) | changedAnyBlock);
+       }
+-      return changedBlock;
++        }
++      return changedAnyBlock;
+     }
+   };
+ 
+@@ -367,7 +369,7 @@ namespace gbe
+     return true;
+   }
+ 
+-  BasicBlockPass *createRemoveGEPPass(const ir::Unit &unit) {
++  FunctionPass *createRemoveGEPPass(const ir::Unit &unit) {
+     return new GenRemoveGEPPasss(unit);
+   }
+ } /* namespace gbe */
+diff -upr beignet.orig/backend/src/llvm/llvm_sampler_fix.cpp beignet/backend/src/llvm/llvm_sampler_fix.cpp
+--- beignet.orig/backend/src/llvm/llvm_sampler_fix.cpp	2020-04-16 03:44:21.783970632 +0300
++++ beignet/backend/src/llvm/llvm_sampler_fix.cpp	2020-04-16 03:45:04.138352451 +0300
+@@ -33,11 +33,13 @@ namespace gbe {
+   class SamplerFix : public FunctionPass {
+   public:
+     SamplerFix() : FunctionPass(ID) {
++#if LLVM_VERSION_MAJOR < 10
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 35
+       initializeDominatorTreeWrapperPassPass(*PassRegistry::getPassRegistry());
+ #else
+       initializeDominatorTreePass(*PassRegistry::getPassRegistry());
+ #endif
++#endif
+     }
+ 
+     bool visitCallInst(CallInst *I) {
+diff -upr beignet.orig/backend/src/llvm/llvm_scalarize.cpp beignet/backend/src/llvm/llvm_scalarize.cpp
+--- beignet.orig/backend/src/llvm/llvm_scalarize.cpp	2020-04-16 03:44:21.670634504 +0300
++++ beignet/backend/src/llvm/llvm_scalarize.cpp	2020-04-16 03:45:04.141685867 +0300
+@@ -96,11 +96,13 @@ namespace gbe {
+ 
+     Scalarize() : FunctionPass(ID)
+     {
++#if LLVM_VERSION_MAJOR < 10
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 35
+       initializeDominatorTreeWrapperPassPass(*PassRegistry::getPassRegistry());
+ #else
+       initializeDominatorTreePass(*PassRegistry::getPassRegistry());
+ #endif
++#endif
+     }
+ 
+     virtual bool runOnFunction(Function&);
+diff -upr beignet.orig/CMake/FindLLVM.cmake beignet/CMake/FindLLVM.cmake
+--- beignet.orig/CMake/FindLLVM.cmake	2020-04-16 03:44:21.137288022 +0300
++++ beignet/CMake/FindLLVM.cmake	2020-04-16 03:46:38.104039602 +0300
+@@ -104,30 +104,16 @@ string(REGEX REPLACE " *\n" "" LLVM_SYST
+ endif (LLVM_SYSTEM_LIBS_ORIG)
+ endif (LLVM_VERSION_NODOT VERSION_GREATER 34)
+ 
++#something harmless because whitespace at start is an error
++set(CLANG_LIBRARIES "-ldl")
+ macro(add_one_lib name)
+   FIND_LIBRARY(CLANG_LIB
+     NAMES ${name}
+     PATHS ${LLVM_LIBRARY_DIR} NO_DEFAULT_PATH)
+-  set(CLANG_LIBRARIES ${CLANG_LIBRARIES} ${CLANG_LIB})
++  set(CLANG_LIBRARIES "${CLANG_LIBRARIES} ${CLANG_LIB}")
++  message(STATUS "clanglibs name ${name} this ${CLANG_LIB} all ${CLANG_LIBRARIES} ")
+ 	unset(CLANG_LIB CACHE)
+ endmacro()
+ 
+ #Assume clang lib path same as llvm lib path
+-add_one_lib("clangCodeGen")
+-add_one_lib("clangFrontend")
+-add_one_lib("clangSerialization")
+-add_one_lib("clangDriver")
+-add_one_lib("clangSema")
+-add_one_lib("clangStaticAnalyzerFrontend")
+-add_one_lib("clangStaticAnalyzerCheckers")
+-add_one_lib("clangStaticAnalyzerCore")
+-add_one_lib("clangAnalysis")
+-add_one_lib("clangEdit")
+-if (LLVM_VERSION_NODOT VERSION_GREATER 80)
+-add_one_lib("clangASTMatchers")
+-endif (LLVM_VERSION_NODOT VERSION_GREATER 80)
+-add_one_lib("clangAST")
+-add_one_lib("clangParse")
+-add_one_lib("clangSema")
+-add_one_lib("clangLex")
+-add_one_lib("clangBasic")
++add_one_lib("clang-cpp")
+Only in beignet/CMake: FindLLVM.cmake.orig
+diff -upr beignet.orig/CMakeLists.txt beignet/CMakeLists.txt
+--- beignet.orig/CMakeLists.txt	2020-04-16 03:44:21.137288022 +0300
++++ beignet/CMakeLists.txt	2020-04-16 03:45:04.131685618 +0300
+@@ -80,7 +80,7 @@ elseif (COMPILER STREQUAL "CLANG")
+ elseif (COMPILER STREQUAL "ICC")
+   set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS}  -wd2928 -Wall -fPIC -fstrict-aliasing -fp-model fast -msse4.1 -Wl,-E")
+ endif ()
+-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_CXX_FLAGS} -std=c++0x -Wno-invalid-offsetof")
++set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_CXX_FLAGS} -Wno-invalid-offsetof")
+ set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_CXX_FLAGS}")
+ set (CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DGBE_DEBUG=1")
+ set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DGBE_DEBUG=1")
+diff -upr beignet.orig/utests/CMakeLists.txt beignet/utests/CMakeLists.txt
+--- beignet.orig/utests/CMakeLists.txt	2020-04-16 03:44:21.220623410 +0300
++++ beignet/utests/CMakeLists.txt	2020-04-16 03:45:04.131685618 +0300
+@@ -26,8 +26,8 @@ if (NOT NOT_BUILD_STAND_ALONE_UTEST)
+   # Threads
+   Find_Package(Threads)
+ 
+-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_CXX_FLAGS} -std=c++0x -Wno-invalid-offsetof")
+-  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_CXX_FLAGS}")
++  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_CXX_FLAGS} -Wno-invalid-offsetof -ffloat-store -fno-strict-aliasing")
++  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_CXX_FLAGS} -ffloat-store -fno-strict-aliasing") #compiler_{degrees,radians,function_argument2} use equality comparison of floats, compiler_long_bitcast uses aliasing
+   set (CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DGBE_DEBUG=1")
+   set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DGBE_DEBUG=1")
+   set (CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG -DGBE_DEBUG=0")
