@@ -1,9 +1,9 @@
 [Trigger]
-Type = Package
+Type = Path
 Operation = Upgrade
 Operation = Install
-Target = flutter
-Target = flutter-group-pacman-hook
+Target = $FLUTTER_PATH/version
+Target = usr/share/libalpm/hooks/flutter-group.hook
 
 [Action]
 Description = Granting permission to group $FLUTTER_GROUP for flutter SDK ($FLUTTER_PATH)
