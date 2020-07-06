@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=79.0a1.r534610.7f7b98339065
-_pkgver=79.0a1
+pkgver=80.0a1.r538848.5766d99b88f3
+_pkgver=80.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -69,6 +69,8 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --with-ccache
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
@@ -92,6 +94,7 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
+ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
