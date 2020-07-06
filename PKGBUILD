@@ -3,8 +3,8 @@
 
 pkgbase=nvidia-390xx-settings
 pkgname=('nvidia-390xx-settings' 'libxnvctrl-390xx')
-pkgver=390.132
-pkgrel=2
+pkgver=390.138
+pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 390xx legacy branch'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
@@ -12,13 +12,16 @@ license=('GPL2')
 makedepends=('git' 'inetutils' 'gtk2' 'jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-390xx-utils' 'libxext')
 options=('staticlibs')
 source=(nvidia-settings-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
-        libxnvctrl_so.patch)
-sha512sums=('ad6836c8b002478fe7b76fb7df6b685686e73ba0849533f5d2c6cc0ca489f212556f309bc67870b2844921bfdb2c3c49300f35ee4d32e3d4c7f29c1ac9b0dd9a'
-            'f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8')
+        libxnvctrl_so.patch
+        0001-nvidia-settings-Make-VDPAUDeviceFunctions-static-to-.patch)
+sha512sums=('c27c8dbb858f06982e251bd3bf49650d05ca8811d61eb342b43bf00bc595b8d789b38b7ebd76b9ab5786ec5bee84b1cb44ee3f3fb24c40dee1b1b9d535993eb6'
+            'f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8'
+            '0fd6355a10dfecb3636764f40eb0d4a4625f69e48fb653060f40e2bde8bf51eb04ae08be8751163d94e022c6f595a9756cde9d8404a556a4a83e3b5b74052c53')
 
 prepare() {
   cd nvidia-settings-${pkgver}
   patch -p1 < "${srcdir}/libxnvctrl_so.patch"
+  patch -p1 < "${srcdir}/0001-nvidia-settings-Make-VDPAUDeviceFunctions-static-to-.patch"
 }
 
 build() {
