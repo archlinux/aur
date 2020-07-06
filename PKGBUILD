@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=crmsh
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -45,3 +45,4 @@ package() {
 
 # vim: set sw=2 et:
 
+sha512sums=('f293131b709d585ea13d3fc4d8e7564b3f0f0f930a9896cbc89d31137a5c0d7df68f1e31b73e3b0ab5786178b68d6bddcf81e165a85fbce152787168f4fd0c7b')
