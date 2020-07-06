@@ -1,7 +1,7 @@
 pkgbase = nvidia-390xx
 	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
 	pkgver = 390.138
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = nvidia-390xx
 	makedepends = linux-headers
 	conflicts = nvidia
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.138/NVIDIA-Linux-x86_64-390.138.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.138/NVIDIA-Linux-x86_64-390.138-no-compat32.run
 	source = kernel-4.16.patch
 	sha256sums = 5ffb19e6c86c28e51d710f9679386e3c755161cf747bf3e83647a3486859d666
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
