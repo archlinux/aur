@@ -1,0 +1,514 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-15 01:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/rmdStrings.py:10
+msgid "Show/hide Main Window"
+msgstr ""
+
+#: src/rmdStrings.py:11
+msgid "_Select Area On Screen"
+msgstr ""
+
+#: src/rmdStrings.py:12 src/rmdStrings.py:60
+msgid "Quit"
+msgstr ""
+
+#: src/rmdStrings.py:13
+msgid "a graphical frontend for recordMyDesktop"
+msgstr ""
+
+#: src/rmdStrings.py:14
+msgid ""
+"Copyright (C) John Varouhakis\n"
+"Portions Copyright (C) 2005-6 Zaheer Abbas Merali, John N. Laliberte\n"
+"Portions Copyright (C) Fluendo S.L."
+msgstr ""
+
+#: src/rmdStrings.py:15
+msgid "Translator Credits And Information(Replace with your info)"
+msgstr ""
+
+#: src/rmdStrings.py:19
+msgid "Success"
+msgstr ""
+
+#: src/rmdStrings.py:20
+msgid "Error while parsing the arguments."
+msgstr ""
+
+#: src/rmdStrings.py:21
+msgid "Initializing the encoder failed(either vorbis or theora)"
+msgstr ""
+
+#: src/rmdStrings.py:22
+msgid "Could not open/configure sound card."
+msgstr ""
+
+#: src/rmdStrings.py:23
+msgid "Xdamage extension not present."
+msgstr ""
+
+#: src/rmdStrings.py:24
+msgid "Shared memory extension not present."
+msgstr ""
+
+#: src/rmdStrings.py:25
+msgid "Xfixes extension not present."
+msgstr ""
+
+#: src/rmdStrings.py:26
+msgid "XInitThreads failed."
+msgstr ""
+
+#: src/rmdStrings.py:27
+msgid "No $DISPLAY environment variable and none specified as argument."
+msgstr ""
+
+#: src/rmdStrings.py:28
+msgid "Cannot connect to Xserver."
+msgstr ""
+
+#: src/rmdStrings.py:29
+msgid "Color depth is not 24bpp."
+msgstr ""
+
+#: src/rmdStrings.py:30
+msgid "Improper window specification."
+msgstr ""
+
+#: src/rmdStrings.py:31
+msgid "Cannot attach shared memory to proccess."
+msgstr ""
+
+#: src/rmdStrings.py:32
+msgid "Cannot open file for writting."
+msgstr ""
+
+#: src/rmdStrings.py:33
+msgid "Cannot load the Jack library (dlopen/dlsym error on libjack.so)."
+msgstr ""
+
+#: src/rmdStrings.py:34
+msgid "Cannot create new client."
+msgstr ""
+
+#: src/rmdStrings.py:35
+msgid "Cannot activate client."
+msgstr ""
+
+#: src/rmdStrings.py:36
+msgid "Port registration/connection failure."
+msgstr ""
+
+#: src/rmdStrings.py:37
+msgid "Segmentation Fault"
+msgstr ""
+
+#: src/rmdStrings.py:40
+msgid ""
+"Recording is finished.\n"
+"recordMyDesktop has exited with status"
+msgstr ""
+
+#: src/rmdStrings.py:41
+msgid "Description"
+msgstr ""
+
+#: src/rmdStrings.py:42
+msgid ""
+"Recording is finished.\n"
+"recordMyDesktop has exited with uknown\n"
+"error code"
+msgstr ""
+
+#: src/rmdStrings.py:46 src/rmdStrings.py:76
+msgid "Video Quality"
+msgstr ""
+
+#: src/rmdStrings.py:46 src/rmdStrings.py:76
+msgid "Sound Quality"
+msgstr ""
+
+#: src/rmdStrings.py:47
+msgid "Advanced"
+msgstr ""
+
+#: src/rmdStrings.py:47
+msgid "Select Window"
+msgstr ""
+
+#: src/rmdStrings.py:48
+msgid "Click here to select a window to record"
+msgstr ""
+
+#: src/rmdStrings.py:49
+msgid ""
+"Click to start the recording.\n"
+"This window will hide itself."
+msgstr ""
+
+#: src/rmdStrings.py:50
+msgid ""
+"Click to choose a filename and location.\n"
+"Default is out.ogv in your home folder.\n"
+"If the file already exists, the new one\n"
+"will have a number attached on its name\n"
+"(this behavior can be changed )"
+msgstr ""
+
+#: src/rmdStrings.py:51
+msgid "Click to exit the program."
+msgstr ""
+
+#: src/rmdStrings.py:52
+msgid ""
+"Select the video quality of your recording.\n"
+"(Lower quality will require more proccessing power,\n"
+"so it's recommended, when encoding on the fly,\n"
+"to leave at 100)"
+msgstr ""
+
+#: src/rmdStrings.py:53
+msgid "Enable/Disable sound recording."
+msgstr ""
+
+#: src/rmdStrings.py:54
+msgid "Select the audio quality of your recording."
+msgstr ""
+
+#: src/rmdStrings.py:55
+msgid "Click here to access more options."
+msgstr ""
+
+#: src/rmdStrings.py:56
+msgid ""
+"\n"
+"Left click and drag, on the preview image,\n"
+"to select an area for recording.\n"
+"Right click on it, to reset the area."
+msgstr ""
+
+#: src/rmdStrings.py:58
+msgid "Record"
+msgstr ""
+
+#: src/rmdStrings.py:59
+msgid "Save As"
+msgstr ""
+
+#: src/rmdStrings.py:63
+msgid "Cancel"
+msgstr ""
+
+#: src/rmdStrings.py:64
+msgid ""
+"Please wait while your recording is being encoded\n"
+"WARNING!!!\n"
+"If you press Cancel or close this window,\n"
+"this proccess cannot be resumed!"
+msgstr ""
+
+#: src/rmdStrings.py:65
+msgid "complete"
+msgstr ""
+
+#: src/rmdStrings.py:68
+msgid "Overwite Existing Files"
+msgstr ""
+
+#: src/rmdStrings.py:68
+msgid "Working Directory"
+msgstr ""
+
+#: src/rmdStrings.py:69 src/rmdStrings.py:83
+msgid "Frames Per Second"
+msgstr ""
+
+#: src/rmdStrings.py:69
+msgid "Encode On the Fly"
+msgstr ""
+
+#: src/rmdStrings.py:69
+msgid "Zero Compression"
+msgstr ""
+
+#: src/rmdStrings.py:70
+msgid "Quick Subsampling"
+msgstr ""
+
+#: src/rmdStrings.py:70
+msgid "Full shots at every frame"
+msgstr ""
+
+#: src/rmdStrings.py:71
+msgid "Channels"
+msgstr ""
+
+#: src/rmdStrings.py:71
+msgid "Frequency"
+msgstr ""
+
+#: src/rmdStrings.py:71
+msgid "Device"
+msgstr ""
+
+#: src/rmdStrings.py:71
+msgid "Display"
+msgstr ""
+
+#: src/rmdStrings.py:71
+msgid "Mouse Cursor"
+msgstr ""
+
+#: src/rmdStrings.py:72
+msgid "Follow Mouse"
+msgstr ""
+
+#: src/rmdStrings.py:72
+msgid "MIT-Shm extension"
+msgstr ""
+
+#: src/rmdStrings.py:72
+msgid "Include Window Decorations"
+msgstr ""
+
+#: src/rmdStrings.py:73
+msgid "Tooltips"
+msgstr ""
+
+#: src/rmdStrings.py:73
+msgid "Outline Capture Area On Screen"
+msgstr ""
+
+#: src/rmdStrings.py:74
+msgid "Reset Capture Area"
+msgstr ""
+
+#: src/rmdStrings.py:75
+msgid "Extra Options"
+msgstr ""
+
+#: src/rmdStrings.py:77
+msgid "Drop Frames(encoder)"
+msgstr ""
+
+#: src/rmdStrings.py:77
+msgid "Startup Delay(secs)"
+msgstr ""
+
+#: src/rmdStrings.py:78
+msgid "Normal"
+msgstr ""
+
+#: src/rmdStrings.py:78
+msgid "White"
+msgstr ""
+
+#: src/rmdStrings.py:78
+msgid "Black"
+msgstr ""
+
+#: src/rmdStrings.py:78
+msgid "None"
+msgstr ""
+
+#: src/rmdStrings.py:79
+msgid "Enabled"
+msgstr ""
+
+#: src/rmdStrings.py:79
+msgid "Disabled"
+msgstr ""
+
+#: src/rmdStrings.py:80
+msgid "Files"
+msgstr ""
+
+#: src/rmdStrings.py:80
+msgid "Performance"
+msgstr ""
+
+#: src/rmdStrings.py:80
+msgid "Sound"
+msgstr ""
+
+#: src/rmdStrings.py:80
+msgid "Misc"
+msgstr ""
+
+#: src/rmdStrings.py:81
+msgid ""
+"By default, if you try to save under a filename that already\n"
+"exists, the new file will be renamed\n"
+"(for example if you try to save as out.ogv and that file exists, your file "
+"will be named out.ogv.1).\n"
+"By checking this box, this behavior is disabled and the old file is "
+"overwritten.\n"
+msgstr ""
+
+#: src/rmdStrings.py:82
+msgid "Directory where temporary files will be saved."
+msgstr ""
+
+#: src/rmdStrings.py:84
+msgid ""
+"Encode simultaneously with the recording.\n"
+"This will require a lot more processing power.\n"
+msgstr ""
+
+#: src/rmdStrings.py:85
+msgid ""
+"Do not apply compression on the temporary files.\n"
+"If enabled, the program will need less processing power,\n"
+"in the expense of hard disk space.\n"
+"This option is valid only when encoding on the fly is disabled."
+msgstr ""
+
+#: src/rmdStrings.py:86
+msgid ""
+"This option, if enabled, will cause the program to require less\n"
+"processing power, but it might make the colors look a bit more blurry."
+msgstr ""
+
+#: src/rmdStrings.py:87
+msgid ""
+"This option should be enabled when recording 3d windows.\n"
+"It is also auto-enabled when recording a\n"
+"known 3d compositing window manager.\n"
+" "
+msgstr ""
+
+#: src/rmdStrings.py:88
+msgid "Number of audio channels."
+msgstr ""
+
+#: src/rmdStrings.py:89
+msgid "Sound frequency."
+msgstr ""
+
+#: src/rmdStrings.py:90
+msgid "ALSA sound device, that is used for sound recording."
+msgstr ""
+
+#: src/rmdStrings.py:91
+msgid "Connection to the Xserver."
+msgstr ""
+
+#: src/rmdStrings.py:92
+msgid ""
+"The mouse cursor that will be drawn.\n"
+"Normal is for the real cursor that you see while recording,\n"
+"while black and white are fake cursors, drawn by the program.\n"
+"You can also disable cursor drawing."
+msgstr ""
+
+#: src/rmdStrings.py:93
+msgid ""
+"When This option is enabled, the capture\n"
+"area will follow your mouse cursor.\n"
+"Enabling this option will also enable full shots at\n"
+"every frame, so it's not recommended\n"
+"for large capture areas."
+msgstr ""
+
+#: src/rmdStrings.py:94
+msgid ""
+"Use the MIT-Shared memory extension, whenever appropriate,\n"
+" depending on the rest of the program settings.\n"
+"Disabling this option is not recommended,\n"
+"as it may severely slow down the program."
+msgstr ""
+
+#: src/rmdStrings.py:95
+msgid ""
+"When selecting a window via the \"Select Window\" button,\n"
+"include that window's decorations in the recording area."
+msgstr ""
+
+#: src/rmdStrings.py:96
+msgid ""
+"Enable or disable tooltips, like this one.\n"
+"(Requires restart)"
+msgstr ""
+
+#: src/rmdStrings.py:97
+msgid ""
+"Draw a frame on the screen, around the area\n"
+"that will get captured.\n"
+"(This frame will remain throughout the recording.)"
+msgstr ""
+
+#: src/rmdStrings.py:98
+msgid ""
+"Reset capture area after every recording\n"
+"and at program shutdown."
+msgstr ""
+
+#: src/rmdStrings.py:99
+msgid ""
+"Extra commandline options that will get\n"
+"passed to recordMyDesktop during initialization.\n"
+"These options must be entered the same way\n"
+"they would in the commandline (i.e. separated with spaces).\n"
+"Consult the manpage for more information on using them."
+msgstr ""
+
+#: src/rmdStrings.py:100
+msgid ""
+"Enable this option to record audio through\n"
+"JACK. The Jack server must be running in order to\n"
+"obtain the ports that will be recorded.\n"
+"The audio recorded from each one\n"
+"will be written on a channel of its own.\n"
+"recordMyDesktop must be compiled with JACK\n"
+"support for this option to work."
+msgstr ""
+
+#: src/rmdStrings.py:102
+msgid "Use Jack for audio capture."
+msgstr ""
+
+#: src/rmdStrings.py:103
+msgid ""
+"Select the ports you want to record from\n"
+"(hold Ctrl to select multiple entries):"
+msgstr ""
+
+#: src/rmdStrings.py:105
+msgid "Available Ports"
+msgstr ""
+
+#: src/rmdStrings.py:106
+msgid "jack_lsp returned no ports."
+msgstr ""
+
+#: src/rmdStrings.py:107
+msgid "Make sure that jackd is running."
+msgstr ""
+
+#: src/rmdStrings.py:108
+msgid "Available ports (double click to add):"
+msgstr ""
+
+#: src/rmdStrings.py:109
+msgid "Selected ports (double click to remove):"
+msgstr ""
+
+#: src/rmdStrings.py:110
+msgid "Refresh"
+msgstr ""
