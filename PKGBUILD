@@ -20,9 +20,6 @@ prepare () {
   cd "$srcdir"/oneTBB-${pkgver}
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt -o CMakeLists.txt
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in -o build/version_string.ver.in
-
-  # https://github.com/wjakob/tbb/pull/62
-  sed -i "57ilist(REMOVE_ITEM tbb_src \${CMAKE_CURRENT_SOURCE_DIR}/src/tbb/tbb_bind.cpp)" CMakeLists.txt
 }
 
 build() {
