@@ -1,14 +1,14 @@
 pkgbase = pmwiki
 	pkgdesc = Wiki software based on PHP
-	pkgver = 2.2.125
+	pkgver = 2.2.130
 	pkgrel = 1
 	url = http://www.pmwiki.org
 	install = pmwiki.install
 	arch = any
 	license = GPL
 	depends = php
-	source = http://www.pmwiki.org/pub/pmwiki/pmwiki-2.2.125.tgz
-	sha256sums = d3e66d9d9a85891657ba0632ce3fcc64bffb5962046cf9d9e3fedfc228947c98
+	source = http://www.pmwiki.org/pub/pmwiki/pmwiki-2.2.130.tgz
+	sha256sums = fbf6b4081743517f1ad062168928d0d68593d91fab147e522717480ef8788189
 
 pkgname = pmwiki
 
