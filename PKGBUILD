@@ -2,12 +2,12 @@
 
 pkgname=lightspark
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source flash player implementation'
 url='https://github.com/lightspark/lightspark'
 arch=('x86_64')
 license=('LGPL3')
-depends=('libgl' 'curl' 'ffmpeg' 'zlib' 'glew' 'pcre' 'rtmpdump' 'cairo' 'sdl2' 'sdl2_mixer' 'libjpeg' 'pango' 'xz' 'boost-libs' 'glibmm')
+depends=('libgl' 'curl' 'ffmpeg' 'zlib' 'glew' 'pcre' 'rtmpdump' 'cairo' 'sdl2' 'sdl2_mixer' 'libjpeg' 'pango' 'xz' 'glibmm')
 makedepends=('cmake' 'nasm' 'ninja')
 conflicts=('pepper-flash')
 source=("https://github.com/lightspark/lightspark/archive/${pkgver}.tar.gz")
