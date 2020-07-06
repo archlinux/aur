@@ -1,0 +1,14 @@
+pkgbase = python-kdtree
+	pkgdesc = A Python implementation of a kd-tree
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://github.com/stefankoegl/kdtree
+	arch = any
+	license = ISC
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/stefankoegl/kdtree/archive/v0.16.tar.gz
+	sha256sums = 1a51501998f29d04aa6851572c7b59a3923af72b6b72a59c64c8ec6536c04b85
+
+pkgname = python-kdtree
+
