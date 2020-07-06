@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-lcms2
 	pkgdesc = Small-footprint color management engine, version 2 (mingw-w64)
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = http://www.littlecms.com
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-lcms2
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.10.tar.gz
-	sha256sums = 50d411fd494c7c6973866e08c05dea83245d7e23a0db6237a9d00f88b2e0f346
+	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.11.tar.gz
+	sha256sums = dc49b9c8e4d7cdff376040571a722902b682a795bf92985a85b48854c270772e
 
 pkgname = mingw-w64-lcms2
 
