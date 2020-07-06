@@ -16,6 +16,11 @@ sha512sums=('SKIP')
 conflicts=( "arch-matrix-grub-theme-git")
 provides=("arch-matrix-grub-theme-git=$pkgver")
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
     install -dm 755 $pkgdir/boot/grub/themes/arch-matrix
     cp -r --no-preserve=ownership arch-matrix-grub-theme-git/arch-matrix $pkgdir/boot/grub/themes/
