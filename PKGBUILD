@@ -1,7 +1,7 @@
 # Maintainer: Stephan Hilb <stephan@ecshi.net>
 pkgname=open-jtalk-cvs
-pkgver=1.09.r201512250117
-pkgrel=3
+pkgver=1.10.r201612250236
+pkgrel=1
 pkgdesc="Japanese text-to-speech system"
 arch=('i686' 'x86_64')
 url="http://open-jtalk.sourceforge.net/"
@@ -24,8 +24,6 @@ _cvsfetch() {
 }
 
 pkgver() {
-    # run here, because prepare() is called too late
-    _cvsfetch 2&> /dev/null
     cd "$srcdir/$pkgname"
 
     printf "%s.r%s" \
@@ -34,6 +32,8 @@ pkgver() {
 }
 
 prepare() {
+    _cvsfetch 2&> /dev/null
+
     cd "$srcdir/$pkgname/src"
 
     [[ -f ChangeLog ]] || ln -s NEWS ChangeLog
