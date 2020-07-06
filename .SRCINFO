@@ -5,13 +5,14 @@ pkgbase = libodiosacd
 	url = https://tari.in/www/software/libodiosacd
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL3
-	makedepends = bzr
+	makedepends = breezy
 	makedepends = gcc
 	makedepends = glibc
 	depends = glibc
 	options = !emptydirs
-	source = bzr+lp:/libodiosacd/trunk
+	source = bzr+lp:libodiosacd
 	md5sums = SKIP
 
 pkgname = libodiosacd
