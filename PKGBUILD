@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
@@ -9,8 +10,8 @@
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="Linux Containers"
 arch=('x86_64')
 url="https://linuxcontainers.org"
@@ -31,7 +32,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname/-selinux}-${pkgver}.tar
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
-sha256sums=('ca336dcdf303fea5ff231d89a9b6278b061c4cffb14f0db0a71a15bdd95a5cb0'
+sha256sums=('d56d91d772449c57e9a67b770dab8967e412051d8d6246ce56c63264671672e5'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             'bbe7e0447bc3bf5f75f312c34d647f5218024731628a5e8633b1ea1801ebe16b'
