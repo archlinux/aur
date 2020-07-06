@@ -2,12 +2,12 @@
 
 pkgname=ezquake
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play."
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
 depends=('curl' 'expat' 'jansson' 'libjpeg-turbo' 'libpng' 'openssl' 'sdl2' 'speex')
-makedepends=('unzip' 'vim')
+makedepends=('unzip' 'vim' 'gcc9')
 conflicts=('ezquake-git' 'fuhquake')
 provides=('quake' 'fuhquake')
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
     cd "${srcdir}/ezquake-source-${pkgver}/"
 
     # Compile ezquake
-    make
+    make CC="gcc-9"
 }
 
 package() {
