@@ -6,7 +6,7 @@ pkgbase = unity-mail
 	install = unity-mail.install
 	arch = any
 	license = GPL3
-	makedepends = bzr
+	makedepends = breezy
 	makedepends = python-setuptools
 	makedepends = python-polib
 	depends = hicolor-icon-theme
@@ -22,7 +22,7 @@ pkgbase = unity-mail
 	depends = python-urllib3
 	optdepends = mate-ayatana-indicator-applet
 	optdepends = libunity
-	source = bzr+lp:/unity-mail/trunk
+	source = bzr+lp:unity-mail
 	md5sums = SKIP
 
 pkgname = unity-mail
