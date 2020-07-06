@@ -1,42 +1,39 @@
-# Maintainer: Huy Duong <qhuyduong at hotmail dot com>
-
-pkgname=zalo-nativefier
-pkgver=0.1.1
-pkgrel=1
+# Maintainer: yaua <phungngoctho at gmail dot com>
+pkgname="zalo-nativefier"
+pkgver="1.0"
+pkgrel="1"
 pkgdesc="Zalo desktop built with nativefier (electron)"
-arch=("armv7l" "i686" "x86_64")
-url="https://chat.${pkgname%-nativefier}.me"
-license=("custom")
-depends=("gtk3" "libxss" "nss")
-makedepends=("imagemagick" "nodejs-nativefier")
+arch=('armv7l' 'i686' 'x86_64')
+url="https://chat.zalo.me"
+license=('custom')
+makedepends=(npm nodejs-nativefier nodejs)
 source=(
-  "${pkgname}.png"
-  "${pkgname}.desktop")
-
-build() {
-  cd "${srcdir}"
+  "zalo-nativefier.png"
+  "zalo-nativefier.desktop")
+md5sums=('SKIP')
+appname=zalo-nativefier
   
-  nativefier \
-    --name "Zalo" \
-    --icon "${pkgname}.png" \
+build() {
+    nativefier "https://chat.zalo.me/" \
+    --icon Zalo-nativefier.png \
+    --width "800px" \
+    --height "600px" \
     --verbose \
     --single-instance \
-    --tray \
-    "${url}"
+    --name $appname
 }
 
 package() {
-  install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
-
-  cp -rL "${srcdir}/zalo-linux-"* "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/zalo" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm755 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
-  do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
-    convert "${srcdir}/${pkgname}.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
-  done
+    install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
+    install -Dm644 zalo-nativefier.desktop "$pkgdir"/usr/share/applications/$appname.desktop
+    
+    cp -rL $appname-linux-* "$pkgdir"/opt/$pkgname
+    ln -sf /opt/$pkgname/$appname "$pkgdir"/usr/bin/$appname
+    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$appname.png    
+    chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
+    sed -i 's/!options.saveAs/options.saveAs/g' "$pkgdir"/opt/$pkgname/resources/app/lib/main.js
 }
-md5sums=('5c773fc7033090839aa5a2a1d09f2773'
-         'ac0b946b80fafd826eed8ec2c4c4e4a3')
+
+
+md5sums=('4c951a02d1cb7f66ec070a8b175bf989'
+         'e697df9b4823810731a500a4d178a04f')

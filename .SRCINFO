@@ -1,21 +1,19 @@
 pkgbase = zalo-nativefier
 	pkgdesc = Zalo desktop built with nativefier (electron)
-	pkgver = 0.1.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://chat.zalo.me
 	arch = armv7l
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = imagemagick
+	makedepends = npm
 	makedepends = nodejs-nativefier
-	depends = gtk3
-	depends = libxss
-	depends = nss
+	makedepends = nodejs
 	source = zalo-nativefier.png
 	source = zalo-nativefier.desktop
-	md5sums = 5c773fc7033090839aa5a2a1d09f2773
-	md5sums = ac0b946b80fafd826eed8ec2c4c4e4a3
+	md5sums = 4c951a02d1cb7f66ec070a8b175bf989
+	md5sums = e697df9b4823810731a500a4d178a04f
 
 pkgname = zalo-nativefier
 
