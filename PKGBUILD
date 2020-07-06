@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/mlox/mlox"
 license=(MIT)
 depends=("python" "python-pyqt5" "python-colorama" "python-appdirs" "python-py7zr")
-makedepends=("python2")
+makedepends=("python")
 source=("https://github.com/mlox/mlox/archive/v$pkgver.tar.gz")
 sha512sums=('cc09ea87b3f28d3fb47da8cef1f50c4bb5666623a4596e828da94bb95ec497c0e25b75d33d763ad07b7aadd395c267148e5453445d4777e752b4f37b4c47d079')
 
