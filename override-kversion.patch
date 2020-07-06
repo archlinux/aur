@@ -1,0 +1,5 @@
+2c2,3
+< KDIR = /lib/modules/`uname -r`/build
+---
+> KVERSION ?= `uname -r`
+> KDIR = /lib/modules/$(KVERSION)/build
