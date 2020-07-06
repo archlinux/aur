@@ -2,8 +2,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin
-pkgver=4.0.0b1
-_commit=c7c9a32b9b85b9e7dce3b254600972dcc6d7f683
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')
@@ -12,7 +11,7 @@ license=('Apache')
 depends=('ncurses')
 makedepends=('clang' 'git' 'rust')
 backup=('etc/grin/server.toml')
-source=("git+https://github.com/mimblewimble/grin.git#commit=${_commit}"
+source=("git+https://github.com/mimblewimble/grin.git#tag=v${pkgver}"
         'grin-server.service'
         'grin-server.toml')
 sha256sums=('SKIP'
