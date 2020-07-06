@@ -2,19 +2,14 @@
 pkgname="miraiok-bin"
 pkgver="0.5.2"
 pkgrel=1
-pkgdesc="miraiOK二进制文件的打包"
+pkgdesc="一个啼哭提供QQ Android协议支持的高效率机器人库"
 arch=("x86_64")
-url="https://github.com/LXY1226/MiraiOKhttps://github.com/LXY1226/MiraiOK"
+url="https://github.com/LXY1226/MiraiOK"
 license=("AGPL3")
 depends=("jdk8-openjdk")
-source=("http://t.imlxy.net:64724/mirai/MiraiOK/miraiOK_linux_amd64")
+source=("miraiOK::http://t.imlxy.net:64724/mirai/MiraiOK/miraiOK_linux_amd64")
 noextract=("${source[@]%%::*}")
 md5sums=('114eef36cea19e2846ecb149e88899ac')
-
-prepare() {
-	cd ${srcdir}
-	mv miraiOK_linux_amd64 miraiOK
-}
 
 package() {
 	mkdir -p ${pkgdir}/usr/bin
