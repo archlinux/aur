@@ -17,7 +17,7 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         'kernel-4.16.patch')
-sha256sums=('5ffb19e6c86c28e51d710f9679386e3c755161cf747bf3e83647a3486859d666'
+sha256sums=('a34a19b618be0eb06c4699247489833a8f22c59423f246248614e0a59b1508da'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
