@@ -6,7 +6,7 @@ pkgbase = nodemcu-uploader-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python
+	depends = python-pyserial
 	source = git+https://github.com/kmpm/nodemcu-uploader.git
 	sha256sums = SKIP
 
