@@ -1,7 +1,7 @@
 # Maintainer: Razon Yang <razonyang@gmail.com>
 pkgname=wechat-devtool
-pkgver=1.02.1907300
-pkgrel=2
+pkgver=1.02.1910121
+pkgrel=1
 pkgdesc=微信开发者工具
 url=https://github.com/razonyang/archlinux-wechat-devtool
 license=('MIT')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/cytle/wechat_web_devtools/archive/v$pkgver.tar.gz"
 )
 md5sums=(
-    '9a50b8f4e5055480dfaf6ac6de33e964'
+    'ec022787e71f239af7550459704cec1a'
 )
 package() {
     # copy files to /opt
