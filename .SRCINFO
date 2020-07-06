@@ -1,7 +1,7 @@
 pkgbase = phantomjs
 	pkgdesc = Headless WebKit with JavaScript API
 	pkgver = 2.1.1
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.phantomjs.org/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = phantomjs
 	depends = ruby
 	depends = python2
 	depends = openssl-1.0
+	depends = qt5-webkit
 	source = phantomjs-2.1.1.tar.gz::https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz
 	source = https://deb.debian.org/debian/pool/main/p/phantomjs/phantomjs_2.1.1+dfsg-2.debian.tar.xz
 	source = fix-missing-webkit-include-files.patch

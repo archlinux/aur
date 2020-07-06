@@ -10,12 +10,12 @@ pkgname=phantomjs
 pkgver=2.1.1
 _debver=2.1.1+dfsg
 _debrel=2
-pkgrel=15
+pkgrel=16
 pkgdesc='Headless WebKit with JavaScript API'
 url='http://www.phantomjs.org/'
 license=('BSD' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
-depends=('icu' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0')
+depends=('icu' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0' 'qt5-webkit')
 makedepends=('quilt')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ariya/phantomjs/archive/${pkgver}.tar.gz"
         "https://deb.debian.org/debian/pool/main/p/phantomjs/phantomjs_$_debver-$_debrel.debian.tar.xz"
