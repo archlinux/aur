@@ -1,6 +1,6 @@
 pkgbase = tu2
 	pkgdesc = Simple Project Management System (english translation pending)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://github.com/ntropy83/tu2
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tu2
 	license = GPL
 	makedepends = git
 	depends = qt5-base
-	source = https://github.com/ntropy83/tu2/archive/1.1.0.tar.gz
+	source = https://github.com/ntropy83/tu2/archive/1.1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = tu2
