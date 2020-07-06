@@ -1,7 +1,7 @@
 pkgbase = lua-luaepnf
 	pkgdesc = Extended PEG Notation Format (easy grammars for LPeg)
 	pkgver = 0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://siffiejoe.github.com/lua-luaepnf
 	arch = i686
 	arch = x86_64
