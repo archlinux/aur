@@ -1,0 +1,15 @@
+pkgbase = lumins
+	pkgdesc = A fast and reliable alternative to rsync for synchronizing local files written in Rust
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/wchang22/lumins
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = lumins-0.4.0::https://github.com/wchang22/LuminS/archive/v0.4.0.tar.gz
+	md5sums = 0a272fd6133ed9abcdcf774fc3203c67
+	sha256sums = e5423b62f7ba525a961b4e92fd9d2afe6fb791adb383854783807c7d34c84ffb
+
+pkgname = lumins
+
