@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=68.9.0
+pkgver=68.10.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -19,13 +19,17 @@ conflicts=('thunderbird')
 install=$pkgname.install
 source=('thunderbird-bin.desktop'
         'vendor.js')
-source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
-source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2")
+source_x86_64=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2{,.asc})
+source_i686=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc})
 
 sha512sums=('2f2da27d0d677cfee9ed2ff9da74c4e779150d26e369cb6816f2b1962b38af7d0728c9c362304138212b45e9580f65847c3a011b9bd3417a26b1b48c00cabe8d'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('ed6caacf356c6487a489e983275a2c3d00eac3b2282445667a1f26ac9ce217afb8261a929ccc9aa2bdf7a89101a86faee2ef87c16f0677ecf5abcc727397275f')
-sha512sums_i686=('ed6caacf356c6487a489e983275a2c3d00eac3b2282445667a1f26ac9ce217afb8261a929ccc9aa2bdf7a89101a86faee2ef87c16f0677ecf5abcc727397275f')
+sha512sums_x86_64=('3f7d4c844185b0be0ee3354130112ecc034f06cc2335681998e210b79537df7365f251b005387f319b0a2d2dd6a6337fd6287a007fd54ac03c39315c42893dfe'
+                   'SKIP')
+sha512sums_i686=('3f7d4c844185b0be0ee3354130112ecc034f06cc2335681998e210b79537df7365f251b005387f319b0a2d2dd6a6337fd6287a007fd54ac03c39315c42893dfe'
+                 'SKIP')
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
+
 
 # RC
 if [[ $_build = ? ]]; then
