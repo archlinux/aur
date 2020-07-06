@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-common-msgs
 	pkgdesc = ROS - common_msgs contains messages that are widely used by other ROS packages.
 	pkgver = 1.12.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/common_msgs
 	arch = any
 	license = BSD
