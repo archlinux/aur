@@ -1,4 +1,25 @@
+Proton-5.9-GE-3-ST
+
+GloriousEggroll released this Jul 6, 2020
+
+After ironing out a lot of the major bugs since 5.11, I've realized that while some games run well enough without esync/fsync, the majority of games, specifically triple A titles, really need esync/fsync, especially when running on lower end hardware.
+
+SO, what I've done is taken -all- of the fixes from the 5.11 versions and upstream that are major/relevant that I could recall, and backported them to the 5.9 build. This returns esync/fsync functionality, and also enables some games to run correctly that weren't running in 5.11.
+
+So yes, this is aimed as a 'STABLE' build.
+-All the fixes from the 5.11 releases.
+-esync/fsync re-enabled
+-MGS: Ground Zeroes fully works
+-Planet Zoo fully works
+
+From here I've created yet another branch -- proton-ge-5-stable, which I hope to backport future fixes to, and bump up once Wine gets all of its current kinks resolved. The proton-ge-5-MF branch will continue to be the upstream git branch, with major game fixes being backported to the stable branch (hopefully).
+
+I would say for now, use this as the default 'GE' build over the 5.11 builds.
+
+
 Proton-5.11-GE-3-MF
+
+GloriousEggroll released this Jul 4, 2020
 
 Fixes:
 -Re-enable rawinput (seems staging had it disabled in the previous build)
