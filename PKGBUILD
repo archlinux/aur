@@ -29,8 +29,10 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
+    '0001-not-build-ninja-icu.patch'
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -64,6 +66,8 @@ prepare() {
     rm -rf swift swiftpm
     mv swift-swift-${_swiftver} swift
     mv swift-package-manager-swift-${_swiftver} swiftpm
+
+    ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
 }
 
 _common_build_params=(
@@ -83,10 +87,12 @@ _build_script_wrapper() {
 }
 
 build() {
-    cd "$srcdir/swift"
-
-    export PATH="$PATH:/usr/bin/core_perl"
-    _build_script_wrapper -R "${_common_build_params[@]}"
+    cd "$srcdir"
+    # Fix /usr/include error
+    find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build" installable_package="$srcdir/swift-arch-pkg.tar.gz"
 }
 
 check() {
