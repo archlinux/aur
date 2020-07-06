@@ -1,6 +1,6 @@
 pkgbase = espnet-cuda-git
 	pkgdesc = End-to-End Speech Processing Toolkit.
-	pkgver = r6287.1e8b6ce88
+	pkgver = r8280.8799cafca
 	pkgrel = 1
 	url = https://github.com/espnet/espnet
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = espnet-cuda-git
 	optdepends = nccl>=2.0: for multi-GPU setup
 	provides = espnet
 	conflicts = espnet-cuda-git
-	source = espnet-cuda-git::git+https://github.com/espnet/espnet
+	source = espnet::git+https://github.com/espnet/espnet
 	source = espnet-cuda-git.sh
 	md5sums = SKIP
 	md5sums = 32dad7fc986f0250d22a2e7a2e5d28ce
