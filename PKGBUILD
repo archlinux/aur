@@ -1,6 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
+# Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=espnet-cuda-git
-pkgver=r6324.5ff213d78
+pkgver=r8280.8799cafca
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit.'
 arch=('x86_64')
@@ -12,7 +13,7 @@ makedepends=('git')
 provides=('espnet')
 conflicts=("${pkgname}")
 source=(
-    "${pkgname}::git+${url}"
+    "espnet::git+${url}"
     espnet-cuda-git.sh)
 md5sums=(
     'SKIP'
@@ -26,18 +27,27 @@ build() {
     KALDI_PATH=/opt/kaldi
     PYTHON_PATH=/usr/bin/python
     
-    cd "${pkgname}"
+    source ${srcdir}/espnet-cuda-git.sh
+    cd "espnet/tools"
+    make clean
+    # Exclude not necessary parts from the package (build breaks with them)
+    # excluded: warp-transducer.done chainer_ctc.done
+    make KALDI=$KALDI_PATH kaldi.done venv warp-ctc.done cupy.done
+}
 
-    cd tools
-    make KALDI=$KALDI_PATH PYTHON=$PYTHON_PATH
-
-    make check_install
+check() {
+    # check fails if not all dependencies were executed in make
+    cd "${pkgname}/tools"
+    . venv/bin/activate; python check_install.py || true
 }
 
 package() {
-    cd "${pkgname}"
-
+    # copy bash env variables
     install -Dm755 "${srcdir}/espnet-cuda-git.sh" "${pkgdir}/etc/profile.d/espnet-cuda-git.sh"
-
-    # install -D -m755 ~/.cargo/bin/ra_lsp_server "${pkgdir}/usr/bin/ra_lsp_server"
+    # copy over espnet git tree
+    mkdir -p "${pkgdir}/opt/espnet"
+    cp -r "${srcdir}/espnet" "${pkgdir}/opt/"
+    chmod -R 755 "${pkgdir}/opt/espnet"
+    # do we need the git tree?
+    rm -r "${pkgdir}/opt/espnet/.git"
 }
