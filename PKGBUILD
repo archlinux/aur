@@ -1,13 +1,14 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-cap32-git
-pkgver=278.e5acfcb
+pkgver=279.2115339
 pkgrel=1
 pkgdesc="libretro implementation of Caprice32 (Amstrad CPC)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-cap32"
 license=('GPL')
 groups=('libretro')
+depends=('zlib' 'glibc' 'libretro-core-info')
 makedepends=('git')
 
 _libname=cap32_libretro
