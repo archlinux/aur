@@ -1,0 +1,13 @@
+pkgbase = passgen-git
+	pkgver = r1.000051
+	pkgrel = 1
+	url = https://github.com/Can221-ParOS/passgen-git.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = git+https://github.com/Can221-ParOS/passgen-git.git
+	md5sums = SKIP
+
+pkgname = passgen-git
+
