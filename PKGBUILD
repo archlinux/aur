@@ -14,7 +14,7 @@ url="https://github.com/Zeioth/rofi-zeal.git"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(git rofi zeal-git)
+makedepends=(git rofi zeal)
 checkdepends=()
 optdepends=()
 provides=(rofi-zeal)
@@ -38,6 +38,6 @@ package() {
     mkdir -p ~/.local/share/rofi/rofi-zeal/
     mkdir -p ~/.cache/rofi/rofi-zeal/
     cp "${srcdir}"/rofi-zeal/rofi-zeal.sh ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh
-    chmod u+x /rofi-zeal/rofi-zeal.sh ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh
+    chmod u+x ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh
     ln -sf ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh ~/.local/bin/rofi-zeal
 }
