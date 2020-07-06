@@ -1,0 +1,48 @@
+--- src/Vega-Strike-Engine-Source/engine/CMakeLists.txt.orig	2020-07-06 22:58:08.587028430 +0200
++++ src/Vega-Strike-Engine-Source/engine/CMakeLists.txt	2020-07-06 23:02:43.742977047 +0200
+@@ -787,18 +787,40 @@
+ 
+ # Find Boost with boost_python library
+ OPTION(USE_SYSTEM_BOOST "Use system boost" OFF)
++
+ IF (USE_SYSTEM_BOOST)
+-    FIND_PACKAGE(Boost COMPONENTS python)
++    UNSET(Boost_PYTHON_LIBRARY CACHE)
++    UNSET(Boost_PYTHON_LIBRARY_DEBUG CACHE)
++    UNSET(Boost_PYTHON_LIBRARY_RELEASE CACHE)
++    UNSET(Boost_PYTHON3_LIBRARY CACHE)
++    UNSET(Boost_PYTHON3_LIBRARY_DEBUG CACHE)
++    UNSET(Boost_PYTHON3_LIBRARY_RELEASE CACHE)
++    UNSET(Boost_python3_FOUND CACHE)
++    UNSET(Boost_python_FOUND CACHE)
++    IF (USE_PYTHON_3)
++        MESSAGE("++ Looking for System Boost::python3")
++        FIND_PACKAGE(Boost COMPONENTS python38 log log_setup REQUIRED)
++    ELSE (USE_PYTHON_3)
++        MESSAGE("++ Looking for System Boost::python (py2)")
++        FIND_PACKAGE(Boost COMPONENTS python27 log log_setup REQUIRED)
++    ENDIF (USE_PYTHON_3)
++
+     IF (Boost_FOUND)
+-        MESSAGE("++ Found System Boost : ${Boost_VERSION}")
++        MESSAGE("++ Found System Boost version : ${Boost_VERSION}")
++        IF (Boost_python3_FOUND)
++            MESSAGE("++ Found System Boost::python3 : ${Boost_PYTHON3_LIBRARY}")
++        ENDIF (Boost_python3_FOUND)
++        IF (Boost_python_FOUND)
++            MESSAGE("++ Found System Boost::python (py2) : ${Boost_PYTHON_LIBRARY}")
++        ENDIF (Boost_python_FOUND)
+         SET(BOOST_PYTHON_NO_PY_SIGNATURES 1)
+         SET(TST_INCLUDES ${TST_INCLUDES} ${Boost_INCLUDE_DIRS})
+         SET(TST_LIBS ${TST_LIBS} ${Boost_LIBRARIES})
+         INCLUDE_DIRECTORIES(${TST_INCLUDES})
+-    ELSE(Boost_FOUND)
++    ELSE (Boost_FOUND)
+         SET(USE_SYSTEM_BOOST OFF)
+-    ENDIF(Boost_FOUND)
+-ENDIF(USE_SYSTEM_BOOST)
++    ENDIF (Boost_FOUND)
++ENDIF (USE_SYSTEM_BOOST)
+ 
+ IF (NOT USE_SYSTEM_BOOST)
+     MESSAGE("++ Using Internal Boost")

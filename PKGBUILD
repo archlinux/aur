@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-release-git
-pkgver=rev.13847
+pkgver=rev.13856
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -24,7 +24,9 @@ pkgver() {
 
 prepare(){
 mkdir -p build
-patch -Np1 -i ../py2.patch
+#for now, these two patches modify the same line in CMakelists.txt
+#patch -Np1 -i ../py2.patch
+patch -Np1 -i ../Python.patch
 }
 
 build(){
@@ -33,7 +35,8 @@ build(){
 	-DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
 	-DENABLE_PIE=ON \
-	-DUSE_PYTHON_3=OFF 
+	-DUSE_SYSTEM_BOOST=ON \
+	-DUSE_PYTHON_3=ON 
 	make
 }
 
