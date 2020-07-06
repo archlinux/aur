@@ -1,0 +1,49 @@
+From 416f62ccf9a2d4037d1d71a4d51d78d38f3af960 Mon Sep 17 00:00:00 2001
+From: Sylvain Munaut <tnt@246tNt.com>
+Date: Fri, 27 Mar 2020 18:42:43 +0100
+Subject: [PATCH] cmake: Adapt to use Qt5 instead of Qt4
+
+Signed-off-by: Sylvain Munaut <tnt@246tNt.com>
+---
+ CMakeLists.txt     |  3 +--
+ src/CMakeLists.txt | 10 ++++++----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4de2a0e..951ecfc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,8 +4,7 @@ project(v4l2ucp)
+ set(V4L2UCP_VERSION 2.0.2)
+ 
+ add_definitions(-Wall -DV4L2UCP_VERSION="${V4L2UCP_VERSION}")
+-find_package(Qt4 REQUIRED)
+-include( ${QT_USE_FILE} )
++find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+ 
+ MESSAGE(STATUS "Looking for libv4l")
+ find_library(V4L2_LIBRARY v4l2)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6604878..89735d9 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,13 +2,15 @@ set(SOURCES mainWindow.cpp previewSettings.cpp v4l2controls.cpp v4l2ucp.cpp)
+ set(HEADERS mainWindow.h previewSettings.h v4l2controls.h)
+ set(UI_FILES previewSettings.ui)
+ set(RCS v4l2ucp.qrc)
+-qt4_wrap_cpp(MOC_SOURCES ${HEADERS})
+-qt4_wrap_ui(UI_HEADERS ${UI_FILES})
+-qt4_add_resources(RC_SOURCES ${RCS})
++
++set(CMAKE_AUTOMOC ON)
++set(CMAKE_AUTORCC ON)
++set(CMAKE_AUTOUIC ON)
++
+ include_directories(${CMAKE_BINARY_DIR}/src)
+ 
+ add_executable(v4l2ucp ${SOURCES} ${MOC_SOURCES} ${UI_HEADERS} ${RC_SOURCES})
+-target_link_libraries(v4l2ucp ${QT_LIBRARIES} ${V4L2_LIBRARY})
++target_link_libraries(v4l2ucp Qt5::Widgets ${V4L2_LIBRARY})
+ 
+ add_executable(v4l2ctrl v4l2ctrl.c)
+ target_link_libraries(v4l2ctrl ${V4L2_LIBRARY})
