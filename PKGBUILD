@@ -7,7 +7,6 @@ arch=('i686' 'x86_64')
 url="http://github.com/ntropy83/tu2"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('git')
 source=("https://github.com/ntropy83/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('SKIP')
 
