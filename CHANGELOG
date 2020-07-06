@@ -1,9 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-1.6.0 (May 28, 2020)
-    Add French translation patch from Léo Villeveygoux
-
 1.6.1 (June 8, 2020)
     Fixed an issue where any language not officially supported would print
       "null" for each localized string
@@ -19,3 +16,7 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
       being made)
     Speed improvements for -c/--check
     Small man page improvements
+
+1.7.1 (July 6, 2020)
+    Fixed issue #5 where user settings may be read incorrectly
+      https://todo.sr.ht/~krathalan/wtwitch/5
