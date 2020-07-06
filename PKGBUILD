@@ -18,7 +18,7 @@ source=(
 sha512sums=(
   '3e21151e27af6a4124f3e0d7805e68e4e6908f03d485a643280e865241a4177ed284477790040aaa6951b196d1bf236a326d6762554d93f8b733d07c913a83de'
   '1f4ff3844c19cc9fc9857191075cfdda4cf01797b86cfa9fd29ac2a8baf47051211d533fd72f2d273f8ce7c625b59dd965557d8295af084208cc7fb26ba81a34')
-makedepends=('git' 'cmake' 'file' 'make' 'gawk' 'gcc' 'zsh')
+makedepends=('git' 'cmake' 'zsh')
 install='gitstatus.install'
 
 build() {
