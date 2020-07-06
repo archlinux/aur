@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='https://wiki.ros.org/rosbag'
 
 pkgname='ros-melodic-rosbag'
-pkgver='1.14.5'
+pkgver='1.14.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -50,9 +50,9 @@ depends=(
 	python-crypto
 )
 
-_dir="ros_comm-${pkgver}/rosbag"
+_dir="ros_comm-${pkgver}/**/rosbag"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('49849315ca55247c656a5a50cd5caa5f33f7d212766ff09b62eae48f1dc6c3e7')
+sha256sums=('30228310727ed3a027a5a0a745df8f451f3a5db08897b452769e2fe7dee9173e')
 
 build() {
 	# Use ROS environment variables.
