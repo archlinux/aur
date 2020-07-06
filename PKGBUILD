@@ -1,7 +1,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-gen
-pkgver=0.5.2
-pkgrel=5
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Iterators for OCaml'
 license=('BSD')
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('ocaml')
 makedepends=('ocaml-findlib' 'dune')
 source=("https://github.com/c-cube/gen/archive/${pkgver}.tar.gz")
 options=(!strip !makeflags)
-sha256sums=('8246738ca19810192f005b6e350605aae5132a6a55848795ee1fa002addf1b06')
+sha256sums=('160352ce6d678ed7095caf5b3fd3708b155f8b224cf8bad99054946422b8d4cb')
 
 build() {
     cd "${pkgname/ocaml-/}-$pkgver"
