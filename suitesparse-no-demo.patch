@@ -6,8 +6,8 @@ index 74941a6..4feacf0 100644
  # Compile the default rules for each package
  go: metis
  	( cd SuiteSparse_config && $(MAKE) )
--	( cd Mongoose  && $(MAKE) CMAKE_OPTIONS='$(CMAKE_OPTIONS)' )
-+	( cd Mongoose  && $(MAKE) library CMAKE_OPTIONS='$(CMAKE_OPTIONS)' )
+-	( cd Mongoose && $(MAKE) CMAKE_OPTIONS='$(CMAKE_OPTIONS)' )
++	( cd Mongoose && $(MAKE) library CMAKE_OPTIONS='$(CMAKE_OPTIONS)' )
  	( cd AMD && $(MAKE) )
  	( cd BTF && $(MAKE) )
  	( cd CAMD && $(MAKE) )

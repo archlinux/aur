@@ -14,7 +14,7 @@ pkgbase = mingw-w64-suitesparse
 	options = staticlibs
 	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.8.0.tar.gz
 	source = suitesparse-no-demo.patch
-	sha256sums = 5ce343444c589d5c46d1ef2b4dde625fdb287e1838f24bc5a5f7054149145fc3
+	sha256sums = 94a9b7134eb4dd82b97f1a22a6b464feb81e73af2dcdf683c6f252285191df1d
 	sha256sums = SKIP
 
 pkgname = mingw-w64-suitesparse

@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('5ce343444c589d5c46d1ef2b4dde625fdb287e1838f24bc5a5f7054149145fc3' SKIP)
+sha256sums=('94a9b7134eb4dd82b97f1a22a6b464feb81e73af2dcdf683c6f252285191df1d' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
