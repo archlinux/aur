@@ -1,7 +1,7 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCJack123/craftos2
 	arch = x86_64
 	arch = i386
@@ -16,7 +16,7 @@ pkgbase = craftos-pc
 	optdepends = png++: PNG screenshot support
 	optdepends = ncurses: CLI mode support
 	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.3.4.tar.gz
-	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.3.2.tar.gz
+	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.3.4.tar.gz
 	sha256sums = 098609e5fc79a42234f82aa0bf4bfbb5810769f75ed086217473bab1194cd480
 	sha256sums = 5a4ed319d65ac431ae9d19cfcb1ecffc1cf501964725ebdd970e6daab293a4ae
 
