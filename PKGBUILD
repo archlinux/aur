@@ -4,10 +4,10 @@ pkgver=3.8
 pkgrel=2
 pkgdesc="A collection of tools to manipulate MP4 files"
 arch=('x86_64')
-url="http://www.mp4joiner.org/"
+url="https://www.mp4joiner.org/"
 license=('GPL')
 depends=('gpac' 'wxsvg')
-source=("http://downloads.sourceforge.net/mp4joiner/MP4Tools-$pkgver.tar.bz2"
+source=("https://downloads.sourceforge.net/mp4joiner/MP4Tools-$pkgver.tar.bz2"
         'mp4joiner.desktop'
         'mp4splitter.desktop')
 sha256sums=('6a64d4c02b84affb6b6e1f17aaca78a41d319576b7f428b50b55a6ba2ce64b3e'
