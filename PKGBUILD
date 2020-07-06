@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -35,8 +35,8 @@ build() {
     yarn less
     yarn handlebars
     yarn lang:refresh
-    NODE_ENV=production node node_modules/webpack/bin/webpack.js
     yarn reveal:build
+    NODE_ENV=production node node_modules/webpack/bin/webpack.js --progress --colors
 
     cd "${srcdir}/Zettlr/source"
     yarn install --pure-lockfile --cache-folder "${srcdir}/cache"
@@ -57,6 +57,20 @@ build() {
     find . -name "\.vscode" -exec rm -rfv {} +
     find . -name "yarn.lock" -exec rm -rfv {} +
 }
+
+# check() {
+#     cd "${srcdir}/Zettlr"
+#     # Require electron module to test
+#     yarn add --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link" electron
+#     # The "test" function in package.json
+#     node node_modules/mocha/bin/mocha
+#     # The "test-gui" function in package.json, not useful in our case
+#     # node scripts/test-gui.js
+#     # Clean up
+#     yarn remove electron
+#     rm yarn.lock
+#     rm node_modules/.bin -rf
+# }
 
 package() {
     local _destdir=usr/lib/"${pkgname}"
