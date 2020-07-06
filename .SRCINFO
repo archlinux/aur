@@ -1,6 +1,6 @@
 pkgbase = feathernotes
 	pkgdesc = Lightweight Qt hierarchical notes-manager for Linux.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/tsujan/feathernotes
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = feathernotes
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	optdepends = qt5-translations: localized keyboard shortcuts
-	source = feathernotes-0.5.0.tar.gz::https://github.com/tsujan/feathernotes/archive/V0.5.0.tar.gz
-	sha256sums = b477dac27c93b2c68674e741ef665df8a8b88070183a8ba81adffbe081990bde
+	source = feathernotes-0.5.1.tar.gz::https://github.com/tsujan/feathernotes/archive/V0.5.1.tar.gz
+	sha256sums = 68266e72886c2725a20e0e6e9419246fcc26af8f89a2736031a0b0f97880ec60
 
 pkgname = feathernotes
 
