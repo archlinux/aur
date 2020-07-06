@@ -6,7 +6,7 @@ url='https://wiki.ros.org/tuw_multi_robot_msgs'
 pkgname='ros-melodic-tuw-multi-robot-msgs'
 pkgver='0.0.13'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -23,13 +23,6 @@ ros_depends=(ros-melodic-message-runtime
   ros-melodic-std-msgs)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/tuw_multi_robot_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/tuw-robotics/tuw_msgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="tuw_msgs-${pkgver}/tuw_multi_robot_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/tuw-robotics/tuw_msgs/archive/${pkgver}.tar.gz")
 sha256sums=('b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6')
