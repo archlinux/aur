@@ -1,6 +1,6 @@
 pkgbase = ii-git
 	pkgdesc = A minimalist FIFO and filesystem-based IRC client
-	pkgver = v1.7.7.gf79e2f0
+	pkgver = 1.8.11.gecf3902
 	pkgrel = 1
 	epoch = 1
 	url = http://tools.suckless.org/ii

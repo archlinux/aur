@@ -6,7 +6,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 pkgname=ii-git
 _pkgname=ii
-pkgver=v1.7.7.gf79e2f0
+pkgver=1.8.11.gecf3902
 pkgver(){
   cd $_pkgname
   git describe --tags | sed 's/-/./g'
@@ -34,5 +34,5 @@ package() {
   cd "$srcdir/$_pkgname"
   make PREFIX=/usr MANDIR=/usr/share/man DESTDIR="$pkgdir" install
   install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -m644 -D README CHANGES FAQ query.sh -t $pkgdir/usr/share/doc/$pkgname/
+  install -m644 -D README CHANGES FAQ -t $pkgdir/usr/share/doc/$pkgname/
 }
