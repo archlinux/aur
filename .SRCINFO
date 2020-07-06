@@ -5,13 +5,14 @@ pkgbase = keyfault
 	url = https://tari.in/www/software/keyfault
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL3
-	makedepends = bzr
+	makedepends = breezy
 	makedepends = gcc
 	makedepends = libxss
 	depends = libxss
 	options = !emptydirs
-	source = bzr+lp:/keyfault/trunk
+	source = bzr+lp:keyfault
 	md5sums = SKIP
 
 pkgname = keyfault
