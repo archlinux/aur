@@ -2,7 +2,7 @@
 
 pkgname=vixl44-git
 _pkgname=vixl44
-pkgver=r83r
+pkgver=r83.8001e33
 pkgrel=1
 pkgdesc="Create pixel art inside your terminal using vim movements"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HE  AD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
