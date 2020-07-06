@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.11.11.73.ace7060
+pkgver=1.12.5.74.3a010f0
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
@@ -43,6 +43,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/openvr"
+  rm -rf thirdparty/jsoncpp
   for i in \
     "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch" \
     "../0002-samples-cmake-Remove-OpenVR-paths-check.patch" \
