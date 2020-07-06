@@ -31,7 +31,7 @@ pkgver() {
 #  git reset --hard > /dev/null 2>&1
 #  if you want a specific commit or branch... just put it here
 #  git checkout 441a3b44df770578240c1774b29d373aa4a08bb8 > /dev/null 2>&1
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
