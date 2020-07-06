@@ -1,8 +1,8 @@
 # Maintainer: Everett B. <everettbutts@hotmail.com>
 pkgname=passgen-git
-pkgver=r1.000051
+pkgver=r1.000052
 pkgrel=1
-pkdesc="A simple cli tool that generates passwords of a user defined length. Can currently create Random String & Secure Token String passwords"
+pkdesc=("A simple cli tool that generates passwords of a user defined length. Can currently create Random String & Secure Token String passwords")
 url="https://github.com/Can221-ParOS/passgen-git.git"
 license=('GPL3')
 depends=("python")

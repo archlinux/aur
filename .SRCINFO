@@ -1,5 +1,5 @@
 pkgbase = passgen-git
-	pkgver = r1.000051
+	pkgver = r1.000052
 	pkgrel = 1
 	url = https://github.com/Can221-ParOS/passgen-git.git
 	arch = x86_64
