@@ -2,7 +2,6 @@
 
 pkgname=nodemcu-pyflasher
 pkgver=4.0
-_pkgdate=20200606
 pkgrel=2
 pkgdesc="Self-contained NodeMCU flasher with GUI based on esptool.py and wxPython."
 arch=("x86_64")
