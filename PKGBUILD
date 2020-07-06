@@ -1,44 +1,55 @@
-# Maintainer: Bash Booster <Booster.sdk@gmail.com>
-# Contributor: Riccardo Berto <riccardobrt@gmail.com>
-# Contributor: vbmithr
-# Contributor: Flamelab <panosfilip at gmail dot com>
-# Contributor: Dan Ziemba <zman0900@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# based on core/xf86-video-ati: Jan de Groot <jgc@archlinux.org>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
 
-pkgname=xf86-video-ati-git
-_realpkgname=xf86-video-ati
-pkgver=7.8.0.r4.g13c6bc5
+_pkgname=xf86-video-ati
+pkgname="${_pkgname}-git"
+pkgver=19.1.0.r4.g38453924
 pkgrel=1
-pkgdesc="X.org ati video driver. Git version"
-arch=('i686' 'x86_64')
-url="http://xorg.freedesktop.org/"
-provides=("${_realpkgname}")
-depends=('libdrm' 'systemd' 'mesa')
-makedepends=('xorg-server-devel>=1.18')
-conflicts=('xorg-server' 'xf86-video-ati')
+epoch=1
+pkgdesc="X.org ati video driver"
+arch=('x86_64')
+url="https://xorg.freedesktop.org/"
 license=('custom')
-install=xf86-video-ati-git.install
-source=('xf86-video-ati::git://anongit.freedesktop.org/xorg/driver/xf86-video-ati')
-md5sums=('SKIP')
+depends=('systemd-libs' 'mesa')
+makedepends=('xorg-server-devel' 'systemd')
+provides=("${_pkgname}")
+conflicts=('xorg-server<1.20.0' "${_pkgname}")
+groups=('xorg-drivers')
+source=("${_pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/xf86-video-ati"
-  ( set -o pipefail
-  git describe --long | sed 's/^xf86-video-ati-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  )
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/^xf86-video-ati-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/xf86-video-ati"
+  cd "${_pkgname}"
 
-  ./autogen.sh --prefix=/usr \
-    --enable-glamor
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
-package() {
-  cd "${srcdir}/xf86-video-ati"
+check() {
+  cd "${_pkgname}"
+  make check
+}
 
-  make DESTDIR="${pkgdir}" install
+package() {
+  cd "${_pkgname}"
+
+  make "DESTDIR=${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
