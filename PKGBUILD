@@ -1,19 +1,19 @@
 # Maintainer: Tun Win Naing <twnaing(at)outlook(dot)com>
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
-pkgver=v4.29_9680
+pkgver=v4.34_9745
 pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://www.softether.org/"
 license=('Apache')
 depends=('bash' 'openssl' 'zlib')
-source=("https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/${pkgver//_/-}-rtm/softether-src-${pkgver//_/-}-rtm.tar.gz"
+source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-2020.04.05-tree/Source_Code/softether-src-${pkgver//_/-}-rtm.tar.gz"
         'aarch64.patch'
         'softethervpn-bridge.service'
         'softethervpn-client.service'
         'softethervpn-server.service')
-md5sums=('0b0bf86c59374f5ea1dbde20b3a3b5d3'
+md5sums=('69452ac0a5d18b057fbe53841818f577'
          '8b92f69f9d8d852a3739d0e48bad0454'
          '1d54c0065ae8947bd8455b9e2050c1af'
          'a1134fea991e6e00dc4910b1be16dc73'
