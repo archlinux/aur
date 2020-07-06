@@ -1,8 +1,8 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
-	pkgver = r7453.446177f6
-	pkgrel = 1
-	url = http://deadbeef.sourceforge.net
+	pkgver = r9352.447108249
+	pkgrel = 2
+	url = https://deadbeef.sourceforge.io/
 	install = deadbeef.install
 	arch = i686
 	arch = x86_64
@@ -56,10 +56,11 @@ pkgbase = deadbeef-git
 	optdepends = yasm: required to build assembly portions of ffap plugin
 	optdepends = libzip: for vfs_zip plugin
 	optdepends = ffmpeg: for ffmpeg plugin
+	optdepends = opusfile: for opus plugin
 	provides = deadbeef
 	conflicts = deadbeef
 	options = !libtool
-	source = git+https://github.com/Alexey-Yakovenko/deadbeef
+	source = git+https://github.com/DeaDBeeF-Player/deadbeef.git
 	md5sums = SKIP
 
 pkgname = deadbeef-git
