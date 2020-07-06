@@ -24,7 +24,7 @@ _bldtype=Release
 
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _mozcver=2.23.2815.102
-_utdicdate=20200624
+_utdicdate=20200704
 _utdicver=1
 
 pkgbase=mozc-ut-united
@@ -43,7 +43,7 @@ source=(
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/usage_dict.txt.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-  https://osdn.net/downloads/users/26/26486/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
+  https://osdn.net/downloads/users/26/26499/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
 )
 sha1sums=('SKIP'
           'a366077418ae6f235aecf374256354a40dc5b37a'
