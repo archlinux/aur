@@ -2,7 +2,7 @@
 pkgname=gba-tileeditor-git
 url="https://github.com/quentin-dev/gba-tileeditor"
 _gitname=gba-tileeditor
-pkgver=0.0.1.r1.g965dfbb
+pkgver=0.0.2.r0.g9c7d87a
 pkgrel=1
 pkgdesc="A Gameboy Advance tile editor"
 arch=(x86_64)
@@ -12,6 +12,11 @@ makedepends=('qt5-base' 'git')
 source=("$pkgname::git+https://github.com/quentin-dev/gba-tileeditor#branch=master")
 md5sums=("SKIP")
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+}
+
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -20,7 +25,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
     qmake gba-tileeditor.pro
-    make -j8
+    make -j$(nproc)
 }
 
 package() {
