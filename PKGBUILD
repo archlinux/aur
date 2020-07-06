@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-ui-git
-pkgver=2.19.2
+pkgver=2.19.4
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - beta version'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
 
   # Compile C# sources
   cd "Eddie"
-  xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
+  xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.ui.sln
 
   # Compile C sources (Tray)
   cd src/UI.GTK.Linux.Tray
