@@ -15,7 +15,7 @@ appname=zalo-nativefier
   
 build() {
     nativefier "https://chat.zalo.me/" \
-    --icon Zalo-nativefier.png \
+    --icon zalo-nativefier.png \
     --width "800px" \
     --height "600px" \
     --verbose \
@@ -33,7 +33,5 @@ package() {
     chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
     sed -i 's/!options.saveAs/options.saveAs/g' "$pkgdir"/opt/$pkgname/resources/app/lib/main.js
 }
-
-
-md5sums=('4c951a02d1cb7f66ec070a8b175bf989'
-         'e697df9b4823810731a500a4d178a04f')
+md5sums=('5c773fc7033090839aa5a2a1d09f2773'
+         'ac0b946b80fafd826eed8ec2c4c4e4a3')

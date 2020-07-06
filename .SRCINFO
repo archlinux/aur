@@ -12,8 +12,8 @@ pkgbase = zalo-nativefier
 	makedepends = nodejs
 	source = zalo-nativefier.png
 	source = zalo-nativefier.desktop
-	md5sums = 4c951a02d1cb7f66ec070a8b175bf989
-	md5sums = e697df9b4823810731a500a4d178a04f
+	md5sums = 5c773fc7033090839aa5a2a1d09f2773
+	md5sums = ac0b946b80fafd826eed8ec2c4c4e4a3
 
 pkgname = zalo-nativefier
 
