@@ -2,7 +2,7 @@
 pkgname="miraiok-bin"
 pkgver="0.5.2"
 pkgrel=1
-pkgdesc="一个啼哭提供QQ Android协议支持的高效率机器人库"
+pkgdesc="一个提供QQ Android协议支持的高效率机器人库"
 arch=("x86_64")
 url="https://github.com/LXY1226/MiraiOK"
 license=("AGPL3")
