@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=roswell
-pkgver="20.05.14.106"
+pkgver="20.06.14.107"
 pkgrel=1
 pkgdesc="Lisp installer and launcher"
 url="https://github.com/roswell/roswell"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('curl')
 optdepends=()
 source=("https://github.com/roswell/roswell/archive/v$pkgver.tar.gz")
-md5sums=('e526139fe05955db016d73f1e2bb8a28')
+md5sums=('ffbb660e6c8a4e63be57c6f6edaeadaa')
 
 
 
