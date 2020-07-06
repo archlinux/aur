@@ -1,6 +1,6 @@
 pkgbase = scriptisto
 	pkgdesc = A language-agnostic "shebang interpreter" that enables you to write scripts in compiled languages
-	pkgver = 0.6.5
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/igor-petruk/scriptisto
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = scriptisto
 	license = Apache
 	makedepends = rust
 	depends = gcc-libs
-	source = scriptisto-0.6.5.tar.gz::https://github.com/igor-petruk/scriptisto/archive/v0.6.5.tar.gz
-	sha256sums = 2cddfc76b349ccb5cf1bf0765c483a74840b08b75a5a493fb5d39aff2b7822df
+	source = scriptisto-0.6.7.tar.gz::https://github.com/igor-petruk/scriptisto/archive/v0.6.7.tar.gz
+	sha256sums = 6bd9ce557e67f266225151969de58b9f4156e31e6088caad8519fa1f0ddc6a96
 
 pkgname = scriptisto
 
