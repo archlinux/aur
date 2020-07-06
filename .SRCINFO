@@ -1,14 +1,14 @@
 pkgbase = chessx
 	pkgdesc = Cross-platform chess database and PGN viewer
 	pkgver = 1.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://chessx.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = qt5-tools
-	depends = qt5-multimedia
 	depends = qt5-svg
+	depends = qt5-speech
 	optdepends = stockfish: for a chess engine
 	optdepends = lc0-cudnn-git: for another chess engine
 	conflicts = chessx-svn

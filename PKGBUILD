@@ -1,12 +1,12 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=chessx
 pkgver=1.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(i686 x86_64)
 url=http://chessx.sourceforge.net
 license=(GPL2)
-depends=(qt5-multimedia qt5-svg)
+depends=(qt5-svg qt5-speech)
 optdepends=('stockfish: for a chess engine'
             'lc0-cudnn-git: for another chess engine')
 makedepends=(qt5-tools)
