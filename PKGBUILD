@@ -6,12 +6,12 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx')
 pkgver=390.138
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
 options=('!strip')
-_pkg="NVIDIA-Linux-x86_64-${pkgver}"
+_pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
         'nvidia-390xx-utils.install'
