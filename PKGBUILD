@@ -2,7 +2,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=snapcraft
-pkgver=4.0.1
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="Package, distribute, and update any app for Linux and IoT."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
 source=("https://github.com/snapcore/snapcraft/archive/${pkgver}.tar.gz")
-sha256sums=('70fa9ebec56d0050010712f691aa5a88b7067d7c162c0fa5a3dc0bcb11beb9ad')
+sha256sums=('d15e82ca72e6b8f527c83de217467646fcaba0bbe64ed6caaa2f3e3fe3404ffd')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
