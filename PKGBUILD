@@ -3,7 +3,7 @@
 
 pkgname="asf"
 pkgver="4.2.3.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -36,7 +36,7 @@ package() {
     install -d -m 755 "${pkgdir}/usr/lib/${pkgname}"
     cp -rdp --no-preserve=ownership . "${pkgdir}/usr/lib/asf"
     install -D -m755 ../../run.sh "${pkgdir}/usr/bin/${pkgname}"
-    sed -i 's,^\(BINARY_PATH[ ]*=\).*,\1'/usr/lib/asf',g' "${pkgdir}/usr/bin/${pkgname}"
+    sed -i 's,^\(BINARY_DIR[ ]*=\).*,\1'/usr/lib/asf',g' "${pkgdir}/usr/bin/${pkgname}"
     find "${pkgdir}/usr/lib/${pkgname}" -type f -exec chmod 644 {} \;
     find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
 
