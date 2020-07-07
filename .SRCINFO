@@ -1,0 +1,20 @@
+pkgbase = nas-git
+	pkgdesc = Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.
+	pkgver = r219.f1e8e0d
+	pkgrel = 1
+	url = http://radscan.com/nas.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = imake
+	makedepends = bison
+	makedepends = flex
+	depends = libxaw
+	provides = libaudio2
+	conflicts = libaudio2
+	source = nas::git+https://git.code.sf.net/p/nas/nas.git
+	md5sums = SKIP
+
+pkgname = nas-git
+
