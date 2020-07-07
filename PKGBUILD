@@ -2,7 +2,7 @@
 
 pkgname=grub-customizer
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('x86_64')
