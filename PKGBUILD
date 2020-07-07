@@ -2,7 +2,7 @@
 
 pkgname=fcitx-googlepinyin
 pkgver=0.1.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Fcitx Wrapper for googlepinyin"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-googlepinyin"
