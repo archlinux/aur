@@ -14,6 +14,7 @@ md5sums=('991478532b56ab3b6f46ea9fa332626f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure --prefix=/usr --config-cache --with-ssl
   make
 }
