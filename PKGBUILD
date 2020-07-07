@@ -4,7 +4,7 @@
 
 pkgname="perl-dbix-searchbuilder"
 _cpanname="DBIx-SearchBuilder"
-pkgver="1.67"
+pkgver="1.68"
 pkgrel="1"
 pkgdesc="Encapsulate SQL queries and rows in simple perl objects."
 arch=("any")
@@ -24,7 +24,7 @@ depends=(
 )
 options=("!emptydirs")
 source=("https://cpan.metacpan.org/authors/id/B/BP/BPS/${_cpanname}-${pkgver}.tar.gz")
-sha256sums=('453179c22a61af573e502c8396f3f28daea03dfdc162094b90f9b3c331d563da')
+sha256sums=('be197c0f83c426996f77d22126f3103f958fc4bd1791c6962b793cc2779601f8')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
