@@ -4,7 +4,7 @@
 
 pkgname=xdialog
 pkgver=2.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A drop-in replacement for the 'dialog' or 'cdialog' programs"
 url="http://xdialog.dyns.net/"
 arch=('x86_64')
