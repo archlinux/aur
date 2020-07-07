@@ -9,6 +9,7 @@ pkgbase = green-tunnel-bin
 	depends = nss
 	depends = gtk3
 	depends = libxss
+	provides = green-tunnel
 	source = green-tunnel-bin-1.7.4.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v1.7.4/green-tunnel-debian.zip
 	sha256sums = 9b7da96908ead5252f233713c16967ddcc3a6eff0282a43cf91e5e623c596b6c
 

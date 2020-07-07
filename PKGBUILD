@@ -7,6 +7,7 @@ pkgdesc='An anti-censorship utility designed to bypass the DPI system that is pu
 arch=('x86_64')
 url="https://github.com/SadeghHayeri/GreenTunnel"
 license=('MIT')
+provides=('green-tunnel')
 depends=('nss'
          'gtk3'
          'libxss')
