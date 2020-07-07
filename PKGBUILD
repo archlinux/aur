@@ -4,8 +4,8 @@ _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}"
 conflicts=("python-${_name}-git")
-pkgver=1.9.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
 url="https://github.com/InnoGames/${_srcname}"
@@ -15,17 +15,17 @@ provides=('python-adminapi')
 conflicts=('python-adminapi')
 license=('MIT')
 source=(
-  "${_srcname}.tar.gz::${url}/archive/b8efa83.tar.gz"
+  "${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   'adminapi-only.patch'
 )
 sha256sums=(
-  'ff6b3fb4c2a93386d58d8c974158e6cbedaf118eec94a4b9dfebecfdb6642b68'
+  '01f183ad56b5173d68f8d29635c51e4587183305a02b57c110f0a3b7196e325c'
   '086a0f7a7b935b27e1ece35d99202b4db10f6b5a4406dd45affba2bfaf89a08e'
 )
 
 
 package() {
-  cd "${srcdir}/${_srcname}-"*
+  cd "${srcdir}/${_srcname}-${pkgver}"
   patch < ../adminapi-only.patch
   python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
