@@ -4,7 +4,7 @@
 
 pkgname=plasma5-applets-active-window-control
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plasma applet for controlling the currently active window"
 arch=(x86_64)
 url="https://github.com/kotelnik/plasma-applet-active-window-control"
