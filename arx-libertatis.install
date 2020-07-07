@@ -1,0 +1,9 @@
+
+post_install() {
+  echo 'Note:'
+  echo ' | This package only provides the game executables.'
+  echo ' | You will also need to install the (demo or full) game data - using one'
+  echo ' | of the "arx-fatalis-data-*" AUR packages (system-wide installation),'
+  echo ' | or by running `arx-install-data` (per-user installation).'
+  echo ' | For more info see http://wiki.arx-libertatis.org/Getting_the_game_data'
+}
