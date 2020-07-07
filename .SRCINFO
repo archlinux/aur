@@ -1,16 +1,16 @@
 pkgbase = ssrt
 	pkgdesc = simplescreenreocrder - now even simpler
-	pkgver = 2020.06.22.25
+	pkgver = 2020.07.07.19
 	pkgrel = 1
 	url = https://github.com/budlabs/ssrt
 	arch = any
 	license = BSD
 	depends = bash>=4.0.0
-	optdepends = xorg-xrandr: get screen geometry
-	optdepends = simplescreenrecorder: recording
+	depends = simplescreenrecorder
+	depends = xorg-xrandr
 	optdepends = slop: set recording geometry
-	source = https://github.com/budlabs/ssrt/archive/2020.06.22.25.tar.gz
-	sha256sums = e2326f908b46e5d3d3700303701879f2f295392c3e9a9d4311e21c87f0dc92df
+	source = https://github.com/budlabs/ssrt/archive/2020.07.07.19/ssrt-2020.07.07.19.tar.gz
+	sha256sums = 0178cd8c17037ba373f522285fce7d1ebc37cdc58e6691b59c272fa0dcb81c89
 
 pkgname = ssrt
 
