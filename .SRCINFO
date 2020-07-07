@@ -1,0 +1,18 @@
+pkgbase = so
+	pkgdesc = A terminal interface for StackOverflow
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/samtay/so
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	provides = so
+	conflicts = so-git
+	conflicts = so-bin
+	source = 0.3.6.tar.gz::https://github.com/samtay/so/archive/v0.3.6.tar.gz
+	sha256sums = 6d2f541bb00dceb9163faf4cc44ff1bd39e07b46c35d6532e24b47d7ad6d47da
+
+pkgname = so
+
