@@ -1,7 +1,7 @@
 pkgbase='python-scenedetect'
 pkgname=('python-scenedetect')
 _module='scenedetect'
-pkgver='0.5.1.1'
+pkgver='0.5.2'
 pkgrel=2
 pkgdesc="A cross-platform, OpenCV-based video scene detection program and Python library."
 url="https://github.com/Breakthrough/PySceneDetect"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('16526b5c1c1eca0fd060571b62f979a3a2b9a0c47a76edffcde56099cf1efe24')
+sha256sums=('0f9df52ba571e1913a431e3c5d91256566c4c6c06aa02ed862d130156cb1e6ba')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
