@@ -6,10 +6,10 @@ pkgname=boost-65-compat
 _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=4
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
-url='http://www.boost.org/'
+url='https://www.boost.org/'
 license=('custom')
 depends=('bzip2' 'zlib' 'icu>=55.1' 'openmpi')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' )
@@ -97,23 +97,3 @@ package() {
    rm "${pkgdir}"/usr/lib/*.so
 
 }
-
-# build() {
-#     export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m/"
-#     cd "${srcdir}/boost_1_63_0"
-#     ./bootstrap.sh
-#     ./b2 variant=release link=shared runtime-link=shared stage
-# }
-
-# package() {
-#     cd "${srcdir}/boost_1_63_0"
-#     mkdir -p ${pkgdir}/usr/lib
-#     ./b2 install --prefix=${pkgdir}/usr
-#     for FILE in $(ls "${pkgdir}/usr/lib" | grep .so$); do
-#         rm "${pkgdir}/usr/lib/${FILE}"
-#     done
-#     for FILE in $(ls "${pkgdir}/usr/lib" | grep .a$); do
-#         rm "${pkgdir}/usr/lib/${FILE}"
-#     done
-#     rm -r "${pkgdir}/usr/include"
-# }
