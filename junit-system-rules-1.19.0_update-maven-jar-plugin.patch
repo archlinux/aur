@@ -1,0 +1,29 @@
+From 13fd4bb331dae0ae99c97c5b7bdaa7eb7247a57b Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@archlinux.org>
+Date: Tue, 7 Jul 2020 14:09:37 +0200
+Subject: [PATCH] Update maven-jar-plugin to version 3.2.0
+
+This is the minimal plugin version to support reproducible builds using the
+"project.build.outputTimestamp" property.
+---
+ pom.xml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/pom.xml b/pom.xml
+index e764bd9..596e3cc 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -121,6 +121,10 @@
+ 					<forkMode>always</forkMode>
+ 				</configuration>
+ 			</plugin>
++			<plugin>
++				<artifactId>maven-jar-plugin</artifactId>
++				<version>3.2.0</version>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 
+-- 
+2.27.0
+
