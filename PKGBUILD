@@ -99,10 +99,13 @@ package_dell-unified-driver-scanner()
     ln -s libsane-smfp.so.1.0.1                                                                      "$pkgdir"/usr/lib/sane/libsane-smfp.so.1
     ln -s libsane-smfp.so.1                                                                          "$pkgdir"/usr/lib/sane/libsane-smfp.so
 
-    # we don't install smfpd, so this never gets uses afaik
-    #install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/lib/libmfp.so.1.0.1 "$pkgdir"/usr/lib/libmfp.so.1.0.1
-    #ln -s libmfp.so.1.0.1 "$pkgdir"/usr/lib/libmfp.so.1
-    #ln -s libmfp.so.1     "$pkgdir"/usr/lib/libmfp.so
+    install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/"$_libdir"/libmfp.so.1.0.1 "$pkgdir"/usr/lib/libmfp.so.1.0.1
+    ln -s libmfp.so.1.0.1 "$pkgdir"/usr/lib/libmfp.so.1
+    ln -s libmfp.so.1     "$pkgdir"/usr/lib/libmfp.so
+
+    # install the old bundled version of libnetsnmp
+    install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/opt/smfp-common/lib/libnetsnmp.so.10.0.2 "$pkgdir"/usr/lib/libnetsnmp.so.10.0.2
+    ln -s libnetsnmp.so.10.0.2 "$pkgdir"/usr/lib/libnetsnmp.so.10
 
     _udevrules=(60_smfp_samsung 61_smfp_samsung)
     for i in ${_udevrules[@]}; do
