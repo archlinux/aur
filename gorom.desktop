@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GoROM
+GenericName=Emulator ROM Manager
+Icon=/usr/share/icons/hicolor/scalable/apps/gorom.svg
+Exec=/usr/bin/goromui
+StartupNotify=true
+Categories=Application;Utility;Games
