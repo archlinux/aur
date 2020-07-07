@@ -2,16 +2,16 @@
 
 pkgname=cadet-gtk-git
 pkgver=0.6.0.r0.g8436195
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based GUI for the CADET subsystem of GNUnet."
-url="https://gitlab.com/TheJackiMonster/cadet-gtk"
+url="https://gitlab.com/gnunet-messenger/cadet-gtk"
 license=('GPL3')
 arch=( 'any' )
 depends=('gtk3' 'libhandy' 'gnunet' 'jansson' 'libnotify')
 makedepends=(git cmake make)
 provides=(cadet-gtk)
 conflicts=(cadet-gtk)
-source=("git+https://gitlab.com/TheJackiMonster/cadet-gtk.git")
+source=("git+https://gitlab.com/gnunet-messenger/cadet-gtk.git")
 md5sums=('SKIP')
 
 pkgver() {
