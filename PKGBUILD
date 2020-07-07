@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=beatslash-lv2
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of plugins for live beat repeating and beat slicing"
 arch=('x86_64')
 url="https://objectivewave.wordpress.com/beatslash-lv2"
