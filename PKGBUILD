@@ -6,7 +6,7 @@
 pkgname=lxpanel-gtk3
 _pkgname=lxpanel
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight X11 desktop panel for LXDE (GTK+ 3 version)'
 arch=('x86_64')
 license=('GPL2')
