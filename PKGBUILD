@@ -3,7 +3,7 @@
 
 pkgname=gtk2fontsel
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Font selection and preview tool"
 arch=('x86_64')
 url="http://gtk2fontsel.sourceforge.net/"
