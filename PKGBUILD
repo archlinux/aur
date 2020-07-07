@@ -2,7 +2,7 @@
 
 pkgname=mdns-scan
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Scan mDNS/DNS-SD published services on the local network"
 arch=("x86_64")
 url="http://0pointer.de/lennart/projects/mdns-scan/"
