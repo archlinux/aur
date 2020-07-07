@@ -4,7 +4,7 @@
 
 pkgname=lastpass-cli
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="LastPass command line interface tool"
 arch=('x86_64')
 url="https://lastpass.com/"
