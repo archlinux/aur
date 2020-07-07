@@ -10,11 +10,6 @@ pkgbase = python2-user-agents
 	source = https://files.pythonhosted.org/packages/1b/be/82e4d20a7716d8e5de98b948edcecff9bb237e6718c3831bd92794fe9821/user-agents-2.1.tar.gz
 	sha256sums = da54371d856c35d8ead0622da24ad5ef6d667eda3629a750e3373a3e847a054b
 
-pkgname = python-user-agents
-	depends = python
-	depends = python-six
-	depends = python-ua-parser
-
 pkgname = python2-user-agents
 	depends = python2
 	depends = python2-six

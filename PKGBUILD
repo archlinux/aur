@@ -1,7 +1,7 @@
 # Contributor: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 pkgbase=python2-user-agents
-pkgname=('python-user-agents' 'python2-user-agents')
+pkgname=python2-user-agents
 pkgver=2.1
 pkgrel=2
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
@@ -25,13 +25,7 @@ check() {
   python2 setup.py check  
 }
 
-package_python-user-agents() {
-  depends=('python' 'python-six' 'python-ua-parser')
-  cd "$srcdir/user-agents-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1
-}
-
-package_python2-user-agents() {
+package () {
   depends=('python2' 'python2-six' 'python2-ua-parser')
   cd "$srcdir/user-agents2-$pkgver"
   python2 setup.py install --root "${pkgdir}" --optimize=1
