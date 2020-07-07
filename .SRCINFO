@@ -1,6 +1,6 @@
 pkgbase = espnet-cuda-git
-	pkgdesc = End-to-End Speech Processing Toolkit.
-	pkgver = r8280.8799cafca
+	pkgdesc = End-to-End Speech Processing Toolkit (venv version)
+	pkgver = r.8799caf
 	pkgrel = 1
 	url = https://github.com/espnet/espnet
 	arch = x86_64

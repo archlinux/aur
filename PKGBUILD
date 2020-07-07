@@ -1,9 +1,9 @@
-# Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 # Maintainer: Lumaku <lumaku@mailbox.org>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=espnet-cuda-git
-pkgver=r8280.8799cafca
+pkgver=r.8799caf
 pkgrel=1
-pkgdesc='End-to-End Speech Processing Toolkit.'
+pkgdesc='End-to-End Speech Processing Toolkit (venv version)'
 arch=('x86_64')
 url='https://github.com/espnet/espnet'
 license=('Apache License 2.0')
