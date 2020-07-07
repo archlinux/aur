@@ -7,7 +7,7 @@ pkgdesc="A GUI proxy client for Windows / Mac / Ubuntu Desktop based on Clash an
 provides=("clashy")
 url='https://github.com/SpongeNobody/Clashy'
 arch=('x86_64')
-depends=('libnotify' 'nss' 'libxss' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret' 'gobject-introspection-runtime' 'ffmpeg')
+depends=('libnotify' 'nss' 'libxss' 'xdg-utils' 'libappindicator-gtk3' 'libsecret' 'gobject-introspection-runtime' 'ffmpeg')
 source=("https://github.com/SpongeNobody/Clashy/releases/download/v0.1.16/Clashy_0.1.16_amd64.deb"
 )
 md5sums=('5fd3bccf1ebd5b11f6c0a9b7e9c13519'

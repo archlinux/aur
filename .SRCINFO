@@ -8,7 +8,6 @@ pkgbase = clashy-bin
 	depends = nss
 	depends = libxss
 	depends = xdg-utils
-	depends = libutil-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
 	depends = gobject-introspection-runtime
