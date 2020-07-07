@@ -29,8 +29,8 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
 prepare() {
 	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
-	git submodule init tools/go-bindata
-	git config submodule.go-bindata.url "$srcdir/go-bindata"
+	git submodule init dist-assets/binaries
+	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
 	git submodule update
 
 	# Disable building of rpm
