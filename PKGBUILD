@@ -3,12 +3,12 @@
 
 pkgname='perl-nvidia-ml-pl'
 pkgver='4.304.2'
-pkgrel='1'
+pkgrel='3'
 pkgdesc="Perl bindings to the NVIDIA Management Library NVML"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0' 'nvidia-utils>=430.34')
+depends=('perl>=5.32' 'nvidia-utils>=430.34')
 makedepends=()
 url='https://metacpan.org/release/nvidia-ml-pl'
 source=('http://search.cpan.org/CPAN/authors/id/N/NV/NVBINDING/nvidia-ml-pl-4.304.2.tar.gz')
