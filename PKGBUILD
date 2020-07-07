@@ -1,12 +1,12 @@
 # Maintainer: scpketer <scpketer@krampus.pro>
 pkgname=recaf
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
-depends=("java-runtime")
+depends=("jre11-openjdk")
 noextract=("$pkgname-$pkgver.jar")
 source=("https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar")
 sha256sums=('SKIP')
