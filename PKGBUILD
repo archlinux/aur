@@ -1,5 +1,5 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
-pkgname=sdkman-cli
+pkgname=sdkman
 pkgver=0.4.11
 pkgrel=1
 pkgdesc='Unofficial Client of sdkman, A Tool for managing parallel versions of multiple Software Development Kits'
