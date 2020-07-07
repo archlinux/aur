@@ -91,7 +91,7 @@ package_dell-unified-driver-scanner()
     install -Dm644 "$srcdir"/xerox_mfp-smfp.conf                              "$pkgdir"/etc/sane.d/xerox_mfp-smfp.conf
 
     mkdir "$pkgdir"/etc/sane.d/dll.d
-    echo "smpf" >           "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
+    echo "smfp" >           "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
     echo "xerox_mfp-smfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
 
 
