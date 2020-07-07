@@ -4,7 +4,7 @@
 
 pkgname=kde-development-environment-meta
 pkgver=20180909
-pkgrel=1
+pkgrel=2
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
