@@ -3,7 +3,7 @@
 
 pkgname=swaks
 pkgver=20190914.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH'
 arch=('any')
 url="https://jetmore.org/john/code/${pkgname}/"
