@@ -2,7 +2,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='https://wiki.ros.org/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
-pkgver='0.4.0'
+pkgver='0.4.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -36,8 +36,15 @@ depends=(
 )
 
 _dir="qt_gui_core-${pkgver}/qt_gui_cpp"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('900dbbe667fe2776b30c833b38359f3beaa3eb22be080c3909a89a8c38dbf6fe')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz"
+	"sip.patch::https://patch-diff.githubusercontent.com/raw/ros-visualization/qt_gui_core/pull/226.patch")
+sha256sums=('6baab3b36409f385aa543d33c6595bfbfc89c24ce52233b6aa33ec2088d23132'
+            '059769b768078b6871b6d9caf6124f5c3ff9bdbd2ce0e64cc9f12d1be5a16795')
+
+prepare() {
+    cd "$srcdir/qt_gui_core-${pkgver}"
+    patch --forward --strip=1 --input="${srcdir}/sip.patch"
+}
 
 build() {
 	# Use ROS environment variables.
