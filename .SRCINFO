@@ -1,14 +1,14 @@
 pkgbase = outwiker-plugins
 	pkgdesc = Plugins for Outwiker
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://jenyay.net/Outwiker/PluginsEn
 	arch = any
 	license = GPL3
-	depends = outwiker>=1.8.1
+	depends = outwiker>=2.0.0
 	depends = python2-pygments
 	source = http://jenyay.net/uploads/Outwiker/Plugins/outwiker-plugins-all.zip
-	sha1sums = 2c12a01e4c59fd80f445aaab24f88213ddc10ca5
+	sha1sums = 48b2c9ccd436811fb60163e9837bbd03b8ca8825
 
 pkgname = outwiker-plugins
 
