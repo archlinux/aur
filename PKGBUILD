@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=aurphan
 pkgver=20140212
-pkgrel=2
+pkgrel=3
 pkgdesc="Finds packages in need of maintainers, bug fixes and patches.  Adopt today!"
 arch=('any')
 url="http://kmkeen.com/aurphan/"
