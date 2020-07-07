@@ -1,16 +1,16 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belr
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
 url="http://www.linphone.org/"
 license=('GPL')
-depends=('bctoolbox>=4.3')
+depends=('bctoolbox>=4.4')
 makedepends=('cmake')
-source=("belr-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belr/archive/4.3.0.tar.gz")
-sha256sums=('d801e0f60eb02c9e094c1ad5d69cab82cf42677efac0ea38729b470134683684')
+source=("belr-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belr/archive/$pkgver.tar.gz")
+sha256sums=('0b6ab6d3c4d0eb07036e21d2a7e03d949230cc89fd70730d79e28292f02ff101')
 
 build() {
   mkdir -p build
