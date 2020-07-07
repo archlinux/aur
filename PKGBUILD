@@ -3,7 +3,7 @@
 pkgname=vim-vital
 _gitcommit=982e0bf3a5c181c0fa9d37bab784412f941f6b80
 pkgver=3113.982e0bf3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Comprehensive Vim utility functions for Vim plugins'
 url='https://github.com/vim-jp/vital.vim'
