@@ -3,7 +3,7 @@
 
 pkgname=meterbridge
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of Audio meters for the JACK audio server"
 arch=('x86_64')
 url="http://plugin.org.uk/meterbridge/"
