@@ -1,13 +1,13 @@
 # Maintainer: Alex O'Brien <alex@emobrien.com>
 pkgname=virt-bootstrap-git
-pkgver="r110.9e6a003"
+pkgver=r153.8a7e752
 pkgrel=1
 pkgdesc="A tool for creating the root filesystem of libvirt-based containers."
 arch=('any')
 url="https://github.com/virt-manager/virt-bootstrap"
 license=('GPL')
-depends=('python2' 'libguestfs' 'skopeo' 'libvirt-sandbox' 'python' 'python2-passlib')
-makedepends=('git' 'python2')
+depends=('python' 'libguestfs' 'skopeo' 'libvirt-sandbox' 'python' 'python-passlib')
+makedepends=('git' 'python')
 provides=("virt-bootstrap")
 conflicts=("virt-bootstrap")
 source=('virt-bootstrap-git::git+https://github.com/virt-manager/virt-bootstrap#branch=master')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-VCS}"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "$srcdir/${pkgname%-VCS}"
-    python2 setup.py install --prefix=$pkgdir
+    python setup.py install --prefix=$pkgdir
     mkdir $pkgdir/usr
     mv $pkgdir/bin $pkgdir/usr/
     mv $pkgdir/lib $pkgdir/usr/
