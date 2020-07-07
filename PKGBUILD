@@ -3,14 +3,14 @@
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=r14767.de9d91905
+pkgver=r15440.ca2727322
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
 url="http://wz2100.net/"
 license=('GPL')
-depends=('qt5-script' 'sdl2' 'libtheora' 'openal' 'libvorbis' 'physfs' 'ttf-dejavu' 'glew' 'fribidi' 'xorg-xrandr')
-makedepends=('zip' 'unzip' 'git' 'asciidoc')
+depends=('qt5-script' 'sdl2' 'libtheora' 'openal' 'libvorbis' 'physfs' 'ttf-dejavu' 'glew' 'fribidi' 'xorg-xrandr' 'miniupnpc' 'libsodium')
+makedepends=('zip' 'unzip' 'git' 'asciidoc' 'cmake' 'ninja')
 provides=('warzone' 'warzone2100' 'warzone-svn' 'warzone2100-beta')
 conflicts=('warzone2100')
 source=('git+https://github.com/Warzone2100/warzone2100.git'
@@ -44,14 +44,10 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-debug
-
-  make
+  cmake -B build -S "$_gitname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -GNinja ../warzone2100
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
