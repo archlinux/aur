@@ -5,7 +5,7 @@
 pkgname=notify-sharp-3
 _pkgname=notify-sharp
 pkgver=3.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="C# D-Bus client library for desktop notifications (GTK+ 3 version)"
 arch=('any')
 url="https://www.meebey.net/projects/notify-sharp/"
