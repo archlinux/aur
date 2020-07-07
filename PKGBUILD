@@ -1,8 +1,9 @@
-# Maintainer: Mike Roll <scaryspiderpig@gmail.com>
+# Maintainer: Evert Vorster < evorster at gmail dot com >
+#Contributor: Mike Roll <scaryspiderpig@gmail.com>
 
 _pkgname=nvidia-texture-tools
 pkgname="${_pkgname}-git"
-pkgver=2.0.8.e965a66
+pkgver=2.1.1.1e06539
 pkgrel=1
 pkgdesc="Texture processing tools with support for Direct3D 10 and 11 formats"
 arch=('i686' 'x86_64')
@@ -20,13 +21,29 @@ pkgver() {
     echo "$(git tag | tail -1).$(git rev-parse --short HEAD)"
 }
 
+prepare(){
+#Build error in master, rolling back to a good build.
+cd "${srcdir}"/nvidia-texture-tools/
+git reset --hard 1e0653901271b64c0803abb06ef9c46153831c8e
+}
+
+
 build() {
-    cd "${srcdir}/${_pkgname}"
-    ./configure --prefix=/usr --release
-    make
+#configure first? Nah!
+#   cd "${srcdir}/${_pkgname}"
+#    ./configure --prefix=/usr --release
+
+#cmake build
+mkdir -p ${srcdir}/build
+cd ${srcdir}/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+	-DCMAKE_C_FLAGS:STRING="${CFLAGS} -msse4.1" \
+	-DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -msse4.1" \
+ 	../nvidia-texture-tools/
+  make
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/build/
     make DESTDIR=${pkgdir} install
 }
