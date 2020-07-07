@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=7.0.0.r28227.a56ee7986ea4
+pkgver=7.0.0.r28537.a32409899ad6
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=('GPL')
 # are installed, octave will be linked against them.
 depends=('fftw' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
-	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap'
-	'qt5-tools' 'qrupdate' 'portaudio')
+	 'suitesparse' 'qscintilla-qt5' 'termcap' 'qt5-tools'
+	 'qrupdate' 'portaudio' 'sundials')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'transfig' 'epstool' 'texlive-core' 'icoutils' 'git')
 optdepends=('texinfo: for help-support in octave'
@@ -56,11 +56,8 @@ build() {
   [[ $CARCH == "i686" ]] && _arch=i386
 
   ../configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 \
-	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
-	       --with-umfpack --enable-java --with-hdf5 --enable-docs \
-	       --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
-	       --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-	       --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server}
+	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --enable-jit \
+	       --with-umfpack --disable-java --with-hdf5 --enable-docs 
     
   export CLASSPATH=.:$CLASSPATH
   make || true
