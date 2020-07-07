@@ -1,0 +1,18 @@
+pkgbase = noter
+	pkgdesc = Simple Serial Port Terminal. It allows communication with serial ports, and some hex to text and text to hex utilities
+	pkgver = 0.3.alpha
+	pkgrel = 1
+	url = https://github.com/doquen/noter
+	arch = x86_64
+	license = MIT
+	makedepends = qt5-base
+	makedepends = imagemagick
+	makedepends = gendesk
+	depends = qt5-serialport
+	depends = libssh
+	depends = qt5-declarative
+	source = noter-0.3-alpha.tar.gz::https://github.com/doquen/noter/archive/v0.3-alpha.tar.gz
+	sha256sums = 11cc88563e414dd1724be8f6ad133b0986ed0a5caf2b5d277ef79a32654091e6
+
+pkgname = noter
+
