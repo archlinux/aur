@@ -1,0 +1,15 @@
+pkgbase = python-flake8-black
+	pkgdesc = flake8 plugin to call black as a code style validator
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/peterjc/flake8-black
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = flake8
+	depends = python-black
+	source = python-flake8-black-0.2.0.tar.gz::https://github.com/peterjc/flake8-black/archive/v0.2.0.tar.gz
+	b2sums = b2d561f3a5647ce4b770321ef236b9a243ad780130fa1bb12c03fead193e22d37b1ed7e146d1ca13caed27233e423f1525ddd0d662085da7f25f0afdf89a3b5e
+
+pkgname = python-flake8-black
+
