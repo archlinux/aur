@@ -1,49 +1,47 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
-pkgname=white_dune
-pkgver=1.900
-pkgrel=2
+pkgname=wdune
+pkgver=1.902
+pkgrel=1
 epoch=
-pkgdesc="A graphical VRML97/X3D editor, simple NURBS/Superformula 3D modeller, animation tool and VRML97/X3DV commandline compiler"
-arch=('any')
+pkgdesc="white_dune X3D/VRML97 tool, 3D modeller and animation-tool"
+arch=('x64_86')
 url="http://wdune.ourproject.org/"
 license=('GPL')
 groups=()
-optdepends=('aqsis')
 depends=(xorg-fonts-misc
          xorg-fonts-alias-misc
          povray
 )
-makedepends=( 
-# the following are part of base-devel
+makedepends=(gcc
              fakeroot
-             flex
-             bison
-             gawk
-             m4
-             make
-# end part of base-devel
-             clang
-             glu
-             mesa
-             libx11
-             libxt
-             libxmu
+             glu 
+             mesa 
+             libx11 
+             libxt 
+             libxmu 
              libxext
              libxi
              libxp
+             openmp
              openmotif
-             libpng
+             libpng 
              libjpeg-turbo
              zlib
              expat
              ffmpeg
              opensubdiv
-             rcs
+             gcc
+             flex
+             bison
+             gawk
+             m4
+             make
+             git
              xdg-utils
+             gedit
              lxterminal
              gimp
              audacity
-             cinelerra-cv
              kolourpaint
              imagemagick
              netpbm
@@ -53,7 +51,7 @@ makedepends=(
              boost
              curl
              freetype2
-             ttf-bitstream-vera
+             ttf-bitstream-vera             
 )
 checkdepends=()
 optdepends=()
@@ -66,28 +64,26 @@ install=
 changelog=
 source=("ftp://ftp.ourproject.org/pub/wdune/wdune-$pkgver.tar.bz2")
 noextract=()
-md5sums=('af953ae716562c575270d20dc701bc7e')
+md5sums=('c6755993071efe5472107519b955ae61')
 validpgpkeys=()
 
 build() {
-        export CC=clang
-        export CXX=clang++
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --without-devil --with-uninstallcomment="pacman -R white_dune" --with-optimization --with-helpurl="/usr/share/doc/$pkgname/docs" --with-protobaseurl="/usr/share/doc/$pkgname/docs" --with-checkincommand="ci"
-        make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
+	cd "wdune-$pkgver"
+	./configure --with-clang --with-optimization --prefix=/usr --without-devil --with-uninstallcomment="pacman -R white_dune" --with-optimization --with-helpurl="/usr/share/doc/$name/docs" --with-protobaseurl="/usr/share/doc/$name/docs" --with-checkincommand="ci" 
+        make -j4
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-        install -Dm755 bin/dune $pkgdir/usr/bin/dune
-        mkdir -p "$pkgdir/usr/share/doc/$pkgname/docs"
-        cp -r "docs" "$pkgdir/usr/share/doc/$pkgname/docs"
+        install -Dm755 bin/dune $pkgdir/usr/bin/dune 
+        install -Dm755 tools/run_dune_and_aqsis.sh $pkgdir/usr/bin/run_dune_and_aqsis.sh 
+        mkdir -p "$pkgdir/usr/share/doc/$name/docs"
+        cp -r "docs" "$pkgdir/usr/share/doc/$name/"
         install -Dm644 desktop/kde/dune.desktop $pkgdir/usr/share/applications/dune.desktop
 	install -Dm644 desktop/kde/dune.png $pkgdir/usr/share/pixmaps/dune.png
 	install -Dm644 desktop/kde/dune4kids.desktop $pkgdir/usr/share/applications/dune4kids.desktop
 	install -Dm644 desktop/kde/dune4kids.png $pkgdir/usr/share/pixmaps/dune4kids.png
+	install -Dm644 include/white_dune/libC++RWD_namespace.h $pkgdir/usr/include/white_dune/libC++RWD_namespace.h
+	install -Dm644 include/white_dune/libC++RWD.h $pkgdir/usr/include/white_dune/libC++RWD.h
+	install -Dm644 include/white_dune/libCRWD.h $pkgdir/usr/include/white_dune/libCRWD.h
 }
