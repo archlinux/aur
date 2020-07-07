@@ -3,7 +3,7 @@
 pkgname=qt5-systems
 pkgver=5.4.0.20181230
 _commit=e3332ee38d27a134cef6621fdaf36687af1b6f4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Publish and Subscribe Add-on Module"
 arch=('x86_64')
 url="https://github.com/qt/qtsystems"
