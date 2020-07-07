@@ -7,7 +7,7 @@ pkgbase = arsenic
 	license = GPL
 	depends = qt5-base
 	source = arsenic-3.5.2.tar.gz::https://github.com/Antidote1911/arsenic/archive/3.5.2/arsenic-3.5.2.tar.gz
-	sha256sums = 673666E0BF39A598A356E0B35D8935DE4274B7DE36794AC862601E788878CF30
+	sha256sums = 2540179618C9AEEE401057B0FA020DBA15702BE4276A72A918F2CAFDDB71210C
 
 pkgname = arsenic
 
