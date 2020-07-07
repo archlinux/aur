@@ -1,7 +1,7 @@
 pkgbase = captdriver-git
 	pkgdesc = Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)
-	pkgver = r50.7718f66
-	pkgrel = 1
+	pkgver = r57.f2077b6
+	pkgrel = 2
 	url = https://github.com/agalakhov/captdriver
 	arch = any
 	license = GPL

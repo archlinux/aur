@@ -3,7 +3,7 @@
 _gitname=captdriver
 pkgname=${_gitname}-git
 pkgver=r57.f2077b6
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)'
 arch=('any')
 url='https://github.com/agalakhov/captdriver'
