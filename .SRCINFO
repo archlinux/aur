@@ -1,0 +1,13 @@
+pkgbase = bin2iso
+	pkgdesc = Converts RAW format (.bin/.cue) files to ISO/WAV format
+	pkgver = 1.9b
+	pkgrel = 5
+	url = http://users.eastlink.ca/~doiron/bin2iso/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://users.eastlink.ca/~doiron/bin2iso/linux/bin2iso19b_linux.c
+	sha256sums = 1e8a6ae79e91325acd50f3a0e506edf4d8cb57b72d1dcfd8b276a04aff82e43d
+
+pkgname = bin2iso
+
