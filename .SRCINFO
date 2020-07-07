@@ -1,6 +1,6 @@
 pkgbase = ultra_outliner
 	pkgdesc = Card-based outlining software for screenwriters, novelists and all story writers.
-	pkgver = 0.9.8b
+	pkgver = 0.9.13b1493
 	pkgrel = 1
 	url = http://ultraoutliner.com
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = ultra_outliner
 	depends = libgl
 	depends = libutil-linux
 	depends = libxi
-	noextract = ultra_outliner-0.9.8b.tar.gz
-	source = ultra_outliner-0.9.8b.tar.gz::http://www.ultraoutliner.com/info/download_build?build=80&locale=en/ultra_outliner.ubuntu64.tar.gz
+	noextract = ultra_outliner-0.9.13b1493.tar.gz
+	source = ultra_outliner-0.9.13b1493.tar.gz::https://gitlab.com/ultrablox/ultraoutliner//uploads/99814b4327a3ca8bfd19b98a237b76cf/ultraoutliner-ubuntu-x64-v.0.9.13b1493-SNAPSHOT.tar.gz
 	source = ultra_outliner.desktop
 	source = ultra_outliner.png
 	source = ultra_outliner.sh
-	md5sums = 3ca1f6bae7c06e1597baa12806f780b2
+	md5sums = 4628401ac4e923e8dc78ed1e408a09f0
 	md5sums = abd3a8d54712bde87cc044412f9da39e
 	md5sums = 8bd89e964ec628dfb171f44484ae3c6a
-	md5sums = 489d71fdc4e80fdf22c516638a61e3c7
+	md5sums = a68d14e71ab99b40fd2be80f6907cce8
 
 pkgname = ultra_outliner
 

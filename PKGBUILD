@@ -1,7 +1,7 @@
-# Maintainer: cyrant <cyrant at tuta dot io>
+# Maintainer: John Gerritse <tyrannis dot hawk at gmail dot com>
 
 pkgname=ultra_outliner
-pkgver=0.9.8b
+pkgver=0.9.13b1493
 pkgrel=1
 pkgdesc='Card-based outlining software for screenwriters, novelists and all story writers.'
 url='http://ultraoutliner.com'
@@ -9,23 +9,24 @@ license=('LGPL3')
 arch=('x86_64')
 depends=('libgl' 'libutil-linux' 'libxi')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::http://www.ultraoutliner.com/info/download_build?build=80&locale=en/ultra_outliner.ubuntu64.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ultrablox/ultraoutliner//uploads/99814b4327a3ca8bfd19b98a237b76cf/ultraoutliner-ubuntu-x64-v.${pkgver}-SNAPSHOT.tar.gz"
   "${pkgname}.desktop"
   "${pkgname}.png"
   "${pkgname}.sh"
 )
-md5sums=(
-  '3ca1f6bae7c06e1597baa12806f780b2'
-  'abd3a8d54712bde87cc044412f9da39e'
-  '8bd89e964ec628dfb171f44484ae3c6a'
-  '489d71fdc4e80fdf22c516638a61e3c7'
-)
+md5sums=('4628401ac4e923e8dc78ed1e408a09f0'
+         'abd3a8d54712bde87cc044412f9da39e'
+         '8bd89e964ec628dfb171f44484ae3c6a'
+         'a68d14e71ab99b40fd2be80f6907cce8')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  tar -xz -f "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
-
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  tar -xz -f "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/${pkgname}"
+  # Move packages into the correct place
+  mv "${pkgdir}"/usr/share/"${pkgname}"/out/distr/* "${pkgdir}"/usr/share/"${pkgname}"/
+  rm -rf "${pkgdir}"/usr/share/"${pkgname}"/out
+  # Install startup files
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
