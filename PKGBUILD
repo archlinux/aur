@@ -1,16 +1,16 @@
 # Maintainer: Alexandru Cheltutior <acrandom@pm.me>
 
 pkgname=protonvpn-linux-gui
-pkgver=2.0.7
-pkgrel=3
-pkgdesc="Official ProtonVPN Linux application"
+pkgver=2.1.1
+pkgrel=1
+pkgdesc="ProtonVPN Linux application"
 arch=("x86_64")
 url="https://github.com/ProtonVPN/linux-gui/"
 license=("GPL3")
 depends=("python>=3.5" "python-requests>=2.23.0" "python-configparser>=4.0.2" "python-gobject" "gtk3" "libappindicator-gtk3" "protonvpn-cli-ng")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonVPN/linux-gui/archive/v$pkgver.tar.gz")
-md5sums=('70e9aa9226c5b16780af4c1581e06610')
+md5sums=('27b0a5e6ab1985fadc2d7f8880a2cb28')
 
 package() {
 	cd "linux-gui-$pkgver"
@@ -23,8 +23,8 @@ cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-gui.desktop"
 Name=ProtonVPN GUI
 Version=2.0.0
 Comment=${pkgdesc}
-Exec=sudo protonvpn-gui
-Icon=/usr/lib/python3.8/site-packages/protonvpn_linux_gui/resources/img/logo/protonvpn_logo.png
+Exec=protonvpn-gui
+Icon=/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
 Terminal=false
 StartupNotify=false
 Type=Application
@@ -38,7 +38,7 @@ Name=ProtonVPN GUI Tray
 Version=2.0.0
 Comment=Unofficial ProtonVPN GUI Tray
 Exec=protonvpn-tray
-Icon=/usr/lib/python3.8/site-packages/protonvpn_linux_gui/resources/img/logo/protonvpn_logo.png
+Icon=/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
 Terminal=false
 StartupNotify=false
 Type=Application
