@@ -6,13 +6,12 @@ pkgbase = virt-bootstrap-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python2
-	depends = python2
+	makedepends = python
+	depends = python
 	depends = libguestfs
 	depends = skopeo
 	depends = libvirt-sandbox
-	depends = python
-    depends = python2-passlib
+	depends = python-passlib
 	provides = virt-bootstrap
 	conflicts = virt-bootstrap
 	source = virt-bootstrap-git::git+https://github.com/virt-manager/virt-bootstrap#branch=master
