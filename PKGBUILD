@@ -1,16 +1,15 @@
 # Maintainer: David Rheinsberg <david.rheinsberg@gmail.com>
 
 pkgname=osbuild
-pkgver=8+50+g83d058b
+pkgver=18+9+ga505a82
 pkgrel=1
 pkgdesc="Build Pipelines for Operating System Artifacts"
 url="https://www.osbuild.org"
 arch=(any)
 license=(Apache)
 depends=(python)
-makedepends=(python-setuptools)
-_commit=83d058b9354c4169f08b5d42851e5cbc07354532
-source=("git+https://github.com/osbuild/osbuild#commit=$_commit")
+makedepends=(make python-docutils python-setuptools)
+source=("git+https://github.com/osbuild/osbuild")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,13 +24,15 @@ build() {
 
 package() {
   cd $pkgname
+  make man
+  python setup.py build
   python setup.py install --skip-build --root="$pkgdir"
 
-  for group in assemblers runners sources stages ; do
-    install -v -m 0755 -d "$pkgdir/usr/lib/osbuild"
+  install -v -m 0755 -d "$pkgdir/usr/lib/osbuild"
+  install -v -m 0755 -d "$pkgdir/usr/lib/osbuild/osbuild"
+
+  for group in assemblers runners schemas sources stages ; do
     cp -vdr --no-preserve=ownership "$group" "$pkgdir/usr/lib/osbuild/"
-    rm -vf "$pkgdir/usr/lib/osbuild/$group/osbuild"
-    install -v -m 0755 -d "$pkgdir/usr/lib/osbuild/$group/osbuild"
   done
 }
 
