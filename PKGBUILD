@@ -1,3 +1,4 @@
+# Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 # Contributor: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 pkgname=python-user-agents
