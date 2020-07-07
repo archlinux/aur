@@ -1,25 +1,24 @@
 pkgbase = graviton
 	pkgdesc = A modern Code Editor
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 2.0.92
+	pkgrel = 1
 	url = https://graviton.netlify.app/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = libappindicator-gtk3
 	depends = libnotify
-	depends = nss
 	depends = libxss
-	depends = libxtst
+	depends = nss
 	depends = xdg-utils
 	provides = graviton
-	options = !strip
-	source = https://github.com/Graviton-Code-Editor/Graviton-App/archive/1.2.0.tar.gz
+	conflicts = graviton-bin
+	source = https://github.com/Graviton-Code-Editor/Graviton-App/archive/2.0.92.tar.gz
 	source = graviton.desktop
 	source = build.patch
-	sha256sums = d79857465d977347f698e0495e0447afbf9cac4e258e052e4be7a4b93b7237be
-	sha256sums = 8f3ef4f93bb38ed985088e8fe6b58906ab549bbb78ed6e49d0c7b12b993f7ee3
-	sha256sums = 402df175a9915341df076f7d5a5131377e6feaf46f2057844b1b73608e317ec5
+	sha256sums = cf012cdc855efb4fbd320c8c92973dfe4cb92f4f019be90aaf5c7cc3fb2cb380
+	sha256sums = 274abb2bef19694a483dc0f9d1bad14ad397b68e9e07f13580eac4cecc5163dd
+	sha256sums = a5b842ae3cc53f6f247ffc27d9b787883dc0e11866e77a38bc1c2f6d7ba00d1f
 
 pkgname = graviton
 
