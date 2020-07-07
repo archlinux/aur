@@ -3,9 +3,9 @@
 _packager="Romain Gallet <rgallet@grumlimited.co.uk>"
 _deb_pkgname=authenticator-rs
 pkgname=$_deb_pkgname-bin
-md5sums=('bde8f0c417c3b3975fee7fabaaf875e8')
-pkgver=0.3.6
-pkgrel=2
+md5sums=('79731e0a2df2f32c93ef6fb5a3af1335')
+pkgver=0.3.7
+pkgrel=1
 pkgdesc='MFA Authenticator. TOTP-MFA application written in Rust and GTK3.'
 arch=('x86_64')
 url="https://github.com/grumlimited/authenticator-rs"
