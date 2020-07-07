@@ -2,7 +2,7 @@
 
 pkgname=glava
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL audio spectrum visualizer'
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
