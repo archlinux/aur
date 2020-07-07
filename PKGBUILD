@@ -16,15 +16,15 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   arch-meson "${_pkgname}" build
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
