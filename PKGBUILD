@@ -1,11 +1,11 @@
 # Mantainer: Dudemanguy <random342@airmail.cc>
 pkgname=password-sanity-git
 _pkgname=password-sanity
-pkgver=0.3_6_g7cedd8d
+pkgver=0.4
 pkgrel=1
 license=("GPL3")
 pkgdesc="A simple, python program for securely managing passwords through the command line"
-depends=("python" "python-gnupg")
+depends=("python" "python-gnupg" "python-pyperclip")
 arch=("x86_64")
 url="https://github.com/Dudemanguy/password-sanity"
 source=("${_pkgname}::git+https://github.com/Dudemanguy/password-sanity.git")

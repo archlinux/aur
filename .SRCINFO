@@ -1,12 +1,13 @@
 pkgbase = password-sanity-git
 	pkgdesc = A simple, python program for securely managing passwords through the command line
-	pkgver = 0.3_6_g7cedd8d
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/Dudemanguy/password-sanity
 	arch = x86_64
 	license = GPL3
 	depends = python
 	depends = python-gnupg
+	depends = python-pyperclip
 	source = password-sanity::git+https://github.com/Dudemanguy/password-sanity.git
 	sha512sums = SKIP
 
