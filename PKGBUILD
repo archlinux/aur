@@ -2,7 +2,7 @@
 
 pkgname=webkit2-sharp
 pkgver=2.10.9
-pkgrel=2
+pkgrel=3
 pkgdesc="C Sharp bindings for WebKit 2 with GTK+ 3"
 arch=(x86_64)
 url="https://github.com/hbons/webkit2-sharp"
