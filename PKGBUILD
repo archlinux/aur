@@ -4,7 +4,7 @@
 
 pkgname=tap-plugins
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tom's LADSPA Plugins"
 arch=('x86_64')
 url="http://tap-plugins.sourceforge.net/"
