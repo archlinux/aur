@@ -3,7 +3,7 @@
 
 _pkgname=nvidia-texture-tools
 pkgname="${_pkgname}-git"
-pkgver=2.1.1.1e06539
+pkgver=2.1.1.26a5641
 pkgrel=1
 pkgdesc="Texture processing tools with support for Direct3D 10 and 11 formats"
 arch=('i686' 'x86_64')
@@ -22,9 +22,12 @@ pkgver() {
 }
 
 prepare(){
+echo "Build section, I have to have it do something otherwise /n \
+it complains about not having done anything, so here is an echo"
+#
 #Build error in master, rolling back to a good build.
-cd "${srcdir}"/nvidia-texture-tools/
-git reset --hard 1e0653901271b64c0803abb06ef9c46153831c8e
+#cd "${srcdir}"/nvidia-texture-tools/
+#git reset --hard 1e0653901271b64c0803abb06ef9c46153831c8e
 }
 
 
