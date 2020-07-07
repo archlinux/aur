@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=archive-mounter
-pkgver=3
-pkgrel=2
+pkgver=4
+pkgrel=1
 pkgdesc="Open with archive mounter nautilus menu entry"
 arch=('any')
 url="http://www.gnome.org"
@@ -17,4 +17,4 @@ package() {
   cp $srcdir/mount-archive.desktop $pkgdir/usr/share/applications/  
 }
 
-md5sums=('57527c23be43c43a77b7d9a5b8f00ae4')
+md5sums=('7769f421c18f3ce3d97b435940603e02')
