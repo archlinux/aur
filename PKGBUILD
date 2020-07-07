@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=feathernotes
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Lightweight Qt hierarchical notes-manager for Linux.'
 arch=('i686' 'x86_64')
@@ -10,8 +10,10 @@ license=('GPL3')
 depends=('qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('qt5-tools')
 optdepends=('qt5-translations: localized keyboard shortcuts')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/V${pkgver}.tar.gz")
-sha256sums=('87b939e4248db432dd8427ae650f33f88b708ef448f8860d74b9a00a3a29fee1')
+source=("${url}/releases/download/V${pkgver}/feathernotes-${pkgver}.tar.xz"{,.asc})
+sha256sums=('f523e1aa23017d960dd82469fa35a14a98fea9833760192dd83da0d9bc306751'
+            'SKIP')
+validpgpkeys=('19DFDF3A579BD509DBB572D8BE793007AD22DF7E')
 
 build() {
   rm -Rf build && mkdir build
