@@ -1,14 +1,12 @@
 pkgbase = terminus-font-td1-otb
 	pkgdesc = Monospace bitmap font (OTB version) with td1 patch (centered ascii tilde)
 	pkgver = 4.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
 	license = custom:OFL
 	makedepends = fontforge
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = terminus-font-otb
 	conflicts = terminus-font-otb
 	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
