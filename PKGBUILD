@@ -1,26 +1,24 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=iphonebackuptools
-_commit=c5573a3e5446ea420a56d2477ef78550cee224fb
-_short=78
 # work around until upstream versions
 # https://github.com/richinfante/iphonebackuptools/issues/68
-pkgver=1.$_short
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Extract messages, notes, photo locations and more from unencrypted iOS backups"
 arch=('any')
 url="https://github.com/richinfante/iphonebackuptools"
 license=(MIT)
 depends=(nodejs sqlite)
 makedepends=(npm python)
-source=(https://github.com/richinfante/iphonebackuptools/archive/"$_commit.tar.gz")
+source=(https://github.com/richinfante/iphonebackuptools/archive/"$pkgver.tar.gz")
 noextract=("$_commit.tar.gz")
-sha256sums=('6cc52d2fe0b09a5b5fa8f9f80f4de77d9cc7dbf130057432a7267c9093372828')
+sha256sums=('93e5edbd66d483a9ebbbd7c41d627e26c68803e915d0e9234c5bbbb01e2f1771')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir/$_commit.tar.gz"
+  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir/$pkgver.tar.gz"
   
   # Fix permissions
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-  chown -R root:root "${pkgdir}"
+  chown -R root:root "$pkgdir"
 }
