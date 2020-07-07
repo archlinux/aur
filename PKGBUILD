@@ -7,7 +7,7 @@
 
 pkgname=libguestfs-git
 _pkgname=libguestfs
-pkgver=1.41.8.r82.gc509420be
+pkgver=1.42.0.r21.g4837698d8
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
 arch=("i686" "x86_64")
@@ -18,7 +18,6 @@ backup=("etc/libguestfs-tools.conf"
 	"etc/xdg/virt-builder/repos.d/libguestfs.gpg")
 # backup=("etc/libguestfs-tools.conf" "etc/php.d/guestfs_php.ini")
 install="appliance.install"
-#_pythonver=2
 depends=("qemu-headless"
          "augeas"
          "hivex>=1.3.2"
@@ -37,7 +36,7 @@ makedepends=("qemu-headless"
              "libconfig"
              "libxml2"
              "gperf"
-#             "python${_pythonver}"
+             "rpcsvc-proto"
              "python"
              "perl"
              "perl-string-shellquote"
@@ -48,7 +47,8 @@ makedepends=("qemu-headless"
 	     "po4a"
 #             "lua"
 #             "ghc"
-             "ruby"
+             "ruby-rdoc"
+             "ruby-rake"
 #             "erlang"
 #             "gjs"
 #             "php"
@@ -57,8 +57,8 @@ makedepends=("qemu-headless"
              "ocaml"
              "go"
              "rust")
-optdepends=("python${_pythonver}: Python bindings"
-#            "ruby: Ruby Bindings"
+optdepends=("python: Python bindings"
+            "ruby: Ruby Bindings"
 #            "gjs: Javascript Bindings for GNOME"
 #            "php: PHP bindings"
 #            "erlang: Erlang Bindings"
@@ -110,7 +110,7 @@ _fix_pod_files() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-# Currently OCaml lua, erlang, php, haskel, ruby, ghc, GObject and java bindings
+# Currently Lua, Erlang, Php, Haskell and Java bindings
 # are disabled. If you want to create any of the aforementioned language
 # bindings uncomment the appropriate line in makedepends and remove the
 # --disable-* option in ./configure

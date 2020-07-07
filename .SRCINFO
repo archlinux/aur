@@ -1,6 +1,6 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
-	pkgver = 1.41.8.r82.gc509420be
+	pkgver = 1.42.0.r21.g4837698d8
 	pkgrel = 1
 	url = http://libguestfs.org
 	install = appliance.install
@@ -15,6 +15,7 @@ pkgbase = libguestfs-git
 	makedepends = libconfig
 	makedepends = libxml2
 	makedepends = gperf
+	makedepends = rpcsvc-proto
 	makedepends = python
 	makedepends = perl
 	makedepends = perl-string-shellquote
@@ -23,7 +24,8 @@ pkgbase = libguestfs-git
 	makedepends = perl-module-build
 	makedepends = jansson
 	makedepends = po4a
-	makedepends = ruby
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake
 	makedepends = gobject-introspection
 	makedepends = ocaml-findlib
 	makedepends = ocaml
@@ -41,10 +43,11 @@ pkgbase = libguestfs-git
 	depends = jansson
 	depends = supermin>=5.1
 	optdepends = python: Python bindings
+	optdepends = ruby: Ruby Bindings
 	optdepends = perl: Perl Bindings
 	optdepends = perl-sys-virt: Sys-Virt tools
 	optdepends = ocaml: Ocaml libs
-	provides = guestfish=1.41.8.r82.gc509420be
+	provides = guestfish=1.42.0.r21.g4837698d8
 	provides = libguestfs
 	conflicts = libguestfs
 	backup = etc/libguestfs-tools.conf
