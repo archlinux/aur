@@ -7,7 +7,7 @@ pkgdesc="Kafka CLI inspired by kubectl & docker"
 arch=('x86_64')
 license=('Apache')
 url="https://github.com/birdayz/kaf"
-source=("$pkgname"::"https://github.com/birdayz/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/birdayz/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('75680f6853ba1ecb2d18dcdf3ccb902c')
 
 prepare() {
