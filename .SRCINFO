@@ -1,0 +1,15 @@
+pkgbase = python-pytest-check
+	pkgdesc = A flake8 extension that checks type annotations
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/python-discord/flake8-annotations
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytest
+	source = python-pytest-check-0.3.9.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest_check/pytest_check-0.3.9.tar.gz
+	b2sums = 61f6b9294ff7b3f7151b1194c6d94feeb85235a8a711c41558440f5d9ab25c9745c998a9ec2d86b4940bd8a8f70db5a562b6ff8fc03bac812d02e2b779cfe821
+
+pkgname = python-pytest-check
+
