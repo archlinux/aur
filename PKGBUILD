@@ -2,7 +2,7 @@
 
 _pkgname="vopono"
 pkgname="vopono-git"
-pkgver=r47.5d976c2
+pkgver=r49.c896b62
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('x86_64')
