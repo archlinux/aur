@@ -1,6 +1,6 @@
 pkgbase = ttt2-hg
 	pkgdesc = An automatic termination prover for term rewrite systems (TRSs) (mercurial version)
-	pkgver = 1.20.r2104.1ffa9886eb7f
+	pkgver = 1.20.1.r2116.7c846900def0
 	pkgrel = 1
 	url = http://colo6-c703.uibk.ac.at/ttt2
 	arch = i686

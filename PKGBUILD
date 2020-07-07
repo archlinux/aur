@@ -1,6 +1,6 @@
 # Maintainer: Jonas Schöpf <jonas at schoepf dot me>
 pkgname=ttt2-hg
-pkgver=1.20.r2104.1ffa9886eb7f
+pkgver=1.20.1.r2116.7c846900def0
 pkgrel=1
 pkgdesc="An automatic termination prover for term rewrite systems (TRSs) (mercurial version)"
 arch=('i686' 'x86_64')
