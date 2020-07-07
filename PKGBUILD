@@ -4,7 +4,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=bochs-svn
-pkgver=2.6.11.r13817
+pkgver=2.6.11.r13903
 pkgrel=1
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger (SVN Snapshot)"
 arch=('x86_64')
@@ -43,11 +43,16 @@ build() {
         --enable-disasm \
         --enable-pcidev \
         --enable-usb \
-        --enable-debugger
+        --enable-debugger \
+        --enable-sb16 \
+        --enable-e1000
         #--with-sdl
         #--enable-x86-debugger
         #--enable-all-optimizations
         #--enable-plugins
+
+    sed -i 's/BX_NETMOD_FBSD 1/BX_NETMOD_FBSD 0/g' config.h
+
     make -j 1
 }
 
