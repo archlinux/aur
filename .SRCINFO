@@ -32,7 +32,7 @@ pkgbase = proton-ge-custom-stable-bin
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/user_settings.py
 	source = proton-ge-custom-stable-5.9-GE-3-ST.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.9-GE-3-ST/Proton-5.9-GE-3-ST.tar.gz
 	source = supplementary.tar.zst
-	md5sums = fad10ed731e92205f06a548f48ef648b
+	md5sums = 4c5742a822a331fd6afc022ae096b8c4
 	md5sums = d3bf8e07cc46d381d5a31f204e01c592
 
 pkgname = proton-ge-custom-stable-bin

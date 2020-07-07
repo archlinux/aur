@@ -49,7 +49,7 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
-md5sums=('fad10ed731e92205f06a548f48ef648b'
+md5sums=('4c5742a822a331fd6afc022ae096b8c4'
          'd3bf8e07cc46d381d5a31f204e01c592')
 
 build() {
