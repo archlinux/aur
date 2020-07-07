@@ -26,3 +26,4 @@ package() {
     # LICENSE
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
