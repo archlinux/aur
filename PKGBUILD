@@ -4,15 +4,15 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='sejda-desktop'
-pkgver='7.0.6'
+pkgver='7.0.8'
 pkgrel='1'
 license=('custom:EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
-md5sums=('5c0cedb581c1812369e8681a71472671')
-sha512sums=('b2738c3d33b6c176b8cb25dbb8023353c74df031cb015e21344e3271a7ba903531f8527abfd26f70f9763e1766f70001970f384e177988a78045a7e2d74c5561')
+md5sums=('f1cc8db5c3cf4663e8882fe14d8850f4')
+sha512sums=('499a400452e3cd188e41893d0d4311a269ea4d91fa35012a8fb6cd21b7d2777db8239cdf843bec910dd2c04520940d188c3a24b3efa3933a44f4d48df7b5a09f')
 options=('!strip')
 PKGEXT='.tar.gz'
 
