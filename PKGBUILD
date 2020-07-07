@@ -15,7 +15,7 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
 makedepends=(curl)
 _pkgver_x86_64=$(curl -s 'http://archive.trisquel.info/trisquel/pool/main/f/firefox/?C=M;O=D' | grep abrowser_$pkgver | cut -d+ -f2,3 | cut -d'"' -f1 | grep amd64 | head -1)
 source=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${_pkgver_x86_64}")
-sha256sums=('6d8fd0e453fa42de003ebd4e2fb12e61dbe915bc4b75fbdf0ce0d001dca17299')
+sha256sums=('584ffffdedb762ba54c1a8f1423540e2befb37e971e931654fb51e85de6ff980')
 
 package() {
   tar xJf ${srcdir}/data.tar.xz -C ${pkgdir}/
