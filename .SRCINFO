@@ -1,0 +1,15 @@
+pkgbase = dll-bundler-git
+	pkgdesc = Deployment helper which copies DLL dependencies next to the Win32 executable
+	pkgver = 0.1.r0.gc219024
+	pkgrel = 1
+	url = https://github.com/jpcima/dll-bundler
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = llvm
+	depends = ncurses
+	source = git+https://github.com/jpcima/dll-bundler.git
+	md5sums = SKIP
+
+pkgname = dll-bundler-git
+
