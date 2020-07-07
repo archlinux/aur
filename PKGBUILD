@@ -1,12 +1,11 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-#_branch=maint-0.4.2 # stable
-_with_rust=1
+#_branch=maint-0.4.3 # stable
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.3.2.alpha.r754.g12c31
+pkgver=0.4.5.0.alpha.r304.g95fc085
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -22,7 +21,7 @@ backup=('etc/tor/torrc'
 
 depends=('openssl' 'libevent' 'libseccomp' 'zstd' 'xz')
 #https://github.com/skydrome/PKGBUILDs/tree/master/asciidoc-py3
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'rust')
 checkdepends=('python')
 optdepends=('torsocks: allow transparent SOCKS proxying'
             'obfs4proxy: obfuscating pluggable transport proxy'
@@ -30,10 +29,6 @@ optdepends=('torsocks: allow transparent SOCKS proxying'
 
 [[ $_malloc = 'jemalloc' ]] && depends+=('jemalloc')
 [[ $_malloc = 'tcmalloc' ]] && depends+=('gperftools')
-[[ $_with_rust ]] && {
-    makedepends+=('rust')
-    _options="--enable-rust"
-}
 
 source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
         'torrc' 'nodes' 'bridge' 'transparent_proxy' 'isolation'
@@ -52,16 +47,13 @@ sha256sums=('SKIP'
 
 pkgver () {
     cd tor
-    git describe --long --tags --abbrev=7 origin/${_branch:-master} \
+    git describe --long --tags --abbrev=7 "origin/${_branch:-master}" \
         |sed -e 's/[tor\|dev].//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd tor
-
-    [[ $_with_rust ]] &&
-       git submodule update --init --recursive
-
+    git submodule update --init --recursive
     ./autogen.sh
 }
 
@@ -69,14 +61,15 @@ build() {
     cd tor
     export TOR_RUST_DEPENDENCIES="$srcdir/tor/src/ext/rust/crates"
 
-    ./configure $_options \
+    ./configure \
         --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
         --disable-html-manual \
         --enable-systemd \
         --enable-zstd \
         --enable-lzma \
         --enable-pic \
-        --with-malloc=${_malloc:-system} #\
+        --enable-rust \
+        --with-malloc="${_malloc:-system}" #\
         #--disable-module-relay \
         #--disable-unittests
     make
