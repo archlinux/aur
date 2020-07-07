@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=ams-lv2
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A port of the internal modules found in Alsa Modular Synth"
 arch=('x86_64')
 url="https://github.com/blablack/ams-lv2"
