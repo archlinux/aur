@@ -3,7 +3,7 @@
 _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}-git"
-pkgver=1.9.3.r2267.b8efa83
+pkgver=2.0.0.r2282.c1a8e00
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
