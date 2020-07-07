@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=The Dark Mod
+Comment=First person stealth game
+Exec=thedarkmod
+Icon=thedarkmod
+Terminal=false
+Categories=Game
