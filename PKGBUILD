@@ -1,60 +1,55 @@
-# Maintainer: Cyano Hao <c@cyano.cn>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Cyano Hao <c@cyano.cn>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
 _name=firefox
 _channel=nightly
 _lang=en-GB
-_pkgname=${_name}-${_channel}
-pkgname=${_name}-${_channel}-${_lang,,}
+_pkgname="${_name}-${_channel}"
+pkgname="${_pkgname}-${_lang,,}"
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
-# For Arch Linux 32: fallback to i686 on pentium4 arch.
-if [[ "x${CARCH}" == xpentium4 ]]
-then
-  _carch=i686
-else
-  _carch="${CARCH}"
-fi
+# Apparently there is an alternate URL - https://archive.mozilla.org/pub/
+_base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
+_version=$(curl -s ${_base_url}/latest-mozilla-central-l10n/ | grep "${_lang}.linux-${CARCH}.checksums" | sort | tail -n 1 | sed "s/^.*>firefox-//; s/\.${_lang}.*//")
 
-_version=74.0a1
 declare -A _build_id
 _build_id=(
-	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${_carch}.checksums | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
-	[year]="${_build_id[id]:0:4}"
-	[month]="${_build_id[id]:4:2}"
-	[day]="${_build_id[id]:6:2}"
-	[hour]="${_build_id[id]:8:2}"
-	[min]="${_build_id[id]:10:2}"
-	[sec]="${_build_id[id]:12:2}"
-	[date]="${_build_id[id]:0:8}"
-	[time]="${_build_id[id]:8:6}"
+  [id]="$(curl -s "${_base_url}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
+  [year]="${_build_id[id]:0:4}"
+  [month]="${_build_id[id]:4:2}"
+  [day]="${_build_id[id]:6:2}"
+  [hour]="${_build_id[id]:8:2}"
+  [min]="${_build_id[id]:10:2}"
+  [sec]="${_build_id[id]:12:2}"
+  [date]="${_build_id[id]:0:8}"
+  [time]="${_build_id[id]:8:6}"
 )
 
 pkgver=${_version}.${_build_id[date]}.${_build_id[time]}
 pkgrel=1
-arch=(i686 pentium4 x86_64)
+arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox-nightly')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types' 'python')
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
-            'gtk2: flash plugin support'
             'hunspell: spell checking'
             'hyphen: hyphenation'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
-
-_url="https://ftp.mozilla.org/pub/${_name}/${_channel}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
-_src="${_name}-${_version}.${_lang}.linux-${_carch}"
+provides=("${_pkgname}")
+_url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
+_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
 source=('firefox-nightly.desktop'
         'policies.json'
-        "${_filename}.tar.bz2"::"${_url}/${_src}.tar.bz2"
-        "${_filename}.tar.bz2.asc"::"${_url}/${_src}.tar.bz2.asc")
+        "${_filename}.tar.bz2::${_url}/${_src}.tar.bz2"
+        "${_filename}.tar.bz2.asc::${_url}/${_src}.tar.bz2.asc")
 sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
             'SKIP'
