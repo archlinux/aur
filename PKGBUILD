@@ -24,7 +24,6 @@ prepare(){
     sed -i "s|Exec=AppRun|Exec=/usr/bin/zhisu_ocr|" "squashfs-root/zhisuOcr.desktop"
     
     chmod -R a-x+rX squashfs-root/usr
-    chmod 0755 ./zhisu_ocr.sh
 }
 
 package(){
@@ -39,5 +38,5 @@ package(){
 	 cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 	 
 	 mkdir -p "${pkgdir}"/usr/bin
-	 ln -s "${pkgdir}"/opt/zhisu_ocr/"${_filename}" "${pkgdir}"/usr/bin/zhisu_ocr
+	 ln -s /opt/zhisu_ocr/"${_filename}" "${pkgdir}"/usr/bin/zhisu_ocr
 }
