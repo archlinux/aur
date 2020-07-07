@@ -4,7 +4,7 @@
 
 pkgname=t-prot
 pkgver=3.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Filter to improve readability of email/usenet by hiding annoyances'
 url='https://www.escape.de/~tolot/mutt/'
 license=(BSD)
