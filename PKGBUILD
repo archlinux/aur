@@ -1,7 +1,6 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-math-4
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/math"
@@ -12,10 +11,10 @@ makedepends=('ignition-cmake=0')
 optdepends=()
 provides=('ignition-math=4')
 _name="ignition-math4"
-source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('dd24b8d3540f726999f5d6ba9a13a077a5b172e840847491b8e529c53302288a')
+source=("https://bitbucket.org/osrf-migrated/ign-math/get/${_name}_${pkgver}.tar.bz2")
+sha256sums=('b671098ddbd1c1971c1f14c5a0eccc25767e07a2b15dcef043be3e24a9c2d499')
 
-_dir="ignitionrobotics-ign-math-054f8a99081f"
+_dir="osrf-migrated-ign-math-054f8a99081f"
 
 build() {
   cd "$srcdir/$_dir"
