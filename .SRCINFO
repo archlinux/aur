@@ -1,0 +1,19 @@
+pkgbase = pantheon-screencast
+	pkgdesc = Simple screencast recorder designed for elementary OS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/artemanufrij/screencast
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = gst-plugins-bad
+	depends = libappindicator-gtk3
+	depends = libwnck3
+	source = https://github.com/artemanufrij/screencast/archive/1.0.0/screencast-1.0.0.tar.gz
+	sha256sums = da91a12014f8ccab42596f52b357d4516f85b4c05e4cef0348931a775d3c1c2d
+
+pkgname = pantheon-screencast
+
