@@ -1,6 +1,6 @@
 pkgbase = kronosnet
 	pkgdesc = VPNs on steroids
-	pkgver = 1.14
+	pkgver = 1.16
 	pkgrel = 1
 	url = http://www.kronosnet.org/
 	arch = i686
@@ -12,8 +12,10 @@ pkgbase = kronosnet
 	depends = nss
 	depends = lzo
 	depends = zstd
-	source = https://kronosnet.org/releases/kronosnet-1.14.tar.xz
-	md5sums = 33a7598f046220f2718c2205d9510022
+	depends = bzip2
+	depends = libnl
+	source = https://kronosnet.org/releases/kronosnet-1.16.tar.xz
+	md5sums = 44b915a4faba070e0e4600f17df09f63
 
 pkgname = kronosnet
 

@@ -1,16 +1,16 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=kronosnet
-pkgver=1.14
+pkgver=1.16
 pkgrel=1
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
 url="http://www.kronosnet.org/"
 license=('GPL2')
 makedepends=('lksctp-tools' 'doxygen' 'libqb')
-depends=('nss' 'lzo' 'zstd')
+depends=('nss' 'lzo' 'zstd' 'bzip2' 'libnl')
 source=("https://kronosnet.org/releases/$pkgname-$pkgver.tar.xz")
-md5sums=('33a7598f046220f2718c2205d9510022')
+md5sums=('44b915a4faba070e0e4600f17df09f63')
 
 prepare() {
   cd ${pkgname}-${pkgver}
