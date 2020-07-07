@@ -1,9 +1,13 @@
 pkgbase = ignition-common-1
 	pkgdesc = A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers.
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ignitionrobotics.org/libs/common
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	groups = development
 	license = Apache
 	makedepends = ignition-cmake=0
@@ -15,8 +19,8 @@ pkgbase = ignition-common-1
 	depends = gts
 	depends = ffmpeg
 	provides = ignition-common=1
-	source = https://bitbucket.org/ignitionrobotics/ign-common/get/ignition-common_1.1.1.tar.bz2
-	sha256sums = 5f9e65867b9a7b6df61ae68cf492f5ce894c4d9821097bcf65531b80185aac7c
+	source = https://bitbucket.org/osrf-migrated/ign-common/get/ignition-common_1.1.1.tar.bz2
+	sha256sums = 49d3afe2b0f84b4b1fc8c1de8961d889a348688a129f078dc14176d2fc1c902b
 
 pkgname = ignition-common-1
 
