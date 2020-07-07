@@ -5,7 +5,7 @@
 pkgname=sparkleshare
 _pkgname=SparkleShare
 pkgver=3.28
-pkgrel=4
+pkgrel=5
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="https://www.sparkleshare.org/"
