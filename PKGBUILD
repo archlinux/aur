@@ -20,7 +20,11 @@ package() {
 	mv -f linux_x64 jack
 	rm -f jack/install.sh
 	mv -f jack/Jack.desktop .
-	mkdir -p ${pkgdir}/opt
+	find jack -type d -exec chmod +x {} \;
+	find jack -type f -exec chmod +r {} \;
+	mkdir -p -m755 ${pkgdir}/opt/jack
+	mkdir -p -m755 ${pkgdir}/usr/bin
 	cp -rv jack ${pkgdir}/opt
 	install -D -m644 Jack.desktop ${pkgdir}/usr/share/applications/Jack.desktop
+	ln -s /opt/jack/Jack.sh ${pkgdir}/usr/bin/Jack 
 }
