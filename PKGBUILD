@@ -4,7 +4,7 @@
 
 pkgname=arc-icon-theme
 pkgver=20161122
-pkgrel=2
+pkgrel=3
 pkgdesc='Arc icon theme. Official releases only.'
 arch=('any')
 url="https://github.com/horst3180/arc-icon-theme"
