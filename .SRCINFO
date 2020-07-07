@@ -1,0 +1,26 @@
+pkgbase = manuskript
+	pkgdesc = An open-source tool for writers.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://www.theologeek.ch/manuskript
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-svg
+	depends = python-lxml
+	optdepends = python-pyenchant: spell check support
+	optdepends = python-pyspellchecker: spell check support
+	optdepends = python-symspellpy: spell check support
+	optdepends = python-markdown: export as html
+	optdepends = pandoc: more export formats
+	provides = manuskript
+	conflicts = manuskript-git
+	source = https://github.com/olivierkes/manuskript/archive/0.11.0.zip
+	source = manuskript.desktop
+	md5sums = 2a9542cafb1639eb4e487be1b1366bec
+	md5sums = 0c298d39bb0847f17559e71bc29af5ce
+
+pkgname = manuskript
+
