@@ -1,7 +1,7 @@
 pkgbase = ignition-cmake-0
 	pkgdesc = Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against.
 	pkgver = 0.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ignitionrobotics.org/libs/cmake
 	arch = any
 	groups = development
@@ -12,7 +12,7 @@ pkgbase = ignition-cmake-0
 	depends = doxygen
 	provides = ignition-cmake=0
 	source = https://bitbucket.org/osrf-migrated/ign-cmake/get/ignition-cmake_0.6.1.tar.bz2
-	sha256sums = ba786c3feaf5e916b9f04ad2b271ccf9c720397cbbad2e464fb4646854ce497e
+	sha256sums = 969239312eee6f0691e1a3a5215c542ea029bc7c84d479d596d5b1128aef83ae
 
 pkgname = ignition-cmake-0
 

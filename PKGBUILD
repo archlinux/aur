@@ -1,6 +1,6 @@
 pkgname=ignition-cmake-0
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
 url="https://ignitionrobotics.org/libs/cmake"
@@ -11,7 +11,7 @@ optdepends=()
 provides=('ignition-cmake=0')
 _name="ignition-cmake"
 source=("https://bitbucket.org/osrf-migrated/ign-cmake/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('ba786c3feaf5e916b9f04ad2b271ccf9c720397cbbad2e464fb4646854ce497e')
+sha256sums=('969239312eee6f0691e1a3a5215c542ea029bc7c84d479d596d5b1128aef83ae')
 
 _dir="ignitionrobotics-ign-cmake-a93e1ac2472b"
 
