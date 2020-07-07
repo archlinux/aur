@@ -2,7 +2,7 @@
 
 pkgname=pantheon-print
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple shim for printing support via Contractor'
 arch=(x86_64)
 url=https://github.com/elementary/pantheon-print
