@@ -1,32 +1,30 @@
-# Maintainer: Mitchell Renouf <mitchellarenouf@gmail.com>
+# Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=libopenaptx-git
-_pkgname=libopenaptx
-pkgver=0.1.0
+pkgver=0.2.0.r1.g99b0921
 pkgrel=1
-pkgdesc="Open Source implementation of Audio Processing Technology codec (aptX)"
+pkgdesc='Open Source implementation of Audio Processing Technology codec (aptX)'
 arch=('x86_64')
 url="https://github.com/pali/libopenaptx"
-license=('LGPL 2.1')
-depends=()
+license=('LGPL2.1')
+depends=('glibc')
 makedepends=('git')
-provides=('libopenaptx')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=("https://github.com/pali/libopenaptx/releases/download/$pkgver/libopenaptx-$pkgver.tar.gz"{,.asc})
-sha512sums=('532756cd89160d78d62f2c9c2c911afad8aab46b211eaaa30a6eea5f0cf41ab70e7dcba355322757d4bef42af6bff966972fea706989501ec9202d32b3d8984b'
-            'SKIP')
-validpgpkeys=('B856B21074A8AE9B692B80858BF0C93D03E44352')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$pkgname"
 	make
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$pkgname"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
