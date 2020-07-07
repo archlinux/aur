@@ -4,7 +4,7 @@
 
 pkgname=gmrun
 pkgver=0.9.5w
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program which provides a run program window"
 arch=('x86_64')
 url="https://github.com/wdlkmpx/gmrun"
