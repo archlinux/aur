@@ -4,7 +4,7 @@
 pkgname=lxappearance-obconf-gtk3
 _pkgname=lxappearance-obconf
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugin for LXAppearance to configure Openbox (GTK+ 3 version)'
 arch=('x86_64')
 license=('GPL2')
