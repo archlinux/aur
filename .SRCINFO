@@ -1,0 +1,22 @@
+pkgbase = python-zdict
+	pkgdesc = CLI dictionary framework mainly focus on any kind of online dictionary
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://github.com/zdict/zdict
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-flake8
+	checkdepends = python-pyjokes
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-peewee
+	depends = python-requests
+	source = https://pypi.io/packages/source/z/zdict/zdict-3.6.1.tar.gz
+	source = git+https://github.com/zdict/zdict.sh.git#commit=8698dc733b3174f5aac319234fec60dfa380a87e
+	sha256sums = 59332d74820d53d16cf1d207ea8a5a01f105651aaa9ceb60d4ca9087a98b0628
+	sha256sums = SKIP
+
+pkgname = python-zdict
+
