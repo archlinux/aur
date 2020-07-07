@@ -7,7 +7,7 @@ pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
 pkgver=1.12.0
 _libgit2ver="tag-d6c37a38587c9af2a9e63449fc8bf951dca0e854"
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('x86_64')
 url='https://github.com/romkatv/powerlevel10k'
@@ -66,6 +66,7 @@ package() {
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/mbuild"
   rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/.gitattributes"
   rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/.gitignore"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/.gitkeep"
   rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.clang-format"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.vscode/"
   cd "${pkgdir}/usr/share/zsh-theme-powerlevel10k/"
