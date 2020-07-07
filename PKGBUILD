@@ -28,7 +28,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   make QT_QPA_PLATFORM=offscreen check
 }
 
