@@ -1,19 +1,20 @@
 # Maintainer: shellkr <revoltism+AUR$gmail.com>
+# Maintainer: michaelkl <michaelkl@mail.ru>
 
 pkgname=minetest-mod-mobs_redo-git
 _gitname=${pkgname%-git*}
-pkgver=44.80ba7db
+pkgver=52.804f8b9a0c
 pkgrel=1
 pkgdesc='Mobs Redo mod for Minetest'
 arch=('any')
-url="https://github.com/tenplus1/mobs"
+url="https://notabug.org/tenplus1/mobs_redo"
 license=('custom')
 depends=()
 optdepends=('minetest-usrdir_patch')
 makedepends=('git')
 provides=("$_gitname")
 install=$pkgname.install
-source=("$_gitname::git+git://github.com/tenplus1/mobs_redo.git")
+source=("$_gitname::git+https://notabug.org/tenplus1/mobs_redo.git")
 md5sums=('SKIP')
 
 pkgver() {
