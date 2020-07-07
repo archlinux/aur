@@ -2,7 +2,7 @@
 
 pkgname=polyclipping
 pkgver=6.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Polygon clipping library"
 arch=('x86_64')
 url="https://sourceforge.net/projects/polyclipping/"
