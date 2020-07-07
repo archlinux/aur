@@ -1,8 +1,8 @@
 pkgbase = bibus
 	pkgdesc = A bibliographic database that can directly insert references in OpenOffice.org/LibreOffice and generate the bibliographic index.
 	pkgver = 1.5.2
-	pkgrel = 7
-	url = http://sourceforge.net/projects/bibus-biblio/
+	pkgrel = 8
+	url = https://sourceforge.net/projects/bibus-biblio/
 	arch = any
 	license = GPL
 	depends = python2-pysqlite
