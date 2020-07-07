@@ -5,7 +5,7 @@
 
 pkgname=obconf
 pkgver=2.0.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A GTK+ based configuration tool for the Openbox windowmanager"
 arch=('x86_64')
 url="http://openbox.org/wiki/ObConf:About"
