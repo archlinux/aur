@@ -1,5 +1,5 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
-pkgname=wdune
+pkgname=white_dune
 pkgver=1.902
 pkgrel=1
 epoch=

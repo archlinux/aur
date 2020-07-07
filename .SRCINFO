@@ -1,4 +1,4 @@
-pkgbase = wdune
+pkgbase = white_dune
 	pkgdesc = white_dune X3D/VRML97 tool, 3D modeller and animation-tool
 	pkgver = 1.902
 	pkgrel = 1
@@ -51,5 +51,5 @@ pkgbase = wdune
 	source = ftp://ftp.ourproject.org/pub/wdune/wdune-1.902.tar.bz2
 	md5sums = c6755993071efe5472107519b955ae61
 
-pkgname = wdune
+pkgname = white_dune
 
