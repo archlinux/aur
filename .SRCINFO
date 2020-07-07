@@ -1,7 +1,7 @@
 pkgbase = dell-unified-driver
 	pkgdesc = Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135n 1815 2145cn 2335dn 2355dn 5330 B1160 B1160w B1165nfw B1260dn B1265dfw B1265dnf B2365dnf
 	pkgver = 1.03
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1
 	arch = i686
 	arch = x86_64
