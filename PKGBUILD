@@ -4,7 +4,7 @@
 
 pkgname=kuickshow
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A very fast and convenient image viewer"
 url="https://userbase.kde.org/KuickShow"
 arch=('x86_64')
