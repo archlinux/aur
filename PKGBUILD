@@ -3,7 +3,7 @@
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=0.r809.580222d
-pkgrel=1
+pkgrel=2
 pkgdesc="Free screenwriting application"
 url=http://www.trelby.org
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
     'python2-lxml'
     'wxpython'
 )
+makedepends=('git')
 source=("$_pkgname"::'git://github.com/oskusalerma/trelby.git')
 md5sums=('SKIP')
 pkgver() {
