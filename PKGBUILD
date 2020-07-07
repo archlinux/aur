@@ -4,7 +4,7 @@
 
 pkgname=gocr
 pkgver=0.52
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR (Optical Character Recognition) program, which converts scanned images of text back to text files"
 arch=("x86_64")
 url="https://www-e.uni-magdeburg.de/jschulen/ocr/"
