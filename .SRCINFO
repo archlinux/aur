@@ -1,0 +1,23 @@
+pkgbase = clashy-git
+	pkgdesc = A GUI proxy client for Windows / Mac / Ubuntu Desktop based on Clash and Electron. Windows / Mac / Ubuntu 适用的Clash客户端.
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/SpongeNobody/Clashy
+	arch = x86_64
+	makedepends = yarn
+	makedepends = git
+	makedepends = nodejs
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = xdg-utils
+	depends = libappindicator-gtk3
+	depends = libsecret
+	depends = gobject-introspection-runtime
+	depends = ffmpeg
+	provides = clashy
+	source = git+https://github.com/SpongeNobody/Clashy
+	md5sums = SKIP
+
+pkgname = clashy-git
+
