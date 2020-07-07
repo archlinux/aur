@@ -1,14 +1,14 @@
 pkgbase = nodejs-ws
 	pkgdesc = Simple to use, blazing fast and thoroughly tested WebSocket client and server for Node.js
-	pkgver = 7.3.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://github.com/websockets/ws
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/ws/-/ws-7.3.0.tgz
-	sha256sums = c7c5b365fb38f0c7095c32a0e58f47be3456bc0fcf73f56261da6343000f50af
+	source = https://registry.npmjs.org/ws/-/ws-7.3.1.tgz
+	sha256sums = 38dc3ad768670a0dd2bb6c7a014b5ad44956458db8f9d6df23be2b266261334b
 
 pkgname = nodejs-ws
 
