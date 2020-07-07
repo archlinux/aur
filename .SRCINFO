@@ -1,0 +1,33 @@
+pkgbase = gnome-flashback-compiz
+	pkgdesc = GNOME Flashback session (with compiz support)
+	pkgver = 3.36.3
+	pkgrel = 3
+	url = https://wiki.gnome.org/Projects/GnomeFlashback
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = intltool
+	makedepends = python
+	depends = gnome-bluetooth
+	depends = gnome-panel
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	depends = gnome-themes-extra
+	depends = libibus
+	depends = metacity
+	depends = compiz>=0.9
+	optdepends = gnome-backgrounds: Default background
+	optdepends = gnome-control-center: System settings
+	optdepends = network-manager-applet: Network management
+	provides = gnome-flashback
+	conflicts = gnome-flashback
+	source = git+https://gitlab.gnome.org/GNOME/gnome-flashback.git#commit=5036ec999d9f9ad8772e863e4cee2b679beb569f
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = gnome-flashback.pam
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 7148b3b1773fa312d6cd14798338cc70cffb6df7504ff1787687edd0363138d2
+
+pkgname = gnome-flashback-compiz
+
