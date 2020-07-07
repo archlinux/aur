@@ -3,13 +3,14 @@
 _pkgname="purelibc"
 
 pkgname="$_pkgname-git"
-pkgver=r5.d455939
+pkgver=r16.0fa9d69
 pkgrel=1
 pkgdesc="A glibc overlay library for process self-virtualization"
 arch=('any')
 url="https://github.com/virtualsquare/$_pkgname"
-license=('GPL2')
-groups=('view-os')
+license=('LGPL')
+groups=('virtualsquare')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
