@@ -2,7 +2,7 @@
 
 _gitname=captdriver
 pkgname=${_gitname}-git
-pkgver=r50.7718f66
+pkgver=r57.f2077b6
 pkgrel=1
 pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)'
 arch=('any')
@@ -35,6 +35,7 @@ package() {
     install -D -m 755 "${srcdir}/${_gitname}/src/rastertocapt" "${pkgdir}/usr/lib/cups/filter/rastertocapt"
     
     install -m 755 -d "${pkgdir}/usr/share/cups/model/" || return 1
-    install -D -m 644 "${srcdir}/${_gitname}/Canon-LBP-2900.ppd" "${pkgdir}/usr/share/cups/model/Canon-LBP-2900.ppd"
+    install -D -m 644 "${srcdir}/${_gitname}/Canon-LBP2900.ppd" "${pkgdir}/usr/share/cups/model/Canon-LBP2900.ppd"
+    install -D -m 644 "${srcdir}/${_gitname}/Canon-LBP3000.ppd" "${pkgdir}/usr/share/cups/model/Canon-LBP3000.ppd"
 
 }
