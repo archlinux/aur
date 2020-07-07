@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=cadmus-deb
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI frontend for @werman's Pulse Audio real-time noise suppression plugin"
 arch=('x86_64')
 url="https://github.com/josh-richardson/cadmus/"
@@ -17,4 +17,6 @@ package() {
     cd "${pkgdir}"
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.gz"
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s "${pkgdir}/opt/cadmus/cadmus" "${pkgdir}/usr/bin/cadmus"
 } 
