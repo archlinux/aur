@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=osmid
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, portable, easy to use tool to convert MIDI to OSC and OSC to MIDI"
 arch=('x86_64')
 url="https://github.com/llloret/osmid"
