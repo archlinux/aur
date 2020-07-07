@@ -1,4 +1,4 @@
-# Maintainer: Alex O'Brien <alex@emobrien.com>
+# Maintainer: Radostin Stoyanov <rstoyanov1@gmail.com>
 pkgname=virt-bootstrap-git
 pkgver=r153.8a7e752
 pkgrel=1
