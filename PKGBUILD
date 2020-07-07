@@ -7,7 +7,7 @@
 
 pkgname=taskd
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight, secure server providing multi-user, multi-client access to task data"
 url="http://tasktools.org/projects/${pkgname}.html"
 license=('MIT')
