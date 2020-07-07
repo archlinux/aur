@@ -3,7 +3,7 @@
 
 pkgname=xplot
 pkgver=0.90.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Reads from a xpl file to generate plots"
 arch=('x86_64')
 url="http://www.xplot.org/"
