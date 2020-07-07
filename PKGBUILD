@@ -2,7 +2,7 @@
 
 pkgname=gpx-viewer
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple tool to visualize tracks and waypoints stored in a gpx file"
 arch=('x86_64')
 url="https://blog.sarine.nl/tag/gpxviewer/"
