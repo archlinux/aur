@@ -18,6 +18,7 @@ sha256sums=('f38e1ee7e06e660433a575a23b061c2f66ec666d746e988716b2c88de59aed73')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   cmake . -DCMAKE_INSTALL_PREFIX="/usr"
   make
 }
