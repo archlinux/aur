@@ -1,8 +1,8 @@
 pkgbase = durian
-	pkgdesc = items search tool and watcher for Path of Exile
+	pkgdesc = An open source fan-made tool for easier search of Path of Exile items.
 	pkgver = 0.6.0
-	pkgrel = 1
-	url = http://thirdy.github.io/durian
+	pkgrel = 2
+	url = https://github.com/thirdy/durian/
 	arch = any
 	license = GPL2
 	depends = java-runtime>=8
