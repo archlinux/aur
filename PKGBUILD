@@ -25,6 +25,7 @@ package() {
   install -Dm755 "automedia" "$pkgdir/usr/bin/automedia"
   install -Dm755 "automedia.py" "$pkgdir/usr/share/automedia/automedia.py"
   install -Dm755 "domain.py" "$pkgdir/usr/share/automedia/domain.py"
+  install -Dm755 "episode.py" "$pkgdir/usr/share/automedia/episode.py"
   for file in plugins/*; do
     install -Dm755 "$file" "$pkgdir/usr/share/automedia/$file"
   done
