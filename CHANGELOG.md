@@ -1,6 +1,64 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.6...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.3.0...HEAD)
+
+
+<a name="2.3.0"></a>
+## [2.3.0](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.6) (2020-07-07)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.6...2.3.0)
+
+### Bug Fixes
+- update name and source version number 
+- error in lib_math shadier code 
+- remove default fade-out values in star groups, added to loading dialog 
+- interpolation limits in math shader library 
+- initial update not performed on fade node children if ct is off 
+- uncomment unhandled event debug info 
+- windows crash due to stars '*' not being accepted in paths 
+- add notice concerning the selection of more than one Gaia catalog 
+- changing focus to different object in same particle group works 
+- default value for magnitude scale is 0, fix float validator range 
+- disable depth test for billboards 
+- inconsistencies with STAR_MIN_OPACITY_CMD 
+- ensure non-empty field in search dialog 
+
+### Build System
+- fix build with text folder 
+- remove all absolute paths to project folder 
+
+### Code Refactoring
+- observer fields final, package name typo 
+- clean up gaia hacks, ray marching plubming 
+- post-processing subsystem made more generic 
+- move render system to java collections and streams 
+
+### Documentation
+- improve readme listings 
+- update acknowledgements 
+- add iconic license 
+- add package-info package documentation, update changelog 
+
+### Features
+- update server to HTTPS 
+- add call to set 'all visible' dataset property 
+- add 'invert X look axis' as well as Y 
+- axis power value and sensitivity in config window 
+- sliders now contain value label 
+- sensitivity sliders for game controllers 
+- add tips to loading screen 
+- post-processor to accept external shader code in the data folder 
+- ray marching shaders 
+- raymarching post-processing shaders 
+- complete move to SDL-back controllers 
+- full refactoring of controller mappings system 
+- interactive gamepad configuration 
+- add support for emissive textures, fix obj loading issue 
+- API call to modify solid angle threshold of orbits 
+- add properties for some star settings 
+- adjust size of star billboards 
+- add API call to scale orbits. Use with caution! 
+- distances in AU and parsec start at 0.1 mark 
+- add star brightness power setter to API 
 
 
 <a name="2.2.6"></a>
