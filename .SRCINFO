@@ -1,15 +1,15 @@
 pkgbase = bibutils
-	pkgdesc = Bibliography conversion tools
-	pkgver = 6.8
+	pkgdesc = Bibliography format interconversion
+	pkgver = 6.10
 	pkgrel = 1
-	url = http://sourceforge.net/p/bibutils/home/Bibutils/
+	url = http://sourceforge.net/p/bibutils/home/Bibutils
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = tcsh
 	depends = glibc
-	source = http://downloads.sourceforge.net/project/bibutils/bibutils_6.8_src.tgz
-	sha512sums = 0b30809ee45cbfce70b9ffb3932aa5f50a218fe97f47cdf983e01f1ae5a062247cd021295b60dafb42eab1e6ef37fd351145e6e4d374d5790ae692778c3fcf22
+	source = bibutils-6.10.tgz::https://sourceforge.net/projects/bibutils/files/bibutils_6.10_src.tgz/download
+	sha256sums = SKIP
 
 pkgname = bibutils
 
