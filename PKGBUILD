@@ -1,6 +1,6 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=atsas
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A program suite for small-angle scattering data analysis from biological macromolecules"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=( gcc7-libs )
 # !!! You have to download the sources yourself from https://www.embl-hamburg.de/biosaxs/download.html
 # !!! Use the Ubuntu-18.04 version!
 
-source=('local://ATSAS-3.0.1-1_amd64.tar.gz' 'license.md' 'atsas.sh')
-sha512sums=('9b0d9ea48e475211cecc97dbf3854911d7bc751dac43a60f364e910f1cac7e3779b84095dd2651ebc18350b96c4d6ed8013f84454b1c62e462a3fd0e04b3895a'
+source=('local://ATSAS-3.0.2-0_amd64.tar.gz' 'license.md' 'atsas.sh')
+sha512sums=('9bfe7c08d6106747785bb4f49f36604059c904e513ab83fcf490b4f3640f08a0730d49241981e7a6c321dbf1234c6f6f9619100301d14311c6f2144580f12750'
             '3f728fb538b236f0ddce8a7c86303d14c529da4f117eb5f4c87ef5f0fef52dea3ae7650fc439316c08628dc641893ab10f85890577fcb8e67b9398fdbbfa773f'
             'd5cf2dd6ee92a6ce9d01cfd5a2a87f081b4ecceecc7839f78c80d5c9a48c81b44f308e185b98e8d844bad8084d0d4946e4a117989a7b36e14db0d577013aecde')
 
@@ -21,7 +21,7 @@ sha512sums=('9b0d9ea48e475211cecc97dbf3854911d7bc751dac43a60f364e910f1cac7e3779b
 package() {
 	set > environment.txt
 	mkdir -p "${pkgdir}/opt"
-	cp -R "${srcdir}/ATSAS-3.0.1-1" "${pkgdir}/opt/atsas"
+	cp -R "${srcdir}/ATSAS-3.0.2-0" "${pkgdir}/opt/atsas"
 	ATSAS_ROOT=/opt/atsas
 	DEST_BIN_DIR=/opt/atsas/bin
 	GCC7_LIBDIR=$(ls -d /usr/lib/gcc/${CHOST}/7.*)
