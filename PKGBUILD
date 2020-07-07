@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski  (https://www.xdfr.de)
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Maintainer: William Immendorf  (https://curus.xyz)
 # Contributor: Karol 'Kenji Takahashi' Woźniak @ kenji.sx
 # Based on a cnijfilter-mg3200 package by morris555
@@ -19,14 +19,14 @@ _id=405
 
 pkgname=cnijfilter-${_name}
 pkgver=3.80
-pkgrel=3
+pkgrel=4
 _pkgver=3.80-1
 pkgdesc="Canon IJ Printer Driver (for ${_name} series)"
-url="http://support-au.canon.com.au/contents/AU/EN/0100469302.html"
+url="https://sg.canon/en/support/0100469302"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('popt' 'gtk2' 'cups' 'ghostscript')
-source=(http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-${_pkgver}.tar.gz
+source=(https://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-${_pkgver}.tar.gz
         fix_cups.patch
         fix_png.patch
         fix_configures.patch)
