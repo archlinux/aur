@@ -7,10 +7,10 @@
 _pkgname=8188fu
 pkgname="$_pkgname-dkms-git"
 pkgver=r8.1d12cae
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for Realtek RTL8188FU USB wireless adapter'
 arch=('any')
-url='http://www.realtek.com.tw/'
+url="https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers"
 license=('GPL3')
 depends=('dkms')
 makedepends=('git')
