@@ -2,7 +2,7 @@
 # and milk / milkii on Freenode
 _pkgname=zrythm
 pkgname=$_pkgname-debug-git
-pkgver=0.7.474.r45.g4ef3c551
+pkgver=0.8.298.r32.g039d28f7
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('git' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
   'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'xdg-utils'
-  'rubberband')
+  'rubberband' 'breeze-icons')
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
@@ -31,7 +31,7 @@ pkgver () {
 
 build() {
   cd "$srcdir/$_pkgname"
-  meson build --prefix=/usr -Denable_tests=true -Dmanpage=true -Denable_carla=true
+  meson build --prefix=/usr -Denable_guile=true -Denable_jack=true -Denable_ffmpeg=true -Denable_graphviz=true -Denable_carla=true -Dmanpage=true 
   ninja -C build
 }
 
