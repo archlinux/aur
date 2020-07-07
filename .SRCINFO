@@ -1,0 +1,12 @@
+pkgbase = borealis-git
+	pkgdesc = Asus Aura Sync driver application for Linux
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/Philpax/borealis
+	arch = any
+	makedepends = rust
+	source = git://github.com/Philpax/borealis.git
+	md5sums = SKIP
+
+pkgname = borealis-git
+
