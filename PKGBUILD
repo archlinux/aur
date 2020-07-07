@@ -2,7 +2,7 @@
 _pkgname=siji
 pkgname=${_pkgname}-git
 pkgver=r23.c691f20
-pkgrel=1
+pkgrel=2
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
 url='https://github.com/stark/siji'
