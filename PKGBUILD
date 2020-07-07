@@ -2,10 +2,10 @@
 
 pkgname=ultra_outliner
 pkgver=0.9.13b1493
-pkgrel=1
+pkgrel=2
 pkgdesc='Card-based outlining software for screenwriters, novelists and all story writers.'
 url='http://ultraoutliner.com'
-license=('LGPL3')
+license=('custom')
 arch=('x86_64')
 depends=('libgl' 'libutil-linux' 'libxi')
 source=(

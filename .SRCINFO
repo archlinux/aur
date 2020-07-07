@@ -1,10 +1,10 @@
 pkgbase = ultra_outliner
 	pkgdesc = Card-based outlining software for screenwriters, novelists and all story writers.
 	pkgver = 0.9.13b1493
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ultraoutliner.com
 	arch = x86_64
-	license = LGPL3
+	license = custom
 	depends = libgl
 	depends = libutil-linux
 	depends = libxi
