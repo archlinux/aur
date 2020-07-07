@@ -4,7 +4,7 @@
 
 pkgname=howl
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose and light-weight editor'
 arch=(x86_64)
 url='https://howl.io/'
