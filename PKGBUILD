@@ -3,8 +3,8 @@
 
 _pkgname=agate-sql
 pkgname=python-$_pkgname
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='Adds SQL read/write support to agate'
 arch=('any')
 url='https://agate-sql.readthedocs.org/'
@@ -24,7 +24,7 @@ makedepends=(
   )
 checkdepends=($optdepends)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/wireservice/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('15eed2f24972907213809033a5cb138e9299724a638229476e9bd791401c0461')
+sha256sums=('faa3b9bce2f691fd39fd0c41ffa0ff643a6e2f50eeadc8e6172483ce2963b341')
 
 build() {
     cd "$_pkgname-$pkgver"
