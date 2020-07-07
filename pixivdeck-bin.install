@@ -1,0 +1,7 @@
+post_install(){
+ln -sf /opt/PixivDeck/pixivdeck /usr/bin/pixivdeck
+}
+
+pre_remove(){
+rm /usr/bin/pixivdeck
+}

@@ -1,8 +1,9 @@
 pkgbase = pixivdeck-bin
 	pkgdesc = pixiv client for Desktop
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/akameco/PixivDeck
+	install = pixivdeck-bin.install
 	arch = x86_64
 	license = MIT
 	depends = gconf
@@ -13,8 +14,8 @@ pkgbase = pixivdeck-bin
 	conflicts = pixivdeck
 	source = https://github.com/akameco/PixivDeck/releases/download/v1.4.0/PixivDeck_1.4.0_amd64.deb
 	source = license
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 13d33debdc52fadd69b3d7f7a45b1a74
+	md5sums = faad6836e14feafcac439cfcad02ffbd
 
 pkgname = pixivdeck-bin
 
