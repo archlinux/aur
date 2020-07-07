@@ -1,7 +1,6 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-msgs-1
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/msgs"
@@ -12,10 +11,10 @@ makedepends=('ignition-cmake=0' 'ruby-ronn' 'doxygen')
 optdepends=()
 provides=('ignition-msgs=1')
 _name="ignition-msgs"
-source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('d5922f9f160aebc6fb1d6de32054e17c9493a6995ea0f1f3a56ba6448c3040ab')
+source=("https://bitbucket.org/osrf-migrated/ign-msgs/get/${_name}_${pkgver}.tar.bz2")
+sha256sums=('3f20453cc3fedeb414684bd0ed5ee042c30d19aa01cc9a4aad5685a1c6ded35d')
 
-_dir="ignitionrobotics-ign-msgs-9ba6a3e1c418"
+_dir="osrf-migrated-ign-msgs-9ba6a3e1c418"
 
 build() {
   cd "${srcdir}/${_dir}"
