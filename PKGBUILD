@@ -4,7 +4,7 @@
 pkgname=vim-align
 pkgver=37.43
 _scriptid='19633'
-pkgrel=4
+pkgrel=5
 pkgdesc='Lets you align lines using regular expressions'
 arch=('any')
 url='https://www.vim.org/scripts/script.php?script_id=294'
