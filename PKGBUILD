@@ -5,7 +5,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="ctypes.sh is a bash plugin that allows you to call routines in shared libraries from within bash"
 arch=('i686' 'x86_64')
-url="http://ctypes.sh/"
+url="https://github.com/taviso/ctypes.sh/wiki"
 license=('MIT')
 depends=('bash' 'libffi')
 source=("https://github.com/taviso/ctypes.sh/releases/download/v${pkgver}/ctypes-sh-${pkgver}.tar.gz")
@@ -24,5 +24,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
