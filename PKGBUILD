@@ -3,7 +3,7 @@
 
 pkgname=plasma5-applets-thermal-monitor
 pkgver=1.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD."
 arch=(any)
 url="https://github.com/kotelnik/plasma-applet-thermal-monitor"
