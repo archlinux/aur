@@ -1,4 +1,5 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Mitchell Renouf <mitchellarenouf@gmail.com>
 
 pkgname=libopenaptx-git
 pkgver=0.2.0.r1.g99b0921
