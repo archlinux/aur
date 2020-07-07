@@ -1,0 +1,13 @@
+pkgbase = cloak-obfuscation-git
+	pkgdesc = A censorship circumvention tool to evade detection against state adversaries
+	pkgver = v2.2.1.r0.g98a7b73
+	pkgrel = 1
+	url = https://github.com/cbeuw/Cloak/
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = cloak::git+https://github.com/cbeuw/Cloak.git
+	sha256sums = SKIP
+
+pkgname = cloak-obfuscation-git
+
