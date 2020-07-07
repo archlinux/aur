@@ -3,7 +3,7 @@
 
 pkgname=log4cpp
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations."
 arch=('x86_64')
 url="http://log4cpp.sourceforge.net/"
