@@ -1,0 +1,17 @@
+post_install() {
+	dkms build -m rtw88 -v ${1%%-*}
+	dkms install -m rtw88 -v ${1%%-*}
+	local version=${1%%-*}
+}
+
+pre_upgrade() {
+	pre_remove $2
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	dkms remove -m rtw88 -v ${1%%-*} --all
+}
