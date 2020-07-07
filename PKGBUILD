@@ -2,7 +2,7 @@
 
 pkgname=echoping
 pkgver=6.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="tests performance of a remote host by sending HTTP, TCP and UDP requests"
 arch=('x86_64')
 url="http://echoping.sourceforge.net/"
