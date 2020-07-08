@@ -9,7 +9,7 @@ pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.ubnt.com/'
 license=('custom')
-depends=('mongodb' 'java-runtime' 'fontconfig')
+depends=('mongodb' 'java-runtime-headless=8' 'fontconfig')
 provides=('unifi')
 source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         mongod

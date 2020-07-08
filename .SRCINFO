@@ -8,7 +8,7 @@ pkgbase = unifi-beta
 	arch = aarch64
 	license = custom
 	depends = mongodb
-	depends = java-runtime
+	depends = java-runtime-headless=8
 	depends = fontconfig
 	provides = unifi
 	source = unifi-beta-5.14.17.zip::https://www.ubnt.com/downloads/unifi/5.14.17-254554c8a7/UniFi.unix.zip
