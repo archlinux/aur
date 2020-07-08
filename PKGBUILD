@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre08
 _major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -34,7 +34,7 @@ makedepends=(
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python2-pycryptodomex' 'python2-pillow' 'python2-pybluez'
+  'python2-pycryptodomex' 'python2-pillow6' 'python2-pybluez'
   'python2-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland

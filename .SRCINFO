@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 18.8pre08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -37,7 +37,7 @@ pkgbase = kodi-devel
 	makedepends = mesa
 	makedepends = nasm
 	makedepends = python2-pycryptodomex
-	makedepends = python2-pillow
+	makedepends = python2-pillow6
 	makedepends = python2-pybluez
 	makedepends = python2-simplejson
 	makedepends = shairplay
