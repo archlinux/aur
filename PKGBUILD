@@ -14,6 +14,7 @@ PLUGINS=""
 # -------------------------------------------------------
 # If you want a super-minimal system, some of the following
 # dependencies can be disabled
+# Note: They are double-checked during compilation
 # Always required:
 depends=('libxft')
 # Required for plugins which copy to clip perminantly
@@ -24,16 +25,17 @@ depends+=('aspell')
 # Required for Xinerama (requires editing config.mk to disable)
 depends+=('libxinerama')
 
+makedepends=('rust' 'git' 'clang' 'sh')
+
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
-pkgver=5.2.3.r219.cbd3e2b
+pkgver=5.3.0.r227.009da15
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
 url="https://github.com/Shizcow/dmenu-rs"
 license=('GPL')
-makedepends=('rust' 'git' 'clang')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${_pkgbase}::git+${url}.git")
