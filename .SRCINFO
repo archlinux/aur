@@ -4,6 +4,7 @@ pkgbase = gog-stellaris-horizon-signal
 	pkgrel = 1
 	url = https://www.gog.com/game/stellaris_horizon_signal
 	arch = x86_64
+	groups = gog-stellaris-dlcs
 	license = custom
 	makedepends = unzip
 	makedepends = findutils
