@@ -63,7 +63,6 @@ options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
 _srcfil="${_pkgname}-${pkgver}-linux-x64.tar.gz"
 source=(
-  "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
   "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_srcfil}"
   "jconsole-${_jname}.desktop"
   "jmc-${_jname}.desktop"
@@ -74,7 +73,7 @@ source=(
 # from oracle-sqldeveloper
 if ! :; then
 DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
-source[1]="manual://${_srcfil}"
+source[0]="manual://${_srcfil}"
 if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
   XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD 2>/dev/null)" || :
   if [ -z "${XDG_DOWNLOAD_DIR}" ]; then
@@ -94,15 +93,13 @@ unset _srcfil
 unset XDG_DOWNLOAD_DIR
 fi
 
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'becc86d9870fe5f48ca30c520c4b7ab8'
+md5sums=('becc86d9870fe5f48ca30c520c4b7ab8'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '777a8d689e863275a647ae52cb30fd90022a3af268f34fc5b9867ce32f1b374e'
+sha256sums=('777a8d689e863275a647ae52cb30fd90022a3af268f34fc5b9867ce32f1b374e'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
@@ -113,10 +110,19 @@ PKGEXT='.pkg.tar.gz' # much faster than .xz
 ## Alternative mirror, if your local one is throttled:
 ## Posting new sites does no good. They get taken down by the admin
 ## from too much traffic or complaints from Oracle.
-#source[1]=???
+#source[0]=???
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
+
+# https://bugs.openjdk.java.net/browse/JDK-8170157
+# 2020-06-19 jce_policy-8.zip/UnlimitedJCEPolicyJDK8/README.txt
+if [ "${_minor}" -lt 161 ]; then
+  source+=("https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip")
+  _opt_JCE=1
+else
+  _opt_JCE=0
+fi
 
 package() {
   set -u
@@ -206,6 +212,7 @@ package() {
   mv 'COPYRIGHT' 'LICENSE' *.txt "${pkgdir}/usr/share/licenses/java${_major}-${_pkgname}/"
   ln -s "/usr/share/licenses/java${_major}-${_pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}"
 
+if [ "${_opt_JCE}" -ne 0 ]; then
   set +u; msg2 'Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files...'; set -u
   # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
   # things like 256-bit AES. Enabled by default in OpenJDK:
@@ -214,6 +221,7 @@ package() {
   install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}"/*.jar 'jre/lib/security/'
   install -Dm644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}/README.txt" \
                  "${pkgdir}/usr/share/doc/${_pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
+fi
 
   set +u; msg2 'Enabling copy+paste in unsigned applets...'; set -u
   # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
