@@ -1,6 +1,21 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.3.0...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.3.1...HEAD)
+
+
+<a name="2.3.1"></a>
+## [2.3.1](https://gitlab.com/langurmonkey/gaiasky/tree/2.3.0) (2020-07-08)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.3.0...2.3.1)
+
+### Bug Fixes
+- shader lint function 
+- additional check for http->https redirects 
+
+### Code Refactoring
+- update some URLs from http to https 
+
+### Features
+- hot reload of galaxy models 
 
 
 <a name="2.3.0"></a>
