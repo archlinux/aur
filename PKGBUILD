@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre08
 _major=18.7.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -250,7 +250,7 @@ package_kodi-devel() {
   pkgdesc="Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodomex'
-    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo'
+    'python2-pillow6' 'python2-simplejson' 'xorg-xdpyinfo'
     'KODI-BIN'
   )
   optdepends=(

@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 18.8pre08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -111,7 +111,7 @@ pkgname = kodi-devel
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = python2-pycryptodomex
-	depends = python2-pillow
+	depends = python2-pillow6
 	depends = python2-simplejson
 	depends = xorg-xdpyinfo
 	depends = KODI-BIN
