@@ -15,6 +15,8 @@ makedepends=(
 )
 source=("git://github.com/onaio/sre-tooling.git")
 sha1sums=('SKIP')
+provides=("sre-tooling")
+conflicts=("sre-tooling")
 
 build() {
   export GOPATH="$srcdir"/gopath
