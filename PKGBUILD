@@ -1,11 +1,11 @@
 # Maintainer: Maarten Baert <maarten-baert@hotmail.com>
 
 pkgname=lib32-simplescreenrecorder-git
-pkgver=0.4.0.r0.ge7b36d5
+pkgver=0.4.2.r11.g7f26bc7
 pkgrel=1
 pkgdesc="Record 32-bit OpenGL applications with SimpleScreenRecorder. (Git version)"
 arch=("x86_64")
-url="http://www.maartenbaert.be/simplescreenrecorder/"
+url="https://www.maartenbaert.be/simplescreenrecorder/"
 license=("GPL3")
 depends=("lib32-libgl" "lib32-glu" "lib32-libx11" "lib32-libxext" "lib32-libxfixes")
 makedepends=("git" "gcc-multilib" "cmake")
