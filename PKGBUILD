@@ -1,14 +1,14 @@
 # Maintainer: Viktor Schneider <info[at]vjs[dot]io>
 pkgname=skyr-url-git
-_commit=4961a30
-pkgver=4.$_commit
+_commit=b72d22a
+pkgver=5.$_commit
 pkgrel=1
 pkgdesc="A C++ library that implements the URL WhatWG specification"
 arch=('i686' 'x86_64')
 url="https://github.com/glynos/url"
 license=('Boost')
 depends=("tl-expected")
-makedepends=('cmake>=3.8.0' 'catch2' 'git' 'nlohmann-json')
+makedepends=('cmake>=3.8.0' 'catch2' 'git' 'nlohmann-json' 'fmt')
 source=("git+https://github.com/glynos/url.git")
 md5sums=("SKIP")
 
