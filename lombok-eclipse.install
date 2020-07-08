@@ -1,19 +1,17 @@
 # Colored makepkg-like functions by Det
-msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
-}
-
-note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
-}
 
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
 post_install() {
-    java -jar /usr/lib/lombok-common/lombok.jar install /usr/lib/eclipse || exit 1
+    java -jar /usr/lib/lombok-common/lombok.jar install /usr/lib/eclipse/ && \
+        ln -sf /usr/lib/lombok-common/lombok.jar /usr/lib/eclipse/lombok.jar || exit 1
     note "You must add lombok.jar or lombok-api.jar to the build path of each Lombok-dependent project."
 }
 
@@ -22,6 +20,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-    java -jar /usr/lib/lombok-common/lombok.jar uninstall /usr/lib/eclipse || exit 1
+    java -jar /usr/lib/lombok-common/lombok.jar uninstall /usr/lib/eclipse/ || exit 1
 }
 
