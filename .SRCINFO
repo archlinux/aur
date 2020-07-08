@@ -1,6 +1,6 @@
 pkgbase = ananicy
-	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
-	pkgver = 2.1.0
+	pkgdesc = Another auto nice daemon, with community rules support
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/Ananicy.git
 	install = ananicy.install
@@ -13,7 +13,7 @@ pkgbase = ananicy
 	depends = schedtool
 	conflicts = ananicy-git
 	backup = etc/ananicy.d/ananicy.conf
-	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#tag=2.1.0
+	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#tag=2.2.0
 	md5sums = SKIP
 
 pkgname = ananicy
