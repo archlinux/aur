@@ -1,7 +1,7 @@
 pkgname=python-django-colorfield
 _name=${pkgname#python-}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple color field for models with a nice color-picker in the admin'
 arch=('any')
 url=https://github.com/fabiocaccamo/django-colorfield
