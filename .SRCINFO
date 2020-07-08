@@ -5,6 +5,7 @@ pkgbase = netron-bin
 	url = https://lutzroeder.github.io/netron
 	arch = x86_64
 	license = MIT
+	makedepends = gendesk
 	depends = zlib
 	provides = netron
 	noextract = netron-bin-4.3.6.AppImage

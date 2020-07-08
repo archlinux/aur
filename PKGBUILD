@@ -9,6 +9,7 @@ url='https://lutzroeder.github.io/netron'
 license=('MIT')
 provides=('netron')
 depends=('zlib')
+makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
