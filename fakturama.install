@@ -1,0 +1,18 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	# Cleanup features and plugins as mentioned here:
+	# https://www.fakturama.info/community/postid/15198/
+	echo "Removing old files that were created by a prior fakturama installation"
+	rm -rf usr/share/fakturama2/features
+	rm -rf usr/share/fakturama2/plugins
+
+	echo "You are upgrading from $2 to $1"
+	if [ $2 == "2.1.0.e-2" ]
+	then
+		# Cleanup permission mess from 2.1.0.e-2
+		echo "  --> fix permissions from $2"
+		rm -rf usr/share/fakturama2/*
+		chmod 755 usr/share/fakturama2
+	fi
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fakturama2 (clean start)
+Name[de]=Fakturama2 ("clean"-Start)
+Comment=Invoicing Software - http://www.fakturama.info
+Comment[de]=Programm - http://www.fakturama.info
+Exec=/usr/share/fakturama2/Fakturama -clean
+Icon=fakturama2.xpm
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=false
