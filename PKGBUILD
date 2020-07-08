@@ -13,8 +13,8 @@ pkgname=(
   'xorg-server-common-hidpi-git'
   'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r642.g9890e9126
-pkgrel=2
+pkgver=1.20.0.r680.g5188603ff
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -28,11 +28,11 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         xvfb-run
         xvfb-run.1
-        https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432.diff)
+        xwlScaling.diff)
 sha256sums=('SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'SKIP')
+            '0c9ebc4ffb637a62834f7293c3a0c95e9056dc78d66d5358f6e3af639d1fb978')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -43,7 +43,7 @@ pkgver() {
 prepare() {
   cd "${_pkgbase}"
 
-  patch -Np1 -i ../432.diff
+  patch -Np1 -i ../xwlScaling.diff
 
   cd ..
 
