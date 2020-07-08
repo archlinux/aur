@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='https://wiki.ros.org/roswtf'
 
 pkgname='ros-noetic-roswtf'
-pkgver='1.15.4'
+pkgver='1.15.7'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -37,7 +37,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/utilities/roswtf"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('d5c96a81e0c8554b77666bca5dcc68e03083a761a117038ff9b65f9643751c9e')
+sha256sums=('80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4')
 
 build() {
 	# Use ROS environment variables.
