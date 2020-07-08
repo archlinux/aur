@@ -72,6 +72,7 @@ md5sums=('2afa1c823912d97baa5e363b205ba8ec'
 sha256sums=('92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
+PKGEXT='.pkg.tar.gz' # much faster than .xz
 ## Alternative mirror, if your local one is throttled:
 #source[1]=???
 
@@ -82,6 +83,9 @@ DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 # 2020-06-19 jce_policy-8.zip/UnlimitedJCEPolicyJDK8/README.txt
 if [ "${_minor}" -lt 161 ]; then
   source+=("https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip")
+  _opt_JCE=1
+else
+  _opt_JCE=0
 fi
 
 if ! :; then
@@ -164,6 +168,7 @@ package() {
   mv 'COPYRIGHT' 'LICENSE' 'README' *.txt "${pkgdir}/usr/share/licenses/java${_major}-${_pkgname}/"
   ln -s "/usr/share/licenses/java${_major}-${_pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}"
 
+if [ "${_opt_JCE}" -ne 0 ]; then
   set +u; msg2 'Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files...'; set -u
   # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
   # things like 256-bit AES. Enabled by default in OpenJDK:
@@ -172,6 +177,7 @@ package() {
   install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}"/*.jar 'lib/security/'
   install -Dm644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}/README.txt" \
                  "${pkgdir}/usr/share/doc/${_pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
+fi
 
   set +u; msg2 'Enabling copy+paste in unsigned applets...'; set -u
   # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
