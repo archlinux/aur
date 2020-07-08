@@ -4,7 +4,7 @@ _pkgname=rtorrent
 pkgname=rtorrent-ps
 _pkgver=0.9.6
 pkgver=1.1.r54.ga787dd9
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL')
@@ -38,6 +38,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
         'ps-view-filter-by_all.patch'
         'pyroscope.patch'
         'rt-base-cppunit-pkgconfig.patch'
+        'rt-cxx11-compatibility.patch'
         'ui_pyroscope.cc'
         'ui_pyroscope.h'
         'ui_pyroscope.patch')
@@ -67,6 +68,7 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          '26faff00b306b6ef276a7d9e6d964994'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          'd0a956f0eb4b53b66d83df2a8a4d16dc'
+         'cf14decf96f7df8286007067387d4174'
          '39e18c251a6049b60c2c28b1494eff2a'
          '265c4ddeab5745a93c360a920a375dfe'
          '0a2bbaf74c7160ba33876dcc2f050f14')
@@ -80,7 +82,7 @@ prepare() {
   grep "AC_DEFINE.*API_VERSION" configure.ac >/dev/null || sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(API_VERSION, 0, api version):" configure.ac
 
   RT_BASE_PATCHES=("$srcdir"/rt-base-cppunit-pkgconfig.patch)
-  RT_PATCHES=()
+  RT_PATCHES=("$srcdir"/rt-cxx11-compatibility.patch)
 
   # Patch rTorrent
   for corepatch in "${RT_BASE_PATCHES[@]}" \
