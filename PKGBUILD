@@ -1,5 +1,5 @@
 pkgname=bullet3-git
-pkgver=r3173.4100db0
+pkgver=r8597.73fffd144
 pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library for games and animation"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ build() {
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILD_BULLET3=ON \
-  -DBUILD_BULLET2_DEMOS=OFF \
-  -DBUILD_CPU_DEMOS=OFF \
+  -DBUILD_BULLET2_DEMOS=ON \
+  -DBUILD_CPU_DEMOS=ON \
   -DBUILD_UNIT_TESTS=OFF \
   -DINSTALL_LIBS=ON
 
