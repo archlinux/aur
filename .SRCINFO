@@ -1,0 +1,16 @@
+pkgbase = python2-pygal
+	pkgdesc = pygal is a dynamic SVG charting library written in python
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.pygal.org/en/stable/
+	arch = any
+	license = LGPL3
+	makedepends = python2-setuptools
+	depends = python2
+	conflicts = python2-pygal
+	conflicts = python2-pygal-git
+	source = https://github.com/Kozea/pygal/archive/2.4.0.tar.gz
+	sha256sums = 16d29d72abc2e2bd5e296a68e62b5b98d797385295084eb7853fd4e221b471f7
+
+pkgname = python2-pygal
+
