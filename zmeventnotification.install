@@ -1,0 +1,27 @@
+post_install() {
+    echo
+    echo "   ZoneMinder Event Notification Server has been installed but some additional steps are required:"
+    echo
+    echo "1) If your ZoneMinder instance is not located at http://localhost:8095, or if you have locked it behind"
+    echo "   a password, you should make sure to edit /etc/zoneminder/secrets.ini and fill in any required info."
+    echo
+    echo "   Better yet, because that file contains various useful tidbits, it wouldn't hurt to check it out anyway"
+    echo "   and become familiar with it."
+    echo
+    echo "2) You should also take a look at /etc/zoneminder/objectconfig.ini and /etc/zoneminder/zmeventnotification.ini"
+    echo "   which contain the settings for the OpenCV object recognition algorithms and for the server itself, respectively."
+    echo
+    echo "   Especially the former, objectconfig.ini, is the go-to file if you want to set up your cameras so they can"
+    echo "   utilize OpenCV and take advantage of its superb object recognition capabilities."
+    echo
+    echo "3) After you're done with the previous steps, you are highly encouraged to verify that the server has been"
+    echo "   properly installed and configured by first launching it once manually. To do so, run the following:"
+    echo
+    echo "   sudo -u http /usr/bin/zmeventnotification.pl"
+    echo
+    echo
+    echo "   For more detailed info you should read the official documentation:"
+    echo
+    echo "   https://zmeventnotification.readthedocs.io/en/latest/"
+    echo
+}

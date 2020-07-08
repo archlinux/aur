@@ -1,0 +1,45 @@
+pkgbase = zmeventnotification
+	pkgdesc = A Machine Learning powered, Secure Websocket & MQTT based event notification server for ZoneMinder
+	pkgver = 5.15.6
+	pkgrel = 1
+	url = https://github.com/pliablepixels/zmeventnotification
+	install = zmeventnotification.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl-config-inifiles
+	depends = perl-crypt-eksblowfish
+	depends = perl-json
+	depends = perl-lwp-protocol-https
+	depends = perl-net-mqtt-simple
+	depends = perl-net-websocket-server
+	depends = python-face_recognition
+	depends = python-gifsicle
+	depends = python-future
+	depends = python-imageio
+	depends = python-imageio-ffmpeg
+	depends = python-imutils
+	depends = python-opencv-python
+	depends = python-pyzm-git
+	depends = python-requests
+	depends = python-scikit-learn
+	depends = python-shapely
+	conflicts = zmeventnotification-git
+	backup = etc/zoneminder/zmeventnotification.ini
+	backup = etc/zoneminder/secrets.ini
+	backup = etc/zoneminder/objectconfig.ini
+	source = git+https://github.com/pliablepixels/zmeventnotification.git#tag=v5.15.6
+	source = https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
+	source = https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
+	source = https://pjreddie.com/media/files/yolov3.weights
+	source = https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.cfg
+	source = https://pjreddie.com/media/files/yolov3-tiny.weights
+	sha256sums = SKIP
+	sha256sums = 22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953
+	sha256sums = 634a1132eb33f8091d60f2c346ababe8b905ae08387037aed883953b7329af84
+	sha256sums = 523e4e69e1d015393a1b0a441cef1d9c7659e3eb2d7e15f793f060a21b32f297
+	sha256sums = 84eb7a675ef87c906019ff5a6e0effe275d175adb75100dcb47f0727917dc2c7
+	sha256sums = dccea06f59b781ec1234ddf8d1e94b9519a97f4245748a7d4db75d5b7080a42c
+
+pkgname = zmeventnotification
+
