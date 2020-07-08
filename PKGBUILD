@@ -1,6 +1,7 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
+# Maintainer: Antoine Viallon <antoine+aur@lesviallon.fr>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=scas
-pkgver=0.4.1
+pkgver=0.4.5
 pkgrel=1
 license=('MIT')
 pkgdesc="SirCmpwn's assembler and linker"
@@ -8,7 +9,7 @@ makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/scas'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8f48f4565cf5c2fe6fedbf7e6e577b4c46571932c2613da0419bca4408b75106')
+sha256sums=('0512e9de9737e9800e779cc0a904806a7348b4ff0b8a1972775ca6b50e6d4e90')
 
 build() {
 	cd "$pkgname-$pkgver"
