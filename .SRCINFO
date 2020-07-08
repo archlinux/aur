@@ -1,7 +1,7 @@
 pkgbase = authy-snap
 	pkgdesc = Two factor authentication desktop application
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://authy.com/
 	arch = x86_64
 	license = unknown

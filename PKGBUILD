@@ -2,7 +2,7 @@
 
 pkgname=authy-snap
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Two factor authentication desktop application"
 arch=('x86_64')
 url='https://authy.com/'
@@ -30,7 +30,10 @@ package() {
     sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "${pkgdir}/opt/${pkgname}/meta/gui/authy.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/authy.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/icon.png" "${pkgdir}/usr/share/pixmaps/authy.png"
-    
+
+    # Clean up unnecessary files
+    rm -rf "$pkgdir/opt/$pkgname"/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
+
     # Symlink binary to /usr/bin
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/authy" "${pkgdir}/usr/bin"
