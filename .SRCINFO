@@ -1,0 +1,34 @@
+pkgbase = scipoptsuite-bin
+	pkgdesc = Toolbox for generating and solving optimization problems
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://scip.zib.de
+	arch = x86_64
+	license = LGPL3
+	license = custom:ZIB Academic License
+	makedepends = tar
+	depends = gmp
+	depends = tbb
+	depends = zlib
+	depends = gmp
+	optdepends = coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT
+	optdepends = gsl: GNU Scientific Library
+	optdepends = cliquer: C routines for finding cliques in an arbitrary weighted graph
+	optdepends = hmetis: A set of programs for partitioning hypergraphs
+	optdepends = criterion: A cross-platform C and C++ unit testing framework
+	provides = scipoptsuite
+	provides = scip=7.0.1
+	provides = soplex=5.0.1
+	provides = zimpl=3.4.0
+	provides = gcg=3.0.3
+	provides = gmp=6.1.2
+	provides = papilo=1.0.1
+	replaces = ziboptsuite
+	options = strip
+	source = local:///SCIPOptSuite-7.0.1-Linux.deb
+	source = LICENSE
+	sha256sums = 5effc9cdfdbaee25e4130bb39950db75be40d9fbf32834b5bd2c07b267d386fc
+	sha256sums = SKIP
+
+pkgname = scipoptsuite-bin
+
