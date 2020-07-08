@@ -2,13 +2,14 @@
 
 pkgname=python-pyscipopt
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
 url='http://scip.zib.de'
 license=('MIT')
 depends=('python' 'scipoptsuite')
 makedepends=('cython' 'python-setuptools')
+conflicts=('python-pyscipopt-git')
 source=("https://github.com/SCIP-Interfaces/PySCIPOpt/archive/v${pkgver}.tar.gz")
 
 package() {
