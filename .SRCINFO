@@ -8,7 +8,7 @@ pkgbase = python-django-colorfield
 	makedepends = python-setuptools
 	depends = python-django
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/django-colorfield/django-colorfield-0.3.2.tar.gz
 	sha256sums = e435ec31712f5e8b955cc7633aef1e49cc3b409c21dfcefeb2f6ef0e1cb69533
 
 pkgname = python-django-colorfield
