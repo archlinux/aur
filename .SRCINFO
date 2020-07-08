@@ -1,0 +1,18 @@
+pkgbase = python-alluvium-git
+	pkgdesc = Generate visual overlays from your i3 bindings
+	pkgver = 20200612.r1_g353d046
+	pkgrel = 1
+	url = https://github.com/cqql/alluvium
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = alluvium
+	conflicts = alluvium
+	source = alluvium::git://github.com/cqql/alluvium#branch=master
+	sha256sums = SKIP
+
+pkgname = python-alluvium-git
+
