@@ -3,14 +3,14 @@
 
 pkgname=vice-svn-sdl2
 _pkgname=vice-svn
-pkgver=r38079
+pkgver=r38086
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
 depends=('giflib' 'lame' 'libjpeg' 'libpng' 'libxrandr' 'libnet' 'libpcap' 'xdialog')
-makedepends=('pkg-config' 'xa' 'svn')
+makedepends=('pkg-config' 'xa' 'svn' 'texlive-core')
 optdepends=('pulseaudio' 'pulseaudio-alsa' 'alsa-lib')
 provides=('vice')
 replaces=('vice')
@@ -23,7 +23,6 @@ pkgver() {
 }
 
 build() {
-# Docs are disabled until further update.
     cd "${_pkgname}/vice"
     ./autogen.sh
     ./configure \
@@ -31,8 +30,7 @@ build() {
     --libdir=/usr/lib \
     --enable-external-ffmpeg \
     --enable-x64 \
-    --enable-sdlui2 \
-    --disable-pdf-docs
+    --enable-sdlui2 
     make
 }
 
