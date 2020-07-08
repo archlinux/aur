@@ -1,8 +1,8 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Maintainer:  Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Maintainer:  Linaro <maxim.anisimov.ua@gmail.com>
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
-# Contributor: Linaro <maxim.anisimov.ua@gmail.com>
 
 pkgname='cnrdrvcups-sfp'
 
