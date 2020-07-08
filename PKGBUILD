@@ -12,7 +12,7 @@ depends=('db' 'bison' 'flex' 'squid')
 optdepends=('openldap'
             'squid>=3.4.0')
 backup=('etc/squid/squidGuard.conf')
-options=('!strip' '!emptydirs')
+options=('!strip' 'emptydirs')
 source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$pkgver-1/squidguard_$pkgver.orig.tar.gz"
 	"squidguard-1.6.0-gcc10.patch")
 sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e'

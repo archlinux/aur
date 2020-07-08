@@ -12,7 +12,7 @@ pkgbase = squidguard
 	optdepends = openldap
 	optdepends = squid>=3.4.0
 	options = !strip
-	options = !emptydirs
+	options = emptydirs
 	backup = etc/squid/squidGuard.conf
 	source = https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/1.6.0-1/squidguard_1.6.0.orig.tar.gz
 	source = squidguard-1.6.0-gcc10.patch
