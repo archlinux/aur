@@ -1,27 +1,26 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 pkgname=destinationsol
-pkgrel=2
-pkgver=2.0.0beta
+pkgrel=1
+pkgver=2.0.0
 pkgdesc="2D Space Arcade/RPG with Planets"
 arch=('i686' 'x86_64')
 url="https://github.com/MovingBlocks/DestinationSol"
 license=('Apache V2')
 depends=('java-runtime-common')
-makedepends=('unzip' 'icoutils')
+makedepends=('icoutils')
+source=("$url/releases/download/v$pkgver/DestinationSol.zip")
+sha1sums=('4d704a882eed7dec9f520d8ec5893985c91809bd')
 
 build() {
-  mkdir "$srcdir/DestinationSol"
-  cd "$srcdir"/DestinationSol
-  msg "Grabbing files...."
-  curl https://github.com/MovingBlocks/DestinationSol/releases/download/v2.0.0-beta/DestinationSol.zip -L -o DestinationSol.zip
-  unzip DestinationSol.zip
-  wrestool -x -t 14 "$srcdir/DestinationSol/sol.exe" > "$srcdir/DestinationSol/icon.ico"
+  wrestool -x -t 14 sol.exe > icon.ico
+  rm -rf lwjre lwjreOSX
+  rm -f sol.exe sol*.sh
+  rm DestinationSol.zip
 }
 
 package() {
-  cd "$pkgdir"
-install -m777 -d "$pkgdir/opt/DestinationSol"
-  cp -r "$srcdir/DestinationSol/" "$pkgdir/opt/"
+  install -m777 -d "$pkgdir/opt/DestinationSol"
+  mv * "$pkgdir/opt/DestinationSol/"
 
   mkdir -p "$pkgdir/usr/share/applications/"
   mkdir -p "$pkgdir/usr/bin/"

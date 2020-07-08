@@ -1,14 +1,15 @@
 pkgbase = destinationsol
 	pkgdesc = 2D Space Arcade/RPG with Planets
-	pkgver = 2.0.0beta
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/MovingBlocks/DestinationSol
 	arch = i686
 	arch = x86_64
 	license = Apache V2
-	makedepends = unzip
 	makedepends = icoutils
 	depends = java-runtime-common
+	source = https://github.com/MovingBlocks/DestinationSol/releases/download/v2.0.0/DestinationSol.zip
+	sha1sums = 4d704a882eed7dec9f520d8ec5893985c91809bd
 
 pkgname = destinationsol
 
