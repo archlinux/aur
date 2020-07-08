@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-django' 'python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e435ec31712f5e8b955cc7633aef1e49cc3b409c21dfcefeb2f6ef0e1cb69533')
+sha256sums=('f5dde281f4db8871eb5845aee614b4f1a47e7fd5b20476238793f519cd7bdf41')
 
 build(){
   cd "${srcdir}/${_name}-${pkgver}"
