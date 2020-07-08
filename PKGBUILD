@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('tcsh')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tgz::https://sourceforge.net/projects/bibutils/files/bibutils_${pkgver}_src.tgz/download")
-sha256sums=('SKIP')
+sha256sums=('8656c042fa1371443aa4e1a58bcab5fcea0b236eb39182e4004fc348ce56e496')
 
 build() {
   cd "${pkgname}_${pkgver}"
