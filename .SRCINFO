@@ -1,8 +1,8 @@
 pkgbase = dwm-kian-git
 	pkgdesc = A customized version of dwm by Kian Kasad
 	pkgver = 6.2
-	pkgrel = 2
-	url = https://gitlab.com/kdkasad/dwm.git
+	pkgrel = 3
+	url = https://git.kasad.com/dwm.git
 	arch = any
 	license = MIT
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = dwm-kian-git
 	optdepends = libxft-bgra: for emojis in statusbar
 	provides = dwm
 	conflicts = dwm
-	source = git+https://gitlab.com/kdkasad/dwm.git
+	source = git+https://git.kasad.com/dwm.git
 	md5sums = SKIP
 
 pkgname = dwm-kian-git

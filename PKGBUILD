@@ -1,24 +1,25 @@
 # Maintainer: Kian Kasad <kdkasad@gmail.com>
+
 pkgname=dwm-kian-git
-pkgver=6.2
-_pkgver=6.2
-pkgrel=2
+pkgver=v6.2.r1.deed7a6
+pkgrel=1
 pkgdesc="A customized version of dwm by Kian Kasad"
 arch=('any')
-url="https://gitlab.com/kdkasad/dwm.git"
+url="https://git.kasad.com/dwm.git"
 license=('MIT')
 depends=('libx11' 'libxinerama' 'freetype2')
 makedepends=('git')
 optdepends=('libxft-bgra: for emojis in statusbar')
 provides=('dwm')
 conflicts=('dwm')
-install=
 source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-kian-git}"
-	printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+	# print version using latest tag/commit
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
