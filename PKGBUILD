@@ -2,8 +2,8 @@
 #			Jake <aur@ja-ke.tech>
 
 pkgname=next
-pkgver=1.640
-_download_id='gg'
+pkgver=1.659
+_download_id='8KE5kcTR'
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('x86_64')

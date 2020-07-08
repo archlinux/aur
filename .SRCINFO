@@ -1,6 +1,6 @@
 pkgbase = next
 	pkgdesc = CGM rc Heli Flight Simulator
-	pkgver = 1.640
+	pkgver = 1.659
 	pkgrel = 1
 	url = http://www.rc-aerobatics.eu/index_e.html
 	install = next.install
@@ -9,10 +9,10 @@ pkgbase = next
 	optdepends = joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver
 	optdepends = controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG
 	optdepends = antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG
-	source = next-1.640.zip::https://www.cgm-online.com/cgi-bin/rc_sim_downloadcount.pl?name=next_linux
+	source = next-1.659.zip::https://www.magentacloud.de/api/sharelink/download?id=8KE5kcTR
 	source = next.desktop
 	source = next.sh
-	sha512sums = 781ca3a0678d1ae8e9585cf1adf4f8cba1c725d5f3c4c2447c8f80539f12f8e5b34b9b37a12acf68c1ff0d4875a5ab97327ed25c506665e5e9a33afdbecb2982
+	sha512sums = 306f1ab369640502d0b393bb1fb53571ef02c2928f9184956a8cec0fe393a4ec4ec5a22b766ac17a38256151aa5e0c50855b520f79641827aa3271c676e5f21b
 	sha512sums = 73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d
 	sha512sums = c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669
 
