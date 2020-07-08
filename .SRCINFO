@@ -1,0 +1,15 @@
+pkgbase = btnx-config-git
+	pkgdesc = A configuration tool for btnx (Button Extension)
+	pkgver = r30.0b30428
+	pkgrel = 1
+	url = https://github.com/cdobrich/btnx-config
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libglade
+	provides = btnx-config
+	source = btnx-config::git+https://github.com/cdobrich/btnx-config
+	sha256sums = SKIP
+
+pkgname = btnx-config-git
+
