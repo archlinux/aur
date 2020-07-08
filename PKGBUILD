@@ -4,12 +4,12 @@ pkgver=r61.6003b8d
 pkgrel=2
 pkgdesc="A universal soundboard in Qt for linux using pulseaudio modules"
 arch=('any')
-url="https://github.com/D3S0X/Soundux"
+url="https://github.com/D3SOX/Soundux"
 license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras')
 makedepends=('qt5-tools' 'git' 'qpm-bin')
 optdepends=('mpg123: mp3 support')
-source=("git+https://github.com/D3S0X/Soundux.git" "soundux.desktop")
+source=("git+https://github.com/D3SOX/Soundux.git" "soundux.desktop")
 sha256sums=('SKIP' '5b8b295131d894e8b7fb8931a7b1051bbae2c8ad2cb8ad56e65007ae33c6d0c9')
 
 pkgver() {
