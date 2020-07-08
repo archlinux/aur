@@ -8,7 +8,7 @@ url=https://github.com/fabiocaccamo/django-colorfield
 license=('MIT')
 depends=('python-django' 'python')
 makedepends=('python-setuptools')
-source=('https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('e435ec31712f5e8b955cc7633aef1e49cc3b409c21dfcefeb2f6ef0e1cb69533')
 
 build(){
