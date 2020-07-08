@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-pyscipopt
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
 url='http://scip.zib.de'
@@ -16,4 +16,4 @@ package() {
 	python setup.py install --root=${pkgdir} --optimize=1
 }
 
-md5sums=('fb5e95555a765566cfc8b9ebe7854074')
+md5sums=('413aa9cd8b29f561948632f8c7a4ecc7')
