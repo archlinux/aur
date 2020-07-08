@@ -22,4 +22,6 @@ build() {
 package() {
   cd unidecode
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cp "$pkgdir"/usr/bin/unidecode "$pkgdir"/usr/bin/python2-unidecode
+  rm "$pkgdir"/usr/bin/unidecode
 }
