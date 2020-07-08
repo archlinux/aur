@@ -7,7 +7,6 @@ pkgbase = ttf-spectral
 	license = Open Font License
 	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = https://github.com/productiontype/Spectral/raw/748733e3761fc7985ca9c473996ed121954debf8/fonts/desktop/Spectral-LightItalic.ttf
 	source = https://github.com/productiontype/Spectral/raw/748733e3761fc7985ca9c473996ed121954debf8/fonts/desktop/Spectral-ExtraLightItalic.ttf
 	source = https://github.com/productiontype/Spectral/raw/748733e3761fc7985ca9c473996ed121954debf8/fonts/desktop/Spectral-ExtraLight.ttf
