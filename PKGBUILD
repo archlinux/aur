@@ -4,13 +4,13 @@
 pkgname=gnvim
 url="https://github.com/vhakulinen/gnvim"
 pkgdesc="GUI for neovim, without any web bloat"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 depends=('neovim' 'gtk3' 'webkit2gtk')
 makedepends=('cargo' 'rust' 'git')
-source=("gnvim-${pkgver}::git+https://github.com/vhakulinen/gnvim.git#tag=${pkgver}")
+source=("gnvim-${pkgver}::git+https://github.com/vhakulinen/gnvim.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 prepare() {
@@ -25,7 +25,7 @@ build() {
 
 check() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    cargo test
+    cargo test --release --locked
 }
 
 package() {
