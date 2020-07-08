@@ -5,7 +5,7 @@
 
 # Configuration.
 _fragment=${FRAGMENT:-#branch=master}
-[[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
+[[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
