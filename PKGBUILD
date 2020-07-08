@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=steam-tweaks
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Various tools for tweaking Steam/game settings"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/gamer-os/steam-tweaks"
 license=('MIT')
 depends=('python' 'python-yaml' 'python-vdf' 'pycrc' 'python-inotify-simple')
 source=("https://github.com/gamer-os/steam-tweaks/archive/$pkgver.tar.gz")
-md5sums=('f32199fdc884c8b78822ca52c3dd2895')
+md5sums=('a341131b8e56d1d9804362db4eac9325')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
