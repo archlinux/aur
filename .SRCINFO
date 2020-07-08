@@ -1,8 +1,8 @@
 pkgbase = rasdaemon
 	pkgdesc = Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog
 	pkgver = 0.6.5
-	pkgrel = 3
-	url = https://www.infradead.org/~mchehab/rasdaemon/
+	pkgrel = 4
+	url = https://pagure.io/rasdaemon
 	arch = i686
 	arch = x86_64
 	license = GPL2
