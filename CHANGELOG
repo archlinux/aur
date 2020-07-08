@@ -1,5 +1,18 @@
 2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
 
+	* 1.4.2-1
+	- Added interpreter mode
+	- Added list status indication in list view (colors + flags ('f') listview column)
+	- Added task sorting priority switching (basically, allows to sort by due, tag, title and desciption)
+	- Added task ids ("eid" meta property)
+	- Added on_edited events for tasks
+	- Added command return values (%ret%)
+	- Command interpreter now replaces environment variables with their values and ~/ with $HOME value
+	- Made executing a system command return its stdout output
+	- Added "load" command
+	- Added "pure" output mode
+	- Added WS_IGNORE to "mode" cvar
+
 	* 1.4.1-2
 	- Fix mistake in default config that made "gg" and "G" not working. It was
 	present since 1.4.0-1, probably. Shame, shame, shame on me.
