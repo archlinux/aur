@@ -2,7 +2,7 @@
 
 post_install() {
     systemctl daemon-reload
-
+	xhost +
     ECHOLEN=$(echo -e|awk '{print length($0)}')
     if [ ${ECHOLEN} = '0' ]
     then
@@ -20,7 +20,7 @@ post_install() {
 
 post_upgrade() {
     systemctl daemon-reload
-    
+	xhost +
     ECHOLEN=$(echo -e|awk '{print length($0)}')
     if [ ${ECHOLEN} = '0' ]
     then
@@ -43,4 +43,5 @@ pre_remove() {
 
 post_remove() {
     systemctl daemon-reload
+	xhost -
 }
