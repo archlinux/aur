@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 pkgver=83.0.4103.116
-pkgrel=2
+pkgrel=3
 _pkgname=chromium
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
