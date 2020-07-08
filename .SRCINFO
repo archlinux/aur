@@ -1,11 +1,11 @@
 pkgbase = white_dune
 	pkgdesc = white_dune X3D/VRML97 tool, 3D modeller and animation-tool
-	pkgver = 1.902
+	pkgver = 1.908
 	pkgrel = 1
 	url = http://wdune.ourproject.org/
 	arch = x64_86
 	license = GPL
-	makedepends = gcc
+	makedepends = clang
 	makedepends = fakeroot
 	makedepends = glu
 	makedepends = mesa
@@ -48,8 +48,8 @@ pkgbase = white_dune
 	depends = xorg-fonts-misc
 	depends = xorg-fonts-alias-misc
 	depends = povray
-	source = ftp://ftp.ourproject.org/pub/wdune/wdune-1.902.tar.bz2
-	md5sums = c6755993071efe5472107519b955ae61
+	source = ftp://ftp.ourproject.org/pub/wdune/wdune-1.908.tar.bz2
+	md5sums = 30c754ef03858b0152001d16c4527c9a
 
 pkgname = white_dune
 
