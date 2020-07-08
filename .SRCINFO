@@ -1,18 +1,14 @@
 pkgbase = python-chompack
 	pkgdesc = A Python library for chordal matrix computations.
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://chompack.readthedocs.io
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-cvxopt
 	source = https://github.com/cvxopt/chompack/archive/v2.3.3.tar.gz
 	md5sums = ece263e4a907cb45b713458bd18d6dcc
 
 pkgname = python-chompack
-	depends = python-cvxopt
-
-pkgname = python2-chompack
-	depends = python2-cvxopt
 
