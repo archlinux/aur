@@ -1,24 +1,17 @@
 pkgbase = python-pyscipopt-git
-	pkgdesc = A Python Interface to the SCIP Optimization Suite.
-	pkgver = 3.0.0.r10.g9c7c229
+	pkgdesc = A Python Interface to the SCIP Optimization Suite. Git version.
+	pkgver = 3.0.1.r1.g61eb1dd
 	pkgrel = 1
 	url = http://scip.zib.de
 	arch = any
 	license = MIT
 	makedepends = cython
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	depends = scipoptsuite
 	conflicts = python-pyscipopt
-	conflicts = python2-pyscipopt
 	source = python-pyscipopt-git::git+https://github.com/SCIP-Interfaces/PySCIPOpt.git
 	md5sums = SKIP
 
 pkgname = python-pyscipopt-git
-	depends = scipoptsuite
-	depends = python
-
-pkgname = python2-pyscipopt-git
-	depends = scipoptsuite
-	depends = python2
 
