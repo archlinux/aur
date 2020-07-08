@@ -3,8 +3,8 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='1.22.0.r3278.1f7cf26b'
-pkgrel='5'
+pkgver='1.22.0.r3297.g89cefad0'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -30,7 +30,7 @@ prepare() {
 	# Replace version in package.json
 	_origversion="$(sed -nE 's|.*"version": "(.*)".*|\1|p' 'package.json')"
 	_compassversion="$(echo "$_origversion" | cut -d '.' -f 1-2).$(git rev-list --count HEAD)"
-	_aurversion="$(echo "$_origversion" | cut -d '-' -f 1).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	_aurversion="$(echo "$_origversion" | cut -d '-' -f 1).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 	sed -E -i 's|"version": ".*",|"version": "'"$_compassversion"'",\n"_aurversion": "'"$_aurversion"'",|' 'package.json'
 
 	# Loosen node version restriction
