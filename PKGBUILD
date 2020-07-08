@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package provides a set of simple math utilities to work with angles."
 url='https://wiki.ros.org/angles'
 
 pkgname='ros-melodic-angles'
 pkgver='1.9.13'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -28,7 +26,7 @@ depends=(
 
 _dir="angles-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/angles/archive/${pkgver}.tar.gz")
-sha256sums=('6f327b223cbe3a2c0366e7db2a06cf8113b0a439336de3fba66d5ecc08276c3d')
+sha256sums=('0e2982e9e4759614702f18f5c25cb7a0a88d382f4a4fab845ca1587305db2fd6')
 
 build() {
 	# Use ROS environment variables.
