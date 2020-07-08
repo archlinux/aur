@@ -4,7 +4,7 @@
 
 pkgname=python2-unidecode
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='ASCII transliterations of Unicode text'
 arch=('any')
 url=https://github.com/avian2/unidecode

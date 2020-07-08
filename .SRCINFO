@@ -1,7 +1,7 @@
 pkgbase = python2-unidecode
 	pkgdesc = ASCII transliterations of Unicode text
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/avian2/unidecode
 	arch = any
 	license = GPL
