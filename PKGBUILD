@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='https://wiki.ros.org/stage_ros'
 
 pkgname='ros-melodic-stage-ros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -21,7 +19,8 @@ ros_makedepends=(ros-melodic-tf
   ros-melodic-geometry-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost)
+  boost
+  glu)
 
 ros_depends=(ros-melodic-tf
   ros-melodic-std-msgs
@@ -32,15 +31,9 @@ ros_depends=(ros-melodic-tf
   ros-melodic-nav-msgs
   ros-melodic-sensor-msgs)
 depends=(${ros_depends[@]}
-  boost)
+  boost
+  glu)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/stage_ros/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/stage_ros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="stage_ros-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/stage_ros/archive/${pkgver}.tar.gz")
 sha256sums=('21fbe64e3a5f639ce88a69b3ae15eea38a9e2dbeedfb7f9bed21f787706973fb')
