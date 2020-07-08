@@ -1,0 +1,18 @@
+pkgbase = bgs-kian-git
+	pkgdesc = a suckless background setter for X
+	pkgver = v0.9
+	pkgrel = 1
+	url = https://git.kasad.com/bgs.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = imlib2
+	depends = libx11
+	depends = libxinerama
+	provides = bgs
+	conflicts = bgs
+	source = git+https://git.kasad.com/bgs.git
+	sha256sums = SKIP
+
+pkgname = bgs-kian-git
+
