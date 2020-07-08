@@ -8,7 +8,7 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=2
 _pybasever=${pkgver%.*}
 _pymajver=3
@@ -26,7 +26,7 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         dont-make-libpython-readonly.patch
         0002-smaller-pgo-test-suite.patch
         )
-sha512sums=('ddc838a7b0c442c2e465616f20231f2b703ed6b69ed2dc17858aac8760814fdf7cff43d350d359300e47b6bb1f0bd38c31126b855e423a3a65ed06a8fa16d136'
+sha512sums=('d2ba299e3cf8ed0f8fed9317f42bcd8d9af7e0e6175939b4be1be289c1658418bed17899e2608d762ffb15575021956cf6bf2054d7863c04b3bd7642f5b8c7ea'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1')
