@@ -1,7 +1,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2020.05.05
+pkgver=2020.07.07
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://textbrowser.github.io/dooble/"
 license=('BSD')
 depends=('qt5-webengine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c41ba81f1b77f1240957f979895814bd3bc73b60c79b58012019778df1a2ad5a')
+sha256sums=('589e5694bb9d819f23a8a32c4f794368b5f604d932195dcb2f9457b431e60e2c')
 
 prepare() {
   cd $pkgname-$pkgver/2.x
