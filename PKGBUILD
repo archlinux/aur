@@ -20,9 +20,9 @@ depends_x86_64=('lib32-glibc')
 
 optdepends=('brscan4: scanner support'
 	    'brscan-skey: scanner button support'
-		'ttf-dejavu: printing text files from lpr')
-		# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
-		# Printing a text file fails when Liberation is the only TrueType font available
+	    'ttf-dejavu: printing text files from lpr')
+	    # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
+	    # Printing a text file fails when Liberation is the only TrueType font available
 
 install="$pkgname.install"
 
