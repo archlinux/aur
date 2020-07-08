@@ -4,14 +4,26 @@
 pkgname="brother-mfc-l2700dn"
 pkgver="3.2.0"
 _brotherpkgrel=1
-pkgrel=3
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother MFC-L2700DN printer"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
-license=('custom:brother commercial license')
-depends=('cups')
+license=('custom: brother commercial license')
+depends=('cups' 'perl' 'ghostscript' 'sed' 'grep')
+# cups: the printing system
+# perl: the language of the wrapper and filter scripts
+# ghostscript: called in the filter script
+# sed: called in the filter script and used for package preparation
+# grep: called in the wrapper/filter scripts
+
 depends_x86_64=('lib32-glibc')
-optdepends=('brscan4: scanner support')
+
+optdepends=('brscan4: scanner support'
+	    'brscan-skey: scanner button support'
+		'ttf-dejavu: printing text files from lpr')
+		# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
+		# Printing a text file fails when Liberation is the only TrueType font available
+
 install="$pkgname.install"
 
 source=(
