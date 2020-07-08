@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-chameleon
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://www.pagetemplates.org/"
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/malthe/chameleon/archive/$pkgver.tar.gz")
-sha512sums=('7eaeee53a215fe93142ad57e40d161816fdcfa9a24d68a4648f09ae0a49a2439ccf8f0ace700780025e196471dc1cb8941cd77b120c84876cec77c89e883534d')
+sha512sums=('d4a4b3ac0b59865a7ea1d9ede7f08d991296c1d08a48c7290b9e2864afa6527237d8dee604114918f3b5035f2cc915bf6218d0758ebcd393f2103bb0751f6ea2')
 
 build() {
   cd chameleon-$pkgver
