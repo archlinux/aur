@@ -1,0 +1,14 @@
+--- src/rog-core-0.14.4/Makefile	2020-07-07 10:50:09.000000000 +0200
++++ src/rog-core-0.14.4/Makefile	2020-07-08 11:45:59.863155274 +0200
+@@ -34,9 +34,9 @@
+ 
+ install: all
+ 	install -D -m 0755 "target/release/$(BIN)" "$(DESTDIR)$(bindir)/$(BIN)"
+-	install -D -m 0644 "data/$(BIN).rules" "$(DESTDIR)/lib/udev/rules.d/99-$(BIN).rules"
++	install -D -m 0644 "data/$(BIN).rules" "$(DESTDIR)/usr/lib/udev/rules.d/99-$(BIN).rules"
+ 	install -D -m 0644 "data/$(BIN).conf" "$(DESTDIR)$(sysconfdir)/dbus-1/system.d/$(BIN).conf"
+-	install -D -m 0644 "data/$(BIN).service" "$(DESTDIR)/lib/systemd/system/$(BIN).service"
++	install -D -m 0644 "data/$(BIN).service" "$(DESTDIR)/usr/lib/systemd/system/$(BIN).service"
+ 
+ uninstall:
+ 	rm -f "$(DESTDIR)$(bindir)/$(BIN)"
