@@ -59,7 +59,7 @@ sha256sums=('SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
-            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
+            '43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
