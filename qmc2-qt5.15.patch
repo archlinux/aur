@@ -1,0 +1,10 @@
+--- qmc2/softwareimagewidget.cpp.orig	2020-07-08 07:27:41.029961948 +0000
++++ qmc2/softwareimagewidget.cpp	2020-07-08 07:27:54.640148563 +0000
+@@ -3,6 +3,7 @@
+ #include <QHash>
+ #include <QDir>
+ #include <QClipboard>
++#include <QPainterPath>
+ 
+ #include "softwarelist.h"
+ #include "softwaresnapshot.h"
