@@ -26,10 +26,12 @@ pkgbase = scipoptsuite
 	optdepends = cliquer: C routines for finding cliques in an arbitrary weighted graph
 	optdepends = hmetis: A set of programs for partitioning hypergraphs
 	optdepends = criterion: A cross-platform C and C++ unit testing framework
-	provides = scip=7.0.0
-	provides = soplex=5.0.0
-	provides = zimpl=3.3.9
+	provides = scip=7.0.1
+	provides = soplex=5.0.1
+	provides = zimpl=3.4.0
 	provides = gcg=3.0.3
+	provides = gmp=6.1.2
+	provides = papilo=1.0.1
 	replaces = ziboptsuite
 	options = strip
 	source = local:///scipoptsuite-7.0.1.tgz

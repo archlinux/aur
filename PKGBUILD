@@ -20,7 +20,12 @@ optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
             'cliquer: C routines for finding cliques in an arbitrary weighted graph'
             'hmetis: A set of programs for partitioning hypergraphs'
             'criterion: A cross-platform C and C++ unit testing framework')
-provides=('scip=7.0.0' 'soplex=5.0.0' 'zimpl=3.3.9' 'gcg=3.0.3')
+provides=('scip=7.0.1'
+          'soplex=5.0.1'
+          'zimpl=3.4.0'
+          'gcg=3.0.3'
+          'gmp=6.1.2'
+          'papilo=1.0.1')
 options=('strip')
 source=("local:///${pkgname}-${pkgver}.tgz")
 sha256sums=('971962f2d896b0c8b8fa554c18afd2b5037092685735d9494a05dc16d56ad422')
