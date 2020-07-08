@@ -9,7 +9,7 @@
 pkgname=redshift-minimal
 _name=redshift
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies."
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
@@ -24,7 +24,7 @@ build() {
   cd "${srcdir}/${_name}-${pkgver}"
 
   ./configure --disable-gui --disable-vidmode \
-              --disable-geoclue --disable-geoclue2 \
+              --disable-geoclue2 \
               --disable-ubuntu --disable-drm \
               --prefix=/usr --with-systemduserunitdir=/usr/lib/systemd/user
   make
