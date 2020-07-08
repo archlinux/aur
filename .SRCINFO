@@ -31,9 +31,9 @@ pkgbase = sway-hidpi-git
 	options = debug
 	options = !strip
 	source = sway-hidpi::git+https://github.com/swaywm/sway.git
-	source = https://github.com/swaywm/sway/pull/5090.diff
+	source = xwayland_hidpi.diff::https://github.com/swaywm/sway/pull/5090.diff
 	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 813863fe8d391761770eb264b1c0a2d9442efde3e79fae6b78386ed7c041906eef60bbf9d9bc7d118494de8aba2cd4c45a13dcd2ca09f3f1cd1157e74f122667
 
 pkgname = sway-hidpi-git
 

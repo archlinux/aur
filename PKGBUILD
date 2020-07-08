@@ -2,7 +2,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-hidpi-git
 _pkgname=sway-hidpi
-pkgver=r6341.ae3ec745
+pkgver=r6437.ea3ba203
 pkgrel=1
 license=("MIT")
 pkgdesc="i3-compatible Wayland compositor, with XWayland HiDPI"
@@ -21,9 +21,9 @@ optdepends=(
 arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
-        "https://github.com/swaywm/sway/pull/5090.diff")
+        "xwayland_hidpi.diff::https://github.com/swaywm/sway/pull/5090.diff")
 sha512sums=('SKIP'
-            'SKIP')
+            '813863fe8d391761770eb264b1c0a2d9442efde3e79fae6b78386ed7c041906eef60bbf9d9bc7d118494de8aba2cd4c45a13dcd2ca09f3f1cd1157e74f122667')
 provides=("sway")
 conflicts=("sway")
 options=(debug !strip)
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	patch -Np1 -i ../5090.diff
+	patch -Np1 -i ../xwayland_hidpi.diff
 }
 
 build() {
