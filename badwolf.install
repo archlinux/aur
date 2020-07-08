@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 1.0.0 changelog: the user interface is now customizable through interface.css (you'll have to modify it and then rebuild the package). A logo has been made. Downloads tab, back/forward, print buttons. You can toggle the automatic loading of images."
+  echo "-- Badwolf 1.0.2 changelog: Support for relative paths as command line arguments. Downloads tab no longer resizes the main window. Manpage's syntax doesn't break GNU groff anymore. When a new tab is opened by the user, switch to it."
   /bin/true
 }
