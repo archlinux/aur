@@ -1,4 +1,4 @@
-# Maintiner: Ilya Zlobintsev <ilya.zlve@gmail.com>
+# Maintainer: Ilya Zlobintsev <ilya.zlve@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=borealis-git
