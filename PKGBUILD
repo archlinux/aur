@@ -2,7 +2,7 @@
 
 pkgname=python2-xlsxwriter
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for creating Excel XLSX files(Py2 ver)"
 arch=('any')
 url="https://github.com/jmcnamara/XlsxWriter"
@@ -21,5 +21,6 @@ package() {
   cd "$srcdir"/XlsxWriter-RELEASE_${pkgver}
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -D -m644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mv "$pkgdir/usr/bin/vba_extract.py" "$pkgdir/usr/bin/vba_extract2.py"
 }
 
