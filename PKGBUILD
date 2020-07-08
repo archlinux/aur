@@ -2,7 +2,7 @@
 pkgname=pycharm-community-jre
 _appname=pycharm-community
 pkgver=2020.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
 url="https://www.jetbrains.com/pycharm/"
@@ -20,7 +20,7 @@ noextract=()
 sha256sums=(
   '1c838713f5f9f51908399f23c1a3d17f336e87f1ab7e2c75e8b1797d785a04e8'
   'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
-  'e3f66c3599182ce44a8c4cbc20df8985a3667d72099b05df48952fd4b17a6a3c'
+  'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
 )
 
 package() {
