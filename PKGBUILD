@@ -1,7 +1,7 @@
 # Maintainer: Radim Sückr <contact@radimsuckr.cz>
 
 pkgname=developers-chamber
-pkgver=0.0.37
+pkgver=0.0.41
 pkgrel=1
 pkgdesc='Python developers utility library'
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
 makedepends=('python-setuptools')
 source=('git+https://github.com/druids/developers-chamber.git' 'setup.patch')
 sha512sums=('SKIP'
-            'd5f5879d6a23c7dfc15e9a0736936b211d052f20a5cc3aa88dc88d75007c93844dced7b1b4a051a11b8c347cf6aa8a5656a01e2c79ab3df15e243f5032df0fcf')
+            '0dd0503b51b2f9110ce7be1d3a5896f6553950cbb6f9bca8a9be89d5529d383a8642bd1c27355ba6a4dfe74ced6562c15b95b805dce88ac788bdd89600010d54')
 
 prepare() {
 	cd ${pkgname}
