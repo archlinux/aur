@@ -10,10 +10,6 @@ _fragment=${FRAGMENT:-#branch=master}
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
-((DISABLE_EMBREE)) || {
-  _CMAKE_FLAGS+=( -DWITH_CYCLES_EMBREE=ON )
-  depends+=(embree)
-}
 ((DISABLE_USD)) || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
                 -DUSD_ROOT=/usr )
@@ -30,7 +26,7 @@ pkgdesc="Development version of Blender 2.8 branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
@@ -77,7 +73,7 @@ prepare() {
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
-  ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
 }
 
 build() {
