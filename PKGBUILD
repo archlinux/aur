@@ -2,8 +2,8 @@
 # Supported Forum: http://forum.narga.org
 pkgname=ttf-vietnamese-vni
 pkgver=1.0
-pkgrel=2
-depends=('fontconfig' 'xorg-font-utils')
+pkgrel=3
+depends=('fontconfig' 'xorg-font-util')
 pkgdesc="Vietnamese Classic VNI Fonts"
 arch=('any')
 license=('EULA')
