@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Loki
+Comment=Python based framework implementing many packet generation and attack modules for Layer 2 and 3 protocols
+Exec=loki
+Icon=network
+Terminal=false
+StartupNotify=false
+Categories=Network;Security;
