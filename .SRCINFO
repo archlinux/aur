@@ -1,23 +1,17 @@
 pkgbase = python-picos-git
 	pkgdesc = A Python interface to conic optimization solvers. Git version.
-	pkgver = 2.0.r0.gebcea28
+	pkgver = 2.0.r8.g7c304b3
 	pkgrel = 1
 	url = https://gitlab.com/picos-api/picos
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-numpy
+	depends = python-cvxopt
+	conflicts = python-picos
 	source = picos::git+https://gitlab.com/picos-api/picos.git
 	md5sums = SKIP
 
 pkgname = python-picos-git
-	depends = python-numpy
-	depends = python-cvxopt
-	conflicts = python-picos
-
-pkgname = python2-picos-git
-	depends = python2-numpy
-	depends = python2-cvxopt
-	conflicts = python2-picos
 
