@@ -8,7 +8,8 @@ pkgdesc="A strategy game with space exploration at its core"
 arch=('x86_64')
 url="https://www.gog.com/game/stellaris"
 license=('custom')
-depends=('glibc' 'libx11' 'libglvnd' 'gcc-libs')
+makedepends=('unzip' 'findutils')
+depends=('bash' 'sed' 'glibc' 'libx11' 'libglvnd' 'gcc-libs')
 source=("stellaris_${pkgver//./_}_38578.sh::gogdownloader://stellaris/en3installer0"
         "Stellaris.desktop"
         "start-stellaris.sh")
