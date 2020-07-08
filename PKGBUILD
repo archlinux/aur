@@ -2,18 +2,23 @@
 
 pkgname=sunloginclient
 pkgver=10.0.2.24779
-pkgrel=4
+pkgrel=5
 pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems. It is the best choice for IT technology, game players, designers and other people with remote management needs."
 arch=("x86_64")
 url="https://sunlogin.oray.com"
-depends=("libappindicator-gtk3"  "webkitgtk" 'aspell' 'hspell' 'nuspell' 'libvoikko' 'xorg-xhost')
+depends=("libappindicator-gtk3"
+         "webkitgtk"
+         'aspell'
+         'hspell'
+         'nuspell' 
+         'hunspell'
+         'libvoikko'
+         'xorg-xhost')
 license=('custom:sunloginclient')
-options=("!emptydirs" "!strip")
 source=("http://download.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
-		'LICENSE::https://service.oray.com/question/1820.html'
-    'sunlogin-client-xhost.desktop')
+        'LICENSE::https://service.oray.com/question/1820.html'
+        'sunlogin-client-xhost.desktop')
 install='sunloginclient.INSTALL'
-backup=("etc/orayconfig.conf")
 sha256sums=('da2a61d106c2cecce271c89cd182b162bce34018539e1ba431580c5bbe120252'
             'SKIP'
             '15abf7f89fe7d54112e083914740108a73b6b2cd9d942d49de4c7ccb66c3e30f')
@@ -35,7 +40,8 @@ package() {
   sed -i 's#Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png#Icon=sunlogin_client#g' "${pkgdir}/usr/share/applications/sunlogin.desktop"
 	
   # 修改权限
-  chmod 766 "${pkgdir}/opt/sunlogin/res/skin/"*.skin
+  chmod 666 "${pkgdir}/opt/sunlogin/res/skin/"*.skin
+  chmod 666 $pkgdir/opt/sunlogin/res/font/wqy-zenhei.ttc
 	
   # 安装图标
   install -Dm644 "${pkgdir}/opt/sunlogin/res/icon/sunlogin_client.png" "${pkgdir}/usr/share/pixmaps/sunlogin_client.png"
