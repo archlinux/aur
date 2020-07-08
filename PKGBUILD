@@ -18,7 +18,7 @@
 
 pkgname=mtproxy-git
 pkgver=47.dc0c7f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
 url='https://github.com/TelegramMessenger/MTProxy'
@@ -31,6 +31,7 @@ source=(
     mtproxy-config.timer
     mtproxy.service
     pid_assertion.patch
+    fcommon.patch
 )
 noextract=()
 md5sums=('SKIP'
@@ -38,7 +39,8 @@ md5sums=('SKIP'
          'a67f6a3b3874d9dac15c7cf620d696c2'
          'aa2367c3f759632473824fabcc3544ff'
          '1ee66acee6c42aca9160b9ccfe534bc3'
-         '50233354ac78d52280a93092b809f7aa')
+         '50233354ac78d52280a93092b809f7aa'
+         '91501ebe32a2f3f9f6463703a1ca427f')
 backup=('etc/mtproxy.conf')
 
 pkgver() {
@@ -49,10 +51,14 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch --forward --strip=1 --input="$srcdir/pid_assertion.patch"
+  patch --forward --strip=1 --input="$srcdir/fcommon.patch"
 }
 
 build() {
   cd "$srcdir/$pkgname"
+  export CFLAGS=-fcommon
+  export CXXFLAGS=-fcommon
+  export LDFLAGS=-fcommon
   make $MFLAGS
 }
 
