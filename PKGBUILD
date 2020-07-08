@@ -2,10 +2,10 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
-url="https://www.infradead.org/~mchehab/rasdaemon/"
+url="https://pagure.io/rasdaemon"
 license=(GPL2)
 depends=(
   # For rasdaemon:
