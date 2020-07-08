@@ -1,7 +1,7 @@
 pkgbase = ttf-spectral
 	pkgdesc = Spectral is a new and versatile serif face
 	pkgver = 2.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Spectral
 	arch = any
 	license = Open Font License

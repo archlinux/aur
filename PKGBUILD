@@ -2,7 +2,7 @@
 
 pkgname=ttf-spectral
 pkgver=2.003
-pkgrel=1
+pkgrel=2
 pkgdesc='Spectral is a new and versatile serif face'
 arch=('any')
 url='https://fonts.google.com/specimen/Spectral'
