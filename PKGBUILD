@@ -5,6 +5,7 @@ pkgdesc="DMRconfig is a utility for programming digital radios via USB programmi
 arch=('x86_64' 'aarch64')
 depends=('libusb>=1.0')
 license=('Apache 2.0')
+CFLAGS="-fcommon"
 url="https://github.com/sergev/dmrconfig.git"
 source=('git+https://github.com/sergev/dmrconfig.git')
 sha256sums=('SKIP')
