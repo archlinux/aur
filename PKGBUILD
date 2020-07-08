@@ -2,8 +2,8 @@
 # Supported Forum: http://forum.narga.org
 pkgname=ttf-vietnamese-tcvn3
 pkgver=1.0
-pkgrel=3
-depends=('fontconfig' 'xorg-font-utils')
+pkgrel=4
+depends=('fontconfig' 'xorg-font-util')
 pkgdesc="Vietnamese Classic TCVN3 Fonts"
 arch=('any')
 license=('EULA')
