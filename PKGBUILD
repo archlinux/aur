@@ -6,7 +6,7 @@ pkgdesc="minimal tui youtube (invidious) frontend made in c++"
 arch=('any')
 license=('GPL3')
 url="https://github.com/djt3/$pkgname/"
-source=("git+https://github.com/djt3/tuitube.git")
+source=("git+https://gitlab.com/djt3/tuitube.git")
 depends=('libcurlpp' 'mpv')
 md5sums=('SKIP')
 
