@@ -77,8 +77,6 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
