@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web ). Testing branch ( it may not be working properly ).
 	pkgver = 0.9.6.RC
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -11,9 +11,11 @@ pkgbase = bauh-staging
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyqt5
+	depends = python-pyqt5-sip
 	depends = python-requests
 	depends = python-colorama
 	depends = python-pyaml
+	depends = qt5-svg
 	optdepends = flatpak: required for Flatpak support
 	optdepends = snapd: required for Snap support
 	optdepends = python-beautifulsoup4: for Native Web applications support
@@ -41,8 +43,8 @@ pkgbase = bauh-staging
 	optdepends = breeze: for KDE Plasma main theme be available
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/8d187096ede4c8065a62a60cf20749386d9cd967.tar.gz
-	sha512sums = e727fd4a79e55f20731a7c6945d768e82289b52e7b20445adcfa45c4a1903a71d28cc5df11eb8fb5602d15db6448a3db6bd45ac05c07f7e794cf7cfc85979e2d
+	source = https://github.com/vinifmor/bauh/archive/43f34bba2fa04fb46dffe2c519478328f65c0460.tar.gz
+	sha512sums = 22bdf86bcda54067e6d03e04227377a9cae338136b884e96ce1385b1fff564828134484573de6d8441478d0f1038d56601ed50b6f83cc9ff8b40029396a05b4e
 
 pkgname = bauh-staging
 
