@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-arc-menu
 	pkgdesc = A Dynamic / Traditional / Modern Extension Menu for GNOME
-	pkgver = v46_Stable
+	pkgver = v47_Stable
 	pkgrel = 1
 	url = https://gitlab.com/arcmenu-team/Arc-Menu
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-arc-menu
 	depends = gnome-tweaks
 	depends = gnome-menus
 	conflicts = gnome-shell-extension-arc-menu-git
-	source = https://gitlab.com/arcmenu-team/Arc-Menu/-/archive/v46-Stable/Arc-Menu-v46-Stable.tar.gz
-	sha256sums = 1054219d952b837edc2b6244243f13ac387b4314944a053e8563985c36d750f0
+	source = https://gitlab.com/arcmenu-team/Arc-Menu/-/archive/v47-Stable/Arc-Menu-v47-Stable.tar.gz
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-arc-menu
 
