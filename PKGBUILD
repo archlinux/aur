@@ -1,19 +1,16 @@
-# Maintainer: Randy Fay < randy at randyfay dot com >
-
-_name="ddev"
-pkgname="$_name-bin"
-pkgver="1.14.2"
+pkgname="ddev-bin"
+pkgver=v1.15.0
 pkgrel=1
 pkgdesc='DDEV-Local: a local PHP development environment system'
 arch=('x86_64')
 url='https://github.com/drud/ddev'
 license=('Apache')
-provides=("$_name")
-conflicts=("$_name")
+provides=("ddev")
+conflicts=("ddev")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
-source=("https://github.com/drud/ddev/releases/download/v$pkgver/ddev_linux.v$pkgver.tar.gz")
-sha256sums=("4d1082b5ac67829347bb8029582ef4719f2e916946cff7ad4b48042ada710e37")
+source=("https://github.com/drud/ddev/releases/download/v1.15.0/ddev_linux.v1.15.0.tar.gz")
+sha256sums=("ad39bb8babf3523342acf2af3824307b7508b4d11c37ac5e07e7819202beb178")
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"
