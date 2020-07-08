@@ -2,7 +2,7 @@
 
 _pkgname=empyrical
 pkgname=python-$_pkgname
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Common financial risk and performance metrics"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python-pandas' 'python-numpy' 'python-scipy' 'python-pandas-datareader')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('25ff9d5bd9ec52a602f54f2edaeb1a19bc10c479b0b67eb8f031a572e15cd47b')
+sha256sums=('b3727099bc9a9f2b047a4b24a9c1e6dcf7e144ae906226b794343bf766e0f7ca')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

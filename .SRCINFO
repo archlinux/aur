@@ -1,6 +1,6 @@
 pkgbase = python-empyrical
 	pkgdesc = Common financial risk and performance metrics
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/quantopian/empyrical
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-empyrical
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas-datareader
-	source = python-empyrical-0.5.3.tar.gz::https://github.com/quantopian/empyrical/archive/0.5.3.tar.gz
-	sha256sums = 25ff9d5bd9ec52a602f54f2edaeb1a19bc10c479b0b67eb8f031a572e15cd47b
+	source = python-empyrical-0.5.4.tar.gz::https://github.com/quantopian/empyrical/archive/0.5.4.tar.gz
+	sha256sums = b3727099bc9a9f2b047a4b24a9c1e6dcf7e144ae906226b794343bf766e0f7ca
 
 pkgname = python-empyrical
 
