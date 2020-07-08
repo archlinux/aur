@@ -1,6 +1,6 @@
 # Maintainer: Antonín Dach <dach@protonmail.com>
 pkgname=wayst-git
-pkgver=r57.9fccaba
+pkgver=r68.b5df227
 pkgrel=1
 pkgdesc='Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.'
 arch=('x86_64')
