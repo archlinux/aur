@@ -37,13 +37,10 @@ pkgbase = jre8
 	backup = etc/java-jre8/psfont.properties.ja
 	backup = etc/java-jre8/psfontj2d.properties
 	backup = etc/java-jre8/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = jre-8u251-linux-x64.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=242050_3d5a2bb8f8d4428bbe94aed7ec7ae784
 	source = policytool-jre8.desktop
-	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = 2afa1c823912d97baa5e363b205ba8ec
 	md5sums = ef3ff483db5d38ed106e0b819006bdae
-	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 	sha256sums = 92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589
 	sha256sums = 614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8
 

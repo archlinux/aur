@@ -63,16 +63,13 @@ backup=(
 options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
 source=(
-  "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
   "${_pkgname}-${pkgver}-linux-x64.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
   #"https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz" # Now /otn/, Oracle sso required
   "policytool-${_jname}.desktop"
 )
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '2afa1c823912d97baa5e363b205ba8ec'
+md5sums=('2afa1c823912d97baa5e363b205ba8ec'
          'ef3ff483db5d38ed106e0b819006bdae')
-sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589'
+sha256sums=('92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
 ## Alternative mirror, if your local one is throttled:
@@ -80,6 +77,21 @@ sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
+
+# https://bugs.openjdk.java.net/browse/JDK-8170157
+# 2020-06-19 jce_policy-8.zip/UnlimitedJCEPolicyJDK8/README.txt
+if [ "${_minor}" -lt 161 ]; then
+  source+=("https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip")
+fi
+
+if ! :; then
+  for _d in "${!DLAGENTS[@]}"; do
+    case "${DLAGENTS[${_d}]}" in
+    'https::'*) DLAGENTS["${_d}"]='https::/usr/bin/wget --no-cookies --header Cookie:oraclelicense=a --no-glob --no-config --continue --tries=3 --waitretry=3 -O %o %u';;
+    esac
+  done
+  makedepends+=('wget')
+fi
 
 package() {
   set -u
