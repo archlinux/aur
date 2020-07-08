@@ -1,6 +1,6 @@
 pkgbase = genxword3
 	pkgdesc = Crossword generator (Python 3 version)
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/genxword
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = genxword3
 	depends = python-gobject
 	depends = gtksourceview3
 	depends = pango
-	source = https://files.pythonhosted.org/packages/source/g/genxword/genxword-2.0.1.tar.gz
-	sha256sums = d9d9982a4f35caa1ca03d2ec44688cff9cf48d615ae5f5344d743c4d1866972f
+	source = https://files.pythonhosted.org/packages/source/g/genxword/genxword-2.1.0.tar.gz
+	sha256sums = 979047b643855959125bbae90b290a572296008517feb5cbd4e46d09e52b69ea
 
 pkgname = genxword3
 

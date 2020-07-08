@@ -3,7 +3,7 @@
 
 _name=genxword
 pkgname=${_name}3
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Crossword generator (Python 3 version)"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
     cd "$srcdir/genxword-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
 }
-sha256sums=('d9d9982a4f35caa1ca03d2ec44688cff9cf48d615ae5f5344d743c4d1866972f')
+sha256sums=('979047b643855959125bbae90b290a572296008517feb5cbd4e46d09e52b69ea')
