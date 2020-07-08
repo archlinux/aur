@@ -7,7 +7,7 @@ _srcname=linux-5.7
 _major=5.7
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=5
+_minor=7
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -25,23 +25,25 @@ options=('!strip')
 source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
-  # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
+  #"$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d0e65a05f82ab9391eb10b65aff7d52da79e50596ae4ababc4f3907b25dcbbf4'
+sha256sums=('8d2fee49d0652d58f75261368dca71613c21f1032c3db324c7d529d4d4d0fed6'
             'SKIP'
-            '6c37f90354dbe1e29aa144f850b2050259f8a2d180fd24101f9eafc636bb0b01'
+            'f840b9679283343c165516585c3070ebb277528721c890e9410a58e9d071ee7f'
             'SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
+            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '382c2e99dbc6fc2184492d961441bc2cde2b8de23e018cb291c952c5e1c3ed37')
+            '1716e59693757f339fda588b268ff6f5edc3f2ad61bbe8a61832692572e25b1a'
+            '040420a533f7024b49633c4cf397ec95e9c915827e6230abe99890fcd769b009')
 
 
 export KBUILD_BUILD_HOST=archlinux
