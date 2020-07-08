@@ -4,7 +4,7 @@
 
 pkgname=aerc
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
@@ -30,5 +30,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR=$pkgdir install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
