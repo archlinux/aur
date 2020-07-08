@@ -2,12 +2,12 @@
 
 pkgname=ttf-cuprum
 pkgver=2.000
-pkgrel=1
+pkgrel=2
 pkgdesc='Cuprum is a narrow grotesque font. It is quite versatile.'
 arch=('any')
 url='https://fonts.google.com/specimen/Cuprum'
 license=('Open Font License')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 
 _commit='8c86543d1ef0a348ad471a3443a3ab0a2a0162c8'
 _raw="https://github.com/alexeiva/cuprum/raw/${_commit}/fonts/ttf"

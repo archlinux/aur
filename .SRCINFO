@@ -1,13 +1,12 @@
 pkgbase = ttf-cuprum
 	pkgdesc = Cuprum is a narrow grotesque font. It is quite versatile.
 	pkgver = 2.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Cuprum
 	arch = any
 	license = Open Font License
 	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = https://github.com/alexeiva/cuprum/raw/8c86543d1ef0a348ad471a3443a3ab0a2a0162c8/fonts/ttf/Cuprum-Bold.ttf
 	source = https://github.com/alexeiva/cuprum/raw/8c86543d1ef0a348ad471a3443a3ab0a2a0162c8/fonts/ttf/Cuprum-BoldItalic.ttf
 	source = https://github.com/alexeiva/cuprum/raw/8c86543d1ef0a348ad471a3443a3ab0a2a0162c8/fonts/ttf/Cuprum-Italic.ttf
