@@ -2,8 +2,8 @@
 
 pkgname=cryo
 arch=('x86_64')
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.10
+pkgrel=1
 pkgdesc="A visual file manager with p2p file transfers"
 url="https://cryonet.io"
 license=('custom:"Copyright (c) Manuel Pietschmann"')
@@ -24,11 +24,12 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://cryonet.io/downloads/linux/${pkgname}_${pkgver}_amd64.deb"
-               "$pkgname-$pkgver-x86_64.deb.sig::https://cryonet.io/downloads/linux/${pkgname}_${pkgver}_amd64.deb.sig")
+source=()
+source_x86_64=("$pkgname-$pkgver-$CARCH.deb::https://cryonet.io/downloads/linux/${pkgname}_${pkgver}_amd64.deb"
+               "$pkgname-$pkgver-$CARCH.deb.sig::https://cryonet.io/downloads/linux/${pkgname}_${pkgver}_amd64.deb.sig")
 noextract=()
 #validpgpkeys=('73A522A1186C411D275BA2E6483C615810DFCC8B')
-sha256sums_x86_64=('be7ea345f8e4ce5c3247f2fae0fa892d2c28e6e2111fa26a0bd43b51975c7568' '7a037788cf173c3e93d50d26fa1ec15a7756738f9d10548cf9e382a852be2cb1')
+sha256sums_x86_64=('da1950a3e61b0d714cca18c2058a33f7266eefc5aa17b8c0275a315d56024f95' '6527ea42a977da4e52f0739e15564172e61f4be29453a1be561444ecd35b916b')
 
 package() {
   cd "${srcdir}"
