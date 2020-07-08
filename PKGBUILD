@@ -2,7 +2,7 @@
 
 _srcname=peak-linux-driver
 pkgname=peak-linux-headers
-pkgver=8.7.0
+pkgver=8.10.2
 pkgrel=1
 pkgdesc='Linux headers for PEAK CAN adapter'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "https://www.peak-system.com/fileadmin/media/linux/files/${_srcname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "6d1ad9e6feb75719feb926bf1c78caeaa84663855945866e749d92cc83758b73"
+    "766dc4d569c984c5fdcb9446dd3d7a0907627238f56cf1151d20a38c4747361c"
 )
 
 package() {
