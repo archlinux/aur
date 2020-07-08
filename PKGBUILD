@@ -6,7 +6,7 @@
 # Contributor: Stephan Friedrichs <deduktionstheorem@googlemail.com>
 
 pkgname=scipoptsuite
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Toolbox for generating and solving optimization problems (with Parallel Processing)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
 provides=('scip=7.0.0' 'soplex=5.0.0' 'zimpl=3.3.9' 'gcg=3.0.3')
 options=('strip')
 source=("local:///${pkgname}-${pkgver}.tgz")
-sha256sums=('32fbb7e3cf93e431d858b64a6ffaa0b4a7dbeda114fcc9674b2b8ef85dee7209')
+sha256sums=('971962f2d896b0c8b8fa554c18afd2b5037092685735d9494a05dc16d56ad422')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"

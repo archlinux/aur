@@ -1,6 +1,6 @@
 pkgbase = scipoptsuite
 	pkgdesc = Toolbox for generating and solving optimization problems (with Parallel Processing)
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://scip.zib.de
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = scipoptsuite
 	provides = gcg=3.0.3
 	replaces = ziboptsuite
 	options = strip
-	source = local:///scipoptsuite-7.0.0.tgz
-	sha256sums = 32fbb7e3cf93e431d858b64a6ffaa0b4a7dbeda114fcc9674b2b8ef85dee7209
+	source = local:///scipoptsuite-7.0.1.tgz
+	sha256sums = 971962f2d896b0c8b8fa554c18afd2b5037092685735d9494a05dc16d56ad422
 
 pkgname = scipoptsuite
 
