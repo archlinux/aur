@@ -11,12 +11,12 @@ depends=('libcurlpp' 'mpv')
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname"
+  cd tuitube
   cmake -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd tuitube
   make DESTDIR="$pkgdir/" install
 }
