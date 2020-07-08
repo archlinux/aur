@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('jq'
              'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'ezra-project.sh')
-sha256sums=('909e62937551da2f730cdb8ea1aed7db0f44f236d3c1603c09de4653146abb9c'
+sha256sums=('4d853fe388fbacc3f2f554da565fa0be1eac72984f0fcda4fba32a47c960c402'
             '0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618')
 
 prepare() {
