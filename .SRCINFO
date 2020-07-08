@@ -1,6 +1,6 @@
 pkgbase = dmenu-rs-git
 	pkgdesc = The development branch of dmenu-rs. Likely has unstable features.
-	pkgver = 5.3.0.r227.009da15
+	pkgver = 5.3.0.r229.0507636
 	pkgrel = 1
 	url = https://github.com/Shizcow/dmenu-rs
 	arch = i686
