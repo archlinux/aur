@@ -1,8 +1,8 @@
 # Maintainer: crab2313 <crab2313@gmail.com>
 
 pkgname=rkdeveloptool
-pkgver=52
-pkgrel=2
+pkgver=62
+pkgrel=1
 pkgdesc='Development tool for Rockchip SOC'
 arch=('x86_64')
 url='https://github.com/rockchip-linux/rkdeveloptool'
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	sed -i 's/-Werror/-Werror -Wno-format-truncation/' Makefile.am
 	autoreconf -i
 	./configure --prefix=/usr --disable-werror
 	make
