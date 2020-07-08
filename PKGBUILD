@@ -30,4 +30,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR=$pkgdir install
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
