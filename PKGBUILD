@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r253.ge0a90f8
+pkgver=0.9.4.r278.g60c8359
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libdrm' 'pango' 'systemd')
-makedepends=('git' 'docbook-xsl' 'intltool')
+makedepends=('git' 'docbook-xsl') # 'intltool'
 optdepends=('ttf-dejavu: For true type font support'
         'xf86-video-fbdev: Support special graphic cards on early startup'
         'cantarell-fonts: True Type support for BGRT theme')
@@ -88,7 +88,6 @@ build() {
 		--enable-tracing \
 		--enable-pango \
 		--enable-gtk=no \
-        --enable-gdm-transition \
 		--with-release-file=/etc/os-release \
 		--with-logo=/usr/share/plymouth/arch-logo.png \
 		--with-background-color=0x000000 \
