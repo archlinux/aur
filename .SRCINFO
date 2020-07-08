@@ -1,0 +1,13 @@
+pkgbase = hmetis
+	pkgdesc = A set of programs for partitioning hypergraphs such as those corresponding to VLSI circuits
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview
+	arch = x86_64
+	license = custom:hmetis
+	depends = lib32-glibc
+	source = hmetis-1.5.3.tar.gz::http://glaros.dtc.umn.edu/gkhome/fetch/sw/hmetis/hmetis-1.5-linux.tar.gz
+	sha256sums = e835a098c046e9c26cecb8addfea4d18ff25214e49585ffd87038e72819be7e1
+
+pkgname = hmetis
+
