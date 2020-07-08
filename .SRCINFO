@@ -1,0 +1,18 @@
+pkgbase = kcgroups-git
+	pkgdesc = KDE library to manipulate cgroups (and boost foreground apps)
+	pkgver = r22.b389c7f
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kcgroups.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	depends = kwindowsystem
+	source = git+https://invent.kde.org/libraries/kcgroups.git
+	md5sums = SKIP
+
+pkgname = kcgroups-git
+
