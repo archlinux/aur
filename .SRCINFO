@@ -1,14 +1,14 @@
 pkgbase = lua-luacov-coveralls
 	pkgdesc = LuaCov reporter for coveralls.io service
 	pkgver = 0.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/moteus/luacov-coveralls
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = luarocks
 	depends = lua
 	depends = lua-dkjson
+	depends = lua-filesystem
 	depends = lua-luacov
 	depends = lua-path
 	source = luacov-coveralls-0.2.2.tar.gz::https://github.com/moteus/luacov-coveralls/archive/v0.2.2.tar.gz
