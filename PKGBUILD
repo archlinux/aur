@@ -2,12 +2,12 @@
 
 pkgname=ttf-exo-2
 pkgver=1.100
-pkgrel=1
+pkgrel=2
 pkgdesc='Exo 2 is a complete redrawing of Exo, a contemporary geometric sans serif typeface that tries to convey a technological/futuristic feeling while keeping an elegant design.'
 arch=('any')
 url='https://fonts.google.com/specimen/Exo+2'
 license=('Open Font License')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 
 _commit='0e2d90b53d2b2a6be575eb513672051262901992'
 _raw="https://github.com/NDISCOVER/Exo-2.0/raw/${_commit}/fonts"
