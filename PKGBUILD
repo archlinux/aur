@@ -1,6 +1,6 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=feed2maildir
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Read RSS/Atom feeds in your favourite, maildir-compatible email client"
 arch=('any')
@@ -11,7 +11,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('9f46bed6899f1361741348d6e0facf34c0ddb4f82430542a54e1fc8b0f46a5b4fed8f9eb9f3d3885069508932c6dc378e3828a7200badedf62150ae786337156')
+sha512sums=('a95f5ca53aed2b25b86c6fe1c43578508763172c91524d1b4598ea32d63e437ac2533c61e58b72d207c3ab6823c014af70027efb991afa885fb5f56b24006ed2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
