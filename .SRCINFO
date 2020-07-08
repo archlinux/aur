@@ -1,0 +1,15 @@
+pkgbase = storyboarder-appimage
+	pkgdesc = The best way to visualize your story. It makes it easy to visualize a story as fast you can draw stick figures.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://wonderunit.com/storyboarder/
+	arch = x86_64
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = storyboarder
+	options = !strip
+	source = https://github.com/wonderunit/storyboarder/releases/download/v2.0.1/Storyboarder-2.0.1-linux-x86_64.AppImage
+	md5sums = 66afa5dc04d7d029e5ba5276f6de2797
+
+pkgname = storyboarder-appimage
+
