@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=kiwix-lib
-pkgver=9.2.2
-pkgrel=3
+pkgver=9.3.0
+pkgrel=1
 pkgdesc="Library providing the Kiwix software core"
 license=('GPL3')
 arch=('armv7h' 'i686' 'x86_64')
