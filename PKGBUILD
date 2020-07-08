@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre08
 _major=18.7.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -78,9 +78,18 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
+  
+  # use newer ffmpeg
   000-PR17300.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17300.patch
+  18071-mod_for_linux_only.patch
+  
+  # fix for kodi-standalone run without which
   000-PR17804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17804.patch
-  000-PR18071-mod_for_linux_only.patch
+  
+  # fix for libmicrohttpd 0.9.7.1
+  18131.patch
+  
+  # start milestone patches
   # 18029 does not apply
   001-PR17988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17988.patch
   002-PR17996.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17996.patch
@@ -90,7 +99,6 @@ source=(
 #  006-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
   007-PR18047.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18047.patch
   008-PR18056.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18056.patch
-
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -113,8 +121,9 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
-            'f11af738b2be8f390a7b515cfb74276a0ccb64ac061b8f5a7b3772e19eb0d203'
             '4d9eb12db337a89b5e17815bd422015f3017c735bd0c5b522f5a5b0c7f81a607'
+            'f11af738b2be8f390a7b515cfb74276a0ccb64ac061b8f5a7b3772e19eb0d203'
+            '1bfa84c0ae99a4ed731261cb39cb347c2809ca63d0d318393bdbbee900bbf8bc'
             '89ac4b3feac908075ddbcdc4f9f1d1703c25e2fdb1661e776c162eb779437bd8'
             'f56503139927f0bc8f220c4b4e31266fc938a6612a4c1d2bdd75be3f54eb3a12'
             '995c61de460e0afdc135ba33f9f393a825cb4a0c7954da104d23269fe48ec118'
