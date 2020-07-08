@@ -3,28 +3,26 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=liri-files
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.2.0.20200620
+_commit=7582252b229d71f896936deee9165a38ad468461
+pkgrel=1
 pkgdesc="The file manager for Liri"
 arch=("x86_64")
 url="https://github.com/lirios/files"
 license=("GPL")
 depends=('fluid' 'taglib')
-makedepends=('liri-qbs-shared' 'qt5-tools')
+makedepends=('cmake' 'liri-cmake-shared' 'ninja' 'qt5-tools')
 replaces=('papyros-files')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/files/archive/v$pkgver.tar.gz")
-sha256sums=('a3c03d078af5cdf53e621bb41f0c09ab33cc5dcd51d5d6317ba4f845a4399383')
+source=("https://github.com/lirios/files/archive/$_commit/$pkgname-$_commit.tar.gz")
+sha256sums=('6dfa6f4ce85863cb764d5ea251623700dd797db61ebfa09e81eda22eee1deee8')
 
 build() {
-  cd files-$pkgver
-  qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-  qbs setup-qt /usr/bin/qmake-qt5 qt5
-  qbs config profiles.qt5.baseProfile gcc
-  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr \
-                                              modules.lirideployment.qmlDir:/usr/lib/qt/qml
+  cd files-$_commit
+  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
+  ninja
 }
 
 package() {
-  cd files-$pkgver
-  qbs install -d build --no-build -v --install-root "$pkgdir" profile:qt5
+  cd files-$_commit
+  DESTDIR="$pkgdir" ninja install
 }
