@@ -6,6 +6,7 @@ pkgbase = bas21-bin
 	arch = x86_64
 	license = custom
 	makedepends = gendesk
+	makedepends = icoutils
 	options = !strip
 	source = https://download.bas21.no/bas21/bas21-1.4.6.tar.xz
 	sha256sums = 14d365c6dfdec55ea05009f4ee58ed7ac1f22dc2f09261304bafbb7d4a89cf0b
