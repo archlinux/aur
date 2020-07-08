@@ -3,8 +3,8 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-oesenc-git
-pkgver=4.0.5.r112.gaa16607
-pkgrel=4
+pkgver=4.0.5.r117.ga6e904c
+pkgrel=1
 pkgdesc="O-charts.org plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
 license=("GPL3")
@@ -33,4 +33,6 @@ build() {
 package() {
   cd "$pkgname/build"
   DESTDIR="$pkgdir" make install
+  mkdir -p $pkgdir/etc/udev/rules.d
+  install -m 644 $srcdir/$pkgname/buildlinux/oeserverd/98-sglock.rules $pkgdir/etc/udev/rules.d/
 }
