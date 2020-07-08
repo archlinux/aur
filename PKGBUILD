@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='https://wiki.ros.org/rosbag'
 
 pkgname='ros-noetic-rosbag'
-pkgver='1.15.6'
+pkgver='1.15.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -52,7 +52,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/rosbag"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('0a6322176111088f2bfdc26b34189b5a5f1b476a925c08711cc7aaa13ac09de6')
+sha256sums=('80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4')
 
 build() {
 	# Use ROS environment variables.
