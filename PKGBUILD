@@ -1,6 +1,6 @@
 # Maintainer: piegames <aur@piegames.de>
 pkgname=blockmap-git
-pkgver=2.0.0.r11.6eab338
+pkgver=2.1.0.r0.e86f704
 pkgrel=1
 pkgdesc="Minecraft map viewer/renderer"
 arch=('any')
