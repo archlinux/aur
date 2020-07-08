@@ -1,0 +1,17 @@
+pkgbase = btnx-git
+	pkgdesc = A daemon that enables rerouting of mouse button events through uinput as keyboard and other mouse button combinations
+	pkgver = r23.ef3f5b9
+	pkgrel = 1
+	url = https://github.com/cdobrich/btnx
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = btnx-config
+	depends = libdaemon
+	depends = bash
+	provides = btnx
+	source = btnx::git+https://github.com/cdobrich/btnx
+	sha256sums = SKIP
+
+pkgname = btnx-git
+
