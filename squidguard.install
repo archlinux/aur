@@ -1,4 +1,0 @@
-post_install() {
-	chown proxy:proxy /var/log/squidGuard
-	chown -R proxy:proxy /var/lib/squidGuard
-}

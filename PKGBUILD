@@ -3,18 +3,16 @@
 
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
-arch=('x86_64' 'i686')
+arch=('any')
 url="http://www.squidguard.org"
 license=('GPL')
-groups=('')
 depends=('db' 'bison' 'flex' 'squid')
 optdepends=('openldap'
             'squid>=3.4.0')
-backup=('etc/logrotate.d/squidguard' 'etc/squidguard/squidGuard.conf.default')
+backup=('etc/squid/squidGuard.conf')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
 source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$pkgver-1/squidguard_$pkgver.orig.tar.gz"
 	"squidguard-1.6.0-gcc10.patch")
 sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e'
@@ -23,7 +21,6 @@ sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
   patch -p0 -i "$srcdir/squidguard-1.6.0-gcc10.patch"
 
 }
@@ -33,7 +30,7 @@ build() {
   ./autogen.sh
   ./configure \
 	--prefix=/usr \
-	--with-sg-config=/etc/squidGuard/squidGuard.conf \
+	--with-sg-config=/etc/squid/squidGuard.conf \
 	--with-sg-logdir=/var/log/squidGuard \
 	--with-sg-dbhome=/var/lib/squidGuard/db \
 
@@ -43,4 +40,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-$pkgver"
   make DESTDIR="$pkgdir" install
+
+  install -dm755 -o proxy -g proxy ${pkgdir}/var/log/squidGuard
+  install -dm755 -o proxy -g proxy ${pkgdir}/var/lib/squidGuard
 }
