@@ -1,7 +1,7 @@
 # Maintainer: schopenhauer
 
 pkgname=quick-n-easy-web-builder-7
-pkgver=7.2.2
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="An Web builder"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://www.quickandeasywebbuilder.com/'
 license=('Custom')
 depends=('xdg-utils')
 source=("https://www.quickandeasywebbuilder.com/quick-n-easy-web-builder-7_${pkgver}_amd64.deb")
-sha512sums=('0052b7948f409abdb4a544858953ccf8ac68161db9f21d9fd1c50fa1d65e4bcce6c5f95b1a5394c11f525d36e5f73991bb94cd39d4243e47dff865b5da556cdb')
+sha512sums=('ddd036f39a822b8aeb88cbc14c55f095435c5afbb3a04cd08f29e342e90720b35bdc58b0633a5037a20479a31c1106a1edb61e8aa7ebc12edfcee97ec053555f')
 replaces=('quick-n-easy-web-builder-5' 'quick-n-easy-web-builder-6')
 
 package() {
