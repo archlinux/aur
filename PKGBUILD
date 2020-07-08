@@ -1,6 +1,6 @@
 # Maintainer: Ukang'a <ukanga@users.noreply.github.com>
-pkgname=sre-tooling
-pkgver=master
+pkgname=sre-tooling-git
+pkgver=0.7.1.04b628cd
 pkgrel=1
 pkgdesc="A set of useful SRE tools."
 arch=('x86_64')
@@ -13,17 +13,17 @@ depends=(
 makedepends=(
   'go'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/onaio/sre-tooling/archive/${pkgver}.tar.gz")
+source=("git://github.com/onaio/sre-tooling.git")
 sha1sums=('SKIP')
 
 build() {
   export GOPATH="$srcdir"/gopath
   echo $GOPATH
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/sre-tooling"
   EXTRA_GOFLAGS="-modcacherw" make VERSION=$pkgver DESTDIR="$pkgdir" build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/sre-tooling"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr install
 }
