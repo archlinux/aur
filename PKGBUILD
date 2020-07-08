@@ -9,7 +9,7 @@ depends=('libzim>=6.1.1' 'pugixml' 'mustache' 'xapian-core' 'aria2' 'libmicrohtt
 makedepends=('meson' 'gtest')
 url='https://github.com/kiwix/kiwix-lib'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=(35ff73e80b97ee1cfd8e5d222707ee36da4bf8fea28fbc3f3eb423dc13225689)
+sha256sums=(b521b3b8e3eee7821adb162988b15f87117024a6a927c2b8a8b9231f0c486bc3)
 
 build() {
 	cd "${pkgname}-${pkgver}"
