@@ -1,7 +1,7 @@
 # Maintainer: Radim Sückr <contact@radimsuckr.cz>
 
 pkgname=developers-chamber
-pkgver=0.0.41
+pkgver=0.0.43
 pkgrel=1
 pkgdesc='Python developers utility library'
 arch=('any')
