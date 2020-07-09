@@ -51,7 +51,7 @@ package() {
 	install -D -m755 "$srcdir/atlauncher" "$pkgdir/usr/bin/atlauncher"
 
 	# install jar
-	install -D -m644 "$srcdir/ATLauncher/dist/ATLauncher-$(grep -oP "version = '\K[0-9\.]+" $srcdir/ATLauncher/build.gradle).jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
+	install -D -m644 "$srcdir/ATLauncher/dist/ATLauncher-$(sed 's/.Beta//' $srcdir/ATLauncher/src/main/resources/version).jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
 
 	# install desktop launcher with icon
 	install -D -m644 "$srcdir/atlauncher.desktop" "$pkgdir/usr/share/applications/atlauncher.desktop"
