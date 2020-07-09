@@ -1,0 +1,17 @@
+pkgbase = qt5-serialport-595
+	pkgdesc = Reusable Qt serialport controls to create classic desktop-style user interfaces (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-declarative-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtserialport-opensource-src-5.9.5.tar.xz
+	sha256sums = 3bd54fadd0e95503d8b0aa509764140483025cd2b8a6b8036c01afaf6cfc4909
+
+pkgname = qt5-serialport-595
+
