@@ -1,7 +1,7 @@
 pkgbase = task-indicator
 	pkgdesc = Panel indicator for TaskWarrior
 	pkgver = 1.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/umonkey/task-indicator
 	arch = any
 	license = custom:MIT
@@ -9,6 +9,7 @@ pkgbase = task-indicator
 	depends = hicolor-icon-theme
 	depends = python2-gobject2
 	depends = python2-dateutil
+	depends = pygtk
 	optdepends = libappindicator-gtk2: Application indicator support
 	conflicts = task-indicator-git
 	conflicts = taskwarrior-indicator-hg
