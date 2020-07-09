@@ -1,0 +1,17 @@
+pkgbase = qt5-multimedia-595
+	pkgdesc = Reusable Qt Multimedia based UI controls to create classic desktop-style user interfaces (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-base-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtmultimedia-opensource-src-5.9.5.tar.xz
+	sha256sums = 81922399463f3e22bb31dcb5b0a7ca552efeb56620f4d6930d85e4329bd69b20
+
+pkgname = qt5-multimedia-595
+
