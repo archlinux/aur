@@ -1,7 +1,7 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=spicetify-themes-git
-pkgver=r4.ae45f4d
+pkgver=r5.7b1ab7a
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
