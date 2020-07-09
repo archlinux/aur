@@ -1,0 +1,14 @@
+pkgbase = grub-theme-poly-light-git
+	pkgdesc = Simple light GRUB theme
+	pkgver = r39.8f82f98
+	pkgrel = 1
+	url = https://www.pling.com/p/1176413
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = grub-customizer: GUI tool to configure GRUB
+	source = poly-light::git+https://github.com/shvchk/poly-light
+	sha256sums = SKIP
+
+pkgname = grub-theme-poly-light-git
+
