@@ -1,20 +1,21 @@
 pkgbase = arx-fatalis-data-gog
-	pkgdesc = Arx Fatalis game data from GOG.com installer
+	pkgdesc = Arx Fatalis game data from GOG.com installer (for use with arx-libertatis)
 	pkgver = 1.21
 	pkgrel = 1
-	url = http://www.gog.com/en/gamecard/arx_fatalis
-	install = arx-fatalis-data.install
-	arch = i686
-	arch = x86_64
+	url = https://www.gog.com/game/arx_fatalis
+	arch = any
 	license = custom:commercial
 	makedepends = innoextract
-	provides = arx-fatalis-data
+	optdepends = arxlibertatis: native Linux game executable
+	provides = arxfatalis-data
+	conflicts = arxfatalis-data-copy
+	conflicts = arxfatalis-data-demo
 	conflicts = arx-fatalis-data-copy
 	conflicts = arx-fatalis-data-demo
 	source = gog://setup_arx_fatalis_2.0.0.7.exe
-	source = arx-install-data
+	source = https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data
 	md5sums = 5be0898e71632e46ca430d7a32d0179a
-	md5sums = fc5456e4c213af243b65862db8d5db0a
+	md5sums = 2efe17e19aafb303f71d051d46ae2b3e
 
 pkgname = arx-fatalis-data-gog
 
