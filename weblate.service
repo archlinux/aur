@@ -1,0 +1,15 @@
+[Unit]
+Description=Web-based continuous localization
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+User=weblate
+Group=http
+ExecStart=/usr/bin/waitress-serve --unix-socket=/var/run/weblate/weblate.socket --unix-socket-perms=660 --trusted-proxy=localhost --trusted-proxy-headers="x-forwarded-for x-forwarded-host x-forwarded-proto x-forwarded-port" weblate.wsgi:application
+
+WorkingDirectory=/var/lib/weblate
+
+[Install]
+WantedBy=multi-user.target
