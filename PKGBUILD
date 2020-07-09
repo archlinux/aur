@@ -4,37 +4,41 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-noetic-controller-manager'
-pkgver='0.15.1'
-_pkgver_patch=0
+pkgver='0.19.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-noetic-pluginlib
-  ros-noetic-controller-manager-msgs
-  ros-noetic-catkin
-  ros-noetic-hardware-interface
-  ros-noetic-controller-interface
-  ros-noetic-rostest)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+    ros-noetic-controller-interface
+    ros-noetic-controller-manager-msgs
+    ros-noetic-hardware-interface
+    ros-noetic-pluginlib
+    ros-noetic-rostest
+)
 
-ros_depends=(ros-noetic-pluginlib
-  ros-noetic-controller-manager-msgs
-  ros-noetic-hardware-interface
-  ros-noetic-controller-interface)
-depends=(${ros_depends[@]})
+makedepends=(
+    cmake
+    ros-build-tools
+    python-setuptools
+    ${ros_makedepends[@]}
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/controller_manager/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+ros_depends=(
+    ros-noetic-roscpp
+    ros-noetic-std-msgs
+    ros-noetic-rosparam
+    ros-noetic-rospy
+)
 
-# Tarball version (faster download)
+depends=(
+    ${ros_depends[@]}
+)
+
 _dir="ros_control-${pkgver}/controller_manager"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
+sha256sums=('9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae')
 
 build() {
   # Use ROS environment variables

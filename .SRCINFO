@@ -1,24 +1,25 @@
 pkgbase = ros-noetic-controller-manager
 	pkgdesc = ROS - The controller manager.
-	pkgver = 0.15.1
-	pkgrel = 2
+	pkgver = 0.19.1
+	pkgrel = 1
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-noetic-pluginlib
-	makedepends = ros-noetic-controller-manager-msgs
+	makedepends = python-setuptools
 	makedepends = ros-noetic-catkin
-	makedepends = ros-noetic-hardware-interface
 	makedepends = ros-noetic-controller-interface
+	makedepends = ros-noetic-controller-manager-msgs
+	makedepends = ros-noetic-hardware-interface
+	makedepends = ros-noetic-pluginlib
 	makedepends = ros-noetic-rostest
-	depends = ros-noetic-pluginlib
-	depends = ros-noetic-controller-manager-msgs
-	depends = ros-noetic-hardware-interface
-	depends = ros-noetic-controller-interface
-	source = ros-noetic-controller-manager-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
-	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-rosparam
+	depends = ros-noetic-rospy
+	source = ros-noetic-controller-manager-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
+	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
 
 pkgname = ros-noetic-controller-manager
 
