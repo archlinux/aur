@@ -1,7 +1,7 @@
 # Maintainer: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=4.8c
+pkgver=4.9c
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
@@ -11,8 +11,12 @@ depends=('gtk2')
 optdepends=('openvr: For VR support')
 replaces=('ftcfrcsimulator')
 
+# Base name of files in the zip
+# The developers seem to change the scheme they are using every release
+_files_name="xRC Simulator v4.9"
+
 source=(
-	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1036"
+	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1143"
 	"xrcsimulator.desktop"
 	"16x16.png"
 	"24x24.png"
@@ -24,7 +28,7 @@ source=(
 )
 
 sha1sums=(
-	"a6694b630f74556a36c3dbb4ae25be40ebf01403"
+	"64a64b09f0b2af445ffb2c604cddc462454d5eb7"
 	"07ee699a267425f01c7e28c2369ba6521bd515ec"
 	"7a0283d47e945b66a82dcbd11bdd10a6406dd027"
 	"deb5297344427dd07d8044543f1c023b0c4c001c"
@@ -39,15 +43,15 @@ package() {
 	cd "${srcdir}"
 	mkdir -p "${pkgdir}/usr/share/xrcsimulator" "${pkgdir}/usr/bin"
 	# Copy data to /usr/share, set directory permissions to 755, file permissions to 644
-	cp -r "xRCSim_v${pkgver}_Data" "${pkgdir}/usr/share/xrcsimulator/"
+	cp -r "${_files_name}_Data" "${pkgdir}/usr/share/xrcsimulator/"
 	chmod -R 0755 "${pkgdir}/usr/share/xrcsimulator"
 	find "${pkgdir}/usr/share/xrcsimulator/" -type f -exec chmod 644 {} \;
 	# Copy binary over
-	install -Dm755 "xRCSim_v${pkgver}.x86_64" "${pkgdir}/usr/share/xrcsimulator/xRCSim_v${pkgver}.x86_64"
+	install -Dm755 "${_files_name}.x86_64" "${pkgdir}/usr/share/xrcsimulator/${_files_name}.x86_64"
 	# Put a script in /usr/bin to run app
 	cat <<EOF > "${pkgdir}"/usr/bin/xrcsimulator
 #!/bin/bash
-"/usr/share/xrcsimulator/xRCSim_v${pkgver}.x86_64"
+"/usr/share/xrcsimulator/${_files_name}.x86_64"
 EOF
 	chmod 0755 "${pkgdir}"/usr/bin/xrcsimulator
 	# Desktop Entry
