@@ -3,7 +3,7 @@
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname="murmur-static"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (static version)"
 arch=("i686" "x86_64")
@@ -16,11 +16,11 @@ conflicts=(murmur murmur-git murmur-ice)
 options=("!strip")
 backup=("etc/murmur.ini")
 install="murmur.install"
-source=(https://mumble.info/snapshot/murmur-static_x86-${pkgver}.tar.bz2{,.sig}
+source=(https://mumble.info/snapshot/stable/murmur-static_x86-${pkgver}.tar.bz2{,.sig}
         "murmur.service"
         "murmur.sysusers"
         "murmurd.1")
-sha512sums=('e429a9850fcb6fa73d83ea5ec181ef73c69b06b95677c595a20eed6b43e4857994faef169e52ece87da9bdf4a66ccd70b43b0bddc2554f6415a2f408eaab7bc1'
+sha512sums=('f6c6efc8ec8aa48efbbde756ba1262a4cb5436b308a456241250bd8e3cc30cde454a00966ea89a358a0e3bcc1ead3e9dc9c738544b29c52b0cac08738afe5938'
             'SKIP'
             'fc230c3d7119afed34485eeb84fd935968dc69e4a00cbdbebc3a4f4d4ce155613b4581e43c07208d513a6ba4d240ba84058a85f04b2188bfa406f70256f13f65'
             '5af28d0c2b2b072cfbd500b5f63549e88a86cf3fc15e4d2df89e787c4d2bafdecbe078a518e0d1b25d82f9873cb06838ec1c9ebed625ffb7e8c80fcd942ebf74'
