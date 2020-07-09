@@ -1,8 +1,8 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=ibus-daemon
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=0
 pkgdesc='SystemD user service for IBus'
 arch=(any)
 license=(MIT)
