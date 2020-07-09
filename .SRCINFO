@@ -7,6 +7,7 @@ pkgbase = mango
 	license = GPL
 	makedepends = dotnet-sdk>=3.1.0
 	depends = fakepkg
+	options = !strip
 	source = https://gitlab.com/Taro94/mango/-/archive/1.0.0/mango-1.0.0.tar.gz
 	md5sums = 6abbeb989febf657b363a95c5d328421
 
