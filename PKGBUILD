@@ -1,6 +1,6 @@
 # Maintainer: Akaash Suresh <https://github.com/Curry>
 pkgname=qmk
-pkgver=0.0.34
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
@@ -34,7 +34,7 @@ depends=(
 )
 makedepends=('python-setuptools' 'python' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/q/qmk/qmk-${pkgver}.tar.gz")
-sha256sums=('54b751abc83fd985e06bf3b5407070ba3321d5fb8d69419845982b3a48673a7d')
+sha256sums=('e704ca31cdca264bfdd99c72a4849a9e9762043e4bf328118c49af92d1c0a3b5')
 
 build() {
   pip install --no-deps --target="deps" hjson
