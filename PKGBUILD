@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta3.r0.ga79b0fc01d
+pkgver=9.2.beta4.r0.g02b0be1ff8
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -45,8 +45,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
         sagemath-gap-4.11.patch
-        sagemath-flint-2.6.patch
-        sagemath-cython-0.29.20.patch)
+        sagemath-flint-2.6.patch)
 sha256sums=('SKIP'
             '5dbff7afecbc78e8ff7749b2ac929e8d2104e205bb2193f05a9687ce5ce65cf4'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
@@ -58,8 +57,7 @@ sha256sums=('SKIP'
             'e3d394b818bb575c509f5113ccfab9a5283c7d43bda9d1503951c820cd7fd472'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'aeb6bb7a8d40f3d3b3547ee5f1e67e876051d9463cd1e0000b497c4d0f3e2fe9'
-            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
-            '5bd813b8cde1604a471687571e3872595ceeee2d21cb8ae21db33aab53e49adf')
+            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
 
 pkgver() {
   cd sage
@@ -96,8 +94,6 @@ prepare(){
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 # Fix gap.version() and doctests with GAP 4.11
   patch -p1 -i ../sagemath-gap-4.11.patch
-# Fix crash with cython 0.29.20
-  patch -p1 -i ../sagemath-cython-0.29.20.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
