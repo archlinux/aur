@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.7
+pkgver=5.7.8
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -79,30 +79,34 @@ _gcc_more_v='20200615'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
-  0000-sphinx-workaround.patch
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
+  "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
+  "unfuck-ck1-fix-suspend-to-ram.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch"
+  0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
-  0004-drm-amd-display-Only-revalidate-bandwidth-on-medium-.patch
-  "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
+  0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
+  0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0005-Arch-Linux-kernel-v5.7.8-arch1.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f840b9679283343c165516585c3070ebb277528721c890e9410a58e9d071ee7f'
+sha256sums=('afb577b88e400758ea64109937bb514ab8171fe9c5613138928ac232a3844dc6'
             'SKIP'
             'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
-            '1716e59693757f339fda588b268ff6f5edc3f2ad61bbe8a61832692572e25b1a'
-            '040420a533f7024b49633c4cf397ec95e9c915827e6230abe99890fcd769b009'
-            '97a961d9394fcfed39986798432a4170a8dd460d26eeef4c992810f1680e7f9c'
-            'cf50d4a3f343074bfacca9b148df7b034c15732057ada962fb73c94d80bb1229'
-            '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328')
+            '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328'
+            '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            '42ae58801f336060edb644d87893c84bad689546f0504f19a03bfe350fb16dc8'
+            '504bb0b670eb8786fc9da0928db0dcb4e302e43ab8bd398f54e33ac860bd1c60'
+            'e0612815268040772a49e7730521573b91efb495e7308ad707a74f3a7c3e04ef'
+            '32179d328fcffbff4b7f4d7b54d53da799d8086dac867c6ee5a241c20f5e6fb4'
+            '10087dc38ef6115625ebaa8906b4a9619f1629d4745b0a5a9f402c4575f74ad6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -152,6 +156,7 @@ prepare() {
   # ck patchset itself
   patch -Np1 -i ../"${_ckpatch}"
   patch -Np1 -i ../unfuck-ck1.patch
+  patch -Np1 -i ../unfuck-ck1-fix-suspend-to-ram.patch
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
