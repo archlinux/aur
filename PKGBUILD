@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=proby
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Check whether hosts are reachable on certain ports and return result on HTTP"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/svenstaro/proby"
 license=('MIT')
 makedepends=('rust')
 source=($pkgname-$pkgver.tar.gz::https://github.com/svenstaro/proby/archive/v${pkgver}.tar.gz)
-sha512sums=('e095430da0121d847104ca0e2c53beb42ad050c7e8b6b56361fead8a6ee86e836b541bb44ddd253c480ed4fbaf8248cce1dffb75ff48a9ee3d5eb3ecf82abb8d')
+sha512sums=('cffe63b4cb8f215cd7c539c006f9298a3e332598f61680d0c07c2c0baca37a3bb019ff9ebc22d1c878779ab73291e4d502e29f0beb39a2d72aa1498138ce1cae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
