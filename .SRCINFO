@@ -1,0 +1,20 @@
+pkgbase = qt5-serialbus-595
+	pkgdesc = Reusable Qt serialbus controls to create classic desktop-style user interfaces (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-declarative-595
+	depends = qt5-serialport-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtserialbus-opensource-src-5.9.5.tar.xz
+	source = socketcan_missing_include.patch
+	sha256sums = c53e9360e39dfbf27dfc19dba7337174d29691f5dd398f0ef05e803db5eee53f
+	sha256sums = 4b976004ca39b7cff6abbf937be2580674edcb08a21a247468b358f0c31bfba9
+
+pkgname = qt5-serialbus-595
+
