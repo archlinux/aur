@@ -1,7 +1,7 @@
 # Maintainer: Chad Kunde <Kunde21@gmail.com>
 
 pkgname=gopls
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=0
 pkgdesc='Language server for Go programming language'
 arch=(x86_64 aarch64 armv7h armv7l)
@@ -14,7 +14,7 @@ conflicts=('go-tools'
            'go-tools-complete-git')
 provides=('gopls')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/tools/archive/gopls/v${pkgver}.tar.gz")
-sha256sums=('bce85aed296569fa4342845b6248ee100a71adefde17fbbc75c32deaec64f058')
+sha256sums=('b6dfeded6bec0bf960978519cf2d05cb6d996f15d0f13829bdb490de3ca6c675')
 
 prepare() {
   cd "tools-${pkgname}-v${pkgver}/${pkgname}"
