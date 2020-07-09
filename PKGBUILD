@@ -2,8 +2,8 @@
 # Contributor: dustball
 
 pkgname=oblogout-fork-git
-pkgver=20130106
-pkgrel=4
+pkgver=r5.d84fd57
+pkgrel=1
 pkgdesc="GTK/Cairo based logout box styled for Crunchbang"
 arch=('any')
 url='https://github.com/Cloudef/oblogout-fork'
@@ -24,6 +24,11 @@ source=("${pkgname%-git}::git+${url}"
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${pkgname%-git}"
