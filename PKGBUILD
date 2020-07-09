@@ -1,4 +1,5 @@
-# Maintainer: 0xpanic 
+# Maintainer: 0xpanic <kwswesey at gmail dot com>
+
 pkgname=fortune-mod-dril
 pkgver=20200708
 pkgrel=1
@@ -17,6 +18,6 @@ build()
 
 package()
 {
-    install -m644 -- dril dril.dat ${pkgdir}/usr/share/fortune
+    install -D -m644 dril dril.dat ${pkgdir}/usr/share/fortune
 }
 
