@@ -63,14 +63,16 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.6.14
-_pkgverpntrel=14
+pkgver=5.7.7
+_pkgverpntrel=7
 pkgrel=1
-_ckpatchversion=2
+_ckpatchversion=1
 _cpusched="MuQSS"
 _sched_yield_type="0"
 _smt_nice="true"
+_runqueue_sharing="mc-llc"
 _timer_freq="100"
+_default_cpu_gov="performance"
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -87,17 +89,22 @@ source=(
   config
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0004-5.6-ck2.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0004-glitched-muqss.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux56-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux56-tkg/The-new-cgroup-slab-memory-controller.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux56-tkg/le9i.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux56-tkg/mm_proactive_compaction.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux56-tkg/zstd.mypatch"
+  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-glitched-muqss.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
 )
 
 
@@ -105,29 +112,34 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('1941f86c38e5c81b87dddeb808710b9f'
+md5sums=('11c4b191621d4ad02f56b0cca2fc6b57'
          'SKIP'
-         '4eb842d9ffb559f8e3131c846ab47a74'
+         'dd2441189c14b66f1f051121d5602345'
          '2cebdad39da582fd6a0c01746c8adb42'
-         'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
+         'cb960fcd1691d360491ed5c97a63a032'
+         '6a96f2990de31babd87209316fcc8c19'
+         'ec22107609653d065a65077d4e076a16'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         '40e097c2afbcc1dceb07f85a7cb63b96'
-         'dd4f93989625fab9cdb3d2c3e7e52fcf'
+         'b69a31e8099f3337fe3968864e404108'
+         'aa8f5bb0b644cbef02c4d55c3956026a'
          '75602fa70033aef9cb42f3df16ec2eb3'
+         '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         '9ed187660600a7884284aa6b3ddb08c6'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         '0633bf8f7561c6903b445ff476815dc0'
+         'f6b397e82f0433178e8e4a9c45a20e62'
+         'a6106ab8f5e3a275d911daa7f439e576'
+         '7e050ca812e2bc0a1a2d108c3a14bc98'
+         '0c8cc772b48fcd317b62af52a99822a6'
+         '83b1f3f9cdedb189310f8e4228cdc2c0'
+         '5d7807c86a391e393e813638333c0d3b'
+         '2710fa5003f9babdea3815bf17bcba2d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice if you don't have hyperthreading"
+  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice and _runqueue_sharing"
   
   cd linux-${pkgver}
 
@@ -160,12 +172,20 @@ prepare() {
 #    patch -Np1 < "../$src"
 #  done
   
+  patch -Np1 -i ../0000-sphinx-workaround.patch
+  
+  patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  
+  patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  
+  patch -Np1 -i ../0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
+  
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
 
   patch -Np1 -i ../0003-glitched-base.patch
   
-  patch -Np1 -i ../0004-5.6-ck2.patch
+  patch -Np1 -i ../0004-5.7-ck1.patch
   
   patch -Np1 -i ../0004-glitched-muqss.patch
   
@@ -321,6 +341,21 @@ prepare() {
     echo "# CONFIG_SMT_NICE is not set" >> ./.config
   fi
   
+    # rq sharing
+  if [ "$_runqueue_sharing" == "none" ]; then
+    echo -e "CONFIG_RQ_NONE=y\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ -z "$_runqueue_sharing" ] || [ "$_runqueue_sharing" == "smt" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\nCONFIG_RQ_SMT=y\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "mc" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\nCONFIG_RQ_MC=y\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "smp" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\nCONFIG_RQ_SMP=y\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "all" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\nCONFIG_RQ_ALL=y" >> ./.config
+  elif [ "$_runqueue_sharing" == "mc-llc" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\nCONFIG_RQ_MC_LLC=y\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  fi
+  
   # timer freq
   if [ -n "$_timer_freq" ] && [ "$_timer_freq" != "300" ]; then
     sed -i -e 's/CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' ./.config
@@ -386,6 +421,15 @@ prepare() {
     echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
   fi
 
+    # default cpu gov
+  if [ "$_default_cpu_gov" == "performance" ]; then
+    sed -i -e 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e 's/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+  elif [ "$_default_cpu_gov" == "ondemand" ]; then
+    sed -i -e 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e 's/# CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND=y/' ./.config
+  fi
+  
   # disable numa
     sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
         -i -e '/CONFIG_AMD_NUMA=y/d' \
@@ -404,12 +448,15 @@ prepare() {
     sed -i -e 's/CONFIG_NO_HZ_FULL=y/# CONFIG_NO_HZ_FULL is not set/' ./.config
     sed -i -e 's/# CONFIG_NO_HZ is not set/CONFIG_NO_HZ=y/' ./.config
     sed -i -e 's/# CONFIG_NO_HZ_COMMON is not set/CONFIG_NO_HZ_COMMON=y/' ./.config
+    
+  # acs override
+  patch -Np1 -i ../0006-add-acs-overrides_iommu.patch
+  
+  # fsync support
+  patch -Np1 -i ../0007-v5.7-fsync.patch
 
   # bcachefs
-  patch -Np1 -i ../0008-5.6-bcachefs.patch
-
-  # fsync support
-  patch -Np1 -i ../0007-v5.6-fsync.patch
+  patch -Np1 -i ../0008-5.7-bcachefs.patch
   
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
@@ -442,7 +489,7 @@ prepare() {
 }
 
 build() {
-  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice if you don't have hyperthreading"
+  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice and _runqueue_sharing"
   
   cd linux-${pkgver}
   make all
