@@ -14,7 +14,7 @@ pkgname=(
   'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
 pkgver=1.20.0.r680.g5188603ff
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -225,6 +225,7 @@ package_xorg-server-devel-hidpi-git() {
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
+  _install fakeinstall/usr/lib/pkgconfig/xwayland.pc
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
