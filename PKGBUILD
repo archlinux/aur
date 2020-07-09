@@ -42,6 +42,7 @@ build() {
     # Install the package dependencies. Some of these exist as AUR packages,
     # but many do not, and some rely on forks of upstream packages. To minimise
     # drift from upstream, let's just build everything.
+    opam update
     opam install . --deps-only -y
 
     # Actually build comby.
