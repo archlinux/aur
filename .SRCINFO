@@ -1,6 +1,6 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
-	pkgver = 2.19.3
+	pkgver = 2.21.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstan
 	arch = i686
@@ -9,13 +9,15 @@ pkgbase = r-rstan
 	makedepends = gcc
 	makedepends = make
 	depends = r>=3.4.0
-	depends = r-stanheaders>=2.18.1
-	depends = r-ggplot2>=2.0.0
+	depends = r-stanheaders>=2.21.0
+	depends = r-ggplot2>=3.0.0
 	depends = r-inline
 	depends = r-gridextra>=2.0.0
 	depends = r-rcpp>=0.12.0
-	depends = r-loo>=2.0.0
+	depends = r-rcppparallel>=5.0.1
+	depends = r-loo>=2.3.0
 	depends = r-pkgbuild
+	depends = r-v8
 	depends = r-rcppeigen>=0.3.3.3.0
 	depends = r-bh>=1.72.0.2
 	depends = pandoc
@@ -26,8 +28,8 @@ pkgbase = r-rstan
 	optdepends = r-rstantools
 	optdepends = r-rstudioapi
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/rstan_2.19.3.tar.gz
-	md5sums = d2bf7e68548600c8c1c6f454dc6203dd
+	source = https://cran.r-project.org/src/contrib/rstan_2.21.1.tar.gz
+	md5sums = 619d65bee16fb0e5699e3bbb0186af8a
 
 pkgname = r-rstan
 
