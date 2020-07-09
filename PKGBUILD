@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.1.11+310+g3c3c8033
+pkgver=3.2.0_b2+1+g29c9b9bd
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -18,6 +18,8 @@ depends=('bzip2'
          'glu'
          'gtk3'
          'libgl'
+         'lua'
+         'mpg123'
          'sfml>=2.5'
          'webkit2gtk'
          'wxgtk3>=3.0'
