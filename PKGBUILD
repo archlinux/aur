@@ -1,7 +1,7 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 
 pkgname=f3d
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('vtk9')
 makedepends=('cmake')
 provides=('f3d')
 source=("https://gitlab.kitware.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('8f21a5950434050884f4587aa1587b715eaf34c0895f7fd2b20da726a06204cd')
+sha256sums=('fb362dba3ccf49db9e8841d8a5310f37399bfea8866b6e040ce85670d54b97f7')
 
 build() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
