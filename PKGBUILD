@@ -1,13 +1,13 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mop-git
-pkgver=v0.2.0.r80.g4f48191
+pkgver=v0.2.0.r89.g570a5d6
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mop-tracker/mop'
 license=('MIT')
-makedepends=('go')
+makedepends=('git' 'go')
 options=('!strip' '!emptydirs')
 _gourl="github.com/mop-tracker/mop"
 
