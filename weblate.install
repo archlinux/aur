@@ -2,12 +2,14 @@
 
 # arg 1:  the new package version
 post_install() {
-	if [[ ! -e /var/lib/matrix-registration/config.yaml ]]; then
-		cat <<-EOF
-		==> A configuration file called config.yaml needs to be created before you can start
-		    the matrix-registration server.
+	cat <<-EOF
+	==> The weblate management command needs to be run as user weblate inside /var/lib/weblate 
+            You'll need to configure a database backend and then run at least 'weblate migrate' and 'weblate collectstatic'.
+            Then create an admin user with 'weblate createadmin' and finally 'weblate changesite --set-name <weblate.yourdomain>'.
+            This package is configured to run weblate with the waitress wsgi server serving it on a unix domain socket under
+            /var/run/weblate/weblate.socket. A reverse proxy config can be found here: https://docs.weblate.org/en/latest/admin/install.html#running-server
+            You'll also need to start/enable the celery-weblate.service for background task processing.
 
-		    You can start from /etc/matrix-registration/config.sample.yaml.
-		EOF
-	fi
+            Consult upstream documentation for complete install instructions. 
+	EOF
 }

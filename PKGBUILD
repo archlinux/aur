@@ -58,6 +58,7 @@ optdepends=('python-psycopg2: postgres support'
             'git-review: gerrit support')
 checkdepends=('python-selenium' 'python-responses')
 backup=('etc/webapps/weblate/settings.py' 'etc/celery/weblate.conf')
+install=weblate.install
 
 source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         'sysusers-weblate.conf'
