@@ -1,0 +1,11 @@
+diff -u -r Metview-5.9.0-Source-orig/mir/src/mir/param/Rules.h Metview-5.9.0-Source/mir/src/mir/param/Rules.h
+--- Metview-5.9.0-Source-orig/mir/src/mir/param/Rules.h	2020-07-09 11:49:47.693396296 +0200
++++ Metview-5.9.0-Source/mir/src/mir/param/Rules.h	2020-07-09 11:50:42.360718782 +0200
+@@ -13,6 +13,7 @@
+ #ifndef mir_param_Rules_h
+ #define mir_param_Rules_h
+ 
++#include <string>
+ #include <map>
+ #include <set>
+ 
