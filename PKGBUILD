@@ -2,7 +2,8 @@ pkgdesc="ROS - Messages for interfacing with various computer vision pipelines, 
 url='http://www.ros.org/'
 
 pkgname='ros-noetic-vision-msgs'
-pkgver='1.0.0'
+epoch=1
+pkgver='0.0.1'
 arch=('any')
 pkgrel=1
 license=('Apache License 2.0')
@@ -25,7 +26,7 @@ depends=(${ros_depends[@]})
 
 _dir="vision_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Kukanani/vision_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('c3d9bb2b7eb3dec393e87b7c6d6eeb772ab57aed4cd80c00ef5da6240373aecd')
+sha256sums=('c50d20dcf010ab02c6c167e58d0f4fc23230d9a90ec774219f6baf7d50597ad9')
 
 build() {
   # Use ROS environment variables
