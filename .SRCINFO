@@ -1,20 +1,17 @@
 pkgbase = fgit-go
 	pkgdesc = A tool to do git operation with fastgit easily
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/fastgitorg/fgit-go
-	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = arm64
 	license = GPL3
+	makedepends = upx
 	depends = git
+	depends = glibc
 	provides = fgit
 	conflicts = fgit
-	source_i686 = fgit::https://github.com/fastgitorg/fgit-go/releases/download/0.5/fgit-linux-386
-	md5sums_i686 = 620c2f28bc1c810375f519e6a26a3fe4
-	source_x86_64 = fgit::https://github.com/fastgitorg/fgit-go/releases/download/0.5/fgit-linux-amd64
-	md5sums_x86_64 = 62951732ddfb354907208e25500eb39b
+	source = fgit-go-0.6::git+https://github.com/fastgitorg/fgit-go#tag=0.6
+	sha512sums = SKIP
 
 pkgname = fgit-go
 
