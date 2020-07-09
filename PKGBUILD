@@ -1,15 +1,15 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gobetween-bin
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Modern & minimalistic load balancer for the Сloud era'
 arch=('x86_64')
 url="http://gobetween.io"
 license=('MIT')
 provides=('gobetween')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yyyar/gobetween/releases/download/${pkgver}/gobetween_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('41c8f4eef0d2c5646d253caa55d14992cbb539c1ed2478a6bced415dd72f4171')
+sha256sums=('4f2beec70858abb2064bba1d886db30e9969210df6ab31c1f476ef8dcd8f4f3f')
 
 package() {
   install -Dm755 "${srcdir}"/gobetween -t "${pkgdir}/usr/bin"
