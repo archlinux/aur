@@ -1,7 +1,7 @@
 pkgbase = python-pychromecast
 	pkgdesc = Library for Python 3 to communicate with the Google Chromecast
 	pkgver = 7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/balloob/pychromecast
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-pychromecast
 	depends = python-six
 	depends = python-setuptools
 	depends = python-casttube
+	conflicts = python-pychromecast6
 	source = https://github.com/balloob/pychromecast/archive/7.1.1.tar.gz
 	sha512sums = f654e83af0f76c84407f84757a4a81ffaff82f7b944053e1c29c36cfc0eb7ebb4b2598928f458e1fd268239ba660d77276a03159809f1f25f8a5b5ffb9c327b3
 
