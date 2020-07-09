@@ -1,0 +1,17 @@
+pkgbase = lazynpm
+	pkgdesc = A simple terminal UI for npm commands
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/jesseduffield/lazynpm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = lazynpm
+	conflicts = lazynpm
+	source = lazynpm-0.1.4.tar.gz::https://github.com/jesseduffield/lazynpm/archive/v0.1.4.tar.gz
+	sha256sums = 841583d686fa55872a4136627c0bed9d15edd6f87989a3a64ff7b28a0784254e
+
+pkgname = lazynpm
+
