@@ -3,10 +3,10 @@
 
 pkgname=orocos-kdl-python-git
 pkgver=r931.546d04d
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains (Python binding)"
 arch=('i686' 'x86_64')
-url="http://www.orocos.org/kdl"
+url="https://www.orocos.org/kdl"
 license=('GPL')
 depends=(orocos-kdl python-sip)
 makedepends=(cmake)
