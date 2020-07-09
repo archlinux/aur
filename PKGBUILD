@@ -2,8 +2,8 @@
 
 pkgname=("python-spotify" "python2-spotify")
 _pkgname=pyspotify
-pkgver=2.0.5
-pkgrel=5
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="A Python wrapper for libspotify."
 arch=("i686" "x86_64")
 license=("APACHE")
@@ -12,7 +12,7 @@ depends=("libspotify")
 makedepends=("python-setuptools" "python2-setuptools")
 conflicts=("python2-pyspotify" "pyspotify")
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fbd41c58d62232b0cabb7a9e38d45f36ac221699c006899bdb6be74c04602678')
+sha256sums=('6ae31d8ccd7e1f138a80f08c766173b2ced12d196732f68aee4ae023b7a9ad2a')
 
 prepare() {
   cp -r ${_pkgname}-${pkgver} "python-spotify-${pkgver}"
