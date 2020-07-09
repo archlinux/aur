@@ -10,7 +10,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=2.1.11
+pkgver=2.1.13
 pkgrel=3
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
     "force_gtk_integration.patch"
 )
 sha512sums=(
-    '9f2fba2814a5ab64f946913e32fce66dbc842d9607cbaee00994689ef6a661a04c2a8de5e075fc532e7d8926b51432c06c2b1510b019d729eef40da373d91d42'
+    'f28ae7c8c9a9eb8094fc52784742b470235234a3df7487902152858bc7c297b2dcfe5c8b939cdb9653a356b3835609e7289f53cdf7d5fb3f009823d3dbeb1bd8'
     # Custom patches
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
