@@ -1,7 +1,7 @@
 # Maintainer: barfin
 pkgname=ipwebcam
 pkgver=20200624
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple shell script for using IP Webcam as a V4L2 webcam / sound source "
 arch=("any")
 url="https://github.com/bluezio/ipwebcam-gst"
