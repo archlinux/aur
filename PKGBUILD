@@ -1,7 +1,7 @@
 # Maintainer: travisghansen <travisghansen@yahoo.com>
 
 pkgname=yubico-piv-tool
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Tool to interact with the PIV applet on a YubiKey NEO"
 arch=('armv7h' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ source=(
  "https://developers.yubico.com/yubico-piv-tool/Releases/${pkgname}-${pkgver}.tar.gz"
  "https://developers.yubico.com/yubico-piv-tool/Releases/${pkgname}-${pkgver}.tar.gz.sig"
 )
-md5sums=('93a0bc71d0ebfa74d9f36df4c5e0b07f'
+md5sums=('fda6c27ae459185e5a0f119a5a3d5de0'
          'SKIP')
 validpgpkeys=('0A3B0262BCA1705307D5FF06BCA00FD4B2168C0A'
               '20EE325B86A81BCBD3E56798F04367096FBA95E8'
@@ -33,12 +33,13 @@ validpgpkeys=('0A3B0262BCA1705307D5FF06BCA00FD4B2168C0A'
 options=(!libtool)
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
-  make
+  cmake -B build -S "${pkgname}-${pkgver}" \
+      -DCMAKE_BUILD_TYPE='None' \
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" make install
+  DESTDIR="${pkgdir}" make install -C build
 }
