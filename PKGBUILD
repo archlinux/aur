@@ -1,5 +1,6 @@
 # Maintainer: Kevin Sanchez <kucashu@outlook.com>
 # Maintainer: zhullyb <5435486@qq.com>
+# Maintainer: Ducksoft <realducksoft@gmail.com>
 
 pkgname=fgit-go
 pkgver=0.5
