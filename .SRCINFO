@@ -1,0 +1,14 @@
+pkgbase = grub-theme-poly-dark-git
+	pkgdesc = Simple dark GRUB theme
+	pkgver = r43.567b00c
+	pkgrel = 1
+	url = https://www.pling.com/p/1230780
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = grub-customizer: GUI tool to configure GRUB
+	source = poly-dark::git+https://github.com/shvchk/poly-dark
+	sha256sums = SKIP
+
+pkgname = grub-theme-poly-dark-git
+
