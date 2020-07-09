@@ -1,0 +1,17 @@
+pkgbase = xxexploiter
+	pkgdesc = A tool to help exploit XXE vulnerabilities
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/luisfontes19/xxexploiter
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = xxexploiter-0.1.8.tgz
+	source = https://registry.npmjs.org/xxexploiter/-/xxexploiter-0.1.8.tgz
+	source = https://github.com/luisfontes19/xxexploiter/raw/master/LICENSE.txt
+	sha256sums = d2f23cccc90acf23a577ca6fe31408777635b77fb7f6ea66088807fb132af2f0
+	sha256sums = 468dd4dfe7b77461bb2b644576ca2cec341e3387782dfd82e204b79502fb25b3
+
+pkgname = xxexploiter
+
