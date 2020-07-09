@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-fr
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (fr)
-	pkgver = 79.0a1.20200505
+	pkgver = 80.0a1.20200907
 	pkgrel = 1
 	url = https://www.mozilla.org/fr/firefox/nightly
 	arch = i686
@@ -25,18 +25,18 @@ pkgbase = firefox-nightly-fr
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 0b58ffc470159ca50d699ea1006226f14fd1ea0aa622ac0a3b831ea39e25b46852064848bddfeefa358a86c378aa308c1690399429019e2895e56c7b042e8195
 	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
-	source_i686 = 20200603-firefox-79.0a1.fr.linux-i686.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-79.0a1.fr.linux-i686.tar.bz2
-	source_i686 = 20200603-firefox-79.0a1.fr.linux-i686.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-79.0a1.fr.linux-i686.tar.bz2.asc
-	source_i686 = 20200603-firefox-79.0a1.fr.linux-i686.txt::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-79.0a1.en-US.linux-i686.txt
+	source_i686 = 20200709-firefox-80.0a1.fr.linux-i686.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-80.0a1.fr.linux-i686.tar.bz2
+	source_i686 = 20200709-firefox-80.0a1.fr.linux-i686.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-80.0a1.fr.linux-i686.tar.bz2.asc
+	source_i686 = 20200709-firefox-80.0a1.fr.linux-i686.txt::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-80.0a1.en-US.linux-i686.txt
+	sha512sums_i686 = 42d8821b47c0a5b5819864c512b551e88f3ce56e3941bdd01910ad310cee560994b91c2250a64d925c490a0c30f10517b7298650970ade704b802017cbfb19c1
 	sha512sums_i686 = SKIP
-	sha512sums_i686 = SKIP
-	sha512sums_i686 = SKIP
-	source_x86_64 = 20200603-firefox-79.0a1.fr.linux-x86_64.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-79.0a1.fr.linux-x86_64.tar.bz2
-	source_x86_64 = 20200603-firefox-79.0a1.fr.linux-x86_64.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-79.0a1.fr.linux-x86_64.tar.bz2.asc
-	source_x86_64 = 20200603-firefox-79.0a1.fr.linux-x86_64.txt::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-79.0a1.en-US.linux-x86_64.txt
+	sha512sums_i686 = a80dce7ca10bb29e5190ee350e87ddf40571a4e8e1c498b1f56605b73b5865febab0b965a5f15ccbb65b9d8f0c03f93f6f29fd377c2bb2bae4613b5c751061a8
+	source_x86_64 = 20200709-firefox-80.0a1.fr.linux-x86_64.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-80.0a1.fr.linux-x86_64.tar.bz2
+	source_x86_64 = 20200709-firefox-80.0a1.fr.linux-x86_64.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-80.0a1.fr.linux-x86_64.tar.bz2.asc
+	source_x86_64 = 20200709-firefox-80.0a1.fr.linux-x86_64.txt::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-80.0a1.en-US.linux-x86_64.txt
+	sha512sums_x86_64 = 42a9b4e2651f819a0273eef5f082ce49a4fd64ce758ed96c3256aef40f84f5c4c9e391cdc8fb94f3b507b0de489fd566cbf4806d6a979f12079c84587d81854b
 	sha512sums_x86_64 = SKIP
-	sha512sums_x86_64 = SKIP
-	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = a80dce7ca10bb29e5190ee350e87ddf40571a4e8e1c498b1f56605b73b5865febab0b965a5f15ccbb65b9d8f0c03f93f6f29fd377c2bb2bae4613b5c751061a8
 
 pkgname = firefox-nightly-fr
 

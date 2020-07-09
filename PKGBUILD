@@ -9,8 +9,8 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=79.0a1
-pkgver=79.0a1.20200505
+_version=80.0a1
+pkgver=80.0a1.20200907
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -35,8 +35,12 @@ source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}-l10n/${_src}-x86_64.tar.b
                "${_filename}-x86_64.txt"::"${_url}/${_srcen}-x86_64.txt")
 sha512sums=('0b58ffc470159ca50d699ea1006226f14fd1ea0aa622ac0a3b831ea39e25b46852064848bddfeefa358a86c378aa308c1690399429019e2895e56c7b042e8195'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_i686=(SKIP SKIP SKIP)
-sha512sums_x86_64=(SKIP SKIP SKIP)
+sha512sums_i686=('42d8821b47c0a5b5819864c512b551e88f3ce56e3941bdd01910ad310cee560994b91c2250a64d925c490a0c30f10517b7298650970ade704b802017cbfb19c1'
+                 'SKIP'
+                 'a80dce7ca10bb29e5190ee350e87ddf40571a4e8e1c498b1f56605b73b5865febab0b965a5f15ccbb65b9d8f0c03f93f6f29fd377c2bb2bae4613b5c751061a8')
+sha512sums_x86_64=('42a9b4e2651f819a0273eef5f082ce49a4fd64ce758ed96c3256aef40f84f5c4c9e391cdc8fb94f3b507b0de489fd566cbf4806d6a979f12079c84587d81854b'
+                   'SKIP'
+                   'a80dce7ca10bb29e5190ee350e87ddf40571a4e8e1c498b1f56605b73b5865febab0b965a5f15ccbb65b9d8f0c03f93f6f29fd377c2bb2bae4613b5c751061a8')
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
