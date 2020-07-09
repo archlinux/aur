@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2020.05.14
+pkgver=2020.07.09
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -21,6 +21,7 @@ depends=(
 		"python-requests"
 		"python-lxml"
 		"python-wheel"
+		"tensorflow"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
@@ -31,13 +32,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/deepjyoti30/ytmdl/archive/2020.05.14.tar.gz")
+source=("https://github.com/deepjyoti30/ytmdl/archive/2020.07.09.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
 	cd "ytmdl-${pkgver}"
+	echo "Installing inaSpeechSegmenter using pip since it's not available in AUR."
+	pip install -U inaSpeechSegmenter
 	python setup.py build
 }
 
