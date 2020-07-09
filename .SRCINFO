@@ -3,7 +3,7 @@
 pkgbase = openorienteering-mapper-git
 	pkgdesc = Map drawing program from OpenOrienteering
 	pkgver = 20200411.3.r0.ge2ff8153
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openorienteering.org/apps/mapper/
 	install = openorienteering-mapper.install
 	arch = x86_64

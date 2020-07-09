@@ -9,7 +9,7 @@ _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
 pkgver=20200411.3.r0.ge2ff8153
-pkgrel=1
+pkgrel=2
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
 url='https://www.openorienteering.org/apps/mapper/'
@@ -54,7 +54,7 @@ pkgver() {
 wl_update() {
   find . -name "${2}*.ts" -a ! -name "*template*" -a ! -name "*_en.ts" | \
     xargs basename -s .ts | \
-    xargs -P 0 -I{} sh -c "curl -so \$1.ts ${_wl_dl}/${1}/\${1#${2}}/" -- {}
+    xargs -P 0 -I{} sh -c "curl -Lso \$1.ts ${_wl_dl}/${1}/\${1#${2}}/" -- {}
 }
 
 prepare() {
