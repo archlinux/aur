@@ -93,7 +93,7 @@ _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-tech
 basename=prod
 pkgver="$(pkgver)"
-pkgrel=2
+pkgrel=3
 pkgdesc="Shadow application"
 arch=('x86_64')
 url="https://shadow.tech"
@@ -103,5 +103,5 @@ optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nou
 provides=(shadow-tech)
 source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/Shadow.AppImage")
 # sha512sums=("$(sha512sum))
-sha512sums=('94miJqGtbKuflcFNkrJhQJ3IFvVm8zLHia01aX+KuH1z1vGFeEPA9uAvItcPDiU15pcX6InWjGPT/y2nXW1g8g==')
+sha512sums=('f789a226a1ad6cab9f95c14d92b261409dc816f566f332c789ad35697f8ab87d73d6f1857843c0f6e02f22d70f0e2535e69717e889d68c63d3ff2da75d6d60f2')
 install=$pkgname.install
