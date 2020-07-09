@@ -1,6 +1,5 @@
 pkgname=luajit-openresty
-_pkgver=2.1-20190626
-pkgver=${_pkgver//\-/.}
+pkgver=2.1.20200102.r34.g31116c4d
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua (openresty fork)'
 arch=('i686' 'x86_64')
@@ -9,16 +8,21 @@ license=('MIT')
 depends=('gcc-libs') 
 conflicts=('luajit')
 provides=('luajit')
-source=(https://github.com/openresty/luajit2/archive/v${_pkgver}.tar.gz)
-sha1sums=('da301ba74abcd4bdc36c4c9f37d6ef97b3673fdc')
+source=(git+https://github.com/openresty/luajit2.git#branch=v2.1-agentzh)
+sha1sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/luajit2
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() { 
-  cd $srcdir/luajit2-$_pkgver
+  cd $srcdir/luajit2
   make amalg PREFIX=/usr
 }
 
 package() {
-  cd $srcdir/luajit2-$_pkgver
+  cd $srcdir/luajit2
   make install DESTDIR=$pkgdir PREFIX=/usr
   install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
   install -Dm755 src/luajit $pkgdir/usr/bin/luajit
