@@ -47,7 +47,7 @@ backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
+source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 md5sums=('36b36d4057be89d586689337a2034cbc'
          '5d6781563275b942f0cff1fb172bfd8d')
