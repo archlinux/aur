@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-common
-pkgver=0.0.11.r0.gc696992
+pkgver=0.0.12.r0.g897b341
 pkgrel=1
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
@@ -8,18 +8,13 @@ url="https://buildgrid.build"
 license=('Apache')
 depends=('grpc' 'gtest' 'gmock')
 makedepends=('cmake' 'git')
-_commit=c69699234660e418274e9f4a50f4558c446fda1e # tag 0.0.11
+_commit=897b341620549fcafc25dbe464eaab682d7ebf89 # tag 0.0.12
 source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # https://gitlab.com/BuildGrid/buildbox/buildbox-common/-/issues/71
-  sed -i 's#O_WRONLY);#O_WRONLY, S_IRUSR|S_IWUSR);#' $pkgname/buildbox-common/buildboxcommon/buildboxcommon_systemutils.cpp
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
