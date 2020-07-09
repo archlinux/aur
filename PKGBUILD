@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="unity-mail"
-pkgver="20.7.7.155"
+pkgver="20.7.7.156"
 pkgrel="1"
 pkgdesc="Mail notifications and count for Unity/MATE/Xfce/LXDE/etc."
 arch=("any")
