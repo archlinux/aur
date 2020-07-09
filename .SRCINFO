@@ -1,18 +1,18 @@
 pkgbase = libnvidia-container-bin
 	pkgdesc = NVIDIA container runtime library
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libnvidia-container
 	arch = x86_64
 	license = Apache
 	depends = libcap
 	depends = libseccomp
-	provides = libnvidia-container=1.1.1
+	provides = libnvidia-container=1.2.0
 	conflicts = libnvidia-container
-	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.1.1-1.x86_64.rpm
-	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-devel-1.1.1-1.x86_64.rpm
-	sha256sums = fd9fc6946d5105c51b94d17398259d70cff9b3259fc6cf13a5538dafb3b87b32
-	sha256sums = a61074e27d42a4e2fedd5196859887e7bea3fc62b23412e58ec64213fa850093
+	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.2.0-1.x86_64.rpm
+	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-devel-1.2.0-1.x86_64.rpm
+	sha256sums = 3fa63bf811eacd4454692035bf75594c95582f550865a3dd19e89f968faff1e9
+	sha256sums = a818887b3163ff768f3db1a1fb4422414d2b846473c8ee42c67a416e7502c946
 
 pkgname = libnvidia-container-bin
 
