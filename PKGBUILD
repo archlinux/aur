@@ -1,51 +1,27 @@
-# Maintainer: Sam S. <smls75@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sam S. <smls75@gmail.com>
 
 pkgname=arx-fatalis-data-demo
-pkgver=0
+pkgver=5122
 pkgrel=1
-pkgdesc='Arx Fatalis game data from official free demo'
-url='http://www.arkane-studios.com/uk/arx.php'
-arch=('i686' 'x86_64')
+pkgdesc='Arx Fatalis game data from official freeware demo (for use with arx-libertatis)'
+url='https://arx-libertatis.org/'
+arch=('any')
 license=('custom:freeware')
+provides=('arxfatalis-data')
+replaces=('arx-fatalis-data-demo')
+conflicts=('arxfatalis-data-gog' 'arxfatalis-data-copy'
+           'arx-fatalis-data-gog' 'arx-fatalis-data-copy')
 makedepends=('cabextract' 'libarchive')
-provides=('arx-fatalis-data')
-conflicts=('arx-fatalis-data-gog' 'arx-fatalis-data-copy')
-source=("install-demo")
-md5sums=('d6bc2486243986694426260d2d76f5cb')
-install='arx-fatalis-data-demo.install'
-PKGEXT='.pkg.tar'
-
+optdepends=('arx-libertatis: native Linux game executable')
 _gamepkg="arx_demo_english.zip"
 
+source=("https://downloads.ag.ru/demos/5122/$_gamepkg"
+        "https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data")
+sha512sums=('0cbf0d6da1a373ed29edc49c65ed431117c868ec7bcab04166abd59f5d799460faec506baf191c83fa7c61372888009abb260d8a50e28507a5ec8ab7913a9ad7'
+            'c3b8c2571d204f6a99b053aea3fc6b1db05d89429a40d45bad173b72fa303f64b85d73ef1730f4d229138fb0c9b75c85203c4bebc4b145ec847e9de83a82cbaf')
 
 package() {
-  cd $srcdir
-  _get_local_source "$_gamepkg" || {
-    error "Unable to find the game demo archive. Please download it from one of
-           the sites listed at
-             http://wiki.arx-libertatis.org/Getting_the_game_data#Demo ,
-           rename it to 'arx_demo_english.zip', and copy or symlink it into one
-           of the above directories."
-    exit 1; }
-
-  msg "Starting setup..."
-  chmod +x install-demo
-  ./install-demo "$_gamepkg" "$pkgdir/usr/share/arx"
-  mkdir "$pkgdir/usr/share/games" && ln -s "/usr/share/arx/" "$pkgdir/usr/share/games/arx"
-}
-
-
-# Locate a file or folder provided by the user, and symlink it into $srcdir
-_get_local_source() {
-  msg "Looking for '$1'..."
-  declare -A _search=(['build dir']="$startdir"
-                      ['$LOCAL_PACKAGE_SOURCES']="$LOCAL_PACKAGE_SOURCES")
-  for _key in "${!_search[@]}"; do local _dir="${_search["$_key"]}"
-    if [ -z "$_dir" ]; then _dir="<undefined>"; fi
-    echo -n "    - in $_key ['$_dir'] ... ";
-    if [ -e "$_dir/$1" ]; then
-      echo "FOUND"; ln -sfT "$(readlink -f "$_dir/$1")" "$srcdir/$1"; break; fi
-    echo "NOT FOUND"
-  done
-  if [ ! -e "$srcdir/$1" ]; then return 1; fi
+    chmod +x arx-install-data
+    ./arx-install-data --batch $_gamepkg "$pkgdir"/usr/share/arx
 }
