@@ -15,5 +15,5 @@ options=(!strip)
 package() {
 	cd "$pkgname-$pkgver"
     dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -o published
-    install -Dm 755 "published/${pkgname}" -t "$pkgdir/bin"
+    install -Dm 755 "published/${pkgname}" -t "$pkgdir/usr/bin"
 }
