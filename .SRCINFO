@@ -1,6 +1,6 @@
 pkgbase = libclc-git
 	pkgdesc = Library requirements of the OpenCL C programming language (git version)
-	pkgver = r585.9f6204e
+	pkgver = 0.2.0_r359832.77f8f813a9a
 	pkgrel = 1
 	epoch = 1
 	url = http://libclc.llvm.org/
@@ -10,12 +10,14 @@ pkgbase = libclc-git
 	license = MIT
 	makedepends = clang-git
 	makedepends = git
-	makedepends = python2
+	makedepends = python
+	makedepends = ninja
+	makedepends = cmake
 	provides = libclc
-	conflicts = libclc-amdgpu-git
-	replaces = libclc-amdgpu-git
+	conflicts = libclc
+	replaces = libclc
 	options = staticlibs
-	source = libclc::git+http://llvm.org/git/libclc.git
+	source = llvm-project-git::git+https://github.com/llvm/llvm-project.git
 	md5sums = SKIP
 
 pkgname = libclc-git
