@@ -1,0 +1,17 @@
+pkgbase = roloviewer-bin
+	pkgdesc = Image slideshow viewer
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rosenloecher-it/roloviewer
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = zlib
+	provides = roloviewer
+	noextract = roloviewer-1.0.1.AppImage
+	options = !strip
+	source = roloviewer-1.0.1.AppImage::https://github.com/rosenloecher-it/roloviewer/releases/download/1.0.1/roloviewer-1.0.1-x86_64.AppImage
+	sha256sums = f4a0328e0cb9aa657d34f8d1b4589aba343535e84ef86974f815936b2938d862
+
+pkgname = roloviewer-bin
+
