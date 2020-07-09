@@ -1,12 +1,12 @@
 # Maintainer: barfin
 pkgname=ipwebcam
 pkgver=20200624
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple shell script for using IP Webcam as a V4L2 webcam / sound source "
 arch=("any")
 url="https://github.com/bluezio/ipwebcam-gst"
 license=('unknown')
-depends=("v4l2loopback-dkms")
+depends=("v4l2loopback-dkms" "adb")
 source=("https://raw.githubusercontent.com/bluezio/ipwebcam-gst/master/prepare-videochat.sh")
 md5sums=('5efb2cdde2e336641e188c197534c375')
 
