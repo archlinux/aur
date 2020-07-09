@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r578.g49456e0a3
+pkgver=1.20.0.r680.g5188603ff
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -25,7 +25,8 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
-source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+_srcurl="git+https://gitlab.freedesktop.org/xorg/xserver.git"
+source=($_srcurl
         xvfb-run
         xvfb-run.1)
 sha256sums=('SKIP'
@@ -219,6 +220,7 @@ package_xorg-server-devel-git() {
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
+  _install fakeinstall/usr/lib/pkgconfig/xwayland.pc
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
