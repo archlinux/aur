@@ -13,6 +13,6 @@ md5sums=('5efb2cdde2e336641e188c197534c375')
 package() {
   install -Dm755 "${srcdir}/prepare-videochat.sh" "${pkgdir}/opt/ipwebcam/ipwebcam"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/opt/ipwebcam/ipwebcam" "${pkgdir}/usr/bin/ipwebcam"
+  ln -s "/opt/ipwebcam/ipwebcam" "${pkgdir}/usr/bin/ipwebcam"
   
 }
