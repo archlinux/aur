@@ -1,9 +1,0 @@
-# This is an example default caddy file that serves static files
-#
-# Refer to the Caddy docs for more information:
-# https://caddyserver.com/docs/
-
-:80 {
-	root * /usr/share/caddy
-	file_server
-}
