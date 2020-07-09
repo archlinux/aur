@@ -7,7 +7,7 @@ _pkgname=caddy
 pkgver=2.1.1
 _tag=v2.1.1
 _distcommit='a509155e3cff18af793f6af5f930a71c89e05df8'
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast web server with automatic HTTPS"
 arch=('x86_64')
 url="https://caddyserver.com"
@@ -15,6 +15,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 provides=('caddy')
+conflicts=('caddy')
 backup=('etc/caddy/Caddyfile'
         'etc/caddy/caddy.conf')
 source=("git+https://github.com/caddyserver/caddy#tag=${_tag}?signed"
