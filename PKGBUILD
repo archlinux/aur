@@ -3,7 +3,7 @@
 pkgname=wifiphisher-extra-phishing-pages-git
 _pkgname=extra-phishing-pages
 pkgver=r47.177c781
-pkgrel=2
+pkgrel=3
 pkgdesc='Community-built scenarios for Wifiphisher'
 arch=('any')
 url='https://github.com/wifiphisher/extra-phishing-pages'
@@ -21,7 +21,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p "${pkgdir}/usr/lib/python3.8/site-packages/wifiphisher/data/phishing-pages/"
-  find . -maxdepth 1 ! -path . ! -path .git -type d -exec\
+  find . -maxdepth 1 ! -path . ! -path ./.git -type d -exec\
     cp -r '{}' "${pkgdir}/usr/lib/python3.8/site-packages/wifiphisher/data/phishing-pages/" \;
   install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

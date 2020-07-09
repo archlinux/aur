@@ -1,7 +1,7 @@
 pkgbase = wifiphisher-extra-phishing-pages-git
 	pkgdesc = Community-built scenarios for Wifiphisher
 	pkgver = r47.177c781
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wifiphisher/extra-phishing-pages
 	arch = any
 	license = GPL3
