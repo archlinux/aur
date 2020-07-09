@@ -98,10 +98,10 @@ pkgdesc="Shadow application"
 arch=('x86_64')
 url="https://shadow.tech"
 license=('unknown')
-depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat' 'gnome-keyring')
+depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat' 'gnome-keyring')
 optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nouveau-fw: Driver for old Nvidia GPU' 'libva-intel-driver: Driver for Intel GPU')
 provides=(shadow-tech)
 source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/Shadow.AppImage")
 # sha512sums=("$(sha512sum))
-sha512sums=('SKIP')
+sha512sums=('94miJqGtbKuflcFNkrJhQJ3IFvVm8zLHia01aX+KuH1z1vGFeEPA9uAvItcPDiU15pcX6InWjGPT/y2nXW1g8g==')
 install=$pkgname.install
