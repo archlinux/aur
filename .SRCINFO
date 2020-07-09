@@ -1,0 +1,18 @@
+pkgbase = dmenu-xresources
+	pkgdesc = Generic menu for X, configured via .Xresources
+	pkgver = 4.9
+	pkgrel = 1
+	url = https://tools.suckless.org/dmenu/
+	arch = x86_64
+	license = MIT
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	source = https://dl.suckless.org/tools/dmenu-4.9.tar.gz
+	source = https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff
+	sha512sums = c2779209fe012de8ca1cdd72923da6d594f4a8368c85c3c0e0afd4ae489a95fe0e6f05a947d115b6b389aa7170ab14c2c645a2031353b0a08f38327ab461fe65
+	sha512sums = SKIP
+
+pkgname = dmenu-xresources
+
