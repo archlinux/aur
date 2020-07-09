@@ -1,10 +1,10 @@
-# Maintainer: Scipio <archscipio@gmail.com>
+# Maintainer: Scipio <archscipio@laposte.net>
 # Contributor: Morgan Howe <mthowe@gmail.com>
 # Contributor: Marc Rozanc <marc@rozanc.fr>
 
 pkgname=ltl2ba
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast translation from LTL formulas to Buchi automata."
 url="http://www.lsv.ens-cachan.fr/~gastin/ltl2ba/"
 arch=('x86_64' 'i686')
