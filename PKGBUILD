@@ -1,8 +1,9 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 # Maintainer: sh0rez <me@shorez.de>
+# Maintainer: Duologic <jeroen@simplsitic.be>
 
 pkgname=tanka
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=0
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
