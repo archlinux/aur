@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ build() {
         -DCMAKE_INSTALL_DATA_DIR=/usr/share/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
-	-DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
+        -DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
         -DCMAKE_BUILD_TYPE=release \
 	../"${pkgname}"
     make
