@@ -6,7 +6,7 @@ url='https://wiki.ros.org/stage_ros'
 pkgname='ros-noetic-stage-ros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-noetic-tf
@@ -21,6 +21,7 @@ ros_makedepends=(ros-noetic-tf
   ros-noetic-geometry-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  glu
   boost)
 
 ros_depends=(ros-noetic-tf
@@ -32,15 +33,9 @@ ros_depends=(ros-noetic-tf
   ros-noetic-nav-msgs
   ros-noetic-sensor-msgs)
 depends=(${ros_depends[@]}
+  glu
   boost)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/stage_ros/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/stage_ros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="stage_ros-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/stage_ros/archive/${pkgver}.tar.gz")
 sha256sums=('21fbe64e3a5f639ce88a69b3ae15eea38a9e2dbeedfb7f9bed21f787706973fb')
