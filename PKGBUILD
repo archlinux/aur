@@ -7,7 +7,7 @@ pkgdesc='Makes you easily write equations in LaTeX and preview them in real-time
 arch=(x86_64)
 url="http://equalx.sourceforge.net/"
 license=(GPL3)
-depends=(exempi ghostscript hicolor-icon-theme poppler qt5-base texlive-bin)
+depends=(exempi ghostscript hicolor-icon-theme poppler qt5-base texlive-core)
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         qt-5.11.patch)
 sha256sums=('7f62e580206bc0e8e83a39bf4161bf6a6b0cd268507d5e1ad0781eeba1191f8b'
