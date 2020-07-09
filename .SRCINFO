@@ -55,7 +55,6 @@ pkgbase = weblate
 	optdepends = hub: Github pull requst support
 	optdepends = lab: Gitlab merge request support
 	optdepends = git-review: gerrit support
-	optdepends = git-svn: subversion support
 	backup = etc/webapps/weblate/settings.py
 	backup = etc/celery/weblate.conf
 	source = https://github.com/WeblateOrg/weblate/releases/download/weblate-4.1.1/Weblate-4.1.1.tar.xz
