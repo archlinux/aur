@@ -1,6 +1,6 @@
 pkgbase = qv2ray
 	pkgdesc = Cross-platform V2ray Client written in Qt (Stable Release)
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -22,12 +22,6 @@ pkgbase = qv2ray
 	provides = qv2ray
 	conflicts = qv2ray
 	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray
-	source = QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor
-	source = SingleApplication::git+https://github.com/itay-grudev/SingleApplication
-	source = x2struct::git+https://github.com/xyz347/x2struct
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = qv2ray
