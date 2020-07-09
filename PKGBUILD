@@ -1,7 +1,7 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.1_04977
-_pkgver=2.1-04977
+pkgver=2.2.1_05193
+_pkgver=2.2.1-05193
 pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('9e950e1dd24f4e5f821e30f81e07aa5bc20856b83dd6058be0bf8659d07e98e8')
+sha256sums=('dc21d6e8f73c08bf686e0aae114df1aae4015e760054416b4bd7a3ff17a600ba')
 
 prepare() {
 	sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
@@ -26,7 +26,7 @@ package() {
 	cp -a piafiles/* $pkgdir/opt/piavpn
 	cp installfiles/*.sh $pkgdir/opt/piavpn/bin
 	chmod +x $pkgdir/opt/piavpn/bin/*.sh
-	setcap 'cap_net_bind_service=+ep' $pkgdir/opt/piavpn/bin/pia-hnsd
+	setcap 'cap_net_bind_service=+ep' $pkgdir/opt/piavpn/bin/pia-unbound
 
 	mkdir $pkgdir/opt/piavpn/var
 
