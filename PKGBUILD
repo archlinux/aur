@@ -55,8 +55,7 @@ optdepends=('python-psycopg2: postgres support'
             'python-ruamel-yaml: Yaml support'
 	    'hub: Github pull requst support'
             'lab: Gitlab merge request support'
-            'git-review: gerrit support'
-            'git-svn: subversion support')
+            'git-review: gerrit support')
 checkdepends=('python-selenium' 'python-responses')
 backup=('etc/webapps/weblate/settings.py' 'etc/celery/weblate.conf')
 
