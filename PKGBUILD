@@ -51,7 +51,7 @@ _major=5.7
 _minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,8 +78,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -338,8 +340,10 @@ sha512sums=('2b64612db07d3f47a6fa1bc52f5b0c400142948621865ccc0000a40fcf7623719b5
             'b0f77cee611f7a18e623aa69a783ab567071edc7333169cf9ad724563f82ed8c0eb587c832b5e968e51d195d1f7ce94305504d266094401cbf48aef517e83e87'
             '4ae60916f8906bd0650901551c29dab3d1af0c578ebdcffc105979e29ec5a683a87b3bfc9d934ebaa5b14247249b1634b36429ac1a8858171b00b8428f311e5b'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            '4082836a612a7a3607e40d054f9f0c2ec86f8a4c58d66c59761e011e0a339ac96ab1b768a14288d1b6272f5adb30444acf65721af1a0af955e9ef320b784497f'
-            '3a6954da24b4452292a6c76a9debba290ab28cccde1dcbc0742ec995c99907f4ac56f590d884548962741cb91a14e4a9efd2cea04c5ee3bcb33c59309ae026fc'
+            '890aa470ab9d8b193e7a353f257a6a2dc09f188b81cd43fc15fa9198e5e8001cc04e208af2a951ea66fd78b50a79d754025bd2a8549e72990a7578aea99a7493'
+            'e90a2acecd8a152afc298aed48dd1d579cbf0813f964fa52a29caa9b37973ad1d25b0fabd910017671e9a5f80d4520f6fb4cfb6e67eabbaef9f535906903aaaf'
+            '53baef7944e95b6dfdfb6ba7f9a44ad6cd20e5947809ce03e5c3a756e0b2e38c9e2dadc26996963a9f2e06fbe4940f8f41127805d6bd7c4ffe979582129c8626'
+            '76bebb2b57a2e8af88754cdf3d546aa4f4e5945831a3e4992856dc98a18c417112e7969b396e435642cd9cbd17511c9d7089c97126dd58b4907363cc023f2e48'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'b3755382f0a2a0e29820260893e1fa8a74efcb48f1bbddc80cb7448d7bd39243a27d23f29608e2179253b967eac6118891785b6729b995daad105e19e0e74be4')
 
