@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}
-pkgver=3.1.12a
+pkgver=3.2.0_b2
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
@@ -11,12 +11,15 @@ license=('GPL')
 depends=('bzip2'
          'curl'
          'fluidsynth>=2.0'
+         'fmt'
          'freeimage'
          'ftgl'
          'glew>=2.2'
          'glu'
          'gtk3'
          'libgl'
+         'lua'
+         'mpg123'
          'sfml>=2.5'
          'webkit2gtk'
          'wxgtk3>=3.0'
@@ -24,16 +27,14 @@ depends=('bzip2'
 makedepends=('cmake'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('7dc8a0089855f6321d2ec185fa5c97fcb7cc54857033aa3adec9a5ec8226ed60')
+sha256sums=('e139173840351135cb0864facc7ece1c52f0e291f56b769123512614f876ec26')
 
 build() {
     cd SLADE-${pkgver}
 
-    ln -sf /usr/bin/wx-config-gtk3 wx-config
-
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DWITH_WXPATH=. \
+          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
           .
     make
 }
