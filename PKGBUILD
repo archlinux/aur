@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.7
-_minor=7
+_minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,10 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-ALSA-usb-audio-Fix-packet-size-calculation.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0004-drm-amd-display-Only-revalidate-bandwidth-on-medium-.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -321,14 +319,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('49db85a1ce14e00411215d5d5bfda6db3d24ed2e0f2bd8e6603c18b3226614f45040856b21b4d6b525c44bb4463ab08fb594a06de6deca109d512588389cc3fd'
+sha512sums=('2b64612db07d3f47a6fa1bc52f5b0c400142948621865ccc0000a40fcf7623719b5a32af435bc26ba2bcae72910e3bb752a809d2fbd089f05ecbbe9c6a1ebba2'
             'SKIP'
             'c7c5b222578a95cf4df69f9e8fa4ae2fb83075c26f0379676bf78e110f113c6f4ce5fe9d61eaf1c0d04563522e9d5998acd75bedba47866725e89cbbf64a1bba'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            'fa6270b6c575118ea6bb8cc8faafab268fa5776fae89b4d6b1f4a6a146df5e165a9ceeda73684c83d979bccd8489bcb8fa23501811997854f61b3c74f4a08aea'
-            'e9062760125dbe61241985001716e6d950ea95c4efce07055cbe6bd48250ada251b33e5439814393001753cbc7455d3fa9548e44ea54a62842687d581b7e38d0'
-            '1eb88bb4f237ef68245d9f3834a358501ac19f5569d6451296c52e07e6d2de86395dcd99472a664e49b9462265495c95e15ffdbf6ddb3f74f79d755f8e8ff206'
-            'b03ecb182aeea77a71e6057b9d364e35f17aa49355cbc7b5cf2b5906db5d0ecbdb59ed2e564268d9b6939175fa23b974f131ed96667490865bca7d5fa1bf92fb'
+            '4082836a612a7a3607e40d054f9f0c2ec86f8a4c58d66c59761e011e0a339ac96ab1b768a14288d1b6272f5adb30444acf65721af1a0af955e9ef320b784497f'
+            '3a6954da24b4452292a6c76a9debba290ab28cccde1dcbc0742ec995c99907f4ac56f590d884548962741cb91a14e4a9efd2cea04c5ee3bcb33c59309ae026fc'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'f33694ddf2b9552d5ca186911b04647a8902d0b515d3098ecb8950aa95c5c16cab89e13a7eeb24eeb363795a4c7de212997dcbe609e84d38133a1bfc498ef928')
 
