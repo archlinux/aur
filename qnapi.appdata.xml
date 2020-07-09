@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>io.github.qnapi</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>QNapi</name>
+  <summary>A software for downloading and automatic matching subtitles to movies</summary>
+  <description>
+    <p>QNapi is designed to automatically download and match subtitles to a specific movie file. Unlike similar programs, QNapi queries several different subtitle databases to find the best subtitles for your movie. Also, thanks to the QT library, the program runs on various operating systems (Windows, OSX, Linux).</p>
+    <ul>
+      <li>matching subtitles for specific movie file</li>
+      <li>automatic matching the best subtitles</li>
+      <li>select target subtitles format (SRT, mDVD, TMP, MPL2) as well as manual conversion</li>
+      <li>select subtitles, when multiple matching has been found</li>
+      <li>download subtitles in one of many supported languages</li>
+      <li>directory scanning and batch subtitles download</li>
+      <li>subtitles post-processing: change file encoding, set file permissions</li>
+      <li>provides nice command-line interface</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">qnapi.desktop</launchable>
+  <url type="homepage">https://qnapi.github.io/</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://qnapi.github.io/images/screenshots/0.1.7/lin05.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">intense</content_attribute>
+  </content_rating>
+  <url type="bugtracker">https://github.com/QNapi/qnapi/issues</url>
+  <url type="help">https://qnapi.github.io/#help</url>
+  <url type="donation">https://qnapi.github.io/#donate</url>
+  <developer_name>Piotr Krzemiński</developer_name>
+</component>
