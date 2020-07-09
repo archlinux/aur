@@ -13,11 +13,12 @@ groups=('fortune-mods')
 
 build()
 {
-	git clone https://github.com/0xPanic/fortune-mod-dril.git
+	git clone https://github.com/0xPanic/fortune-mod-dril.git .
 }
 
 package()
 {
-    install -D -m644 dril dril.dat ${pkgdir}/usr/share/fortune
+    install -D -m644 dril $pkgdir/usr/share/fortune/dril
+    install -D -m644 dril.dat $pkgdir/usr/share/fortune/dril.dat
 }
 
