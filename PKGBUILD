@@ -1,13 +1,12 @@
 pkgname=ravi
-pkgver=1.0.beta2.1.r25.gde42b8b
+pkgver=1.0.beta4
 pkgrel=1
 pkgdesc='A derivative of Lua 5.3 with limited optional static typing and LLVM and libgccjit based JIT compilers'
 arch=(i686 x86_64)
 url='https://github.com/dibyendumajumdar/ravi'
 license=(MIT)
-depends=(llvm)
 makedepends=(cmake git)
-source=('git+https://github.com/dibyendumajumdar/ravi.git')
+source=('git+https://github.com/dibyendumajumdar/ravi.git#tag=1.0-beta4')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -15,17 +14,16 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd ravi
-  #sed -i 's/~\/Software\/omr\/include\/nj/\/usr\/include\/nj/' cmake/FindOMRJIT.cmake
-  #cmake -DOMR_JIT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE .
-  cmake -DLLVM_JIT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE .
-  make
+  sed -i 's/usr\/local/usr/' include/luaconf.h
 }
 
-check() {
+build() {
   cd ravi
-  make test
+  cmake -DMIR_JIT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE .
+  #cmake -DLLVM_JIT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE .
+  make
 }
 
 package() {
