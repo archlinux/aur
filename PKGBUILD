@@ -9,7 +9,7 @@ url='https://github.com/chipmunk-sm/tcpview'
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme' 'whois')
 makedepends=('qt5-base')
-source=("${pkgname}-${pkgver}.tar.xz::https://github.com/chipmunk-sm/tcpview/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chipmunk-sm/tcpview/archive/${pkgver}.tar.gz")
 sha256sums=('ffc2c5e2aaea1780af263028242f763d02fafc9efa7fe9df9d101eb3470a5653')
 
 prepare() {

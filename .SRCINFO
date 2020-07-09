@@ -9,7 +9,7 @@ pkgbase = tcpview
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = whois
-	source = tcpview-2.0.0.10.tar.xz::https://github.com/chipmunk-sm/tcpview/archive/2.0.0.10.tar.gz
+	source = tcpview-2.0.0.10.tar.gz::https://github.com/chipmunk-sm/tcpview/archive/2.0.0.10.tar.gz
 	sha256sums = ffc2c5e2aaea1780af263028242f763d02fafc9efa7fe9df9d101eb3470a5653
 
 pkgname = tcpview
