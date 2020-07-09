@@ -2,6 +2,16 @@ Proton-5.9-GE-3-ST
 
 GloriousEggroll released this Jul 6, 2020
 
+--HOTFIX-- 7/8/2020 11:42 PM MST:
+-Added another alt+tab focus fix patch, confirmed working in KDE.
+-Disabled the SAO: Fatal Bullet patch, as it was found to cause issues with EAC games. Causes SAO: Fatal Bullet to hang on start, but is incorrect. Allows Paladins and Squad to correctly contact EAC cloudflare servers (there are additional EAC issues still, but Paladins no longer crashes). See: ValveSoftware#1787 (comment)
+-Disabled Remi's memory allocation patches as they cause some funky interface lag in Overwatch
+
+--HOTFIX-- 7/6/2020 1:32 PM MST:
+Backported fix for: https://bugs.winehq.org/show_bug.cgi?id=49228
+Thanks Iglu47 for reminding me of this and whipping up the gofman_dac patch update that was conflicting with this.
+
+Release:
 After ironing out a lot of the major bugs since 5.11, I've realized that while some games run well enough without esync/fsync, the majority of games, specifically triple A titles, really need esync/fsync, especially when running on lower end hardware.
 
 SO, what I've done is taken -all- of the fixes from the 5.11 versions and upstream that are major/relevant that I could recall, and backported them to the 5.9 build. This returns esync/fsync functionality, and also enables some games to run correctly that weren't running in 5.11.
