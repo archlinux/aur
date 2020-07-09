@@ -1,7 +1,6 @@
-dpf/
 seq66/
 pkg/
 src/
-.AURINFO
 seq66-git-*.tar.xz
+seq66-git-*.tar.zst
 seq66-git-*.src.tar.gz
