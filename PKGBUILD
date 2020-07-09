@@ -5,13 +5,12 @@
 
 pkgname=terminus-font-ll2-td1-otb
 pkgver=4.48
-pkgrel=2
+pkgrel=3
 pkgdesc='Monospace bitmap font (OTB version) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
 arch=('any')
 license=('GPL2' 'custom:OFL')
 makedepends=('fontforge')
-depends=('fontconfig' 'xorg-font-utils')
 provides=('terminus-font-otb')
 conflicts=('terminus-font-otb')
 source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-$pkgver/terminus-font-$pkgver.tar.gz"
