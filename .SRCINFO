@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-dril
+	pkgdesc = Fortune quotes from @dril
+	pkgver = 20200708
+	pkgrel = 1
+	arch = any
+	groups = fortune-mods
+	license = custom:none
+	makedepends = git
+	depends = fortune-mod
+
+pkgname = fortune-mod-dril
+
