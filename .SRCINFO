@@ -1,0 +1,17 @@
+pkgbase = qt5-graphicaleffects-595
+	pkgdesc = Reusable Qt Graphical Effects based UI controls to create classic desktop-style user interfaces (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-base-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtgraphicaleffects-opensource-src-5.9.5.tar.xz
+	sha256sums = 0b8d400858dd7a38b84a9ec3600c7d9c60193394188fbbed95cb05897b072635
+
+pkgname = qt5-graphicaleffects-595
+
