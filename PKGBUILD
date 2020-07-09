@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=responsively-bin
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A modified browser that helps in responsive web development"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/manojVivek/responsively-app/releases/download/v${pkgver}/ResponsivelyApp-${pkgver}.AppImage")
-sha256sums=('27fd59366043d5e86aa0350ce880669f5dbb510fb77fc099dc7dd4db53109275')
+sha256sums=('9fdda460d572023d7e9231d48e47d6765465883f6e9a9ff9f438682745b0c9ea')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
