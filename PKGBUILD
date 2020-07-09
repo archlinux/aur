@@ -1,9 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Contributor: Mark Wagie <mark.wagie@tutanota.com>
-
-# https://aur.archlinux.org/packages/steamtinkerlaunch
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=0.94
+pkgver=0.95
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -26,7 +24,7 @@ optdepends=(
     'vr-video-player: for playing regular games side-by-side in VR'
     'xdg-utils: for opening the ProtonDB URL of started game'
 )
-_commit='d5a1788f21ec9165bd1cf73b2d78213f5ab43d01'
+_commit='3070ea4c603ec9ed533da3c777fd937dc0403fc0'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
