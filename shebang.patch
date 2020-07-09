@@ -1,0 +1,10 @@
+diff --git a/filemaid.py b/filemaid.py
+index f2d6f4a..dcc53a6 100644
+--- a/filemaid.py
++++ b/filemaid.py
+@@ -1,3 +1,5 @@
++#!/usr/bin/env python
++
+ import abc
+ import argparse
+ import functools

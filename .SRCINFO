@@ -1,0 +1,17 @@
+pkgbase = filemaid-git
+	pkgdesc = Rule-based file- and folder-organization tool inspired by Belvedere and similar programs such as Hazel and DropIt
+	pkgver = r2.9f1e46d
+	pkgrel = 1
+	url = https://github.com/cryzed/filemaid
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-magic
+	depends = python-pyaml
+	source = git+https://github.com/cryzed/filemaid.git
+	source = shebang.patch
+	sha256sums = SKIP
+	sha256sums = 40942ee655d9257db61ad1c0ad0160d87096322b3baacf11ed86bba527e07bc8
+
+pkgname = filemaid-git
+
