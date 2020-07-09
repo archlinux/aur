@@ -1,0 +1,16 @@
+pkgbase = nopasswd
+	pkgdesc = Don't ask wheel group users for root password
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/star2000/nopasswd
+	arch = any
+	license = GPL3
+	source = sudo
+	source = kdesu.conf
+	source = polkit.js
+	md5sums = a28ba1709db9a9c1e54f3de1bc0952d5
+	md5sums = 3f45620a064f378b83489ca3e96e5f0b
+	md5sums = c7666e87d18aae835bbcd03cf32a2905
+
+pkgname = nopasswd
+
