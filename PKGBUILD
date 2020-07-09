@@ -1,7 +1,7 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-cocotb
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=0
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('any')
 url="http://github.com/cocotb/cocotb/"
