@@ -3,13 +3,14 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.941
+pkgver=1.953
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
 license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
+optdepends=('perl-socket6: For IPv6 support')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/config' 'etc/webmin/webmin.acl' \
 'etc/webmin/acl/config' \
@@ -180,7 +181,7 @@ package() {
 }
 
 
-sha256sums=('3a19228d92556c7722c6fe56c9d4b73d477a19845b0dae3f018fc7fc0306b29a'
+sha256sums=('2d06e6c5dc09b0254ea4b4a04703a17bd194c63ebd1164cde2396f5be32117d2'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
