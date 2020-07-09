@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=0.1.1_262.8c9b0ad
+pkgver=0.1.1_265.41c6900
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('GPL3')
 depends=('poppler-qt5>=0.41.0' 'qt5-multimedia>=5.5.1' 'hicolor-icon-theme')
 optdepends=('mupdf-tools: external rendering'
     'gst-libav: video support'
-    'gst-plugins-good: multimedia support')
+    'gst-plugins-good: multimedia support'
+    'wmctrl: embedding external programs in Xorg')
 makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
@@ -50,4 +51,5 @@ package() {
   install -Dm644 man/beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
   install -Dm644 man/beamerpresenter.conf.5.gz "${pkgdir}/usr/share/man/man5/${pkgname}.conf.5.gz"
   install -Dm644 src/icons/beamerpresenter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/beamerpresenter.svg"
+  install -Dm644 share/applications/beamerpresenter.desktop "${pkgdir}/usr/share/applications/beamerpresenter.desktop"
 }
