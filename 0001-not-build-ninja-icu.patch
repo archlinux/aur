@@ -11,7 +11,12 @@ diff --git a/utils/build-presets.ini b/utils/build-presets.ini
 index 23c50fd2ef2..ecd82cfa89d 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -792,19 +792,16 @@ mixin-preset=
+@@ -790,21 +790,21 @@ mixin-preset=
+     mixin_linux_install_components_with_clang
+
++extra-cmake-options=
++   -DCMAKE_IGNORE_PATH="/usr/include/bits"
++
  llbuild
  swiftpm
  xctest
