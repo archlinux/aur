@@ -3,12 +3,12 @@
 # Contributor: Det <nimetonmaili at gmail a-dot com>
 # Based on [extra]'s thunderbird
 
-pkgname=thunderbird-nightly-bin
-pkgver=79.0a1.20200611
-_version=79.0a1
-pkgrel=2
+pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
+pkgver=80.0a1.20200709
+_version=80.0a1
+pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
@@ -26,18 +26,20 @@ FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/l
 source=("${FX_SRC_URI}.txt"
         "${FX_SRC_URI}.tar.bz2"
         "${pkgname%-bin}.desktop"
-        "vendor.js")
+        vendor.js
+        policies.json)
 
 b2sums=('SKIP'
         'SKIP'
         '1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7'
-        '674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476')
+        '674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476'
+        'f8df63721191d84d8f1ceec263f63c44fd5dadeae0939baf9a4a6b1852516722b2a3d94b8d403cc7b6c6b525d5236f357ab65a72d716aab1f5bef47800b5a18c')
 
 pkgver(){
   echo "${_version}.$(head -n1 "${FX_SRC}.txt" |cut -c -8)"
 }
 
-package() {
+package_thunderbird-nightly-bin() {
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -a thunderbird "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}
   cp vendor.js "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/defaults/pref/
@@ -48,4 +50,10 @@ package() {
   install -Dm644 ${pkgname%-bin}.desktop "${pkgdir}"/usr/share/applications/${pkgname%-bin}.desktop
   rm -rf "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries/
   ln -sf /usr/share/hunspell/ "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries
+}
+
+package_thunderbird-nightly-bin-noupdate() {
+  pkgdesc='Standalone Mail/News reader - Nightly build with disabled update notifications'
+  depends=('thunderbird-nightly-bin')
+  install -Dm644 -t "${pkgdir}"/opt/${pkgname%-bin-noupdate}-${pkgver}/distribution policies.json
 }
