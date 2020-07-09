@@ -5,7 +5,6 @@ pkgbase = fgit-go
 	url = https://github.com/fastgitorg/fgit-go
 	arch = x86_64
 	license = GPL3
-	makedepends = upx
 	depends = git
 	depends = glibc
 	provides = fgit
