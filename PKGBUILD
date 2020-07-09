@@ -1,6 +1,6 @@
 # Maintainer: Carson Rueter <bottomtext97@gmail.com>
 pkgname='passman'
-pkgver=1.0.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Super-secure, easy-to-use password manager."
 arch=('any')
