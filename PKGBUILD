@@ -5,7 +5,7 @@
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -24,8 +24,8 @@ source=("https://raw.githubusercontent.com/zyedidia/micro/master/assets/packagin
 			"https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.desktop"
 			"micro.svg::https://micro-editor.github.io/micro_files/micro-logo-mark.svg")
 
-sha256sums=('e753edc9899152ab1c70926b8f096d0bdcd1efa9213dd27fcef2e0b85236153e'
-            '3fd83fda3c2a6711edbc5e4158db5ba0898e8b59760d30f8e3bce7642e071be7'
+sha256sums=('4f703d3625588a8494678ab13ad424ac0ac610278186d3a1e4cd132d7057f401'
+            '41258ce74409536dd04d6f7b1cc0b1b26f953da45fff7f039201e19a4ef2ea43'
             '88686fe20569951f401191c0cf232e1d4a915b549137127681b7b1c5a9c30a2b')
 sha256sums_x86_64=('af330834fd2f6ce0ab11515f36d07658b8ec0e1959fcaea6f7e29d8ba49d4c87')
 sha256sums_i686=('a6db6c6a1dbefec939137b754e88741d47ffd9aa8e8ca3f94088eb6889f72590')
