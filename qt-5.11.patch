@@ -1,0 +1,16 @@
+Description: Fix FTBFS with Qt 5.11
+Author: Juhani Numminen <juhaninumminen0@gmail.com>
+Bug: https://bugs.launchpad.net/equalx/+bug/1789117
+Bug-Debian: https://bugs.debian.org/907227
+Last-Update: 2018-08-26
+
+--- a/src/DialogPreferences.cpp
++++ b/src/DialogPreferences.cpp
+@@ -17,6 +17,7 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <QAction>
+ #include <QButtonGroup>
+ #include <QFileDialog>
+ 
