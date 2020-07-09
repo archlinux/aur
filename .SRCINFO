@@ -22,7 +22,7 @@ pkgbase = carnet
 	source = carnet.desktop
 	source = carnet.install
 	source = carnet.AppImage::https://qn.phie.ovh/binaries/desktop/daily/Carnet-0.22.1.AppImage
-	sha512sums = 5627f8463af368c1208dc7de81f8c957ea03584fe0bd95a5eaebb258c7c6c7024c7014e2f78dea2a411fad58753b4155c86ffa7e2a94954f143edf5c7f264348
+	sha512sums = 76fb3614b001e61f45ea201bcd63aa534bd117db9eda2295a118ea571206c4a4c58bff4511e56c1bdc011191586503e847b4a5fca491411bb812cd426a2c8979
 	sha512sums = f8699c39bb4fc4bd097077f5cee4b1269875711497eb4aa1e5ff695eaf1bf1f9403f7dd5c8e9fe84623b3408059f762d9c51a07754bd86b5017f6b3392fe08b3
 	sha512sums = SKIP
 
