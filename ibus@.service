@@ -2,6 +2,8 @@
 Description=Intelligent Input Bus
 Documentation=man:ibus-daemon(1)
 Conflicts=fcitx.service
+Before=ibus-config@.service
+Requires=ibus-config@.service
 
 [Service]
 ExecStart=/usr/bin/ibus-daemon --replace --xim
