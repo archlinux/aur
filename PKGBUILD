@@ -5,7 +5,7 @@ arch=(armv7h aarch64)
 _date=20200514
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=10.1.0.$_date
-pkgrel=2
+pkgrel=3
 license=('GPL' )
 url="https://github.com/graysky2/crosstool-ng_for_distcc"
 pkgdesc="Toolchain for x86_64 builds on Arch ARM volunteers via distcc"
@@ -36,7 +36,9 @@ package() {
   # install whitelist for toolchain new for v3.3
   install -d "${pkgdir}/usr/lib/distcc"
 
-  _targets=(c++ cc clang clang++ cpp g++ gcc)
+  # currently no clang support
+  # https://github.com/crosstool-ng/crosstool-ng/issues/652
+  _targets=(c++ cc cpp g++ gcc)
   for bin in "${_targets[@]}"; do
     ln -sf /usr/bin/distcc "${pkgdir}/usr/lib/distcc/x86_64-pc-linux-gnu-$bin"
   done
