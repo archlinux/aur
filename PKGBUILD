@@ -9,7 +9,7 @@ url=""
 license=('Apache')
 groups=()
 depends=('pkgconf' 'pcre')
-makedepends=('opam')
+makedepends=('ocaml>=4.10.0' 'opam')
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,16 +31,13 @@ build() {
     opam init -n
     eval $(opam env)
 
-    # Install the OCaml version we're going to use.
-    # This has to be 4.09.1 due to a GCC 10 issue with the upstream-recommended
-    # 4.09.0: https://github.com/ocaml/ocaml/issues/9144
-    if ! opam switch list | grep -q 4.09.1; then
-        opam switch create 4.09.1 4.09.1
+    # Ensure we have a switch using the system OCaml.
+    if ! opam switch list | grep -q comby-aur; then
+        opam switch create comby-aur ocaml-system
     fi
-    eval $(opam env)
 
-    # Enable the right OCaml version.
-    opam switch 4.09.1
+    # Enable the right OCaml switch.
+    eval $(opam env --switch=comby-aur --set-switch)
 
     # Install the package dependencies. Some of these exist as AUR packages,
     # but many do not, and some rely on forks of upstream packages. To minimise
