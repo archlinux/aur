@@ -4,8 +4,8 @@
 # Contributor: Maximilian Berger <snowdragon92 at gmail dot com>
 
 pkgname=atlauncher-git
-pkgver=3.2.3.7.r521.g6d2f1d14
-pkgrel=2
+pkgver=3.3.5.2.r650.g813f828e
+pkgrel=1
 pkgdesc="A Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly."
 arch=(any)
 url="https://atlauncher.com/"
