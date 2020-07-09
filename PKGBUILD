@@ -2,12 +2,12 @@
 # Contributor: noonov
 pkgname=lohit-fonts
 pkgver=2.95.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Indic TrueType fonts from Fedora Project"
 arch=('any')
 url="https://pagure.io/lohit"
 license=('custom: OFL')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 _fhosted="https://releases.pagure.org/lohit/"
 source=(OFL.license
   ${_fhosted}/lohit-assamese-ttf-2.91.5.tar.gz

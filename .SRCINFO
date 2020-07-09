@@ -1,12 +1,11 @@
 pkgbase = lohit-fonts
 	pkgdesc = Indic TrueType fonts from Fedora Project
 	pkgver = 2.95.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/lohit
 	arch = any
 	license = custom: OFL
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = OFL.license
 	source = https://releases.pagure.org/lohit//lohit-assamese-ttf-2.91.5.tar.gz
 	source = https://releases.pagure.org/lohit//lohit-bengali-ttf-2.91.5.tar.gz
