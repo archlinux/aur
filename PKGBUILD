@@ -4,9 +4,9 @@ pkgdesc="ROS - Hardware Interface base class."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-noetic-hardware-interface'
-pkgver='0.15.1'
+pkgver='0.19.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-roscpp
@@ -18,16 +18,9 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=(ros-noetic-roscpp)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/hardware_interface/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="ros_control-${pkgver}/hardware_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
+sha256sums=('9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae')
 
 build() {
   # Use ROS environment variables
