@@ -1,19 +1,20 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=silentdragonlite
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.3.8
+pkgrel=1
 pkgdesc='HUSH Lite wallet that supports zaddrs'
 url='http://github.com/MyHush/SilentDragonLite'
 arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'qt5-websockets' 'qt5-base' 'qt5-tools')
 makedepends=('qtcreator' 'rust')
-source=("https://github.com/MyHush/SilentDragonLite/archive/v$pkgver.tar.gz")
-sha256sums=('71d0971572f676c5e5a935a19fa6109fb579566cc45e0285dc47d1658ac98f02')
+conflicts=('silentdragonlite-appimage')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MyHush/SilentDragonLite/archive/$pkgver.tar.gz")
+sha256sums=('9a1e3eba8958c4bcc0e9fb2decf82bcd9f6b0833983c4d885d4c5cea3638d5ab')
 
 build() {
-  tar xzvf v$pkgver.tar.gz
+  tar xzvf $pkgname-$pkgver.tar.gz
   cd "SilentDragonLite-$pkgver"
   ./build.sh
 }
