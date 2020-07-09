@@ -1,11 +1,10 @@
 pkgbase = gtypist
 	pkgdesc = universal typing tutor
 	pkgver = 2.9.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.gnu.org/software/gtypist/gtypist.html
 	arch = x86_64
 	license = GPL3
-	makedepends = emacs
 	depends = ncurses
 	depends = perl
 	source = https://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz
