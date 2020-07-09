@@ -1,5 +1,5 @@
 pkgname=pacproxy
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file"
 arch=('x86_64')
@@ -9,7 +9,7 @@ source=(
 )
 
 sha256sums=(
-	'8b99b5c3b5a8dbe3531aa694294ece1a981b6c6838fa0322dc37e6d8cc6d2ec6'
+	'b8f5d488c13a244e3e927fce3a3f8907e2d9f6b4827ce7ba653005c568dd4a38'
 )
 
 package() {
