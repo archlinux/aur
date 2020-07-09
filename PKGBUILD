@@ -2,19 +2,16 @@
 pkgname=cross
 pkgdesc="'Zero setup' cross compilation and 'cross testing' of Rust crates"
 pkgrel=1
-pkgver=0.2.0
+pkgver=0.2.1
 arch=('x86_64')
 url="https://github.com/rust-embedded/cross"
 license=('Apache' 'MIT')
-depends=('gcc-libs' 'rustup')
+depends=('gcc-libs')
+makedepends=('rust')
 optdepends=('docker: provide container'
             'podman: provide container')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rust-embedded/cross/archive/v$pkgver.tar.gz")
-sha256sums=('eff1992fd5ba4aa4a027662dcb66ddfd71c16a814400b125b3faeb1c2bcb41a6')
-
-prepare() {
-    rustup default stable
-}
+sha256sums=('150ab0d7cd8f05f3d63df7aa0ea7ef32af6732c89712d671c6be1c40ecab1cdb')
 
 build() {
 	cd $pkgname-$pkgver
@@ -22,7 +19,8 @@ build() {
 }
 
 package() {
-	cd $pkgname-$pkgver
+    depends+=('rustup')
+    cd $pkgname-$pkgver
     install -Dm644 "LICENSE-APACHE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-APACHE
     install -Dm644 "LICENSE-MIT" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
 	install -Dm755 "target/release/cross" "$pkgdir/usr/bin/cross"
