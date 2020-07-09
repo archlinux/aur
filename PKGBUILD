@@ -6,13 +6,14 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-makedepends=('nodejs-lts-dubnium' 'python' 'python2' 'git' 'p7zip' 'svn' 'qt5-base' 'clang' 'qt5-multimedia' 'pkg' 'ncurses5-compat-libs')
+makedepends=('nodejs-lts-dubnium' 'python' 'python2' 'git' 'p7zip' 'svn' 'qt5-base' 'clang' 'qt5-multimedia' 'pkg' 'ncurses5-compat-libs' 'gtk3' 'nss' 'nspr' 'libxss' 'npm' 'grunt-cli')
 # python, ncurses5-compat-libs, clang, required for v8
 # Nodejs-dubnium required for nodehun spellchecker
+# gtk dependency for desktop editor, disabling it doesn't work yet
 optdepends=('rabbitmq' 'postgresql' 'nginx')
 license=('AGPL')
 source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools/archive/v5.5.3.42.tar.gz"
@@ -87,6 +88,14 @@ prepare() {
 
   # Somehow there is a missing header file
   sed -i '7i#include <math.h>' "${srcdir}/desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qpushbutton_icons.h"
+
+  # Fix config file paths
+  sed -i 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' "${srcdir}/server/Common/config/production-linux.json"
+  sed -i 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' "${srcdir}/server/Common/config/production-linux.json"
+
+  # Ignore grunt warnigns otherwise compilation will fail
+  sed -i '55d' "${srcdir}/build_tools-5.5.3.42/scripts/build_js.py"
+  sed -i '55i\ \ return base.cmd_in_dir(directory, "grunt", ["--force"] +  params)' "${srcdir}/build_tools-5.5.3.42/scripts/build_js.py"
 }
 
 build() {
@@ -98,11 +107,12 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/onlyoffice"
-  install -d "${pkgdir}/etc/webapps/onlyoffice/documentserver"
+  install -d "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js"
   install -d "${pkgdir}/var/lib/onlyoffice/documentserver"
   cp -r "${srcdir}/build_tools-5.5.3.42/out/linux_64/onlyoffice/documentserver" "${pkgdir}/usr/share/webapps/onlyoffice/"
   mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/default.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/production-linux.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
+  mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/log4js/production.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/"
 
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
