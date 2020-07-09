@@ -1,6 +1,6 @@
 pkgbase = vice-svn-sdl2
 	pkgdesc = The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version
-	pkgver = r38086
+	pkgver = r38093
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = vice-svn-sdl2
 	makedepends = xa
 	makedepends = svn
 	makedepends = texlive-core
+	makedepends = dos2unix
 	depends = giflib
 	depends = lame
 	depends = libjpeg
