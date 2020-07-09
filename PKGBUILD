@@ -14,7 +14,7 @@ depends=("libappindicator-gtk3"
          'hunspell'
          'libvoikko'
          'xorg-xhost')
-license=('custom:sunloginclient')
+license=('custom')
 source=("http://download.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
         'LICENSE::https://service.oray.com/question/1820.html'
         'sunlogin-client-xhost.desktop')
@@ -24,7 +24,7 @@ sha256sums=('da2a61d106c2cecce271c89cd182b162bce34018539e1ba431580c5bbe120252'
             '15abf7f89fe7d54112e083914740108a73b6b2cd9d942d49de4c7ccb66c3e30f')
 
 package() {
-  bsdtar -xf data.tar.xz -C "${pkgdir}"
+  tar -xf data.tar.xz -C "${pkgdir}"
 
   install -Dm644 "${pkgdir}/usr/local/sunlogin/scripts/runsunloginclient.service" "${pkgdir}/usr/lib/systemd/system/runsunloginclient.service"
 
