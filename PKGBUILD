@@ -1,39 +1,42 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] disroot [ dot ] org >
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-_gitname=shapecorners
+# This package now builds a fork of the original project.
+# Original: 
+
+_gitname=KDE-Rounded-Corners
 pkgname=kwin-effect-shapecorners-git
-pkgver=20181003.1fc34a4
+pkgver=r15.b1f65f2
 pkgrel=1
-pkgdesc='KWin effect to round corners of windows.'
-arch=('any')
-url="https://sourceforge.net/projects/shapecorners"
-license=('GPL2')
-depends=(kwin)
-makedepends=('extra-cmake-modules' 'git')
-source=("$_gitname"::"git+https://git.code.sf.net/p/${_gitname}/code")
-md5sums=('SKIP')
+pkgdesc="KWin effect to round the corners of windows."
+arch=('x86_64')
+url="https://github.com/alex47/KDE-Rounded-Corners"
+license=('GPL3')
+depends=('kwin' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kglobalaccel' 'ki18n'
+         'kio' 'kservice' 'kinit' 'knotifications' 'kwidgetsaddons' 'kwindowsystem'
+         'kguiaddons' 'qt5-x11extras')
+makedepends=('git' 'extra-cmake-modules')
+source=("git+${url}.git")
+sha512sum=('SKIP')
+
 
 pkgver() {
-    cd $_gitname
-    echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  cd "$srcdir"/$_gitname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd $_gitname
-    mkdir -p build
+build() {
+  cd "${srcdir}/${_gitname}"
+  mkdir -p build
+  cd build
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  make
 }
 
-build(){
-    cd $_gitname
-    cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
-    make
+package() {
+  cd "${srcdir}/${_gitname}/build"
+  make DESTDIR="${pkgdir}" install
 }
-
-package(){
-    cd $_gitname
-    cd build
-    make DESTDIR="$pkgdir" install
-}
+md5sums=('SKIP')
