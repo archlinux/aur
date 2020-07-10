@@ -23,7 +23,9 @@ source=('http://www.koguro.net/prog/c-wrapper/c-wrapper-0.6.1.tgz'
         '08-gen-gpd-fix.patch'
         '09-cpp-c-ldflags.patch'
         '10-fix-closure-alloc.patch'
-        '11_fix_jp_encoding.patch')
+        '11_fix_jp_encoding.patch'
+        '12_float128.patch')
+
 sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '99878b6fc5c306223e7119861b5af92362f90fd9'
           '11f45d119f2fc660ac32de724b01d47aaaf84675'
@@ -33,7 +35,8 @@ sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           'faae81fcb833f5571ba151f319ed6d948d679935'
           'fc6aff7e1d30b177565654702b7eff67b953745d'
           'ec1582da5e299adc76fa21d0397e7ad1d323ee50'
-          '341697ca27ee06fa80357f80807b11b5593cf6c3')
+          '341697ca27ee06fa80357f80807b11b5593cf6c3'
+          '6c575ab04c1e47d2fdcea204d27b4a59520285f1')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
