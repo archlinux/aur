@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2020-04-02
+#   Revision: 2020-07-10
 
 pkgname=ttf-labrit
 _pkgname=labrit
@@ -9,7 +9,7 @@ pkgdesc="A basic decorative ttf font by Apostrophic Labs"
 arch=('any')
 url="http://moorstation.org/typoasis/designers/lab/"
 license=('Free')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 install=ttf.install
 source=("http://img.dafont.com/dl/?f=labrit")
 md5sums=('25d12059e240c989456bf11653ca66a2')
