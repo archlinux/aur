@@ -25,4 +25,7 @@ build() {
 package() {
 	cd AV-98
 	python3 setup.py install --root="$pkgdir" --optimize=1
+
+	mkdir -p "$pkgdir"/usr/share/licenses/"$pkgname"
+	install -m0644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
