@@ -1,0 +1,16 @@
+pkgbase = goodix-touchscreen-dkms-git
+	pkgdesc = Modified Goodix Touchscreen Driver with Active Pen Support
+	pkgver = r25.6562922
+	pkgrel = 1
+	url = https://gitlab.com/AdyaAdya/goodix-touchscreen-linux-driver
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = goodix-touchscreen-dkms-git::git+https://gitlab.com/AdyaAdya/goodix-touchscreen-linux-driver.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = df911d9c87cf394dc7808ed926663261
+
+pkgname = goodix-touchscreen-dkms-git
+
