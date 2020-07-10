@@ -1,7 +1,7 @@
 # Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=hexchat-fishlim-reloaded-git
-pkgver=r4.4a8f9ab
+pkgver=r9.ee43aac
 pkgrel=1
 pkgdesc="FiSHLiM support to HexChat with with steroids!"
 url="https://github.com/BakasuraRCE/hexchat-fishlim-reloaded"
