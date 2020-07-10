@@ -1,6 +1,6 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=kermit
-pkgdesc="A VTE-based, simple and froggy terminal emulator."
+pkgdesc="A VTE-based, simple and froggy terminal emulator"
 pkgver=3.0
 pkgrel=1
 arch=('any')

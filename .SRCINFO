@@ -1,5 +1,5 @@
 pkgbase = kermit
-	pkgdesc = A VTE-based, simple and froggy terminal emulator.
+	pkgdesc = A VTE-based, simple and froggy terminal emulator
 	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/orhun/kermit
