@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-sansita
 pkgver=1.006
-pkgrel=2
+pkgrel=3
 pkgdesc='A typeface exploring typography and calligraphy from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-BlackItalic.otf'
@@ -35,7 +34,7 @@ sha256sums=('075f043ac4f61522cf01be3557066b546ae59cfb51dee5048cf9bc231796c023'
             '8b78a61832affbbfd1831fe2658bf7fb010a3ed830be50e2c5afbf9e031405a5')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }

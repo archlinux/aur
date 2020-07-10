@@ -1,13 +1,11 @@
 pkgbase = otf-sansita
 	pkgdesc = A typeface exploring typography and calligraphy from Omnibus-Type.
 	pkgver = 1.006
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/sansita/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = otf-sansita-1.006-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt
+	license = OFL
+	source = otf-sansita-1.006-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Black.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-BlackItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Bold.otf
