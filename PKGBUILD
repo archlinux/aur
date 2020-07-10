@@ -30,7 +30,7 @@ check() {
 
 package() {
 	cp -r "build.dev-serial" "$pkgdir/"
-        cp  "fleur" "$pkgdir/"
+        cp -r "fleur" "$pkgdir/"
 }
 
 md5sums=('SKIP')
