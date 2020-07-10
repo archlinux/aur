@@ -3,13 +3,13 @@
 pkgbase=python-remind-caldav-git
 pkgname=python-remind-caldav-git
 _module='remind-caldav'
-pkgver=v0.7.0.r2.gfa82424
-pkgrel=2
+pkgver=0.7.0.r2.gfa82424
+pkgrel=3
 pkgdesc="Tools to sync between 'remind' and CalDAV"
 url="https://github.com/jspricke/remind-caldav"
 depends=('python' 'python-dateutil' 'python-vobject' 'python-caldav' 'python-remind')
 optdepends=('python-keyring: manage password')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git' 'patch')
 provides=('python-remind-caldav')
 conflicts=('python-remind-caldav')
 license=('GPL')
@@ -19,7 +19,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_module}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
