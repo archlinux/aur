@@ -1,0 +1,17 @@
+pkgbase = coreboot-utils
+	pkgdesc = Tools and utilities to work with coreboot firmware
+	pkgver = 4.12
+	pkgrel = 1
+	url = https://www.coreboot.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pciutils
+	optdepends = python: me_cleaner support
+	provides = ectool
+	conflicts = coreboot-utils-git
+	source = coreboot.4.12.tar.gz::https://coreboot.org/releases/coreboot-4.12.tar.xz
+	sha256sums = edcad000ee9b73183c396ea76155629b3d27c693e0f1ae83e3424c4d936e2be2
+
+pkgname = coreboot-utils
+
