@@ -1,6 +1,6 @@
 # Maintainer: Robin Hilgers <r.hilgers@fz-juelich.de>
-pkgname=fleur
-pkgver=develop
+pkgname=fleur-develop
+pkgver=latest
 pkgrel=1
 pkgdesc="FLEUR is  a feature-full and freely available FLAPW (full-potential linearized augmented planewave) code, based on density-functional theory."
 arch=(x86_64)

@@ -1,6 +1,6 @@
-pkgbase = fleur
+pkgbase = fleur-develop
 	pkgdesc = FLEUR is a feature-full and freely available FLAPW (full-potential linearized augmented planewave) code, based on density-functional theory.
-	pkgver = develop
+	pkgver = latest
 	pkgrel = 1
 	url = https://iffgit.fz-juelich.de/fleur/fleur.git
 	arch = x86_64
@@ -17,5 +17,5 @@ pkgbase = fleur
 	source = git+https://iffgit.fz-juelich.de/fleur/fleur.git
 	md5sums = SKIP
 
-pkgname = fleur
+pkgname = fleur-develop
 
