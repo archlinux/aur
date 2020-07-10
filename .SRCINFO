@@ -1,15 +1,15 @@
 pkgbase = srb2-data
 	pkgdesc = Data files for Sonic Robo Blast 2
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://www.srb2.org
 	arch = any
 	license = GPL
 	optdepends = srb2: "Sonic Robo Blast 2" game
 	source = https://github.com/STJr/SRB2/releases/download/SRB2_release_2.2.1/SRB2-v_221-Installer.exe
-	source = https://files.srb2.org/srb2.org/SRB2-v224-Patch.zip
+	source = https://github.com/STJr/SRB2/releases/download/SRB2_release_2.2.5/SRB2-2.2.5-Patch.zip
 	sha256sums = 5af82508be353dd41b05b793fa7aaef418eab246df7050f72c569f1809b3160f
-	sha256sums = 8f384643a226041ebd7fed5e4d1e610ffba9da36dc34f51a50d9461d768f6750
+	sha256sums = SKIP
 
 pkgname = srb2-data
 
