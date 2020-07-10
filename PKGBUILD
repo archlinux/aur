@@ -1,18 +1,17 @@
-# Maintainer: Marco Pompili <marcs.pompili@gmail.com>
-# Contributor: Marco Pompili <marcs.pompili@gmail.com>
+# Maintainer: Marco Pompili <aur@mg.odd.red>
 
 pkgname=stlsoft
-pkgver=1.9.124
+pkgver=1.9.134
 pkgrel=1
-pkgdesc="C++ library providing operating system facades and STL extensions."
+pkgdesc="C++ header-only library providing operating system facades and STL extensions."
 arch=('any')
 url="http://www.stlsoft.org/"
 license=('BSD')
-source=("https://github.com/synesissoftware/STLSoft-1.9/archive/STLSoft-${pkgver}.tar.gz")
-md5sums=('7e64507190925a348ac2eae8d0fe274a')
+source=("https://github.com/synesissoftware/STLSoft-1.9/archive/${pkgver}.tar.gz")
+sha256sums=('70885609d20ebf3f333169117e765d1813415f9548d3c436b13fd4b232139714')
 
 package() {
   mkdir -p ${pkgdir}/usr/
 
-  cp -R ${srcdir}/STLSoft-1.9-STLSoft-${pkgver}/include ${pkgdir}/usr/
+  cp -R ${srcdir}/STLSoft-1.9-${pkgver}/include ${pkgdir}/usr/
 }
