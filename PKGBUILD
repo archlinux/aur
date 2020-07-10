@@ -6,20 +6,10 @@
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
 pkgver=80.0a1.20200709
 _version=80.0a1
-pkgrel=1
-pkgdesc='Standalone Mail/News reader - Nightly build'
+pkgrel=2
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
-         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
-         'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
-         'shared-mime-info' 'sqlite' 'startup-notification')
-optdepends=('libcanberra: for sound support')
-provides=("thunderbird=${_version}" 'thunderbird-nightly')
-conflicts=('thunderbird-nightly')
-install="${pkgname%-bin}.install"
-
 FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
 
@@ -40,6 +30,16 @@ pkgver(){
 }
 
 package_thunderbird-nightly-bin() {
+  pkgdesc='Standalone Mail/News reader - Nightly build'
+  depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
+         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
+         'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
+         'shared-mime-info' 'sqlite' 'startup-notification')
+  optdepends=('libcanberra: for sound support')
+  provides=("thunderbird=${_version}" 'thunderbird-nightly')
+  conflicts=('thunderbird-nightly')
+  install="${pkgname%-bin}.install"
+
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -a thunderbird "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}
   cp vendor.js "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/defaults/pref/

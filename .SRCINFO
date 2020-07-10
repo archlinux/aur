@@ -1,13 +1,25 @@
 pkgbase = thunderbird-nightly-bin
-	pkgdesc = Standalone Mail/News reader - Nightly build
 	pkgver = 80.0a1.20200709
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/thunderbird
-	install = thunderbird-nightly.install
 	arch = x86_64
 	license = MPL
 	license = GPL
 	license = LGPL
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-80.0a1.en-US.linux-x86_64.txt
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-80.0a1.en-US.linux-x86_64.tar.bz2
+	source = thunderbird-nightly.desktop
+	source = vendor.js
+	source = policies.json
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7
+	b2sums = 674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476
+	b2sums = f8df63721191d84d8f1ceec263f63c44fd5dadeae0939baf9a4a6b1852516722b2a3d94b8d403cc7b6c6b525d5236f357ab65a72d716aab1f5bef47800b5a18c
+
+pkgname = thunderbird-nightly-bin
+	pkgdesc = Standalone Mail/News reader - Nightly build
+	install = thunderbird-nightly.install
 	depends = alsa-lib
 	depends = cairo
 	depends = dbus-glib
@@ -33,18 +45,6 @@ pkgbase = thunderbird-nightly-bin
 	provides = thunderbird=80.0a1
 	provides = thunderbird-nightly
 	conflicts = thunderbird-nightly
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-80.0a1.en-US.linux-x86_64.txt
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-80.0a1.en-US.linux-x86_64.tar.bz2
-	source = thunderbird-nightly.desktop
-	source = vendor.js
-	source = policies.json
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = 1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7
-	b2sums = 674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476
-	b2sums = f8df63721191d84d8f1ceec263f63c44fd5dadeae0939baf9a4a6b1852516722b2a3d94b8d403cc7b6c6b525d5236f357ab65a72d716aab1f5bef47800b5a18c
-
-pkgname = thunderbird-nightly-bin
 
 pkgname = thunderbird-nightly-bin-noupdate
 	pkgdesc = Standalone Mail/News reader - Nightly build with disabled update notifications
