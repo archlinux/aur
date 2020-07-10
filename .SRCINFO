@@ -1,12 +1,12 @@
 pkgbase = treehole-ocr
 	pkgdesc = A Cross-Platform OCR Tool
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnyListen/tools-ocr
 	arch = any
 	license = GPL3
 	makedepends = imagemagick
-	makedepends = java-runtime-openjdk=8
+	makedepends = java-environment-openjdk=8
 	depends = java8-openjfx
 	noextract = hutool-all-5.3.3.jar
 	noextract = imgscalr-lib-4.2.jar

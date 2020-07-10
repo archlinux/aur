@@ -5,12 +5,12 @@ pkgname=treehole-ocr
 _pkgname=tools-ocr
 _hutool_ver=5.3.3
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Cross-Platform OCR Tool"
 arch=(any)
 url="https://github.com/AnyListen/${_pkgname}"
 license=('GPL3')
-makedepends=('imagemagick' 'java-runtime-openjdk=8')
+makedepends=('imagemagick' 'java-environment-openjdk=8')
 depends=('java8-openjfx')
 source=(
   "https://github.com/AnyListen/${_pkgname}/archive/V${pkgver}.tar.gz"
