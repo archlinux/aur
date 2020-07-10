@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2020-04-02
+#   Revision: 2020-07-10
 
 pkgname=ttf-14minute
 _pkgname=14minute
@@ -9,7 +9,7 @@ pkgdesc="A basic decorative ttf font"
 arch=('any')
 url="http://www.coolfonts.info/font-23-14_minutes.php"
 license=('Unknown proprietary')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 install=ttf.install
 source=("http://www.coolfonts.info/download-23-14_minutes.zip")
 md5sums=('1839eec4972435ad028254082cc16b82')
