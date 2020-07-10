@@ -7,8 +7,8 @@
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolutio
     "${pkgname}.desktop"
     "${pkgname}.sh"
     "${pkgname}.xml")
-sha256sums=('b04e666ed0b74126dfc8c2ce6ae0d425ad5bb39c2d77ef214158b6dfc67f8b0d'
+sha256sums=('97f6c44c30550f42a71850fac8e2a604f82134ae580a4d0bfdd664938c8cf52b'
             '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec')
