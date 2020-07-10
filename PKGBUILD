@@ -1,7 +1,7 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo-git
-pkgver=HEAD
+pkgver=GIT
 pkgrel=1
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
