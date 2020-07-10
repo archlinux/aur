@@ -1,10 +1,10 @@
-# Maintainer: Marco Pompili <marco@mg.odd.red>
+# Maintainer: Marco Pompili <aur@mg.odd.red>
 # Contributor: Gautham Velchuru <gvelchuru@gmail.com>
 
 pkgname=kiibohd-configurator-git
 _pkgname=kiibohd-configurator
-pkgver=r271.18ac1cd
-pkgrel=2
+pkgver=r273.857b99b
+pkgrel=1
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
 url="https://github.com/kiibohd/configurator"
