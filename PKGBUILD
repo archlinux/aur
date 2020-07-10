@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=blasfeo-git
-pkgver=r1963.f3a8a00
+pkgver=r2061.cc90e146
 pkgdesc="Basic linear algebra subroutines for embedded optimization"
 url='https://github.com/giaf/blasfeo'
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBLASFEO_EXAMPLES=OFF \
     -DCMAKE_BUILD_TYPE="Release"
 
   make
