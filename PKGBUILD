@@ -4,12 +4,13 @@
 
 pkgname=fgit-go
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to do git operation with fastgit easily"
 arch=('x86_64')
 url="https://github.com/fastgitorg/fgit-go"
 license=('GPL3')
 depends=('git' 'glibc')
+makedepends=('go')
 provides=('fgit')
 conflicts=('fgit')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
@@ -27,7 +28,7 @@ build() {
 package() {
     cd "$srcdir"/$pkgname-$pkgver
     
-    install -Dm755 -t "$pkgdir"/usr/bin/            ./fgit-go
-    install -Dm644 -t "$pkgdir"/usr/share/doc/fgit  ./README.md
+    install -Dm755 -t "$pkgdir"/usr/bin/                ./fgit-go
+    install -Dm644 -t "$pkgdir"/usr/share/doc/fgit-go   ./README.md
 }
 
