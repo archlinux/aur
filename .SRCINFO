@@ -1,13 +1,11 @@
 pkgbase = otf-asap
 	pkgdesc = A contemporary sans-serif typeface family from Omnibus-Type.
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.omnibus-type.com/fonts/asap/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = otf-asap-2.0-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Asap/master/OFL.txt
+	license = OFL
+	source = otf-asap-2.0-4-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Asap/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-BoldItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-Italic.otf
