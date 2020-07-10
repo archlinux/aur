@@ -13,22 +13,22 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/eneshecan/$pkgname/archive/
 md5sums=('903f3650211e5d44bf7c4020ade43923')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  mkdir -p build/debug && cd build/debug
+  cd "$srcdir/$pkgname-$pkgver" || exit
+  mkdir -p build/debug && cd build/debug || exit
   cmake -DCMAKE_BUILD_TYPE=Debug ../..
   make
 }
 
 package() {
   msg2 "Copying binary..."
-  install -Dm755 $srcdir/$pkgname-$pkgver/build/debug/$pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm755 "$srcdir/$pkgname-$pkgver/build/debug/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   msg2 "Copying resources..."
   # .desktop
-  install -Dm644 $srcdir/$pkgname-$pkgver/resource/desktop/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -Dm644 "$srcdir/$pkgname-$pkgver/resource/desktop/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Icons
   for i in 16x16 32x32 64x64 128x128 256x256; do
-    install -Dm644 $srcdir/$pkgname-$pkgver/resource/image/icons/hicolor/$i/apps/$pkgname.png $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
+    install -Dm644 "$srcdir/$pkgname-$pkgver/resource/image/icons/hicolor/$i/apps/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png"
   done
 }
