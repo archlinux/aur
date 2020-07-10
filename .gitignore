@@ -1,0 +1,5 @@
+pkg/
+*.tar.gz
+*.tar.xz
+src/
+tijolo-git/
