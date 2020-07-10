@@ -1,13 +1,11 @@
 pkgbase = otf-unna
 	pkgdesc = A transitional typeface family from Omnibus-Type.
 	pkgver = 2.008
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/unna/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = otf-unna-2.008-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/master/OFL.txt
+	license = OFL
+	source = otf-unna-2.008-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-BoldItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Italic.otf

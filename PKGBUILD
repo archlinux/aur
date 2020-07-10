@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-unna
 pkgver=2.008
-pkgrel=2
+pkgrel=3
 pkgdesc='A transitional typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/unna/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-BoldItalic.otf'
@@ -27,7 +26,7 @@ sha256sums=('e542171ed5902b35c863bd1b90cff2c80f97ecfe2c7b31aeb16e951f958f5220'
             'e296d35402d65379f99eb7bb296ace53c27e9f51a09d4231653843c9e3c5db0a')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
