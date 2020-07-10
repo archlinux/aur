@@ -1,15 +1,15 @@
 # Maintainer: adament <adament@adament.net>
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=hunspell-da
-pkgver=2.5.108
-pkgrel=3
+pkgver=2.5.109
+pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
 arch=('any')
 url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt")
-b2sums=('bad7b6a1eb4d9fafe79c8c7363746057140cca6ccce875956ef2419a8b2e516ffca24b29887b97e9e4c5186452b1526c5fe01ff3bbfdf22aa7fcb198ba4b3ec9')
+sha256sums=('0ea3b76abf59306834a9e01010362700029bbffc7268706c91b2ea1438847138')
 
 package() {
   cd "$srcdir"
