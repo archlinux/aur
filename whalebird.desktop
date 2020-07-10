@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Whalebird
-Comment=Electron-based Mastodon/Pleroma client
+Comment=Electron-based Mastodon/Pleroma/Misskey client
 Exec=whalebird
 Icon=whalebird
 Categories=Network;
