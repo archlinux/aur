@@ -14,7 +14,7 @@ makedepends=('tar')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::http://update.whale.naver.net/downloads/installers/naver-whale-stable_amd64.deb"
         'LICENSE')
-sha256sums=('88c6bad5e6ac56fb87368e42e707eeb3bed7e5e9dff825a5e32403ca4c4db42d'
+sha256sums=('SKIP'
             'SKIP')
 
 package() {
