@@ -6,7 +6,7 @@ pkgver=1.0.15
 pkgrel=1
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
-url="http://www.cnj.jus.br/wiki/index.php/PJeOffice"
+url="https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D"
 license=('custom')
 depends=('java-runtime=8')
 install=${pkgname}.install
