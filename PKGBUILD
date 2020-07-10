@@ -3,8 +3,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=78.0.1
-pkgrel=2
+pkgver=78.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -23,7 +23,7 @@ conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
         ${pkgname}.desktop 0001-Use-remoting-name-for-GDK-application-names.patch upload-symbol-archive)
-sha256sums=('075520299f276dbb2dca6a6bc0edff1b5f09d0a74151c1415876217197ce7b99'
+sha256sums=('e0b5596644d4f9cb7c3231f66a982e4a6729ff8f36c14245f1ccfdf8c1c79a0a'
             'SKIP'
             'd86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
