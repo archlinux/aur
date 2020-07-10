@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Join Desktop
+Exec="/opt/Join Desktop/com.joaomgcd.join" %U
+Terminal=false
+Type=Application
+Icon=joindesktop
+StartupWMClass=Join Desktop
+Comment=A companion app for the Join website
+Categories=Utility;
