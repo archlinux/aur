@@ -1,6 +1,6 @@
 pkgbase = hpipm-git
 	pkgdesc = High-performance interior-point-method QP solvers
-	pkgver = r1098.de1a8c7
+	pkgver = r1201.2660484
 	pkgrel = 1
 	url = https://github.com/giaf/hpipm
 	arch = i686

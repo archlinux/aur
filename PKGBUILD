@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hpipm-git
-pkgver=r1098.de1a8c7
+pkgver=r1201.2660484
 pkgrel=1
 pkgdesc="High-performance interior-point-method QP solvers"
 url='https://github.com/giaf/hpipm'
@@ -25,6 +25,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DHPIPM_TESTING=OFF \
     -DCMAKE_BUILD_TYPE="Release"
 
   make
