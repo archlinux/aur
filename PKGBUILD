@@ -3,7 +3,7 @@
 
 _pkgname='istio'
 pkgname="${_pkgname}-bin"
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -33,3 +33,4 @@ package() {
     cp -R "${d}" "${pkgdir}/usr/share/${_pkgname}/"
   done
 }
+sha256sums=('68e58e8aec544c2b72377f7c334f90f6215bc819f3ed71ac952692cc5c9b73ac')
