@@ -1,0 +1,20 @@
+pkgbase = python-amply
+	pkgdesc = A Python package for AMPL/GMPL datafile parsing
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://github.com/willu47/amply
+	arch = any
+	license = EPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/amply/amply-0.1.2.tar.gz
+	b2sums = f555c44d80eecde41d0a1b946cc3192e6e3b637ee4c33896ccb251527358eb8761fec79875da168be610268fd4cbaa3a4c55bfff8b777b82ff350222bdf07603
+
+pkgname = python-amply
+	depends = python-docutils
+	depends = python-pyparsing
+
+pkgname = python2-amply
+	depends = python2-docutils
+	depends = python2-pyparsing
+
