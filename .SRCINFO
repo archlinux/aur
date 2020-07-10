@@ -1,7 +1,7 @@
 pkgbase = python-scikit-video
 	pkgdesc = Video processing built on top of scipy, numpy, and ffmpeg/libav
 	pkgver = 1.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scikit-video.org/
 	arch = i686
 	arch = x86_64

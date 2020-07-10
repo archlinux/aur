@@ -1,7 +1,8 @@
+# Maintainer: trougnouf (Benoit Brummer) < trougnouf at gmail dot com >
 _name='scikit-video'
 pkgname="python-${_name}"
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Video processing built on top of scipy, numpy, and ffmpeg/libav"
 arch=('i686' 'x86_64')
 url="http://www.${_name}.org/"
