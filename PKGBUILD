@@ -2,17 +2,18 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kbibtex-git
-pkgver=r2783.4ce7c51f
+pkgver=r3338.0c711606
 pkgrel=1
-pkgdesc="A BibTeX editor for KDE"
-arch=('x86_64')
+pkgdesc="A BibTeX editor for KDE (latest development version)"
+arch=('x86_64' 'aarch64')
 url='https://userbase.kde.org/KBibTeX'
 license=('GPL')
-depends=('poppler-qt5' 'kio' 'icu' 'qoauth' 'libxml2' 'libxslt')
+depends=('poppler-qt5' 'kio' 'icu' 'qt5-networkauth' 'qt5-xmlpatterns' 'libxml2' 'libxslt')
+provides=('kbibtex')
+conflicts=('kbibtex')
 optdepends=('okular: Document preview')
-makedepends=('extra-cmake-modules' 'qca-qt5')
-source=("git://anongit.kde.org/kbibtex.git")
-install="$pkgname.install"
+makedepends=('git' 'extra-cmake-modules' 'qca-qt5' 'kdoctools')
+source=("git+https://invent.kde.org/office/kbibtex.git")
 
 pkgver() {
   cd "$srcdir"/kbibtex
@@ -21,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
-  mkdir build
+  mkdir -p build
 }
 
 build() {
