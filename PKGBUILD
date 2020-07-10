@@ -3,7 +3,7 @@
 pkgname=sunloginclient
 pkgver=10.0.2.24779
 pkgrel=5
-pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems."
+pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
