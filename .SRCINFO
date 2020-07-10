@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client (dev branch)
-	pkgver = 1.9.21.r5.g13e8b60d6
+	pkgver = 2.1.18.r0.gc3f5de30b
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = telegram-desktop-git
 	conflicts = telegram-desktop
 	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
-	source = variant::git+https://github.com/mapbox/variant
+	source = variant::git+https://github.com/desktop-app/variant
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = Catch::git+https://github.com/philsquared/Catch
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
@@ -45,11 +45,19 @@ pkgbase = telegram-desktop-git
 	source = lib_storage::git+https://github.com/desktop-app/lib_storage.git
 	source = cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git
 	source = expected::git+https://github.com/TartanLlama/expected
-	source = tl-cmake::git+https://github.com/TartanLlama/tl-cmake.git
 	source = QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator
 	source = lib_qr::git+https://github.com/desktop-app/lib_qr.git
 	source = libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git
-	source = telegram-desktop.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/telegram-desktop.sh?h=packages/telegram-desktop
+	source = hunspell::git+https://github.com/hunspell/hunspell
+	source = materialdecoration::git+https://github.com/desktop-app/materialdecoration.git
+	source = range-v3::git+https://github.com/ericniebler/range-v3.git
+	source = fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git
+	source = nimf::git+https://github.com/hamonikr/nimf.git
+	source = hime::git+https://github.com/hime-ime/hime.git
+	source = qt5ct::git+https://github.com/desktop-app/qt5ct.git
+	source = lxqt-qtplugin::git+https://github.com/lxqt/lxqt-qtplugin.git
+	source = libqtxdg::git+https://github.com/lxqt/libqtxdg.git
+	source = fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -74,7 +82,15 @@ pkgbase = telegram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = telegram-desktop-git
 

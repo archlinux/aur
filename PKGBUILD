@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-git
-pkgver=1.9.21.r5.g13e8b60d6
+pkgver=2.1.18.r0.gc3f5de30b
 pkgrel=1
 pkgdesc="Official Telegram Desktop client (dev branch)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
-        "variant::git+https://github.com/mapbox/variant"
+        "variant::git+https://github.com/desktop-app/variant"
         "GSL::git+https://github.com/Microsoft/GSL.git"
         "Catch::git+https://github.com/philsquared/Catch"
         "xxHash::git+https://github.com/Cyan4973/xxHash.git"
@@ -38,11 +38,19 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "lib_storage::git+https://github.com/desktop-app/lib_storage.git"
         "cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git"
         "expected::git+https://github.com/TartanLlama/expected"
-        "tl-cmake::git+https://github.com/TartanLlama/tl-cmake.git"
         "QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
         "lib_qr::git+https://github.com/desktop-app/lib_qr.git"
         "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
-        "telegram-desktop.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/telegram-desktop.sh?h=packages/telegram-desktop")
+        "hunspell::git+https://github.com/hunspell/hunspell"
+        "materialdecoration::git+https://github.com/desktop-app/materialdecoration.git"
+        "range-v3::git+https://github.com/ericniebler/range-v3.git"
+        "fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
+        "nimf::git+https://github.com/hamonikr/nimf.git"
+        "hime::git+https://github.com/hime-ime/hime.git"
+        "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
+        "lxqt-qtplugin::git+https://github.com/lxqt/lxqt-qtplugin.git"
+        "libqtxdg::git+https://github.com/lxqt/libqtxdg.git"
+        "fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -67,7 +75,15 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -98,6 +114,16 @@ prepare() {
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR-Code-generator"
     git config submodule.Telegram/lib_qr.url "$srcdir/lib_qr"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
+    git config sumbodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
+    git config sumbodule.Telegram/ThirdParty/materialdecoration.url "$srcdir/materialdecoration"
+    git config sumbodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
+    git config sumbodule.Telegram/ThirdParty/fcitx-qt5.url "$srcdir/fcitx-qt5"
+    git config sumbodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
+    git config sumbodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
+    git config sumbodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
+    git config sumbodule.Telegram/ThirdParty/lxqt-qtplugin.url "$srcdir/lxqt-qtplugin"
+    git config sumbodule.Telegram/ThirdParty/libqtxdg.url "$srcdir/libqtxdg"
+    git config sumbodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
     git submodule update
 }
 
@@ -120,6 +146,12 @@ build() {
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop"
     ninja -C build
+    
+    cat << 'EOF' > "$srcdir/telegram-desktop.sh"
+#!/usr/bin/sh
+unset QT_QPA_PLATFORMTHEME
+exec /usr/bin/telegram-desktop-bin "$@"
+EOF
 }
 
 package() {
