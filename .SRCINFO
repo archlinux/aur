@@ -1,0 +1,11 @@
+pkgbase = jailkit
+	pkgdesc = A set of utilities to limit user accounts to specific files .
+	pkgver = 2.21
+	pkgrel = 1
+	url = https://olivier.sessink.nl/jailkit/
+	arch = x86_64
+	license = libtirpc
+	source = https://olivier.sessink.nl/jailkit/jailkit-2.21.tar.gz
+	sha512sums = 6ebdd5d2840d760840f4d279033e7484c50e21a083d69204e36b37e7743cbd6fed6e358a1083c8fc64dfb9f1173a4f14500e5d96925e94ba0231ce01eb47bd15
+
+pkgname = jailkit
