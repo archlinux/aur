@@ -1,6 +1,6 @@
 pkgbase=revolution-desktop-git
 pkgver=r9235.99ae606c
-pkgrel=5
+pkgrel=6
 pkgname=(revolution-web-git revolution-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('x86_64')
@@ -93,6 +93,7 @@ package_revolution-desktop-git() {
 
   # Config file
   ln -s /etc/revolution/config.json "${pkgdir}"/etc/webapps/revolution/config.json
+  mkdir "${pkgdir}"/etc/revolution/
   install -Tm644 ../riot-web/config.sample.json -t "${pkgdir}"/etc/revolution/config.json
 
   # Required extras
