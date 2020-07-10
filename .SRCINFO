@@ -1,19 +1,19 @@
 pkgbase = gtk-theme-macos-sierra-archers-git
 	pkgdesc = macOS and OS X 10.11 GTK theme for Gnome Shell and GTK-based desktops.
-	pkgver = 5.1.r12.g8ef52cc
+	pkgver = 6.0.rbeta.0.ge5d8acd
 	pkgrel = 1
 	url = https://github.com/B00merang-Project/macOS-Sierra
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gtk3>=3.6
+	depends = gtk3>=3.20
 	depends = gnome-themes-standard
 	depends = gdk-pixbuf2
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	optdepends = gnome-shell>=3.10: The GNOME Shell
 	optdepends = gnome-tweak-tool: A graphical tool to tweak gnome settings
-	provides = macOS-Sierra=5.1.r12.g8ef52cc
+	provides = macOS-Sierra=6.0.rbeta.0.ge5d8acd
 	source = git+https://github.com/B00merang-Project/macOS-Sierra.git
 	sha256sums = SKIP
 

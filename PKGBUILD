@@ -2,14 +2,14 @@
 
 _pkgname=macOS-Sierra
 pkgname=gtk-theme-macos-sierra-archers-git
-pkgver=5.1.r12.g8ef52cc
+pkgver=6.0.rbeta.0.ge5d8acd
 pkgrel=1
 pkgdesc='macOS and OS X 10.11 GTK theme for Gnome Shell and GTK-based desktops.'
 arch=('any')
 url="https://github.com/B00merang-Project/${_pkgname}"
 license=('GPL3')
 provides=("${_pkgname}=${pkgver}")
-depends=('gtk3>=3.6'
+depends=('gtk3>=3.20'
 	'gnome-themes-standard'
 	'gdk-pixbuf2'
 	'gtk-engines'
