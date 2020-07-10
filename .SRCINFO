@@ -1,0 +1,26 @@
+pkgbase = python-httpx
+	pkgdesc = A next generation HTTP client for Python
+	pkgver = 0.13.3
+	pkgrel = 4
+	url = https://github.com/encode/httpx
+	arch = any
+	license = BSD
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-trio
+	checkdepends = python-brotli
+	checkdepends = python-trustme
+	checkdepends = uvicorn
+	makedepends = python-setuptools
+	depends = python-certifi
+	depends = python-chardet
+	depends = python-hstspreload
+	depends = python-httpcore
+	depends = python-idna
+	depends = python-rfc3986
+	depends = python-sniffio
+	optdepends = python-brotli: for brotli response decompression
+	source = python-httpx-0.13.3.tar.gz::https://github.com/encode/httpx/archive/0.13.3.tar.gz
+	sha512sums = 54cdee16e8253c221c3298817ccf63a4a0d6755a86feea2aa5a2efe9af44eb1eb0a578b21f593fe28fceace17b0a0badb52a66965c35bf456ea57dd3b905ebbe
+	b2sums = d3a56c2386841909668e34eaa78d202f91ad900230b9d1d4254bfa08312312d020e081aea2839dbb57d85fa26ccfc3f093404801c4dd5c47051f3c9fd2746552
+
+pkgname = python-httpx
