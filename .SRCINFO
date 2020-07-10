@@ -1,7 +1,7 @@
 pkgbase = anydesk-debian
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (Debian based package)
 	pkgver = 5.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anydesk.de
 	arch = i686
 	arch = x86_64
