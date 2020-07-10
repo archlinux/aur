@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dancer-plugin-database-core'
-pkgver='0.13'
-pkgrel='2'
+pkgver='0.20'
+pkgrel='1'
 pkgdesc="Shared core for D1 and D2 Database plugins"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-dbi>=0' 'perl>=5.6')
 makedepends=()
 url='https://metacpan.org/release/Dancer-Plugin-Database-Core'
-source=('http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Dancer-Plugin-Database-Core-0.13.tar.gz')
-md5sums=('ce0c24ec31ba30c037dfde315c306e41')
-sha512sums=('6e43e02e269e18396c05dbe486e73cf8cb81b755b0fa47a1aa4fe7b3f8686ac14a9ee402776839b7c57f49bbd0b196edb1f1998feef1bb110afa8b002abb6ed3')
-_distdir="Dancer-Plugin-Database-Core-0.13"
+source=("http://search.cpan.org/CPAN/authors/id/B/BI/BIGPRESH/Dancer-Plugin-Database-Core-${pkgver}.tar.gz")
+md5sums=('05c72a7567bd5f63cd84980c20d55416')
+sha512sums=('647334b7b457b214d229100848f5434e885dc73b669d256d7fc49ee1ca82be8670064e57cf8df8c6127389e6191fd63b50cd387bd97847a6cc55d313e7ecf15f')
+_distdir="Dancer-Plugin-Database-Core-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
