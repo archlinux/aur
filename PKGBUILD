@@ -1,6 +1,6 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
 pkgname=white_dune
-pkgver=1.908
+pkgver=1.910
 pkgrel=1
 epoch=
 pkgdesc="white_dune X3D/VRML97 tool, 3D modeller and animation-tool"
@@ -11,8 +11,9 @@ groups=()
 depends=(xorg-fonts-misc
          xorg-fonts-alias-misc
          povray
+         mencoder
 )
-makedepends=(clang
+makedepends=(gcc
              fakeroot
              glu 
              mesa 
@@ -30,7 +31,7 @@ makedepends=(clang
              expat
              ffmpeg
              opensubdiv
-             gcc
+             clang
              flex
              bison
              gawk
@@ -64,7 +65,7 @@ install=
 changelog=
 source=("ftp://ftp.ourproject.org/pub/wdune/wdune-$pkgver.tar.bz2")
 noextract=()
-md5sums=('30c754ef03858b0152001d16c4527c9a')
+md5sums=('031c6397275eec554a973f4f6b62f627')
 validpgpkeys=()
 
 build() {
