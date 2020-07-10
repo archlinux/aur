@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-animation-tweaks-git
 _pkgname=Animation-Tweaks
-pkgver=9.5.e31b1bf
+pkgver=11.cfb1a1f
 pkgrel=1
 pkgdesc="A GNOME Shell Extension to Tweak animations and customize them."
 arch=('any')
