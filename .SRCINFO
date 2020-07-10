@@ -1,11 +1,12 @@
 pkgbase = remind-agenda-git
 	pkgdesc = Interactive terminal interface for the calendar program 'remind'
 	pkgver = r1.8e22869
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kabus.eu/git/remind-agenda
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = make
 	depends = remind
 	depends = python
 	depends = python-colorama
