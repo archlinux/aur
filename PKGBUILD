@@ -8,7 +8,7 @@ url="https://github.com/orhun/kermit"
 license=('GPL3')
 depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
 makedepends=('cmake')
-source=("https://github.com/orhun/kermit/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/orhun/kermit/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
