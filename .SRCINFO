@@ -1,0 +1,12 @@
+pkgbase = line-awesome
+	pkgdesc = Line Awesome is a free alternative for Font Awesome 5.11.2.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/icons8/line-awesome
+	arch = any
+	license = MIT
+	source = ttf-line-awesome-1.2.1.tar.gz::https://github.com/icons8/line-awesome/archive/v1.2.1.tar.gz
+	md5sums = 31367d97c215fba27eb79342af12e902
+
+pkgname = ttf-line-awesome
+
