@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ddcui
+GenericName=Control Monitor Settings
+Type=Application
+Exec=ddcui
+Icon=preferences-desktop-display-color.png
+Categories=Settings;HardwareSettings;
