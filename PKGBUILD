@@ -1,6 +1,5 @@
 # Maintainer: Chris Chamberlain <chris@chamberlain.id.au>
 
-pkgbase=line-awesome
 pkgname=ttf-line-awesome
 pkgver=1.2.1
 pkgrel=1

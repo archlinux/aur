@@ -1,4 +1,4 @@
-pkgbase = line-awesome
+pkgbase = ttf-line-awesome
 	pkgdesc = Line Awesome is a free alternative for Font Awesome 5.11.2.
 	pkgver = 1.2.1
 	pkgrel = 1
