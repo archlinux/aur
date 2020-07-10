@@ -1,0 +1,22 @@
+pkgbase = bigjubel-git
+	pkgdesc = command line utility to calculate current jubilees
+	pkgver = 10.1.1.r1.gfc89a2f
+	pkgrel = 1
+	url = https://www.kabus.eu/git/bigjubel
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = bigjubel
+	conflicts = bigjubel
+	source = bigjubel-git::git://www.kabus.eu/git/bigjubel
+	md5sums = SKIP
+
+pkgname = bigjubel-git
+
