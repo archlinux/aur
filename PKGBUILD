@@ -3,12 +3,12 @@
 pkgbase=python-remind-git
 pkgname=python-remind-git
 _module='remind'
-pkgver=v0.14.0.r25.g77b2916
-pkgrel=1
+pkgver=0.14.0.r25.g77b2916
+pkgrel=2
 pkgdesc="Remind Python library"
 url="https://github.com/jspricke/python-remind"
 depends=('remind' 'python' 'python-dateutil' 'python-pytz' 'python-tzlocal' 'python-vobject')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 checkdepends=('python-coverage' 'python-nose')
 provides=('python-remind')
 conflicts=('python-remind')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_module}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 check(){

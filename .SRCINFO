@@ -1,13 +1,14 @@
 pkgbase = python-remind-git
 	pkgdesc = Remind Python library
-	pkgver = v0.14.0.r25.g77b2916
-	pkgrel = 1
+	pkgver = 0.14.0.r25.g77b2916
+	pkgrel = 2
 	url = https://github.com/jspricke/python-remind
 	arch = any
 	license = GPL
 	checkdepends = python-coverage
 	checkdepends = python-nose
 	makedepends = python-setuptools
+	makedepends = git
 	depends = remind
 	depends = python
 	depends = python-dateutil
