@@ -1,6 +1,6 @@
 pkgbase = sublime-text-4-dev
 	pkgdesc = Sophisticated text editor for code, html and prose - dev build
-	pkgver = 4.4074
+	pkgver = 4.4076
 	pkgrel = 1
 	url = http://www.sublimetext.com/
 	install = sublime-text.install
@@ -12,10 +12,10 @@ pkgbase = sublime-text-4-dev
 	conflicts = sublime-text
 	source = sublime-text.install
 	source = sublime_text.desktop
-	source = https://download.sublimetext.com/sublime_text_build_4074_x64.tar.xz
+	source = https://download.sublimetext.com/sublime_text_build_4076_x64.tar.xz
 	sha256sums = 388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018
 	sha256sums = a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9
-	sha256sums = 9844b28ec8bc5a2ef33b313399eb2bb28667a217a99f858e6285a14ae75200ba
+	sha256sums = 8c2112678552563580dc7e5e63ade57863404d0f0d04365c40904981914a5827
 
 pkgname = sublime-text-4-dev
 
