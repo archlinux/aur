@@ -1,7 +1,7 @@
 pkgbase = steam-buddy
 	pkgdesc = A web interface for managing Steam remotely
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
 	license = MIT
@@ -22,7 +22,6 @@ pkgbase = steam-buddy
 	depends = libretro-snes9x
 	depends = libretro-mupen64plus-next
 	depends = libretro-beetle-pce-fast
-	depends = libretro-stella2014-git
 	depends = libretro-flycast
 	depends = libretro-beetle-psx-hw
 	depends = libretro-play
@@ -33,6 +32,7 @@ pkgbase = steam-buddy
 	depends = xdotool
 	depends = ponymix
 	optdepends = libretro-mame-git
+	optdepends = libretro-stella2014-git
 	source = https://github.com/gamer-os/steam-buddy/archive/0.6.1.tar.gz
 	md5sums = 9bb3d5ec5a77ab7b3bf27c1c8eb9aa4d
 
