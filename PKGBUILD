@@ -2,7 +2,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=hunspell-da
 pkgver=2.5.108
-pkgrel=2
+pkgrel=3
 pkgdesc="Danish hunspell dictionaries"
 arch=('any')
 url="http://www.stavekontrolden.dk/"
