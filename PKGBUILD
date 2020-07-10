@@ -1,5 +1,5 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
-# Still broken, needs a more recent version of KLook that the one in the AUR
+# Still broken, needs a more recent version of KLook than the one in the AUR
 # Check: https://invent.kde.org/graphics/klook/-/tree/qt5
 #
 # Even with that version installed, it sometimes fails to build,
