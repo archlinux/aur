@@ -1,7 +1,7 @@
 pkgbase = wayland-info-git
 	pkgdesc = Wayland tools to display information about current compository
 	pkgver = r43.f7f4e42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/ofourdan/wayland-info
 	arch = x86_64
 	license = MIT
