@@ -1,7 +1,7 @@
 pkgbase = revolution-desktop-git
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
 	pkgver = r9235.99ae606c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.eastcoast.hosting/ponies/riot-web
 	arch = x86_64
 	license = custom:CSL
