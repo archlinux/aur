@@ -19,7 +19,7 @@ pkgbase = jelvis
 	optdepends = python-speechrecognition: Google-powered speech recognition for Python
 	optdepends = python-pyalsaaudio: ALSA wrappers for Python 3 for control volume
 	source = jelvis-1.0.2.zip::https://github.com/kiahamedi/JELVIS-git/archive/master.zip
-	md5sums = 38754521c5fbbfc20db4a40de273135d
+	md5sums = c7974384a9ab6f2742c00584f588956c
 
 pkgname = jelvis
 
