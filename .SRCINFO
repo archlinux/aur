@@ -21,7 +21,9 @@ pkgbase = whalebird
 	depends = libvpx
 	provides = whalebird
 	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.1.0/Whalebird-4.1.0-linux-x64.tar.bz2
+	source = whalebird.desktop
 	md5sums = ff4c3b574a79f562e4ec0086fb03c913
+	md5sums = 2cf7ef689d208d2fa41ce3622dce3545
 
 pkgname = whalebird
 
