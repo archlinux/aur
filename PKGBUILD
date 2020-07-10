@@ -1,7 +1,7 @@
 # Maintainer: Barfin
 pkgname=iriunwebcam-bin
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Use your phone's camera as a wireless webcam in your PC."
 arch=('any')
 url="http://iriun.gitlab.io"
