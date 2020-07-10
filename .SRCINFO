@@ -1,5 +1,5 @@
 pkgbase = calligra-git
-	pkgver = 3.1.0.r781.g935f505f5b1
+	pkgver = 3.2.1.r37.g2880ac99ebf
 	pkgrel = 1
 	url = http://www.calligra-suite.org/
 	arch = i686
@@ -100,7 +100,7 @@ pkgbase = calligra-git
 	replaces = calligra-words
 	replaces = calligra-l10n
 	replaces = calligra-meta
-	source = calligra::git+git://anongit.kde.org/calligra
+	source = calligra::git+https://invent.kde.org/office/calligra.git
 	sha256sums = SKIP
 
 pkgname = calligra-git
