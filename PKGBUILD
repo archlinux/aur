@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-app-cmd'
-pkgver='0.330'
+pkgver='0.331'
 pkgrel='1'
 pkgdesc="write command line apps with less suffering"
 arch=('any')
@@ -13,10 +13,10 @@ depends=('perl-capture-tiny>=0.13' 'perl-class-load>=0.06' 'perl-data-optlist>=0
 makedepends=()
 checkdepends=('perl-test-fatal>=0')
 url='https://metacpan.org/release/App-Cmd'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.330.tar.gz')
-md5sums=('dde7b65165abeb4613643007583cb03f')
-sha512sums=('72d4e011f786cdf3362fbd2f2f1fb46f5978abfad808c4112e98cd65fd548cab48cb2db70c4cccaed7ac535da9d1bf5b15529b7a1002d9fc85fe5d519e42d3ad')
-_distdir="App-Cmd-0.330"
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-$pkgver.tar.gz")
+md5sums=('b43c07d7b4d4e2a6baf32aa92cd00b93')
+sha512sums=('cb5f4515417affc46e48aa0cfecc37b2856a35081f1e1a4197a1ef020de69a5d0ba19bc54be6c84f239147e8dbfb538e7b8ea760431a2d0f4b369684e4ea42c6')
+_distdir="App-Cmd-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
