@@ -26,6 +26,7 @@ build() {
   cd "${pkgname}"
   arch-meson build -D local_install=false
   ninja -C build
+  ninja -C build test
 }
 
 package() {
