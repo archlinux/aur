@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source virtual modular synthesizer
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vcvrack.com/
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = vcvrack
 	depends = curl
 	depends = glew
 	depends = glfw
-	depends = gtk2
+	depends = gtk3
 	depends = jack
 	depends = jansson
 	depends = libpulse
