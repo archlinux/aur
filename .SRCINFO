@@ -1,6 +1,6 @@
 pkgbase = hunspell-da
 	pkgdesc = Danish hunspell dictionaries
-	pkgver = 2.5.109
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.stavekontrolden.dk/
 	arch = any

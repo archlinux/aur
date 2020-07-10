@@ -1,7 +1,7 @@
 # Maintainer: adament <adament@adament.net>
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=hunspell-da
-pkgver=2.5.109
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
 arch=('any')
