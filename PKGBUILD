@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(
   nautilus
   python-nautilus
-  python-xdg
+  python-pyxdg
 )
 optdepends=(
   'meld'
