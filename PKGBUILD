@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-git
-pkgver=r715.fd9aad9
-pkgrel=2
+pkgver=r976.fc36db0
+pkgrel=1
 pkgdesc='KWallet Framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kwallet'
@@ -11,7 +11,7 @@ depends=(knotifications-git kiconthemes-git kservice-git gpgme)
 makedepends=(extra-cmake-modules-git git python boost kdoctools-git)
 conflicts=(kwallet)
 provides=(kwallet)
-source=('git://anongit.kde.org/kwallet.git')
+source=('git+https://github.com/KDE/kwallet.git')
 md5sums=('SKIP')
 
 pkgver() {
