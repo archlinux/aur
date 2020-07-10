@@ -3,7 +3,7 @@
 
 pkgname=ympd-git
 _pkgname=ympd
-pkgver=1.3.0.r0.gec008a4
+pkgver=1.3.0.r55.g612f8fc
 pkgrel=1
 pkgdesc="A standalone MPD Web GUI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,12 +17,18 @@ install="${_pkgname}.install"
 backup=('etc/default/ympd')
 source=(
   "git+https://github.com/notandy/ympd.git"
+  "https://github.com/notandy/$_pkgname/pull/191.patch"
 )
-sha1sums=('SKIP')
+sha256sums=('SKIP'
+            'aa8fd50482d95840e4296533cf63529348f5794d596f7e12a1911322b05fdd88')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed -E 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
+}
+
+prepare() {
+  patch -d "${_pkgname}" -Np1 -i "${srcdir}"/191.patch
 }
 
 build() {
