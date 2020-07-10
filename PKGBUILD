@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2017-01-03
+#   Revision: 2020-07-10
 
 pkgname=otf-neverwinter
 _pkgname=Neverwinter
@@ -9,7 +9,7 @@ pkgdesc="A basic decorative otf font by Neale Davidson based on the logo of the 
 arch=('any')
 url="http://www.pixelsagas.com/"
 license=('Free')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util')
 conflicts=('ttf-neverwinter')
 install=otf.install
 source=("http://dl.dafont.com/dl/?f=neverwinter")
