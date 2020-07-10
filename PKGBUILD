@@ -2,7 +2,7 @@
 
 pkgname=wayland-info-git
 pkgver=r43.f7f4e42
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland tools to display information about current compository"
 url="https://gitlab.freedesktop.org/ofourdan/wayland-info"
 arch=(x86_64)
@@ -16,12 +16,12 @@ makedepends=(meson)
 
 
 pkgver() {
-  cd ${pkgname}
+  cd wayland-info 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson wayland-info build
   meson compile -C build
 }
 
