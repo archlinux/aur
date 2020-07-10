@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sxemacs-git
-pkgver=22.1.16.43.g843517d
+pkgver=22.1.16.68.g3ba3d30
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 
 	 'compface' 'libpulse' 'libxaw' 'sox' 'openssl' 'ffmpeg' 'xaw3d'
 	 'postgresql-libs')
-# dependancy postgresql-libs can be avoides usin --with-postgres=no in configure statement
+# dependancy postgresql-libs can be avoides using --with-postgres=no in configure statement
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd build
   ../${_gitname}/autogen.sh 
-  LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" \
+  CFLAGS="$CFLAGS -I/usr/include/freetype2 -fcommon" \
       ../${_gitname}/configure --prefix=/usr --with-openssl --with-athena=3d
   make
 }
