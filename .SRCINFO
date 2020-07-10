@@ -1,4 +1,4 @@
-pkgbase = wayland-info
+pkgbase = wayland-info-git
 	pkgdesc = Wayland tools to display information about current compository
 	pkgver = r43.f7f4e42
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = wayland-info
 	source = git+https://gitlab.freedesktop.org/ofourdan/wayland-info.git
 	sha256sums = SKIP
 
-pkgname = wayland-info
+pkgname = wayland-info-git
 

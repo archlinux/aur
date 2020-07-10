@@ -1,6 +1,6 @@
 # Maintainer:  (maturain) <maturain@gmail.com>
 
-pkgname=wayland-info
+pkgname=wayland-info-git
 pkgver=r43.f7f4e42
 pkgrel=1
 pkgdesc="Wayland tools to display information about current compository"
