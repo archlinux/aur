@@ -1,0 +1,12 @@
+pkgbase = medum-bin
+	pkgdesc = a terminal todo manager written in go
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/amtoaer/medum
+	arch = x86_64
+	license = MIT
+	source = https://github.com/amtoaer/medum/releases/download/v1.1.4/medum
+	md5sums = 9d1a30b7fbd86a2786fa95d677d5e154
+
+pkgname = medum-bin
+
