@@ -1,7 +1,7 @@
 # Maintainer: Robin Hilgers <r.hilgers@fz-juelich.de>
 pkgname=fleur-develop
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="FLEUR is  a feature-full and freely available FLAPW (full-potential linearized augmented planewave) code, based on density-functional theory."
 arch=(x86_64)
 url="https://iffgit.fz-juelich.de/fleur/fleur.git"
@@ -25,7 +25,7 @@ build() {
 check() {
 	cd "build.dev-serial" 
         ctest
-        rm -r Testing/*
+
         }
 
 package() {
