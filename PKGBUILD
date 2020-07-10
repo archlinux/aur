@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
 pkgver=2.0.30
-pkgrel=6
+pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
 url='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html'
