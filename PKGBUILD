@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2020-04-02
+#   Revision: 2020-07-10
 
 pkgname=ttf-xirwena
 _pkgname=xirwena
@@ -9,7 +9,7 @@ pkgdesc="A decorative medieval style ttf font by Pia Frauss"
 arch=('any')
 url="http://www.pia-frauss.de/"
 license=('Free for personal use')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 install=ttf.install
 source=("http://img.dafont.com/dl/?f=xirwena")
 md5sums=('4ad89b6cd7593a050a411a94a9f99cda')
