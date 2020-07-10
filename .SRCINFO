@@ -1,0 +1,16 @@
+pkgbase = akaitools
+	pkgdesc = Tools for Akai S-series samplers
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.lsnl.jp/~ohsaki/software/akaitools/
+	arch = any
+	license = GPL2
+	makedepends = make
+	depends = perl
+	optdepends = sox: support for more file formats
+	provides = akaitools
+	source = http://www.lsnl.jp/~ohsaki/software/akaitools/akaitools-1.4.tar.gz
+	sha512sums = 89c625168476ffebfb13f7219769ce6c27a75044a53508cc7e3f8e8c3f6802adea254e46266e590d56d6688cd5bc5e34873ac5e3ae747927d46002866256baa1
+
+pkgname = akaitools
+
