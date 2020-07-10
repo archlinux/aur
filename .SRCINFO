@@ -1,13 +1,11 @@
 pkgbase = otf-asap-condensed
 	pkgdesc = A contemporary sans-serif typeface family from Omnibus-Type.
 	pkgver = 2.001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/asap-condensed/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = otf-asap-condensed-2.001-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/OFL.txt
+	license = OFL
+	source = otf-asap-condensed-2.001-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/fonts/otf/AsapCondensed-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/fonts/otf/AsapCondensed-BoldItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/fonts/otf/AsapCondensed-Italic.otf

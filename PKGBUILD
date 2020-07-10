@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-asap-condensed
 pkgver=2.001
-pkgrel=2
+pkgrel=3
 pkgdesc='A contemporary sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/asap-condensed/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/fonts/otf/AsapCondensed-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/AsapCondensed/master/fonts/otf/AsapCondensed-BoldItalic.otf'
@@ -27,7 +26,7 @@ sha256sums=('1e6fc63faf780ac82354f94a9aee1579ed199c07ebedae3b82e6191a7c3b4ae0'
             '13109c91089017e11b63d84c5c6a9e99487768133ca3d4a9c58f9f06f4c3f2b0')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
