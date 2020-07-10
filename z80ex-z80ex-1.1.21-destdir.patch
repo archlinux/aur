@@ -1,0 +1,54 @@
+diff -rauN z80ex-z80ex-1.1.21/Makefile z80ex-z80ex-1.1.21-destdir-patch/Makefile
+--- z80ex-z80ex-1.1.21/Makefile	2015-10-30 16:06:55.000000000 +0100
++++ z80ex-z80ex-1.1.21-destdir-patch/Makefile	2020-07-10 13:19:08.833314307 +0200
+@@ -7,6 +7,7 @@
+ #################################################################
+ INSTALL_PREFIX := /usr/local
+ TOOLS_PREFIX :=
++DESTDIR :=
+ 
+ CC := $(TOOLS_PREFIX)gcc 
+ LINKER := $(TOOLS_PREFIX)gcc
+@@ -67,28 +68,28 @@
+ 	
+ shared: z80ex.o z80ex_dasm.o
+ ifeq (${OS},Darwin)
+-	${LINKER} -dynamiclib -compatibility_version ${API_REVISION} -current_version ${VERSION_STR} -install_name ${INSTALL_PREFIX}/lib/${EMU}.${API_REVISION}.dylib -o ./lib/${EMU}.${VERSION_STR}.dylib z80ex.o
+-	${LINKER} -dynamiclib -compatibility_version ${API_REVISION} -current_version ${VERSION_STR} -install_name ${INSTALL_PREFIX}/lib/${DASM}.${API_REVISION}.dylib -o ./lib/${DASM}.${VERSION_STR}.dylib z80ex_dasm.o
++	${LINKER} -dynamiclib -compatibility_version ${API_REVISION} -current_version ${VERSION_STR} -install_name ${DESTDIR}${INSTALL_PREFIX}/lib/${EMU}.${API_REVISION}.dylib -o ./lib/${EMU}.${VERSION_STR}.dylib z80ex.o
++	${LINKER} -dynamiclib -compatibility_version ${API_REVISION} -current_version ${VERSION_STR} -install_name ${DESTDIR}${INSTALL_PREFIX}/lib/${DASM}.${API_REVISION}.dylib -o ./lib/${DASM}.${VERSION_STR}.dylib z80ex_dasm.o
+ else
+ 	${LINKER} -shared -Wl,-soname,${EMU}.so.${API_REVISION} -o ./lib/${EMU}.so.${VERSION_STR} z80ex.o
+ 	${LINKER} -shared -Wl,-soname,${DASM}.so.${API_REVISION} -o ./lib/${DASM}.so.${VERSION_STR} z80ex_dasm.o	
+ endif
+ 	
+ install:
+-	install -d ${INSTALL_PREFIX}/lib
+-	install ./lib/* ${INSTALL_PREFIX}/lib
+-	install -d ${INSTALL_PREFIX}/include/z80ex
+-	install -m 0664 ./include/* ${INSTALL_PREFIX}/include/z80ex
++	install -d ${DESTDIR}${INSTALL_PREFIX}/lib
++	install ./lib/* ${DESTDIR}${INSTALL_PREFIX}/lib
++	install -d ${DESTDIR}${INSTALL_PREFIX}/include/z80ex
++	install -m 0664 ./include/* ${DESTDIR}${INSTALL_PREFIX}/include/z80ex
+ ifeq (${OS},Darwin)
+-	ln -sf ${EMU}.${VERSION_STR}.dylib ${INSTALL_PREFIX}/lib/${EMU}.${API_REVISION}.dylib
+-	ln -sf ${EMU}.${VERSION_STR}.dylib ${INSTALL_PREFIX}/lib/${EMU}.dylib
+-	ln -sf ${DASM}.${VERSION_STR}.dylib ${INSTALL_PREFIX}/lib/${DASM}.${API_REVISION}.dylib
+-	ln -sf ${DASM}.${VERSION_STR}.dylib ${INSTALL_PREFIX}/lib/${DASM}.dylib	
++	ln -sf ${EMU}.${VERSION_STR}.dylib ${DESTDIR}${INSTALL_PREFIX}/lib/${EMU}.${API_REVISION}.dylib
++	ln -sf ${EMU}.${VERSION_STR}.dylib ${DESTDIR}${INSTALL_PREFIX}/lib/${EMU}.dylib
++	ln -sf ${DASM}.${VERSION_STR}.dylib ${DESTDIR}${INSTALL_PREFIX}/lib/${DASM}.${API_REVISION}.dylib
++	ln -sf ${DASM}.${VERSION_STR}.dylib ${DESTDIR}${INSTALL_PREFIX}/lib/${DASM}.dylib	
+ else
+-	ln -sf ${EMU}.so.${VERSION_STR} ${INSTALL_PREFIX}/lib/${EMU}.so.${API_REVISION}
+-	ln -sf ${EMU}.so.${VERSION_STR} ${INSTALL_PREFIX}/lib/${EMU}.so
+-	ln -sf ${DASM}.so.${VERSION_STR} ${INSTALL_PREFIX}/lib/${DASM}.so.${API_REVISION}
+-	ln -sf ${DASM}.so.${VERSION_STR} ${INSTALL_PREFIX}/lib/${DASM}.so		
++	ln -sf ${EMU}.so.${VERSION_STR} ${DESTDIR}${INSTALL_PREFIX}/lib/${EMU}.so.${API_REVISION}
++	ln -sf ${EMU}.so.${VERSION_STR} ${DESTDIR}${INSTALL_PREFIX}/lib/${EMU}.so
++	ln -sf ${DASM}.so.${VERSION_STR} ${DESTDIR}${INSTALL_PREFIX}/lib/${DASM}.so.${API_REVISION}
++	ln -sf ${DASM}.so.${VERSION_STR} ${DESTDIR}${INSTALL_PREFIX}/lib/${DASM}.so		
+ endif	
+ 
+ dist: clean
