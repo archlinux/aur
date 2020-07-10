@@ -4,15 +4,15 @@
 _pkgname=PuLP
 pkgbase=python-pulp
 pkgname=(python-pulp python2-pulp)
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
 license=("BSD")
 url="https://github.com/coin-or/pulp"
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/e4/33/2882343b235326f6a1b8c6208ade294e3f4efd12d635af7e36eb27b69202/$_pkgname-$pkgver.tar.gz")
-sha512sums=('21a67e5e8b8911e472f5dd1525dc9cdccd26ad3c85b3c8070d2f69b91bc47cbb47751e72a152f0efefaafcf7c07e4d8215962f05a14cb14ce113f4399b514d52')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+b2sums=('ef67f5bdd65c1c3f0e0fb0d8300f875b923e0684718c81b958d7dfc9d710fd87da5a27851bef7c4b45f6ec0d5d43e8e9ce5862274ada330b650b59092e3b4fcf')
 
 prepare() {
 	for _python in python python2; do
@@ -41,12 +41,12 @@ _package_for_python_version() {
 }
 
 package_python-pulp() {
-	depends=('python-pyparsing')
+	depends=('python-amply')
 	_package_for_python_version python
 }
 
 package_python2-pulp() {
-	depends=('python2-pyparsing')
+	depends=('python2-amply')
 	_package_for_python_version python2
 
 	rm "$pkgdir"/usr/bin/pulptest
