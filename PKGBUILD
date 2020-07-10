@@ -9,7 +9,7 @@ url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt")
-sha256sums=('0ea3b76abf59306834a9e01010362700029bbffc7268706c91b2ea1438847138')
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir"
