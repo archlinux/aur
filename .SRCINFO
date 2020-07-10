@@ -1,0 +1,24 @@
+pkgbase = plasma-phonebook-git
+	pkgdesc = Phone book for Plasma Mobile
+	pkgver = r163.869a837
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/plasma-phonebook
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kpeople
+	depends = kcontacts
+	depends = kpeoplevcard
+	depends = kirigami2
+	provides = plasma-phonebook
+	conflicts = plasma-phonebook
+	conflicts = plasma-mobile-phonebook
+	source = git+https://invent.kde.org/plasma-mobile/plasma-phonebook.git
+	sha256sums = SKIP
+
+pkgname = plasma-phonebook-git
+
