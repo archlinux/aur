@@ -3,16 +3,16 @@
 pkgbase=ow-zlib
 pkgdesc="A compression/decompression Library for Open Watcom (cross-)compilation"
 #we do split packages for each target
-pkgver=1.2.8
-pkgrel=7
+pkgver=1.2.11
+pkgrel=1
 arch=('any')
 license=('custom:zlib')
 depends=(openwatcom-v2)
 makedepends=(openwatcom-v2)
 url="http://www.zlib.net/"
-source=("http://zlib.net/zlib-${pkgver}.tar.gz" "pragma.patch")
+source=("https://zlib.net/zlib-${pkgver}.tar.gz" "pragma.patch")
 options=(!strip !buildflags staticlibs emptydirs)
-md5sums=('44d667c142d7cda120332623eab69f40' 'bd548e821655885de7de1099979b6e9d')
+md5sums=('1c9f62f0778697a09d36121ead88e08e' 'bd548e821655885de7de1099979b6e9d')
 
 pkgname=("${pkgbase}" "${pkgbase}-dos" "${pkgbase}-win16" "${pkgbase}-win32" "${pkgbase}-os2" "${pkgbase}-netware")
 
