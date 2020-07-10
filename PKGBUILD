@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-rosario
 pkgver=1.100
-pkgrel=2
+pkgrel=3
 pkgdesc='A sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/rosario/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-BoldItalic.otf'
@@ -27,7 +26,7 @@ sha256sums=('944998f475ee63b332a19137840d9e334c94ec6300f8091a5049a647798ca33a'
             '11ec3356f9c1f835b6687c895c74a1861140b8a790595975c8edbbb37648a630')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }

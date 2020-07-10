@@ -1,13 +1,11 @@
 pkgbase = otf-rosario
 	pkgdesc = A sans-serif typeface family from Omnibus-Type.
 	pkgver = 1.100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/rosario/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = otf-rosario-1.100-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt
+	license = OFL
+	source = otf-rosario-1.100-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-BoldItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Italic.otf
