@@ -9,7 +9,7 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2019.4.pre2.r121.g2c3a4551
+pkgver=2020.3.pre2.r5.g37f26bb6
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)'
 arch=('x86_64')
@@ -24,15 +24,12 @@ sha256sums=('SKIP')
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
-    cd MediaSDK
-    git lfs install --local
-    git lfs pull "${source[0]/git+/}"
+    git -C MediaSDK lfs install --local
+    git -C MediaSDK lfs pull "${source[0]/git+/}"
 }
 
 pkgver() {
-    cd MediaSDK
-    local _prefix='intel-mediasdk-'
-    git describe --long --tags | sed "s/^${_prefix}//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
+    git -C MediaSDK describe --long --tags | sed 's/^intel-mediasdk-//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -61,17 +58,16 @@ package_intel-media-sdk-git() {
     conflicts=('intel-media-sdk')
     
     make -C build DESTDIR="$pkgdir" install
-    
     ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
+    install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # remove core component libmfx
     [ -d 'libmfx' ] && rm -rf libmfx
-    mkdir -p libmfx/lib/pkgconfig
-    mv "${pkgdir}/usr/include" libmfx
+    mkdir -p libmfx/{include,lib/pkgconfig}
+    mv "${pkgdir}/usr/include/mfx" libmfx/include
     mv "${pkgdir}/usr/lib/libmfx.so"* libmfx/lib
     mv "${pkgdir}/usr/lib/pkgconfig/"{,lib}mfx.pc libmfx/lib/pkgconfig
-    
-    install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -d "${pkgdir}/usr/include"
 }
 
 package_libmfx-git() {
@@ -80,9 +76,6 @@ package_libmfx-git() {
     provides=('libmfx')
     conflicts=('libmfx')
     
-    # install core component libmfx into a separated package
-    mkdir -p "${pkgdir}/usr"
-    mv libmfx/{include,lib} "${pkgdir}/usr"
-    
+    mv libmfx "${pkgdir}/usr"
     install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
