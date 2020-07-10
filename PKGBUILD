@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2020-04-02
+#   Revision: 2020-07-10
 
 pkgname=ttf-germanica
 _pkgname=germanica
@@ -9,7 +9,7 @@ pkgdesc="A basic decorative medieval style ttf font family by Paul Lloyd"
 arch=('any')
 url="http://moorstation.org/typoasis/designers/lloyd/"
 license=('Free')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 install=ttf.install
 source=("http://img.dafont.com/dl/?f=germanica_family")
 md5sums=('2f67c636510e535c41f550b03cdf068a')
