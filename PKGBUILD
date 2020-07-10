@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -37,8 +37,8 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 stl -t "$pkgdir/usr/bin"
 
-    install -d "$pkgdir/usr/share/$pkgname"
-    cp -r sbs tweaks "$pkgdir/usr/share/$pkgname"
+    install -d "$pkgdir/usr/share/stl"
+    cp -r sbs tweaks "$pkgdir/usr/share/stl"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
