@@ -1,6 +1,6 @@
 pkgbase = smf-dsp-git
 	pkgdesc = Advanced MIDI file player, including various chip music synths
-	pkgver = 0.0.0.r201.ge28e01e
+	pkgver = 0.0.0.r242.g97a3b30
 	pkgrel = 1
 	url = https://github.com/jpcima/smf-dsp
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = smf-dsp-git
 	makedepends = cmake
 	depends = sdl2
 	depends = sdl2_image
+	depends = libsoundio
 	depends = jack
 	depends = alsa-lib
 	depends = libuv
