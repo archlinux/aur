@@ -1,6 +1,6 @@
 pkgbase = tijolo-git
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = GIT
+	pkgver = HEAD
 	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
