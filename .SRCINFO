@@ -1,17 +1,14 @@
 pkgbase = imagescan-plugin-networkscan
 	pkgdesc = Plugin for using Epson scanners with Image Scan v3 over network
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.epson.net/linux/en/imagescanv3.php
 	install = imagescan-plugin-networkscan.install
-	arch = i686
 	arch = x86_64
 	license = Custom License - See /usr/share/doc/imagescan-plugin-networkscan/COPYING.EPSON.en.txt
 	depends = imagescan
-	source_i686 = https://download2.ebz.epson.net/imagescanv3/fedora/latest2/rpm/x86/imagescan-bundle-fedora-30-3.62.0.x86.rpm.tar.gz
-	sha256sums_i686 = 0788f35984fa702d0730d19c515ac303715a5dc546d9f72c39557f826d12297c
-	source_x86_64 = https://download2.ebz.epson.net/imagescanv3/fedora/latest2/rpm/x64/imagescan-bundle-fedora-30-3.62.0.x64.rpm.tar.gz
-	sha256sums_x86_64 = 2ec3be6769ae83f2ca3f317ceaec219f089c374d454e0753f87e329a778905bf
+	source_x86_64 = https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-32-3.63.0.x64.rpm.tar.gz
+	sha256sums_x86_64 = d5d16fbcd0baab55d08f0a6a44ef43fdd0d9e08ae9d803274dd4a6ba28b4604c
 
 pkgname = imagescan-plugin-networkscan
 
