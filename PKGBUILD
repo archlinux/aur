@@ -2,7 +2,7 @@
 # Contributor: Prepros <hi@prepros.io>
 
 pkgname=prepros-bin
-pkgver=7.2.21
+pkgver=7.3.12
 pkgrel=1
 pkgdesc="Compile Sass, Less, Jade and much more with live browser refresh."
 arch=('x86_64')
@@ -16,8 +16,8 @@ options=('!strip' '!emptydirs')
 
 install=${pkgname}.install
 
-source_x86_64=("https://downloads.prepros.io/v7/Prepros-7.2.21.deb")
-sha512sums_x86_64=('eb9c4be34bdbf075dfeab6a37ac0baae25f2cfcdeb003eaf1e01d29dd9ed3427dbd67650cf2dede6837682b15d015159c086237c748120eda421996f52860cbe')
+source_x86_64=("https://downloads.prepros.io/v7/Prepros-7.3.12.deb")
+sha512sums_x86_64=('7f18a29ec20262eb24d16cf2f548495f93747d406a16efd7ef713f453c8a531c9d30eeda01aeaae8a6232a556aee8dc4b81d0ffee5cb0e397f96c749b15177da')
 
 package(){
 
