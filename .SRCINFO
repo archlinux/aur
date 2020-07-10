@@ -1,9 +1,8 @@
 pkgbase = qtcreator-markview-plugin-git
-	pkgdesc = Qt Creator markup plugin
-	pkgver = r69.6fee38c
+	pkgdesc = Qt Creator markup plugin (latest development version)
+	pkgver = r77.4833637
 	pkgrel = 1
 	url = https://github.com/OneMoreGres/qtc-markview
-	arch = i686
 	arch = x86_64
 	groups = qt
 	groups = qt5
@@ -13,7 +12,7 @@ pkgbase = qtcreator-markview-plugin-git
 	depends = qtcreator
 	provides = qtcreator-markview-plugin
 	conflicts = qtcreator-markview-plugin
-	source = qtcreator-markview-plugin-git::git://github.com/OneMoreGres/qtc-markview.git
+	source = qtcreator-markview-plugin-git::git+https://github.com/OneMoreGres/qtc-markview.git
 	md5sums = SKIP
 
 pkgname = qtcreator-markview-plugin-git
