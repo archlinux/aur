@@ -1,0 +1,20 @@
+pkgbase = whale-browser
+	pkgdesc = A web browser that possess a lot of similar features as Vivaldi, being a customized pushed browser, multi-tasking browsing called Omnitasking, as well as other features such as cloud saves & quick translation
+	pkgver = stable
+	pkgrel = 1
+	url = https://whale.naver.com/en
+	arch = x86_64
+	license = custom:whale-browser
+	makedepends = tar
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	options = !strip
+	options = !emptydirs
+	source = whale-browser-stable.deb::http://update.whale.naver.net/downloads/installers/naver-whale-stable_amd64.deb
+	source = LICENSE
+	sha256sums = 88c6bad5e6ac56fb87368e42e707eeb3bed7e5e9dff825a5e32403ca4c4db42d
+	sha256sums = SKIP
+
+pkgname = whale-browser
+
