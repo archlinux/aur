@@ -2,12 +2,11 @@
 
 pkgname=ttf-comfortaa
 pkgver=3.100
-pkgrel=1
+pkgrel=2
 pkgdesc='Rounded geometric sans-serif typeface from Google by Johan Aakerlund'
 arch=('any')
 url='https://fonts.google.com/specimen/Comfortaa'
-license=('custom:SIL Open Font License v1.1')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+license=('custom:OFL')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git')
 source=("Comfortaa-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/4e6d978a7432514a9918b07863bb5280e7cc8815/ofl/comfortaa/Comfortaa-Bold.ttf"
         "Comfortaa-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/4e6d978a7432514a9918b07863bb5280e7cc8815/ofl/comfortaa/Comfortaa-Light.ttf"
