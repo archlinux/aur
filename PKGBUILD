@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-faustina
 pkgver=1.007
-pkgrel=2
+pkgrel=3
 pkgdesc='A serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/faustina/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-BoldItalic.otf'
@@ -21,21 +20,21 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBoldItalic.otf')
 sha256sums=('73f1067ce6357d5da461e7973e7fc1092fbf44212730b77759b1b9a4f39466ec'
-            'd00fce010f968284b55d9bf8f5f92cad3bd5410c8a80d425b9353d7c1b725498'
-            '4577781f6cd8df55dd4392b6be2237b976650bd3b2b878da749d8d91ef246ca8'
-            'f4e76b4be8e96da98d180c5557aa7797e3157fb3050e34692763276e0e67fc0c'
-            'c2afbf545e77b7ae107d022553ed20241d3e3a7dc56253fb10c5a54aa600958e'
-            'c8d69cdc6f09e2736d8f823ebf6d1ecc4429c7b602fc863b69df39696140ac27'
-            '0b81d5eb20078013ac3ddf49a1417c65f6ce10f2a958386cbe3c7e8cd77aabe5'
-            '7266df57ebb4f375c1d6ee6c8749420fd48762ec5c37b84ba847cd2c18083892'
-            '53ce2e5c6d18cb74514cd737b1609f08169528b9ff7f35be8b32740136620447'
-            '3e7c06f03e346b833acbaf404faa5ac9d396600f4672a83cdb8dba57f3ebb504'
-            '86cb948dd5f54cb5f34ab26bd2bdf33301d1365ebba0122116c1b3ed45b583ef'
-            '52a58b4d459a0ca5a2dd13b8320b4075937b7bfd2f5138c7e0b3039029e36555'
-            '888592d5f5a08436aeb80426af1dc1f9befc945cdab4161c44e28224d152a364')
+            '547ec085d37fe15ff2ade229b8492a5a762f0641bb63ff1025083de384a72daa'
+            'a7a2083c788298f79ade6e14727f41424331737a18a2820b65dfb97a44cbb8e6'
+            'c52f40077522a70a89b3d4fd0e4b5918f0b2c7c15e1c53a9bc8420be81fe9e01'
+            '66297d55578a91e2c094304a101186caa1cabd13ac77d7c4357ebb7996c3145d'
+            '7e658eb4bcd66da7263da110b8c50f20230bf4ad3e5c877ffbdaed95391af2a2'
+            'bfa6676080ffe132689b28d47c97b978a4cb5f32aa408c06319b95d7c8fef668'
+            '334e53f8aab9408a175e1855ff604eb2167cd2a76907086ba2eb768a1d5e36af'
+            '49244c8befe042e11166e27f0d65bae8d59b5c681927128c3ca1ec6b54d23147'
+            '54e7b59e023a3857a73662c403b55e019b07aa6e60b5f9d9ce9508b941922728'
+            '639705fbbfc16542a886336c7c794e3d1379f3476d3a3a5683fecb40a3670252'
+            'fe8a7c7df832ee7ccafacf5527f072e7b0db771384b13fb9b48e7334b9e12ad8'
+            'ccff13ebfc238591307c3f75363b832e5a2206811d88ada355ee446d7ef82afc')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
