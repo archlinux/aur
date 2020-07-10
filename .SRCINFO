@@ -1,0 +1,18 @@
+pkgbase = python-scikit-video
+	pkgdesc = Video processing built on top of scipy, numpy, and ffmpeg/libav
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = http://www.scikit-video.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	depends = ffmpeg
+	depends = python-scikit-learn
+	depends = python-pillow
+	optdepends = mediainfo
+	source = https://github.com/scikit-video/scikit-video/archive/1.1.11.tar.gz
+	sha256sums = 0d28d9c08d43be56bd723c8387e90e599a5ce4b75c389717d190ccde0ef5d56f
+
+pkgname = python-scikit-video
+
