@@ -1,6 +1,6 @@
 pkgbase=calligra-git
 pkgname=('calligra-git')
-pkgver=3.1.0.r781.g935f505f5b1
+pkgver=3.2.1.r37.g2880ac99ebf
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('FDL1.2' 'GPL2' 'LGPL')
@@ -24,7 +24,7 @@ optdepends=('libwpg: Corel WordPerfect Graphics image importer'
             'kirigami2: for Calligra Gemini'
             'qt5-quickcontrols: for Calligra Gemini'
             'qt5-webengine: for Calligra Gemini')
-source=('calligra::git+git://anongit.kde.org/calligra')
+source=('calligra::git+https://invent.kde.org/office/calligra.git')
 sha256sums=('SKIP')
 conflicts=(calligra calligra-devtools-git calligra-extras-git calligra-filters-git calligra-karbon-git karbon calligra-libs-git
   calligra-plugins-git calligra-sheets-git calligra-stage-git calligra-words-git calligra-meta
