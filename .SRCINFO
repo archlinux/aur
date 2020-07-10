@@ -1,7 +1,7 @@
 pkgbase = jailkit
 	pkgdesc = A set of utilities to limit user accounts to specific files .
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://olivier.sessink.nl/jailkit/
 	arch = x86_64
 	license = libtirpc
