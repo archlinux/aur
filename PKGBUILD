@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('x86_64')
