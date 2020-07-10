@@ -9,7 +9,7 @@ url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt")
-b2sums=('9776ff92e67ab8848b47aeb09025bfc7778be179c625e52e9bf603dc754ec1ae17c681db29d2bf60553c9defa1423e7377f9136fcf98d9b8bff254e4744d594a')
+b2sums=('bad7b6a1eb4d9fafe79c8c7363746057140cca6ccce875956ef2419a8b2e516ffca24b29887b97e9e4c5186452b1526c5fe01ff3bbfdf22aa7fcb198ba4b3ec9')
 
 package() {
   cd "$srcdir"
