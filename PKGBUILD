@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/B00merang-Project/${_pkgname}"
 license=('GPL3')
 provides=("${_pkgname}=${pkgver}")
-depends=('gtk3>=3.20'
+depends=('gtk3>=3.0'
 	'gnome-themes-standard'
 	'gdk-pixbuf2'
 	'gtk-engines'
@@ -31,7 +31,6 @@ package() {
 	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/gnome-shell/ ${pkgdir}/usr/share/themes/${_pkgname}
 	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/gtk-2.0/ ${pkgdir}/usr/share/themes/${_pkgname}
 	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/gtk-3.0/ ${pkgdir}/usr/share/themes/${_pkgname}
-	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/gtk-3.20/ ${pkgdir}/usr/share/themes/${_pkgname}
 	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/metacity-1/ ${pkgdir}/usr/share/themes/${_pkgname}
 	cp --no-preserve=mode -r "${srcdir}/${_pkgname}"/xfwm4/ ${pkgdir}/usr/share/themes/${_pkgname}
 
