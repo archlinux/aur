@@ -1,7 +1,7 @@
 pkgbase = img4tool-git
 	pkgdesc = Tool for manipulating IMG4, IM4M and IM4P files
-	pkgver = r182.22a2671
-	pkgrel = 2
+	pkgver = r185.fc1ccfe
+	pkgrel = 1
 	url = https://github.com/tihmstar/img4tool
 	arch = x86_64
 	license = LGPL3
