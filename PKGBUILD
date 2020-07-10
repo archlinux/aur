@@ -2,7 +2,7 @@
 
 pkgname=av-98
 pkgver=1.0.2dev
-pkgrel=1
+pkgrel=2
 arch=(any)
 
 pkgdesc='Command line Gemini client.'

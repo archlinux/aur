@@ -1,7 +1,7 @@
 pkgbase = av-98
 	pkgdesc = Command line Gemini client.
 	pkgver = 1.0.2dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tildegit.org/solderpunk/AV-98/
 	arch = any
 	license = BSD
