@@ -1,12 +1,11 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze
 pkgver=1.001
-pkgrel=2
+pkgrel=3
 pkgdesc='A hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-BlackItalic.otf'
@@ -27,27 +26,27 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Thin.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-ThinItalic.otf')
 sha256sums=('3b84fe60cf47615bda9710f47d81f8935544b021f0a4846b2518489b2d2ea1a4'
-            '93cfb54cf9ae4640a73ecfd754498f891bd1f3c691327e1bbdfcb9c05c51064f'
-            '6a6a08cf36e69b4af07b5812abfd488233e465893631ab18f17eea806b89f697'
-            '3e62d0d7625fac6e95fe7908245bbbeaa2e2b9de054cf659f49389b0ed5be57e'
-            'f42e92ef1f053ab071a7460c77575117fa5a793b70a5e837a484f8b3fa2015a7'
-            '32b253bea247e469037ce9033e8b766f2e1cbfa44ebaf585384569de9f860a9b'
-            '5e55ad143b1bf8e6550d180789f32a7729c67d4890af1a0ae79b1622266361d5'
-            '57f07c2868c9cf77d079b71ba98303cb006a5c87e80868ad641f7f79f3cb45a7'
-            '9f66750010df73b417a13bcf70eebf28ba729f74df18161f8d153d4eeea3688e'
-            'f23851f74468fad967e7a72cffc1448e3caa2fb6fc3dcb6eff7c69ce4aef22ca'
-            '15a51a182a505f4cb7dfea0979edd1391fcd6d10edb227ede4d081ed596d5eb3'
-            '7b308f0d72ec062941ef14f438d770055f6874e1858f3f312d4369fb4b247463'
-            'af94320260a9ded48f779da5af83b130777d92ea6ac65d2d8a11c84e9aa76cfb'
-            '8830701b37d117489cbebf13626eafc2146d0ae9215da19af0a387fb3b598f43'
-            'af365b6536439d4759b4195032299ebeba7c0a63f90d67d84e033ab5c967f251'
-            '7bdb700a68d1eeab3bfeb6c76d4b38d65699ebe082b18013276299d201e8cd58'
-            '8bd3a3f9e6484e03f30e10e82935a08096235ca714784d3a3b020821db787837'
-            '2e3a4c06d7f767fc2d9e46e52984cbd83aecb58ac23aa203bfa85583272af7b4'
-            '5cdb1b3cd079877b323cc9bf27a62979acd1376dc001d64c5d241a801939105c')
+            'e9718d947c2e45e5cdc924a6ebff7daabd0451308878e94c608373da20d85338'
+            'ed452866c5a800d78bb7b3242b4bd277cc8300ecddb73effcec36ce0952a7e16'
+            'a7a957a6410a2265708bcce3c95108c6bc308f1a17053f3f50f1b508f38c8a66'
+            '08e84d7d59e929a1bd16ede2de8437c43ca04f0e9d176b813160d6486b0e33b1'
+            '279ca2bf7a8a0c77e55ee3a3229db88feaf844ed5e88834a2232fdadc0f21ba2'
+            '64e41f54b33c86ffb9511851935579e654717d07dc83ecd6ecbabcfc25bf6d89'
+            'c7b8e2e591839635bc78a93b23fb20a15405ea7df8bb4d88206fc78ca5c6b144'
+            'fa96fe93f17910703ac4a87f7086f810e07623347eb943cc5c51e4ee529b0a88'
+            '7a9022b2a2e9c7135f5c1e3d772b97e7e12aad11981131f5142e8c27a9e24f3f'
+            '2b7bada4662be42aaf08a88736d9021859bf2fe0105b4f3606819f71cb966463'
+            'af18e749a313df720b85429225466aade5dfc0539de84b360c40a28b2ee7fefd'
+            'fa020171fb5d32c8cff5ff976c02ff4e3179483f08586261df408d931136b635'
+            '44caec715c1c50cafbd3a9cfb3cac3903c844416d24ec2eef9a95562df978df9'
+            '8d51cb3681a5b31d421895cddab33f82f6f2c7462a2edaf285c3f961225966f2'
+            '71b6d3caa4207f4829c9697b46b2677c93a790f1feac365cb0e1ee8f47200e97'
+            '189255af972c05a2b54deebae9acd4d396497178e27daed1f435fab1b83c66b1'
+            '45cc551e99d180bf5f145f683f0dc887784eb1b56c33a00ee4f0fd69a255df56'
+            'ce94c29b3f519ccad5aa8090f688bf3c98be188254498cbd2f22f5f670c19553')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
