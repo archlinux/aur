@@ -2,30 +2,25 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.21.0.2.g3b682e16
+pkgver=3.21.0.26.gf56f653c
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
 license=('GPL')
-depends=('python>=3.3'
-         'gtk3>=3.20'
-         'glib2>=2.48'
-         'python-gobject>=3.30'
-         'pygobject-devel>=3.30'
-         'gtksourceview4>=4.0.0'
-         'python-cairo>=1.10.0-6')
-makedepends=('meson'
-             'appstream-glib'
+depends=('dconf'
+         'gsettings-desktop-schemas'
+         'gtksourceview3'
+         'python-cairo'
+         'python-gobject')
+makedepends=('git'
              'intltool'
-             'gnome-doc-utils'
-             'git'
-             'itstool')
+             'meson'
+             'yelp-tools')
 optdepends=('python-dbus: open a new tab in an already running instance')
 conflicts=('meld' 'meld-dev')
 provides=('meld')
-install=meld.install
 options=('!emptydirs')
 source=("git+https://gitlab.gnome.org/GNOME/meld.git")
 sha256sums=('SKIP')
