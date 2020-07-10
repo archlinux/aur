@@ -1,6 +1,6 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
-pkgver=2.0.26
+pkgver=2.0.30
 pkgrel=6
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 #validpgpkeys=('FB5DB77FD5C118B80511ADA8A6310ACC4672475C')
 sha256sums=(
-    'c8ff46c336f26e4494de389ab3c6a043fbd6ddda62b24483a05c7deaccafe105'
+    '7ee475f22c1b35cc9e53affbf96a9ffce91706e154a9441d0d39cbf8366b718e'
 )
 
 package() {
