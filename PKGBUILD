@@ -5,7 +5,7 @@
 
 pkgname=makedumpfile
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to generate smaller dumpfiles from kdump memory dumps"
 license=('GPL2')
 depends=('perl' 'elfutils')
@@ -16,6 +16,7 @@ sha256sums=('e702fbdf62b4cd829a76e46f3e24eb3fc7501918b85ebdcd8baef4f53d6ee2c8')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  export CFLAGS="-fcommon"
   make LINKTYPE=dynamic
 }
 

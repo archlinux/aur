@@ -1,7 +1,7 @@
 pkgbase = makedumpfile
 	pkgdesc = A tool to generate smaller dumpfiles from kdump memory dumps
 	pkgver = 1.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/makedumpfile
 	arch = i686
 	arch = x86_64
