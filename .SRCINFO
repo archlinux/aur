@@ -1,16 +1,27 @@
 pkgbase = whalebird
-	pkgdesc = Electron-based Mastodon/Pleroma client
-	pkgver = 2.8.0
+	pkgdesc = An Electron based Mastodon, Pleroma and Misskye client
+	pkgver = 4.1.0
 	pkgrel = 1
-	url = https://whalebird.org
-	arch = i686
+	url = https://whalebird.social
 	arch = x86_64
 	license = MIT
-	makedepends = npm
-	source = whalebird-2.8.0.tar.gz::https://github.com/h3poteto/whalebird-desktop/archive/2.8.0.tar.gz
-	source = whalebird.desktop
-	sha512sums = f54f31e087ca076a1b836440aafa97b476c73568c30193b2061839d6dad76bf7043b468823e95a4a4c36305fcfe7daa164b7e6682a84e8fee6d34473a1371003
-	sha512sums = 3e5f29fc6db305957b81abc8e4b4679fbd979bbf41ce0c190b19c31a96a3bfe03b624885961ce6d7410716d286c82548b960ebbc1e547c1cacc0b16175eecee2
+	makedepends = tar
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = snappy
+	depends = re2
+	depends = libnotify
+	depends = libvpx
+	provides = whalebird
+	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.1.0/Whalebird-4.1.0-linux-x64.tar.bz2
+	md5sums = ff4c3b574a79f562e4ec0086fb03c913
 
 pkgname = whalebird
 

@@ -1,37 +1,20 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-
+# Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=2.8.0
+pkgver=4.1.0
 pkgrel=1
-pkgdesc='Electron-based Mastodon/Pleroma client'
-arch=(i686 x86_64)
-url=https://whalebird.org
-license=(MIT)
-makedepends=(npm)
-source=(whalebird-$pkgver.tar.gz::https://github.com/h3poteto/whalebird-desktop/archive/$pkgver.tar.gz
-        whalebird.desktop)
-sha512sums=('f54f31e087ca076a1b836440aafa97b476c73568c30193b2061839d6dad76bf7043b468823e95a4a4c36305fcfe7daa164b7e6682a84e8fee6d34473a1371003'
-            '3e5f29fc6db305957b81abc8e4b4679fbd979bbf41ce0c190b19c31a96a3bfe03b624885961ce6d7410716d286c82548b960ebbc1e547c1cacc0b16175eecee2')
-
-build() {
-  cd whalebird-desktop-$pkgver
-  npm install
-  npm run build
-  npx electron-builder --dir
-}
+pkgdesc="An Electron based Mastodon, Pleroma and Misskye client"
+arch=('x86_64')
+url="https://whalebird.social"
+license=('MIT')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy' 're2' 'libnotify' 'libvpx')
+makedepends=('tar')
+provides=('whalebird')
+source=("https://github.com/h3poteto/whalebird-desktop/releases/download/$pkgver/Whalebird-$pkgver-linux-x64.tar.bz2")
+md5sums=('ff4c3b574a79f562e4ec0086fb03c913')
 
 package() {
-  install -Dm 644 whalebird.desktop -t "$pkgdir"/usr/share/applications
-
-  cd whalebird-desktop-$pkgver/build
-
-  cp -a linux-unpacked "$pkgdir"/usr/share/whalebird
-
-  for i in 16 32 128 256 512; do
-    install -Dm 644 icons/icon.iconset/icon_${i}x${i}.png \
-      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/whalebird.png
-  done
-
-  mkdir "$pkgdir"/usr/bin
-  ln -s /usr/share/whalebird/whalebird "$pkgdir"/usr/bin/whalebird
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share"
+	mv "Whalebird-$pkgver-linux-x64" "$pkgdir/usr/share/$pkgname"
+	ln -s "$pkgdir/usr/share/$pkgname/whalebird" "$pkgdir/usr/bin/whalebird"
 }
