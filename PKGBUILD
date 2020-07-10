@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('python-flask: adds support for the Flask Web Framework'
             'python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs'
             'python-pyspark: adds support for the Python API for Apache Spark')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('da06bc3641e81ec2c942f87a0676cd9180044fa3d1697524a0005345997542e2')
+sha256sums=('380a280cfc7c4ade5912294e6d9aa71ce776b5fca60a3782e9331b0bcd2866bf')
 
 build() {
 	cd "$_name-$pkgver"
