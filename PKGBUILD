@@ -3,12 +3,12 @@
 
 pkgname='perl-dancer-plugin-database-core'
 pkgver='0.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Shared core for D1 and D2 Database plugins"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dbi>=0' 'perl>=5.006')
+depends=('perl-dbi>=0' 'perl>=5.6')
 makedepends=()
 url='https://metacpan.org/release/Dancer-Plugin-Database-Core'
 source=('http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Dancer-Plugin-Database-Core-0.13.tar.gz')
