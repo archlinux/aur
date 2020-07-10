@@ -12,5 +12,5 @@ sha256sums=('ab6b1360e8040e62ca94779f391998f93dc15afcb3e4651440f192f3e42f2a52')
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/OTF/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
