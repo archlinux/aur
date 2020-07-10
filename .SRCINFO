@@ -1,7 +1,7 @@
 pkgbase = gnomecast-git
 	pkgdesc = A native Linux GUI for casting local files to Chromecast devices
-	pkgver = r172.42d8346
-	pkgrel = 2
+	pkgver = 1.9.9.r174.b87b597
+	pkgrel = 1
 	url = https://github.com/keredson/gnomecast
 	arch = any
 	license = GPL3

@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jacob Mischka <jacob@mischka.me>
 pkgname=gnomecast-git
-pkgver=r172.42d8346
-pkgrel=2
+pkgver=1.9.9.r174.b87b597
+pkgrel=1
 pkgdesc="A native Linux GUI for casting local files to Chromecast devices"
 arch=('any')
 url="https://github.com/keredson/gnomecast"
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(grep '__version__ = ' gnomecast.py | head -n1 | cut -d\' -f2)" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
