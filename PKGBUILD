@@ -1,6 +1,6 @@
 pkgbase=revolution-desktop-git
 pkgver=r9235.99ae606c
-pkgrel=1
+pkgrel=2
 pkgname=(revolution-web-git revolution-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('x86_64')
@@ -34,18 +34,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd riot-desktop
-  # Switch target to output to directory rather than .deb package
-  # @todo this needs to be fixed
-  sed -i 's/"target": "deb"/"target": "dir"/g' package.json
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' riot.im/release/config.json
-
-  cd ../riot-web
-  # Disable auto updating
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' riot.im/app/config.json
 }
 
 build() {
@@ -105,7 +93,7 @@ package_revolution-desktop-git() {
 
   # Config file
   ln -s /etc/revolution/config.json "${pkgdir}"/etc/webapps/revolution/config.json
-  install -Dm644 riot.im/release/config.json -t "${pkgdir}"/etc/revolution/
+  install -Dm644 config.sample.json -t "${pkgdir}"/etc/revolution/config.json
 
   # Required extras
   install -Dm644 ../revolution-desktop.desktop "${pkgdir}"/usr/share/applications/revolution-desktop.desktop
