@@ -1,6 +1,6 @@
 # Maintainer: Sauyon Lee <me at sjl dot re>
 pkgname=codeql
-pkgver=2.2.0
+pkgver=2.2.4
 pkgrel=1
 epoch=
 pkgdesc="The CLI tool for GitHub's CodeQL"
@@ -20,23 +20,14 @@ options=()
 install=
 changelog=
 source=("$pkgname-v$pkgver.zip::https://github.com/github/codeql-cli-binaries/releases/download/v$pkgver/$pkgname-linux64.zip")
-sha256sums=('a4f6540ea948f6fcdf698790708043a748321cec92bcae2a5ed810ed44ff16ea')
+sha256sums=('b044485df9ebc4aa4414a1ed3fa4867de51893cc8f964a6caaa7e7ec612a0757')
 
 noextract=()
 
 prepare() {
   cd "$srcdir"
 
-  # remove useless windows and osx binaries
-  LANGS=("" cpp csharp go)
-  for lang in "${LANGS[@]}"; do
-    rm -rf "$pkgname/$lang/tools/osx64"
-    rm -rf "$pkgname/$lang/tools/win64"
-  done
-  rm -rf "$pkgname/java/tools/macos"
-  rm -rf "$pkgname/java/tools/windows"
-
-  cp "codeql/tools/linux64/lib64trace.so" "codeql/tools/linux64/libtrace.so"
+  ln -sf "codeql/tools/linux64/lib64trace.so" "codeql/tools/linux64/libtrace.so"
 }
 
 package() {
