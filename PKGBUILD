@@ -24,11 +24,11 @@ package() {
   unzip -p ${pkgname}-${pkgver}.zip JELVIS-git-master/
   install -d $pkgdir/opt/$pkgname
   
-  install -D -t "$pkgdir/usr/bin" "$srcdir/JELVIS-git-master/jelvis"
+  install -D -t "$pkgdir/usr/bin" "$srcdir/JELVIS-git-master/jelvis-assistant"
   install -D -t "$pkgdir/usr/share/icons/" "$srcdir/JELVIS-git-master/icons/jelvis.png"
   install -D -t "$pkgdir/usr/share/icons/" "$srcdir/JELVIS-git-master/icons/jelvis_try.png"
   install -D -t "$pkgdir/usr/share/applications/" "$srcdir/JELVIS-git-master/jelvis.desktop"
   cp -r $srcdir/JELVIS-git-master/* $pkgdir/opt/$pkgname
 }
 
-md5sums=('38754521c5fbbfc20db4a40de273135d')
+md5sums=('c7974384a9ab6f2742c00584f588956c')
