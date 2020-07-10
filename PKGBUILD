@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/jaedb/${_pkgname}"
 license=('APACHE')
 depends=('python' 'mopidy>=3' 'mopidy-spotify' 'python-configobj'
-         'mopidy-local-images' 'python-pylast')
+         'mopidy-local' 'python-pylast')
 makedepends=('python' 'python-setuptools' 'python-pip')
 optdepends=('mopidy-local-sqlite: local library support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jaedb/Iris/archive/${pkgver}.tar.gz")

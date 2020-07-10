@@ -12,7 +12,7 @@ pkgbase = mopidy-iris
 	depends = mopidy>=3
 	depends = mopidy-spotify
 	depends = python-configobj
-	depends = mopidy-local-images
+	depends = mopidy-local
 	depends = python-pylast
 	optdepends = mopidy-local-sqlite: local library support
 	source = mopidy-iris-3.50.0.tar.gz::https://github.com/jaedb/Iris/archive/3.50.0.tar.gz
