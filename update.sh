@@ -19,7 +19,7 @@ sed -Ei "s/pkgver=[0-9\.]+/pkgver=$ver/
         s/sha256sums=\('[[:alnum:]]{64}/sha256sums=\('$new/" PKGBUILD
 
 source /etc/makepkg.conf
-mv "$dest" "$SRCDEST/$name"
+mv "$dest" "${SRCDEST:-.}/$name"
 
 makepkg
 makepkg --printsrcinfo > .SRCINFO
