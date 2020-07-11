@@ -13,6 +13,9 @@ depends=('python-torchvision' 'python-pytorch' 'python-scikit-image'
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner' 'python-tornado' 'python-nose' 'python-psutil' 'python-trustme'
 #              'python-gcp-devrel-py-tools' 'python-pytest-timeout' 'python-flaky')
+provides=('python-easyocr')
+conflicts=('python-easyocr-git')
+replaces=('python-easyocr-git')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('42d65f0da9cde6b1b183b6fdebdc8e077ad03deeb6b0b622fa5926c2f31bed7f')
 install=${pkgname}.install

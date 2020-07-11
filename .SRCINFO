@@ -15,6 +15,9 @@ pkgbase = python-easyocr
 	depends = opencv
 	depends = hdf5
 	depends = python-scipy
+	provides = python-easyocr
+	conflicts = python-easyocr-git
+	replaces = python-easyocr-git
 	source = EasyOCR-1.1.tar.gz::https://github.com/JaidedAI/EasyOCR/archive/v1.1.tar.gz
 	sha256sums = 42d65f0da9cde6b1b183b6fdebdc8e077ad03deeb6b0b622fa5926c2f31bed7f
 
