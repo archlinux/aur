@@ -8,25 +8,25 @@ pkgname=('nvidia-full-beta'
          'nvidia-settings-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
-pkgver=450.51
+pkgver=450.57
 pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-makedepends=('linux' 'linux-headers')
+makedepends=('linux-headers' 'dkms')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
-        'nvidia-utils-full-beta.sysusers'
-        '010-nvidia-kernel-5.7.patch'
-        '110-nvidia-settings-full-beta-change-desktop-paths.patch')
-sha256sums=('c25155bc5ad0121f1665047d5719cb17c60c9453b9a8fad9dea9cb334eaaea9e'
+        'nvidia-utils.sysusers'
+        '110-nvidia-change-dkms-conf.patch'
+        '120-nvidia-settings-change-desktop-paths.patch')
+sha256sums=('d50c77fc4fda2a5c5ab2af64524da8a3214077bd7daf0dbf7c1986e0ca05d711'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '37cf072fdaee3f9f0c5a8b4d5f2dac722c7b96720fc317bc2da947bde52fb946'
-            '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
+            '3f0940fa30468d237cda6cab354b4c40c7baacad5bd5aaf31706740f855e35ce'
+            '6bbc832f4f91a7c9ec4778eac5fffd633f5f547bc2d8bb89afe4f442ad3c8dda')
 
 # create soname links
 _create_links() {
@@ -49,30 +49,27 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     bsdtar -C "$_pkg" -xf "${_pkg}/nvidia-persistenced-init.tar.bz2"
     gunzip "$_pkg"/nvidia-{cuda-mps-control,modprobe,persistenced,settings,smi,xconfig}.1.gz
+    ln -s kernel "${_pkg}/nvidia-${pkgver}"
     
-    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-kernel-5.7.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-settings-full-beta-change-desktop-paths.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-settings-change-desktop-paths.patch"
 }
 
 build() {
-    printf '%s\n' "  -> Building Nvidia module for kernel $(</usr/src/linux/version)..."
-    make -C "${_pkg}/kernel" SYSSRC='/usr/src/linux' module
+    dkms build --dkmstree "$srcdir" --sourcetree "${srcdir}/${_pkg}" -m "nvidia/${pkgver}" -k "$(</usr/src/linux/version)"
 }
 
 package_nvidia-full-beta() {
-    depends=("nvidia-utils-full-beta>=${pkgver}" 'libglvnd')
+    depends=('linux' "nvidia-utils-full-beta>=${pkgver}" 'libglvnd')
     provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia')
     
-    local _extradir
-     _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
+    local _kernver
+    _kernver="$(</usr/src/linux/version)"
     
-    install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}${_extradir}"
-    
+    install -D -m644 "nvidia/${pkgver}/${_kernver}/${CARCH}/module"/* -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
-    
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
-    
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -124,7 +121,7 @@ package_nvidia-utils-full-beta() {
               "nvidia-libgl-beta=${pkgver}")
     conflicts=('nvidia-utils' 'nvidia-libgl')
     replaces=('nvidia-libgl')
-    install=nvidia-utils-full-beta.install
+    install=nvidia-utils.install
     
     cd "$_pkg"
     
@@ -237,7 +234,7 @@ package_nvidia-utils-full-beta() {
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
     
-    install -D -m644 "${srcdir}/nvidia-utils-full-beta.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -D -m644 "${srcdir}/nvidia-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     
     _create_links
 }
