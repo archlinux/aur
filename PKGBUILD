@@ -1,11 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('nautilus-pdf-tools-git' 'nemo-pdf-tools-git' 'caja-pdf-tools-git')
 pkgbase=nautilus-pdf-tools-git
+pkgdesc="Tools to work with PDF files from Nautilus, Nemo and Caja"
 pkgver=1.2.9.0extras20.04.01.r99.014bd82
 pkgrel=1
 arch=('any')
 url="https://github.com/atareao/nautilus-pdf-tools"
 license=('MIT')
+depends=('python-cairo' 'python-pillow' 'gtk3' 'poppler' 'python-pypdf2'
+         'python-sh' 'python-plumbum')
 makedepends=('git')
 source=('git+https://github.com/atareao/nautilus-pdf-tools.git')
 sha256sums=('SKIP')
@@ -40,8 +43,7 @@ prepare() {
 
 package_nautilus-pdf-tools-git() {
 	pkgdesc="Tools to work with PDF files from Nautilus"
-	depends=('python-nautilus' 'python-cairo' 'python-pillow' 'gtk3' 'poppler' 'python-pypdf2'
-	         'python-sh' 'python-plumbum')
+	depends+=('python-nautilus')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
@@ -60,8 +62,7 @@ package_nautilus-pdf-tools-git() {
 
 package_nemo-pdf-tools-git() {
 	pkgdesc="Tools to work with PDF files from Nemo"
-	depends=('nemo-python' 'python-cairo' 'python-pillow' 'gtk3' 'poppler' 'python-pypdf2'
-	         'python-sh' 'python-plumbum')
+	depends+=('nemo-python')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
@@ -80,8 +81,7 @@ package_nemo-pdf-tools-git() {
 
 package_caja-pdf-tools-git() {
 	pkgdesc="Tools to work with PDF files from Caja"
-	depends=('python-caja' 'python-gobject' 'python-cairo' 'python-pillow' 'gtk3' 'poppler'
-	         'python-pypdf2' 'python-sh' 'python-plumbum')
+	depends+=('python-caja')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
