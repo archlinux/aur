@@ -3,7 +3,7 @@
 pkgname=(otto-kde-git kvantum-theme-otto-git)
 pkgver=0
 pkgrel=1
-pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
+pkgdesc="Otto Theme for Kde Plasma"
 arch=('any')
 url="https://www.opencode.net/jomada/otto"
 license=('GPL3')
