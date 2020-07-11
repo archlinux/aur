@@ -2,14 +2,14 @@
 
 pkgname=dotbare
 pkgdesc="Manage your dotfiles interactively with fzf"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 arch=("any")
 url="https://github.com/kazhala/dotbare"
 license=("MIT")
 depends=('fzf')
 source=("https://github.com/kazhala/dotbare/archive/v${pkgver}.tar.gz" "${pkgname}")
-md5sums=('3cee4b754f2238c4799ca0c75edcc90e'
+md5sums=('df84e77b42b306aac346232376e9c32f'
          'f6c62c573ace6e97e1948944cf6454cd')
 
 package() {
