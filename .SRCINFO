@@ -1,8 +1,8 @@
 pkgbase = plasma5-applets-mycroft-git
 	pkgdesc = Mycroft Ai Plasmoid / Widget for KDE Plasma 5 Desktop
-	pkgver = r67.2e8a1ec
+	pkgver = r136.9a784bd
 	pkgrel = 1
-	url = https://cgit.kde.org/plasma-mycroft.git/
+	url = https://invent.kde.org/utilities/mycroft-plasmoid
 	install = plasma5-applets-mycroft-git.install
 	arch = x86_64
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = plasma5-applets-mycroft-git
 	makedepends = python
 	depends = qt5-websockets
 	depends = qt5-quickcontrols2
+	depends = mycroft-gui-git
 	optdepends = mycroft-core: for using "Installed Using Mycroft Package"
 	provides = plasma5-applets-mycroft
 	conflicts = plasma5-applets-mycroft
-	source = git+https://anongit.kde.org/plasma-mycroft.git
+	source = git+https://invent.kde.org/utilities/mycroft-plasmoid.git
 	sha512sums = SKIP
 
 pkgname = plasma5-applets-mycroft-git

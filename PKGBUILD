@@ -1,20 +1,20 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_pkgname=plasma-mycroft
+_pkgname=mycroft-plasmoid
 pkgname=plasma5-applets-mycroft-git
-pkgver=r67.2e8a1ec
+pkgver=r136.9a784bd
 pkgrel=1
 pkgdesc="Mycroft Ai Plasmoid / Widget for KDE Plasma 5 Desktop"
 arch=("x86_64" "i686")
-url="https://cgit.kde.org/plasma-mycroft.git/"
+url="https://invent.kde.org/utilities/mycroft-plasmoid"
 license=('GPL3')
-depends=('qt5-websockets' 'qt5-quickcontrols2')
+depends=('qt5-websockets' 'qt5-quickcontrols2' 'mycroft-gui-git')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'plasma-framework' 'python')
 optdepends=('mycroft-core: for using "Installed Using Mycroft Package"')
 provides=("plasma5-applets-mycroft")
 conflicts=("plasma5-applets-mycroft")
 install=$pkgname.install
-source=('git+https://anongit.kde.org/plasma-mycroft.git')
+source=('git+https://invent.kde.org/utilities/mycroft-plasmoid.git')
 sha512sums=('SKIP')
 
 pkgver() {
