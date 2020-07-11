@@ -5,7 +5,7 @@
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.02.a.r23.gb85ffd39f29
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.09.a.r48.gb8b80b6b1cf
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -38,9 +38,11 @@ source=(
     'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     '0001-not-build-ninja-icu.patch'
+    '0003-swift-python2-as-fallback-only.patch'
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -60,6 +62,7 @@ md5sums=(
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0003-swift-python2-as-fallback-only.patch" )
 }
 
 pkgver() {

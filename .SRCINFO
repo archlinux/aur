@@ -1,14 +1,15 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.06.29.a.r38.g30ccb529485
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.07.09.a.r48.gb8b80b6b1cf
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
 	license = apache2
+	makedepends = clang
+	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = cmake
-	makedepends = clang
+	makedepends = python-six
 	depends = icu
 	depends = libedit
 	depends = libxml2
@@ -18,7 +19,7 @@ pkgbase = swift-language-git
 	depends = ncurses
 	provides = swift-language
 	conflicts = swift-language-bin
-	source = git+https://github.com/apple/swift#commit=30ccb5294
+	source = git+https://github.com/apple/swift
 	source = cmark::git+https://github.com/apple/swift-cmark
 	source = llbuild::git+https://github.com/apple/swift-llbuild
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser
@@ -31,7 +32,11 @@ pkgbase = swift-language-git
 	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation
 	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests
-	source = llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253
+	source = llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master
+	source = 0001-not-build-ninja-icu.patch
+	source = 0003-swift-python2-as-fallback-only.patch
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
