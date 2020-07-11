@@ -1,43 +1,48 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
-	url = http://gtkhash.sourceforge.net/
+	url = https://github.com/tristanheaven/gtkhash
 	arch = i686
 	arch = x86_64
 	arch = mips64el
 	license = GPL
+	makedepends = dconf
+	makedepends = gtk3
 	makedepends = intltool
 	makedepends = librsvg
-	makedepends = nemo
-	makedepends = libnautilus-extension
-	makedepends = thunar
-	makedepends = caja
-	depends = dconf
-	depends = nettle
-	depends = gtk3
-	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.2/gtkhash-1.2.tar.xz
-	sha256sums = bd870bac6e14babfb6268b617a42e4bcd776559dd80dd62ad9f7cc28b773b8b2
+	makedepends = nettle
+	makedepends = xdg-utils
+	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.3/gtkhash-1.3.tar.xz
+	sha256sums = a94b12165bfa2ebec7270ce3bb8fb27da8a0624fb48ecfc0b68bcaf8c40db7af
 
 pkgname = gtkhash
+	depends = dconf
+	depends = gtk3
+	depends = nettle
 
-pkgname = gtkhash-nemo
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Nemo filemanager plugin)
+pkgname = gtkhash-caja
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Caja filemanager plugin)
 	depends = gtkhash
-	depends = nemo
+	depends = caja
 
 pkgname = gtkhash-nautilus
 	pkgdesc = A GTK+ utility for computing message digests or checksums (Nautilus filemanager plugin)
 	depends = gtkhash
 	depends = nautilus
 
+pkgname = gtkhash-nemo
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Nemo filemanager plugin)
+	depends = gtkhash
+	depends = nemo
+
+pkgname = gtkhash-peony
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Peony filemanager plugin)
+	depends = gtkhash
+	depends = peony
+
 pkgname = gtkhash-thunar
 	pkgdesc = A GTK+ utility for computing message digests or checksums (Thunar filemanager plugin)
 	depends = gtkhash
 	depends = thunar
-
-pkgname = gtkhash-caja
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Caja filemanager plugin)
-	depends = gtkhash
-	depends = caja
 
