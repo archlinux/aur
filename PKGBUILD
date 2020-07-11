@@ -2,8 +2,8 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -18,18 +18,10 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('98242fa3efd4b5fd57d6ad7e69a2570e7defacb580e30ae274deec3e1939f494'
+sha256sums=('87c832b25794d7acac2fa4bd3389c81819535f32242d5e99284da76a1a86f1f3'
             'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
-
-prepare() {
-
-	# Add /etc/cheat/ to config file path
-	cd "$pkgname-$pkgver"
-	sed -i '43 i\
-			path.Join("/etc/cheat/conf.yml"),' internal/config/paths.go
-}
 
 build() {
 	export GOPATH="$srcdir"/gopath
