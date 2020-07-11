@@ -1,0 +1,18 @@
+pkgbase = otto-kde-git
+	pkgdesc = Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)
+	pkgver = 0
+	pkgrel = 1
+	url = https://www.opencode.net/jomada/otto
+	arch = any
+	license = GPL3
+	source = git+https://www.opencode.net/jomada/otto.git
+	sha512sums = SKIP
+
+pkgname = otto-kde-git
+	optdepends = konsole: For the Konsole color scheme
+	optdepends = kvantum-theme-otto-git: Otto theme for kvantum (recommended)
+
+pkgname = kvantum-theme-otto-git
+	pkgdesc = Otto theme for kvantum
+	depends = kvantum-qt5
+
