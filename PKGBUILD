@@ -275,6 +275,7 @@ fi
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
+  # use 12 threads to compile
   if [[ $FAST_BOOT == "YES" ]]; then
     make -j12 NATIVE_FAST_BOOT=1
   else
