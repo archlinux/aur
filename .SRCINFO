@@ -1,0 +1,14 @@
+pkgbase = godwrap
+	pkgdesc = a cronwrapper implementation that ties into influxdb
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/antifuchs/godwrap
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/antifuchs/godwrap/archive/v0.0.1.tar.gz
+	sha256sums = 8385a969a5a98b50eb1ef967dd75174085b3faa848f436131b81d349b2acf2bb
+
+pkgname = godwrap
+
