@@ -1,8 +1,8 @@
 # Maintainer: timescam <rex.ky.ng at gmail dot com>
 
 pkgname=ttf-ligatured-hack
-pkgver=v3.003+FC3.1+JBMv1.0.6
-pkgrel=2
+pkgver=v3.003+FC5.2+JBMv2.000
+pkgrel=1
 pkgdesc="Latest ligatures with Hack font built with fully automated CI/CD by gaplo917"
 arch=("any")
 url="https://github.com/gaplo917/Ligatured-Hack"
@@ -12,7 +12,7 @@ provides=("ttf-hack")
 conflicts=("ttf-hack-ligatured")
 source=("https://github.com/gaplo917/Ligatured-Hack/releases/download/${pkgver}/HackLigatured-${pkgver}.zip"
         "${pkgver}-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE")
-sha256sums=("1e694ffdde1d2039492a1472bf65c95c72c29b1852b8fe96c2620e59eebb998f"
+sha256sums=("3c2d15ae8eb37fb29e6151566c2083792bd22884960bcdb014d34d03739dbfee"
             "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903")
 
 package() {
