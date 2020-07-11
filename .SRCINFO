@@ -1,0 +1,17 @@
+pkgbase = getfem
+	pkgdesc = A finite element framework to solve partial differential equations
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = http://getfem.org
+	arch = x86_64
+	license = LGPL3
+	depends = python-numpy
+	depends = python-scipy
+	depends = qhull
+	provides = gmm
+	conflicts = gmm
+	source = http://download-mirror.savannah.gnu.org/releases/getfem/stable/getfem-5.4.1.tar.gz
+	md5sums = 61988ac13d8a88fceb928b050c988220
+
+pkgname = getfem
+
