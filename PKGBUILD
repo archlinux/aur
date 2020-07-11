@@ -30,7 +30,7 @@ makedepends=('rust' 'git' 'clang' 'sh')
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
-pkgver=5.3.0.r241.47084d1
+pkgver=5.3.1.r244.a46cdc7
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
@@ -43,17 +43,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  # first get the most recent tag from master
-  git checkout master > /dev/null
-  git describe --tags | tr -d '\n'
-  # then get the commit hash from development branch
   git checkout develop > /dev/null
+  # first get the version number
+  cat config.mk | grep "VERSION" | grep -Po '(\d+\.)?(\d+\.)?(\*|\d+)' | tr -d '\n'
+  # then get the commit hash from development branch
   printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() (
   cd $_pkgbase
   git config advice.detachedHead false
+  git checkout develop > /dev/null
+  git pull
 )
 
 build() (
