@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-2to3
-pkgver=0.5.1
-pkgrel=4
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
 url='https://github.com/helm/helm-2to3'
@@ -9,8 +9,8 @@ license=('Apache')
 install=helm-2to3.install
 depends=('helm')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('70f0c09c0ca839656b5234ec9e1e332929d55b1ab9e204149ebb1ba31e4fcbca')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('46a88ef48fc8914f0886e37f16541add14727b2483d89aba314135428ccf6a87')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
