@@ -8,9 +8,7 @@ pkgdesc="An enterprise friendly way of detecting and preventing secrets in code"
 arch=("any")
 url="https://github.com/Yelp/detect-secrets"
 license=('Apache')
-depends=('python-requests'
-         'python-yaml'
-         'git')
+depends=('python-requests' 'python-yaml' 'git')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('0fd9da915c2643cff2f7bf75a0e849374933179a1b84b5cec60a5609ec493385')
