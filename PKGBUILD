@@ -25,12 +25,11 @@ build() {
 check() {
 	cd "build.dev-serial" 
         ctest
-
+        rm -r "Testing/"
         }
 
 package() {
 	cp -r "build.dev-serial" "$pkgdir/"
-        cp -r "fleur" "$pkgdir/"
 }
 
 md5sums=('SKIP')
