@@ -1,0 +1,13 @@
+pkgbase = ttf-ricty-diminished
+	pkgdesc = Japanese TrueType font for developers by mixing Inconsolata and Circle M+ 1m.
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://rictyfonts.github.io/diminished
+	arch = any
+	license = custom:OFL
+	depends = fontforge
+	source = https://rictyfonts.github.io/files/ricty_diminished-4.1.1.tar.gz
+	sha256sums = 09d6cf8eaf3402205dd8a0fa35469d41833b4e85bedddfac235255d78747766b
+
+pkgname = ttf-ricty-diminished
+
