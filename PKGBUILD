@@ -2,10 +2,10 @@
 
 pkgname=basez
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Encodes/decodes base16, base32, base32hex, base64, base64url, base64mime, base64pem PEM, base32plain, base64plain. base16 and base32 are NOT included in this package since they would conflict with the one already in coreutils.'
 arch=('x86_64')
-url='https://http://www.quarkline.net/basez/'
+url='http://www.quarkline.net/basez/'
 depends=('gcc-libs')
 license=('GPL')
 
