@@ -1,5 +1,5 @@
 pkgbase = mnamer
-	pkgdesc = A media organizion tool
+	pkgdesc = A media organization tool
 	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/jkwill87/mnamer

@@ -3,7 +3,7 @@
 pkgname=mnamer
 pkgver=2.4.1
 pkgrel=1
-pkgdesc='A media organizion tool'
+pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'
 license=('MIT')
