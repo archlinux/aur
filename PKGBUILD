@@ -25,10 +25,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 # https://github.com/Alexays/Waybar/issues/565) are present with the tagged
 # stable version.
 source=("$pkgname::git+https://github.com/HowardHinnant/date#commit=cac99da8dc88be719a728dc1b597b0ac307c1800"
-        "538-output-date-pc-for-pkg-config.patch::https://patch-diff.githubusercontent.com/raw/HowardHinnant/date/pull/538.patch"
         "use-correct-path-for-cmake-files.patch")
 sha256sums=('SKIP'
-            'f39ce7f1f738ebdc02948ed78be68cca10c01f9e22a4243670304eeda53a03fd'
             '0cf34f1c8efa949ba9d3c983d9032c114eaa99c5b5790bc9d5872aaaf0438120')
 
 pkgver() {
