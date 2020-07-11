@@ -1,0 +1,31 @@
+pkgbase = distrho-git
+	pkgdesc = Distrho Audio Plugins both LV2 and VST, using the JUCE Toolkit
+	pkgver = r468.a953bed0
+	pkgrel = 1
+	url = http://https://distrho.sourceforge.io/
+	arch = x86_64
+	license = GPL
+	license = GPL3
+	makedepends = git
+	makedepends = premake3
+	makedepends = libxinerama
+	makedepends = libxrender
+	makedepends = libxcursor
+	makedepends = ladspa
+	makedepends = meson
+	depends = gcc-libs
+	depends = lv2
+	depends = libxext
+	depends = freetype2
+	depends = alsa-lib
+	provides = distrho
+	conflicts = distrho
+	conflicts = distrho-plugins
+	conflicts = distrho-plugins-lv2-git
+	conflicts = distrho-lv2-git
+	conflicts = distrho-vst-git
+	source = distrho::git+https://github.com/DISTRHO/DISTRHO-Ports.git#branch=master
+	sha256sums = SKIP
+
+pkgname = distrho-git
+
