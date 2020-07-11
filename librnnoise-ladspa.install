@@ -1,0 +1,17 @@
+post_install() {
+    echo "In order to activate the plugin, run the following:"
+    echo "> pacmd load-module module-null-sink sink_name=mic_denoised_out"
+    echo "> pacmd load-module module-ladspa-sink sink_name=mic_raw_in sink_master=mic_denoised_out label=noise_suppressor_mono plugin=/usr/lib/librnnoise_ladspa.so control=50"
+    echo "> pacmd load-module module-loopback source=<your_mic_name> sink=mic_raw_in channels=1"
+    echo "> pacmd load-module module-remap-source source_name=denoised master=mic_denoised_out.monitor channels=1"
+    echo ""
+    echo "To make this persistent for your user, create the file ~/.config/pulse/default.pa with the content:"
+    echo ".include /etc/pulse/default.pa"
+    echo "load-module module-null-sink sink_name=mic_denoised_out"
+    echo "load-module module-ladspa-sink sink_name=mic_raw_in sink_master=mic_denoised_out label=noise_suppressor_mono plugin=/usr/lib/librnnoise_ladspa.so control=50"
+    echo "load-module module-loopback source=<your_mic_name> sink=mic_raw_in channels=1"
+    echo "load-module module-remap-source source_name=denoised master=mic_denoised_out.monitor channels=1"
+    echo "set-default-source mic_denoised_out.monitor"
+    echo ""
+    echo "See also https://github.com/werman/noise-suppression-for-voice"
+}

@@ -1,0 +1,16 @@
+pkgbase = librnnoise-ladspa
+	pkgdesc = Noise suppression plugin based on Xiph's RNNoise (LADSPA plugin for PulseAudio)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/werman/noise-suppression-for-voice
+	install = librnnoise-ladspa.install
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	source = https://github.com/werman/noise-suppression-for-voice/archive/v0.9.tar.gz
+	source = size_t.patch
+	sha256sums = db42eb863082847ce58eeb9395eaaa7ccd84a0dd7153c35a614f35dd0967aab1
+	sha256sums = a4a400464bfc0091757240f2a4adc289ee095cdbf266948e6ec72e00714ea53a
+
+pkgname = librnnoise-ladspa
+
