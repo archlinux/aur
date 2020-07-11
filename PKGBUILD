@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mnamer
-pkgver=2.3.5
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A media organizion tool'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python-appdirs'
      'python-teletype')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jkwill87/mnamer/archive/${pkgver}.tar.gz")
-sha256sums=('c9452c397caa1bc90f801bbea6ded2b6ce9a08b5dff4dde842854ee568e077b6')
+sha256sums=('2fec51990c676bcd5b12b7aea15cc2dcd3161c12def01cdd98155d6c24a8e6ec')
 
 build() {
   cd "${pkgname}-${pkgver}"
