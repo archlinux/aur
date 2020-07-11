@@ -1,6 +1,6 @@
 pkgname=openra-ss-git
 _pkgname=openra-ss
-pkgver=288.git.130d596
+pkgver=290.git.fd64b3c
 pkgrel=1
 pkgdesc="A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game"
 arch=('any')
