@@ -16,8 +16,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nukesor/pueue/master/LICENSE"
 )
 md5sums=('c4c2767651d310f0db7f078846e1b8a4'
-         'c58138ab3290b32ea6b17dda7d388cd7'
-         'aeb817f36de3ebcf1b920847b35b1680'
+         '61ca08eaf171963c7ba979e1d4ba4d70'
+         'f232bbaa48f7d6565d3977cd2e8278b0'
          '5e29c92edf8c4dfe90cda870a7e6c51e')
 
 build() {
