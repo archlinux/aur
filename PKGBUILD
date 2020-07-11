@@ -5,7 +5,7 @@
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.09.a.r48.gb8b80b6b1cf
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.09.a.r50.g00b3473fe36
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://swift.org/"
 license=('apache2')
 groups=()
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2')
 provides=('swift-language')
 conflicts=('swift-language-bin')
 replaces=()
