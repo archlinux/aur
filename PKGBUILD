@@ -1,12 +1,12 @@
 # Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=godwrap
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 makedepends=('go')
 arch=('i686' 'x86_64')
 url="https://github.com/antifuchs/${pkgname}"
 source=(https://github.com/antifuchs/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('8385a969a5a98b50eb1ef967dd75174085b3faa848f436131b81d349b2acf2bb')
+sha256sums=('3ad0f22d60d178a57460a6d860b8b4ffc360b24b6543127159015a0717196cd4')
 pkgdesc="a cronwrapper implementation that ties into influxdb"
 license=('MIT')
 
