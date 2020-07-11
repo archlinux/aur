@@ -2,7 +2,7 @@
 
 pkgname=terragrunt
 pkgver=0.23.31
-pkgrel=1
+pkgrel=2
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 arch=('x86_64')
@@ -19,6 +19,8 @@ sha256sums=('7bb9859fd968220bcae1908079448834a789fca03d644d405a61441cd4a655a2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  export GOPATH="${srcdir}/.go"
 
   go build \
     -ldflags "-X github.com/gruntwork-io/terragrunt.VERSION=${pkgver}" \
