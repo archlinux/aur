@@ -1,0 +1,20 @@
+pkgbase = python-ephem
+	pkgdesc = Astronomy library for Python
+	pkgver = 3.7.7.1
+	pkgrel = 1
+	url = http://rhodesmill.org/pyephem/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	replaces = python-pyephem
+	source = https://files.pythonhosted.org/packages/source/e/ephem/ephem-3.7.7.1.tar.gz
+	sha512sums = c3f489371febcb65da03da7ba0e08168320a6f5d81fd2355281f621074ecf2be694b2d0cc3ef7863cec617176751a34856bdd22beb66cd64129fbfb915b3dcae
+
+pkgname = python-ephem
+
