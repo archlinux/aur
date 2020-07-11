@@ -1,0 +1,18 @@
+pkgbase = python-iotbot-git
+	pkgdesc = IOTBOT/IOTQQ SDK with Python.
+	pkgver = r76.a63ad3c
+	pkgrel = 1
+	url = https://github.com/xiyaowong/python-iotbot
+	arch = any
+	license = MIT
+	depends = python-socketio
+	depends = python-websocket-client
+	depends = python-requests
+	depends = python-colorama
+	depends = python-prettytable
+	depends = python-schedule
+	source = git://github.com/XiyaoWong/python-iotbot.git
+	md5sums = SKIP
+
+pkgname = python-iotbot-git
+
