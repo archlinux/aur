@@ -1,8 +1,8 @@
 pkgbase = archey3-git
 	pkgdesc = Python script to display system infomation alongside the Arch Linux logo.
-	pkgver = 165
+	pkgver = 172
 	pkgrel = 1
-	url = http://bluepeppers.github.com/archey3
+	url = https://lclarkmichalek.github.io/archey3/
 	arch = any
 	license = GPL
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = archey3-git
 	conflicts = archey
 	conflicts = archey3
 	source = git+https://github.com/bluepeppers/archey3.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = archey3-git
 
