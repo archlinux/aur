@@ -1,18 +1,18 @@
 # Maintainer: Shyamin Ayesh <me@shyamin.com>
 
 pkgname=flutter-sdk
-pkgver=1.16.2
+pkgver=1.17.5
 pkgrel=1
 arch=("x86_64")
 license=("BSD")
 pkgdesc="Flutter SDK"
-url="github.com/flutter/flutter"
+url="https://github.com/flutter/flutter"
 source=(
-    "https://${url}/archive/v${pkgver}.tar.gz"
+    "${url}/archive/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
 sha256sums=(
-    "deb64d9b60eb2507a040962eb1d0fb3a70f9e215e38b20343e5278088ad2e3c5"
+    "987e4232848661402dc6001c374c454649ef04a783aaff13512f86cf4018fb9c"
     "e309e4b553dce319ad8907cc95e2f69eced88f30e23f7da6272766e7342ed249"
 )
 
