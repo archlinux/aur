@@ -1,7 +1,7 @@
 pkgbase = bup
 	pkgdesc = Efficient backup system based on the git packfile format
 	pkgver = 0.30
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bup.github.io/
 	changelog = changelog.md
 	arch = x86_64

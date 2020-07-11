@@ -9,7 +9,7 @@
 
 pkgname=bup
 pkgver=0.30
-pkgrel=4
+pkgrel=5
 pkgdesc='Efficient backup system based on the git packfile format'
 arch=('x86_64')
 url='https://bup.github.io/'
@@ -25,17 +25,17 @@ sha512sums=('SKIP')
 changelog=changelog.md
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   ./configure
   make
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   make test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
