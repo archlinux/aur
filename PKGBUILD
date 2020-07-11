@@ -22,6 +22,6 @@ package(){
   mkdir "$pkgdir"/usr "$pkgdir"/usr/lib "$pkgdir"/usr/bin
   mv "$srcdir"/Deploy/FlashTool "$pkgdir"/usr/lib/FlashTool
   ln -s /usr/lib/jvm/default "$pkgdir"/usr/lib/FlashTool/x10flasher_native/jre
-  ln -s "$pkgdir"/usr/lib/FlashTool/FlashTool "$pkgdir"/usr/bin/flashtool
+  ln -s /usr/lib/FlashTool/FlashTool "$pkgdir"/usr/bin/flashtool
 }
 
