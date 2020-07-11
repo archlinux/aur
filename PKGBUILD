@@ -2,7 +2,7 @@
 
 pkgname='nfpm'
 pkgver=v1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple deb and rpm packager written in Go '
 url='https://github.com/goreleaser/nfpm'
 arch=('x86_64')
