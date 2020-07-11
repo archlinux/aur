@@ -1,0 +1,9 @@
+post_install() {
+    echo ""
+    echo "---------------------------- TIPS ----------------------------"
+    echo "Model weight for chosen language will be automatically downloaded"
+    echo "or you can download it manually from the following links and put"
+    echo "it in '~/.EasyOCR/model' folder"
+    echo "See https://github.com/JaidedAI/EasyOCR#Usage"
+    echo ""
+}
