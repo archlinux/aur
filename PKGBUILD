@@ -2,31 +2,18 @@
 
 _pipname=pySmartDL
 pkgbase=python-pysmartdl
-pkgname=('python2-pysmartdl' 'python-pysmartdl')
-pkgver=1.2.4
+pkgname=('python-pysmartdl')
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A Smart Download Manager for Python"
 arch=('any')
 url="https://github.com/iTaybb/pySmartDL/"
 license=('Public Domain')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('4935dab07663b2f78ead0544af11bf2b')
-
-
-prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
-}
-
-package_python2-pysmartdl() {
-depends=('python2-futures')
-
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-}
+md5sums=('8d3cb06f071f47b10a5f35e3b9d1c1fd')
 
 package_python-pysmartdl() {
-
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
 }
