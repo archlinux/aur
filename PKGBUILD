@@ -3,7 +3,7 @@
 
 pkgname=arduino-avr-core
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
 url="https://github.com/arduino/ArduinoCore-avr"
@@ -15,7 +15,7 @@ source=("https://downloads.arduino.cc/cores/avr-${pkgver}.tar.bz2"
         "platform.patch")
 sha512sums=('e2d006f0b6540dba6623baac07d36078987fe8efdac39c6d160ab018a6c93a96369ece1ee92de0fae4a58fd4e93db108d2395de06c68d84ed2743739ed466aac'
             'SKIP'
-            '34bdd71d8796682ddd1a57e4ef38b2dc4557656f32528af3caa96e6d6f803b6982b9edf044294c2af9478c5ca3dbb6567faa6d24aa97228173e38f7a139b3b68')
+            '916d76a1313fa9372e141eb132eb3d5d4db32e27f695d3b6b0e2894111bfdacd54feec2ba6ea89b10918b9ef904f9b3d4c105c37d5a6851ac92c5c1758679f00')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
 prepare()
