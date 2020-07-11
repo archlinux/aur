@@ -17,7 +17,7 @@ pkgbase = kwallet-git
 	depends = gpgme
 	provides = kwallet
 	conflicts = kwallet
-	source = git://anongit.kde.org/kwallet.git
+	source = https://github.com/KDE/kwallet.git
 	md5sums = SKIP
 
 pkgname = kwallet-git
