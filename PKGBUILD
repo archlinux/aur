@@ -1,4 +1,4 @@
-# For more information: https://github.com/okasha55/rtabmap-ros_aur/
+# Maintainer : okasha
 pkgdesc="ROS - RTAB-Maps ros-pkg."
 url='http://www.ros.org/'
 
