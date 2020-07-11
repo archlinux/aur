@@ -1,46 +1,68 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.6.14
+	pkgver = 5.7.8
 	pkgrel = 1
-	url = https://wiki.archlinux.org/index.php/bcachefs
+	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.8.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.8.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch
+	source = 0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+	source = 0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
+	source = 0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch
+	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 1941f86c38e5c81b87dddeb808710b9f
+	md5sums = 0b397271b0b5e55a3d6e5566e607dee5
 	md5sums = SKIP
-	md5sums = b93393f3e437c3b43f0eb9f446a95b02
+	md5sums = 7a483a0d64f6cc939b8128b6d4039788
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
-	md5sums = b31b27f8a6a8f5fb79a6a6f4e1f07cc4
+	md5sums = 3f9c557e2cad81e821c213e4e1097080
+	md5sums = b5140bcd7c4bc9a826db47808d0fde99
+	md5sums = 26808e601cdb25b9562701c482e47233
+	md5sums = 62bf1719f13094064732710d1542703c
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = 40e097c2afbcc1dceb07f85a7cb63b96
+	md5sums = 3159befb77cc65566196c205c2fe305c
+	md5sums = 168a924c7c83ecdc872a9a1c6d1c8bdb
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
-	md5sums = 9ed187660600a7884284aa6b3ddb08c6
+	md5sums = 0633bf8f7561c6903b445ff476815dc0
+	md5sums = 38b2dbf9094d5dd55a918ae45d30a198
+	md5sums = 90366b8f4ff2f0e74785b18346d4f8b1
+	md5sums = 7a269ee82e1172c57a34d1e291dbf1e5
+	md5sums = 4b08bc4ef6b3e5b1905b14376bf460c8
+	md5sums = fcd3ce66f9ab3f1a4c7a06520d02f3c9
+	md5sums = 471dbe6647dcaebdd47bbd222547cd3e
+	md5sums = d1828d13acd27e899c16a2a025d5d0d4
 
 pkgname = linux-mainline-bcachefs
-	pkgdesc = The Linux-mainline-bcachefs kernel and modules with bcachefs
+	pkgdesc = The Linux-mainline-bcachefs kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.6.14
+	provides = linux-mainline-bcachefs=5.7.8
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.6.14
-	provides = linux-headers=5.6.14
+	provides = linux-mainline-bcachefs-headers=5.7.8
+	provides = linux-headers=5.7.8
 

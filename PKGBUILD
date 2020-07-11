@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+_subarch=11
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -58,64 +58,91 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=/home/sayad/.config/modprobed.db
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.6.14
-_sublevel=14
+pkgver=5.7.8
+_pkgverpntrel=8
 pkgrel=1
+_smt_nice="true"
+_runqueue_sharing="mc-llc"
+_timer_freq="500"
+_default_cpu_gov="performance"
 arch=(x86_64)
-url="https://wiki.archlinux.org/index.php/bcachefs"
+url="https://wiki.archlinux.org/index.php/Bcachefs"
 license=(GPL2)
 makedepends=(
   bc kmod libelf
 )
 options=('!strip')
 
-_reponame="bcachefs"
-_repo_url="https://github.com/koverstreet/$_reponame"
+#_reponame="bcachefs"
+#_repo_url="https://github.com/koverstreet/$_reponame"
 
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch"
+  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
+  0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
+  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
 )
-
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('1941f86c38e5c81b87dddeb808710b9f'
+md5sums=('0b397271b0b5e55a3d6e5566e607dee5'
          'SKIP'
-         'b93393f3e437c3b43f0eb9f446a95b02'
+         '7a483a0d64f6cc939b8128b6d4039788'
          '2cebdad39da582fd6a0c01746c8adb42'
-         'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
+         '3f9c557e2cad81e821c213e4e1097080'
+         'b5140bcd7c4bc9a826db47808d0fde99'
+         '26808e601cdb25b9562701c482e47233'
+         '62bf1719f13094064732710d1542703c'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         '40e097c2afbcc1dceb07f85a7cb63b96'
+         '3159befb77cc65566196c205c2fe305c'
+         '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         '9ed187660600a7884284aa6b3ddb08c6')
+         '0633bf8f7561c6903b445ff476815dc0'
+         '38b2dbf9094d5dd55a918ae45d30a198'
+         '90366b8f4ff2f0e74785b18346d4f8b1'
+         '7a269ee82e1172c57a34d1e291dbf1e5'
+         '4b08bc4ef6b3e5b1905b14376bf460c8'
+         'fcd3ce66f9ab3f1a4c7a06520d02f3c9'
+         '471dbe6647dcaebdd47bbd222547cd3e'
+         'd1828d13acd27e899c16a2a025d5d0d4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd linux-${pkgver}
+  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice and _runqueue_sharing"
   
+  cd linux-${pkgver}
+
 #  git init
 
 #  git fetch --tags
 
 #  git remote add $_reponame $_repo_url || true
-#  git fetch --prune --jobs=5 $_reponame master
+#  git fetch --prune --jobs=5 --ipv4 $_reponame master
 #  git reset --hard $_reponame/master
 
 #  export EDITOR=true
@@ -123,25 +150,60 @@ prepare() {
 #  git rebase bcachefs/master
 
   # fix pkgver to chosen pkgver
-  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_sublevel/g" $srcdir/linux-${pkgver}/Makefile
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
     
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = 000*.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+#  local src
+#  for src in "${source[@]}"; do
+#    src="${src%%::*}"
+#    src="${src##*/}"
+#    [[ $src = 000*.patch ]] || continue
+#    echo "Applying patch $src..."
+#    patch -Np1 < "../$src"
+#  done
+  
+  patch -Np1 -i ../0000-sphinx-workaround.patch
+  
+  patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  
+  patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  
+  patch -Np1 -i ../0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
+  
+  patch -Np1 -i ../0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  
+    # TkG
+  patch -Np1 -i ../0002-clear-patches.patch
+
+  patch -Np1 -i ../0003-glitched-base.patch
   
   echo "Setting config..."
   cp ../config .config
   
+  # Set some -tkg defaults
+  echo "# CONFIG_DYNAMIC_FAULT is not set" >> ./.config
+  sed -i -e 's/CONFIG_DEFAULT_FQ_CODEL=y/# CONFIG_DEFAULT_FQ_CODEL is not set/' ./.config
+  echo "CONFIG_DEFAULT_CAKE=y" >> ./.config
+  echo "CONFIG_NR_TTY_DEVICES=63" >> ./.config
+  echo "CONFIG_RAID6_USE_PREFER_GEN=y" >> ./.config
+  echo "# CONFIG_NTP_PPS is not set" >> ./.config
+  sed -i -e 's/CONFIG_CRYPTO_LZ4=m/CONFIG_CRYPTO_LZ4=y/' ./.config
+  sed -i -e 's/CONFIG_CRYPTO_LZ4HC=m/CONFIG_CRYPTO_LZ4HC=y/' ./.config
+  sed -i -e 's/CONFIG_LZ4_COMPRESS=m/CONFIG_LZ4_COMPRESS=y/' ./.config
+  sed -i -e 's/CONFIG_LZ4HC_COMPRESS=m/CONFIG_LZ4HC_COMPRESS=y/' ./.config
+  #sed -i -e 's/CONFIG_RCU_BOOST_DELAY=500/CONFIG_RCU_BOOST_DELAY=0/' ./.config
+  sed -i -e 's/# CONFIG_CMDLINE_BOOL is not set/CONFIG_CMDLINE_BOOL=y/' ./.config
+  echo "CONFIG_CMDLINE=\"${_custom_commandline}\"" >> ./.config
+  echo "# CONFIG_CMDLINE_OVERRIDE is not set" >> ./.config
+
+  if [ "$_font_autoselect" != "false" ]; then
+    sed -i -e 's/CONFIG_FONT_TER16x32=y/# CONFIG_FONT_TER16x32 is not set\nCONFIG_FONT_AUTOSELECT=y/' ./.config
+  fi
+
   # Inject cpuopts options
   echo "# CONFIG_MK8SSE3 is not set" >> ./.config
   echo "# CONFIG_MK10 is not set" >> ./.config
@@ -173,11 +235,11 @@ prepare() {
   echo "# CONFIG_MTIGERLAKE is not set" >> ./.config
   
   # cpu opt
-  if [ -n "$_subarch" ] && [ "$_subarch" != "33" ]; then
+  if [ -n "" ] && [ "$_subarch" != "33" ]; then
     echo "# CONFIG_MNATIVE is not set" >> ./.config
   fi
 
-  if [ -n "$_subarch" ] && [ "$_subarch" != "32" ]; then
+  if [ -n "" ] && [ "$_subarch" != "32" ]; then
     sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
   fi
 
@@ -246,8 +308,122 @@ prepare() {
   elif [ "$_subarch" == "31" ]; then
     sed -i -e 's/# CONFIG_MTIGERLAKE is not set/CONFIG_MTIGERLAKE=y/' ./.config
   fi
+
+  # smt nice
+  if [ "$_smt_nice" == "true" ]; then
+    echo "CONFIG_SMT_NICE=y" >> ./.config
+  elif [ "$_smt_nice" == "false" ]; then
+    echo "# CONFIG_SMT_NICE is not set" >> ./.config
+  fi
   
-  make prepare
+    # rq sharing
+  if [ "$_runqueue_sharing" == "none" ]; then
+    echo -e "CONFIG_RQ_NONE=y\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ -z "$_runqueue_sharing" ] || [ "$_runqueue_sharing" == "smt" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\nCONFIG_RQ_SMT=y\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "mc" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\nCONFIG_RQ_MC=y\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "smp" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\nCONFIG_RQ_SMP=y\n# CONFIG_RQ_ALL is not set" >> ./.config
+  elif [ "$_runqueue_sharing" == "all" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\n# CONFIG_RQ_MC_LLC is not set\n# CONFIG_RQ_SMP is not set\nCONFIG_RQ_ALL=y" >> ./.config
+  elif [ "$_runqueue_sharing" == "mc-llc" ]; then
+    echo -e "# CONFIG_RQ_NONE is not set\n# CONFIG_RQ_SMT is not set\n# CONFIG_RQ_MC is not set\nCONFIG_RQ_MC_LLC=y\n# CONFIG_RQ_SMP is not set\n# CONFIG_RQ_ALL is not set" >> ./.config
+  fi
+  
+  # timer freq
+  if [ -n "$_timer_freq" ] && [ "$_timer_freq" != "300" ]; then
+    sed -i -e 's/CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' ./.config
+    sed -i -e 's/CONFIG_HZ_300_NODEF=y/# CONFIG_HZ_300_NODEF is not set/' ./.config
+    if [ "$_timer_freq" == "1000" ]; then
+      sed -i -e 's/# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' ./.config
+      sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
+      echo "# CONFIG_HZ_500 is not set" >> ./.config
+      echo "# CONFIG_HZ_500_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_750 is not set" >> ./.config
+      echo "# CONFIG_HZ_750_NODEF is not set" >> ./.config
+      echo "CONFIG_HZ_1000_NODEF=y" >> ./.config
+      echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+    elif [ "$_timer_freq" == "750" ]; then
+      sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=750/' ./.config
+      echo "# CONFIG_HZ_500 is not set" >> ./.config
+      echo "# CONFIG_HZ_500_NODEF is not set" >> ./.config
+      echo "CONFIG_HZ_750=y" >> ./.config
+      echo "CONFIG_HZ_750_NODEF=y" >> ./.config
+      echo "# CONFIG_HZ_1000_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+    elif [ "$_timer_freq" == "500" ]; then
+      sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=500/' ./.config
+      echo "CONFIG_HZ_500=y" >> ./.config
+      echo "CONFIG_HZ_500_NODEF=y" >> ./.config
+      echo "# CONFIG_HZ_750 is not set" >> ./.config
+      echo "# CONFIG_HZ_750_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_1000_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+    elif [ "$_timer_freq" == "100" ]; then
+      sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=100/' ./.config
+      echo "# CONFIG_HZ_500 is not set" >> ./.config
+      echo "# CONFIG_HZ_750 is not set" >> ./.config
+      echo "# CONFIG_HZ_1000_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_750_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_500_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+      echo "CONFIG_HZ_100=y" >> ./.config
+      echo "CONFIG_HZ_100_NODEF=y" >> ./.config
+    fi
+  elif [ "${_cpusched}" == "MuQSS" ] && [ -z "$_timer_freq" ]; then
+      sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=100/' ./.config
+      echo "# CONFIG_HZ_500 is not set" >> ./.config
+      echo "# CONFIG_HZ_750 is not set" >> ./.config
+      echo "# CONFIG_HZ_1000_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_750_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_500_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+      echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+      echo "CONFIG_HZ_100=y" >> ./.config
+      echo "CONFIG_HZ_100_NODEF=y" >> ./.config
+  else
+    sed -i -e 's/CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' ./.config
+    sed -i -e 's/CONFIG_HZ_300_NODEF=y/# CONFIG_HZ_300_NODEF is not set/' ./.config
+    sed -i -e 's/CONFIG_HZ=300/CONFIG_HZ=500/' ./.config
+    echo "CONFIG_HZ_500=y" >> ./.config
+    echo "CONFIG_HZ_500_NODEF=y" >> ./.config
+    echo "# CONFIG_HZ_250_NODEF is not set" >> ./.config
+    echo "# CONFIG_HZ_300_NODEF is not set" >> ./.config
+  fi
+
+    # default cpu gov
+  if [ "$_default_cpu_gov" == "performance" ]; then
+    sed -i -e 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e 's/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+  elif [ "$_default_cpu_gov" == "ondemand" ]; then
+    sed -i -e 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e 's/# CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND=y/' ./.config
+  fi
+  
+  # disable numa
+    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+        -i -e '/CONFIG_AMD_NUMA=y/d' \
+        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+        -i -e '/CONFIG_NODES_SHIFT=6/d' \
+        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+    
+  # acs override
+  patch -Np1 -i ../0006-add-acs-overrides_iommu.patch
+  
+  # fsync support
+  patch -Np1 -i ../0007-v5.7-fsync.patch
+
+  # bcachefs
+  patch -Np1 -i ../0008-5.7-bcachefs.patch
   
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
@@ -256,6 +432,8 @@ prepare() {
   sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
 
+  make prepare
+  
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
@@ -278,12 +456,14 @@ prepare() {
 }
 
 build() {
+  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice and _runqueue_sharing"
+  
   cd linux-${pkgver}
   make all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with bcachefs"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
