@@ -1,7 +1,7 @@
 # Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
-pkgname=hash-slinger
-pkgver=3.0
-pkgrel=2
+pkgname=hash-slinger-git
+pkgver=3.0+r10+gf6bd4fd
+pkgrel=1
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
 url="https://github.com/letoams/hash-slinger"
@@ -13,15 +13,20 @@ optdepends=('openssh: for sshfp'
             'libreswan: for ipseckey (if not using openswan or strongswan)'
             'openswan: for ipseckey (if not using libreswan or strongswan)'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
-source=(https://github.com/letoams/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('1e39dbba1926a5b07119dcbd55a7f55f09349f3b7bda7fba12dae5056535c0ef')
+source=(git+https://github.com/letoams/hash-slinger)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd hash-slinger
+  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hash-slinger"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hash-slinger"
   make DESTDIR="$pkgdir/" install
 }
