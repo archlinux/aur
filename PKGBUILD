@@ -6,13 +6,13 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 pkgname='archiso-git'
-pkgver=45.r0.g1b2a7b5
+pkgver=45.r14.g550aca7
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/archiso'
 license=('GPL')
-depends=('arch-install-scripts' 'curl' 'dosfstools' 'edk2-shell' 'libisoburn' 'lynx' 'mkinitcpio' 'squashfs-tools')
+depends=('arch-install-scripts' 'bash' 'curl' 'dosfstools' 'e2fsprogs' 'edk2-shell' 'libisoburn' 'mkinitcpio' 'squashfs-tools')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
