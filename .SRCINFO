@@ -1,0 +1,18 @@
+pkgbase = lainsafecli
+	pkgdesc = CLI interface for lainsafe
+	pkgver = 0.4.r2.gc01d7cd
+	pkgrel = 1
+	url = https://github.com/qorg11/lainsafe
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = perl-lwp-protocol-https
+	depends = perl-crypt-ssleay
+	depends = perl-libwww
+	provides = lainsafecli
+	source = lainsafecli::git+https://github.com/qorg11/lainsafe
+	md5sums = SKIP
+
+pkgname = lainsafecli
+
