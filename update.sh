@@ -5,7 +5,6 @@ PROJ_NAME=sublime-music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
 URL=https://sublimemusic.app
 DEPENDS=(
-    python-bottle
     python-dataclasses-json
     python-dateutil
     python-deepdiff
@@ -14,7 +13,6 @@ DEPENDS=(
     python-levenshtein
     python-mpv
     python-peewee
-    python-pychromecast
     python-requests
 )
 LICENSE='GPL3'
@@ -59,9 +57,11 @@ done
 
 echo ")
 optdepends=(
-    'python-keyring: support for storing passwords in the system keyring'
-    'libnotify: for system song notification support'
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
+    'libnotify: for system song notification support'
+    'python-keyring: support for storing passwords in the system keyring'
+    'python-pychromecast: support for casting to Chromecast devices'
+    'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
     'python-setuptools'

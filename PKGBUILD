@@ -3,13 +3,12 @@
 pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
-pkgver='0.10.3'
-pkgrel=2
+pkgver='0.11.0'
+pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
 depends=(
     'python'
-    'python-bottle'
     'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
@@ -18,13 +17,14 @@ depends=(
     'python-levenshtein'
     'python-mpv'
     'python-peewee'
-    'python-pychromecast'
     'python-requests'
 )
 optdepends=(
-    'python-keyring: support for storing passwords in the system keyring'
-    'libnotify: for system song notification support'
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
+    'libnotify: for system song notification support'
+    'python-keyring: support for storing passwords in the system keyring'
+    'python-pychromecast: support for casting to Chromecast devices'
+    'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
     'python-setuptools'
@@ -32,11 +32,11 @@ makedepends=(
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.10.3.tar.gz'
-    'https://gitlab.com/sumner/sublime-music/-/archive/v0.10.3/sublime-music-v0.10.3.tar.gz'
+    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.11.0.tar.gz'
+    'https://gitlab.com/sumner/sublime-music/-/archive/v0.11.0/sublime-music-v0.11.0.tar.gz'
 )
-md5sums=('b948089719b77b66e0e00409565afc32'
-         '67e01bc71d4c6947274bab3800837a60')
+md5sums=('bba062cb7fbd44eda97bfde7d65ee8cc'
+         '43a7f10ff933e8f321f745638c5e9634')
 
 
 build() {
