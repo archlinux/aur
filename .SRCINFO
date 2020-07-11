@@ -1,0 +1,17 @@
+pkgbase = python-pack-git
+	pkgdesc = Password Analysis and Cracking Kit(python3 fork)
+	pkgver = r48.fd779b2
+	pkgrel = 1
+	url = https://github.com/Hydraze/pack
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-pyenchant
+	provides = python-pack-git
+	conflicts = python-pack-git
+	source = python-pack-git::git+https://github.com/Hydraze/pack.git
+	sha256sums = SKIP
+
+pkgname = python-pack-git
+
