@@ -43,10 +43,6 @@ _dir="rtabmap-release-release-melodic-rtabmap-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap-release/archive/release/melodic/rtabmap/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('c640fb6039912f68dc405143b6ef79e472b10575d498e3da04ac977891593d4a')
 
-# prepare() {
-#   cd ${srcdir}/${_dir}/guilib/src
-#   patch -Np1 --binary -i ${srcdir}/CloudViewer_vtkTexture.patch
-# }
 
 build() {
   # Use ROS environment variables
