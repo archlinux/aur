@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink
-pkgver=0+r179+gf92ba8c
-_commit=f92ba8cae34cd5fc396e987cb7326ad65f7acaf3
+pkgver=0+r245+g61d336a
+_commit=61d336a61b85705a5e128762430dc136460b110e
 pkgrel=1
 pkgdesc='Status and control utility for Corsair Link products'
 arch=(i686 x86_64)
