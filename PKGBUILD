@@ -1,6 +1,6 @@
 # Maintainer: Carter Green <crtrgreen at gmail dot com>
 pkgname=mssql-cli
-pkgver=0.18.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Interactive command line query tool for SQL Server"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-argparse' 'python-pygments'
          'python-future')
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-${pkgver}-py2.py3-none-manylinux1_x86_64.whl")
-sha256sums=('c70f85a99d9ec3c01d1cfc725f4bcfa8e33a92199ee9051ccf509de8d2273bd9')
+sha256sums=('edb3850ab8ffa077c64270f27263f6377fdb5bd5bb5c5b4990c5fb08f49627b6')
 
 package() {
   cd "$srcdir"
