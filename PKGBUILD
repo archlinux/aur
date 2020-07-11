@@ -8,7 +8,7 @@
 pkgname=debhelpergit
 aliasname=debhelper
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
 url="https://salsa.debian.org/debian/debhelper.git/"
