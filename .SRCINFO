@@ -1,4 +1,4 @@
-pkgbase = emacs-native-comp-git
+pkgbase = emacs-native-comp-git-enhanced
 	pkgdesc = GNU Emacs. Development native-comp branch.
 	pkgver = 28.0.50.142625
 	pkgrel = 1
