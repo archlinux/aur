@@ -9,26 +9,22 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=450.51
+pkgver=450.57
 pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-depends=('dkms' "nvidia-utils-beta>=${pkgver}" 'libglvnd')
-makedepends=('linux-headers')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}"
           'NVIDIA-MODULE')
 conflicts=('nvidia')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        '010-nvidia-kernel-5.7.patch'
-        '110-nvidia-beta-dkms-change-dkms-conf.patch'
-        '120-nvidia-beta-dkms-linux-rt-gift.patch')
-sha256sums=('7e08a97f68e9d4b8fbae9811926fdfbff216fa37252aa114425bc1aa85730d22'
-            '37cf072fdaee3f9f0c5a8b4d5f2dac722c7b96720fc317bc2da947bde52fb946'
-            'eb2bdea01f430a493a40b5fa77f762d09fd5fa450517070b4d7f429cb75e2089'
-            '25e29ee166552523366278d94ba69a7895cd50321cf402a9f69598b16a9e2827')
+        '110-nvidia-change-dkms-conf.patch'
+        '120-nvidia-linux-rt-gift.patch')
+sha256sums=('8a65da18761a2e6547d681b0d87201a46d822e71a318c89a849767a95fbd1e07'
+            '3f0940fa30468d237cda6cab354b4c40c7baacad5bd5aaf31706740f855e35ce'
+            'd669f45bbe75bf5b490168eb599b8492fca502930b8a34d730b803adba13381f')
 
 prepare() {
     # extract the source file
@@ -36,12 +32,13 @@ prepare() {
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
     
-    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-kernel-5.7.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-beta-dkms-change-dkms-conf.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-beta-dkms-linux-rt-gift.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-linux-rt-gift.patch"
 }
 
 package() {
+    depends=('dkms' "nvidia-utils-beta>=${pkgver}" 'libglvnd')
+    
     mkdir -p "${pkgdir}/usr/src"
     cp -dr --no-preserve='ownership' "${_pkg}/kernel" "${pkgdir}/usr/src/nvidia-${pkgver}"
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
