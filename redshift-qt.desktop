@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Redshift Qt
-Comment=Color temperature adjustment
-Exec=redshift-qt
-Terminal=false
-Type=Application
-StartupNotify=false
-Icon=redshift
-Categories=Utility;
