@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
 url="https://github.com/drakkan/${pkgname}"
@@ -22,7 +22,7 @@ install=${pkgname}.install
 source=("git+https://github.com/drakkan/${pkgname}#tag=v${pkgver}"
   "sftpgo.json")
 sha256sums=('SKIP'
-  'd4bc2ddb3104e2e1be40103e7653f2d7802658576ba8e80bebfad7901a8b46a4')
+  'fb4dc558c4dcba5e9d9ce9716653439b11d34f468599609cc4b8e79692ef8417')
 
 build() {
   cd "${pkgname}"
@@ -36,9 +36,10 @@ package() {
   install -Dm 644 init/${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${pkgname}"
   install -d "${pkgdir}/var/lib/${pkgname}"
-  cp -r templates "${pkgdir}/var/lib/${pkgname}/"
-  cp -r static "${pkgdir}/var/lib/${pkgname}/"
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  cp -r templates "${pkgdir}/usr/share/${pkgname}/"
+  cp -r static "${pkgdir}/usr/share/${pkgname}/"
+  install -Dm 644 "$srcdir/sftpgo.json" "${pkgdir}/usr/share/doc/${pkgname}/sftpgo.json.default"
   echo "For documentation please take a look here:" > "${pkgdir}"/usr/share/doc/${pkgname}/README
   echo "" >> "${pkgdir}"/usr/share/doc/${pkgname}/README
   echo "https://github.com/drakkan/sftpgo/blob/v${pkgver}/README.md" >> "${pkgdir}"/usr/share/doc/${pkgname}/README
