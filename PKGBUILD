@@ -3,7 +3,7 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('audacious')
 conflicts=('audacious')
 install=$_pkgname.install
 _tag=$_pkgname-$pkgver-gtk
-source=("https://distfiles.audacious-media-player.org/audacious-4.0.4.tar.bz2")
+source=("https://distfiles.audacious-media-player.org/audacious-4.0.5.tar.bz2")
 sha256sums=('SKIP')
 
 prepare() {
