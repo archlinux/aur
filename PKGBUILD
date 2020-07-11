@@ -3,7 +3,7 @@
 pkgname=python-iotbot-git
 _gitname=python-iotbot
 pkgver=r76.a63ad3c
-pkgrel=1
+pkgrel=2
 pkgdesc="IOTBOT/IOTQQ SDK with Python."
 arch=('any')
 url=https://github.com/xiyaowong/python-iotbot
@@ -14,6 +14,8 @@ depends=('python-socketio'
          'python-colorama'
          'python-prettytable'
          'python-schedule')
+conflicts=('python-iotbot')
+provides=('python-iotbot')
 source=('git://github.com/XiyaoWong/python-iotbot.git')
 md5sums=('SKIP')
 
