@@ -9,7 +9,7 @@
 
 pkgname=bup
 pkgver=0.30
-pkgrel=3
+pkgrel=4
 pkgdesc='Efficient backup system based on the git packfile format'
 arch=('x86_64')
 url='https://bup.github.io/'
