@@ -1,0 +1,40 @@
+pkgbase = emacs-native-comp-git
+	pkgdesc = GNU Emacs. Development native-comp branch.
+	pkgver = 28.0.50.142625
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	makedepends = llvm
+	makedepends = xorgproto
+	depends = alsa-lib
+	depends = gnutls
+	depends = libxml2
+	depends = jansson
+	depends = libotf
+	depends = harfbuzz
+	depends = gpm
+	depends = libgccjit
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = giflib
+	depends = cairo
+	provides = emacs
+	provides = emacs-seq
+	conflicts = emacs
+	conflicts = emacs26-git
+	conflicts = emacs-27-git
+	conflicts = emacs-git
+	conflicts = emacs-seq
+	replaces = emacs26-git
+	replaces = emacs27-git
+	replaces = emacs-git
+	replaces = emacs-seq
+	source = emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-comp
+	md5sums = SKIP
+
+pkgname = emacs-native-comp-git-enhanced
+
