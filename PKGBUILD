@@ -15,9 +15,9 @@ md5sums=('78485c0ca128284325f5cc5ab9be9afb'
          '2cf7ef689d208d2fa41ce3622dce3545')
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share"
-  mv "Whalebird-$pkgver-linux-x64" "$pkgdir/usr/share/$pkgname"
-  ln -s "$pkgdir/usr/share/$pkgname/whalebird" "$pkgdir/usr/bin/whalebird"
-  install -Dm644 -t "$pkgdir/usr/share/applications" whalebird.desktop
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share"
+  mv "Whalebird-${pkgver}-linux-x64" "${pkgdir}/usr/share/${pkgname}"
+  ln -sf "/usr/share/${pkgname}/whalebird" "${pkgdir}/usr/bin/whalebird"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" whalebird.desktop
 }
