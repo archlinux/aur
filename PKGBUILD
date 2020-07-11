@@ -2,8 +2,8 @@
 
 pkgname=memo
 _pkgname=memo
-pkgver=v0.1.1
-pkgrel=1
+pkgver=v0.1.2
+pkgrel=2
 pkgdesc="A drop-down app to take note for KDE users"
 arch=('x86_64')
 url="https://github.com/FishHawk/Memo"
