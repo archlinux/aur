@@ -9,15 +9,18 @@
 
 pkgname=ungoogled-chromium-ozone
 pkgver=83.0.4103.116
-pkgrel=2
+pkgrel=3
 _pkgname=ungoogled-chromium
+_pkgver=$pkgver
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
 _ungoogled_ver=83.0.4103.116-1
+_uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
+_uc_sum="a8cff01fae3bc0823841c242c85746346619f684aff7968ebeb4886345395f24"
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
-url="https://github.com/ungoogled-software/ungoogled-chromium-archlinux"
+url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
@@ -34,8 +37,8 @@ optdepends=('pepper-flash: support for Flash content'
 provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
+        $_uc_url
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         clean-up-a-call-to-set_utf8.patch
@@ -53,7 +56,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
 sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
-            'a8cff01fae3bc0823841c242c85746346619f684aff7968ebeb4886345395f24'
+            $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
@@ -101,7 +104,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -196,7 +199,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   if check_buildoption ccache y; then
     # Avoid falling back to preprocessor mode when sources contain time macros
@@ -221,14 +224,7 @@ build() {
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
     'use_vaapi=true'
-    'use_ozone=true'
-    'ozone_platform_wayland=true'
-    'ozone_platform_x11=true'
-    'ozone_auto_platforms=false'
-    'use_xkbcommon=true'
-    'use_system_libwayland=true'
-    'use_system_minigbm=true'
-    'use_system_libdrm=true'
+    'enable_swiftshader=false'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -238,6 +234,19 @@ build() {
   if check_option strip y; then
     _flags+=('symbol_level=0')
   fi
+
+  # Append ozone flags
+  local _ozone_flags=(
+    'use_ozone=true'
+    'ozone_platform_wayland=true'
+    'ozone_platform_x11=true'
+    'ozone_auto_platforms=false'
+    'use_xkbcommon=true'
+    'use_system_libwayland=true'
+    'use_system_minigbm=true'
+    'use_system_libdrm=true'
+  )
+  _flags=("${_flags[@]}" "${_ozone_flags[@]}")
 
   # Append ungoogled chromium flags to _flags array
   _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
@@ -264,7 +273,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
@@ -308,7 +317,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
