@@ -1,4 +1,6 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
+# Maintainer: luosoy <249799588@qq.com>
+
 pkgname=deepin-udis86
 pkgsname=udis86
 pkgvers=1.72-2
@@ -21,7 +23,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/u/${pkgsname}/${pkgsname}_${pkgvers}_i386.deb")
+source=("https://community-packages.deepin.com/deepin/pool/non-free/u/${pkgsname}/${pkgsname}_${pkgvers}_i386.deb")
 noextract=("${pkgsname}_${pkgvers}_i386.deb")
 md5sums=('SKIP')
 validpgpkeys=()
