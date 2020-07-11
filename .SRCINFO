@@ -2,7 +2,7 @@ pkgbase = ices0
 	pkgdesc = Source client for broadcasting in MP3 format to an Icecast2 server
 	pkgver = 0.4.11
 	pkgrel = 3
-	url = http://icecast.org/ices.php
+	url = https://icecast.org/ices/
 	install = ices0.install
 	arch = i686
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = ices0
 	depends = perl
 	depends = pkgconf
 	depends = autoconf
-	optdepends = faad2
-	optdepends = flac
-	optdepends = libmp4v2
-	optdepends = libogg
+	optdepends = flac: flac audio support
+	optdepends = faad2: aac audio support
+	optdepends = libmp4v2: aac audio support
+	optdepends = libogg: ogg audio support
 	options = !docs
 	source = https://github.com/Moonbase59/ices0/archive/v0.4.11.tar.gz
-	sha512sums = d31450c4011561dae0229f071cb41cb6
+	sha512sums = df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39afe80e50e341da476b42b03a7e241e83496ec7f8ac1a42710a
 
 pkgname = ices0
 
