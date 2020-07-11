@@ -14,7 +14,8 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	echo 0
+	cd otto
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_otto-kde-git() {
