@@ -1,5 +1,5 @@
-# Maintainer: Homer Xing <homer.hsing@gmail.com>
-# Contributor: Lael Guillemenot <zeppelinlg@gmail.com>
+# Maintainer: Homer Xing <homer dot hsing at gmail dot com>
+# Contributor: Lael Guillemenot <zeppelinlg at gmail dot com>
 
 pkgname=indicator-sysmonitor-bzr
 pkgver=0.8.2
