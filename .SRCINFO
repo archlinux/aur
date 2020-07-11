@@ -1,0 +1,17 @@
+pkgbase = com.qq.weixin.work.deepin
+	pkgdesc = Deepin Wine Weixin Work
+	pkgver = 3.0.20.1618deepin5
+	pkgrel = 1
+	url = https://work.weixin.qq.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine
+	conflicts = deepin-wxwork
+	noextract = com.qq.weixin.work.deepin_3.0.20.1618deepin5_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/non-free/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_3.0.20.1618deepin5_i386.deb
+	md5sums = 345393c2afc165f945fa1342413fb601
+
+pkgname = com.qq.weixin.work.deepin
+
