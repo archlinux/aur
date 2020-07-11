@@ -7,11 +7,10 @@ pkgbase = python2-gammu
 	license = GPL
 	checkdepends = libdbi-drivers
 	makedepends = python2-setuptools
-	makedepends = gammu
+	depends = python2
+	depends = gammu
 	source = https://dl.cihar.com/python-gammu/python-gammu-2.12.tar.bz2
 	sha256sums = efca72146ef5a5f9c7e7763374f28a3f15c6e80a0b7f07ce4fda52863b0cd4d2
 
 pkgname = python2-gammu
-	depends = python2
-	depends = gammu
 
