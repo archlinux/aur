@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://fribidi.org"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=f9e8e71a6fbf4a4619481284c9f484d10e559995  # tags/v1.0.9^0
+_commit=5464c284034da9c058269377b7f5013bb089f553  # tags/v1.0.10^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
 sha256sums=('SKIP'
@@ -28,7 +28,7 @@ build() {
     mkdir -p ${srcdir}/fribidi/build-${_arch} && cd ${srcdir}/fribidi/build-${_arch}
 
     ${_arch}-meson .. --default-library both -D docs=false
-    ninja
+    meson compile
   done
 }
 
