@@ -6,7 +6,7 @@ pkgname=ccstudio
 _semver=10.1.0
 _bldver=00010
 pkgver=$_semver.$_bldver
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
@@ -17,7 +17,7 @@ makedepends=('glibc')
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 # lib32-glibc needed for installers of some components (C2000 tools)
 #!! 'ncurses5-compat-libs' is an aur package
-depends=('python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra')
+depends=('python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra' 'gtk' 'gconf')
 
 # Without some ttf fonts installed, UI is ugly
 optdepends=('ttf-dejavu')

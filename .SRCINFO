@@ -1,7 +1,7 @@
 pkgbase = ccstudio
 	pkgdesc = Texas Instruments Code Composer Studio IDE
 	pkgver = 10.1.0.00010
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ti.com/tool/ccstudio
 	install = ccstudio.install
 	arch = x86_64
