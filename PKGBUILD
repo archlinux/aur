@@ -1,9 +1,9 @@
-# Maintainer: Viktor Schneider <info at vjs dot io>
+# Maintainer: Viktor Schneider <aur@vjs.io>
 # Contributor: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=mingw-w64-chrono-date
-pkgver=2.4.1+134+g9a0ee25
-pkgrel=7
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A date and time library based on the C++11/14/17 <chrono> header (mingw-w64)"
 arch=('any')
 url="https://howardhinnant.github.io/date/date.html"
@@ -24,7 +24,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 # as a number of issues with tests/dependent packages (e.g.
 # https://github.com/Alexays/Waybar/issues/565) are present with the tagged
 # stable version.
-source=("$pkgname::git+https://github.com/HowardHinnant/date#commit=9a0ee2542848ab8625984fc8cdbfb9b5414c0082"
+source=("$pkgname::git+https://github.com/HowardHinnant/date#commit=cac99da8dc88be719a728dc1b597b0ac307c1800"
         "538-output-date-pc-for-pkg-config.patch::https://patch-diff.githubusercontent.com/raw/HowardHinnant/date/pull/538.patch"
         "use-correct-path-for-cmake-files.patch")
 sha256sums=('SKIP'
@@ -39,7 +39,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     # https://github.com/HowardHinnant/date/issues/537
-    patch -p1 < ../538-output-date-pc-for-pkg-config.patch
+#    patch -p1 < ../538-output-date-pc-for-pkg-config.patch
     
     patch -p1 < ../use-correct-path-for-cmake-files.patch
 }
