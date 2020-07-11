@@ -3,7 +3,7 @@
 
 _npmname=pulp
 pkgname=nodejs-$_npmname
-pkgver=13.0.0
+pkgver=15.0.0
 pkgrel=1
 pkgdesc='A build system and package manager for PureScript projects.'
 arch=('any')
@@ -28,5 +28,5 @@ package() {
     chown root:root "$srcdir/LICENSE"
     install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('91b5e517afffc8f53ed6dc608eef908bd92843ce73976acf57db6eca897b5ba0'
-            'f67583c638fab1468c13e230cf928dbdee18f3315e3452228eb7cfcd05eee4b8')
+md5sums=('f989fe83a84e1de61483cc58dd68eba2'
+         '4aac21a733236e53f5f5db7120e91f6b')
