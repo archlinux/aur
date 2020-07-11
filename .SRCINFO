@@ -6,6 +6,7 @@ pkgbase = pluto
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = pkger
 	source = pluto-3.1.1.tar.gz::https://github.com/FairwindsOps/pluto/archive/v3.1.1.tar.gz
 	sha256sums = 2589c946aacb98c18c3348b69cf6b81141c379ca05890fdab5b828057129597b
 
