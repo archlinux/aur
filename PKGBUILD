@@ -13,10 +13,10 @@ source=("$pkgbase-$pkgver-src.tar.gz::https://github.com/btchd/btchd/archive/v$p
         "bhd-qt.sh"
         "start-bhdd.sh"
         "stop-bhdd".sh)
-source_x86_64=("$pkgbase-$pkgver-$arch.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-x86_64-linux-gnu.tar.gz")
-source_i686=("$pkgbase-$pkgver-$arch.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-i686-linux-gnu.tar.gz")
-source_armv7h=("$pkgbase-$pkgver-$arch.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-arm-linux-gnueabihf.tar.gz")
-source_aarch64=("$pkgbase-$pkgver-$arch.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-aarch64-linux-gnu.tar.gz")
+source_x86_64=("$pkgbase-$pkgver-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-x86_64-linux-gnu.tar.gz")
+source_i686=("$pkgbase-$pkgver-i686.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-i686-linux-gnu.tar.gz")
+source_armv7h=("$pkgbase-$pkgver-armv7h.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-arm-linux-gnueabihf.tar.gz")
+source_aarch64=("$pkgbase-$pkgver-aarch64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-aarch64-linux-gnu.tar.gz")
 sha256sums=('b065601f8653cba6cb5ebb5c8dd1ed0d087c0dfd47af68b3ada6f47ac4760268'
             'b3457e63ea098aa055655ad1d5cc7800f100f84b4e66f80e737d337a49672d8b'
             '4178fd9173eadb24f13a254f567c37eb77521c2d6d57d9b2cfe913483967298b'

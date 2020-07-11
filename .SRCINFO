@@ -21,11 +21,11 @@ pkgbase = bitcoinhd
 	sha256sums = 0bd306f1fe25797e5987336111ea931d3453de9097571f5fd7028a3dfe4663b6
 	source_x86_64 = bitcoinhd-1.4.1-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = fb84c947c95a489944f798d1008c3ff9dd010c23eeb7bcfe494ef86d9b8d710d
-	source_i686 = bitcoinhd-1.4.1-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-i686-linux-gnu.tar.gz
+	source_i686 = bitcoinhd-1.4.1-i686.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-i686-linux-gnu.tar.gz
 	sha256sums_i686 = 5599084c005815f15ac725e775967fc3fc05e64099d03166e753a97f21a6ce83
-	source_armv7h = bitcoinhd-1.4.1-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-arm-linux-gnueabihf.tar.gz
+	source_armv7h = bitcoinhd-1.4.1-armv7h.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-arm-linux-gnueabihf.tar.gz
 	sha256sums_armv7h = a540e345489f435e4a1e6125e9dbbbe4fe8f4cacdfdf3a92d49c57dde10470df
-	source_aarch64 = bitcoinhd-1.4.1-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-aarch64-linux-gnu.tar.gz
+	source_aarch64 = bitcoinhd-1.4.1-aarch64.tar.gz::https://github.com/btchd/btchd/releases/download/v1.4.1/bhd-v1.4.1-42517870d-aarch64-linux-gnu.tar.gz
 	sha256sums_aarch64 = 0317f363262a9b83cdf7cff00139bd4f5ff16a4b39df20b5e3691d6f8009a818
 
 pkgname = bitcoinhd-daemon
