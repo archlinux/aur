@@ -1,18 +1,17 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=git-delta-bin
 _pkgname=git-delta
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A viewer for git and diff output'
 arch=('x86_64' 'armv7h')
 url='https://github.com/dandavison/delta'
 license=('MIT')
-depends=('git')
 conflicts=('git-delta')
 source_x86_64=(${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb)
 source_armv7h=(${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_armhf.deb)
-sha256sums_x86_64=('39f11e75bddee1d312c7e61cd96468b48a186f8cc1a9e8012f7a0fc5b9500a91')
-sha256sums_armv7h=('bc38e2ee79f60271318c2754f69465d9b3e8539a3b031299e8724dfafed30fea')
+sha256sums_x86_64=('c299ce24edeb1c52d0ed7fb61bebd7b7d91d4406c09a4b001aa913cc7d50c3ff')
+sha256sums_armv7h=('fcb0883cb041fe507955d064c5df36e3913e6593df5309e956d601cf5628be5c')
 
 package() {
   msg2 "Extracting the data.tar.xz..."

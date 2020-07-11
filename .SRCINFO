@@ -1,17 +1,16 @@
 pkgbase = git-delta-bin
 	pkgdesc = A viewer for git and diff output
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	depends = git
 	conflicts = git-delta
-	source_x86_64 = https://github.com/dandavison/delta/releases/download/0.2.0/git-delta_0.2.0_amd64.deb
-	sha256sums_x86_64 = 39f11e75bddee1d312c7e61cd96468b48a186f8cc1a9e8012f7a0fc5b9500a91
-	source_armv7h = https://github.com/dandavison/delta/releases/download/0.2.0/git-delta_0.2.0_armhf.deb
-	sha256sums_armv7h = bc38e2ee79f60271318c2754f69465d9b3e8539a3b031299e8724dfafed30fea
+	source_x86_64 = https://github.com/dandavison/delta/releases/download/0.3.0/git-delta_0.3.0_amd64.deb
+	sha256sums_x86_64 = c299ce24edeb1c52d0ed7fb61bebd7b7d91d4406c09a4b001aa913cc7d50c3ff
+	source_armv7h = https://github.com/dandavison/delta/releases/download/0.3.0/git-delta_0.3.0_armhf.deb
+	sha256sums_armv7h = fcb0883cb041fe507955d064c5df36e3913e6593df5309e956d601cf5628be5c
 
 pkgname = git-delta-bin
 
