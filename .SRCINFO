@@ -1,0 +1,17 @@
+pkgbase = sar2
+	pkgdesc = Search and Rescue II, helicopter simulator game
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://searchandrescue2.github.io/sar2/
+	arch = x86_64
+	license = GPL2
+	depends = freealut
+	depends = openal
+	depends = libvorbis
+	depends = sdl2
+	depends = libsm
+	depends = libxmu
+	depends = libxpm
+
+pkgname = sar2
+
