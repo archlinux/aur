@@ -1,4 +1,6 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
+# Maintainer: luosoy <249799588@qq.com>
+
 pkgname=deepin-wine-uninstaller
 _pkgver=0.1deepin2
 pkgver=0.1.2
@@ -20,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
+source=("https://community-packages.deepin.com/deepin/pool/non-free/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
 md5sums=('88c9c377e62fc97f9f6b02351b422009')
 validpgpkeys=()
