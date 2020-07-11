@@ -1,20 +1,21 @@
-# Maintainer: Robin Broda <robin at broda dot me>
+# Maintainer: Homer Xing <homer dot hsing at gmail dot com>
+# Contributor: Robin Broda <robin at broda dot me>
 
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
-pkgver=r97.8e10edb
+pkgver=r108.5062118
 pkgrel=1
-pkgdesc='A configurable system monitoring applet'
+pkgdesc='An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status'
 arch=('any')
 url='https://github.com/fossfreedom/indicator-sysmonitor'
 license=('GPL3')
 conflicts=('indicator-sysmonitor')
 provides=('indicator-sysmonitor')
-depends=('python' 'python-psutil')
-makedepends=('git' 'libappindicator-gtk3')
+depends=('curl' 'python-gobject' 'python-psutil')
+makedepends=('git')
 source=('git+https://github.com/fossfreedom/indicator-sysmonitor.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -22,7 +23,8 @@ pkgver() {
 }
 
 package_indicator-sysmonitor-budgie-git() {
-  pkgdesc+=", budgie-panel version"
+  pkgdesc+="; budgie-panel version"
+  depends+=('budgie-desktop')
   conflicts+=('indicator-sysmonitor-budgie')
   provides+=('indicator-sysmonitor-budgie')
 
@@ -34,7 +36,7 @@ package_indicator-sysmonitor-budgie-git() {
 }
 
 package_indicator-sysmonitor-appindicator-git() {
-  pkgdesc+=", appindicator version"
+  pkgdesc+="; appindicator version"
   depends+=('libappindicator-gtk3')
   conflicts+=('indicator-sysmonitor-appindicator')
   provides+=('indicator-sysmonitor-appindicator')
