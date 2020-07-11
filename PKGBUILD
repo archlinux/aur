@@ -1,14 +1,14 @@
 # Maintainer: Shyamin Ayesh <me@shyamin.com>
 
 pkgname=pebble
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/avanciro/pebble"
 pkgdesc="Simple cli utility to manage database schema"
 makedepends=("go")
 source=("${url}/archive/v${pkgver}-beta.tar.gz")
-sha256sums=("e7c54f298c96abf123fd62d2a5b370b0abecc175a15585635f842f9de2b8eef9")
+sha256sums=("edc7e8b70e63dc7af75f4f9eef0001603640263c685d90baf31a3162524a6151")
 
 build() {
     cd "${pkgname}-${pkgver}-beta"
