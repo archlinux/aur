@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-chrono-date
 pkgver=3.0.0+5+g6952fb5
-pkgrel=1
+pkgrel=2
 pkgdesc="A date and time library based on the C++11/14/17 <chrono> header (mingw-w64)"
 arch=('any')
 url="https://howardhinnant.github.io/date/date.html"
@@ -25,8 +25,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 # https://github.com/Alexays/Waybar/issues/565) are present with the tagged
 # stable version.
 source=("$pkgname::git+https://github.com/HowardHinnant/date#commit=6952fb50a6a04c1b3682c56e1f1e26578f3bec1e"
+        "538-output-date-pc-for-pkg-config.patch::https://patch-diff.githubusercontent.com/raw/HowardHinnant/date/pull/538.patch"
         "use-correct-path-for-cmake-files.patch")
 sha256sums=('SKIP'
+            'c881ae3ae08b46a2137b987e593469d030669c37c9423921a1fac7de512676f3'
             '0cf34f1c8efa949ba9d3c983d9032c114eaa99c5b5790bc9d5872aaaf0438120')
 
 pkgver() {
@@ -37,7 +39,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     # https://github.com/HowardHinnant/date/issues/537
-#    patch -p1 < ../538-output-date-pc-for-pkg-config.patch
+    patch -p1 < ../538-output-date-pc-for-pkg-config.patch
     
     patch -p1 < ../use-correct-path-for-cmake-files.patch
 }

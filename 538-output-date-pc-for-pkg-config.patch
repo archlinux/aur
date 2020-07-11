@@ -19,7 +19,7 @@ index f30c473..fe778e8 100644
  
 +if ( BUILD_TZ_LIB )
 +  # Cflags: -I${includedir} @TZ_COMPILE_DEFINITIONS@
-+  set( TZ_COMPILE_DEFINITIONS "$<IF:$<TARGET_EXISTS:tz>,-D$<JOIN:$<TARGET_PROPERTY:tz,INTERFACE_COMPILE_DEFINITIONS>, -D>,>" )
++  set( TZ_COMPILE_DEFINITIONS "$<IF:$<TARGET_EXISTS:date-tz>,-D$<JOIN:$<TARGET_PROPERTY:date-tz,INTERFACE_COMPILE_DEFINITIONS>, -D>,>" )
 +  configure_file(date.pc.in date.pc.cf @ONLY)
 +  file( GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/date.pc"
 +    INPUT "${CMAKE_CURRENT_BINARY_DIR}/date.pc.cf" )
@@ -56,5 +56,5 @@ index 0000000..b9c4623
 +Name: date
 +Description: A date and time library based on the C++11/14/17 <chrono> header
 +Version: @PACKAGE_VERSION@
-+Libs: -L${libdir} -ltz
++Libs: -L${libdir} -ldate-tz
 +Cflags: -I${includedir} @TZ_COMPILE_DEFINITIONS@
