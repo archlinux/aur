@@ -1,6 +1,6 @@
 # Maintainer: jtheoof <contact@jtheoof.me>
 pkgname=swappy
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
@@ -24,13 +24,13 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jtheoof/swappy/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '98fc666f41e39c6ceb1e7e93274accd73b7b8b7a29d444d94f99c40a82e752eb'
+  'b48ca60e4a2a9c274b1e52b35de800e342f79481aef3f90825d55250e210c040'
 )
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  arch-meson build
+  arch-meson --auto-features=auto build
   ninja -C build
 }
 
