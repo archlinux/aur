@@ -1,6 +1,6 @@
 # Maintainer: Pavel Horniak <gouster4@gmail.com>
 pkgname=newflasher-git
-pkgver=20
+pkgver=master
 pkgrel=1
 pkgdesc='This experimental software allows you to flash firmwares acquired through XperiFirm to Sony phones including and newer than the XZ Premium.'
 arch=('x86_64')
