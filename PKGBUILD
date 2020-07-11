@@ -3,7 +3,7 @@
 pkgname=python-interutils
 _pypiname=${pkgname/python-/}
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities for creating interactive console scripts"
 arch=('any')
 url='https://pypi.org/project/interutils/'
