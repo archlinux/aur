@@ -3,7 +3,7 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
@@ -15,7 +15,7 @@ depends=('git')
 makedepends=('rust' 'clang' 'llvm')
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('c093d40e7a069572fc31407a39dcb6a77094acb5b52518691de6f8f0c21530de')
+sha256sums=('4ff8d5864306f130be8e0da3d8013bcc4ece082835d4cc5395775c669111ed77')
 
 
 prepare() {
@@ -44,7 +44,8 @@ check() {
 package() {
   cd "$_name-$pkgver"
   install -Dm755 "target/release/$_name"     -t"$pkgdir/usr/bin/"
-  install -Dm644 README.*                    -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 README.md                   -t"$pkgdir/usr/share/doc/$_name/"
+  cp -a --no-preserve=ownership performance    "$pkgdir/usr/share/doc/$_name/"
   install -Dm644 LICENSE                     -t"$pkgdir/usr/share/licenses/$_name/"
   install -Dm644 completion/completion.bash    "$pkgdir/usr/share/bash-completion/completions/$_name"
   install -Dm644 completion/completion.zsh     "$pkgdir/usr/share/zsh/site-functions/_$_name"
