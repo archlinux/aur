@@ -18,6 +18,7 @@ pkgbase = ccstudio
 	depends = ncurses5-compat-libs
 	depends = libusb-compat
 	depends = libcanberra
+	depends = gconf
 	optdepends = ttf-dejavu
 	options = !strip
 	options = libtool

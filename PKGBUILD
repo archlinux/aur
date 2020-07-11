@@ -16,7 +16,7 @@ makedepends=('glibc')
 
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 # lib32-glibc needed for installers of some components (C2000 tools)
-#!! 'ncurses5-compat-libs' is an aur package
+#!! 'ncurses5-compat-libs' and 'gconf' are aur packages
 depends=('python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra' 'gtk' 'gconf')
 
 # Without some ttf fonts installed, UI is ugly
