@@ -1,4 +1,5 @@
-# Maintainer: Lael Guillemenot <zeppelinlg@gmail.com>
+# Maintainer: Homer Xing <homer.hsing@gmail.com>
+# Contributor: Lael Guillemenot <zeppelinlg@gmail.com>
 
 pkgname=indicator-sysmonitor-bzr
 pkgver=0.8.1
