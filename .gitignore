@@ -1,0 +1,18 @@
+# Ignore everything ...
+*
+
+# Except ...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!wee_config
+!wee_database
+!wee_debug
+!wee_device
+!wee_extension
+!wee_import
+!wee_reports
+!weewx.install
+!weewx.service
+!weewxd
+!wunderfixer
