@@ -34,4 +34,7 @@ prepare() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	cp -r ./ ${pkgdir}/
+	mkdir -p ${pkgdir}/usr/share/applications
+	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop ${pkgdir}/usr/share/applications/com.qq.weixin.work.deepin.desktop
+	cp -r ${srcdir}/${pkgname}-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/icons/ ${pkgdir}/usr/share/
 }
