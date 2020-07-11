@@ -6,14 +6,12 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2-td1-dv1-ij1
 pkgver=4.48
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospace bitmap font (for X11 and console) with ll2 (pass the il1I test), td1 (centered ascii tilde), dv1 and ij1 (cyrillic de & ve & i) patches'
 arch=(any)
 url=https://sourceforge.net/projects/terminus-font/
 license=(GPL2 custom:OFL)
-makedepends=(xorg-bdftopcf fontconfig xorg-mkfontscale xorg-mkfontdir python3)
-optdepends=(xorg-fonts-alias)
-depends=(fontconfig xorg-fonts-encodings xorg-font-utils)
+makedepends=(xorg-bdftopcf python)
 conflicts=(terminus-font)
 provides=(terminus-font)
 source=(
