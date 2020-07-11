@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Valdes  <alejandrovaldes at live dot com>
 pkgname=yuview
 _pkgname=YUView
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
@@ -13,11 +13,11 @@ depends=('qt5-base'
          'libde265')
 provides=("$pkgname")
 conflicts=("$pkgname" "$_pkgname")
-source=("git+${url}.git#commit=5e845470cf0571e5fabc6c0c2c5db4c6f3cec5af"
+source=("git+${url}.git#commit=24c65edbc2e73125103e54db9d11e0391e48d27b"
         'archlinux.patch')
 noextract=()
 md5sums=('SKIP'
-         'a2d1cca1fade739a2fc8b918ff6536f3')
+         '095b1623302cec0ab619dd506751f1fc')
 install="$pkgname.install"
 
 prepare() {
