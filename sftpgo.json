@@ -55,8 +55,8 @@
   "httpd": {
     "bind_port": 8080,
     "bind_address": "127.0.0.1",
-    "templates_path": "/var/lib/sftpgo/templates",
-    "static_files_path": "/var/lib/sftpgo/static",
+    "templates_path": "/usr/share/sftpgo/templates",
+    "static_files_path": "/usr/share/sftpgo/static",
     "backups_path": "/var/lib/sftpgo/backups",
     "auth_user_file": "",
     "certificate_file": "",

@@ -2,14 +2,14 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r378.23a80b0
+pkgver=r412.3702bc8
 pkgrel=1
-pkgdesc='Full featured and highly configurable SFTP server'
+pkgdesc='Fully featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
 url="https://github.com/drakkan/${_pkgname}"
 license=('GPL3')
 depends=('glibc')
-makedepends=('gcc' 'git' 'go')
+makedepends=('gcc' 'git' 'go' 'gzip')
 optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
@@ -23,11 +23,9 @@ backup=("etc/${_pkgname}/sftpgo.json")
 install=${pkgname}.install
 
 source=("git+https://github.com/drakkan/${_pkgname}.git"
-  "sftpgo.json"
-  "README")
+  "sftpgo.json")
 sha256sums=('SKIP'
-  'd4bc2ddb3104e2e1be40103e7653f2d7802658576ba8e80bebfad7901a8b46a4'
-  '9c6c5a49b4605fe83beb895c5f31b1f85afb317fc1d16c875a9ae5af23313d23')
+  'fb4dc558c4dcba5e9d9ce9716653439b11d34f468599609cc4b8e79692ef8417')
 
 pkgver() {
   cd "${_pkgname}"
@@ -37,6 +35,9 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  ./sftpgo gen completion bash > sftpgo-completion.bash
+  ./sftpgo gen man -d man1
+  gzip man1/*
 }
 
 package() {
@@ -46,10 +47,17 @@ package() {
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
   install -d "${pkgdir}/var/lib/${_pkgname}"
-  cp -r templates "${pkgdir}/var/lib/${_pkgname}/"
-  cp -r static "${pkgdir}/var/lib/${_pkgname}/"
-  install -Dm 644 "$srcdir/README" "${pkgdir}"/usr/share/doc/${_pkgname}/README
+  install -d "${pkgdir}/usr/share/${_pkgname}"
+  cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
+  cp -r static "${pkgdir}/usr/share/${_pkgname}/"
+  install -Dm 644 "$srcdir/sftpgo.json" "${pkgdir}/usr/share/doc/${_pkgname}/sftpgo.json.default"
+  echo "" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
+  echo "https://github.com/drakkan/sftpgo/blob/master/README.md" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
+  install -d "${pkgdir}/etc/bash_completion.d"
+  install -Dm 644 sftpgo-completion.bash "${pkgdir}/etc/bash_completion.d/"
+  install -d "${pkgdir}/usr/share/man"
+  cp -r man1 "${pkgdir}/usr/share/man/"
 }
 
 # vim:set ts=2 sw=2 et:
