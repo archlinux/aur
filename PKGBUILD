@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=scriptisto
-pkgver=0.6.7
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="A language-agnostic \"shebang interpreter\" that enables you to write scripts in compiled languages"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6bd9ce557e67f266225151969de58b9f4156e31e6088caad8519fa1f0ddc6a96')
+sha256sums=('a1b55fb99e054b7693f559df50c078fb4b55125d59076189c8001fd421386f16')
 
 build() {
     cd $pkgname-$pkgver
