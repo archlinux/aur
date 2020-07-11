@@ -1,7 +1,7 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=remote-desktop-manager
 pkgver=2020.2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Devolutions Remote Desktop Manager Enterprise centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
 url="https://remotedesktopmanager.com/"
