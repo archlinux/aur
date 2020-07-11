@@ -1,46 +1,35 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-# Contributor: Reventlov <contact+aur at volcanis dot me>
+# Maintainer: HLFH <arch@dhautefeuille.eu>
 
 pkgname=searx-git
-pkgver=0.15.0+r348+g34ad3d6b
+pkgver=0.17.0+r6+gf9faafa8
 pkgrel=1
-pkgdesc='Privacy-respecting metasearch engine (git)'
-arch=(any)
-url=https://asciimoo.github.io/searx/
-license=(AGPL3)
+pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
+arch=('any')
+url="https://asciimoo.github.io/searx/"
+license=('AGPL')
+makedepends=('openssl')
 depends=(
-  python-certifi
-  python-babel
-  python-flask-babel
-  python-flask
-  python-idna
-  python-jinja
-  python-lxml
-  python-pygments
-  python-pyopenssl
-  python-dateutil
-  python-yaml
-  python-requests
-  python-pysocks
-)
-makedepends=(git)
-optdepends=(
-  'filtron: filter incoming HTTP requests'
-  'morty: proxy server for search results'
-)
-provides=(searx)
-conflicts=(searx)
-backup=(etc/searx.conf)
-source=(
-  git+https://github.com/asciimoo/searx
-  searx.service
-  searx.sysusers.d
-  searx.tmpfiles.d
-)
+        'uwsgi'
+        'uwsgi-plugin-python'
+        'python-certifi'
+        'python-flask'
+        'python-flask-babel'        
+        'python-lxml'
+        'python-idna'
+        'python-pygments'
+        'python-pyopenssl'
+        'python-dateutil'        
+        'python-yaml'
+        'python-requests'
+        'python-pysocks')
+conflicts=('searx' )
+backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
+source=(git+https://github.com/asciimoo/searx
+        'searx.ini'
+        'searx.sysusers')
 sha512sums=('SKIP'
-            'cc58068e502b088c61016a5cd25db248f5fae146f18e00253f3aa0ccd666189ef3a407e00bf9181c23e643e68df7e4f9eec295bf680c982052978c2786325d0a'
-            '39b765ade096778ad945725e0ca5c0919e4baff4e7a466e0d093e68d1a92c563a5437caed01e44accf04ac51450007e659435d32a84e818df213de3f9e546793'
-            '65b0d25c8673756f145b0113fd49af36062d68c1dbd6009fbc658bf365579f672aadd6f6e7fd66f1e49215ffb9c1ecf58b26c2f7f85319eb011094b20f80ff85')
+            '6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8'
+            '6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e')
 
 pkgver() {
   cd searx
@@ -48,23 +37,27 @@ pkgver() {
 }
 
 prepare() {
-  cd searx
+  cd "$srcdir/searx"
 
-  # Allow newer libraries since we can't guarantee older library versions
-  sed -i 's#==#>=#g' requirements.txt
+  # Allow newer versions of the dependencies
+  sed -i "s|==|>=|g" requirements.txt
+
+  # Generate a random secret key
+  sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" searx/settings.yml
 }
 
 package() {
-  cd searx
+  cd "$srcdir/searx"
+  local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
-  python setup.py install --root="$pkgdir" -O1
+  python setup.py install --root="$pkgdir" --optimize=1
 
-  # Move incorrectly-placed searx files
-  mv "$pkgdir"/usr/lib/python3.8/site-packages/{README.rst,requirements*,searx}
+  mv "${pkgdir}${_site_packages}"/{README.rst,requirements*,searx}
 
-  install -Dm 600 searx/settings.yml "$pkgdir"/etc/searx.conf
+  mkdir -p "$pkgdir/etc/searx"
+  mv "${pkgdir}${_site_packages}/searx/settings.yml" $pkgdir/etc/searx/
+  ln -s /etc/searx/settings.yml "${pkgdir}${_site_packages}/searx/settings.yml"
 
-  install -Dm 644 ../searx.service -t "$pkgdir"/usr/lib/systemd/system
-  install -Dm 644 ../searx.sysusers.d "$pkgdir"/usr/lib/sysusers.d/searx.conf
-  install -Dm 644 ../searx.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/searx.conf
+  install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
+  install -Dm644 "${srcdir}/searx.ini" "${pkgdir}/etc/uwsgi/searx.ini"
 }
