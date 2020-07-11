@@ -1,6 +1,6 @@
 pkgbase = nodejs-formality-lang
 	pkgdesc = An efficient proof-gramming language. It aims to be: Fast, Safe, Portable
-	pkgver = 0.1.241
+	pkgver = 0.4.91
 	pkgrel = 1
 	url = https://github.com/moonad/Formality
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-formality-lang
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = formality-lang-0.1.241.tgz
-	source = https://registry.npmjs.org/formality-lang/-/formality-lang-0.1.241.tgz
-	sha256sums = 3ac21af46684b2c411f67165a999155a8975710c110809b10000a6b00d3ce1c8
+	noextract = formality-lang-0.4.91.tgz
+	source = https://registry.npmjs.org/formality-lang/-/formality-lang-0.4.91.tgz
+	md5sums = 32aea0b1f215c7f313745f686e72906f
 
 pkgname = nodejs-formality-lang
 

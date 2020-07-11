@@ -2,7 +2,7 @@
 
 pkgname="nodejs-formality-lang"
 _pkgname=${pkgname#nodejs-}
-pkgver=0.1.241
+pkgver=0.4.91
 pkgrel=1
 pkgdesc="An efficient proof-gramming language. It aims to be: Fast, Safe, Portable"
 arch=("any")
@@ -32,4 +32,4 @@ package() {
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
 }
-sha256sums=('3ac21af46684b2c411f67165a999155a8975710c110809b10000a6b00d3ce1c8')
+md5sums=('32aea0b1f215c7f313745f686e72906f')
