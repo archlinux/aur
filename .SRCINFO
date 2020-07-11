@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 20.04.2
+	pkgver = 20.04.3
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
@@ -21,14 +21,14 @@ pkgbase = dolphin-meld
 	optdepends = meld: file comparisons
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=20.04.2
-	conflicts = dolphin=20.04.2
-	source = https://download.kde.org/stable/release-service/20.04.2/src/dolphin-20.04.2.tar.xz
-	source = https://download.kde.org/stable/release-service/20.04.2/src/dolphin-20.04.2.tar.xz.sig
+	provides = dolphin=20.04.3
+	conflicts = dolphin=20.04.3
+	source = https://download.kde.org/stable/release-service/20.04.3/src/dolphin-20.04.3.tar.xz
+	source = https://download.kde.org/stable/release-service/20.04.3/src/dolphin-20.04.3.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = 37e4c1510227112365418cacccabc6d535fb0880e182a2341bfe00d585d14fb2
+	sha256sums = 5e493e898e02005780b59474f506904742625b50e4669c113906d4f30daa863e
 	sha256sums = SKIP
 	sha256sums = 13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b
 
