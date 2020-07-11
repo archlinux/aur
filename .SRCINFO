@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-chrono-date
 	pkgdesc = A date and time library based on the C++11/14/17 <chrono> header (mingw-w64)
-	pkgver = 3.0.0
+	pkgver = 3.0.0+5+g6952fb5
 	pkgrel = 1
 	url = https://howardhinnant.github.io/date/date.html
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-chrono-date
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = mingw-w64-chrono-date::git+https://github.com/HowardHinnant/date#commit=cac99da8dc88be719a728dc1b597b0ac307c1800
+	source = mingw-w64-chrono-date::git+https://github.com/HowardHinnant/date#commit=6952fb50a6a04c1b3682c56e1f1e26578f3bec1e
 	source = use-correct-path-for-cmake-files.patch
 	sha256sums = SKIP
 	sha256sums = 0cf34f1c8efa949ba9d3c983d9032c114eaa99c5b5790bc9d5872aaaf0438120
