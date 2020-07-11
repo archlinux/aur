@@ -1,14 +1,14 @@
 pkgbase = python-aur-deploy
 	pkgdesc = Automate updating pkgbuild and deploying to AUR
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/codeswhite/aur-deploy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-interutils
 	makedepends = python-requests
-	makedepends = python-bs4
+	makedepends = python-beautifulsoup4
 	makedepends = pip2pkgbuild
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/a/aur-deploy/aur-deploy-0.7.1.tar.gz
