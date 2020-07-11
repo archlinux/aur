@@ -14,7 +14,7 @@ makedepends=()
 _basedownloadurl="${url}/releases/download/v${pkgver#v}"
 
 source=("${_basedownloadurl}/${pkgname}_${pkgver#v}_linux_${arch}.tar.gz")
-sha256sums=('9db994c92c6d03173e0a5749c36d5d4b5636559bf3bc9bf387188b4824612bbf')
+sha256sums=('72c0129b52aca3c54a86d24bff779a9182a58b119670d1c1050cb09810428a29')
 
 package() {
 	# Bin
