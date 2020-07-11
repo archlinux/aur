@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue-bin
-pkgver='0.6.1'
+pkgver='0.6.2'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
