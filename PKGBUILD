@@ -2,36 +2,32 @@
 # Contributor: Lael Guillemenot <zeppelinlg@gmail.com>
 
 pkgname=indicator-sysmonitor-bzr
-pkgver=0.8.1
-pkgrel=1
-pkgdesc="Show cpu and memory usage and also various temperature sensors."
-arch=('i686' 'x86_64')
+pkgver=0.8.2
+pkgrel=0
+pkgdesc="An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status."
+arch=('any')
 url="https://launchpad.net/indicator-sysmonitor"
-license=('GPL')
-depends=('libindicator3' 'python2-psutil' 'python' 'bzr')
-makedepends=()
-optdepends=('lm_sensors' 'gnu-netcat' 'hddtemp')
+license=('GPL3')
+depends=('libappindicator-gtk3' 'python-psutil' 'python')
+makedepends=('breezy' 'python-dulwich')
+optdepends=()
 
 _bzrbranch=lp:indicator-sysmonitor
 _bzrmod=indicator-sysmonitor
 
 build() {
   cd ${srcdir}
-
-  msg "Connecting to the server...."
-
-  if [ ! -d ./${_bzrmod} ]; then
-    bzr co ${_bzrbranch} ${_bzrmod}
-  else
-    bzr up ${_bzrmod}
+  if [ -e ${_bzrmod} ]; then
+    rm -rf ${_bzrmod}
   fi
+  bzr co ${_bzrbranch} ${_bzrmod}
 }
 
 package() {
   cd ${srcdir}/${_bzrmod}
-  install -Dm755 ${srcdir}/${_bzrmod}/indicator-sysmonitor \
-          ${pkgdir}/usr/bin/indicator-sysmonitor
 
-  install -Dm644 ${srcdir}/${_bzrmod}/indicator-sysmonitor.desktop \
-          ${pkgdir}/usr/share/applications/indicator-sysmonitor.desktop
+  make DESTDIR="${pkgdir}" install
+
+  python -m compileall -d '/' "${pkgdir}/"
+  python -O -m compileall -d '/' "${pkgdir}/"
 }

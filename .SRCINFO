@@ -1,18 +1,15 @@
 pkgbase = indicator-sysmonitor-bzr
-	pkgdesc = Show cpu and memory usage and also various temperature sensors.
-	pkgver = 0.8.1
-	pkgrel = 1
+	pkgdesc = An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status.
+	pkgver = 0.8.2
+	pkgrel = 0
 	url = https://launchpad.net/indicator-sysmonitor
-	arch = i686
-	arch = x86_64
-	license = GPL
-	depends = libindicator3
-	depends = python2-psutil
+	arch = any
+	license = GPL3
+	makedepends = breezy
+	makedepends = python-dulwich
+	depends = libappindicator-gtk3
+	depends = python-psutil
 	depends = python
-	depends = bzr
-	optdepends = lm_sensors
-	optdepends = gnu-netcat
-	optdepends = hddtemp
 
 pkgname = indicator-sysmonitor-bzr
 
