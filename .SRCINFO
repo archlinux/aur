@@ -1,16 +1,16 @@
 pkgbase = deepin-wine32
 	pkgdesc = Deepin Wine32
-	pkgver = 2.18_22
-	pkgrel = 1
+	pkgver = 2.18_24
+	pkgrel = 3
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine32-preloader
-	noextract = deepin-wine32_2.18-22~rc0_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine32_2.18-22~rc0_i386.deb
-	md5sums = 22fc2e544c38b82010a57a84e0c92f7c
+	noextract = deepin-wine32_2.18-24~rc3_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine/deepin-wine32_2.18-24~rc3_i386.deb
+	md5sums = 4eca104d0f13e800ff0b239fa8b1ea3b
 
 pkgname = deepin-wine32
 
