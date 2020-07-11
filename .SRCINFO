@@ -1,6 +1,6 @@
 pkgbase = qactus
 	pkgdesc = A Qt-based OBS notifier application
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/javierllorente/qactus
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = qactus
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = qtkeychain
-	source = qactus-2.0.1.tar.gz::https://github.com/javierllorente/qactus/archive/v2.0.1.tar.gz
-	sha256sums = d0289ce9099ccdb61187edb4e0e081b012cd5229c37e8ae9480d9d1101f4269a
+	source = qactus-2.0.2.tar.gz::https://github.com/javierllorente/qactus/archive/v2.0.2.tar.gz
+	sha256sums = bc3d953358399253a22d13dcc1d74ada2a3675939a29024c230cd92085eb157b
 
 pkgname = qactus
 
