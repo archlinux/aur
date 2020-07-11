@@ -8,8 +8,9 @@ license=('GPL3')
 url="http://www.flashtool.net/"
 depends=('libselinux' 'libsystemd' 'glib2' 'mono')
 makedepends=('p7zip' 'ant')
-source=(git://github.com/Androxyde/Flashtool)
-md5sums=('SKIP')
+source=("git://github.com/Androxyde/Flashtool"
+"Flashtool.desktop")
+md5sums=('SKIP' 'SKIP')
 
 build() {
    cd "$srcdir"/Flashtool
@@ -19,9 +20,11 @@ build() {
 
 package(){
   # Moving everything to pkg/.
-  mkdir "$pkgdir"/usr "$pkgdir"/usr/lib "$pkgdir"/usr/bin
+  mkdir "$pkgdir"/usr "$pkgdir"/usr/lib "$pkgdir"/usr/bin "$pkgdir"/usr/share "$pkgdir"/usr/share/applications "$pkgdir"/usr/share/icons
   mv "$srcdir"/Deploy/FlashTool "$pkgdir"/usr/lib/FlashTool
   ln -s /usr/lib/jvm/default "$pkgdir"/usr/lib/FlashTool/x10flasher_native/jre
   ln -s /usr/lib/FlashTool/FlashTool "$pkgdir"/usr/bin/flashtool
+  mv Flashtool.desktop "$pkgdir"/usr/share/applications/Flashtool.desktop
+  mv "$srcdir"/Flashtool/src/gui/ressources/icons/flash_512.png "$pkgdir"/usr/share/icons/Flashtool.png
 }
 

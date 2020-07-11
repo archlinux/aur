@@ -12,6 +12,8 @@ pkgbase = xperia-flashtool-git
 	depends = glib2
 	depends = mono
 	source = git://github.com/Androxyde/Flashtool
+	source = Flashtool.desktop
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = xperia-flashtool-git
