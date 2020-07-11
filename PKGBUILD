@@ -2,7 +2,7 @@
 
 pkgname=mctlauncher
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft TLauncher Client for the AUR <visit tlauncher.org>"
 arch=("any")
 url="https://www.tlauncher.org"
@@ -15,7 +15,7 @@ _jar="https://tlauncher.org/jar"
 noextract=("jar")
 
 source=( "$_jar" "${pkgname}.desktop" "${pkgname}.png" "${pkgname}")
-sha256sums=("5aee06077942a4c2c1def6a532fc3232e87acdf7d806b018ba5a9ff48dd52acd" 
+sha256sums=("SKIP" 
 "ef0fb9ccaf1bf78e476f38498ad68c3943060e16a97898ac5a5d732e2311fe21" 
 "e481b09b5e7592405db862c8a162f7050df6183d32b98d6c36db04a7acad3fe7" 
 "2f16c9a88194dd3e70ab3b9205dd06bee51679f72c311e6dc8d91d5fb08a52e4")
