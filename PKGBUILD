@@ -2,7 +2,7 @@
 pkgname=mango
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="A tool for making backups of Arch packages and its dependencies"
+pkgdesc="A tool for making backups of Arch packages and their dependencies"
 arch=('any')
 url="https://gitlab.com/Taro94/mango"
 license=('GPL')
