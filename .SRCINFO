@@ -1,0 +1,22 @@
+pkgbase = shellcaster-git
+	pkgdesc = ncurses-based TUI podcast manager
+	pkgver = v0.8.2.r2.g648a652
+	pkgrel = 1
+	url = https://github.com/jeff-hughes/shellcaster
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = rustup>=1.17.0
+	makedepends = ncurses
+	depends = sqlite>=3.23.0
+	depends = openssl>=1.1.0
+	provides = shellcaster
+	conflicts = shellcaster
+	backup = etc/shellcaster/config.toml
+	source = shellcaster::git+https://github.com/jeff-hughes/shellcaster.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = shellcaster-git
+
