@@ -1,9 +1,9 @@
 # Maintainer: Ykkzde <dmitry@ykkz.de>
 
 pkgname=random-case-git
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="Randize case of your input text. Totally useless, but written in Rust."
+pkgdesc="Randomize case of your input text."
 url="https://gitlab.com/ykkzde/random-case"
 license=('GPL3')
 provides=('random-case')
@@ -18,7 +18,7 @@ makedepends=(
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/random-case-v$pkgver.tar.gz")
 
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('484a5d8b0e9132bec8259081e4d93b82ecf63fe8e4a8899ca2c06a39517e295646f7732954b1f711387712e6d0b46b851b2785ca04d0a1d0501b39a106a86f76')
+sha512sums=('3d70f2e632757a37c022d0a058f97da53f87b543ac3b32dfe02f115e6fcb63c2cb66fdfc31d3bcd5b0208dea83bd5b356483b69c77ce541464e2ca71d523b85a')
 
 arch=('x86_64')
 
