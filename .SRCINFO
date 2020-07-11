@@ -1,7 +1,7 @@
 pkgbase = python-corner
 	pkgdesc = Make some beautiful corner plots of samples
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/corner/
 	arch = any
 	license = BSD
@@ -9,8 +9,10 @@ pkgbase = python-corner
 	depends = python-pytest
 	depends = python-nose
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/c/corner/corner-2.0.1.tar.gz
-	md5sums = 148a401ebb1dff47897fe4a1389e8c77
+	depends = python-setuptools-scm
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/c/corner/corner-2.1.0.tar.gz
+	md5sums = 38f04719d1ab21d10e532f6d368ad22a
 
 pkgname = python-corner
 
