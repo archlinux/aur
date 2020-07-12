@@ -1,8 +1,8 @@
 # Maintainer : boronology <boronology at gmail dot com>
 pkgname=ttf-rounded-mplus
 pkgver=20150529
-pkgrel=1
-depends=('fontconfig' 'xorg-font-utils')
+pkgrel=2
+depends=('fontconfig' 'xorg-mkfontscale')
 pkgdesc="Japanese rounded gothic fonts based on M+ FONTS"
 arch=('any')
 license=('custom')
@@ -17,18 +17,16 @@ package() {
 	cd "$srcdir"
 
 	# install fonts
-	for TTF in `ls *.ttf`
-	    do
+	for TTF in $(ls *.ttf); do
 	    install -Dm644 $TTF "$pkgdir/usr/share/fonts/TTF/$TTF"
-	    done
+	done
 
 	# install License
 	cd "$srcdir/mplus-TESTFLIGHT-059"
-	for LICENSE in `ls LICENSE*`
-	    do
+	for LICENSE in $(ls LICENSE*); do
 	    install -Dm644 $LICENSE \
 	    	    "$pkgdir/usr/share/licenses/$pkgname/$LICENSE"
-	    done
+	done
 }
 
 md5sums=('e3725fe7982cac2819357439af41cafd'

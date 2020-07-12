@@ -1,13 +1,13 @@
 pkgbase = ttf-rounded-mplus
 	pkgdesc = Japanese rounded gothic fonts based on M+ FONTS
 	pkgver = 20150529
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jikasei.me/font/rounded-mplus/
 	install = ttf-rounded-mplus.install
 	arch = any
 	license = custom
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontscale
 	source = http://osdn.jp/frs/chamber_redir.php?m=iij&f=%2Fusers%2F8%2F8569%2Frounded-mplus-20150529.7z
 	source = http://osdn.jp/frs/chamber_redir.php?m=iij&f=%2Fusers%2F8%2F8570%2Frounded-x-mplus-20150529.7z
 	source = http://osdn.jp/frs/chamber_redir.php?m=iij&f=%2Fusers%2F8%2F8568%2Frounded-l-mplus-20150529.7z
