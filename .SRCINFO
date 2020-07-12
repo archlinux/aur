@@ -6,7 +6,6 @@ pkgbase = vkbasalt
 	install = vkbasalt.install
 	arch = x86_64
 	license = zlib
-	makedepends = cmake
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
