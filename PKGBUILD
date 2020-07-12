@@ -1,7 +1,7 @@
 # Maintainer: Les De Ridder <aur@lesderid.net>
 
 pkgname=gdb-msvc-git
-pkgver=9.2.r16.gb65dd57
+pkgver=9.2+0.1.r0.g23a86f4
 pkgrel=1
 pkgdesc="The GNU Debugger (compiled to debug target mingw-w64, with MSVC patches)"
 arch=('i686' 'x86_64')
