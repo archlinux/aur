@@ -1,8 +1,8 @@
 pkgbase = outwiker
 	pkgdesc = Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = http://jenyay.net/Outwiker/English
+	pkgrel = 2
+	url = https://jenyay.net/Outwiker/English
 	arch = any
 	license = GPL3
 	depends = python2

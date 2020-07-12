@@ -2,10 +2,10 @@
 
 pkgname=outwiker
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk"
-url="http://jenyay.net/Outwiker/English"
+url="https://jenyay.net/Outwiker/English"
 license=('GPL3')
 depends=('python2' 'wxpython2.8' 'pywebkitgtk' 'python2-pillow' 'python2-pyenchant')
 optdepends=('mimetex: rendering of formulas')
