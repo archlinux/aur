@@ -1,4 +1,5 @@
-# Maintainer: Karel Louwagie <karel@louwagie.net>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Karel Louwagie <karel@louwagie.net>
 # Contributor: Idares <idares@seznam.cz>
 # Contributor: Enrico Morelli <morelli@cerm.unifi.it>
 # Contributor: Vadym Abramchuk <abramm@gmail.com>
@@ -6,17 +7,17 @@
 
 pkgname=zabbix-proxy-sqlite-2.4
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.zabbix.com"
+url="https://www.zabbix.com"
 license=('GPL')
 depends=('sqlite3' 'fping' 'openipmi' 'libxml2')
 makedepends=('binutils' 'gcc' 'make' 'fakeroot')
 backup=('etc/zabbix/zabbix_proxy.conf')
 
 install='zabbix-proxy.install'
-source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
         'zabbix-proxy.install'
 	'zabbix-proxy.service'
 	'zabbix-proxy.sysusers'
