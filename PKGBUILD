@@ -6,7 +6,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=78.0.1
+pkgver=78.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
@@ -18,12 +18,14 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-librsvg: svg_loader.so library'
             'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
-source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
+source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2{,.asc}
         'firefox32.desktop'
 	'firefox32-safe.desktop')
-sha256sums=('09612fe38429f3d8c813f98788ead8a4f4bd931e9a7f31c04fceab3b6d0da7bf'
+sha256sums=('8e6d63f2ff1c3a2644cc0d392db079b2a1228a9ce587c046245feb7d0a0a53e7'
+            'SKIP'
             'd24cf628f3fe57da81c0e36ed2ac6b615560931bc588eda2e76dfd8d93e813f2'
             'ae6ddbaa9734c3938bb809a334acc96c54195b997ad0fb43d9a9442eb80e0f16')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 package() {
   # directory and files
