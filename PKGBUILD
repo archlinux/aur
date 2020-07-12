@@ -3,7 +3,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 
 pkgname=yafaray
-pkgver=3.4.4
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A free open-source montecarlo raytracing engine"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('python: For Python bindings'
 makedepends=('cmake' 'boost' 'swig' 'python' 'ruby')
 source=("Core-${pkgver}.tar.gz::https://github.com/YafaRay/Core/archive/v${pkgver}.tar.gz"
         "ruby-archhdrdir.patch")
-sha256sums=('b7d13c4adbffebeda16fdd80635bde01d11f781b7d0ea64303e6de3175b2f8e7'
+sha256sums=('d828e06338f4aebd96da18f6ed9d389f2bd8f470e9f5ca936e9df3bc4d04d2e3'
             '7f1fe9814bdc7cf64775541b7e5635aa92fc809464462243fada653935aba3ce')
 
 prepare() {
