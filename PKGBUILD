@@ -5,10 +5,10 @@
 pkgname=perl-cgi-psgi
 _cpanname="CGI-PSGI"
 pkgver=0.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Adapt CGI.pm to the PSGI protocol"
 arch=('any')
-url="http://search.cpan.org/~miyagawa/$_cpanname-$pkgver/"
+url="https://search.cpan.org/~miyagawa/$_cpanname-$pkgver/"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')

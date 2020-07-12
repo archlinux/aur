@@ -1,8 +1,8 @@
 pkgbase = perl-cgi-psgi
 	pkgdesc = Adapt CGI.pm to the PSGI protocol
 	pkgver = 0.15
-	pkgrel = 3
-	url = http://search.cpan.org/~miyagawa/CGI-PSGI-0.15/
+	pkgrel = 4
+	url = https://search.cpan.org/~miyagawa/CGI-PSGI-0.15/
 	arch = any
 	license = GPL
 	license = PerlArtistic
