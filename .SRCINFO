@@ -13,7 +13,7 @@ pkgbase = ksysguard-gpu-git
 	optdepends = nvidia-utils: NVIDIA card support
 	provides = ksysguard-gpu
 	conflicts = ksysguard-gpu
-	source = git+https://github.com/lestofante/ksysguard-gpu
+	source = git+https://github.com/lestofante/ksysguard-gpu.git
 	md5sums = SKIP
 
 pkgname = ksysguard-gpu-git

@@ -1,30 +1,29 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
-_pkgname=ksysguard-gpu
-pkgname=$_pkgname-git
+pkgname=ksysguard-gpu-git
 pkgver=0.5.r1.g53dc730
 pkgrel=1
-pkgdesc="gpu visualization for ksysguard"
+pkgdesc='gpu visualization for ksysguard'
 arch=(any)
-url="https://github.com/lestofante/ksysguard-gpu"
-license=('GPL3')
-depends=('python')
-makedepends=('git')
+url='https://github.com/lestofante/ksysguard-gpu'
+license=(GPL3)
+depends=(python)
+makedepends=(git)
 optdepends=('ksysguard: For connecting to script as intended'
 			'radeontop: AMD card support'
 			'intel-gpu-tools: Intel card support'
 			'nvidia-utils: NVIDIA card support')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+$url")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+"${url}".git)
 md5sums=(SKIP)
 
 pkgver() {
-	cd "$_pkgname"
+	cd "${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	install -Dm644 "${srcdir}/$_pkgname/systemd-unit/ksysguard-gpu.service" "${pkgdir}/usr/lib/systemd/system/ksysguard-gpu.service"
-	install -Dm755 "${srcdir}/$_pkgname/src/ksysguard-gpu.py" "${pkgdir}/usr/bin/ksysguard-gpu.py"
+	install -Dm644 "${pkgname%-git}/systemd-unit/ksysguard-gpu.service" -t "${pkgdir}/usr/lib/systemd/system"
+	install -Dm755 "${pkgname%-git}/src/ksysguard-gpu.py" -t "${pkgdir}/usr/bin"
 }
