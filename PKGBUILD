@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=vkbasalt
-pkgver=0.3.2.1
+pkgver=0.3.2.2
 pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
