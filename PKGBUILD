@@ -6,14 +6,14 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=ghz-git
 pkgver=0.55.0.r4.g02c0138
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple gRPC benchmarking and load testing tool"
 arch=('x86_64')
 url="https://ghz.sh/"
 license=('Apache')
 makedepends=('go')
 source=('git+https://github.com/bojand/ghz')
-sha256sums=( 'SKIP' )
+sha256sums=('SKIP')
 
 pkgver()
 {
