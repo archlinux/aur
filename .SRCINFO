@@ -1,15 +1,17 @@
 pkgbase = python-yappi
-	pkgdesc = Yet Another Python Profiler
-	pkgver = 0.98
+	pkgdesc = Yet Another Python Profiler, but this time thread&coroutine aware.
+	pkgver = 1.2.5
 	pkgrel = 1
-	url = https://bitbucket.org/sumerc/yappi
+	url = https://github.com/sumerc/yappi
 	arch = any
 	license = MIT
-	source = https://pypi.python.org/packages/35/43/489bf1dd0923c16b4abe09271da979ca0576662d02ba59f26cfb54e93be1/yappi-0.98.tar.gz#md5=dc56240575c99938a924eaeb7c0d8beb
-	source = https://bitbucket.org/sumerc/yappi/raw/f2ec7bda4fca19f8a6ef81fb9807ab8ee73f7033/LICENSE
-	md5sums = dc56240575c99938a924eaeb7c0d8beb
-	md5sums = 084addf3f5099fe4c94ff0c220d493de
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = yappi-release::git+https://github.com/sumerc/yappi.git#commit=294f70f7677e811475a9d347ce9905d4538d416d
+	source = skip-test.patch
+	sha256sums = SKIP
+	sha256sums = ca2a65fb92709b4ff48d8cf45592bb839c9ea2df3a19380fbc56bfe7ae937ea5
 
 pkgname = python-yappi
-	depends = python
 
