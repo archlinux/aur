@@ -1,6 +1,6 @@
 pkgbase = python2-future
 	pkgdesc = Clean single-source support for Python 3 and 2
-	pkgver = 0.15.0
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = http://python-future.org/
 	arch = any
@@ -11,9 +11,8 @@ pkgbase = python2-future
 	provides = futurize
 	provides = pasteurize
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/f/future/future-0.15.0.tar.gz
-	md5sums = cf1ee211567cc0b1021de5839064fe7b
-	sha256sums = 7f8ad46e287ac32e3dae78be41098c83d690b364142e0a5f11958c2b549420b0
+	source = https://pypi.python.org/packages/source/f/future/future-0.18.2.tar.gz
+	sha256sums = b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d
 
 pkgname = python2-future
 
