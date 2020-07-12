@@ -20,7 +20,7 @@ pkgver()
 	cd "$srcdir/${pkgname%-git}"
 	(
 		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v\(.*\)/\1/' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 	pkgrel=$(git diff --shortstat|cut -d' ' -f2)
