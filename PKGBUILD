@@ -2,17 +2,22 @@
 # Based uppon the script for radegast written by Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=radegast-git
 pkgver=master
-pkgrel=43
+pkgrel=44
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
 license=('BSD')
 depends=('mono')
 conflicts=('radegast')
-makedepends=('dos2unix' 'recode')
+makedepends=('dos2unix' 'recode' 'openssl-1.0')
 source=(radegast.desktop radegast)
 sha256sums=('8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
+
+#pkgver() {
+#  cd "$pkgname"
+#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
   git clone --recursive https://github.com/radegastdev/radegast.git radegast-git-master-src
