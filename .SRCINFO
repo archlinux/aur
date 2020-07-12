@@ -1,0 +1,16 @@
+pkgbase = vim-python-pep8-indent
+	pkgdesc = Vim plugin to improve Python indentation
+	pkgver = r145.60ba5e1
+	pkgrel = 1
+	url = https://github.com/Vimjas/vim-python-pep8-indent
+	install = vim-python-pep8-indent.install
+	arch = any
+	groups = vim-plugins
+	license = custom:Public Domain
+	makedepends = git
+	depends = vim
+	source = vim-python-pep8-indent::git+https://github.com/Vimjas/vim-python-pep8-indent
+	sha512sums = SKIP
+
+pkgname = vim-python-pep8-indent
+
