@@ -1,6 +1,6 @@
 pkgbase = blocky
 	pkgdesc = DNS proxy as ad-blocker for local network
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/0xERR0R/blocky
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = blocky
 	license = Apache
 	makedepends = go-pie
 	depends = glibc
-	source = https://github.com/0xERR0R/blocky/archive/v0.8.tar.gz
-	sha256sums = f63e0fd771d06b725dcd50aacf1629b8b23cf919a78b23e78562db2df9ac317a
+	source = https://github.com/0xERR0R/blocky/archive/v0.9.tar.gz
+	sha256sums = 07a969721ee82ba22d1a95759f5fb33f07fa578341dc4d11ab354f1f436f1664
 
 pkgname = blocky
 

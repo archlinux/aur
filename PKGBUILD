@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=blocky
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="DNS proxy as ad-blocker for local network"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('f63e0fd771d06b725dcd50aacf1629b8b23cf919a78b23e78562db2df9ac317a')
+sha256sums=('07a969721ee82ba22d1a95759f5fb33f07fa578341dc4d11ab354f1f436f1664')
 
 build() {
     cd "$pkgname-$pkgver"
