@@ -4,7 +4,7 @@ _svt_hevc_ver='1.4.3'
 _svt_av1_ver='0.8.4'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r98424.g73757577cb
+pkgver=4.4.r98461.g4dab04622a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -44,13 +44,13 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
         "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch"
         'LICENSE')
 sha256sums=('SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '65240283f30906482f8002c1f0d2763e5a2501008179480cc94afa4bdaab5ed5'
+            '5e960b4dab495437082d0838a40a8cae9b67d1cef1ffd57da960afaa2bfd3719'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
