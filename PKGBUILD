@@ -10,10 +10,10 @@
 
 pkgname=libreoffice-fresh-rpm
 pkgver=6.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
-url='http://www.libreoffice.org'
+url='https://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
 makedepends=('curl' 'awk')

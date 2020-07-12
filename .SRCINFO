@@ -1,8 +1,8 @@
 pkgbase = libreoffice-fresh-rpm
 	pkgdesc = LGPL Office Suite installed from rpms
 	pkgver = 6.4.5
-	pkgrel = 1
-	url = http://www.libreoffice.org
+	pkgrel = 2
+	url = https://www.libreoffice.org
 	arch = x86_64
 	license = LGPL
 	makedepends = curl
