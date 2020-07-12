@@ -4,14 +4,14 @@
 
 pkgname='perl-lwp-useragent-determined'
 pkgver='1.07'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a virtual browser that retries errors"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-libwww')
 makedepends=()
-url='http://search.cpan.org/dist/LWP-UserAgent-Determined'
+url='https://search.cpan.org/dist/LWP-UserAgent-Determined'
 source=("https://cpan.metacpan.org/authors/id/A/AL/ALEXMV/LWP-UserAgent-Determined-${pkgver}.tar.gz")
 sha512sums=('bed056468366bf86f0711a23c5bdb502a614efa2fd80d632f8d43d33295309d0ee88e439933cb3eda99192ad7d7025d0a7f6f0a53a45e79e70512771bb58ae7d')
 _distdir="LWP-UserAgent-Determined-${pkgver}"
