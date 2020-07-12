@@ -1,12 +1,10 @@
 pkgbase = ttf-lekton
 	pkgdesc = Lekton font
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.fontsquirrel.com/fonts/lekton
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = ttf-lekton-1.0.zip::http://www.fontsquirrel.com/fonts/download/lekton
 	sha256sums = SKIP
 

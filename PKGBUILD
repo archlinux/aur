@@ -2,10 +2,9 @@
 
 pkgname=ttf-lekton
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Lekton font"
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
 url='http://www.fontsquirrel.com/fonts/lekton'
 source=("$pkgname-$pkgver.zip::http://www.fontsquirrel.com/fonts/download/lekton")
 sha256sums=('SKIP') # hashsums differ every now and then
