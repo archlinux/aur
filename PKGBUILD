@@ -2,8 +2,8 @@
 
 pkgbase=realrtcw
 pkgname=('realrtcw' 'realrtcw-hdpack' 'realrtcw-splatterladder')
-pkgver=3.0
-pkgrel=2
+pkgver=3.0c
+pkgrel=1
 pkgdesc="A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -11,8 +11,9 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('cmake' 'unzip' 'innoextract')
 install='realrtcw.install'
-source=("https://github.com/wolfetplayer/RealRTCW/archive/$pkgver.tar.gz"
-	"https://wolffiles.de/filebase/RtCW/Mods/RealRTCW.zip"
+_commit="7e6dc5df09237b5d6b520c8bff9041aef61db943"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
+	"$pkgname-$pkgver.zip::http://wolffiles.de/filebase/RtCW/Mods/RealRTCW_3.0_-_Complete_Edition.zip"
 	realrtcw.png
 	realrtcw-sp.launcher
 	realrtcw-sp.desktop
@@ -24,17 +25,17 @@ prepare() {
 	# Unzipping with flattened paths
 	if [ ! -e setup.exe ]; then
 		# Unzipping with flattened paths
-		unzip -jo RealRTCW.zip -d $srcdir
+		unzip -jo $pkgname-$pkgver.zip -d $srcdir
 	fi
 
 	# Extracting InnoSetup
 	if [ ! -d app ]; then
-		innoextract setup.exe
+		innoextract realrtcwsetup.exe
 	fi
 }
 
 package_realrtcw() {
-	cd "$srcdir/RealRTCW-$pkgver"
+	cd "$srcdir"/RealRTCW-*
 
 	make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/realrtcw copyfiles
 
@@ -62,10 +63,10 @@ package_realrtcw() {
 	ln -s -r /opt/iortcw-data/openurl.sh   $pkgdir/opt/realrtcw/openurl.sh
 
 	# Installing RealRTCW pk3
-	install -m 755 $srcdir/app/Main/z_realrtcw.pk3 \
+	install -m 644 $srcdir/app/Main/z_realrtcw.pk3 \
 		$pkgdir/opt/realrtcw/main
 
-	install -m 755 $srcdir/app/Main/z_trainingday.pk3 \
+	install -m 644 $srcdir/app/Main/z_trainingday.pk3 \
 		$pkgdir/opt/realrtcw/main
 
 	for i in $(find ../app/ -type d -name "RealRTCW_*"); do
@@ -100,7 +101,7 @@ package_realrtcw-hdpack() {
 	pkgdesc="RTCW Vanilla textures upscaled by AI. This is for those who prefer original style and atmosphere of the game."
 
 	# Installing RealRTCW HD pack pk3
-	install -D -m 755 $srcdir/app/Main/z_hdpack.pk3 \
+	install -D -m 644 $srcdir/app/Main/z_hdpack.pk3 \
 		$pkgdir/opt/realrtcw/main/z_hdpack.pk3
 }
 
@@ -109,12 +110,12 @@ package_realrtcw-splatterladder() {
 	conflicts=('realrtcw-hdpack')
 	replaces=('realrtcw-hdpack')
 	# Installing RealRTCW HD pack pk3
-	install -D -m 755 $srcdir/app/Main/z_Sl_RtCWHD.pk3 \
+	install -D -m 644 $srcdir/app/Main/z_Sl_RtCWHD.pk3 \
 		$pkgdir/opt/realrtcw/main/z_Sl_RtCWHD.pk3
 }
 
-md5sums=('a3eff16d3851e1bf5b391501afa4663e'
-	'031b4228e632a8f31143bf38e8ea7394'
-	'13fd3f1ac91dff9ef31d02158f9b58d9'
-	'7e3991e5f331662419ad1ed04e49366c'
-'5fcd49cca83f7bba0d75c6b4b5801f95')
+md5sums=('06f02af2682825e3692fec9dbe9a1085'
+         'b31a4f9d8b9716a74b7384714a478b1d'
+         '13fd3f1ac91dff9ef31d02158f9b58d9'
+         '7e3991e5f331662419ad1ed04e49366c'
+         '5fcd49cca83f7bba0d75c6b4b5801f95')
