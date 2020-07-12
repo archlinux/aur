@@ -12,10 +12,12 @@ bootstrap_install() {
     for eta in ./eve-transl${qtver}-??.tar.gz ;do
 	install -m 0644 "$eta" "$libdir"
     done
-    if [ -f "./dxvk-1.7.tar.gz" ] ;then
+    if [ -f "./dxvk-$dvver.tar.gz" ] ;then
 	install -d "$libdir/dxvk/"
-	tar xf ./dxvk-1.7.tar.gz -C $libdir/dxvk/ --strip-components=1 \
-	    dxvk-1.7/x32 dxvk-1.7/x64
+	echo "dxvk-$dvver" >"$libdir/dxvk/version"
+	chmod 0644 "$libdir/dxvk/version"
+	tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
+	    --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
     fi
     install -m 0644 "./evesetup.shlib" "$libdir"
     install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
@@ -120,14 +122,14 @@ build_lib() {
 }
 
 get_dxvk() {
-    if [ ! -r "./dxvk-1.7.tar.gz" ] ;then
-	printf "\nDownload dxvk-1.7.tar.gz...\n\n"
-	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v1.7/dxvk-1.7.tar.gz
+    if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
+	printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
+	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
     fi
-    rcsum="$(sha256sum ./dxvk-1.7.tar.gz| cut -d' ' -f1)"
+    rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
     if [ "$rcsum" != "$dvcsum" ] ;then
-	printf "\n\nWarning: Checksum dxvk-1.7.tar.gz mismatch, ignored.\n"
-	rm ./dxvk-1.7.tar.gz 2>/dev/null || true
+	printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
+	rm ./dxvk-$dvver.tar.gz 2>/dev/null || true
     fi
 }
 
@@ -165,6 +167,7 @@ docdir="$destdir/doc"
 qtver="5.11"
 elver=""
 elcsum=""
+dvver=""
 dvcsum=""
 rcsum=""
 key=""

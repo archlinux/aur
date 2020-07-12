@@ -9,6 +9,7 @@ version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
 arch=$(uname -m)
 
+dvver=$(grep doitsujin PKGBUILD | cut -d\" -f2 | sed 's,.*-,,;s,.tar.*,,' )
 dvcsum=""
 elcsum=""
 mscsum="ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2"
@@ -16,7 +17,7 @@ rcsum=""
 
 pshal=$(grep -n ^sha256sum PKGBUILD | cut -d: -f1)
 psrcl=$(grep -n ^source PKGBUILD | cut -d: -f1)
-pdvsl=$(grep -n dxvk-1.7.tar.gz\" PKGBUILD | cut -d: -f1)
+pdvsl=$(grep -n dxvk-$dvver.tar.gz\" PKGBUILD | cut -d: -f1)
 pelsl=$(grep -n evelauncher-\${pkgver}.tar.gz\" PKGBUILD | cut -d: -f1)
 pdfsl=$(expr $pdvsl - $psrcl)
 pofsl=$(expr $pelsl - $psrcl)
@@ -81,6 +82,7 @@ sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 cp ../setup.sh.in evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
 sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
+sed -i s,dvver=\"\",dvver=\"$dvver\", evesetup/setup.sh
 sed -i s,dvcsum=\"\",dvcsum=\"$dvcsum\", evesetup/setup.sh
 chmod a+x evesetup/setup.sh
 echo "done."
@@ -97,11 +99,11 @@ if [ -f "../evelauncher-$version.tar.gz" ] ;then
 else
     printf "\nEVE Launcher archive not found, will be downloaded during the setup process.\n"
 fi
-if [ -f "../dxvk-1.7.tar.gz" ] ;then
+if [ -f "../dxvk-$dvver.tar.gz" ] ;then
     printf "\nFound DXVK archive..."
-    rcsum="$(sha256sum ../dxvk-1.7.tar.gz | cut -d' ' -f1)"
+    rcsum="$(sha256sum ../dxvk-$dvver.tar.gz | cut -d' ' -f1)"
     if [ "$rcsum" = "$dvcsum" ] ;then
-	cp ../dxvk-1.7.tar.gz evesetup/ && \
+	cp ../dxvk-$dvver.tar.gz evesetup/ && \
 	echo "added."
     else
 	echo "skipped, checksum mismatch."

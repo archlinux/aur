@@ -1,15 +1,8 @@
 #!/bin/sh
 
-# evelauncher fixed values
-
 CONFDIR="$HOME/.config/CCP"
 EVECONF="$CONFDIR/EVE.conf"
-
-# default value if not set
-
 SHAREDIR="$HOME/.eve"
-
-# evesetup shared functions
 
 check_elv() {
 	ELBIN=$(getdate $LAUNCHER/evelauncher)
@@ -80,12 +73,21 @@ check_wine() {
 	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
 	exit 1
     fi
+    DXVKLIBDIR=$SETUPDIR/lib/dxvk
+    DXVKFILELIST="d3d10core d3d11 dxgi"
+    WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
+    W32SYSDIR=${WINSYSDIR%/*}/syswow64
     INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
     WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
     WINEDATE=$(getdate $WINECONF)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
-	desktop_msg "Preparing wine environment for EVE"
+	desktop_msg "Prepare wine environment for EVE"
+	for DXVKFILE in $DXVKFILELIST ;do
+	    rm $WINSYSDIR/$DXVKFILE.dll* 2>/dev/null || true
+	    rm $W32SYSDIR/$DXVKFILE.dll* 2>/dev/null || true
+	    sed -i /\"$DXVKFILE\"=\"native\"/d $WINEPREFIX/user.reg 2>/dev/null || true
+	done
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml=d" \
@@ -94,30 +96,24 @@ check_wine() {
 	    $WINE reg add \
 	    'HKCU\Software\Wine\FileOpenAssociations' \
 	    /v Enable /d N /f >/dev/null
+	if [ -d "$DXVKLIBDIR" ] ;then
+	    for DXVKFILE in $DXVKFILELIST ;do
+		cp $DXVKLIBDIR/x64/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll
+		if [ -d "$W32SYSDIR" ] ;then
+		    cp $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
+		fi
+		env WINEPREFIX=$WINEPREFIX \
+		    $WINE reg add \
+		    'HKCU\Software\Wine\DllOverrides' \
+		    /v $DXVKFILE /d native >/dev/null
+	    done
+	fi
     fi
     if [ "x$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "x0" ] ;then
 	env WINEPREFIX=$WINEPREFIX \
 	    $WINE reg delete \
 	    'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
 	    /v winemenubuilder /f >/dev/null
-    fi
-    DXVKLIBDIR=$SETUPDIR/lib/dxvk
-    WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
-    W32SYSDIR=${WINSYSDIR%/*}/syswow64
-    if [ -r "$DXVKLIBDIR" -a ! -r "$WINSYSDIR/d3d11.dll.old" ] ;then
-	desktop_msg "Setup DXVK in EVE's wine environment"
-	for DXVKFILE in d3d10core d3d11 dxgi ;do
-	    mv $WINSYSDIR/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll.old
-	    cp $DXVKLIBDIR/x64/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll
-	    if [ -d "$W32SYSDIR" ] ;then
-		mv $W32SYSDIR/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll.old
-		cp $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
-	    fi
-	    env WINEPREFIX=$WINEPREFIX \
-		$WINE reg add \
-		'HKCU\Software\Wine\DllOverrides' \
-		/v $DXVKFILE /d native >/dev/null
-	done
     fi
 }
 

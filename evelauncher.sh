@@ -24,5 +24,7 @@ if [ ! -r "$LAUNCHER/translations/qt_en.qm" ] ;then
     fi
 fi
 
+export DXVK_LOG_LEVEL=${DXVK_LOG_LEVEL:-error}
+
 cd $EVEDIR
 exec $LAUNCHER/evelauncher.sh

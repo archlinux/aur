@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=13
+pkgrel=14
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -85,6 +85,7 @@ package() {
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
         cp -r ${srcdir}/dxvk-1.7/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
         cp -r ${srcdir}/dxvk-1.7/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        echo "dxvk-1.7" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
         rm -f ${srcdir}/evelauncher/*.a ${srcdir}/evelauncher/*.la
@@ -115,9 +116,9 @@ package() {
 }
 
 sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
-            'b1faa042a96746fe80ea5d85a0c26e80b29353394897774f45b9e48e0639a1d8'
+            '9758ff906a3e849e94f6edeb0e0fdf59627f713bc1a9b6e06f171a3285d0a007'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            '721bd6e9d5232253241e8a9ba5692ad4400edfbd9f6ff21d0717eac9baaab8ad'
+            'dc3b9db6821e6889e4afeecb57758c73b5e1802437e9d99db98ac43ff77171e6'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             '9079fd9ed7967479b7a78643d43537c04f9275303cd713651d2481bf4c658653'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
@@ -128,8 +129,8 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            '0a39c2fce60e2464440cdcaf8288d98d6c79eb6f489da6598a1f709837f98cd1'
-            'f4a9e044d349e0363d5eeb1d308736c287bb1a0335476fab6f46d50a0a688429'
+            'e6a00ad0a14f66533dbbc2485388433440dd656e54a15ceeffe5a75d8d736158'
+            'c7108348a1d19e146bb19bf47da342d04ab4dcaf730ce59b2082535764eeb4f2'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
