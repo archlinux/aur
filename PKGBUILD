@@ -8,7 +8,7 @@ arch=('any')
 url="http://sollya.gforge.inria.fr/"
 license=('CeCILL-C')
 
-depends=('gmp' 'mpfr' 'mpfi' 'libxml2' 'libfplll')
+depends=('gmp' 'mpfr' 'mpfi' 'libxml2' 'fplll')
 optdepends=(
   'gnuplot: for using the plot and externalplot commands'
  )
