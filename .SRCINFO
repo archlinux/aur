@@ -1,6 +1,6 @@
 pkgbase = loopauditioneer-svn
 	pkgdesc = Software for loop and cue handling in .wav files
-	pkgver = r49
+	pkgver = r50
 	pkgrel = 1
 	url = http://loopauditioneer.sourceforge.net/
 	arch = i686

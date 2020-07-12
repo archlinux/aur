@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
-pkgver=r49
+pkgver=r50
 pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
@@ -39,14 +39,13 @@ build(){
 	cd ..
 	ln -sf rtaudio/.libs/librtaudio.a .
 	cd ../src
-	g++ -D__LINUX_ALSA__ -o LoopAuditioneer LoopAuditioneer.cpp MyFrame.cpp \
-	MyPanel.cpp CueMarkers.cpp LoopMarkers.cpp FileHandling.cpp MySound.cpp \
-	WaveformDrawer.cpp LoopParametersDialog.cpp BatchProcessDialog.cpp \
-	AutoLoopDialog.cpp AutoLooping.cpp PitchDialog.cpp CrossfadeDialog.cpp \
-	LoopOverlay.cpp FFT.cpp StopHarmonicDialog.cpp CutNFadeDialog.cpp \
-	MyListCtrl.cpp -I../lib-src/libsndfile/src -I../lib-src/rtaudio \
-	../lib-src/libsndfile.a ../lib-src/librtaudio.a -lasound -lpthread \
-	-lm `wx-config --cxxflags --unicode=yes --libs`
+	g++ -D__UNIX_JACK__ -D__LINUX_ALSA__ -o LoopAuditioneer LoopAuditioneer.cpp \
+	MyFrame.cpp MyPanel.cpp CueMarkers.cpp LoopMarkers.cpp FileHandling.cpp MySound.cpp \
+	WaveformDrawer.cpp LoopParametersDialog.cpp BatchProcessDialog.cpp AutoLoopDialog.cpp \
+	AutoLooping.cpp PitchDialog.cpp CrossfadeDialog.cpp LoopOverlay.cpp FFT.cpp \
+	StopHarmonicDialog.cpp CutNFadeDialog.cpp MyListCtrl.cpp ListInfoDialog.cpp \
+	-I../lib-src/libsndfile/src -I../lib-src/rtaudio ../lib-src/libsndfile.a \
+	../lib-src/librtaudio.a -ljack -lasound -lpthread -lm `wx-config --cxxflags --unicode=yes --libs`
 	strip --strip-all LoopAuditioneer
 
 }
