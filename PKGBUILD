@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=vrwm-git
-pkgver=r19.68d8a26
+pkgver=r26.fc106b0
 pkgrel=1
 pkgdesc='A virtual reality window manager for X11. Supports "unlimited" virtual monitors.'
 arch=('x86_64')
