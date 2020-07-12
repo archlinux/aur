@@ -3,10 +3,10 @@
 
 pkgname=elan
 pkgver=5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A video and audio annotation tool"
 arch=(any)
-url="https://tla.mpi.nl/tools/tla-tools/elan/"
+url="https://archive.mpi.nl/tla/elan"
 license=('GPL3')
 depends=('java-runtime')
 makedepends=('maven' 'jdk8-openjdk')
