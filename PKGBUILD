@@ -4,52 +4,30 @@
 pkgname=cataclysm-dda-ncurses
 pkgver=0.E.2
 _pkgver=0.E-2
-pkgrel=1
+pkgrel=3
 pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world, forked from the original. (ncurses only)"
 arch=('i686' 'x86_64')
 url="http://www.cataclysmdda.com/"
 license=('CCPL:by-sa')
-
-depends=('ncurses' 'lua' 'ncurses')
-makedepends=('gettext')
-optdepends=('lua51')
+depends=('ncurses' 'ncurses')
+makedepends=('gettext' 'astyle')
 conflicts=('cataclysm-dda' 'cataclysm-dda-git' 'cataclysm-dda-ncurses-bin')
 
 install='cataclysm-dda-ncurses.install'
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/${_pkgver}.tar.gz")
 sha256sums=('41546e877e2eee79c8492b3ec808ef53a4b9b208d788dac2b1a570ef143426e9')
 
-prepare() {
-  cd "$srcdir/Cataclysm-DDA-${_pkgver}"
-
-  #0.C cannot compile without warnings anymore
-  sed -i s/-Werror// Makefile
-  
-  #Ncurses update yay
-  sed -i s/ncursesw5-config/ncursesw6-config/ Makefile
-}
-
 build() {
   cd "$srcdir/Cataclysm-DDA-${_pkgver}"
 
-  make USE_HOME_DIR=1 RELEASE=1 ZLEVELS=1 LUA=1 LOCALIZE=1
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 ZLEVELS=1 LOCALIZE=1
 }
 
 package() {
   cd "$srcdir/Cataclysm-DDA-${_pkgver}"
 
-  local instdir=/usr/share/cataclysm-dda
-
-  install -dm755 "$pkgdir/${instdir}/"{data,gfx}
-  cp -r --no-preserve=ownership data gfx "$pkgdir/${instdir}/"
-
-
-  local instdir="/usr/share/cataclysm-dda"
-
-  install -dm755 "$pkgdir/${instdir}/"
-  install -Dm755 cataclysm cataclysm-launcher "$pkgdir/${instdir}/"
-  install -dm755 data "$pkgdir/${instdir}/"
-
+  make DESTDIR="$pkgdir" PREFIX="/usr" RELEASE=1 ZLEVELS=1 LANGUAGES="all" install
+  
   #The doc goes in /usr/share/doc  
   install -dm755 "$pkgdir/usr/share/doc/cataclysm-dda"
   unlink doc/JSON_LOADING_ORDER.md
@@ -61,9 +39,4 @@ package() {
 
   #Launcher symlinks
   install -dm755  "$pkgdir/usr/bin/"
-  ln -s "${instdir}/cataclysm-launcher" "$pkgdir/usr/bin/cataclysm"
-
-  # Localization
-  install -dm755 "$pkgdir/usr/share/locale"
-  LOCALE_DIR="$pkgdir/usr/share/locale" lang/compile_mo.sh
 }
