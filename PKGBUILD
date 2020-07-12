@@ -4,7 +4,7 @@
 
 pkgname=youtube-dl
 pkgver=2020.06.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
@@ -26,9 +26,15 @@ prepare() {
   sed -i 's|etc/fish/completions|share/fish/vendor_completions.d|' setup.py
 }
 
+build() {
+  cd ${pkgname}
+  export PYTHONHASHSEED=0
+  python setup.py build
+}
+
 package() {
   cd ${pkgname}
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
      "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
   install -Dm644 youtube-dl.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dl"
