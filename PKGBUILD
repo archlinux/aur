@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad (kdkasad@gmail.com)
 pkgname=chirp-daily-latest
-pkgver=20200622
-pkgrel=2
+pkgver=20200710
+pkgrel=1
 pkgdesc="Latest build of Chirp - a GUI tool for programming ham radios"
 arch=('any')
 url="https://chirp.danplanet.com/"
