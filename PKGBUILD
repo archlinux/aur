@@ -1,34 +1,46 @@
 # Maintainer: FennecTECH <fennectech@gmail.com>
 # Based uppon the script for radegast written by Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=radegast-git
-pkgver=master
-pkgrel=44
+pkgver=2.18.r125.g6ae2c835
+pkgrel=1
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
 license=('BSD')
 depends=('mono')
 conflicts=('radegast')
-makedepends=('dos2unix' 'recode' 'openssl-1.0')
-source=(radegast.desktop radegast)
-sha256sums=('8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
+provides=('radegast')
+makedepends=('dos2unix' 'recode' 'git' 'openssl-1.0')
+source=("$pkgname::git+https://github.com/radegastdev/radegast.git"
+        git+https://github.com/openmetaversefoundation/libopenmetaverse.git
+        radegast.desktop
+        radegast)
+sha256sums=('SKIP'
+            'SKIP'
+            '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 
-#pkgver() {
-#  cd "$pkgname"
-#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+prepare() {
+  cd $pkgname
+  git submodule init
+  git config submodule.libopenmetaverse.url "$srcdir"/libopenmetaverse
+  git submodule update
+}
+
+pkgver() {
+  cd $pkgname
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  git clone --recursive https://github.com/radegastdev/radegast.git radegast-git-master-src
-  cd "${srcdir}"/$pkgname-$pkgver-src
+  cd $pkgname
   find .. -name \*.sh -exec dos2unix '{}' \;
   bash runprebuild.sh
   xbuild Radegast.sln
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver-src/bin
+  cd $pkgname/bin
   find . -type d -print0 | xargs -0 chmod 755
   find . -type f -print0 | xargs -0 chmod 644
   install -dm755 "${pkgdir}"/usr/share/Radegast
