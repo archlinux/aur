@@ -1,10 +1,10 @@
-# Maintainer: Kristian <morguldir@protonmail.com
+# Maintainer: morguldir <morguldir@protonmail.com
 # Contributor: Ammon Smith <ammon.i.smith@gmail.com>
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2020.707.0
+pkgver=2020.712.0
 pkgrel=1
 
 dotnet_version=3.1
