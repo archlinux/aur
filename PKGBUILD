@@ -1,12 +1,14 @@
-# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=ttf-fixedsys-excelsior-linux
 pkgver=3.02.9
-pkgrel=1
+pkgrel=2
 pkgdesc="fixedsys font for linux, use only at 12pt"
 arch=('any')
 url="https://github.com/kika/fixedsys"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig')
 license=('custom')
 install="ttf-fixedsys-excelsior-linux.install"
 source=("${url}/releases/download/v${pkgver}/FSEX302.ttf"
