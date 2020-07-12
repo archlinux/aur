@@ -1,7 +1,7 @@
 # Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=godwrap
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 makedepends=('go')
 arch=('i686' 'x86_64')
 url="https://github.com/antifuchs/${pkgname}"
@@ -19,4 +19,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm 755 godwrap -t "${pkgdir}/usr/bin"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 755 -d "${pkgdir}/var/lib/godwrap"
 }
