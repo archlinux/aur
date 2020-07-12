@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ostinato
+Comment=Packet/Traffic Generator and Analyzer
+Icon=ostinato
+Exec=ostinato
+Terminal=false
+Categories=Application;Network;
+StartupWMClass=ostinato
