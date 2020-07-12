@@ -1,14 +1,15 @@
-# Maintainer: Jean Lucas <jean at 4ray dot co>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jean Lucas <jean at 4ray dot co>
 # Contributor: Antonio Rojas <arojas at archlinux dot org>
 
 pkgbase=python-webassets
 pkgname=('python2-webassets' 'python-webassets')
 _pipname=webassets
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Asset management application for Python web development"
 arch=('any')
-url="http://github.com/miracle2k/webassets"
+url="https://github.com/miracle2k/webassets"
 license=('BSD')
 makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://github.com/miracle2k/webassets/archive/$pkgver.tar.gz")
