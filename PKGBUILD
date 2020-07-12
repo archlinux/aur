@@ -1,5 +1,6 @@
-# Maintainer: David Dotson <dotsdl at gmail dot com>
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: David Dotson <dotsdl at gmail dot com>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Antergos Devs <dev@antergos.com>
 # Contributor: dmiranda at gmail dot com
 
@@ -8,13 +9,12 @@ _pkgname=Numix-Frost
 _light=Numix-Frost-Light
 _branch=numix-frost-light
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Numix GTK theme - Antergos Edition'
 arch=('any')
 license=('GPL3')
 groups=('themes' 'themes::gtk')
-#url='https://github.com/Antergos/Numix-Frost'
-url='http://numixproject.org/'
+url="https://numixproject.github.io/"
 depends=('gtk-engine-murrine' 'gtk3>=3.18' 'git')
 makedepends=('ruby-sass' 'npm' 'gulp')
 replaces=('gtk-theme-numix-frost')
