@@ -23,6 +23,7 @@ pkgbase = firefox-appmenu-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	provides = firefox=78.0.2
+	conflicts = firefox
 	noextract = firefox-appmenu-78.0.2-1-x86_64.pkg.tar.xz
 	options = !emptydirs
 	options = !makeflags
