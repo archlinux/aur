@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=speedtest-rs
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='Speedtest.net testing utility and crate'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('ff89d1e63e67282391e32b49a51fb70326d5351ae932ba35945ae473a6614c53d2af29cfd77fd4384ebdfa4515125b153d1238e4955ce1a284ac7fcf62786f1e')
+sha512sums=('3f581a23420e14f9cd4d04028ab2888681a96b5c6f01d2bbc711a8745377c5debfb9dfb6261d18483308327ed9fc9839d56727ac3d9146de4da7e5a864102ef4')
 
 build() {
   cd $pkgname-$pkgver
