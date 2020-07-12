@@ -1,8 +1,8 @@
 pkgbase = voxelquest
 	pkgdesc = Both an open source voxel game engine and a role playing game.
 	pkgver = 0.1
-	pkgrel = 1
-	url = http://www.voxelquest.com
+	pkgrel = 2
+	url = https://www.voxelquest.com/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -14,14 +14,14 @@ pkgbase = voxelquest
 	noextract = lzz_2_8_2_linux.zip
 	source = voxelquest::git+https://github.com/gavanw/vqisosmall.git#tag=0.1
 	source = voxelquest-resources.zip::https://github.com/gavanw/vqisosmall/releases/download/0.1/resources.zip
-	source = lzz_2_8_2_linux.zip::http://www.lazycplusplus.com/lzz_2_8_2_linux.zip
+	source = lzz_2_8_2_linux.zip::https://github.com/driedfruit/lzz/releases/download/v2.8.2/lzz_2_8_2_linux.zip
 	source = voxelquest.desktop
 	source = voxelquest.sh
-	md5sums = SKIP
-	md5sums = 3d8da23048f9a64d3f3ed7cdd7598d72
-	md5sums = 0aad7107b76ebf338a2e38e7604dbedb
-	md5sums = 2dbce2b10fc8225506b92b684e2abfa9
-	md5sums = 0d2311fcbd9fe065d1168123ade4dce0
+	sha512sums = SKIP
+	sha512sums = 468a5963fd6f028da19a5006eab4f2673941af6f92497af313e952cb6acef14242b23781be2b66114dffc692b8fb678182d6286ace746194eae94adc789116dc
+	sha512sums = 5d88dd0e22a7488990c17a7457f5389d0007154480531190f4fe58a63abc6e71c2dce1e163db43d141b4c5fac1f3a43b20872fb9caa0d8f9f29b31079e70e2e6
+	sha512sums = 5e7bd86831ccbd006d00ad02da790425067a5b29430a3cb961c42bc4de0881af582217d41ddcb51cb58223d16c5b8752b2db42d8b75c9360ec151eff0cb6ccfd
+	sha512sums = 04280dcddd238c35bd81c1fc74a199bc62e5eef26be0ed188dbb7fec2b2efac63b474d83413ec432afadc3851dad13b48fa2fde89bc30149d353f0cc9f85ef91
 
 pkgname = voxelquest
 
