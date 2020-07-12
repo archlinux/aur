@@ -5,9 +5,9 @@
 pkgname=librocket-git
 pkgver=1.2.2
 pkgrel=1
-pkgdesc="The HTML/CSS User Interface library"
+pkgdesc="The HTML/CSS User Interface library - No Longer Maintained Upstream; use librocket-asarium-git instead"
 arch=('i686' 'x86_64')
-url="http://librocket.com"
+url="https://github.com/libRocket/libRocket"
 license=('MIT')
 depends=('boost' 'freetype2' 'python2' 'libgl' 'glu')
 makedepends=('cmake' 'mesa')
