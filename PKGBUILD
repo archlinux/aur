@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-json-validator'
-pkgver='3.24'
+pkgver='4.01'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module JSON::Validator: Validate data against a JSON schema"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.10' 'perl-mojolicious>=7.28' 'perl-yaml-libyaml')
+depends=('perl>=5.10.1' 'perl-mojolicious>=7.28' 'perl-yaml-libyaml')
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/JSON-Validator'
 source=("http://search.cpan.org/CPAN/authors/id/J/JH/JHTHORSEN/JSON-Validator-$pkgver.tar.gz")
-md5sums=('31418a1e43d9bc486e7740656feaf09c')
-sha512sums=('4145f72e317c50fd896fe35c73391cce072cdf4b161f32075b4d1f8aa8c30df38b824974ea41fb60c80a7bfaf132a4824b96c2bb20507eef7a0b1210b4b2ba5b')
+md5sums=('472f26279d84bf2a5d3ab796585a67fe')
+sha512sums=('270d17e5f77300c2107a453d0939cbaf536b18f14210661fadf08df957d67d4a4d7bc3d3cb4d6b0b26495cd89258d9d0b7e07929194270b0eca3c75c96593e62')
 _distdir="JSON-Validator-$pkgver"
 
 build() {
