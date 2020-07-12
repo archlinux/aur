@@ -1,6 +1,6 @@
 # Maintainer: Brendan Szymanski <bscubed@pm.me>
 pkgname=devtest
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A tool for AUR package maintainers to easily manage and test multiple packages"
 arch=('any')
