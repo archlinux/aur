@@ -8,7 +8,7 @@ _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
 arch=('i686' 'x86_64')
-url="http://www.postgresql.org/"
+url="https://www.postgresql.org/"
 license=('custom:PostgreSQL')
 depends=("postgresql-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam')
 makedepends=('krb5' 'python2' 'perl' 'tcl>=8.6.0')
