@@ -1,10 +1,10 @@
-#base on aur/nginx-libressl
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 _pkgname="nginx"
 pkgname=nginx-mainline-libressl
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
-_libresslver=3.1.2
+_libresslver=3.1.3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with LibreSSL'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -29,9 +29,9 @@ service
 logrotate)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 		'A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
-sha512sums=('3240d5dc59877f9d6a95c8779240675cec9290df079b9d52c06147e58900f2e060e768729669ffaf9a2a90bb9abbe8ab7fba24ff65d45fec9eeb3b6733b65f30'
+sha512sums=('e5448e3fd84c53e96db27329e41baa48c21be4169436eda3704012d0e5de15d938f6aa64dc07cb50002c2173b00fb88db4b1a9061d5f47fa7011ffd524a8ba23'
             'SKIP'
-            'b024c5661777daa73feff7085ce7be76a2e766d2f3cb5ca35c208c471e5651a365252758ca36782e20cdfb2bc8171919a08ad592420878a5c95fbe646f5288c8'
+            'f9f497fe5d09b8b762175da038a8e67d9d2567462fefc49e434d306a3071ba3a4d369c89143d9d90e3bbcc7b9ba051c9c923a0dfc41d856edc08ae59fa727ee8'
             'SKIP'
             '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
