@@ -1,31 +1,25 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
-pkgname=open-fprintd-git
-_pkgname=open-fprintd
-pkgver=r13.36414fd
+pkgname=open-fprintd
+pkgver=0.4
 pkgrel=1
 pkgdesc="Fprintd replacement which allows you to have your own backend as a standalone service"
 arch=(any)
 license=(MIT)
 depends=(python fprintd-clients)
 makedepends=(python-setuptools)
-conflicts=($_pkgname)
-provides=($_pkgname)
-url="https://github.com/uunicorn/${_pkgname}"
-source=("git+${url}.git#branch=master")
-md5sums=('SKIP')
-
-pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+conflicts=($pkgname)
+provides=($pkgname)
+url="https://github.com/uunicorn/${pkgname}"
+source=("${url}/archive/${pkgver}.tar.gz")
+md5sums=('c9f29fbfb0396f93b6a1013e7b78d283')
 
 build() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$pkgname
   python setup.py build
 }
 
 package() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$pkgname
   python setup.py install --prefix=/usr --root $pkgdir || return 1
 }
 

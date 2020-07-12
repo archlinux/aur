@@ -2,3 +2,4 @@ open-fprintd/
 pkg/
 src/
 *.xz
+*.gz
