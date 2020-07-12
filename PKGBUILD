@@ -1,5 +1,5 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
@@ -12,7 +12,7 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.18
+pkgver=1.12.20
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -24,20 +24,19 @@ groups=('selinux')
 depends=('systemd-libs-selinux>=242.84-2' expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive audit libselinux)
 _commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36  # tags/dbus-1.12.18^0
-source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
-        dbus-reload.hook)
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-$pkgver"
+        dbus-reload.hook no-fatal-warnings.diff)
 sha256sums=('SKIP'
-            'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3')
-validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
-              '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
-
-pkgver() {
-  cd dbus
-  git describe --tags | sed 's/^dbus-//;s/-/+/g'
-}
+            'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3'
+            '6958eeec07557b92a28419eb1702331ee2f0a6fd17285e37dfb6130b9fa4cf6e')
+validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 prepare() {
   cd dbus
+
+  # Allow us to enable checks without them being fatal
+  patch -Np1 -i ../no-fatal-warnings.diff
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -55,12 +54,13 @@ build() {
     --with-system-socket=/run/dbus/system_bus_socket \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --enable-inotify \
+    --enable-libaudit \
     --enable-systemd \
     --enable-user-session \
+    --enable-xml-docs \
+    --enable-doxygen-docs \
+    --enable-ducktype-docs \
     --disable-static \
-    --disable-verbose-mode \
-    --disable-asserts \
-    --disable-checks \
     --without-x \
     --enable-selinux --enable-libaudit
   make
