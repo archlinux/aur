@@ -1,6 +1,6 @@
 pkgbase = perl-test-strict
 	pkgdesc = Perl/CPAN Module Test::Strict: Check syntax, presence of use strict; and test coverage
-	pkgver = 0.45
+	pkgver = 0.52
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-Strict
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = perl-test-strict
 	depends = perl-io-stringy
 	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/Test-Strict-0.45.tar.gz
-	md5sums = 9f25177c42e6d60bfa742543c7ffc630
-	sha512sums = 62645350b29edd962d6ba2d3734fec7626c9cdb1610f3c464c3bd9918cfd3b2036e6fef8773c9a528109864fe8741081a62e1c1744e16f9fbd5c8a75035ab4d0
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/Test-Strict-0.52.tar.gz
+	md5sums = d0bacf3430620aa6a673309d49752dd1
+	sha512sums = 2d2e27f8fa5156bae4b54c2a9da5f5bd37c820ca9f9594f51c0915695f74f16880445d8a47de5a86d0277482b8234d4ab8e1c8a7ba00871c950268be40f543b5
 
 pkgname = perl-test-strict
 
