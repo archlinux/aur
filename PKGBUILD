@@ -25,12 +25,12 @@ depends+=('aspell')
 # Required for Xinerama (requires editing config.mk to disable)
 depends+=('libxinerama')
 
-makedepends=('rust' 'git' 'clang' 'sh')
+makedepends=('rust' 'git' 'clang' 'sh' 'make' 'diffutils')
 
 _pkgname=dmenu
 _pkgbase=$_pkgname-rs
 pkgname=$_pkgbase-git
-pkgver=5.3.1.r249.dd219cc
+pkgver=5.3.1.r252.7763a5f
 pkgrel=1
 pkgdesc="The development branch of dmenu-rs. Likely has unstable features."
 arch=('i686' 'x86_64')
