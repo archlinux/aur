@@ -1,6 +1,6 @@
 pkgbase = r-desctools
 	pkgdesc = Tools for Descriptive Statistics
-	pkgver = 0.99.36
+	pkgver = 0.99.37
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DescTools
 	arch = i686
@@ -13,11 +13,12 @@ pkgbase = r-desctools
 	depends = r-expm
 	depends = r-rcpp>=0.12.10
 	depends = r-rstudioapi
+	depends = r-exact
 	depends = r-bh
 	optdepends = r-vgam
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/DescTools_0.99.36.tar.gz
-	md5sums = 63fbc033f0be7f6eacfe07f899e731d7
+	source = https://cran.r-project.org/src/contrib/DescTools_0.99.37.tar.gz
+	md5sums = 0b7d4624069ab10a0ad14d4b7a8095cf
 
 pkgname = r-desctools
 
