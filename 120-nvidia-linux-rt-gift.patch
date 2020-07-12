@@ -1,6 +1,5 @@
-diff -Naurp a/kernel/dkms.conf b/kernel/dkms.conf
---- a/kernel/dkms.conf	2019-06-08 20:12:02.000000000 +0000
-+++ b/kernel/dkms.conf	2019-06-08 20:14:45.000000000 +0000
+--- a/kernel/dkms.conf
++++ b/kernel/dkms.conf
 @@ -6,7 +6,7 @@ AUTOINSTALL="yes"
  # this will cause the kernel module build to infer that it was invoked via
  # Kbuild directly instead of DKMS. The dkms(8) manual page recommends quoting
