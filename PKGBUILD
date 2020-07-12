@@ -4,13 +4,13 @@
 _pkgnamefmt=LibreOfficeDev
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-beta-bin
-_LOver=7.0.0.0.beta1
+_LOver=7.0.0.0.beta2
 pkgver=7.0.0.0
 _basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('LGPL3')
-url="http://www.libreoffice.org/"
+url="https://www.libreoffice.org/"
 pkgdesc="LibreOffice development branch"
 depends=('curl>=7.20.0' 'hunspell>=1.2.8' 'python>=3.5' 'libwpd>=0.9.2' 'libwps'
          'neon>=0.28.6' 'pango' 'nspr' 'libjpeg' 'libxrandr' 'libgl' 'dbus-glib'
@@ -37,7 +37,7 @@ optdepends=('java-runtime:          adds java support'
             'kdelibs:               for KDE desktop integration')
 provides=('libreoffice' 'libreoffice-en-US')
 source_x86_64=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
-sha256sums_x86_64=('db2f56a8a33ef9e1db2968a9cbf0c3ef3f47a644707e138a903d48b153409824')
+sha256sums_x86_64=('cde126463c17c96b9301765958dea98c1890e3bd54fed9de2caf984c9f5e2a94')
 
 package() {
 	cd ${_pkgnamefmt}_${_LOver}*/RPMS
