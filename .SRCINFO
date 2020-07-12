@@ -1,6 +1,6 @@
 pkgbase = searx-git
 	pkgdesc = A privacy-respecting, hackable metasearch engine (python(3) based)
-	pkgver = 0.17.0+r6+gf9faafa8
+	pkgver = 0.17.0+r8+gc41db5f1
 	pkgrel = 1
 	url = https://asciimoo.github.io/searx/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = searx-git
 	depends = python-pysocks
 	conflicts = searx
 	backup = etc/searx/settings.yml
-	backup = etc/uwsgi/searx.ini
+	backup = etc/uwsgi/vassals/searx.ini
 	source = git+https://github.com/asciimoo/searx
 	source = searx.ini
 	source = searx.sysusers

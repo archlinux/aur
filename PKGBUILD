@@ -1,7 +1,7 @@
 # Maintainer: HLFH <arch@dhautefeuille.eu>
 
 pkgname=searx-git
-pkgver=0.17.0+r6+gf9faafa8
+pkgver=0.17.0+r8+gc41db5f1
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
         'python-requests'
         'python-pysocks')
 conflicts=('searx' )
-backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
+backup=('etc/searx/settings.yml' 'etc/uwsgi/vassals/searx.ini')
 source=(git+https://github.com/asciimoo/searx
         'searx.ini'
         'searx.sysusers')
@@ -59,5 +59,5 @@ package() {
   ln -s /etc/searx/settings.yml "${pkgdir}${_site_packages}/searx/settings.yml"
 
   install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
-  install -Dm644 "${srcdir}/searx.ini" "${pkgdir}/etc/uwsgi/searx.ini"
+  install -Dm644 "${srcdir}/searx.ini" "${pkgdir}/etc/uwsgi/vassals/searx.ini"
 }
