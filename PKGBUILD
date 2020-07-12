@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.13951
+pkgver=rev.13954
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ cd ..
 pwd
 
 mkdir -p build
-patch -Np1 -i ../mesh_tool_install.patch
+#patch -Np1 -i ../mesh_tool_install.patch
 }
 
 build(){
@@ -45,8 +45,11 @@ build(){
 }
 
 package() {
-mkdir -p "${pkgdir}"/usr/bin
-  cd build
-  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
-#make -C build DESTDIR="${pkgdir}" install
+#Hopefully we are done horsing around with this now. 
+#mkdir -p "${pkgdir}"/usr/bin
+#  cd build
+#  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
+#
+#This should be the only way to install
+make -C build DESTDIR="${pkgdir}" install
 }
