@@ -5,18 +5,20 @@ pkgname=aomp-amdgpu
 pkgdesc='Clang/LLVM based compiler with added support for the OpenMP API on Radeon GPUs'
 _pkgver=11.6-2
 pkgver=11.6.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/ROCm-Developer-Tools/aomp'
 license=('Apache')
 depends=(z3 numactl pciutils libelf libffi)
-makedepends=(git cmake python)
+makedepends=(git cmake python mesa)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rel_$_pkgver.tar.gz"
         'disable_ocl_tests.patch'
-        'adjust_rpath.patch')
+        'adjust_rpath.patch'
+	'remove_gcc_logic.patch')
 sha256sums=('e4623ecfbe743676d068b17b113aadce4524a79be31b0540a216f9597cbd9fe5'
             'bf3aab8fc2c828554ba76ab1876179130704f1c35906228fcf7e94239f5e4170'
-            '94c670cd991c95a7b6312feb77d32a11c1ac1b839218bcd251042563b7af1a44')
+            '94c670cd991c95a7b6312feb77d32a11c1ac1b839218bcd251042563b7af1a44'
+	    'd1040410c7cebc109d2905722e959d4e9d3e4f122fe0a4ae72e3f3d8e5b9a722')
 options=(staticlibs !strip)
 _dirname="$(basename "$url")-$(basename ${source[0]} .tar.gz)"
 
@@ -32,6 +34,7 @@ prepare() {
 
     cd "$srcdir/aomp"
     patch -Np1 -i "$srcdir/adjust_rpath.patch"
+    patch -p1  -i "$srcdir/remove_gcc_logic.patch"
 }
 
 package() {
