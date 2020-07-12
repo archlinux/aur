@@ -5,10 +5,10 @@
 _pipname=flask-autoindex
 pkgname=python-flask-autoindex
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Flask-AutoIndex generates an index page for your Flask application automatically"
 arch=(any)
-url="https://packages.python.org/Flask-AutoIndex/"
+url="https://pypi.org/project/Flask-AutoIndex/"
 license=(BSD)
 depends=(python-flask-silk python-future)
 makedepends=(python-setuptools)

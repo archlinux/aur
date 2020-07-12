@@ -1,8 +1,8 @@
 pkgbase = python-flask-autoindex
 	pkgdesc = Flask-AutoIndex generates an index page for your Flask application automatically
 	pkgver = 0.6.6
-	pkgrel = 1
-	url = https://packages.python.org/Flask-AutoIndex/
+	pkgrel = 2
+	url = https://pypi.org/project/Flask-AutoIndex/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
