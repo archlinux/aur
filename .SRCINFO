@@ -1,8 +1,8 @@
 pkgbase = jobber-bin
 	pkgdesc = An alternative to cron, with sophisticated status-reporting and error-handling
 	pkgver = 1.4.4
-	pkgrel = 1
-	url = http://dshearer.github.io/jobber/
+	pkgrel = 2
+	url = https://dshearer.github.io/jobber/
 	arch = x86_64
 	license = MIT
 	provides = jobber
