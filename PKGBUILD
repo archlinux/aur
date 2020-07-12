@@ -2,7 +2,7 @@
 # Contributor: Mathieu Westphal <mathieu.westphal@gmail.com>
 
 pkgname=python2-spidev
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Python2 bindings for Linux SPI access through spidev"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python2-setuptools')
 makedepends=('git')
 source=("https://pypi.python.org/packages/source/s/spidev/spidev-${pkgver}.tar.gz")
-sha256sums=('4314e52f573d95233c907f307558893313a8a606e197e77bb711526b0e179e80')
+sha256sums=('8a7f5c289f161ea2ac4697fa8a10918232c990678dd0053084b3c43b1363910d')
 
 build() {
   cd "$srcdir/spidev-${pkgver}"

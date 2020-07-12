@@ -1,6 +1,6 @@
 pkgbase = python2-spidev
 	pkgdesc = Python2 bindings for Linux SPI access through spidev
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://pypi.org/project/spidev/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = python2-spidev
 	license = GPL
 	makedepends = git
 	depends = python2-setuptools
-	source = https://pypi.python.org/packages/source/s/spidev/spidev-3.4.tar.gz
-	sha256sums = 4314e52f573d95233c907f307558893313a8a606e197e77bb711526b0e179e80
+	source = https://pypi.python.org/packages/source/s/spidev/spidev-3.5.tar.gz
+	sha256sums = 8a7f5c289f161ea2ac4697fa8a10918232c990678dd0053084b3c43b1363910d
 
 pkgname = python2-spidev
 
