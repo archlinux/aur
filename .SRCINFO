@@ -1,7 +1,7 @@
 pkgbase = fprintd-clients-git
 	pkgdesc = Fprintd without the daemon
 	pkgver = r472.ba60533
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/uunicorn/fprintd
 	arch = x86_64
 	license = GPL

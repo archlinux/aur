@@ -2,7 +2,7 @@
 pkgname=fprintd-clients-git
 _pkgname=fprintd-clients
 pkgver=r472.ba60533
-pkgrel=1
+pkgrel=2
 pkgdesc='Fprintd without the daemon'
 arch=(x86_64)
 license=(GPL)
@@ -33,7 +33,8 @@ build() {
 }
 
 check() {
-  meson test -C build
+  # Disable PAM tests
+  meson test --no-suite PAM -C build
 }
 
 package() {
