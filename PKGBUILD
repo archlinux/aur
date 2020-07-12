@@ -1,9 +1,9 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=buf
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="A new way of working with Protocol Buffers"
-arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
+arch=("any")
 url="https://buf.build"
 license=('Apache')
 depends=('protobuf')
@@ -11,14 +11,18 @@ makedepends=('go')
 source=("https://github.com/bufbuild/buf/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd ${pkgname}-${pkgver}
-  go build -trimpath -mod=readonly -modcacherw -o . ./cmd/{buf,protoc-gen-buf-check-lint,protoc-gen-buf-check-breaking}
+	cd ${pkgname}-${pkgver}
+	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -o . ./cmd/{buf,protoc-gen-buf-check-lint,protoc-gen-buf-check-breaking}
+	./buf bash-completion >completion.bash
+	./buf zsh-completion >completion.zsh
 }
 
 package() {
-  install -Dm755 "${pkgname}-${pkgver}/buf" "${pkgdir}/usr/bin/buf"
-  install -Dm755 "${pkgname}-${pkgver}/protoc-gen-buf-check-lint" "${pkgdir}/usr/bin/protoc-gen-buf-check-lint"
-  install -Dm755 "${pkgname}-${pkgver}/protoc-gen-buf-check-breaking" "${pkgdir}/usr/bin/protoc-gen-buf-check-breaking"
+	install -Dm755 "${pkgname}-${pkgver}/buf" "${pkgdir}/usr/bin/buf"
+	install -Dm755 "${pkgname}-${pkgver}/protoc-gen-buf-check-lint" "${pkgdir}/usr/bin/protoc-gen-buf-check-lint"
+	install -Dm755 "${pkgname}-${pkgver}/protoc-gen-buf-check-breaking" "${pkgdir}/usr/bin/protoc-gen-buf-check-breaking"
+	install -Dm644 "${pkgname}-${pkgver}/completion.bash" "${pkgdir}/etc/bash_completion.d/buf"
+	install -Dm644 "${pkgname}-${pkgver}/completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_buf"
 }
 
-sha256sums=('2cda10542cc0a23e85f4078ebb9ff02a5635a3e573ea6023ce9b37c0e97a1994')
+sha256sums=('41232fc472e19dd728b066f5f0a02a222bebcf6426d24f7b8e90f6939f3deb40')
