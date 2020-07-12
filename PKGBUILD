@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=thruk
-_pkgver=2.30-3
+_pkgver=2.34-3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
@@ -12,7 +12,8 @@ depends=('perl' 'apache' 'mod_fcgid' 'perl-plack' 'perl-json-xs'
          'perl-date-calc' 'perl-file-slurp' 'perl-log-log4perl'
          'perl-log-dispatch' 'perl-fcgi' 'perl-uri' 'perl-html-parser'
          'perl-template-toolkit' 'perl-mime-lite' 'perl-gd'
-         'perl-lwp-protocol-https')
+         'perl-lwp-protocol-https' 'perl-cpanel-json-xs'
+         'perl-crypt-rijndael')
 conflicts=('naemon-thruk')
 replaces=('naemon-thruk')
 backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
@@ -20,7 +21,7 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
         'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$_pkgver/src/$pkgname-$_pkgver.tar.gz)
-md5sums=('db908f8331e5023ffb318ee80ab88442')
+md5sums=('e3d464b61c3bf69e07511bf40b73c56b')
 
 build() {
   cd $pkgname-$_pkgver
