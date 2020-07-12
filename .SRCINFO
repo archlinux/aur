@@ -1,0 +1,25 @@
+pkgbase = python-validity
+	pkgdesc = Validity fingerprint sensor driver
+	pkgver = r101.1c98a45
+	pkgrel = 1
+	url = https://github.com/uunicorn/python-validity
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyusb
+	depends = python-cryptography
+	depends = python-dbus
+	depends = python-gobject
+	depends = innoextract
+	depends = open-fprintd
+	depends = fprintd-clients
+	provides = python-validity
+	conflicts = python-validity
+	source = git+https://github.com/uunicorn/python-validity.git#branch=master
+	source = python-validity.service
+	md5sums = SKIP
+	md5sums = 41bda3076126b2465eb3cc6dafe14385
+
+pkgname = python-validity
+
