@@ -1,11 +1,12 @@
 pkgbase = plasma5-applets-simplemenu-git
 	pkgdesc = Simplified menu for your Plasma Desktop
 	pkgver = r91.1f0a9e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma/plasma-simplemenu
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	provides = plasma5-applets-simplemenu
 	conflicts = plasma5-applets-simplemenu

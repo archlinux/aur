@@ -3,13 +3,13 @@
 pkgname=plasma5-applets-simplemenu-git
 _gitname=plasma-simplemenu
 pkgver=r91.1f0a9e3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified menu for your Plasma Desktop"
 arch=('any')
 url="https://invent.kde.org/plasma/plasma-simplemenu"
 license=('GPL3')
 depends=('plasma-workspace')
-makedepends=('git')
+makedepends=('git' 'extra-cmake-modules')
 provides=('plasma5-applets-simplemenu')
 conflicts=('plasma5-applets-simplemenu')
 source=("git+${url}.git")
