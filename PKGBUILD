@@ -4,16 +4,15 @@
 
 pkgname='perl-html-html5-entities'
 pkgver='0.004'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="drop-in replacement for HTML::Entities"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-HTML5-Entities'
-source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/HTML-HTML5-Entities-${pkgver}.tar.gz")
-md5sums=('249cadb36f07432ff6d1b24d3a991bbd')
+url='https://search.cpan.org/dist/HTML-HTML5-Entities'
+source=("https://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/HTML-HTML5-Entities-${pkgver}.tar.gz")
 sha512sums=('5c6b868bf90377d6516bc12bd5be93833abc418a9fd3f83065d0f3c42fb28ee4e9dc28553e4397a7f4e5a5354e37654c299beaf639fccb07b948b1ccc4919512')
 _distdir="HTML-HTML5-Entities-${pkgver}"
 
