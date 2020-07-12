@@ -7,8 +7,8 @@
 # Zach Ward & Beth Randall   They have been there from my best day to my worst
 # And everyone else who I did'nt mention by name    You are all important to me
 pkgname=radegast-ng
-pkgver=2.32.137
-pkgrel=1.4
+pkgver=2.28.187
+pkgrel=1.3
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
@@ -18,7 +18,7 @@ conflicts=('radegast' 'radegast-git')
 makedepends=('dos2unix' 'recode')
 source=(https://bitbucket.org/cinderblocks/radegast/downloads/Radegast-${pkgver}.tbz
         radegast.desktop radegast)
-sha256sums=('65ebfc75101c99fd1c8ebe13e5b88284c400353730202996341e02ec898dd666'
+sha256sums=('f24c05b423fd7529d82911476495c31fb17afcc4e024e771cd5449757d9a75c4'
             '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 package() {
