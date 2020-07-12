@@ -1,20 +1,21 @@
-# Maintainer: Idares <idares at seznam dot cz>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Idares <idares at seznam dot cz>
 # Contributor: Enrico Morelli <morelli@cerm.unifi.it>
 # Contributor: Vadym Abramchuk <abramm@gmail.com>
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-agent-2.4
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.zabbix.com"
+url="https://www.zabbix.com"
 license=('GPL')
 backup=('etc/zabbix/zabbix_agent.conf'
         'etc/zabbix/zabbix_agentd.conf'
 		)
 install="zabbix-agent.install"
-source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
         "zabbix-agent.install"
 		"zabbix-agentd.service"
 		"zabbix-agentd.tmpfiles"
