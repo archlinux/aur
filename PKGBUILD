@@ -1,12 +1,13 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
+
 pkgname=gogh
 pkgver=0.1.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Bitmap graphics editor for pressure-sensitive input devices"
 arch=('any')
-url="http://code.google.com/p/gogh/"
+url="https://code.google.com/archive/p/gogh/"
 license=('GPL')
 depends=('pygtk' 'gnome-python' 'pyxml')
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gogh/Gogh-${pkgver}.tar.gz")
