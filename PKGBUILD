@@ -4,12 +4,13 @@
 
 pkgname=openttd-jgrpp
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
-depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'tar' 'fluidsynth')
+makedepends=('tar' 'cmake')
+depends=('libpng' 'sdl2' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz' 'fluidsynth')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
 sha256sums=('c39f9c7e19eaec34c896265cb74604403a8f9a94e77c0eb714199e4b083cf44a')
 
@@ -36,9 +37,7 @@ build() {
 package() {
   cd "${_dirname}-${pkgver}/build"
   
-  #mkdir -p ${pkgdir}/usr/share/${pkgname}/{data,game}
-
-  make install DESTDIR="$pkgdir"
+  make install DESTDIR="${pkgdir}"
   
   ## install icons
   for _res in 16 32 64 128 256; do
