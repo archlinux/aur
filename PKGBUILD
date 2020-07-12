@@ -18,7 +18,7 @@ optdepends=('xdg-desktop-portal: for native file dialogs, do not forget to insta
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-dynamic-bin')
 provides=('kotatogram-desktop')
 
-source=($pkgname-$pkgver-$pkgrel::$url/releases/download/k$pkgver/$pkgver.tar.xz
+source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver.tar.xz
         https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
         icon16-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon16.png
         icon32-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon32.png
