@@ -20,8 +20,9 @@ sha512sums=('c1e93c4e75658cc24bef6156ab8e207e74f0dd998403cab073ed38b7198ac74ea8d
 prepare() {
   cd $pkgname-$pkgver
   gendesk -f -n --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories="AudioVideo"
-  mv ../apone-chipmachine-v1.4b3 apone
-  patch -p0 -i ../apone-chipmachine-v1.4b3-datadir.patch
+  ln -sf ../apone-chipmachine-v1.4b3 apone
+  cd apone
+  patch -Np1 -i ../apone-chipmachine-v1.4b3-datadir.patch
 }
 
 build() {
