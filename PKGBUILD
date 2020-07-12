@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=vrwm-git
-pkgver=r26.fc106b0
+pkgver=r27.e8f3a80
 pkgrel=1
 pkgdesc='A virtual reality window manager for X11. Supports "unlimited" virtual monitors.'
 arch=('x86_64')
@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$srcdir/vrwm"
   install -Dm755 "sibs-build/$(sibs platform)/release/vrwm" "$pkgdir/usr/bin/vrwm"
+  install -Dm644 images/arrow.png "$pkgdir/usr/share/vrwm/images/arrow.png"
 }
