@@ -1,19 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
-pkgver=3.95beta
+pkgver=3.97beta
 pkgrel=1
 pkgdesc="A battery optimization application for portable devices"
-arch=('any')
+arch=('x86_64')
 url="http://slimbook.es"
 license=('CC BY-NC-ND 3.0')
 depends=('python-gobject' 'python-cairo' 'python-pillow' 'python-dbus' 'libappindicator-gtk3'
-         'gdk-pixbuf2' 'libnotify' 'tlp-rdw' 'cron' 'dmidecode' 'xorg-xdpyinfo')
+         'gobject-introspection' 'libnotify' 'tlp-rdw' 'cron' 'dmidecode' 'xorg-xdpyinfo')
 optdepends=('arch-prime-git: for hybrid graphics switching'
             'gnome-shell-extension-appindicator: for tray icon on GNOME')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('f4afdff142178ab997f6edc4a074c54c186769cef7527fe7093e8d1ef63d72d6')
+sha256sums=('8eda64d2207b01a8dd1f89b8234711c5ceeda516e0ead1de5dae1e5cb709bf13')
 
 package() {
     tar xf data.tar.xz -C "$pkgdir"

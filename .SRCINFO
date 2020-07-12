@@ -1,17 +1,17 @@
 pkgbase = slimbookbattery
 	pkgdesc = A battery optimization application for portable devices
-	pkgver = 3.95beta
+	pkgver = 3.97beta
 	pkgrel = 1
 	url = http://slimbook.es
 	install = slimbookbattery.install
-	arch = any
+	arch = x86_64
 	license = CC BY-NC-ND 3.0
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-pillow
 	depends = python-dbus
 	depends = libappindicator-gtk3
-	depends = gdk-pixbuf2
+	depends = gobject-introspection
 	depends = libnotify
 	depends = tlp-rdw
 	depends = cron
@@ -19,8 +19,8 @@ pkgbase = slimbookbattery
 	depends = xorg-xdpyinfo
 	optdepends = arch-prime-git: for hybrid graphics switching
 	optdepends = gnome-shell-extension-appindicator: for tray icon on GNOME
-	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookbattery_3.95beta_all.deb
-	sha256sums = f4afdff142178ab997f6edc4a074c54c186769cef7527fe7093e8d1ef63d72d6
+	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookbattery_3.97beta_all.deb
+	sha256sums = 8eda64d2207b01a8dd1f89b8234711c5ceeda516e0ead1de5dae1e5cb709bf13
 
 pkgname = slimbookbattery
 
