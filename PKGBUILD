@@ -15,7 +15,7 @@ license=('custom:OFL' 'GPL' 'custom:GPL+FE')
 makedepends=('extra-cmake-modules' 'fontforge' 'qt5-base')
 provides=('ttf-font')
 options=('!emptydirs')
-source=("https://invent.kde.org/unmaintained/oxygen-fonts/-/archive/v5.4.3/oxygen-fonts-v${pkgver}.tar.bz2")
+source=("https://invent.kde.org/unmaintained/oxygen-fonts/-/archive/v${pkgver}/oxygen-fonts-v${pkgver}.tar.bz2")
 sha256sums=('d44d1d3b7aa3390fe2052ea6c7c5028fe00548835801b8dc659b51e6e2484d47')
 
 prepare() {
