@@ -1,7 +1,7 @@
 pkgbase = slimbookbattery
 	pkgdesc = A battery optimization application for portable devices
 	pkgver = 3.97beta
-	pkgrel = 1
+	pkgrel = 2
 	url = http://slimbook.es
 	install = slimbookbattery.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = slimbookbattery
 	depends = cron
 	depends = dmidecode
 	depends = xorg-xdpyinfo
-	optdepends = arch-prime-git: for hybrid graphics switching
+	optdepends = nvidia-prime: for hybrid graphics switching
 	optdepends = gnome-shell-extension-appindicator: for tray icon on GNOME
 	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookbattery_3.97beta_all.deb
 	sha256sums = 8eda64d2207b01a8dd1f89b8234711c5ceeda516e0ead1de5dae1e5cb709bf13

@@ -2,14 +2,14 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=3.97beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A battery optimization application for portable devices"
 arch=('x86_64')
 url="http://slimbook.es"
 license=('CC BY-NC-ND 3.0')
 depends=('python-gobject' 'python-cairo' 'python-pillow' 'python-dbus' 'libappindicator-gtk3'
          'gobject-introspection' 'libnotify' 'tlp-rdw' 'cron' 'dmidecode' 'xorg-xdpyinfo')
-optdepends=('arch-prime-git: for hybrid graphics switching'
+optdepends=('nvidia-prime: for hybrid graphics switching'
             'gnome-shell-extension-appindicator: for tray icon on GNOME')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
