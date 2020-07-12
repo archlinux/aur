@@ -1,6 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-fusesoc
-pkgver=1.10
+pkgver=1.11
 pkgrel=0
 pkgdesc="Package manager and build abstraction tool for FPGA/ASIC development."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('iverilog: for simulating verilog designs'
 	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
-source=("git+https://github.com/olofk/fusesoc#tag=${pkgver}")
+source=("git+https://github.com/olofk/fusesoc#tag=${pkgver}.${pkgrel}")
 md5sums=('SKIP')
 
 build() {
