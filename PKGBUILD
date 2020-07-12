@@ -4,7 +4,7 @@
 _pkgname=xst
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.8.4.r0.gda50afd
+pkgver=0.8.4.r9.g079cf8c
 pkgrel=1
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	make clean
 	make
 }
 
