@@ -9,7 +9,7 @@ pkgbase = libopenaptx-git
 	depends = glibc
 	provides = libopenaptx
 	conflicts = libopenaptx
-	source = libopenaptx-git::git+https://github.com/pali/libopenaptx.git
+	source = git+https://github.com/pali/libopenaptx.git
 	sha512sums = SKIP
 
 pkgname = libopenaptx-git
