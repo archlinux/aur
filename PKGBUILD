@@ -14,12 +14,12 @@ source=("${url}/archive/${pkgver}.tar.gz")
 md5sums=('c9f29fbfb0396f93b6a1013e7b78d283')
 
 build() {
-  cd $srcdir/$pkgname
+  cd $srcdir/$pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/$pkgname-$pkgver
   python setup.py install --prefix=/usr --root $pkgdir || return 1
 }
 
