@@ -12,7 +12,7 @@ sha256sums=('0360dc0922f501013072520433ba2c7ad90084e880e2095a2516fa878d4c3ab0'
             'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/${pkgname}
-    install -m644 ${srcdir}/*.ttc ${pkgdir}/usr/share/fonts/${pkgname}
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 *.ttc ${pkgdir}/usr/share/fonts/TTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
