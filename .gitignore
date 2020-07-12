@@ -2,3 +2,4 @@ python-validity/
 pkg/
 src/
 *.xz
+*.gz

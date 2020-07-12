@@ -1,6 +1,6 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
-pkgver=r101.1c98a45
+pkgver=0.4
 pkgrel=1
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
@@ -11,15 +11,10 @@ makedepends=(python-setuptools)
 conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
-source=("git+${url}.git#branch=master"
+source=("${url}/archive/${pkgver}.tar.gz"
   python-validity.service)
-md5sums=('SKIP'
+md5sums=('76c176a317946f0fee6a7c7214607695'
          '41bda3076126b2465eb3cc6dafe14385')
-
-pkgver() {
-  cd $srcdir/$pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd $srcdir/$pkgname
