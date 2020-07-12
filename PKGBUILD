@@ -1,32 +1,30 @@
-# Maintainer: jtts
-# From hunspell-sv-se:
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: jtts
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hunspell-sv
-pkgver=20180717
-_pkgver=2.41
-__pkgver=2-41
+pkgver=2.42
 pkgrel=1
-pkgdesc="Swedish dictionaries for Hunspell"
-arch=('any')
-url="https://sfol.se/"
-license=('LGPL3')
-depends=('hunspell')
-source=("https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan/$_pkgver/@@download/file/ooo_swedish_dict_$__pkgver.oxt")
-sha256sums=('48c8d0d548232215384c47ba18ac03bbef3af4c11ffd5e1057272353ba60225f')
+epoch=1
+pkgdesc='Swedish dictionaries for Hunspell'
+arch=(any)
+url='https://extensions.libreoffice.org/en/extensions/show/swedish-spelling-dictionary-den-stora-svenska-ordlistan'
+license=(LGPL3)
+source=(https://extensions.libreoffice.org/assets/downloads/z/ooo-swedish-dict-"${pkgver/./-}".oxt)
+sha256sums=('6f8c62461eb4c2cfe81628094c74ab6511918520047742f14e23dd440b99f45f')
 
 package() {
-  cd $srcdir/dictionaries
-  install -D -m644 sv_SE.dic $pkgdir/usr/share/hunspell/sv_SE.dic
-  install -D -m644 sv_SE.aff $pkgdir/usr/share/hunspell/sv_SE.aff
-  install -D -m644 sv_FI.dic $pkgdir/usr/share/hunspell/sv_FI.dic
-  install -D -m644 sv_FI.aff $pkgdir/usr/share/hunspell/sv_FI.aff
+  cd dictionaries
+  install -Dm644 -t "${pkgdir}"/usr/share/hunspell \
+    sv_SE.dic \
+    sv_SE.aff \
+    sv_FI.dic \
+    sv_FI.aff
 
-  install -dm755 ${pkgdir}/usr/share/myspell/dicts
-  pushd $pkgdir/usr/share/myspell/dicts
-  ln -sv /usr/share/hunspell/sv_SE.dic .
-  ln -sv /usr/share/hunspell/sv_SE.aff .
-  ln -sv /usr/share/hunspell/sv_FI.dic .
-  ln -sv /usr/share/hunspell/sv_FI.aff .
-  popd
+  install -dm755 "${pkgdir}"/usr/share/myspell/dicts
+  ln -svt "$pkgdir"/usr/share/myspell/dicts \
+    /usr/share/hunspell/sv_SE.dic \
+    /usr/share/hunspell/sv_SE.aff \
+    /usr/share/hunspell/sv_FI.dic \
+    /usr/share/hunspell/sv_FI.aff
 }
