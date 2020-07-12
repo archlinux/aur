@@ -1,0 +1,28 @@
+pkgbase = gdb-msvc-git
+	pkgdesc = The GNU Debugger (compiled to debug target mingw-w64, with MSVC patches)
+	pkgver = 9.2.r16.gb65dd57
+	pkgrel = 1
+	url = https://github.com/lesderid/gdb-msvc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = texinfo
+	makedepends = radare2-git
+	makedepends = llvm
+	depends = ncurses
+	depends = expat
+	depends = xz
+	depends = readline
+	depends = source-highlight
+	depends = radare2-git
+	depends = llvm
+	provides = cross-mingw-w64-gdb
+	conflicts = cross-mingw-w64-gdb
+	options = staticlibs
+	options = !buildflags
+	source = git+https://github.com/lesderid/gdb-msvc
+	sha256sums = SKIP
+
+pkgname = gdb-msvc-git
+
