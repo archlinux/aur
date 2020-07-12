@@ -4,11 +4,11 @@
 
 pkgname=perl-app-sqitch
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Sane database change management'
 _dist=App-Sqitch
 arch=('any')
-url="http://sqitch.org/"
+url="https://sqitch.org/"
 license=('MIT')
 depends=(
     'perl-clone'
@@ -59,7 +59,7 @@ optdepends=(
 )
 
 options=('!emptydirs' purge)
-source=("http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/$_dist-v$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/$_dist-v$pkgver.tar.gz")
 sha512sums=('bb2d179c473d2c659fa0e6b23a5c312449299975a2e487f84812d9d891ecc139278da1661e1a4eb922487b0cafb8014de019b498c069799f39fd2e31392cf3aa')
 
 build() {
