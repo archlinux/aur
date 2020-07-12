@@ -3,18 +3,18 @@
 
 _project_name=pace
 pkgname=${_project_name}-cli-git
-pkgver=1.3.1.r5.g96a8346
+pkgver=1.3.1.r61.g35510e4
 pkgrel=1
 pkgdesc='A simple pacman.conf CLI editor'
 arch=('x86_64')
 license=('GPL3')
-url='https://gitlab.com/softwareperonista/pace'
+url='https://gitlab.com/tarmaciltur/pace'
 depends=('glib2')
 makedepends=('meson' 'vala' 'git' 'polkit')
 optdepends=('polkit')
 conflicts=('pace')
 provides=('pace')
-source=('git+https://gitlab.com/softwareperonista/pace.git')
+source=('git+https://gitlab.com/tarmaciltur/pace.git')
 sha256sums=(SKIP)
 
 pkgver() {
