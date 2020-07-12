@@ -1,0 +1,4 @@
+open-fprintd/
+pkg/
+src/
+*.xz
