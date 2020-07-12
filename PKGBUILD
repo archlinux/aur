@@ -8,7 +8,7 @@ arch=('any')
 url="http://flopoco.gforge.inria.fr/"
 license=('custom')
 
-depends=('mpfr' 'mpfi' 'sollya' 'gsl' 'libfplll' 'libxml2')
+depends=('mpfr' 'mpfi' 'sollya' 'gsl' 'fplll' 'libxml2')
 makedepends=('cmake' 'boost')
 
 source=(https://gforge.inria.fr/frs/download.php/file/37213/flopoco-4.1.2.tgz)
