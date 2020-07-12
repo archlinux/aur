@@ -13,7 +13,7 @@ provides=('msbuild')
 conflicts=('msbuild')
 url="https://github.com/mono/msbuild"
 license=('MIT')
-source=("msbuild-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
+source=("msbuild-amd64-v${_pkgver}.deb::https://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
 sha256sums=('87edbf05fd37a63c5a815a07d12bc340bae8b58331217d7f935a245112bda26f')
 
 package() {
