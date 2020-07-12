@@ -2,11 +2,10 @@ pkgbase = mhwd-nvidia
 	pkgdesc = mhwd-nvidia pci id
 	pkgver = 0.1
 	pkgrel = 4
-	url = https://garuda.org/
+	url = https://garudalinux.in/
 	arch = any
 	license = GPL2
 	provides = mhwd-nvidia
-	conflicts = mhwd-nvidia-440xx
 	source = nvidia.ids
 	sha256sums = 44ed1d791a64de33120d436fe082b02d660bf181e59cbb1f25d97004f267c007
 
