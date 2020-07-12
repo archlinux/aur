@@ -12,6 +12,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust' 'cargo')
 conflicts=()
 source=("git+https://github.com/shempignon/scaramanga")
+backup=("etc/scaramanga/config.toml")
 sha512sums=(SKIP)
 
 pkgver() {
@@ -29,8 +30,6 @@ package() {
     cd "${srcdir}/scaramanga"
 
     install -Dm755 target/release/scaramanga "${pkgdir}/usr/bin/scaramanga"
-
     install -Dm755 config.toml.dist "${pkgdir}/etc/${pkgname}/config.toml"
-
     install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }

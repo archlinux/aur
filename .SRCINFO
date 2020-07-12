@@ -10,6 +10,7 @@ pkgbase = scaramanga
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
+	backup = etc/scaramanga/config.toml
 	source = git+https://github.com/shempignon/scaramanga
 	sha512sums = SKIP
 
