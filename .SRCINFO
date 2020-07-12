@@ -10,7 +10,7 @@ pkgbase = mpv-webm-git
 	depends = mpv
 	provides = mpv-webm
 	conflicts = mpv-webm
-	source = git+https://github.com/ekisu/mpv-webm
+	source = git+https://github.com/ekisu/mpv-webm.git
 	md5sums = SKIP
 
 pkgname = mpv-webm-git
