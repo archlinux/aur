@@ -3,10 +3,10 @@
 
 pkgname=eflete
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EFL Edje Theme Editor - a theme graphical editor"
 arch=('i686' 'x86_64')
-url="https://www.enlightenment.org/about-eflete"
+url="https://phab.enlightenment.org/w/projects/eflete/"
 license=('GPL2')
 depends=('efl')
 provides=("ewe=${pkgver}")
