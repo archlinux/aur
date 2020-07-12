@@ -3,7 +3,7 @@
 # Contributor: EagleXiang <eagle.xiang at outlook dot com>
 
 pkgname=msbuild-stable
-_pkgver=16.5+xamarinxplat.2020.02.20.11.54-0xamarin2+ubuntu2004b1
+_pkgver=16.6+xamarinxplat.2020.04.29.14.43-0xamarin5+ubuntu2004b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=1
 pkgdesc="Xamarin implementation of the Microsoft build system"
@@ -14,7 +14,7 @@ conflicts=('msbuild')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 source=("msbuild-amd64-v${_pkgver}.deb::https://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
-sha256sums=('87edbf05fd37a63c5a815a07d12bc340bae8b58331217d7f935a245112bda26f')
+sha256sums=('042bb1da521877e8ff4b2dd157304a7130bb489a3abe0642a0f9e7ff37b4f099')
 
 package() {
   cd "${srcdir}"
