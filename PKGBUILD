@@ -49,9 +49,9 @@ package() {
   install -Dm 755 builddir/src/libvkbasalt.so "${pkgdir}/usr/lib/libvkbasalt.so"
   install -Dm 755 builddir.32/src/libvkbasalt.so "${pkgdir}/usr/lib32/libvkbasalt.so"
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
-  sed -i 's|*path/to/reshade-shaders/Textures\*|/usr/share/reshade/textures|g' \
+  sed -i 's|/path/to/reshade-shaders/Textures|/usr/share/reshade/textures|g' \
     "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
-  sed -i 's|*path/to/reshade-shaders/Shaders\*|/usr/share/reshade/shaders|g' \
+  sed -i 's|/path/to/reshade-shaders/Shaders|/usr/share/reshade/shaders|g' \
     "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
   install -Dm 644 config/vkBasalt.json "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
