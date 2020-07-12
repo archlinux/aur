@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.13933
+pkgver=rev.13951
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -34,9 +34,6 @@ cd ..
 pwd
 
 mkdir -p build
-patch -Np1 -i ../Boost_lib_detection.patch
-patch -Np1 -i ../vegastrike_install.patch
-patch -Np1 -i ../vegasettings_install.patch
 patch -Np1 -i ../mesh_tool_install.patch
 }
 
