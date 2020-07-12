@@ -2,35 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pdf-fromhtml'
-pkgver='0.31'
+pkgver='0.33'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module PDF::FromHTML: Convert HTML documents to PDF"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-graphics-colornames' 'perl-image-size' 'perl-pdf-writer>=0.05' 'perl-xml-twig' 'perl-libwww' 'perl>=5.6.0')
+depends=('perl-graphics-colornames' 'perl-html-tidy' 'perl-image-size' 'perl-pdf-api2' 'perl-pdf-writer>=0.05' 'perl-xml-twig' 'perl-libwww' 'perl>=5.6.0')
 makedepends=()
-checkdepends=('perl-html-tidy')
+checkdepends=()
 url='https://metacpan.org/release/PDF-FromHTML'
 source=("http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/PDF-FromHTML-$pkgver.tar.gz")
-md5sums=('8bdc40824ca74007308f28503f52b36c')
-sha512sums=('3023813d3ef332431be0fe2b5eb6a4a5d05b5907981db36c05f5e63a2012c1a7ee96bf30ca69d33492bbf9b2db17419429491ca500a915c8512a2148f05afbde')
+md5sums=('25d597f578fe0f1347217d3aefecd364')
+sha512sums=('db47c19c061f88bceb9985a78e2487c95a54e75075c787e60fecfbeffaa97dfaf7eb645c646d8d052ca54538a5f259526d4e7bd48b78b9c83ab7ba38c297adab')
 _distdir="PDF-FromHTML-$pkgver"
-
-prepare() {
-  cd "$srcdir/$_distdir"
-
-  # Patch Makefile.PL
-  # by adding "use lib '.';" before "use inc::Module::Install".
-  # Maybe a real patch-file would be better.
-  #
-  # This fixes the "Can't locate inc/Module/Install.pm in @INC"-error,
-  # which isn't upstream yet, when doing "make".
-  # See https://rt.cpan.org/Public/Bug/Display.html?id=120825
-  # for details on this problem (but for a different Perl/CPAN-module).
-  #
-  sed -i "s/use inc::Module::Install/use lib '.';\nuse inc::Module::Install/" Makefile.PL
-}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
