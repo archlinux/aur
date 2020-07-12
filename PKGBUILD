@@ -2,7 +2,7 @@
 
 pkgname=intel-openvino
 pkgver=2020.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolkit for developing applications and solutions that emulate human vision using Intel hardware'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -49,8 +49,8 @@ sha256sums=('SKIP'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
             'b58aa9ec526cb6c528c58fc8b1a1b93b425999d1de29f0dd15a8b680c9eb8c77'
             '70064c504ccbde211d06deaff7a810f8a896ff218cb12438d0bae701d8f5b98a'
-            '8864cb1e04e96bc00808586df01e67403671a0ddcff5430c45fb7b1c32f67b3a'
-            '1bda6f789b9f85ac72f20776b5fd31c2af50980ac71307a61e2cea57206d9c70')
+            'cf936694fca3a840bec33bfd94fd13cfb7f8ba47b822965a6129a6818abdeab2'
+            '33185d586143a8eeb68451519ae5aa519883d3d05e43715fb3eb604d47050f28')
 
 prepare() {
     git -C openvino submodule init
