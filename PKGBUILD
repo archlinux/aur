@@ -1,12 +1,12 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.13926
-pkgrel=2
+pkgver=rev.13951
+pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
 url="www.vega-strike.org"
 license=('GPL')
-depends=('boost-libs' 'python' 'freeglut' 'gtk2' 'libvorbis' 'openal' 'sdl' 'glu')
+depends=('boost-libs' 'python' 'freeglut' 'gtk3' 'libvorbis' 'openal' 'sdl' 'glu')
 #optdepends=('vegastrike-data: original dataset')
 makedepends=('git' 'cmake')
 provides=('vegastrike-engine')
