@@ -7,7 +7,7 @@ _pkgver=16.5+xamarinxplat.2020.02.20.11.54-0xamarin2+ubuntu2004b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=1
 pkgdesc="Xamarin implementation of the Microsoft build system"
-arch=('x86_64')
+arch=('any')
 depends=('mono>=5.0.0')
 provides=('msbuild')
 conflicts=('msbuild')
