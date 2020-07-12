@@ -1,8 +1,8 @@
 # Maintainer : boronology <boronology at gmail dot com>
 pkgname=otf-source-han-code-jp
 pkgver=2.011
-pkgrel=2
-depends=('fontconfig' 'xorg-font-utils')
+pkgrel=3
+depends=('fontconfig' 'xorg-mkfontscale')
 pkgdesc="Japanese OpenType font for developers. Made by mixing SourceHanSans and SourceCodePro"
 arch=('any')
 license=('custom')
