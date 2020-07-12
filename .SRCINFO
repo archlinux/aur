@@ -1,12 +1,12 @@
 pkgbase = wps-office-fonts
 	pkgdesc = The wps-office-fonts package contains Founder Chinese fonts
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wps-community.org/
 	arch = any
 	license = custom
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontscale
 	source = https://github.com/Universebenzene/wps-office-fonts/archive/v1.0.tar.gz
 	sha256sums = db01fc07324115b181cb06f50dfe09fd17feee132c46423ee70b260830211224
 
