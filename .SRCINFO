@@ -1,0 +1,14 @@
+pkgbase = pinentry-dmenu-inco
+	pkgdesc = simple dmenu / GnuPG integration
+	pkgver = 20.07.12.13
+	pkgrel = 1
+	url = https://github.com/drincoxyz/pinentry-dmenu
+	arch = any
+	license = GPL
+	makedepends = make
+	provides = dmenu-pinentry
+	source = https://github.com/drincoxyz/pinentry-dmenu/archive/20.07.12.13.tar.gz
+	sha256sums = 0da76d817b21d87bd006ac487180ac3f866a5019706b55ba1c702cea3899c6d8
+
+pkgname = pinentry-dmenu-inco
+
