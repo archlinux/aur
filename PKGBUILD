@@ -5,7 +5,7 @@
 
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=ghz-git
-pkgver=v0.55.0.r4.g02c0138
+pkgver=0.55.0.r4.g02c0138
 pkgrel=1
 pkgdesc="Simple gRPC benchmarking and load testing tool"
 arch=('x86_64')

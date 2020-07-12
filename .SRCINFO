@@ -1,6 +1,6 @@
 pkgbase = ghz-git
 	pkgdesc = Simple gRPC benchmarking and load testing tool
-	pkgver = v0.55.0.r4.g02c0138
+	pkgver = 0.55.0.r4.g02c0138
 	pkgrel = 1
 	url = https://ghz.sh/
 	arch = x86_64
