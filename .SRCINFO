@@ -1,8 +1,8 @@
 pkgbase = php-recode
 	pkgdesc = PHP recode extension
 	pkgver = 7.3.20
-	pkgrel = 1
-	url = http://www.php.net/recode
+	pkgrel = 2
+	url = https://www.php.net/recode
 	arch = i686
 	arch = x86_64
 	license = PHP
