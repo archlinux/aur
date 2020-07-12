@@ -1,7 +1,7 @@
 pkgbase = open-fprintd
 	pkgdesc = Fprintd replacement which allows you to have your own backend as a standalone service
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uunicorn/open-fprintd
 	arch = any
 	license = MIT
