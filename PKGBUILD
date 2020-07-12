@@ -4,14 +4,14 @@
 
 pkgname=hotshots
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Screenshot tool with some editing features."
-url="http://thehive.xbee.net"
+url="https://sourceforge.net/projects/hotshots/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('libqxt' 'shared-mime-info')
 makedepends=('cmake')
-source=("http://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip"
+source=("https://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip"
 	'fix_std_cmath.patch')
 sha256sums=('3f5783cc5ed030f398c6b5549873989c3f46cb59d64e38911dfbf38637ed2a9a'
             '6752655b8bd73368bdb366a150177383068671b7ad499ea5fbf1e35f547f314b')
