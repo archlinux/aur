@@ -1,8 +1,8 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=33.ddaa4da
+pkgver=34.825f734
 pkgrel=1
-pkgdesc="An AUR helper"
+pkgdesc="An AUR helper with asp support."
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
 license=('GPL v3')
