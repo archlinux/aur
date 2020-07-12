@@ -24,6 +24,8 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --prefix=/usr --root $pkgdir || return 1
+  install -D -m 644 $srcdir/python-validity.service \
+    $pkgdir/usr/lib/systemd/system/python-validity.service
 }
 
 # vim:set ts=2 sw=2 et:
