@@ -1,18 +1,19 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Juan Diego Tascon
-# Maintainer : Marcos Heredia <chelqo@gmail.com>
+# Contributor: Marcos Heredia <chelqo@gmail.com>
 
 _pkgname=tzclock
 pkgname=${_pkgname}-gtk2
 pkgver=4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Cairo clock to display the time around the world"
 arch=('i686' 'x86_64')
-url="http://tzclock.org/"
+url="https://theknight.co.uk/"
 license=("GPL")
 depends=('gtk2' 'libnotify' 'libdial' 'libgnomeui')
 conflicts=("${_pkgname}")
 source=("https://theknight.co.uk/releases/Source/$_pkgname-$pkgver.tar.bz2")
-sha512sums=('0bf7eeb70fd41c0c69b024f13ced91eb0e35918ff509c31ec64f19c31b0b4e721f889e8779b4679fdd81c2d42cce06d2bd62289d5c66466af4a8cbb25eb554ab')
+sha512sums=('ac7355cb99c63dea3a3811c89cb00519c348b7be7fbf1fa75e849521c34951cf03bde5ff357266e2f5f1e0f84950d60d7eadf6c96817588300518a98af3d0119')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver/
