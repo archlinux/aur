@@ -9,16 +9,16 @@
 
 pkgname=mediatomb
 pkgver=0.12.1
-pkgrel=15
-pkgdesc="Free UPnP/DLNA media server"
+pkgrel=16
+pkgdesc="UPnP AV Media Server"
 arch=('i686' 'x86_64' 'armv6h')
-url="http://mediatomb.cc/"
+url="https://sourceforge.net/projects/mediatomb/"
 license=('GPL')
 depends=('file' 'curl' 'ffmpegthumbnailer' 'libexif' 'libmp4v2' 'sqlite3' 'taglib' 'libmariadbclient' 'js185')
 optdepends=('mariadb: to store your music database in mariadb')
 backup=('etc/conf.d/mediatomb')
 install=mediatomb.install
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'mediatomb.sysusers'
         'mediatomb.service'
         'mediatomb-mariadb.service'
