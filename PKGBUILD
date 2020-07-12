@@ -7,8 +7,8 @@ _lang=en-US
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=79.0a1
-pkgver=79.0a1.20200609
+_version=80.0a1
+pkgver=80.0a1.20200712
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -19,8 +19,7 @@ optdepends=('pulseaudio: audio support'
             'hyphen: hyphenation'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech'
-            'startup-notification: support for FreeDesktop Startup Notification')
+            'speech-dispatcher: text-to-speech')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date +%Y%m%d)-${_src}"
