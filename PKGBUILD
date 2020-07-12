@@ -7,7 +7,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-largekeys
-pkgver=2.2.20
+pkgver=2.2.21
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
@@ -28,7 +28,7 @@ source=("https://gnupg.org/ftp/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largeke
         'gnupg2-large-keys.patch'
 	'self-sigs-only.patch'
         'gnupg.install')
-sha256sums=('04a7c9d48b74c399168ee8270e548588ddbe52218c337703d7f06373d326ca30'
+sha256sums=('61e83278fb5fa7336658a8b73ab26f379d41275bb1c7c6e694dd9f9a6e8e76ec'
             'SKIP'
             '78ff880f5ab363415a4bcdc704c8a4afecc39d6bac37f4ebe53bf2e8354c2d62'
             '0130c43321c16f53ab2290833007212f8a26b1b73bd4edc2b2b1c9db2b2d0218'
