@@ -1,6 +1,6 @@
-diff -rupN nostromo-1.9.8/conf/nhttpd.conf-dist nostromo-1.9.8b/conf/nhttpd.conf-dist
---- nostromo-1.9.8/conf/nhttpd.conf-dist	2016-04-12 14:54:16.000000000 -0400
-+++ nostromo-1.9.8b/conf/nhttpd.conf-dist	2020-07-04 14:29:42.412190995 -0400
+diff -rupN nostromo-1.9.9/conf/nhttpd.conf-dist nostromo-1.9.9b/conf/nhttpd.conf-dist
+--- nostromo-1.9.9/conf/nhttpd.conf-dist	2016-04-12 14:54:16.000000000 -0400
++++ nostromo-1.9.9b/conf/nhttpd.conf-dist	2020-07-12 19:18:50.152212262 -0400
 @@ -2,29 +2,31 @@
  
  # MAIN [MANDATORY]
@@ -55,9 +55,9 @@ diff -rupN nostromo-1.9.8/conf/nhttpd.conf-dist nostromo-1.9.8b/conf/nhttpd.conf
  
  # HOMEDIRS [OPTIONAL]
  
-diff -rupN nostromo-1.9.8/GNUmakefile nostromo-1.9.8b/GNUmakefile
---- nostromo-1.9.8/GNUmakefile	2016-04-12 14:52:41.000000000 -0400
-+++ nostromo-1.9.8b/GNUmakefile	2020-07-04 14:29:42.415524317 -0400
+diff -rupN nostromo-1.9.9/GNUmakefile nostromo-1.9.9b/GNUmakefile
+--- nostromo-1.9.9/GNUmakefile	2016-04-12 14:52:41.000000000 -0400
++++ nostromo-1.9.9b/GNUmakefile	2020-07-12 19:18:50.155545591 -0400
 @@ -5,30 +5,30 @@ all:
  
  install:
@@ -104,28 +104,9 @@ diff -rupN nostromo-1.9.8/GNUmakefile nostromo-1.9.8b/GNUmakefile
  
  clean:
  	cd src; ${MAKE} clean
-diff -rupN nostromo-1.9.8/htdocs/index.html nostromo-1.9.8b/htdocs/index.html
---- nostromo-1.9.8/htdocs/index.html	2019-10-22 14:59:34.000000000 -0400
-+++ nostromo-1.9.8b/htdocs/index.html	2020-07-04 14:30:17.595411784 -0400
-@@ -3,13 +3,13 @@
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
- <html>
- <head>
--  <title>nostromo 1.9.7</title>
-+  <title>nostromo 1.9.8</title>
-   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
- </head>
- <body>
- 
- <center>
--  <h2>nostromo 1.9.7</h2>
-+  <h2>nostromo 1.9.8</h2>
-   <p>
-   <u>INTERFACE 2037 READY FOR INQUIRY</u>
-   <p>
-diff -rupN nostromo-1.9.8/Makefile nostromo-1.9.8b/Makefile
---- nostromo-1.9.8/Makefile	2016-04-12 14:52:41.000000000 -0400
-+++ nostromo-1.9.8b/Makefile	2020-07-04 14:29:42.415524317 -0400
+diff -rupN nostromo-1.9.9/Makefile nostromo-1.9.9b/Makefile
+--- nostromo-1.9.9/Makefile	2016-04-12 14:52:41.000000000 -0400
++++ nostromo-1.9.9b/Makefile	2020-07-12 19:18:50.155545591 -0400
 @@ -3,24 +3,24 @@
  SUBDIR+= src
  
@@ -163,9 +144,9 @@ diff -rupN nostromo-1.9.8/Makefile nostromo-1.9.8b/Makefile
 +		$(DESTDIR)/usr/share/nostromo/icons/file.gif
  
  .include <bsd.subdir.mk>
-diff -rupN nostromo-1.9.8/src/nhttpd/main.c nostromo-1.9.8b/src/nhttpd/main.c
---- nostromo-1.9.8/src/nhttpd/main.c	2019-10-22 14:59:34.000000000 -0400
-+++ nostromo-1.9.8b/src/nhttpd/main.c	2020-07-04 14:29:42.415524317 -0400
+diff -rupN nostromo-1.9.9/src/nhttpd/main.c nostromo-1.9.9b/src/nhttpd/main.c
+--- nostromo-1.9.9/src/nhttpd/main.c	2020-07-06 16:42:17.000000000 -0400
++++ nostromo-1.9.9b/src/nhttpd/main.c	2020-07-12 19:18:50.155545591 -0400
 @@ -61,7 +61,7 @@
   * global vars local
   */
@@ -175,9 +156,9 @@ diff -rupN nostromo-1.9.8/src/nhttpd/main.c nostromo-1.9.8b/src/nhttpd/main.c
  
  /*
   * global vars extern
-diff -rupN nostromo-1.9.8/src/nhttpd/Makefile nostromo-1.9.8b/src/nhttpd/Makefile
---- nostromo-1.9.8/src/nhttpd/Makefile	2016-04-12 15:02:06.000000000 -0400
-+++ nostromo-1.9.8b/src/nhttpd/Makefile	2020-07-04 14:29:42.415524317 -0400
+diff -rupN nostromo-1.9.9/src/nhttpd/Makefile nostromo-1.9.9b/src/nhttpd/Makefile
+--- nostromo-1.9.9/src/nhttpd/Makefile	2016-04-12 15:02:06.000000000 -0400
++++ nostromo-1.9.9b/src/nhttpd/Makefile	2020-07-12 19:18:50.155545591 -0400
 @@ -12,7 +12,7 @@ MAN= nhttpd.8
  
  BINOWN=	root
@@ -187,9 +168,9 @@ diff -rupN nostromo-1.9.8/src/nhttpd/Makefile nostromo-1.9.8b/src/nhttpd/Makefil
  
  OS!= uname -s
  
-diff -rupN nostromo-1.9.8/src/nhttpd/nhttpd.8 nostromo-1.9.8b/src/nhttpd/nhttpd.8
---- nostromo-1.9.8/src/nhttpd/nhttpd.8	2016-04-12 16:32:43.000000000 -0400
-+++ nostromo-1.9.8b/src/nhttpd/nhttpd.8	2020-07-04 14:29:42.418857640 -0400
+diff -rupN nostromo-1.9.9/src/nhttpd/nhttpd.8 nostromo-1.9.9b/src/nhttpd/nhttpd.8
+--- nostromo-1.9.9/src/nhttpd/nhttpd.8	2016-04-12 16:32:43.000000000 -0400
++++ nostromo-1.9.9b/src/nhttpd/nhttpd.8	2020-07-12 19:18:50.155545591 -0400
 @@ -85,7 +85,7 @@ Enable IPv6 only.
  Uses
  .Ar configfile
@@ -245,9 +226,9 @@ diff -rupN nostromo-1.9.8/src/nhttpd/nhttpd.8 nostromo-1.9.8b/src/nhttpd/nhttpd.
  http daemon
  .El
  .Sh HISTORY
-diff -rupN nostromo-1.9.8/src/tools/crypt.c nostromo-1.9.8b/src/tools/crypt.c
---- nostromo-1.9.8/src/tools/crypt.c	2016-04-12 15:02:58.000000000 -0400
-+++ nostromo-1.9.8b/src/tools/crypt.c	2020-07-04 14:29:42.418857640 -0400
+diff -rupN nostromo-1.9.9/src/tools/crypt.c nostromo-1.9.9b/src/tools/crypt.c
+--- nostromo-1.9.9/src/tools/crypt.c	2016-04-12 15:02:58.000000000 -0400
++++ nostromo-1.9.9b/src/tools/crypt.c	2020-07-12 19:18:50.158878920 -0400
 @@ -32,7 +32,7 @@
  #include "../libbsd/strlcat.h"
  #endif
@@ -257,9 +238,9 @@ diff -rupN nostromo-1.9.8/src/tools/crypt.c nostromo-1.9.8b/src/tools/crypt.c
  
  /*
   * Prototypes
-diff -rupN nostromo-1.9.8/src/tools/Makefile nostromo-1.9.8b/src/tools/Makefile
---- nostromo-1.9.8/src/tools/Makefile	2016-04-12 15:02:58.000000000 -0400
-+++ nostromo-1.9.8b/src/tools/Makefile	2020-07-04 14:29:42.418857640 -0400
+diff -rupN nostromo-1.9.9/src/tools/Makefile nostromo-1.9.9b/src/tools/Makefile
+--- nostromo-1.9.9/src/tools/Makefile	2016-04-12 15:02:58.000000000 -0400
++++ nostromo-1.9.9b/src/tools/Makefile	2020-07-12 19:18:50.158878920 -0400
 @@ -11,7 +11,7 @@ MAN=
  
  BINOWN=	root

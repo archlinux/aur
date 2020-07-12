@@ -1,10 +1,10 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=nostromo
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc='A simple, fast, and secure HTTP server'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.nazgul.ch/dev_nostromo.html'
 license=('custom:ISC')
 depends=('openssl')
@@ -19,8 +19,8 @@ source=("http://www.nazgul.ch/dev/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.logrotate"
         "${pkgname}.install"
         "LICENSE")
-sha256sums=('51e4838344e2151d5e346b15fca4df31d5ca2a7ae8264e3c9668fa4d6d0e8b98'
-            '045ca929471a5b8499499e67113160f407ad7fbd09e2e79b99aeaa621193b21f'
+sha256sums=('1fad0a28d934835b582cedc98857e12e5adb991b14b87b52b39e6a501f4a9486'
+            'bdcc6a46ce8f675481db911e0ffbda0ba15ac4fbcee1244d6746b632850b2c2a'
             'b630392d6501f963a4405b3737d65facb7b60fce28b46edf3dc0e23efce8ab0d'
             '56d3a07205a8d2c6c06851694ffebf2a5a6a64089eb78c13b0e00f9071a1efbc'
             '79501227e4129c6ee54fe9a5572ca79f0122eab812ed868d08ec16284909b53b'
