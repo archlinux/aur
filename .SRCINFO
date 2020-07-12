@@ -1,6 +1,6 @@
 pkgbase = ctypes-sh
 	pkgdesc = ctypes.sh is a bash plugin that allows you to call routines in shared libraries from within bash
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/taviso/ctypes.sh/wiki
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ctypes-sh
 	license = MIT
 	depends = bash
 	depends = libffi
-	source = https://github.com/taviso/ctypes.sh/releases/download/v1.1/ctypes-sh-1.1.tar.gz
-	sha256sums = f7c8276b556101c51838296560d152fdcd96b860254a38d216b92986f31f8297
+	source = https://github.com/taviso/ctypes.sh/releases/download/v1.2/ctypes-sh-1.2.tar.gz
+	sha256sums = 8896334f5fa88f656057bff807ec6921c8f76fc6de801d996d2057fcb18b3a68
 
 pkgname = ctypes-sh
 
