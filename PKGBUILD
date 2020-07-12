@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=6
+pkgrel=7
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -34,11 +34,15 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$pkgname"
+
+  # Tweak the configuration file
+  patch -p1 <"$srcdir/config.patch"
+}
+
 build() {
     cd "${srcdir}/$pkgname"
-
-    # Tweak the configuration file
-    patch -p1 <../../config.patch
 
     # Based on the Dockerfile
     nimble build -y -d:release
