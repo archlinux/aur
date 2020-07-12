@@ -1,4 +1,4 @@
-# Contributor: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.008' 'perl-class-load' 'perl-moo' 'perl-object-id' 'perl-scalar-does>=0.006')
 makedepends=()
-url='http://search.cpan.org/dist/Role-Commons'
+url='https://search.cpan.org/dist/Role-Commons'
 source=("https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Role-Commons-${pkgver}.tar.gz")
 sha512sums=('83ee808cf6f387a64aeb3f08dc35f744308d619bffda9000e2a0abc98846f612c2b3e4c98128f9965b45097c724d88acf05bf60f227686512a7d8c28c0f82971')
 _distdir="Role-Commons-${pkgver}"
