@@ -21,8 +21,7 @@ prepare() {
   cd $pkgname-$pkgver
   gendesk -f -n --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories="AudioVideo"
   ln -sf ../apone-chipmachine-v1.4b3 apone
-  cd apone
-  patch -Np1 -i ../apone-chipmachine-v1.4b3-datadir.patch
+  patch -d apone -Np1 -i ../apone-chipmachine-v1.4b3-datadir.patch
 }
 
 build() {
