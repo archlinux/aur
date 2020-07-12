@@ -9,33 +9,33 @@
 # Contributor: Sylvester Johansson <syljo361(at)gmail(dot)org>
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
-pkgver='2.2.2'
-pkgrel='4'
+pkgver='2.2.3'
+pkgrel='1'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.02.3' 'ocaml-lwt' 'ocaml-stdlib-shims')
+depends=('ocaml>=4.04.0' 'ocaml-lwt' 'ocaml-stdlib-shims')
 makedepends=('dune>=1.11.0' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('db5dbdd4fd29a9ff82dd9d75813e0391d833ba868f813e3c3349807bc9da5032')
+sha256sums=('cc69df60d8b6b526d824b6e6db8cb7a5e3e0d603489588b4603a1b06d7ec5720')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "${_projectname},${_projectname}-lwt,${_projectname}2,${_projectname}2-lwt" --verbose
+	dune build --release --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "${_projectname},${_projectname}-lwt,${_projectname}2,${_projectname}2-lwt" --verbose
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
