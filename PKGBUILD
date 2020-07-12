@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pdf-table'
-pkgver='0.10.0'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module PDF::Table: A utility class for building table layouts in a PDF::API2 object."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.01')
 makedepends=()
 url='https://metacpan.org/release/PDF-Table'
 source=("http://search.cpan.org/CPAN/authors/id/O/OM/OMEGA/PDF-Table-$pkgver.tar.gz")
-md5sums=('6e875b9a0ad4181005cb4ee16ee8d0b3')
-sha512sums=('ca375ed6d7e2b342dfa030e2f27b46e76661909b29abfc29e11a099120849c007293c9e2189fe43f94e8f9992fa2e0d693e992d2d1b53bb884eaf3a97b6bfcee')
+md5sums=('d9104e8de49b20cf86751ab833e81c3b')
+sha512sums=('4fa453283f452638b3c1d152f1cc4436c43cb5d95a343431d6a4569cd1cdd439e7c82e7fd27ce1b466ae6487297922a3010450ee42c4217f1e18bbb8498c09be')
 _distdir="PDF-Table-$pkgver"
 
 build() {
