@@ -8,10 +8,10 @@
 
 pkgname=zabbix-proxy-sqlite-lts
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.zabbix.com"
+url="https://www.zabbix.com"
 license=('GPL')
 depends=('sqlite3' 'fping' 'openipmi' 'libxml2')
 makedepends=('binutils' 'gcc' 'make' 'fakeroot')

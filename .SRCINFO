@@ -1,8 +1,8 @@
 pkgbase = zabbix-proxy-sqlite-lts
 	pkgdesc = Software for monitoring of your applications, network and servers.
 	pkgver = 5.0.1
-	pkgrel = 1
-	url = http://www.zabbix.com
+	pkgrel = 2
+	url = https://www.zabbix.com
 	install = zabbix-proxy.install
 	arch = i686
 	arch = x86_64
