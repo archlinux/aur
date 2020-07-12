@@ -1,11 +1,12 @@
-# Maintainer: Peter Hoeg <first name at last name dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Peter Hoeg <first name at last name dot com>
 
 pkgname=glpi
-pkgver=9.4.6
+pkgver=9.5.0
 pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
-url='http://www.glpi-project.org'
+url='https://www.glpi-project.org'
 source=("https://github.com/glpi-project/glpi/releases/download/${pkgver}/glpi-${pkgver}.tgz"
         'glpi.install'
         'glpi.service'
@@ -17,7 +18,7 @@ depends=(mysql php)
 backup=(etc/glpi/config_db.php)
 optdepends=('nginx: a more performant webserver'
             'apache: a more performant webserver')
-sha256sums=('3ff2f69140ff55c6d9184028e3078d84962aec6d0d0e67a15e1521aff519f29d'
+sha256sums=('ae89029fe02f272ca9f8812d6f889698ffd3bda3281ddafa0993fff005808cf2'
             '6ba1f37a68179b04dfeff44b67c0806a513c1548ebd2cf47232e5f6026f76296'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
             '6b515c1c8cc44ef703fe01e53b64d6aea56ed1c833b3553233482437478d4e77'
