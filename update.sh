@@ -14,6 +14,7 @@ DEPENDS=(
     python-mpv
     python-peewee
     python-requests
+    python-semver
 )
 LICENSE='GPL3'
 ADDITIONAL=

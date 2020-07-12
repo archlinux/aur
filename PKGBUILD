@@ -4,7 +4,7 @@ pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
 pkgver='0.11.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
 depends=(
@@ -18,6 +18,7 @@ depends=(
     'python-mpv'
     'python-peewee'
     'python-requests'
+    'python-semver'
 )
 optdepends=(
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
