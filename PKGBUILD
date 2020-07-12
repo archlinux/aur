@@ -2,7 +2,7 @@
 # Maintainer: Skywol <skywol@qq.com>
 # Maintainer: luosoy <249799588@qq.com>
 
-kgname=deepin-wine-plugin
+pkgname=deepin-wine-plugin
 _pkgver=1.0deepin4
 pkgver=1.0.4
 pkgrel=4
