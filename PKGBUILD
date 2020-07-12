@@ -1,26 +1,23 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-# This package now builds a fork of the original project.
-# Original: 
-
-_gitname=KDE-Rounded-Corners
+_gitname=shapecorners
 pkgname=kwin-effect-shapecorners-git
-pkgver=r15.b1f65f2
-pkgrel=1
+pkgver=r14.4f545f9
+pkgrel=2
 pkgdesc="KWin effect to round the corners of windows."
 arch=('x86_64')
-url="https://github.com/alex47/KDE-Rounded-Corners"
+url="https://sourceforge.net/projects/shapecorners"
 license=('GPL3')
 depends=('kwin' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kglobalaccel' 'ki18n'
          'kio' 'kservice' 'kinit' 'knotifications' 'kwidgetsaddons' 'kwindowsystem'
          'kguiaddons' 'qt5-x11extras')
 makedepends=('git' 'extra-cmake-modules')
-source=("git+${url}.git")
+source=("${_gitname}::git+https://git.code.sf.net/p/shapecorners/code")
 sha512sum=('SKIP')
 
 
 pkgver() {
-  cd "$srcdir"/$_gitname
+  cd "${srcdir}/${_gitname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
