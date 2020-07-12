@@ -1,0 +1,14 @@
+backend_name=sp_c260series
+
+post_install() {
+    echo ${backend_name} >> /etc/sane.d/dll.conf 
+}
+
+post_remove() {
+    sed -i /"${backend_name}"/d /etc/sane.d/dll.conf
+}
+
+post_upgrade() {
+	post_remove
+	post_install
+}

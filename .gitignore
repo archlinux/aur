@@ -1,0 +1,6 @@
+pkg/
+src/
+*.exe
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.log

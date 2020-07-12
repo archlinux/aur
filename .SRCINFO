@@ -1,0 +1,16 @@
+pkgbase = ricoh-spc260series-sane
+	pkgdesc = SANE driver for Ricoh SP C260 series
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://support.ricoh.com/bb/html/dr_ut_e/rc3/model/spc261sfnw/spc261sfnw.htm
+	install = ricoh-spc260series-sane.install
+	arch = x86_64
+	license = unknown
+	makedepends = binutils
+	depends = udev
+	depends = sane
+	source = https://support.ricoh.com/bb/pub_e/dr_ut_e/0001305/0001305285/V101/r80956en.exe
+	md5sums = 5be6f1e3409d2a5678a706aeacbf1e43
+
+pkgname = ricoh-spc260series-sane
+
