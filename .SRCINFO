@@ -1,0 +1,36 @@
+pkgbase = fprintd-clients-git
+	pkgdesc = Fprintd without the daemon
+	pkgver = r472.ba60533
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/uunicorn/fprintd
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = meson
+	makedepends = pam_wrapper
+	makedepends = python-cairo
+	makedepends = python-dbus
+	makedepends = python-dbusmock
+	depends = glib2
+	depends = libfprint
+	depends = polkit
+	depends = dbus
+	depends = dbus-glib
+	depends = libsystemd
+	provides = fprintd-clients
+	conflicts = fprintd
+	source = fprintd-clients::git+https://gitlab.freedesktop.org/uunicorn/fprintd.git#branch=master
+	source = disable-systemd-reactivated.diff
+	md5sums = SKIP
+	md5sums = b392087f0a6a824fcbceec21d2a38402
+
+pkgname = fprintd-clients-git
+	depends = glib2
+	depends = libfprint
+	depends = polkit
+	depends = dbus
+	depends = dbus-glib
+	depends = libsystemd
+	depends = libfprint-2.so
+

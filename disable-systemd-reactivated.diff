@@ -1,0 +1,31 @@
+diff --git a/data/meson.build b/data/meson.build
+index bada139..176443d 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,15 +1,15 @@
+-install_data('net.reactivated.Fprint.conf',
+-    install_dir: dbus_conf_dir)
++#install_data('net.reactivated.Fprint.conf',
++    #install_dir: dbus_conf_dir)
+ 
+-configure_file(
+-    configuration: configuration_data({
+-        'LIBEXECDIR': fprintd_installdir,
+-    }),
+-    input: 'net.reactivated.Fprint.service.in',
+-    output: 'net.reactivated.Fprint.service',
+-    install: true,
+-    install_dir: dbus_service_dir,
+-)
++#configure_file(
++    #configuration: configuration_data({
++        #'LIBEXECDIR': fprintd_installdir,
++    #}),
++    #input: 'net.reactivated.Fprint.service.in',
++    #output: 'net.reactivated.Fprint.service',
++    #install: true,
++    #install_dir: dbus_service_dir,
++#)
+ 
+ configure_file(
+     configuration: configuration_data({
