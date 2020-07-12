@@ -1,33 +1,26 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: paul2lv <paul2lv@gmail.com>
 
 pkgname=fahcontrol
 pkgver=7.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical monitor and control utility for the Folding@home client'
 url='https://foldingathome.org'
 arch=('any')
 license=('GPL3')
 depends=('python2' 'pygtk')
 optdepends=('fahviewer: 3D simulation viewer')
-source=("https://download.foldingathome.org/releases/public/release/${pkgname}/debian-stable-64bit/v${pkgver%.*}/${pkgname}_${pkgver}-1_all.deb")
-md5sums=('6747c8780feefe37778586f74a1c61d2')
+source=("https://download.foldingathome.org/releases/public/release/${pkgname}/centos-6.7-64bit/v${pkgver%.*}/${pkgname}-${pkgver}-1.noarch.rpm")
+md5sums=('997c49f1aff860bad37dd273e46bd655')
 
 prepare() {
-  tar -xf data.tar.xz
-
-  # python2 fixes
-  for _file in $(find "${srcdir}/usr/bin/" -name 'FAHControl' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' "${_file}"
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "${_file}"
-  done
+    sed -i 's_/usr/bin/python_/usr/bin/python2_' usr/bin/FAHControl
 }
 
 package() {
-  install -dm755 ${pkgdir}/usr/lib/python2.7/site-packages/fah
-  cp -R ${srcdir}/usr/lib/python2.7/dist-packages/fah ${pkgdir}/usr/lib/python2.7/site-packages/
-  install -D -m0755 ${srcdir}/usr/bin/FAHControl ${pkgdir}/usr/bin/FAHControl
-  install -D -m0644 ${srcdir}/usr/share/pixmaps/FAHControl.png ${pkgdir}/usr/share/pixmaps/FAHControl.png
-  install -D -m0644 ${srcdir}/usr/share/applications/FAHControl.desktop ${pkgdir}/usr/share/applications/FAHControl.desktop
+    install -dm755 "${pkgdir}"/usr/lib/python2.7/site-packages/fah
+    cp -R usr/lib/python2.7/site-packages/fah "${pkgdir}"/usr/lib/python2.7/site-packages
+    install -Dm755 usr/bin/FAHControl -t "${pkgdir}"/usr/bin
+    install -Dm644 usr/share/pixmaps/FAHControl.png -t "${pkgdir}"/usr/share/pixmaps
+    install -Dm644 usr/share/applications/FAHControl.desktop -t "${pkgdir}"/usr/share/applications
 }
-
-# vim:set ts=2 sw=2 et:

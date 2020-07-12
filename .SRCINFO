@@ -8,8 +8,8 @@ pkgbase = fahcontrol
 	depends = python2
 	depends = pygtk
 	optdepends = fahviewer: 3D simulation viewer
-	source = https://download.foldingathome.org/releases/public/release/fahcontrol/debian-stable-64bit/v7.6/fahcontrol_7.6.13-1_all.deb
-	md5sums = 6747c8780feefe37778586f74a1c61d2
+	source = https://download.foldingathome.org/releases/public/release/fahcontrol/centos-6.7-64bit/v7.6/fahcontrol-7.6.13-1.noarch.rpm
+	md5sums = 997c49f1aff860bad37dd273e46bd655
 
 pkgname = fahcontrol
 
