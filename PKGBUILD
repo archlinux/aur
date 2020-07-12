@@ -16,10 +16,9 @@ package() {
 	  cd "$srcdir"/source-han-code-jp-2.011R/
 
 	  #install OpenType Fonts
-	  for OTF in `ls OTF/*.otf`
-	      do
+	  for OTF in $(ls OTF/*.otf); do
 	      install -Dm644 $OTF "$pkgdir/usr/share/fonts/$OTF"
-	      done
+    done
 	  
 	  # install License
 	  cd "$srcdir"/source-han-code-jp-2.011R/
