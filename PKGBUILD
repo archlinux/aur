@@ -1,22 +1,27 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.9.100.5.0
-pkgname=r-rcpparmadillo
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
+_cranname=RcppArmadillo
+_cranver=0.9.900.1.0
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Rcpp Integration for the Armadillo Templated Linear Algebra Library'
-arch=('x86_64')
-url='https://cran.r-project.org/package=RcppArmadillo'
-license=('GPL')
-depends=('r' 'r-rcpp>=0.11.0')
-optdepends=('r-runit' 'r-pkgkitten' 'r-reticulate' 'r-rmarkdown' 'r-knitr' 'r-pinp' 'r-slam')
-source=("https://cran.r-project.org/src/contrib/RcppArmadillo_"$_cranver".tar.gz")
-md5sums=('81d5e6c5656a3204adf16683322c5cf2')
+pkgdesc="'Rcpp' Integration for the 'Armadillo' Templated Linear Algebra Library"
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2 GPL3)
+depends=('r>=3.3.0' 'r-rcpp>=0.11.0')
+makedepends=(gcc)
+optdepends=(r-tinytest r-pkgkitten r-reticulate r-slam)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('2e16f1059a5403175fc29fddff8b57ed')
 
-build(){
-    R CMD INSTALL RcppArmadillo_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership RcppArmadillo "$pkgdir"/usr/lib/R/library
-}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
