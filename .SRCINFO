@@ -1,8 +1,8 @@
 pkgbase = postgresql-92-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
 	pkgver = 9.2.24
-	pkgrel = 2
-	url = http://www.postgresql.org/
+	pkgrel = 3
+	url = https://www.postgresql.org/
 	arch = i686
 	arch = x86_64
 	license = custom:PostgreSQL
