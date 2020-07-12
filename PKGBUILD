@@ -2,7 +2,7 @@
 
 pkgname=cryo
 arch=('x86_64')
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="A visual file manager with p2p file transfers"
 url="https://cryonet.io"
@@ -29,7 +29,7 @@ source_x86_64=("$pkgname-$pkgver-$CARCH.deb::https://cryonet.io/downloads/linux/
                "$pkgname-$pkgver-$CARCH.deb.sig::https://cryonet.io/downloads/linux/${pkgname}_${pkgver}_amd64.deb.sig")
 noextract=()
 #validpgpkeys=('73A522A1186C411D275BA2E6483C615810DFCC8B')
-sha256sums_x86_64=('da1950a3e61b0d714cca18c2058a33f7266eefc5aa17b8c0275a315d56024f95' '6527ea42a977da4e52f0739e15564172e61f4be29453a1be561444ecd35b916b')
+sha256sums_x86_64=('3568142663971d041e2bc6b1a1a98f8d3c013e6c3f42a55c25c2f68a78cecbfd' '39aa9d2c93abe2d89f94ebef7a7a80631800b16729b7b49cb24de91d888389e4')
 
 package() {
   cd "${srcdir}"
