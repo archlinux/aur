@@ -4,10 +4,10 @@
 
 pkgname=reicast
 pkgver=20.04
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sega Dreamcast emulator'
 arch=(x86_64)
-url=http://reicast.com/
+url="https://reicast.com/"
 license=(GPL2)
 depends=(
   alsa-lib
