@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ostinato
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 url="http://ostinato.org/"
 pkgdesc="Cross-platform network packet/traffic generator and analyzer"
@@ -22,4 +22,4 @@ package(){
 	make INSTALL_ROOT=$pkgdir install
 }
 
-md5sums=('51a5e89f7e84b95e6c54e08505021743')
+md5sums=('3cd0cce3e368c64eb531a6eba2cdee1f')
