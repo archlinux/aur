@@ -9,7 +9,7 @@ epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
 license=('Apache')
-url="http://terasology.org"
+url="https://terasology.org"
 options=('!strip')
 depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr' 'lwjgl2')
 makedepends=('unzip')
