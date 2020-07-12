@@ -13,7 +13,7 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.6' r-sparsem r-matrixmodels r-conquer)
-makedepends=(gcc)
+makedepends=(gcc gcc-fortran)
 optdepends=(r-tripack r-akima r-rgl r-logspline r-nor1mix r-formula r-zoo r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('0f7b073d8cf48179d6ba78363384ef6a')

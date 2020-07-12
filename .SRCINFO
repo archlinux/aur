@@ -8,6 +8,7 @@ pkgbase = r-quantreg
 	license = GPL2
 	license = GPL3
 	makedepends = gcc
+	makedepends = gcc-fortran
 	depends = r>=2.6
 	depends = r-sparsem
 	depends = r-matrixmodels
