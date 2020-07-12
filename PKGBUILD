@@ -30,7 +30,7 @@ package() {
 
     install -Dm755 target/release/scaramanga "${pkgdir}/usr/bin/scaramanga"
 
-    install -Dm755 config.toml.dist "{pkgdir}/etc/scaramanga/config.toml"
+    install -Dm755 config.toml.dist "${pkgdir}/etc/${pkgname}/config.toml"
 
     install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
