@@ -1,13 +1,11 @@
 pkgbase = fahviewer
 	pkgdesc = Folding@home 3D Simulation Viewer
 	pkgver = 7.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foldingathome.org
 	arch = x86_64
 	license = GPL2
 	depends = glu
-	depends = gtk2
-	depends = freetype2
 	depends = glut
 	source = https://download.foldingathome.org/releases/public/release/fahviewer/debian-stable-64bit/v7.6/fahviewer_7.6.13-64bit-release.tar.bz2
 	sha1sums = faa54139a7224b9dde1e6d45bf7714a47088b621
