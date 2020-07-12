@@ -4,10 +4,10 @@
 
 pkgname='rt'
 pkgver='4.4.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Request Tracker (RT): The leading open-source issue tracking system'
 arch=('any')
-url='http://bestpractical.com/rt/'
+url='https://bestpractical.com/request-tracker'
 license=('GPL')
 depends=(
 	'mysql'
@@ -66,7 +66,7 @@ depends=(
 	'perl-xml-rss'
 	'perl>=5.8.3'
 )
-source=("http://download.bestpractical.com/pub/$pkgname/release/$pkgname-$pkgver.tar.gz"
+source=("https://download.bestpractical.com/pub/$pkgname/release/$pkgname-$pkgver.tar.gz"
         "rt.install")
 sha512sums=('95335cfa9e7107300670a5e8631ffb6f402895dae051201d051ac01885b0cb185f838a666acaec773e0f670e1b9d16b7cede72f37ce9832fd83a9da8514e6972'
             '5ebb245ddccbdf277332e84f5b2c92966e682aea81d371cae8b96d257a9fd341e21a4f1f9ac49208a59f203c07b2c13964a99e544b54f40ff77228881907d9ed')
