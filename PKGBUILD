@@ -6,10 +6,10 @@
 _npmname=grunt-cli
 pkgname=nodejs-$_npmname
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The grunt command line interface."
 arch=('any')
-url="http://gruntjs.com/"
+url="https://gruntjs.com/"
 license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
