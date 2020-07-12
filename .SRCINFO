@@ -1,5 +1,5 @@
 pkgbase = vkbasalt
-	pkgdesc = A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.
+	pkgdesc = A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.
 	pkgver = 0.3.2.2
 	pkgrel = 1
 	url = https://github.com/DadSchoorse/vkBasalt
@@ -10,8 +10,6 @@ pkgbase = vkbasalt
 	makedepends = meson
 	makedepends = ninja
 	depends = glslang
-	depends = libx11
-	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-libx11
 	optdepends = reshade-shaders-git
