@@ -1,0 +1,18 @@
+pkgbase = archifiltre-bin
+	pkgdesc = Provides you with an export script that you can run directly on your file server. It allows you to generate a file that can be directly sent to an archivist
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://archifiltre.fabrique.social.gouv.fr
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = zlib
+	provides = archifiltre
+	options = !strip
+	source = archifiltre-2.1.1.tar.gz::https://github.com/SocialGouv/archifiltre/releases/download/v2.1.1/archifiltre.tar.gz
+	source = LICENSE::https://github.com/SocialGouv/archifiltre/raw/master/LICENSE
+	sha256sums = 689cfd97dd09906f70d140cc6816d9b08c0ab3773eb2096fae494469eb21a97d
+	sha256sums = 65391aaa97d61e1d969cdbd8d822ef708c9e9b3a9b6845f18ed52047496187d3
+
+pkgname = archifiltre-bin
+
