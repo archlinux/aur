@@ -3,8 +3,8 @@
 _name=dotboy
 
 pkgname="python-${_name}-git"
-provides=()
-conflicts=()
+provides=("python-${_name}")
+conflicts=("python-${_name}")
 pkgver=r13.2a58166
 pkgrel=1
 pkgdesc='A Python script to help with dot file management'

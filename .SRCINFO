@@ -6,10 +6,10 @@ pkgbase = python-dotboy-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python
 	makedepends = python-setuptools
 	depends = python>=3.8
-	depends = python-setuptools
+	provides = python-dotboy
+	conflicts = python-dotboy
 	source = git+https://gitlab.com/bwbuhse/dotboy
 	md5sums = SKIP
 
