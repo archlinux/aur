@@ -5,12 +5,15 @@
 pkgname=whalebird-bin
 
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 
-pkgdesc='Electron based Mastodon client for Windows, Mac and Linux'
+pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
 arch=('x86_64')
 url="https://${pkgname%-bin}.org"
 license=('MIT')
+
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 
