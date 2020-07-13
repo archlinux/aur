@@ -2,7 +2,7 @@
 
 _npmname=generator-jhipster
 pkgname=nodejs-generator-jhipster
-pkgver=6.8.0
+pkgver=6.10.1
 pkgrel=1
 pkgdesc="Spring Boot + Angular/React in one handy generator"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('bb31c2a47b034cc461ec50681563f0ba285190da08f96ac19e7e97df4597ecff')
+sha256sums=('65304b03bb52f8a7501e4074475b386c8c6e57692e30c878f49335e1d1dd9afd')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
