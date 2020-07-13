@@ -1,9 +1,9 @@
 pkgbase = sunloginclient
 	pkgdesc = Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)
 	pkgver = 10.0.2.24779
-	pkgrel = 5
+	pkgrel = 6
 	url = https://sunlogin.oray.com
-	install = sunloginclient.INSTALL
+	install = .INSTALL
 	arch = x86_64
 	license = custom
 	depends = libappindicator-gtk3
