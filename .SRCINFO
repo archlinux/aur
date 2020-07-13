@@ -1,0 +1,15 @@
+pkgbase = google-images-download-git
+	pkgdesc = Python Script to download hundreds of images from 'Google Images'. It is a ready-to-run code
+	pkgver = r156.0d2bf8f
+	pkgrel = 1
+	url = https://github.com/hardikvasa/google-images-download
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = google-images-download
+	source = google-images-download::git+https://github.com/hardikvasa/google-images-download
+	sha256sums = SKIP
+
+pkgname = google-images-download-git
+
