@@ -1,0 +1,16 @@
+pkgbase = vim-project
+	pkgdesc = Organize and navigate projects of files (like an ide/buffer explorer)
+	pkgver = 1.4.1
+	pkgrel = 10
+	url = http://www.vim.org/scripts/script.php?script_id=69
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = https://www.vim.org/scripts/download_script.php?src_id=6273
+	source = LICENSE
+	md5sums = 95ddb23f0e301a79e869c608a36637de
+	md5sums = 64ab6c0d41d5153d51439913d23f71ae
+
+pkgname = vim-project
+
