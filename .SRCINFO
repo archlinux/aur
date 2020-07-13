@@ -1,4 +1,4 @@
-pkgbase = brother-mfcl8690-lpr-bin
+pkgbase = brother-mfcl8690cdw-lpr-bin
 	pkgdesc = LPR driver for Brother MFC-L8690CDW printer
 	pkgver = 1.5.0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = brother-mfcl8690-lpr-bin
 	source = https://download.brother.com/welcome/dlf103241/mfcl8690cdwlpr-1.5.0-0.i386.deb
 	md5sums = ad337bc8c29e54c06a87307e44cb8aae
 
-pkgname = brother-mfcl8690-lpr-bin
+pkgname = brother-mfcl8690cdw-lpr-bin
 

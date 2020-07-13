@@ -1,6 +1,6 @@
 # Maintainer: Pat Carter <patcarter883@gmail.com>
 
-pkgname=brother-mfcl8690-lpr-bin
+pkgname=brother-mfcl8690cdw-lpr-bin
 pkgver=1.5.0
 pkgrel=1
 pkgdesc="LPR driver for Brother MFC-L8690CDW printer"
