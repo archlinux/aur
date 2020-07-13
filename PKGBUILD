@@ -12,11 +12,8 @@ arch=('any')
 url="https://gitlab.com/bwbuhse/${_name}"
 license=('MIT')
 source=("git+${url}")
-makedepends=('git' 'python' 'python-setuptools')
-depends=(
-  'python>=3.8'
-  'python-setuptools'
-  )
+makedepends=('git' 'python-setuptools')
+depends=('python>=3.8')
 md5sums=('SKIP')
 
 pkgver() {
