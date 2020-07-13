@@ -1,7 +1,7 @@
 # Maintainer: ThePaulODoom <pblemmermann@gmail.com>
 pkgname=macho
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Macho is a man page viewer by HiPhish"
 arch=('any')
 url="https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/"

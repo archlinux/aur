@@ -1,7 +1,7 @@
 pkgbase = macho
 	pkgdesc = Macho is a man page viewer by HiPhish
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
 	arch = any
 	license = GPL
