@@ -16,14 +16,14 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
-pkgver=0.4.r9.g0d98bbc
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
 url='https://github.com/sirspudd/artriculate'
 license=('GPL3')
-source=("git://github.com/sirspudd/artriculate")
-sha256sums=('SKIP')
+source=("$pkgname-${pkgver}::https://github.com/sirspudd/artriculate/archive/${pkgver}.tar.gz")
+sha256sums=('8b4c1d2d811f63297ec541f2421ef84c81a1f82902b589179a251a33cf494af4')
 options=('!strip')
 
 if [[ -n "$_piver" ]]; then
@@ -31,27 +31,14 @@ if [[ -n "$_piver" ]]; then
   makedepends=("qt-sdk-raspberry-pi${_piver}")
 fi
 
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  git submodule init
-  git submodule update
-}
-
-pkgver () {
-  cd "$srcdir/$pkgname"
-
-  git describe --tags --long | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
-  cd "$srcdir"/"$pkgname"
+  cd $pkgname-${pkgver}
   $_qmake
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${pkgname}-${pkgver}
 
   INSTALL_ROOT="$pkgdir" make install
 }
