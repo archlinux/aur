@@ -2,7 +2,7 @@
 
 pkgname=vpn-unlimited
 pkgver=7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="VPN Unlimited client application"
 arch=("x86_64")
 url="https://www.vpnunlimitedapp.com"
@@ -10,12 +10,12 @@ license=('custom:"Copyright (c) 2018 KeepSolid Inc."')
 
 source_x86_64=(
   "vpn-unlimited-daemon.service"
-  "http://apt.keepsolid.com/deb/dists/stable/main/binary-amd64/vpn_unlimited_v7.0_amd64.deb"
+  "http://apt.keepsolid.com/debian/dists/buster/main/binary-amd64/vpn-unlimited_7.0+deb10-amd64.deb"
 )
 
 sha256sums_x86_64=(
   "dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41"
-  "9d7f72353256a2e26843dcaa317440e0b14c61be8f0c48466a7ce65223aec908"
+  "b1394bba3de9c4da23f83d29d989e9e72cd8b040cfd3386bcb313e63036085e9"
 )
 
 depends=(
