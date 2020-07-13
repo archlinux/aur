@@ -1,6 +1,6 @@
 pkgbase = python-oci
 	pkgdesc = Python SDK for Oracle Cloud Infrastructure
-	pkgver = 2.17.1
+	pkgver = 2.17.2
 	pkgrel = 1
 	url = https://github.com/oracle/oci-python-sdk
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = python-oci
 	depends = python-cryptography
 	depends = python-pyopenssl
 	depends = python-pytz
-	source = python-oci-2.17.1.tar.gz::https://github.com/oracle/oci-python-sdk/archive/v2.17.1.tar.gz
+	source = python-oci-2.17.2.tar.gz::https://github.com/oracle/oci-python-sdk/archive/v2.17.2.tar.gz
 	source = python-oci.patch
-	sha256sums = 8141d7dfe9e59b4bee6d72fbd763d357d1f38d571a1e655ec40fbc42a73a1d1c
-	sha256sums = 0b8f817f0c19c8b82bb1988f0476143a57af4739e006496bdf4b1e3c4b0c6d19
+	sha256sums = 6b91dd983d2ec061d3fc32717afe9ae21bdde4d95d6fdbe5a33a2e779da414bf
+	sha256sums = 90822a8c23795dc679bdd9058130dcb6b89cd596a940a62dac53c1fc38c58681
 
 pkgname = python-oci
 
