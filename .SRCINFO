@@ -1,0 +1,17 @@
+pkgbase = kak-prelude-git
+	pkgdesc = Prelude of shell blocks for Kakoune
+	pkgver = r1.05b2642
+	pkgrel = 1
+	url = https://github.com/alexherbo2/prelude.kak
+	install = kak-prelude-git.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = kakoune
+	provides = kak-prelude
+	conflicts = kak-prelude
+	source = git+https://github.com/alexherbo2/prelude.kak
+	sha256sums = SKIP
+
+pkgname = kak-prelude-git
+

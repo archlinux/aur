@@ -1,0 +1,6 @@
+post_install() {
+	echo
+	echo If you use a custom autoload directory, do not forget to create a \
+	symbolic link inside the directory to /usr/share/kak/rc/addons.
+	echo
+}
