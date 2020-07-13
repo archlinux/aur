@@ -1,8 +1,8 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 # Contributor: Sebastian Gumprich <sebastian.gumprich@38.de>
 pkgname=tuxemon-git
-pkgver=0.4.25.r5.a133d6262
-pkgrel=1
+pkgver=0.4.25.r5.g2c741edc
+pkgrel=2
 pkgdesc="A free, open source monster-fighting RPG."
 arch=('any')
 url="http://www.tuxemon.org"
@@ -23,8 +23,9 @@ pkgver() {
     _version="$(echo $_info | awk '{print $4}')"
     _commit="$(echo $_info | awk '{print $1}')"
     _revisions="$(git rev-list --count $_commit..HEAD)"
+    _current_commit="$(git log --pretty=format:'%h' -n 1)"
 
-    printf "%s.r%s.%s" $_version $_revisions $_commit
+    printf "%s.r%d.g%s" $_version $_revisions $_current_commit
 }
 
 prepare() {
