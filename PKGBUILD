@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.6.r148.gad50383e
+pkgver=0.5.7.r46.ga8ae60e9
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -33,6 +33,12 @@ pkgver() {
 
 }
 
+build() {
+  cd ${_pkgname}
+  
+  python setup.py build
+}
+
 check() {
   cd ${_pkgname}
 
@@ -42,5 +48,8 @@ check() {
 package() {
   cd ${_pkgname}
 
-  python setup.py install --root="${pkgdir}" --optimize='1'
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  # Temporary fix
+  mkdir -p ${pkgdir}/usr/lib/python3.8/site-packages/lutris/runners/json
 }
