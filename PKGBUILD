@@ -1,6 +1,6 @@
 # Maintainer: Pat Carter <patcarter883@gmail.com>
 
-pkgname=brother-mfcl8690-cups-bin
+pkgname=brother-mfcl8690cdw-cups-bin
 pkgver=1.5.0
 pkgrel=1
 pkgdesc="CUPS driver for Brother MFC-L8690CDW printer"
