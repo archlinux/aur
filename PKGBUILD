@@ -10,7 +10,6 @@ license=('GPL2')
 provides=('qtscrobbler')
 depends=('qt4' 'libmtp')
 makedepends=('qt4')
-optdepends=('adwaita-icon-theme')
 source=("${pkgname}-${pkgver}.tar.bz2::http://sourceforge.net/projects/qtscrob/files/qtscrob/${pkgver}/qtscrob-${pkgver}.tar.bz2/download")
 sha256sums=('01c8e48f616ed09504833d27d92fd62f455bd645ea2d1cc2a5f4c287d641daba')
 
