@@ -1,5 +1,5 @@
 pkgbase = fzwal-git
-	pkgdesc = A pywal theme picker based on fzf.
+	pkgdesc = A pywal theme picker with live preview based on fzf.
 	pkgver = r3.81149c3
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/fzwal
