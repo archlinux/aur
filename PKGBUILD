@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=breeze-icons-git
-pkgver=5.55.0.r1256.d2dce05f
+pkgver=5.72.0.r1595.2c1ccab2
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('extra-cmake-modules'
              )
 provides=('breeze-icons')
 conflicts=('breeze-icons')
-source=('git://anongit.kde.org/breeze-icons.git')
+source=('git+https://invent.kde.org/frameworks/breeze-icons.git')
 sha256sums=('SKIP')
 
 pkgver(){
