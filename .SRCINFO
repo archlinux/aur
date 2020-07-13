@@ -1,13 +1,11 @@
 pkgbase = just-git
 	pkgdesc = A handy way to save and run project-specific commands
-	pkgver = 0.3.13.r0.849cdcb
+	pkgver = 0.6.1.r1.cea4a16
 	pkgrel = 1
 	url = https://github.com/casey/just
 	arch = i686
 	arch = x86_64
-	license = APACHE
-	license = custom:MIT
-	license = custom:WTFPL
+	license = custom:CC0
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
