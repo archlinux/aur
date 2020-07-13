@@ -6,7 +6,6 @@ pkgbase = otf-fira-code-symbol
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip
 	md5sums = aa76674049761a31d20379679d6a32b3
 
