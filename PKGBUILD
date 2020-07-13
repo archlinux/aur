@@ -1,7 +1,7 @@
 # Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
 pkgname=shdoc-git
 _pkgname=shdoc
-pkgver=1.0.0
+pkgver=20200713.38_02f326e
 pkgrel=1
 pkgdesc="generate documentation for shell scripts"
 arch=('i686' 'x86_64')
