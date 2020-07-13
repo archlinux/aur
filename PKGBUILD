@@ -14,7 +14,7 @@ sha256sums=('a5c6eb08e3ed14d96da89b16c79dcb2d19e2344696b09b3b2f2f3addc98ca65b')
 
  build() {
   cd "${pkgname}_${pkgver}/src"
-  # rm -rf build
+  rm -rf build
   mkdir -p build
   cd build
   qmake-qt4 PREFIX=/usr ..
