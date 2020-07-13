@@ -30,4 +30,5 @@ package() {
     install -d -m755 $pkgdir/usr/share/pixmaps
     install -m644 iwbtg.desktop $pkgdir/usr/share/applications
     install -m644 iwbtg.png $pkgdir/usr/share/pixmaps
+    install -m644 iwbtg.exe $pkgdir/usr/share/$pkgname
 }
