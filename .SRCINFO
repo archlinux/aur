@@ -1,0 +1,19 @@
+pkgbase = vim-colorsamplerpack
+	pkgdesc = Different colorschemes for vim
+	pkgver = 2012.10.28
+	pkgrel = 6
+	url = http://www.vim.org/scripts/script.php?script_id=625
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = unzip
+	depends = vim
+	source = ColorSamplerPack.zip::https://www.vim.org/scripts/download_script.php?src_id=18915
+	source = LICENSE
+	sha256sums = 2d0b07a36fa52728f45850933a35ab6172913262fb3aaa2cb32e597cf75859f3
+	sha256sums = 6d9e25d62ca66835eb24209c8e7ef973932165f65e96f615639027418ab6742d
+
+pkgname = vim-colorsamplerpack
+
