@@ -4,7 +4,7 @@ _pkgname=task
 pkgver=2.8.1
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 depends=(
 )
