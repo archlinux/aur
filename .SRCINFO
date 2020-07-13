@@ -1,0 +1,15 @@
+pkgbase = vim-omnicppcomplete
+	pkgdesc = vim c++ completion omnifunc with a ctags database
+	pkgver = 0.4.1
+	pkgrel = 10
+	url = http://www.vim.org/scripts/script.php?script_id=1520
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	depends = ctags
+	source = omnicppcomplete.zip::https://www.vim.org/scripts/download_script.php?src_id=7722
+	md5sums = 0978a565f95d8980a0035133144db639
+
+pkgname = vim-omnicppcomplete
+
