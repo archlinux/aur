@@ -1,0 +1,20 @@
+pkgbase = iwbtg
+	pkgdesc = I Wanna Be the Guy, a nail-rippingly difficult platform adventure game(via wine).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://kayin.moe/iwbtg/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	source = iwbtg.sh
+	source = iwbtg.desktop
+	source = iwbtg.png
+	source = https://raw.githubusercontent.com/NiYanhhhhh/wine-iwbtg/master/iwbtg.exe
+	md5sums = de16e318e16a6f3022f914bbaa7c8808
+	md5sums = 2be6fb940b4b35c64dea159b47b29747
+	md5sums = 07cab17ae7dea4a85069239eb37b5fa3
+	md5sums = 7fa61f9a2f95f61cc5392fc127d5027d
+
+pkgname = iwbtg
+

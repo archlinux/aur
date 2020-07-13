@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0.0
+Type=Application
+Name=Cemu
+Comment=I Wanna Be the Guy, a nail-rippingly difficult platform adventure game
+Exec=/usr/bin/iwbtg
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/iwbtg.png
+Categories=Game;
+Terminal=false
+StartupNotify=true
+StartupWMClass=iwbtg.exe
