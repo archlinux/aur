@@ -1,6 +1,6 @@
 pkgbase = artriculate-git
 	pkgdesc = QML box2d application for displaying artwork
-	pkgver = 0.7.0.r15.g49a2046
+	pkgver = 0.7.0.r42.g757112b
 	pkgrel = 1
 	url = https://github.com/sirspudd/artriculate
 	arch = any

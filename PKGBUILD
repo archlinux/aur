@@ -14,15 +14,15 @@ _pi_qmake_static="/opt/qt/qt-sdk-raspberry-pi${_piver}-static/bin/qmake"
 _qmake_static="/opt/qt/qt-sdk-static/bin/qmake"
 _static=false
 
-if [[ -x "${_pi_qmake_static}" ]]; then
-  _qmake=${_pi_qmake_static}
-  _static=true
-elif [[ -x "${_pi_qmake}" ]]; then
-  _qmake=${_pi_qmake}
-elif [[ -x "${_qmake_static}" ]]; then
-  _qmake=${_qmake_static}
-  _static=true
-fi
+#if [[ -x "${_pi_qmake_static}" ]]; then
+#  _qmake=${_pi_qmake_static}
+#  _static=true
+#elif [[ -x "${_pi_qmake}" ]]; then
+#  _qmake=${_pi_qmake}
+#elif [[ -x "${_qmake_static}" ]]; then
+#  _qmake=${_qmake_static}
+#  _static=true
+#fi
 
 if [[ -n "$_piver" ]]; then
   if ! $_static; then
@@ -37,7 +37,7 @@ _pkgname=artriculate
 pkgname=${_pkgname}-git
 provides=(artriculate)
 conflicts=(artriculate)
-pkgver=0.7.0.r15.g49a2046
+pkgver=0.7.0.r42.g757112b
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
