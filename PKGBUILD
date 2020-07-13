@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 
 pkgname=matrix-registration
-pkgver=0.6.0.dev2
+pkgver=0.7.0
 pkgrel=1
 
 pkgdesc="Webapp for token based matrix registration"
@@ -17,8 +17,8 @@ checkdepends=('python-parameterized')
 source=("matrix-registration-$pkgver.tar.gz::https://github.com/ZerataX/matrix-registration/archive/v$pkgver.tar.gz"
 	"matrix-registration.service")
 
-sha256sums=('24109f973abd9ce2ec4bfe94b11a7c5b5e78565945245f4e772cffe52eee6ac3'
-            'd4658ca6b2c6f8769f8f2a692c7428b72cd535fac7107fbc67ff4a8fe48370f8')
+sha256sums=('19370d7a03338ec13fac426fb30d1b8a99ea2081cbbd986d03529f0f5bcf840a'
+            '2b58afe380dc186ec1cb38838f8f6b819a1cdf5b1e674492986c80f39ed22dfd')
 install=matrix-registration.install
 
 build() {

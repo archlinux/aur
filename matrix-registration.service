@@ -5,7 +5,7 @@ Requires=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/matrix_registration --config-path /etc/matrix-registration/config.yaml serve
+ExecStart=/usr/bin/matrix-registration --config-path /etc/matrix-registration/config.yaml serve
 WorkingDirectory=/var/lib/matrix-registration
 DynamicUser=true
 ConfigurationDirectory=matrix-registration
