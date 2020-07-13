@@ -1,8 +1,9 @@
 pkgbase = sipvicious
-	pkgdesc = SIPVicious is a set of tools that can be used to audit SIP VoIP systems.
+	pkgdesc = Set of security tools that can be used to audit SIP based VoIP systems
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EnableSecurity/sipvicious
+	changelog = sipvicious.changelog
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
