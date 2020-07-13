@@ -8,7 +8,7 @@ pkgbase = shdoc-git
 	license = GPL
 	makedepends = git
 	depends = gawk
-	source = shdoc::git+ssh://github.com/reconquest/shdoc
+	source = shdoc-git::git+ssh://github.com/reconquest/shdoc
 	md5sums = SKIP
 
 pkgname = shdoc-git

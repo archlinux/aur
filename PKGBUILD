@@ -10,7 +10,7 @@ makedepends=('git')
 depends=('gawk')
 url="https://github.com/reconquest/shdoc"
 source=(
-	"shdoc::git+ssh://github.com/reconquest/shdoc"
+	"$pkgname::git+ssh://github.com/reconquest/shdoc"
 )
 
 md5sums=(
