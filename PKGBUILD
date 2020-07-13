@@ -1,18 +1,19 @@
-# Maintainer: Sumit Sahrawat <contact@sums.dev>
+# Maintainer: 
+# Contributer: Sumit Sahrawat <contact@sums.dev>
 # Contributor: sballert <sballert@posteo.de>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=all-the-icons.el
 _pkgmaintainer=domtronn
 _versionprefix=
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Icon font for all-the-icons.el (A utility package to collect various Icon Fonts and propertize them within Emacs.)"
 pkgname=ttf-all-the-icons
 arch=(any)
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('MIT')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-mkfontdir' 'xorg-bdftopcf')
 makedepends=('woff2')
 provides=('ttf-atom-file-icons' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-octicons' 'ttf-weather-icons')
 conflicts=('ttf-octicons')
