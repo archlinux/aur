@@ -1,21 +1,19 @@
+# Maintainer: Lari Tikkanen <lartza@outlook.com>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-html-selector-xpath'
-pkgver='0.18'
-pkgrel='1'
+pkgname=perl-html-selector-xpath
+pkgver=0.25
+pkgrel=1
 pkgdesc="CSS Selector to XPath compiler"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
-makedepends=()
 checkdepends=('perl-test-base>=0')
-url='http://search.cpan.org/dist/HTML-Selector-XPath'
-source=('http://search.cpan.org/CPAN/authors/id/C/CO/CORION/HTML-Selector-XPath-0.18.tar.gz')
-md5sums=('bb46fc14bb6ea3169a6176db00cc68f6')
-sha512sums=('bb51d8daaa80a5563934ee5caab885de69b07ed8a5862c9956613ff152ecec33fa2d40ee1adab37714a56c77aea69fb1db62734809c2e3016c0a5acc207b6578')
-_distdir="HTML-Selector-XPath-0.18"
+url="https://metacpan.org/release/HTML-Selector-XPath"
+source=("http://search.cpan.org/CPAN/authors/id/C/CO/CORION/HTML-Selector-XPath-$pkgver.tar.gz")
+sha512sums=('91430ae4898908c65ee2c527fd589fed16ac2699af028a51949c6fe2a7c84552dfdd370ad35a0fea4564914b1799b65efbf7025ace0fd9aa06e47081ce9b3bc8')
+_distdir="HTML-Selector-XPath-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
