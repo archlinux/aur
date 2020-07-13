@@ -2,7 +2,7 @@
 
 pkgname=weylus-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Weylus - Use your tablet as graphic tablet/touch screen on your computer."
 arch=('x86_64')
 url="https://github.com/H-M-H/Weylus"
@@ -14,4 +14,4 @@ package() {
     install -vDm755 weylus "$pkgdir/usr/bin/weylus"
 }
 
-depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite)
+depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite glu)
