@@ -2,7 +2,7 @@
 pkgname=ensenso-sdk
 pkgdesc="Ensenso SDK and tools"
 pkgver=2.3.1536
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
@@ -21,31 +21,28 @@ sha512sums=('dcce023ec35dc1502a6557a1d8c08b7d40d7a7ddf3b9b48e48e2582a4e5a79da057
 # Stripping results in a segfaulting NxView somehow.
 options=(!strip)
 
-_install_dir() {
-	local source_dir="$1"
-	local target_dir="$2"
-	local mode="$3"
-
-	for file in $(find "$source_dir" -type f); do
-		install -m "$mode" -D "$file" "$target_dir/${file#${source_dir}/}"
-	done
-}
-
 package() {
 	local dir="$srcdir/ensenso-sdk-$pkgver-x64-c01d55d"
 
-	_install_dir  "$dir/usr/lib"                            "$pkgdir/usr/lib"                      755
-	_install_dir  "$dir/opt/ensenso/bin"                    "$pkgdir/usr/bin"                      755
-	_install_dir  "$dir/opt/ensenso/manual/html"            "$pkgdir/usr/share/doc/$pkgname"       644
-	_install_dir  "$dir/opt/ensenso/development/c/include"  "$pkgdir/usr/include/ensenso"          644
-	_install_dir  "$dir/opt/ensenso/development/examples"   "$pkgdir/usr/share/$pkgname/examples"  644
-	_install_dir  "$dir/opt/ensenso/development/halcon"     "$pkgdir/usr/share/$pkgname/halcon"    644
+	mkdir -p "$pkgdir/usr"
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/include"
+	mkdir -p "$pkgdir/usr/share/doc"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
-	ln -s "NxView"     "$pkgdir/usr/bin/nxView"
-	ln -s "NxCalTab"   "$pkgdir/usr/bin/nxCalTab"
-	ln -s "NxProfiler" "$pkgdir/usr/bin/nxProfiler"
-	ln -s "NxTreeEdit" "$pkgdir/usr/bin/nxTreeEdit"
+	cp -a "$dir/usr/lib" "$pkgdir/usr/"
+	cp -a "$dir/opt" "$pkgdir/"
 
-	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D "$dir/Readme"               "$pkgdir/usr/share/doc/ensenso/README"
+	rm -r "$pkgdir/opt/ensenso/lib"
+
+	ln -s "/opt/ensenso/manual/html"           "$pkgdir/usr/share/doc/$pkgname"
+	ln -s "/opt/ensenso/development/c/include" "$pkgdir/usr/include/ensenso"
+
+	ln -s "/opt/ensenso/bin/NxView"     "$pkgdir/usr/bin/nxView"
+	ln -s "/opt/ensenso/bin/NxCalTab"   "$pkgdir/usr/bin/nxCalTab"
+	ln -s "/opt/ensenso/bin/NxProfiler" "$pkgdir/usr/bin/nxProfiler"
+	ln -s "/opt/ensenso/bin/NxTreeEdit" "$pkgdir/usr/bin/nxTreeEdit"
+
+	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+	install -D "$dir/Readme"               "$pkgdir/opt/ensenso/"
 }

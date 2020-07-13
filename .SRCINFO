@@ -1,7 +1,7 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
 	pkgver = 2.3.1536
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ensenso.com
 	arch = x86_64
 	license = custom
