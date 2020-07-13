@@ -2,7 +2,7 @@
 
 pkgname=nodejs-addon-api
 _npmname=${pkgname/js}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Node.js API (N-API)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq' 'moreutils')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('03038ea553554e28b2c158e9d46f1ec056d4ae7a20a6eb61fc0d3de47180ca7d')
+sha256sums=('af506717a431822926bae3c246f69fde341413e018b88fea34dce9eb6c62d295')
 noextract=("${source[@]##*/}")
 
 package() {
