@@ -1,0 +1,7 @@
+# Ignore everything and the explicitaly add back the packages we want
+*
+
+!PKGBUILD
+!PKGBUILD_EXTRAS
+!LICENSE
+!.SRCINFO
