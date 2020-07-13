@@ -1,0 +1,8 @@
+[Desktop Entry]
+GenericName=Chart Geany
+Name=ChartGeany
+Exec=/opt/chartgeany/ChartGeany
+Icon=/opt/chartgeany/chartgeany.png
+Type=Application
+Terminal=false
+Categories=Office;
