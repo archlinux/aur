@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
@@ -33,17 +33,16 @@ makedepends=(
 )
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('645fbfd7c04543c6d3bf415eab8250527813b8dc8e6d6972dbcc8cb525e1d409')
+sha512sums=('22e8d2f8b144f96a334aff1f7d183b91e6c5418482bd61553028ff571836b0ca13fff89e7e3cc1c2d08e106a430331d179e607d78b00e218baec433b6d140190')
+b2sums=('068a8a1722036a5a409331b1bdcf566cb9a1e7b4a27c78adec51c6d82f7c53cba9178c87013f1a9c0ef62d26b1ba876fad567e4c8bb41b8d478632699876e41d')
 
 build() {
   cd "${_name}-${pkgver}"
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
   export CC='gcc -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DFLUID_DAEMON_ENV_FILE=/etc/conf.d/fluidsynth \
         -DCMAKE_BUILD_TYPE='None' \
+        -DFLUID_DAEMON_ENV_FILE=/etc/conf.d/fluidsynth \
         -DLIB_SUFFIX=32 \
         -Denable-ladspa=ON \
         -Denable-portaudio=ON \
@@ -59,7 +58,7 @@ check() {
 }
 
 package() {
-  depends+=('libasound.so' 'libdbus-1.so' 'libglib-2.0.so' 'libgmodule-2.0.so'
+  depends+=('libasound.so' 'libglib-2.0.so' 'libgmodule-2.0.so'
   'libgobject-2.0.so' 'libinstpatch-1.0.so' 'libjack.so' 'libportaudio.so'
   'libsndfile.so')
   cd "${_name}-${pkgver}"
