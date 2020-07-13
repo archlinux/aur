@@ -1,0 +1,20 @@
+pkgbase = macho
+	pkgdesc = Macho is a man page viewer by HiPhish
+	pkgver = 1
+	pkgrel = 1
+	url = https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
+	arch = any
+	license = GPL
+	makedepends = curl
+	depends = man-db
+	depends = sed
+	depends = gawk
+	depends = grep
+	depends = coreutils
+	depends = fzf
+	provides = macho
+	source = macho::https://gitlab.com/snippets/1995457/raw
+	md5sums = SKIP
+
+pkgname = macho
+
