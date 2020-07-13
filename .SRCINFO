@@ -1,12 +1,12 @@
 pkgbase = notedown
 	pkgdesc = A simple, keyboard-driven, markdown note-taking app
-	pkgver = 1.7
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/subvisual/notedown
 	arch = any
 	license = MPL
 	depends = electron
-	source = https://github.com/subvisual/notedown/releases/download/v1.7/notedown-1.7.0.tar.gz
+	source = https://github.com/subvisual/notedown/releases/download/v1.8.0/notedown-1.8.0.tar.gz
 	source = notedown.desktop
 	source = icon.png
 	sha256sums = aab72870f8d9916e011a51aa860318c0e8c3d70daca01d36ddcfef9ea7ed6762

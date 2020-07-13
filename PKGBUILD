@@ -1,6 +1,6 @@
 pkgname=notedown
-pkgver=1.7
-filever=1.7.0
+pkgver=1.8.0
+filever=1.8.0
 pkgrel=1
 pkgdesc="A simple, keyboard-driven, markdown note-taking app"
 arch=('any')
