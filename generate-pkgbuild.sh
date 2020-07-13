@@ -3,7 +3,11 @@
 set -e
 
 usage() {
-    echo "Usage: $0 {stable|regular|rapid}" >&2
+    echo "Usage: $0 [{stable|regular|rapid}]" >&2
+}
+
+get_channel() {
+  echo ${PWD##*/} | grep -Eo '\-(stable|regular|rapid)-' | tr -d '\-'
 }
 
 get_major_version() {
@@ -12,6 +16,19 @@ get_major_version() {
         | xmllint --nocdata --xpath '(/feed/entry)[1]/content/text()' - \
         | rg -o 'v?(\d\.\d+)\.\d+-gke\.\d+' -r '$1'
 }
+
+if [ -z "$1" ];
+then
+  readonly channel=$(get_channel)
+  echo "Channel is not specified, automatically detected: $channel"
+  read -p "Is it correct? y/n " yn
+  case $yn in
+    [Yy]* ) set -- "$channel" ;;
+    * ) usage; exit 0;;
+  esac
+else
+  readonly channel=$1
+fi
 
 case $1 in
     -h)
@@ -29,8 +46,6 @@ esac
 
 
 readonly pkgname=kubectl
-
-readonly channel=$1
 
 readonly version=$(curl -sSL "https://gcsweb.k8s.io/gcs/kubernetes-release/release/stable-$major_version.txt")
 
