@@ -6,13 +6,13 @@
 
 pkgname=oxygen-sounds
 pkgdesc='KDE Oxygen sound pack'
-pkgver=5.19.2
+pkgver=5.19.3
 pkgrel=1
 arch=('x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
 source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-$pkgver.tar.xz")
-b2sums=('bc34cbd6591050eb426dca48d92b0fb26bf5e9982125c5d98d5a7cf609395f02f6b7eb61bc2c8192fd5c5d59bb9abe7b279835654c3400766019e7c291c0edc4')
+b2sums=('6f21647d7cd05e143319979e6660287213e951d8206ebbb88f86f593767b282455d44e9ff85287b1edfd7eeac39fc428922ab60874ff291687e3583af93a1606')
 
 package() {
   cd oxygen-$pkgver
