@@ -1,0 +1,12 @@
+pkgbase = ttf-andada
+	pkgdesc = Organic-slab serif font made for Guaraní and Spanish
+	pkgver = 1
+	pkgrel = 1
+	url = https://andada.huertatipografica.com/
+	arch = any
+	license = OFL
+	source = ttf-andada-1.zip::https://fonts.google.com/download?family=Andada
+	sha256sums = ca5fccc8c09ff8cc2f5053099ce87b711e54fb771cf5127cada825b2eaa63794
+
+pkgname = ttf-andada
+
