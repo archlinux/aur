@@ -1,0 +1,14 @@
+pkgbase = re7zip
+	pkgdesc = 7zip version capable of downloading files from archives on HTTP servers
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://reboot.pro/topic/17283-re7zip
+	arch = any
+	license = LGPL
+	depends = java-runtime>=8
+	depends = bash
+	source = re7zip-1.4.jar::https://github.com/ghuls/re7zip/releases/download/v1.4/re7zip.jar
+	sha256sums = ca926dbbf491cef2bc828484f2348518896aa18c775f8edbcf51302e71ad5fba
+
+pkgname = re7zip
+
