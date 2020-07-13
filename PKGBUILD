@@ -1,16 +1,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ufodiff
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='UFO source file diff application'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
 license=('MIT')
-depends=('python' 'python-commandlines' 'python-gitpython' 'python-standardstreams')
+depends=('python' 'python-commandlines' 'python-gitdb' 'python-gitpython>=3.1.5' 'python-smmap' 'python-standardstreams')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84b1e4f060e72619ccdc8e5c050125dd61463b5d5f704378b1c90bbdc3acfee6')
+sha256sums=('cf553ef888ededf440f1a45035bacb1a5559579146b43e5c6b241de11f7606c0')
 
 build() {
 	cd "$pkgname-$pkgver"
