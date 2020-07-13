@@ -1,0 +1,17 @@
+pkgbase = vim-vcscommand
+	pkgdesc = vim version control system integration plugin
+	pkgver = 1.99.47
+	pkgrel = 4
+	url = http://www.vim.org/scripts/script.php?script_id=90
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim>=7.0
+	replaces = vim-vsccommand
+	source = vcscommand.zip::https://www.vim.org/scripts/download_script.php?src_id=19809
+	source = license.txt
+	md5sums = 861c4e1a38664a19ce561527b9b94344
+	md5sums = cc76e422214169f380e6a1548f617778
+
+pkgname = vim-vcscommand
+
