@@ -13,8 +13,18 @@ license=('GPL-3.0')
 depends=(qt5-svg qt5-x11extras)
 optdepends=('qt5-translations: Support for translations')
 makedepends=(cmake qt5-tools)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('805cfa9f30af71c268160068bb53ccde618244e8')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "$url"/commit/38b333b5ff9318ae136d719c5fdd4c790c294833.diff)
+sha1sums=('805cfa9f30af71c268160068bb53ccde618244e8'
+          'd33f43ecc342cdfa36ce7783ccad6c35b57c50f1')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # "Fixed compilation on Qt 5.15",
+  # https://github.com/gyunaev/birdtray/commit/38b333b5ff9318ae136d719c5fdd4c790c294833
+  patch -Np1 -i ../38b333b5ff9318ae136d719c5fdd4c790c294833.diff
+}
 
 build() {
   mkdir -p build && cd build
