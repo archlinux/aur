@@ -1,6 +1,6 @@
 pkgbase = taskfile-git
 	pkgdesc = A task runner / simpler Make alternative written in Go
-	pkgver = v2.8.1.r7.g7dcb3af
+	pkgver = 2.8.1.r7.g7dcb3af
 	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = any
