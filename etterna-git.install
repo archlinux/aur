@@ -11,7 +11,8 @@ profiles, scores and songs under "~/.stepmania-5.0", not "/opt/etterna-git".
 NB: as of v0.70.1, even without portable mode on, the Etterna client is not
 hygienic about treating "/opt/etterna-git" as a read-only overlay. The song
 cache is still written there, not to your homedir. Hence, this package makes
-that directory world-writable.
+that directory world-writable. However, you should still put your songs in
+"~/.stepmania-5.0/Songs".
 EOF
 }
 
