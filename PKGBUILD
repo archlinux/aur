@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mothur
-pkgver=1.44.1
+pkgver=1.44.2
 pkgrel=1
 pkgdesc='A bioinformatics program for analyzing microbial communities.'
 arch=('x86_64')
@@ -11,23 +11,24 @@ license=('GPL3')
 depends=('boost-libs')
 makedepends=('boost' 'hdf5')
 options=('!buildflags')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v.${pkgver}.tar.gz")
-sha256sums=('0fd6e7a1affdadb782639db58b4d43b9194b78a1ddfb54f8901fbca215922bb5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('a79f55655a9519b357aa764972df8c5f183063ca8e278b46a204f5a2703e3d45')
 
 prepare() {
-  cd "${pkgname}-v.${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  sed -i 's/skipUchime),/skipUchime), source\/,/' Makefile  
+  sed -i 's/.\/make/make/g' Makefile
 }
 
 build() {
-  cd "${pkgname}-v.${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make
 }
 
 package() {
-  cd "${pkgname}-v.${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 mothur "${pkgdir}/usr/bin/mothur"
+  install -Dm755 uchime "${pkgdir}/usr/bin/uchime"
 }
