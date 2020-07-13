@@ -2,7 +2,7 @@
 pkgname=sleep-inhibitor
 pkgver=1.2
 pkgrel=1
-pkgdesc="Program to run plugins to inhibit system sleep/suspend/hibernate"
+pkgdesc="Program to run plugins to inhibit system sleep/suspend"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")

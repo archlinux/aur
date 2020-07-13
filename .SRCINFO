@@ -1,5 +1,5 @@
 pkgbase = sleep-inhibitor
-	pkgdesc = Program to run plugins to inhibit system sleep/suspend/hibernate
+	pkgdesc = Program to run plugins to inhibit system sleep/suspend
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bulletmark/sleep-inhibitor
