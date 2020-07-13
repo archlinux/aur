@@ -21,7 +21,12 @@ optdepends=(
   'python-evdev: Detecting connected joypads.'
   'python-pyinotify: Enhanced Steam integration.'
   'gamemode: Allows games to request a temporary set of optimisations.'
-  )
+  'vulkan-icd-loader: Vulkan support'
+  'lib32-vulkan-icd-loader: Vulkan support'
+  'vkd3d: Vulkan 3D support'
+  'lib32-vkd3d: Vulkan 3D support'
+  'gvfs: GVFS backend'
+  'python-pypresence: Discord RPC and Rich Presence')
 provides=('lutris')
 conflicts=('lutris')
 source=('git+https://github.com/lutris/lutris.git')
