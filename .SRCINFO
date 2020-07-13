@@ -1,0 +1,18 @@
+pkgbase = vim-a
+	pkgdesc = alternate files in vim quickly (.c -> .h etc)
+	pkgver = 2.18
+	pkgrel = 10
+	url = http://www.vim.org/scripts/script.php?script_id=31
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = https://www.vim.org/scripts/download_script.php?src_id=7218
+	source = https://www.vim.org/scripts/download_script.php?src_id=6347
+	source = LICENSE
+	md5sums = 6570438244f71e19be1e1b84a5a6c1ec
+	md5sums = 0fcef5054b1617fa8217c9bd0bede338
+	md5sums = 6f4ce554c0e43d79e1532c7ba0bf63fe
+
+pkgname = vim-a
+
