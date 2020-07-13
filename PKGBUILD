@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
@@ -52,7 +52,11 @@ package() {
 	install -Dm755 "scripts/$pkgname.bash" \
 		"$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm755 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions"
+
+	# Conflicts with zsh-suggestions, copy or symlink from the doc folder
 #	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/doc/$pkgname/_$pkgname"
+
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/$pkgname-LICENSE"
 	install -Dm644 "doc/$pkgname.1" -t "$pkgdir/usr/share/man/man1"
 
