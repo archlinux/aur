@@ -2,16 +2,15 @@
 pkgname=just-bin
 _realname=just
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A handy way to save and run project-specific commands"
 arch=("x86_64")
 url="https://github.com/casey/${_realname}"
 license=("custom:CC0")
-depends=("gcc-libs")
 provides=("just")
 conflicts=("just")
-source=("https://github.com/casey/${_realname}/releases/download/v${pkgver}/${_realname}-v${pkgver}-${arch}-unknown-linux-musl.tar.gz")
-sha256sums=("9f22294fd0b130ef924a37403e761ea8e26d627bca8c8bb6010089af82e96400")
+source_x86_64=("https://github.com/casey/${_realname}/releases/download/v${pkgver}/${_realname}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
+sha256sums_x86_64=("9f22294fd0b130ef924a37403e761ea8e26d627bca8c8bb6010089af82e96400")
 
 package() {
   cd "${srcdir}"

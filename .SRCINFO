@@ -1,15 +1,14 @@
 pkgbase = just-bin
 	pkgdesc = A handy way to save and run project-specific commands
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casey/just
 	arch = x86_64
 	license = custom:CC0
-	depends = gcc-libs
 	provides = just
 	conflicts = just
-	source = https://github.com/casey/just/releases/download/v0.6.1/just-v0.6.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 9f22294fd0b130ef924a37403e761ea8e26d627bca8c8bb6010089af82e96400
+	source_x86_64 = https://github.com/casey/just/releases/download/v0.6.1/just-v0.6.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 9f22294fd0b130ef924a37403e761ea8e26d627bca8c8bb6010089af82e96400
 
 pkgname = just-bin
 
