@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4.r40.g6fb42db
+pkgver=0.10.5.r45.g193fded
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -39,8 +39,7 @@ depends+=('libfreetype.so'
           'libicudata.so'
           'libicui18n.so'
           'libicuio.so'
-          'libicuuc.so'
-          'libtexpdf.so')
+          'libicuuc.so')
 makedepends=('git'
              'noto-fonts-cjk'
              'poppler'
