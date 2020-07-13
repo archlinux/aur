@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-cache_purge
-pkgver=2.5
-pkgrel=22
+pkgver=2.5.1
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.1
@@ -24,7 +24,7 @@ validpgpkeys=(
 
 sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
             'SKIP'
-            '2df8501c7ffcac44d4932939faa686fc3cc56e05cfc05bc411bda3313b05dbdd')
+            '9db968170c301168c4a623bce3fefe8bfd93d676c2006d1a8b2d5eec668cc22c')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
