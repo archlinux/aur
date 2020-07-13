@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr-preview
 _name=electron-ssr
-pkgver=0.3.0a3
+pkgver=0.3.0a6
 _pkgver=${pkgver/a/-alpha.}
 pkgrel=1
 pkgdesc='Shadowsocksr client using electron (Pre-release).'
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocksrr/electron-ssr/
         'electron-ssr.desktop'
         'electron-ssr.sh')
 
-sha256sums=('55fa9908df8e87e617024d4072f801f2f69afa16e4d11ef4170f56270041d330'
+sha256sums=('c6a022e84e2678992b968dc02dd3d54de8d471a56588a37d105aa1b44ccdc9a2'
             '87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             'f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446'
             'ae121e8a6995358b7e23881102e22b011a520f859b62675c129b5f99800bea0e')
