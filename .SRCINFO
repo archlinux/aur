@@ -1,12 +1,13 @@
 pkgbase = swayout
 	pkgdesc = A simple bash script which helps organizing multiple sway output profiles
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~rumpelsepp/swayout
 	arch = any
 	license = GPL3
 	makedepends = asciidoctor
 	depends = sway
+	depends = jq
 	source = swayout-1.tar.gz::https://git.sr.ht/~rumpelsepp/swayout/archive/v1.tar.gz
 	sha256sums = 44c5c8a9420c7760409b2eb136611040988cb616aee579a7a4dde6b153fd1399
 
