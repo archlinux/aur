@@ -1,0 +1,13 @@
+pkgbase = liar
+	pkgdesc = Linux Installer for Archives (liar) is an easy to use command to install, list and remove software packaged as an archive on Linux systems
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/beego/bee
+	arch = any
+	license = GPL3
+	depends = bash
+	source = liar-0.1.tar.gz::https://framagit.org/grumpyf0x48/liar/-/archive/0.1/liar-0.1.tar.gz
+	sha256sums = befe9358b85512723bf68befbc2443b068ba43c4c1af09c25a9ac4f277e04535
+
+pkgname = liar
+
