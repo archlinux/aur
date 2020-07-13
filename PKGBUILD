@@ -17,13 +17,13 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.2.7
-_rev="live.1"
+_pkgver=1.2.8
+_rev="beta.1"
 _srcver="$_pkgver"-"$_rev"
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver"."$_rev"
-pkgrel=3
+pkgrel=1
 
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -39,7 +39,7 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/v"$_srcver".tar.gz"
 	"bridge.service")
-sha256sums=('5a4c19b769cd72097507de6840b79e56d37fa6a54cf7269d4fec28c05016ca45'
+sha256sums=('f565f2d6cf2b3c5e8f4c49cac7c0e3392f49ff0f30d6154346fb36d56f51d3c9'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
