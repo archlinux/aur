@@ -1,7 +1,7 @@
 pkgbase = bitcoin-abc-qt
 	pkgdesc = Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt
 	pkgver = 0.21.10
-	pkgrel = 0
+	pkgrel = 1
 	url = https://bitcoinabc.org
 	install = bitcoin.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = bitcoin-abc-qt
 	depends = miniupnpc
 	depends = zeromq
 	depends = qrencode
+	depends = jemalloc
 	provides = bitcoin-cli
 	provides = bitcoin-daemon
 	provides = bitcoin-tx
