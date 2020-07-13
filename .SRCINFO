@@ -1,0 +1,15 @@
+pkgbase = yasw
+	pkgdesc = An application used to correct images taken with a camera
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/yascanw
+	arch = x86_64
+	license = GPL3
+	makedepends = qt4
+	makedepends = doxygen
+	depends = qt4
+	source = yasw-0.5.tgz::https://sourceforge.net/projects/yascanw/files/YASW%200.5/yasw_0.5.tgz/download
+	sha256sums = a5c6eb08e3ed14d96da89b16c79dcb2d19e2344696b09b3b2f2f3addc98ca65b
+
+pkgname = yasw
+
