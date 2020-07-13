@@ -8,7 +8,7 @@
 
 pkgbase=firefox-esr-i18n
 pkgver=78.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Language pack for Firefox ESR"
 arch=('any')
 license=(MPL GPL LGPL)
@@ -26,6 +26,7 @@ _languages=(
   'bn     "Bengali"'
   'br     "Breton"'
   'bs     "Bosnian"'
+  'ca-valencia "Catalan (Valencian)"'
   'ca     "Catalan"'
   'cak    "Maya Kaqchikel"'
   'cs     "Czech"'
@@ -100,7 +101,9 @@ _languages=(
   'ta     "Tamil"'
   'te     "Telugu"'
   'th     "Thai"'
+  'tl     "Tagalog"'
   'tr     "Turkish"'
+  'trs    "Chicahuaxtla Triqui"'
   'uk     "Ukrainian"'
   'ur     "Urdu"'
   'uz     "Uzbek"'
@@ -146,6 +149,7 @@ sha256sums=('0df5e93bfcf1d62b746b2aff955246f6e2f63c16867a3cc438f062cab72c03c3'
             '1dc201eccc3487a18cbfb6b253e7717df478e89ce2d2f1639f82e69ecaa852b9'
             'f5f853071a5c7e540db1056b577969897d5ef26cab830769a4135c205d6c9203'
             '8ead60ed130c177556557c709752687e24e9b16f72f97161a1f51fc199ab7736'
+            'bf0df92d80ed5d049598ea66320696cc721faaf2170be530774131cb8356bff8'
             'cb62ed9bbe1fdc05ced36ca2a816314db05f87838288460712f9caf0d1e7e995'
             '5e0a86576130bf69bdc213ca9849c2cb04d9ab08fd02fb0aaebc3bed392f5bb9'
             '2c66c0505c8f27ebb4532aaa65469e8ba199641160584bf4f1d0902c6c0e044f'
@@ -220,7 +224,9 @@ sha256sums=('0df5e93bfcf1d62b746b2aff955246f6e2f63c16867a3cc438f062cab72c03c3'
             'a6c63f54900ad486965b4c41944f2645d616e88e13dc985066c6f799f0161a39'
             '4df3786b0d88811332598b3d418ab223213c7f2b8b1a60657e78287a05638562'
             '74364e2a867852a05cd5f30905c395cda5900fb57cc2bbd986c7bc5ed39e1ed9'
+            '417c3e6af985d79ccddf62e44a888b0a847e0cf1b49d837f291821038571930c'
             'e86016ba0d4ae2b7605393a896ed0946b63fbc8acffea43d9442f250b31dba98'
+            '9a70d913f47c6facf595841b1126e3f5996a666a1290ce336612b33dca65b252'
             'a24f67893abfd1cec30afd5bf9b0e62d12e99773adc2a6674f1fd4a85c6a8900'
             'c086feab57e5b4f77a77e4cf296a16428939f24b8c5fe453165aadd1e0757ebc'
             '46c7eba22fa336f6054dc0eed31b8eecf8a73291f4d9407ed3d20c06fa3870ac'

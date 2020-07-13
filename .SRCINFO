@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-i18n
 	pkgdesc = Language pack for Firefox ESR
 	pkgver = 78.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = any
 	license = MPL
@@ -18,6 +18,7 @@ pkgbase = firefox-esr-i18n
 	noextract = firefox-esr-i18n-78.0.2-bn.xpi
 	noextract = firefox-esr-i18n-78.0.2-br.xpi
 	noextract = firefox-esr-i18n-78.0.2-bs.xpi
+	noextract = firefox-esr-i18n-78.0.2-ca-valencia.xpi
 	noextract = firefox-esr-i18n-78.0.2-ca.xpi
 	noextract = firefox-esr-i18n-78.0.2-cak.xpi
 	noextract = firefox-esr-i18n-78.0.2-cs.xpi
@@ -92,7 +93,9 @@ pkgbase = firefox-esr-i18n
 	noextract = firefox-esr-i18n-78.0.2-ta.xpi
 	noextract = firefox-esr-i18n-78.0.2-te.xpi
 	noextract = firefox-esr-i18n-78.0.2-th.xpi
+	noextract = firefox-esr-i18n-78.0.2-tl.xpi
 	noextract = firefox-esr-i18n-78.0.2-tr.xpi
+	noextract = firefox-esr-i18n-78.0.2-trs.xpi
 	noextract = firefox-esr-i18n-78.0.2-uk.xpi
 	noextract = firefox-esr-i18n-78.0.2-ur.xpi
 	noextract = firefox-esr-i18n-78.0.2-uz.xpi
@@ -111,6 +114,7 @@ pkgbase = firefox-esr-i18n
 	source = firefox-esr-i18n-78.0.2-bn.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/bn.xpi
 	source = firefox-esr-i18n-78.0.2-br.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/br.xpi
 	source = firefox-esr-i18n-78.0.2-bs.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/bs.xpi
+	source = firefox-esr-i18n-78.0.2-ca-valencia.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/ca-valencia.xpi
 	source = firefox-esr-i18n-78.0.2-ca.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/ca.xpi
 	source = firefox-esr-i18n-78.0.2-cak.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/cak.xpi
 	source = firefox-esr-i18n-78.0.2-cs.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/cs.xpi
@@ -185,7 +189,9 @@ pkgbase = firefox-esr-i18n
 	source = firefox-esr-i18n-78.0.2-ta.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/ta.xpi
 	source = firefox-esr-i18n-78.0.2-te.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/te.xpi
 	source = firefox-esr-i18n-78.0.2-th.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/th.xpi
+	source = firefox-esr-i18n-78.0.2-tl.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/tl.xpi
 	source = firefox-esr-i18n-78.0.2-tr.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/tr.xpi
+	source = firefox-esr-i18n-78.0.2-trs.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/trs.xpi
 	source = firefox-esr-i18n-78.0.2-uk.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/uk.xpi
 	source = firefox-esr-i18n-78.0.2-ur.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/ur.xpi
 	source = firefox-esr-i18n-78.0.2-uz.xpi::https://ftp.mozilla.org/pub/firefox/releases/78.0.2esr/linux-x86_64/xpi/uz.xpi
@@ -204,6 +210,7 @@ pkgbase = firefox-esr-i18n
 	sha256sums = 1dc201eccc3487a18cbfb6b253e7717df478e89ce2d2f1639f82e69ecaa852b9
 	sha256sums = f5f853071a5c7e540db1056b577969897d5ef26cab830769a4135c205d6c9203
 	sha256sums = 8ead60ed130c177556557c709752687e24e9b16f72f97161a1f51fc199ab7736
+	sha256sums = bf0df92d80ed5d049598ea66320696cc721faaf2170be530774131cb8356bff8
 	sha256sums = cb62ed9bbe1fdc05ced36ca2a816314db05f87838288460712f9caf0d1e7e995
 	sha256sums = 5e0a86576130bf69bdc213ca9849c2cb04d9ab08fd02fb0aaebc3bed392f5bb9
 	sha256sums = 2c66c0505c8f27ebb4532aaa65469e8ba199641160584bf4f1d0902c6c0e044f
@@ -278,7 +285,9 @@ pkgbase = firefox-esr-i18n
 	sha256sums = a6c63f54900ad486965b4c41944f2645d616e88e13dc985066c6f799f0161a39
 	sha256sums = 4df3786b0d88811332598b3d418ab223213c7f2b8b1a60657e78287a05638562
 	sha256sums = 74364e2a867852a05cd5f30905c395cda5900fb57cc2bbd986c7bc5ed39e1ed9
+	sha256sums = 417c3e6af985d79ccddf62e44a888b0a847e0cf1b49d837f291821038571930c
 	sha256sums = e86016ba0d4ae2b7605393a896ed0946b63fbc8acffea43d9442f250b31dba98
+	sha256sums = 9a70d913f47c6facf595841b1126e3f5996a666a1290ce336612b33dca65b252
 	sha256sums = a24f67893abfd1cec30afd5bf9b0e62d12e99773adc2a6674f1fd4a85c6a8900
 	sha256sums = c086feab57e5b4f77a77e4cf296a16428939f24b8c5fe453165aadd1e0757ebc
 	sha256sums = 46c7eba22fa336f6054dc0eed31b8eecf8a73291f4d9407ed3d20c06fa3870ac
@@ -308,6 +317,8 @@ pkgname = firefox-esr-i18n-bn
 pkgname = firefox-esr-i18n-br
 
 pkgname = firefox-esr-i18n-bs
+
+pkgname = firefox-esr-i18n-ca-valencia
 
 pkgname = firefox-esr-i18n-ca
 
@@ -457,7 +468,11 @@ pkgname = firefox-esr-i18n-te
 
 pkgname = firefox-esr-i18n-th
 
+pkgname = firefox-esr-i18n-tl
+
 pkgname = firefox-esr-i18n-tr
+
+pkgname = firefox-esr-i18n-trs
 
 pkgname = firefox-esr-i18n-uk
 
