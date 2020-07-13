@@ -1,0 +1,14 @@
+pkgbase = vim-guicolorscheme
+	pkgdesc = Auto convert gui-only colorschemes to 88/256 color terminal schemes
+	pkgver = 1.2
+	pkgrel = 6
+	url = http://www.vim.org/scripts/script.php?script_id=1809
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	source = guicolorscheme.vim::https://www.vim.org/scripts/download_script.php?src_id=10162
+	sha256sums = a30e0c06617def9753a086b80c4c32bfe8fa2fbcd47a8bfc9cb1d9e2e87a4aba
+
+pkgname = vim-guicolorscheme
+
