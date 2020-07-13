@@ -1,0 +1,29 @@
+pkgbase = uboot-odroid-c4
+	pkgdesc = U-Boot for ODROID-C4
+	pkgver = 2015.01
+	pkgrel = 1
+	url = https://github.com/hardkernel/u-boot
+	install = uboot-odroid-c4.install
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = bc
+	depends = uboot-tools
+	backup = boot/boot.ini
+	source = https://github.com/hardkernel/u-boot/archive/e0725c1dce0c3dbbae47478c13d968c41014fac8.tar.gz
+	source = boot.ini
+	source = 0001-sd_fusing-tweaks.patch
+	source = 0002-arch-linux-arm-modifications.patch
+	source = 91-uboot-uimg.hook
+	source = https://releases.linaro.org/archive/13.11/components/toolchain/binaries/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux.tar.xz
+	source = https://releases.linaro.org/archive/14.04/components/toolchain/binaries/gcc-linaro-arm-none-eabi-4.8-2014.04_linux.tar.xz
+	md5sums = e395576d9a8364112b1d9aa70e3f3533
+	md5sums = ee6b8c0d7dab64b1e4f4df239794c09b
+	md5sums = 131999d66dafbd06b0299d96787387e9
+	md5sums = 6a052fbc29065391291e3b87310fe26f
+	md5sums = 1931c8dfde7088530f173ca59fdb8989
+	md5sums = 5fd777bee04a79435a0861efd473ec0e
+	md5sums = 12d6e8a0cbd2d8e130cc8f55389a95c3
+
+pkgname = uboot-odroid-c4
+
