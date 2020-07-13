@@ -1,0 +1,16 @@
+pkgbase = parpar-bin
+	pkgdesc = A high-performance, multithreaded PAR2 creation tool
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/animetosho/ParPar
+	arch = x86_64
+	license = Public Domain
+	makedepends = npm
+	makedepends = node-gyp
+	depends = nodejs
+	provides = parpar
+	source = parpar-0.3.2.tar.gz::https://github.com/animetosho/ParPar/archive/v0.3.2.tar.gz
+	sha256sums = 422f0c78be2f820546029b6893892b24f84a4f8ace688de2243a86dc5190ab25
+
+pkgname = parpar-bin
+
