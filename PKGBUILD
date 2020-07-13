@@ -1,7 +1,7 @@
 # Maintainer: Vinay Shastry <vinayshastry at gmail dot com>
 
 pkgname=wormhole-william
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A go (golang) implementation of magic wormhole. It provides secure end-to-end encrypted file transfers between computers. It is compatible with the official python magic wormhole cli tool (see magic-wormhole package).'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('23025d39314a3f4a848b1a1093dc66c81c5173e8aac263009bd2bcf8e1644953')
+sha256sums=('8757847b13dc9830edeefcf467ebed9384646df4a325007ed6bf1840e4cb1260')
 
 build() {
     cd "${pkgname}-${pkgver}"
