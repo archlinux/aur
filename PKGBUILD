@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=pgroonga
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -35,5 +35,5 @@ package() {
         # Remove needless dotfiles
         rm -rf "$pkgdir/.*"
 }
-sha1sums=('11ea70860c3c7dfb4cb1d50305cc5ca8ee8a8249')
-sha256sums=('ff9962e4f5e54deb9876720739cb10bf0e14e4558e9ee636b96ea6de664a9253')
+sha1sums=('b5016a32c24731987e9c0ff634ee7cb72d99708a')
+sha256sums=('799bb56468d66e3e736759f1e19c0deb8368e07d354932f06979302309efd42a')
