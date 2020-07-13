@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-biosig
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Python module for reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://biosig.sourceforge.net/"
 license=('GPL')
 groups=()
 depends=('libbiosig' 'python-numpy' 'python-pkgconfig')
-makedepends=()
+makedepends=('python-wheel')
 optdepends=()
 provides=()
 conflicts=()
@@ -17,17 +17,17 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig4c%2B%2B-$pkgver.src.tar.gz)
+source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-$pkgver.src.tar.gz)
 noextract=()
-sha1sums=('a0f790e2e59d6e35a7ed618e02e98a8db571c235')
+sha1sums=('d3126f92b371c98bc75672ebc8c3242468338a57')
 
 build() {
-  cd "$srcdir/biosig4c++-$pkgver"
+  cd "$srcdir/biosig-$pkgver"
   ./configure
-  make biosig4python
+  make python
 }
 
 package() {
-  cd "$srcdir/biosig4c++-$pkgver/python"
+  cd "$srcdir/biosig-$pkgver/biosig4c++/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
