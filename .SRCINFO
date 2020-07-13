@@ -1,0 +1,19 @@
+pkgbase = thenewplayerfree-appimage
+	pkgdesc = An IPTV/vide/iso/blue-ray player for MacOS, Linux and FreeBSD.
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = https://sudormroot.github.io/thenewplayer_builds/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = thenewplayerfree
+	conflicts = thenewplayerfree
+	conflicts = thenewplayerfree-bin
+	noextract = thenewplayerfree-bin.linux.dynamic-build.1.6.8-1-1.amd64.AppImage
+	options = !strip
+	source = https://github.com/sudormroot/thenewplayer_builds/releases/download/thenewplayerfree-bin.linux.dynamic-build.1.6.8-1/thenewplayerfree-bin.linux.dynamic-build.1.6.8-1-1.amd64.AppImage
+	md5sums = 493c310fc32d4a9aaf6065dac7c53d5f
+
+pkgname = thenewplayerfree-appimage
+
