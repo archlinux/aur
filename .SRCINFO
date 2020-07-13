@@ -1,14 +1,14 @@
 pkgbase = mpv-tools
 	pkgdesc = Helper scripts from mpv/TOOLS
-	pkgver = 0.29.0
-	pkgrel = 2
+	pkgver = 0.32.0
+	pkgrel = 1
 	url = https://github.com/mpv-player/mpv
 	arch = any
 	license = GPL
 	depends = mpv
 	depends = bash
-	source = mpv-0.29.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.29.0.tar.gz
-	sha256sums = 772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319
+	source = mpv-0.32.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.32.0.tar.gz
+	sha256sums = 9163f64832226d22e24bbc4874ebd6ac02372cd717bef15c28a0aa858c5fe592
 
 pkgname = mpv-tools
 
