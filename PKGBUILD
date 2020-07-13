@@ -1,7 +1,7 @@
 # Maintainer: Jay Ta'ala <jay@jaytaala.com>
 pkgname=chart-geany
 pkgver=6.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Chart Geany is a free cross platform software solution for market technical analysis, charting and a portfolio manager."
 arch=('any')
 url="https://chart-geany.sourceforge.io/"
