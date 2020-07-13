@@ -17,7 +17,7 @@ groups=('liri-git')
 
 _gitroot="git://github.com/lirios/networkmanager.git"
 _gitbranch=develop
-_gitname=shell
+_gitname=networkmanager
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
