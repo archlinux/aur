@@ -6,7 +6,7 @@
 pkgbase=ant19
 _pkgbase=ant
 pkgname=('ant19' 'ant19-doc')
-pkgver=1.9.13
+pkgver=1.9.15
 pkgrel=1
 pkgdesc='Java based build tool'
 url='https://ant.apache.org/'
@@ -15,7 +15,7 @@ license=('APACHE')
 makedepends=('bash' 'java-environment=7' 'junit' 'java-hamcrest')
 source=(https://www.apache.org/dist/ant/source/apache-${_pkgbase}-${pkgver}-src.tar.bz2{,.asc}
         ant.conf)
-sha256sums=('fdefd01c909a69fbeab1c45a815e3a80d86351f61b992dfe2e2191d9b009aaaf'
+sha256sums=('7f7251009dc53e60afac47d0df6bd7e7d3cdba9fa7fec67b7a95412e8becdc8b'
             'SKIP'
             '23bbef577b56d48adb1985dbd9795e5533146646f1e8bb879dd061a4014ffcf2')
 validpgpkeys=(
