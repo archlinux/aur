@@ -1,0 +1,15 @@
+pkgbase = bookscanwizard
+	pkgdesc = A utility to help with Book scanning using cameras as a scanner. It will automate things such as cropping, rotating, fixing keystoning, fixing the DPI, and outputing it to tiff files that can be changed into PDF's or ebooks
+	pkgver = 2.0.2c
+	pkgrel = 1
+	url = https://sourceforge.net/projects/bookscanwizard
+	arch = any
+	license = GPL2
+	makedepends = gendesk
+	depends = java-environment>=7
+	depends = bash
+	source = bookscanwizard-2.0.2c.zip::https://sourceforge.net/projects/bookscanwizard/files/BookScanWizard_2.0.2c.zip/download
+	sha256sums = cfef50b1ed5601c6ec4041623a634b8a283fca4f5414a2353fdbef943852427a
+
+pkgname = bookscanwizard
+
