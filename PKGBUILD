@@ -6,7 +6,7 @@
 _pkgsrcname=all-the-icons.el
 _pkgmaintainer=domtronn
 _versionprefix=
-pkgver=4.0.2
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Icon font for all-the-icons.el (A utility package to collect various Icon Fonts and propertize them within Emacs.)"
 pkgname=ttf-all-the-icons
