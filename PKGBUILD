@@ -27,5 +27,8 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     mkdir -p "${pkgdir}/usr/bin/"
-    mv waybind "${pkgdir}/usr/bin/waybind"
+    install -Dm644 waybind "${pkgdir}/usr/bin/waybind"
+    echo $(pwd)
+    mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
+    install -Dm644 "udev/99-uinput.rules" "${pkgdir}/usr/lib/udev/rules.d/99-uinput.rules"
 }
