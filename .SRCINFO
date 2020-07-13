@@ -1,14 +1,14 @@
 pkgbase = python-pyscroll
-	pkgdesc = some basic modules to make scrolling pygame games
-	pkgver = 2.19.2
-	pkgrel = 2
+	pkgdesc = A generic module for making a fast scrolling image with pygame.
+	pkgver = 2.19.3
+	pkgrel = 1
 	url = https://github.com/bitcraft/pyscroll
 	arch = any
 	license = LGPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pygame
-	source = git://github.com/bitcraft/pyscroll.git#commit=b41c1016dfefd0e2d83a14a2ce40d7ad298c5b0f
+	source = git+https://github.com/bitcraft/pyscroll.git#commit=65a58a7fbe055a5e61dfa518b96fbc2fe8f907a5
 	md5sums = SKIP
 
 pkgname = python-pyscroll
