@@ -1,8 +1,8 @@
 pkgbase = mspgcc-ti
 	pkgdesc = GNU toolchain (as, gcc, g++, ld, gdb) for the TI MSP430 processor
-	pkgver = 8.3.1.0
+	pkgver = 9.2.0.0
 	pkgrel = 1
-	url = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html
+	url = https://www.ti.com/tool/download/MSP430-GCC-OPENSOURCE
 	install = mspgcc-ti.install
 	arch = i686
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = mspgcc-ti
 	options = !libtool
 	options = staticlibs
 	source = mspgcc-ti.sh
-	source = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-support-files-1.208.zip
+	source = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/msp430-gcc-support-files-1.210.zip
 	sha1sums = a4a81f1b041bf39c3f9c75d94c22d149d1ceee9e
-	sha1sums = 4b266c9bb4c61eb16bc95d85a12a3a7bd428f1cc
-	source_i686 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/8_3_1_0/export/msp430-gcc-8.3.1.25_linux32.tar.bz2
-	sha1sums_i686 = a20bd0abfc7c6b5e7eef2b6ef60eb6bc2d84373c
-	source_x86_64 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/8_3_1_0/export/msp430-gcc-8.3.1.25_linux64.tar.bz2
-	sha1sums_x86_64 = 63bafc3cd8562adf44ec6c1d43dc8c47030379a1
+	sha1sums = 9ca58e925f4c3cdbed46436dc4e0c43b2506632a
+	source_i686 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/msp430-gcc-9.2.0.50_linux32.tar.bz2
+	sha1sums_i686 = f133287193b3d9a71dd04e3f2dbe734ff267c0ec
+	source_x86_64 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/msp430-gcc-9.2.0.50_linux64.tar.bz2
+	sha1sums_x86_64 = eed9f3e8b0c11021f841b16de21912c3f0bcc35b
 
 pkgname = mspgcc-ti
 

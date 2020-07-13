@@ -1,29 +1,29 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=mspgcc-ti
-pkgver=8.3.1.0
+pkgver=9.2.0.0
 pkgrel=1
 pkgdesc="GNU toolchain (as, gcc, g++, ld, gdb) for the TI MSP430 processor"
 arch=('i686' 'x86_64')
-url="http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html"
+url="https://www.ti.com/tool/download/MSP430-GCC-OPENSOURCE"
 license=('GPL')
 depends=('elfutils' 'libmpc' 'zlib')
 options=(!strip !emptydirs !libtool staticlibs)
 PKGEXT=".pkg.tar"
 install=mspgcc-ti.install
 #http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-8.2.0.52_linux64.tar.bz2
-_name=msp430-gcc-8.3.1.25
+_name=msp430-gcc-9.2.0.50
 _tarbz2=${_name}_linux32.tar.bz2
 _tarbz2_x64=${_name}_linux64.tar.bz2
-_zip=msp430-gcc-support-files-1.208.zip
+_zip=msp430-gcc-support-files-1.210.zip
 source=("${pkgname}.sh"
-    "http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/$_zip")
-source_i686=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/8_3_1_0/export/$_tarbz2")
-source_x86_64=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/8_3_1_0/export/$_tarbz2_x64")
+    "http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/$_zip")
+source_i686=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/$_tarbz2")
+source_x86_64=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/$_tarbz2_x64")
 sha1sums=('a4a81f1b041bf39c3f9c75d94c22d149d1ceee9e'
-          '4b266c9bb4c61eb16bc95d85a12a3a7bd428f1cc')
-sha1sums_i686=('a20bd0abfc7c6b5e7eef2b6ef60eb6bc2d84373c')
-sha1sums_x86_64=('63bafc3cd8562adf44ec6c1d43dc8c47030379a1')
+          '9ca58e925f4c3cdbed46436dc4e0c43b2506632a')
+sha1sums_i686=('f133287193b3d9a71dd04e3f2dbe734ff267c0ec')
+sha1sums_x86_64=('eed9f3e8b0c11021f841b16de21912c3f0bcc35b')
 _install_dir=/opt/ti
 
 package() {
