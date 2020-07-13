@@ -1,5 +1,5 @@
 pkgbase = firefox-esr68-i18n
-	pkgdesc = Language pack for Firefox ESR
+	pkgdesc = Language pack for Firefox ESR 68
 	pkgver = 68.10.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/

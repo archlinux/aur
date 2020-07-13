@@ -8,7 +8,7 @@
 pkgbase=firefox-esr68-i18n
 pkgver=68.10.0
 pkgrel=1
-pkgdesc="Language pack for Firefox ESR"
+pkgdesc="Language pack for Firefox ESR 68"
 arch=('any')
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
