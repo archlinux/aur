@@ -1,6 +1,6 @@
 pkgbase = kappa-launcher-git
 	pkgdesc = Twitch launcher using rofi
-	pkgver = r49.b618337
+	pkgver = r54.76b757a
 	pkgrel = 1
 	url = https://github.com/jp1995/kappa-launcher
 	arch = any
