@@ -35,6 +35,5 @@ pkgbase = deepin-wine
 	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine/deepin-wine_2.18-24~rc3_all.deb
 	md5sums = b3b3161ebe73dc1c90334dec26d0eeb3
 
-
 pkgname = deepin-wine
 
