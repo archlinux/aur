@@ -1,6 +1,6 @@
 pkgbase = maestral-qt-git
 	pkgdesc = A Qt interface for the Maestral daemon
-	pkgver = 0.6.4.r0.g28c4c50
+	pkgver = 1.1.0.r0.gbc6f037
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral-qt
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = maestral-qt-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
-	depends = maestral
-	depends = python
-	depends = python-bugsnag
+	depends = maestral>=1.1.0
+	depends = python>=3.8
+	depends = python-bugsnag>=3.4.0
 	depends = python-click>=7.1.1
 	depends = python-markdown2
 	depends = python-packaging
