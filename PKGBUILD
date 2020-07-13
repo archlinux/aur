@@ -13,7 +13,7 @@ pkgname=(
   gtkhash-peony 
   gtkhash-thunar
 )
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
@@ -30,13 +30,18 @@ makedepends=(
 )
 
 source=("${url}/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a94b12165bfa2ebec7270ce3bb8fb27da8a0624fb48ecfc0b68bcaf8c40db7af')
+sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
 
 build() {
   cd gtkhash-$pkgver
 
 #build with Caja support only
-if [[ $(xdg-mime query default inode/directory) = caja.desktop ]]; then
+if [[ $(xdg-mime query default inode/directory) = caja-folder-handler.desktop ]]; then
+
+makedepends+=(
+    'caja'
+)
+
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -49,6 +54,12 @@ if [[ $(xdg-mime query default inode/directory) = caja.desktop ]]; then
 
 #build with Nautilus support only
 elif [[ $(xdg-mime query default inode/directory) = nautilus.desktop ]]; then
+
+makedepends+=(
+    'libnautilus-extension'
+)
+
+
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -61,6 +72,12 @@ elif [[ $(xdg-mime query default inode/directory) = nautilus.desktop ]]; then
 
 #build with Nemo support only
 elif [[ $(xdg-mime query default inode/directory) = nemo.desktop ]]; then
+
+makedepends+=(
+    'nemo'
+)
+
+
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -73,6 +90,12 @@ elif [[ $(xdg-mime query default inode/directory) = nemo.desktop ]]; then
 
 #build with Peony support only
 elif [[ $(xdg-mime query default inode/directory) = peony.desktop ]]; then
+
+makedepends+=(
+    'peony'
+)
+
+
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -85,6 +108,12 @@ elif [[ $(xdg-mime query default inode/directory) = peony.desktop ]]; then
 
 #build with Thunar support only
 elif [[ $(xdg-mime query default inode/directory) = thunar.desktop ]]; then
+
+makedepends+=(
+    'thunar'
+)
+
+
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -97,6 +126,14 @@ elif [[ $(xdg-mime query default inode/directory) = thunar.desktop ]]; then
 
 #build with all file manager support
 else
+   makedepends+=(
+   'caja'
+   'libnautilus-extension'
+   'nemo'
+   'peony'
+   'thunar'
+)
+   
   ./configure \
     --prefix=/usr \
     --disable-schemas-compile \
@@ -149,7 +186,7 @@ package_gtkhash-nautilus() {
   pkgdesc+=' (Nautilus filemanager plugin)'
   depends=(
     'gtkhash'
-    'nautilus'
+    'libnautilus-extension'
 )
 
   make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
