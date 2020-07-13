@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=4.0.1.r0.g278a5d9
+pkgver=4.0.2.r0.gad7ad64
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
@@ -67,8 +67,12 @@ package() {
 		"$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
 	install -Dm755 "scripts/${pkgname%-git}.fish" -t \
 		"$pkgdir/usr/share/fish/completions"
-#	install -Dm755 "scripts/${pkgname%-git}.zsh" \
-#		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
+
+	# Conflicts with zsh-suggestions, copy or symlink from the doc folder
+#	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+	install -Dm755 "scripts/${pkgname%-git}.zsh" "$pkgdir/usr/share/doc/${pkgname%-git}/_${pkgname%-git}"
+
+	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/doc/$pkgname/_$pkgname"
 	install -Dm644 LICENSE.txt \
 		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
 	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
