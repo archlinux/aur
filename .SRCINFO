@@ -1,6 +1,6 @@
 pkgbase = openocd-riot-git
 	pkgdesc = Open On-Chip Debugger with RIOT support
-	pkgver = 0.10.0
+	pkgver = r8239.16d64a2c
 	pkgrel = 1
 	arch = x86_64
 	license = GPL

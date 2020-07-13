@@ -1,6 +1,6 @@
 # Maintainer: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
 pkgname=openocd-riot-git
-pkgver=0.10.0
+pkgver=r8239.16d64a2c
 pkgrel=1
 pkgdesc="Open On-Chip Debugger with RIOT support"
 arch=(x86_64)
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/openocd"
 	./bootstrap
-	./configure --prefix=/usr
+	./configure --prefix=/usr CPPFLAGS="-Wno-maybe-uninitialized -Wno-error=cpp"
 	make
 }
 
