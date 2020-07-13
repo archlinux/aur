@@ -8,7 +8,7 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r0.1171798ca6
+pkgver=2.99.1.r5023.24c740b0e0
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ pkgver() {
 # shellcheck disable=SC2183,SC2046
   printf "%s.%s.%s.r%s.%s" \
     $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' ${_pkgname}/configure.ac) \
-    "$(git -C "${srcdir}/${_pkgname}" rev-list "$(git describe --abbrev=0)"..HEAD --count)" \
+    "$(git -C "${srcdir}/${_pkgname}" rev-list "$(git -C "${srcdir}/${_pkgname}" describe --abbrev=0)"..HEAD --count)" \
     "$(git -C "${srcdir}/${_pkgname}" log --pretty=format:'%h' -n 1)"
 }
 
