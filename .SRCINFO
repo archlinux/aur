@@ -1,0 +1,16 @@
+pkgbase = fzwal-git
+	pkgdesc = A pywal theme picker based on fzf.
+	pkgver = r3.81149c3
+	pkgrel = 1
+	url = http://github.com/Kharacternyk/fzwal
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pywal
+	depends = fzf
+	conflicts = fzwal
+	source = fzwal::git+https://github.com/Kharacternyk/fzwal.git#branch=master
+	sha256sums = SKIP
+
+pkgname = fzwal-git
+
