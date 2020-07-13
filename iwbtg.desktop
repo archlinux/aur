@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0.0
 Type=Application
-Name=Cemu
+Name=I Wanna Be the Guy
 Comment=I Wanna Be the Guy, a nail-rippingly difficult platform adventure game
 Exec=/usr/bin/iwbtg
 Encoding=UTF-8
