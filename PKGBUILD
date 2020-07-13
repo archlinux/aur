@@ -2,7 +2,7 @@
 pkgname=thenewplayerfree-appimage
 pkgver=1.6.8
 pkgrel=1
-pkgdesc="An IPTV/vide/iso/blue-ray player for MacOS, Linux and FreeBSD."
+pkgdesc="A video player for MacOS, Linux and FreeBSD."
 arch=("x86_64")
 url="https://sudormroot.github.io/thenewplayer_builds/"
 license=("custom")
