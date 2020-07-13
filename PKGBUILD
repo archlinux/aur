@@ -1,7 +1,7 @@
 # Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
 pkgname=taskfile-git
 _pkgname=task
-pkgver=2.8.1
+pkgver=v2.8.1.r7.g7dcb3af
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go"
 arch=('any')
@@ -27,16 +27,8 @@ backup=(
 )
 
 pkgver() {
-	if [[ "$PKGVER" ]]; then
-		echo "$PKGVER"
-		return
-	fi
-
-	cd "$srcdir/$_pkgname"
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+    cd "$srcdir/$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^r//'
 }
 
 build() {
