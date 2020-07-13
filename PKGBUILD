@@ -8,7 +8,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-git"
-pkgver=0.1.77.r1636.0ec7f09
+pkgver=0.1.79.r1664.fe2446a
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
