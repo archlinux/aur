@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -39,8 +39,7 @@ depends+=('libfreetype.so'
           'libicudata.so'
           'libicui18n.so'
           'libicuio.so'
-          'libicuuc.so'
-          'libtexpdf.so')
+          'libicuuc.so')
 checkdepends=('poppler')
 provides=('libtexpdf.so')
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
