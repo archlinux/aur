@@ -9,7 +9,7 @@ pkgbase = xpadneo-dkms
 	depends = dkms
 	depends = bluez
 	depends = bluez-utils
-	source = git+https://github.com/atar-axis/xpadneo#tag=v0.8.1
+	source = git+https://github.com/atar-axis/xpadneo.git#tag=v0.8.1
 	sha256sums = SKIP
 
 pkgname = xpadneo-dkms

@@ -10,7 +10,7 @@ url='https://github.com/atar-axis/xpadneo'
 license=(GPL)
 depends=(dkms bluez bluez-utils)
 makedepends=(git)
-source=(git+"${url}"#tag=v"${pkgver}")
+source=(git+"${url}".git#tag=v"${pkgver}")
 sha256sums=(SKIP)
 
 package() {
