@@ -1,0 +1,16 @@
+pkgbase = waybind-git
+	pkgdesc = Simple Key rebinder
+	pkgver = v0.1.1.r2.g2e976d7
+	pkgrel = 1
+	url = https://github.com/arnarg/waybind
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = waybind
+	conflicts = waybind
+	source = waybind::git+https://github.com/arnarg/waybind
+	sha512sums = SKIP
+
+pkgname = waybind-git
+
