@@ -1,0 +1,16 @@
+pkgbase = xcsyncd
+	pkgdesc = A utility for synchronizing X11 clipboards
+	pkgver = 190612
+	pkgrel = 1
+	url = http://github.com/reconquest/xcsyncd
+	arch = i686
+	arch = x86_64
+	makedepends = gengetopt
+	conflicts = xcsyncd-git
+	source = git://github.com/reconquest/xcsyncd.git#commit=d457f7a1eb5d4fd43300d5a0946049c37cfb286d
+	source = makefile.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xcsyncd
+
