@@ -1,0 +1,87 @@
+From b3d83c15c366747bf84772311eecad29e1413cb5 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Mon, 13 Jul 2020 11:29:54 -0400
+Subject: [PATCH] Do not override the system SSL certificates with the certifi
+ bundle.
+
+We need to respect the system certification policy, and by default the
+ssl module will use our packaged ca-certificates.
+
+ssl.create_default_context(cafile=None) is the default to use the
+builtin (system) certs, but due to the sorcery which this module uses to
+check how arguments are being passed, it's less invasive to simply
+hardcode the standard certificate path instead of letting python
+properly handle it.
+---
+ httpx/_config.py     | 4 +---
+ setup.py             | 1 -
+ tests/test_config.py | 5 ++---
+ 3 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/httpx/_config.py b/httpx/_config.py
+index 3785af9..d6aecf3 100644
+--- a/httpx/_config.py
++++ b/httpx/_config.py
+@@ -4,8 +4,6 @@ import typing
+ from base64 import b64encode
+ from pathlib import Path
+ 
+-import certifi
+-
+ from ._models import URL, Headers
+ from ._types import CertTypes, HeaderTypes, TimeoutTypes, URLTypes, VerifyTypes
+ from ._utils import get_ca_bundle_from_env, get_logger, warn_deprecated
+@@ -45,7 +43,7 @@ class SSLConfig:
+     SSL Configuration.
+     """
+ 
+-    DEFAULT_CA_BUNDLE_PATH = Path(certifi.where())
++    DEFAULT_CA_BUNDLE_PATH = Path("/etc/ssl/certs/ca-certificates.crt")
+ 
+     def __init__(
+         self,
+diff --git a/setup.py b/setup.py
+index cc62169..e6fe71a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,7 +55,6 @@ setup(
+     include_package_data=True,
+     zip_safe=False,
+     install_requires=[
+-        "certifi",
+         "hstspreload",
+         "sniffio",
+         "chardet==3.*",
+diff --git a/tests/test_config.py b/tests/test_config.py
+index 41d8191..286da00 100644
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -4,7 +4,6 @@ import ssl
+ import sys
+ from pathlib import Path
+ 
+-import certifi
+ import pytest
+ 
+ import httpx
+@@ -24,7 +23,7 @@ def test_load_ssl_config_verify_non_existing_path():
+ 
+ 
+ def test_load_ssl_config_verify_existing_file():
+-    ssl_config = SSLConfig(verify=certifi.where())
++    ssl_config = SSLConfig(verify="/etc/ssl/certs/ca-certificates.crt")
+     context = ssl_config.ssl_context
+     assert context.verify_mode == ssl.VerifyMode.CERT_REQUIRED
+     assert context.check_hostname is True
+@@ -55,7 +54,7 @@ def test_load_ssl_config_verify_env_file(https_server, ca_cert_pem_file, config)
+ 
+ 
+ def test_load_ssl_config_verify_directory():
+-    path = Path(certifi.where()).parent
++    path = Path("/etc/ssl/certs/ca-certificates.crt").parent
+     ssl_config = SSLConfig(verify=path)
+     context = ssl_config.ssl_context
+     assert context.verify_mode == ssl.VerifyMode.CERT_REQUIRED
+-- 
+2.27.0
+
