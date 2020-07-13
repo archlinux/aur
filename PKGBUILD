@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=0.1.1_265.41c6900
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -11,22 +11,14 @@ optdepends=('mupdf-tools: external rendering'
     'gst-libav: video support'
     'gst-plugins-good: multimedia support'
     'wmctrl: embedding external programs in Xorg')
+conflicts=('beamerpresenter-git')
 makedepends=('git')
-source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
-md5sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('35805591b3903d7be29bd5ffc963662f5f0a9b322cd8abdd6a7dd7c7e1ab299b')
 backup=("etc/${pkgname}/${pkgname}.conf" "etc/${pkgname}/pid2wid.sh")
-install=beamerpresenter.install
-
-pkgver() {
-  cd "${srcdir}/BeamerPresenter"
-  printf "%s_%s.%s" \
-	  "$(sed -n 's/^VERSION *= *\([^ ]\+\)$/\1/p' beamerpresenter.pro)" \
-	  "$(git rev-list --count HEAD)" \
-	  "$(git rev-parse --short HEAD)"
-}
 
 build() {
-  cd "${srcdir}/BeamerPresenter"
+  cd "${srcdir}/BeamerPresenter-${pkgver}"
 
   ## Uncomment the following line to exclude strange "embedding" of
   ## applications which only works with an X server:
@@ -41,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/BeamerPresenter"
+  cd "${srcdir}/BeamerPresenter-${pkgver}"
   install -Dm755 beamerpresenter "${pkgdir}/usr/bin/${pkgname}"
   sed -ie 's/^pid2wid=.*$/pid2wid=\/etc\/beamerpresenter\/pid2wid.sh/' config/beamerpresenter.conf
   install -Dm644 config/beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"

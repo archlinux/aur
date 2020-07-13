@@ -1,9 +1,8 @@
 pkgbase = beamerpresenter
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = 0.1.1_265.41c6900
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
-	install = beamerpresenter.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -14,10 +13,11 @@ pkgbase = beamerpresenter
 	optdepends = gst-libav: video support
 	optdepends = gst-plugins-good: multimedia support
 	optdepends = wmctrl: embedding external programs in Xorg
+	conflicts = beamerpresenter-git
 	backup = etc/beamerpresenter/beamerpresenter.conf
 	backup = etc/beamerpresenter/pid2wid.sh
-	source = git://github.com/stiglers-eponym/BeamerPresenter.git
-	md5sums = SKIP
+	source = beamerpresenter-0.1.2.tar.gz::https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.1.2.tar.gz
+	sha256sums = 35805591b3903d7be29bd5ffc963662f5f0a9b322cd8abdd6a7dd7c7e1ab299b
 
 pkgname = beamerpresenter
 
