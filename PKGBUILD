@@ -5,7 +5,7 @@
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=0.2.1.r3429.g02a8c07d
+pkgver=0.2.1.r3652.g025bd56f
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
