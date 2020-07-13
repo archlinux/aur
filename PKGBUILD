@@ -3,7 +3,7 @@
 
 pkgname=etterna-git
 pkgver=0.70.0.r181.g832d37aa5d
-pkgrel=1
+pkgrel=2
 pkgdesc="Etterna: an advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
