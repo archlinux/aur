@@ -1,7 +1,7 @@
 pkgbase = shattered-pixel-dungeon-git
 	pkgdesc = Shattered fork of the popular rogue-like game
-	pkgver = 3862v0.8.1
-	pkgrel = 2
+	pkgver = 3871v0.8.1a
+	pkgrel = 1
 	url = https://shatteredpixel.com
 	arch = any
 	license = GPL3

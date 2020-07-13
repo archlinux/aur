@@ -5,8 +5,8 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=3862v0.8.1
-pkgrel=2
+pkgver=3871v0.8.1a
+pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
 license=('GPL3')
