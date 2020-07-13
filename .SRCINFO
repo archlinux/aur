@@ -1,6 +1,6 @@
 pkgbase = maestral-git
 	pkgdesc = A light-weight and open-source Dropbox client.
-	pkgver = 0.6.4.r16.g9ed32e8
+	pkgver = 1.1.0.r2.g998cefc
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral-dropbox
 	arch = any
@@ -8,25 +8,23 @@ pkgbase = maestral-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	depends = python-atomicwrites
+	depends = python>=3.8
+	depends = python-atomicwrites>=1.0.0
 	depends = python-bugsnag
-	depends = python-click>=7.0
-	depends = python-dropbox>=9.4.0
-	depends = python-dropbox<=9.5.0
+	depends = python-click>=7.1.1
+	depends = python-dropbox>=10.0.0
+	depends = python-fasteners
+	depends = python-importlib-metadata
+	depends = python-jeepney
 	depends = python-keyring>=19.0.0
-	depends = python-keyrings-alt>=3.0.0
-	depends = python-lockfile
+	depends = python-keyrings-alt>=3.1.0
 	depends = python-packaging
-	depends = python-pathspec
-	depends = python-pyro5
+	depends = python-pathspec>=0.5.8
+	depends = python-pyro5>=5.7
 	depends = python-requests
 	depends = python-sdnotify
 	depends = python-setuptools
-	depends = python-six>=1.12.0
-	depends = python-u-msgpack
-	depends = python-watchdog>=0.9.0
-	depends = python-systemd
+	depends = python-watchdog>=0.10.0
 	optdepends = maestral-qt: QT frontend for maestral
 	provides = maestral
 	conflicts = maestral
