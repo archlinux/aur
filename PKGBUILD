@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael.straube@poateo.de>
+# Maintainer: Michael Straube <michael.straube@posteo.de>
 
 pkgname=edges
 pkgver=1.0
