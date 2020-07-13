@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
-md5sums=('e623f70697047fac12cf5d38182f8a99')
+md5sums=('aa677c30d4ee60f6d8622bee4fe3bb42')
 validpgpkeys=()
 
 prepare() {
