@@ -1,0 +1,17 @@
+pkgbase = qtscrob
+	pkgdesc = A tool for submitting from portable players to Last.fm & Libre.fm
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://qtscrob.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	makedepends = qt4
+	depends = qt4
+	depends = libmtp
+	optdepends = adwaita-icon-theme
+	provides = qtscrobbler
+	source = qtscrob-0.11.tar.bz2::http://sourceforge.net/projects/qtscrob/files/qtscrob/0.11/qtscrob-0.11.tar.bz2/download
+	sha256sums = 01c8e48f616ed09504833d27d92fd62f455bd645ea2d1cc2a5f4c287d641daba
+
+pkgname = qtscrob
+
