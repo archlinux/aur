@@ -1,7 +1,7 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=ytt
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a1d08a02ca067d43cd8b33962449c289836e2f8e613e56281c05cbfeac4c77a4')
+sha256sums=('e58ea84a95922c890919452e93f6921f5416e6a0995b6c5a71cb8fde3027b77e')
 
 prepare() {
 	rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
@@ -38,7 +38,7 @@ build() {
 			--file-mark 'alt-example**/*:type=data' \
 			--file-mark 'example**/*:type=data' \
 			--file-mark 'generated.go.txt:exclusive-for-output=true' \
-			--output-directory ../../tmp/
+			--dangerous-emptied-output-directory ../../tmp/
 	)
 	mv tmp/generated.go.txt pkg/website/generated.go
 
