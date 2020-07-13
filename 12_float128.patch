@@ -29,7 +29,7 @@ diff --unified --recursive --text --new-file c-wrapper-0.6.1/src/c-parser.c c-wr
      } else if (SCM_EQ(car, SYM(_Bool))) {
          SCM_RETURN(SYM(c_int));
 +    } else if (SCM_EQ(car, SYM(_Float128))) {
-+        SCM_RETURN(SYM(c_longdouble));
++        SCM_RETURN(SYM(c_double));
      } else if (SCM_EQ(car, SYM(__builtin_va_list))) {
          SCM_RETURN(SCM_LIST2(SCM_LIST3(SYM(with_module), SYM(c_wrapper_c_ffi), SYM(ptr)), SYM(c_void)));
      } else if (SCM_PAIRP(car) && SCM_EQ(SCM_CAR(car), SYM(U_struct))) {
