@@ -1,14 +1,12 @@
-# Maintainer: NBonaparte <9f64e20e at opayq dot com>
+# Maintainer: NBonaparte <nbonaparte at protonmail dot com>
 pkgname=ttf-material-design-icons-git
-pkgver=v1.6.50.r0.ga791eeb
+pkgver=v5.3.45.r0.gcb85f87
 pkgrel=1
 pkgdesc="Material Design Icons Web Font"
 arch=('any')
 url='https://materialdesignicons.com'
 licence=('SIL OPEN FONT LICENSE Version 1.1')
-depends=(fontconfig xorg-font-utils)
 makedepends=('git')
-install=$pkgname.install
 source=('git+https://github.com/Templarian/MaterialDesign-Webfont.git')
 md5sums=('SKIP')
 
