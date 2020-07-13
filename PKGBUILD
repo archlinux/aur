@@ -6,10 +6,10 @@ pkgname=piper-git
 pkgver=0.5.1.r5.gbf2444a
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/libratbag/piper'
 license=('GPL')
-depends=('python3' 'python-gobject>=3.0' 'libratbag' 'python-evdev' 'python-lxml' 'python-cairo')
+depends=('python3' 'python-gobject>=3.0' 'libratbag' 'python-evdev' 'python-lxml' 'python-cairo' 'hicolor-icon-theme')
 makedepends=('git' 'meson' 'flake8')
 options=(!emptydirs)
 source=("${pkgname}::git+https://github.com/libratbag/piper.git")
