@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter-git
-pkgver=0.1.1_267.203c955
+pkgver=0.1.2_271.a061111
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -11,12 +11,11 @@ optdepends=('mupdf-tools: external rendering'
     'gst-libav: video support'
     'gst-plugins-good: multimedia support'
     'wmctrl: embedding external programs in Xorg')
-replaces=('beamerpresenter')
 conflicts=('beamerpresenter')
 makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
-backup=("etc/${pkgname}/${pkgname}.conf" "etc/${pkgname}/pid2wid.sh")
+backup=("etc/beamerpresenter/beamerpresenter.conf" "etc/beamerpresenter/pid2wid.sh")
 install=beamerpresenter.install
 
 pkgver() {
@@ -44,14 +43,14 @@ build() {
 
 package() {
   cd "${srcdir}/BeamerPresenter"
-  install -Dm755 beamerpresenter "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 beamerpresenter "${pkgdir}/usr/bin/beamerpresenter"
   sed -ie 's/^pid2wid=.*$/pid2wid=\/etc\/beamerpresenter\/pid2wid.sh/' config/beamerpresenter.conf
-  install -Dm644 config/beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
-  install -Dm644 config/pid2wid.sh "${pkgdir}/etc/${pkgname}/pid2wid.sh"
+  install -Dm644 config/beamerpresenter.conf "${pkgdir}/etc/beamerpresenter/beamerpresenter.conf"
+  install -Dm644 config/pid2wid.sh "${pkgdir}/etc/beamerpresenter/pid2wid.sh"
   [ -f man/beamerpresenter.1 ] && gzip -f9 man/beamerpresenter.1
   [ -f man/beamerpresenter.conf.5 ] && gzip -f9 man/beamerpresenter.conf.5
-  install -Dm644 man/beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
-  install -Dm644 man/beamerpresenter.conf.5.gz "${pkgdir}/usr/share/man/man5/${pkgname}.conf.5.gz"
+  install -Dm644 man/beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/beamerpresenter.1.gz"
+  install -Dm644 man/beamerpresenter.conf.5.gz "${pkgdir}/usr/share/man/man5/beamerpresenter.conf.5.gz"
   install -Dm644 src/icons/beamerpresenter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/beamerpresenter.svg"
   install -Dm644 share/applications/beamerpresenter.desktop "${pkgdir}/usr/share/applications/beamerpresenter.desktop"
 }

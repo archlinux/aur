@@ -1,6 +1,6 @@
 pkgbase = beamerpresenter-git
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = 0.1.1_267.203c955
+	pkgver = 0.1.2_271.a061111
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	install = beamerpresenter.install
@@ -15,9 +15,8 @@ pkgbase = beamerpresenter-git
 	optdepends = gst-plugins-good: multimedia support
 	optdepends = wmctrl: embedding external programs in Xorg
 	conflicts = beamerpresenter
-	replaces = beamerpresenter
-	backup = etc/beamerpresenter-git/beamerpresenter-git.conf
-	backup = etc/beamerpresenter-git/pid2wid.sh
+	backup = etc/beamerpresenter/beamerpresenter.conf
+	backup = etc/beamerpresenter/pid2wid.sh
 	source = git://github.com/stiglers-eponym/BeamerPresenter.git
 	md5sums = SKIP
 
