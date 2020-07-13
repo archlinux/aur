@@ -2,11 +2,11 @@
 
 pkgname=bitcoin-abc
 pkgver=0.21.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
-depends=('boost-libs' 'libevent' 'openssl' 'zeromq' 'miniupnpc')
+depends=('boost-libs' 'libevent' 'openssl' 'zeromq' 'miniupnpc' 'jemalloc')
 makedepends=('cmake' 'ninja' 'boost')
 license=('MIT')
 source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
