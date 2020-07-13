@@ -1,6 +1,6 @@
 pkgbase = felinks
 	pkgdesc = text browser
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = http://github.com/rkd77/felinks
 	arch = x86_64
@@ -8,7 +8,16 @@ pkgbase = felinks
 	license = GPL2
 	makedepends = gcc
 	makedepends = make
-	source = git+https://github.com/rkd77/felinks#tag=v0.13.2
+	depends = tre
+	depends = brotli
+	depends = libx11
+	depends = openssl
+	depends = gpm
+	depends = zstd
+	depends = libidn
+	depends = expat
+	depends = ncurses
+	source = git+https://github.com/rkd77/felinks#tag=v0.13.3
 	sha256sums = SKIP
 
 pkgname = felinks
