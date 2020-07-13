@@ -8,6 +8,7 @@ pkgbase = kak-auto-pairs-git
 	license = Unlicense
 	makedepends = git
 	depends = kakoune
+	depends = kak-prelude
 	provides = kak-auto-pairs
 	conflicts = kak-auto-pairs
 	source = git+https://github.com/alexherbo2/auto-pairs.kak
