@@ -1,0 +1,56 @@
+diff -up src/wmCalClock-1.25/Src/wmCalClock.c.orig src/wmCalClock-1.25/Src/wmCalClock.c
+--- src/wmCalClock-1.25/Src/wmCalClock.c.orig	2020-07-13 01:49:36.150000000 -0600
++++ src/wmCalClock-1.25/Src/wmCalClock.c	2020-07-13 01:52:13.430000000 -0600
+@@ -298,7 +298,7 @@ int main(int argc, char *argv[]) {
+     XEvent		event;
+     int			i, n, wid, extrady, extradx;
+     int 		Year, Month, DayOfWeek, DayOfMonth, OldDayOfMonth;
+-    int			Hours, Mins, Secs, OldSecs, digit, xoff, D[10], xsize;
++    int			Hours, Mins, Secs, OldSecs, digit, xoff, D[10] = {0, }, xsize;
+     long		CurrentLocalTime;
+     double		UT, TU, TU2, TU3, T0, gmst, jd(), hour24();
+ 
+@@ -976,7 +976,7 @@ double hour;
+  */
+ void ButtonPressEvent(XButtonEvent *xev){
+ 
+-    char Command[512];
++    char Command[1032];
+ 
+ 
+     if( HasExecute == 0) return; /* no command specified.  Ignore clicks. */
+diff -up src/wmCalClock-1.25/Src/xutils.c.orig src/wmCalClock-1.25/Src/xutils.c
+--- src/wmCalClock-1.25/Src/xutils.c.orig	2020-07-13 01:53:57.060000000 -0600
++++ src/wmCalClock-1.25/Src/xutils.c	2020-07-13 01:55:53.620000000 -0600
+@@ -39,6 +39,11 @@
+ #include <X11/extensions/shape.h>
+ #include "xutils.h"
+ 
++Display		*display;
++Window		Root;
++Window		iconwin, win;
++int		screen; 
++int		DisplayDepth;
+ 
+ 
+ /*
+diff -up src/wmCalClock-1.25/Src/xutils.h.orig src/wmCalClock-1.25/Src/xutils.h
+--- src/wmCalClock-1.25/Src/xutils.h.orig	2020-07-13 01:55:03.920000000 -0600
++++ src/wmCalClock-1.25/Src/xutils.h	2020-07-13 01:55:55.140000000 -0600
+@@ -18,11 +18,11 @@ typedef struct {
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
++extern Display	*display;
++extern Window	Root;
++extern Window	iconwin, win;
++extern int	screen; 
++extern int	DisplayDepth;
+ 
+ 
+ 
