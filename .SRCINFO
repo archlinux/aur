@@ -5,19 +5,13 @@ pkgbase = python-dotboy-git
 	url = https://gitlab.com/bwbuhse/dotboy
 	arch = any
 	license = MIT
-	makedepends = python-pip
-	makedepends = python-wheel
 	makedepends = git
-	depends = python
-	depends = python-gitpython
-	provides = python-dotboy
-	conflicts = python-dotboy
-	source = PKGBUILD_EXTRAS
-	source = git+https://gitlab.com/bwbuhse/dotboy.git
-	source = LICENSE
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-setuptools
+	source = git+https://gitlab.com/bwbuhse/dotboy
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 8280d95ced107e779eeb71099ac2b589
 
 pkgname = python-dotboy-git
 
