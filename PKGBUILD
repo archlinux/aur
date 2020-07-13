@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A utility to help with Book scanning using cameras as a scanner. It will automate things such as cropping, rotating, fixing keystoning, fixing the DPI, and outputing it to tiff files that can be changed into PDF's or ebooks"
 arch=('any')
 url="https://sourceforge.net/projects/bookscanwizard"
-license=('GPL2')
+license=('custom:unknown')
 depends=('java-environment>=7' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.zip::https://sourceforge.net/projects/bookscanwizard/files/BookScanWizard_${pkgver}.zip/download")
