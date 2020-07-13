@@ -2,13 +2,15 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r9352.447108249
-pkgrel=2
+pkgver=r9369.67ff9f22c
+pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
 arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme' 'jansson')
+license=('GPL2'
+         'LGPL2.1'
+         'ZLIB')
+depends=('alsa-lib' 'hicolor-icon-theme' 'jansson')
 makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
              'ffmpeg' 'gtk2' 'gtk3')
@@ -29,6 +31,7 @@ optdepends=('gtk2: for the GTK2 interface'
             'libsndfile: for sndfile plugin'
             'libcdio: for cd audio plugin'
             'libcddb: for cd audio plugin'
+            'cdparanoia: for cd audio plugin'
             'faad2: for AAC plugin'
             'dbus: for notification daemon support (OSD current song notifications)'
             'pulseaudio: for PulseAudio output plugin'
@@ -38,8 +41,8 @@ optdepends=('gtk2: for the GTK2 interface'
             'yasm: required to build assembly portions of ffap plugin'
             'libzip: for vfs_zip plugin'
             'ffmpeg: for ffmpeg plugin'
-            'opusfile: for opus plugin')
-install='deadbeef.install'
+            'opusfile: for opus plugin'
+            'mpg123: for MP1/MP2/MP3 playback')
 options=('!libtool')
 conflicts=('deadbeef')
 provides=('deadbeef')
@@ -50,14 +53,13 @@ prepare() {
   cd "$srcdir/deadbeef"
   # skip osx/deps submodule
   git -c submodule."osx/deps".update=none submodule update --init --recursive
-
-  ./autogen.sh
-  ./configure --prefix=/usr
 }
 
 build() {
   cd "$srcdir/deadbeef"
 
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
@@ -65,6 +67,7 @@ package() {
   cd "$srcdir/deadbeef"
 
   make DESTDIR="$pkgdir" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 pkgver() {
