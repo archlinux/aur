@@ -18,6 +18,7 @@ pkgver() {
 
 package() {
   mkdir -p ${pkgdir}/usr
+  mkdir -p ${pkgdir}/etc/skel
   cp -r "${srcdir}/arch-install/usr" "$pkgdir/usr"
-  cp -r "${srcdir}/arch-install/etc" "$pkgdir/etc"
+  cp -r "${srcdir}/arch-install/etc/skel" "$pkgdir/etc/skel"
 }
