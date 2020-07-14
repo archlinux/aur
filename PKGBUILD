@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=libetpan-fdik-git
-pkgver=1.6.r162.g3700509
+pkgver=1.6
 pkgrel=1
 pkgdesc='A portable middleware for email access - fork with some patches'
 arch=('i686' 'x86_64')
@@ -17,11 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd libetpan/
 
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
+	git tag | sort -r | head -1
 }
 
 build() {

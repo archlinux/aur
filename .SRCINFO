@@ -1,12 +1,16 @@
 pkgbase = libetpan-fdik-git
 	pkgdesc = A portable middleware for email access - fork with some patches
-	pkgver = 1.6.r162.g3700509
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://www.etpan.org/libetpan.html
 	arch = i686
 	arch = x86_64
 	license = custom:etpan
 	makedepends = git
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
 	depends = libsasl
 	depends = curl
 	depends = expat
