@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('the-libs' 'qt5-base')
 makedepends=('qt5-tools')
 source=("$pkgname-$pkgver"::"https://github.com/vicr123/libtwebservices/archive/v0.1.tar.gz")
-sha256sums=('0f37dba2524acab9a7e813f0229d607801f4ec442b4fadf6ff7681c3647f167b')
+sha256sums=('de7802ad57db37fbbffbefe55559b8888294ac5f5fc9774290a56c0a2409a5c9')
 
 build() {
 	cd "$pkgname-$pkgver"
