@@ -2,7 +2,7 @@
 
 _plug=vsutil
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r60.afc1870
+pkgver=r73.5ff158e
 pkgrel=1
 pkgdesc='A collection of general purpose Vapoursynth functions to be reused in modules/scripts'
 arch=('x86_64')
@@ -15,8 +15,6 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vsutil.git")
 sha256sums=('SKIP')
-
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
     cd "${_plug}"
