@@ -4,10 +4,10 @@
 pkgname=git-delta
 _name="${pkgname#*-}"
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/dandavison/$_name"
 license=('MIT')
 
