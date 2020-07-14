@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.50
+pkgver=5.4.51
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -17,8 +17,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-ALSA-usb-audio-Fix-packet-size-calculation.patch
-  0003-drm-amd-display-Only-revalidate-bandwidth-on-medium-.patch
+  0002-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
   sphinx-workaround.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
@@ -28,12 +27,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('ad10f4c1e900f4e3eb4903b65dbcb4ca74250de63aa9fa7105b9b3c3f9a8a6e2'
+sha256sums=('9e8bea8b4cd636726b7e495a3b467c8ffe96f8eddc159a45fe4a7e6e07a2069d'
             'SKIP'
             'd20936f94b29f3e86513108ab772ef4778a8cb95ec7cd44519523a6eea40aa5d'
-            'bdd05caf94135898bceac0a9d14ec6b1b458dba162d00efd46a292fe97f2679b'
-            'a4c0688aaf3e94c60f20684ed5fed8c8c1c4974926fa37c6fc50bb143d73c4f0'
-            '085b7ca855a0d6630b2a8b34f3d0d541c64ba816eefb0b72f96e2ca9d0907592'
+            '93de5436e4d62abd7d3f2f9de0008aa647e67cba5a54fea0641ddcf4f6d85e97'
+            '5a317a467e5387e711f2ecc7c70b94d5df5bda10429e9c5cd7002e6b710bd2d0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '6ebc19f8cdd608a97f8fa6a0a815ac142b88e18dd476bc2851b2771e3aa9522d'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
