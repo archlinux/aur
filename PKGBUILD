@@ -9,7 +9,6 @@ url="https://github.com/pyusb/pyusb"
 license=('BSD')
 makedepends=('git' 'python-setuptools' 'python2-setuptools'
              'python-setuptools-scm' 'python2-setuptools-scm')
-provides=('python-pyusb')
 
 _gitroot='https://github.com/pyusb/pyusb'
 _gitname='pyusb'
