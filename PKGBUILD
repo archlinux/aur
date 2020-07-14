@@ -22,7 +22,7 @@ package(){
 	cd "$srcdir/$pkgname-$pkgver"
 
 	install -Dm755 $srcdir/$pkgname-$pkgver/Projektverwaltung "${pkgdir}"/usr/bin/$pkgname
-	install -Dm755 $srcdir/$pkgname-$pkgver/languages/tu2_de.qm "${pkgdir}"/usr/lib/tu2/languages/tu2_de.qm
-	install -Dm755 $srcdir/$pkgname-$pkgver/languages/tu2_en.qm "${pkgdir}"/usr/lib/tu2/languages/tu2_en.qm
+	install -Dm755 $srcdir/$pkgname-$pkgver/.qm/tu2_de.qm "${pkgdir}"/usr/lib/tu2/languages/tu2_de.qm
+	install -Dm755 $srcdir/$pkgname-$pkgver/.qm/tu2_en.qm "${pkgdir}"/usr/lib/tu2/languages/tu2_en.qm
 	install -Dm755 $srcdir/$pkgname-$pkgver/tu2.desktop "${pkgdir}"/usr/share/applications/tu2.desktop
 }
