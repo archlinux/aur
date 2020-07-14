@@ -1,14 +1,14 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=('thedesk' 'td-polkitagent' 'thedesk-platform' 'libthedesk')
-pkgver=beta1
+pkgver=beta2
 pkgrel=1
 pkgdesc="Desktop Environment built on Qt"
 arch=("x86_64")
 url="https://github.com/vicr123/thedesk"
 license=('GPL3')
-makedepends=('polkit-qt5' 'qt5-tools' 'the-libs' 'libtdesktopenvironment' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt')
-source=("thedesk-$pkgver"::'https://github.com/vicr123/thedesk/archive/beta1.tar.gz')
-sha256sums=('cc9860962a637f1d40d38b9461e970c2b7694a235d1d974a2aea3ba75f45c85f')
+makedepends=('polkit-qt5' 'qt5-tools' 'the-libs' 'libtdesktopenvironment' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt' 'qt5-location' 'libtwebservices')
+source=("thedesk-$pkgver"::'https://github.com/vicr123/thedesk/archive/beta2.tar.gz')
+sha256sums=('101f57b8292483eb9b7a76665728d732f51b986b7e6590bb6416a2adef7abdf2')
 
 doInstallModule() {
     pushd "$pkgbase-$pkgver/build/$1"
@@ -46,7 +46,7 @@ package_td-polkitagent() {
 }
 
 package_thedesk() {
-    depends=('the-libs' 'kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt' 'accountsservice')
+    depends=('the-libs' 'kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt' 'accountsservice' 'qt5-location' 'libtwebservices')
     
     doInstallModule 'desktop';
     doInstallModule 'plugins';

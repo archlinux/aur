@@ -1,6 +1,6 @@
 pkgbase = thedesk
 	pkgdesc = Desktop Environment built on Qt
-	pkgver = beta1
+	pkgver = beta2
 	pkgrel = 1
 	url = https://github.com/vicr123/thedesk
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = thedesk
 	makedepends = libxi
 	makedepends = xf86-input-libinput
 	makedepends = networkmanager-qt
-	source = thedesk-beta1::https://github.com/vicr123/thedesk/archive/beta1.tar.gz
-	sha256sums = cc9860962a637f1d40d38b9461e970c2b7694a235d1d974a2aea3ba75f45c85f
+	makedepends = qt5-location
+	makedepends = libtwebservices
+	source = thedesk-beta2::https://github.com/vicr123/thedesk/archive/beta2.tar.gz
+	sha256sums = 101f57b8292483eb9b7a76665728d732f51b986b7e6590bb6416a2adef7abdf2
 
 pkgname = thedesk
 	depends = the-libs
@@ -30,6 +32,8 @@ pkgname = thedesk
 	depends = xf86-input-libinput
 	depends = networkmanager-qt
 	depends = accountsservice
+	depends = qt5-location
+	depends = libtwebservices
 
 pkgname = td-polkitagent
 	depends = the-libs
