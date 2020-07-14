@@ -5,7 +5,7 @@ _name=dotboy
 pkgname="python-${_name}-git"
 provides=("python-${_name}")
 conflicts=("python-${_name}")
-pkgver=r13.2a58166
+pkgver=v0.1.5r1.r0.2709089
 pkgrel=1
 pkgdesc='A Python script to help with dot file management'
 arch=('any')
@@ -18,7 +18,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
