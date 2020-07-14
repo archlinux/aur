@@ -2,13 +2,12 @@
 
 pkgname=python2-pyxattr
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Filesystem extended attributes for python 2"
-arch=('any')
-url="https://pypi.org/project/pyxattr/$pkgver/"
+arch=('x86_64')
+url="https://pypi.org/project/pyxattr/$pkgver"
 license=('LGPL')
 depends=('python2')
-makedepends=('git')
 source=("https://files.pythonhosted.org/packages/36/1d/1a5f3165f330e1a0427636f2bd995dbcc02d0f7660e89458d64806a2ed1e/pyxattr-$pkgver.tar.gz")
 sha256sums=('b525843f6b51036198b3b87c4773a5093d6dec57d60c18a1f269dd7059aa16e3')
 
