@@ -1,0 +1,13 @@
+pkgbase = meson-ui
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/michaelbrockus/meson-ui
+	arch = x86_64
+	license = Apache
+	makedepends = python-pip
+	depends = python-pyqt5
+	depends = meson
+	depends = ninja
+
+pkgname = meson-ui
+
