@@ -1,0 +1,16 @@
+pkgbase = com.xunlei.deepin
+	pkgdesc = Deepin Wine Thunderspeed
+	pkgver = 7.10.35
+	pkgrel = 1
+	url = http://dl.xunlei.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine
+	noextract = com.xunlei.deepin_7.10.35.366deepin18-1_i386.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.deepin/com.xunlei.deepin_7.10.35.366deepin18-1_i386.deb
+	md5sums = 3c654cb45b74b2435cd842b723e2def1
+
+pkgname = com.xunlei.deepin
+
