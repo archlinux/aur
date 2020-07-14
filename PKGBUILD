@@ -1,7 +1,8 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 
 pkgname=python-dnspython-git
-pkgver=2.0.0rc2
+_pkgname=dnspython
+pkgver=v2.0.0rc2.r28.a7e71aa
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
@@ -13,6 +14,7 @@ makedepends=(
     'python-setuptools'
     # 'cython'  # uncomment dep & build option for cython optimization speedup
 )
+checkdepends=('python-idna' 'python-cryptography' 'python-trio')
 depends=('python')
 optdepends=(
     'python-idna: support for update IDNA 2008'
@@ -23,18 +25,29 @@ optdepends=(
     'python-curio: async I/O backend'
     'python-sniffio: async I/O'
 )
-source=("https://github.com/rthalley/dnspython/archive/v${pkgver}.tar.gz")
-sha256sums=('c588b132eefaf7d0892a3b0aa863b990264f08811ae4b0d4d6e6b62086c3de18')
+source=("${_pkgname}::git+https://github.com/rthalley/${_pkgname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
-    cd "${srcdir}"/dnspython-${pkgver}
+    cd "${srcdir}/${_pkgname}"
 
     python setup.py build  # --cython-compile
 }
 
+check() {
+    cd "${srcdir}/${_pkgname}"
+
+    python setup.py test
+}
+
 package() {
-    cd "${srcdir}"/dnspython-${pkgver}
+    cd "${srcdir}/${_pkgname}"
 
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }

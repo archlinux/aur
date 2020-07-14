@@ -1,10 +1,13 @@
 pkgbase = python-dnspython-git
 	pkgdesc = A DNS toolkit for Python
-	pkgver = 2.0.0rc2
+	pkgver = v2.0.0rc2.r28.a7e71aa
 	pkgrel = 1
 	url = http://www.dnspython.org
 	arch = any
 	license = ISC
+	checkdepends = python-idna
+	checkdepends = python-cryptography
+	checkdepends = python-trio
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-idna: support for update IDNA 2008
@@ -16,8 +19,8 @@ pkgbase = python-dnspython-git
 	optdepends = python-sniffio: async I/O
 	provides = python-dnspython
 	conflicts = python-dnspython
-	source = https://github.com/rthalley/dnspython/archive/v2.0.0rc2.tar.gz
-	sha256sums = c588b132eefaf7d0892a3b0aa863b990264f08811ae4b0d4d6e6b62086c3de18
+	source = dnspython::git+https://github.com/rthalley/dnspython.git
+	md5sums = SKIP
 
 pkgname = python-dnspython-git
 
