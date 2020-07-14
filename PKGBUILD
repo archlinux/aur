@@ -3,8 +3,8 @@
 _name=libpEpAdapter
 _pkgname=libpep-adapter
 pkgname=$_pkgname-hg
-pkgver=r170.f9c2f940a09b
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="C++ library for common structures used in p≡p adapters"
 arch=('x86_64' 'i686')
 url='https://pep.foundation/dev/repos/libpEpAdapter'
@@ -26,7 +26,7 @@ prepare() {
 pkgver() {
 	cd "$srcdir/$_name"
 
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	hg tags | grep Release | grep -v RC | sort -r | head -1 | awk '{print $1}' | cut -c9-
 }
 
 build() {
