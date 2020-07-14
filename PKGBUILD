@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google
-pkgver=2.0.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Google search from Python'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(python python-beautifulsoup4)
 optdepends=()
 makedepends=(python python-setuptools)
 source=("$pkgname-$pkgver::https://github.com/MarioVilas/googlesearch/archive/v$pkgver.tar.gz")
-sha256sums=('2103fcddb3ca60b2b1f52087d51d8e6f969e0ccdc5e67ee3c724011b3c99816d')
+sha256sums=('9fd814876322b84f7f73499f3bd96b4da7533904e7f00c6dea2e262a467889d1')
 
 _pkgname=googlesearch
 
