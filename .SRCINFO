@@ -10,7 +10,6 @@ pkgbase = python-pyusb-git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python2-setuptools-scm
-	provides = python-pyusb
 	source = pyusb::git+https://github.com/pyusb/pyusb
 	md5sums = SKIP
 
