@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  python setup.py build
+  python2 setup.py build
 }
 
 package_python-pyusb-git() {
@@ -31,7 +33,7 @@ package_python-pyusb-git() {
   conflicts=('python-pyusb')
 
   cd "$srcdir/$_gitname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python2-pyusb-git() {
@@ -40,5 +42,5 @@ package_python2-pyusb-git() {
   conflicts=('python2-pyusb')
 
   cd "$srcdir/$_gitname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
