@@ -2,12 +2,12 @@
 
 pkgname=autofirmaja
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Junta de Andalucia digital signature client'
 arch=('i686' 'x86_64')
 url='https://ws024.juntadeandalucia.es/clienteafirma/autofirma/autofirma.html'
 license=('GPL' 'EUPL')
-depends=('java-runtime=8' 'nss' 'firefox')
+depends=('java-runtime' 'nss' 'firefox')
 makedepends=('binutils' 'openssl')
 source=('https://ws024.juntadeandalucia.es/clienteafirma/autofirma/AutoFirma_v1_6_0_JAv01.deb')
 md5sums=('ff2211f3035f72615024a8a2e4561069')
