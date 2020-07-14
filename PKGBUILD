@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Debertolis <as3ii@gmail.com>
 pkgname=emptty-git
-pkgver=v0.2.2.r0.b4d087e
-pkgrel=2
+pkgver=v0.2.0.r14.f47066a
+pkgrel=1
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
