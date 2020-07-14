@@ -2,13 +2,11 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=mame-tools
-pkgver=0.221
+pkgver=0.222
 pkgrel=1
 pkgdesc="Tools for MAME / MESS: Castool, CHDman (Compressed Hunks of Data - CHD manager), floptool, jedutil, ldresample, romcmp ..."
-arch=('i686' 'x86_64')
-	if [[ "$CARCH" == "i686" ]]; then
-		_ARCH_="i386"
-	elif [[ "$CARCH" == "x86_64" ]]; then
+arch=('x86_64')
+	if [[ "$CARCH" == "x86_64" ]]; then
 		_ARCH_="amd64"
 	fi	
 url="http://mamedev.org"
