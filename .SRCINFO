@@ -8,6 +8,7 @@ pkgbase = remotixqc
 	depends = qt5-base
 	depends = wayland
 	depends = libx11
+	source_x86_64 = https://eu.downloads.remotix.com/agent-linux/remotixagent-1.4.1-340.x86_64.deb
 	sha256sums_x86_64 = 4f67d440c9ccf38cb6764d7873d23f72616e2f3a51dd5b6256de165f295439e4
 
 pkgname = remotixqc
