@@ -1,0 +1,29 @@
+pkgbase = firefox-nightly-latest-fr
+	pkgdesc = Official latest french tarball of Firefox Nightly. Reinstall package if firefox is outdated and the PKGBUILD's version is not updated yet
+	pkgver = 80.0a1
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = curl
+	makedepends = tar
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = nspr
+	depends = ttf-font
+	depends = libpulse
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = hunspell-fr: Spell checking, French
+	provides = firefox
+
+pkgname = firefox-nightly-latest-fr
+
