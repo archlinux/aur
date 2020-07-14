@@ -10,6 +10,8 @@ arch=('any')
 url="http://lilypond.org"
 license=('GPL')
 options=('!strip')
+conflicts=('lilypond-docs')
+provides=('lilypond-docs')
 source=("http://lilypond.org/downloads/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
 sha256sums=('fbbce3fa74d794e4c3dcf9465a1f5f612738e36ead717fb73761333d299ff204')
 
