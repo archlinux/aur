@@ -1,4 +1,5 @@
 pkgbase = meson-ui
+	pkgdesc = Qt GUI for the Meson build system
 	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/michaelbrockus/meson-ui

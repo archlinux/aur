@@ -4,6 +4,7 @@ pkgname=meson-ui
 pkgver=0.20.1
 pkgrel=1
 arch=('x86_64')
+pkgdesc='Qt GUI for the Meson build system'
 url='https://github.com/michaelbrockus/meson-ui'
 license=('Apache')
 depends=('python-pyqt5' 'meson' 'ninja')
