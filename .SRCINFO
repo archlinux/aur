@@ -1,0 +1,17 @@
+pkgbase = sddm-theme-amadeus-git
+	pkgdesc = Amadeus theme for SDDM
+	pkgver = ebbcc49
+	pkgrel = 1
+	url = https://github.com/Michal-Szczepaniak/sddm-theme-amadeus
+	arch = any
+	license = DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+	makedepends = git
+	depends = sddm
+	depends = otf-takao
+	depends = qt5-graphicaleffects
+	conflicts = sddm-theme-amadeus
+	source = sddm-theme-amadeus-git::git+https://github.com/Michal-Szczepaniak/sddm-theme-amadeus.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-amadeus-git
+
