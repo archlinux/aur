@@ -3,15 +3,17 @@
 
 pkgname=etterna-git
 pkgver=0.70.0.r181.g832d37aa5d
-pkgrel=3
+pkgrel=4
 pkgdesc="Etterna: an advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
 license=('MIT')
 provides=('etterna')
-conflicts=('etterna')
-depends=(libmad gtk2 glu glew curl libpulse cmake)
-optdepends=('jack: Audio server')
+depends=(glu libogg libx11 libxrandr opengl-driver openssl)
+makedepends=(cmake git)
+optdepends=('alsa-lib: audio output via ALSA'
+            'libpulse: audio output via PulseAudio'
+            'jack: audio output via JACK')
 source=('git+https://github.com/etternagame/etterna#branch=develop'
         etterna.desktop)
 sha512sums=('SKIP'
