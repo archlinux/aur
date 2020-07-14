@@ -135,7 +135,6 @@ prepare() {
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
       \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
-      \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
