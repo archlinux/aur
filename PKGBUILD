@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=libtdesktopenvironment
-pkgver=beta1
+pkgver=beta2
 pkgrel=1
 pkgdesc="Common libraries for desktop integration for the- apps"
 arch=("x86_64")
@@ -8,8 +8,8 @@ url="https://github.com/vicr123/libtdesktopenvironment"
 license=('GPL3')
 depends=('the-libs' 'qt5-svg' 'qt5-x11extras' 'qt5-base' 'glib2' 'libx11' 'libxss' 'libxext' 'libxrandr' 'networkmanager-qt' 'pulseaudio-qt')
 makedepends=('qt5-tools')
-source=("$pkgname-$pkgver"::"https://github.com/vicr123/libtdesktopenvironment/archive/beta1.tar.gz")
-sha256sums=('5ee39d80e9fc1611606f7d6a23c55c0ab2357e9f2bcbc717a7e5fed7a4c9dbc4')
+source=("$pkgname-$pkgver"::"https://github.com/vicr123/libtdesktopenvironment/archive/beta2.tar.gz")
+sha256sums=('b502b82272bb4e2fd70ec7c4a0e50ef2b23340a189ac950b539c1e37a2fee7e8')
 
 build() {
 	cd "$pkgname-$pkgver"
