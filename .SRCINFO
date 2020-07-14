@@ -1,0 +1,23 @@
+pkgbase = pugl-git
+	pkgdesc = Minimal portable API for GUIs which is suitable for use in plugins.
+	pkgver = r673.d70aa80
+	pkgrel = 1
+	url = http://drobilla.net/software/pugl
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = python
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxext
+	depends = cairo
+	provides = pugl
+	conflicts = pugl
+	source = pugl-git::git+https://github.com/lv2/pugl
+	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = pugl-git
+
