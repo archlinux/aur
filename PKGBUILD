@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Debertolis <as3ii@gmail.com>
 pkgname=emptty-git
 pkgver=v0.2.2.r0.b4d087e
-pkgrel=1
+pkgrel=2
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --tags --long $(git rev-list --tags --max-count=1) \
+    printf "%s" "$(git describe --tags --long $(git rev-list --all --max-count=1) \
         | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
