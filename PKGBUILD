@@ -3,7 +3,7 @@
 _name=pEpJNIAdapter
 _pkgname=pep-jni-adapter
 pkgname=$_pkgname-hg
-pkgver=r702.d6c12d6ca3d0
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="p≡p JNI adapter"
 arch=('x86_64' 'i686')
@@ -30,7 +30,7 @@ prepare() {
 pkgver() {
 	cd "$srcdir/$_name"
 
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	hg tags | grep Release | grep -v RC | sort -r | head -1 | awk '{print $1}' | cut -c9-
 }
 
 build() {
