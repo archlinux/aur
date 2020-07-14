@@ -1,7 +1,7 @@
 # Maintainer: Layne Bernardo <lmbernar (at) uark (dot) edu>
 pkgname='labelmanager-git'
-pkgver=2
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 pkgdesc="Simple barcode printing interface for Zebra printers using LPR"
 arch=('x86_64')
 url="https://github.com/LMBernardo/LabelManager"
@@ -13,8 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
