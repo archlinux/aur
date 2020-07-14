@@ -17,7 +17,7 @@ optdepends=(
     'python-cryptography: DNSSEC support'
     'python-requests: DNS-over-HTTPS support'
     'python-requests-toolbelt: DNS-over-HTTPS support'
-    'python-trio: asyc I/O backend'
+    'python-trio: async I/O backend'
     'python-curio: async I/O backend'
     'python-sniffio: async I/O'
 )
