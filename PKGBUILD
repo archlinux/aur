@@ -5,7 +5,7 @@
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -15,14 +15,11 @@ conflicts=('micro-git' 'micro' 'micro-nightly-bin')
 provides=('micro')
 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
-			# "https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.1"
-			# "https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.desktop")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
-			# "https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.1"
-			# "https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.desktop")
-source=("https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.1"
-			"https://raw.githubusercontent.com/zyedidia/micro/master/assets/packaging/micro.desktop"
-			"micro.svg::https://micro-editor.github.io/micro_files/micro-logo-mark.svg")
+#Fixed commits before next release
+source=("https://raw.githubusercontent.com/zyedidia/micro/0283155305528929e4799616cec0c2ed3bac0362/assets/packaging/micro.1"
+			"https://raw.githubusercontent.com/zyedidia/micro/51444765f4b225d0658afd1711174642bebab46d/assets/packaging/micro.desktop"
+			"https://raw.githubusercontent.com/zyedidia/micro/2caff00ce1fb5494bf1d626ec6bd42cd8117edc1/assets/micro-logo-mark.svg")
 
 sha256sums=('4f703d3625588a8494678ab13ad424ac0ac610278186d3a1e4cd132d7057f401'
             '41258ce74409536dd04d6f7b1cc0b1b26f953da45fff7f039201e19a4ef2ea43'
@@ -39,5 +36,5 @@ package(){
  done
  install -Dm644 "${srcdir}/micro.1" "${pkgdir}/usr/share/man/man1/micro.1"
  install -Dm644 "${srcdir}/micro.desktop" "${pkgdir}/usr/share/applications/micro.desktop"
- install -Dm644 "${srcdir}/micro.svg" "${pkgdir}/usr/share/pixmaps/micro.svg"
+ install -Dm644 "${srcdir}/micro-logo-mark.svg" "${pkgdir}/usr/share/pixmaps/micro.svg"
 }
