@@ -1,0 +1,16 @@
+pkgbase = giganotes-bin
+	pkgdesc = An open source data management and note taking app
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://giganotes.com
+	arch = x86_64
+	license = custom:unknown
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	provides = giganotes
+	source = giganotes-bin-1.1.6.deb::https://giganotes.com/dist/linux/giganotes_1.1.6_amd64.deb
+	sha256sums = a32af43f2db86e4f68765c54edf50d3a400800c02838d8b3eaed7fe05ff05d34
+
+pkgname = giganotes-bin
+
