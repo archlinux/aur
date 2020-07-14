@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=nitrocli
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Command-line interface for Nitrokey devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libnitrokey>=3.5' 'gnupg')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/d-e-s-o/nitrocli/archive/v${pkgver}.tar.gz)
-sha512sums=('44fd5254947cd0c6ce90a48b1050b2012f549a49e082f514c08ffc783c459a8437de153ef057d155333bfb794af8f12b5fee331041b76a85114d8de8f6bcbb14')
+sha512sums=('5d0999fb363e746758a2047b311025c5d7b0a57f0b4da255e276a61824333098585bce4e7d5f602a2cfce60eda0cc2ce5de2d6410b6eb817653e3ef5232f7d43')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -22,13 +22,15 @@ EOF
 }
 
 build() {
-	cd "$pkgname-$pkgver/nitrocli"
+	cd "$pkgname-$pkgver"
 	export USE_SYSTEM_LIBNITROKEY=1
 	cargo build --release
+	cargo run --bin=shell-complete > nitrocli.bash
 }
 
 package() {
-	cd "$pkgname-$pkgver/nitrocli"
+	cd "$pkgname-$pkgver"
 	install -Dm755 target/release/nitrocli "$pkgdir"/usr/bin/nitrocli
 	install -Dm644 doc/nitrocli.1 "$pkgdir"/usr/share/man/man1/nitrocli.1
+	install -Dm644 nitrocli.bash "$pkgdir"/usr/share/bash-completion/completions/nitrocli
 }
