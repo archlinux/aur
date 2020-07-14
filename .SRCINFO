@@ -1,0 +1,18 @@
+pkgbase = mindfulness-at-the-computer
+	pkgdesc = Helps you stay mindful of your breathing while using your computer
+	pkgver = 1.0.0.alpha.6
+	pkgrel = 1
+	url = https://mindfulness-at-the-computer.gitlab.io
+	install = mindfulness-at-the-computer.install
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = python-pyqt5
+	depends = python-sip
+	source = mindfulness-at-the-computer-1.0.0-alpha.6.tar.gz::https://gitlab.com/mindfulness-at-the-computer/mindfulness-at-the-computer/-/archive/v1.0.0-alpha.6/mindfulness-at-the-computer-v1.0.0-alpha.6.tar.gz
+	sha256sums = f41778e6f3d73b057e76903878b17e4e2345343a06a90ac19f54da0dce5d27a3
+
+pkgname = mindfulness-at-the-computer
+
