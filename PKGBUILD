@@ -1,9 +1,9 @@
-# Maintainer: lithm <lithm at posteo dot de>
+# Maintainer: lis
 # Contributor: mis
 # Contributor: oslik
 pkgname=solvespace
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
