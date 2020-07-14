@@ -1,6 +1,6 @@
 pkgbase = emacs-cider
 	pkgdesc = The Clojure Interactive Development Environment that Rocks for Emacs
-	pkgver = 0.23.0
+	pkgver = 0.25.0
 	pkgrel = 0
 	url = https://github.com/clojure-emacs/cider
 	install = emacs-cider.install
@@ -12,12 +12,11 @@ pkgbase = emacs-cider
 	depends = emacs-queue
 	depends = emacs-spinner
 	depends = emacs-sesman
-	depends = emacs-seq
 	depends = emacs-a
 	depends = emacs-parseclj
 	depends = emacs-parseedn
-	source = emacs-cider-0.23.0.tar.gz::https://github.com/clojure-emacs/cider/archive/v0.23.0.tar.gz
-	sha256sums = 5bbb600f54f96ec864666d5bd04d66abb57894e26dbfaf4513528a05c8d42ebc
+	source = emacs-cider-0.25.0.tar.gz::https://github.com/clojure-emacs/cider/archive/v0.25.0.tar.gz
+	sha256sums = 1cd00a1b79ad410287200715fb3e8a668a0017d73bf451ccdff5f51f0f7cd990
 
 pkgname = emacs-cider
 
