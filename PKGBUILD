@@ -1,8 +1,7 @@
 # Maintainer: Sebastien Leduc <sebastien@sleduc.fr>
 
 pkgname=python-remote-pdb
-_realname=remote-pdb
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Remote vanilla PDB (over TCP sockets) done right: no extras, proper handling around connection failures and CI. Based on pdbx."
 arch=(any)
@@ -10,11 +9,11 @@ url="https://github.com/ionelmc/python-remote-pdb"
 license=('BSD')
 depends=('python')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/r/$_realname/$_realname-$pkgver.tar.gz")
-md5sums=('0bc5817d403fa62d56ef874bfc5d11b3')
+source=("https://codeload.github.com/ionelmc/${pkgname}/zip/v${pkgver}")
+md5sums=('b7cd6ca00395a12ee15b6e1d26d928d7')
 
 package() {
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 

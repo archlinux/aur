@@ -1,14 +1,14 @@
 pkgbase = python-remote-pdb
 	pkgdesc = Remote vanilla PDB (over TCP sockets) done right: no extras, proper handling around connection failures and CI. Based on pdbx.
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ionelmc/python-remote-pdb
 	arch = any
 	license = BSD
 	depends = python
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/r/remote-pdb/remote-pdb-1.2.0.tar.gz
-	md5sums = 0bc5817d403fa62d56ef874bfc5d11b3
+	source = https://codeload.github.com/ionelmc/python-remote-pdb/zip/v2.0.0
+	md5sums = b7cd6ca00395a12ee15b6e1d26d928d7
 
 pkgname = python-remote-pdb
 
