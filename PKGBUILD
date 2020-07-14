@@ -1,15 +1,11 @@
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Daniel Kozak <kozzi11@gmail.com>
-
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb gcc-d-git)
-pkgver=10.1.0
+pkgver=11.0.0.r178244.004bb936d6d
 _majorver=${pkgver%%.*}
 _islver=0.22.1
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
