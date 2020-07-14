@@ -1,6 +1,6 @@
 pkgname=jami-ubuntu-latest
-pkgver=20200318.1.f44e7d0
-pkgrel=2
+pkgver=20200708.1.398241e
+pkgrel=1
 pkgdesc='Free and universal communication platform which preserves the users` privacy and freedoms (gtk frontend)'
 arch=('x86_64')
 url='https://jami.net'
@@ -10,9 +10,9 @@ depends=('libayatana-appindicator-gtk3' 'jami-daemon' 'clutter' 'clutter-gtk' 'd
  'libnotify' 'qrencode' 'qt5-base' 'webkit2gtk' 'ayatana-ido')
 conflicts=('jami-gnome' 'libjamiclient')
 makedepends=('binutils' 'tar' 'xz')
-source=('https://dl.jami.net/ring-manual/ubuntu_19.10/jami-all_amd64.deb')
+source=('https://dl.jami.net/ring-manual/ubuntu_20.04/jami-all_amd64.deb')
 provides=('jami-gnome' 'libjamiclient')
-sha1sums=('SKIP')
+sha256sums=('62c3b02d9bee62fec6c970ff9e4663f623d5c04ce84e5821ac715fcfe186c2d9')
 options=(!strip)
 
 build() {

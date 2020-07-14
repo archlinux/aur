@@ -1,7 +1,7 @@
 pkgbase = jami-ubuntu-latest
 	pkgdesc = Free and universal communication platform which preserves the users` privacy and freedoms (gtk frontend)
-	pkgver = 20200318.1.f44e7d0
-	pkgrel = 2
+	pkgver = 20200708.1.398241e
+	pkgrel = 1
 	url = https://jami.net
 	arch = x86_64
 	license = GPL3
@@ -28,8 +28,8 @@ pkgbase = jami-ubuntu-latest
 	conflicts = jami-gnome
 	conflicts = libjamiclient
 	options = !strip
-	source = https://dl.jami.net/ring-manual/ubuntu_19.10/jami-all_amd64.deb
-	sha1sums = SKIP
+	source = https://dl.jami.net/ring-manual/ubuntu_20.04/jami-all_amd64.deb
+	sha256sums = 62c3b02d9bee62fec6c970ff9e4663f623d5c04ce84e5821ac715fcfe186c2d9
 
 pkgname = jami-ubuntu-latest
 
