@@ -2,8 +2,8 @@
 
 _name=pytzdata
 pkgname=python-pytzdata
-pkgver=2019.3
-pkgrel=2
+pkgver=2020.1
+pkgrel=1
 pkgdesc="Official timezone database for Python."
 arch=('any')
 url="https://github.com/sdispater/pytzdata"
@@ -12,7 +12,8 @@ depends=('python')
 makedepends=('python-cleo' 'python-dephell')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sdispater/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('75f212712794e3931592cc47cb636c908cee1d5cbb85d703aaadaaa4b9dd096c6b7f1205f3783b71bacc4477d68d39c13ea9f9027a39924e706c140047ed5585')
+sha512sums=('fd154bfbe90ce07a90f769063b772234036d2627c1e6d78a465d9ddbc894e50cb9d821c04ebff1a7cc6a327266f7843fe54e5592d37c41db023329d6e0f668c2')
+b2sums=('6f07a7577edc87030fd70e720b32146e9044a8c6f74d0bafb9239ad666d0d6fd0ac7c3cca070914701af301b1a3368ace2985f8169b9747937fa6ed066be7302')
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
