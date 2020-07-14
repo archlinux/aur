@@ -1,0 +1,17 @@
+pkgbase = kamkode
+	pkgdesc = Platform independent multi-format 1D/2D barcode creation and detection. Detects barcode from images and using webcam
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://kamkode.sourceforge.io
+	arch = any
+	license = custom:kamkode
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = bash
+	source = kamkode-0.9.zip::https://sourceforge.net/projects/kamkode/files/App/kamkode%200.9.zip/download
+	source = kamkode.png
+	sha256sums = 9ca8539f093d88cd039255a2fbbe273f36eff7dc4d6e7c8949927bda902216af
+	sha256sums = SKIP
+
+pkgname = kamkode
+
