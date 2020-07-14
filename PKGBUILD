@@ -2,7 +2,7 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.5.5a
+pkgver=5.5.8
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -15,6 +15,8 @@ optdepends=('ffmpeg: for DTS conversion'
             'mkclean: MKV optimisation'
             'mkvalidator: MKV check'
             'qtesseract5: subtitle conversion'
+            'bdsup2subpp-git: SUP subtitle conversion'
+            'libav: avconv'
             )
 makedepends=('qt5-tools'
              'imagemagick'
@@ -31,6 +33,9 @@ prepare() {
       -i build.sh
   sed 's|mkv-extractor-qt5|mkv-extractor-qt|g' \
       -i mkv-extractor-qt5.desktop
+
+  # use bdsup2subpp instead of java app
+  sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
 
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
