@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.6.17
-_rtpatchver=10
+_pkgver=5.6.19
+_rtpatchver=11
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -26,13 +26,20 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
 )
-sha256sums=('c33a245401db38de760a7229cf3917eb6e6f8fabab0dc5add95b9b8f3e557f9e'
+sha512sums=('0b3c64ab4f63431c2da6786b4f85237f20c86f20a1faa79440d9cbc2aa6101118b0f18b6688ca7ad27dbcc4978d197fae52886fc23a3e2deb3c0a1d9c82c386b'
             'SKIP'
-            '15a65340a6f332b4017cc61b64762018cee27a886815a3013341d99782c33fb7'
+            '522bae99bbfb272deb71700b0e3bb5bb8b43253e8c94ff6fb902d6584ea54700722afede9a6ccb3ba1a6b99eb7f6a82e4872ee807aa0b28cc8d75ab7fc5f3fa4'
             'SKIP'
-            '4eef5757aec0357d46e8e9fd146f414d438812ef34d4f51b56baa93e7fa43493'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            'dcabb2c35a5b54d7fee81437f86da98da65323b0c2ba793247781befbcb78f59f31afbc77f3987ea3524d9a2c144a98cd6b18099a4b5c8dd8af86e33f0f0d85c'
+            'b1966327fac96607d052b5648e28728fdc94a14cc41e108fe336e16e8b9bad8b0ea4df0c27e13bb0ed32acb785bd7f6bf91b65f778eab3aff7695f94d348e26f'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+b2sums=('7c0afa0e3d322314992022272614973311a8dfb85de5e0710dd4c929b0abc0a2389b49938f7df4256ea5719bf2a56a7d6eed2eebb51c337fd5fb277747a6620a'
+        'SKIP'
+        'ab6de55cac59c2bd2d29009aea8db129c85ac0c816186b1c8561062f49eb91fc384dbad6003e4f4b63989eed6e614116ce189270d2fc7081b89d031c8af1a0ee'
+        'SKIP'
+        '720bb287882fdab7a9ee052a32f57452a2c083dfbbd1fbf90dca142a896ab95a1c3f3adad5ede2afd265cd724d5ce8e795388625585c33bf805efe71163cb435'
+        '9afbf0527415c8fc49c624f2eae17473f4f212c494a08faf4ccb08e2be9ec426bfd36bfbf56bf5a1d917fa5eb33f454454beb214c0281c06ebf01a804c5a011d'
+        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
