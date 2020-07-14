@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc
 pkgver=0.21.11
-pkgrel=0
+pkgrel=1
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
