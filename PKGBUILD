@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python-setuptools' 'tpm2-tss')
 makedepends=('swig')
 checkdepends=('ibm-sw-tpm2' 'python-cryptography')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3791eb148736dc704fa379fb6b45c5964f7b0953a37f867eab7fa4ffe1a51076')
+sha256sums=('a0a1c492d4d0ac4855c4f3b7bbf1c9d63d96aa9be06da800d1d44800b319bc54')
 
 build() {
 	cd "$_name-$pkgver"
