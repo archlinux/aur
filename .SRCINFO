@@ -1,0 +1,14 @@
+pkgbase = python-py3_sg
+	pkgdesc = Python3 SCSI generic library
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/7aman/py3_sg
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/py3_sg/py3_sg-0.0.2.tar.gz
+	sha256sums = 2d9813a1e95841d705176d7a4f3ae89cdc28bf7494e3ef4f171058679525a23d
+
+pkgname = python-py3_sg
+
