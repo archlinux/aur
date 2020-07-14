@@ -1,0 +1,15 @@
+pkgbase = libtwebservices
+	pkgdesc = Common libraries for the- apps to communicate with web APIs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/vicr123/libtwebservices
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = the-libs
+	depends = qt5-base
+	source = libtwebservices-0.1::https://github.com/vicr123/libtwebservices/archive/v0.1.tar.gz
+	sha256sums = 0f37dba2524acab9a7e813f0229d607801f4ec442b4fadf6ff7681c3647f167b
+
+pkgname = libtwebservices
+
