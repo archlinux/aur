@@ -34,7 +34,7 @@ build(){
 #	cuda_flags='--set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache --set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc'
 
 #	cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
-#	python setup.py build $cuda_flags --yes DLIB_USE_CUDA
+#	python setup.py build $cuda_flags
 }
 
 
