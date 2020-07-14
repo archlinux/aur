@@ -1,0 +1,7 @@
+otf-xkcd-font-*.pkg.tar.xz
+otf-xkcd-font-*.pkg.tar.zst
+pkg/
+src/
+ttf-xkcd-script-font-*.pkg.tar.xz
+ttf-xkcd-script-font-*.pkg.tar.zst
+xkcd-font-*.zip
