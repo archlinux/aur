@@ -1,17 +1,14 @@
 pkgbase = ttf-bookerly
 	pkgdesc = Amazon's new typeface for Kindle.
-	pkgver = 4.21.0.65
-	pkgrel = 4
-	url = https://play.google.com/store/apps/details?id=com.google.android.apps.books
+	pkgver = 8.32.0.100
+	pkgrel = 1
+	url = https://apkpure.com/amazon-kindle/com.amazon.kindle
 	arch = any
 	license = unknown
 	makedepends = unzip
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	noextract = amazonkindle.apk
-	source = amazonkindle.apk::https://www.apkmirrordownload.com/wp-content/themes/apkmirrordownload/download.php?type=apk&id=130701
-	sha256sums = 1b3e1f6f857032ef847e61a69b431b55b916648da18694f6b061e27d16db09b7
+	source = amazonkindle.apk::https://apkpure.com/amazon-kindle/com.amazon.kindle/download/1216348261-APK?from=versions%2Fversion
+	sha256sums = d9054a1211c48d53c7295e65fcc58426abd0577fa05fb85001fc2e74473632df
 
 pkgname = ttf-bookerly
 
