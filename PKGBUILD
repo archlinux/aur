@@ -3,20 +3,27 @@
 # Upstream: https://github.com/Soldat/soldat
 
 pkgname=('soldat-git')
+_branch='develop'
 _installdir='/usr/share/soldat'
-pkgver=1.8.0.alpha.initial.3.g6dee4d0
+_gns_commit='8f60b0e6bf50b44d5cc6587b8ddcccc4d2a8e78c'
+pkgver=1.8.0.alpha.initial.33.g078795a
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
 arch=('x86_64')
 url='https://github.com/Soldat/soldat'
-license=('MIT' 'custom:Shareware assets')
-depends=('sdl2' 'openal' 'freetype2' 'physfs' 'gamenetworkingsockets')
-makedepends=('make' 'fpc' 'zip')
+# NOTE: BSD is the license for GNS
+license=('MIT' 'cc-by-4.0' 'BSD')
+# NOTE: protobuf & openssl are deps for GNS
+depends=('sdl2' 'openal' 'freetype2' 'physfs' 'protobuf' 'openssl')
+# NOTE: cmake & ninja are make-deps for GNS
+makedepends=('make' 'fpc' 'zip' 'cmake' 'ninja')
 #optdepends=()
 provides=('soldat')
 # conflicts=()
-source=("$pkgname::git+https://github.com/Soldat/soldat.git#branch=develop" "soldat-base::git+https://github.com/Soldat/base.git")
-md5sums=('SKIP' 'SKIP')
+source=("$pkgname::git+https://github.com/Soldat/soldat.git#branch=$_branch"
+        "soldat-base::git+https://github.com/Soldat/base.git"
+        "game-networking-sockets::git+https://github.com/ValveSoftware/GameNetworkingSockets.git#commit=$_gns_commit")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
@@ -26,6 +33,14 @@ pkgver() {
 }
 
 build() {
+  # compile game-networking-sockets
+  cd "$srcdir/game-networking-sockets"
+  mkdir -p build;
+  cd build;
+  cmake -G Ninja ..
+  ninja
+  cp "src/libGameNetworkingSockets.so" "$srcdir/$pkgname/shared/libs/GameNetworkingSockets/"
+
   # compile assets
   cd "$srcdir/soldat-base"
   chmod +x create_smod.sh
@@ -68,10 +83,12 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "$srcdir/soldat-base/client/readme.txt" "$pkgdir/usr/share/licenses/$pkgname/ASSET_LICENSE"
+  install -Dm 644 "$srcdir/game-networking-sockets/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/GameNetworkingSockets"
   install -Dm 655 "server/build/soldatserver_x64" -t "$pkgdir/$_installdir";
   install -Dm 655 "client/build/soldat_x64" -t "$pkgdir/$_installdir";
   install -Dm 644 "client/build/libstb.so" -t "$pkgdir/$_installdir";
   install -Dm 644 "client/media/soldat.ico" -t "$pkgdir/$_installdir";
+  install -Dm 644 "shared/libs/GameNetworkingSockets/libGameNetworkingSockets.so" -t "$pkgdir/$_installdir";
   install -Dm 644 "$srcdir/soldat-base/soldat.smod" -t "$pkgdir/$_installdir";
   install -Dm 644 "$srcdir/soldat-base/client/play-regular.ttf" -t "$pkgdir/$_installdir";
   install -Dm 655 "soldat" -t "$pkgdir/usr/bin";
