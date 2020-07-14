@@ -3,7 +3,7 @@
 
 pkgname=mame-tools
 pkgver=0.222
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for MAME / MESS: Castool, CHDman (Compressed Hunks of Data - CHD manager), floptool, jedutil, ldresample, romcmp ..."
 arch=('x86_64')
 	if [[ "$CARCH" == "x86_64" ]]; then
