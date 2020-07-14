@@ -7,8 +7,8 @@
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-proxy-sqlite-lts
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.0.2
+pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.zabbix.com"
@@ -26,7 +26,7 @@ source=("https://cdn.zabbix.com/zabbix/sources/stable/5.0/zabbix-${pkgver}.tar.g
 	'automake.patch'
 	'musl-fix-includes.patch')
 
-sha512sums=('66d16d6c8e0bac235b23bab9d6f5f5c29d96b508fd4834c16f82b7ca33591e36e44cd982e918c1c4736331d3f8c93535616c64be5596724842b1af5621508490'
+sha512sums=('81cf26d67e4e4df388dd6505db6f7451cf2f05aa6ac7b5d043c32eec89053cf133075bbb289cfb5b15f48a3eb94f6462427047777035ab09cc1dfeefba926dd6'
             '78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4'
             '6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314'
             'fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d'
