@@ -3,13 +3,13 @@
 _name=dotboy
 
 pkgname="python-${_name}"
-provides=("python-${_name}")
-conflicts=("python-${_name}")
+provides=()
+conflicts=()
 pkgver=0.1.4
 pkgrel=1
 pkgdesc='A Python script to help with dot file management'
 arch=('any')
-url="https://gitlab.com/bwbuhse/dotboy/${_name}"
+url="https://gitlab.com/bwbuhse/${_name}"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 makedepends=('python-setuptools')

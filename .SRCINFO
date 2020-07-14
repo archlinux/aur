@@ -2,13 +2,11 @@ pkgbase = python-dotboy
 	pkgdesc = A Python script to help with dot file management
 	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://gitlab.com/bwbuhse/dotboy/dotboy
+	url = https://gitlab.com/bwbuhse/dotboy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.8
-	provides = python-dotboy
-	conflicts = python-dotboy
 	source = https://files.pythonhosted.org/packages/source/d/dotboy/dotboy-0.1.4.tar.gz
 	md5sums = 45e7fcaec76606b9aa0cc01257d9c452
 
