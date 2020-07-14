@@ -7,6 +7,8 @@ pkgdesc="A DNS toolkit for Python"
 arch=('any')
 url="http://www.dnspython.org"
 license=('ISC')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 makedepends=(
     'python-setuptools'
     # 'cython'  # uncomment dep & build option for cython optimization speedup
