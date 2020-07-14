@@ -1,6 +1,6 @@
 pkgbase = xpadneo-dkms-git
 	pkgdesc = Advanced Linux Driver for Xbox One Wireless Gamepad
-	pkgver = 0.6.0.r404.g4414f98
+	pkgver = 0.8.r8.g1fed9aa
 	pkgrel = 1
 	url = https://github.com/atar-axis/xpadneo
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = xpadneo-dkms-git
 	depends = dkms
 	depends = bluez
 	depends = bluez-utils
+	provides = xpadneo-dkms
+	conflicts = xpadneo-dkms
 	source = git+https://github.com/atar-axis/xpadneo.git
 	sha256sums = SKIP
 
