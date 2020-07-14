@@ -5,6 +5,7 @@ pkgbase = querypie
 	url = https://www.querypie.com
 	arch = x86_64
 	license = custom:querypie
+	makedepends = gendesk
 	depends = zlib
 	noextract = querypie-6.2.0.AppImage
 	options = !strip

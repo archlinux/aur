@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://www.querypie.com'
 license=("custom:${pkgname}")
 depends=('zlib')
+makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://d2f8621kw7pn7s.cloudfront.net/latest/QueryPie-${pkgver}.AppImage?v=${pkgver}-latest.200615184"
