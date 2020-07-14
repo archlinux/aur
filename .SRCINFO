@@ -1,6 +1,6 @@
 pkgbase = routeconverter
 	pkgdesc = A free tool to edit and convert routes, tracks and waypoints
-	pkgver = 2.26
+	pkgver = 2.28
 	pkgrel = 1
 	url = http://www.routeconverter.de/en
 	changelog = ChangeLog
@@ -17,13 +17,13 @@ pkgbase = routeconverter
 	source = routeconverter
 	source = routeconverter-offline
 	source = routeconverter-cli
-	source = http://static.routeconverter.com/download/previous-releases/2.26/RouteConverterCmdLine.jar
+	source = http://static.routeconverter.com/download/previous-releases/2.28/RouteConverterCmdLine.jar
 	source = http://static.routeconverter.com/download/RouteConverterLinux.jar
 	md5sums = e4cdc9db82a9f8c550afb44f851d897f
 	md5sums = a9e4b76c2aa26c6a0b7a9474964c9648
 	md5sums = fdf570309917df1c1536b7e3c7740b33
-	md5sums = 3b7cf17f3c5eb3398c6a8f17b68b8473
-	md5sums = a077c76d6b2056e7fbe7dd5ad079b5d9
+	md5sums = b69b067dabf5593e2c2cf1a28633866f
+	md5sums = 3e1d8b3c2ef2c29c741e10d17cf9c4fa
 
 pkgname = routeconverter
 
