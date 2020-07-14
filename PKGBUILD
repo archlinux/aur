@@ -16,4 +16,6 @@ sha256sums_x86_64=('4f67d440c9ccf38cb6764d7873d23f72616e2f3a51dd5b6256de165f2954
 package() {
     cd "${pkgdir}"
     tar -xpJf "${srcdir}/data.tar.xz"
+
+    systectl restart remotixagent
 }
