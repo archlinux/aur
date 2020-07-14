@@ -1,33 +1,23 @@
-# Contributor: Marcos Heredia <chelqo@gmail.com>
+# Maintainer: Marcos Heredia <chelqo@gmail.com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _font="lobster-font"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=1.7
-pkgrel=1
-pkgdesc="A lovely bold condensed script (OTF), from Pablo Impallari"
+pkgrel=2
+pkgdesc="A lovely bold condensed script font (TTF), from Pablo Impallari"
 arch=(any)
-url="http://www.impallari.com/lobster/"
-license=('custom:OFL')
+url="https://github.com/impallari/The-Lobster-Font"
+license=('OFL')
 groups=("${_group}-fonts")
-depends=('fontconfig' 'xorg-font-utils')
-#install=updatefont.install
-#source=("http://www.impallari.com/media/releases/${_font}-${pkgver}.zip")
-#md5sums=('ed3c3873340a17276a8ad556ecf3da5a')
-#source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Lobster")
-#md5sums=('72a360e59e977abb5e92a6bdbc3d6740')
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/The-Lobster-Font/archive/master.zip")
-md5sums=('8c3d8eee96154344d44c91a7275f389c')
+sha256sums=('501ebbe8ebcadeb33d5b21786c57023236b996ed71a8900f0475e5252a996863')
 
 package() {
   cd ${srcdir}/The-Lobster-Font-master
 
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
-  install -Dpm644 fonts/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
-
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dpm644 DESCRIPTION.en_us.html README.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dpm644 fonts/ttf/*.ttf -t "${pkgdir}/usr/share/fonts/TTF/${_group}"
+  install -Dpm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dpm644 DESCRIPTION.en_us.html README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
