@@ -2,7 +2,7 @@
 
 _gemname=sup
 pkgname=sup
-pkgver=0.22.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Sup is a console-based email client for people with a lot of email. Great mutt alternative."
 arch=(any)
@@ -11,9 +11,9 @@ license=('GPL')
 depends=('ruby-chronic-old' 'ruby-highline' 'ruby-locale' 'ruby-lockfile' 'ruby-mime-types' 'ruby-ncursesw' 'ruby-rmail-sup' 'ruby-trollop' 'ruby-unicode' 'ruby-xapian-ruby')
 optdepends=('ruby-gpgme: PGP support')
 conflicts=(sup-git)
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('f1b1af9e6617a3ce076ffd7419c3d5c325ee46d9e299fc60fb86b8aa63d7429f')
+md5sums=('3297c3ef21019e8cfd6e5ca28b1964e8')
 
 package() {
   cd "$srcdir"
