@@ -1,0 +1,24 @@
+pkgbase = mtfmapper
+	pkgdesc = A utility to produce MTF (modulation transfer function, a measure of edge acuity) maps of images
+	pkgver = 0.7.29
+	pkgrel = 1
+	url = https://sourceforge.net/projects/mtfmapper/
+	arch = x86_64
+	license = BSD
+	makedepends = asciidoc
+	makedepends = eigen
+	makedepends = tclap
+	makedepends = subversion
+	depends = dcraw
+	depends = exiv2
+	depends = gnuplot
+	depends = opencv
+	depends = qt5-charts
+	options = !makeflags
+	source = mtfmapper::svn+https://svn.code.sf.net/p/mtfmapper/code/trunk#revision=632
+	source = opencv4.patch
+	b2sums = SKIP
+	b2sums = 05846e04735f019f12913517181537fd76f1e1144202fd1632844cb7a6324032f141bb980fd2262756933c1e8a4668c4df78183f24bbb069a75a71696e94ff44
+
+pkgname = mtfmapper
+
