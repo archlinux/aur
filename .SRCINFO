@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-rotate-git
+	pkgdesc = Rotate plugin for AviSynth+
+	pkgver = r3.a6e77bf
+	pkgrel = 1
+	url = https://github.com/SuNNjek/rotate-plugin
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus
+	provides = avisynth-plugin-rotate
+	conflicts = avisynth-plugin-rotate
+	source = avisynth-plugin-rotate::git+https://github.com/SuNNjek/rotate-plugin#branch=master
+	md5sums = SKIP
+
+pkgname = avisynth-plugin-rotate-git
+
