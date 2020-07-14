@@ -31,9 +31,9 @@ _opt_features=(
   #rubberband
 
   # Features disabled by default, but don't require any extra dependencies on an
-  # Arch system: (should these just be default?)
+  # Arch system:
 
-  #dvbin
+  dvbin
 
 )
 
@@ -45,7 +45,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.32.0_410_g640db1ed3f
+pkgver=0.32.0_583_g7a7a0a78b5
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
