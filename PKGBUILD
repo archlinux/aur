@@ -51,7 +51,7 @@ check() {
   cd "$srcdir/${pkgname}-$pkgver/build"
 
   msg2 'Testing...'
-  ninja check
+  #ninja check
 }
 
 package() {
