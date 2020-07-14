@@ -1,6 +1,6 @@
 # Maintainer: Daniel Parks <danielrparks at gmail dot com>
 pkgname=acp3x-rn-dkms
-_upstreamver='5.8-rc3'
+_upstreamver='5.8-rc5'
 pkgver="${_upstreamver/-/}"
 pkgrel=1
 pkgdesc="Renoir audio co-processor drivers from release candidate 5.8"
@@ -14,9 +14,9 @@ source=("https://git.kernel.org/torvalds/t/linux-$_upstreamver.tar.gz"
 	      'dkms.conf'
 			  'dkms.conf.sig')
 noextract=("linux-$_upstreamver.tar.gz")
-sha256sums=('3b983f9c93c791424e4d0894031625d1d6b5ec04ec09a09de0248b374329ef05'
+sha256sums=('69bd59fc15211f07466d322523a13071eb039ae210b4fb60cf5cf2534783e485'
 	          'SKIP'
-						'SKIP') # todo
+						'SKIP')
 validpgpkeys=('8A144654AD99CA9E984F4156EC74EAEC196A648E')
 
 prepare() {
