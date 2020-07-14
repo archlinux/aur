@@ -1,6 +1,6 @@
 pkgname="libfranka"
 pkgver="0.8.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library for Franka Emika research robots "
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/libfranka"
@@ -42,7 +42,9 @@ build() {
   	cd ${srcdir}/build
 
 	# Build project
-	cmake ${srcdir}/libfranka -DCMAKE_BUILD_TYPE=Release
+	cmake ${srcdir}/libfranka \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build .
 }
 
