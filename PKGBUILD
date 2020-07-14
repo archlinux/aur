@@ -1,7 +1,7 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=ini_file_manager
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Ini configuration file reader and manipulator package for Ada."
 
@@ -11,17 +11,15 @@ license=('MIT')
 
 depends=('gcc-ada')
 
-source=('https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-08.zip'
+source=('https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-09.zip'
         'construct.gpr'
         'example.gpr'
-        'ini_file_manager.gpr'
-        'runme.sh.in')
+        'ini_file_manager.gpr')
 
-md5sums=('72f415eedf3c97d8db8df2354ca59b36'
+md5sums=('886bb490c5044e2c8821b36a8efbd08d'
          '46b6eed7c165ec32161fee42c3d61abc'
          'c5cef25a5de24ec035905174b76e0fd1'
-         '1940fe0de2234a7b451fa98200f082c7'
-         'f16d8cbcf89927dda6a2112f60410f76')
+         '1940fe0de2234a7b451fa98200f082c7')
 
 
 prepare()
@@ -30,9 +28,7 @@ prepare()
 
    mkdir -p obj
    mkdir -p src
-   mv config.ad[bs] src
-   sed -e "s,@PREFIX@,${LOCALBASE},g" runme.sh.in \
-      > runme.sh
+   mv ini/config.ad[bs] src
 }
 
 
