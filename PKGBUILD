@@ -1,7 +1,7 @@
 # Maintainer: Ivan Tiukov <ivan@tiukov.com>
 
 pkgname=remotixqc
-pkgver=1.41
+pkgver=1.4.1
 pkgrel=340
 pkgdesc="Remotix QC is a tiny portable application with zero configuration. Run it on a computer that you want to observe or control remotely."
 arch=('x86_64')
