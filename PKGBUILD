@@ -2,14 +2,14 @@
 
 pkgname=cura-plugin-orientation-git
 _pkgname=cura-plugin-orientation
-pkgver=r112.05c6a03
+pkgver=r143.bef126d
 pkgrel=1
 pkgdesc="A Cura plugin that allows you to quickly calculate and apply the best printable orientation."
 arch=('any')
 license=('GPL3')
 url="https://github.com/nallath/CuraOrientationPlugin"
 depends=('python' 'cura' 'python-zeroconf' 'python-numpy')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("$_pkgname::git+https://github.com/nallath/CuraOrientationPlugin.git")
 md5sums=('SKIP')
 
