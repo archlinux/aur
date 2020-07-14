@@ -1,6 +1,6 @@
 pkgbase = python-detect-secrets
 	pkgdesc = An enterprise friendly way of detecting and preventing secrets in code
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/Yelp/detect-secrets
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-detect-secrets
 	depends = python-requests
 	depends = python-yaml
 	depends = git
-	source = https://files.pythonhosted.org/packages/source/d/detect_secrets/detect_secrets-0.14.0.tar.gz
-	sha256sums = 0fd9da915c2643cff2f7bf75a0e849374933179a1b84b5cec60a5609ec493385
+	source = https://files.pythonhosted.org/packages/source/d/detect_secrets/detect_secrets-0.14.1.tar.gz
+	sha256sums = 48f7a4f4910d5c32e255f14f9f25cafde0474a82e6fbcdacce04231ad5cc8a56
 
 pkgname = python-detect-secrets
 
