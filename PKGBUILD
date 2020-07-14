@@ -5,15 +5,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=python2-msrplib
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=3
 pkgdesc="A python MSRP client library, implements RFC4975 and RFC4976"
 license=('custom:MIT')
 arch=('any')
 url="http://download.ag-projects.com/MSRP"
-depends=('python2-application>=1.5.0' 'python2-gnutls' 'python2-zope-interface' 'python2-twisted')
+depends=('python2-gnutls' 'python2-zope-interface' 'python2-twisted')
 source=("http://download.ag-projects.com/MSRP/${pkgname/2}-$pkgver.tar.gz")
-md5sums=('41ace0d9dc4454f652ae826073450ebe')
+sha256sums=('3a2ed4f174b6e758bb511b05211177cdc0c887c77488cbf0c31fe34b669d6231')
 
 build() {
   cd "$srcdir/${pkgname/2}-$pkgver"
