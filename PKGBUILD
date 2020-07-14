@@ -1,7 +1,7 @@
 # Maintainer: By_JumperX4 <byjumperx4-aur@protonmail.com>. You can also contact me on Discord: By_JumperX4#1007
 pkgname=firefox-nightly-latest-fr
 pkgver=80.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Official latest french tarball of Firefox Nightly. Reinstall package if firefox is outdated and the PKGBUILD's version is not updated yet"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -17,7 +17,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=('firefox')
 prepare() {
     curl -L -o firefox-nightly-latest-fr.tar.bz2 "https://download.mozilla.org/?product=firefox-nightly-latest-l10n-ssl&os=linux64&lang=fr"
-    curl -L -o firefox-nightly-logo.png "https://www.mozilla.org/media/protocol/img/logos/firefox/browser/nightly/logo-lg.c3968c040d6d.png"
+    curl -L -o firefox-nightly.png "https://www.mozilla.org/media/protocol/img/logos/firefox/browser/nightly/logo-lg.c3968c040d6d.png"
     echo "[Desktop Entry]
     Version=1.0
     Name=Firefox Nightly
@@ -104,12 +104,12 @@ prepare() {
     Comment[zh_CN]=浏览互联网
     Comment[zh_TW]=瀏覽網際網路
     Exec=/opt/firefox-nightly-latest-fr/firefox/firefox %u
-    Icon=/usr/share/pixmaps/firefox-nightly-logo.png
+    Icon=firefox-nightly
     Terminal=false
     Type=Application
     MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
     StartupNotify=true
-    StartupWMClass=firefox-nightly-latest-fr
+    StartupWMClass=firefox-nightly
     Categories=Network;WebBrowser;
     Keywords=web;browser;internet;
     Actions=new-window;new-private-window;
@@ -346,7 +346,7 @@ package() {
 	echo DONE
 	echo copying logo...
 	mkdir -p $pkgdir/usr/share/pixmaps/
-	cp $srcdir/firefox-nightly-logo.png $pkgdir/usr/share/pixmaps/
+	cp $srcdir/firefox-nightly.png $pkgdir/usr/share/pixmaps/
 	echo DONE
 	echo copying desktop entry...
 	mkdir -p $pkgdir/usr/share/applications
@@ -359,5 +359,5 @@ package() {
 	echo copying policies.json to disable updates...
 	cp $srcdir/policies.json $pkgdir/opt/firefox-nightly-latest-fr/firefox/
 	echo DONE
-	echo package created ! It may take some time to compress it later...
+	echo package created! It may take some time to compress it later...
 }
