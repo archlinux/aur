@@ -62,12 +62,12 @@ _localmodcfg=
 
 _major=5.8
 _minor=0
-_rc=4
+_rc=5
 _srcname=linux-${_major}-rc${_rc}
 _clr=${_major}.0.rc4-34
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
@@ -76,7 +76,7 @@ makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20200615'
 source=(
-  "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+  "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -313,7 +313,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('2b7ad65e1c7b55db6509dedcf33913499ff74747fdbe43b33da2c0f150f10b9a'
+sha256sums=('69bd59fc15211f07466d322523a13071eb039ae210b4fb60cf5cf2534783e485'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
 
