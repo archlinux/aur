@@ -1,0 +1,17 @@
+pkgbase = portforwarder-rs-bin
+	pkgdesc = Forwards ports on UPnP-enabled gateways. Inspired by portmapper
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/portforwarder-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = portforwarder-rs
+	source = portforwarder-rs-bin-0.1.0::https://github.com/pzmarzly/portforwarder-rs/releases/download/0.1.0/pf
+	source = LICENSE::https://github.com/pzmarzly/portforwarder-rs/raw/master/LICENSE
+	sha256sums = 84aeae689214aa86512afe50b35b8c45b0509ae4c28dc76821094d4a8b8ef494
+	sha256sums = 1499cd704105d56653dba0bf6f5760cdfc465f976007ad1f558960e48b52f626
+
+pkgname = portforwarder-rs-bin
+
