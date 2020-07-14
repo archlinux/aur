@@ -86,8 +86,6 @@ chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/ru/license.txt
 chmod 444 '/usr/local/lexmark/unix_scan_drivers/docs/license/ru/license.txt'
 chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn'
 chmod 755 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn'
-chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn/license.txt'
-chmod 444 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn/license.txt'
 chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw'
 chmod 755 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw'
 chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw/license.txt'
@@ -1583,24 +1581,4 @@ chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW'
 chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES'
 chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES'
 chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES/sane-lexmark_nscan.mo'
-chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES/sane-lexmark_nscan.mo'
-
-echo "    Notes:"
-echo "      a.  A complete user guide is available in HTML format."
-echo
-echo "          ${PLINK}/docs/ug/en/index.html"
-echo
-echo "      b.  If your system has an enabled firewall, the driver may"
-echo "          not function correctly.  You can either disable your firewall"
-echo "          or open the required scanning ports; tcp:9751-9760.  See the"
-echo "          user guide for more details."
-echo
-echo "      c.  If your system is already USB-connected to the scanner before"
-echo "          installation was completed, this application may not function"
-echo "          correctly.  Please detach and re-attach the USB cable."
-echo 
-echo "      d.  Log off, and then log on to your computer before scanning from" 
-echo "          the device."
-echo
-echo "Installation Complete."
-echo
+chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGE
