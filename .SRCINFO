@@ -1,6 +1,6 @@
 pkgbase = talkatu-hg
 	pkgdesc = Gtk+ widgets for chat software
-	pkgver = r215.b31d43a01132
+	pkgver = r381.67b7255da6d4
 	pkgrel = 1
 	url = https://bitbucket.org/pidgin/talkatu
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = talkatu-hg
 	depends = gumbo-parser>=0.10
 	depends = gspell>=1.2
 	depends = cmark
-	source = talkatu-hg::hg+https://bitbucket.org/pidgin/talkatu
+	source = talkatu-hg::hg+https://keep.imfreedom.org/talkatu/talkatu
 	sha256sums = SKIP
 
 pkgname = talkatu-hg
