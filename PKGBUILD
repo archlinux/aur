@@ -1,12 +1,11 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ttf-share-gf
 pkgver=r855.9f59b2e9
-pkgrel=1
+pkgrel=2
 pkgdesc='Share, Share Tech, and Share Tech Mono fonts from the Google Fonts catalog'
 arch=(any)
 url=https://github.com/google/fonts
 license=(custom:OFL)
-depends=(fontconfig xorg-font-utils)
 provides=(ttf-font ttf-share)
 conflicts=(ttf-google-fonts-git ttf-share)
 source=(google-fonts-90abd17b4f97671435798b6147b698aa9087612f-ofl-share-OFL.txt::https://raw.githubusercontent.com/google/fonts/90abd17b4f97671435798b6147b698aa9087612f/ofl/share/OFL.txt google-fonts-9f59b2e921a54ad05e911323826e4e6fd02b789c-ofl-share-Share-Bold.ttf::https://raw.githubusercontent.com/google/fonts/9f59b2e921a54ad05e911323826e4e6fd02b789c/ofl/share/Share-Bold.ttf google-fonts-9f59b2e921a54ad05e911323826e4e6fd02b789c-ofl-share-Share-BoldItalic.ttf::https://raw.githubusercontent.com/google/fonts/9f59b2e921a54ad05e911323826e4e6fd02b789c/ofl/share/Share-BoldItalic.ttf google-fonts-9f59b2e921a54ad05e911323826e4e6fd02b789c-ofl-share-Share-Italic.ttf::https://raw.githubusercontent.com/google/fonts/9f59b2e921a54ad05e911323826e4e6fd02b789c/ofl/share/Share-Italic.ttf google-fonts-9f59b2e921a54ad05e911323826e4e6fd02b789c-ofl-share-Share-Regular.ttf::https://raw.githubusercontent.com/google/fonts/9f59b2e921a54ad05e911323826e4e6fd02b789c/ofl/share/Share-Regular.ttf google-fonts-b88f4fcae43761838d6942fd81db8509cd7581ec-ofl-sharetech-ShareTech-Regular.ttf::https://raw.githubusercontent.com/google/fonts/b88f4fcae43761838d6942fd81db8509cd7581ec/ofl/sharetech/ShareTech-Regular.ttf google-fonts-a30ff88e1a02d70aaf2589dfc3cef18a4128c495-ofl-sharetechmono-ShareTechMono-Regular.ttf::https://raw.githubusercontent.com/google/fonts/a30ff88e1a02d70aaf2589dfc3cef18a4128c495/ofl/sharetechmono/ShareTechMono-Regular.ttf)
