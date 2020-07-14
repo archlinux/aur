@@ -1,6 +1,6 @@
 pkgbase = signal-backup-decode-git
 	pkgdesc = Decode Signal Backups
-	pkgver = r7.6c4fafd
+	pkgver = 0.1.5.r2.7f98586
 	pkgrel = 1
 	url = https://github.com/pajowu/signal-backup-decode
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = signal-backup-decode-git
 	makedepends = rust
 	depends = openssl
 	depends = sqlite
-	provides = signal-backup-decode=r7.6c4fafd
+	provides = signal-backup-decode=0.1.5.r2.7f98586
 	conflicts = signal-backup-decode
 	source = git+https://github.com/pajowu/signal-backup-decode.git
 	md5sums = SKIP
