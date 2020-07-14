@@ -69,10 +69,9 @@ package() {
 		"$pkgdir/usr/share/fish/completions"
 
 	# Conflicts with zsh-suggestions, copy or symlink from the doc folder
-#	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+#	install -Dm755 "scripts/${pkgname%-git}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
 	install -Dm755 "scripts/${pkgname%-git}.zsh" "$pkgdir/usr/share/doc/${pkgname%-git}/_${pkgname%-git}"
 
-	install -Dm755 "scripts/$pkgname.zsh" "$pkgdir/usr/share/doc/$pkgname/_$pkgname"
 	install -Dm644 LICENSE.txt \
 		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
 	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
