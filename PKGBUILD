@@ -5,15 +5,15 @@
 _fnt_name=bookerly
 pkgname=ttf-${_fnt_name}
 pkgver=8.32.0.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Amazon's new typeface for Kindle."
 arch=('any')
 url="https://apkpure.com/amazon-kindle/com.amazon.kindle"
 license=('unknown')
 makedepends=('unzip')
-source=("amazonkindle.apk::https://apkpure.com/amazon-kindle/com.amazon.kindle/download/1216348261-APK?from=versions%2Fversion")
+source=("amazonkindle.apk::https://r-static-assets.androidapks.com/rdata/23b1d3ee66d9bf03ff437608cc2f4c9f/com.amazon.kindle_v8.25.0.100-1214513252_Android-5.0.apk")
 noextract=("amazonkindle.apk")
-sha256sums=('d9054a1211c48d53c7295e65fcc58426abd0577fa05fb85001fc2e74473632df')
+sha256sums=('f29b127cadfc6abfc7fa9856adb205ff39d0a754511baa73e4265ce19d9dfa2b')
 
 prepare() {
   unzip amazonkindle.apk
