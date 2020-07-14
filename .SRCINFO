@@ -1,0 +1,15 @@
+pkgbase = fioctl-bin
+	pkgdesc = A simple tool for controlling the Foundries.io REST API
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://foundries.io
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = fioctl=0.9
+	conflicts = fioctl
+	source = https://github.com/foundriesio/fioctl/releases/download/0.9/fioctl-linux-amd64
+	md5sums = bf93cecbabeee240705aba93da43c1f6
+
+pkgname = fioctl-bin
+
