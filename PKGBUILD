@@ -2,7 +2,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')
