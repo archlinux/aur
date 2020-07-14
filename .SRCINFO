@@ -1,0 +1,14 @@
+pkgbase = nodejs-editly
+	pkgdesc = Declarative NLE (non-linear video editing) using Node.js and ffmpeg.
+	pkgver = 0.4.0
+	pkgrel = 0
+	url = https://github.com/mifi/editly
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = ffmpeg
+	depends = nodejs
+	options = !emptydirs
+
+pkgname = nodejs-editly
+
