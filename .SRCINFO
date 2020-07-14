@@ -1,7 +1,7 @@
 pkgbase = labelmanager-git
 	pkgdesc = Simple barcode printing interface for Zebra printers using LPR
-	pkgver = 2
-	pkgrel = 1
+	pkgver = 0.1
+	pkgrel = 2
 	url = https://github.com/LMBernardo/LabelManager
 	arch = x86_64
 	license = Apache-2.0
