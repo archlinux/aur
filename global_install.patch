@@ -1,0 +1,51 @@
+diff --git a/src/swapper.rs b/src/swapper.rs
+index 3b52277..e534703 100644
+--- a/src/swapper.rs
++++ b/src/swapper.rs
+@@ -192,10 +192,9 @@ impl<'a> Swapper<'a> {
+ 
+     // NOTE: For debugging add echo $PWD && sleep 5 after tee
+     let pane_command = format!(
+-        "tmux capture-pane -t {} -p{} | {}/target/release/thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {}; tmux wait-for -S {}",
++        "tmux capture-pane -t {} -p{} | thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {}; tmux wait-for -S {}",
+         active_pane_id,
+         scroll_params,
+-        self.dir,
+         TMP_FILE,
+         args.join(" "),
+         active_pane_id,
+diff --git a/tmux-thumbs.sh b/tmux-thumbs.sh
+index 7be8a3f..85e4a1a 100755
+--- a/tmux-thumbs.sh
++++ b/tmux-thumbs.sh
+@@ -30,8 +30,6 @@ for i in "${!PARAMS[@]}"; do
+   [ -n "${PARAMS[$i]}" ] || unset "PARAMS[$i]"
+ done
+ 
+-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+-
+-${CURRENT_DIR}/target/release/tmux-thumbs --dir "${CURRENT_DIR}" "${PARAMS[@]}"
++tmux-thumbs --dir /usr/share/thumbs "${PARAMS[@]}"
+ 
+ true
+diff --git a/tmux-thumbs.tmux b/tmux-thumbs.tmux
+index f31fcd1..af1a2ae 100755
+--- a/tmux-thumbs.tmux
++++ b/tmux-thumbs.tmux
+@@ -1,15 +1,7 @@
+ #!/usr/bin/env bash
+ 
+-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+-
+ DEFAULT_THUMBS_KEY="space"
+ THUMBS_KEY=$(tmux show-option -gqv @thumbs-key)
+ THUMBS_KEY=${THUMBS_KEY:-$DEFAULT_THUMBS_KEY}
+ 
+-tmux bind-key $THUMBS_KEY run-shell -b "${CURRENT_DIR}/tmux-thumbs.sh"
+-
+-BINARY="${CURRENT_DIR}/target/release/thumbs"
+-
+-if [ ! -f "$BINARY" ]; then
+-  tmux split-window "cd ${CURRENT_DIR} && cargo build --release --target-dir=target && echo 'Press any key to continue...' && read -k1"
+-fi
++tmux bind-key $THUMBS_KEY run-shell -b /usr/share/thumbs/tmux-thumbs.sh
