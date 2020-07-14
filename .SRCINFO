@@ -1,13 +1,12 @@
 pkgbase = cover-thumbnailer-git
-	pkgdesc = Generates thumbnails for Nautilus folders (music album covers,...).
-	pkgver = r57.760a344
+	pkgdesc = A Python script which generates folder thumbnails for various file browser on Linux. It displays music album covers, preview of pictures which are in a folder and more.
+	pkgver = r82.c82d816
 	pkgrel = 1
 	url = https://github.com/flozz/cover-thumbnailer
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = python2-pillow
-	depends = python2-gconf
+	depends = python-pillow
 	provides = cover-thumbnailer
 	conflicts = cover-thumbnailer
 	source = cover-thumbnailer::git+https://github.com/flozz/cover-thumbnailer
