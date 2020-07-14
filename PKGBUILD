@@ -1,4 +1,5 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com> (11/07/2020)
+# Contributor: freggel.doe (Fixed i18n problem with make test,  13/07/2020)
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Jakob Matthes <jakob.matthes@gmail.com>
@@ -8,13 +9,13 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=bup
-pkgver=0.30
-pkgrel=5
+pkgver=0.30.r213.g093752b
+pkgrel=6
 pkgdesc='Efficient backup system based on the git packfile format'
 arch=('x86_64')
 url='https://bup.github.io/'
 license=('GPL')
-depends=('python2-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'git')
+depends=('python-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'git')
 makedepends=('ruby-ronn' 'git' 'setconf' 'pandoc')
 checkdepends=('rsync' 'python2-tornado')
 optdepends=('python2-tornado: for bup web')
@@ -24,18 +25,23 @@ source=("git+https://github.com/bup/bup.git")
 sha512sums=('SKIP')
 changelog=changelog.md
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+  cd "$pkgname"
+  LANG=C make test
+}
+
 build() {
-  cd "${pkgname}"
+  cd "$pkgname"
   ./configure
   make
 }
 
-check() {
-  cd "${pkgname}"
-  make test
-}
-
 package() {
-  cd "${pkgname}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
