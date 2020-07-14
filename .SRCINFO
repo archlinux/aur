@@ -1,17 +1,17 @@
 pkgbase = shuffledns
 	pkgdesc = A wrapper around massdns written in go
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/shuffledns
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = go-pie
+	makedepends = go
 	depends = massdns
 	provides = shuffledns
 	conflicts = shuffledns
-	source = shuffledns-1.0.3.tar.gz::https://github.com/projectdiscovery/shuffledns/archive/v1.0.3.tar.gz
-	sha256sums = efdb8e28561de1b72e02e2e7853963b384e49744edc07cecceaf53913a943b68
+	source = shuffledns-1.0.4.tar.gz::https://github.com/projectdiscovery/shuffledns/archive/v1.0.4.tar.gz
+	sha256sums = ad32332cb36f8a0715750fa7f7c2fc86b71af4cf945ac642b0a69fd859ee3d45
 
 pkgname = shuffledns
 
