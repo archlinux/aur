@@ -1,65 +1,49 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Popolon <popolon@popolon.org
+# Contributor: Miroslav Koškár <http://mkoskar.com/>
 
 _basename='vcvrack'
 _plugname='Befaco'
 
-pkgname='vcvrack-befaco-git'
-pkgver=0.4.0.r8.g793bc68
+pkgname=vcvrack-befaco-git
+pkgver=r64.5014a93
 pkgrel=1
-pkgdesc="Befaco's VCV modules"
-url='https://github.com/VCVRack/Befaco'
-license=(BSD)
+pkgdesc="Befaco VCV modules"
+url='https://github.com/vcvrack/befaco'
+license=('GPL3')
 arch=(i686 x86_64)
-depends=(vcvrack-git)
+depends=(vcvrack)
 makedepends=(git)
 
 source=(
-    "$_basename-$_plugname::git+https://github.com/VCVRack/$_plugname.git"
-    "$_basename::git+https://github.com/VCVRack/Rack.git"
-    git+https://github.com/AndrewBelt/osdialog.git
-    git+https://github.com/AndrewBelt/oui-blendish.git
-    git+https://github.com/mackron/dr_libs.git
-    git+https://github.com/memononen/nanosvg.git
-    git+https://github.com/memononen/nanovg.git
+    "$_basename-$_plugname::git+https://github.com/$_basename/$_plugname.git"
 )
 sha256sums=(
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
     SKIP
 )
 
 pkgver() {
     cd "$_basename-$_plugname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$_basename"
-    git submodule init
-    git config submodule.ext/dr_libs.url "$srcdir/dr_libs"
-    git config submodule.ext/nanosvg.url "$srcdir/nanosvg"
-    git config submodule.ext/nanovg.url "$srcdir/nanovg"
-    git config submodule.ext/osdialog.url "$srcdir/osdialog"
-    git config submodule.ext/oui-blendish.url "$srcdir/oui-blendish"
-    git submodule update
-
-    cd plugins
-    git clone "$srcdir/$_basename-$_plugname" "$_plugname"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" \
+                    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_basename/plugins/$_plugname"
-    make
+  # define RACK_DIR, so Makefile snippets can be found
+  export RACK_DIR="/usr/share/vcvrack"
+  # define FLAGS, so headers can be included
+  export FLAGS="-I/usr/include/vcvrack -I/usr/include/vcvrack/dep"
+  # exporting LDFLAGS for libsamplerate, as the Delay module requires it
+  export LDFLAGS="$(pkg-config --libs samplerate) ${LDFLAGS}"
+  cd "${_basename}-${_plugname}"
+  USE_SYSTEM_LIBS=true make
+  USE_SYSTEM_LIBS=true make dist
 }
 
 package() {
-    cd "$_basename/plugins/$_plugname"
-    install -D -m644 -t "$pkgdir/usr/share/licenses/$_basename/$_plugname" LICENSE*
-    install -d "$pkgdir/opt/$_basename/plugins/$_plugname"
-    cp -dr --preserve=mode -t "$pkgdir/opt/$_basename/plugins/$_plugname" \
-        res plugin.so
+  cd "${_basename}-${_plugname}"
+  install -vDm 644 "dist/${_plugname}"*".zip" \
+    "${pkgdir}/opt/vcvrack/${_plugname}.zip"
+  install -vDm 644 LICENSE-GPLv3.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm 644 README.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
