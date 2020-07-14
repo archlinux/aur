@@ -1,12 +1,11 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ttf-oxygen-gf
 pkgver=r841.71c9d4f2
-pkgrel=1
+pkgrel=2
 pkgdesc='Oxygen and Oxygen Mono fonts from the Google Fonts catalog'
 arch=(any)
 url=https://github.com/google/fonts
 license=(custom:OFL)
-depends=(fontconfig xorg-font-utils)
 provides=(ttf-font ttf-oxygen ttf-oxygen-git)
 conflicts=(ttf-google-fonts-git ttf-oxygen ttf-oxygen-git)
 source=(google-fonts-49fbebd3dc75d42fe72c4a3eef6524f8fcc335fd-ofl-oxygen-OFL.txt::https://raw.githubusercontent.com/google/fonts/49fbebd3dc75d42fe72c4a3eef6524f8fcc335fd/ofl/oxygen/OFL.txt google-fonts-71c9d4f236262c3a7410f3d939c12ac1b8da3f62-ofl-oxygen-Oxygen-Bold.ttf::https://raw.githubusercontent.com/google/fonts/71c9d4f236262c3a7410f3d939c12ac1b8da3f62/ofl/oxygen/Oxygen-Bold.ttf google-fonts-71c9d4f236262c3a7410f3d939c12ac1b8da3f62-ofl-oxygen-Oxygen-Light.ttf::https://raw.githubusercontent.com/google/fonts/71c9d4f236262c3a7410f3d939c12ac1b8da3f62/ofl/oxygen/Oxygen-Light.ttf google-fonts-71c9d4f236262c3a7410f3d939c12ac1b8da3f62-ofl-oxygen-Oxygen-Regular.ttf::https://raw.githubusercontent.com/google/fonts/71c9d4f236262c3a7410f3d939c12ac1b8da3f62/ofl/oxygen/Oxygen-Regular.ttf google-fonts-883939708704a19a295e0652036369d22469e8dc-ofl-oxygenmono-OxygenMono-Regular.ttf::https://raw.githubusercontent.com/google/fonts/883939708704a19a295e0652036369d22469e8dc/ofl/oxygenmono/OxygenMono-Regular.ttf)
