@@ -1,0 +1,20 @@
+pkgbase = libnss-homehosts-git
+	pkgdesc = Linux NSS library supporting per-user hosts resolution using ${XDG_CONFIG_HOME}/hosts or ~/.hosts
+	pkgver = 2.0.fd0bd7c
+	pkgrel = 1
+	url = https://github.com/bAndie91/libnss_homehosts
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = libnss-homehosts=2.0
+	conflicts = libnss-homehosts
+	source = git+https://github.com/bAndie91/libnss_homehosts.git
+	source = Makefile-ldconfig.patch
+	sha256sums = SKIP
+	sha256sums = 56c590bd9d060d6b80dfc0f5464fce5cd727ec78c909b4e237eb16a246f407ea
+
+pkgname = libnss-homehosts-git
+

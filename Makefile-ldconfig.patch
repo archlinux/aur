@@ -1,0 +1,10 @@
+--- a/Makefile	2020-07-14 20:07:40.698000000 +0200
++++ b/Makefile	2020-07-14 20:07:47.781270556 +0200
+@@ -22,7 +22,6 @@
+ 	install -m 644 $< $(INSTALL_FOLDER)
+ 	rm -f $(INSTALL_FOLDER)/$(LIB_NAME_WITH_VERSION)
+ 	ln -s $(LIB_NAME) $(INSTALL_FOLDER)/$(LIB_NAME_WITH_VERSION)
+-	ldconfig
+ .PHONY: uninstall
+ uninstall:
+ 	rm -f $(INSTALL_FOLDER)/$(LIB_NAME)
