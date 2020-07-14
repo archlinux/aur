@@ -1,7 +1,7 @@
 # Maintainer: fward <howard Dot main At outlook Dot com>
 pkgname=kangaroo-bin
 _pkgname=kangaroo
-pkgver=0.26.1.200615
+pkgver=0.29.1.200713
 pkgrel=1
 pkgdesc="Kangaroo is a SQL client and admin tool for popular databases"
 arch=('x86_64')
@@ -17,25 +17,18 @@ conflicts=('kangaroo')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 source=(
-    "https://github.com/dbkangaroo/kangaroo/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arch.tar.gz"
+    "https://github.com/dbkangaroo/kangaroo/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arch.tar.gz"
 )
 sha256sums=(
-	"e9f42d0de49544a3904b4918edd8e4dc62b8224b27f30f88e38f772f98460653"
+	"67fb12beafd4b88b0f5eb7a45e0fd9d7512bd99b0e4206f1710cb5a018aa2058"
 )
 
 prepare() {
-	tar -zxf "${_pkgname}_${pkgver}_arch.tar.gz"
+	tar -zxf "${_pkgname}-${pkgver}-arch.tar.gz"
 }
 
 package() {
-	mkdir "${pkgdir}/usr/bin" -p
-	mkdir "${pkgdir}/usr/share/pixmaps" -p
-	mkdir "${pkgdir}/usr/share/licenses" -p
-	mkdir "${pkgdir}/usr/share/applications" -p
-	mkdir "${pkgdir}/usr/share/metainfo" -p
-	install -Dm755 "${srcdir}/kangaroo/kangaroo" "${pkgdir}/usr/bin/kangaroo"
-	install -Dm644 "${srcdir}/kangaroo/LICENSE" "${pkgdir}/usr/share/licenses/kangaroo/LICENSE"
-	install -Dm644 "${srcdir}/kangaroo/kangaroo.svg" "${pkgdir}/usr/share/pixmaps/kangaroo.svg"
-	install -Dm644 "${srcdir}/kangaroo/kangaroo.desktop" "${pkgdir}/usr/share/applications/kangaroo.desktop"
-	install -Dm644 "${srcdir}/kangaroo/kangaroo.appdata.xml" "${pkgdir}/usr/share/metainfo/kangaroo.appdata.xml"
+	mkdir "${pkgdir}/usr" -p
+	cp -rp "${srcdir}/kangaroo/." "${pkgdir}/usr"
+	rm "${pkgdir}/usr/share/applications/mimeinfo.cache"
 }

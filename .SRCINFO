@@ -1,6 +1,6 @@
 pkgbase = kangaroo-bin
 	pkgdesc = Kangaroo is a SQL client and admin tool for popular databases
-	pkgver = 0.26.1.200615
+	pkgver = 0.29.1.200713
 	pkgrel = 1
 	url = https://dbkangaroo.github.io/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = kangaroo-bin
 	optdepends = libgda-postgres: PostgreSQL support
 	provides = kangaroo
 	conflicts = kangaroo
-	source = https://github.com/dbkangaroo/kangaroo/releases/download/v0.26.1.200615/kangaroo_0.26.1.200615_arch.tar.gz
-	sha256sums = e9f42d0de49544a3904b4918edd8e4dc62b8224b27f30f88e38f772f98460653
+	source = https://github.com/dbkangaroo/kangaroo/releases/download/v0.29.1.200713/kangaroo-0.29.1.200713-arch.tar.gz
+	sha256sums = 67fb12beafd4b88b0f5eb7a45e0fd9d7512bd99b0e4206f1710cb5a018aa2058
 
 pkgname = kangaroo-bin
 
