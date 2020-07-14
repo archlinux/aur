@@ -1,6 +1,6 @@
 # Maintainer: Oliver Sagner <oliver.sagner@jwo.com.de>
 pkgname='tu2'
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Simple Project Management System with presentation"
 arch=('i686' 'x86_64')
