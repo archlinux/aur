@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-gr-framework"
-pkgver="1.15.1"
+pkgver="1.15.2"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications (Python bindings)."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gr-framework" "python" "python-numpy")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/python-gr/releases/download/v${pkgver}/gr-${pkgver}.tar.gz")
-sha256sums=("aab27a3f032c6eca65bd772de60367e5b37f3806355d3b560286981925006fc2")
+sha256sums=("3b5696eb5030df0ea0f4a749d6a0cfe4ca905643a84f4d3bc4f5f6f82c7a23a0")
 
 build() {
     cd "${srcdir}/gr-${pkgver}" || return
