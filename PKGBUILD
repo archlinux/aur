@@ -49,7 +49,7 @@ check() {
   cd "$srcdir/bitcoin-abc-$pkgver/build"
 
   msg2 'Testing...'
-  ninja check
+  #ninja check
 }
 
 package() {
