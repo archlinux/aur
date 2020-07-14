@@ -34,6 +34,7 @@ prepare() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	cp -r ./ ${pkgdir}/
+	mkdir -p ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 	cp -r ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/icons/ ${pkgdir}/usr/share/
 }
