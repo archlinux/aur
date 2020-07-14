@@ -2,8 +2,8 @@
 
 _pkgname=pep-engine
 pkgname=$_pkgname-hg
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="A Free Software library for automatic key management and encryption of messages."
 arch=('x86_64' 'i686')
 url='https://pep.software'
@@ -27,7 +27,7 @@ prepare() {
 pkgver() {
 	cd "$srcdir/pEpEngine"
 
-	hg tags | grep Release | sort -r | head -1 | awk '{print $1}' | cut -c9-
+	hg tags | grep Release | grep -v RC | sort -r | head -1 | awk '{print $1}' | cut -c9-
 }
 
 build() {
