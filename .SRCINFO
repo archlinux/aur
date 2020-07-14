@@ -1,0 +1,17 @@
+pkgbase = material-kwin-decoration-git
+	pkgdesc = Material-ish window decoration theme for KWin, with LIM support.
+	pkgver = v5+3+gb6c5cdd
+	pkgrel = 1
+	url = https://github.com/Zren/material-decoration
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = kdecoration
+	provides = material-kwin-decoration
+	conflicts = material-kwin-decoration
+	source = material-kwin-decoration::git+https://github.com/Zren/material-decoration.git
+	sha256sums = SKIP
+
+pkgname = material-kwin-decoration-git
+
