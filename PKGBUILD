@@ -17,5 +17,5 @@ package() {
     cd "${pkgdir}"
     tar -xpJf "${srcdir}/data.tar.xz"
 
-    systectl restart remotixagent
+    systemctl restart remotixagent
 }
