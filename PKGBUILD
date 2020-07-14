@@ -1,10 +1,10 @@
 # Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
 
 _gitname=sup
-_gitbranch=forked
+_gitbranch=develop
 pkgname=sup-git
 pkgver=2840.93df79b
-pkgrel=2
+pkgrel=1
 pkgdesc="Sup is a console-based email client for people with a lot of email. Great mutt alternative."
 arch=(any)
 url="http://sup-heliotrope.github.io"
@@ -13,7 +13,7 @@ depends=('ruby-chronic-old' 'ruby-highline' 'ruby-locale' 'ruby-lockfile' 'ruby-
 optdepends=('ruby-gpgme: PGP support')
 makedepends=('git')
 conflicts=(sup)
-source=("${_gitname}::git://github.com/quark-zju/${_gitname}.git#branch=${_gitbranch}")
+source=("${_gitname}::git://github.com/sup-heliotrope/${_gitname}.git#branch=${_gitbranch}")
 sha256sums=('SKIP')
 
 pkgver() {
