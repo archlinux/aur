@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Avr Simulator
+Comment=Gerd's AVR simulator
+Exec=avr_sim
+Icon=avr_sim
+Terminal=false
+Categories=Development
