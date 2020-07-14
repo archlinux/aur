@@ -1,0 +1,18 @@
+pkgbase = python2-pyenchant
+	pkgver = 2.0.0
+	pkgrel = 6
+	url = https://pypi.python.org/pypi/pyenchant
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	makedepends = enchant
+	source = python2-pyenchant-2.0.0.tar.gz::https://github.com/rfk/pyenchant/archive/v2.0.0.tar.gz
+	source = enchant-2.patch
+	sha512sums = 21f8dd286f1f462d11aea0f1b89f3189e51109a3a8c5baee80cba17b9e7c56fa60f308d4ea39d9675d69e3da11dc07996eb32d545cd3567503f0956abc060882
+	sha512sums = c6dc74e60c684b5606b681096d740814a5f138e9caf8ad2f41d9e467c820d46bab6b3d449a99dc17e4b1e1b89964d1fc4248c55a600c977ee6269cddb46ad596
+
+pkgname = python2-pyenchant
+	pkgdesc = PyEnchant is a spellchecking library for Python2 based on the Enchant library
+	depends = python2
+	depends = enchant
+
