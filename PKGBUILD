@@ -1,8 +1,8 @@
 # Maintainer: Kevin Brodsky <corax26 'at' gmail 'dot' com>
 
 pkgname=upload-gphotos
-pkgver=3.1.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc='Upload photos to Google Photos (Unofficial)'
 arch=('any')
 url='https://github.com/3846masa/upload-gphotos'
@@ -12,7 +12,7 @@ makedepends=(npm)
 optdepends=('google-chrome: either Chrome or Chromium is required'
             'chromium: either Chrome or Chromium is required')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('16858c046a2195a463c72998da489118')
+md5sums=('8053476cca431f35fdae04e7ff1ab9aa')
 
 build() {
   cd "${pkgname}-${pkgver}"
