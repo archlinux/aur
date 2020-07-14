@@ -1,6 +1,6 @@
 pkgbase = python-pyusb-git
 	pkgdesc = USB access for Python
-	pkgver = 1.0.2.r28.ga0fd5f6
+	pkgver = 1.0.2.r59.g4ea402d
 	pkgrel = 1
 	url = https://github.com/pyusb/pyusb
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = python-pyusb-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python2-setuptools-scm
 	provides = python-pyusb
 	source = pyusb::git+https://github.com/pyusb/pyusb
 	md5sums = SKIP

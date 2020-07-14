@@ -1,13 +1,14 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 # Contributor: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.0.2.r28.ga0fd5f6
+pkgver=1.0.2.r59.g4ea402d
 pkgrel=1
 pkgdesc="USB access for Python"
 arch=('any')
 url="https://github.com/pyusb/pyusb"
 license=('BSD')
-makedepends=('git' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools'
+             'python-setuptools-scm' 'python2-setuptools-scm')
 provides=('python-pyusb')
 
 _gitroot='https://github.com/pyusb/pyusb'
