@@ -1,0 +1,20 @@
+pkgbase = purewriter-desktop
+	pkgdesc = Pure Writer Desktop
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/PureWriter/desktop
+	arch = x86_64
+	license = GPL3
+	depends = jre8-openjdk
+	depends = java8-openjfx
+	provides = purewriter-bin
+	provides = purewriter-git
+	conflicts = purewriter-bin
+	conflicts = purewriter-git
+	source = purewriter-desktop-0.2.2.tar.gz::https://github.com/PureWriter/desktop/archive/0.2.2.tar.gz
+	source = purewriter-desktop.sh
+	sha256sums = 2c6ee00ebafe54b23ebcceaf1e87588c0120425b5d2997257f1b290be49ad3ab
+	sha256sums = d96611f5babc530d25f26c25b25fafed308baf4a7b7c364d88de4b4cb3225790
+
+pkgname = purewriter-desktop
+
