@@ -2,20 +2,19 @@
 #
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
-_python="python2"
+_python="python3"
 _name="qr-tools"
-_ubuntur="0~30~ubuntu18.04.1"
+_ubuntur="0~39~ubuntu19.10.1"
 pkgname="qtqr"
-pkgver="1.4"
-pkgrel="4"
+pkgver="2.0"
+pkgrel="1"
 pkgdesc="A Graphical interface QR Code generator and decoder."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=("${_python}" "${_python}-qrtools" "${_python}-pyqt5")
-provides=("${pkgname}")
-source=("https://launchpad.net/~${_name}-developers/+archive/ubuntu/${_name}-stable/+sourcefiles/${pkgname}/${pkgver}-${_ubuntur}/${pkgname}_${pkgver}-${_ubuntur}.tar.gz")
-sha256sums=('d838265af90fe7c5b8908a1bf6995cbe913feac0076b60fbd5dcf039b84de9ca')
+depends=('python' 'python-qrtools' 'python-pyqt5')
+source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/~${_name}-developers/+archive/ubuntu/daily/+sourcefiles/${pkgname}/${pkgver}-${_ubuntur}/${pkgname}_${pkgver}-${_ubuntur}.tar.gz")
+sha256sums=('46ed22299f6c59b5eced956d95400965785ebc20a4af79d161936c3396a6336c')
 
 _qtqr_desktop="[Desktop Entry]
 Name=QtQR
@@ -24,29 +23,23 @@ Exec=qtqr
 Icon=qtqr
 Terminal=false
 Type=Application
-Categories=Graphics"
+Categories=Graphics
+MimeType=image/gif;image/png;image/jpg;"
 
-build() {
+prepare() {
     cd "${pkgname}-${pkgver}"
     echo -e "$_qtqr_desktop" | tee "${pkgname}.desktop"
-    sed -i 's/env python/env python2/' "${pkgname}.py"
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -d ${pkgdir}/usr/bin
-    install -d ${pkgdir}/usr/share/${pkgname}/samples
-    install -d ${pkgdir}/usr/share/applications
-    install -d ${pkgdir}/usr/share/pixmaps
-    install -d ${pkgdir}/usr/share/qt4/translations
-
-    install -m 755 qtqr.py ${pkgdir}/usr/bin/qtqr
-    install -m 644 samples/* ${pkgdir}/usr/share/${pkgname}/samples
-    install -m 644 qtqr.desktop ${pkgdir}/usr/share/applications
-    install -m 644 icon.png ${pkgdir}/usr/share/pixmaps/qtqr.png
-    install -m 644 *.qm ${pkgdir}/usr/share/qt4/translations
+    install -D -m755 qtqr.py ${pkgdir}/usr/bin/qtqr
+    install -D -m644 -t "${pkgdir}/usr/share/${pkgname}/samples" samples/*
+    install -D -m644 qtqr.desktop ${pkgdir}/usr/share/applications/qtqr.desktop
+    install -D -m644 icon.png ${pkgdir}/usr/share/pixmaps/qtqr.png
+    install -D -m644 -t "${pkgdir}/usr/share/qt/translations" *.qm
 
     install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
