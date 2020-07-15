@@ -6,8 +6,8 @@
 #  "https://www.fosshub.com/CudaText.html?dwl=cudatext-linux-qt5-amd64-1.107.0.0.tar.xz"
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
-pkgver=1.106.6
-pkgrel=1
+pkgver=1.107.0
+pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt5 edition."
 arch=('x86_64')
 url="http://uvviewsoft.com/cudatext"
