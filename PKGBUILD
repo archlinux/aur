@@ -1,5 +1,5 @@
 # Maintainer: blacktea <blackteahamburger@outlook.com>
-# Maintainer: Lukas Kohler <lux@ontheblueplanet.com>
+# Contributor: Lukas Kohler <lux@ontheblueplanet.com>
 
 pkgname=chdkptp
 pkgver=r921
