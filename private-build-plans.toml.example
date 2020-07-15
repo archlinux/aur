@@ -46,6 +46,10 @@ design = [                         # Common styles
   "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
+  "VXBH",                          # rounder D
+  "VXBL",                          # toothless cornered b
+  "VXBQ",                          # tailed d
+
 ]
 
 # upright = []                     # Upright-only styles
@@ -88,6 +92,9 @@ design = [                         # Common styles
   "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
+  "VXBH",                          # rounder D
+  "VXBL",                          # toothless cornered b
+  "VXBQ",                          # tailed d
 
 ]
 # upright = []                     # Upright-only styles
@@ -130,6 +137,9 @@ design = [                         # Common styles
   "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
+  "VXBH",                          # rounder D
+  "VXBL",                          # toothless cornered b
+  "VXBQ",                          # tailed d
 
 ]
 # upright = []                     # Upright-only styles
