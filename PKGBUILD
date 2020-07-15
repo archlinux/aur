@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=aunit
-pkgver=2019
+pkgver=2020
 pkgrel=1
 pkgdesc="Ada Unit Testing Framework"
 
@@ -12,10 +12,10 @@ license=('GPL V3.0')
 depends=('gcc-ada')
 makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf859431e87aa2cdf16b18')
-sha1sums=('e5396c2f5cf32db24965a31fd5ef231c1f659964')
+source=('https://community.download.adacore.com/v1/6c8702d4a3c4a39f5da077716e44bef980377ba8?filename=aunit-2020-20200429-19B6C-src.tar.gz')
+sha1sums=('6c8702d4a3c4a39f5da077716e44bef980377ba8')
 
-_pkg_src_dir="aunit-2019-20190429-18B77-src"
+_pkg_src_dir="aunit-2020-20200429-19B6C-src"
 
 
 build()
