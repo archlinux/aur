@@ -5,9 +5,8 @@ pkgdesc="Gandhi Sans and Serif font family by Cristóbal Henestrosa and Raúl Pl
 url='http://www.tipografiagandhi.com/'
 license=('custom')
 pkgver=1.001
-pkgrel=1
+pkgrel=2
 changelog=ChangeLog.${pkgname}
-depends=('fontconfig' 'xorg-font-utils')
 arch=('any')
 install=$pkgname.install
 
