@@ -14,7 +14,7 @@ sha256sums=(b36500af589797e220d0a5fc551047f016c8914ac2d4b04666daef977aa0a4ce)
 build() {
 	cd "${pkgname}-${pkgver}"
 	# We want to ignore xapian ABI version mismatches
-	CXXFLAGS="${CXXFLAGS} -fpermissive" arch-meson build -Dwerror=false
+	arch-meson build -Dwerror=false
 	ninja -C build
 }
 
