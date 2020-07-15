@@ -7,7 +7,7 @@ pkgdesc='A typeface that is pleasant to read on screens across different operati
 arch=('any')
 url='https://github.com/jasperdewaard/Proza-Libre'
 license=('custom:SIL Open Font License v1.1')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig')
 source=("ProzaLibre-Bold.ttf::https://raw.githubusercontent.com/jasperdewaard/Proza-Libre/${_commit}/Fonts/ProzaLibre-Bold.ttf"
         "ProzaLibre-BoldItalic.ttf::https://raw.githubusercontent.com/jasperdewaard/Proza-Libre/${_commit}/Fonts/ProzaLibre-BoldItalic.ttf"
         "ProzaLibre-ExtraBold.ttf::https://raw.githubusercontent.com/jasperdewaard/Proza-Libre/${_commit}/Fonts/ProzaLibre-ExtraBold.ttf"
