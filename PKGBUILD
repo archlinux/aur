@@ -3,8 +3,8 @@
 # Maintainer: Eric Berquist <eric.berquist at gmail dot com>
 
 pkgname=gamess
-pkgver=2019R2
-pkgrel=5
+pkgver=2020R1
+pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
@@ -19,8 +19,8 @@ install=${pkgname}.install
 source=("local://gamess-current.tar.gz"
         "opt.patch"
         "tests.patch")
-sha256sums=('2e12f71210249d379f196ba6a3b479f9fb962de82ae2f1130af9022aba44ddea'
-            'dedf0158e25defd4903d0fd8d39ed26161388e2c70ccdfde1f3592ac62546494'
+sha256sums=('94678e567f681d3a7500a1bea68cfb893520e76dcadd7e188eb1e1d185bea90f'
+            'a7f71d749e07b7f81c327f10127b6738a28974c956bfbfa0bba53281d2fcd366'
             '38a14c4d428b54838b55ed19cc9aa6741992c2e7b66a0180994d264de71c6bf2')
 
 prepare() {
@@ -30,20 +30,20 @@ prepare() {
   
   # You may comment out two lines below to let GAMESS choose compiler options.
   patch -p1 < "$srcdir/opt.patch"
-  msg2 "Compiler flags '-O3 -march=native -mno-fma -ftree-vectorize' are enabled by default."
+  msg2 "Compiler flags '-O3 -march=native -mno-fma' are enabled by default."
   
   # Optimizations can safely be more aggressive.
   sed -i 's/ -fno-aggressive-loop-optimizations//g' comp
   
   # Fixes for GCC Fortran 10.1
   sed -i 's/-ffree-line-length-none/-ffree-line-length-none -fallow-argument-mismatch/g' comp
-  sed -i 's/-ffast-math"/-ffast-math -fallow-argument-mismatch"/g' comp
+  sed -i 's/-Ofast -ffast-math/-Ofast -ffast-math -fallow-argument-mismatch/g' comp
 }
 
 build() {
   cd "$srcdir/$pkgname"
   python bin/create-install-info.py \
-                                    --fortran_version=9.1 \
+                                    --fortran_version=10.1 \
                                     --math=openblas \
                                     --mathlib_path=/usr/lib \
                                     --openmp
@@ -61,6 +61,9 @@ check() {
   sed -i '/set SCR=/c\set SCR=\/tmp' rungms
   mkdir scr
   sed -i '/set USERSCR=/c\set USERSCR=$PWD\/scr' rungms
+  
+  # Fixing the number of tests
+  sed -i 's/47/48/' runall
   
   # Start testing with the use of 1 CPU core.
   ./runall 00

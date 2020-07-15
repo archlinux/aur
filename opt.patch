@@ -9,7 +9,7 @@
        if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
  
 -      set EXTRAOPT=" "
-+      set EXTRAOPT=" -march=native -mno-fma -ftree-vectorize"
++      set EXTRAOPT=" -march=native -mno-fma"
        if (($MODULE_F:e == f90) || ($MODULE_F:e == F90)) then
           set EXTRAOPT="$EXTRAOPT -ffree-line-length-none"
        else
@@ -29,7 +29,7 @@
  
       set CC = 'gcc'
 -     set CFLAGS = "-DLINUX $ARCH -O3 -fstrict-aliasing -I./"
-+     set CFLAGS = "-DLINUX $ARCH -O3 -march=native -mno-fma -ftree-vectorize -fstrict-aliasing -I./"
++     set CFLAGS = "-DLINUX $ARCH -O3 -march=native -mno-fma -fstrict-aliasing -I./"
       set CLIBS  = "-lpthread"
  
       if ($GMS_PHI == knc) then
