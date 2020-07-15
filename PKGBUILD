@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.10
+pkgver=2.2.11
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -26,7 +26,6 @@ depends=(
     'python-py-cpuinfo'
     'python-sentry_sdk'
     'python-yarl'
-    'python-zipstream-gns3'
 )
 optdepends=(
     'dynamips: Cisco router emulator.'
@@ -40,18 +39,8 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('4388974043680e877533564cb5a2efe2ed215a59a13abcabb3ac29d9b92f86e0'
+sha256sums=('60f2d6eec1cd745e2a5a8781f30c9d3d7f3da541d3d6830348b25bf65d575b96'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    # Arch usually has the latest versions. Patch requirements to allow them.
-    sed -i \
-        -e 's|^aiofiles==0\.4\.0$|aiofiles>=0.4.0|' \
-        -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' \
-        -e 's|^py-cpuinfo==5\.0\.0$|py-cpuinfo>=5.0.0|' \
-        requirements.txt
-}
 
 build() {
     cd "$pkgname-$pkgver"
