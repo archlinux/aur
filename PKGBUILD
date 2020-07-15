@@ -2,7 +2,7 @@
 pkgname=ttf-proza-libre
 _commit='45ea7bb14c2301988fbda75fc27374f63e33c19c'
 pkgver=1.0.r12.g45ea7bb
-pkgrel=2
+pkgrel=3
 pkgdesc='A typeface that is pleasant to read on screens across different operating systems, by Bureau Roffa'
 arch=('any')
 url='https://github.com/jasperdewaard/Proza-Libre'
