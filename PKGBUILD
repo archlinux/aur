@@ -1,18 +1,18 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=automedia-git
-pkgver=r72.e57270f
+pkgver=r94.3e75758
 pkgrel=1
 pkgdesc='Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.'
 arch=('any')
 url="https://git.dec05eba.com/AutoMedia"
 license=('GPL3')
 makedepends=('git')
-depends=('python' 'python-feedparser' 'python-transmissionrpc' 'python-lxml' 'python-requests' 'python-protobuf' 'python-urllib3' 'transmission-cli')
+depends=('python' 'python-lxml' 'python-requests' 'python-protobuf' 'curl' 'transmission-cli')
 optdepends=('libnotify')
 provides=('automedia')
 conflicts=('automedia')
-source=("git+https://git.dec05eba.com/AutoMedia")
+source=("git+https://git.dec05eba.com/AutoMedia#branch=c_version")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -23,9 +23,6 @@ pkgver() {
 package() {
   cd "$srcdir/AutoMedia"
   install -Dm755 "automedia" "$pkgdir/usr/bin/automedia"
-  install -Dm755 "automedia.py" "$pkgdir/usr/share/automedia/automedia.py"
-  install -Dm755 "domain.py" "$pkgdir/usr/share/automedia/domain.py"
-  install -Dm755 "episode.py" "$pkgdir/usr/share/automedia/episode.py"
   for file in plugins/*; do
     install -Dm755 "$file" "$pkgdir/usr/share/automedia/$file"
   done
