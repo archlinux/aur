@@ -2,7 +2,7 @@
 pkgname=gba-tileeditor-git
 url="https://github.com/quentin-dev/gba-tileeditor"
 _gitname=gba-tileeditor
-pkgver=0.0.4
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A Gameboy Advance tile editor"
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    qmake gba-tileeditor.pro
+    qmake gba-tileeditor-client/gba-tileeditor-client.pro
     make -j$(nproc)
 }
 
