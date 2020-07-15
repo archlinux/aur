@@ -1,7 +1,7 @@
-pkgbase = systemd-asus-battery-threshold
+pkgbase = systemd-asus-charging-threshold
 	pkgdesc = Systemd service that manages the Asus Zenbook charging threshold. Specifically designed for the Zenbook 15 UX533.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -19,5 +19,5 @@ pkgbase = systemd-asus-battery-threshold
 	sha256sums = c1389fd887fecbcb2799fa37ddd956b2dacb7bc1da78d44898578986cd79615e
 	sha256sums = 1709bc93a1c4dff8068b270d0515d99627bebb3a9c19dd5950eb687bc24c4e9e
 
-pkgname = systemd-asus-battery-threshold
+pkgname = systemd-asus-charging-threshold
 

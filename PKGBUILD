@@ -1,7 +1,7 @@
 # Maintainer: NeedleNardleNoo (conrad@conradhaupt.co.za)
-pkgname=systemd-asus-battery-threshold
+pkgname=systemd-asus-charging-threshold
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd service that manages the Asus Zenbook charging threshold. Specifically designed for the Zenbook 15 UX533."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 # url="https://github.com/Jguer/yay"
