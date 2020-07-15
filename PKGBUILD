@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 pkgdesc="GTK+ application for searching and streaming videos from YouTube."
 arch=('any')
@@ -23,7 +23,6 @@ optdepends=(
     'perl-term-readline-gnu: better STDIN support'
     'perl-unicode-linebreak: print results in a fixed-width format (-W)'
     'mpv: play videos with MPV (recommended)'
-    'mplayer: play videos with MPlayer'
     'smplayer: play videos with SMPlayer'
     'vlc: play videos with VLC'
     'wget: download videos with wget'

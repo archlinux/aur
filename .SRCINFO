@@ -1,6 +1,6 @@
 pkgbase = gtk-youtube-viewer-git
 	pkgdesc = GTK+ application for searching and streaming videos from YouTube.
-	pkgver = 3.7.6
+	pkgver = 3.7.7
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = gtk-youtube-viewer-git
 	optdepends = perl-term-readline-gnu: better STDIN support
 	optdepends = perl-unicode-linebreak: print results in a fixed-width format (-W)
 	optdepends = mpv: play videos with MPV (recommended)
-	optdepends = mplayer: play videos with MPlayer
 	optdepends = smplayer: play videos with SMPlayer
 	optdepends = vlc: play videos with VLC
 	optdepends = wget: download videos with wget
