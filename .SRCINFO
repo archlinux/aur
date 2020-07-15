@@ -1,6 +1,6 @@
 pkgbase = perl-pod-markdown
 	pkgdesc = Convert POD to Markdown
-	pkgver = 3.101
+	pkgver = 3.200
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-Markdown
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = perl-pod-markdown
 	checkdepends = perl-test-differences
 	depends = perl>=5.8.0
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/R/RW/RWSTAUNER/Pod-Markdown-3.101.tar.gz
-	md5sums = a1b5e2165b12e2717c07f5325795c7c1
+	source = http://www.cpan.org/authors/id/R/RW/RWSTAUNER/Pod-Markdown-3.200.tar.gz
+	sha256sums = 0609718191459c8a4ebb85c2e603baf8db9b997d5a3807921611b6ccf175ae99
 
 pkgname = perl-pod-markdown

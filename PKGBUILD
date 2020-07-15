@@ -1,7 +1,7 @@
 # Maintainer: Peter Tirsek <peter@tirsek.com>
 
 pkgname=perl-pod-markdown
-pkgver=3.101
+pkgver=3.200
 pkgrel=1
 pkgdesc='Convert POD to Markdown'
 _dist=Pod-Markdown
@@ -12,7 +12,7 @@ depends=('perl>=5.8.0')
 checkdepends=('perl-test-differences')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/R/RW/RWSTAUNER/${_dist}-${pkgver}.tar.gz")
-sha256sums=("e8ff6b6c170576966adf20d4024e005f75dbe73242386a1d03600e1626e9f040")
+sha256sums=("0609718191459c8a4ebb85c2e603baf8db9b997d5a3807921611b6ccf175ae99")
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
