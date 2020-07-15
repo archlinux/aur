@@ -1,40 +1,40 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
-pkgname=fprintd-clients-git
-_pkgname=fprintd-clients
-pkgver=r472.ba60533
-pkgrel=2
+pkgname=fprintd-clients
+pkgver=1.90.1.r2.g54e56d6
+pkgrel=1
 pkgdesc='Fprintd without the daemon'
 arch=(x86_64)
 license=(GPL)
 depends=(glib2 libfprint polkit dbus dbus-glib libsystemd)
-makedepends=(gtk-doc git meson pam_wrapper python-cairo python-dbus python-dbusmock)
-conflicts=(fprintd)
-provides=($_pkgname)
+makedepends=(git meson pam_wrapper python-cairo python-dbus python-dbusmock)
+conflicts=(fprintd fprintd-clients)
+provides=($pkgname)
 url="https://gitlab.freedesktop.org/uunicorn/fprintd"
-source=("${_pkgname}::git+${url}.git#branch=master"
+source=("${pkgname}::git+${url}.git#branch=debian/clients-only"
   disable-systemd-reactivated.diff)
 md5sums=('SKIP'
          'b392087f0a6a824fcbceec21d2a38402')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  patch -Np1 --directory=$_pkgname < disable-systemd-reactivated.diff
+  cd $pkgname
+  git checkout 54e56d660bf9730f8abc8f2c6a358ef2fec675f2
+  patch -Np1 < $srcdir/disable-systemd-reactivated.diff
 }
 
 build() {
-  arch-meson $_pkgname build \
-    -D pam_modules_dir=/usr/lib/security \
-    -D gtk_doc=true
+  arch-meson $pkgname build \
+    -D pam_modules_dir=/usr/lib/security
   meson compile -C build
 }
 
 check() {
   # Disable PAM tests
-  meson test --no-suite PAM -C build
+  meson test -C build
 }
 
 package() {
