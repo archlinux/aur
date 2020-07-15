@@ -1,15 +1,16 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=zim-tools
-pkgver=1.2.1
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Various ZIM command line tools"
 license=('GPL3')
 arch=('x86_64')
-depends=('libzim>=6.1.5')
+replaces=('zimwriterfs')
+depends=('libzim' 'docopt')
 makedepends=('meson')
 url='https://github.com/openzim/zim-tools'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=(622ed1ff471d621a39a12f2d5d9996f71c59c29fcde2db98b8897d2e2d266991)
+sha256sums=(21584fbbef7dd8594a92e9baeebef8c263a189ec4aef46ef5b94eea31bbabace)
 
 build() {
 	cd "${pkgname}-${pkgver}"
