@@ -28,7 +28,7 @@ depends=(
 	'libxss'
 	'libxv'
 	'qt5-base>=5.6'
-	'qt5-base<6.0'
+	'qt5-base<=5.15'
 	'openssl'
 )
 makedepends=(
