@@ -1,18 +1,18 @@
 pkgbase = vim-taglist
 	pkgdesc = A source code browser plugin for vim
 	pkgver = 46
-	pkgrel = 5
-	url = http://vim-taglist.sourceforge.net/
+	pkgrel = 6
+	url = http://vim-taglist.sourceforge.net
 	arch = any
 	groups = vim-plugins
 	license = custom
 	makedepends = unzip
 	depends = vim
 	depends = ctags
-	source = https://www.vim.org/scripts/download_script.php?src_id=19574
+	source = taglist_46.zip::https://www.vim.org/scripts/download_script.php?src_id=19574
 	source = license.txt
-	md5sums = 96e2ba879964b3c9e790e3906934d0c0
-	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+	b2sums = d50df26553899ee06bf35e187438f62d08b06004eecce429e34a1c480adcb7ca4ca370bb4bdcbb7d0d9c1830536bb10600f9e30653d32248ff60dfda77b2de88
+	b2sums = 99177e1d6f81699a6985e92ea70eb19ff48e31bbb3b7cc2d8d0e8b66e10c564b71b8ce7e26f85282fdc9145e75b67e4804bf31e939e65ca78fec2fd31ce1a502
 
 pkgname = vim-taglist
 
