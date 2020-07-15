@@ -1,0 +1,16 @@
+pkgbase = ruby-stringio
+	pkgdesc = Pseudo IO on String
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ruby/stringio
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = ruby
+	noextract = stringio-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/stringio-0.1.0.gem
+	sha1sums = 5cf9a4b65ee3edbbefe4be967c43db8abc17dd0b
+
+pkgname = ruby-stringio
+
