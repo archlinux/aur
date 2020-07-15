@@ -2,12 +2,12 @@
 # Contributor: Karmenzind
 pkgname=otf-nerd-fonts-monacob-mono
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='MonacoB fonts patched with nerd-fonts'
 arch=('any')
 url='https://github.com/vjpr/monaco-bold'
 license=('custom:Apple')
-depends=('fontconfig')
+depends=()
 makedepends=('fontforge' 'subversion')
 source=('COPYRIGHT'
         'fix_font_name.py'
