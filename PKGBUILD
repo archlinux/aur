@@ -19,11 +19,6 @@ build() {
     -o $pkgname ./cmd/may
 }
 
-check() {
-  cd $pkgname-$pkgver
-  may -V
-}
-
 package() {
   cd $pkgname-$pkgver
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
