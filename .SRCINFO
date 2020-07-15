@@ -8,6 +8,7 @@ pkgbase = devaultcore-git
 	makedepends = python
 	makedepends = boost
 	makedepends = qt5-tools
+	makedepends = cmake
 	depends = boost-libs
 	depends = qt5-base
 	depends = qrencode
