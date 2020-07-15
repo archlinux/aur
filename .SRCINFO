@@ -1,13 +1,14 @@
 pkgbase = postman-bin
 	pkgdesc = Build, test, and document your APIs faster
 	pkgver = 7.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getpostman.com
 	arch = x86_64
 	license = custom
 	depends = libxss
 	depends = nss
 	depends = gtk3
+	options = !strip
 	source = Postman-linux-x64-7.28.0.tar.gz::https://dl.pstmn.io/download/version/7.28.0/linux64
 	source = postman.desktop
 	sha256sums = 603b8c8182243bb559c55261ccbb2cc5fb9a033d53d5b8908d71121d123783f4
