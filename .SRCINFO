@@ -1,7 +1,8 @@
 pkgbase = wav2png-git
 	pkgdesc = Creates waveform pngs out of audio files.
-	pkgver = 103
+	pkgver = 0.4.r0.g80e277e
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/beschulz/wav2png
 	arch = i686
 	arch = x86_64
