@@ -5,7 +5,7 @@ _name=dotboy
 pkgname="python-${_name}"
 provides=()
 conflicts=()
-pkgver=0.1.4
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A Python script to help with dot file management'
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 makedepends=('python-setuptools')
 depends=('python>=3.8')
-md5sums=('45e7fcaec76606b9aa0cc01257d9c452')
+md5sums=('b867cc1dff1201cdeb94fec1ff1d7390')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
