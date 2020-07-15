@@ -1,0 +1,29 @@
+_pkgname="duckdns"
+
+post_install() {
+	if ! getent group "${_pkgname}" &>/dev/null; then
+		echo ":: Adding ${_pkgname} system group..."
+		groupadd --system "${_pkgname}" 1>/dev/null
+	fi
+
+	if ! getent passwd "${_pkgname}" &>/dev/null; then
+		echo ":: Adding ${_pkgname} system user..."
+		useradd \
+			--system \
+			--gid "${_pkgname}" \
+			--home-dir "/etc/${_pkgname}.d" \
+			"${_pkgname}" 1>/dev/null
+	fi
+
+	chown -R "${_pkgname}:${_pkgname}" "/etc/${_pkgname}.d"
+	echo "Don't forget to edit /etc/${_pkgname}.d/default in order to provide your domain names, token and IP address providers!"
+}
+
+post_upgrade() {
+	chown -R "${_pkgname}:${_pkgname}" "/etc/${_pkgname}.d"
+}
+
+post_remove() {
+	[ -d "/etc/${_pkgname}.d" ] && echo ":: Configuration files in /etc/${_pkgname}.d were preserved."
+	echo ":: The ${_pkgname} user and group were preserved."
+}

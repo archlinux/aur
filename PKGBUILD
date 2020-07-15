@@ -1,29 +1,31 @@
 # Maintainer: Nitroretro <nitroretro@protonmail.com>
+# Maintainer: NixUnderflow <nixunderflow@protonmail.com>
 
 pkgname=duckdns-ipv6
-pkgver=1.0.1
+_pkgname=duckdns
+pkgver=1.1
 pkgrel=1
 pkgdesc="Automatically update DuckDNS domains, with IPv6 support"
 arch=("any")
-url="https://duckdns.org"
+url="https://${_pkgname}.org"
 license=("GPL3")
-depends=("jq")
-provides=("duckdns")
-conflicts=("duckdns")
-backup=("etc/duckdns.d/default")
-install="${pkgname}.install"
-source=("duckdns.conf"
-	"duckdns.sh"
-	"duckdns.service"
-	"duckdns.timer")
-sha512sums=('e781a69a01a7b590a5435f123d118ef64a111b57440a72e3671f560b4f2afae72f9a28c1766b032c7586fa95ac8b3dc7ea68b861d68571fcd6b3cb09185b7f68'
-            '33bdf3312e8d0f8b3d34fa9c8cf5efd598daaaaf85f5a93c263ffe934a519ba437ca66d60d28ca303f206a162416a55f54f049e53aca2d51ee9e0f5583cea9a6'
-            '33aa22ec51e44fa2d9c58e564cee6b7a280850aabb6fe24bf2a429a87d07a8a163d1e6f76505af0be9c5630133349a66613ceece8f1568fbd847c09b7328392d'
+depends=("bash" "curl" "jq" "util-linux")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+backup=("etc/${_pkgname}.d/default")
+install="${_pkgname}.install"
+source=("${_pkgname}.conf"
+	"${_pkgname}.sh"
+	"${_pkgname}.service"
+	"${_pkgname}.timer")
+sha512sums=('85424f976426286b4f91b997db0163108f84527663024c05c70f895dcb85a3aa507849e3c3701985957254d88c98b6e9af54dbbc318db677141cf6bb05a2a51c'
+            '03469909987fb15bea36208317edac83e675d9452e02222b7cab00dd4f67e7c4b0fdf1027c5d1dbae430de7453bf1d8f033f64942011266b14efc68085e5b652'
+            '10783060db994bee4faf03920374840bc57b105304a7aa9b1ebc9161f9a765b985c2ef83906fb6f2c0dbb7b118cde95820e786fd39f78b443af5927e9bb71391'
             '55fa343bd4be6157b9b909721559a8fe163ad0968d2dcfcb5d9bca2fe268d70b1369dde225adc8d3a31815356d43afc76a43d8cf39d92209a1965d0e1e40f618')
 
 package() {
-	install -Dm600 duckdns.conf "${pkgdir}/etc/duckdns.d/default"
-	install -Dm755 duckdns.sh "${pkgdir}/usr/bin/duckdns"
-	install -Dm644 duckdns.service "${pkgdir}/usr/lib/systemd/system/duckdns.service"
-	install -Dm644 duckdns.timer "${pkgdir}/usr/lib/systemd/system/duckdns.timer"
+	install -Dm600 "${_pkgname}.conf" "${pkgdir}/etc/${_pkgname}.d/default"
+	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+	install -Dm644 "${_pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.timer"
 }
