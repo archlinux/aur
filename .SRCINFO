@@ -1,0 +1,16 @@
+pkgbase = freechat-git
+	pkgdesc = 致力于打造macOS和Linux桌面下最好用的微信（wechat）客户端。
+	pkgver = 1.0.0.17c82a4
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	makedepends = gendesk
+	provides = freechat
+	options = !strip
+	source = git+https://github.com/eNkru/freechat.git
+	md5sums = SKIP
+
+pkgname = freechat-git
+
