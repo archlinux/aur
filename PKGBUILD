@@ -17,8 +17,6 @@ makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'p
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-# 0001-fontconfig-compat.patch: proposed upstream https://github.com/snapcore/snapd/pull/8604
-# 0002-zsh-completion.patch: cherry-pick from upstream master
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
 sha256sums=('9e289f3dd1c73b651c27fc3b6b2339660335c6c5c9261ef0fa2975c1c849bf66')
 
