@@ -1,0 +1,17 @@
+pkgbase = ginj
+	pkgdesc = An open source multi-platform screen capture and recording tool
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ginj.info
+	arch = any
+	license = custom:unknown
+	makedepends = gendesk
+	depends = java-runtime>=14
+	depends = bash
+	source = ginj-0.3.2.jar::https://github.com/Ginj-capture/Ginj/releases/download/v0.3.2/Ginj-0.3.2.jar
+	source = ginj.png::https://github.com/Ginj-capture/Ginj/raw/master/www/logo.png
+	sha256sums = 51059d7a6700817493b5423bad88362619dcbe9a9e724c5518d7255b43024cd0
+	sha256sums = 31364af43dbba74f407067afd6318dd7fbe073d35a70df71d301fcea01ddfcfc
+
+pkgname = ginj
+
