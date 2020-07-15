@@ -1,15 +1,15 @@
 # Maintainer: Christopher Fair  <christopherpfair at comcast dot net>
 pkgname=git-subrepo
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Git Submodule Alternative"
 arch=('i686' 'x86_64')
-url="https://github.com/chrisfair/git-subrepo.git"
+url="https://github.com/ingydotnet/git-subrepo.git"
 license=('MIT')
 depends=('git')
 makedepends=('git')
-source=("https://github.com/chrisfair/git-subrepo/archive/${pkgver}.tar.gz")
-sha256sums=('fd3c87736115c82c49c13dcfc3aa2a93752663240ae47083beb4ff232e208e18')
+source=("https://github.com/ingydotnet/git-subrepo/archive/${pkgver}.tar.gz")
+sha256sums=('64cc2490c54fe1e5396bb14f6bbf0aa8378085f3b8847fd8ed171e5ddd886065')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
