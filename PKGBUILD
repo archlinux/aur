@@ -1,18 +1,19 @@
 # Maintainer: c0gnitivefl0w
+# Co-Maintainer: eldios
 
 pkgname=seadrive-daemon
-pkgver=1.0.9
+pkgver=2.0.3
 pkgrel=0
 pkgdesc="Daemon part of seadrive"
 arch=('x86_64')
-url="https://www.seafile.com/en/help/drive_client_linux"
+url="https://download.seafile.com/published/seafile-user-manual/drive_client/drive_client_for_linux.md"
 license=('Apache')
 depends=('libsearpc' 'libcurl-compat' 'libevent-compat'
          'openssl-1.0' 'fuse2')
 source=('seadrive'
-        "https://deb.seadrive.org/jessie/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+        "http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('25770d58f6e262a29e54a065ccf5e2d138ec5ec2aecaafa12fe2f6fe4ca256fb'
-            '2fe4bba4217423180b6085e35b4c0a81bd344d1413b87006fd35407a22e9723c')
+            '98e8200408582c0f30fb50cec68e79a31978448b064a7109a9888f7d03f37693')
 
 prepare() {
   cd "${srcdir}"
