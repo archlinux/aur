@@ -5,8 +5,9 @@ diff -aur --no-dereference package.pristine/src/bindings/CMakeLists.txt package.
  
  	endif(NOT WIN32)
  
--	include_directories(${YAF_INCLUDE_DIRS} ${RUBY_INCLUDE_DIR})
-+	include_directories(${YAF_INCLUDE_DIRS} ${RUBY_INCLUDE_DIR} ${RUBY_ARCHHDR_DIR})
+ 	include_directories(${YAF_INCLUDE_DIRS})
+-	include_directories(SYSTEM ${RUBY_INCLUDE_DIR})
++	include_directories(SYSTEM ${RUBY_INCLUDE_DIR} ${RUBY_ARCHHDR_DIR})
  	include(${SWIG_USE_FILE})
  
  	set(CMAKE_SWIG_FLAGS -c++ -w-801)
