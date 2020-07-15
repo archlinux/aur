@@ -1,7 +1,7 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=fprintd-clients
 pkgver=1.90.1.r2.g54e56d6
-pkgrel=1
+pkgrel=2
 pkgdesc='Fprintd without the daemon'
 arch=(x86_64)
 license=(GPL)
@@ -33,7 +33,6 @@ build() {
 }
 
 check() {
-  # Disable PAM tests
   meson test -C build
 }
 
