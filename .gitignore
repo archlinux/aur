@@ -1,0 +1,5 @@
+pkg/
+src/
+clisp-git/
+*.zst
+
