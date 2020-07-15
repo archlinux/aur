@@ -12,8 +12,8 @@ depends=('shc')
 md5sums=('ff7a69ed5fc64db79bc1a466946d96f2')
 
 pkgver() {
-  git clone "${url}.git"
-  cd "$reponame"
+  git clone "${url}.git" getver
+  cd "getver"
   git describe --tags | sed 's/-/.r/;s/-/./'
 }
 
