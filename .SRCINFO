@@ -1,0 +1,37 @@
+pkgbase = llvm9
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = python-setuptools
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz.sig
+	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha256sums = 00a1ee1f389f81e9979f3a640a01c431b3021de0d42278f6508391a2f0b81c9a
+	sha256sums = SKIP
+
+pkgname = llvm9
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	depends = llvm9-libs
+	depends = perl
+	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
+	conflicts = llvm
+
+pkgname = llvm9-libs
+	pkgdesc = LLVM 9 runtime libraries
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+
