@@ -1,7 +1,7 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=noaftodo-git
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.2r231.9f82b84
+pkgrel=1
 pkgdesc="An ncurses TODO manager that No-One-Asked-For."
 arch=(x86_64 i686)
 url="https://github.com/gregthemadmonk/noaftodo.git"
@@ -13,6 +13,11 @@ optdepends=('libnotify: provides notify-send commandused in default config'
 source=("git+$url#branch=pkg")
 changelog=CHANGELOG
 md5sums=('SKIP')
+
+pkgver() {
+	cd noaftodo
+	printf "${pkgver}r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd noaftodo

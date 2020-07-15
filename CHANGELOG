@@ -1,8 +1,16 @@
-2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
+2020-07-16 GregTheMadMonk <yagreg7@gmail.com>
+
+	* 1.4.2r231.9f82b84
+	- Improve cvars replacement: %varname% now is replaced with bare varibale value, %%varname%% runs replace_special(value) (mostly for putting '\' before special symbols)
+	- Change package verionening to match (hopefully) VCS packaging guidelines
+
+2020-07-16 GregTheMadMonk <yagreg7@gmail.com>
 
 	* 1.4.2-2
 	- Fix entries created between saves being assigned same IDs causing for on_edited events
 	being fired on them every time daemon re-loads the list
+
+2020-07-08 GregTheMadMonk <yagreg7@gmail.com>
 
 	* 1.4.2-1
 	- Added interpreter mode
@@ -17,9 +25,13 @@
 	- Added "pure" output mode
 	- Added WS_IGNORE to "mode" cvar
 
+2020-07-05 GregTheMadMonk <yagreg7@gmail.com>
+
 	* 1.4.1-2
 	- Fix mistake in default config that made "gg" and "G" not working. It was
 	present since 1.4.0-1, probably. Shame, shame, shame on me.
+
+2020-07-03 GregTheMadMonk <yagreg7@gmail.com>
 
 	* 1.4.1-1
 	- Added meta options for a task to ignore global events.
@@ -28,9 +40,13 @@
 	- Package built from AUR will now have corresponding fuccix to its version
 	- Unnnecessary screen updates are now skipped.
 
+2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
+
 	* 1.4.0-3
 	- Added "warn_time" task meta property (for custom "upcoming" time)
 	- Fixed last default config string not being executed
+
+2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
 
 	* 1.4.0-2 :
 	- Fixed a crash when entering DETAILS mode on an empty list.

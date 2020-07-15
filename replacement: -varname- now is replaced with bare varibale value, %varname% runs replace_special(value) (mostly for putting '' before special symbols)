@@ -1,0 +1,92 @@
+[1mdiff --git a/.SRCINFO b/.SRCINFO[m
+[1mindex b106043..2765fe2 100644[m
+[1m--- a/.SRCINFO[m
+[1m+++ b/.SRCINFO[m
+[36m@@ -1,7 +1,7 @@[m
+ pkgbase = noaftodo-git[m
+ 	pkgdesc = An ncurses TODO manager that No-One-Asked-For.[m
+[31m-	pkgver = 1.4.2[m
+[31m-	pkgrel = 2[m
+[32m+[m	[32mpkgver = 1.4.2r231.9f82b84[m
+[32m+[m	[32mpkgrel = 1[m
+ 	url = https://github.com/gregthemadmonk/noaftodo.git[m
+ 	changelog = CHANGELOG[m
+ 	arch = x86_64[m
+[1mdiff --git a/CHANGELOG b/CHANGELOG[m
+[1mindex 816159d..913b954 100644[m
+[1m--- a/CHANGELOG[m
+[1m+++ b/CHANGELOG[m
+[36m@@ -1,9 +1,17 @@[m
+[31m-2020-07-02 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m[32m2020-07-16 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+[32m+[m	[32m* 1.4.2r231.9f82b84[m
+[32m+[m	[32m- Improve cvars replacement: %varname% now is replaced with bare varibale value, %%varname%% runs replace_special(value) (mostly for putting '\' before special symbols)[m
+[32m+[m	[32m- Change package verionening to match (hopefully) VCS packaging guidelines[m
+[32m+[m
+[32m+[m[32m2020-07-16 GregTheMadMonk <yagreg7@gmail.com>[m
+ [m
+ 	* 1.4.2-2[m
+ 	- Fix entries created between saves being assigned same IDs causing for on_edited events[m
+ 	being fired on them every time daemon re-loads the list[m
+ [m
+[32m+[m[32m2020-07-08 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+ 	* 1.4.2-1[m
+ 	- Added interpreter mode[m
+ 	- Added list status indication in list view (colors + flags ('f') listview column)[m
+[36m@@ -17,10 +25,14 @@[m
+ 	- Added "pure" output mode[m
+ 	- Added WS_IGNORE to "mode" cvar[m
+ [m
+[32m+[m[32m2020-07-05 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+ 	* 1.4.1-2[m
+ 	- Fix mistake in default config that made "gg" and "G" not working. It was[m
+ 	present since 1.4.0-1, probably. Shame, shame, shame on me.[m
+ [m
+[32m+[m[32m2020-07-03 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+ 	* 1.4.1-1[m
+ 	- Added meta options for a task to ignore global events.[m
+ 	- Added signal handling. Yep, you can close daemon with Ctrl+C and not run[m
+[36m@@ -28,9 +40,13 @@[m
+ 	- Package built from AUR will now have corresponding fuccix to its version[m
+ 	- Unnnecessary screen updates are now skipped.[m
+ [m
+[32m+[m[32m2020-07-02 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+ 	* 1.4.0-3[m
+ 	- Added "warn_time" task meta property (for custom "upcoming" time)[m
+ 	- Fixed last default config string not being executed[m
+ [m
+[32m+[m[32m2020-07-02 GregTheMadMonk <yagreg7@gmail.com>[m
+[32m+[m
+ 	* 1.4.0-2 :[m
+ 	- Fixed a crash when entering DETAILS mode on an empty list.[m
+[1mdiff --git a/PKGBUILD b/PKGBUILD[m
+[1mindex 765bb38..addc6d3 100644[m
+[1m--- a/PKGBUILD[m
+[1m+++ b/PKGBUILD[m
+[36m@@ -1,7 +1,7 @@[m
+ # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>[m
+ pkgname=noaftodo-git[m
+[31m-pkgver=1.4.2[m
+[31m-pkgrel=2[m
+[32m+[m[32mpkgver=1.4.2r231.9f82b84[m
+[32m+[m[32mpkgrel=1[m
+ pkgdesc="An ncurses TODO manager that No-One-Asked-For."[m
+ arch=(x86_64 i686)[m
+ url="https://github.com/gregthemadmonk/noaftodo.git"[m
+[36m@@ -14,6 +14,11 @@[m [msource=("git+$url#branch=pkg")[m
+ changelog=CHANGELOG[m
+ md5sums=('SKIP')[m
+ [m
+[32m+[m[32mpkgver() {[m
+[32m+[m	[32mcd noaftodo[m
+[32m+[m	[32mprintf "${pkgver}r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"[m
+[32m+[m[32m}[m
+[32m+[m
+ build() {[m
+ 	cd noaftodo[m
+ 	V_SUFFIX=AUR make[m
