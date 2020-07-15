@@ -3,9 +3,9 @@
 
 pkgname=aomp-amdgpu
 pkgdesc='Clang/LLVM based compiler with added support for the OpenMP API on Radeon GPUs'
-_pkgver=11.6-2
-pkgver=11.6.2
-pkgrel=2
+_pkgver=11.7-0
+pkgver=11.7.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/ROCm-Developer-Tools/aomp'
 license=('Apache')
@@ -14,12 +14,11 @@ makedepends=(git cmake python mesa)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rel_$_pkgver.tar.gz"
         'disable_ocl_tests.patch'
         'adjust_rpath.patch'
-	'remove_gcc_logic.patch')
-sha256sums=('e4623ecfbe743676d068b17b113aadce4524a79be31b0540a216f9597cbd9fe5'
+        'remove_gcc_logic.patch')
+sha256sums=('1f16492ed32b3df87c378503207d6b219779580f8f98ae268c8b46c1a148ab40'
             'bf3aab8fc2c828554ba76ab1876179130704f1c35906228fcf7e94239f5e4170'
             '94c670cd991c95a7b6312feb77d32a11c1ac1b839218bcd251042563b7af1a44'
-	    'd1040410c7cebc109d2905722e959d4e9d3e4f122fe0a4ae72e3f3d8e5b9a722')
-options=(staticlibs !strip)
+            'd1040410c7cebc109d2905722e959d4e9d3e4f122fe0a4ae72e3f3d8e5b9a722')
 _dirname="$(basename "$url")-$(basename ${source[0]} .tar.gz)"
 
 prepare() {
@@ -47,7 +46,8 @@ package() {
     ./build_aomp.sh
 
     #Fix symlink created by the build script
-    ln -fs "/opt/rocm/aomp_$_pkgver" "$pkgdir/opt/rocm/aomp"
+    rm "$pkgdir/opt/rocm/aomp"
+    ln -s "/opt/rocm/aomp_$_pkgver" "$pkgdir/opt/rocm/aomp"
 
     #Export AOMP variable for rocminfo
     install -Dm777 /dev/stdin "$pkgdir/etc/profile.d/aomp-amdgpu.sh" <<EOF
