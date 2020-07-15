@@ -1,0 +1,15 @@
+pkgbase = gotest
+	pkgdesc = go test with colors
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/rakyll/gotest
+	arch = x86_64
+	license = BSD
+	depends = go
+	provides = gotest
+	conflicts = gotest-git
+	source = https://github.com/rakyll/gotest/archive/v0.0.5.tar.gz
+	sha512sums = ae4f776c516e3e289a26456f439234a3f6be854f1be40220cfb71320953447cbc21f0fda2e9043fc73f3ac388ac5a9bd7eeb2bacdce2c3f50cb5df60227ac37a
+
+pkgname = gotest
+
