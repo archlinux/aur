@@ -2,7 +2,7 @@
 
 pkgname=terragrunt
 pkgver=0.23.31
-pkgrel=3
+pkgrel=4
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 arch=('x86_64')
@@ -31,6 +31,15 @@ build() {
     -ldflags "-X github.com/gruntwork-io/terragrunt.VERSION=${pkgver}" \
     -o "${pkgname}-${pkgver}" \
     main.go
+
+  # Change the file mode of modules to allow them to be removed via `--clean`
+  # and `--cleanbuild` options to makepkg, as well as other file-level
+  # operations which attempt to delete the files. This is a hacky way to
+  # accomplish this; the other option being to invoke `go clean`.
+  #
+  # Invoking `go clean` has the downside of removing all modules at call time,
+  # which prevent re-using the module cache between builds of this package.
+  chmod u+w -R "${GOPATH}/pkg/mod"
 }
 
 package() {
