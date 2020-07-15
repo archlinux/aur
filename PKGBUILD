@@ -20,8 +20,11 @@ sha256sums=('7bb9859fd968220bcae1908079448834a789fca03d644d405a61441cd4a655a2')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  # Set GOPATH to a path within $srcdir so that we don't pollute user's $GOPATH
+  # (default of $HOME/go) when building this package
   export GOPATH="${srcdir}/.go"
 
+  # Build the executable
   go build \
     -ldflags "-X github.com/gruntwork-io/terragrunt.VERSION=${pkgver}" \
     -o "${pkgname}-${pkgver}" \
