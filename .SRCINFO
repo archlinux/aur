@@ -1,7 +1,7 @@
 pkgbase = mctlauncher
 	pkgdesc = Minecraft TLauncher Client for the AUR <visit tlauncher.org>
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tlauncher.org
 	arch = any
 	license = GPL

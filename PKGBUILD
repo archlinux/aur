@@ -2,7 +2,7 @@
 
 pkgname=mctlauncher
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft TLauncher Client for the AUR <visit tlauncher.org>"
 arch=("any")
 url="https://www.tlauncher.org"
@@ -35,4 +35,5 @@ package() {
                 install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
                 convert "${srcdir}/${pkgname}.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
         done
+	echo -e "\e[7mTo update MCTlauncher, clear caches by running yay -Sc or the respective command!\e[0m"
 }
