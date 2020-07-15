@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=yaml-language-server
-pkgver=0.7.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Language Server for Yaml Files"
 license=('MIT')
@@ -25,4 +25,4 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/$pkgname
     ln -s ../../../lib/node_modules/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-sha256sums=('e9adb54dfef2562a67a20608b51e5976c0c4b3894a9de42259435fee8a459b73')
+sha256sums=('0e1dd28c88217138841de286dcd0faad38ac6bbff104b269652c6ec01ea5c4cd')
