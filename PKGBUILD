@@ -2,7 +2,7 @@
 
 pkgbase=bitcoinhd
 pkgname=('bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-qt' 'bitcoinhd-tx')
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://btchd.org/"
@@ -13,17 +13,17 @@ source=("$pkgbase-$pkgver-src.tar.gz::https://github.com/btchd/btchd/archive/v$p
         "bhd-qt.sh"
         "start-bhdd.sh"
         "stop-bhdd".sh)
-source_x86_64=("$pkgbase-$pkgver-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-x86_64-linux-gnu.tar.gz")
-source_i686=("$pkgbase-$pkgver-i686.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-i686-linux-gnu.tar.gz")
-source_armv7h=("$pkgbase-$pkgver-armv7h.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-arm-linux-gnueabihf.tar.gz")
-source_aarch64=("$pkgbase-$pkgver-aarch64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-42517870d-aarch64-linux-gnu.tar.gz")
-sha256sums=('b065601f8653cba6cb5ebb5c8dd1ed0d087c0dfd47af68b3ada6f47ac4760268'
+source_x86_64=("$pkgbase-$pkgver-x86_64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-52bb5b0fd-x86_64-linux-gnu.tar.gz")
+source_i686=("$pkgbase-$pkgver-i686.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-52bb5b0fd-i686-linux-gnu.tar.gz")
+source_armv7h=("$pkgbase-$pkgver-armv7h.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-52bb5b0fd-arm-linux-gnueabihf.tar.gz")
+source_aarch64=("$pkgbase-$pkgver-aarch64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-52bb5b0fd-aarch64-linux-gnu.tar.gz")
+sha256sums=('49bdee4de3979c6e8ef3913e9e5a15f758d81e7d14caca8be17d303beaa50f4f'
             'b3457e63ea098aa055655ad1d5cc7800f100f84b4e66f80e737d337a49672d8b'
             '4178fd9173eadb24f13a254f567c37eb77521c2d6d57d9b2cfe913483967298b'
             '939bef185f8cb1ddb5e554ed55dbab2ac458af4f7856af155b07d54eef370a18'
             'cc342560bfc5f0907293afd0f219f9bf4b81f78131fbb3ff61a25375257025a3'
             '0bd306f1fe25797e5987336111ea931d3453de9097571f5fd7028a3dfe4663b6')
-sha256sums_x86_64=('fb84c947c95a489944f798d1008c3ff9dd010c23eeb7bcfe494ef86d9b8d710d')
+sha256sums_x86_64=('fc6d4ff462bf8831f7114fdf67421b56605d6d94a39345f0aaf24dc6422e2805')
 sha256sums_i686=('5599084c005815f15ac725e775967fc3fc05e64099d03166e753a97f21a6ce83')
 sha256sums_armv7h=('a540e345489f435e4a1e6125e9dbbbe4fe8f4cacdfdf3a92d49c57dde10470df')
 sha256sums_aarch64=('0317f363262a9b83cdf7cff00139bd4f5ff16a4b39df20b5e3691d6f8009a818')
