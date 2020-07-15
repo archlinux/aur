@@ -1,12 +1,11 @@
 # Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
 pkgname=buf
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A new way of working with Protocol Buffers"
 arch=("any")
 url="https://buf.build"
 license=('Apache')
-depends=('protobuf')
 makedepends=('go')
 source=("https://github.com/bufbuild/buf/archive/v${pkgver}.tar.gz")
 
