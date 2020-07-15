@@ -22,7 +22,7 @@ diff --git a/doc/Makefile.am b/doc/Makefile.am
 index d47d83ede..c0a81b0b9 100644
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
-@@ -177,13 +177,6 @@ $(myman_pages) gnupg.7 : yat2m-stamp defs.inc
+@@ -177,15 +177,6 @@
  
  dist-hook: defsincdate
  
@@ -31,6 +31,8 @@ index d47d83ede..c0a81b0b9 100644
 -	if test -e $(top_srcdir)/.git; then \
 -	  (cd $(srcdir) && git log -1 --format='%ct' \
 -               -- $(gnupg_TEXINFOS) 2>/dev/null) >>defsincdate; \
+-        elif test x"$SOURCE_DATE_EPOCH" != x; then   \
+-	   echo "$SOURCE_DATE_EPOCH" >>defsincdate ; \
 -	fi
 -
  defs.inc : defsincdate Makefile mkdefsinc
