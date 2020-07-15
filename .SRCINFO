@@ -9,6 +9,7 @@ pkgbase = the-glorious-dotfiles
 	depends = awesome-git
 	depends = rofi-git
 	depends = picom-tryone-git
+	depends = inter-font
 	optdepends = light-git: Brightness widget and OSD
 	optdepends = alsa-utils: Volume widget and OSD
 	optdepends = acpi: Power/Battery Widgets
