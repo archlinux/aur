@@ -1,3 +1,5 @@
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+
 pkgname=adios2
 pkgver=2.6.0
 pkgrel=1
