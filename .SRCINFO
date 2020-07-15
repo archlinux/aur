@@ -18,8 +18,8 @@ pkgbase = felinks
 	depends = expat
 	depends = ncurses
 	depends = lua51
-	conficts = elinks
-	conficts = elinks-git
+	conflicts = elinks
+	conflicts = elinks-git
 	source = git+https://github.com/rkd77/felinks#tag=v0.13.3
 	sha256sums = SKIP
 

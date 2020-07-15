@@ -6,8 +6,8 @@ pkgdesc="text browser"
 license=(GPL2)
 arch=('x86_64' 'i686')
 depends=(tre brotli libx11 openssl gpm zstd libidn expat ncurses lua51)
-makedepends=('gcc' 'make')
-conficts=(elinks elinks-git)
+makedepends=(gcc make)
+conflicts=(elinks elinks-git)
 url="http://github.com/rkd77/felinks"
 source=(git+https://github.com/rkd77/felinks#tag=v$pkgver)
 sha256sums=('SKIP')
