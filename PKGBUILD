@@ -1,5 +1,5 @@
 # Maintainer: blacktea <blackteahamburger@outlook.com>
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=bic
 pkgver=1.0.0
