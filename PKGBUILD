@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.7.7
+pkgver=3.7.7.r0.gc9f2913
 pkgrel=1
 pkgdesc="Command line utility for searching and streaming videos from YouTube."
 arch=('any')
@@ -31,10 +31,9 @@ source=('git+https://github.com/trizen/youtube-viewer.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
