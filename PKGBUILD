@@ -46,7 +46,7 @@ package() {
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
 	cd "${pkgdir}"
-	tar -Jxf "${srcdir}/sky-archlinux-${pkgver%.*}-${pkgrel##*.}-${CARCH}.pkg.tar.xz"
+	tar -Jxf "${srcdir}/sky-archlinux-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
 	find "${pkgdir}" -maxdepth 1 -type f -delete
 }
 
