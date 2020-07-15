@@ -37,7 +37,7 @@ makedepends=(
 	'xz'
 )
 
-source_x86_64=("https://tel.red/repos/archlinux/sky-archlinux-${pkgver%.*}-${pkgver##*.}-${CARCH}.pkg.tar.xz")
+source_x86_64=("https://tel.red/repos/archlinux/sky-archlinux-${pkgver%.*}-${pkgrel##*.}-${CARCH}.pkg.tar.xz")
 sha256sums_x86_64=('a81866a0a7746bf6fe07e05515c171155700a9febcdbb18a1de09623dbf8d19e')
 
 package() {
@@ -46,7 +46,7 @@ package() {
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
 	cd "${pkgdir}"
-	tar -Jxf "${srcdir}/sky-archlinux-${pkgver%.*}-${pkgver##*.}-${CARCH}.pkg.tar.xz"
+	tar -Jxf "${srcdir}/sky-archlinux-${pkgver%.*}-${pkgrel##*.}-${CARCH}.pkg.tar.xz"
 	find "${pkgdir}" -maxdepth 1 -type f -delete
 }
 
