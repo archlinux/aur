@@ -24,15 +24,16 @@ depends+=('aspell')
 # Required for Xinerama (requires editing config.mk to disable)
 depends+=('libxinerama')
 
+makedepends=('rust' 'git' 'clang' 'sh' 'make' 'diffutils')
+
 _pkgname=dmenu
 pkgname=$_pkgname-rs
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="A 1:1 port of dmenu, rewritten in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/Shizcow/dmenu-rs"
 license=('GPL')
-makedepends=('rust' 'git' 'clang')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${pkgname}::git+${url}.git")
