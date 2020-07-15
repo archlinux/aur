@@ -1,6 +1,6 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=screen-desktop-bin
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Low latency videoconferencing & screen sharing with multiplayer drawing & control. Screen is a multiplayer screen sharing app that lets you work together like you’re in the same room."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('apparmor'
 license=('custom')
 options=('!strip' '!emptydirs')
 source=("https://download.screen.so/desktop-app/linux/${pkgver}/screen-desktop_${pkgver}_amd64.deb")
-sha512sums=('8004ab761b0e598df7c1e597bc2fc70a89bad30cf4bdebcfc064fbf99d1c7f37ca3be032a7a5678ad3d0297934c9ce5f5281372d8d059ab4ae2d36c15a731adb')
+sha512sums=('d0573161ed67f1ab07bb4d1f50c9452668b562f87a4007b1853698ebd0875b5e622a1a4dbd744df4dc596261808812321e94dd185947e5446652b1dd36535e9e')
 
 package(){
     mkdir -p "${pkgdir}/opt/${pkgname}"
