@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.7.7
+pkgver=3.7.7.r0.gc9f2913
 pkgrel=1
 pkgdesc="GTK+ application for searching and streaming videos from YouTube."
 arch=('any')
@@ -33,8 +33,8 @@ source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
