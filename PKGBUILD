@@ -37,7 +37,7 @@ makedepends=(
 	'xz'
 )
 
-source_x86_64=("https://tel.red/repos/archlinux/sky-archlinux-${pkgver%.*}-${pkgrel##*.}-${CARCH}.pkg.tar.xz")
+source_x86_64=("https://tel.red/repos/archlinux/sky-archlinux-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz")
 sha256sums_x86_64=('a81866a0a7746bf6fe07e05515c171155700a9febcdbb18a1de09623dbf8d19e')
 
 package() {
