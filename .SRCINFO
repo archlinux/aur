@@ -1,0 +1,22 @@
+pkgbase = gonha
+	pkgdesc = Light-weight system monitor for Linux
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/fredcox/gonha
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-pyqt5
+	depends = python-humanfriendly
+	depends = python-ewmh
+	depends = python-pathlib
+	depends = python-configobj
+	depends = python-colr
+	depends = python-pyinquirer
+	source = gonha-0.1.18-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/c9/03/9fe234784d6c272eb409557dfe2a871e6e7b5d1a00fef071e726270164de/gonha-0.1.18-py2.py3-none-any.whl
+	source = LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE
+	sha256sums = ec7d05eb1f5f3809d462e3385ca866b6db40d5d34999215678f2b623c5509f3c
+	sha256sums = 6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101
+
+pkgname = gonha
+
