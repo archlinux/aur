@@ -1,5 +1,9 @@
 2020-07-02 GregTheMadMonk <yagreg7@gmail.com>
 
+	* 1.4.2-2
+	- Fix entries created between saves being assigned same IDs causing for on_edited events
+	being fired on them every time daemon re-loads the list
+
 	* 1.4.2-1
 	- Added interpreter mode
 	- Added list status indication in list view (colors + flags ('f') listview column)
