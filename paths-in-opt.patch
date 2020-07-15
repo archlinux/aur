@@ -1,8 +1,8 @@
 diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index 2c3933e..c84a039 100644
+index db9fd6f..c925431 100644
 --- a/hydrus/client/gui/ClientGUI.py
 +++ b/hydrus/client/gui/ClientGUI.py
-@@ -772,7 +772,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+@@ -792,7 +792,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -25,7 +25,7 @@ index 7de8ef2..1196c62 100644
  DEFAULT_HYDRUS_STYLESHEET = ''
  ORIGINAL_STYLE_NAME = None
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index f14ed6e..4d7a20e 100644
+index 857715d..ff6a7ae 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
 @@ -5,33 +5,9 @@ import typing
@@ -63,9 +63,9 @@ index f14ed6e..4d7a20e 100644
 +HYDRUS_MODULE_DIR = '/opt/hydrus/hydrus'
 +BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
  
- PLATFORM_WINDOWS = False
- PLATFORM_MACOS  = False
-@@ -44,23 +20,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
+ PLATFORM_WINDOWS = sys.platform == 'win32'
+ PLATFORM_MACOS  = sys.platform == 'darwin'
+@@ -41,23 +17,16 @@ PLATFORM_HAIKU = sys.platform == 'haiku1'
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
