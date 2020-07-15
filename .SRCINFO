@@ -1,0 +1,24 @@
+pkgbase = logiops
+	pkgdesc = An unofficial driver for Logitech HID++>2.0 mice and keyboard
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/PixlOne/logiops
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = libevdev
+	depends = systemd-libs
+	depends = libconfig
+	depends = libudev.so
+	provides = logiops
+	conflicts = logiops
+	source = https://github.com/PixlOne/logiops/archive/v0.2.tar.gz
+	sha256sums = 451992fc0afb695dcac9c26f97dc35f47069d9f77917366ea95d801efff73234
+
+pkgname = logiops
+
