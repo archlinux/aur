@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r98.19e872453
+pkgver=1.7.0.r125.a782e03eb
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -64,7 +64,7 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C build install
+  make DESTDIR="$pkgdir" -C build install
 }
 
 # vim: ts=2 sw=2 et:
