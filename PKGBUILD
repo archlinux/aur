@@ -1,6 +1,6 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
 pkgname=zrythm
-pkgver=0.8.378
+pkgver=0.8.604
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
   'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
-  'suil')
+  'suil' 'breeze-icons')
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
@@ -17,8 +17,7 @@ optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=('zrythm-git')
 source=("https://www.zrythm.org/releases/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('396e9d2342e537bb8ec9bdca2a4da1935d536cbac36c73084d2b9ca6a14e3b88'
-            'SKIP')
+sha256sums=('12b3dd6b6dcb485ad21096608efc425b0ce6158c52d0ab27ba6762363c1ddff4' 'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
 build() {
