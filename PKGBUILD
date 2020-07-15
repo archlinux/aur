@@ -1,20 +1,20 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=adacurses
-pkgver=20190615
+pkgver=20200711
 pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
 arch=('i686' 'x86_64')
-url="http://http://invisible-island.net/ncurses/ncurses-Ada95.html"
+url="https://invisible-island.net/ncurses/ncurses-Ada95.html"
 license=('MIT')
 
 makedepends=('gcc-ada')
 
-source=('ftp://ftp.invisible-island.net/AdaCurses/current/AdaCurses-20190615.tgz'
+source=('ftp://ftp.invisible-island.net/AdaCurses/current/AdaCurses-20200711.tgz'
         'adacurses.gpr.in')
 
-md5sums=('7d7aabc9d434a3596f308ade1f00e8a6'
+md5sums=('574c34b244b29717ad821ee50850d920'
          'bcf4fda38d94da5fb04325c51217d790')
 
 PREFIX=/usr
