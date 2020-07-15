@@ -1,17 +1,16 @@
-# Maintainer: <https://aur.archlinux.org/user/vorbote>
-ED=gvim
+# Maintainer: <https://aur.archlinux.org/user/vorbote
+EDT="YES"
 pkgname=vim-vi
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Replace heirloom vi from core with (g)vim using symlinks."
 arch=('any')
 url="https://aur.archlinux.org/packages/vim-vi"
 license=('GPL')
-if [[ $ED=="vim" ]]; then
-  depends=('vim')
-fi
-if [[ $ED=="gvim" ]]; then
+if [[ $EDT == "YES" ]]; then
   depends=('gvim')
+else 
+  depends=('vim')
 fi
 provides=('vi')
 conflicts=('vi')
