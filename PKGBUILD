@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=3.95
+pkgver=3.95.r57.gc69551ac
 pkgrel=1
 pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
@@ -23,8 +23,8 @@ source=('git://github.com/trizen/sidef.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
