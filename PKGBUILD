@@ -4,14 +4,15 @@
 
 pkgname=gimp-script-luminosity-masks
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate a full set of Light, Dark, and Midtone masks as channels for your image'
 arch=('any')
 url='http://registry.gimp.org/node/28644'
 license=('CCPL:cc-by-sa')
 depends=(gimp)
 options=(!strip)
-source=("http://registry.gimp.org/files/patdavid-luminosity-masks-2.scm")
+# source=("http://registry.gimp.org/files/patdavid-luminosity-masks-2.scm")
+source=("patdavid-luminosity-masks-2.scm::https://docs.google.com/uc?export=download&id=0B21lPI7Ov4CVMDZhVUN1SGtmLTQ")
 
 package(){
   cd "$srcdir"
