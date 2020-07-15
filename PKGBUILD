@@ -3,21 +3,19 @@
 
 _arch=x86
 pkgname=android-google-apis-${_arch/_/-}-system-image
-pkgver=30_r05
-pkgrel=2
+pkgver=30_r06
+pkgrel=1
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, latest API"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
-depends=('android-platform')
-optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${pkgver/_*/}")
 conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/google_apis/${_arch}-${pkgver}.zip"
         "package.xml")
-sha256sums=('e31ffcf0c505045d6accc39b77e8d82f0a8d7207d0d6e1d86c532d367948dadd'
-            'c6d464615c08e5e7ccd3095d71c5557c7b99d64c0a207eca59a973340b6cceb6')
+sha512sums=('c29067825d16c28f1390176331e91f3a64c6bb991cda7c1a9d28ae46541b5d57c37e11b789fa5cff70b9143f42e3cee038578a0eda6a8ddcf2553e8e68dbbd40'
+            '094c22b89263d2698a1969a692788e2ea77b472cb611a129f32d916fe771adb03fdde03a6f1418182a4f6459c9f5bd194017d485913ce906f61d95f9ecc6de22')
 
 prepare() {
   # Fix permissions
@@ -27,6 +25,9 @@ prepare() {
 }
 
 package() {
+  depends=('android-platform')
+  optdepends=('qemu' 'libvirt')
+
   # Install files
   install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/google_apis"
   cp -r "${_arch}" "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/google_apis/"
