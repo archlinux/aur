@@ -5,7 +5,7 @@
 
 pkgname=ddgr-git
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
