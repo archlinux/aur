@@ -1,8 +1,8 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=azuredatastudio-bin
 _pkgname=azuredatastudio
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (official binary version)"
 arch=('x86_64')
 url="https://github.com/Microsoft/azuredatastudio"
@@ -12,9 +12,9 @@ makedepends=('sed')
 optdepends=('krb5: Windows authentication support')
 conflicts=('azuredatastudio')
 options=('staticlibs')
-source=("$pkgname-$pkgver.tar.gz::https://go.microsoft.com/fwlink/?linkid=2132349"
+source=("$pkgname-$pkgver.tar.gz::https://go.microsoft.com/fwlink/?linkid=2135267"
         "${_pkgname}.desktop")
-sha256sums=('7beb42d9d7592ae8725a38b3548b87687f1e8449df13d8ec526ae11e38879c01'
+sha256sums=('bd1152b362dca8540c6a765212c6dcf9fe35e41118226acd3ad85fddcba372d1'
             '460ef23631450298409a96c75662428ffc356b666eefbab813e78ef71e346727')
 
 package() {
