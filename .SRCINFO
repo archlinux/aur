@@ -1,0 +1,19 @@
+pkgbase = ruby-winrm-fs
+	pkgdesc = WinRM File System
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = http://github.com/WinRb/winrm-fs
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-erubi
+	depends = ruby-logging
+	depends = ruby-rubyzip
+	depends = ruby-winrm
+	noextract = winrm-fs-1.3.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/winrm-fs-1.3.4.gem
+	sha1sums = 44d92bea1a4648b8d37a3bd31a0ad24d975b7a07
+
+pkgname = ruby-winrm-fs
+
