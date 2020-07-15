@@ -1,17 +1,17 @@
-From 4d7f9500478ada96e135d64d3609c007a48d649d Mon Sep 17 00:00:00 2001
+From 91a177cd37e966653cc2c9ee401dbab5847f92e1 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
-Subject: [PATCH 4/4] Don't build the main poppler library.
+Subject: [PATCH 3/3] Don't build the main poppler library.
 
 ---
  CMakeLists.txt | 17 -----------------
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 533abb03..6eb8b9fe 100644
+index 855ed842..b232915e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -533,23 +533,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
+@@ -544,23 +544,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
  ADD_GPERF_FILE(TimesRomanWidths)
  ADD_GPERF_FILE(ZapfDingbatsWidths)
  

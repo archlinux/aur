@@ -1,7 +1,7 @@
-From 827a4c097a92a60888499d9d5e4f292e5625b038 Mon Sep 17 00:00:00 2001
+From c2b4195e04fdffe56f6bd7452760c02cf410b8a1 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
-Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
+Subject: [PATCH 1/3] Cairo backend added to Qt5 wrapper
 
 ---
  qt5/src/CMakeLists.txt      | 15 ++++++++
@@ -52,21 +52,21 @@ index 0247fa3f..f52e4a3b 100644
  target_link_libraries(poppler-qt5 poppler ${poppler_LIBS})
  endif()
 diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
-index cc6f01ad..882db5c8 100644
+index 6828da4d..37b11229 100644
 --- a/qt5/src/poppler-document.cc
 +++ b/qt5/src/poppler-document.cc
-@@ -721,6 +721,9 @@ namespace Poppler {
-         ret << Document::SplashBackend;
+@@ -692,6 +692,9 @@ QSet<Document::RenderBackend> Document::availableRenderBackends()
+     ret << Document::SplashBackend;
  #endif
-         ret << Document::ArthurBackend;
+     ret << Document::ArthurBackend;
 +#if defined(HAVE_CAIRO)
-+        ret << Document::CairoBackend;
++    ret << Document::CairoBackend;
 +#endif
-         return ret;
-     }
+     return ret;
+ }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 3e67fedd..170728a1 100644
+index af7e4a11..992e6f00 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -50,6 +50,7 @@
@@ -78,8 +78,8 @@ index 3e67fedd..170728a1 100644
  #include <Catalog.h>
  #include <Form.h>
 @@ -63,6 +64,9 @@
- #include <SplashOutputDev.h>
- #include <splash/SplashBitmap.h>
+ #    include <SplashOutputDev.h>
+ #    include <splash/SplashBitmap.h>
  #endif
 +#if defined(HAVE_CAIRO)
 +#include <CairoOutputDev.h>
@@ -87,100 +87,100 @@ index 3e67fedd..170728a1 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -639,6 +643,70 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
-       img = tmpimg;
-       break;
+@@ -556,6 +560,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
+         img = tmpimg;
+         break;
      }
-+    case Poppler::Document::CairoBackend:
-+    {
++    case Poppler::Document::CairoBackend: {
 +#if defined(HAVE_CAIRO)
-+      CairoOutputDev *output_dev = new CairoOutputDev();
-+      output_dev->startDoc(m_page->parentDoc->doc);
-+      int buffer_width, buffer_height, rotate;
-+      cairo_surface_t *surface;
-+      cairo_t *cairo;
++        CairoOutputDev *output_dev = new CairoOutputDev();
++        output_dev->startDoc(m_page->parentDoc->doc);
++        int buffer_width, buffer_height, rotate;
++        cairo_surface_t *surface;
++        cairo_t *cairo;
 +
-+      // If w or h are -1, that indicates the whole page, so we need to
-+      // calculate how many pixels that corresponds to.  Otherwise, we can use w
-+      // or h directly for our buffer size.
-+      const QSize pageSize = this->pageSize();
-+      if (w == -1) {
-+        const double xscale = xres / 72.0;
-+        const double width = pageSize.width();;
-+        buffer_width = (int) ceil(width * xscale);
-+      } else {
-+        buffer_width = w;
-+      }
-+      if (h == -1) {
-+        const double yscale = yres / 72.0;
-+        const double height = pageSize.height();
-+        buffer_height = (int) ceil(height * yscale);
-+      } else {
-+        buffer_height = h;
-+      }
++        // If w or h are -1, that indicates the whole page, so we need to
++        // calculate how many pixels that corresponds to.  Otherwise, we can use w
++        // or h directly for our buffer size.
++        const QSize pageSize = this->pageSize();
++        if (w == -1) {
++            const double xscale = xres / 72.0;
++            const double width = pageSize.width();;
++            buffer_width = (int) ceil(width * xscale);
++        } else {
++            buffer_width = w;
++        }
++        if (h == -1) {
++            const double yscale = yres / 72.0;
++            const double height = pageSize.height();
++            buffer_height = (int) ceil(height * yscale);
++        } else {
++            buffer_height = h;
++        }
 +
-+      rotate = rotation + m_page->page->getRotate();
++        rotate = rotation + m_page->page->getRotate();
 +
-+      // FIXME: Okular never provides a rotation value, so I don't have any way
-+      // of testing this right now.  The result is that subpixels are ordered
-+      // incorrectly when the page is rotated.
++        // FIXME: Okular never provides a rotation value, so I don't have any way
++        // of testing this right now.  The result is that subpixels are ordered
++        // incorrectly when the page is rotated.
 +
-+      //if (rotate == 90 || rotate == 270) {
-+      //  const double temp = height;
-+      //  height = width;
-+      //  width = temp;
-+      //}
++        //if (rotate == 90 || rotate == 270) {
++        //    const double temp = height;
++        //    height = width;
++        //    width = temp;
++        //}
 +
-+      img = QImage(buffer_width, buffer_height, QImage::Format_ARGB32);
-+      img.fill(Qt::white);  // Never transparent
++        img = QImage(buffer_width, buffer_height, QImage::Format_ARGB32);
++        img.fill(Qt::white);  // Never transparent
 +
-+      surface = cairo_image_surface_create_for_data(
-+                  img.bits(),
-+                  CAIRO_FORMAT_ARGB32,
-+                  buffer_width, buffer_height,
-+                  img.bytesPerLine());
++        surface = cairo_image_surface_create_for_data(
++                      img.bits(),
++                      CAIRO_FORMAT_ARGB32,
++                      buffer_width, buffer_height,
++                      img.bytesPerLine());
 +
-+      cairo = cairo_create(surface);
-+      output_dev->setCairo(cairo);
++        cairo = cairo_create(surface);
++        output_dev->setCairo(cairo);
 +
-+      m_page->parentDoc->doc->displayPageSlice(
-+        output_dev, m_page->index + 1, xres, yres, rotation, false, true,
-+        false, xPos, yPos, w, h);
++        m_page->parentDoc->doc->displayPageSlice(
++            output_dev, m_page->index + 1, xres, yres, rotation, false, true,
++            false, xPos, yPos, w, h);
 +
-+      // Clean up
-+      output_dev->setCairo(nullptr);
-+      cairo_destroy(cairo);
-+      cairo_surface_destroy(surface);
-+      delete output_dev;
++        // Clean up
++        output_dev->setCairo(nullptr);
++        cairo_destroy(cairo);
++        cairo_surface_destroy(surface);
++        delete output_dev;
 +#endif
-+      break;
++        break;
 +    }
-   }
+     }
  
-   if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload))
-@@ -664,6 +732,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
+     if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload))
+@@ -579,6 +646,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
  
          return renderToArthur(&arthur_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
-+    case Poppler::Document::CairoBackend:
++    case Poppler::Document::CairoBackend: {
 +      return false;
-   }
-   return false;
++    }
+     }
+     return false;
  }
 diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
-index 06f6d021..35d8cc17 100644
+index 3bcf2e33..47f01255 100644
 --- a/qt5/src/poppler-qt5.h
 +++ b/qt5/src/poppler-qt5.h
-@@ -1154,7 +1154,8 @@ delete it;
- 	*/
- 	enum RenderBackend {
- 	    SplashBackend,   ///< Splash backend
--	    ArthurBackend   ///< Arthur (Qt) backend
-+	    ArthurBackend,   ///< Arthur (Qt) backend
-+	    CairoBackend     ///< Cairo backend
- 	};
+@@ -1166,7 +1166,8 @@ public:
+     enum RenderBackend
+     {
+         SplashBackend, ///< Splash backend
+-        ArthurBackend ///< Arthur (Qt) backend
++        ArthurBackend, ///< Arthur (Qt) backend
++        CairoBackend   ///< Cairo backend
+     };
  
- 	/**
+     /**
 diff --git a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
 index b01d0835..561cb5dd 100644
 --- a/qt5/tests/CMakeLists.txt
