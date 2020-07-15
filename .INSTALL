@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install() {
+    mkdir -p /opt/PureWriter/
+    ln -sf /usr/share/java/PureWriter/PureWriter /opt/PureWriter/PureWriter
+} 
+
+post_remove() {
+    rm /opt/PureWriter
+    rm -rf /usr/share/java/PureWriter
+}

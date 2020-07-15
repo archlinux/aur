@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PureWriter
+Name[zh_CN]=纯纯写作
+GenericName=Pure Writer Desktop
+Exec="/opt/PureWriter/PureWriter"
+Icon=purewriter
+Type=Application
+StartupNotify=true
+Categories=Network;WordProcessor;
+MimeType=
+

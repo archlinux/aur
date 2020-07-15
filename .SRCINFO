@@ -1,0 +1,21 @@
+pkgbase = purewriter
+	pkgdesc = Pure Writer Desktop
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/LiarOnce/purewriter-desktop-liaronce-build
+	install = .INSTALL
+	arch = x86_64
+	license = GPL3
+	depends = jre8-openjdk
+	depends = java8-openjfx
+	source = https://github.com/LiarOnce/purewriter-desktop-liaronce-build/releases/download/0.2.2/PureWriter-linux_x86-64.zip
+	source = .INSTALL
+	source = purewriter.desktop
+	source = purewriter.png
+	md5sums = 38ea9a8edd6e8e79ea83495362f07cc2
+	md5sums = 840aee871b202cd5f3b0fd7a8d8df491
+	md5sums = 21d49b2af7ea7bf5ebba7a7a0648a29d
+	md5sums = ab8d4aef028cd77876b8cf67e4439afb
+
+pkgname = purewriter
+
