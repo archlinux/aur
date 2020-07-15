@@ -42,5 +42,7 @@ package() {
 
 	#install example config file
 	mkdir -p "${pkgdir}/etc/waybind/"
-	install -Dm644 "examples/config.yml" "${pkgdir}/etc/waybind/config.yml"
+	if [ ! -f "/etc/waybind/config.yml" ]; then
+            install -Dm644 "../../default-config.yml" "${pkgdir}/etc/waybind/config.yml"
+        fi
 }
