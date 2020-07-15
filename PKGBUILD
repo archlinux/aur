@@ -1,8 +1,8 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev-git
-pkgver=1.0.0b7.r2.gd61771e
-pkgrel=1
+pkgver=1.0.0b8.r1.g38300c9
+pkgrel=2
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -26,7 +26,7 @@ _gitname='otr-verwaltung3p'
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git_version=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-  # echo $git_version > data/VERSION-git
+  echo $git_version > data/VERSION
   echo $git_version
 }
 
