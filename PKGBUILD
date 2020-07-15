@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" kodi-x11-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.8pre08
+pkgver=18.8pre14
 _major=18.7.1
-pkgrel=6
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -86,9 +86,6 @@ source=(
   # fix for kodi-standalone run without which
   000-PR17804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17804.patch
   
-  # fix for libmicrohttpd 0.9.71
-  18131.patch
-  
   # start milestone patches
   # 18029 does not apply
   001-PR17988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17988.patch
@@ -96,9 +93,15 @@ source=(
   003-PR18008.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18008.patch
   004-PR18019.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18019.patch
   005-PR18024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18024.patch
-#  006-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
-  007-PR18047.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18047.patch
-  008-PR18056.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18056.patch
+  # 006-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
+  007-PR18045.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18045.patch
+  008-PR18047.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18047.patch
+  009-PR18053.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18053.patch
+  010-PR18056.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18056.patch
+  011-PR18073.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18073.patch
+  012-PR18094.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18094.patch
+  013-PR18134.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18134.patch
+  014-PR18151.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18151.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -123,14 +126,19 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
             '4d9eb12db337a89b5e17815bd422015f3017c735bd0c5b522f5a5b0c7f81a607'
             'f11af738b2be8f390a7b515cfb74276a0ccb64ac061b8f5a7b3772e19eb0d203'
-            '1bfa84c0ae99a4ed731261cb39cb347c2809ca63d0d318393bdbbee900bbf8bc'
             '89ac4b3feac908075ddbcdc4f9f1d1703c25e2fdb1661e776c162eb779437bd8'
             'f56503139927f0bc8f220c4b4e31266fc938a6612a4c1d2bdd75be3f54eb3a12'
             '995c61de460e0afdc135ba33f9f393a825cb4a0c7954da104d23269fe48ec118'
             '8531da4ce924d80f5b8c8fbcf547e0738e48ffce335f73a4da6466f499ab1bfe'
             '4c2775722998fd0f6111ff841b29e8813c58b7905be1e8a01bf8a768622cb30c'
+            'ff34d94f4ff7f1d9638c948b05da1802638bf66037dda53ce44b9afb501ec1dc'
             'f4ac91dbad4014a6707e8bb6f57cac0ec68a852a3e81815a210304a886a665a1'
-            '4b009d1acced4912f981d1454ff2add556b79188c003bc837d60224605364353')
+            '2d31bf616362001a75c590c0ea9ef22f321ffabf1d95f781d558f92e69cdc8c9'
+            '4b009d1acced4912f981d1454ff2add556b79188c003bc837d60224605364353'
+            'b766ce6bbae0d41abe323866c7ff9dd8ef89fdf214cc6104125c4115cb2bc221'
+            '5b19f4f74136f91986e3d3eed93102b06a700dd4b3a561926eabc7997434f22a'
+            'e4963bdeb1de7c147a364cd3ee2186fb1d0b2fc8f3ea7636054cf2adac040468'
+            '7b8a6510bc286d58b4a3d57322362335cbf2a56d1b2bd16bfcdf06d5eef8644d')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
