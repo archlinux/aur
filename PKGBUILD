@@ -2,7 +2,7 @@
 
 _pkgname=straw-viewer
 pkgname=straw-viewer-git
-pkgver=0.0.6
+pkgver=0.0.6.r0.g7332262
 pkgrel=1
 pkgdesc="Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer)."
 arch=('any')
@@ -32,8 +32,8 @@ source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
