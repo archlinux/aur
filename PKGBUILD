@@ -1,0 +1,30 @@
+# Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
+pkgname=gomd-git
+pkgver=20200715.a7237de
+pkgrel=1
+epoch=
+pkgdesc="Quick webserver displaying formatted markdown files"
+arch=('x86_64' 'i686')
+url="https://github.com/wojciechkepka/gomd"
+license=('MIT')
+depends=()
+makedepends=('sassc' 'nodejs-cleancss-cli' 'make' 'go')
+provides=("gomd")
+conflicts=("gomd")
+sha1sums=('SKIP')
+source=("$pkgname::git+https://github.com/wojciechkepka/gomd")
+
+build() {
+	cd "$pkgname"
+    make
+}
+
+pkgver() {
+	cd "$pkgname"
+	echo "$(git log -1 --format=%cd.%h --date=short|tr -d -)"
+}
+
+package() {
+	cd "$pkgname"
+    install -Dm755 "gomd" "$pkgdir/usr/bin/gomd"
+}
