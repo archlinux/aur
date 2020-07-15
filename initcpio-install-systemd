@@ -69,10 +69,13 @@ add_systemd_unit() {
                 map add_systemd_unit "${values[@]}"
                 ;;
             Exec*)
-                # don't add binaries unless they are required
-                if [[ ${values[0]:0:1} != '-' ]]; then
-                    add_binary "${values[0]}"
-                fi
+                # do not add binaries unless they are required,
+                # strip special executable prefixes
+                case ${values[0]} in
+                    -*)  ;;
+                    !!*) add_binary "${values[0]#!!}" ;;
+                    *)   add_binary "${values[0]#[@!:+]}" ;;
+                esac
                 ;;
         esac
 
@@ -110,6 +113,7 @@ build() {
     add_binary /usr/bin/sulogin
 
     map add_binary \
+        /usr/bin/journalctl \
         /usr/bin/systemd-tmpfiles \
         /usr/lib/systemd/systemd-hibernate-resume \
         /usr/lib/systemd/systemd-shutdown \
@@ -117,9 +121,6 @@ build() {
         /usr/lib/systemd/system-generators/systemd-fstab-generator \
         /usr/lib/systemd/system-generators/systemd-gpt-auto-generator \
         /usr/lib/systemd/system-generators/systemd-hibernate-resume-generator
-
-    # for journalctl in emergency shell
-    add_binary journalctl
 
     # udev rules and systemd units
     map add_udev_rule "$rules" \
@@ -171,15 +172,9 @@ build() {
         'group: files' \
         'shadow: files'
 
-    echo "root:x:0:0:root:/:/bin/sh" >"$BUILDROOT/etc/passwd"
-    echo "root:x:0:root" >"$BUILDROOT/etc/group"
-    echo "root::::::::" >"$BUILDROOT/etc/shadow"
-
-    add_systemd_drop_in systemd-udevd.service resolve-names <<EOF
-[Service]
-ExecStart=
-ExecStart=/usr/lib/systemd/systemd-udevd --resolve-names=never
-EOF
+    echo "root:x:0:0:root:/root:/bin/sh" >"$BUILDROOT/etc/passwd"
+    echo 'root:*:::::::' >"$BUILDROOT/etc/shadow"
+    getent group root audio disk input kmem kvm lp optical render storage tty uucp video | awk -F: ' { print $1 ":x:" $3 ":" }' >"$BUILDROOT/etc/group"
 
     add_dir "/etc/modules-load.d"
     (

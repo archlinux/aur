@@ -1,13 +1,14 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Credit: Christian Hesse <mail@eworm.de>
-# Credit: Dave Reisner <dreisner@archlinux.org>
-# Credit: Tom Gundersen <teg@jklm.no>
+# Based on core/systemd by:
+# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Maintainer: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=245.r1582.ga07e962549
+pkgver=246.r103.gc53da7ed02
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -16,8 +17,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit')
-options=('!strip')
+             'bash-completion' 'p11-kit' 'systemd')
+options=('strip')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -40,10 +41,10 @@ source=('git+https://github.com/systemd/systemd'
 sha512sums=('SKIP'
             'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
+            'f1f0bc599eb73b96f81e5413a55617ab82978d057dc0cabf226d225bb836a967fe13b84c4f24f64c074b6568026ab81d457512ff20a5918892c47a3a603eaa6e'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
-            '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
+            'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
             '869dab2b1837c964add4019bb402e24e52dbb7f009850ca69fcc5deddd923eeb98eb8ee38601f6e31531f30322472fe7df09af84df27f0467708406c55885323'
@@ -61,7 +62,7 @@ prepare() {
 
   # although removing _build folder in build() function feels more natural,
   # that interferes with the spirit of makepkg --noextract
-  if [  -d _build ]; then
+  if [ -d _build ]; then
     rm -rf _build
   fi
 
@@ -99,10 +100,15 @@ build() {
     -Dlz4=true
     -Dman=true
 
+    # We disable DNSSEC by default, it still causes trouble:
+    # https://github.com/systemd/systemd/issues/10579
+
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
+    -Ddefault-dnssec=no
     -Ddefault-hierarchy=hybrid
     -Ddefault-kill-user-processes=false
     -Ddefault-locale=C
+    -Ddns-over-tls=openssl
     -Dfallback-hostname='archlinux'
     -Dnologin-path=/usr/bin/nologin
     -Dntp-servers="${_timeservers[*]}"
@@ -130,12 +136,10 @@ package_systemd-git() {
            'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
-           'libp11-kit.so')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
-            "${_pkgbase}=$pkgver")
+           'libp11-kit.so' 'openssl')
+  provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev'
-            "${_pkgbase}")
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
@@ -166,7 +170,7 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
@@ -190,11 +194,10 @@ package_systemd-git() {
   install -D -m0644 initcpio-install-udev "$pkgdir"/usr/lib/initcpio/install/udev
   install -D -m0644 initcpio-hook-udev "$pkgdir"/usr/lib/initcpio/hooks/udev
 
-  # ensure proper permissions for /var/log/journal
-  # The permissions are stored with named group by tar, so this works with
-  # users and groups populated by systemd-sysusers. This is only to prevent a
-  # warning from pacman as permissions are set by systemd-tmpfiles anyway.
-  install -d -o root -g systemd-journal -m 2755 "$pkgdir"/var/log/journal
+  # The group 'systemd-journal' is allocated dynamically and may have varying
+  # gid on different systems. Let's install with gid 0 (root), systemd-tmpfiles
+  # will fix the permissions for us. (see /usr/lib/tmpfiles.d/systemd.conf)
+  install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
 
   # match directory owner/group and mode from [extra]/polkit
   install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
@@ -214,12 +217,10 @@ package_systemd-git() {
 
 package_systemd-libs-git() {
   pkgdesc='systemd client libraries (git version)'
-  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so'
-            'systemd-libs')
-  conflicts=('libsystemd'
-             'systemd-libs')
+  provides=("systemd-libs=$pkgver" 'libsystemd' 'libsystemd.so' 'libudev.so')
+  conflicts=('systemd-libs' 'libsystemd')
   replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
@@ -229,11 +230,9 @@ package_systemd-libs-git() {
 package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
   license=('LGPL2.1')
-  depends=("${pkgbase}")
-  provides=('openresolv' 'resolvconf'
-            'systemd-resolvconf')
-  conflicts=('openresolv'
-             'systemd-resolvconf')
+  depends=('systemd-git')
+  provides=("systemd-resolvconf=$pkgver" 'openresolv' 'resolvconf')
+  conflicts=('systemd-resolvconf' 'openresolv')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -246,17 +245,16 @@ package_systemd-resolvconf-git() {
 package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
-  conflicts=('sysvinit'
-             'systemd-sysvcompat')
-  depends=("${pkgbase}")
-  provides=('systemd-sysvcompat')  
+  depends=('systemd-git')
+  provides=("systemd-sysvcompat=$pkgver")
+  conflicts=('systemd-sysvcompat' 'sysvinit')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
+    build/man/{halt,poweroff,reboot,shutdown}.8
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
-  for tool in runlevel reboot shutdown poweroff halt telinit; do
+  for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
 }
