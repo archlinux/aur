@@ -2,7 +2,7 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.12.0
+pkgver=4.12.1
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sph
 #'gcc-fortran')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('53ff4f88c63cf7da5cf7dd44315aa627'
+md5sums=('2e886f781d7371ddf105cd4f14caa673'
          'd1823cc7683442d92450fadff7aed362')
 _pyver=$(python -V | cut -c 8-10)
 
@@ -32,9 +32,9 @@ build() {
 }
 
 package_python-sherpa() {
-    depends=('python>=3.5' 'python-numpy' 'fftw')
+    depends=('python>=3.5' 'python-numpy>=1.7.0' 'fftw')
     optdepends=('python-matplotlib: Graphical output'
-                'python-astropy: Data I/O support'
+                'python-astropy>=3.2.1: Data I/O support'
                 'ds9: Imaging requires'
                 'xpa: Imaging requires'
                 'python-pytest>=3.3: For testing suite'
