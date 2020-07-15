@@ -1,7 +1,7 @@
 pkgbase = simple-restart-check
 	pkgdesc = A simple Bash script that checks if processes use outdated libraries.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PilzAdam/simple-restart-check
 	arch = any
 	license = GPL3
