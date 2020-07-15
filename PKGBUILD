@@ -9,7 +9,7 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-git
-pkgver=3.17.3.1287.g04b9b2b5f3
+pkgver=3.18.0.408.g63ecf481da
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=('git+https://gitlab.kitware.com/cmake/cmake.git'
         'cmake-cppflags.patch')
 md5sums=('SKIP'
          'd7316e540d07e0a7ebce75951a7b2697')
-shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
+#shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
 
 pkgver() {
     cd "$srcdir/cmake"
@@ -55,25 +55,9 @@ package() {
   cd "$srcdir/cmake"
   make DESTDIR="${pkgdir}" install
 
-  vimpath="${pkgdir}/usr/share/vim/vimfiles"
-  install -d "${vimpath}"/{indent,syntax}
-  ln -s /usr/share/cmake-${shortver}/editors/vim/indent/cmake.vim \
-    "${vimpath}"/indent/
-  ln -s /usr/share/cmake-${shortver}/editors/vim/syntax/cmake.vim \
-    "${vimpath}"/syntax/
-
-  install -d "${pkgdir}"/usr/share/emacs/site-lisp/
   emacs -batch -f batch-byte-compile \
-    "${pkgdir}"/usr/share/cmake-${shortver}/editors/emacs/cmake-mode.el
-  ln -s /usr/share/cmake-${shortver}/editors/emacs/cmake-mode.el \
-    "${pkgdir}"/usr/share/emacs/site-lisp/
-  ln -s /usr/share/cmake-${shortver}/editors/emacs/cmake-mode.elc \
-    "${pkgdir}"/usr/share/emacs/site-lisp/
+    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-
-  # install bash completions
-  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
-  ln -s /usr/share/cmake-${shortver}/completions/{cmake,cpack,ctest} "$pkgdir"/usr/share/bash-completion/completions
 }
