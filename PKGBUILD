@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 pkgdesc="Command line utility for searching and streaming videos from YouTube."
 arch=('any')
@@ -22,7 +22,6 @@ optdepends=(
     'perl-term-readline-gnu: better STDIN support (+history)'
     'perl-unicode-linebreak: print results in a fixed-width format (-W)'
     'mpv: play videos with MPV (recommended)'
-    'mplayer: play videos with MPlayer'
     'vlc: play videos with VLC'
     'wget: download videos with wget'
     'youtube-dl: play videos with encrypted signatures'
