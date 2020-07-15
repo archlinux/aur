@@ -6,7 +6,7 @@
 
 pkgname=dropbox-cli
 pkgver=2020.03.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
@@ -14,7 +14,7 @@ license=("GPL")
 depends=("${pkgname%-cli}" "python")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.py::https://linux.${pkgname%-cli}.com/packages/${pkgname%-cli}.py")
-sha256sums=("e34817eb1949308054ec79454ff77062037526e69ba56957aac37aeadc796e89")
+sha256sums=("7889ce1d872bce85b3e94b929abacd6086e7f378644519fd8ebd8acf0316e59f")
 
 prepare() {
   cp -L "${srcdir}/${pkgname}-${pkgver}.py" "${srcdir}/${pkgname}.py"
