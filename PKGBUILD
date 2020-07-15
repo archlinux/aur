@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.10
+pkgver=2.2.11
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -13,7 +13,6 @@ groups=('gns3')
 makedepends=('python-setuptools')
 depends=(
     'desktop-file-utils'
-    'gns3-converter'
     'python-distro'
     'python-jsonschema'
     'python-psutil'
@@ -29,14 +28,8 @@ optdepends=(
     'wireshark-qt: Live packet capture.')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop')
-sha256sums=('0f04fe1b3b328bab5ee80755ea90e18e0d25828fbf4a644f3fbec29189f19bc8'
+sha256sums=('aaa41e48cd1e44bf1a52b8fee1a9d82620697f2e7c26a326c5c3bcfb50cf4850'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    # Arch usually has the latest versions. Patch requirements to allow them.
-    sed -i -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' requirements.txt
-}
 
 build() {
     cd "$pkgname-$pkgver"
