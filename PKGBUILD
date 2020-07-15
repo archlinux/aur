@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=gnatsymbolize
-pkgver=2019
+pkgver=2020
 pkgrel=1
 pkgdesc="Translates addresses into their corresponding filename, line number, and function names for Ada programs."
 
@@ -12,20 +12,20 @@ license=('GPL V3.0')
 depends=('gcc-ada')
 makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5cc7d5e431e87a23952f18c4')
-sha1sums=('bc7d103a3c25fa0575ec69e489c79f3805fcd131')
+source=('https://community.download.adacore.com/v1/ebef002ce60066e3befdd1a4a0980f3ab8f1b551?filename=gnatsymbolize-2020-20200429-19987-src.tar.gz')
+sha1sums=('ebef002ce60066e3befdd1a4a0980f3ab8f1b551')
 
 
 build()
 {
-  cd "$srcdir/gnatsymbolize-2019-20190429-19761-src"
+  cd "$srcdir/gnatsymbolize-2020-20200429-19987-src"
   gprbuild gnatsymbolize.adb
 }
 
 
 package()
 {
-  cd "$srcdir/gnatsymbolize-2019-20190429-19761-src"
+  cd "$srcdir/gnatsymbolize-2020-20200429-19987-src"
   mkdir -p "$pkgdir/usr/bin"
   cp gnatsymbolize $pkgdir/usr/bin
 }
