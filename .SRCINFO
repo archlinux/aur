@@ -1,0 +1,21 @@
+pkgbase = julius-game-git
+	pkgdesc = Open source re-implementation of Caesar III (Original copy required)
+	pkgver = r2121.7c1502a4
+	pkgrel = 1
+	url = https://github.com/bvschaik/julius
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = julius-game
+	conflicts = julius-game
+	source = julius-game.install
+	source = git+https://github.com/bvschaik/julius
+	sha256sums = 1fb252bf875f459937ddc297295daaa52dfd5fed41fd6c6fe255240d4176e2ea
+	sha256sums = SKIP
+
+pkgname = julius-game-git
+
