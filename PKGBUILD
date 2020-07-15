@@ -18,11 +18,18 @@ options=('!strip')
 
 prepare() {
   slippiver=$(curl --silent "https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//')
+  if [ -z "$slippiver" ]; then
+    slippiver=$pkgver
+  fi
   wget "https://github.com/project-slippi/Ishiiruka/releases/download/v$slippiver/Slippi_Online-x86_64.AppImage" -O Slippi_Online-x86_64.AppImage
 }
 
 pkgver() {
-  curl --silent "https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//'
+  slippiver=$(curl --silent "https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//')
+  if [ -z "$slippiver" ]; then
+    slippiver=$pkgver
+  fi
+  echo $slippiver
 }
 
 package() {
