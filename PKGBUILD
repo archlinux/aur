@@ -13,7 +13,8 @@ depends=('python-pyqt5'
          'python-pathlib'
          'python-configobj'
          'python-colr'
-         'python-pyinquirer')
+         'python-pyinquirer'
+         'ttf-fira-code')
 makedepends=('python-pip')
 source=("${pkgname}-${pkgver}-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/c9/03/9fe234784d6c272eb409557dfe2a871e6e7b5d1a00fef071e726270164de/gonha-${pkgver}-py2.py3-none-any.whl"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
