@@ -1,6 +1,6 @@
 pkgbase = devaultcore
 	pkgdesc = QT Desktop wallet for the dvt blockchain
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/devaultcrypto/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = devaultcore
 	makedepends = python
 	makedepends = boost
 	makedepends = qt5-tools
+	makedepends = gcc<10.0.0
 	depends = boost-libs
 	depends = qt5-base
 	depends = qrencode
@@ -16,8 +17,8 @@ pkgbase = devaultcore
 	depends = hicolor-icon-theme
 	depends = libevent
 	conflicts = devaultcore-git
-	source = devault::https://github.com/devaultcrypto/devault/archive/v1.1.6.tar.gz
-	md5sums = b5b076610b42b32165a16f34cf14278f
+	source = devault::https://github.com/devaultcrypto/devault/archive/v1.1.7.tar.gz
+	md5sums = 1771f4890533249876ccf5e9a0349e52
 
 pkgname = devaultcore
 
