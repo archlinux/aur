@@ -3,8 +3,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.17.3
-pkgrel=3
+pkgver=3.18.0
+pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -14,14 +14,12 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
          cmake-cppflags.patch)
-sha512sums=('13479bd48ef8a8c95277a62b4f42e63152a5979292a98b5456022ca42ad3963cad75e917cc8b92a8485dbf5a2b59cde3fdc90fd9abdb806bc97c8570d03c1c69'
+sha512sums=('6cab76a792a7ed2120a50048312273b2870afef29351a3ebcbf76cbcb422f82be679c85211c19016a56ac7f63bbce6cea0478f491c973b8577e08168a1ba853d'
             '407c5c63a31266e44641ada8229dbc33df44df98e5bb575db3a33590e8ffdff9aea3f2ee5cb0cb855858facf1e46c63886dea9f948a0cad2da042e7f7f258cac')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -p1 -i ../cmake-cppflags.patch # Honor CPPFLAGS https://gitlab.kitware.com/cmake/cmake/issues/12928
-
-  sed -i 's/LUA_VERSIONS5 5.3/LUA_VERSIONS5 5.4 5.3/' Modules/FindLua.cmake # Add Lua 5.4 to search list
 }
 
 build() {
@@ -41,25 +39,9 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  vimpath="${pkgdir}/usr/share/vim/vimfiles"
-  install -d "${vimpath}"/{indent,syntax}
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/indent/cmake.vim \
-    "${vimpath}"/indent/
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/syntax/cmake.vim \
-    "${vimpath}"/syntax/
-
-  install -d "${pkgdir}"/usr/share/emacs/site-lisp/
   emacs -batch -f batch-byte-compile \
-    "${pkgdir}"/usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.el
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.el \
-    "${pkgdir}"/usr/share/emacs/site-lisp/
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.elc \
-    "${pkgdir}"/usr/share/emacs/site-lisp/
+    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-
-# install bash completions
-  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
-  ln -s /usr/share/cmake-${pkgver%.*}/completions/{cmake,cpack,ctest} "$pkgdir"/usr/share/bash-completion/completions
 }
