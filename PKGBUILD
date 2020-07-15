@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.63
+pkgver=1.63.r2.g41ee2bb
 pkgrel=1
 pkgdesc="Trizen AUR Package Manager: lightweight pacman wrapper and AUR helper (-git version)."
 arch=('any')
@@ -35,8 +35,8 @@ source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
