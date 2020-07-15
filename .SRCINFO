@@ -1,6 +1,6 @@
 pkgbase = liberica-jre-11-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 11.0.7+10
+	pkgver = 11.0.8+10
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jre-11-full.install
@@ -22,7 +22,7 @@ pkgbase = liberica-jre-11-full-bin
 	provides = java-runtime-headless-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = liberica-jre-11-bin=11.0.7+10
+	provides = liberica-jre-11-bin=11.0.8+10
 	backup = etc/liberica-jre-11-full/logging.properties
 	backup = etc/liberica-jre-11-full/management/jmxremote.access
 	backup = etc/liberica-jre-11-full/management/jmxremote.password.template
@@ -37,12 +37,12 @@ pkgbase = liberica-jre-11-full-bin
 	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_US_export.policy
 	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jre-11-full/sound.properties
-	source_armv7h = https://download.bell-sw.com/java/11.0.7+10/bellsoft-jre11.0.7+10-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv7h = 13fecb355c52a753840b48e31c27979228dcbcee
-	source_armv8h = https://download.bell-sw.com/java/11.0.7+10/bellsoft-jre11.0.7+10-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv8h = 13fecb355c52a753840b48e31c27979228dcbcee
-	source_x86_64 = https://download.bell-sw.com/java/11.0.7+10/bellsoft-jre11.0.7+10-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = 67a80e016612974805a151badefe98d03b233f72
+	source_armv7h = https://download.bell-sw.com/java/11.0.8+10/bellsoft-jre11.0.8+10-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv7h = 76f8c6f6425ee1e71c5552f1487eba2d8699e318
+	source_armv8h = https://download.bell-sw.com/java/11.0.8+10/bellsoft-jre11.0.8+10-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv8h = 76f8c6f6425ee1e71c5552f1487eba2d8699e318
+	source_x86_64 = https://download.bell-sw.com/java/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = 7e91c7c8297463e44189e291505ae534b9f1903c
 
 pkgname = liberica-jre-11-full-bin
 
