@@ -3,8 +3,8 @@
 pkgname=oblogout-py3-git
 _pkgname="oblogout-py3"
 
-pkgver=0.02
-pkgrel=2
+pkgver=0.02.r7.gca6932e
+pkgrel=1
 pkgdesc="Openbox Logout Menu, ported to Python 3."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
@@ -16,13 +16,12 @@ provides=('oblogout')
 conflicts=('openboxlogout-gnome' 'oblogout' 'oblogout-fork')
 install="oblogout.install"
 
-
 source=("git+https://github.com/trizen/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --always | sed -e 's|-|.|g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
