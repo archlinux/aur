@@ -2,7 +2,7 @@
 
 _pkgname=straw-viewer
 pkgname=straw-viewer-git
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer)."
 arch=('any')
@@ -23,7 +23,6 @@ optdepends=(
     'perl-term-readline-gnu: better STDIN support'
     'perl-unicode-linebreak: print results in a fixed-width format (-W)'
     'mpv: play videos with MPV (recommended)'
-    'mplayer: play videos with MPlayer'
     'vlc: play videos with VLC'
     'wget: download videos with wget'
     'youtube-dl: play videos with encrypted signatures'
