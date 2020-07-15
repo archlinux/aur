@@ -29,4 +29,9 @@ package() {
 	install -Dm0755 ${srcdir}/cudatext ${pkgdir}/usr/bin/cudatext
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm644 "${srcdir}/cudatext-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cudatext-512.png"
+	mkdir "${pkgdir}/usr/share/cudatext"
+	chmod 755 "${pkgdir}/usr/share/cudatext"
+	cp -r "${srcdir}/data" "${pkgdir}/usr/share/cudatext/"
+	cp -r "${srcdir}/py" "${pkgdir}/usr/share/cudatext/"
+	cp -r "${srcdir}/settings_default" "${pkgdir}/usr/share/cudatext/"
 }
