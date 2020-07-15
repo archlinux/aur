@@ -1,7 +1,7 @@
 pkgbase = git-subrepo
 	pkgdesc = Git Submodule Alternative
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ingydotnet/git-subrepo.git
 	arch = i686
 	arch = x86_64
