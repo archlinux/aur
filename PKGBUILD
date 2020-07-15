@@ -3,7 +3,7 @@
 
 pkgname=seadrive-daemon
 pkgver=2.0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Daemon part of seadrive"
 arch=('x86_64')
 url="https://download.seafile.com/published/seafile-user-manual/drive_client/drive_client_for_linux.md"
