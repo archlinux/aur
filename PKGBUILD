@@ -6,7 +6,7 @@ pkgdesc='Arch Linux configs for installer script'
 arch=('any')
 url="https://github.com/victor3dptz/arch-install"
 license=('MIT')
-depends=('obmenu2-git' 'i3-scrot' 'oblogout' 'adeos-oblogout-git' 'bunsen-themes-git')
+depends=('obmenu2-git' 'i3-scrot' 'oblogout' 'adeos-oblogout-git' 'bunsen-themes-git' 'nerd-fonts-hack')
 makedepends=('git')
 source=('git+https://github.com/victor3dptz/arch-install')
 md5sums=('SKIP')
@@ -17,8 +17,6 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr
-  mkdir -p ${pkgdir}/etc/skel
-  cp -r "${srcdir}/arch-install/usr" "$pkgdir/usr"
-  cp -r "${srcdir}/arch-install/etc/skel" "$pkgdir/etc/skel"
+  cp -r "${srcdir}/arch-install/usr" "$pkgdir"
+  cp -r "${srcdir}/arch-install/etc/skel" "$pkgdir/etc"
 }

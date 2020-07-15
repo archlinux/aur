@@ -11,6 +11,7 @@ pkgbase = victor3d-skel
 	depends = oblogout
 	depends = adeos-oblogout-git
 	depends = bunsen-themes-git
+	depends = nerd-fonts-hack
 	source = git+https://github.com/victor3dptz/arch-install
 	md5sums = SKIP
 
