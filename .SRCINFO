@@ -1,6 +1,6 @@
 pkgbase = music-overlay
 	pkgdesc = Small overlay for managing music players
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/4uf04eG/music-overlay
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = music-overlay
 	depends = pyside2
 	depends = python-pynput
 	provides = music-overlay
-	source = music-overlay-1.4.tar.gz::https://github.com/4uf04eG/music-overlay/archive/v1.4.tar.gz
-	md5sums = 038a7c764c80181116ffc3a4e61d8604
+	source = music-overlay-1.5.tar.gz::https://github.com/4uf04eG/music-overlay/archive/v1.5.tar.gz
+	md5sums = 4a089abb5e22173c312502b31f013569
 
 pkgname = music-overlay
 
