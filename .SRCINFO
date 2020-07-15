@@ -17,6 +17,8 @@ pkgbase = felinks
 	depends = libidn
 	depends = expat
 	depends = ncurses
+	conficts = elinks
+	conficts = elinks-git
 	source = git+https://github.com/rkd77/felinks#tag=v0.13.3
 	sha256sums = SKIP
 
