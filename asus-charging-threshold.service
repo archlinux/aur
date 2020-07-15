@@ -1,0 +1,10 @@
+[Unit]
+Description=Set the battery charge threshold
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'cat /etc/asus-charging-threshold > /sys/class/power_supply/BAT0/charge_control_end_threshold'
+
+[Install]
+WantedBy=multi-user.target
