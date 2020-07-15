@@ -1,6 +1,6 @@
 pkgbase = barrier-bin
 	pkgdesc = Open-source KVM software based on Synergy (GUI)
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/debauchee/barrier
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = barrier-bin
 	depends = openssl
 	provides = barrier
 	conflicts = barrier
-	noextract = barrier-2.3.2-x86_64.tar.xz
+	noextract = barrier-2.3.3-x86_64.tar.gz
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://github.com/dotiful/AUR/raw/master/barrier-bin/barrier-2.3.2-x86_64.tar.xz
-	sha256sums = e65088db4f282f01301e6ca4f1c829216cba50b07d01d1d42ed4c8a626e80da3
+	source = https://github.com/dotiful/AUR/raw/master/barrier-bin/barrier-2.3.3-x86_64.tar.gz
+	sha256sums = 53ef7899bc2e20fa706e5137d79eff98efa6de1173f380eb4cb6eb4f5a637769
 
 pkgname = barrier-bin
 

@@ -1,6 +1,6 @@
 # Maintainer: Art Dev <artdevjs at gmail dot com>
 pkgname=barrier-bin
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy (GUI)"
 arch=(x86_64)
@@ -32,12 +32,12 @@ provides=("barrier")
 conflicts=("barrier")
 options=(!emptydirs !makeflags !strip)
 source=(
-	https://github.com/dotiful/AUR/raw/master/barrier-bin/barrier-${pkgver}-${CARCH}.tar.xz
+	https://github.com/dotiful/AUR/raw/master/barrier-bin/barrier-${pkgver}-${CARCH}.tar.gz
 )
-noextract=(barrier-${pkgver}-${CARCH}.tar.xz)
+noextract=(barrier-${pkgver}-${CARCH}.tar.gz)
 
 package() {
-	tar -xf $srcdir/barrier-${pkgver}-${CARCH}.tar.xz -C $pkgdir --exclude=".*"
+	tar -xf $srcdir/barrier-${pkgver}-${CARCH}.tar.gz -C $pkgdir --exclude=".*"
 }
 
-sha256sums=('e65088db4f282f01301e6ca4f1c829216cba50b07d01d1d42ed4c8a626e80da3')
+sha256sums=('53ef7899bc2e20fa706e5137d79eff98efa6de1173f380eb4cb6eb4f5a637769')
