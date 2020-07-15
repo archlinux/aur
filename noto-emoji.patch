@@ -9,7 +9,7 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index 0c19eda2..91df5ff1 100644
+index df090293..6165f2c3 100644
 --- a/package.json
 +++ b/package.json
 @@ -78,7 +78,7 @@
@@ -55,7 +55,7 @@ index 49704d80..4c1157bc 100644
  
  const imageQueue = new PQueue({ concurrency: 10 });
 diff --git a/yarn.lock b/yarn.lock
-index 17151421..32b3ebaa 100644
+index 7dfe847d..9169ffc4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -6510,10 +6510,10 @@ email-validator@^2.0.4:
