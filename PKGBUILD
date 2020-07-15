@@ -1,13 +1,13 @@
 # Owner: Marcel Radzio <info@nordgedanken.de>
 # Maintainer: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=riot-desktop-git
-_vers=v1.6.8
-pkgver=v1.6.8.r0.g1f543994
+_vers=v1.7.0
+pkgver=v1.7.0.r0.g15203bb3
 pkgrel=1
 pkgname=(riot-web-git riot-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('x86_64')
-url="https://riot.im"
+url="https://element.io"
 license=('Apache')
 depends=('electron')
 makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'electron')
@@ -36,12 +36,12 @@ prepare() {
   cd riot-desktop
   # Switch target to output to directory rather than .deb package
   sed -i 's/"target": "deb"/"target": "dir"/g' package.json
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' riot.im/release/config.json
+  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
   yarn install
 
   cd ../riot-web
   # Disable auto updating
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' riot.im/app/config.json
+  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/app/config.json
 
   yarn install
 }
@@ -85,14 +85,15 @@ package_riot-desktop-git() {
 
   # Config file
   ln -s /etc/riot/config.json "${pkgdir}"/etc/webapps/riot/config.json
-  install -Dm644 riot.im/release/config.json -t "${pkgdir}"/etc/riot/
+  install -Dm644 element.io/release/config.json -t "${pkgdir}"/etc/riot/
 
   # Required extras
   install -Dm644 ../riot-desktop.desktop "${pkgdir}"/usr/share/applications/riot-desktop.desktop
   install -Dm755 ../riot-desktop.sh "${pkgdir}"/usr/bin/riot-desktop
 
   # Icons
-  install -Dm644 ../riot-web/res/themes/riot/img/logos/riot-im-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
+  install -Dm644 ../riot-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
+
   for i in 16 24 48 64 96 128 256 512; do
     install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/riot.png
   done
