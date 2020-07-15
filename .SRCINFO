@@ -1,0 +1,20 @@
+pkgbase = gonha-git
+	pkgdesc = Light-weight system monitor for Linux
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/fredcox/gonha
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-humanfriendly
+	depends = python-ewmh
+	depends = python-pathlib
+	depends = python-configobj
+	provides = gonha
+	source = gonha::git+https://github.com/fredcox/gonha
+	sha256sums = SKIP
+
+pkgname = gonha-git
+
