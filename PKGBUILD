@@ -24,9 +24,9 @@ sha256sums=('49bdee4de3979c6e8ef3913e9e5a15f758d81e7d14caca8be17d303beaa50f4f'
             'cc342560bfc5f0907293afd0f219f9bf4b81f78131fbb3ff61a25375257025a3'
             '0bd306f1fe25797e5987336111ea931d3453de9097571f5fd7028a3dfe4663b6')
 sha256sums_x86_64=('fc6d4ff462bf8831f7114fdf67421b56605d6d94a39345f0aaf24dc6422e2805')
-sha256sums_i686=('5599084c005815f15ac725e775967fc3fc05e64099d03166e753a97f21a6ce83')
-sha256sums_armv7h=('a540e345489f435e4a1e6125e9dbbbe4fe8f4cacdfdf3a92d49c57dde10470df')
-sha256sums_aarch64=('0317f363262a9b83cdf7cff00139bd4f5ff16a4b39df20b5e3691d6f8009a818')
+sha256sums_i686=('5c0a9a7dbef91806331ecb2d64aa2d79b5904f6eaab2dfae50baa1662a3a1924')
+sha256sums_armv7h=('652d1a575d497a5af6766b6f75c66490f4bece7aa6f8204a156b70fed9991b67')
+sha256sums_aarch64=('47dfbc3e7ad25ffd88b95507dbdb6a487f388cb823852c72f3d3b7968fb01632')
 
 package_bitcoinhd-qt() {
 	pkgdesc="BitcoinHD is a peer-to-peer network based digital currency - Qt"
@@ -38,7 +38,7 @@ package_bitcoinhd-qt() {
 	install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
 
 	install -Dm755 bhd-qt.sh $pkgdir/usr/local/bin/bhd-qt
-	install -Dm755 bitcoinhd-qt.desktop $pkgdir/usr/share/applications/btchd-qt.desktop
+	install -Dm644 bitcoinhd-qt.desktop $pkgdir/usr/share/applications/btchd-qt.desktop
 }
 
 package_bitcoinhd-daemon() {
