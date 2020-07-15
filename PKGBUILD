@@ -1,15 +1,15 @@
 # Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
 pkgname=nyrna
-pkgver=1.0
-pkgrel=8
+pkgver=1.1
+pkgrel=1
 pkgdesc='Simple program to pause games & applications'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3 or any later version')
-optdepends=('libappindicator-gtk3: Tray icon support on GNOME')
-makedepends=('go')
+depends=('gtk3' 'libappindicator-gtk3' 'zenity')
+makedepends=('go' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/v$pkgver.tar.gz")
-sha256sums=('e35f28ef2f76a25e8aaa7182c222e48063d208178b49a7e8d249ef947ab14a22')
+sha256sums=('41072a702a8aa74a70b7e3ca0d94f697cd6126d5df9943c12a5b1378650479af')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -32,7 +32,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 $pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "../../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "../../$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "../$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 }
