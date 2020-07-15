@@ -9,7 +9,7 @@ license=('OFL')
 conflicts=('noto-fonts'
            'noto-fonts-extra')
 source=("https://www.markusweimar.de/public/noto-fonts-main-${pkgver}.tar.zst")
-sha256sums=('ea429d4928a279f0950a11ea75b788292891bf8ef0f3faadbedb23bb37834fd4')
+sha256sums=('3ddbdfe8568314e073084b9c956e72957fc217b0875c9c34835b4423315e0f50')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
