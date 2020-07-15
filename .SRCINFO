@@ -18,10 +18,8 @@ pkgbase = stepmania-git
 	conflicts = stepmania
 	source = git+https://github.com/stepmania/stepmania.git
 	source = 0001-Don-t-require-assembler-for-system-FFmpeg.patch
-	source = 0002-Use-standard-tomcrypt-header.patch
 	sha256sums = SKIP
 	sha256sums = 99237c08a2d15ba56ef2763161181fbac356dc2e76bb6c1c7ccef1c8e30636b8
-	sha256sums = 6b915e4b54f7405e97e5333c134334030d46c6ed68afe09b097a965a28d6c7a6
 
 pkgname = stepmania-git
 

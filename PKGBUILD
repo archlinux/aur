@@ -9,7 +9,7 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 _pkgname=stepmania
 pkgname=$_pkgname-git
-pkgver=5.1.0.b2.r514.89229ed915
+pkgver=5.1.0.b2.r537.1c869edab5
 pkgrel=1
 pkgdesc="An advanced rhythm game designed for both home and arcade use."
 arch=(x86_64)
@@ -20,11 +20,9 @@ makedepends=(cmake git ninja)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+https://github.com/$_pkgname/$_pkgname.git
-        0001-Don-t-require-assembler-for-system-FFmpeg.patch
-        0002-Use-standard-tomcrypt-header.patch)
+        0001-Don-t-require-assembler-for-system-FFmpeg.patch)
 sha256sums=('SKIP'
-            '99237c08a2d15ba56ef2763161181fbac356dc2e76bb6c1c7ccef1c8e30636b8'
-            '6b915e4b54f7405e97e5333c134334030d46c6ed68afe09b097a965a28d6c7a6')
+            '99237c08a2d15ba56ef2763161181fbac356dc2e76bb6c1c7ccef1c8e30636b8')
 
 pkgver() {
     cd $_pkgname
@@ -36,9 +34,6 @@ prepare() {
 
     # Related issue: https://github.com/stepmania/stepmania/issues/2016
     patch -p1 -i "$srcdir"/0001-Don-t-require-assembler-for-system-FFmpeg.patch
-
-    # Related issue: https://github.com/stepmania/stepmania/issues/1885
-    patch -p1 -i "$srcdir"/0002-Use-standard-tomcrypt-header.patch
 }
 
 build() {
