@@ -30,15 +30,12 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 	install -Dm755 waybind "${pkgdir}/usr/bin/waybind"
 
-	#add waybind user with group uinput
-	install -Dm644 "../../waybind.sysusers" "${pkgdir}/usr/lib/sysusers.d/$_pkgname.conf"
-
 	#install uinput udev rule
 	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
 	install -Dm644 "udev/99-uinput.rules" "${pkgdir}/usr/lib/udev/rules.d/99-uinput.rules"
 
 	#install systemd unit
-	install -Dm644  "systemd/waybind.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"
+	install -Dm644  "../../waybind.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"
 
 	#install example config file
 	mkdir -p "${pkgdir}/etc/waybind/"
