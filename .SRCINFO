@@ -8,9 +8,10 @@ pkgbase = whitesur-kde-theme-git
 	makedepends = git
 	depends = plasma-desktop
 	optdepends = kvantum-qt5: for the kvantum theme
-	optdepends = sddm: for the sddm theme
+	optdepends = sddm: for included sddm theme
 	optdepends = mcmojave-circle-icon-theme-git: matching icon theme
 	optdepends = whitesur-gtk-theme-git: matching gtk theme
+	optdepends = latte-dock: for included latte theme
 	source = git+https://github.com/vinceliuice/WhiteSur-kde.git
 	sha256sums = SKIP
 
