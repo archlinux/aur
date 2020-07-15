@@ -1,0 +1,30 @@
+pkgbase = slippi-online-appimage
+	pkgdesc = Slippi fork of Faster Melee, which allows you to play rollback netplay on Super Smash Bros Melee, (automatically gets latest version)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://slippi.gg/
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	depends = bluez-libs
+	depends = enet
+	depends = hidapi
+	depends = libevdev
+	depends = libgl
+	depends = libpng
+	depends = libpulse
+	depends = libx11
+	depends = libxi
+	depends = libxrandr
+	depends = lzo
+	depends = mbedtls
+	depends = pugixml
+	depends = qt5-base
+	depends = sfml
+	depends = zlib
+	optdepends = pulseaudio: PulseAudio backend
+	provides = slippi-online
+	options = !strip
+
+pkgname = slippi-online-appimage
+
