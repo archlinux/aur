@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.3.4.24657
+pkgver=4.3.5.24893
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
@@ -22,8 +22,8 @@ depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' '
 makedepends=('sed')
 source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('b8468e06ae1ae9ac3087dfdd2c0a467cb377794a14353dcccac109441c83bdf3')
-sha256sums_x86_64=('b61beb0108062dc0c1281d6534f523dcc412bdcf133bec17fd9cbe2a05c2e699')
+sha256sums_i686=('be607446d7573350ed0fa8ce2da4996e6d9c9c09df83ff530e0e100d43de2c19')
+sha256sums_x86_64=('37b98c85af7b0f357d49d19bbde0be8a6c0bb8e258d5ae9711111fee48421867')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -48,13 +48,14 @@ options=('!strip') # Do not strip binaries because it breaks them down
 
   # Set up Xfce service menus
   mkdir -p "${_install_dir}/usr/lib/thunarx-2"
+  mkdir -p "${_install_dir}/usr/lib/thunarx-3"
 
   # Apply some fixes on install.sh script
   cd "${pkgbase}-${pkgver}"
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
   sed -i 's|${PREFIX}/usr/bin|/usr/bin|g' install.sh
+  sed -i 's|$EXT_LIB/$LIB_ARCH/$FILE_MANAGER_NAME/$EXT_VER|$EXT_LIB/$FILE_MANAGER_NAME/$EXT_VER|g' install.sh
   sed -i '/-h \/lib64/{N;N;d;}' install.sh
-  sed -i "/ldconfig$/d" install.sh
  }
 
 package_bcompare() {
@@ -72,7 +73,6 @@ package_bcompare() {
   _install_dir="${srcdir}/install"
   sh -version &> /dev/null && sh   install.sh --prefix="${_install_dir}"\
                            || bash install.sh --prefix="${_install_dir}"
-
   # Prepare the directory skeleton needed for install.sh
   cp -r "${_install_dir}/bin"  "${pkgdir}/"
   cp -r "${_install_dir}/lib"  "${pkgdir}/"
@@ -94,6 +94,7 @@ package_bcompare() {
   rm -rf "${pkgdir}/usr/lib/kde4"
   rm -rf "${pkgdir}/usr/lib/nautilus"
   rm -rf "${pkgdir}/usr/lib/thunarx-2"
+  rm -rf "${pkgdir}/usr/lib/thunarx-3"
   rm -rf "${pkgdir}/usr/lib/caja"
   rm -rf "${pkgdir}/usr/lib/nemo"
 
@@ -171,6 +172,7 @@ package_bcompare-thunar() {
   mkdir -p "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/thunarx-2" "${pkgdir}/usr/lib/"
+  mv "${_install_dir}/usr/lib/thunarx-3" "${pkgdir}/usr/lib/"
   msg2 "Done!"
 }
 
