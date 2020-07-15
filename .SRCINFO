@@ -1,7 +1,7 @@
 pkgbase = gba-tileeditor-git
 	pkgdesc = A Gameboy Advance tile editor
 	pkgver = 0.0.10
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/quentin-dev/gba-tileeditor
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = gba-tileeditor-git
 	makedepends = make
 	depends = qt5-base
 	source = gba-tileeditor-git::git+https://github.com/quentin-dev/gba-tileeditor#branch=master
+	source = gba-tileeditor-git.desktop
 	md5sums = SKIP
+	md5sums = 847b6674e02e552783e6db33a11b6e53
 
 pkgname = gba-tileeditor-git
 

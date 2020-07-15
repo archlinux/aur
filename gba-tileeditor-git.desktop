@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GBA Tile Editor
+GenericName=GBA Tile Editor
+Comment=Qt-based tile editor for GBA
+Exec=gba-tileeditor-git
+Terminal=false
+Categories=Development;Qt; 
