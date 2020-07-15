@@ -1,13 +1,13 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-dev
-pkgver=1.20.0_3.0.pre
+pkgver=1.20.0_7.1.pre
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-dev}.io"
 license=("custom" "BSD" "CCPL")
-depends=("bash" "git" "glu" "java-environment" "lib32-libglvnd" "unzip")
+depends=("git" "glu" "java-environment" "libglvnd" "unzip")
 optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python")
 makedepends=("python")
 provides=("${pkgname%-dev}")
@@ -21,7 +21,7 @@ source=(
   "${pkgname%-dev}.csh"
 )
 sha256sums=(
-  "a0b0771b9edd1a853a543aa8fdb4bbf525f8db3df5f4ef0ea0c3a0855eed255e"
+  "6d9a915be565092fc5cb72d4e12e700c554e2813b38bb0b875c6bac95f1f28ea"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
