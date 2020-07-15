@@ -1,7 +1,7 @@
 pkgbase = seadrive-gui
 	pkgdesc = GUI part of seadrive
-	pkgver = 1.0.11
-	pkgrel = 1
+	pkgver = 2.0.4
+	pkgrel = 0
 	url = https://github.com/haiwen/seadrive-gui
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = seadrive-gui
 	depends = qt5-webengine
 	depends = qt5-tools
 	depends = seadrive-daemon
-	source = seadrive-gui-v1.0.11.tar.gz::https://github.com/haiwen/seadrive-gui/archive/v1.0.11.tar.gz
-	sha256sums = dee2fc2ad3c26e0fe5e77f0629c8412c2d7e940588a52d515546da4fe1fc6bf7
+	source = seadrive-gui-v2.0.4.tar.gz::https://github.com/haiwen/seadrive-gui/archive/v2.0.4.tar.gz
+	sha256sums = 46a74fad50a233cc17ed6386360de5bc375d2df92723ecce81ae5ab658d77e8c
 
 pkgname = seadrive-gui
+
