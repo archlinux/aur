@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=3.r2.g78f5b08_score_patch
+pkgver=3.0.1.alpha.r9.g5ff9955_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ prepare() {
     # (more appropriate for single-user systems) and save a message about it
     savedir="$HOME/.local/games/${pkgname%%-git}"
 
-    sed -i "s|/usr/games|${savedir}|" "${pkgname%%-git}/sources/config.h"
+    sed -i "s|/usr/games|${savedir}|" "${pkgname%%-git}/config.h"
 
     cat > score.txt <<EOF
 ${pkgname%%-git} was compiled to store scores in $savedir.
@@ -38,7 +38,7 @@ pkgver() {
 
 
 build() {
-    cd "${pkgname%%-git}/sources"
+    cd "${pkgname%%-git}"
     make
 }
 
@@ -55,7 +55,7 @@ package() {
 
     # Install games as /usr/bin/nb* to avoid conflicts
     mkdir -p "$pkgdir/usr/bin"
-    find sources -type f -executable | while read f
+    find . -type f -executable | while read f
     do
         cp "$f" "$pkgdir/usr/bin/nb$(basename "$f")"
     done
