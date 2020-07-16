@@ -9,7 +9,7 @@
 
 pkgname=brave-bin
 pkgver=1.11.97
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Web browser that blocks ads and trackers by default (binary release)."
 arch=("x86_64")
@@ -49,5 +49,7 @@ package() {
     install -Dm0644 "logo.png" "$pkgdir/usr/share/pixmaps/brave.png"
     LICENSES_DIR="$pkgdir/usr/share/licenses/$pkgname"
     mkdir -p "$LICENSES_DIR"
-    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$LICENSES_DIR"
+    if [ -f "$pkgdir/usr/lib/$pkgname/LICENSE" ] && [ -f "$pkgdir/usr/lib/$pkgname/LICENSES.chromium.html" ]; then
+      mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$LICENSES_DIR"
+    fi
 }
