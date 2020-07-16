@@ -50,11 +50,12 @@ prepare() {
 
 build() {
   cd "${_pkgname}/cmd/caddy/"
+  export GOPATH="$srcdir"/gopath
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build .
 }
 
