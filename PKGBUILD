@@ -1,4 +1,5 @@
-# Maintainer: Jack Chen <redchenjs@live.com>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: Jack Chen <redchenjs@live.com>
 
 pkgname=360zip
 pkgver=1.0.0.1010
