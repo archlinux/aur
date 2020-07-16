@@ -1,0 +1,25 @@
+pkgbase = sparrow-wifi-git
+	pkgdesc = Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux
+	pkgver = r147.a97885f
+	pkgrel = 1
+	url = https://github.com/ghostop14/sparrow-wifi
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gpsd
+	depends = tk
+	depends = python-matplotlib
+	depends = python-qscintilla-qt5
+	depends = python-pyqt5
+	depends = python-manuf
+	depends = python-numpy
+	depends = python-dateutil
+	depends = python-sip
+	depends = python-pyqtchart
+	depends = python-gps3
+	provides = sparrow-wifi
+	source = sparrow-wifi::git+https://github.com/ghostop14/sparrow-wifi
+	sha256sums = SKIP
+
+pkgname = sparrow-wifi-git
+
