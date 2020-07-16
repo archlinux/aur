@@ -6,7 +6,7 @@
 #  "https://www.fosshub.com/CudaText.html?dwl=cudatext-linux-qt5-amd64-1.107.0.0.tar.xz"
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
-pkgver=1.107.0
+pkgver=1.107.0.0
 pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt5 edition."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('qt5pas'
 makedepends=('gendesk')
 provides=('cudatext')
 options=('!strip')
-source=("local://cudatext-linux-qt5-amd64-${pkgver}.${pkgrel}.tar.xz")
+source=("local://cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
 sha256sums=(SKIP)
 
 prepare() {
