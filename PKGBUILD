@@ -17,7 +17,7 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman)
 _branch=hsphfpd
-source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#branch=$_branch"
+source=("git+https://gitlab.freedesktop.org/pali/pulseaudio.git#branch=$_branch"
         0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
 sha256sums=('SKIP'
             '4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d')
