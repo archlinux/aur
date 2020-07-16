@@ -3,7 +3,7 @@
 # Contributor: Mariusz Derela <mariusz.derela@gmail.com>
 
 pkgname=nagvis
-pkgver=1.9.20
+pkgver=1.9.21
 pkgrel=1
 pkgdesc="Visualization addon for the well known network managment system Nagios"
 license=('GPL')
@@ -21,7 +21,7 @@ backup=('usr/share/nagvis/etc/geomap/links.xml' 'usr/share/nagvis/etc/geomap/vie
   'usr/share/nagvis/etc/conf.d/demo.ini.php' 'etc/httpd/conf/extra/nagvis.conf')
 source=("http://www.nagvis.org/share/$pkgname-$pkgver.tar.gz"
         $pkgname.conf)
-sha256sums=('0bcdc9a6647517587b4a6b4fc7f207b09e40b29cb5b75d6474eeb30c01193853'
+sha256sums=('659f0947e466c4b5248d73ebf25dca3545c48a02853786446acbcae14c38df7e'
             'b0cd7ef38950c876d7ce99318eea9e835776e98cd28d469b4499285fbc29031f')
 
 package() {
