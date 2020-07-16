@@ -2,7 +2,7 @@
 
 pkgname=abcl
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
 url="http://common-lisp.net/project/armedbear/"
