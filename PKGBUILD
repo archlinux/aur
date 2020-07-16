@@ -1,19 +1,19 @@
 # Maintainer: Bruce Zhang
 pkgname=qt-scrcpy
 _name=QtScrcpy
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache')
-depends=('qt5-base' 'scrcpy')
+depends=('qt5-base' 'scrcpy' 'qt5-x11extras')
 provides=('qt-scrcpy')
 source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/barry-ran/$_name/archive/v$pkgver.tar.gz"
 	binaries.patch
 )
-sha256sums=('452e7da5600b3245c2854c88883af193b15dfac73a7ec3c681546bdfd4e40330'
+sha256sums=('0acf4355a4ba05c1f55711188d98e52ced249ff5bc3f8fc1859ff20ecf5b4a18'
             '1fa61a24bf59a62db1b29a3d3ec49186ef6f539ff8d09dd04534d939cb30aedd')
 
 prepare() {
