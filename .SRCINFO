@@ -1,0 +1,16 @@
+pkgbase = lanxchange
+	pkgdesc = Configuration-free, cross-platform file transfers for your local network
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://lanxchange.com
+	install = lanxchange.install
+	arch = any
+	license = GPL3
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = bash
+	source = lanxchange-1.41.zip::https://github.com/tfg13/LanXchange/releases/download/v1.41/lxc.zip
+	sha256sums = 18fb4e05a8cf858baf1ff3b079be63eb6228424eb5de596f3cc604dbb8fa2102
+
+pkgname = lanxchange
+
