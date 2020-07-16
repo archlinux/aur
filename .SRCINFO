@@ -1,0 +1,116 @@
+pkgbase = pulseaudio-hsphfpd
+	pkgdesc = A fork of pulseaudio providing superior bluetooth headset functionality
+	pkgver = 13.0
+	pkgrel = 3
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = rtkit
+	makedepends = libsoxr
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = jack2
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = fftw
+	makedepends = orc
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = xmltoman
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#branch=hsphfpd
+	source = 0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch
+	sha256sums = SKIP
+	sha256sums = 4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d
+
+pkgname = pulseaudio-hsphfpd
+	install = pulseaudio.install
+	depends = libpulse-hsphfpd=13.0-3
+	depends = rtkit
+	depends = libltdl
+	depends = speexdsp
+	depends = tdb
+	depends = orc
+	depends = libsoxr
+	depends = webrtc-audio-processing
+	optdepends = pulseaudio-alsa-hsphfpd: ALSA configuration (recommended)
+	provides = pulseaudio=13.0-3
+	conflicts = pulseaudio
+	replaces = pulseaudio-xen<=9.0
+	replaces = pulseaudio-gconf<=11.1
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-hsphfpd
+	pkgdesc = A fork of pulseaudio providing superior bluetooth headset functionality (client library)
+	license = LGPL
+	depends = dbus
+	depends = libasyncns
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	depends = libsndfile
+	depends = systemd
+	provides = libpulse.so
+	provides = libpulse-simple.so
+	provides = libpulse-mainloop-glib.so
+	provides = libpulse=13.0-3
+	conflicts = libpulse
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-zeroconf-hsphfpd
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio-hsphfpd=13.0-3
+	depends = avahi
+	depends = openssl
+	provides = pulseaudio-zeroconf=13.0-3
+	conflicts = pulseaudio-zeroconf
+
+pkgname = pulseaudio-lirc-hsphfpd
+	pkgdesc = IR (lirc) support for PulseAudio
+	depends = pulseaudio-hsphfpd=13.0-3
+	depends = lirc
+	provides = pulseaudio-lirc=13.0-3
+	conflicts = pulseaudio-lirc
+
+pkgname = pulseaudio-jack-hsphfpd
+	pkgdesc = Jack support for PulseAudio
+	depends = pulseaudio-hsphfpd=13.0-3
+	depends = jack
+	provides = pulseaudio-jack=13.0-3
+	conflicts = pulseaudio-jack
+
+pkgname = pulseaudio-bluetooth-hsphfpd
+	pkgdesc = Bluetooth support for PulseAudio
+	depends = pulseaudio-hsphfpd=13.0-3
+	depends = bluez
+	depends = bluez-libs
+	depends = sbc
+	provides = pulseaudio-bluetooth=13.0-3
+	conflicts = pulseaudio-bluetooth
+
+pkgname = pulseaudio-equalizer-hsphfpd
+	pkgdesc = Equalizer for PulseAudio
+	depends = pulseaudio-hsphfpd=13.0-3
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = python-sip
+	depends = fftw
+	provides = pulseaudio-equalizer=13.0-3
+	conflicts = pulseaudio-equalizer
+
