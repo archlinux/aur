@@ -1,0 +1,16 @@
+pkgbase = localxpose-cli
+	pkgdesc = A reverse proxy that enables you to expose your localhost to the internet (CLI)
+	pkgver = latest
+	pkgrel = 1
+	url = https://localxpose.io
+	arch = x86_64
+	license = custom:localxpose-cli
+	depends = glibc
+	provides = localxpose
+	source = localxpose-cli-latest.zip::https://lxpdownloads.sgp1.digitaloceanspaces.com/cli/loclx-linux-amd64.zip
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = localxpose-cli
+
