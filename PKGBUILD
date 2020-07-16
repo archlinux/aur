@@ -1,48 +1,41 @@
-# Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+# Maintainer: Patrik Cyvoct <patrik at ptrk dot io>
+# Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=1.20
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Manage BareMetal Servers from Command Line"
-arch=('i686' 'x86_64')
+pkgdesc="Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal."
+arch=('x86_64')
 url="https://scaleway.com"
-license=('MIT')
+license=('Apache')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('4c50725be7bebdab17b8ef77acd230525e773631fef4051979f8ff91c86bebf8')
-
-prepare() {
-  # setup local gopath
-  export GOPATH="$srcdir/.gopath"
-  mkdir -p "$GOPATH/src/github.com/scaleway/"
-  ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/scaleway/$pkgname"
-}
+sha256sums=('3f219c83e3766eb253791ac74c6bf92f8b2234e147cf5d268254cf5cc6ab7d03')
 
 build() {
-  export GOPATH="$srcdir/.gopath"
-  cd "$GOPATH/src/github.com/scaleway/$pkgname"
-  go build \
-    -buildmode=pie \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit -extldflags ${LDFLAGS}" \
-    -o scw ./cmd/scw
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -ldflags "-X main.BuildDate=$(date -u '+%Y-%m-%dT%I:%M:%S%p')" \
+    -o scw ./cmd/scw/main.go 
 }
 
 check() {
-  export GOPATH="$srcdir/.gopath"
-  cd "$GOPATH/src/github.com/scaleway/$pkgname"
-  go test -ldflags \
-    "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
-    -i ./cmd/scw
+  cd "$pkgname-$pkgver"
+  go test ./...
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm755 scw "$pkgdir/usr/bin/scw"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 contrib/completion/bash/scw.bash "$pkgdir/usr/share/bash-completion/completions/scw"
-  install -Dm644 contrib/completion/zsh/_scw "$pkgdir/usr/share/zsh/site-functions/_scw"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Leaving the autocomplete out for now since it depends on bash-completion
+  # It can still be installed with scw autocomplete install
+  #PATH=.:$PATH scw autocomplete script shell=zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_scw"
+  #PATH=.:$PATH scw autocomplete script shell=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/scw"
 }
 
 # vim:set ts=2 sw=2 et:
