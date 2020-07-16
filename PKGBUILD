@@ -1,11 +1,11 @@
 # Maintainer: Chris Chamberlain <chris@chamberlain.id.au>
-_themename=minimal-dark
-pkgname=plymouth-theme-minimal-dark-git
-pkgver=r8.62e95c8
+_themename=minimal-dark-bgrt
+pkgname=plymouth-theme-minimal-dark-bgrt-git
+pkgver=r11.f8a4731
 pkgrel=1
 arch=('any')
-pkgdesc="Minimal and dark Arch Linux theme for Plymouth, based upon the Debian theme"
-url="https://github.com/bobwallis/minimal-dark"
+pkgdesc="Minimal and dark Arch Linux theme for Plymouth, based upon the Debian theme, with extracted BGRT logo"
+url="https://github.com/neon64/minimal-dark"
 license=('unknown')
 groups=()
 depends=()
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/bobwallis/minimal-dark')
+source=('git+https://github.com/neon64/minimal-dark')
 noextract=()
 sha256sums=('SKIP')
 
@@ -30,11 +30,13 @@ pkgver() {
 package() {
 	cd "minimal-dark"/plymouth
 
+    ./generate.sh
+
     _themedir="$pkgdir/usr/share/plymouth/themes/$_themename"
 
-    install -Dm 0644 logo.png "${_themedir}/logo.png"
-    install -Dm 0644 minimal-dark.plymouth "${_themedir}/minimal-dark.plymouth"
-    install -Dm 0644 minimal-dark.script "${_themedir}/minimal-dark.script"
+    install -Dm 0644 bgrt.png "${_themedir}/bgrt.png"
+    install -Dm 0644 minimal-dark-bgrt.plymouth "${_themedir}/minimal-dark-bgrt.plymouth"
+    install -Dm 0644 minimal-dark-bgrt.script "${_themedir}/minimal-dark-bgrt.script"
     install -Dm 0644 password_field.png "${_themedir}/password_field.png"
     install -Dm 0644 progress_dot_off.png "${_themedir}/progress_dot_off.png"
     install -Dm 0644 progress_dot_on.png "${_themedir}/progress_dot_on.png"
