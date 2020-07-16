@@ -1,7 +1,7 @@
 # Maintainer: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 pkgname=numix-square-icon-theme
-pkgver=19.12.27
-_pkgver=19.12.27
+pkgver=20.07.11
+_pkgver=20.07.11
 _gitname=numix-icon-theme-square
 pkgrel=1
 pkgdesc="A square-ish shaped icon theme from the Numix Project"
@@ -12,7 +12,7 @@ provides=("numix-square-icon-theme=${pkgver}")
 depends=('numix-icon-theme-git' 'gtk-update-icon-cache')
 conflicts=("numix-square-icon-theme-git")
 source=("https://github.com/numixproject/${_gitname}/archive/${_pkgver}.tar.gz")
-sha256sums=('a335667f6d2520e4dcf40b1eea6eeacc1566c31947f1421004fdab02882bc84e')
+b2sums=('d6161751d013b00351f95639c3facfa6c066f878fdef6152ca75cb7fb2231b4ea765fdd805716b5b203e573b51dcbae8fa0c55620a5b75fee3f63dbaf5f4ebed')
 options=('!strip')
 
 package() {
