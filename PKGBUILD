@@ -3,8 +3,8 @@
 
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.5
-pkgrel=2
+pkgver=0.10.6
+pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -42,8 +42,8 @@ depends+=('libfreetype.so'
           'libicuuc.so')
 checkdepends=('poppler')
 provides=('libtexpdf.so')
-source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('a14fe23af242ba723aed699048b10abf60d1809390ac543140b80e057c4b4b9b')
+source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('ffe84f498e735727a37601f14aeb1f1be48963796b18b75075cbfa01bac69f7b')
 
 build () {
     cd "$pkgname-$pkgver"
@@ -61,7 +61,6 @@ check () {
 package () {
     cd "$pkgname-$pkgver"
     make install DESTDIR="$pkgdir"
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
-    cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
