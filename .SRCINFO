@@ -1,0 +1,18 @@
+pkgbase = r-analyticflow
+	pkgdesc = A data analysis software that utilizes the R environment for statistical computing
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = http://r.analyticflow.com
+	install = r-analyticflow.install
+	arch = any
+	license = custom:r-analyticflow
+	depends = jdk8-openjdk
+	depends = java8-openjfx
+	depends = r-rjava
+	options = !strip
+	options = !emptydirs
+	source = r-analyticflow-3.1.8.tar.gz::http://download.ef-prime.com/ranalyticflow/3.1.8/bin/RAnalyticFlow_Linux_3.1.8.tar.gz
+	sha256sums = fb14e330c2927f0b0de42196bdeb31f3e61222b37ab8ad357cca6096a6b0f395
+
+pkgname = r-analyticflow
+
