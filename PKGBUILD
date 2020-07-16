@@ -2,7 +2,7 @@
 
 pkgname=noisetorch-bin
 pkgver=0.3.2_beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"
@@ -22,7 +22,7 @@ package() {
 	install -m644 .local/share/applications/noisetorch.desktop \
 		"${pkgdir}/usr/share/applications/noisetorch.desktop"
 
-	if [[ -d "/usr/share/icons/hicolor/256x256/apps/fhdjksgh" ]]
+	if [[ -d "/usr/share/icons/hicolor/256x256/apps/" ]]
 	then
 		mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 		install -m644 .local/share/icons/hicolor/256x256/apps/noisetorch.png \
