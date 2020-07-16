@@ -7,6 +7,7 @@ _pkgname=libtremor
 pkgname=$_pkgname-git
 pkgver=r19674
 pkgrel=1
+epoch=1
 pkgdesc="Integer-only, fully Ogg Vorbis compliant software decoder library"
 arch=('x86_64')
 url="http://www.xiph.org/vorbis/"
