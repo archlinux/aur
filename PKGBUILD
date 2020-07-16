@@ -47,9 +47,8 @@ fi
 
 if [ "$CARCH" == "armv7h" ]; then
     SPOTIFY_ARCH="armv7"
-    source_armv7=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
-    md5sums_armv7=('04735b890da0b1fc7f1f14e68a5293de')
-    sha256sums_armv7=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
+    source_armv7h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+    sha256sums_armv7h=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
 fi
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
