@@ -1,15 +1,13 @@
 pkgbase = ttf-th-sarabun-new
 	pkgdesc = Improved Thai SIPA TH SarabunPSK font with free license
-	pkgver = 2011.06.25
+	pkgver = 1.35
 	pkgrel = 1
 	url = http://www.f0nt.com/release/th-sarabun-new/
 	arch = any
 	license = GPL
-	depends = fontconfig
-	depends = xorg-font-utils
 	optdepends = ttf-sipa-dip: Thai formal standard fonts from SIPA
-	source = http://www.thailibrary.in.th/wp-content/uploads/2011/12/THSarabunNew.zip
-	sha256sums = 4db34af0ccd9dca6e8ba0735af3efb2e10fbb0a95e10387adc7742e4d303bf58
+	source = https://www.f0nt.com/download/sipafonts/THSarabunNew.zip
+	sha256sums = 7a3db732e475b0b8adb10adf4058e7d8161ecef157f56f9711c229c73bedc592
 
 pkgname = ttf-th-sarabun-new
 
