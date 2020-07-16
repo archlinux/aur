@@ -18,7 +18,7 @@ makedepends=('gendesk')
 provides=('cudatext')
 options=('!strip')
 source=("local://cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
-sha256sums=(SKIP)
+sha256sums=(eab4c3933a82cf89f98501a4376173542402bdc4c86f845d17b1496f61986b16)
 
 prepare() {
 	echo "Creating desktop file"
