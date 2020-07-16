@@ -3,14 +3,15 @@
 pkgname=purewriter-desktop
 _pkgname=desktop
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure Writer Desktop"
 arch=('x86_64')
 url="https://github.com/PureWriter/desktop"
 license=('GPL3')
-depends=('jdk8-openjdk' 'java8-openjfx')
+depends=('jre8-openjdk' 'java8-openjfx')
+makedepends=('jdk8-openjdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PureWriter/${_pkgname}/archive/${pkgver}.tar.gz"
-        ${pkgname}.sh)
+        "${pkgname}.sh")
 sha256sums=('2c6ee00ebafe54b23ebcceaf1e87588c0120425b5d2997257f1b290be49ad3ab'
             '91b2b38809c0c1be3570510ec0c4398fe8fd818abd349d5ed7f484f246fdbeba')
 build() {
