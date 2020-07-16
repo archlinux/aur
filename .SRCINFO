@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-hsphfpd
 	pkgdesc = A fork of pulseaudio providing superior bluetooth headset functionality
 	pkgver = 13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = x86_64
 	license = GPL
@@ -39,7 +39,7 @@ pkgbase = pulseaudio-hsphfpd
 
 pkgname = pulseaudio-hsphfpd
 	install = pulseaudio.install
-	depends = libpulse-hsphfpd=13.0-3
+	depends = libpulse-hsphfpd=13.0-4
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp
@@ -48,7 +48,7 @@ pkgname = pulseaudio-hsphfpd
 	depends = libsoxr
 	depends = webrtc-audio-processing
 	optdepends = pulseaudio-alsa-hsphfpd: ALSA configuration (recommended)
-	provides = pulseaudio=13.0-3
+	provides = pulseaudio=13.0-4
 	conflicts = pulseaudio
 	replaces = pulseaudio-xen<=9.0
 	replaces = pulseaudio-gconf<=11.1
@@ -69,48 +69,48 @@ pkgname = libpulse-hsphfpd
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
-	provides = libpulse=13.0-3
+	provides = libpulse=13.0-4
 	conflicts = libpulse
 	backup = etc/pulse/client.conf
 
 pkgname = pulseaudio-zeroconf-hsphfpd
 	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.0-3
+	depends = pulseaudio-hsphfpd=13.0-4
 	depends = avahi
 	depends = openssl
-	provides = pulseaudio-zeroconf=13.0-3
+	provides = pulseaudio-zeroconf=13.0-4
 	conflicts = pulseaudio-zeroconf
 
 pkgname = pulseaudio-lirc-hsphfpd
 	pkgdesc = IR (lirc) support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.0-3
+	depends = pulseaudio-hsphfpd=13.0-4
 	depends = lirc
-	provides = pulseaudio-lirc=13.0-3
+	provides = pulseaudio-lirc=13.0-4
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-jack-hsphfpd
 	pkgdesc = Jack support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.0-3
+	depends = pulseaudio-hsphfpd=13.0-4
 	depends = jack
-	provides = pulseaudio-jack=13.0-3
+	provides = pulseaudio-jack=13.0-4
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-bluetooth-hsphfpd
 	pkgdesc = Bluetooth support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.0-3
+	depends = pulseaudio-hsphfpd=13.0-4
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
-	provides = pulseaudio-bluetooth=13.0-3
+	provides = pulseaudio-bluetooth=13.0-4
 	conflicts = pulseaudio-bluetooth
 
 pkgname = pulseaudio-equalizer-hsphfpd
 	pkgdesc = Equalizer for PulseAudio
-	depends = pulseaudio-hsphfpd=13.0-3
+	depends = pulseaudio-hsphfpd=13.0-4
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = python-sip
 	depends = fftw
-	provides = pulseaudio-equalizer=13.0-3
+	provides = pulseaudio-equalizer=13.0-4
 	conflicts = pulseaudio-equalizer
 

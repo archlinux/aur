@@ -8,7 +8,7 @@ pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
 pkgver=13.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             '4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-hsphfpd}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
