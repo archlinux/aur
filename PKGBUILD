@@ -35,6 +35,7 @@ package() {
   sed -i 's/import misc/from \. import misc/g' libPINCE/libscanmem/scanmem.py
   sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
   sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python3 PINCE.py/' PINCE.sh
+  sed -i 's/\ssudo -E python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo -E python3 PINCE.py/' PINCE.sh
   sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
 
   install -d "$pkgdir/usr/bin"
