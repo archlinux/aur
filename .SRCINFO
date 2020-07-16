@@ -6,6 +6,7 @@ pkgbase = sparrow-wifi-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = gendesk
 	depends = gpsd
 	depends = tk
 	depends = python-matplotlib

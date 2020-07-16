@@ -19,7 +19,7 @@ depends=('gpsd'
          'python-sip'
          'python-pyqtchart'
          'python-gps3')
-makedepends=('git')
+makedepends=('git' 'gendesk')
 source=("${pkgname%-git}::git+https://github.com/ghostop14/sparrow-wifi")
 sha256sums=('SKIP')
 
