@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=gtkttk
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="ttk theme that gives to your Tk applications a native GTK+ look and feel."
 url="https://github.com/Geballin/gtkTtk"
@@ -17,7 +17,7 @@ install=gtkttk.install
 source=("https://github.com/Geballin/${pkgname}/archive/${pkgver}.tar.gz"
 	"gtkttk.install")
 
-md5sums=('a85dd8f7545367994c49a20c3f83b703'
+md5sums=('ae05eb89fcbb4e4b90d3b0277a0b26a1'
 	 '4f10456c19a4943f7688014ee5020b46')
 
 build() {
