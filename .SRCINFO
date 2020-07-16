@@ -1,0 +1,15 @@
+pkgbase = element-desktop
+	pkgdesc = All-in-one secure chat app for teams, friends and organisations.
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://element.io
+	arch = x86_64
+	license = Apache
+	replaces = riot-desktop
+	source = https://packages.riot.im/debian/pool/main/e/element-desktop/element-desktop_1.7.1_amd64.deb
+	source = element-desktop.sh
+	sha256sums = 6b5fdbed7ec8fc50b9729452b2a022bd6e4e9d85a4318776b1dbe03f1b29ae5f
+	sha256sums = 2e21d346c898122e76605e0c5f1d909596415627bc72e3958aeaa40c523d18a8
+
+pkgname = element-desktop
+
