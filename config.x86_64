@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.51 Kernel Configuration
+# Linux/x86 5.4.52 Kernel Configuration
 #
 
 #
@@ -408,6 +408,7 @@ CONFIG_X86_MCE_THRESHOLD=y
 #
 # Performance monitoring
 #
+CONFIG_PERF_EVENTS_INTEL_RAPL=y
 CONFIG_PERF_EVENTS_AMD_POWER=m
 # end of Performance monitoring
 
