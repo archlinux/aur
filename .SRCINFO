@@ -1,14 +1,14 @@
 pkgbase = hubrelease
 	pkgdesc = Create GitHub releases from the command line
 	pkgver = 0.1.4
-	pkgrel = 1
-	url = https://github.com/MarkusGordathian/hubrelease
+	pkgrel = 2
+	url = https://github.com/MarkusG/hubrelease
 	arch = any
 	license = GPL3
 	depends = curl
 	depends = jansson
 	depends = libgit2
-	source = hubrelease-0.1.4.tar.gz::https://github.com/MarkusGordathian/hubrelease/archive/0.1.4.tar.gz
+	source = hubrelease-0.1.4.tar.gz::https://github.com/MarkusG/hubrelease/archive/0.1.4.tar.gz
 	sha512sums = 5573af8b98dcc1be61b659d378ab8a72e4dbe64427c5a57ed5387b7523c4cd8dea5eafdfde5f88ba5518cfee8b839d12303f6bb3ba82d25e4635985d0783916f
 
 pkgname = hubrelease
