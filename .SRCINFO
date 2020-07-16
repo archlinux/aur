@@ -8,6 +8,7 @@ pkgbase = purewriter-desktop
 	makedepends = jdk8-openjdk
 	depends = jre8-openjdk
 	depends = java8-openjfx
+	provides = purewriter
 	source = purewriter-desktop-0.2.2.tar.gz::https://github.com/PureWriter/desktop/archive/0.2.2.tar.gz
 	source = purewriter-desktop.sh
 	sha256sums = 2c6ee00ebafe54b23ebcceaf1e87588c0120425b5d2997257f1b290be49ad3ab

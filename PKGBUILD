@@ -10,6 +10,7 @@ url="https://github.com/PureWriter/desktop"
 license=('GPL3')
 depends=('jre8-openjdk' 'java8-openjfx')
 makedepends=('jdk8-openjdk')
+provides=('purewriter')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PureWriter/${_pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh")
 sha256sums=('2c6ee00ebafe54b23ebcceaf1e87588c0120425b5d2997257f1b290be49ad3ab'
