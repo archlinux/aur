@@ -1,0 +1,31 @@
+pkgbase = ttf-catamaran-sans
+	pkgdesc = Unicode-compliant Latin and Tamil text type family designed for the digital age by Pria Ravichandran.
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Catamaran
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	conflicts = ttf-google-fonts-git
+	source = Catamaran-Black-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Black.ttf
+	source = Catamaran-Bold-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Bold.ttf
+	source = Catamaran-ExtraBold-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-ExtraBold.ttf
+	source = Catamaran-ExtraLight-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-ExtraLight.ttf
+	source = Catamaran-Light-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Light.ttf
+	source = Catamaran-Medium-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Medium.ttf
+	source = Catamaran-Regular-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Regular.ttf
+	source = Catamaran-SemiBold-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-SemiBold.ttf
+	source = Catamaran-Thin-2.000.ttf::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/static/Catamaran-Thin.ttf
+	source = ttf-catamaran-sans-2.000-OFL.txt::https://github.com/google/fonts/raw/cf5f213159d5ebd3209fd5bf17f8d208e8674873/ofl/catamaran/OFL.txt
+	sha256sums = 78925e4fbccdc167203d2eca98e216508659f70b702bc398426d18645b08d771
+	sha256sums = 1eff22f6c04cad1eba4b30d53b5b8f28856ffc71192c295766b5872c0071688d
+	sha256sums = 39cfa0baed180a3dfbb8c51729c996b98f6952a7e9e498945894bd3df27d1fae
+	sha256sums = d7a16305c919ca8ba49a448846f6584149af45a69b7b4078f8d8efea119d5c10
+	sha256sums = ce75ff36ebb83e27b1cc2b80c6e3d5e93066f424cdcbabf043dac3868f4afc32
+	sha256sums = 290fa0a21d2b5e61353b20efb897f7135eefce7b36e2b252da074c7fec542c2a
+	sha256sums = 36b48aab35f52b4ccb826afb0308bdc1ad932d6315ad18d5c5e0426153da72b1
+	sha256sums = ae0397d8f7e0980d56a55a851222a2b8f42c3ba1e9129bf5b276dd52f55d71d9
+	sha256sums = d535797e4a721403261ee955ad7e66a621547ac1802724beb0067ec5cedac607
+	sha256sums = c88333734ad7cd30540ec6614d12aa829a0395715de30e336d22ddfa3005db42
+
+pkgname = ttf-catamaran-sans
+
