@@ -51,7 +51,7 @@ _major=5.7
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,9 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -324,9 +325,10 @@ sha512sums=('dc96215a690b94d74bb81bd46e87b179a9acb82e0c4831581381c73402b933f7c47
             'SKIP'
             'c7c5b222578a95cf4df69f9e8fa4ae2fb83075c26f0379676bf78e110f113c6f4ce5fe9d61eaf1c0d04563522e9d5998acd75bedba47866725e89cbbf64a1bba'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            '5cb680e82a89f13dfbaf8d5cdd65ba1fa3a426b35c794d99fbf34625f702db5745ace795ba0d335f15d5067dc31c0c03f5f74db173d982f92003d0aebc92300f'
-            '49faccc9db0dd95c59cff3766a768bb94d75f4f0e2ea1a057c5ffc0a2b6c3ea5659d702ab86325e3e09c445a324ed5475fae5d43961adbb4562c301bac0ff66e'
-            '5b85491b299021b34d74eb68d0bf8449227149bc45c55e117139319a23d0162ba9debf3ec48def33f1180a7f60048c28586ceacfab162003b46922a9deee3897'
+            'd9a56e2a53cccd201717a88ca58bab3e50954856560cf64d8dd1b3823a14270fa75619e95831c8d992a005ea72c86adcb8f971f4b2246f04ea3472a1596da999'
+            '789c2d738c4c12f6702d84963920cae0069b8777bb4db464502a661f33c123c9370fa4e25b27cb1242b3565e963d49e6b267d65722407a08c60de58045ea1c3d'
+            'cfe89447ef11a83e82a4d4029df78f90bc40e2e3cb11872b0fede7daae8339ff5ba7d11d628b2d3694fef7d5041363bfb5ea88c7ed120c43ba5548fe55556a95'
+            '837b177f3f8b5ddfcd67fa33576578362938e78ce953b9adfb043e144dcce23179eca31c5bc22557ef8d41abd852bf0dfbc8aaad99a331a59075d232a16e3c75'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'f33694ddf2b9552d5ca186911b04647a8902d0b515d3098ecb8950aa95c5c16cab89e13a7eeb24eeb363795a4c7de212997dcbe609e84d38133a1bfc498ef928')
 
