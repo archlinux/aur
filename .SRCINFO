@@ -1,0 +1,15 @@
+pkgbase = python-gps3
+	pkgdesc = Python 2.7 - 3.5 interface to gpsd
+	pkgver = 0.30.4
+	pkgrel = 1
+	url = https://github.com/fredcox/gonha
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	conflicts = gonha-git
+	source = python-gps3-0.30.4.tar.gz::https://github.com/wadda/gps3/archive/fackme.tar.gz
+	sha256sums = d6d022854305f0c7b492980f84643d583ed7c32b7b7edbaf2e4747efbd3fb135
+
+pkgname = python-gps3
+
