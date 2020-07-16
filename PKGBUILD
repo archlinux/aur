@@ -1,16 +1,16 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-algorithm-checkdigits"
-pkgver="1.3.2"
-pkgrel='3'
+pkgver="1.3.3"
+pkgrel='1'
 pkgdesc="Perl extension to generate and test check digits"
 arch=('any')
-url="http://search.cpan.org/dist/Algorithm-CheckDigits/"
+url="https://metacpan.org/release/Algorithm-CheckDigits"
 license=('GPL' 'PerlArtistic')
 depends=('perl-module-build' 'perl-probe-perl')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/M/MA/MAMAWE/Algorithm-CheckDigits-v${pkgver}.tar.gz")
-sha512sums=('f55f9f8244e287d9fe8519688a543517260063655625c2de0646ae9e29663f8d08c6b2c7897b4c62f0dd132334a488b06f417b096b05db4550446f95bc73d26e')
+sha512sums=('2c137ce90cc0587d681084f3694554272263f805413af1269a3829669f780cccf79dfb45d52de621c182d49589cb74f9158161fbe026227527ab275ba1af5eab')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
