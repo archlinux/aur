@@ -2,7 +2,7 @@
 # Modified from PKGBUILD in official repositories
 
 pkgname=bochs-sdl
-pkgver=2.6.9
+pkgver=2.6.11
 pkgrel=4
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger, with sdl support"
 arch=('x86_64')
@@ -11,13 +11,17 @@ license=('LGPL')
 depends=('gcc-libs' 'libxrandr' 'libxpm' 'gtk2')
 conflicts=('bochs')
 provides=('bochs')
-source=("https://downloads.sourceforge.net/sourceforge/bochs/bochs-$pkgver.tar.gz")
-md5sums=('f6670c56ac49af36174e254e82528d5f')
+source=("https://downloads.sourceforge.net/sourceforge/bochs/bochs-$pkgver.tar.gz"
+        "fix-build.patch")
+md5sums=('61dbf6d5c0384712e1f3e51e88381b4c'
+	       '0ae4954b32d49ac3c7a2431ea7935d1c')
 
 prepare() {
     cd "$srcdir/bochs-$pkgver"
     # 4.X kernel is basically 3.20
     sed -i 's/2\.6\*|3\.\*)/2.6*|3.*|4.*)/' configure*
+
+		patch -p1 < ../fix-build.patch # https://sourceforge.net/p/bochs/bugs/1411/
 }
 
 build() {
@@ -37,8 +41,10 @@ build() {
         --enable-smp \
         --enable-x86-64 \
         --enable-avx \
+        --enable-evex \
         --enable-long-phy-address \
         --enable-disasm \
+        --enable-pcidev \
         --enable-usb \
         --enable-debugger \
         --with-sdl
