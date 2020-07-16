@@ -3,7 +3,7 @@
 pkgname=slsk
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A backup utility for Linux Steam games"
+pkgdesc="Steam Linux Swiss Knife - A backup utility for Linux Steam games"
 arch=('x86_64')
 url='https://github.com/skyformat99/SLSK'
 license=('Apache')

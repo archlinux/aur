@@ -1,5 +1,5 @@
 pkgbase = slsk
-	pkgdesc = A backup utility for Linux Steam games
+	pkgdesc = Steam Linux Swiss Knife - A backup utility for Linux Steam games
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/skyformat99/SLSK
