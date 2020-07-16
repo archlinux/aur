@@ -2,26 +2,20 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.13.8
-pkgrel=2
+pkgver=4.15.0
+pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4util' 'dbus')
 makedepends=('intltool' 'gtk-doc' 'chrpath' 'vala' 'gobject-introspection' 'python') #for gdbus-codegen
-#makedepends+=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
-source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
-       'xfconf-warn.sh'
-       'xfconf-warn.hook')
-sha256sums=('55e2441c4ff78a7006fabb59647f7bc1f190cbb82327b93ba063ff624a896591'
-            '74e10d229ec28126ac9c5449daf2965aeb9625e5ad35a04a7edb5fe1fff91a59'
-            '0cfbfecb042dabe5a6e80ac96ce863db12e0c38a7cedb66e2bfbe9a5463469a7')
-#install='xfconf.install'
+source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('af8997964a054fb2c8bfa20a7dbdc22ec007a65004d8a75160464bf431bf0faf')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -33,10 +27,7 @@ build() {
     --localstatedir=/var \
     --disable-static \
     --enable-gtk-doc \
-    --disable-debug \
-    --enable-gsettings-backend
-#    --enable-perl-bindings \
-#    --with-perl-options=INSTALLDIRS="vendor"
+    --disable-debug
   make
 }
 
@@ -47,9 +38,5 @@ package() {
 
   # fix insecure rpath, https://bugs.archlinux.org/task/19980
   find "$pkgdir" -name Xfconf.so -exec chrpath -d {}  \;
-
-  install -Dm755 "${srcdir}"/xfconf-warn.sh "${pkgdir}"/usr/bin/xfconf-warn
-
-  install -Dm644 "${srcdir}"/xfconf-warn.hook "${pkgdir}"/usr/share/libalpm/hooks/xfconf-warn.hook
 }
 
