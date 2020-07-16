@@ -1,12 +1,12 @@
 pkgbase = responder
 	pkgdesc = A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication
 	pkgver = 3.0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lgandx/responder/
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python
+	depends = python2
 	source = https://github.com/lgandx/responder/archive/v3.0.0.0.tar.gz
 	source = responder.sh
 	source = responder.patch
