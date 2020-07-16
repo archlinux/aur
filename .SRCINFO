@@ -1,0 +1,14 @@
+pkgbase = r-rjava
+	pkgdesc = Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rJava
+	arch = x86_64
+	license = GPL2
+	depends = r
+	depends = java-runtime
+	source = https://cran.r-project.org/src/contrib/rJava_0.9-13.tar.gz
+	sha256sums = 5b1688f5044476b34f71d868b222ac5fce3a088f0c2b9e4591c1e48f3d8c75f4
+
+pkgname = r-rjava
+
