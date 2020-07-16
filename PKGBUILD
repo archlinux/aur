@@ -1,8 +1,8 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 
 pkgname=noisetorch-bin
-pkgver=0.3.2_beta
-pkgrel=2
+pkgver=0.3.4_beta
+pkgrel=1
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"

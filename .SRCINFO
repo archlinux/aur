@@ -1,13 +1,13 @@
 pkgbase = noisetorch-bin
 	pkgdesc = Easy to use noise suppression for PulseAudio
-	pkgver = 0.3.2_beta
-	pkgrel = 2
+	pkgver = 0.3.4_beta
+	pkgrel = 1
 	url = https://github.com/lawl/NoiseTorch
 	arch = x86_64
 	license = GPL3
 	optdepends = hicolor-icon-theme
 	provides = noisetorch
-	source = https://github.com/lawl/NoiseTorch/releases/download/0.3.2-beta/NoiseTorch_x64.tgz
+	source = https://github.com/lawl/NoiseTorch/releases/download/0.3.4-beta/NoiseTorch_x64.tgz
 	sha256sums = b283b2fb5db08c790b36ef77a379e75725aa820374821013073713526df94e0a
 
 pkgname = noisetorch-bin
