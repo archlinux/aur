@@ -15,7 +15,8 @@ depends=('python-pyqt5'
          'python-configobj'
          'python-colr'
          'python-pyinquirer'
-         'ttf-fira-code')
+         'ttf-fira-code'
+         'python-prompt_toolkit1014')
 makedepends=('python-pip')
 source=("${pkgname}-${pkgver}-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/a7/0b/8890d405123107ead021b0f6df50d4723c91847e4df3a765b640310544cb/gonha-${pkgver}-py2.py3-none-any.whl"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
