@@ -32,7 +32,7 @@ build() {
 	rm -rf "${srcdir}"
 	mkdir -p "${srcdir}"
 	cd "${srcdir}"
-	npm install @fortawesome/fontawesome-pro@5.13.0
+	npm install @fortawesome/fontawesome-pro@${pkgver}
 }
 
 package() {
