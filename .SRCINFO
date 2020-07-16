@@ -24,7 +24,7 @@ pkgbase = fsleyes
 	depends = python-pytest-timeout
 	depends = python-pytest-xdist
 	depends = python-wxpython>=4.0.1-2
-	depends = fslpy>=3.2.2
+	depends = fslpy>=3.2.0
 	depends = fsleyes-widgets>=0.9.0
 	depends = fsleyes-props>=1.7.0
 	optdepends = fsl: Enable loading standard images and advanced features (highly recommended)

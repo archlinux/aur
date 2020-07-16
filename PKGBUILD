@@ -7,7 +7,7 @@ arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-pathlib2' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-wxpython>=4.0.1-2' 'fslpy>=3.2.2' 'fsleyes-widgets>=0.9.0' 'fsleyes-props>=1.7.0')
+depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-pathlib2' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-wxpython>=4.0.1-2' 'fslpy>=3.2.0' 'fsleyes-widgets>=0.9.0' 'fsleyes-props>=1.7.0')
 optdepends=('fsl: Enable loading standard images and advanced features (highly recommended)'
             'python-wxnatpy: Enable loading overlay from XNAT'
             'python-indexed-gzip: Fast random access of gzipped image files'
