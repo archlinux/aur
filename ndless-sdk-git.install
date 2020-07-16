@@ -1,0 +1,11 @@
+installmsg() {
+	echo -e "\033[1mndless-sdk installed! make sure to relog or source /etc/profile.d/ndless-env.sh\033[0m"
+}
+
+post_install() {
+	installmsg
+}
+
+post_upgrade() {
+	installmsg
+}

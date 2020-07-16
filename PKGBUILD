@@ -1,6 +1,6 @@
 # Maintainer: Noah (coolreader18)
 pkgname=ndless-sdk-git
-pkgver=r451.edaa723
+pkgver=r490.84b8b9f
 pkgrel=1
 pkgdesc="SDK for programs targeting Ndless on the TI-Nspire"
 arch=(x86_64)
@@ -14,11 +14,12 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=('!strip')
-install=
-source=('ndless::git+https://github.com/ndless-nspire/Ndless' ndless.patch)
+install=$pkgname.install
+source=('ndless::git+https://github.com/ndless-nspire/Ndless' ndless.patch ndless-env.sh)
 noextract=()
 md5sums=('SKIP'
-         '85b0d2361dcb73ea6401972534c8a54d'
+         '9559c5c65d9e0956d78b0cf30dd40051'
+         'e33970015b5fa585787e29f7966aaf82'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -78,4 +79,7 @@ package() {
 	for exe in ../share/ndless-sdk/bin/*; do
 		[[ -x $exe ]] && ln -s "$exe" .
 	done
+	local profiled="$pkgdir"/etc/profile.d
+	mkdir -p "$profiled"
+	cp "$srcdir"/ndless-env.sh "$profiled"
 }
