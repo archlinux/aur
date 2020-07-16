@@ -7,7 +7,6 @@ pkgbase = python-gps3
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	conflicts = gonha-git
 	source = python-gps3-0.30.4.tar.gz::https://github.com/wadda/gps3/archive/fackme.tar.gz
 	sha256sums = d6d022854305f0c7b492980f84643d583ed7c32b7b7edbaf2e4747efbd3fb135
 

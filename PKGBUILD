@@ -7,7 +7,6 @@ pkgdesc='Python 2.7 - 3.5 interface to gpsd'
 arch=('any')
 url='https://github.com/fredcox/gonha'
 license=('MIT')
-conflicts=('gonha-git')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wadda/gps3/archive/fackme.tar.gz")
