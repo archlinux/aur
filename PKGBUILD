@@ -2,7 +2,7 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=3.20.0
+pkgver=3.20.1
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/xwiki-labs/cryptpad/archive
         "cryptpad.service"
         "cryptpad.sysusers"
         "cryptpad.tmpfiles")
-sha256sums=('132a774e7a2384f4ead18a54e8fb4ca12bef73ba478aa12f4d49f0dea825cceb'
+sha256sums=('4cfcb4c847ae57fc87a5311fa15d920cce6fcadc3257c3b5f4cbfbbdd728e688'
             '522851fbe4e0e41fd6ece8b2b0ed17bbae0233a58328b7994a5207aa341a635b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             'fa710a977248c1cd2482d4624325d3f8ac8479c9d748dd636077f55f48906d44')
