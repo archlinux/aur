@@ -7,6 +7,7 @@ pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
 url='https://github.com/fredcox/gonha'
 license=('MIT')
+conflicts=('gonha-git')
 depends=('python-pyqt5'
          'python-humanfriendly'
          'python-ewmh'
