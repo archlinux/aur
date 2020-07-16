@@ -2,13 +2,13 @@
 
 pkgname=avif
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD')
-depends=('glibc' 'aom' 'dav1d' 'libjpeg' 'libpng')
-makedepends=('git' 'cmake' 'nasm')
+depends=('glibc' 'dav1d' 'libjpeg' 'rav1e')
+makedepends=('cmake' 'nasm' 'pkgconf' 'gdk-pixbuf2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AOMediaCodec/libavif/archive/v$pkgver.tar.gz")
 sha256sums=('c917f4a27add61b8ad15f328090942d519460b71219f31e60e5fe6aa8cf3dc4e')
 
@@ -22,8 +22,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DAVIF_BUILD_APPS=ON \
-    -DAVIF_CODEC_AOM=ON \
     -DAVIF_CODEC_DAV1D=ON \
+    -DAVIF_CODEC_RAV1E=ON \
+    -DAVIF_BUILD_GDK_PIXBUF=ON \
     ../
   make
 }
