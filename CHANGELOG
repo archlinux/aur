@@ -1,5 +1,9 @@
 2020-07-16 GregTheMadMonk <yagreg7@gmail.com>
 
+	* 1.4.2r243.6261a4a
+	- Fix %%varname%% replacement
+	- Add git revision name to version suffix
+
 	* 1.4.2r231.9f82b84
 	- Improve cvars replacement: %varname% now is replaced with bare varibale value, %%varname%% runs replace_special(value) (mostly for putting '\' before special symbols)
 	- Change package verionening to match (hopefully) VCS packaging guidelines
