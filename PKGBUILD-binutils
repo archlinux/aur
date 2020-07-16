@@ -4,28 +4,32 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=binutils
-pkgver=2.32
-pkgrel=2
+pkgver=2.34
+pkgrel=5
 pkgdesc='A set of programs to assemble and manipulate binary and object files'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 groups=(base-devel)
-depends=(glibc zlib)
-checkdepends=(dejagnu bc)
+depends=(glibc zlib elfutils)
+makedepends=(elfutils git)
 conflicts=(binutils-multilib)
 replaces=(binutils-multilib)
 options=(staticlibs !distcc !ccache)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+_commit=cb5f6a3e146cc70bc2d864989386df80acec5d3e
+source=(git+https://sourceware.org/git/binutils-gdb.git#commit=$_commit)
+#source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+sha256sums=('SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('0d174cdaf85721c5723bf52355be41e6'
-         'SKIP')
 
 prepare() {
+  [[ ! -d binutils-gdb ]] && ln -s binutils-$pkgver binutils-gdb
   mkdir -p binutils-build
 
-  #cd binutils-gdb
-  cd binutils-$pkgver
+  cd binutils-gdb
+
+  # Turn off development mode (-Werror, gas run-time checks, date in sonames)
+  sed -i '/^development=/s/true/false/' bfd/development.sh
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -34,10 +38,11 @@ prepare() {
 build() {
   cd binutils-build
 
-  "$srcdir/binutils-$pkgver/configure" \
+  "$srcdir/binutils-gdb/configure" \
     --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
+    --enable-cet \
     --enable-deterministic-archives \
     --enable-gold \
     --enable-ld=default \
@@ -49,6 +54,7 @@ build() {
     --enable-threads \
     --disable-gdb \
     --disable-werror \
+    --with-debuginfod \
     --with-pic \
     --with-system-zlib
 

@@ -1,6 +1,6 @@
 pkgbase = gnatmem
 	pkgdesc = Monitors dynamic allocation and deallocation activity in a Ada program.
-	pkgver = 2019
+	pkgver = 2020
 	pkgrel = 1
 	url = https://libre.adacore.com/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = gnatmem
 	makedepends = gprbuild
 	makedepends = dejagnu
 	depends = gcc-ada
-	source = http://mirrors.cdn.adacore.com/art/5cdf8e1431e87a8f1d425089
+	source = https://community.download.adacore.com/v1/77354fedca0441f882e17b6a73ac5631bff26237?filename=gnatmem-2020-20200429-19911-src.tar.gz
 	source = PKGBUILD-binutils
-	sha1sums = 0c5410d6d86230d52f91e9a04991a5c42b958ea8
-	sha1sums = eb3289b710e71fc1be47f195dfb8e3a055f30190
+	sha1sums = 77354fedca0441f882e17b6a73ac5631bff26237
+	sha1sums = f1a3a988cf97a5e5f8ec51d1b0fb0f1410ab8e5a
 
 pkgname = gnatmem
 

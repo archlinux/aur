@@ -1,7 +1,7 @@
 # Maintainer:  Rod Kay               <charlie5 on #ada at freenode.net>
 
 pkgname=gnatmem
-pkgver=2019
+pkgver=2020
 pkgrel=1
 pkgdesc="Monitors dynamic allocation and deallocation activity in a Ada program."
 
@@ -12,13 +12,13 @@ license=('GPL V3.0')
 depends=('gcc-ada')
 makedepends=('gprbuild' 'dejagnu')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf8e1431e87a8f1d425089'
+source=('https://community.download.adacore.com/v1/77354fedca0441f882e17b6a73ac5631bff26237?filename=gnatmem-2020-20200429-19911-src.tar.gz'
         'PKGBUILD-binutils')
 
-sha1sums=('0c5410d6d86230d52f91e9a04991a5c42b958ea8'
-          'eb3289b710e71fc1be47f195dfb8e3a055f30190')
+sha1sums=('77354fedca0441f882e17b6a73ac5631bff26237'
+          'f1a3a988cf97a5e5f8ec51d1b0fb0f1410ab8e5a')
 
-_pkg_src_dir="gnatmem-2019-20190429-19745-src"
+_pkg_src_dir="gnatmem-2020-20200429-19911-src"
 
 
 prepare()
@@ -41,7 +41,7 @@ build()
 {
   cd "$srcdir/$_pkg_src_dir"
   ./configure --with-binutils-buildtree=$srcdir/binutils/src/binutils-build \
-              --with-binutils-sources=$srcdir/binutils/src/binutils-2.32
+              --with-binutils-sources=$srcdir/binutils/src/binutils-gdb
   make
 }
 
@@ -53,8 +53,5 @@ package()
   cp obj/gnatmem "$pkgdir/usr/bin"
 
   # Clean up.
-  rm -fr "$srcdir/binutils/src"
-  rm -fr "$srcdir/binutils/pkg"
-  rm "$srcdir/binutils/binutils-2.32.tar.xz"
-  rm "$srcdir/binutils/binutils-2.32.tar.xz.sig"
+  rm -fr "$srcdir/binutils"
 }
