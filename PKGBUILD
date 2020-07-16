@@ -3,7 +3,7 @@
 pkgname=gfourcc
 pkgver=0.1.3.r8.g6219a58
 pkgrel=5
-pkgdesc="GUI Tool written in C++ to change the FOURCC codec and description of an AVI file"
+pkgdesc="GUI Tool for changing the FOURCC code and description of AVI files"
 arch=('i686' 'x86_64')
 url="https://github.com/gamegard68/gfourcc"
 license=('GPL')
