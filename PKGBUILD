@@ -1,8 +1,8 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-git
-pkgver=10245.797433c26
-pkgrel=1
+pkgver=11255.e54af4464
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
@@ -21,8 +21,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
-  sed -i 's/enable-debug=heavy/disable-debug/g' build-debug
-  ./build-debug
+  export LDFLAGS="${LDFLAGS//,--as-needed}"
+  sed -i -e 's/-j3/-j$(nproc)/g' build
+  ./build
 }
 
 package() {
