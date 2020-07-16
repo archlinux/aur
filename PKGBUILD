@@ -1,11 +1,11 @@
 # Maintainer: Michael Bleuez <michael.bleuez2 at gmail dot com>
 
 pkgname='auto-ytdl-git'
-pkgdesc='aytdl, a youtube-dl wrapper with automatisation features for music.'
-pkgver=1.0.0
+pkgdesc='A youtube-dl wrapper with automatisation features. Run from terminal: aytdl'
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
-url='https://github.com/michaelb/auto-ytdl'
+url='https://github.com/michael/auto-ytdl'
 license=('GPL3')
 depends=('ffmpeg' 'youtube-dl')
 makedepends=('python-setuptools' 'git')
