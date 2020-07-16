@@ -1,7 +1,7 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=ttf-font-awesome-pro
 provides=('ttf-font-awesome')
-pkgver=5.13.1
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!'
 arch=('any')
