@@ -1,0 +1,14 @@
+pkgbase = bluetooth-unlock
+	pkgdesc = Simple script to unlock your Linux based Computer using a Bluetooth device when nearby
+	pkgver = V1RC9
+	pkgrel = 1
+	url = https://github.com/LethalEthan/Bluetooth-Unlock
+	arch = any
+	license = MIT
+	depends = python-pybluez
+	depends = tar
+	source = bluetooth-unlock-V1RC9.tar.gz::https://github.com/LethalEthan/Bluetooth-Unlock/archive/BU-V1RC9.tar.gz
+	sha256sums = dbd86cfbc47ae77a8f1369902f893eea420f7ea69dc6a58c5a30f4d60489a568
+
+pkgname = bluetooth-unlock
+
