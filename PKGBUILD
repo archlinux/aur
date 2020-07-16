@@ -2,7 +2,7 @@ pkgname=activitywatch
 pkgver=0.9.2
 pkgrel=1
 url="https://activitywatch.net/"
-licenses=("MPL2")
+license=("MPL2")
 arch=('x86_64')
 depends=(
     'python'  # obviously
@@ -42,7 +42,7 @@ prepare() {
     cd "$srcdir/$pkgname"
 
     git submodule init
-    for submodule in aw-{client,core,qt,server,watcher-{afk,window}}; do
+    for submodule in aw-{core,client,qt,server,watcher-{afk,window}}; do
         git config submodule.$submodule.url "$srcdir/${submodule##*/}"
     done
     git submodule update
@@ -76,6 +76,11 @@ prepare() {
         dephell deps convert --from pyproject.toml --to setup.py
         popd
     done
+
+    pushd aw-core
+    sed -i "s/packages=\\['aw_core'\\]/packages=['aw_core', 'aw_datastore', 'aw_transform', 'aw_query']/" setup.py
+    popd
+
 }
 
 build() {

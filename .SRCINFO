@@ -3,6 +3,7 @@ pkgbase = activitywatch
 	pkgrel = 1
 	url = https://activitywatch.net/
 	arch = x86_64
+	license = MPL2
 	makedepends = python-dephell
 	makedepends = npm
 	depends = python
