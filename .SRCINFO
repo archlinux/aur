@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux application firewall
-	pkgver = 1.0.0rc11.r0.714aa31
+	pkgver = 1.0.0.r5.078df0f
 	pkgrel = 1
 	url = https://github.com/gustavo-iniguez-goya/opensnitch
 	install = opensnitch.install
@@ -11,7 +11,6 @@ pkgbase = opensnitch-git
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = dep
 	makedepends = go
 	makedepends = python-setuptools
 	makedepends = python-grpcio-tools

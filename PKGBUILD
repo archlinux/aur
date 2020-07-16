@@ -3,13 +3,13 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0rc11.r0.714aa31
+pkgver=1.0.0.r5.078df0f
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
-makedepends=('git' 'dep' 'go' 'python-setuptools' 'python-grpcio-tools')
+makedepends=('git' 'go' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
@@ -35,9 +35,6 @@ prepare() {
     # one becomes root or changes the write permissions.
     export GOPATH="$srcdir/gopath"
     go clean -modcache
-
-    cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
-    dep ensure -v
 
     cd "$srcdir/${pkgname%-git}"
     sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
