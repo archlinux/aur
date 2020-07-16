@@ -1,35 +1,37 @@
 # Maintainer: Artem Klevtsov <a.a.klevtsov@gmail com>
-
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=afancontrol
-_name=${pkgname#python-}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Advanced Fan Control program, which controls PWM fans according to the current temperatures of the system components."
 arch=('any')
-url="https://afancontrol.readthedocs.io/en/latest/"
+url="https://github.com/KostyaEsmukov/afancontrol"
 license=('MIT')
 depends=('python-click' 'lm_sensors')
 makedepends=('python-setuptools')
 optdepends=('hddtemp: for measuring HDD/SSD temperatures')
 backup=("etc/$pkgname/$pkgname.conf")
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/KostyaEsmukov/${pkgname}/${pkgver}/LICENSE")
-sha256sums=('3b35bd7256901efc5b55a41e56960384afe3dc58aff12b128533cabe323566d1'
-            'cfbf3d258bc1990f8633f0751cf14515500938a6949ff413f6491dfe4b804d1a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('0c248291d43a31af4e06411a64cfa6623d63bec89b0c3594317388855b4a49cf')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i 's|etc/systemd|lib/systemd|g' setup.py
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+  cd "$pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -d "${pkgdir}/etc/afancontrol"
-  mv "${pkgdir}/usr/etc/afancontrol" "${pkgdir}/etc"
-  install -d "${pkgdir}/usr/lib/systemd"
-  mv "${pkgdir}/usr/etc/systemd" "${pkgdir}/usr/lib"
-  rmdir "${pkgdir}/usr/etc"
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -d "$pkgdir/etc/afancontrol"
+  mv "$pkgdir/usr/etc/afancontrol" "$pkgdir/etc"
+  rmdir "$pkgdir/usr/etc"
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
