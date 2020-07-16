@@ -3,5 +3,6 @@ pkg/
 src/
 suil/
 .AURINFO
-suil-git-*.tar.xz
+suil-git-*.pkg.tar.xz
+suil-git-*.pkg.tar.zst
 suil-git-*.src.tar.gz

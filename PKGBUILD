@@ -2,7 +2,7 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.10.6.r328.0863b8d
+pkgver=0.10.7.r343.b402ae4
 pkgrel=1
 pkgdesc="Lightweight C library for loading and wrapping LV2 plugin UIs (git version)"
 arch=('i686' 'x86_64')
