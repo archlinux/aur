@@ -1,9 +1,9 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
-pkgver=2.10.2+p23+ga44347475
+pkgver=2.10.2+p40+gb7c467b6e
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -21,7 +21,6 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
         0005-Enable-old-engines-but-keep-adobe-as-default.patch
-        freetype-2.5.2-more-demos.patch
         freetype2.sh)
 sha256sums=('SKIP'
             'SKIP'
@@ -30,7 +29,6 @@ sha256sums=('SKIP'
             'b92a8421ea4ab3e7ee7173f7de51d98bff376663662772a952e7a4cad4bf10f3'
             'df0c73f02040c64bed479e41b86da7a4890d1ab31eab20c75e850aab1b86250b'
             '1b7d38b082d32b19d5fd21c17c9ae187ada00f9c978dc2877edebbe19a9da9ed'
-            '36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b'
             'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -58,8 +56,6 @@ prepare() {
   ./autogen.sh
 
   cd ../freetype2-demos
-  # enable more demos
-  patch -Np1 -i ../freetype-2.5.2-more-demos.patch
 
   # Suppress RPATH
   sed -i '/X11_LIB:%=-R%/d' graph/x11/rules.mk
