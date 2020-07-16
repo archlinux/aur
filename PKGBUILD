@@ -2,9 +2,9 @@
 
 pkgbase=bitcoinhd
 pkgname=('bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-qt' 'bitcoinhd-tx')
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
-commit=52bb5b0fd
+commit=7fe720529
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://btchd.org/"
 license=('MIT')
@@ -18,16 +18,16 @@ source_x86_64=("$pkgbase-$pkgver-x86_64.tar.gz::https://github.com/btchd/btchd/r
 source_i686=("$pkgbase-$pkgver-i686.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-$commit-i686-linux-gnu.tar.gz")
 source_armv7h=("$pkgbase-$pkgver-armv7h.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-$commit-arm-linux-gnueabihf.tar.gz")
 source_aarch64=("$pkgbase-$pkgver-aarch64.tar.gz::https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-$commit-aarch64-linux-gnu.tar.gz")
-sha256sums=('49bdee4de3979c6e8ef3913e9e5a15f758d81e7d14caca8be17d303beaa50f4f'
+sha256sums=('d8e5713d68156ca48b4995e0bef6097f1c420126939c95200d9a5cff9896365e'
             'b3457e63ea098aa055655ad1d5cc7800f100f84b4e66f80e737d337a49672d8b'
             '8ae5cb7326f3c2525ca94f6b917d3f8f38b5027425133c40172c663946a92e33'
             'b53073ee92683cf2dc82cac1ea551f5bfdc6ddf0715d69be0ee1a7908051ef1d'
             '4b1172d754df7ac84b7e5525a122abde0a0ef6ca45319eaca5838b026c169b84'
             '0c968e539ec298a8fc2cd691ccabd5cddb9b8c7e7035fe3061f4db9fd4e6d604')
-sha256sums_x86_64=('fc6d4ff462bf8831f7114fdf67421b56605d6d94a39345f0aaf24dc6422e2805')
-sha256sums_i686=('5c0a9a7dbef91806331ecb2d64aa2d79b5904f6eaab2dfae50baa1662a3a1924')
-sha256sums_armv7h=('652d1a575d497a5af6766b6f75c66490f4bece7aa6f8204a156b70fed9991b67')
-sha256sums_aarch64=('47dfbc3e7ad25ffd88b95507dbdb6a487f388cb823852c72f3d3b7968fb01632')
+sha256sums_x86_64=('d5c1887693c2f9d56f44476315ac2f7c68c5ac9751d23c1b988b3ea6e15108bf')
+sha256sums_i686=('f9a435277a30ee075da989bf13fdfaa4b2c6fd20e274252c6936acf9721f281f')
+sha256sums_armv7h=('1e5abee5de2533fb60ada173314fdd710692ac6ec41d0076b71585202295b331')
+sha256sums_aarch64=('5640f2115e6e38e4124442b04d58d06f7abfed84a41fab81c1b2900618344bb3')
 
 package_bitcoinhd-qt() {
 	pkgdesc="BitcoinHD is a peer-to-peer network based digital currency - Qt"
