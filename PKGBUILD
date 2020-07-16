@@ -2,11 +2,12 @@
 
 pkgname=element-desktop
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one secure chat app for teams, friends and organisations."
 arch=('x86_64')
 url="https://element.io"
 license=('Apache')
+depends=(sqlcipher)
 source=("https://packages.riot.im/debian/pool/main/e/element-desktop/element-desktop_${pkgver}_amd64.deb"
         "element-desktop.sh")
 sha256sums=('6b5fdbed7ec8fc50b9729452b2a022bd6e4e9d85a4318776b1dbe03f1b29ae5f'
