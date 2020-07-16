@@ -1,31 +1,27 @@
 # Maintainer: zenekron <zenekron@gmail.com>
-
 pkgname=neovim-plug-git
-pkgver=r608.e6a775e
+pkgver=0.10.0.r38.c319036
 pkgrel=1
-pkgdesc="Minimalist Neovim Plugin Manager"
+pkgdesc="A minimalist Vim plugin manager"
+arch=("any")
 url="https://github.com/junegunn/vim-plug"
 license=("MIT")
-source=("$pkgname::git+https://github.com/junegunn/vim-plug")
-md5sums=("SKIP")
-arch=("any")
 depends=("neovim")
-conflicts=("neovim-plug")
+makedepends=("git")
 provides=("neovim-plug")
+conflicts=("neovim-plug")
+source=("$pkgname::git+https://github.com/junegunn/vim-plug.git")
+md5sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r%s.%s" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm 644 "plug.vim" \
-		"$pkgdir/usr/share/nvim/runtime/autoload/plug.vim"
-	install -Dm 644 "LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 "plug.vim" "$pkgdir/usr/share/nvim/runtime/autoload/plug.vim"
+	install -Dm 644 "LICENSE"  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim: set ts=4 sw=4:
+# vim: set tabstop=4 shiftwidth=4 colorcolumn=100 :
