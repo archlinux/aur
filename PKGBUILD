@@ -2,8 +2,8 @@
 
 pkgname="ttf-sipa-dip"
 pkgver=1.0
-pkgrel=1
-depends=("fontconfig" "xorg-font-utils")
+pkgrel=2
+depends=()
 optdepends=("ttf-th-sarabun-new: Improved version of TH SarabunPSK")
 pkgdesc="Thai formal standard fonts from SIPA"
 arch=("any")
@@ -17,4 +17,3 @@ package() {
     install -d -m 755 "${pkgdir}/usr/share/fonts/TTF"
     install -m 644 "${srcdir}/${pkgname}-${pkgver}/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
 }
-

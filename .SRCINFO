@@ -1,12 +1,10 @@
 pkgbase = ttf-sipa-dip
 	pkgdesc = Thai formal standard fonts from SIPA
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.f0nt.com/release/13-free-fonts-from-sipa
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	optdepends = ttf-th-sarabun-new: Improved version of TH SarabunPSK
 	source = https://jaist.dl.sourceforge.net/project/thaiopensource/font/sipa-dip-font.zip
 	sha256sums = 575b7bf6e27a589d754569b608f784b1451ba0b35681a4a3187fd0e9335fb8f0
