@@ -1,6 +1,6 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
-	pkgver = r1935.5f3675b8
+	pkgver = r1994.30383ff6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/google/fonts
@@ -8,6 +8,7 @@ pkgbase = ttf-google-fonts-git
 	license = custom:SIL Open Font License
 	license = custom:Ubuntu Font License v1.0
 	makedepends = git
+	makedepends = fontconfig
 	depends = noto-fonts
 	depends = noto-fonts-extra
 	depends = ttf-fira-sans
