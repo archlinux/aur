@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-suitesparse
 	pkgdesc = A collection of sparse matrix libraries (mingw-w64)
-	pkgver = 5.8.0
-	pkgrel = 2
+	pkgver = 5.8.1
+	pkgrel = 1
 	url = http://www.cise.ufl.edu/research/sparse/SuiteSparse/
 	arch = any
 	license = GPL
@@ -9,12 +9,13 @@ pkgbase = mingw-w64-suitesparse
 	makedepends = mingw-w64-make
 	depends = mingw-w64-lapack
 	depends = mingw-w64-metis
+	depends = mingw-w64-mpfr
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.8.0.tar.gz
+	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.8.1.tar.gz
 	source = suitesparse-no-demo.patch
-	sha256sums = 94a9b7134eb4dd82b97f1a22a6b464feb81e73af2dcdf683c6f252285191df1d
+	sha256sums = 06726e471fbaa55f792578f9b4ab282ea9d008cf39ddcc3b42b73400acddef40
 	sha256sums = SKIP
 
 pkgname = mingw-w64-suitesparse

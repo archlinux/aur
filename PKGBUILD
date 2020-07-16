@@ -1,15 +1,15 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.8.0
-pkgrel=2
+pkgver=5.8.1
+pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="http://www.cise.ufl.edu/research/sparse/SuiteSparse/"
 arch=('any')
-depends=('mingw-w64-lapack' 'mingw-w64-metis')
+depends=('mingw-w64-lapack' 'mingw-w64-metis' 'mingw-w64-mpfr')
 makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('94a9b7134eb4dd82b97f1a22a6b464feb81e73af2dcdf683c6f252285191df1d' SKIP)
+sha256sums=('06726e471fbaa55f792578f9b4ab282ea9d008cf39ddcc3b42b73400acddef40' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,6 +36,11 @@ prepare () {
   sed -i "s|nzmax = std::max(nzmax, 1L)|nzmax = std::max(nzmax, (csi)1)|g" Mongoose/Source/Mongoose_CSparse.cpp
   sed -i "s|Int M, N, nz;|long M, N, nz;|g" Mongoose/Source/Mongoose_IO.cpp
   sed -i "s|mm_read_mtx_crd_data(file, M, N, nz, I, J, val, matcode);|mm_read_mtx_crd_data(file, M, N, nz, (long*)I, (long*)J, val, matcode);|g" Mongoose/Source/Mongoose_IO.cpp
+
+  # sliplu is weirder
+  sed -i "s|default: C|default: library|g" SLIP_LU/Makefile
+  sed -i "/SO_PLAIN/d" SLIP_LU/Lib/Makefile
+  sed -i "/SO_MAIN/d" SLIP_LU/Lib/Makefile
 }
 
 build() {
@@ -59,6 +64,7 @@ package() {
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
       DESTDIR="${pkgdir}" INSTALL="${pkgdir}"/usr/${_arch}
+    mv "${pkgdir}"/usr/${_arch}/lib/libsliplu.dll "${pkgdir}"/usr/${_arch}/bin
     rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     rm -rf "${pkgdir}"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
