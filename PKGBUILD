@@ -51,7 +51,7 @@ if [ "$CARCH" == "armv7h" ]; then
     sha256sums_armv7h=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
 fi
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
+    cd "${srcdir}/${PKGBASE}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
 
     # Don't do stupid things from a Makefile
     msg2 "Patching Makefile..."
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
+    cd "${srcdir}/${PKGBASE}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
 
     make prefix="$pkgdir/usr" install
 
