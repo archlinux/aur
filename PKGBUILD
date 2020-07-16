@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
 pkgname=nextplayer-appimage
 pkgver=1.7.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A blue-ray player for MacOS, Linux and FreeBSD, originally named TheNewPlayerFree."
 arch=("x86_64")
 url="https://sudormroot.github.io/nextplayer-project/"
