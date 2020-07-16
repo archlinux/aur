@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.7.r1260.d1c9d1b
+pkgver=0.24.9.r1287.81babb7
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')

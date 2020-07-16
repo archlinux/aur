@@ -3,5 +3,6 @@ lilv/
 pkg/
 src/
 .AURINFO
-lilv-git-*.tar.xz
+lilv-git-*.pkg.tar.xz
+lilv-git-*.pkg.tar.zst
 lilv-git-*.src.tar.gz
