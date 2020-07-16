@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=LitecoinHD Core
+Comment=Connect to the LitecoinHD P2P Network
+Comment[de]=Verbinde mit dem LitecoinHD peer-to-peer Netzwerk
+Comment[fr]=LitecoinHD, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=LitecoinHD, eşten eşe kriptografik sanal para birimi
+Exec=lhd-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/ltchd128.png
+MimeType=x-scheme-handler/ltchd;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=litecoinhd-qt
