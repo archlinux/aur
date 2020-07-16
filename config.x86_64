@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.8 Kernel Configuration
+# Linux/x86 5.7.9 Kernel Configuration
 #
 
 #
@@ -393,6 +393,7 @@ CONFIG_X86_MCE_INJECT=m
 #
 # Performance monitoring
 #
+CONFIG_PERF_EVENTS_INTEL_RAPL=y
 CONFIG_PERF_EVENTS_AMD_POWER=m
 # end of Performance monitoring
 
