@@ -7,15 +7,15 @@
 pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
-pkgver=13.0
-pkgrel=4
+pkgver=r9414.cbc09c9f1
+pkgrel=2
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
-             xmltoman)
+             xmltoman libopenaptx)
 _branch=hsphfpd
 source=("git+https://gitlab.freedesktop.org/pali/pulseaudio.git#branch=$_branch"
         0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
