@@ -2,13 +2,13 @@
 
 pkgname=bao
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
 url="https://github.com/oconnor663/bao"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'rust')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oconnor663/bao/archive/$pkgver.tar.gz")
 sha256sums=('07ce6ea6d82448ca3bff34f64b1ba5c3c49fb138dab316f5cadee1c8895a7579')
 
