@@ -1,0 +1,18 @@
+pkgbase = libexplain
+	pkgver = 1.4.D001
+	pkgrel = 10
+	url = http://libexplain.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPLv2
+	makedepends = libcap
+	makedepends = lsof
+	makedepends = libtool
+	makedepends = groff
+	makedepends = bison
+	makedepends = gcc
+	source = git+https://salsa.debian.org/debian/libexplain#tag=debian/1.4.D001-10
+	sha256sums = SKIP
+
+pkgname = libexplain
+
