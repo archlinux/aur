@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>, Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=0.99.0
+pkgver=0.99.1
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
     'xdg-utils: for opening the ProtonDB URL of started game'
     'nyrna: for using nyrna per game'
 )
-_commit='c65f5ac248fb28fa6baab47dfb064496d297e0d9'
+_commit='c10d1ab0f58b2403a4efc62b9877d939b95a9264'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
