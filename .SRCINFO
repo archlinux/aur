@@ -1,0 +1,19 @@
+pkgbase = localxpose-gui
+	pkgdesc = A reverse proxy that enables you to expose your localhost to the internet
+	pkgver = latest
+	pkgrel = 1
+	url = https://localxpose.io
+	arch = x86_64
+	license = custom:localxpose-gui
+	makedepends = gendesk
+	depends = zlib
+	provides = localxpose
+	noextract = localxpose-gui-latest.AppImage
+	options = !strip
+	source = localxpose-gui-latest.AppImage::https://lxpdownloads.sgp1.digitaloceanspaces.com/gui/LocalXpose-linux-amd64.AppImage
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = localxpose-gui
+
