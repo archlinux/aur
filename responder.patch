@@ -18,7 +18,7 @@ diff -ura Responder-2.3.3.8/settings.py res.new/settings.py
  		config = ConfigParser.ConfigParser()
  		config.read(os.path.join(self.ResponderPATH, 'Responder.conf'))
  
-+                self.LogPath = config.get('Responder Core', 'LogPath')
++		self.LogPath = config.get('Responder Core', 'LogPath')
 +
  		# Servers
  		self.HTTP_On_Off     = self.toBool(config.get('Responder Core', 'HTTP'))
