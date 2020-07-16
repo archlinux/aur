@@ -1,11 +1,11 @@
 # Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
-# Upstream Maintainer: Stefano Capitani <stefanoatmanjarodororg>
-# Contributor: star2000 <i@star2000.work>
+# Maintainer: star2000 <i@star2000.work>
+# Contributor: Stefano Capitani <stefanoatmanjarodororg>
 
 pkgbase=manjaro-asian-input-support
 pkgname=('ibus-input-support' 'fcitx-input-support' 'fcitx5-input-support')
 pkgver=2020.07
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support"
 license=('GPL')
@@ -17,11 +17,11 @@ source=(
 	'fcitx5.profile'
 	'ibus.desktop'
 )
-md5sums=('fdbfae1bba8012daf984a76d7004ae3e'
-	'b974be25b7f91c392009cb8d9f1bd5b4'
-	'97a5be2b8ff8c0fc895d9ef21531e698'
-	'3578677a7102c9f8be3b9f7ea7d3d06f'
-	'f1a9f3406f8268383149889f4816cd52')
+md5sums=('42db8df96db00e8fcc023b7bc9135b21'
+         '1a68e770b9f426301b6a08fe8edb47f1'
+         '97a5be2b8ff8c0fc895d9ef21531e698'
+         '3578677a7102c9f8be3b9f7ea7d3d06f'
+         'f1a9f3406f8268383149889f4816cd52')
 install=input-support.install
 conflicts=(
 	"${pkgbase}-ibus"
