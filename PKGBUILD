@@ -2,8 +2,8 @@
 # Contributor: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
 pkgname=(barrier barrier-headless)
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 arch=(x86_64)
 url="https://github.com/debauchee/barrier"
@@ -12,10 +12,17 @@ changelog=CHANGELOG.rst
 depends=(curl avahi libx11 libxrandr libxext
         libxinerama xorgproto libxtst libxi
         libsm libice openssl)
-makedepends=(cmake qt5-base hicolor-icon-theme)
+makedepends=(cmake qt5-base hicolor-icon-theme gtest gmock)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/debauchee/barrier/archive/v${pkgver}.tar.gz")
-sha256sums=('6b92a70c5f4d625065842d133386982ec2ad1db2a809af47e46ab8ce2acd39b5')
+sha256sums=('259e75c150ca16d9db51870b026dc7aad56c410fa3d2f5fdccc19d4b6024bdc5')
 
+prepare() {
+    cd "barrier-${pkgver}"
+    # Doesn't build!
+    rm -rf ext/{gmock,gtest}
+    sed -i 's|add_library.*||g' src/test/CMakeLists.txt 
+    sed -i 's|set_target_properties.*||g' src/test/CMakeLists.txt 
+}
 
 build() {
     cd "barrier-${pkgver}"
@@ -31,6 +38,7 @@ build() {
         ..
     make
 }
+
 
 _package_common() {
     # Install binaries:
