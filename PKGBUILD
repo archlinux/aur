@@ -1,7 +1,7 @@
 # Maintainer: John Lane <archlinux at jelmail.com>
 
 pkgname=aws-vault-bin
-pkgver=5.3.2
+pkgver=5.4.4
 pkgrel=1
 pkgdesc="a tool to securely store and access AWS credentials in a development environment"
 url="https://github.com/99designs/aws-vault"
@@ -14,7 +14,7 @@ source=(
   "aws-vault-linux-amd64-${pkgver}::https://github.com/99designs/aws-vault/releases/download/v${pkgver}/aws-vault-linux-amd64"
 )
 sha256sums=('f57f886a33e0ae7b50093f19051e65edcd1fde7cde63caa6b1ba4254856f4e4f'
-            'a537e1f4a2286cdf0c6c21dc41e64f30dc7e457ad5d8a21fbc9099bb7666c9c3')
+            '216695e63583296fd7b4202f86479af8da3a7fb00929a22952e9d4bc95fd0d66')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
