@@ -1,7 +1,7 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=440.100
+pkgver=450.57
 pkgrel=1
 _goodkver=5.7
 _badkver=5.8
@@ -22,9 +22,8 @@ provides=('NVIDIA-MODULE')
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-       'nvidia-kernel-5.7.patch')
-md5sums=('5f2e7adbf4a8ed546b32614c4d93ea8f'
-         '8b0b4fd32275a4745d55ea391f23a43e')
+       )
+md5sums=('4dbad4c85829ffdad901827404edb155')
 
 
 
@@ -37,7 +36,6 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
-  patch -Np1 -i "${srcdir}/nvidia-kernel-5.7.patch"
 }
 
 build() {
