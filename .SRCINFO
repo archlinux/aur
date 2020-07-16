@@ -15,6 +15,7 @@ pkgbase = gonha-git
 	depends = python-colr
 	depends = python-pyinquirer
 	depends = ttf-fira-code
+	depends = python-prompt_toolkit1014
 	provides = gonha
 	conflicts = gonha
 	source = gonha::git+https://github.com/fredcox/gonha

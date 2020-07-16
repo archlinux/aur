@@ -16,7 +16,8 @@ depends=('python-pyqt5'
          'python-configobj'
          'python-colr'
          'python-pyinquirer'
-         'ttf-fira-code')
+         'ttf-fira-code'
+         'python-prompt_toolkit1014')
 makedepends=('python-setuptools' 'git')
 source=("${pkgname%-git}::git+https://github.com/fredcox/gonha")
 sha256sums=('SKIP')
