@@ -2,7 +2,7 @@
 
 _pkgname=sord
 pkgname="${_pkgname}-git"
-pkgver=0.16.4.r419.421e37d
+pkgver=0.16.4.r421.61d9657
 pkgrel=1
 pkgdesc="Lightweight C library for storing RDF statements in memory (git version)"
 arch=('i686' 'x86_64')

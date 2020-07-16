@@ -1,6 +1,6 @@
 pkgbase = sord-git
 	pkgdesc = Lightweight C library for storing RDF statements in memory (git version)
-	pkgver = 0.16.4.r419.421e37d
+	pkgver = 0.16.4.r421.61d9657
 	pkgrel = 1
 	url = http://drobilla.net/software/sord/
 	arch = i686
