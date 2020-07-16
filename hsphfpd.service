@@ -1,0 +1,12 @@
+[Unit]
+Description=hsphfpd
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hsphfpd.pl
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

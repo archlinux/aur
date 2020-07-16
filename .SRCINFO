@@ -1,0 +1,17 @@
+pkgbase = hsphfpd-git
+	pkgdesc = Prototype implementation for connecting Bluetooth devices with HSP and HFP profiles
+	pkgver = r8.9760a29
+	pkgrel = 1
+	url = https://github.com/pali/hsphfpd-prototype
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = perl-net-dbus
+	provides = hsphfpd
+	source = hsphfpd::git+https://github.com/pali/hsphfpd-prototype.git
+	source = hsphfpd.service
+	md5sums = SKIP
+	md5sums = 7fb422837e52fbe1fbc8c274839ed37f
+
+pkgname = hsphfpd-git
+
