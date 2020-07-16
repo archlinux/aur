@@ -11,10 +11,8 @@ license=('BSD')
 depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
 makedepends=('git' 'gperf' 'ghc' 'tcl')
 optdepends=('tcl: bluesim and bluetcl')
-source=("git+https://github.com/b-lang-org/bsc.git"
-        "172.patch")
-sha256sums=('SKIP'
-            '6348a39c84eb57920d05e44813bb233ea105e9f7a426255e45286f27ba7c3067')
+source=("git+https://github.com/b-lang-org/bsc.git")
+sha256sums=('SKIP')
 _prefix="/opt/bluespec"
 
 pkgver() {
@@ -25,7 +23,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/bsc"
   git submodule update --init --recursive
-  patch -Np1 -i ../172.patch
 }
 
 build(){

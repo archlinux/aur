@@ -15,9 +15,7 @@ pkgbase = bluespec-git
 	depends = haskell-split
 	optdepends = tcl: bluesim and bluetcl
 	source = git+https://github.com/b-lang-org/bsc.git
-	source = 172.patch
 	sha256sums = SKIP
-	sha256sums = 6348a39c84eb57920d05e44813bb233ea105e9f7a426255e45286f27ba7c3067
 
 pkgname = bluespec-git
 
