@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=zapret-git
 pkgver=r85.50a0668
-pkgrel=2
+pkgrel=3
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('systemd' 'ipset' 'curl')
 #makedepends=()
 backup=('opt/zapret/config')
-provides=('zapret-git' 'zapret')
+provides=('zapret')
 conflicts=('zapret')
 source=("git+https://github.com/bol-van/zapret.git")
 validpgpkeys=('916961EE198832DD70B628B356DB0538F60D951C')
