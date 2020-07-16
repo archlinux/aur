@@ -11,8 +11,8 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.2.0_devel.125631.ab9ecb607b8
-pkgrel=1
+pkgver=20.2.0_devel.126148.97f8ec321b7
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -98,7 +98,7 @@ prepare() {
 
 build () {
     meson setup mesa _build \
-       -D b_ndebug=true \
+       -D b_ndebug=false \
        -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
@@ -155,5 +155,5 @@ package() {
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
   
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
+    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
 }
