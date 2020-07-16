@@ -1,6 +1,6 @@
 pkgbase = xmrig-bin
 	pkgdesc = Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level
-	pkgver = 6.2.2
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	install = xmrig.install
@@ -12,9 +12,9 @@ pkgbase = xmrig-bin
 	provides = xmrig
 	conflicts = xmrig
 	replaces = xmrig
-	source = https://github.com/xmrig/xmrig/releases/download/v6.2.2/xmrig-6.2.2-xenial-x64.tar.gz
-	source = https://raw.githubusercontent.com/xmrig/xmrig/v6.2.2/README.md
-	sha256sums = fc1c1809bc8dd175e2d694e1e8729bf700be8b2fbd2b499a7def3af3ade84640
+	source = https://github.com/xmrig/xmrig/releases/download/v6.2.3/xmrig-6.2.3-xenial-x64.tar.gz
+	source = https://raw.githubusercontent.com/xmrig/xmrig/v6.2.3/README.md
+	sha256sums = a79d4f5633dbbe98842d5073b41cc25468679c46e011373587ffdbc544d1ea12
 	sha256sums = 853f320fe934698913073ae0128459252f159f477aa71e1d8e9571056f19d027
 
 pkgname = xmrig-bin
