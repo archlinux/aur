@@ -1,7 +1,7 @@
 pkgbase = pyrescene-hg
 	pkgdesc = pyReScene is a port of ReScene .NET to the Python programming language.
 	pkgver = 816
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/Gfy/pyrescene-hg
 	arch = any
 	license = MIT
