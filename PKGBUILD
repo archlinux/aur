@@ -2,8 +2,8 @@
 # URL: https://github.com/michaelbeaumont/aur-packages
 
 pkgname=sops
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/mozilla/sops'
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a9c257dc5ddaab736dce08b8c5b1f00e6ca1e3171909b6d7385689044ebe759b')
+sha256sums=('fee1c27f14f9f45b5955627e301aafcc38973c9458b25f99ef241bdd0a3b082c')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -30,5 +30,3 @@ package() {
   install -Dm755 sops "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
-
-# vim:set ts=2 sw=2 et:
