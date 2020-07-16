@@ -1,6 +1,6 @@
 pkgbase = cudatext-gtk2-bin
 	pkgdesc = Cross-platform text editor, written in Lazarus
-	pkgver = 1.107.0
+	pkgver = 1.107.0.0
 	pkgrel = 1
 	url = http://uvviewsoft.com/cudatext
 	arch = x86_64
