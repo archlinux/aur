@@ -16,6 +16,7 @@ pkgbase = gonha-git
 	depends = python-pyinquirer
 	depends = ttf-fira-code
 	provides = gonha
+	conflicts = gonha
 	source = gonha::git+https://github.com/fredcox/gonha
 	sha256sums = SKIP
 

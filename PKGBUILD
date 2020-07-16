@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/fredcox/gonha'
 license=('MIT')
 provides=('gonha')
+conflicts=('gonha')
 depends=('python-pyqt5'
          'python-humanfriendly'
          'python-ewmh'
