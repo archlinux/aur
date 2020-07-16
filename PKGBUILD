@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL2')
 depends=('r' 'java-runtime' )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("${_cranname}_${_cranver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('5b1688f5044476b34f71d868b222ac5fce3a088f0c2b9e4591c1e48f3d8c75f4')
   
 build() {
