@@ -1,0 +1,20 @@
+pkgbase = dte-git
+	pkgdesc = A small, configurable console text editor
+	pkgver = 1.9.1+587+g626bdc94
+	pkgrel = 1
+	url = https://craigbarnes.gitlab.io/dte/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	provides = dte
+	conflicts = dte
+	source = git+https://gitlab.com/craigbarnes/dte.git
+	sha256sums = SKIP
+
+pkgname = dte-git
+
