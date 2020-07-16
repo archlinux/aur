@@ -3,8 +3,8 @@
 
 pkgname=python-bibtexparser
 _name=${pkgname#python-}
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://pypi.org/project/bibtexparser/"
@@ -13,7 +13,7 @@ depends=('python' 'python-pyparsing' 'python-future')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('df8966ea752db6d74657a69b9d684a61aa33457ad6d9d50e41c50ef7f374907f')
+sha256sums=('0f9ab94e3fc36ee2ee6a3713c5dd7320d4b6ee52bd66ecbab03c6b06675ae410')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
