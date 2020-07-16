@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gonha-git
-pkgver=r49.85c99de
+pkgver=0.1.24.r49.85c99de
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -14,14 +14,15 @@ depends=('python-pyqt5'
          'python-pathlib'
          'python-configobj'
          'python-colr'
-         'python-pyinquirer')
+         'python-pyinquirer'
+         'ttf-fira-code')
 makedepends=('python-setuptools' 'git')
 source=("${pkgname%-git}::git+https://github.com/fredcox/gonha")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$(grep -Pom1 "(\d+\.)+\d+" setup.py).r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

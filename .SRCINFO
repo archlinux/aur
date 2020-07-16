@@ -1,6 +1,6 @@
 pkgbase = gonha-git
 	pkgdesc = Light-weight system monitor for Linux
-	pkgver = r49.85c99de
+	pkgver = 0.1.24.r49.85c99de
 	pkgrel = 1
 	url = https://github.com/fredcox/gonha
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = gonha-git
 	depends = python-configobj
 	depends = python-colr
 	depends = python-pyinquirer
+	depends = ttf-fira-code
 	provides = gonha
 	source = gonha::git+https://github.com/fredcox/gonha
 	sha256sums = SKIP
