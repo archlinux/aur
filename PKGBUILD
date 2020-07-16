@@ -8,7 +8,7 @@ _pkgname=NetworkManager-l2tp
 pkgver=1.8.2
 pkgrel=1
 pkgdesc='L2TP support for NetworkManager'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
 license=('GPL2')
 depends=('libnm>=1.8' 'ppp' 'xl2tpd' 'libsecret' 'openssl>=1.1.0' 'nss')
