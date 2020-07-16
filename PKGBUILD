@@ -2,9 +2,9 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=sway
-pkgver=1.4
+pkgver=1.5
 epoch=1
-pkgrel=9
+pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -38,7 +38,7 @@ optdepends=(
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
         "50-systemd-user.conf")
-sha512sums=('3b280bdfdbdae8fb9b4f555bc630c64e7c1d09f7b2c783b99413863a6b620d50cd2b6d10d63e11fdfb9c678fce9a403228ac52fa69fb52561ffbd06790505a71'
+sha512sums=('702e44f8923a4ca05d831dd7ed76165654f113a8b2754d332c509ee844528f47c52b7f21deca78d4a79dad465cbcd0934574fff4ad9bb7a45aec3124dea5bca4'
             'SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 validpgpkeys=('9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
