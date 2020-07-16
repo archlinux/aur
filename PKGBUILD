@@ -68,12 +68,12 @@ MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
 NOGZ="YES"        # Don't compress .el files.
 FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
                   # deferred compilation to native-compile on-demand at runtime.
-PROFILING="YES"        # Enable gprof profiling support.
+PROFILING=        # Enable gprof profiling support.
 ################################################################################
 
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
-pkgver=28.0.50.142625
+pkgver=28.0.50.142686
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch."
 arch=('x86_64' )
@@ -323,7 +323,6 @@ package() {
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chown -R root:games "$pkgdir"/var/games
-
 }
 
 ################################################################################
