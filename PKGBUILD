@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.8
+pkgver=5.7.9
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -86,15 +86,14 @@ source=(
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
-  0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-  0005-Arch-Linux-kernel-v5.7.8-arch1.patch
+  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('afb577b88e400758ea64109937bb514ab8171fe9c5613138928ac232a3844dc6'
+sha256sums=('a87d3066a7849cd6ba9a004311a9ee0402d29d17f12f64ad7d942447070b43f8'
             'SKIP'
             'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
@@ -102,11 +101,10 @@ sha256sums=('afb577b88e400758ea64109937bb514ab8171fe9c5613138928ac232a3844dc6'
             '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328'
             '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '42ae58801f336060edb644d87893c84bad689546f0504f19a03bfe350fb16dc8'
-            '504bb0b670eb8786fc9da0928db0dcb4e302e43ab8bd398f54e33ac860bd1c60'
-            'e0612815268040772a49e7730521573b91efb495e7308ad707a74f3a7c3e04ef'
-            '32179d328fcffbff4b7f4d7b54d53da799d8086dac867c6ee5a241c20f5e6fb4'
-            '10087dc38ef6115625ebaa8906b4a9619f1629d4745b0a5a9f402c4575f74ad6')
+            'e94914b0fe6bfeb4cb664aaa6297b86c221080bf85a73a3966555bac79aaca78'
+            '85d925e28e3aaa34cbd3504dddd9e79b6ac103637a4719d1c305d68bf11a624b'
+            '436adb183f5c2b990fae1c966a73c2691553e0dff01d5d9886d91eb885fa393f'
+            'eb66e9d5f2ec2b6d65c39316d95d2a1854ec4c6815ae4789d84afcd20800cf79')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
