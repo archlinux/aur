@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=zapret-git
 pkgver=r85.50a0668
-pkgrel=4
+pkgrel=5
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
@@ -15,9 +15,12 @@ depends=('systemd' 'ipset' 'curl')
 backup=('opt/zapret/config')
 provides=('zapret')
 conflicts=('zapret')
-source=("git+https://github.com/bol-van/zapret.git")
-validpgpkeys=('916961EE198832DD70B628B356DB0538F60D951C')
-md5sums=('SKIP')
+source=(
+   "git+https://github.com/bol-van/zapret.git"
+   "sysusers.conf"
+)
+sha256sums=('SKIP'
+            '25c309e2ec545c9ee53759e23961c8a3f02708a7ba8dcbabab6eb681a36c03c0')
 pkgver()
 {
    cd "$srcdir/${pkgbase%-git}"
@@ -41,6 +44,8 @@ _package_common()
    install -Dm644 init.d/systemd/*  -t "$pkgdir/usr/lib/systemd/system"
    install -Dm755 init.d/sysv/*     -t "$pkgdir/opt/zapret/init.d/sysv"
    install -Dm644 config               "$pkgdir/opt/zapret/config"
+   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/zapret.conf"
+   sed -ri 's/^#?WS_USER=.*$/WS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
 }
 package_zapret-nfqws-git() {
    cd "$srcdir/${pkgbase%-git}"
