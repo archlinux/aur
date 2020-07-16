@@ -1,14 +1,14 @@
 pkgbase = mend
 	pkgdesc = A notetaking application leveraging a PostgreSQL database
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 0
 	url = https://github.com/MarkusG/mend
 	arch = any
 	license = GPL3
 	makedepends = meson
 	depends = postgresql-libs
-	source = https://github.com/MarkusG/mend/archive/v0.1.1.tar.gz
-	sha512sums = 51e46fe9af0af8469e9bc3977af2ee890f87cd9ac831a5d89dcc9a1f1185b143bc9ebb68891a746747df38670a818111d299c2e4a1a9cd433c38138949612061
+	source = https://github.com/MarkusG/mend/archive/v0.1.2.tar.gz
+	sha512sums = 74210c1e7988458ca91389d3a7499c438ab20e040793dc023dabb73a6a64ca5659e24680cbce4361c59076f5b378dee9a1e610cab9e9cbefaccc89c6afa14197
 
 pkgname = mend
 
