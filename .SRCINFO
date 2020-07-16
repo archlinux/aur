@@ -1,0 +1,20 @@
+pkgbase = lplayer-git
+	pkgdesc = A simple audio player for simply listening music or whatever you want
+	pkgver = r65.e241d26
+	pkgrel = 1
+	url = https://github.com/atareao/lplayer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-mutagen
+	depends = python-dbus
+	depends = python-requests
+	depends = gobject-introspection
+	depends = gstreamer
+	depends = hicolor-icon-theme
+	provides = lplayer
+	source = lplayer::git+https://github.com/atareao/lplayer
+	sha256sums = SKIP
+
+pkgname = lplayer-git
+
