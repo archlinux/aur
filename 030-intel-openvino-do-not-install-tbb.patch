@@ -1,6 +1,6 @@
 --- a/inference-engine/src/inference_engine/CMakeLists.txt
 +++ b/inference-engine/src/inference_engine/CMakeLists.txt
-@@ -254,30 +254,6 @@ ie_developer_export_targets(${TARGET_NAME} ${TARGET_NAME}_plugin_api ${TARGET_NA
+@@ -230,30 +230,6 @@ ie_developer_export_targets(${TARGET_NAME} ${TARGET_NAME}_plugin_api xbyak)
  
  list(APPEND core_components ngraph)
  
