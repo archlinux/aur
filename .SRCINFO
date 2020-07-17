@@ -1,6 +1,6 @@
 pkgbase = qlogger-git
 	pkgdesc = Thread-safe logger for Qt applications
-	pkgver = r23.c1b5573
+	pkgver = r38.a68502f
 	pkgrel = 1
 	url = https://github.com/francescmm/QLogger
 	arch = x86_64

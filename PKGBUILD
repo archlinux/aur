@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=qlogger-git
-pkgver=r23.c1b5573
+pkgver=r38.a68502f
 pkgrel=1
 pkgdesc="Thread-safe logger for Qt applications"
 arch=(x86_64)
