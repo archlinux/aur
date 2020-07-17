@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>, Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=0.99.2
+pkgver=0.99.3
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -11,7 +11,6 @@ depends=('bash')
 makedepends=('git')
 optdepends=(
     'strace'
-    'zenity'
     'gamemode'
     'mangohud'
     'vkbasalt'
@@ -22,11 +21,10 @@ optdepends=(
     'xdotool: for playing regular games side-by-side in VR'
     'xorg-xwininfo: for playing regular games side-by-side in VR'
     'vr-video-player: for playing regular games side-by-side in VR'
-    'xdg-utils: for opening the ProtonDB URL of started game'
     'nyrna: for using nyrna per game'
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
 )
-_commit='771af0c689234a797cb8a15786ca755513d65c05'
+_commit='c753430a035922436aab95e92f1e8f772cfd6b65'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
