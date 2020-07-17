@@ -7,7 +7,7 @@ pkgdesc="AI-Powered visual website scraper, which can be used to extract data fr
 arch=('x86_64')
 url='https://www.scrapestorm.com'
 license=("custom:${pkgname}")
-depends=('zlib' 'pango-legacy' 'bash')
+depends=('pango-legacy' 'bash')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
@@ -29,7 +29,9 @@ package() {
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname}/${pkgname}.AppImage"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
   echo "#!/usr/bin/env bash
   LD_LIBRARY_PATH=/opt/pango-legacy/usr/lib /usr/share/${pkgname}/${pkgname}.AppImage" > scrapestorm
   install -Dm755 scrapestorm -t "${pkgdir}/usr/bin"

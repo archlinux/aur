@@ -6,7 +6,6 @@ pkgbase = scrapestorm
 	arch = x86_64
 	license = custom:scrapestorm
 	makedepends = gendesk
-	depends = zlib
 	depends = pango-legacy
 	depends = bash
 	noextract = scrapestorm-3.5.1.AppImage
