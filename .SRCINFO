@@ -6,11 +6,10 @@ pkgbase = liketaskmanager-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = zlib
 	provides = liketaskmanager
-	noextract = liketaskmanager-bin-2.2.1.AppImage
+	noextract = liketaskmanager-2.2.1.AppImage
 	options = !strip
-	source = liketaskmanager-bin-2.2.1.AppImage::https://github.com/rejuce/LikeTaskManager/releases/download/2.2.1/LikeTaskManager-x86_64.AppImage
+	source = liketaskmanager-2.2.1.AppImage::https://github.com/rejuce/LikeTaskManager/releases/download/2.2.1/LikeTaskManager-x86_64.AppImage
 	sha256sums = 7e217a63c4bbf71f49a04ebe77dea8a6b2ed5d990341bff7212c8f2662aea20d
 
 pkgname = liketaskmanager-bin
