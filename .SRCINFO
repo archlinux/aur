@@ -1,7 +1,7 @@
 pkgbase = jicofo-nightly
-	pkgdesc = Jicofo nightly build
+	pkgdesc = JItsi Meet COnference FOcus nightly build
 	pkgver = 1.0+612
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache

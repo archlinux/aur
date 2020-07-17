@@ -6,8 +6,8 @@ _version=1.0+612
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
-pkgrel=3
-pkgdesc="Jicofo nightly build"
+pkgrel=4
+pkgdesc="JItsi Meet COnference FOcus nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
