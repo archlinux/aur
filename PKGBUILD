@@ -8,15 +8,18 @@ commit=fb64d89
 arch=('x86_64')
 url="https://ltchd.io"
 license=('MIT')
-source=("$pkgbase-$pkgver-src.tar.gz::https://github.com/ltchd2019/$pkgbase/archive/ltchd-v$pkgver.tar.gz"
-        "$pkgbase-$pkgver-bin.tar.gz::https://github.com/ltchd2019/$pkgbase/releases/download/ltchd-v$pkgver/ltchd-v$pkgver.0-$commit-x86_64-linux-gnu.tar.gz"
+source=("https://github.com/ltchd2019/$pkgbase/releases/download/ltchd-v$pkgver/ltchd-v$pkgver.0-$commit-x86_64-linux-gnu.tar.gz"
+        "https://raw.githubusercontent.com/ltchd2019/$pkgbase/ltchd-v$pkgver/COPYING"
+        "litecoinhd128.png"
         "litecoinhd-qt.desktop"
         "lhd-cli.sh"
         "lhd-qt.sh"
         "start-lhdd.sh"
         "stop-lhdd.sh")
-sha256sums=('8aebacfeb002b1e72d118bfacd1a8d975d8a998a72fb0f20fc022294a6d3f30e'
-            'c2f1a6cb8b114f2d0a6e169b52e2f2fba2c06d95ecefe776d51a60972529d205'
+noextract=('COPYING')
+sha256sums=('c2f1a6cb8b114f2d0a6e169b52e2f2fba2c06d95ecefe776d51a60972529d205'
+            'e4c2b5dd7474e599e958324fd4eb47aa67aad650e73e39e8358df2907d4af386'
+            '2630ae1bfc1393f279dcbae517ff1e90e4bdc8e7fe652f7429f6231ad9af6730'
             'd990b06d30aae8c633f36fda986015921f33a9b7a326da0b471f8daa739e4fc4'
             '3bbc53f2f6764eb694827da8aede0ef8a67a14f08a83125d77a92fff5522e1ba'
             'df4d80672187123ac07497b4c95afb21c76ba5519219d0c58d45cce42206b0e2'
@@ -29,11 +32,11 @@ package_litecoinhd-qt() {
 
 	install -Dm755 ltchd-v$pkgver/bin/ltchd-qt $pkgdir/usr/bin/ltchd-qt
 	install -Dm644 ltchd-v$pkgver/share/man/man1/ltchd-qt.1 $pkgdir/usr/share/man/man1/ltchd-qt.1
-	install -Dm644 litecoinhd-ltchd-v$pkgver/share/pixmaps/bitcoin128.png $pkgdir/usr/share/pixmaps/ltchd128.png
-	install -Dm644 litecoinhd-ltchd-v$pkgver/COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
 	install -Dm755 lhd-qt.sh $pkgdir/usr/local/bin/lhd-qt
+	install -Dm644 litecoinhd128.png $pkgdir/usr/share/pixmaps/ltchd128.png
 	install -Dm644 litecoinhd-qt.desktop $pkgdir/usr/share/applications/ltchd-qt.desktop
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
 	mkdir -p $pkgdir/usr/lib/ltchd
 	cp -r ltchd-v$pkgver/lib/* $pkgdir/usr/lib/ltchd
@@ -45,10 +48,10 @@ package_litecoinhd-daemon() {
 
 	install -Dm755 ltchd-v$pkgver/bin/ltchdd $pkgdir/usr/bin/ltchdd
 	install -Dm644 ltchd-v$pkgver/share/man/man1/ltchdd.1 $pkgdir/usr/share/man/man1/ltchdd.1
-	install -Dm644 litecoinhd-ltchd-v$pkgver/COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
 	install -Dm755 start-lhdd.sh $pkgdir/usr/local/bin/start-lhdd
 	install -Dm755 stop-lhdd.sh $pkgdir/usr/local/bin/stop-lhdd
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
 	mkdir -p $pkgdir/usr/lib/ltchd
 	cp -r ltchd-v$pkgver/lib/* $pkgdir/usr/lib/ltchd
@@ -60,9 +63,9 @@ package_litecoinhd-cli() {
 
 	install -Dm755 ltchd-v$pkgver/bin/ltchd-cli $pkgdir/usr/bin/ltchd-cli
 	install -Dm644 ltchd-v$pkgver/share/man/man1/ltchd-cli.1 $pkgdir/usr/share/man/man1/ltchd-cli.1
-	install -Dm644 litecoinhd-ltchd-v$pkgver/COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
 	install -Dm755 lhd-cli.sh $pkgdir/usr/local/bin/lhd-cli
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 	mkdir -p $pkgdir/usr/lib/ltchd
 	cp -r ltchd-v$pkgver/lib/* $pkgdir/usr/lib/ltchd
 }
@@ -73,8 +76,8 @@ package_litecoinhd-tx() {
 
 	install -Dm755 ltchd-v$pkgver/bin/ltchd-tx $pkgdir/usr/bin/ltchd-tx
 	install -Dm644 ltchd-v$pkgver/share/man/man1/ltchd-tx.1 $pkgdir/usr/share/man/man1/ltchd-tx.1
-	install -Dm644 litecoinhd-ltchd-v$pkgver/COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/ltchd/COPYING
 	mkdir -p $pkgdir/usr/lib/ltchd
 	cp -r ltchd-v$pkgver/lib/* $pkgdir/usr/lib/ltchd
 }
