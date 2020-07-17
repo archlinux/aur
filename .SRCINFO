@@ -8,7 +8,8 @@ pkgbase = ttf-menlo-powerline-git
 	license = unknown
 	makedepends = git
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
 	source = git://github.com/abertsch/Menlo-for-Powerline.git
 	md5sums = SKIP
 
