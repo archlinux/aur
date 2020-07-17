@@ -19,7 +19,7 @@ optdepends=('python-pyqt5: dependency of bundled anki client'
 'python-decorator: dependency of bundled anki client'
 'python-markdown: dependency of bundled anki client'
 'python-psutil: dependency of bundled anki client'
-'mpv: optional dependency of bundled anki client'
+'mplayer: optional dependency of bundled anki client'
 'python-webob: if you want to run the server as a user other than the supplied anki-sync-server user'
 'python-decorator: if you want to run the server as a user other than the supplied anki-sync-server user'
 )
