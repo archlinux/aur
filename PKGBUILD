@@ -6,7 +6,7 @@ _version=1.0+612
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
-pkgrel=2
+pkgrel=3
 pkgdesc="Jicofo nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -31,7 +31,6 @@ source=(
         "sysusers.conf"
         "tmpfiles.conf"
 )
-groups=('jitsi-meet', 'celogeek')
 
 build() {
         cd "$pkgname"

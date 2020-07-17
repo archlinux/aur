@@ -1,11 +1,9 @@
 pkgbase = jicofo-nightly
 	pkgdesc = Jicofo nightly build
 	pkgver = 1.0+612
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
-	groups = jitsi-meet,
-	groups = celogeek
 	license = Apache
 	makedepends = java-environment
 	makedepends = unzip
