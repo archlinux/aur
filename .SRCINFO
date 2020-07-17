@@ -1,31 +1,24 @@
 pkgbase = libayatana-indicator
-	pkgdesc = Ayatana Indicators Shared Library
+	pkgdesc = Ayatana Indicators (Shared Library)
 	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-indicator
+	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = gtk2
 	makedepends = gtk3
+	makedepends = glib2
+	makedepends = ayatana-ido
 	makedepends = mate-common
-	makedepends = gtk-doc
-	makedepends = pkg-config
+	depends = gtk3
 	depends = glib2
 	depends = ayatana-ido
+	replaces = libayatana-indicator-gtk3
 	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.6.3.tar.gz
-	sha512sums = 5cd78d228d7c2afef229fa06dc9b0778b06fc2752dee0192c65d5140afbc28533b9862bc62ddb27f61f9f8fb26dfb736403202b2b4f90622fe892c61d621b888
+	md5sums = 584fd2838ed6c62f1ca21f1d94d9ea1b
 
-pkgname = libayatana-indicator-gtk2
-	pkgdesc = Ayatana Indicators Shared Library (GTK+ 2 library)
-	depends = gtk2
-	provides = libayatana-indicator
-	conflicts = libayatana-indicator
-
-pkgname = libayatana-indicator-gtk3
-	pkgdesc = Ayatana Indicators Shared Library (GTK+ 3 library)
-	depends = gtk3
-	provides = libayatana-indicator3
-	conflicts = libayatana-indicator3
+pkgname = libayatana-indicator
 

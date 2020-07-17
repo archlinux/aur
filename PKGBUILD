@@ -1,54 +1,35 @@
 # Maintainer: Guillaume Hayot <ghayot[at]postblue[dot]info>
-pkgbase=libayatana-indicator
-pkgname=("${pkgbase}-gtk"{2,3})
+# Maintainer: Robert Tari <robert at tari dot in>
+
+pkgname="libayatana-indicator"
 pkgver=0.6.3
-pkgrel=1
-pkgdesc='Ayatana Indicators Shared Library'
-url='https://github.com/AyatanaIndicators/libayatana-indicator'
-arch=('x86_64')
-license=('LGPL2.1' 'LGPL3')
-depends=('glib2' 'ayatana-ido')
-makedepends=('gtk2' 'gtk3' 'mate-common' 'gtk-doc' 'pkg-config')
+pkgrel="1"
+pkgdesc="Ayatana Indicators (Shared Library)"
+arch=("i686" "x86_64" "pentium4")
+url="https://github.com/AyatanaIndicators/libayatana-indicator"
+license=("LGPL2.1" "LGPL3")
+makedepends=("gtk3" "glib2" "ayatana-ido" "mate-common")
+depends=("gtk3" "glib2" "ayatana-ido")
 options=('!emptydirs')
-source=("https://github.com/AyatanaIndicators/$pkgbase/archive/$pkgver.tar.gz")
-sha512sums=('5cd78d228d7c2afef229fa06dc9b0778b06fc2752dee0192c65d5140afbc28533b9862bc62ddb27f61f9f8fb26dfb736403202b2b4f90622fe892c61d621b888')
+source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
+md5sums=("584fd2838ed6c62f1ca21f1d94d9ea1b")
+replaces=("${pkgname}-gtk3")
 
-prepare() {
-  cp -ra ${pkgbase}-${pkgver}{,-gtk2}
+prepare()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    NOCONFIGURE=1 ./autogen.sh
 }
 
-build() {
-  msg2 "Building gtk3…"
-  (cd ${pkgbase}-${pkgver}
-  ./autogen.sh --prefix=/usr --with-gtk=3 --disable-tests
-  make
-  )
-
-  msg2 "Building gtk2…"
-  (cd ${pkgbase}-${pkgver}-gtk2
-  ./autogen.sh --prefix=/usr --with-gtk=2 --disable-tests
-  make
-  )
+build()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    ./configure --prefix=/usr --with-gtk=3 --disable-tests
+    make
 }
 
-package_libayatana-indicator-gtk2() {
-  pkgdesc+=' (GTK+ 2 library)'
-  depends=('gtk2')
-  provides=("${pkgbase}")
-  conflicts=("${pkgbase}")
-
-  cd ${pkgbase}-${pkgver}-gtk2
-  make DESTDIR="${pkgdir}" install
-  rm -f "${pkgdir}"/usr/share/libayatana-indicator/80indicator-debugging
-  rm -f "${pkgdir}"/usr/lib/systemd/user/ayatana-indicators-pre.target
-}
-
-package_libayatana-indicator-gtk3() {
-  pkgdesc+=" (GTK+ 3 library)"
-  depends=('gtk3')
-  provides=("${pkgbase}3")
-  conflicts=("${pkgbase}3")
-
-  cd ${pkgbase}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+package()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    make DESTDIR="${pkgdir}" install
 }
