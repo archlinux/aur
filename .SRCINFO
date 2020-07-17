@@ -1,7 +1,7 @@
 pkgbase = python-debugpy
 	pkgdesc = A debugger for Python used with Visual Studio and Visual Studio Code
 	pkgver = 1.0.0b12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/debugpy
 	arch = x86_64
 	license = MIT
