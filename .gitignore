@@ -1,0 +1,4 @@
+jitsi-meet-turnserver-nightly/
+src/
+pkg/
+*.pkg.tar.xz

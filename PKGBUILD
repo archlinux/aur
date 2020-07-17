@@ -1,0 +1,29 @@
+_basename=jitsi-meet
+_pkgname=turnserver
+_tag=4294
+_version=1.0.4294
+
+pkgname=${_basename}-${_pkgname}-nightly
+pkgver=${_version}
+pkgrel=1
+pkgdesc="Jitsi Meet Prosody Plugins"
+arch=('any')
+url="https://jitsi.org/jitsi-meet/"
+license=('Apache')
+depends=()
+optdepends=("coturn")
+makedepends=(
+)
+options=('!strip')
+backup=(
+)
+source=(
+        "$pkgname::git+https://github.com/jitsi/jitsi-meet#tag=${_tag}"
+)
+groups=('jitsi-meet', 'celogeek')
+
+package() {
+	cd "$srcdir/$pkgname"
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf doc/debian/jitsi-meet-turn/coturn-certbot-deploy.sh
+}
+sha256sums=('SKIP')
