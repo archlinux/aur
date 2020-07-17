@@ -2,8 +2,8 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.1.0
-pkgrel=6
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -29,7 +29,7 @@ replaces=('cartaodecidadao-bin')
 
 source_x86_64=("https://www.autenticacao.gov.pt/documents/20126/78595/Autenticacao.gov_Ubuntu_20_x64.deb")
 
-sha512sums_x86_64=('dd412985b97b2461d648a9b186fbee022ce34f5b4589d5756165309e56de6c09e564d151e412ab26785ffe17f4dd67ab5d60021e598c6e48ecfd34a05f4da6f1')
+sha512sums_x86_64=('506fcea357d1c5d21a843bd6398486e783256096cb7edc9cc6af2b0d27d2b14a682c1e32f23521f1d3ec876ebba19be79b86f6dff0982812517033568cd75252')
 
 prepare() {
 	tar -xf data.tar.xz
