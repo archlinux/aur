@@ -1,6 +1,6 @@
 pkgbase = libtpms
 	pkgdesc = The libtpms library provides software emulation of a Trusted Platform Module (TPM 1.2)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/stefanberger/libtpms
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = libtpms
 	license = unknown
 	makedepends = automake
 	makedepends = autoconf
+	makedepends = perl
 	depends = openssl
 	depends = zlib
 	provides = libtpms
-	source = https://github.com/stefanberger/libtpms/archive/v0.7.2.tar.gz
-	md5sums = e4efe35a01ef8426583208ac0e6093f4
+	source = https://github.com/stefanberger/libtpms/archive/v0.7.3.tar.gz
+	md5sums = d9926438045b141e212307f280f77a7a
 
 pkgname = libtpms
 
