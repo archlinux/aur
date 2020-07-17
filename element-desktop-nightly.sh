@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec "/opt/Element Nightly/element-desktop-nightly" "$@"
+exec "/opt/Element-Nightly/element-desktop-nightly" "$@"
