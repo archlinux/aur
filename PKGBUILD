@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=hidpi-daemon
-pkgver=18.04.5
+pkgver=18.04.6
 pkgrel=1
 pkgdesc="Daemon to manage HiDPI and LoDPI monitors on X"
 arch=('any')
@@ -20,7 +20,7 @@ conflicts=('system76-driver<17.10.32')
 source=(
   "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz")
 sha1sums=(
-  '057df4821586fce7be303a442bd92cdc6a1ae6d9')
+  'f7e33263acb34b624b80c6e680ac491f722738d0')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
