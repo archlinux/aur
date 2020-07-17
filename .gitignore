@@ -4,3 +4,4 @@ depot_tools/
 gyp/
 .SRCINFO
 v8-*pkg.tar.xz
+v8-*.pkg.tar.zst

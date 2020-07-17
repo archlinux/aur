@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.6.108
+pkgver=8.6.174
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -29,14 +29,12 @@ sha256sums=('SKIP'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '6fe5649400b40464e8958a135932a6873c35ef0ef78d8bd01e25beb6314a0ca0')
+            'a60fe8ede264ca640fac12b43eae6c719dbcadf5334b958bdb33e2e134b27972')
 
 OUTFLD=out.gn/Release
 
 prepare() {
 
-  export CC=/usr/bin/clang
-  export CXX=/usr/bin/clang++
   export PATH=`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
@@ -74,7 +72,7 @@ prepare() {
   $srcdir/depot_tools/gn gen $OUTFLD \
     -vv --fail-on-unused-args \
     --args='clang_base_path="/usr/"
-    is_clang=true
+    is_clang=false
     is_asan=false
     clang_use_chrome_plugins=false
     is_component_build=true
@@ -89,8 +87,6 @@ prepare() {
 }
 
 build() {
-  export CC=/usr/bin/clang
-  export CXX=/usr/bin/clang++
   export PATH=`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 

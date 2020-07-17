@@ -29,6 +29,6 @@ index 5fa34150a..f088bd55f 100644
 +        #   # TODO(https://crbug.com/1049569): Remove after Clang 87b235db.
 +        #   cflags += [ "-Wno-max-tokens" ]
 +        # }
-
-         if (llvm_force_head_revision) {
-           # An ABI compat warning we don't care about, https://crbug.com/1102157
+       }
+     }
+   }
