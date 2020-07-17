@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-fire-git
 _srcname=linux-nitrous
 pkgver=5.7+
-pkgrel=12
+pkgrel=13
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_srcname}"
+  cd "linux-nitrous"
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -55,7 +55,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}"
+  cd "linux-nitrous"
 
   make HOSTCC=clang CC=clang nitrous-fire_defconfig
   makeflags="${MAKEFLAGS}"
@@ -77,7 +77,7 @@ _package() {
   backup=("etc/mkinitcpio.d/linux-nitrous-fire-git.preset")
   install=${pkgbase}.install
 
-  cd "${_srcname}"
+  cd "linux-nitrous"
 
   KARCH=x86
 
@@ -139,7 +139,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${_srcname}"
+  cd "linux-nitrous"
 
   # Fix for DKMS because clang doesn't like this
   for f in Makefile kernel/Makefile; do
@@ -261,7 +261,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
   provides=('linux-docs')
 
-  cd "${_srcname}"
+  cd "linux-nitrous"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
