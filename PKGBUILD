@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.13.4.r0.gd88a01a
+pkgver=0.13.4.r55.g9261406
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
     'python-pytz'
     'python-dateutil'
     'python-pillow'
-    'libhandy'
+    'libhandy1>=0.83'
     'python-listparser'
     'python-feedparser'
     'python-requests'
