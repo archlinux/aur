@@ -2,6 +2,7 @@
 Description=An open source integration manager for matrix clients.
 After=network-online.target
 Requires=network-online.target
+StartLimitIntervalSec=0
 
 [Service]
 Environment=NODE_ENV=production
@@ -12,6 +13,8 @@ WorkingDirectory=/var/lib/dimension
 DynamicUser=true
 ConfigurationDirectory=dimension
 StateDirectory=dimension
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target

@@ -3,15 +3,15 @@
 _pkgname=matrix-dimension
 pkgname=dimension
 pkgver=r528.9e2393c
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An open source integrations manager for matrix clients, like Riot."
 url="https://github.com/turt2live/matrix-dimension"
-arch=('any')
+arch=('x86_64')
 license=('GPL3')
 
 depends=('nodejs' 'libvips' 'sqlite')
-makedepends=('npm' 'python2')
+makedepends=('npm' 'python2' 'git')
 backup=('etc/dimension/production.yaml')
 
 source=("git+https://github.com/turt2live/matrix-dimension#commit=9e2393cecac3aabdc3d6d7236a4c139d6fe9ff6d"
@@ -48,3 +48,5 @@ package() {
   install -Dm644 config/default.yaml "$pkgdir"/etc/$pkgname/production.yaml
 }
 
+sha256sums=('SKIP'
+            '5da286eab86577a78aa370693894f51ea1faa070d2c41b92abe308cab6ba7a89')
