@@ -1,11 +1,13 @@
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
 _basename=jicofo
 _tag=612
 _version=1.0+612
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
-pkgrel=1
-pkgdesc="Jicofo"
+pkgrel=2
+pkgdesc="Jicofo nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
