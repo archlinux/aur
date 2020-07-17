@@ -4,7 +4,7 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r2013.gd6d9a7e
+pkgver=r2077.gaa97be8
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
@@ -18,9 +18,9 @@ source=("git+${url}.git"
 sha256sums=('SKIP'
             'a0100102d806486713e290c788d9478c2bcd951eca09956140f685a4289af76d'
             'bfd9729a0f19d3792e3c8a05fa133a18428ba3bf472c5e0e13fe2de841d52364'
-            '553b685584ce5d4eebf1ac5d28010ccf5bf502abebc6c0a54206c44bfd6ed835'
+            '4088c5106b89e3f47fd7589a87f7f6b7337d5e9a9aab012589b10420eb405e44'
             '464dcf601bbfbce3e0dd7fcb5008f44b979c6ad85325244d0e0aa3cdea7fb13e'
-            '7f3e5a2d19f06e6e9c453a0b7d26ae128ee1c04eb1aee5be726fa53fe82c6364')
+            '08dcb5151cc43f7661b72d1940027638bb8fd732f922b268e4f172e76cc4458b')
 
 pkgver() {
 	cd ${srcdir}/mt76

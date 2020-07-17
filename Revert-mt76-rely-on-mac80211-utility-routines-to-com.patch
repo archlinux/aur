@@ -393,18 +393,18 @@ index d50871653de1..3476efe60fdb 100644
  			   struct ieee80211_vif *vif);
 +u32 mt76_calc_tx_airtime(struct mt76_dev *dev, struct ieee80211_tx_info *info,
 +			 int len);
- 
- /* internal */
- static inline struct ieee80211_hw *
+ int mt76_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		      void *data, int len);
+ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *skb,
 @@ -910,6 +912,8 @@ void mt76_rx_complete(struct mt76_dev *dev, struct sk_buff_head *frames,
  void mt76_rx_poll_complete(struct mt76_dev *dev, enum mt76_rxq_id q,
  			   struct napi_struct *napi);
  void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames);
 +u32 mt76_calc_rx_airtime(struct mt76_dev *dev, struct mt76_rx_status *status,
 +			 int len);
+ void mt76_testmode_tx_pending(struct mt76_dev *dev);
  
  /* usb */
- static inline bool mt76u_urb_error(struct urb *urb)
 diff --git a/mt76x02_mac.c b/mt76x02_mac.c
 index e4e03beabe43..7d4e0c394e94 100644
 --- a/mt76x02_mac.c
