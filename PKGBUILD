@@ -1,7 +1,7 @@
 # Maintainer: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=evisum
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="EFL Process Viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('efl')
 makedepends=('meson' 'ninja')
 source=("https://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('13199601aaedd036bf0421516c204d9f9853a8610615cadde482228e3eda6fb6')
+sha256sums=('26404ad32dd6be277055f76be4fd6b5b692b2464a5322cd84ef45ba799b380be')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
