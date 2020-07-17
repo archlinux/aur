@@ -3,12 +3,10 @@ pkgbase = ananas-desktop
 	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://ananasanalytics.com
-	arch = any
+	arch = x86_64
 	license = Apache
 	makedepends = gendesk
-	depends = zlib
 	noextract = ananas-desktop-0.9.0.AppImage
-	options = !strip
 	source = ananas-desktop-0.9.0.AppImage::https://github.com/ananas-analytics/ananas-desktop/releases/download/v0.9.0/Ananas.Analytics.Desktop.Edition.0.9.0.linux.AppImage
 	sha256sums = 5b9dc4178a560d88b496c18f0cf2929d02579c941871162163da299b2b46a2b3
 
