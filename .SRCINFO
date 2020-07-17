@@ -1,17 +1,15 @@
 pkgbase = sdlada
 	pkgdesc = An Ada binding to SDL
-	pkgver = 2.3.1
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/Lucretia/sdlada/
 	arch = i686
 	arch = x86_64
 	license = zlib
 	depends = gcc-ada
-	depends = sdl2
-	source = https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz
-	source = patch-makefile
-	md5sums = 84ef633ff97b9dc6cb68b6230787cc0e
-	md5sums = 6e9a0befc816ef87ed7d6dace43a5dd9
+	depends = sdl2_ttf
+	source = https://github.com/Lucretia/sdlada/archive/v2.5.3.tar.gz
+	md5sums = 8d0245cb6c03db3ed136c012d4cc9055
 
 pkgname = sdlada
 
