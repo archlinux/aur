@@ -82,10 +82,14 @@ If you want to run the supplied anki client execute:
 
 You'll need to install the listed requirements to get it running first:
 
-    cd /opt/anki-sync-server/anki-bundled
-    pip install -r requirements.txt --user
+    cd /opt/anki-sync-server
+    git submodule init anki-bundled
+    cd anki-bundled
     bash tools/build_ui.sh #for aqt dependency
-    sudo pacman -S python-pyqt5 python-pyqtwebengine
+    sudo pacman -S python-beautifulsoup4 python-send2trash \
+    python-pyaudio python-requests python-decorator \
+    python-psutil python-distro python-markdown \
+    python-pyqt5 python-pyqtwebengine mpv
 
 =======================================================================
 EOF
