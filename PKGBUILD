@@ -1,31 +1,28 @@
-# Maintainer : Bernhard Landauer <oberon@manjaro.org>
+# Maintainer : Peter Meier <meier.peter.email@gmail.com>
+# Contributor : Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=clipit
 _pkgname=ClipIt
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="Lightweight GTK+ clipboard manager (fork of Parcellite)"
 arch=('i686' 'x86_64')
 url="https://github.com/CristianHenzel/ClipIt/"
-_snapshot=722fcf73fa0ce8430208c986e50b1c82975de69c
 license=('GPL3')
 depends=('gtk2' 'libappindicator-gtk2')
 makedepends=('intltool')
 optdepends=('xdotool: for automatic paste')
-source=("${_pkgname}-${_snapshot}.tar.gz::${url}/archive/${_snapshot}.tar.gz")
-md5sums=('22eb7756fe35e4ce9a5c75aa8430852e')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}archive/v${pkgver}.tar.gz")
+md5sums=('4BDAC39A13EDBFF09D66959F94CCCAED')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${_snapshot}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-appindicator
+  ./configure --prefix=/usr --sysconfdir=/etc --with-gtk3
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${_snapshot}"
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
