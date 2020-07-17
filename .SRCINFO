@@ -1,0 +1,17 @@
+pkgbase = codereview
+	pkgdesc = A Git GUI tool to perform code review (Diff Viewer) written in Python3 and Qt5
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://fabricesalvaire.github.io/CodeReview
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-pygments
+	depends = python-yaml
+	depends = python-pygit2
+	source = codereview-1.0.0.tar.gz::https://github.com/FabriceSalvaire/CodeReview/archive/v1.0.0.tar.gz
+	sha256sums = e490a0fe080c57fdf56f272d06cf70b37f91e9a05147595a1f596d98fd8ce0d2
+
+pkgname = codereview
+
