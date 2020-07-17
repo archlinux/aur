@@ -7,7 +7,6 @@ pkgdesc="Data modeling tool for MongoDB, MariaDB & GraphQL (Trial)"
 arch=('x86_64')
 url='https://www.datensen.com/data-modeling/moon-modeler-for-databases.html'
 license=("custom:${pkgname}")
-depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://www.datensen.com/downloads/Moon%20Modeler-${pkgver}.AppImage")
@@ -23,10 +22,12 @@ package() {
           --name "Moon Modeler" \
           --comment "$pkgdesc" \
           --exec "${pkgname}" \
-          --categories 'Development;Application;' \
+          --categories 'Development;Application' \
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  ln -s /opt/${pkgname}/${pkgname}.AppImage "${pkgdir}/usr/bin/moonmodeler"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
 }

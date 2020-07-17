@@ -5,7 +5,6 @@ pkgbase = moonmodeler
 	url = https://www.datensen.com/data-modeling/moon-modeler-for-databases.html
 	arch = x86_64
 	license = custom:moonmodeler
-	depends = zlib
 	noextract = moonmodeler-2.3.0.AppImage
 	options = !strip
 	source = moonmodeler-2.3.0.AppImage::https://www.datensen.com/downloads/Moon%20Modeler-2.3.0.AppImage
