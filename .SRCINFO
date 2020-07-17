@@ -7,7 +7,7 @@ pkgbase = pymdown-extensions
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-markdown>3.2
-	optdepends = python-pygments
+	optdepends = python-pygments: syntax highlighting
 	source = https://pypi.org/packages/source/p/pymdown-extensions/pymdown-extensions-7.1.tar.gz
 	sha256sums = 5bf93d1ccd8281948cd7c559eb363e59b179b5373478e8a7195cf4b78e3c11b6
 
