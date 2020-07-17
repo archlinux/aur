@@ -1,8 +1,9 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgbase=dcos-cli
 pkgname=(dcos-cli python-dcos)
-pkgver=0.6.0
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="DC/OS Command Line Interface"
 arch=(any)
@@ -40,4 +41,4 @@ package_python-dcos() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('26ceaf7ad8d49eab28c72edbea0ca48ca29c400503028fd1ad726cc217628cea')
+sha256sums=('cc423272e08a15d30e13c60b2245350c0b7d027649a6a01d44a58596a5ed8b20')
