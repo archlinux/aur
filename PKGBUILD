@@ -32,6 +32,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build(){
+  #initialize anki-bundled (needed for the server to work)
+  cd "${pkgname%-git}"/anki-bundled && git submodule update --init
+}
+
 prepare() {
   # move plugins and systemd file to src package
   mkdir -p "${pkgname%-git}/plugins/anki2.0"
