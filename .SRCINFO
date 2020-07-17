@@ -1,13 +1,11 @@
 pkgbase = jitsi-videobridge-nightly-bin
 	pkgdesc = Jitsi Meet Videobridge nightly binary
 	pkgver = 2.1+274+g9bbf2713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
-	makedepends = java-environment
-	makedepends = unzip
-	makedepends = maven
+	makedepends = tar
 	depends = java-runtime
 	depends = bash
 	optdepends = prosody

@@ -9,17 +9,14 @@ _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
-makedepends=(
-        "java-environment"
-        "unzip" "maven"
-)
+makedepends=('tar')
 options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
