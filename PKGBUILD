@@ -1,20 +1,20 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=polyorb
-pkgver=20181005
+pkgver=20200718
 pkgrel=1
 pkgdesc="Provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/PolyORB"
 license=('GPL')
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
-makedepends=('gprbuild>=2018' 'autoconf>=2.60')
+depends=('gcc-ada')
+makedepends=('gprbuild' 'autoconf')
 
 source=(https://github.com/AdaCore/PolyORB/archive/master.zip
         patch-Makefile.in)
 
-md5sums=('465e6510ab8a2d707d36762ccfc36637'
+md5sums=('ab64b033af0d9cb7c1d83665f1bb69a9'
          '40476ea50c9ac1c2473d9801e765be04')
 
 prepare()
@@ -29,6 +29,9 @@ prepare()
 
   cd $srcdir/PolyORB-master
   patch -p0 -i ../patch-Makefile.in
+
+  sed -i 's/-gnatw_A//' projects/polyorb_src_dsa.gpr
+  sed -i 's/-gnatw_A//' projects/polyorb_common.gpr
 }
 
 
@@ -39,7 +42,7 @@ build()
   PATH=$srcdir/temp_bin:$PATH
 
   support/reconfig
-  ./configure --prefix=/usr  --with-appli-perso="dsa"  --with-proto-perso="giop"
+  ./configure --prefix=/usr  --with-appli-perso="dsa"  --with-proto-perso="giop"  --enable-warnings=n
   make -j1 all
 }
 
