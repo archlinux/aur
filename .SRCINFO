@@ -1,0 +1,17 @@
+pkgbase = booty-git
+	pkgdesc = Create bootable GNU/Linux image with 3 steps!
+	pkgver = 20200611.45_3fe32b1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = grub
+	depends = dosfstools
+	depends = libisoburn
+	depends = cpio
+	depends = squashfs-tools
+	source = booty-git::git+https://github.com/sp00f1ng/booty.git
+	md5sums = SKIP
+
+pkgname = booty-git
+
