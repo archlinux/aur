@@ -2,15 +2,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=doi2bib
-pkgver=0.3.0
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Generate a bibtex given a doi"
 url="https://github.com/bibcure/doi2bib"
 arch=('any')
 license=('AGPL3')
 depends=('python-requests' 'python-bibtexparser' 'python-future')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bibcure/doi2bib/archive/$pkgver.tar.gz")
-sha256sums=('94857e12d71727bd9bfc9e4667a31c68b159ba1de60fb8a2adf0905baca2827a')
+sha256sums=('272458eb88a34ab0fd4c69c6a4f2698496ccd9791d827f52b6c2b3ae6a3a221c')
 
 package() {
   cd $pkgname-$pkgver
