@@ -3,11 +3,11 @@
 _name=FatFrog
 pkgname=fatfrog.lv2
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high gain valve amplifier simulation LV2 plugin"
 arch=('x86_64')
 url="https://github.com/brummer10/${_name}.lv2"
-license=('BSD')
+license=('0BSD')
 groups=('lv2-plugins' 'pro-audio')
 depends=('cairo' 'gcc-libs' 'glibc' 'libx11')
 makedepends=('lv2')
