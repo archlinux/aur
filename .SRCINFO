@@ -1,4 +1,5 @@
 pkgbase = libexplain
+	pkgdesc = A library to explain system call errors
 	pkgver = 1.4.D001
 	pkgrel = 10
 	url = http://libexplain.sourceforge.net/

@@ -2,6 +2,7 @@
 
 pkgbase=libexplain
 pkgname='libexplain'
+pkgdesc='A library to explain system call errors'
 pkgver='1.4.D001'
 pkgrel=10
 arch=('i686' 'x86_64')
