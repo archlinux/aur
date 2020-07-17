@@ -1,0 +1,12 @@
+pkgbase = figma-linux-font-helper
+	pkgdesc = Font Helper for Figma for Linux OS.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Figma-Linux/figma-linux-font-helper
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/Figma-Linux/figma-linux-font-helper/releases/download/v0.1.5/fonthelper.tar.xz
+	sha256sums = 1e979b44c350b3428aa3b960026b73b350a36ab1c86237e2a74b256f8465c23e
+
+pkgname = figma-linux-font-helper
+
