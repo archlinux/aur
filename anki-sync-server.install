@@ -10,6 +10,7 @@ post_install() {
   systemctl start anki-sync-server
 
   # install prerequisites as stated on the website
+  echo "installing python packages as anki-sync-server user..."
   sudo -u anki-sync-server pip install webob --user
   sudo -u anki-sync-server pip install decorator --user
 
