@@ -4,7 +4,7 @@
 pkgname=systray-x-git
 _pkgname=systray-x
 pkgver=0.3.0.r2.g8b702f5
-pkgrel=1
+pkgrel=2
 pkgdesc="SysTray-X is a system tray extension for Thunderbird 68+. The addon uses the WebExtension API's to control an external system dependent system tray application."
 arch=('any')
 url="https://github.com/Ximi1970/systray-x"
@@ -26,12 +26,12 @@ package() {
     cd "$_pkgname"
     make
     mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/lib/thunderbird-addons/extensions"
+    mkdir -p "${pkgdir}/usr/lib/thunderbird/extensions"
     mkdir -p "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
     mkdir -p "$pkgdir/usr/share/doc/$_pkgname"
     install -m 755 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${srcdir}/${_pkgname}/README.md" 
     install -m 755 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${srcdir}/${_pkgname}/LICENSE"
-    install -m 755 -t "${pkgdir}/usr/lib/thunderbird-addons/extensions" "${srcdir}/${_pkgname}/systray-x@Ximi1970.xpi"
+    install -m 755 -t "${pkgdir}/usr/lib/thunderbird/extensions" "${srcdir}/${_pkgname}/systray-x@Ximi1970.xpi"
     install -m 755 -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts" "${srcdir}/${_pkgname}/app/SysTray_X.json"
     sed -i 's/\/path\/to\/native-messaging\/app/\/usr\/bin/g' "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/SysTray_X.json"
     install -m 755 -t "${pkgdir}/usr/bin" "${srcdir}/${_pkgname}/SysTray-X"
