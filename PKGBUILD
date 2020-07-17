@@ -4,17 +4,17 @@
 # you also find the URL of a binary repository.
 
 pkgname=cmake-format
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc='Source code formatter for CMake listfiles'
 arch=('any')
 url='https://github.com/cheshirekow/cmake_format'
 license=('GPL3')
 depends=('python-setuptools' 'python-six>=1.13.0')
-optdepends=('python-yaml>=5.3' 'python-jinja>=2.10.3')
+optdepends=('python-yaml>=5.3' 'python-jinja>=2.10.3' 'python-argcomplete: automatic shell completion')
 checkdepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v${pkgver}.tar.gz")
-sha512sums=('dcab1d8c8f1048ad6a8a372051b255dbae52bfeafbfa699eca5b9d7517dc61140b410e4205eea2b8cb215dc37c91e3bb0ccebefc1be0c8491f7dbbe846cde886')
+sha512sums=('022249e2f7c66d07618cdcbe5fd9a086dfa204179920b651af0886762302428572371ddbfa60c3958cb7e863cb387f4bdc1ec4d09e0496dc7e66011325796cd4')
 
 check() {
   mkdir "$srcdir/check"
