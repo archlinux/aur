@@ -2,6 +2,7 @@ pkgbase = remoteplaydetached
 	pkgdesc = A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support
 	pkgver = v0.4.1
 	pkgrel = 1
+	url = https://github.com/smaTc/RemotePlayDetached
 	arch = x86_64
 	source = https://github.com/smaTc/RemotePlayDetached/releases/download/v0.4.1/RemotePlayDetached
 	sha256sums = a53290ac8085960539107414fad19617065967e5747083c53f91c69937100a36
