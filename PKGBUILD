@@ -1,6 +1,6 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=3.2.2
+pkgver=4.0.13
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('any')
@@ -10,13 +10,13 @@ groups=()
 depends=('mpv' 'ffmpeg' 'postgresql' 'electron') # Warning : to be replaced with electron8 when Electron 9 will be pushed to [community]
 makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2')
 optdepends=('sudo: for using karaokemugen-install script')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=()
+conflicts=()
 replaces=()
 backup=()
 options=()
-install=${pkgname%-git}.install
-source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v3.2.2'
+install=${pkgname}.install
+source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v4.0.13'
         'karaokemugen-lib::git+https://lab.shelter.moe/karaokemugen/lib.git'
         'install.sh'
         'run.sh'
