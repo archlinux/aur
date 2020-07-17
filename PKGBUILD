@@ -3,8 +3,8 @@
 _fontname=spleen
 
 pkgname=spleen-font
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Monospaced bitmap fonts"
 arch=('any')
 license=('BSD')
@@ -14,7 +14,7 @@ source=(
   "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'e761249e859ec3cebacb79b6ea2f0e51701316866305940b2431e61157207747'
+  '59119044399b2262fdf4c504c6f1a8b1230d349dfd07c68a2fb07a394a880e1e'
 )
 
 package() {
