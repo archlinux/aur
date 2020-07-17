@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=XRPHD Core
+Comment=Connect to the XRPHD P2P Network
+Comment[de]=Verbinde mit dem XRPHD peer-to-peer Netzwerk
+Comment[fr]=XRPHD, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=XRPHD, eşten eşe kriptografik sanal para birimi
+Exec=xhd-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/xrphd128.png
+MimeType=x-scheme-handler/xrphd;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=xrphd-qt
