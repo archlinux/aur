@@ -12,7 +12,7 @@ makedepends=("gtk3" "glib2" "libayatana-indicator" "libdbusmenu-gtk3" "dbus-glib
 depends=('libdbusmenu-gtk3' 'libayatana-indicator')
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("d9f2b6e269577e4e5141fb056e3ca6a3")
-replaces=("${pkgname}-gtk3")
+conflicts=("${pkgname}-gtk3")
 
 prepare()
 {
