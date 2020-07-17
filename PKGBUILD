@@ -1,7 +1,8 @@
-# Maintainer: AdmiringWorm <kim.nordmo@gmail.com>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: AdmiringWorm <kim.nordmo@gmail.com>
 pkgname=enki-editor
 _pkgname=enki
-pkgver=18.08.0
+pkgver=19.10.0
 pkgrel=1
 pkgdesc="A text editor for programmers"
 arch=(any)
@@ -24,7 +25,7 @@ optdepends=(
 )
 makedepends=("python-setuptools")
 source=("https://github.com/andreikop/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1a943a9f5144324ce3bbf9d71de495b24b6a608f20b512cad72597a644a1fc91')
+sha256sums=('70764f0ec564224df5699fe017d5de94c77455453e0ec9dcdd5415f8517f22db')
 
 build() {
 	cd "$_pkgname-$pkgver"
