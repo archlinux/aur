@@ -1,7 +1,7 @@
 pkgbase = mkbootimg-git
 	pkgdesc = Android mkbootimg + unpackbootimg, forked and updated (osm0sis)
 	pkgver = 2020.05.18.r0.g8dd5b5b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osm0sis/mkbootimg
 	arch = i686
 	arch = x86_64

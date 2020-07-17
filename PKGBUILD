@@ -3,7 +3,7 @@
 _pkgname=mkbootimg
 pkgname=$_pkgname-git
 pkgver=2020.05.18.r0.g8dd5b5b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Android mkbootimg + unpackbootimg, forked and updated (osm0sis)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/osm0sis/mkbootimg"
@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}"
-	install -Dm755 mkbootimg "$pkgdir"/usr/bin/mkbootimg
+	install -Dm755 mkbootimg "$pkgdir"/usr/bin/mkbootimg-osm0sis
 	install -Dm755 unpackbootimg "$pkgdir"/usr/bin/unpackbootimg
 }
