@@ -1,0 +1,17 @@
+pkgbase = geometrize-bin
+	pkgdesc = A desktop app that geometrizes images into geometric primitives
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.geometrize.co.uk
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = zlib
+	provides = geometrize
+	noextract = geometrize-1.0.1.AppImage
+	options = !strip
+	source = geometrize-1.0.1.AppImage::https://github.com/Tw1ddle/geometrize/releases/download/v1.0.1/geometrize_1.0.1_linux.AppImage
+	sha256sums = b2d586029fb9371e1c96869e15b65fceb5ef96fd99f58242e914552ad288a242
+
+pkgname = geometrize-bin
+
