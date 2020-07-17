@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  # Bump sharp and node-sass to make dimension compatible with node12 and node13
+  # Bump sharp and node-sass to make dimension compatible with node12 and node14
   # ref: https://github.com/turt2live/matrix-dimension/pull/352
   sed -i -e 's/"sharp": "^0.21.1"/"sharp": "^0.25.4"/' -e 's/node-sass": "^4.12.0/node-sass": "^4.14.1/'  package.json
 }
