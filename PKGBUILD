@@ -2,12 +2,12 @@
 _pkgbasename=lookupunicode
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r17.d8ccac2
+pkgver=r2.05db01b
 pkgdesc="swizz army knife for unicode - a utility to search in the unicode database"
 arch=('any')
 url="https://codeberg.org/nycex/${_pkgbasename}"
 license=('GPL3')
-depends=('zig' 'unicode-character-database')
+depends=('cargo' 'unicode-character-database')
 source=(git+${url})
 sha256sums=('SKIP')
 
@@ -18,12 +18,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgbasename}"
-	zig build -Drelease-fast
+	cargo build --release
 }
 
 package() {
 	cd "${srcdir}/${_pkgbasename}"
 
-	install -D -m755 zig-cache/bin/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
+	install -D -m755 target/release/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgbasename/LICENSE"
 }
