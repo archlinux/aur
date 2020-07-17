@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-freon
 	pkgdesc = Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down.
-	pkgver = 39
+	pkgver = 40
 	pkgrel = 1
 	url = https://github.com/UshakovVasilii/gnome-shell-extension-freon
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = gnome-shell-extension-freon
 	optdepends = hddtemp: optional backend for S.M.A.R.T. temperature sensors.
 	optdepends = nvidia-settings: optional backend for nVidia temperature sensors.
 	conflicts = gnome-shell-extensions-git
-	source = gnome-shell-extension-freon.tar.gz::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-39.tar.gz
-	sha512sums = a1b1f859105f789ff6ad2ff05e681bb93e29ff2f31d16a84411e79a21df602127b85cb1af752c69c5f2887a72091411540b60e41b20d3904bd5adbacc111f3b8
+	source = gnome-shell-extension-freon.tar.gz::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-40.tar.gz
+	sha512sums = a955cad5a20bdeaa5f86a60b7fe0b425a2ea80570b073302850d685d8195e3b1b50f74aeb187b597afc0f66be589c214a5eb0d32937c0e365c51f56036c89976
 
 pkgname = gnome-shell-extension-freon
 
