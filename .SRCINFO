@@ -4,7 +4,7 @@ pkgbase = ginj
 	pkgrel = 1
 	url = http://ginj.info
 	arch = any
-	license = custom:unknown
+	license = GPL
 	makedepends = gendesk
 	depends = java-runtime>=14
 	depends = bash
