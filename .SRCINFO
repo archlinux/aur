@@ -6,7 +6,6 @@ pkgbase = geometrize-bin
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
-	depends = zlib
 	provides = geometrize
 	noextract = geometrize-1.0.1.AppImage
 	options = !strip

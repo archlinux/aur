@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://www.geometrize.co.uk'
 license=('GPL')
 provides=('geometrize')
-depends=('zlib')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
@@ -28,6 +27,8 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /opt/geometrize/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/geometrize"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/geometrize"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
 }
