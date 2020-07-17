@@ -1,6 +1,6 @@
 pkgbase = mozregression-gui-bin
 	pkgdesc = Regression range finder for Firefox
-	pkgver = 4.0.7
+	pkgver = 4.0.9
 	pkgrel = 1
 	url = https://github.com/mozilla/mozregression
 	arch = any
@@ -16,12 +16,12 @@ pkgbase = mozregression-gui-bin
 	depends = qt5-sensors
 	depends = qt5-virtualkeyboard
 	depends = python
-	provides = mozregression-gui=4.0.7
+	provides = mozregression-gui=4.0.9
 	options = !strip
-	source = https://github.com/mozilla/mozregression/releases/download/4.0.7/mozregression-gui.tar.gz
+	source = https://github.com/mozilla/mozregression/releases/download/4.0.9/mozregression-gui.tar.gz
 	source = mozregression-gui.desktop
 	source = https://raw.githubusercontent.com/mozilla/mozregression/master/gui/icons/app_icon.png
-	sha256sums = 370d6456a0a00eb3f5f7df8f6965d02522859598af6e336ce5db54a8a877922b
+	sha256sums = cb22b6e540afc98e0bd5c3c4fa7304f49e021ef6afd6c1d95a8b8c55f3ab6092
 	sha256sums = 0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb
 	sha256sums = eec9a7ab76d757b7f03ceea4a65623337a6625989f4aa801d07f71aa37175e23
 
