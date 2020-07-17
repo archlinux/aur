@@ -29,6 +29,6 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt"
   cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/geometrize"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
   find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }
