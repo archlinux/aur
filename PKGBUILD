@@ -2,8 +2,8 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="4.2.3.3"
-pkgrel=2
+pkgver="4.2.3.6"
+pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"

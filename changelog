@@ -1,3 +1,16 @@
+2020-07-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.3.6-1:
+    [!] Fixed ASF's inability to resolve public inventory status (and therefore SteamTradeMatcher feature) due to latest Steam breaking change (#1866).
+    ASF is now capable of resolving 2FA's device_id automatically. This makes it possible for importing maFiles without device_id, as well as authenticators that are entirely missing that info, which wasn't possible previously. ASF will no longer store device_id of the ASF 2FA authenticators, existing ASF 2FA authenticators will drop that property on next bot's database update (no action is needed from you).
+    Added AvatarProfileFrame and AnimatedAvatar to recognized community item types (#1871).
+    Added GET /Api/Plugins IPC API endpoint.
+    Added x-definition to our swagger enum types, flags enum types now display with format: flags in the JSON API definition.
+    Added uptime information to stats command.
+    Fixed a possibility of running into ASF crash when fetching depot keys as part of STD plugin fails.
+    ASF will now fallback to SteamOwnerID if you attempt to loot a bot with no defined master.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-06-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.3.3-1:
     Added Steam Summer Sale 2020 to SalesBlacklist (#1853).
