@@ -1,0 +1,14 @@
+pkgbase = neverwinter.nim
+	pkgdesc = A nim-lang library and utility collection to read and write data files used by Neverwinter Nights 1
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = https://github.com/niv/neverwinter.nim
+	arch = any
+	license = MIT
+	makedepends = nim>=1.2.0
+	makedepends = nimble
+	source = https://github.com/niv/neverwinter.nim/archive/1.2.10-1.2.0.tar.gz
+	md5sums = bea3e9dd811d82bacaf9efb08c833ebd
+
+pkgname = neverwinter.nim
+
