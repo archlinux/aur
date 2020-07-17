@@ -1,0 +1,24 @@
+pkgbase = moonpanoramamaker
+	pkgdesc = Automatic telescope and camera control for moon panorama photography
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Rolf-Hempel/MoonPanoramaMaker
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = tar
+	makedepends = imagemagick
+	depends = openssl-1.0
+	depends = libselinux
+	depends = qt5-x11extras
+	depends = qt5-svg
+	depends = java-runtime
+	depends = gtk3
+	depends = gobject-introspection-runtime
+	noextract = moonpanoramamaker-1.0.1.tgz
+	options = !strip
+	source = moonpanoramamaker-1.0.1.tgz::https://github.com/Rolf-Hempel/MoonPanoramaMaker/releases/download/V1.0.1/MoonPanoramaMaker_V1.0.1_Linux.tgz
+	sha256sums = 7a1c9338cd3eaa97d91646be108030a6db76ad12a2a07dd12b41588a27ae53f8
+
+pkgname = moonpanoramamaker
+
