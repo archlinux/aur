@@ -2,8 +2,8 @@
 
 _pkgname=lv2file
 pkgname="${_pkgname}-git"
-pkgver=0.84.r31.aed7c77
-pkgrel=2
+pkgver=0.84.r44.9c6fa09
+pkgrel=1
 pkgdesc="A command line program to process audio files with LV2 plugins"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/jeremysalwen/lv2file"
