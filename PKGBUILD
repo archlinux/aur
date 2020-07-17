@@ -1,6 +1,6 @@
 # Maintainer: By_JumperX4 <byjumperx4-aur@protonmail.com>. You can also contact me on Discord: By_JumperX4#1007
 pkgname=firefox-nightly-latest-fr
-pkgver=80.0a1.2020.07.16
+pkgver=80.0a1.2020.07.17
 pkgrel=1
 pkgdesc="Official latest french tarball of Firefox Nightly. Reinstall package if firefox is outdated and the PKGBUILD's version is not updated yet"
 arch=("x86_64")
