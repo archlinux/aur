@@ -58,11 +58,11 @@ then run:
 
 if you run it as another user you may have to install some dependencies again:
 
-  pip install --user webob decorator
+  sudo pacman -S python2-webob python2-decorator
 
 or:
 
-  sudo pacman -S python2-webob python2-decorator
+  pip install --user webob decorator
 
 === (be aware you may have trouble with permissions on your auth.db if you run as different users!) ===
 
