@@ -10,7 +10,7 @@ pkgdesc="Mikrotik RouterOS GUI Configurator (wine). xdg base directory specifica
 url="http://www.mikrotik.com"
 arch=('x86_64')
 license=('custom')
-depends=('wine')
+depends=('wine' 'ttf-tahoma')
 conflicts=('winbox')
 optdepends=(
   'ttf-ms-fonts: for better fonts'

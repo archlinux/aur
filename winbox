@@ -2,10 +2,11 @@
 
 export WINEPREFIX="${WINBOX_HOME:-"${XDG_DATA_HOME:-"${HOME}/.local/share"}/winbox"}/wine"
 export WINEARCH=win64
-export WINEDLLOVERRIDES="mscoree=" # disable mono
+export WINEDLLOVERRIDES="mscoree,mshtml=" # disable mono
 export WINEDEBUG=-all
 if [ ! -d "${WINEPREFIX}" ] ; then
-   mkdir -p "${WINEPREFIX}"
+   mkdir -p "${WINEPREFIX}/drive_c/windows/Fonts/"
+   cp /usr/share/fonts/TTF/tahoma.ttf /usr/share/fonts/TTF/tahomabd.ttf "${WINEPREFIX}/drive_c/windows/Fonts/"
    wineboot -u
 fi
 

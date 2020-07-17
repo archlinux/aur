@@ -7,6 +7,7 @@ pkgbase = winbox-xdg
 	arch = x86_64
 	license = custom
 	depends = wine
+	depends = ttf-tahoma
 	optdepends = ttf-ms-fonts: for better fonts
 	conflicts = winbox
 	source = winbox-3.24.exe::https://download.mikrotik.com/winbox/3.24/winbox64.exe
