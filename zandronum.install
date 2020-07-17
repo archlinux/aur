@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+ echo ":: Zandronum looks for IWADs (e.g. doom2.wad) in CWD, ~/.zandronum and /usr/local/share"
+}
