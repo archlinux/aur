@@ -1,11 +1,9 @@
 pkgbase = jitsi-meet-nightly
-	pkgdesc = Jitsi Meet Web
+	pkgdesc = Jitsi Meet Web nightly build
 	pkgver = 1.0.4295
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
-	groups = jitsi-meet,
-	groups = celogeek
 	license = Apache
 	makedepends = python
 	makedepends = python2
