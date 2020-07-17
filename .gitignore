@@ -1,3 +1,5 @@
+*~
 tuxguitar-*-src.tar.gz
 *.log
 *.pkg.tar.xz
+*.pkg.tar.zst
