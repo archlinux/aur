@@ -1,6 +1,6 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=solo-python
-pkgver=0.0.24
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Tools and Python library for SoloKeys."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-click>=7.0' 'python-cryptography' 'python-ecdsa'
          'python-requests')
 makedepends=('python-pip' 'flit')
 source=("https://files.pythonhosted.org/packages/source/s/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b9aa7feb9e456f9c81b8283775a3149b8ea566a4241c0b8246d692acc89a2c2')
+sha256sums=('d3fc98b67356e834bf098a33accc4551c9aa5aefcb523666222785f19dd174ba')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
