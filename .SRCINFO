@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 15 Early-Access Build
-	pkgver = 15b31
+	pkgver = 15b32
 	pkgrel = 1
 	url = https://jdk.java.net/15
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=15
 	provides = java-runtime-headless=15
 	provides = java-runtime-headless-openjdk=15
-	source = https://download.java.net/java/early_access/jdk15/31/GPL/openjdk-15-ea+31_linux-x64_bin.tar.gz
-	sha256sums = 87a9314b733f711973093455f055a9f461a01a7c52dfe77d29da67d47795141b
+	source = https://download.java.net/java/early_access/jdk15/32/GPL/openjdk-15-ea+32_linux-x64_bin.tar.gz
+	sha256sums = 70521c1fa8a44e3073862fc10bcae2f1c2b688b5ce354734ceb242dd52145c51
 
 pkgname = java-openjdk-ea-bin
 
