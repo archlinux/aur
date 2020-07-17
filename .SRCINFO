@@ -1,14 +1,14 @@
-pkgbase = brother-hll8360cdw-lpr-bin
-	pkgdesc = LPR driver for Brother HL-L8360CDW printer
-	pkgver = 1.3.0
+pkgbase = brother-dcpt500w-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-T500W printer
+	pkgver = 3.0.2
 	pkgrel = 1
-	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll8360cdw_us_eu_as
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt500w_all
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = EULA
-	source = http://download.brother.com/welcome/dlf103237/hll8360cdwlpr-1.3.0-0.i386.deb
-	md5sums = 84df2dba896692852ece5192cc6b9655
+	source = https://download.brother.com/welcome/dlf101956/dcpt500wlpr-3.0.2-0.i386.deb
+	md5sums = 788b2a4b85a0df6d79c7068d57f94309
 
-pkgname = brother-hll8360cdw-lpr-bin
+pkgname = brother-dcpt500w-lpr-bin
 
