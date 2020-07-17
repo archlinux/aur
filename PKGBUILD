@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An open source multi-platform screen capture and recording tool"
 arch=('any')
 url='http://ginj.info'
-license=('GPL')
+license=('GPL3')
 depends=('java-runtime>=14' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://github.com/Ginj-capture/Ginj/releases/download/v${pkgver}/Ginj-${pkgver}.jar"
