@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://github.com/rosenloecher-it/roloviewer'
 license=('GPL3')
 provides=('roloviewer')
-depends=('zlib')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
@@ -28,6 +27,8 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /opt/roloviewer/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/roloviewer"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }

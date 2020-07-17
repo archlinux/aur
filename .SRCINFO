@@ -6,7 +6,6 @@ pkgbase = roloviewer-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = zlib
 	provides = roloviewer
 	noextract = roloviewer-1.0.1.AppImage
 	options = !strip
