@@ -1,6 +1,6 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=datamanager-cli-git
-pkgver=1.8.r288.6fc8179
+pkgver=1.8.r291.b70a918
 pkgrel=1
 epoch=
 pkgdesc="The official cli client for the datamanager system"
