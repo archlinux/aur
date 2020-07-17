@@ -1,0 +1,27 @@
+[Unit]
+Description=Jitsi-Meet Conference Focus
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/jicofo-nightly/config
+User=jicofo
+ExecStart=/usr/lib/jicofo-nightly/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
+WorkingDirectory=/var/lib/jicofo-nightly
+StateDirectory=jicofo-nightly
+StateDirectoryMode=0750
+LogsDirectory=jicofo-nightly
+LogsDirectoryMode=0750
+Restart=on-failure
+SuccessExitStatus=143
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

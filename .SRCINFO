@@ -1,0 +1,34 @@
+pkgbase = jicofo-nightly-bin
+	pkgdesc = Jicofo nightly bin
+	pkgver = 1.0+612
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = any
+	license = Apache
+	makedepends = java-environment
+	makedepends = unzip
+	makedepends = maven
+	depends = java-runtime
+	depends = bash
+	optdepends = prosody
+	provides = jicofo-nightly
+	conflicts = jicofo-nightly
+	options = !strip
+	backup = etc/jicofo-nightly/config
+	backup = etc/jicofo-nightly/logging.properties
+	backup = etc/jicofo-nightly/sip-communicator.properties
+	source = https://download.jitsi.org/unstable/jicofo_1.0-612-1_all.deb
+	source = config
+	source = sip-communicator.properties
+	source = service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = 01b189be7223e56dd6e3165cfbeb20e5eb661a02ff36497b655c8687a0b86377
+	sha256sums = 1ea9ec0ae7c398b3ac7ddc4a2597f1d660c55f1135b37dd9321ec9c473cccd21
+	sha256sums = f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab
+	sha256sums = aa65cc6180c21fb111f287a5fd688d4d157dd30418966366abe30053c3c225f0
+	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
+	sha256sums = 8285dccf3f64c0b02994f967e76434642b1194215227bd05ce79eccabee58247
+
+pkgname = jicofo-nightly-bin
+
