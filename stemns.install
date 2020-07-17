@@ -1,0 +1,8 @@
+post_install() {
+	echo ">>> To configure Tor, add to /etc/tor/torrc :"
+	echo ">>>     __LeaveStreamsUnattached 1"
+	echo ">>> Then, if you are running Tor as a service, reload it:"
+	echo ">>>     sudo systemctl reload tor"
+	echo ">>> To change the Tor control port to a non-default value,"
+	echo ">>> edit /opt/stemns/settings_port.py"
+}
