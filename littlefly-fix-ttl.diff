@@ -1,0 +1,13 @@
+diff --git a/LittleFly/plugin/LittleFly.ttl b/LittleFly/plugin/LittleFly.ttl
+index aafe97a..22df28c 100644
+--- a/LittleFly/plugin/LittleFly.ttl
++++ b/LittleFly/plugin/LittleFly.ttl
+@@ -96,5 +96,8 @@ rdfs:comment """
+   a guiext:X11UI;
+   guiext:binary <LittleFly_ui.so>;
+         lv2:extensionData guiext::idle ; 
++        lv2:extensionData guiext:resize ;
++        lv2:extensionData guiext:idleInterface;
++        lv2:requiredFeature guiext:idleInterface;
+         lv2:requiredFeature guiext:makeResident;
+   .

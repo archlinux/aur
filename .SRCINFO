@@ -1,0 +1,23 @@
+pkgbase = littlefly.lv2
+	pkgdesc = A high gain overdrive/distortion pedal simulation LV2 plugin
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/brummer10/LittleFly.lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = BSD
+	checkdepends = lv2lint
+	checkdepends = sord
+	makedepends = lv2
+	depends = cairo
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	source = https://github.com/brummer10/LittleFly.lv2/releases/download/v1.0/LittleFly_1.0.tar.gz
+	source = littlefly-fix-ttl.diff
+	sha512sums = 5782f0e5ba0ebde72f43f656253b8cc1fa1c78af9c7b6b276135d9e65a14c2ffc0b3476b367047a68417231d61ddd9496c3561793d34a6e5026eba7ead06bfd8
+	sha512sums = 37bb4708f89d07d7d6174ca6bfebf4e7b072f77580408a74df5ed5170f339e2d71b7122fed0c09aba64cbd59f318f3db5c4b5d455e87908d619afa993ef8ba36
+
+pkgname = littlefly.lv2
+

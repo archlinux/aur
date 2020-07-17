@@ -1,0 +1,8 @@
+.AURINFO
+pkg/
+src/
+xputty/
+LittleFly_*.tar.gz
+littlefly.lv2-*.tar.xz
+littlefly.lv2-*.tar.zst
+littlefly.lv2-*.src.tar.gz
