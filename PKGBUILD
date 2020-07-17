@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.39.18.r59.g2bee818f2
+pkgver=1.39.19.r66.ga2ef06ba9
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -19,15 +19,13 @@ provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git'
 	'git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e'
         'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
-	'arch-template.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/arch-template.patch?h=packages/emscripten'
 	'libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten'
-	'emscripten.config')
+	'emscripten-config::https://projects.archlinux.de/svntogit/community.git/tree/trunk/emscripten-config?h=packages/emscripten')
 sha256sums=('SKIP'
             'SKIP'
             '9108d609fee1a7fb7687c13d8d30eb26c0866e8f665c74000f131d3518af1de2'
-            '770f6c6322efeb280789e4d069ca19ad6621bb3867d3d51c86fe9f2256fb2fb0'
             '9e5b24e9b39f2c6f6ae23b1bb130630d930b290b31e6c543024cb998678dee16'
-            'f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f')
+            '22a3ba176676cee5ced6e8ca50846ff436708299e76b33390932a98ad186b379')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -36,7 +34,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-  patch -Np1 --no-backup-if-mismatch -i "$srcdir"/arch-template.patch
   patch -Np1 --no-backup-if-mismatch -i "$srcdir"/libcxxabi-include-libunwind.patch
   [[ -d "$srcdir"/llvm-project/llvm/build ]] || mkdir "$srcdir"/llvm-project/llvm/build
 }
