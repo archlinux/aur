@@ -2,7 +2,7 @@ _pkgname=jitsi-videobridge
 pkgname=${_pkgname}-bin
 epoch=1
 pkgver=2.1+202+g5f9377b9
-pkgrel=1
+pkgrel=2
 _debname=${_pkgname}2
 _debrel=1
 pkgdesc="WebRTC compatible Selective Forwarding Unit (SFU)"
@@ -27,7 +27,7 @@ source=("https://download.jitsi.org/stable/${_debname}_${pkgver//+/-}-${_debrel}
         'config'
         'sip-communicator.properties')
 sha256sums=('0afce2a9c591e72a69c28665f8bf48d5e9d3a4e253e6be8737b1913f4d25b29b'
-            '33a8329b2b886246dee8cca07b93e1c8977191170256ea65889d7a63937c06a9'
+            'a23bfd94bcf0a2ffbb9b4939ba09ce80979bd41a7d91ec3d702392e2e648a886'
             '5b47b031d7a1dec536d3fc53e71d971b1052ea2e78e1060b404a792211363515'
             '885923de1718b757826596aaec8e58025ae40ed622bad4b5f43b12ab975c86a2'
             '46f686cd8ea6bb5f1ec6055d2f16cc72db4baf9d90dea234d10e661b50924624'
