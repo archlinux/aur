@@ -2,7 +2,7 @@
 
 pkgname='auto-ytdl-git'
 pkgdesc='A youtube-dl wrapper with automatisation features. Run from terminal: aytdl'
-pkgver=1.0.2
+pkgver=1.0.2.r5.g5565b0c
 pkgrel=1
 arch=('any')
 url='https://github.com/michaelb/auto-ytdl'
@@ -10,10 +10,15 @@ license=('GPL3')
 depends=('ffmpeg' 'youtube-dl')
 makedepends=('python-setuptools' 'git')
 
+pkgver() {
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 md5sums=('SKIP')
-source=('auto-ytdl::git+http://github.com/michaelb/auto-ytdl.git')
+source=('auto-ytdl-git::git+http://github.com/michaelb/auto-ytdl.git')
 
 package() {
-  cd "${srcdir}/auto-ytdl"
+  cd "${srcdir}/${pkgname}"
   python -m setuptools.launch setup.py install --root="$pkgdir/" --optimize=1
 }
