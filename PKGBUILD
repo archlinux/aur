@@ -1,3 +1,5 @@
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
 _basename=jitsi-meet
 _pkgname=turnserver
 _tag=4295
@@ -5,8 +7,8 @@ _version=1.0.4295
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=1
-pkgdesc="Jitsi Meet Prosody Plugins"
+pkgrel=2
+pkgdesc="Jitsi Meet Prosody Plugins nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
@@ -20,7 +22,6 @@ backup=(
 source=(
         "$pkgname::git+https://github.com/jitsi/jitsi-meet#tag=${_tag}"
 )
-groups=('jitsi-meet', 'celogeek')
 
 package() {
 	cd "$srcdir/$pkgname"
