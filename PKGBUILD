@@ -11,7 +11,7 @@ conflicts=('gllock')
 depends=()
 makedepends=('git' 'clang' 'gcc' 'make' 'xorgproto' 'glew')
 source=('gllock-git::git+https://github.com/kuravih/gllock' 'config.mk.patch')
-md5sums=('SKIP' 'f06f5d3badfd75859957e473f5197fd6')
+md5sums=('SKIP' '4c42e503474809bc1dd8d8f2ceae6a10')
 
 pkgver() {
 	cd "${srcdir}/gllock-git"
@@ -19,8 +19,8 @@ pkgver() {
 }
 
 prepare() {
-	patch --forward --strip=1 --input="${srcdir}/config.mk.patch"
 	cd "${srcdir}/gllock-git"
+	patch --forward --input="${srcdir}/config.mk.patch"
 }
 
 build() {

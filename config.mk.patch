@@ -1,18 +1,13 @@
-diff --unified --recursive --text gllock-git.orig/config.mk gllock-git.new/config.mk
---- gllock-git.orig/config.mk	2019-07-16 16:56:00.267620365 -0300
-+++ gllock-git.new/config.mk	2019-07-16 16:57:42.950017875 -0300
-@@ -8,11 +8,11 @@
- 
- # shader
- # FRGMNT_SHADER = blur.fragment.glsl
--FRGMNT_SHADER = circle.fragment.glsl
-+# FRGMNT_SHADER = circle.fragment.glsl
- # FRGMNT_SHADER = square.fragment.glsl
- # FRGMNT_SHADER = glitch.fragment.glsl
+--- gllock-git.orig/config.mk	2020-07-17 17:28:26.736921213 +0200
++++ gllock-git.new/config.mk	2020-07-17 17:28:32.860413617 +0200
+@@ -10,8 +10,8 @@
  # FRGMNT_SHADER = ascii.fragment.glsl
+ # FRGMNT_SHADER = blur.fragment.glsl
+ # FRGMNT_SHADER = bokeh.fragment.glsl
+-FRGMNT_SHADER = circle.fragment.glsl
 -# FRGMNT_SHADER = crt.fragment.glsl
++# FRGMNT_SHADER = circle.fragment.glsl
 +FRGMNT_SHADER = crt.fragment.glsl
- 
- PREFIX = /usr/local
- 
-Only in gllock-git.new: tags
+ # FRGMNT_SHADER = glitch.fragment.glsl
+ # FRGMNT_SHADER = radialbokeh.fragment.glsl
+ # FRGMNT_SHADER = rain.fragment.glsl
