@@ -1,0 +1,4 @@
+jitsi-videobridge-nightly/
+src/
+pkg/
+*.pkg.tar.xz
