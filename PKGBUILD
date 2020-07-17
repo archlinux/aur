@@ -3,19 +3,19 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="5.2.0"
+pkgver="6.0.0"
 pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-desktop"
 arch=('x86_64')
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk2' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
+depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk3' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
 
 _pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
 source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 
-sha256sums=('80be35e91a3a12a6a44709ea5a84a23cd1265ef74931a888ab27cf0cc12efb9d')
+sha256sums=('a727f9315b24d69aa81389f163eb79ed3f5e420410b7dbbd3f3b28aa1ea2ee26')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
@@ -30,7 +30,7 @@ _wpcom_bin="#!/bin/sh
 
 /usr/share/wpcom/wpcom"
 
-build() {
+prepare() {
     cd "${srcdir}"
     echo -e "$_wpcom_desktop" | tee wpcom.desktop
     echo -e "$_wpcom_bin" | tee wpcom
@@ -54,4 +54,4 @@ package() {
     install -m 644 LICENSE.electron.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-# vim:set ts=4 sw=4 et syn=sh ft=sh:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
