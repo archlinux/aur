@@ -1,0 +1,23 @@
+pkgbase = jitsi-meet-nightly
+	pkgdesc = Jitsi Meet Web
+	pkgver = 1.0.4294
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = any
+	groups = jitsi-meet,
+	groups = celogeek
+	license = Apache
+	makedepends = python
+	makedepends = python2
+	makedepends = nodejs
+	makedepends = npm
+	optdepends = nginx
+	options = !strip
+	backup = etc/webapps/jitsi-meet-nightly/logging_config.js
+	backup = etc/webapps/jitsi-meet-nightly/config.js
+	backup = etc/webapps/jitsi-meet-nightly/interface_config.js
+	source = jitsi-meet-nightly::git+https://github.com/jitsi/jitsi-meet#tag=4294
+	sha256sums = SKIP
+
+pkgname = jitsi-meet-nightly
+
