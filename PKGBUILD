@@ -1,7 +1,8 @@
-# Maintainer: Ruben Kelevra <ruben+aur-engelsystem@vfn-nrw.de>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: Ruben Kelevra <ruben+aur-engelsystem@vfn-nrw.de>
 
 pkgname=engelsystem
-pkgver=3.0.0
+pkgver=3.1.0
 _dl_pkgver="v$pkgver"
 pkgrel=1
 pkgdesc='tool for coordinating helpers and shifts on large events'
@@ -17,7 +18,7 @@ backup=(usr/share/webapps/engelsystem/config/config.php)
 install='engelsystem.install'
 source=("${pkgname}-${pkgver}.tar.gz::${_download_url_base}/archive/${_dl_pkgver}.tar.gz"
               'engelsystem.install')
-sha512sums=('1508ea888eda23b3f5e8d600c2793556942b9849c75b1341d9c5c17db4a4db207f7c5840363150f12dfd11751307738f8856b7b911dd55d0bb63618af9113474'
+sha512sums=('12f931994d9ab73ffe6926228709f9774a80e11a14ad7cc64b99d4a6d68b03c897dd196e1ac3226aac91a1f755bfcd0af07700a0bb9f07e3b0aa6fdd262fdf8b'
                         'SKIP'
             )
 # validpgpkeys=('SKIP') # version 3.0.0 is not signed on github

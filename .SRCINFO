@@ -1,6 +1,6 @@
 pkgbase = engelsystem
 	pkgdesc = tool for coordinating helpers and shifts on large events
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://engelsystem.de/index_en.html
 	install = engelsystem.install
@@ -16,9 +16,9 @@ pkgbase = engelsystem
 	optdepends = nginx: a supported application server
 	optdepends = apache: a supported application server
 	backup = usr/share/webapps/engelsystem/config/config.php
-	source = engelsystem-3.0.0.tar.gz::https://github.com/engelsystem/engelsystem/archive/v3.0.0.tar.gz
+	source = engelsystem-3.1.0.tar.gz::https://github.com/engelsystem/engelsystem/archive/v3.1.0.tar.gz
 	source = engelsystem.install
-	sha512sums = 1508ea888eda23b3f5e8d600c2793556942b9849c75b1341d9c5c17db4a4db207f7c5840363150f12dfd11751307738f8856b7b911dd55d0bb63618af9113474
+	sha512sums = 12f931994d9ab73ffe6926228709f9774a80e11a14ad7cc64b99d4a6d68b03c897dd196e1ac3226aac91a1f755bfcd0af07700a0bb9f07e3b0aa6fdd262fdf8b
 	sha512sums = SKIP
 
 pkgname = engelsystem
