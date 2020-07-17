@@ -7,17 +7,14 @@ _version=1.0+612
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
-pkgdesc="Jicofo nightly bin"
+pkgrel=2
+pkgdesc="JItsi meet COnference FOcus nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
-makedepends=(
-        "java-environment"
-        "unzip" "maven"
-)
+makedepends=('tar')
 options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"

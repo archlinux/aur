@@ -1,13 +1,11 @@
 pkgbase = jicofo-nightly-bin
-	pkgdesc = Jicofo nightly bin
+	pkgdesc = JItsi meet COnference FOcus nightly binary
 	pkgver = 1.0+612
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
-	makedepends = java-environment
-	makedepends = unzip
-	makedepends = maven
+	makedepends = tar
 	depends = java-runtime
 	depends = bash
 	optdepends = prosody
