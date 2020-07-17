@@ -5,7 +5,7 @@ pkgbase = librespeed-cli
 	url = https://github.com/librespeed/speedtest-cli
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL3
 	makedepends = go
 	source = librespeed-cli-1.0.7::git+https://github.com/librespeed/speedtest-cli.git#tag=v1.0.7
 	sha512sums = SKIP
