@@ -1,16 +1,16 @@
 # Maintainer: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=evisum
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="EFL Process Viewer"
 arch=('x86_64')
 url="https://www.enlightenment.org"
-license=('BSD')
+license=('ISC')
 depends=('efl')
 makedepends=('meson' 'ninja')
 source=("https://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3b8a499b218152196a036eb8444d29557f14c696c172676278f129f4cc7f7a30')
+sha256sums=('13199601aaedd036bf0421516c204d9f9853a8610615cadde482228e3eda6fb6')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -25,5 +25,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     DESTDIR="$pkgdir" ninja -C build install
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
