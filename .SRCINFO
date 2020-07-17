@@ -1,0 +1,18 @@
+pkgbase = wormhole-william-bin
+	pkgdesc = Securely transfer files between devices. Go implementation of magic wormhole.
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = https://github.com/psanford/wormhole-william
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = wormhole-william
+	source = wormhole-william-1.0.4::https://github.com/psanford/wormhole-william/releases/download/v1.0.4/wormhole-william-linux-amd64
+	source = wormhole-william-1.0.4-README.md::https://raw.githubusercontent.com/psanford/wormhole-william/master/README.md
+	source = wormhole-william-1.0.4-LICENSE::https://raw.githubusercontent.com/psanford/wormhole-william/master/LICENSE
+	sha256sums = 1dbb936fcecdc07e9bd8463e97da282db5c8acee864661ed689a5ce40a64ffdb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wormhole-william-bin
+
