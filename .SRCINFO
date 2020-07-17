@@ -1,6 +1,6 @@
 pkgbase = python-dotboy-git
 	pkgdesc = A Python script to help with dot file management
-	pkgver = v0.1.5r1.r0.2709089
+	pkgver = v0.3.0.r0.f5443e9
 	pkgrel = 1
 	url = https://gitlab.com/bwbuhse/dotboy
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-dotboy-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.8
+	depends = python-gitpython
 	provides = python-dotboy
 	conflicts = python-dotboy
 	source = git+https://gitlab.com/bwbuhse/dotboy
