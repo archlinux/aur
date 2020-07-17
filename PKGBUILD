@@ -6,14 +6,16 @@ pkgname="python-${_name}"
 provides=()
 conflicts=()
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python script to help with dot file management'
 arch=('any')
 url="https://gitlab.com/bwbuhse/${_name}"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 makedepends=('python-setuptools')
-depends=('python>=3.8')
+depends=(
+    'python>=3.8'
+    'python-gitpython')
 md5sums=('c367318fb9572c77ed68b60385f200d8')
 
 build() {
