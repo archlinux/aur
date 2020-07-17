@@ -1,0 +1,33 @@
+[Unit]
+Description=Jitsi-Meet Videobridge
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/jitsi-videobridge-nightly/config
+User=jvb
+ExecStart=/usr/lib/jitsi-videobridge-nightly/jvb.sh ${JVB_OPTS}
+WorkingDirectory=/var/lib/jitsi-videobridge-nightly
+StateDirectory=jitsi-videobridge-nightly
+StateDirectoryMode=0750
+LogsDirectory=jitsi-videobridge-nightly
+LogsDirectoryMode=0750
+Restart=on-failure
+SuccessExitStatus=143
+
+# more threads for this process
+TasksMax=65000
+# allow more open files for this process
+LimitNPROC=65000
+LimitNOFILE=65000
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
