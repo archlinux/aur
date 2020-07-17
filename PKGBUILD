@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Tortuyaux <mathieu.tortuyaux@gmail.com>
 pkgname=terracognita
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 epoch=1
 pkgdesc="Reads from existing Cloud Providers (reverse Terraform) and generates your infrastructure as code on Terraform configuration"
@@ -9,8 +9,8 @@ url="https://github.com/cycloidio/$pkgname"
 license=('MIT')
 source_x86_64=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
 source_i386=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-386.tar.gz")
-sha256sums_x86_64=('5048151ccbb2bcacf3249ea0a303dcba3644b3f04342e40dd31469f5cc6a5ef2')
-sha256sums_i386=('5a4aed64cd93f506698cfcd84202726f02e66b0277f967806fa6586f8354734d')
+sha256sums_x86_64=('7559a6b9cf734ef4afe5f0291b921ab007468abc61f2ee54bf68ec68406f9fe1')
+sha256sums_i386=('989fa73ce726721662743a61cec34f406181e1adcfc4418a1a237603cfce7af6e')
 
 package() {
 	case $CARCH in
