@@ -26,6 +26,8 @@ package() {
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  ln -s /opt/${pkgname}/${pkgname}.AppImage "${pkgdir}/usr/bin/testmace"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
 }
