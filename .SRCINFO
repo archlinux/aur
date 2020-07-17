@@ -15,7 +15,7 @@ pkgbase = lampswitch
 	depends = libappindicator-gtk3
 	depends = desktop-file-utils
 	optdepends = mate-ayatana-indicator-applet
-	optdepends = libayatana-appindicator-gtk3
+	optdepends = libayatana-appindicator
 	source = bzr+lp:lampswitch
 	md5sums = SKIP
 
