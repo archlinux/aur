@@ -1,6 +1,6 @@
 pkgbase = datamanager-cli-git
 	pkgdesc = The official cli client for the datamanager system
-	pkgver = 1.8.r291.b70a918
+	pkgver = 1.8.r293.8f32e12
 	pkgrel = 1
 	url = https://github.com/DataManager-Go/DataManagerCLI
 	arch = i686
