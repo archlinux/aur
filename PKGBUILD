@@ -2,7 +2,7 @@
 
 pkgname=mikhak-fonts
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="simple monoline Arabic-Latin semi handwriting typeface"
 url="https://aminabedi68.github.io/Mikhak/"
 arch=(any)
@@ -11,7 +11,7 @@ provides=('ttf-mikhak')
 conflicts=('ttf-mikhak')
 source=("${pkgname}-${pkgver}.zip::https://github.com/aminabedi68/Mikhak/releases/download/v${pkgver}/Mikhak-v${pkgver}.zip"
         "LICENSE::https://raw.githubusercontent.com/aminabedi68/Mikhak/master/LICENSE")
-sha256sums=('5884a4bb7c2e08c84a78f424ca037026f7082041a5ff4142575129ca9cccb3ae'
+sha256sums=('3644c198895ee200a862c48ecb2065fe867c7d382f2c8d79fcc5e4749d8c1bfd'
             'c791c42a7dafbcdf4ffa6869f195ae5bbf1f1d83f8ce5d884fe907bef875e6ea')
 
 package() {
