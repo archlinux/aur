@@ -16,10 +16,10 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=202.6250.13
+_buildver=202.6397.20
 _veryear=2020
-_verrelease=1
-_verextra=2
+_verrelease=2
+_verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
