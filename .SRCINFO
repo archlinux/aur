@@ -1,13 +1,15 @@
 pkgbase = pymdown-extensions
 	pkgdesc = Extensions for Python Markdown
-	pkgver = 6.3.0
+	pkgver = 7.1
 	pkgrel = 1
-	url = http://facelessuser.github.io/pymdown-extensions/
+	url = http://facelessuser.github.io/pymdown-extensions
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/facelessuser/pymdown-extensions/archive/6.3.0.tar.gz
-	sha256sums = 9e2f98bbc31c76cfd0001b58c45b1a8add66d279f289f5c5b850778a4e771c22
+	depends = python-markdown>3.2
+	optdepends = python-pygments
+	source = https://pypi.org/packages/source/p/pymdown-extensions/pymdown-extensions-7.1.tar.gz
+	sha256sums = 5bf93d1ccd8281948cd7c559eb363e59b179b5373478e8a7195cf4b78e3c11b6
 
 pkgname = pymdown-extensions
 
