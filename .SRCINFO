@@ -1,0 +1,13 @@
+pkgbase = nssnippets-bin
+	pkgdesc = A command-line tool for generating NWScript VSC snippets (binary version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Taro94/nwscript-snippets
+	arch = any
+	license = GPL
+	options = !strip
+	source = https://gitlab.com/Taro94/nwscript-snippets/uploads/05ea4e2fb79ec3e958947019c9357bc3/nssnippets.tar.7z
+	md5sums = 7648f0251d25a0decc810f14fd375d74
+
+pkgname = nssnippets-bin
+
