@@ -1,5 +1,5 @@
 pkgname=jitsi-meet-prosody-plugins
-pkgver=1.0.4025
+pkgver=1.0.4127
 pkgrel=1
 _debrel=1
 pkgdesc="Prosody plugins for jitsi-meet"
@@ -10,7 +10,7 @@ depends=('prosody')
 options=('!strip')
 
 source=("https://download.jitsi.org/stable/jitsi-meet-prosody_${pkgver}-${_debrel}_all.deb")
-sha256sums=('ddd3edd7c7df0ba9e79dec4b5b8c3d19139d4540205a47fedda36352567fd5f8')
+sha256sums=('bc72563dfe0bd5c1b6516fc824a48038597a56626d78af0e19484e8283da8475')
 
 package() {
   cd "${srcdir}"
