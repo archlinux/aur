@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -32,6 +32,7 @@ depends=(
   'mingw-w64-opencore-amr'
   'mingw-w64-openjpeg2'
   'mingw-w64-opus'
+  'mingw-w64-rav1e'
   'mingw-w64-libssh'
   'mingw-w64-sdl2'
   'mingw-w64-speex'
