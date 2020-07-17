@@ -1,6 +1,6 @@
 pkgbase = polished-map-plus-plus
 	pkgdesc = A map and tileset editor for pokecrystal, pokered, and hacks based on them like Polished Crystal (attributes support).
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/Rangi42/polished-map
 	arch = x86_64
