@@ -18,14 +18,19 @@ depends=('python-pyqt5'
          'ttf-fira-code'
          'python-prompt_toolkit1014')
 makedepends=('python-pip')
-source=("${pkgname}-${pkgver}-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/a7/0b/8890d405123107ead021b0f6df50d4723c91847e4df3a765b640310544cb/gonha-${pkgver}-py2.py3-none-any.whl"
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/fc/c6/152c6b3c9226255f1eccb6ae18b4d4ee5b1ff782c2884ceb07292150ec5b/gonha-${pkgver}.tar.gz"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
-sha256sums=('260171b374baf3e14de13b225c9f5c28b9fa49b9459581af99b19dfcce84a5ac'
+sha256sums=('1edb579ee86fd8a8b5a5005ce6cfa9931258ff1c91272e6b673d1fb7016bb2d6'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
+build() {
+ cd "${pkgname}-${pkgver}"
+ python setup.py build
+}
+  
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ${pkgname}-${pkgver}-py2.py3-none-any.whl
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  sed -i "s|$srcdir||" "${pkgdir}/usr/lib/python3.8/site-packages/gonha-${pkgver}.dist-info/direct_url.json"
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
