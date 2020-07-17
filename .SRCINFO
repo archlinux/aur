@@ -6,7 +6,6 @@ pkgbase = localxpose-gui
 	arch = x86_64
 	license = custom:localxpose-gui
 	makedepends = gendesk
-	depends = zlib
 	provides = localxpose
 	noextract = localxpose-gui-latest.AppImage
 	options = !strip

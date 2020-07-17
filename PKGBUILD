@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://localxpose.io'
 license=("custom:${pkgname}")
 provides=('localxpose')
-depends=('zlib')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
@@ -30,7 +29,10 @@ package() {
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  ln -s /opt/localxpose-gui/${pkgname}.AppImage "${pkgdir}/usr/bin/localxpose-gui"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt/${pkgname}" -type f -exec chmod o-w {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
