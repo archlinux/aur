@@ -2,7 +2,7 @@
 
 pkgname="tsv-utils-bin"
 _pkgname=tsv-utils
-pkgver=1.6.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more. Self-contained official binary release package."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('tsv-utils')
 conflicts=('tsv-utils')
 
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}_linux-x86_64_ldc2.tar.gz")
-sha256sums=('557c701503fb9a07c04514439929b630f28097da4dd912f54f631e41a503569f')
+sha256sums=('f2365778e5db6872d775456c99ec8565388c5d9aa75ebafff2c9c11d1d9a0ba2')
 _bin_files=(
     'csv2tsv'  'keep-header'  'number-lines'  'tsv-append'  'tsv-filter'  'tsv-join'  'tsv-pretty'  'tsv-sample'  'tsv-select'  'tsv-summarize'  'tsv-uniq'
 )
