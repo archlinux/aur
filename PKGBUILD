@@ -10,7 +10,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.8.2
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -27,12 +27,14 @@ makedepends=(python-twisted python-jinja python-zope-interface
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "reproducible-html.diff"
-        "sqlalchemy-1.13.18.diff")
+        "sqlalchemy-1.13.18.diff"
+        "ignore-setuptools-warning.diff")
 sha256sums=('e5ef72bba5eee9f84f5c2df45fb6238537714c7ce9f9838418d385a3722948c9'
             'SKIP'
             'SKIP'
             'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864'
-            'cd6119e8f8346ad2bcfedb3bfdbfcdcbb9908ea1db9f3ec09d323f6c9d13d9df')
+            'cd6119e8f8346ad2bcfedb3bfdbfcdcbb9908ea1db9f3ec09d323f6c9d13d9df'
+            'd09f851fb1a50f99d407ea79fa25a90ec0f70b593983108468c87fee8b3cc476')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -42,6 +44,10 @@ prepare() {
   cd buildbot-$pkgver
   patch -Np1 -i ../reproducible-html.diff
   patch -Np1 -i ../sqlalchemy-1.13.18.diff
+  # Setuptools 49.2.0 complains if distutils is imported earlier than setuptools
+  # The warning is still under discussion, so just ignore it for now
+  # https://github.com/pypa/setuptools/issues/2259
+  patch -Np1 -i ../ignore-setuptools-warning.diff
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
