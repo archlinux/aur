@@ -1,8 +1,8 @@
 # Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 
 
-_pkgname=getmail
-pkgname="$_pkgname-python3-git"
+pkgname=getmail-python3-git
+_pkgname=getmail6
 
 pkgver() {
   cd "$_pkgname"
@@ -11,16 +11,16 @@ pkgver() {
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
-pkgver=6.00.r21.b25297b
+pkgver=6.00.r30.7c82473
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
-url="https://github.com/rpuntaie/$_pkgname"
+url="https://github.com/$_pkgname/$_pkgname"
 license=('GPL2')
 
-provides=("$_pkgname" "$_pkgname-python3")
-conflicts=("$_pkgname" "$_pkgname-python3")
+provides=("getmail=$pkgver")
+conflicts=('getmail')
 
 makedepends=('git')
 depends=('python-chardet')

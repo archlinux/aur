@@ -1,3 +1,7 @@
+Version 6.01
+TODO
+    - fixes of reported issues on github up to #5
+
 Version 6.00
 02 May 2020
     - Make code compatible to Python 3 (losing some backward compatibility)
