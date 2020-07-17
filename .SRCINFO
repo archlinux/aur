@@ -1,0 +1,16 @@
+pkgbase = recollectr
+	pkgdesc = Record and recall without breaking your flow
+	pkgver = latest
+	pkgrel = 1
+	url = https://recollectr.io
+	arch = x86_64
+	license = custom:recollectr
+	makedepends = gendesk
+	noextract = recollectr-latest.AppImage
+	source = recollectr-latest.AppImage::https://recollectr.io/download/linux/
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = recollectr
+
