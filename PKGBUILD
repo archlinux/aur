@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=4.3.r98015.ga886785018
+pkgver=4.4.r98491.g3a37aa597f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -32,6 +32,7 @@ depends=(
     'libmodplug'
     'libomxil-bellagio'
     'libpulse'
+    'librav1e.so'
     'libraw1394'
     'libsoxr'
     'libssh'
@@ -86,8 +87,8 @@ pkgver() {
     local _version
     local _revision
     local _shorthash
-    _version="$(git -C ffmpeg describe  --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$(git -C ffmpeg describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
+    _version="$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
+    _revision="$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')"
     _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
@@ -126,6 +127,7 @@ build() {
         --enable-libopenjpeg \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librav1e \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
