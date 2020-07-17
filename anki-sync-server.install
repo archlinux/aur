@@ -81,16 +81,13 @@ If you want to run the supplied anki client execute:
 
     /opt/anki-sync-server/anki-bundled/runanki
 
-You'll need to install the listed requirements to get it running first:
+You'll need to install the listed requirements to get it running first. You can run the file
 
-    cd /opt/anki-sync-server
-    sudo -u anki-sync-server git submodule update --init anki-bundled
-    cd anki-bundled
-    sudo -u anki-sync-server bash tools/build_ui.sh #for aqt dependency
-    sudo pacman -S python-beautifulsoup4 python-send2trash \
-    python-pyaudio python-requests python-decorator \
-    python-psutil python-distro python-markdown \
-    python-pyqt5 python-pyqtwebengine mpv
+    sh install_anki_bundled.sh
+
+to do that.
+
+
 
 =======================================================================
 EOF
