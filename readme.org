@@ -6,4 +6,4 @@
 testbenches in Python. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]] provides a way to build a package suitable
 for [[https://www.archlinux.org/][Archlinux]].
 
-This project lives [[https://gitlab.com/aur-packages/python-cocotb][here]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-cocotb/pipelines][build]] process.
+This project lives in [[https://gitlab.com/aur-packages/python-cocotb][gitlab.com]] and in the [[https://aur.archlinux.org/packages/python-cocotb/][aur]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-cocotb/pipelines][build]] process.
