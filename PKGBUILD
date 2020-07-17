@@ -1,19 +1,18 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=universal-data-tool-bin
-pkgver=0.10.18
+pkgver=0.10.34
 pkgrel=1
 pkgdesc="Collaborate & label any type of data, images, text, or documents, in an easy web interface or desktop app"
 arch=('x86_64')
 url='https://universaldatatool.com'
 license=('MIT')
 provides=('universal-data-tool')
-depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/UniversalDataTool/universal-data-tool/releases/download/v${pkgver}/Universal-Data-Tool-${pkgver}.AppImage"
         'LICENSE::https://github.com/UniversalDataTool/universal-data-tool/raw/master/LICENSE')
-sha256sums=('6f851e11536bb6d11867923598d3705b3f9af349e2b422d627f30747f9240e80'
+sha256sums=('b5aab849064b51b9c116d6fb28c90538da4bf534f4fb002cfc682c0580f52294'
             '7c65062117526f7cec40896a71b8dfab96da54194f61b18b95816920839da172')
 
 package() {
@@ -29,7 +28,9 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /usr/share/universal-data-tool/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/universal-data-tool"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
