@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
-	pkgver = 0.24.9.r1284.b343813
+	pkgver = 0.24.9.r1287.81babb7
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686
@@ -20,10 +20,8 @@ pkgbase = lilv-git
 	conflicts = lilv-svn
 	source = lilv::git+https://gitlab.com/lv2/lilv.git
 	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	source = lilv-no-empty-collection-assert.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 5d60a2514d5f81c5335d9278057bf0ae
 
 pkgname = lilv-git
 
