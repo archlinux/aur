@@ -86,9 +86,6 @@ You'll need to install the listed requirements to get it running first. You can 
     sh install_anki_bundled.sh
 
 to do that.
-
-
-
 =======================================================================
 EOF
 }
