@@ -1,0 +1,21 @@
+pkgbase = jitsi-meet-prosody-nightly-bin
+	pkgdesc = Jitsi Meet Prosody Plugins nightly binary
+	pkgver = 1.0.4297
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = any
+	license = Apache
+	makedepends = tar
+	optdepends = prosody
+	optdepends = lua52
+	optdepends = lua52-sec
+	optdepends = lua52-zip
+	optdepends = lua52-event
+	provides = jitsi-meet-prosody-nightly
+	conflicts = jitsi-meet-prosody-nightly
+	options = !strip
+	source = https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.4297-1_all.deb
+	sha256sums = a8c03dda1a10c2141bc331404c5d6a0c1d9da86b52310198f1252c80d087e00c
+
+pkgname = jitsi-meet-prosody-nightly-bin
+
