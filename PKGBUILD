@@ -14,22 +14,22 @@ source=('gllock-git::git+https://github.com/kuravih/gllock' 'config.mk.patch')
 md5sums=('SKIP' 'f06f5d3badfd75859957e473f5197fd6')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/gllock-git"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
 	patch --forward --strip=1 --input="${srcdir}/config.mk.patch"
+	cd "${srcdir}/gllock-git"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/gllock-git"
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	export DESTDIR="${pkgdir}"
+	cd "${srcdir}/gllock-git"
+	export DESTDIR="gllock-git"
 	make install
 }
