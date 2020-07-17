@@ -1,3 +1,5 @@
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
 _basename=jitsi
 _pkgname=videobridge
 _tag=2.1-274-g9bbf2713
@@ -5,8 +7,8 @@ _version=2.1+274+g9bbf2713
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=1
-pkgdesc="Jitsi Meet Videobridge"
+pkgrel=2
+pkgdesc="Jitsi Meet Videobridge nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
@@ -31,7 +33,6 @@ source=(
         "sysusers.conf"
         "tmpfiles.conf"
 )
-groups=('jitsi-meet', 'celogeek')
 
 build() {
         cd "$pkgname"
