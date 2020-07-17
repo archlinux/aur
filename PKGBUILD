@@ -2,8 +2,8 @@
 
 _pkgname=jack_mixer
 pkgname="${_pkgname}-git"
-pkgver=12.r290.d5c0bc6
-pkgrel=2
+pkgver=13.r355.618dbed
+pkgrel=1
 pkgdesc="A GTK based Jack audio mixer (git version)"
 arch=('x86_64')
 url="https://rdio.space/jackmixer/"
@@ -34,5 +34,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   # Install documentation
-  install -Dm644 AUTHORS README NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 AUTHORS README.md NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
