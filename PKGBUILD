@@ -3,10 +3,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=5.0
-pkgrel=3
+pkgver=5.1.1
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=5.0
+_wwwpkgver=5.1
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
@@ -40,10 +40,10 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    piholeDebug.sh
 )
 
-md5sums=('0f19aeefad3063c44f421de1ad21b233'
-         '9402041b365e78a02a95942bdd3c3c05'
-         'e86d30019550856eebfbaf3c66b24b3e'
-         '7836b40de628a6e35992c5547bd5d5f4'
+md5sums=('c42919120ba9e3d742936d23af501c78'
+         'e40a0fbaebed185d0f7902099ae3d53f'
+         '100ca3d6f6546297ea24f2eb3d78d5cd'
+         '0fdeaa95a1b3acaf342d341e6893a382'
          '62ab22d82267f30bd1a75773a1de79c8'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -75,6 +75,7 @@ package() {
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/wildcard_regex_converter.sh "$pkgdir"/opt/pihole/wildcard_regex_converter.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/query.sh "$pkgdir"/opt/pihole/query.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/pihole-reenable.sh "$pkgdir"/opt/pihole/pihole-reenable.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/piholeARPTable.sh "$pkgdir"/opt/pihole/piholeARPTable.sh
 
   install -Dm644 $_pkgname-$pkgver/advanced/Scripts/COL_TABLE "$pkgdir"/opt/pihole/COL_TABLE
