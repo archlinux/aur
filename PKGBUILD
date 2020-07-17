@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.2.3
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -44,9 +44,12 @@ depends=(
 # TODO: Add vmaf dependency
 #'mingw-w64-vmaf'
 options=(!strip !buildflags staticlibs)
+# TODO: Add avisynth dependency
+#'mingw-w64-avisynthplus'
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
+_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         vmaf-model-path.patch
         configure.patch)
 sha256sums=('SKIP'
@@ -62,10 +65,6 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-
-  # lavf/mp3dec: don't adjust start time; packets are not adjusted
-  # https://crbug.com/1062037
-  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
 
   patch -Np1 -i ../configure.patch
 
@@ -86,7 +85,6 @@ build() {
       --disable-debug \
       --enable-static \
       --disable-stripping \
-      --enable-avisynth \
       --enable-fontconfig \
       --enable-gmp \
       --enable-gnutls \
@@ -104,6 +102,7 @@ build() {
       --enable-libopencore_amrwb \
       --enable-libopenjpeg \
       --enable-libopus \
+      --enable-librav1e \
       --enable-libsoxr \
       --enable-libspeex \
       --enable-libsrt \
@@ -123,6 +122,8 @@ build() {
       --disable-doc \
       --x86asmexe=yasm
 
+# TODO: Add avisynth dependency
+#      --enable-avisynth \
 # TODO: Add vmaf dependency
 #      --enable-libvmaf \
 
