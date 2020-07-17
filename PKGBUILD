@@ -2,26 +2,28 @@
 
 pkgname=xforms
 pkgver=1.2.5pre1
-pkgrel=4
+pkgrel=5
 pkgdesc="A graphical user interface toolkit for X Window Systems."
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://xforms-toolkit.org/'
 depends=('libxpm' 'libjpeg' 'libgl')
-source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('52d0358f384db0ebf053dc1ae5f98446b1ae3ad75ebdd4438da8c023acbf9dba')
+makedepends=('git')
+source=("git+https://git.savannah.gnu.org/git/xforms.git#commit=2c1a9f151baf50887a517280645ec23379fb96f8")
+sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+  ./autogen.sh
   ./configure --prefix=/usr 
-  make
+  make 
   cd doc
   make info
   make pdf
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir"/ install
   rm $pkgdir/usr/lib/*.la
   install -d "$pkgdir"/usr/share/info 
