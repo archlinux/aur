@@ -5,7 +5,7 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.1')
 depends=('nettle' 'gmp')
-makedepends=('sqlite')
+makedepends=('cmake' 'sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
 install=$pkgname.install
@@ -25,8 +25,8 @@ source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgv
         "$pkgname.service"
         "$pkgname.db"
         "$pkgname.conf")
-md5sums=('a405fee9a924324eefe6bfb832180c3d'
-         'b5a92d614ca46486bd2ede3c8bb13af8'
+md5sums=('546936fe650370a15fcc4111352c072c'
+         '76914c63e8d56eff41b35ae893ff9ff0'
          'ca844c23699ba64777571253bc7ccb21'
          '455c38b73491bf641e422be3652698b7'
          '6dfe9e75d89554e7a290ba815d85c068'
@@ -34,16 +34,13 @@ md5sums=('a405fee9a924324eefe6bfb832180c3d'
          'a9c8de83f02d36bfe96db57975984bbb')
 
 prepare() {
-#  cd "$srcdir"/"$_pkgname"-"$pkgver"/src/dnsmasq
-#  patch -Np2 -i "$srcdir"/glib.patch
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-#  patch -Np1 -i "$srcdir"/nettle35.patch
   patch -Np1 -i "$srcdir"/arch-ftl-$pkgver-$_now.patch
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  make
+  cd "$srcdir"/"$_pkgname"-"$pkgver"
+  ./build.sh
 }
 
 package() {
