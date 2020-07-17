@@ -14,7 +14,7 @@ post_install() {
   sudo -u anki-sync-server pip install decorator --user
 
   # post installation instructions
-  cat << EOF 
+  cat << EOF
 =======================================================================
 ------------------
 Post Installation:
@@ -76,17 +76,17 @@ for details.
 ------------------------
 Run Bundled Anki Client:
 ------------------------
-execute:
+If you want to run the supplied anki client execute:
 
     /opt/anki-sync-server/anki-bundled/runanki
 
-you'll need most of the optional dependencies installed before running it
-though.  
+You'll need to install the listed requirements to get it running first:
 
-Also "aqt.forms" is a module you'll have to build yourself using the following script:
-  
-    /opt/anki-sync-server/anki-bundled/tools/build_ui.sh
-    
+    cd /opt/anki-sync-server/anki-bundled
+    pip install -r requirements.txt --user
+    bash tools/build_ui.sh #for aqt dependency
+    sudo pacman -S python-pyqt5 python-pyqtwebengine
+
 =======================================================================
 EOF
 }

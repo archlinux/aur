@@ -64,22 +64,6 @@ prepare() {
   sed "12s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
 }
 
-build() {
-  cd "${pkgname%-git}"/anki-bundled
-
-  #initialize anki-bundled
-  git submodule update --init
-
-  # get anki-bundled working
-  if [ -z "$(echo 'python-pyqt5 python-pyqtwebengine qt5-base>=5.12.2-1.1 libvpx>=1.8.0-1
-    double-conversion>=3.1.4-1 qt5ct>=0.38-1 qt5-svg>=5.12.2-1' | xargs pacman -T)" ]; then
-    echo "found prerequisites to use bundled anki, setting up bundled anki"
-    pip install --upgrade setuptools --user
-    pip install -r requirements.txt --user
-    bash tools/build_ui.sh
-  fi
-}
-
 package() {
   cd "${pkgname%-git}"
   mkdir "${pkgdir}"/opt
