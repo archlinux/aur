@@ -1,5 +1,0 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
-post_install() {
-  echo -e "You need to execute '\e[32mdeepnest\e[37m' in a terminal in order to generate a .desktop file."
-}

@@ -3,15 +3,11 @@ pkgbase = deepnest-bin
 	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://deepnest.io
-	install = deepnest.install
 	arch = x86_64
 	license = custom:unknown
-	depends = zlib
 	depends = pango-legacy
-	depends = bash
 	provides = deepnest
-	options = !strip
-	source = deepnest-bin-1.0.5.zip::https://deepnest.io/Deepnest-1.0.5-linux.zip
+	source = deepnest-1.0.5.zip::https://deepnest.io/Deepnest-1.0.5-linux.zip
 	sha256sums = 54c049da97acc39741a4c960833258b0b2f9772dbdffdc1a27370983a8657a51
 
 pkgname = deepnest-bin
