@@ -1,14 +1,14 @@
 pkgbase = duckdns-ipv6
 	pkgdesc = Automatically update DuckDNS domains, with IPv6 support
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://duckdns.org
 	install = duckdns.install
 	arch = any
 	license = GPL3
-	depends = bash
 	depends = curl
 	depends = jq
+	depends = sh
 	depends = util-linux
 	provides = duckdns
 	conflicts = duckdns

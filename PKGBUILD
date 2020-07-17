@@ -4,12 +4,12 @@
 pkgname=duckdns-ipv6
 _pkgname=duckdns
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically update DuckDNS domains, with IPv6 support"
 arch=("any")
 url="https://${_pkgname}.org"
 license=("GPL3")
-depends=("bash" "curl" "jq" "util-linux")
+depends=("curl" "jq" "sh" "util-linux")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.d/default")
