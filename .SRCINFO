@@ -1,6 +1,6 @@
 pkgbase = iio-sensor-proxy-git
 	pkgdesc = IIO accelerometer sensor to input device proxy
-	pkgver = 3.0.r17.0e5ae37
+	pkgver = 3.0.r18.4d5df70
 	pkgrel = 1
 	url = https://github.com/hadess/iio-sensor-proxy
 	arch = i686

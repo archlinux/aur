@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
-pkgver=3.0.r17.0e5ae37
+pkgver=3.0.r18.4d5df70
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson $_pkgname --reconfigure
+    arch-meson build $_pkgname
     meson compile -C build
 }
 
