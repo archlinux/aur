@@ -2,9 +2,9 @@
 pkgname=anki-sync-server-git
 pkgver=r259.7ef3d4f
 pkgrel=1
-pkgdesc="A sync server for anki using a forked version from github.com/tsudoko (orig:dsnopek)"
+pkgdesc="A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)"
 arch=('any')
-url="https://github.com/tsudoko/anki-sync-server"
+url="https://github.com/ankicommunity/anki-sync-server"
 license=('GPL')
 provides=('anki-sync-server')
 conflicts=('anki-sync-server')
@@ -28,7 +28,7 @@ optdepends=('python-pyqt5: dependency of bundled anki client'
 'python2-decorator: if you want to run the server as a user other than the supplied anki-sync-server user'
 )
 install=anki-sync-server.install
-source=('git+https://github.com/tsudoko/anki-sync-server')
+source=('git+https://github.com/ankicommunity/anki-sync-server')
 md5sums=('SKIP')
 
 pkgver() {
