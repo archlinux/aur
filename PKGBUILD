@@ -1,4 +1,4 @@
-pkgname=jitsi-meet-prosody-plugins
+pkgname=jitsi-meet-prosody-bin
 pkgver=1.0.4127
 pkgrel=1
 _debrel=1
@@ -8,6 +8,7 @@ url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=('prosody')
 options=('!strip')
+conflicts=('jitsi-meet-prosody-plugins')
 
 source=("https://download.jitsi.org/stable/jitsi-meet-prosody_${pkgver}-${_debrel}_all.deb")
 sha256sums=('bc72563dfe0bd5c1b6516fc824a48038597a56626d78af0e19484e8283da8475')
