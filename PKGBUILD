@@ -8,13 +8,11 @@ Optimized for Snowflake, Presto, BigQuery, and Redshift"
 arch=('x86_64')
 url='https://www.querypie.com'
 license=("custom:${pkgname}")
-depends=('zlib')
 makedepends=('gendesk')
-options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://d2f8621kw7pn7s.cloudfront.net/latest/QueryPie-${pkgver}.AppImage?v=${pkgver}-latest.200615184"
         'LICENSE')
-sha256sums=('097e3130bd4efb1aeeebd75f5d2d6f187df8e3092850c36f9be43604ef99ffab'
+sha256sums=('8ece78588dc1604cf052c3962b664c8400bdb7516d9a6158d043e532d10a7da1'
             'SKIP')
 
 package() {
@@ -26,12 +24,14 @@ package() {
           --name "QueryPie" \
           --comment "$pkgdesc" \
           --exec "${pkgname}" \
-          --categories 'Utility;Development;Application;' \
+          --categories 'Utility;Development;Application' \
           --icon "${pkgname}" \
           --mimetypes=x-scheme-handler/querypie; \
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /opt/${pkgname}/${pkgname}.AppImage "${pkgdir}/usr/bin/querypie"
 }
