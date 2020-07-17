@@ -1,6 +1,6 @@
 # Maintainer: Marcel Robitaille mail@marcelrobitaille.me
 pkgname=gllock-crt-git
-pkgver=r64.c77658b
+pkgver=r69.8123a65
 pkgrel=1
 pkgdesc="not so simple opengl based X display locker utility -- crt shader"
 arch=("i686" "x86_64")
