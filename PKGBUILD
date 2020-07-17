@@ -1,7 +1,7 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=qlogger-git
 pkgver=r38.a68502f
-pkgrel=1
+pkgrel=2
 pkgdesc="Thread-safe logger for Qt applications"
 arch=(x86_64)
 url="https://github.com/francescmm/QLogger"
@@ -27,5 +27,5 @@ package() {
     cd "${pkgname}"
     install -Dm644 -t "${pkgdir}/usr/lib" libQLogger.a 
     install -Dm644 -t "${pkgdir}/usr/share/licenses/qlogger" LICENSE 
-    install -Dm644 -t "${pkgdir}/usr/include" QLogger.h
+    install -Dm644 -t "${pkgdir}/usr/include" QLogger*.h
 }
