@@ -24,8 +24,8 @@ sha256sums=('1edb579ee86fd8a8b5a5005ce6cfa9931258ff1c91272e6b673d1fb7016bb2d6'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 build() {
- cd "${pkgname}-${pkgver}"
- python setup.py build
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
 }
   
 package() {
