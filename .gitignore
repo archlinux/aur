@@ -1,0 +1,4 @@
+jitsi-meet-prosody-nightly/
+src/
+pkg/
+*.pkg.tar.xz
