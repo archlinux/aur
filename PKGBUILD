@@ -24,7 +24,7 @@ build() {
   cd "CodeReview-${pkgver}"
   python setup.py build
 }
-  
+
 package() {
   cd "CodeReview-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
