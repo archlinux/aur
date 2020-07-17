@@ -12,7 +12,7 @@ depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/whyboris/Simplest-File-Renamer/releases/download/v${pkgver}/Simplest.File.Renamer-${pkgver}.AppImage"
-        'LICENSE::https://github.com/whyboris/Simplest-File-Renamer/raw/master/LICENSE')
+        'LICENSE::https://github.com/whyboris/Simplest-File-Renamer/raw/main/LICENSE')
 sha256sums=('ee8d258a22da54055a6fb851884664ecbe4ca01234e6e81faf61eb9b2ba3c044'
             '52debcb7a9763131668b36c7a61730979cb67975b8b4004a12c62915221e836f')
 
@@ -29,7 +29,9 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /usr/share/${pkgname%-bin}/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
