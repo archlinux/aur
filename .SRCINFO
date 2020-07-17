@@ -1,7 +1,7 @@
 pkgbase = wine-valve
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
 	pkgver = 5.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ValveSoftware/wine.git
 	install = wine-valve.install
 	arch = i686
@@ -87,6 +87,8 @@ pkgbase = wine-valve
 	makedepends = lib32-libpcap
 	makedepends = desktop-file-utils
 	makedepends = libgphoto2
+	makedepends = faudio
+	makedepends = lib32-faudio
 	makedepends = vkd3d-valve
 	optdepends = giflib
 	optdepends = lib32-giflib
@@ -176,5 +178,7 @@ pkgname = wine-valve
 	depends = lib32-libpcap
 	depends = desktop-file-utils
 	depends = libgphoto2
+	depends = faudio
+	depends = lib32-faudio
 	depends = vkd3d-valve
 
