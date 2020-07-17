@@ -4,12 +4,10 @@ pkgname=hyperkeys-bin
 pkgver=1.1.7
 pkgrel=1
 pkgdesc="Unleash you keyboard shorcuts"
-arch=('any')
+arch=('x86_64')
 url='https://hyperkeys.xureilab.com'
 license=('GPL3')
 provides=('hyperkeys')
-depends=('zlib')
-options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/xurei/hyperkeys/releases/download/v${pkgver}/HyperKeys-${pkgver}.AppImage")
 sha256sums=('21391eda00318d1397b14b736d10f6619af84385281a7fa10699c06ad8a016ae')
@@ -23,10 +21,12 @@ package() {
           --name "HyperKeys" \
           --comment "$pkgdesc" \
           --exec "${pkgname%-bin}" \
-          --categories 'Utility;Application;' \
+          --categories 'Utility;Application' \
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /usr/share/hyperkeys/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/hyperkeys"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/hyperkeys"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }
