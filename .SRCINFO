@@ -1,0 +1,16 @@
+pkgbase = aarch64-linux-gnu-xorg-util-macros
+	pkgdesc = X.Org Autotools macros
+	pkgver = 1.19.2
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	source = https://xorg.freedesktop.org//releases/individual/util/util-macros-1.19.2.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/util/util-macros-1.19.2.tar.bz2.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	sha512sums = 3f51504b27f0478c136126f15110cf3cdbba218c4d74a8e974cca1381c6e8364609bd0c444f2fb19aa86a7f4e848dfce4f4da940463b224036f75a60b3d88619
+	sha512sums = SKIP
+
+pkgname = aarch64-linux-gnu-xorg-util-macros
+
