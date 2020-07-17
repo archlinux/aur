@@ -1,0 +1,11 @@
+--- a/src/unixy.h	2020-07-17 14:37:50.273848775 -0400
++++ b/src/unixy.h	2020-07-17 14:41:17.922678562 -0400
+@@ -38,7 +38,7 @@
+ #include <bstring.h>
+ #include <unistd.h>
+ 
+-char *m2program;
++extern char *m2program;
+ 
+ int Unixy_chroot(bstring path);
+ 
