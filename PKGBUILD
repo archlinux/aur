@@ -13,7 +13,7 @@ depends=("gtk3" "glib2" "ayatana-ido")
 options=('!emptydirs')
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("584fd2838ed6c62f1ca21f1d94d9ea1b")
-replaces=("${pkgname}-gtk3")
+conflicts=("${pkgname}-gtk3")
 
 prepare()
 {
