@@ -20,7 +20,7 @@ pkgbase = libayatana-appindicator
 	makedepends = gobject-introspection
 	depends = libdbusmenu-gtk3
 	depends = libayatana-indicator
-	replaces = -gtk3
+	replaces = libayatana-appindicator-gtk3
 	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.4.tar.gz
 	md5sums = d9f2b6e269577e4e5141fb056e3ca6a3
 
