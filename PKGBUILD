@@ -39,6 +39,8 @@ build() {
   # This should be removed as soon as dimension gets regular dependency updates again.
   npm audit fix
   npm run build
+  # development dependencies are required for building the front and backend but we don't want this to end up in the package 
+  # where we need to package the whole node_modules directory
   rm -rf node_modules
   npm install --production --build-from-source --sass-binary-site=http://localhost:0 --sqlite=/usr
 }
