@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=python-qtconsole-git
-pkgver=4.4.0.dev.1375.878e1b3
+pkgver=4.8.0.dev0.1683.efa3302
 pkgrel=1
 pkgdesc='Qt-based console for Jupyter with support for rich media output'
 arch=(any)
@@ -29,11 +29,12 @@ pkgver() {
 package() {
 	cd "$srcdir/qtconsole"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
-	install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
 	cd examples
 	# FS#47046 fix .desktop icon
-	sed -i 's|^Icon=.*$|Icon=/usr/lib/python3.6/site-packages/qtconsole/resources/icon/JupyterConsole.svg|' jupyter-qtconsole.desktop
+	local _python3="$(readlink /usr/bin/python3)"
+	sed -i "s|^Icon=.*$|Icon=/usr/lib/$_python3/site-packages/qtconsole/resources/icon/JupyterConsole.svg|" jupyter-qtconsole.desktop
 	install -Dm644 jupyter-qtconsole.desktop "$pkgdir/usr/share/applications/jupyter-qtconsole.desktop"
 }
 
