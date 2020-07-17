@@ -1,0 +1,14 @@
+pkgbase = neovim-wordmotion-opt-git
+	pkgdesc = More useful word motions for (neo)vim.
+	pkgver = 99.5d0422e
+	pkgrel = 1
+	url = https://github.com/chaoren/vim-wordmotion
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = wordmotion::git+https://github.com/chaoren/vim-wordmotion.git
+	sha256sums = SKIP
+
+pkgname = neovim-wordmotion-opt-git
+
