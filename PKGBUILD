@@ -8,9 +8,8 @@ arch=('x86_64')
 url='https://adueck.github.io/journee'
 license=('Apache')
 provides=('journee')
-depends=('zlib')
 makedepends=('gendesk')
-options=('!strip')
+options=('!emptydirs')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://s3.amazonaws.com/journee-app/Journee-${pkgver}-x86_64.AppImage")
 sha256sums=('2b05513db146bc19db8dcb691ecbb9c50425a8e9387a801b5b6175b33c5b027f')
@@ -28,6 +27,8 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${pkgname%-bin}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /opt/journee/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/journee"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/geometrize"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }

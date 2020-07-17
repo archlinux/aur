@@ -6,10 +6,9 @@ pkgbase = journee-bin
 	arch = x86_64
 	license = Apache
 	makedepends = gendesk
-	depends = zlib
 	provides = journee
 	noextract = journee-1.1.2.AppImage
-	options = !strip
+	options = !emptydirs
 	source = journee-1.1.2.AppImage::https://s3.amazonaws.com/journee-app/Journee-1.1.2-x86_64.AppImage
 	sha256sums = 2b05513db146bc19db8dcb691ecbb9c50425a8e9387a801b5b6175b33c5b027f
 
