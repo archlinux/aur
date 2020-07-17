@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://lutzroeder.github.io/netron'
 license=('MIT')
 provides=('netron')
-depends=('zlib')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
@@ -30,7 +29,9 @@ package() {
           --icon "${pkgname%-bin}"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.AppImage"
-  ln -s /usr/share/netron/${pkgname%-bin}.AppImage "${pkgdir}/usr/bin/netron"
+  install -d "${pkgdir}/opt"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
+  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
+  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

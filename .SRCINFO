@@ -6,7 +6,6 @@ pkgbase = netron-bin
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = zlib
 	provides = netron
 	noextract = netron-bin-4.3.9.AppImage
 	options = !strip
