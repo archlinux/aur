@@ -19,7 +19,6 @@ pkgbase = ayatana-indicator-power
 	depends = dconf
 	optdepends = mate-ayatana-indicator-applet
 	optdepends = zenity
-	optdepends = powerd
 	optdepends = mate-control-center
 	optdepends = mate-power-manager
 	options = !emptydirs
