@@ -1,48 +1,28 @@
 pkgbase = libayatana-appindicator
-	pkgdesc = Ayatana Application Indicators Shared Library
+	pkgdesc = Ayatana Application Indicators (Shared Library)
 	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-appindicator
+	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = mate-common
-	makedepends = gtk-doc
-	makedepends = dbus-glib
-	makedepends = gobject-introspection
-	makedepends = gtk-sharp-2
-	makedepends = perl-xml-libxml
-	makedepends = libayatana-indicator-gtk2
+	makedepends = gtk3
+	makedepends = glib2
 	makedepends = libayatana-indicator-gtk3
-	makedepends = libdbusmenu-gtk2
 	makedepends = libdbusmenu-gtk3
+	makedepends = dbus-glib
+	makedepends = gtk-sharp-3
 	makedepends = mono
-	makedepends = pygtk
 	makedepends = vala
-	makedepends = python2
-	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.4.tar.gz
-	sha512sums = 009f8615993e8e13add85727e504304fdfd9c9e070e3d08d10123739860b444efa5913cef905034e16a5f6c024188d2db8274045d40d0c93985fabde2a995740
-
-pkgname = libayatana-appindicator-gtk2
-	pkgdesc = Ayatana Application Indicators Shared Library (GTK+ 2 library)
-	depends = libdbusmenu-gtk2
-	depends = libayatana-indicator-gtk2
-	provides = libayatana-appindicator
-	conflicts = libayatana-appindicator
-
-pkgname = libayatana-appindicator-gtk3
-	pkgdesc = Ayatana Application Indicators Shared Library (GTK+ 3 library)
+	makedepends = mate-common
+	makedepends = gobject-introspection
 	depends = libdbusmenu-gtk3
 	depends = libayatana-indicator-gtk3
-	provides = libayatana-appindicator3
-	conflicts = libayatana-appindicator3
+	replaces = -gtk3
+	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.4.tar.gz
+	md5sums = d9f2b6e269577e4e5141fb056e3ca6a3
 
-pkgname = libayatana-appindicator-sharp
-	depends = libayatana-appindicator-gtk2
-	depends = gtk-sharp-2
-
-pkgname = python2-libayatana-appindicator
-	depends = libayatana-appindicator-gtk2
-	depends = python2
+pkgname = libayatana-appindicator
 
