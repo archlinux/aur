@@ -1,0 +1,8 @@
+.AURINFO
+pkg/
+src/
+xputty/
+FatFrog_*.tar.gz
+fatfrog.lv2-*.tar.xz
+fatfrog.lv2-*.tar.zst
+fatfrog.lv2-*.src.tar.gz

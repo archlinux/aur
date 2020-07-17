@@ -1,0 +1,13 @@
+diff --git a/FatFrog/plugin/FatFrog.ttl b/FatFrog/plugin/FatFrog.ttl
+index 7b2aa50..6addb8e 100644
+--- a/FatFrog/plugin/FatFrog.ttl
++++ b/FatFrog/plugin/FatFrog.ttl
+@@ -142,5 +142,8 @@ rdfs:comment """
+   a guiext:X11UI;
+   guiext:binary <FatFrog_ui.so>;
+         lv2:extensionData guiext::idle ; 
++        lv2:extensionData guiext:resize ;
++        lv2:extensionData guiext:idleInterface;
++        lv2:requiredFeature guiext:idleInterface;
+         lv2:requiredFeature guiext:makeResident;
+   .
