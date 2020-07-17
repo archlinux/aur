@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=35.r0.g5f2569c
+pkgver=40.r6.g8c5b70a
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -18,12 +18,6 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
 source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
-_branch=master
-
-prepare() {
-  cd "${pkgname%-*}"
-  git checkout ${_branch}
-}
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -40,8 +34,8 @@ package() {
   _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
   # Copy extension files into place.
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
-  find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/icons" '{}' +
   find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
+  cp -r --no-preserve=ownership,mode icons "${_destdir}"
   cd locale
   for locale in */
     do
