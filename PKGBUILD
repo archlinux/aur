@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
@@ -18,7 +18,7 @@ source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/xginn8/aur-bldr/master/patches/${pkgname}/libinjection_python_port.patch"
     "deps-makefile.patch"
     "proxysql.tmpfiles")
-sha256sums=('e3a211d29916ba677d46fde088279b548d72a8dc683616b6713f1df55ddb058e'
+sha256sums=('bcb0e46b2ce4432261b8fb9682949498800d5d83e68de0e5b555d1c78108ebaf'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
             'fadc103f88e699d0920f617ad9982a76504673a00aba0e2d4c0223bbc9a1a4a6'
             '74c96841767a6b97d42e8abf13c21838602f20538d99f73bbd1971a5237ea3d1'
