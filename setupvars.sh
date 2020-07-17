@@ -18,4 +18,5 @@ export LIBRARY_PATH+=":${INTEL_OPENVINO_DIR}/deployment_tools/inference_engine/e
 export LIBRARY_PATH+=":${INTEL_OPENVINO_DIR}/lib"
 
 export CPATH="${CPATH:+${CPATH}:}${INTEL_OPENVINO_DIR}/deployment_tools/inference_engine/include"
+export CPATH+=":${INTEL_OPENVINO_DIR}/deployment_tools/inference_engine/external/gna/include"
 export CPATH+=":${INTEL_OPENVINO_DIR}/include"

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-openvino-git
-pkgver=2020.2.r461.gdf772e082
+pkgver=2020.2.r564.g73ee68afb
 pkgrel=1
 pkgdesc='Toolkit for developing applications and solutions that emulate human vision using Intel hardware (git version)'
 arch=('x86_64')
@@ -17,6 +17,7 @@ optdepends=('python: for using the Python API'
 makedepends=('git' 'cmake' 'python' 'cython' 'opencv' 'aria2' 'wget')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
+options=('!emptydirs')
 source=("git+https://github.com/openvinotoolkit/openvino.git"
         'git+https://github.com/opencv/ade.git'
         'git+https://github.com/openvinotoolkit/oneDNN.git'
@@ -35,7 +36,7 @@ sha256sums=('SKIP'
             'SKIP'
             'f485aa97d88d424dd3a223e0eddbbc382ec6c8d5094d51cbd3f0524b915e3d68'
             '49a1cdd2357ac3c657b28d72aea1294e4af46389e41ed0d55ccbd12bd995058d'
-            '3b72b36f9e7ae69fce4a72dc8b6bb73cd80298b53733353dcae074a5ced3e418'
+            '093199ae759e8755166b9737562438866123eda9b1afbbef2f7107b3cf827be5'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
             'b58aa9ec526cb6c528c58fc8b1a1b93b425999d1de29f0dd15a8b680c9eb8c77'
             '806a8fd32f45e03d88e22f171fc831a319a1ef78c9da6b0700ca8ef43cb7a94d')
@@ -58,9 +59,12 @@ pkgver() {
 }
 
 build() {
+    local _ocvmaj
     local _pyver
+    _ocvmaj="$(opencv_version | awk -F'.' '{ print $1 }')"
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    export OpenCV_DIR='/usr/lib/cmake/opencv4'
+    
+    export OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
     
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
@@ -93,7 +97,5 @@ package() {
     
     local _gnaver
     _gnaver="$(find openvino/inference-engine/temp -type d -name 'gna_*' | sed 's/^.*gna_//')"
-    rm -r "${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna/lib"
-    cp -a "openvino/inference-engine/temp/gna_${_gnaver}/include"   "${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna"
-    cp -a "openvino/inference-engine/temp/gna_${_gnaver}/linux/x64" "${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna/lib"
+    cp -a "openvino/inference-engine/temp/gna_${_gnaver}/include" "${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna"
 }
