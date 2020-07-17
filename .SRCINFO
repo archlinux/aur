@@ -1,6 +1,6 @@
 pkgbase = musiko-bin
 	pkgdesc = A free to use, open source and cross platform music player
-	pkgver = 1.0.6
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://bitbucket.org/diatomee/musiko
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = musiko-bin
 	depends = zlib
 	provides = musiko
 	options = !strip
-	source = musiko-bin-1.0.6.AppImage::https://bitbucket.org/diatomee/musiko/downloads/Musiko-1.0.6.AppImage
-	sha256sums = 0dfe2a41f0ca1f97fea2b29c7b21579ebe6f52dc1e1d7cdcbd65b5c90967f889
+	source = musiko-bin-1.0.8.AppImage::https://bitbucket.org/diatomee/musiko/downloads/Musiko-1.0.8.AppImage
+	sha256sums = 96b6aa0f02d3cacd6c83943ec7a92762333ae1e9e1c473c40d7f9430e055b5bf
 
 pkgname = musiko-bin
 
