@@ -1,7 +1,7 @@
 pkgbase = dimension
 	pkgdesc = An open source integrations manager for matrix clients, like Riot.
-	pkgver = r528.9e2393c
-	pkgrel = 2
+	pkgver = r530.db22981
+	pkgrel = 1
 	url = https://github.com/turt2live/matrix-dimension
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = dimension
 	depends = libvips
 	depends = sqlite
 	backup = etc/dimension/production.yaml
-	source = git+https://github.com/turt2live/matrix-dimension#commit=9e2393cecac3aabdc3d6d7236a4c139d6fe9ff6d
+	source = git+https://github.com/turt2live/matrix-dimension#commit=db2298172f8379972567fd298cee1cc1a6e0ae82
 	source = dimension.service
 	sha256sums = SKIP
 	sha256sums = 5da286eab86577a78aa370693894f51ea1faa070d2c41b92abe308cab6ba7a89

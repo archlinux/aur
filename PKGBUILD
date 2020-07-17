@@ -2,8 +2,8 @@
 
 _pkgname=matrix-dimension
 pkgname=dimension
-pkgver=r528.9e2393c
-pkgrel=2
+pkgver=r530.db22981
+pkgrel=1
 
 pkgdesc="An open source integrations manager for matrix clients, like Riot."
 url="https://github.com/turt2live/matrix-dimension"
@@ -14,7 +14,7 @@ depends=('nodejs' 'libvips' 'sqlite')
 makedepends=('npm' 'python2' 'git')
 backup=('etc/dimension/production.yaml')
 
-source=("git+https://github.com/turt2live/matrix-dimension#commit=9e2393cecac3aabdc3d6d7236a4c139d6fe9ff6d"
+source=("git+https://github.com/turt2live/matrix-dimension#commit=db2298172f8379972567fd298cee1cc1a6e0ae82"
 	"${pkgname}.service")
 
 sha256sums=('SKIP'
@@ -27,12 +27,16 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  # Bump sharp and node-sass to make dimension compatible with node12 and node13
+  # ref: https://github.com/turt2live/matrix-dimension/pull/352
   sed -i -e 's/"sharp": "^0.21.1"/"sharp": "^0.25.4"/' -e 's/node-sass": "^4.12.0/node-sass": "^4.14.1/'  package.json
 }
 
 build() {
   cd $_pkgname
   npm install --build-from-source --sass-binary-site=http://localhost:0 --sqlite=/usr
+  # This certainly breaks reproduciblity but we'll leave this in for now as dimension's locked depenencies are quite outdated.
+  # This should be removed as soon as dimension gets regular dependency updates again.
   npm audit fix
   npm run build
   rm -rf node_modules
