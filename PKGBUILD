@@ -3,7 +3,7 @@
 
 pkgname=vcp-git
 pkgver=2.2.r4
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual cp: a cp program with some scrollbars"
 arch=('i686' 'x86_64')
 url="https://github.com/Leask/VCP"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  make 
+  CFLAGS+=" -fcommon" make 
 }
 
 package() {
