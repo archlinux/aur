@@ -1,0 +1,15 @@
+pkgbase = harmony-kde-git
+	pkgdesc = Harmony-dark kde is a light clean theme for KDE Plasma desktop
+	pkgver = r13.afc6bfb
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/Harmony-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/yeyushengfan258/Harmony-kde.git
+	sha256sums = SKIP
+
+pkgname = harmony-kde-git
+	provides = harmony-kde
+
