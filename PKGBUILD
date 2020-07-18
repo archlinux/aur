@@ -1,5 +1,5 @@
 pkgname=hydroid-git
-pkgver=1.0.0
+pkgver=1.0.0.alpha1.r0.gb737561
 pkgrel=1
 pkgdesc="A Hydrus client."
 arch=('i686' 'x86_64')
@@ -9,6 +9,11 @@ makedepends=('qt5-tools')
 provides=('hydroid')
 source=("$pkgname"::"git+https://github.com/thatfuckingbird/hydroid.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$srcdir/$pkgname"
