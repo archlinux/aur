@@ -1,43 +1,44 @@
---- setup.sh	2020-02-29 21:30:32.862816400 -0500
-+++ setup.sh	2020-02-29 21:36:28.300273309 -0500
-@@ -7,7 +7,7 @@
- target_sdk_dir=""
- post_install_cleanup=1
- confirm=0
--rc_confirm=0
-+rc_confirm=""
+--- setup.sh	2020-07-18 10:13:04.994912357 -0400
++++ setup.sh	2020-07-18 10:16:38.985654960 -0400
+@@ -166,15 +166,7 @@
+ 			return
+ 		fi
  
- usage () {
-   cat << EOF
-@@ -24,6 +24,9 @@
-   -y
-         Automatic yes to prompts; assume "yes" as answer to all prompts.
- 
-+  -[no]rc
-+	Whether to create/update the ~/.zerphyrc file (prompt if not given)
-+
- EOF
- }
- 
-@@ -70,6 +73,12 @@
- 			confirm="y";
- 			rc_confirm="y";
+-		echo "Do you want to register the Zephyr-sdk at location: $target_sdk_dir"
+-		echo "  in the CMake package registry (y/n)?"
+-
+-		while read confirm; do
+-			[ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "n" \
+-			-o "$confirm" = "N" ] && break
+-			echo "Invalid input \"$confirm\", please input 'y' or 'n': "
+-		done
+-
++		read_confirm "registering Zephyr-sdk CMake module (at $target_sdk_dir)"
+ 		if [ "$confirm" = "y" -o "$confirm" = "Y" ]; then
+ 			if [ ! -d $ZEPHYR_SDK_REGISTRY_DIR ]; then
+ 				mkdir -p $ZEPHYR_SDK_REGISTRY_DIR
+--- pkg/zephyr-sdk/opt/zephyr-sdk/setup.sh.orig	2020-07-18 10:27:09.440996750 -0400
++++ pkg/zephyr-sdk/opt/zephyr-sdk/setup.sh	2020-07-18 10:28:11.268841053 -0400
+@@ -71,7 +71,10 @@
  			;;
-+		-rc )
-+			rc_confirm="y";
-+			;;
-+		-norc )
-+			rc_confirm="n";
-+			;;
- 		* )
- 			echo "Error: Invalid argument \"$1\""
- 			usage
-@@ -120,7 +129,7 @@
- 	echo "     export ZEPHYR_TOOLCHAIN_VARIANT=zephyr"
- 	echo "     export ZEPHYR_SDK_INSTALL_DIR=$target_sdk_dir"
- 	echo
--	if [ "$rc_confirm" != "y" ]; then
-+	if [ -z "$rc_confirm" ]; then
- 		echo "Update/Create $HOME/.zephyrrc with environment variables setup for you (y/n)? "
- 		while read rc_confirm; do
- 			[ "$rc_confirm" = "Y" -o "$rc_confirm" = "y" \
+ 		-y )
+ 			confirm="y";
+-			rc_confirm="y";
++			if [ -z "$rc_confirm" ]
++			then
++			  rc_confirm="y"
++			fi
+ 			;;
+ 		-rc )
+ 			rc_confirm="y";
+--- pkg/zephyr-sdk/opt/zephyr-sdk/setup.sh.orig	2020-07-18 11:12:04.328724883 -0400
++++ pkg/zephyr-sdk/opt/zephyr-sdk/setup.sh	2020-07-18 11:12:40.741607822 -0400
+@@ -158,7 +158,7 @@
+ 
+ do_cmake_package()
+ {
+-	ZEPHYR_SDK_REGISTRY_DIR=$HOME/.cmake/packages/Zephyr-sdk
++	: ${ZEPHYR_SDK_REGISTRY_DIR:=$HOME/.cmake/packages/Zephyr-sdk}
+ 
+ 	type md5sum
+ 	if [ $? -eq 0 ]; then
