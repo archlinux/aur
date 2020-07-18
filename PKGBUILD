@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-net-sip"
-pkgver="0.822"
+pkgver="0.823"
 pkgrel="1"
 pkgdesc="SIP (Voice Over IP, RFC3261) packet handling"
 arch=("any")
@@ -10,7 +10,7 @@ options=("!emptydirs")
 depends=("perl-net-dns")
 url="https://github.com/noxxi/p5-net-sip"
 source=("https://cpan.metacpan.org/authors/id/S/SU/SULLR/Net-SIP-${pkgver}.tar.gz")
-sha512sums=('97e17150cce46da1e353af72d24e16ce0d169c7960ef85280fbc2438317567d3a3a931f70c64bc78ed789dc196d18fa37ec2c382da591848346eca8da6606289')
+sha512sums=('347a883ca38b92d26e3d1cbdf3774f8a1a78b971e8c7e7d075190db110a4172f7eb323b2bc9210597afa8e58921318c47456d11689c76c87805fcf78241d4577')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
