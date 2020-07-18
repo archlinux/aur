@@ -1,0 +1,29 @@
+pkgbase = cc-map-editor-bin
+	pkgdesc = A Map Editor for the game CrossCode
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/CCDirectLink/crosscode-map-editor
+	arch = any
+	license = custom:MIT
+	makedepends = asar
+	makedepends = npm
+	depends = electron
+	provides = cc-map-editor
+	conflicts = cc-map-editor
+	noextract = cc-map-editor-0.7.1-linux.AppImage
+	options = !strip
+	source = https://github.com/CCDirectLink/crosscode-map-editor/releases/download/v0.7.1/cc-map-editor-0.7.1-linux.AppImage
+	source = https://github.com/CCDirectLink/crosscode-map-editor/raw/v0.7.1/LICENSE
+	source = patch-desktop-entry.awk
+	source = pr175-package.json
+	source = pr175-package-lock.json
+	source = disable-autoupdates.patch
+	sha256sums = 4ad778269cbf9db79bb61f62e6cce8b4aa6f27a7e1e14cb253067b24a4dc1b76
+	sha256sums = a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde
+	sha256sums = c03a2ede59f0476176c1a32d28ac19e907e76b1dbfdffa93d9eefa40d868506b
+	sha256sums = 1b26f6c1b4af8707c555f845d3f90c34f28adf19cc05797af4ca89a32e2daee9
+	sha256sums = e1ac90aa51ad52b759d48d8f722d1e5b1946583c99cdc6bef5442f7a21c0078f
+	sha256sums = 2f5e6d94043cb23bbf11661945481093fcf9c72bf03131e00b7d032719e9bff0
+
+pkgname = cc-map-editor-bin
+

@@ -1,0 +1,22 @@
+--- main.js	2020-07-18 21:02:25.069556380 +0300
++++ main.js	2020-07-18 21:03:53.171180417 +0300
+@@ -4,7 +4,6 @@
+ const windowStateKeeper = require('electron-window-state');
+ const path = require('path');
+ const url = require('url');
+-const {autoUpdater} = require("electron-updater");
+ const contextMenu = require('electron-context-menu');
+ const {IPC} = require('node-ipc');
+ 
+@@ -53,11 +52,6 @@
+ 			});
+ 			console.log('path', indexPath);
+ 			win.loadURL(indexPath);
+-			
+-			const log = require("electron-log");
+-			log.transports.file.level = "debug";
+-			autoUpdater.logger = log;
+-			autoUpdater.checkForUpdatesAndNotify();
+ 			// win.webContents.openDevTools();
+ 			win.setMenu(null);
+ 		}
