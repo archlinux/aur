@@ -1,6 +1,6 @@
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=12
+pkgrel=13
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64' 'armv7')
 license=('GPL')
@@ -60,7 +60,10 @@ package() {
   yes | make prefix="${pkgdir}/usr" mandir="${pkgdir}/usr/share/man/man8" etcdir="${pkgdir}/etc" install
 
   install -D -m644 ssmtp.conf.5 "${pkgdir}/usr/share/man/man5/ssmtp.conf.5"
-  install -m644 ssmtp.conf "${pkgdir}/etc/ssmtp.conf"
+  install -m644 ssmtp.conf "${pkgdir}/etc/ssmtp/ssmtp.conf"
+
+  chown -R root.mail "${pkgdir}/etc/ssmtp"
+  chmod 770 "${pkgdir}/etc/ssmtp"
 
   ln -s ssmtp "${pkgdir}/usr/sbin/sendmail"
   ln -s ssmtp "${pkgdir}/usr/sbin/newaliases"
