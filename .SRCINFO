@@ -1,0 +1,15 @@
+pkgbase = kvantum-theme-akava-git
+	pkgdesc = User oriented Kvantum theme for KDE
+	pkgver = r14.0c22434
+	pkgrel = 1
+	url = https://github.com/Akava-Design/Akava-Kv
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Akava-Design/Akava-Kv.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-akava-git
+	provides = kvantum-theme-akava
+
