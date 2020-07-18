@@ -1,0 +1,29 @@
+post_install() {
+  echo "    To add a ed25519 signature, first run \`dknewkey -k ed25519 selectorname\`
+    to generate a new keypair, then add to /etc/dkimpy-milter/dkimpy-milter.conf
+    the following lines:
+
+KeyFileEd25519  /path/to/selectorname.key
+SelectorEd25519 selectorname
+
+    To configure postfix, add to '/etc/postfix/main.conf' the following lines:
+
+smtpd_milters = unix:/var/run/dkimpy-milter/dkimpy-milter.sock
+non_smtpd_milters = $smtpd_milters
+milter_default_action = accept
+
+    You will also need to modify '/etc/postfix/master.cf' to contain the following:
+
+smtp      inet  n       -       n       -       -       smtpd
+  -o smtpd_milters=unix:/var/run/dkimpy-milter/dkimpy-milter.sock
+  -o milter_macro_daemon_name=VERIFYING
+
+submission      inet  n      -      n      -     -      smtpd
+  -o smtpd_milters=unix:/var/run/dkimpy-milter/dkimpy-milter.sock
+  -o milter_macro_daemon_name=ORIGINATING
+"
+}
+
+post_upgrade() {
+  post_install $1
+}
