@@ -1,6 +1,7 @@
 geonkick/
 pkg/
 src/
-geonkick-git-*.tar.xz
+geonkick-git-*.pkg.tar.xz
+geonkick-git-*.pkg.tar.zst
 geonkick-git-*.tar.zst
 .AURINFO

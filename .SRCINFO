@@ -1,9 +1,8 @@
 pkgbase = geonkick-git
 	pkgdesc = A free software percussion synthesizer (git version)
-	pkgver = 2.1.1.r820.8742ddb
+	pkgver = 2.2.3.r938.829e602
 	pkgrel = 1
 	url = https://gitlab.com/iurie-sw/geonkick
-	arch = i386
 	arch = x86_64
 	groups = pro-audio
 	groups = lv2-plugins
@@ -12,7 +11,7 @@ pkgbase = geonkick-git
 	makedepends = jack
 	makedepends = lv2
 	makedepends = rapidjson
-	makedepends = redkite
+	makedepends = redkite>=1.0.0
 	makedepends = sord
 	depends = cairo
 	depends = hicolor-icon-theme
