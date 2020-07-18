@@ -3,8 +3,8 @@
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1928.9fcb4e0
-pkgrel=2
+pkgver=r1937.b029d08
+pkgrel=1
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
 url="https://github.com/multiSnow/mcomix3"
