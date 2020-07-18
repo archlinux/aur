@@ -1,23 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='tracking'
 pkgdesc='Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).'
-pkgver='2.6.11.20200316'
+pkgver='2.6.12.20200718'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('GPL2')
 depends=(wxparaver clusteringsuite python-pillow python-wxpython python-matplotlib)
-source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
-        python3-ports.patch)
-sha512sums=(9a9e4bda1d179511aa28bd9e08a8c7a61d6b54a1f392e948514926f54ddd35d7db4f4f39f0c0420cb016e7ff3a016785305a0a0aad4d35ace0ec8ceb129a2911
-            127d7a1989284ebfd8911090ce01e38fad7dbb12ceb307e73a6fb54dff09f9e0c99410376dce4a8e1e4308dc5c44e25218c929df6151b674b31a06e4e1075bfe)
-
-prepare() {
-	cd "$srcdir/$pkgname-${pkgver%.*}"
-
-	# WORKAROUND: Fix some scripts that still only work with Python 2
-	patch -Np1 -i "$srcdir/python3-ports.patch"
-}
+source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
+sha512sums=(7942b03025ed5506e320a22cbb80f6fee21395deae0317f12a3e8cb3400fb8324a2b39bfc29febb3b8544cd0378f414cc80bdaa826e5bb95d6480023d5c36dc1)
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
