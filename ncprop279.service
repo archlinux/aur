@@ -1,0 +1,12 @@
+[Unit]
+Description=Namecoin to DNS bridge daemon
+
+[Service]
+# If you don't want to bind to port 53, then uncomment to run as non-root:
+# Username=ncdns
+# Group=ncdns
+ExecStart=/usr/bin/ncdns
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

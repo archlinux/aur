@@ -1,0 +1,21 @@
+pkgbase = ncprop279
+	pkgdesc = Bridge between Tor Prop279 clients and Namecoin
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/namecoin/ncprop279
+	install = ncprop279.install
+	arch = x86_64
+	arch = armv7h
+	license = GPL-3
+	makedepends = go
+	depends = stemns
+	optdepends = namecoin-core: Namecoin node to use
+	optdepends = tor: Tor node to serve
+	backup = etc/ncprop279.conf
+	source = ncprop279-0.0.3.tar.gz::https://github.com/namecoin/ncprop279/archive/v0.0.3.tar.gz
+	source = ncprop279.conf
+	sha512sums = dcbe6d262f6c49330cd3cb068bfd83821c0b1d6c20ac12bff693da784aba451dc6f43bdabe54d09e344a872b2106490413900c969072b7ef932b519c2f19af81
+	sha512sums = ea0f7f335ecbd73bdbca56334d1569b5dcffb35c727fa11c540af771eebe6a0461218672469518c8bf6977cea7d101bbc49d55071b7136c0341a5264f3afd29a
+
+pkgname = ncprop279
+
