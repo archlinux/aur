@@ -1,6 +1,6 @@
 pkgbase = the-glorious-dotfiles
 	pkgdesc = A glorified personal dot files
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/manilarome/the-glorious-dotfiles
 	arch = x86_64
@@ -24,8 +24,6 @@ pkgbase = the-glorious-dotfiles
 	optdepends = redshift: Blue light widget
 	optdepends = xfce4-power-manager: Default launch application for battery widget
 	optdepends = upower: Battery widget
-	optdepends = archlinux-xdg-menu: Menu Module/Useful for generating app list manually
-	optdepends = awesome-freedesktop-git: Menu Module/Useful for generating app list automatically
 	optdepends = jq: Read weather
 	optdepends = noto-fonts-emoji: Emoji support for notification center
 	optdepends = nerd-fonts-fantasque-sans-mono: Rofi unicode font
