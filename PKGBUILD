@@ -31,7 +31,7 @@ source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgve
 options=(!strip)
 install=$pkgname.install
 
-_installdir=/opt/zephyr-sdk
+_installdir=opt/zephyr-sdk
 _setupsh=setup.sh
 
 build() {
@@ -115,7 +115,7 @@ package ()
   echo ">>>"
 
   # Strip package build path from prefix path
-  sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}${_installdir} ${pkgdir}${_installdir}@\1 ${_installdir} ${_installdir}@g" relocate_sdk.sh
+  sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir} ${pkgdir}/${_installdir}@\1 /${_installdir} /${_installdir}@g" relocate_sdk.sh
   ./relocate_sdk.sh
 
   rm zephyr-sdk-*-hosttools-standalone-*.sh
