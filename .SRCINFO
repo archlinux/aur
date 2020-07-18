@@ -1,0 +1,21 @@
+pkgbase = mass-up
+	pkgdesc = An open-source mass spectrometry software for proteomics designed to support the preprocessing and Machine-Learning based analysis of MALDI-TOF mass spectrometry data
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = http://www.sing-group.org/mass-up
+	arch = x86_64
+	license = GPL3
+	depends = readline6
+	depends = r-rjava
+	depends = java-environment
+	depends = libxtst
+	depends = libxslt
+	depends = alsa-lib
+	depends = gtk2
+	depends = libglvnd
+	depends = libnet
+	source = mass-up-1.0.14.tar.gz::http://static.sing-group.org/MassUp/installers/Mass-Up-1.0.14.linux.x64.tar.gz
+	sha256sums = 84d9512c42c2d67231702d96c1605ae51dc6a52c09bf3123fc302048061fc55e
+
+pkgname = mass-up
+
