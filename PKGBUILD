@@ -3,7 +3,7 @@
 pkgname=ti-cgt-arm
 pkgver=20.2.1.LTS
 _manifest_ver=20.2.0.LTS
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM"
 arch=('x86_64')
 url="http://www.ti.com/tool/ARM-CGT"

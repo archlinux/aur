@@ -1,7 +1,7 @@
 pkgbase = ti-cgt-arm
 	pkgdesc = Texas Instruments Code Generation Tools (compiler) for ARM
 	pkgver = 20.2.1.LTS
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ti.com/tool/ARM-CGT
 	arch = x86_64
 	license = custom
