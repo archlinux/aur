@@ -1,0 +1,19 @@
+pkgbase = akava-kde-git
+	pkgdesc = Akava Widget KDE/Qt theme
+	pkgver = r6.2a39b4a
+	pkgrel = 1
+	url = https://github.com/Akava-Design/Akava-Theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Akava-Design/Akava-Theme.git
+	sha256sums = SKIP
+
+pkgname = akava-kde-git
+	optdepends = breeze-blurred-git: Matching window decoration
+	optdepends = akava-console-git: Matching konsole colors theme
+	optdepends = akava-colors-git: Matching KDE color theme
+	optdepends = kvantum-theme-akava-git: Matching kvantum theme
+	provides = akava-kde
+
