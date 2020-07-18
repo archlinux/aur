@@ -1,8 +1,8 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 
 
 pkgname=spectrum2
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 #epoch=
 pkgdesc="an open source instant messaging transport"
@@ -32,7 +32,7 @@ install=
 changelog=
 source=("https://github.com/SpectrumIM//$pkgname/archive/$pkgver.tar.gz"
         'spectrum2.service')
-sha256sums=('974ab567cb7e20f0dfc73d4fbb3d4dfedaf4abff2526359af9455ea66b5ce982'
+sha256sums=('4bea636af8426ea5d280cfd8982eacabc2ce8fb6b9d7c9ac809be90f4d632be7'
             '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
 
 noextract=()
