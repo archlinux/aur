@@ -1,0 +1,17 @@
+pkgbase = flat-remix-kde-git
+	pkgdesc = Flat Remix KDE themes
+	pkgver = r31.56df739
+	pkgrel = 1
+	url = https://github.com/daniruiz/flat-remix-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/daniruiz/flat-remix-kde.git
+	sha256sums = SKIP
+
+pkgname = flat-remix-kde-git
+	optdepends = flat-remix: Matching icon theme
+	optdepends = flat-remix-gtk: Matching GTK theme
+	provides = flat-remix-kde
+
