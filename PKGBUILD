@@ -1,12 +1,12 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=bdash
-pkgver=1.5.7
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Simple business intelligence application'
 arch=('x86_64')
 url='https://github.com/bdash-app/bdash'
 license=('MIT')
-depends=('gtk3' 'nss' 'libxss' 'gconf')
+depends=('gtk3' 'nss' 'libxss')
 makedepends=('node-gyp' 'python' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bdash-app/bdash/archive/v$pkgver.tar.gz")
 
@@ -26,4 +26,4 @@ package() {
 
 # vim: set ft=sh:
 
-sha512sums=('008e1a9081312bbc7ddbff4a966861f49673d050aff7a0ea75fc1a9cfb207de90d876ab3b64af64378237725be95fa3c0b09fc3a0984a6a10738e8e6cf368edc')
+sha512sums=('bb8c4c79e53d16fd45f6ee00839ddaaa401c670adbc2bcc8263c19afa6e07094888ba9ff8cee042a9536c53dd35e1160fb388f46b5b2fc8798dc871f600c506c')
