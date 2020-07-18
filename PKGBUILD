@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.7.9
 pkgver=5.7.v.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,15 +20,15 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
-	'5012_enable-cpu-optimizations-for-gcc91.patch'
+	'5013_enable-cpu-optimizations-for-gcc10.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'c8bfafb7fff88fee9513616c9336be5467006ff61820949c03c70f62c5e79f18'
+            '81022558dff95b6372bd4d8b46aefb2a361b94e04d0392c4d31eac3522f1a690'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
-            #patch file
-            '37b801cd6d3fdd205fcd18676bd0f399ae6558fb5d074f1710f8464c8034482c'
+            #gentoopatch file
+            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47'
            )
 
 _kernelname=${pkgbase#linux}
