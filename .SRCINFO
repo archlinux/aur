@@ -1,6 +1,6 @@
 pkgbase = go-swagger-bin
 	pkgdesc = Toolkit for swagger in golang (go-swagger)
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://goswagger.io
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = go-swagger-bin
 	license = ASL 2.0
 	provides = swagger
 	conflicts = swagger
-	source_x86_64 = swagger_linux_amd64_0.24.0::https://github.com/go-swagger/go-swagger/releases/download/v0.24.0/swagger_linux_amd64
-	sha256sums_x86_64 = 50698cc3524e46c805a0a909bb417eaf84cc456dfb162dc2b4e5c6b0d7f6a508
+	source_x86_64 = swagger_linux_amd64_0.25.0::https://github.com/go-swagger/go-swagger/releases/download/v0.25.0/swagger_linux_amd64
+	sha256sums_x86_64 = 065cbce4622f40501966e4821ecea6627d7cbac4435e7c41d24b6d7c1411e540
 
 pkgname = go-swagger-bin
 
