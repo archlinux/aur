@@ -1,4 +1,5 @@
 # Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
+# Contributor: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=buf
 pkgver=0.20.1
 pkgrel=2
