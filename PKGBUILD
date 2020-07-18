@@ -1,9 +1,6 @@
 # Maintainer:  nissen22
 
 # This PKGBUILD is heavily inspired by the cudatext-gtk2-bin package by ragouel
-# You need to manually download the .deb file and place it where this
-#  PKGBUILD is located, since FossHub does not allow static linking.
-#  "https://www.fosshub.com/CudaText.html?dwl=cudatext-linux-qt5-amd64-1.107.0.0.tar.xz"
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
 pkgver=1.107.1.0
