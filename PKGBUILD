@@ -4,7 +4,7 @@ pkgname=libhandy1
 _author=GNOME
 _gitname=libhandy
 pkgver=0.84.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library full of GTK+ widgets for mobile phones (1.0, can be installed alongside 0.0)"
 url="https://gitlab.gnome.org/GNOME/libhandy"
 license=(LGPL2.1)
@@ -23,7 +23,9 @@ build() {
 }
 
 check() {
-    meson test -C build --print-errorlogs
+    dbus-run-session xvfb-run \
+        -s '-screen 0 1920x1080x24 -nolisten local' \
+        meson test -C build --print-errorlogs
 }
 
 package() {
