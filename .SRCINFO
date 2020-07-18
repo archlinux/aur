@@ -1,0 +1,23 @@
+pkgbase = hentaiathome
+	pkgdesc = an open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://ehwiki.org/wiki/Hentai@Home
+	install = .INSTALL
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime>=8
+	provides = hentaiathome-bin
+	source = hentaiathome-1.6.0.zip::https://repo.e-hentai.org/hath/HentaiAtHome_1.6.0.zip
+	source = hentaiathome.sh
+	source = hentaiathomegui.sh
+	source = hentaiathome.png::https://ehwiki.org/images/e/ef/H%40Hicon.png
+	sha256sums = 597f0ae2d114a86e021013b0146d59b1f2f8be2025bfae6b38c181515b795018
+	sha256sums = 6067fe31e5cdb9e05df2218f4761b7630d834725316099ed74609c86b11fe101
+	sha256sums = 49b8165512b981e73260b82686ed0c4004b626de1dcaa59039675e6ddc9041a4
+	sha256sums = 2f3461521c2eb9d5ee2d964169b2f502758b7679bef70ffe5d0dcfd04ecd7d97
+
+pkgname = hentaiathome-cli
+
+pkgname = hentaiathome-gui
+
