@@ -50,7 +50,7 @@ build () {
     ./configure \
         --prefix /usr \
         --with-system-luarocks
-    make all
+    make all || make all
 }
 
 check () {
