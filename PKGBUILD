@@ -22,7 +22,7 @@ package(){
  install -Dm 644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
  cd "${srcdir}/${pkgname}-${pkgver}"
  sed -e 's|local/bin|bin|g' -e 's|/usr/local/etc|/etc|g' -i system/dkimpy-milter.service
- awk '/UserID/ {sub(/dkimpy-milter/,"dkimpy-milter:postfix")}1' etc/dkimpy-milter.conf > etc/dkimpy-milter.conf.tmp 
+ awk '/UserID/ {sub(/dkimpy-milter/,"dkimpy-milter:dkimpy-milter")}1' etc/dkimpy-milter.conf > etc/dkimpy-milter.conf.tmp 
  mv etc/dkimpy-milter.conf.tmp etc/dkimpy-milter.conf
  python3 setup.py install --single-version-externally-managed --root="${pkgdir}/" --optimize=1
  mv "${pkgdir}/usr/etc/" "${pkgdir}"

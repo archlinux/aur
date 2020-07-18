@@ -1,6 +1,6 @@
 post_install() {
   echo "    To add a ed25519 signature, first run \`dknewkey -k ed25519 selectorname\`
-    to generate a new keypair, then add to /etc/dkimpy-milter/dkimpy-milter.conf
+    to generate a new keypair, then add to '/etc/dkimpy-milter/dkimpy-milter.conf'
     the following lines:
 
 KeyFileEd25519  /path/to/selectorname.key
@@ -21,6 +21,11 @@ smtp      inet  n       -       n       -       -       smtpd
 submission      inet  n      -      n      -     -      smtpd
   -o smtpd_milters=unix:/var/run/dkimpy-milter/dkimpy-milter.sock
   -o milter_macro_daemon_name=ORIGINATING
+  
+    Don't forget to change the socket permissions in '/etc/dkimpy-milter/dkimpy-milter.conf'
+    according to your MTA:
+
+UserID                  dkimpy-milter:postfix
 "
 }
 
