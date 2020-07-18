@@ -1,7 +1,7 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 0.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
 	arch = x86_64
@@ -49,10 +49,16 @@ pkgbase = zephyr-sdk
 	options = !strip
 	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.11.4/zephyr-sdk-0.11.4-setup.run
 	source = zephyrrc
-	source = setup-unattended.patch
+	source = 0001-scripts-template_dir-don-t-let-y-override-no-rc.patch
+	source = 0002-scripts-template_dir-don-t-prompt-for-cmake-when-y-s.patch
+	source = 0003-scripts-template_dir-re-use-common-prompting-code.patch
+	source = 0004-scripts-template_dir-no-cmake-flag-for-CMake-module-.patch
 	sha256sums = f61041a7cd7beec9c8f826e7aa1215a4c34c309c56a3dc0967b8b3401633d1b4
 	sha256sums = 7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05
-	sha256sums = cc57a1304ae53bf155f32d41a5b527fb207716f027e4997ccb7b14c09064c7dc
+	sha256sums = 5a5e1f8cd28f15da3cb9c4c50bf7ccb81fdb15499c02625dc76ed27c98ffad4f
+	sha256sums = a1a64dd3152871056b6d79bf3fd31cb1e081a8b9354fae929a263e7f74044050
+	sha256sums = f22ade1773ed8302a11b1ded4cef28ad9630119354d20db334fdb5df6db6f820
+	sha256sums = 4c1f7e68ba1400786f116c2305ec32fa1e00b09367d583770a21bf3056fada46
 
 pkgname = zephyr-sdk
 
