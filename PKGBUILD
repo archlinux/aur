@@ -3,7 +3,7 @@
 _pkgname=edalize
 pkgname=python-$_pkgname
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An abstraction library for interfacing EDA tools'
 arch=('any')
 url='https://github.com/olofk/edalize'
@@ -17,7 +17,11 @@ sha512sums=('48b2642ff9a072ec33ed907fd82fa63c33f7e7deeaf442972a2b0fcd10fa05715f1
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
 prepare() {
-  rm $_pkgname-$pkgver/tests/test_spyglass.py
+  cd $_pkgname-$pkgver
+
+  rm tests/test_spyglass.py
+
+  sed -i '/pytest/d' setup.py
 }
 
 build() {
