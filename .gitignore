@@ -1,4 +1,4 @@
-src
-pkg
-*.tar.gz
-*.pkg.tar.xz
+*
+!PKGBUILD
+!README.md
+!.SRCINFO
