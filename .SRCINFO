@@ -1,12 +1,11 @@
 pkgbase = yanone-kaffeesatz-font
 	pkgdesc = Reminiscent of 1920s coffee house typography, bridges the gap to present times
 	pkgver = 2.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yanone.de/fonts/kaffeesatz
 	arch = any
 	license = OFL
-	makedepends = git
-	source = git+https://github.com/alexeiva/yanone-kaffeesatz.git#tag=
+	source = otf-yanone-kaffeesatz-2.001.zip::https://github.com/alexeiva/yanone-kaffeesatz/archive/342dc8badffc187b2116099c5060e46c81eaf80d.zip
 	source = 45-yanone-kaffeesatz.conf
 	source = 90-non-tt-yanone-kaffeesatz.conf
 	source = 90-tt-yanone-kaffeesatz.conf
