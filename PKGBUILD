@@ -2,8 +2,8 @@
 # Maintainer: hexptr <hexptr@protonmail.com>
 
 pkgname=etterna-git
-pkgver=0.70.0.r181.g832d37aa5d
-pkgrel=5
+pkgver=0.70.2.r43.g1e87052268
+pkgrel=2
 pkgdesc="Etterna: an advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
@@ -25,10 +25,13 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$srcdir/etterna"
+    sed -i CMakeLists.txt -e 's/\(set(OPENSSL_USE_STATIC_LIBS\) ON/\1 OFF/'
+}
+
 build() {
     cd "$srcdir/etterna"
-
-    sed -i CMakeLists.txt -e 's/\(set(OPENSSL_USE_STATIC_LIBS\) ON/\1 OFF/'
 
     mkdir -p "build"
     cd "build"
