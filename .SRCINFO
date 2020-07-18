@@ -1,11 +1,12 @@
 pkgbase = noisetorch-bin
 	pkgdesc = Easy to use noise suppression for PulseAudio
 	pkgver = 0.4.0_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lawl/NoiseTorch
 	install = noisetorch-bin.install
 	arch = x86_64
 	license = GPL3
+	depends = polkit
 	optdepends = hicolor-icon-theme
 	provides = noisetorch
 	options = !strip
