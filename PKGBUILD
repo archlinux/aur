@@ -9,7 +9,7 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('429' '493' '579' '983' '798' '1003' ' 1267')
-_merge_requests_to_use=('1124' '1003' '1267') # safe pick
+_merge_requests_to_use=('1124' '1003' '1267' '1360' '1359') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -155,6 +155,20 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr '1267' 'fix_clutter_actor_set_allocation_spam.patch' 'patch'
+
+  # Title: Fix _NET_WM_FRAME_DRAWN timestamps [3.36]
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1360
+  # Type: 3
+  # Status: 2
+  # Comment:
+  pick_mr '1360'
+
+  # Title: clutter-actor: Cull actors that don't intersect the redraw clip
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1359
+  # Type: 1
+  # Status: 2
+  # Comment:
+  pick_mr "1359"
 }
 
 build() {
