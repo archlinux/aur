@@ -1,13 +1,10 @@
 pkgbase = ttf-wps-win10
 	pkgdesc = Symbol fonts required by wps-office from Microsoft Windows 10
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
-	install = ttf-wps-win10.install
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = ttf-wps-fonts
 	conflicts = ttf-wps-fonts
 	source = local://MTEXTRA.TTF

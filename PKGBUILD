@@ -41,16 +41,13 @@
 
 pkgname=ttf-wps-win10
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Symbol fonts required by wps-office from Microsoft Windows 10'
 arch=('any')
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
 provides=('ttf-wps-fonts')
 conflicts=('ttf-wps-fonts')
-install="${pkgname}.install"
-
 _ttf_wps_win10=('MTEXTRA.TTF'
                 'symbol.ttf'
                 'webdings.ttf'
@@ -59,7 +56,6 @@ _ttf_wps_win10=('MTEXTRA.TTF'
                 'WINGDNG3.TTF')
 source=("${_ttf_wps_win10[@]/#/local://}"
         'local://license.rtf')
-
 sha256sums=('6c469962f33b7222f07b8d1ae8025f177f4a5f5db3eb62fa1523f261a270991f'
             'bffdc2fd675d9af414824ae84d8456504542480afb34fbc6bfd6903656c4f854'
             '1161ce511c44eb5464a4f8144aaf3eb965a50ed66957ad7d38e497ab9d958e5a'
