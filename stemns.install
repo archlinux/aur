@@ -1,7 +1,7 @@
 post_install() {
     getent passwd stemns &>/dev/null || {
         echo -n ">>> Creating stemns user... "
-        useradd --system --user-group -m --home /var/lib/stemns stemns
+        useradd --system --user-group -G tor -m --home /var/lib/stemns stemns
         echo "done"
     } # NOTE: we do not autoremove user due to security concerns (Arch policy)
 
