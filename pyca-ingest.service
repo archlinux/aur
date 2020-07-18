@@ -2,9 +2,13 @@
 Description=Python Capture Agent ingest service
 Documentation=https://github.com/opencast/pyCA
 Wants=network.target
+PartOf=pyca.service
+After=pyca.service
 
 [Service]
-Type=simple
+Type=notify
+NotifyAccess=all
+WatchdogSec=3600
 User=pyca
 ExecStart=/usr/bin/pyca ingest
 Restart=always
@@ -12,4 +16,4 @@ RestartSec=10
 TimeoutSec=300
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=pyca.service

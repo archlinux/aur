@@ -1,13 +1,13 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
-pkgver=2.1
-pkgrel=5
+pkgver=3.2
+pkgrel=6
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
 license=('LGPL')
-depends=('gnutls' 'python-dateutil' 'python-configobj' 'python-flask' 'python-pycurl' 'python-sqlalchemy')
-optdepends=('gunicorn: wsgi web interface')
+depends=('python-pycurl' 'python-dateutil' 'python-configobj' 'python-sqlalchemy' 'python-sdnotify' 'python-psutil' 'python-flask')
+optdepends=('gunicorn: wsgi web interface' 'ffmpeg: video and audio recording')
 source=("https://github.com/opencast/pyCA/archive/v$pkgver.tar.gz"
         "pyca.install"
         "pyca.service"
@@ -17,14 +17,14 @@ source=("https://github.com/opencast/pyCA/archive/v$pkgver.tar.gz"
         "pyca-ingest.service"
         "pyca-schedule.service")
 install="pyca.install"
-md5sums=('c48f246eff3e33a04310da39c01578bf'
+md5sums=('9db4a8d30754458a624c23af1b1a7572'
          'd16c4e1a394f0cf356f65555e8cb0334'
-         'c014533da3c3b9bb763419e2721e844a'
-         '965c239a4c7a2d528f1ce559f8224ac7'
-         '3d64e43407482b906b5e21f2a5584a6e'
-         '2eb31065c6d4deb6888c3b187565add9'
-         '4adcf6d8ff3641ad1dd4910a1957c9db'
-         'e86a4025da5842d701a12cc258116c66')
+         'ad2dff096f5fd249f30137088ea5130d'
+         'e00ff2fb7ded9f6ef2c01b6dccb8bb7c'
+         '00d4bc93ddd9de5226cbfad53e1b4d10'
+         'eac3ed5d9f9766bcc4b455b69056b351'
+         'e0ee6375752f98e3dfca8c9a5b2b776f'
+         'f17d472d7de8f63e6b563fd38ac81314')
 backup=('etc/pyca.conf')
 
 prepare() {
@@ -46,9 +46,9 @@ package() {
   install -Dm 644 "${srcdir}"/pyca-ui.service "${pkgdir}"/usr/lib/systemd/system/pyca-ui.service
 
   install -dm 755 "${pkgdir}"/var/lib/pyca/recordings
-  install -dm 755 "${pkgdir}"/usr/lib/python3.7/site-packages/pyca
+  install -dm 755 "${pkgdir}"/usr/lib/python3.8/site-packages/pyca
 
   install -Dm 644 etc/pyca.conf "${pkgdir}"/etc/pyca.conf
-  cp -dr --no-preserve=ownership pyca/* "${pkgdir}"/usr/lib/python3.7/site-packages/pyca/
+  cp -dr --no-preserve=ownership pyca/* "${pkgdir}"/usr/lib/python3.8/site-packages/pyca/
   install -Dm 755 start.sh "${pkgdir}"/usr/bin/pyca
 }

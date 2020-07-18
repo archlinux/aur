@@ -2,13 +2,15 @@
 Description=Python Capture Agent UI instance
 Documentation=https://github.com/opencast/pyCA
 Wants=network.target
+PartOf=pyca.service
+After=pyca.service
 
 [Service]
 Type=simple
 User=pyca
-ExecStart=/usr/bin/gunicorn pyca.ui:app
+ExecStart=/usr/bin/python3 -m gunicorn.app.wsgiapp --config=/etc/pyca/gunicorn.conf.py pyca.ui:app
 Restart=always
 RestartSec=10
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=pyca.service

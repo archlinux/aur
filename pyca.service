@@ -1,16 +1,11 @@
 [Unit]
-Description=Python Capture Agent
-Documentation=https://github.com/opencast/pyCA
-Wants=network.target
-PartOf=pyca.target
+Description=PyCA
 
 [Service]
-Type=simple
-User=pyca
-ExecStart=/usr/bin/pyca
-Restart=always
-RestartSec=10
-TimeoutSec=300
+Type=oneshot
+ExecStart=/bin/true
+# Considered unit active after start
+RemainAfterExit=yes
 
 [Install]
-WantedBy=pyca.target
+WantedBy=multi-user.target
