@@ -56,6 +56,9 @@ pkgbase = lv2-plugins-aur-meta
 	depends = zplugins.lv2-git
 	depends = zyn-fusion
 	depends = raul-git
+	depends = cv_to_cc.lv2
+	depends = lenticular.lv2
+	depends = infamousplugins-git
 
 pkgname = lv2-plugins-aur-meta
 
