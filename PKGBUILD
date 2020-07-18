@@ -1,41 +1,32 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: zan <zan@420blaze.it>
+# Contributor Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=solid-git
-pkgver=v4.100.0.rc1.r389.g8dfb727
+_name=${pkgname%-git}
+pkgver=v4.100.0.rc1.r421.g8e0957c
 pkgrel=1
-pkgdesc='Solid'
-arch=('i686' 'x86_64')
+pkgdesc='Hardware integration and detection'
+arch=(x86_64)
 url='https://projects.kde.org/projects/frameworks/solid'
-license=('LGPL')
-depends=('qt5-declarative' 'media-player-info' 'udisks2' 'upower')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
+license=(LGPL)
+depends=(qt5-declarative media-player-info udisks2 upower)
+makedepends=(extra-cmake-modules git qt5-tools)
+groups=(kf5)
 conflicts=(solid)
 provides=(solid)
-source=('git+https://anongit.kde.org/solid.git')
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd $_name
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../solid \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

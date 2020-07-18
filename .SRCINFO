@@ -1,13 +1,12 @@
 pkgbase = solid-git
-	pkgdesc = Solid
-	pkgver = v4.100.0.rc1.r389.g8dfb727
+	pkgdesc = Hardware integration and detection
+	pkgver = v4.100.0.rc1.r421.g8e0957c
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/solid
-	arch = i686
 	arch = x86_64
 	groups = kf5
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-declarative
@@ -16,7 +15,7 @@ pkgbase = solid-git
 	depends = upower
 	provides = solid
 	conflicts = solid
-	source = git://anongit.kde.org/solid.git
+	source = git+https://invent.kde.org/frameworks/solid.git
 	md5sums = SKIP
 
 pkgname = solid-git
