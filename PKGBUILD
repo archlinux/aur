@@ -6,7 +6,7 @@
 #  "https://www.fosshub.com/CudaText.html?dwl=cudatext-linux-qt5-amd64-1.107.0.0.tar.xz"
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
-pkgver=1.107.0.2
+pkgver=1.107.1.0
 pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt5 edition."
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('qt5pas'
 makedepends=('gendesk')
 provides=('cudatext')
 options=('!strip')
-source=("local://cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
-sha256sums=('62985671850949cc4136bb5010d8bd705b5ab90ece9eceb58cca62f3733a1ded')
+source=("http://www.uvviewsoft.com/cudatext/files_linux/cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
+sha256sums=('7fa60573bc46fb467144a52dee904e8413b9ba3c7bb64bf2b2c1da63deb1a2c4')
 
 prepare() {
 	echo "Creating desktop file"
