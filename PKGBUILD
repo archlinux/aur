@@ -1,8 +1,5 @@
 # Maintainer:  nissen22
 
-# You need to manually download the .deb file and place it where this
-#  PKGBUILD is located, since FossHub does not allow static linking.
-# `https://www.fosshub.com/CudaText.html?dwl=cudatext_1.106.6.1-1_gtk2_amd64.deb`
 
 pkgname=cudatext-gtk2-bin
 pkgver=1.107.1.0
