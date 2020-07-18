@@ -1,7 +1,7 @@
 pkgbase = tsduck
 	pkgdesc = An extensible toolkit for MPEG/DVB transport streams
 	pkgver = 3.21_1819
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tsduck.io/
 	install = tsduck.install
 	arch = x86_64

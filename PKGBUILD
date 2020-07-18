@@ -1,9 +1,10 @@
 # Maintainer: Piotr Serafin <piotr.serafin.71@gmail.com>
+# Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=tsduck
 _pkgver=3.21-1819
 pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
 arch=('x86_64')
 url="https://tsduck.io/"
