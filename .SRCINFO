@@ -1,15 +1,15 @@
 pkgbase = search
 	pkgdesc = Search the web from the terminal
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://github.com/tirithen/search
+	pkgrel = 2
+	url = https://github.com/tirithen/terminal-search
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = dub
 	makedepends = ldc
 	depends = liblphobos
-	source = search-1.1.1.tar.gz::https://github.com/tirithen/search/archive/v1.1.1.tar.gz
+	source = search-1.1.1.tar.gz::https://github.com/tirithen/terminal-search/archive/v1.1.1.tar.gz
 	sha256sums = 8911dae02c0d58090eff96b35636435bb5877e263c4b9c19086defc4fdc6597c
 
 pkgname = search
