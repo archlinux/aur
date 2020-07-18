@@ -1,39 +1,33 @@
+# Maintainer: zan <zan@420blaze.it>
+
 pkgname=attica-git
-pkgver=v5.68.0.rc1.r0.g5a49f34
+_name=${pkgname%-git}
+pkgver=v5.72.0.r2.gef33d1e
 pkgrel=1
 pkgdesc='Qt5 library that implements the Open Collaboration Services API'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url='https://projects.kde.org/projects/frameworks/attica'
-license=('LGPL')
-depends=('qt5-base')
-makedepends=('cmake' 'git' 'extra-cmake-modules-git')
-conflicts=('attica')
-provides=('attica')
-source=('attica::git+git://anongit.kde.org/attica')
+license=(LGPL)
+depends=(qt5-base)
+makedepends=(git extra-cmake-modules)
+groups=(kf5)
+conflicts=(attica)
+provides=(attica)
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/attica"
+  cd $_name
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p "${srcdir}/build"
-}
-
 build() {
-  cd "${srcdir}/build"
-  cmake "${srcdir}/attica" -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 
