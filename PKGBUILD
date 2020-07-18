@@ -3,14 +3,14 @@
 
 _gitname=geany
 pkgname=${_gitname}-git
-pkgver=1.36.0.r37.g5cc69b3d6
+pkgver=1.36.0.r49.gd8f532b5a
 pkgrel=1
 pkgdesc="Fast and lightweight IDE (git version)"
 arch=('x86_64' 'i686')
 url="https://github.com/${_gitname}/${_gitname}"
 license=('GPL2')
 depends=('gtk3' 'python')
-makedepends=('doxygen' 'git' 'intltool' 'python-lxml' 'python-docutils' 'vte3')
+makedepends=('doxygen' 'git' 'intltool' 'python-lxml' 'python-docutils' 'python-reportlab' 'vte3')
 optdepends=(
     'geany-plugins: additional functionality'
     'vte3: enbedded terminal support'

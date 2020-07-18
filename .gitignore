@@ -2,4 +2,5 @@ geany/
 pkg/
 src/
 geany-git-*.pkg.tar.xz
+geany-git-*.pkg.tar.zst
 geany-git-*.src.tar.gz

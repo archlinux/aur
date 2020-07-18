@@ -1,6 +1,6 @@
 pkgbase = geany-git
 	pkgdesc = Fast and lightweight IDE (git version)
-	pkgver = 1.36.0.r37.g5cc69b3d6
+	pkgver = 1.36.0.r49.gd8f532b5a
 	pkgrel = 1
 	url = https://github.com/geany/geany
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = geany-git
 	makedepends = intltool
 	makedepends = python-lxml
 	makedepends = python-docutils
+	makedepends = python-reportlab
 	makedepends = vte3
 	depends = gtk3
 	depends = python
 	optdepends = geany-plugins: additional functionality
 	optdepends = vte3: enbedded terminal support
 	provides = geany
-	provides = geany=1.36.0.r37.g5cc69b3d6
+	provides = geany=1.36.0.r49.gd8f532b5a
 	conflicts = geany
 	conflicts = geany-gtk3
 	conflicts = geany-gtk3-git
