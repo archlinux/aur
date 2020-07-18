@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-tifffile
-pkgver=2020.7.4
+pkgver=2020.7.17
 _pyname=${pkgname#python-}
 pkgrel=1
 pkgdesc="Read and write image data from and to TIFF files"
@@ -10,12 +10,13 @@ arch=('any')
 url="https://github.com/cgohlke/tifffile"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python-numpy')
-optdepends=('python-matplotlib: required only for plotting'
-            'python-imagecodecs: required only for encoding or decoding LZW, JPEG, etc.')
+depends=('python-numpy>=1.15.1')
+optdepends=('python-matplotlib>=3.1: required only for plotting'
+            'python-imagecodecs>=2020.2.18: required only for encoding or decoding LZW, JPEG, etc'
+            'python-lxml: required only for validating and printing XML')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('d7e56b9983e2e14716feaee560022baa8f92e97f36df7eee8b10e672383f694c')
+sha256sums=('5bcad7e2e1d88c7923da662bf85ca2a1302ceaea04198d4ca696e0f7e7908576')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
