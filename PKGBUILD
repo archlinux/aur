@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.3.0.r3.ba15348
+pkgver=2.3.2.r11.78ba8ea
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/_//'
+	git describe --long | sed 's/[-_]rc/rc/I;s/\([^-]*-\)g/r\1/;s/-/./g;s/_//'
 }
 
 prepare () {
