@@ -1,6 +1,6 @@
 pkgbase = nwscript-code
 	pkgdesc = Setup for a NWScript pseudo-IDE assembled from VSC and various development tools
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = nwscript-code
 	depends = nssnippets-bin
 	optdepends = wine
 	options = !strip
-	source = https://gitlab.com/Taro94/nwscript-code/-/archive/1.0.0/nwscript-code-1.0.0.tar.gz
-	md5sums = 8d181281061eaa70937832816dba15a5
+	source = https://gitlab.com/Taro94/nwscript-code/-/archive/1.1.0/nwscript-code-1.1.0.tar.gz
+	md5sums = d82bd99da95bde1b46b0e1ba0aae20a9
 
 pkgname = nwscript-code
 
