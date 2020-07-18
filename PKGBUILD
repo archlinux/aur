@@ -2,7 +2,7 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
@@ -11,16 +11,11 @@ license=(BSD)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-pytest-mock python-pytz pifpaf postgresql)
 depends=(python python-scramp)
-source=("https://github.com/tlocke/pg8000/archive/$pkgver/pg8000-$pkgver.tar.gz"
-        postgresql-12.diff)
-sha256sums=('dbba2061f4e5f7a405bdd7839ddfd1e180b1a4844279f21eb77bed3808bee4af'
-            '31693ddabeb8d772949ecbfd0f917223802be85039a613e083ecdeee417576db')
+source=("https://github.com/tlocke/pg8000/archive/$pkgver/pg8000-$pkgver.tar.gz")
+sha256sums=('8af9ba3e1edf249b50b13f9f654aa6d39dd66c959fbbf041a4b66cefeb05c7d9')
 
 prepare() {
   cd pg8000-$pkgver
-
-  # https://github.com/tlocke/pg8000/issues/46
-  patch -Np1 -i ../postgresql-12.diff
 
   # Remove upper bounds of dependencies
   sed --in-place=.orig -r 's#,?<[0-9.]+,?##;s#==([0-9.]+)#>=\1#' setup.py
