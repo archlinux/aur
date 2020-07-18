@@ -1,0 +1,40 @@
+pkgbase = element-desktop-git
+	pkgdesc = A glossy Matrix collaboration client for the desktop.
+	pkgver = v1.7.1.r0.g9c9da434
+	pkgrel = 1
+	url = https://element.io
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = nodejs
+	makedepends = jq
+	makedepends = yarn
+	makedepends = npm
+	makedepends = python
+	makedepends = rust
+	makedepends = sqlcipher
+	makedepends = electron
+	depends = electron
+	provides = element-desktop
+	backup = etc/element/config.json
+	source = element-web::git://github.com/vector-im/riot-web.git#tag=v1.7.1
+	source = element-desktop::git://github.com/vector-im/riot-desktop.git#tag=v1.7.1
+	source = element-desktop.desktop
+	source = element-desktop.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d
+	sha256sums = e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f
+
+pkgname = element-web-git
+	pkgdesc = Glossy Matrix collaboration client for the web.
+	provides = vector-web
+	replaces = vector-web
+
+pkgname = element-desktop-git
+	pkgdesc = Glossy Matrix collaboration client for the desktop.
+	depends = element-web-git=v1.7.1.r0.g9c9da434
+	depends = electron
+	depends = sqlcipher
+	backup = etc/element/config.json
+
