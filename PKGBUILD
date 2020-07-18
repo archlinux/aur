@@ -1,7 +1,7 @@
 # Maintainer: Stuart Cardall <developer__at__it-offshore.co.uk>
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux-lts linux-hardened linux-zen"
 arch=(x86_64)

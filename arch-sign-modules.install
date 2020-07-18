@@ -12,8 +12,9 @@
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
+
 post_install() {
-	local x= module_list="zfs nvidia"
+	local x= module_list="zfs nvidia p_lkrg"
 	local dkms_dir=/etc/dkms dkms_link=
 	local kernel_sign=${dkms_dir}/kernel-sign.conf
 
