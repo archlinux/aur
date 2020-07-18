@@ -1,0 +1,26 @@
+From baf8f76715c9856b9e88d2fc043dc406c60ae974 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Fri, 19 Jun 2020 23:00:08 +0000
+Subject: [PATCH] IWYU: include cstring for memset and memcpy calls in evdev event_device_info.cc
+
+Bug: 819294
+Change-Id: Ibf5b13cdccaa371b7f5972bf511aeb20ed1bf9c8
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2252000
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Reviewed-by: Robert Kroeger <rjkroege@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#780493}
+---
+
+diff --git a/ui/events/ozone/evdev/event_device_info.cc b/ui/events/ozone/evdev/event_device_info.cc
+index 248f9da..473847f 100644
+--- a/ui/events/ozone/evdev/event_device_info.cc
++++ b/ui/events/ozone/evdev/event_device_info.cc
+@@ -6,6 +6,8 @@
+ 
+ #include <linux/input.h>
+ 
++#include <cstring>
++
+ #include "base/files/file_path.h"
+ #include "base/logging.h"
+ #include "base/notreached.h"
