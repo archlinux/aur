@@ -1,8 +1,8 @@
 pkgbase = hda-verb
 	pkgdesc = Tool to send commands (verbs) to HD-Audio codecs
 	pkgver = 0.4
-	pkgrel = 1
-	url = ftp://ftp.suse.com/pub/people/tiwai/misc
+	pkgrel = 2
+	url = ftp://ftp.suse.com/pub/people/tiwai/misc/
 	arch = i686
 	arch = x86_64
 	license = GPL
