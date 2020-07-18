@@ -1,15 +1,19 @@
 pkgbase = noisetorch-bin
 	pkgdesc = Easy to use noise suppression for PulseAudio
-	pkgver = 0.3.4_beta
-	pkgrel = 3
+	pkgver = 0.4.0_beta
+	pkgrel = 1
 	url = https://github.com/lawl/NoiseTorch
+	install = noisetorch-bin.install
 	arch = x86_64
 	license = GPL3
 	optdepends = hicolor-icon-theme
 	provides = noisetorch
 	options = !strip
-	source = noisetorch-bin-0.3.4_beta.tar.gz::https://github.com/lawl/NoiseTorch/releases/download/0.3.4-beta/NoiseTorch_x64.tgz
-	sha256sums = 2d5c3c4a9e12a078019f003312486aca4111e977bb4eae4769163712b51038f8
+	backup = home/travis/.config/noisetorch/config.toml
+	source = noisetorch-bin-0.4.0_beta.tar.gz::https://github.com/lawl/NoiseTorch/releases/download/0.4.0-beta/NoiseTorch_x64.tgz
+	source = noisetorch-bin.install
+	sha256sums = dd551296f819887e6d0111015b259fa347aa40ced7813b6247a71712ad45452f
+	sha256sums = 4074b71327284b1ad75aee32bee0462360b90061237e998bf4f7e259a65e3caa
 
 pkgname = noisetorch-bin
 
