@@ -1,7 +1,7 @@
 # Maintainer: Peter DeVita <peter at encavo dot net>
 
 pkgname=sddm-theme-amadeus-git
-pkgver=ebbcc49
+pkgver=r21.d3fd323
 pkgrel=1
 pkgdesc="Amadeus theme for SDDM"
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('sddm-theme-amadeus')
 
 pkgver() {
   cd "$pkgname"
-  git rev-parse --short HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
