@@ -4,12 +4,16 @@
 
 To build:
 
-    makepkg -CcfLsr
 
-That is `-c` for 'clean after succesful build', `-C` for 'remove $srcdir before
-building', `-f` for 'force rebuilding if package already exists', `-L` for
-'save a build log', `-s` for 'install missing dependencies using pacman', `-r`
-for 'remove any installed dependencies after build'.
+```sh
+extra-x86_64-build
+```
+
+The tool is provided by the [devtools](https://www.archlinux.org/packages/extra/any/devtools/)
+package. It's the recommended way
+[0](https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot)
+[1](https://wiki.archlinux.org/index.php/AUR_Trusted_User_Guidelines)
+for building Arch Linux packages in a clean environment.
 
 To create the .SRCINFO:
 
