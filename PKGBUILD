@@ -1,5 +1,5 @@
 pkgname=nanocurrency
-pkgver=20.0
+pkgver=21.1
 _tag="V$pkgver"
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
@@ -42,6 +42,15 @@ prepare() {
 
   git submodule update --init --recursive
 
+  # remove /bin from $PATH so that boost can be built
+  # see https://bugs.archlinux.org/task/64132
+  tmp_path=:$PATH:
+  remove_from_PATH='/bin'
+  tmp_path=${tmp_path/:$remove_from_PATH:/:}
+  tmp_path=${tmp_path%:}
+  tmp_path=${tmp_path#:}
+  PATH=$tmp_path
+  
   _flags=( "-D RAIBLOCKS_GUI=ON" )
   
   if grep -q avx2 /proc/cpuinfo; then
@@ -57,7 +66,9 @@ prepare() {
     echo "excluding unsupported SIMD optimizations"
     _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=OFF" )
   fi
-  cmake $_flags ./
+
+  
+  PATH=$PATH cmake $_flags ./
 }
 
 build() {
