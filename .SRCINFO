@@ -1,0 +1,15 @@
+pkgbase = akava-konsole-git
+	pkgdesc = Akava konsole colors
+	pkgver = r3.56824cc
+	pkgrel = 1
+	url = https://github.com/Akava-Design/Akava-Konsole
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Akava-Design/Akava-Konsole.git
+	sha256sums = SKIP
+
+pkgname = akava-konsole-git
+	provides = akava-konsole
+
