@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=zapret-git
 pkgver=r85.50a0668
-pkgrel=5
+pkgrel=6
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
@@ -44,6 +44,7 @@ _package_common()
    install -Dm644 init.d/systemd/*  -t "$pkgdir/usr/lib/systemd/system"
    install -Dm755 init.d/sysv/*     -t "$pkgdir/opt/zapret/init.d/sysv"
    install -Dm644 config               "$pkgdir/opt/zapret/config"
+   install -Ddm755 "$pkgdir/usr/bin"
    install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/zapret.conf"
    sed -ri 's/^#?WS_USER=.*$/WS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
 }
@@ -51,6 +52,7 @@ package_zapret-nfqws-git() {
    cd "$srcdir/${pkgbase%-git}"
    _package_common
    install -Dm755 "binaries/my/nfqws" "$pkgdir/opt/zapret/nfq/nfqws"
+   ln -s /opt/zapret/nfq/nfqws "$pkgdir/usr/bin/nfqws"
    # sed -ri "s/^#?\($1=\).*$/\1$M/" "$pkgdir/opt/zapret/config"
    sed -ri "s/^#?MODE=.*$/MODE=nfqws_all_desync/" "$pkgdir/opt/zapret/config"
 }
@@ -58,5 +60,6 @@ package_zapret-tpws-git() {
    cd "$srcdir/${pkgbase%-git}"
    _package_common
    install -Dm755 "binaries/my/tpws" "$pkgdir/opt/zapret/tpws/tpws"
+   ln -s /opt/zapret/nfq/tpws "$pkgdir/usr/bin/tpws"
    sed -ri "s/^#?MODE=.*$/MODE=tpws_all/" "$pkgdir/opt/zapret/config"
 }
