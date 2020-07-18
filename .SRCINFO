@@ -1,0 +1,35 @@
+pkgbase = electrum-nmc-bin
+	pkgdesc = Namecoin port of Electrum client with name support
+	pkgver = 3.3.10
+	pkgrel = 1
+	url = https://www.namecoin.org/
+	arch = x86_64
+	license = Custom: multiple open source
+	optdepends = cython: Compilation support for all hardware wallet dependencies
+	optdepends = python-btchip: Ledger, Trezor, and KeepKey hardware wallet support dependency
+	optdepends = python-trezor: Trezor hardware support dependency
+	optdepends = python-keepkey: KeepKey hardware wallet support dependency
+	optdepends = python-ckcc-protocol: Coldcard wallet support
+	provides = electrum-nmc
+	provides = electrum-nmc-bin
+	conflicts = electrum-nmc-bin
+	noextract = electrum-nmc.AppImage
+	noextract = electrum-nmc-nc3.3.10-x86_64.AppImage
+	options = !strip
+	source = electrum-nmc.AppImage::https://www.namecoin.org/files/electrum-nmc/electrum-nmc-3.3.10/electrum-nmc-nc3.3.10-x86_64.AppImage
+	source = electrum_nmc_bin.png::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/electrum_nmc/electrum/gui/icons/electrum_nmc.png
+	source = AUTHORS::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/AUTHORS
+	source = README.rst::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/README.rst
+	source = RELEASE-NOTES::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/RELEASE-NOTES
+	source = LICENCE::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/LICENCE
+	source = LICENCE.DOGE::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/LICENCE.DOGE
+	sha256sums = 3e641005faab9988141644456912758b6a61f9355d0d3e9e7e24b6b7020eceeb
+	sha256sums = b9a107d0716183fd98439b93a93643856b7774342f36cf9afcd6a83419c6f38d
+	sha256sums = 507ca68a5818f30dabc14bb61f4d5045e78dfd13f1e01cf56a8e61c7e1d0fb8f
+	sha256sums = 6e9a46c9c296676072eb059d29a9cbf23a04719156c45df3ab34e269ab61b9c2
+	sha256sums = f31755ae0b7dfd8f0a10887b8694da52aeb5daa4c69246e4760844a3cafac933
+	sha256sums = 3e6dae555eb92787fc82d1d48355677f454c7f65aeb38d3f9e72bf9a3daf034b
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = electrum-nmc-bin
+
