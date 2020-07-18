@@ -20,7 +20,7 @@ pkgver() {
 package_akava-kde-git() {
     provides=('akava-kde')
     optdepends=('breeze-blurred-git: Matching window decoration'
-             'akava-console-git: Matching konsole colors theme'
+             'akava-konsole-git: Matching konsole colors theme'
              'akava-colors-git: Matching KDE color theme'
              'kvantum-theme-akava-git: Matching kvantum theme')
 

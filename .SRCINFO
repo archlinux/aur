@@ -12,7 +12,7 @@ pkgbase = akava-kde-git
 
 pkgname = akava-kde-git
 	optdepends = breeze-blurred-git: Matching window decoration
-	optdepends = akava-console-git: Matching konsole colors theme
+	optdepends = akava-konsole-git: Matching konsole colors theme
 	optdepends = akava-colors-git: Matching KDE color theme
 	optdepends = kvantum-theme-akava-git: Matching kvantum theme
 	provides = akava-kde
