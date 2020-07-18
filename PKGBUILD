@@ -1,4 +1,4 @@
-# Maintainer: Benjamin den Hartog <ben@sudoforge.com>
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Joshua Marsh <joshua@themarshians.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Richard Hoffman <coverslide@gmail.com>
