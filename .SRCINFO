@@ -1,0 +1,15 @@
+pkgbase = akava-colors-git
+	pkgdesc = Akava KDE/Qt colors
+	pkgver = r10.9a49c6f
+	pkgrel = 1
+	url = https://github.com/Akava-Design/Akava-Colors
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Akava-Design/Akava-Colors.git
+	sha256sums = SKIP
+
+pkgname = akava-colors-git
+	provides = akava-colors
+
