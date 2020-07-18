@@ -1,6 +1,6 @@
 pkgbase = libtorrent-rasterbar-git
 	pkgdesc = A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)
-	pkgver = 1.2.3.r319.g9dfff3677
+	pkgver = 2.0.0.RC.r584.ge0d9d7791
 	pkgrel = 1
 	url = https://www.rasterbar.com/products/libtorrent/
 	arch = x86_64
@@ -17,9 +17,15 @@ pkgbase = libtorrent-rasterbar-git
 	optdepends = python: for python3 bindings
 	provides = libtorrent-rasterbar
 	conflicts = libtorrent-rasterbar
-	source = libtorrent-rasterbar::git+https://github.com/arvidn/libtorrent.git
+	source = libtorrent-rasterbar::git+https://github.com/arvidn/libtorrent.git#branch=master
 	source = git+https://github.com/arvidn/libsimulator.git
 	source = git+https://github.com/arvidn/try_signal.git
+	source = git+https://github.com/paullouisageneau/boost-asio-gnutls.git
+	source = git+https://github.com/paullouisageneau/libdatachannel.git
+	source = json-vinniefalco::git+https://github.com/vinniefalco/json.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libtorrent-rasterbar-git
-pkgver=1.2.3.r319.g9dfff3677
+pkgver=2.0.0.RC.r584.ge0d9d7791
 pkgrel=1
 pkgdesc='A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)'
 url='https://www.rasterbar.com/products/libtorrent/'
@@ -14,24 +14,31 @@ optdepends=('boost-libs: for python bindings'
             'python: for python3 bindings')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
-source=('libtorrent-rasterbar'::'git+https://github.com/arvidn/libtorrent.git'
+source=('libtorrent-rasterbar'::'git+https://github.com/arvidn/libtorrent.git#branch=master'
         'git+https://github.com/arvidn/libsimulator.git'
-        'git+https://github.com/arvidn/try_signal.git')
+        'git+https://github.com/arvidn/try_signal.git'
+        'git+https://github.com/paullouisageneau/boost-asio-gnutls.git'
+        'git+https://github.com/paullouisageneau/libdatachannel.git'
+        'json-vinniefalco'::'git+https://github.com/vinniefalco/json.git')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 prepare() {
-    cd libtorrent-rasterbar
-    git submodule init
-    git config --local "submodule.simulation/libsimulator.url" "${srcdir}/libsimulator"
-    git config --local "submodule.deps/try_signal.url" "${srcdir}/try_signal"
-    git submodule update
+    git -C libtorrent-rasterbar submodule init
+    git -C libtorrent-rasterbar config --local "submodule.simulation/libsimulator.url" "${srcdir}/libsimulator"
+    git -C libtorrent-rasterbar config --local "submodule.deps/try_signal.url" "${srcdir}/try_signal"
+    git -C libtorrent-rasterbar config --local "submodule.deps/asio-gnutls.url" "${srcdir}/boost-asio-gnutls"
+    git -C libtorrent-rasterbar config --local "submodule.deps/libdatachannel.url" "${srcdir}/libdatachannel"
+    git -C libtorrent-rasterbar config --local "submodule.deps/json.url" "${srcdir}/json-vinniefalco"
+    git -C libtorrent-rasterbar submodule update
 }
 
 pkgver() {
-    cd libtorrent-rasterbar
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g;s/^libtorrent\.//'
+    git -C libtorrent-rasterbar describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g;s/^libtorrent.//'
 }
 
 _build_common() {
@@ -59,7 +66,6 @@ _build_common() {
 build() {
     local _py2ver
     local _pyver
-    
     _py2ver="$(python2 -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
@@ -70,7 +76,6 @@ build() {
 package() {
     local _py2ver
     local _pyver
-    
     _py2ver="$(python2 -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
