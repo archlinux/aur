@@ -5,7 +5,7 @@
 
 pkgname=tkdiff
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL')
 pkgdesc="a graphical front end to the diff program"
@@ -16,5 +16,5 @@ source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkg
 md5sums=('4e4ad77c54fc4d8057b29e14aa539d35')
 
 package() { 
-	install -Dm755 "$srcdir/$pkgname-4-3-5/tkdiff" "$pkgdir/usr/bin/tkdiff"; 
+	install -Dm755 "$srcdir/$pkgname-5-0/tkdiff" "$pkgdir/usr/bin/tkdiff"; 
 } 

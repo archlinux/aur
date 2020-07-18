@@ -1,7 +1,7 @@
 pkgbase = tkdiff
 	pkgdesc = a graphical front end to the diff program
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tkdiff.sourceforge.net/
 	arch = any
 	license = GPL
