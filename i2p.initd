@@ -1,0 +1,41 @@
+#!/usr/bin/openrc-run
+# Distributed under the terms of the GNU General Public License v3
+
+user="${user:-i2p}"
+group="${group:-i2p}"
+pidfile="/run/i2p/$RC_SVCNAME.pid"
+command="/usr/bin/java-service-wrapper"
+command_args="/opt/i2p/wrapper.config wrapper.name=i2prouter wrapper.syslog.ident=i2prouter wrapper.daemonize=TRUE TZ=UTC"
+command_background=1
+
+depend() {
+	use net
+	need localmount
+}
+
+start() {
+	ebegin "Start ${SVCNAME}"
+
+	su -s /bin/sh -c "$command $command_args" $user
+
+	eend $?
+	return 0;
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+
+	/bin/kill -TERM $(cat $pidfile)
+
+	eend $?
+	return 0;
+}
+
+reload() {
+	ebegin "Reload ${SVCNAME}"
+
+	/bin/kill -USR1 $(cat $pidfile)
+
+	eend $?
+	return 0;
+}

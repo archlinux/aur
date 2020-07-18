@@ -1,0 +1,14 @@
+pkgbase = i2p-openrc
+	pkgdesc = i2p init scripts for OpenRC
+	pkgver = 1
+	pkgrel = 0
+	url = https://aur.archlinux.org/packages/i2p-openrc/
+	arch = any
+	license = GPL3
+	depends = i2p
+	depends = openrc
+	source = i2p.initd
+	sha1sums = 861e18a13cd1d765e3e542a74c858753c84f704e
+
+pkgname = i2p-openrc
+
