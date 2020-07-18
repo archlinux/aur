@@ -1,0 +1,29 @@
+--- a/ns_always_txtorcon.py	2020-04-06 01:09:10.000000000 -0400
++++ b/ns_always_txtorcon.py	2020-07-17 21:51:59.113577894 -0400
+@@ -9,7 +9,7 @@
+     line = sys.stdin.readline()
+     args = line.split()
+     if args[0] == 'RESOLVE':
+-        query_id, nm = args[1:]
++        query_id, nm, _ = args[1:]
+         print('RESOLVED {} 0 timaq4ygg2iegci7.onion'.format(query_id))
+     elif args[0] == 'CANCEL':
+         query_id = args[1]
+--- a/ns_petname.py	2020-04-06 01:09:10.000000000 -0400
++++ b/ns_petname.py	2020-07-17 21:52:47.073582702 -0400
+@@ -1,5 +1,5 @@
+ # this is a Tor Proposition 279-compliant name resolution provider
+-# that sends any .onion request to txtorcon's documentation site.
++# that resolves a predefined set of .pet.onion domains.
+ 
+ import sys
+ 
+@@ -17,7 +17,7 @@
+     args = line.split()
+ 
+     if args[0] == 'RESOLVE':
+-        query_id, nm = args[1:]
++        query_id, nm, _ = args[1:]
+         try:
+             new_name = pet_names[nm]
+             print('RESOLVED {} 0 {}'.format(query_id, new_name))

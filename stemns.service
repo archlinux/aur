@@ -1,0 +1,11 @@
+[Unit]
+Description=Name resolution service plugin for Tor
+
+[Service]
+User=stemns
+Group=stemns
+ExecStart=/usr/bin/python /opt/stemns/poc.py
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
