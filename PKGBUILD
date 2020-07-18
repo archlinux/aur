@@ -1,16 +1,16 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 
 pkgname=kepubify
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
 arch=('x86_64')
-url='https://geek1011.github.io/kepubify'
+url='https://pgaskin.net/kepubify/'
 license=('MIT')
 conflicts=('kepubify-bin')
 makedepends=('go')
-source=("https://github.com/geek1011/kepubify/archive/v$pkgver.tar.gz")
-sha256sums=('f178c46b08a6211ed353c2cf625918d582dafce2b76349a0b4c0181c8ff9622b')
+source=("https://github.com/pgaskin/kepubify/archive/v$pkgver.tar.gz")
+sha256sums=('52e2099ed130d85d828d11c9addaf8099d6b84c53a477caa2fce77954ab043c4')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,7 +22,7 @@ build() {
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o $pkgname \
-    github.com/geek1011/kepubify/v3/cmd/kepubify/
+    github.com/pgaskin/kepubify/v3/cmd/kepubify/
 
   go build \
     -trimpath \
@@ -31,7 +31,7 @@ build() {
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o covergen \
-    github.com/geek1011/kepubify/v3/cmd/covergen/
+    github.com/pgaskin/kepubify/v3/cmd/covergen/
 
   go build \
     -trimpath \
@@ -40,7 +40,7 @@ build() {
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o seriesmeta \
-    github.com/geek1011/kepubify/v3/cmd/seriesmeta/
+    github.com/pgaskin/kepubify/v3/cmd/seriesmeta/
 }
 
 package() {
