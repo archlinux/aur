@@ -1,7 +1,7 @@
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
 
 pkgname=upbge-git
-pkgver=100785.b04a71b330c
+pkgver=101471.6e94f8ab7d4
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ md5sums=(
 	'SKIP' 
 	'SKIP' 
 	'SKIP' 
-	'4ede42a5aa6b7237170548ae00021ceb'
+	'1f0b37cb559e2b03d725677b19b80ba8'
 	'37ce92c740691f858156511e22b40143')
 
 # determine whether we can precompile CUDA kernels
