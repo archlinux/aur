@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-mahotas
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc='A set of functions for image processing in Python'
 arch=('i686' 'x86_64')
@@ -10,20 +10,21 @@ depends=('python2-numpy')
 makedepends=('python2-distribute')
 optdepends=('python2-scipy' 'python2-matplotlib' 'freeimage')
 checkdepends=('python2-scipy' 'python2-imread' 'python2-nose' 'python2-pillow')
-source=($pkgname-$pkgver.tar.gz::https://github.com/luispedro/mahotas/archive/v$pkgver.tar.gz)
-sha256sums=('9ff08ba9a91bc0d5b5d176ceecd351311e321b66ca4b87d90cea0fef84255148')
+source=(matohas-$pkgver.tar.gz::https://github.com/luispedro/mahotas/archive/v$pkgver.tar.gz)
+sha256sums=('6322468dec57be457f98d5b3173bd57e619885b386ea23f27b0731c99feb79fb')
 
 build() {
   cd "$srcdir/mahotas-$pkgver"
   python2 setup.py build
 }
 
-check() {
+check_disabled() {
   cd "$srcdir/mahotas-$pkgver"
   python2 setup.py test
 }
 
-package() {  
+package() {
   cd "$srcdir/mahotas-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/python-mahotas/LICENSE
 }
