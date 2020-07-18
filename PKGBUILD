@@ -11,7 +11,6 @@ depends=('polkit')
 optdepends=('hicolor-icon-theme')
 provides=('noisetorch')
 conflicts=('noisetorch')
-backup=("${HOME#/*}/.config/noisetorch/config.toml")
 options=(!strip)
 install="${pkgname}.install"
 source=(
