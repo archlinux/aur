@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=85.0.4183.15
+pkgver=85.0.4183.26
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -41,6 +41,7 @@ depends=(
          'libpulse'
          'libwebp'
 #          'libvpx'
+         'libva'
          'opus'
          'bluez-libs'
          'libnet'
@@ -308,6 +309,7 @@ _keeplibs=(
            'third_party/widevine'
            'third_party/woff2'
            'third_party/wuffs'
+           'third_party/xcbproto'
            'third_party/zlib' # /google'
            'tools/grit/third_party/six'
            'url/third_party/mozilla'
@@ -367,7 +369,6 @@ _flags=(
         'enable_platform_mpeg_h_audio=true'
         'enable_platform_dolby_vision=true'
         'enable_mse_mpeg2ts_stream_parser=true'
-        'closure_compile=false'
         'clang_use_chrome_plugins=true'
         'use_gold=false'
         'use_dbus=true'
