@@ -1,0 +1,23 @@
+pkgbase = kwayland-server-git
+	pkgdesc = Wayland Server Components built on KDE Frameworks
+	pkgver = v5.19.1.r65.g8351f51
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/kwayland-server
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = plasma-wayland-protocols
+	makedepends = wayland-protocols
+	makedepends = kwayland
+	makedepends = doxygen
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = kwayland-server
+	conflicts = kwayland-server
+	source = git+https://invent.kde.org/plasma/kwayland-server.git
+	md5sums = SKIP
+
+pkgname = kwayland-server-git
+
