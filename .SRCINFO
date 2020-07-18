@@ -1,0 +1,19 @@
+pkgbase = bspi-git
+	pkgdesc = Icons for bspwm, sort of
+	pkgver = r15.ed6d090
+	pkgrel = 1
+	url = https://github.com/fiskhest/aur-bspi-git
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bspwm
+	depends = xorg-xprop
+	depends = ttf-font-awesome
+	depends = python
+	provides = bspi
+	conflicts = bspi
+	source = git+https://github.com/aerosol/bspi.git
+	md5sums = SKIP
+
+pkgname = bspi-git
+
