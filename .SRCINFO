@@ -1,6 +1,6 @@
 pkgbase = wezterm-bin
 	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust
-	pkgver = 20200620.160318.e00b076c
+	pkgver = 20200718.095447.d2315640
 	pkgrel = 2
 	url = https://wezfurlong.org/wezterm
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = wezterm-bin
 	depends = xcb-util-wm
 	provides = wezterm
 	options = !strip
-	source = wezterm::https://github.com/wez/wezterm/releases/download/20200620-160318-e00b076c/WezTerm-20200620-160318-e00b076c-Ubuntu16.04.AppImage
+	source = wezterm::https://github.com/wez/wezterm/releases/download/20200718-095447-d2315640/WezTerm-20200718-095447-d2315640-Ubuntu16.04.AppImage
 	source = LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md
-	sha256sums = 67e7d9efbda29af77618bf4df591725ab7b90c79b124a1cadb764f4910e092d1
+	sha256sums = a529c9ed18801bde73aa9c8871bcd213c0c72bbffcc382f988249dcb58fca648
 	sha256sums = 191c46fcf52061382b1c51a70311eb9081381cc158e5899f3739473a9432185b
 
 pkgname = wezterm-bin
