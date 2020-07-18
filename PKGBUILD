@@ -1,5 +1,5 @@
 # Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
-# Contributor: Will Turner <willtur.will@gmail.com>
+# Contributor: William Turner <willtur.will@gmail.com>
 pkgname=buf-bin
 pkgver=0.20.3
 pkgrel=1
