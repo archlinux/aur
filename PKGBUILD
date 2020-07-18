@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=yaskkserv
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Yet Another SKK Japanese input method dictionary server'
 arch=('x86_64' 'i686')
@@ -35,6 +35,6 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha512sums=('9956a9b2fe587491b7c5f76482f13f91d1c87d445f2ff7effa5ffb68efe076f54f1c63e95b980d889963ac507ed49fa37f76f9deb239da7b7409da5be025c000'
+sha512sums=('5f421ef684011aed716e929b90ab98fb1703abe707928847d79a34815750d59df59f4dec8bef6e8ce399340aedb32688d6dd8a5d02ba9372a935ec8f1adffc29'
             '4c169aa6226963a719a5f22182203820f1bc1ed182e247aff575d0f7ee097244d959df6aaf68d0059937f155e0ad1c975281b7cc685fb08bbd4c139b57b30c09'
             '253da9a8d9ee60abde0d1b427c7307030eef87320a6a2c695b72101a1c5127caa0887db9a5f0a2b89a17e666f58ca296d798a94511cbb35e783d7c30cf30e3dd')
