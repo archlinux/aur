@@ -1,0 +1,12 @@
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2020-07-17 17:14:20.000000000 +0200
++++ b/Makefile	2020-07-18 10:37:32.898885286 +0200
+@@ -398,7 +398,7 @@
+ install_bash_completion: force
+ 	$(Q)$(call do_install_data,$(src)/tracecmd/trace-cmd.bash,$(BASH_COMPLETE_DIR))
+ 
+-install_cmd: all_cmd install_plugins install_python install_bash_completion
++install_cmd: all_cmd install_plugins install_python
+ 	$(Q)$(call do_install,$(obj)/tracecmd/trace-cmd,$(bindir_SQ))
+ 
+ install: install_cmd
