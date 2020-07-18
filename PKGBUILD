@@ -1,14 +1,25 @@
 # Maintainer: Seppia <seppia@seppio.fish>
-# Contributors: Eloston
-# Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
+# Maintainer: JustKidding <jk@vin.ovh>
+
+# Based on aur/chromium-vaapi, with ungoogled-chromium patches
+
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=83.0.4103.116
-pkgrel=3
+pkgver=84.0.4147.89
+pkgrel=1
+_pkgname=$pkgname
+_pkgver=$pkgver
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
-_ungoogled_ver=83.0.4103.116-1
+_ungoogled_ver=84.0.4147.89-1
+_uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
+_uc_sum="c10fe32af89e3611e836b5c73676444086be0680b765836755f3649ab8da4925"
 _launcher_ver=6
+_gcc_patchset=3
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -16,53 +27,43 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'libpipewire02' 'libva' 'clang' 'lld' 'gn' 'java-runtime-headless'
+makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
+             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
-            'libva: hardware-accelerated video decode (experimental)'
+            'libva: hardware-accelerated video decode [experimental]'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
 provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
+        $_uc_url
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
-        clean-up-a-call-to-set_utf8.patch
-        iwyu-std-numeric_limits-is-defined-in-limits.patch
-        add-missing-algorithm-header-in-crx_install_error.cc.patch
-        libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-        include-memory-header-to-get-the-definition-of-std-u.patch
-        make-some-of-blink-custom-iterators-STL-compatible.patch
-        avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        remove-NotifyError-calls-and-just-send-a-normal-message.patch
+        avoid-calling-DeleteForCurrentDocument-from-destructor.patch
         force-mp3-files-to-have-a-start-time-of-zero.patch
-        v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+        chromium-ffmpeg-4.3.patch
         intel-vp9-quirk.patch
         wayland-egl.patch
         nvidia-vdpau.patch
-        chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
-            'a8cff01fae3bc0823841c242c85746346619f684aff7968ebeb4886345395f24'
+sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
+            $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
-            '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
-            '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
-            '50687079426094f2056d1f4806dc30fc8d6bad16190520e57ba087ec5db1d778'
-            '071326135bc25226aa165639dff80a03670a17548f2d2ff5cc4f40982b39c52a'
-            '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
-            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
+            'f77088dd59b170b767ba91c6b410abb778ff2e68553433b24124d398fa4d3ce7'
+            '3b10917f646f88ae988ca18be9cbef82025abb6a6e5cb00b77a11077192ce32c'
+            '4e41cb637e96bcef98c119ed052ba1aeab45fca5b89d65955583dab002de783e'
             'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
-            '326b8ad8f1100ad11213ee916effab43dfd7b0229ee8bed2c1c8c3132866bcae'
+            '5390304b5f544868985ce00a3ec082d4ece2dacb1c73cdb35dd4facfea12449a'
+            'a25fc6fccb84fd0a58a799661cd9c4ffeb2731fa49268f43aa7108f1542c5af6'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
             '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
-            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -76,7 +77,7 @@ declare -gA _system_libs=(
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng    # https://crbug.com/752403#c10
+  [libpng]=libpng
   [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
@@ -84,7 +85,6 @@ declare -gA _system_libs=(
   [opus]=opus
   [re2]=re2
   [snappy]=snappy
-  [yasm]=
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -93,7 +93,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -105,38 +105,29 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
-  patch -Np1 -i ../clean-up-a-call-to-set_utf8.patch
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2223010
+  patch -Np1 -i ../remove-NotifyError-calls-and-just-send-a-normal-message.patch
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2153111
-  patch -Np1 -F3 -i ../iwyu-std-numeric_limits-is-defined-in-limits.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2152333
-  patch -Np1 -i ../add-missing-algorithm-header-in-crx_install_error.cc.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2132403
-  patch -Np1 -i ../libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2164645
-  patch -Np1 -i ../include-memory-header-to-get-the-definition-of-std-u.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2174199
-  patch -Np1 -i ../make-some-of-blink-custom-iterators-STL-compatible.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
-  patch -Np1 -i ../avoid-double-destruction-of-ServiceWorkerObjectHost.patch
-
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2224737
+  patch -Np1 -i ../avoid-calling-DeleteForCurrentDocument-from-destructor.patch
+  
   # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
   patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
 
-  # https://crbug.com/v8/10393
-  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../patches/chromium-84-AXObject-stl-iterator.patch
+  patch -Np1 -i ../patches/chromium-84-ListContainerHelper-include-cstring.patch
+  patch -Np1 -i ../patches/chromium-84-crashpad-include-cstring.patch
+  patch -Np1 -i ../patches/chromium-84-gcc-10-include-stddef.patch
+  patch -Np1 -i ../patches/chromium-84-gcc-10-webrtc-include-stddef.patch
+  patch -Np1 -i ../patches/chromium-84-gcc-DCHECK_EQ-unique_ptr.patch
+  patch -Np1 -i ../patches/chromium-84-std-vector-const.patch
+
+  # https://crbug.com/1095962
+  patch -Np1 -i ../chromium-ffmpeg-4.3.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
-
-  # Fixes from Gentoo
-  patch -Np1 -i ../chromium-83-gcc-10.patch
 
   # Intel KabyLake/GeminiLake VP9 quirk
   patch -Np1 -i ../intel-vp9-quirk.patch
@@ -148,7 +139,7 @@ prepare() {
   patch -Np1 -i ../nvidia-vdpau.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
@@ -160,6 +151,9 @@ prepare() {
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
+
+  # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
+  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
@@ -173,7 +167,6 @@ prepare() {
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
       \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
-      \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -185,12 +178,15 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   if check_buildoption ccache y; then
     # Avoid falling back to preprocessor mode when sources contain time macros
     export CCACHE_SLOPPINESS=time_macros
   fi
+
+  # ui/gfx/x/gen_xproto.py needs xcbgen
+  export PYTHONPATH=$srcdir
 
   export CC=clang
   export CXX=clang++
@@ -207,9 +203,9 @@ build() {
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
     'use_vaapi=true'
+    'enable_swiftshader=false'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -221,7 +217,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/$pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
@@ -245,11 +241,11 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  ln -s /usr/lib/${pkgname#ungoogled-}/chromedriver "$pkgdir/usr/bin/chromedriver"
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
     "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
@@ -280,10 +276,6 @@ package() {
     resources.pak
     v8_context_snapshot.bin
 
-    # ANGLE
-    libEGL.so
-    libGLESv2.so
-
     chromedriver
   )
 
@@ -293,7 +285,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
