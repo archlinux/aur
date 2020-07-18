@@ -1,0 +1,23 @@
+diff --unified --recursive --text scorep-6.0.orig/src/services/unwinding/scorep_unwinding_unify.c scorep-6.0/src/services/unwinding/scorep_unwinding_unify.c
+--- scorep-6.0.orig/src/services/unwinding/scorep_unwinding_unify.c	2020-07-18 11:46:18.400169478 +0100
++++ scorep-6.0/src/services/unwinding/scorep_unwinding_unify.c	2020-07-18 11:58:34.264373178 +0100
+@@ -28,6 +28,19 @@
+ 
+ #if HAVE( LIBBFD )
+ #include <bfd.h>
++
++#ifndef bfd_get_section_size
++#define bfd_get_section_size( asection ) bfd_section_size( asection )
++#endif
++
++#ifndef bfd_get_section_vma
++#define bfd_get_section_vma( abfd, asection ) bfd_section_vma( asection )
++#endif
++
++#ifndef bfd_get_section_flags
++#define bfd_get_section_flags( abfd, asection ) bfd_section_flags( asection )
++#endif
++
+ #endif
+ 
+ #include "scorep_unwinding_region.h"

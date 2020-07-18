@@ -1,0 +1,12 @@
+diff --unified --recursive --text scorep-6.0.orig/src/adapters/compiler/gcc-plugin/scorep_plugin_pass_instrument.inc.c scorep-6.0/src/adapters/compiler/gcc-plugin/scorep_plugin_pass_instrument.inc.c
+--- scorep-6.0.orig/src/adapters/compiler/gcc-plugin/scorep_plugin_pass_instrument.inc.c	2020-07-18 11:46:18.426836667 +0100
++++ scorep-6.0/src/adapters/compiler/gcc-plugin/scorep_plugin_pass_instrument.inc.c	2020-07-18 11:47:09.297829578 +0100
+@@ -83,7 +83,7 @@
+         return "in system header";
+     }
+ 
+-    if ( node->global.inlined_to )
++    if ( node->inlined_to )
+     {
+         return "was inlined";
+     }
