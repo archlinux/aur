@@ -1,12 +1,13 @@
 --- debug.py	2020-07-07 15:40:19.000000000 +0800
 +++ debug_new.py	2020-07-18 20:40:54.280356429 +0800
-@@ -10,8 +10,8 @@
+@@ -10,8 +10,9 @@
 
 
  # 全局常量
 -ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 -ROOT_DIR = os.path.dirname(ROOT_DIR)
 +ROOT_DIR = os.path.expanduser('~') + os.sep + '.lanzou-gui'
-+os.makedirs(ROOT_DIR)
++if not os.path.exists(ROOT_DIR):
++   os.makedirs(ROOT_DIR)
  SRC_DIR = ROOT_DIR + os.sep + "src" + os.sep
  BG_IMG = (SRC_DIR + "default_background_img.jpg").replace('\\', '/')

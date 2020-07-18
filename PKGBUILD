@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=lanzou-gui
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='蓝奏云 | 蓝奏云客户端 | 蓝奏网盘 GUI版本'
 arch=('x86_64' 'i686')
 url="https://github.com/rachpt/$pkgname"
@@ -13,7 +13,7 @@ source=(
 	'normalize.patch'
 )
 sha256sums=('0a7e1e2ac4bea2117fc8650f8502bea631487f7e40f1f624bd2d61cd6702e688'
-            '263c9a4a9e02bf639f16c4dc561d0eb65af6eef54ae356e890bf93476ef5eec3')
+            '358918cb6098c1077cf8532c8821b223129b5fe28ddc84389c3a1a2920c396c1')
 
 _dir="/opt/$pkgname"
 
