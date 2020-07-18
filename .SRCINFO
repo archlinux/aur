@@ -1,0 +1,18 @@
+pkgbase = hydroid-git
+	pkgdesc = A Hydrus client.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thatfuckingbird/hydroid
+	arch = i686
+	arch = x86_64
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-graphicaleffects
+	provides = hydroid
+	source = hydroid-git::git+https://github.com/thatfuckingbird/hydroid.git
+	sha512sums = SKIP
+
+pkgname = hydroid-git
+
