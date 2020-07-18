@@ -1,7 +1,7 @@
 pkgbase = etterna-git
 	pkgdesc = Etterna: an advanced cross-platform rhythm game focused on keyboard play
-	pkgver = 0.70.0.r181.g832d37aa5d
-	pkgrel = 5
+	pkgver = 0.70.2.r43.g1e87052268
+	pkgrel = 2
 	url = https://etternaonline.com
 	install = etterna-git.install
 	arch = i686
