@@ -1,5 +1,5 @@
-# Maintainer: Swift Geek <swiftgeek+aur@gmail.com>
-# Co-Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Contributor: Swift Geek <swiftgeek+aur@gmail.com>
 
 pkgname=wee-slack
 pkgver=2.6.0
