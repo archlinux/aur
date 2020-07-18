@@ -5,7 +5,7 @@ pkgname=fluent-bit
 
 pkgmaj=1.5
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -43,6 +43,7 @@ build() {
         -DFLB_TLS=Yes \
         -DFLB_ALL=Yes \
         -DFLB_OUT_NATS=Yes \
+        -DFLB_HTTP_SERVER=Yes \
         ..
     make
 }
