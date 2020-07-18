@@ -2,7 +2,7 @@
 
 pkgname="gnome-shell-extension-panel-osd"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Place gnome-shell notifications under the panel instead of above the message-tray."
 arch=("any")
 url="https://gitlab.com/jenslody/${pkgname}/"
