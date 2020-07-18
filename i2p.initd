@@ -7,6 +7,7 @@ pidfile="/run/i2p/$RC_SVCNAME.pid"
 command="/usr/bin/java-service-wrapper"
 command_args="/opt/i2p/wrapper.config wrapper.name=i2prouter wrapper.syslog.ident=i2prouter wrapper.daemonize=TRUE TZ=UTC"
 command_background=1
+workdir=/opt/i2p
 
 depend() {
 	use net
@@ -16,6 +17,8 @@ depend() {
 start() {
 	ebegin "Start ${SVCNAME}"
 
+	cd $workdir
+	export HOME=$workdir
 	su -s /bin/sh -c "$command $command_args" $user
 
 	eend $?
