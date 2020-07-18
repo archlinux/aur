@@ -11,8 +11,8 @@ license=('custom')
 
 # lib32-glibc needed for the installer
 makedepends=('lib32-glibc' 'lib32-fakeroot')
-
-optdepends=('ccstudio')
+#optdepends=('ccstudio')
+conflicts=('ccstudio') # current package ships with toolchains
 
 _installer=ti_cgt_msp430_${pkgver}_linux_installer_x86.bin
 source=("http://software-dl.ti.com/codegen/esd/cgt_public_sw/MSP430/${pkgver}/${_installer}")
