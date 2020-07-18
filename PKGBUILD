@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
-pkgver=2.4.12
+pkgver=2.4.13
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -16,7 +16,7 @@ source=(
 )
 install='urbackup.install'
 sha512sums=(
-    '225b59b69a16a413fd8ee523b084fdbf335a3c322059d7798eccbea495a80c5836a956b97148c785e66f571345ea225fcfa7670f5e1c6e30df4c96c16306af51'
+    'c223dd3c87fd48a7fff158e2db5377dae5945f821ca12630c374318f11d0310569bdb77f7889c2e38784f7898b13e875f64e1e49a7f18fd6e58215dc01faeb9a'
     '34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132'
 )
 
