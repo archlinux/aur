@@ -1,0 +1,18 @@
+pkgbase = scroom-git
+	pkgdesc = Scroom is a generic viewer for viewing 2D data.
+	pkgver = 0.11.r0.gdab856361
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/kees-jan/scroom
+	arch = x86_64
+	license = LGPL2
+	makedepends = boost
+	depends = gtk2
+	depends = libglade
+	depends = boost-libs
+	provides = scroom
+	source = scroom::git+https://github.com/kees-jan/scroom.git
+	sha256sums = SKIP
+
+pkgname = scroom-git
+
