@@ -1,6 +1,6 @@
 pkgbase = go-swagger
 	pkgdesc = Toolkit for swagger in golang (go-swagger)
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://goswagger.io
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = go-swagger
 	depends = glibc
 	provides = swagger
 	conflicts = swagger
-	source = go-swagger-0.24.0.tar.gz::https://github.com/go-swagger/go-swagger/archive/v0.24.0.tar.gz
-	sha256sums = 463cac52dffc606add5724e76614e2d8432094d43c34e6d5161caa846f33536f
+	source = go-swagger-0.25.0.tar.gz::https://github.com/go-swagger/go-swagger/archive/v0.25.0.tar.gz
+	sha256sums = b7ed944185d9a408ce356d5ba80a4813e454a7a95f4365c24b9e2c35bcd2984b
 
 pkgname = go-swagger
 
