@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.5.r45.g193fded
+pkgver=0.10.7.r22.gf89c240
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -40,11 +40,7 @@ depends+=('libfreetype.so'
           'libicui18n.so'
           'libicuio.so'
           'libicuuc.so')
-makedepends=('git'
-             'noto-fonts-cjk'
-             'poppler'
-             'ttf-gentium-basic'
-             'ttf-sil-scheherazade')
+makedepends=('git' 'poppler')
 provides=('libtexpdf.so' "${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
@@ -71,8 +67,6 @@ build () {
         --prefix /usr \
         --with-system-luarocks
     make all
-    make docs
-    make examples
 }
 
 check () {
@@ -83,7 +77,6 @@ check () {
 package () {
     cd "${pkgname%-git}"
     make install DESTDIR="$pkgdir"
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
-    cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
