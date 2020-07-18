@@ -1,6 +1,6 @@
 pkgname=youtubemusic
 _pkgname=YoutubeMusic
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Youtube Music is a unofficial client to play your music."
 arch=('any')
@@ -22,6 +22,7 @@ build() {
     cd "$srcdir/application"
     npm --cache "$srcdir/npm-cache" i electron electron-packager
     ./node_modules/.bin/electron-packager . --overwrite
+    rm -rf "$srcdir/$pkgname/$_pkgname-linux-x64/resources/app/node_modules"    
 }
 
 package() {
