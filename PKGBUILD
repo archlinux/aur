@@ -5,7 +5,7 @@
 # `https://www.fosshub.com/CudaText.html?dwl=cudatext_1.106.6.1-1_gtk2_amd64.deb`
 
 pkgname=cudatext-gtk2-bin
-pkgver=1.107.0.2
+pkgver=1.107.1.0
 pkgrel=1
 pkgdesc="Cross-platform text editor, written in Lazarus"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('gtk2'
          'python')
 provides=('cudatext')
 options=('!strip')
-source=("local://${pkgname%-gtk2-bin}_${pkgver}-${pkgrel}_gtk2_amd64.deb")
-sha256sums=('d82f4b008c21dda43c14f941f9c33468517ea180f5a11011b4a3edfff8b5155f')
+source=("http://www.uvviewsoft.com/cudatext/files_linux/cudatext_${pkgver}-${pkgrel}_gtk2_amd64.deb")
+sha256sums=('b3c36ada201338388648c16c3d5b9ea9024e2c9e3211eaeadc4ac77dd5edadf5')
 
 package() {
     tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
