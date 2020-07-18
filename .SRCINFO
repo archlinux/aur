@@ -1,34 +1,40 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 0.11.2
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
 	arch = x86_64
 	license = Apache
 	makedepends = patchelf
-	depends = python-breathe
-	depends = python-sphinx
-	depends = python-docutils
-	depends = python-pyaml
-	depends = python-ply
+	depends = python-breathe>=4.9.1
+	depends = python-docutils>=0.14
+	depends = python-pyaml>=5.1
+	depends = python-ply>=3.10
 	depends = python-pip
 	depends = python-setuptools
 	depends = python-wheel
-	depends = python-pyelftools
+	depends = python-pyelftools>=0.24
 	depends = python-pyserial
 	depends = python-pykwalify
 	depends = python-pillow
 	depends = python-anytree
 	depends = python-intelhex
 	depends = python-packaging
-	depends = pyocd
+	depends = python-progress
 	depends = python-pyserial
+	depends = python-cbor
+	depends = python-psutil
 	depends = python-pytest
+	depends = python-mock>=4.0.1
+	depends = python-colorama
+	depends = python-coverage
+	depends = gcovr
+	depends = python-sphinx>=1.7.5
 	depends = python-sphinx_rtd_theme
 	depends = python-sphinxcontrib-svg2pdfconverter
 	depends = python-tabulate
-	depends = python-west
+	depends = python-west>=0.7.2
 	depends = git-spindle
 	depends = gitlint
 	depends = ninja
@@ -41,12 +47,12 @@ pkgbase = zephyr-sdk
 	depends = cmake>=3.8.2
 	optdepends = pyocd: programming and debugging ARM MCUs
 	options = !strip
-	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.11.2/zephyr-sdk-0.11.2-setup.run
+	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.11.4/zephyr-sdk-0.11.4-setup.run
 	source = zephyrrc
 	source = setup-unattended.patch
-	sha256sums = 0f620b7bb03e951cb3c57bde6c2f2449e0fb0ae876828d832eff843d6d72f789
+	sha256sums = f61041a7cd7beec9c8f826e7aa1215a4c34c309c56a3dc0967b8b3401633d1b4
 	sha256sums = 7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05
-	sha256sums = e4ed1da3cb5a64e99f2d0f2b3b83dba44b36c778c80ef0de57bd70a708ed3d5e
+	sha256sums = cc57a1304ae53bf155f32d41a5b527fb207716f027e4997ccb7b14c09064c7dc
 
 pkgname = zephyr-sdk
 

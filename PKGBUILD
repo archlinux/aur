@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.11.2
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -11,22 +11,25 @@ license=('Apache')
 # Some of these are dependencies of Zephyr RTOS, but instructions for Zephyr
 # tell user to pip install, so let's add them here instead.  (See
 # zephyr/scripts/requirements.txt in Zephyr distribution)
-# missing: junit2html
-depends=('python-breathe' 'python-sphinx' 'python-docutils' 'python-pyaml'
-         'python-ply' 'python-pip' 'python-setuptools' 'python-wheel'
-         'python-pyelftools' 'python-pyserial' 'python-pykwalify'
+# Missing (not packaged for Arch): junit2html, canopen, sphinx-tabs
+depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
+         'python-pyaml>=5.1'
+         'python-ply>=3.10' 'python-pip' 'python-setuptools' 'python-wheel'
+         'python-pyelftools>=0.24' 'python-pyserial' 'python-pykwalify'
 	 'python-pillow' 'python-anytree' 'python-intelhex' 'python-packaging' 
-	 'pyocd' 'python-pyserial'
-	 'python-pytest' 'python-sphinx_rtd_theme'
+	 'python-progress' 'python-pyserial' 'python-cbor' 'python-psutil'
+	 'python-pytest' 'python-mock>=4.0.1' 'python-colorama'
+         'python-coverage' 'gcovr'
+         'python-sphinx>=1.7.5' 'python-sphinx_rtd_theme'
 	 'python-sphinxcontrib-svg2pdfconverter' 'python-tabulate'
-	 'python-west'
+	 'python-west>=0.7.2'
          'git-spindle' 'gitlint' 'ninja' 'gperf' 'gcovr' 'ccache'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}-setup.run"
         "zephyrrc"
-	"setup-unattended.patch")
+        "setup-unattended.patch")
 
 options=(!strip)
 install=$pkgname.install
@@ -42,7 +45,8 @@ build() {
 _TC_CMD="tar -C \\\$target_sdk_dir \\(-[A-Za-z0-9]\\+\\)* .\/__TC__.tar.bz2.*"
 
 _list_toolchains() {
-  echo $(sed -n "s@^$(echo $_TC_CMD | sed 's/__TC__/\\(.*\\)/g')@\2@p" $1 | sort)
+  echo $(sed -n "s@^$(echo $_TC_CMD | sed 's/__TC__/\\(.*\\)/g')@\2@p" $1 \
+    | grep -v cmake | sort)
 }
 
 package ()
@@ -107,7 +111,15 @@ package ()
   ######### NOTE: we are in $_installdir after this point
 
   patch ./$_setupsh $srcdir/setup-unattended.patch
-  ./$_setupsh -d $pkgdir/$_installdir -norc
+
+  export ZEPHYR_SDK_REGISTRY_DIR=$pkgdir/usr/lib/cmake/Zephyr-sdk
+  ./$_setupsh -d $pkgdir/$_installdir -norc -y
+
+  # Fixup the path written to cmake file to point to final installation directory
+  # Ideally, upstream script would support destination dir and installation dir
+  rm ${ZEPHYR_SDK_REGISTRY_DIR}/*
+  local cmake_fname=$(echo -n /$_installdir | md5sum | cut -d' ' -f1)
+  echo "/$_installdir" > ${ZEPHYR_SDK_REGISTRY_DIR}/${cmake_fname}
 
   echo ">>>"
   echo ">>> Ignore the environment variable values printed above, instead do this:"
@@ -140,10 +152,11 @@ package ()
 # $ cd testws
 # $ west update
 # $ cd zephyr
-# $ west build --pristine -b qemu_x86 samples/hellow_world
-# $ west -t run
+# $ west build --pristine=always -b qemu_x86 samples/hello_world
+# $ cd build
+# $ ninja run
 
-# Expected output (qemu_x86:
+# Expected output for -b qemu_x86:
 #
 #	SeaBIOS (version rel-1.12.1-0-ga5cab58-dirty-20200214_052440-f7294c49af13-zephyr
 #	)
@@ -151,7 +164,7 @@ package ()
 #	*** Booting Zephyr OS build v2.2.0-rc3  ***
 #	Hello World! qemu_x86
 #
-# Expected output (qemu_cortex_m3):
+# Expected output for -b qemu_cortex_m3:
 #
 # 	qemu-system-arm: warning: nic stellaris_enet.0 has no peer
 # 	*** Booting Zephyr OS version 2.2.0-rc3  ***
@@ -159,7 +172,6 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-
-sha256sums=('0f620b7bb03e951cb3c57bde6c2f2449e0fb0ae876828d832eff843d6d72f789'
+sha256sums=('f61041a7cd7beec9c8f826e7aa1215a4c34c309c56a3dc0967b8b3401633d1b4'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05'
-            'e4ed1da3cb5a64e99f2d0f2b3b83dba44b36c778c80ef0de57bd70a708ed3d5e')
+            'cc57a1304ae53bf155f32d41a5b527fb207716f027e4997ccb7b14c09064c7dc')
