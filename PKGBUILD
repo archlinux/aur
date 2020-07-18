@@ -2,7 +2,7 @@
 # Contributor: Stunts <f.pinamartins@gmail.com>
 pkgname=staden-io_lib
 _pkgname=io_lib
-pkgver=1.14.12
+pkgver=1.14.13
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="DNA sequence assembly (Gap4) and editing and analysis tools (Spin)"
@@ -13,7 +13,7 @@ depends=('curl')
 conflicts=('htscodecs')
 provides=('htscodecs')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/io_lib-$_pkgver/io_lib-$pkgver.tar.gz)
-sha256sums=('bc0c5ed688f59a522ef02aafc7c34359f44024d4763599b92030d60bbc5c3415')
+sha256sums=('5641c02f98342f689274ed9b71e57d26fbf8216730619bde3a663214ce2ae8b0')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver/htscodecs"
