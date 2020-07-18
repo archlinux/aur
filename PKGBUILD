@@ -1,11 +1,8 @@
 pkgbase='python-aur-deploy'
 pkgname=('python-aur-deploy')
 _module='aur-deploy'
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-
-
-
 pkgdesc="Automate updating pkgbuild and deploying to AUR"
 url="https://github.com/codeswhite/aur-deploy"
 depends=('python')
@@ -13,7 +10,7 @@ makedepends=('python-setuptools' 'python-interutils' 'python-requests' 'python-b
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/a/aur-deploy/aur-deploy-${pkgver}.tar.gz")
-sha256sums=("e4bb0ab1422cf1272779731ea0ed70e1ce5e388397a1e83a6d81b8afdcd9d8b2")
+sha256sums=("1ed5998565077b389be645f5cd7b4e199833a7cf7bb8173d586267ff4384d950")
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
