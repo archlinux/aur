@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libpsl
 	pkgdesc = Public Suffix List library (mingw-w64)
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.21.1
+	pkgrel = 1
 	url = https://github.com/rockdaboot/libpsl
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = mingw-w64-libpsl
 	makedepends = python
 	depends = mingw-w64-libidn2
 	depends = mingw-w64-libunistring
-	source = https://github.com/rockdaboot/libpsl/releases/download/libpsl-0.21.0/libpsl-0.21.0.tar.gz
-	sha512sums = 165c4f0b0640a813d512bd916e1532e32e43c8c81a5efd048f3a5b07b1b3c9129b4c4b5008b8b11a7c1b3914caea17564321389cd350bf1d687d53a97f2afa4d
+	source = https://github.com/rockdaboot/libpsl/releases/download/0.21.1/libpsl-0.21.1.tar.gz
+	sha512sums = a5084b9df4ff2a0b1f5074b20972efe0da846473396d27b57967c7f6aa190ab3c910b4bfc4f8f03802f08decbbad5820d850c36ad59610262ae37fe77de0c7f5
 
 pkgname = mingw-w64-libpsl
 
