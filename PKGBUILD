@@ -5,12 +5,11 @@ pkgname=getmail6
 
 pkgver() {
   cd "$pkgname"
-  printf '%s.r%s.%s' \
+  printf '%s.r%s' \
     "$(grep ^Version PKG-INFO | sed 's/.\+: \?//')" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+    "$(git rev-list --count HEAD)"
 }
-pkgver=6.00.r30.7c82473
+pkgver=6.00.r322
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -25,8 +24,8 @@ makedepends=('git')
 depends=('python-chardet')
 
 changelog=CHANGELOG
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git#commit=cb2fe7089985a19abfb63f9afb7c818bf6633f24")
+b2sums=('SKIP')
 
 
 build() {
