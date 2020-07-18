@@ -9,7 +9,7 @@ license=('GPL')
 depends=('code' 'astyle' 'nwnsc-bin' 'neverwinter.nim' 'nasher' 'nssnippets-bin')
 optdepends=('wine')
 source=('https://gitlab.com/Taro94/nwscript-code/-/archive/1.1.1/nwscript-code-1.1.1.tar.gz')
-md5sums=('d82bd99da95bde1b46b0e1ba0aae20a9')
+md5sums=('51775842412829d873e55671da91dfc7')
 options=(!strip)
 
 package() {
