@@ -6,7 +6,7 @@ pkgname="python-${_name}"
 provides=()
 conflicts=()
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python script to help with dot file management'
 arch=('any')
 url="https://gitlab.com/bwbuhse/${_name}"
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 depends=(
     'python>=3.8'
     'python-gitpython')
-md5sums=('c367318fb9572c77ed68b60385f200d8')
+md5sums=('61edfbe4b5f2f639b1c2944d68649cba')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
