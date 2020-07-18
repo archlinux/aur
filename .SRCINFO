@@ -1,0 +1,22 @@
+pkgbase = libtd-git
+	pkgdesc = TDLib (Telegram Database library) is a cross-platform library for building Telegram clients (Git)
+	pkgver = 1.6.0.r756.gf45d80fe
+	pkgrel = 1
+	url = https://core.telegram.org/tdlib
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = gcc>=4.9.2
+	makedepends = make
+	makedepends = cmake>=3.0.2
+	makedepends = gperf
+	makedepends = php
+	depends = openssl
+	depends = zlib
+	provides = libtd
+	conflicts = telegram-tdlib
+	source = libtd::git+https://github.com/tdlib/td.git
+	sha256sums = SKIP
+
+pkgname = libtd-git
+
