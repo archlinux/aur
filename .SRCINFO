@@ -1,0 +1,17 @@
+pkgbase = medet-git
+	pkgdesc = A portable decoder for METEOR M weather satellite LRPT signal
+	pkgver = r18.8021339
+	pkgrel = 1
+	url = https://github.com/artlav/meteor_decoder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = fpc
+	provides = medet
+	conflicts = medet
+	source = medet-git::git+https://github.com/artlav/meteor_decoder.git
+	sha256sums = SKIP
+
+pkgname = medet-git
+
