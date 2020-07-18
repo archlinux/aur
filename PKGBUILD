@@ -2,7 +2,7 @@
 
 pkgname=zephyr-sdk
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
 url="https://www.zephyrproject.org/"
@@ -29,7 +29,12 @@ optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}-setup.run"
         "zephyrrc"
-        "setup-unattended.patch")
+        # PR 252
+        0001-scripts-template_dir-don-t-let-y-override-no-rc.patch
+        0002-scripts-template_dir-don-t-prompt-for-cmake-when-y-s.patch
+        0003-scripts-template_dir-re-use-common-prompting-code.patch
+        0004-scripts-template_dir-no-cmake-flag-for-CMake-module-.patch
+)
 
 options=(!strip)
 install=$pkgname.install
@@ -110,16 +115,21 @@ package ()
 
   ######### NOTE: we are in $_installdir after this point
 
-  patch ./$_setupsh $srcdir/setup-unattended.patch
+  for p in $srcdir/0*.patch
+  do
+    patch ./$_setupsh $p
+  done
 
-  export ZEPHYR_SDK_REGISTRY_DIR=$pkgdir/usr/lib/cmake/Zephyr-sdk
-  ./$_setupsh -d $pkgdir/$_installdir -norc -y
+  ./$_setupsh -d $pkgdir/$_installdir -norc -nocmake -y
 
-  # Fixup the path written to cmake file to point to final installation directory
-  # Ideally, upstream script would support destination dir and installation dir
-  rm ${ZEPHYR_SDK_REGISTRY_DIR}/*
-  local cmake_fname=$(echo -n /$_installdir | md5sum | cut -d' ' -f1)
-  echo "/$_installdir" > ${ZEPHYR_SDK_REGISTRY_DIR}/${cmake_fname}
+  # Manually install the CMake module, because upstream paths are no good:
+  # file installed into $HOME and path is the package build path. Upstream
+  # needs to support overridable path for the module and a -prefix argumnent
+  # to distinguish destination copy dir from final system install path.
+  local _cmake_fname=$(echo -n /$_installdir | md5sum | cut -d' ' -f1)
+  local _cmake_module_path="$pkgdir/usr/lib/cmake/Zephyr-sdk"
+  mkdir -p "$_cmake_module_path"
+  echo "/$_installdir" > "$_cmake_module_path/${_cmake_fname}"
 
   echo ">>>"
   echo ">>> Ignore the environment variable values printed above, instead do this:"
@@ -174,4 +184,7 @@ package ()
 
 sha256sums=('f61041a7cd7beec9c8f826e7aa1215a4c34c309c56a3dc0967b8b3401633d1b4'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05'
-            'cc57a1304ae53bf155f32d41a5b527fb207716f027e4997ccb7b14c09064c7dc')
+            '5a5e1f8cd28f15da3cb9c4c50bf7ccb81fdb15499c02625dc76ed27c98ffad4f'
+            'a1a64dd3152871056b6d79bf3fd31cb1e081a8b9354fae929a263e7f74044050'
+            'f22ade1773ed8302a11b1ded4cef28ad9630119354d20db334fdb5df6db6f820'
+            '4c1f7e68ba1400786f116c2305ec32fa1e00b09367d583770a21bf3056fada46')
