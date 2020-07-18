@@ -1,6 +1,6 @@
 pkgbase = python-dummy-pack
 	pkgdesc = dummy
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/codeswhite/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-dummy-pack
 	depends = python
 	depends = dee
 	depends = python-interutils
-	source = https://files.pythonhosted.org/packages/source/d/dummy-pack/dummy-pack-0.0.1.tar.gz
-	sha256sums = 24275b6be52a41350335e9194c2357a2c2ec8dbe89e88d025432ef73f962a277
+	source = https://files.pythonhosted.org/packages/source/d/dummy-pack/dummy-pack-0.0.2.tar.gz
+	sha256sums = 2acf65a8ba222eedf1470e3d6f2984939881b436b0e6abb51355e8cd96e6cff9
 
 pkgname = python-dummy-pack
 	depends = python

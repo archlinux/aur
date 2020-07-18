@@ -1,16 +1,17 @@
 pkgbase='python-dummy-pack'
 pkgname=('python-dummy-pack')
 _module='dummy-pack'
-pkgver='0.0.1'
+pkgver=0.0.2
 pkgrel=1
+
 pkgdesc="dummy"
 url="https://github.com/codeswhite/"
 depends=('python' 'dee' 'python-interutils')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('24275b6be52a41350335e9194c2357a2c2ec8dbe89e88d025432ef73f962a277')
+source=("https://files.pythonhosted.org/packages/source/d/dummy-pack/dummy-pack-${pkgver}.tar.gz")
+sha256sums=("2acf65a8ba222eedf1470e3d6f2984939881b436b0e6abb51355e8cd96e6cff9")
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
