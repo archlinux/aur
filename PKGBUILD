@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.1
 _now=`date +%N`
@@ -37,13 +37,14 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    $_pkgname-logtruncate.service
 	    $_pkgname-logtruncate.timer
 	    mimic_setupVars.conf.sh
+	    mimic_basic-install.sh
 	    piholeDebug.sh
 )
 
 md5sums=('c42919120ba9e3d742936d23af501c78'
          'e40a0fbaebed185d0f7902099ae3d53f'
-         '100ca3d6f6546297ea24f2eb3d78d5cd'
-         '0fdeaa95a1b3acaf342d341e6893a382'
+         'd583600310d27b3d5ff32acf8a9fba50'
+         '25888a8daaef7b7a7875eb860e1cce4c'
          '62ab22d82267f30bd1a75773a1de79c8'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -53,6 +54,7 @@ md5sums=('c42919120ba9e3d742936d23af501c78'
          '20c5b0c6b4e23e55b25ab6c28dda709d'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
+         'c9a5fa5fe9b794b0630cb53fb343f598'
          'd7b69ae51db0e8ac8e27f20a234eed85')
 
 prepare() {
@@ -85,6 +87,7 @@ package() {
 
   install -Dm755 piholeDebug.sh "$pkgdir"/opt/pihole/piholeDebug.sh
   install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh
+  install -Dm755 mimic_basic-install.sh "$pkgdir"/opt/pihole/basic-install.sh
 
   cp -dpr --no-preserve=ownership $_pkgname-$pkgver/advanced/Scripts/database_migration "$pkgdir"/opt/pihole/
 
@@ -103,7 +106,7 @@ package() {
   ln -s ../$_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
   ln -s ../$_pkgname-logtruncate.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-logtruncate.timer"
 
-  install -dm755 "$pkgdir"/etc/pihole
+  install -dm775 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/usr/share/pihole/configs
   install -Dm644 $_pkgname-$pkgver/dns-servers.conf "$pkgdir"/etc/pihole/dns-servers.conf
   install -Dm644 $_pkgname-$pkgver/advanced/Templates/logrotate "$pkgdir"/etc/pihole/logrotate
