@@ -4,7 +4,7 @@
 
 pkgname=sawfish
 pkgver=1.12.90
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
 url="http://sawfish.wikia.com/wiki/Main_Page"
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd ${pkgname}_${pkgver}
   ./autogen.sh
-  ./configure --prefix=/usr --libexecdir=/usr/lib 
+  CFLAGS+=" -fcommon" ./configure --prefix=/usr --libexecdir=/usr/lib 
   make
 }
 
