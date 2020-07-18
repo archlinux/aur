@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=assetfolio-git
-pkgver=V1.2.r1.g03b2a92
+pkgver=1.5.r0.ga497672
 pkgrel=1
 pkgdesc="An All-in-One Asset Tracker and Watchlist Application that keeps your asset data private"
 arch=('x86_64')
@@ -21,6 +21,8 @@ prepare() {
   cd assetfolio
   mkdir -p build/
   git submodule update --init --recursive
+  cd submodules
+  git clone https://github.com/whoshuu/cpr.git
 }
 
 build() {

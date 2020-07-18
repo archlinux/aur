@@ -1,6 +1,6 @@
 pkgbase = assetfolio-git
 	pkgdesc = An All-in-One Asset Tracker and Watchlist Application that keeps your asset data private
-	pkgver = V1.2.r1.g03b2a92
+	pkgver = 1.5.r0.ga497672
 	pkgrel = 1
 	url = https://gitlab.com/ywiyogo/assetfolio
 	arch = x86_64
