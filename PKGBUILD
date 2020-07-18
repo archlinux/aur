@@ -17,8 +17,8 @@ check() {
 }
 
 package() {
-  install -d "$pkgdir/opt/$pkgname"
-  install -d "$pkgdir/usr/bin"
+  install -dD -m757 "$pkgdir/opt/$pkgname"
+  install -dD -m755 "$pkgdir/usr/bin"
   cd "$pkgname-$pkgver"
   rm bin/$pkgname.bat
   cp -p -r * "$pkgdir/opt/$pkgname"
