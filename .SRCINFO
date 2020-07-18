@@ -1,5 +1,5 @@
 pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.23.2815.102.20200624
+	pkgver = 2.23.2815.102.20200718
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = fcitx-mozc-neologd-ut
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26484%2Fmozcdic-ut-neologd-20200624.1.tar.bz2
+	source = https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26523%2Fmozcdic-ut-neologd-20200718.1.tar.bz2
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = d0c551031828ed9c07cc683762353a67b1a17627
 	sha1sums = c6f5aac79c7e98fbda96de251d8f0d0787344ca9
@@ -57,7 +57,7 @@ pkgname = fcitx-mozc-neologd-ut
 	pkgdesc = Fcitx engine module for Mozc with NEologd Dictionary
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut=2.23.2815.102.20200624
+	depends = mozc-neologd-ut=2.23.2815.102.20200718
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2
