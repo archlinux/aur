@@ -2,7 +2,7 @@
 
 pkgname=matrix-mirage-git
 _name=mirage
-pkgver=r1811.0ddeacb1
+pkgver=r2024.1dff7d67
 pkgrel=1
 pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.'
 arch=('any')
@@ -24,7 +24,7 @@ prepare() {
 }
 build() {
         cd ${srcdir}/"${_name}"
-	qmake mirage.pro
+	qmake PREFIX=/usr mirage.pro
 	make
 }
 package() {
