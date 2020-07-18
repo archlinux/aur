@@ -1,6 +1,18 @@
 post_install() {
-echo '>>> НЕ гарантируется работа на i686!'
-echo '>>> О багах пишем в AUR я время от времени поглядываю туда.'
+if [[ "$LANG" == "ru_RU.UTF-8"  ]]; then
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mНЕ гарантируется работа на \e[1;33mi686!\033[0m'
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mО багах пишем в \e[1;33mAUR\033[0m я время от времени поглядываю туда.'
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mОбсуждение данного ПО:'
+echo -e '\e[1;37m---\033[0m\e[1;34m>>\033[0mНа форуме трекера:https://rutracker.org/forum/viewtopic.php?t=5403116'
+echo -e '\e[1;37m---\033[0m\e[1;34m>>\033[0mНа GitHub:https://github.com/RutrackerOrg/rutracker-proxy/issues/'
+fi
+if [[ "$LANG" == "en_US.UTF-8"  ]]; then
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mNot guaranteed to work on \e[1;33mi686!\033[0m'
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mWe write about bugs in the \e[1;33mAUR\033[0m. I do not go there often. I may not answer right away.'
+echo -e '\e[1;37m---\033[0m\e[1;33m>\033[0mDiscussion of this software:'
+echo -e '\e[1;37m---\033[0m\e[1;34m>>\033[0mOn the tracker forum:https://rutracker.org/forum/viewtopic.php?t=5403116'
+echo -e '\e[1;37m---\033[0m\e[1;34m>>\033[0mOn GitHub:https://github.com/RutrackerOrg/rutracker-proxy/issues/'
+fi
 }
 
 post_upgrade() {
