@@ -1,6 +1,6 @@
 pkgbase = sddm-theme-amadeus-git
 	pkgdesc = Amadeus theme for SDDM
-	pkgver = ebbcc49
+	pkgver = r21.d3fd323
 	pkgrel = 1
 	url = https://github.com/Michal-Szczepaniak/sddm-theme-amadeus
 	arch = any
