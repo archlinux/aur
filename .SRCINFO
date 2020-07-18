@@ -1,0 +1,16 @@
+pkgbase = lazycsv-git
+	pkgdesc = A blazing fast single-header library for reading and parsing csv files in c++
+	pkgver = r3.d1b1ce8
+	pkgrel = 1
+	url = https://github.com/ashtum/lazycsv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = lazycsv
+	conflicts = lazycsv
+	source = lazycsv-git::git+https://github.com/ashtum/lazycsv.git
+	sha256sums = SKIP
+
+pkgname = lazycsv-git
+
