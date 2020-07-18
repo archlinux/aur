@@ -2,7 +2,7 @@
 # Ex-Maintainer: Max Falk <gmdfalk at gmail dot com>
 
 pkgname=rocketchat-server
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
@@ -15,12 +15,12 @@ backup=("etc/rocketchat/${pkgname}.conf")
 CFLAGS=-std=gnu11
 
 install="${pkgname}.install"
-source=("rocketchat-${pkgver}::https://releases.rocket.chat/latest/download"
+source=("rocketchat-${pkgver}::https://releases.rocket.chat/${pkgver}/download"
     "rocketchat-server.install"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('79e84fa8b3a46742e9fd337f138b76f89bc09a6c2d621607b57e8351762f151ac70f73102941d6ce2f2749a7a2f730a536dade02f196cf158e0fa998f2af3646'
+sha512sums=('319fe7914786df0ae5bcf81875b803570268f3799076d9a48c45b82b0cef51b4e38e498cfb8b38ac48d25d4cbd0e6f102f756ca882121af3df697b946b68d485'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
