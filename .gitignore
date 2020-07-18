@@ -3,5 +3,6 @@ rezonateur/
 pkg/
 src/
 .AURINFO
-rezonateur-git-*.tar.xz
+rezonateur-git-*.pkg.tar.xz
+rezonateur-git-*.pkg.tar.zst
 rezonateur-git-*.src.tar.gz
