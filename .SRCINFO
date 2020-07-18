@@ -1,0 +1,14 @@
+pkgbase = gmanedit2
+	pkgdesc = Gnome Manual Pages Editor is an editor for man pages that runs on X using the GTK+ libraries
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gmanedit2
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	provides = gmanedit
+	source = gmanedit2-0.4.2.tar.gz::https://sourceforge.net/projects/gmanedit2/files/gmanedit/gmanedit-0.4.2/gmanedit-0.4.2.tar.gz/download
+	sha256sums = fbfaa424653b9287ca2994293bab03d51fa4957cdb7e974360f50c4ab2c76170
+
+pkgname = gmanedit2
+
