@@ -1,10 +1,8 @@
 post_install() {
-  . /etc/makepkg.conf
-  if [[ "$CARCH" = i686 ]]; then
-    echo "Please run \"regsvr32 wineasio.dll\" to register 32bit wineasio in your prefix (~/.wine)"
-  else
-    echo "Please run \"regsvr32 wineasio.dll\" to register 32bit wineasio in your prefix (~/.wine)" and
-    echo "please run \"wine64 regsvr32 wineasio.dll\" to register 64bit wineasio in your prefix (~/.wine)"
-  fi
+  echo "You need to add your user to 'realtime' group to use wineasio."
+  echo ""
+  echo "You also need to register wineasio in you Wine prefix:"
+  echo "- For 32bit, run: regsvr32 wineasio.dll "
+  echo "- For 64bit, run: wine64 regsvr32 wineasio.dll "
 }
 # vim:set ts=2 sw=2 et:
