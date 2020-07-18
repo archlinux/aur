@@ -1,7 +1,7 @@
 pkgbase = pyca
 	pkgdesc = Python Capture Agent for Opencast
 	pkgver = 3.2
-	pkgrel = 6
+	pkgrel = 1
 	url = https://github.com/opencast/pyCA
 	install = pyca.install
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = pyca
 	depends = python-psutil
 	depends = python-flask
 	optdepends = gunicorn: wsgi web interface
+	optdepends = ffmpeg: video and audio recording
 	backup = etc/pyca.conf
 	source = https://github.com/opencast/pyCA/archive/v3.2.tar.gz
 	source = pyca.install
