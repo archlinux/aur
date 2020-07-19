@@ -2,14 +2,14 @@
 
 pkgname=genie-systemd-git
 _pkgname=genie
-pkgver=1.20.r9.gb42a15e
+pkgver=1.24.r3.g02a262a
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
 license=('custom:The Unlicense')
-depends=('daemonize' 'dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'hostess' 'inetutils')
-makedepends=('dotnet-sdk>=3.0')
+depends=('daemonize' 'dotnet-runtime>=3.1' 'dotnet-host>=3.1' 'inetutils')
+makedepends=('dotnet-sdk>=3.1')
 conflicts=('genie-systemd')
 provides=('genie-systemd')
 source=('git+https://github.com/arkane-systems/genie.git'
@@ -35,15 +35,15 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname/$_pkgname"
-  install -Dm 4755 -o root "bin/Release/netcoreapp3.0/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.0/linux-x64/publish/genie.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.0/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.0/linux-x64/publish/System.CommandLine.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.0/linux-x64/publish/Tmds.LibC.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.0/linux-x64/publish/genie.runtimeconfig.json" -t "$pkgdir/usr/bin"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/dumpwslenv.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/readwslenv.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/runinwsl.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/systemd/system-environment-generators/10-genie-envar.sh" -t "$pkgdir/usr/lib/systemd/system-environment-generators"
+  install -Dm 4755 -o root "bin/Release/netcoreapp3.1/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
+  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/genie.dll" -t "$pkgdir/usr/bin"
+  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
+  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/System.CommandLine.dll" -t "$pkgdir/usr/bin"
+  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/Tmds.LibC.dll" -t "$pkgdir/usr/bin"
+  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/genie.runtimeconfig.json" -t "$pkgdir/usr/bin"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/dumpwslenv.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/readwslenv.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/runinwsl.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/systemd/system-environment-generators/10-genie-envar.sh" -t "$pkgdir/usr/lib/systemd/system-environment-generators"
   install -Dm 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
