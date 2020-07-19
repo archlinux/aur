@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=metalctl-bin
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc='A command line tool for metal-stack services'
 url='https://github.com/metal-stack/metalctl'
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=('metalctl')
 source=("https://github.com/metal-stack/metalctl/releases/download/v$pkgver/metalctl-linux-amd64")
-md5sums=('9a2af0f99a36c0fa303924f45a9cffee')
+md5sums=('498da1ead99604f302f4383abeb847d7')
 
 package() {
     install -Dm 755 "$srcdir/metalctl-linux-amd64" "$pkgdir/usr/bin/metalctl"
