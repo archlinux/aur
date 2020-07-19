@@ -1,14 +1,12 @@
 pkgbase = ebgaramond-otf
-	pkgdesc = EB Garamond (OTF version) by Octavio Pardo & Georg Duffner
+	pkgdesc = font (OTF version) by Octavio Pardo & Georg Duffner
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/octaviopardo/EBGaramond12
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/octaviopardo/EBGaramond12/archive/master.zip
-	sha256sums = a08f5d1e0ad1976330e1c5e57faf384a27628323eaacf797644a3c42bcabac73
+	license = OFL
+	source = https://github.com/octaviopardo/EBGaramond12/archive/8e8d2aff04abb39fceca0b1e8da1f444e466fb3b.zip
+	sha256sums = 08c82a332338a474862f7123f0b6c5c7a4256288f890049bcf989d1564c73856
 
 pkgname = ebgaramond-otf
 
