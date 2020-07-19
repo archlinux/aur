@@ -6,19 +6,19 @@ pkgbase = nvidia-390xx-lts
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-390xx-utils=390.132
+	makedepends = nvidia-390xx-utils=390.138
 	makedepends = libglvnd
 	makedepends = linux-lts-headers
 	provides = nvidia-390xx
 	conflicts = nvidia-lts
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/NVIDIA-Linux-x86_64-390.132-no-compat32.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.138/NVIDIA-Linux-x86_64-390.138-no-compat32.run
 	source = kernel-4.16.patch
 	sha256sums = a34a19b618be0eb06c4699247489833a8f22c59423f246248614e0a59b1508da
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
 
 pkgname = nvidia-390xx-lts
 	depends = linux-lts
-	depends = nvidia-390xx-utils=390.132
+	depends = nvidia-390xx-utils=390.138
 	depends = libglvnd
 
