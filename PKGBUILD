@@ -7,7 +7,7 @@
 #   - It *might* be useful to first install package lbry-app-bin to have LBRY the headers
 
 pkgname=lbry-desktop-git
-pkgver=0.46.2.r7813.g95a984829
+pkgver=0.47.0.r7992.ge7e7d6dba
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A browser and wallet for LBRY, the decentralized, user-controlled content marketplace'
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'e23dcf2e64c43e1884cec70fb2c57ae22f2e7d9f42a2043c320410102504b4b4'
+	'a8d7f259580aa53b357a8e81172f44de3de0eb5465927b73406807a6e06d75ff'
 )
 
 pkgver() {
