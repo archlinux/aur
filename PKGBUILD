@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.19.1
-pkgrel=2
+pkgver=v0.20.0
+pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1591395656
+epoch=1595155906
 
 
-# Release commit for 0.19.1
-_commit=e6beaae34e94455b3ce601e1d37346f7c378d420
+# Release commit for 0.20.0
+_commit=1880bfcd41084e7c095c7fb64e555a05301e5353
 
 
 pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.'
@@ -36,7 +36,7 @@ source=('git://github.com/namecoin/namecoin-core'
         'namecoin1500x1500.png'
         'namecoind.service'
         'namecoind@.service'
-        'https://github.com/namecoin/namecoin-core/commit/adc143fc2b9ab75837776046064fb1d714645d28.patch')
+        'https://github.com/namecoin/namecoin-core/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
 
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
@@ -50,7 +50,7 @@ prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
-    git apply "$srcdir/adc143fc2b9ab75837776046064fb1d714645d28.patch"
+    git apply "$srcdir/79b0a69e09c1a912122e6431ea3c530cc292c690.patch"
 }
 
 
@@ -63,7 +63,7 @@ build() {
     # so I'm leaving i686 with the normal dynamic build.
     if [ "$CARCH" == i686 ]; then
         ./configure --prefix=/usr --enable-upnp-default --enable-hardening \
-                    --with-gui=qt5 --disable-tests --enable-bip70 \
+                    --with-gui=qt5 --disable-tests \
                     --enable-ecmult-static-precomputation
 
         make DESTDIR="$srcdir/tmp"
@@ -80,7 +80,6 @@ build() {
                     --enable-hardening \
                     --with-gui=qt5 \
                     --disable-tests \
-                    --enable-bip70 \
                     --enable-ecmult-static-precomputation \
                     LDFLAGS="-static-libstdc++"
 
