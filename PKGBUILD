@@ -23,9 +23,9 @@ sha256sums=(1f3f153d9f1504c6ce2d2c4b23e940b8f58b81f4cba35cda1a5bb31142243cd0
 
 prepare() {
   cd wxPython-src-$pkgver
-  patch -Np1 -i ../wxGTK-collision.patch
-  patch -Np0 -i ../wxpython-cairo.patch
-  patch -Np0 -i ../wxpython-fpb_default_style.patch
+  patch -Np1 -i ${srcdir}/wxGTK-collision.patch
+  patch -Np0 -i ${srcdir}/wxpython-cairo.patch
+  patch -Np0 -i ${srcdir}/wxpython-fpb_default_style.patch
   find . -type f -exec sed -i 's/env python/&2/' '{}' \;
 
   export WXPORT=gtk2
