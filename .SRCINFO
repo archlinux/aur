@@ -1,16 +1,16 @@
-pkgbase = autoupdate
-	pkgdesc = Download packages to update automatically.
-	pkgver = 4
+pkgbase = autoupgrade
+	pkgdesc = Automatic snapshot and then upgrade the system. (When the system fails, run `sudo timeshift --restore` and remove this package until the problem is solved.)
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/autoupdate/
-	install = autoupdate.install
+	url = https://github.com/star2000/autoupgrade
+	install = autoupgrade.install
 	arch = any
 	license = GPL
 	depends = timeshift-autosnap
-	source = autoupdate.service
-	source = autoupdate.timer
-	md5sums = 5239b232d6c877887c3f87a99ffa1ab8
-	md5sums = 129db06fab0fd9478ef3a4cf6a5baa96
+	source = autoupgrade.service
+	source = autoupgrade.timer
+	md5sums = 4c5f84c47a72cf3d79db5bf50034c5eb
+	md5sums = 196f9bff2f5237e73dfdbc41fa44e13a
 
-pkgname = autoupdate
+pkgname = autoupgrade
 

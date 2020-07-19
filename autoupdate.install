@@ -1,7 +1,0 @@
-post_install() {
-	systemctl enable autoupdate.timer
-}
-
-pre_remove() {
-	systemctl disable autoupdate.timer
-}

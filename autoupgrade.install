@@ -1,0 +1,9 @@
+post_install() {
+	systemctl enable autoupgrade.timer
+	systemctl enable paccache.timer
+}
+
+pre_remove() {
+	systemctl disable autoupgrade.timer
+	systemctl preset paccache.timer
+}

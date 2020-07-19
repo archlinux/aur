@@ -1,23 +1,18 @@
-# Maintainer: philanecros <philanecros@gmail.com>
+# Maintainer: star2000 <i@star2000.work>
 
-pkgname=autoupdate
-pkgver=4
+pkgname=autoupgrade
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Download packages to update automatically."
+pkgdesc='Automatic snapshot and then upgrade the system. (When the system fails, run `sudo timeshift --restore` and remove this package until the problem is solved.)'
 arch=('any')
-url="https://aur.archlinux.org/packages/autoupdate/"
+url='https://github.com/star2000/autoupgrade'
 license=('GPL')
-install=autoupdate.install
-source=(autoupdate.service
-        autoupdate.timer)
-md5sums=('5239b232d6c877887c3f87a99ffa1ab8'
-         '129db06fab0fd9478ef3a4cf6a5baa96')
-depends=(timeshift-autosnap)
+install="$pkgname.install"
+source=("$pkgname.service" "$pkgname.timer")
+md5sums=('4c5f84c47a72cf3d79db5bf50034c5eb'
+	'196f9bff2f5237e73dfdbc41fa44e13a')
+depends=('timeshift-autosnap')
 package() {
-  targetdir="$pkgdir/usr/lib/systemd/system/"
-  install -m 755 -d $targetdir
-
-  install -D -m644 autoupdate.{service,timer} $targetdir
+	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/autoupgrade.service"
+	install -Dm644 "$pkgname.timer" "$pkgdir/usr/lib/systemd/system/autoupgrade.timer"
 }
-
-# vim:set ts=2 sw=2 et:

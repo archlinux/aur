@@ -1,11 +1,11 @@
 [Unit]
-Description=Automatic Update
+Description=Automatic Upgrade
 
 [Timer]
 OnBootSec=5min
 OnActiveSec=20min
 OnUnitActiveSec=12h
-Unit=autoupdate.service
+Unit=autoupgrade.service
 
 [Install]
 WantedBy=multi-user.target

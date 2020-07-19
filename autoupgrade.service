@@ -1,10 +1,10 @@
 [Unit]
-Description=Automatic Update
+Description=Automatic Upgrade
 After=network-online.target
 
 [Service]
 Type=simple
-SyslogIdentifier=autoupdate
+SyslogIdentifier=autoupgrade
 ExecStart=nice -n 19 pacman -Syuq --noconfirm
 TimeoutStopSec=300
 KillMode=process
