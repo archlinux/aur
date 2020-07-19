@@ -12,7 +12,7 @@ depends=('gcc-libs'
 	'systemd-libs'
 	'acl'
 )
-makedepends=('cargo' 'git' 'python-docutils')
+makedepends=('cargo' 'clang' 'git' 'llvm' 'python-docutils')
 source=("$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
 	"0001-adapt-cargo-toml-and-remove-systemd-linking.patch")
 sha512sums=('SKIP'
