@@ -1,7 +1,7 @@
 pkgbase = rocclr
 	pkgdesc = Radeon Open Compute Common Language Runtime
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCm-Developer-Tools/ROCclr
 	arch = x86_64
 	license = unknown
@@ -13,8 +13,10 @@ pkgbase = rocclr
 	depends = rocm-cmake
 	source = rocclr-3.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/roc-3.5.0.tar.gz
 	source = rocclr-opencl-3.5.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-3.5.0.tar.gz
+	source = opencl_includes.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/ROCclr/pull/16.patch
 	sha256sums = 87c1ee9f02b8aa487b628c543f058198767c474cec3d21700596a73c028959e1
 	sha256sums = 511b617d5192f2d4893603c1a02402b2ac9556e9806ff09dd2a91d398abf39a0
+	sha256sums = 3edeb8aeaf335297ec0f61a15b99c259d607d8f534173fbc3d17832ad03cd63f
 
 pkgname = rocclr
 
