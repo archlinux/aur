@@ -3,12 +3,12 @@
 
 pkgname=kwin-git
 pkgver=v5.19.2.r110.g898bd496d
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
-depends=(breeze-git qt5-sensors qt5-script plasma-framework-git kcmutils-git xcb-util-cursor kscreenlocker-git kwayland-server)
+depends=(breeze-git qt5-sensors qt5-script plasma-framework-git kcmutils-git xcb-util-cursor kscreenlocker-git kwayland-server-git)
 makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
 conflicts=(kwin kdebase-workspace)
 provides=(kwin)
