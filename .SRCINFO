@@ -1,7 +1,7 @@
 pkgbase = kwin-git
 	pkgdesc = KDE Window Manager
 	pkgver = v5.19.2.r110.g898bd496d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	arch = i686
 	arch = x86_64

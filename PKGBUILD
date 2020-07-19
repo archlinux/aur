@@ -3,7 +3,7 @@
 
 pkgname=kwin-git
 pkgver=v5.19.2.r110.g898bd496d
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
