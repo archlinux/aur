@@ -1,7 +1,14 @@
 setcaps() {
+  _setcap() {
+    if filecap "$1" "$2"; then
+      chmod -s "$1"
+    fi
+  }
+
   # shadow ships these as setuid, but if we can apply file caps, use those instead.
-  setcap cap_setuid+ep usr/bin/newuidmap 2>/dev/null && chmod -s usr/bin/newuidmap
-  setcap cap_setgid+ep usr/bin/newgidmap 2>/dev/null && chmod -s usr/bin/newgidmap 
+  # 'filecap' insists on absolute paths
+  _setcap /usr/bin/newuidmap setuid
+  _setcap /usr/bin/newgidmap setgid
 }
 
 post_install() {

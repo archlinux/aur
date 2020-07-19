@@ -10,14 +10,14 @@
 
 pkgname=shadow-selinux
 pkgver=4.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
 license=('BSD')
 groups=('selinux')
+# libcap-ng needed by install scriptlet for 'filecap'
 depends=('bash' 'pam-selinux' 'acl' 'audit' 'libaudit.so' 'libsemanage')
-makedepends=('git' 'itstool' 'libxslt' 'docbook-xsl')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -27,8 +27,9 @@ backup=(etc/login.defs
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
 options=(strip)
-validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
-source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
+validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8'   # Christian Perrier
+              'F1D08DB778185BF784002DFFE9FEEA06A85E3F9D')  # Serge Hallyn
+source=("https://github.com/shadow-maint/shadow/releases/download/$pkgver/shadow-$pkgver.tar.xz"{,.asc}
         LICENSE
         chgpasswd
         chpasswd
@@ -39,7 +40,8 @@ source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         shadow.{timer,service}
         useradd.defaults)
 install=shadow.install
-sha1sums=('SKIP'
+sha1sums=('63457a0ba58dc4e81b2663b839dc6c89d3343f12'
+          'SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
@@ -51,27 +53,10 @@ sha1sums=('SKIP'
           'b5540736f5acbc23b568973eb5645604762db3dd'
           'c173208c5cf34528602f9931468a67b7f68abad3')
 
-pkgver() {
-  cd "${pkgname/-selinux}"
-
-  git describe
-}
-
-prepare() {
-  cd "${pkgname/-selinux}"
-
-  local backports=(
-  )
-
-  for commit in "${backports[@]}"; do
-    git cherry-pick -n "$commit"
-  done
-}
-
 build() {
-  cd "${pkgname/-selinux}"
+  cd "${pkgname/-selinux}-$pkgver"
 
-  autoreconf -fisv
+  autoreconf -fsiv
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -79,7 +64,6 @@ build() {
     --libdir=/usr/lib \
     --mandir=/usr/share/man \
     --sysconfdir=/etc \
-    --enable-man \
     --disable-account-tools-setuid \
     --with-libpam \
     --with-group-name-max-length=32 \
@@ -90,7 +74,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname/-selinux}"
+  cd "${pkgname/-selinux}-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
