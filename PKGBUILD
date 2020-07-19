@@ -3,7 +3,7 @@
 ## Mozc compile option
 build_mode=Release
 mozc_commit=f09c4e2ed57484cbc1dae75c4e02db2235718365
-japanese_usa1ge_dictionary_commit=e5b3425575734c323e1d947009dd74709437b684
+japanese_usage_dictionary_commit=e5b3425575734c323e1d947009dd74709437b684
 gyp_commit=4ec6c4e3a94bd04a6da2858163d40b2429b8aad1
 _protobuf_rev=92a7e778e7394386f413cec28d67a07630f784b1
 
