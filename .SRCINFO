@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk14
-	pkgver = 14.0.1b7_openj9_0.20.0
+	pkgver = 14.0.2b12_openj9_0.21.0
 	pkgrel = 1
 	url = https://adoptopenjdk.net/index.html?variant=openjdk14&jvmVariant=openj9
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk14-openj9-bin
 	conflicts = jdk14-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.1%2B7_openj9-0.20.0/OpenJDK14U-jdk_x64_linux_openj9_14.0.1_7_openj9-0.20.0.tar.gz
-	sha256sums = 2350592f4b0db1439fdd48d4fa7e05b270f271dcc79b2c7f174489ee2f6b14c1
+	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12_openj9-0.21.0/OpenJDK14U-jdk_x64_linux_openj9_14.0.2_12_openj9-0.21.0.tar.gz
+	sha256sums = 306f7138cdb65daaf2596ec36cafbde72088144c83b2e964f0193662e6caf3be
 
 pkgname = jdk-openj9-bin
 
