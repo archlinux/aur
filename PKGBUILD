@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=vagrant-libvirt
-pkgver=0.0.45
+pkgver=0.1.2
 pkgrel=1
-_foglibvirtver=0.5.0
-_fogcorever=1.43.0
+_foglibvirtver=0.7.0
+_fogcorever=2.2.0
 _libvirtver=0.7.1
 pkgdesc="libvirt provider plugin for Vagrant"
 arch=(i686 x86_64)
@@ -21,17 +21,10 @@ noextract=("fog-libvirt-$_foglibvirtver.gem"
            "fog-core-$_fogcorever.gem"
            "ruby-libvirt-$_libvirtver.gem"
            "vagrant-libvirt-$pkgver.gem")
-sha256sums=('c504a081603be24550cc07671e384f1b7ba3b5507286ce5379458120652b3b01'
+sha256sums=('d8cd651225b0332da6ce744e2cb77d52676eeb5139544caecae94185e02b4d98'
             '46ad7bb823b1c8865fa9967c9bdc1e76078c460717267a45c11eb7774d23e534'
-            '866b816e7516d6787bc074fcec8bb530ebf196685fee03cf56a69ecd852e8229'
-            '6e2e21c37526d7e4ccd94d225a3ebfdc976e3296051e4579383d9426f533613e')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    # patch -p1 -i "$srcdir/nokogiri-version.patch"
-    git init
-    git add .
-}
+            '3d6930b6cda7ab3523e0f73eb1043034d483761204bfe2e3e45012bc32ed32e8'
+            'f971b7014bb51d0197d37b2f9ea12ffe4f214ddfd801dfe621bf7d0dfa3ac92f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
