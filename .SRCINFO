@@ -1,0 +1,18 @@
+pkgbase = reqview
+	pkgdesc = Requirements Management Tool For Software and Systems Development Where Requirements Matter
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = https://www.reqview.com
+	arch = x86_64
+	license = custom:reqview
+	makedepends = tar
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = reqview-2.8.2.deb::https://s3.eu-central-1.amazonaws.com/reqview-desktop-linux/ReqView-2.8.2-linux-amd64.deb
+	source = LICENSE
+	sha256sums = 0cfba52c27b31e1350dea9c33c0e26bfc6df98efa30f9d3d899e717af608219d
+	sha256sums = SKIP
+
+pkgname = reqview
+
