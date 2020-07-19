@@ -1,6 +1,6 @@
 pkgbase = raccoon-bin
 	pkgdesc = Alternative Google Play (with GUI) client to download Android APK files to your computer, binary version
-	pkgver = 4.14.0
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = http://raccoon.onyxbits.de
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = raccoon-bin
 	noextract = ${pkgname}-${pkgver}.jar
 	source = raccoon.desktop
 	source = https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg
-	source = https://raccoon.onyxbits.de/apk-downloader/raccoon-4.14.0.jar
+	source = https://raccoon.onyxbits.de/apk-downloader/raccoon-4.15.0.jar
 	sha512sums = 99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647
 	sha512sums = f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6
-	sha512sums = 95e9dab770bf6af4af0a89d854775110d305440a7537ee6e9dc82cdfcbcf4c436d8ac36b8f2efbc208ede1a0e965d84491dec1bae015404b9cc446182344f219
+	sha512sums = 98bae02970e9fb0ca4b09927fafaee20084c5d2b91ce8cf5a989ca1e186364c09353c36a4ebea1647efb297556b09d159395c314e7a00304c10953b00de729b4
 
 pkgname = raccoon-bin
 
