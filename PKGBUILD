@@ -6,7 +6,7 @@
 _pkgname=cyrus-imapd
 pkgname=cyrus-imapd2
 pkgver=2.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyrus IMAP mail server - 2.5"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="http://www.cyrusimap.org/"
@@ -17,16 +17,16 @@ conflicts=('imap-server' 'pop3-server' 'cyrus-imapd')
 replaces=('cyrus-imapd')
 backup=(etc/cyrus/cyrus.conf etc/cyrus/imapd.conf)
 install="$_pkgname.install"
-source=(https://www.cyrusimap.org/releases/cyrus-imapd-$pkgver.tar.gz
+source=(https://github.com/cyrusimap/cyrus-imapd/archive/cyrus-imapd-$pkgver.tar.gz
 		'gettid.patch'
         'cyrus-master-conf.d'
         'cyrus-imapd.install'
         'cyrus-master.service')
-sha512sums=('9a61baa15f5a2c18843c4cf8e7cb7c58050c22de3c674ed17c2ea57fc8a3ac7f9a6aa954f61bbc77104e16a5464ac83d05c2b84ece953f86ab820461ffcd62b3'
-            '0657c5cd6bd1fe5c4ba35cfd79bf2c0a88e252a673f77d41a424f43e9ac418e3c28d0244c42d10f6726aea7911519170a8821911b9f594caf1234edb8b0704f3'
-            '881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f'
-            '80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386'
-            '6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe')
+sha256sums=('ff2c61fe4c8665424425cd491ea816de3fa5f43765ebade27c686ffacfc9431c'
+            '45ed31ae8205b86c320ce74bd007f7b05c8f0fb05cf917f1814056b24234e4a1'
+            '6b55becbb58ceb66408de19fb6465e4364bf16528d0caa8b756c4316d88419dc'
+            '1c6054397b84866831ccc1647d154365cb46158d6d6b162f08bc205edda7119a'
+            'd5e3f64aff773fb75d5221d567064741a0846849ead6de64d37255e59533c027')
 
 build() {
     cd $srcdir/$_pkgname-$pkgver
