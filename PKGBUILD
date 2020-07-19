@@ -3,7 +3,7 @@
 pkgname=porter-bin
 pkgver=0.27.1
 #PKG_PERMALINK=${PKG_PERMALINK:-latest}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A utility to help make your application + etc (env/tool) as a versioned bundle that you can distribute, and then install with a single command'
 arch=(x86_64)
@@ -32,16 +32,16 @@ mkdir -p $PORTER_HOME
 
 echo $PORTER_URL/$PORTER_PERMALINK/porter-linux-amd64
 
-porter mixin install exec --version $PKG_PERMALINK
-porter mixin install kubernetes --version $PKG_PERMALINKLINK
-porter mixin install helm --version $PKG_PERMALINK
-#porter mixin install arm --version $PKG_PERMALINK
-porter mixin install terraform --version $PKG_PERMALINKINK
-porter mixin install az --version $PKG_PERMALINK
-porter mixin install aws --version $PKG_PERMALINK
-porter mixin install gcloud --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter mixin install exec --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter mixin install kubernetes --version $PKG_PERMALINKLINK
+$pkgdir/usr/bin/porter mixin install helm --version $PKG_PERMALINK
+#$pkgdir/usr/bin/porter mixin install arm --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter mixin install terraform --version $PKG_PERMALINKINK
+$pkgdir/usr/bin/porter mixin install az --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter mixin install aws --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter mixin install gcloud --version $PKG_PERMALINK
 
-porter plugin install azure --version $PKG_PERMALINK
+$pkgdir/usr/bin/porter plugin install azure --version $PKG_PERMALINK
 
 # echo "Installation complete."
 }

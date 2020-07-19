@@ -1,7 +1,7 @@
 pkgbase = porter-bin
 	pkgdesc = A utility to help make your application + etc (env/tool) as a versioned bundle that you can distribute, and then install with a single command
 	pkgver = 0.27.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/deislabs/porter
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = porter-bin
 	depends = docker
 	provides = porter
 	source = porter-bin-0.27.1::https://cdn.porter.sh/v0.27.1/porter-linux-amd64
-	sha512sums = SKIP
+	sha512sums = d9d5a20d21164e4bb61a54fa4681689e50986915a50e54a07db81d805eff7a2163103a64da1557abc0b91730e77dcd13d3be0cc728d42d91a732c68df93e03f6
 
 pkgname = porter-bin
 
