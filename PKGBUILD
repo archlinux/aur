@@ -2,8 +2,8 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/notorious
 
 pkgname=notorious-git
-pkgver=0.2.r0.gf9b9c94
-pkgrel=2
+pkgver=0.3.r0.g70f8b62
+pkgrel=1
 pkgdesc='Keyboard centric notes'
 arch=('any')
 url='https://gitlab.gnome.org/gabmus/notorious'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(
     'gtk3'
     'python'
-    'libhandy'
+    'libhandy1>=0.83'
     'python-gobject'
     'gobject-introspection'
     'gtksourceview4'

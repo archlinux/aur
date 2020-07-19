@@ -1,7 +1,7 @@
 pkgbase = notorious-git
 	pkgdesc = Keyboard centric notes
-	pkgver = 0.2.r0.gf9b9c94
-	pkgrel = 2
+	pkgver = 0.3.r0.g70f8b62
+	pkgrel = 1
 	url = https://gitlab.gnome.org/gabmus/notorious
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = notorious-git
 	makedepends = meson
 	depends = gtk3
 	depends = python
-	depends = libhandy
+	depends = libhandy1>=0.83
 	depends = python-gobject
 	depends = gobject-introspection
 	depends = gtksourceview4
