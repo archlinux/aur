@@ -3,7 +3,7 @@
 
 pkgname="tilt-bin"
 _pkgname="tilt"
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Local Kubernetes development with no stress'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/windmilleng/tilt/releases/download/v${pkgver}/${_pkgname}.${pkgver}.linux.x86_64.tar.gz")
-sha512sums=('aca8e684ed20a7d679d39e966c63ccb7e84fa6caeec7450523641bb559333de29570a5539a47e1cef356f6571e246927df25d152b57eca2a47719c2d49c33d4a')
+sha512sums=('831ecfb5763c94bb378f329f5de4288bc32b4456d7a3c65de5c1fcd3729c4152b09e948a19fbf6a4ebfc9931bdaf8eba329304f601a3352397d67dc9d49602c8')
 
 package() {
     install -D -m 0644 README.md "$pkgdir/usr/share/doc/tilt/README.md"
