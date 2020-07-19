@@ -1,13 +1,14 @@
 pkgbase = nvidia-beta-all
 	pkgdesc = NVIDIA drivers for all kernels on the system (beta version)
 	pkgver = 450.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = linux
 	makedepends = linux-headers
 	makedepends = dkms
+	makedepends = fakeroot
 	provides = nvidia=450.57
 	provides = nvidia-beta=450.57
 	conflicts = nvidia

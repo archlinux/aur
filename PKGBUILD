@@ -4,12 +4,12 @@
 
 pkgname=nvidia-beta-all
 pkgver=450.57
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-makedepends=('linux' 'linux-headers' 'dkms')
+makedepends=('linux' 'linux-headers' 'dkms' 'fakeroot')
 provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
@@ -34,7 +34,7 @@ build() {
     while read -r _kernel
     do
         printf '%s\n' "  -> Building NVIDIA module for kernel ${_kernel}..."
-        dkms build --dkmstree "$srcdir" --sourcetree "${srcdir}/${_pkg}" -m "nvidia/${pkgver}" -k "$_kernel"
+        fakeroot dkms build --dkmstree "$srcdir" --sourcetree "${srcdir}/${_pkg}" -m "nvidia/${pkgver}" -k "$_kernel"
     done < <(find /usr/lib/modules/*/build/version -exec cat {} +)
 }
 
