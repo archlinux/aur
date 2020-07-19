@@ -1,6 +1,6 @@
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=13
+pkgrel=14
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64' 'armv7')
 license=('GPL')
@@ -71,4 +71,7 @@ package() {
   # usrmove
   cd "$pkgdir"
   mv usr/sbin usr/bin
+
+  chown root.mail "${pkgdir}/usr/bin/ssmtp"
+  chmod 2755 "${pkgdir}/usr/bin/ssmtp"
 }
