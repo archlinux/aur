@@ -8,7 +8,7 @@ pkgbase = rustscan-bin
 	provides = rustscan
 	options = strip
 	source = https://github.com/brandonskerritt/RustScan/releases/download/1.0.1/rustscan-1.0.1-x86_64.tar.gz
-	sha256sums = 63f8386a20044843bf3f70cf963971a4c413382c20c0c9d8343e1423b28bec77
+	sha256sums = 212618e9fa3bd1ffafc3cb64b4688c9fa8dec20c64d3a7e9008fbde3e76a5855
 
 pkgname = rustscan-bin
 
