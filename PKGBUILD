@@ -24,7 +24,7 @@ pkgver() {
 
 prepare () {
     cd "$srcdir/chatterino2"
-    git submodule update --init --recursive
+    git submodule update --init --recursive --progress
 }
 
 build() {
