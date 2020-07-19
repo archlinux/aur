@@ -1,0 +1,7 @@
+post_install() {
+    echo "bspi is now installed! Before it can function, you have to:"
+    echo ""
+    echo "Copy the default configuration file: \`cp /usr/share/doc/bspi/bspi.ini ~/.config/bspwm/bspi.ini\`"
+    echo "Add \`bspi_listen --config ~/.config/bspwm/bspi.ini &\` to your bspwmrc"
+    echo ""
+}

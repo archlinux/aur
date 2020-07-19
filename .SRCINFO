@@ -3,6 +3,7 @@ pkgbase = bspi-git
 	pkgver = r15.ed6d090
 	pkgrel = 1
 	url = https://github.com/fiskhest/aur-bspi-git
+	install = bspi-git.install
 	arch = any
 	license = BSD
 	makedepends = git

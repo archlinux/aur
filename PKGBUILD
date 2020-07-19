@@ -9,6 +9,7 @@ pkgdesc='Icons for bspwm, sort of'
 arch=('any')
 url="https://github.com/fiskhest/aur-${pkgname}"
 license=('BSD')
+install=${pkgname}.install
 depends=('bspwm' 'xorg-xprop' 'ttf-font-awesome' 'python')
 makedepends=('git')
 provides=("${_pkgname}")
@@ -24,6 +25,7 @@ pkgver() {
 package() {
     cd "${_pkgname}"
     install -D -m 755 -t "${pkgdir}/usr/bin" bspi.py bspi_listen
+    install -D -m 644 bspi.ini "${pkgdir}/usr/share/doc/${_pkgname}/bspi.ini"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
