@@ -4,13 +4,13 @@
 #
 pkgname="wp-desktop"
 pkgver="6.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-desktop"
 arch=('x86_64')
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk3' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
+depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
 
 _pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
 source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
@@ -18,40 +18,33 @@ source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 sha256sums=('a727f9315b24d69aa81389f163eb79ed3f5e420410b7dbbd3f3b28aa1ea2ee26')
 
 _wpcom_desktop="[Desktop Entry]
+Version=1.0
+Type=Application
 Name=WordPress.com
 Comment=WordPress.com Desktop Client
-Exec=/usr/bin/wpcom
-Icon=/usr/share/pixmaps/wpcom.png
-Type=Application
+Exec=/opt/WordPress.com/wpcom %U
+Icon=wpcom
+Terminal=false
+StartupWMClass=WordPress.com
 StartupNotify=true
 Categories=Development;"
-
-_wpcom_bin="#!/bin/sh
-
-/usr/share/wpcom/wpcom"
 
 prepare() {
     cd "${srcdir}"
     echo -e "$_wpcom_desktop" | tee wpcom.desktop
-    echo -e "$_wpcom_bin" | tee wpcom
 }
 
 package() {
     cd "${srcdir}"/wordpress*/
-    install -d ${pkgdir}/usr/share/wpcom
-    mv * ${pkgdir}/usr/share/wpcom
-    install -d ${pkgdir}/usr/share/applications
-    install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -d ${pkgdir}/usr/share/pixmaps
-    install -d ${pkgdir}/usr/bin
+    install -d ${pkgdir}/opt/WordPress.com
+    mv * "${pkgdir}/opt/WordPress.com/"
 
     cd "${srcdir}"
-    install -m 644 *.desktop ${pkgdir}/usr/share/applications
-    install -m 755 wpcom ${pkgdir}/usr/bin
+    install -D -m644 *.desktop "${pkgdir}/usr/share/applications/wpcom.desktop"
 
-    cd "${pkgdir}/usr/share/wpcom/"
-    install -m 644 ./resources/app/public_desktop/app-logo.png ${pkgdir}/usr/share/pixmaps/wpcom.png
-    install -m 644 LICENSE.electron.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd "${pkgdir}/opt/WordPress.com/"
+    install -D -m644 ./resources/app/public_desktop/app-logo.png "${pkgdir}/usr/share/pixmaps/wpcom.png"
+    install -D -m644 LICENSE.electron.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:

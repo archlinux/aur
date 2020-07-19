@@ -1,13 +1,12 @@
 pkgbase = wp-desktop
 	pkgdesc = WordPress.com Desktop client
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.wordpress.com/
 	arch = x86_64
 	license = GPL2
 	depends = alsa-lib
 	depends = gcc-libs
-	depends = gconf
 	depends = gtk3
 	depends = libgpg-error
 	depends = libxss
