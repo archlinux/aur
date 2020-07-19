@@ -1,0 +1,18 @@
+pkgbase = cdm
+	pkgdesc = The Console Display Manager
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/evertiro/cdm
+	arch = any
+	license = GPL
+	depends = dialog
+	depends = xorg-xinit
+	depends = xorg-xdpyinfo
+	depends = kbd
+	conflicts = cdm-git
+	backup = etc/cdmrc
+	source = https://github.com/evertiro/cdm/archive/0.7.tar.gz
+	md5sums = 635e66dde62dea014c2394de66d8361d
+
+pkgname = cdm
+
