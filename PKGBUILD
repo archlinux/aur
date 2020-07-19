@@ -1,10 +1,9 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Package for all inverse kinematics solvers in MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-kinematics'
-pkgver='1.0.3'
-arch=('any')
+pkgver='1.0.5'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
@@ -24,16 +23,9 @@ ros_depends=(ros-melodic-moveit-core
   ros-melodic-moveit-ros-planning)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_kinematics/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('3b85d8662c2f06fb426997ab7f1d9be228936d1d0a6f29bd0a70ff3891c8d7a9')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_kinematics"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
+sha256sums=('78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a')
 
 build() {
   # Use ROS environment variables

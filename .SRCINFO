@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-moveit-kinematics
 	pkgdesc = ROS - Package for all inverse kinematics solvers in MoveIt!.
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://moveit.ros.org
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -18,8 +22,8 @@ pkgbase = ros-melodic-moveit-kinematics
 	depends = ros-melodic-actionlib
 	depends = ros-melodic-pluginlib
 	depends = ros-melodic-moveit-ros-planning
-	source = ros-melodic-moveit-kinematics-1.0.3.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.3.tar.gz
-	sha256sums = b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358
+	source = ros-melodic-moveit-kinematics-1.0.5.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.5.tar.gz
+	sha256sums = 78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a
 
 pkgname = ros-melodic-moveit-kinematics
 
