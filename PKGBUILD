@@ -13,14 +13,21 @@ depends=('gcc-libs'
 	'acl'
 )
 makedepends=('cargo' 'clang' 'git' 'llvm' 'python-docutils')
-source=("$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-	"0001-adapt-cargo-toml-and-remove-systemd-linking.patch")
-sha512sums=('SKIP'
-            'd664e912e8196b7ca11603d42b7db58dad3b2a6afbaec665c6a8a3e3756ef131d1eca43bc00790049fa1edbe469c46a8f071601118f761f4570a596b046646f9')
+source=(
+    "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
+    "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
+    "0002-tools-xattr-a-char-from-C-is-not-universally-a-rust-.patch"
+)
+sha512sums=(
+    'SKIP'
+    'd664e912e8196b7ca11603d42b7db58dad3b2a6afbaec665c6a8a3e3756ef131d1eca43bc00790049fa1edbe469c46a8f071601118f761f4570a596b046646f9'
+    '834ef2829ee3c73e40cd6d1c615b5d26980e679ca638d1cbf9a35930c114a31203d44d5ccbbc7786f82562042bf6c244218e3b06f53cc85165e6f1f6c6265aae'
+)
 
 prepare() {
   cd "$pkgname-$pkgver"
   patch --forward --strip=1 --input="${srcdir}/0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
+  patch --forward --strip=1 --input="${srcdir}/0002-tools-xattr-a-char-from-C-is-not-universally-a-rust-.patch"
 }
 
 build() {
