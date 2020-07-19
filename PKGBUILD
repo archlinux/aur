@@ -1,32 +1,32 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Ankit R Gadiya <arch@argp.in>
 # Contributor: John W. Trengrove <john@retrofilter.com>
 
-pkgname=stagit-git
-pkgver=0.8.r0.g66e3410
-pkgrel=2
-pkgdesc="static git page generator (Git Version)"
+_pkgname=stagit
+pkgname=${_pkgname}-git
+pkgver=0.9.3.r2.gd80a163
+pkgrel=1
+pkgdesc='Static site generator for git version control'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://git.codemadness.org/stagit"
-license=('custom:MIT/X Consortium')
-source=("stagit-git::git://git.codemadness.org/stagit")
+url='https://codemadness.org/stagit.html'
+license=('MIT')
 depends=('libgit2')
 makedepends=('git')
-conflicts=('stagit')
-provides=('stagit')
-md5sums=('SKIP')
+provides=("${_pkgname}")
+source=("git://git.codemadness.org/${_pkgname}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
-  make
+  make -C "${_pkgname}"
 }
 
 package() {
-  cd "${pkgname}"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" -C "${_pkgname}" install
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:

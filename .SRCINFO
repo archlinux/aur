@@ -1,21 +1,20 @@
 pkgbase = stagit-git
-	pkgdesc = static git page generator (Git Version)
-	pkgver = 0.8.r0.g66e3410
-	pkgrel = 2
-	url = http://git.codemadness.org/stagit
+	pkgdesc = Static site generator for git version control
+	pkgver = 0.9.3.r2.gd80a163
+	pkgrel = 1
+	url = https://codemadness.org/stagit.html
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = custom:MIT/X Consortium
+	license = MIT
 	makedepends = git
 	depends = libgit2
 	provides = stagit
-	conflicts = stagit
-	source = stagit-git::git://git.codemadness.org/stagit
-	md5sums = SKIP
+	source = git://git.codemadness.org/stagit
+	sha256sums = SKIP
 
 pkgname = stagit-git
 
