@@ -1,6 +1,6 @@
 pkgbase = otr-verwaltung3p-dev-git
 	pkgdesc = Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.
-	pkgver = 1.0.0b8.r1.g38300c9
+	pkgver = 1.0.0b8.r2.gd829733
 	pkgrel = 2
 	url = https://github.com/EinApfelBaum/otr-verwaltung3p
 	arch = any
