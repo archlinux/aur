@@ -5,12 +5,12 @@
 
 pkgname=nvidia-beta
 pkgver=450.57
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-makedepends=('linux-headers' 'dkms')
+makedepends=('linux-headers' 'dkms' 'fakeroot')
 provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-    dkms build --dkmstree "$srcdir" --sourcetree "${srcdir}/${_pkg}" -m "nvidia/${pkgver}" -k "$(</usr/src/linux/version)"
+    fakeroot dkms build --dkmstree "$srcdir" --sourcetree "${srcdir}/${_pkg}" -m "nvidia/${pkgver}" -k "$(</usr/src/linux/version)"
 }
 
 package() {
