@@ -1,0 +1,16 @@
+pkgbase = parcittox-svn
+	pkgdesc = Adds the possibility to share clips over the network between Linux (running Parcittox) and Windows (running Ditto) PCs
+	pkgver = r43
+	pkgrel = 1
+	url = https://app.assembla.com/spaces/dittox/wiki#
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = libappindicator-gtk2
+	conflicts = parcittox
+	conflicts = parcellite
+	source = parcittox::svn+https://subversion.assembla.com/svn/dittox/
+	sha256sums = SKIP
+
+pkgname = parcittox-svn
+
