@@ -1,9 +1,9 @@
 pkgbase = caffeinated
 	pkgdesc = Simple logind and Wayland idle inhibitor
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electrickite/caffeinated
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = libbsd
 	depends = systemd
