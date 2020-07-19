@@ -131,6 +131,10 @@ host = ["x86_64-unknown-linux-gnu"]   # defaults to just the build triple
 # for each target triple.
 target = ["x86_64-unknown-linux-gnu", "i686-pc-windows-gnu", "x86_64-pc-windows-gnu"] # defaults to just the build triple
 
+# Use this directory to store build artifacts.
+# You can use "$ROOT" to indicate the root of the git repository.
+#build-dir = "build"
+
 # Instead of downloading the src/stage0.txt version of Cargo specified, use
 # this Cargo binary instead to build all Rust code
 #cargo = "/path/to/bin/cargo"
@@ -310,6 +314,10 @@ codegen-units-std = 1
 # library.
 debug-assertions = false
 
+# Whether or not debug assertions are enabled for the standard library.
+# Overrides the `debug-assertions` option, if defined.
+debug-assertions-std = false
+
 # Debuginfo level for most of Rust code, corresponds to the `-C debuginfo=N` option of `rustc`.
 # `0` - no debug info
 # `1` - line tables only
@@ -406,10 +414,6 @@ use-lld = false
 # Indicates whether some LLVM tools, like llvm-objdump, will be made available in the
 # sysroot.
 llvm-tools = false
-
-# Indicates whether LLDB will be made available in the sysroot.
-# This is only built if LLVM is also being built.
-lldb = false
 
 # Whether to deny warnings in crates
 deny-warnings = false
