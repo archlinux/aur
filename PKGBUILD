@@ -10,7 +10,7 @@
 
 pkgbase=setroubleshoot
 pkgname=(setroubleshoot setroubleshoot-server)
-pkgver=3.3.19
+pkgver=3.3.23
 pkgrel=1
 pkgdesc="Provides tools to help diagnose SELinux problems"
 groups=('selinux')
@@ -26,7 +26,7 @@ source=(
     'setroubleshoot.tmpfiles'
     'setroubleshoot-sysusers.conf'
 )
-sha256sums=('ab0e20b68404cacf6fab1454a7ed94c95556b023805c93f86e1251b58b16acc3'
+sha256sums=('437033bc5dd12d625f903bd3a3fc32d1945280ed982b6a754a4d2ce59d53f0c7'
             '894a75c33d568f908f0c3fa7fe4d7f82824369695194aa005fe42cf961298893'
             'eb7321b7db2fd8951c7ce3c7c42680fcfe7641c3d7be9e8d69a8fbb992a9d086'
             'fa20d1ec3522aa877fc5462d56692b318b4c8af1cd9ecb62ec41ad6647662d77')
@@ -63,6 +63,7 @@ package_setroubleshoot() {
   rmdir "${pkgdir}/usr/lib"
   rm "${pkgdir}/usr/share/dbus-1/system-services/org.fedoraproject.Setroubleshootd.service"
   rm "${pkgdir}/usr/share/dbus-1/system-services/org.fedoraproject.SetroubleshootFixit.service"
+  rm "${pkgdir}/usr/share/dbus-1/system-services/org.fedoraproject.SetroubleshootPrivileged.service"
   rmdir "${pkgdir}/usr/share/dbus-1/system-services"
   rm -r "${pkgdir}/usr/share/doc/"
   rm -r "${pkgdir}/usr/share/locale/"
@@ -72,7 +73,7 @@ package_setroubleshoot() {
   rmdir "${pkgdir}/usr/share/polkit-1/actions"
   rmdir "${pkgdir}/usr/share/polkit-1"
   rm "${pkgdir}/usr/share/setroubleshoot/SetroubleshootFixit.py"
-  rm "${pkgdir}/usr/share/setroubleshoot/updater.py"
+  rm "${pkgdir}/usr/share/setroubleshoot/SetroubleshootPrivileged.py"
 
   # Remove empty directories created by package issues
   rmdir "${pkgdir}/usr/share/usr/share/setroubleshoot/gui"
@@ -83,7 +84,7 @@ package_setroubleshoot() {
 
 package_setroubleshoot-server() {
   pkgdesc="SELinux troubleshoot server"
-  # FIXME: split the dependencies between setroubleshoot--server and setroubleshoot
+  # FIXME: split the dependencies between setroubleshoot-server and setroubleshoot
   depends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
            'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
            'python-slip' 'python-systemd' 'xdg-utils')
@@ -114,9 +115,9 @@ package_setroubleshoot-server() {
   rm "${pkgdir}/usr/share/dbus-1/services/sealert.service"
   rmdir "${pkgdir}/usr/share/dbus-1/services"
   rm -r "${pkgdir}/usr/share/icons/"
+  rm "${pkgdir}/usr/share/man/man1/seapplet.1"
   rm "${pkgdir}/usr/share/man/man8/sealert.8"
   rm -r "${pkgdir}/usr/share/setroubleshoot/gui/"
-  rm "${pkgdir}/usr/share/setroubleshoot/updater.py"
 
   # Remove empty directories created by package issues
   rmdir "${pkgdir}/usr/share/usr/share/setroubleshoot/gui"
