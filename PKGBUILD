@@ -4,10 +4,10 @@
 # Contributor: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=sway9
-pkgver=1.4
+pkgver=1.5
 epoch=1
-pkgrel=8
-_commit=fc1a435d2e579f0d48c098a5cb0d66d8c955dcaa
+pkgrel=1
+_commit=25e6c56e64b72bd8fded6f1c1f063e04d534b21f
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/Streetwalrus/sway9'
