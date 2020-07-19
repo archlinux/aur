@@ -7,7 +7,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client - slang version'
 url='http://www.mutt.org/'
@@ -21,7 +21,7 @@ optdepends=('perl: for smime_keys'
 depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn2' 'mime-types' 'krb5')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 source=("https://bitbucket.org/mutt/mutt/downloads/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('316b11cabd41a21c1d981f11d93e000337a628800d50127df19fe2593f8e3d5c'
+sha256sums=('47972a0152b81b9f67ff322a0a6682b914c15545bfdeac6bcc2f2c0bf9361844'
             'SKIP')
 
 build() {
