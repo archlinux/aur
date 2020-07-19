@@ -1,17 +1,18 @@
 pkgbase = python-iminuit-doc
 	pkgdesc = Documentation for Python iminuit module
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = http://iminuit.readthedocs.io
 	arch = any
 	license = GPL
 	license = MIT
-	makedepends = python-iminuit=1.4.8
+	makedepends = python-iminuit=1.4.9
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-matplotlib
-	source = https://github.com/iminuit/iminuit/archive/v1.4.8.tar.gz
-	md5sums = 60c57f863d39d067fc7af9b4fb558f91
+	makedepends = python-pillow
+	source = https://github.com/iminuit/iminuit/archive/v1.4.9.tar.gz
+	md5sums = 5752283460f64065ee79a16f28e0f545
 
 pkgname = python-iminuit-doc
 
