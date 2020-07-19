@@ -1,0 +1,55 @@
+pkgbase = obs-studio-liushui-git
+	pkgdesc = Free and open source software for video recording and live streaming - liushuiproject fork
+	pkgver = 25.0.7.r454.gb3733a43
+	pkgrel = 1
+	url = https://github.com/liushuiproject/obs-studio
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = jack
+	makedepends = vlc
+	makedepends = swig
+	makedepends = luajit
+	makedepends = python
+	makedepends = cef-minimal-3770
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = qt5-x11extras
+	depends = curl
+	depends = gtk-update-icon-cache
+	depends = gconf
+	depends = nss
+	depends = libxss
+	depends = pango
+	depends = atk
+	depends = libxrandr
+	depends = libxcomposite
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = jack: JACK Support
+	optdepends = vlc: VLC Media Source
+	optdepends = swig: Scripting
+	optdepends = luajit: Lua scripting
+	optdepends = python: Python scripting
+	provides = obs-studio=25.0.7.r454.gb3733a43
+	conflicts = obs-studio
+	source = obs-studio-liushui-git::git+https://github.com/liushuiproject/obs-studio.git#branch=master
+	source = git+https://github.com/Mixer/ftl-sdk.git
+	source = git+https://github.com/liushuiproject/obs-browser.git
+	source = git+https://github.com/liushuiproject/obs-text-pango.git
+	source = git+https://github.com/obsproject/obs-vst.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-studio-liushui-git
+
