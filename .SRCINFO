@@ -1,7 +1,7 @@
 pkgbase = nginx-libressl
 	pkgdesc = lightweight HTTP server, statically linked against LibreSSL.
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nginx.org
 	arch = i686
 	arch = x86_64
