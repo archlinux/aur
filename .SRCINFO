@@ -1,0 +1,30 @@
+pkgbase = cnijfilter-ip100
+	pkgdesc = Canon IJ Printer Driver for Pixma ip100 (MG2140, MG2150, etc) multifunction
+	pkgver = 3.70
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/printers/inkjet/pixma_ip_series/ip100.html?type=drivers&language=en&os=linux
+	install = cnijfilter-ip100.install
+	arch = x86_64
+	license = GPL2
+	license = LGPL2
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	depends = libglade
+	depends = cups
+	depends = ghostscript
+	conflicts = cnijfilter-common
+	source = https://gdlp01.c-wss.com/gds/8/0100004118/01/cnijfilter-source-3.70-1.tar.gz
+	source = cups.patch
+	source = png.patch
+	source = id.po.patch
+	md5sums = 0f23002a95c4dc9e8b85fe612d0cff0b
+	md5sums = db2fb9cd651e459f9219b5fc556c3d0e
+	md5sums = 872716942e916acabf43913f9b7bdcd9
+	md5sums = f1defa34fa288a9848db849144244d55
+
+pkgname = cnijfilter-ip100
+
