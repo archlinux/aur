@@ -7,7 +7,7 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.3.7721
-pkgrel=2
+pkgrel=3
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -21,12 +21,14 @@ provides=('google-earth')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_${pkgver}-r0_amd64.deb"
+        'libsgutil.zip::https://docs.google.com/uc?export=download&id=1Xm7fXIoE_wf50dVOgtDro0yMbYAHDK9n' # Temporal fix, see below
         'Google-Terms-of-Service.html'::'https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html'::'https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html'::'https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
 sha256sums=('db3f4b224426789ffb8d76a5f64126f8a2822bc42d30da162ac05d039047a152'
+            '5231ea5f31b310f407eab55e3a0b7c08574dfea908c82d848ed8c6c4eb2dea7f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,6 +60,10 @@ package() {
     
     # fix search
     sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "${pkgdir}/${_installdir}/googleearth"
+
+    # Fix issue with old CPUs
+    # https://support.google.com/earth/thread/48368936?hl=en&msgid=58788326
+    cp "${srcdir}/libsgutil.so" "${pkgdir}/${_installdir}/libsgutil.so"
     
     # licenses
     local _file

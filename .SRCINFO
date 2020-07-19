@@ -1,7 +1,7 @@
 pkgbase = google-earth-pro
 	pkgdesc = 3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)
 	pkgver = 7.3.3.7721
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.google.com/earth/
 	install = google-earth-pro.install
 	arch = x86_64
@@ -24,11 +24,13 @@ pkgbase = google-earth-pro
 	options = !strip
 	options = !emptydirs
 	source = https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_7.3.3.7721-r0_amd64.deb
+	source = libsgutil.zip::https://docs.google.com/uc?export=download&id=1Xm7fXIoE_wf50dVOgtDro0yMbYAHDK9n
 	source = Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html
 	source = Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html
 	source = Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html
 	source = Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html
 	sha256sums = db3f4b224426789ffb8d76a5f64126f8a2822bc42d30da162ac05d039047a152
+	sha256sums = 5231ea5f31b310f407eab55e3a0b7c08574dfea908c82d848ed8c6c4eb2dea7f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
