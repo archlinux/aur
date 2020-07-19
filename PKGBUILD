@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Aaditya Bagga <aaditya_gnulinux@zoho.com>
@@ -6,9 +6,9 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=laptop-mode-tools
-pkgver=1.73.1
-pkgrel=2
-pkgdesc='Power Saving tool for Linux'
+pkgver=1.74
+pkgrel=1
+pkgdesc='Power saving tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools/'
 license=('GPL')
@@ -57,7 +57,7 @@ backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/laptop-mode.conf'
     'etc/laptop-mode/lm-profiler.conf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rickysarraf/laptop-mode-tools/archive/${pkgver}.tar.gz")
-sha256sums=('75d882f93c81691f1b342740441ec1a1d0188eb55b400a1d795ffda4f533e65d')
+sha256sums=('df269e9449fdfab61ec11d6c009dc9a46a0ccf79b6d97fc886cc789cadac9867')
 
 package() {
     cd "${pkgname}-${pkgver}"
