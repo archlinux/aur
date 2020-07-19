@@ -17,7 +17,6 @@ depends=(mingw-w64-libtiff
 makedepends=(mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/mono/libgdiplus/archive/${pkgver}.tar.gz")
-sha256sums=('deff863023950b1d1de7e47e44fc31c8ba39cfc06334737261965f697b2ad312')
 sha256sums=('1fd034f4b636214cc24e94c563cd10b3f3444d9f0660927b60e63fd4131d97fa')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
