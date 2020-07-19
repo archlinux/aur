@@ -1,0 +1,25 @@
+Index: cmake/external/qt/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cmake/external/qt/CMakeLists.txt	(revision 8e2cfbf303a43bbd946279dd2cb394be82a782a0)
++++ cmake/external/qt/CMakeLists.txt	(date 1589375238616)
+@@ -60,14 +60,17 @@
+     if (Qt5WaylandClient_FOUND)
++        find_package(Qt5 COMPONENTS XkbCommonSupport REQUIRED)
+         target_link_libraries(external_qt INTERFACE Qt5::WaylandClient)
++        target_link_libraries(external_qt INTERFACE Qt5::XkbCommonSupport)
+ 
+         if (DESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS)
+             target_include_directories(external_qt
+             INTERFACE
+                 ${DESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS}
+                 ${DESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS}/QtWaylandClient
+             )
+         else()
+             target_include_directories(external_qt
+             INTERFACE
++                ${Qt5XkbCommonSupport_PRIVATE_INCLUDE_DIRS}
+                 ${Qt5WaylandClient_PRIVATE_INCLUDE_DIRS}
+             )
