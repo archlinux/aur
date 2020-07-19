@@ -1,7 +1,7 @@
 pkgbase = ttf-ricty
 	pkgdesc = Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.
 	pkgver = 4.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://rictyfonts.github.io/
 	install = ttf.install
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = ttf-ricty
 	makedepends = fontforge
 	makedepends = ttf-inconsolata
 	makedepends = ttf-migu
-	source = https://rictyfonts.github.io/files/ricty_generator-4.1.1.sh
-	source = OFL.txt
-	source = ipa_font_license_agreement_v1.txt
+	source = ricty_generator-4.1.1.sh::https://raw.githubusercontent.com/rictyfonts/rictyfonts.github.io/master/files/ricty_generator-4.1.1.sh
+	source = os2version_reviser.sh::https://raw.githubusercontent.com/rictyfonts/rictyfonts.github.io/master/files/os2version_reviser.sh
+	source = OFL.txt::https://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
+	source = IPA_Font_License_Agreement_v1.0.txt::https://salsa.debian.org/fonts-team/fonts-ipafont/-/raw/master/IPA_Font_License_Agreement_v1.0.txt
 	sha256sums = 86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d
+	sha256sums = e8bd7f9e2688f17889c52e41bc97cf37b83cc6fa69f9f816ef74046c197b3bb0
 	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
-	sha256sums = 87fce322b6a982ed1fb713fea8ae5531aed77792c4d10b1efb17050e5edb41ab
+	sha256sums = 4c84dd528ec3044638ec346fc1ee27cd1eb95dfc04cbc6a881b3ca7a7f517e54
 
 pkgname = ttf-ricty
 
