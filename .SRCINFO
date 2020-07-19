@@ -1,0 +1,17 @@
+pkgbase = caja-subliminal-git
+	pkgdesc = Subliminal integration within caja file manager
+	pkgver = r14.4648e2e
+	pkgrel = 1
+	url = https://github.com/Diaoul/nautilus-subliminal/tree/caja
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = subliminal
+	depends = python-caja
+	provides = caja-subliminal
+	conflicts = caja-subliminal
+	source = git+https://github.com/Diaoul/nautilus-subliminal.git#branch=caja
+	sha256sums = SKIP
+
+pkgname = caja-subliminal-git
+
