@@ -2,7 +2,7 @@
 
 _pkgname=rezonateur
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r5.g82b7313
+pkgver=0.1.0.r6.g58ccec5
 pkgrel=1
 pkgdesc="A virtual-analog 3-band resonator audio effect LV2 and VST2 plugin and JACK client (git version)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/jpcima/${_pkgname}.git"
-        'dpf::git+https://github.com/DISTRHO/DPF.git'
-        'rezonateur-stdexcept.diff')
+        'dpf::git+https://github.com/DISTRHO/DPF.git')
 md5sums=('SKIP'
-         'SKIP'
-         '5ede4924e37ac26ccf8048312210aafc')
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -34,8 +32,6 @@ prepare() {
   git submodule init
   git config submodule.dpf.url "${srcdir}/dpf"
   git submodule update
-
-  patch -N -r - -p 1 -i "${srcdir}"/rezonateur-stdexcept.diff || :
 
   cd dpf
   patch -N -r - -p 1 -i ../resources/patch/DPF-bypass.patch || :
