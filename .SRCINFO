@@ -1,6 +1,6 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
-	pkgver = 0.8.604
+	pkgver = 0.8.694
 	pkgrel = 1
 	url = https://www.zrythm.org
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = zrythm
 	source = https://www.zrythm.org/releases/zrythm-0.8.604.tar.xz
 	source = https://www.zrythm.org/releases/zrythm-0.8.604.tar.xz.asc
 	validpgpkeys = 48132384AD3DF7D86E254B83022EAE42313D70F3
-	sha256sums = 12b3dd6b6dcb485ad21096608efc425b0ce6158c52d0ab27ba6762363c1ddff4
+	sha256sums =e20946332b8800fb8e1bf9c348e217d3d27c55f6f78af6a4043d7b364a78429d
 	sha256sums = SKIP
 
 pkgname = zrythm
