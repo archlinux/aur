@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 _pkgname='xmrig'
-pkgver='6.2.3'
+pkgver='6.3.0'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner - No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("${_pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            'c9f76c792a782f4c82952c4180f161d56570b2d09cc2ce3a1cb645b4d197cffd')
+            'ec8136637c19f07c29fd1526c4194e52007f48c46f76194fe43a71fbbb73712c')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
