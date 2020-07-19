@@ -1,6 +1,5 @@
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=freechat-git
-pkgbase=freechat-git
 _name=Freechat
 url="https://github.com/eNkru/freechat"
 pkgrel=1
