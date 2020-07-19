@@ -9,7 +9,7 @@ pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-makedepends=('linux' 'linux-headers' 'dkms' 'fakeroot')
+makedepends=('linux' 'linux-headers' 'dkms')
 provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
