@@ -35,6 +35,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
+  ./autogen.sh
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --enable-mysql \
