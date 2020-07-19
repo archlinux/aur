@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-libgdiplus
+	pkgdesc = An Open Source Implementation of the GDI+ API (mingw-w64)
+	pkgver = 6.0.5
+	pkgrel = 1
+	url = https://www.mono-project.com/
+	arch = any
+	license = MPL
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-cairo
+	depends = mingw-w64-fontconfig
+	depends = mingw-w64-freetype
+	depends = mingw-w64-giflib
+	depends = mingw-w64-glib2
+	depends = mingw-w64-libexif
+	depends = mingw-w64-libpng
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/mono/libgdiplus/archive/6.0.5.tar.gz
+	sha256sums = 1fd034f4b636214cc24e94c563cd10b3f3444d9f0660927b60e63fd4131d97fa
+
+pkgname = mingw-w64-libgdiplus
+
