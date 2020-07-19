@@ -1,0 +1,20 @@
+pkgbase = oneshot
+	pkgdesc = First-come-first-serve single-fire HTTP/HTTPS server
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/raphaelreyna/oneshot
+	install = oneshot.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	options = zipman
+	source = https://github.com/raphaelreyna/oneshot/archive/v1.1.3.tar.gz
+	b2sums = 1bffc45d4cefe28362801715fc17befae74c10a06e181ed9a8175bac9ab69ed94f84b24457529c767ee9506a981b798c26c3d73259b4242646ff91c1f2c13968
+
+pkgname = oneshot
+
