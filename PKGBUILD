@@ -2,13 +2,21 @@
 # Upstream URL: https://gitlab.com/gabmus/hydrapaper
 
 pkgname=hydrapaper-git
-pkgver=1.10.r0.g4973cca
+pkgver=1.12.r0.g75282bc
 pkgrel=1
 pkgdesc='Wallpaper manager with multimonitor support for GNOME'
 arch=('any')
 url='https://gitlab.com/gabmus/hydrapaper'
 license=('GPL3')
-depends=('gtk3' 'python' 'python-pillow' 'libwnck3' 'libhandy' 'gobject-introspection' 'python-gobject')
+depends=(
+  'gtk3'
+  'python'
+  'python-pillow'
+  'libwnck3'
+  'libhandy1>=0.83'
+  'gobject-introspection'
+  'python-gobject'
+)
 makedepends=('git' 'meson')
 provides=('hydrapaper')
 conflicts=('hydrapaper')
