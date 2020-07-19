@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Standalone mail and news reader from mozilla.org - Bleeding edge version
-	pkgver = 78.0b4
+	pkgver = 79.0b1
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird/
 	install = thunderbird-beta.install
@@ -40,15 +40,15 @@ pkgbase = thunderbird-beta
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=78.0b4
+	provides = thunderbird=79.0b1
 	conflicts = thunderbird-beta-bin
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/78.0b4/source/thunderbird-78.0b4.source.tar.xz
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/78.0b4/source/thunderbird-78.0b4.source.tar.xz.asc
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/79.0b1/source/thunderbird-79.0b1.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/79.0b1/source/thunderbird-79.0b1.source.tar.xz.asc
 	source = thunderbird-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha512sums = 763361f35510315fe66b42fb03a14245add29f814bbab0ca54fac907efe9336cb7bdc00017636b8992ea1ad2af545827e034c9274a050575402e89e09a74d521
+	sha512sums = ea1560dfdefd1ffe9efc9caa440394b52eb154cb11d345bcea829444c0c55a8ebc81cb2435ab92147ed0e9d74aa90a59f05c6c01df576e6b70eecc3841f80e3b
 	sha512sums = SKIP
 	sha512sums = cab681d5acf17dd8dabf732c0bb5f73fd0444796bb4fd82decdfa8764122513fd2f05c562cf9246eacac67ea84ae85a220f59d7eea7106e0b2f6fc16bc520dd4
 
