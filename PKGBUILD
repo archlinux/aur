@@ -5,8 +5,8 @@ _packagename=sapmachine
 _java_ver=11
 _jdkname=${_packagename}-jdk-${_java_ver}
 pkgname="${_jdkname}-bin"
-_sapmachine_jdk_build=11.0.6.0.1+10-LTS-sapmachine
-pkgver=11.0.6.0.1
+_sapmachine_jdk_build=11.0.8+10-LTS-sapmachine
+pkgver=11.0.8
 pkgrel=1
 pkgdesc='This project contains a downstream version of the OpenJDK project. It is used to build and maintain a SAP supported version of OpenJDK for SAP customers and partners who wish to use OpenJDK to run their applications.'
 arch=('x86_64')
@@ -33,7 +33,7 @@ provides=(
 install="${_packagename}-jdk-bin.install"
 _tarballname="sapmachine-jdk-${pkgver}_linux-x64_bin"
 source=("https://github.com/SAP/SapMachine/releases/download/${_packagename}-${pkgver}/${_tarballname}.tar.gz")
-sha256sums=('697d5575ac0a9f24ee4f7a11d264311f2ca0e05841305236fd02d47325792e25')
+sha256sums=('fb0a39e18ab893da6a27a0b7f09f52b0b049503205d4d1c29a2228cb16372539')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
