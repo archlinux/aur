@@ -1,0 +1,29 @@
+pkgbase = architect
+	pkgdesc = An integrated development environment (IDE) that focuses specifically on the needs of the data scientist
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://www.getarchitect.io
+	arch = x86_64
+	license = EPL
+	makedepends = tar
+	depends = r
+	depends = r-rjava
+	depends = freetype2
+	depends = curl
+	depends = python
+	depends = libjpeg-turbo
+	depends = libxtst
+	depends = tk
+	depends = libnet
+	depends = java-runtime
+	depends = libxmu
+	depends = cairo
+	depends = alsa-lib
+	depends = libtiff
+	source = architect-0.9.11.deb::https://www.getarchitect.io/downloads/architect-stable_20170518095416_amd64.deb
+	source = architect.png
+	sha256sums = 8100cab2828eda5f895ed8ea65267b2b3920d39a996a6d8f8436e3258959e7e8
+	sha256sums = SKIP
+
+pkgname = architect
+
