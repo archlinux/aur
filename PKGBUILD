@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=opentyrian-git
-pkgver=1132
+pkgver=1136
 pkgrel=1
 pkgdesc="Open-source port of the DOS shoot-em-up Tyrian"
 url="https://github.com/opentyrian/opentyrian"
@@ -22,12 +22,14 @@ pkgver() {
   git rev-list --count HEAD
 }
 
+build() {
+  cd opentyrian
+  make prefix=/usr all
+}
+
 package() {
   cd opentyrian
-  make DESTDIR="$pkgdir" prefix=/usr install \
-    CPPFLAGS="-DNDEBUG $CPPFLAGS" \
-    CFLAGS="-pedantic -MMD $CFLAGS" \
-    LDFLAGS="$LDFLAGS"
+  make DESTDIR="$pkgdir" prefix=/usr install
 
   install -Dt "$pkgdir/usr/share/applications" -m644 linux/opentyrian.desktop
   for _x in 22 24 32 48 128; do

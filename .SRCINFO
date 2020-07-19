@@ -1,6 +1,6 @@
 pkgbase = opentyrian-git
 	pkgdesc = Open-source port of the DOS shoot-em-up Tyrian
-	pkgver = 1132
+	pkgver = 1136
 	pkgrel = 1
 	url = https://github.com/opentyrian/opentyrian
 	arch = i686
