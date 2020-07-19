@@ -1,6 +1,6 @@
 pkgbase = thunderbird-nightly-zh-cn
 	pkgdesc = Standalone Mail/News reader — Nightly build (zh-cn)
-	pkgver = 80.0a1.20200706
+	pkgver = 80.0a1.20200709
 	pkgrel = 1
 	url = https://www.thunderbird.net
 	install = thunderbird-nightly-zh-cn.install
@@ -40,9 +40,9 @@ pkgbase = thunderbird-nightly-zh-cn
 	source_x86_64 = https://releases.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-80.0a1.zh-CN.linux-x86_64.tar.bz2
 	source_x86_64 = https://releases.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-80.0a1.zh-CN.linux-x86_64.tar.bz2.asc
 	source_x86_64 = https://releases.mozilla.org/pub/thunderbird/nightly/latest-comm-central/thunderbird-80.0a1.en-US.linux-x86_64.txt
-	sha512sums_x86_64 = 80a4784123c6a987359f86231ef77cbe0ff137dc678969053372f4e818f2da9812f5a58d14210dda4889c32b0cf34caf0f72b16714e78b67763db7e28e3cfbb9
+	sha512sums_x86_64 = eb625b45475b15ca84e7b253ff726eaf03c36f80efadec5407d05ffd1620d73a73a18f5a2d7692d3828220227efd92849c32fe64fe611953b7bd5ba780fb37a8
 	sha512sums_x86_64 = SKIP
-	sha512sums_x86_64 = 92bbf558a32c2047168adcdcf927afd4d51c23f06d3d754a25f92bad53e9c21cbd4711f7191bf2a602b8bf8e3043bb6e340affc5fe27af55e33016f3ca073f96
+	sha512sums_x86_64 = 5bcda6fe68ec35a1cf02e15803904d29f9ff412f1165bcdbef0440722be525b1adcb8f4de05b830fa4a15894aebd83d87715ccbb7beb769918ec75866cd3ff73
 
 pkgname = thunderbird-nightly-zh-cn
 

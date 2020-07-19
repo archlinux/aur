@@ -9,7 +9,7 @@ _name=thunderbird
 _channel=nightly
 _version=80.0a1
 pkgname=${_name}-${_channel}-${_lang}
-pkgver=80.0a1.20200706
+pkgver=80.0a1.20200709
 pkgrel=1
 pkgdesc="Standalone Mail/News reader — Nightly build (${_lang})"
 url="https://www.thunderbird.net"
@@ -35,9 +35,9 @@ source_x86_64=("${_url}/${_src}-x86_64.tar.bz2" "${_url}/${_src}-x86_64.tar.bz2.
 
 sha512sums=('0a6344a290cd4a52f1e858db0be97056ec2ce47894b4d3c0e6c68aef644b1ff278ab3a641a4be895d4a9a30ecee85bd1cad5c2348c3f97a1ad9096a8f18d845f'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('80a4784123c6a987359f86231ef77cbe0ff137dc678969053372f4e818f2da9812f5a58d14210dda4889c32b0cf34caf0f72b16714e78b67763db7e28e3cfbb9'
+sha512sums_x86_64=('eb625b45475b15ca84e7b253ff726eaf03c36f80efadec5407d05ffd1620d73a73a18f5a2d7692d3828220227efd92849c32fe64fe611953b7bd5ba780fb37a8'
                    'SKIP'
-                   '92bbf558a32c2047168adcdcf927afd4d51c23f06d3d754a25f92bad53e9c21cbd4711f7191bf2a602b8bf8e3043bb6e340affc5fe27af55e33016f3ca073f96')
+                   '5bcda6fe68ec35a1cf02e15803904d29f9ff412f1165bcdbef0440722be525b1adcb8f4de05b830fa4a15894aebd83d87715ccbb7beb769918ec75866cd3ff73')
 
 validpgpkeys=('097B313077AE62A02F84DA4DF1A6668FBB7D572E'
 	      '14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
