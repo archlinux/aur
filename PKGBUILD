@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("rustscan")
 options=("strip")
 source=("https://github.com/brandonskerritt/RustScan/releases/download/1.0.1/rustscan-1.0.1-x86_64.tar.gz")
-sha256sums=("212618e9fa3bd1ffafc3cb64b4688c9fa8dec20c64d3a7e9008fbde3e76a5855")
+sha256sums=("b29e62903d1577fafee819c06ca2a6660da8a45ab74d46e4a14b6ce95a6892ab")
 
 package() {
     install -Dm755 rustscan -t "$pkgdir/usr/bin/"
