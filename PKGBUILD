@@ -3,7 +3,7 @@
 _pkgname=v
 pkgname=vlang
 pkgver=0.1.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -14,9 +14,9 @@ conflicts=('v' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
         'git+https://github.com/vlang/vc'
         'no-compile.patch')
-md5sums=('76eca181facc25d807883e02e3ee1789'
-         'SKIP'
-         '8e663d8b721620e9fa1fe234757df3ed')
+sha256sums=('cbaded862d56d943c119630bf13974ef4370bb7fff533d244c9f42f7f5c5f3ad'
+            'SKIP'
+            'dde72b11b4ba5b1365b64d99d4256970b84c4d0e80b15f55a1765ea39977ce42')
 
 prepare() {
     cd vc
