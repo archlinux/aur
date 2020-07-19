@@ -6,9 +6,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=202.5428.8
+pkgver=202.6250.18
 eapver=2020.2
-eaprelease=3
+eaprelease=7
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
 pkgrel=1
 epoch=1
@@ -18,24 +18,23 @@ options=('!strip')
 url="https://www.jetbrains.com/rider/eap/"
 license=("custom")
 optdepends=('mono: .NET runtime' 'msbuild-15-bin: build .NET Core projects')
-provides=("rider")
-conflicts=("rider")
+provides=("rider-eap")
 groups=("development" "IDE" "editor" "jetbrains")
 
-source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
+source=("https://download-cf.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('2b333c6cc0323e6fd8caa8f399a41a21bd262153fd51e8d4f0aa061349113bc1'
-            'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
+sha256sums=('cb8d76aaac0a232522e737f86331dc90e001b90b73871ce290c3f954c3fb2758'
+            'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf')
 
 package() {
     cd "${srcdir}"
     install -dm 755 \
-        "${pkgdir}/opt/${pkgname}" \
+        "${pkgdir}/usr/share/${pkgname}" \
         "${pkgdir}/usr/bin/" \
         "${pkgdir}/usr/share/applications/"
 
-    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
+    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/"* "${pkgdir}/usr/share/${pkgname}"
 
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
+    ln -s "/usr/share/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
 }
