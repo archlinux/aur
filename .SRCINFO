@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 14.0.1 Oracle Build.
-	pkgver = 14.0.1b7
+	pkgdesc = Java OpenJDK 14.0.2 Oracle Build.
+	pkgver = 14.0.2b12
 	pkgrel = 1
 	url = https://jdk.java.net/14
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = java-openjdk-bin
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=14.0.1
-	provides = java-environment-openjdk=14.0.1
-	provides = java-runtime=14.0.1
-	provides = java-runtime-openjdk=14.0.1
-	provides = java-runtime-headless=14.0.1
-	provides = java-runtime-headless-openjdk=14.0.1
+	provides = java-environment=14.0.2
+	provides = java-environment-openjdk=14.0.2
+	provides = java-runtime=14.0.2
+	provides = java-runtime-openjdk=14.0.2
+	provides = java-runtime-headless=14.0.2
+	provides = java-runtime-headless-openjdk=14.0.2
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	conflicts = jdk-openjdk
-	source = openjdk-14.0.1_7_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk14.0.1/664493ef4a6946b186ff29eb326336a2/7/GPL/openjdk-14.0.1_linux-x64_bin.tar.gz
-	sha256sums = 22ce248e0bd69f23028625bede9d1b3080935b68d011eaaf9e241f84d6b9c4cc
+	source = openjdk-14.0.2_12_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
+	sha256sums = 91310200f072045dc6cef2c8c23e7e6387b37c46e9de49623ce0fa461a24623d
 
 pkgname = java-openjdk-bin
 
