@@ -4,7 +4,7 @@
 pkgname=oneshot
 
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc='First-come-first-serve single-fire HTTP/HTTPS server'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -30,8 +30,10 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname"           -t"$pkgdir/usr/bin/"
-  install -Dm644 "doc/man/$pkgname.1" -t"$pkgdir/usr/share/man/man1/"
+  install -Dm755 "$pkgname"                        -t"$pkgdir/usr/bin/"
+  install -Dm644 "doc/man/$pkgname.1"              -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 README.md "${pkgname}_banner.png" -t"$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE                           -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 
