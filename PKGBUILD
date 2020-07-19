@@ -1,12 +1,12 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 pkgname=ktexteditor-git
 pkgver=r2378.71b4295a
-pkgrel=1
+pkgrel=2
 pkgdesc='KTextEditor framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/ktexteditor'
 license=(LGPL)
-depends=(kparts-git libgit2)
+depends=(kparts-git syntax-highlighting-git libgit2 editorconfig-core-c-git)
 makedepends=(extra-cmake-modules-git git)
 provides=(ktexteditor)
 conflicts=(ktexteditor)
