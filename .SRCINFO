@@ -1,0 +1,33 @@
+pkgbase = platypush
+	pkgdesc = Universal multi-platform command executor and automation manager
+	pkgver = 0.12.10
+	pkgrel = 1
+	url = https://github.com/BlackLight/platypush
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-yaml
+	depends = redis
+	depends = python-redis
+	depends = python-requests
+	depends = python-sqlalchemy
+	depends = python-websockets
+	depends = python-websocket-client
+	depends = python-wheel
+	depends = python-flask
+	depends = python-pip
+	depends = python-dateutil
+	depends = python-frozendict
+	depends = python-bcrypt
+	optdepends = python-paho-mqtt: MQTT integrations support
+	optdepends = python-pybluez: Bluetooth support
+	optdepends = gattlib: Low-energy Bluetooth devices support
+	optdepends = python-paramiko: SSH support
+	optdepends = python-croniter: Platypush cron support
+	optdepends = python-pyserial: Arduino/serial device support
+	options = !strip
+	source = platypush-0.12.10.tar.gz::https://github.com/BlackLight/platypush/archive/v0.12.10.tar.gz
+	sha512sums = 9e9c0c2450695c0f6fb00cdeb54c02fa952dca74544be40134cd6b78c994beadc223b1ae59952bb88d155fe265caa3a9ba554852f09a04e85c3cb99a754bb456
+
+pkgname = platypush
+
