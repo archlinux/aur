@@ -1,0 +1,16 @@
+pkgbase = fsharp-language-server
+	pkgdesc = Language server for F#, utilizing the Language Server Protocol
+	pkgver = 0.1.27
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/fsprojects/fsharp-language-server
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=3.1.3
+	depends = dotnet-host>=3.1.3
+	options = !strip
+	source = https://github.com/fsprojects/fsharp-language-server/archive/v0.1.27.tar.gz
+	md5sums = e19288c77c6511ad21fa3b8f66b9c71e
+
+pkgname = fsharp-language-server
+
