@@ -1,0 +1,15 @@
+pkgbase = tvsm-git
+	pkgdesc = A simple command-line TV show manager
+	pkgver = r306.64c0f52
+	pkgrel = 1
+	url = https://github.com/TonCherAmi/tvsm
+	arch = x86_64
+	license = LGPL3
+	depends = guile
+	conflicts = tvsm-git
+	options = !strip
+	source = tvsm::git+https://github.com/TonCherAmi/tvsm
+	sha256sums = SKIP
+
+pkgname = tvsm-git
+
