@@ -1,0 +1,16 @@
+pkgbase = syntax-highlighting-git
+	pkgdesc = Syntax highlighting engine for structured text and code
+	pkgver = v5.30.0.rc1.r720.g7f57f9c
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/syntax-highlighting
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = qt5-base
+	source = git+https://github.com/KDE/syntax-highlighting.git
+	md5sums = SKIP
+
+pkgname = syntax-highlighting-git
+
