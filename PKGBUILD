@@ -7,17 +7,17 @@
 # user having to install all kinds of weird things that are not in the AUR or in pacman.
 
 pkgname=chaskis
-pkgver=0.10.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A generic framework written in C# for making IRC Bots."
 arch=('any')
 url="https://github.com/xforever1313/Chaskis/"
 license=('BSL')
-depends=('mono>=5.4.0') # https://docs.microsoft.com/en-us/dotnet/standard/net-standard - .netstandard is implemented in mono 5.4, which is required.
+depends=('dotnet-runtime>=3.1.0')
 provides=('chaskis')
 conflicts=('chaskis')
-source=("https://files.shendrick.net/projects/chaskis/releases/$pkgver/linux/debian/chaskis.deb")
-sha256sums=('fe03a07766eeb681da06c02de35ce03fbc298803d8902318733b1c5107c05b4e')
+source=("https://files.shendrick.net/projects/chaskis/releases/$pkgver/debian/chaskis.deb")
+sha256sums=('043e8e9449c665c6790d20c8a5f3e4d25c9ff518bc8645389a9429e95614eb2f')
 validpgpkeys=()
 
 package() {
