@@ -10,7 +10,7 @@ pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
-makedepends=('linux-headers' 'dkms' 'fakeroot')
+makedepends=('linux-headers' 'dkms')
 provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')

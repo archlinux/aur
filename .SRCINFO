@@ -7,7 +7,6 @@ pkgbase = nvidia-beta
 	license = custom
 	makedepends = linux-headers
 	makedepends = dkms
-	makedepends = fakeroot
 	provides = nvidia=450.57
 	provides = nvidia-beta=450.57
 	conflicts = nvidia
