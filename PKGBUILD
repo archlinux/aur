@@ -3,7 +3,7 @@
 
 _pkgname=orgmk
 pkgname=orgmk-git
-pkgver=r77.2fa2bde
+pkgver=r81.a24a1c1
 pkgrel=1
 pkgdesc='Export Org mode documents to HTML, PDF, etc.'
 url='https://github.com/fniessen/orgmk'
@@ -17,8 +17,6 @@ provides=('orgmk')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
