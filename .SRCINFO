@@ -1,0 +1,20 @@
+pkgbase = prosopopee
+	pkgdesc = A static website generator to make beautiful customizable pictures galleries that tell a story
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Psycojoker/prosopopee
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-path
+	depends = python-docopt
+	depends = python-ruamel-yaml
+	depends = python-future
+	depends = python-pillow
+	conflicts = prosopopee-git
+	source = prosopopee-1.0.1.tar.gz::https://github.com/Psycojoker/prosopopee/archive/1.0.1.tar.gz
+	sha256sums = f0e46b200cddb37ac3890f8ae8293e2f59583ada2fe646d9e42138a49fab558c
+
+pkgname = prosopopee
+
