@@ -3,7 +3,7 @@
 
 pkgname=i3-gaps-rounded-git
 pkgver=4.16.1.r184.g00181678
-pkgrel=2
+pkgrel=3
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -45,7 +45,7 @@ build() {
     --disable-sanitizers
 
   # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
-  make CPPFLAGS+="-U_FORTIFY_SOURCE"
+  make CPPFLAGS+=" -fcommon"
 }
 
 package() {
