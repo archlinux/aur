@@ -9,7 +9,7 @@ pkgver() {
     "$(grep ^Version PKG-INFO | sed 's/.\+: \?//')" \
     "$(git rev-list --count HEAD)"
 }
-pkgver=6.00.r322
+pkgver=6.00.r326
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -24,7 +24,7 @@ makedepends=('git')
 depends=('python-chardet')
 
 changelog=CHANGELOG
-source=("git+$url.git#commit=cb2fe7089985a19abfb63f9afb7c818bf6633f24")
+source=("git+$url.git#commit=bb4e959ebeea78ddc1569c8397f5aca7e1166e35")
 b2sums=('SKIP')
 
 
