@@ -1,7 +1,7 @@
 # Maintainer: James McMurray <jamesmcm03@gmail.com>
 
 _pkgname="vopono"
-pkgname=vopono
+pkgname=vopono-bin
 pkgver=0.2.1
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
