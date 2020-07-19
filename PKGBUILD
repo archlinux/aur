@@ -3,7 +3,6 @@
 pkgname=nvidia-390xx-lts
 pkgver=390.138
 pkgrel=3
-epoch=1
 pkgdesc="NVIDIA drivers for linux-lts, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
