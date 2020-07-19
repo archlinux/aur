@@ -2,8 +2,8 @@
 # Contributor: Benjamin Chretien <chretien dot b +aur at gmail dot com>
 
 pkgname=casadi
-pkgver=3.5.1
-pkgrel=2
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="Symbolic framework for automatic differentiation and numeric optimization"
 arch=('i686' 'x86_64')
 url="https://github.com/casadi/casadi"
@@ -11,15 +11,8 @@ license=('GPL3')
 depends=('python' 'gcc-fortran' 'lapack' 'tinyxml' 'swig' 'sundials' 'ipython'
          'python-numpy' 'python-scipy' 'python-matplotlib' 'coin-or-ipopt')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/casadi/${pkgname}/archive/${pkgver}.tar.gz"
-        'swig4.patch')
-sha256sums=('73eb096837bee2d1bbdfb8565f07c4a9d62b30cf831ad1ce3196df1f1770ae4d'
-            'd84cca25f614a35b92436e30ae62df10654dc92ac852d0786000b5fe8c93a07c')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/swig4.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/casadi/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('7107e9dad9c6ffd6433e68f646a7b8da9e37daf7e7dd69e828b3f486cd428443')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
