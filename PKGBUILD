@@ -2,7 +2,7 @@
 # Contributor: richli <rich at dranek dot com>
 
 pkgname=python-h5netcdf
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Pythonic interface to netCDF4 via h5py"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/h/h5netcdf/h5netcdf-$pkgver.tar.gz"
 )
 sha256sums=(
-    'b0df12f4692817cf6d8e2fca95f689e61aa68f2f39aea90fd1790fe5ac8d2cbb'
+    'b94af698f99d57aac7828033f1c42ad014f5bda7ee5819f9014b4fbef5b56b25'
 )
 
 build() {
