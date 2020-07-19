@@ -2,7 +2,7 @@
 
 _pkgname="vopono"
 pkgname="vopono-git"
-pkgver=r50.c1b6c30
+pkgver=r59.4a0daab
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('x86_64')
@@ -32,8 +32,4 @@ package() {
 
   install -Dm755 target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  mkdir -p "${pkgdir}/usr/share/doc/${_pkgname}/"
-  cp -r configuration/* "${pkgdir}/usr/share/doc/${_pkgname}/"
-  chmod -R 644 "${pkgdir}/usr/share/doc/${_pkgname}"
-  find "${pkgdir}/usr/share/doc/${_pkgname}" -type d -print0 |xargs -0 chmod 755
 }
