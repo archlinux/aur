@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.7.9
 pkgver=5.7.v.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,17 +20,17 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
-	5012_enable-cpu-optimizations-for-gcc91.patch
+	'5013_enable-cpu-optimizations-for-gcc10.patch'
 	# asusbat patch is back!
 	asusbat.patch
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '8d133c21a6da9d714b1000820fe3c9e4d1ff66e059ecdf2a6ca5b626910acede'
+            '2c8ee46724a4766995ef8195defe9cb372cd87a218455aa96170ee18f935f0c1'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
-            #patch gentoo
-            '37b801cd6d3fdd205fcd18676bd0f399ae6558fb5d074f1710f8464c8034482c'
+            #gentoopatch
+            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47'
             #asusbat.patch
             '93d24cbf50a3f9920bbdc2b07f7f665672089e2d7eda897ffba0587d6cf9ab51'
 )
