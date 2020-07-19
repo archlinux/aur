@@ -17,7 +17,7 @@ depends=('python-pyqt5'
          'python-pyinquirer'
          'ttf-fira-code'
          'python-prompt_toolkit1014')
-makedepends=('python-pip')
+makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/65/86/0913ebb4671d39ce5228995a4235ea60d94786ff4fa5751e851e3fe9fdc9/gonha-${pkgver}.tar.gz"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
 sha256sums=('5bddfc1e462ae2761c956b7eace40dee1d4e36aea2bc1e26b9e64d2d81fa39fb'
