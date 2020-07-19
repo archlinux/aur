@@ -1,18 +1,19 @@
 # Maintainer: Antony Jordan <antony.r.jorda at gmail dot com>
 pkgname=nanovna-saver
-pkgver=0.2.2
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="PC control for the NanoVNA."
 arch=(any)
 url="https://github.com/mihtjel/nanovna-saver"
 license=('GPL3')
-depends=(python-pyqt5 python-scipy python-numpy python-pyserial)
+depends=(python-pyqt5 python-scipy python-numpy python-pyserial qt5-base)
 makedepends=(python-setuptools)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mihtjel/nanovna-saver/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-md5sums=('918c9425ca088325def0cbc02e5c1a5d'
+
+md5sums=('30f70ebf4fc180b866d3587cb0689eba'
          '7905a0edb1bfa830d677aa79a6133229')
 
 build() {
