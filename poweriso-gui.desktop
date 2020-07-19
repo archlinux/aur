@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Qt;DiscBurning;
+Exec=poweriso-gui %f
+Icon=poweriso-gui
+MimeType=application/x-iso;
+Name=PowerISO
+GenericName=CD/DVD image manipulator
+StartupNotify=true
+Terminal=false
+Type=Application
