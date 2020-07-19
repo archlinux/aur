@@ -4,7 +4,7 @@
 _pkgname=libtd
 pkgname=${_pkgname}-git
 pkgver=1.6.0.r756.gf45d80fe
-pkgrel=1
+pkgrel=2
 pkgdesc='TDLib (Telegram Database library) is a cross-platform library for building Telegram clients (Git)'
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
@@ -22,7 +22,7 @@ makedepends=(
   'php'
 )
 provides=('libtd')
-conflicts=('telegram-tdlib')
+conflicts=('telegram-tdlib' 'libtd')
 source=("$_pkgname::git+https://github.com/tdlib/td.git")
 sha256sums=('SKIP')
 
