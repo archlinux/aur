@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=liketaskmanager-git
-pkgver=2.2.r0.gfe7ebc6
+pkgver=2.3.r0.g2b37205
 pkgrel=1
 pkgdesc="Tool that mimics the permformance monitoring of Windows Task Manager"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
