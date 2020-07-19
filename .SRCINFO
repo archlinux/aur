@@ -2,7 +2,6 @@ pkgbase = nvidia-390xx-lts
 	pkgdesc = NVIDIA drivers for linux-lts, 390xx legacy branch
 	pkgver = 390.138
 	pkgrel = 3
-	epoch = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
