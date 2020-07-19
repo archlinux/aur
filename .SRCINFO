@@ -1,0 +1,17 @@
+pkgbase = kiftd
+	pkgdesc = kiftd是一款专门面向个人、团队和小型组织的私有网盘系统。轻量、开源、完善。
+	pkgver = 1.0.35
+	pkgrel = 1
+	url = https://github.com/KOHGYLW/kiftd
+	arch = any
+	license = custom
+	depends = java-runtime
+	provides = kiftd-git
+	conflicts = kiftd-git
+	source = kiftd-1.0.35.tar.gz::https://github.com/KOHGYLW/kiftd/archive/v1.0.35-release.tar.gz
+	source = kiftd.sh
+	sha256sums = 9fe7699cf8f11bf9d035ad599c22cb09200d5701644d9deb48dce5e86d7478d1
+	sha256sums = cc558720e8460299aa9856a6b3bf6661a62fb60438932dd81a9041be88dbee14
+
+pkgname = kiftd
+
