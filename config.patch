@@ -1,11 +1,11 @@
---- config.go	2020-07-17 23:22:10.606079489 -0400
-+++ config.go.1	2020-07-17 23:29:28.220527692 -0400
-@@ -21,7 +21,7 @@
+--- config.go	2020-07-19 08:32:50.427009676 -0400
++++ config.go.1	2020-07-19 08:33:36.834481459 -0400
+@@ -20,7 +20,7 @@
  
  func initializeConfigIfNot() {
  	log.Println("Checking if config needs to be initialized")
 -	conf := config{Threshold: 95, DisplayMonitorSources: false, EnableUpdates: true}
 +	conf := config{Threshold: 95, DisplayMonitorSources: false, EnableUpdates: false}
- 	configdir := filepath.Join(os.Getenv("HOME"), configDir)
+ 	configdir := configDir()
  	ok, err := exists(configdir)
  	if err != nil {
