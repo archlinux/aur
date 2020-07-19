@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=7.0.0.r28581.562902dc1bb6
+pkgver=7.0.0.r28587.6310bb807752
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -49,19 +49,16 @@ prepare () {
 
 build() {
   cd ${_hgrepo}
+
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
-  [[ -d build ]] || mkdir build
+  [[ -d build ]] && rm -rf build
+  mkdir build
   cd build
-  [[ $CARCH == "x86_64" ]] && _arch=amd64
-  [[ $CARCH == "i686" ]] && _arch=i386
 
   ../configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 \
 	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
 	       --with-umfpack --disable-java --with-hdf5 --enable-docs 
-    
-  export CLASSPATH=.:$CLASSPATH
-#  CFLAGS+=" -fcommon" make || true
-   make
+  make
 }
 
 check() {
