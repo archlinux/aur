@@ -1,6 +1,6 @@
 pkgbase = linux-fix_navi_reset
 	pkgdesc = experimental fix for AMD-Cards with "Unknown PCI header type 127" by Geoffrey McRae
-	pkgver = 5.7.8.arch1
+	pkgver = 5.7.9.arch1
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.7.6-arch1
 	arch = x86_64
