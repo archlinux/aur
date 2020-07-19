@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.52
 pkgver=5.4.v.52
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,18 +20,18 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
-	'5012_enable-cpu-optimizations-for-gcc91.patch'
+	'5013_enable-cpu-optimizations-for-gcc10.patch'
 	# i2c write rework patch
 	'timerrework.patch'
 
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '292d8287c868b04ec7edc1bd2ab97a0b767e9dedfdad47bbe7e70c959cb607e6'
+            '21b3f0183ace40f57864fd4ad37a919cd4f4f48278e409a8aec23c6b76810832'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
-            #patch file
-            'fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b'
+            #gentoopatch file
+            '27b7fc535ade94b636c3ec4e809e141831e9465a0ef55215a9852b87048629e2'
             #i2c write rework patchfile
             '44e739d674b0909d3dd1edb29ad9c4ab6543c32f488cbbcc30ba0fdc2bf902dc'
 )
