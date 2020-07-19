@@ -1,0 +1,17 @@
+pkgbase = sshutils
+	pkgdesc = Essential SSH Utilities
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/td0m/sshutils
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = strace
+	provides = sshutils
+	conflicts = sshutils
+	source = sshutils::git+https://github.com/td0m/sshutils.git
+	sha512sums = SKIP
+
+pkgname = sshutils
+
