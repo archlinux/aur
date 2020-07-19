@@ -1,10 +1,11 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Danila Fedotov <danilafedotov1761@gmail.com>
+# Contributer: Felix Golatofski <contact@xdfr.de>
 # Contributor: OriginCode <origincoder@yahoo.com
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=atom-transparent
-pkgver=1.48.0
-_commit=5df9cd3d774352321ffeb65570de77906792f8bc
+pkgver=1.49.0
+_commit=1d0abfabc682cbb43b589015be0813fe7cfd2182
 pkgrel=1
 pkgdesc='A hackable text editor for the 21st Century, with transparency patch'
 arch=('x86_64')
