@@ -1,18 +1,17 @@
 pkgbase = qgnomeplatform-git
 	pkgdesc = Qt Platform Theme aimed to accomodate as much of GNOME settings as possible
-	pkgver = 0.3.r7.gd67dae6
-	pkgrel = 2
-	url = https://github.com/MartinBriza/QGnomePlatform
+	pkgver = 0.6.1.r8.g53d7924
+	pkgrel = 1
+	url = https://github.com/FedoraQt/QGnomePlatform
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
 	depends = gtk3
 	depends = qt5-wayland
-	depends = qt5-x11extras
 	provides = qgnomeplatform
 	conflicts = qgnomeplatform
-	source = git+https://github.com/MartinBriza/QGnomePlatform.git
+	source = git+https://github.com/FedoraQt/QGnomePlatform.git
 	md5sums = SKIP
 
 pkgname = qgnomeplatform-git

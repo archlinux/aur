@@ -1,16 +1,16 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=qgnomeplatform-git
-pkgver=0.3.r7.gd67dae6
-pkgrel=2
+pkgver=0.6.1.r8.g53d7924
+pkgrel=1
 pkgdesc="Qt Platform Theme aimed to accomodate as much of GNOME settings as possible"
 arch=('i686' 'x86_64')
-url="https://github.com/MartinBriza/QGnomePlatform"
+url="https://github.com/FedoraQt/QGnomePlatform"
 license=('LGPL2.1')
-depends=('gtk3' 'qt5-wayland' 'qt5-x11extras')
+depends=('gtk3' 'qt5-wayland')
 makedepends=('git')
 provides=('qgnomeplatform')
 conflicts=('qgnomeplatform')
-source=('git+https://github.com/MartinBriza/QGnomePlatform.git')
+source=('git+https://github.com/FedoraQt/QGnomePlatform.git')
 md5sums=('SKIP')
 
 pkgver() {
