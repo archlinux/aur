@@ -4,16 +4,17 @@ _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
 pkgver=1.90.1.r0.g82aed23
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)
 url="https://github.com/3v1n0/libfprint"
 license=(LGPL)
-depends=(libusb nss pixman gnutls openssl)
-makedepends=(git meson gtk-doc)
+depends=(libusb nss pixman gnutls openssl gobject-introspection glib2 cairo pixman nss openssl)
+makedepends=(git meson gtk-doc pkgconf)
 optdepends=(
   "fprintd: D-Bus daemon that manages fingerprint readers"
   "validity-sensors-tools: Flash, factory reset and pair Validity fingerprint sensors 009x"
+  "gtk3: (make) Build GTK-based demos"
 )
 groups=(fprint-git)
 provides=(libfprint libfprint-2.so=2-64 libfprint-vfs009x libfprint-vfs0090 libfprint-vfs0097)
