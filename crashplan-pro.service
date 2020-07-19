@@ -5,7 +5,7 @@ After=network.target
 [Service]
 
 Type=forking
-PIDFile=/opt/crashplan/CrashPlanEngine.pid
+PIDFile=/opt/crashplan/Code42Service.pid
 EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
 ExecStart=/opt/crashplan/bin/CrashPlanEngine start
