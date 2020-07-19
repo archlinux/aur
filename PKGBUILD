@@ -3,7 +3,7 @@
 pkgname=reqview
 pkgver=2.8.2
 pkgrel=1
-pkgdesc="Requirements Management Tool For Software and Systems Development Where Requirements Matter"
+pkgdesc="A simple yet powerful requirements management tool in which you can easily capture structured requirements for a software or system product and track traceability to design, tests and risks of the developed product"
 arch=('x86_64')
 url='https://www.reqview.com'
 license=("custom:${pkgname}")
