@@ -3,7 +3,7 @@
 pkgname=python-ehforwarderbot-git
 _provide=${pkgname%-git}
 _name=${_provide#python-}
-pkgver=r544.d43f1c3
+pkgver=r587.7fa06e4
 pkgrel=1
 pkgdesc='An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.'
 arch=('any')
@@ -24,7 +24,7 @@ source=("$_provide"::"git+${url}.git"
 	ehforwarderbot@.service)
 md5sums=(
 	'SKIP'
-	'e5acd5cc51ffb0ff891d56c9fa7dcb10')
+	'2f7d9209aaed5ae6144877914a9d2559')
 
 pkgver() {
 	cd "$srcdir/$_provide"
