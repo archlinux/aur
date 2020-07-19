@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20200521.be1ac3330
+	pkgver = 20200716.cccdd578e
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = mupdf-git
 	depends = jbig2dec
 	depends = libjpeg-turbo
 	depends = openjpeg2
+	depends = gumbo-parser
 	provides = mupdf
 	provides = mupdf-gl
 	provides = mupdf-tools

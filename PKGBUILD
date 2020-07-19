@@ -4,14 +4,14 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20200521.be1ac3330
+pkgver=20200716.cccdd578e
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
-depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2')
+depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/mujs.git'
         'git://git.ghostscript.com/thirdparty-lcms2.git'
