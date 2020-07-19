@@ -23,4 +23,3 @@ pkgbase = zfs-utils
 	b2sums = 491a7f20b0c6b4ce4fcedab617b2d7a4f2a01f1bc8f1ae57efde2fb22c2ab09a1107a8f4877b95c27576fe4216d01f181936787f51ce532bb13c5806badf7519
 
 pkgname = zfs-utils
-

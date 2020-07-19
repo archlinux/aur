@@ -39,13 +39,11 @@ build() {
                 --sysconfdir=/etc \
                 --sbindir=/usr/bin \
                 --with-mounthelperdir=/usr/bin \
-                --libdir=/usr/lib \
-                --datadir=/usr/share \
-                --includedir=/usr/include \
                 --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib/zfs \
                 --with-python="$PWD/python3-fake" \
                 --enable-pyzfs=no \
+                --enable-systemd \
                 --with-config=user
     make
 }
