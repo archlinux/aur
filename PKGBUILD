@@ -7,7 +7,7 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20200417.f9801709
+pkgver=20200718.bd9d796e
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
@@ -20,7 +20,7 @@ source=("git+https://github.com/mholt/caddy.git"
         'conf')
 sha256sums=('SKIP'
             'e99057c26b2670e9aa382c8cc6b63f4437f8020e2eb4e04d97a01a3e4d68779f'
-            '6a826854b8b10cadd2bb8d4107b91c5703368f60d96bfbd2c0d8f8c782a285be'
+            'f07d2b72118e03618bbb1feaeee7f9ce70a157629b8eed799e84c064f3b4f81e'
             '61644647161ddf5045c99e389eac8dacc0eb0e3bca0b9271a96add6671b2b9b7')
 
 provides=("${_pkgname}")
