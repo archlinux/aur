@@ -7,17 +7,17 @@
 # Note: a part of build() and check() require a graphical environment
 
 pkgname=gnofract4d
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="Create beautiful fractal images"
 arch=('any')
-url="https://edyoung.github.io/gnofract4d/"
+url="https://github.com/fract4d/gnofract4d"
 license=('BSD')
 depends=('gtk3' 'libjpeg' 'libpng' 'python-cairo' 'python-gobject')
-makedepends=('docbook-xsl' 'libxslt')
+makedepends=('docbook-xsl' 'hugo' 'libxslt')
 checkdepends=('python-pytest')
 source=("https://github.com/edyoung/gnofract4d/archive/v$pkgver.tar.gz")
-md5sums=('349582327acf46c973638169b8f07afd')
+md5sums=('d815353c682eab9787e2fdad26f625ba')
 
 #prepare() {
 #  cd $pkgname-$pkgver
@@ -26,6 +26,11 @@ md5sums=('349582327acf46c973638169b8f07afd')
 #            awk '{ print $2 }' | awk -F"-" '{ print $1 }')"/xhtml/docbook.xsl|" \
 #            doc/gnofract4d-manual/C/gnofract4d.xsl
 #}
+
+prepare() {
+  cd $pkgname-$pkgver
+  git submodule update --init
+}
 
 build() {
   cd $pkgname-$pkgver
