@@ -3,7 +3,7 @@
 
 pkgname=elektra
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
@@ -19,14 +19,19 @@ sha256sums=('9b4872beb75cd4b1e2e4426920537150a323ae07463d014579a27175fa8dad71')
 
 build() {
   cd lib$pkgname-$pkgver
-  [[ -d build ]] || mkdir build
+  LANG=C
+  [[ -d build ]] && rm -rf build
+  mkdir build
   cd build
+  JAVA_HOME=/usr/lib/jvm/`archlinux-java get`
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_INSTALL_RPATH:PATH=/usr/lib \
+	-DCMAKE_C_FLAGS:STRING=" -fcommon" \
+	-DCMAKE_CXX_FLAGS:STRING=" -fcommon" \
         -DPLUGINS:STRING="ALL" \
         -DTOOLS:STRING="ALL" \
         -DBUILD_STATIC:STRING=OFF \
-        -DBINDINGS:STRING="ALL" \
+        -DBINDINGS:STRING="ALL;-ruby" \
         -DSWIG_EXECUTABLE:STRING="/usr/bin/swig" \
         -DLUA_INCLUDE_DIR:PATH=/usr/include \
         -DLUA_LIBRARY:STRING=/usr/lib/liblua.so \
