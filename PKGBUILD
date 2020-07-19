@@ -3,7 +3,7 @@ pkgname=proxmox-backup-client
 pkgver=0.8.7
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.proxmox.com"
 license=('AGPL3')
 depends=('gcc-libs'
@@ -16,7 +16,7 @@ makedepends=('cargo' 'git' 'python-docutils')
 source=("$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
 	"0001-adapt-cargo-toml-and-remove-systemd-linking.patch")
 sha512sums=('SKIP'
-            'aefdb72d0849f3e22751ba3639868f0cf46d71353618f9488ec3c4cebe53121f53d2892cb552140808c64759503db527b32b9a3183a7eef16e099a3f881b2629')
+            'd664e912e8196b7ca11603d42b7db58dad3b2a6afbaec665c6a8a3e3756ef131d1eca43bc00790049fa1edbe469c46a8f071601118f761f4570a596b046646f9')
 
 prepare() {
   cd "$pkgname-$pkgver"
