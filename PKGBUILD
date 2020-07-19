@@ -21,19 +21,17 @@ pkgver() {
 
 build() {
   cd $pkgname
-  ./configure --prefix=/usr --with-readline --with-ffcall --with-module=asdf --with-dynamic-ffi src
-
-  cd src
-  ./makemake --prefix=/usr --with-readline --with-ffcall --with-module=asdf --with-dynamic-ffi > Makefile
+  ./configure --prefix=/usr --with-readline --with-ffcall --with-module=asdf --with-dynamic-ffi --with-threads=POSIX_THREADS --with-debug --config build
+  cd build
   make
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname/build
   make check || :
 }
 
 package() {
-  cd $pkgname/src
+  cd $pkgname/build
   make DESTDIR=$pkgdir install
 }
