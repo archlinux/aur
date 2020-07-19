@@ -1,5 +1,5 @@
 # Maintainer: fiskhest <johan+bspi at radivoj dot se>
-# Maintainer: Adam Rutkowski <hq at mtod dot org>
+# Maintainer: hq1 <hq at mtod dot org>
 
 _pkgname=bspi
 pkgname=${_pkgname}-git
