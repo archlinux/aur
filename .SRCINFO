@@ -5,7 +5,7 @@ pkgbase = kiftd
 	url = https://github.com/KOHGYLW/kiftd
 	arch = any
 	license = custom
-	depends = java-runtime
+	depends = java-runtime>=8
 	provides = kiftd-git
 	conflicts = kiftd-git
 	source = kiftd-1.0.35.tar.gz::https://github.com/KOHGYLW/kiftd/archive/v1.0.35-release.tar.gz

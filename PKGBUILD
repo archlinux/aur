@@ -7,7 +7,7 @@ pkgdesc="kiftd是一款专门面向个人、团队和小型组织的私有网盘
 arch=('any')
 url="https://github.com/KOHGYLW/kiftd"
 license=('custom')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 provides=('kiftd-git')
 conflicts=('kiftd-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KOHGYLW/${pkgname}/archive/v${pkgver}-release.tar.gz"
