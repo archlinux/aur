@@ -3,7 +3,7 @@
 
 _pkgname=clamav
 pkgname=$_pkgname-light
-pkgver=0.102.3
+pkgver=0.102.4
 pkgrel=1
 pkgdesc='Anti-virus toolkit for Unix'
 url='https://www.clamav.net/'
@@ -22,7 +22,7 @@ source=(https://www.clamav.net/downloads/production/${_pkgname}-${pkgver}.tar.gz
         clamav.logrotate
         clamav.tmpfiles
         clamav.sysusers)
-sha512sums=('d239718814b303fb0f1655d9bdaf3675d888eea57e786d927eafabb7b6f58cd7f5fb7dc149511c2af6f800dcc919f2e1d6954110d45b9e16619c632e8d2b37f2'
+sha512sums=('29893deb8d2d913dff72331875d3dc3a10356bfb254ddfe1c1933b3ea4f8b76c96a1b840f95e72be36cbc0e00b9ec35e395225ef264761f53e709bb1026a4f09'
             'SKIP'
             '9cb168c1c16bb43c99900d7ef34456e3f3b593d4d1943c875a0306bc86fd3872cb78e9e1413dcba93579e01b96d466c9eea1975e24190193663b7986c4525d48'
             'c5443634399bd87fe0d0192518538ffdb7296a8437b5b0160a0fbd58696b01285de3237e3feb552c0095c49e576832dec2e2b2107eef2be42424ed7edd13cd19'
