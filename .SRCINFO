@@ -1,0 +1,17 @@
+pkgbase = git-get
+	pkgdesc = Blazingly fast, incredibly handy git clone alternative
+	pkgver = v0.0
+	pkgrel = 1
+	url = https://github.com/b1f6c1c4/git-get
+	arch = any
+	license = MIT
+	depends = git
+	depends = bash
+	depends = grep
+	depends = sed
+	depends = awk
+	source = https://github.com/b1f6c1c4/git-get/releases/download/v0.0/git-get.tar.xz
+	sha256sums = af46f5eeee7227dc2df37de48e9fdcfeae07034b9b20569cbdb60a2a7668b685
+
+pkgname = git-get
+
