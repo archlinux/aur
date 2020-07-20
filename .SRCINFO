@@ -1,0 +1,36 @@
+pkgbase = waterfall
+	pkgdesc = A fork of BungeeCord to improve performance and stability.
+	pkgver = 366
+	pkgrel = 1
+	url = https://papermc.io/
+	install = waterfall.install
+	arch = any
+	license = MIT
+	makedepends = wget
+	depends = java-runtime-headless>=8
+	depends = screen
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create backups
+	optdepends = netcat: required in order to suspend an idle server
+	noextract = waterfall.366.jar
+	backup = etc/conf.d/waterfall
+	source = waterfall.366.jar::https://papermc.io/ci/job/Waterfall/lastSuccessfulBuild/artifact/Waterfall-Proxy/bootstrap/target/Waterfall.jar
+	source = waterfall-backup.service
+	source = waterfall-backup.timer
+	source = waterfall.service
+	source = waterfall.conf
+	source = waterfall.sh
+	source = LICENSE.txt::https://raw.githubusercontent.com/PaperMC/Waterfall/master/LICENSE.txt
+	sha512sums = SKIP
+	sha512sums = ea7d97c4193efca14a286fd72dbf44c0b20ec94be40c5da646c141f7cd30d1e67c07349f2d1edc5e08489b0aecec4d940ea8fbca6da03ebd1f04802a67262f63
+	sha512sums = 2e21b6e5c9bc4ca4ea7cedd79811afcb4a9b0dc0f51a92fa2bc4dcf33f0f7ef88a165e3621cb4752877c69758bba651016761c69e53f9be93ce7c3c2a372c1a4
+	sha512sums = 6a65fd2d0e18000b79adfa3ad640b0c2f1329f2210cbd922f22d2bb957ca8b336e76707c12f859c9fab7d9eca65bf6833756d22da0f92603c54fab5f9ca1dbf2
+	sha512sums = 80ed2d6a8fb3f3995e37a17619403697e21dd99d21839e8b807b289113f9fe44e815ebe004f41c371a71182fb0800c09a381a6be0cac53ca3907799b10717244
+	sha512sums = e55d174655d82eb45b0f9afb3276db7db5feb5b964265a36853f24e6da37d57e8702276e357e1d75234477422a25ac89103d6ac87c11a7e50142e50c6249d1c8
+	sha512sums = SKIP
+
+pkgname = waterfall
+
