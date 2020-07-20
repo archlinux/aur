@@ -17,7 +17,7 @@ makedepends=(
 provides=("yay")
 conflicts=("yay")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.jojii.de/jojii/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('76f692a699159b59171bf3542f6dd44d30d7bb00ffeaf257fbc2132c2c14baed')
+sha256sums=('47357999b7e38ba8c2a0315ab5dbec33458c007bb0b23a8e9b21f8893e29f4f9')
 
 build() {
   export GOPATH="$srcdir"/gopath
