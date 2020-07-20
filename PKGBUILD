@@ -3,14 +3,14 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=v2.3.2.r28.gb8889562
-pkgrel=1
+pkgver=v2.3.4.r15.g0f2c3017
+pkgrel=2
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('perl' 'insight-toolkit>=5')
+depends=('r' 'vtk' 'perl' 'insight-toolkit>=5')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=("${_pkgname}")
@@ -35,7 +35,6 @@ build() {
       -DBUILD_SHARED_LIBS=OFF \
       -DBUILD_STYLE_UTILS=OFF \
       -DBUILD_TESTING=ON \
-      -DCCACHE_PROGRAM=CCACHE_PROGRAM-NOTFOUND \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/opt/ANTs \
       -DEXTERNAL_PROJECT_BUILD_TYPE=Release \
@@ -48,7 +47,8 @@ build() {
       -DSuperBuild_ANTS_USE_GIT_PROTOC=ON \
       -DUSE_SYSTEM_ITK=OFF \
       -DUSE_SYSTEM_SlicerExecutionMode=OFF \
-      -DCMAKE_INSTALL_PREFIX=/opt/ANTs \
+      -DUSE_SYSTEM_VTK=ON \
+      -DUSE_VTK=ON \
       ..
   make
 }
