@@ -6,8 +6,8 @@
 
 pkgname=ddclient-git
 _gitname="${pkgname%-git}"
-pkgver=v3.8.3.r317.g7a99919
-pkgrel=2
+pkgver=v3.8.3.r582.g8253c67
+pkgrel=1
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
@@ -33,6 +33,21 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd ddclient
+  ./autogen
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc/ddclient \
+    --localstatedir=/var
+  make
+}
+
+check() {
+  cd ddclient
+  make check
+}
+
 package() {
   # hack so that we can merge in changes from upstream without changing all the
   # $pkgname to $_gitname
@@ -40,9 +55,7 @@ package() {
 
   cd ddclient
 
-  install -Dm755 ddclient "$pkgdir"/usr/bin/$pkgname
-  install -Dm600 sample-etc_ddclient.conf "$pkgdir"/etc/ddclient/ddclient.conf
-  install -d "$pkgdir"/var/cache/ddclient
+  make DESTDIR="$pkgdir/" install
   install -Dm644 "$srcdir"/ddclient.service "$pkgdir"/usr/lib/systemd/system/ddclient.service
 
   install -Dm644 README.cisco "$pkgdir"/usr/share/doc/ddclient/README.cisco
