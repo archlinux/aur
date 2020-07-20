@@ -4,6 +4,7 @@ pkgbase = milou-git
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/milou
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git

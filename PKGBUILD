@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas < nqn1976 @ gmail.com >
+# Maintainer: zan <zan@420blaze.it>
+# Contributor: Antonio Rojas < nqn1976 @ gmail.com >
 
 pkgname=milou-git
 _name=${pkgname%-git}
@@ -10,6 +11,7 @@ url='https://invent.kde.org/plasma/milou'
 license=(LGPL)
 provides=(milou)
 conflicts=(milou)
+groups=(plasma)
 depends=(krunner)
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=("git+https://invent.kde.org/plasma/$_name.git")
