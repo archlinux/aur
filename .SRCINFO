@@ -1,0 +1,26 @@
+pkgbase = ripcord-arch-libs
+	pkgdesc = Qt-based Discord and Slack client. Modified to run on system libraries for Wayland support.
+	pkgver = 0.4.26
+	pkgrel = 1
+	url = https://cancel.fm/ripcord/
+	arch = x86_64
+	license = custom
+	depends = harfbuzz
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-websockets
+	depends = libxss
+	options = !strip
+	source = https://cancel.fm/dl/Ripcord-0.4.26-x86_64.AppImage
+	source = https://cancel.fm/dl/Ripcord-0.4.26-x86_64.AppImage.asc
+	source = LICENSE
+	validpgpkeys = ABBAD1CB484F53024CF5868B69332F9203F21F5C
+	sha256sums = 784602ca1d8f86f7e8bb01603bc31682ad8d2c8be6e26fa33a423dec5f103445
+	sha256sums = SKIP
+	sha256sums = d7b2d483acceaebebfa068223efd8fb5e0f5d66f642fa234484ca50974c9fa2c
+
+pkgname = ripcord-arch-libs
+
