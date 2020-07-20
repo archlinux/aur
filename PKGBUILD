@@ -44,7 +44,7 @@ package() {
   install -m644 squashfs-root/Ripcord_Icon.png "$pkgdir"/usr/share/icons/
   
   # .desktop file
-  sed -i 's/Exec=Ripcord/Exec=ripcord/' squashfs-root/Ripcord.desktop
+  sed -i 's/Exec=Ripcord/Exec=env\ QT_QPA_PLATFORM_PLUGIN_PATH=\/usr\/lib\/qt\/plugins\ ripcord/g' squashfs-root/Ripcord.desktop
   install -m644 squashfs-root/Ripcord.desktop "$pkgdir"/usr/share/applications
 
   # license
