@@ -1,0 +1,15 @@
+pkgbase = skydocs
+	pkgdesc = A lightweight static documentation builder with MarkDown
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://skydocs.skyost.eu
+	arch = any
+	license = GPL3
+	makedepends = gendesk
+	depends = java-runtime>=8
+	depends = bash
+	source = skydocs-0.7.4.zip::https://github.com/Skyost/SkyDocs/releases/download/v0.7.4/SkyDocs.Jar.zip
+	sha256sums = 1780bfce67e1f4fad14aa500fa2df6c96cd3c3b34d7c2bb4beee93ebc45a6445
+
+pkgname = skydocs
+
