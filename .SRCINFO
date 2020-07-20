@@ -1,0 +1,14 @@
+pkgbase = mimedown-git
+	pkgdesc = Markdown to multipart MIME
+	pkgver = r33.771f453
+	pkgrel = 1
+	url = https://github.com/begriffs/mimedown
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = cmark
+	source = mimedown-git::git+https://github.com/begriffs/mimedown
+	md5sums = SKIP
+
+pkgname = mimedown-git
+
