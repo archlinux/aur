@@ -6,6 +6,7 @@ pkgbase = pg_rum
 	arch = x86_64
 	license = custom:PostgreSQL
 	depends = postgresql
+	makedepends = make gcc llvm
 	source = https://github.com/postgrespro/rum/archive/1.3.6.tar.gz
 	sha256sums = 75beb61b0ad1c253d1afb1c8f7a80e0f3996d3356b93a55faf9aad6fc5c8c0d9
 
