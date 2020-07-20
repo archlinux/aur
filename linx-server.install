@@ -1,15 +1,11 @@
-pre_install() {
-  # create user and group
-  /usr/bin/getent group linx &> /dev/null || /usr/bin/groupadd -r linx &> /dev/null
-  /usr/bin/getent passwd linx &> /dev/null || /usr/bin/useradd -r -g linx -s /usr/bin/nologin -d /usr/share/webapps/linx-server linx &> /dev/null
-}
-
-post_install() {
-  # chown directories
-  /usr/bin/chown -R linx:linx /usr/share/webapps/linx-server
-}
-
-post_remove() {
-  # remove user and group
-  /usr/bin/getent passwd linx &> /dev/null && /usr/bin/userdel linx &> /dev/null
+post_upgrade() {
+    if [ $(vercmp '2.3.5-2' "$2") -eq 1 ]; then
+        echo
+        echo -e '\033[1;32m==> \033[1;31mNOTE:\033[0m The config directory has changed
+          from /etc/webapps/linx-server to /etc/linx-server.
+          The data directory has changed
+          from /usr/share/webapps/linx-server to /var/lib/linx-server.
+          Please move your config and data accourdingly.'
+        echo
+    fi
 }

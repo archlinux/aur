@@ -5,7 +5,10 @@ After=network.target
 [Service]
 User=linx
 Group=linx
-ExecStart=/usr/bin/linx-server -config /etc/webapps/linx-server/config.ini
+ExecStart=/usr/bin/linx-server -config /etc/linx-server/config.ini -allowMissingConfig
+WorkingDirectory=/var/lib/linx-server
+Restart=always
+RestartSec=2s
 
 [Install]
 WantedBy=multi-user.target

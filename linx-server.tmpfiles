@@ -1,0 +1,6 @@
+d /var/lib/linx-server 0750
+d /var/lib/linx-server/files 0750
+d /var/lib/linx-server/meta 0750
+Z /var/lib/linx-server - linx linx
+z /etc/linx-server 0755 root linx
+z /etc/linx-server/config.ini 0660 root linx
