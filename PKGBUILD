@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org> 
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
 pkgver=3.95.0.11.r2.51c02f689
-pkgrel=1
+pkgrel=2
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
 url='https://github.com/adapta-project/adapta-gtk-theme'
