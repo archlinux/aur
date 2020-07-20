@@ -1,5 +1,5 @@
 # Maintainer: alex4ip <alex4ip@gmail.com>
-# Contiributer: Alex Ellis <alex@openfaas.com>
+# Contributer: Alex Ellis <alex@openfaas.com>
 
 pkgname=k3sup-bin
 _pkgname=k3sup
@@ -10,11 +10,10 @@ pkgdesc='k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s
 arch=(x86_64)
 url='https://github.com/alexellis/k3sup/'
 license=(MIT)
-depends=('ssh')
 #depends=('docker')
-optdepends=('k3s'
+optdepends=('k3s-bin: Lightweight Kubernetes'
             'kubernetes-bin'
-            'helm'
+            'helm: The package manager for Kubernetes'
             'terraform'
             'azure-cli: Command-line tools for Azure'
             'aws-cli: cli for Amazon Web Services'
@@ -23,8 +22,8 @@ provides=('k3sup')
 #makedepends=('go')
 _OWNER=alexellis
 _suffix=""
-source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${_pkgname}${_suffix}")
-md256sums=('32d21ccd770f32bd1c4208104133b2f1')
+source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${_pkgname}")  # ${_suffix}
+sha256sums=('c8ccc3e12695c8857f3c068ecca609803706e583dde073bfdd17fdf75f4118b2')
 
 package() {  
   #mkdir -p "${pkgdir}/opt"

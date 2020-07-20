@@ -6,15 +6,16 @@ pkgbase = k3sup-bin
 	url = https://github.com/alexellis/k3sup/
 	arch = x86_64
 	license = MIT
+	optdepends = k3s-bin: Lightweight Kubernetes
 	optdepends = kubernetes-bin
-	optdepends = helm
+	optdepends = helm: The package manager for Kubernetes
 	optdepends = terraform
 	optdepends = azure-cli: Command-line tools for Azure
 	optdepends = aws-cli: cli for Amazon Web Services
 	optdepends = google-cloud-sdk: gcloud - command-line tools for the Google Cloud Platform
 	provides = k3sup
 	source = k3sup-bin-0.9.2::https://github.com/alexellis/k3sup/releases/download/0.9.2/k3sup
-	md5sums = 32d21ccd770f32bd1c4208104133b2f1
+	sha256sums = c8ccc3e12695c8857f3c068ecca609803706e583dde073bfdd17fdf75f4118b2
 
 pkgname = k3sup-bin
 
