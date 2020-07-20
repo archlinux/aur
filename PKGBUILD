@@ -3,8 +3,8 @@
 pkgname=adara-theme-git
 _pkgname=adara-theme
 pkgver=r46.743fc0d
-pkgrel=1
-pkgdesc="Maxime Gauduin <alucryd@archlinux.org>"
+pkgrel=2
+pkgdesc="Just a neutral theme for Cinnamon"
 arch=('any')
 url="https://github.com/germanfr/adara-theme"
 license=('GPLv3')
