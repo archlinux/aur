@@ -9,6 +9,8 @@ pkgbase = syntax-highlighting-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	depends = qt5-base
+	provides = syntax-highlighting
+	conflicts = syntax-highlighting
 	source = git+https://github.com/KDE/syntax-highlighting.git
 	md5sums = SKIP
 

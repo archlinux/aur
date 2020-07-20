@@ -10,6 +10,8 @@ license=(LGPL)
 depends=(qt5-base)
 makedepends=(git extra-cmake-modules-git)
 source=('git+https://github.com/KDE/syntax-highlighting.git')
+provides=(syntax-highlighting)
+conflicts=(syntax-highlighting)
 groups=(plasma)
 md5sums=(SKIP)
 
