@@ -4,12 +4,12 @@
 
 pkgname=python-googletrans
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Google Translate API for Python."
 arch=('any')
 license=('MIT')
 url="https://github.com/ssut/py-googletrans"
-depends=('python-setuptools' 'python-requests')
+depends=('python-setuptools' 'python-httpx')
 source=("https://pypi.io/packages/source/g/googletrans/googletrans-$pkgver.tar.gz")
 sha512sums=('1a31c52e1fc72ab45131c95ff3649d1d679e3c082adc2b43ba1e5d9bbc57bf740c9e14575c6416e406e6e6e1796cac57330fbb1a639ad96841464e042ef70981')
 
