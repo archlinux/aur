@@ -23,9 +23,10 @@ sha256sums=('0e05a709d3e07343cd72e4db4cb4f1a6d9956f8acf7da682d2a3940c3112776e'
 
 prepare() {
   cd "$srcdir/OpenRCT2-$pkgver"
-  ln -sf "$srcdir/discord-rpc-$_rpcver" discord-rpc
+  ln -sfT "$srcdir/discord-rpc-$_rpcver" discord-rpc
+
   mkdir -p discord-rpc/thirdparty
-  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty/rapidjson
+  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty
 }
 
 build() {
