@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'aarch64')
 license=('GPL3')
 depends=('libestr' 'liblogging' 'librelp' 'libfastjson')
 makedepends=('postgresql-libs>=8.4.1' 'libmariadbclient' 'net-snmp' 'gnutls'
-	     'python-docutils' 'libestr' 'liblogging' 'librelp' 'libfastjson')
+	     'python-docutils' 'libestr' 'liblogging' 'librelp' 'libfastjson' 'bison' 'flex')
 optdepends=('postgresql-libs: PostgreSQL Database Support'
 	    'libmariadbclient: MySQL Database Support'
 	    'net-snmp'
