@@ -2,8 +2,8 @@
 !.SRCINFO
 !PKGBUILD
 !.gitignore
+!config
 !jitsi-videobridge.service
-!jitsi-videobridge.conf
 !sip-communicator.properties
 !sysusers.conf
 !tmpfiles.conf
