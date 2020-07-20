@@ -1,12 +1,12 @@
 # Maintainer: bcareil <baptiste.careil@gmail.com>
 
 pkgname='path-of-building-community-git'
-pkgrel=4
+pkgrel=1
 pkgdesc="An offline build planner for Path of Exile using PoBFrontent, LocalIdentity's fork"
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.169.3.r1701.37.479
+pkgver=1.4.170.5.r2323.37.479
 
 depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync')
@@ -29,9 +29,9 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622'
-	'70b5a7d869b7993531fcf5d87bd6ebaaa9de6e8910b9f871ec64809c3c5bd9ed'
+	'f0489b7dd1dcb3f3c22c41e646a5a85d1c7d63d014df6bf1df14fde4361d692d'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
-	'4b37acb9f25f6841726d6b73e6b893d1376c858e879dd6daf35a1bbae8bc2faf'
+	'1cca891d3fcb74df7cdf7585c1d96f68b7c3a1cca913589730fcb7e7184888d7'
 	'87cbc36ace84ebd746a5b8ec5a88ffde5b03cea7c633a4d437d46b5434ae86da'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'

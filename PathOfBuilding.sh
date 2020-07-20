@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /opt/PathOfBuildingCommunity/ && ./pobfrontend
+cd /opt/PathOfBuildingCommunity/ && LC_ALL=C ./pobfrontend
