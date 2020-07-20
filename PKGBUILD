@@ -1,13 +1,15 @@
-# Maintainer: Alexey Kh <aur@devass.club>
+# maintainer: luka null <lukadevnull@vivaldi.net>
+# old maintainer: Alexey Kh <aur@devass.club>
 pkgname=pg_rum
-pkgver=1.2.1
+pkgver=1.3.6
 pkgrel=1
-pkgdesc='RUM access method - inverted index with additional information in posting lists'
+pkgdesc='RUM access method for PostgreSQL - inverted index with additional information in posting lists'
 arch=('x86_64')
 url='https://github.com/postgrespro/rum'
 license=('custom:PostgreSQL')
 depends=('postgresql')
 source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('75beb61b0ad1c253d1afb1c8f7a80e0f3996d3356b93a55faf9aad6fc5c8c0d9')
 
 build()
 {
@@ -22,6 +24,3 @@ package()
 
     make USE_PGXS=1 DESTDIR="$pkgdir" install
 }
-
-md5sums=('0190b2184659d171383db2cbcfb54d8b')
-
