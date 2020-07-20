@@ -7,8 +7,7 @@ pkgbase = google-tsunami-security-scanner
 	license = Apache
 	depends = nmap>=7.80
 	depends = ncrack>=0.7
-	depends = jdk11-openjdk
-	conflicts = google-tsunami-security-scanner-git
+	depends = java-runtime<12
 	source = google-tsunami-security-scanner-0.0.1.tar.gz::https://github.com/google/tsunami-security-scanner/archive/0.0.1.tar.gz
 	source = https://github.com/google/tsunami-security-scanner/raw/master/tsunami.yaml
 	sha256sums = 33162b9dc6e93504f7875b833847b775d2cf0f3da4ea45c36bb86a95a5a8eeef
