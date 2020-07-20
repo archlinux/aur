@@ -1,0 +1,13 @@
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+
+pre_upgrade() {
+  sudo rm -rf /usr/lib/vlang
+}
+
+pre_install() {
+  pre_upgrade
+}
+
+post_remove() {
+  pre_upgrade
+}

@@ -2,10 +2,11 @@
 
 pkgname=vlang-bin
 pkgver=0.1.27
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url="https://vlang.io"
+install=vlang-bin.install
 license=('MIT')
 provides=('vlang')
 depends=('glibc')
