@@ -2,7 +2,7 @@
 
 pkgname=hikari
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)'
 url='https://hikari.acmelabs.space'
@@ -20,6 +20,6 @@ build(){
 
 package() {
   cd "$pkgname-${pkgver//_/-}"
-  bmake DESTDIR="${pkgdir}" PREFIX=/usr ETC_PREFIX=/ install
+  bmake DESTDIR="${pkgdir}" PREFIX=/usr ETC_PREFIX=/ WITHOUT_SUID=YES install
 }
 
