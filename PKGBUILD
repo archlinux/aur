@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
-pkgver=1.28.3
+pkgver=1.29.0
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7a841f35c986eee3fb60731278e0570286ea6bfd58c015a95172cd2234137a84')
+sha256sums=('1e92c8ff425fe89e1678d576df24f1d1302f613d81c710da890c6aa057171190')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -20,9 +20,9 @@ build() {
   local _commit _flags
   _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
-    -X=main.version=$pkgver
-    -X=main.commit=${_commit::7}
-    -X=main.date=$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')
+    -X=main.version="$pkgver"
+    -X=main.commit="${_commit::7}"
+    -X=main.date="$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')"
   )
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="$CPPFLAGS"
