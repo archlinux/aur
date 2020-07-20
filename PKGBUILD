@@ -27,7 +27,7 @@ package() {
   PORTER_HOME="${pkgdir}"/opt/"${pkgname}"  
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}"/opt/${pkgname}/porter "${pkgdir}"/usr/bin/porter
+  ln -nfs /opt/${pkgname}/porter "${pkgdir}"/usr/bin/porter
 
   # Add command completion
   # install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
