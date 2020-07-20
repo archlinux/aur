@@ -1,6 +1,6 @@
 pkgbase = daily-wallpaper-git
 	pkgdesc = Change wallpaper automatically with the Photo of The Day of your loved source
-	pkgver = r82.0b5e9e0
+	pkgver = r86.e2e3a12
 	pkgrel = 1
 	url = https://github.com/atareao/daily-wallpaper
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = daily-wallpaper-git
 	depends = libnotify
 	optdepends = cron: automatic download
 	provides = daily-wallpaper
-	provides = national-geographic-wallpaper
 	conflicts = daily-wallpaper
-	conflicts = national-geographic-wallpaper
 	source = daily-wallpaper-git::git+https://github.com/atareao/daily-wallpaper.git
 	md5sums = SKIP
 

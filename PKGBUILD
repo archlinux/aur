@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=daily-wallpaper-git
-pkgver=r82.0b5e9e0
+pkgver=r86.e2e3a12
 pkgrel=1
 pkgdesc="Change wallpaper automatically with the Photo of The Day of your loved source"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python-gobject' 'python-lxml' 'python-cssselect' 'python-requests' 'python-crontab' 'python-plumbum' 'gtk3' 'libnotify')
 optdepends=('cron: automatic download')
 makedepends=('git')
-provides=("${pkgname%-git}" 'national-geographic-wallpaper')
-conflicts=("${pkgname%-git}" 'national-geographic-wallpaper')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
