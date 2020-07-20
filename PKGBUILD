@@ -1,22 +1,36 @@
-# Maintainer: M3NIX
-# Contributor: M3NIX
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
 pkgname=cacher
-pkgver=1.4.4
+pkgver=2.31.1
 pkgrel=1
-pkgdesc="Cacher is a code snippet library for professional developers. Use it to build a technical knowledge base for you and your team."
+pkgdesc='The code snippet organizer for professional developers'
 arch=('x86_64')
-url="http://www.cacher.io"
-license=('Copyright © 2018 Penguin Labs')
-groups=('')
-depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'desktop-file-utils' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcups' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'opera' 'pango')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("https://cacher-download.nyc3.digitaloceanspaces.com/cacher_1.4.4_amd64.deb")
-sha512sums_x86_64=('0575912e101f684ed68c6ca137d5faf3fe1f5f098fcc97e00179bc7eec8e1660479dc03057190f8abb1fdaf7371883814a6e25335733d5163a576e78106c1927')
+url='https://www.cacher.io'
+license=("custom:${pkgname}")
+makedepends=('gendesk')
+options=('!strip')
+noextract=("${pkgname}-${pkgver}.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://s3.amazonaws.com/download.cacher.io/Cacher-${pkgver}.AppImage"
+        'LICENSE')
+sha256sums=('bfc579716b34ec3a65c9dcc56eb11f79dfb0985e5e1b9c94c2c9f533882541a6'
+            'SKIP')
 
-package(){
-
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
+package() {
+  chmod 755 ./${pkgname}-${pkgver}.AppImage
+  ./${pkgname}-${pkgver}.AppImage --appimage-extract
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/cacher.png "${pkgdir}/usr/share/pixmaps/cacher.png"
+  gendesk -f -n --pkgname "${pkgname}" \
+          --pkgdesc "$pkgdesc" \
+          --name "Cacher" \
+          --comment "$pkgdesc" \
+          --exec "${pkgname}" \
+          --categories 'Utility;Development;Application' \
+          --icon "${pkgname}"
+  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
+  ln -s /opt/${pkgname}/AppRun "${pkgdir}/usr/bin/cacher"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
 }
