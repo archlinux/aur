@@ -11,7 +11,7 @@ url="https://github.com/iotang/Project_LemonLime"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'hicolor-icon-theme')
-makedepends=('git')
+makedepends=('git' 'cmake' 'ninja')
 checkdepends=()
 optdepends=()
 provides=("lemon-lime")
@@ -43,7 +43,8 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
-	sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+	#sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+	sed -i '/add_link_options(-no-pie)/d' CMakeLists.txt
     git submodule update --init --recursive
 }
 
@@ -51,14 +52,11 @@ build() {
 	cd "$srcdir/Project_LemonLime"
 	#./configure --prefix=/usr
 	g++ watcher_unix.cpp -o watcher_unix -O2
-	qmake lemon.pro
-	make
+	#qmake lemon.pro
+	#make
+	cmake -GNinja .
+	ninja
 
-}
-
-check() {
-	cd "$srcdir/Project_LemonLime"
-	make -k check
 }
 
 package() {
