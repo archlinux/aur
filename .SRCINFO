@@ -1,11 +1,10 @@
 pkgbase = rot13
 	pkgdesc = Converts text with ROT13 from STDIN to STDOUT or text given as arguments.
 	pkgver = 3
-	pkgrel = 2
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = MIT
-	conflicts = bsd-games
 	source = rot13.c
 	sha384sums = 9b4fe06b2ecca3dd19ed909454f618948d917a23133856848ba0f5624b485ac3807de8d49d2a0cf4cd2c210c537ccec0
 
