@@ -1,9 +1,8 @@
 pkgbase = kio-extras-git
 	pkgdesc = Additional components to increase the functionality of KIO
 	pkgver = r6788.7763a1e0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.kde.org/projects/kde/workspace/kio-extras
-	install = kio-extras-git.install
 	arch = i686
 	arch = x86_64
 	license = LGPL

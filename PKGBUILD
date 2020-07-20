@@ -3,7 +3,7 @@
 
 pkgname=kio-extras-git
 pkgver=r6788.7763a1e0
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional components to increase the functionality of KIO"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/kio-extras'
@@ -12,7 +12,6 @@ depends=('kdelibs4support-git' 'khtml-git' 'kdnssd-git' 'kpty-git' 'libssh' 'smb
 makedepends=('extra-cmake-modules-git' 'git' 'openslp' 'kdoctools-git')
 conflicts=('kio-extras')
 provides=('kio-extras')
-install=$pkgname.install
 source=('git+https://github.com/KDE/kio-extras.git')
 md5sums=('SKIP')
 
