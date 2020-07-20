@@ -1,0 +1,20 @@
+pkgbase = scarlett-mixer-git
+	pkgdesc = Graphical Mixer Interface for the Scarlett series
+	pkgver = v0.1.0.28.ga29c0a2
+	pkgrel = 1
+	url = https://github.com/x42/scarlett-mixer
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = lv2
+	depends = alsa-lib
+	depends = mesa
+	depends = pango
+	source = git+https://github.com/x42/scarlett-mixer.git
+	md5sums = SKIP
+
+pkgname = scarlett-mixer-git
+
