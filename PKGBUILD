@@ -8,8 +8,8 @@ _name=thunderbird
 _channel=nightly
 _lang=it
 pkgname=${_name}-${_channel}-${_lang}
-pkgver=79.0a1
-_version=79.0a1
+pkgver=80.0a1
+_version=80.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build (${_lang})"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
-optdepends=('libcanberra: for sound support')
+optdepends=('libcanberra: per supporto audio')
 provides=("thunderbird=${_version}")
 install="${pkgname}.install"
 
