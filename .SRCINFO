@@ -1,0 +1,27 @@
+pkgbase = xtinyterror.lv2-git
+	pkgdesc = An amplifier simulation LV2 plugin modelled after a small british valve amp (git version)
+	pkgver = r9.6e37057
+	pkgrel = 1
+	url = https://github.com/brummer10/XTinyTerror.lv2
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	license = 0BSD
+	makedepends = git
+	makedepends = lv2
+	depends = cairo
+	depends = gcc-libs
+	depends = libx11
+	provides = xtinyterror.lv2
+	provides = xtinyterror.lv2=r9.6e37057
+	provides = xtinyterror.lv2
+	conflicts = xtinyterror.lv2
+	conflicts = xtinyterror.lv2
+	source = xtinyterror.lv2::git+https://github.com/brummer10/XTinyTerror.lv2.git
+	source = xputty::git+https://github.com/brummer10/Xputty.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = xtinyterror.lv2-git
+

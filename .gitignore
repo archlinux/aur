@@ -1,0 +1,8 @@
+.AURINFO
+pkg/
+src/
+xtinyterror.lv2/
+xputty/
+xtinyterror.lv2-git-*.tar.xz
+xtinyterror.lv2-git-*.tar.zst
+xtinyterror.lv2-git-*.src.tar.gz
