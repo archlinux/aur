@@ -29,9 +29,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  ln -sf "$srcdir/discord-rpc" discord-rpc
+  ln -sf "$srcdir/discord-rpc"
+
   mkdir -p discord-rpc/thirdparty
-  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty/rapidjson
+  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty
 }
 
 build() {
