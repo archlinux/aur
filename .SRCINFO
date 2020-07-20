@@ -1,5 +1,7 @@
 pkgbase = teatool
 	pkgdesc = Tiny algorithm encryption utility
+	makedepends = git
+	makedepends = gcc
 	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/turbocat2001/TEAtool
