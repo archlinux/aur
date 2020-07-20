@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=pysorter
+pkgname=pysorter-git
 pkgver=0.4.4.r3.g8b4cf72
 pkgrel=1
 pkgdesc='A command line utility for organizing files and directories according to regex patterns'
