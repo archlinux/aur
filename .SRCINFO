@@ -1,5 +1,5 @@
 pkgbase = stacer-git
-	pkgdesc = Ubuntu System Optimizer
+	pkgdesc = Linux System Optimizer and Monitoring
 	pkgver = v1.1.0.r59.g2af6e58
 	pkgrel = 1
 	url = https://github.com/oguzhaninan/Stacer
