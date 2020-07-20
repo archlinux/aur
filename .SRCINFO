@@ -1,7 +1,7 @@
 pkgbase = kiftd
 	pkgdesc = kiftd是一款专门面向个人、团队和小型组织的私有网盘系统。轻量、开源、完善。
 	pkgver = 1.0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KOHGYLW/kiftd
 	arch = any
 	license = custom
