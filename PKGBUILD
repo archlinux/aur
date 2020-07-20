@@ -1,22 +1,18 @@
-# Maintainer: BeeJay
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Former Maintainer: BeeJay
+
 pkgname=sidequest-bin
 _pkgname=sidequest
-pkgver=0.10.7
+pkgver=0.10.11
 pkgrel=1
 pkgdesc="Easily sideload apps onto your standalone android VR headset"
 arch=('x86_64')
 url="https://github.com/the-expanse/SideQuest"
 license=('MIT')
-groups=()
 depends=(gtk3 libxss nss)
-makedepends=()
 conflicts=("$_pkgname")
-backup=()
-options=()
-install=
 source=("https://github.com/the-expanse/SideQuest/releases/download/v${pkgver}/SideQuest-${pkgver}.tar.xz")
-noextract=()
-md5sums=('606a022b8295bf91b3530993c8125f7e')
+md5sums=('ef447b5b9fbd0f518a3719c0e6b0af74')
 
 package() {
 	cd "$srcdir/SideQuest-${pkgver}"
