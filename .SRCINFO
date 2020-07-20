@@ -1,0 +1,16 @@
+pkgbase = cdcc-git
+	pkgver = v0.1.r6.g04cc09c
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/gicmo/cdcc
+	arch = x86_64
+	license = unknown
+	makedepends = meson
+	provides = cdcc
+	source = cdcc::git+https://github.com/gicmo/cdcc.git
+	source = meson.build.patch
+	sha256sums = SKIP
+	sha256sums = 4b765c7fda2ee2c75e48a765f0c3f594a39bf035608c72c2094056695180d8c0
+
+pkgname = cdcc-git
+
