@@ -1,64 +1,38 @@
 install_msg() {
 	cat << __EOF__
-===> IMPORTANT NOTICES:
+   Bunch of Xen Notes: https://wiki.archlinux.org/index.php/Xen
 
-In order to complete the installation, and enable Xen,
-at the very least you must:
-1. If using GRUB2, edit your GRUB2 config files as specified at
-    https://wiki.archlinux.org/index.php/Xen#Bootloader_Configuration
-
-    Support for the grub-mkconfig command was added, and will auto-discover
-     the deployed xen hypervisor and linux kernel
-2. If booting via efi, copy the example /etc/xen/efi-xen.cfg to /boot/xen.cfg
+   If booting via efi, copy the example /etc/xen/efi-xen.cfg to /boot/xen.cfg
    and edit the contents to match the settings you need.
-3. Issue the following commands to allow you to create and start VMs:
+
+   To make dom0 go: 
 
     systemctl enable xen-qemu-dom0-disk-backend.service
     systemctl enable xen-init-dom0.service
     systemctl enable xenconsoled.service
 
-   Other optional services are:
+   Optional services are:
     systemctl enable xen-watchdog.service
 
-4. If you want some domains to automatically start up/shutdown, run the following:
+   To start domains on boot:
     systemctl enable xendomains.service
 
-For more information refer to the Wiki:
-    https://wiki.archlinux.org/index.php/Xen
 
 __EOF__
+
 
 }
 
-upgrade_msg() {
-	cat << __EOF__
-Xen 4.12
-Release notes
-http://wiki.xen.org/wiki/Xen_Project_4.12_Release_Notes
-Feature list
-http://wiki.xen.org/wiki/Xen_Project_4.12_Feature_List
-__EOF__
-
-	if [ "$(vercmp 4.8.0-4 "$1")" -lt 0 ]; then
-		cat << __EOF__
-!!!!!
-This Xen version has split out SeaBIOS and OVMF.
-If you need to use VMs with BIOS or UEFI, install seabios or ovmf respectively.
-!!!!!
-__EOF__
-	fi
-
-}
 
 post_install() {
 	install_msg
-	upgrade_msg
 	systemd-tmpfiles --create
+	/usr/share/libalpm/scripts/xen-ucode-extract.sh
 }
 
 post_upgrade() {
-	upgrade_msg $@
 	systemd-tmpfiles --create
+	/usr/share/libalpm/scripts/xen-ucode-extract.sh
 }
 
 pre_remove() {
@@ -73,11 +47,12 @@ pre_remove() {
 	systemctl disable xenconsoled.service
 	systemctl disable xen-init-dom0.service
 	systemctl disable xen-qemu-dom0-disk-backend.service
+
+	echo "Be sure to check boot for auto-generated microcode files."
 }
 
 post_remove() {
 	cat << __EOF__
-===> IMPORTANT NOTICE:
 
 In order to finish removing Xen, you will need to modify
 your bootloader configuration files to load your Linux
