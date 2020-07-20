@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-*}/caja-extension"
-  patch --verbose --input="${srcdir}/dejadup.patch"
+  patch --input="${srcdir}/dejadup.patch"
 }
 
 package() {    
