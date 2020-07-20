@@ -1,5 +1,5 @@
-*** meson.build	2020-07-20 19:34:21.479395401 +0100
---- meson.build	2020-07-20 19:49:55.374369071 +0100
+*** meson.build	2020-07-20 21:01:01.638690222 +0100
+--- meson.build	2020-07-20 21:01:22.025022028 +0100
 ***************
 *** 16,34 ****
   	   sources: [ 'cc.c', 'db.c' ],
@@ -9,7 +9,7 @@
   
   
   executable('cdcc-gen',
-  	   sources: [ 'cc.c', 'db.c' ],
+! 	   sources: [ 'cc.c', 'db.c' ],
   	   cpp_args: c_flags,
   	   link_args: ld_flags,
 ! 	   dependencies: alldep)
@@ -30,7 +30,7 @@
   
   
   executable('cdcc-gen',
-  	   sources: [ 'cc.c', 'db.c' ],
+! 	   sources: [ 'gen.c', 'db.c' ],
   	   cpp_args: c_flags,
   	   link_args: ld_flags,
 ! 	   dependencies: alldep,

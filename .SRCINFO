@@ -1,6 +1,7 @@
 pkgbase = cdcc-git
+	pkgdesc = Compile flags database generating compiler wrapper.
 	pkgver = v0.1.r6.g04cc09c
-	pkgrel = 1
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/gicmo/cdcc
 	arch = x86_64
@@ -10,7 +11,7 @@ pkgbase = cdcc-git
 	source = cdcc::git+https://github.com/gicmo/cdcc.git
 	source = meson.build.patch
 	sha256sums = SKIP
-	sha256sums = 4b765c7fda2ee2c75e48a765f0c3f594a39bf035608c72c2094056695180d8c0
+	sha256sums = 554bee50f3f3dd3d9300c2488e8cb29c92154e3e8480e888504614fcdd48c24f
 
 pkgname = cdcc-git
 

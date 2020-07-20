@@ -2,8 +2,8 @@
 _pkgname=cdcc
 pkgname=${_pkgname}-git
 pkgver=v0.1.r6.g04cc09c
-pkgrel=1
-pkgdesc=""
+pkgrel=6
+pkgdesc="Compile flags database generating compiler wrapper."
 arch=('x86_64')
 url="https://github.com/gicmo/cdcc"
 license=('unknown')
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'4b765c7fda2ee2c75e48a765f0c3f594a39bf035608c72c2094056695180d8c0'
+	'554bee50f3f3dd3d9300c2488e8cb29c92154e3e8480e888504614fcdd48c24f'
 )
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	patch < ../meson.build.patch
-	meson --prefix=/usr build
+	meson setup build --prefix=/usr
 }
 
 build() {
@@ -46,4 +46,8 @@ package() {
 	cd "${srcdir}/${_pkgname}/build"
 	DESTDIR="${pkgdir}" meson install
 	install -m644 -D "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	for CC in 'g++' 'gcc' 'clang' 'clang++'; do
+		ln -s "${pkgdir}/usr/bin/cdcc-cc" "${pkgdir}/usr/bin/cdcc-${CC}"
+	done
 }
