@@ -1,10 +1,10 @@
 # Maintainer: HanFox <han@hanfox.co.uk>
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>
-# Based on the 'aur/openttd-git PKGBUILD by McModder <mcmodder@mcmodder.ru>
+# Based on the 'aur/openttd-git' PKGBUILD by McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-jgrpp
-pkgver=0.35.0
-pkgrel=2
+pkgver=0.35.1
+pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('tar' 'cmake')
 depends=('libpng' 'sdl2' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz' 'fluidsynth')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('c39f9c7e19eaec34c896265cb74604403a8f9a94e77c0eb714199e4b083cf44a')
+sha256sums=('7a1d22331c111e2b10603db61f43d3891dcf275264eb76878cc59f5fa7a2cadc')
 
 _dirname=OpenTTD-patches-jgrpp
 
