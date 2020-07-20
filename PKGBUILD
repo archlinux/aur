@@ -6,7 +6,7 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923' '1126 '1164' '1192')
+# available MR: ('536' '786' '923')
 _merge_requests_to_use=() # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -14,7 +14,7 @@ _merge_requests_to_use=() # safe pick
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.36.3+15+g0abbd5264
+pkgver=3.36.4+12+g5f509855e
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -23,17 +23,16 @@ arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libgdm libsecret
-         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar  gnome-disk-utility)
+         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar gnome-disk-utility)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc bash-completion)
 optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration'
-            'gjs-git: Needed if using MR !1164')
+            'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=0abbd52646946158b1db08b78511f1f285eda9f4  # tags/3.36.3^15
+_commit=5f509855e24ba391c44f2af2a170e077aa0bc93f # tags/3.36.4^12
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
 	"1126.diff")
@@ -137,16 +136,6 @@ prepare() {
   # Status: 2
   # Comment: Unlock freezes, it hits me too.
   pick_mr '923'
-
-  # Title: calendar-server: Improve performance by properly using ECalClientView
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/1164
-  # Type: 1
-  # Status: 4
-  # Comment: Depends on 1126 that requires gjs>=1.65.1
-  pick_mr '1126' '1126.diff' 'patch'
-  pick_mr '1192'
-  pick_mr '1164'
-
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
