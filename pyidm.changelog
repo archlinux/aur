@@ -1,0 +1,263 @@
+2020.6.27:
+- Write metadata info to media files issue #124, Settings>General
+- fixed fragmented video download
+- fixed downloads for itv.com
+- revamp subtitles download, and fixes for issue #125
+
+2020.6.15:
+- Dynamic file segmentation, to improve speed issue #97
+- Instant Theme change without restarting the application main window issue #87
+- Added frame rate "fps" to streams description in quality drop down list issue #92
+- Auto rename file if same name exists in download folder "Settings>General".
+- Added md5 and sha256 checksum calculators, "Settings>Advanced"
+- use proxy dns "LibCurl socks5h and socks4a" issue #95 "Settings>Network"
+- Fixed empty downloads table after theme change.
+- Fixed Application freeze on linux when using "open file" or "open download folder".
+- Fixed some Application update issues for windows portable version.
+- Fixed Truncated File size after done downloading issue #86
+- Fixed audio manual selection for dash videos issue #90
+- Fixed downloading direct HLS/m3u8 media playlist issue #91
+- Fixed file corruption on download resume
+- disable "video search" for non-video urls issue #102
+
+2020.5.18:
+- Fixed pyperclip error using gtk on Linux.
+- Fixed systray icon on Linux
+- Bug fixed: segment list doesn't get updated if user changed download folder.
+- Bug fixed: error while downloading HLS Audio streams.
+
+2020.5.10:
+- Systray icon support for both Linux and windows.
+- download subtitles for all selected videos in playlist window issue #82
+- Set Auto Referee if there is no Referee set already.
+- Reminder flashing text if critical options in use, i.e. proxy, and speed limit
+- Fixed file rename problem, and allow file name length up to 255 characters. issue #83
+- Fixed total size doesn't change with different quality selection.
+- Playlist "select all" fixed "network surge connections blocked". issue #81
+- Fixed proxy input can't be enabled.
+
+2020.5.4:
+- critical bug fix for version 2020.5.3, which affects dash HLS videos.
+
+2020.5.3:
+- Added cookies support issue #80.
+- Major Fixes for "Resume download".
+- Parsing subtitles from hls m3u8 files issue #77.
+- SysTray icon, with options "minimize or close to systray", currently "available
+  on windows", support for other platforms in progress.
+- Filtered Ads. segments from hls video's manifest.
+- Ask user permission before checking for update, issue #76.
+- Portable windows version, upgrading to new versions can be done by using update
+  button which will auto-download "updated files only - almost 5MB" instead of
+  downloading the whole new version.
+- cancel download for expired links or if no data received from network, with popup
+  feedback on download error
+- Added some keyboard keys action: Esc key for download cancel, Delete for item delete.
+- play video on thumbnail click, "in downloads tab".
+- Get direct streaming url without downloading, by clicking Thumbnail board at main tab.
+- Fixes for "download speed chokes" at the end, when remaining only one worker only.
+- Hls videos watch while downloading is now available for non-encrypted videos.
+
+
+2020.4.17:
+- Critical Bug fix for missing extensions in video filename and failed audio/video
+  merging.
+- Fixed Some "tvp.pl" and other links doesn't work issue #73.
+- Better hls videos processing.
+- Added 'srt' format to subtitle selection, issue #74
+- used art-work icons for all buttons including standard Popup windows.
+- Clickable links in "about window", issue #72
+- dynamic connections manager to avoid server's max. connections error.
+- fixed corrupted file contents if server sent an html instead of bytes, issue #75
+- fixed thread manager quitting while there is segments didn't finish downloading.
+- soft start, connections will be gradually increase over time to reach max.number
+  set by user, this prevent impact on servers/networks, and avoid "service not
+  available" response from server when exceeding multi-connection number set by
+  server.
+- dynamic tooltip for playlist and video quality comboboxes, "note these are only
+  combos that can be scrolled by mouse wheel"
+- added format id to every stream in video quality combobox.
+- Similar streams/video quality which have different language now will be shown.
+- better text display if it is longer than the widget, with 3 dots in the middle
+  of string.
+
+
+2020.4.8:
+- website authentication option, issue #65.
+- subtitles download,  issue #70
+- support for famous Audio formats aac, ogg, and mp3 - issue #67
+- Fixed some issues with hls videos i.e. problem downloading audio, and resume error.
+- add extra redundant streams while showing format code to identify them, issue #68
+- choose first item in downloads table by default if non is selected
+- Fixed progress reporting 100% before completed merging audio/video or segments.
+- Add referee link option, issue #66
+- Fixed focus for "about window".
+- added http-headers.
+- fixed, thread manager exit without updating the "remaining parts" value
+- unfortunately watch while downloading is no longer available for all hls videos.
+
+
+2020.3.31:
+- New design for downloads and settings Tab
+- Handle big playlist faster and more efficiently, with option to save bandwidth to fetch information only for selected videos.
+- Show video names in playlist while fetching info.
+- Fixed "update youtube-dl module" in windows portable version with "rollback update" option
+- Added option to Manually select audio format for dash videos
+- better memory usage.
+- auto select the row of current download item
+- select table rows with keyboard up/down arrows
+- fixed url_change triggered on ctrl or shift buttons pressed
+
+2020.3.22:
+- Quick bug fix for unrecognized pillow module, github issue #60
+
+2020.3.20:
+- New GUI design with fresh button icons for main tab.
+- Thumbnail auto preview for selected video.
+- Ability to show download window offline per user option.
+- fixed resume/overwrite existing download item.
+- Ability to cancel ongoing ffmpeg operation, i.e. merging audio/video or handling hls streams.
+- arrange settings tab.
+- right click options for url widget.
+- various GUI tweaks.
+- stop creating global settings folder automatically.
+- playlist/video info extracting process becomes faster 2 times.
+- Fixed problem of scheduled downloads
+
+2020.3.13:
+- Added support for more hls video streams / websites.
+- Added support for http, https, socks4, and socks5 proxy
+- Fixed high memory usage bug and possible crash.
+- Speed up file manager performance
+- Fixed number of live workers for fragmented downloads.
+- Fixed file name extraction from headers.
+- Add option to Select Setting folder, default to local folder.
+- Natural sorting themes
+
+2020.3.3:
+- Critical Fix fpr application crash.
+- include ffmpeg with portable windows version
+- auto-save log events.
+
+2020.3.2:
+- Ability to use youtube-dl native downloader as an alternative option.
+- add support for more websites.
+- add log level option in log tab.
+- user can select ffmpeg download folder.
+- Fix about window.
+- Download window re-design.
+- Application restart on setting tab after selecting new theme.
+- Changed default theme to "Topanga".
+- some other bug fixes and tweaks.
+
+2020.2.22:
+- Add support for encrypted HLS streams.
+- Critical bug fix for download playlist.
+- add status for download window.
+
+2020.2.21:
+- Fixed resume issues.
+- Fixed speed limit.
+- Fixed hls stream resume.
+- Fixed update func. called when click on empty area under App. name.
+- Fixed progress bar and segment size for fragmented / live streams.
+- better handling for m3u8 files.
+- include user agent for download function
+
+2020.2.20:
+- fixed HLS streams doesn't work properly.
+- Add button to save log text to disk.
+
+2020.2.19:
+- Add support to more streaming websites "all links will be checked for possible video streams"
+- fix application crash because of proxy improperly set.
+- fix some bugs.
+
+2020.2.18:
+- Add support for hls/m3u8 video streams.
+- use indeterminate progress bar for unknown download sizes
+- Some bug fixes and performance tweaks
+
+2020.2.16:
+- Add support for proxy.
+- estimate fragmented video size.
+- fixed all setting parameters can be stored and reloaded properly.
+- Prevent application freeze momentarily during check for update.
+- Fix youtube-dl update
+
+2020.2.12:
+- Add support for fragmented video streams
+- Simultaneous download of video and audio streams
+- some bug fixes
+
+2020.1.30:
+- bug fix, update notification message appear even if application is up to date.
+- normalize version number to match pypi release
+- change symbol infront of stream names
+
+2020.01.27:
+- support for other video stream websites
+- check for app. updates.
+- check for youtube-dl updates.
+- ability to enable / disable  check for update on startup, "enabled by default".
+- change mouse cursor shape when busy.
+- source code splitted into small files.
+- change version number scheme to date based release "yyyy.mm.dd"
+- Support for windows 32bit and 64bit.
+- pypi release
+
+4.3:
+- Ability to schedule download from right click menu, also added a schedule All button for batch scheduling all non completed downloads,
+
+4.1:
+- fix repeated qualities in stream menu and playlist download window
+
+4.0:
+- New stream menu design. screenshot
+- some bug fixes and enhancements
+
+
+3.8:
+- Auto download ffmpeg.exe if missing "it will prompt user first".
+- fixed quality bar not completed when loading playlist.
+- fixed downloading unknown size file.
+- exe file size is now under 15 MB instead of 35 MB before
+- fix run command func problem since it causes the application to continue ask for downloading ffmpeg even if it actually exist
+
+3.7:
+- Ability to select which videos to include in playlist download, with individual video quality, also you can choose a general quality for all playlist videos at once.
+- bug fix for random quality selection in playlist download page, now "normal video" quality will be chosen by default, mostly will be 720p-mp4, however you can choose different higher qualities like 1080p or lower as per your needs.
+
+
+3.6:
+- New right click menu for download table, now you can view all info for any download item, copy url, open file location.
+- Ability to watch video files before it finish downloading.
+- open files by double click, Enter button, or context menu from downloads tab.
+- new animations for files status during download and merge.
+- Speed limit option now more better than before.
+
+3.4:
+- use json to store downloads list to avoid pickle problems in frozen builds, and avoid future problem of pickled downloads.cfg file incompatibility with new version of the app. issue #11
+- Feedback popups for download btn and pl.btn in case of not allowed ops.
+- bring application to front if url copied to clipboard or try to run another app. instance
+
+3.3:
+- the table header colors match the color theme "pySimpleGui addition"
+- sort themes names in setting tabs, 140+ themes
+- proper setting folder location for linux and mac
+- bug fixes for youtube audio track handling
+- handle exception for notify function
+- Change application name to pyIDM instead of old name Hanash.
+
+3.2:
+- Automatically install required python packages to run the application.
+- better log text newer entries are now at the bottom.
+- correct app. icon not appearing in windows
+
+
+3.1:
+- added functionality to download youtube DASH videos with audio merged using ffmpg.
+- bug fixes.
+- remove Pillow module from requirements
+- new themes added from PySimpleGUI module are available for use in user
+  setting (total of 105 themes) 
