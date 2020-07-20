@@ -1,5 +1,12 @@
                 History (newest first)
 
+20200720 v2.0.4
+
+- fix the case with getmail path for MDA_external
+- added a test script to test getmail python 3 port (getmail6).
+- improved mailbox decoding and take mailboxes as they are to avoid creating new labels on Gmail
+- handle the case when config file are broken links
+
 20200317 fixed "mailboxes" line
 
 Generate man page from readme, to avoid duplicate descriptions.
