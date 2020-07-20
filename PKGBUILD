@@ -1,45 +1,38 @@
-# Contributor : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
-
+# Maintainer: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=0.012
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A command-line client for mega.co.nz storage service"
-arch=('x86_64' 'i686')
-url="https://github.com/t3rm1n4l/$pkgname/"
-license=('MIT')
-makedepends=('go')
-options=('!strip' '!emptydirs')
-source=()
-install="$pkgname.install"
-sha256sums=()
-_gitroot="git://github.com/t3rm1n4l/megacmd.git"
-_gitname=megacmd
-_gitrev=e4c1c963c7d96d55190a74a12d25de05f5aa3033
+pkgdesc="MEGA Command Line Interactive and Scriptable Application"
+url="https://github.com/meganz/MEGAcmd"
+arch=('any')
+license=('custom')
+depends=('crypto++' 'zlib' 'sqlite' 'openssl' 'curl' 'c-ares' 'freeimage' 'libsodium'
+         'readline' 'libmediainfo' 'pcre' 'ffmpeg' 'libuv')
+makedepends=('git' 'autoconf')
+_sdkhash="b2948c7c77862e99dee912f4fe321d3c6dac6b09"
+source=("$pkgname.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
+        "mega-sdk.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
+sha512sums=('2fd3a3e76d3466d7b20c97a868f9af9d1189fa220e1f632bf37bd131a61f4db16f52fd8c7ff73875af98429d8e26106a16955350a8e92aeecd25c6d6c95de54c'
+            '4033188310d7a987eba6b42869c32bdc189eb0e5ad1c71c504dc5e33936066fc2d1fd9308e029ca271a2946e05be284b05a5ce19440cc42d2faba64a65db189b')
 
+prepare() {
+  cd "MEGAcmd-${pkgver}_Linux"
+
+  rm -r sdk
+  ln -sf "../sdk-${_sdkhash}" sdk
+}
 
 build() {
-  cd "$srcdir"
-  mkdir -p "$srcdir/go"
-  export GOPATH="$srcdir/go"
-  msg "Connecting to GIT server...."
+  cd "MEGAcmd-${pkgver}_Linux"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-  cd "$srcdir/$_gitname"
-  git reset --hard "$_gitrev"
+  sh autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-}
+  cd "MEGAcmd-${pkgver}_Linux"
 
+  make DESTDIR="$pkgdir" install
+}
