@@ -11,22 +11,13 @@ md5sums=('SKIP')
 
 build(){
    cd TEAtool
-   while true
-        do
-        echo "Select language: 1) English 2) Russian"
-        read lang 
-        if [ $lang == "1" ]
-        then 
-            echo "English selected!"
-            make 
-            break
-        elif [ $lang == "2" ]
-        then 
-            echo "Russian selected!"
-            make rus 
-            break
-        fi
-    done
+   lang="$(locale | grep LANG)" 
+   if [ $lang = "LANG=ru_RU.UTF-8" ]
+    then 
+        make rus
+    else
+        make 
+    fi
 }
 
 package() {
