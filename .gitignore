@@ -4,6 +4,7 @@
 
 # Built packages
 *.tar.xz
+*.tar.zst
 
 # Downloaded sources
 *.phar
