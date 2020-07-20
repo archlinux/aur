@@ -1,7 +1,7 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
 pkgver=3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
