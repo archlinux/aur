@@ -1,0 +1,14 @@
+pkgbase = jpeg2pdf
+	pkgdesc = Cross-platform command-line tool for creation of PDF documents from scans/photos of pages in JPEG (.jpg) format and the lightest weight ANSI C library to put multiple JPEG files into one PDF file
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/jpeg2pdf
+	arch = x86_64
+	license = GPL
+	depends = ghostscript
+	depends = poppler
+	source = jpeg2pdf-1.1.tar.bz2::https://sourceforge.net/projects/jpeg2pdf/files/1.1/jpeg2pdf_1.1_src.zip/download
+	sha256sums = 544037dc64888ccc57c44527d57571a7eefc5fad0e32e5813f0c42c74c08932e
+
+pkgname = jpeg2pdf
+
