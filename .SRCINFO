@@ -1,6 +1,6 @@
 pkgbase = mongodb-shell
 	pkgdesc = The MongoDB Shell includes all features of legacy mongo shell with new syntax highligting, clear error messages and intelligent autocomplete.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = mongodb-shell
 	depends = mongodb-bin
 	provides = mongosh
 	options = !strip
-	source = https://downloads.mongodb.com/compass/mongosh-0.0.7-linux.tgz
-	sha256sums = c776ae3f530a7d9fb1c10915b950b902a4070daae779f1487c2a367d36ddc089
+	source = https://downloads.mongodb.com/compass/mongosh-0.0.8-linux.tgz
 
 pkgname = mongodb-shell
 
