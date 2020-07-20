@@ -1,6 +1,6 @@
 pkgbase = kicad-git
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = r15561.b26e9520b
+	pkgver = r16462.6d8fb94d8
 	pkgrel = 1
 	url = http://kicad-pcb.org/
 	install = kicad.install
