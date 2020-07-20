@@ -1,6 +1,6 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 pkgname=ghcup-hs-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="an installer for the general purpose language Haskell"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(ghcup-$pkgver::https://downloads.haskell.org/~ghcup/$pkgver/x86_64-linux
         ghcup-comp-bash-$pkgver::$url/-/raw/v$pkgver/shell-completions/bash
         ghcup-comp-zsh-$pkgver::$url/-/raw/v$pkgver/shell-completions/zsh
         ghcup-comp-fish-$pkgver::$url/-/raw/v$pkgver/shell-completions/fish)
-sha256sums=('bdbec0cdf4c8511c4082dd83993d15034c0fbcb5722ecf418c1cee40667da8af'
+sha256sums=('a1d1e8b3c2b00186957c927d09f2cfb457bbfa65c1ab562ff5683963e205bdd5'
             '2cfbd028499615507bb081b4f6668caa34fe700ed5a4895f8c3716a54e53cafc'
             '3b2f4a9df87c17f3f6472cda80eca8357485a9efd78f32223559f797d55d0d31'
             '0b3afa4d80de4afcc89779911b6c64e319c55aef185dff2843e6d410a530bb3f')
