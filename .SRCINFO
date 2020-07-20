@@ -1,13 +1,13 @@
 pkgbase = pg_rum
 	pkgdesc = RUM access method - inverted index with additional information in posting lists
-	pkgver = 1.2.1
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/postgrespro/rum
 	arch = x86_64
 	license = custom:PostgreSQL
 	depends = postgresql
-	source = https://github.com/postgrespro/rum/archive/1.2.1.tar.gz
-	md5sums = 0190b2184659d171383db2cbcfb54d8b
+	source = https://github.com/postgrespro/rum/archive/1.3.6.tar.gz
+	sha256sums = 75beb61b0ad1c253d1afb1c8f7a80e0f3996d3356b93a55faf9aad6fc5c8c0d9
 
 pkgname = pg_rum
 
