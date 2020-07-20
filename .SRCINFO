@@ -6,7 +6,6 @@ pkgbase = hentaiathome
 	install = .INSTALL
 	arch = x86_64
 	license = GPL3
-	depends = java-runtime>=8
 	provides = hentaiathome-bin
 	source = hentaiathome-1.6.0.zip::https://repo.e-hentai.org/hath/HentaiAtHome_1.6.0.zip
 	source = hentaiathome.sh
@@ -18,6 +17,9 @@ pkgbase = hentaiathome
 	sha256sums = 2f3461521c2eb9d5ee2d964169b2f502758b7679bef70ffe5d0dcfd04ecd7d97
 
 pkgname = hentaiathome-cli
+	depends = java-runtime>=8
 
 pkgname = hentaiathome-gui
+	depends = java-runtime>=8
+	depends = hentaiathome-cli
 
