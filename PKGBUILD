@@ -26,7 +26,6 @@ makedepends=(
 )
 provides=(kdisplay)
 conflicts=(kdisplay kscreen)
-replaces=(kscreen)
 source=("git+https://gitlab.com/kwinft/kdisplay.git")
 sha512sums=('SKIP')
 

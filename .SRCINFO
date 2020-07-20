@@ -17,7 +17,6 @@ pkgbase = kdisplay-git
 	provides = kdisplay
 	conflicts = kdisplay
 	conflicts = kscreen
-	replaces = kscreen
 	source = git+https://gitlab.com/kwinft/kdisplay.git
 	sha512sums = SKIP
 
