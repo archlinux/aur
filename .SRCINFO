@@ -1,7 +1,7 @@
 pkgbase = jitsi-videobridge
 	pkgdesc = Videobridge for Jitsi Meet
 	pkgver = 2.1_273_g072dd44b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jitsi-videobridge
 	arch = x86_64
 	license = Apache
@@ -20,7 +20,7 @@ pkgbase = jitsi-videobridge
 	source = tmpfiles.conf
 	sha256sums = 9cc7420c492d31744499b619472c5a7145f012956291058ee20dc865cfc9cf58
 	sha256sums = d2746be91f361557343398b9544233f1482d60c6117db4ecaa7c7851cd347b50
-	sha256sums = 0b3a992ae295d1c691313a10731330cc38ae9e03989fe2afc1e12fcfc7dc4539
+	sha256sums = e8e9bcb7da6ffb45b9f95db38738ef71a90ab69a390ed3fb20441ac69b3073a8
 	sha256sums = 2b7679218752c0435a1496306b447d72aafaf5b671b6eef63e58c83a67638ced
 	sha256sums = 998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc
 	sha256sums = 36548f4980dcdbb27e0738c3fd928005d49a7b5c2c65d7a583ebb445626074dd
