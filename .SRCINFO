@@ -1,6 +1,6 @@
 pkgbase = dstask
 	pkgdesc = A personal task tracker designed to help you focus
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/naggie/dstask
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = dstask
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = dstask-0.18.tar.gz::https://github.com/naggie/dstask/archive/v0.18.tar.gz
-	sha256sums = de98f708966c9fb4946f0eb88353d1d87e2f2efe8f76e6ec91f694f2af9cb60a
+	source = dstask-0.19.tar.gz::https://github.com/naggie/dstask/archive/v0.19.tar.gz
+	sha256sums = 2e381556873dd5a616b51997b73f6c917d9c000655e24b15c0bd150af1f5953b
 
 pkgname = dstask
 
