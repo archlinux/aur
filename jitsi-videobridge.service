@@ -7,7 +7,7 @@ After=network-online.target
 Type=simple
 EnvironmentFile=/etc/jitsi/videobridge/config
 User=jvb
-ExecStart=/usr/share/jitsi-videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
+ExecStart=/usr/share/jitsi-videobridge/jvb.sh ${JVB_OPTS}
 WorkingDirectory=~
 StateDirectory=jitsi-videobridge
 StateDirectoryMode=0750
