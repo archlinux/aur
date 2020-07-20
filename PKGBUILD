@@ -15,5 +15,7 @@ build() {
 }
 
 package() {
-    cp -r "$srcdir" "$pkgdir/usr"
+    mkdir -p "$pkgdir/usr/"
+    cp -r "$srcdir/bin" "$pkgdir/usr/"
+    cp -r "$srcdir/share" "$pkgdir/usr/"
 }
