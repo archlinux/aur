@@ -1,14 +1,15 @@
 pkgbase = vramfs-git
 	pkgdesc = VRAM based file system for Linux
 	pkgver = 92.6e11407
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Overv/vramfs
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = opencl-headers
 	depends = ocl-icd
 	depends = opencl-driver
-	depends = fuse2
+	depends = fuse3
 	source = git+https://github.com/Overv/vramfs.git
 	md5sums = SKIP
 
