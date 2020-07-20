@@ -1,0 +1,20 @@
+pkgbase = stakkr
+	pkgdesc = A recompose tool that uses docker compose to easily create / maintain a stack of services. Via a configuration file you can setup the required services and let the app link and start everything for you
+	pkgver = 4.2
+	pkgrel = 1
+	url = https://github.com/stakkr-org/stakkr
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = docker-compose
+	depends = python-click-plugins
+	depends = python-clint
+	depends = python-yaml
+	depends = python-anyconfig
+	depends = python-gitpython
+	conflicts = stakkr-git
+	source = stakkr-4.2.tar.gz::https://github.com/stakkr-org/stakkr/archive/v4.2.tar.gz
+	sha256sums = 2c3c75a476a533f8d9eab9901cedb1f1c3dc51fe9b3af2ce7ec410342bb2319d
+
+pkgname = stakkr
+
