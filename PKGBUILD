@@ -1,5 +1,5 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.7.8.arch1
+pkgver=5.7.9.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -134,7 +134,7 @@ prepare() {
         0005-v5.7_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
-        msg2 "Patching with $MyPatch..."
+        msg2 "Applying patch $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
     done
 
