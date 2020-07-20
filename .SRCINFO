@@ -1,0 +1,15 @@
+pkgbase = python-sadisplay
+	pkgdesc = SqlAlchemy schema display script
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://bitbucket.org/estin/sadisplay/wiki/Home
+	arch = any
+	license = BSD
+	depends = python-pandas
+	depends = python-sqlalchemy
+	noextract = sadisplay-0.4.9-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/3.6/s/sadisplay/sadisplay-0.4.9-py2.py3-none-any.whl
+	sha256sums = bf456f582b8f5da19fedef7a9afe969b49231d79724710bc7d35c9439f44c2fc
+
+pkgname = python-sadisplay
+
