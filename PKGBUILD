@@ -3,7 +3,7 @@
 
 pkgname=spotify-tui
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Spotify client for the terminal written in Rust'
 arch=(x86_64)
 url=https://github.com/Rigellute/spotify-tui
@@ -15,7 +15,7 @@ sha512sums=('86d1d5191d597ba752185d1dbf8cc33cfe7a5fbfca3a41bc01254d7b92f494885ff
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release
+  cargo build --release --target-dir "target/"
 }
 
 package() {
