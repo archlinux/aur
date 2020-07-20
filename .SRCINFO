@@ -1,6 +1,6 @@
 pkgbase = python-language-server-black
 	pkgdesc = Black plugin for the Python Language Server.
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/rupert/pyls-black
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-language-server-black
 	makedepends = python
 	makedepends = python-language-server
 	makedepends = python-black
-	source = python-language-server-black-0.4.4.tar.gz::https://github.com/rupert/pyls-black/archive/v0.4.4.tar.gz
-	sha256sums = 673e16cdba7eb929a22829a2962a3f2b645eb81723c5e82174c3323b25c6ec83
+	source = python-language-server-black-0.4.6.tar.gz::https://github.com/rupert/pyls-black/archive/v0.4.6.tar.gz
+	sha256sums = c591f57b28852e095dafb87cdd3d16fc3dfe188ec199b728f34569d472d63150
 
 pkgname = python-language-server-black
 
