@@ -1,5 +1,5 @@
 pkgbase = pg_rum
-	pkgdesc = RUM access method - inverted index with additional information in posting lists
+	pkgdesc = RUM access method for PostgreSQL - inverted index with additional information in posting lists
 	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/postgrespro/rum
