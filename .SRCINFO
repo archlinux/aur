@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libzip
 	pkgdesc = A C library for reading, creating, and modifying zip archives (mingw-w64)
-	pkgver = 1.6.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = http://www.nih.at/libzip/index.html
 	arch = any
@@ -9,11 +9,13 @@ pkgbase = mingw-w64-libzip
 	depends = mingw-w64-xz
 	depends = mingw-w64-zlib
 	depends = mingw-w64-bzip2
+	depends = mingw-w64-openssl
+	depends = mingw-w64-gnutls
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.nih.at/libzip/libzip-1.6.0.tar.xz
-	sha256sums = a6cd804b4b3cffd997bd563fec693eb7eb052c225909a98a620689c2befb699b
+	source = http://www.nih.at/libzip/libzip-1.7.3.tar.xz
+	sha256sums = a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132
 
 pkgname = mingw-w64-libzip
 
