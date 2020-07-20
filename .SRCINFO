@@ -1,14 +1,14 @@
 pkgbase = pyidm
 	pkgdesc = Python open source alternative to IDM (Internet Download Manager)
 	pkgver = 2020.6.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyIDM/PyIDM
 	changelog = pyidm.changelog
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	makedepends = python-pip
-	depends = python
+	depends = python>=3.6
 	depends = python-pysimplegui>=4.18
 	depends = python-pyperclip
 	depends = python-plyer
@@ -16,6 +16,7 @@ pkgbase = pyidm
 	depends = youtube-dl
 	depends = python-pycurl
 	depends = python-pillow
+	depends = ffmpeg
 	source = pyidm-2020.6.27.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.6.27.tar.gz
 	b2sums = a697c73d85956920e0ad859dea7bb1f2c4b7dc8a36ccfaabb893553bf037b464945dce482ba2cb8793f25ded2499e9ceaa87e07c250aa764d400d0997a79a20b
 
