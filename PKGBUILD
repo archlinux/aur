@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=83.0.4103.116
+pkgver=84.0.4147.89
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -17,7 +17,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'desktop-file-utils' 'hicolor-icon-theme')
 provides=('chromium')
 conflicts=('chromium')
-makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
+makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git'
              'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
@@ -29,12 +29,10 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         force-mp3-files-to-have-a-start-time-of-zero.patch
-        v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-skia-harmony.patch)
-sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
+sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -48,7 +46,7 @@ declare -gA _system_libs=(
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng    # https://crbug.com/752403#c10
+  [libpng]=libpng
   [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
@@ -56,7 +54,6 @@ declare -gA _system_libs=(
   [opus]=opus
   # [re2]=re2 # Not possible with custom libcxx
   [snappy]=snappy
-  [yasm]=
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -71,7 +68,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 756066
+# Branch point: 768962
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
@@ -94,9 +91,6 @@ prepare() {
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
   patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
-
-  # https://crbug.com/v8/10393
-  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -122,7 +116,6 @@ prepare() {
       \! -path "third_party/$_lib/chromium/*" \
       \! -path "third_party/$_lib/google/*" \
       \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
-      \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -148,7 +141,6 @@ build() {
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'linux_use_bundled_binutils=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'use_ozone=true'
