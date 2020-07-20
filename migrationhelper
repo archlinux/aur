@@ -53,4 +53,4 @@ case x$REPLY in
 esac
 printf '\033[0m\n'
 
-# vim: ts=2 sw=2 noet ft=bash:
+# vim: ts=2 sw=2 noet ft=sh:

@@ -9,7 +9,7 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r737.150b8b6
+pkgver=r752.f11281c
 pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
@@ -42,7 +42,7 @@ install=wizard.install
 source=("git+$url"
         'migrationhelper')
 sha256sums=('SKIP'
-            '34682620297727b9bf93670b84592050d59181e682d3867cd56aefedbd67243f')
+            '96471dc5a53af342cf14f5ec119df81509617f960c707d732781a24d9e2ed3c6')
 
 
 #check() {
