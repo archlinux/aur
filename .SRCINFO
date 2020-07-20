@@ -1,0 +1,16 @@
+pkgbase = python-alembic-autogenerate-enums
+	pkgdesc = Alembic hook that causes --autogenerate to output PostgreSQL ALTER TYPE statements.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/dw/alembic-autogenerate-enums
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-alembic
+	depends = python-sqlalchemy
+	source = https://files.pythonhosted.org/packages/source/a/alembic_autogenerate_enums/alembic_autogenerate_enums-0.0.2.tar.gz
+	sha256sums = adb49909c864a263f92bf7b99752d5c4b2f496617cccb5cfc689af9c72235ff9
+
+pkgname = python-alembic-autogenerate-enums
+
