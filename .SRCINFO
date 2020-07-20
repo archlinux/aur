@@ -1,6 +1,6 @@
 pkgbase = numworks-epsilon
 	pkgdesc = A simulator for the Numworks graphic calculator (Epsilon firmware)
-	pkgver = 13.2.0
+	pkgver = 14.4.0
 	pkgrel = 1
 	url = https://www.numworks.com/resources/engineering/software/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = numworks-epsilon
 	depends = gcc-libs
 	depends = libxext
 	depends = libjpeg-turbo
-	source = numworks-epsilon-13.2.0.tar.gz::https://github.com/numworks/epsilon/archive/13.2.0.tar.gz
-	md5sums = 605099699adcf6a929b4f85abdc50002
+	source = numworks-epsilon-14.4.0.tar.gz::https://github.com/numworks/epsilon/archive/14.4.0.tar.gz
+	md5sums = 9aaba24ee381925dfc832444c8bd5871
 
 pkgname = numworks-epsilon
 

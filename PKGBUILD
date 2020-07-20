@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-epsilon
-pkgver=13.2.0
+pkgver=14.4.0
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Epsilon firmware)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/numworks/epsilon/archive/$pkgver.tar.gz")
-md5sums=('605099699adcf6a929b4f85abdc50002')
+md5sums=('9aaba24ee381925dfc832444c8bd5871')
 
 prepare() {
 	cd "epsilon-$pkgver"
