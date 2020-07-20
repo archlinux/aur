@@ -6,6 +6,7 @@ pkgver=0.0.1
 pkgrel=3
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
+conflicts=('google-tsunami-security-scanner-git')
 url="https://github.com/google/tsunami-security-scanner"
 license=('Apache')
 depends=('nmap>=7.80' 'ncrack>=0.7' 'jdk11-openjdk') 
