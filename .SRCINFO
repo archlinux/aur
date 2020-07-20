@@ -10,7 +10,7 @@ pkgbase = obsidian-appimage
 	depends = fuse
 	noextract = obsidian-appimage-0.8.0.AppImage
 	options = !strip
-	source_x86_64 = obsidian-appimage-0.7.6.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.8.0/Obsidian-0.8.0.AppImage
+	source_x86_64 = obsidian-appimage-0.8.0.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.8.0/Obsidian-0.8.0.AppImage
 	sha256sums_x86_64 = 4014e150cfa60dcd3051ed78b63e6ea43cb3aaf0705ff321bdc02e1ed6697478
 
 pkgname = obsidian-appimage
