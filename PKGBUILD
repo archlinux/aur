@@ -41,6 +41,7 @@ build() {
 	cd "$pkgname"
   sed -i 's#sisco.lv2#sisco-cv.lv2#' Makefile
   sed -i 's#LV2NAME=sisco#LV2NAME=sisco-cv#' Makefile
+  sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' src/uris.h
   mv lv2ttl/sisco.ttl.in lv2ttl/sisco-cv.ttl.in
   mv lv2ttl/sisco.lv2.ttl.in lv2ttl/sisco-cv.lv2.ttl.in
   mv lv2ttl/sisco.gui.ttl.in lv2ttl/sisco-cv.gui.ttl.in
