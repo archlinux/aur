@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 0.99.3
+	pkgver = 0.99.4
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = vr-video-player: for playing regular games side-by-side in VR
 	optdepends = nyrna: for using nyrna per game
 	optdepends = wmctrl: for optional minimize/maximize of all open windows on game start/stop
-	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=c753430a035922436aab95e92f1e8f772cfd6b65
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=8e79ebf71b5cffcbf5f3fa8a0b6d47d8c94c1b54
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch

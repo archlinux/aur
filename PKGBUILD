@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>, Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=0.99.3
+pkgver=0.99.4
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'nyrna: for using nyrna per game'
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
 )
-_commit='c753430a035922436aab95e92f1e8f772cfd6b65'
+_commit='8e79ebf71b5cffcbf5f3fa8a0b6d47d8c94c1b54'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
