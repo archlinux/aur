@@ -1,16 +1,12 @@
 pkgbase = bibata-cursor-translucent
 	pkgdesc = Translucent Material Based Cursor Theme.
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Silicasandwhich/Bibata_Cursor_Translucent.git
 	arch = any
 	license = GPL
-	makedepends = inkscape
-	makedepends = gnome-themes-extra
-	makedepends = gtk-engine-murrine
-	makedepends = xorg-xcursorgen
-	source = https://github.com/Silicasandwhich/Bibata_Cursor_Translucent/archive/v1.0.1.tar.gz
-	sha256sums = 21e5af9d34d87083f51625cb72bbb2b19b63c2542bde03c878ae7bbe85fb7fc1
+	source = https://github.com/Silicasandwhich/Bibata_Cursor_Translucent/archive/v1.1.tar.gz
+	sha256sums = 5028ad88f16440a1ecfd4099191740244f7010aa6330fe5ac53daab62cb8fd46
 
 pkgname = bibata-cursor-translucent
 
