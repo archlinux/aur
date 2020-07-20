@@ -25,12 +25,19 @@ optdepends=('libcdio: for CD support'
 conflicts=(clementine)
 provides=(clementine)
 _name=Clementine
-source=("git+https://github.com/clementine-player/$_name.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/clementine-player/$_name.git"
+        "close-fix.diff")
+sha256sums=('SKIP'
+            '587c3724483825c2101fc15b8ef3b04b15a4dee34457285f94da6dd9b6db656c')
 
 pkgver() {
     cd $_name
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $_name
+    patch -p1 -i $srcdir/close-fix.diff
 }
 
 build() {

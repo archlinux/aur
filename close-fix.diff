@@ -1,0 +1,37 @@
+diff --git a/src/ui/mainwindow.cpp b/src/ui/mainwindow.cpp
+index 14921028c..a02f0548c 100644
+--- a/src/ui/mainwindow.cpp
++++ b/src/ui/mainwindow.cpp
+@@ -1443,20 +1443,6 @@ void MainWindow::StopAfterCurrent() {
+       app_->playlist_manager()->active()->stop_after_current());
+ }
+ 
+-void MainWindow::closeEvent(QCloseEvent* event) {
+-  bool keep_running(false);
+-  if (tray_icon_)
+-    keep_running =
+-        settings_.value("keeprunning", tray_icon_->IsVisible()).toBool();
+-
+-  if (keep_running && event->spontaneous()) {
+-    event->ignore();
+-    SetHiddenInTray(true);
+-  } else {
+-    Exit();
+-  }
+-}
+-
+ void MainWindow::SetHiddenInTray(bool hidden) {
+   settings_.setValue("hidden", hidden);
+ 
+diff --git a/src/ui/mainwindow.h b/src/ui/mainwindow.h
+index 5b2983bb4..756f33a47 100644
+--- a/src/ui/mainwindow.h
++++ b/src/ui/mainwindow.h
+@@ -134,7 +134,6 @@ class MainWindow : public QMainWindow, public PlatformInterface {
+   void keyPressEvent(QKeyEvent* event);
+   void changeEvent(QEvent*);
+   void resizeEvent(QResizeEvent*);
+-  void closeEvent(QCloseEvent* event);
+ 
+ #ifdef Q_OS_WIN32
+   bool winEvent(MSG* message, long* result);
