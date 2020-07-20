@@ -12,7 +12,7 @@ pkgbase = nextplayer-appimage
 	replaces = thenewplayerfree-bin
 	noextract = nextplayer-1.7.2.AppImage
 	options = !strip
-	source = https://github.com/SamLukeYes/nextplayer-appimage/releases/download/v1.7.2/nextplayer-1.7.2.AppImage
+	source = nextplayer-1.7.2.AppImage::https://github.com/sudormroot/nextplayer-project/releases/download/nextplayer-bin.linux.1.7.2-1.amd64/nextplayer-bin.linux.1.7.2-1.amd64.AppImage
 	md5sums = 462d4654cb7875be8b1d98037c45708d
 
 pkgname = nextplayer-appimage
