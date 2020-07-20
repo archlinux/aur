@@ -1,0 +1,15 @@
+pkgbase = python-falcon-cors
+	pkgdesc = Falcon CORS middlware
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/dw/falcon-cors
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-falcon
+	source = https://files.pythonhosted.org/packages/source/f/falcon-cors/falcon-cors-1.1.7.tar.gz
+	sha256sums = 1788ec5c31b5a39240f7979a7c7170a33ea4952dc97e151858a82dcde1a9fe8a
+
+pkgname = python-falcon-cors
+
