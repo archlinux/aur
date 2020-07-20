@@ -1,7 +1,7 @@
 pkgbase = kio-extras-git
 	pkgdesc = Additional components to increase the functionality of KIO
 	pkgver = r6788.7763a1e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/workspace/kio-extras
 	install = kio-extras-git.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = kio-extras-git
 	depends = exiv2
 	depends = openexr
 	depends = libmtp
+	depends = kdsoap
 	provides = kio-extras
 	conflicts = kio-extras
 	source = git+https://github.com/KDE/kio-extras.git
