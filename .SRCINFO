@@ -1,4 +1,4 @@
-pkgbase = python-anyconfig
+pkgbase = python-anyconfig-git
 	pkgdesc = Generic access to configuration files in any formats (to be in the future)
 	pkgver = 0.9.11.r0.ga24c2c2
 	pkgrel = 1

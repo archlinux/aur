@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgbase='python-anyconfig'
+pkgbase='python-anyconfig-git'
 pkgname=('python-anyconfig-git' 'python2-anyconfig-git')
 pkgver=0.9.11.r0.ga24c2c2
 pkgrel=1
