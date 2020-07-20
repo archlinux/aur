@@ -1,7 +1,7 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	arch = x86_64
 	license = GPL
 	makedepends = npm

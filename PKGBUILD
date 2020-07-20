@@ -1,7 +1,7 @@
 pkgname=netlify-application
 _pkgname=Netlify
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('x86_64')
 url=""
