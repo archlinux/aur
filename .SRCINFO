@@ -1,0 +1,15 @@
+pkgbase = pysorter
+	pkgdesc = A command line utility for organizing files and directories according to regex patterns
+	pkgver = 0.4.4.r3.g8b4cf72
+	pkgrel = 1
+	url = https://github.com/chriscz/pysorter
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	depends = python
+	conflicts = pysorter
+	source = pysorter::git+https://github.com/chriscz/pysorter
+	sha256sums = SKIP
+
+pkgname = pysorter
+
