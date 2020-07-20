@@ -1,0 +1,13 @@
+pkgbase = antiprism
+	pkgdesc = Create, transform, analyse, and visualise polyhedra.
+	pkgver = 0.26
+	pkgrel = 1
+	url = https://www.antiprism.com/
+	arch = x86_64
+	license = custom
+	depends = freeglut
+	source = https://www.antiprism.com/files/antiprism-0.26.tar.gz
+	sha256sums = 254f14cae5ffd1ab6266a414d6fad5ce4172b3c8927a4e37276559582b624cb9
+
+pkgname = antiprism
+
