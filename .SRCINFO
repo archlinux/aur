@@ -1,0 +1,15 @@
+pkgbase = goclockify
+	pkgdesc = A terminal based client for Clockify time tracker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ABGEO/goclockify
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/ABGEO/goclockify.git
+	sha256sums = SKIP
+
+pkgname = goclockify
+
