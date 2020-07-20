@@ -1,7 +1,7 @@
 pkgbase = syntax-highlighting-git
 	pkgdesc = Syntax highlighting engine for structured text and code
 	pkgver = v5.30.0.rc1.r720.g7f57f9c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/syntax-highlighting
 	arch = x86_64
 	groups = plasma

@@ -2,7 +2,7 @@
 
 pkgname=syntax-highlighting-git
 pkgver=v5.30.0.rc1.r720.g7f57f9c
-pkgrel=1
+pkgrel=2
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=(x86_64)
 url='https://projects.kde.org/projects/kde/syntax-highlighting'
