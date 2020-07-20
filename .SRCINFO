@@ -1,7 +1,7 @@
 pkgbase = xdarkterror.lv2-git
-	pkgdesc = A simple sound generator LV2 plugin to have some fun with (git version)
+	pkgdesc = An amplifier simulation LV2 plugin modelled after a small high-gain british valve amp (git version)
 	pkgver = r6.2c68f44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/XDarkTerror.lv2
 	arch = i686
 	arch = x86_64
