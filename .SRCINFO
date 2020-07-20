@@ -7,6 +7,7 @@ pkgbase = qt5-color-widgets
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	optdepends = qt5-tools: for QtDesigner integration
 	optdepends = qtcreator: for QtCreator integration

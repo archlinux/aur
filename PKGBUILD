@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'
             'qtcreator: for QtCreator integration')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
