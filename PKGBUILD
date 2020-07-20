@@ -2,26 +2,18 @@
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Det <nimetonmaili at gmail a-dot com>
-# Based on AUR's thunderbird-nightly
+# Based on AUR's thunderbird-nightly-bin
 
 _name=thunderbird
 _channel=nightly
 _lang=it
-pkgname=${_name}-${_channel}-${_lang}
+pkgname=(${_name}-${_channel}-${_lang} ${_name}-${_channel}-${_lang}-noupdate)
 pkgver=80.0a1
 _version=80.0a1
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Nightly build (${_lang})"
 arch=('i686' 'x86_64')
 url="http://www.mozilla.org/it/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
-         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
-         'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
-         'shared-mime-info' 'sqlite' 'startup-notification')
-optdepends=('libcanberra: per supporto audio')
-provides=("thunderbird=${_version}")
-install="${pkgname}.install"
 
 FX_SRC_EN="${_name}-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI_EN="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-comm-central/${FX_SRC_EN}"
@@ -30,8 +22,8 @@ FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/
 
 source=("${FX_SRC_URI_EN}.txt"
         "${FX_SRC_URI}.tar.bz2"
-        "$pkgname.desktop"
-        "vendor.js")
+        "${pkgname}.desktop"
+        vendor.js)
 
 sha512sums=('SKIP'
             'SKIP'
@@ -42,7 +34,17 @@ pkgver(){
     echo "${_version}.$(head -n1 "${FX_SRC_EN}.txt" |cut -c -8)"
 }
 
-package() {
+package_thunderbird-nightly-it() {
+  pkgdesc="Standalone Mail/News reader - Nightly build (${_lang})"
+  depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
+         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
+         'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
+         'shared-mime-info' 'sqlite' 'startup-notification')
+  optdepends=('libcanberra: per supporto audio')
+  provides=("thunderbird=${_version}" 'thunderbird-nightly')
+  conflicts=('thunderbird-nightly')
+  install="${pkgname}.install"
+
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -a thunderbird "${pkgdir}"/opt/${pkgname}-${pkgver}
   cp vendor.js "${pkgdir}"/opt/${pkgname}-${pkgver}/defaults/pref/
@@ -53,4 +55,10 @@ package() {
   install -Dm644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
   rm -rf "${pkgdir}"/opt/${pkgname}-${pkgver}/dictionaries/
   ln -sf /usr/share/hunspell/ "${pkgdir}"/opt/${pkgname}-${pkgver}/dictionaries
+}
+
+package_thunderbird-nightly-it-noupdate() {
+  pkgdesc="Standalone Mail/News reader - Nightly build (${_lang}) con notifiche di aggiornamento disabilitate"
+  depends=('thunderbird-nightly-it')
+  install -Dm644 -t "${pkgdir}"/opt/${pkgname-noupdate}-${pkgver}/distribution policies.json
 }
