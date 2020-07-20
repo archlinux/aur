@@ -4,13 +4,16 @@ pkgname=tetrio-desktop
 pkgver=1.0.0
 # sometimes, they release without bumping the version
 _release=2
-pkgrel=6
+pkgrel=7
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('unknown' 'APACHE' 'MIT')
 url='https://tetr.io/'
 source=("$pkgname-$pkgver-$_release.tar.gz::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.tar.gz"
-        tetrio-desktop.desktop
+        # XXX: This should be called tetrio-desktop.desktop, however due to a
+        # bug in xdg-settings, desktop files with - are apparently mishandled.
+        # https://github.com/electron/electron/issues/20382
+        tetrio.desktop
         tetrio-desktop.png)
 sha256sums=('cb23feff26a37e5a51036c59d97af97ae72323f7023faec64e8d90afa86802ef'
             '0ad0118764c582e0ea9983856a450ce9ea2a77307224a54e4c3e0363216d0970'
@@ -34,7 +37,7 @@ package() {
         -exec chmod 755 {} +
 
     install -Dm644 tetrio-desktop.png "$pkgdir/usr/share/pixmaps/tetrio-desktop.png"
-    install -Dm644 tetrio-desktop.desktop "$pkgdir/usr/share/applications/tetrio-desktop.desktop"
+    install -Dm644 tetrio.desktop "$pkgdir/usr/share/applications/tetrio.desktop"
 
     mkdir -p "$pkgdir/usr/bin"
     ln -sf /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"

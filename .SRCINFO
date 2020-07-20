@@ -1,7 +1,7 @@
 pkgbase = tetrio-desktop
 	pkgdesc = TETR.IO desktop client
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://tetr.io/
 	arch = x86_64
 	license = unknown
@@ -9,7 +9,7 @@ pkgbase = tetrio-desktop
 	license = MIT
 	noextract = tetrio-desktop-1.0.0-2.tar.gz
 	source = tetrio-desktop-1.0.0-2.tar.gz::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.tar.gz
-	source = tetrio-desktop.desktop
+	source = tetrio.desktop
 	source = tetrio-desktop.png
 	sha256sums = cb23feff26a37e5a51036c59d97af97ae72323f7023faec64e8d90afa86802ef
 	sha256sums = 0ad0118764c582e0ea9983856a450ce9ea2a77307224a54e4c3e0363216d0970
