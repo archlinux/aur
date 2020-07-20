@@ -1,13 +1,13 @@
 pkgbase = python-quantiphy
 	pkgdesc = Offers support for pairing of a number and a unit of measure
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/KenKundert/quantiphy
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/q/quantiphy/quantiphy-2.10.0.tar.gz
-	sha256sums = 0db4efac93cea8aff69fd77d6412b3291f0f095afb1389de671e738474223f6f
+	source = https://files.pythonhosted.org/packages/source/q/quantiphy/quantiphy-2.11.0.tar.gz
+	sha256sums = ecd3155ff66de8b63932733c6f42732e6f8df27c0f2f49a74e7f0fbe3aa5cf92
 
 pkgname = python-quantiphy
 
