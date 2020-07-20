@@ -5,7 +5,7 @@
 
 pkgname=plex-media-player
 pkgver=2.58.0
-_gitrev=1076
+_gitrev=1077
 _gitver=38e019da
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
