@@ -5,14 +5,14 @@
 
 pkgname=plex-media-player
 pkgver=2.58.0
-_gitrev=1077
+_gitrev=1076
 _gitver=38e019da
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
 _web_buildid=183-045db5be50e175
 _web_desktop_ver=4.29.2-e50e175
 _web_tv_ver=4.29.6-045db5b
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
