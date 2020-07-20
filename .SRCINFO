@@ -1,7 +1,7 @@
 pkgbase = esunbank-webatm
 	pkgdesc = WebATM service tool for Esun Bank at Taiwan
 	pkgver = 1.0.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.esunbank.com.tw
 	arch = x86_64
 	license = custom

@@ -1,7 +1,7 @@
 # Contributor: holishing
 pkgname=esunbank-webatm
 pkgver=1.0.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="WebATM service tool for Esun Bank at Taiwan"
 arch=('x86_64')
 url="https://www.esunbank.com.tw"
@@ -24,7 +24,7 @@ prepare() {
 
 package(){
     # Install Custom CA
-    install -Dm644 "${srcdir}"/usr/share/esunbank/AAA_Certificate_Authority.crt "${pkgdir}"/usr/share/ca-certificates/trust-source/AAA_Certificate_Authority.crt
+    install -Dm644 "${srcdir}"/usr/share/esunbank/AAA_Certificate_Authority.crt "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors/AAA_Certificate_Authority.crt
 
     # Main Program
     mv "${srcdir}"/usr/share/esunbank/AAA_Certificate_Authority.crt $srcdir
