@@ -1,7 +1,7 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
 	pkgver = 4.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
 	license = GPL3
