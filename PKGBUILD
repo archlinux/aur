@@ -1,5 +1,5 @@
 # Author: metak <https://bbs.archlinux.org/viewtopic.php?id=225365>
-# Contributor: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
 
 pkgname=caja-deja-dup-bzr
 pkgver=0.0.6.r22
