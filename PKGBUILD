@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=r335.92df315
+pkgver=r352.cd4f0c0
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
   cd "$_pkgname"
   mkdir build
   cd build
-  qmake ..
+  qmake .. -config release
   make
 }
 
