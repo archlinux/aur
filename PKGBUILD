@@ -2,13 +2,14 @@
 
 pkgname='auto-ytdl-git'
 pkgdesc='A youtube-dl wrapper with automatisation features. Run from terminal: aytdl'
-pkgver=1.0.3.r6.gaebc91b
+pkgver=1.1.1.r4.gf41de72
 pkgrel=1
 arch=('any')
 url='https://github.com/michaelb/auto-ytdl'
 license=('GPL3')
-depends=('ffmpeg' 'youtube-dl')
+depends=('ffmpeg' 'youtube-dl' 'kid3-cli' 'python-pip')
 makedepends=('python-setuptools' 'git')
+provides=('auto-ytdl')
 
 pkgver() {
   cd "${pkgname}"
