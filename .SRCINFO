@@ -1,0 +1,13 @@
+pkgbase = adara-theme-git
+	pkgdesc = Maxime Gauduin <alucryd@archlinux.org>
+	pkgver = r46.743fc0d
+	pkgrel = 1
+	url = https://github.com/germanfr/adara-theme
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = git+https://github.com/germanfr/adara-theme.git
+	md5sums = SKIP
+
+pkgname = adara-theme-git
+
