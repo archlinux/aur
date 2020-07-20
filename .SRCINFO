@@ -1,0 +1,13 @@
+pkgbase = librseq-git
+	pkgdesc = Library for Restartable Sequences
+	pkgver = r70.d1cdec9
+	pkgrel = 1
+	url = https://github.com/compudj/librseq
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = git+https://github.com/compudj/librseq.git
+	md5sums = SKIP
+
+pkgname = librseq-git
+
