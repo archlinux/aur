@@ -1,17 +1,10 @@
+# -*- shell-script -*-
 # Maintainer: <aggraef at gmail.com>
 # Contributor: <aggraef at gmail.com>
 
 # This is Jonathan Wilkes' nw.js variant of Pd-L2Ork nick-named "Purr-Data".
 # Basically, it is Pd-L2Ork with the Tk GUI replaced with a JavaScript GUI
 # implemented using nw.js (http://nwjs.io/).
-
-# NOTE: This is BETA software which is still under development, so expect some
-# bugs and ongoing changes in some parts of the program and its library. If
-# you want a stable version of Pd-L2Ork ready for production use, you may want
-# to use the pd-l2ork or pd-l2ork-git package instead. That said, purr-data
-# has been coming along nicely and should be ready for daily use already. If
-# necessary, you can also install both purr-data and pd-l2ork on the same
-# system.
 
 # This package can be installed alongside pd-l2ork, as well as vanilla pd or
 # pd-extended. To avoid conflicts with any of these, the main contents of the
@@ -25,7 +18,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.9.0.r4141.02137491
+pkgver=2.12.0.r4366.6d94e10b
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -39,7 +32,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
   'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
-makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2')
 provides=('purr-data')
 conflicts=('purr-data')
 install=purr-data.install
