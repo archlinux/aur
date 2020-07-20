@@ -1,4 +1,4 @@
-pkgbase = teatool
+pkgbase = teatool-git
 	pkgdesc = Tiny algorithm encryption utility
 	makedepends = git
 	makedepends = gcc
