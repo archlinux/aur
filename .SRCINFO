@@ -17,7 +17,7 @@ pkgbase = yayim
 	provides = yay
 	conflicts = yay
 	source = yayim-10.0.3.tar.gz::https://git.jojii.de/jojii/yayim/-/archive/v10.0.3/yayim-v10.0.3.tar.gz
-	sha256sums = 72d3a15a35709d2f39ccd45682885d4d91dd38352c882a5f732912c9747a8ad6
+	sha256sums = 094342b156c608ca80bee1eceec0f128d18643efe87f2498637f948a56206639
 
 pkgname = yayim
 
