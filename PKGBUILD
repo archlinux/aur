@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/iotang/Project_LemonLime"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'hicolor-icon-theme')
-makedepends=('git')
+makedepends=('git' 'cmake' 'ninja')
 checkdepends=()
 optdepends=()
 provides=("lemon-lime")
@@ -33,7 +33,8 @@ validpgpkeys=()
 
 prepare() {
     cd "${srcdir}/LemonLime"
-    sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+    #sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
+    sed -i '/add_link_options(-no-pie)/d' CMakeLists.txt
     git submodule init
     submodules=('singleapplication')
     for module in ${submodules[@]}; do
@@ -46,8 +47,10 @@ prepare() {
 build() {
 	cd "${srcdir}/LemonLime"
 	g++ watcher_unix.cpp -o watcher_unix -O2
-	qmake lemon.pro
-	make
+	#qmake lemon.pro
+	#make
+    cmake -GNinja .
+	ninja
 
 }
 
