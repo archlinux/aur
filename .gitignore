@@ -1,0 +1,8 @@
+.AURINFO
+pkg/
+src/
+xdarkterror.lv2/
+xputty/
+xdarkterror.lv2-git-*.tar.xz
+xdarkterror.lv2-git-*.tar.zst
+xdarkterror.lv2-git-*.src.tar.gz
