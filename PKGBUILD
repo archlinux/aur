@@ -16,12 +16,12 @@ conflicts=("sshutils")
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
-export CGO_LDFLAGS="${LDFLAGS}"
-export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+export CGO_LDFLAGS="-s -w"
+export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
 prepare() {
   cd "$pkgname"
-  mkdir build
+  mkdir build -p
 }
 
 build() {
