@@ -1,6 +1,6 @@
 pkgbase = rime-aurora-pinyin
 	pkgdesc = 【极光拼音】输入方案
-	pkgver = 0.0.0.202020
+	pkgver = 0.0.0.20200720
 	pkgrel = 1
 	url = https://github.com/hosxy/rime-aurora-pinyin
 	arch = any

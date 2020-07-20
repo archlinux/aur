@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=rime-aurora-pinyin
-pkgver=0.0.0.202020
+pkgver=0.0.0.20200720
 _commit=894e691250b8ca1cbe9378e10989a6e3f1629cd2
 pkgrel=1
 pkgdesc="【极光拼音】输入方案"
