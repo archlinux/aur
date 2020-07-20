@@ -5,9 +5,10 @@
 
 pkgname=vim-taglist
 
-pkgver=46
+epoch=1
+pkgver=4.6
 _scriptid=19574
-pkgrel=6
+pkgrel=1
 
 pkgdesc='A source code browser plugin for vim'
 arch=('any')
