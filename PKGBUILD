@@ -22,6 +22,7 @@ build() {
     cd "$srcdir/application"
     npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
     ./node_modules/.bin/electron-packager .
+    rm -rf "$srcdir/$pkgname/$_pkgname-linux-x64/resources/app/node_modules"
 }
 
 package() {
