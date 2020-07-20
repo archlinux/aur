@@ -2,14 +2,14 @@
 
 pkgname=geph-client
 pkgver=0.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line Geph client'
 arch=('x86_64')
 url="https://github.com/geph-official/geph2"
 license=('GPL3')
 groups=('geph2')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 backup=("etc/geph2/$pkgname.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/geph-official/geph2/archive/v$pkgver.tar.gz"
         "geph-client.service")
@@ -18,6 +18,11 @@ sha512sums=('2595892671915e576aaee8a7a7beb4fbfb8b702520c6525cced9686c39516fa1c8a
 
 build() {
     cd "geph2-$pkgver/cmd/$pkgname/"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build
 }
 
