@@ -1,0 +1,18 @@
+pkgbase = python-scikit-optimize-git
+	pkgdesc = Sequential model-based optimization toolbox.
+	pkgver = r1500.907ec9d
+	pkgrel = 1
+	url = http://scikit-optimize.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	depends = python-pyaml
+	conflicts = python-scikit-optimize
+	replaces = python-scikit-optimize
+	source = git+https://github.com/scikit-optimize/scikit-optimize.git
+	sha256sums = SKIP
+
+pkgname = python-scikit-optimize-git
+
