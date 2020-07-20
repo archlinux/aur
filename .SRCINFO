@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-nosystemd
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
-	pkgver = 3.27.1
+	pkgver = 3.28.1
 	pkgrel = 1
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = i686
@@ -40,7 +40,7 @@ pkgbase = syslog-ng-nosystemd
 	optdepends = net-snmp: for the SNMP plugin
 	optdepends = librdkafka: for the Kafka C plugin
 	optdepends = syslog-ng-openrc: syslog-ng openrc initscript
-	provides = syslog-ng=3.27.1
+	provides = syslog-ng=3.28.1
 	conflicts = syslog-ng
 	conflicts = syslog-ng-eudev
 	conflicts = eventlog
@@ -51,13 +51,13 @@ pkgbase = syslog-ng-nosystemd
 	backup = etc/syslog-ng/syslog-ng.conf
 	backup = etc/conf.d/initscripts/syslog-ng
 	backup = etc/logrotate.d/syslog-ng
-	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.27.1/syslog-ng-3.27.1.tar.gz
+	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.28.1/syslog-ng-3.28.1.tar.gz
 	source = syslog-ng.conf
 	source = syslog-ng.conf.d
 	source = syslog-ng.logrotate
 	source = syslog-ng.rc
-	sha256sums = c54c633c97f7fd8dd68261cfd784a76211e6e52965178e3aa4d0e32b899d61b3
-	sha256sums = f8207b907623a67948346e1adb43d2c908db61d77322e3d256b4d1baebe8fe49
+	sha256sums = af4ef43c41e05759ce6f20f344563f1cbb00622399263fa0c6b9e96426c2a6e8
+	sha256sums = bb4e150144e4000c37146cf06b96b3f9d4ba11ed511cc556623d04009d93818f
 	sha256sums = fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61
 	sha256sums = 93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317
 	sha256sums = db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063
