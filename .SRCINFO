@@ -1,13 +1,12 @@
 pkgbase = sonnet-git
-	pkgdesc = Spelling framework for Qt5
-	pkgver = r533.16b33c2
+	pkgdesc = Spelling framework for Qt
+	pkgver = v5.72.0.541.4cf1502
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/sonnet
-	arch = i686
+	url = https://invent.kde.org/frameworks/sonnet
 	arch = x86_64
 	groups = kf5
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
 	makedepends = hunspell
 	makedepends = aspell
