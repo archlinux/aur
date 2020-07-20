@@ -7,7 +7,7 @@ _srcname=linux-5.7
 _major=5.7
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=7
+_minor=9
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -31,19 +31,21 @@ source=(
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('8d2fee49d0652d58f75261368dca71613c21f1032c3db324c7d529d4d4d0fed6'
+sha256sums=('22ad7de61fc5bb51f66b23f2de47e36ac8ddbb30c879c34191381f7fdfd64f33'
             'SKIP'
-            'f840b9679283343c165516585c3070ebb277528721c890e9410a58e9d071ee7f'
+            'a87d3066a7849cd6ba9a004311a9ee0402d29d17f12f64ad7d942447070b43f8'
             'SKIP'
             'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '1716e59693757f339fda588b268ff6f5edc3f2ad61bbe8a61832692572e25b1a'
-            '040420a533f7024b49633c4cf397ec95e9c915827e6230abe99890fcd769b009')
+            'e94914b0fe6bfeb4cb664aaa6297b86c221080bf85a73a3966555bac79aaca78'
+            '85d925e28e3aaa34cbd3504dddd9e79b6ac103637a4719d1c305d68bf11a624b'
+            '436adb183f5c2b990fae1c966a73c2691553e0dff01d5d9886d91eb885fa393f')
 
 
 export KBUILD_BUILD_HOST=archlinux
