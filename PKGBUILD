@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/postgrespro/rum'
 license=('custom:PostgreSQL')
 depends=('postgresql')
-makedepends=("make gcc llvm")
+makedepends=("make" "gcc" "llvm" "clang")
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('75beb61b0ad1c253d1afb1c8f7a80e0f3996d3356b93a55faf9aad6fc5c8c0d9')
 
