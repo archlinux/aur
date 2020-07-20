@@ -40,14 +40,18 @@ prepare() {
 build() {
 	cd "$pkgname"
   sed -i 's#sisco.lv2#sisco-cv.lv2#' Makefile
-  # sed -i 's#LV2NAME=sisco#LV2NAME=sisco-cv#' Makefile
+  sed -i 's#LV2NAME=sisco#LV2NAME=sisco-cv#' Makefile
+  mv lv2ttl/sisco.ttl.in lv2ttl/sisco-cv.ttl.in
+  mv lv2ttl/sisco.lv2.ttl.in lv2ttl/sisco-cv.lv2.ttl.in
+  mv lv2ttl/sisco.gui.ttl.in lv2ttl/sisco-cv.gui.ttl.in
 	make
 }
 
 package()  {
 	cd "$pkgname"
-  sed -i 's#AudioPort#CVPort#' build/sisco.ttl
-  sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' build/sisco.ttl
-  sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' build/manifest.ttl
+  sed -i 's#AudioPort#CVPort#' build/sisco-cv.ttl
+  sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' build/sisco-cv.ttl
+  sed -i 's#Simple Scope #Simple Scope CV #' build/sisco-cv.ttl
+  # sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' build/manifest.ttl
 	make DESTDIR="$pkgdir/" PREFIX="/usr" install-lv2
 }
