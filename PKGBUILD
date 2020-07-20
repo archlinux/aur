@@ -1,11 +1,11 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
-_kernver_base=5.1.4
+_kernver_base=5.7.9
 _pkgbase=btintel-default-address
 pkgname=${_pkgbase}-dkms
 url=https://github.com/c0ldcat
 pkgver=${_kernver_base}
-pkgrel=2
+pkgrel=1
 pkgdesc="Allow default address when setup intel bluetooth device"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,8 +39,8 @@ package() {
 
 md5sums=("d4023861ba05ecb47380354511ac798f"
          "aa80ec82a8d5d8cc4a39bc21930e8519"
-         "5263f3baa5ef312a6ee6f3923f9ee78f"
-         "e2edece3942c8a69bbc131a632e9b880"
-         "f7a3ed12a2b7540186a0547865533420"
-         "e4b14fff2acadf13a33cc3bc2c08c949"
-         "25301b23397463669195bf659bc4e0f8")
+         "108a1e8f9c203f934cce21d1afbf1215"
+         "a361e3ba77f5bb3529e8cf91d7776945"
+         "fa43bd03940ddcea4cb25b9b6093f79d"
+         "2b9e24910307ae7f24f49ee52f7d3872"
+         "7bfcbbb31de44d4fcaf7d3a73f1d9181")
