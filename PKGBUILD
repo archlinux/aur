@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r55455.16d857ac795
+pkgver=r55482.db74480506b
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -56,7 +56,7 @@ _codename=Leia
 _libdvdcss_version="1.4.2-$_codename-Beta-5"
 _libdvdnav_version="6.0.0-$_codename-Alpha-3"
 _libdvdread_version="6.0.0-$_codename-Alpha-3"
-_ffmpeg_version="4.3.1-Matrix-Alpha1"
+_ffmpeg_version="4.3.1-Matrix-Alpha1-1"
 _fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -92,7 +92,7 @@ sha256sums=('SKIP'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            '3015cbe76b450ca9a2a656b4d92ec9a56b8ed99f6b20b486467d35d3b570c215'
+            'a7d956dbbe3c2036a8a78976efaf43792e1c7c152a04182024f231f4ee2e7d7e'
             '1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
