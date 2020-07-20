@@ -1,15 +1,15 @@
 # Maintainer: Romeo Calota <mail@romeocalota.me>
 pkgname='joyshockmapper-git'
 _pkgname='joyshockmapper'
-pkgver=v1.6.1.r1.gdeff884
-pkgrel=1
+pkgver=v1.6.1.r3.g084480c
+pkgrel=2
 pkgdesc='Play PC games with Sony PlayStation DualShock 4, Nintendo Switch JoyCons or Nintendo Switch Pro Controller using gyroscopic controls'
 arch=('any')
 url='http://gyrowiki.jibbsmart.com/'
 license=('MIT')
 groups=()
 makedepends=('cmake' 'clang')
-depends=('libevdev' 'hidapi' 'gtkmm3' 'libappindicator-gtk3')
+depends=('libevdev' 'hidapi' 'gtk3' 'libappindicator-gtk3')
 optdepends=('libx11: autoload configuration based on focused window')
 conflicts=("joyshockmapper" "joyshockmapper-git")
 provides=("${_pkgname}")
