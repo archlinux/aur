@@ -1,0 +1,12 @@
+[Unit]
+Description=Travertine Server World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/travertine backup
+User=travertine
+Group=travertine
+
+[Install]
+WantedBy=multi-user.target
