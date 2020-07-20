@@ -3,37 +3,39 @@ pkgdesc="ROS - Package for all inverse kinematics solvers in MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-kinematics'
-pkgver='1.0.2'
-arch=('any')
+pkgver='1.0.5'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-noetic-moveit-core
-  ros-noetic-actionlib
-  ros-noetic-catkin
-  ros-noetic-pluginlib
-  ros-noetic-moveit-ros-planning
-  ros-noetic-moveit-resources)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen)
+ros_makedepends=(
+    ros-noetic-moveit-core
+    ros-noetic-actionlib
+    ros-noetic-catkin
+    ros-noetic-pluginlib
+    ros-noetic-moveit-ros-planning
+    ros-noetic-moveit-resources
+)
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+    eigen
+)
 
-ros_depends=(ros-noetic-moveit-core
-  ros-noetic-actionlib
-  ros-noetic-pluginlib
-  ros-noetic-moveit-ros-planning)
-depends=(${ros_depends[@]})
+ros_depends=(
+    ros-noetic-moveit-core
+    ros-noetic-actionlib
+    ros-noetic-pluginlib
+    ros-noetic-moveit-ros-planning
+)
+depends=(
+    ${ros_depends[@]}
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_kinematics/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('3b85d8662c2f06fb426997ab7f1d9be228936d1d0a6f29bd0a70ff3891c8d7a9')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_kinematics"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a')
 
 build() {
   # Use ROS environment variables
