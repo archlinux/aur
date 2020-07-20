@@ -5,8 +5,8 @@ pkgname=python-opencv-python
 _name="${pkgname#python-}"
 
 _py=cp38
-_rel=34
-pkgver=4.2.0.$_rel
+_rel=36
+pkgver=4.3.0.$_rel
 pkgrel=1
 
 pkgdesc='Wrapper package for OpenCV Python bindings'
@@ -17,8 +17,8 @@ license=('MIT' 'BSD' 'LGPL')
 makedepends=('python-pip')
 depends=('python-numpy>=1.17.3')
 
-source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl")
-sha256sums=('0e7c91718351449877c2d4141abd64eee1f9c8701bcfaf4e8627bd023e303368')
+source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-${_py}-manylinux2014_x86_64.whl")
+sha256sums=('210ab40c8c9dadc7dc9ed7beebe2e0a2415a744f8d6857762a80c8e0fcc477c8')
 
 options=('!strip')
 
