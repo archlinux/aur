@@ -1,18 +1,26 @@
 pkgbase = kalu-cli
-	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news (CLI only)
+	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news - CLI only
 	pkgver = 4.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://jjacky.com/kalu
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	depends = pacman>=5.1
-	depends = pacman<5.2
+	makedepends = perl
+	makedepends = groff
 	depends = curl
 	depends = glib2
+	depends = pacman>=5.2
+	depends = pacman<5.3
+	provides = kalu
 	conflicts = kalu
-	source = https://jjacky.com/kalu/kalu-4.3.0.tar.xz
+	source = kalu-cli-4.3.0-6.tar.xz::https://jjacky.com/kalu/kalu-4.3.0.tar.xz
+	source = gcc10.patch
 	sha256sums = 83c886e832c29768b0b80e0ee463ca057eae1a3511d2b8babdc8d6347f02cb5a
+	sha256sums = ae757c2e2e701e202818916712f87c56bfada06b8832a292505170f51bba7bbd
 
 pkgname = kalu-cli
-
