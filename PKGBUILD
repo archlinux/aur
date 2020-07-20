@@ -1,5 +1,5 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.7.8.arch1.r918137.4da816e3bc35
+pkgver=v5.7.9.arch1.r918141.2c71b506e567
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.7.8.arch1
+_srcver_tag=v5.7.9.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -172,7 +172,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_reponame"
+    cd $_reponame
     make all
     make htmldocs
 }
@@ -198,7 +198,7 @@ _package() {
         wireguard-arch
     )
 
-    cd "$srcdir/$_reponame" 
+    cd $_reponame 
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -220,7 +220,7 @@ _package() {
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
 
-    cd "$srcdir/$_reponame"
+    cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing build files..."
