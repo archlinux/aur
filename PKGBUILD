@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc="A personal task tracker designed to help you focus"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2e381556873dd5a616b51997b73f6c917d9c000655e24b15c0bd150af1f5953b')
+sha256sums=('a2a79e534896f16094df1e16033f63f7399326f15d689c1b22d8ceb6d9547b40')
 
 build() {
     cd $pkgname-$pkgver
