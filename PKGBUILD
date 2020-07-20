@@ -24,6 +24,7 @@ _hash_time=($(curl -s "$url4"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\
 
 source=("https://github.com/Austcool-Walker/macbuntu-theme/releases/download/1.0/${pkgname}.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/Arc-Dark-OSX.txz"
+	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/BigSurIcons.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/jFhANdVGWjRVQHRB.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/pMlCEu5HhOoggOV4.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/IQcbr.txz"
@@ -42,14 +43,17 @@ source=("https://github.com/Austcool-Walker/macbuntu-theme/releases/download/1.0
 	"https://github.com/Austcool-Walker/macbuntu-patches/raw/master/%E4%BA%A4%E9%8C%AF%E3%81%9B%E3%81%97%E6%88%A6%E7%A5%9E.patch"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/startup.svg"
 	"https://github.com/Austcool-Walker/macbuntu-patches/raw/master/Black_Heart_%EF%BC%9CAngel%20Processor%EF%BC%9E(65051146).patch"
+	"https://github.com/Austcool-Walker/macbuntu-patches/raw/master/k69a8l2d3tu41.patch"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/Black_Heart_%EF%BC%9CAngel%20Processor%EF%BC%9E(65051146).png"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/Ou6o6vplRGmEMg2U.png"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/ldeKlVFl2uLAljkw.png"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/Phoenix.png"
+	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/k69a8l2d3tu41.jpg"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/%E4%BA%A4%E9%8C%AF%E3%81%9B%E3%81%97%E6%88%A6%E7%A5%9E.jpg"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/BlackHeartSwimsuit.png")
 sha512sums=('e0b69da47480db9675359e37ff4b5187007735127c2eebf6032d0a70fa06daa7c1b577426a14d907396ac410e2406b04831bbab653c93a335ad0014a7749d20d'
             '2e68ebd7fee21f21e52f05404f7a127aab26f2081c163991309af419982d46957b93afadb72a7724642e73b8ea6d6c14d46f2c8734e1caa39687d6762e7b9435'
+            'e2f82b9fc2f5c73c9a0a68e8aef2810616468189935cf83bddce833b4b40f72caf24485e5b73430cc51b1856b58984365f9e7a527239bb581887a09e7c12d679'
             '71498c01d0a92764eeb4c379c875f686d678365141061381b143b5a7e23774e30da82dc0b9f0e5d9ed371fd0180aea5478073ef55f5f12a6b2e9d629b020e43c'
             '21bbc894532c69d374ad75f94565b3e5a04caedb3183fd4cf4c80e1be903deef1f5a727cb94d6265781de6af544ae75fe030d0c3689beb44d9e8b87f47e7782d'
             '2a7960771c24a5ac3362c414323110124d0de1dd4b408495ca3468c190f476300db6f2d8f5cec36bdc24dddfd49deb56cd4eaa27633aeac6968d863fe818f63c'
@@ -68,10 +72,12 @@ sha512sums=('e0b69da47480db9675359e37ff4b5187007735127c2eebf6032d0a70fa06daa7c1b
             'f1de715328028205835f715df66c632cce0368e672c182cfdd58374564777bdd2598d9c3b9eeb0db8441ba68db1810fe421a0b6bf64d18d73499033a469e1054'
             '0e15f29514d284926a9c12eef8d316b1c299dc3823ff1e6dcad9bca3143c3be14cb7f224cebee0c170ff01d6167545aebad7676108f0f39d02e03e44beacb88e'
             'acc3c84a96261c7395c3f38fda2e3c92e5f98a0bab8d2d5769e6cf1b7b723d131b005f91e09bb628347988b24f6d9d7fe35894aee7eed33ffb913e8514374194'
+            'dd131e02abc417f9eb549f6f07df66508f96546add6fe704621cf0a507f68f3e961e1bec0866827ea33d11df36c92806d9cda26f1aabd1942ba6d2da65f8483b'
             'fee5a6fb55bca6a6585471bc037f7a65f51811ca42e25639df671363b6996d3a3745e13a039758d2c29fe90c6a9dcb0ad353a87c89cf7698b5cd03323fc2dd43'
             '892e43e2b8828c4b2b3ee1e9f605e0835bb456185b1d7df2c62f9c049409a5897a3c4c3d5da512f82ed24629896734a865092c06790927b779da8ab52a5cbb1e'
             'ffabd56610ec2259dc92edf25f2b49f7235d731c7ec8608d6575b63949dfbd8cc6f14f9f71c6ec2081db800307e9e0ffb4fc45f198011b156c3aa9b0c48da138'
             '318f9972a1c67cd3c984c22ea26f143878aedfea4a3126dfc3e489c39e5fe9cd206c5e64aba3ae953ce87d73371ea4fd43f923faa64a566c6b282a1597fbfbb8'
+            '4699c39c69e99949f288d1194d4d71fcaf0c2c1b894186209039ebba02bac043c180e56ef369f10b321989a1565e3e330eb63f66a3ac14c5a16da2d04ee10613'
             'd4ed99d7a05820c05603d52565f24ca22a406533e5448029832f47112e04f8b3c3729f910ecbb501aabe0ad4a76d14cf6ddd9f6fb82e93ce352d1851718f9670'
             'ecece25f67757294281f1c8e73f1c3663103f0eb662646ec62d37f5cb82558115cc20c83230e24088ff981d2ba518645217288de4431a088343dcbf0cfa6fb53')
 
@@ -80,6 +86,7 @@ prepare() {
 	patch -Np0 -i "Catalina-Pheonix.patch"
 	patch -Np0 -i "%E4%BA%A4%E9%8C%AF%E3%81%9B%E3%81%97%E6%88%A6%E7%A5%9E.patch"
 	patch -Np0 -i "Black_Heart_%EF%BC%9CAngel%20Processor%EF%BC%9E(65051146).patch"
+	patch -Np0 -i "k69a8l2d3tu41.patch"
 }
 
 package() {
@@ -108,6 +115,7 @@ package() {
 	cp -v ${srcdir}/Ou6o6vplRGmEMg2U.png ${pkgdir}/usr/share/backgrounds/Catalina-Day.png
 	cp -v ${srcdir}/ldeKlVFl2uLAljkw.png ${pkgdir}/usr/share/backgrounds/Catalina-Night.png
 	cp -v ${srcdir}/Phoenix.png ${pkgdir}/usr/share/backgrounds/Phoenix.png
+	cp -v ${srcdir}/k69a8l2d3tu41.jpg ${pkgdir}/usr/share/backgrounds/k69a8l2d3tu41.jpg
 	cp -v ${srcdir}/%E4%BA%A4%E9%8C%AF%E3%81%9B%E3%81%97%E6%88%A6%E7%A5%9E.jpg ${pkgdir}/usr/share/backgrounds/-交錯せし戦神-.jpg
 	cp -v ${srcdir}/"Black_Heart_%EF%BC%9CAngel%20Processor%EF%BC%9E(65051146).png" ${pkgdir}/usr/share/backgrounds/"Black_Heart_＜Angel Processor＞(65051146).png"
 	cp -v ${srcdir}/BlackHeartSwimsuit.png ${pkgdir}/usr/share/icons/macOS/apps/128/BlackHeartSwimsuit.png
@@ -118,5 +126,4 @@ package() {
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/screenshot.svg ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.Screenshot.svg
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/gnome-logs.png ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.Logs.png
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/gnome-software.png ${pkgdir}/usr/share/icons/macOS/apps/128/mintinstall.png
-	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/rhythmbox.png ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.Rhythmbox.png
 }
