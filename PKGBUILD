@@ -1,41 +1,33 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer zan <zan@420blaze.it>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjsembed-git
-pkgver=r78.729b722
-pkgrel=2
+_name=${pkgname%-git}
+pkgver=v4.100.0.rc1.r205.g08a64c6
+pkgrel=1
 pkgdesc='Embedded JS'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/frameworks/kjsembed'
+arch=(x86_64)
+url='https://invent.kde.org/frameworks/kjsembed'
 license=(LGPL)
-depends=(ki18n-git qt5-svg kjs-git karchive-git)
-makedepends=(extra-cmake-modules-git git qt5-tools kdoctools-git)
+depends=(ki18n qt5-svg kjs)
+makedepends=(extra-cmake-modules git qt5-tools kdoctools)
 groups=(kf5-aids)
 conflicts=(kjsembed)
 provides=(kjsembed)
-source=('git://anongit.kde.org/kjsembed.git')
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd kjsembed
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../kjsembed \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
+
