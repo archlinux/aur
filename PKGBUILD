@@ -11,7 +11,7 @@ arch=('any')
 license=('LGPL')
 
 depends=('python' 'mapnik' 'python-cairo' 'python-pypdf2')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'boost')
 
 source=("git+https://github.com/mapnik/python-mapnik.git#branch=v3.0.x")
 sha1sums=('SKIP')
