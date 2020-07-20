@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r15600.215ea7edc
+pkgver=r19499.d10b615eb
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://openrct2.io'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'sdl2' 'curl' 'jansson' 'speexdsp' 'fontconfig'
-         'libpng' 'openssl' 'libzip' 'icu')
+         'libpng' 'openssl' 'libzip' 'icu' 'duktape' 'benchmark')
 makedepends=('git' 'cmake' 'rapidjson')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
