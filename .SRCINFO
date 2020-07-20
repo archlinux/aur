@@ -1,18 +1,19 @@
 pkgbase = stacer-git
 	pkgdesc = Ubuntu System Optimizer
-	pkgver = v1.0.6.r6.gc22c273
-	pkgrel = 3
+	pkgver = v1.1.0.r59.g2af6e58
+	pkgrel = 1
 	url = https://github.com/oguzhaninan/Stacer
 	arch = any
-	license = MIT
-	depends = electron
-	depends = npm
+	license = GPL3
+	depends = git
+	depends = qt5-charts
+	depends = qt5-svg
+	depends = hicolor-icon-theme
 	conflicts = stacer
+	conflicts = stacer-bin
 	source = git://github.com/oguzhaninan/Stacer.git
-	source = stacer-git.sh
 	source = stacer-git.desktop
 	sha256sums = SKIP
-	sha256sums = 96c90af9d95e01f45141c63a22c38fc7a090543138f8864b7601112895c5cd3e
 	sha256sums = 5c1a6698d1dd4ac2b09ef684564fc120765dd028dbe31fe17ce1d745f1fc4291
 
 pkgname = stacer-git
