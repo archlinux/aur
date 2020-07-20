@@ -3,7 +3,7 @@
 _pkgname=tsunami-security-scanner
 pkgname=google-tsunami-security-scanner
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
 url="https://github.com/google/tsunami-security-scanner"
@@ -22,7 +22,7 @@ build() {
     ./gradlew shadowJar
 }
 package() {
-    appdir="${pkgdir}/opt/${pkgname}"
+    appdir="${pkgdir}/opt/${_pkgname}"
     jar=$(find ${srcdir} -name 'tsunami-main-*-cli.jar')
     jar_filename=$(basename -- "${jar}")
 
