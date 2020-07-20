@@ -2,7 +2,7 @@
 
 pkgname=gazebo-10
 pkgver=10.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://gazebosim.org/"
