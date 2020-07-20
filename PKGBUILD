@@ -1,6 +1,6 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=yayim
-pkgver=10.0.2_3
+pkgver=10.0.3
 pkgrel=1
 pkgdesc="A modified version of yay with additional features, improvements and small bug fixes"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
