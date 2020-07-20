@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-sparkle
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-sparkle-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('fadf03bd8dcfed4fcb833ca86c2a9e973af9740bb6fa9b5297d24ca1625ffb97'
+sha256sums=('a465dbcee7bbae31d543f462054da50feb8ff895308a881abbbf7682b148ea84'
             'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
