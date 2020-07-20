@@ -1,42 +1,30 @@
 # Maintainer: Antonio Rojas < nqn1976 @ gmail.com >
 
 pkgname=milou-git
-pkgver=r393.f70d1ee
-pkgrel=2
+_name=${pkgname%-git}
+pkgver=v5.18.90.r10.g7efea66
+pkgrel=1
 pkgdesc="A dedicated search application built on top of Baloo"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/milou/'
-license=('LGPL')
-provides=('milou' 'milou-frameworks-git')
-conflicts=('milou' 'milou-frameworks-git')
-replaces=('milou-frameworks-git')
-depends=('krunner-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
-source=('git://anongit.kde.org/milou')
-groups=('plasma')
+arch=(x86_64)
+url='https://invent.kde.org/plasma/milou'
+license=(LGPL)
+provides=(milou)
+conflicts=(milou)
+depends=(krunner)
+makedepends=('extra-cmake-modules' 'git' 'kdoctools')
+source=("git+https://invent.kde.org/plasma/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd milou
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../milou \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DQML_INSTALL_DIR=lib/qt/qml \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
