@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre14
 _major=18.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -61,7 +61,7 @@ _tag="$_major-$_codename"
 _libdvdcss_version="1.4.2-$_codename-Beta-5"
 _libdvdnav_version="6.0.0-$_codename-Alpha-3"
 _libdvdread_version="6.0.0-$_codename-Alpha-3"
-_ffmpeg_version="4.3.1-Matrix-Alpha1"
+_ffmpeg_version="4.3.1-Matrix-Alpha1-1"
 _fmt_version="5.1.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -117,7 +117,7 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            '3015cbe76b450ca9a2a656b4d92ec9a56b8ed99f6b20b486467d35d3b570c215'
+            'a7d956dbbe3c2036a8a78976efaf43792e1c7c152a04182024f231f4ee2e7d7e'
             '73d4cab4fa8a3482643d8703de4d9522d7a56981c938eca42d929106ff474b44'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
