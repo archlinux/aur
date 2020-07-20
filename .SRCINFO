@@ -1,0 +1,12 @@
+pkgbase = ssg5
+	pkgdesc = static site generator written on POSIX shell
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.romanzolotarev.com
+	arch = any
+	license = custom
+	source = https://www.romanzolotarev.com/bin/ssg5
+	md5sums = SKIP
+
+pkgname = ssg5
+
