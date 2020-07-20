@@ -2,8 +2,8 @@
 
 pkgname=python-scikit-surprise
 _reponame="Surprise"
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Python scikit for building and analyzing recommender systems"
 arch=('any')
 license=('BSD-3-Clause')
@@ -19,7 +19,7 @@ makedepends=('python-setuptools' 'cython')
 provides=()
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/NicolasHug/${_reponame}/archive/v${pkgver}.tar.gz")
-sha512sums=('d8f28786029079ac9db52c61c4b5bf30150da96718e292cad90bb58f7d25173391e8686808d3b4e746987059057d21943570ed4be2ad8a1c3e8046e764b93600')
+sha512sums=('ad058a5d131bce93032e599e144bf5fda999c05d8ebade01012d49d696f18636f8ad24dd7dfc5945aa3786f9bd9b14a5180a4aeeded3942a749757aa88e79143')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
