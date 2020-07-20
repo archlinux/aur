@@ -3,9 +3,9 @@
 _kernver_base=5.7.9
 _pkgbase=btintel-default-address
 pkgname=${_pkgbase}-dkms
-url=https://github.com/c0ldcat
+url=https://www.kernel.org
 pkgver=${_kernver_base}
-pkgrel=1
+pkgrel=2
 pkgdesc="Allow default address when setup intel bluetooth device"
 arch=('i686' 'x86_64')
 license=('GPL')
