@@ -3,13 +3,13 @@
 
 pkgname='xmrig'
 pkgver='6.3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 depends=('libuv' 'libmicrohttpd' 'openssl' 'hwloc')
 makedepends=('cmake')
-conflicts=('xmrig-bin')
+conflicts=('xmrig-bin' 'xmrig-donateless')
 license=('GPL')
 backup=("etc/${pkgname}/${pkgname}.conf")
 source=("${pkgname}.service"

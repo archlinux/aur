@@ -1,7 +1,7 @@
 pkgbase = xmrig
 	pkgdesc = High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner.
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
 	arch = armv7h
@@ -13,6 +13,7 @@ pkgbase = xmrig
 	depends = openssl
 	depends = hwloc
 	conflicts = xmrig-bin
+	conflicts = xmrig-donateless
 	backup = etc/xmrig/xmrig.conf
 	source = xmrig.service
 	source = xmrig.sysusers
