@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 url="https://github.com/BlackLight/platypush"
 depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask'
-	'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt')
+	'python-dateutil' 'python-frozendict' 'python-bcrypt')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'gattlib: Low-energy Bluetooth devices support'
