@@ -1,56 +1,55 @@
-# Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
-pkgname='ants'
-pkgver=2.2.0
-pkgrel=3
-pkgdesc='A state-of-the-art medical image registration and segmentation toolkit'
+# Maintainer: Liam Timms <timms5000@gmail.com>
+# Contributor: Kai Xuan <woxuankai at gmail dot com>
+
+_pkgname='ants'
+pkgname="${_pkgname}"
+pkgver=2.3.4
+pkgrel=1
+pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
+mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('perl' 'insight-toolkit>=4.11.0')
+depends=('r' 'vtk' 'perl' 'insight-toolkit>=5')
 makedepends=('git' 'cmake')
 optdepends=()
-provides=('ants')
-conflicts=('ants-git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("https://github.com/ANTsX/ANTs/archive/v${pkgver}.tar.gz")
-sha256sums=('62f8f9ae141cb45025f4bb59277c053acf658d4a3ba868c9e0f609af72e66b4a')
+md5sums=('bdc510c1a816a03377e4c08e69781e84')
 
 prepare() {
-	_builddir="${srcdir}/ANTs-${pkgver}/build"
-	mkdir -p "$_builddir" || :
-
-	# include this patch: https://github.com/ANTsX/ANTs/commit/89af9b2694715bf8204993e032fa132f80cf37bd
-	sed -i 's/void GetPriorLabelParameterMap/LabelParameterMapType GetPriorLabelParameterMap/' \
-		"${srcdir}/ANTs-${pkgver}/ImageSegmentation/antsAtroposSegmentationImageFilter.h"
-
-	cd "$_builddir"
-
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DANTS_SUPERBUILD=OFF \
-		-DBUILD_SHARED_LIBS=ON \
-		-DBUILD_TESTING=OFF \
-		-DANTS_USE_QT=OFF \
-		-DANTS_INSTALL_DEVELOPMENT=OFF \
-		-DCOPY_SCRIPT_FILES_TO_BIN_DIR=OFF \
-		-DANTS_BUILD_DISTRIBUTE=ON \
-		-DBUILD_ALL_ANTS_APPS=ON \
-		-DITK_USE_FFTWD=OFF \
-		-DITK_USE_FFTWF=OFF \
-		-DITK_USE_SYSTEM_FFTWF=OFF \
-		-DRUN_LONG_TESTS=OFF \
-		-DRUN_SHORT_TESTS=ON \
-		-DUSE_VTK=OFF \
-		..
+  cd "${srcdir}/ANTs-${pkgver}"
+  mkdir -p build
 }
 
 build() {
-	cd "$_builddir"
-	make
+  cd "${srcdir}/ANTs-${pkgver}/build"
+  cmake \
+      -DBUILD_ALL_ANTS_APPS=ON \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_STYLE_UTILS=OFF \
+      -DBUILD_TESTING=ON \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/ANTs \
+      -DEXTERNAL_PROJECT_BUILD_TYPE=Release \
+      -DFORCE_EXTERNAL_BUILDS=OFF \
+      -DITK_BUILD_MINC_SUPPORT=OFF \
+      -DITK_VERSION_MAJOR=5 \
+      -DOLD_BASELINE_TESTS=OFF \
+      -DRUN_LONG_TESTS=OFF \
+      -DRUN_SHORT_TESTS=ON \
+      -DSuperBuild_ANTS_USE_GIT_PROTOC=ON \
+      -DUSE_SYSTEM_ITK=OFF \
+      -DUSE_SYSTEM_SlicerExecutionMode=OFF \
+      -DUSE_SYSTEM_VTK=ON \
+      -DUSE_VTK=ON \
+      ..
+  make
 }
 
 package() {
-	cd "${srcdir}/ANTs-${pkgver}/build"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/ANTs-${pkgver}/build/ANTS-build"
+  make DESTDIR="${pkgdir}" install
 }
 
