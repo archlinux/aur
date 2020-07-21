@@ -1,7 +1,7 @@
 # Maintainer Amin Wang <lagunawang@gmail.com>
 
 pkgname=mdr
-pkgver=0.2.2
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A standalone Markdown renderer for the terminal."
 arch=('x86_64' 'i686')
