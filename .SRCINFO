@@ -1,0 +1,18 @@
+pkgbase = airspyhf-git
+	pkgdesc = Host code for AirspyHF+ SDR.
+	pkgver = 20200721
+	pkgrel = 1
+	url = http://www.airspy.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = libusb>=1.0
+	provides = airspyhf
+	conflicts = airspyhf
+	source = git+https://github.com/airspy/airspyhf
+	md5sums = SKIP
+
+pkgname = airspyhf-git
+
