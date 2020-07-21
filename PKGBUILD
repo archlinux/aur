@@ -8,6 +8,7 @@ license=('GPL3')
 url="https://github.com/djt3/$pkgname/"
 source=("git+https://gitlab.com/djt3/tuitube.git")
 depends=('libcurlpp' 'mpv')
+makedepends=('cmake')
 md5sums=('SKIP')
 
 build() {
