@@ -7,7 +7,6 @@ pkgdesc="Semi-automatic importer from external data sources into beancount"
 arch=('any')
 url="https://github.com/jbms/beancount-import"
 license=('MIT')
-groups=()
 depends=('beancount>=2.1.3'
          'python>=3.5'
          'python-setuptools'
@@ -29,25 +28,25 @@ source=('git://github.com/jbms/beancount-import.git')
 md5sums=('SKIP')
 
 pkgver() {
-	  cd "$srcdir/${_name}"
+  cd "$srcdir/${_name}"
 
-    # The repo does not tag releases, so we have to get creative
-    _release_commit=$(git log -L '/version=/',+1:setup.py \
-                          --max-count=1 --pretty="format:%h" | \
-                          head --lines=1)
-    _ver=$(grep version setup.py | sed "s/.*'\([^']*\)'.*/\1/")
-    printf "%s.r%s.%s" \
-           "${_ver}" \
-           "$(git rev-list --count ${_release_commit}..HEAD)" \
-           "$(git rev-parse --short HEAD)"
+  # The repo does not tag releases, so we have to get creative
+  _release_commit=$(git log -L '/version=/',+1:setup.py \
+                            --max-count=1 --pretty="format:%h" | \
+                    head --lines=1)
+  _ver=$(grep version setup.py | cut --delimiter="'" --fields=2)
+  printf "%s.r%s.%s" \
+    "${_ver}" \
+    "$(git rev-list --count ${_release_commit}..HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	  cd "$srcdir/${_name}"
-	  python setup.py build
+  cd "$srcdir/${_name}"
+  python setup.py build
 }
 
 package() {
-	  cd "$srcdir/${_name}"
-	  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  cd "$srcdir/${_name}"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
