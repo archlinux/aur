@@ -1,7 +1,7 @@
 # Maintainer: Jonas Wiegert <aur@it-jonas.com>
 
 pkgname=('kplex-git')
-pkgver="v1.4.r0.g715b18c"
+pkgver="v1.4.r1.ga67e945"
 pkgrel=1
 arch=('any')
 url='http://www.stripydog.com/kplex/'
