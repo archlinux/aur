@@ -2,8 +2,8 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-beta
-pkgver=2020.06.15
-_pkghash=137ad
+pkgver=2020.07.16
+_pkghash=138a1
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 backup=('etc/default/rpi-eeprom-update')
 source=("rpi-eeprom-${pkgver}-${_pkghash}.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v${pkgver}-${_pkghash}.tar.gz"
         'rpi-eeprom-update.patch')
-sha256sums=('d5fec5811d015bd78b0648b1ae4835c92ccae7b8da4f280061d475acffff6d33'
+sha256sums=('9f16a2a8725e78d9e799a2aef2620820a43db8201fe55c83e6566d69cdadae19'
             'd716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f')
 options=(!strip)
 
