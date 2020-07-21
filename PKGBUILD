@@ -3,7 +3,7 @@
 pkgname=mbelib-git
 pkgver=1.3.0.r5.g9a04ed5
 pkgrel=1
-pkgdesc="Tools for decoding digital ham communication."
+pkgdesc="P25 Phase 1 and ProVoice vocoder"
 arch=('x86_64')
 url="https://github.com/szechyjs/mbelib"
 license=('GPL3')
