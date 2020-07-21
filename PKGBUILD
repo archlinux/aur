@@ -1,8 +1,9 @@
 # Maintainer: Angel Velasquez <angvp@archlinux.org>  
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Clarence <xjh.azzbcc@gmail.com>
 
 pkgname=myodbc
-pkgver=8.0.20
+pkgver=8.0.21
 pkgrel=1
 pkgdesc="ODBC driver/connector for MySQL"
 arch=(i686 x86_64)
@@ -13,7 +14,7 @@ optdepends=('gtk2: graphical interface')
 license=('GPL')
 options=('libtool')
 source=("http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
-md5sums=('8f77e5f670046a97699cd490bcf62f92')
+md5sums=('a72ecbeda5dec65b035d194eb0976bb2')
 
 build() {
   cd $srcdir/mysql-connector-odbc-${pkgver}-src
