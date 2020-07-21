@@ -1,7 +1,7 @@
 # Maintainer alx365
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch-git'
-pkgver=0.5.1.beta.r0.g37b35ce
+pkgver=0.5.2.beta.r0.g3fc46d2
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
