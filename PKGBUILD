@@ -1,5 +1,5 @@
 pkgname=wsdd2
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="WSD/LLMNR Discovery/Name Service Daemon. Install it to make Samba shares discoverable on Windows hosts."
 url="https://github.com/Andy2244/wsdd2"
@@ -11,9 +11,7 @@ _commit=a50d4cf03f31c3d07a257b9e7448c3f2e9896967
 source=(
 	"https://github.com/Andy2244/wsdd2/archive/$_commit.zip"
 )
-sha256sums=(
-	"a8555aa44c854269b0975379fb1dab940c6e5a8c7c539c57c5b974ce666ed0ce"
-)
+sha256sums=('a8555aa44c854269b0975379fb1dab940c6e5a8c7c539c57c5b974ce666ed0ce')
 
 build()
 {
