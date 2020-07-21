@@ -2,16 +2,18 @@
 
 pkgname=newsflash
 _pkgname=news_flash_gtk
-pkgver=1.0+rc1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The spiritual successor to FeedReader"
 arch=(any)
 url="https://gitlab.com/news-flash/news_flash_gtk"
 license=(GPL3)
-depends=()
-makedepends=(cargo libhandy meson rust webkit2gtk)
+depends=(libhandy)
+makedepends=(cargo git meson rust webkit2gtk)
 conflicts=(newsflash-git)
-_commit=f69f2bbafafecb4e0a4b9facf30f510880012c8a
+_commit=8a25a373d5506683078f6ede0ad25213a8877e2a
+# in the future change this to download code directly instead of using git:
+# https://gitlab.com/news-flash/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz
 source=("git+https://gitlab.com/news-flash/news_flash_gtk.git#commit=$_commit")
 sha512sums=("SKIP")
 
@@ -22,7 +24,6 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	#rm -rf _build
 	arch-meson _build
 	ninja -C _build
 }
