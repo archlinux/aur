@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.libimobiledevice.org/"
 license=('LGPL2.1')
 depends=('libusb' 'readline')
-source=("https://www.libimobiledevice.org/downloads/$pkgname-$pkgver.tar.bz2")
+source=("https://github.com/libimobiledevice/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
 sha256sums=('cda0aba10a5b6fc2e1d83946b009e3e64d0be36912a986e35ad6d34b504ad9b4')
 
 build() {
