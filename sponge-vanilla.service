@@ -1,0 +1,13 @@
+[Unit]
+Description=Sponge Vanilla Server
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/sponge-vanilla start
+ExecStop=/usr/bin/sponge-vanilla stop
+User=sponge-vanilla
+Group=sponge-vanilla
+
+[Install]
+WantedBy=multi-user.target

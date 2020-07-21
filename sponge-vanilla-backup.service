@@ -1,0 +1,12 @@
+[Unit]
+Description=Sponge Vanilla Server World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sponge-vanilla backup
+User=sponge-vanilla
+Group=sponge-vanilla
+
+[Install]
+WantedBy=multi-user.target
