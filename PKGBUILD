@@ -8,14 +8,14 @@ pkgbase=tensorflow-rocm
 pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
 pkgver=2.2.0
 _pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
 depends=('c-ares' 'intel-mkl' 'onednn')
-makedepends=('bazel' 'python-numpy' 'rocm' 'rccl' 'git' 'gcc9'
-             'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
+makedepends=('bazel' 'python-numpy' 'rocm' 'rocm-libs' 'miopen' 'rccl' 'git'
+             'gcc9' 'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
              'python-keras-applications' 'python-keras-preprocessing')
 optdepends=('tensorboard: Tensorflow visualization toolkit'
             'python-pasta: tf_upgrade_v2 tool')
