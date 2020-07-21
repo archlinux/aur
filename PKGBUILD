@@ -1,32 +1,27 @@
-# Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
+# Contributor: FadeMind <fademind@gmail.com>
 pkgname=papirus-libreoffice-theme-git
-pkgver=20170228
+pkgver=20170228.r8.gcfe7659
 pkgrel=1
-pkgdesc="Papirus theme for LibreOffice (git version)"
-url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
+pkgdesc="Papirus theme for LibreOffice"
+url="https://github.com/PapirusDevelopmentTeam/papirus-libreoffice-theme"
 arch=('any')
 license=('GPL')
 depends=('libreoffice')
 makedepends=('git')
-conflicts=('papirus-libreoffice-theme' 'libreoffice-papirus-theme' 'libreoffice-papirus-theme-git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip')
-source=("${pkgname}::git+${url}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    #cd ${pkgname}
-    #mkdir -p ${pkgdir}/usr/lib/libreoffice/share/config
-    #cp --no-preserve=mode,ownership -r \
-    #    images_papirus.zip \
-    #    images_papirus_dark.zip  \
-    #    images_epapirus.zip \
-    #    ${pkgdir}/usr/lib/libreoffice/share/config
-    cd "${srcdir}/${pkgname}"
-    make PREFIX="/usr/lib" DESTDIR="${pkgdir}" install
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir/" install
 }
