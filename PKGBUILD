@@ -1,6 +1,7 @@
 # Maintainer: Stas Rudakou <stas at garage22 dot net>
 
-pkgname=go-jira
+pkgname=go-jira-bin
+conflicts=('go-jira')
 pkgver=1.0.23
 pkgrel=1
 pkgdesc="Simple command line client for Atlassian's Jira service written in Go"
