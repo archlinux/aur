@@ -3,7 +3,7 @@
 
 _gemname=bindata
 pkgname=ruby-$_gemname
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Declarative way to read and write structured binary data"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc' 'ruby-rake')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('887653f126fe1add281b1f790d7d79dc4c805c9168ebfc87c5a11c9c4c687b0c')
+sha256sums=('2c16c5148d1b6cac59a4fb33ccfbfff8aed8bd6903a4262a373e075896c4b4ae')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
