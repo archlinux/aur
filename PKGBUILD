@@ -2,7 +2,7 @@
 
 _pkgname=residualvm
 pkgname=${_pkgname}-git
-pkgver=r7048.de230485
+pkgver=r7855.626c55780
 pkgrel=1
 pkgdesc="A cross-platform 3D game interpreter which allows you to play LucasArts' LUA-based 3D adventures"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd ${_pkgname}
-	./configure --prefix=/usr --enable-release
+	./configure --prefix=/usr --enable-c++11 --enable-release
 	make
 }
 
