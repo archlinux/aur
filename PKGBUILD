@@ -2,7 +2,7 @@ pkgname=jicofo
 # https://github.com/jitsi/jicofo/releases/latest
 pkgver=1.0_612
 _tag="jitsi-meet_4857"
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus"
 arch=("x86_64")
 url="https://github.com/jitsi/jicofo"
@@ -19,7 +19,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jicofo/archive/stable/
         tmpfiles.conf)
 sha256sums=('84f50d9e7b3561054b342cb776613ed3ba9f49e0198971b16fe2ecc97a8cfa5b'
             '3a558324a17011cf48e033ce265d45cc06a0b53e009984e841496f1cd4d7519d'
-            '82937c73200a38326e4362fcf0cbc27ad710a0c0c5708e5f84815d10dfd86a86'
+            'f8f7d47dfcd8654693b07a53fa9c7fe9aaa7620aa96618ff50e42f4442685914'
             'ed3a2c91d3f6c92f3aeae4dd852f04196ed57cc0c8a33da3bae6c1fb26b88294'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             'b4ed1528f804056b43d47a8214f2ed853b31a8cedbafb96c26fae556df554be8')
