@@ -1,0 +1,17 @@
+pkgbase = python-pyexcel-ods3
+	pkgdesc = A wrapper library to read, manipulate and write data in ods format using pyexcel
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/pyexcel/pyexcel-ods3
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python-pyexcel-io>=0.5.10
+	depends = python-lxml
+	depends = python-pyexcel-ezodf>=0.3.3
+	source = pyexcel-ods3-0.5.3.tar.gz::https://github.com/pyexcel/pyexcel-ods3/archive/v0.5.3.tar.gz
+	sha256sums = 965031c6c5dd9026b161d93e49e74821cfa1485cb00cee5270608f5fe23ad405
+
+pkgname = python-pyexcel-ods3
+
