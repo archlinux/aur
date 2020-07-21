@@ -1,7 +1,7 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=noaftodo-git
-pkgver=1.4.2r243.6261a4a
-pkgrel=4
+pkgver=1.4.3r274.b1ffb2c
+pkgrel=1
 pkgdesc="An ncurses TODO manager that No-One-Asked-For."
 arch=(x86_64 i686)
 url="https://github.com/gregthemadmonk/noaftodo.git"
@@ -26,8 +26,5 @@ build() {
 
 package() {
 	cd noaftodo
-	PKGROOT="$pkgdir" make install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 noaftodo.conf.template -t "$pkgdir/etc/$pkgname"
-	install -Dm644 scripts/* -t "$pkgdir/etc/$pkgname/scripts"
+	PKGNAME="$pkgname" PKGROOT="$pkgdir" make install
 }

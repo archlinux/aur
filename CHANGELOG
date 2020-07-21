@@ -1,3 +1,24 @@
+2020-07-21 GregTheMadMonk <yagreg7@gmail.com>
+
+	* 1.4.3
+	- Add basic markdown support
+	- Add !! command to execute system commands without reading their output.
+	Useful for running programs with terminal UI (e.g. vim)
+	- Allow multistr_c elements be more than one wchar_t in length (allows for multi-
+	character separators, basically)
+	- Rework colors
+		* Initialize all color pairs on startup, set colors throught setting its
+		pair index (pair_index = fg_col + 1 + (bg_col + 1) * 17, fg_colr and bg_col
+		are integers from -1 to 15)
+		* Remove colors.bg and colors.status_standout
+	- Support color switching with terminal sequences (^[[3*;4*m)
+	- Specify status fields in cvars left-to-right instead of right-to-left
+	- Add manpage generation, show only relevant (well...) help in program
+	- Fix unnamed lists sometimes not displaying in LISTVIEW even if they
+	had visible entries
+	- Fix DETAILS and HELP mode scrolling and do an overall reworking
+	of some UI code
+
 2020-07-16 GregTheMadMonk <yagreg7@gmail.com>
 
 	* 1.4.2r243.6261a4a
