@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.2.3
-pkgrel=3
+pkgver=4.3.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -37,6 +37,7 @@ depends=(
   libmodplug
   libomxil-bellagio
   libpulse
+  librav1e.so
   libraw1394
   libsoxr
   libssh
@@ -95,7 +96,7 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 conflicts=("$_name")
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
@@ -112,10 +113,7 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  # backport avisynthplus support
-  git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
-  git show 56f59246293de417d27ea7e27cb9a7727ee579fb -- libavformat/avisynth.c | git apply -
-  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+ patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 build() {
   cd ffmpeg
@@ -148,6 +146,7 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librav1e \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
