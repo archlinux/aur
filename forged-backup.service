@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft Forge Server World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/forged backup
+User=forge-unstable
+Group=forge-unstable
+
+[Install]
+WantedBy=multi-user.target
