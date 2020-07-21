@@ -1,6 +1,6 @@
 pkgbase = gomd-git
 	pkgdesc = Quick webserver displaying formatted markdown files
-	pkgver = 20200715.a7237de
+	pkgver = 1.2.0.9fcb235
 	pkgrel = 1
 	url = https://github.com/wojciechkepka/gomd
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = gomd-git
 	license = MIT
 	makedepends = sassc
 	makedepends = nodejs-clean-css-cli
+	makedepends = uglify-js
 	makedepends = make
 	makedepends = go
 	provides = gomd
