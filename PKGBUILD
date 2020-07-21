@@ -18,7 +18,8 @@ optdepends=('alsa-lib: ALSA audio driver'
             'fcitx: Asian language support'
             'ibus: Asian language support'
             'libibus: Asian language support'
-            'tslib: Touchscreen support')
+            'tslib: Touchscreen support'
+            'hidpi: HiDPI support')
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2)
@@ -46,6 +47,8 @@ prepare() {
 build() {
   cd SDL/build
   cmake .. \
+      -Bbuild \
+      -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DSDL_STATIC=OFF \
       -DSDL_DLOPEN=ON \
@@ -53,18 +56,19 @@ build() {
       -DESD=OFF \
       -DNAS=OFF \
       -DALSA=ON \
+      -DHIDPI=ON \
       -DPULSEAUDIO_SHARED=ON \
       -DVIDEO_WAYLAND=ON \
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
       -DJACK_SHARED=ON
-  make
+  ninja -C build
 }
 
 package() {
   cd SDL/build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 
   sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
 
