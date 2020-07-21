@@ -2,7 +2,7 @@
 # Maintainer: Leihu Xi <leihuxi@gmail.com>
 
 pkgname=mitalk
-pkgver=4.0.99
+pkgver=4.0.100
 pkgrel=1
 pkgdesc="MiTalk Messenger"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "https://s1.zb.mi.com/miliao/apk/miliao/8.8/MiTalk_$pkgver.deb"
 )
 sha512sums=(
-    'ce2a3ca21fece2796e960e75e739d6c47f4eac1bed996690070a375a6391b84a633054aaad9811c76b5175c711b57846e48fd1a6260b6576f8a88d3071cdf67e'
+    '88cc6fb7e2585069a1bd506efdba4812dacd04d9f1988fff2d47feffe2b0fa5ba85c58ba3a39ce24a7093ce887ae6a726f89c6cb76ff775a6389bf26f6a00800'
 )
 
 package() {
