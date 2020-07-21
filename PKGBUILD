@@ -2,12 +2,12 @@
 
 pkgname=bedrock
 _gitname=Bedrock
-pkgver=r1323.649c63f
+pkgver=r2546.6570215
 pkgrel=1
 pkgdesc="Rock solid distributed database specializing in active/active automatic failover and WAN replication."
 url="http://bedrockdb.com"
 license=("GPL")
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 install=$pkgname.install
 source=(
   'git://github.com/Expensify/Bedrock'
