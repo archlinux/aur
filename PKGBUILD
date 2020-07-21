@@ -32,5 +32,3 @@ package() {
 }
 md5sums=('SKIP'
          '0f658216602c43508f56ea0e227308af')
-md5sums=('SKIP'
-         '0f658216602c43508f56ea0e227308af')
