@@ -3,10 +3,10 @@
 pkgname=havoc
 pkgver=0.3.1
 pkgrel=1
-pkgdesc='minimal terminal emulator for Wayland on Linux.'
+pkgdesc='minimal terminal emulator for Wayland on Linux'
 arch=(x86_64)
 url='https://github.com/ii8/havoc'
-license=('MIT' 'custom')
+license=('MIT')
 depends=('wayland')
 makedepends=('wayland-protocols')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ii8/havoc/archive/${pkgver}.tar.gz)
