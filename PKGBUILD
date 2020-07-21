@@ -14,7 +14,7 @@ pkgname=(
   gtkhash-thunar
 )
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
 url="https://github.com/tristanheaven/gtkhash"
@@ -29,6 +29,51 @@ makedepends=(
     'xdg-utils'
 )
 
+#Add Caja support
+if [[ $(xdg-mime query default inode/directory) = caja-folder-handler.desktop ]]; then
+makedepends+=(
+    'caja'
+)
+
+#Add Nautilus support
+elif [[ $(xdg-mime query default inode/directory) = org.gnome.Nautilus.desktop ]]; then
+
+makedepends+=(
+    'libnautilus-extension'
+)
+
+#Add Nemo support
+elif [[ $(xdg-mime query default inode/directory) = nemo.desktop ]]; then
+
+makedepends+=(
+    'nemo'
+)
+
+#Add Peony support
+elif [[ $(xdg-mime query default inode/directory) = peony.desktop ]]; then
+
+makedepends+=(
+    'peony'
+)
+
+#Add Thunar support
+elif [[ $(xdg-mime query default inode/directory) = thunar.desktop ]]; then
+
+makedepends+=(
+    'thunar'
+)
+
+#All file managers must be installed
+else
+   makedepends+=(
+   'caja'
+   'libnautilus-extension'
+   'nemo'
+   'peony'
+   'thunar'
+)
+fi
+
 source=("${url}/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
 
@@ -38,9 +83,9 @@ build() {
 #build with Caja support only
 if [[ $(xdg-mime query default inode/directory) = caja-folder-handler.desktop ]]; then
 
-makedepends+=(
-    'caja'
-)
+#makedepends+=(
+#    'caja'
+#)
 
   ./configure \
     --prefix=/usr \
@@ -53,11 +98,11 @@ makedepends+=(
     --enable-caja
 
 #build with Nautilus support only
-elif [[ $(xdg-mime query default inode/directory) = nautilus.desktop ]]; then
+elif [[ $(xdg-mime query default inode/directory) = org.gnome.Nautilus.desktop ]]; then
 
-makedepends+=(
-    'libnautilus-extension'
-)
+#makedepends+=(
+#    'libnautilus-extension'
+#)
 
 
   ./configure \
@@ -73,9 +118,9 @@ makedepends+=(
 #build with Nemo support only
 elif [[ $(xdg-mime query default inode/directory) = nemo.desktop ]]; then
 
-makedepends+=(
-    'nemo'
-)
+#makedepends+=(
+#    'nemo'
+#)
 
 
   ./configure \
@@ -91,9 +136,9 @@ makedepends+=(
 #build with Peony support only
 elif [[ $(xdg-mime query default inode/directory) = peony.desktop ]]; then
 
-makedepends+=(
-    'peony'
-)
+#makedepends+=(
+#    'peony'
+#)
 
 
   ./configure \
@@ -109,9 +154,9 @@ makedepends+=(
 #build with Thunar support only
 elif [[ $(xdg-mime query default inode/directory) = thunar.desktop ]]; then
 
-makedepends+=(
-    'thunar'
-)
+#makedepends+=(
+#    'thunar'
+#)
 
 
   ./configure \
@@ -126,13 +171,13 @@ makedepends+=(
 
 #build with all file manager support
 else
-   makedepends+=(
-   'caja'
-   'libnautilus-extension'
-   'nemo'
-   'peony'
-   'thunar'
-)
+#   makedepends+=(
+#   'caja'
+#   'libnautilus-extension'
+#   'nemo'
+#   'peony'
+#   'thunar'
+#)
    
   ./configure \
     --prefix=/usr \

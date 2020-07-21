@@ -1,7 +1,7 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tristanheaven/gtkhash
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = gtkhash
 	makedepends = librsvg
 	makedepends = nettle
 	makedepends = xdg-utils
+	makedepends = nemo
 	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.4/gtkhash-1.4.tar.xz
 	sha256sums = 20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4
 
