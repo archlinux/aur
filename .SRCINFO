@@ -1,7 +1,7 @@
 pkgbase = kdiskmark
 	pkgdesc = HDD and SSD benchmark tool with a very friendly graphical user interface
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JonMagon/KDiskMark
 	arch = i686
 	arch = x86_64
