@@ -1,7 +1,7 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 
 pkgname=gxplugins-lv2-git
-pkgver=r121.f1a6cc9
+pkgver=r125.265415b
 pkgrel=1
 pkgdesc="A set of extra lv2 plugins from the guitarix project."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('lv2-plugins')
 depends=('cairo')
 makedepends=('git' 'lv2' 'libxext' 'freetype2' 'xorgproto')
 provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}" "gx-lv2-git")
+conflicts=("gxplugins.lv2" "gx-lv2-git")
 source=("${pkgname%-*}::git+https://github.com/brummer10/GxPlugins.lv2")
 md5sums=('SKIP')
 
