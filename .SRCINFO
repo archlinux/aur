@@ -1,0 +1,12 @@
+pkgbase = otf-authentic-sans
+	pkgdesc = A typeface intended for situations where Oriya Sangam MN seems too sophisticated and LiHei Pro too vulgar, or vice versa.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://authentic.website/sans.html
+	arch = any
+	license = OFL
+	source = https://github.com/desmondhwong/AUTHENTIC-Sans/archive/v1.1.tar.gz
+	sha256sums = 360bf9ea50fb3110174686fff47a81495da1514841b5f2f7bf3ac4925337e42b
+
+pkgname = otf-authentic-sans
+
