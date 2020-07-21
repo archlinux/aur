@@ -1,5 +1,5 @@
 diff --git a/src/app/app.component.ts b/src/app/app.component.ts
-index 2c694d95..bba34865 100644
+index 6807ec89..62dbe456 100644
 --- a/src/app/app.component.ts
 +++ b/src/app/app.component.ts
 @@ -140,6 +140,10 @@ export class AppComponent implements OnDestroy, OnInit {
@@ -14,10 +14,10 @@ index 2c694d95..bba34865 100644
                          break;
                      case 'analyticsEventTrack':
 diff --git a/src/app/services/services.module.ts b/src/app/services/services.module.ts
-index c74261dd..f61ccefe 100644
+index e64240ad..025fdef1 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -127,22 +127,31 @@ const environmentService = new EnvironmentService(apiService, storageService, no
+@@ -127,24 +127,32 @@ const environmentService = new EnvironmentService(apiService, storageService, no
  const auditService = new AuditService(cryptoFunctionService, apiService);
  const eventLoggingService = new EventLoggingService(storageService, apiService, userService, cipherService);
  
@@ -32,7 +32,7 @@ index c74261dd..f61ccefe 100644
 +        // `window.location.href` should have one of the following forms:
 +        //
 +        // - `https://bitwarden.example.com/base/path/`
-+        // - `https://bitwarden.example.com/base/path/#/some/endpoint[?queryParam=...]`
++        // - `https://bitwarden.example.com/base/path/#/some/route[?queryParam=...]`
 +        //
 +        // We want to get to just `https://bitwarden.example.com/base/path`.
 +        let baseUrl = window.location.href;
@@ -48,10 +48,13 @@ index c74261dd..f61ccefe 100644
 -        } else {
 -            environmentService.notificationsUrl = isDev ? 'http://localhost:61840' :
 -                'https://notifications.bitwarden.com'; // window.location.origin + '/notifications';
+-            environmentService.enterpriseUrl = isDev ? 'http://localhost:61840' :
+-                'https://enterprise.bitwarden.com'; // window.location.origin + '/enterprise';
 -        }
 +        const isDev = false;
 +        environmentService.baseUrl = getBaseUrl();
 +        environmentService.notificationsUrl = environmentService.baseUrl + '/notifications';
++        environmentService.enterpriseUrl = environmentService.baseUrl + '/enterprise';
          apiService.setUrls({
 -            base: isDev ? null : window.location.origin,
 +            base: isDev ? null : environmentService.baseUrl,
@@ -71,7 +74,7 @@ index 5560c476..a9b954a8 100644
              this.ngZone.run(() => {
                  this.u2fListening = false;
 diff --git a/src/scss/styles.scss b/src/scss/styles.scss
-index 80951953..5c784175 100644
+index 676e275f..ba9888fc 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
 @@ -1,5 +1,31 @@
@@ -107,7 +110,7 @@ index 80951953..5c784175 100644
  $primary-accent: #1252A3;
  $secondary: #ced4da;
 diff --git a/webpack.config.js b/webpack.config.js
-index aecb1860..44acdc1d 100644
+index 3391d5ff..c4e2c0b5 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -170,6 +170,7 @@ const config = {
