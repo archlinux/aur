@@ -8,8 +8,7 @@ pkgdesc="Japanese outline fonts based on IPAex Fonts (otf-ipaexfont)"
 arch=('any')
 url="https://launchpad.net/takao-fonts"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
+depends=()
 source=(http://launchpad.net/takao-fonts/trunk/${pkgver}/+download/TakaoExFonts_${_filever}.tar.xz)
 
 package() {
