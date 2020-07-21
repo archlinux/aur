@@ -1,6 +1,6 @@
 pkgbase = tanka-bin
 	pkgdesc = Flexible, reusable and concise configuration for Kubernetes using Jsonnet
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 0
 	url = https://tanka.dev
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tanka-bin
 	optdepends = jsonnet-bundler-bin: jsonnet package manager
 	provides = tanka
 	conflicts = tanka
-	source = tk-0.11.0::https://github.com/grafana/tanka/releases/download/v0.11.0/tk-linux-amd64
+	source = tk-0.11.1::https://github.com/grafana/tanka/releases/download/v0.11.1/tk-linux-amd64
 	sha256sums = 59e2dba1e533f4b6bf7f1bf7e35e25e7b8754931720147b70bb375dd173e01c2
 
 pkgname = tanka-bin
