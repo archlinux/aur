@@ -1,12 +1,12 @@
 # Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_tag=612
-_version=1.0+612
+_tag=613
+_version=1.0+613
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
-pkgrel=4
+pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
