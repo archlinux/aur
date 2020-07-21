@@ -9,7 +9,6 @@ license=('GPL3')
 makedepends=('git')
 depends=('glibc')
 pkgdesc='NMEA-0183 multiplexer for GNU/Linux capable of managing inputs from serial lines, pseudo terminals and network interfaces.'
-provides=("kplex=${pkgver}")
 source=('kplex-git::git://github.com/stripydog/kplex')
 md5sums=('SKIP')
 
