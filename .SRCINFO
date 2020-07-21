@@ -9,6 +9,7 @@ pkgbase = x42-sisco-cv-git
 	depends = pango
 	depends = cairo
 	depends = mesa
+	conflicts = x42-plugins
 	source = x42-sisco-cv-git::git+https://github.com/x42/sisco.lv2
 	md5sums = SKIP
 

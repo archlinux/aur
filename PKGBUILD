@@ -11,17 +11,9 @@ license=(GPL)
 groups=()
 depends=('lv2' 'pango' 'cairo' 'mesa')
 makedepends=()
-checkdepends=()
-optdepends=()
 provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+conflicts=('x42-plugins')
 source=($pkgname::git+https://github.com/x42/sisco.lv2)
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,16 +27,16 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
   make submodules
-}
-
-build() {
-	cd "$pkgname"
   sed -i 's#sisco.lv2#sisco-cv.lv2#' Makefile
   sed -i 's#LV2NAME=sisco#LV2NAME=sisco-cv#' Makefile
   sed -i 's#http://gareus.org/oss/lv2/sisco#http://gareus.org/oss/lv2/sisco-cv#' src/uris.h
   mv lv2ttl/sisco.ttl.in lv2ttl/sisco-cv.ttl.in
   mv lv2ttl/sisco.lv2.ttl.in lv2ttl/sisco-cv.lv2.ttl.in
   mv lv2ttl/sisco.gui.ttl.in lv2ttl/sisco-cv.gui.ttl.in
+}
+
+build() {
+	cd "$pkgname"
 	make
 }
 
