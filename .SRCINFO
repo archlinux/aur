@@ -22,9 +22,11 @@ pkgbase = kalu-kde
 	conflicts = kalu
 	source = http://jjacky.com/kalu/kalu-4.3.0.tar.xz
 	source = statusnotifier.patch
+	source = gcc10.patch
 	source = https://github.com/deraffe/kalu/commit/a46975cdcb926ea8508c012d333471c1e1cb8529.patch
 	sha1sums = 4e9fc8b311077d3720af8619de04c917c01acbfb
 	sha1sums = d58712ff827df6bea9c5eb5a7e3d9034f3cac506
+	sha1sums = 6e02682594c169561fbadbde635053cf47e3a2f1
 	sha1sums = 6418c6df072de666873e37240bddb33712ae4aac
 
 pkgname = kalu-kde

@@ -13,10 +13,12 @@ depends=('dbus' 'polkit' 'gtk3' 'pacman>=5.2' 'pacman<5.3' 'curl' 'libnotify'
 makedepends=('perl' 'groff')
 source=(http://jjacky.com/${pkgname%-kde}/${pkgname%-kde}-$pkgver.tar.xz
         statusnotifier.patch
+        gcc10.patch
         https://github.com/deraffe/kalu/commit/a46975cdcb926ea8508c012d333471c1e1cb8529.patch)
 install=kalu.install
 sha1sums=('4e9fc8b311077d3720af8619de04c917c01acbfb'
           'd58712ff827df6bea9c5eb5a7e3d9034f3cac506'
+          '6e02682594c169561fbadbde635053cf47e3a2f1'
           '6418c6df072de666873e37240bddb33712ae4aac')
 provides=(${pkgname%-kde})
 conflicts=(${pkgname%-kde})
@@ -24,6 +26,7 @@ conflicts=(${pkgname%-kde})
 prepare() {
   cd "${pkgname%-kde}-$pkgver"
   patch -p0 -i "$srcdir/statusnotifier.patch"
+  patch -p1 -i "$srcdir/gcc10.patch"
   patch -p1 -i "$srcdir/a46975cdcb926ea8508c012d333471c1e1cb8529.patch"
 }
 
