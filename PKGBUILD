@@ -9,7 +9,6 @@ arch=('any')
 url="https://launchpad.net/takao-fonts"
 license=('custom')
 depends=()
-install=otf.install
 source=(http://launchpad.net/takao-fonts/trunk/${pkgver}/+download/TakaoFonts_${_filever}.tar.xz)
 md5sums=('8cd3fe724faa5034a9369e98cf108d2d')
 

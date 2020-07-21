@@ -3,7 +3,6 @@ pkgbase = otf-takao
 	pkgver = 15.03
 	pkgrel = 2
 	url = https://launchpad.net/takao-fonts
-	install = otf.install
 	arch = any
 	license = custom
 	source = http://launchpad.net/takao-fonts/trunk/15.03/+download/TakaoFonts_00303.01.tar.xz
