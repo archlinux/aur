@@ -10,12 +10,12 @@
 
 pkgname=bup
 pkgver=0.30
-pkgrel=7
+pkgrel=8
 pkgdesc='Efficient backup system based on the git packfile format'
 arch=('x86_64')
 url='https://bup.github.io/'
 license=('GPL')
-depends=('python-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'git')
+depends=('python2-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'git')
 makedepends=('ruby-ronn' 'git' 'setconf' 'pandoc')
 checkdepends=('rsync' 'python2-tornado')
 optdepends=('python2-tornado: for bup web')

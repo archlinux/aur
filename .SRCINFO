@@ -1,7 +1,7 @@
 pkgbase = bup
 	pkgdesc = Efficient backup system based on the git packfile format
 	pkgver = 0.30
-	pkgrel = 7
+	pkgrel = 8
 	url = https://bup.github.io/
 	changelog = changelog.md
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bup
 	makedepends = git
 	makedepends = setconf
 	makedepends = pandoc
-	depends = python-fuse
+	depends = python2-fuse
 	depends = par2cmdline
 	depends = pylibacl
 	depends = python2-pyxattr
