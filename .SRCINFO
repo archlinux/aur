@@ -1,0 +1,21 @@
+pkgbase = markets
+	pkgdesc = A market tracker designed for Linux Smartphones
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bitstower/markets
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libgee
+	depends = libsoup
+	depends = libhandy
+	depends = json-glib
+	depends = glib2
+	depends = gtk3
+	source = git+https://github.com/bitstower/markets.git#commit=c5526b175c041082545ec9963bc0c91e1a3cf3d7
+	sha256sums = SKIP
+
+pkgname = markets
+
