@@ -1,0 +1,15 @@
+pkgbase = siggo
+	pkgdesc = A terminal gui for signal-cli, written in Go.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/derricw/siggo
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = libmatthew-unix-java
+	depends = signal-cli
+	source = https://github.com/derricw/siggo/archive/0.5.0/siggo-0.5.0.tar.gz
+	b2sums = eba16004968285852c76ad21638d779cdafd1d1960daaa17171b66f57e292e2e1fbeb4264640ac66589dde9b5ce12010d1f73cb2b81ef76a91e7a0274e1da71d
+
+pkgname = siggo
+
