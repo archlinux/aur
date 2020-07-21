@@ -1,7 +1,7 @@
 pkgbase = ratslap
 	pkgdesc = Community made Linux drivers for Logitech mice (Currently only G300s)
-	pkgver = 0.2.3
-	pkgrel = 1
+	pkgver = 0.4.0
+	pkgrel = 2
 	url = https://gitlab.com/krayon/ratslap
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ratslap
 	depends = libusb
 	provides = ratslap
 	conflicts = ratslap
-	source = ratslap::git+https://gitlab.com/krayon/ratslap#tag=0.2.3,branch=master
+	source = ratslap::git+https://gitlab.com/krayon/ratslap#tag=0.4.0,branch=main
 	md5sums = SKIP
 
 pkgname = ratslap

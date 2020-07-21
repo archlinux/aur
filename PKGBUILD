@@ -2,8 +2,8 @@
 # Contributor: Tbsc <me in tbscdev point xyz>
 
 pkgname=ratslap
-pkgver=0.2.3
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="Community made Linux drivers for Logitech mice (Currently only G300s)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/krayon/$pkgname"
@@ -14,7 +14,7 @@ provides=('ratslap')
 conflicts=('ratslap')
 options=()
 install=
-source=("$pkgname::git+https://gitlab.com/krayon/$pkgname#tag=$pkgver,branch=master")
+source=("$pkgname::git+https://gitlab.com/krayon/$pkgname#tag=$pkgver,branch=main")
 md5sums=('SKIP')
 
 build() {
