@@ -1,5 +1,5 @@
 pkgbase = jellyfin-server-bin
-	pkgdesc = The Free Software Media System
+	pkgdesc = The Free Software Media System - server package
 	pkgver = 10.6.0_2
 	pkgrel = 1
 	url = https://jellyfin.org/
