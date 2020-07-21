@@ -1,6 +1,6 @@
 --- a/src/main-process/atom-application.js
 +++ b/src/main-process/atom-application.js
-@@ -2047,7 +2047,7 @@
+@@ -2042,7 +2042,7 @@
    }
  
    restart() {

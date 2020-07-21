@@ -1,6 +1,6 @@
 --- a/src/main-process/atom-application.js
 +++ b/src/main-process/atom-application.js
-@@ -716,7 +716,7 @@
+@@ -711,7 +711,7 @@
      );
      this.openPathOnEvent(
        'application:open-license',

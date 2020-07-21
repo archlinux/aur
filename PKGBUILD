@@ -33,21 +33,20 @@ source=("git+https://github.com/atom/atom.git#commit=${_commit}"
         'use-system-electron.patch'
         'enable-transparency.patch')
 sha256sums=('SKIP'
-            'd286e0766e47cfea73cd207abb9d6f7375846688823e72732c871a852b4b261d'
+            '6218ecf9a767e80f70a4b07abaefcf63a3d615200ff27b2dbc7bb36eacd8e87f'
             '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
             'b3d3706519556a59ba557b695017c9debe8b23efe2782cdb440131520bc0540d'
-            '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
-            'e3c30c03006d23a72f07fa77f4309b16a6059af1179343033a87f74f50124076'
+            '74cd1d023ae1d1c9835006ea14cdd315649df2d5eb7996de664a45e720742daf'
+            '63ad62bef0be1029d5d10a4c76eeb6bafda4328288230e9393cd48659ec7cf2c'
             'e321fdfe880cd465918dd1dbb90e4c7d46fc5310f20666eddf0a41cbca4f8ac8'
             '40d783794d62f12f3c429c624a84265871c7ed95f4120c9db800348896dd5437'
             'a09439c2a908ca174ff3be1f0d85071d12c792ae19748e36fe601e372d6d925b'
             '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
             '8d48dca4571136375b325f4bf94ccfb996e90e57b7fdf83d53c1eb2e69b3b0d4'
-            '81af763f05c1afd87705b8c7a6647e35f524b2e952adb2e596de2a7e8fe4e69e'
-            '2693e528c689b770ba976aeaba125e4b269a57a02294d3c3f2a0d85ed65a93eb')
-
+            '84b03b2e68d2f86cd963a2e9327698545a8a782895594cf2cc9a74531c5c7875'
+            '33d96efa4148f74c77f3c0fc447567c13543b0e6118b7622ae938cb2169203c6')
 prepare() {
-  cd ${pkgname}
+  cd "${srcdir}/atom"
 
   patch -Np1 -i ../fix-atom-sh.patch
   patch -Np1 -i ../use-system-electron.patch
@@ -60,7 +59,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd "${srcdir}/atom"
 
   ATOM_RESOURCE_PATH="${PWD}" \
   npm_config_build_from_source=true \
@@ -102,7 +101,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/atom"
 
   install -d -m 755 "${pkgdir}"/usr/lib
   cp -r out/app "${pkgdir}"/usr/lib/atom
