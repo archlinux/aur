@@ -12,11 +12,14 @@ depends=('beancount>=2.1.3'
          'python>=3.5'
          'python-setuptools'
          'python-tornado'
+         'python-numpy'
+         'python-scipy'
          'python-scikit-learn'
          'python-nltk'
          'python-dateutil'
-         'python-atomicwrites'
-         'python-jsonschema')
+         'python-atomicwrites>=1.3.0'
+         'python-jsonschema'
+         'python-watchdog')
 
 makedepends=('git')
 
