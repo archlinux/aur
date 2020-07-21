@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname='virtualbox-host-modules-pf'
-pkgver=6.1.10
+pkgver=6.1.12
 pkgrel=1
 pkgdesc='Virtualbox host kernel modules for Arch Kernel'
 arch=('x86_64')
@@ -37,4 +37,5 @@ package(){
   printf '%s\n' vboxdrv vboxnetadp vboxnetflt |
     install -D -m0644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
+
 
