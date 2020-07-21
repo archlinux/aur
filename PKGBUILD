@@ -1,8 +1,8 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
-pkgver=0.6.5
-pkgrel=4
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://pagure.io/rasdaemon"
@@ -16,7 +16,7 @@ depends=(
   perl-dbd-sqlite
 )
 source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
-sha256sums=('5a4745fd4161f2920a9e9f5eecc4f53c797e27b8a2c3c217070bb6ceaa7c1c44')
+sha256sums=('728d270734b95131e7cecdc71d16b476562c162d41e3df0a6a6baf0250a995be')
 # Git tree: http://git.infradead.org/users/mchehab/rasdaemon.git
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  CFLAGS="$CFLAGS -fcommon" ./configure \
+  ./configure \
     --prefix=/usr           \
     --sbindir=/usr/bin      \
     --sysconfdir=/etc       \
@@ -36,6 +36,7 @@ build() {
     --enable-extlog         \
     --enable-hisi-ns-decode \
     --enable-mce            \
+    --enable-memory-ce-pfa  \
     --enable-non-standard   \
     --enable-devlink        \
     --enable-diskerror      \
