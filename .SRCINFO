@@ -13,6 +13,7 @@ pkgbase = ripcord-arch-libs
 	depends = qt5-svg
 	depends = qt5-websockets
 	depends = libxss
+	depends = libsodium
 	options = !strip
 	source = https://cancel.fm/dl/Ripcord-0.4.26-x86_64.AppImage
 	source = https://cancel.fm/dl/Ripcord-0.4.26-x86_64.AppImage.asc
