@@ -2,7 +2,7 @@
 
 pkgname=otf-takaoex
 pkgver=15.03
-pkgrel=1
+pkgrel=2
 _filever=00201.01
 pkgdesc="Japanese outline fonts based on IPAex Fonts (otf-ipaexfont)"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://launchpad.net/takao-fonts"
 license=('custom')
 depends=()
 source=(http://launchpad.net/takao-fonts/trunk/${pkgver}/+download/TakaoExFonts_${_filever}.tar.xz)
+md5sums=('52990c7691b50b9d588456920abedc8b')
 
 package() {
   cd "${srcdir}/TakaoExFonts_${_filever}"
@@ -25,4 +26,3 @@ package() {
           "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
-md5sums=('52990c7691b50b9d588456920abedc8b')
