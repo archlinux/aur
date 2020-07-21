@@ -1,6 +1,6 @@
 pkgbase = wayst-git
 	pkgdesc = Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.
-	pkgver = r89.b57a342
+	pkgver = r90.640fa36
 	pkgrel = 1
 	url = https://github.com/91861/wayst
 	arch = x86_64
