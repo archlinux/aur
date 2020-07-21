@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.7.8
-_pkgverpntrel=8
+pkgver=5.7.9
+_pkgverpntrel=9
 pkgrel=1
 _smt_nice="true"
 _runqueue_sharing="mc-llc"
@@ -87,8 +87,8 @@ source=(
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
-  0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
@@ -107,14 +107,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('0b397271b0b5e55a3d6e5566e607dee5'
+md5sums=('09d5fc3f89c9c0e607af7b0b0344b480'
          'SKIP'
-         '7a483a0d64f6cc939b8128b6d4039788'
+         'cfd723216fab82133300976dac8bb0d0'
          '2cebdad39da582fd6a0c01746c8adb42'
          '3f9c557e2cad81e821c213e4e1097080'
          'b5140bcd7c4bc9a826db47808d0fde99'
-         '26808e601cdb25b9562701c482e47233'
-         '62bf1719f13094064732710d1542703c'
+         '2ef13b0799bd9b9b994389907812e7a7'
+         'a85456a71ff92afb326f48363757d257'
          'b10e4c612d5240d66fad8f1c50fe3242'
          '3159befb77cc65566196c205c2fe305c'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
@@ -172,9 +172,9 @@ prepare() {
   
   patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   
-  patch -Np1 -i ../0003-Revert-ath9k-Fix-general-protection-fault-in-ath9k_h.patch
+  patch -Np1 -i ../0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
   
-  patch -Np1 -i ../0004-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  patch -Np1 -i ../0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch

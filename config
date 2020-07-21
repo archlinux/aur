@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.8 Kernel Configuration
+# Linux/x86 5.7.9 Kernel Configuration
 #
 
 #
@@ -9729,7 +9729,7 @@ CONFIG_F2FS_FS_COMPRESSION=y
 CONFIG_F2FS_FS_LZO=y
 CONFIG_F2FS_FS_LZ4=y
 CONFIG_F2FS_FS_ZSTD=y
-CONFIG_BCACHEFS_FS=m
+CONFIG_BCACHEFS_FS=y
 CONFIG_BCACHEFS_QUOTA=y
 CONFIG_BCACHEFS_POSIX_ACL=y
 # CONFIG_BCACHEFS_DEBUG is not set
