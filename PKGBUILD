@@ -1,8 +1,8 @@
 # Maintainer: Ayaka Mikazuki <ayaka@mail.shn.hk>
 
 pkgname=rime-nushu
-pkgver=0.0.0.20200721
-_commit=84063b2738058eaee59701c8e4deb2e1f0dc538c
+pkgver=0.0.0.20200722
+_commit=a3337fc6a5cb8b7e6c62b2f318b69d52fe4ad383
 pkgrel=1
 pkgdesc="Nushu input for rime"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Unlicense')
 depends=('rime-luna-pinyin')
 makedepends=('librime')
 source=("https://github.com/nushu-script/rime-nushu/archive/$_commit/rime-nushu-$_commit.tar.gz")
-md5sums=('0d5e6c4edf4fdbeb7f808691fbf5a90a')
+md5sums=('da3b0921dcd5152c8052d1e6ef83c68e')
 
 prepare() {
   cd $pkgname-$_commit
