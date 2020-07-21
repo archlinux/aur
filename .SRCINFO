@@ -8,6 +8,7 @@ pkgbase = bedrock
 	arch = x86_64
 	arch = aarch64
 	license = GPL
+	makedepends = git
 	backup = etc/bedrock.conf
 	source = git://github.com/Expensify/Bedrock
 	source = bedrock.conf

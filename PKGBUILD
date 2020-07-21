@@ -9,6 +9,7 @@ url="http://bedrockdb.com"
 license=("GPL")
 arch=('i686' 'x86_64' 'aarch64')
 install=$pkgname.install
+makedepends=('git')
 source=(
   'git://github.com/Expensify/Bedrock'
   'bedrock.conf'
