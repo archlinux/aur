@@ -1,7 +1,7 @@
 # Maintainer: kraxarn <me@kraxarn.com>
 
 pkgname=spotify-qt
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Lightweight Spotify client using Qt"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(qt5-base qt5-svg hicolor-icon-theme)
 makedepends=(git cmake gcc make)
 optdepends=("spotifyd: Recommended playback client")
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=("2d23b1cebf6a986505e10e4ee275f1d7e6234ec428820382968aee1888db19df")
+sha256sums=("de7adf8c95932b5513f37d9ad95b156e22718901f78a6b8a75ad7267e8164f07")
 
 build() {
 	cd "$pkgname-$pkgver"
