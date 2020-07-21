@@ -3,7 +3,7 @@
 # Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=mintlocale
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Language and locale selection tool"
 arch=('any')
@@ -25,7 +25,7 @@ depends=('accountsservice'
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
         "install_remove_apt_check.patch")
-sha256sums=('04e289e5f57fe916385171b264ba99c41c1dc9466afa26965dbb92ace4376995'
+sha256sums=('644bc936574d6d9648fe9782fd74e030356ab99f6e9ee3bc1ef46964c0c3a35b'
             '21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b'
             '4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996')
 
