@@ -1,6 +1,6 @@
 pkgbase = manager-accounting
 	pkgdesc = Manager is free accounting software for small business
-	pkgver = 19.12.16
+	pkgver = 20.8.1
 	pkgrel = 1
 	url = http://www.manager.io/
 	install = manager-accounting.install
@@ -16,7 +16,7 @@ pkgbase = manager-accounting
 	options = !makeflags
 	source = LICENSE
 	source = manager-accounting.png
-	source = https://github.com/Manager-io/Manager.zip/releases/download/19.12.16/Manager.zip
+	source = https://github.com/Manager-io/Manager.zip/releases/download/20.8.1/Manager.zip
 	source = https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/02ae6a75ba254fe1f6bf27495545b5eac79456ac/sqlite3/sqlite3.c
 	sha256sums = bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061
 	sha256sums = 1045ea9400e92c484cf751ac906d1589f8e2758b430b0861df09c161fe5cd044
