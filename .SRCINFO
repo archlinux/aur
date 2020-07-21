@@ -1,0 +1,15 @@
+pkgbase = mbelib-git
+	pkgdesc = Tools for decoding digital ham communication.
+	pkgver = 0.2.0.r1.g53b2e02
+	pkgrel = 1
+	url = https://github.com/szechyjs/mbelib
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = mbelib
+	source = mbelib-git::git://github.com/szechyjs/mbelib.git
+	md5sums = SKIP
+
+pkgname = mbelib-git
+
