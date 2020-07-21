@@ -1,0 +1,14 @@
+pkgbase = ttf-cascadia-code-new
+	pkgdesc = A monospaced font by Microsoft that includes programming ligatures
+	pkgver = 2007.01
+	pkgrel = 1
+	url = https://github.com/microsoft/cascadia-code
+	arch = any
+	license = custom:OFL
+	source = https://github.com/microsoft/cascadia-code/releases/download/v2007.01/CascadiaCode-2007.01.zip
+	source = https://raw.githubusercontent.com/microsoft/cascadia-code/master/LICENSE
+	sha256sums = 9f066d0d9cb2669bea2e130d7add43d496bf24ef995f42dc603fc2014574a3a4
+	sha256sums = SKIP
+
+pkgname = ttf-cascadia-code-new
+
