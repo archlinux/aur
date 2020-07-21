@@ -5,7 +5,7 @@
 
 pkgname=ombi-develop
 pkgver=3.0.5202
-pkgrel=1
+pkgrel=2
 #_buildhash="03pr2x76ru4jsx0o"
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -33,9 +33,9 @@ source=("ombi.service"
 #source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz")
 #source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm.tar.gz")
 #source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm64.tar.gz")
-source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
-source_armv7h=("${pkgname}-armv7h-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm.tar.gz")
-source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm64.tar.gz")
+source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
+source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm.tar.gz")
+source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm64.tar.gz")
 
 noextract=("ombi-x86_64-${pkgver}.tar.gz"
            "ombi-i686-${pkgver}.tar.gz"
