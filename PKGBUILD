@@ -5,7 +5,7 @@
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
 pkgname=ppsspp
-pkgver=1.10
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -43,7 +43,7 @@ replaces=(
   ppsspp-headless
   ppsspp-qt
 )
-_tag=4abf5c14845f009146ae5961f9ddb6299a370713
+_tag=cb8d95cb159c440eb5c677fbab03a01c76daeaf6
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
