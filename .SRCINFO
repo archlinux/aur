@@ -1,14 +1,14 @@
 pkgbase = rime-nushu
 	pkgdesc = Nushu input for rime
-	pkgver = 0.0.0.20200721
+	pkgver = 0.0.0.20200722
 	pkgrel = 1
 	url = https://github.com/nushu-script/rime-nushu
 	arch = x86_64
 	license = Unlicense
 	makedepends = librime
 	depends = rime-luna-pinyin
-	source = https://github.com/nushu-script/rime-nushu/archive/84063b2738058eaee59701c8e4deb2e1f0dc538c/rime-nushu-84063b2738058eaee59701c8e4deb2e1f0dc538c.tar.gz
-	md5sums = 0d5e6c4edf4fdbeb7f808691fbf5a90a
+	source = https://github.com/nushu-script/rime-nushu/archive/a3337fc6a5cb8b7e6c62b2f318b69d52fe4ad383/rime-nushu-a3337fc6a5cb8b7e6c62b2f318b69d52fe4ad383.tar.gz
+	md5sums = da3b0921dcd5152c8052d1e6ef83c68e
 
 pkgname = rime-nushu
 
