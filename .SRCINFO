@@ -1,0 +1,17 @@
+pkgbase = python-pubchempy
+	pkgdesc = A simple Python wrapper around the PubChem PUG REST API.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/mcs07/PubChemPy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-alembic
+	depends = python-sqlalchemy
+	optdepends = python-pandas
+	source = https://files.pythonhosted.org/packages/source/P/PubChemPy/PubChemPy-1.0.4.tar.gz
+	sha256sums = 24e9dc2fc90ab153b2764bf805e510b1410700884faf0510a9e7cf0d61d8ed0e
+
+pkgname = python-pubchempy
+
