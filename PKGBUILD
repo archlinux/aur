@@ -1,7 +1,7 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=('handbrake-nvenc' 'handbrake-nvenc-cli')
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -12,7 +12,7 @@ makedepends=('intltool' 'python2' 'nasm' 'wget' 'cmake' 'bzip2' 'gcc-libs' 'xz'
              'speex' 'x264' 'jansson' 'librsvg' 'libgudev' 'numactl' 'meson')
 source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2
         https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2.sig)
-sha256sums=('ec6feba97f426d545ec56cf1472eae5795d768bc1aec56c23bb76fc6b2ecf270'
+sha256sums=('218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
             'SKIP')
 validpgpkeys+=('1629C061B3DDE7EB4AE34B81021DB8B44E4A8645') # HandBrake Team <developers@handbrake.fr>
 conflicts=('handbrake')
