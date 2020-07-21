@@ -5,7 +5,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=libva-intel-driver-hybrid-gcc10
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=(x86_64)
@@ -24,10 +24,8 @@ replaces=(libva-driver-intel)
 optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
-source=(git+https://github.com/intel/intel-vaapi-driver.git#tag=d595d01d6421eae30824538fa6d150701ed077df
-        'gcc10-fix.patch')
-sha256sums=('SKIP'
-            'f9ead33fc63532bf43ebc3a2663b24f6391bf688497ecbfd143976fcebce46d5')
+source=(git+https://github.com/intel/intel-vaapi-driver.git#tag=9a1f0c64174f970a26380d4957583c71372fbb7c)
+sha256sums=('SKIP')
 
 pkgver() {
   cd intel-vaapi-driver
@@ -37,10 +35,10 @@ pkgver() {
 
 prepare() {
   cd intel-vaapi-driver
-   patch -p1 -i ${srcdir}/gcc10-fix.patch
+   #patch -p1 -i ${srcdir}/gcc10-fix.patch
   # Only relevant if intel-gpu-tools is installed,
   # since then the shaders will be recompiled
-  sed -i '1s/python$/&2/' src/shaders/gpp.py
+  #sed -i '1s/python$/&2/' src/shaders/gpp.py
 }
 
 build() {
