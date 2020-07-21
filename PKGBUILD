@@ -7,13 +7,13 @@
 
 pkgname=v8
 pkgver=8.3.110.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
 license=('BSD')
 depends=('readline' 'icu')
-makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
+makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-lazy-object-proxy' 'python2-singledispatch' 'ninja' 'git' 'wget')
 conflicts=('v8-3.14' 'v8-3.14-bin' 'v8-3.15' 'v8-3.20' 'v8-6.7-static' 'v8-6.8' 'v8-r' 'v8-static-gyp' 'v8-static-gyp-5.4')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "v8.pc"
@@ -196,7 +196,8 @@ package()
   install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
   install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
 
-  install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
+  # Removed from v7.8 https://bugs.chromium.org/p/v8/issues/detail?id=7624#c60
+  # install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
   install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
 
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
