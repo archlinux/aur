@@ -1,7 +1,7 @@
 pkgbase = nyrna
 	pkgdesc = Simple program to pause games & applications
-	pkgver = 1.1
-	pkgrel = 8
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
 	license = GPL3 or any later version
@@ -10,8 +10,8 @@ pkgbase = nyrna
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = zenity
-	source = nyrna-1.1.tar.gz::https://github.com/Merrit/nyrna/archive/v1.1.tar.gz
-	sha256sums = 41072a702a8aa74a70b7e3ca0d94f697cd6126d5df9943c12a5b1378650479af
+	source = nyrna-1.1.1.tar.gz::https://github.com/Merrit/nyrna/archive/v1.1.1.tar.gz
+	sha256sums = c4e6f67a453a51549a29167ae6c975b6b2f965264d9858286536f6314123e71a
 
 pkgname = nyrna
 
