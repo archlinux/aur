@@ -17,6 +17,7 @@ pkgbase = sdl2-hg
 	makedepends = cmake
 	makedepends = libxxf86vm
 	makedepends = mercurial
+	makedepends = hidapi
 	depends = glibc
 	depends = libxext
 	depends = libxrender
@@ -30,7 +31,6 @@ pkgbase = sdl2-hg
 	optdepends = ibus: Asian language support
 	optdepends = libibus: Asian language support
 	optdepends = tslib: Touchscreen support
-	optdepends = hidpi: HiDPI support
 	provides = sdl2
 	conflicts = sdl2
 	source = hg+http://hg.libsdl.org/SDL#branch=default

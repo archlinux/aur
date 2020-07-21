@@ -11,15 +11,14 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'libxss' 'cmake' 'libxxf86vm' 'mercurial')
+             'wayland-protocols' 'libxss' 'cmake' 'libxxf86vm' 'mercurial' 'hidapi')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
             'fcitx: Asian language support'
             'ibus: Asian language support'
             'libibus: Asian language support'
-            'tslib: Touchscreen support'
-            'hidpi: HiDPI support')
+            'tslib: Touchscreen support')
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2)
@@ -56,7 +55,7 @@ build() {
       -DESD=OFF \
       -DNAS=OFF \
       -DALSA=ON \
-      -DHIDPI=ON \
+      -DHIDAPI=ON \
       -DPULSEAUDIO_SHARED=ON \
       -DVIDEO_WAYLAND=ON \
       -DRPATH=OFF \
