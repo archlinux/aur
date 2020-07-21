@@ -6,7 +6,7 @@ pkgbase = firefox-extension-foxyproxy-basic
 	arch = any
 	license = GPL
 	noextract = foxyproxy_basic-7.5-an+fx.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/3611409/foxyproxy_basic-7.5-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/15023/foxyproxy_basic-7.5-an+fx.xpi
 	sha256sums = 86af822c36c8488831c3b1b18a5d766c3b734f98c1f9bbfe4ca3e28cce2da4a5
 
 pkgname = firefox-extension-foxyproxy-basic
