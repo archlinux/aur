@@ -1,17 +1,23 @@
 pkgbase = cpeditor
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.4.7
+	pkgver = 6.5.3
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	makedepends = gcc
 	makedepends = python3
 	depends = qt5-base
+	optdepends = cf-tool: submit to Codeforces support
+	optdepends = clang: C++ format and language server support
+	optdepends = jdk-openjdk: compile Java support
+	optdepends = jre-openjdk: execute Java support
+	optdepends = python: execute Python support
+	optdepends = xterm: detached run support
 	conflicts = cpeditor-git
-	source = https://github.com/cpeditor/cpeditor/releases/download/6.4.7/cpeditor-full-source-6.4.7.tar.gz
-	md5sums = SKIP
+	source = https://github.com/cpeditor/cpeditor/releases/download/6.5.3/cpeditor-6.5.3-full-source.tar.gz
+	sha256sums = 43185c017539bc0335b4c6db472690a2f208a932e5d68c8069a3c61f95fee527
 
 pkgname = cpeditor
+
