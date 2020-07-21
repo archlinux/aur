@@ -1,7 +1,7 @@
 pkgbase = thrust
 	pkgdesc = A C++ parallel programming library which resembles the C++ Standard Library
 	pkgver = 1.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thrust/thrust
 	arch = any
 	license = Apache

@@ -3,7 +3,7 @@
 
 pkgname=thrust
 pkgver=1.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library'
 arch=('any')
 url="https://github.com/thrust/$pkgname"
