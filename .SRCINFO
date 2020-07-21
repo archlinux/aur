@@ -11,7 +11,7 @@ pkgbase = tanka-bin
 	provides = tanka
 	conflicts = tanka
 	source = tk-0.11.1::https://github.com/grafana/tanka/releases/download/v0.11.1/tk-linux-amd64
-	sha256sums = 59e2dba1e533f4b6bf7f1bf7e35e25e7b8754931720147b70bb375dd173e01c2
+	sha256sums = 3b253ca7d7bf01189604c10a8f7cead20a553ddc04c813f0f836d80338cfad71
 
 pkgname = tanka-bin
 

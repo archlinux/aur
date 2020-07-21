@@ -19,8 +19,8 @@ optdepends=(
 provides=(tanka)
 conflicts=(tanka)
 
-sha256sums=('59e2dba1e533f4b6bf7f1bf7e35e25e7b8754931720147b70bb375dd173e01c2')
-
 package() {
   install -Dm 755 "$srcdir/tk-$pkgver" "$pkgdir/usr/bin/tk"
 }
+
+sha256sums=('3b253ca7d7bf01189604c10a8f7cead20a553ddc04c813f0f836d80338cfad71')
