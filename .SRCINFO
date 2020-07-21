@@ -9,7 +9,9 @@ pkgbase = thrust
 	optdepends = openmp: for OMP backend
 	optdepends = intel-tbb: for TBB backend
 	source = thrust-1.9.10.tar.gz::https://github.com/thrust/thrust/archive/1.9.10.tar.gz
-	sha256sums = d155dc2a260fe0c75c63c185fa4c4b4c6c5b7c444fcdac7109bb71941c9603f1
+	source = cub-1.9.10.tar.gz::https://github.com/thrust/cub/archive/1.9.10.tar.gz
+	sha256sums = 5071c995a03e97e2bcfe0c5cc265330160316733336bb87dfcea3fc381065316
+	sha256sums = 2bd7077a3d9741f0689e6c1eb58c6278fc96eccc27d964168bc8be1bc3a9040f
 
 pkgname = thrust
 
