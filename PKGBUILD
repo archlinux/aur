@@ -1,9 +1,10 @@
+# Maintainer: prg <prg at xannode dot com>
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: Anntoin Wilkinson <anntoin@gmail.com>
 
 pkgname=fsv2
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK2 port of fsv, the filesystem visualizer"
 arch=('i686' 'x86_64')
@@ -19,6 +20,7 @@ md5sums=('61e8d3ce2803d8873a717d20d22fbc6d'
 
 build() {
   cd "$srcdir/fsv-fsv-0.9-1"
+  sed -i 's/@DATADIRNAME@/share/' po/Makefile.in.in
   ./autogen.sh
   ./configure --prefix=/usr
   make

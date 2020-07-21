@@ -1,7 +1,7 @@
 pkgbase = fsv2
 	pkgdesc = GTK2 port of fsv, the filesystem visualizer
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mcuelenaere/fsv
 	arch = i686
