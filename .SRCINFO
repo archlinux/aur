@@ -24,7 +24,7 @@ pkgbase = clementine-git
 	source = git+https://github.com/clementine-player/Clementine.git
 	source = close-fix.diff
 	sha256sums = SKIP
-	sha256sums = 587c3724483825c2101fc15b8ef3b04b15a4dee34457285f94da6dd9b6db656c
+	sha256sums = f8db366cf61b956a96b21d587aff42f565d9ac84636d5188249b34268d3537c5
 
 pkgname = clementine-git
 

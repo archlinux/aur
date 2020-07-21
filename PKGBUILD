@@ -28,7 +28,7 @@ _name=Clementine
 source=("git+https://github.com/clementine-player/$_name.git"
         "close-fix.diff")
 sha256sums=('SKIP'
-            '587c3724483825c2101fc15b8ef3b04b15a4dee34457285f94da6dd9b6db656c')
+            'f8db366cf61b956a96b21d587aff42f565d9ac84636d5188249b34268d3537c5')
 
 pkgver() {
     cd $_name
