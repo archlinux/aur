@@ -1,6 +1,6 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 20.10.1
+	pkgver = 20.10.2
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ubuntu/yaru/archive/20.10.1.tar.gz
-	sha256sums = 9da2605088674edf2694a8215b7344fb5209b308dd8220ea21667a914dc8c55d
+	source = https://github.com/ubuntu/yaru/archive/20.10.2.tar.gz
+	sha256sums = 859459e1e17dfffef9b3af880b966ad6de7345f89e956a268a48de2f7614b2af
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme

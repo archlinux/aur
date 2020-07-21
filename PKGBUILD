@@ -2,7 +2,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-unity-theme' 'yaru-icon-theme' 'yaru-session')
-pkgver=20.10.1
+pkgver=20.10.2
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -13,10 +13,11 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('9da2605088674edf2694a8215b7344fb5209b308dd8220ea21667a914dc8c55d')
+sha256sums=('859459e1e17dfffef9b3af880b966ad6de7345f89e956a268a48de2f7614b2af')
 
 build() {
   arch-meson $pkgbase-$pkgver build
+  meson configure build -Dubuntu-unity=true
   ninja -C build
 }
 
