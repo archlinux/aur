@@ -2,9 +2,9 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='https://wiki.ros.org/qt_gui'
 
 pkgname='ros-noetic-qt-gui'
-pkgver='0.3.16'
+pkgver='0.4.1'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -12,8 +12,8 @@ ros_makedepends=(
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 	python-pyqt5
 	qt5-base
@@ -31,7 +31,7 @@ depends=(
 
 _dir="qt_gui_core-${pkgver}/qt_gui"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('efa5ecf7ec22de606b3c0e039f43aacc2f2d79d74d7e17ecceecf2cafd22d128')
+sha256sums=('6baab3b36409f385aa543d33c6595bfbfc89c24ce52233b6aa33ec2088d23132')
 
 build() {
 	# Use ROS environment variables.
