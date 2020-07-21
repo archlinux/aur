@@ -1,6 +1,6 @@
 pkgbase = snapcraft
 	pkgdesc = Package, distribute, and update any app for Linux and IoT.
-	pkgver = 4.0.7
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://snapcraft.io
 	arch = any
@@ -25,10 +25,16 @@ pkgbase = snapcraft
 	depends = python-requests-unixsocket
 	depends = python-pylxd
 	depends = python-pyelftools
+	depends = python-mypy_extensions
+	depends = python-raven
+	depends = python-typing_extensions
+	depends = python-lazr.delegates
+	depends = python-lazr.config
+	depends = python-lazr-restfulclient
 	optdepends = lxd
 	options = !emptydirs
-	source = https://github.com/snapcore/snapcraft/archive/4.0.7.tar.gz
-	sha256sums = d15e82ca72e6b8f527c83de217467646fcaba0bbe64ed6caaa2f3e3fe3404ffd
+	source = https://github.com/snapcore/snapcraft/archive/4.1.1.tar.gz
+	sha256sums = 7c52835ae2b6e68321ac7478dd1085f11f6816461e19fbf7967b0463e44903fc
 
 pkgname = snapcraft
 
