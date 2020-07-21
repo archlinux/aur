@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd noaftodo
-	printf "${pkgver}r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.4.3r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
