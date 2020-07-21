@@ -6,7 +6,7 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6506.12507577
+pkgver=6567.51ef0dec
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('python2')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git#commit=12507577c9b3acdf150777610dd87a341c5c1eb9")
+source=("git+https://gitlab.gnome.org/GNOME/dia.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}
-  meson --prefix /usr --buildtype=plain . build
+  meson --prefix /usr --buildtype=plain --with-python=NO . build 
   ninja -j1 -C build
 }
 
