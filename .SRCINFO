@@ -1,0 +1,21 @@
+pkgbase = rss-bridge-git
+	pkgdesc = The RSS feed for websites missing it
+	pkgver = 2020.02.26.r45.g976445b4
+	pkgrel = 1
+	url = https://github.com/RSS-Bridge/rss-bridge/wiki
+	arch = any
+	license = Unlicense
+	depends = php
+	provides = rss-bridge
+	conflicts = rss-bridge
+	backup = etc/webapps/rss-bridge-git/config.ini.php
+	backup = usr/share/webapps/rss-bridge-git/whitelist.txt
+	source = rss-bridge::git+https://github.com/RSS-Bridge/rss-bridge.git
+	source = rss-bridge.sysusers
+	source = rss-bridge.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020
+	sha256sums = 6f9122e50e2b9164e59b1b9062663559cb5bc3ef3bd59b3ffafb7d486ec71a13
+
+pkgname = rss-bridge-git
+
