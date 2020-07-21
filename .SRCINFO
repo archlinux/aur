@@ -34,7 +34,9 @@ pkgbase = sdl2-hg
 	provides = sdl2
 	conflicts = sdl2
 	source = hg+http://hg.libsdl.org/SDL#branch=default
+	source = fix-hidapi.patch
 	validpgpkeys = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = sdl2-hg

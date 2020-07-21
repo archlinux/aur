@@ -19,10 +19,12 @@ optdepends=('alsa-lib: ALSA audio driver'
             'ibus: Asian language support'
             'libibus: Asian language support'
             'tslib: Touchscreen support')
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+http://hg.libsdl.org/SDL#branch=default"
+         fix-hidapi.patch)
 provides=(sdl2)
 conflicts=(sdl2)
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+            'SKIP')
 validpgpkeys=('SKIP') # Sam Lantinga
 
 pkgver() {
@@ -38,6 +40,10 @@ pkgver() {
 
 prepare() {
   cd SDL
+
+  sed -i "s/LIBUSB libusb/LIBUSB libusb-1.0/g" cmake/sdlchecks.cmake
+
+  patch -Np1 -i "${srcdir}"/fix-hidapi.patch
 
   rm -rf build
   mkdir build
