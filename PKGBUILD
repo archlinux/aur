@@ -2,14 +2,13 @@
 
 pkgname=otf-takaomj
 pkgver=15.03
-pkgrel=1
+pkgrel=2
 _filever=00301.01
 pkgdesc="Japanese outline fonts based on IPAmj Fonts (otf-ipamjfont)"
 arch=('any')
 url="https://launchpad.net/takao-fonts"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
+depends=()
 source=(http://launchpad.net/takao-fonts/trunk/${pkgver}/+download/TakaoMjFonts_${_filever}.tar.xz)
 
 package() {
