@@ -1,13 +1,11 @@
 pkgbase = otf-takao
 	pkgdesc = Japanese outline fonts based on IPA Fonts (otf-ipafont)
 	pkgver = 15.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/takao-fonts
 	install = otf.install
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = http://launchpad.net/takao-fonts/trunk/15.03/+download/TakaoFonts_00303.01.tar.xz
 	md5sums = 8cd3fe724faa5034a9369e98cf108d2d
 
