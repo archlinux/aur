@@ -3,12 +3,12 @@
 pkgname=python-gpflow
 _pkgver=2.0.5
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Gaussian process methods in tensorflow"
 url="https://github.com/GPflow/GPflow"
 arch=('any')
 license=('MIT')
-depends=('python-numpy' 'python-scipy' 'python-multipledispatch' 'python-tensorflow' 'python-tensorflow-probability' 'python-tabulate')
+depends=('python-numpy' 'python-scipy' 'python-multipledispatch' 'python-tensorflow' 'python-tensorflow-probability' 'python-tabulate' 'python-typing_extensions')
 checkdepends=('python-pytest')
 makedepends=('python-setuptools' 'findutils')
 source=("https://github.com/GPflow/GPflow/archive/v${_pkgver}.tar.gz")
