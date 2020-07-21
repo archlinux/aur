@@ -11,8 +11,9 @@ url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin-server')
 conflicts=('jellyfin-server' 'jellyfin-server-git')
-depends=('ffmpeg' 'jellyfin-web')
-optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis')
+depends=('ffmpeg')
+optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis'
+	    'jellyfin-web: Web interface')
 source=('jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
