@@ -1,13 +1,14 @@
 # Maintainer: Barfin
 pkgname=poweriso-gui
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="free GUI program which runs on Linux. It can create, extract, edit, convert all popular image files (including ISO, BIN, DAA, NRG, and etc). It can also burn image files to compact disc or copy compact discs to image files"
-arch=("any")
+arch=('i686' 'x86_64')
 url="ٰhttp://www.poweriso.com/download-poweriso-for-linux.htm"
 license=('Freeware')
+depends=("freetype2" "hicolor-icon-theme" "libbsd" "qt5-base")
 md5sums=('SKIP'
-         '63ff3621b7f79372f41de43218908063'
+         '7d6691d03b3f30f9776935c412d8c18c'
          '791bb24e8a2db258af3a538a5e2119b2'
          'ef4fd8334463276e378822e9182d6da3')
 if [ "${CARCH}" = "i686" ]; then

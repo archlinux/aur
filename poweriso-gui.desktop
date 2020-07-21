@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Categories=Qt;DiscBurning;
+Categories=Qt;DiscBurning;Utility
 Exec=poweriso-gui %f
 Icon=poweriso-gui
 MimeType=application/x-iso;

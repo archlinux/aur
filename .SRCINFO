@@ -1,16 +1,21 @@
 pkgbase = poweriso-gui
 	pkgdesc = free GUI program which runs on Linux. It can create, extract, edit, convert all popular image files (including ISO, BIN, DAA, NRG, and etc). It can also burn image files to compact disc or copy compact discs to image files
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = ٰhttp://www.poweriso.com/download-poweriso-for-linux.htm
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = Freeware
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libbsd
+	depends = qt5-base
 	source = http://www.poweriso.com/poweriso-x64-1.1.tar.gz
 	source = poweriso-gui.desktop
 	source = poweriso-gui.svg
 	source = poweriso.sh
 	md5sums = SKIP
-	md5sums = 63ff3621b7f79372f41de43218908063
+	md5sums = 7d6691d03b3f30f9776935c412d8c18c
 	md5sums = 791bb24e8a2db258af3a538a5e2119b2
 	md5sums = ef4fd8334463276e378822e9182d6da3
 
