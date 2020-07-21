@@ -1,6 +1,6 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Pythonless package of a a tool for defining and running multi-container applications
-	pkgver = 1.26.0
+	pkgver = 1.26.2
 	pkgrel = 1
 	url = https://github.com/docker/compose
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = docker-compose-bin
 	provides = docker-compose
 	conflicts = docker-compose
 	options = !strip
-	source = docker-compose-1.26.0::https://github.com/docker/compose/releases/download/1.26.0/docker-compose-Linux-x86_64
-	source = https://github.com/docker/compose/archive/1.26.0.tar.gz
-	sha256sums = ff6816932a57eab448798105926adbe4363b82f217802b105ade2edad95706cb
-	sha256sums = 481cd772e3d0592bfc3f076f4a5af11a7c00eda45e2cb61208b1c66b1650d25b
+	source = docker-compose-1.26.2::https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64
+	source = https://github.com/docker/compose/archive/1.26.2.tar.gz
+	sha256sums = 13e50875393decdb047993c3c0192b0a3825613e6dfc0fa271efed4f5dbdd6eb
+	sha256sums = a4999bcb838ca9e88ff992fedd7a32ab71f97ae081696f8bf26fa1da54aaffe6
 
 pkgname = docker-compose-bin
 
