@@ -15,7 +15,7 @@ noextract=("enchcracker-${pkgver//_/-}.zip")
 
 md5sums=('448eab35721fdec938a1969f5d0f614a'
          '47d894a54821060b37984df5ee85c467'
-         '643b31e9d08d5c0ac3da8626903508fa')
+         'f0322a90cebb3bdb20e65c1fdca5b33c')
 
 prepare() {
 	cd $srcdir
