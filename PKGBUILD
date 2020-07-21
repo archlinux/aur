@@ -1,9 +1,9 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.5.0.1500.g1a8cd172
+pkgver=0.6.0.1612.g3688b5c0
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/jwilm/alacritty"
+url="https://github.com/alacritty/alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
+source=("$_pkgname::git+https://github.com/alacritty/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,6 @@ check(){
 }
 
 package_alacritty-git() {
-
 	cd $_pkgname
 
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
