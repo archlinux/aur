@@ -1,16 +1,17 @@
 pkgbase = geph-client
 	pkgdesc = A command-line Geph client
-	pkgver = 0.21.4
-	pkgrel = 1
+	pkgver = 0.22.2
+	pkgrel = 2
 	url = https://github.com/geph-official/geph2
 	arch = x86_64
 	groups = geph2
 	license = GPL3
-	makedepends = go-pie
+	makedepends = go
 	depends = glibc
-	source = geph-client-0.21.4.tar.gz::https://github.com/geph-official/geph2/archive/v0.21.4.tar.gz
+	backup = etc/geph2/geph-client.ini
+	source = geph-client-0.22.2.tar.gz::https://github.com/geph-official/geph2/archive/v0.22.2.tar.gz
 	source = geph-client.service
-	sha512sums = aecf3bb0f5c6cec5a6db9ce9c11174686208f9caca16736a7addeb70e556446ebdb1384a95c6ee440bf8a583de9b609cb2bc1c8a5720a618024fe57b14d9cd18
+	sha512sums = 2595892671915e576aaee8a7a7beb4fbfb8b702520c6525cced9686c39516fa1c8aa38c360a50f7e698a90f68b23a4a24739903e6fbe8b6f695f0a89e5dc0de0
 	sha512sums = fbbb29154a074c121abac3dd8e78768223b500b9cc5d9aa0c0608b79504c142242d08867cf86a5f8c0306f40662189e42a32274dcbdd4d5a186a4baddb3c2258
 
 pkgname = geph-client
