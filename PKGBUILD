@@ -2,7 +2,7 @@
 
 pkgname=mdr
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone Markdown renderer for the terminal."
 arch=('x86_64' 'i686')
 url="https://github.com/MichaelMure/mdr"
