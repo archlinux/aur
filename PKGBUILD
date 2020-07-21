@@ -8,7 +8,7 @@ arch=('any')
 url="https://beancount.github.io/fava/"
 license=('MIT')
 groups=()
-depends=('beancount' # >=2.1.3, but beancount-hg doesn't provide a version.
+depends=('beancount>=2.1.3'
          'python>=3.5'
          'python-setuptools'
          'python-tornado'
