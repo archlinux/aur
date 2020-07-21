@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.8pre15
 _major=18.7.1
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
