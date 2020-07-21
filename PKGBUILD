@@ -1,5 +1,8 @@
 # Maintainer: Tomasz Oponowicz <tomasz at zaxo dot biz>
 
+# Regenerate the `.SRCINFO` file:
+# $ makepkg --printsrcinfo > .SRCINFO
+
 pkgname=markets
 pkgver=0.1.0
 pkgrel=1
