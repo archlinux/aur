@@ -2,13 +2,13 @@
 # Contributor: Anton Shestakov <engored@ya.ru>
 
 pkgname=supermodel-svn
-pkgver=20170313.528
+pkgver=20200703.807
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
 url='http://www.supermodel3.com/'
 license=('GPL3')
-depends=('mesa' 'sdl' 'zlib' 'glu')
+depends=('mesa' 'sdl' 'zlib' 'glu' 'sdl2_net')
 makedepends=('svn')
 install=supermodel.install
 source=('supermodel.sh'
@@ -30,10 +30,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/supermodel-svn/"
-  sed -e "s/-Wall -O3/$CFLAGS/" -i 'Makefiles/Makefile.SDL.UNIX.GCC'
-  patch -p1 < ../multiuser.patch
-  patch -p1 < ../R3DScrollFog.patch
-  make -f 'Makefiles/Makefile.SDL.UNIX.GCC'
+  sed -e "s/-Wall -O3/$CFLAGS/" -i 'Makefiles/Makefile.UNIX'
+  # patch -p1 < ../multiuser.patch
+  # patch -p1 < ../R3DScrollFog.patch
+  make -f 'Makefiles/Makefile.UNIX'
 }
 
 package() {
@@ -41,7 +41,7 @@ package() {
 
   install -Dm755 "$srcdir/supermodel.sh" "$pkgdir/usr/bin/supermodel"
 
-  install -Dm755 "bin/Supermodel" "$pkgdir/usr/share/supermodel/Supermodel"
+  install -Dm755 "bin/supermodel" "$pkgdir/usr/share/supermodel/Supermodel"
 
   install -Dm644 "Docs/LICENSE.txt" "$pkgdir/usr/share/licenses/supermodel/LICENSE"
   install -Dm644 "Docs/README.txt" "$pkgdir/usr/share/doc/supermodel/README"
