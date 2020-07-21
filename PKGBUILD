@@ -1,11 +1,11 @@
 # Maintainer: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
 pkgname=beancount-import-git
 _name=${pkgname%-git}
-pkgver=1.0.7.r0.0341cf8
+pkgver=1.3.3.r2.bd39126
 pkgrel=1
-pkgdesc=""
+pkgdesc="Semi-automatic importer from external data sources into beancount"
 arch=('any')
-url="https://beancount.github.io/fava/"
+url="https://github.com/jbms/beancount-import"
 license=('MIT')
 groups=()
 depends=('beancount>=2.1.3'
