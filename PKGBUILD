@@ -4,9 +4,9 @@
 # Helpful URL: https://ci.appveyor.com/project/tidusjar/requestplex/branch/develop/artifacts
 
 pkgname=ombi-develop
-pkgver=3.0.5164
+pkgver=3.0.5202
 pkgrel=1
-_buildhash="03pr2x76ru4jsx0o"
+#_buildhash="03pr2x76ru4jsx0o"
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/tidusjar/Ombi"
@@ -28,10 +28,14 @@ source=("ombi.service"
         "ombi.sysusers"
         "ombi.tmpfiles")
 
+# Commented while release is higher than develop.
 # https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz
-source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz")
-source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm.tar.gz")
-source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm64.tar.gz")
+#source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz")
+#source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm.tar.gz")
+#source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm64.tar.gz")
+source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
+source_armv7h=("${pkgname}-armv7h-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm.tar.gz")
+source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm64.tar.gz")
 
 noextract=("ombi-x86_64-${pkgver}.tar.gz"
            "ombi-i686-${pkgver}.tar.gz"
@@ -40,9 +44,9 @@ noextract=("ombi-x86_64-${pkgver}.tar.gz"
 sha256sums=('d5893f6b665a0646054343a051e462a49569d51de224b45d3d2542b6c4e3d168'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
-sha256sums_x86_64=('75a3cc10572b9a789fe0788930de8879d9de9408adc614cd0de83d1821a608f8')
-sha256sums_aarch64=('678fb65f7952dfa5decc998614927a2b9b9482eca1adab0e23e6d7c901e02d3b')
-sha256sums_armv7h=('4c11cd98bf74214858f937814c8fe2d220f511da726a712d45c535c2cad705ea')
+sha256sums_x86_64=('f4477fc7a74cbcd4867f76d32fccd009d806dbfc4dd05710ade3e64b4d57b753')
+sha256sums_aarch64=('76b8109fa5173d3919385e6caf441f2efc0584a9b06f029c028de5896cfe1a19')
+sha256sums_armv7h=('365c3c4baea3b1f837cd509aa8cf0bd679de593de92c0ff0aaf0dc0363ab459b')
 
 prepare() {
   # The source is packaged w/o a sub directory, so create our own and 
