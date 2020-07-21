@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=mbelib-git
-pkgver=0.2.0.r1.g53b2e02
+pkgver=1.3.0.r5.g9a04ed5
 pkgrel=1
 pkgdesc="Tools for decoding digital ham communication."
 arch=('x86_64')
