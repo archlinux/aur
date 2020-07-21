@@ -15,6 +15,7 @@ pkgbase = zrythm
 	makedepends = python-sphinx
 	makedepends = ladspa
 	makedepends = gtksourceview3 
+	makedepends = lv2 
 	depends = gtk3
 	depends = lilv
 	depends = libx11
