@@ -6,28 +6,28 @@
 
 pkgbase=apt
 pkgname=('apt' 'apt-docs')
-pkgver=2.1.6
-pkgrel=2
+pkgver=2.1.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
 license=('GPL2')
 makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'gtest' 'w3m' 'triehash'
              'perl-text-wrapi18n' 'perl-locale-gettext' 'perl-yaml-tiny'
-             'perl-term-readkey' 'perl-sgmls' 'perl-module-build' 'perl-unicode-linebreak')
+             'perl-term-readkey' 'perl-sgmls' 'perl-module-build' 'perl-unicode-linebreak' 'perl-pod-parser' 'po4a')
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' "apt-utils")
 source=("git+https://salsa.debian.org/apt-team/apt.git#tag=${pkgver}"
-        "https://github.com/mquinson/po4a/releases/download/v0.59.1/po4a-v0.59.1.tar.gz")
+	"https://github.com/mquinson/po4a/releases/download/v0.60/po4a-0.60.tar.gz")
 sha256sums=('SKIP'
-            'a906fd82a6cc3a8898c1fe55d14076f3376fa6879ce9b1828b8b125e2dbe495b')
+            'c8d9c28758fa007e8e2989b5820c55910a6533dab581208d0c8acf4d43027b59')
 
 build() {
   # arch linux's po4a is too new to build apt, so build an older version
   # will likely be good to use system po4a when it's updated in sid
-  msg2 "Building po4a 0.57..."
-  cd "$srcdir/po4a-v0.59.1"
+  msg2 "Building po4a 0.60..."
+  cd "$srcdir/po4a-0.60"
   perl Build.PL installdirs=vendor create_packlist=0
   LC_ALL=en_US.UTF-8 perl Build
-  alias po4a="$srcdir/po4a-v0.59.1/po4a"
+  alias po4a="$srcdir/po4a-0.60/po4a"
 
   msg2 "Building apt..."
   cd "$srcdir/$pkgname"
