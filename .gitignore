@@ -1,0 +1,5 @@
+*.zip
+LICENSE.txt
+*.zst
+src/
+pkg/

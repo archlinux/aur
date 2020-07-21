@@ -1,0 +1,3 @@
+#!/bin/sh
+export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH"
+exec java -cp /usr/share/java/enchcracker.jar enchcracker.EnchCrackerWindow "$@"
