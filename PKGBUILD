@@ -2,7 +2,7 @@
 
 _pkgname=thrust
 pkgname=thrust-git
-pkgver=1.9.4.28.g986d178b
+pkgver=1.9.10.40.gd9d7b510
 pkgrel=1
 pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library'
 arch=('any')
@@ -19,19 +19,29 @@ optdepends=(
   'intel-tbb: for TBB backend'
 )
 
-source=("git+https://github.com/thrust/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/thrust/${_pkgname}.git"
+        "git+https://github.com/thrust/cub.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   git describe --always | sed -e 's|-|.|g'
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.cub.url "${srcdir}/cub"
+  git submodule update
+}
+
 package() {
   install -dm 755 "${pkgdir}/opt/${_pkgname}"
-  cd "${srcdir}/${_pkgname}" 
+  cd "${srcdir}/${_pkgname}"
   cp -r ${_pkgname} "${pkgdir}/opt/${_pkgname}/"
   cp -r examples "${pkgdir}/opt/${_pkgname}/"
+  cp -rL cub "${pkgdir}/opt/${_pkgname}/"
 }
 
 # vim: ft=sh ts=2 sw=2 et
