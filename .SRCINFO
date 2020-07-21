@@ -1,5 +1,5 @@
 pkgbase = fava-git
-	pkgver = 1.9.r29.g9e7c51af
+	pkgver = 1.15.r11.g2f140b23
 	pkgrel = 1
 	url = https://beancount.github.io/fava/
 	arch = any
@@ -7,13 +7,23 @@ pkgbase = fava-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = beancount>=2.1.2
-	depends = python
+	depends = beancount>=2.3.0
+	depends = python>=3.6
 	depends = python-setuptools
-	depends = python-markdown2>=2.3.0
-	depends = python-flask-babel>=0.10.0
-	depends = python-simplejson>=2.3.0
+	depends = python-babel>=2.6.0
 	depends = python-cheroot
+	depends = python-flask-babel>=1.0.0
+	depends = python-flask>=0.10.1
+	depends = python-jinja>=2.10
+	depends = python-click
+	depends = python-markdown2>=2.3.0
+	depends = python-ply
+	depends = python-simplejson>=3.2.0
+	depends = python-werkzeug>=0.15.0
+	optdepends = python-pyexcel>=0.2.2: Spreadsheet (ODS/XLS/XLSX) support
+	optdepends = python-pyexcel-ods3>=0.1.1: ODS file support
+	optdepends = python-pyexcel-xls>=0.1.0: XLS file support
+	optdepends = python-pyexcel-xlsx>=0.1.0: XLSX file support
 	provides = fava
 	conflicts = fava
 	conflicts = beancount-fava-git
