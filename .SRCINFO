@@ -14,7 +14,6 @@ pkgbase = kdiskmark
 	depends = fio
 	depends = libaio
 	depends = hicolor-icon-theme
-	optdepends = accountsservice: show user tags for processes
 	provides = kdiskmark
 	conflicts = kdiskmark
 	source = git+https://github.com/JonMagon/kdiskmark.git#tag=1.5.1

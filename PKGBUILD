@@ -2,14 +2,13 @@
 
 pkgname=kdiskmark
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HDD and SSD benchmark tool with a very friendly graphical user interface"
 arch=('i686' 'x86_64')
 url="https://github.com/JonMagon/KDiskMark"
 license=(GPL3)
 depends=(qt5-base fio libaio hicolor-icon-theme)
 makedepends=(git cmake extra-cmake-modules qt5-tools)
-optdepends=('accountsservice: show user tags for processes')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/JonMagon/$pkgname.git#tag=$pkgver")
