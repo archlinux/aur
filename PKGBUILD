@@ -5,7 +5,7 @@
 pkgbase=python-pytorch-rocm
 pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
@@ -16,11 +16,13 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'py
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm'
              'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
-        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/35359.patch
-        fix_include_system.patch)
+        fix_include_system.patch
+        use-system-libuv.patch
+        use-system-libuv2.patch)
 sha256sums=('SKIP'
-            '1a67a90174276e9462e632df1bbb2e9fd7890f08da45d831edf1610c0e3e3c72'
-            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9')
+            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
+            '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
+            '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -35,9 +37,6 @@ prepare() {
   # submodules) will make building inefficient but for now I'll take it.
   # It will result in the same package, don't worry.
   git submodule update --init --recursive
-
-  # https://github.com/pytorch/pytorch/pull/35359
-  patch -Np1 -i "${srcdir}/35359.patch"
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
@@ -131,7 +130,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCM and CPU optimizations)"
-  depends+=(rocm cudnn magma)
+  depends+=(rocm magma)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-rocm)
 
