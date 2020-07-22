@@ -1,6 +1,6 @@
 pkgbase = buffalo-git
-	pkgdesc = A Go web development eco-system, designed to make your project easier.
-	pkgver = v0.16.8.r1.g0ffd608c
+	pkgdesc = A Go web development eco-system, designed to make your project easier. (git version)
+	pkgver = v0.16.13.r0.g0260f6e5
 	pkgrel = 1
 	url = https://github.com/gobuffalo/buffalo/
 	arch = x86_64

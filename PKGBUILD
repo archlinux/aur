@@ -1,8 +1,8 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
 pkgname=buffalo-git
-pkgver=v0.16.8.r1.g0ffd608c
+pkgver=v0.16.13.r0.g0260f6e5
 pkgrel=1
-pkgdesc='A Go web development eco-system, designed to make your project easier.'
+pkgdesc='A Go web development eco-system, designed to make your project easier. (git version)'
 arch=('x86_64')
 url="https://github.com/gobuffalo/buffalo/"
 license=('MIT')
