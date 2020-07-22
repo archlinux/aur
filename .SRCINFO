@@ -1,6 +1,6 @@
 pkgbase = python-cryptoparser-git
 	pkgdesc = A cryptographic protocol parser
-	pkgver = 0.2.8
+	pkgver = r78.85ff825
 	pkgrel = 1
 	url = https://gitlab.com/coroner/cryptoparser
 	arch = any

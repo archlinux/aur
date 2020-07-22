@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-cryptoparser-git
-pkgver=0.2.8
+pkgver=r78.85ff825
 pkgrel=1
 pkgdesc='A cryptographic protocol parser'
 arch=('any')
@@ -14,6 +14,11 @@ depends=('python-attrs'
 makedepends=('python-setuptools')
 source=("${pkgname%-git}::git+${url}")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short   HEAD)"
+}
 
 build() {
   cd "${pkgname%-git}"
