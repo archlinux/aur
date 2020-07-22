@@ -1,0 +1,17 @@
+pkgbase = instantnotify
+	pkgdesc = notification center for instantOS
+	pkgver = 202007201829
+	pkgrel = 1
+	url = https://github.com/instantOS/instantNOTIFY
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = instantmenu
+	provides = instantnotify
+	conflicts = instantnotify
+	source = instantnotify::git+https://github.com/instantOS/instantNOTIFY.git
+	sha256sums = SKIP
+
+pkgname = instantnotify
+
