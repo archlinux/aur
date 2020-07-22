@@ -1,13 +1,13 @@
 pkgbase = pueue
 	pkgdesc = A command scheduler for shells
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/nukesor/pueue
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/Nukesor/pueue/archive/v0.6.3.tar.gz
-	md5sums = 42d3fa582d46b108127c3aecacb840c8
+	source = https://github.com/Nukesor/pueue/archive/v0.7.0.tar.gz
+	md5sums = cab5f96e09cae9cebae227da827928d0
 
 pkgname = pueue
 
