@@ -1,7 +1,7 @@
 pkgbase = python-b2sdk
 	pkgdesc = Python library to access B2 cloud storage.
-	pkgver = 0.1.8
-	pkgrel = 2
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/Backblaze/b2-sdk-python
 	arch = any
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = python-b2sdk
 	depends = python-setuptools
 	depends = python-six>=1.10
 	depends = python-tqdm>=4.5.0
-	source = https://github.com/Backblaze/b2-sdk-python/archive/v0.1.8.tar.gz
-	sha256sums = 4787d1ab6306d664a2ffa0c4ec38a45b6688972072f780305ae85ac97094d4b2
+	source = https://github.com/Backblaze/b2-sdk-python/archive/v1.1.4.tar.gz
+	sha256sums = 230d88d1368345f0175c1df3c4e8225b4e481b97263ed3bb1e24eb5b9c204a76
 
 pkgname = python-b2sdk
 
