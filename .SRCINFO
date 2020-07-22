@@ -1,0 +1,27 @@
+pkgbase = gnome-terminal-middle-click-close-tab
+	pkgdesc = The GNOME Terminal Emulator, with a patch that can use middle click to close tab
+	pkgver = 3.36.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = libnautilus-extension
+	makedepends = appstream-glib
+	makedepends = gnome-shell
+	makedepends = vala
+	makedepends = yelp-tools
+	makedepends = git
+	depends = vte3>=0.60.0
+	depends = gsettings-desktop-schemas
+	provides = gnome-terminal=3.36.2
+	conflicts = gnome-terminal
+	source = git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#commit=be754773e25f7b0f8ccfe0ed4b7e65711bcee1be
+	source = gnome-terminal-middle-click-close-tab.patch
+	sha256sums = SKIP
+	sha256sums = 780dc874ee86c901273ae4350ce78b55717c6e22dc3d1ffbbe8d6c03fc8959502d1faa179467414b837f4b5de94ab31e6ab978c9e8c236e82d9d3354b925fa81
+
+pkgname = gnome-terminal-middle-click-close-tab
+
