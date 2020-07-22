@@ -3,10 +3,10 @@
 pkgname=rednukem-git
 pkgver=1.01.r11519.gec8dccf1a
 pkgrel=1
-pkgdesc='Reverse-engineered ports of Build games using EDuke32 engine technology and development principles (NBlood/Rednukem/PCExhumed)'
+pkgdesc='Reverse-engineered port of Build games using EDuke32 engine technology and development principles'
 arch=('i686' 'x86_64')
 url='https://github.com/nukeykt/NBlood'
-license=('GPL2')
+license=('GPL2' 'custom:BUILD')
 provides=('rednukem')
 depends=('sdl2_mixer' 'libvpx' 'gtk2')
 makedepends=('mesa' 'glu' 'gendesk' 'imagemagick')
@@ -34,7 +34,8 @@ package() {
           --icon rednukem
   install -d "${pkgdir}/usr/bin"
   install -m755 rednukem "${pkgdir}/usr/bin/"
+  install -Dm644 package/common/buildlic.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 rednukem-10.png "${pkgdir}/usr/share/pixmaps/rednukem.png"
-  install -Dm644 "rednukem.desktop" "${pkgdir}/usr/share/applications/rednukem.desktop"
+  install -Dm644 rednukem.desktop "${pkgdir}/usr/share/applications/rednukem.desktop"
 }
 # vim:set ts=2 sw=2 et:
