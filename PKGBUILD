@@ -1,5 +1,4 @@
-# Maintainer: cyka3702 <swc.rainier@gmail.com>
-# Contributor: paperbenni <paperbenni@gmail.com>
+# Maintainer: paperbenni <paperbenni@gmail.com>
 if [ -e /tmp/instanttheme ]; then
   echo "theme override found"
   THEME=$(cat /tmp/instanttheme)
@@ -30,7 +29,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  ./theme.sh "$THEME"
 }
 
 build() {
