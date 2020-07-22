@@ -1,6 +1,6 @@
 pkgbase = whitesur-icon-theme-git
 	pkgdesc = MacOS Big Sur style icon theme for linux desktops
-	pkgver = 4.5fd57e6
+	pkgver = r4.5fd57e6
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-icon-theme
 	arch = any

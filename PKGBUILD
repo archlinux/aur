@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=whitesur-icon-theme-git
 _gitname=WhiteSur-icon-theme
-pkgver=4.5fd57e6
+pkgver=r4.5fd57e6
 pkgrel=1
 pkgdesc="MacOS Big Sur style icon theme for linux desktops"
 arch=('any')
@@ -15,7 +15,7 @@ options=('!strip')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
