@@ -1,7 +1,7 @@
 # Maintainer: mickele
 pkgname=tclreadline
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU readline for interactive tcl shells"
 url="https://github.com/flightaware/tclreadline"
 arch=('x86_64' 'i686')
@@ -23,9 +23,15 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # tk-existence seems to have no impact on build, but breaks configure otherwise
+    TKOPT=""
+    pkgconf tk || TKOPT="--without-tk"
+
     ./configure --prefix=/usr \
                 --with-tcl=/usr/lib \
-                --with-tcl-includes=/usr/include/tcl
+                --with-tcl-includes=/usr/include/tcl \
+                ${TKOPT}
     make
 }
 
