@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.3
+pkgver=2.4
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -32,7 +32,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('36765c5759b4968acff9ece07b0c03c7'
+md5sums=('7caf08ff75ce8aa557f3933e77003213'
          'f64f312dfdca58dc510504041dcc9675'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
