@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-class-registry
 _pkgname=class-registry
-pkgver=3.0.5
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='The intersection of the Registry and Factory patterns'
 url='https://github.com/todofixthis/class-registry'
@@ -10,7 +10,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://github.com/todofixthis/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('324171cbf14132e02c58026d90c87d408fd321d95258cf8cd66de472a125177c4131ca1e47fad279db3384a8a3a50832eb1287a4b577c76c79a9391fa1d998c6')
+sha512sums=('365e8e526cdad3730f946e0cb111dcee88bb72305015551d7da4419d18f41d98b960620f03665b684de17d1c868d6723ebdda6960324982e8648e99606315426')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
