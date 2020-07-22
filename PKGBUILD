@@ -29,7 +29,9 @@ package_python-cryptolyzer() {
            'python-six'
            'python-cryptoparser')
   cd "cryptolyzer-${pkgver}"
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cp -avR cryptolyzer "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/"
 }
 
 package_python2-cryptolyzer() {
@@ -39,6 +41,8 @@ package_python2-cryptolyzer() {
            'python2-cryptoparser'
            'python-enum-compat')
   cd "cryptolyzer-${pkgver}"
+  _pythonversion=$(python2 --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cp -avR cryptolyzer "${pkgdir}/usr/lib/python2.7/site-packages/"
 }
 # vim:set ts=2 sw=2 et:
