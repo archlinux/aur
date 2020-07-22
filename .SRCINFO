@@ -1,6 +1,6 @@
 pkgbase = instantdotfiles
 	pkgdesc = dotfiles for instantOS
-	pkgver = 202005051741
+	pkgver = 202007191412
 	pkgrel = 1
 	url = https://github.com/paperbenni/dotfiles
 	arch = any

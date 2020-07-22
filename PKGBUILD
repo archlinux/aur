@@ -1,7 +1,7 @@
 # Maintainer: paperbenni <paperbenni@gmail.com>
 _pkgname=instantdotfiles
 pkgname=$_pkgname
-pkgver=202005051741
+pkgver=202007191412
 pkgrel=1
 pkgdesc="dotfiles for instantOS"
 url="https://github.com/paperbenni/dotfiles"
