@@ -2,7 +2,7 @@
 pkgname=felinks
 pkgver=0.13.3
 pkgrel=1
-pkgdesc="text browser"
+pkgdesc="actively maintained version of the elinks text browser"
 license=(GPL2)
 arch=('x86_64' 'i686')
 depends=(tre brotli libx11 openssl gpm zstd libidn expat ncurses lua51)

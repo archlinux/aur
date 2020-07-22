@@ -1,5 +1,5 @@
 pkgbase = felinks
-	pkgdesc = text browser
+	pkgdesc = actively maintained version of the elinks text browser
 	pkgver = 0.13.3
 	pkgrel = 1
 	url = http://github.com/rkd77/felinks
