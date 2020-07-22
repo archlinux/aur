@@ -1,0 +1,12 @@
+pkgbase = keymap-sandsmark
+	pkgdesc = Keymap equivalent to us altgr-intl compose:rctrl ctrl:nocaps for X11
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sandsmark
+	arch = any
+	license = GPL3
+	source = sandsmark.map
+	md5sums = SKIP
+
+pkgname = keymap-sandsmark
+
