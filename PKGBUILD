@@ -1,14 +1,13 @@
-# Maintainer: cyka3702 <swc.rainier@gmail.com>
-# Contributor: paperbenni <paperbenni@gmail.com>
+# Maintainer: paperbenni <paperbenni@gmail.com>
 _pkgname=instantutils
 pkgname=$_pkgname
-pkgver=202006050951
+pkgver=202007161244
 pkgrel=1
 pkgdesc="core utilities for instantOS"
 url="https://github.com/instantOS/instantos"
 arch=('any')
 license=('MIT')
-depends=('sh' 'acpi' 'wget' 'feh' 'dash' 'xdotool')
+depends=('sh' 'acpi' 'wget' 'feh' 'dash' 'xdotool' 'instantmenu' 'instantwm' 'imenu' 'instantassist')
 makedepends=('git')
 provides=(instantutils)
 conflicts=(instantutils)
