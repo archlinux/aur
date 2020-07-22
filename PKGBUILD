@@ -3,7 +3,7 @@
 
 pkgname=qt5-color-widgets
 _pkgname=Qt-Color-Widgets
-pkgver=0.r20.3d577f2
+pkgver=0.r305.634f90e
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
