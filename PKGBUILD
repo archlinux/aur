@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Host code for AirspyHF+ SDR."
 arch=('i686' 'x86_64')
 url="http://www.airspy.com"
-license=('GPL2')
+license=('BSD')
 depends=('libusb>=1.0')
 provides=('airspyhf')
 conflicts=('airspyhf')
