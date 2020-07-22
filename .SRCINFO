@@ -1,13 +1,15 @@
 pkgbase = rpi-eeprom-beta
 	pkgdesc = Raspberry Pi4 boot EEPROM updater
 	pkgver = 2020.07.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/raspberrypi/rpi-eeprom
 	arch = any
 	license = custom
 	depends = python
 	optdepends = raspberrypi-firmware: Use this on an armv7h (32bit) system.
 	optdepends = raspberrypi-userland-aarch64: Use this on an aarch64 (64bit) system.
+	provides = rpi-eeprom
+	conflicts = rpi-eeprom
 	options = !strip
 	backup = etc/default/rpi-eeprom-update
 	source = rpi-eeprom-2020.07.16-138a1.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v2020.07.16-138a1.tar.gz
