@@ -7,7 +7,7 @@
 pkgname=vlang-git
 pkgver=0.1.27.r717.gb3fc462a7
 pkgrel=2
-pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
+pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
