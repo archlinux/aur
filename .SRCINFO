@@ -1,6 +1,6 @@
 pkgbase = dwm-ekollof-git
 	pkgdesc = Emiel Kollof's personal patched build of dwm.
-	pkgver = 6.2.r16.25e4811
+	pkgver = 6.2.r23.4e1f126
 	pkgrel = 1
 	url = https://git.hackerheaven.org/ekollof/dwm-ekollof.git
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = dwm-ekollof-git
 	depends = dwm-ekollof-git
 	depends = dwmblocks-ekollof-git
 	depends = dmenu-ekollof-git
-	depends = deadd-notification-center-bin
+	depends = dunst
 	provides = dwm
 	conflicts = dwm
 	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof.git
