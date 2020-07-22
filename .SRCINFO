@@ -1,0 +1,29 @@
+pkgbase = felinks-python
+	pkgdesc = the elinks text browser, with Python support
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = http://github.com/rkd77/felinks
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	depends = tre
+	depends = brotli
+	depends = libx11
+	depends = openssl
+	depends = gpm
+	depends = zstd
+	depends = libidn
+	depends = expat
+	depends = ncurses
+	depends = lua51
+	depends = python3
+	conflicts = elinks
+	conflicts = elinks-git
+	conflicts = felinks
+	source = git+https://github.com/rkd77/felinks#tag=v0.13.3
+	sha256sums = SKIP
+
+pkgname = felinks-python
+
