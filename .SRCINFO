@@ -1,7 +1,7 @@
 pkgbase = yubikey-oath-dmenu
 	pkgdesc = dmenu interface for getting OATH codes from a YubiKey
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/emlun/yubikey-oath-dmenu
 	arch = any
 	license = GPL3
@@ -12,10 +12,10 @@ pkgbase = yubikey-oath-dmenu
 	depends = yubikey-manager>=0.5.0
 	optdepends = libnotify: Feedback via notify-send
 	optdepends = xdotool: Type code instead of copying to clipboard
-	source = yubikey-oath-dmenu-0.8.0.tar.gz::https://github.com/emlun/yubikey-oath-dmenu/archive/v0.8.0.tar.gz
-	source = yubikey-oath-dmenu-0.8.0.tar.gz.sig::https://github.com/emlun/yubikey-oath-dmenu/releases/download/v0.8.0/yubikey-oath-dmenu-0.8.0.tar.gz.sig
+	source = yubikey-oath-dmenu-0.9.0.tar.gz::https://github.com/emlun/yubikey-oath-dmenu/archive/v0.9.0.tar.gz
+	source = yubikey-oath-dmenu-0.9.0.tar.gz.sig::https://github.com/emlun/yubikey-oath-dmenu/releases/download/v0.9.0/yubikey-oath-dmenu-0.9.0.tar.gz.sig
 	validpgpkeys = EB8627616EC1971DF076F2FF2BF5FD22FCABDE73
-	sha256sums = 60a4a3444e8c24ecc3a6c04fc7ca0e98260ed414a64e09b97f0daf3627c3786a
+	sha256sums = 4d8675f00713b260ad46e54b36d042b99e889cb58b788e0bc24b54553e5eff40
 	sha256sums = SKIP
 
 pkgname = yubikey-oath-dmenu
