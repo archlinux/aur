@@ -1,7 +1,7 @@
 # Maintainer: olddog <jeff@impcode.com>
 
 pkgname=vim-tmux-navigator-git
-pkgver=r64.4e1a877
+pkgver=r67.44ba6fb
 pkgrel=1
 pkgdesc='Seamless navigation between tmux panes and vim splits'
 arch=('any')

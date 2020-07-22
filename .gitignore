@@ -1,6 +1,7 @@
 pkg/
 src/
 *.pkg.tar.xz
+*.pkg.tar.zst
 *.tar.gz
 tags
 vim-tmux-navigator/
