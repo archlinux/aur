@@ -1,0 +1,13 @@
+pkgbase = syschk
+	pkgdesc = myself system check
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/idongliming
+	install = syschk.install
+	arch = x86_64
+	license = GPL
+	source = syschk
+	md5sums = 28beb6a8450843f31a77d0f174250e82
+
+pkgname = syschk
+

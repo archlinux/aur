@@ -1,0 +1,12 @@
+# /bin/bash
+
+#echo "系统体检脚本"
+echo "系统启动错误如下"
+journalctl -p 3 -xb
+echo "启动失败的系统服务如下"
+systemctl --failed
+echo "需要手动合并的pacman配置更新如下"
+find /etc -regextype posix-extended -regex ".+\.pac(new|save)" 2> /dev/null
+echo "失效的链接如下"
+find -xtype l -print
+
