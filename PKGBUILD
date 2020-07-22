@@ -2,7 +2,7 @@
 
 _pkgname=webargs
 pkgname=python-$_pkgname
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx-issues' 'python-
 checkdepends=('python-pytest-runner' 'python-mock' 'python-webtest' 'python-pytest-aiohttp'
               'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('97600d9ecf778ff778567e179ef7c2c7e22531f5870db724a08c94f32c865c33119a52dfccb1ffc82946a7281c2463844fddb12a2efa514c0d8779b88350c2ca')
+sha512sums=('844f4bc0c506c47da756af5d7e0e976227b4b30d1cb01ad5825ca73fe8638851a73beea308ac61ec21afc64d8cbc7ea73a32198e3f73a9564c614e22344a3386')
 
 prepare() {
   cd $_pkgname-$pkgver
