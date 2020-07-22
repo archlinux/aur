@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.7.9
-pkgver=5.7.v.9
+gitver=v5.7.10
+pkgver=5.7.v.10
 pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '81022558dff95b6372bd4d8b46aefb2a361b94e04d0392c4d31eac3522f1a690'
+            'ef917a05ac7e81049140e208b10fb50065f5fb02bdb9e468b66bfd2763a462ed'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #gentoopatch file
