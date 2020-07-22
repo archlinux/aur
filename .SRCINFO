@@ -1,6 +1,6 @@
 pkgbase = python-colcon-core
 	pkgdesc = Command line tool to build sets of software packages.
-	pkgver = 0.5.10
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://colcon.readthedocs.io/en/released/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-colcon-core
 	depends = python-distlib
 	depends = python-notify2
 	depends = python-empy
-	source = python-colcon-core-0.5.10.tar.gz::https://github.com/colcon/colcon-core/archive/0.5.10.tar.gz
-	sha256sums = 677fc2269274ec7082f015bc99d5d230db47271020d8ef7a8dd6b91117d513c9
+	source = python-colcon-core-0.6.0.tar.gz::https://github.com/colcon/colcon-core/archive/0.6.0.tar.gz
+	sha256sums = d18127b90982f870817d425934f9438c48c14a1730e4df87199727697c433b30
 
 pkgname = python-colcon-core
 
