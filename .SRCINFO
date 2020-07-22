@@ -1,4 +1,4 @@
-pkgbase = ffmpeg-neat
+pkgbase = ffmpeg-neat-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (neat version)
 	pkgver = 4.4.r98530.gb5f1e057e1
 	pkgrel = 1
@@ -76,5 +76,5 @@ pkgbase = ffmpeg-neat
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	sha256sums = SKIP
 
-pkgname = ffmpeg-neat
+pkgname = ffmpeg-neat-git
 
