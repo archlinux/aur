@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=5.4.47
-_rtpatchver=28
+_pkgver=5.4.52
+_rtpatchver=31
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -21,19 +21,29 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   'config'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
+  '0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch'
   'sphinx-workaround.patch'
 )
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
 )
-sha256sums=('970b9d393d9a8d45eafdec9c6ab0d9880c20c703eeb9b0ac409892c8bc418d6c'
+sha512sums=('ed0eac6cc07f9e3bc455c82f1594fb0a5310430d3abc3cc2058e1c75af7608aa1b6f70790573873d7e9e4fafdd17cd0bdd5624c6eed5d51dd1da12a873d78a8e'
             'SKIP'
-            'dadc1379e816e8a23f09713884f8889f0177f291974487f33efc9a646082c562'
+            'a6606769f2e22866f81a9003f4dbd7d9c77d4b9fd0defba0065cc0817950c584f7f159276a3dc6c034d17689f2c318e181d0486f570e81951dae29c1bd3b6860'
             'SKIP'
-            'ee4fc37fd667ffc17dcc35f6b03e6f09e91267618ace8aa95e1fc6e9c56dc479'
-            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
-            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
+            'aae41969d4ee93cdce74d39f24d198c9f3f34db98d310e9d2a62b1c9e4cb077eec5842a21903d0a91597bb9a26e3e0f57dc466dbcfd10c1794136da9bda69000'
+            '5f196378d50dd737d727e424d8f31b7fa8a6b92ba88f0a1467ef79bc37a097160da1fc1fd5cfb4b8983f36f2afdf27eb229ec61b35a15ac2343d660eb416a230'
+            '8b71f10cb9bd1d17184741b84369d73634b5569364b21c3cf3192d8cd923c04b3790cd158b9564425160b28522d4f91afac032185de59656f17d8e636138c571'
+            '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
+b2sums=('32995d32bfc9ee5d6a5669941897890fc765765f8a141740486f4ad6000fcdd4e4c7f3e9c8fdc7357fba70947cce99d493e8657321c0c836c4930075eacec7eb'
+        'SKIP'
+        '832df7913de6c3b7fbe7857720b0b2e9e9b1b90f21bbd975ef18acb6c3c412a4eb5705bdddcb23cebca2009145f70705ea004b3fbc32cdb28e1cd2ddc4538ad5'
+        'SKIP'
+        '610b75be2e5c7bbaea4a59d44be3b95b6ca8d267629e2aa53114aee0851161add3a11923104daeed7bba1f2402ff67f0e0ccf2c66b9d30289638325258275193'
+        '3c3be0e85347bf3825f855a0a399ed60497cd0376f4b8ee1fe89df9bd90fe01cdd97fb3f4c4eea3918ba3769fc79961b6c58ba997326cbdf9dd7fb9540d8f6d6'
+        '28a9762608162a0a5d83fd114a18224015af8159ba9f55ccf1ecab91578fc212eba27bc9925d1894d7464fae1e4d5edf2e017a48122496daa780516af1ce9fd5'
+        '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
