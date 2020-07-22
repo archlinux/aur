@@ -1,7 +1,7 @@
 pkgbase = renderdoc-bin
 	pkgdesc = OpenGL and Vulkan debugging tool - binary version
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
 	arch = x86_64
 	license = MIT
@@ -16,10 +16,10 @@ pkgbase = renderdoc-bin
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	conflicts = renderdoc
-	source = https://renderdoc.org/stable/1.8/renderdoc_1.8.tar.gz
-	source = https://renderdoc.org/stable/1.8/renderdoc_1.8.tar.gz.sig
+	source = https://renderdoc.org/stable/1.9/renderdoc_1.9.tar.gz
+	source = https://renderdoc.org/stable/1.9/renderdoc_1.9.tar.gz.sig
 	validpgpkeys = 1B039DB9A4718A2D699DE031AC612C3120C34695
-	sha256sums = 4c906f07fcba6cd6495d6b455ff617d55f115eb2ff6ed5dd62abed253d7e6052
+	sha256sums = 0d4c772aec914fb2b200c67beb29d557395e6932cb5b8288cf451f9465730d8a
 	sha256sums = SKIP
 
 pkgname = renderdoc-bin
