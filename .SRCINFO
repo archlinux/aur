@@ -1,0 +1,25 @@
+pkgbase = aom-vmaf-git
+	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet with support for vmaf
+	pkgver = r30875.g4b422e688f
+	pkgrel = 1
+	url = https://aomedia.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom:PATENTS
+	checkdepends = python
+	checkdepends = vmaf
+	makedepends = git
+	makedepends = cmake
+	makedepends = perl
+	makedepends = yasm
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = gcc-libs
+	provides = aom
+	conflicts = aom
+	source = git+https://aomedia.googlesource.com/aom
+	sha256sums = SKIP
+
+pkgname = aom-vmaf-git
+
