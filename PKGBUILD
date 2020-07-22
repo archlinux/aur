@@ -1,5 +1,6 @@
 # Maintainer sgerwk <sgerwk at aol dot com>
-pkgname=felinks-python
+_pkgname=felinks
+pkgname=${_pkgname}-python
 pkgver=0.13.3
 pkgrel=1
 pkgdesc="the elinks text browser, with Python support"
@@ -13,7 +14,7 @@ source=(git+https://github.com/rkd77/felinks#tag=v$pkgver)
 sha256sums=('SKIP')
 
 build() {
-  cd $startdir/src/$pkgname
+  cd $startdir/src/${_pkgname}
   ./autogen.sh
   LDFLAGS="$(echo "$LDFLAGS" | sed 's/,--as-needed//')"
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
@@ -25,12 +26,12 @@ build() {
 }
 
 check() {
-  cd $startdir/src/$pkgname
+  cd $startdir/src/${_pkgname}
   return $(test -x src/elinks)
 }
 
 package() {
-  cd $startdir/src/$pkgname
-  make DESTDIR=$startdir/pkg/$pkgname install
+  cd $startdir/src/${_pkgname}
+  make DESTDIR=$pkgdir install
   rm -f $startdir/pkg/$pkgname/usr/share/locale/locale.alias
 }
