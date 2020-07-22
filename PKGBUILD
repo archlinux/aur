@@ -13,6 +13,9 @@ source=(
 	guest-account.sh	
 	lightdm-autologin.sysusers
 )
+options=(
+        emptydirs
+)
 sha256sums=(
         'e66a6b385e2f365f70da8eab98b7c556939920b9fe980359b5f91c13d4d519cd'
         'de4191ebe7bd07724e0257bb748de56f6c9fc49e76af9a756363bdfc9a66dfa2'
