@@ -1,7 +1,7 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
 # Contributor: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=buffalo-bin
-pkgver=0.16.10
+pkgver=0.16.13
 pkgrel=1
 pkgdesc='A Go web development eco-system, designed to make your project easier.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('nodejs>=8: frontend'
             'git: for VCS support')
 conflicts=('buffalo-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v${pkgver}/buffalo_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('1a7ed8a6da09de2f3747b17660e3c4db823c8f7457984a23aec8c80a7204ea8f')
+sha256sums=('81705d7862b8dc0d2858de54ce3b87ac181504d8c0e46ab9796b0cdfa4753505')
 
 package() {
     install -Dm755 "${srcdir}/buffalo" "${pkgdir}/usr/bin/buffalo"
