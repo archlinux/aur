@@ -5,8 +5,8 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=0.1.27.r717.gb3fc462a7
-pkgrel=2
+pkgver=0.1.28.1.r421.g6d0984285
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -16,7 +16,8 @@ makedepends=('git')
 optdepends=('glfw: Needed for graphics support'
       'freetype2: Needed for graphics support'
       'openssl: Needed for http support')
-conflicts=('vlang')
+provides=('vlang')
+conflicts=('v' 'vlang' 'vlang-bin')
 source=('vlang::git+https://github.com/vlang/v')
 sha256sums=('SKIP')
 
