@@ -1,0 +1,33 @@
+From a8fe72c51887020e831288aea58b2a268e971517 Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Thu, 23 Jul 2020 14:01:01 +0200
+Subject: [PATCH] make run.sh from any location
+
+---
+ tools/distrib/linux64/run.sh | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tools/distrib/linux64/run.sh b/tools/distrib/linux64/run.sh
+index 2eabf9c..a6b74ee 100755
+--- a/tools/distrib/linux64/run.sh
++++ b/tools/distrib/linux64/run.sh
+@@ -4,7 +4,8 @@
+ # that can be found in the LICENSE file.
+ 
+ # Determine the absolute path to the library directory.
+-export LIB_PATH=$(readlink -f "./bin/lib/linux64")
++DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
++export LIB_PATH="${DIR}/bin/lib/linux64"
+ 
+ # Necessary for jcef_helper to find libcef.so.
+ if [ -n "$LD_LIBRARY_PATH" ]; then
+@@ -15,4 +16,5 @@ fi
+ export LD_LIBRARY_PATH
+ 
+ # Preload libcef.so to avoid crashes.
+-LD_PRELOAD=$LIB_PATH/libcef.so java -cp "./bin:./bin/*" -Djava.library.path=$LIB_PATH tests.detailed.MainFrame "$@"
++LD_PRELOAD=$LIB_PATH/libcef.so java -cp "${DIR}/bin:${DIR}/bin/*" -Djava.library.path=$LIB_PATH tests.detailed.MainFrame "$@"
++
+-- 
+2.27.0
+
