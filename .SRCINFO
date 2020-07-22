@@ -1,0 +1,24 @@
+pkgbase = python-goatools
+	pkgdesc = Python scripts to find enrichment of GO terms
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/tanghaibao/goatools
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-xlsxwriter
+	depends = python-statsmodels
+	depends = python-xlrd
+	depends = python-docopt
+	depends = python-pydot
+	depends = python-requests
+	depends = python-wget
+	source = https://files.pythonhosted.org/packages/source/g/goatools/goatools-1.0.6.tar.gz
+	sha256sums = 3deeee5d207e5a2053a874e4e37e1f76de227aed72ca6abb7df8b888607c5e52
+
+pkgname = python-goatools
+
