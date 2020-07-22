@@ -1,7 +1,7 @@
 pkgbase = epdfview-gtk3
 	pkgdesc = Lightweight PDF document viewer. GTK3 version.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Flow-It/epdfview
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = epdfview-gtk3
 	provides = epdfview
 	conflicts = epdfview
 	replaces = epdfview
-	source = git+https://github.com/Flow-It/epdfview.git
+	source = git+https://github.com/Flow-It/epdfview_old.git
 	source = patch.txt
 	md5sums = SKIP
 	md5sums = SKIP
