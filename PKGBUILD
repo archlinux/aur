@@ -1,7 +1,7 @@
 # Maintainer: Konrad Beckmann <konrad.beckmann@gmail.com>
 
 pkgname=airspyhf-git
-pkgver=20200721
+pkgver=r88.8891387
 pkgrel=1
 pkgdesc="Host code for AirspyHF+ SDR."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ _gitname="airspyhf"
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
