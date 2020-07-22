@@ -32,5 +32,7 @@ pkgname = instantos
 	depends = instantsettings
 	depends = islide
 	depends = imenu
+	depends = instantnotify
+	depends = instantsupport
 	depends = grub-instantos
 
