@@ -1,5 +1,5 @@
 pkgbase = keymap-sandsmark
-	pkgdesc = Keymap equivalent to us altgr-intl compose:rctrl ctrl:nocaps for X11
+	pkgdesc = console keymap equivalent to 'us altgr-intl compose:rctrl ctrl:nocaps' in X11
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/sandsmark
