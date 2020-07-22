@@ -1,0 +1,27 @@
+pkgbase = python2-cryptolyzer
+	pkgdesc = Fast and flexible server cryptographic (TLS/SSL) settings analyzer library for Python 2.7/3.4+ with CLI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/coroner/cryptolyzer
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	conflicts = python2-cryptolyzer-git
+	conflicts = python-cryptolyzer-git
+	source = python2-cryptolyzer-0.2.0.tar.gz::https://gitlab.com/coroner/cryptolyzer/-/archive/v0.2.0/cryptolyzer-v0.2.0.tar.gz
+	sha256sums = da995c7b7b90c772888872ac74e6c29efeb897e7e25901eff59ceb85175063ff
+
+pkgname = python2-cryptolyzer
+	depends = python2-cryptography
+	depends = python2-urllib3
+	depends = python2-six
+	depends = python2-cryptoparser
+	depends = python-enum-compat
+
+pkgname = python-cryptolyzer
+	depends = python-cryptography
+	depends = python-urllib3
+	depends = python-six
+	depends = python-cryptoparser
+
