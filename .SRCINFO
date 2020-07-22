@@ -1,0 +1,19 @@
+pkgbase = rsshub-git
+	pkgdesc = Everything is RSSible
+	pkgver = cf97ab46
+	pkgrel = 1
+	url = https://rsshub.app/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	backup = etc/rsshub/rsshub.conf
+	source = rsshub-git::git+https://github.com/DIYgod/RSSHub.git
+	source = rsshub.conf
+	source = rsshub.service
+	md5sums = SKIP
+	md5sums = 6621493e94958b1d3ac8d031bff36eb4
+	md5sums = 54c5973da069e43632e62ebeef50329b
+
+pkgname = rsshub-git
+
