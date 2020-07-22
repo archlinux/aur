@@ -1,6 +1,6 @@
 pkgbase = mandelbulber2
 	pkgdesc = 3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems.
-	pkgver = 2.19
+	pkgver = 2.22
 	pkgrel = 1
 	url = https://github.com/buddhi1980/mandelbulber2
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mandelbulber2
 	depends = openmpi
 	provides = mandelbulber2
 	conflicts = mandelbulber2
-	source = mandelbulber2::https://github.com/buddhi1980/mandelbulber2/archive/2.19.tar.gz
-	sha256sums = 746436f90ad80c0e734b622c8e3b9210135cb6175aa5a509e6050446546a0c13
+	source = mandelbulber2::https://github.com/buddhi1980/mandelbulber2/archive/2.22.tar.gz
+	sha256sums = f545254bc2254f8b6d1719a60071094a05322010c7dc68ed33ab40bf1684a984
 
 pkgname = mandelbulber2
 
