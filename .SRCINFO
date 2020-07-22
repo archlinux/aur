@@ -1,5 +1,5 @@
 pkgbase = vlang
-	pkgdesc = Simple, fast, safe language created for developing maintainable software
+	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software
 	pkgver = 0.1.28.1
 	pkgrel = 4
 	url = https://vlang.io
