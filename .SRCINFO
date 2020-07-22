@@ -1,13 +1,12 @@
 pkgbase = instantsettings
 	pkgdesc = simple settings app for instantOS
-	pkgver = 202004291911
+	pkgver = 202007171408
 	pkgrel = 1
 	url = https://github.com/instantOS/instantsettings
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python
-	depends = gtk3
+	depends = instantmenu
 	provides = instantsettings
 	conflicts = instantsettings
 	source = instantsettings::git+https://github.com/instantOS/instantsettings.git
