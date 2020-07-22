@@ -1,0 +1,12 @@
+[Unit]
+Description=BGPalerter
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+User=bgpalerter
+ExecStart=/usr/bin/bgpalerter -c /etc/bgpalerter/config.yaml
+
+[Install]
+WantedBy=multi-user.target
