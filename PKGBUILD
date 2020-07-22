@@ -3,10 +3,10 @@
 
 pkgname=kdeplasma-applets-yawp
 pkgver=0.4.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Colorful weather plasmoid"
 arch=(i686 x86_64)
-url="http://www.kde-look.org/content/show.php/yaWP+(Yet+Another+Weather+Plasmoid)?content=94106"
+url="https://sourceforge.net/projects/yawp/"
 conflicts=('yawp-weather-plasmoid')
 depends=('kdebase-workspace' 'gettext')
 makedepends=('cmake' 'automoc4')
