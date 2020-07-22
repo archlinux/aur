@@ -14,7 +14,7 @@ pkgbase = markmywords
 	source = discount.patch
 	source = appdata.patch
 	sha256sums = d7c0c09ef9dce842721a3e957336b77bd1ac157ef5866c56cc81ddc759fba4f0
-	sha256sums = e186cf58850bbe6780ba278be8f9aa8e5c08a7d0d01422a6a0745efb2417c77c
+	sha256sums = b62642e8034962ee726a44ad224e08b05b15f3790561c6fe6c21e96e447b096c
 	sha256sums = 3d1507a0f2c461eafbeff4750d4d95cf4d91e5bda12a95785a3fa156e9e7dbc0
 
 pkgname = markmywords
