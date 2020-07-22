@@ -1,7 +1,7 @@
 pkgbase = vlang
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software
 	pkgver = 0.1.28.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = vlang
 	optdepends = libfreetype.so
 	optdepends = libcurl.so
 	conflicts = v
+	conflicts = vlang-bin
 	conflicts = vlang-git
 	source = v-0.1.28.1.tar.gz::https://github.com/vlang/v/archive/0.1.28.1.tar.gz
 	source = git+https://github.com/vlang/vc

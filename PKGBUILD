@@ -3,7 +3,7 @@
 _pkgname=v
 pkgname=vlang
 pkgver=0.1.28.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
 makedepends=('git')
-conflicts=('v' 'vlang-git')
+conflicts=('v' 'vlang-bin' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
         'git+https://github.com/vlang/vc'
         'no-compile.patch')
