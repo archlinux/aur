@@ -1,0 +1,16 @@
+pkgbase = lightdm-guest-account
+	pkgdesc = LightDM shell script to enable guest account session.
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://github.com/canonical/lightdm
+	arch = any
+	license = GPL
+	optdepends = lightdm: display manager with guest-session support
+	conflicts = lightdm-guest
+	source = guest-account.sh
+	source = lightdm-autologin.sysusers
+	sha256sums = e66a6b385e2f365f70da8eab98b7c556939920b9fe980359b5f91c13d4d519cd
+	sha256sums = de4191ebe7bd07724e0257bb748de56f6c9fc49e76af9a756363bdfc9a66dfa2
+
+pkgname = lightdm-guest-account
+
