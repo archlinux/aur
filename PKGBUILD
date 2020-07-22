@@ -4,7 +4,7 @@
 _pkgname=augustus
 pkgname=$_pkgname-game-git
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
-pkgver=r2357.f83dee2f
+pkgver=r2389.c06d5257
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Keriew/augustus"
@@ -31,7 +31,7 @@ build() {
     cmake ..
     make
     cp ../res/${_pkgname}.desktop .
-    sed -i 's/Exec=julius/Exec=augustus-game/' ${_pkgname}.desktop
+    sed -i 's/Exec=augustus/Exec=augustus-game/' ${_pkgname}.desktop
 }
 
 package() {

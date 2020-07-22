@@ -1,6 +1,6 @@
 pkgbase = augustus-game-git
 	pkgdesc = An enhanced re-implementation of Caesar III (Original copy required)
-	pkgver = r2357.f83dee2f
+	pkgver = r2389.c06d5257
 	pkgrel = 1
 	url = https://github.com/Keriew/augustus
 	arch = i686
