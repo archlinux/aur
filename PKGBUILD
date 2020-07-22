@@ -2,19 +2,19 @@ pkgdesc="ROS - A WebSocket interface to rosbridge."
 url='https://wiki.ros.org/rosbridge_server'
 
 pkgname='ros-noetic-rosbridge-server'
-pkgver='0.11.3'
+pkgver='0.11.9'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-catkin
+    ros-noetic-catkin
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
-	${ros_makedepends[@]}
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
 )
 
 ros_depends=(
@@ -26,16 +26,15 @@ ros_depends=(
 )
 
 depends=(
-	${ros_depends[@]}
+    ${ros_depends[@]}
     python-autobahn
-    python-backports.ssl
-    python-tornado=4
+    python-tornado
     python-twisted
 )
 
 _dir="rosbridge_suite-${pkgver}/rosbridge_server"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RobotWebTools/rosbridge_suite/archive/${pkgver}.tar.gz")
-sha256sums=('5020616a6589f81fde0dfcd2835bbf4c43ff57bc39b76aefd5ed8f0916af87a5')
+sha256sums=('69b723a4ca43da1ea3f0c82ada120ff277d0a1cd736420681945ee82fbe13bd7')
 
 build() {
 	# Use ROS environment variables.
