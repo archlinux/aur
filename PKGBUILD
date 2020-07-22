@@ -3,7 +3,7 @@
 _pkgname=v
 pkgname=vlang
 pkgver=0.1.28.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -30,6 +30,7 @@ prepare() {
 build() {
     cd $_pkgname-$pkgver
     cc -std=gnu11 $CFLAGS -w -o v ../vc/v.c -lm $LDFLAGS
+    ./v install markdown
     ./v -prod self
 
     for tool in cmd/tools/*.v; do
