@@ -56,6 +56,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # Implement all packaged patches.
+  msg2 "Implementing custom kernel patches"
   while read patch; do
    echo "Applying $patch"
    git apply $patch || echo "ERROR: something went wrong with $patch. Advancing anyway."
