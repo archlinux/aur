@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gnome-hdate-git
 	pkgdesc = Show Hebrew date in gnome-shell panel
-	pkgver = 20180130
+	pkgver = b1b4f30
 	pkgrel = 1
 	url = https://github.com/amiad/gnome-hdate
 	arch = i686
