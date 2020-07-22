@@ -7,6 +7,7 @@ pkgdesc='A cryptographic protocol parser'
 arch=('any')
 url='https://gitlab.com/coroner/cryptoparser'
 license=('MPL2')
+provides=('python-cryptoparser')
 conflicts=('python-cryptoparser')
 depends=('python-attrs'
          'python-six')
