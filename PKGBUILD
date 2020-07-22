@@ -5,13 +5,13 @@
 
 pkgname=psychopy
 pkgver=2020.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
 url="http://www.psychopy.org"
 license=('GPL3')
 makedepends=(python-wheel python-setuptools)
-depends=(python-requests python-numpy python-scipy python-matplotlib python-pandas python-pillow python-glfw python-opengl python-sounddevice python-soundfile python-bidi python-arabic-reshaper python-future python-json-tricks python-pyosf python-xlrd python-openpyxl python-pyserial python-pyaml python-gevent python-msgpack python-msgpack-numpy python-psutil python-pytables python-pyzmq python-moviepy python-opencv-python python-gitlab python-gitpython python-astunparse python-esprima python-freetype-py python-javascripthon python-pyglet python-questplus python-imageio python-imageio-ffmpeg python-pyparallel python-pyqt5 python-wxpython python-distro python-psychtoolbox python-cryptography python-pyopenssl webkit2gtk)
+depends=(python-requests python-numpy python-scipy python-matplotlib python-pandas python-pillow python-glfw python-opengl python-sounddevice python-soundfile python-bidi python-arabic-reshaper python-future python-json-tricks python-pyosf python-xlrd python-openpyxl python-pyserial python-pyaml python-gevent python-msgpack python-msgpack-numpy python-psutil python-pytables python-pyzmq python-moviepy opencv python-gitlab python-gitpython python-astunparse python-esprima python-freetype-py python-javascripthon python-pyglet python-questplus python-imageio python-imageio-ffmpeg python-pyparallel python-pyqt5 python-wxpython python-distro python-psychtoolbox python-cryptography python-pyopenssl webkit2gtk)
 
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
