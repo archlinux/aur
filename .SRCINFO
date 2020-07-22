@@ -1,6 +1,6 @@
 pkgbase = perl-mojolicious
 	pkgdesc = Real-time web framework
-	pkgver = 8.55
+	pkgver = 8.57
 	pkgrel = 1
 	url = https://metacpan.org/release/Mojolicious
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = perl-mojolicious
 	license = GPL
 	depends = perl>=5.16.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.55.tar.gz
-	md5sums = e37322cfd5bd5647cc0efed3537c78ee
-	sha512sums = c4dd01110bdc4e8c850ec3bdc58e31ea1fbc8ec10ff6d338178f59b9c1ed1d5644f516cd593e6543f6866128d6dd40fb69c04fa0a229924f332b20f26365f9ea
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.57.tar.gz
+	md5sums = c5110e47f83a7fb0d6369ea12458652f
+	sha512sums = f3c6cabb20a16ad10f9b78d4c00eff36d55af8b1decc272a88eb82c238ab458241e438dd85a2b83cdd866f50149b775799e1212e3654ab74c7e0c863c106e1f1
 
 pkgname = perl-mojolicious
 
