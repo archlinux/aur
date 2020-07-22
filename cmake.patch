@@ -1,0 +1,11 @@
+--- FindOptiX.cmake.orig	2020-07-21 22:03:18.448748912 -0700
++++ FindOptiX.cmake.new	2020-07-21 22:03:36.353142082 -0700
+@@ -29,7 +29,7 @@
+ # Locate the OptiX distribution.  Search relative to the SDK first, then look in the system.
+ 
+ # Our initial guess will be within the SDK.
+-set(OptiX_INSTALL_DIR "${CMAKE_SOURCE_DIR}/../" CACHE PATH "Path to OptiX installed location.")
++set(OptiX_INSTALL_DIR "${CMAKE_SOURCE_DIR}/../../" CACHE PATH "Path to OptiX installed location.")
+ 
+ # The distribution contains only 64 bit libraries.  Error when we have been mis-configured.
+ if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
