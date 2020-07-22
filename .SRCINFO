@@ -1,7 +1,7 @@
 pkgbase = joycond-cemuhook-git
 	pkgdesc = Support for cemuhook's UDP protocol for joycond devices
 	pkgver = r26.e51f79c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joaorb64/joycond-cemuhook
 	arch = any
 	license = unknown
@@ -11,6 +11,7 @@ pkgbase = joycond-cemuhook-git
 	optdepends = nintendo-udev: Udev rules for switch controllers
 	conflicts = joycond-cemuhook
 	source = joycond-cemuhook::git+https://github.com/joaorb64/joycond-cemuhook.git
+	source = run.sh
 	sha512sums = SKIP
 
 pkgname = joycond-cemuhook-git

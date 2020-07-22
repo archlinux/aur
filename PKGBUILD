@@ -2,7 +2,7 @@
 _pkgname=joycond-cemuhook
 pkgname=${_pkgname}-git
 pkgver=r26.e51f79c
-pkgrel=2
+pkgrel=3
 pkgdesc="Support for cemuhook's UDP protocol for joycond devices"
 arch=("any")
 url="https://github.com/joaorb64/joycond-cemuhook"
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=("${_pkgname}")
 optdepends=('nintendo-udev: Udev rules for switch controllers')
 
-source=("${_pkgname}::git+https://github.com/joaorb64/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/joaorb64/${_pkgname}.git" "run.sh")
 sha512sums=('SKIP')
 
 
