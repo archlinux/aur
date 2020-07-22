@@ -1,14 +1,14 @@
 pkgbase = clipit
 	pkgdesc = Lightweight GTK+ clipboard manager (fork of Parcellite)
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/CristianHenzel/ClipIt/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
-	depends = gtk2
-	depends = libappindicator-gtk2
+	depends = gtk3
+	depends = libappindicator-gtk3
 	optdepends = xdotool: for automatic paste
 	source = ClipIt-1.4.5.tar.gz::https://github.com/CristianHenzel/ClipIt/archive/v1.4.5.tar.gz
 	md5sums = 4BDAC39A13EDBFF09D66959F94CCCAED
