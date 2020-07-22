@@ -11,12 +11,13 @@ pkgbase = seexpr1-2
 	makedepends = libpng
 	makedepends = cmake
 	makedepends = git
+	makedepends = sip=4.19.22
 	makedepends = python2-sip
 	depends = python2
 	depends = qt4
 	optdepends = python2-pyqt4: Editor support
-	provides = seexpr
-	conflicts = seexpr
+	provides = seexpr1=2.11
+	conflicts = seexpr1
 	source = git+https://github.com/wdas/SeExpr.git#tag=v2.11
 	source = build.patch
 	md5sums = SKIP

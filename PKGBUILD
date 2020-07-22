@@ -10,7 +10,7 @@ license=('custom:Apache')
 depends=('python2' 'qt4')
 optdepends=('python2-pyqt4: Editor support')
 #makedepends=('python2-pyqt4' 'doxygen' 'glew' 'libpng' 'cmake>=2.4.6' 'git' 'python-sip' 'boost' 'llvm')
-makedepends=('python2-pyqt4' 'doxygen' 'libpng' 'cmake' 'git' 'python2-sip')
+makedepends=('python2-pyqt4' 'doxygen' 'libpng' 'cmake' 'git' 'sip=4.19.22' 'python2-sip')
 provides=("${pkgname%-2}=${pkgver}")
 conflicts=("${pkgname%-2}")
 source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
