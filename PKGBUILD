@@ -1,32 +1,32 @@
 # Maintainer: Manuel Altalef <maltalef101@gmail.com>
 pkgname=st-maltalef-git
 _pkgname=st
-pkgver=0.8.2.r4.87a18b4
+pkgver=0.8.2.r5.077c55b
 pkgrel=1
-pkgdesc="maltalef101's build of Suckless' simple terminal (st)."
-arch=('x86_64' 'i386')
+epoch=
+pkgdesc="maltalef's build of Suckless' simple terminal (st)."
+arch=('x86_64' 'i686')
 url="https://github.com/maltalef101/st.git"
 license=('MIT')
-options=('zipman')
-depends=('libxft')
-makedepends=('make' 'ncurses' 'libxext')
-optdepends=('dmenu: feed urls to dmenu')
+options=(zipman)
+depends=('libxft' 'ttf-dejavu')
+makedepends=('ncurses' 'libxext' 'git')
+checkdepends=()
+optdepends=('dmenu: feed url to dmenu')
+provides=(st)
+conflicts=(st)
+replaces=()
+backup=()
+install=
+changelog=
 source=("git+$url")
+noextract=()
 md5sums=('SKIP')
-
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd $srcdir/${_pkgname}
-	# skip terminfo which conflicts with ncurses
-	sed -i '/tic /d' Makefile
+    printf "0.8.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -36,6 +36,10 @@ build() {
 
 package() {
 	cd "${_pkgname}"
+    mkdir -p ${pkgdir}/opt/${pkgname}
+    cp -rf * ${pkgdir}/opt/${pkgname}
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+
