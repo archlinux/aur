@@ -1,16 +1,16 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
-	pkgver = 1.4.2
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = https://www.backblaze.com/b2/cloud-storage.html
+	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-tqdm>=4.5.0
+	depends = python-b2sdk>=1.0.0
 	depends = python-six>=1.10
-	depends = python-b2sdk>=0.1.8
-	source = https://github.com/Backblaze/B2_Command_Line_Tool/archive/v1.4.2.tar.gz
-	sha512sums = 7ac6108fe3130c7fd465cf7e20f881efe8a9c85655c4dff4241c2b2861ee7543c7a8ddd195b974d190556595e857ed71f2cb1bdd6ca9a4567d336bd90c7ae2b2
+	depends = python-tqdm>=4.5.0
+	source = https://github.com/Backblaze/B2_Command_Line_Tool/archive/v2.0.2.tar.gz
+	sha512sums = 0e0ebf698f49de00cb530bd0928855058fc6d1f4aaeb0b7b1bbea475e6e3f2add8c7acd9a75baf348907646eedc199b9729e1777bfb4a4e63952782a74c749dc
 
 pkgname = backblaze-b2
 

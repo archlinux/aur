@@ -2,14 +2,15 @@
 
 pkgname=backblaze-b2
 _pkgname=B2_Command_Line_Tool
-pkgver=1.4.2
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
-url="https://www.backblaze.com/b2/cloud-storage.html"
+url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
-         'python-tqdm>=4.5.0'
+         'python-b2sdk>=1.0.0'
          'python-six>=1.10'
-         'python-b2sdk>=0.1.8'
+         'python-tqdm>=4.5.0'
+         'python-logfury'
         )
 optdepends=()
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
@@ -17,11 +18,11 @@ license=('MIT')
 arch=('any')
 
 source=("https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('7ac6108fe3130c7fd465cf7e20f881efe8a9c85655c4dff4241c2b2861ee7543c7a8ddd195b974d190556595e857ed71f2cb1bdd6ca9a4567d336bd90c7ae2b2')
+sha512sums=('0e0ebf698f49de00cb530bd0928855058fc6d1f4aaeb0b7b1bbea475e6e3f2add8c7acd9a75baf348907646eedc199b9729e1777bfb4a4e63952782a74c749dc')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-    sed -i -e 's:^\(arrow.*\),<0.12.1:\1:' requirements.txt
+
     python setup.py build
 }
 

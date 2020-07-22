@@ -1,5 +1,6 @@
 *.xz
 *.tar.gz
+*.tar.zst
 /src
 /pkg
 /b2
