@@ -1,10 +1,11 @@
 pkgbase = python-class-registry
 	pkgdesc = The intersection of the Registry and Factory patterns
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/todofixthis/class-registry
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/todofixthis/class-registry/archive/2.1.2.tar.gz
 	sha512sums = 365e8e526cdad3730f946e0cb111dcee88bb72305015551d7da4419d18f41d98b960620f03665b684de17d1c868d6723ebdda6960324982e8648e99606315426

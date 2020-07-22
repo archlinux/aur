@@ -2,10 +2,11 @@
 pkgname=python-class-registry
 _pkgname=class-registry
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The intersection of the Registry and Factory patterns'
 url='https://github.com/todofixthis/class-registry'
 depends=('python')
+makedepends=('python-setuptools')
 optdepends=()
 license=('MIT')
 arch=('any')
