@@ -4,7 +4,7 @@ pkgbase = silos
 	pkgrel = 1
 	url = https://github.com/intersimone999/pyqtws
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = xdg-utils
@@ -36,7 +36,7 @@ pkgbase = silos
 	optdepends = silo-whatsapp: Silo app for WhatsApp
 	optdepends = silo-wikipedia: Silo app for Wikipedia
 	optdepends = silo-youtube: Silo app for YouTube
-	source = git+https://github.com/intersimone999/pyqtws.git
+	source = git+https://github.com/intersimone999/pyqtws.git#tag=0.1.40
 	sha256sums = SKIP
 
 pkgname = silos
