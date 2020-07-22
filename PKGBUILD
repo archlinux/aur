@@ -17,7 +17,7 @@ prepare(){
 
 pkgver() {
     cd $pkgname
-    go run main.go --version
+    go run cmd/goclockify/main.go --version
 }
 
 build() {
