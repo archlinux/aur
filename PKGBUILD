@@ -1,19 +1,19 @@
 # Maintainer: Tab Fitts <tfitts [at] spryservers [dot] net>
 # Git: https://github.com/SpryServers/sprycloud-desktop
 # Uncomment, if you want the last release
-#_version=sprycloud_master
-_spryrel=2.6.2.spry.r1
+#_version=master
+_spryrel=2.6.5.spry.r1
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.6.2.spry.r1.r0.g5d5ee61da
+pkgver=2.6.5.spry.r1.r0.g072e15d1b
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
 license=('GPL2')
-depends=('qtkeychain' 'qt5-webkit' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils' 'openssl')
-optdepends=('nemo-python' 'python2-nautilus' 'python-sphinx' 'doxygen')
-makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'doxygen' 'qtkeychain' 'python-sphinx')
+depends=('qtkeychain' 'qt5-webkit' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils' 'openssl' 'qt5-svg' 'qtkeychain')
+optdepends=('nemo-python' 'python-nautilus' 'python-sphinx' 'doxygen')
+makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'doxygen' 'python-sphinx')
 provides=('sprycloud-client' 'sprycloud-client-git')
 conflicts=('sprycloud-client')
 install=${_name}.install
@@ -58,7 +58,7 @@ build() {
 }
 
 check() {
-  sed -Ei 's|Icon(\[.*\])?=sprycloud|Icon\1=spryCloud|g' "${srcdir}/${_name}/src/gui/sprycloud.desktop"
+  sed -Ei 's|Icon(\[.*\])?=sprycloud|Icon\1=spryCloud|g' "${srcdir}/${_name}/src/gui/net.spryservers.sprycloudclient.sprycloud.desktop"
 }
 
 package() {
