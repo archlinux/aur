@@ -3,8 +3,8 @@
 
 pkgname=lib32-gegl
 _pkgbase=gegl
-pkgver=0.4.22
-_commit=14096e785792ef42dbf08510e8093996c611828f  # tags/GEGL_0_4_22^0
+pkgver=0.4.24
+_commit=c3c87d5ac4eb7a6ed79b0be089fff3bd1850fc02 # tags/GEGL_0_4_24
 pkgrel=1
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('intltool' 'ruby' 'mesa' 'glu' 'exiv2' 'vala' 'gobject-introspectio
 source=("https://gitlab.gnome.org/GNOME/$_pkgbase/-/archive/$_commit/$_pkgbase-$_commit.tar.gz"
         "x86-linux-gnu"
         "pkgconf32")
-sha512sums=('ba89ca08feb83804b402098f84094c665ecbb08f3f39b6cbf3a5b65db4c31ad53cd1e7fc5623e8edb9361859da4a03efc9c94d8404714dd8bd51f1c3455c1b53'
+sha512sums=('6f4f4f58f772a2d4c38d52a68045ab6caf90cefa6ffcfcac27f9d0feae022cd70d30a1e40e98f0518503f70c908862a75e8e5f39ffcdd4b9c6d83884316c0b4f'
             'c90a2e8d8753d4474afbaa5f1def579b4fe9580904b25125e2f942fa722a6ed54340e467d2ddf60ab9d3aeeeb93f5f740502cafe9a1f52d55da3bd78baa3b5c5'
             'f704e11f3054312e35974194af845e00fdc795aa97e82d425fb52ff8e628702926551b583f0354f9f9e7eafeb71c7f348c288457ff19a8c4807c58f637d0d946')
 
