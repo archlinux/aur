@@ -33,13 +33,17 @@ package_python2-cryptoparser-git() {
   depends=('python2-attrs'
            'python2-six')
   cd python-cryptoparser
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cp -avR cryptoparser "${pkgdir}/usr/lib/python2.7/site-packages/"
 }
 
 package_python-cryptoparser-git() {
   depends=('python-attrs'
            'python-six')
   cd python-cryptoparser
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cp -avR cryptoparser "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/"
 }
 # vim:set ts=2 sw=2 et:
