@@ -1,7 +1,7 @@
 pkgbase = zectl
 	pkgdesc = ZFS Boot Environment manager.
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/johnramsden/zectl
 	arch = any
 	license = MIT
@@ -11,7 +11,9 @@ pkgbase = zectl
 	provides = zectl
 	conflicts = zectl-git
 	source = zectl-0.1.1.tar.gz::https://github.com/johnramsden/zectl/archive/v0.1.1.tar.gz
+	source = 0001-Remove-libspl-no-longer-needed.patch
 	sha256sums = 3103d955b990c9b67ba1c7b50b4c712a7edea605f37ff167c4f71a6756f13cf8
+	sha256sums = 6d826973996382d893df5958c6aeaed237aed4077b6e12bcbeb97e578d86c3ee
 
 pkgname = zectl
 
