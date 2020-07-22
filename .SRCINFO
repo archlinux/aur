@@ -1,18 +1,13 @@
 pkgbase = ibm-fonts
 	pkgdesc = IBM system and text mode bitmap fonts
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://farsil.github.io/ibmfonts/
-	install = ibm-fonts.install
 	arch = any
 	license = MIT, custom:CC BY-SA 4.0
-	depends = fontconfig
-	depends = xorg-font-utils
-	depends = xorg-fonts-encodings
+	makedepends = xorg-bdftopcf
 	source = https://github.com/farsil/ibmfonts/archive/0.1.tar.gz
-	source = ibm-fonts.install
 	sha256sums = 86f6d295561947f7e0a42e6e2bd405f63625095353468c6a6e752c0cba727dc9
-	sha256sums = 9c4ea0f53c980ea9cd51f22c6da014c4e63ec4e111e5403237061527db054880
 
 pkgname = ibm-fonts
 
