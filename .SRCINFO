@@ -1,6 +1,6 @@
 pkgbase = instantwallpaper
 	pkgdesc = wallpaper generator for instantOS
-	pkgver = 202004291830
+	pkgver = 202006121511
 	pkgrel = 1
 	url = https://github.com/instantOS/instantwallpaper
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = instantwallpaper
 	depends = libxft
 	depends = feh
 	depends = imagemagick
+	depends = nitrogen
 	provides = instantwallpaper
 	conflicts = instantwallpaper
 	source = instantwallpaper::git+https://github.com/instantOS/instantWALLPAPER.git
