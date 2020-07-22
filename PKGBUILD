@@ -2,7 +2,7 @@
 
 pkgname=zectl
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="ZFS Boot Environment manager."
 url="http://github.com/johnramsden/${pkgname}"
 arch=('any')
@@ -12,9 +12,18 @@ makedepends=('make' 'cmake')
 conflicts=("${pkgname}-git")
 provides=("zectl")
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}.tar.gz")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}.tar.gz"
+    "0001-Remove-libspl-no-longer-needed.patch"
+)
 
-sha256sums=('3103d955b990c9b67ba1c7b50b4c712a7edea605f37ff167c4f71a6756f13cf8')
+sha256sums=('3103d955b990c9b67ba1c7b50b4c712a7edea605f37ff167c4f71a6756f13cf8'
+            '6d826973996382d893df5958c6aeaed237aed4077b6e12bcbeb97e578d86c3ee')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch --forward --strip=1 --input="${srcdir}/0001-Remove-libspl-no-longer-needed.patch"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
