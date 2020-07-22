@@ -2,12 +2,13 @@
 
 pkgname='chromium-extension-privacybadger'
 pkgver=2020.6.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Block third party tracking in your browser"
 license=('GPL3')
 arch=('any')
 url="https://privacybadger.org/"
 depends=('chromium')
+changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/privacy_badger-$pkgver.crx")
 noextract=("$pkgname-$pkgver.crx")
 b2sums=('a433fee9ae6556a283acb9642d27cf1d80c52f35e2363982275bba1bbf210a12b63bc96cc00566299e6156cf56627fa1d8d4faf8468c245ec76c5bfbd18b3c1a')
