@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=8
-_clr=968
+_minor=9
+_clr=970
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33500
+_clear_version=33520
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=af2c68fd1e0f35149ef669e277ad3f07ced1e441ca1ecbdab0b99531d36a14a6
+_config_hash=21c4b92a61828dde798526abc9532d376d290e9fccbb25fa893e7777c411a75d
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -100,3 +100,6 @@ b2sums=('eb0cb20936e43a4f61ff5c9e2db113efaf1070293e28a50a744de0e24c8c3552461866b
 b2sums=('74d16bf92a7820c592da26269193ba46cf6f6b15d9ae5d5e5354de39922455e70051e6a247cb6c173ac74006a38a6928771b70c9f9f244a55c29366f69999b39'
         '9b5afeb63c14eff05952119223d9c757348edf119a2ae31220e7547db69e5b2e2e652c838eb23d8375058c477d855e7970d8d4aa003540ef0cf34f18f0c1bdb1'
         'e938cd5e4fa95971b0bd1b004c192ecc95fb38d67d23e726a24348fa5a6e340a5ae05b871d782d6077f05ecf9f36198148baa9f6c93ead3ea679d566228ba9e2')
+b2sums=('f4f7a2f4105e9a568fc963eb428b661a822e4979ccb05de2f096495305fb676874bb0ffbae65f30497a2d780dca0fe9c1dd7f5d0acb30afa47abdf4dfaa133f2'
+        '9559afc61810fd4093d884b5f87b9fdd71cc27a58c3cf0fa8061b5ce464a1b4891621d0e01723ce8dba949e4fef6c6bdb1f6968dd15e5bc225dcbf9349179dac'
+        'c864f462845860c5861c26fe127c1ccbe157d2a92a76e05f90b7866a2b383996b433bde95a8c2ee9c80fffb1ed37cf615493c7e53e20c7f29f02fd742426f412')
