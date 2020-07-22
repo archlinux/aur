@@ -5,7 +5,7 @@ pkgbase = airspyhf-git
 	url = http://www.airspy.com
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = BSD
 	makedepends = git
 	makedepends = cmake
 	depends = libusb>=1.0
