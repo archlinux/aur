@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=HDDCash Core
+Comment=Connect to the HDDCash P2P Network
+Comment[de]=Verbinde mit dem HDDCash peer-to-peer Netzwerk
+Comment[fr]=HDDCash, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=HDDCash, eşten eşe kriptografik sanal para birimi
+Exec=hdd-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/hddcash128.png
+MimeType=x-scheme-handler/xrphd;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=hddcash-qt

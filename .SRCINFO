@@ -1,0 +1,26 @@
+pkgbase = hddcash-qt
+	pkgver = 0.16.14
+	pkgrel = 1
+	url = https://hdd.cash
+	arch = x86_64
+	license = MIT
+	source = https://www.hdd.cash/download/hddcash-v0.16.14.0-f8ebe58-x86_64-linux-gnu.tar.gz
+	source = hddcash-qt.desktop
+	source = hdd-qt.sh
+	source = hddcash128.png
+	sha256sums = 86dd44cc85b63449cec7a8d3ff5cee2a341b2a9ed739139acf05caad5a0b66ca
+	sha256sums = 891294892851d7abc3c88abd135556e6ade57dc17ddbc727d60242f53faee1b2
+	sha256sums = 330272fe84790617c3ad2de842311c5e55473295cd77825150b7f425e51c80ca
+	sha256sums = 29e495e885f124c391f65473bc34190d0a151b4e2bd16a8f3e8c81904d33d6a0
+
+pkgname = hddcash-qt
+	pkgdesc = HDDCash is a peer-to-peer network based digital currency
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = miniupnpc
+	depends = libminiupnpc.so
+	depends = qrencode
+	depends = protobuf
+	depends = zeromq
+
