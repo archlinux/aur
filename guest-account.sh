@@ -3,24 +3,25 @@
 # Author: Martin Pitt <martin.pitt@ubuntu.com>
 # License: GPL v2 or later
 # modified by David D Lowe and Thomas Detoux
+# adapted for Arch Linux by Stefan Melmuk
 #
 # Setup user and temporary home directory for guest session.
 # If this succeeds, this script needs to print the username as the last line to
 # stdout.
 
-export TEXTDOMAINDIR=/usr/share/locale-langpack
+export TEXTDOMAINDIR=/usr/share/locale
 export TEXTDOMAIN=lightdm
 
 # set the system wide locale for gettext calls
-if [ -f /etc/default/locale ]; then
-  . /etc/default/locale
+if [ -f /etc/locale.conf ]; then
+  . /etc/locale.conf
   LANGUAGE=
   export LANG LANGUAGE
 fi
 
 is_system_user ()
 {
-  UID_MIN=$(cat /etc/login.defs | grep UID_MIN | awk '{print $2}')
+  UID_MIN=$(cat /etc/login.defs | grep '^UID_MIN' | awk '{print $2}')
   SYS_UID_MIN=$(cat /etc/login.defs | grep SYS_UID_MIN | awk '{print $2}')
   SYS_UID_MAX=$(cat /etc/login.defs | grep SYS_UID_MAX | awk '{print $2}')
 
@@ -45,7 +46,7 @@ add_account ()
 
   # if ${GUEST_USER} already exists, it must be a locked system account with no existing
   # home directory
-  if PWSTAT=$(passwd -S ${GUEST_USER}) 2>/dev/null; then
+  if PWSTAT=$(passwd -S ${GUEST_USER} 2>/dev/null); then
     if [ $(echo ${PWSTAT} | cut -f2 -d' ') != L ]; then
       echo "User account ${GUEST_USER} already exists and is not locked"
       exit 1
@@ -71,13 +72,17 @@ add_account ()
     fi
   else
     # does not exist, so create it
-    useradd --system --home-dir ${GUEST_HOME} --comment $(gettext "Guest") --user-group --shell /bin/bash ${GUEST_USER} || {
+    useradd --system \
+      --home-dir ${GUEST_HOME} \
+      --comment $(gettext "Guest") \
+      --user-group -G autologin \
+      --shell /bin/bash \
+    ${GUEST_USER} || {
       rm -rf ${GUEST_HOME}
       exit 1
     }
   fi
 
-  dist_gs=/usr/share/lightdm/guest-session
   site_gs=/etc/guest-session
 
   # create temporary home directory
