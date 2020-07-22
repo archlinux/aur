@@ -1,0 +1,18 @@
+pkgbase = instantsupport
+	pkgdesc = remote support session
+	pkgver = 9851542
+	pkgrel = 1
+	url = https://github.com/instantOS/instantSUPPORT
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = autossh
+	depends = tmux
+	provides = instantsupport
+	conflicts = instantsupport
+	source = instantsupport::git+https://github.com/instantOS/instantSUPPORT.git
+	sha256sums = SKIP
+
+pkgname = instantsupport
+
