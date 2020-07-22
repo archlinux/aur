@@ -19,7 +19,7 @@ provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git'
              'libpipewire02' 'clang' 'lld' 'gn-git' 'java-runtime-headless'
-             'python2-setuptools')
+             'python2-setuptools' 'python2-xcb-proto')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
