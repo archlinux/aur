@@ -1,0 +1,32 @@
+pkgbase = beancount-git
+	pkgdesc = Double-Entry Accounting from Text Input
+	pkgver = 2.3.0.r173.g13746c29
+	pkgrel = 1
+	url = http://furius.ca/beancount/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = python-nose
+	makedepends = make
+	depends = python>=3.5
+	depends = mpdecimal
+	depends = python-ply
+	depends = python-dateutil
+	depends = python-magic-ahupp
+	depends = python-beautifulsoup4
+	depends = python-chardet
+	depends = python-bottle
+	depends = python-lxml
+	depends = python-google-api-python-client
+	provides = ledgerhub-hg
+	provides = beancount=2.3.0
+	conflicts = beancount
+	conflicts = beancount-hg
+	replaces = ledgerhub-hg
+	replaces = beancount-hg
+	source = beancount-git::git+https://github.com/beancount/beancount/
+	sha512sums = SKIP
+
+pkgname = beancount-git
+
