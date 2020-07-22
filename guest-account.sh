@@ -92,59 +92,17 @@ add_account ()
   }
 
   if [ -d ${site_gs}/skel ] && [ "$(ls -A ${site_gs}/skel)" ]; then
-    # Only perform union-mounting if BindFS is available
-    if [ -x /usr/bin/bindfs ]; then
-      bindfs_mount=true
-
-      # Try OverlayFS first
-      if modinfo -n overlay >/dev/null 2>&1; then
-        mkdir ${GUEST_HOME}/upper ${GUEST_HOME}/work
-        chown ${GUEST_USER}:${GUEST_USER} ${GUEST_HOME}/upper ${GUEST_HOME}/work
-
-        mount -t overlay -o lowerdir=${dist_gs}/skel:${site_gs}/skel,upperdir=${GUEST_HOME}/upper,workdir=${GUEST_HOME}/work overlay ${GUEST_HOME} || {
-          umount ${GUEST_HOME}
-          rm -rf ${GUEST_HOME}
-          exit 1
-        }
-      # If OverlayFS is not available, try AuFS
-      elif [ -x /sbin/mount.aufs ]; then
-        mount -t aufs -o br=${GUEST_HOME}:${dist_gs}/skel:${site_gs}/skel none ${GUEST_HOME} || {
-          umount ${GUEST_HOME}
-          rm -rf ${GUEST_HOME}
-          exit 1
-        }
-      # If none of them is available, fall back to copy over
-      else
-        cp -rT ${site_gs}/skel/ ${GUEST_HOME}
-        cp -rT ${dist_gs}/skel/ ${GUEST_HOME}
-        chown -R ${GUEST_USER}:${GUEST_USER} ${GUEST_HOME}
-        bindfs_mount=false
-      fi
-
-      if ${bindfs_mount}; then
-        # Wrap ${GUEST_HOME} in a BindFS mount, so that
-        # ${GUEST_USER} will be seen as the owner of ${GUEST_HOME}'s contents.
-        bindfs -u ${GUEST_USER} -g ${GUEST_USER} ${GUEST_HOME} ${GUEST_HOME} || {
-          umount ${GUEST_HOME} # union mount
-          umount ${GUEST_HOME} # tmpfs mount
-          rm -rf ${GUEST_HOME}
-          exit 1
-        }
-      fi
-    # If BindFS is not available, just fall back to copy over
-    else
-      cp -rT ${site_gs}/skel/ ${GUEST_HOME}
-      cp -rT ${dist_gs}/skel/ ${GUEST_HOME}
-      chown -R ${GUEST_USER}:${GUEST_USER} ${GUEST_HOME}
-    fi
+    cp -rT ${site_gs}/skel/ ${GUEST_HOME}
+    chown -R ${GUEST_USER}:${GUEST_USER} ${GUEST_HOME}
   else
     cp -rT /etc/skel/ ${GUEST_HOME}
-    cp -rT ${dist_gs}/skel/ ${GUEST_HOME}
     chown -R ${GUEST_USER}:${GUEST_USER} ${GUEST_HOME}
   fi
 
   # setup session
-  su ${GUEST_USER} -c "env HOME=${GUEST_HOME} site_gs=${site_gs} ${dist_gs}/setup.sh"
+  if [ -f ${site_gs}/setup.sh ]; then
+    su ${GUEST_USER} -c "env HOME=${GUEST_HOME} site_gs=${site_gs} ${site_gs}/setup.sh"
+  fi
 
   # set possible local guest session preferences
   source_local_prefs() {
@@ -192,8 +150,6 @@ remove_account ()
   if [ ${GUEST_HOME} = ${GUEST_HOME#/tmp/} ]; then
     echo "Warning: home directory ${GUEST_HOME} is not in /tmp/. It won't be removed."
   else
-    umount ${GUEST_HOME} || umount -l ${GUEST_HOME} || true # BindFS mount
-    umount ${GUEST_HOME} || umount -l ${GUEST_HOME} || true # union mount
     umount ${GUEST_HOME} || umount -l ${GUEST_HOME} || true # tmpfs mount
     rm -rf ${GUEST_HOME}
   fi
