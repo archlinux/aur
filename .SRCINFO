@@ -1,0 +1,17 @@
+pkgbase = depthcharge
+	pkgdesc = toolkit for security research and jailbreaking of platforms using U-Boot
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://depthcharge.readthedocs.io/en/latest/scripts/index.html
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pyserial
+	depends = python-tqdm
+	provides = depthcharge
+	options = !emptydirs
+	source = https://github.com/nccgroup/depthcharge/archive/0.1.1.tar.gz
+	sha512sums = 5eab7a26f51dcd2b5aef7054c3eaaaffab1d68cf2c58354c84c87019ea55e90c61ae910340d0638c25cf57269410803692c56002dd648626011ff2132e8b01a5
+
+pkgname = depthcharge
+
