@@ -1,0 +1,21 @@
+pkgbase = st-maltalef-git
+	pkgdesc = maltalef101's build of Suckless' simple terminal (st).
+	pkgver = 0.8.2.r4.87a18b4
+	pkgrel = 1
+	url = https://github.com/maltalef101/st.git
+	arch = x86_64
+	arch = i386
+	license = MIT
+	makedepends = make
+	makedepends = ncurses
+	makedepends = libxext
+	depends = libxft
+	optdepends = dmenu: feed urls to dmenu
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git+https://github.com/maltalef101/st.git
+	md5sums = SKIP
+
+pkgname = st-maltalef-git
+
