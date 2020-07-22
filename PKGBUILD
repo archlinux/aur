@@ -2,8 +2,8 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=1.5.0
-pkgrel=4
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
 url="https://github.com/dalibo/pg_activity/"
@@ -12,7 +12,7 @@ depends=('python' 'python-psutil' 'python-psycopg2')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.zip")
-md5sums=('7d7775efec164df39431d6597f512d2f')
+md5sums=('9f50e1651410ba378b6e9bda6985d14f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
