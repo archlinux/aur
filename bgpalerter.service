@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 Restart=on-failure
 User=bgpalerter
-ExecStart=/usr/bin/bgpalerter -c /etc/bgpalerter/config.yaml
+ExecStart=/opt/bgpalerter/bgpalerter
+WorkingDirectoy=/opt/bgpalerter
 
 [Install]
 WantedBy=multi-user.target
