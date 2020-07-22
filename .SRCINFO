@@ -1,6 +1,6 @@
 pkgbase = instantwm
 	pkgdesc = window manager for instantOS
-	pkgver = 202006050953
+	pkgver = 202005271719
 	pkgrel = 1
 	url = https://github.com/instantos/instantwm
 	arch = any
@@ -9,8 +9,6 @@ pkgbase = instantwm
 	depends = libx11
 	depends = libxinerama
 	depends = libxft
-	depends = instantutils
-	depends = instantassist
 	provides = instantwm
 	conflicts = instantwm
 	options = zipman

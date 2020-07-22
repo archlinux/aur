@@ -1,5 +1,4 @@
-# Maintainer: cyka3702 <swc.rainier@gmail.com>
-# Contributor: paperbenni <paperbenni@gmail.com>
+# Maintainer: paperbenni <paperbenni@gmail.com>
 if [ -e /tmp/instanttheme ]; then
   echo "theme override found"
   THEME=$(cat /tmp/instanttheme)
@@ -8,15 +7,16 @@ else
 fi
 
 pkgname=instantwm
+
 _pkgname=instantwm-git
-pkgver=202006050953
+pkgver=202005271719
 pkgrel=1
 pkgdesc="window manager for instantOS"
 url="https://github.com/instantos/instantwm"
 arch=('any')
 license=('MIT')
 options=(zipman)
-depends=('libx11' 'libxinerama' 'libxft' 'instantutils' 'instantassist')
+depends=('libx11' 'libxinerama' 'libxft')
 makedepends=('git')
 provides=('instantwm')
 conflicts=('instantwm')
@@ -31,10 +31,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  if [ -e /tmp/instanttheme ]; then
-    echo "theme override found"
-    ./theme.sh "$(cat /tmp/instanttheme)"
-  fi
 }
 
 build() {
