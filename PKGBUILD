@@ -1,4 +1,5 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=orocos-kdl
 pkgver=1.4.0
@@ -7,21 +8,22 @@ pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and co
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/kdl"
 license=('GPL')
-depends=('eigen3')
-makedepends=('cmake')
-source=(https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz)
-sha512sums=('7156465e2aff02f472933617512069355836a03a02d4587cfe03c1b1d667a9762a4e3ed6e055b2a44f1fce1b6746179203c7204389626a7b458dcab1b28930d8')
+depends=(eigen)
+makedepends=(cmake)
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz")
+sha256sums=('05b93e759923684dc07433ccae1e476d158d89b3c2be5079c20062406da7b4dd')
+
+_dir=orocos_kinematics_dynamics
+_pkgname=orocos_kdl
 
 build() {
-  cd "${srcdir}/orocos_kinematics_dynamics-${pkgver}/orocos_kdl"
+  cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
-  cd "${srcdir}/orocos_kinematics_dynamics-${pkgver}/orocos_kdl"
-	
+  cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
 }
-
