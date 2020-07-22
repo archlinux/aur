@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Logan Magee <mageelog@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: whoami <whoami@systemli.org>
 # Contributor: Jefferson González <jgmdev@gmail.com>
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
