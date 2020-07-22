@@ -6,7 +6,7 @@ pkgrel=1
 commit=8e6dd60
 arch=('x86_64')
 url="https://xrphd.org"
-license=('unknown')
+license=('MIT')
 source=("https://xrphd.org/public/wallets/xhd-v$pkgver.0-$commit-x86_64-linux-gnu.tar.gz"
         "xrphd-qt.desktop"
         "xhd-qt.sh"
