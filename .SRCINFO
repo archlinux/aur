@@ -1,6 +1,6 @@
 pkgbase = upbge-git
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine
-	pkgver = 101471.6e94f8ab7d4
+	pkgver = 101552.3f20e80b755
 	pkgrel = 1
 	url = https://upbge.org/
 	install = upbge.install
