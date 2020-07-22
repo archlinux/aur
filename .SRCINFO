@@ -1,7 +1,7 @@
 pkgbase = rocblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocblas.readthedocs.io/en/latest
 	arch = x86_64
 	license = MIT
@@ -17,8 +17,8 @@ pkgbase = rocblas
 	options = !strip
 	source = rocblas-3.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-3.5.0.tar.gz
 	source = rocm-tensile-3.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-3.5.0.tar.gz
-	sha256sums = 3e372c7c0504c0f18b5e69989083e68a45131e675912082961a736cb3b1222fb
-	sha256sums = 1afd2e28065849dc418efdc79fc3216208963cabc0c4efb870440b1c051a0f20
+	sha256sums = 8560fabef7f13e8d67da997de2295399f6ec595edfd77e452978c140d5f936f0
+	sha256sums = 71eb3eed6625b08a4cedb539dd9b596e3d4cc82a1a8063d37d94c0765b6f8257
 
 pkgname = rocblas
 
