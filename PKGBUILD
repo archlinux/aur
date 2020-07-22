@@ -6,7 +6,7 @@ url='https://wiki.ros.org/cv_bridge'
 pkgname='ros-noetic-cv-bridge'
 pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -17,13 +17,12 @@ ros_makedepends=(
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 	boost
 	opencv
 	python
-    python-opencv-python
     python-numpy
 )
 
@@ -37,7 +36,6 @@ depends=(
 	boost
     opencv
 	python
-	python-opencv-python
 )
 
 _dir="vision_opencv-${pkgver}/cv_bridge"
