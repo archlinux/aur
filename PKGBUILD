@@ -3,7 +3,7 @@
 
 pkgname=twinejs-standalone
 pkgver=2.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source tool for telling interactive, nonlinear stories"
 arch=('x86_64')
 url="http://twinery.org/"
@@ -14,7 +14,7 @@ depends=('libxss'
 	 'nss'
 	 'gtk3')
 
-source=("https://github.com/klembot/twinejs/releases/download/${pkgver}/twine_${pkgver}_linux.zip"
+source=("https://github.com/klembot/twinejs/releases/download/${pkgver}/twine_${pkgver}_linux64.zip"
         "http://twinery.org/homepage/img/logo.svg"
         "twinejs.desktop")
 
@@ -23,11 +23,11 @@ md5sums=('e6cd71c3a0f24ea5725bc9f666a65d72'
          '71705539c71923a8464240a8cb3e567f')
 
 options=(!strip)
-noextract=(twine_${pkgver}_linux.zip)
+noextract=(twine_${pkgver}_linux64.zip)
 
 prepare() {
-	mkdir -p ${pkgname}_${pkgver}_linux
-	bsdtar -xf twine_${pkgver}_linux.zip -C "${pkgname}_${pkgver}_linux"
+	mkdir -p ${pkgname}_${pkgver}_linux64
+	bsdtar -xf twine_${pkgver}_linux64.zip -C "${pkgname}_${pkgver}_linux64"
 }
 
 package() {
@@ -35,8 +35,8 @@ package() {
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/opt"
-        cp -r "${pkgname}_${pkgver}_linux" "$pkgdir/opt"
-	cp twinejs.desktop "$pkgdir/usr/share/applications"
-	cp logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/twinejs.svg"
-	ln -s "/opt/${pkgname}_${pkgver}_linux/twine" "$pkgdir/usr/bin/Twine"
+	find "${pkgname}_${pkgver}_linux64" -type f -exec install -Dm 755 "{}" "$pkgdir/opt/{}" \;
+	install twinejs.desktop "$pkgdir/usr/share/applications"
+	install logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/twinejs.svg"
+	ln -s "/opt/${pkgname}_${pkgver}_linux64/twine" "$pkgdir/usr/bin/Twine"
 }
