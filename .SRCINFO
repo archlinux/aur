@@ -1,5 +1,5 @@
 pkgbase = foot
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = foot
 	depends = libxkbcommon
 	depends = wayland
 	depends = pixman
-	source = https://codeberg.org/dnkl/foot/archive/1.4.0.tar.gz
+	source = https://codeberg.org/dnkl/foot/archive/1.4.1.tar.gz
 	source = https://codeberg.org/dnkl/tllist/archive/1.0.1.tar.gz
 	source = https://codeberg.org/dnkl/fcft/archive/2.2.2.tar.gz
-	sha256sums = a3685b865ffb1541d862a50acb7cc7317c9264541163512014c85b520af20a20
+	sha256sums = 548b775c0832db9fd2838132c9ef18a3a7f1cb1ed63ac9cd82ba434b432655e8
 	sha256sums = baa94259ee6a8cc9114cf59cf58395a7f6537d36909e8bed036f0da7457b6a0e
 	sha256sums = 9bc54b5ccb637f6c8270697c886e3e86cb4ffb6042b1d4a32eaaee854fb0837d
 
