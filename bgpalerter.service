@@ -7,7 +7,7 @@ Type=simple
 Restart=on-failure
 User=bgpalerter
 ExecStart=/opt/bgpalerter/bgpalerter
-WorkingDirectoy=/opt/bgpalerter
+WorkingDirectory=/opt/bgpalerter
 
 [Install]
 WantedBy=multi-user.target
