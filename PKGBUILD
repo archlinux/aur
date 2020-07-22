@@ -2,14 +2,14 @@
 
 _pkgname=material-kwin-decoration
 pkgname=${_pkgname}-git
-pkgver=v5+3+gb6c5cdd
+pkgver=v5+9+gc296eeb
 pkgrel=1
 pkgdesc="Material-ish window decoration theme for KWin, with LIM support."
 url='https://github.com/Zren/material-decoration'
 arch=('x86_64')
 license=('GPL')
 depends=('kdecoration')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
@@ -20,24 +20,16 @@ pkgver() {
   git describe --tags --long | sed 's/-/+/g'
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p build
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}/build"
-
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake \
+    -S "${srcdir}/${_pkgname}" \
+    -B "build" \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
-  make
+  make -C "build"
 }
 
 
 package() {
-  cd "${srcdir}/${_pkgname}/build"
-  make -C "$srcdir/$_pkgname/build" DESTDIR="$pkgdir" install
+  make -C "build" DESTDIR="$pkgdir" install
 }
