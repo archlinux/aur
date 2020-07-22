@@ -1,5 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
+pkgbase=python-cryptolyzer
 pkgname=('python2-cryptolyzer' 'python-cryptolyzer')
 pkgver=0.2.0
 pkgrel=1

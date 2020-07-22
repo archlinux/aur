@@ -1,4 +1,4 @@
-pkgbase = python2-cryptolyzer
+pkgbase = python-cryptolyzer
 	pkgdesc = Fast and flexible server cryptographic (TLS/SSL) settings analyzer library for Python 2.7/3.4+ with CLI
 	pkgver = 0.2.0
 	pkgrel = 1
