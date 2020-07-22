@@ -1,4 +1,4 @@
-From 0fe1b29d2826794bfd880944496b433c80da0173 Mon Sep 17 00:00:00 2001
+From d14a96d0a5e05d99c5fe083c49d33197c215dbe1 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Wed, 15 Jul 2020 22:42:07 +0200
 Subject: [PATCH 4/5] virt: vbox: Add support for the new
@@ -135,18 +135,16 @@ Date:   Thu Jul 9 14:08:51 2020 +0200
     Reviewed-by: Arnd Bergmann <arnd@arndb.de>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 ---
- drivers/virt/vboxguest/vboxguest_core.c  | 272 +++++++++++++++++++----
- drivers/virt/vboxguest/vboxguest_core.h  |  38 +++-
- drivers/virt/vboxguest/vboxguest_linux.c |   3 +-
+ drivers/virt/vboxguest/vboxguest_core.c  | 266 +++++++++++++++++++----
+ drivers/virt/vboxguest/vboxguest_core.h  |  23 +-
  drivers/virt/vboxguest/vboxguest_utils.c |   1 +
- drivers/virt/vboxguest/vmmdev.h          |   2 +
  include/linux/vbox_utils.h               |   1 +
  include/uapi/linux/vbox_vmmdev_types.h   |   3 +
- include/uapi/linux/vboxguest.h           |  28 ++-
- 8 files changed, 294 insertions(+), 54 deletions(-)
+ include/uapi/linux/vboxguest.h           |  24 ++
+ 6 files changed, 269 insertions(+), 49 deletions(-)
 
 diff --git a/drivers/virt/vboxguest/vboxguest_core.c b/drivers/virt/vboxguest/vboxguest_core.c
-index b690a8a4bf9e..0b43efddea22 100644
+index 18ebd7a6af98..0b43efddea22 100644
 --- a/drivers/virt/vboxguest/vboxguest_core.c
 +++ b/drivers/virt/vboxguest/vboxguest_core.c
 @@ -559,7 +559,7 @@ static int vbg_reset_host_event_filter(struct vbg_dev *gdev,
@@ -488,15 +486,6 @@ index b690a8a4bf9e..0b43efddea22 100644
  static int vbg_ioctl_change_guest_capabilities(struct vbg_dev *gdev,
  	     struct vbg_session *session, struct vbg_ioctl_set_guest_caps *caps)
  {
-@@ -1444,7 +1618,7 @@ static int vbg_ioctl_change_guest_capabilities(struct vbg_dev *gdev,
- 	or_mask = caps->u.in.or_mask;
- 	not_mask = caps->u.in.not_mask;
- 
--	if ((or_mask | not_mask) & ~VMMDEV_EVENT_VALID_EVENT_MASK)
-+	if ((or_mask | not_mask) & ~VMMDEV_GUEST_CAPABILITIES_MASK)
- 		return -EINVAL;
- 
- 	ret = vbg_set_session_capabilities(gdev, session, or_mask, not_mask,
 @@ -1452,7 +1626,7 @@ static int vbg_ioctl_change_guest_capabilities(struct vbg_dev *gdev,
  	if (ret)
  		return ret;
@@ -506,17 +495,7 @@ index b690a8a4bf9e..0b43efddea22 100644
  	caps->u.out.global_caps = gdev->guest_caps_host;
  
  	return 0;
-@@ -1520,7 +1694,8 @@ int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
- 
- 	/* For VMMDEV_REQUEST hdr->type != VBG_IOCTL_HDR_TYPE_DEFAULT */
- 	if (req_no_size == VBG_IOCTL_VMMDEV_REQUEST(0) ||
--	    req == VBG_IOCTL_VMMDEV_REQUEST_BIG)
-+	    req == VBG_IOCTL_VMMDEV_REQUEST_BIG ||
-+	    req == VBG_IOCTL_VMMDEV_REQUEST_BIG_ALT)
- 		return vbg_ioctl_vmmrequest(gdev, session, data);
- 
- 	if (hdr->type != VBG_IOCTL_HDR_TYPE_DEFAULT)
-@@ -1540,6 +1715,8 @@ int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
+@@ -1541,6 +1715,8 @@ int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
  		return vbg_ioctl_interrupt_all_wait_events(gdev, session, data);
  	case VBG_IOCTL_CHANGE_FILTER_MASK:
  		return vbg_ioctl_change_filter_mask(gdev, session, data);
@@ -525,11 +504,7 @@ index b690a8a4bf9e..0b43efddea22 100644
  	case VBG_IOCTL_CHANGE_GUEST_CAPABILITIES:
  		return vbg_ioctl_change_guest_capabilities(gdev, session, data);
  	case VBG_IOCTL_CHECK_BALLOON:
-@@ -1558,10 +1735,11 @@ int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
- 	case VBG_IOCTL_HGCM_CALL(0):
- 		return vbg_ioctl_hgcm_call(gdev, session, f32bit, data);
- 	case VBG_IOCTL_LOG(0):
-+	case VBG_IOCTL_LOG_ALT(0):
+@@ -1563,7 +1739,7 @@ int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
  		return vbg_ioctl_log(data);
  	}
  
@@ -539,32 +514,10 @@ index b690a8a4bf9e..0b43efddea22 100644
  }
  
 diff --git a/drivers/virt/vboxguest/vboxguest_core.h b/drivers/virt/vboxguest/vboxguest_core.h
-index 4188c12b839f..ab4bf64e2cec 100644
+index 77c3a9c8255d..ab4bf64e2cec 100644
 --- a/drivers/virt/vboxguest/vboxguest_core.h
 +++ b/drivers/virt/vboxguest/vboxguest_core.h
-@@ -15,6 +15,21 @@
- #include <linux/vboxguest.h>
- #include "vmmdev.h"
- 
-+/*
-+ * The mainline kernel version (this version) of the vboxguest module
-+ * contained a bug where it defined VBGL_IOCTL_VMMDEV_REQUEST_BIG and
-+ * VBGL_IOCTL_LOG using _IOC(_IOC_READ | _IOC_WRITE, 'V', ...) instead
-+ * of _IO(V, ...) as the out of tree VirtualBox upstream version does.
-+ *
-+ * These _ALT definitions keep compatibility with the wrong defines the
-+ * mainline kernel version used for a while.
-+ * Note the VirtualBox userspace bits have always been built against
-+ * VirtualBox upstream's headers, so this is likely not necessary. But
-+ * we must never break our ABI so we keep these around to be 100% sure.
-+ */
-+#define VBG_IOCTL_VMMDEV_REQUEST_BIG_ALT _IOC(_IOC_READ | _IOC_WRITE, 'V', 3, 0)
-+#define VBG_IOCTL_LOG_ALT(s)             _IOC(_IOC_READ | _IOC_WRITE, 'V', 9, s)
-+
- struct vbg_session;
- 
- /** VBox guest memory balloon. */
-@@ -103,11 +118,21 @@ struct vbg_dev {
+@@ -118,11 +118,21 @@ struct vbg_dev {
  	u32 event_filter_host;
  
  	/**
@@ -588,7 +541,7 @@ index 4188c12b839f..ab4bf64e2cec 100644
  	/**
  	 * The guest capabilities last reported to the host (or UINT32_MAX).
  	 * Protected by session_mutex.
-@@ -149,11 +174,16 @@ struct vbg_session {
+@@ -164,11 +174,16 @@ struct vbg_session {
  	 */
  	u32 event_filter;
  	/**
@@ -607,20 +560,6 @@ index 4188c12b839f..ab4bf64e2cec 100644
  	/** VMMDEV_REQUESTOR_* flags */
  	u32 requestor;
  	/** Set on CANCEL_ALL_WAITEVENTS, protected by vbg_devevent_spinlock. */
-diff --git a/drivers/virt/vboxguest/vboxguest_linux.c b/drivers/virt/vboxguest/vboxguest_linux.c
-index 6e8c0f1c1056..32c2c52f7e84 100644
---- a/drivers/virt/vboxguest/vboxguest_linux.c
-+++ b/drivers/virt/vboxguest/vboxguest_linux.c
-@@ -131,7 +131,8 @@ static long vbg_misc_device_ioctl(struct file *filp, unsigned int req,
- 	 * the need for a bounce-buffer and another copy later on.
- 	 */
- 	is_vmmdev_req = (req & ~IOCSIZE_MASK) == VBG_IOCTL_VMMDEV_REQUEST(0) ||
--			 req == VBG_IOCTL_VMMDEV_REQUEST_BIG;
-+			 req == VBG_IOCTL_VMMDEV_REQUEST_BIG ||
-+			 req == VBG_IOCTL_VMMDEV_REQUEST_BIG_ALT;
- 
- 	if (is_vmmdev_req)
- 		buf = vbg_req_alloc(size, VBG_IOCTL_HDR_TYPE_DEFAULT,
 diff --git a/drivers/virt/vboxguest/vboxguest_utils.c b/drivers/virt/vboxguest/vboxguest_utils.c
 index 7396187ee32a..ea05af41ec69 100644
 --- a/drivers/virt/vboxguest/vboxguest_utils.c
@@ -633,19 +572,6 @@ index 7396187ee32a..ea05af41ec69 100644
  #if defined(DEBUG) && !defined(CONFIG_DYNAMIC_DEBUG)
  VBG_LOG(vbg_debug, pr_debug);
  #endif
-diff --git a/drivers/virt/vboxguest/vmmdev.h b/drivers/virt/vboxguest/vmmdev.h
-index 6337b8d75d96..21f408120e3f 100644
---- a/drivers/virt/vboxguest/vmmdev.h
-+++ b/drivers/virt/vboxguest/vmmdev.h
-@@ -206,6 +206,8 @@ VMMDEV_ASSERT_SIZE(vmmdev_mask, 24 + 8);
-  * not.
-  */
- #define VMMDEV_GUEST_SUPPORTS_GRAPHICS                      BIT(2)
-+/* The mask of valid capabilities, for sanity checking. */
-+#define VMMDEV_GUEST_CAPABILITIES_MASK                      0x00000007U
- 
- /** struct vmmdev_hypervisorinfo - Hypervisor info structure. */
- struct vmmdev_hypervisorinfo {
 diff --git a/include/linux/vbox_utils.h b/include/linux/vbox_utils.h
 index ff56c443180c..db8a7d118093 100644
 --- a/include/linux/vbox_utils.h
@@ -680,27 +606,9 @@ index c27289fd619a..f8a8d6b3c521 100644
  	VMMDEVREQ_SIZEHACK                     = 0x7fffffff
  };
 diff --git a/include/uapi/linux/vboxguest.h b/include/uapi/linux/vboxguest.h
-index 9cec58a6a5ea..15125f6ec60d 100644
+index f79d7abe27db..15125f6ec60d 100644
 --- a/include/uapi/linux/vboxguest.h
 +++ b/include/uapi/linux/vboxguest.h
-@@ -103,7 +103,7 @@ VMMDEV_ASSERT_SIZE(vbg_ioctl_driver_version_info, 24 + 20);
- 
- 
- /* IOCTL to perform a VMM Device request larger then 1KB. */
--#define VBG_IOCTL_VMMDEV_REQUEST_BIG	_IOC(_IOC_READ | _IOC_WRITE, 'V', 3, 0)
-+#define VBG_IOCTL_VMMDEV_REQUEST_BIG	_IO('V', 3)
- 
- 
- /** VBG_IOCTL_HGCM_CONNECT data structure. */
-@@ -198,7 +198,7 @@ struct vbg_ioctl_log {
- 	} u;
- };
- 
--#define VBG_IOCTL_LOG(s)		_IOC(_IOC_READ | _IOC_WRITE, 'V', 9, s)
-+#define VBG_IOCTL_LOG(s)		_IO('V', 9)
- 
- 
- /** VBG_IOCTL_WAIT_FOR_EVENTS data structure. */
 @@ -257,6 +257,30 @@ VMMDEV_ASSERT_SIZE(vbg_ioctl_change_filter, 24 + 8);
  	_IOWR('V', 12, struct vbg_ioctl_change_filter)
  

@@ -1,4 +1,4 @@
-From b2fd0d69f3b155b0c575dd540ad354e4b5323034 Mon Sep 17 00:00:00 2001
+From 3639fafc8d7ebd9bdb0365c54fdb57745c47f264 Mon Sep 17 00:00:00 2001
 From: Alessio Bonfiglio <alessio.bonfiglio@mail.polimi.it>
 Date: Thu, 2 Jul 2020 17:05:52 +0200
 Subject: [PATCH 3/5] iwlwifi: Make some Killer Wireless-AC 1550 cards working
