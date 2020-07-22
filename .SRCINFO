@@ -1,6 +1,6 @@
 pkgbase = gomd-git
 	pkgdesc = Quick webserver displaying formatted markdown files
-	pkgver = 1.2.0.9fcb235
+	pkgver = 1.3.0.6de7303
 	pkgrel = 1
 	url = https://github.com/wojciechkepka/gomd
 	arch = x86_64
