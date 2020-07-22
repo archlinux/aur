@@ -1,6 +1,6 @@
 pkgbase = btdex-git
 	pkgdesc = Decentralized exchange system running on the Burst blockchain
-	pkgver = v0.1.21.r0.g7cfa37a
+	pkgver = v0.1.21.r101.g1ef37cd
 	pkgrel = 1
 	url = https://github.com/btdex/btdex
 	install = btdex.install
@@ -14,11 +14,7 @@ pkgbase = btdex-git
 	conflicts = btdex
 	options = !strip
 	source = git+https://github.com/btdex/btdex.git
-	source = btdex.sh
-	source = btdex.desktop
 	sha256sums = SKIP
-	sha256sums = 162e5c9fad5d5a5e5a59192a64ce6d1a5bf189465eeae4130332b3838f4d9c11
-	sha256sums = d6ab59c4046cf2c3b8898c7635151e7bea726f0a914f9d353134982e56a1295f
 
 pkgname = btdex-git
 
