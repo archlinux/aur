@@ -24,7 +24,7 @@ prepare() {
     git checkout 197b42bd0e9268ec7c3c16526edc8530ad90a075
 
     cd "$srcdir/$_pkgname-$pkgver"
-    patch -Np1 -i ../../no-compile.patch
+    patch -Np1 -i ../no-compile.patch
 }
 
 build() {
