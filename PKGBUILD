@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=B2_Command_Line_Tool
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Backblaze B2 Command Line Client"
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -11,6 +11,7 @@ depends=('python'
          'python-six>=1.10'
          'python-tqdm>=4.5.0'
          'python-logfury'
+         'python-class-registry'
         )
 optdepends=()
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html

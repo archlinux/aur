@@ -1,7 +1,7 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = backblaze-b2
 	depends = python-b2sdk>=1.0.0
 	depends = python-six>=1.10
 	depends = python-tqdm>=4.5.0
+	depends = python-logfury
+	depends = python-class-registry
 	source = https://github.com/Backblaze/B2_Command_Line_Tool/archive/v2.0.2.tar.gz
 	sha512sums = 0e0ebf698f49de00cb530bd0928855058fc6d1f4aaeb0b7b1bbea475e6e3f2add8c7acd9a75baf348907646eedc199b9729e1777bfb4a4e63952782a74c749dc
 
