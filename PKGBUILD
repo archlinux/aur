@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-mysql
-pkgver=2.5.0b17
+pkgver=2.5.0b19
 pkgrel=1
 pkgdesc="The ODB MySQL runtime library"
 arch=('i686' 'x86_64')
