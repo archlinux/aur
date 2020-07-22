@@ -9,7 +9,7 @@ url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 license=('LGPL')
 makedepends=('meson' 'gobject-introspection')
 depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
-provides=('libgstrtspserver-1.0.so=0-64' 'libgstrtspclientsink.so=libgstrtspclientsink.so-64')
+provides=('libgstrtspserver-1.0.so' 'libgstrtspclientsink.so')
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=('de07a2837b3b04820ce68264a4909f70c221b85dbff0cede7926e9cdbb1dc26e'
             'SKIP')
@@ -18,15 +18,15 @@ validpgpkeys=('D637032E45B8C6585B9456565D2EEE6F6F349D7C')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
-	ninja -C build
+	meson compile -C build
 }
 
 check() {
-	ninja -C build test
+	meson test -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 	install -Dm755 build/examples/test-mp4 "$pkgdir/usr/bin/gst-rtsp-mp4"
 	install -Dm755 build/examples/test-launch "$pkgdir/usr/bin/gst-rtsp-launch"
 	install -Dm755 build/examples/test-netclock "$pkgdir/usr/bin/gst-rtsp-netclock"
