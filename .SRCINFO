@@ -1,7 +1,7 @@
 pkgbase = pyocd
 	pkgdesc = Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP
 	pkgver = 0.27.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbedmicro/pyocd
 	arch = any
 	license = Apache
@@ -15,6 +15,7 @@ pkgbase = pyocd
 	depends = python-pyusb
 	depends = python-pyaml
 	depends = python-six
+	depends = pylink
 	source = https://github.com/mbedmicro/pyOCD/archive/v0.27.1.tar.gz
 	sha512sums = 40ab16570053fa08cd6c28322c08af1c3b04bed7da6dd2d81414c85d3cca9dd8f6fad2ed4ab4a9ed7326ee39fc03475ce13246e2cfaa26506cd1ecde703aba3f
 
