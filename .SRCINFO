@@ -1,0 +1,16 @@
+pkgbase = python-cryptoparser-git
+	pkgdesc = A cryptographic protocol parser
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://gitlab.com/coroner/cryptoparser
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-six
+	conflicts = python-cryptoparser
+	source = python-cryptoparser::git+https://gitlab.com/coroner/cryptoparser
+	sha256sums = SKIP
+
+pkgname = python-cryptoparser-git
+
