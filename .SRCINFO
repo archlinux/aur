@@ -1,13 +1,14 @@
 pkgbase = depthcharge
-	pkgdesc = toolkit for security research and jailbreaking of platforms using U-Boot
+	pkgdesc = Security research and jailbreaking toolkit for platforms using U-Boot
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://depthcharge.readthedocs.io/en/latest/scripts/index.html
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-pyserial
 	depends = python-tqdm
+	optdepends = dtc: needed for depthcharge-find-fdt
 	provides = depthcharge
 	options = !emptydirs
 	source = https://github.com/nccgroup/depthcharge/archive/0.1.1.tar.gz

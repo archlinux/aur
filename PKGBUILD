@@ -2,8 +2,8 @@
 
 pkgname=depthcharge
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="toolkit for security research and jailbreaking of platforms using U-Boot"
+pkgrel=2
+pkgdesc="Security research and jailbreaking toolkit for platforms using U-Boot"
 arch=('any')
 url="https://depthcharge.readthedocs.io/en/latest/scripts/index.html"
 license=('BSD')
@@ -11,6 +11,9 @@ depends=(
   'python'
   'python-pyserial'
   'python-tqdm'
+)
+optdepends=(
+  'dtc: needed for depthcharge-find-fdt'
 )
 provides=("$pkgname")
 options=(!emptydirs)
