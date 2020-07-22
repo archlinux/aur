@@ -1,8 +1,9 @@
 pkgbase = chromium-extension-https-everywhere
-	pkgdesc = Plugin for chromium which ensures you are using https whenever it's possible
+	pkgdesc = An extension that encrypts your communications with websites that offer HTTPS
 	pkgver = 2020.5.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eff.org/https-everywhere
+	changelog = chromium-extension-https-everywhere.changelog
 	arch = any
 	license = GPL2
 	depends = chromium

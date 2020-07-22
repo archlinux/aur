@@ -2,12 +2,13 @@
 
 pkgname='chromium-extension-https-everywhere'
 pkgver=2020.5.20
-pkgrel=1
-pkgdesc="Plugin for chromium which ensures you are using https whenever it's possible"
+pkgrel=2
+pkgdesc="An extension that encrypts your communications with websites that offer HTTPS"
 license=('GPL2')
 arch=('any')
 url="https://www.eff.org/https-everywhere"
 depends=('chromium')
+changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/https-everywhere-chrome-$pkgver.crx")
 noextract=("$pkgname-$pkgver.crx")
 b2sums=('f12885ce55ec08c0cac514a75c9d74efc448811b7b7b3539a439563a2c7dcba443a4278fbd4c158aea2a2dc45c3816f392299a167e622dc116a15c0caa5527a6')
