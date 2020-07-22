@@ -15,11 +15,6 @@ pre_install() {
   $ECHO "\033[36m*****************************************************************\033[0m"
 }
 
-post_install() {
-
-  systemctl daemon-reload
-}
-
 pre_upgrade() {
 
   ECHOLEN=$(echo -e|awk '{print length($0)}')
@@ -36,10 +31,4 @@ pre_upgrade() {
   $ECHO "\033[36m*  start IOTBOT service : systemctl start iotbot.service        *\033[0m"
   $ECHO "\033[36m*****************************************************************\033[0m"
 }
-
-post_upgrade() {
-  
-  systemctl daemon-reload
-}
-
 # vim: set sw=2 ts=2 et:
