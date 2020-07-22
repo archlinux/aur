@@ -4,9 +4,8 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.52
-_pkgver=1.52
-_arduino=1.8.12
+pkgver=1.53
+arduinover=1.8.13
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('x86_64')
@@ -24,22 +23,22 @@ source=('arduino.xml'
         "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=e98b5065cdb9f04aa4dde3f2e6e6e6f12dd97592"
         "http://www.pjrc.com/teensy/49-teensy.rules"
         'LICENSE'
-        "http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
-        "TeensyduinoInstall_${_pkgver//./}_x86_64::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
+        "http://downloads.arduino.cc/arduino-${arduinover}-linux64.tar.xz"
+        "TeensyduinoInstall_${pkgver//./}_x86_64::http://www.pjrc.com/teensy/td_${pkgver//./}/TeensyduinoInstall.linux64")
 
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
-            '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
+            '837a865ab3bf81163c95a8a5898f9d5f0de7740a4207949bc331409cbb40faba'
             'SKIP'
             '7c17bb6dcef244fbf8bc9bd85a7eb812eebe60f6a6a3d47bceddde84c77c5914'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3'
-            '09d6676616d8b64b88effc79991c7ab1bf1a1aca1ed792a359eafc3e27190e89'
-            '581eb9cd83b728f1cab3182680ece23dabd86ecd8478f52e32061e7c172ab8a4')
+            '1b20d0ec850a2a63488009518725f058668bb6cb48c321f82dcf47dc4299b4ad'
+            '2e6cd99a757bc80593ea3de006de4cc934bcb0a6ec74cad8ec327f0289d40f0b')
 
 build() {
   msg2 "Installing Teensyduino"
 
-  chmod +x "TeensyduinoInstall_${_pkgver//./}_${CARCH}"
-  ./TeensyduinoInstall_${_pkgver//./}_${CARCH} --dir="${srcdir}/arduino-${_arduino}"
+  chmod +x "TeensyduinoInstall_${pkgver//./}_${CARCH}"
+  ./TeensyduinoInstall_${pkgver//./}_${CARCH} --dir="${srcdir}/arduino-${arduinover}"
 
   msg2 "Building Teensy Loader command line"
 
@@ -48,7 +47,7 @@ build() {
 }
 
 package() {
-  cd "arduino-${_arduino}"
+  cd "arduino-${arduinover}"
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/"{doc,applications,icons/hicolor,mime/packages,licenses/teensyduino}
