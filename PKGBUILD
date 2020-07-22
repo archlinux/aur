@@ -1,20 +1,21 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=nvidia-system-monitor-qt
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Task Manager for Linux for Nvidia graphics cards (QT vesrion)"
 arch=('x86_64')
 url="https://github.com/congard/${pkgname}"
 license=('MIT')
 depends=('nvidia-utils' 'qt5-base' 'which')
-source=("${pkgname}::https://github.com/congard/nvidia-system-monitor-qt/archive/v1.0.tar.gz" "${pkgname}.desktop")
+source=("${pkgname}::https://github.com/congard/nvidia-system-monitor-qt/archive/v${pkgver}.tar.gz" "${pkgname}.desktop")
 md5sums=('SKIP' 'SKIP')
 
 
 build() {
     cd $srcdir/${pkgname}-${pkgver}
-    qmake qnvsm.pro
-    make
+    mkdir build
+    cmake -B build -DDistributive=Arch -G "Unix Makefiles"
+    cmake --build build --target qnvsm -- -j 2
 }
 
 package() {
