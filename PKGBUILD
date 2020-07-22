@@ -1,6 +1,6 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=ffmpegfs
-pkgver=1.98
+pkgver=1.99
 pkgrel=1
 pkgdesc="FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
@@ -23,4 +23,4 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/ffmpegfs/README.md"
 }
 
-sha384sums=('034291d41540d5eaae27b96b8fef6ddb40d5fd69f09a37e7a1aba706efad3018dfd3effe6c06e1d40e6154c9fe29fc46')
+sha384sums=('cb6d3cccf9a209d6b2642a8c31053321955dbb9d40360e728dcf00ec33f254f1831b4ddc4c3b3b6925e2cb2adb5b2b29')
