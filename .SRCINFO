@@ -6,12 +6,18 @@ pkgbase = python-cryptoparser-git
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
-	depends = python-attrs
-	depends = python-six
 	provides = python-cryptoparser
+	provides = python2-cryptoparser
 	conflicts = python-cryptoparser
+	conflicts = python2-cryptoparser
 	source = python-cryptoparser::git+https://gitlab.com/coroner/cryptoparser
 	sha256sums = SKIP
 
 pkgname = python-cryptoparser-git
+	depends = python-attrs
+	depends = python-six
+
+pkgname = python2-cryptoparser-git
+	depends = python2-attrs
+	depends = python2-six
 
