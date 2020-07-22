@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
 pkgname=gomd-git
-pkgver=1.3.1.c4a2697
+pkgver=1.3.2.b89a6b0
 pkgrel=1
 epoch=
 pkgdesc="Quick webserver displaying formatted markdown files"
