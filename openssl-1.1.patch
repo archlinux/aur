@@ -1,0 +1,59 @@
+diff --git a/src/keygen.c b/src/keygen.c
+index e434a38..83f04f2 100644
+--- a/src/keygen.c
++++ b/src/keygen.c
+@@ -172,15 +172,14 @@ static void build_kgen_token(struct in6_addr *addr, uint8_t *nonce,
+ 	uint8_t tmp[20];
+ #ifdef HAVE_LIBCRYPTO
+ 	unsigned int len = 20;
+-	HMAC_CTX ctx;
+-
+-	HMAC_CTX_init(&ctx);
+-	HMAC_Init_ex(&ctx, key_cn, sizeof(key_cn), EVP_sha1(), NULL);
+-	HMAC_Update(&ctx, (unsigned char *)addr, sizeof(*addr));
+-	HMAC_Update(&ctx, nonce, NONCE_LENGTH);
+-	HMAC_Update(&ctx, &id, sizeof(id));
+-	HMAC_Final(&ctx, tmp, &len);
+-	HMAC_CTX_cleanup(&ctx);
++	HMAC_CTX *ctx = HMAC_CTX_new();
++
++	HMAC_Init_ex(ctx, key_cn, sizeof(key_cn), EVP_sha1(), NULL);
++	HMAC_Update(ctx, (unsigned char *)addr, sizeof(*addr));
++	HMAC_Update(ctx, nonce, NONCE_LENGTH);
++	HMAC_Update(ctx, &id, sizeof(id));
++	HMAC_Final(ctx, tmp, &len);
++	HMAC_CTX_free(ctx);
+ #else
+ 	HMAC_SHA1_CTX ctx;
+ 
+diff --git a/src/mh.c b/src/mh.c
+index 60e345e..98f784a 100644
+--- a/src/mh.c
++++ b/src/mh.c
+@@ -518,19 +518,18 @@ static int calculate_auth_data(const struct iovec *iov, int iovlen,
+ 
+ #ifdef HAVE_LIBCRYPTO
+ 	unsigned int len = HMAC_SHA1_HASH_LEN;
+-	HMAC_CTX ctx;
++	HMAC_CTX *ctx = HMAC_CTX_new();
+ 	const EVP_MD *evp_md = EVP_sha1();
+ 
+-	HMAC_CTX_init(&ctx);
+-	HMAC_Init_ex(&ctx, key, HMAC_SHA1_KEY_SIZE, evp_md, NULL);
++	HMAC_Init_ex(ctx, key, HMAC_SHA1_KEY_SIZE, evp_md, NULL);
+ 
+-	HMAC_Update(&ctx, (uint8_t *)coa, sizeof(*coa));
+-	HMAC_Update(&ctx, (uint8_t *)cn, sizeof(*coa));
++	HMAC_Update(ctx, (uint8_t *)coa, sizeof(*coa));
++	HMAC_Update(ctx, (uint8_t *)cn, sizeof(*coa));
+ 	for (i = 0; i < iovlen; i++) {
+-		HMAC_Update(&ctx, (uint8_t *)iov[i].iov_base, iov[i].iov_len);
++		HMAC_Update(ctx, (uint8_t *)iov[i].iov_base, iov[i].iov_len);
+ 	}
+-	HMAC_Final(&ctx, buf, &len);
+-	HMAC_CTX_cleanup(&ctx);
++	HMAC_Final(ctx, buf, &len);
++	HMAC_CTX_free(ctx);
+ #else
+ 	HMAC_SHA1_CTX ctx;
+ 

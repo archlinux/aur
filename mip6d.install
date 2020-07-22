@@ -1,0 +1,4 @@
+post_install() {
+    echo "You still need to create a configuration file for mip6d at /etc/mip6d.conf"
+    echo "Example configurations can be found in /usr/share/doc/mip6d."
+}

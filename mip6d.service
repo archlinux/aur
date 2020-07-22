@@ -1,0 +1,12 @@
+[Unit]
+Description=MIPL Mobile IPv6 for Linux
+Wants=ipsec.service
+After=ipsec.service
+AssertPathExists=/etc/mip6d.conf
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/mip6d -c /etc/mip6d.conf
+
+[Install]
+WantedBy=default.target
