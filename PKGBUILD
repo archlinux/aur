@@ -35,6 +35,7 @@ depends=('picom-tryone-git'
     'fzf'
     'ranger'
     'sl'
+    'playerctl'
     'xclip'
     'ffmpeg'
     'feh'
@@ -103,7 +104,9 @@ package() {
         'rangerplugins'
         'sideload'
         'irox'
-        'st-luke-git')
+        'st-luke-git'
+        'plymouth-git'
+        'plymouth-theme-instantos')
 
     cd $_pkgname
     mkdir -p ${pkgdir}/usr/share/instantos
