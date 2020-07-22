@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=remotes
-_cranver=2.1.1
+_cranver=2.2.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.0.0')
 optdepends=(r-brew r-callr r-curl r-covr r-git2r r-knitr r0mockery r-pkgbuild r-pingr r-rmarkdown r-rprojroot r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a508c9c061fdff6a4f829b31c4d80ac6')
+md5sums=('e8d6cb2e704da598e03767352eb7e8c1')
 
 build() {
   cd "${srcdir}"
