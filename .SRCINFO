@@ -1,0 +1,17 @@
+pkgbase = vim-mustache-handlebars-git
+	pkgdesc = Vim plugin for mustache and handlebars
+	pkgver = r145.697fa02
+	pkgrel = 1
+	url = https://github.com/mustache/vim-mustache-handlebars
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	provides = vim-mustache-handlebars
+	conflicts = vim-mustache-handlebars
+	source = vim-mustache-handlebars-git::git+https://github.com/mustache/vim-mustache-handlebars.git
+	sha256sums = SKIP
+
+pkgname = vim-mustache-handlebars-git
+
