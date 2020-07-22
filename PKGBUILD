@@ -38,13 +38,14 @@ package() {
   cd ${_pkgname}-${pkgver}-${CARCH}
   
   install -dm755 ${pkgdir}/usr/share/${_pkgname}
-  install -dm755 ${pkgdir}/etc/systemd/system/
+  install -dm755 ${pkgdir}/usr/lib/systemd/system/
+  install -dm755 ${pkgdir}/etc/
   install -Dm755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
   
   mv * ${pkgdir}/usr/share/${_pkgname}
   ln -s /usr/share/${_pkgname} ${pkgdir}/etc/${_pkgname}
   
-  cat > ${pkgdir}/etc/systemd/system/${_pkgname}.service << EOF
+  cat > ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service << EOF
 [Unit]
 Description=IOTQQ/IOTBOT Service
 After=network-online.target
