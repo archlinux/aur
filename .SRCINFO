@@ -7,7 +7,7 @@ pkgbase = ansi2html
 	license = GPL
 	depends = sh
 	source = https://raw.github.com/pixelb/scripts/master/scripts/ansi2html.sh
-	sha256sums = 22d335db3492eaf3b9fa537ab93ba1ce2a24dbaed14c7600c90738f71fe13051
+	sha256sums = 395be13d03adfccf30b8288555b91af0b2345925ed70b7a1eecca0fa72a9f538
 
 pkgname = ansi2html
 

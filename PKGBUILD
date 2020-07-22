@@ -15,4 +15,4 @@ package() {
     install -D $srcdir/ansi2html.sh $pkgdir/usr/bin/ansi2html
 }
 
-sha256sums=('22d335db3492eaf3b9fa537ab93ba1ce2a24dbaed14c7600c90738f71fe13051')
+sha256sums=('395be13d03adfccf30b8288555b91af0b2345925ed70b7a1eecca0fa72a9f538')
