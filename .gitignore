@@ -1,0 +1,5 @@
+intersect-lv2/
+pkg/
+src/
+intersect.lv2-git-*.pkg.tar.xz
+intersect.lv2-git-*.pkg.tar.zst
