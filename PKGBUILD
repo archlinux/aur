@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=0.7.1.2
+pkgver=0.7.1.3
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
@@ -46,19 +46,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    'b38c0e881a0a01601c0baec3756144b46ad5600d'
+    'b819ab243ed159974d407b1e774d44c363c381f8'
 )
 sha1sums_x86_64=(
-    'e94af98d7954e644ab249dd5f5c88311facc17b1'
+    'fd26eb100015c74a258597cd84c44daa5f8b7d5f'
 )
 sha1sums_aarch64=(
-    '77ad99f0efda0aad2826a33aa6371c694f395356'
+    '27bc43b206b54376d90f73d0b71154b9fc31ef5e'
 )
 sha1sums_armv6h=(
-    'c213007b14c6bd949240f40ad64c8519f15ea633'
+    'e4f102556a11523f1e629601d87a09c4900eb16b'
 )
 sha1sums_armv7h=(
-    'c213007b14c6bd949240f40ad64c8519f15ea633'
+    'e4f102556a11523f1e629601d87a09c4900eb16b'
 )
 
 package() {
