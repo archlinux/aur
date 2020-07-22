@@ -1,0 +1,37 @@
+pkgbase = iotbot-bin
+	pkgdesc = 跨平台 QQ机器人 框架 原生 高效 迸发 Lua Plugin 只有你想不到
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/IOTQQ/IOTQQ
+	install = .INSTALL
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = arm
+	license = unknown
+	provides = iotqq
+	provides = iotbot
+	conflicts = iotqq
+	conflicts = iotbot
+	noextract = iotbot-bin-3.0.6-x86_64.tar.gz
+	options = !strip
+	backup = usr/share/iotbot/CoreConf.conf
+	source = iotbot.sh
+	md5sums = 43921342c72ef2e7f89580ddd6b44be6
+	source_x86_64 = iotbot-3.0.6-x86_64.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/97r6/iotbot_3.0.6_linux_amd64.tar.gz
+	md5sums_x86_64 = b2d785479f04c614285d001f05dff37b
+	source_i686 = iotbot-3.0.6-i686.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/97r6/iotbot_3.0.6_linux_386.tar.gz
+	md5sums_i686 = e3a4d7b24b8015e4924b25efc687098e
+	source_aarch64 = iotbot-3.0.6-aarch64.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/eY7Q/iotbot_3.0.6_linux_arm64.tar.gz
+	md5sums_aarch64 = 1853b77c947fc995cd69e9d86ac5abc9
+	source_armv7h = iotbot-3.0.6-armv7h.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/eY7Q/iotbot_3.0.6_linux_arm.tar.gz
+	md5sums_armv7h = 10b5d36703500d1c4d05f935c2086516
+	source_armv6h = iotbot-3.0.6-armv6h.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/eY7Q/iotbot_3.0.6_linux_arm.tar.gz
+	md5sums_armv6h = 10b5d36703500d1c4d05f935c2086516
+	source_arm = iotbot-3.0.6-arm.tar.gz::https://files.gitter.im/5e887cf2d73408ce4fdf42c5/eY7Q/iotbot_3.0.6_linux_arm.tar.gz
+	md5sums_arm = 10b5d36703500d1c4d05f935c2086516
+
+pkgname = iotbot-bin
+

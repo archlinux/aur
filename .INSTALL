@@ -1,0 +1,45 @@
+pre_install() {
+
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+  ECHO='echo'
+  fi
+  $ECHO "\033[36m*****************************************************************\033[0m"
+  $ECHO "\033[36m*  iotbot has been installed at /usr/share/iotbot               *\033[0m"
+  $ECHO "\033[36m*  also you can edit CoreConf.conf at /etc/iotbot/CoreConf.conf *\033[0m"
+  $ECHO "\033[36m*  which is a symbolic link to /usr/share/iotbot                *\033[0m"
+  $ECHO "\033[36m*  start IOTBOT service : systemctl start iotbot.service        *\033[0m"
+  $ECHO "\033[36m*****************************************************************\033[0m"
+}
+
+post_install() {
+
+  systemctl daemon-reload
+}
+
+pre_upgrade() {
+
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+  ECHO='echo'
+  fi
+  $ECHO "\033[36m*****************************************************************\033[0m"
+  $ECHO "\033[36m*  iotbot has been installed at /usr/share/iotbot               *\033[0m"
+  $ECHO "\033[36m*  also you can edit CoreConf.conf at /etc/iotbot/CoreConf.conf *\033[0m"
+  $ECHO "\033[36m*  which is a symbolic link to /usr/share/iotbot                *\033[0m"
+  $ECHO "\033[36m*  start IOTBOT service : systemctl start iotbot.service        *\033[0m"
+  $ECHO "\033[36m*****************************************************************\033[0m"
+}
+
+post_upgrade() {
+  
+  systemctl daemon-reload
+}
+
+# vim: set sw=2 ts=2 et:
