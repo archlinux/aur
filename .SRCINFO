@@ -1,45 +1,23 @@
 pkgbase = perl-catalyst-view-tt
-	pkgdesc = Helper for TT Views
+	pkgdesc = Template View Class
 	pkgver = 0.44
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-View-TT
+	url = https://metacpan.org/release/Catalyst-View-TT
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59
-  makedepends = perl-catalyst-runtime>=5.7
+	depends = perl-catalyst-runtime>=0
+	depends = perl-class-accessor>=0
+	depends = perl-data-dump>=0
+	depends = perl-mro-compat>=0
+	depends = perl-path-class>=0
+	depends = perl-template-timer>=0
+	depends = perl-template-toolkit>=0
 	depends = perl>=5.8.1
-	depends = perl-catalyst-runtime>=5.7
-	depends = perl-class-accessor
-	depends = perl-mro-compat
-	depends = perl-path-class
-	depends = perl-template-toolkit
-	depends = perl-template-timer
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-View-TT-0.44.tar.gz
-  md5sums = 0f6b73ea9885ff2839cabf9dbcb91559
-
-pkgname = perl-catalyst-view-tt
-
-pkgbase = perl-catalyst-view-tt
-	pkgdesc = Helper for TT Views
-	pkgver = 0.44
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Catalyst-View-TT
-	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59
-	depends = perl>=5.8.1
-	depends = perl-catalyst-runtime>=5.7
-	depends = perl-class-accessor
-	depends = perl-mro-compat
-	depends = perl-path-class
-	depends = perl-template-toolkit
-	depends = perl-template-timer
-	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-View-TT-0.44.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-View-TT-0.44.tar.gz
 	md5sums = 0f6b73ea9885ff2839cabf9dbcb91559
+	sha512sums = b3bd246b8286562c453d8b62d0d7c93fd220652309519fb3522cc08db067fe782627a1c4a8d2dd28fa2d993a75c80d14fccfcdd842336e12d3ed5a4c48756a22
 
 pkgname = perl-catalyst-view-tt
 
