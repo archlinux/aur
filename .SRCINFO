@@ -1,6 +1,6 @@
 pkgbase = rsshub-git
 	pkgdesc = Everything is RSSible
-	pkgver = 02158279
+	pkgver = 5b6e2662
 	pkgrel = 1
 	url = https://rsshub.app/
 	arch = any

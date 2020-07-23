@@ -1,6 +1,6 @@
 # Maintainer: YuutaW <i@yuuta.moe>
 pkgname='rsshub-git'
-pkgver=02158279
+pkgver=5b6e2662
 pkgrel=1
 epoch=
 pkgdesc="Everything is RSSible"
