@@ -1,8 +1,7 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
-pkgver=0.5.2
-pkgrel=2
-up_pkgrel=1
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
 url="https://github.com/squalou/google-chat-linux.git"
@@ -14,12 +13,12 @@ appname="${pkgname%-git}"
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 
 source=("${pkgname%}::git+${url}#branch=master")
-source=("https://github.com/squalou/${appname}/releases/download/${pkgver}-${up_pkgrel}/${appname}_${pkgver}-${up_pkgrel}_amd64.deb")
+source=("https://github.com/squalou/${appname}/releases/download/${pkgver}-${pkgrel}/${appname}_${pkgver}-${pkgrel}_amd64.deb")
 
-sha256sums=('b102f8799fb45e2a2dfc69cca89db5e0c5cdd2e13f710a3aa703b2aef63b2244')
+sha512sums=('186c8a96d7caaafd7468dbbfd0db6e5ad27a926d21c53e9a0c5c9caf86eeeaf95e5cd5c30fcec817da48009ffd16b7762f477fb3171127fe0121cb7e08534ec8')
 
 build() {
-  ar x "${appname}_${pkgver}-${up_pkgrel}_amd64.deb"
+  ar x "${appname}_${pkgver}-${pkgrel}_amd64.deb"
   tar xJf data.tar.xz
 }
 
