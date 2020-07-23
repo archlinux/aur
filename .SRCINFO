@@ -9,6 +9,7 @@ pkgbase = unity-mail
 	makedepends = breezy
 	makedepends = python-setuptools
 	makedepends = python-polib
+	depends = ayatana-indicator-messages
 	depends = hicolor-icon-theme
 	depends = dconf
 	depends = gobject-introspection
