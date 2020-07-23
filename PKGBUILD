@@ -8,12 +8,12 @@ _pkgname='jre'
 _major='8'
 pkgname="${_pkgname}${_major}"
 #_minor='211'; _build='b12'; _bundleid='238719'; _hash='478a62b7d4e34b78b671c754eaaf38ab'
-#https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239848_
 #_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
 #_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 #_minor='231'; _bundleid='240718'; _hash='5b13a193868b4bf28bcb45c792fce896'
 #_minor='241'; _bundleid='241526'; _hash='1f5b5a70bf22433b84d0e960903adac8'
-_minor='251'; _bundleid='242050'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+#_minor='251'; _bundleid='242050'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+_minor='261'; _bundleid='242980'; _hash='a4634525489241b9a9e1aa73d9e118e6'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -67,14 +67,14 @@ source=(
   #"https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz" # Now /otn/, Oracle sso required
   "policytool-${_jname}.desktop"
 )
-md5sums=('2afa1c823912d97baa5e363b205ba8ec'
+md5sums=('d56fb750d24a1b73ae24eff42fc68597'
          'ef3ff483db5d38ed106e0b819006bdae')
-sha256sums=('92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589'
+sha256sums=('53e33ba35b1a8b799e1be943155c7b3c56a56a82956ddcf5d774325eca1df812'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
-PKGEXT='.pkg.tar.gz' # much faster than .xz
+PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
 ## Alternative mirror, if your local one is throttled:
-#source[1]=???
+#source[0]=???
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
