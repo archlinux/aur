@@ -1,0 +1,14 @@
+pkgbase = python-google-pasta
+	pkgdesc = Library to refactor python code through AST manipulation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/google/pasta
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-six
+	source = python-google-pasta-0.2.0.tar.gz::https://github.com/google/pasta/archive/v0.2.0.tar.gz
+	sha256sums = b9e3bcf5ab79986e245c8a2f3a872d14c610ce66904c4f16818342ce81cf97d2
+
+pkgname = python-google-pasta
+
