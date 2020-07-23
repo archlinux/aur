@@ -1,4 +1,5 @@
-# Maintainer: yuhr <sdn.pate(at)gmail.com>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=otf-harenosora-mincho
 pkgver=1.00
@@ -7,7 +8,7 @@ pkgdesc="Japanese curvy and old style font."
 url="http://fontopo.com/?p=377"
 license=('custom')
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util')
 install=$pkgname.install
 source=(hare.zip::https://github.com/qothr/cabinet/blob/master/hare.zip?raw=true)
 md5sums=('378062934c47a6ae4c79af28008730ef')
