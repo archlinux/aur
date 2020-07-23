@@ -1,0 +1,18 @@
+pkgbase = procmon
+	pkgdesc = ProcMon for Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/microsoft/ProcMon-For-Linux
+	arch = any
+	license = MIT
+	depends = libedit
+	depends = libelf
+	depends = sqlite
+	depends = zlib
+	optdepends = bcc
+	optdepends = ncurses5-compat-libs
+	source = https://github.com/microsoft/ProcMon-for-Linux/releases/download/1.0/procmon_1.0.0-291_amd64.deb
+	md5sums = SKIP
+
+pkgname = procmon
+
