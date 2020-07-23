@@ -1,0 +1,25 @@
+pkgbase = liblinphone
+	pkgdesc = A high-level SIP library
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://www.linphone.org
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-pystache
+	makedepends = python-sphinx
+	makedepends = xsd
+	depends = belcard
+	depends = belle-sip
+	depends = mediastreamer
+	depends = soci
+	depends = xerces-c
+	depends = lime
+	source = https://gitlab.linphone.org/BC/public/liblinphone/-/archive/4.4.0/liblinphone-4.4.0.tar.gz
+	sha256sums = a9a468e7e15ad59062d6460b7d2f6b1f1cd74c15d54a7b5dae6bad28a489cf40
+
+pkgname = liblinphone
+
