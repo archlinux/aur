@@ -9,6 +9,8 @@ license=('GPL')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 makedepends=('git' 'sassc' 'optipng' 'inkscape')
 optdepends=('whitesur-icon-theme-git: matching icon theme'
+            'mcmojave-circle-icon-theme: suggested icon theme'
+            'mcmojave-cursors: suggested cursor theme'
             'plank: for included plank theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
