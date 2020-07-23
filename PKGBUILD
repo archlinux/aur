@@ -1,8 +1,9 @@
-# Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname=otf-takaomj
 pkgver=15.03
-pkgrel=2
+pkgrel=3
 _filever=00301.01
 pkgdesc="Japanese outline fonts based on IPAmj Fonts (otf-ipamjfont)"
 arch=('any')
