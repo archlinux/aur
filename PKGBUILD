@@ -1,16 +1,16 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=dovecot-xaps-daemon
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('x86_64')
-url='https://github.com/st3fan/dovecot-xaps-daemon'
+url='https://github.com/freswa/dovecot-xaps-daemon'
 license=('custom:MIT')
 makedepends=('go')
 backup=('etc/xapsd/xapsd.conf')
-source=("https://github.com/st3fan/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('89bd2b97e469c6cff58c4e68e86ccb573f748a4c17f415969f853f55eab620bf9f1d9b8902e5853f2f0eb9f0c17bcfc9f44fce45e7c83e5e75342de878f99387')
+source=("https://github.com/freswa/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+b2sums=('7c135e0f8981627e5f17d8f919323024eab68e119b5fca56e38c65071c853a1563462b63512475b2d0ab424bb79bc79ab3ed2174fdbbda92c8154db1dab59b39')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -25,7 +25,7 @@ build() {
 package() {
   install -dm755 "${pkgdir}"/var/lib/xapsd/
   install -Dm755 "${srcdir}"/${pkgname}-${pkgver}/${pkgname} "${pkgdir}"/usr/bin/xapsd
-  install -Dm644 -t "${pkgdir}"/etc/xapsd/ "${srcdir}"/${pkgname}-${pkgver}/etc/xapsd/xapsd.conf
+  install -Dm644 -t "${pkgdir}"/etc/xapsd/ "${srcdir}"/${pkgname}-${pkgver}/etc/xapsd/xapsd.yaml
   install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/${pkgname}-${pkgver}/etc/systemd/xapsd.service
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/${pkgname}-${pkgver}/LICENSE
 }
