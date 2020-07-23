@@ -2,7 +2,7 @@ pkgbase = libxft-bgra-git
 	pkgdesc = libXft with BGRA glyph (color emoji) rendering & scaling patches
 	pkgver = 2.3.3.r1.dda4979
 	pkgrel = 1
-	url = https://gitlab.com/justanoobcoder/libxft-bgra.git
+	url = https://gitlab.freedesktop.org/xorg/lib/libxft.git
 	arch = x86_64
 	groups = modified
 	license = custome
@@ -12,7 +12,7 @@ pkgbase = libxft-bgra-git
 	depends = libxrender
 	provides = libxft
 	conflicts = libxft
-	source = git+https://gitlab.com/justanoobcoder/libxft-bgra.git
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libxft.git
 	md5sums = SKIP
 
 pkgname = libxft-bgra-git
