@@ -1,16 +1,15 @@
 pkgbase = kcm-tablet-git
 	pkgdesc = KDE Control Module to manage pen tablets managed by libinput on X or Wayland.
-	pkgver = r65.0cc9e4e
+	pkgver = r69.72eea10
 	pkgrel = 1
 	url = https://gitlab.com/zanny/kcm-tablet
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake-git
 	makedepends = extra-cmake-modules
 	depends = kdeclarative
 	depends = kirigami2
 	optdepends = qt5-x11extras: X11 support
-	optdepends = xorg-xinput: X11 support
+	optdepends = xf86-input-libinput: X11 support
 	source = git+https://gitlab.com/zanny/kcm-tablet.git
 	sha256sums = SKIP
 
