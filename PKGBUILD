@@ -9,7 +9,13 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 url="https://github.com/graphql-python/gql"
 license=('MIT')
-depends=('python-six' 'python-graphql-core' 'python-promise' 'python-requests')
+depends=(
+	'python-aiohttp'
+	'python-graphql-core'
+	'python-requests'
+	'python-websockets'
+	'python-yarl'
+)
 makedepends=('python-setuptools' 'git')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
