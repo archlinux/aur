@@ -2,7 +2,7 @@
 
 pkgname=dragonfire-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source virtual assistant for Linux"
 arch=('x86_64')
 url="https://dragon.computer"
@@ -21,7 +21,6 @@ depends=('gtk2'
          'python-nltk'
          'python-httplib2'
          'python-tweepy'
-         'python-hug'
          'python-waitress'
          'python-speechrecognition'
          'python-pyjwt'
@@ -30,7 +29,8 @@ depends=('gtk2'
          'python-msgpack'
          'python-deeppavlov'
          'python-metadata-parser'
-         'python-neuralcoref')
+         'python-neuralcoref'
+         'python-hug-middleware-cors')
 optdepends=('python-pyqtgraph'
             'python-peakutils'
             'flake8'
