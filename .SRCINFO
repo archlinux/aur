@@ -1,0 +1,22 @@
+pkgbase = ros-noetic-plotjuggler-msgs
+	pkgdesc = ROS - Special Messages for PlotJuggler
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://www.plotjuggler.io
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-plotjuggler-msgs-0.1.1.tar.gz::https://github.com/facontidavide/plotjuggler_msgs/archive/0.1.1.tar.gz
+	sha256sums = 29956629259fe84f72cdb8b0072db17687dadaa292069ee83c0bedf436d0f5d8
+
+pkgname = ros-noetic-plotjuggler-msgs
+
