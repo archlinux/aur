@@ -1,7 +1,7 @@
 pkgbase = slippi-online-appimage
 	pkgdesc = Slippi fork of Faster Melee, which allows you to play rollback netplay on Super Smash Bros Melee, (automatically gets latest version)
-	pkgver = 2.2.0
-	pkgrel = 1
+	pkgver = 2.2.1
+	pkgrel = 0
 	url = https://slippi.gg/
 	arch = x86_64
 	license = GPL2
