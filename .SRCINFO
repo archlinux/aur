@@ -1,0 +1,16 @@
+pkgbase = git-get-git
+	pkgdesc = Blazingly fast, incredibly handy git clone alternative
+	pkgver = 0.0.r2.ge822073
+	pkgrel = 1
+	url = https://github.com/b1f6c1c4/git-get
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = git
+	provides = git-get
+	options = zipman
+	source = git+https://github.com/b1f6c1c4/git-get.git
+	sha256sums = SKIP
+
+pkgname = git-get-git
+
