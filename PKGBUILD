@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=urw
-pkgver=3.61
+pkgver=3.62
 pkgrel=0
 _pkgver=${pkgver}-1
 pkgdesc="UnReal World is a unique low-fantasy roguelike game set in the far north during the late Iron-Age"
@@ -13,7 +13,7 @@ PKGEXT=".pkg.tar"
 
 source=(http://www.unrealworld.fi/dl/${pkgver}/linux/pkg-arch/urw-${_pkgver}-x86_64.pkg.tar.xz)
 
-sha256sums=('9e7e74f87c0f69ef51ee4186b96768549a32b4cdfdc5091a0405404a9fc54886')
+sha256sums=('9d9c5a4e8f901fc6e2b73956392b66c2db9ab9912129da27b9471ec5c301599e')
 
 
 package() {
