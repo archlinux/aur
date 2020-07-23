@@ -13,8 +13,9 @@ pkgbase = seexpr
 	makedepends = libpng
 	makedepends = cmake
 	makedepends = git
-	makedepends = sip
-	makedepends = python-sip
+	makedepends = sip=4.19.22
+	makedepends = python-sip=4.19.22
+	makedepends = python-pyqt5
 	makedepends = gtest
 	depends = python
 	depends = llvm-libs

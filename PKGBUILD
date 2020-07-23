@@ -1,5 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+_sip_ver="4.19.22"
 _fragment="#tag=v3.0.1"
 pkgname=('seexpr' 'seexpr-doc')
 pkgver=${_fragment###tag=v}
@@ -11,7 +12,7 @@ license=('custom:Apache')
 depends=('python' 'llvm-libs' 'qt5-base')
 optdepends=('python-pyqt5: Editor support')
 optdepends+=('boost-libs: Python bindings')
-makedepends=('boost' 'llvm' 'python-pyqt5' 'doxygen' 'libpng' 'cmake' 'git' 'sip' 'python-sip' 'gtest')
+makedepends=('boost' 'llvm' 'python-pyqt5' 'doxygen' 'libpng' 'cmake' 'git' "sip=$_sip_ver" "python-sip=$_sip_ver" 'python-pyqt5' 'gtest')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
@@ -27,7 +28,8 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DUSE_PYTHON=OFF \
+    -DUSE_PYTHON=ON \
+    -DPYQT_SIP_DIR='/usr/lib/python3.8/site-packages/PyQt5/bindings' \
     -DENABLE_SLOW_TESTS=ON \
     -DGTEST_DIR=/usr \
     -S SeExpr \
