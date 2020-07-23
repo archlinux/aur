@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=0.21.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -19,9 +19,9 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
 sha256sums=('a4f959edc39523423e6f791aef5a448b5c2ab9ca3319f329fd6facc7af422843'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
-            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'abef8a36e4990b85b3a556f546ea8f8349bb7c9d10dbbd7ff8013ae0b931a849'
+            'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
+            '497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6'
+            'e2d6c370fa9f1564013ce0d255f764b8972284d5909d509a306a43994a49a113'
             'f76f4ff434632c19e39d9ff7627786f304bed2ee33cfba843ae06e5c003dc60e')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
@@ -84,6 +84,7 @@ package() {
   msg2 'Installing essential directories'
   install -dm 700 "$pkgdir/etc/bitcoin"
   install -dm 755 "$pkgdir/srv/bitcoin"
+  install -dm 755 "$pkgdir/run/bitcoin"
 
   pushd build
   msg2 'Installing executables and man pages...'
