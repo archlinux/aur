@@ -1,0 +1,25 @@
+From 7ef2ca102a699f497f6b06b5b2562f7cf8e04a56 Mon Sep 17 00:00:00 2001
+From: Fernando da Silva Sousa <wild.nando@gmail.com>
+Date: Wed, 11 Dec 2019 12:46:22 -0300
+Subject: [PATCH] Fix state enum values comparison on mainStack
+
+---
+ src/View/MainStack.vala | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/View/MainStack.vala b/src/View/MainStack.vala
+index 1a3280e..f2e7a7f 100644
+--- a/src/View/MainStack.vala
++++ b/src/View/MainStack.vala
+@@ -45,8 +45,8 @@ public class Lyrics.MainStack : Gtk.Stack {
+     public void on_lyric_service_change () {
+         var state = display_view.lyrics_service.state;
+ 
+-        if (state == Lyrics.LyricsService.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
+-        if (state == Lyrics.LyricsService.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
+-        if (state == Lyrics.LyricsService.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
++        if (state == Lyrics.LyricsService.State.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
++        if (state == Lyrics.LyricsService.State.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
++        if (state == Lyrics.LyricsService.State.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
+     }
+ }

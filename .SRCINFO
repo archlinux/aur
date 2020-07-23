@@ -1,0 +1,21 @@
+pkgbase = lyrics
+	pkgdesc = Display lyrics on media players with MPRIS-2 interface
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/naaando/lyrics
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = libgee
+	depends = libxmlbird
+	depends = lyricsources
+	source = https://github.com/naaando/lyrics/archive/0.8.1/lyrics-0.8.1.tar.gz
+	source = fix-build.patch
+	sha256sums = 6a990f7127e684fabb0032cbb7d5ff66155f622e979b106d6ba03ffd2fc84a74
+	sha256sums = 239baeecf76facae33065d02e6d088056f50017612b27c6bdb12a1b8738e0c87
+
+pkgname = lyrics
+
