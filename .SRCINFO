@@ -13,7 +13,7 @@ pkgbase = gamerworld
 	depends = libxss
 	provides = gamerworld
 	conflicts = gamerworld
-	source = git+https://gitlab.com/gamerworld/application.git#branch=GW-Stable
+	source = git+https://gitlab.com/gamerworld/GW-x86
 	sha256sums = SKIP
 
 pkgname = gamerworld
