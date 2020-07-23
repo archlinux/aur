@@ -9,7 +9,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 #_minor='231'; _build='b11'; _hash='5b13a193868b4bf28bcb45c792fce896'
 #_minor='241'; _build='b07'; _hash='1f5b5a70bf22433b84d0e960903adac8'
-_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+#_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+_minor='261'; _build='b12'; _hash='a4634525489241b9a9e1aa73d9e118e6'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -21,8 +22,8 @@ depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss'
 depends+=('java-environment-common')
 optdepends=(
   'alsa-lib: for basic sound support'
-  'eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse'
   'gtk2: for Gtk+ look and feel (desktop)'
+  'eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse'
 )
 makedepends=('awk')
 provides=(
@@ -33,8 +34,8 @@ provides=(
   "java-runtime-headless-jre=${_major}"
   "java-web-start-jre=${_major}"
   "java-openjfx=${_major}"
-  "java-environment-jdk=${_major}"
   "java-environment=${_major}"
+  "java-environment-jdk=${_major}"
 )
 
 # Variables
@@ -71,7 +72,7 @@ source=(
   'readme.sh'
 )
 # from oracle-sqldeveloper
-if ! :; then
+if :; then
 DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
 source[0]="manual://${_srcfil}"
 if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
@@ -93,20 +94,20 @@ unset _srcfil
 unset XDG_DOWNLOAD_DIR
 fi
 
-md5sums=('becc86d9870fe5f48ca30c520c4b7ab8'
+md5sums=('1522f0c6380fa4993e932eb0c6006ef1'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('777a8d689e863275a647ae52cb30fd90022a3af268f34fc5b9867ce32f1b374e'
+sha256sums=('5a04e01a091f6b1ed9c0b801be4fd10689af07eeb9e27f012c9aa3af9948ea34'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b'
             'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
 
-PKGEXT='.pkg.tar.gz' # much faster than .xz
+PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
 ## Alternative mirror, if your local one is throttled:
 ## Posting new sites does no good. They get taken down by the admin
 ## from too much traffic or complaints from Oracle.
@@ -122,6 +123,15 @@ if [ "${_minor}" -lt 161 ]; then
   _opt_JCE=1
 else
   _opt_JCE=0
+fi
+
+if ! :; then
+  for _d in "${!DLAGENTS[@]}"; do
+    case "${DLAGENTS[${_d}]}" in
+    'https::'*) DLAGENTS["${_d}"]='https::/usr/bin/wget --no-cookies --header Cookie:oraclelicense=a --no-glob --no-config --continue --tries=3 --waitretry=3 -O %o %u';;
+    esac
+  done
+  makedepends+=('wget')
 fi
 
 package() {

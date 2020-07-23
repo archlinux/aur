@@ -1,6 +1,6 @@
 pkgbase = jdk8
 	pkgdesc = Oracle Java 8 Development Kit LTS
-	pkgver = 8u251
+	pkgver = 8u261
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8.install
@@ -14,8 +14,8 @@ pkgbase = jdk8
 	depends = xdg-utils
 	depends = java-environment-common
 	optdepends = alsa-lib: for basic sound support
-	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
 	provides = java-web-start=8
@@ -23,8 +23,8 @@ pkgbase = jdk8
 	provides = java-runtime-headless-jre=8
 	provides = java-web-start-jre=8
 	provides = java-openjfx=8
-	provides = java-environment-jdk=8
 	provides = java-environment=8
+	provides = java-environment-jdk=8
 	options = !strip
 	backup = etc/java-jdk8/amd64/jvm.cfg
 	backup = etc/java-jdk8/images/cursors/cursors.properties
@@ -41,19 +41,19 @@ pkgbase = jdk8
 	backup = etc/java-jdk8/psfont.properties.ja
 	backup = etc/java-jdk8/psfontj2d.properties
 	backup = etc/java-jdk8/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-x64.tar.gz
+	source = manual://jdk-8u261-linux-x64.tar.gz
 	source = jconsole-jdk8.desktop
 	source = jmc-jdk8.desktop
 	source = jvisualvm-jdk8.desktop
 	source = policytool-jdk8.desktop
 	source = readme.sh
-	md5sums = becc86d9870fe5f48ca30c520c4b7ab8
+	md5sums = 1522f0c6380fa4993e932eb0c6006ef1
 	md5sums = 8a66f50efdc867ffd6a27168bc93b210
 	md5sums = 1cbde70639abd98db4bace284dbf2bc4
 	md5sums = f0b39865361437f3778ecbe6ffbc0a06
 	md5sums = 89704501aff8efe859c31968d8d168e6
 	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
-	sha256sums = 777a8d689e863275a647ae52cb30fd90022a3af268f34fc5b9867ce32f1b374e
+	sha256sums = 5a04e01a091f6b1ed9c0b801be4fd10689af07eeb9e27f012c9aa3af9948ea34
 	sha256sums = 65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee
 	sha256sums = 8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1
 	sha256sums = 144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870
