@@ -1,0 +1,36 @@
+pkgbase = ros-noetic-plotjuggler
+	pkgdesc = ROS - PlotJuggler: juggle with data
+	pkgver = 2.8.3
+	pkgrel = 1
+	url = https://www.plotjuggler.io
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = LGPLv3
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rosbag-storage
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-roscpp-serialization
+	depends = ros-noetic-diagnostic-msgs
+	depends = ros-noetic-tf
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-tf2-ros
+	depends = ros-noetic-tf2-msgs
+	depends = ros-noetic-plotjuggler-msgs
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = binutils
+	depends = qt5-svg
+	depends = boost
+	source = ros-noetic-plotjuggler-2.8.3.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/2.8.3.tar.gz
+	sha256sums = 2b8eb6b8fc8d1e259d2cf907eb0dc495cf1e3117f7683f4f5179beae76be628b
+
+pkgname = ros-noetic-plotjuggler
+
