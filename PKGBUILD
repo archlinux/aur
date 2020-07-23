@@ -1,13 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure."
 url='https://wiki.ros.org/rqt_reconfigure'
 
 pkgname='ros-melodic-rqt-reconfigure'
-pkgver='0.5.1'
-_pkgver_patch=0
+pkgver='0.5.3'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,6 +25,7 @@ ros_depends=(
 	ros-melodic-python-qt-binding
 	ros-melodic-rqt-gui
 	ros-melodic-rospy
+	ros-melodic-roslint
 )
 
 depends=(
@@ -36,7 +34,7 @@ depends=(
 
 _dir="rqt_reconfigure-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('f7869d6e846e97c7a0021b930a3b6ceb6f5911aa2cd5ecaf89093de5b3b0f02d')
+sha256sums=('07e4b46a71fc881a855250b73a97a13fb8e54fac74f6d09b5fd2365e2b7ab79a')
 
 build() {
 	# Use ROS environment variables.

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-reconfigure
 	pkgdesc = ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_reconfigure
 	arch = any
 	license = BSD
@@ -15,8 +15,9 @@ pkgbase = ros-melodic-rqt-reconfigure
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-reconfigure-0.5.1.tar.gz::https://github.com/ros-visualization/rqt_reconfigure/archive/0.5.1.tar.gz
-	sha256sums = f7869d6e846e97c7a0021b930a3b6ceb6f5911aa2cd5ecaf89093de5b3b0f02d
+	depends = ros-melodic-roslint
+	source = ros-melodic-rqt-reconfigure-0.5.3.tar.gz::https://github.com/ros-visualization/rqt_reconfigure/archive/0.5.3.tar.gz
+	sha256sums = 07e4b46a71fc881a855250b73a97a13fb8e54fac74f6d09b5fd2365e2b7ab79a
 
 pkgname = ros-melodic-rqt-reconfigure
 
