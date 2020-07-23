@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BigJubel
+Comment=Desktop client for BigJubel: calculate current jubilees
+Exec=bigjubeldesktop
+Icon=bigjubeldesktop
+Terminal=false
+StartupWMClass=bigjubeldesktop
+Type=Application

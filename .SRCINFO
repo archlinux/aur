@@ -7,14 +7,19 @@ pkgbase = bigjubeldesktop-git
 	license = GPL
 	makedepends = npm
 	makedepends = git
+	makedepends = imagemagick
 	depends = bigjubelweb
 	depends = electron
 	provides = bigjubeldesktop
 	conflicts = bigjubeldesktop
 	source = bigjubeldesktop::git://www.kabus.eu/git/bigjubeldesktop
+	source = logo.png::https://www.kabus.eu/bigjubel/static/logo32.png
 	source = exec.sh
+	source = bigjubel.desktop
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 67bbdfd42a1436d5e49ed394a0027524
+	md5sums = 2b8d2457541968447f28de29a319aac1
+	md5sums = 22d907a051651f77f014544a7a015440
 
 pkgname = bigjubeldesktop-git
 
