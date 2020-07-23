@@ -4,7 +4,7 @@
 # Contributor: Boris Timofeev <mashin87@gmail.com>
 
 pkgname=xroar
-pkgver=0.36.1
+pkgver=0.36.2
 pkgrel=1
 pkgdesc='A Dragon and Tandy CoCo emulator'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('gendesk')
 install=${pkgname}.install
 source=("${url}/dl/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.png")
-sha256sums=('041cb25d261daf4a7a0f3ea299e117cb2dbbdfd4ff881a78e1324ce1acfca9d2'
+sha256sums=('6fdc05b57b3c59dae41f5418e4465f25ae2d24c778c36c0a15d8afe3218c6353'
             '0c6e5def77c6ca809cd69ae518512a89bff335147b44eb9ffc898d7302a17a59')
 
 prepare() {
