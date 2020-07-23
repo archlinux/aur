@@ -5,7 +5,6 @@ pkgbase = ldid
 	url = https://git.saurik.com/ldid
 	arch = x86_64
 	license = AGPL
-	makedepends = git
 	makedepends = clang
 	depends = openssl
 	depends = libplist
