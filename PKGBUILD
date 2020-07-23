@@ -1,14 +1,14 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=rubber-git
-pkgver=1.4.r776.675bfe3
+pkgver=1.5.1.r902.a391fa2
 pkgrel=1
 epoch=1
 pkgdesc="A wrapper for LaTeX and friends, latest git version."
 arch=('any')
 url="https://launchpad.net/rubber"
 license=('GPL')
-depends=('python2' 'texlive-core')
+depends=('python' 'texlive-core')
 makedepends=('git' 'texinfo' 'texlive-plainextra')
 provides=('rubber')
 conflicts=('rubber')
@@ -26,12 +26,12 @@ pkgver() {
 
 build() {
   cd rubber
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd rubber
-  python2 setup.py install \
+  python setup.py install \
     --prefix=/usr \
     --root="$pkgdir" \
     --optimize=1 \
