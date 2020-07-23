@@ -1,0 +1,17 @@
+pkgbase = lyricsources
+	pkgdesc = Lyric downloader dbus service from osdlyrics
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/naaando/lyricsources
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-pycurl
+	source = https://github.com/naaando/lyricsources/archive/0.1/lyricsources-0.1.tar.gz
+	sha256sums = 363407184541762121a954d1d96265d86510906a38662f4f5113e5c5bc4405e7
+
+pkgname = lyricsources
+
