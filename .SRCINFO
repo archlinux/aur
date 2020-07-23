@@ -1,0 +1,13 @@
+pkgbase = mpark-patterns-git
+	pkgdesc = Michael Park's C++ pattern matching library
+	pkgver = 0.3.0.r15.gb3270e0
+	pkgrel = 1
+	url = https://github.com/mpark/patterns
+	arch = any
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/mpark/patterns.git
+	md5sums = SKIP
+
+pkgname = mpark-patterns-git
+
