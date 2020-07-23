@@ -1,4 +1,5 @@
-# Maintainer: yuhr <sdn.pate(at)gmail.com>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=otf-oriental
 pkgver=1.00
@@ -7,11 +8,12 @@ pkgdesc="Japanese geometrical retro style Katakana font."
 url="http://fontopo.com/?p=87"
 license=('custom')
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-util')
 install=$pkgname.install
 source=(oriental.zip::'https://github.com/qothr/cabinet/blob/master/oriental.zip?raw=true' LICENSE)
 noextract=(LICENSE)
-md5sums=('94a736491b24519ac504e8d7fa7ac7e8' SKIP)
+md5sums=('94a736491b24519ac504e8d7fa7ac7e8'
+         '150bc93c45d300448425a812f7db4af5')
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
