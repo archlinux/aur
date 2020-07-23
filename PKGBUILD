@@ -1,4 +1,4 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: 
 # Contributor: John Lane <archlinux@jelmail.com>
 
 # A collection of free fonts from www.ephifonts.com
