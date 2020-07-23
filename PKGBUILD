@@ -1,43 +1,34 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=spectacle-git
-pkgver=r330.1cf1282
+pkgver=20.07.80.r7.g7931ff8
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kdegraphics/spectacle'
-license=('GPL')
-depends=('xcb-util-cursor' 'libkipi' 'purpose')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
+arch=(i686 x86_64)
+url=https://kde.org/applications/utilities/org.kde.spectacle
+license=(GPL)
+depends=(xcb-util-cursor libkipi purpose knewstuff kwayland qt5-tools)
+makedepends=(extra-cmake-modules kdoctools git)
 optdepends=('kipi-plugins: export to various online services')
-conflicts=('spectacle' 'kscreengenie' 'kdegraphics-ksnapshot')
-replaces=('kscreengenie' 'kdegraphics-ksnapshot')
-provides=('spectacle')
-groups=('kde-applications' 'kdegraphics')
-source=("spectacle::git://anongit.kde.org/spectacle.git")
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+groups=(kde-applications kde-graphics)
+source=(git+https://invent.kde.org/graphics/spectacle.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd spectacle
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../spectacle \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S "${pkgname%-git}" \
+   -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
