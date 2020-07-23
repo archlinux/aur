@@ -1,6 +1,6 @@
 pkgbase = reaper-bin
 	pkgdesc = Digital Audio Workstation
-	pkgver = 6.12c
+	pkgver = 6.13
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = reaper-bin
 	optdepends = jack
 	optdepends = pulseaudio
 	conflicts = reaper
-	source = http://reaper.fm/files/6.x/reaper612c_linux_x86_64.tar.xz
-	sha256sums = dc90ea5366fc42892218f0854ad062b899734230d114b35e6de16bfe3626cdf6
+	source = http://reaper.fm/files/6.x/reaper613_linux_x86_64.tar.xz
+	sha256sums = b06e0a6eed1c5f8ae9426f8fb06f5378dea8746e9cacfa471ce2e1119688a8e3
 
 pkgname = reaper-bin
 
