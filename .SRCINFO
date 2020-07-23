@@ -1,6 +1,6 @@
 pkgbase = picom-git
 	pkgdesc = X compositor (fork of compton) (git-version)
-	pkgver = 1287_Next.6.ge1d9e95_2019.12.13
+	pkgver = 1430_8.rc2.21.gfd6ff82_2020.06.06
 	pkgrel = 1
 	url = https://github.com/yshui/picom
 	arch = i686
@@ -25,7 +25,6 @@ pkgbase = picom-git
 	depends = libconfig
 	depends = libdbus
 	depends = hicolor-icon-theme
-	depends = libxdg-basedir
 	optdepends = dbus: To control picom via D-Bus
 	optdepends = xorg-xwininfo: For picom-trans
 	optdepends = xorg-xprop: For picom-trans
