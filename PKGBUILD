@@ -28,7 +28,7 @@ fi
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver='4.7.6'
+pkgver='4.7.7'
 pkgrel='1'
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
@@ -37,10 +37,12 @@ license=('Apache')
 depends=('php')
 optdepends=('mariadb' 'apache' 'postgresql' 'sqlite' 'sqlite2')
 _verwatch=("${url}" '/static/download/[0-9\.]\+/editor-\([0-9\.]\+\).php' 'l')
+options=('!strip')
 install="${_pkgname}.install"
 #source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
 source=("https://www.adminer.org/static/download/${pkgver}/editor-${pkgver}.php")
-sha256sums=('0858220a1b52cb68412efcd6f313ae4a22bc07a0c059fb43670905b724dc811c')
+md5sums=('15c621d92803398e9faac594391c3232')
+sha256sums=('3338210ccb74f6fc74a6b53158fcadd724fcb9b9bf91d6ba24aab339c365b22f')
 
 package() {
   set -u
