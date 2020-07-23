@@ -4,7 +4,7 @@
 pkgbase=gst-plugins-bad-nvidia
 pkgname=(gst-plugins-bad-nvidia-libs gst-plugins-bad-nvidia)
 pkgver=1.16.2
-pkgrel=3
+pkgrel=4
 pkgdesc="GStreamer open-source multimedia framework bad plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -52,8 +52,6 @@ build() {
     -D gsm=disabled \
     -D iqa=disabled \
     -D msdk=disabled \
-    #-D nvdec=disabled \
-    #-D nvenc=disabled \
     -D opencv=disabled \
     -D openh264=disabled \
     -D openmpt=disabled \
