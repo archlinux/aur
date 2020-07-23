@@ -1,0 +1,25 @@
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+  echo "Creating log directory..."
+  mkdir -p /var/log/aptik-battery-monitor
+  chmod a+rwx /var/log/aptik-battery-monitor
+
+  echo "Starting service..."
+  sudo /etc/init.d/aptik-battery-monitor start
+}
+
+post_upgrade() {
+  sudo /etc/init.d/aptik-battery-monitor stop
+  post_install
+}
+
+pre_remove() {
+  echo "Stopping service..."
+  sudo /etc/init.d/aptik-battery-monitor stop
+}
+
+post_remove() {
+  echo "Removing log directory..."
+  sudo rm -rf /var/log/aptik-battery-monitor
+}
