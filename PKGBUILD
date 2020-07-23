@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.3.959
+pkgver=1.3.1056
 _clangver=3.6.1
 pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
@@ -26,13 +26,11 @@ conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
 source=(
 	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
-	'r-nosave.patch::https://github.com/rstudio/rstudio/commit/60dd6e3cd349cc208e33a12635378a1e338f8efc.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'7c8da3cfa69c2c18795c2bcd07bc1279556280305b290be6f065fd695c075843'
+	'9bfc698833f42a32cd8d67831c2b35ebc14c1666487be13748729523644518b9'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-	'88d6924605de8d9e50c545bbf1e18a1146db8756be3d65e3e47e7cc1f7f324be'
 )
 
 _pkgname=rstudio
@@ -76,14 +74,19 @@ build() {
 	
 	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
 	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
-	# Prepare file so the patch works, then patch RSlave→RNoSave
-	sed -i 's/RStudio, PBC/RStudio, Inc./g' src/cpp/r/config.h.in
-	sed -i 's/RStudio, PBC/RStudio, Inc./g' src/cpp/r/session/REmbeddedPosix.cpp
-	patch -p1 <'../r-nosave.patch'
 	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
 	# Because gwt desperately needs to add a “firstLaunch” entry there…
 	export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$srcdir"
+	
+	# Set information for Cmake and build
+	local shortver="${pkgver%.*}"
+	export RSTUDIO_VERSION_MAJOR="${pkgver%%.*}"
+	export RSTUDIO_VERSION_MINOR="${shortver#*.}"
+	export RSTUDIO_VERSION_PATCH="${pkgver##*.}"
+	export GIT_COMMIT="${PWD##*-}"
+	export BUILD_ID="local"
+	export PACKAGE_OS="Arch Linux"
 	cmake -DRSTUDIO_TARGET=Desktop \
 		-Wno-dev \
 		-DRSTUDIO_USE_SYSTEM_BOOST=Yes \
