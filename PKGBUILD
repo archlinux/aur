@@ -13,7 +13,7 @@ url="http://pika.readthedocs.org/"
 license=('GPL')
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/$_pkgbase/$_pkgbase/archive/$pkgver.tar.gz")
+source=("https://github.com/$_pkgbase/$_pkgbase/archive/$pkgver/$_pkgbase-$pkgver.tar.gz")
 sha256sums=('a0bd28351cc8a7437b8680a9d716d920f35cd5be307240d27644d5f15bc9a7dc')
 
 build() {

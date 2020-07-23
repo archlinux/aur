@@ -7,7 +7,7 @@ pkgbase = python-pika
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/pika/pika/archive/1.1.0.tar.gz
+	source = https://github.com/pika/pika/archive/1.1.0/pika-1.1.0.tar.gz
 	sha256sums = a0bd28351cc8a7437b8680a9d716d920f35cd5be307240d27644d5f15bc9a7dc
 
 pkgname = python-pika
