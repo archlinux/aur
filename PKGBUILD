@@ -2,7 +2,7 @@
 
 pkgname=miniserve-bin
 _pkgname=miniserve
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="Tool to serve files via HTTP"
 provides=('miniserve')
