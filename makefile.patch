@@ -1,0 +1,47 @@
+--- a/Makefile	2020-01-08 08:41:11.000000000 +0200
++++ b/Makefile	2020-07-23 08:49:27.469711346 +0300
+@@ -1,8 +1,8 @@
+ # Makefile for yrmcds
+ # Prerequisites: gcc 4.8+ or clang 3.3+
+ 
+-PREFIX = /usr/local
+-DEFAULT_CONFIG = $(PREFIX)/etc/yrmcds.conf
++PREFIX = /usr
++DEFAULT_CONFIG = /etc/yrmcds.conf
+ 
+ CACHELINE_SIZE := $(shell getconf LEVEL1_DCACHE_LINESIZE)
+ ifeq ($(CACHELINE_SIZE), 0)
+@@ -27,6 +27,7 @@
+ OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
+ 
+ EXE = yrmcdsd
++DESTDIR=''
+ TESTS = $(patsubst %.cpp,%,$(sort $(wildcard test/*.cpp)))
+ LIB = libyrmcds.a
+ LIB_OBJECTS = $(filter-out src/main.o,$(OBJECTS))
+@@ -53,19 +54,18 @@
+ 
+ ifeq ($(wildcard /run/systemd/system), /run/systemd/system)
+ install-service:
+-	cp etc/yrmcds.service /etc/systemd/system/yrmcds.service
+-	systemctl daemon-reload
++	install -Dm644 etc/yrmcds.service $(DESTDIR)/usr/lib/systemd/system/yrmcds.service
+ else
+ install-service:
+-	cp etc/upstart /etc/init/yrmcds.conf
++	install -Dm644 etc/upstart $(DESTDIR)/etc/init/yrmcds.conf
+ endif
+ 
+ install: $(EXE)
+ 	$(MAKE) install-service
+-	cp etc/logrotate /etc/logrotate.d/yrmcds
+-	cp etc/yrmcds.conf $(DEFAULT_CONFIG)
+-	cp $(EXE) $(PREFIX)/sbin/yrmcdsd
+-	install -o nobody -g nogroup -m 644 /dev/null /var/log/yrmcds.log
++	install -Dm644 etc/logrotate $(DESTDIR)/etc/logrotate.d/yrmcds
++	install -Dm644 etc/yrmcds.conf $(DESTDIR)/$(DEFAULT_CONFIG)
++	install -Dm644 $(EXE) $(DESTDIR)/$(PREFIX)/sbin/yrmcdsd
++	install -Dm644 /dev/null $(DESTDIR)/var/log/yrmcds.log
+ 
+ COPYING.hpp: COPYING
+ 	echo -n 'static char COPYING[] = R"(' > $@

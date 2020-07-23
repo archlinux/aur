@@ -1,0 +1,15 @@
+pkgbase = yrmcds
+	pkgdesc = A memory object caching system with master/slave replication
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://cybozu.github.io/yrmcds
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = yrmcds-1.1.9.tar.gz::https://github.com/cybozu/yrmcds/archive/v1.1.9.tar.gz
+	source = makefile.patch
+	sha256sums = 657971ba691f95763ce3d2c3158d60b3c697a07a066b85f9a3d54f1e5cc4cd5d
+	sha256sums = SKIP
+
+pkgname = yrmcds
+
