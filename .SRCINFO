@@ -1,0 +1,115 @@
+pkgbase = pulseaudio-airplay
+	pkgdesc = A featureful, general-purpose sound server
+	pkgver = 12.0+527+g938fb6411
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = rtkit
+	makedepends = libsoxr
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = jack2
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = fftw
+	makedepends = orc
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = xmltoman
+	source = git+https://gitlab.freedesktop.org/ckdo/pulseaudio.git#commit=938fb6411540e31137396b97dd2011ebba4bd650
+	source = 0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch
+	sha256sums = SKIP
+	sha256sums = 4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d
+
+pkgname = pulseaudio-airplay
+	install = pulseaudio.install
+	depends = libpulse-airplay=12.0+527+g938fb6411-1
+	depends = rtkit
+	depends = libltdl
+	depends = speexdsp
+	depends = tdb
+	depends = orc
+	depends = libsoxr
+	depends = webrtc-audio-processing
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	provides = pulseaudio
+	conflicts = pulseaudio
+	replaces = pulseaudio-xen<=9.0
+	replaces = pulseaudio-gconf<=11.1
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-airplay
+	pkgdesc = A featureful, general-purpose sound server (client library)
+	license = LGPL
+	depends = dbus
+	depends = libasyncns
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	depends = libsndfile
+	depends = systemd
+	provides = libpulse.so
+	provides = libpulse-simple.so
+	provides = libpulse-mainloop-glib.so
+	conflicts = libpulse
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-airplay-zeroconf
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = avahi
+	depends = openssl
+	provides = pulseaudio-zeroconf
+	conflicts = pulseaudio-zeroconf
+
+pkgname = pulseaudio-airplay-lirc
+	pkgdesc = IR (lirc) support for PulseAudio
+	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = lirc
+	provides = pulseaudio-lirc
+	conflicts = pulseaudio-lirc
+
+pkgname = pulseaudio-airplay-jack
+	pkgdesc = Jack support for PulseAudio
+	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = jack
+	provides = pulseaudio-jack
+	conflicts = pulseaudio-jack
+
+pkgname = pulseaudio-airplay-bluetooth
+	pkgdesc = Bluetooth support for PulseAudio
+	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = bluez
+	depends = bluez-libs
+	depends = sbc
+	provides = pulseaudio-bluetooth
+	conflicts = pulseaudio-bluetooth
+
+pkgname = pulseaudio-airplay-equalizer
+	pkgdesc = Equalizer for PulseAudio
+	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = python-sip
+	depends = fftw
+	provides = pulseaudio-equalizer
+	conflicts = pulseaudio-equalizer
+
