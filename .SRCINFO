@@ -1,6 +1,6 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = etheldreme.r9869
+	pkgver = gorgonzola.r11914
 	pkgrel = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
@@ -8,9 +8,7 @@ pkgbase = ohrrpgce
 	license = GPL
 	makedepends = subversion
 	makedepends = freebasic
-	makedepends = scons
-	makedepends = openeuphoria
-	makedepends = dos2unix
+	makedepends = python2-scons
 	depends = sdl_mixer
 	depends = openeuphoria
 	depends = libxpm
@@ -18,7 +16,7 @@ pkgbase = ohrrpgce
 	depends = ncurses
 	depends = xterm
 	optdepends = timidity-freepats: midi music support
-	source = svn+https://rpg.hamsterrepublic.com/source/rel/etheldreme
+	source = svn+https://rpg.hamsterrepublic.com/source/rel/gorgonzola
 	md5sums = SKIP
 
 pkgname = ohrrpgce
