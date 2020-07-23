@@ -2,12 +2,22 @@
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
+
 _majorver=15
-_buildver=32
+_buildver=33
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
+
+
+_JARCH='x64'
+case "${CARCH}" in
+  x86_64)  _JARCH='x64';;
+  aarch64) _JARCH='aarch64';;
+esac
+
+
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://jdk.java.net/${_majorver}"
 license=('GPL2')
 depends=(
@@ -23,8 +33,14 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('70521c1fa8a44e3073862fc10bcae2f1c2b688b5ce354734ceb242dd52145c51')
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+
+if [[ $_JARCH == "x64" ]]; then
+sha256sums=('6de169c1de7d37e6c5d5b59a12410a908f22576c07f98d9915a586d91909fc12')
+else
+sha256sums=('124fd9ba4611895460ff1547df282cd49b0e9ba2f00c9ead211b59142cc642c4')
+fi
+
 
 _eaname=java-${_majorver}-openjdk
 _jvmdir=usr/lib/jvm/${_eaname}
