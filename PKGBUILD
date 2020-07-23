@@ -7,7 +7,7 @@ pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemo
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-abrmd'
 license=('BSD')
-depends=('dbus' 'glib2' 'tpm2-tss')
+depends=('glib2' 'tpm2-tss' 'libtss2-mu.so' 'libtss2-rc.so' 'libtss2-sys.so' 'libtss2-tctildr.so')
 makedepends=('git' 'autoconf-archive' 'python')
 checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2')
 provides=("${pkgname%-git}")
@@ -27,11 +27,10 @@ prepare () {
 
 build() {
 	cd "${pkgname%-git}"
-	(( CHECKFUNC )) && _opts=('--enable-unit' '--enable-integration')
 	./configure --prefix=/usr \
 	            --sbindir=/usr/bin \
 	            --with-dbuspolicydir=/usr/share/dbus-1/system.d \
-	            "${_opts[@]}"
+	            $( ((CHECKFUNC)) && echo --enable-unit --enable-integration)
 	make
 }
 
