@@ -1,0 +1,16 @@
+pkgbase = python-neuralcoref
+	pkgdesc = Coreference Resolution in spaCy with Neural Networks
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://huggingface.co/coref
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-spacy
+	depends = cython
+	optdepends = python-pytest
+	source = python-neuralcoref-4.0.0.tar.gz::https://github.com/huggingface/neuralcoref/archive/v4.0.0.tar.gz
+	sha256sums = 6cf7662e35f03c3b2c8386c0faad8c37bc7c539a5cd81472560986a2d30bb255
+
+pkgname = python-neuralcoref
+
