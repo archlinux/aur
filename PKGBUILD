@@ -2,8 +2,9 @@
 
 pkgbase=goland-eap
 pkgname=(goland-eap goland-eap-jre)
+_pkgver=2020.2
 pkgver=202.6397.65
-pkgrel=1
+pkgrel=2
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
@@ -28,7 +29,7 @@ package_goland-eap() {
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/GoLand-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/GoLand-${_pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase%-eap}.sh" "${pkgdir}/usr/bin/${pkgbase}"
@@ -44,5 +45,5 @@ package_goland-eap-jre() {
   replaces=('gogland-eap-jre')
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/GoLand-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/GoLand-${_pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
 }
