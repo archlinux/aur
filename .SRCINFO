@@ -1,0 +1,26 @@
+pkgbase = python-faraday-plugins-git
+	pkgdesc = Faraday Plugins
+	pkgver = v1.2.3.r0.gf46ca79
+	pkgrel = 1
+	url = https://github.com/infobyte/faraday_plugins
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-html2text
+	depends = python-tqdm
+	depends = python-simplejson
+	depends = python-deprecation
+	depends = python-click
+	depends = python-requests
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-dateutil
+	depends = python-colorama
+	source = git+https://github.com/infobyte/faraday_plugins.git
+	sha256sums = SKIP
+
+pkgname = python-faraday-plugins-git
+
