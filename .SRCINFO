@@ -1,4 +1,4 @@
-pkgbase = dragonfire
+pkgbase = dragonfire-bin
 	pkgdesc = The open-source virtual assistant for Linux
 	pkgver = 1.1.1
 	pkgrel = 1
@@ -40,10 +40,10 @@ pkgbase = dragonfire
 	optdepends = python-pytest
 	optdepends = python-pytest-cov
 	optdepends = python-codecov
-	source = dragonfire-1.1.1.deb::https://github.com/DragonComputer/Dragonfire/releases/download/v1.1.1/dragonfire_1.1.1_amd64.deb
+	source = dragonfire-bin-1.1.1.deb::https://github.com/DragonComputer/Dragonfire/releases/download/v1.1.1/dragonfire_1.1.1_amd64.deb
 	source = LICENSE::https://github.com/DragonComputer/Dragonfire/raw/master/LICENSE.txt
 	sha256sums = d66fdcb92a2ab1e91ea780611ae98327d03c05841164499e35e01a28b84aece8
 	sha256sums = fc1e02b1f56939243105678427a29355f8b84a2b0559f464c7182600df9a9749
 
-pkgname = dragonfire
+pkgname = dragonfire-bin
 

@@ -1,6 +1,6 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=dragonfire
+pkgname=dragonfire-bin
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="The open-source virtual assistant for Linux"
