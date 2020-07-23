@@ -1,7 +1,7 @@
 pkgbase = gst-plugins-bad-nvidia
 	pkgdesc = GStreamer open-source multimedia framework bad plugins
 	pkgver = 1.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -84,7 +84,7 @@ pkgname = gst-plugins-bad-nvidia-libs
 	provides = gst-plugins-bad-libs
 
 pkgname = gst-plugins-bad-nvidia
-	depends = gst-plugins-bad-libs=1.16.2
+	depends = gst-plugins-bad-nvidia-libs=1.16.2
 	depends = gst-plugins-good
 	depends = aom
 	depends = libass

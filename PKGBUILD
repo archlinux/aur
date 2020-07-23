@@ -4,7 +4,7 @@
 pkgbase=gst-plugins-bad-nvidia
 pkgname=(gst-plugins-bad-nvidia-libs gst-plugins-bad-nvidia)
 pkgver=1.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer open-source multimedia framework bad plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -28,12 +28,12 @@ sha256sums=('SKIP'
             '0c6c51a371d8f381a2190280913cc41e06c17c25dbb1167043072003b3f0d338')
 
 pkgver() {
-  cd $pkgbase
+  cd gst-plugins-bad
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgbase
+  cd gst-plugins-bad
 
   # Fix build with neon 0.31
   git cherry-pick -n f10b424418e448211e3427a76fcd046e157ef0b7
@@ -46,7 +46,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgbase build \
+  arch-meson gst-plugins-bad build \
     -D directfb=disabled \
     -D flite=disabled \
     -D gsm=disabled \
@@ -100,7 +100,7 @@ package_gst-plugins-bad-nvidia-libs() {
 
 package_gst-plugins-bad-nvidia() {
   provides=('gst-plugins-bad')
-  depends=("gst-plugins-bad-libs=$pkgver" gst-plugins-good
+  depends=("gst-plugins-bad-nvidia-libs=$pkgver" gst-plugins-good
            aom libass libbs2b bzip2 chromaprint pango lcms2 curl libxml2
            libdc1394 libde265 openssl libdca faac faad2 libfdk-aac fluidsynth
            libgme nettle libkate liblrdf lilv libmms libmodplug mjpegtools
