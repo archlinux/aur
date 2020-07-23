@@ -1,0 +1,18 @@
+pkgbase = python-hug-middleware-cors
+	pkgdesc = A hug middleware for allowing CORS (cross-origin resource sharing) requests from hug servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sseemayer/hug_middleware_cors
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-hug
+	source = python-hug-middleware-cors-1.0.0.tar.gz::https://files.pythonhosted.org/packages/6f/27/eb58db0af6121b1a6f2ec04e7a98a33801fd79613bf540a2c808ba90761d/hug_middleware_cors-1.0.0.tar.gz
+	source = README.md::https://github.com/sseemayer/hug_middleware_cors/raw/master/README.md
+	source = LICENSE::https://github.com/sseemayer/hug_middleware_cors/raw/master/LICENSE
+	sha256sums = 96222e06db1a2748ec0ef0f51da2165faf59c69f40593a639c3f72e0b2375a58
+	sha256sums = 2817e928e2f25d166d715d93d3af6029f1a421505d4400219af9e7f8e1de2d24
+	sha256sums = 29d4826a14875fe511e1ad6b8cee291c0d00f77c3611002661f40f1d57a45891
+
+pkgname = python-hug-middleware-cors
+
