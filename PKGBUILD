@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-diff
-pkgver=3.1.1
-pkgrel=4
+pkgver=3.1.2
+pkgrel=1
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
 url='https://github.com/databus23/helm-diff'
@@ -11,7 +11,7 @@ depends=('helm')
 # `go mod init` wants git
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a077e964ba9b06e3489875f76491bbe4bb53c1131c19d49b8d9cfd7b5aa8606')
+sha256sums=('2cab1494bb9f19bc1efe2b0c0d774c424990b3b75626867ac92958232ea7013d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
