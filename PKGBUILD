@@ -7,7 +7,7 @@
 pkgname=fim
 _pkgname='trunk'
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='FIM (Fbi IMproved) is a highly customizable and scriptable image viewer.'
 arch=('i686' 'x86_64')
 conflicts=('fim-svn')
@@ -23,6 +23,14 @@ source=("https://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${pk
         "${pkgname}.install")
 sha256sums=('f77f45d38cbd2ddb5a21ce48b6ecb44e7ddcf77d00635d7c7dbe74ea083b8b88'
             '8c647abb30baced37aaef6544b66ed2f8709b7ad6636d761f948d85c3071c536')
+
+prepare() {
+  cd "${pkgname}-${pkgver}-${_pkgname}"
+  
+  sed -i -e 's/#define FIM_WANT_BACKGROUND_LOAD.*//' src/fim.h
+  sed -i -e 's/void exit/FIM_NORETURN void exit/' src/CommandConsole.h
+  sed -i -e 's/°//g' src/fim.cpp
+}
 
 build() {
   cd "${pkgname}-${pkgver}-${_pkgname}"
