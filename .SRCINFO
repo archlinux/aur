@@ -1,6 +1,6 @@
 pkgbase = lampswitch
 	pkgdesc = Indicator and control applet for Apache
-	pkgver = 20.7.5.34
+	pkgver = 20.7.23.39
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch
 	install = lampswitch.install
@@ -12,10 +12,9 @@ pkgbase = lampswitch
 	depends = gobject-introspection
 	depends = gtk3
 	depends = python-gobject
-	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
 	depends = desktop-file-utils
 	optdepends = mate-ayatana-indicator-applet
-	optdepends = libayatana-appindicator
 	source = bzr+lp:lampswitch
 	md5sums = SKIP
 
