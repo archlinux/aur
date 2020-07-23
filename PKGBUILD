@@ -61,8 +61,7 @@ options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
 _srcfil="${_pkgname}-${pkgver}-linux-x64.tar.gz"
 source=(
-  "https://download.oracle.com/otn-pub/java/jce/${_major}/UnlimitedJCEPolicyJDK${_major}.zip"
-  "https://download.oracle.com/otn/java/jdk/${pkgver}-${_build}/${_srcfil}" # Now /otn/, Oracle sso required
+  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_srcfil}" # Now /otn/, Oracle sso required
   "jconsole-${_jname}.desktop"
   "jmc-${_jname}.desktop"
   "jvisualvm-${_jname}.desktop"
@@ -70,8 +69,9 @@ source=(
   'readme.sh'
 )
 # from oracle-sqldeveloper
+if :; then
 DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
-source[1]="manual://${_srcfil}"
+source[0]="manual://${_srcfil}"
 if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
   XDG_DOWNLOAD_DIR=~/'Downloads'; source <(grep -Ee '^XDG_DOWNLOAD_DIR="[^"]+"$' ~/'.config/user-dirs.dirs' 2> /dev/null || :)
   if [ -s "${XDG_DOWNLOAD_DIR}/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
@@ -86,21 +86,22 @@ if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
 fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
+fi
 
-md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
-         '6152f8a7561acf795ca4701daa10a965'
+md5sums=('6152f8a7561acf795ca4701daa10a965'
          'c72336327d7cefadf4ffd74c014c7c2e'
          'ac3f149795f62cdf5bdfdd6061fb8184'
          '1b692eac219a0b34fd7ec13f09cea078'
          'daf7f23efea899b8c575145d1eb73aab'
-         '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('7a8d790e7bd9c2f82a83baddfae765797a4a56ea603c9150c87b7cdb7800194d'
-            'bad9a731639655118740bee119139c1ed019737ec802a630dd7ad7aab4309623'
+         '51c8839211cc53f09c9b11a8e28ed1ef'
+         '5504e2d9029ee2c41730a228758c50e1')
+sha256sums=('bad9a731639655118740bee119139c1ed019737ec802a630dd7ad7aab4309623'
             'd7a0a1eb18c0ba53b2e3b82e9e0f8b92b13cea87fe760d6152d375ed6dbac872'
             '6af8c0099bb66443adfe7ababe110abec0c3ed1fa06b1d9704e92c5d3b7b5a4c'
             '52fc7afe1bfb5fc899153fe105bf61b42be7d187a1703b8ef18979441450a6c3'
             '1a0d1c832612c9f52f703f8cf69ce117ea900d2b1f28ed9324e08e73482c8262'
-            'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
+            'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711'
+            '6774aa9adc740b417868de4f36967275ad15e153645d8ee875fee318caabd6f7')
 
 PKGEXT='.pkg.tar.gz' # much faster than .xz
 ## Alternative mirror, if your local one is throttled:
@@ -110,6 +111,15 @@ PKGEXT='.pkg.tar.gz' # much faster than .xz
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
+
+# https://bugs.openjdk.java.net/browse/JDK-8170157
+# 2020-06-25 UnlimitedJCEPolicyJDK7.zip/UnlimitedJCEPolicy/README.txt
+if [ "${_minor}" -lt 171 ]; then
+  source+=("https://download.oracle.com/otn-pub/java/jce/${_major}/UnlimitedJCEPolicyJDK${_major}.zip")
+  _opt_JCE=1
+else
+  _opt_JCE=0
+fi
 
 package() {
   set -u
@@ -200,6 +210,7 @@ package() {
   mv 'db/NOTICE' 'COPYRIGHT' 'LICENSE' *.txt "${pkgdir}/usr/share/licenses/java${_major}-${_pkgname}/"
   ln -s "/usr/share/licenses/java${_major}-${_pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}"
 
+if [ "${_opt_JCE}" -ne 0 ]; then
   set +u; msg2 'Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files...'; set -u
   # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
   # things like 256-bit AES. Enabled by default in OpenJDK:
@@ -208,6 +219,7 @@ package() {
   install -m644 "${srcdir}/UnlimitedJCEPolicy"/*.jar 'jre/lib/security/'
   install -Dm644 "${srcdir}/UnlimitedJCEPolicy/README.txt" \
                  "${pkgdir}/usr/share/doc/${pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
+fi
 
   set +u; msg2 'Enabling copy+paste in unsigned applets...'; set -u
   # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
