@@ -81,13 +81,11 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
