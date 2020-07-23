@@ -23,7 +23,7 @@ build() {
 	mkdir build
 	cd build
 
-	cmake -DCMAKE_BUILD_TYPE=Release ../sacd-ripper/tools/sacd_extract/
+	cmake ../sacd-ripper/tools/sacd_extract/
 
 	make
 }
