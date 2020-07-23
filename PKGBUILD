@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gonha-git
-pkgver=0.1.24.r49.85c99de
+pkgver=0.2.16.r85.5983264
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -10,14 +10,14 @@ license=('MIT')
 provides=('gonha')
 conflicts=('gonha')
 depends=('python-pyqt5'
-         'python-humanfriendly'
          'python-ewmh'
-         'python-pathlib'
-         'python-configobj'
-         'python-colr'
+         'python-psutil'
+         'python-humanfriendly'
          'python-pyinquirer'
-         'ttf-fira-code'
-         'python-prompt_toolkit1014')
+         'python-colr'
+         'python-distro'
+         'python-prompt_toolkit1014'
+         'ttf-fira-code')
 makedepends=('python-setuptools' 'git')
 source=("${pkgname%-git}::git+https://github.com/fredcox/gonha")
 sha256sums=('SKIP')
