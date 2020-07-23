@@ -1,6 +1,6 @@
 pkgbase = jre11
 	pkgdesc = Oracle Java 11 Runtime Environment LTS
-	pkgver = 11.0.7
+	pkgver = 11.0.8
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre11.install
@@ -17,7 +17,7 @@ pkgbase = jre11
 	provides = java-runtime-headless=11
 	provides = java-runtime-jre=11
 	provides = java-runtime-headless-jre=11
-	provides = jre=11.0.7
+	provides = jre=11.0.8
 	options = !strip
 	backup = etc/java11-jre/management/jmxremote.access
 	backup = etc/java11-jre/management/jmxremote.password.template
@@ -33,11 +33,11 @@ pkgbase = jre11
 	backup = etc/java11-jre/logging.properties
 	backup = etc/java11-jre/net.properties
 	backup = etc/java11-jre/sound.properties
-	source = manual://jdk-11.0.7_linux-x64_bin.tar.gz
+	source = manual://jdk-11.0.8_linux-x64_bin.tar.gz
 	source = readme.sh
-	md5sums = e2794eb87795ca7798489e661848c769
+	md5sums = db2f0b99ded108c4f549464ae7812826
 	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
-	sha256sums = a7334a400fe9a9dbb329e299ca5ebab6ec969b5659a3a72fe0d6f981dbca0224
+	sha256sums = 6390878c91e29bad7b2483eb0b470620bd145269600f3b6a9d65724e6f83b6fd
 	sha256sums = f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711
 
 pkgname = jre11
