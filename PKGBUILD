@@ -5,8 +5,8 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,} ${_pkgname,,}-docs)
-pkgver=0.15.30
-_gitcommit=dc6f8cfcbd1056facac369152e88fb24bab86cc9
+pkgver=0.15.86
+_gitcommit=3282791bc44342a4964fb531e85b2166e9caf9e6
 pkgrel=1
 pkgdesc="Render large resolution images of a Minecraft map with a web UI"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('python' 'python-pillow' 'python-numpy')
 makedepends=('python-sphinx')
 source=("$url/archive/$_gitcommit.tar.gz")
-sha512sums=('452bf34f82508f627cdc2549afb3f4a36cb336ba2426f9997b382746277944d4c6424d50ae3ab492f448ef4525f59189f5f34251e7b753aa6f30f7ad872932c4')
+b2sums=('fe8ab1aeaf75af2785b529309d564eb0a24470b8dc22ce8e7685f932691249f5bba6713a964e351ceb36395900321cf6e7435995cb69e920dfa58e57fade34d3')
 
 build() {
 	cd "${_pkgname}-$_gitcommit"
