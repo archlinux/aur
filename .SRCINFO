@@ -1,0 +1,15 @@
+pkgbase = gitern
+	pkgdesc = a git host for hackers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitern.com
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = npm
+	noextract = gitern-1.0.0.tgz
+	source = gitern-1.0.0.tgz::https://files.gitern.com/gitern-linux-x64.tar.gz
+	sha512sums = bdb87ef8542f120d0c2b75754b89029d01ed5e9397dcbfb36ee73cb16fafa7611914d4685e6ab0b7eabf75cd87ed289dcd2f49a2a12155375793d51763f772b6
+
+pkgname = gitern
+
