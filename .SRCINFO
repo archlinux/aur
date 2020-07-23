@@ -1,7 +1,7 @@
 pkgbase = doukutsu
 	pkgdesc = Japanese freeware PC side-scrolling platformer game (aka Cave Story)
 	pkgver = 1.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.cavestory.org/
 	arch = i686
 	arch = x86_64

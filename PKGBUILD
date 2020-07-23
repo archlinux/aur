@@ -1,11 +1,12 @@
-# Maintainer:  Nascher <kevin at nascher.org>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: Nascher <kevin at nascher.org>
 # Contributor: Anton Larionov <diffident dot cat at gmail dot com>
 # Contributor: Victor Feight <vrfeight3 at gmail dot com>
 # Contributor: Frozen Fox <frozenfoxz at gmail dot com>
 
 pkgname=doukutsu
 pkgver=1.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Japanese freeware PC side-scrolling platformer game (aka Cave Story)'
 url='http://www.cavestory.org/'
 arch=('i686' 'x86_64')
