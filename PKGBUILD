@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+pkgdesc='Sans serif font by Vernon Adams'
 pkgname=ttf-muli
 pkgver=3.000
-pkgrel=1
-description='Sans serif font by Vernon Adams'
+pkgrel=2
 arch=(any)
 url=https://github.com/googlefonts/MuliFont
 license=(custom:OFL)

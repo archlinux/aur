@@ -1,6 +1,7 @@
 pkgbase = ttf-muli
+	pkgdesc = Sans serif font by Vernon Adams
 	pkgver = 3.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/MuliFont
 	arch = any
 	license = custom:OFL
