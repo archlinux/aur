@@ -1,0 +1,19 @@
+pkgbase = ai-dungeon-cli-gql-git
+	pkgdesc = Play ai dungeon on your terminal (Graphql branch)
+	pkgver = r75.54ad129
+	pkgrel = 1
+	url = https://github.com/Eigenbahn/ai-dungeon-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-git-ver
+	makedepends = git
+	depends = python-requests
+	depends = python-yaml
+	depends = python-gql
+	provides = ai-dungeon-cli
+	conflicts = ai-dungeon-cli
+	source = ai-dungeon-cli-gql-git::git+https://github.com/Eigenbahn/ai-dungeon-cli.git#branch=v4.x
+	sha256sums = SKIP
+
+pkgname = ai-dungeon-cli-gql-git
+
