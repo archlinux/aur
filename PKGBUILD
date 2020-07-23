@@ -1,8 +1,9 @@
 # Maintainer: Ivan Shapovalov <intelfx.name>
+
 _srcname=intel-ipsec-mb
 pkgname=libipsec-mb
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Intel(R) Multi-Buffer Crypto for IPsec Library"
 arch=(x86_64)
@@ -36,7 +37,10 @@ build() {
 
 package() {
 	cd "$_srcname-$pkgver"
-	make PREFIX="$pkgdir/usr" NOLDCONFIG=y install
+	make install \
+		PREFIX="$pkgdir/usr" \
+		MAN_DIR="$pkgdir/usr/share/man/man7" \
+		NOLDCONFIG=y
 	install -Dm644 LICENSE \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
