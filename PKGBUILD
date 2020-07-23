@@ -3,7 +3,7 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.75.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -22,7 +22,7 @@ build() {
 	# Use nodejs v12 until upstream fixes build with v14
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
-	local nodeversion='12.18.2'
+	local nodeversion='12.18.3'
 	npm config delete prefix
 	source /usr/share/nvm/init-nvm.sh
 	nvm install "$nodeversion" && nvm use "$nodeversion"
