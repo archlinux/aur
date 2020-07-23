@@ -1,34 +1,34 @@
 pkgbase = jdk11
 	pkgdesc = Oracle Java 11 Development Kit LTS
-	pkgver = 11.0.7
+	pkgver = 11.0.8
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk11.install
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
-	depends = jre>=11
-	depends = jre<12
+	depends = jre11>=11.0.8
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = java-environment=11
 	provides = java-environment-jdk=11
+	provides = jdk=11.0.8
 	options = !strip
-	source = manual://jdk-11.0.7_linux-x64_bin.tar.gz
+	source = manual://jdk-11.0.8_linux-x64_bin.tar.gz
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = readme.sh
-	md5sums = e2794eb87795ca7798489e661848c769
+	md5sums = db2f0b99ded108c4f549464ae7812826
 	md5sums = 985d0d81ece57d0ea633ccc1d3fd78ed
 	md5sums = fbd4ddd9069e48a65da6e0cb33db9bc1
 	md5sums = e59149780f4d1124f6e339611da9c70b
 	md5sums = 6181f1ef1e5aeb637ef4cd593106beef
 	md5sums = 1db7eb33e844d1a41bce196ab622da40
 	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
-	sha256sums = a7334a400fe9a9dbb329e299ca5ebab6ec969b5659a3a72fe0d6f981dbca0224
+	sha256sums = 6390878c91e29bad7b2483eb0b470620bd145269600f3b6a9d65724e6f83b6fd
 	sha256sums = 1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54
 	sha256sums = 9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b
 	sha256sums = 73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85

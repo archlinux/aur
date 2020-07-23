@@ -8,7 +8,8 @@ pkgname='jdk11'
 #pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
 #pkgver='11.0.5'; _build='10'; _hash='e51269e04165492b90fa15af5b4eb1a5'
 #pkgver='11.0.6'; _build='8'; _hash='90eb79fb590d45c8971362673c5ab495'
-pkgver='11.0.7'; _build='8'; _hash='8c7daf89330c48f0b9e32f57169f7bac'
+#pkgver='11.0.7'; _build='8'; _hash='8c7daf89330c48f0b9e32f57169f7bac'
+pkgver='11.0.8'; _build='10'; _hash='dc5cf74f97104e8eac863698146a7ac3'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -16,10 +17,11 @@ pkgdesc+=' LTS'
 arch=('x86_64')
 url='https://www.oracle.com/technetwork/java/javase/downloads/index.html'
 license=('custom')
-depends=('java-environment-common' "jre>=${_major}" "jre<$((_major + 1))" 'zlib' 'hicolor-icon-theme')
+depends=('java-environment-common' "jre${_major}>=${pkgver}" 'zlib' 'hicolor-icon-theme')
 provides=(
   "java-environment=${_major}"
   "java-environment-jdk=${_major}"
+  "jdk=${pkgver}"
 )
 options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
@@ -54,14 +56,14 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('e2794eb87795ca7798489e661848c769'
+md5sums=('db2f0b99ded108c4f549464ae7812826'
          '985d0d81ece57d0ea633ccc1d3fd78ed'
          'fbd4ddd9069e48a65da6e0cb33db9bc1'
          'e59149780f4d1124f6e339611da9c70b'
          '6181f1ef1e5aeb637ef4cd593106beef'
          '1db7eb33e844d1a41bce196ab622da40'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('a7334a400fe9a9dbb329e299ca5ebab6ec969b5659a3a72fe0d6f981dbca0224'
+sha256sums=('6390878c91e29bad7b2483eb0b470620bd145269600f3b6a9d65724e6f83b6fd'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
@@ -78,7 +80,7 @@ package() {
   set -u
   cd "jdk-${pkgver}"
 
-  local _jvmdir="/usr/lib/jvm/java-${_major}-${pkgname}"
+  local _jvmdir="/usr/lib/jvm/java-${_major}-jdk"
 
   install -d -m755 "${pkgdir}/${_jvmdir}"
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
