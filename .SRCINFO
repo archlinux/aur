@@ -1,0 +1,12 @@
+pkgbase = libipsec-mb
+	pkgdesc = Intel(R) Multi-Buffer Crypto for IPsec Library
+	pkgver = 0.54
+	pkgrel = 1
+	url = https://github.com/intel/intel-ipsec-mb
+	arch = x86_64
+	license = BSD
+	source = intel-ipsec-mb-0.54.tar.gz::https://github.com/intel/intel-ipsec-mb/archive/v0.54.tar.gz
+	sha256sums = 8c6d59d68ee567a3c9db0967e3ca18cb61cddd73d07feed8a9b232106607228d
+
+pkgname = libipsec-mb
+
