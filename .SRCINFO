@@ -1,0 +1,17 @@
+pkgbase = libopenmpt-modplug
+	pkgdesc = A compat layer/bridge from libmodplug to libopenmpt
+	pkgver = 0.8.9.0
+	pkgrel = 1
+	url = http://lib.openmpt.org/
+	install = libopenmpt-modplug.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libopenmpt>=0.5.0
+	provides = libmodplug
+	conflicts = libmodplug
+	source = https://lib.openmpt.org/files/libopenmpt-modplug/libopenmpt-modplug-0.8.9.0-openmpt1.tar.gz
+	sha256sums = ecce1a0eecfdb0b5824cab89c270dce59596295a2c17c2b043215ecf4d7c4ff7
+
+pkgname = libopenmpt-modplug
+

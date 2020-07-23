@@ -1,0 +1,8 @@
+
+post_install() {
+  echo "=> This compatibility layer is meant to provide a smooth transition"
+  echo "   from legacy libmodplug to libopenmpt. The applications linking to"
+  echo "   libmodplug need no modifications, the ABI is the same. Not all"
+  echo "   features are supported, though. This means compilation against it"
+  echo "   may fail or resulting binaries may crash."
+}
