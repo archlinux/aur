@@ -2,6 +2,7 @@ pkgbase = xilinx-usb-drivers
 	pkgdesc = Platform Cable USB and Digilent USB-JTAG support for Xilinx (iMPACT)
 	pkgver = 14.7
 	pkgrel = 3
+	url = https://www.xilinx.com/products/design-tools/ise-design-suite.html
 	arch = i686
 	arch = x86_64
 	license = custom

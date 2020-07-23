@@ -5,6 +5,7 @@ pkgname=xilinx-usb-drivers
 pkgver=14.7
 pkgrel=3
 pkgdesc="Platform Cable USB and Digilent USB-JTAG support for Xilinx (iMPACT)"
+url="https://www.xilinx.com/products/design-tools/ise-design-suite.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('xilinx-ise=14.7' 'fxload' 'libusb-compat')
