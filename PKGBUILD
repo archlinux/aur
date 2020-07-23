@@ -3,7 +3,7 @@
 pkgorg='loco-3d'
 pkgname=('crocoddyl' 'crocoddyl-docs')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -18,6 +18,8 @@ validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 build() {
     mkdir -p "$pkgbase-$pkgver/build"
     cd "$pkgbase-$pkgver/build"
+
+    sed -i '/ADD_SUBDIRECTORY(python)/d' ../unittest/CMakeLists.txt
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
     make
