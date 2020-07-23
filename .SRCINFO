@@ -1,6 +1,6 @@
 pkgbase = dovecot-xaps-daemon-git
 	pkgdesc = iOS Push Email for Dovecot - xaps daemon
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/st3fan/dovecot-xaps-daemon
 	arch = x86_64
