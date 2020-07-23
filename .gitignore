@@ -4,3 +4,4 @@ rescached-git/
 src/
 *.tar
 *.xz
+*.zst
