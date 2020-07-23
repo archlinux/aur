@@ -1,7 +1,7 @@
 pkgbase = python-tpm2-pytss
 	pkgdesc = Python bindings for tpm2-tss
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tpm2-software/tpm2-pytss
 	arch = x86_64
 	license = BSD

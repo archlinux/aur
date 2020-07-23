@@ -2,7 +2,7 @@
 pkgname=python-tpm2-pytss
 _name=${pkgname#python-}
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
@@ -21,7 +21,7 @@ build() {
 
 check() {
 	cd "$_name-$pkgver"
-	python setup.py test
+	python -B setup.py test
 }
 
 package() {
