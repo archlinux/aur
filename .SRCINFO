@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.90.r97725.gf4a39cafa1e
+	pkgver = 2.91.r98153.g8a5da947dc6
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -34,8 +34,8 @@ pkgbase = blender-develop-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender=2.90
-	conflicts = blender=2.90
+	provides = blender=2.91
+	conflicts = blender=2.91
 	source = git://git.blender.org/blender.git#branch=master
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
