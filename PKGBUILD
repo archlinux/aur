@@ -1,5 +1,5 @@
 pkgname=cnijfilter2
-pkgver=5.90
+pkgver=6.00
 pkgrel=1
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
@@ -8,10 +8,15 @@ license=('GPL' 'custom:canon')
 depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
-source=("http://gdlp01.c-wss.com/gds/4/0100010484/01/$pkgname-source-$pkgver-1.tar.gz")
-md5sums=('11029121b7003a3ebd5d53a1331673a7')
+source=("https://gdlp01.c-wss.com/gds/9/0100010739/01/$pkgname-source-$pkgver-1.tar.gz")
+md5sums=('27a55fe3f9bc74c34966e79671f3d05e')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
+
+prepare() {
+	cd "$pkgname-source-$pkgver-1"
+	sed -e '/GET_PROTOCOL/ s:^int:extern &:g' -i 'lgmon3/src/cnijlgmon3.c'
+}
 
 build() {
 	cd "$pkgname-source-$pkgver-1"
@@ -42,7 +47,7 @@ build() {
 		     --enable-progpath=/usr/bin \
 		     --datadir=/usr/share \
 		     LDFLAGS="-L../../com/libs_bin$_arch"
-	make
+	make #CFLAGS="${CFLAGS} -fcommon"
 	popd
 
 	pushd rastertocanonij
