@@ -1,8 +1,9 @@
-# Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname=otf-takao
 pkgver=15.03
-pkgrel=2
+pkgrel=3
 _filever=00303.01
 pkgdesc="Japanese outline fonts based on IPA Fonts (otf-ipafont)"
 arch=('any')
@@ -25,4 +26,3 @@ package() {
           README.ja \
           "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
