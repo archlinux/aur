@@ -6,10 +6,9 @@ pkgbase = goclockify
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = git
 	makedepends = make
-	source = git+https://github.com/ABGEO/goclockify.git
-	sha256sums = SKIP
+	source = goclockify-1.0.0.tar.gz::https://github.com/ABGEO/goclockify/archive/v1.0.0.tar.gz
+	sha256sums = dd326e8078278f4b07615f0c18c70e01863e524a9ab792eea2e25fef118574e9
 
 pkgname = goclockify
 
