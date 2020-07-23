@@ -1,7 +1,7 @@
 # Editor:  Austcool-Walker <0ajwalker@gmail.com>
 # Maintainer: Austcool-Walker <0ajwalker@gmail.com>
 pkgname=macbuntu-theme
-pkgver=1.4.5
+pkgver=1.4.6
 wallver="2018"
 wallver2="17.0"
 pkgrel=1
