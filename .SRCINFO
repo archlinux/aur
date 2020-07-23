@@ -1,0 +1,36 @@
+pkgbase = python-deeppavlov
+	pkgdesc = An open source library for deep learning end-to-end dialog systems and chatbots
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://deeppavlov.ai
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-aio-pika
+	depends = cython
+	depends = python-fastapi
+	depends = python-h5py
+	depends = python-nltk
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pytz
+	depends = python-pydantic
+	depends = python-pymorphy2
+	depends = python-pymorphy2-dicts-ru
+	depends = python-pyopenssl
+	depends = python-requests
+	depends = python-ruamel-yaml
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-click
+	depends = python-sacremoses
+	depends = python-overrides
+	depends = python-pytelegrambotapi
+	depends = python-rusenttokenize
+	depends = uvicorn
+	source = python-deeppavlov-0.11.0.tar.gz::https://github.com/deepmipt/DeepPavlov/archive/0.11.0.tar.gz
+	sha256sums = 4f86fa24c4b185785d1f61410bd8ee43a9f4e48420c813e8c218292a61471b5e
+
+pkgname = python-deeppavlov
+
