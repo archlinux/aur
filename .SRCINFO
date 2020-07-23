@@ -1,6 +1,6 @@
 pkgbase = yayim
 	pkgdesc = A modified version of yay with additional features, improvements and small bug fixes
-	pkgver = 10.0.3
+	pkgver = 10.0.3_2
 	pkgrel = 1
 	url = https://git.jojii.de/jojii/yayim
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = yayim
 	depends = git
 	provides = yay
 	conflicts = yay
-	source = yayim-10.0.3.tar.gz::https://git.jojii.de/jojii/yayim/-/archive/v10.0.3/yayim-v10.0.3.tar.gz
-	sha256sums = 094342b156c608ca80bee1eceec0f128d18643efe87f2498637f948a56206639
+	source = yayim-10.0.3_2.tar.gz::https://git.jojii.de/jojii/yayim/-/archive/v10.0.3_2/yayim-v10.0.3_2.tar.gz
+	sha256sums = b8c56f2a1c97564d5b2efa11023d218b4091d935b08d91ab36f1cde3db30822e
 
 pkgname = yayim
 
