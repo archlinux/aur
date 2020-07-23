@@ -4,7 +4,7 @@
 pkgbase=gst-plugins-bad-nvidia
 pkgname=(gst-plugins-bad-nvidia-libs gst-plugins-bad-nvidia)
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer open-source multimedia framework bad plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
