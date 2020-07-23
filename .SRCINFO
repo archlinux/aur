@@ -10,6 +10,7 @@ pkgbase = kirigami-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
 	provides = kirigami2
 	conflicts = kirigami2
 	source = git+https://invent.kde.org/frameworks/kirigami.git

@@ -9,7 +9,7 @@ pkgdesc='A set of QML components for mobile/desktop convergent applications made
 arch=('i686' 'x86_64')
 url='https://quickgit.kde.org/?p=kirigami.git'
 license=(LGPL)
-depends=(qt5-quickcontrols2)
+depends=(qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(extra-cmake-modules git)
 conflicts=(kirigami2)
 provides=(kirigami2)
