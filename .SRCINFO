@@ -1,7 +1,7 @@
 pkgbase = f3d
 	pkgdesc = A fast and minimalist 3D viewer
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.kitware.com/f3d/f3d
 	arch = x86_64
 	license = BSD
