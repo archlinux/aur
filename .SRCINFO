@@ -1,6 +1,6 @@
 pkgbase = pkgoutofdate-git
 	pkgdesc = Checks whether Arch packages are out-of-date
-	pkgver = r15.068d899
+	pkgver = r18.f06a1df
 	pkgrel = 1
 	url = https://github.com/anatol/pkgoutofdate
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = pkgoutofdate-git
 	sha1sums = SKIP
 
 pkgname = pkgoutofdate-git
-
