@@ -4,7 +4,7 @@
 pkgname=adguardhome-git
 _origpkgname=adguardhome
 _pkgname=AdGuardHome
-pkgver=v0.102.0
+pkgver=v0.103.2
 pkgrel=1
 pkgdesc="Network-wide ads and trackers blocking DNS server. Release version from git (fixed version string)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 build(){
   cd "$_pkgname"
   git checkout tags/$pkgver
-  make
+  make -j1
 }
 
 package() {

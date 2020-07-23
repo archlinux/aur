@@ -1,6 +1,6 @@
 pkgbase = adguardhome-git
 	pkgdesc = Network-wide ads and trackers blocking DNS server. Release version from git (fixed version string)
-	pkgver = v0.102.0
+	pkgver = v0.103.2
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
 	install = readme.install
