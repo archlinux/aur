@@ -8,8 +8,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '983' '798' '1003' ' 1267')
-_merge_requests_to_use=('1124' '1003' '1267' '1360' '1359' '1369') # safe pick
+# Merge Requests List: ('429' '493' '579' '983' '798' '1003' '1267' '1360' '1359' '1369')
+_merge_requests_to_use=('1003' '1267' '1360' '1359' '1369') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -169,7 +169,7 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr "1359"
-  
+
   # Title: Fix wine copy & paste
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1369
   # Type: 3
