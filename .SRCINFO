@@ -1,0 +1,20 @@
+pkgbase = python-sacremoses-git
+	pkgdesc = Python port of Moses tokenizer, truecaser and normalizer
+	pkgver = 0.0.35.r41.gb94654f
+	pkgrel = 1
+	url = https://github.com/alvations/sacremoses
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-click
+	depends = python-joblib
+	depends = python-tqdm
+	depends = python-regex
+	provides = python-sacremoses
+	conflicts = python-sacremoses
+	source = python-sacremoses::git+https://github.com/alvations/sacremoses
+	sha256sums = SKIP
+
+pkgname = python-sacremoses-git
+
