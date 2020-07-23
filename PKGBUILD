@@ -6,7 +6,7 @@
 pkgname=markets
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A market tracker designed for Linux Smartphones"
+pkgdesc="A stock, currency and cryptocurrency tracker"
 url="https://github.com/bitstower/markets"
 arch=(x86_64)
 license=(GPL3)
