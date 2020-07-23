@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc
 pkgver=0.21.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
@@ -18,9 +18,9 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
 sha256sums=('ff0000d7109a3a827f9e5f5c6903a912a938be02eebcf0471953825932d7dd44'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
-            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'c8a667f7138a504f0a3018b48eb687814cfc741f4d38d8699b0b3b5234b25fea')
+            'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
+            '497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6'
+            '16ea5b19d554e0cb748ba14cbeee6015ed456b66f981fb8769f1403720b2d0a9')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-seeder')
@@ -76,6 +76,7 @@ package() {
   msg2 'Installing essential directories'
   install -dm 700 "$pkgdir/etc/bitcoin"
   install -dm 755 "$pkgdir/srv/bitcoin"
+  install -dm 755 "$pkgdir/run/bitcoin"
 
   pushd build
   msg2 'Installing executables and man pages...'

@@ -3,19 +3,19 @@ _bc_group=bitcoin
 
 post_install() {
   _mkuser
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
+  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin /run/bitcoin
   printf "%b\n" "$bitcoin"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
+  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin /run/bitcoin
   printf "%b\n" "$bitcoin"
 }
 
 post_remove() {
   _rmuser
-  rm -rf /srv/bitcoin
+  rm -rf /srv/bitcoin /run/bitcoin
 }
 
 _mkuser() {
@@ -45,7 +45,6 @@ To communicate with bitcoin-abc as a normal user:
 
 $ mkdir -p ~/.bitcoin
 $ cat > ~/.bitcoin/bitcoin.conf <<'EOF'
-rpcconnect=127.0.0.1
 rpcport=8332
 rpcuser=bitcoin
 rpcpassword=secret
