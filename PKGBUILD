@@ -3,7 +3,7 @@
 
 pkgname="libayatana-appindicator"
 pkgver="0.5.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Ayatana Application Indicators (Shared Library)"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-appindicator"
