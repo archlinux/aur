@@ -1,0 +1,20 @@
+pkgbase = floodlight-presenter
+	pkgdesc = Presentation and lyrics program for churches to display lyrics and media
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://floodlight.gitlab.io/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = json-glib
+	depends = libgee
+	depends = libsoup
+	source = git+https://gitlab.com/floodlight/presenter.git#commit=fee21a13812461a18c4a6db8839ce2a8a278429e
+	sha256sums = SKIP
+
+pkgname = floodlight-presenter
+
