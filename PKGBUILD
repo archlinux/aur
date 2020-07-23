@@ -1,5 +1,3 @@
-# Maintainer: Syaoran Code <syaorancode@gmail.com>
-
 pkgname=libxft-bgra-git
 _dir=libxft
 pkgver=2.3.3.r1.dda4979
