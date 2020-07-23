@@ -1,14 +1,14 @@
 
 # Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 pkgname=stellar-core-git
-pkgver=v9.2.0.97.ga3c0cf61
+pkgver=v13.2.0.67.g670982dc
 pkgrel=1
-pkgdesc="core daemon for backbone nodes in the payment Stellar network"
+pkgdesc="core daemon for full nodes in the Stellar payment network"
 arch=(x86_64 i686)
 url="https://www.stellar.org/"
 license=('APACHE')
 depends=(postgresql)
-makedepends=('git')
+makedepends=('git' 'parallel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
@@ -18,9 +18,11 @@ source=('git+https://github.com/stellar/stellar-core.git'
 	'git+https://github.com/xdrpp/xdrpp.git'
 	'git+https://github.com/USCiLab/cereal'
 	'git+https://github.com/chriskohlhoff/asio.git'
+	'git+https://github.com/fmtlib/fmt'
+	'git+https://github.com/stellar/tracy'
 	)
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -38,11 +40,11 @@ prepare() {
 	done
 
 	./autogen.sh
+	./configure --prefix=/usr
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr
 	make
 }
 
