@@ -20,14 +20,14 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7.7
+pkgver=5.7.9
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -42,10 +42,10 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=a62bbaf1ba0f5e2c498fa9b3ae295aa166d4bb8e"
-  "0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch::https://git.archlinux.org/linux.git/patch/?id=6535fe9061b6f1ce76ac658ae34b85fb3ed38ad9"
-  "0003-ALSA-usb-audio-Fix-packet-size-calculation.patch::https://git.archlinux.org/linux.git/patch/?id=17c5f7dd425becd30c4a2dafaecb054641a1fdc9"
-  "0004-drm-amd-display-Only-revalidate-bandwidth-on-medium-.patch::https://git.archlinux.org/linux.git/patch/?id=7fab9d4206e54d19b578c70cd0529045ad642f25"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f7dd45a3ae86afe15f64746d621d786f13860a65"
+  "0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch::https://git.archlinux.org/linux.git/patch/?id=ece7e249df5e71be440baaf25b324a62e0a715fa"
+  "0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch::https://git.archlinux.org/linux.git/patch/?id=b2fd0d69f3b155b0c575dd540ad354e4b5323034"
+  "0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch::https://git.archlinux.org/linux.git/patch/?id=0fe1b29d2826794bfd880944496b433c80da0173"
   "Fix-compilation-issues-when-CONFIG-SCHED-TRACER.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/12f9ffec7586ba30fcabd0ce9f13158f0158a529.patch"
 )
 validpgpkeys=(
@@ -53,16 +53,16 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('f840b9679283343c165516585c3070ebb277528721c890e9410a58e9d071ee7f'
+sha256sums=('a87d3066a7849cd6ba9a004311a9ee0402d29d17f12f64ad7d942447070b43f8'
             'SKIP'
             '07bdb86bb34876ba99406b2174dac860b962a721dc9858d08e15e2608eeb96a7'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             'b19d09da5beef3433702157ac7975710fc815ada9ed2a088136bb87e0c89dfd7'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'fa88f10dbab186cdba7ec64ffd4c07b86b2bd5fb7ff6be1d36c8a062aeb77a34'
-            '69dfd528a2ad7a57a5036c9250a2f99dc815eef011cdc17c323c49affdb051de'
-            '863f4d199f333fbbba9d42c287b566050d3716bfbd5aed9acf1f3745f8df3a2f'
-            '495d52edab5e226d24aeb3467f5f31366cf268b0cdfa6ea714e162e01067a0eb'
+            'a9dc95da65b85d67cc021062a9e5c9cd10e2a50989dd92222f4929dfceb04c3c'
+            'd1aba2b46e810374e49296760959da48e58d88c36e377479a54e7636e1ba7dc0'
+            'bdd0344427007d11412c37294559dc71090dfd0b0e6bd4b7008f32810ba797c4'
+            '095804fb1045f6ccb52825d0d8c3aad1237e919f30586034267918a15d1249f6'
             'dd5d00c6e6c47e5869e994f656685db31f50b77dc26393505e941fe5be7faa33')
 
 _kernelname=${pkgbase#linux}
