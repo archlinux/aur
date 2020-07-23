@@ -1,6 +1,6 @@
 pkgbase = thrive-launcher-bin
 	pkgdesc = Manages downloading Thrive releases.
-	pkgver = 1.1.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Revolutionary-Games/Thrive-Launcher#readme
 	install = thrive-launcher-bin.install
@@ -17,9 +17,9 @@ pkgbase = thrive-launcher-bin
 	depends = libutil-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
-	noextract = thrive-launcher_1.1.2_amd64.deb
-	source = https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/1.1.2/thrive-launcher_1.1.2_amd64.deb
-	md5sums = 60ad74fb0ca6ad25c87bb58dcd7422f6
+	noextract = thrive-launcher_1.2.3_amd64.deb
+	source = https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v1.2.3/thrive-launcher_1.2.3_amd64.deb
+	md5sums = ab64162afcb51cd3f75e79c594a2b43d
 
 pkgname = thrive-launcher-bin
 

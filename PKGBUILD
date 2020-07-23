@@ -1,13 +1,13 @@
 # Maintainer: William Brown
 pkgname="thrive-launcher-bin"
-pkgver="1.1.2"
+pkgver="1.2.3"
 pkgrel="1"
 arch=("x86_64")
 pkgdesc="Manages downloading Thrive releases."
 url="https://github.com/Revolutionary-Games/Thrive-Launcher#readme"
-source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/$pkgver/thrive-launcher_${pkgver}_amd64.deb")
+source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v$pkgver/thrive-launcher_${pkgver}_amd64.deb")
 noextract=("thrive-launcher_${pkgver}_amd64.deb") # Extract manually in prepare()
-md5sums=("60ad74fb0ca6ad25c87bb58dcd7422f6")
+md5sums=("ab64162afcb51cd3f75e79c594a2b43d")
 license=("GPL" "MIT")
 depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "libutil-linux" "libappindicator-gtk3" "libsecret")
 install="$pkgname.install"
