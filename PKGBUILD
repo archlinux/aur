@@ -2,7 +2,7 @@
 
 pkgname=eigenpy
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/$pkgname"
@@ -29,6 +29,6 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
-    sed -i '/python3/d' "$pkgdir/usr/lib/cmake/eigenpy/eigenpyConfig.cmake"
+    sed -i '/Boost COMPONENTS python3/d' "$pkgdir/usr/lib/cmake/eigenpy/eigenpyConfig.cmake"
     install -Dm644 COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
