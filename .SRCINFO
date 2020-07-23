@@ -8,7 +8,6 @@ pkgbase = libayatana-appindicator
 	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = git
 	makedepends = gtk3
 	makedepends = glib2
 	makedepends = libayatana-indicator
