@@ -22,7 +22,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 pkgname=blender-develop-git
 pkgver=2.91.r98153.g8a5da947dc6
 pkgrel=1
-pkgdesc="Development version of Blender 2.8 branch"
+pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
