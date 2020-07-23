@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli-gql-git
-pkgver=r75.54ad129
+pkgver=0.3.1.r1.g54ad129
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal (Graphql branch)"
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=("SKIP")
 pkgver() {
 	cd "$srcdir/$pkgname"
 	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --tags 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
