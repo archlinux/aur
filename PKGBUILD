@@ -4,7 +4,7 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://jitsi.org/jitsi-meet/"
@@ -24,7 +24,7 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
 sha256sums=('76b2fc6c3fba492f07fc08d6d57acd181425ebc4a06ceb16918a9ba42145aae2'
-            '6b718d4cd130bb641ba38fa5893f5aec39ae6ab8770384cc6e1f5eaaa7b791d8')
+            '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 prepare() {
   cd jitsi-meet-electron-${pkgver}/

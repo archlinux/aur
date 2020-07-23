@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Jitsi Meet
 Comment=Jitsi Meet Desktop App
-Exec=jitsi-meet
+Exec=jitsi-meet-desktop
 Terminal=false
 Type=Application
 Icon=jitsi-meet-desktop
