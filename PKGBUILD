@@ -15,7 +15,7 @@ md5sums=('126f8c82b1af1dfe4195dc9a240dd251'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < ../../fixes.patch
+  patch -p1 < "$srcdir"/fixes.patch
 
   # build libresample manually, building playgsf seems to fail randomly otherwise
   pushd libresample-0.1.3
