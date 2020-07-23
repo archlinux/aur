@@ -1,11 +1,6 @@
 # This package is based on libva-intel-driver just with the hybrid codec flag
-# Maintainer: DetMittens
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-
 pkgname=libva-intel-driver-hybrid
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=(x86_64)
@@ -24,7 +19,7 @@ replaces=(libva-driver-intel)
 optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
-source=(git+https://github.com/intel/intel-vaapi-driver.git#tag=d595d01d6421eae30824538fa6d150701ed077df)
+source=(git+https://github.com/intel/intel-vaapi-driver.git#tag=9a1f0c64174f970a26380d4957583c71372fbb7c)
 sha256sums=('SKIP')
 
 pkgver() {
