@@ -1,0 +1,44 @@
+From 98551f5eea1167e0bc42217d0e1cf0dd49f07153 Mon Sep 17 00:00:00 2001
+From: David P <megver83@parabola.nu>
+Date: Wed, 22 Jul 2020 17:55:02 -0400
+Subject: [PATCH 2/2] Fix building out-of-git
+
+Based in https://build.opensuse.org/package/view_file/openSUSE:Factory/linphoneqt/linphoneqt-fix-no-git.patch
+
+Signed-off-by: David P <megver83@parabola.nu>
+---
+ linphone-app/src/app/AppController.cpp | 4 ++++
+ linphone-app/src/config.h.cmake        | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/linphone-app/src/app/AppController.cpp b/linphone-app/src/app/AppController.cpp
+index e502d9fd..012981d2 100644
+--- a/linphone-app/src/app/AppController.cpp
++++ b/linphone-app/src/app/AppController.cpp
+@@ -28,6 +28,10 @@
+ 
+ #include "AppController.hpp"
+ 
++#ifndef LINPHONE_QT_GIT_VERSION
++#define LINPHONE_QT_GIT_VERSION LINPHONE_QT_VERSION
++#endif
++
+ #include "components/other/desktop-tools/DesktopTools.hpp"
+ // =============================================================================
+ 
+diff --git a/linphone-app/src/config.h.cmake b/linphone-app/src/config.h.cmake
+index 093539e0..a4e7e25a 100644
+--- a/linphone-app/src/config.h.cmake
++++ b/linphone-app/src/config.h.cmake
+@@ -20,6 +20,8 @@
+ *
+ *******************************************************************************/
+ 
++#define LINPHONE_QT_VERSION "${PROJECT_VERSION}"
++
+ #cmakedefine APPLICATION_DESCRIPTION "${APPLICATION_DESCRIPTION}"
+ #cmakedefine APPLICATION_ID "${APPLICATION_ID}"
+ #cmakedefine APPLICATION_NAME "${APPLICATION_NAME}"
+-- 
+2.27.0
+

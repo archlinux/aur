@@ -1,0 +1,30 @@
+pkgbase = linphone-desktop
+	pkgdesc = A free VoIP and video softphone based on the SIP protocol
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://linphone.org
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = python-pystache
+	makedepends = doxygen
+	makedepends = nasm
+	makedepends = yasm
+	makedepends = python-six
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = mediastreamer
+	depends = belcard
+	depends = liblinphone
+	source = https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/4.2.1/linphone-desktop-4.2.1.tar.gz
+	source = 0001-do-not-build-linphone-sdk.patch
+	source = 0002-Fix-building-out-of-git.patch
+	sha512sums = 4014960bb69cc1e6a9c2132d590600f2ebd5a820209bbbd76266f2ada7c2474c058c0a1c943fea1ffca20c64a6653ad8b8844326bdca35fa07999f05c68d1f8e
+	sha512sums = 7f1c080d99d24765582d68782c9c20cca6c311990f17a5109a710174405790ff69b1320dc983d1ea605afd064f14f857bf03d1acbd9847b1cea3c99b475eee5d
+	sha512sums = ea4c21c162f672f897c5a62ec8b51dd88fcc226e68b23148b4d3ed1bcdd69171a5995f3be1022f56cd48d6fdfca6455cda46e11306db60df3e63087b3f96e9e8
+
+pkgname = linphone-desktop
+
