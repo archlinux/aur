@@ -1,0 +1,8 @@
+*.tar*
+src/
+pkg/
+*.deb
+*.AppImage
+squashfs-root/
+iptsd/
+intel-precise-touch/

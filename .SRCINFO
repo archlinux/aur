@@ -1,0 +1,15 @@
+pkgbase = ipts-uapi-dkms-git
+	pkgdesc = The kernelspace part of IPTS (Intel Precise Touch & Stylus) for Linux. To make this module work, make sure you applied the patches from the git repo to your kernel or you are using the latest linux-surface kernel.
+	pkgver = 1590862024
+	pkgrel = 1
+	url = https://github.com/linux-surface/intel-precise-touch
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = ipts-uapi-dkms
+	source = git+https://github.com/linux-surface/intel-precise-touch.git#branch=feature/uapi
+	md5sums = SKIP
+
+pkgname = ipts-uapi-dkms-git
+
