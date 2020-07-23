@@ -1,7 +1,7 @@
 pkgbase = python-metadata-parser
 	pkgdesc = A module to parse metadata out of urls and html documents
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jvanasco/metadata_parser
 	arch = any
 	license = MIT

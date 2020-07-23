@@ -2,7 +2,7 @@
 
 pkgname=python-metadata-parser
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A module to parse metadata out of urls and html documents'
 arch=('any')
 url='https://github.com/jvanasco/metadata_parser'
@@ -19,4 +19,6 @@ package() {
   cd "metadata_parser-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
+  rm -rf "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/tests"
 }
