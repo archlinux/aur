@@ -1,6 +1,6 @@
 pkgbase = libayatana-appindicator
 	pkgdesc = Ayatana Application Indicators (Shared Library)
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-appindicator
 	arch = i686

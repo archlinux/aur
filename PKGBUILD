@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libayatana-appindicator"
-pkgver="0.5.4"
+pkgver="0.5.5"
 pkgrel="1"
 pkgdesc="Ayatana Application Indicators (Shared Library)"
 arch=("i686" "x86_64" "pentium4")
