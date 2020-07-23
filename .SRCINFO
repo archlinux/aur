@@ -1,7 +1,7 @@
 pkgbase = aptik-battery-monitor
 	pkgdesc = Battery monitor for laptops. Displays detailed statistics for battery life, remaining capacity, and charge/discharge rate
 	pkgver = 17.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teejee2008/battery-monitor
 	install = aptik-battery-monitor.install
 	arch = x86_64
