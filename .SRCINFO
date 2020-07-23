@@ -15,7 +15,6 @@ pkgbase = python-tpm2-pytss-git
 	depends = libtss2-esys.so
 	depends = libtss2-fapi.so
 	depends = libtss2-rc.so
-	depends = libtss2-sys.so
 	depends = libtss2-tctildr.so
 	provides = python-tpm2-pytss
 	conflicts = python-tpm2-pytss
