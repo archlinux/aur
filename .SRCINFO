@@ -1,7 +1,7 @@
 pkgbase = joycond-cemuhook-git
 	pkgdesc = Support for cemuhook's UDP protocol for joycond devices
-	pkgver = r26.e51f79c
-	pkgrel = 3
+	pkgver = r34.90bbab3
+	pkgrel = 1
 	url = https://github.com/joaorb64/joycond-cemuhook
 	arch = any
 	license = unknown
@@ -13,6 +13,7 @@ pkgbase = joycond-cemuhook-git
 	source = joycond-cemuhook::git+https://github.com/joaorb64/joycond-cemuhook.git
 	source = run.sh
 	sha512sums = SKIP
+	sha512sums = 492b633a637764f52e8750e1d9e3a32c7dd39f36db379f22392dfa21a9618b254f165771a03307886dbd69287bd353e249b9d53a738f805dd117aaf436b9c0cc
 
 pkgname = joycond-cemuhook-git
 
