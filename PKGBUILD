@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=aptik-battery-monitor
 pkgver=17.12
