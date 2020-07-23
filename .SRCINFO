@@ -1,17 +1,17 @@
 pkgbase = archinstall-gui
 	pkgdesc = A graphical installer for Arch Linux. Useful for Live CD's etc.
-	pkgver = 0.1rc9
+	pkgver = 0.1rc10
 	pkgrel = 1
 	url = https://github.com/Torxed/archinstall
 	arch = x86_64
 	license = GPLv3
 	depends = python>=3.8
-	depends = falkon
+	depends = chromium
 	depends = xorg-server
 	depends = xorg-xinit
 	optdepends = python-systemd: Adds more controlled logging functionality
 	provides = archinstall-gui
-	source = archinstall-gui-v0.1rc9-x86_64.tar.gz::https://github.com/Torxed/archinstall_gui/archive/v0.1rc9.tar.gz
+	source = archinstall-gui-v0.1rc10-x86_64.tar.gz::https://github.com/Torxed/archinstall_gui/archive/v0.1rc10.tar.gz
 	md5sums = SKIP
 
 pkgname = archinstall-gui
