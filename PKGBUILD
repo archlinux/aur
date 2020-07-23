@@ -5,7 +5,7 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.4.beta1.r9.g0e3aec2
+pkgver=2.4.rc1.r6.gc524b28
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
@@ -19,7 +19,7 @@ source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragm
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_name}" describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/beta/.beta/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${_name}" describe --long --tags --match blendluxcore_v* | sed 's/^blendluxcore_v//;s/\(alpha\|beta\|rc\)/\.\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
