@@ -3,7 +3,7 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -25,10 +25,10 @@ source=('nomad-server.service'
         'nomad-client.hcl'
         'nomad-client.service'
         'nomad-server.hcl')
-sha256sums_x86_64=('065b41e39cf24e4b6bea49566b505c9b6cdaddb5fcbc7688377d89ed59078cc7')
-sha256sums_i686=('6f0ceedb446a2b7b54e9ce316971d71a88ebf25443558947e24870b755896c11')
-sha256sums_armv7h=('06fd47e4ddafa8a30bb2ad417c7c58c92170706f6ec1d65a572d0ceb5d24f8ed')
-sha256sums_aarch64=('bc8669fb8ead80fcbacfd4f2392032acf6468dba33a38ef075af4860f9e6b930')
+sha256sums_x86_64=('b9a266340306f5e8ccbc41b1076250296abb626f7f233c79b70e000e531da509')
+sha256sums_i686=('a336198c7267f770a21dbbf5fc4fc02a74b81da5b5627aeaa121ed7338c834cb')
+sha256sums_armv7h=('4cc3025822dd922f0109617337b0cfd37efe9a9e84fa34ceac90d3615463ac24')
+sha256sums_aarch64=('89c8995d45a2124e593a304ddde5287ffa4961c31c31ac430f2834b9832a8d73')
 sha256sums=('85b6938ba13b450f8b7b9ca281178eea57a9409948b9e70b69d6a66a4dbdaa7b'
             'c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97'
             '1ddf845cfbb2beff7162bd7299705338cf1611fc9f7dfe6a093e4c9cce43e0d2'
