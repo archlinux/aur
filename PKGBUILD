@@ -1,8 +1,8 @@
 # Maintainer: klanc <lewis at ledgedash dot com>
 
 pkgname=slippi-online-appimage
-pkgver=2.2.0
-pkgrel=1
+pkgver=2.2.1
+pkgrel=0
 pkgdesc='Slippi fork of Faster Melee, which allows you to play rollback netplay on Super Smash Bros Melee, (automatically gets latest version)'
 arch=('x86_64')
 url='https://slippi.gg/'
