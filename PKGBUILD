@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/freswa/dovecot-xaps-daemon'
 license=('custom:MIT')
 makedepends=('go')
-backup=('etc/xapsd/xapsd.conf')
+backup=('etc/xapsd/xapsd.yaml')
 source=("https://github.com/freswa/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 b2sums=('7c135e0f8981627e5f17d8f919323024eab68e119b5fca56e38c65071c853a1563462b63512475b2d0ab424bb79bc79ab3ed2174fdbbda92c8154db1dab59b39')
 

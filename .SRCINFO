@@ -6,7 +6,7 @@ pkgbase = dovecot-xaps-daemon
 	arch = x86_64
 	license = custom:MIT
 	makedepends = go
-	backup = etc/xapsd/xapsd.conf
+	backup = etc/xapsd/xapsd.yaml
 	source = https://github.com/freswa/dovecot-xaps-daemon/archive/v0.9/dovecot-xaps-daemon-0.9.tar.gz
 	b2sums = 7c135e0f8981627e5f17d8f919323024eab68e119b5fca56e38c65071c853a1563462b63512475b2d0ab424bb79bc79ab3ed2174fdbbda92c8154db1dab59b39
 
