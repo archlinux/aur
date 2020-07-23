@@ -5,13 +5,11 @@
 
 pkgname=ttf-pragmatapro
 pkgver=0.828
-pkgrel=1
+pkgrel=2
 pkgdesc="PragmataPro by Fabrizio Schiavi"
 arch=('any')
 url="http://www.fsd.it/shop/fonts/pragmatapro/"
 license=('http://www.fsd.it/fonts/eula.htm')
-depends=('fontconfig' 'xorg-font-utils')
-install=$pkgname.install
 source=("LICENSE")
 sha256sums=('8067e67a5d2153a8990ffc866de319a01d21f6021789812dd1a38219062e1475')
 
