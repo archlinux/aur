@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 0.99.5
+	pkgver = 0.99.6
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = nyrna: for using nyrna per game
 	optdepends = wmctrl: for optional minimize/maximize of all open windows on game start/stop
 	optdepends = net-tools: for optional network monitoring
-	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=7e5ac8918fe153477ba3b8280d79f8d67e24b881
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=9cd09942318ff2cd86b8ee6c0c759129c81f394c
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch
