@@ -1,8 +1,8 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev
-pkgver=1.0.0b8
-pkgrel=9
+pkgver=1.0.0b8.post1
+pkgrel=10
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -21,16 +21,14 @@ provides=('otr-verwaltung3p')
 _pkgname='otr-verwaltung3p'
 
 source=("https://github.com/EinApfelBaum/otr-verwaltung3p/archive/${pkgver}.tar.gz"
-        "bin.otrverwaltung3p.diff")
-sha256sums=('60d20095048b4a215be3fdab89742a8c0abf2114150b61a2b8de8e4fd68df780'
-            '52125d7957be3b42f14d63b9526d3e66751cbb9cfa29de2a329a63df57d6a0a0')
+        "otrverwaltung3p_actions_cutvirtualdub.diff")
+sha256sums=('62dba87eaca54b546126e09be94bca2c555acf9eebb3fce11657efb9dc708a84'
+            '5f3b58ee6f2259a8e5f25420f561c64beb2fb915ac537bc585d768416ad44ee8')
 options=('!strip')
 
 prepare() {
     # hotfix
-    sed -i "s/self\(.*\)disconnect(self.row_activate_id)/# self\1disconnect(self.row_activate_id)/" \
-           "${srcdir}/${_pkgname}-${pkgver}/data/plugins/Play.py"
-    patch "${srcdir}/${_pkgname}-${pkgver}/bin/otrverwaltung3p" bin.otrverwaltung3p.diff
+    patch "${srcdir}/${_pkgname}-${pkgver}/otrverwaltung3p/actions/cutvirtualdub.py" otrverwaltung3p_actions_cutvirtualdub.diff
 }
 
 package() {
