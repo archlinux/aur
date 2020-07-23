@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=0.1.r125.668ec8d
+pkgver=1.2.r13.g14396b2
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^tlp.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
