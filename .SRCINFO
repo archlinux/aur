@@ -1,0 +1,14 @@
+pkgbase = myss-git
+	pkgdesc = A Simple Program Which Enables You To Have Screenshot Every 1 Minute
+	pkgver = r71.79e7d47
+	pkgrel = 1
+	url = http://sadegh.io/myss
+	arch = any
+	license = GPL3
+	depends = scrot
+	provides = myss
+	source = myss::git+https://github.com/Alirezaies/myss
+	sha256sums = SKIP
+
+pkgname = myss-git
+
