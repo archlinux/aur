@@ -2,29 +2,29 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='https://github.com/ros/ros_comm'
 
 pkgname='ros-noetic-rostest'
-pkgver='1.15.4'
+pkgver='1.15.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-rosunit
 	ros-noetic-catkin
+	ros-noetic-rosunit
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 	boost
 )
 
 ros_depends=(
-	ros-noetic-rosunit
 	ros-noetic-rosgraph
-	ros-noetic-rosmaster
 	ros-noetic-roslaunch
+	ros-noetic-rosmaster
 	ros-noetic-rospy
+	ros-noetic-rosunit
 )
 
 depends=(
@@ -34,7 +34,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/rostest"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('d5c96a81e0c8554b77666bca5dcc68e03083a761a117038ff9b65f9643751c9e')
+sha256sums=('80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4')
 
 build() {
 	# Use ROS environment variables.
