@@ -1,5 +1,6 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>, Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=0.99.6
 pkgrel=1
@@ -10,18 +11,18 @@ license=('GPL3')
 depends=('bash')
 makedepends=('git')
 optdepends=(
-    'strace'
-    'gamemode'
-    'mangohud'
-    'vkbasalt'
-    'winetricks'
+    'strace: write a strace log of the launched game'
+    'gamemode: for using GameMode per game'
+    'mangohud: for using MangoHUD per game'
+    'vkbasalt: for using vkBasalt per game'
+    'winetricks: winetricks support'
     'wget: for optional reshade download'
     'unzip: for optional reshade download'
     'git: for pulling optional shaders'
     'xdotool: for playing regular games side-by-side in VR'
     'xorg-xwininfo: for playing regular games side-by-side in VR'
     'vr-video-player: for playing regular games side-by-side in VR'
-    'nyrna: for using nyrna per game'
+    'nyrna: for using Nyrna per game'
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
     'net-tools: for optional network monitoring'
 )
