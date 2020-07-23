@@ -1,8 +1,8 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Alessio Fachechi <alessio.fachechi@gmail.com>
 
 pkgname=kitematic
-pkgver=0.17.11
+pkgver=0.17.12
 pkgrel=1
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'npm' 'grunt-cli')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
-sha256sums=('a79c74ae270c0c8d197d971cde8eba6931e31b74e1f011ebbb2867edfc046b88'
+sha256sums=('c47e11910a693e06435d6eaef18bc93c37f8be26304502cf92910a16e8c55e43'
             'acf85b7e6a94be11c482f6119dcea00cf828d9cd25e0bdea22b844fa5d4c01c0'
             '954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617')
 
