@@ -1,17 +1,18 @@
-# Contibutor: Thiago Yukio Kikuchi Oliveira <stratust@gmail.com>
-# Maintainer: Whyme Lyu <callme5long@gmail.com>
+# Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
+# Contributor: Whyme Lyu <callme5long@gmail.com>
+# Contributor: Thiago Yukio Kikuchi Oliveira <stratust@gmail.com>
 
 _pkgname=bbcp
 pkgname=bbcp-git
-pkgver=15.02.03.00.2
-pkgrel=2
+pkgver=17.12.00.00.0
+pkgrel=1
 pkgdesc="A high-performance network file copy application."
 arch=('x86_64')
-url="http://www.slac.stanford.edu/~abh/bbcp/"
+url="https://www.slac.stanford.edu/~abh/bbcp/"
 license=('LGPL3')
 depends=('openssl' 'zlib' 'openssh')
 makedepends=('git')
-source=('git+http://www.slac.stanford.edu/%7Eabh/bbcp/bbcp.git/')
+source=('git+https://www.slac.stanford.edu/%7Eabh/bbcp/bbcp.git/')
 md5sums=('SKIP')
 
 build() {
