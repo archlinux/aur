@@ -54,7 +54,7 @@ If you are interested to improve this patch, welcome to mail me.
 +./tool/VentoyWorker.sh $*
 --- tool/ventoy_lib.sh
 +++ tool/ventoy_lib.sh
-@@ -36,7 +36,7 @@ vterr() {
+@@ -37,7 +37,7 @@
  }
  
  vtdebug() {
@@ -63,7 +63,7 @@ If you are interested to improve this patch, welcome to mail me.
  }
  
  check_tool_work_ok() {
-@@ -51,30 +51,6 @@ check_tool_work_ok() {
+@@ -52,30 +52,6 @@
          vtoyfat=vtoyfat_32
      fi
      
@@ -94,8 +94,8 @@ If you are interested to improve this patch, welcome to mail me.
      vtdebug "tool check success ..."
      ventoy_true
  }
-@@ -132,13 +108,6 @@ is_disk_contains_ventoy() {
-         return
+@@ -137,13 +113,6 @@
+         fi
      fi
      
 -    # PART1_TYPE=$(dd if=$DISK bs=1 count=1 skip=450 status=none | ./tool/hexdump -n1 -e  '1/1 "%02X"')
