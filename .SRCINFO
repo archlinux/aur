@@ -1,0 +1,34 @@
+pkgbase = vice-svn-gtk3
+	pkgdesc = The Versatile Commodore Emulator (Commodore 64/C64) - GTK3 development version
+	pkgver = r38142
+	pkgrel = 1
+	url = http://vice-emu.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = xa
+	makedepends = svn
+	makedepends = texlive-core
+	makedepends = dos2unix
+	depends = giflib
+	depends = lame
+	depends = libjpeg
+	depends = libpng
+	depends = libxrandr
+	depends = libnet
+	depends = libpcap
+	depends = xdialog
+	optdepends = pulseaudio
+	optdepends = pulseaudio-alsa
+	optdepends = alsa-lib
+	provides = vice
+	conflicts = vice
+	conflicts = vice-svn
+	conflicts = vice-svn-sdl2
+	replaces = vice
+	source = vice-svn::svn://svn.code.sf.net/p/vice-emu/code/trunk
+	sha256sums = SKIP
+
+pkgname = vice-svn-gtk3
+
