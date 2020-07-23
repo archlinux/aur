@@ -1,13 +1,13 @@
 pkgbase = amdgpu-pro-installer
-	pkgver = 19.30_934563
+	pkgver = 20.20_1098277
 	pkgrel = 1
-	url = https://www.amd.com/en/support/kb/release-notes/rn-rad-lin-19-30-unified
+	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20
 	arch = x86_64
 	groups = Radeon_Software_for_Linux
 	license = custom: multiple
 	makedepends = wget
-	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-19.30-934563-ubuntu-18.04.tar.xz
-	sha256sums = b97f0e31a9ca01971b1855e8e191fa825d538f7941331d3b15bc46474dde50f6
+	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz
+	sha256sums = 8c08a8e3b2fc422e94a9b2226e015cfc40606b5e2613c483f9638874ccbfb312
 
 pkgname = amdgpu-core-meta
 	pkgdesc = Config file /etc/ld.so.conf.d/20-amdgpu.conf
@@ -20,53 +20,60 @@ pkgname = amdgpu-pro-core-meta
 	install = amdgpu-pro-core-meta.install
 	arch = any
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-core-meta=19.30_934563-1
+	depends = amdgpu-core-meta=20.20_1098277-1
 
 pkgname = amf-amdgpu-pro
 	pkgdesc = AMDGPU Pro Advanced Multimedia Framework
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
 	depends = gcc-libs
 	depends = glibc
+	depends = libgl1
 	depends = libx11
-	depends = opencl-amdgpu-pro-orca=19.30_934563-1
-	depends = opencl-amdgpu-pro-pal=19.30_934563-1
-	depends = vulkan-amdgpu-pro=19.30_934563-1
+	depends = opencl-amdgpu-pro-orca=20.20_1098277-1
+	depends = opencl-amdgpu-pro-pal=20.20_1098277-1
+	depends = vulkan-amdgpu-pro=20.20_1098277-1
 
 pkgname = hip-amdgpu-pro
 	pkgdesc = HIP-CLANG runtime. HIP-CLANG allows developers to convert CUDA code to common C++
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
 	depends = glibc
 
 pkgname = amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = gcc
 	depends = gcc-libs
 	depends = glibc
+	depends = libdrm
 	depends = libx11
 	depends = libxcb
 	depends = libxdamage
 	depends = libxext
 	depends = libxfixes
 	depends = libxxf86vm
+	depends = wayland
 	provides = libgl
-	backup = etc/gbm/gbm.conf
+	backup = etc/amd/amdapfxx.blb
 
 pkgname = lib32-amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
-	depends = amdgpu-pro-libgl=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = amdgpu-pro-libgl=20.20_1098277-1
+	depends = lib32-gcc
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
+	depends = lib32-libdrm
 	depends = lib32-libx11
 	depends = lib32-libxcb
 	depends = lib32-libxdamage
 	depends = lib32-libxext
 	depends = lib32-libxfixes
 	depends = lib32-libxxf86vm
+	depends = lib32-wayland
 	provides = lib32-libgl
 	backup = etc/amd/amdrc
 	backup = etc/ld.so.conf.d/10-amdgpu-pro-i386.conf
@@ -74,27 +81,32 @@ pkgname = lib32-amdgpu-pro-libgl
 pkgname = opencl-amdgpu-pro-comgr
 	pkgdesc = Code object manager (COMGR)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = gcc
+	depends = gcc-libs
 	depends = glibc
 
 pkgname = opencl-amdgpu-pro-dev
 	pkgdesc = AMD OpenCL SDK
 	license = custom: AMDGPU-PRO EULA
+	depends = gcc
 	depends = glibc
+	depends = opencl-amdgpu-pro-comgr=20.20_1098277-1
 
 pkgname = opencl-amdgpu-pro-pal
 	pkgdesc = AMDGPU Pro OpenCL driver PAL
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
 	depends = glibc
-	depends = opencl-amdgpu-pro-comgr=19.30_934563-1
+	depends = opencl-amdgpu-pro-comgr=20.20_1098277-1
 	provides = opencl-driver
 	backup = etc/OpenCL/vendors/amdocl64.icd
 
 pkgname = opencl-amdgpu-pro-orca
 	pkgdesc = AMDGPU Pro OpenCL driver ORCA aka legacy
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = gcc
 	depends = glibc
 	provides = opencl-driver
 	backup = etc/OpenCL/vendors/amdocl-orca64.icd
@@ -102,36 +114,29 @@ pkgname = opencl-amdgpu-pro-orca
 pkgname = lib32-opencl-amdgpu-pro-orca
 	pkgdesc = AMDGPU Pro OpenCL driver ORCA aka legacy (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = lib32-gcc
 	depends = lib32-glibc
 	provides = lib32-opencl-driver
 	backup = etc/OpenCL/vendors/amdocl-orca32.icd
 
-pkgname = roct-amdgpu-pro
-	pkgdesc = development environment for hsakmt-roct
-	license = MIT
-	depends = amdgpu-pro-core-meta=19.30_934563-1
-	depends = glibc
-	depends = numactl
-
-pkgname = roct-amdgpu-pro-dev
-	pkgdesc = development environment for hsakmt-roct
-	license = MIT
-	depends = roct-amdgpu-pro=19.30_934563-1
-
 pkgname = vulkan-amdgpu-pro
 	pkgdesc = AMDGPU Pro Vulkan driver
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = gcc
 	depends = gcc-libs
 	depends = glibc
+	depends = wayland
 	provides = vulkan-driver
 
 pkgname = lib32-vulkan-amdgpu-pro
 	pkgdesc = AMDGPU Pro Vulkan driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-core-meta=19.30_934563-1
+	depends = amdgpu-pro-core-meta=20.20_1098277-1
+	depends = lib32-gcc
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
+	depends = lib32-wayland
 	provides = lib32-vulkan-driver
 
