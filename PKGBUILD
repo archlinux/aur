@@ -11,27 +11,27 @@ license=("LGPL2.1" "LGPL3")
 makedepends=("git" "gtk3" "glib2" "libayatana-indicator" "libdbusmenu-gtk3" "dbus-glib" "mate-common" "gobject-introspection")
 depends=('libdbusmenu-gtk3' 'libayatana-indicator')
 optdepends=("vala" "mono" "gtk-sharp-3")
-source=("git+https://github.com/AyatanaIndicators/${pkgname}.git")
-md5sums=("SKIP")
+source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('fd6705ad2793dced95056036ecd73b7f')
 conflicts=("${pkgname}-gtk3")
 
 prepare()
 {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     NOCONFIGURE=1 ./autogen.sh
 }
 
 build()
 {
     export CSC="/usr/bin/mcs"
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     ./configure --prefix=/usr --enable-introspection --enable-gtk-doc=no --disable-tests --disable-mono-test --with-gtk=3
     make
 }
 
 package()
 {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 }
 

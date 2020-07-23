@@ -22,8 +22,8 @@ pkgbase = libayatana-appindicator
 	optdepends = mono
 	optdepends = gtk-sharp-3
 	conflicts = libayatana-appindicator-gtk3
-	source = git+https://github.com/AyatanaIndicators/libayatana-appindicator.git
-	md5sums = SKIP
+	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.5.tar.gz
+	md5sums = fd6705ad2793dced95056036ecd73b7f
 
 pkgname = libayatana-appindicator
 
