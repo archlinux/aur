@@ -1,0 +1,18 @@
+pkgbase = materia-theme-dracula-git
+	pkgdesc = This is the Materia theme except with Dracula colors. Modified by afraidofmusic
+	pkgver = r1406.990af9fb
+	pkgrel = 1
+	url = https://github.com/afraidofmusic/materia-theme-dracula
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk3>=3.22
+	depends = gtk-engine-murrine
+	depends = gnome-themes-extra
+	provides = materia-theme
+	conflicts = materia-theme
+	source = materia-theme-dracula-git::git+https://github.com/afraidofmusic/materia-theme-dracula.git
+	sha256sums = SKIP
+
+pkgname = materia-theme-dracula-git
+
