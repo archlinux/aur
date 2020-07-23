@@ -10,7 +10,7 @@ license=('GPL3')
 source=('https://gitlab.com/smart-pattern/valentina/-/archive/develop/valentina-develop.zip')
 depends=('qt5-svg' 'poppler' 'qt5-xmlpatterns')
 makedepends=('qt5-tools' 'unzip' 'sed')
-md5sums=('56310da176b813b58f1f7eb467d61985')
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/valentina-develop"
