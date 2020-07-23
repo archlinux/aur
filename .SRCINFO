@@ -5,18 +5,18 @@ pkgbase = dnsjit-git
 	url = https://github.com/DNS-OARC/dnsjit
 	arch = x86_64
 	license = GPL3
+	makedepends = autoconf
 	makedepends = git
-	makedepends = luajit
-	makedepends = libpcap
-	makedepends = lmdb
-	makedepends = gnutls
-	makedepends = libck
-	makedepends = libuv
 	depends = luajit
+	depends = libpcap
+	depends = lmdb
+	depends = gnutls
+	depends = libck
+	depends = libuv
 	provides = dnsjit
 	conflicts = dnsjit
-	source = dnsjit::git+https://github.com/DNS-OARC/dnsjit.git
-	md5sums = SKIP
+	source = dnsjit-git::git+https://github.com/DNS-OARC/dnsjit.git
+	sha256sums = SKIP
 
 pkgname = dnsjit-git
 
