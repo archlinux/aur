@@ -1,10 +1,11 @@
 pkgbase = wxqt-dev
 	pkgdesc = Qt implementation of wxWidgets API for GUI
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
+	makedepends = glu
 	depends = libsecret
 	depends = qt5-base
 	conflicts = wxgtk-common

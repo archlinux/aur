@@ -2,12 +2,13 @@
 
 pkgname=wxqt-dev
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt implementation of wxWidgets API for GUI'
 arch=('x86_64')
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
 depends=('libsecret' 'qt5-base')
+makedepends=('glu')
 conflicts=('wxgtk-common')
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
 sha1sums=('f8c77e6336b5f6414b07e27baa489fb8abc620c4')
