@@ -1,0 +1,30 @@
+pkgbase = python-faraday-client-git
+	pkgdesc = Faraday GTK Client
+	pkgver = v1.0.0.r0.g0a23bf04
+	pkgrel = 1
+	url = https://github.com/infobyte/faraday-client
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-websocket-client
+	depends = python-colorama
+	depends = python-deprecation
+	depends = python-dateutil
+	depends = python-flask
+	depends = python-requests
+	depends = python-tornado
+	depends = python-tqdm
+	depends = pygobject-devel
+	depends = python-html2text
+	depends = python-future
+	depends = python-xlsxwriter
+	depends = python-cairocffi
+	depends = python-cairo
+	depends = python-faraday-plugins-git
+	source = git+https://github.com/infobyte/faraday-client.git
+	sha256sums = SKIP
+
+pkgname = python-faraday-client-git
+
