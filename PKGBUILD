@@ -1,8 +1,8 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 
 pkgname=vtk9
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('x86_64')
 url="http://vtk.org"
@@ -11,7 +11,7 @@ depends=('freetype2' 'jsoncpp' 'libharu' 'libjpeg-turbo' 'libogg' 'libpng' 'libt
 makedepends=('cmake')
 provides=('vtk')
 source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz")
-sha256sums=("c9edd74c681c3bf236f7fd70ea26f18511bee546823f3e4076b835a23b578d40")
+sha256sums=("15c269946a8a8ed578bbd28a59672c251089185d582cd1268658908bf414e017")
 
 build() {
     cd "$srcdir/vtk-v${pkgver}"
