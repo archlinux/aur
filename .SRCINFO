@@ -1,0 +1,14 @@
+pkgbase = xclickroot-git
+	pkgdesc = Click on root window and run a command
+	pkgver = r3.309fd17
+	pkgrel = 1
+	url = https://github.com/phillbush/xclickroot
+	arch = x86_64
+	license = Public Domain
+	makedepends = git
+	depends = libx11
+	source = git+https://github.com/phillbush/xclickroot.git
+	sha256sums = SKIP
+
+pkgname = xclickroot-git
+
