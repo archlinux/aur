@@ -19,7 +19,7 @@
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.4.beta1.r0.g2393bc8f3
+pkgver=2.4.rc1.r3.g5e0356f28
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -44,7 +44,7 @@ pkgver() {
 # shellcheck disable=SC2164
   cd "${srcdir}/${_name}"
 # shellcheck disable=SC2015
-  git describe --long --tags --match luxcorerender* | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match luxcorerender* | sed 's/^luxcorerender_v//;s/\(alpha\|beta\|rc\)/\.\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
