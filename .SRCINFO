@@ -1,0 +1,19 @@
+pkgbase = dnsjit
+	pkgdesc = Engine for capturing, parsing and replaying DNS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DNS-OARC/dnsjit
+	arch = x86_64
+	license = GPL3
+	makedepends = luajit
+	makedepends = libpcap
+	makedepends = lmdb
+	makedepends = gnutls
+	makedepends = libck
+	makedepends = libuv
+	depends = luajit
+	source = https://github.com/DNS-OARC/dnsjit/archive/v1.0.0.tar.gz
+	sha256sums = cd3a0052e16aaa8d9acf23aa90277928e9d2bf45bc5f50c694b2330b2482a007
+
+pkgname = dnsjit
+
