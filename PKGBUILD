@@ -11,7 +11,7 @@ license=('custom:MIT')
 makedepends=('git' 'go')
 provides=('dovecot-xaps-daemon')
 conflicts=('dovecot-xaps-daemon')
-backup=('etc/xapsd/xapsd.conf')
+backup=('etc/xapsd/xapsd.yaml')
 source=('git+https://github.com/st3fan/dovecot-xaps-daemon.git')
 b2sums=('SKIP')
 
