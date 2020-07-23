@@ -11,6 +11,8 @@ pkgbase = python-gql-git
 	depends = python-graphql-core
 	depends = python-promise
 	depends = python-requests
+	provides = python-gql
+	conflicts = python-gql
 	source = python-gql-git::git+https://github.com/graphql-python/gql.git
 	sha256sums = SKIP
 
