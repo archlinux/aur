@@ -19,8 +19,8 @@ optdepends=('mpv: for watching streams'
 # Download information
 _packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
 source=("${url}/archive/${pkgver}.tar.gz" "${_packagesig}")
-validpgpkeys=("02AAA23ABDF1D538BD889D251AADE5E728FFC667")
-sha512sums=("ce8c8e537da04b6c4a88774977f6107021f381aed62116adb44c36e8a90735ba70b4b99765f8db9defa1f7138bc7ac0fac4faaa1553a6b6ffa54918570e9b0bc" "35002acb5305294a8e023ffffd73dae6ff78fbb882627b7cc0892d4aac7681e9be994b4e394ebeb42e482f098ad8c24db54e09de438db0d827a3d93cce141ed4")
+validpgpkeys=("B46B326273E4A1D21AAA3F6F529AC10050BD24EF")
+sha512sums=("c5a577da9d3c1afc8086714a1114900527132993fa9685cba156f75067b4ef532357e2a141e82f3c33421374a742ff08265c1192c89957f4aa6f19fb064760fd" "e1822e60b92250d81706ff8468f7946c232fcb282955cbe191f196f363c6b38e59664c8b47b8b8f2ede85ee76c9e1547809c2b5d860ea6b245c41d9748dc4200")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
