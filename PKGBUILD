@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+pkgdesc='Sans serif font with rounded tips by Vernon Adams.'
 pkgname=ttf-nunito
 pkgver=3.504
-pkgrel=1
-description='Sans serif font with rounded tips by Vernon Adams.'
+pkgrel=2
 arch=(any)
 license=(custom:OFL)
 url=https://github.com/googlefonts/nunito

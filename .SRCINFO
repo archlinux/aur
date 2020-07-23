@@ -1,6 +1,7 @@
 pkgbase = ttf-nunito
+	pkgdesc = Sans serif font with rounded tips by Vernon Adams.
 	pkgver = 3.504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/nunito
 	arch = any
 	license = custom:OFL
