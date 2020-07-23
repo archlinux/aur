@@ -1,5 +1,5 @@
 pkgbase = markets
-	pkgdesc = A market tracker designed for Linux Smartphones
+	pkgdesc = A stock, currency and cryptocurrency tracker
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/bitstower/markets
