@@ -1,0 +1,17 @@
+pkgbase = python-metadata-parser
+	pkgdesc = A module to parse metadata out of urls and html documents
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/jvanasco/metadata_parser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-six
+	source = python-metadata-parser-0.10.3.tar.gz::https://github.com/jvanasco/metadata_parser/archive/v0.10.3.tar.gz
+	sha256sums = c37e52a54c5b7c789fae581e74fc6cd6292c8d2acfe822fe40006e443fe4e24b
+
+pkgname = python-metadata-parser
+
