@@ -1,6 +1,6 @@
 # Maintainer: YuutaW <i@yuuta.moe>
 pkgname='rsshub-git'
-pkgver=cf97ab46
+pkgver=02158279
 pkgrel=1
 epoch=
 pkgdesc="Everything is RSSible"
@@ -14,11 +14,15 @@ optdepends=()
 backup=('etc/rsshub/rsshub.conf')
 source=("$pkgname::git+https://github.com/DIYgod/RSSHub.git"
 	"rsshub.conf"
-	"rsshub.service")
+	"rsshub.service"
+    "rsshub_sysuser.conf"
+    "rsshub_tmpfile.conf")
 noextract=()
 md5sums=('SKIP'
          '6621493e94958b1d3ac8d031bff36eb4'
-         '54c5973da069e43632e62ebeef50329b')
+         '079e30a1e74485a571b104dfb5df0b49'
+         '6a6a769bf29d4281b36d7826e26a1117'
+         'd5e489cdc03b59987e8f1385210d2010')
 pkgver() {
     cd "$srcdir/$pkgname"
     git describe --always | sed 's|-|.|g'
@@ -59,4 +63,10 @@ package() {
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
 	install -Dm644 $srcdir/rsshub.service $pkgdir/usr/lib/systemd/system/rsshub.service
+
+	mkdir -p $pkgdir/usr/lib/sysusers.d/
+    install -Dm644 $srcdir/rsshub_sysuser.conf $pkgdir/usr/lib/sysusers.d/rsshub.conf
+
+	mkdir -p $pkgdir/usr/lib/tmpfiles.d/
+    install -Dm644 $srcdir/rsshub_tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/rsshub.conf
 }

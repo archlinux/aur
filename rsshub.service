@@ -3,8 +3,8 @@ Description=Everything is RSSible
 After=network.target network-online.target
 
 [Service]
-User=nobody
-Group=nobody
+User=rsshub
+Group=rsshub
 EnvironmentFile=/etc/rsshub/rsshub.conf
 Environment=NO_LOGFILES=true
 ExecStart=/usr/bin/node /opt/rsshub/lib/index.js

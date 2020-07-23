@@ -1,6 +1,6 @@
 pkgbase = rsshub-git
 	pkgdesc = Everything is RSSible
-	pkgver = cf97ab46
+	pkgver = 02158279
 	pkgrel = 1
 	url = https://rsshub.app/
 	arch = any
@@ -11,9 +11,13 @@ pkgbase = rsshub-git
 	source = rsshub-git::git+https://github.com/DIYgod/RSSHub.git
 	source = rsshub.conf
 	source = rsshub.service
+	source = rsshub_sysuser.conf
+	source = rsshub_tmpfile.conf
 	md5sums = SKIP
 	md5sums = 6621493e94958b1d3ac8d031bff36eb4
-	md5sums = 54c5973da069e43632e62ebeef50329b
+	md5sums = 079e30a1e74485a571b104dfb5df0b49
+	md5sums = 6a6a769bf29d4281b36d7826e26a1117
+	md5sums = d5e489cdc03b59987e8f1385210d2010
 
 pkgname = rsshub-git
 
