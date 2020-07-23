@@ -1,0 +1,14 @@
+pkgbase = brother-hll5050dn-lpr-bin
+	pkgdesc = LPR driver for Brother HL-L5050DN printer
+	pkgver = 3.5.1.1
+	pkgrel = 1
+	url = https://www.brother.co.uk/support/hll5050dn
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf102553/hll5100dnlpr-3.5.1-1.i386.deb
+	md5sums = 71f2d1944ec9f4f858c9f87f2154593a
+
+pkgname = brother-hll5050dn-lpr-bin
+
