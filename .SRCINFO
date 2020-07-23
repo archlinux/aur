@@ -1,6 +1,6 @@
-pkgbase = blender-develop-git
-	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.90.r97725.gf4a39cafa1e
+pkgbase = blender-2.90-git
+	pkgdesc = Maintenance version of Blender v2.90 branch
+	pkgver = 2.90.r98141.gbfeff732523
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -36,7 +36,7 @@ pkgbase = blender-develop-git
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=2.90
 	conflicts = blender=2.90
-	source = git://git.blender.org/blender.git#branch=master
+	source = git://git.blender.org/blender.git#branch=blender-v2.90-release
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
@@ -53,5 +53,5 @@ pkgbase = blender-develop-git
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = 43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea
 
-pkgname = blender-develop-git
+pkgname = blender-2.90-git
 

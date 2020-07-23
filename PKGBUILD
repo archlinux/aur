@@ -4,7 +4,7 @@
 # shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
-_fragment=${FRAGMENT:-#branch=master}
+_fragment=${FRAGMENT:-#branch=blender-v2.90-release}
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 #some extra, unofficially supported stuff goes here:
@@ -19,10 +19,10 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
-pkgname=blender-develop-git
-pkgver=2.90.r97726.ge4926c167ba
+pkgname=blender-2.90-git
+pkgver=2.90.r98141.gbfeff732523
 pkgrel=1
-pkgdesc="Development version of Blender 2.8 branch"
+pkgdesc="Maintenance version of Blender v2.90 branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
