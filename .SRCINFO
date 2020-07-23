@@ -1,6 +1,6 @@
 pkgbase = python-gql-git
 	pkgdesc = Python GraphQL client
-	pkgver = v3.0.0a1.r1.g8fc378d
+	pkgver = 3.0.0a1.r1.g8fc378d
 	pkgrel = 1
 	url = https://github.com/graphql-python/gql
 	arch = any
