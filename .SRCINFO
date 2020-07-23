@@ -1,7 +1,7 @@
 pkgbase = gst-plugins-bad-nvidia
 	pkgdesc = GStreamer open-source multimedia framework bad plugins
 	pkgver = 1.16.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -65,7 +65,7 @@ pkgbase = gst-plugins-bad-nvidia
 	makedepends = wayland-protocols
 	makedepends = gtk3
 	makedepends = meson
-	makedepends = cuda
+	makedepends = cuda<10.2
 	depends = gst-plugins-base-libs
 	depends = orc
 	depends = libdrm

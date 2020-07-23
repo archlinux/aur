@@ -4,7 +4,7 @@
 pkgbase=gst-plugins-bad-nvidia
 pkgname=(gst-plugins-bad-nvidia-libs gst-plugins-bad-nvidia)
 pkgver=1.16.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GStreamer open-source multimedia framework bad plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(mjpegtools curl chromaprint libmms faad2 libdca libdvdnav
              libnice lcms2 bluez-libs glu srt aom x265 liblrdf libde265 zbar
              librsvg fluidsynth lilv lv2 gst-plugins-good python gtk-doc git
              gobject-introspection vulkan-headers vulkan-validation-layers
-             wayland-protocols gtk3 meson cuda)
+             wayland-protocols gtk3 meson 'cuda<10.2')
 checkdepends=(xorg-server-xvfb)
 options=(!emptydirs)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
