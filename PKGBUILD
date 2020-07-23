@@ -1,10 +1,8 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='https://wiki.ros.org/rosclean'
 
 pkgname='ros-melodic-rosclean'
-pkgver='1.14.8'
+pkgver='1.14.9'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -27,9 +25,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros-${pkgver}/rosclean"
+_dir="ros-${pkgver}/**/rosclean"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('998c79df7d7ce015eee28fb768b28b68cc37a98b4a4b8daef16a1280cccb5bee')
+sha256sums=('5a129ce35c906f93117f62688a4d24aee1976b7d3f2fdf3dc4f6f305d170fb02')
 
 build() {
 	# Use ROS environment variables.
