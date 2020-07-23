@@ -11,6 +11,8 @@ pkgbase = java-cef-git
 	depends = java-environment=11
 	provides = java-cef
 	source = java-cef-git::git://github.com/chromiumembedded/java-cef.git
+	source = 0001-make-run.sh-from-any-location.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = java-cef-git
