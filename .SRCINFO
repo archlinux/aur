@@ -1,7 +1,7 @@
 pkgbase = python-rusenttokenize
 	pkgdesc = Rule-based sentence tokenizer for Russian language
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/rusenttokenize
 	arch = any
 	license = Apache

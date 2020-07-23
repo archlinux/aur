@@ -2,7 +2,7 @@
 
 pkgname=python-rusenttokenize
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Rule-based sentence tokenizer for Russian language'
 arch=('any')
 url='https://pypi.org/project/rusenttokenize'
@@ -14,4 +14,6 @@ sha256sums=('b061b0ea40e880558dfe35a0040010c021007e1779517b25c8d47ba145c028c3')
 package() {
   cd "rusenttokenize-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
+  rm -rf "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/tests"
 }
