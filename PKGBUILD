@@ -8,15 +8,15 @@ url="https://github.com/DNS-OARC/dnsjit"
 license=('GPL3')
 depends=(
     'luajit'
-    )
-makedepends=(
-    'luajit'
     'libpcap'
     'lmdb'
     'gnutls'
     'libck'
     'libuv'
     )
+makedepends=(
+    'autoconf'
+)
 source=("https://github.com/DNS-OARC/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('cd3a0052e16aaa8d9acf23aa90277928e9d2bf45bc5f50c694b2330b2482a007')
 
