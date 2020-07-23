@@ -3,8 +3,8 @@
 
 pkgname=libpqxx-git
 _gitname=libpqxx
-pkgver=5.0.1.r1.80a9d538
-pkgrel=2
+pkgver=7.1.2.r22.52dfb569
+pkgrel=1
 pkgdesc="C++ client API for PostgreSQL"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -23,7 +23,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  sed -i 's|python|python2|' tools/splitconfig
   ./configure --prefix=/usr --enable-shared
   make
 }

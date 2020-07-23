@@ -1,7 +1,7 @@
 pkgbase = libpqxx-git
 	pkgdesc = C++ client API for PostgreSQL
-	pkgver = 5.0.1.r1.80a9d538
-	pkgrel = 2
+	pkgver = 7.1.2.r22.52dfb569
+	pkgrel = 1
 	url = https://github.com/jtv/libpqxx
 	arch = i686
 	arch = x86_64
