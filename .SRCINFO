@@ -1,4 +1,4 @@
-pkgbase = python-gql
+pkgbase = python-gql-git
 	pkgdesc = Python GraphQL client
 	pkgver = v3.0.0a1.r1.g8fc378d
 	pkgrel = 1

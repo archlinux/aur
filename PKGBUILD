@@ -1,7 +1,6 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname='python-gql-git'
-pkgbase="${pkgname%-git}"
 pkgver=v3.0.0a1.r1.g8fc378d
 pkgrel=1
 pkgdesc="Python GraphQL client"
