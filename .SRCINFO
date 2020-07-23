@@ -1,11 +1,12 @@
 pkgbase = pgyvpn
-	pkgdesc = Suitable for business personnel long-distance intelligent network access
+	pkgdesc = Suitable for business personnal long-distance intelligent network access
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pgy.oray.com/download/
 	arch = x86_64
 	arch = i686
 	license = custom
+	depends = gcc-libs
 	source = LICENSE::https://service.oray.com/question/1820.htm
 	sha256sums = 849387c971cd12f63c8b982e1dbcf9aa7b1a752d88bb41f5b112e1465cccc6e9
 	source_x86_64 = http://download.oray.com/pgy/linux/PgyVPN_Ubuntu_2.2.0_X86_64.deb

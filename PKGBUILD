@@ -3,11 +3,12 @@
 pkgname=pgyvpn
 _pkgname=PgyVPN
 pkgver=2.2.0
-pkgrel=1
-pkgdesc="Suitable for business personnel long-distance intelligent network access"
+pkgrel=2
+pkgdesc="Suitable for business personnal long-distance intelligent network access"
 arch=("x86_64" "i686")
 url="https://pgy.oray.com/download/"
 license=('custom')
+depends=('gcc-libs')
 source=('LICENSE::https://service.oray.com/question/1820.htm')
 source_x86_64=("http://download.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_X86_64.deb")
 source_i686=("http://download.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_i386.deb")
@@ -23,9 +24,13 @@ package() {
 
   rm -rf ${pkgdir}/usr/sbin
   rm -rf ${pkgdir}/etc/init.d
+  rm -rf ${pkgdir}/usr/share
   
-  chmod -R 755 ${pkgdir}/usr/
   chmod -R 755 ${pkgdir}/etc/
+  chmod -R 755 ${pkgdir}/usr/
+  chown -R root:root ${pkgdir}
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   install -dm755 ${pkgdir}/usr/lib/systemd/system
   cat > ${pkgdir}/usr/lib/systemd/system/${pkgname}.service << EOF
