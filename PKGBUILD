@@ -1,6 +1,6 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 pkgname=dnsjit-git
-pkgver=v0.9.7.r7.e5c5424
+pkgver=v0.9.8.r264.1a1bf18
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=(
     'lmdb'
     'gnutls'
     'libck'
+    'libuv'
     )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
