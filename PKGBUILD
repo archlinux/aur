@@ -2,13 +2,13 @@
 pkgname=python-tpm2-pytss
 _name=${pkgname#python-}
 pkgver=0.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
 depends=('python' 'python-setuptools' 'tpm2-tss' 'libtss2-esys.so'
-         'libtss2-fapi.so' 'libtss2-rc.so' 'libtss2-esys.so' 'libtss2-tctildr.so')
+         'libtss2-fapi.so' 'libtss2-rc.so' 'libtss2-sys.so' 'libtss2-tctildr.so')
 makedepends=('swig')
 checkdepends=('ibm-sw-tpm2' 'python-cryptography')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

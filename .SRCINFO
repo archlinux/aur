@@ -1,7 +1,7 @@
 pkgbase = python-tpm2-pytss
 	pkgdesc = Python bindings for tpm2-tss
 	pkgver = 0.1.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tpm2-software/tpm2-pytss
 	arch = x86_64
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = python-tpm2-pytss
 	depends = libtss2-esys.so
 	depends = libtss2-fapi.so
 	depends = libtss2-rc.so
-	depends = libtss2-esys.so
+	depends = libtss2-sys.so
 	depends = libtss2-tctildr.so
 	source = https://files.pythonhosted.org/packages/source/t/tpm2-pytss/tpm2-pytss-0.1.8.tar.gz
 	sha256sums = a0a1c492d4d0ac4855c4f3b7bbf1c9d63d96aa9be06da800d1d44800b319bc54
