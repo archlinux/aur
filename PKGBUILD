@@ -36,7 +36,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::$_filesurl/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
-        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
+        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch"
+        BMO1640982.patch)
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -47,7 +48,8 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612')
+            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612'
+            '33d7feed2093e45a3849785daf67a506052bc37f5c7e3813f7d318b9cfeb5129')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -67,6 +69,8 @@ prepare() {
   patch -Np1 -i ../classic-kde.patch
   patch -Np1 -i ../classic-kde-xul.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
+
+  patch -Np1 -i ../BMO1640982.patch
 
   cat >.mozconfig <<END
 export CC=clang

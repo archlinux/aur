@@ -1,0 +1,25 @@
+From 62bf60d79c7023ecd187a68f779fad6126924a4c Mon Sep 17 00:00:00 2001
+Date: Wed, 22 Jul 2020 17:16:03 +0200
+Subject: [PATCH] Bug 1640982 - Set CARGO_PROFILE_RELEASE_LTO=true when
+ enabling rust LTO.
+
+---
+ config/rules.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/config/rules.mk b/config/rules.mk
+index 21f3d69724c6..429194a4d0a6 100644
+--- a/config/rules.mk
++++ b/config/rules.mk
+@@ -867,7 +867,11 @@ cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
+ ifndef DEVELOPER_OPTIONS
+ ifndef MOZ_DEBUG_RUST
+ # Enable link-time optimization for release builds.
++# Pass -Clto for older versions of rust, and CARGO_PROFILE_RELEASE_LTO=true
++# for newer ones that support it. Combining the latter with -Clto works, so
++# set both everywhere.
+ cargo_rustc_flags += -C lto
++export CARGO_PROFILE_RELEASE_LTO=true
+ endif
+ endif
+ 
