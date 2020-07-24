@@ -8,7 +8,7 @@ url="http://festlang.berlios.de/docu/doku.php?id=languages"
 license=("custom")
 depends=('festival' 'licenses')
 install="festival-pl-em.install"
-source=(http://repository.slacky.eu/slackware-13.0/multimedia/festival_polish/20091229/src/festival_polish_voice.tgz
+source=(http://slackware.uk/slacky/slackware-13.37/multimedia/festival_polish/20110803/src/festival_polish_voice.tgz
         festival-pl.sh)
 arch=('any')
 sha256sums=('2fbbe7609a9b52c19f591d39741f6cd5ea935e49bbac9dfb7d5d85462ec181d0'
