@@ -26,7 +26,6 @@ depends=(
     sd
     skim
     xclip
-    iproute2
 )
 ## These aren't in the official repos and could have
 ## been installed with cargo
