@@ -11,7 +11,10 @@ StateDirectory=jitsi-videobridge-nightly
 StateDirectoryMode=0750
 LogsDirectory=jitsi-videobridge-nightly
 LogsDirectoryMode=0750
+
 Restart=on-failure
+RestartSec=2
+
 SuccessExitStatus=143
 
 # more threads for this process
