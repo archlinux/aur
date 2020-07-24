@@ -3,7 +3,7 @@
 
 pkgname=transcribe
 pkgver=8.74.1
-pkgrel=1
+pkgrel=2
 pkgdesc="music transcription aid"
 arch=('i686' 'x86_64')
 url="http://www.seventhstring.com/xscribe/overview.html"
@@ -14,8 +14,15 @@ md5sums_x86_64=('f91aa53bd4d959521b55810bf3b67ed4')
 
 package() {
 	cd "$srcdir/$pkgname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 libgstvideosection.so "$pkgdir/usr/lib/libgstvideosection.so"
+
+  # Executable.
+  install -Dm0755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+  # Library.
+  lib="libgstvideosection.so"
+  if [ -e "$lib" ]; then
+    install -Dm0755 "$lib" "$pkgdir/usr/lib/gstreamer-1.0/$lib"
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
