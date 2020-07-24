@@ -1,6 +1,6 @@
 pkgbase = speedtest-rs
 	pkgdesc = Speedtest.net testing utility and crate
-	pkgver = 0.0.15
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/nelsonjchen/speedtest-rs
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = speedtest-rs
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = speedtest-rs-0.0.15.tar.gz::https://static.crates.io/crates/speedtest-rs/speedtest-rs-0.0.15.crate
-	sha512sums = 3f581a23420e14f9cd4d04028ab2888681a96b5c6f01d2bbc711a8745377c5debfb9dfb6261d18483308327ed9fc9839d56727ac3d9146de4da7e5a864102ef4
+	source = speedtest-rs-0.1.0.tar.gz::https://static.crates.io/crates/speedtest-rs/speedtest-rs-0.1.0.crate
+	sha512sums = 95bdd9892256b53500198e3252479a664ebbea61d18be76372562efa4e2274c728803ab83a4c1c308d20c07cb5b8044c0bd8b1220dfdd070b7eb368310bf1e70
 
 pkgname = speedtest-rs
 
