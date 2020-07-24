@@ -1,14 +1,14 @@
 pkgbase = aws-okta-bin
 	pkgdesc = Log in to AWS with Okta
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/segmentio/aws-okta
 	arch = x86_64
 	license = MIT
 	provides = aws-okta
-	source = aws-okta-v1.0.3-linux-amd64::https://github.com/segmentio/aws-okta/releases/download/v1.0.3/aws-okta-v1.0.3-linux-amd64
-	source = LICENSE::https://github.com/segmentio/aws-okta/raw/v1.0.3/LICENSE
-	sha256sums = 1b5ac754cdc9d296b4be8951f0e87fb33db8b34d380e16680d709b5e2d17f7c6
+	source = aws-okta-v1.0.4-linux-amd64::https://github.com/segmentio/aws-okta/releases/download/v1.0.4/aws-okta-v1.0.4-linux-amd64
+	source = LICENSE::https://github.com/segmentio/aws-okta/raw/v1.0.4/LICENSE
+	sha256sums = ffed53823bcc3d7d28941640b6edd89eaab9c740c9e0e8cf9fd4506364c86674
 	sha256sums = feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b
 
 pkgname = aws-okta-bin

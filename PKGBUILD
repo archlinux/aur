@@ -3,7 +3,7 @@
 pkgname=aws-okta-bin
 _pkgname=aws-okta
 pkgdesc="Log in to AWS with Okta"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/segmentio/aws-okta"
@@ -15,7 +15,7 @@ source=(
   LICENSE::https://github.com/segmentio/aws-okta/raw/v$pkgver/LICENSE
 )
 sha256sums=(
-  '1b5ac754cdc9d296b4be8951f0e87fb33db8b34d380e16680d709b5e2d17f7c6'
+  'ffed53823bcc3d7d28941640b6edd89eaab9c740c9e0e8cf9fd4506364c86674'
   'feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b'
 )
 
