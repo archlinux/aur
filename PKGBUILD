@@ -3,13 +3,13 @@
 pkgorg='loco-3d'
 pkgname=('crocoddyl' 'crocoddyl-docs')
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
-depends=('pinocchio' 'eigenpy' 'example-robot-data')
-optdepends=('doxygen' 'python-scipy')
+depends=('pinocchio' 'eigenpy' 'example-robot-data' 'python-scipy')
+optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('SKIP' 'SKIP')
