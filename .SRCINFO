@@ -1,0 +1,18 @@
+pkgbase = pegasocks-git
+	pkgdesc = A lightweight proxy client written in C, intends to support multiple protocols(trojan etc.)
+	pkgver = 0.0.0ra5e69ef
+	pkgrel = 1
+	url = https://github.com/chux0519/pegasocks.git
+	arch = x86_64
+	arch = i686
+	license = BSD 3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = openssl>=1.1.1
+	depends = libevent
+	depends = json-c
+	source = git+https://github.com/chux0519/pegasocks.git
+	md5sums = SKIP
+
+pkgname = pegasocks-git
+
