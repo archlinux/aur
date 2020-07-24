@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OctaneBench
+Comment=
+Exec=OctaneBench
+Icon=/usr/share/pixmaps/OctaneBench.png
+Terminal=false
+Categories=Developments;Graphics;
