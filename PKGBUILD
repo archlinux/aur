@@ -8,11 +8,11 @@ arch=(x86_64)
 url="https://render.otoy.com/octanebench"
 license=('GPL')
 makedepends=('p7zip')
-source=("https://render.otoy.com/downloads/a/787/59ea3438-034b-4081-ad21-6174e7614886/${pkgname}_4_00c_linux.zip"
+source=("https://render.otoy.com/downloads/a/787/59ea3438-034b-4081-ad21-6174e7614886/OctaneBench_4_00c_linux.zip"
 	"${pkgname}.desktop"
 	"${pkgname}.png")
 md5sums=('714ba23bc129f7734385e168afb149b0'
-         '4a1f807340ebadee53e64746c2a375ee'
+         '9476a0cc644ad2a4a54c9310acc4e039'
          '8e94c5725ab1affa51011c5c4aecbc1b')
 
 package() {
