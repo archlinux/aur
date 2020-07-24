@@ -1,7 +1,7 @@
 pkgbase = v8
 	pkgdesc = Fast and modern Javascript engine used in Google Chrome.
 	pkgver = 8.3.110.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://v8.dev
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = v8
 	makedepends = clang-tools-extra
 	makedepends = python2
 	makedepends = python2-colorama
-	makedepends = python2-lazy-object-proxy
-	makedepends = python2-singledispatch
 	makedepends = ninja
 	makedepends = git
 	makedepends = wget
