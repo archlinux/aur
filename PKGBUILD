@@ -3,12 +3,13 @@
 pkgname=phddns-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Peanut shell is a dynamic DNS software, any place, any time, any lines, all can through fixed domain access to the remote host services"
 arch=("armv7h")
 url="https://hsk.oray.com/download/"
 license=('custom')
 options=('!strip')
+install='.INSTALL'
 source=('LICENSE::https://service.oray.com/question/1820.html')
 source_armv7h=("http://download.oray.com/peanuthull/embed/${_pkgname}_${pkgver}_systemd.deb")
 
