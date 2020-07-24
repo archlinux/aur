@@ -12,7 +12,7 @@ depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python
 	'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
-	'gattlib: Low-energy Bluetooth devices support'
+	'python-gattlib: Low-energy Bluetooth devices support'
 	'python-paramiko: SSH support'
     'python-croniter: Platypush cron support'
 	'python-pyserial: Arduino/serial device support')
