@@ -1,7 +1,7 @@
 # Maintainer: By_JumperX4 <byjumperx4-aur@protonmail.com>. You can also contact me on Discord: By_JumperX4#1007
 pkgname=firefox-nightly-latest-fr
 pkgver=80.0a1.2020.07.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Official latest french tarball of Firefox Nightly. Reinstall package if firefox is outdated and the PKGBUILD's version is not updated yet"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -329,35 +329,20 @@ prepare() {
     Name[zh_CN]=新建隐私浏览窗口
     Name[zh_TW]=新增隱私視窗
     Exec=/opt/firefox-nightly-latest-fr/firefox/firefox --private-window %u" > firefox-nightly-latest-fr.desktop
-
-    echo "{
-    "policies": 
-       {
-         "DisableAppUpdate": true
-        }
-    }" > policies.json
 }
-
 package() {
 	echo creating package...
 	echo decompressing tarball...
 	mkdir -p $pkgdir/opt/firefox-nightly-latest-fr/
 	tar xvjf $srcdir/firefox-nightly-latest-fr.tar.bz2 -C $pkgdir/opt/firefox-nightly-latest-fr
-	echo DONE
 	echo copying logo...
 	mkdir -p $pkgdir/usr/share/pixmaps/
 	cp $srcdir/firefox-nightly.png $pkgdir/usr/share/pixmaps/
-	echo DONE
 	echo copying desktop entry...
 	mkdir -p $pkgdir/usr/share/applications
 	cp $srcdir/firefox-nightly-latest-fr.desktop $pkgdir/usr/share/applications
-	echo DONE
 	echo creating symblink to /usr/bin...
 	mkdir -p $pkgdir/usr/bin
 	ln -s /opt/firefox-nightly-latest-fr/firefox/firefox $pkgdir/usr/bin/firefox-nightly-latest-fr
-	echo DONE
-	echo copying policies.json to disable updates...
-	cp $srcdir/policies.json $pkgdir/opt/firefox-nightly-latest-fr/firefox/
-	echo DONE
 	echo package created! It may take some time to compress it later...
 }
