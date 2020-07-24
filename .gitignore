@@ -1,0 +1,4 @@
+/pkg/
+/src/
+platypush-*.tar.zst
+platypush-*.tar.gz
