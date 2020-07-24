@@ -1,6 +1,6 @@
 pkgbase = sile
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.10.8
+	pkgver = 0.10.9
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = sile
 	depends = libicuio.so
 	depends = libicuuc.so
 	provides = libtexpdf.so
-	source = https://github.com/sile-typesetter/sile/releases/download/v0.10.8/sile-0.10.8.tar.xz
-	sha256sums = 06705ba8f6ccbd72dcaa396767822a5c2d8d02ecdb713277547a07e3350cc855
+	source = https://github.com/sile-typesetter/sile/releases/download/v0.10.9/sile-0.10.9.tar.xz
+	sha256sums = 44eaaf286b059b46eb51f28ef813d149538b06f4541c1eb7fb6faef26d60a564
 
 pkgname = sile
 
