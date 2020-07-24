@@ -1,0 +1,18 @@
+pkgbase = paletti
+	pkgdesc = Create a color palette from an image
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Eroica/Paletti
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = leptonica
+	source = Paletti-2.0.tar.gz::https://github.com/Eroica/Paletti/archive/v2.0.tar.gz
+	sha512sums = f5a4a6c3c5d3bde8e92d8923ee103cf67884a4d0b6cedf671092840d71594ec4f171a4b7f032092fc25abf5941668c7216d1ff2917fd9f605487cacaea3f7ad9
+
+pkgname = paletti
+
