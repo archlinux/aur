@@ -3,7 +3,7 @@
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
 pkgver=2.1.2.r0.g2c145f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagramming widget library for Python"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/gaphas"
@@ -38,6 +38,7 @@ pkgver() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+	rm "${pkgdir}"/usr/lib/python*/site-packages/gaphas-*.dist-info/direct_url.json
 }
 
 # vim: ft=PKGBUILD
