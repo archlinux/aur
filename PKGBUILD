@@ -6,7 +6,7 @@
 # Maintainer: NV <nv-01@tutanota.com>
 pkgname=doits-git
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="doits is free, open-source note taking and todo application."
 arch=(x86_64)
 url="https://gitlab.com/nv-01/doits.git"
@@ -27,4 +27,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   sudo cp ${srcdir}/doits/bin/doits-linux /usr/local/bin/doits
+  mkdir ~/.config/doits/
+  cp ${srcdir}/doits/welcome.md ~/.config/doits/
+  cp ${srcdir}/doits/welcome-de.md ~/.config/doits/
 }
