@@ -33,4 +33,6 @@ package() {
                   "$pkgdir/usr/share/applications/com.moebots.Paletti.desktop"
   install -Dm 644 dist/com.moebots.Paletti.png \
                   "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.moebots.Paletti.png"
+  install -Dm 644 dist/com.moebots.Paletti-symbolic.svg \
+                  "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.moebots.Paletti-symbolic.svg"
 }
