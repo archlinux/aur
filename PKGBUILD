@@ -2,31 +2,33 @@
 pkgname=rsflex
 pkgver=0.1
 pkgrel=1
+
 pkgdesc="A super fast system information displayer written in Rust"
-arch=('any')
 url="https://github.com/curlpipe/rsflex"
+arch=('x86_64')
 license=('MPL-2.0')
-makedepends=('cargo' 'git')
-provides=("$pkgname")
-conflicts=("$pkgname")
+depends=()
+makedepends=('git' 'cargo' 'rust')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=("git+https://github.com/curlpipe/rsflex.git")
+source=('git+https://github.com/curlpipe/rsflex.git')
 md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname"
-	cargo build --release --target-dir=target
+	cd "$srcdir/${pkgname%-git}"
+	cargo build --release
 }
 
 check() {
-	cd "$srcdir/$pkgname"
-	cargo test --release --target-dir=target
+	cd "$srcdir/${pkgname%-git}"
+	cargo test --release
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
