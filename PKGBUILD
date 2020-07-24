@@ -2,12 +2,12 @@
 
 pkgname=fawkes-git
 pkgver=r74.g3775bba
-pkgrel=1
+pkgrel=2
 pkgdesc="Image cloaking tool for personal privacy"
 arch=('any')
 url="http://sandlab.cs.uchicago.edu/fawkes/"
 license=('BSD')
-depends=('python' 'python-bleach' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-tensorflow')
+depends=('python' 'python-bleach' 'python-keras' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-tensorflow')
 makedepends=('git' 'python-setuptools')
 provides=('fawkes')
 conflicts=('fawkes')

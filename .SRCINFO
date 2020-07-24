@@ -1,7 +1,7 @@
 pkgbase = fawkes-git
 	pkgdesc = Image cloaking tool for personal privacy
 	pkgver = r74.g3775bba
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sandlab.cs.uchicago.edu/fawkes/
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = fawkes-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-bleach
+	depends = python-keras
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-scikit-image
