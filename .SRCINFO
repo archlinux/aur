@@ -1,0 +1,17 @@
+pkgbase = iptsd-git
+	pkgdesc = Userspace daemon for Intel Precise Touch & Stylus
+	pkgver = r81.818eb92
+	pkgrel = 1
+	url = git+https://github.com/linux-surface/iptsd.git
+	install = iptsd.install
+	arch = x86_64
+	license = GPL2
+	makedepends = go
+	optdepends = ipts-uapi-dkms: The kernel module required by this daemon. Alternatively, you can build this module within your kernel.
+	provides = iptsd
+	conflicts = iptsd
+	source = git+https://github.com/linux-surface/iptsd.git
+	sha256sums = SKIP
+
+pkgname = iptsd-git
+
