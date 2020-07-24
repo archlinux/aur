@@ -1,9 +1,9 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=python-wasmtime
-pkgver=0.16.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Python 3 extension for interface with Wasmtime/Cranelift."
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bytecodealliance/wasmtime-py"
 license=('APACHE2')
 depends=('python' 'python-setuptools' 'python-wheel' 'wasmtime')
@@ -20,5 +20,7 @@ prepare() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
-    ln -sf "/usr/lib/libwasmtime.so" "${pkgdir}/""$(python -c "import setuptools as _; print(_.__path__[0][:-10])")""wasmtime/wasmtime.pyd"
+    PP="${pkgdir}/""$(python -c "import setuptools as _; print(_.__path__[0][:-10])")""wasmtime/""linux-$(uname -m)"
+    mkdir "${PP}"
+    ln -sf "/usr/lib/libwasmtime.so" "${PP}/_libwasmtime.so"
 }
