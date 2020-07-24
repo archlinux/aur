@@ -1,7 +1,8 @@
 pkgbase = pokeshell
 	pkgdesc = Displays pokemons in your shell
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
+	url = https://pokeapi.co/
 	install = pokeshell.install
 	arch = any
 	license = MIT

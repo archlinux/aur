@@ -7,8 +7,9 @@ _lastpokemon=151
 
 pkgname=pokeshell
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Displays pokemons in your shell"
+url="https://pokeapi.co/"
 arch=(any)
 license=('MIT')
 makedepends=('curl' 'imagemagick' 'img2xterm')
