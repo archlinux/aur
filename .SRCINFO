@@ -1,0 +1,17 @@
+pkgbase = progress-quest-bin
+	pkgdesc = Progress Quest is an antic and fantastical computer role-playing game
+	pkgver = 6.2
+	pkgrel = 1
+	url = http://progressquest.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = wine
+	source = http://www.grumdrig.com/dl/pq6-2.zip
+	source = progress-quest
+	sha256sums = 85f8e5e4735f0faf8d84ac1267ec64a9a92265a9033dd3c93d988dbe3eb1c716
+	sha256sums = 91fc83b000b581fd29295d99ab3253b40e6f6a94f39c557ae7ed80f7c8bb5702
+
+pkgname = progress-quest-bin
+

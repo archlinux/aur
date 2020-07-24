@@ -1,0 +1,9 @@
+#!/bin/sh
+
+CONFIG_DIR="$HOME/.progress-quest"
+
+mkdir -p "$CONFIG_DIR"
+
+cd "$CONFIG_DIR"
+
+wine /usr/share/progress-quest/pq.exe
