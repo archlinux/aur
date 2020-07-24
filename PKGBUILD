@@ -2,7 +2,7 @@
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
 
 pkgname=python-rapidfuzz-git
-pkgver=0.6.3.r73.g0007571
+pkgver=0.9.2.r0.geae941a
 pkgrel=1
 pkgdesc="Rapid fuzzy string matching in Python using the Levenshtein Distance"
 
