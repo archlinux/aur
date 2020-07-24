@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=emacs-emmet-mode-git
-pkgver=20150609
+pkgver=20180613
 pkgrel=1
 pkgdesc="Minor mode providing support for Zen Coding, with Emmet's feature expansion."
 arch=('any')
@@ -12,27 +12,21 @@ makedepends=('git')
 provides=('emacs-emmet-mode')
 replaces=('emacs-emmet-mode')
 install=$pkgname.install
+source=("${pkgname}::git://github.com/smihica/emmet-mode.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/smihica/emmet-mode"
-_gitname="emmet-mode"
+pkgver() {
+  cd "$pkgname"
+  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
+
 build() {
-  cd $startdir/src
-  msg "Connecting to github.com GIT server...."
-
-  if [ -d $startdir/src/$_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd "$pkgname"
+  make all
 }
 
 package() {
-  cd $startdir/src/$_gitname
-  make all
-
+  cd "$pkgname"
   mkdir -p $pkgdir/usr/share/emacs/site-lisp/emmet-mode
   install -Dm644 emmet-mode.el emmet-mode.elc $pkgdir/usr/share/emacs/site-lisp/emmet-mode
 }

@@ -1,6 +1,6 @@
 pkgbase = emacs-emmet-mode-git
 	pkgdesc = Minor mode providing support for Zen Coding, with Emmet's feature expansion.
-	pkgver = 20150609
+	pkgver = 20180613
 	pkgrel = 1
 	url = https://github.com/smihica/emmet-mode
 	install = emacs-emmet-mode-git.install
@@ -10,6 +10,8 @@ pkgbase = emacs-emmet-mode-git
 	depends = emacs
 	provides = emacs-emmet-mode
 	replaces = emacs-emmet-mode
+	source = emacs-emmet-mode-git::git://github.com/smihica/emmet-mode.git
+	md5sums = SKIP
 
 pkgname = emacs-emmet-mode-git
 
