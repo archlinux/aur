@@ -1,0 +1,16 @@
+pkgbase = taskcore
+	pkgdesc = Command Line ToDo Management Application
+	pkgver = 1.0.0beta
+	pkgrel = 1
+	url = https://github.com/tarikguney/taskcore
+	arch = x86_64
+	license = APACHE
+	makedepends = dotnet-sdk
+	options = staticlibs
+	source = https://github.com/tarikguney/taskcore/archive/v1.0.0-beta.tar.gz
+	source = https://github.com/tarikguney/taskcore/commit/37c47a92.patch
+	sha256sums = bdef7b73997e3689d8a340dbc42317e968478e6a74fc348985862ad28481b2e3
+	sha256sums = d8b563596998d8b2f93e1fc40dfd74d80d6cf2566d56a1c69f7aab2d88a10517
+
+pkgname = taskcore
+
