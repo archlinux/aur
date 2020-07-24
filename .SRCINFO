@@ -1,0 +1,38 @@
+pkgbase = vte3-kinetic
+	pkgdesc = Virtual Terminal Emulator widget
+	pkgver = 0.61.0+kinetic+79+g59d3ce11
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal/VTE
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = gperf
+	makedepends = meson
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = fribidi
+	depends = systemd-libs
+	source = git+https://gitlab.gnome.org/realh69/vte.git
+	sha256sums = SKIP
+
+pkgname = vte3-kinetic
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = fribidi
+	depends = systemd-libs
+	depends = vte-kinetic-common
+	provides = vte3=0.61.0+kinetic+79+g59d3ce11
+	provides = libvte-2.91.so
+	conflicts = vte3
+
+pkgname = vte-kinetic-common
+	pkgdesc = Files shared by VTE libraries
+	depends = sh
+	provides = vte-common=0.61.0+kinetic+79+g59d3ce11
+	conflicts = vte-common
+
