@@ -1,11 +1,11 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
-pkgver=5.5.r8510.76bdf206f
-pkgrel=2
+pkgver=5.5.r8988.00625e851
+pkgrel=1
 depends=('cblas' 'cub' 'kaldi-openfst' 'lapack' 'python2')
 optdepends=('cuda' 'kaldi-irstlm' 'kaldi-kaldi_lm' 'kaldi-sctk' 'kaldi-sph2pipe' 'kaldi-srilm')
-makedepends=('git' 'wget' 'sed' 'gcc7')
+makedepends=(${optdepends[@]} 'git' 'wget' 'sed')
 arch=('x86_64' 'i686')
 url='https://github.com/kaldi-asr/kaldi'
 license=('APACHE')
@@ -15,10 +15,10 @@ sha256sums=('SKIP')
 pkgver () {
 	cd "${pkgname}"
 	(
-	set -o pipefail
-	echo -n `cat src/.version`.
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		set -o pipefail
+		echo -n `cat src/.version`.
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
@@ -36,14 +36,13 @@ prepare(){
 
 build () {
 	cd $srcdir/$pkgname/src
-	CXX=g++-7 \
+	CXX=/opt/cuda/bin/g++ \
 	LDFLAGS='-lcblas -llapack' \
 	./configure $_cuda_config_opts \
 		--shared \
 		--fst-root=/opt/kaldi/tools/openfst \
 		--cub-root=/usr/include \
-		--clapack-root=/usr \
-		--threaded-math=yes
+		--clapack-root=/usr
 	make depend
 	make
 }
