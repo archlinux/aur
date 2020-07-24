@@ -1,6 +1,6 @@
 pkgbase = macbuntu-theme
 	pkgdesc = default macbuntu theme introduced as the default themes in macbuntu 16.04 lts.
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://www.pling.com/p/1241688
 	arch = any
