@@ -1,0 +1,34 @@
+pkgbase = kitty-bitmap
+	pkgdesc = A modern, hackable, featureful, OpenGL-based terminal emulator. Patched to support bitmap fonts.
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/kitty
+	arch = x86_64
+	license = GPL3
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = libxrandr
+	makedepends = wayland-protocols
+	makedepends = python-sphinx
+	depends = python3
+	depends = freetype2
+	depends = fontconfig
+	depends = wayland
+	depends = libx11
+	depends = libxkbcommon-x11
+	depends = libxi
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libcanberra
+	depends = dbus
+	depends = kitty-terminfo
+	optdepends = imagemagick: viewing images with icat
+	provides = kitty
+	conflicts = kitty
+	source = kitty-0.18.1.tar.gz::https://github.com/kovidgoyal/kitty/archive/v0.18.1.tar.gz
+	source = Allow-bitmap-fonts.patch
+	sha512sums = 8eb5d16c342be8ba88aaadc591e2a04df01b1f5c87b5b5a04026acdf60c4770e07f43d88f82eca70f0c310e93432c8f25d5ccd6d6e83b49f0e2f735aac61e630
+	sha512sums = SKIP
+
+pkgname = kitty-bitmap
+
