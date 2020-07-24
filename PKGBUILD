@@ -1,7 +1,8 @@
 pkgname=digestif
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=(any)
+license=(MIT)
 url="https://github.com/astoff/$pkgname"
 pkgdesc='A code analyzer and Language Server Protocol implementation for [La|Con|Bib]TeX[t] documents.'
 depends=(lua lua-lpeg lua-dkjson)

@@ -1,9 +1,10 @@
 pkgbase = digestif
 	pkgdesc = A code analyzer and Language Server Protocol implementation for [La|Con|Bib]TeX[t] documents.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astoff/digestif
 	arch = any
+	license = MIT
 	makedepends = luarocks
 	depends = lua
 	depends = lua-lpeg
