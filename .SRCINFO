@@ -1,14 +1,14 @@
 pkgbase = batify2
 	pkgdesc = Lightweight battery notification
-	pkgver = 1.2.4
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ikrivosheev/batify2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = libnotify
-	source = batify2-1.2.4.tar.gz::https://github.com/ikrivosheev/batify2/archive/v1.2.4.tar.gz
-	md5sums = 851f32a20f8e0b0b4ee740eca73424db
+	source = batify2-1.3.0.tar.gz::https://github.com/ikrivosheev/batify2/archive/v1.3.0.tar.gz
+	md5sums = a9d48073527c41364565a3f8090841fc
 
 pkgname = batify2
 
