@@ -1,0 +1,17 @@
+pkgbase = python-maintboot-git
+	pkgdesc = Runs commands outside of the current OS, with exclusive access to the system and hardware.
+	pkgver = v0.1.0.r2.g1c5ab87
+	pkgrel = 1
+	url = https://github.com/g2p/maintboot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	makedepends = python>=3.3
+	makedepends = git
+	source = git+https://github.com/g2p/maintboot.git
+	md5sums = SKIP
+
+pkgname = python-maintboot-git
+	depends = python
+
