@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.9.4
+pkgver=3.9.4.r1.g534016d
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 url="http://roxterm.sourceforge.net"
 license=('GPL3')
 depends=('dbus-glib' 'vte3')
+optdepends=('vte3-kinetic: Enables kinetic scrolling with libinput')
 makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
   'librsvg' 'itstool' 'sed')
 provides=('roxterm')
