@@ -1,0 +1,15 @@
+pkgbase = python-dynmen
+	pkgdesc = Python wrappers for dynamic menus (dmenu, rofi, fzf, ...)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/dynmen/0.1.5
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-traitlets>=4.3.2
+	source = https://files.pythonhosted.org/packages/source/d/dynmen/dynmen-0.1.5.tar.gz
+	md5sums = 42d3bd58e94435a528d7cb0d57b04fce
+
+pkgname = python-dynmen
+
