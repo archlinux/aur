@@ -1,17 +1,17 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=dockly
-pkgver=3.17.0
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="Immersive terminal interface for managing docker containers and services"
 arch=('any')
 url='https://lirantal.github.io/dockly'
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lirantal/dockly/archive/v${pkgver}.tar.gz")
-sha256sums=('63fa8846f283d52cf45f791cde2e7d3ce2726aeeb362dcd464e5ab573879a1d0')
+sha256sums=('477f60eaaa715010ff618701cf4365e84e3f6bdefe0e7d92191838a0826cb5ba')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
