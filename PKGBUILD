@@ -5,7 +5,7 @@
 
 pkgname=upmpdcli
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
 url="http://www.lesbonscomptes.com/upmpdcli/"
@@ -24,8 +24,8 @@ source=("http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.g
         'upmpdcli.service')
 sha256sums=('bffc78c140ad688987894ea5a1e162e6dcbc7dcae7d2cc322a894f5ea2a2f53b'
             '1004133922fa908b9c8990737bcd363345283649311eac6d3a7262289b5d1778'
-            '8f0f5a58a5d6dd71b9c8627c5522a782a368fb93c2151dfa3973d0cf06d782a8'
-            '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9')
+            '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9'
+            )
 backup=('etc/upmpdcli.conf')
 
 prepare() {
