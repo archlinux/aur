@@ -1,0 +1,6 @@
+mhwaveedit/
+pkg/
+src/
+mhwaveedit-git-*.pkg.tar.xz
+mhwaveedit-git-*.pkg.tar.zst
+mhwaveedit-*.src.tar.gz

@@ -1,0 +1,34 @@
+pkgbase = mhwaveedit-git
+	pkgdesc = A simple and fast GTK2 audio editor (git version)
+	pkgver = 1.4.24.r149.8a24f6a
+	pkgrel = 1
+	url = https://github.com/magnush/mhwaveedit
+	arch = x86_64
+	groups = pro-audio
+	license = GPL2
+	makedepends = alsa-lib
+	makedepends = git
+	makedepends = ladspa
+	makedepends = libpulse
+	makedepends = libsamplerate
+	makedepends = libsndfile
+	makedepends = jack
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = sdl
+	provides = mhwaveedit
+	provides = mhwaveedit=1.4.24
+	conflicts = mhwaveedit
+	source = mhwaveedit::git+https://salsa.debian.org/multimedia-team/mhwaveedit.git/
+	md5sums = SKIP
+
+pkgname = mhwaveedit-git
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = sdl
+	depends = libasound.so
+	depends = libjack.so
+	depends = libpulse.so
+	depends = libsamplerate.so
+	depends = libsndfile.so
+
