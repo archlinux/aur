@@ -3,14 +3,14 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.10'
-pkgrel='2'
+pkgver='0.1.11'
+pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
 license=('GPL3+')
 groups=()
-depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'alsa-lib')
+depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse')
 makedepends=('git' 'rust')
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf src/scripts/lib/themes/* src/scripts/lib/macr
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=65a1c3606e507494ab64c8f00c4774547a61e858')
+source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=19d26951a5539db700ecf08916ed6383a7bdc58f')
 noextract=()
 sha512sums=('SKIP')
 
@@ -75,6 +75,10 @@ package() {
 
     install -m 644 "src/scripts/macros.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/macros.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/profiles.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/profiles.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/stats.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/stats.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterhue.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -103,6 +107,8 @@ package() {
     install -m 644 "src/scripts/fireworks.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/ghost.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/ghost.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/linear-gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -144,12 +150,14 @@ package() {
     install -m 644 "src/scripts/snake.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/snake.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/lib/debug.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "src/scripts/lib/queue.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "src/scripts/lib/utilities.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "src/scripts/lib/declarations.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "src/scripts/lib/themes/default.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
     install -m 644 "src/scripts/lib/themes/gaming.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
     install -m 644 "src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "src/scripts/lib/macros/user-mappings.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "src/scripts/examples/simple.lua" "$pkgdir/usr/share/eruption/scripts/examples/"
 
@@ -178,82 +186,6 @@ package() {
     install -m 644 "support/profiles/snake.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/starcraft2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/vu-meter.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
-
-    # Web-Frontend
-    #mkdir -p "$pkgdir/usr/share/eruption/templates"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/css"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/eruption"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/metal"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/css/styles"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/js"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/font"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/img"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/img/bg"
-    #mkdir -p "$pkgdir/usr/share/eruption/static/img/icons"
-
-    #install -m 644 "templates/about.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/base.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/detail.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/documentation.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/profiles.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/soundfx.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/settings.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    #install -m 644 "templates/preview.html.tera" "$pkgdir/usr/share/eruption/templates/"
-
-    #install -m 644 "static/css/animate.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/style.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/themes/eruption/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/eruption/"
-    #install -m 644 "static/css/themes/metal/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/metal/"
-    #install -m 644 "static/css/styles/tomorrow-night.css" "$pkgdir/usr/share/eruption/static/css/styles/"
-    #install -m 644 "static/css/bootstrap.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap.min.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap.min.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-grid.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-grid.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-grid.min.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-grid.min.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-reboot.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-reboot.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-reboot.min.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/bootstrap-reboot.min.css.map" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/css/fontawesome.min.css" "$pkgdir/usr/share/eruption/static/css/"
-    #install -m 644 "static/font/fa-brands-400.eot" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-brands-400.svg" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-brands-400.ttf" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-brands-400.woff" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-brands-400.woff2" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-regular-400.eot" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-regular-400.svg" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-regular-400.ttf" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-regular-400.woff" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-regular-400.woff2" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-solid-900.eot" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-solid-900.svg" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-solid-900.ttf" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-solid-900.woff" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/fa-solid-900.woff2" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/Roboto-Regular.ttf" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/CuteFont-Regular.ttf" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/Roboto-Regular.woff2" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/font/CuteFont-Regular.woff2" "$pkgdir/usr/share/eruption/static/font/"
-    #install -m 644 "static/img/bg_direction_nav.png" "$pkgdir/usr/share/eruption/static/img/"
-    #install -m 644 "static/img/glyphicons-halflings.png" "$pkgdir/usr/share/eruption/static/img/"
-    #install -m 644 "static/img/bg/bg-1.jpg" "$pkgdir/usr/share/eruption/static/img/bg/"
-    #install -m 644 "static/img/icons/eruption.png" "$pkgdir/usr/share/eruption/static/img/icons/"
-    #install -m 644 "static/img/favicon.png" "$pkgdir/usr/share/eruption/static/img/"
-    #install -m 644 "static/js/animate.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/custom.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.bundle.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.bundle.js.map" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.bundle.min.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.bundle.min.js.map" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.js.map" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.min.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/bootstrap.min.js.map" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/jquery.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/fontawesome.min.js" "$pkgdir/usr/share/eruption/static/js/"
-    #install -m 644 "static/js/highlight.pack.js" "$pkgdir/usr/share/eruption/static/js/"
 }
