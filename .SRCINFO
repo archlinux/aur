@@ -2,6 +2,7 @@ pkgbase = softu2f
 	pkgdesc = Software U2F HID token daemon (rust-u2f)
 	pkgver = 0.4.0.r3.g14a6ed0
 	pkgrel = 2
+	url = https://github.com/danstiner/rust-u2f
 	arch = x86_64
 	makedepends = clang
 	makedepends = llvm
