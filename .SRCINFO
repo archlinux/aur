@@ -1,9 +1,10 @@
 pkgbase = hakchi-git
 	pkgdesc = Tool that allows you to add more games to your NES/SNES Classic Mini v1
 	pkgver = r130.fd525ac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madmonkey1907/hakchi
 	arch = x86_64
+	license = GPL3
 	makedepends = git
 	makedepends = arm-linux-gnueabihf-gcc
 	makedepends = imagemagick

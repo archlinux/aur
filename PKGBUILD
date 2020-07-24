@@ -1,7 +1,7 @@
 pkgname=hakchi-git
 _pkgname=hakchi
 pkgver=r130.fd525ac
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that allows you to add more games to your NES/SNES Classic Mini v1"
 arch=("x86_64")
 url="https://github.com/madmonkey1907/hakchi"
