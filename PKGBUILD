@@ -11,8 +11,8 @@ makedepends=('p7zip')
 source=("https://render.otoy.com/downloads/a/787/59ea3438-034b-4081-ad21-6174e7614886/${pkgname}_4_00c_linux.zip"
 	"${pkgname}.desktop"
 	"${pkgname}.png")
-md5sums=('714ba23bc129f7734385e168afb149b0'
-         '4a1f807340ebadee53e64746c2a375ee'
+md5sums=('97a690a215f993d72101de0e4e6e687c'
+         '9476a0cc644ad2a4a54c9310acc4e039'
          '8e94c5725ab1affa51011c5c4aecbc1b')
 
 package() {
