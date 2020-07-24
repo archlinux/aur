@@ -1,6 +1,6 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: supermario9590
 pkgname=sysvinit-git
-pkgver=2.96
+pkgver=2.97
 pkgrel=1
 pkgdesc='Linux System V Init'
 url='http://savannah.nongnu.org/projects/sysvinit'
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('glibc' 'procps-ng>=3.3.9')
 conflicts=('systemd-sysvcompat')
 
-source=("http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-${pkgver}.tar.xz")
-sha256sums=('2a2e26b72aa235a23ab1c8471005f890309ce1196c83fbc9413c57b9ab62b587')
+source=("http://mirror.netcologne.de/savannah/sysvinit/sysvinit-${pkgver}.tar.xz")
+sha256sums=('SKIP')
 
 
 build()
