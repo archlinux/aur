@@ -1,5 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-#
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Elena “of Valhalla” Grandi <elena.valhalla@gmail.com>
 
