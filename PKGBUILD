@@ -1,7 +1,7 @@
 # Maintainer: Ryan Greenup <ryan.greenup @ protonmail dot com>
 
-pkgname=cadmus-notes-git
-pkgver=0.2
+pkgname=cadmus-notes
+pkgver=1.0
 pkgrel=1
 pkgdesc="Modular Shell Scripts for an MD Notebook"
 arch=('x86_64')
@@ -35,6 +35,7 @@ optdepends=('nodejs-markserv: Preview Support'
             'mdcat: Pretty Print'
             ## These are just optional
             'texlive-core: PDF Export'
+            'wmctrl: Move Windows'
             'wl-clipboard: Clipboard for Wayland')
 
 source=("git+https://github.com/RyanGreenup/cadmus.git")
@@ -54,13 +55,9 @@ package() {
 # Using the portable philosphy that I've previously settled on
 ################################################################################
 
- mkdir -p "${pkgdir}/$HOME/.cadmus";
- mkdir -p "${pkgdir}/$HOME/.local/bin"
- rsync -av ${srcdir}/cadmus/* "${pkgdir}/$HOME/.cadmus/"
- ln -rsf "${pkgdir}/$HOME/.cadmus/bin/cadmus" "${pkgdir}/$HOME/.local/bin"
-
-chmod 700 "${pkgdir}/$HOME"
-chmod 755 "${pkgdir}/$HOME/.cadmus"
-chmod 700 "${pkgdir}/$HOME/.local"
+ mkdir -p "${pkgdir}/opt/.cadmus";
+ mkdir -p "${pkgdir}/usr/bin";
+ rsync -av ${srcdir}/cadmus/* "${pkgdir}/opt/cadmus/"
+ ln -rsf "${pkgdir}/opt/cadmus/bin/cadmus" "${pkgdir}/usr/bin/cadmus"
 
 }
