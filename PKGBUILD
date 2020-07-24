@@ -1,4 +1,4 @@
-# Maintainer: Ryan Greenup <ryan.greenup@protonmail.com>
+# Maintainer: Ryan Greenup <ryan.greenup @ protonmail dot com>
 
 pkgname=cadmus-notes
 pkgver=0.2
