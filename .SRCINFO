@@ -1,6 +1,6 @@
 pkgbase = hdrmerge-git
 	pkgdesc = HDRMerge fuses two or more raw images into a single raw with an extended dynamic range.
-	pkgver = 0.5.0.r40.g8e652a1
+	pkgver = nightly.r70.gcb42a8b
 	pkgrel = 1
 	url = http://jcelaya.github.io/hdrmerge/
 	arch = i686
