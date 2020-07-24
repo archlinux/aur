@@ -1,6 +1,6 @@
 pkgbase = rog-core
 	pkgdesc = A utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/flukejones/rog-core
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rog-core
 	makedepends = clang
 	depends = dbus
 	depends = libusb
-	source = https://github.com/flukejones/rog-core/archive/v0.15.2.tar.gz
+	source = https://github.com/flukejones/rog-core/archive/v0.15.3.tar.gz
 	source = install-dir.patch
-	sha256sums = 0ba9a3379fd03d3c4a690d31815770215e3523966010ebf25363464186ed29ff
+	sha256sums = ccb85e87a069e1ce3e4f7348901785e21b14791a09dceda19dd75ae02b9302da
 	sha256sums = 78ec239b5255d1d6dd4e7ef67d61eab58f79b4d03a27de648c790f6077ad0e46
 
 pkgname = rog-core
