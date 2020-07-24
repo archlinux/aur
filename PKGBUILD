@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-myhdl python2-myhdl)
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="a Python-Based Hardware Description Language"
 arch=('any')
@@ -8,14 +8,11 @@ url="http://www.myhdl.org/"
 license=('LGPL')
 makedepends=('python-sphinx' 'python-setuptools' 'python2-setuptools')
 
-source=("myhdl-$pkgver.tar.gz::https://github.com/myhdl/myhdl/archive/$pkgver.tar.gz" isasync.patch)
-md5sums=('225242b0ab59fde4f3f2cfe1a5ab9b53'
-         '631a78d6c56d603098036678345bea78')
+source=("myhdl-$pkgver.tar.gz::https://github.com/myhdl/myhdl/archive/$pkgver.tar.gz")
+md5sums=('47be668d2cbfd7894a707a6e1ffce742')
 
 build() {
   cd "$srcdir/myhdl-$pkgver"
-  
-  patch -p1 < ../isasync.patch
   
   cd $srcdir/myhdl-$pkgver/doc
   PYTHONPATH=$srcdir/myhdl-$pkgver make man

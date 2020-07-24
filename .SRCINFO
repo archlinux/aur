@@ -1,6 +1,6 @@
 pkgbase = python-myhdl
 	pkgdesc = a Python-Based Hardware Description Language
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://www.myhdl.org/
 	arch = any
@@ -8,10 +8,8 @@ pkgbase = python-myhdl
 	makedepends = python-sphinx
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = myhdl-0.10.tar.gz::https://github.com/myhdl/myhdl/archive/0.10.tar.gz
-	source = isasync.patch
-	md5sums = 225242b0ab59fde4f3f2cfe1a5ab9b53
-	md5sums = 631a78d6c56d603098036678345bea78
+	source = myhdl-0.11.tar.gz::https://github.com/myhdl/myhdl/archive/0.11.tar.gz
+	md5sums = 47be668d2cbfd7894a707a6e1ffce742
 
 pkgname = python-myhdl
 	depends = python
