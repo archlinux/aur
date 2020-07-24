@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-phonetrack
 _releasename=phonetrack-oc
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=2
 pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/${_releasename}-v${pkgver}
 }
 
-sha512sums=('3eed4f5521bce1835de3dabaef848132305bfd3facb3e9fe369e2bf3202d012583a3f65e1c39d934fa5adf5c8e2f1aa0e89f93be234daf932c35f6074fa76435')
+sha512sums=('572f013228dc97b35558a631baae1ac0ec0a28b266d84a5a0b6329b6472a7d9d2ea059bb318d983dd2edc7f3c08217c3361695ff4535705433307dd97622ecf1')
