@@ -1,0 +1,19 @@
+pkgbase = digital-git
+	pkgdesc = A digital logic designer and circuit simulator. Git development version
+	pkgver = 0.3813
+	pkgrel = 1
+	url = https://github.com/hneemann/Digital
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = maven
+	makedepends = java-runtime
+	depends = java-runtime
+	provides = digital
+	conflicts = digital
+	replaces = digital
+	source = digital-git::git://github.com/hneemann/Digital.git
+	sha256sums = SKIP
+
+pkgname = digital-git
+
