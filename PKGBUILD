@@ -1,7 +1,7 @@
 # Editor:  Austcool-Walker <0ajwalker@gmail.com>
 # Maintainer: Austcool-Walker <0ajwalker@gmail.com>
 pkgname=macbuntu-theme
-pkgver=1.4.9
+pkgver=1.4.10
 wallver="2018"
 wallver2="17.0"
 pkgrel=1
@@ -53,7 +53,7 @@ source=("https://github.com/Austcool-Walker/macbuntu-theme/releases/download/1.0
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/BlackHeartSwimsuit.png")
 sha512sums=('e0b69da47480db9675359e37ff4b5187007735127c2eebf6032d0a70fa06daa7c1b577426a14d907396ac410e2406b04831bbab653c93a335ad0014a7749d20d'
             '2e68ebd7fee21f21e52f05404f7a127aab26f2081c163991309af419982d46957b93afadb72a7724642e73b8ea6d6c14d46f2c8734e1caa39687d6762e7b9435'
-            'a4b6d0f501342533b87f1433c7f788869ee816959f2fe57a56ea33c9d64208d7b42138b6069ace5fd0313de990119ad614a1e1de24c89cc14367a928349dc024'
+            '0d663d61692e3d6f9f4a5c84d6c260b1dc77ad849598f03c458d0c3ef0784bf3ccf4076102dd75c9419c89d095f5ccf49f882e18bc57d25292c962a256bbd4c5'
             '71498c01d0a92764eeb4c379c875f686d678365141061381b143b5a7e23774e30da82dc0b9f0e5d9ed371fd0180aea5478073ef55f5f12a6b2e9d629b020e43c'
             '21bbc894532c69d374ad75f94565b3e5a04caedb3183fd4cf4c80e1be903deef1f5a727cb94d6265781de6af544ae75fe030d0c3689beb44d9e8b87f47e7782d'
             '2a7960771c24a5ac3362c414323110124d0de1dd4b408495ca3468c190f476300db6f2d8f5cec36bdc24dddfd49deb56cd4eaa27633aeac6968d863fe818f63c'
