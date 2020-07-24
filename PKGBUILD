@@ -3,7 +3,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r15307.e5abf1118
+pkgver=r15523.f650cf8a9
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
