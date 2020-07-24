@@ -19,16 +19,16 @@ source=('$pkgname::git+https://github.com/curlpipe/rsflex.git')
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	cargo build --release
 }
 
 check() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	cargo test --release
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
