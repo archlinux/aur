@@ -8,6 +8,7 @@ arch=('x86_64')
 url="ryangreenup.github.io/cadmus"
 license=('GPL3')
 provides=('cadmus')
+makedepends=(git)
 depends=(
     recoll
     tmsu

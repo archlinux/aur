@@ -5,6 +5,7 @@ pkgbase = cadmus-notes
 	url = ryangreenup.github.io/cadmus
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = recoll
 	depends = tmsu
 	depends = ripgrep
