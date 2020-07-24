@@ -1,6 +1,6 @@
-pkgbase = cadmus-notes-git
+pkgbase = cadmus-notes
 	pkgdesc = Modular Shell Scripts for an MD Notebook
-	pkgver = 0.2
+	pkgver = 1.0
 	pkgrel = 1
 	url = ryangreenup.github.io/cadmus
 	arch = x86_64
@@ -27,10 +27,11 @@ pkgbase = cadmus-notes-git
 	optdepends = tectonic: Additional option for PDF Export
 	optdepends = mdcat: Pretty Print
 	optdepends = texlive-core: PDF Export
+	optdepends = wmctrl: Move Windows
 	optdepends = wl-clipboard: Clipboard for Wayland
 	provides = cadmus
 	source = git+https://github.com/RyanGreenup/cadmus.git
 	sha256sums = SKIP
 
-pkgname = cadmus-notes-git
+pkgname = cadmus-notes
 
