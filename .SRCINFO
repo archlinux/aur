@@ -1,6 +1,6 @@
 pkgbase = python-pyvisa
 	pkgdesc = A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library
-	pkgver = 1.9.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/pyvisa/pyvisa
 	arch = any
@@ -9,18 +9,8 @@ pkgbase = python-pyvisa
 	depends = python-distribute
 	depends = python-docutils
 	optdepends = python-pyvisa-py: Pure Python backend
-	source = pyvisa-1.9.1.tar.gz::https://github.com/pyvisa/pyvisa/archive/1.9.1.tar.gz
-	md5sums = cb53183a78b69ef0cbb8099d5019a91c
+	source = https://github.com/pyvisa/pyvisa/archive/1.10.1.tar.gz
+	md5sums = 1ef98142678a989e91c940630eb781a9
 
 pkgname = python-pyvisa
-	depends = python
-	depends = python-distribute
-	depends = python-docutils
-	optdepends = python-pyvisa-py: Pure Python backend
-
-pkgname = python2-pyvisa
-	depends = python2
-	depends = python2-distribute
-	depends = python2-docutils
-	optdepends = python2-pyvisa-py: Pure Python backend
 
