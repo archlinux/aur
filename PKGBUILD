@@ -2,21 +2,19 @@
 
 pkgname=gitea-tea
 _pkgname=tea
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Painless self-hosted Git service.."
 arch=(x86_64)
 url="https://gitea.io"
 license=(MIT)
 makedepends=(go-pie)
-source=("git+https://gitea.com/gitea/tea.git#tag=v${pkgver}")
-sha256sums=(SKIP)
+source=(https://gitea.com/gitea/tea/archive/v0.4.0.tar.gz)
+sha256sums=(689b67fac6200846633c66aa0a687371b20aa85a5d2d338a4e8f5f51b44d1b32)
 
 build() {
   cd ${_pkgname}
-  go build -mod=vendor \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" .
+  make TEA_VERSION=v${pkgver}
 }
 
 package() {
