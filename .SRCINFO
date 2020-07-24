@@ -1,6 +1,6 @@
 pkgbase = python-myhdl-git
 	pkgdesc = a Python-Based Hardware Description Language
-	pkgver = 0.10.r15.ge185577
+	pkgver = 0.11.r14.ga4708fa
 	pkgrel = 1
 	url = http://www.myhdl.org/
 	arch = any
@@ -8,19 +8,12 @@ pkgbase = python-myhdl-git
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = myhdl::git+https://github.com/myhdl/myhdl.git
-	md5sums = SKIP
-
-pkgname = python-myhdl-git
 	depends = python
 	depends = iverilog
 	provides = python-myhdl
 	conflicts = python-myhdl
+	source = myhdl::git+https://github.com/myhdl/myhdl.git
+	md5sums = SKIP
 
-pkgname = python2-myhdl-git
-	depends = python2
-	depends = iverilog
-	provides = python2-myhdl
-	conflicts = python2-myhdl
+pkgname = python-myhdl-git
 
