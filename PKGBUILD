@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.32.0
+pkgver=2.32.1
 pkgrel=1
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 fmakedepends=(git go)
-source=("git+$url#commit=71a75e33474ce88501532aa423542dbb83ec8bbe") # tag: 2.32.0
+source=("git+$url#commit=b97463450ed421ef3b5f079941bd25d124774c16") # tag: 2.32.1
 sha256sums=('SKIP')
 options=(!strip)
 optdepends=('cxx: for compiling C++'
