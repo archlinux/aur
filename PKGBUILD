@@ -58,7 +58,7 @@ package() {
 # Using the portable philosphy that I've previously settled on
 ################################################################################
 
- mkdir -p "${pkgdir}/opt/.cadmus";
+ mkdir -p "${pkgdir}/opt/cadmus";
  mkdir -p "${pkgdir}/usr/bin";
  rsync -av ${srcdir}/cadmus/* "${pkgdir}/opt/cadmus/"
  ln -rsf "${pkgdir}/opt/cadmus/bin/cadmus" "${pkgdir}/usr/bin/cadmus"
