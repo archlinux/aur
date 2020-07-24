@@ -2,10 +2,10 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.3.0
-_pkgver_ext="$pkgver"_5720_20200220_1053
-_pkg_file_name=en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip
-pkgrel=3
+pkgver=1.4.0
+_pkgver_ext="$pkgver"_7511_20200720_0928
+_pkg_file_name=en.st-stm32cubeide_${_pkgver_ext}_amd64_sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs')
@@ -30,9 +30,11 @@ fi
 
 source=("local://${_pkg_file_name}"
 	$pkgname.desktop
+	$pkgname.sh
 	"99-jlink.rules.patch")
-sha256sums=('61f3dc2819dd52d7341441a19f039d00a998000ad4bd7c05e44bb58673194b4c'
-	'1f8684115576ba36cd8019810cc1fbb027197bb866c1b448aa2e3a0f174b3c3a'
+sha256sums=('97bbd79147af5ab166ac6234bc9ffb160e01024b7cef4e9f201bc1512829e350'
+	'c334b743447c2b3b986d5724fd8269b7dbace23b61e68ee9c9b9e15f5e0fa879'
+	'90ac2f3ee85d08bc4eba130f07db72f4dc5271ee8cb7713c5fde09667a574e38'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3')
 
 prepare(){
@@ -73,8 +75,13 @@ package() {
 	#tar zxf "$srcdir/build/jlink-udev/makeself_payload.tar.gz" -C "${pkgdir}/etc/udev/rules.d/" --strip-components 4
 	#patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
-	msg2 'Installing desktop shortcuts'
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	msg2 'Instalation of binary file'
+	install -Dm 755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+	msg2 'Installing desktop shortcut and icon'
+	convert "${pkgdir}/opt/stm32cubeide/icon.xpm" "${srcdir}/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	#msg2 'Cleaning build folder'
 	#rm -rf "${srcdir}/build"
