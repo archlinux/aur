@@ -2,8 +2,8 @@
 
 pkgname=gog-risk-of-rain
 pkgver=2.1.0.6
-pkgrel=2
-pkgdsc="Risk of Rain is an action platformer with roguelike elements."
+pkgrel=3
+pkgdesc="Risk of Rain is an action platformer with roguelike elements."
 url="https://www.gog.com/game/risk_of_rain"
 license=('custom')
 arch=('i686' 'x86_64')
