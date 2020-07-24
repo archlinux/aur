@@ -1,0 +1,84 @@
+diff --git a/setup.py b/setup.py
+index dca8421..19c5b88 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,62 +1,12 @@
+ import os
+-import shutil
+-import stat
+ 
+ from setuptools import setup
+-from setuptools.command.develop import develop
+-from setuptools.command.install import install
+ 
+ this_directory = os.path.abspath(os.path.dirname(__file__))
+ 
+ with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+     long_description = f.read()
+ 
+-
+-def post_install():
+-    path = '/usr/local/bin/woeusbgui'  # I give up, I have no clue how to get bin path that is used by pip
+-    shutil.copy2(this_directory + '/WoeUSB/woeusbgui', path)  # I'll just hard code it until someone finds better way
+-
+-    shutil.copy2(this_directory + '/miscellaneous/com.github.woeusb.woeusb-ng.policy', "/usr/share/polkit-1/actions")
+-
+-    try:
+-        os.makedirs('/usr/share/icons/WoeUSB-ng')
+-    except FileExistsError:
+-        pass
+-
+-    shutil.copy2(this_directory + '/WoeUSB/data/icon.ico', '/usr/share/icons/WoeUSB-ng/icon.ico')
+-
+-    with open("/usr/share/applications/WoeUSB-ng.desktop", "w") as file:
+-        file.write(
+-            """#!/usr/bin/env xdg-open
+-            [Desktop Entry]
+-            Name=WoeUSB-ng
+-            Exec=""" + path + """
+-            Icon=/usr/share/icons/WoeUSB-ng/icon.ico
+-            Terminal=false
+-            Type=Application
+-            """
+-        )
+-
+-    os.chmod('/usr/share/applications/WoeUSB-ng.desktop',
+-             stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH | stat.S_IEXEC)  # 755
+-
+-
+-class PostDevelopCommand(develop):
+-    """Post-installation for development mode."""
+-
+-    def run(self):
+-        # TODO
+-        develop.run(self)
+-
+-
+-class PostInstallCommand(install):
+-    """Post-installation for installation mode."""
+-
+-    def run(self):
+-        post_install()
+-        install.run(self)
+-
+-
+ setup(
+     name='WoeUSB-ng',
+     version='0.2.3',
+@@ -70,15 +20,8 @@ setup(
+     zip_safe=False,
+     packages=['WoeUSB'],
+     include_package_data=True,
+-    scripts=[
+-        'WoeUSB/woeusb',
+-    ],
+     install_requires=[
+         'termcolor',
+         'wxPython',
+     ],
+-    cmdclass={
+-        'develop': PostDevelopCommand,
+-        'install': PostInstallCommand
+-    }
+ )
+ 
