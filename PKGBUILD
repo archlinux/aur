@@ -6,6 +6,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple library to preload for spoofing the mac address"
 
+license=("unknown")
 source=("ioctl_preload.64b.c"
 	"Makefile")
 md5sums=('23341bdb5ca2d928d67ba8cf1e3c9ada'
