@@ -1,13 +1,12 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
-	pkgver = git_r2737
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
 	makedepends = cmake-extras
 	makedepends = dbus
@@ -36,8 +35,8 @@ pkgbase = ayatana-indicator-sound
 	optdepends = pavucontrol
 	optdepends = mate-media
 	options = !emptydirs
-	source = git+https://github.com/AyatanaIndicators/ayatana-indicator-sound.git
-	md5sums = SKIP
+	source = https://github.com/tari01/ayatana-indicator-sound/archive/v0.1.tar.gz
+	md5sums = adf98b6e6d86bbe8f71d0d80af18c52f
 
 pkgname = ayatana-indicator-sound
 

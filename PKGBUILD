@@ -3,34 +3,28 @@
 # Contributor: Ilya Fedin <fedin-ilja2010 at ya dot ru>
 
 pkgname="ayatana-indicator-sound"
-pkgver=git_r2737
-pkgrel=1
+pkgver="0.1"
+pkgrel="1"
 pkgdesc="Ayatana system sound indicator"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("pulseaudio" "libayatana-indicator" "glib2" "accountsservice" "dconf" "libnotify" "libgee")
-makedepends=("git" "cmake" "cmake-extras" "dbus" "accountsservice" "mate-common" "gsettings-desktop-schemas" "intltool" "vala" "glib2" "libpulse" "libnotify" "libgee" "libxml2" "pulseaudio" "qt5-base" "qt5-declarative" "systemd" "gobject-introspection")
+makedepends=("cmake" "cmake-extras" "dbus" "accountsservice" "mate-common" "gsettings-desktop-schemas" "intltool" "vala" "glib2" "libpulse" "libnotify" "libgee" "libxml2" "pulseaudio" "qt5-base" "qt5-declarative" "systemd" "gobject-introspection")
 optdepends=("pavucontrol" "mate-media")
-source=("git+https://github.com/AyatanaIndicators/${pkgname}.git")
-md5sums=("SKIP")
+source=("https://github.com/tari01/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=("adf98b6e6d86bbe8f71d0d80af18c52f")
 options=("!emptydirs")
-
-pkgver()
-{
-    cd ${pkgname}
-    echo "git_r$(git rev-list --count HEAD)"
-}
 
 build()
 {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_LOCALSTATEDIR=/var -Denable_tests=OFF
     make
 }
 
 package()
 {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 }
