@@ -1,0 +1,18 @@
+pkgbase = python-nbclean
+	pkgdesc = Tools for preprocessing and cleaning Jupyter Notebooks.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/theislab/nbclean
+	arch = any
+	license = MIT
+	depends = python-nbgrader
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-tqdm
+	depends = jupyter-nbformat
+	noextract = nbclean-0.3.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/n/nbclean/nbclean-0.3.2-py2.py3-none-any.whl
+	sha256sums = 472373d52c7a99e81534057721d5280f8d9435c5636ba232d9b55656eac861b8
+
+pkgname = python-nbclean
+
