@@ -1,0 +1,40 @@
+--- a/TrrntZipCMD/TrrntZipCMD.csproj
++++ b/TrrntZipCMD/TrrntZipCMD.csproj
+@@ -56,15 +56,4 @@
+     </ProjectReference>
+   </ItemGroup>
+   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+-  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
+-    <CreateItem Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)'=='.dll'">
+-      <Output ItemName="AssembliesToMerge" TaskParameter="Include" />
+-    </CreateItem>
+-    <PropertyGroup>
+-      <ReferenceAssemblies>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2</ReferenceAssemblies>
+-    </PropertyGroup>
+-    <Message Importance="high" Text="Executing ILRepack...with target platform from $(ReferenceAssemblies)" />
+-    <Exec Command="&quot;C:\Program Files (x86)\ILRepack\ILRepack.exe&quot; /out:@(MainAssembly) /internalize /targetplatform:v4,&quot;$(ReferenceAssemblies)&quot; &quot;@(IntermediateAssembly)&quot; @(AssembliesToMerge->'&quot;%(FullPath)&quot;', ' ')" />
+-    <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
+-  </Target>
+-</Project>
+\ No newline at end of file
++</Project>
+--- a/TrrntZipUI/TrrntZipUI.csproj
++++ b/TrrntZipUI/TrrntZipUI.csproj
+@@ -139,15 +139,4 @@
+   <Target Name="BeforeBuild">
+   </Target>
+   -->
+-  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
+-    <CreateItem Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)'=='.dll'">
+-      <Output ItemName="AssembliesToMerge" TaskParameter="Include" />
+-    </CreateItem>
+-    <PropertyGroup>
+-      <ReferenceAssemblies>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2</ReferenceAssemblies>
+-    </PropertyGroup>
+-    <Message Importance="high" Text="Executing ILRepack...with target platform from $(ReferenceAssemblies)" />
+-    <Exec Command="&quot;C:\Program Files (x86)\ILRepack\ILRepack.exe&quot; /out:@(MainAssembly) /internalize /targetplatform:v4,&quot;$(ReferenceAssemblies)&quot; &quot;@(IntermediateAssembly)&quot; @(AssembliesToMerge->'&quot;%(FullPath)&quot;', ' ')" />
+-    <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
+-  </Target>
+-</Project>
+\ No newline at end of file
++</Project>
