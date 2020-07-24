@@ -5,7 +5,7 @@ _faust_version=0.9.73-mr2
 _faust_commit=40a919756d09c6b2de19b3299b7eef55997551dc
 pkgname="${_name}-git"
 pkgver=1.3.0.r330.b99d4a3
-pkgrel=2
+pkgrel=3
 pkgdesc="An emulation of the Yamaha YC-20 combo organ as an LV2 plugin and a standalone program (git version)"
 arch=('x86_64' 'armv7l')
 url="https://github.com/sampov2/foo-yc20"
@@ -16,6 +16,9 @@ makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git+https://github.com/sampov2/foo-yc20.git"
+        # we need an obsolete version of FAUST as a build dependency,
+        # for which there is, unfortuantely, no release tag or archive
+        # just a branch, so we pin the commit for the checkout archive we're retrieving
         "faust-${_faust_version}.tar.gz::https://github.com/grame-cncm/faust/archive/${_faust_commit}.tar.gz"
         'foo-yc20-makefile-ldflags.patch')
 sha256sums=('SKIP'
@@ -25,7 +28,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  local ver="$(git tag --sort=-taggerdate | head -n 1)"
+  local ver="$(git tag | sort -r | head -n 1)"
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
