@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 
 pkgname=python-redis-lock
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Lock context manager implemented via redis SET NX EX and BLPOP"
 url="https://pypi.org/project/python-redis-lock/"
@@ -13,11 +13,11 @@ license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('06f28f63bf4ea3d739ff5c472e76563e24aa5c887002a85cbdb7a5b13aa05897')
+sha256sums=('6c79b87f2fefcf47bbcebea56056d324e9d7971c9b98123b79590e08cbb0a8f7')
 
 check() {
     cd "${srcdir}"/${pkgname}-${pkgver}
-    PYTHONUNBUFFERED=yes DJANGO_SETTINGS_MODULE=test_project.settings PYTHONPATH=. pytest
+    PYTHONUNBUFFERED=yes DJANGO_SETTINGS_MODULE=test_project.settings PYTHONPATH=./build/lib pytest
 }
 
 build() {

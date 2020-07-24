@@ -1,6 +1,6 @@
 pkgbase = python-redis-lock
 	pkgdesc = Lock context manager implemented via redis SET NX EX and BLPOP
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/python-redis-lock/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-redis-lock
 	depends = python
 	depends = python-redis
 	optdepends = python-django-redis
-	source = https://files.pythonhosted.org/packages/source/p/python-redis-lock/python-redis-lock-3.5.0.tar.gz
-	sha256sums = 06f28f63bf4ea3d739ff5c472e76563e24aa5c887002a85cbdb7a5b13aa05897
+	source = https://files.pythonhosted.org/packages/source/p/python-redis-lock/python-redis-lock-3.6.0.tar.gz
+	sha256sums = 6c79b87f2fefcf47bbcebea56056d324e9d7971c9b98123b79590e08cbb0a8f7
 
 pkgname = python-redis-lock
 
