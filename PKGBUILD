@@ -7,6 +7,7 @@ pkgrel=1
 arch=("x86_64" "i686")
 url=http://wifimouse.necta.us/
 
+license=("unknown")
 source=("icon.png")
 source_x86_64=("mouseserver-x86_64.zip::http://wifimouse.necta.us/MouseServerLinux64.zip")
 source_i686=("mouseserver-i686.zip::http://wifimouse.necta.us/MouseServerLinux32.zip")

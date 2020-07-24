@@ -5,6 +5,7 @@ pkgbase = necta-wifi-mouse
 	url = http://wifimouse.necta.us/
 	arch = x86_64
 	arch = i686
+	license = unknown
 	makedepends = sed
 	makedepends = tar
 	source = icon.png
