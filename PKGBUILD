@@ -2,7 +2,7 @@
 pkgname=bgpalerter-bin
 _pkgname=bgpalerter
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to monitor streams of BGP data"
 arch=('x86_64')
 url="https://github.com/nttgin/BGPalerter"
@@ -11,7 +11,7 @@ depends=(libsystemd)
 conflicts=('bgpalerter')
 provides=('bgpalerter')
 options=('!strip' '!emptydirs')
-source=("https://github.com/nttgin/BGPalerter/releases/download//v${pkgver}/bgpalerter-linux-x64"
+source=("${pkgname}-${pkgver}::https://github.com/nttgin/BGPalerter/releases/download//v${pkgver}/bgpalerter-linux-x64"
 "https://raw.githubusercontent.com/nttgin/BGPalerter/v${pkgver}/LICENSE"
 "https://raw.githubusercontent.com/nttgin/BGPalerter/v${pkgver}/config.yml.example"
 "https://raw.githubusercontent.com/nttgin/BGPalerter/v${pkgver}/prefixes.yml.example"
@@ -26,7 +26,7 @@ package(){
 	cd "${srcdir}"
 	install -Dm644  LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     	install -Dm644  bgpalerter.service "${pkgdir}/usr/lib/systemd/system/bgpalerter.service"
- 	install -Dm755  bgpalerter-linux-x64 "${pkgdir}/opt/${_pkgname}/bgpalerter"
+ 	install -Dm755  ${pkgname}-${pkgver} "${pkgdir}/opt/${_pkgname}/bgpalerter"
  	install -Dm644  *.example -t "${pkgdir}/opt/${_pkgname}/"
 
 }
