@@ -1,9 +1,10 @@
 pkgbase = sub3dtool-git
 	pkgdesc = Convert subtitle to 3D (ASS Format) to use with VLC or MPlayer
 	pkgver = r6.668216a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheZoc/sub3dtool
 	arch = x86_64
+	license = GPL3
 	makedepends = git
 	provides = sub3dtool
 	conflicts = sub3dtool
