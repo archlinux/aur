@@ -1,5 +1,5 @@
 pkgbase = vte3-kinetic
-	pkgdesc = Virtual Terminal Emulator widget
+	pkgdesc = vte3 patched to enable kinetic scrolling with libinput
 	pkgver = 0.61.0+kinetic+79+g59d3ce11
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
