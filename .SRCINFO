@@ -8,7 +8,7 @@ pkgbase = rsflex
 	makedepends = cargo
 	makedepends = git
 	provides = rsflex
-	source = https://github.com/curlpipe/rsflex
+	source = rsflex::git+https://github.com/curlpipe/rsflex
 	sha1sums = SKIP
 
 pkgname = rsflex
