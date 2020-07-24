@@ -1,6 +1,6 @@
-pkgbase = gazebo-hg
-	pkgdesc = A multi-robot simulator for outdoor environments. Mercurial version.
-	pkgver = 11.0.0.38902
+pkgbase = gazebo-git
+	pkgdesc = A multi-robot simulator for outdoor environments. Git version.
+	pkgver = r32276.2369ecd863
 	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
@@ -9,8 +9,8 @@ pkgbase = gazebo-hg
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = ignition-cmake>=2
-	makedepends = mercurial
+	makedepends = ruby-ronn
+	makedepends = git
 	depends = boost
 	depends = curl
 	depends = freeglut
@@ -22,12 +22,12 @@ pkgbase = gazebo-hg
 	depends = libxml2
 	depends = ogre=1.9
 	depends = protobuf
-	depends = sdformat>=9
-	depends = ignition-math>=6
-	depends = ignition-transport>=8
-	depends = ignition-common>=3
-	depends = ignition-fuel_tools>=4
-	depends = ignition-msgs>=5
+	depends = sdformat
+	depends = ignition-math
+	depends = ignition-transport
+	depends = ignition-common
+	depends = ignition-fuel_tools
+	depends = ignition-msgs
 	depends = tinyxml2
 	depends = qwt
 	optdepends = bullet: Bullet support
@@ -41,8 +41,9 @@ pkgbase = gazebo-hg
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
 	provides = gazebo
-	source = gazebo::hg+https://bitbucket.org/osrf/gazebo#branch=default
-	md5sums = SKIP
+	conflicts = gazebo
+	source = gazebo::git+https://github.com/osrf/gazebo
+	sha256sums = SKIP
 
-pkgname = gazebo-hg
+pkgname = gazebo-git
 
