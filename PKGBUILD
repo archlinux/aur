@@ -7,14 +7,14 @@ pkgver=r81.818eb92
 pkgrel=1
 pkgdesc='Userspace daemon for Intel Precise Touch & Stylus'
 arch=('x86_64')
-url="git+https://github.com/linux-surface/${_pkgname}.git"
+url="https://github.com/linux-surface/${_pkgname}"
 license=('GPL2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 optdepends=("ipts-uapi-dkms: The kernel module required by this daemon. \
 Alternatively, you can build this module within your kernel.")
 makedepends=('go')
-source=("${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 install=iptsd.install
 
