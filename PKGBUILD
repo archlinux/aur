@@ -4,9 +4,9 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.6.0rc3
-_pkgver=1.6.0-rc3
-pkgrel=2
+pkgver=1.6.0rc6
+_pkgver=1.6.0-rc6
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -25,10 +25,6 @@ sha256sums=('SKIP'
             '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b')
-
-get_pyver () {
-  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
-}
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -122,7 +118,7 @@ _package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
+  pytorchpath="usr/lib/python3.8/site-packages/torch"
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
