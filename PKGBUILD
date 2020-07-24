@@ -1,6 +1,6 @@
 # Maintainer: Ryan Greenup <ryan.greenup @ protonmail dot com>
 
-pkgname=cadmus-notes
+pkgname=cadmus-notes-git
 pkgver=0.2
 pkgrel=1
 pkgdesc="Modular Shell Scripts for an MD Notebook"

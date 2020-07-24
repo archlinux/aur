@@ -1,4 +1,4 @@
-pkgbase = cadmus-notes
+pkgbase = cadmus-notes-git
 	pkgdesc = Modular Shell Scripts for an MD Notebook
 	pkgver = 0.2
 	pkgrel = 1
@@ -32,5 +32,5 @@ pkgbase = cadmus-notes
 	source = git+https://github.com/RyanGreenup/cadmus.git
 	sha256sums = SKIP
 
-pkgname = cadmus-notes
+pkgname = cadmus-notes-git
 
