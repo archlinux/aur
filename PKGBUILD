@@ -38,7 +38,9 @@ optdepends=('nodejs-markserv: Preview Support'
             'wmctrl: Move Windows'
             'wl-clipboard: Clipboard for Wayland')
 
-source=("git+https://github.com/RyanGreenup/cadmus.git")
+
+source=("git+https://github.com/RyanGreenup/cadmus.git#tag=1.0")
+# source=("git+https://github.com/RyanGreenup/cadmus.git")
 # source=("git+https://github.com/RyanGreenup/cadmus.git#branch=makepkg")
  sha256sums=('SKIP')
 
