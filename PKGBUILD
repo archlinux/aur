@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=polychord
-pkgver='1.17.1'
-pkgrel=2
+pkgver='1.18.1'
+pkgrel=1
 pkgdesc="Next generation nested sampling"
 arch=(any)
 url="https://github.com/PolyChord/PolyChordLite"
@@ -16,11 +16,11 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/PolyChord/PolyChordLite/archive/${pkgver}.tar.gz")
-sha256sums=('04ad8741776c1c53d4c7ed7ebe89f4d54e8f0bb8d9d221db8b4f8963384fe005')
+sha256sums=('00e56353a48727a34e54a688d2fc021d8850ab8b6788be1c7056f1c68d417873')
 package() {
     cd "${srcdir}/PolyChordLite-${pkgver}"
     install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
-    FFLAGS=-fallow-argument-mismatch make 
+    make 
     install -Dm644 lib/libchord.so "$pkgdir/usr/lib/libchord.so"
     install -Dm644 lib/libchord.a "$pkgdir/usr/lib/libchord.a"
     install -Dm644 src/polychord/interfaces.hpp "$pkgdir/usr/include/${pkgname}/interfaces.hpp"
