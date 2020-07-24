@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -61,6 +61,5 @@ check () {
 package () {
     cd "$pkgname-$pkgver"
     make install DESTDIR="$pkgdir"
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
