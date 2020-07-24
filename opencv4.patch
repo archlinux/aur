@@ -1,0 +1,360 @@
+From f693399b1d7cb28b34c767c8aa78c4ec6c1a7ce3 Mon Sep 17 00:00:00 2001
+From: Christoph Haag <christoph.haag@collabora.com>
+Date: Fri, 24 Jul 2020 04:12:01 +0200
+Subject: [PATCH] update to OpenCV 4.0, remove support for OpenCV < 4
+
+---
+ CMakeLists.txt                                | 11 +++-----
+ .../ImageSources/CVImageSource.cpp            |  4 +--
+ .../ImageSources/DK2ImageSource.cpp           |  2 +-
+ .../ImageSources/FakeImageSource.cpp          |  2 +-
+ .../ImageSources/ImageSource.cpp              |  2 +-
+ .../PoseEstimator_RANSAC.cpp                  | 12 +--------
+ .../BeaconBasedPoseEstimator.cpp              | 11 --------
+ plugins/videobasedtracker/CVImageSource.cpp   |  4 +--
+ plugins/videobasedtracker/DK2ImageSource.cpp  |  2 +-
+ plugins/videobasedtracker/FakeImageSource.cpp |  2 +-
+ plugins/videobasedtracker/ImageSource.cpp     |  2 +-
+ plugins/videobasedtracker/TestStandalone.cpp  | 10 +++----
+ plugins/videotrackershared/BlobExtractor.cpp  |  6 ++---
+ .../videotrackershared/SBDBlobExtractor.cpp   | 26 +++++--------------
+ 14 files changed, 29 insertions(+), 67 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e04619039..594151323 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -206,10 +206,7 @@ if(BUILD_WITH_OPENCV)
+     if(NOT OpenCV_FOUND)
+         message(FATAL_ERROR "BUILD_WITH_OPENCV is enabled, but OpenCV was not found! Either help CMake find OpenCV or disable BUILD_WITH_OPENCV.")
+     endif()
+-    if(OpenCV_VERSION VERSION_LESS 2.4)
+-        # At least one 2.3 version (used in Precise) is missing a header that
+-        # breaks their Eigen compatibility header. This seemed like the easiest
+-        # fix.
++    if(OpenCV_VERSION VERSION_LESS 4.0)
+         set(BUILD_OPENCV_CAMERA_PLUGIN OFF)
+     endif()
+     if(WIN32)
+@@ -219,10 +216,10 @@ if(BUILD_WITH_OPENCV)
+         include(OpenCVAndroid)
+     endif()
+     # Include dir specifically required by 3.0 and up, but missing from config.
+-    if(NOT OpenCV_VERSION VERSION_LESS 3.0.0)
++    if(NOT OpenCV_VERSION VERSION_LESS 4.0.0)
+         list(REMOVE_DUPLICATES OpenCV_INCLUDE_DIRS)
+-        set_target_properties(opencv_core PROPERTIES
+-            INTERFACE_INCLUDE_DIRECTORIES "${OpenCV_INCLUDE_DIRS}")
++        # add OpenCV includes globally so they work for inc/Util/OpenCVVersion.h
++        include_directories("${OpenCV_INCLUDE_DIRS}")
+     endif()
+ endif()
+ 
+diff --git a/plugins/unifiedvideoinertialtracker/ImageSources/CVImageSource.cpp b/plugins/unifiedvideoinertialtracker/ImageSources/CVImageSource.cpp
+index 49e36f857..1070d18ea 100644
+--- a/plugins/unifiedvideoinertialtracker/ImageSources/CVImageSource.cpp
++++ b/plugins/unifiedvideoinertialtracker/ImageSources/CVImageSource.cpp
+@@ -86,8 +86,8 @@ namespace vbtracker {
+     cv::Size OpenCVImageSource::resolution() const { return m_res; }
+ 
+     void OpenCVImageSource::storeRes() {
+-        int height = static_cast<int>(m_camera->get(CV_CAP_PROP_FRAME_HEIGHT));
+-        int width = static_cast<int>(m_camera->get(CV_CAP_PROP_FRAME_WIDTH));
++        int height = static_cast<int>(m_camera->get(cv::CAP_PROP_FRAME_HEIGHT));
++        int width = static_cast<int>(m_camera->get(cv::CAP_PROP_FRAME_WIDTH));
+         m_res = cv::Size(width, height);
+     }
+ } // namespace vbtracker
+diff --git a/plugins/unifiedvideoinertialtracker/ImageSources/DK2ImageSource.cpp b/plugins/unifiedvideoinertialtracker/ImageSources/DK2ImageSource.cpp
+index 1b395898f..f52cb3800 100644
+--- a/plugins/unifiedvideoinertialtracker/ImageSources/DK2ImageSource.cpp
++++ b/plugins/unifiedvideoinertialtracker/ImageSources/DK2ImageSource.cpp
+@@ -82,7 +82,7 @@ namespace vbtracker {
+         m_camera->retrieveColor(m_scratch, timestamp);
+ 
+         gray = osvr::oculus_dk2::unscramble_image(m_scratch);
+-        cv::cvtColor(gray, color, CV_GRAY2RGB);
++        cv::cvtColor(gray, color, cv::COLOR_GRAY2RGB);
+     }
+ 
+     void DK2WrappedImageSource::retrieveColor(
+diff --git a/plugins/unifiedvideoinertialtracker/ImageSources/FakeImageSource.cpp b/plugins/unifiedvideoinertialtracker/ImageSources/FakeImageSource.cpp
+index 19066ad0a..df5542477 100644
+--- a/plugins/unifiedvideoinertialtracker/ImageSources/FakeImageSource.cpp
++++ b/plugins/unifiedvideoinertialtracker/ImageSources/FakeImageSource.cpp
+@@ -76,7 +76,7 @@ namespace vbtracker {
+             cv::Mat image;
+             std::cout << "Trying to read image from " << fileName.str()
+                       << std::endl;
+-            image = cv::imread(fileName.str(), CV_LOAD_IMAGE_COLOR);
++            image = cv::imread(fileName.str(), cv::IMREAD_COLOR);
+             if (!image.data) {
+                 break;
+             }
+diff --git a/plugins/unifiedvideoinertialtracker/ImageSources/ImageSource.cpp b/plugins/unifiedvideoinertialtracker/ImageSources/ImageSource.cpp
+index 6c6559d82..b41b94b16 100644
+--- a/plugins/unifiedvideoinertialtracker/ImageSources/ImageSource.cpp
++++ b/plugins/unifiedvideoinertialtracker/ImageSources/ImageSource.cpp
+@@ -37,7 +37,7 @@ namespace vbtracker {
+     void ImageSource::retrieve(cv::Mat &color, cv::Mat &gray,
+                                osvr::util::time::TimeValue &timestamp) {
+         retrieveColor(color, timestamp);
+-        cv::cvtColor(color, gray, CV_RGB2GRAY);
++        cv::cvtColor(color, gray, cv::COLOR_RGB2GRAY);
+     }
+ } // namespace vbtracker
+ } // namespace osvr
+diff --git a/plugins/unifiedvideoinertialtracker/PoseEstimator_RANSAC.cpp b/plugins/unifiedvideoinertialtracker/PoseEstimator_RANSAC.cpp
+index de5388455..7786731c5 100644
+--- a/plugins/unifiedvideoinertialtracker/PoseEstimator_RANSAC.cpp
++++ b/plugins/unifiedvideoinertialtracker/PoseEstimator_RANSAC.cpp
+@@ -113,14 +113,7 @@ namespace vbtracker {
+ 
+         cv::Mat rvec;
+         cv::Mat tvec;
+-#if CV_MAJOR_VERSION == 2
+-        cv::solvePnPRansac(
+-            objectPoints, imagePoints, camParams.cameraMatrix,
+-            camParams.distortionParameters, rvec, tvec, usePreviousGuess,
+-            iterations, MAX_REPROJECTION_ERROR,
+-            static_cast<int>(objectPoints.size() - m_permittedOutliers),
+-            inlierIndices);
+-#elif CV_MAJOR_VERSION == 3
++
+         // parameter added to the OpenCV 3.0 interface in place of the number of
+         // inliers
+         /// @todo how to determine this requested confidence from the data we're
+@@ -133,9 +126,6 @@ namespace vbtracker {
+         if (!ransacResult) {
+             return false;
+         }
+-#else
+-#error "Unrecognized OpenCV version!"
+-#endif
+ 
+         //==========================================================================
+         // Make sure we got all the inliers we needed.  Otherwise, reject this
+diff --git a/plugins/videobasedtracker/BeaconBasedPoseEstimator.cpp b/plugins/videobasedtracker/BeaconBasedPoseEstimator.cpp
+index 2eca2d677..a27ef603e 100644
+--- a/plugins/videobasedtracker/BeaconBasedPoseEstimator.cpp
++++ b/plugins/videobasedtracker/BeaconBasedPoseEstimator.cpp
+@@ -295,14 +295,6 @@ namespace vbtracker {
+         int iterationsCount = 5;
+         cv::Mat inlierIndices;
+ 
+-#if CV_MAJOR_VERSION == 2
+-        cv::solvePnPRansac(
+-            objectPoints, imagePoints, m_camParams.cameraMatrix,
+-            m_camParams.distortionParameters, m_rvec, m_tvec, usePreviousGuess,
+-            iterationsCount, MaxReprojectionErrorForInlier,
+-            static_cast<int>(objectPoints.size() - m_permittedOutliers),
+-            inlierIndices);
+-#elif CV_MAJOR_VERSION == 3
+         // parameter added to the OpenCV 3.0 interface in place of the number of
+         // inliers
+         /// @todo how to determine this requested confidence from the data we're
+@@ -315,9 +307,6 @@ namespace vbtracker {
+         if (!ransacResult) {
+             return false;
+         }
+-#else
+-#error "Unrecognized OpenCV version!"
+-#endif
+ 
+         //==========================================================================
+         // Make sure we got all the inliers we needed.  Otherwise, reject this
+diff --git a/plugins/videobasedtracker/CVImageSource.cpp b/plugins/videobasedtracker/CVImageSource.cpp
+index 1b6c10299..0887bd225 100644
+--- a/plugins/videobasedtracker/CVImageSource.cpp
++++ b/plugins/videobasedtracker/CVImageSource.cpp
+@@ -75,8 +75,8 @@ namespace vbtracker {
+     cv::Size OpenCVImageSource::resolution() const { return m_res; }
+ 
+     void OpenCVImageSource::storeRes() {
+-        int height = static_cast<int>(m_camera->get(CV_CAP_PROP_FRAME_HEIGHT));
+-        int width = static_cast<int>(m_camera->get(CV_CAP_PROP_FRAME_WIDTH));
++        int height = static_cast<int>(m_camera->get(cv::CAP_PROP_FRAME_HEIGHT));
++        int width = static_cast<int>(m_camera->get(cv::CAP_PROP_FRAME_WIDTH));
+         m_res = cv::Size(width, height);
+     }
+ } // namespace vbtracker
+diff --git a/plugins/videobasedtracker/DK2ImageSource.cpp b/plugins/videobasedtracker/DK2ImageSource.cpp
+index 0ff41078b..ef0dca6bd 100644
+--- a/plugins/videobasedtracker/DK2ImageSource.cpp
++++ b/plugins/videobasedtracker/DK2ImageSource.cpp
+@@ -78,7 +78,7 @@ namespace vbtracker {
+         m_camera->retrieveColor(m_scratch);
+ 
+         gray = osvr::oculus_dk2::unscramble_image(m_scratch);
+-        cv::cvtColor(gray, color, CV_GRAY2RGB);
++        cv::cvtColor(gray, color, cv::COLOR_GRAY2RGB);
+     }
+ 
+     void DK2WrappedImageSource::retrieveColor(cv::Mat &color) {
+diff --git a/plugins/videobasedtracker/FakeImageSource.cpp b/plugins/videobasedtracker/FakeImageSource.cpp
+index 08866bee6..7aeba6a87 100644
+--- a/plugins/videobasedtracker/FakeImageSource.cpp
++++ b/plugins/videobasedtracker/FakeImageSource.cpp
+@@ -73,7 +73,7 @@ namespace vbtracker {
+             cv::Mat image;
+             std::cout << "Trying to read image from " << fileName.str()
+                       << std::endl;
+-            image = cv::imread(fileName.str(), CV_LOAD_IMAGE_COLOR);
++            image = cv::imread(fileName.str(), cv::IMREAD_COLOR);
+             if (!image.data) {
+                 break;
+             }
+diff --git a/plugins/videobasedtracker/ImageSource.cpp b/plugins/videobasedtracker/ImageSource.cpp
+index f4a772239..ba50ff9eb 100644
+--- a/plugins/videobasedtracker/ImageSource.cpp
++++ b/plugins/videobasedtracker/ImageSource.cpp
+@@ -36,7 +36,7 @@ namespace vbtracker {
+     ImageSource::~ImageSource() {}
+     void ImageSource::retrieve(cv::Mat &color, cv::Mat &gray) {
+         retrieveColor(color);
+-        cv::cvtColor(color, gray, CV_RGB2GRAY);
++        cv::cvtColor(color, gray, cv::COLOR_RGB2GRAY);
+     }
+ } // namespace vbtracker
+ } // namespace osvr
+diff --git a/plugins/videobasedtracker/TestStandalone.cpp b/plugins/videobasedtracker/TestStandalone.cpp
+index 91c63a7ee..fa3640032 100644
+--- a/plugins/videobasedtracker/TestStandalone.cpp
++++ b/plugins/videobasedtracker/TestStandalone.cpp
+@@ -48,8 +48,8 @@ class Main {
+             return;
+         }
+ 
+-        height = static_cast<int>(m_camera.get(CV_CAP_PROP_FRAME_HEIGHT));
+-        width = static_cast<int>(m_camera.get(CV_CAP_PROP_FRAME_WIDTH));
++        height = static_cast<int>(m_camera.get(cv::CAP_PROP_FRAME_HEIGHT));
++        width = static_cast<int>(m_camera.get(cv::CAP_PROP_FRAME_WIDTH));
+ 
+         // See if this is an Oculus camera by checking the dimensions of
+         // the image.  This camera type improperly describes its format
+@@ -62,8 +62,8 @@ class Main {
+         }
+ 
+         std::cout << "Got image of size " << width << "x" << height
+-                  << ", Format " << m_camera.get(CV_CAP_PROP_FORMAT)
+-                  << ", Mode " << m_camera.get(CV_CAP_PROP_MODE) << std::endl;
++                  << ", Format " << m_camera.get(cv::CAP_PROP_FORMAT)
++                  << ", Mode " << m_camera.get(cv::CAP_PROP_MODE) << std::endl;
+ 
+         /// @todo Come up with actual estimates for camera and distortion
+         /// parameters by calibrating them in OpenCV.
+@@ -102,7 +102,7 @@ class Main {
+         //==================================================================
+         // Convert the image into a format we can use.
+         // TODO: Consider reading in the image in gray scale to begin with
+-        cv::cvtColor(m_frame, m_imageGray, CV_RGB2GRAY);
++        cv::cvtColor(m_frame, m_imageGray, cv::COLOR_RGB2GRAY);
+ 
+         return m_vbtracker.processImage(
+             m_frame, m_imageGray, tv,
+diff --git a/plugins/videotrackershared/BlobExtractor.cpp b/plugins/videotrackershared/BlobExtractor.cpp
+index c84f3ca5c..723133dce 100644
+--- a/plugins/videotrackershared/BlobExtractor.cpp
++++ b/plugins/videotrackershared/BlobExtractor.cpp
+@@ -125,8 +125,8 @@ namespace vbtracker {
+         cv::threshold(grayImage_, binarized, thresh, 255, cv::THRESH_BINARY);
+         std::vector<ContourType> contours;
+         std::vector<cv::Vec4i> hierarchy;
+-        cv::findContours(binarized, contours, hierarchy, CV_RETR_CCOMP,
+-                         CV_CHAIN_APPROX_NONE);
++        cv::findContours(binarized, contours, hierarchy, cv::RETR_CCOMP,
++                         cv::CHAIN_APPROX_NONE);
+         auto n = contours.size();
+         std::vector<ContourType> ret;
+         for (std::size_t i = 0; i < n; ++i) {
+@@ -153,7 +153,7 @@ namespace vbtracker {
+         cv::Rect filledBounds;
+         auto m_area = cv::floodFill(
+             grayClone, floodFillMask_, peakCenter, 255, &filledBounds, loDiff,
+-            upDiff, CV_FLOODFILL_MASK_ONLY | (/* connectivity 4 or 8 */ 4) |
++            upDiff, cv::FLOODFILL_MASK_ONLY | (/* connectivity 4 or 8 */ 4) |
+                         (/* value to write in to mask */ 255 << 8));
+         // Now floodFillMask_ contains the mask with both our point
+         // and all other points so far. We need to split them by ANDing with
+diff --git a/plugins/videotrackershared/SBDBlobExtractor.cpp b/plugins/videotrackershared/SBDBlobExtractor.cpp
+index 0bcb31378..153fd5333 100644
+--- a/plugins/videotrackershared/SBDBlobExtractor.cpp
++++ b/plugins/videotrackershared/SBDBlobExtractor.cpp
+@@ -298,14 +298,7 @@ namespace vbtracker {
+ /// @todo: Determine the maximum size of a trackable blob by seeing
+ /// when we're so close that we can't view at least four in the
+ /// camera.
+-#if CV_MAJOR_VERSION == 2
+-            cv::Ptr<cv::SimpleBlobDetector> detector =
+-                new cv::SimpleBlobDetector(m_sbdParams);
+-#elif CV_MAJOR_VERSION == 3
+             auto detector = cv::SimpleBlobDetector::create(m_sbdParams);
+-#else
+-#error "Unrecognized OpenCV version!"
+-#endif
+             detector->detect(grayImage, m_keyPoints);
+ 
+             // @todo: Consider computing the center of mass of a dilated
+@@ -334,12 +327,12 @@ namespace vbtracker {
+         cv::Mat ret;
+         cv::Mat temp;
+         cv::threshold(m_lastGrayImage, ret, m_sbdParams.minThreshold, 255,
+-                      CV_THRESH_BINARY);
++                      cv::THRESH_BINARY);
+         cv::Mat tempOut;
+         for (int i = 1; getCurrentThresh(i) < m_sbdParams.maxThreshold; ++i) {
+             auto currentThresh = getCurrentThresh(i);
+             cv::threshold(m_lastGrayImage, temp, currentThresh, currentThresh,
+-                          CV_THRESH_BINARY);
++                          cv::THRESH_BINARY);
+             cv::addWeighted(ret, 0.5, temp, 0.5, 0, tempOut);
+             ret = tempOut;
+         }
+@@ -364,7 +357,7 @@ namespace vbtracker {
+ 
+         } else if (Algo::SimpleBlobDetector == m_algo) {
+             cv::Mat tempColor;
+-            cv::cvtColor(m_lastGrayImage, tempColor, CV_GRAY2BGR);
++            cv::cvtColor(m_lastGrayImage, tempColor, cv::COLOR_GRAY2BGR);
+             // Draw detected blobs as blue circles.
+             cv::drawKeypoints(tempColor, m_keyPoints, ret,
+                               cv::Scalar(255, 0, 0),
+@@ -425,12 +418,12 @@ namespace vbtracker {
+         cv::Mat ret;
+         cv::Mat temp;
+         cv::threshold(getLatestGrayImage(), ret, m_sbdParams.minThreshold, 255,
+-                      CV_THRESH_BINARY);
++                      cv::THRESH_BINARY);
+         cv::Mat tempOut;
+         for (int i = 1; getCurrentThresh(i) < m_sbdParams.maxThreshold; ++i) {
+             auto currentThresh = getCurrentThresh(i);
+             cv::threshold(getLatestGrayImage(), temp, currentThresh,
+-                          currentThresh, CV_THRESH_BINARY);
++                          currentThresh, cv::THRESH_BINARY);
+             cv::addWeighted(ret, 0.5, temp, 0.5, 0, tempOut);
+             ret = tempOut;
+         }
+@@ -441,7 +434,7 @@ namespace vbtracker {
+     cv::Mat SBDGenericBlobExtractor::generateDebugBlobImage_() const {
+         cv::Mat ret;
+         cv::Mat tempColor;
+-        cv::cvtColor(getLatestGrayImage(), tempColor, CV_GRAY2BGR);
++        cv::cvtColor(getLatestGrayImage(), tempColor, cv::COLOR_GRAY2BGR);
+         // Draw detected blobs as blue circles.
+         cv::drawKeypoints(tempColor, m_keyPoints, ret, cv::Scalar(255, 0, 0),
+                           cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+@@ -489,14 +482,7 @@ namespace vbtracker {
+ /// @todo: Determine the maximum size of a trackable blob by seeing
+ /// when we're so close that we can't view at least four in the
+ /// camera.
+-#if CV_MAJOR_VERSION == 2
+-        cv::Ptr<cv::SimpleBlobDetector> detector =
+-            new cv::SimpleBlobDetector(m_sbdParams);
+-#elif CV_MAJOR_VERSION == 3
+         auto detector = cv::SimpleBlobDetector::create(m_sbdParams);
+-#else
+-#error "Unrecognized OpenCV version!"
+-#endif
+         detector->detect(grayImage, m_keyPoints);
+ 
+         // @todo: Consider computing the center of mass of a dilated
