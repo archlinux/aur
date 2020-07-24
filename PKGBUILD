@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.1.11'
-pkgrel='0'
+pkgrel='1'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf src/scripts/lib/themes/* src/scripts/lib/macr
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=19d26951a5539db700ecf08916ed6383a7bdc58f')
+source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=4c668ae3c3cf91217e81d6c28a70168e20a9d3ebw')
 noextract=()
 sha512sums=('SKIP')
 
@@ -173,6 +173,7 @@ package() {
     install -m 644 "support/profiles/fireworks.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gradient-noise.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/heatmap.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
