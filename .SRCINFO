@@ -1,12 +1,15 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = tq
+	pkgdesc = tq is command line utility that performs an HTML element selection on HTML content passed to the stdin. Using css selectors that everybody knows.
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/plainas/tq
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-beautifulsoup4
+	source = https://github.com/plainas/tq/archive/3e5c1920168773ccf813cc0e405683bf5cec6dcb.tar.gz
+	sha256sums = 3dbcd027e4b85c6be7b06d91599ea2ce43559f36a9a59405658983c2f47bf4d0
 
-pkgname = yarxi
+pkgname = tq
 
