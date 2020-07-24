@@ -39,10 +39,11 @@ optdepends=('nodejs-markserv: Preview Support'
             'wl-clipboard: Clipboard for Wayland')
 
 
-source=("git+https://github.com/RyanGreenup/cadmus.git#tag=1.0")
+#source=("git+https://github.com/RyanGreenup/cadmus.git#tag=${pkgver}")
+source=("https://github.com/RyanGreenup/cadmus/releases/download/${pkgver}/cadmus.tar.xz")
 # source=("git+https://github.com/RyanGreenup/cadmus.git")
 # source=("git+https://github.com/RyanGreenup/cadmus.git#branch=makepkg")
- sha256sums=('SKIP')
+ sha256sums=('370d6ef60507aeaa8dfbc53e704bafa068df14cc891d5d700750be3e072b1d4d')
 
 package() {
 ################################################################################
