@@ -1,0 +1,18 @@
+pkgbase = blaeu-git
+	pkgdesc = A set of Python programs to start distributed Internet measurements on the network of RIPE Atlas probes, and to analyze their results
+	pkgver = 1.1.6.r1.3577de1
+	pkgrel = 1
+	url = https://framagit.org/bortzmeyer/blaeu/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-cymruwhois
+	depends = python-dnspython
+	depends = python-pyopenssl
+	provides = blaeu
+	conflicts = blaeu
+	source = blaeu::git+https://framagit.org/bortzmeyer/blaeu.git
+	md5sums = SKIP
+
+pkgname = blaeu-git
+
