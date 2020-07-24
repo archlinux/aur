@@ -1,0 +1,14 @@
+pkgbase = tagstoo
+	pkgdesc = Software to tag folders and files, with multimedia and epubs preview
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://tagstoo.sourceforge.io
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	noextract = tagstoo-2.0.1.AppImage
+	source = tagstoo-2.0.1.AppImage::https://sourceforge.net/projects/tagstoo/files/Tagstoo%202.0.1%20linux64/Tagstoo.AppImage/download
+	sha256sums = 9d60633add0dba52ad2e8ba349b3882f4e3f834f10f584dd6d16ff19b634f4e0
+
+pkgname = tagstoo
+
