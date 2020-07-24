@@ -4,6 +4,7 @@ pkgname=yaml-language-server
 pkgver=0.9.0
 pkgrel=1
 pkgdesc="Language Server for Yaml Files"
+url="https://github.com/redhat-developer/yaml-language-server"
 license=('MIT')
 arch=('any')
 depends=('nodejs')

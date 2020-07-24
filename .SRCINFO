@@ -2,6 +2,7 @@ pkgbase = yaml-language-server
 	pkgdesc = Language Server for Yaml Files
 	pkgver = 0.9.0
 	pkgrel = 1
+	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
 	license = MIT
 	makedepends = npm
