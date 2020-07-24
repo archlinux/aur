@@ -1,0 +1,21 @@
+pkgbase = python-g2p-blocks-git
+	pkgdesc = Enable bcache or LVM on existing block devices. Convert between raw partitions, logical volumes, and bcache devices witout moving data.
+	pkgver = 167
+	pkgrel = 1
+	url = https://github.com/g2p/blocks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	makedepends = python>=3.3
+	makedepends = git
+	depends = python-pyparted
+	depends = python-augeas
+	depends = python-maintboot-git
+	provides = python-g2p-blocks
+	source = git+https://github.com/g2p/blocks.git
+	md5sums = SKIP
+
+pkgname = python-g2p-blocks-git
+	depends = python
+
