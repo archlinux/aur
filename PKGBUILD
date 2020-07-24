@@ -2,19 +2,30 @@
 # Maintainer: Patrick Oppenlander <patrick.oppenlander at gmail.com>
 #
 pkgname=pegdbserver_power
-pkgver=1.9.9.201907200403
+pkgver=2.0.2.202005132054
 pkgrel=1
 pkgdesc="GDB server for Power devices using P&E JTAG hardware"
+url="http://www.pemicro.com"
 arch=(x86_64)
 license=(custom)
 depends=(libusb-compat)
-makedepends=(unzip)
+makedepends=(wget unzip gzip)
 install=pegdbserver_power.install
-source=("http://www.pemicro.com/eclipse/updates/com.pemicro.debug.gdbjtag.ppc.updatesite/plugins/com.pemicro.debug.gdbjtag.ppc_$pkgver.jar" "license_gdb.pdf" "55-pemicro.rules")
-sha256sums=(679cc462567644b1509d30f6acbd4ed634c94b47338dae727ed3f60f25017715
-            6b135ddd5388f6a0dd1d1d9d6c6d7321423f391914312c4a4aafd9d851d10dbc
+source=(license_gdb.pdf 55-pemicro.rules)
+sha256sums=(6b135ddd5388f6a0dd1d1d9d6c6d7321423f391914312c4a4aafd9d851d10dbc
             4b9812f801faedb8a39c7e95bd829efeeb2941b1f4fb3ca774cfbf1ef4fa4081)
 options=('!strip')
+
+prepare() {
+	wget -q -O- http://www.pemicro.com/eclipse/updates/com.pemicro.debug.gdbjtag.ppc.updatesite/artifacts.jar | \
+		zcat | grep "<artifact.*com.pemicro.debug.gdbjtag.ppc.feature" | cut -d\' -f6 > version
+	wget -O source.jar http://www.pemicro.com/eclipse/updates/com.pemicro.debug.gdbjtag.ppc.updatesite/plugins/com.pemicro.debug.gdbjtag.ppc_$(cat version).jar
+	unzip -q source.jar
+}
+
+pkgver() {
+	cat version
+}
 
 package() {
 	mkdir -p "$pkgdir/opt/$pkgname"
