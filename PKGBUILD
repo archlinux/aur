@@ -37,7 +37,8 @@ package() {
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 
     # User folders
-    install -dm777 "$pkgdir/opt/rvgl/{profiles,replays}"
+    install -dm777 "$pkgdir/opt/rvgl/profiles"
+    install -dm777 "$pkgdir/opt/rvgl/replays"
 
     for class in rookie amateur advanced semi-pro pro superpro; do
       install -dm777 "$pkgdir/opt/rvgl/times/normal/$class"
