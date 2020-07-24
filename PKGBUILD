@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=9
-_clr=970
+_minor=10
+_clr=972
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33520
+_clear_version=33530
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=21c4b92a61828dde798526abc9532d376d290e9fccbb25fa893e7777c411a75d
+_config_hash=65bfabb4d1c13d84b778883c8b8ec81197639603fd98649037cfc69cb4c066b0
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -103,3 +103,6 @@ b2sums=('74d16bf92a7820c592da26269193ba46cf6f6b15d9ae5d5e5354de39922455e70051e6a
 b2sums=('f4f7a2f4105e9a568fc963eb428b661a822e4979ccb05de2f096495305fb676874bb0ffbae65f30497a2d780dca0fe9c1dd7f5d0acb30afa47abdf4dfaa133f2'
         '9559afc61810fd4093d884b5f87b9fdd71cc27a58c3cf0fa8061b5ce464a1b4891621d0e01723ce8dba949e4fef6c6bdb1f6968dd15e5bc225dcbf9349179dac'
         'c864f462845860c5861c26fe127c1ccbe157d2a92a76e05f90b7866a2b383996b433bde95a8c2ee9c80fffb1ed37cf615493c7e53e20c7f29f02fd742426f412')
+b2sums=('e2f464e3144e62534df88f1f6884599b98a9469309be6f94eb7f1ff00b17303529e4d02f102703a9544aec3d4125804bb8fda63679b04160b8db25a59f40d6af'
+        'b03ee5d2ccf30c9efebf69d05151f9f7064dc0c4aa8aa7fc701970ce26c2c9b427bf437bf1373db3bbeb194216af1f6396279354a791e43159c6f7383433b395'
+        '43f12f3b4f9b64b45a5a15db1396fa05c044b7676af0aa1a4b9086005902f4450f791b23f12b7c8863010b8513765175741e60feab1efe0cfb16ab68ccec9c06')
