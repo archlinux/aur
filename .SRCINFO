@@ -1,14 +1,14 @@
 pkgbase = ghq-bin
 	pkgdesc = Remote repository management made easy. Pre-compiled.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/motemen/ghq
 	arch = x86_64
 	license = MIT
 	provides = ghq
 	conflicts = ghq
-	source = ghq-1.1.4_linux_amd64.zip::https://github.com/motemen/ghq/releases/download/v1.1.4/ghq_linux_amd64.zip
-	sha1sums = d806e9bdb0d3a23c93f907f2c620e9f15a2751cb
+	source = ghq-1.1.5_linux_amd64.zip::https://github.com/motemen/ghq/releases/download/v1.1.5/ghq_linux_amd64.zip
+	sha1sums = aeaa912c2043844b5f402ee50d8dc1889fa7e342
 
 pkgname = ghq-bin
 
