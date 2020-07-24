@@ -24,6 +24,7 @@ pkgbase = platypush
 	optdepends = python-paramiko: SSH support
 	optdepends = python-croniter: Platypush cron support
 	optdepends = python-pyserial: Arduino/serial device support
+	conflicts = platypush-git
 	options = !strip
 	source = platypush-0.12.10.tar.gz::https://github.com/BlackLight/platypush/archive/v0.12.10.tar.gz
 	sha512sums = 9e9c0c2450695c0f6fb00cdeb54c02fa952dca74544be40134cd6b78c994beadc223b1ae59952bb88d155fe265caa3a9ba554852f09a04e85c3cb99a754bb456

@@ -15,6 +15,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-paramiko: SSH support'
     'python-croniter: Platypush cron support'
 	'python-pyserial: Arduino/serial device support')
+conflicts=('platypush-git')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BlackLight/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('9e9c0c2450695c0f6fb00cdeb54c02fa952dca74544be40134cd6b78c994beadc223b1ae59952bb88d155fe265caa3a9ba554852f09a04e85c3cb99a754bb456')
