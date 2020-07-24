@@ -27,6 +27,7 @@ package() {
   rm -rf lib
 
   sed -i 's|/usr/orayapp/|/usr/bin/|g' usr/lib/systemd/system/*
+  sed -i 's|/bin/rm|/usr/bin/rm -fr|g' usr/lib/systemd/system/*
   sed -i 's|/usr/orayapp|/usr/share/pgyvpn|g' usr/lib/systemd/system/phddns_sl.service 
 
   # binary
