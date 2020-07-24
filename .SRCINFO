@@ -13,7 +13,6 @@ pkgbase = platypush
 	depends = python-sqlalchemy
 	depends = python-websockets
 	depends = python-websocket-client
-	depends = python-wheel
 	depends = python-flask
 	depends = python-dateutil
 	depends = python-frozendict
