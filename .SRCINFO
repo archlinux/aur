@@ -52,7 +52,7 @@ pkgbase = kdevelop-git
 	conflicts = kdevelop
 	conflicts = kdevplatform
 	replaces = kdevplatform-git
-	source = git://anongit.kde.org/kdevelop.git
+	source = git+https://anongit.kde.org/kdevelop.git
 	sha1sums = SKIP
 
 pkgname = kdevelop-git

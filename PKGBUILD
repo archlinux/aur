@@ -61,7 +61,7 @@ makedepends=(
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
 replaces=('kdevplatform-git')
-source=('git://anongit.kde.org/kdevelop.git')
+source=('git+https://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
 
 pkgver() {
