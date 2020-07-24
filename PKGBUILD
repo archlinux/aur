@@ -5,7 +5,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-neat-git
-pkgver=4.4.r98547.g6f134c6d17
+pkgver=4.4.r98549.g21442a820a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (neat version)'
 arch=('x86_64')
