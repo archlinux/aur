@@ -25,7 +25,7 @@
 +			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
 +		},
 +		.driver_data = &quirk_asus_ga401i,
-+		},
++	},
  	{},
  };
  
