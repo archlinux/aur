@@ -1,6 +1,6 @@
 pkgbase = joindesktop-git
 	pkgdesc = An official desktop app for Join by Joaoapps built in Electron.
-	pkgver = r14.a14cbd6
+	pkgver = 0.3.0.r49.4902203
 	pkgrel = 1
 	url = https://joaoapps.com/join/desktop
 	arch = x86_64
