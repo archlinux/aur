@@ -4,8 +4,9 @@
 
 pkgname=gkrellweather
 pkgver=2.0.8
-pkgrel=7
+pkgrel=8
 pkgdesc="A weather monitor plugin for gkrellm2"
+url="http://gkrellm.srcbox.net/"
 arch=('i686' 'x86_64')
 depends=('gkrellm' 'perl' 'perl-lwp-protocol-https' 'gtk2')
 license=('GPL')
