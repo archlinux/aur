@@ -8,13 +8,14 @@ pkgver=r96.2d03225
 pkgrel=1
 epoch=1
 pkgdesc="The kernelspace part of IPTS (Intel Precise Touch & Stylus) for Linux. \
-To make this module work, make sure you applied the patches from the git repo to your kernel \
-or you are using the latest linux-surface kernel."
+To make this module work, you might need a kernel patch from the source repo."
 arch=('x86_64')
 url="https://github.com/linux-surface/${_repo}"
 license=('GPL2')
 makedepends=('git')
-depends=('dkms')
+depends=('dkms' 'iptsd')
+optdepends=('linux-surface: A kernel with IPTS patch built-in'
+            'linux-surface-headers: Headers of linux-surface')
 #conflicts=("${_pkgbase}")
 #install=${pkgname}.install
 provides=('ipts-uapi-dkms')
