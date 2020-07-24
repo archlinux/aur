@@ -1,16 +1,16 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=raysession
 pkgname=${_pkgname}-git
-pkgver=r286.2168a84
+pkgver=r893.4c2fb38
 pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(x86_64)
 url="https://github.com/Houston4444/RaySession"
 license=('GPL')
 groups=()
-depends=('python-pyqt5' 'qt5-tools' 'python-pyliblo')
-makedepends=('git')
-provides=('raysession' 'raysession-git' 'non-sessionmanager')
+depends=('python-pyqt5' 'python-pyliblo')
+makedepends=('git' 'qt5-tools')
+provides=('raysession' 'raysession-git')
 conflicts=('raysession' 'raysession-git')
 install=
 source=('git+https://github.com/Houston4444/RaySession')
@@ -35,5 +35,5 @@ build() {
 
 package() {
   cd "$srcdir/RaySession"
-	 make PREFIX=/usr DESTDIR="$pkgdir/" install
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
