@@ -1,0 +1,17 @@
+pkgbase = tcptunnel-git
+	pkgver = v0.8
+	pkgrel = 1
+	url = https://github.com/vakuum/tcptunnel
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	backup = etc/tcptunnel/tcptunnel.conf
+	source = tcptunnel-git::git+https://github.com/vakuum/tcptunnel.git
+	source = tcptunnel.service
+	source = tcptunnel.conf
+	md5sums = SKIP
+	md5sums = 9f7f07e2d2c9ee580a469838661bb370
+	md5sums = 96479f7d6fb3beeec44c9c64342d6626
+
+pkgname = tcptunnel-git
+

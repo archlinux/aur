@@ -1,0 +1,15 @@
+[Unit]
+Description=A simple TCP port forwarder.
+After=network.target network-online.target
+
+[Service]
+User=nobody
+Group=nobody
+EnvironmentFile=/etc/tcptunnel/tcptunnel.conf
+ExecStart=/usr/bin/tcptunnel --stay-alive --local-port=${LOCAL_PORT} --remote-port=${REMOTE_PORT} --remote-host=${REMOTE_HOST} '$ADDITIONAL_CMDLINE'
+KillMode=mixed
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
