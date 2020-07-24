@@ -1,28 +1,15 @@
 pkgdesc="ROS - Controller for executing joint-space trajectories on a group of joints."
-rl='https://github.com/ros-controls/ros_controllers/wiki'
+url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-noetic-joint-trajectory-controller'
 pkgver='0.17.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-    ros-noetic-trajectory-msgs
-    ros-noetic-cmake-modules
-    ros-noetic-realtime-tools
-    ros-noetic-urdf
-    ros-noetic-roscpp
-    ros-noetic-control-toolbox
     ros-noetic-catkin
-    ros-noetic-controller-interface
-    ros-noetic-controller-manager
-    ros-noetic-control-msgs
-    ros-noetic-actionlib
-    ros-noetic-angles
-    ros-noetic-hardware-interface
-    ros-noetic-trajectory-msgs
-    ros-noetic-xacro
+    ros-noetic-cmake-modules
 )
 
 makedepends=(
@@ -32,19 +19,17 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-noetic-trajectory-msgs
-    ros-noetic-realtime-tools
-    ros-noetic-urdf
-    ros-noetic-roscpp
-    ros-noetic-control-toolbox
-    ros-noetic-controller-interface
-    ros-noetic-controller-manager
-    ros-noetic-control-msgs
     ros-noetic-actionlib
     ros-noetic-angles
+    ros-noetic-control-msgs
+    ros-noetic-control-toolbox
+    ros-noetic-controller-interface
     ros-noetic-hardware-interface
+    ros-noetic-realtime-tools
+    ros-noetic-roscpp
     ros-noetic-trajectory-msgs
-    ros-noetic-xacro
+    ros-noetic-urdf
+    ros-noetic-pluginlib
 )
 
 depends=(
