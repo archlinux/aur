@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
 pkgname=gomd-git
-pkgver=1.3.3.84fdce4
+pkgver=1.3.3.694d191
 pkgrel=1
 epoch=
 pkgdesc="Quick webserver displaying formatted markdown files"
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-    install -Dm755 "gomd" "$pkgdir/usr/bin/gomd"
+    install -Dm755 "build/gomd" "$pkgdir/usr/bin/gomd"
 }
