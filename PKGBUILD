@@ -1,11 +1,10 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: Matthias Maennich <arch at maennich dot net>
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
-
+#
 _pkgname="liferea"
-_pkgver="1.13.0"
+_pkgver="1.13.1"
 #_prerelease="rc3"
 
 pkgname="${_pkgname}-unstable"
@@ -28,8 +27,8 @@ options=('!libtool' '!emptydirs')
 provides=('liferea')
 conflicts=('liferea' 'liferea-git')
 #source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}-${_prerelease}.tar.gz")
-source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('1be6c84780166dae261832ce1c4df0cd428a02ef045af4d952a52e77a60839dc')
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}.tar.gz")
+sha256sums=('b6f44e355352c8667ad2a8b7555ba201ad4249a297be6b1b6838414af9674018')
 
 build() {
     #cd "${_pkgname}-${_pkgver}-${_prerelease}"
@@ -49,5 +48,6 @@ package() {
     cd "${_pkgname}-${_pkgver}"
     make DESTDIR="${pkgdir}" install
 }
+
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
