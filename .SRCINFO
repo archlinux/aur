@@ -1,0 +1,17 @@
+pkgbase = nibtools-git
+	pkgdesc = Commodore 1541/1571 disk image nibbler
+	pkgver = r634.77ec1e1
+	pkgrel = 1
+	url = https://c64preservation.com/dp.php?pg=nibtools
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cc65
+	depends = opencbm
+	provides = nibtools
+	source = git+https://github.com/OpenCBM/nibtools.git
+	md5sums = SKIP
+
+pkgname = nibtools-git
+
