@@ -1,6 +1,6 @@
 pkgbase = bash-supergenpass
 	pkgdesc = Bash implementation of Super Gen Pass script
-	pkgver = 20130529
+	pkgver = 20.e5d96599b65d
 	pkgrel = 1
 	url = http://github.com/lanzz/bash-supergenpass
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = bash-supergenpass
 	depends = openssl
 	provides = supergenpass
 	conflicts = perl-supergenpass
+	source = bash-supergenpass::git+https://github.com/lanzz/bash-supergenpass.git
+	sha512sums = SKIP
 
 pkgname = bash-supergenpass
 
