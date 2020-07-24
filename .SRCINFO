@@ -1,14 +1,14 @@
 pkgbase = python-tmdbsimple
 	pkgdesc = A wrapper for The Movie Database API v3.
-	pkgver = 2.3.4
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/celiao/tmdbsimple
 	arch = any
 	license = GPLv3
 	depends = python
 	depends = python-requests
-	source = https://github.com/celiao/tmdbsimple/archive/2.3.4.tar.gz
-	sha256sums = f708b0d644380484fed787b4a445bddb046a8105a8797052df4c090d1dd6fc61
+	source = https://github.com/celiao/tmdbsimple/archive/2.5.4.tar.gz
+	sha256sums = 57f5db200af202d5c254304ad60b249f5d167205f4674b685c90b08385e4bc3b
 
 pkgname = python-tmdbsimple
 

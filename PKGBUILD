@@ -4,7 +4,7 @@
 
 _pkgname=tmdbsimple
 pkgname=python-$_pkgname
-pkgver=2.3.4
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="A wrapper for The Movie Database API v3. "
 arch=('any')
@@ -20,4 +20,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('f708b0d644380484fed787b4a445bddb046a8105a8797052df4c090d1dd6fc61')
+sha256sums=('57f5db200af202d5c254304ad60b249f5d167205f4674b685c90b08385e4bc3b')
