@@ -96,6 +96,42 @@ index 99406e9a77d..a35507806a6 100644
     pragma Import (C, Current_Time, "__gnat_current_time");
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
+diff --git a/gcc/collect2.c b/gcc/collect2.c
+index f8a5ce45994..2c3a612d49f 100644
+--- a/gcc/collect2.c
++++ b/gcc/collect2.c
+@@ -1180,18 +1180,27 @@ main (int argc, char **argv)
+   *ld1++ = *ld2++ = ld_file_name;
+ 
+   /* Make temp file names.  */
++
++#ifdef __DJGPP__
++#define CDTOR_C_NAME ".ctc"
++#define CDTOR_O_NAME ".cto"
++#else
++#define CDTOR_C_NAME ".cdtor.c"
++#define CDTOR_O_NAME ".cdtor.o"
++#endif
++
+   if (save_temps)
+     {
+-      c_file = concat (output_file, ".cdtor.c", NULL);
+-      o_file = concat (output_file, ".cdtor.o", NULL);
++      c_file = concat (output_file, CDTOR_C_NAME, NULL);
++      o_file = concat (output_file, CDTOR_O_NAME, NULL);
+ #ifdef COLLECT_EXPORT_LIST
+       export_file = concat (output_file, ".x", NULL);
+ #endif
+     }
+   else
+     {
+-      c_file = make_temp_file (".cdtor.c");
+-      o_file = make_temp_file (".cdtor.o");
++      c_file = make_temp_file (CDTOR_C_NAME);
++      o_file = make_temp_file (CDTOR_O_NAME);
+ #ifdef COLLECT_EXPORT_LIST
+       export_file = make_temp_file (".x");
+ #endif
 diff --git a/gcc/config/i386/djgpp.c b/gcc/config/i386/djgpp.c
 index ba6c2d4d3a4..88cf1e6506e 100644
 --- a/gcc/config/i386/djgpp.c
@@ -307,10 +343,10 @@ index 78f245bda07..1ae18b248a7 100644
  #elif defined(HAVE_AS_X86_64_UNWIND_SECTION_TYPE)
  .section .eh_frame,EH_FRAME_FLAGS,@unwind
 diff --git a/libgcc/libgcov-util.c b/libgcc/libgcov-util.c
-index 449638bc4b6..218ee34b269 100644
+index fff54c6a3f6..c4879c6bf99 100644
 --- a/libgcc/libgcov-util.c
 +++ b/libgcc/libgcov-util.c
-@@ -391,7 +391,11 @@ read_gcda_file (const char *filename)
+@@ -390,7 +390,11 @@ read_gcda_file (const char *filename)
  
  static int
  ftw_read_file (const char *filename,
@@ -559,7 +595,7 @@ index e0a67bc8d6d..d6ccf4195d6 100644
  
  #ifdef _GLIBCXX_HAVE_EOWNERDEAD
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index d7234c08a00..bf31e8184cb 100644
+index 69b823a3466..2d005b875e4 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
