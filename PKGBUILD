@@ -1,5 +1,5 @@
 pkgname=errbot
-pkgver=6.1.1
+pkgver=6.1.4
 pkgrel=1
 pkgdesc="a chatbot. It allows you to start scripts interactively from your chatrooms for any reason: random humour, chatops, starting a build, monitoring commits, triggering alerts..."
 arch=(any)
@@ -18,12 +18,12 @@ package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir"/usr/lib/errbot-bundle --ignore-installed errbot==$pkgver
 	install -dm0755 "$pkgdir"/usr/bin
 	echo "#!/bin/bash
-PYTHONPATH=/usr/lib/errbot-bundle/usr/lib/python3.7/site-packages/ exec /usr/lib/errbot-bundle/usr/bin/errbot \$*" >"$pkgdir"/usr/bin/errbot
+PYTHONPATH=/usr/lib/errbot-bundle/usr/lib/python3.8/site-packages/ exec /usr/lib/errbot-bundle/usr/bin/errbot \$*" >"$pkgdir"/usr/bin/errbot
 	chmod a+x "$pkgdir"/usr/bin/errbot
 
 	install -Dm0644 "$srcdir"/errbot.service "$pkgdir"/usr/lib/systemd/system/errbot.service
-	install -Dm0600 -o jabber -g jabber \
+	install -Dm0600 -o 17 -g 17 \
 		"$srcdir"/errbot.config.py "$pkgdir"/etc/errbot/config.py
-	install -dm0700 -o jabber -g jabber \
+	install -dm0700 -o 17 -g 17 \
 		"$pkgdir"/var/lib/errbot/{data,plugins}
 }
