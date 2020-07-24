@@ -2,6 +2,7 @@ pkgbase = sac-core
 	pkgdesc = Safenet Authentication Client for Alladin eToken, stripped core package
 	pkgver = 10.0.37
 	pkgrel = 11
+	url = https://data-protection-updates.gemalto.com/category/safenet-authentication-client/
 	install = sac-core.install
 	arch = x86_64
 	license = custom

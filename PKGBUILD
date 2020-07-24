@@ -7,6 +7,7 @@ depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
 makedepends=('libarchive')
 license=('custom')
 install=$pkgname.install
+url='https://data-protection-updates.gemalto.com/category/safenet-authentication-client/'
 source_x86_64=('https://storage.spidlas.cz/public/soft/safenet/SafenetAuthenticationClient-core-10.0.37-0_amd64.deb')
 sha256sums_x86_64=('b4f8ffd030363693540bd494c3825ebd901937565cdd1c6455f95005571a27e5')
 source+=('eToken.conf')
