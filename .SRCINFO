@@ -1,0 +1,35 @@
+pkgbase = cadmus
+	pkgdesc = A simple command line notebook for everybody
+	pkgver = 0.2
+	pkgrel = 1
+	url = ryangreenup.github.io/cadmus
+	arch = x86_64
+	license = GPL3
+	depends = recoll
+	depends = tmsu
+	depends = ripgrep
+	depends = fd
+	depends = nodejs
+	depends = bat
+	depends = coreutils
+	depends = sed
+	depends = grep
+	depends = jq
+	depends = pandoc
+	depends = ranger
+	depends = recode
+	depends = sd
+	depends = skim
+	depends = xclip
+	depends = iproute2
+	optdepends = nodejs-markserv: Preview Support
+	optdepends = tectonic: Additional option for PDF Export
+	optdepends = mdcat: Pretty Print
+	optdepends = texlive-core: PDF Export
+	optdepends = wl-clipboard: Clipboard for Wayland
+	provides = cadmus
+	source = git+https://github.com/RyanGreenup/cadmus.git
+	sha256sums = SKIP
+
+pkgname = cadmus
+
