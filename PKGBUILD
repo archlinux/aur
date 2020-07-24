@@ -17,8 +17,6 @@ depends=(
     nodejs
     bat
     coreutils
-    sed
-    grep
     jq
     wmctrl
     pandoc
