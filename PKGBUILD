@@ -1,37 +1,35 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
-# Contributor: Lev Lybin <lev.lybin@gmail.com>
+# Maintainer: Ben Westover <kwestover [dot] kw [at] gmail [dot] com>
 
 pkgname=btdex
-pkgver=0.1.21
-pkgrel=2
+pkgver=0.1.22
+pkgrel=1
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
-arch=(x86_64)
+arch=('any')
 url='https://github.com/btdex/btdex'
 license=(GPL3)
-options=(!strip)
-depends=(java-environment xdg-utils)
-conflicts=(btdex-git)
-provides=(btdex-git)
-install=btdex.install
-source=(https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-all-v$pkgver.jar
-        https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.ico
-        https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.sh
-        https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.desktop)
-sha256sums=('e710dc7f77917d8a3e10172acb619529dff5c319e5ac374fc60c586a4fec8be5'
-            '18e0fa60623d1886743f8dab10350b6ab5bba9eb0bb1eef7be6991369a4af3f2'
+depends=('jre-openjdk' 'xdg-utils')
+conflicts=('btdex-git')
+provides=('btdex-git')
+source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-all-v$pkgver.jar"
+        "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/dist/$pkgname.sh"
+        "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/src/main/resources/icon.png"
+        "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/dist/$pkgname.desktop"
+        "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/LICENSE")
+sha256sums=('0c0119b0910088e4c67ed5cd0d879c61356da8929297a276f887236eab9208ea'
             '3c1830a574257a35e4d4e1a242f786b98fb3fa0d3c7db1418d4b69d4df881533'
-            'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219')
+            'e8cba764ca0cddbb8cf658f80e015b941b4ad732bcb1b8da3078894ad51f397a'
+            'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
-    cd $srcdir
+	install -Dm644 $pkgname-all-v$pkgver.jar $pkgdir/opt/$pkgname/$pkgname-all.jar
+	install -Dm755 $pkgname.sh $pkgdir/opt/$pkgname/$pkgname.sh
+	mkdir -p $pkgdir/usr/bin
+	ln -sf /opt/$pkgname/$pkgname.sh $pkgdir/usr/bin/$pkgname
 
-    install -d $pkgdir/opt/$pkgname
-    install -Dm644 btdex-all-v$pkgver.jar $pkgdir/opt/$pkgname/btdex-all.jar
-    install -Dm755 btdex.sh $pkgdir/opt/$pkgname/btdex.sh
-    install -d $pkgdir/usr/bin
-    ln -sf /opt/$pkgname/btdex.sh $pkgdir/usr/bin/btdex
+	install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	install -Dm644 icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
 
-    # Menu entry
-    install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications
-    install -Dm644 btdex.ico $pkgdir/usr/share/pixmaps/$pkgname.ico
+	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

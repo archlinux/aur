@@ -1,24 +1,24 @@
 pkgbase = btdex
 	pkgdesc = Decentralized exchange system running on the Burst blockchain
-	pkgver = 0.1.21
-	pkgrel = 2
+	pkgver = 0.1.22
+	pkgrel = 1
 	url = https://github.com/btdex/btdex
-	install = btdex.install
-	arch = x86_64
+	arch = any
 	license = GPL3
-	depends = java-environment
+	depends = jre-openjdk
 	depends = xdg-utils
 	provides = btdex-git
 	conflicts = btdex-git
-	options = !strip
-	source = https://github.com/btdex/btdex/releases/download/v0.1.21/btdex-all-v0.1.21.jar
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.21/dist/btdex.ico
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.21/dist/btdex.sh
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.21/dist/btdex.desktop
-	sha256sums = e710dc7f77917d8a3e10172acb619529dff5c319e5ac374fc60c586a4fec8be5
-	sha256sums = 18e0fa60623d1886743f8dab10350b6ab5bba9eb0bb1eef7be6991369a4af3f2
+	source = https://github.com/btdex/btdex/releases/download/v0.1.22/btdex-all-v0.1.22.jar
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.22/dist/btdex.sh
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.22/src/main/resources/icon.png
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.22/dist/btdex.desktop
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.1.22/LICENSE
+	sha256sums = 0c0119b0910088e4c67ed5cd0d879c61356da8929297a276f887236eab9208ea
 	sha256sums = 3c1830a574257a35e4d4e1a242f786b98fb3fa0d3c7db1418d4b69d4df881533
+	sha256sums = e8cba764ca0cddbb8cf658f80e015b941b4ad732bcb1b8da3078894ad51f397a
 	sha256sums = fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = btdex
 
