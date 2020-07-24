@@ -43,7 +43,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  git checkout develop > /dev/null
   # first get the version number
   cat config.mk | grep "VERSION" | grep -Po '(\d+\.)?(\d+\.)?(\*|\d+)' | tr -d '\n'
   # then get the commit hash from development branch
@@ -52,14 +51,13 @@ pkgver() {
 
 prepare() (
   cd $_pkgbase
-  git config advice.detachedHead false
+  git config pull.ff only
   git checkout develop > /dev/null
   git pull
 )
 
 build() (
   cd $_pkgbase
-  git checkout develop
   make PLUGINS="$PLUGINS"
 )
 
