@@ -13,7 +13,7 @@ install='.INSTALL'
 source=('LICENSE::https://service.oray.com/question/1820.html')
 source_armv7h=("http://download.oray.com/peanuthull/embed/${_pkgname}_${pkgver}_systemd.deb")
 
-sha256sums=('310db9b0e16b352ea99318ba495eb2b6f2c0a8fb40c1d11c78335ad34fd0097f')
+sha256sums=('SKIP')
 sha256sums_armv7h=('d8fb134ecb61058e2e1a243755bfae656eaf1e0deaec6e8070a99d26c253265f')
 
 package() {
