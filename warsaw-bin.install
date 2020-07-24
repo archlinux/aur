@@ -1,10 +1,12 @@
 post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
-	echo "To use Warsaw, start its service using:"
-	echo "$ sudo systemctl start warsaw"
-	echo "To start Warsaw at system startup, use the command:"
-	echo "$ sudo systemctl enable warsaw"
+	echo -e "\e[34;1m==>\e[39;1m To use Warsaw, start its service using: \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m To start Warsaw at system startup, use the command: \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m Complete your bank setup on the website below: \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m https://www.dieboldnixdorf.com.br/warsaw \e[0m"
 
 	update-desktop-database -q
 }
