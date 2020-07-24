@@ -3,7 +3,7 @@
 pkgname=cadmus-notes
 pkgver=0.2
 pkgrel=1
-pkgdesc="A simple command line notebook for everybody"
+pkgdesc="Modular Shell Scripts for an MD Notebook"
 arch=('x86_64')
 url="ryangreenup.github.io/cadmus"
 license=('GPL3')
