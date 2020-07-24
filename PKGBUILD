@@ -1,6 +1,6 @@
 # Maintainer: Ryan Greenup <ryan.greenup@protonmail.com>
 
-pkgname=cadmus
+pkgname=cadmus-notes
 pkgver=0.2
 pkgrel=1
 pkgdesc="A simple command line notebook for everybody"
@@ -130,7 +130,7 @@ addBullets() {
     echo "$1" | sed 's/^/\t‣\ /g'
 }
 
-check_for_dependencies
+# check_for_dependencies
 
 
 

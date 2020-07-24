@@ -1,4 +1,4 @@
-pkgbase = cadmus
+pkgbase = cadmus-notes
 	pkgdesc = A simple command line notebook for everybody
 	pkgver = 0.2
 	pkgrel = 1
@@ -31,5 +31,5 @@ pkgbase = cadmus
 	source = git+https://github.com/RyanGreenup/cadmus.git
 	sha256sums = SKIP
 
-pkgname = cadmus
+pkgname = cadmus-notes
 
