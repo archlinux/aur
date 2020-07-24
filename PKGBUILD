@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('$pkgname::git+https://github.com/curlpipe/rsflex.git')
+source=('git+https://github.com/curlpipe/rsflex.git')
 md5sums=('SKIP')
 
 build() {

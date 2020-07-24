@@ -10,7 +10,7 @@ pkgbase = rsflex
 	makedepends = rust
 	provides = rsflex
 	conflicts = rsflex
-	source = $pkgname::git+https://github.com/curlpipe/rsflex.git
+	source = git+https://github.com/curlpipe/rsflex.git
 	md5sums = SKIP
 
 pkgname = rsflex
