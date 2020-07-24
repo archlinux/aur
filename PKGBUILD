@@ -1,7 +1,7 @@
 # Maintainer: Jakub Szymański <jakubmateusz@poczta.onet.pl>
 pkgname=woeusb-ng
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tool that enable you to create your own usb stick with Windows installer."
 arch=('any')
 url="github.com/WoeUSB/WoeUSB-ng"
@@ -39,7 +39,7 @@ build() {
     cd WoeUSB-ng
 
     git checkout v$pkgver
-    git apply ../AUR.patch || echo "Failed to apply patch"
+    git apply ../../AUR.patch || echo "Failed to apply patch"
 
     python setup.py build
 }
