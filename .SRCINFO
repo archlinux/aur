@@ -1,0 +1,15 @@
+pkgbase = phddns-bin
+	pkgdesc = Peanut shell is a dynamic DNS software, any place, any time, any lines, all can through fixed domain access to the remote host services
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://hsk.oray.com/download/
+	arch = armv7h
+	license = custom
+	options = !strip
+	source = LICENSE::https://service.oray.com/question/1820.html
+	sha256sums = 310db9b0e16b352ea99318ba495eb2b6f2c0a8fb40c1d11c78335ad34fd0097f
+	source_armv7h = http://download.oray.com/peanuthull/embed/phddns_3.0.4_systemd.deb
+	sha256sums_armv7h = d8fb134ecb61058e2e1a243755bfae656eaf1e0deaec6e8070a99d26c253265f
+
+pkgname = phddns-bin
+
