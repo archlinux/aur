@@ -2,6 +2,7 @@ pkgbase = rfbproxy
 	pkgdesc = A program for recording, playback, and video conversion of VNC sessions
 	pkgver = 1.1.1
 	pkgrel = 0
+	url = https://github.com/pmdumuid/rfbproxy
 	arch = i686
 	arch = x86_64
 	license = unknown

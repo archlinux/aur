@@ -7,6 +7,7 @@ pkgdesc="A program for recording, playback, and video conversion of VNC sessions
 arch=('i686' 'x86_64')
 license=('unknown')
 makedepends=('make')
+url="https://github.com/pmdumuid/rfbproxy"
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pmdumuid/rfbproxy/archive/${pkgname}-${pkgver}-${pkgsuffix}.tar.gz)
 
 prepare() {
