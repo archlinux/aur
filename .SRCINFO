@@ -1,5 +1,5 @@
 pkgbase = cadmus-notes
-	pkgdesc = A simple command line notebook for everybody
+	pkgdesc = Modular Shell Scripts for an MD Notebook
 	pkgver = 0.2
 	pkgrel = 1
 	url = ryangreenup.github.io/cadmus
