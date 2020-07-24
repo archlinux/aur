@@ -1,0 +1,43 @@
+From 79b717ff56c8e178d9bdb653a137cf23d30e20ef Mon Sep 17 00:00:00 2001
+From: max ulidtko <ulidtko@gmail.com>
+Date: Fri, 24 Jul 2020 15:34:07 +0300
+Subject: [PATCH 1/2] Py3 support
+
+---
+ src/scripts/botox | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/scripts/botox b/src/scripts/botox
+index 6ff8e34..a11fb68 100755
+--- a/src/scripts/botox
++++ b/src/scripts/botox
+@@ -1,4 +1,5 @@
+ #!/usr/bin/env python
++from __future__ import print_function
+ 
+ import sys
+ from botox import Botox, BotoxException
+@@ -9,14 +10,17 @@ except IndexError as e:
+     sys.stderr.write("Usage: %s <input ELF file>\n" % sys.argv[0])
+     sys.exit(1)
+ 
+-yn = raw_input("WARNING: This will permanently modify %s without creating a backup. Continue? [y/N] " % elf_file)
++try: input = raw_input # Py2 compat
++except NameError: pass
++
++yn = input("WARNING: This will permanently modify %s without creating a backup. Continue? [y/N] " % elf_file)
+ if not yn.lower().startswith('y'):
+-    print "Quitting..."
++    print("Quitting...")
+     sys.exit(1)
+ 
+ try:
+     new_entry_point = Botox(elf_file).patch()
+-    print "Patched file %s. New entry point is: 0x%.8X" % (elf_file, new_entry_point)
++    print("Patched file %s. New entry point is: 0x%.8X" % (elf_file, new_entry_point))
+     sys.exit(0)
+ except BotoxException as e:
+     sys.stderr.write(str(e) + "\n")
+-- 
+2.27.0
+

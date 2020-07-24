@@ -1,0 +1,21 @@
+pkgbase = botox-git
+	pkgdesc = ELF patching tool
+	pkgver = r41.a85342a
+	pkgrel = 1
+	url = https://github.com/devttys0/botox
+	arch = any
+	groups = Tools/Debugging
+	license = unspecified
+	makedepends = git
+	depends = python
+	provides = botox
+	provides = python-botox
+	source = git+https://github.com/devttys0/botox.git#branch=master
+	source = 0001-Py3-support.patch
+	source = 0002-Use-absolute-imports.patch
+	sha1sums = SKIP
+	sha1sums = cde7770cda2510958c34f40bdeae6a4fc65854d9
+	sha1sums = 35e695efd29aa93e6527f87fd95059e6dcb9cf01
+
+pkgname = botox-git
+

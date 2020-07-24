@@ -1,0 +1,43 @@
+From 5345a37b5b38b0df77fb4f0cdfbd708e96e88e9f Mon Sep 17 00:00:00 2001
+From: max ulidtko <ulidtko@gmail.com>
+Date: Fri, 24 Jul 2020 15:46:52 +0300
+Subject: [PATCH 2/2] Use absolute imports
+
+---
+ src/botox/__init__.py     | 6 +++---
+ src/botox/architecture.py | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/botox/__init__.py b/src/botox/__init__.py
+index 5773f40..c15407d 100644
+--- a/src/botox/__init__.py
++++ b/src/botox/__init__.py
+@@ -1,9 +1,9 @@
+ import sys
+ import struct
+ 
+-import architecture
+-from elf import ELF
+-from exceptions import BotoxException
++import botox.architecture as architecture
++from botox.elf import ELF
++from botox.exceptions import BotoxException
+ 
+ class Botox(object):
+ 
+diff --git a/src/botox/architecture.py b/src/botox/architecture.py
+index 4bf2ff2..aeea79b 100644
+--- a/src/botox/architecture.py
++++ b/src/botox/architecture.py
+@@ -1,6 +1,6 @@
+ import struct
+-from elf import ELF
+-from exceptions import BotoxException
++from botox.elf import ELF
++from botox.exceptions import BotoxException
+ 
+ try:
+     from keystone import *
+-- 
+2.27.0
+
