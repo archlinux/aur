@@ -27,9 +27,9 @@ pkgbase = warsaw-bin
 	options = !emptydirs
 	backup = etc/init.d/warsaw
 	backup = etc/init/warsaw.conf
-	source_i686 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb
+	source_i686 = warsaw-1.15.1.1-32.deb::https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb
 	sha256sums_i686 = ee197dcfa674c27478ce42db69d8a3a7a459147f39430756875db9ac2943f3f5
-	source_x86_64 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb
+	source_x86_64 = warsaw-1.15.1.1-64.deb::https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb
 	sha256sums_x86_64 = 4e7bf4edcfe1775db18590ad4e810707e68dfbd251448f5cb8c4c7bf464b590c
 
 pkgname = warsaw-bin
