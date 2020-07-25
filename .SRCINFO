@@ -1,0 +1,19 @@
+pkgbase = notmuch-deduplicate-git
+	pkgdesc = Deduplicate Maildir using Notmuch
+	pkgver = r20.7f8e8a5
+	pkgrel = 1
+	url = https://github.com/esovetkin/notmuch-deduplicate
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = notmuch
+	depends = pv
+	depends = parallel
+	depends = bash
+	depends = jq
+	provides = notmuch-deduplicate
+	source = git+https://github.com/esovetkin/notmuch-deduplicate.git
+	sha256sums = SKIP
+
+pkgname = notmuch-deduplicate-git
+
