@@ -1,51 +1,40 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
+# Maintainer: Aliaksandr Stelmachonak <mail at ava1ar dot me>
 pkgname=powerline-fonts-git
-pkgver=r100.a44abd0
-pkgrel=3
-pkgdesc="Powerline fonts for X11 and the console"
+pkgver=r202.e80e3eb
+pkgrel=1
+pkgdesc="Patched fonts for Powerline users"
 arch=('any')
 url='https://github.com/powerline/fonts'
 license=('CPL')
-depends=(fontconfig xorg-font-utils )
+depends=('fontconfig' 'xorg-mkfontscale')
 makedepends=('git')
-provides=(ttf-hack)
+provides=(
+  powerline-fonts
+  ttf-hack
+)
 conflicts=(
-  monaco-powerline-font-git
+  powerline-fonts
   otf-droid-sans-mono-powerline-git
-  otf-droidsansmono-powerline-git
   otf-fura-mono-powerline-git
   otf-inconsolata-dz-powerline-git
   otf-inconsolata-g-powerline-git
   otf-inconsolata-powerline-git
-  otf-meslo-powerline-git
   otf-sauce-code-powerline-git
-  otf-source-code-pro-powerline-git
-  powerline-fonts
-  source-code-pro-fonts-powerline
-  terminess-powerline-font
   terminess-powerline-font-git
   ttf-anonymice-powerline-git
-  ttf-anonymous-pro-powerline
-  ttf-anonymous-pro-powerline-git
   ttf-dejavu-sans-mono-powerline-git
-  ttf-dejavusansmono-powerline-git
   ttf-droid-sans-mono-dotted-powerline-git
   ttf-droid-sans-mono-slashed-powerline-git
   ttf-hack
   ttf-hack-powerline-git
-  ttf-inconsolata-dz-powerline
-  ttf-liberation-mono-powerline-git
   ttf-literation-mono-powerline-git
-  ttf-meslo-powerline-git
   ttf-monofur-powerline-git
-  ttf-powerline-fonts-git
-  ttf-roboto-mono-powerline-git
   ttf-ubuntu-mono-derivative-powerline-git
-  ttf-ubuntu-mono-powerline-git
 )
-install=$pkgname.install
+install=${pkgname}.install
 source=('git+https://github.com/powerline/fonts.git')
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd fonts
