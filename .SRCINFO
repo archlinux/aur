@@ -1,0 +1,13 @@
+pkgbase = rime-ipa
+	pkgdesc = IPA input for rime
+	pkgver = 0.0.0.20200413
+	pkgrel = 1
+	url = https://github.com/rime/rime-ipa
+	arch = x86_64
+	license = LGPL
+	makedepends = librime
+	source = https://github.com/rime/rime-ipa/archive/22b71710e029bcb412e9197192a638ab11bc2abf/rime-ipa-22b71710e029bcb412e9197192a638ab11bc2abf.tar.gz
+	md5sums = 3389e3f58b140b24080b8d848012b202
+
+pkgname = rime-ipa
+
