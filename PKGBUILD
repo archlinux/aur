@@ -3,7 +3,7 @@
 
 pkgname=warsaw-bin
 pkgver=1.15.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://www.dieboldnixdorf.com.br/warsaw"
