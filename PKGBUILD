@@ -54,22 +54,22 @@ build() {
 	g++ watcher_unix.cpp -o watcher_unix -O2
 	#qmake lemon.pro
 	#make
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir" -GNinja .
+	cmake -DCMAKE_BUILD_TYPE=Release -GNinja .
 	ninja
 
 }
 
 package() {
+	#cd "$srcdir/Project_LemonLime"
+	#ninja install
+	#cd "$pkgdir/bin"
+	#mv lemon lemon-lime
 	cd "$srcdir/Project_LemonLime"
-	ninja install
-	cd "$pkgdir/bin"
-	mv lemon lemon-lime
-	cd "$srcdir/Project_LemonLime"
-	#install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
+	install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
 
 	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	#install -D -m644 assets/lemon-lime.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
-	#install -D -m755 ../$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -D -m644 assets/lemon-lime.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
+	install -D -m755 assets/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
