@@ -1,0 +1,35 @@
+pkgbase = jami-gnome-git
+	pkgdesc = Free and universal communication platform which preserves the users’ privacy and freedoms (GNOME client)
+	pkgver = 1.0.0.r773.g50fc0a5
+	pkgrel = 1
+	url = https://jami.net
+	arch = x86_64
+	groups = jami
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libjamiclient-git
+	depends = jami-daemon-git
+	depends = gtk3
+	depends = dconf
+	depends = clutter
+	depends = clutter-gtk
+	depends = webkit2gtk
+	depends = qrencode
+	depends = qt5-base
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = libnotify
+	depends = libcanberra
+	depends = libnm
+	provides = ring-gnome
+	conflicts = ring-gnome
+	conflicts = jami-gnome
+	replaces = ring-gnome
+	source = git+https://git.jami.net/savoirfairelinux/ring-client-gnome.git
+	source = git+https://git.jami.net/savoirfairelinux/ring-lrc.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jami-gnome-git
+
