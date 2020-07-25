@@ -1,0 +1,16 @@
+pkgbase = asf-ui-git
+	pkgdesc = Standalone web interface for ASF.
+	pkgver = r1030.e4b02e9
+	pkgrel = 1
+	url = https://github.com/JustArchiNET/ArchiSteamFarm
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	depends = asf
+	provides = asf-ui
+	source = asf-ui::git+https://github.com/JustArchiNET/ASF-ui.git
+	sha256sums = SKIP
+
+pkgname = asf-ui-git
+
