@@ -1,0 +1,12 @@
+pkgbase = ttf-inupiaqnumbers-git
+	pkgdesc = A font for displaying Inupiaq numerals.
+	pkgver = r5.69d01c0
+	pkgrel = 1
+	url = https://github.com/0xcf843ecf802c722f434d56/inupiaqnumbers
+	arch = any
+	license = MIT
+	source = git+https://github.com/0xcf843ecf802c722f434d56/inupiaqnumbers.git
+	sha1sums = SKIP
+
+pkgname = ttf-inupiaqnumbers-git
+
