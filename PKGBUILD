@@ -3,7 +3,6 @@
 
 pkgname=fluent-bit
 
-pkgmaj=1.5
 pkgver=1.5.1
 pkgrel=2
 epoch=
@@ -29,7 +28,7 @@ backup=('etc/fluent-bit/fluent-bit.conf'
 options=()
 install=
 changelog=
-source=("https://fluentbit.io/releases/$pkgmaj/$pkgname-$pkgver.tar.gz")
+source=("https://fluentbit.io/releases/${pkgver:0:3}/$pkgname-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
 
