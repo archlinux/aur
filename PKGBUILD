@@ -2,7 +2,7 @@
 
 pkgname=geph-client-patched
 _pkgname=geph-client
-pkgver=r214.83b18f5
+pkgver=r215.fcc2ff5
 pkgrel=1
 pkgdesc='A command-line Geph client with external bypass filter patch'
 arch=('x86_64')
