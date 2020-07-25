@@ -1,4 +1,4 @@
-pkgbase = harfbuzz
+pkgbase = harfbuzz-git
 	pkgdesc = OpenType text shaping engine
 	pkgver = 2.7.0
 	pkgrel = 1

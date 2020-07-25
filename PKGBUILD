@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=harfbuzz
+pkgbase=harfbuzz-git
 pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=2.7.0
 pkgrel=1
