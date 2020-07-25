@@ -1,0 +1,14 @@
+pkgbase = mrun
+	pkgdesc = Clean command to run the contents of a Runfile
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/SealsRock12/run
+	arch = any
+	license = GPL
+	depends = bash
+	conflicts = run
+	source = mrun-0.0.1.tar.gz::https://github.com/SealsRock12/mrun/archive/0.0.1.tar.gz
+	sha256sums = d2a27f30ba8c464fab62a18eb3080e615894a271871b9f31257bedf7680ed54a
+
+pkgname = mrun
+
