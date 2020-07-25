@@ -1,0 +1,13 @@
+--- main.go	2020-07-21 07:48:27.210949241 -0400
++++ main.go.1	2020-07-24 20:45:52.401869754 -0400
+@@ -62,10 +62,6 @@
+ 	ui.config = readConfig()
+ 	ui.librnnoise = rnnoisefile
+ 
+-	if ui.config.EnableUpdates {
+-		go updateCheck(&ui)
+-	}
+-
+ 	paClient, err := pulseaudio.NewClient()
+ 	defer paClient.Close()
+ 

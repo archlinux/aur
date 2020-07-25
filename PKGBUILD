@@ -2,7 +2,7 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch-git'
 pkgver=0.5.3.beta.r1.g5ce761a
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
@@ -14,10 +14,10 @@ provides=('noisetorch')
 conflicts=("noisetorch-bin")
 source=('git+https://github.com/lawl/NoiseTorch.git'
         'git+https://github.com/werman/noise-suppression-for-voice'
-        'config.patch')
+        'main.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '68ef04f5b7e14cdc6aa580d546bffca6fac6dc209ed79cb42785f6a6030d8eaa')
+            '1154f0c21715d6fd8e29570ada853622b8923750aaa066833b76c571774dd8d2')
 
 pkgver() {
 	cd NoiseTorch
@@ -29,7 +29,7 @@ prepare() {
 	git submodule init
 	git config submodule.librnnoise_ladspa.url $srcdir/noise-suppression-for-voice
 	git submodule update
-	patch -u config.go ../config.patch
+	patch -u main.go ../main.patch
 }
 
 build() {
