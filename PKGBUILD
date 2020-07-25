@@ -3,8 +3,8 @@
 
 pkgname=fluent-bit
 
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -69,4 +69,4 @@ package() {
     install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('281e87ad0e579e01e8de9b1973b41002bc0bc3c87771815983e9fb6291ad49b232d0d0c5651fe45c790658c2d277f9d0a9de54c0d3016bd2d2f9a26841132838')
+sha512sums=('a994feb086373a14731ba24e99b5b0127698893ad1f3b87ee8c670c2314330511c4a70bd3bcc5be7b0502ef301bddfc371d15124f2006f560a02157dbcf32dc6')
