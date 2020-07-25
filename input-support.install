@@ -1,9 +1,8 @@
 post_install() {
 	echo
+	echo "To make the environmental variables set automatically, \
+please don't use fish as your login shell."
 	echo 'Re-login or reboot to apply modify.'
-	printf "If you're using a Wayland session, you might also need to add the variables defined in "
-	printf "/etc/profile.d/input-support.sh to /etc/environment manually before you re-login or reboot."
-	echo
 	echo
 }
 

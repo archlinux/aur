@@ -1,11 +1,11 @@
-# Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
+# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 # Maintainer: star2000 <i@star2000.work>
 # Contributor: Stefano Capitani <stefanoatmanjarodororg>
 
 pkgbase=manjaro-asian-input-support
 pkgname=('ibus-input-support' 'fcitx-input-support' 'fcitx5-input-support')
 pkgver=2020.07
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support"
 license=('GPL')

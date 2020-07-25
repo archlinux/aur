@@ -1,7 +1,7 @@
 pkgbase = manjaro-asian-input-support
 	pkgdesc = Asian input support from Manjaro
 	pkgver = 2020.07
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support
 	install = input-support.install
 	arch = any
