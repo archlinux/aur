@@ -68,7 +68,7 @@ echo "done."
 
 printf "\nCopy needed files from AUR source..."
 for eia in ../eve-icons*.tar.gz ;do tar xf $eia -C evesetup/ ;done
-for eta in ../eve-transl5.11-??.tar.gz ;do cp $eta evesetup/ ;done
+for eta in ../eve-transl5.12-??.tar.gz ;do cp $eta evesetup/ ;done
 for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
     cmd=eve$cmd
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
@@ -77,7 +77,7 @@ done
 cp ../evesetup.shlib evesetup/
 cp ../evelauncher.kwinrule evesetup/
 cp ../evelauncher.lua evesetup/
-cp ../evelauncher.sh evesetup/
+cp ../evelauncher.sh.in evesetup/evelauncher.sh
 sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 cp ../setup.sh.in evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh

@@ -88,7 +88,7 @@ build_lib() {
     cd evelauncher/
     rm -f ./*.a ./*.la ./*.prl ./libxcb*
     chmod 0755 ./*
-    chmod 0644 ./*.qm ./*.conf ./errorpage/*
+    chmod 0644 ./*.qm ./*.pem ./*.conf ./errorpage/*
     echo "done."
     printf "\nReplace identical files with symbolic links..."
     ln -sf evelauncher.sh LogLite.sh
@@ -164,7 +164,7 @@ destdir="/opt/evesetup"
 bindir="$destdir/bin"
 libdir="$destdir/lib"
 docdir="$destdir/doc"
-qtver="5.11"
+qtver="5.12"
 elver=""
 elcsum=""
 dvver=""

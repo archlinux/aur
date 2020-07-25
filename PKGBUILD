@@ -1,13 +1,27 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
-pkgver=1548102
-pkgrel=14
+pkgver=1747682
+pkgrel=1
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
 license=('custom')
 
-depends=('p7zip' 'vulkan-icd-loader' 'wine')
+install=${pkgname}.install
+
+depends=('icu'
+         'openssl'
+         'openssl-1.0'
+         'p7zip'
+         'qt5-base'
+         'qt5-declarative'
+         'qt5-translations'
+         'qt5-location'
+         'qt5-webchannel'
+         'qt5-webengine'
+         'qt5-websockets'
+         'vulkan-icd-loader'
+         'wine')
 
 optdepends=('libnotify' 'winetricks')
 
@@ -15,6 +29,7 @@ conflicts=('evelauncher' 'evesetup_dev' 'evesetup-beta')
 
 source=("evelauncher.desktop"
         "evelauncher.sh"
+        "evelauncher.sh.in"
         "evelauncher.sh.real"
         "evesetup.shlib"
         "everegedit.desktop"
@@ -31,22 +46,22 @@ source=("evelauncher.desktop"
         "setup.sh.in"
         "eve-icons.tar.gz"
         "eve-icons_large.tar.gz"
-        "eve-transl5.11-de.tar.gz"
-        "eve-transl5.11-en.tar.gz"
-        "eve-transl5.11-fr.tar.gz"
-        "eve-transl5.11-ja.tar.gz"
-        "eve-transl5.11-ru.tar.gz"
-        "eve-transl5.11-zh.tar.gz"
+        "eve-transl5.12-de.tar.gz"
+        "eve-transl5.12-en.tar.gz"
+        "eve-transl5.12-fr.tar.gz"
+        "eve-transl5.12-ko.tar.gz"
+        "eve-transl5.12-ru.tar.gz"
+        "eve-transl5.12-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
         "https://github.com/doitsujin/dxvk/releases/download/v1.7/dxvk-1.7.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
-noextract=('eve-transl5.11-de.tar.gz'
-           'eve-transl5.11-en.tar.gz'
-           'eve-transl5.11-fr.tar.gz'
-           'eve-transl5.11-ja.tar.gz'
-           'eve-transl5.11-ru.tar.gz'
-           'eve-transl5.11-zh.tar.gz'
+noextract=('eve-transl5.12-de.tar.gz'
+           'eve-transl5.12-en.tar.gz'
+           'eve-transl5.12-fr.tar.gz'
+           'eve-transl5.12-ko.tar.gz'
+           'eve-transl5.12-ru.tar.gz'
+           'eve-transl5.12-zh.tar.gz'
            'https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run')
 
 package() {
@@ -58,8 +73,8 @@ package() {
         install -d "${pkgdir}/usr/share/applications"
         install -d "${pkgdir}/usr/share/icons"
         sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${srcdir}/evelauncher.sh"
+        sed -i 2\ s,[0-9].*\",${pkgver}\", "${srcdir}/evelauncher.lua"
         sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/evelauncher.sh"
-        sed -i s,./eve-transl,/opt/${pkgname}/lib/eve-transl, "${srcdir}/evelauncher.sh"
         for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
             cmd=eve$cmd
             if [ -f "${srcdir}/$cmd" ] ;then
@@ -80,27 +95,21 @@ package() {
             fi
         done
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
-        cp ${srcdir}/eve-transl5.11* ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
         cp -r ${srcdir}/dxvk-1.7/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
         cp -r ${srcdir}/dxvk-1.7/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
         echo "dxvk-1.7" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
+        rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
+        rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
+        rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
+        rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
-        rm -f ${srcdir}/evelauncher/*.a ${srcdir}/evelauncher/*.la
-        rm -f ${srcdir}/evelauncher/*.prl ${srcdir}/evelauncher/libxcb*
         chmod 0755 ${srcdir}/evelauncher/*
-        chmod 0644 ${srcdir}/evelauncher/*.qm
-        chmod 0644 ${srcdir}/evelauncher/qt.conf
+        chmod 0644 ${srcdir}/evelauncher/*.qm ${srcdir}/evelauncher/roots.pem
         chmod 0644 ${srcdir}/evelauncher/errorpage/*
         ln -sf evelauncher.sh ${srcdir}/evelauncher/LogLite.sh
-        ln -sf libicudata.so.55.1 ${srcdir}/evelauncher/libicudata.so
-        ln -sf libicudata.so.55.1 ${srcdir}/evelauncher/libicudata.so.55
-        ln -sf libicui18n.so.55.1 ${srcdir}/evelauncher/libicui18n.so
-        ln -sf libicui18n.so.55.1 ${srcdir}/evelauncher/libicui18n.so.55
-        ln -sf libicuuc.so.55.1 ${srcdir}/evelauncher/libicuuc.so
-        ln -sf libicuuc.so.55.1 ${srcdir}/evelauncher/libicuuc.so.55
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so.6
         ln -sf libgrpc++.so.1.12.0 ${srcdir}/evelauncher/libgrpc++.so
@@ -108,7 +117,6 @@ package() {
         ln -sf libgrpc++.so.1.12.0 ${srcdir}/evelauncher/libgrpc++.so.6
         ln -sf libgrpc.so.6.0.0 ${srcdir}/evelauncher/libgrpc.so
         ln -sf libgrpc.so.6.0.0 ${srcdir}/evelauncher/libgrpc.so.6
-        ln -sf libpng12.so.0.54.0 ${srcdir}/evelauncher/libpng12.so.0
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so.16
         find ${srcdir}/evelauncher/ -type f -exec strip -s {} 2>/dev/null \;
@@ -116,7 +124,8 @@ package() {
 }
 
 sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
-            '9758ff906a3e849e94f6edeb0e0fdf59627f713bc1a9b6e06f171a3285d0a007'
+            '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
+            '7c658874857586e70d5b727895905c884cf6aa7b1d172f3811ab62bec52d98c4'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'dc3b9db6821e6889e4afeecb57758c73b5e1802437e9d99db98ac43ff77171e6'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
@@ -129,16 +138,16 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            'e6a00ad0a14f66533dbbc2485388433440dd656e54a15ceeffe5a75d8d736158'
-            'c7108348a1d19e146bb19bf47da342d04ab4dcaf730ce59b2082535764eeb4f2'
+            '342c32f51a196fd21db9f7930c122ea38e25bd5e8be5574fd404b218c70d2fb4'
+            'cf97637f85a60c6d3f3ff70ecd2ed0ad1427d5f56253bd86839ed3b2ac40c509'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
-            '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
-            '1c3df28324c8498e34d2e789fd1f36577afa5a31bdbb278d752f7ef8c6ec5516'
-            'bb63c2ea31d204f4d8eb270848674ad898ed45bbf0a9cea480611581f1149e4f'
-            'f78996a8b01463891e97270b8f9d9fa5a61ccf0710e1163aff0c0c49ce3849c3'
-            '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
-            '1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6'
+            '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'
+            '777ad02015e07a6f7698b2c373997f5152954592acee85e3b189a4a7270326b1'
+            'ab005b213aec42b21d2e5ef2dcbff4b0a97ee7f7a1df5dc6401afa95271000d1'
+            '03950f576befa34d95fe2839a752f15584a4001c3b02416bf22e9991f03b856b'
+            '1a83a791b5a189823f71cdfb1e0c0e15139ff7f563bfb3eac70a5fa4ad9ebc22'
+            '5ffd6578dfbb9bf1647fbae819e3ddae0722c2613779c122d86963123470359f'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
             '67d78239906c24bd50a5ecbc2fd792c1721e274a7a60dd22f74b21b08ca4c7a1'
-            '6d49defd626b0643dce83fcd258f3bf3ece8f8e6cefbea37b3b61c8ae0752d85')
+            '98ccf4b9932d7fb74896461f764c61921592a73089e3fcb4063fe7836c6a0bca')

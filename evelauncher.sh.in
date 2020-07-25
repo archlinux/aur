@@ -3,6 +3,7 @@
 set -e
 
 ELVER=""
+QTVER="5.12"
 EVEDIR="$HOME/.local/lib/EVE"
 SETUPDIR=""
 LAUNCHER="$EVEDIR/Launcher"
@@ -14,6 +15,14 @@ check_env
 check_elv
 check_wine
 check_steam
+
+if [ ! -r "$LAUNCHER/translations/qt_en.qm" ] ;then
+    if [ -r "$LAUNCHER/libQt5Core.so.$QTVER.0" ] ;then
+	for eta in ./eve-transl${QTVER}-??.tar.gz ;do
+	    tar xf $eta -C $LAUNCHER
+	done
+    fi
+fi
 
 export DXVK_LOG_LEVEL=${DXVK_LOG_LEVEL:-error}
 
