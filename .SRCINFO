@@ -1,5 +1,5 @@
 pkgbase = archsimian-git
-	pkgdesc = Advanced playlist creator that uses your MediaMonkey library data
+	pkgdesc = Advanced playlist creator that uses your MediaMonkey library data 
 	pkgver = r422.b414c8a
 	pkgrel = 1
 	url = https://github.com/Harpo3/archsimian
