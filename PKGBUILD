@@ -1,5 +1,5 @@
 # Maintainer: Oliver Hattshire <hattshire at gmail dot com>
-# Font Author: 0xcf843ecf802c722f434d56
+# Font Author: 0xcf843ecf802c722f434d56 <nathanwoodformal at gmail dot com>
 
 _fontname=InupiaqNumbers
 _basename=inupiaqnumbers
