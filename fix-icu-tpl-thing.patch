@@ -1,0 +1,12 @@
+--- src/libsoup-2.2.105/libsoup/soup.h	2020-07-24 22:52:34.948895037 -0400
++++ src/libsoup-2.2.105/libsoup/soup.h	2020-07-24 23:08:32.091993405 -0400
+@@ -6,6 +6,9 @@
+ #ifndef SOUP_H
+ #define SOUP_H 1
+ 
++//Use only unicode C API
++#define U_SHOW_CPLUSPLUS_API 0
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
