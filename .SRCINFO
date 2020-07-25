@@ -1,0 +1,18 @@
+pkgbase = lockbook
+	pkgdesc = A secure, private, minimal, cross-platform document editor.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/lockbook/lockbook
+	arch = x86_64
+	arch = i686
+	license = BSD-3-Clause
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = lockbook
+	conflicts = lockbook
+	source = lockbook::git+https://github.com/lockbook/lockbook.git
+	sha256sums = SKIP
+
+pkgname = lockbook
+
