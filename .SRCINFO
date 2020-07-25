@@ -1,10 +1,10 @@
 pkgbase = pwm
-	pkgdesc = A password self service application for LDAP directories.
+	pkgdesc = A password self service application for LDAP directories
 	pkgver = 1.7.1
 	pkgrel = 0.1
 	url = https://github.com/pwm-project/pwm
 	arch = any
-	license = GPL2
+	license = custom
 	makedepends = unzip
 	depends = java-runtime
 	source = 
