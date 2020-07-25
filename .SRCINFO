@@ -1,0 +1,21 @@
+pkgbase = candle-bin
+	pkgdesc = GRBL controller application with G-Code visualizer written in Qt
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/Denvi/Candle
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = lib32-libsm
+	depends = lib32-libglvnd
+	depends = lib32-libxi
+	depends = lib32-libxrender
+	depends = lib32-fontconfig
+	depends = lib32-freetype2
+	provides = candle
+	source = candle-1.1.7.tar.gz::https://github.com/Denvi/Candle/releases/download/v1.1/Candle_1.1.7.tar.gz
+	sha256sums = ddb098d33c8b75d98fe9d9ed9be8e4a9ce5102df8d4d6231ea62d9c9fbc6d0ff
+
+pkgname = candle-bin
+
