@@ -1,17 +1,12 @@
 pkgbase = ttf-gentium-basic
 	pkgdesc = Fonts based on the original Gentium design with additional weights
 	pkgver = 1.1
-	pkgrel = 4
-	url = http://scripts.sil.org/Gentium_basic
-	install = gentium.install
+	pkgrel = 5
+	url = https://scripts.sil.org/Gentium_basic
 	arch = any
-	license = custom:OFL
-	makedepends = unzip
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-gentium-basic-1.1.zip::http://scripts.sil.org/cms/scripts/render_download.php?site_id=nrsi&format=file&media_id=GentiumBasic_110&filename=GentiumBasic_110.zip
-	md5sums = 44b3bc7b766f411f57e6eae28768dfbb
+	license = OFL
+	source = ttf-gentium-basic-1.1.zip::https://scripts.sil.org/cms/scripts/render_download.php?site_id=nrsi&format=file&media_id=GentiumBasic_110&filename=GentiumBasic_110.zip
+	sha256sums = 7f03ab68349253e520a3e716069bd8d628381f7b8001b3d984e85ac4da75a035
 
 pkgname = ttf-gentium-basic
 
