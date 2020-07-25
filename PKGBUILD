@@ -1,8 +1,8 @@
 # Maintainer: Nissar Chababy <contact at funilrys dot com>
 
 pkgname=python-box
-pkgver=4.2.3
-pkgrel=2
+pkgver=5.1.0
+pkgrel=0
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('any')
 url="https://github.com/cdgriffith/Box"
@@ -11,12 +11,13 @@ provides=("${pkgname}")
 depends=(
     'python-toml'
     'python-ruamel-yaml'
+    'python-msgpack'
 )
 source=(
     "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "37dcaee62446cef67ffad7baef0f1b5f541587e2064f1152ec3bc0ead64092a2"
+    "f02e059a299cac0515687aafec7543d401b12759d6578e53fae74154e0cbaa79"
 )
 
 build() {
