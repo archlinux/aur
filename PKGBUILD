@@ -1,52 +1,42 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
-pkgname=pgyvpn
+pkgname=pgyvpn-bin
 _pkgname=PgyVPN
 pkgver=2.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Suitable for business personnal long-distance intelligent network access"
-arch=("x86_64" "i686")
+arch=('armv7h')
 url="https://pgy.oray.com/download/"
 license=('custom')
-depends=('gcc-libs')
-source=('LICENSE::https://service.oray.com/question/1820.htm')
-source_x86_64=("http://download.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_X86_64.deb")
-source_i686=("http://download.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_i386.deb")
-sha256sums=('849387c971cd12f63c8b982e1dbcf9aa7b1a752d88bb41f5b112e1465cccc6e9')
-sha256sums_x86_64=('a1cc519fd7d47605e293585adacefce4b8a6a5db9ff381f124ce9ee086e7fae8')
-sha256sums_i686=('c2a3c7f4f1dd0d456de133988b166a7a37015fd0fc02cc3d3428a83061373431')
+install='.INSTALL'
+source=('LICENSE::https://service.oray.com/question/1820.html')
+source_armv7h=("http://download.oray.com/pgy/embed/${_pkgname}-${pkgver}-armhf_systemd.deb")
+sha256sums=('SKIP')
+sha256sums_armv7h=('fe27877ca149907c3e94630c5d30b1e346e6fa26f69c9071ea851135915a39d5')
 
 package() {
-  tar -xf data.tar.gz -C ${pkgdir}
+  tar -xf data.tar.xz -C ${pkgdir}
 
-  install -dm755 ${pkgdir}/usr/bin
-  mv ${pkgdir}/usr/sbin/pgy* ${pkgdir}/usr/bin
+  cd ${pkgdir}
 
-  rm -rf ${pkgdir}/usr/sbin
-  rm -rf ${pkgdir}/etc/init.d
-  rm -rf ${pkgdir}/usr/share
-  
-  chmod -R 755 ${pkgdir}/etc/
-  chmod -R 755 ${pkgdir}/usr/
-  chown -R root:root ${pkgdir}
+  # binary
+  for binary in usr/sbin/*;
+  do
+    install -Dm755 $binary usr/bin/`basename $binary`
+  done
+  rm -rf usr/sbin
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  # systemd service
+  install -Dm644 lib/systemd/system/${pkgname%-bin}.service usr/lib/systemd/system/${pkgname%-bin}.service
+  rm -rf lib
 
-  install -dm755 ${pkgdir}/usr/lib/systemd/system
-  cat > ${pkgdir}/usr/lib/systemd/system/${pkgname}.service << EOF
-[Unit]
-Description=Running pgyvpn
-After=network-online.target
+  sed -i 's|/usr/sbin/|/usr/bin/|g' usr/lib/systemd/system/${pkgname%-bin}.service
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/pgyvpn -a
-RestartSec=10
-Restart=always
+  # license
+  install -Dm644 ${srcdir}/LICENSE usr/share/licenses/${pkgname}/LICENSE
 
-[Install]
-WantedBy=multi-user.target
-EOF
+  # fixed permission
+  chown -R root:root usr etc
+  chmod 755 usr usr/share etc etc/oray etc/oray/pgyvpn
 }
-
 # vim: ts=2 sw=2 et:

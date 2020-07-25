@@ -1,0 +1,51 @@
+post_install() {
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  $ECHO "\033[0;31;5m"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |             PgyVPN Install Success               |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |    SHANGHAI BEST ORAY INFORMATION S&T CO., LTD.  |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO "\033[0m"
+}
+
+post_upgrade() {
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  $ECHO "\033[0;31;5m"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |             PgyVPN Install Success               |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |    SHANGHAI BEST ORAY INFORMATION S&T CO., LTD.  |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO "\033[0m"
+}
+
+pre_remove() {
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  $ECHO "\033[0;31;5m"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |             PgyVPN Remove Success                |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO " |    SHANGHAI BEST ORAY INFORMATION S&T CO., LTD.  |"
+  $ECHO " +--------------------------------------------------+"
+  $ECHO "\033[0m"
+}
+
