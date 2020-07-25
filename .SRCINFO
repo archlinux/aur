@@ -1,0 +1,16 @@
+pkgbase = python-click-option-group
+	pkgdesc = Option groups missing in Click
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/click-contrib/click-option-group
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/c/click-option-group/click-option-group-0.5.1.tar.gz
+	source = https://github.com/click-contrib/click-option-group/raw/master/LICENSE
+	sha256sums = 764eb49094dc864e28afbf36c6bb140d09ef714a915c0c5972c982113ed70fab
+	sha256sums = a1c5c6628debcad64ee214620dc936bacc4e64063fbd34c7d745970cb1c5b589
+
+pkgname = python-click-option-group
+
