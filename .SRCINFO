@@ -1,0 +1,15 @@
+pkgbase = archimedes
+	pkgdesc = Semiconductor device simulations.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/archimedes/
+	arch = x86_64
+	license = GPL3
+	provides = archimedes
+	source = http://ftp.gnu.org/gnu/archimedes/archimedes-2.0.0.tar.gz
+	source = inline-fix.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = archimedes
+

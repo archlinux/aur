@@ -1,0 +1,82 @@
+Common subdirectories: src/.deps and src2/.deps
+diff -u src/extrema.h src2/extrema.h
+--- src/extrema.h	2011-08-26 15:43:28.000000000 +0200
++++ src2/extrema.h	2020-07-25 12:42:07.091063022 +0200
+@@ -32,7 +32,7 @@
+ 
+ // **********************************************
+ 
+-inline real minimus(real x,real y)
++static inline real minimus(real x,real y)
+ {
+ /* this function returns the minimum between x and y */
+ 
+@@ -42,7 +42,7 @@
+ 
+ // **********************************************
+ 
+-inline real maximus(real x,real y)
++static inline real maximus(real x,real y)
+ {
+ /* this function returns the maximum between x and y */
+ 
+diff -u src/mm2.h src2/mm2.h
+--- src/mm2.h	2011-08-26 15:43:28.000000000 +0200
++++ src2/mm2.h	2020-07-25 12:42:21.077824613 +0200
+@@ -30,7 +30,7 @@
+ 
+ // Function used in the Jang-Tadmor method
+ 
+-inline real MM2(real x,real a,real b)
++static inline real MM2(real x,real a,real b)
+ {
+  return MM(x*MM(a,b),0.5*(a+b));
+ }
+diff -u src/mm.h src2/mm.h
+--- src/mm.h	2011-08-26 15:43:27.000000000 +0200
++++ src2/mm.h	2020-07-25 12:42:29.911217918 +0200
+@@ -30,7 +30,7 @@
+ 
+ // Function used in the Jang-Tadmor method
+ 
+-inline real MM(real a,real b)
++static inline real MM(real a,real b)
+ {
+  return 0.5*(sign(1.,a)+sign(1.,b))*minimus(fabs(a),fabs(b));
+ }
+diff -u src/particlecreation.h src2/particlecreation.h
+--- src/particlecreation.h	2011-08-29 11:23:40.000000000 +0200
++++ src2/particlecreation.h	2020-07-25 12:42:40.087953699 +0200
+@@ -34,7 +34,7 @@
+ // edge = 2 Upper edge
+ // edge = 3 Left edge
+ 
+-inline
++static inline
+ void
+ creation(int i,real t,int edge)
+ {
+diff -u src/random.h src2/random.h
+--- src/random.h	2011-08-26 15:43:21.000000000 +0200
++++ src2/random.h	2020-07-25 12:42:48.991347521 +0200
+@@ -30,7 +30,7 @@
+ 
+ // a simple (but well working...) generator of random numbers
+ 
+-inline
++static inline
+ real
+ rnd(void){
+   ISEED = fmod(1027.*ISEED, 1048576.);
+diff -u src/sign.h src2/sign.h
+--- src/sign.h	2011-08-26 15:43:22.000000000 +0200
++++ src2/sign.h	2020-07-25 12:42:57.401404684 +0200
+@@ -30,7 +30,7 @@
+ 
+ // This function is exactly the same as the FORTRAN SIGN(A,B) function.
+ 
+-inline real sign(real a,real b)
++static inline real sign(real a,real b)
+ {
+  if(b>=0.) return(+1.*fabs(a));
+  else return(-1.*fabs(a));
