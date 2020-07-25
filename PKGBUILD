@@ -3,7 +3,7 @@
 pkgname='python-quantiphy'
 _pkgname=${pkgname#python-}
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offers support for the pairing of a number and a unit of measure"
 arch=('any')
 depends=()
@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
