@@ -88,7 +88,6 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
@@ -114,7 +113,6 @@ md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
          '3f9c557e2cad81e821c213e4e1097080'
          'b5140bcd7c4bc9a826db47808d0fde99'
          '2ef13b0799bd9b9b994389907812e7a7'
-         'a85456a71ff92afb326f48363757d257'
          'b10e4c612d5240d66fad8f1c50fe3242'
          'a22cddcadc0da933dac13a6ab49b7ed9'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
