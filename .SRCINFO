@@ -1,0 +1,18 @@
+pkgbase = apngasm
+	pkgdesc = tool for assembling apng files
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://github.com/apngasm/apngasm
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = boost
+	depends = libpng
+	depends = boost-libs
+	conflicts = apng-utils
+	source = apngasm-3.1.6.tar.gz::https://github.com/apngasm/apngasm/archive/3.1.6.tar.gz
+	sha512sums = cbc6f0ad119a7ce17079be3434e516265bea619ecb46fe147d652bbaff4652a858698df07a072f5095894961137fe32546f75ad603c7483476be7ffe463cf999
+
+pkgname = apngasm
+
