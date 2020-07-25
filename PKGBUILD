@@ -2,7 +2,7 @@
 
 pkgname=noisetorch-bin
 pkgver=0.5.3_beta
-pkgrel=2
+pkgrel=3
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"
@@ -18,7 +18,7 @@ source=(
 	"${pkgname}.install"
 )
 sha256sums=('4b0c46c3a539ec144db59eb182b92009de520ac9a1e3fe0ab6cb3a0d8ab8de8d'
-            '4074b71327284b1ad75aee32bee0462360b90061237e998bf4f7e259a65e3caa')
+            '84359c186c870220eeb56e9750319bb0c334c1440dd0f974df9e21a4084f80a5')
 
 package() {
 	install -D -m755 .local/bin/noisetorch "${pkgdir}/usr/bin/noisetorch"
