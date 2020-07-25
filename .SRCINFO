@@ -1,0 +1,18 @@
+pkgbase = code2pdf-git
+	pkgdesc = Convert various source codes into pdf file with custom features
+	pkgver = r67.e753616
+	pkgrel = 1
+	url = https://github.com/tushar-rishav/code2pdf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-pygments
+	provides = code2pdf
+	conflicts = code2pdf
+	source = code2pdf::git+https://github.com/tushar-rishav/code2pdf
+	sha256sums = SKIP
+
+pkgname = code2pdf-git
+
