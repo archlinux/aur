@@ -7,75 +7,137 @@
 # Download website:
 # https://developer.nvidia.com/tensorrt/
 
-_cudaver=10.2
-_cudnnver=7.6
-_graphsurgeonver=0.4.1
-_uffver=0.6.5
+_cudaver=11.0
+_cudnnver=8.0
+_graphsurgeonver=0.4.5
+_uffver=0.6.9
 _ubuntuver=18.04
+_protobuf_branch=3.8.x
+_protobuf_ver=3.12.3
+_cub_branch=1.8.0
+_onnx_tensorrt_branch=7.1
+_onnx_branch=rel-1.6.0
+_onnx_ver=1.7.0
 
-pkgname=tensorrt
-pkgver=7.0.0.11
+pkgbase=tensorrt
+pkgname=('tensorrt' 'tensorrt-doc')
+pkgver=7.1.3.4
 pkgrel=1
-pkgdesc='A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)'
+pkgdesc='A platform for high-performance deep learning inference using NVIDIA hardware'
 arch=('x86_64')
-url='https://developer.nvidia.com/tensorrt/'
-license=('custom')
-depends=('cuda' 'cudnn')
-optdepends=('python-numpy: for tensorflow, graphsurgeon and uff python modules'
-            'python-tensorflow: for graphsurgeon and uff python modules'
-            'python-protobuf: for uff python module')
-makedepends=('poppler' 'unzip')
-options=('!strip')
-source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz")
-sha256sums=('c7d73b2585b18aae68b740249efa8c8ba5ae852abe9a023720595432a8eb4efd')
+url='https://github.com/NVIDIA/TensorRT/'
+license=('custom' 'Apache')
+makedepends=('git' 'cmake' 'pybind11' 'python' 'python-pip' 'poppler'
+             'cuda' 'cudnn')
+source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=${pkgver%.*}"
+        'protobuf-protocolbuffers'::"git+https://github.com/protocolbuffers/protobuf#branch=${_protobuf_branch}"
+        "git+https://github.com/NVlabs/cub#branch=${_cub_branch}"
+        "git+https://github.com/onnx/onnx-tensorrt#branch=${_onnx_tensorrt_branch}"
+        "git+https://github.com/onnx/onnx#branch=${_onnx_branch}"
+        'git+https://github.com/pybind/pybind11'
+        'git+https://github.com/google/benchmark'
+        "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
+        '010-tensorrt-protobuf-fix-cub-deprecation-warnings.patch')
+noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
+sha256sums=('f13c6e2f82fda1ed3becac6230ec2048764fe8d302b20a29ae3b1e280c7aac69'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '4ef97ec6a8e0570d22ad8c57c99d2055a61ea2643b8e1a0998d2c844916c4968'
+            '391f0f5f1fbb3ed19319c8a47e04aee071a938ed4f2942263eff9c1385019f31')
 
 prepare() {
-    cd "TensorRT-${pkgver}/python"
-    unzip -oqq "tensorrt-${pkgver}-cp37-none-linux_${CARCH}.whl"
+    # tensorrt git submodules
+    git -C TensorRT submodule init
+    git -C TensorRT config --local submodule.parsers/onnx.url         "${srcdir}/onnx-tensorrt"
+    git -C TensorRT config --local submodule.third_party/protobuf.url "${srcdir}/protobuf-protocolbuffers"
+    git -C TensorRT config --local submodule.third_party/cub.url      "${srcdir}/cub"
+    git -C TensorRT submodule update
     
-    cd ../graphsurgeon
-    unzip -oqq "graphsurgeon-${_graphsurgeonver}-py2.py3-none-any.whl"
+    # fix error: the type <type> of ‘constexpr’ variable ‘getMatrixOp’ is not literal
+    git -C TensorRT/parsers/onnx checkout "release/${_onnx_tensorrt_branch}"
     
-    cd ../uff
-    unzip -oqq "uff-${_uffver}-py2.py3-none-any.whl"
+    # onnx-tensorrt git submodule
+    git -C TensorRT/parsers/onnx submodule init
+    git -C TensorRT/parsers/onnx config --local submodule.third_party/onnx.url "${srcdir}/onnx"
+    git -C TensorRT/parsers/onnx submodule update
     
-    cd ../doc/pdf
-    pdftotext -layout TensorRT-SLA.pdf
+    # https://github.com/onnx/onnx/issues/2481
+    git -C TensorRT/parsers/onnx/third_party/onnx checkout "v${_onnx_ver}"
+    
+    # onnx git submodules
+    git -C TensorRT/parsers/onnx/third_party/onnx submodule init
+    git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/pybind11.url  "${srcdir}/pybind11"
+    git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/benchmark.url "${srcdir}/benchmark"
+    git -C TensorRT/parsers/onnx/third_party/onnx submodule update
+    
+    # protobuf
+    mkdir -p build/third_party.protobuf/src
+    cp -a "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
+    sed -i "/Protobuf_PKG_URL/s|\\\"https.*\\\"|\\\"./protobuf-cpp-\${VERSION}.tar.gz\\\"|" TensorRT/third_party/protobuf.cmake
+    
+    patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-protobuf-fix-cub-deprecation-warnings.patch"
+    
+    pdftotext -layout "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.pdf"
 }
 
-package() {
-    cd "TensorRT-${pkgver}"
+build() {
+    cmake -B build -S TensorRT \
+        -DBUILD_ONNX_PYTHON:BOOL='ON' \
+        -DBUILD_SAMPLES:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
+        -DGPU_ARCHS='52 53 60 61 62 70 72 75 80' \
+        -DPROTOBUF_VERSION="${_protobuf_ver}" \
+        -DCUDA_VERSION="$_cudaver" \
+        -DCUDNN_VERSION="$_cudnnver" \
+        -Wno-dev
+    make -C build
+}
+
+package_tensorrt() {
+    depends=('cuda' 'cudnn')
+    optdepends=('python-numpy: for graphsurgeon and uff python modules'
+                'python-tensorflow-cuda: for graphsurgeon and uff python modules'
+                'python-protobuf: for uff python module')
+    
+    mkdir -p "${pkgdir}/usr/lib"
+    install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
+    cp -a "TensorRT-${pkgver}/include" "${pkgdir}/usr"
+    cp -a "TensorRT-${pkgver}/lib"/lib{myelin,nv{infer,parsers}}{*.so*,*_static.a} "${pkgdir}/usr/lib"
+    
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 build/libnvcaffeparser_static.a -t "${pkgdir}/usr/lib"
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    PIP_CONFIG_FILE='/dev/null' pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location \
+        "TensorRT-${pkgver}/graphsurgeon/graphsurgeon-${_graphsurgeonver}-py2.py3-none-any.whl" \
+        "TensorRT-${pkgver}/uff/uff-${_uffver}-py2.py3-none-any.whl"
+    python -O -m compileall "${pkgdir}/usr/lib/python${_pyver}/site-packages"/{graphsurgeon,uff}
     
-    mkdir -p "${pkgdir}/usr/lib/python${_pyver}/site-packages"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+}
+
+package_tensorrt-doc()
+{
+    pkgdesc+=' (documentation)'
+    arch=('any')
+    license=('custom')
     
-    # binaries
-    install -D -m755 bin/* -t "${pkgdir}/usr/bin"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Best-Practices.pdf"  -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Developer-Guide.pdf" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Release-Notes.pdf"   -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Support-Matrix-Guide.pdf" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a "TensorRT-${pkgver}/doc"/{cpp,python} "${pkgdir}/usr/share/doc/${pkgbase}"
     
-    # headers
-    install -D -m644 include/* -t "${pkgdir}/usr/include"
-    
-    # libraries
-    cp -a lib/*.so*       "${pkgdir}/usr/lib"
-    cp -a lib/*_static.a* "${pkgdir}/usr/lib"
-    
-    # python
-    ## no python 3.8 provided
-    #cp -a python/tensorrt "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    
-    # graphsurgeon
-    cp -a graphsurgeon/graphsurgeon "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    
-    # uff
-    cp -a uff/uff "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    
-    # documentation
-    install -D -m644 doc/pdf/TensorRT-Developer-Guide.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -a doc/{cpp,python} "${pkgdir}/usr/share/doc/${pkgname}"
-    
-    # license
-    install -D -m644 doc/pdf/TensorRT-SLA.txt  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 doc/Acknowledgements.txt "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }
