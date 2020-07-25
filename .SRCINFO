@@ -1,0 +1,20 @@
+pkgbase = sddm-sugar-candy-git
+	pkgdesc = Sugar Candy is the sweetest login theme available for the SDDM display manager.
+	pkgver = r53.2b72ef6
+	pkgrel = 1
+	url = https://store.kde.org/p/1312658/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm>=0.18
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	provides = sddm-sugar-candy
+	conflicts = sddm-sugar-candy
+	backup = usr/share/sddm/themes/sugar-candy/theme.conf
+	source = sugar-candy::git+https://framagit.org/MarianArlt/sddm-sugar-candy.git
+	sha256sums = SKIP
+
+pkgname = sddm-sugar-candy-git
+
