@@ -1,0 +1,20 @@
+pkgbase = replay-sorcery-git
+	pkgdesc = An open-source, instant-replay solution for Linux
+	pkgver = r80.b70061f
+	pkgrel = 1
+	url = https://github.com/matanui159/ReplaySorcery
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = nasm
+	provides = replay-sorcery
+	source = replay-sorcery::git+https://github.com/matanui159/ReplaySorcery.git
+	source = replay-sorcery.conf
+	sha256sums = SKIP
+	sha256sums = 47eda70a2347fcc0c020c27392e88bda93a1a6ab269ec8101bc68283105de2ba
+
+pkgname = replay-sorcery-git
+
