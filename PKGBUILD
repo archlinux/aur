@@ -5,7 +5,7 @@
 
 pkgname=lf
 pkgver=15
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
 depends=('glibc')
@@ -69,8 +69,8 @@ package() {
        ./etc/lf.zsh
 
   # tsch
-  install -Dm644 -t "${pkgdir}/etc/profile.d/lf.csh" \
+  install -Dm644 -t "${pkgdir}/etc/profile.d" \
        ./etc/lf.csh
-  install -Dm644 -t "${pkgdir}/etc/profile.d/lfcd.csh" \
+  install -Dm644 -t "${pkgdir}/etc/profile.d" \
        ./etc/lfcd.csh
 }
