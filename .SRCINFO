@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-phoebus
 	pkgdesc = Dwarf Fortress preloaded with Phoebus tileset
-	pkgver = 0.44.11
-	pkgrel = 17
+	pkgver = 0.47.04
+	pkgrel = 18
 	epoch = 1
 	url = http://www.bay12games.com/dwarves/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = dwarffortress-phoebus
 	depends = openal
 	depends = sdl_image
 	depends = sdl_ttf
-	source = https://github.com/DFgraphics/Phoebus/archive/44.11b.zip
-	source = http://bay12games.com/dwarves/df_44_11_linux.tar.bz2
+	source = https://github.com/DFgraphics/Phoebus/archive/47.04a.zip
+	source = http://bay12games.com/dwarves/df_47_04_linux.tar.bz2
 	source = dwarf-fortress
 	source = LICENSE
-	md5sums = 9e4fb2c75e02f8f890a7c73af53a117d
-	md5sums = a9baf90758ceae8f08895ffe08e758a3
+	md5sums = e3d2a6f4b0303106e927d05fefe09442
+	md5sums = 201944f2cc16fd4a8202e8bb55dda0c2
 	md5sums = 915f9b8efc7e2ea9e233bc6a9606038e
 	md5sums = eddfb4bd478f9c64e6801bda7c7791ba
 
