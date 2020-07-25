@@ -1,5 +1,6 @@
 # Maintainer: Kian Kasad (kian at kasad.com)
 pkgname=chirp-daily-latest
+_pkgname=chirp-daily
 pkgver=20200718
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
@@ -15,11 +16,11 @@ sha1sums=(edf91bd5c7088f44c64d36c18cabf129ed8d4810)
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/chirp-daily-$pkgver.tar.gz")
 
 build() {
-  tar xvf $pkgname-$pkgver.tar.gz
+  tar xvf $_pkgname-$pkgver.tar.gz
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
