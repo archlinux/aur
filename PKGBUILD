@@ -1,7 +1,7 @@
 # Maintainer: 1400Blank <1400blank@gmail.com>
 
 pkgbase=linux-fix_navi_reset
-pkgver=5.7.9.arch1
+pkgver=5.7.10.arch1
 pkgrel=1
 pkgdesc='experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -61,9 +61,12 @@ prepare() {
 }
 
 build() {
+  echo 'How many cores should be allocated to compilation?'
+  read CoreCount
+
   cd $_srcname
-  make all
-  make htmldocs
+  make -j$CoreCount all
+  make -j$CoreCount htmldocs
 }
 
 _package() {
