@@ -3,12 +3,12 @@
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
 pkgver=r80.b70061f
-pkgrel=1
-pkgdesc="An open-source, instant-replay solution for Linux"
+pkgrel=2
+pkgdesc="Open-source, instant-replay solution for Linux"
 url="https://github.com/matanui159/ReplaySorcery"
 arch=("i686" "x86_64")
 license=(GPL3)
-makedepends=(git cmake make nasm)
+makedepends=(git cmake nasm)
 provides=("$_pkgname")
 source=("$_pkgname::git+${url}.git"
         "replay-sorcery.conf")
