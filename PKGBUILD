@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=0.7.0_100_ga40bb7f
+pkgver=1.0.0.r0.g862cf6b
 epoch=1
-_gitver=a40bb7f2d41ad7c5380f980d64842aa79cd05d2c
+_gitver=862cf6b0022ef05a8384ccd74cb663b5ee692dad
 _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
@@ -24,8 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  git tag -f 0.7.0 282c346a74b3c9e4ad73843f0759b4701a6d030e
-  git describe --tags | sed 's/-/_/g;s/v//'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
