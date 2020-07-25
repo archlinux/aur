@@ -1,0 +1,15 @@
+pkgbase = apngasm-bin
+	pkgdesc = Creates APNG animation from PNG/TGA image sequence
+	pkgver = 2.91
+	pkgrel = 1
+	url = https://sourceforge.net/projects/apngasm
+	arch = x86_64
+	license = ZLIB
+	depends = libpng
+	provides = apngasm
+	conflicts = apngasm
+	source = apngasm-bin-2.91.zip::https://netix.dl.sourceforge.net/project/apngasm/2.91/apngasm-2.91-bin-linux.zip
+	sha256sums = 91f27aad17f8abc5bc197febd24cfa9dce081d280a8e60df1437139e74a93045
+
+pkgname = apngasm-bin
+
