@@ -1,15 +1,15 @@
 pkgbase = apng-utils
 	pkgdesc = apngasm for assembling apng files, apngdis for disassembling apng files, and gif2apng/apng2gif for converting.
 	pkgver = 3.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/apngdis/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
+	makedepends = boost
 	depends = libpng
 	depends = gcc-libs
-	depends = boost
 	provides = apngasm
 	provides = apngdis
 	provides = gif2apng
