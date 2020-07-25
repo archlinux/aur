@@ -5,7 +5,7 @@ _repouser=neatbasis
 _reponame=bandwidthd
 _rev=0307fbba56a39a6e65ebadf488ad87979c64fdef
 pkgver=2.0.2.r1.${_rev:0:10}
-pkgrel=10
+pkgrel=11
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
 arch=(x86_64)
@@ -19,6 +19,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_repouser}/${_reponame
 		03-bandwidthd-subnet-reporting.patch
 		04-bandwidthd-misc.patch
 		05-bandwidthd-pidfile.patch
+		06-bandwidthd-externs.patch
 		bandwidthd.service
 		bandwidthd-webui.service
 		bandwidthd-webui.conf
@@ -33,6 +34,7 @@ sha256sums=('7e8ebf7e2eeb5266af904a8f7188b11d5a13ebb0343022c2a118b86f48a952e4'
             '88c38a18b7bda6f3496dda3030ba118f8c461447dea426c13245099ae37a6d86'
             'be5fa230311258f14d4af6a00496443bfbc1a148a77f237bb4a0b663947e090a'
             'fc38a5623e66d82dec2efd28d2729e76e8f3b6056fb2bc2462a1ea1549f68807'
+            '51788ac70e44ca20706014302466cee7d70e19ad70faba52e3a54fb5c2c3c2a2'
             '9c1cd09515073875438dc75fa0919cf6654dd1bd6398dbbb3772b990f515e71f'
             '4e9f265d8cb2f23a5458afae61a8f88377ddc9ee31fa42b38a4062f0ffe426e1'
             'cd7b1ffff5dd9490ab69d777e459d79c229d5fef2e71a811df29f6c11e6acde4'
@@ -52,6 +54,7 @@ prepare () {
 	patch -Np1 -i ../03-bandwidthd-subnet-reporting.patch
 	patch -Np1 -i ../04-bandwidthd-misc.patch
 	patch -Np1 -i ../05-bandwidthd-pidfile.patch
+	patch -Np1 -i ../06-bandwidthd-externs.patch
 
 	sed -i 's|EXTRA_VERSION=".IPv6"|EXTRA_VERSION=".'${_rev:0:10}'"|' configure.in
 

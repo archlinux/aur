@@ -1,0 +1,89 @@
+Common subdirectories: bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/autom4te.cache and bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/autom4te.cache
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.h bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.h
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.h	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.h	2020-07-26 01:02:59.083501756 +0200
+@@ -138,7 +138,7 @@
+ 	{
+ 	uint32_t ip;
+ 	uint32_t mask;
+-	} SubnetTable[SUBNET_NUM];
++	};
+ 
+ struct Statistics
+ 	{
+@@ -162,7 +162,7 @@
+ 	uint32_t ip;	// Host byte order
+ 	struct Statistics Send;
+ 	struct Statistics Receive;
+-	} IpTable[IP_NUM];
++	};
+ 
+ struct SummaryData
+ 	{
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/conf.y bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/conf.y
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/conf.y	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/conf.y	2020-07-26 01:03:49.061196876 +0200
+@@ -13,9 +13,10 @@
+ 
+ extern unsigned int SubnetCount;
+ extern unsigned int NotSubnetCount;
+-extern struct SubnetData SubnetTable[];
++extern struct SubnetData SubnetTable[SUBNET_NUM];
+ extern struct SubnetData NotSubnetTable[];
+ extern struct config config;
++extern struct IPData IpTable[IP_NUM];
+ 
+ int bdconfig_lex(void);
+ int LineNo = 1;
+Common subdirectories: bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/etc and bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/etc
+Common subdirectories: bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/extensions and bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/extensions
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/extensions.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/extensions.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/extensions.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/extensions.c	2020-07-26 01:04:11.524995125 +0200
+@@ -5,6 +5,8 @@
+ #include <unistd.h>
+ 
+ extern struct config config;
++extern struct SubnetData SubnetTable[SUBNET_NUM];
++extern struct IPData IpTable[IP_NUM];
+ 
+ static char *execute_extension(char * filename);
+ 
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/graph.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/graph.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/graph.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/graph.c	2020-07-26 01:03:31.484168544 +0200
+@@ -20,6 +20,8 @@
+ 
+ extern unsigned int SubnetCount;
+ extern struct config config;
++extern struct SubnetData SubnetTable[SUBNET_NUM];
++extern struct IPData IpTable[IP_NUM];
+ 
+ jmp_buf dnsjump;
+ 
+Common subdirectories: bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/htdocs and bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/htdocs
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/pgsql.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/pgsql.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/pgsql.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/pgsql.c	2020-07-26 01:04:02.908148428 +0200
+@@ -5,6 +5,8 @@
+ extern unsigned int IpCount;
+ extern struct Broadcast *Broadcasts;
+ extern time_t ProgramStart;
++extern struct SubnetData SubnetTable[SUBNET_NUM];
++extern struct IPData IpTable[IP_NUM];
+ 
+ jmp_buf pgsqljmp;
+ 
+Common subdirectories: bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/phphtdocs and bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/phphtdocs
+diff --color -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/sqlite.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/sqlite.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/sqlite.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/sqlite.c	2020-07-26 01:04:07.021566388 +0200
+@@ -3,6 +3,8 @@
+ extern struct config config;
+ extern unsigned int IpCount;
+ extern time_t ProgramStart;
++extern struct SubnetData SubnetTable[SUBNET_NUM];
++extern struct IPData IpTable[IP_NUM];
+ 
+ #ifdef HAVE_LIBSQLITE3
+ 
