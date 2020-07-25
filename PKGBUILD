@@ -1,28 +1,24 @@
+# Maintainer:	Batuhan Baserdem <lastname dot firstname at gmail>
 
-pkgname=('python-hjson' 'python2-hjson')
-_pkgname="hjson"
-pkgver=1.5.6
+_name="hjson"
+pkgname="python-${_name}"
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="JSON for Humans, allows comments and is less error prone."
 arch=(any)
 url="https://github.com/laktak/hjson-py"
 license=('MIT')
-depends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.io/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.zip")
-md5sums=('5e28eabb5e784629475756372edcdea3')
-package_python-hjson() {
-  provides=('python-hjson')
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py clean
-  python3 setup.py install --root=${pkgdir}/ --optimize=1
+makedepends=('python-setuptools')
+depends=('python')
+source=("https://pypi.io/packages/source/h/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=('afac353feb47003c8ad31e5b7197ac6a')
+
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py build
 }
 
-package_python2-hjson() {
-  provides=('python2-hjson')
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py clean
-  python2 setup.py install --root=${pkgdir}/ --optimize=1
+package() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
-
-
-# vim:set ts=2 sw=2 et:
