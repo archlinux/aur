@@ -1,7 +1,4 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
-# Contributor: Sebastian Sareyko <public@nooms.de>
+# Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=gnustep-back
 pkgver=0.28.0
