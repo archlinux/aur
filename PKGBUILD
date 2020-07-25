@@ -14,6 +14,7 @@ replaces=("python-pyephem") # Commonly used deprecated alias
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha512sums=("c3f489371febcb65da03da7ba0e08168320a6f5d81fd2355281f621074ecf2be694b2d0cc3ef7863cec617176751a34856bdd22beb66cd64129fbfb915b3dcae")
+_watch="https://pypi.org/project/ephem/"
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
