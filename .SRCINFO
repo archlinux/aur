@@ -1,0 +1,17 @@
+pkgbase = mixo
+	pkgdesc = Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.mixo.dj
+	arch = x86_64
+	license = custom:mixo
+	makedepends = gendesk
+	noextract = mixo-latest.AppImage
+	options = !strip
+	source = mixo-latest.AppImage::https://www.mixo.tech/download/beta/MIXO-linux.AppImage
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mixo
+
