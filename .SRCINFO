@@ -1,0 +1,13 @@
+pkgbase = ttf-inupiaqnumbers
+	pkgdesc = A font for displaying Inupiaq numerals. It uses from U+E5A0 to U+E5B3.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/0xcf843ecf802c722f434d56/inupiaqnumbers
+	arch = any
+	license = MIT
+	conflicts = ttf-inupiaqnumbers-git
+	source = https://raw.githubusercontent.com/0xcf843ecf802c722f434d56/InupiaqNumbers/0.2/InupiaqNumbers.ttf
+	sha1sums = SKIP
+
+pkgname = ttf-inupiaqnumbers
+
