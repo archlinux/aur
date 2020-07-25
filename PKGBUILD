@@ -1,6 +1,6 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=rsflex
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 
 pkgdesc="A super fast system information displayer written in Rust"
