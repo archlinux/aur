@@ -1,0 +1,15 @@
+pkgbase = libduck1
+	pkgdesc = A Daisy 2.02 parser API, libduck is a C library for parsing DTB (Digital Talking Book). Currently, only the Daisy 2.02 format is supported
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://daisy.geexbox.org
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	makedepends = tar
+	depends = libxml2
+	source = libduck1-1.1.2.deb::https://daisy.geexbox.org/releases/libduck1_1.1.2-1_amd64.deb
+	sha256sums = c9f3ee8d60655551571fb9c903e31bcb680c7b8c49d673b3c77d36fc7a2e6270
+
+pkgname = libduck1
+
