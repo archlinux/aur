@@ -1,0 +1,29 @@
+pkgbase = renderdoc-nightly
+	pkgdesc = OpenGL and Vulkan debugging tool - nightly builds
+	pkgver = 2020.07.24
+	pkgrel = 1
+	url = https://github.com/baldurk/renderdoc
+	arch = x86_64
+	license = MIT
+	depends = libxcb
+	depends = libx11
+	depends = libxcb
+	depends = mesa
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = xcb-util-keysyms
+	depends = fontconfig
+	depends = freetype2
+	depends = glu
+	depends = libproxy
+	depends = python
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = renderdoc
+	conflicts = renderdoc
+	validpgpkeys = 1B039DB9A4718A2D699DE031AC612C3120C34695
+
+pkgname = renderdoc-nightly
+
