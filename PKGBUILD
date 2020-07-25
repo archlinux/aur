@@ -10,7 +10,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
-source=('git+git+https://gitlab.com/gamerworld/application.git#branch=Stable')
+source=('git+https://gitlab.com/gamerworld/application.git#branch=Stable')
 sha256sums=('SKIP')
 
 pkgver() {
