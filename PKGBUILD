@@ -7,6 +7,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/mozilla/DeepSpeech"
 license=('MPL2')
 depends=('gcc-libs')
+makedepends=('wget' 'tar')
 provides=('deepspeech')
 conflicts=('deepspeech')
 
