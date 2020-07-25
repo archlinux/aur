@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=blizcord
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A simple Discord bot which can play music from YouTube or local files"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=("Blizcord.exe::https://github.com/Bleuzen/Blizcord/releases/download/v${
         "blizcord"
         "blizcord-gui"
         "blizcord.desktop")
-sha256sums=('240c2a52a2af79997c33e1a6ad318062104d6285f5590d2c9e66c59bd8d07f10'
+sha256sums=('0289eb0d45883922cab73aa4f81b7334888d714c6288163277d00e923580bb69'
           '82b7dbc3808620fd6ee63ce72db42d7eedd6e5d2e8325d2d455fe1bbb544823a'
           '3d1545c575b51962b3b9488c96145949a4cd691fed6774f40ea989d7abda9530'
           '500805644de6fa4fc1c15dbec602af950348498c86e7fb61b8e14200c63006bd'
