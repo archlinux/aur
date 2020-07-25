@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-x11-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.8pre18
+pkgver=18.8pre20
 _major=18.7.1
 pkgrel=1
 arch=('x86_64')
@@ -86,15 +86,17 @@ source=(
   # fix for kodi-standalone run without which
   000-PR17804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17804.patch
   
+  # needed to get 18029 and 18168 to apply
+  18029-mod_for_linux_only.patch
+  
   # start milestone patches
-  # 18029 does not apply
   001-PR17972.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17972.patch
   002-PR17988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17988.patch
   003-PR17996.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17996.patch
   004-PR18008.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18008.patch
   005-PR18019.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18019.patch
   006-PR18024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18024.patch
-  #007-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
+  007-PR18029.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18029.patch
   008-PR18045.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18045.patch
   009-PR18047.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18047.patch
   010-PR18053.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18053.patch
@@ -103,9 +105,11 @@ source=(
   013-PR18094.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18094.patch
   014-PR18134.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18134.patch
   015-PR18151.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18151.patch
-  016-PR18171.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18171.patch
-  017-PR18193.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18193.patch
-  018-PR18202.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18202.patch
+  016-PR18168.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18168.patch
+  017-PR18171.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18171.patch
+  018-PR18193.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18193.patch
+  019-PR18198.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18198.patch
+  020-PR18202.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/18202.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -130,12 +134,14 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
             '4d9eb12db337a89b5e17815bd422015f3017c735bd0c5b522f5a5b0c7f81a607'
             'f11af738b2be8f390a7b515cfb74276a0ccb64ac061b8f5a7b3772e19eb0d203'
+            'd444ad0898f93582bef530d0d91952ba5c926b0225372f81b3a4376193cfebb5'
             '15255c5b928b278b15a90468ead80ad75b9331dc7dac91e5da296a66f7b1a6a1'
             '89ac4b3feac908075ddbcdc4f9f1d1703c25e2fdb1661e776c162eb779437bd8'
             'f56503139927f0bc8f220c4b4e31266fc938a6612a4c1d2bdd75be3f54eb3a12'
             '995c61de460e0afdc135ba33f9f393a825cb4a0c7954da104d23269fe48ec118'
             '8531da4ce924d80f5b8c8fbcf547e0738e48ffce335f73a4da6466f499ab1bfe'
             '4c2775722998fd0f6111ff841b29e8813c58b7905be1e8a01bf8a768622cb30c'
+            '0928d20977cd3b8225ea52ecf1641611ed2ec95dc1b937187a5b796fb570b2f1'
             'ff34d94f4ff7f1d9638c948b05da1802638bf66037dda53ce44b9afb501ec1dc'
             'f4ac91dbad4014a6707e8bb6f57cac0ec68a852a3e81815a210304a886a665a1'
             '2d31bf616362001a75c590c0ea9ef22f321ffabf1d95f781d558f92e69cdc8c9'
@@ -144,8 +150,10 @@ sha256sums=('5cfec391bcd168bbd4f9d38a6c8ec93e42e040cf82cf6ebf23db5e86753816fb'
             '5b19f4f74136f91986e3d3eed93102b06a700dd4b3a561926eabc7997434f22a'
             'e4963bdeb1de7c147a364cd3ee2186fb1d0b2fc8f3ea7636054cf2adac040468'
             '7b8a6510bc286d58b4a3d57322362335cbf2a56d1b2bd16bfcdf06d5eef8644d'
+            'b797150851830c553d84f11dfd6942c551d8e6ce151371e048dd2443493fb779'
             '336df43ee417d50ffa3e025697960828d78a75f4c5b943190103baface402ac8'
             '73024d5c6462a360bb527da2d408343ba6206d513f760a94c97b18e6937c649f'
+            'c92980e4ecc5e6714b1fd94f1124d49681bf79be5751cb09ecc51ec976ef293d'
             'dc7fc1ce45f43e7a18af59c157307a350971a16c2ffad2cf371880fcf1610013')
 prepare() {
   # force python 'binary' as python2
