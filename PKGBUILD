@@ -1,16 +1,17 @@
-# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Maintainer:  Vincent Grande (shoober420) <shoober420@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-#pkgbase=(harfbuzz)
-pkgname=(harfbuzz-git harfbuzz-icu-git)
-pkgver=2.1.1+174+g6c22f3fd
+pkgbase=harfbuzz
+pkgname=(harfbuzz harfbuzz-icu)
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
-url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
+url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
-depends=(freetype2 graphite)
-makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection ragel git python)
+makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection gtk-doc
+             ragel git python meson)
 #checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
@@ -22,53 +23,46 @@ pkgver() {
 
 prepare() {
   cd harfbuzz
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd harfbuzz
-  ./configure \
-    --prefix=/usr \
-    --with-cairo \
-    --with-freetype \
-    --with-glib \
-    --with-gobject \
-    --with-graphite2 \
-    --with-icu \
-    --disable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson harfbuzz build \
+    -D graphite=enabled
+  meson compile -C build
 }
 
 #check() {
-#  cd $pkgbase
-#  make check
+#  mkdir -p tmp
+#  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs
+#  rm -r tmp
 #}
 
-package_harfbuzz-git() {
-  depends=(freetype2 graphite)
-  optdepends=('cairo: hb-view program')
+package_harfbuzz() {
+  depends=(glib2 freetype2 graphite libglib-2.0.so libfreetype.so
+           libgobject-2.0.so)
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=(harfbuzz)
+  optdepends=('cairo: hb-view program')
 
-  cd harfbuzz
-  make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/harfbuzz/COPYING"
+  DESTDIR="$pkgdir" meson install -C build
 
-# Split harfbuzz-icu
-  mkdir -p ../hb-icu/usr/{include/harfbuzz,lib/pkgconfig}; cd ../hb-icu
-  mv "$pkgdir"/usr/lib/libharfbuzz-icu* ./usr/lib
-  mv "$pkgdir"/usr/lib/pkgconfig/harfbuzz-icu.pc ./usr/lib/pkgconfig
-  mv "$pkgdir"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
+  # Split harfbuzz-icu
+  mkdir -p hb-icu/usr/{include/harfbuzz,lib/pkgconfig}
+  mv -t hb-icu/usr/lib "$pkgdir"/usr/lib/libharfbuzz-icu*
+  mv -t hb-icu/usr/lib/pkgconfig "$pkgdir"/usr/lib/pkgconfig/harfbuzz-icu.pc
+  mv -t hb-icu/usr/include/harfbuzz "$pkgdir"/usr/include/harfbuzz/hb-icu.h
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 harfbuzz/COPYING
 }
 
-package_harfbuzz-icu-git() {
+package_harfbuzz-icu() {
   pkgdesc="$pkgdesc (ICU integration)"
-  depends=(harfbuzz icu libharfbuzz.so)
+  depends=("harfbuzz=$pkgver-$pkgrel" icu libharfbuzz.so)
   provides=(harfbuzz-icu libharfbuzz-icu.so)
   conflicts=(harfbuzz-icu)
 
   mv hb-icu/* "$pkgdir"
 
-  install -Dm644 harfbuzz/COPYING "$pkgdir/usr/share/licenses/harfbuzz-icu/COPYING"
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 harfbuzz/COPYING
 }
+
