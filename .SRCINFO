@@ -1,0 +1,14 @@
+pkgbase = gif2apng
+	pkgdesc = Tool for disassembling apng files
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gif2apng/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	depends = libpng
+	source = http://sourceforge.net/projects/gif2apng/files/1.9/gif2apng-1.9-src.zip
+	sha512sums = 6f161699aad949466c60e0fb6abb2f38e7ec8353dd15e65ccb9944a66dabc5a4acf32523cb64073c73290e54cc2b753db68123c14f3f7789343491a4f65dcd2c
+
+pkgname = gif2apng
+
