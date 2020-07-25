@@ -1,9 +1,0 @@
-pre_install() {
-	echo '-----------------------------------------------------------------------------'
-	echo '                               WARNING!                                      '
-    echo ' jasper is unmaintened software that has open CVEs unlikely to ever be fixed!'
-    echo '    only use this software if you really, really know what you are doing!    '
-    echo '                         YOU HAVE BEEN WARNED!                               '
-	echo '-----------------------------------------------------------------------------'
-}
-
