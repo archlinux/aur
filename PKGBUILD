@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-system76-power-git
-pkgver=1.2.0.r6.g5253c21
+pkgver=1.2.0.r7.gfd70291
 pkgrel=1
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
@@ -17,6 +17,12 @@ pkgver() {
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+build(){
+    cd "${srcdir}/${pkgname}"
+    make
+}
+
 
 package() {
 	cd "${srcdir}/${pkgname}"
