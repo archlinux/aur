@@ -1,13 +1,14 @@
 # Maintainer: Carson Rueter <bottomtext97@gmail.com>
 pkgname='cmdtools-git'
 reponame='cmdtools'
-pkgver=1.0.0.r4.gc85fe99
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tools to manipulate, create, and view commands."
 arch=('any')
 url="https://github.com/binex-dsk/cmdtools"
 license=('GPL3')
 source=("git+https://github.com/binex-dsk/cmdtools.git")
+makedepends=('bash')
 md5sums=('SKIP')
 
 pkgver() {
@@ -16,8 +17,6 @@ pkgver() {
 }
 
 package() {
-        for i in `ls $srcdir/$reponame/src`; do
-	    echo $i
-	    install -Dm755 "$srcdir/$reponame/src/$i" "${pkgdir}/usr/bin/$i"
-        done
+	cd $srcdir/$reponame
+	bash install.sh
 }
