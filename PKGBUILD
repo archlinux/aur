@@ -1,5 +1,5 @@
 pkgname=epson-inkjet-printer-escpr2
-pkgver=1.1.13
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,9 +9,9 @@ depends=('cups' 'ghostscript')
 makedepends=('automake')
 optdepends=('imagescan: scanner support')
 options=('!libtool')
-source=('https://download3.ebz.epson.net/dsc/f/03/00/11/33/72/48e6a853e518a1bedaee575113e087c0bd5d6e2e/epson-inkjet-printer-escpr2-1.1.13-1lsb3.2.src.rpm'
+source=('https://download3.ebz.epson.net/dsc/f/03/00/11/56/43/b1a6f1193e073c4c049da9404806c61052b62419/epson-inkjet-printer-escpr2-1.1.15-1lsb3.2.src.rpm'
         'bug_x86_64.patch')
-sha256sums=('41fe8a391b0302218f88125713ec8703f3643b13b46dbad44a900bdbec16e61d'
+sha256sums=('2eb8f1655de4f7189ec18d94f581112e2ff00b05e64a44c24bbb0524fafdd728'
             '44160b2ef140e97137d65c4db7a50cfe40399ab8691caaeaf43c08f758b8c545')
 
 prepare() {
@@ -19,7 +19,7 @@ prepare() {
   
   cd "$pkgname-$pkgver"
 
-  patch -p1 -i "${srcdir}/bug_x86_64.patch"
+  #patch -p1 -i "${srcdir}/bug_x86_64.patch"
 }
 
 build() {
