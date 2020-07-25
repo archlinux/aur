@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://www.gnustep.org/"
 license=('LGPL')
 depends=(libgl libxmu gcc-libs freetype2 cairo)
-makedepends=('gnustep-make' 'gnustep-base' 'gnustep-gui' 'libffi' 'gcc-objc')
+makedepends=('gnustep-make' 'gnustep-base' 'gnustep-gui>=0.28.0' 'libffi' 'gcc-objc')
 conflicts=('gnustep-back-svn')
 groups=('gnustep-core')
 source=(https://github.com/gnustep/libs-back/releases/download/back-${pkgver//./_}/gnustep-back-$pkgver.tar.gz{,.sig})

@@ -8,7 +8,7 @@ pkgbase = gnustep-back
 	license = LGPL
 	makedepends = gnustep-make
 	makedepends = gnustep-base
-	makedepends = gnustep-gui
+	makedepends = gnustep-gui>=0.28.0
 	makedepends = libffi
 	makedepends = gcc-objc
 	depends = libgl
