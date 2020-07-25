@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/psanford/${pkgname}"
 license=('MIT')
 depends=('glibc')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('8757847b13dc9830edeefcf467ebed9384646df4a325007ed6bf1840e4cb1260')
 
