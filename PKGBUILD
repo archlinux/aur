@@ -1,7 +1,7 @@
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.2.8
-pkgrel=1
+pkgver=0.2.9
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
 pkgdesc="A secure, private, minimal, cross-platform document editor."
@@ -19,7 +19,7 @@ pkgver() {
 
 build(){
   cd $_pkgname/clients/cli
-  env API_URL="http://api.lockbook.app" cargo build --release --locked
+  env API_URL="http://api.lockbook.app:8000" cargo build --release --locked
 }
 
 package_lockbook() {
