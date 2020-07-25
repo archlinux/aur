@@ -1,0 +1,17 @@
+pkgbase = gif2apng-bin
+	pkgdesc = Convert GIF animations into APNG format
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gif2apng
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = lib32-gcc-libs
+	depends = lib32-zlib
+	provides = gif2apng
+	conflicts = gif2apng
+	source = gif2apng-bin-1.9.zip::https://sourceforge.net/projects/gif2apng/files/1.9/gif2apng-1.9-bin-linux.zip/download
+	sha256sums = 46cc47946d21fb412dc7b3d4d267a4783204e6205112ad904c5c6b6f23c2c1ed
+
+pkgname = gif2apng-bin
+
