@@ -1,0 +1,13 @@
+pkgbase = kit
+	pkgdesc = The Kinesics Text Editor is a small, fast, efficient, portable text editor
+	pkgver = 153
+	pkgrel = 1
+	url = https://turtlewar.org/projects/editor
+	arch = x86_64
+	license = custom:kit
+	depends = ncurses5-compat-libs
+	source = kit-153.tar.gz::https://turtlewar.org/projects/editor/kit-153-lin.tar.gz
+	sha256sums = 116b35a3ab779270217a42fb35866d456c73eaa950c6a8e1f0d8f34370f01161
+
+pkgname = kit
+
