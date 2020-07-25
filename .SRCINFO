@@ -1,13 +1,16 @@
 pkgbase = vice-svn
-	pkgdesc = The Versatile Commodore Emulator (Commodore 64/C64).
-	pkgver = r34920
+	pkgdesc = The Versatile Commodore Emulator (Commodore 64/C64). - Development version
+	pkgver = r38195
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = xorg-font-utils
 	makedepends = pkg-config
+	makedepends = xa
+	makedepends = svn
+	makedepends = texlive-core
+	makedepends = dos2unix
 	depends = giflib
 	depends = lame
 	depends = libjpeg
@@ -20,11 +23,12 @@ pkgbase = vice-svn
 	optdepends = pulseaudio-alsa
 	optdepends = alsa-lib
 	provides = vice
+	conflicts = vice-sdl2
+	conflicts = vice-svn-gtk3
+	conflicts = vice-svn-sdl2
 	replaces = vice
 	source = vice-svn::svn://svn.code.sf.net/p/vice-emu/code/trunk
-	source = vice-fixes.patch
-	md5sums = SKIP
-	md5sums = 6ae696148e372bcdc7aa21e4fc39e5d2
+	sha256sums = SKIP
 
 pkgname = vice-svn
 
