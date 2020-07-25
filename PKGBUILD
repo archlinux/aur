@@ -3,7 +3,7 @@
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
 pkgver=r80.b70061f
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source, instant-replay solution for Linux"
 url="https://github.com/matanui159/ReplaySorcery"
 arch=("i686" "x86_64")
@@ -41,5 +41,5 @@ package() {
 
   install -Dm 644 $_pkgname.service -t "$pkgdir/usr/lib/systemd/user/"
 
-  install -Dm 644 "$srcdir/$_pkgname.conf" -t "$pkgdir/etc/$_pkgname"
+  install -Dm 644 "$srcdir/$_pkgname.conf" -t "$pkgdir/etc/xdg/"
 }

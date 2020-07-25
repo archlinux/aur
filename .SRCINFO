@@ -1,7 +1,7 @@
 pkgbase = replay-sorcery-git
 	pkgdesc = Open-source, instant-replay solution for Linux
 	pkgver = r80.b70061f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matanui159/ReplaySorcery
 	arch = i686
 	arch = x86_64
