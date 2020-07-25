@@ -1,8 +1,8 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
-pkgver=3.1.0.r0.g5875e10
-_gitver=5875e10479379be1a82f5e07002802a1cb721ced
+pkgver=3.2.2
+_gitver=a424a57036cd2c7356d863fae9445eee017e4fb9
 _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="VDR output plugin with CUDA and Opengl"
@@ -16,10 +16,11 @@ source=("vdr-plugin-${_plugname}::git+https://github.com/jojo61/vdr-plugin-softh
 sha512sums=('SKIP'
          '0b336e5d0c18e5a875389c52d498ce81db0a407c6a93e1e72e0d0faec41d2165b80e91e9787465bb2cb9923ca65e6ce50e4a086f0d26410059899fef2bbe87b0')
 
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
+# Commented out because: https://github.com/jojo61/vdr-plugin-softhdcuvid/issues/57
+#pkgver() {
+#  cd "${srcdir}/vdr-plugin-${_plugname}"
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+#}
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
