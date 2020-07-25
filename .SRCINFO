@@ -1,6 +1,6 @@
 pkgbase = geph-client-patched
 	pkgdesc = A command-line Geph client with external bypass filter patch
-	pkgver = r214.83b18f5
+	pkgver = r215.fcc2ff5
 	pkgrel = 1
 	url = https://github.com/code-monad/geph2
 	arch = x86_64
