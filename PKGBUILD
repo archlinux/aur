@@ -13,7 +13,7 @@ arch=('any')
 url="http://flatcam.org"
 license=('MIT')
 groups=()
-depends=('python-numpy' 'python-matplotlib' 'python-shapely' 'python-simplejson' 'python-rtree' 'python-scipy' 'python-svg.path')
+depends=('python-numpy' 'python-matplotlib' 'python-shapely' 'python-simplejson' 'python-rtree' 'python-scipy' 'python-svg.path' 'python-pyqt4')
 
 commit='dae9cbb0471e693b95fd809ddd8bf11ff026ac67'
 commit_short='dae9cbb0471e'
