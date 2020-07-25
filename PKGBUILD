@@ -6,22 +6,23 @@
 
 pkgbase=tensorflow-rocm
 pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
-pkgver=2.2.0
-_pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0rc2
+_pkgver=2.3.0-rc2
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
 depends=('c-ares' 'intel-mkl' 'onednn')
-makedepends=('bazel' 'python-numpy' 'rocm' 'rocm-libs' 'miopen' 'rccl' 'git'
-             'gcc9' 'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
+makedepends=('bazel' 'python-numpy' 'rocm' 'rocm-libs' 'miopen' 'rccl' 'git' 'gcc9'
+             'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
              'python-keras-applications' 'python-keras-preprocessing')
-optdepends=('tensorboard: Tensorflow visualization toolkit'
-            'python-pasta: tf_upgrade_v2 tool')
+optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
+        numpy1.20.patch::https://github.com/tensorflow/tensorflow/commit/75ea0b31477d6ba9e990e296bbbd8ca4e7eebadf.patch
         build-against-actual-mkl.patch)
-sha512sums=('94a2663497d333d543f363e9fea94fbcfdcdbbc0dfbaf009ba9181a808713aeb78f9b8805f56bea5fd3925a36f105427b3996795750589f378d8afbdadc2b86d'
+sha512sums=('401c6e2a89aff763b2aa102d0dacc99c955d2d2eea41ec93de8c9c0f3422d85ad7cabf04991675ac45ef9fe5e971794dba3a062ba527d9af41d2d4072806730c'
+            'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
             'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08')
 
 get_pyver () {
@@ -49,6 +50,8 @@ prepare() {
   # Compile with C++17 by default (FS#65953)
   #sed -i "s/c++14/c++17/g" tensorflow-${_pkgver}/.bazelrc
 
+  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/numpy1.20.patch
+
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
 
@@ -73,7 +76,7 @@ prepare() {
   export TF_NEED_ROCM=1
   export TF_SET_ANDROID_WORKSPACE=0
   export TF_DOWNLOAD_CLANG=0
-  export TF_NCCL_VERSION=2.6
+  export TF_NCCL_VERSION=2.7
   export TF_IGNORE_MAX_BAZEL_VERSION=1
   export TF_MKL_ROOT=/opt/intel/mkl
   export NCCL_INSTALL_PATH=/usr
@@ -84,7 +87,7 @@ prepare() {
   export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
   export TF_CUDA_PATHS=/opt/cuda,/usr/lib,/usr
   export TF_CUDA_VERSION=$(/opt/cuda/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
-  export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' /usr/include/cudnn.h)
+  export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
   export TF_CUDA_COMPUTE_CAPABILITIES=5.2,5.3,6.0,6.1,6.2,7.0,7.2,7.5,8.0
 
   # Required until https://github.com/tensorflow/tensorflow/issues/39467 is fixed.
@@ -96,6 +99,7 @@ build() {
   echo "Building with rocm and without non-x86-64 optimizations"
   cd "${srcdir}"/tensorflow-${_pkgver}-rocm
   export CC_OPT_FLAGS="-march=x86-64"
+  export TF_NEED_CUDA=0
   export TF_NEED_ROCM=1
   ./configure
   bazel \
@@ -110,6 +114,7 @@ build() {
   echo "Building with rocm and with non-x86-64 optimizations"
   cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
   export CC_OPT_FLAGS="-march=haswell -O3"
+  export TF_NEED_CUDA=0
   export TF_NEED_ROCM=1
   ./configure
   bazel \
