@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=sonobuoy
-pkgver=0.18.3
+pkgver=0.18.4
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=(
   'docker: sonobuoy images subcommand'
   'kubectl: advances workflows')
 makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7560e2e8b9b8ebcc4fcfc7737f6b039d061e153f7d9145095c3f051bf3d6e4a1')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('94af6512fb8caa6dd268ef6ff30904895691dd494cd9337385ef036dd41d0610')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
