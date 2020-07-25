@@ -1,0 +1,17 @@
+pkgbase = snake-monogame-bin
+	pkgdesc = A modern take on the classic Snake game. Created using MonoGame.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://romansixvigaming.com/snake
+	arch = x86_64
+	license = custom: commercial
+	provides = snake-monogame
+	conflicts = snake-monogame
+	options = !strip
+	source = snake_1.0.0.tar.gz::https://github.com/Romans-I-XVI/MonoGame-Snake/releases/download/1.0.0.Linux/Snake.tar.xz
+	source = snake-monogame.desktop
+	sha256sums = 3a00f4a6441b93ba6f97a3682358d91f4689148751f2619670e35e26bb215e7a
+	sha256sums = fc93ad81f52c9ab50814e6cb8bad4c002af051fd6009c8a2b705706bb3d88705
+
+pkgname = snake-monogame-bin
+

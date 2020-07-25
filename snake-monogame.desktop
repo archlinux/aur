@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Snake
+Comment=Play the classic that transcends generations
+Exec=/opt/snake-monogame/Snake
+Icon=snake-monogame
+Terminal=false
+Type=Application
+Categories=Game;
