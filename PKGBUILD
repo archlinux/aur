@@ -1,6 +1,6 @@
 # Maintainer: Senya <senya at riseup.net>
 pkgname=crowdin-cli
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://support.crowdin.com/cli-tool/"
@@ -18,7 +18,7 @@ source=(
 
 build() {
   cd "$srcdir/$pkgname"
-  gradle buildCrowdinCliJar
+  gradle shadowJar
   gradle properties --no-daemon --console=plain -q | grep "^version:" | awk '{printf $2}' > _pkgBuildVersion
   java -cp "build/libs/crowdin-cli-$(cat _pkgBuildVersion).jar" picocli.AutoComplete --force com.crowdin.cli.commands.picocli.RootCommand
 }
