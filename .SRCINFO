@@ -7,7 +7,6 @@ pkgbase = v8
 	arch = x86_64
 	license = BSD
 	makedepends = clang
-	makedepends = clang-tools-extra
 	makedepends = python2
 	makedepends = python2-colorama
 	makedepends = ninja
