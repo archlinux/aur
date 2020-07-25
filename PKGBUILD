@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('janet')
 conflicts=('janet-lang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
-sha256sums=('da5019bbaa5e7964518e576df43a46ac0a0cd2b27b5aeaf3ece95746c8e34678')
+sha256sums=('df1b423ca29731f626899475ccd9cf6522ab4fed68b6e0c1fe4a188f7a032137')
 options=('staticlibs')
 
 build() {
