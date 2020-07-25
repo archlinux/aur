@@ -86,8 +86,6 @@ source=(
   config
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
@@ -111,20 +109,18 @@ md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
          'e3a9e13a40131b4f10a7a0432316517e'
          '2cebdad39da582fd6a0c01746c8adb42'
          '3f9c557e2cad81e821c213e4e1097080'
-         'b5140bcd7c4bc9a826db47808d0fde99'
-         '2ef13b0799bd9b9b994389907812e7a7'
          'b10e4c612d5240d66fad8f1c50fe3242'
          'a22cddcadc0da933dac13a6ab49b7ed9'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
          '0633bf8f7561c6903b445ff476815dc0'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         'f0388b40aa60578420c16b3df3433f51'
+         '1ade0f572d9b80322aa75266303c9edd'
+         'b0f08af39185bcbc8c05192ed3cf9c50'
+         '534f3ed596d174ef656f1f220b0363d0'
+         '0300567e972e70cf30043e2563b0757f'
+         '927205ff32b2a8dda9588a347e885949'
+         '7af9ba6d5037bf6395e9295c3b6b5641')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -168,10 +164,6 @@ prepare() {
   
   patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   
-  patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  
-  patch -Np1 -i ../0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-    
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
 
