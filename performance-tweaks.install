@@ -21,6 +21,7 @@ add_users() {
     for i in $users; do
         msg "Adding user '$i' to user-group 'input,video,plugdev'"
         usermod -a -G input $i
+        usermod -a -G audio $i
         usermod -a -G video $i
         usermod -a -G plugdev $i
     done
@@ -28,71 +29,54 @@ add_users() {
 
 add_group() {
     getent group "input" &>/dev/null || groupadd -r input
+    getent group "audio" &>/dev/null || groupadd -r audio
     getent group "video" &>/dev/null || groupadd -r video
     getent group "plugdev" &>/dev/null || groupadd -r plugdev
     add_users
 }
 
-post_upgrade() {
-  echo ""
-  msg "Please add new users to 'input,video,plugdev' group."
-  echo ""
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
-  /bin/sh -c 'dconf update'
-  msg "Attempting to set performance governor..."
-  sed -i -e 's,.*governor=.*,governor=performance,' /etc/default/cpupower
-  cpupower frequency-set -g performance
-  x86_energy_perf_policy -v performance
-  nvidia-settings -a "[gpu:0]/GpuPowerMizerMode=1" 2> /dev/null
-  echo performance > /sys/class/drm/card0/device/power_dpm_state
-  echo high > /sys/class/drm/card0/device/power_dpm_force_performance_level
-  echo performance > /sys/module/pcie_aspm/parameters/policy
-  echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
-  echo 1 > /sys/devices/system/cpu/cpufreq/boost
-  msg "Attempting to enable services..."
-  systemctl is-active haveged >/dev/null || systemctl enable haveged
-  systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
-  systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
-  systemctl is-active preload >/dev/null || systemctl enable preload
-  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
-  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
-  systemctl is-active nohang >/dev/null || systemctl enable nohang
-  systemctl is-active cpupower >/dev/null || systemctl enable cpupower
-  systemctl is-active ananicy >/dev/null || systemctl enable ananicy
-  add_group
-  echo ""
-  msg "services enabled."
-  echo ""
+post_install() {
+post_upgrade
 }
 
-post_install() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
-  /bin/sh -c 'dconf update'
-  msg "Attempting to set performance governor..."
+post_upgrade() {
+  msg "Attempting to set cpu governor to performance..."
   cpupower frequency-set -g performance
+  msg "Attempting to set x86_energy_perf_policy to performance..."
   x86_energy_perf_policy -v performance
+  msg "Attempting to set nvidia GpuPowerMizerMode to performance..."
   nvidia-settings -a "[gpu:0]/GpuPowerMizerMode=1" 2> /dev/null
+  msg "Attempting to set amdgpu power_dpm_state to performance..."
   echo performance > /sys/class/drm/card0/device/power_dpm_state
-  echo high > /sys/class/drm/card0/device/power_dpm_force_performance_level
+  msg "Attempting to set pcie_aspm parameter policy to performance..."
   echo performance > /sys/module/pcie_aspm/parameters/policy
+  msg "Attempting to set intel cpu in turbo..."
   echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
+  msg "Attempting to set amd cpu in turbo..."
   echo 1 > /sys/devices/system/cpu/cpufreq/boost
   msg "Attempting to enable services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
   systemctl is-active preload >/dev/null || systemctl enable preload
-  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
-  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
   systemctl is-active nohang >/dev/null || systemctl enable nohang
   systemctl is-active cpupower >/dev/null || systemctl enable cpupower
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
+  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
+  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
+  systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
+  echo -n "Updating font cache... "
+  mkfontscale /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  mkfontdir /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  fc-cache -s >/dev/null
+  echo "done"
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+  /bin/sh -c 'dconf update'
   add_group
   echo ""
   msg "services should now be enabled."
-  msg "Please add new users to 'input,video,plugdev' group."
+  msg "Please add new users to 'audio,video,input,plugdev' group."
   msg "Reboot your system, so changes will take effect.."
   echo ""
 }
