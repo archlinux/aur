@@ -171,9 +171,7 @@ prepare() {
   patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   
   patch -Np1 -i ../0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-  
-  patch -Np1 -i ../0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  
+    
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
 
