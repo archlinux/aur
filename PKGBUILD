@@ -4,11 +4,13 @@
 # Former Maintainer: Dennis Hamester <dennis.hamester [AT] gmail [DOT] com>
 
 pkgname=dwarffortress-phoebus
-pkgver=0.44.11
+pkgver=0.47.04
+_dfver=47_04
+_phver=47.04a
 
 # rewrite by kremlin, july 8th 2014
 # with help from halosghost
-pkgrel=17
+pkgrel=18
 epoch=1
 
 pkgdesc='Dwarf Fortress preloaded with Phoebus tileset'
@@ -19,13 +21,13 @@ license=('custom:dwarffortress_phoebus')
 groups=('games')
 depends=('gcc-libs' 'glew' 'glib2' 'glu' 'gtk2' 'libsndfile' 'openal' 'sdl_image' 'sdl_ttf')
 
-source=('https://github.com/DFgraphics/Phoebus/archive/44.11b.zip'
-		'http://bay12games.com/dwarves/df_44_11_linux.tar.bz2'
+source=("https://github.com/DFgraphics/Phoebus/archive/${_phver}.zip"
+		"http://bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
 		'dwarf-fortress'
 		'LICENSE')
 
-md5sums=('9e4fb2c75e02f8f890a7c73af53a117d'
-'a9baf90758ceae8f08895ffe08e758a3'
+md5sums=('e3d2a6f4b0303106e927d05fefe09442'
+'201944f2cc16fd4a8202e8bb55dda0c2'
 '915f9b8efc7e2ea9e233bc6a9606038e'
 'eddfb4bd478f9c64e6801bda7c7791ba'
 )
@@ -33,11 +35,11 @@ md5sums=('9e4fb2c75e02f8f890a7c73af53a117d'
 prepare() {
 	
 	# inject DF with phoebus' tilesets
-	cp -arf "$srcdir"/Phoebus-44.11b/raw/graphics/* "$srcdir"/df_linux/raw/graphics/
-	cp -arf "$srcdir"/Phoebus-44.11b/raw/objects/* "$srcdir"/df_linux/raw/objects/
+	cp -arf "$srcdir"/Phoebus-${_phver}/raw/graphics/* "$srcdir"/df_linux/raw/graphics/
+	cp -arf "$srcdir"/Phoebus-${_phver}/raw/objects/* "$srcdir"/df_linux/raw/objects/
 
-	cp -arf --no-preserve=ownership "$srcdir"/Phoebus-44.11b/data/art/* "$srcdir"/df_linux/data/art/
-	cp -arf --no-preserve=ownership "$srcdir"/Phoebus-44.11b/data/init/* "$srcdir"/df_linux/data/init/
+	cp -arf --no-preserve=ownership "$srcdir"/Phoebus-${_phver}/data/art/* "$srcdir"/df_linux/data/art/
+	cp -arf --no-preserve=ownership "$srcdir"/Phoebus-${_phver}/data/init/* "$srcdir"/df_linux/data/init/
 	#remove libstc++ as per http://www.bay12games.com/dwarves/mantisbt/view.php?id=9893
 	rm "$srcdir"/df_linux/libs/'libstdc++.so.6'
 	chmod -R a+rx "$srcdir"/df_linux/libs/Dwarf_Fortress
