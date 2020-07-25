@@ -1,10 +1,7 @@
-# $Id$
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
-# Contributor: Sebastian Sareyko <public@nooms.de>
+# Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=gnustep-gui
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
@@ -17,7 +14,7 @@ conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
 source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/gnustep-gui-$pkgver.tar.gz{,.sig})
-sha256sums=('7991e435944d389366069888eb65b1ef08c5ab39f12b27e804bb372b941bd3d4'
+sha256sums=('1f6d2de60417e8a674280de84077f94f7394ae4edb3fae9e04129743d7449317'
             'SKIP')
 validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
