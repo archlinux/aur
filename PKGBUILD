@@ -9,7 +9,7 @@ url="https://gitlab.com/vinibali/lglaf"
 license=('MIT')
 depends=('python' 'python-pyusb')
 source=(https://gitlab.com/vinibali/lglaf/-/archive/20180317/lglaf-20180317.zip)
-md5sums=(c90866a08a16bf852a1e30b0ae936291)
+md5sums=(524a210dc65cbf5cd2da3fd8217030bc)
 
 build() {
 	echo "No build needed"
