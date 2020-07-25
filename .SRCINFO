@@ -1,0 +1,14 @@
+pkgbase = apng2gif
+	pkgdesc = Converting animated pngs to gifs
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/apng2gif/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	depends = libpng
+	source = http://sourceforge.net/projects/apng2gif/files/1.8/apng2gif-1.8-src.zip
+	sha512sums = 54fee0bf1e5448531298a816562a611cb5f2f661d40ade622e2d24e58a30de96fa69254ee891c5329e8b065c999b95620215d6e1ae276f0c596ffe69b0b31cda
+
+pkgname = apng2gif
+
