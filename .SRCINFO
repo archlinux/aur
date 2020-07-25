@@ -1,12 +1,12 @@
 pkgbase = ttf-cica
 	pkgdesc = A Japanese monospace font for programming
-	pkgver = 5.0.1
-	pkgrel = 2
+	pkgver = 5.0.2
+	pkgrel = 1
 	url = https://github.com/miiton/Cica
 	arch = any
 	license = custom
-	source = https://github.com/miiton/Cica/releases/download/v5.0.1/Cica_v5.0.1_with_emoji.zip
-	md5sums = bf868d4b865959b2e40ac65e34cbe92c
+	source = https://github.com/miiton/Cica/releases/download/v5.0.2/Cica_v5.0.2_with_emoji.zip
+	md5sums = 33255f460499aa9441208f7a7dbc9b37
 
 pkgname = ttf-cica
 
