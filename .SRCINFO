@@ -7,8 +7,8 @@ pkgbase = shodo
 	arch = any
 	license = custom
 	depends = java-runtime=8
-	noextract = assinadorjt-latest.jar
-	source = https://pje.tst.jus.br/shodo/assinadorjt-latest.jar
+	noextract = shodo-1.0.15.jar
+	source = shodo-1.0.15.jar::https://pje.tst.jus.br/shodo/assinadorjt-latest.jar
 	source = shodo-48.png
 	source = shodo-64.png
 	source = shodo-128.png

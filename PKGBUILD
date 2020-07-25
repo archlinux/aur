@@ -13,7 +13,7 @@ install=${pkgname}.install
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
-source=("https://pje.tst.jus.br/shodo/assinadorjt-latest.jar"
+source=("${pkgname}-${pkgver}.jar::https://pje.tst.jus.br/shodo/assinadorjt-latest.jar"
             "${pkgbase}"-{48,64,128}.png
             "${pkgbase}")
 sha256sums=('0ae81042f0ab5e08ae09cef01256f15eabaecd1bbfc0a9ae92b19fd4bda33800'
@@ -22,7 +22,7 @@ sha256sums=('0ae81042f0ab5e08ae09cef01256f15eabaecd1bbfc0a9ae92b19fd4bda33800'
             '68c1fa6b45b21fd1a8df30338a957b4657257ab9c8bc456a5873f8a589de9f41'
             'cc1f6d2470a6a77044f89b3f1c6d4b67d4e94746682a85851e754dfb0ebd29ed')
 
-noextract=(assinadorjt-latest.jar)
+noextract=("${pkgname}-${pkgver}.jar")
 
 _shodo_desktop="[Desktop Entry]
 Version=1.0
@@ -44,7 +44,7 @@ package() {
     cd ${srcdir}
 
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 755 assinadorjt-latest.jar "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
+    install -Dm 755 ${pkgname}-${pkgver}.jar "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
     install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     for i in 48 64 128; do
