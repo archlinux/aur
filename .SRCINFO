@@ -1,13 +1,13 @@
 pkgbase = istio
 	pkgdesc = Istio configuration command line utility for service operators to debug and diagnose their Istio mesh.
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.5
+	pkgrel = 0
 	url = https://github.com/istio/istio
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = istio-1.6.1.tar.gz::https://github.com/istio/istio/archive/1.6.1.tar.gz
-	sha256sums = d6102e9362f0d29bb9af7dbf34e277550af4d8f04544166a0c51f2bc442a690e
+	source = istio-1.6.5.tar.gz::https://github.com/istio/istio/archive/1.6.5.tar.gz
+	sha256sums = bce0e330d7295b04c5bfaf4194a7d6e37859440f33487b775563cbc468e7ba1f
 
 pkgname = istio
 
