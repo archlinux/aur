@@ -4,7 +4,7 @@
 # Contributor: Sebastian Sareyko <public@nooms.de>
 
 pkgname=gnustep-back
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="The GNUstep GUI Backend"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('gnustep-make' 'gnustep-base' 'gnustep-gui' 'libffi' 'gcc-objc')
 conflicts=('gnustep-back-svn')
 groups=('gnustep-core')
 source=(https://github.com/gnustep/libs-back/releases/download/back-${pkgver//./_}/gnustep-back-$pkgver.tar.gz{,.sig})
-sha256sums=('2ed9c69124a3cd0aefe65224044b807dee83ac45218d080a7cbe6b2f12028048'
+sha256sums=('59e647f77c60d7edb2f0fe194ec4dfed7addc504a97a8ac5ad27a8c7ff11cdfa'
             'SKIP')
 validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
