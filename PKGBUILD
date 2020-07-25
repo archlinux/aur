@@ -3,7 +3,7 @@
 
 pkgname=telegraf-bin
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/influxdata/telegraf"
@@ -29,12 +29,12 @@ md5sums_armv7h=('72dc8f7053ed743021d5dab35fae69d9')
 md5sums_aarch64=('ff1a97cb6bb645f84ce63a04be963db9')
 
 package() {
-  cd $srcdir
+  cd "$srcdir"
   install -Dm644 telegraf.sysusers "$pkgdir/usr/lib/sysusers.d/telegraf.conf"
   install -Dm644 telegraf.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/telegraf.conf"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/telegraf/LICENSE"
 
-  cd telegraf
+  cd "telegraf-$pkgver"
   install -Dm755 usr/bin/telegraf "$pkgdir/usr/bin/telegraf"
   install -Dm644 usr/lib/telegraf/scripts/telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
   install -Dm644 etc/telegraf/telegraf.conf "$pkgdir/etc/telegraf/telegraf.conf"
