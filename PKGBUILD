@@ -45,6 +45,7 @@ sha512sums=("900ca21954eca2f5923c63c1c1959ca0a1cff99caf79ddf1945757211cf6117b61b
             "SKIP"
             "SKIP"
             "SKIP")
+_watch="http://www.weewx.com/downloads/"
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
