@@ -1,7 +1,7 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 
 pkgname=arm
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Armory CLI or better know as arm cli is a tool that let you render dinghyfiles offline."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/armory-io/arm"
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
-source=("https://github.com/armory-io/arm/archive/$pkgver.zip")
-sha512sums=('bfed39a8369fa5ca4cfee8168d63b4b43a27e2be7f0a94c7ab7e02e386efb1f8cef210c1f5bc5ada1d524b0fe62ebf6a8aad7aeea6ed8f6eb4d439e55c4e0cec')
+source=("$pkgname-$pkgver.zip::https://github.com/armory-io/arm/archive/$pkgver.zip")
+sha512sums=('e078593fd2048346f08352470493d81f7e7afe5319a749b746e24bcd0ea4955f312a946c94d5dcc228b4b06c9c0681d1ff81083dd7c49501c0abf5858d695d1d')
 
 build() {
     cd $pkgname-$pkgver
