@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.7.9
+	pkgver = 5.7.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.9.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.10.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -30,26 +30,26 @@ pkgbase = linux-mainline-bcachefs
 	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 09d5fc3f89c9c0e607af7b0b0344b480
+	md5sums = 95c1040a9b8b7c08b5bd607981e0427d
 	md5sums = SKIP
-	md5sums = cfd723216fab82133300976dac8bb0d0
+	md5sums = e3a9e13a40131b4f10a7a0432316517e
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
 	md5sums = 3f9c557e2cad81e821c213e4e1097080
 	md5sums = b5140bcd7c4bc9a826db47808d0fde99
 	md5sums = 2ef13b0799bd9b9b994389907812e7a7
 	md5sums = a85456a71ff92afb326f48363757d257
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = 3159befb77cc65566196c205c2fe305c
+	md5sums = a22cddcadc0da933dac13a6ab49b7ed9
 	md5sums = 168a924c7c83ecdc872a9a1c6d1c8bdb
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
 	md5sums = 0633bf8f7561c6903b445ff476815dc0
-	md5sums = 38b2dbf9094d5dd55a918ae45d30a198
-	md5sums = 90366b8f4ff2f0e74785b18346d4f8b1
-	md5sums = 7a269ee82e1172c57a34d1e291dbf1e5
-	md5sums = 4b08bc4ef6b3e5b1905b14376bf460c8
-	md5sums = fcd3ce66f9ab3f1a4c7a06520d02f3c9
-	md5sums = 471dbe6647dcaebdd47bbd222547cd3e
-	md5sums = d1828d13acd27e899c16a2a025d5d0d4
+	md5sums = 2f18db7be4c04b5c9a03eb62814f627a
+	md5sums = 880758ec734787c2ae2802ce8696f693
+	md5sums = 118ed3cb653b4c3fdc9c7905dcc69dc1
+	md5sums = 534f3ed596d174ef656f1f220b0363d0
+	md5sums = 1840b91a70bf32510fbe563921e64c43
+	md5sums = 87031c7075c69580c54965524348f6d7
+	md5sums = 32a53075269b74d023b43443a7e5bf5f
 
 pkgname = linux-mainline-bcachefs
 	pkgdesc = The Linux-mainline-bcachefs kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -58,11 +58,11 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.7.9
+	provides = linux-mainline-bcachefs=5.7.10
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.7.9
-	provides = linux-headers=5.7.9
+	provides = linux-mainline-bcachefs-headers=5.7.10
+	provides = linux-headers=5.7.10
 

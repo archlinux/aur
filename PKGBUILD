@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.7.9
-_pkgverpntrel=9
+pkgver=5.7.10
+_pkgverpntrel=10
 pkgrel=1
 _smt_nice="true"
 _runqueue_sharing="mc-llc"
@@ -107,26 +107,26 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('09d5fc3f89c9c0e607af7b0b0344b480'
+md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
          'SKIP'
-         'cfd723216fab82133300976dac8bb0d0'
+         'e3a9e13a40131b4f10a7a0432316517e'
          '2cebdad39da582fd6a0c01746c8adb42'
          '3f9c557e2cad81e821c213e4e1097080'
          'b5140bcd7c4bc9a826db47808d0fde99'
          '2ef13b0799bd9b9b994389907812e7a7'
          'a85456a71ff92afb326f48363757d257'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         '3159befb77cc65566196c205c2fe305c'
+         'a22cddcadc0da933dac13a6ab49b7ed9'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
          '0633bf8f7561c6903b445ff476815dc0'
-         '38b2dbf9094d5dd55a918ae45d30a198'
-         '90366b8f4ff2f0e74785b18346d4f8b1'
-         '7a269ee82e1172c57a34d1e291dbf1e5'
-         '4b08bc4ef6b3e5b1905b14376bf460c8'
-         'fcd3ce66f9ab3f1a4c7a06520d02f3c9'
-         '471dbe6647dcaebdd47bbd222547cd3e'
-         'd1828d13acd27e899c16a2a025d5d0d4')
+         '2f18db7be4c04b5c9a03eb62814f627a'
+         '880758ec734787c2ae2802ce8696f693'
+         '118ed3cb653b4c3fdc9c7905dcc69dc1'
+         '534f3ed596d174ef656f1f220b0363d0'
+         '1840b91a70bf32510fbe563921e64c43'
+         '87031c7075c69580c54965524348f6d7'
+         '32a53075269b74d023b43443a7e5bf5f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
