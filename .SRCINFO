@@ -9,6 +9,7 @@ pkgbase = renderdoc-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
+	depends = wayland
 	depends = libx11
 	depends = libxcb
 	depends = mesa

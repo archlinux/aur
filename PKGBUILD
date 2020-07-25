@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
 license=("MIT")
 makedepends=("cmake" "ninja" "python")
-depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
+depends=("wayland" "libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
 source=("git+https://github.com/baldurk/renderdoc"
         "renderdoc.desktop")
 sha256sums=('SKIP'
@@ -29,6 +29,7 @@ build() {
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
         -DBUILD_VERSION_DIST_VER="${pkgver}" \
+        -D ENABLE_WAYLAND=true \
         -S renderdoc -B build \
         -G Ninja
   ninja -C build
