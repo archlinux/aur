@@ -1,9 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 # Maintainer: Kevin Meagher <kmeagher at icecube dot wisc dot edu>
 pkgname=healpix
-pkgver='3.60'
-_pkgdate='2019Dec18'
-pkgrel=2
+pkgver='3.70'
+_pkgdate='2020Jul23'
+pkgrel=1
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=('x86_64')
 url="https://healpix.jpl.nasa.gov/"
@@ -18,9 +18,9 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://downloads.sourceforge.net/project/healpix/Healpix_${pkgver}/Healpix_${pkgver}_${_pkgdate}.tar.gz")
-md5sums=('9b51b2fc919f4e70076d296826eebee0')
-sha1sums=('9d465978a0f804e7ff3e393e13deb75cb171aa4b')
-sha256sums=('bf1797022fb57b5b8381290955e8c4161e3ca9b9d88e3e32d55b092a4a04b500')
+md5sums=('bdcc2a4b1ede3ed5a07be57e4aec01d2')
+sha1sums=('54968199cc2c3b3754028d65317abb8dd1f7293a')
+sha256sums=('8841f171f1e22e75ea130e12e5cdc5bcf85dbec79f9f67dd1bf27e99fd20b6d1')
 build() {
     cd "${srcdir}/Healpix_${pkgver}/src/C/autotools"
     autoreconf --install
