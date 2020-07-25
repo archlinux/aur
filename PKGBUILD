@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf
-pkgver=14
+pkgver=15
 pkgrel=1
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
@@ -13,7 +13,7 @@ makedepends=('go')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gokcehan/lf"
 source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/r$pkgver.tar.gz")
-sha256sums=('5266afa808f4612733af65289024c9eb182864f6a224fdfdf58f405a30c79644')
+sha256sums=('e389a3853ce02ffcab9de635cbe456e6fdc5c1696c9585614d80bb0fae88b27d')
 _srcname=${pkgname}-r$pkgver
 
 prepare() {
@@ -36,6 +36,9 @@ package() {
   cd "${pkgname}-r${pkgver}"
   install -Dm755 -t "${pkgdir}/usr/bin" \
       ./lf
+
+  install -Dm644 -t "${pkgdir}/usr/share/applications" \
+      ./lf.desktop
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
       ./LICENSE
@@ -60,4 +63,14 @@ package() {
       ./etc/lf.fish
   install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_functions.d" \
       ./etc/lfcd.fish
+
+  # zsh
+  install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions/_lf" \
+       ./etc/lf.zsh
+
+  # tsch
+  install -Dm644 -t "${pkgdir}/etc/profile.d/lf.csh" \
+       ./etc/lf.csh
+  install -Dm644 -t "${pkgdir}/etc/profile.d/lfcd.csh" \
+       ./etc/lfcd.csh
 }
