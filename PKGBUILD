@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Brown <brown.benjam@northeastern.edu>
 pkgname=deepspeech-bin
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/mozilla/DeepSpeech"
