@@ -64,6 +64,7 @@ package() {
 	ninja install
 	cd "$pkgdir/bin"
 	mv lemon lemon-lime
+	cd "$srcdir/Project_LemonLime"
 	#install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
 
 	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
