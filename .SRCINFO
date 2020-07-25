@@ -1,0 +1,24 @@
+pkgbase = bspwmbar-x11-git
+	pkgdesc = A lightweight status bar for bspwm, fork without xcb
+	pkgver = 0.6.0.r140.d2ce636
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/kenneth_08/bspwmbar
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = bspwm
+	depends = alsa-lib
+	depends = libx11
+	depends = libxrandr
+	depends = libxft
+	depends = libxext
+	depends = fontconfig
+	optdepends = ttf-nerd-fonts-symbols: default prefix icons font
+	provides = bspwmbar
+	conflicts = bspwmbar
+	source = git+https://gitlab.com/kenneth_08/bspwmbar.git
+	sha256sums = SKIP
+
+pkgname = bspwmbar-x11-git
+
