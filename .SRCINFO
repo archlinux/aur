@@ -1,0 +1,19 @@
+pkgbase = fontdiffenator
+	pkgdesc = Font regression tester for Google Fonts
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/googlefonts/fontdiffenator
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fonttools
+	depends = python-pillow
+	depends = python-cairo
+	depends = python-uharfbuzz
+	depends = python-freetype-py
+	source = https://files.pythonhosted.org/packages/source/f/fontdiffenator/fontdiffenator-0.9.6.tar.gz
+	sha256sums = 85206fc542d57062770f9d6ef2754c28a7e7113d8a1e4c259e01980a04782c63
+
+pkgname = fontdiffenator
+
