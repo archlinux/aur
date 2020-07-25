@@ -3,7 +3,7 @@
 _pkgname=blocks
 pkgname=python-g2p-${_pkgname}-git
 pkgver=167
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable bcache or LVM on existing block devices. Convert between raw partitions, logical volumes, and bcache devices witout moving data."
 url="https://github.com/g2p/blocks"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('pkg-config' 'python>=3.3' 'git')
 provides=("python-g2p-${_pkgname}")
 source=("git+https://github.com/g2p/${_pkgname}.git")
-depends=("python-pyparted" "python-augeas" "python-maintboot-git")
+depends=("python-pyparted" "python-augeas" "python-maintboot-git" "python-setuptools")
 md5sums=('SKIP')
 
 pkgver() {
