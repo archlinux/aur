@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-drop-down-terminal-x-git
 _pkgname=drop-down-terminal-x
 pkgver=1.0.1.r2.gfd64bc8
-pkgrel=1
+pkgrel=2
 pkgdesc="Another extended Drop Down Terminal extension for the Gnome Shell."
 arch=('any')
 url="https://github.com/bigbn/drop-down-terminal-x.git"
