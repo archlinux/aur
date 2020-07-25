@@ -7,6 +7,7 @@ pkgbase = renderdoc-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python
 	depends = libx11
 	depends = libxcb

@@ -8,7 +8,7 @@ pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
 license=("MIT")
-makedepends=("cmake" "python")
+makedepends=("cmake" "ninja" "python")
 depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
 source=("git+https://github.com/baldurk/renderdoc"
         "renderdoc.desktop")
@@ -29,13 +29,13 @@ build() {
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
         -DBUILD_VERSION_DIST_VER="${pkgver}" \
-        -B"${srcdir}/renderdoc"/build \
-        -H"${srcdir}/renderdoc"
-  cmake --build "${srcdir}/renderdoc"/build
+        -S renderdoc -B build \
+        -G Ninja
+  ninja -C build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C "${srcdir}/renderdoc"/build install
+  DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 "${srcdir}"/renderdoc.desktop "$pkgdir/usr/share/applications/renderdoc.desktop"
   install -Dm644 "${srcdir}"/renderdoc/docs/imgs/logo.png "$pkgdir/usr/share/icons/renderdoc.png"
