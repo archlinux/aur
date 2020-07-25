@@ -1,0 +1,16 @@
+pkgbase = cipherscan-git
+	pkgdesc = A very simple way to find out which SSL ciphersuites are supported by a target
+	pkgver = r417.885b345
+	pkgrel = 1
+	url = https://github.com/mozilla/cipherscan
+	arch = x86_64
+	license = MPL2
+	license = BSD
+	depends = python
+	depends = bash
+	provides = cipherscan
+	source = cipherscan::git+https://github.com/mozilla/cipherscan
+	sha256sums = SKIP
+
+pkgname = cipherscan-git
+
