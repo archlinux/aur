@@ -1,0 +1,20 @@
+--- old/mcs/gtk-bind.h	2008-03-05 18:31:16.000000000 -0300
++++ new/mcs/gtk-bind.h	2008-03-05 18:31:16.000000000 -0300
+@@ -92,7 +92,7 @@
+ 
+     public:
+ 
+-      Bind (Mcs::Mcs * mcs);
++      Bind (Mcs * mcs);
+       ~Bind ();
+ 
+       void
+@@ -147,7 +147,7 @@
+ 
+     private:
+ 
+-      Mcs::Mcs *mcs;
++      Mcs *mcs;
+ 
+       void
+       action_toggled_cb       (Glib::RefPtr<Gtk::ToggleAction> const& toggle_action,

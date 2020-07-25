@@ -4,7 +4,7 @@
 
 pkgname=bmpx
 pkgver=0.40.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A media player and the successor to BMP'
 url='http://www.beep-media-player.org'
 license=('GPL' 'LGPL' 'MIT' 'custom')
@@ -29,22 +29,24 @@ depends=(
 'libcdio-paranoia>=0.70'
 'libsoup-2.2>=2.2.100'
 'gstreamer0.10>=0.10.14'
-'gstreamer0.10-bad-plugins>=0.10.14'
-'gstreamer0.10-base-plugins>=0.10.14'
-'gstreamer0.10-good-plugins>=0.10.14'
-'gstreamer0.10-ugly-plugins>=0.10.14'
 'startup-notification'
 'libofa>=0.9.3')
-makedepends=('boost')
-optdepends=( 'hal' 'networkmanager' )
+makedepends=('boost'
+'gstreamer0.10-base-plugins>=0.10.14'
+)
+optdepends=( 'hal' 'networkmanager' 'gstreamer0.10-bad-plugins>=0.10.14'
+'gstreamer0.10-good-plugins>=0.10.14'
+'gstreamer0.10-ugly-plugins>=0.10.14')
 provides=('bmpx')
-source=("http://slackware.uk/slacky/slackware-12.1/multimedia/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2" 'update.patch')
+source=("http://slackware.uk/slacky/slackware-12.1/multimedia/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2" 'update.patch' 'fix-namespacing.patch')
 sha1sums=('3284843c45cab302f414663a5cb31eb4373d07c7'
-          '2439478fdfcb42b97196ea748ba7fb4e5dc1c1a0')
+          '2439478fdfcb42b97196ea748ba7fb4e5dc1c1a0'
+          '480e14947883696dca04fd25e6f4df01bc499c3f')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p1 -i ../update.patch
+  patch -p1 -i ../fix-namespacing.patch
 }
 
 build() {
