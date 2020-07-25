@@ -1,3 +1,4 @@
+# Maintainer: Lukas Sabota <lukas at lwsabota dot com>
 # Maintainer: Malte Deiseroth <mdeiseroth88 at gmail dot com>
 
 pkgname=kodi-addon-vfs-rar
