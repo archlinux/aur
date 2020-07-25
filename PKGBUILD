@@ -15,9 +15,9 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git"
         "geph-client.service")
-sha512sums=('SKIP'
-            '9d891f84b424d0ff534b0af23f5e3d8d40934a6b1dba400e4e1ea77acc20e9e0f6b0884d8782399be8ba821fdd5f832091c47c17100add60e52f92d187d3e88b')
 
+sha512sums=('SKIP'
+            '18bc351bd7391fe99bf40f73028d321d63bad481775239672734299ac22b6714db042e4bc7b7755faf4ef40dd6bbd1b8b12961549c8702c127c2b709ec04bf6d')
 
 pkgver() {
     cd "$srcdir/geph2/"
@@ -36,10 +36,8 @@ package() {
     install -d "$pkgdir/etc/geph2"
     "$pkgdir/usr/bin/$_pkgname" -dumpflags > "$pkgdir/etc/geph2/$_pkgname.ini"
     
-    install -Dm 775 "$srcdir/geph2/cmd/$_pkgname/example/list.ini" "$pkgdir/etc/geph2/external-list.ini"
+    install -Dm 644 "$srcdir/geph2/cmd/$_pkgname/example/list.ini" "$pkgdir/etc/geph2/external-list.ini"
     install -Dm 644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
     sed 's/geph-client.ini/%i.ini/' "$srcdir/$_pkgname.service" -i
     install -Dm 644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 }
-sha512sums=('SKIP'
-            '18bc351bd7391fe99bf40f73028d321d63bad481775239672734299ac22b6714db042e4bc7b7755faf4ef40dd6bbd1b8b12961549c8702c127c2b709ec04bf6d')
