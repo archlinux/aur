@@ -2,10 +2,10 @@
 
 pkgname=libmarpa
 pkgver=8.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Marpa parse engine C library"
 arch=('i686' 'x86_64')
-makedepends=('autoconf' 'automake' 'libtool' 'make' 'perl' 'cwebx')
+makedepends=('autoconf' 'automake' 'libtool' 'make' 'perl' 'texlive-bin')
 url="https://github.com/jeffreykegler/libmarpa"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/jeffreykegler/libmarpa)
