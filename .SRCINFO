@@ -1,0 +1,16 @@
+pkgbase = python-pybase62
+	pkgdesc = Python module for base62 encoding
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/suminb/base62
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pybase62/pybase62-0.4.3.tar.gz
+	source = https://github.com/suminb/base62/raw/master/LICENSE
+	sha256sums = 0fbbe8474fc5fb020cc7f94dc88adfd12ef9bf38640c46612568ea07f046438c
+	sha256sums = ed76f4281e6302b9b0c3956708a856ee4a6b4e97702aedc3fdc7942462fc3dbc
+
+pkgname = python-pybase62
+
