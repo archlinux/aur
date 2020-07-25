@@ -1,10 +1,11 @@
 pkgbase = ayatana-indicator-power
 	pkgdesc = Ayatana Indicator showing power state
-	pkgver = 2.0.94
+	pkgver = 2.0.95
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL2
 	license = GPL3
 	makedepends = cmake
@@ -22,10 +23,8 @@ pkgbase = ayatana-indicator-power
 	optdepends = mate-control-center
 	optdepends = mate-power-manager
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.0.94.tar.gz
-	source = 0002_add-testing-option.patch
-	md5sums = 6b14508f80d39a535dde366358b748b7
-	md5sums = 2fab358cf58bfde470e0b1f00931151b
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.0.95.tar.gz
+	md5sums = fb07dee2f4b2567d4ab45b0d7075d551
 
 pkgname = ayatana-indicator-power
 

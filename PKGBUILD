@@ -2,24 +2,18 @@
 # Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
 
 pkgname="ayatana-indicator-power"
-pkgver="2.0.94"
+pkgver="2.0.95"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing power state"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators"
 license=("GPL2" "GPL3")
 depends=("libayatana-indicator" "upower" "systemd" "libnotify" "dconf")
 makedepends=("cmake" "cmake-extras" "libnotify" "glib2" "python")
 optdepends=("mate-ayatana-indicator-applet" "zenity" "mate-control-center" "mate-power-manager")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz" "0002_add-testing-option.patch")
-md5sums=("6b14508f80d39a535dde366358b748b7" "2fab358cf58bfde470e0b1f00931151b")
+source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=("fb07dee2f4b2567d4ab45b0d7075d551")
 options=("!emptydirs")
-
-prepare()
-{
-    cd ${pkgname}-${pkgver}
-    patch -Np1 -i ../0002_add-testing-option.patch
-}
 
 build()
 {
