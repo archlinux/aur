@@ -5,13 +5,11 @@
 pkgname=ttf-sourcesanspro
 pkgver=20171219
 _gitver=5f860df52f1f37108203c4b7a10d9e4e1aa5199d
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Fonts Source Sans Pro"
 arch=('any')
 license=('Apache')
 url="http://www.google.com/fonts/specimen/Open+Sans"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=$pkgname.install
 source=(https://github.com/google/fonts/raw/$_gitver/ofl/sourcesanspro/SourceSansPro-{Black,BlackItalic,Bold,BoldItalic,ExtraLight,ExtraLightItalic,Italic,Light,LightItalic,Regular,SemiBold,SemiBoldItalic}.ttf)
 md5sums=('e495a7368e5f4d3c155daf129b841378'
          'adaf9bf8364b3101b1bcb73ec6794c5c'
