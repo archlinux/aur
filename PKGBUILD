@@ -1,20 +1,18 @@
 pkgname=terminus-font-gq2-ll2-td1
 _pkgname=terminus-font
 pkgver=4.48
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminus patched with gq2, ll2, and td1."
 arch=('any')
 url="http://terminus-font.sourceforge.net/"
-license=('custom:SIL Open Font License, Version 1.1')
-makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir' 'python3')
-optdepends=('xorg-fonts-alias')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+license=('GPL2' 'custom:OFL')
+makedepends=('xorg-bdftopcf' 'python')
 conflicts=('terminus-font')
 provides=('terminus-font')
 source=("https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
-md5sums=('a2cb88f6cf174f3d07de93b91e115a8d'
-         'dd9fe762af012c731c866ee9d29e09f0')
+sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
+            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
 
@@ -49,7 +47,6 @@ package() {
     install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
     install -d "$pkgdir/etc/fonts/conf.d"
-
 
     cd "$pkgdir/etc/fonts/conf.d"
 
