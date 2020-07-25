@@ -1,8 +1,5 @@
 post_install() {
-	printf "NoiseTorch provides an auto-update feature as part of the GUI.\n"
-	printf "I recommend disabling the auto-update feature by setting\n\n"
-	printf "$(tput setaf 4)EnableUpdates = false$(tput sgr0)\n\n"
-	printf "in $(tput setaf 2)\$HOME/.config/noisetorch/config.toml$(tput sgr0)\n"
+	printf "NoiseTorch provides a self-update feature as part of the GUI.\n"
 	printf "The feature won't work with this package.\n"
 	printf "Don't attempt to update if prompted via the GUI\n"
 	printf "See the project page for details.\n\n"
