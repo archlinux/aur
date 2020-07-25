@@ -2,13 +2,13 @@
 
 pkgname=lglaf
 pkgver=20180317
-pkgrel=2
-pkgdesc="LGLAF.py is a utility for communication with LG devices in Download Mode. This allows you to execute arbitrary shell commands on a LG phone as root."
+pkgrel=3
+pkgdesc="LGLAF.py is a utility for communication with LG devices in Download Mode. This allows you to execute arbitrary shell commands on a LG phone as root. Utility was created by Lekensteyn (Peter Wu)"
 arch=(i686 x86_64)
-url="https://github.com/Lekensteyn/lglaf"
+url="https://gitlab.com/vinibali/lglaf"
 license=('MIT')
-depends=('python2' 'python2-pyusb')
-source=(https://github.com/Lekensteyn/lglaf/archive/master.zip)
+depends=('python' 'python-pyusb')
+source=(https://gitlab.com/vinibali/lglaf/-/archive/20180317/lglaf-20180317.zip)
 md5sums=(c90866a08a16bf852a1e30b0ae936291)
 
 build() {
