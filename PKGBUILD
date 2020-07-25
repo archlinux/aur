@@ -17,15 +17,15 @@ build() {
 
 package() {
 
-	install -Dm755 "${srcdir}"/lglaf-master/dump-file.py "${pkgdir}"/opt/lglaf/dump-file.py
-	install -Dm755 "${srcdir}"/lglaf-master/extract-partitions.py "${pkgdir}"/opt/lglaf/extract-partitions.py
-	install -Dm755 "${srcdir}"/lglaf-master/gpt.py "${pkgdir}"/opt/lglaf/gpt.py
-	install -Dm755 "${srcdir}"/lglaf-master/laf_crypto.py "${pkgdir}"/opt/lglaf/laf_crypto.py
-	install -Dm755 "${srcdir}"/lglaf-master/lglaf.py "${pkgdir}"/opt/lglaf/lglaf.py
-	install -Dm755 "${srcdir}"/lglaf-master/partitions.py "${pkgdir}"/opt/lglaf/partitions.py
-	install -Dm755 "${srcdir}"/lglaf-master/README.md "${pkgdir}"/opt/lglaf/README.md
+	install -Dm755 "${srcdir}"/lglaf-20180317/dump-file.py "${pkgdir}"/opt/lglaf/dump-file.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/extract-partitions.py "${pkgdir}"/opt/lglaf/extract-partitions.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/gpt.py "${pkgdir}"/opt/lglaf/gpt.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/laf_crypto.py "${pkgdir}"/opt/lglaf/laf_crypto.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/lglaf.py "${pkgdir}"/opt/lglaf/lglaf.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/partitions.py "${pkgdir}"/opt/lglaf/partitions.py
+	install -Dm755 "${srcdir}"/lglaf-20180317/README.md "${pkgdir}"/opt/lglaf/README.md
 	mkdir -p "${pkgdir}"/etc/udev/rules.d/
-	install -Dm644 "${srcdir}"/lglaf-master/rules.d/42-usb-lglaf.rules "${pkgdir}"/etc/udev/rules.d/
+	install -Dm644 "${srcdir}"/lglaf-20180317/rules.d/42-usb-lglaf.rules "${pkgdir}"/etc/udev/rules.d/
 	mkdir -p "${pkgdir}"/usr/bin/
 	echo -e '#!/bin/bash\ncd /opt/lglaf\npython2.7 /opt/lglaf/lglaf.py' > "${pkgdir}"/usr/bin/lglaf
 	chmod +x "${pkgdir}"/usr/bin/lglaf
