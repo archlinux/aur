@@ -91,13 +91,13 @@ source=(
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
+#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
 )
 
 validpgpkeys=(
