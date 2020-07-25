@@ -19,7 +19,7 @@ pkgbase = harfbuzz
 	source = git+https://github.com/harfbuzz/harfbuzz
 	sha256sums = SKIP
 
-pkgname = harfbuzz
+pkgname = harfbuzz-git
 	depends = glib2
 	depends = freetype2
 	depends = graphite
@@ -33,7 +33,7 @@ pkgname = harfbuzz
 	provides = libharfbuzz-gobject.so
 	conflicts = harfbuzz
 
-pkgname = harfbuzz-icu
+pkgname = harfbuzz-icu-git
 	pkgdesc = OpenType text shaping engine (ICU integration)
 	depends = harfbuzz=2.7.0-1
 	depends = icu

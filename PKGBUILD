@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=harfbuzz
-pkgname=(harfbuzz harfbuzz-icu)
+pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=2.7.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
@@ -37,7 +37,7 @@ build() {
 #  rm -r tmp
 #}
 
-package_harfbuzz() {
+package_harfbuzz-git() {
   depends=(glib2 freetype2 graphite libglib-2.0.so libfreetype.so
            libgobject-2.0.so)
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
@@ -55,7 +55,7 @@ package_harfbuzz() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 harfbuzz/COPYING
 }
 
-package_harfbuzz-icu() {
+package_harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
   depends=("harfbuzz=$pkgver-$pkgrel" icu libharfbuzz.so)
   provides=(harfbuzz-icu libharfbuzz-icu.so)
