@@ -1,5 +1,4 @@
 pkg
 src
 Moneydance.zip
-*.tar.xz
-*.tar.gz
+*.tar.*
