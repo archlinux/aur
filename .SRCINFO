@@ -1,7 +1,7 @@
 pkgbase = streamdeck-ui-git
 	pkgdesc = A Linux compatible UI for the Elgato Stream Deck
-	pkgver = r102.96f2305
-	pkgrel = 1
+	pkgver = r113.ce2156a
+	pkgrel = 2
 	url = https://timothycrosley.github.io/streamdeck-ui/
 	arch = any
 	license = MIT
@@ -15,7 +15,9 @@ pkgbase = streamdeck-ui-git
 	depends = python-elgato-streamdeck
 	provides = streamdeck-ui
 	source = git+https://github.com/timothycrosley/streamdeck-ui.git
+	source = 60-streamdeck.rules
 	sha512sums = SKIP
+	sha512sums = 79b03a68354f4642067cea9884a839c3869186165e4ad9a61dd60c865dc61c2dc392619a13767c4e4da34b34ec2988333f2f0f704f5a5d277f45216eb872d000
 
 pkgname = streamdeck-ui-git
 
