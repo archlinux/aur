@@ -1,0 +1,17 @@
+pkgbase = apng2gif-bin
+	pkgdesc = Convert APNG animations into animated GIF format
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://sourceforge.net/projects/apng2gif
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = lib32-gcc-libs
+	depends = lib32-libpng
+	provides = apng2gif
+	conflicts = apng2gif
+	source = apng2gif-bin-1.8.zip::https://sourceforge.net/projects/apng2gif/files/1.8/apng2gif-1.8-bin-linux.zip/download
+	sha256sums = 09b0c88dbd06f02617453ad225a56f3ea68dfd87cc165bd7ba18da3761c910e5
+
+pkgname = apng2gif-bin
+
