@@ -2,7 +2,7 @@
 
 pkgname=geph-client-patched
 _pkgname=geph-client
-pkgver=r213.a533fa8
+pkgver=r214.83b18f5
 pkgrel=1
 pkgdesc='A command-line Geph client with external bypass filter patch'
 arch=('x86_64')
@@ -18,6 +18,8 @@ source=("git+$url.git"
 
 sha512sums=('SKIP'
             '9d891f84b424d0ff534b0af23f5e3d8d40934a6b1dba400e4e1ea77acc20e9e0f6b0884d8782399be8ba821fdd5f832091c47c17100add60e52f92d187d3e88b')
+
+
 pkgver() {
     cd "$srcdir/geph2/"
     git checkout origin/pacs
