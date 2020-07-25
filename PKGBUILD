@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+_subarch=11
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -113,13 +113,14 @@ md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
          'a22cddcadc0da933dac13a6ab49b7ed9'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         '0633bf8f7561c6903b445ff476815dc0'
+         '83f88dd0a90ca04ea406ca36058903bd'
+         '420b0129f64ef7c46e4160ef7f106d71'
+         'b0118a407f7271ee823317901c893a9d'
+         '28403caec019dfecb8cb76be20d37e4f'
+         'b3a18c99f62d9a595832907bff7cba5b'
+         '6cb2b3ae581497ad6a6b7285207ad444'
+         '88dde944cfb1ac7bbcd9e597fc01f2c2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
