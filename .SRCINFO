@@ -12,6 +12,7 @@ pkgbase = flatcam
 	depends = python-rtree
 	depends = python-scipy
 	depends = python-svg.path
+	depends = python-pyqt4
 	source = https://bitbucket.org/jpcgt/flatcam/get/dae9cbb0471e693b95fd809ddd8bf11ff026ac67.tar.gz
 	source = flatcam.desktop
 	source = flatcam
