@@ -1,0 +1,20 @@
+pkgbase = daisyduck-bin
+	pkgdesc = A free software for playing digital audio books (Daisy 2.02)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://daisy.geexbox.org
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	makedepends = tar
+	depends = libx11
+	depends = gcc-libs
+	depends = qt4
+	depends = vlc
+	depends = libduck1
+	provides = daisyduck
+	source = daisyduck-bin-1.0.3.deb::https://daisy.geexbox.org/releases/daisyduck_1.0.3-1_amd64.deb
+	sha256sums = e553b1bd261c9baf8a241db702c7468e0f1d830245d814ab97e80afbf5c1da90
+
+pkgname = daisyduck-bin
+
