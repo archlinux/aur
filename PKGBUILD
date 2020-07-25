@@ -6,7 +6,7 @@ pkgver=1.0.1.r2.gfd64bc8
 pkgrel=1
 pkgdesc="Another extended Drop Down Terminal extension for the Gnome Shell."
 arch=('any')
-url="https://https://github.com/bigbn/drop-down-terminal-x.git"
+url="https://github.com/bigbn/drop-down-terminal-x.git"
 license=('GPL3')
 conflicts=(	'gnome-shell-extension-drop-down-terminal'
 			'gnome-shell-extension-drop-down-terminal-git'
