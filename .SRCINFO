@@ -1,20 +1,27 @@
-pkgbase = discimagechef
+pkgbase = aaru
 	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
-	pkgver = 4.5.1.1692
+	pkgver = 5.1.0.3214
 	pkgrel = 1
-	url = http://www.discimagechef.app
-	arch = any
+	url = http://www.aaru.app
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
-	depends = mono
-	provides = discimagechef
-	options = !strip
-	source = https://github.com/discimagechef/DiscImageChef/releases/download/v4.5.1.1692/DiscImageChef-4.5.1.1692.zip
-	source = https://github.com/discimagechef/DiscImageChef/releases/download/v4.5.1.1692/DiscImageChef-4.5.1.1692.zip.asc
-	source = discimagechef.sh
+	makedepends = dotnet-sdk>=3.1.0
+	depends = icu
+	depends = krb5
+	depends = libcurl.so
+	depends = libunwind
+	depends = openssl-1.0
+	depends = zlib
+	provides = aaru
+	conflicts = aaru
+	options = staticlibs
+	source = https://github.com/aaru-dps/Aaru/releases/download/v5.1.0.3214/aaru-src-5.1.0.3214.tar.xz
+	source = https://github.com/aaru-dps/Aaru/releases/download/v5.1.0.3214/aaru-src-5.1.0.3214.tar.xz.asc
 	validpgpkeys = 236F1E21B540FC0D40F7AD1751D20488C724CA9F
-	sha256sums = f0eeadb1c963e26f6b661943dd73c070e469a27c143e11b7bdf59b1da47cb37a
+	sha256sums = ea7978bdfcf580436bad7cffa0b7cf2a1a0bd4b7bca8d5d69e9f129b4caf6d72
 	sha256sums = SKIP
-	sha256sums = f55f4b5a861856473b21edd5ee7edd3605bf225186af1fdffad9b553789542bb
 
-pkgname = discimagechef
+pkgname = aaru
 
