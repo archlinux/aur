@@ -1,34 +1,33 @@
 pkgname=sunflower-git
 _gitname=Sunflower
-pkgver=0.3
+pkgver=0
 pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=('any')
 url="https://github.com/MeanEYE/Sunflower"
+options=(!strip !zipman)
 license=('GPL3')
-depends=('desktop-file-utils' 'pygtk' 'python2-chardet' 'librsvg')
+depends=('desktop-file-utils' 'pygtk' 'python-chardet' 'python-cairo-git' 'librsvg')
 makedepends=('git')
-optdepends=('python2-gnomekeyring: password storage for remote mounts'
-'python2-notify: desktop notifications service'
-'vte: integrated vte-based terminal'
+optdepends=('vte: integrated vte-based terminal'
 'mutagen: audio-metadata support'
-'gvfs: mount-management'
-'python2-dbus: single application instance support') 
+'gvfs: mount-management')
 conflicts=('sunflower')
-source=('git://github.com/MeanEYE/Sunflower.git'
-'sunflower.desktop')
-md5sums=('SKIP'
-         '9cfbe8c2075b39b9d62242ef48598105')
+source=('git://github.com/MeanEYE/Sunflower.git')
+md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${_gitname}"
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-	mkdir -p $pkgdir/{opt,usr/bin}
-	cp -a $srcdir/Sunflower $pkgdir/opt/sunflower
-	echo -e '#!/bin/sh\npython2 /opt/sunflower/Sunflower.py "$@"' > $pkgdir/usr/bin/sunflower
-	chmod +x $pkgdir/usr/bin/sunflower
-	mkdir -p $pkgdir/usr/share/applications
-	cp sunflower.desktop $pkgdir/usr/share/applications/
+    cd "Sunflower"
+    python setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
+    rm "${pkgdir}/usr/share/sunflower/images/sunflower.png"
+    rm -rd "${pkgdir}/usr/share/sunflower/trasnaltions"
+    #install -d "${pkgdir}/usr/share/locale"
+    cp -r "${srcdir}/Sunflower/translations/" "${pkgdir}/usr/share/locale"
+    rm -f ${pkgdir}/usr/share/locale/*/LC_MESSAGES/*.po
+    rm -f ${pkgdir}/usr/share/locale/*.pot
 }
