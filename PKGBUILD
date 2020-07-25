@@ -46,6 +46,7 @@ prepare() {
   patch -Np1 -i ../faad2-version-check.patch
   patch -Np1 -i ../wildmidi-0.4.patch
   patch -Np1 -i ../flite_cmu_us_kal.patch
+  find . -type f -name '*glib-gen.mak' -print0 | xargs -0 sed -i 's/\\n\\#include/\\n#include/g'
 }
 
 build() {
