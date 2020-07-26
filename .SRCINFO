@@ -1,11 +1,12 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.10.7
+	pkgver = 3.10.8
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = fcgi
 	makedepends = gsl
 	makedepends = python-six
@@ -37,12 +38,12 @@ pkgbase = qgis-ltr
 	optdepends = python-pygments: MetaSearch plugin
 	optdepends = python-numpy: Processing plugin
 	optdepends = python-yaml: Processing plugin
-	provides = qgis=3.10.7
+	provides = qgis=3.10.8
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-3.10.7.tar.bz2
+	source = https://qgis.org/downloads/qgis-3.10.8.tar.bz2
 	source = qgis-pyqt5-sip5.patch
 	source = t2t-toc-level.patch
-	sha256sums = f6c02489e065bae355d2f4374b84a1624379634c34a770b6d65bf38eb7e71564
+	sha256sums = b37ccc6228610301232c50fdd9660fdd878c9f822dfe60cd949b94391e19d94c
 	sha256sums = 47fdab75c94ecf5b61a41b334e23714226e895cef507c35a3bc4b46c7d307981
 	sha256sums = f7e91914cfe366a63383b39c63d5731f6f20a1a0a0d7e9f3d16809a40bb5acff
 

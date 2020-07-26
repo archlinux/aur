@@ -9,7 +9,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.10.7
+pkgver=3.10.8
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -17,7 +17,7 @@ license=(GPL)
 arch=(x86_64)
 depends=(desktop-file-utils exiv2 gdal hicolor-icon-theme libzip python-qscintilla-qt5 qca qt5-3d
          qt5-serialport qt5-webkit qtkeychain qwtpolar spatialindex python-sip)
-makedepends=(cmake fcgi gsl python-six qt5-tools txt2tags sip python-setuptools)
+makedepends=(cmake ninja fcgi gsl python-six qt5-tools txt2tags sip python-setuptools)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin'
             'gsl: Georeferencer plugin'
@@ -35,7 +35,7 @@ source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         t2t-toc-level.patch
 )
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('f6c02489e065bae355d2f4374b84a1624379634c34a770b6d65bf38eb7e71564'
+sha256sums=('b37ccc6228610301232c50fdd9660fdd878c9f822dfe60cd949b94391e19d94c'
             '47fdab75c94ecf5b61a41b334e23714226e895cef507c35a3bc4b46c7d307981'
             'f7e91914cfe366a63383b39c63d5731f6f20a1a0a0d7e9f3d16809a40bb5acff')
 
@@ -48,7 +48,7 @@ prepare() {
 
 build() {
   cd build
-  cmake -G "Unix Makefiles" ../"$_pkgname-$pkgver" \
+  cmake -G Ninja ../"$_pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_3D=TRUE \
     -DWITH_SERVER=TRUE \
@@ -57,10 +57,9 @@ build() {
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DWITH_QWTPOLAR=TRUE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE
-  make
+  cmake --build .
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --build build --target install
 }
