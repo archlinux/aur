@@ -4,7 +4,7 @@
 
 pkgname=ums-headless
 pkgver=9.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://www.universalmediaserver.com/"
@@ -13,7 +13,6 @@ depends=('mplayer' 'mencoder' 'libmediainfo')
 makedepends=("unzip")
 optdepends=("java-runtime: Java runtime environment"
             "ffmpeg: Complete solution to record, convert and stream audio and video"
-            "tsmuxer-ng-cli-bin: Remux/mux elementary streams without re-encoding"
             "vlc: For Internet video/audio")
 optdepends_x86_64=("dcraw: thumbnails creation support"
                    "lib32-gcc-libs: tsMuxeR support"

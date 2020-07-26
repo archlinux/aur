@@ -1,7 +1,7 @@
 pkgbase = ums-headless
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems.
 	pkgver = 9.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.universalmediaserver.com/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = ums-headless
 	depends = libmediainfo
 	optdepends = java-runtime: Java runtime environment
 	optdepends = ffmpeg: Complete solution to record, convert and stream audio and video
-	optdepends = tsmuxer-ng-cli-bin: Remux/mux elementary streams without re-encoding
 	optdepends = vlc: For Internet video/audio
 	provides = ums
 	conflicts = ums
