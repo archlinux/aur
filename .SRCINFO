@@ -6,6 +6,7 @@ pkgbase = jspeak
 	arch = any
 	license = GNU General Public License v3.0
 	depends = espeak
+	depends = java-runtime
 	optdepends = mbrola-voices-us1
 	optdepends = mbrola-voices-us2
 	optdepends = mbrola-voices-us3
