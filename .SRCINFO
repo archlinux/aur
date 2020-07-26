@@ -1,5 +1,5 @@
 pkgbase = python-mautrix-git
-	pkgdesc = A Python 3 asyncio Matrix framework.
+	pkgdesc = A Python 3 asyncio Matrix framework. This tracks the latest commit and is often broken
 	pkgver = r413.5cf9d7c
 	pkgrel = 0
 	url = https://github.com/tulir/mautrix-python
@@ -10,6 +10,7 @@ pkgbase = python-mautrix-git
 	depends = python
 	provides = python-mautrix
 	conflicts = python-mautrix
+	conflicts = python-mautrix-latest
 	source = mautrix-python::git+https://github.com/tulir/mautrix-python
 	sha256sums = SKIP
 
