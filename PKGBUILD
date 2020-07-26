@@ -1,4 +1,5 @@
-# Maintainer: tuftedocelot@fastmail.fm
+# Maintainer: JohnCiubuc <john.ciubuc@protonmail.com>
+# Contributor: tuftedocelot@fastmail.fm
 # Contributor: Lucas de Vries <lucas@glacicle.org>
 _pkgname=cortex
 pkgname=${_pkgname}-git
@@ -6,17 +7,12 @@ pkgver=31
 pkgrel=2
 pkgdesc="An ncurses reddit browser and monitor"
 license=('MIT/X11')
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://cortex.glacicle.org/"
 depends=('python')
 makedepends=('git')
 source=('git+https://github.com/GGLucas/cortex.git')
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
-}
 
 package() {
   cd $_pkgname
