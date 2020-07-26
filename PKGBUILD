@@ -4,9 +4,10 @@
 # Previously:Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
 
 _pkgname=cyrus-imapd
+_srcname=cyrus-imapd-cyrus-imapd
 pkgname=cyrus-imapd2
 pkgver=2.5.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Cyrus IMAP mail server - 2.5"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="http://www.cyrusimap.org/"
@@ -28,10 +29,16 @@ sha256sums=('ff2c61fe4c8665424425cd491ea816de3fa5f43765ebade27c686ffacfc9431c'
             '1c6054397b84866831ccc1647d154365cb46158d6d6b162f08bc205edda7119a'
             'd5e3f64aff773fb75d5221d567064741a0846849ead6de64d37255e59533c027')
 
-build() {
-    cd $srcdir/$_pkgname-$pkgver
-
+prepare()
+{
+    cd $srcdir/$_srcname-$pkgver
+	autoreconf -i
 	patch -p1 -i $srcdir/gettid.patch
+}
+
+build()
+{
+    cd $srcdir/$_srcname-$pkgver
 
 	./configure \
      --prefix=/usr \
@@ -52,30 +59,31 @@ build() {
     make
 }
 
-package() {
-    cd $srcdir/$_pkgname-$pkgver
+package()
+{
+    cd $srcdir/$_srcname-$pkgver
 
     make DESTDIR="${pkgdir}" install
 
     # create required directories first    
-    mkdir -m 0755 -p $pkgdir/usr/lib/systemd/system
-    mkdir -m 0755 -p $pkgdir/usr/include/cyrus
-    mkdir -m 0755 -p $pkgdir/etc/cyrus
-    mkdir -m 0755 -p $pkgdir/etc/conf.d
-    mkdir -m 0755 -p $pkgdir/etc/rc.d
-    mkdir -m 0755 -p $pkgdir/usr/bin
-    
-    install -m 755 ${srcdir}/$_pkgname-$pkgver/tools/mkimap ${pkgdir}/usr/bin/
-    
+    install -m0755 -d \
+		$pkgdir/usr/lib/systemd/system \
+		$pkgdir/usr/include/cyrus \
+		$pkgdir/etc/cyrus \
+		$pkgdir/etc/conf.d \
+		$pkgdir/usr/bin
+
+    install -m 755 tools/mkimap ${pkgdir}/usr/bin/
+
     # rename master.8 so it doesn't conflict with master.8 from Postfix
     mv $pkgdir/usr/share/man/man8/master.8 $pkgdir/usr/share/man/man8/cyrus-master.8
 
     # move cyradm to standard location
     mv $pkgdir/usr/bin/site_perl/cyradm $pkgdir/usr/bin/cyradm
-    rmdir $pkgdir/usr/bin/site_perl
+    rm -rf $pkgdir/usr/bin/site_perl
 
     # install configs, rc scripts, etc
-    install -m 600 $srcdir/$_pkgname-$pkgver/master/conf/normal.conf \
+    install -m 600 master/conf/normal.conf \
         $pkgdir/etc/cyrus/cyrus.conf
     echo "# see imapd.conf(5) man page for correct setup of this file" >> \
         $pkgdir/etc/cyrus/imapd.conf
@@ -83,9 +91,9 @@ package() {
     install -m 644 $srcdir/cyrus-master-conf.d $pkgdir/etc/conf.d/cyrus-master
     install -m 644 $srcdir/cyrus-master.service \
         $pkgdir/usr/lib/systemd/system/cyrus-master.service
-    install -Dm 644 $srcdir/$_pkgname-$pkgver/COPYING \
+    install -Dm 644 COPYING \
         $pkgdir/usr/share/licenses/$_pkgname/COPYING
-    install -Dm 644 $srcdir/$_pkgname-$pkgver/README \
+    install -Dm 644 README \
         $pkgdir/usr/share/doc/$_pkgname/README
 }
 

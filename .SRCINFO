@@ -1,7 +1,7 @@
 pkgbase = cyrus-imapd2
 	pkgdesc = Cyrus IMAP mail server - 2.5
 	pkgver = 2.5.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cyrusimap.org/
 	install = cyrus-imapd.install
 	arch = x86_64
