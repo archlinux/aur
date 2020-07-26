@@ -3,48 +3,28 @@
 
 pkgbase=bootstrap-studio
 pkgname=bootstrap-studio
-pkgver=4.5.3
-pkgrel=2
+pkgver=5.2.1
+pkgrel=3
 pkgdesc='A powerful desktop app for creating responsive websites using the Bootstrap framework.'
 url='https://bootstrapstudio.io/'
 arch=('x86_64')
-depends=('gconf')
-source=($pkgname-$pkgver.deb::'https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb')
+source=(
+	$pkgname.AppImage::'https://bootstrapstudio.io/releases/desktop/'$pkgver'/Bootstrap%20Studio.AppImage'
+	launcher.sh::'https://bootstrapstudio.io/releases/desktop/'$pkgver'/launcher.sh'
+)
 
-prepare() {
-	# Extract files
-	tar --xz -xf "$srcdir"/data.tar.xz
-
-	# Fix desktop entry
-	sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname %F|" \
-		"$srcdir"/usr/share/applications/bootstrapstudio.desktop
-
-	sed -i "s|Path=.*|Path=/usr/bin/|" \
-		"$srcdir"/usr/share/applications/bootstrapstudio.desktop
-}
+sha512sums=(
+	'5a12934eba7611b317d2c0611232339628e3c2dc434703d483c4ff18eab5a405cce2d1fbb4ffff2cf353575d38f3a925747fa5f4d45be9d44982fb6d92f41f2e'
+	'df0febc0427ee86caab4959657d24fdb20150c994a7825b229694579f9bfb5c32ebf16988195e1706f2031aeae794842af7356b68b91068293a51ae12b8b61bd'
+)
 
 package() {
-	# Create directory
-	install -d "$pkgdir"/usr/{lib,bin}
-
-	# Install license
-	install -Dm644 "$srcdir"/usr/share/doc/bootstrapstudio/copyright \
-		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	install -Dm644 "$srcdir"/opt/bootstrapstudio/LICENSES.chromium.html \
-		"$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
-
-	# Remove unnecessary files
-	rm -rf "$srcdir"/usr/share/doc
-
-	# Install files and binary
-	cp -rT "$srcdir"/usr "$pkgdir"/usr
-	cp -rT "$srcdir"/opt/bootstrapstudio "$pkgdir"/usr/lib/$pkgname
-
-	# Symlink binary
-	ln -s /usr/lib/$pkgname/'Bootstrap Studio' "$pkgdir"/usr/bin/$pkgname
-
-	# Fix permission
-	chmod -R go-w "$pkgdir"
+	mv $pkgname.AppImage 'Bootstrap Studio.AppImage'
+	sed -i '55,60d' launcher.sh
+	sed -i '8,12d' launcher.sh
+	bash launcher.sh
 }
 
-sha512sums=('9d4be450de5db91cffd4cbc3b14adbb9083c5f95ba141478281344732e57b1655c35ec2625f9e80ab9d140c1c68d2960b209f130baa3252919f7bfc8b4b05c4a')
+post_remove() {
+	bash launcher.sh --uninstall
+}

@@ -1,12 +1,13 @@
 pkgbase = bootstrap-studio
 	pkgdesc = A powerful desktop app for creating responsive websites using the Bootstrap framework.
-	pkgver = 4.5.3
-	pkgrel = 2
+	pkgver = 5.2.1
+	pkgrel = 3
 	url = https://bootstrapstudio.io/
 	arch = x86_64
-	depends = gconf
-	source = bootstrap-studio-4.5.3.deb::https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb
-	sha512sums = 9d4be450de5db91cffd4cbc3b14adbb9083c5f95ba141478281344732e57b1655c35ec2625f9e80ab9d140c1c68d2960b209f130baa3252919f7bfc8b4b05c4a
+	source = bootstrap-studio.AppImage::https://bootstrapstudio.io/releases/desktop/5.2.1/Bootstrap%20Studio.AppImage
+	source = launcher.sh::https://bootstrapstudio.io/releases/desktop/5.2.1/launcher.sh
+	sha512sums = 5a12934eba7611b317d2c0611232339628e3c2dc434703d483c4ff18eab5a405cce2d1fbb4ffff2cf353575d38f3a925747fa5f4d45be9d44982fb6d92f41f2e
+	sha512sums = df0febc0427ee86caab4959657d24fdb20150c994a7825b229694579f9bfb5c32ebf16988195e1706f2031aeae794842af7356b68b91068293a51ae12b8b61bd
 
 pkgname = bootstrap-studio
 
