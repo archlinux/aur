@@ -1,0 +1,16 @@
+pkgbase = pylance-language-server
+	pkgdesc = Python language server based on pylance vscode extension.
+	pkgver = 2020.7.3
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
+	install = pylance-language-server.install
+	arch = x86_64
+	license = custom: commercial
+	depends = npm
+	provides = pylance-language-server
+	conflicts = pylance-language-server
+	source = pylance.zip::https://ms-python.gallery.vsassets.io/_apis/public/gallery/publisher/ms-python/extension/vscode-pylance/2020.7.3/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+	sha256sums = f8d778643def25c483754dc2d23bb6c2d302ace4b43e0ce3f34d19f287d1e0c8
+
+pkgname = pylance-language-server
+
