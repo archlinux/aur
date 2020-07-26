@@ -1,0 +1,14 @@
+pkgbase = vim-vala-arrufat-git
+	pkgdesc = Vim runtime files for OpenGL Shading Language.
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/arrufat/vala.vim
+	arch = x86_64
+	license = GPL
+	provides = vim-vala
+	conflicts = vim-vala
+	source = git+https://github.com/arrufat/vala.vim.git
+	sha1sums = SKIP
+
+pkgname = vim-vala-arrufat-git
+
