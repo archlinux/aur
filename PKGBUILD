@@ -2,7 +2,7 @@
 
 _pkgbase=python-mautrix
 pkgname=${_pkgbase}-git
-pkgver=r317.645a0fa
+pkgver=r413.5cf9d7c
 pkgrel=0
 pkgdesc="A Python 3 asyncio Matrix framework."
 url="https://github.com/tulir/mautrix-python"
@@ -13,6 +13,7 @@ conflicts=(python-mautrix)
 license=('MPL2')
 arch=('any')
 source=("mautrix-python::git+https://github.com/tulir/mautrix-python")
+#source=("mautrix-python::git+https://github.com/tulir/mautrix-python#tag=v0.6.0-rc5")
 sha256sums=('SKIP')
 
 pkgver() {

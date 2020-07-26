@@ -1,6 +1,6 @@
 pkgbase = python-mautrix-git
 	pkgdesc = A Python 3 asyncio Matrix framework.
-	pkgver = r317.645a0fa
+	pkgver = r413.5cf9d7c
 	pkgrel = 0
 	url = https://github.com/tulir/mautrix-python
 	arch = any
