@@ -17,8 +17,8 @@ install="${pkgname}.install"
 replaces=("mkinitcpio-nban")
 conflicts=("mkinitcpio-nban")
 provides=("mkinitcpio-nban")
-source=("http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz"
-        "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig")
+source=("https://cdn.projects.ninjaos.org/${pkgname}-${pkgver}.tar.gz"
+        "https://cdn.projects.ninjaos.org/${pkgname}-${pkgver}.tar.gz.sig")
 sha256sums=('210f02867da2abc510c3b6605885493abed7cefd4e985da730d971ea2db6b794'
             'SKIP')
 validpgpkeys=('C65B1F383A46C38A3D3CFDF9C61EC681A148AF51')
