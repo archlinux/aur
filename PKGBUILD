@@ -3,8 +3,8 @@
 # Contributor: Nicolas Doualot <packages at slubman.info>
 
 pkgname=litecoin-qt
-pkgver=0.17.1
-pkgrel=3
+pkgver=0.18.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
@@ -15,14 +15,17 @@ conflicts=(litecoin)
 install=litecoin-qt.install
 source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}.tar.gz"
         "deque.patch"
+        "qpainterpath.patch"
         "$pkgname.desktop")
-sha256sums=('6db52aa5a67387aff937afbfb3da8321ada653c9c8f01b0e0d4dd617939639c4'
+sha256sums=('6dfa71ccf059463f0a304f85ff1ca8b88039d63e93269d6f056ab24915be936d'
             '595b465639a0ac22c262da404b942d682b8bda5f010db9b13d07b671b3877af1'
+            'd7716150afe7cd49b708699c27f5e39835b6849c4839c005ff36b4e06ccd9593'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559')
 
 build() {
   cd "$srcdir/litecoin-$pkgver"
   patch -p2 <$srcdir/deque.patch
+  patch -p1 <$srcdir/qpainterpath.patch
   ./autogen.sh
   ./configure --with-incompatible-bdb --with-gui=qt5
   make

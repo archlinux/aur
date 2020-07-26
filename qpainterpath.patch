@@ -1,0 +1,20 @@
+commit 990d5e8fa20b7d6b4b8c629d143e180437ecdffc
+Author: Andrew Chow <achow101-github@achow101.com>
+Date:   Thu May 28 14:56:47 2020 -0400
+
+    Add missing QPainterPath include
+    
+    This is needed to compile with Qt 5.15.
+
+diff --git a/src/qt/trafficgraphwidget.cpp b/src/qt/trafficgraphwidget.cpp
+index 1588be8da..b0091ada3 100644
+--- a/src/qt/trafficgraphwidget.cpp
++++ b/src/qt/trafficgraphwidget.cpp
+@@ -7,6 +7,7 @@
+ #include <qt/clientmodel.h>
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QColor>
+ #include <QTimer>
+ 
