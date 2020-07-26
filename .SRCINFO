@@ -1,7 +1,7 @@
 pkgbase = memoize-rust
 	pkgdesc = Cache executable calls
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aureooms/memoize
 	arch = any
 	license = AGPL-3.0

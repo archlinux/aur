@@ -1,7 +1,7 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=memoize-rust
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Cache executable calls"
 arch=(any)
