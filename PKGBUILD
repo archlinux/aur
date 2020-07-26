@@ -2,7 +2,7 @@
 pkgname=freeserf
 _pkgname=FreeSerf
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
 url="http://jonls.dk/freeserf/"
@@ -12,7 +12,8 @@ makedepends=('cmake' 'libxmp')
 optdepends=('libxmp: Amiga audio playback')
 install=freeserf.install
 source=(${pkgname}-${pkgver}.tar.xz::"https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_pkgname}.tar.xz")
-sha1sum=('956fa204197ec29d688b0fbfbb50bd93')
+md5sums=('956fa204197ec29d688b0fbfbb50bd93')
+sha1sums=('24913d2716eff5d71b08a3de8439750d4db627c3')
 
 prepare() {
   mkdir ${_pkgname}/build
@@ -20,7 +21,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}/build
-  cmake -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" ..
+  cmake -DCMAKE_BUILD_TYPE="None" -DCMAKE_INSTALL_PREFIX="/usr" ..
   make
 }
 
@@ -28,4 +29,3 @@ package() {
   cd ${_pkgname}/build
   install -Dm755 src/FreeSerf "${pkgdir}/usr/bin/freeserf"
 }
-md5sums=('956fa204197ec29d688b0fbfbb50bd93')
