@@ -1,6 +1,6 @@
 pkgbase = dobiestation
 	pkgdesc = A Dog based emulator for the ps2
-	pkgver = r1786.6893405
+	pkgver = r1803.a755e9f
 	pkgrel = 1
 	url = https://github.com/PSI-Rockin/DobieStation/
 	arch = x86_64
