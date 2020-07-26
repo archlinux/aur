@@ -8,28 +8,22 @@ pkgname=java-openjdk-loom-ea-bin
 
 # loom is currently based on JDK 16
 _majorver=16
-_prerelease=3
-_buildno=43
+_prerelease=4
+_buildno=56
 
 
-# upstream release identifier
-#_commit="2becb640305a55f85a69"
-# use the first 7 digits for the Arch build version
-#_buildver=$(echo ${_commit} | cut -c1-7)
 _buildver=${_prerelease}_${_buildno}
 
 pkgver=${_majorver}_${_buildver}
 pkgrel=1
 # must use epoch as upstream breaks version comparisons
-epoch=36
+epoch=37
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
 pkgdesc="Java Project Loom OpenJDK ${_majorver} Early-Access Build"
 arch=('x86_64')
 
-# Remi Forax' "java-next" build service provides regular binary builds for several OpenJDK projects
-#url="https://github.com/forax/java-next"
 url="https://jdk.java.net/loom/"
 
 license=('GPL2')
@@ -48,35 +42,32 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 
-#_prefix=untagged-
-#source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_majorver}-loom-linux.tar.gz")
 source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
 
-sha256sums=('ab8bffefc37a57b4a54584684b16f9a0b7cf712f39a0adc40d06dd2d069637e5')
+sha256sums=('43beac8c4dab4c2eff61938427645a6f097ed711014afea14d3cee6c60e36314')
 
 _eaname=java-openjdk-loom-ea
-_jvmdir=usr/lib/jvm/${_eaname}
+_jvmdir=/usr/lib/jvm/${_eaname}
 
 package() {
 
   # Install
-  install -d "${pkgdir}/${_jvmdir}"
-#  cd jdk-${_majorver}-loom
+  install -d "${pkgdir}${_jvmdir}"
   cd jdk-${_majorver}
-  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
+  cp -a bin include jmods lib release "${pkgdir}${_jvmdir}/"
 
   # Link JKS keystore from ca-certificates-utils
-  rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+  rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
 
   # Legal
   install -d "${pkgdir}/usr/share/licenses/${_eaname}"
   cp -a legal "${pkgdir}/usr/share/licenses/${_eaname}/"
-  ln -s /usr/share/licenses/${_eaname} "${pkgdir}/${_jvmdir}/legal"
+  ln -s /usr/share/licenses/${_eaname} "${pkgdir}${_jvmdir}/legal"
 
   # Conf
   install -d "${pkgdir}/etc"
   cp -r conf "${pkgdir}/etc/${_eaname}"
-  ln -s /etc/${_eaname} "${pkgdir}/${_jvmdir}/conf"
+  ln -s /etc/${_eaname} "${pkgdir}${_jvmdir}/conf"
 }
 
