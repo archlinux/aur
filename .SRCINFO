@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-pixel-saver
+pkgbase = gnome-shell-extension-pixel-saver-git
 	pkgdesc = Saves pixels by fusing activity bar and title bar in a natural way
 	pkgver = 1.20.r7.g9ba4425
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = gnome-shell-extension-pixel-saver
 	source = git+https://github.com/deadalnix/pixel-saver
 	sha256sums = SKIP
 
-pkgname = gnome-shell-extension-pixel-saver
+pkgname = gnome-shell-extension-pixel-saver-git
 
