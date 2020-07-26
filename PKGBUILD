@@ -4,7 +4,7 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gitahead-bin
-pkgrel=1
+pkgrel=2
 pkgver=2.6.3
 pkgdesc='Understand your Git history!'
 url='http://gitahead.scitools.com/'
@@ -47,6 +47,8 @@ package() {
   chmod 755 "${pkgdir}/opt/gitahead/GitAhead"
   chmod 755 "${pkgdir}/opt/gitahead/indexer"
   chmod 755 "${pkgdir}/opt/gitahead/relauncher"
+  chmod 755 "${pkgdir}/opt/gitahead/git-credential-gnome-keyring"
+  chmod 755 "${pkgdir}/opt/gitahead/git-credential-libsecret"
 
   install -D -m644 "${srcdir}/gitahead-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m755 "${srcdir}/gitahead.sh" "${pkgdir}/usr/bin/gitahead"

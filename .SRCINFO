@@ -1,7 +1,7 @@
 pkgbase = gitahead-bin
 	pkgdesc = Understand your Git history!
 	pkgver = 2.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitahead.scitools.com/
 	arch = x86_64
 	license = custom
