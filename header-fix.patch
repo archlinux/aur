@@ -1,0 +1,22 @@
+diff --git a/src/v.h b/src/v.h
+index 20cc27f..03f360f 100644
+--- a/src/v.h
++++ b/src/v.h
+@@ -5021,7 +5021,7 @@ extern int32 __num_switch_chans; /* total num tranif channels in design */
+ extern int32 __num_inout_chans; /* total num inout switch chans design */ 
+ 
+ /* storage tables variables */
+-size_t __nxt_ofs;       /* next module all nets offset */
++extern size_t __nxt_ofs;       /* next module all nets offset */
+ 
+ /* simulation control and state values */
+ /* AIV 04/11/12 - this should be word32 - override for 64-bit movq */
+@@ -5072,7 +5072,7 @@ extern struct vtxlst_t *__off_vtxlst_hdr; /* bid chan vtx list for marks off */
+ extern struct vtxlst_t *__off_vtxlst_end; /* and ptr to end */
+ extern struct vtxlst_t *__vtxlst_freelst; /* free list for vtx lists */
+ extern struct vtx_t *__vtx_freelst;  /* free list for re-using vtxs */   
+-struct edge_t *__edge_freelst; /* free list for re-using edges */
++extern struct edge_t *__edge_freelst; /* free list for re-using edges */
+ extern int32 __nxt_bidvtx;    /* glb for next bid vtx index tab pos to fill */
+ 
+ extern word32 __acum_sb;      /* accumulator for stren tran chan combined */

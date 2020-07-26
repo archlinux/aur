@@ -1,0 +1,19 @@
+pkgbase = oss-cvc-git
+	pkgdesc = a full IEEE 1364 2005 compliant Verilog Hardware Description Language (HDL) simulator
+	pkgver = r11.d01c4ab
+	pkgrel = 1
+	url = https://github.com/cambridgehackers/open-src-cvc
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = oss-cvc
+	conflicts = oss-cvc
+	source = oss-cvc::git+https://github.com/cambridgehackers/open-src-cvc.git
+	source = header-fix.patch
+	source = mem-mgmt-fix.patch
+	md5sums = SKIP
+	md5sums = 87e282ade0fc00012cc2061f464276ad
+	md5sums = 288f25791fe0148f7c9fa8b009300add
+
+pkgname = oss-cvc-git
+

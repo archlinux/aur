@@ -1,0 +1,52 @@
+diff --git a/src/v.h b/src/v.h
+index 20cc27f..4924449 100644
+--- a/src/v.h
++++ b/src/v.h
+@@ -2984,6 +2984,7 @@ struct cbrec_t {
+  struct h_t *cb_cbhp;         /* associated handle of call back */
+  struct cbrec_t *cbnxt;       /* next in chain of all callbacks */
+  struct cbrec_t *cbprev;      /* previous in chain of all callbacks */
++ int32 postpone_free;
+ };
+ 
+ /* list for release and force cb all forms - many cbs possible */
+diff --git a/src/v_vpi.c b/src/v_vpi.c
+index 62f2fa5..12513c5 100644
+--- a/src/v_vpi.c
++++ b/src/v_vpi.c
+@@ -1640,6 +1640,7 @@ static vpiHandle bld_cbrec(p_cb_data cb_data_p, word32 cbclass)
+    gp = cbp->cb_hp->hrec->hu.hgp;
+    if (gp->g_class == GC_LOGIC) __logic_acc_off(gp);
+   }
++ cbp->postpone_free = 0;
+ 
+  return(cbref);
+ }
+@@ -1845,6 +1846,8 @@ extern void __alloc_plidce_prevval(struct dcevnt_t *dcep)
+  if (__dce_needs_prevval(dcep, NULL))
+   {
+    dcewid = __get_dcewid(dcep, np);
++   // unknown reason - alloc at least 8 words (valgrind reports invalid write)
++   if (dcewid < 8) dcewid = 8;
+    if (np->n_stren) dcep->pli_prevval.bp = (byte *) __my_malloc(dcewid);
+    else
+     {
+@@ -2792,7 +2795,9 @@ extern void __delay_callback(void)
+    __set_vpi_time(datp->time, &__simtime, datp->time->type, mdp); 
+   }
+ 
++ cbp->postpone_free = 1;
+  (*(cbp->cb_rtn))(datp);
++ cbp->postpone_free = 0;
+ 
+  /* datp freed since automatic var */
+  /* remove the call back since can't happen again */
+@@ -2809,6 +2814,8 @@ static void free_cbrec(struct cbrec_t *cbp)
+ {
+  struct h_t *cbhp;
+ 
++ if (cbp->postpone_free) return;
++
+  /* link out of list */ 
+  /* case 1: at front */
+  if (cbp->cbprev == NULL)
