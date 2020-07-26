@@ -3,20 +3,20 @@
 
 pkgname=abinit
 pkgver=8.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured atomic-scale first-principles simulation software."
 arch=('i686' 'x86_64')
 url="https://www.abinit.org/"
 license=('GPLv3')
 depends=('lapack' 'blas' 'openmpi')
-makedepends=('gcc-fortran' 'perl')
+makedepends=('gcc8-fortran' 'perl')
 source=(
   "https://www.abinit.org/sites/default/files/packages/$pkgname-$pkgver.tar.gz"
 )
 
 build() {
   cd -- "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr #--disable-all-plugins
+  ./configure FC=gfortran-8 CC=cc-8 --prefix=/usr #--disable-all-plugins
   make -j $(($(nproc) + 1))
 }
 
