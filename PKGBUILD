@@ -26,7 +26,7 @@ _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
 pkgver=0.9.2+r1856
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -63,7 +63,7 @@ replaces=("${_pkgname}<=${pkgver}")
 provides=("${_pkgname}=${pkgver}")
 license=(
          'BSD'
-         'LGPL2'
+         'LGPL2.1'
          'GPL2'
         )
 source=(
