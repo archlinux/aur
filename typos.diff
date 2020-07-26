@@ -1,0 +1,31 @@
+diff --git a/qt-recordmydesktop/src/rmdStrings.py b/qt-recordmydesktop/src/rmdStrings.py
+index 0b5398c..ee08aad 100644
+--- a/qt-recordmydesktop/src/rmdStrings.py
++++ b/qt-recordmydesktop/src/rmdStrings.py
+@@ -53,7 +53,7 @@ rmdErrStr={
+         9*256:_('Cannot connect to Xserver.'),
+         10*256:_('Color depth is not 24bpp.'),
+         11*256:_('Improper window specification.'),
+-        12*256:_('Cannot attach shared memory to proccess.'),
++        12*256:_('Cannot attach shared memory to process.'),
+         13*256:_('Cannot open file for writting.'),
+         14*256:_('Cannot load the Jack library (dlopen/dlsym error on libjack.so).'),
+         15*256:_('Cannot create new client.'),
+@@ -74,7 +74,7 @@ smplTooltipLabels=[_('Click here to select a window to record'),
+                 _('Click to start the recording.\nThis window will hide itself.'),
+                 _('Click to choose a filename and location.\nDefault is out.ogv in your home folder.\nIf the file already exists, the new one\nwill have a number attached on its name\n(this behavior can be changed )'),
+                 _('Click to exit the program.'),
+-                _('Select the video quality of your recording.\n(Lower quality will require more proccessing power,\nso it\'s recommended, when encoding on the fly,\nto leave at 100)'),
++                _('Select the video quality of your recording.\n(Lower quality will require more processing power,\nso it\'s recommended, when encoding on the fly,\nto leave at 100)'),
+                 _('Enable/Disable sound recording.'),
+                 _('Select the audio quality of your recording.'),
+                 _('Click here to access more options.')]
+@@ -86,7 +86,7 @@ smplStrings={   'Record':_("Record"),
+     }
+ 
+ monStrings={'Cancel':_("Cancel"),
+-            'PleaseWait':_("Please wait while your recording is being encoded\nWARNING!!!\nIf you press Cancel or close this window,\nthis proccess cannot be resumed!"),
++            'PleaseWait':_("Please wait while your recording is being encoded\nWARNING!!!\nIf you press Cancel or close this window,\nthis process cannot be resumed!"),
+             'complete':_("complete")
+     }
+ 

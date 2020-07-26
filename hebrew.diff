@@ -1,0 +1,548 @@
+diff --git a/qt-recordmydesktop/po/LINGUAS b/qt-recordmydesktop/po/LINGUAS
+index 831cf90..d29c5cd 100644
+--- a/qt-recordmydesktop/po/LINGUAS
++++ b/qt-recordmydesktop/po/LINGUAS
+@@ -4,6 +4,7 @@ de
+ el
+ es
+ fr
++he_IL
+ it
+ ja
+ nl
+diff --git a/qt-recordmydesktop/po/he_IL.po b/qt-recordmydesktop/po/he_IL.po
+new file mode 100644
+index 0000000..cb8cb14
+--- /dev/null
++++ b/qt-recordmydesktop/po/he_IL.po
+@@ -0,0 +1,530 @@
++# translation of messages.po to Hebrew
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Nadav Kavalerchik <nadavkav@netvision.net.il>, 2008.
++msgid ""
++msgstr ""
++"Project-Id-Version: messages\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2007-08-15 01:56+0300\n"
++"PO-Revision-Date: 2008-05-28 00:08+0300\n"
++"Last-Translator: Nadav Kavalerchik <nadavkav@netvision.net.il>\n"
++"Language-Team: Hebrew <en@li.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"X-Generator: KBabel 1.11.4\n"
++"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
++
++#: src/rmdStrings.py:10
++msgid "Show/hide Main Window"
++msgstr "הצגה/הסתרה של חלון ראשי"
++
++#: src/rmdStrings.py:11
++msgid "_Select Area On Screen"
++msgstr "_בחירת אזור לכידה על המסך"
++
++#: src/rmdStrings.py:12 src/rmdStrings.py:60
++msgid "Quit"
++msgstr "סיום"
++
++#: src/rmdStrings.py:13
++msgid "a graphical frontend for recordMyDesktop"
++msgstr "ממשק גרפי עבור recordMyDesktop"
++
++#: src/rmdStrings.py:14
++msgid ""
++"Copyright (C) John Varouhakis\n"
++"Portions Copyright (C) 2005-6 Zaheer Abbas Merali, John N. Laliberte\n"
++"Portions Copyright (C) Fluendo S.L."
++msgstr ""
++"Copyright (C) John Varouhakis\n"
++"Portions Copyright (C) 2005-6 Zaheer Abbas Merali, John N. Laliberte\n"
++"Portions Copyright (C) Fluendo S.L."
++
++#: src/rmdStrings.py:15
++msgid "Translator Credits And Information(Replace with your info)"
++msgstr "תורגם על ידי נדב קבלרציק"
++
++#: src/rmdStrings.py:19
++msgid "Success"
++msgstr "הסתיים בהצלחה"
++
++#: src/rmdStrings.py:20
++msgid "Error while parsing the arguments."
++msgstr "התגלתה שגיאה בעת עיבוד פקודות האתחול"
++
++#: src/rmdStrings.py:21
++msgid "Initializing the encoder failed(either vorbis or theora)"
++msgstr "אתחול המקודד נכשל (מקודד דחיסת הסרט או הקול)"
++
++#: src/rmdStrings.py:22
++msgid "Could not open/configure sound card."
++msgstr "לא ניתן לאתחל או להגדיר גישה לכרטיס הקול של המערכת"
++
++#: src/rmdStrings.py:23
++msgid "Xdamage extension not present."
++msgstr "רכיב Xdamage אינו קיים."
++
++#: src/rmdStrings.py:24
++msgid "Shared memory extension not present."
++msgstr "רכיב זיכרון-משותף של מסך המחשב אינו קיים."
++
++#: src/rmdStrings.py:25
++msgid "Xfixes extension not present."
++msgstr "רכיב Xfixes אינו קיים."
++
++#: src/rmdStrings.py:26
++msgid "XInitThreads failed."
++msgstr "XInitThreads נכשל."
++
++#: src/rmdStrings.py:27
++msgid "No $DISPLAY environment variable and none specified as argument."
++msgstr "לא קיים או מוגדר משתנה מערכת DISPLAY$"
++
++#: src/rmdStrings.py:28
++msgid "Cannot connect to Xserver."
++msgstr "אין אפשרות להתחבר לשרת הגרפי Xserver"
++
++#: src/rmdStrings.py:29
++msgid "Color depth is not 24bpp."
++msgstr "עומק דגימת צבע של נקודה במסך אינו 24bpp"
++
++#: src/rmdStrings.py:30
++msgid "Improper window specification."
++msgstr "הגדרת חלון אינה תקינה"
++
++#: src/rmdStrings.py:31
++msgid "Cannot attach shared memory to proccess."
++msgstr "אין אפשרות לקשר בין זיכרון-משותף לתוכנה."
++
++#: src/rmdStrings.py:32
++msgid "Cannot open file for writting."
++msgstr "אין אפשרות לפתוח קובץ לכתיבה."
++
++#: src/rmdStrings.py:33
++msgid "Cannot load the Jack library (dlopen/dlsym error on libjack.so)."
++msgstr "אין אפשרות לפתוח קשר לספריית צליל Jack (dlopen/dlsym error on libjack.so)."
++
++#: src/rmdStrings.py:34
++msgid "Cannot create new client."
++msgstr "אין אפשרות ליצור לוכד מסך חדש."
++
++#: src/rmdStrings.py:35
++msgid "Cannot activate client."
++msgstr "אין אפשרות להפעיל את התוכנה"
++
++#: src/rmdStrings.py:36
++msgid "Port registration/connection failure."
++msgstr "חיבור נכשל"
++
++#: src/rmdStrings.py:37
++msgid "Segmentation Fault"
++msgstr "תקלה חמורה"
++
++#: src/rmdStrings.py:40
++msgid ""
++"Recording is finished.\n"
++"recordMyDesktop has exited with status"
++msgstr ""
++"ההקלטה הסתיימה.\n"
++"recordMyDesktop להלן קוד הסיום של"
++
++#: src/rmdStrings.py:41
++msgid "Description"
++msgstr "תאור"
++
++#: src/rmdStrings.py:42
++msgid ""
++"Recording is finished.\n"
++"recordMyDesktop has exited with uknown\n"
++"error code"
++msgstr ""
++"ההקלטה הסתיימה.\n"
++"recordMyDesktop סיימה את ההקלטה עם\n"
++"קוד סיום לא ידוע"
++
++#: src/rmdStrings.py:46 src/rmdStrings.py:76
++msgid "Video Quality"
++msgstr "איכות הסרט"
++
++#: src/rmdStrings.py:46 src/rmdStrings.py:76
++msgid "Sound Quality"
++msgstr "איכות הקול"
++
++#: src/rmdStrings.py:47
++msgid "Advanced"
++msgstr "מתקדם"
++
++#: src/rmdStrings.py:47
++msgid "Select Window"
++msgstr "בחירת חלון"
++
++#: src/rmdStrings.py:48
++msgid "Click here to select a window to record"
++msgstr "הקליקו כאן כדי לבחור חלון אותו רוצים להקליט"
++
++#: src/rmdStrings.py:49
++msgid ""
++"Click to start the recording.\n"
++"This window will hide itself."
++msgstr ""
++"הקליקו כאן כדי להתחיל את ההקלטה.\n"
++"חלון זה יחביא את עצמו."
++
++#: src/rmdStrings.py:50
++msgid ""
++"Click to choose a filename and location.\n"
++"Default is out.ogv in your home folder.\n"
++"If the file already exists, the new one\n"
++"will have a number attached on its name\n"
++"(this behavior can be changed )"
++msgstr ""
++"הקליקו כדי לבחור שם קובץ ומיקום.\n"
++"בררת המחדל היא out.ogv בתיקיית הבית שלכם.\n"
++"אם קובץ זה קיים, קובץ נוסף יווצר\n"
++"עם מספר חדש בסוף שם הקובץ\n"
++"(ניתן לשנות מאפיינים אילו )"
++
++#: src/rmdStrings.py:51
++msgid "Click to exit the program."
++msgstr "הקליקו ליציאה מהתוכנה."
++
++#: src/rmdStrings.py:52
++msgid ""
++"Select the video quality of your recording.\n"
++"(Lower quality will require more proccessing power,\n"
++"so it's recommended, when encoding on the fly,\n"
++"to leave at 100)"
++msgstr ""
++
++#: src/rmdStrings.py:53
++msgid "Enable/Disable sound recording."
++msgstr "הפעלה/כיבוי של הקלטת קול."
++
++#: src/rmdStrings.py:54
++msgid "Select the audio quality of your recording."
++msgstr "בחרו את איכות הקול של ההקלטה."
++
++#: src/rmdStrings.py:55
++msgid "Click here to access more options."
++msgstr "הקליקו כאן לאפשרויות נוספות."
++
++#: src/rmdStrings.py:56
++msgid ""
++"\n"
++"Left click and drag, on the preview image,\n"
++"to select an area for recording.\n"
++"Right click on it, to reset the area."
++msgstr ""
++
++#: src/rmdStrings.py:58
++msgid "Record"
++msgstr "הקלטה"
++
++#: src/rmdStrings.py:59
++msgid "Save As"
++msgstr "שמירה בשם"
++
++#: src/rmdStrings.py:63
++msgid "Cancel"
++msgstr "ביטול"
++
++#: src/rmdStrings.py:64
++msgid ""
++"Please wait while your recording is being encoded\n"
++"WARNING!!!\n"
++"If you press Cancel or close this window,\n"
++"this proccess cannot be resumed!"
++msgstr ""
++
++#: src/rmdStrings.py:65
++msgid "complete"
++msgstr "הושלם"
++
++#: src/rmdStrings.py:68
++msgid "Overwite Existing Files"
++msgstr "החלפת קבצים קיימים"
++
++#: src/rmdStrings.py:68
++msgid "Working Directory"
++msgstr "ספרייה לקבצים זמניים"
++
++#: src/rmdStrings.py:69 src/rmdStrings.py:83
++msgid "Frames Per Second"
++msgstr "תמונות בשנייה"
++
++#: src/rmdStrings.py:69
++msgid "Encode On the Fly"
++msgstr "דחיסה בזמן אמת"
++
++#: src/rmdStrings.py:69
++msgid "Zero Compression"
++msgstr "ללא דחיסה"
++
++#: src/rmdStrings.py:70
++msgid "Quick Subsampling"
++msgstr "תת-דגימת תמונה מהירה"
++
++#: src/rmdStrings.py:70
++msgid "Full shots at every frame"
++msgstr "תמונת מסך מלאה בכל דגימה"
++
++#: src/rmdStrings.py:71
++msgid "Channels"
++msgstr "ערוצים"
++
++#: src/rmdStrings.py:71
++msgid "Frequency"
++msgstr "תדירות"
++
++#: src/rmdStrings.py:71
++msgid "Device"
++msgstr "רכיב קול"
++
++#: src/rmdStrings.py:71
++msgid "Display"
++msgstr "מסך"
++
++#: src/rmdStrings.py:71
++msgid "Mouse Cursor"
++msgstr "סמן העכבר"
++
++#: src/rmdStrings.py:72
++msgid "Follow Mouse"
++msgstr "עקיבה אחר העכבר"
++
++#: src/rmdStrings.py:72
++msgid "MIT-Shm extension"
++msgstr "רכיב |MIT-Shm לזיכרון משותף"
++
++#: src/rmdStrings.py:72
++msgid "Include Window Decorations"
++msgstr "לכידת מסגרות החלונות"
++
++#: src/rmdStrings.py:73
++msgid "Tooltips"
++msgstr "עצות"
++
++#: src/rmdStrings.py:73
++msgid "Outline Capture Area On Screen"
++msgstr "סימון אזור הלכידה על המסך"
++
++#: src/rmdStrings.py:74
++msgid "Reset Capture Area"
++msgstr "איפוס אזור הלכידה"
++
++#: src/rmdStrings.py:75
++msgid "Extra Options"
++msgstr "אפשרויות נוספות"
++
++#: src/rmdStrings.py:77
++msgid "Drop Frames(encoder)"
++msgstr ""
++
++#: src/rmdStrings.py:77
++msgid "Startup Delay(secs)"
++msgstr "השהיית תחילת הלכידה (בשניות)"
++
++#: src/rmdStrings.py:78
++msgid "Normal"
++msgstr "רגיל"
++
++#: src/rmdStrings.py:78
++msgid "White"
++msgstr "לבן"
++
++#: src/rmdStrings.py:78
++msgid "Black"
++msgstr "שחור"
++
++#: src/rmdStrings.py:78
++msgid "None"
++msgstr "ללא"
++
++#: src/rmdStrings.py:79
++msgid "Enabled"
++msgstr "פעיל"
++
++#: src/rmdStrings.py:79
++msgid "Disabled"
++msgstr "כבוי"
++
++#: src/rmdStrings.py:80
++msgid "Files"
++msgstr "קבצים"
++
++#: src/rmdStrings.py:80
++msgid "Performance"
++msgstr "ביצועים"
++
++#: src/rmdStrings.py:80
++msgid "Sound"
++msgstr "צליל"
++
++#: src/rmdStrings.py:80
++msgid "Misc"
++msgstr "שונות"
++
++#: src/rmdStrings.py:81
++msgid ""
++"By default, if you try to save under a filename that already\n"
++"exists, the new file will be renamed\n"
++"(for example if you try to save as out.ogv and that file exists, your file "
++"will be named out.ogv.1).\n"
++"By checking this box, this behavior is disabled and the old file is "
++"overwritten.\n"
++msgstr ""
++
++#: src/rmdStrings.py:82
++msgid "Directory where temporary files will be saved."
++msgstr "הספרייה בה ישמרו קבצים זמניים"
++
++#: src/rmdStrings.py:84
++msgid ""
++"Encode simultaneously with the recording.\n"
++"This will require a lot more processing power.\n"
++msgstr ""
++
++#: src/rmdStrings.py:85
++msgid ""
++"Do not apply compression on the temporary files.\n"
++"If enabled, the program will need less processing power,\n"
++"in the expense of hard disk space.\n"
++"This option is valid only when encoding on the fly is disabled."
++msgstr ""
++
++#: src/rmdStrings.py:86
++msgid ""
++"This option, if enabled, will cause the program to require less\n"
++"processing power, but it might make the colors look a bit more blurry."
++msgstr ""
++
++#: src/rmdStrings.py:87
++msgid ""
++"This option should be enabled when recording 3d windows.\n"
++"It is also auto-enabled when recording a\n"
++"known 3d compositing window manager.\n"
++" "
++msgstr ""
++
++#: src/rmdStrings.py:88
++msgid "Number of audio channels."
++msgstr "מספר ערוצי קול."
++
++#: src/rmdStrings.py:89
++msgid "Sound frequency."
++msgstr "תדר הצליל."
++
++#: src/rmdStrings.py:90
++msgid "ALSA sound device, that is used for sound recording."
++msgstr "כרטיס המוסיקה, המשמש להקלטת הקול."
++
++#: src/rmdStrings.py:91
++msgid "Connection to the Xserver."
++msgstr "חיבור לשרת הגרפי XServer"
++
++#: src/rmdStrings.py:92
++msgid ""
++"The mouse cursor that will be drawn.\n"
++"Normal is for the real cursor that you see while recording,\n"
++"while black and white are fake cursors, drawn by the program.\n"
++"You can also disable cursor drawing."
++msgstr ""
++
++#: src/rmdStrings.py:93
++msgid ""
++"When This option is enabled, the capture\n"
++"area will follow your mouse cursor.\n"
++"Enabling this option will also enable full shots at\n"
++"every frame, so it's not recommended\n"
++"for large capture areas."
++msgstr ""
++
++#: src/rmdStrings.py:94
++msgid ""
++"Use the MIT-Shared memory extension, whenever appropriate,\n"
++" depending on the rest of the program settings.\n"
++"Disabling this option is not recommended,\n"
++"as it may severely slow down the program."
++msgstr ""
++
++#: src/rmdStrings.py:95
++msgid ""
++"When selecting a window via the \"Select Window\" button,\n"
++"include that window's decorations in the recording area."
++msgstr ""
++
++#: src/rmdStrings.py:96
++msgid ""
++"Enable or disable tooltips, like this one.\n"
++"(Requires restart)"
++msgstr ""
++
++#: src/rmdStrings.py:97
++msgid ""
++"Draw a frame on the screen, around the area\n"
++"that will get captured.\n"
++"(This frame will remain throughout the recording.)"
++msgstr ""
++
++#: src/rmdStrings.py:98
++msgid ""
++"Reset capture area after every recording\n"
++"and at program shutdown."
++msgstr ""
++
++#: src/rmdStrings.py:99
++msgid ""
++"Extra commandline options that will get\n"
++"passed to recordMyDesktop during initialization.\n"
++"These options must be entered the same way\n"
++"they would in the commandline (i.e. separated with spaces).\n"
++"Consult the manpage for more information on using them."
++msgstr ""
++
++#: src/rmdStrings.py:100
++msgid ""
++"Enable this option to record audio through\n"
++"JACK. The Jack server must be running in order to\n"
++"obtain the ports that will be recorded.\n"
++"The audio recorded from each one\n"
++"will be written on a channel of its own.\n"
++"recordMyDesktop must be compiled with JACK\n"
++"support for this option to work."
++msgstr ""
++
++#: src/rmdStrings.py:102
++msgid "Use Jack for audio capture."
++msgstr "שימוש בממשק JACK להקלטה של קול"
++
++#: src/rmdStrings.py:103
++msgid ""
++"Select the ports you want to record from\n"
++"(hold Ctrl to select multiple entries):"
++msgstr ""
++
++#: src/rmdStrings.py:105
++msgid "Available Ports"
++msgstr "חיבורים זמינים"
++
++#: src/rmdStrings.py:106
++msgid "jack_lsp returned no ports."
++msgstr "jack_lsp לא מציג חיבורים זמינים."
++
++#: src/rmdStrings.py:107
++msgid "Make sure that jackd is running."
++msgstr "אנא בדקו ש- JACK פעיל."
++
++#: src/rmdStrings.py:108
++msgid "Available ports (double click to add):"
++msgstr "חיבורים זמינים"
++
++#: src/rmdStrings.py:109
++msgid "Selected ports (double click to remove):"
++msgstr "חיבורים מסומנים"
++
++#: src/rmdStrings.py:110
++msgid "Refresh"
++msgstr "ריענון"
