@@ -7,14 +7,14 @@
 
 pkgname=iscan-plugin-gt-f720
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F720, GT-S620, Perfection V30, Perfection V300 Photo)"
 arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON EULA')
 depends=('iscan')
 source=("https://download2.ebz.epson.net/iscan/plugin/gt-f720/deb/x64/iscan-gt-f720-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums=('9e4b56994d83241472e15f1c9c1f37646a12809921aea912724a07b152d5437b')
+sha256sums=('9c466190c005467dac7df2512e8c6de182f1bd6cb30ae5e55918ad81299c4fce')
 install="${pkgname}.install"
 
 prepare() {
