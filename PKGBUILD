@@ -1,6 +1,6 @@
 # Maintainer: Gobinath <slgobinath@gmail.com>
 pkgname=gcalendar
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A Free and Open Source tool to read your Google Calendar events in JSON format."
 arch=("any")
@@ -12,7 +12,7 @@ depends=("python"
          "python-oauth2client")
 makedepends=("python-setuptools" "python-pip")
 source=(gcalendar-$pkgver.tar.gz::"https://github.com/slgobinath/gcalendar/archive/v$pkgver.tar.gz")
-sha1sums=('4d7b673752033e9126af07d7641a7772e3998b14')
+sha1sums=('6d8edfedc7b31f75adc3a7e343dbd1534491f1b3')
 
 package() {
     cd "$srcdir/gcalendar-$pkgver"

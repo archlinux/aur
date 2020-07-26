@@ -1,6 +1,6 @@
 pkgbase = gcalendar
 	pkgdesc = A Free and Open Source tool to read your Google Calendar events in JSON format.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/slgobinath/gcalendar
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = gcalendar
 	depends = python-dateutil
 	depends = python-google-api-python-client
 	depends = python-oauth2client
-	source = gcalendar-0.3.tar.gz::https://github.com/slgobinath/gcalendar/archive/v0.3.tar.gz
-	sha1sums = 4d7b673752033e9126af07d7641a7772e3998b14
+	source = gcalendar-0.4.tar.gz::https://github.com/slgobinath/gcalendar/archive/v0.4.tar.gz
+	sha1sums = 6d8edfedc7b31f75adc3a7e343dbd1534491f1b3
 
 pkgname = gcalendar
 
