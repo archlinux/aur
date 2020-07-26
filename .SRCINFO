@@ -1,7 +1,7 @@
 pkgbase = ums-headless
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems.
 	pkgver = 9.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.universalmediaserver.com/
 	arch = i686
 	arch = x86_64

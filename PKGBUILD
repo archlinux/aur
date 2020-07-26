@@ -4,7 +4,7 @@
 
 pkgname=ums-headless
 pkgver=9.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://www.universalmediaserver.com/"
