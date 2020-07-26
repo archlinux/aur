@@ -1,0 +1,16 @@
+pkgbase = python-click-spinner
+	pkgdesc = Spinner for Click
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/click-contrib/click-spinner
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/c/click-spinner/click-spinner-0.1.10.tar.gz
+	source = https://github.com/click-contrib/click-spinner/raw/master/LICENSE
+	sha256sums = 87eacf9d7298973a25d7615ef57d4782aebf913a532bba4b28a37e366e975daf
+	sha256sums = 5a6c9188bff3c34c09dce216996d2c99fc9ea8c1baea3a6903b893d979ac721e
+
+pkgname = python-click-spinner
+
