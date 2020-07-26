@@ -1,0 +1,12 @@
+pkgbase = huhnitor
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/SpacehuhnTech/Huhnitor
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = https://github.com/SpacehuhnTech/Huhnitor/archive/1.1.2.tar.gz
+	sha256sums = 0e29996f223fbb8c04121b775897f83db980e349d1e14d50b86e0067ec875222
+
+pkgname = huhnitor
+
