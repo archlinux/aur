@@ -1,5 +1,5 @@
 diff --git a/rip.pl b/rip.pl
-index ef8815a..265a56c 100644
+index a8045b0..6682a68 100644
 --- a/rip.pl
 +++ b/rip.pl
 @@ -1,4 +1,4 @@
@@ -8,7 +8,7 @@ index ef8815a..265a56c 100644
  #-------------------------------------------------------------------------
  # Rip - RegRipper, CLI version
  # Use this utility to run a plugins file or a single plugin against a Reg
-@@ -62,7 +62,7 @@ $str =~ s/($path[scalar(@path) - 1])//;
+@@ -65,7 +65,7 @@ $str =~ s/($path[scalar(@path) - 1])//;
  # code updated 20190318
  my $plugindir;
  ($^O eq "MSWin32") ? ($plugindir = $str."plugins/")
@@ -17,10 +17,10 @@ index ef8815a..265a56c 100644
  #my $plugindir = $str."plugins/";
  #my $plugindir = File::Spec->catfile("plugins");
  #print "Plugins Dir = ".$plugindir."\n";
-@@ -401,4 +401,4 @@ sub getTime($$) {
- 	};
- 	$t = 0 if ($t < 0);
- 	return $t;
+@@ -557,4 +557,4 @@ sub getDateFromEpoch {
+ 	my ($sec,$min,$hour,$mday,$mon,$year) = gmtime($epoch);
+ 	my $fmt = sprintf("%04d-%02d-%02d %02d:%02d:%02d",(1900 + $year),($mon + 1),$mday,$hour,$min,$sec);
+ 	return $fmt;
 -}
 \ No newline at end of file
 +}

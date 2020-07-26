@@ -2,18 +2,18 @@
 
 # RegRipper
 pkgname=regripper-git
-pkgver=r181.4cb4ea5
-pkgrel=1
+pkgver=r15.9f2a96a
+pkgrel=2
 pkgdesc="RegRipper is an open source forensic software used as a Windows Registry data extraction command line or GUI tool."
 arch=('any')
-url="https://github.com/keydet89/RegRipper2.8"
+url="https://github.com/keydet89/RegRipper3.0"
 depends=('perl' 'perl-parse-registry')
 makedepends=('git')
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/keydet89/RegRipper2.8.git"
+source=("$pkgname::git+https://github.com/keydet89/RegRipper3.0"
         "patch.diff")
-md5sums=('SKIP'
-         'cd51371361a3377bf6af11ee1630e09e')
+sha256sums=('SKIP'
+            'b1c590c5ec4e42fb920f7d4089c8acac7cda6d4dbef265ca78ba7bfff4d5118c')
 
 pkgver() {
   cd "$pkgname"
@@ -24,14 +24,9 @@ pkgver() {
 
 build() {
   patch -o "$pkgname/regripper" "$pkgname/rip.pl" < patch.diff
-  #cd "$pkgname"
-  ## Remove windows perl shebang
-  #tail -n +2 rip.pl > regripper
+  cd "$pkgname"
   ## Clean windows ^M new lines
-  #sed -i $'s/\r$//' regripper
-  ## Add your Linux perl shebang
-  #sed -i "1i #!$(which perl)" regripper
-  #sed -i '2i use lib qw(/usr/local/lib/rip-lib/lib/perl5/);' regripper
+  sed -i $'s/\r$//' regripper
 }
 
 package() {
