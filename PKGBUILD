@@ -1,42 +1,29 @@
-# Maintainer: lazant <a.l.i.c.e at outlook.com>
-pkgname="google-play-music-desktop-player-bin"
-_pkgname="google-play-music-desktop-player"
-pkgver=4.4.0
+# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Contributor: lazant <a.l.i.c.e at outlook.com>
+
+pkgname=google-play-music-desktop-player-bin
+_pkgname=${pkgname%-bin}
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music"
-arch=("x86_64")
-url="https://www.googleplaymusicdesktopplayer.com/"
-license=("MIT")
-depends=("nodejs")
-makedepends=("imagemagick")
-source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v$pkgver/google-play-music-desktop-player-$pkgver.x86_64.rpm"
-        "google-play-music-desktop-player.svg")
-md5sums=('cad27c08acddbe31cf94f115cdc306dd'
-         'd1228e3d4612a3a59115e404793936a2')
+arch=('x86_64')
+url="https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-"
+license=('MIT')
+depends=('avahi' 'libappindicator-gtk3')
+provides=('google-play-music-desktop-player-git' 'google-play-music-desktop-player')
+conflicts=('google-play-music-desktop-player-git' 'google-play-music-desktop-player')
+source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+        "LICENSE::https://raw.githubusercontent.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/v${pkgver}/LICENSE")
+sha256sums=('b9d4f7fd01e4d7286af9c30c049b0c30c884f900d80f44d43d8a9bad0b4b55d2'
+            '7253553744e72ab40fff010dc268cbdf01c4d95f313550aaf2c9b65c1cfb7ae7')
 
 package() {
-  cd ${srcdir}
-  
-  msg2 "  -> Installing program..."
-  install -d $pkgdir/usr/share
-  cp -r usr/share/$_pkgname $pkgdir/usr/share/$_pkgname
-  
-  install -d $pkgdir/usr/bin
-  ln -s "/usr/share/google-play-music-desktop-player/Google Play Music Desktop Player" $pkgdir/usr/bin/$_pkgname
-  
-  msg2 "  -> Installing icons..."
-  install -d $pkgdir/usr/share/icons/hicolor/scalable/apps
-  install -Dm755 $_pkgname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
-  for icon_size in 128 256 512 1024
-  do
-    install -d $pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    convert usr/share/pixmaps/$_pkgname.png -resize ${icon_size}x${icon_size} $pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/$_pkgname.png
-  done
-  
-  msg2 "  -> Installing .desktop file..."
-  install -d $pkgdir/usr/share/applications
-  install -Dm755 usr/share/applications/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
-  
-  msg2 "  -> Installing license..."
-  install -Dm755 usr/share/doc/$_pkgname/copyright $pkgdir/usr/share/licenses/$_pkgname/copyright
+  tar -xf data.tar.xz -C ${pkgdir}
+
+  rm -rf ${pkgdir}/usr/share/lintian
+  rm -rf ${pkgdir}/usr/share/doc
+
+  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+
+# vim: set sw=2 ts=2 et:
