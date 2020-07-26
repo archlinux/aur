@@ -4,17 +4,17 @@ pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('any')
-url=""
+url="https://gitlab.com/netlify-desktop/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
-source=('git+https://gitlab.com/netlify-desktop/netlify-application')
+source=('git+https://gitlab.com/netlify-desktop/application')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/application"
     node -pe "require('./package.json').version"
 }
 
