@@ -1,6 +1,6 @@
 pkgbase = emscripten-git
 	pkgdesc = LLVM-to-JavaScript compiler
-	pkgver = 1.39.19.r66.ga2ef06ba9
+	pkgver = 1.39.20.r14.gdf5f6d150
 	pkgrel = 1
 	epoch = 2
 	url = http://emscripten.org
@@ -23,7 +23,7 @@ pkgbase = emscripten-git
 	optdepends = ruby: for running some scripts
 	provides = emscripten
 	conflicts = emscripten
-	source = git://github.com/kripken/emscripten.git
+	source = git+https://github.com/emscripten-core/emscripten.git
 	source = git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e
 	source = emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten
 	source = libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten

@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.39.19.r66.ga2ef06ba9
+pkgver=1.39.20.r14.gdf5f6d150
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('java-runtime: for using clojure'
 	    'ruby: for running some scripts')
 conflicts=('emscripten')
 provides=('emscripten')
-source=('git://github.com/kripken/emscripten.git'
+source=('git+https://github.com/emscripten-core/emscripten.git'
 	'git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e'
         'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
 	'libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten'
