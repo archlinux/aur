@@ -1,0 +1,46 @@
+pkgbase = auto-07p-git
+	pkgdesc = Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI.
+	pkgver = 0.9.2+r1856
+	pkgrel = 1
+	url = http://cmvl.cs.concordia.ca/auto/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = LGPL2
+	license = GPL2
+	makedepends = g95
+	makedepends = gcc
+	depends = bash
+	depends = g95
+	depends = gcc
+	depends = python2
+	optdepends = python2-matplotlib: For python interface.
+	optdepends = ipython2: For python interface.
+	optdepends = lesstif: For GUI94 and PLAUT04.
+	optdepends = openmotif: For GUI94 and PLAUT04. ('openmotif' can be used instead of 'lesstif')
+	optdepends = xterm: For PLAUT plotting interface.
+	optdepends = soxt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes').
+	optdepends = soqt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('soqt' can be used instead of 'soxt'. If using 'soqt', set '_PLAUT04_WITH_QT' to 'yes'.)
+	optdepends = coin: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes').
+	optdepends = inventor: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('inventor' can be used instead of 'coin', but 'coin' (Coin3D) is recommended (see AUTO documentation).)
+	optdepends = openmpi: For MPI message passing (parallel computation). To build, set the environment variable '_WITH_OPENMP' to 'yes'.
+	optdepends = texlive-bin: For compiling the manual (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes').
+	optdepends = transfig: For compiling the manual (enable manual compiling in PKGBUILD (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes')).
+	provides = auto-07p=0.9.2+r1856
+	conflicts = auto-07p
+	replaces = auto-07p<=0.9.2+r1856
+	options = libtool
+	options = staticlibs
+	source = auto-07p::git+git://github.com/auto-07p/auto-07p.git
+	source = auto-07p_debian.tar.xz::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_0.9.2+dfsg-3.debian.tar.xz
+	source = auto-07p-session.bash
+	source = xpdf-dummy
+	source = makepkg.sh
+	sha256sums = SKIP
+	sha256sums = a5193041895eb79912f4932d8de234d1d7ba7d7b8eb0acb7ccc0c6c0e2cf25a5
+	sha256sums = 14d272315859abb260208cfc0a437ff41d66b22960180cfa9c80161e7dded3f4
+	sha256sums = cc83e032003bd9b79eaaee2bd91f77767caf55741ce02e9556dd49142ee1e911
+	sha256sums = 73bef420fdebb6b86b358bcd0f3d86e86f6963e76c7ae281391ec76a940c7644
+
+pkgname = auto-07p-git
+
