@@ -1,0 +1,24 @@
+pkgbase = raspi-config-git
+	pkgdesc = A simple configuration tool for common Raspberry Pi administrative tasks (ArchlinuxARM fork)
+	pkgver = 20200726.r329.b1ab50b
+	pkgrel = 1
+	url = https://github.com/petronny/raspi-config-alarm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = alsa-utils
+	depends = libnewt
+	depends = lua51
+	depends = parted
+	depends = psmisc
+	optdepends = iw
+	optdepends = triggerhappy
+	optdepends = raspi-firmware
+	optdepends = xorg-xrandr
+	provides = raspi-config
+	conflicts = raspi-config
+	source = git+https://github.com/petronny/raspi-config-alarm
+	md5sums = SKIP
+
+pkgname = raspi-config-git
+
