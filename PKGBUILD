@@ -12,9 +12,9 @@ source=("https://xrphd.org/public/wallets/xhd-v$pkgver.0-$commit-x86_64-linux-gn
         "xhd-qt.sh"
         "xrphd128.png")
 sha256sums=('590f596b5ebba73c986fca91dd0d6acbc24b57fbcc356c8f599a4dabe2441836'
-            '498ec02ea83c0eaedc159c31945360da608031cf05c743c1d4b0ef3b8721c274'
-            '00550d0c43b543747bf01f6b670c2835d7a44859e6a2fb9d03fd0ca496a7635e'
-            '5d8aa9d0cbf873fa08c23890ec37a237ddd822277652e87d20b999b8dac1f7a4')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
 	pkgdesc="XRPHD is a peer-to-peer network based digital currency"
