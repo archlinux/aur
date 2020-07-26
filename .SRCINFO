@@ -1,0 +1,18 @@
+pkgbase = zff
+	pkgdesc = A simple game
+	pkgver = 5.5.3
+	pkgrel = 1
+	url = https://github.com/ohzff/Zff
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = git
+	depends = wget
+	depends = gcc
+	depends = bash
+	source = git+https://github.com/ohzff/Zff
+	md5sums = SKIP
+
+pkgname = zff
+
