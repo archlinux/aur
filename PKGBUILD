@@ -3,14 +3,14 @@
  
 pkgname=linuxptp
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.'
 arch=('i686' 'x86_64')
 url='http://linuxptp.sourceforge.net/'
 license=('GPL')
 depends=('glibc')
 makedepends=()
-source=("https://sourceforge.net/projects/${pkgname}/files/v${pkgver}/${pkgname}-${pkgver}.tgz/download")
+source=("${pkgname}-${pkgver}.tgz::https://sourceforge.net/projects/${pkgname}/files/v${pkgver}/${pkgname}-${pkgver}.tgz/download")
 sha256sums=('d74ceca722c75bfff53c633425f926dd48eb04f4a089451b855155c016d15785')
  
 build() {
