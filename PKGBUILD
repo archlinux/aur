@@ -7,7 +7,7 @@ _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full
 pkgver=4.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -73,22 +73,12 @@ prepare() {
 
 build() {
     cd "ffmpeg-${pkgver}"
-    
-    local _ldflags='-L/opt/cuda/lib64'
-    
-    # set path of -lcuda on systems with legacy nvidia-340xx drivers
-    # (libcuda.so.x, required by --enable-cuda-sdk)
-    if pacman -Qs '^nvidia-340xx-utils' >/dev/null 2>&1
-    then
-        _ldflags+=' -L/usr/lib/nvidia'
-    fi
-    
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
         --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
-        --extra-ldflags="$_ldflags" \
+        --extra-ldflags='-L/opt/cuda/lib64' \
         \
         --disable-rpath \
         --enable-gpl \
