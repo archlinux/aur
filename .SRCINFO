@@ -1,27 +1,16 @@
 pkgbase = python-gtfparse
 	pkgdesc = Python library for parsing GTF files
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/gtfparse
 	arch = any
 	license = Apache
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-pypandoc
-	makedepends = python2
-	makedepends = python2-setuptools
-	makedepends = python2-pypandoc
 	options = !emptydirs
 	source = python-gtfparse-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/g/gtfparse/gtfparse-1.2.0.tar.gz
 	sha256sums = 2f27aa2b87eb43d613edabf27f9c11147dc595c8683b440ac1d88e9acdb85873
 
 pkgname = python-gtfparse
-	depends = python
-	depends = python-numpy
-	depends = python-pandas
-
-pkgname = python2-gtfparse
-	depends = python2
-	depends = python2-numpy
-	depends = python2-pandas
 
