@@ -1,7 +1,7 @@
 pkgbase = jabberd2
 	pkgdesc = Scalable, architecturally sound, and extensible XMPP server
 	pkgver = r1175.376e632
-	pkgrel = 24
+	pkgrel = 25
 	url = http://jabberd2.org/
 	install = install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = jabberd2
 	depends = expat=2.2.9
 	depends = glibc>=2.31
 	depends = gsasl=1.8.1
-	depends = libidn=1.35
+	depends = libidn=1.36
 	depends = openssl=1.1.1.g
 	depends = pam=1.3.1
 	depends = postgresql-libs=12.3
