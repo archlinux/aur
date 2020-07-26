@@ -21,11 +21,13 @@ pkgver() {
 build() {
     cd "$srcdir/application"
     npm --cache "$srcdir/npm-cache" i electron electron-packager
-    ./node_modules/.bin/electron-packager . --overwrite
+    ./node_modules/.bin/electron-packager .
+    for dir in $_pkgname-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
+    rm -rf "$srcdir/$pkgname/$_pkgname/resources/app/node_modules"
 }
 
 package() {
-    cd "$srcdir/application/$_pkgname-linux-x64"
+    cd "$srcdir/application/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     cp -r ./ "$pkgdir/opt/$_pkgname"
 
