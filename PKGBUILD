@@ -3,11 +3,11 @@
 _origname=glowing-bear
 pkgname=glowing-bear-web
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web client for WeeChat"
 arch=("any")
 url="https://github.com/glowing-bear/glowing-bear"
-license=("MIT")
+license=("GPL3")
 depends=()
 # If want to host js files locally
 # makedepends=("npm" "bower" "git")
