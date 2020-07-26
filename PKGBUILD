@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=4318
-_version=1.0.4318
+_tag=4321
+_version=1.0.4321
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -46,9 +46,13 @@ package() {
 
         tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
 
-        for c in $(ls "node_modules/i18n-iso-countries/langs")
+        for l in $(node -p "Object.keys(require('./lang/languages.json')).join(' ')")
         do
-            install -m644 "node_modules/i18n-iso-countries/langs/${c}" "${DESTDIR}/lang/countries-${c}"
+            c=${l:0:2}
+            if [ -f "node_modules/i18n-iso-countries/langs/${c}.json" ]
+            then
+                    install -m644 "node_modules/i18n-iso-countries/langs/${c}.json" "${DESTDIR}/lang/countries-${l}.json"
+            fi
         done
 
         find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
