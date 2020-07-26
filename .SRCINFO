@@ -1,11 +1,12 @@
 pkgbase = liquidctl-git
 	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
-	pkgver = 1.3.3.r143.9573c0c
+	pkgver = 1.3.3.r321.da3fc627618e
 	pkgrel = 1
 	url = https://github.com/jonasmalacofilho/liquidctl
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-pytest
 	depends = python
 	depends = python-setuptools
 	depends = python-docopt
