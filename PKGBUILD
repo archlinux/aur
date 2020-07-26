@@ -3,7 +3,7 @@ _pkgname=Netlify
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
-arch=('x86_64')
+arch=('any')
 url=""
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
@@ -19,14 +19,15 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/application"
     npm --cache "$srcdir/npm-cache" i electron electron-packager
-    ./node_modules/.bin/electron-packager . --overwrite
-    rm -rf "$srcdir/$pkgname/$_pkgname-linux-x64/resources/app/node_modules"
+    ./node_modules/.bin/electron-packager .
+    for dir in $_pkgname-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
+    rm -rf "$srcdir/$pkgname/$_pkgname/resources/app/node_modules"
 }
 
 package() {
-    cd "$srcdir/$pkgname/$_pkgname-linux-x64"
+    cd "$srcdir/application/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     cp -r ./ "$pkgdir/opt/$_pkgname"
 
@@ -35,7 +36,7 @@ package() {
     ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%}"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/application/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
