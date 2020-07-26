@@ -1,5 +1,5 @@
-*.deb
-*.log
-*.tar
-*.tar.xz
 *~
+*.log
+rocketchat_*_amd64.deb
+rocketchat-client-bin-*-x86_64.pkg.tar.xz
+rocketchat-client-bin-*-x86_64.pkg.tar.zst
