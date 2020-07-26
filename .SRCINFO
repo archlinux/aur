@@ -5,16 +5,13 @@ pkgbase = mopidy-iris
 	url = https://github.com/jaedb/iris
 	arch = any
 	license = APACHE
-	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-pip
-	depends = python
 	depends = mopidy>=3
-	depends = mopidy-spotify
 	depends = python-configobj
-	depends = mopidy-local
 	depends = python-pylast
-	optdepends = mopidy-local-sqlite: local library support
+	optdepends = mopidy-local: local library support
+	optdepends = mopidy-spotify: spotify support
 	source = mopidy-iris-3.50.0.tar.gz::https://github.com/jaedb/Iris/archive/3.50.0.tar.gz
 	sha256sums = bfb19144de86264201d84c3f8a985794beb34a220686f7887a66f2e1b887a4a0
 
