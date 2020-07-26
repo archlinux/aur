@@ -5,7 +5,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=exim-gnutls
-pkgver=4.93
+pkgver=4.94
 pkgrel=1
 pkgdesc='Message Transfer Agent (built with GnuTLS instead of OpenSSL)'
 arch=('x86_64' 'i686')
@@ -26,7 +26,7 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
         exim-submission.socket
 	exim.sysusers
 	exim.tmpfiles)
-sha512sums=('18301520ff02978e4f19d7b651495bc9b86d99e45c60d4bef63aa07ec43a5d8ee2e1bdbd512861c974af2210a3aeae2d34d41cff1112a97ec7cedf771126b499'
+sha512sums=('0ae405e8602a8a031d99ef87e663c80569d2aca0e633e6b6ea9ead0f273f955cdce014fec9620f4e1912818b8b1ec39c09f06b2de0730d467720b14e19f68465'
             'SKIP'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
