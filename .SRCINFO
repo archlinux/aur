@@ -6,6 +6,8 @@ pkgbase = crowdin-cli-bin
 	arch = x86_64
 	license = MIT
 	depends = java-runtime>=8
+	provides = crowdin-cli=3.2.1
+	conflicts = crowdin-cli
 	source = https://artifacts.crowdin.com/repo/rpm/crowdin3.rpm
 	sha256sums = f70e9260c7dcfcf77a5a8da8f623b7de7b86dd4aa6fb54608462c5193de461cc
 

@@ -6,6 +6,8 @@ pkgdesc="Command line tool that allows you to manage and synchronize localizatio
 url="https://support.crowdin.com/cli-tool/"
 license=('MIT')
 depends=('java-runtime>=8')
+provides=("crowdin-cli=${pkgver}")
+conflicts=("crowdin-cli")
 arch=('x86_64')
 
 sha256sums=('f70e9260c7dcfcf77a5a8da8f623b7de7b86dd4aa6fb54608462c5193de461cc')
