@@ -1,6 +1,6 @@
 pkgbase = mcg
 	pkgdesc = A covergrid for the Music Player Daemon.
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://www.suruatoel.xyz/codes/mcg
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = mcg
 	optdepends = avahi
 	provides = mcg
 	conflicts = mcg
-	source = https://gitlab.com/coderkun/mcg/-/archive/v2.1/mcg-v2.1.tar.gz
-	sha256sums = 8612d20ee790280ade2f12ff4f63ed44be3f7ae150feb08293b185ceb19d5260
+	source = https://gitlab.com/coderkun/mcg/-/archive/v2.1.1/mcg-v2.1.1.tar.gz
+	sha256sums = db122f0f9c8bcba9e0c86f0ac6c3ed003be606cf45704c7b4d89978b7981dd27
 
 pkgname = mcg
 
