@@ -1,0 +1,12 @@
+pkgbase = glowing-bear-web
+	pkgdesc = A web client for WeeChat
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/glowing-bear/glowing-bear
+	arch = any
+	license = MIT
+	source = https://github.com/glowing-bear/glowing-bear/archive/0.9.0.tar.gz
+	sha256sums = 9ff5370b4d384b1d7fff77ed5c46014cb2733f14f5032096f4acfdf6a4d0cf63
+
+pkgname = glowing-bear-web
+
