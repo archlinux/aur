@@ -1,8 +1,7 @@
-# Maintainer: cyka3702 <swc.rainier@gmail.com>
-# Contributor: paperbenni <paperbenni@gmail.com>
+# Maintainer: paperbenni <paperbenni@gmail.com>
 pkgname=instantassist
 _pkgname=instantassist
-pkgver=202006050953
+pkgver=202007231645
 pkgrel=1
 pkgdesc="a bunch of shortcuts for instantOS"
 url="https://github.com/instantos/instantassist"
@@ -30,11 +29,12 @@ build() {
 }
 
 package() {
-    cd $_pkgname
-    mkdir -p "$pkgdir/usr/share/applications/"
-    chmod 644 *.desktop
-    mv *.desktop "$pkgdir/usr/share/applications/"
+    cd "$_pkgname"
     export ASSISTPREFIX="$pkgdir"
     echo "$pkgdir"
     ./install.sh
+    echo "exit code $?"
+    mkdir -p "$pkgdir/usr/share/applications/"
+    chmod 644 ./*.desktop
+    mv ./*.desktop "$pkgdir/usr/share/applications/"
 }
