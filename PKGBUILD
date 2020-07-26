@@ -3,13 +3,12 @@
 _pkgname="pom-perl"
 pkgname="${_pkgname}"
 pkgver="0.14"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Displays the phase of the moon. Perl re-write of bsd-games's 'pom'."
 arch=('any')
 url="http://metacpan.org/pod/distribution/ppt/bin/pom"
 depends=('perl')
 conflicts=(
-  "bsd-games"
   "pom"
 )
 replaces=("pom<=0.14-1")

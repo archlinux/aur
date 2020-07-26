@@ -1,13 +1,12 @@
 pkgbase = pom-perl
 	pkgdesc = Displays the phase of the moon. Perl re-write of bsd-games's 'pom'.
 	pkgver = 0.14
-	pkgrel = 3
+	pkgrel = 4
 	url = http://metacpan.org/pod/distribution/ppt/bin/pom
 	arch = any
 	license = GPL2
 	depends = perl
 	provides = pom=0.14
-	conflicts = bsd-games
 	conflicts = pom
 	replaces = pom<=0.14-1
 	source = http://cpan.metacpan.org/authors/id/C/CW/CWEST/ppt-0.14.tar.gz
