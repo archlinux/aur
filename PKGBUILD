@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 package() {
   mkdir -p $pkgdir/usr/local
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/local/bin $pkgdir/usr/local/bin
+	cp -a $srcdir/usr/local/bin $pkgdir/usr/local/bin
   mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/lib/jspeak $pkgdir/usr/lib/jspeak
+	cp -a $srcdir/usr/lib/jspeak $pkgdir/usr/lib/jspeak
 }
