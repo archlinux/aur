@@ -1,0 +1,16 @@
+pkgbase = python-youtube-search-git
+	pkgdesc = Perform YouTube video searches without the API
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/deepjyoti30/ytmdl
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-requests
+	source = https://github.com/joetats/youtube_search/archive/master.zip
+	md5sums = SKIP
+
+pkgname = python-youtube-search-git
+
