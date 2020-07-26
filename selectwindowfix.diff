@@ -1,0 +1,11 @@
+diff -ru a/gtk-recordmydesktop/src/rmdSimple.py b/gtk-recordmydesktop/src/rmdSimple.py
+--- a/gtk-recordmydesktop/src/rmdSimple.py	2010-05-06 12:32:27.000000000 +0200
++++ b/gtk-recordmydesktop/src/rmdSimple.py	2010-05-06 12:34:48.000000000 +0200
+@@ -220,6 +220,7 @@
+
+     def __select_window__(self,button):
+         # check user has not disabled capture of window decoration
++        wid = None
+         if self.values[21]!=1:
+             # else work out the size including decoration (also taking into account compiz)
+             p = Popen(['xwininfo','-frame'],stdout=PIPE)

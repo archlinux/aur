@@ -1,16 +1,38 @@
 pkgbase = gtk-recordmydesktop
-	pkgdesc = A pygtk frontend for recordmydesktop
-	pkgver = 0.3.8
-	pkgrel = 9
+	pkgdesc = GTK2 frontend for recordMyDesktop
+	pkgver = 0.3.8.r602
+	pkgrel = 1
 	url = http://recordmydesktop.sourceforge.net
 	arch = any
-	license = GPL
-	depends = pygtk>=2.10
+	license = GPL3
+	license = LGPL3
+	makedepends = automake>=1.5.0
+	depends = gtk2
+	depends = python2
+	depends = pygtk
 	depends = recordmydesktop>=0.3.8.1
 	depends = xorg-xwininfo
-	depends = python2
-	source = https://downloads.sourceforge.net/sourceforge/recordmydesktop/gtk-recordmydesktop-0.3.8.tar.gz
+	source = gtk-recordmydesktop-0.3.8.r602-1.tar.gz::https://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/0.3.8/gtk-recordmydesktop-0.3.8.tar.gz
+	source = autogen.sh
+	source = messages.pot
+	source = r600.diff
+	source = r602.diff
+	source = selectwindowfix.diff
+	source = jack_lsp-check.diff
+	source = hebrew.diff
+	source = translations1.diff
+	source = translations2.diff
+	source = typos.diff
 	sha256sums = 61ad43a6e4f0bf86d8553f03297e4b1b137b47337fa150ce1da8c24494ca8326
+	sha256sums = 8e740b166328e1ae1261b7e800ebd6053579dd86dd10e3ac1570631a77c01203
+	sha256sums = b52e5afa7c223e9d084682a3b8587bfabedfab534911ad031a81a74b85854eff
+	sha256sums = c91fb1fcc6bb80e33ec811a59800b398ab265a0092221c8812547b6051ddfc02
+	sha256sums = 1f7e67e96a1b6d665f9fdfb35b68d6b94c08b72553f510522c460bf1cc8487b5
+	sha256sums = e90cdf392e8b8233022849cd501cd2f5ef3fea1bcad3486427cf34ad38e8105f
+	sha256sums = 0d2d5397a288f7c57c9903984f56a5c595c103984903a1008009a42911feb95b
+	sha256sums = d7381d7db060075656db6f94e49f9e274a6cfc2c28996a7f051db0dbffa14ec7
+	sha256sums = 05590ddb54a80957b069d2758a1b08f964364b4f83e835c0de0038e2fdf4cd84
+	sha256sums = 810848f1cbf068bfef60d766369a5cca23672dec5f83a48d672e1146b7017f63
+	sha256sums = 4ad1eb383cf60157d670f92c48f54ad0f22860bd64a02f634249802b210f3da5
 
 pkgname = gtk-recordmydesktop
-
