@@ -2,7 +2,7 @@
 
 pkgname=python-detect-secrets
 _pkgname=detect_secrets
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="An enterprise friendly way of detecting and preventing secrets in code"
 arch=("any")
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-requests' 'python-yaml' 'git')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('48f7a4f4910d5c32e255f14f9f25cafde0474a82e6fbcdacce04231ad5cc8a56')
+sha256sums=('7ec6349a17cc2efe381593f55db927d44dd955ec011eb391157b3a85caf34d88')
 
 build() {
   cd ${_pkgname}-${pkgver}
