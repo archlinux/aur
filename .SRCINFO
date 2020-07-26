@@ -1,14 +1,14 @@
 pkgbase = python-ftfy
 	pkgdesc = Fixes some problems with Unicode text after the fact
-	pkgver = 5.7
+	pkgver = 5.8
 	pkgrel = 1
 	url = https://github.com/LuminosoInsight/python-ftfy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-wcwidth
-	source = python-ftfy-5.7.tar.gz::https://github.com/LuminosoInsight/python-ftfy/archive/v5.7.tar.gz
-	sha512sums = ac2f15b301907489c9015de99039358e4a414b4f8312d8d80c4b00f561264b96616298477c8b1ac43eb211eb65528a74fe29de7ebccc072345dfbe53b5e40256
+	source = python-ftfy-5.8.tar.gz::https://files.pythonhosted.org/packages/source/f/ftfy/ftfy-5.8.tar.gz
+	sha512sums = 1a386acb02b4b644b8b008b99d18b538a759432dfd188059713e75e09eb243c6c3789ae88a48687e79b42e8f8ac23a53b8a5a6c0c16d76795054383de078aa14
 
 pkgname = python-ftfy
 
