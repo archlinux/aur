@@ -277,9 +277,9 @@ fi
   #
   # use 12 threads to compile
   if [[ $FAST_BOOT == "YES" ]]; then
-    make -j12 NATIVE_FAST_BOOT=1
+    make -j$(nproc) NATIVE_FAST_BOOT=1
   else
-    make -j12
+    make -j$(nproc)
   fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
