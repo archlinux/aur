@@ -1,0 +1,15 @@
+pkgbase = aflplusplus
+	pkgdesc = afl++ is afl with community patches, AFLfast power schedules, qemu 3.1 upgrade + laf-intel support, MOpt mutators, InsTrim instrumentation, unicorn_mode and a lot more!
+	pkgver = 2.66c
+	pkgrel = 1
+	url = https://github.com/vanhauser-thc/AFLplusplus
+	arch = x86_64
+	license = Apache
+	optdepends = qemu: use QEMU with afl
+	provides = afl
+	conflicts = afl
+	source = https://github.com/AFLplusplus/AFLplusplus/archive/2.66c.tar.gz
+	sha256sums = d71c4126d6ea733aa4366339ae81ae73a47f8a8ce8dddc05bddf3ed28c8fadf7
+
+pkgname = aflplusplus
+
