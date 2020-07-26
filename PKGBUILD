@@ -3,7 +3,7 @@
 _pkgname=blocks
 pkgname=python-g2p-${_pkgname}-git
 pkgver=167
-pkgrel=2
+pkgrel=3
 pkgdesc="Enable bcache or LVM on existing block devices. Convert between raw partitions, logical volumes, and bcache devices witout moving data."
 url="https://github.com/g2p/blocks"
 arch=('i686' 'x86_64')
@@ -25,8 +25,6 @@ build() {
 }
 
 package() {
-  depends=('python')
-
   cd "${srcdir}/${_pkgname}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
