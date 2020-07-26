@@ -1,6 +1,6 @@
 pkgbase = ardupilot-gazebo-sitl-git
 	pkgdesc = Gazebo plugin for Ardupilot's SITL.
-	pkgver = r31.9bae0ea
+	pkgver = r33.a6cc333
 	pkgrel = 1
 	url = https://ardupilot.org/dev/docs/using-gazebo-simulator-with-sitl.html
 	arch = x86_64

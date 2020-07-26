@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-gazebo-sitl-git
-pkgver=r31.9bae0ea
+pkgver=r33.a6cc333
 pkgrel=1
 pkgdesc="Gazebo plugin for Ardupilot's SITL."
 arch=('x86_64')
@@ -17,10 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    sed -i 's/uint16_t>/uint32_t>/g' ${srcdir}/${_pkgname}/src/ArduPilotPlugin.cc
 }
 
 build() {
