@@ -1,5 +1,0 @@
-[Unit]
-Description=Daemon for graphing traffic of subnet machines - Rotate
-
-[Service]
-ExecStart=/usr/bin/systemctl kill --signal=SIGHUP bandwidthd.service
