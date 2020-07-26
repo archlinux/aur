@@ -1,3 +1,4 @@
+# Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-coc-git
 pkgver=r514.140321e6
 pkgrel=1
