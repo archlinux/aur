@@ -1,13 +1,16 @@
 # Maintainer: oakszyjrnrdy <oakszyjrnrdy at outlook dot com>
 _pkgname="betterlockscreen_rapid"
 pkgname="$_pkgname-git"
-pkgver=r3.4da062b
+pkgver=r4.b257eae
 pkgrel=1
 pkgdesc="A rapid and good-looking screen locker"
 arch=("any")
 url="https://github.com/oakszyjrnrdy/$_pkgname"
 license=("MIT")
-depends=("i3lock-fancy-rapid-git")
+depends=(
+	"i3lock-color"
+	"i3lock-fancy-rapid-git"
+)
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
