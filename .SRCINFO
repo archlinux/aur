@@ -8,8 +8,8 @@ pkgbase = qt-recordmydesktop
 	license = LGPL3
 	makedepends = automake>=1.5.0
 	depends = python
-	depends = python-pyqt4
-	depends = qt4
+	depends = python-pyqt4>=4.1.0
+	depends = qt4>=4.2.0
 	depends = recordmydesktop>=0.3.8.1
 	depends = xorg-xwininfo
 	source = qt-recordmydesktop-0.3.8.r602-3.tar.gz::https://downloads.sourceforge.net/project/recordmydesktop/qt-recordMyDesktop/0.3.8/qt-recordmydesktop-0.3.8.tar.gz
