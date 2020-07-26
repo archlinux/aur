@@ -1,3 +1,19 @@
+Proton-5.9-GE-4-ST
+
+GloriousEggroll released this on July 26
+
+-Death Stranding patches backported, works with nvidia or amdvlk (not working on RADV yet)
+-Borderlands 3 now works in DX12 mode (may occasionally crash on 'optimizing shaders' when first loading the game)
+-Borderlands 3 -notexturestreaming option added to protonfixes to allow less stutter in DX11 mode.
+-DmC 5 Skill videos now play in the Customization menu
+-Assetto Corsa Competizione fix backported (may fix stutter in other games also): wine-mirror/wine@3078f10
+-Staging hotfix applied to correlate with Assetto fix: wine-staging/wine-staging@8402c95
+-rFactor 2 fix backported: wine-mirror/wine@60c8c78
+-Minor bug fix in warframe controller detection hack
+-Upstream build system mingw changes backported
+-vkd3d updated to use vkd3d-proton
+-dxvk updated 
+
 Proton-5.9-GE-3-ST
 
 GloriousEggroll released this Jul 6, 2020
