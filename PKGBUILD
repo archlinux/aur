@@ -1,6 +1,6 @@
 pkgname=gamerworld
 _pkgname=GamerWorld
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Play games all in one place"
 arch=('x86_64' 'aarch64')
