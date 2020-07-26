@@ -1,8 +1,8 @@
 # Maintainer: Jesús Espino <jespinog@gmail.com>
 
 pkgname=mmctl
-pkgver=v5.24
-pkgrel=2
+pkgver=v5.25.0
+pkgrel=1
 pkgdesc="A remote CLI tool for Mattermost"
 arch=('x86_64')
 url="https://github.com/mattermost/mmctl"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattermost/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('f4e5f7debeb7e0cbb6cd3c3e6a73938269683be4473fb28a8edbfb0a940927c8')
+sha256sums=('31051a7a5d91e0842488c26bdfcc29715794ae63d6749564a549cec5f36ade83')
 
 build() {
   echo "${srcdir}"/${pkgname}-${pkgver:1}
