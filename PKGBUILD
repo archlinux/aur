@@ -26,7 +26,7 @@ _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
 pkgver=0.9.2+r1856
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -42,6 +42,7 @@ makedepends=(
              # 'gcc-fortran' # May fail to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
              'g95' # Use 'g95' (Fortran compiler from GCC 4.0.3) instead of 'gcc-fortran'.
              'gcc'
+             'git'
             )
 optdepends=(
             "python2-matplotlib: For python interface."

@@ -1,7 +1,7 @@
 pkgbase = auto-07p-git
 	pkgdesc = Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI.
 	pkgver = 0.9.2+r1856
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cmvl.cs.concordia.ca/auto/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = auto-07p-git
 	license = GPL2
 	makedepends = g95
 	makedepends = gcc
+	makedepends = git
 	depends = bash
 	depends = g95
 	depends = gcc
