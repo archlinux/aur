@@ -1,0 +1,48 @@
+#!/bin/python3
+
+
+class Main(object):
+
+    def _parse_command_line(self):
+        import argparse
+
+        parser = argparse.ArgumentParser()
+
+        parser.add_argument("command", nargs=argparse.REMAINDER)
+        parser.add_argument("-p", "--prompt", help="Command ran to build prompt")
+        parser.add_argument("-pt", "--prompt_text", help="Fixed text to use on prompt")
+        parser.add_argument("--quit-command", default="quit", help="Internal command will quit anysh (default: quit)")
+
+        return parser.parse_args()
+
+    def run(self):
+        args = self._parse_command_line()
+
+        command = ""
+
+        import subprocess
+
+        while command != args.quit_command:
+            if args.prompt:
+                process = subprocess.run(args.prompt, stdout=subprocess.PIPE)
+
+                print(process.stdout.decode())
+
+            prompt = args.prompt_text if args.prompt_text else " ".join(args.command) + ": "
+            print(prompt, end="")
+
+            try:
+              command = input()
+            except EOFError:
+              command = args.quit_command
+
+            if command != args.quit_command:
+                # FIXME No way to escape spaces in parameters
+                subprocess.run(args.command + command.split(" "))
+
+
+if __name__ == "__main__":
+    main = Main()
+
+    main.run()
+
