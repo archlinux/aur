@@ -1,12 +1,13 @@
 pkgbase = tapecalc-add-compat
 	pkgdesc = Provides compatibility: Makes 'tapecalc' available also under it's original name 'add'.
-	pkgver = t20180401
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
+	epoch = 1
 	url = http://aur.archlinux.org/packages/tapecalc/
 	arch = any
 	license = custom: public domain.
-	depends = tapecalc=t20180401
-	provides = add=t20180401
+	depends = tapecalc
+	provides = add=latest
 	conflicts = add
 	options = emptydirs
 	source = COPYING
