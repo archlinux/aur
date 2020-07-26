@@ -1,11 +1,12 @@
---- a/lib/util.js       2020-05-22 00:47:36.846961336 +0200
-+++ b/lib/util.js       2020-05-22 00:49:49.913695175 +0200
-@@ -527,7 +527,7 @@
-   },
+--- a/lib/util.js	2020-07-17 22:23:08.832588013 +0200
++++ b/lib/util.js	2020-07-17 22:26:52.894403279 +0200
+@@ -614,7 +614,7 @@
+     let reset = forceReset
  
-   gclientSync: (reset = false, options = {}) => {
--    let args = ['sync', '--force', '--nohooks', '--with_tags', '--reset',
-+    let args = ['sync', '--no-history', '--shallow', '--force', '--nohooks', '--with_tags', '--reset',
-                 '--with_branch_heads', '--upstream',
-                 '--revision', 'src/brave@' + config.getProjectRef('brave-core')]
-     if (reset)
+     // base args
+-    const initialArgs = ['sync', '--reset', '--nohooks']
++    const initialArgs = ['sync', '--no-history', '--shallow', '--reset', '--nohooks']
+     const chromiumArgs = ['--revision', 'src@' + config.getProjectRef('chrome')]
+     const resetArgs = ['--with_tags', '--with_branch_heads', '--upstream']
+ 
+
