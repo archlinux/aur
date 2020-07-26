@@ -22,12 +22,12 @@ _onnx_ver=1.7.0
 pkgbase=tensorrt
 pkgname=('tensorrt' 'tensorrt-doc')
 pkgver=7.1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference using NVIDIA hardware'
 arch=('x86_64')
 url='https://github.com/NVIDIA/TensorRT/'
 license=('custom' 'Apache')
-makedepends=('git' 'cmake' 'pybind11' 'python' 'python-pip' 'poppler'
+makedepends=('git' 'cmake' 'poppler' 'pybind11' 'python' 'python-pip'
              'cuda' 'cudnn')
 source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=${pkgver%.*}"
@@ -38,7 +38,8 @@ source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cu
         'git+https://github.com/pybind/pybind11'
         'git+https://github.com/google/benchmark'
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
-        '010-tensorrt-protobuf-fix-cub-deprecation-warnings.patch')
+        '010-tensorrt-use-local-protobuf-sources.patch'
+        '020-tensorrt-fix-cub-deprecation-huge-warnings.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
 sha256sums=('f13c6e2f82fda1ed3becac6230ec2048764fe8d302b20a29ae3b1e280c7aac69'
             'SKIP'
@@ -49,7 +50,8 @@ sha256sums=('f13c6e2f82fda1ed3becac6230ec2048764fe8d302b20a29ae3b1e280c7aac69'
             'SKIP'
             'SKIP'
             '4ef97ec6a8e0570d22ad8c57c99d2055a61ea2643b8e1a0998d2c844916c4968'
-            '391f0f5f1fbb3ed19319c8a47e04aee071a938ed4f2942263eff9c1385019f31')
+            'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
+            'bfc2230de7d1afa97febd2bc74c0cca019d86c303008533c347c18c20dea5cd7')
 
 prepare() {
     # tensorrt git submodules
@@ -79,9 +81,9 @@ prepare() {
     # protobuf
     mkdir -p build/third_party.protobuf/src
     cp -a "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
-    sed -i "/Protobuf_PKG_URL/s|\\\"https.*\\\"|\\\"./protobuf-cpp-\${VERSION}.tar.gz\\\"|" TensorRT/third_party/protobuf.cmake
     
-    patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-protobuf-fix-cub-deprecation-warnings.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-cub-deprecation-huge-warnings.patch"
     
     pdftotext -layout "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.pdf"
 }

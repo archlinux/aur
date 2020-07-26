@@ -1,0 +1,11 @@
+--- a/third_party/protobuf.cmake
++++ b/third_party/protobuf.cmake
+@@ -19,7 +19,7 @@ include(ExternalProject)
+ # with the include dir and binaries imported
+ macro(configure_protobuf VERSION)
+     set(protobufPackage "protobuf-cpp-${VERSION}.tar.gz")
+-    set(Protobuf_PKG_URL "https://github.com/google/protobuf/releases/download/v${VERSION}/${protobufPackage}")
++    set(Protobuf_PKG_URL "./protobuf-cpp-${VERSION}.tar.gz")
+     set(Protobuf_INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR})
+     set(Protobuf_TARGET third_party.protobuf)
+ 
