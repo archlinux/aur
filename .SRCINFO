@@ -1,0 +1,21 @@
+pkgbase = golden-cheetah-appimage
+	pkgdesc = Performance Software for Cyclists, Runners and Triathletes
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://www.goldencheetah.org/
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	provides = golden-cheetah
+	conflicts = golden-cheetah
+	noextract = GoldenCheetah_3.5.AppImage
+	options = !strip
+	source = GoldenCheetah_3.5.AppImage::https://github.com/GoldenCheetah/GoldenCheetah/releases/download/V3.5/GoldenCheetah_v3.5_amd64_Linux.AppImage
+	source = golden-cheetah.desktop
+	source = golden-cheetah.png
+	sha256sums = e8c15a2dc016349eb1c42501ae30cba39e1e8293a5e3a5ff5005c872f58e3d1e
+	sha256sums = 93c6bc962fdaf16fe4f8b57ea92bd2b3c61330eb1c5cac3910622ef80588dd15
+	sha256sums = 7056af2950caf59fba846b4f314a78898fef74e75b9c0915abb3d305f9918d48
+
+pkgname = golden-cheetah-appimage
+

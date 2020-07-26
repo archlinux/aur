@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Golden Cheetah
+Comment=Performance Software for Cyclists, Runners and Triathletes
+Exec=golden-cheetah
+Terminal=false
+Type=Application
+Icon=golden-cheetah
+StartupWMClass=golden-cheetah
+X-AppImage-Version=3.5
+Keywords=Cycling;Training;Bike;Ride
