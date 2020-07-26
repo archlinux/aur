@@ -1,7 +1,7 @@
 # Maintainer: Artem Klevtsov <a.a.klevtsov@gmail com>
 
 pkgname=fancon
-pkgver=0.20.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A Linux fan control daemon"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/hbriese/${pkgname}"
 license=('Apache')
 depends=('lm_sensors' 'grpc' 'boost-libs')
 makedepends=('clang>=9.0' 'cmake>=3.13' 'boost' 'protobuf' 'libx11' 'pstreams' 'libxnvctrl')
-source=("https://github.com/hbriese/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('fb78409417d3a8d623bc2da3f12fab8f42ea62e49f191b200af818185f4304cd7ddb0bc91e580c54c145d95d1d691a2def54c097bdd4192a860ec52d2b53c47a')
+source=("https://github.com/hbriese/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('b3a4e5fd253c850befde8200618d041ab09dc0d3f0c19547920d0e104df9a34f730656313bf9d4b02e7464faeba518a8a881b7a8f89f42483a332d0b37455910')
 conflicts=("${pkgname}-git")
 
 build() {
