@@ -4,26 +4,26 @@
 # you also find the URL of a binary repository.
 
 pkgname=genesis-starter
-pkgver=2.0
+pkgver=6.1.6
 pkgrel=1
 arch=('any')
 pkgdesc="Character creation tool for Splittermond"
-url="http://blog.rpgframework.de/?p=434"
+url="http://blog.rpgframework.de"
 license=('unknown')
-depends=('java-environment' 'desktop-file-utils')
-source=("starter.jar::http://www.rpgframework.de/bootloader1/genesis-$pkgver-starter.jar"
+depends=('java-runtime' 'freetype2' 'libxtst' 'alsa-lib' 'libnet' 'libxrender' 'xdg-utils')
+source=("http://www.rpgframework.de/downloads/linux/genesis-$pkgver-1.x86_64.rpm"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('41f30671ba15bf42ffe4befe497582aaa0d78d040b8be0035fbe5d3248ebe82a'
-            '9b0d1311778b30dfb013f2ce576b63197382d1ff652580c93953f47b8f2900bc'
+sha256sums=('a65f42bbfb134392ab4d74d50e33cea1f44fdf6ae204e6903e8975aeefd063a8'
+            '50d8d2308c5727ab160a69c09c8e5f30f21c9159ef78ceff5c7cff33d3ec45c9'
             '30c582b5d315c01c78428eed5f2f43fd2667f1c23f9005964301de84dcbfa14e')
 
 package() {
-  cd $srcdir
   # start script
   install -m755 -D "./${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-  # jar file
-  install -m644 -D "./starter.jar" "${pkgdir}/usr/share/java/${pkgname}/starter.jar"
+  # stuff
+  cp -r "$srcdir"/opt $pkgdir
+  cp -r "$srcdir"/usr $pkgdir
   # menu entry
   install -m644 -D "./${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
