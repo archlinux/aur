@@ -3,7 +3,7 @@
 pkgname=yabridgectl-git
 _pkgname=yabridgectl
 _yabridge=yabridge
-pkgver=1.3.0.r0.gc5ec9b9
+pkgver=1.4.0.r0.gf5b1d48
 pkgrel=1
 pkgdesc="Optional utility to help set up and manage yabridge"
 epoch=
