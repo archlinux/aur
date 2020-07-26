@@ -1,6 +1,6 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=freeserf-git
-pkgver=0.3_11_gbc5e2d2
+pkgver=0.3_20_g4507374
 pkgrel=1
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd freeserf/build
-  cmake -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" ..
+  cmake -DCMAKE_BUILD_TYPE="None" -DCMAKE_INSTALL_PREFIX="/usr" ..
   make
 }
 
