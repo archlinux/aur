@@ -6,7 +6,10 @@
 pkgname=hercules-analysis-git
 pkgver=10.7.2.r4.g13a2081
 pkgrel=1
-depends=('go' 'protobuf')
+depends=('go' 'protobuf'
+  'python-matplotlib' 'python-scipy' 'python-pandas' 'python-yaml' 'python-protobuf'
+  'python-munch' 'python-hdbscan' 'python-seriate' 'python-fastdtw' 'python-dateutil'
+  'python-lifelines' 'python-tqdm')
 makedepends=('make' 'git' 'python-setuptools')
 pkgdesc='Gaining advanced insights from Git repository history.'
 arch=('any')
@@ -14,20 +17,6 @@ license=('Apache')
 source=('git+https://github.com/src-d/hercules.git')
 sha256sums=('SKIP')
 url='https://github.com/src-d/hercules'
-optdepends=(
-    'python-matplotlib: to use the labours python script'
-    'python-scipy: to use the labours python script'
-    'python-pandas: to use the labours python script'
-    'python-yaml: to use the labours python script'
-    'python-protobuf: to use the labours python script'
-    'python-munch: to use the labours python script'
-    'python-hdbscan: to use the labours python script'
-    'python-seriate: to use the labours python script'
-    'python-fastdtw: to use the labours python script'
-    'python-dateutil: to use the labours python script'
-    'python-lifelines: to use the labours python script'
-    'python-tqdm: to use the labours python script'
-)
 
 pkgver() {
   cd "${srcdir}/hercules"
