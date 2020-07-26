@@ -4,10 +4,10 @@ _appname=zeal
 _builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.6.1.r140.gfe31aed
+pkgver=0.6.1.r181.g7fa29c9
 pkgrel=1
 pkgdesc="A simple documentation browser"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://zealdocs.org/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'libarchive' 'qt5-webengine' 'qt5-x11extras')
