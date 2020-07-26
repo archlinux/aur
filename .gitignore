@@ -1,5 +1,4 @@
 pkg/
 src/
-*.zip
 *.tar.gz
-otf-bodoni-*.xz
+otf-bodoni-*.pkg.tar.*
