@@ -3,13 +3,14 @@
 
 pkgname=ghq
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/x-motemen/ghq"
 license=('MIT')
 makedepends=('go'  'git')     # Yes, you're right; no git-depended lines in the PKGBUILD but `make test` requires git...
 optdepends=('zsh: ghq function for zsh')
+conflicts=('ghq-bin')
 source=("https://github.com/x-motemen/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
