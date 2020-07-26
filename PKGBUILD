@@ -18,7 +18,18 @@ sha256sums=("SKIP")
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	sed -i 's#/lib#/usr/lib#' "CMakeLists.txt"
+	sed -i "s@/lib@/usr/lib@" "CMakeLists.txt"
+	# change the following local variables to match your IR camera
+	# you may use this command to get the information if /dev/video2 is your IR camera
+	# udevadm info --attribute-walk --path=$(udevadm info --query=path --name=/dev/video2)
+	## device
+	local kernel="video2"
+	local attr_index="0"
+	local attr_name="Integrated Camera: Integrated I"
+	## parent device
+	local attrs_idVendor="13d3"
+	local attrs_idProduct="56ba"
+	sed -i "s@ATTRS{idVendor}==\"04f2\", ATTRS{idProduct}==\"b67c\"@KERNEL==\"$kernel\", ATTR{index}==\"$attr_index\", ATTR{name}==\"$attr_name\", ATTRS{idVendor}==\"$attrs_idVendor\", ATTRS{idProduct}==\"$attrs_idProduct\"@" "system/99-ir-led.rules.cmake"
 }
 
 pkgver() {
