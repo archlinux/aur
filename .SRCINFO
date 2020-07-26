@@ -1,0 +1,14 @@
+pkgbase = python-pytorch-torchac
+	pkgdesc = Fast Entropy Coding in PyTorch
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/trougnouf/L3C-PyTorch
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pytorch
+	source = git+https://github.com/trougnouf/L3C-PyTorch.git
+	sha256sums = SKIP
+
+pkgname = python-pytorch-torchac
+
