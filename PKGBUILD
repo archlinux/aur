@@ -23,6 +23,6 @@ noextract=()
 md5sums=('SKIP')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/memoize-$pkgver"
 	make DESTDIR="$pkgdir" install-rust
 }
