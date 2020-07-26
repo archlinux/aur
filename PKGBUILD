@@ -3,7 +3,7 @@
 _gitname=steamguard-cli
 pkgname="$_gitname"-git
 pkgver=0.3.5.0.r0.2b50148
-pkgrel=1
+pkgrel=2
 pkgdesc="A linux utility for setting up and using Steam Mobile Authenticator (AKA Steam 2FA) on the command line"
 arch=('any')
 url="https://github.com/dyc3/steamguard-cli"
