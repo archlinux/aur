@@ -5,7 +5,7 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=musique
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+  sed -i '1313d;1315i#ifdef APP_EXTRA' musique/src/mainwindow.cpp
   cd build
   qmake-qt5 ../$pkgname PREFIX=/usr
   make
