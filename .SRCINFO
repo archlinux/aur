@@ -1,7 +1,7 @@
 pkgbase = xdarkterror.lv2-git
 	pkgdesc = An amplifier simulation LV2 plugin modelled after a small high-gain british valve amp (git version)
-	pkgver = r6.2c68f44
-	pkgrel = 2
+	pkgver = r10.aac27f8
+	pkgrel = 1
 	url = https://github.com/brummer10/XDarkTerror.lv2
 	arch = i686
 	arch = x86_64
@@ -14,16 +14,14 @@ pkgbase = xdarkterror.lv2-git
 	depends = gcc-libs
 	depends = libx11
 	provides = xdarkterror.lv2
-	provides = xdarkterror.lv2=r6.2c68f44
+	provides = xdarkterror.lv2=r10.aac27f8
 	provides = xdarkterror.lv2
 	conflicts = xdarkterror.lv2
 	conflicts = xdarkterror.lv2
 	source = xdarkterror.lv2::git+https://github.com/brummer10/XDarkTerror.lv2.git
 	source = xputty::git+https://github.com/brummer10/Xputty.git
-	source = xdarkterror-ttl.diff
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 58dc53c8426af83f23cc7f87a2d9ed40
 
 pkgname = xdarkterror.lv2-git
 

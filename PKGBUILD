@@ -4,8 +4,8 @@ _reponame=XDarkTerror.lv2
 _pkgname=xdarkterror.lv2
 _lv2uri="http://guitarix.sourceforge.net/plugins/${_reponame//.lv2}_#_darkterror_"
 pkgname="${_pkgname}-git"
-pkgver=r6.2c68f44
-pkgrel=2
+pkgver=r10.aac27f8
+pkgrel=1
 pkgdesc="An amplifier simulation LV2 plugin modelled after a small high-gain british valve amp (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_reponame}"
@@ -16,11 +16,9 @@ groups=('pro-audio' 'lv2-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "${_pkgname//-/.}")
 conflicts=("${_pkgname}" "${_pkgname//-/.}")
 source=("${_pkgname}::git+https://github.com/brummer10/${_reponame}.git"
-        'xputty::git+https://github.com/brummer10/Xputty.git'
-        'xdarkterror-ttl.diff')
+        'xputty::git+https://github.com/brummer10/Xputty.git')
 md5sums=('SKIP'
-         'SKIP'
-         '58dc53c8426af83f23cc7f87a2d9ed40')
+         'SKIP')
 
 
 pkgver() {
@@ -38,8 +36,6 @@ prepare() {
   git submodule init
   git config submodule.Xputty.url "${srcdir}/xputty"
   git submodule update
-
-  patch -p1 -N -i "${srcdir}"/xdarkterror-ttl.diff
 }
 
 build() {
