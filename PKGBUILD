@@ -52,6 +52,6 @@ package() {
   # Run python setup function
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   # Install the licence
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" \
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
