@@ -4,7 +4,7 @@
 
 pkgbase=openxcom-extended-git
 pkgname=('openxcom-extended-git' 'openxcom-extended-docs-git')
-pkgver=6.2.0_r10653.6bb84c2df
+pkgver=6.5.7_r11050.0467b8cf7
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd openxcom-extended/build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" -DDEV_BUILD="Off" ..
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
   make
 
   # Make documentation
