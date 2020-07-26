@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=GCAP
+Comment=Programa de Apuração dos Ganhos de Capital
+Path=/usr/bin
+Exec=gcap
+Icon=gcap
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;

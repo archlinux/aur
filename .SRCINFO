@@ -1,0 +1,20 @@
+pkgbase = gcap
+	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains
+	pkgver = 2020.1.0
+	pkgrel = 1
+	url = https://receita.economia.gov.br/orientacao/tributaria/pagamentos-e-parcelamentos/pagamento-do-imposto-de-renda-de-pessoa-fisica/ganho-de-capital/programa-de-apuracao-de-ganhos-de-capital-moeda-nacional/
+	arch = any
+	license = unknown
+	makedepends = icoutils
+	depends = sh
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	source = http://downloadirpf.receita.fazenda.gov.br/irpf/2020/gcap/GCAP2020v1.0.zip
+	source = gcap.desktop
+	source = gcap.sh
+	sha256sums = 3d5cccf4488455be83150e9c81aede1aca4e119e86c98fbc813ae8286e1708d4
+	sha256sums = 24df966f1dbf8c348b487a1724891271a92b6e795b981fdf0c5b430325722af7
+	sha256sums = 2c50b3d5df01139ce2c41b5be2ee6d34f29313de131defdf8db600d6b58b9129
+
+pkgname = gcap
+
