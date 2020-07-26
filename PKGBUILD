@@ -21,7 +21,7 @@ pkgver() {
 package() {
     cd "${srcdir}/coc.nvim"
     find autoload bin build data doc package.json plugin -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/coc/start/coc.nvim/{}" \;
     install -Dm 644 "${srcdir}/coc.nvim/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
