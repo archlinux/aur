@@ -1,3 +1,4 @@
+# Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=neovim-polyglot-git
 pkgver=r540.56121b4
 pkgrel=1
