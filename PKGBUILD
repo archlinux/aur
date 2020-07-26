@@ -26,7 +26,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.10.97
+pkgver=1.11.101
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -45,43 +45,28 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=e8defe050ab6138cc8ad4db936ad85c3b71bbde8
+arch_revision=2efd12e6db7c47f6d433971406fb271a1fb0c839
 for Patches in \
-        clean-up-a-call-to-set_utf8.patch \
-        iwyu-std-numeric_limits-is-defined-in-limits.patch \
-        add-missing-algorithm-header-in-crx_install_error.cc.patch \
-        libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch \
-        include-memory-header-to-get-the-definition-of-std-u.patch \
-        make-some-of-blink-custom-iterators-STL-compatible.patch \
-        avoid-double-destruction-of-ServiceWorkerObjectHost.patch \
-        v8-remove-soon-to-be-removed-getAllFieldPositions.patch \
+        chromium-ffmpeg-4.3.patch \
+        force-mp3-files-to-have-a-start-time-of-zero.patch \
         chromium-fix-vaapi-on-intel.patch \
-        chromium-83-gcc-10.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
 
 # VAAPI patches from chromium-vaapi in AUR
-source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
+#source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            '131ed439a0ecb41df4ef6460c98c0a410c035d5eab0093214f627d65cff5bded'
+            'c090e4d26847831a719aea4a8cf722b7f6b6726bd7b6bf4da984e59567095917'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
-            '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
-            '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
-            '50687079426094f2056d1f4806dc30fc8d6bad16190520e57ba087ec5db1d778'
-            '071326135bc25226aa165639dff80a03670a17548f2d2ff5cc4f40982b39c52a'
-            '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
-            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
+            '5390304b5f544868985ce00a3ec082d4ece2dacb1c73cdb35dd4facfea12449a'
+            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
-            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 prepare() {
     cd "${_reponame}"
@@ -111,32 +96,11 @@ prepare() {
         third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
         third_party/libxml/chromium/*.cc
 
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
-    patch -Np1 -i "${srcdir}"/clean-up-a-call-to-set_utf8.patch
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
+    patch -Np1 -i "${srcdir}"/force-mp3-files-to-have-a-start-time-of-zero.patch
 
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2153111
-    patch -Np1 -F3 -i "${srcdir}"/iwyu-std-numeric_limits-is-defined-in-limits.patch
-
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2152333
-    patch -Np1 -i "${srcdir}"/add-missing-algorithm-header-in-crx_install_error.cc.patch
-
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2132403
-    patch -Np1 -i "${srcdir}"/libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2164645
-    patch -Np1 -i "${srcdir}"/include-memory-header-to-get-the-definition-of-std-u.patch
-
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2174199
-    patch -Np1 -i "${srcdir}"/make-some-of-blink-custom-iterators-STL-compatible.patch
-
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
-    patch -Np1 -i "${srcdir}"/avoid-double-destruction-of-ServiceWorkerObjectHost.patch
-
-    # https://crbug.com/v8/10393
-    patch -Np1 -d v8 <"${srcdir}"/v8-remove-soon-to-be-removed-getAllFieldPositions.patch
-
-    # Fixes from Gentoo
-    patch -Np1 -i "${srcdir}"/chromium-83-gcc-10.patch
+    # https://crbug.com/1095962
+    patch -Np1 -i "${srcdir}"/chromium-ffmpeg-4.3.patch
 
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
@@ -145,7 +109,7 @@ prepare() {
     patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch
 
     # Fix VA-API on Nvidia
-    patch -Np1 -i "${srcdir}"/vdpau-support.patch
+#    patch -Np1 -i "${srcdir}"/vdpau-support.patch
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
