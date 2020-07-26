@@ -1,0 +1,17 @@
+pkgbase = betterlockscreen_rapid-git
+	pkgdesc = A rapid and good-looking screen locker
+	pkgver = r3.4da062b
+	pkgrel = 1
+	url = https://github.com/oakszyjrnrdy/betterlockscreen_rapid
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = i3lock-fancy-rapid-git
+	provides = betterlockscreen_rapid
+	conflicts = betterlockscreen_rapid
+	backup = etc/betterlockscreen_rapid.conf
+	source = betterlockscreen_rapid-git::git+https://github.com/oakszyjrnrdy/betterlockscreen_rapid
+	sha256sums = SKIP
+
+pkgname = betterlockscreen_rapid-git
+
