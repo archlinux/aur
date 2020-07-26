@@ -8,7 +8,7 @@
 
 pkgname=proggyfonts
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='A set of fixed-width fonts designed for code listings.'
 url='http://upperbounds.net'
