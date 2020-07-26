@@ -1,0 +1,15 @@
+pkgbase = lime
+	pkgdesc = C++ library implementing Open Whisper System Signal protocol
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = bctoolbox=4.4.0
+	depends = soci>=4.0.0
+	source = lime-4.4.0.tar.gz::https://github.com/BelledonneCommunications/lime/archive/4.4.0.tar.gz
+	sha256sums = 7463294a419298d9765d6f8092216124bdd5876028e6af3419ac1b96800590e4
+
+pkgname = lime
+
