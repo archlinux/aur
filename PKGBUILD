@@ -3,7 +3,7 @@
 pkgname=jspeak
 _pkgname=JSpeak
 pkgver=2020.7.26
-pkgrel=3
+pkgrel=4
 pkgdesc='A Text to Speech Reader Front-end that Reads from the Clipboard and with Exceptionable Features '
 arch=('any')
 url="https://github.com/BullShark/$_pkgname"
