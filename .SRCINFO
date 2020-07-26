@@ -1,0 +1,29 @@
+pkgbase = stretchly-bin
+	pkgdesc = Break time reminder app
+	pkgver = 1.0.0
+	pkgrel = 1933
+	url = https://github.com/hovancik/stretchly/
+	install = Stretchly.install
+	arch = x86_64
+	license = BSD
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	source = https://github.com/hovancik/stretchly/releases/download/1.0.0/Stretchly-1.0.0.pacman
+	source = LICENSE::https://github.com/hovancik/stretchly/blob/master/LICENSE
+	sha256sums = 368b077ff202f61bef22dbc3ab907420177c1d5c3ac094a72883232c47ae72d2
+	sha256sums = d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a
+
+pkgname = stretchly-bin
+
