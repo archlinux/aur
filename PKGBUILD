@@ -1,7 +1,7 @@
 # Maintainer: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-depgraph
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cargo plugin that builds dependency graphs using cargo metadata and graphviz."
 url="https://sr.ht/~jplatte/cargo-depgraph/"
@@ -9,8 +9,8 @@ depends=('gcc-libs')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('GPL3')
-source=(https://git.sr.ht/~jplatte/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('6050d0ff712dcea5e00401d658a164b64ac734337b71589acf68ab825c3613e2ec182ede7fb38b1b8cb7635137da45f8e0688c9a9433c68b06fc654d14d8b214')
+source=(${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~jplatte/${pkgname}/archive/v${pkgver}.tar.gz)
+sha512sums=('25910dc1524cc03107fbe9be9cf6ef3278e0be363bfc29dd2cc969b87a7899bc28ac1b6af71460332ae27884e3ffc3524ac836d288be0c9fae97fd328a1fa822')
 
 build() {
   cd "${pkgname}-v${pkgver}"
