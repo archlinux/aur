@@ -1,0 +1,18 @@
+pkgbase = python-mautrix-latest
+	pkgdesc = A Python 3 asyncio Matrix framework. This package tracks the latest tag.
+	pkgver = v0.6.0rc5
+	pkgrel = 1
+	url = https://github.com/tulir/mautrix-python
+	arch = any
+	license = MPL2
+	makedepends = python3
+	makedepends = python-setuptools
+	depends = python
+	provides = python-mautrix
+	conflicts = python-mautrix
+	conflicts = python-mautrix-git
+	source = mautrix-python::git+https://github.com/tulir/mautrix-python
+	sha256sums = SKIP
+
+pkgname = python-mautrix-latest
+
