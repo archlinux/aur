@@ -6,6 +6,7 @@ arch=('any')
 url='https://github.com/neoclide/coc.nvim'
 license=('MIT')
 depends=('vim' 'nodejs')
+optdepends=('npm: for installing coc extensions' 'yarn: for installing coc extensions')
 makedepends=('git')
 provides=('vim-coc')
 conflicts=('vim-coc')
