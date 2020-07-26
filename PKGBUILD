@@ -4,8 +4,9 @@
 
 _pkgname=tapecalc
 pkgname="${_pkgname}"
-pkgver=t20180401
-pkgrel=3
+epoch=1
+pkgver=20180401
+pkgrel=1
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
@@ -69,7 +70,7 @@ pkgver() {
   
   # Or we can extract it from the makefile.in, which is consistent with what would end up in the executable:
   cd "$(_latestdir "${srcdir}")"
-  grep -E '^[[:space:]]*RELEASE[[:space:]]*=.*[0-9]+' makefile.in | cut -d= -f2 | tr -d '[[:space:]]'
+  grep -E '^[[:space:]]*RELEASE[[:space:]]*=.*[0-9]+' makefile.in | cut -d= -f2 | tr -d '[[:space:]]' | sed -E 's|^t||'
 }
 
 
