@@ -10,17 +10,19 @@ source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=("SKIP")
 
 prepare() {
-  mkdir -p "${pkgname}/build"
-  git -C "${pkgname}" submodule update --init --recursive --depth=1
+   mkdir -p "${pkgname}/build"
+   git -C "${pkgname}" submodule update --init --recursive --depth=1
 }
 
 build() {
-  cd "${pkgname}" || exit 1
-  cmake -B build     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=/usr     -DRS_SYSTEMD_DIR=/usr/lib/systemd/user
-  make -C build
+   cd "${pkgname}" || exit 1
+   cmake -B build \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr
+   make -C build
 }
 
 package() {
-  cd "${pkgname}" || exit 1
-  make -C build DESTDIR=${pkgdir} install
+   cd "${pkgname}" || exit 1
+   make -C build DESTDIR=${pkgdir} install
 }
