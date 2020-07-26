@@ -1,13 +1,13 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.46.6
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
 depends=('java-runtime>=8' 'webkit2gtk')
-makedepends=('maven' 'gendesk')
+makedepends=('maven' 'java-runtime>=8' 'java-runtime<14' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -15,7 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('f9aed7496d9744436c553a023650a167b2253bcb')
+sha1sums=('8434b8f3e31560fa5f643624918b88600f53c63f')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -31,7 +31,8 @@ prepare() {
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
-    export JAVA_HOME=/usr/lib/jvm/default-runtime
+    #export JAVA_HOME=/usr/lib/jvm/default-runtime
+    export JAVA_HOME=$(archlinux-java-run --min 8 --max 13 --java-home)
     cd $pkgname-$pkgver
     cd portfolio-app
     mvn clean install -Dgenerate-target-platform=true -Dtycho.disableP2Mirrors -Dmaven.repo.local=$srcdir/.mvn
