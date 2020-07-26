@@ -2,14 +2,14 @@
 
 pkgname=iscan-plugin-gt-s650
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (DS, EP, ES, ET, EW, L, LX, PX, WF, XP Series, FF-640, GT-S650, Perfection V19, Perfection V39)"
 arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON EULA')
 depends=('iscan' 'iscan-data')
 source=("https://download2.ebz.epson.net/iscan/plugin/gt-s650/deb/x64/iscan-gt-s650-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums=('0d7a0fd6a19be7d3acde64c631dbbda6b91b59584a2535e308499e53cb130b58')
+sha256sums=('553eb55fef42ebcae562f3b8442d43093a16d8b53893da3b0d25396e81377949')
 install="${pkgname}.install"
 
 prepare() {
