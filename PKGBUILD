@@ -19,7 +19,7 @@ source=('git+https://github.com/dyc3/steamguard-cli.git'
 	'steamguard')
 md5sums=('SKIP'
          'SKIP'
-	 'c2589e487f84f100c62910cc2d43fc2e')
+	 'ee6cb214cbc9f4e5f5fe119d55fdff0c')
 
 prepare() {
   cd $_gitname
