@@ -1,3 +1,4 @@
+# Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=pylance-language-server
 pkgver=2020.7.3
 pkgrel=1
