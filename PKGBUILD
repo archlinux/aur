@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=drop-down-terminal
 _gitname=gs-extensions-$_pkgname
-pkgname=gnome-shell-extension-$_pkgname
+pkgname=gnome-shell-extension-$_pkgname-git
 pkgver=24.r2.ga59669a
 pkgrel=1
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
