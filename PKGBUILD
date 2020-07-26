@@ -3,7 +3,7 @@
 _gitname=cascadia-code
 pkgbase=cascadia-code-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=1911.21.r13.gebfefd1
+pkgver=2007.01.r8.g4433d3de
 pkgrel=1
 pkgdesc="A new monospaced font that includes programming ligatures"
 url="https://github.com/microsoft/${_gitname}"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
