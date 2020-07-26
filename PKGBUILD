@@ -4,38 +4,35 @@
 pkgname=tableplus
 pkgver=0.1.62
 pkgrel=1
-pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
+pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64')
-url="https://tableplus.com/"
+url='https://tableplus.com/'
 license=('custom')
 depends=('gtksourceview3' 'libgee' 'gnome-keyring')
 source=('LICENSE'
-        'tableplus.desktop.patch'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb"
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            'ffe6b081bf6e868c3b9b9c3b9088af37a74cb7a517c5de927c0ad216ee66eed1'
             '28cdc3921d3ecc46aafafa88e0f088427623b4058332bce2bc877b70cf5d6c05'
 )
 
 prepare() {
-    cd "$srcdir"
-    tar -xf data.tar.xz
-    patch --forward --strip=1 --input="${srcdir}/tableplus.desktop.patch"
+    tar -xf "${srcdir}/data.tar.xz"
 }
 
 package() {
     cd "$srcdir"
 
-    install -d "$pkgdir/usr/local/bin/"
-    install -d "$pkgdir/usr/share/applications/"
-    install -d "$pkgdir/opt/tableplus/"
+    install -d "${pkgdir}/opt/tableplus/"
+    install -Dm755 opt/tableplus/tableplus -t "$pkgdir/usr/local/bin/"
+    install -Dm644 opt/tableplus/tableplus.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -r opt/tableplus/resource "${pkgdir}/opt/tableplus/"
 
-    install -Dm755 opt/tableplus/tableplus "$pkgdir/usr/local/bin/"
-    install -Dm644 opt/tableplus/tableplus.desktop "$pkgdir/usr/share/applications/"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    echo "" >> "${pkgdir}/usr/share/applications/tableplus.desktop"
+    echo "Categories=Utility;Development;" >> "${pkgdir}/usr/share/applications/tableplus.desktop"
+    echo "Comment=Modern, native, and friendly GUI tool for relational databases (Alpha)" >> "${pkgdir}/usr/share/applications/tableplus.desktop"
 
-    cp -r opt/tableplus/resource "$pkgdir/opt/tableplus/"
-    find opt/tableplus/ -type d -exec chmod 755 {} \;
-    find opt/tableplus/ -type f -exec chmod 644 {} \;
+    find "${pkgdir}/opt/tableplus/" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/opt/tableplus/" -type f -exec chmod 644 {} \;
 }
