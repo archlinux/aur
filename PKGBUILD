@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/BullShark/$_pkgname"
 license=('GNU General Public License v3.0')
 depends=('espeak' 'mbrola')
-source=("https://github.com/downloads/BullShark/$_pkgname/$_pkgname.tbz")
+source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver/$_pkgname.tbz")
 sha256sums=('SKIP')
 
 package() {

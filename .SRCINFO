@@ -7,7 +7,7 @@ pkgbase = jspeak
 	license = GNU General Public License v3.0
 	depends = espeak
 	depends = mbrola
-	source = https://github.com/downloads/BullShark/JSpeak/JSpeak.tbz
+	source = https://github.com/BullShark/JSpeak/releases/download/2020.7.26/JSpeak.tbz
 	sha256sums = SKIP
 
 pkgname = jspeak
