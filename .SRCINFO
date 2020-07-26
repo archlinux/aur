@@ -1,7 +1,7 @@
 pkgbase = neovim-coc
 	pkgdesc = Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
 	pkgver = 0.0.78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neoclide/coc.nvim
 	arch = any
 	license = MIT
