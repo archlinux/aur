@@ -1,3 +1,3 @@
 #!/bin/sh
-mkdir -p $HOME/.XRPHD
-LD_LIBRARY_PATH=/usr/lib/xrphd xrphd-qt -datadir=$HOME/.XRPHD/ "$@"
+mkdir -p $HOME/.xrphd
+LD_LIBRARY_PATH=/usr/lib/xrphd xrphd-qt -datadir=$HOME/.xrphd/ "$@"
