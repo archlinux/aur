@@ -1,6 +1,6 @@
 pkgbase = dpatch
 	pkgdesc = A easy to use patch system for Debian packages, somewhat similar to the dbs package, but much simpler to use.
-	pkgver = 2.0.38+nmu1
+	pkgver = 2.0.40
 	pkgrel = 1
 	url = http://packages.debian.org/unstable/dpatch
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = dpatch
 	optdepends = fakeroot
 	optdepends = patchutils
 	optdepends = curl
-	noextract = dpatch_2.0.38+nmu1_all.deb
+	noextract = dpatch_2.0.40_all.deb
 	options = emptydirs
-	source = dpatch_2.0.38+nmu1_all.deb::http://http.debian.net/debian/pool/main/d/dpatch/dpatch_2.0.38+nmu1_all.deb
-	sha256sums = d31edd4f5e7f769b66aabb67cc76e5b6e4c10c64becd2d60dc18b6f3c95bda5a
+	source = dpatch_2.0.40_all.deb::http://http.debian.net/debian/pool/main/d/dpatch/dpatch_2.0.40_all.deb
+	sha256sums = a79ca01f1a7e90c3e969d7bba204fe92a7e6832a3bd07f7ee153678bd34f3453
 
 pkgname = dpatch
 
