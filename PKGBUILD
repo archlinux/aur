@@ -3,18 +3,18 @@ _pkgname=Twitch
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
-arch=('any')
-url="https://gitlab.com/coreybruce/twitch-desktop"
+arch=('x86_64')
+url="https://gitlab.com/twitch-application/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
-source=('git+https://gitlab.com/coreybruce/twitch-desktop.git')
+source=('git+https://gitlab.com/twitch-application/application.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname-desktop"
+    cd "$srcdir/application"
     node -pe "require('./package.json').version"
 }
 
@@ -36,7 +36,7 @@ package() {
     ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%}"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname-desktop/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/application/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
