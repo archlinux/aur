@@ -68,7 +68,7 @@ prepare() {
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
 
 	# Build node-sass manually for platforms where pre-compiled binaries are not available
-	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" = 'ia32' ]; then
+	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" != 'ia32' ]; then
 		HOME="$srcdir/$_homedirectory" npm rebuild node-sass
 	fi
 }
