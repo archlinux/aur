@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/BullShark/$_pkgname"
 license=('GNU General Public License v3.0')
 depends=('espeak' 'mbrola')
+optdepends=('mbrola-voices-us1' 'mbrola-voices-us2' 'mbrola-voices-us3')
 source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver/$_pkgname.tbz")
 sha256sums=('SKIP')
 

@@ -7,6 +7,9 @@ pkgbase = jspeak
 	license = GNU General Public License v3.0
 	depends = espeak
 	depends = mbrola
+	optdepends = mbrola-voices-us1
+	optdepends = mbrola-voices-us2
+	optdepends = mbrola-voices-us3
 	source = https://github.com/BullShark/JSpeak/releases/download/2020.7.26/JSpeak.tbz
 	sha256sums = SKIP
 
