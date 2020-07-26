@@ -1,6 +1,6 @@
 pkgbase = neovim-polyglot-git
 	pkgdesc = A solid language pack for Vim.
-	pkgver = r540.56121b4
+	pkgver = v4.4.3.r9.g56121b4
 	pkgrel = 1
 	url = https://github.com/sheerun/vim-polyglot
 	arch = any
