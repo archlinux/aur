@@ -8,8 +8,8 @@ pkgbase = gtk-recordmydesktop
 	license = LGPL3
 	makedepends = automake>=1.5.0
 	depends = gtk2
-	depends = python2
-	depends = pygtk
+	depends = python2>=2.4.0
+	depends = pygtk>=2.10.0
 	depends = recordmydesktop>=0.3.8.1
 	depends = xorg-xwininfo
 	source = gtk-recordmydesktop-0.3.8.r602-1.tar.gz::https://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/0.3.8/gtk-recordmydesktop-0.3.8.tar.gz

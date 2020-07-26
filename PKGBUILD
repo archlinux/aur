@@ -14,7 +14,7 @@ pkgdesc='GTK2 frontend for recordMyDesktop'
 arch=('any')
 url="http://$_reponame.sourceforge.net"
 license=('GPL3' 'LGPL3')
-depends=('gtk2' 'python2' 'pygtk' "$_reponame>=0.3.8.1" 'xorg-xwininfo')
+depends=('gtk2' 'python2>=2.4.0' 'pygtk>=2.10.0' "$_reponame>=0.3.8.1" 'xorg-xwininfo')
 makedepends=('automake>=1.5.0')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://downloads.sourceforge.net/project/$_reponame/gtk-$_projectname/$_pkgver/$pkgname-$_pkgver.tar.gz"
