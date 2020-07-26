@@ -1,5 +1,5 @@
 pkgbase = vim-vala-arrufat-git
-	pkgdesc = Vim runtime files for OpenGL Shading Language.
+	pkgdesc = Vim runtime files for Vala.
 	pkgver = r1.0000000
 	pkgrel = 1
 	url = https://github.com/arrufat/vala.vim
