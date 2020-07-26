@@ -1,5 +1,5 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('farmhash')
+pkgname='farmhash'
 pkgver='1.1'
 pkgrel=1
 pkgdesc="FarmHash is a family of hash functions"
@@ -8,7 +8,7 @@ depends=('gcc-libs')
 makedepends=('git')
 checkdepends=()
 license=('MIT')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 source=("git+https://github.com/google/farmhash.git")
 sha256sums=('SKIP')
 
