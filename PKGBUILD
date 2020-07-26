@@ -3,7 +3,7 @@
 pkgname=huhnitor
 pkgver=1.1.2
 pkgrel=1
-pkgdesc=''
+pkgdesc='An intergalactic serial monitor for the ESP8266 Deauther v3'
 url='https://github.com/SpacehuhnTech/Huhnitor'
 arch=('x86_64')
 license=('MIT')
