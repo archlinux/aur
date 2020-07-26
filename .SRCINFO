@@ -1,12 +1,13 @@
 pkgbase = dpatch
 	pkgdesc = A easy to use patch system for Debian packages, somewhat similar to the dbs package, but much simpler to use.
 	pkgver = 2.0.40
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/unstable/dpatch
 	arch = any
 	license = GPL2
 	depends = debhelper
 	depends = dpkg
+	depends = make
 	depends = perl
 	optdepends = fakeroot
 	optdepends = patchutils

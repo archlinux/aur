@@ -4,7 +4,7 @@ pkgname=dpatch
 _pkgver="2.0.40"
 _deblevel=""
 pkgver="${_pkgver}${_deblevel}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A easy to use patch system for Debian packages, somewhat similar to the dbs package, but much simpler to use."
 url="http://packages.debian.org/unstable/dpatch"
@@ -17,6 +17,7 @@ arch=(
 depends=(
   'debhelper'
   'dpkg'
+  'make'
   'perl'
 )
 makedepends=()
