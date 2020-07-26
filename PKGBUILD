@@ -2,9 +2,9 @@
 
 pkgname=cloudflared
 pkgver=2020.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Argo Tunnel client"
-arch=(x86_64 armv7h)
+arch=(x86_64 armv7h aarch64)
 url=""https://github.com/cloudflare/cloudflared
 license=('custom:cloudflared')
 makedepends=(go)

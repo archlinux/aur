@@ -1,10 +1,11 @@
 pkgbase = cloudflared
 	pkgdesc = Argo Tunnel client
 	pkgver = 2020.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cloudflare/cloudflared
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = custom:cloudflared
 	makedepends = go
 	conflicts = cloudflared-bin
