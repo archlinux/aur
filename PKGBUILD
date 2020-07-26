@@ -1,7 +1,7 @@
 # Maintainer: physkets <physkets // at // tutanota dot com>
 
-_pkgname=vim-vala-arrufat
-pkgname=${_pkgname}-git
+_pkgname=vala.vim
+pkgname=vim-vala-arrufat-git
 pkgver='r1.0000000'
 pkgrel=1
 pkgdesc='Vim runtime files for Vala.'
