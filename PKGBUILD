@@ -1,37 +1,28 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=clover-efi
-pkgver=5058
-pkgrel=2
-pkgdesc="An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware."
-arch=('i686' 'x86_64')
-url="http://cloverefiboot.sourceforge.net"
-license=('GPL')
-depends=()
-makedepends=()
-options=('docs')
-install=
-source=("http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-$pkgver.tar.lzma")
-md5sums=('17b7091d15cfdf190031f4737fc8a44d')
+pkgver=5119
+pkgrel=1
+pkgdesc='Bootloader for macOS, Windows and Linux in UEFI and in legacy mode'
+arch=('x86_64')
+url='https://github.com/CloverHackyColor/CloverBootloader'
+license=('BSD')
+backup=('boot/EFI/CLOVER/config.plist')
+source=("https://github.com/CloverHackyColor/CloverBootloader/releases/download/$pkgver/Clover-$pkgver-X64.iso.7z")
+noextract=("Clover-$pkgver-X64.iso.7z")
+sha256sums=('3e2fe9ac2040d51b621add26c0edde15aaa4fab0840c951b4a2dc7cb2c190793')
 
 prepare() {
-  if [ "$CARCH" == "x86_64" ]; then
-    _arch=X64
-  else
-    _arch=IA32
-  fi
-
-  bsdtar -x --file "Clover-v2.5k-$pkgver-$_arch.iso" EFI usr
+  rm -rf EFI
+  bsdtar -xf "Clover-$pkgver-X64.iso.7z" -O | bsdtar -xf - 'EFI'
 }
 
 package() {
-  install -dm755 "$pkgdir/boot"
+  install -dm755 "$pkgdir/boot/EFI"
   install -dm755 "$pkgdir/usr/share/doc"
-  install -dm755 "$pkgdir/usr/lib/$pkgname"
 
-  cp --archive usr/local/bin usr/standalone/i386 "$pkgdir/usr/lib/$pkgname"
+  install -D "EFI/BOOT/BOOTX64.efi" "$pkgdir/usr/lib/$pkgname/EFI/BOOT/BOOTX64.efi"
 
-  cp --archive EFI "$pkgdir/boot"
-  rm --recursive "$pkgdir/boot/EFI/BOOT"
-  mv --force "$pkgdir/boot/EFI/CLOVER/doc" "$pkgdir/usr/share/doc/clover-efi"
+  cp --archive 'EFI/CLOVER' "$pkgdir/boot/EFI/CLOVER"
+  mv -f "$pkgdir/boot/EFI/CLOVER/doc" "$pkgdir/usr/share/doc/$pkgname"
 }
