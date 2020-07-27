@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=taskcore
-pkgver=1.0.0beta2
-_pkgver=1.0.0-beta.2
+pkgver=1.0.0beta3
+_pkgver=1.0.0-beta.3
 pkgrel=1
 pkgdesc='Command Line ToDo Management Application'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=("APACHE")
 makedepends=("dotnet-sdk")
 options=("staticlibs")
 source=("${url}/archive/v${_pkgver}.tar.gz")
-sha256sums=('1548acad299dd8426f377d77d6e24111aa63286200fc93397aedbf399024530f')
+sha256sums=('8472c31bb7cff8b6f543a46288753747d9c47fee8f32b3e198f8da5bcea3fca6')
 
 build() {
   cd "${pkgname}-${_pkgver}/TaskCore.App"
