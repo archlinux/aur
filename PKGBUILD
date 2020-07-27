@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=elfinfo
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=(x86_64)
 url='https://elfinfo.roboticoverlords.org/'
 license=(MIT)
 makedepends=(go git)
-source=("git+https://github.com/xyproto/elfinfo#tag=$pkgver")
+source=("git+https://github.com/xyproto/elfinfo#commit=fa069dd07e2a1629dcc6fa8bfefd59fc28833fa7")
 sha256sums=('SKIP')
 
 build() {
