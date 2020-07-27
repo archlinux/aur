@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-coc
 pkgver=0.0.78
-pkgrel=3
+pkgrel=4
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
 url='https://github.com/neoclide/coc.nvim'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('vim' 'nodejs')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
-            'coc-extras: additional necessary extensions')
+            'vim-coc-extras-git: additional necessary extensions')
 provides=('vim-coc')
 conflicts=('vim-coc')
 source=('https://github.com/neoclide/coc.nvim/archive/v0.0.78.tar.gz'
