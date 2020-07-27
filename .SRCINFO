@@ -1,6 +1,6 @@
 pkgbase = nimsynth-git
 	pkgdesc = A modular synth and sequencer made with Nim
-	pkgver = r150.4985e4c
+	pkgver = r154.57d4e56
 	pkgrel = 1
 	url = https://github.com/ftsf/nimsynth
 	arch = x86_64

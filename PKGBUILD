@@ -2,7 +2,7 @@
 
 pkgname=nimsynth-git
 _pkgname=nimsynth
-pkgver=r150.4985e4c
+pkgver=r154.57d4e56
 pkgrel=1
 pkgdesc="A modular synth and sequencer made with Nim"
 arch=('x86_64')
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  git checkout nim1.2
   nimble -y install sndfile nico
   make
 }
