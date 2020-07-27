@@ -2,7 +2,7 @@
 
 pkgname=docker-systemctl-replacement-git
 _pkgname=docker-systemctl-replacement
-pkgver=1159.5103149
+pkgver=1814.1bb5768
 pkgrel=1
 pkgdesc="docker systemctl replacement"
 url='https://github.com/gdraheim/docker-systemctl-replacement'
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -Dm755 "files/docker/systemctl.py" "${pkgdir}/usr/bin/systemctl.py"
+  install -Dm755 "files/docker/systemctl3.py" "${pkgdir}/usr/bin/systemctl.py"
 }
