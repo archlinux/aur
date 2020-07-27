@@ -1,10 +1,10 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=ceb2txt
 pkgname=$_pkgname-git
-pkgver=r7.865aea9
+pkgver=r13.386c53c
 pkgrel=1
 pkgdesc='A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.'
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/inputmice/ceb2txt"
 license=('Apache')
 depends=('java-runtime')
