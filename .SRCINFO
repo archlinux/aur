@@ -1,16 +1,16 @@
 pkgbase = ruby-fusuma-plugin-tap
 	pkgdesc = Tap and Hold gestures plugin for Fusuma
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma-plugin-tap
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-fusuma
-	noextract = fusuma-plugin-tap-0.3.0.gem
+	noextract = fusuma-plugin-tap-0.3.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-plugin-tap-0.3.0.gem
-	sha1sums = a7a20bf8d9664a30153654db360959c10dff9879
+	source = https://rubygems.org/downloads/fusuma-plugin-tap-0.3.1.gem
+	sha1sums = aac076bb080048fc797bb341cf2d62dd20cc981f
 
 pkgname = ruby-fusuma-plugin-tap
 
