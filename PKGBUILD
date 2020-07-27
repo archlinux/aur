@@ -1,8 +1,8 @@
 # Maintainer: Philip May <eniak.info@gmail.com>
 pkgname=pycharm-community-jre
 _appname=pycharm-community
-pkgver=2020.1.2
-pkgrel=2
+pkgver=2020.1.4
+pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
 url="https://www.jetbrains.com/pycharm/"
@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  '1c838713f5f9f51908399f23c1a3d17f336e87f1ab7e2c75e8b1797d785a04e8'
+  'd0c2d7995937b744e58b5fb3e49f5361ea7734470c841330e870d0fb13ea03e4'
   'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
   'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
 )
