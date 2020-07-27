@@ -1,8 +1,8 @@
 # Maintainer: talone <talone@boxph.one>
 
 pkgname=python-yoyo-migrations
-pkgver=7.2.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=3
 pkgdesc='Database migrations with SQL'
 arch=(any)
 url='https://ollycope.com/software/yoyo/latest/'
