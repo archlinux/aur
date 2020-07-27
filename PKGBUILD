@@ -2,8 +2,8 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=freeorion
-pkgver=0.4.9
-pkgrel=5
+pkgver=0.4.10
+pkgrel=1
 pkgdesc='A free, Open Source, turn-based space empire and galactic conquest computer game'
 url='https://www.freeorion.org'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('boost-libs'
 makedepends=('boost' 'cmake')
 conflicts=('freeorion-git' 'freeorion-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/freeorion/freeorion/archive/v${pkgver}.tar.gz")
-sha256sums=('bf16ecfe73e5f14f2fba0e4d30f10111051ec88806f97361ab3f4e1fdac1f512')
+sha256sums=('638b684db2a031709cee8a7702a8caa43ae6801ce561edd03c15c16b43307ae2')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
