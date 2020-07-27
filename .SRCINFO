@@ -1,0 +1,27 @@
+pkgbase = arkade-bin
+	pkgdesc = Your one-stop CLI for Kubernetes. provides a simple CLI with strongly-typed flags to install charts and apps to your cluster in one command.
+	pkgver = 0.5.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/alexellis/arkade/
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = openssh
+	optdepends = k3sup-bin
+	optdepends = k3s-bin
+	optdepends = kubernetes-bin
+	optdepends = helm
+	optdepends = terraform
+	optdepends = azure-cli: Command-line tools for Azure
+	optdepends = aws-cli: cli for Amazon Web Services
+	optdepends = google-cloud-sdk: gcloud - command-line tools for the Google Cloud Platform
+	provides = arkade
+	source = arkade-bin-0.5.1::https://github.com/alexellis/arkade/releases/download/0.5.1/arkade
+	sha256sums = a73bdf6ce6eaffd78823f3f785fa95104bf793fe65dfb249c5db5059d6dc17d0
+
+pkgname = arkade-bin
+
