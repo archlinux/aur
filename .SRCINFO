@@ -3,6 +3,7 @@ pkgbase = vim-coc-git
 	pkgver = v0.0.78.r106.g140321e6
 	pkgrel = 2
 	url = https://github.com/neoclide/coc.nvim
+	install = vim-coc-git.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,8 +15,10 @@ pkgbase = vim-coc-git
 	conflicts = vim-coc
 	source = git+https://github.com/neoclide/coc.nvim.git#branch=release
 	source = coc-vim-doc.hook
+	source = vim-coc-git.install
 	sha256sums = SKIP
 	sha256sums = 71348fe1287df827e7b28c41a0659e0cc8ff541623c3e1cc8fbfc84346199b1d
+	sha256sums = 6ae0d6ea2bb700e8f1e9b00e7c770d9a9e5b0e2c18dc9ba50e9d45cd17d08f6d
 
 pkgname = vim-coc-git
 

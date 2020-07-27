@@ -7,14 +7,18 @@ arch=('any')
 url='https://github.com/neoclide/coc.nvim'
 license=('MIT')
 depends=('vim' 'nodejs')
-optdepends=('npm: for installing coc extensions' 'yarn: for installing coc extensions')
+optdepends=('npm: for installing coc extensions'
+            'yarn: for installing coc extensions')
+install=vim-coc-git.install
 makedepends=('git')
 provides=('vim-coc')
 conflicts=('vim-coc')
 source=('git+https://github.com/neoclide/coc.nvim.git#branch=release'
-        'coc-vim-doc.hook')
+        'coc-vim-doc.hook'
+        'vim-coc-git.install')
 sha256sums=('SKIP'
-            '71348fe1287df827e7b28c41a0659e0cc8ff541623c3e1cc8fbfc84346199b1d')
+            '71348fe1287df827e7b28c41a0659e0cc8ff541623c3e1cc8fbfc84346199b1d'
+            '6ae0d6ea2bb700e8f1e9b00e7c770d9a9e5b0e2c18dc9ba50e9d45cd17d08f6d')
 
 pkgver() {
     cd "${srcdir}/coc.nvim"
