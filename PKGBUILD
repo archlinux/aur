@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=gofu
-pkgrel=2
+pkgrel=3
 pkgver=1.1.2
 pkgdesc='Simple file share service in go'
 url='https://git.roshless.me/~roshless/gofu'
@@ -19,9 +19,12 @@ source=("https://git.roshless.me/~roshless/$pkgname/archive/$pkgver.tar.gz"
 
 build() {
   cd $pkgname-$pkgver
-  go build \
-    -trimpath \
-    -o $pkgname .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o $pkgname .
 }
 
 package() {

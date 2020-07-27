@@ -1,7 +1,7 @@
 pkgbase = gofu
 	pkgdesc = Simple file share service in go
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.roshless.me/~roshless/gofu
 	install = gofu.install
 	arch = x86_64
