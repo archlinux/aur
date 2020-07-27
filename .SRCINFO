@@ -1,6 +1,6 @@
 pkgbase = ly-git
 	pkgdesc = TUI display manager
-	pkgver = v0.5.0.r1.geb496b0
+	pkgver = 0.5.0.r11.g6f24316
 	pkgrel = 1
 	url = https://github.com/cylgom/ly
 	arch = i686
