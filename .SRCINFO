@@ -1,0 +1,29 @@
+pkgbase = litecoinhd-qt
+	pkgver = 0.16.6
+	pkgrel = 1
+	url = https://ltchd.io
+	arch = x86_64
+	license = MIT
+	noextract = COPYING
+	source = https://github.com/ltchd2019/litecoinhd-qt/releases/download/ltchd-v0.16.6/ltchd-v0.16.6.0-fb64d89-x86_64-linux-gnu.tar.gz
+	source = https://raw.githubusercontent.com/ltchd2019/litecoinhd-qt/ltchd-v0.16.6/COPYING
+	source = litecoinhd128.png
+	source = litecoinhd-qt.desktop
+	source = lhd-qt.sh
+	sha256sums = c2f1a6cb8b114f2d0a6e169b52e2f2fba2c06d95ecefe776d51a60972529d205
+	sha256sums = e4c2b5dd7474e599e958324fd4eb47aa67aad650e73e39e8358df2907d4af386
+	sha256sums = 2630ae1bfc1393f279dcbae517ff1e90e4bdc8e7fe652f7429f6231ad9af6730
+	sha256sums = d990b06d30aae8c633f36fda986015921f33a9b7a326da0b471f8daa739e4fc4
+	sha256sums = fb1aec170fb65a89f8c6bbef0f70568c70d2ba8d54d18f7dd3650144bff13f6b
+
+pkgname = litecoinhd-qt
+	pkgdesc = LitecoinHD is a peer-to-peer network based digital currency - Qt
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = miniupnpc
+	depends = libminiupnpc.so
+	depends = qrencode
+	depends = protobuf
+	depends = zeromq
+
