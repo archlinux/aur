@@ -3,17 +3,17 @@ pkgbase=python-sphinx-notfound-page
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Sphinx extension to build a 404 page with absolute URLs"
 arch=('i686' 'x86_64')
-url="https://sphinx-notfound-page.readthedocs.io/"
+url="https://sphinx-notfound-page.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 #'python-sphinx' 'python-pillow' 'python-scipy' 'python-seaborn')
 checkdepends=('python-sphinx' 'python-docutils')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('64d409ea5d53c14fcc897966a979acbd')
+md5sums=('24a48ccf1237801911f7147d1f8c2d4b')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
