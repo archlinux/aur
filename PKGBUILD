@@ -21,6 +21,6 @@ pkgver() {
 package() {
     cd "${srcdir}/vim-polyglot"
     find after autoload compiler ctags extras ftdetect ftplugin indent syntax -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/vim-polyglot/start/vim-polyglot/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/local/share/nvim/site/pack/vim-polyglot/start/vim-polyglot/{}" \;
 }
 
