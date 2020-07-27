@@ -1,0 +1,19 @@
+pkgbase = vim-coc-marketplace-git
+	pkgdesc = coc.nvim extensions marketplace
+	pkgver = v1.4.0.r109.ga1ec912
+	pkgrel = 1
+	url = https://github.com/fannheyward/coc-marketplace
+	arch = any
+	groups = vim-coc-extras
+	license = 
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	provides = vim-coc-marketplace
+	conflicts = vim-coc-marketplace
+	source = coc-marketplace::git+https://github.com/fannheyward/coc-marketplace.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-marketplace-git
+
