@@ -1,0 +1,13 @@
+# package-config
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OSS-CVC vpi
+Description: vpi library for simulation with oss-cvc
+Version: 7.0
+# URL:
+# Libs:
+# Libs.private:
+Cflags: -I${includedir}/oss-cvc

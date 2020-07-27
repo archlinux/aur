@@ -1,0 +1,13 @@
+diff --git a/pli_incs/vpi_user.h b/pli_incs/vpi_user.h
+index cc63816..8c6911c 100644
+--- a/pli_incs/vpi_user.h
++++ b/pli_incs/vpi_user.h
+@@ -755,7 +755,7 @@ XXTERN vpiHandle   vpi_handle_by_multi_index PROTO_PARAMS((vpiHandle obj,
+                                                      PLI_INT32 num_index,
+                                                      PLI_INT32 *index_array));
+ /****************************** GLOBAL VARIABLES ******************************/
+-PLI_VEXTERN PLI_DLLESPEC void (*vlog_startup_routines[])();
++PLI_VEXTERN PLI_DLLESPEC void (*vlog_startup_routines[])(void);
+   /* array of function pointers, last pointer should be null */
+ #undef PLI_EXTERN
+ #undef PLI_VEXTERN
