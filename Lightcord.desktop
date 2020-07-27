@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lightcord
+Comment[fr_FR]=Un client Discord simple et personalisable
+Comment=A simple - customizable - Discord Client
+Exec=/usr/bin/lightcord
+Icon=lightcord
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;P2P;
