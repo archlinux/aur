@@ -1,0 +1,14 @@
+pkgbase = heliocron-bin
+	pkgdesc = Execute tasks relative to sunset, sunrise and other solar events.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mfreeborn/heliocron
+	arch = x86_64
+	license = Apache
+	license = MIT
+	provides = heliocron
+	source = https://github.com/mfreeborn/heliocron/releases/download/v0.4.0/heliocron-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 83cd3d97d0b32a624069f16a82991ad7ee01826ee9532d124cce6eff4aea6b0d
+
+pkgname = heliocron-bin
+
