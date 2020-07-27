@@ -1,20 +1,20 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=sickchill-git
-pkgver=2020.01.17.1.r0.g760c6ca2a
+pkgver=2020.07.18.1.r0.gc67114a85
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
 url="https://github.com/SickChill/SickChill"
 license=('GPL3')
-depends=('nodejs')
+depends=('nodejs' 'python2')
 makedepends=('git')
 #            'deluge: supported torrent client'
 #            'qbittorrent: supported torrent client'
 #            'rtorrent: supported torrent client'
 #            'sabnzbd: supported NZB downloader'
 #            'transmission-cli: supported torrent client'
-optdepends=('unrar: RAR archives')
+optdepends=('unrar: for RAR archives')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=('!strip')
