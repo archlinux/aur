@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-omega
-_pkgver=1.20.1-E14
+_pkgver=1.20.2-E14
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Omega firmware)"
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Omega-Numworks/Omega/archiv
 	"https://github.com/Omega-Numworks/Omega-Atom/archive/${_subpkgver[0]}.tar.gz"
 	"https://github.com/Omega-Numworks/Omega-RPN/archive/${_subpkgver[1]}.tar.gz"
 	"https://github.com/Omega-Numworks/Omega-Themes/archive/${_subpkgver[2]}.tar.gz")
-md5sums=('1c7b95ec68c0c78ade515b4207c08986'
+md5sums=('52d9bcb26567e9419c1fa4031096caf4'
          '9253b9e172b7838d1de2e5d1d2e70a2d'
          '61e0c0d58ea5b99c1abb22cf69db04fb'
          'a189d8fe1ef0f43139a3be5459dff22d')
