@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 optdepends=('qogir-icon-theme: Recommended icon theme'
             'kvantum-theme-matcha: Matching Kvantum theme')
-source=("$pkgname-$_pkgver.zip::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
+source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
 options=('!strip')
 sha256sums=('96fb570153cc8c139ac6a428172216b0a5d382d97ccd6bb3e4e525196591af4e')
 

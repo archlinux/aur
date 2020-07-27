@@ -11,7 +11,7 @@ pkgbase = matcha-gtk-theme
 	optdepends = qogir-icon-theme: Recommended icon theme
 	optdepends = kvantum-theme-matcha: Matching Kvantum theme
 	options = !strip
-	source = matcha-gtk-theme-2020-07-27.zip::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2020-07-27.tar.gz
+	source = matcha-gtk-theme-2020-07-27.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2020-07-27.tar.gz
 	sha256sums = 96fb570153cc8c139ac6a428172216b0a5d382d97ccd6bb3e4e525196591af4e
 
 pkgname = matcha-gtk-theme
