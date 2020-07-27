@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.2.0.rc1.r224.gd7a2e58
+pkgver=v0.3.0.r39.gc1b62f0
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -42,6 +42,8 @@ build() {
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
     cd "$srcdir/$_pkgname"
+    SUFFIX=$(git describe --long --tags | sed 's/^[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
+
     dotnet publish        OpenTabletDriver.Daemon   \
         --configuration   Release                   \
         --runtime         linux-x64                 \
@@ -54,6 +56,7 @@ build() {
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
+        --version-suffix  "$SUFFIX"                 \
         /p:PublishTrimmed=false
 
     dotnet publish        OpenTabletDriver.UX.Gtk   \
@@ -62,6 +65,7 @@ build() {
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
+        --version-suffix  "$SUFFIX"                 \
         /p:PublishTrimmed=false
 
     cd "$srcdir/$_pkgname-udev"

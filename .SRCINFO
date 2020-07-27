@@ -1,6 +1,6 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = v0.2.0.rc1.r224.gd7a2e58
+	pkgver = v0.3.0.r39.gc1b62f0
 	pkgrel = 2
 	url = https://github.com/InfinityGhost/OpenTabletDriver
 	install = reload-systemd.install
