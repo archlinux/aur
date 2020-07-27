@@ -3,9 +3,9 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
 makedepends=('go' 'git' 'pandoc')
@@ -23,27 +23,19 @@ sha256sums=('87c832b25794d7acac2fa4bd3389c81819535f32242d5e99284da76a1a86f1f3'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
-build() {
-	export GOPATH="$srcdir"/gopath
-	cd "$pkgname-$pkgver"
-	GOOS=linux \
-	GOARCH=$(go env GOHOSTARCH) \
-	go build \
-		-v \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-gcflags "all=-trimpath=$srcdir" \
-		-asmflags "all=-trimpath=$srcdir" \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o "./dist/$pkgname" "./cmd/$pkgname"
-
-	# Clean mod cache for makepkg -C
+prepare() {
+	export GOPATH="$srcdir/gopath"
 	go clean -modcache
+}
 
-	# Generate man page
-	pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
+build() {
+	cd "$pkgname-$pkgver"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+	make
 }
 
 package() {
