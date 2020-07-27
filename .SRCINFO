@@ -1,6 +1,6 @@
 pkgbase = vr-video-player-git
 	pkgdesc = A virtual reality video player for x11 on Linux
-	pkgver = r56.cf0a945
+	pkgver = r57.9f104ba
 	pkgrel = 1
 	url = https://git.dec05eba.com/vr-video-player
 	arch = x86_64
