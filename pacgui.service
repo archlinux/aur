@@ -1,0 +1,8 @@
+[Unit]
+Description=PACGUI
+Wants=network-online.target graphical-session.target
+After=network-online.target graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env bash pacgui.sh

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Updates
+Comment=System updates with a simple GUI
+Keywords=updates;
+Exec=/usr/bin/pacgui.sh
+Icon=system-software-update
+Terminal=false
+Categories=GNOME;GTK;System;Settings;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+Type=Application
+StartupNotify=false
+X-GNOME-UsesNotifications=true

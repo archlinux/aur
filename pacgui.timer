@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs PACGUI daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=pacgui.service
+
+[Install]
+WantedBy=default.target
