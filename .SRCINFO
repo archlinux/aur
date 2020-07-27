@@ -1,0 +1,23 @@
+pkgbase = sweethome3d-textures-contributions
+	pkgdesc = Free textures advertised on SweetHome3D website
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.sweethome3d.com/importTextures.jsp
+	install = sweethome3d-textures-contributions.install
+	arch = any
+	license = custom:CC-BY
+	optdepends = sweethome3d: Models rendering
+	optdepends = sweethome3d-3dmodels-blendswap-cc0: More 3D models
+	optdepends = sweethome3d-3dmodels-blendswap-ccby: More 3D models
+	optdepends = sweethome3d-3dmodels-contributions: More 3D models
+	optdepends = sweethome3d-3dmodels-katorlegaz: More 3D models
+	optdepends = sweethome3d-3dmodels-lucapresidente: More 3D models
+	optdepends = sweethome3d-3dmodels-reallusion: More 3D models
+	optdepends = sweethome3d-3dmodels-scopia: More 3D models
+	optdepends = sweethome3d-3dmodels-trees: More 3D models
+	optdepends = sweethome3d-textures-scopia: More textures
+	source = http://prdownloads.sourceforge.net/sweethome3d/Textures-Contributions-1.2.zip
+	sha1sums = 0ceac89ddc2e3d997ab8921a5f3106840b2873a1
+
+pkgname = sweethome3d-textures-contributions
+
