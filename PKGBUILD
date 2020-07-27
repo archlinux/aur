@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
 pkgver=2.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
 url='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html'
@@ -11,7 +11,7 @@ conflicts=('aws-cli' 'aws-cli-v2')
 makedepends=('unzip')
 depends=('less')
 source=(
-    'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
+    "$pkgname-$pkgver.zip::https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
     # on hold until the AWS CLI team publish their key
     # See https://github.com/aws/aws-cli/issues/4942
     # 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig'
