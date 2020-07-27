@@ -1,6 +1,0 @@
-*.tar.xz
-*.tar.lz
-*.tar.gz
-/pkg
-/src
-/lolclock
