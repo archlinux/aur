@@ -38,13 +38,10 @@ prepare() {
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
-	mkdir -p dist-assets/shell-completions
-
-	# Prevent creation of a `go` directory in one's home.
-	# Sometimes this directory cannot be removed with even `rm -rf` unless
-	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
+
+	mkdir -p dist-assets/shell-completions
 }
 
 build() {
@@ -67,9 +64,6 @@ build() {
 		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
 		-buildmode c-archive
 
-	# Clean now to ensure makepkg --clean works
-	go clean -modcache
-
 	cd "$srcdir/mullvadvpn-app"
 	echo "Updating version in metadata files..."
 	./version-metadata.sh inject $PRODUCT_VERSION
@@ -87,7 +81,7 @@ build() {
 	done
 
 	cd "$srcdir/mullvadvpn-app"
-	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked --all-features
+	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked
 
 	echo "Copying binaries"
 	binaries=(
