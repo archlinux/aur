@@ -1,0 +1,15 @@
+pkgbase = xorriso
+	pkgdesc = Copies file objects from POSIX compliant filesystems into Rock Ridge enhanced ISO 9660 filesystems and allows session-wise manipulation of such filesystems
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://scdbackup.sourceforge.net/xorriso_eng.html
+	arch = x86_64
+	license = GPL3
+	depends = tk
+	depends = bzip2
+	depends = acl
+	source = xorriso-1.5.2.tar.gz::http://scdbackup.sourceforge.net/xorriso-1.5.2.tar.gz
+	sha256sums = 3b69f5c93ae7c40c5bbe4a847fa3963f5efc9c565551622f77121c5792fc17e7
+
+pkgname = xorriso
+
