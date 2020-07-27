@@ -1,0 +1,12 @@
+pkgbase = yh-bin
+	pkgdesc = A YAML syntax highlighter for the CLI
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/andreazorzetto/yh
+	arch = x86_64
+	license = Apache
+	source = https://github.com/andreazorzetto/yh/releases/download/v0.2.1/yh-linux-amd64.zip
+	sha256sums = e98007a2c3f0a968fd5de479b1a32c0199bd40e862cd8b7f4e6a2edb3dfa6720
+
+pkgname = yh-bin
+
