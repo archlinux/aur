@@ -1,6 +1,6 @@
 pkgbase = docker-systemctl-replacement-git
 	pkgdesc = docker systemctl replacement
-	pkgver = 1159.5103149
+	pkgver = 1814.1bb5768
 	pkgrel = 1
 	url = https://github.com/gdraheim/docker-systemctl-replacement
 	arch = any
