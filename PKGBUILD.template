@@ -1,7 +1,7 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher
 pkgver={{ launcher_version }}
-pkgrel=1
+pkgrel={{ package_release }}
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"

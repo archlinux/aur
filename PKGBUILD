@@ -1,7 +1,7 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher
 pkgver=2.1.16102
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
