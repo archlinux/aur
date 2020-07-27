@@ -6,7 +6,8 @@ pkgbase = hoverfly-bin
 	arch = x86_64
 	license = Apache
 	provides = hoverfly
-	provides = hoverfly-git
+	conflicts = hoverfly
+	conflicts = hoverfly-git
 	source = hoverfly-bin-1.3.0.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.3.0/hoverfly_bundle_linux_amd64.zip
 	sha256sums = 4af0e0fc927a732eaa19a4e4f4b0a07e0cbef5145ee28f9ff22e2680f486e5bb
 

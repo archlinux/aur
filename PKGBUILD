@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://hoverfly.io'
 license=('Apache')
 provides=('hoverfly')
-provides=('hoverfly' 'hoverfly-git')
+conflicts=('hoverfly' 'hoverfly-git')
 source=("${pkgname}-${pkgver}.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v${pkgver}/hoverfly_bundle_linux_amd64.zip")
 sha256sums=('4af0e0fc927a732eaa19a4e4f4b0a07e0cbef5145ee28f9ff22e2680f486e5bb')
 
