@@ -5,7 +5,7 @@ _cudaarch="6.0;6.1;7.0;7.5"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r11010.b0315f86f5
+pkgver=2.0.0.r11159.98b3f73bd0
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -57,6 +57,8 @@ prepare() {
 
   # do not use 3rd party openmp
   rm -rfv "${srcdir}/${_pkgname}/3rdparty/openmp"
+  # CUB is now available in CUDA
+  rm -rfv "${srcdir}/${_pkgname}/3rdparty/nvidia_cub"
   # the latest cmake set OpenMP_FOUND instead of OPENMP_FOUND
   sed -i 's/OPENMP_FOUND/OpenMP_FOUND/g' "${srcdir}/${_pkgname}/CMakeLists.txt"
 
