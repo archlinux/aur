@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=nnrss-qt
+StartupWMClass=nnrss-qt
+Comment=Feed reader for nano nano rss server
+Type=Application
+Categories=Network;FeedReader;
+Exec=nnrss-qt
+Terminal=false
+StartupNotify=false
