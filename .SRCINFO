@@ -1,0 +1,12 @@
+pkgbase = cstatus
+	pkgdesc = Minimal statusbar for dwm written in c99.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/andreafeletto/cstatus
+	arch = x86_64
+	license = MIT
+	source = https://github.com/andreafeletto/cstatus/archive/0.0.2.tar.gz
+	sha256sums = 64164653920d1da355ae17b53ebdd591514a56430ef19aaa79a79460225f1152
+
+pkgname = cstatus
+
