@@ -1,8 +1,8 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter-git
-pkgver=0.1.2_271.a061111
+pkgver=0.1.2_285.33caacc
 pkgrel=1
-pkgdesc="Simple dual screen pdf presentation software"
+pkgdesc="Simple dual screen pdf presentation software (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('GPL3')
