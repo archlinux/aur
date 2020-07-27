@@ -5,18 +5,22 @@ user_path=".eteks/sweethome3d/furniture/"
 post_install() {
     find /home/* -maxdepth 0 -type d \! -user root -print0 | while IFS= read -r -d '' user_home; do
         mkdir -p "${user_home}/${user_path}"
-        for lib in /usr/share/eteks/sweethome3d/furniture/blendswap-cc0/*.sh3f; do
+        for lib in /usr/share/eteks/sweethome3d/furniture/3dmodels-blendswap-cc0/*.sh3f; do
             ln -s "$lib" "${user_home}/${user_path}/"
         done
+        chown --no-dereference --preserve-root --recursive --reference="${user_home}" "${user_home}/${user_path}"
     done
 }
 
 # arg 1:  the old package version
 pre_remove() {
     find /home/* -maxdepth 0 -type d \! -user root -print0 | while IFS= read -r -d '' user_home; do
-        rm -f "${user_home}/${user_path}/blendswap-cc0-*.sh3f"
+        rm -f "${user_home}/${user_path}/3dmodels-blendswap-cc0-*.sh3f"
         (
-            cd "${user_home}" && rmdir --ignore-fail-on-non-empty -p "${user_path}"
+            cd "${user_home}"
+            if [ -d "${user_path}" ]; then
+                rmdir --ignore-fail-on-non-empty -p "${user_path}"
+            fi
         )
     done
 }
