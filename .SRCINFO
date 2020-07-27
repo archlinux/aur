@@ -1,0 +1,23 @@
+pkgbase = kerio-vpnclient
+	pkgdesc = Kerio Control VPN client for corporate networks.
+	pkgver = 9.3.4.3795
+	pkgrel = 1
+	url = http://www.kerio.com/control
+	install = kerio-vpnclient.install
+	arch = x86_64
+	license = custom:EULA
+	depends = procps
+	depends = dialog
+	depends = util-linux
+	options = !strip
+	source = http://download.kerio.com/dwn/control/control-9.3.4-3795/kerio-control-vpnclient-9.3.4-3795-linux-amd64.deb
+	source = kvpnc
+	source = kvpnc.conf
+	source = kvpnc.service
+	sha256sums = 2e1697099f42cb6b6f45def6cbf9a7ce9cebad69dabec664a3ac8618be8a261d
+	sha256sums = 984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759
+	sha256sums = 2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a
+	sha256sums = bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17
+
+pkgname = kerio-vpnclient
+
