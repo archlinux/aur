@@ -5,7 +5,6 @@ After=network.target
 [Service]
 User=logitechms
 Group=logitechms
-PIDFile=/var/run/lms-git.pid
 WorkingDirectory=/opt/logitechmediaserver-git
 ExecStart=/opt/logitechmediaserver-git/slimserver.pl \
 	--prefsdir /opt/logitechmediaserver-git/prefs \
