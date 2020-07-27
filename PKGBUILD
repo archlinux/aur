@@ -1,6 +1,7 @@
 pkgname=linvst
-pkgver=2.8.r85.105128a
+pkgver=2.8.r98.e0c8d55
 pkgrel=1
+license=('GPL3')
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"

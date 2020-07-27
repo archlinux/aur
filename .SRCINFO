@@ -1,9 +1,10 @@
 pkgbase = linvst
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
-	pkgver = 2.8.r35.0aae371
+	pkgver = 2.8.r98.e0c8d55
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
+	license = GPL3
 	makedepends = git
 	depends = wine
 	source = git+https://github.com/osxmidi/LinVst.git
