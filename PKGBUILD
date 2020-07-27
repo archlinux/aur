@@ -2,9 +2,9 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Community driven man pages improved with smart user interaction"
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://isacikgoz.me/tldr"
 license=('MIT')
 makedepends=('go' 'dep' 'git')
@@ -30,9 +30,10 @@ build() {
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
 
 	go build \
+		-trimpath \
 		-buildmode=pie \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o $pkgname .
+		-v -o $pkgname .
 }
 
 package() {
