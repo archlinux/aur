@@ -1,0 +1,14 @@
+pkgbase = jacksum
+	pkgdesc = A free and platform independent software for computing and verifying checksums, CRCs and message digests
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://jacksum.loefflmann.net
+	arch = any
+	license = GPL2
+	depends = java-runtime>=8
+	depends = bash
+	source = jacksum-1.7.0.zip::https://sourceforge.net/projects/jacksum/files/jacksum/jacksum-1.7.0.zip/download
+	sha256sums = c6e2136b7adfc0ee78c273fdd0ddf7e2fc5741a5bdf46ff3c01aeff2bee519cf
+
+pkgname = jacksum
+
