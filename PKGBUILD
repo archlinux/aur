@@ -1,12 +1,12 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=vr-video-player-git
-pkgver=r55.a781025
+pkgver=r56.cf0a945
 pkgrel=1
 pkgdesc='A virtual reality video player for x11 on Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
-license=('custom:BSD3')
+license=('BSD')
 makedepends=('git' 'sibs')
 depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite')
 provides=('vr-video-player')
