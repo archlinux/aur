@@ -6,7 +6,7 @@ pkgver=2020.06.24
 pkgrel=1
 pkgdesc="GnuPG keys for Debian (non-archive)"
 arch=(any)
-url=http://keyring.debian.org/
+url=https://keyring.debian.org/
 license=(GPL)
 depends=(gnupg)
 
