@@ -17,9 +17,6 @@ prepare() {
 	mkdir -p gopath/src/github.com/isacikgoz
 	ln -rTsf "${pkgname%++}-$pkgver" "gopath/src/github.com/isacikgoz/${pkgname%++}"
 
-	# Prevent creation of a `go` directory in one's home.
-	# Sometimes this directory cannot be removed with even `rm -rf` unless
-	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
 
@@ -36,9 +33,6 @@ build() {
 		-buildmode=pie \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-o $pkgname .
-
-	# Clean now to ensure makepkg --clean works
-	go clean -modcache
 }
 
 package() {
