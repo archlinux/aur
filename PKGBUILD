@@ -29,6 +29,6 @@ build() {
 
 package() {
     cd "${srcdir}/${_extname}"
-    find lib nvimstart package.json -type f -exec \
+    find lib/*.js nvimstart package.json -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
