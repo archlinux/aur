@@ -14,7 +14,7 @@ source=("${_pkgname}::git+https://github.com/liuchengxu/vim-clap.git"
         "${_pkgname}-neovim-doc.hook")
 sha256sums=('SKIP'
             '0fe8cf209778fb3345886a43393cfda53e5c5e4a09d8b09a049e892ba9c33acf'
-            '87029a9d3c0c899a6b5327c7c67f65af7644f2b6a697e84c6c01c2aa107cd4dd')
+            '058b32ca0ec551c0742119b277a3e3f9bbac3031183fbf3d0a248fa2597adb97')
 makedepends=('git'
              'rustup'
              'make')
@@ -59,7 +59,7 @@ package_neovim-clap-git() {
                 'skim: skim external filter')
     provides=('neovim-clap')
     conflicts=('neovim-clap')
-    _packdir="usr/share/nvim/runtime/pack/${_pkgname}/start/${_pkgname}"
+    _packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"

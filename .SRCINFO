@@ -13,7 +13,7 @@ pkgbase = clap-git
 	source = clap-neovim-doc.hook
 	sha256sums = SKIP
 	sha256sums = 0fe8cf209778fb3345886a43393cfda53e5c5e4a09d8b09a049e892ba9c33acf
-	sha256sums = 87029a9d3c0c899a6b5327c7c67f65af7644f2b6a697e84c6c01c2aa107cd4dd
+	sha256sums = 058b32ca0ec551c0742119b277a3e3f9bbac3031183fbf3d0a248fa2597adb97
 
 pkgname = vim-clap-git
 	depends = vim

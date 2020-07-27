@@ -3,9 +3,9 @@ Operation = Install
 Operation = Upgrade
 Operation= Remove
 Type = Path
-Target = usr/share/nvim/runtime/pack/clap/start/clap/doc/
+Target = usr/local/share/nvim/site/pack/clap/start/clap/doc/
 
 [Action]
 Description = Updating Vim help tags...
-Exec = /usr/bin/nvim -es --cmd ":helptags /usr/share/nvim/runtime/pack/clap/start/clap/doc" --cmd ":q"
+Exec = /usr/bin/nvim -es --cmd ":helptags /usr/local/share/nvim/site/pack/clap/start/clap/doc" --cmd ":q"
 When = PostTransaction
