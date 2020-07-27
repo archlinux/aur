@@ -15,7 +15,7 @@ pkgbase = neovim-coc-git
 	source = git+https://github.com/neoclide/coc.nvim.git#branch=release
 	source = coc-neovim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 70cd7d959ea6ca973bd761b6deab922bfa34dd725aab636a0bbc5fbfd60cabaa
+	sha256sums = 2e4d498a34a920452764dffb728cd65526bff7bfbda8599f4de5b5ff427d8d5b
 
 pkgname = neovim-coc-git
 
