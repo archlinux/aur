@@ -4,7 +4,7 @@
 # Contributor: Mark Taylor <skymt0@gmail.com>
 
 pkgname=contextfree
-pkgver=3.2
+pkgver=3.3
 pkgrel=2
 pkgdesc="A program that generates images from written instructions called a grammar"
 arch=('i686' 'x86_64')
@@ -13,8 +13,14 @@ license=('GPL2')
 depends=('libpng' 'gcc-libs')
 makedepends=('bison' 'flex')
 source=("https://www.contextfreeart.org/download/ContextFreeSource${pkgver}.tgz")
-sha256sums=('d96cee09cee9022f25c0a085d68249df3e1d384017dd069b3a76fe0053ade977')
+sha256sums=('bd51dcc5ea2a7af03918d7e22992b3c1508fd49b52ef7599ab1ad68eae67b3e0')
 
+prepare() {
+  cd "$srcdir"
+
+  make clean
+  sed -i 's/c++14/c++17/' Makefile
+}
 
 build() {
   # NOTE: 3.1+ tarball packages files directly in the root of the archive
@@ -22,7 +28,6 @@ build() {
   # cd "$srcdir/context-free-$pkgver"
   cd "$srcdir"
 
-  sed -i 's/c++14/c++17/' Makefile
   make
 }
 
