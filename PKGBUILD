@@ -34,13 +34,13 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-  # git submodule update --init
+  git submodule update --init
 }
 
 build() {
 	cd "$pkgname"
 	# ./configure --prefix=/usr
-  # cd Plugin/ && bash build_linux.sh
+  cd Plugin/ && bash build_linux.sh
 }
 
 package() {
