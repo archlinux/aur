@@ -2,14 +2,14 @@
 
 pkgname=zmeventnotification
 pkgver=5.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A Machine Learning powered, Secure Websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/pliablepixels/zmeventnotification'
 license=('GPL')
-depends=('perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-json' 'perl-lwp-protocol-https' 'perl-net-mqtt-simple' 'perl-net-websocket-server'
-         'python-face_recognition' 'python-gifsicle' 'python-future' 'python-imageio' 'python-imageio-ffmpeg' 'python-imutils' 'python-opencv-python'
-         'python-pyzm-git' 'python-requests' 'python-scikit-learn' 'python-shapely')
+depends=('opencv' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-json' 'perl-lwp-protocol-https' 'perl-net-mqtt-simple'
+         'perl-net-websocket-server' 'python-face_recognition' 'python-gifsicle' 'python-future' 'python-imageio' 'python-imageio-ffmpeg'
+         'python-imutils' 'python-pyzm-git' 'python-requests' 'python-scikit-learn' 'python-shapely')
 makedepends=('git')
 conflicts=('zmeventnotification-git')
 backup=('etc/zoneminder/zmeventnotification.ini'
