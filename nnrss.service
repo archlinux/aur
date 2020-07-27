@@ -1,0 +1,13 @@
+[Unit]
+Description=nano nano rss service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/nnrss
+User=nnrss
+Restart=always
+ExecStart=/usr/bin/gunicorn nnrss:APP -b unix:/tmp/nnrss.sock
+
+[Install]
+WantedBy=multi-user.target

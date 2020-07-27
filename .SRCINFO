@@ -1,0 +1,29 @@
+pkgbase = nnrss
+	pkgdesc = Web/API RSS aggregator
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://git.roshless.me/~roshless/nnrss
+	arch = any
+	license = AGPL
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-sqlalchemy
+	depends = python-werkzeug
+	depends = python-feedparser
+	depends = python-listparser
+	depends = python-apscheduler
+	depends = python-wtforms
+	optdepends = gunicorn: recommended WSGI server
+	optdepends = python-psycopg2: connect to PostgreSQL database
+	backup = var/lib/nnrss/config.ini
+	source = https://git.roshless.me/~roshless/nnrss/archive/1.1.1.tar.gz
+	source = nnrss.service
+	source = nnrss.sysusers
+	source = nnrss.tmpfiles
+	md5sums = a2e19fa7207950b693eb2caed8038aef
+	md5sums = 85e39687367524c7b87bfb95571020bf
+	md5sums = 8b9a147720fbe9f6c013f6aa7dbb8140
+	md5sums = 364b51a829d7cf46a9557b97f8d3ce28
+
+pkgname = nnrss
+

@@ -1,0 +1,11 @@
+post_install() {
+  chown -R nnrss:nnrss /var/lib/nnrss
+}
+
+post_upgrade() {
+  chown -R nnrss:nnrss /var/lib/nnrss
+}
+
+post_remove() {
+  echo 'You may want to remove nnrss user.'
+}
