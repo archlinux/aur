@@ -1,7 +1,7 @@
 pkgbase = actor-framework
 	pkgdesc = An Open Source Implementation of the Actor Model in C++
 	pkgver = 0.17.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://actor-framework.org
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = actor-framework
 	makedepends = opencl-icd-loader
 	optdepends = opencl-icd-loader: opencl support
 	optdepends = openssl: openssl support
-	source = git+https://github.com/actor-framework/actor-framework#commit=22ccaba0580eee14dd5de01b037a20a2c9f4df8e
+	source = git+https://github.com/actor-framework/actor-framework#commit=f7d4fc7ac679e18ba385f64434f8015c3cea9cb5
 	sha256sums = SKIP
 
 pkgname = actor-framework
