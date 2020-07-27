@@ -20,15 +20,15 @@ source=("https://github.com/hardkernel/linux/archive/${_commit}.tar.gz"
         'config'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook'
-        'https://releases.linaro.org/components/toolchain/binaries/6.3-2017.02/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu.tar.xz')
+        '90-linux.hook')
+#        'https://releases.linaro.org/components/toolchain/binaries/6.3-2017.02/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu.tar.xz')
 md5sums=('b8291d7aefc3b63aa9dbcc80d39856e2'
          'ee20a7ffe6a7a5ec0c4dba3315c2e2a4'
          '5d86097d845f1f0d4797f0b50bfc0f65'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77'
-         '6ec1950b8ae89cd26c3843f88e24210f')
+         '3dc88030a8f2f5a5f97266d99b149f77')
+#         '6ec1950b8ae89cd26c3843f88e24210f')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -40,6 +40,9 @@ prepare() {
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
+  # disable -Werror
+  sed -i "/ -Werror\t/d" Makefile
+
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 }
@@ -47,9 +50,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  export ARCH=arm64
-  export CROSS_COMPILE=aarch64-linux-gnu-
-  export PATH=${srcdir}/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu/bin:$PATH
+#  export ARCH=arm64
+#  export CROSS_COMPILE=aarch64-linux-gnu-
+#  export PATH=${srcdir}/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu/bin:$PATH
 
   # get kernel version
   make prepare

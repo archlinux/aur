@@ -20,14 +20,12 @@ pkgbase = linux-odroid-c4
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://releases.linaro.org/components/toolchain/binaries/6.3-2017.02/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu.tar.xz
 	md5sums = b8291d7aefc3b63aa9dbcc80d39856e2
 	md5sums = ee20a7ffe6a7a5ec0c4dba3315c2e2a4
 	md5sums = 5d86097d845f1f0d4797f0b50bfc0f65
 	md5sums = 86d4a35722b5410e3b29fc92dae15d4b
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = 6ec1950b8ae89cd26c3843f88e24210f
 
 pkgname = linux-odroid-c4
 
