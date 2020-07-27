@@ -9,6 +9,7 @@ pkgbase = python-pytelegrambotapi-git
 	depends = python
 	depends = python-requests
 	provides = python-pytelegrambotapi
+	conflicts = python-pytelegrambotapi
 	source = pyTelegramBotAPI::git+https://github.com/eternnoir/pyTelegramBotAPI
 	sha256sums = SKIP
 

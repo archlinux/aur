@@ -8,6 +8,7 @@ pkgdesc="Python Telegram bot api - git"
 arch=('any')
 url="https://github.com/eternnoir/pyTelegramBotAPI"
 license=("GPL3")
+conflicts=('python-pytelegrambotapi')
 depends=('python' 'python-requests')
 makedepends=('git')
 provides=('python-pytelegrambotapi')
