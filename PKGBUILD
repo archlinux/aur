@@ -10,8 +10,6 @@ license=('MIT')
 depends=('vim')
 optdepends=('ctags: ctags support'
             'vim-coc: lsp symbols support'
-            'vim-ale: lsp symbols support'
-            'vim-lsp: lsp symbols support'
             'languageclient-neovim: lsp symbols support'
             'fzf: for searching symbols/tags')
 provides=('vim-vista')
