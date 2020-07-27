@@ -2,11 +2,11 @@
 # Original: bitwave > https://aur.archlinux.org/packages/python-scenedetect/
 
 pkgname=('python-scenedetect-git')
-pkgver=v0.5.2.r29.gee38df6
+pkgver=v0.5.3.r3.g6d4a42a
 pkgrel=1
 pkgdesc="A cross-platform, OpenCV-based video scene detection program and Python library."
 url="https://github.com/Breakthrough/PySceneDetect"
-depends=('python' 'python-click' 'python-opencv-python')
+depends=('python' 'python-click' 'opencv' 'python-numpy')
 makedepends=('python-setuptools' 'git')
 optdepends=('python-tqdm: Progress bar and estimated time.'
             'mkvtoolnix-cli: Splitting in copy mode.'
