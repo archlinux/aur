@@ -1,0 +1,14 @@
+pkgbase = ttea
+	pkgdesc = Command line tea manager
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://git.roshless.me/~roshless/ttea
+	arch = any
+	license = GPL
+	optdepends = mpv: play timer sound
+	optdepends = mplayer: alternative player
+	source = https://git.roshless.me/~roshless/ttea/archive/1.2.1.tar.gz
+	md5sums = aaacf75cccc3eb3eeab96a4451905db4
+
+pkgname = ttea
+
