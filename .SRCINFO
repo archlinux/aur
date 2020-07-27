@@ -1,0 +1,18 @@
+pkgbase = hoverfly-git
+	pkgdesc = Lightweight service virtualization/API simulation tool for developers and testers
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://hoverfly.io
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = hoverfly
+	conflicts = hoverfly-bin
+	conflicts = hoverfly
+	source = hoverfly::git+https://github.com/SpectoLabs/hoverfly
+	sha256sums = SKIP
+
+pkgname = hoverfly-git
+
