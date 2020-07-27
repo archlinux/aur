@@ -1,6 +1,6 @@
 pkgbase = ledger2beancount
 	pkgdesc = Ledger to Beancount text-based converter
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/beancount/ledger2beancount
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = ledger2beancount
 	depends = perl-regexp-common
 	depends = perl-list-moreutils
 	conflicts = ledger2beancount-git
-	source = https://github.com/beancount/ledger2beancount/archive/2.3.tar.gz
-	sha256sums = 1988a0856e45d32ccbdbd0e482bd746625629dd0a31d906681865e4daf2fe5bc
+	source = https://github.com/beancount/ledger2beancount/archive/2.4.tar.gz
+	sha256sums = 1218b0321048daf488474c294b2eb6d7af66dfd6be38b44f3ea812c691a89634
 
 pkgname = ledger2beancount
 
