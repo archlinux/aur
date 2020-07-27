@@ -1,0 +1,18 @@
+pkgbase = chowtapemodel.lv2-git
+	pkgdesc = Physical modelling signal processing for analog tape recording.
+	pkgver = r101.822fa51
+	pkgrel = 1
+	url = https://github.com/jatinchowdhury18/AnalogTapeModel
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = freeglut
+	depends = jack
+	source = chowtapemodel.lv2-git::git+https://github.com/jatinchowdhury18/AnalogTapeModel
+	md5sums = SKIP
+
+pkgname = chowtapemodel.lv2-git
+
