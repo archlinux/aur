@@ -3,16 +3,15 @@
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=4.1.1.r1.g808820a
+pkgver=5.0.0.r0.g240ab21
 pkgrel=1
 pkgdesc="Frame-based cutting/trimming/splicing of audio with VapourSynth (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
 license=('Unlicense')
 depends=('vapoursynth'
-         'mkvtoolnix-cli'
+         'ffmpeg'
          )
-optdepends=('ffmpeg: WAV output support')
 makedepends=('git'
              'python-setuptools'
              )
