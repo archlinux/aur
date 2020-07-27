@@ -1,0 +1,29 @@
+pkgbase = nnrss-git
+	pkgdesc = Web/API RSS aggregator - git master
+	pkgver = 0.2.r0.gd339d95
+	pkgrel = 1
+	url = https://git.roshless.me/~roshless/nnrss
+	install = nnrss.install
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-flask
+	depends = python-sqlalchemy
+	depends = python-werkzeug
+	depends = python-feedparser
+	depends = python-listparser
+	depends = python-apscheduler
+	depends = python-pyaml
+	depends = python-wtforms
+	provides = nnrss
+	conflicts = nnrss
+	source = nnrss-git::git+https://git.roshless.me/~roshless/nnrss
+	source = nnrss.sysusers
+	source = nnrss.tmpfiles
+	md5sums = SKIP
+	md5sums = 8b9a147720fbe9f6c013f6aa7dbb8140
+	md5sums = 364b51a829d7cf46a9557b97f8d3ce28
+
+pkgname = nnrss-git
+
