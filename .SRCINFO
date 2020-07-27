@@ -1,0 +1,28 @@
+pkgbase = deepin-launcher-git
+	pkgdesc = Deepin desktop-environment - Launcher module
+	pkgver = 5.2.0.14.r2.g8a4be27
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-launcher
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = gsettings-qt
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = startdde
+	depends = deepin-qt5integration
+	depends = deepin-daemon
+	depends = deepin-qt-dbus-factory
+	depends = xdg-user-dirs
+	provides = dde-launcher
+	conflicts = dde-launcher
+	replaces = dde-launcher
+	source = git://github.com/linuxdeepin/dde-launcher.git
+	sha512sums = SKIP
+
+pkgname = deepin-launcher-git
+
