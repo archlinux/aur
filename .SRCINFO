@@ -1,0 +1,15 @@
+pkgbase = nnrss-uwsgi
+	pkgdesc = uWSGI configuration for nnrss
+	pkgver = 2
+	pkgrel = 1
+	url = https://git.roshless.me/~roshless/nnrss
+	arch = any
+	license = GPL
+	depends = nnrss
+	depends = uwsgi
+	depends = uwsgi-plugin-python
+	source = nnrss.ini
+	md5sums = d95cddcc135bd0ea4edc2a0de6d75974
+
+pkgname = nnrss-uwsgi
+
