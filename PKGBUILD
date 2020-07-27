@@ -2,8 +2,8 @@
 
 pkgname=pacgui
 pkgver=0.8
-pkgrel=1
-pkgdesc="System updates with a simple GUI"
+pkgrel=2
+pkgdesc="System updates with a simple pacman GUI"
 arch=('any')
 license=('GPLv3')
 install=${pkgname}.install

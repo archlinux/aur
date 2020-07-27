@@ -1,7 +1,7 @@
 pkgbase = pacgui
-	pkgdesc = System updates with a simple GUI
+	pkgdesc = System updates with a simple pacman GUI
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	install = pacgui.install
 	arch = any
 	license = GPLv3
