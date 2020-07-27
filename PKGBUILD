@@ -23,7 +23,7 @@ build() {
 
 package() {
   cd "LoLoSwitcher-v.${pkgver}/build"
-  install -Dm755 loloswitcher -t "${pkgdir}/usr/sbin"
+  install -Dm755 loloswitcher -t "${pkgdir}/usr/bin"
   install -Dm644 ../license_bsd.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
