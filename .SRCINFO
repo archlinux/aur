@@ -1,10 +1,10 @@
 pkgbase = python-dateutils
 	pkgdesc = Utilities for working with datetime objects.
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plytophogy/python-dateutils
 	arch = any
-	license = BSD
+	license = Unlicense
 	depends = python-dateutil
 	depends = python-argparse
 	depends = python-pytz
