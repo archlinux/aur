@@ -1,0 +1,20 @@
+pkgbase = appimagetool-bin
+	pkgdesc = Package desktop applications as AppImages
+	pkgver = 12
+	pkgrel = 1
+	url = https://github.com/AppImage/AppImageKit
+	arch = x86_64
+	license = MIT
+	depends = libappimage
+	optdepends = zsync: binary delta updates
+	provides = appimagetool
+	noextract = appimagetool
+	source = appimagetool-12.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.appimage
+	source = appimagetool-12-README.md::https://raw.githubusercontent.com/AppImage/AppImageKit/master/README.md
+	source = appimagetool-12-LICENSE::https://raw.githubusercontent.com/AppImage/AppImageKit/master/LICENSE
+	sha256sums = d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = appimagetool-bin
+
