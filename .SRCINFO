@@ -10,7 +10,9 @@ pkgbase = pylance-language-server
 	provides = pylance-language-server
 	conflicts = pylance-language-server
 	source = pylance.zip::https://ms-python.gallery.vsassets.io/_apis/public/gallery/publisher/ms-python/extension/vscode-pylance/2020.7.3/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+	source = pylance-language-server
 	sha256sums = f8d778643def25c483754dc2d23bb6c2d302ace4b43e0ce3f34d19f287d1e0c8
+	sha256sums = a15ec816823ae1cbfd682aeae81dabb1b8bebcd3e5a07140b7ff95c9b5c23c8e
 
 pkgname = pylance-language-server
 
