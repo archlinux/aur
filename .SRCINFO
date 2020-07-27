@@ -1,9 +1,13 @@
 pkgbase = cheat-git
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 4.0.2.r0.gad7ad64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	license = MIT
 	license = CC0 1.0 Universal
 	makedepends = git

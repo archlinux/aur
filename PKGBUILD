@@ -4,9 +4,9 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=4.0.2.r0.gad7ad64
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
 makedepends=('git' 'go' 'pandoc')
@@ -30,34 +30,17 @@ pkgver() {
 }
 
 prepare() {
-
-	# Add /etc/cheat/ to config file path
-	cd "$srcdir/${pkgname%-git}"
-	sed -i '43 i\
-			path.Join("/etc/cheat/conf.yml"),' internal/config/paths.go
+	export GOPATH="$srcdir/gopath"
+	go clean -modcache
 }
 
 build() {
-	export GOPATH="$srcdir"/gopath
-	cd "$srcdir/${pkgname%-git}"
-	GOOS=linux \
-	GOARCH=$(go env GOHOSTARCH) \
-	go build \
-		-v \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-gcflags "all=-trimpath=$srcdir" \
-		-asmflags "all=-trimpath=$srcdir" \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o "./dist/${pkgname%-git}" "./cmd/${pkgname%-git}"
-
-	# Clean mod cache for makepkg -C
-	go clean -modcache
-
-	# Generate man page
-	pandoc -s -t man "doc/${pkgname%-git}.1.md" -o "doc/${pkgname%-git}.1"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+	make
 }
 
 package() {
