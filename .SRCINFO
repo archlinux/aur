@@ -1,0 +1,34 @@
+pkgbase = vim-onedark-git
+	pkgver = r196.c0f2207
+	pkgrel = 1
+	url = https://github.com/joshdick/onedark.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	source = vim-onedark::git+https://github.com/joshdick/onedark.vim.git
+	sha256sums = SKIP
+
+pkgname = vim-onedark-git
+	pkgdesc = A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme.
+	depends = vim
+	optdepends = vim-airline-onedark-git: onedark color scheme for airline
+	optdepends = vim-lightline-onedark-git: onedark color scheme for lightline
+	provides = vim-onedark
+	conflicts = vim-onedark
+
+pkgname = vim-airline-onedark-git
+	pkgdesc = OneDark color scheme for airline.
+	depends = vim
+	depends = vim-airline
+	depends = vim-onedark
+	provides = vim-airline-onedark
+	conflicts = vim-airline-onedark
+
+pkgname = vim-lightline-onedark-git
+	pkgdesc = OneDark color scheme for lightline.
+	depends = vim
+	depends = vim-lightline-git
+	depends = vim-onedark
+	provides = vim-lightline-onedark
+	conflicts = vim-lightline-onedark
+
