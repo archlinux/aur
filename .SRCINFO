@@ -1,0 +1,20 @@
+pkgbase = vim-coc-extras-meta-git
+	pkgdesc = Meta package to install some important extensions for coc.nvim
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/neoclide/coc.nvim
+	arch = any
+	depends = vim-coc-dictionary-git
+	depends = vim-coc-explorer-git
+	depends = vim-coc-git-git
+	depends = vim-coc-highlight-git
+	depends = vim-coc-lists-git
+	depends = vim-coc-marketplace-git
+	depends = vim-coc-pairs-git
+	depends = vim-coc-snippets-git
+	depends = vim-coc-syntax-git
+	depends = vim-coc-tag-git
+	depends = vim-coc-yank-git
+
+pkgname = vim-coc-extras-meta-git
+
