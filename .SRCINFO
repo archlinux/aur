@@ -1,6 +1,6 @@
 pkgbase = ai-dungeon-cli-git
 	pkgdesc = Play ai dungeon on your terminal
-	pkgver = r69.632ffcf
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Eigenbahn/ai-dungeon-cli
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = ai-dungeon-cli-git
 	makedepends = git
 	depends = python-requests
 	depends = python-yaml
+	depends = python-gql
 	provides = ai-dungeon-cli
 	conflicts = ai-dungeon-cli
 	source = ai-dungeon-cli-git::git+https://github.com/Eigenbahn/ai-dungeon-cli.git

@@ -1,14 +1,14 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli-git
-pkgver=r69.632ffcf
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
 url="https://github.com/Eigenbahn/ai-dungeon-cli"
 license=('MIT')
 groups=()
-depends=("python-requests" "python-yaml")
+depends=("python-requests" "python-yaml" "python-gql")
 makedepends=("python-setuptools-git-ver" "git")
 checkdepends=()
 optdepends=()
@@ -26,13 +26,13 @@ sha256sums=("SKIP")
 pkgver() {
 	cd "$srcdir/$pkgname"
 	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --tags 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
 	# Using system installed python-setuptool-git-ver
 	sed -i \
@@ -42,13 +42,13 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
