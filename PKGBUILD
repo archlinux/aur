@@ -94,7 +94,6 @@ make -C "${BUILD_DIR}"
 
 package()
 {
-#cd "${srcdir}/${pkg_name_ver}/${BUILD_DIR}"
 cd "${srcdir}/${pkg_name_ver}"
 
 make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
