@@ -4,7 +4,7 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=4.0.2.r0.gad7ad64
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -42,6 +42,9 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 	make
+
+	# Clean mod cache for makepkg -C
+	go clean -modcache
 }
 
 package() {
