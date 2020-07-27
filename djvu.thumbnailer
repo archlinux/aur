@@ -4,4 +4,5 @@ Encoding=UTF-8
 Type=X-Thumbnailer
 Name=DjVu Thumbnailer
 MimeType=image/vnd.djvu;
+TryExec=/usr/bin/ddjvu
 Exec=/usr/bin/ddjvu -page=1 -format=tiff -size=%s %i %o

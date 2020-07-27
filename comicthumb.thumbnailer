@@ -1,0 +1,9 @@
+
+[Thumbnailer Entry]
+Version=1.0
+Encoding=UTF-8
+Type=X-Thumbnailer
+Name=comicthumb Thumbnailer
+MimeType=application/x-cb7;application/x-cbr;application/x-cbt;application/x-cbz;application/x-ext-cb7;application/x-ext-cbr;application/x-ext-cbt;application/x-ext-cbz;application/vnd.comicbook-rar;
+TryExec=/usr/bin/comicthumb
+Exec=/usr/bin/comicthumb %u %o %s
