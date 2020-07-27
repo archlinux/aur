@@ -1,0 +1,19 @@
+pkgbase = vim-coc-pairs-git
+	pkgdesc = Auto pairs extension for coc.nvim
+	pkgver = 1.2.20.r3.g79deeaa
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-pairs
+	arch = any
+	groups = vim-coc-extras
+	license = 
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	provides = vim-coc-pairs
+	conflicts = vim-coc-pairs
+	source = coc-pairs::git+https://github.com/neoclide/coc-pairs.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-pairs-git
+
