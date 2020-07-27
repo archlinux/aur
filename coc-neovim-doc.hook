@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation= Remove
+Type = Path
+Target = usr/share/nvim/runtime/pack/coc/start/coc.nvim/doc/
+
+[Action]
+Description = Updating Vim help tags...
+Exec = /usr/bin/nvim -es --cmd ":helptags /usr/share/nvim/runtime/pack/coc/start/coc.nvim/doc" --cmd ":q"
+When = PostTransaction

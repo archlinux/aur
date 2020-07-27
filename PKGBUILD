@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=neovim-coc
 pkgver=0.0.78
-pkgrel=2
+pkgrel=3
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
 url='https://github.com/neoclide/coc.nvim'
@@ -10,8 +10,15 @@ depends=('neovim' 'nodejs')
 optdepends=('npm: for installing coc extensions' 'yarn: for installing coc extensions')
 provides=('neovim-coc')
 conflicts=('neovim-coc')
-source=('https://github.com/neoclide/coc.nvim/archive/v0.0.78.tar.gz')
-sha256sums=('1e9634b9c5de3557d8ecf3057fcaa1958d70a8d433eec2da19d88f8d486c2695')
+source=('https://github.com/neoclide/coc.nvim/archive/v0.0.78.tar.gz'
+        'coc-neovim-doc.hook')
+sha256sums=('1e9634b9c5de3557d8ecf3057fcaa1958d70a8d433eec2da19d88f8d486c2695'
+            '70cd7d959ea6ca973bd761b6deab922bfa34dd725aab636a0bbc5fbfd60cabaa')
+
+build() {
+    cd "${srcdir}/coc.nvim-${pkgver}"
+    touch doc/tags doc/tags-cn
+}
 
 package() {
     cd "${srcdir}/coc.nvim-${pkgver}"
@@ -19,4 +26,5 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/coc/start/coc.nvim/{}" \;
     install -Dm 644 "${srcdir}/coc.nvim-${pkgver}/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm 644 "${srcdir}"/coc-neovim-doc.hook "${pkgdir}"/usr/share/libalpm/hooks/coc-neovim-doc.hook
 }
