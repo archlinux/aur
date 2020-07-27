@@ -4,10 +4,10 @@ pkgdesc="ROS - sound_play provides a ROS node that translates commands on a ROS 
 url='https://wiki.ros.org/sound_play'
 
 pkgname='ros-melodic-sound-play'
-pkgver='0.3.3'
+pkgver='0.3.6'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-actionlib-msgs
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="audio_common-${pkgver}/sound_play"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('9121ce7ea80945a9efb46d89bd33a454877344aa1b4f405f944943a62e1e4bab')
+sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
 
 build() {
   # Use ROS environment variables
