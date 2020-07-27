@@ -1,0 +1,27 @@
+pkgbase = emby-theater-bin
+	pkgdesc = An Electron app for Emby
+	pkgver = 3.0.12
+	pkgrel = 1
+	url = https://github.com/MediaBrowser/emby-theater-electron
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libutil-linux
+	depends = glib2
+	depends = gvfs
+	depends = gvfs-smb
+	depends = gvfs-nfs
+	provides = emby-theater
+	conflicts = emby-theater
+	source = https://github.com/MediaBrowser/emby-theater-electron/releases/download/3.0.12/emby-theater_3.0.12_amd64.deb
+	source = emby-theater.install
+	sha512sums = 4aac9bde209891eac278f0a7d2a3f8be16014101b57c5669f690a7704d358cf05db545609e2b94e406a3d17b262985e45c8866807ef08971367ea55d87aeedd2
+	sha512sums = c5ea75bb99bcabb15afc78106c4fbcc340c5e83246f2835e8b71bdc55768a6216b760366ca9e71796ed6e7c2ad5ee591e9e4acd81d77a46a103551787ce2f374
+
+pkgname = emby-theater-bin
+
