@@ -6,7 +6,7 @@
 #
 _prjname=IDE65XX
 pkgname=ide65xx-git
-pkgver=r39.30d9e84
+pkgver=r49.53212b8
 pkgrel=1
 epoch=
 pkgdesc="IDE for 6502, 6510, C64 projects uses Kick Assembler"
@@ -29,26 +29,31 @@ source=("git+https://github.com/emartisoft/${_prjname}.git")
 noextract=()
 md5sums=('SKIP')
 
-pkgver() {
+pkgver()
+{
   cd "${srcdir}/${_prjname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+prepare()
+{
   cd "${srcdir}/${_prjname}"
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_prjname}"
   qmake
   make
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_prjname}"
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_prjname}"
   make DESTDIR="${pkgdir}/" install
   install -Dm0755 IDE65XX "${pkgdir}/usr/local/bin/IDE65XX"
