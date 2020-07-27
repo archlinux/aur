@@ -1,0 +1,18 @@
+diff --git a/pom.xml b/pom.xml
+index 73d39c4..f6f68d1 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22,8 +22,8 @@
+ 				<version>3.5.1</version>
+ 				<configuration>
+ 					<!-- maximize compatibility -->
+-					<source>1.6</source>
+-					<target>1.6</target>
++					<source>1.8</source>
++					<target>1.8</target>
+ 					<!-- ignore noisy internal api warnings -->
+                     <compilerArgument>-XDignore.symbol.file</compilerArgument>
+                     <fork>true</fork>
+-- 
+2.27.0
+

@@ -1,16 +1,18 @@
 pkgbase = ysoserial-git
 	pkgdesc = Tool to generate payloads that exploit unsafe Java object deserialization
-	pkgver = 0.0.5.r45.gff59523
+	pkgver = 0.0.5.r61.g3009984
 	pkgrel = 1
 	url = https://github.com/frohoff/ysoserial
 	arch = any
 	license = MIT
 	makedepends = maven
-	depends = java-environment
+	depends = java-environment=8
 	provides = ysoserial
 	source = git://github.com/frohoff/ysoserial.git
+	source = 0001-Force-1.8.patch
 	source = ysoserial.command
 	md5sums = SKIP
+	md5sums = af0fe7db4bd0c93d89f03fc8188930bd
 	md5sums = d9fb33a927b0ee7864b80257ab6a2269
 
 pkgname = ysoserial-git
