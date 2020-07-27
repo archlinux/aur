@@ -1,6 +1,6 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=icat-git
-pkgver=v0.4.r21.02c76a3
+pkgver=v0.5.r1.02c76a3
 pkgrel=1
 pkgdesc="icat (Image cat) outputs images in 256-color capable terminals."
 arch=(x86_64)
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -34,6 +34,5 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -m755 -d "$pkgdir/usr/bin"
-  install -m755 -t "$pkgdir/usr/bin" icat
+  install -Dm755 icat "$pkgdir/usr/bin/icat"
 }
