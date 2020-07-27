@@ -3,16 +3,21 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.18.1-51
 pkgver=4.18.1
-pkgrel=1
+pkgrel=2
+_pkgrel_x86_64=2
+_pkgrel_aarch64=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip')
-source=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service') 
+source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
 install=install
-sha256sums=('SKIP'
+source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_arm64.deb" 'hqplayerd.service'  'hqplayerd2.service')
+sha256sums_x86_64=('SKIP'
+'5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a' '9b19b2236e342672a5e8d1e046623e3ba0d97ce4755134a371a100927dd9ed54')
+sha256sums_aarch64=('SKIP'
 '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a' '9b19b2236e342672a5e8d1e046623e3ba0d97ce4755134a371a100927dd9ed54')
 
 package() {
