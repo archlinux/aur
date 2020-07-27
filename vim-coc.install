@@ -1,0 +1,7 @@
+post_install() {
+    BLUE='\033[0;34m'
+    BGREEN='\033[1;32m'
+    NC='\033[0m' # No Color
+
+    printf "\n${BLUE}Install the ${BGREEN}vim-coc-extras-git${BLUE} package group to get some important extensions.${NC}\n\n"
+}
