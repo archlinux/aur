@@ -35,6 +35,7 @@ prepare() {
 }
 
 build() {
+	cd "$srcdir/${pkgname%-git}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
