@@ -1,0 +1,16 @@
+pkgbase = pyright-git
+	pkgdesc = Static type checker for Python
+	pkgver = 1.1.57.r0.geaa66050
+	pkgrel = 1
+	url = https://github.com/microsoft/pyright
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = pyright
+	conflicts = pyright
+	source = pyright::git+https://github.com/microsoft/pyright.git
+	sha256sums = SKIP
+
+pkgname = pyright-git
+
