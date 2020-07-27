@@ -5,7 +5,7 @@
 # Contributor: <gucong43216@gmail.com>
 
 pkgname=openfoam-esi
-pkgver=v1912
+pkgver=v2006
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -13,14 +13,14 @@ pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
 license=('GPL')
-depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
+depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp')
 
-source=("https://sourceforge.net/projects/openfoam/files/v1912/OpenFOAM-v1912.tgz"
-        "https://sourceforge.net/projects/openfoam/files/v1912/ThirdParty-v1912.tgz"
+source=("https://sourceforge.net/projects/openfoam/files/v2006/OpenFOAM-v2006.tgz"
+        "https://sourceforge.net/projects/openfoam/files/v2006/ThirdParty-v2006.tgz"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
-md5sums=('886e2c94b2caf0b74e144ba37c70e8ce'
-         '5ce13fbd8c10e7300c22005aeeb4fbbe'
+md5sums=('1226d48e74a4c78f12396cb586c331d8'
+         '6b598b6faa6ddeb25235c5dded0ca275'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
@@ -32,6 +32,11 @@ prepare() {
     return 1
   fi
 
+  echo " "
+  echo -e "\e[1m\e[31mKnown issues:\n - Adios2 does not compile\n - foam reader does not compile (Threading Building Blocks (TBB) not found)\n\nPlease press any key to continue.\e[0m"
+  echo " "
+  read -rsp $'\n' -n1 key
+
   cd "$srcdir/$_dist"
 
   # Generate and install the system preferences file
@@ -40,8 +45,8 @@ prepare() {
   echo "export ParaView_QT=qt-system" >> ${srcdir}/prefs.sh
   cp ${srcdir}/prefs.sh ${srcdir}/${_distname}-${pkgver}/etc
 
-  # get paraview-5.7 directories
-  # paraview-5.7
+  # get paraview-5.8 directories
+  # paraview-5.8
   para_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | sed -e 's!p.*/p!p!g' | sed -e 's!/.*!!g'`
   # /usr/include
   para_include_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | awk '{print $2}' | sed 's!/paraview.*!!g'`
