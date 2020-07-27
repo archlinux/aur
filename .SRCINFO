@@ -1,14 +1,14 @@
 pkgbase = extraterm-bin
 	pkgdesc = The swiss army chainsaw of terminal emulators.
-	pkgver = 0.51.0
+	pkgver = 0.52.0
 	pkgrel = 1
 	url = https://github.com/sedwards2009/extraterm
 	arch = x86_64
 	license = MIT
 	depends = nodejs
 	conflicts = extraterm
-	source = https://github.com/sedwards2009/extraterm/releases/download/v0.51.0/extraterm_0.51.0_amd64.deb
-	sha256sums = f9189619694ec52263c16628e9ee213d6e4c59d7e76139b2032c4564b154c55d
+	source = https://github.com/sedwards2009/extraterm/releases/download/v0.52.0/extraterm_0.52.0_amd64.deb
+	sha256sums = 11998e3fa770529e33f2a18311bb271cfdff4b339c54cc27b0bee7e70ef578e3
 
 pkgname = extraterm-bin
 
