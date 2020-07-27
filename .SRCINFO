@@ -1,0 +1,17 @@
+pkgbase = ruby-bundler-audit
+	pkgdesc = Patch-level verification for Bundler
+	pkgver = 0.7.0.1
+	pkgrel = 1
+	url = https://github.com/rubysec/bundler-audit#readme
+	arch = any
+	license = GPL-3.0+
+	depends = ruby
+	depends = ruby-thor
+	depends = ruby-bundler
+	noextract = bundler-audit-0.7.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bundler-audit-0.7.0.1.gem
+	sha1sums = 5e6edce4346a6600dcc0e14367b4c21cf35382da
+
+pkgname = ruby-bundler-audit
+
