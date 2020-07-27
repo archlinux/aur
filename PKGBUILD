@@ -1,35 +1,43 @@
-# Maintainer: James Zhu <james.zhu.engineer@gmail.com>
-
-pkgname=otf-fira-code-git
-pkgver=1.205.r6.gade27f5
-pkgrel=1
-pkgdesc="Fira Code: monospaced font with programming ligatures."
-arch=('any')
-url='https://github.com/tonsky/FiraCode.git'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-makedepends=('git')
-install=otf.install
-source=('git+https://github.com/tonsky/FiraCode.git' 'otf.install')
-md5sums=('SKIP'
-         '9b9dbd9712ac6fefe896f704609b659c')
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: James Zhu <james.zhu.engineer@gmail.com>
 
 _gitname=FiraCode
+pkgname=otf-fira-code-git
+pkgver=5.2.r4.g1a60382
+pkgrel=1
+pkgdesc="Monospaced font with programming ligatures"
+arch=('any')
+url="https://github.com/tonsky/$_gitname"
+license=('OFL')
+_py_deps=('fontmake'
+          'idna'
+          'pillow'
+          'requests'
+          'urllib3')
+makedepends=('ttfautohint'
+             'woff2'
+             'gftools'
+             'git'
+             'sfnt2woff-zopfli')
+makedepends+=("${_py_deps[@]/#/python-}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_gitname"
+    git describe --long --tags --abbrev=7 HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "$_gitname"
+    ./scripts/build
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-
-	local weights=('Regular' 'Bold' 'Light' 'Medium' 'Retina')
-	local font='FiraCode'
-
-	for weight in ${weights[*]}; do
-		local name="${font}-${weight}.otf"
-		install -Dm644 "distr/otf/$name" "$pkgdir/usr/share/fonts/OTF/$name"
-	done
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_gitname"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" distr/otf/$_gitname-*.otf
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
