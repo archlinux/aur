@@ -1,0 +1,14 @@
+pkgbase = dotherside-git
+	pkgver = v0.6.5.r16.ga7bfa38
+	pkgrel = 1
+	url = https://github.com/filcuc/dotherside
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-quickcontrols2
+	source = git+https://github.com/filcuc/dotherside.git
+	sha256sums = SKIP
+
+pkgname = dotherside-git
+
