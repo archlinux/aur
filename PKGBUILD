@@ -5,7 +5,7 @@ url='https://wiki.ros.org/realtime_tools'
 pkgname='ros-melodic-realtime-tools'
 pkgver='1.15.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -32,7 +32,7 @@ sha256sums=('3356e9df104c177bd588db133eba65a351af62e35e64c87f2a5fc72c3fd2cd5a'
 
 prepare() {
     cd "${srcdir}/${_dir}"
-    patch -uN CMakeLists.txt ../../tests.patch || return 1
+    patch -uN CMakeLists.txt ${srcdir}/tests.patch || return 1
 }
 
 build() {
