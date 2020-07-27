@@ -2,7 +2,7 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://isacikgoz.me/tldr"
@@ -34,6 +34,9 @@ build() {
 		-buildmode=pie \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-v -o $pkgname .
+
+	# Clean mod cache for makepkg -C
+	go clean -modcache
 }
 
 package() {
