@@ -1,6 +1,6 @@
 pkgbase = oragono
 	pkgdesc = A modern IRC server written in Go.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/oragono/oragono
 	install = install
@@ -10,7 +10,7 @@ pkgbase = oragono
 	makedepends = git
 	depends = glibc
 	backup = etc/oragono.conf
-	source = git+https://github.com/oragono/oragono#tag=v2.1.0
+	source = git+https://github.com/oragono/oragono#tag=v2.2.0
 	source = oragono.service
 	source = oragono.sysusers
 	source = path.patch
@@ -18,7 +18,7 @@ pkgbase = oragono
 	sha256sums = SKIP
 	sha256sums = d35dd5205e3b607ee105a1252677d0607d0c35636ee3e6057275b5f13e555858
 	sha256sums = 7e214caa8bee053adac26a00a17ed732970e86665cbe31553b1d3d609f0a49b4
-	sha256sums = fc3045b87c98d870d846f1ca9698d543622afbc59360120947c048234c79fc89
+	sha256sums = 66e487527ea75173e6c8e5b3534fb7bb93c17dc43c179d49c51d990ebd96093b
 	sha256sums = 8f6baaa89e9723ac3344a2af201a93f348975537bc748024c0a48b0773f42b1f
 
 pkgname = oragono

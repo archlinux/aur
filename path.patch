@@ -1,5 +1,5 @@
---- oragono.yaml.orig	2020-06-08 16:06:51.204833514 +0200
-+++ oragono.yaml	2020-06-08 16:14:16.321358294 +0200
+--- default.yaml.orig	2020-06-08 16:06:51.204833514 +0200
++++ default.yaml	2020-06-08 16:14:16.321358294 +0200
 @@ -50,8 +50,8 @@
          # The standard SSL/TLS port for IRC is 6697. This will listen on all interfaces:
          ":6697":
