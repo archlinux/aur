@@ -1,6 +1,6 @@
 pkgbase = screenshotgun-git
 	pkgdesc = Open cross-platform screenshoter with cloud support and server part
-	pkgver = 0.18_20200122_4
+	pkgver = 0.18_20200728_1
 	pkgrel = 1
 	url = http://screenshotgun.com
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = screenshotgun-git
 	makedepends = cmake>=3.5.1
 	makedepends = git
 	depends = qt5-base
-	source = screenshotgun::git+https://github.com/ismd/screenshotgun.git#tag=v0.18-20200122-4
+	source = screenshotgun::git+https://github.com/ismd/screenshotgun.git#tag=v0.18-20200728-1
 	md5sums = SKIP
 
 pkgname = screenshotgun-git
