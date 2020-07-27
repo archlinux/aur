@@ -1,0 +1,19 @@
+pkgbase = vim-coc-yank-git
+	pkgdesc = Yank highlight and persist yank history support for vim
+	pkgver = 1.1.3.r7.g7983c28
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-yank
+	arch = any
+	groups = vim-coc-extras
+	license = 
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	provides = vim-coc-yank
+	conflicts = vim-coc-yank
+	source = coc-yank::git+https://github.com/neoclide/coc-yank.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-yank-git
+
