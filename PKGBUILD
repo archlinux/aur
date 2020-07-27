@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=anymeal
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 pkgdesc='A recipe database software'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('qt5-base'
              'recode'
              'gtest')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/wedesoft/anymeal/archive/v${pkgver}.tar.gz")
-sha256sums=('3ff12e0e66340a0e719f03ebd958ed55b3494ced728c1077a46de7c2fdfb232b')
+sha256sums=('b9e19644f03ddb5c3cb436b59b8f8891a17d412faf68a94ddbecad40e97542fb')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
