@@ -5,8 +5,8 @@
 pkgbase=python-pytorch-rocm
 pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
-pkgver=1.6.0rc6
-_pkgver=1.6.0-rc6
+pkgver=1.6.0rc7
+_pkgver=1.6.0-rc7
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
@@ -92,17 +92,17 @@ prepare() {
 
 build() {
   echo "Building with rocm and without non-x86-64 optimizations"
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=1
+  export USE_CUDA=OFF
+  export USE_CUDNN=OFF
+  export USE_ROCM=ON
   cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
   python setup.py build
 
 
   echo "Building with rocm and with non-x86-64 optimizations"
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=1
+  export USE_CUDA=OFF
+  export USE_CUDNN=OFF
+  export USE_ROCM=ON
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
