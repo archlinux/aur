@@ -1,7 +1,7 @@
 pkgbase = python-mkl-random-bin
 	pkgdesc = Sampling probability distributions using Intel MKL - prebuilt binaries from Anaconda
 	pkgver = 1.1.1.0.py38h0573a6f.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IntelPython/mkl_random
 	arch = x86_64
 	license = custom
