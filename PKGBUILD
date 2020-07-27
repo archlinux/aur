@@ -47,7 +47,7 @@ package_python-pymp4() {
     depends=(python "python-construct<2.9")
 
     cd "${srcdir}/${_py_pkgname}"
-    python setup.py install --skip-build --root="\${pkgdir}" --optimize=1
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
 
 package_python2-pymp4() {
