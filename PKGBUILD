@@ -6,8 +6,8 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-kitware
-pkgver=1.9.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility'
 arch=(x86_64)
 url='https://github.com/Kitware/ninja'
@@ -15,30 +15,30 @@ provides=(ninja)
 conflicts=(ninja)
 license=(Apache)
 depends=(gcc-libs)
-makedepends=(python2 re2c)
+makedepends=(python re2c)
 optdepends=(emacs)
-version_id=g99df1
-source=(ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip)
-md5sums=('6579f06c33fe0eed8d1f5fc11c446f57')
+version_id=gfb670
+source=(ninja-$pkgver.$version_id.kitware.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v$pkgver.$version_id.kitware.jobserver-1.zip)
+md5sums=('38ef72690bc38b6fc86f2c0493294c33')
 build() {
-  cd ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1
+  cd ninja-$pkgver.$version_id.kitware.jobserver-1
 
-  python2 configure.py --bootstrap
+  python configure.py --bootstrap
   if [ -x "$(command -v emacs)" ]; then
     emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
   fi
 }
 
 check() {
-  cd ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1
+  cd ninja-$pkgver.$version_id.kitware.jobserver-1
 
-  python2 ./configure.py
+  python ./configure.py
   ./ninja ninja_test
   ./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
 }
 
 package() {
-  cd ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1
+  cd ninja-$pkgver.$version_id.kitware.jobserver-1
 
   install -m755 -D ninja "$pkgdir/usr/bin/ninja"
   install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
