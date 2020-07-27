@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux application firewall
-	pkgver = 1.0.0.r5.078df0f
+	pkgver = 1.0.0.r8.08245a0
 	pkgrel = 1
 	url = https://github.com/gustavo-iniguez-goya/opensnitch
 	install = opensnitch.install

@@ -3,7 +3,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0.r5.078df0f
+pkgver=1.0.0.r8.08245a0
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
 optdepends=('logrotate: for logfile rotation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/opensnitchd/default-config.json')
+backup=("etc/${pkgname%-git}d/default-config.json")
 install="${pkgname%-git}.install"
 source=('git+https://github.com/gustavo-iniguez-goya/opensnitch.git')
 sha256sums=('SKIP')
@@ -30,27 +30,24 @@ prepare() {
     ln -rTsf "$srcdir/${pkgname%-git}" \
         "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}"
 
-    # Prevent creation of a `go` directory in one's home.
-    # Sometimes this directory cannot be removed with even `rm -rf` unless
-    # one becomes root or changes the write permissions.
     export GOPATH="$srcdir/gopath"
     go clean -modcache
 
     cd "$srcdir/${pkgname%-git}"
-    sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
+    sed -i 's|local/bin|bin|g' "daemon/${pkgname%-git}d.service"
 }
 
 build() {
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
-    go build \
-        -v \
-        -trimpath \
-        -buildmode=pie \
-        -ldflags "-extldflags \"${LDFLAGS}\"" \
-        -o opensnitchd .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath"
+	make
 
-    # Clean now to ensure makepkg --clean works
-    go clean -modcache
+	# Clean mod cache for makepkg -C
+	go clean -modcache
 
     cd "$srcdir/${pkgname%-git}/proto"
     make
@@ -61,13 +58,13 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm755 daemon/opensnitchd -t "$pkgdir/usr/bin"
-    install -Dm644 daemon/opensnitchd.service -t \
+    install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
+    install -Dm644 "daemon/${pkgname%-git}d.service" -t \
         "$pkgdir/usr/lib/systemd/system"
-    install -dm755 "$pkgdir/etc/opensnitchd/rules"
-    install -Dm644 daemon/default-config.json -t "$pkgdir/etc/opensnitchd"
-    install -Dm644 debian/opensnitch.logrotate \
-        "$pkgdir/etc/logrotate.d/opensnitch"
+    install -dm755 "$pkgdir/etc/${pkgname%-git}d/rules"
+    install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
+    install -Dm644 "debian/${pkgname%-git}.logrotate" \
+        "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 
     cd "$srcdir/${pkgname%-git}/ui"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
