@@ -1,8 +1,8 @@
 # Maintainer: Nico Jansen <aur@nzbr.de>
 
 pkgname=vlogsolv
-pkgver=1.0b
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="cli program that calculates value tables for logical expressions"
 arch=('x86_64')
 url="https://github.com/nzbr/vlogsolv"
