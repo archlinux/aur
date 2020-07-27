@@ -1,0 +1,17 @@
+pkgbase = fla.sh-git
+	pkgdesc = Flashcards in your terminal.
+	pkgver = 1.1.r38.g81ca453
+	pkgrel = 1
+	url = https://github.com/tallguyjenks/fla.sh
+	arch = any
+	license = MIT
+	depends = bash
+	depends = fzf
+	depends = bat
+	provides = flash
+	conflicts = flash
+	source = git+https://github.com/tallguyjenks/fla.sh.git
+	sha256sums = SKIP
+
+pkgname = fla.sh-git
+
