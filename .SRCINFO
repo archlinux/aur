@@ -1,0 +1,35 @@
+pkgbase = clap-git
+	pkgdesc = Modern performant generic finder and dispatcher for Vim and NeoVim
+	pkgver = v0.19.r14.g91331ea
+	pkgrel = 1
+	url = https://github.com/liuchengxu/vim-clap
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	makedepends = make
+	source = clap::git+https://github.com/liuchengxu/vim-clap.git
+	source = clap-vim-doc.hook
+	source = clap-neovim-doc.hook
+	sha256sums = SKIP
+	sha256sums = 0fe8cf209778fb3345886a43393cfda53e5c5e4a09d8b09a049e892ba9c33acf
+	sha256sums = 87029a9d3c0c899a6b5327c7c67f65af7644f2b6a697e84c6c01c2aa107cd4dd
+
+pkgname = vim-clap-git
+	depends = vim
+	optdepends = python: for built-in fzy python implementation
+	optdepends = fzf: fzf external filter
+	optdepends = fzy: fzy external filter
+	optdepends = skim: skim external filter
+	provides = vim-clap
+	conflicts = vim-clap
+
+pkgname = neovim-clap-git
+	depends = neovim
+	optdepends = python-pynvim: for built-in fzy python implementation
+	optdepends = fzf: fzf external filter
+	optdepends = fzy: fzy external filter
+	optdepends = skim: skim external filter
+	provides = neovim-clap
+	conflicts = neovim-clap
+
