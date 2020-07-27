@@ -22,6 +22,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DDOCTEST_WITH_TESTS=off \
+        -G"Unix Makefiles" \
         ../
   make
 }
