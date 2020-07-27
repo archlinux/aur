@@ -1,16 +1,16 @@
-# Maintainer: lll2yu <lll2yu@protonmail.com>
+# Maintainer: talone <talone@boxph.one>
 
 pkgname=python-yoyo-migrations
-pkgver=6.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc='Database migrations with SQL'
 arch=(any)
-url=https://ollycope.com/software/yoyo/latest/
+url='https://ollycope.com/software/yoyo/latest/'
 license=(Apache)
 depends=('python' 'python-iniherit' 'python-text-unidecode')
 makedepends=('python-pip')
-source=(https://files.pythonhosted.org/packages/a3/fc/5c80eb3dd9689c704db38c9a412b33cbc07f4838d11f5a2cf2bbf40d09f9/yoyo-migrations-$pkgver.tar.gz)
-sha256sums=('4538dbdfe4784c30bade14275558247ec8ce8111b4948dc38f51d4172f9d513c')
+source=('https://files.pythonhosted.org/packages/source/y/yoyo-migrations/yoyo-migrations-$pkgver.tar.gz')
+sha256sums=('a54f6176ff6da3330be537c962235aaa9e5f7f2aae563b1c531b1cb616d80359')
 
 package() {
 	cd yoyo-migrations-$pkgver
