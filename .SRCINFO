@@ -1,7 +1,7 @@
 pkgbase = musique
 	pkgdesc = A finely crafted music player
 	pkgver = 1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3

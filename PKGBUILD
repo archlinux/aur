@@ -7,7 +7,7 @@
 
 pkgname=musique
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
@@ -34,13 +34,11 @@ prepare() {
 }
 
 build() {
-  mkdir -p build && cd build
-  qmake-qt5 ../$pkgname PREFIX=/usr
+  qmake-qt5 $pkgname PREFIX=/usr
   make
 }
 
 package() {
-  cd build
   make INSTALL_ROOT="$pkgdir" install
 }
 
