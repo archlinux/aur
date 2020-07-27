@@ -8,8 +8,8 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=4.3.0.prealpha.2606.g78d8377a24
-pkgrel=1
+pkgver=4.3.0.prealpha.3252.ga899f2f428
+pkgrel=2
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
@@ -26,14 +26,8 @@ optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-il10n krita)
 
-source=(
-	"git+https://github.com/KDE/${_pkgname}.git"
-	'krita-pyqt5-sip5.patch'
-)
-sha256sums=(
-	'SKIP'
-	'ab2f33843d8cad31bc13e0eca7dc732cdbfed054924f25ed61102c0d0971c1d8'
-)
+source=("git+https://github.com/KDE/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}"/${_pkgname}
@@ -42,10 +36,6 @@ pkgver() {
 
 prepare() {
 	mkdir -p "${srcdir}"/build
-
-	# Fix sip include dir when PyQt5 is compiled with SIP 5
-	cd "${srcdir}"/${_pkgname}
-	patch -Np1 < ../krita-pyqt5-sip5.patch
 }
 
 build() {
