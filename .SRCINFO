@@ -1,7 +1,7 @@
 pkgbase = minecraft-launcher
 	pkgdesc = Official Minecraft Launcher
 	pkgver = 2.1.16102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mojang.com/
 	arch = x86_64
 	license = All rights reserved
@@ -13,7 +13,6 @@ pkgbase = minecraft-launcher
 	depends = alsa-lib
 	depends = gtk2
 	depends = gtk3
-	depends = gconf
 	depends = libxtst
 	depends = nss
 	optdepends = flite: narrator support
