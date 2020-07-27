@@ -1,10 +1,10 @@
-# Maintainer: PSposito <http://bit.do/linuxer> 
-# https://gitlab.com/psposito
+# Maintainer: linuxer <https://linuxer.gr> 
+# https://gitlab.com/linuxer.gr
 # Contributor: Kostas Gewrgiou <gewrgiou@imbc.gr>
 # Contributor: Vasilis Vasaitis <vvas@hal.csd.auth.gr>
 # Contributor: Ivan Pascal <pascal@info.tsu.ru>
 pkgname=greeklayoutwithdotonnumpad
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="Greek layout with dot on numpad instead of comma for ARCH Linux"
 pkgdir="src/"
@@ -15,18 +15,12 @@ replaces=('greeklayoutwithdotonnumpad')
 arch=('any')
 depends=('xkeyboard-config')
 provides=("${pkgname}")
-source=("https://gitlab.com/psposito/greek-layout-dot-instead-of-comma-on-keypad/uploads/c98de080d629654b20e5125484174fe4/gr")
-sha256sums=('3c39bcd4e6ad45a4c44e2b346f6e8674354b1ad274da860224e3335dd2f935ae')
-
-#build() {
-    #cd "~src/"
-#    make
-#}
+source=('https://gitlab.com/linuxer.gr/greek-layout-dot-instead-of-comma-on-keypad/uploads/f57fde6f22aac3598d1ad4944f1f1559/gr')
+sha256sums=('1bfc81a11a054b95cf7bff2227105470aa806f93443182ce7a4accdc9286b9d8')
 
 package() {
 #    cd "${pkgname}-${pkgver}"
     cd "${pkgdir}"
-#pwd
 	sudo cp ../../gr /usr/share/X11/xkb/symbols/ 
 	sudo chmod -R +r /usr/share/X11/xkb/symbols/gr
 }
