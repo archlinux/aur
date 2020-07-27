@@ -9,7 +9,7 @@ url='https://www.freeorion.org'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('boost-libs'
-         'python2'
+         'python'
          'sdl2'
          'libvorbis'
          'glew'
