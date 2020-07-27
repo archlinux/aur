@@ -42,6 +42,9 @@ build() {
 		-modcacherw \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
 		-v -o "$pkgname"
+
+	# Clean mod cache for makepkg -C
+	go clean -modcache
 }
 
 package() {
