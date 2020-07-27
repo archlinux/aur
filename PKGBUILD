@@ -13,7 +13,7 @@ license=('Apache') #2.0
 makedepends=(python-setuptools python2-setuptools)
 #python2-coverage has file conflitcs with python-coverage, so we can't do coverage analysis
 #checkdepends=(python-pytest python2-pytest python-codecov python2-codecov python-pytest-cov python2-pytest-cov)
-checkdepends=(python-pytest python2-pytest)
+checkdepends=(python-pytest python2-pytest python-wheel python-wheel)
 source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
 md5sums=('SKIP')
 
