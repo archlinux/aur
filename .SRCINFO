@@ -1,0 +1,25 @@
+pkgbase = gofu
+	pkgdesc = Simple file share service in go
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = https://git.roshless.me/~roshless/gofu
+	install = gofu.install
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	makedepends = git
+	makedepends = go
+	provides = gofu
+	conflicts = gofu
+	backup = var/lib/gofu/config.ini
+	source = https://git.roshless.me/~roshless/gofu/archive/1.1.2.tar.gz
+	source = gofu.service
+	source = gofu.sysusers
+	source = gofu.tmpfiles
+	md5sums = 3402cb0ee0eb25900192f6130a6fcc3d
+	md5sums = b85e2bf437eb4528a319f797c18c2fc3
+	md5sums = b7e1a3c7f09bed0d04e918d7a0a87be7
+	md5sums = 279dcf052b7ac8b83a8781b36071c47e
+
+pkgname = gofu
+

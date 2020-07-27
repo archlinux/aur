@@ -1,0 +1,3 @@
+d /var/lib/gofu 0700 gofu gofu -
+z /var/lib/gofu/config.ini 0700 gofu gofu
+Z /var/lib/gofu - gofu gofu

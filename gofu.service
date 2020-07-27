@@ -1,0 +1,12 @@
+[Unit]
+After=network.target
+
+[Service]
+Type=simple
+User=gofu
+WorkingDirectory=/var/lib/gofu
+Environment=USER=gofu HOME=/var/lib/gofu
+ExecStart=/usr/bin/gofu
+
+[Install]
+WantedBy=multi-user.target
