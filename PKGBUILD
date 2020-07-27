@@ -1,12 +1,12 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher-beta
 pkgver=2.1.16102
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Minecraft Launcher Beta"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
-depends=('java-runtime' 'xorg-xrandr' 'libxss' 'libx11' 'libxcb' 'alsa-lib' 'gtk2' 'gtk3' 'gconf' 'libxtst' 'nss')
+depends=('java-runtime' 'xorg-xrandr' 'libxss' 'libx11' 'libxcb' 'alsa-lib' 'gtk2' 'gtk3' 'libxtst' 'nss')
 optdepends=('flite: narrator support')
 conflicts=('minecraft-launcher')
 source=(
