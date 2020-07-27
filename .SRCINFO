@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp
 	pkgver = 2020.2.254
-	pkgrel = 3
+	pkgrel = 4
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16744/parallel_studio_xe_2020_update2_cluster_edition.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/IRC_NAS/tec/16744/parallel_studio_xe_2020_update2_cluster_edition.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-profiler.sh
 	source = intel_advisor.sh
