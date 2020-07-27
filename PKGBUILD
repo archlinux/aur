@@ -64,6 +64,9 @@ build() {
 		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
 		-buildmode c-archive
 
+	# Clean mod cache for makepkg -C
+	go clean -modcache
+
 	cd "$srcdir/mullvadvpn-app"
 	echo "Updating version in metadata files..."
 	./version-metadata.sh inject $PRODUCT_VERSION
