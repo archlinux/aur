@@ -16,7 +16,7 @@ arch=('any')
 depends=('xkeyboard-config')
 provides=("${pkgname}")
 source=('https://gitlab.com/linuxer.gr/greek-layout-dot-instead-of-comma-on-keypad/uploads/f57fde6f22aac3598d1ad4944f1f1559/gr')
-sha256sums=('1bfc81a11a054b95cf7bff2227105470aa806f93443182ce7a4accdc9286b9d8')
+sha256sums=('SKIP')
 
 package() {
 #    cd "${pkgname}-${pkgver}"
