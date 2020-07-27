@@ -1,6 +1,6 @@
 pkgbase = libretro-freeintv-git
 	pkgdesc = A libretro emulation core for the Mattel Intellivision designed to be compatible with joypads from the SNES era forward
-	pkgver = 149.68322b4
+	pkgver = 155.9244fd8
 	pkgrel = 1
 	url = https://github.com/libretro/FreeIntv
 	arch = i686
