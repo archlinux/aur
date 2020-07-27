@@ -1,7 +1,7 @@
 pkgbase = python-scipy-mkl-bin
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda
 	pkgver = 1.5.0.0.py38h0b6359f.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scipy.org/
 	arch = x86_64
 	license = custom

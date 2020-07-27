@@ -6,7 +6,7 @@ _build=py38h0b6359f_0
 _build_number=0
 _libgfortran=libgfortran-ng-7.3.0-hdf63c60_0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda"
 arch=('x86_64')
 url="http://www.scipy.org/"
@@ -49,4 +49,7 @@ package() {
         install -D -m 644 "${srcdir}/${GFORTRAN_LICENSE}" "${pkgdir}/usr/${GFORTRAN_LICENSE}"
     fi
     install -D -m 644 "${srcdir}/info/licenses/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Prefix replacement:
+    find "${pkgdir}" -type f -exec sed -i -e s:/opt/anaconda1anaconda2anaconda3:/usr:g {} +
 }
