@@ -1,14 +1,12 @@
 pkgbase = dotnet-core-preview
 	pkgver = 5.0.0+100+preview.7.20366.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source = dotnet.sh
-	sha512sums = 448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/6e9bdda1-72b5-4d2e-8908-be9321b8db26/cbc8ab6c3a1aca2a8dd92e272edd3293/dotnet-sdk-5.0.100-preview.7.20366.6-linux-x64.tar.gz
 	sha512sums_x86_64 = a1369d4e9e6281a3656acf6ba8357fbb9b25824fa63b42b55700f4d7ab58b2dc355b91c356a13c7d76da92e30dd3a5ccefd1d3396eacc1ac62cbae608b5eed86
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/20349622-b776-4fa0-a981-adacd7d57b9c/174f26a811b61a11a2132613e27f442a/dotnet-sdk-5.0.100-preview.7.20366.6-linux-arm.tar.gz
@@ -18,6 +16,7 @@ pkgbase = dotnet-core-preview
 
 pkgname = dotnet-host-preview
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
+	depends = glibc
 	provides = dotnet-host
 	provides = dotnet-host=5.0.0
 	conflicts = dotnet-host
@@ -25,27 +24,24 @@ pkgname = dotnet-host-preview
 pkgname = aspnet-runtime-preview
 	pkgdesc = The ASP.NET Core runtime (preview, binary)
 	depends = dotnet-runtime-preview
-	provides = aspnet-runtime-preview
 	provides = aspnet-runtime=5.0.0
 	provides = aspnet-runtime-5.0
-	conflicts = aspnet-runtime-preview
 	conflicts = aspnet-runtime=5.0.0
 	conflicts = aspnet-runtime-5.0
 
 pkgname = dotnet-runtime-preview
 	pkgdesc = The .NET Core runtime (preview, binary)
 	depends = dotnet-host>=5.0.0
+	depends = glibc
 	depends = icu
 	depends = krb5
+	depends = libcurl.so
 	depends = libunwind
 	depends = openssl
 	depends = zlib
-	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime-preview
 	provides = dotnet-runtime=5.0.0
 	provides = dotnet-runtime-5.0
-	conflicts = dotnet-runtime-preview
 	conflicts = dotnet-runtime=5.0.0
 	conflicts = dotnet-runtime-5.0
 
@@ -54,10 +50,8 @@ pkgname = dotnet-sdk-preview
 	depends = dotnet-sdk-3.1
 	depends = dotnet-runtime-preview
 	depends = glibc
-	provides = dotnet-sdk-preview
 	provides = dotnet-sdk=5.0.100
 	provides = dotnet-sdk-5.0
-	conflicts = dotnet-sdk-preview
 	conflicts = dotnet-sdk=5.0.100
 	conflicts = dotnet-sdk-5.0
 
