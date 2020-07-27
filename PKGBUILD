@@ -14,7 +14,7 @@ source=("${_pkgname}::git+https://github.com/Yggdroot/LeaderF.git"
         "${_pkgname}-neovim-doc.hook")
 sha256sums=('SKIP'
             'd125b79fe4f7e6d205010a96acf78ac63814c26d98050a46f8e627993ff033ea'
-            '05c97e2b6bea21bf573ac89ec226c640041c65afd12bfcc4954f42ed39d8df41')
+            'd7a7798ed8902de98c777f8770acd034e277f89478dc13eef77e491f2e99868d')
 makedepends=('git'
              'python')
 
@@ -48,7 +48,7 @@ package_neovim-leaderf-git() {
     depends=('neovim' 'python-pynvim')
     provides=('neovim-leaderf')
     conflicts=('neovim-leaderf')
-    _packdir="usr/share/nvim/runtime/pack/${_pkgname}/start/${_pkgname}"
+    _packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"

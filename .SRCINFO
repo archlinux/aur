@@ -12,7 +12,7 @@ pkgbase = leaderf-git
 	source = leaderf-neovim-doc.hook
 	sha256sums = SKIP
 	sha256sums = d125b79fe4f7e6d205010a96acf78ac63814c26d98050a46f8e627993ff033ea
-	sha256sums = 05c97e2b6bea21bf573ac89ec226c640041c65afd12bfcc4954f42ed39d8df41
+	sha256sums = d7a7798ed8902de98c777f8770acd034e277f89478dc13eef77e491f2e99868d
 
 pkgname = vim-leaderf-git
 	depends = vim
