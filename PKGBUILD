@@ -22,6 +22,7 @@ depends=(
 		"python-lxml"
 		"python-wheel"
 		"python-youtube-search-git"
+		"python-unidecode"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=(
