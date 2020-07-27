@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r38195
+pkgver=r38233
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64). - Development version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('pkg-config' 'xa' 'svn' 'texlive-core' 'dos2unix')
 optdepends=('pulseaudio' 'pulseaudio-alsa' 'alsa-lib')
 provides=('vice')
 replaces=('vice')
-conflicts=('vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
+conflicts=('vice' 'vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
 source=("${pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk")
 sha256sums=('SKIP')
 
