@@ -16,7 +16,7 @@ pkgbase = authenticator
 	depends = python-pillow
 	depends = appstream-glib
 	depends = python-beautifulsoup4
-	depends = python-yoyo-migrations
+	depends = python-yoyo-migrations=6.1.0
 	depends = python-requests
 	depends = libhandy
 	depends = python-pyfavicon
