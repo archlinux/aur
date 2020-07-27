@@ -15,9 +15,6 @@ sha256sums=('65bc6f56ef9c8527763ef72d4a334238dbcb60ce2962c319af169236f136b39e'
             '8313873d49dc01e8b880ec334d7430ae67496a89aaa8c6e7bbd3affb47a00c76')
 
 prepare() {
-	# Prevent creation of a `go` directory in one's home.
-	# Sometimes this directory cannot be removed with even `rm -rf` unless
-	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
 
@@ -30,7 +27,7 @@ prepare() {
 }
 
 build() {
-	cd "$GOPATH/src/libgit2-$_lg2ver/build"
+	cd "$GOPATH/src/libgit2-$_lg2ver"
 	cmake -B build -S . \
 		-DTHREADSAFE=ON \
 		-DBUILD_CLAR=OFF \
@@ -44,10 +41,7 @@ build() {
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o "$pkgname"
-
-	# Clean now to ensure makepkg --clean works
-	go clean -modcache
+		-v -o "$pkgname"
 }
 
 package() {
