@@ -1,10 +1,12 @@
 pkgbase = cstatus-git
 	pkgdesc = Minimal statusbar for dwm written in c99.
-	pkgver = 0.0.1.r6.g9827a2c
-	pkgrel = 2
+	pkgver = 0.0.2.r0.g9827a2c
+	pkgrel = 3
 	url = https://github.com/andreafeletto/cstatus
 	arch = x86_64
 	license = MIT
+	depends = xorg-xsetroot
+	depends = pulsemixer
 	provides = cstatus
 	conflicts = cstatus
 	source = git+https://github.com/andreafeletto/cstatus.git
