@@ -17,7 +17,7 @@ source=('https://github.com/neoclide/coc.nvim/archive/v0.0.78.tar.gz'
         'vim-coc.install')
 sha256sums=('1e9634b9c5de3557d8ecf3057fcaa1958d70a8d433eec2da19d88f8d486c2695'
             '71348fe1287df827e7b28c41a0659e0cc8ff541623c3e1cc8fbfc84346199b1d'
-            '6ae0d6ea2bb700e8f1e9b00e7c770d9a9e5b0e2c18dc9ba50e9d45cd17d08f6d')
+            'b7e8a3870c82b4ac59c553b9e6414d85e59b706545416bfc47a17eb1e35e205d')
 
 build() {
     cd "${srcdir}/coc.nvim-${pkgver}"
