@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=ifcopenshell-git
-pkgver=0.6.0b0.r928.g21a46808
+pkgver=0.6.0b0.r934.gd87ea93e
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -16,14 +16,15 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-deepdiff: ifcdiff'
 			'python-pyparsing: ifcexpressparser support'
 			'python-requests: blender bim addon covetool support'
-			'python-lark-parser: util, ifccsv, ifcclash support')
+			'python-lark-parser: util, ifccsv, ifcclash support'
+			'python-odfpy: ifccobie support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer')
 conflicts=('ifcopenshell')
 replaces=()
 backup=()
 source=("git+https://github.com/IfcOpenShell/IfcOpenShell.git")
-_blenderver=2.83
+_blender_ver=$(blender --version | grep -Po 'Blender \K[0-9]\...')
 
 prepare(){
   cd "${srcdir}/IfcOpenShell"
@@ -68,14 +69,14 @@ package() {
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Install blender bim addon
-  mkdir -p "${pkgdir}/usr/share/blender/${_blenderver}/scripts/addons"
-  cd "${pkgdir}/usr/share/blender/${_blenderver}/scripts/addons"
+  mkdir -p "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
+  cd "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcblenderexport/blenderbim" "./"
   cd blenderbim/libs/site/packages
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
-  python -O -m compileall "${pkgdir}/usr/share/blender/${_blenderver}/scripts/addons/blenderbim"
-  chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blenderver}/scripts/addons/blenderbim/bim/data"
+  python -O -m compileall "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim"
+  chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
 md5sums=('SKIP')

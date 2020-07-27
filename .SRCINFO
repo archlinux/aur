@@ -1,6 +1,6 @@
 pkgbase = ifcopenshell-git
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version.
-	pkgver = 0.6.0b0.r928.g21a46808
+	pkgver = 0.6.0b0.r934.gd87ea93e
 	pkgrel = 1
 	url = http://ifcopenshell.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = ifcopenshell-git
 	optdepends = python-pyparsing: ifcexpressparser support
 	optdepends = python-requests: blender bim addon covetool support
 	optdepends = python-lark-parser: util, ifccsv, ifcclash support
+	optdepends = python-odfpy: ifccobie support
 	provides = ifcopenshell
 	provides = blender-plugin-bim
 	provides = IfcConvert
