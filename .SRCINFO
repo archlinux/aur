@@ -1,7 +1,8 @@
 pkgbase = pacgui
 	pkgdesc = System updates with a simple pacman GUI
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
+	url = https://gitlab.com/it-me/pacgui
 	install = pacgui.install
 	arch = any
 	license = GPLv3

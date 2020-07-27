@@ -2,10 +2,11 @@
 
 pkgname=pacgui
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="System updates with a simple pacman GUI"
 arch=('any')
 license=('GPLv3')
+url="https://gitlab.com/it-me/pacgui"
 install=${pkgname}.install
 depends=('zenity' 'pacman-contrib')
 source=(${pkgname}.sh
