@@ -1,26 +1,25 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-copier
-pkgver=3.1.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/pykong/copier'
 license=('MIT')
-depends=('python'
-     'python-yaml'
-     'python-jinja'
-     'python-regex'
-     'python-plumbum'
-     'python-pathspec'
-     'python-pydantic'
-     'python-colorama'
-     'python-packaging'
-     'python-pytest-xdist'
-     'python-pyyaml-include')
+depends=('python-yaml'
+         'python-jinja'
+         'python-regex'
+         'python-plumbum'
+         'python-pathspec'
+         'python-pydantic'
+         'python-colorama'
+         'python-packaging'
+         'python-pytest-xdist'
+         'python-pyyaml-include')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/72/1e/5af825bc74cab8434828708cd0a0f3e3e53bda12716a3e4e17a190f27267/copier-${pkgver}.tar.gz")
-sha256sums=('5ccee68ea6510c617c207a64354737a3c7726fbca1de950aab3bbf87cde7b4f6')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/99/26/ad71fc94760766808ada713bb1a83a509e141984f89e465927e7d237b394/copier-${pkgver}.tar.gz")
+sha256sums=('d4af341c1aae2c3e472543858d645ed8a9903ad6dd02de84446441af4b445278')
 
 prepare() {
   cd "copier-${pkgver}"
