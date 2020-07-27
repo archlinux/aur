@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=/usr/bin/SimToolkitPro.AppImage
+Name=SimToolkitPro
+Categories=Application;Game;
+GenericName=SimToolkitPro
