@@ -1,6 +1,6 @@
 # Maintainer: Logan Magee <mageelog@gmail.com>
 pkgname=ly-git
-pkgver=v0.5.0.r1.geb496b0
+pkgver=0.5.0.r11.g6f24316
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ly
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
