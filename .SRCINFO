@@ -1,0 +1,30 @@
+pkgbase = vim-coc-sources-git
+	pkgver = 1.2.5.r0.ga2f059e
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-sources
+	arch = any
+	groups = vim-coc-extras
+	license = 
+	makedepends = git
+	source = coc-sources::git+https://github.com/neoclide/coc-sources.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-syntax-git
+	pkgdesc = Syntax words completion source for coc.nvim
+	depends = vim-coc
+	provides = vim-coc-
+	conflicts = vim-coc-
+
+pkgname = vim-coc-tag-git
+	pkgdesc = tag source for coc.nvim
+	depends = vim-coc
+	provides = vim-coc-
+	conflicts = vim-coc-
+
+pkgname = vim-coc-dictionary-git
+	pkgdesc = dictionary source for coc.nvim
+	depends = vim-coc
+	depends = words
+	provides = vim-coc-
+	conflicts = vim-coc-
+
