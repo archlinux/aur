@@ -1,0 +1,25 @@
+pkgbase = mumbledj
+	pkgdesc = Mumble bot for playing audio
+	pkgver = 3.2.0
+	pkgrel = 2
+	url = https://git.roshless.me/~roshless/mumbledj
+	install = mumbledj.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = ffmpeg
+	depends = youtube-dl
+	optdepends = aria2
+	source = https://git.roshless.me/~roshless/mumbledj/archive/3.2.0.tar.gz
+	source = mumbledj.service
+	source = mumbledj.sysusers
+	source = mumbledj.tmpfiles
+	md5sums = 373fd5294e954fa855dd38b98b7c2b4c
+	md5sums = 6584a036d03644704867a5b79b35e491
+	md5sums = f2f85bec016b1431be94af553fd57173
+	md5sums = 60e800293a47a562623cb91166950984
+
+pkgname = mumbledj
+

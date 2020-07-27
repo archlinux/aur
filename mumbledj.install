@@ -1,0 +1,11 @@
+post_install() {
+  chown -R mumbledj:mumbledj /var/lib/mumbledj
+}
+
+post_upgrade() {
+  chown -R mumbledj:mumbledj /var/lib/mumbledj
+}
+
+post_remove() {
+  echo 'You may want to remove mumbledj user.'
+}

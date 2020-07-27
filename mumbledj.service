@@ -1,0 +1,13 @@
+[Unit]
+Description=mumbledj - mumble bot for playing audio
+After=network.target
+
+[Service]
+Type=simple
+User=mumbledj
+WorkingDirectory=/var/lib/mumbledj
+Environment=USER=mumbledj HOME=/var/lib/mumbledj
+ExecStart=/usr/bin/mumbledj
+
+[Install]
+WantedBy=multi-user.target
