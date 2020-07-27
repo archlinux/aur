@@ -7,7 +7,7 @@
 
 pkgname=guix
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.gnu.org/software/guix/"
@@ -16,7 +16,7 @@ options=('!strip')
 makedepends=(
   'bash-completion'
   'fish'
-  'guile-json>=3'
+  'guile-json3'
   'guile-ssh>=0.10.2'
   'help2man'
   'po4a')
@@ -33,7 +33,7 @@ depends=(
   'zlib')
 optdepends=(
   'bash-completion: to enable bash programmable completion'
-  'guile-json: to import packages from cpan, gem, pypi'
+  'guile-json3: to import packages from cpan, gem, pypi'
   'guile-ssh: to offload builds to other machines')
 source=(
   "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
