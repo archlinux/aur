@@ -1,6 +1,6 @@
 pkgbase = fgx-qt5
 	pkgdesc = Cross platform launcher for FlightGear, based on Qt5
-	pkgver = 2.15.3
+	pkgver = 2.15.20
 	pkgrel = 1
 	url = http://fgx.freeflightsim.org/
 	arch = x86_64
@@ -10,12 +10,13 @@ pkgbase = fgx-qt5
 	makedepends = coreutils
 	depends = qt5-base
 	depends = qt5-webkit
+	depends = qt5-xmlpatterns
 	provides = fgx
 	conflicts = fgx
 	conflicts = fgx-git
 	replaces = fgx
 	replaces = fgx-git
-	source = git+https://github.com/fgx/fgx.git#branch=next-qt5
+	source = git+https://github.com/fgx/fgx.git#branch=next5
 	sha512sums = SKIP
 
 pkgname = fgx-qt5
