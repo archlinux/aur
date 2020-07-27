@@ -1,0 +1,18 @@
+pkgbase = komodo-bin
+	pkgdesc = Komodo (KMD) full node that supports zaddrs
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/KomodoPlatform/komodo
+	arch = x86_64
+	license = GPL2
+	makedepends = wget
+	makedepends = git
+	makedepends = curl
+	depends = libsodium
+	depends = lib32-zlib
+	conflicts = komodo
+	source = https://github.com/KomodoPlatform/komodo/releases/download/0.6.1/komodo_linux_0.6.1.tar.gz
+	sha256sums = ce3d567ca9b56553d85833b92870fc865378848be81234056175b0f9a37e4412
+
+pkgname = komodo-bin
+
