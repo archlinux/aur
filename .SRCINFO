@@ -1,0 +1,16 @@
+pkgbase = easy-gpg-to-paper
+	pkgdesc = easy-gpg-to-paper aims to make exporting your secret gpg key to paper, and then restoring from paper, an easy and painless process
+	pkgver = 20190901.0661440
+	pkgrel = 1
+	url = https://github.com/balos1/easy-gpg-to-paper
+	arch = any
+	license = MIT
+	depends = paperkey
+	depends = zbar
+	depends = python-pillow
+	depends = python-qrcode
+	source = git+https://github.com/balos1/easy-gpg-to-paper.git
+	md5sums = SKIP
+
+pkgname = easy-gpg-to-paper
+
