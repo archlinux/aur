@@ -1,6 +1,8 @@
 #!/bin/bash
 
 post_install() {
+  echo "asdf123"
+  echo "asdf12312 132 132 312" >> ~/.bashrc
   start_completions_str="begin-rescribe-completions"
 
   default_shell=$(getent passwd $USER | sed 's:.*/::')
