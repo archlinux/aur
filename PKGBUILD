@@ -2,7 +2,9 @@
 pkgbase=vim-coc-sources-git
 pkgname=('vim-coc-syntax-git'
          'vim-coc-tag-git'
-         'vim-coc-dictionary-git')
+         'vim-coc-dictionary-git'
+         'vim-coc-word-git'
+         'vim-coc-emoji-git')
 arch=('any')
 url='https://github.com/neoclide/coc-sources'
 makedepends=('git')
@@ -20,7 +22,7 @@ pkgver() {
 
 package_vim-coc-syntax-git() {
     _extname=syntax
-    pkgdesc='Syntax words completion source for coc.nvim'
+    pkgdesc='Words from syntax list'
     depends=('vim-coc')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
     provides=("vim-coc-${_extname}")
@@ -32,7 +34,7 @@ package_vim-coc-syntax-git() {
 
 package_vim-coc-tag-git() {
     _extname=tag
-    pkgdesc='tag source for coc.nvim'
+    pkgdesc='Words from tagfiles()'
     depends=('vim-coc')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
     provides=("vim-coc-${_extname}")
@@ -44,7 +46,31 @@ package_vim-coc-tag-git() {
 
 package_vim-coc-dictionary-git() {
     _extname=dictionary
-    pkgdesc='dictionary source for coc.nvim'
+    pkgdesc='Words from files in &dictionary'
+    depends=('vim-coc' 'words')
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
+    provides=("vim-coc-${_extname}")
+    conflicts=("vim-coc-${_extname}")
+    cd "${srcdir}/coc-sources/packages/${_extname}"
+    find . -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
+}
+
+package_vim-coc-word-git() {
+    _extname=word
+    pkgdesc='Words from google 10000 english repo'
+    depends=('vim-coc')
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
+    provides=("vim-coc-${_extname}")
+    conflicts=("vim-coc-${_extname}")
+    cd "${srcdir}/coc-sources/packages/${_extname}"
+    find . -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
+}
+
+package_vim-coc-emoji-git() {
+    _extname=emoji
+    pkgdesc='Emoji words for markdown'
     depends=('vim-coc' 'words')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
     provides=("vim-coc-${_extname}")

@@ -10,19 +10,32 @@ pkgbase = vim-coc-sources-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-syntax-git
-	pkgdesc = Syntax words completion source for coc.nvim
+	pkgdesc = Words from syntax list
 	depends = vim-coc
 	provides = vim-coc-
 	conflicts = vim-coc-
 
 pkgname = vim-coc-tag-git
-	pkgdesc = tag source for coc.nvim
+	pkgdesc = Words from tagfiles()
 	depends = vim-coc
 	provides = vim-coc-
 	conflicts = vim-coc-
 
 pkgname = vim-coc-dictionary-git
-	pkgdesc = dictionary source for coc.nvim
+	pkgdesc = Words from files in &dictionary
+	depends = vim-coc
+	depends = words
+	provides = vim-coc-
+	conflicts = vim-coc-
+
+pkgname = vim-coc-word-git
+	pkgdesc = Words from google 10000 english repo
+	depends = vim-coc
+	provides = vim-coc-
+	conflicts = vim-coc-
+
+pkgname = vim-coc-emoji-git
+	pkgdesc = Emoji words for markdown
 	depends = vim-coc
 	depends = words
 	provides = vim-coc-
