@@ -3,6 +3,7 @@ pkgbase = vim-coc-marketplace-git
 	pkgver = v1.4.0.r109.ga1ec912
 	pkgrel = 1
 	url = https://github.com/fannheyward/coc-marketplace
+	install = vim-coc-marketplace-git.install
 	arch = any
 	groups = vim-coc-extras-git
 	license = 
@@ -13,7 +14,9 @@ pkgbase = vim-coc-marketplace-git
 	provides = vim-coc-marketplace
 	conflicts = vim-coc-marketplace
 	source = coc-marketplace::git+https://github.com/fannheyward/coc-marketplace.git
+	source = vim-coc-marketplace-git.install
 	sha256sums = SKIP
+	sha256sums = 764001d12674596f3494dd4f08ca3754ff93bf7b6ea294a96e6c4eabbbb0197b
 
 pkgname = vim-coc-marketplace-git
 

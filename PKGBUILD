@@ -2,6 +2,8 @@
 pkgname=vim-coc-marketplace-git
 _pkgname=vim-coc-marketplace
 _extname=coc-marketplace
+pkgver=v1.4.0.r109.ga1ec912
+pkgrel=1
 pkgdesc='coc.nvim extensions marketplace'
 arch=('any')
 url='https://github.com/fannheyward/coc-marketplace'
@@ -12,10 +14,11 @@ license=('')
 groups=('vim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_extname}::git+${url}.git")
-pkgver=v1.4.0.r109.ga1ec912
-pkgrel=1
-sha256sums=('SKIP')
+install="${pkgname}.install"
+source=("${_extname}::git+${url}.git"
+        "${pkgname}.install")
+sha256sums=('SKIP'
+            '764001d12674596f3494dd4f08ca3754ff93bf7b6ea294a96e6c4eabbbb0197b')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
