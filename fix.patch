@@ -1,0 +1,11 @@
+--- tcsteg3.py	2019-06-18 11:51:40.000000000 -0000
++++ tcsteg3.py	2019-06-18 11:51:40.000000000 -0000
+@@ -125,7 +125,7 @@
+                     f_dest.seek(bodySize - 1, 1)
+                     byte = f_dest.read(1)
+                     if not byte:
+-                        f_dest.write("\0")
++                        f_dest.write(b"\0")
+                     else:
+                         f_dest.seek(-1, 1)
+                         f_dest.write(byte)

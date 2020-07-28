@@ -4,7 +4,7 @@
 
 pkgname=vcsteg
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Real Steganography with TrueCrypt'
 arch=('any')
 url='https://keyj.emphy.de/real-steganography-with-truecrypt/'
@@ -16,8 +16,14 @@ depends=('python')
 provides=('vcsteg' 'tcsteg' 'vcsteg3' 'tcsteg3')
 conflicts=('tcsteg' 'tcsteg2' 'tcsteg.py' 'tcsteg2.py' 'vcsteg' 'vcsteg2' 'vcsteg.py' 'vcsteg2.py'  'vcsteg3' 'vcsteg3.py' 'tcsteg3' 'tcsteg3.py')
 
-source=('https://keyj.emphy.de/files/tcsteg3.py')
-sha256sums=('d6b506865c8cb15d081c8fe77e4e18ec1f9e89cef1f9c400bf6a47a6447e0784')
+source=('https://keyj.emphy.de/files/tcsteg3.py' 'fix.patch')
+sha256sums=('d6b506865c8cb15d081c8fe77e4e18ec1f9e89cef1f9c400bf6a47a6447e0784'
+            '59229ffb0c562ae0573abde247a4a891b6cac7f62f60dc3d2207ba321df70a94')
+
+build() {
+    cd "$srcdir/"
+    patch -p0 --follow-symlinks -i fix.patch
+}
 
 package() {
     cd "$srcdir/"
