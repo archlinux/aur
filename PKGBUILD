@@ -17,7 +17,7 @@ optdepends=('git: git support'
             'fossil: fossil support'
             'cvs: cvs support'
             'rcs: rcs support'
-            'perforce: perforce support'
+            'p4: perforce support'
             'tee-clc: tfs support')
 makedepends=('git')
 provides=("${_pkgname}")
