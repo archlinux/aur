@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=85.0.4183.26
+pkgver=85.0.4183.39
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -18,7 +18,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git'
-             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
+             'libpipewire02' 'clang' 'lld' 'gn<0.1809' 'java-runtime-headless'
              'python2-setuptools' 'python2-xcb-proto')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -29,7 +29,7 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-skia-harmony.patch)
-sha256sums=('ac8121bbcc76400d846a3a46fc20f684fd3134f8f387d6213c5b077ba848ec6e'
+sha256sums=('0573032c1ce788074d6933770c92899dbffa836968d88aecc966b113fd399419'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
