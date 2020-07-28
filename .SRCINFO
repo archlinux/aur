@@ -1,0 +1,29 @@
+pkgbase = vim-signify-git
+	pkgdesc = Show a diff using Vim its sign column
+	pkgver = legacy.r60.gc3d450e
+	pkgrel = 1
+	url = https://github.com/mhinz/vim-signify
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	optdepends = git: git support
+	optdepends = yadm: yadm support
+	optdepends = mercurial: mercurial support
+	optdepends = subversion: subversion support
+	optdepends = breezy: breezy support
+	optdepends = darcs: darcs support
+	optdepends = fossil: fossil support
+	optdepends = cvs: cvs support
+	optdepends = rcs: rcs support
+	optdepends = perforce: perforce support
+	optdepends = tee-clc: tfs support
+	provides = vim-signify
+	conflicts = vim-signify
+	source = vim-signify::git+https://github.com/mhinz/vim-signify.git#branch=master
+	source = signify-vim-doc.hook
+	sha256sums = SKIP
+	sha256sums = 927fd66f0d28818775d5b8210fa2db30eee0cbba4f02ce7a63037065857d616b
+
+pkgname = vim-signify-git
+
