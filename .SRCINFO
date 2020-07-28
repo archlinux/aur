@@ -1,0 +1,25 @@
+pkgbase = tuner-git
+	pkgdesc = An app to discover and listen to internet radio stations
+	pkgver = r92.cd9008be
+	pkgrel = 1
+	url = https://github.com/louis77/tuner
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = gstreamer
+	depends = gst-plugins-bad-libs
+	depends = libgee
+	depends = libsoup
+	depends = json-glib
+	provides = tuner
+	conflicts = tuner
+	source = git+https://github.com/louis77/tuner.git
+	md5sums = SKIP
+
+pkgname = tuner-git
+
