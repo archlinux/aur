@@ -1,7 +1,7 @@
 pkgbase = minecraft
 	pkgdesc = Minecraft Launcher
 	pkgver = 2.1.16102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.minecraft.net/
 	arch = any
 	license = custom
@@ -13,7 +13,6 @@ pkgbase = minecraft
 	depends = alsa-lib
 	depends = gtk2
 	depends = gtk3
-	depends = gconf
 	depends = libxtst
 	depends = nss
 	optdepends = flite: narrator support
