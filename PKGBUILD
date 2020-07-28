@@ -2,9 +2,9 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2019.8
-_build=141
+_build=142
 pkgver=${_version}b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Java CPU and memory profiler."
 arch=(i686 x86_64)
 url="http://www.yourkit.com"
@@ -20,7 +20,7 @@ source=(
   yourkit.sh
 )
 sha256sums=(
-  '47cf34fdf086fc8b5ff048205b67fefbc57e1733582479d93bdd15b320750dbb'
+  'c45ec29ceb7f511d6df0ac508c656caf822446f353644f40c50c1c736bc6b4a1'
   'b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
   '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e'
 )
