@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Super Mario 64
+GenericName=Super Mario 64
+Comment=A full decompilation of Super Mario 64
+Exec=sm64ex
+Icon=sm64ex
+Terminal=false
+Type=Application
+Categories=Game;Retro;Emulator;
