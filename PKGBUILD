@@ -40,6 +40,6 @@ package() {
 
   if [ -f $shell_rc_file ] && ! grep -q "$start_completions_str" "$shell_rc_file"; then
     echo "adding completion"
-    ./$pkgdir/usr/bin/rescribe completion >> ~/.bashrc
+    bash "$pkgdir/usr/bin/rescribe" completion >> ~/.bashrc
   fi
 }
