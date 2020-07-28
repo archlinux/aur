@@ -23,7 +23,7 @@ options=()
 install=
 changelog=
 source=("https://cli.rescribe.dev/linux.zip")
-noextract=()
+noextract=("https://cli.rescribe.dev/linux.zip")
 md5sums=("8c7735e688fdbacfd8e192a256f7ffad")
 validpgpkeys=()
 
@@ -43,6 +43,7 @@ check() {
 }
 
 package() {
+  unzip linux.zip
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
   cp rescribe "$pkgdir/usr/bin"
