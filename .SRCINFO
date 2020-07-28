@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
 	pkgver = 0.99.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -22,7 +22,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = replay-sorcery: for using Replay-Sorcery per game
 	optdepends = wmctrl: for optional minimize/maximize of all open windows on game start/stop
 	optdepends = net-tools: for optional network monitoring
-	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=5459b2b00d2de8501bd8a5c3669dcbbad8646cc2
+	source = git+https://github.com/frostworx/steamtinkerlaunch.git#commit=a90f65e06e2a2e121f11530f182f573611ea2433
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch

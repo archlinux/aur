@@ -3,7 +3,7 @@
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=0.99.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -27,7 +27,7 @@ optdepends=(
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
     'net-tools: for optional network monitoring'
 )
-_commit='5459b2b00d2de8501bd8a5c3669dcbbad8646cc2'
+_commit='a90f65e06e2a2e121f11530f182f573611ea2433'
 source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
 sha1sums=('SKIP')
 
