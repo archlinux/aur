@@ -1,3 +1,13 @@
+Proton-5.9-GE-5-ST
+
+GloriousEggroll released this on July 28
+
+-Updated vkd3d -- allows Death Stranding to run with mesa RADV/ACO
+-Backported a total of 36 winex11 and user32 patches from 5.9->5.13 to allow AC Odyssey black bars to be fixed
+-Backports for winex11 and user32 includes untested fix: Fix Disgaea PC and Ostriv failing to launch in exclusive fullscreen mode wine-mirror/wine@ca1d31f wine-mirror/wine@c4a01d0
+-Added missing patch wine-mirror/wine@0114308 which fixes Origin hanging on login (needed after adding Assetto patch which introduced the hang)
+-Removed previously added Borderlands 3 launch options as they were reported to break new prefix creation on fresh installs
+
 Proton-5.9-GE-4-ST
 
 GloriousEggroll released this on July 26
