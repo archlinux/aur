@@ -21,61 +21,56 @@ pkgver() {
 }
 
 package_vim-coc-syntax-git() {
-    _extname=syntax
     pkgdesc='Words from syntax list'
     depends=('vim-coc')
-    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
-    provides=("vim-coc-${_extname}")
-    conflicts=("vim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-syntax"
+    provides=("vim-coc-syntax")
+    conflicts=("vim-coc-syntax")
+    cd "${srcdir}/coc-sources/packages/syntax"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_vim-coc-tag-git() {
-    _extname=tag
     pkgdesc='Words from tagfiles()'
     depends=('vim-coc')
-    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
-    provides=("vim-coc-${_extname}")
-    conflicts=("vim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-tag"
+    provides=("vim-coc-tag")
+    conflicts=("vim-coc-tag")
+    cd "${srcdir}/coc-sources/packages/tag"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_vim-coc-dictionary-git() {
-    _extname=dictionary
     pkgdesc='Words from files in &dictionary'
     depends=('vim-coc' 'words')
-    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
-    provides=("vim-coc-${_extname}")
-    conflicts=("vim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-dictionary"
+    provides=("vim-coc-dictionary")
+    conflicts=("vim-coc-dictionary")
+    cd "${srcdir}/coc-sources/packages/dictionary"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_vim-coc-word-git() {
-    _extname=word
     pkgdesc='Words from google 10000 english repo'
     depends=('vim-coc')
-    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
-    provides=("vim-coc-${_extname}")
-    conflicts=("vim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-word"
+    provides=("vim-coc-word")
+    conflicts=("vim-coc-word")
+    cd "${srcdir}/coc-sources/packages/word"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_vim-coc-emoji-git() {
-    _extname=emoji
     pkgdesc='Emoji words for markdown'
     depends=('vim-coc' 'words')
-    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-${_extname}"
-    provides=("vim-coc-${_extname}")
-    conflicts=("vim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-emoji"
+    provides=("vim-coc-emoji")
+    conflicts=("vim-coc-emoji")
+    cd "${srcdir}/coc-sources/packages/emoji"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }

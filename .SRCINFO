@@ -12,32 +12,32 @@ pkgbase = vim-coc-sources-git
 pkgname = vim-coc-syntax-git
 	pkgdesc = Words from syntax list
 	depends = vim-coc
-	provides = vim-coc-
-	conflicts = vim-coc-
+	provides = vim-coc-syntax
+	conflicts = vim-coc-syntax
 
 pkgname = vim-coc-tag-git
 	pkgdesc = Words from tagfiles()
 	depends = vim-coc
-	provides = vim-coc-
-	conflicts = vim-coc-
+	provides = vim-coc-tag
+	conflicts = vim-coc-tag
 
 pkgname = vim-coc-dictionary-git
 	pkgdesc = Words from files in &dictionary
 	depends = vim-coc
 	depends = words
-	provides = vim-coc-
-	conflicts = vim-coc-
+	provides = vim-coc-dictionary
+	conflicts = vim-coc-dictionary
 
 pkgname = vim-coc-word-git
 	pkgdesc = Words from google 10000 english repo
 	depends = vim-coc
-	provides = vim-coc-
-	conflicts = vim-coc-
+	provides = vim-coc-word
+	conflicts = vim-coc-word
 
 pkgname = vim-coc-emoji-git
 	pkgdesc = Emoji words for markdown
 	depends = vim-coc
 	depends = words
-	provides = vim-coc-
-	conflicts = vim-coc-
+	provides = vim-coc-emoji
+	conflicts = vim-coc-emoji
 
