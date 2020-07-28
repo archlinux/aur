@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Display an animal with a random quote or your own text"
 arch=('any')
 url="https://github.com/Souravgoswami/cowspeak-root"
-licence=('MIT')
+license=('MIT')
 depends=('ruby>=2.5')
 provides=('cowspeak')
 source=("https://github.com/Souravgoswami/cowspeak-root/raw/master/tarballs/cowspeak-v${pkgver}.tar.xz")

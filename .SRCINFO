@@ -4,6 +4,7 @@ pkgbase = cowspeak
 	pkgrel = 1
 	url = https://github.com/Souravgoswami/cowspeak-root
 	arch = any
+	license = MIT
 	depends = ruby>=2.5
 	provides = cowspeak
 	source = https://github.com/Souravgoswami/cowspeak-root/raw/master/tarballs/cowspeak-v2.82.tar.xz
