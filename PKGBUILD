@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-release-git
-pkgver=rev.13856
+pkgver=rev.13874
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -23,10 +23,19 @@ pkgver() {
 }
 
 prepare(){
+#PR patches here.
+cd "${srcdir}"/Vega-Strike-Engine-Source
+#patch -Np1 -i ../../install.patch
+
+cd ..
+#personal patches
 mkdir -p build
 #for now, these two patches modify the same line in CMakelists.txt
 #patch -Np1 -i ../py2.patch
 patch -Np1 -i ../Python.patch
+#patch -Np1 -i ../galaxy.patch
+#patch -Np1 -i ../nav.patch
+#patch -Np1 -i ../nav_galaxy.patch
 }
 
 build(){
@@ -41,8 +50,9 @@ build(){
 }
 
 package() {
-mkdir -p "${pkgdir}"/usr/bin
-  cd build
-  mv -vf setup/vssetup setup/vegasettings
-  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
+#mkdir -p "${pkgdir}"/usr/bin
+#  cd build
+#  mv -vf setup/vssetup setup/vegasettings
+#  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
+make -C build DESTDIR="${pkgdir}" install
 }
