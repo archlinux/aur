@@ -1,0 +1,10 @@
+--- a/etc/afpd/volume.h
++++ b/etc/afpd/volume.h
+@@ -36,6 +36,6 @@
+ /* netatalk functions */
+ extern void     close_all_vol   (void);
+ 
+-struct vol *current_vol;        /* last volume from getvolbyvid() */
++extern struct vol *current_vol;        /* last volume from getvolbyvid() */
+ 
+ #endif

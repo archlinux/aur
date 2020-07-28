@@ -1,0 +1,60 @@
+$NetBSD: patch-etc_uams_uams__dhx__pam.c,v 1.1 2019/06/02 20:03:32 rjs Exp $
+
+--- etc/uams/uams_dhx_pam.c.orig	2014-03-16 11:17:48.000000000 +0000
++++ etc/uams/uams_dhx_pam.c
+@@ -190,6 +190,7 @@ static int dhx_setup(void *obj, char *ib
+     u_int16_t sessid;
+     size_t i;
+     BIGNUM *bn, *gbn, *pbn;
++    const BIGNUM *pub_key;
+     DH *dh;
+ 
+     /* get the client's public key */
+@@ -233,9 +234,16 @@ static int dhx_setup(void *obj, char *ib
+       return AFPERR_PARAM;
+     }
+ 
++    if (!DH_set0_pqg(dh, pbn, NULL, gbn)) {
++      BN_free(pbn);
++      BN_free(gbn);
++    /* Log Entry */
++      LOG(log_info, logtype_uams, "uams_dhx_pam.c :PAM DH_set0_pqg() mysteriously failed  -- %s", strerror(errno));
++    /* Log Entry */
++      goto pam_fail;
++    }
++
+     /* generate key and make sure that we have enough space */
+-    dh->p = pbn;
+-    dh->g = gbn;
+     if (DH_generate_key(dh) == 0) {
+ 	unsigned long dherror;
+ 	char errbuf[256];
+@@ -249,16 +257,17 @@ static int dhx_setup(void *obj, char *ib
+ 	ERR_free_strings();
+ 	goto pam_fail;
+     }
+-    if (BN_num_bytes(dh->pub_key) > KEYSIZE) {
++    DH_get0_key(dh, &pub_key, NULL);
++    if (BN_num_bytes(pub_key) > KEYSIZE) {
+ 	LOG(log_info, logtype_uams, "uams_dhx_pam.c :PAM: Err Generating Key -- Not enough Space? -- %s", strerror(errno));
+ 	goto pam_fail;
+     }
+ 
+     /* figure out the key. store the key in rbuf for now. */
+-    i = DH_compute_key(rbuf, bn, dh);
++    i = DH_compute_key((unsigned char *)rbuf, bn, dh);
+     
+     /* set the key */
+-    CAST_set_key(&castkey, i, rbuf);
++    CAST_set_key(&castkey, i, (unsigned char *)rbuf);
+     
+     /* session id. it's just a hashed version of the object pointer. */
+     sessid = dhxhash(obj);
+@@ -267,7 +276,7 @@ static int dhx_setup(void *obj, char *ib
+     *rbuflen += sizeof(sessid);
+     
+     /* public key */
+-    BN_bn2bin(dh->pub_key, rbuf); 
++    BN_bn2bin(pub_key, (unsigned char *)rbuf); 
+     rbuf += KEYSIZE;
+     *rbuflen += KEYSIZE;

@@ -1,0 +1,45 @@
+pkgbase = netatalk-ddp
+	pkgdesc = A kernel-level implementation of AppleTalk, AFP, and PAP services
+	pkgver = 2.2.6
+	pkgrel = 1
+	url = http://netatalk.sourceforge.net
+	install = netatalk-ddp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openslp
+	depends = libcups
+	depends = libgcrypt>=1.2.3
+	depends = libtirpc
+	depends = libwrap
+	depends = rpcsvc-proto
+	optdepends = cups: required for PAP support
+	conflicts = netatalk
+	replaces = netatalk-git
+	replaces = netatalk2
+	options = !libtool
+	backup = etc/netatalk/afpd.conf
+	backup = etc/netatalk/afp_ldap.conf
+	backup = etc/netatalk/netatalk.conf
+	backup = etc/netatalk/AppleVolumes.default
+	backup = etc/netatalk/AppleVolumes.system
+	backup = etc/netatalk/atalkd.conf
+	backup = etc/netatalk/papd.conf
+	backup = etc/pam.d/netatalk
+	source = https://svwh.dl.sourceforge.net/project/netatalk/netatalk/2.2.6/netatalk-2.2.6.tar.bz2
+	source = netatalk-invalid_dircache_entries.patch
+	source = netatalk-current_vol.patch
+	source = netatalk-uams_dhx_passwd.patch
+	source = netatalk-uams_dhx_pam.patch
+	source = netatalk-uams_randnum.patch
+	source = netatalk-papd_print_cups.patch
+	md5sums = cd8ca5be7ebb0ac42d5576f401a8a8ba
+	md5sums = e56ca98c7399916d73cd6de1beb4a567
+	md5sums = 3a9237d97a109e1d7923c93e6c91c182
+	md5sums = be2aae358f7e119cac04d0647b313dde
+	md5sums = ced20afc4ac36220efbb452fc8d56881
+	md5sums = e57f9714b04c9b52f40260ed62dce82d
+	md5sums = 6d8c7d17632dcb6d062987dba43089f0
+
+pkgname = netatalk-ddp
+
