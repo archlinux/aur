@@ -39,7 +39,6 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	# ./configure --prefix=/usr
   cd Plugin/ && bash build_linux.sh
 }
 
