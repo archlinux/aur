@@ -1,0 +1,24 @@
+pkgbase = tranalyzer
+	pkgdesc = Lightweight flow generator and packet analyzer
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://tranalyzer.com
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mongo-c-driver
+	makedepends = libtool
+	makedepends = cmake
+	depends = libpcap
+	depends = mongo-c-driver
+	depends = postgresql-libs
+	depends = mariadb-libs
+	depends = sqlite
+	depends = pcre
+	depends = gawk
+	optdepends = graphviz: Required by some plugins
+	source = tranalyzer-0.8.8.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-0.8.8lmw4.tar.gz
+	sha256sums = 55beaa92d6269a184aea9e2a8ecbda029cbba932ee1a3ab12807d1d76026cce9
+
+pkgname = tranalyzer
+
