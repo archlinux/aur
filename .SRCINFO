@@ -1,0 +1,20 @@
+pkgbase = neovim-coc-extras-meta-git
+	pkgdesc = Meta package to install some important extensions for coc.nvim
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/neoclide/coc.nvim
+	arch = any
+	depends = neovim-coc-dictionary-git
+	depends = neovim-coc-highlight-git
+	depends = neovim-coc-lists-git
+	depends = neovim-coc-marketplace-git
+	depends = neovim-coc-snippets-git
+	depends = neovim-coc-syntax-git
+	depends = neovim-coc-tag-git
+	depends = neovim-coc-yank-git
+	optdepends = neovim-coc-pairs-git: auto pairs support
+	optdepends = neovim-coc-explorer-git: file/buffer explorer
+	optdepends = neovim-coc-git-git: git integration
+
+pkgname = neovim-coc-extras-meta-git
+
