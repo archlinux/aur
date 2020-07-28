@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-audio-capture
+pkgbase = ros-noetic-audio-capture
 	pkgdesc = ROS - Transports audio from a source to a destination.
 	pkgver = 0.3.6
 	pkgrel = 1
@@ -11,19 +11,19 @@ pkgbase = ros-melodic-audio-capture
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-audio-common-msgs
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-audio-common-msgs
 	makedepends = gstreamer
 	makedepends = gst-plugins-base
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-audio-common-msgs
-	depends = gst-plugins-good
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-audio-common-msgs
 	depends = gstreamer
 	depends = gst-plugins-base
+	depends = gst-plugins-good
 	depends = gst-plugins-ugly
-	source = ros-melodic-audio-capture-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
+	source = ros-noetic-audio-capture-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
 	sha256sums = f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950
 
-pkgname = ros-melodic-audio-capture
+pkgname = ros-noetic-audio-capture
 
