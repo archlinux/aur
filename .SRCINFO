@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-audio-common
+pkgbase = ros-noetic-audio-common
 	pkgdesc = ROS - Common code for working with audio in ROS.
 	pkgver = 0.3.6
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-audio-common
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-sound-play
-	depends = ros-melodic-audio-capture
-	depends = ros-melodic-audio-play
-	depends = ros-melodic-audio-common-msgs
-	source = ros-melodic-audio-common-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-audio-capture
+	depends = ros-noetic-audio-common-msgs
+	depends = ros-noetic-audio-play
+	depends = ros-noetic-sound-play
+	source = ros-noetic-audio-common-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
 	sha256sums = f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950
 
-pkgname = ros-melodic-audio-common
+pkgname = ros-noetic-audio-common
 

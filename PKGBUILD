@@ -1,23 +1,30 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Common code for working with audio in ROS."
 url='https://wiki.ros.org/audio_common'
 
-pkgname='ros-melodic-audio-common'
+pkgname='ros-noetic-audio-common'
 pkgver='0.3.6'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+)
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+)
 
-ros_depends=(ros-melodic-sound-play
-  ros-melodic-audio-capture
-  ros-melodic-audio-play
-  ros-melodic-audio-common-msgs)
-depends=(${ros_depends[@]})
+ros_depends=(
+    ros-noetic-audio-capture
+    ros-noetic-audio-common-msgs
+    ros-noetic-audio-play
+    ros-noetic-sound-play
+)
+depends=(
+    ${ros_depends[@]}
+)
 
 _dir="audio_common-${pkgver}/audio_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
@@ -26,21 +33,17 @@ sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
