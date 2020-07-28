@@ -25,12 +25,16 @@ pkgver() {
 build() {
     cd "${srcdir}/${_extname}"
     yarn install --frozen-lockfile
-    npm prune --production
+    yarn pack --frozen-lockfile --production
+    tar xvf *.tgz
+    rm *.tgz
+    cd package
+    yarn install --frozen-lockfile --production
 }
 
 package() {
-    cd "${srcdir}/${_extname}"
-    find autoload lib/*.js node_modules package.json plugin -type f -exec \
+    cd "${srcdir}/${_extname}/package"
+    find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
-    rm -rf node_modules
+    rm -rf "${srcdir}/${_extname}/package"
 }
