@@ -1,11 +1,9 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-_relver=1.2
-
 _gitname=korla
 _author=bikass
 pkgname=korla-icon-theme-git
-pkgver=r518.03e1cb4
+pkgver=r518.03e1cb48
 pkgrel=1
 pkgdesc="Korla icon theme is a mix of the following icon sets: Korla and Papirus"
 arch=("any")
@@ -20,7 +18,7 @@ makedepends=("git")
 provides=("korla-icon-theme")
 conflicts=("korla-icon-theme")
 install="$pkgname.install"
-source=("git+https://github.com/bikass/korla.git")
+source=("git+${url}.git")
 md5sums=("SKIP")
 
 _iconpath=usr/share/icons
