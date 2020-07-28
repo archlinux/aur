@@ -3,6 +3,7 @@ pkgbase = neovim-coc-marketplace-git
 	pkgver = v1.4.0.r109.ga1ec912
 	pkgrel = 1
 	url = https://github.com/fannheyward/coc-marketplace
+	install = neovim-coc-marketplace-git.install
 	arch = any
 	groups = neovim-coc-extras-git
 	license = 
@@ -13,7 +14,9 @@ pkgbase = neovim-coc-marketplace-git
 	provides = neovim-coc-marketplace
 	conflicts = neovim-coc-marketplace
 	source = coc-marketplace::git+https://github.com/fannheyward/coc-marketplace.git
+	source = neovim-coc-marketplace-git.install
 	sha256sums = SKIP
+	sha256sums = 28cc66de4745e00291dc58a32588eb4df5cb52f2a780353f975e58efbc1d73a4
 
 pkgname = neovim-coc-marketplace-git
 

@@ -2,6 +2,8 @@
 pkgname=neovim-coc-marketplace-git
 _pkgname=neovim-coc-marketplace
 _extname=coc-marketplace
+pkgver=v1.4.0.r109.ga1ec912
+pkgrel=1
 pkgdesc='coc.nvim extensions marketplace'
 arch=('any')
 url='https://github.com/fannheyward/coc-marketplace'
@@ -12,10 +14,11 @@ license=('')
 groups=('neovim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_extname}::git+${url}.git")
-pkgver=v1.4.0.r109.ga1ec912
-pkgrel=1
-sha256sums=('SKIP')
+install="${pkgname}.install"
+source=("${_extname}::git+${url}.git"
+        "${pkgname}.install")
+sha256sums=('SKIP'
+            '28cc66de4745e00291dc58a32588eb4df5cb52f2a780353f975e58efbc1d73a4')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
