@@ -1,13 +1,15 @@
 pkgbase = gnome-source-thumbnailer-git
 	pkgdesc = Thumbnails for your code
-	pkgver = 3e1503c
-	pkgrel = 1
+	pkgver = r5.3e1503c
+	pkgrel = 2
 	url = https://gitlab.gnome.org/ZanderBrown/gnome-source-thumbnailer
 	arch = any
 	license = GPL-3.0
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	depends = python-cairo
+	depends = python-gobject
 	conflicts = gnome-source-thumbnailer
 	source = gnome-source-thumbnailer::git+https://gitlab.gnome.org/ZanderBrown/gnome-source-thumbnailer.git
 	sha256sums = SKIP
