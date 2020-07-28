@@ -13,10 +13,12 @@ artifact = Mixlib::Install.new(options).artifact_info
 pkgbuild = File.read("PKGBUILD")
 pkgbuild.split("\n").each do |line|
   if  line =~ /pkgver=(.*)/
-    puts "#{$1} → #{artifact.version}"
     if $1 == artifact.version
-      puts "This version is already current!"
+      puts "#{$1}: This version is already current!"
       exit 1
+    end
+    File.open(".commit_msg", "w") do |f|
+      f.write("#{$1} → #{artifact.version}")
     end
     break
   end
