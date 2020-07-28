@@ -30,6 +30,7 @@ validpgpkeys=()
 package() {
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
+  chmod +x rescribe
   mv rescribe "$pkgdir/usr/bin"
   mv nodegit.node "$pkgdir/usr/bin"
 
@@ -40,6 +41,6 @@ package() {
 
   if [ -f $shell_rc_file ] && ! grep -q "$start_completions_str" "$shell_rc_file"; then
     echo "adding completion"
-    bash "$pkgdir/usr/bin/rescribe" completion >> ~/.bashrc
+    .$pkgdir/usr/bin/rescribe completion >> ~/.bashrc
   fi
 }
