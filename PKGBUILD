@@ -1,29 +1,29 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Messages for transmitting audio via ROS."
 url='https://wiki.ros.org/audio_common_msgs'
 
-pkgname='ros-melodic-audio-common-msgs'
+pkgname='ros-noetic-audio-common-msgs'
 pkgver='0.3.6'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-melodic-message-generation
-  ros-melodic-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+    ros-noetic-message-generation
+)
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+)
 
-ros_depends=(ros-melodic-message-runtime)
-depends=(${ros_depends[@]})
+ros_depends=(
+    ros-noetic-message-runtime
+)
+depends=(
+    ${ros_depends[@]}
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/audio_common_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/audio_common-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="audio_common-${pkgver}/audio_common_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
 sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
@@ -31,21 +31,17 @@ sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
