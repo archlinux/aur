@@ -1,6 +1,6 @@
 pkgbase = octant
 	pkgdesc = A tool for developers to understand how applications run on a Kubernetes cluster
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/octant
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = octant
 	makedepends = git
 	makedepends = python
 	depends = kubectl
-	source = octant-0.14.0.tar.gz::https://github.com/vmware/octant/archive/v0.14.0.tar.gz
-	sha256sums = 76d8b90c8d09cd16056904c626d76257752edb9df4eb7ac8a9dc0bb7de23aff9
+	source = octant-0.14.1.tar.gz::https://github.com/vmware/octant/archive/v0.14.1.tar.gz
+	sha256sums = afb2a243db2a0d998a693559f1a5d2ffcf95deded9fc0b82988097971e8c286f
 
 pkgname = octant
 
