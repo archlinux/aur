@@ -1,7 +1,7 @@
 # Maintainer: Skydrome <skydrome at protonmail dot com>
 
 pkgname=zulu-embedded-jdk11
-pkgver=11.0.7
+pkgver=11.0.8
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'i686' 'x86_64')
@@ -18,26 +18,26 @@ depends=('java-runtime-common>=3' 'java-environment-common>=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        _build=11.39.61
-        sha256sums=('46e5dfb774a018a721e66e7d4beee7cee2561cbd568a83c9cc2f5a6f77225c06')
+        _build=11.41.75
+        sha256sums=('8eb08c86be935794143a35bc01115e5b7cd56896631e463aa09197966dc81d32')
         ;;
     aarch64) _arch='aarch64'
-        _build=13.31.25
-        pkgver=13.0.3
-        sha256sums=('0e73c93b22e7d284fa80a5ce0ef3db2bbd9c80158aaab740ed1674795b83193e')
+        _build=13.33.38
+        pkgver=13.0.4
+        sha256sums=('7ee9c5452e4af1cd48abd9aff25f243feee9fba90ce86fc555570693ea4bd42c')
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
-        _build=14.28.21
-        pkgver=14.0.1
-        sha256sums=('bc29244e547d5301ac2054d581cfefb37c33e427c58acc12b56fbb3c91ad3d60')
+        _build=14.29.23
+        pkgver=14.0.2
+        sha256sums=('e1111709c5fb1ecabff8080f7974ffba0b782246a77272f2fcbedd2d15adee45')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
     x86_64) _arch='x64'
-        _build=14.28.21
-        pkgver=14.0.1
-        sha256sums=('48bb8947034cd079ad1ef83335e7634db4b12a26743a0dc314b6b861480777aa')
+        _build=14.29.23
+        pkgver=14.0.2
+        sha256sums=('7f4310a98ea0e52bacbec389012d859dbb51e759fe35a2cfebb11300271872d2')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
