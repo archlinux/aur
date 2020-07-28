@@ -1,85 +1,64 @@
-# Script generated with create_pkgbuild.py
-# For more information: https://github.com/ros-melodic-arch/ros-build-tools-py3
 pkgdesc="ROS - Controller for a steer drive mobile base."
 url='http://wiki.ros.org/ackermann_steering_controller'
 
-pkgname='ros-melodic-ackermann-steering-controller'
+pkgname='ros-noetic-ackermann-steering-controller'
 pkgver='0.17.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-  ros-melodic-tf
-  ros-melodic-diff-drive-controller
-  ros-melodic-catkin
-  ros-melodic-roscpp
-  ros-melodic-urdf
-  ros-melodic-hardware-interface
-  ros-melodic-controller-interface
-  ros-melodic-nav-msgs
-  ros-melodic-realtime-tools
-  ros-melodic-pluginlib
+    ros-noetic-catkin
+    ros-noetic-pluginlib
+    ros-noetic-urdf
 )
 
 makedepends=(
-  'cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
 )
 
 ros_depends=(
-  ros-melodic-tf
-  ros-melodic-diff-drive-controller
-  ros-melodic-roscpp
-  ros-melodic-urdf
-  ros-melodic-hardware-interface
-  ros-melodic-controller-interface
-  ros-melodic-nav-msgs
-  ros-melodic-realtime-tools
-  ros-melodic-pluginlib
+    ros-noetic-controller-interface
+    ros-noetic-diff-drive-controller
+    ros-noetic-hardware-interface
+    ros-noetic-nav-msgs
+    ros-noetic-realtime-tools
+    ros-noetic-roscpp
+    ros-noetic-tf
+    ros-noetic-pluginlib
+    ros-noetic-urdf
 )
 
 depends=(
-  ${ros_depends[@]}
-  boost
+    ${ros_depends[@]}
+    boost
 )
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/effort_controllers/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_controllers-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-ackermann_steering_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/ackermann_steering_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('51080af6bb85aec200e53b327731f99e4df05bca13429348296b9d113ab86859')
+_dir="ros_controllers-${pkgver}/ackermann_steering_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8')
 
 build() {
-  # Use ROS environment variables
-  source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+    # Use ROS environment variables
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-  # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+    # Create build directory
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
-  # Build project
-  cmake ${srcdir}/${_dir} \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-          -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-          -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-          -DSETUPTOOLS_DEB_LAYOUT=OFF
-  make
+    # Build project
+    cmake ${srcdir}/${_dir} \
+            -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+            -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+            -DPYTHON_EXECUTABLE=/usr/bin/python \
+            -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
-
