@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package_neovim-coc-syntax-git() {
-    pkgdesc='Words from syntax list'
+    pkgdesc='Syntax words completion source for coc.nvim'
     depends=('neovim-coc')
     _packdir="usr/local/share/nvim/site/pack/coc/start/syntax"
     provides=("neovim-coc-syntax")
@@ -32,7 +32,7 @@ package_neovim-coc-syntax-git() {
 }
 
 package_neovim-coc-tag-git() {
-    pkgdesc='Words from tagfiles()'
+    pkgdesc='tag source for coc.nvim'
     depends=('neovim-coc')
     _packdir="usr/local/share/nvim/site/pack/coc/start/tag"
     provides=("neovim-coc-tag")
@@ -43,7 +43,7 @@ package_neovim-coc-tag-git() {
 }
 
 package_neovim-coc-dictionary-git() {
-    pkgdesc='Words from files in &dictionary'
+    pkgdesc='dictionary source for coc.nvim'
     depends=('neovim-coc')
     _packdir="usr/local/share/nvim/site/pack/coc/start/dictionary"
     provides=("neovim-coc-dictionary")
@@ -54,7 +54,7 @@ package_neovim-coc-dictionary-git() {
 }
 
 package_neovim-coc-word-git() {
-    pkgdesc='Words from google 10000 english repo'
+    pkgdesc='word source for coc.nvim'
     depends=('neovim-coc')
     _packdir="usr/local/share/nvim/site/pack/coc/start/word"
     provides=("neovim-coc-word")
@@ -65,7 +65,7 @@ package_neovim-coc-word-git() {
 }
 
 package_neovim-coc-emoji-git() {
-    pkgdesc='Emoji words for markdown'
+    pkgdesc='emoji source for coc.nvim'
     depends=('neovim-coc')
     _packdir="usr/local/share/nvim/site/pack/coc/start/emoji"
     provides=("neovim-coc-emoji")
