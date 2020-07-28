@@ -1,6 +1,6 @@
 _name=hexo-cli
 pkgname=nodejs-$_name
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Command line interface for Hexo: a fast, simple & powerful blog framework."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('npm')
 conflicts=('nodejs-hexo')
 noextract=($_name-$pkgver.tgz)
 source=(https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz)
-sha1sums=('a7414d4647333fe73762f86d77e5660659c0d05b')
+sha1sums=('bb963f36238681043be203e8a57cb0c95f9ac163')
 
 package() {
   cd "$srcdir"
