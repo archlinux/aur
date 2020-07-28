@@ -9,6 +9,7 @@ pkgbase = octant
 	makedepends = npm
 	makedepends = git
 	makedepends = python
+	makedepends = go.rice
 	depends = kubectl
 	source = octant-0.14.1.tar.gz::https://github.com/vmware/octant/archive/v0.14.1.tar.gz
 	sha256sums = afb2a243db2a0d998a693559f1a5d2ffcf95deded9fc0b82988097971e8c286f

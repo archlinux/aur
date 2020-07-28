@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('Apache')
 url='https://github.com/vmware-tanzu/octant'
 depends=('kubectl')
-makedepends=('go' 'npm' 'git' 'python')
+makedepends=('go' 'npm' 'git' 'python' 'go.rice')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmware/octant/archive/v$pkgver.tar.gz")
 sha256sums=('afb2a243db2a0d998a693559f1a5d2ffcf95deded9fc0b82988097971e8c286f')
 
