@@ -1,0 +1,15 @@
+--- a/setup.py	2020-07-28 19:57:24.137669114 +0200
++++ b/setup.py	2020-07-28 20:03:37.138596078 +0200
+@@ -57,9 +57,9 @@
+         mbc=maubot.cli:app
+     """,
+     data_files=[
+-        (".", ["example-config.yaml", "alembic.ini"]),
+-        ("alembic", ["alembic/env.py"]),
+-        ("alembic/versions", glob.glob("alembic/versions/*.py")),
++        ("./share/maubot", ["example-config.yaml", "alembic.ini"]),
++        ("./share/maubot/alembic", ["alembic/env.py"]),
++        ("./share/maubot/alembic/versions", glob.glob("alembic/versions/*.py"))
+     ],
+     package_data={
+         "maubot": ["management/frontend/build/*", "management/frontend/build/static/css/*",

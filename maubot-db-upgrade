@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+
+cd /var/lib/maubot
+
+if [[ ! -e /var/lib/maubot/alembic ]]; then
+  ln -s /usr/share/maubot/alembic ./
+fi
+if [[ ! -e /var/lib/maubot/alembic.ini ]]; then
+  ln -s /usr/share/maubot/alembic.ini ./
+fi
+sudo -u maubot alembic -x config=/etc/synapse/maubot/config.yaml upgrade head
