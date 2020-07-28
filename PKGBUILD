@@ -1,7 +1,7 @@
 # Maintainer: Temuri Takalandze <takalandzet@gmail.com>
 pkgname=goclockify
 pkgver=1.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A terminal based client for Clockify time tracker'
 arch=('x86_64')
 url='https://github.com/ABGEO/goclockify'
