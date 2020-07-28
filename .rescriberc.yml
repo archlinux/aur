@@ -1,0 +1,5 @@
+apiURL: api.rescribe.dev
+debug: false
+websiteURL: rescribe.dev
+useSecure: true
+saveCloud: true

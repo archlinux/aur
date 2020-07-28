@@ -3,7 +3,7 @@
 # Maintainer: Rescribe <rescribe.dev@gmail.com>
 
 pkgname=rescribe
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 epoch=
 pkgdesc="code search engine cli"
@@ -27,13 +27,7 @@ noextract=()
 md5sums=("8c7735e688fdbacfd8e192a256f7ffad")
 validpgpkeys=()
 
-package() {
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  chmod +x rescribe
-  mv rescribe "$pkgdir/usr/bin"
-  mv nodegit.node "$pkgdir/usr/bin"
-
+completion() {
   start_completions_str="begin-rescribe-completions"
 
   default_shell=$(getent passwd $USER | sed 's:.*/::')
@@ -42,5 +36,17 @@ package() {
   if [ -f $shell_rc_file ] && ! grep -q "$start_completions_str" "$shell_rc_file"; then
     echo "adding completion"
     "$pkgdir/usr/bin/rescribe" completion >> ~/.bashrc
+  else
+    echo "no rc file found"
   fi
+}
+
+package() {
+  mkdir "$pkgdir/usr"
+  mkdir "$pkgdir/usr/bin"
+  chmod +x rescribe
+  mv rescribe "$pkgdir/usr/bin"
+  mv nodegit.node "$pkgdir/usr/bin"
+
+  completion
 }
