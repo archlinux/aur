@@ -1,6 +1,6 @@
 # Maintainer: Maciek Borzecki <maciek.borzecki@gmail.com>
 pkgname=fnotifystat
-pkgver=0.02.05
+pkgver=0.02.06
 pkgrel=1
 pkgdesc="file activity monitoring tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=()
 optdepends=('bash-completion: bash completion support')
 source=("https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/$pkgname-$pkgver.tar.gz")
-sha256sums=('293e12ffb7890bc8af8dce498b3742062be5b085c0a926aa3949ea300eee17ad')
+sha256sums=('3e5a2795da012940621e15543712f12c335aa688ec61f2153c18a38ce0c722d7')
 
 prepare() {
 	  cd "$pkgname-$pkgver"
