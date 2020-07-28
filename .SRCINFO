@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-latest-fr
 	pkgdesc = Official latest french tarball of Firefox Nightly. Reinstall package if firefox is outdated and the PKGBUILD's version is not updated yet
-	pkgver = 80.0a1.2020.07.27
+	pkgver = 80.0a1.2020.07.28
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
