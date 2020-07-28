@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libjpeg-xl-git
-pkgver=r6.g50bbf27
+pkgver=r14.g519b856
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -27,9 +27,8 @@ source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
         'git+https://github.com/meganz/mingw-std-threads.git'
-        '010-libjpeg-xl-git-remove-werror.patch'
-        '020-libjpeg-xl-git-fix-headers-install-path.patch'
-        '030-libjpeg-xl-git-fix-highway-build.patch')
+        '010-libjpeg-xl-git-fix-headers-install-path.patch'
+        '020-libjpeg-xl-git-fix-highway-build.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -39,9 +38,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1688c7e887a771801af60c915c793c285ee5318c15c76fd5ba06e2b0918adf47'
-            '86868318bd3252d689e51aecf1e2a480cf2e2ef3fb2c238171a6cb3a2cdf6506'
-            '322ea656cceda16567caff9093acbcd398f055878d47340a7695deac1ce6902b')
+            'f8d4950895f71b9709dd3b6399be6f87474051a7ac0addb608676e7ffe9f19da'
+            '27e9e0e9e1017c57b3da8602062cc578da8036737ab62b96ff511311b35212d6')
 
 prepare() {
     local _mingw_commit
@@ -58,9 +56,8 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
     git -C jpeg-xl config --local submodule.third_party/mingw-std-threads.url "${srcdir}/mingw-std-threads"
     git -C jpeg-xl submodule update
-    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-remove-werror.patch"
-    patch -d jpeg-xl -Np1 -i "${srcdir}/020-libjpeg-xl-git-fix-headers-install-path.patch"
-    patch -d jpeg-xl -Np1 -i "${srcdir}/030-libjpeg-xl-git-fix-highway-build.patch"
+    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-fix-headers-install-path.patch"
+    patch -d jpeg-xl -Np1 -i "${srcdir}/020-libjpeg-xl-git-fix-highway-build.patch"
 }
 
 pkgver() {
@@ -75,6 +72,7 @@ build() {
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='false' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
+        -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
         -Wno-dev
     make -C build
 }

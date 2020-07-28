@@ -1,6 +1,6 @@
 pkgbase = libjpeg-xl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = r6.g50bbf27
+	pkgver = r14.g519b856
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -36,9 +36,8 @@ pkgbase = libjpeg-xl-git
 	source = git+https://github.com/webmproject/sjpeg.git
 	source = git+https://skia.googlesource.com/skcms.git
 	source = git+https://github.com/meganz/mingw-std-threads.git
-	source = 010-libjpeg-xl-git-remove-werror.patch
-	source = 020-libjpeg-xl-git-fix-headers-install-path.patch
-	source = 030-libjpeg-xl-git-fix-highway-build.patch
+	source = 010-libjpeg-xl-git-fix-headers-install-path.patch
+	source = 020-libjpeg-xl-git-fix-highway-build.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -48,9 +47,8 @@ pkgbase = libjpeg-xl-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1688c7e887a771801af60c915c793c285ee5318c15c76fd5ba06e2b0918adf47
-	sha256sums = 86868318bd3252d689e51aecf1e2a480cf2e2ef3fb2c238171a6cb3a2cdf6506
-	sha256sums = 322ea656cceda16567caff9093acbcd398f055878d47340a7695deac1ce6902b
+	sha256sums = f8d4950895f71b9709dd3b6399be6f87474051a7ac0addb608676e7ffe9f19da
+	sha256sums = 27e9e0e9e1017c57b3da8602062cc578da8036737ab62b96ff511311b35212d6
 
 pkgname = libjpeg-xl-git
 
