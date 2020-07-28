@@ -12,30 +12,30 @@ pkgbase = neovim-coc-sources-git
 pkgname = neovim-coc-syntax-git
 	pkgdesc = Words from syntax list
 	depends = neovim-coc
-	provides = neovim-coc-
-	conflicts = neovim-coc-
+	provides = neovim-coc-syntax
+	conflicts = neovim-coc-syntax
 
 pkgname = neovim-coc-tag-git
 	pkgdesc = Words from tagfiles()
 	depends = neovim-coc
-	provides = neovim-coc-
-	conflicts = neovim-coc-
+	provides = neovim-coc-tag
+	conflicts = neovim-coc-tag
 
 pkgname = neovim-coc-dictionary-git
 	pkgdesc = Words from files in &dictionary
 	depends = neovim-coc
-	provides = neovim-coc-
-	conflicts = neovim-coc-
+	provides = neovim-coc-dictionary
+	conflicts = neovim-coc-dictionary
 
 pkgname = neovim-coc-word-git
 	pkgdesc = Words from google 10000 english repo
 	depends = neovim-coc
-	provides = neovim-coc-
-	conflicts = neovim-coc-
+	provides = neovim-coc-word
+	conflicts = neovim-coc-word
 
 pkgname = neovim-coc-emoji-git
 	pkgdesc = Emoji words for markdown
 	depends = neovim-coc
-	provides = neovim-coc-
-	conflicts = neovim-coc-
+	provides = neovim-coc-emoji
+	conflicts = neovim-coc-emoji
 

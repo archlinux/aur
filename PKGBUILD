@@ -21,61 +21,56 @@ pkgver() {
 }
 
 package_neovim-coc-syntax-git() {
-    _extname=syntax
     pkgdesc='Words from syntax list'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
-    provides=("neovim-coc-${_extname}")
-    conflicts=("neovim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/local/share/nvim/site/pack/coc/start/syntax"
+    provides=("neovim-coc-syntax")
+    conflicts=("neovim-coc-syntax")
+    cd "${srcdir}/coc-sources/packages/syntax"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_neovim-coc-tag-git() {
-    _extname=tag
     pkgdesc='Words from tagfiles()'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
-    provides=("neovim-coc-${_extname}")
-    conflicts=("neovim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/local/share/nvim/site/pack/coc/start/tag"
+    provides=("neovim-coc-tag")
+    conflicts=("neovim-coc-tag")
+    cd "${srcdir}/coc-sources/packages/tag"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_neovim-coc-dictionary-git() {
-    _extname=dictionary
     pkgdesc='Words from files in &dictionary'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
-    provides=("neovim-coc-${_extname}")
-    conflicts=("neovim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/local/share/nvim/site/pack/coc/start/dictionary"
+    provides=("neovim-coc-dictionary")
+    conflicts=("neovim-coc-dictionary")
+    cd "${srcdir}/coc-sources/packages/dictionary"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_neovim-coc-word-git() {
-    _extname=word
     pkgdesc='Words from google 10000 english repo'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
-    provides=("neovim-coc-${_extname}")
-    conflicts=("neovim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/local/share/nvim/site/pack/coc/start/word"
+    provides=("neovim-coc-word")
+    conflicts=("neovim-coc-word")
+    cd "${srcdir}/coc-sources/packages/word"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
 
 package_neovim-coc-emoji-git() {
-    _extname=emoji
     pkgdesc='Emoji words for markdown'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
-    provides=("neovim-coc-${_extname}")
-    conflicts=("neovim-coc-${_extname}")
-    cd "${srcdir}/coc-sources/packages/${_extname}"
+    _packdir="usr/local/share/nvim/site/pack/coc/start/emoji"
+    provides=("neovim-coc-emoji")
+    conflicts=("neovim-coc-emoji")
+    cd "${srcdir}/coc-sources/packages/emoji"
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
 }
