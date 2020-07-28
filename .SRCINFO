@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-dynadot
+	pkgdesc = A Terraform provider plugin to manage nameservers for domains registered with Dynadot.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/codewise/terraform-provider-dynadot
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	source = terraform-provider-dynadot-2.0.3.tar.gz::https://github.com/codewise/terraform-provider-dynadot/archive/2.0.3.tar.gz
+	sha512sums = d2f0b985cbed34311208b28509f119c05b11720f8a09cc773fbfd6056ad8e2f78a9d2d58c71e9cb065f3b41a5862b55cbc3d9d87f56009041640f6a9754575e7
+
+pkgname = terraform-provider-dynadot
+
