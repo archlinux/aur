@@ -4,7 +4,7 @@
 
 _pkgname=vifm
 pkgname=$_pkgname-git
-pkgver=0.10.beta.r2.g02710c4cc
+pkgver=0.10.1.r692.g65d63f0b5
 pkgrel=1
 pkgdesc="Ncurses based file manager with vi like keybindings"
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ build() {
     cd "${srcdir}"/$_pkgname
     ./configure --prefix=/usr \
                 --without-gtk \
+                --sysconfdir=/etc \
                 --without-X11
     make
 }
