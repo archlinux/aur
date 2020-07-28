@@ -1,4 +1,4 @@
-# Maintainer: Alex Xu <alex_y_xu@yahoo.ca>
+# Contributor: Alex Xu <alex_y_xu@yahoo.ca>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
