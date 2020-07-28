@@ -12,6 +12,7 @@ arch=("i686" "x86_64")
 url="https://gitlab.com/Sonnix1/Qqsp"
 license=('MIT')
 depends=("qsp-common" "qt5-webengine" "qt5-multimedia")
+makedepends=('git')
 
 source=(
 	"${_pkgname}::git+https://gitlab.com/Sonnix1/Qqsp.git#tag=v$pkgver"
