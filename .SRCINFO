@@ -1,13 +1,13 @@
 pkgbase = vertx
 	pkgdesc = Effortless asynchronous application development for the modern web and enterprise
-	pkgver = 3.9.1
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = http://vertx.io
 	arch = any
 	license = APACHE
 	depends = java-environment>=7
-	source = https://bintray.com/artifact/download/vertx/downloads/vert.x-3.9.1-full.tar.gz
-	sha256sums = f0671566e3dc505282deee0aca2141583e45bd577e4d55ac7e961ad041be6472
+	source = https://bintray.com/artifact/download/vertx/downloads/vert.x-3.9.2-full.tar.gz
+	sha256sums = a51ae1ad9602aa99cebe7dd9dd75fe27b985eee5565b31ab9848193fd1a76f07
 
 pkgname = vertx
 
