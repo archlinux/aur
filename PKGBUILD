@@ -1,7 +1,7 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
 pkgname=vim-language-server
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Vim language server"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Custom)
 depends=(nodejs)
 makedepends=(yarn)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(b434b0a10cd22f1cb05ecc9d7b8b43ef0ed6bbcc9d124a425734269985c1037d)
+sha256sums=(1d295314629309aea9a2af8fe59be8ed49bca4c31f5f8ac5a75767c5ec84b446)
 
 build() {
     cd $pkgname-$pkgver
