@@ -17,6 +17,7 @@ pkgbase = tuner-git
 	depends = libsoup
 	depends = json-glib
 	provides = tuner
+	provides = tuner-git
 	conflicts = tuner
 	source = git+https://github.com/louis77/tuner.git
 	md5sums = SKIP
