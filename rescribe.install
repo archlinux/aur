@@ -1,12 +1,3 @@
 post_install() {
-  echo "asdf123"
-  echo "asdf12312 132 132 312" >> ~/.bashrc
-  start_completions_str="begin-rescribe-completions"
-
-  default_shell=$(getent passwd $USER | sed 's:.*/::')
-  shell_rc_file=~/."$default_shell""rc"
-
-  if [ -f $shell_rc_file ] && ! grep -q "$start_completions_str" "$shell_rc_file"; then
-    rescribe completion >> ~/.bashrc
-  fi
+  # user is root
 }
