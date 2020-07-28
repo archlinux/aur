@@ -17,7 +17,6 @@ prepare() {
 }
 
 build() {
-  # illegal packaging technique: pulling commit hash from archive
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
