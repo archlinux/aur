@@ -1,6 +1,6 @@
 # Maintainer: Arch-Jason <arch-jason@outlook.com>
 pkgname=zff
-pkgver=5.5.4
+pkgver=5.5.5
 pkgrel=1
 pkgdesc="A simple game"
 arch=(x86_64)
