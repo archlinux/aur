@@ -1,15 +1,15 @@
-# Maintainer: cylgom <cylgom@gmail.com>
+# Maintainer: nullgemm <nullgemm@mailbox.org>
 pkgname=excalibar-git
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="sharp and shiny taskbar"
 arch=('i686' 'x86_64')
-url="https://github.com/cylgom/excalibar"
+url="https://github.com/nullgemm/excalibar"
 license=('custom:WTFPL')
 makedepends=('git')
 depends=('libexcalibar-git' 'ttf-material-design-icons' 'libxcb' 'cairo' 'pango' 'libmpdclient')
-source=('git+https://github.com/cylgom/excalibar.git'
-	'git+https://github.com/benhoyt/inih.git')
+source=("git+https://github.com/nullgemm/excalibar.git"
+		"git+https://github.com/benhoyt/inih.git")
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
