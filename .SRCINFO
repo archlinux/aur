@@ -1,9 +1,11 @@
 pkgbase = zeal
 	pkgdesc = An offline API documentation browser
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zealdocs.org/
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	makedepends = cmake
 	makedepends = ninja

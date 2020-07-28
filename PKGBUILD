@@ -5,9 +5,9 @@
 
 pkgname=zeal
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An offline API documentation browser'
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url='https://zealdocs.org/'
 license=(GPL3)
 depends=(qt5-webkit hicolor-icon-theme libarchive qt5-x11extras)
