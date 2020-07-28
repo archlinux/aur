@@ -1,21 +1,15 @@
 pkgbase = pacgui
 	pkgdesc = System updates with a simple pacman GUI, based on Zenity
-	pkgver = 0.8
-	pkgrel = 4
+	pkgver = 8.d511efa
+	pkgrel = 1
 	url = https://gitlab.com/it-me/pacgui
 	install = pacgui.install
 	arch = any
 	license = GPLv3
 	depends = zenity
 	depends = pacman-contrib
-	source = pacgui.sh
-	source = pacgui.desktop
-	source = pacgui.service
-	source = pacgui.timer
-	sha256sums = 231e45317e28ff5b0cde13e4936e912f0e3620ea522b185dd0c734a468e8f6be
-	sha256sums = 18bb664c2365cd9335672e8bcadf89a12a6a017941e6fd133259c52b5dbf05db
-	sha256sums = 958385268a24ae5dee8d8e963efa0ecb9f55d4e36bb30f1c5a66bd97e24d33df
-	sha256sums = 893b87984d9ae8ab9409d1800f8e75fc70ebd869d1a26b37e05598d310065023
+	source = git+https://gitlab.com/it-me/pacgui
+	sha256sums = SKIP
 
 pkgname = pacgui
 
