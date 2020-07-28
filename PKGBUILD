@@ -14,7 +14,7 @@ replaces=('pcloud-git' 'pcloud')
 _api_url='https://api.pcloud.com/getpublinkdownload?code='
 _api_code='XZM0dakZjHLyhvrBu0BXRSmnTXNHbSbiodj7'
 source=('LICENSE'
-        "${pkgname}-${pkgver}-${pkgrel}::https://$(curl "${_api_url}${_api_code}" 2> /dev/null | jq -r '.hosts[0] + .path')"
+        "${pkgname}-${pkgver}-${pkgrel}::https://$(curl "${_api_url}${_api_code}" 2> /dev/null | jq -r '.hosts[] + .path' | sort -r | head -n1 )"
 )
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 sha256sums=('d512ec90082d82ef0e1fe5d7b14d63ae835f955d3119436d5c08761ff4e3366a'
