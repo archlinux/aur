@@ -10,6 +10,7 @@ pkgbase = vim-coc-git-git
 	makedepends = yarn
 	makedepends = npm
 	depends = vim-coc
+	depends = git
 	provides = vim-coc-git-git
 	conflicts = vim-coc-git-git
 	source = coc-git::git+https://github.com/neoclide/coc-git.git
