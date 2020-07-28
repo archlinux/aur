@@ -1,7 +1,7 @@
 pkgbase = rsflex
 	pkgdesc = A super fast system information displayer written in Rust
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/curlpipe/rsflex
 	arch = x86_64
 	license = MPL-2.0
