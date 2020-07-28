@@ -1,6 +1,6 @@
 pkgbase = jellyfin-server-bin
 	pkgdesc = The Free Software Media System - server package
-	pkgver = 10.6.0_2
+	pkgver = 10.6.1_1
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = jellyfin-server-bin
 	sha256sums = 0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2
 	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a
-	source_x86_64 = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.0/jellyfin-server_10.6.0-2_amd64.deb
-	sha256sums_x86_64 = abfaefb526daacf1a14e930abf41a33afed05212adadc18b5262589cf7505986
-	source_aarch64 = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.0/jellyfin-server_10.6.0-2_arm64.deb
-	sha256sums_aarch64 = 23ffbb221eeba390c8889a9f70130296a535b7b8889d3ec5b14c8802a6b7df8f
-	source_armv7h = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.0/jellyfin-server_10.6.0-2_armhf.deb
-	sha256sums_armv7h = 23503c3debf45e36c3800d06f9522e57801c58ab947529a8f25606c53038456a
+	source_x86_64 = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.1/jellyfin-server_10.6.1-1_amd64.deb
+	sha256sums_x86_64 = a823a682a9d81a82c0608bc51d8cb771ef690e4033afd1a592237720492255a4
+	source_aarch64 = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.1/jellyfin-server_10.6.1-1_arm64.deb
+	sha256sums_aarch64 = f7a8ccf33cc3a0e925e0f5f356efb85f5613625fe36f4a9227ecd08432a0e9cc
+	source_armv7h = https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.6.1/jellyfin-server_10.6.1-1_armhf.deb
+	sha256sums_armv7h = 3aedba5cd37fffe2ca90d8dfe72e576347444d1bdd4164cc97fff0ee278af571
 
 pkgname = jellyfin-server-bin
 
