@@ -1,0 +1,16 @@
+pkgbase = vim-selenized-git
+	pkgdesc = Solarized redesigned: fine-tuned color palette for programmers with focus on readability.
+	pkgver = v1.0.r13.ge93e0d9
+	pkgrel = 1
+	url = https://github.com/jan-warchol/selenized
+	arch = any
+	license = 
+	makedepends = git
+	depends = vim
+	provides = vim-selenized
+	conflicts = vim-selenized
+	source = vim-selenized::git+https://github.com/jan-warchol/selenized.git
+	sha256sums = SKIP
+
+pkgname = vim-selenized-git
+
