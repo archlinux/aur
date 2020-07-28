@@ -1,13 +1,15 @@
-# Maintainer: Giusy Margarita <kurmikon at libero dot it>
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 _relver=1.2
 
+_gitname=korla
+_author=bikass
 pkgname=korla-icon-theme-git
-pkgver=$_relver
+pkgver=r518.03e1cb4
 pkgrel=1
-pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support, git version)"
+pkgdesc="Korla icon theme is a mix of the following icon sets: Korla and Papirus"
 arch=("any")
-url="https://github.com/bikass/korla"
+url="https://github.com/${_author}/${_gitname}"
 license=("GPL3")
 depends=("gtk-update-icon-cache")
 optdepends=(
@@ -25,11 +27,12 @@ _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
 _iconnewcachescript=create-new-icon-theme.cache.sh
 
-pkgver() {
-    cd "$srcdir/korla"
-    
-    # Git, no tags available
-    printf "$_relver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver(){
+    cd "${_gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 package() {
