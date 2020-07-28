@@ -1,0 +1,19 @@
+pkgbase = neovim-coc-snippets-git
+	pkgdesc = Snippets solution for coc.nvim
+	pkgver = 2.1.28.r0.ga36f36a
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-snippets
+	arch = any
+	groups = neovim-coc-extras-git
+	license = 
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	provides = neovim-coc-snippets
+	conflicts = neovim-coc-snippets
+	source = coc-snippets::git+https://github.com/neoclide/coc-snippets.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-snippets-git
+
