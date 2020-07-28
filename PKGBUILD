@@ -1,41 +1,53 @@
-pkgdesc="C++ library for Franka Emika research robots "
+pkgdesc="ROS - libfranka is a C++ library for Franka Emika research robots "
 url="http://wiki.ros.org/libfranka"
 
 pkgname='ros-noetic-libfranka'
-pkgver='0.7.1'
+pkgver='0.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
-license=('Apache')
+license=('Apache 2.0')
 
-ros_makedepends=(ros-noetic-roscpp ros-noetic-catkin)
-makedepends=('cmake' 'ros-build-tools' ${ros_makedepends[@]})
+ros_makedepends=(
+)
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+    poco
+)
 
-ros_depends=()
-depends=('eigen' 'poco' ${ros_depends[@]})
+ros_depends=(
+    ros-noetic-catkin
+)
+depends=(
+    ${ros_depends[@]}
+    poco
+    eigen
+)
 
 _dir="libfranka-release-upstream-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/libfranka-release/archive/upstream/$pkgver.tar.gz")
-sha256sums=("4e552542954f43b03d68e4c8f2b21f221ac563b40ad9d7e63dd9938a17db0ab7")
+sha256sums=('8cd70e0e468b5ee7023122b217cfe3358faddee0ba6c1d560b0dc23925be6839')
 
 build() {
-	# Use ROS environment variables
-  	source /usr/share/ros-build-tools/clear-ros-env.sh
-  	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
+    # Use ROS environment variables
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-	# Create build directory
-  	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  	cd ${srcdir}/build
+    # Create build directory
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-	# Build project
-	cmake ${srcdir}/${_dir} \
-	      -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-	      -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-	      -DPYTHON_EXECUTABLE=/usr/bin/python \
-	      -DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+    # Build project
+    cmake ${srcdir}/${_dir} \
+          -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+          -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+          -DPYTHON_EXECUTABLE=/usr/bin/python \
+          -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
