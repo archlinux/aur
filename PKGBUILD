@@ -10,7 +10,8 @@ url="https://github.com/tencentyun/cos-python-sdk-v5"
 license=('MIT')
 depends=('python-requests'
          'python-six'
-         'python-dicttoxml')
+         'python-dicttoxml'
+         'python-setuptools')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}-git")
 source=("https://github.com/tencentyun/${_pkgname}/archive/V${pkgver}.tar.gz")

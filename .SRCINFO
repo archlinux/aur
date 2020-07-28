@@ -8,6 +8,7 @@ pkgbase = python-cos-python-sdk-v5
 	depends = python-requests
 	depends = python-six
 	depends = python-dicttoxml
+	depends = python-setuptools
 	provides = python-cos-python-sdk-v5-git
 	conflicts = python-cos-python-sdk-v5-git
 	source = https://github.com/tencentyun/cos-python-sdk-v5/archive/V1.8.1.tar.gz
