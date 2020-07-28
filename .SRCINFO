@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-ck
-	pkgver = 5.7.7
+	pkgver = 5.7.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,13 +8,11 @@ pkgbase = linux-bcachefs-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.7.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.7.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.10.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-	source = 0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch
@@ -22,36 +20,20 @@ pkgbase = linux-bcachefs-ck
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch
-	source = https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 11c4b191621d4ad02f56b0cca2fc6b57
+	md5sums = 95c1040a9b8b7c08b5bd607981e0427d
 	md5sums = SKIP
 	md5sums = dd2441189c14b66f1f051121d5602345
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
 	md5sums = cb960fcd1691d360491ed5c97a63a032
-	md5sums = 6a96f2990de31babd87209316fcc8c19
-	md5sums = ec22107609653d065a65077d4e076a16
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = b69a31e8099f3337fe3968864e404108
+	md5sums = a22cddcadc0da933dac13a6ab49b7ed9
 	md5sums = aa8f5bb0b644cbef02c4d55c3956026a
 	md5sums = 75602fa70033aef9cb42f3df16ec2eb3
 	md5sums = 168a924c7c83ecdc872a9a1c6d1c8bdb
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
 	md5sums = 0633bf8f7561c6903b445ff476815dc0
-	md5sums = f6b397e82f0433178e8e4a9c45a20e62
-	md5sums = a6106ab8f5e3a275d911daa7f439e576
-	md5sums = 7e050ca812e2bc0a1a2d108c3a14bc98
-	md5sums = 0c8cc772b48fcd317b62af52a99822a6
-	md5sums = 83b1f3f9cdedb189310f8e4228cdc2c0
-	md5sums = 5d7807c86a391e393e813638333c0d3b
-	md5sums = 2710fa5003f9babdea3815bf17bcba2d
 
 pkgname = linux-bcachefs-ck
 	pkgdesc = The Linux-bcachefs-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -60,11 +42,11 @@ pkgname = linux-bcachefs-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-ck=5.7.7
+	provides = linux-bcachefs-ck=5.7.10
 
 pkgname = linux-bcachefs-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-bcachefs-ck kernel
 	depends = linux-bcachefs-ck
-	provides = linux-bcachefs-ck-headers=5.7.7
-	provides = linux-headers=5.7.7
+	provides = linux-bcachefs-ck-headers=5.7.10
+	provides = linux-headers=5.7.10
 

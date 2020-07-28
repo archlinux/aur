@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.7.7
-_pkgverpntrel=7
+pkgver=5.7.10
+_pkgverpntrel=10
 pkgrel=1
 _ckpatchversion=1
 _cpusched="MuQSS"
@@ -89,8 +89,6 @@ source=(
   config
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch"
@@ -98,13 +96,6 @@ source=(
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
-  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
 )
 
 
@@ -112,27 +103,18 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('11c4b191621d4ad02f56b0cca2fc6b57'
+md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
          'SKIP'
          'dd2441189c14b66f1f051121d5602345'
          '2cebdad39da582fd6a0c01746c8adb42'
          'cb960fcd1691d360491ed5c97a63a032'
-         '6a96f2990de31babd87209316fcc8c19'
-         'ec22107609653d065a65077d4e076a16'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         'b69a31e8099f3337fe3968864e404108'
+         'a22cddcadc0da933dac13a6ab49b7ed9'
          'aa8f5bb0b644cbef02c4d55c3956026a'
          '75602fa70033aef9cb42f3df16ec2eb3'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         '0633bf8f7561c6903b445ff476815dc0'
-         'f6b397e82f0433178e8e4a9c45a20e62'
-         'a6106ab8f5e3a275d911daa7f439e576'
-         '7e050ca812e2bc0a1a2d108c3a14bc98'
-         '0c8cc772b48fcd317b62af52a99822a6'
-         '83b1f3f9cdedb189310f8e4228cdc2c0'
-         '5d7807c86a391e393e813638333c0d3b'
-         '2710fa5003f9babdea3815bf17bcba2d')
+         '0633bf8f7561c6903b445ff476815dc0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -175,10 +157,6 @@ prepare() {
   patch -Np1 -i ../0000-sphinx-workaround.patch
   
   patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  
-  patch -Np1 -i ../0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  
-  patch -Np1 -i ../0003-ALSA-usb-audio-Fix-packet-size-calculation.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
