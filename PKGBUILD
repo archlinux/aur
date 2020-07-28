@@ -40,7 +40,7 @@ package_mhwd-garuda-git() {
   depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'uvesafb-dkms' 'pacman')
   provides=("mhwd" "mhwd-garuda")
   conflicts=("mhwd" "mhwd-garuda")
-  replaces=("mhwd" "mhwd-garuda")
+  replaces=("mhwd-garuda")
   if [ "${CARCH}" = "x86_64" ]; then
      optdepends=('lib32-mesa: for 32bit libgl support')
   fi
