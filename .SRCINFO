@@ -1,17 +1,17 @@
 pkgbase = pivx
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://pivx.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://github.com/PIVX-Project/PIVX/archive/v4.1.1.tar.gz
-	sha256sums = 897561fce337638911c930d9eeecd3027ffa0e66a28d77a1369637793ceb9e5d
-	source_i686 = https://github.com/PIVX-Project/PIVX/releases/download/v4.1.1/pivx-4.1.1-i686-linux-gnu.tar.gz
-	sha256sums_i686 = 126561c55ffda28bbf1cd286cd4c6077003e8282185c1155772f97658544418b
-	source_x86_64 = https://github.com/PIVX-Project/PIVX/releases/download/v4.1.1/pivx-4.1.1-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = 212817914a6b2707f4562903e3f454b602d44f23363efbf3a1f3df8cdd2871df
+	source = https://github.com/PIVX-Project/PIVX/archive/v4.2.0.tar.gz
+	sha256sums = 688fb4477f4df3608ebc6551181d8b5d168c971f2ff81eddaef3fc997edc9340
+	source_i686 = https://github.com/PIVX-Project/PIVX/releases/download/v4.2.0/pivx-4.2.0-i686-linux-gnu.tar.gz
+	sha256sums_i686 = 4a5cc425b4f0b8cc6a405880bbbb006b84e257e6a84d9cd40dfa1afa53527c20
+	source_x86_64 = https://github.com/PIVX-Project/PIVX/releases/download/v4.2.0/pivx-4.2.0-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = cbb265aac191723c81293d117757a659ae869869d00ef56924185eee8a0edea3
 
 pkgname = pivx-daemon
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency (daemon)
