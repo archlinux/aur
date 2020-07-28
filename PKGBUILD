@@ -1,5 +1,5 @@
 pkgname=pidgin-birthday-reminder
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="Pidgin Birthday Reminder Plugin"
 url="https://github.com/kgraefe/pidgin-birthday-reminder"
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('glibc' 'pidgin')
 makedepends=('intltool')
 source=(https://github.com/kgraefe/pidgin-birthday-reminder/releases/download/v${pkgver}/pidgin-birthday-reminder-${pkgver}.tar.gz)
-sha256sums=('1a7e55e15400e1ad4d264d5416999c47a37b28e0f3f184fb353126458b9f4d65')
+sha256sums=('c9a7d7e24bae42d4ead1b096599e3a803cbf1091b0b782d12bcc297d9359f007')
 
 prepare() {
   cd ${srcdir}/pidgin-birthday-reminder-${pkgver}
