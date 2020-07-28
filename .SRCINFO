@@ -1,0 +1,26 @@
+pkgbase = veracrypt-git-no-gost
+	pkgdesc = Disk encryption with strong security based on TrueCrypt (No GOST)
+	pkgver = 20200725
+	pkgrel = 1
+	url = https://www.veracrypt.fr/
+	arch = i686
+	arch = x86_64
+	license = custom:TrueCrypt
+	makedepends = git
+	makedepends = yasm
+	depends = fuse2>=2.8.0
+	depends = wxgtk3>=3.0
+	depends = libsm
+	depends = device-mapper
+	optdepends = sudo: mounting encrypted volumes as nonroot users
+	provides = veracrypt
+	conflicts = veracrypt
+	source = veracrypt-git-no-gost::git+https://github.com/FollowMeDown/VeraCrypt.git
+	source = no-makeself.patch
+	source = veracrypt.desktop
+	sha512sums = SKIP
+	sha512sums = 40c269859bb97fbcceb443e5f457788bac650271ed118ec79d34f56fc340ad6e613114fe905ec5aba8c4d171c51c9a6865f97e9fa1ba01fa98ef18be4e97bbe1
+	sha512sums = f689ca64bac7042030de7714aed8cc89f2c5f87b407444b1b121491c1d89c147babaaa454ddc2a93b70ae20d4da59f96ad64f01b04bea9017d658c377faeb75d
+
+pkgname = veracrypt-git-no-gost
+
