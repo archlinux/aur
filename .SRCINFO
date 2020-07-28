@@ -1,0 +1,11 @@
+pkgbase = ttf-osaka-sans-serif
+	pkgdesc = A font designed to resemble modern varieties of katakana display fonts as seen on Japanese storefronts and the like.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vicfieger.com/~font/fauxf.html
+	arch = any
+	source = ttf-osaka-sans-serif.zip::https://dl.dafont.com/dl/?f=osaka_sans_serif
+	sha256sums = cdf0dd52a3bef30e3fd8e5383ae3ac23f18d3e78b74bb9f5ad99957f19940656
+
+pkgname = ttf-osaka-sans-serif
+
