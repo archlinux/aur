@@ -10,19 +10,31 @@ pkgbase = neovim-coc-sources-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-syntax-git
-	pkgdesc = Syntax words completion source for coc.nvim
+	pkgdesc = Words from syntax list
 	depends = neovim-coc
 	provides = neovim-coc-
 	conflicts = neovim-coc-
 
 pkgname = neovim-coc-tag-git
-	pkgdesc = tag source for coc.nvim
+	pkgdesc = Words from tagfiles()
 	depends = neovim-coc
 	provides = neovim-coc-
 	conflicts = neovim-coc-
 
 pkgname = neovim-coc-dictionary-git
-	pkgdesc = dictionary source for coc.nvim
+	pkgdesc = Words from files in &dictionary
+	depends = neovim-coc
+	provides = neovim-coc-
+	conflicts = neovim-coc-
+
+pkgname = neovim-coc-word-git
+	pkgdesc = Words from google 10000 english repo
+	depends = neovim-coc
+	provides = neovim-coc-
+	conflicts = neovim-coc-
+
+pkgname = neovim-coc-emoji-git
+	pkgdesc = Emoji words for markdown
 	depends = neovim-coc
 	provides = neovim-coc-
 	conflicts = neovim-coc-
