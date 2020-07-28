@@ -3,7 +3,7 @@
 _pkgbase=maubot
 pkgname=${_pkgbase}-git
 pkgver=r395.bc166e7
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
 conflicts=(maubot)
@@ -47,7 +47,7 @@ sha256sums=('SKIP'
             'f3849f10b32aea2819946524b423e55c392dd7efafe29f937b751f8e2a3056a3'
             'e2f01fd60338dd576bb72dee2f536210cb54540ace4a40aa94b5aebe6944ba0f'
             'b29dfcccd4012c117918e9210f01e7c28aa9b7e05c592811a71af0a4ba255770'
-            'c9a5e4b4cbe9ea6cc5957ab7352e247daefa53cb90d340083553ea7170f72ee4')
+            '70302db0b77abc8495213f3b9618f0d212001b1b53c3b256dbae389ede406b83')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"

@@ -1,13 +1,13 @@
 [Unit]
-Description=facebook Matrix Puppet
+Description=Plugin-based Matrix bot
 
 [Service]
 Type=simple
-User=mautrix-facebook
-Group=mautrix-facebook
-WorkingDirectory=/var/lib/mautrix-facebook/
-ExecStart=/usr/bin/mautrix-facebook -c /etc/synapse/mautrix-facebook/config.yaml \
-          -r /etc/synapse/mautrix-facebook/registration.yaml
+User=maubot
+Group=maubot
+WorkingDirectory=/var/lib/maubot/
+ExecStart=/usr/bin/maubot -c /etc/synapse/maubot/config.yaml \
+          -r /etc/synapse/maubot/registration.yaml
 Restart=always
 RestartSec=3
 

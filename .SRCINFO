@@ -1,7 +1,7 @@
 pkgbase = maubot-git
 	pkgdesc = A plugin-based Matrix bot system
 	pkgver = r395.bc166e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maubot/maubot
 	arch = any
 	license = AGPLv3
@@ -40,7 +40,7 @@ pkgbase = maubot-git
 	sha256sums = f3849f10b32aea2819946524b423e55c392dd7efafe29f937b751f8e2a3056a3
 	sha256sums = e2f01fd60338dd576bb72dee2f536210cb54540ace4a40aa94b5aebe6944ba0f
 	sha256sums = b29dfcccd4012c117918e9210f01e7c28aa9b7e05c592811a71af0a4ba255770
-	sha256sums = c9a5e4b4cbe9ea6cc5957ab7352e247daefa53cb90d340083553ea7170f72ee4
+	sha256sums = 70302db0b77abc8495213f3b9618f0d212001b1b53c3b256dbae389ede406b83
 
 pkgname = maubot-git
 
