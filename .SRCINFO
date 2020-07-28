@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-nexus
+	pkgdesc = Terraform provider to configure Sonatype Nexus using it's API.
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/datadrivers/terraform-provider-nexus
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	source = terraform-provider-nexus-1.9.1.tar.gz::https://github.com/datadrivers/terraform-provider-nexus/archive/v1.9.1.tar.gz
+	sha512sums = 5a2244118770896a28440cde6dba178cca75e35260ccdb7acc497fabe3b16a3bfd2d1d5bcef8d206d67a4e1316dfd6e07fd3f9761994cdf52c8dca5bb76305fa
+
+pkgname = terraform-provider-nexus
+
