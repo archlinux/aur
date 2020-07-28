@@ -1,7 +1,7 @@
 pkgbase = libgmpris
 	pkgdesc = GMPRIS GDBus bindings GDBus bindings generated from the GMPRIS XML spec files.
 	pkgver = 2.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.sonarnerd.net
 	arch = x86_64
 	arch = aarch64
