@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-force-torque-sensor-controller
+pkgbase = ros-noetic-force-torque-sensor-controller
 	pkgdesc = ROS - Controller to publish state of force-torque sensors.
 	pkgver = 0.17.0
 	pkgrel = 1
@@ -11,21 +11,15 @@ pkgbase = ros-melodic-force-torque-sensor-controller
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-geometry-msgs
-	makedepends = ros-melodic-hardware-interface
-	makedepends = ros-melodic-controller-interface
-	makedepends = ros-melodic-realtime-tools
-	makedepends = ros-melodic-pluginlib
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-hardware-interface
-	depends = ros-melodic-controller-interface
-	depends = ros-melodic-realtime-tools
-	depends = ros-melodic-pluginlib
-	source = ros-melodic-force-torque-sensor-controller-0.17.0-.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/force_torque_sensor_controller/0.17.0-.tar.gz
-	sha256sums = 0a2fdc3e336d232f22b3015d8eb29e92daeb43ecb54f7bb46d6c3761600334f1
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-controller-interface
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-hardware-interface
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-realtime-tools
+	depends = ros-noetic-roscpp
+	source = ros-noetic-force-torque-sensor-controller-0.17.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.0.tar.gz
+	sha256sums = d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8
 
-pkgname = ros-melodic-force-torque-sensor-controller
+pkgname = ros-noetic-force-torque-sensor-controller
 
