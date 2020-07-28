@@ -5,24 +5,28 @@ url='https://wiki.ros.org/realtime_tools'
 pkgname='ros-noetic-realtime-tools'
 pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
-  ros-noetic-catkin
-  ros-noetic-roscpp
-  ros-noetic-actionlib)
+    ros-noetic-catkin
+    ros-noetic-actionlib
+)
 makedepends=(
   cmake
   ros-build-tools
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+)
 
 ros_depends=(
-  ros-noetic-roscpp
-  ros-noetic-rosunit
-  ros-noetic-rostest
-  ros-noetic-actionlib)
-depends=(${ros_depends[@]})
+    ros-noetic-roscpp
+    ros-noetic-rosunit
+    ros-noetic-rostest
+    ros-noetic-actionlib
+)
+depends=(
+    ${ros_depends[@]}
+)
 
 _dir="${srcdir}/realtime_tools-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz")
