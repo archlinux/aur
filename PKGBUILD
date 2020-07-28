@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=85.0.4183.26
+pkgver=86.0.4209.2
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -29,7 +29,7 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-skia-harmony.patch)
-sha256sums=('ac8121bbcc76400d846a3a46fc20f684fd3134f8f387d6213c5b077ba848ec6e'
+sha256sums=('669fe050ce8e3a79d372a382931e62df9e3dfd932e80346c972d447de61b4dd0'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
