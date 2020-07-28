@@ -3,7 +3,7 @@
 # Maintainer: Rescribe <rescribe.dev@gmail.com>
 
 pkgname=rescribe
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 epoch=
 pkgdesc="code search engine cli"
