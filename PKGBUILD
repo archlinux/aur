@@ -3,7 +3,7 @@
 # Maintainer: Rescribe <rescribe.dev@gmail.com>
 
 pkgname=rescribe
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 epoch=
 pkgdesc="code search engine cli"
@@ -23,7 +23,7 @@ options=("!strip")
 install=
 changelog=
 source=("https://cli.rescribe.dev/linux.zip")
-noextract=("https://cli.rescribe.dev/linux.zip")
+noextract=()
 md5sums=("8c7735e688fdbacfd8e192a256f7ffad")
 validpgpkeys=()
 
@@ -43,7 +43,6 @@ check() {
 }
 
 package() {
-  unzip linux.zip
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
   cp rescribe "$pkgdir/usr/bin"
