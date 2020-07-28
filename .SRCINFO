@@ -1,8 +1,8 @@
 pkgbase = vmware-workstation-tech-preview
-	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
+	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC (Tech Preview).
 	pkgver = 16540321
 	pkgrel = 1
-	url = https://www.vmware.com/products/workstation-for-linux.html
+	url = https://blogs.vmware.com/workstation
 	install = vmware-workstation.install
 	arch = x86_64
 	license = custom
