@@ -40,14 +40,14 @@ prepare() {
 build() {
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
     export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath"
-	make
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath"
+    make
 
-	# Clean mod cache for makepkg -C
-	go clean -modcache
+    # Clean mod cache for makepkg -C
+    go clean -modcache
 
     cd "$srcdir/${pkgname%-git}/proto"
     make
