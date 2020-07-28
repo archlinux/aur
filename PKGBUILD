@@ -1,7 +1,7 @@
-# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
+# Maintainer: curlpipe <11898833+curlpipe@users.noreply.github.com>
 pkgname=rsflex
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A super fast system information displayer written in Rust"
 url="https://github.com/curlpipe/rsflex"
