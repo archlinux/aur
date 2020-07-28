@@ -4,8 +4,8 @@
 pkgbase=cryptodev-linux
 pkgname=(cryptodev-linux cryptodev-linux-dkms)
 pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace"
-pkgver=1.10
-pkgrel=6
+pkgver=1.11
+pkgrel=1
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,23 +14,10 @@ conflicts=('cryptodev_friendly')
 provides=('cryptodev_friendly')
 optdepends=('openssl-cryptodev: OpenSSL with cryptodev support')
 source=("https://github.com/${pkgbase}/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz"
-        "https://github.com/${pkgbase}/${pkgbase}/commit/f971e0cd4a0ebe59fb2e8e17240399bf6901b09b.patch"
-        "https://github.com/${pkgbase}/${pkgbase}/commit/98b163a23f6b9fbdc18c3644cf94a75cdcd0cc80.patch"
-        "https://github.com/${pkgbase}/${pkgbase}/pull/51.patch"
         "dkms.conf")
-sha256sums=('833ab7c5c88d2b700a7c702a151254c089a3058886a63cc7d12630e364b8ea83'
-            '66bb2786fcc5d05d5877280c797dee9a835a1ca87c5a78d400cd8310c738a4e6'
-            'a536b375e59cc39119082a0cb30e8463e3df5094028652a49640e7d1baebc92f'
-            '151e8e4f935c0aa1c7143450fd6d23605b10818741c756cb1b0a3b5257d357eb'
+sha256sums=('d71fd8dafc40147586f5bc6acca8fce5088d9c576d1142fe5aeb7b0813186a11'
             '4c762bbea27edeb283d44af37be2faf2df21312853b200e6b93319d563f51d86')
 install=${pkgbase}.install
-
-prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
-  patch -Np1 -i "${srcdir}/f971e0cd4a0ebe59fb2e8e17240399bf6901b09b.patch"
-  patch -Np1 -i "${srcdir}/98b163a23f6b9fbdc18c3644cf94a75cdcd0cc80.patch"
-  patch -Np1 -i "${srcdir}/51.patch"
-}
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
