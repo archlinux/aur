@@ -1,0 +1,28 @@
+pkgbase = xest-window-manager-git
+	pkgdesc = The zesty window manager
+	pkgver = r152.1ffb126
+	pkgrel = 1
+	url = https://github.com/jhgarner/Xest-Window-Manager
+	arch = x86_64
+	license = BSD3
+	makedepends = git
+	makedepends = stack
+	makedepends = gcc
+	makedepends = zlib
+	depends = sdl2_ttf
+	depends = libxss
+	depends = libxinerama
+	depends = libxrandr
+	depends = ttf-dejavu
+	optdepends = picom: A compositor
+	optdepends = polybar: System bar
+	optdepends = rofi: Program launcher
+	optdepends = dunst: Notifications
+	backup = etc/xest/config.dhall
+	backup = etc/xest/config.99.dhall
+	backup = etc/xest/startup.sh
+	source = git+https://github.com/jhgarner/Xest-Window-Manager
+	md5sums = SKIP
+
+pkgname = xest-window-manager-git
+
