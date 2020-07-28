@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
             'python-dm-tree: for ray[rllib] module'
             'python-gym: for ray[rllib] module'
             'python-lz4: for ray[rllib] module'
-            'python-opencv-python: for ray[rllib] module'
+            'opencv: for ray[rllib] module'
             'python-pyaml: for ray[rllib] module'
             'python-scipy: for ray[rllib] module'
             'python-msgpack: for ray[streaming] module'

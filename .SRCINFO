@@ -1,7 +1,7 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ray.io
 	arch = x86_64
 	license = Apache-2.0
@@ -38,7 +38,7 @@ pkgbase = python-ray
 	optdepends = python-dm-tree: for ray[rllib] module
 	optdepends = python-gym: for ray[rllib] module
 	optdepends = python-lz4: for ray[rllib] module
-	optdepends = python-opencv-python: for ray[rllib] module
+	optdepends = opencv: for ray[rllib] module
 	optdepends = python-pyaml: for ray[rllib] module
 	optdepends = python-scipy: for ray[rllib] module
 	optdepends = python-msgpack: for ray[streaming] module
