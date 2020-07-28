@@ -1,8 +1,8 @@
 pkgbase = deemix-pyweb-git
 	pkgdesc = This is a pywebview wrapper for deemix-webui
-	pkgver = r161.913d72b
+	pkgver = r234.2d94c24
 	pkgrel = 1
-	url = https://notabug.org/RemixDev/deemix-pyweb
+	url = https://codeberg.org/RemixDev/deemix-pyweb
 	arch = any
 	license = gpl3
 	makedepends = git
@@ -15,8 +15,8 @@ pkgbase = deemix-pyweb-git
 	depends = python-gobject
 	depends = python-cairo
 	provides = deemix-pyweb
-	source = deemix-pyweb::git+https://notabug.org/RemixDev/deemix-pyweb
-	source = deemix-webui::git+https://notabug.org/RemixDev/deemix-webui
+	source = deemix-pyweb::git+https://codeberg.org/RemixDev/deemix-pyweb
+	source = deemix-webui::git+https://codeberg.org/RemixDev/deemix-webui
 	md5sums = SKIP
 	md5sums = SKIP
 
