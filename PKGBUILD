@@ -20,27 +20,12 @@ conflicts=()
 replaces=()
 backup=()
 options=("!strip")
-install=
+install="hooks.install"
 changelog=
 source=("https://cli.rescribe.dev/linux.zip")
 noextract=()
 md5sums=("8c7735e688fdbacfd8e192a256f7ffad")
 validpgpkeys=()
-
-prepare() {
-	# do nothing
-  :
-}
-
-build() {
-	# do nothing
-  :
-}
-
-check() {
-	# do nothing
-  :
-}
 
 package() {
   mkdir "$pkgdir/usr"

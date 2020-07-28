@@ -3,6 +3,7 @@ pkgbase = rescribe
 	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://rescribe.dev
+	install = hooks.install
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
 	options = !strip
