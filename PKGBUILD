@@ -2,16 +2,17 @@
 # Contributor: willemw <willemw12@gmail.com>
 
 pkgname=castero
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="TUI podcast client for the terminal"
-arch=('any')
-url="https://github.com/xgi/castero"
+pkgdesc='TUI podcast client for the terminal'
+arch=('x86_64')
+url='https://github.com/xgi/castero'
 license=('MIT')
 depends=('python-beautifulsoup4' 'python-cjkwrap' 'python-grequests' 'python-lxml' 'python-mpv')
 makedepends=('python-setuptools')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('31b302c436fd732d0af3767ed55c0f7e7698a463da86eba333053c6bd59f51d1')
+optdepends=('python-vlc: vlc playback')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('7be704002399bd39e6188f8a478d0717d1a6c7fd48e29c0ff4aa3117ca9f8dc3')
 
 prepare() {
   # Use mpv by default; Remove python-vlc dependency
