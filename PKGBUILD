@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
 depends=('python-telegram' 'python3')
-makedepends=('python-dephell')
+makedepends=()
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'
@@ -17,12 +17,6 @@ optdepends=(
 conflicts=('telegram-tg-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=('a2a3bcba007c1a79585b62511ecfc318')
-
-prepare() {
-	cd "$_pkgname-$pkgver"
-
-	dephell deps convert --from pyproject.toml --to setup.py
-}
 
 build() {
 	cd "$_pkgname-$pkgver"

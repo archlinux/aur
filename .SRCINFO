@@ -5,7 +5,6 @@ pkgbase = telegram-tg
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
-	makedepends = python-dephell
 	depends = python-telegram
 	depends = python3
 	optdepends = libnotify: for notifications, you could also use other programs: see config
