@@ -6,7 +6,6 @@ pkgbase = vim-coc-git-git
 	arch = any
 	groups = vim-coc-extras-git
 	license = 
-	makedepends = git
 	makedepends = yarn
 	makedepends = npm
 	depends = vim-coc
