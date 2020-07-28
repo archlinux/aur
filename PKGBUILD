@@ -1,52 +1,52 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds."
 url='https://wiki.ros.org/sound_play'
 
 pkgname='ros-noetic-sound-play'
-pkgver='0.3.3'
-_pkgver_patch=0
+pkgver='0.3.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-noetic-actionlib-msgs
-  ros-noetic-roscpp
-  ros-noetic-audio-common-msgs
-  ros-noetic-roslib
-  ros-noetic-catkin
-  ros-noetic-diagnostic-msgs
-  ros-noetic-actionlib
-  ros-noetic-message-generation)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+    ros-noetic-roscpp
+    ros-noetic-roslib
+    ros-noetic-actionlib-msgs
+    ros-noetic-actionlib
+    ros-noetic-audio-common-msgs
+    ros-noetic-diagnostic-msgs
+    ros-noetic-message-generation
+)
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+    python-setuptools
+)
 
-ros_depends=(ros-noetic-actionlib-msgs
-  ros-noetic-message-runtime
-  ros-noetic-roscpp
-  ros-noetic-audio-common-msgs
-  ros-noetic-roslib
-  ros-noetic-diagnostic-msgs
-  ros-noetic-rospy)
-depends=(${ros_depends[@]}
-  festival
-  gstreamer
-  gst-plugins-ugly
-  gst-plugins-good
-  python2-gobject
-  festival-english
-  gst-plugins-base)
+ros_depends=(
+    ros-noetic-roscpp
+    ros-noetic-roslib
+    ros-noetic-actionlib-msgs
+    ros-noetic-audio-common-msgs
+    ros-noetic-diagnostic-msgs
+    ros-noetic-rospy
+    ros-noetic-message-runtime
+)
+depends=(
+    ${ros_depends[@]}
+    python-gobject
+    gstreamer
+    gst-plugins-base
+    gst-plugins-ugly
+    gst-plugins-good
+    festival
+    festival-english
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/sound_play/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/audio_common-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="audio_common-${pkgver}/sound_play"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('9121ce7ea80945a9efb46d89bd33a454877344aa1b4f405f944943a62e1e4bab')
+sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
 
 build() {
   # Use ROS environment variables
@@ -61,7 +61,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
