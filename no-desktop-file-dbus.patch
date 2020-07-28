@@ -1,0 +1,11 @@
+--- opt/f5/vpn/com.f5.f5vpn.desktop	2020-02-21 20:38:36.000000000 -0700
++++ opt/f5/vpn/com.f5.f5vpn-no-dbus.desktop	2020-07-28 02:02:12.005188328 -0600
+@@ -6,7 +6,7 @@
+ Name=F5 VPN
+ Icon=f5vpn
+ Exec=/opt/f5/vpn/f5vpn %u
+-DBusActivatable=true
++DBusActivatable=false
+ Categories=Network;
+ MimeType=x-scheme-handler/f5-vpn;
+ NoDisplay=false
