@@ -1,0 +1,25 @@
+pkgbase = ros-noetic-rqt-joint-trajectory-controller
+	pkgdesc = ROS - Graphical frontend for interacting with joint_trajectory_controller instances.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://wiki.ros.org/rqt_joint_trajectory_controller
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-control-msgs
+	depends = ros-noetic-controller-manager-msgs
+	depends = ros-noetic-trajectory-msgs
+	depends = ros-noetic-rospy
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rqt-gui-py
+	source = ros-noetic-rqt-joint-trajectory-controller-0.17.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.0.tar.gz
+	sha256sums = d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8
+
+pkgname = ros-noetic-rqt-joint-trajectory-controller
+
