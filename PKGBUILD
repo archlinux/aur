@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=picgo
 _name=PicGo
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ conflicts=('picgo-appimage')
 source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/Molunerfinn/PicGo/archive/v$pkgver.tar.gz"
 )
-sha256sums=('8ab151bdd3a9c80af4523984872317e7ef755a3e20a6fec18d3f9d1888d4ae9e')
+sha256sums=('19d140f45bc788b2782408f7dd8cde17106eabd2f27b7905bb035610f826bad7')
 
 prepare() {
 	cd "$_name-$pkgver"
