@@ -2,10 +2,10 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tracks
-pkgver=20.0413
-pkgrel=2
+pkgver=20.0623
+pkgrel=1
 pkgdesc="Additional RVGL tracks used for official events."
-url='https://rvgl.re-volt.io'
+url='https://re-volt.io/online/tracks'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
@@ -20,9 +20,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_tracks"
-
-    # Remove conflicting file present in rvgl-tracks-bonus
-    rm gfx/playoutside.bmp
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
