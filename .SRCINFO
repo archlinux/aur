@@ -1,0 +1,19 @@
+pkgbase = deepin-kcm-integration-git
+	pkgver = r2.82617c8
+	pkgrel = 1
+	url = https://github.com/librewish/deepin-kcm-integration
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/librewish/deepin-kcm-integration.git#branch=master
+	sha256sums = SKIP
+
+pkgname = deepin-kcm-integration-git
+	pkgdesc = kcm support for deepin
+	depends = kde-cli-tools
+	depends = kwin
+	depends = plasma-workspace
+	optdepends = kdeconnect: kdeconnect kcm support
+	optdepends = plasma-thunderbolt: thunderbolt kcm support
+	provides = deepin-kcm-integration
+
