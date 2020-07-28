@@ -2,17 +2,17 @@
 
 pkgname="deemix-git"
 _pkgname="deemix"
-pkgver=r300.2cce36f
+pkgver=r342.0ad552e
 pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
-url="https://notabug.org/RemixDev/$_pkgname"
+url="https://codeberg.org/RemixDev/$_pkgname"
 license=('gpl3')
 depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy')
 conflicts=('deemix')
 makedepends=('git')
 provides=('deemix')
-source=("${_pkgname}::git+https://notabug.org/RemixDev/$_pkgname")
+source=("${_pkgname}::git+https://codeberg.org/RemixDev/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,6 @@ build() {
 
 package() {
 	cd ${srcdir}/${_pkgname}
-    
+
 	python setup.py install --root="${pkgdir}" --optimize=1
 }
- 
