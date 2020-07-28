@@ -1,0 +1,14 @@
+pkgbase = kewl
+	pkgdesc = A super kewl C++ IRC
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/patztablook22/kewl
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = glibc
+	depends = ncurses
+	depends = openssl
+
+pkgname = kewl
+
