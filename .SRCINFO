@@ -1,0 +1,19 @@
+pkgbase = neovim-coc-highlight-git
+	pkgdesc = Document highlight and document colors LSP support for coc.nvim
+	pkgver = 1.2.5.r2.gb4e82eb
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-highlight
+	arch = any
+	groups = neovim-coc-extras-git
+	license = 
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	provides = neovim-coc-highlight
+	conflicts = neovim-coc-highlight
+	source = coc-highlight::git+https://github.com/neoclide/coc-highlight.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-highlight-git
+
