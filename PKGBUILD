@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
-pkgver=3.21.1
+pkgver=3.21.2
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -23,10 +23,9 @@ optdepends=('doxygen: generate documentation'
             'python: python API module'
             'swig: build interface to APIs')
 makedepends=('cmake')
-provides=('openvsp')
 _name=OpenVSP-OpenVSP_${pkgver}
-source=("https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('3065e4cd32d4f2f0c7bee40cd9866ee68cd60ae1f64d39ee754902399b340b6e')
+source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
+sha256sums=('8abda9fe84dd9414e43bd781625e66e64c729ccd096cf187e0fbfe28ae59c880')
 
 prepare() {
 
@@ -35,18 +34,13 @@ prepare() {
 
 }
 
-_buildtype="Release"
-
 build() {
 
   # Create a build directory
   mkdir -p "${srcdir}/${_name}/SuperProject/build"
   cd "${srcdir}/${_name}/SuperProject/build"
 
-  msg "Starting CMake (build type: ${_buildtype})"
-
   cmake .. \
-        -DCMAKE_BUILD_TYPE=${_buildtype} \
         -DCMAKE_PREFIX_PATH='/usr' \
         -DVSP_USE_SYSTEM_CPPTEST=true \
         -DVSP_USE_SYSTEM_LIBXML2=true \
@@ -57,7 +51,6 @@ build() {
         -DVSP_USE_SYSTEM_GLEW=true \
         -DVSP_USE_SYSTEM_CMINPACK=true
 
-  msg "Building the project"
   make || return 0
 }
 
