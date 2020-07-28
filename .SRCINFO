@@ -1,9 +1,12 @@
 pkgbase = sm64ex-redrawn-git
 	pkgdesc = Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack
 	pkgver = r504.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sm64pc/sm64ex
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = reverse-engineered and unlicensed
 	depends = python
 	depends = audiofile
