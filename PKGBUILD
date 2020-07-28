@@ -3,7 +3,7 @@
 # Maintainer: Rescribe <rescribe.dev@gmail.com>
 
 pkgname=rescribe
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 epoch=
 pkgdesc="code search engine cli"
@@ -41,6 +41,6 @@ package() {
 
   if [ -f $shell_rc_file ] && ! grep -q "$start_completions_str" "$shell_rc_file"; then
     echo "adding completion"
-    .$pkgdir/usr/bin/rescribe completion >> ~/.bashrc
+    "$pkgdir/usr/bin/rescribe" completion >> ~/.bashrc
   fi
 }
