@@ -43,9 +43,8 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
-	cp rescribe "$pkgdir/usr/bin"
+  cp rescribe "$pkgdir/usr/bin"
   cp nodegit.node "$pkgdir/usr/bin"
 }
