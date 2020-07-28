@@ -1,7 +1,7 @@
 pkgbase = virtiofsd
 	pkgdesc = QEMU VirtioFSd
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://virtio-fs.gitlab.io/
 	arch = i686
 	arch = x86_64

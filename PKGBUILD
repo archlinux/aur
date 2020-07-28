@@ -7,7 +7,7 @@
 pkgname=virtiofsd
 pkgdesc="QEMU VirtioFSd"
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="https://virtio-fs.gitlab.io/"
@@ -107,7 +107,7 @@ build() (
     --enable-cap-ng \
     --enable-malloc-trim \
     --target-list=x86_64-softmmu \
-    --extra-cflags=" -O3 -falign-functions=32 -D_FORTIFY_SOURCE=2 -fPIE" \
+    --extra-cflags=" -O3 -falign-functions=32 -D_FORTIFY_SOURCE=2 -fPIE -Wno-error=maybe-uninitialized" \
     --extra-ldflags=" -pie -z noexecstack -z relro -z now" \
     --with-pkgversion=virtiofs-v0.3 \
     --python=/usr/bin/python2
