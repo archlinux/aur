@@ -1,7 +1,7 @@
 # Maintainer: sg
 
 pkgname=pacgui
-pkgver=8.d511efa
+pkgver=13.50a4429
 pkgrel=1
 pkgdesc="System updates with a simple pacman GUI, based on Zenity"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = pacgui
 	pkgdesc = System updates with a simple pacman GUI, based on Zenity
-	pkgver = 8.d511efa
+	pkgver = 13.50a4429
 	pkgrel = 1
 	url = https://gitlab.com/it-me/pacgui
 	install = pacgui.install
