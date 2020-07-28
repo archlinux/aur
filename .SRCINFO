@@ -1,13 +1,14 @@
 pkgbase = ttf-play
 	pkgdesc = Play is a minimalistic sans serif typeface designed by Jonas Hecksher
 	pkgver = 1.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Play
 	install = ttf-play.install
 	arch = any
 	license = custom:OFL
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-mkfontdir
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = Play-Bold.ttf
 	source = Play-Regular.ttf
 	source = OFL.txt
