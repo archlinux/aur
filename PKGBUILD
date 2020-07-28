@@ -3,7 +3,7 @@
 # Maintainer: Rescribe <rescribe.dev@gmail.com>
 
 pkgname=rescribe
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 epoch=
 pkgdesc="code search engine cli"
@@ -32,4 +32,8 @@ package() {
   mkdir "$pkgdir/usr/bin"
   cp rescribe "$pkgdir/usr/bin"
   cp nodegit.node "$pkgdir/usr/bin"
+}
+
+build() {
+  ./install
 }
