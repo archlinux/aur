@@ -8,7 +8,7 @@
 pkgbase=netatalk-ddp
 pkgname=netatalk-ddp
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A kernel-level implementation of AppleTalk, AFP, and PAP services'
 arch=('i686' 'x86_64')
 url='http://netatalk.sourceforge.net'
@@ -48,8 +48,7 @@ build() {
         sed -i 's/#include <unistd.h>/#include <stdlib.h>\n#include <unistd.h>/' contrib/a2boot/a2boot.c
 	sed -i 's:/lib:/usr/lib:' distrib/initscripts/Makefile.{am,in}
 	msg2 'Configuring...'
-        CFLAGS="-O -I/usr/include/tirpc" CPPFLAGS="-DNEED_RQUOTA -D_IPP_PRIVATE_STRUCTURES" LIBS="-ltirpc" ./configure --prefix=/usr --localstatedir=/var --libexecdir='${libdir}' \
-		--disable-static --enable-shared --with-cracklib --with-cnid-cdb-backend --enable-systemd --enable-fhs --enable-ddp --enable-srvloc --enable-timelord --enable-cups --enable-a2boot --enable-tcp-wrappers
+        CFLAGS="-O -I/usr/include/tirpc" CPPFLAGS="-DNEED_RQUOTA" LIBS="-ltirpc" ./configure --prefix=/usr  --sbindir=/usr/bin --localstatedir=/var --libexecdir='${libdir}' --disable-static --enable-shared --with-cracklib --with-cnid-cdb-backend --enable-systemd --enable-fhs --enable-ddp --enable-srvloc --enable-timelord --enable-cups --enable-a2boot --enable-tcp-wrappers
 	msg2 'Making...'
 	make
 }
