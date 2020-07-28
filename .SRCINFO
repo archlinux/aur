@@ -1,0 +1,16 @@
+pkgbase = freemarker
+	pkgdesc = a generic tool to generate text output based on templates
+	pkgver = 2.3.30
+	pkgrel = 1
+	url = https://freemarker.apache.org/
+	arch = any
+	license = Apache
+	depends = java-runtime-headless
+	source = https://downloads.apache.org/freemarker/engine/2.3.30/binaries/apache-freemarker-2.3.30-bin.tar.gz
+	source = https://downloads.apache.org/freemarker/engine/2.3.30/binaries/apache-freemarker-2.3.30-bin.tar.gz.asc
+	validpgpkeys = 13AC2213964ABE1D1C147C0E1939A2520BAB1D90
+	sha256sums = affeb3a9a1b6a85861add091ccfff561329dccc74546843d12f3016daaf51faa
+	sha256sums = SKIP
+
+pkgname = freemarker
+
