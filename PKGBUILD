@@ -3,7 +3,7 @@
 # Author: Ondrej Čerman
 
 pkgname=zenmonitor
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Zen monitor is monitoring software for AMD Zen-based CPUs'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('zenpower' 'gtk3')
 conflicts=('zenmonitor')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ocerman/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3d481879d5a68018d8c6204923bd2b1ff2dc62d20d74159b97371acb272211b4')
+sha256sums=('dacf8f335104bc7f6df6cc330ac04d7f10d781e41e75517bea513b1c8b7bb8c1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

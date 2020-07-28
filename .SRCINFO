@@ -1,6 +1,6 @@
 pkgbase = zenmonitor
 	pkgdesc = Zen monitor is monitoring software for AMD Zen-based CPUs
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/ocerman/zenmonitor
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = zenmonitor
 	depends = zenpower
 	depends = gtk3
 	conflicts = zenmonitor
-	source = zenmonitor-1.4.1.tar.gz::https://github.com/ocerman/zenmonitor/archive/v1.4.1.tar.gz
-	sha256sums = 3d481879d5a68018d8c6204923bd2b1ff2dc62d20d74159b97371acb272211b4
+	source = zenmonitor-1.4.2.tar.gz::https://github.com/ocerman/zenmonitor/archive/v1.4.2.tar.gz
+	sha256sums = dacf8f335104bc7f6df6cc330ac04d7f10d781e41e75517bea513b1c8b7bb8c1
 
 pkgname = zenmonitor
 
