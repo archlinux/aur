@@ -9,18 +9,15 @@ url="http://gnaural.sourceforge.net/"
 license=('GPL')
 depends=('libglade' 'portaudio')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/Gnaural/${pkgname}_${pkgver}.tar.xz")
-md5sums=('a3f909ca56466393c9eef42f25fc028b')
+source=("http://downloads.sourceforge.net/project/$pkgname/Gnaural/${pkgname}_${pkgver}.tar.xz"
+        "gnaural.patch")
+md5sums=('a3f909ca56466393c9eef42f25fc028b'
+         '7b8a6f84ca8aeb01cf5b46e76027c1b5')
 
 build() {
   cd "$srcdir/${pkgname}_${pkgver}"
 
-  # Fix a bug where an inlined function isn't marked as extern. GCC seems to have tolerated rather long, but eventually broke.
-  sed -i 's/#endif/extern inline void BB_ResetAllVoices ();\n#endif/g' src/main.h src/gnauralXML.h
-  sed -i 's/^inline void BB_ResetAllVoices/void BB_ResetAllVoices/g' src/BinauralBeat.c
-      
-  # desktop file path fix
-  sed -i "s|gnome/apps/Multimedia|applications|g" Makefile.*
+  patch --strip=1 < "$srcdir/gnaural.patch"
 
   ./configure --prefix=/usr
   make

@@ -1,0 +1,76 @@
+diff --unified --recursive --text gnaural-origin/Makefile.am gnaural-fixed/Makefile.am
+--- gnaural-origin/Makefile.am	2010-06-28 21:10:36.000000000 +0200
++++ gnaural-fixed/Makefile.am	2020-07-28 17:05:39.277209185 +0200
+@@ -6,7 +6,7 @@
+ 	autogen.sh
+ 
+ #gnomemenudir = $(DESTDIR)$(datadir)$(packagemenudir)
+-#gnomemenudir = $(DESTDIR)$(datadir)/gnome/apps/Multimedia
++#gnomemenudir = $(DESTDIR)$(datadir)/applications
+ #gnomemenu_DATA = gnaural.desktop
+ 
+ #gnaural_glade_filedir = $(DESTDIR)$(pkgdatadir)
+@@ -22,8 +22,8 @@
+ 	    fi \
+ 	  done \
+ 	fi; \
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
+-	$(INSTALL_DATA) gnaural.desktop $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/applications; \
++	$(INSTALL_DATA) gnaural.desktop $(DESTDIR)$(datadir)/applications; \
+ 	$(INSTALL_DATA) src/gnaural.glade $(DESTDIR)$(pkgdatadir);
+ 
+ dist-hook:
+diff --unified --recursive --text gnaural-origin/Makefile.in gnaural-fixed/Makefile.in
+--- gnaural-origin/Makefile.in	2011-05-26 00:38:21.000000000 +0200
++++ gnaural-fixed/Makefile.in	2020-07-28 17:05:39.277209185 +0200
+@@ -733,7 +733,7 @@
+ 
+ 
+ #gnomemenudir = $(DESTDIR)$(datadir)$(packagemenudir)
+-#gnomemenudir = $(DESTDIR)$(datadir)/gnome/apps/Multimedia
++#gnomemenudir = $(DESTDIR)$(datadir)/applications
+ #gnomemenu_DATA = gnaural.desktop
+ 
+ #gnaural_glade_filedir = $(DESTDIR)$(pkgdatadir)
+@@ -749,8 +749,8 @@
+ 	    fi \
+ 	  done \
+ 	fi; \
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
+-	$(INSTALL_DATA) gnaural.desktop $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/applications; \
++	$(INSTALL_DATA) gnaural.desktop $(DESTDIR)$(datadir)/applications; \
+ 	$(INSTALL_DATA) src/gnaural.glade $(DESTDIR)$(pkgdatadir);
+ 
+ dist-hook:
+diff --unified --recursive --text gnaural-origin/src/BinauralBeat.c gnaural-fixed/src/BinauralBeat.c
+--- gnaural-origin/src/BinauralBeat.c	2018-06-21 15:53:48.000000000 +0200
++++ gnaural-fixed/src/BinauralBeat.c	2020-07-28 16:41:19.614014196 +0200
+@@ -898,7 +898,7 @@
+ 
+ //======================================
+ 
+-inline void BB_ResetAllVoices() {
++void BB_ResetAllVoices() {
+     if (BB_Voice != NULL) {
+         int i;
+ 
+diff --unified --recursive --text gnaural-origin/src/gnauralXML.h gnaural-fixed/src/gnauralXML.h
+--- gnaural-origin/src/gnauralXML.h	2011-03-22 21:46:21.000000000 +0100
++++ gnaural-fixed/src/gnauralXML.h	2020-07-28 16:41:12.537821077 +0200
+@@ -35,4 +35,5 @@
+ extern void gxml_XMLParser (const gchar * CurrentElement, const gchar * Attribute, const gchar * Value);        //internal use
+ extern int gxml_XMLEventDataParser (const gchar * DataType, const gchar * Value, const int internal_EntryCount);        //internal use
+ extern void gxml_XMLParser_counter (const gchar * CurrentElement, const gchar * Attribute, const gchar * Value);        //always must give valid strings. Also BEWARE: Attribute will equal NULL if there are none
++extern inline void BB_ResetAllVoices ();
+ #endif
+diff --unified --recursive --text gnaural-origin/src/main.h gnaural-fixed/src/main.h
+--- gnaural-origin/src/main.h	2011-02-22 17:22:53.000000000 +0100
++++ gnaural-fixed/src/main.h	2020-07-28 16:41:12.537821077 +0200
+@@ -199,4 +199,5 @@
+ extern double Stopwatch ();     //20101109
+ extern void main_PhaseInfoToggle (unsigned int ip, unsigned short port);
+ extern void main_DPPropertiesDialog ();
++extern inline void BB_ResetAllVoices ();
+ #endif
