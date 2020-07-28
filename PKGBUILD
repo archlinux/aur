@@ -1,9 +1,9 @@
 # Maintainer: QuantMint <qua/nt/mint/@/tuta/nota.de>
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=godot-beta-bin
-pkgver=3.2.3_rc1
+pkgver=3.2.3_rc2
 _v1=3.2.3
-_v2=rc1
+_v2=rc2
 pkgrel=1
 pkgdesc='The latest official beta release of the Godot game engine'
 url='https://godotengine.org'
@@ -14,8 +14,8 @@ source=("godot-beta.desktop")
 source_i686+=("https://downloads.tuxfamily.org/godotengine/$_v1/$_v2/Godot_v${_v1}-${_v2}_x11.32.zip")
 source_x86_64+=("https://downloads.tuxfamily.org/godotengine/$_v1/$_v2/Godot_v${_v1}-${_v2}_x11.64.zip")
 sha256sums=('53912a2e312559455045e8e83f6e239a2cbc6f891ebb393f441c772063bb9497')
-sha512sums_i686=('f16b2de5f669c188f25f1f351b9d7a8041564900eacde4e77673823717571cc6413c85e327161e12147549e156497b1073ea1237deb9a21dbb8dad7faa8baa98')
-sha512sums_x86_64=('c31f5f08693cdc13416e63538821b12bf8086093af1fcd9af99d453bc9a086449a238b173d0dda17e65a7da45d4449f0959c8c80bfc13ed74650da0e9caf1e57')
+sha512sums_i686=('e5d21be400cbc79dbc5f207f2cf1a9c4119583f02057d2164fb61aca233d9265a496e4050de7c96149af963bc2c39ea14bebde0bb1a6d49517416e1b355f14a3')
+sha512sums_x86_64=('a6b4590ad6337e7bb71d3b236c83d8e7c06af516535d0ad0f473a2f1a56151f80404847cd52bb1c29934cea9c3212dbb756aa6bd950b27ac5222dbd43ff3031b')
 
 package() {
   ver=${pkgver/_/-}
