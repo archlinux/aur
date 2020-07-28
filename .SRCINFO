@@ -23,6 +23,5 @@ pkgname = mhwd-db-garuda-git
 	provides = mhwd-db-garuda
 	conflicts = mhwd-db
 	conflicts = mhwd-db-garuda
-	replaces = mhwd-db
 	replaces = mhwd-db-garuda
 

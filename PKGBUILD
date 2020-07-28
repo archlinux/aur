@@ -37,7 +37,7 @@ package_mhwd-db-garuda-git() {
   arch=('any')
   depends=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
   depends_x86_64=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
-  replaces=("mhwd-db" "mhwd-db-garuda")
+  replaces=("mhwd-db-garuda")
   provides=("mhwd-db" "mhwd-db-garuda")
   conflicts=("mhwd-db" "mhwd-db-garuda")
   install=mhwd-db.install
