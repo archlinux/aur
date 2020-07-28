@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XMage
+Exec=/usr/bin/mage-client
+Type=Application
+Categories=Game
+StartupNotify=true
+Icon=icon-mage.png
+Terminal=false
+

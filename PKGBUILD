@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.44V0
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -13,9 +13,11 @@ license=('MIT')
 
 
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
-	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
+	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
+	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
 sha256sums=("23c631fc4db1158f406f7dee1bec9f6a624cc7314abac1e7942450becdf56cf0" 
+	"SKIP"
 	"SKIP")
 
 ###########################
@@ -88,5 +90,11 @@ fi
 	msg2 "installing mage-server systemd unit file to /usr/lib/systemd/system..."
 	mkdir -p "${pkgdir}"/usr/lib/systemd/system
 	install -m755 ../mage-server.service "${pkgdir}"/usr/lib/systemd/system
+	
+	msg2 "installing icon and .desktop file..."
+	mkdir -p "${pkgdir}"/usr/share/icons
+	install -m755 icon-mage.png "${pkgdir}"/usr/share/icons/
+	mkdir -p "${pkgdir}"/usr/share/applications
+	install -m755 xmage.desktop "${pkgdir}"/usr/share/applications/xmage.desktop
 }
 

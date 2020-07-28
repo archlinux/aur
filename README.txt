@@ -13,3 +13,5 @@ https://www.reddit.com/r/XMage/comments/9k2t9o/new_install_blank_screen_when_lau
 
 The package comes with a systemd unit file to load mage-server on boot. The service restarts if mage-server crashes or closes unexpectedly. 
 It is automatically installed to /usr/lib/systemd/system/mage-server.service
+
+The xmage.desktop file is installed to /usr/share/applications/xmage.desktop. This makes it visible in application menus. It can be installed to ~/Desktop if a desktop icon is desired. 
