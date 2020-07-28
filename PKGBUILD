@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 # Contributor: Dmitry <dmitry@ykkz.de>
 
-pkgname=(ttf-spectral otf-spectral ttf-spectralsc otf-spectralsc)
+pkgname=(otf-spectral ttf-spectralsc otf-spectralsc)
 pkgbase=spectral-font
 pkgver=2.003
 pkgrel=3
@@ -21,10 +21,10 @@ _package() {
 	install -Dm644 ofl.txt    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-package_ttf-spectral() {
-	conflicts=(otf-spectral)
-	_package desktop
-}
+# package_ttf-spectral() {
+# 	conflicts=(otf-spectral)
+# 	_package desktop
+# }
 
 package_otf-spectral() {
 	conflicts=(ttf-spectral)

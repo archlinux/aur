@@ -8,9 +8,6 @@ pkgbase = spectral-font
 	source = https://github.com/productiontype/Spectral/archive/748733e3761fc7985ca9c473996ed121954debf8/spectral-font-2.003.zip
 	sha256sums = 67cd3d1719b0650d8adac5115908882cc63f2ce964ff0fddbf6ec574b933b5b2
 
-pkgname = ttf-spectral
-	conflicts = otf-spectral
-
 pkgname = otf-spectral
 	conflicts = ttf-spectral
 
