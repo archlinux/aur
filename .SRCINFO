@@ -1,21 +1,22 @@
 pkgbase = svgtools
 	pkgdesc = Tools for working with SVG files and JessyInk presentations.
-	pkgver = 2020
+	pkgver = 2020.7.27
 	pkgrel = 1
 	url = https://xyne.archlinux.ca/projects/svgtools
 	arch = any
 	license = GPL
 	depends = python3
-	optdepends = inkscape: ji2pdf and jessy_to_slides support
-	optdepends = phantomjs: jessy_to_slides support
-	optdepends = poppler: ji2pdf support
-	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.tar.xz
-	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.tar.xz.sig
+	optdepends = inkscape: required for ji2pdf and jessy_to_slides
+	optdepends = parallel: GNU Parallel support for ji2pdf
+	optdepends = phantomjs: required for jessy_to_slides
+	optdepends = poppler: required for ji2pdf
+	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.7.27.tar.xz
+	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.7.27.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 68239853c1cac6b8eac5bc0dd15203db
-	md5sums = 52a0a42c7b3637d58555646db6747912
-	sha512sums = 8eff2d1549e12299f619f21c627da16b25014df628d59b1ccd63a57330613475ab52744f8d3b3191ea6c66a9cbf243186806ec00d7d22b2b5da0b1e2f3a6eb9d
-	sha512sums = a99bf052b54c8d04b800751d5c690c288e83a2563336f1356c3fba7d045e3f07991d5dedcf9ad28776db30a82304710170b34f1d8d1f71bbe8d667f263e9bf07
+	md5sums = 31b374ab378d81224fc60e6d5ecb3a99
+	md5sums = 0ca56c4b2b0f001dff2a70b13dae7ac9
+	sha512sums = e9eb3626e730619d01daac3d2bcce9256ddf6d98ad80f063f1ffcbdefb789b6f0c2530147048fef99abc5cf56008f2e225d76b6fd9250046f546ec9b20ab3f87
+	sha512sums = 3cf135d4c94a3ca982631e6f0fc37c8b3b3b3e0ba02fe1be9565f50ba25bd505c7750e572eda9045828de0028391cb71ea776cfd368a4b49f079caac6d8a5252
 
 pkgname = svgtools
 
