@@ -1,7 +1,7 @@
 # Maintainer: edu4rdshl
 
 pkgname=tor-router
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A tool that allow you to make TOR your default gateway and send all internet connections under TOR (as transparent proxy) for increase privacy/anonymity without extra unnecessary code.'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('curl: to verify if the script run sucessfully.')
 install=tor-router.install
 source=("https://github.com/Edu4rdSHL/tor-router/archive/$pkgver.tar.gz"
          'tor-router.install')
-sha512sums=('3c5d5603a71cec19929caca97b24b82adac5bf4c2787ae89ad21b1f5ac8617db33f6f3cf8c474262e0102171876931cadf962ba7990b6bcb048730ec91384b06'
+sha512sums=('5a04a3496b7618cd7f30825651cbfbd71027823961c2a46c0a653150abcbc35a9631ad2db01fe279577e157bee86e4fe0f5c31a15de6b1cbc141fbac1b9def3d'
             '2a0393f2f2c5603b3c9f59c14510121a2e57392b701ba5be9336bd93624ff4e6e50d2338a4f0eeadf07ad1d0d50d8646d1418e418b593baea09a418f9972fac1'
             )
 
