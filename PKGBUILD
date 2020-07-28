@@ -9,7 +9,7 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
 pkgver=2.34
-pkgrel=3
+pkgrel=5
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/binutils/'
@@ -18,11 +18,11 @@ depends=(glibc zlib elfutils)
 makedepends=('elfutils')
 options=(staticlibs !distcc !ccache)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-        binutils-a72427b1ae01304da0b5170e1e53f68c6d46c1de.patch.xz)
+        binutils-cb5f6a3e146cc70bc2d864989386df80acec5d3e.patch.xz)
+sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952'
+            'SKIP'
+            'e2115d42efde1b6e254dc21c37afd2f948631d2396a7615e03331299e3652dde')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('664ec3a2df7805ed3464639aaae332d6'
-         'SKIP'
-         'f121a3bee2e223786caa5776863d0dcf')
 
 prepare() {
   mkdir -p binutils-build
@@ -30,10 +30,13 @@ prepare() {
   #cd binutils-gdb
   cd binutils-$pkgver
 
+  # Turn off development mode (-Werror, gas run-time checks, date in sonames)
+  sed -i '/^development=/s/true/false/' bfd/development.sh
+
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  patch -Np1 -i ../binutils-a72427b1ae01304da0b5170e1e53f68c6d46c1de.patch
+  patch -Np1 -i ../binutils-cb5f6a3e146cc70bc2d864989386df80acec5d3e.patch
 }
 
 build() {
