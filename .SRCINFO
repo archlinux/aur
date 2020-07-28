@@ -1,14 +1,15 @@
 pkgbase = cpp-httplib-compiled
 	pkgdesc = A C++ HTTP/HTTPS server and client library (compiled version)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yhirose/cpp-httplib
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cmake>=3.14
-	depends = openssl>=1.1.1
-	depends = zlib
+	makedepends = python>=3.0
+	optdepends = openssl>=1.1.1: HTTPS support
+	optdepends = zlib: compression support
 	provides = cpp-httplib=0.7.1
 	conflicts = cpp-httplib
 	source = cpp-httplib-compiled-0.7.1.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v0.7.1.tar.gz
