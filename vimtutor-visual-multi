@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+vim -Nu /usr/share/vim/vimfiles/pack/vim-visual-multi/start/vim-visual-multi/tutorialrc
