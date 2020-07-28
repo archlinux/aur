@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
 pkgdesc="Vaious synth and effect LV2 plugins."
-pkgver=r187.f65c308
+pkgver=r493.add78df
 pkgrel=1
 epoch=
 arch=(x86_64)
