@@ -12,21 +12,19 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=80.0a1
-pkgver=80.0a1.20200711
+_version=81.0a1
+pkgver=81.0a1.20200728
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 conflicts=('firefox-nightly')
-license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+license=(MPL GPL LGPL)
+depends=(dbus-glib gtk3 libxt nss mime-types)
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation'
             'libnotify: notification integration'
-            'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech'
-            'startup-notification: support for FreeDesktop Startup Notification')
+            'networkmanager: location detection via available WiFi networks')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _urlsrc="${_url}-l10n"
 _src="${_name}-${_version}.${_lang}.linux"
@@ -43,9 +41,9 @@ sha512sums=(
     '42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
     '59d53a3f225e4e28ea25459dba0f3eb96b0e896a96bee992fd45148de3276e141649a0db7e6abad7f4ad341ea244222d31d2ac943f6b7d63c2b7365f702e537c'
 )
-sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
-sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
+sha512sums_i686=(SKIP SKIP SKIP)
+sha512sums_x86_64=(SKIP SKIP SKIP)
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
   echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
