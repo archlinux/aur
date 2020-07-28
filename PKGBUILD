@@ -5,7 +5,7 @@ _svt_av1_ver='0.8.4'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r98534.g5eb4405fc5
+pkgver=4.4.r98576.g7c59e1b0f2
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -19,8 +19,8 @@ depends=(
         'fontconfig' 'freetype2' 'fribidi' 'glslang' 'libgme' 'gsm' 'libiec61883'
         'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
         'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'libssh' 'svt-hevc' 'svt-av1' 'svt-vp9'
-        'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
+        'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
         'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -155,7 +155,7 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
-        --disable-libsrt \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libtensorflow \
