@@ -1,0 +1,19 @@
+pkgbase = sudoku-solver-git
+	pkgdesc = Contains several logical methods of solving, as well as brute force selection
+	pkgver = v1.0.0.r0.gb4bec10
+	pkgrel = 1
+	url = https://bitbucket.org/admsasha/sudoku-solver
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = git
+	depends = qt5-base
+	optdepends = adwaita-icon-theme
+	provides = sudoku-solver
+	conflicts = sudoku-solver
+	source = sudoku-solver::git+https://bitbucket.org/admsasha/sudoku-solver
+	sha256sums = SKIP
+
+pkgname = sudoku-solver-git
+
