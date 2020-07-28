@@ -1,11 +1,11 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2618  # see ${srcdir}/Version.txt
+_pkg_subver=2654  # see ${srcdir}/Version.txt
 _gamepkg=RimWorld1-1-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
 pkgver=1.1.${_pkg_subver}
-pkgrel=2
+pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
