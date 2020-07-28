@@ -2,7 +2,7 @@
 
 pkgname=quickmedia-git
 pkgver=r179.c1297a8
-pkgrel=1
+pkgrel=2
 pkgdesc='A native client for web media. Works with youtube, 4chan and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
