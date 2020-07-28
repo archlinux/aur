@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package_vim-coc-syntax-git() {
-    pkgdesc='Words from syntax list'
+    pkgdesc='Syntax words completion source for coc.nvim'
     depends=('vim-coc')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-syntax"
     provides=("vim-coc-syntax")
@@ -32,7 +32,7 @@ package_vim-coc-syntax-git() {
 }
 
 package_vim-coc-tag-git() {
-    pkgdesc='Words from tagfiles()'
+    pkgdesc='tag source for coc.nvim'
     depends=('vim-coc')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-tag"
     provides=("vim-coc-tag")
@@ -43,7 +43,7 @@ package_vim-coc-tag-git() {
 }
 
 package_vim-coc-dictionary-git() {
-    pkgdesc='Words from files in &dictionary'
+    pkgdesc='dictionary source for coc.nvim'
     depends=('vim-coc' 'words')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-dictionary"
     provides=("vim-coc-dictionary")
@@ -54,7 +54,7 @@ package_vim-coc-dictionary-git() {
 }
 
 package_vim-coc-word-git() {
-    pkgdesc='Words from google 10000 english repo'
+    pkgdesc='word source for coc.nvim'
     depends=('vim-coc')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-word"
     provides=("vim-coc-word")
@@ -65,7 +65,7 @@ package_vim-coc-word-git() {
 }
 
 package_vim-coc-emoji-git() {
-    pkgdesc='Emoji words for markdown'
+    pkgdesc='emoji source for coc.nvim'
     depends=('vim-coc' 'words')
     _packdir="usr/share/vim/vimfiles/pack/coc/start/coc-emoji"
     provides=("vim-coc-emoji")
