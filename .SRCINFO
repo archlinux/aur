@@ -6,6 +6,7 @@ pkgbase = rescribe
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
 	noextract = https://cli.rescribe.dev/linux.zip
+	options = !strip
 	source = https://cli.rescribe.dev/linux.zip
 
 pkgname = rescribe
