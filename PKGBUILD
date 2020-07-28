@@ -2,10 +2,10 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins
-pkgver=20.0503
+pkgver=20.0623
 pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
-url='https://rvgl.re-volt.io'
+url='https://re-volt.io/downloads/packs'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
@@ -22,7 +22,7 @@ package() {
     cd "$srcdir/rvgl_io_skins"
 
     # Remove conflicting files present in cars pack
-    rm cars/fd5vector/carlux.bmp cars/phim_sentaro/car-khronos.bmp cars/selsia/carcelicapp.bmp
+    rm cars/phim_sentaro/carstealth.bmp
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
