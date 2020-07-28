@@ -1,0 +1,29 @@
+pkgbase = neovim-coc-sources-git
+	pkgver = 1.2.5.r0.ga2f059e
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-sources
+	arch = any
+	groups = neovim-coc-extras-git
+	license = 
+	makedepends = git
+	source = coc-sources::git+https://github.com/neoclide/coc-sources.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-syntax-git
+	pkgdesc = Syntax words completion source for coc.nvim
+	depends = neovim-coc
+	provides = neovim-coc-
+	conflicts = neovim-coc-
+
+pkgname = neovim-coc-tag-git
+	pkgdesc = tag source for coc.nvim
+	depends = neovim-coc
+	provides = neovim-coc-
+	conflicts = neovim-coc-
+
+pkgname = neovim-coc-dictionary-git
+	pkgdesc = dictionary source for coc.nvim
+	depends = neovim-coc
+	provides = neovim-coc-
+	conflicts = neovim-coc-
+
