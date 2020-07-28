@@ -29,7 +29,7 @@ build() {
     tar xvf *.tgz
     rm *.tgz
     cd package
-    yarn install --frozen-lockfile --production
+    npm install --only=production
 }
 
 package() {
