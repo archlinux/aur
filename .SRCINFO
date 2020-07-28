@@ -8,7 +8,7 @@ pkgbase = python-pymp4
 	checkdepends = python-pytest
 	checkdepends = python2-pytest
 	checkdepends = python-wheel
-	checkdepends = python-wheel
+	checkdepends = python2-wheel
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = pymp4::git+https://github.com/beardypig/pymp4.git#tag=1.2.0
