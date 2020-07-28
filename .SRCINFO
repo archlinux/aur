@@ -1,16 +1,18 @@
 pkgbase = kubectl-split-yaml
 	pkgdesc = Split Kubernetes YAML output into one file per resource
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nathforge/kubectl-split-yaml
 	arch = x86_64
-	arch = aarch64
+	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
+	groups = kubectl-plugins
 	license = Apache
 	makedepends = go
-	depends = glibc
+	depends = kubectl
 	source = https://github.com/nathforge/kubectl-split-yaml/archive/v0.1.0/kubectl-split-yaml-0.1.0.tar.gz
 	sha256sums = 0e4cd1c5ba748b2ee366d7cfe17d2bdfcf1ea113b7c74120e39683dad59800bf
 

@@ -1,13 +1,14 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kubectl-split-yaml
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Split Kubernetes YAML output into one file per resource'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/nathforge/kubectl-split-yaml'
 license=('Apache')
-depends=('glibc')
+depends=('kubectl')
 makedepends=('go')
+groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('0e4cd1c5ba748b2ee366d7cfe17d2bdfcf1ea113b7c74120e39683dad59800bf')
 
