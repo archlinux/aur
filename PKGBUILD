@@ -25,10 +25,16 @@ pkgver() {
 build() {
     cd "${srcdir}/${_extname}"
     yarn install --frozen-lockfile
+    yarn pack --frozen-lockfile --production
+    tar xvf *.tgz
+    rm *.tgz
+    cd package
+    npm install --only=production
 }
 
 package() {
-    cd "${srcdir}/${_extname}"
-    find lib/*.js nvimstart package.json -type f -exec \
+    cd "${srcdir}/${_extname}/package"
+    find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
+    rm -rf "${srcdir}/${_extname}/package"
 }
