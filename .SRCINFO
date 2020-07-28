@@ -1,0 +1,19 @@
+pkgbase = universal-password-manager
+	pkgdesc = Universal Password Manager
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = http://upm.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = java-runtime>=6
+	source = http://downloads.sourceforge.net/project/upm/upm-1.15.1/upm-1.15.1.tar.gz
+	source = upm.sh
+	source = upm.png
+	source = upm.desktop
+	md5sums = 9c83b4413ce5ef44e272cf44d0420569
+	md5sums = 0f5aa8fe52fc3b8eed3d2fed4720131a
+	md5sums = 1ef909f44ed71b629a78339fe566b4f8
+	md5sums = 0cf9105552094b73ee2bce663642020d
+
+pkgname = universal-password-manager
+
