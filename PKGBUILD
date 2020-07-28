@@ -5,14 +5,16 @@ pkgrel=1
 pkgdesc='Meta package to install some basic extensions for coc.nvim'
 arch=(any)
 url='https://github.com/neoclide/coc.nvim'
-depends=(vim-coc-dictionary-git
-         vim-coc-highlight-git
+depends=(vim-coc-highlight-git
          vim-coc-lists-git
          vim-coc-marketplace-git
          vim-coc-snippets-git
          vim-coc-syntax-git
          vim-coc-tag-git
          vim-coc-yank-git)
-optdepends=('vim-coc-pairs-git: auto pairs support'
+optdepends=('vim-coc-dictionary-git: words from files in &dictionary'
+            'vim-coc-word-git: words from google 10000 english repo'
+            'vim-coc-emoji-git: emoji words for markdown'
+            'vim-coc-pairs-git: auto pairs support'
             'vim-coc-explorer-git: file/buffer explorer'
             'vim-coc-git-git: git integration')
