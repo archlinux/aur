@@ -9,6 +9,7 @@ pkgbase = neovim-coc
 	depends = nodejs
 	optdepends = npm: for installing coc extensions
 	optdepends = yarn: for installing coc extensions
+	optdepends = neovim-coc-extras-meta-git: some basic extensions
 	provides = neovim-coc
 	conflicts = neovim-coc
 	source = https://github.com/neoclide/coc.nvim/archive/v0.0.78.tar.gz
