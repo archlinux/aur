@@ -1,0 +1,23 @@
+--- a/vmnet/Makefile
++++ b/vmnet/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+@@ -137,7 +137,7 @@
+ endif
+ 
+ # Add Spectre options when available
+-CC_OPTS += $(call vm_check_gcc,-mindirect-branch=thunk -mindirect-branch-register,)
++CC_OPTS += $(call vm_check_gcc,-mindirect-branch-register,)
+ 
+ include $(SRCROOT)/Makefile.kernel
+ 
