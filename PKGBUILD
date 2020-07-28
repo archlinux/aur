@@ -5,10 +5,9 @@
 # Contributor: William Udovich <nerdzrule7 at earthlink dot net>
 # Contributor: Farhan Yousaf <farhany at xaviya dot com>
 
-pkgbase=netatalk-ddp
 pkgname=netatalk-ddp
 pkgver=2.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A kernel-level implementation of AppleTalk, AFP, and PAP services'
 arch=('i686' 'x86_64')
 url='http://netatalk.sourceforge.net'
@@ -26,7 +25,6 @@ backup=('etc/netatalk/afpd.conf'
 	'etc/netatalk/papd.conf'
 	'etc/pam.d/netatalk')
 options=('!libtool')
-install=$pkgname.install
 source=(https://svwh.dl.sourceforge.net/project/netatalk/netatalk/$pkgver/netatalk-$pkgver.tar.bz2 netatalk-invalid_dircache_entries.patch netatalk-current_vol.patch netatalk-uams_dhx_passwd.patch netatalk-uams_dhx_pam.patch netatalk-uams_randnum.patch netatalk-papd_print_cups.patch)
 md5sums=('cd8ca5be7ebb0ac42d5576f401a8a8ba'
          'e56ca98c7399916d73cd6de1beb4a567'
