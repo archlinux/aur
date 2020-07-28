@@ -1,0 +1,38 @@
+pkgbase = i3-gaps-kde-git
+	pkgdesc = A fork of i3wm tiling window manager with more features, including gaps (with KDE patches)
+	pkgver = 4.18.2.r10.g07d82753
+	pkgrel = 1
+	url = https://github.com/h0cheung/i3-gaps-kde
+	arch = i686
+	arch = x86_64
+	groups = i3
+	license = BSD
+	makedepends = bison
+	makedepends = flex
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libev
+	depends = yajl
+	depends = startup-notification
+	depends = pango
+	depends = perl
+	depends = xcb-util-cursor
+	depends = xcb-util-xrm
+	depends = libxkbcommon-x11
+	optdepends = rxvt-unicode: The terminal emulator used in the default config.
+	optdepends = dmenu: As menu.
+	optdepends = i3lock: For locking your screen.
+	optdepends = i3status: To display system information with a bar.
+	optdepends = perl-json-xs: For i3-save-tree
+	optdepends = perl-anyevent-i3: For i3-save-tree
+	provides = i3-wm
+	conflicts = i3-wm
+	options = docs
+	backup = etc/i3/config
+	source = git+https://github.com/h0cheung/i3-gaps-kde.git#branch=gaps-kde
+	sha256sums = SKIP
+
+pkgname = i3-gaps-kde-git
+
