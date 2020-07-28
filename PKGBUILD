@@ -1,37 +1,49 @@
 pkgname=great-little-radio-player
-pkgver=1.4.7
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A robust internet radio station streamer"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/glrpgreatlittleradioplayer"
 license=('GPL3')
-depends=('qt4' 'phonon-qt4' 'freetype2')
-optdepends=('phonon-qt4-gstreamer')
-source=(https://www.dropbox.com/s/3skkc58a9egi3bm/greatlittleradioplayer_1.4.7.tar.gz)
-sha1sums=('2cf142b38130de51471cb451e9b88f14ce6ebb0f')
-
-prepare() {
-  cd greatlittleradioplayer_${pkgver}
-  # Fix includes
-  sed -i '/^#include/s|Phonon/|phonon/|' mainwindow.{h,cpp}
-  sed -i '/^#include <phonon\/phonon>/d' mainwindow.cpp
-}
+depends=(
+  'qt5-base'
+  'qt5-multimedia'
+)
+optdepends=('')
+source=(
+  'https://downloads.sourceforge.net/project/glrp/v1.5.0/source_files.tar.gz'
+  'https://downloads.sourceforge.net/project/glrp/v1.5.0/greatlittleradioplayer_1.5.0_amd64.deb'
+)
+sha1sums=('ff4c0da0c75335d652fab84bc87fa356ed9984b8'
+          'f6895783dbdd99902b0960449c6c172a3581e168')
 
 build() {
-  cd greatlittleradioplayer_${pkgver}
-  qmake-qt4 PREFIX=/usr
+  cd source_files
+  qmake -project "QT += widgets multimedia xml"
+  qmake
   make
 }
 
 package() {
-  cd greatlittleradioplayer_${pkgver}
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  install -Dm755 source_files/source_files "$pkgdir/usr/share/$pkgname/$pkgname"
 
-  install -D GreatLittleRadioPlayer \
-    "$pkgdir/opt/extras.ubuntu.com/glrp/GreatLittleRadioPlayer"
+  mkdir -p data && tar xf data.tar.xz -C data
+  cd data/
 
-  cp -r changelog.txt glrp.svg stations.csv language styles \
-    "$pkgdir/opt/extras.ubuntu.com/glrp/"
+  install -Dm644 usr/share/applications/GreatLittleRadioPlayer.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i "s#Exec=/opt/glrp/GreatLittleRadioPlayer#Exec=/usr/share/$pkgname/$pkgname#" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i "s#/opt/glrp/#/usr/share/$pkgname/#" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  install -Dm644 extras-greatlittleradioplayer.desktop \
-    "$pkgdir/usr/share/applications/extras-greatlittleradioplayer.desktop"
+  cd opt/glrp/
+  cp -R changelog.txt \
+    glrp_stations.xml \
+    images \
+    new-glrp64.png \
+    new-glrp96.png \
+    themes \
+    "$pkgdir/usr/share/$pkgname"
+
+  # Remove image with difficult name
+  rm -R "$pkgdir/usr/share/$pkgname/images/RádioRaizSertaneja.png"
 }
