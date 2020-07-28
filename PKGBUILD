@@ -1,0 +1,51 @@
+# This is the Rescribe AUR PKGBUILD file.
+# For more information, see 'man PKGBUILD'.
+# Maintainer: Rescribe <rescribe.dev@gmail.com>
+
+pkgname=rescribe
+pkgver=0.0.1
+pkgrel=1
+epoch=
+pkgdesc="code search engine cli"
+arch=("x86_64")
+url="https://rescribe.dev"
+license=("CC-BY-NC-SA-4.0")
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://cli.rescribe.zip/linux.zip")
+noextract=()
+md5sums=("8c7735e688fdbacfd8e192a256f7ffad")
+validpgpkeys=()
+
+prepare() {
+	# do nothing
+  :
+}
+
+build() {
+	# do nothing
+  :
+}
+
+check() {
+	# do nothing
+  :
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+  mkdir "$pkgdir/usr"
+  mkdir "$pkgdir/usr/bin"
+	cp rescribe "$pkgdir/usr/bin"
+  cp nodegit.node "$pkgdir/usr/bin"
+}
