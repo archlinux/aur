@@ -1,6 +1,6 @@
 pkgbase = melonds-git
 	pkgdesc = DS emulator, sorta. also 1st quality melon.
-	pkgver = 0.8.3.r1016.e512e7a
+	pkgver = 0.8.3.r1464.f56aa60
 	pkgrel = 1
 	url = http://melonds.kuribo64.net/
 	arch = i686
@@ -15,6 +15,8 @@ pkgbase = melonds-git
 	depends = gtk3
 	depends = pkg-config
 	depends = sdl2
+	depends = libslirp
+	depends = qt5-base
 	provides = melonds
 	conflicts = melonds
 	source = melonDS::git+https://github.com/Arisotura/melonDS.git

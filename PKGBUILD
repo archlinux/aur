@@ -1,15 +1,15 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 
 pkgname=melonds-git
-_gitname=melonds
-pkgver=0.8.3.r1016.e512e7a
+_gitname=melonDS
+pkgver=0.8.3.r1464.f56aa60
 pkgdesc='DS emulator, sorta. also 1st quality melon.'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://melonds.kuribo64.net/"
 license=('GPLv3')
 makedepends=('git' 'cmake')
-depends=('gtk3' 'pkg-config' 'sdl2')
+depends=('gtk3' 'pkg-config' 'sdl2' 'libslirp' 'qt5-base')
 source=("${_gitname}::git+https://github.com/Arisotura/${_gitname}.git")
 provides=('melonds')
 conflicts=('melonds')
