@@ -1,0 +1,19 @@
+pkgbase = neovim-coc-git-git
+	pkgdesc = Git integration of coc.nvim
+	pkgver = 1.8.1.r0.g691870e
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-git
+	arch = any
+	groups = neovim-coc-extras-git
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	provides = neovim-coc-git-git
+	conflicts = neovim-coc-git-git
+	source = coc-git::git+https://github.com/neoclide/coc-git.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-git-git
+

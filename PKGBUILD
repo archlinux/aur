@@ -1,0 +1,34 @@
+# Maintainer: Sainnhe Park <sainnhe@gmail.com>
+pkgname=neovim-coc-git-git
+_pkgname=neovim-coc-git
+_extname=coc-git
+pkgdesc='Git integration of coc.nvim'
+arch=('any')
+url='https://github.com/neoclide/coc-git'
+depends=('neovim-coc' 'git')
+makedepends=('yarn' 'npm')
+_packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
+license=('')
+groups=('neovim-coc-extras-git')
+provides=("${_pkgname}-git")
+conflicts=("${_pkgname}-git")
+source=("${_extname}::git+${url}.git")
+pkgver=1.8.1.r0.g691870e
+pkgrel=1
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_extname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "${srcdir}/${_extname}"
+    yarn install --frozen-lockfile
+}
+
+package() {
+    cd "${srcdir}/${_extname}"
+    find lib/*.js package.json -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
+}
