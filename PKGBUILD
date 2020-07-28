@@ -2,7 +2,7 @@
 pkgname=vim-coc-extras-meta-git
 pkgver=1.0
 pkgrel=1
-pkgdesc='Meta package to install some important extensions for coc.nvim'
+pkgdesc='Meta package to install some basic extensions for coc.nvim'
 arch=(any)
 url='https://github.com/neoclide/coc.nvim'
 depends=(vim-coc-dictionary-git

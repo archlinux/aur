@@ -1,5 +1,5 @@
 pkgbase = vim-coc-extras-meta-git
-	pkgdesc = Meta package to install some important extensions for coc.nvim
+	pkgdesc = Meta package to install some basic extensions for coc.nvim
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/neoclide/coc.nvim
