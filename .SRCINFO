@@ -1,0 +1,18 @@
+pkgbase = lgwebosremote-git
+	pkgdesc = Command line webOS remote for LGTVs
+	pkgver = r93.588a301
+	pkgrel = 1
+	url = https://github.com/klattimer/LGWebOSRemote
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-wakeonlan
+	depends = python-ws4py
+	depends = python-requests
+	provides = lgtv
+	conflicts = lgtv
+	source = lgwebosremote::git+https://github.com/klattimer/LGWebOSRemote.git
+	md5sums = SKIP
+
+pkgname = lgwebosremote-git
+
