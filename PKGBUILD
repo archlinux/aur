@@ -2,7 +2,7 @@
 pkgname=picgo
 _name=PicGo
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
 url="https://github.com/Molunerfinn/PicGo"
@@ -20,12 +20,12 @@ prepare() {
 	cd "$_name-$pkgver"
 	electronDist="\/usr\/lib\/electron6"
 	sed -i "s/productName: 'PicGo',/productName: 'PicGo', electronDist: '$electronDist',/" vue.config.js
-	npm install
+	yarn
 }
 
 build() {
 	cd "$_name-$pkgver"
-	npm run electron:build -- --dir
+	yarn electron:build --dir
 }
 
 package() {
