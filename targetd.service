@@ -1,0 +1,8 @@
+[Unit]
+Description=targetd daemon for remote LIO-based storage config
+
+[Service]
+ExecStart=/usr/bin/targetd
+
+[Install]
+WantedBy=default.target

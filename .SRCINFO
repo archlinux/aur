@@ -1,0 +1,24 @@
+pkgbase = targetd-git
+	pkgdesc = Remote configuration of a LIO-based storage appliance
+	pkgver = 0.8.8.69.g0322c1a
+	pkgrel = 1
+	url = https://github.com/open-iscsi/targetd
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = targetcli-fb
+	depends = python-rtslib-fb
+	depends = python-configshell-fb
+	depends = libblockdev
+	depends = python-setproctitle
+	depends = python-yaml
+	optdepends = zfs-utils: ZFS block device support
+	optdepends = zfs-linux: ZFS block device support
+	optdepends = zfs-linux-lts: ZFS block device support
+	optdepends = zfs-dkms: ZFS block device support
+	provides = targetd
+	source = targetd-git::git+https://github.com/open-iscsi/targetd
+	sha256sums = SKIP
+
+pkgname = targetd-git
+

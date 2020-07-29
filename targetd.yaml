@@ -1,0 +1,23 @@
+# See http://www.yaml.org/spec/1.2/spec.html for more on YAML.
+#
+# A sample /etc/target/targetd.yaml file.
+#
+
+# No default password, please pick a good one.
+
+password:
+
+# defaults below; uncomment and edit
+#block_pools: [vg-targetd/thin_pool] # just 1 by default, but can be more
+#zfs_block_pools: [] # you can also use zfs as backend
+#fs_pools: []  # Path to btrfs FS, eg. /my_btrfs_mount
+#user: admin
+#target_name: iqn.2003-01.org.example.mach1:1234
+
+# log level (debug, info, warning, error, critical)
+#log_level: info
+
+#ssl: false
+# if ssl is activated:
+#ssl_cert: /etc/target/targetd_cert.pem
+#ssl_key: /etc/target/targetd_key.pem
