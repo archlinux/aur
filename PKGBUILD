@@ -1,5 +1,5 @@
 pkgname=replay-sorcery
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="An open-source, instant-replay screen recorder for Linux"
 arch=("i686" "x86_64")
