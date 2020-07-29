@@ -11,7 +11,7 @@ _fragment=${FRAGMENT:-#branch=master}
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 
 pkgname=blender-git
-pkgver=2.81.r91063.ab519b91b2c
+pkgver=2.91.r98410.g21810282924
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
