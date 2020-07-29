@@ -5,9 +5,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=68.10.0
+pkgver=68.11.0
 pkgrel=1
-_commit=76dced64ce0e72fe3030dc2f7b22cda8e36b165e
+_commit=ac907e0c0f5b8896da34d31594b168e60983bec8
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -16,7 +16,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(m4 unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget mercurial git)
+             python nodejs python2-psutil cbindgen nasm wget mercurial git lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -28,7 +28,7 @@ source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_comm
         icecat.desktop icecat-safe.desktop
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368")
 
-sha256sums=('bea14caa7edce98f3325eb9bb52d12479758c50286f48b7bd226cf891b5aba55'
+sha256sums=('e07865d63fa81736ccad6682d2a3e77a10aededd5fcbdae3c5f6a2271a9ccea0'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
@@ -109,6 +109,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
@@ -138,6 +139,48 @@ ac_add_options --disable-eme
 ac_add_options --with-app-basename=icecat
 ac_add_options --with-app-name=icecat
 END
+
+  # Rust 1.45
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
+  patch --ignore-whitespace << 'EOF'
+--- config/makefiles/rust.mk	2020-07-28 01:00:34.145470639 +0200
++++ config/makefiles/rust.mk.new	2020-07-29 00:30:30.972913722 +0200
+@@ -46,9 +46,17 @@
+ cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
+ ifndef DEVELOPER_OPTIONS
+ ifndef MOZ_DEBUG_RUST
+-# Enable link-time optimization for release builds.
++# Enable link-time optimization for release builds, but not when linking
++# gkrust_gtest.
++ifeq (,$(findstring gkrust_gtest,$(RUST_LIBRARY_FILE)))
+ cargo_rustc_flags += -C lto
+ endif
++# Versions of rust >= 1.45 need -Cembed-bitcode=yes for all crates when
++# using -Clto.
++ifeq (,$(filter 1.38.% 1.39.% 1.40.% 1.41.% 1.42.% 1.43.% 1.44.%,$(RUSTC_VERSION)))
++RUSTFLAGS += -Cembed-bitcode=yes
++endif
++endif
+ endif
+ 
+ ifdef CARGO_INCREMENTAL
+--- python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2020-07-28 00:27:34.259562926 +0200
++++ python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py.new	2020-07-29 00:34:28.329240946 +0200
+@@ -1705,13 +1705,6 @@
+ 
+         self.assertEqual(
+             self.get_rust_target('arm-unknown-linux-androideabi',
+-                                 version='1.32.0',
+-                                 arm_target=ReadOnlyNamespace(
+-                                     arm_arch=7, fpu='neon', thumb2=True, float_abi='softfp')),
+-            'armv7-linux-androideabi')
+-
+-        self.assertEqual(
+-            self.get_rust_target('arm-unknown-linux-androideabi',
+                                  arm_target=ReadOnlyNamespace(
+                                      arm_arch=7, fpu='neon', thumb2=False, float_abi='softfp')),
+             'armv7-linux-androideabi')
+EOF
 }
 
 build() {
