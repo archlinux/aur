@@ -9,7 +9,7 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc" 'git')
+depends=("${_variant}-coc")
 optdepends=('python-jedi: jedi intellisense engine support'
             'anaconda: anaconda support'
             'python-pipenv: pipenv support'
@@ -27,7 +27,7 @@ optdepends=('python-jedi: jedi intellisense engine support'
             'python-pydocstyle: pydocstyle linting plugin'
             'pylama: pylama linting plugin'
             'python-pylint: pylint linting plugin')
-makedepends=('yarn' 'npm')
+makedepends=('yarn' 'npm' 'git')
 license=('')
 source=("${_extname}::git+${url}.git")
 pkgver=1.2.12.r2.g241c6b3
