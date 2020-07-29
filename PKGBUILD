@@ -16,7 +16,7 @@ pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
@@ -36,13 +36,14 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+        embree.patch #add missing embree link.
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            )
+            '43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -57,6 +58,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
+  git apply -v "${srcdir}"/embree.patch
 }
 
 build() {

@@ -13,6 +13,7 @@ pkgbase = blender-git
 	makedepends = ninja
 	makedepends = llvm
 	depends = alembic
+	depends = embree
 	depends = libgl
 	depends = python
 	depends = python-numpy
@@ -40,11 +41,13 @@ pkgbase = blender-git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
+	source = embree.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea
 
 pkgname = blender-git
 
