@@ -1,6 +1,6 @@
 pkgbase = xonotic-git
 	pkgdesc = A free, fast-paced crossplatform first-person shooter. GIT version. PLEASE SEE AUR COMMENTS.
-	pkgver = 20170101.r1675.4d0c2bf
+	pkgver = 20200729.r1904.9304e64
 	pkgrel = 1
 	url = http://xonotic.org
 	arch = i686
@@ -17,7 +17,6 @@ pkgbase = xonotic-git
 	makedepends = sdl2
 	makedepends = mesa
 	makedepends = imagemagick
-	depends = d0_blind_id-git
 	depends = libxpm
 	depends = libjpeg>=8
 	depends = libpng>=1.4.0

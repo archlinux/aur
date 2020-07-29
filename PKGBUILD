@@ -5,14 +5,13 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 
 pkgname=xonotic-git
-pkgver=20170101.r1675.4d0c2bf
+pkgver=20200729.r1904.9304e64
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter. GIT version. PLEASE SEE AUR COMMENTS."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'armv8h')
 url="http://xonotic.org"
 license=('GPL')
 depends=(
-	'd0_blind_id-git'
 	'libxpm'
 	'libjpeg>=8'
 	'libpng>=1.4.0'
@@ -102,11 +101,11 @@ build() {
 	cd "$srcdir"
 	msg "Connecting to GIT server...."
 
-	if [ ! -e "$srcdir"/$_gitname/d0_blind_id.no ] ; then
-		cd $_gitname
-		touch d0_blind_id.no
-		cd ../
-	fi
+	#if [ ! -e "$srcdir"/$_gitname/d0_blind_id.no ] ; then
+	#	cd $_gitname
+	#	touch d0_blind_id.no
+	#	cd ../
+	#fi
 	if [ ! -e "$srcdir"/$_gitname/netradiant.yes ] ; then
 		cd $_gitname
 		touch netradiant.yes
@@ -117,11 +116,11 @@ build() {
 		touch data/xonotic-nexcompat.pk3dir.yes
 		cd ../
 	fi	
-	if [ ! -d "$srcdir"/$_gitname/d0_blind_id ] ; then
-		cd $_gitname
-		mkdir d0_blind_id
-		cd ../
-	fi
+	#if [ ! -d "$srcdir"/$_gitname/d0_blind_id ] ; then
+	#	cd $_gitname
+	#	mkdir d0_blind_id
+	#	cd ../
+	#fi
 	
 	cd ${_gitname}
 
@@ -245,7 +244,7 @@ build() {
 #         fi
 #         fi
         
-	./all compile
+	./all compile -r
 	
         msg "Building data pk3's..."
 	rm -rf "$srcdir"/temp # just in case it was interrupted previously
