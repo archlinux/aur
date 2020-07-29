@@ -2,7 +2,7 @@
 
 pkgname=matrix-appservice-telegram
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-telethon-session-sqlalchemy' 'python-telethon>=1.14.0' 'python-ruamel-yaml' 'python-commonmark' 'python-alembic' 'python-mautrix>=0.5.0' 'python-aiohttp' 'python-magic-ahupp')
@@ -25,7 +25,7 @@ source=("https://github.com/tulir/mautrix-telegram/archive/v${pkgver/_rc/-rc}.ta
         'fix_telethon_version.patch')
 sha256sums=('1f227f50e84f643fc7633f1a8f336aa1e51db6c12628e983783c2995a41d497f'
             '52b9e24a238bb34daa4966f033593516089ae1e7a72b373e5fa0a08a25082123'
-            '6d07996b914231282a70a7c4fde26bd2e55920a69b42039d78a1137dc35542e7')
+            'f68fccabe067e409f8bb8ca7c03bebdce425ea5ed903b103691e31c26f3bcaa6')
 
 prepare() {
     cd $srcdir/mautrix-telegram-${pkgver/_rc/-rc}
