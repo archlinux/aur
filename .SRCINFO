@@ -1,0 +1,18 @@
+pkgbase = vim-coc-html-git
+	pkgdesc = Html language server extension for coc.nvim
+	pkgver = 1.2.4.r2.g36aaa65
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-html
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	depends = git
+	provides = vim-coc-html
+	conflicts = vim-coc-html
+	source = coc-html::git+https://github.com/neoclide/coc-html.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-html-git
+
