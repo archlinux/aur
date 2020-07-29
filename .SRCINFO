@@ -1,6 +1,6 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
-	pkgver = 78.0.2
+	pkgver = 78.1.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = firefox-esr
 	makedepends = nasm
 	makedepends = python-setuptools
 	makedepends = python-psutil
+	makedepends = lld
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
@@ -39,22 +40,24 @@ pkgbase = firefox-esr
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=78.0.2
+	provides = firefox=78.1.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0.2esr/source/firefox-78.0.2esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0.2esr/source/firefox-78.0.2esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/78.1.0esr/source/firefox-78.1.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/78.1.0esr/source/firefox-78.1.0esr.source.tar.xz.asc
 	source = firefox-esr.desktop
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = upload-symbol-archive
+	source = rust-145.patch::https://hg.mozilla.org/integration/autoland/raw-rev/e5d2a6d5187b
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = e0b5596644d4f9cb7c3231f66a982e4a6729ff8f36c14245f1ccfdf8c1c79a0a
+	sha256sums = 3600a396d9312c5e9f637b267926ca4771d84a56b26b960cc7d72e98683b64a2
 	sha256sums = SKIP
 	sha256sums = d86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726
 	sha256sums = 3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75
 	sha256sums = eb9b9c058d1505e5b82526a8cad63f98e04fc17c4715f6b4cfc778e10fcfaf27
+	sha256sums = afc0a66777dc38d8b697b0eeacdf7a723b2e324ce5864a9c79b8b2eb83e27388
 
 pkgname = firefox-esr
 
