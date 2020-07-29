@@ -3,13 +3,13 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
 arch=('x86_64')
 license=('BSD-3-Clause')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nodejs' 'nss' 'python')
+depends=('gtk3' 'libxss' 'nodejs' 'nss' 'python')
 optdepends=('ihaskell-git: support for Haskell'
             'julia: support for Julia (requires the "IJulia" package)'
             'python-ipykernel: support for Python 3'
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v${pkgver}/nteract_${pkgver}_amd64.deb"
         "LICENSE")
-sha256sums=('3e1b0b6c40afa987870fdfc6598cae94eec5ef627d6ecbe80afa1873fc787cb5'
+sha256sums=('823f91b3d4d2a2b2025618d0b7bde1990e32fe59b4255930abde41d5ec33cb4f'
             '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
 
 package() {
