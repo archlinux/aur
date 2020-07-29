@@ -1,14 +1,14 @@
 pkgbase = remote-desktop-manager
 	pkgdesc = Devolutions Remote Desktop Manager Enterprise centralizes all remote connections on a single platform that is securely shared between users and across the entire team.
-	pkgver = 2020.2.1.0
-	pkgrel = 2
+	pkgver = 2020.2.2.0
+	pkgrel = 1
 	url = https://remotedesktopmanager.com/
 	arch = x86_64
 	license = Proprietary
 	depends = webkit2gtk
 	options = !strip
-	source = RemoteDesktopManager_2020.2.1.0_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2020.2.1.0/RemoteDesktopManager_2020.2.1.0_amd64.deb
-	sha256sums = a529778fe2739024dcd3666f76d0ab1d46608d5c7f3644f30c22d8e2f6c5c2bf
+	source = RemoteDesktopManager_2020.2.2.0_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2020.2.2.0/RemoteDesktopManager_2020.2.2.0_amd64.deb
+	sha256sums = c5fc3c6453d843592e4dd86e970fa05df7fdd7a61079241bbe2300c3521c8f32
 
 pkgname = remote-desktop-manager
 
