@@ -1,6 +1,6 @@
 pkgbase = python-vegasflow
 	pkgdesc = Monte Carlo integration library written in Python and based on the TensorFlow framework
-	pkgver = 1.0.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://vegasflow.readthedocs.io/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-vegasflow
 	optdepends = python-cffi: interfacing vegasflow with C code
 	optdepends = python-tensorflow-cuda: GPU support
 	provides = vegasflow
-	source = https://github.com/N3PDF/vegasflow/archive/v.1.0.2.tar.gz
-	md5sums = 118fa9906f588ab7ecd320728c478ade
+    source = https://github.com/N3PDF/vegasflow/archive/v1.1.0.tar.gz
+	md5sums = 4fccae4f8d3add536f86694af6697bdc
 
 pkgname = python-vegasflow
 
