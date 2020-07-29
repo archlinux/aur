@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.7
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -68,7 +68,7 @@ _bfq_rev_path="bfq-reverts-all-v2"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v12"
-_bfq_rel="r2K200723"
+_bfq_rel="r2K200729"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-v2-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -78,10 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
+        "${_lucjanpath}/arch-updates-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-updates-v10-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-updates-v10-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -335,15 +334,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('9568f87d593ae56dee4c7b8594f495a9c971558a3c73de8bb27336877bd5e71500ec08d880c5854e52ce338775bb9c30a98c1b9cdb789dbedba95bd3d86362ca'
+sha512sums=('70dad9d4469f620df840dc00930218805df7fedb4cc2836df913eed36bf2c70c94c9256e7490db4ee6a40c49dd509ab9a46e4eb46c4c28ebebfbffeba48b944d'
             'SKIP'
             'b0f77cee611f7a18e623aa69a783ab567071edc7333169cf9ad724563f82ed8c0eb587c832b5e968e51d195d1f7ce94305504d266094401cbf48aef517e83e87'
-            '212cdb0c08338c858f01c9bc9cabfe9dffa476c26a0b6fef62e323e56e7373ae875b31b1a831a989fddce3cd899e7ec71eaf26bb4732884d9157c31f578b96fe'
+            'dab618159b488ae04d80405ac841354ab811eba81cec99dd09e9b992396038eb2a5326e8358a2b6d9d9e51558036c9ec2c6fd9ac9ad4781072016e5c41f69209'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            'ccff7e733e0943914eae6706330e41868886a8dabe4ca52ef4751824fd834602a8b8189065518d2047f1099e416cbec731b6848c076f77ef3756ce3a374c9bdc'
-            'a1eae2f0a2a20fb8d6ea7922c1d15cc4f0631f8baaf01ba9dd28e76ad9cababbbf702c7750ea2ea3ad95a46ee697111e7f67a0b93e13885419ec67e99b19542a'
-            'f7ba6783a013b42f2080c3eb6da3db626539f1528c3b07e2deb8e5eb01fb2caa5f5689943e67cdffe46fe184494af8df6f2bbf2f78d031bc19f8fb885c26e815'
-            '70db105a85a58d67cd650ae64cb543c4453e83bea41ad54edaf53d88bb2f75afe3d7c8d2f4b9e4c4c62a17efe5b36fcb8f6713512b8b4b7dc88e8f04a277390f'
+            '9ac046cc94e41eee9ca1b527f7f73510977a2255d6d9f8d4fa022304f09c4a32dd413cad8821b61586479c2093b9ec86386b801530308d16347342af59f5a376'
+            '663a0d0f9586837c7a460c13fadfd2d084a6505d9ad086e6fdeaf3a59123645edb91723d07142a9ec79dfab891053c0944e6b5a5dcb03736ece0d57d5e483908'
+            '49060330eae0b31e49b9360a11f3f48a3c0895301b97e79324913f99c008e54f8a9b9cb79df8b3794d81cfbe5648a21ae16034b26d7f7fbe2d33a2f8744aa894'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'b3755382f0a2a0e29820260893e1fa8a74efcb48f1bbddc80cb7448d7bd39243a27d23f29608e2179253b967eac6118891785b6729b995daad105e19e0e74be4')
 
