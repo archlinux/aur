@@ -3,7 +3,7 @@
 
 _gitname=FiraCode
 pkgname=otf-fira-code-git
-pkgver=5.2.r4.g1a60382
+pkgver=5.2.r5.g64c21a4
 pkgrel=1
 pkgdesc="Monospaced font with programming ligatures"
 arch=('any')
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
 	cd "$_gitname"
-    ./scripts/build
+    ./script/build
 }
 
 package() {
