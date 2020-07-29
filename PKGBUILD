@@ -25,4 +25,5 @@ build() {
 
 package() {
   install -Dm 755 "$srcdir"/Nova-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm 755 "$srcdir"/Nova-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
