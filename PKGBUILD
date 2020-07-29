@@ -2,7 +2,7 @@
 
 pkgname=rustscan
 _pkgname=RustScan
-pkgver=1.2.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Faster Nmap Scanning with Rust"
 arch=("x86_64" "i686")
@@ -13,7 +13,7 @@ conflicts=('rustscan')
 depends=("nmap")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f7411b4964e65e6593754920cfddb159cef08f3111955b4b3190ac5667a46e44')
+sha256sums=('3bbaf188fa4014a57596c4d4f928b75bdf42c058220424ae46b94f3a36b61f81')
 
 build() {
   cd ${_pkgname}-${pkgver}
