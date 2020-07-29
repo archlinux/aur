@@ -4,3 +4,4 @@ pkg/
 *.deb
 *.AppImage
 squashfs-root/
+*.aria2
