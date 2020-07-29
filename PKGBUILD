@@ -6,11 +6,11 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Customizable LightDM Webkit Greeter Theme"
 arch=('any')
-url="https://github.com/muhammadsayuti/lightdm-webkit-theme-luminos"
+url="https://github.com/linuxaddict89/lightdm-webkit-theme-luminos"
 license=('GPLv2')
 depends=('lightdm' 'lightdm-webkit2-greeter')
 makedepends=('imagemagick' 'nodejs' 'npm' 'git')
-source=('git://github.com/muhammadsayuti/lightdm-webkit-theme-luminos.git')
+source=('git://github.com/linuxaddict89/lightdm-webkit-theme-luminos.git')
 provides=('lightdm-webkit-theme-luminos')
 conflicts=('lightdm-webkit-theme-luminos')
 md5sums=('SKIP')
@@ -27,7 +27,7 @@ package()
   cd ${_pkgname}
   rm -rf .git
   rm -f .gitignore
-  echo "Removing dev files"
+  msg "Removing dev files"
   rm -rf node_modules
   rm -rf tasks
   rm -f package.json

@@ -2,7 +2,7 @@ pkgbase = lightdm-webkit-theme-luminos-git
 	pkgdesc = Customizable LightDM Webkit Greeter Theme
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/muhammadsayuti/lightdm-webkit-theme-luminos
+	url = https://github.com/linuxaddict89/lightdm-webkit-theme-luminos
 	arch = any
 	license = GPLv2
 	makedepends = imagemagick
@@ -13,7 +13,7 @@ pkgbase = lightdm-webkit-theme-luminos-git
 	depends = lightdm-webkit2-greeter
 	provides = lightdm-webkit-theme-luminos
 	conflicts = lightdm-webkit-theme-luminos
-	source = git://github.com/muhammadsayuti/lightdm-webkit-theme-luminos.git
+	source = git://github.com/linuxaddict89/lightdm-webkit-theme-luminos.git
 
 pkgname = lightdm-webkit-theme-luminos-git
 
