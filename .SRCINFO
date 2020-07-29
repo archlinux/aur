@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-vimlsp-git
+	pkgdesc = VimL support for coc.nvim
+	pkgver = v0.8.0.r6.g0b7001d
+	pkgrel = 1
+	url = https://github.com/iamcco/coc-vimlsp
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	provides = neovim-coc-vimlsp
+	conflicts = neovim-coc-vimlsp
+	source = coc-vimlsp::git+https://github.com/iamcco/coc-vimlsp.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-vimlsp-git
+
