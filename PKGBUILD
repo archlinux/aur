@@ -1,8 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Michael Nussbaum <michaelnussbaum08@gmail.com>
 
 _gemname=ast
 pkgname=ruby-$_gemname
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A library for working with Abstract Syntax Trees"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('a7270b78d8c970e90a5b932471c691e3ca74aa8be030f1a954d38ec487d79aa0')
+sha256sums=('4a54905a05a3ae848ec67d81a79625b77b92feb91090ab46a2bdcaff193264d0')
 noextract=("${pkgname#*-}-$pkgver.gem")
 
 package() {
