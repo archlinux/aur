@@ -1,6 +1,6 @@
 # Maintainer: Kobus van Schoor <v dot schoor dot kobus at gmail dot com>
 pkgname=dotgit-git
-pkgver='2.0.0a9'
+pkgver='2.0.0a10'
 pkgrel=0
 pkgdesc='A comprehensive solution to managing your dotfiles'
 url='https://github.com/kobus-v-schoor/dotgit'
