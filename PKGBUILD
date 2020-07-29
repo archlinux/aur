@@ -1,5 +1,6 @@
 # Maintainer: <djt3 {at} protonmail{dot}com>
 pkgname=tuitube-git
+pkgver=git
 pkgrel=1
 pkgdesc="minimal tui youtube (invidious) frontend made in c++"
 arch=('any')
