@@ -1,18 +1,17 @@
 pkgbase = r-sys
 	pkgdesc = Powerful and Reliable Tools for Running System Commands in R
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sys
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r
 	optdepends = r-unix
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/sys_3.3.tar.gz
-	md5sums = 40e3410254657d487cd9f19391fb6118
+	source = https://cran.r-project.org/src/contrib/sys_3.4.tar.gz
+	md5sums = 8648c35f0ff460481f88fc5e2c81ab8f
 
 pkgname = r-sys
 
