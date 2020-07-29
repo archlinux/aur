@@ -1,6 +1,6 @@
 # Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=delicolour
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Colour finder utility (GUI)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 provides=('delicolour')
 conflicts=('delicolour')
 source=("https://github.com/eepp/delicolour/archive/v$pkgver.tar.gz")
-md5sums=('7882b240043ebf10ed3139f69dfffd3f')
+md5sums=('23927935c843c5ad6e1ef23a6dbf205a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
