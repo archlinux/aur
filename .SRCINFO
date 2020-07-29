@@ -1,6 +1,6 @@
 pkgbase = dwm-ekollof-git
 	pkgdesc = Emiel Kollof's personal patched build of dwm.
-	pkgver = 6.2.r23.4e1f126
+	pkgver = 6.2.r25.0f2ed0d
 	pkgrel = 1
 	url = https://git.hackerheaven.org/ekollof/dwm-ekollof.git
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = dwm-ekollof-git
 	depends = ttf-joypixels
 	depends = dbus
 	depends = libxft-bgra
-	depends = dwm-ekollof-git
 	depends = dwmblocks-ekollof-git
 	depends = dmenu-ekollof-git
 	depends = dunst
