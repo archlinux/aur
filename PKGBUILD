@@ -22,7 +22,7 @@ depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
 optdepends=('cuda: CUDA support in Cycles'
             'optix: OptiX support in Cycles'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
@@ -85,7 +85,7 @@ build() {
       _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
   fi
 
-  cmake -S "$srcdir/blender" -B build \
+  cmake -G Ninja -S "$srcdir/blender" -B build \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
@@ -94,12 +94,12 @@ build() {
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
-  make
+  ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
 }
 
 package() {
   _suffix=${pkgver%%.r*}
-  make -C "$srcdir/build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped

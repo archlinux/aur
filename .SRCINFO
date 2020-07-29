@@ -10,6 +10,7 @@ pkgbase = blender-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = mesa
+	makedepends = ninja
 	makedepends = llvm
 	depends = alembic
 	depends = libgl
