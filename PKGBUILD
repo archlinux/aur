@@ -39,6 +39,11 @@ prepare() {
 		-e 's/\(import.*\)/\1\nfrom setuptools_git_ver import version_from_git/' \
 		-e 's/setup_requires.*//' \
 		-e 's/version_format.*/version=version_from_git(),/' setup.py
+
+	# Deactivate hardcoded debug mode
+	sed -i \
+		"s/DEBUG = True/DEBUG = False/" \
+		ai_dungeon_cli/__init__.py
 }
 
 build() {
