@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-python37-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
-	pkgver = 3.7.6
+	pkgver = 3.7.8
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = any
@@ -9,19 +9,19 @@ pkgbase = mingw-w64-python37-bin
 	makedepends = mingw-w64-binutils
 	depends = mingw-w64-openssl
 	optdepends = mingw-w64-wine: runtime support
-	noextract = python-3.7.6-embed-win32.zip
-	noextract = python-3.7.6-embed-amd64.zip
+	noextract = python-3.7.8-embed-win32.zip
+	noextract = python-3.7.8-embed-amd64.zip
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://www.python.org/ftp/python/3.7.6/python-3.7.6-embed-win32.zip
-	source = https://www.python.org/ftp/python/3.7.6/python-3.7.6-embed-amd64.zip
-	source = https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tgz
+	source = https://www.python.org/ftp/python/3.7.8/python-3.7.8-embed-win32.zip
+	source = https://www.python.org/ftp/python/3.7.8/python-3.7.8-embed-amd64.zip
+	source = https://www.python.org/ftp/python/3.7.8/Python-3.7.8.tgz
 	source = wine-python.sh
-	sha256sums = e2257b87e2e1a131e5d2adf843887fdab5021f8d4d6d68d49691aa965650c3ab
-	sha256sums = 114638061d636285600cbc3d4def64b45c43da9b225cb9eeead30fe7fe7d60d4
-	sha256sums = aeee681c235ad336af116f08ab6563361a0c81c537072c1b309d6e4050aa2114
-	sha256sums = SKIP
+	sha256sums = 293fa4c073fa627c8c5d9f2f1345dd9c913dde6a65f748a0b38e019f25d4c77e
+	sha256sums = 88a033a378437f0d000cfaa2752f4ca860d06b06f17e58a7f31be44b12787a35
+	sha256sums = 0e25835614dc221e3ecea5831b38fa90788b5389b99b675a751414c858789ab0
+	sha256sums = 86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8
 
 pkgname = mingw-w64-python37-bin
 
