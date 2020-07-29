@@ -9,7 +9,7 @@ url="https://github.com/nichobi/${pkgname}"
 license=('GPL3')
 depends=('bash')
 makedepends=('git')
-provides=('ronin')
+provides=('runin')
 source=(git+$url)
 md5sums=(SKIP)
 

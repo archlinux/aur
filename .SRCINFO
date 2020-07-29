@@ -7,7 +7,7 @@ pkgbase = runin
 	license = GPL3
 	makedepends = git
 	depends = bash
-	provides = ronin
+	provides = runin
 	source = git+https://github.com/nichobi/runin
 	md5sums = SKIP
 
