@@ -3,7 +3,7 @@ _variant='neovim'
 _extname=coc-clangd
 _packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
 url='https://github.com/clangd/coc-clangd'
-pkgdesc='clangd extension for coc.nvim'
+pkgdesc='C/C++/ObjC support for coc.nvim (powered by clangd)'
 
 pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
