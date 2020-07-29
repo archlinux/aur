@@ -1,0 +1,16 @@
+pkgbase = python-aliyun-python-sdk-kms
+	pkgdesc = Alibaba Cloud SDK for Python.
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = https://github.com/aliyun/aliyun-openapi-python-sdk/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-aliyun-python-sdk-core
+	provides = python-aliyun-python-sdk-kms-git
+	conflicts = python-aliyun-python-sdk-kms-git
+	source = https://files.pythonhosted.org/packages/e0/90/53403e07470ae560b0a69bf3c0ada9cc4c7a86c8bc0ac593b95839f5602a/aliyun-python-sdk-kms-2.11.0.tar.gz
+	sha256sums = 6fad3918ae4a45c93e47bea897e9933dc154dc6224a708dcb686a6a9e82f93d2
+
+pkgname = python-aliyun-python-sdk-kms
+
