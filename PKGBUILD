@@ -3,12 +3,13 @@
 
 pkgname=targetd-git
 pkgver=0.8.12.2.g0322c1a
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote configuration of a LIO-based storage appliance"
 arch=('any')
 url="https://github.com/open-iscsi/targetd"
 license=('GPL3')
 provides=('targetd')
+conflicts=('targetd')
 source=("$pkgname::git+https://github.com/open-iscsi/targetd")
 sha256sums=('SKIP')
 makedepends=('python-setuptools')
