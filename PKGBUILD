@@ -7,7 +7,7 @@ url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2')
 source=(https://codeberg.org/dnkl/foot/archive/1.4.4.tar.gz
         https://codeberg.org/dnkl/tllist/archive/1.0.1.tar.gz
         https://codeberg.org/dnkl/fcft/archive/2.2.3.tar.gz)
