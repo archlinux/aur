@@ -6,7 +6,6 @@ pkgbase = oneshot-bin
 	arch = x86_64
 	license = MIT
 	provides = oneshot
-	noextract = oneshot-1.1.3.tar.gz
 	source = oneshot-1.1.3.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v1.1.3/oneshot_1.1.3.linux-x86_64.tar.gz
 	sha256sums = 2cc34898b9ac2852e225f65c0158acc3534448f10603928f4d3bcca2cfcb7cee
 

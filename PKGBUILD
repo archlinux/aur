@@ -10,19 +10,12 @@ url='https://github.com/raphaelreyna/oneshot'
 license=('MIT')
 provides=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-x86_64.tar.gz")
-noextract=("${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('2cc34898b9ac2852e225f65c0158acc3534448f10603928f4d3bcca2cfcb7cee')
 
-prepare() {
-  # Avoid archive contents being extracted directly into srcdir 
-  install -d "${_pkgname}-${pkgver}"
-  tar -xf "${_pkgname}-${pkgver}.tar.gz" --directory "${_pkgname}-${pkgver}"
-}
-
 package() {
-  install -Dm755 "${_pkgname}-${pkgver}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
