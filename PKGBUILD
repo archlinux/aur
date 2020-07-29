@@ -4,15 +4,14 @@
 # Contributor: Alasdair Haswell <ali at arhaswell dot co dot uk>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=meanwhile
+pkgname=('meanwhile' 'meanwhile-docs')
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for connecting to an IBM Sametime community"
 arch=('i686' 'x86_64')
 url="https://github.com/obriencj/meanwhile"
+makedepends=('doxygen')
 license=('LGPL3')
-depends=('glib2')
-conflicts=('meanwhile-svn')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/obriencj/meanwhile/archive/v${pkgver}.tar.gz
         fix_groupchat.patch)
 sha256sums=('10de306f03897572b30ce68ca80dffd04ec218f6842bbe0a47bb8cce933698d0'
@@ -30,11 +29,24 @@ build() {
   CXXFLAGS="${CFLAGS}"
   export CFLAGS CXXFLAGS
 
-  ./configure --prefix=/usr --disable-doxygen --disable-mailme
+  ./configure --prefix=/usr --enable-doxygen --disable-mailme
   make
 }
 
-package() {
+check() {
+  cd "$pkgname-$pkgver"  
+  make check
+}
+
+package_meanwhile() {
+  depends=('glib2')
   cd "$pkgname-$pkgver"
   make DESTDIR=$pkgdir install
+  rm -rf "$pkgdir"/usr/share
+}
+
+package_meanwhile-docs() {
+  cd "${pkgname%-docs}-$pkgver"
+  make DESTDIR=$pkgdir install
+  rm -rf "$pkgdir"/usr/{lib,include}
 }

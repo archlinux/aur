@@ -1,17 +1,19 @@
 pkgbase = meanwhile
 	pkgdesc = Library for connecting to an IBM Sametime community
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obriencj/meanwhile
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	depends = glib2
-	conflicts = meanwhile-svn
+	makedepends = doxygen
 	source = meanwhile-1.1.1.tar.gz::https://github.com/obriencj/meanwhile/archive/v1.1.1.tar.gz
 	source = fix_groupchat.patch
 	sha256sums = 10de306f03897572b30ce68ca80dffd04ec218f6842bbe0a47bb8cce933698d0
 	sha256sums = 54d0faa5702e3b89be2a4fe994cfb2c373f409add3ba6b340a06f183c7446b21
 
 pkgname = meanwhile
+	depends = glib2
+
+pkgname = meanwhile-docs
 
