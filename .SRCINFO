@@ -1,0 +1,16 @@
+pkgbase = picsim
+	pkgdesc = Emulates some PIC microcontroller and periferics such as USART and timers, the simulator architecture permit easy implementation of external elements in C
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/lcgamboa/picsim
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc9
+	makedepends = doxygen
+	depends = glibc
+	options = staticlibs
+	source = picsim-0.8.1.tar.gz::https://github.com/lcgamboa/picsim/archive/v0.8.1.tar.gz
+	sha256sums = e7b58920ef4bdc8720338a38bad6890b687fbc37423e9537e961ac222d47dd73
+
+pkgname = picsim
+
