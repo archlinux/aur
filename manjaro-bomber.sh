@@ -242,6 +242,11 @@ post_upgrade() {
 		pacman -Rdd --noconfirm manjaro-application-utility
     fi
     # at last mhwd changes
+    rm -rf /var/lib/mhwd/db/pci/graphic_drivers/intel-nvidia-optimus-manager/
+    rm -rf /var/lib/mhwd/db/pci/network_drivers/r8168/
+    rm -rf/var/lib/mhwd/db/pci/network_drivers/rtlwifi_new-dkms/
+    
+    
     
     mhwd -f -a pci nonfree 0300
     
