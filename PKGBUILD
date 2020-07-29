@@ -2,9 +2,9 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.19.0
-pkgrel=3
-_jslibcommit='57ace4084556758fdc2989cf1a8cf6a5d1736a29'
+pkgver=1.20.0
+pkgrel=1
+_jslibcommit='fe167beda9aa87b792fde2aa05db9cf167388f9a'
 _nodeversion='10.20.1'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "package.json.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('c941d6ebbfb96a5e412884b85d65feef50f061819d330b359d54fe6a32deeddd279bb92ac9bd7efb64a8ccbab489ecd86b4d7b50f88442dd69d33062030f3b7b'
-            '771c7d61a17c6f8066e61d17895ab89ee188db43111de774ff7488bc701cc5e10e56f45e18e5bbd5b13cbf5bc54d6cb7d8bc7df4cff3ba62b71d0432d30ac8cf'
+sha512sums=('695e597765719e1524c62a73d3d0d4ecd9a9b24b7b1a0023092758f7f301e730f3a3c2c15e8c1ab6926df7d55b73faf2967bf8ba907b709f4231317960977d55'
+            '6de5bfed9d4442f673dbff93e5aef157fa89fed31bb5f3807f9c97058ea4c77dd67792c2323e93254f4fa53b49359fd00e13717ea616f3e663e9aab59c343b0f'
             'b6b4b52ab3ab8e4ae726bbfad0027a0de0978bbf427bfe7582561114ad421f6778d83661423fac712f920cfac18d4045961591e00df3587fbf95942fa70ee50b'
             '724b548688e2af1d8d25e6ebe6e35831e891453f2df011e5fa757b57fcbcfef3c171510be4537652891441c65121bd9766f372f82d3edd5971fb77b726409575'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
