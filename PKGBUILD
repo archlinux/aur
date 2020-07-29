@@ -1,5 +1,3 @@
-# Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
-
 pkgname=wsjtx
 pkgver=2.2.1
 pkgrel=1
