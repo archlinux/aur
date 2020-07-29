@@ -28,11 +28,11 @@ pkgver() {
 build() {
     cd "${srcdir}/${_extname}"
     yarn install --frozen-lockfile
-    yarn pack --frozen-lockfile --production
+    yarn pack
     tar xvf *.tgz
     rm *.tgz
     cd package
-    npm install --only=production
+    npm install --only=production --no-lockfile --ignore-scripts
 }
 
 package() {
