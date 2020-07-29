@@ -1,6 +1,6 @@
 pkgbase = ipmiview
 	pkgdesc = Supermicro IPMI tool
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ipmiview
 	backup = email.properties
 	backup = IPMIView.properties
 	backup = timeout.properties
-	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.16.0_build.190815_bundleJRE_Linux_x64.tar.gz
+	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.17.0_build.200505_bundleJRE_Linux_x64.tar.gz
 	source = ipmiview.desktop
-	sha512sums = 9a6af293a08dcdb662a226c061590e7149e5cee0a69eca12906e4581e254d3293d27e71dd36c301a449a43a10be700f3023f8408bdda5a3b9b65d76c96eaa3d7
+	sha512sums = 17ed72e802fb0a55c140f98262575385ede2d490484fe926bb7ff19f34e5a376f2d21025e99318d2001b042487729dc8b07b38cca4bf62df6e04d7df0d1d3091
 	sha512sums = 683922d5ce90116ca04fbf1a244da87296beaf079ecde94d799b2d303e21dfda4e771f5a4b724e7dd64143feaef49d2f11fd2eaf380ebdcf02e9db82c9975497
 
 pkgname = ipmiview
