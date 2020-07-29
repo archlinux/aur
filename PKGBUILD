@@ -1,7 +1,6 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.4'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full-git
