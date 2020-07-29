@@ -1,6 +1,6 @@
 pkgbase = freeorion-git
 	pkgdesc = turn-based space empire and galactic conquest (4X) computer game
-	pkgver = 0.4.9.1229.g43d633311
+	pkgver = 0.4.9.1337.g7d37633fd
 	pkgrel = 1
 	url = http://www.freeorion.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = freeorion-git
 	makedepends = cmake
 	makedepends = git
 	depends = boost-libs
-	depends = python2
+	depends = python
 	depends = sdl2
 	depends = libvorbis
 	depends = glew
@@ -19,7 +19,7 @@ pkgbase = freeorion-git
 	depends = freetype2
 	provides = freeorion
 	conflicts = freeorion
-	source = freeorion-git::git+https://github.com/freeorion/freeorion.git#branch=master
+	source = freeorion-git::git+https://github.com/freeorion/freeorion.git
 	md5sums = SKIP
 
 pkgname = freeorion-git

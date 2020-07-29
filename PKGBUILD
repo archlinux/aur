@@ -10,41 +10,37 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=0.4.9.1229.g43d633311
+pkgver=0.4.9.1337.g7d37633fd
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('boost-libs' 'python2' 'sdl2' 'libvorbis' 'glew' 'openal' 'hicolor-icon-theme' 'freetype2')
+depends=('boost-libs' 'python' 'sdl2' 'libvorbis' 'glew' 'openal' 'hicolor-icon-theme' 'freetype2')
 makedepends=('boost' 'cmake' 'git')
 provides=('freeorion')
 conflicts=('freeorion')
 
-source=("$pkgname::git+https://github.com/freeorion/freeorion.git#branch=master")
+source=("$pkgname::git+https://github.com/freeorion/freeorion.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   git describe --long --tags | sed 's/^with.FreeOrionSDK.v11-//;s/^/0.4.9./;s/-/./g'
 }
 
 prepare() {
   cd $srcdir/$pkgname
-
   mkdir -p build
 }
 
 build() {
   cd $srcdir/$pkgname/build
-
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
-
   make
 }
 
