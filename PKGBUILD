@@ -13,6 +13,7 @@ url="http://gnu-mcu-eclipse.github.io"
 install="eclipse-arm.install"
 license=("GPL")
 options=('!strip')
+makedepends=('unzip')
 depends=('eclipse-cpp')
 source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$_date/ilg.gnumcueclipse.repository-$pkgver-$_date.zip")
 sha512sums=('0bb427417f93b7a79f9bb4dc838f705544d0d23d630b35fdb90423e32c1ee20f3b308a2e95e6fb0a881e0b82678cb68538be7df410540fbf45729c40efa107eb')
@@ -28,7 +29,7 @@ package() {
       install -dm755 "${_dest}/${_feature%*.jar}"
       cd "${_dest}/${_feature/.jar}"
       # extract features (otherwise they are not visible in about dialog)
-      jar xf "${srcdir}/${_feature}" || return 1
+      unzip "${srcdir}/${_feature}" || return 1
     else
       install -Dm644 "${_feature}" "${_dest}/${_feature}"
     fi
@@ -40,7 +41,7 @@ package() {
       install -dm755 "${_dest}/${_plugin%*.jar}"
       cd "${_dest}/${_plugin/.jar}"
       # extract plugins (otherwise their content in not accessible from within eclipse)
-      jar xf "${srcdir}/${_plugin}" || return 1
+      unzip "${srcdir}/${_plugin}" || return 1
     else
       install -Dm644 "${_plugin}" "${_dest}/${_plugin}"
     fi
