@@ -1,6 +1,6 @@
 pkgbase = plymouth-kcm
 	pkgdesc = KCM to manage the Plymouth (Boot) theme
-	pkgver = 5.19.3
+	pkgver = 5.19.4
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plymouth-kcm.git
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = plymouth-kcm
 	depends = ki18n
 	depends = kdeclarative
 	depends = kcmutils
-	source = https://download.kde.org/stable/plasma/5.19.3/plymouth-kcm-5.19.3.tar.xz
-	source = https://download.kde.org/stable/plasma/5.19.3/plymouth-kcm-5.19.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.19.4/plymouth-kcm-5.19.4.tar.xz
+	source = https://download.kde.org/stable/plasma/5.19.4/plymouth-kcm-5.19.4.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
-	sha256sums = 550522b89b9dac65b110863185bfa134a43763475b4f0c35a20ea292823d8253
+	sha256sums = 4feb92e731c8f61cc18a62ddac165123db822c4e0c931a16ba986505d079e222
 	sha256sums = SKIP
 
 pkgname = plymouth-kcm
