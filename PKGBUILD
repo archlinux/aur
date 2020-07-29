@@ -2,7 +2,7 @@
 # Contributor: Hubbe King <hubbe128@gmail.com>
 
 pkgname=targetd-git
-pkgver=0.8.8.69.g0322c1a
+pkgver=0.8.12.2.g0322c1a
 pkgrel=1
 pkgdesc="Remote configuration of a LIO-based storage appliance"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('zfs-utils: ZFS block device support'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe | sed -e 's/v//g' -e 's/-/./g'
+  git describe --tags | sed -e 's/v//g' -e 's/-/./g'
 }
 
 package() {
