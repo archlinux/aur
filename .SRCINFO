@@ -1,0 +1,19 @@
+pkgbase = vim-coc-clangd-git
+	pkgdesc = clangd extension for coc.nvim
+	pkgver = r102.fd082e5
+	pkgrel = 1
+	url = https://github.com/clangd/coc-clangd
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	depends = git
+	depends = clang
+	provides = vim-coc-clangd
+	conflicts = vim-coc-clangd
+	source = coc-clangd::git+https://github.com/clangd/coc-clangd.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-clangd-git
+
