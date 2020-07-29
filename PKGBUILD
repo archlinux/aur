@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/SELinuxProject/cil/wiki'
 license=('custom')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
+checkdepends=('checkpolicy')
 depends=('libsepol>=3.1')
 source=("https://github.com/SELinuxProject/selinux/releases/download/20200710/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('86117246fec3017af710a9ff7c1dae3ed1cd571e232a86cff3e2a3de2d6aa65c')
