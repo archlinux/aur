@@ -1,7 +1,7 @@
 pkgbase = gnome-remote-desktop-git
 	pkgdesc = Remote desktop daemon for GNOME using pipewire
-	pkgver = 0.1.6.6.g2ce8dce
-	pkgrel = 2
+	pkgver = 0.1.8.33.g392e7fc
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = gnome-remote-desktop-git
 	makedepends = git
 	makedepends = meson
 	depends = dconf
+	depends = freerdp
 	depends = libvncserver
 	depends = libnotify
 	depends = libsecret
