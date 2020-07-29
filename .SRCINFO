@@ -1,24 +1,24 @@
 pkgbase = r-data.table
-	pkgdesc = Extension of data.frame
-	pkgver = 1.12.8
+	pkgdesc = Extension of 'data.frame'
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=data.table
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = MPL2
-	makedepends = gcc
 	depends = r>=3.1.0
 	depends = zlib
 	optdepends = r-bit64
 	optdepends = r-curl
 	optdepends = r-r.utils
-	optdepends = r-knitr
 	optdepends = r-xts
 	optdepends = r-nanotime
 	optdepends = r-zoo
 	optdepends = r-yaml
-	source = http://cran.r-project.org/src/contrib/data.table_1.12.8.tar.gz
-	md5sums = 60720bb81e1b04bb23103ec1e3be15b3
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/data.table_1.13.0.tar.gz
+	md5sums = 9d4987a86d06e5f8f098095d2643f48b
 
 pkgname = r-data.table
 
