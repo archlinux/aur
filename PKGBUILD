@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=otf-ibm-plex
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="IBM Plex Mono, Sans, and Serif typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=('any')
 license=('custom')
 source=("${pkgname#otf-}-$pkgver-opentype.zip::$url/releases/download/v$pkgver/OpenType.zip")
-sha256sums=('6ff75e60096deb3ac3c2e229631e72d6007f7d1cd17e7381a9d32a16b63f422e')
+sha256sums=('639dbae580ea1cb5849511dbefdfeed50686457dda18e57777ffc53ff485d4ca')
 
 package() {
   cd OpenType
