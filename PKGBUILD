@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch-git
-pkgver=3.1.r1.ga6aff19
+pkgver=3.1.r5.gf56b62b
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
@@ -23,7 +23,7 @@ pkgver() {
 # Artix will be used when no /etc/os-release file on your system
 build() {
     cd "${pkgname}"
-    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=artix
+    make bitfetch
 }
 
 package() {
