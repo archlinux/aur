@@ -2,7 +2,7 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ddgr
-pkgver=1.8.1
+pkgver=1.9
 pkgrel=1
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('ddgr-git')
 source=("https://github.com/jarun/ddgr/archive/v$pkgver.tar.gz")
-sha256sums=('d223a3543866e44e4fb05df487bd3eb23d80debc95f116493ed5aad0d091149e')
+sha256sums=('3dfe82fab649f1cec904a1de63f78692be329a3b6928c1615f22c76f6e21c36f')
 
 package() {
   make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" install
