@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-datetime
 	pkgdesc = Ayatana Indicator providing clock and calendar
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -20,11 +20,12 @@ pkgbase = ayatana-indicator-datetime
 	makedepends = properties-cpp
 	depends = glib2
 	depends = evolution-data-server
+	depends = libaccounts-glib
 	optdepends = mate-ayatana-indicator-applet
 	optdepends = geoclue
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.4.0.tar.gz
-	md5sums = 549fce965056f6c097567b17ad751c6c
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.4.1.tar.gz
+	md5sums = 0ec75586cd8dbbe2d0eb231f3f4d9b0b
 
 pkgname = ayatana-indicator-datetime
 
