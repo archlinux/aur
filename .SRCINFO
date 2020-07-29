@@ -10,6 +10,7 @@ pkgbase = wayst-git
 	depends = freetype2
 	depends = fontconfig
 	depends = libxkbcommon
+	depends = libxrandr
 	provides = wayst
 	conflicts = wayst
 	source = git+https://github.com/91861/wayst.git
