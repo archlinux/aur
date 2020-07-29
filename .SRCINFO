@@ -1,14 +1,14 @@
 pkgbase = wbsv
 	pkgdesc = CLI tool for saving webpages to the Wayback Machine
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eggplants/wbsv-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-beautifulsoup4
 	depends = python-savepagenow
-	source = https://files.pythonhosted.org/packages/source///-0.2.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/w/wbsv/wbsv-0.2.5.tar.gz
 	source = wbsv-0.2.5-LICENSE::https://raw.githubusercontent.com/eggplants/wbsv-cli/master/LICENSE
 	sha256sums = ea7ea2d89c3ca65d1e6eb264a9620a2bafaefadba5b0c260bef32be456c535ac
 	sha256sums = SKIP
