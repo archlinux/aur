@@ -1,0 +1,23 @@
+post_install () {
+	common
+}
+
+post_upgrade() {
+	common
+}
+
+common () {
+	if ! getent group tgenv >/dev/null ; then
+		echo "Adding group 'tgenv'"
+		groupadd tgenv
+	fi
+	mkdir -p "/var/lib/tgenv/versions"
+	touch "/var/lib/tgenv/version"
+	chgrp -R tgenv "/var/lib/tgenv/versions" "/var/lib/tgenv/version"
+	chmod -R 775 "/var/lib/tgenv/versions" "/var/lib/tgenv/version"
+	echo '######################################'
+	echo '# In order to be able to install and change terragrunt versions as a non-root user, please add it to the group tgenv'
+	echo '#   sudo usermod -aG tgenv ${USER}'
+	echo '######################################'
+}
+

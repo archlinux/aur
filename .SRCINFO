@@ -1,0 +1,15 @@
+pkgbase = tgenv
+	pkgdesc = Terragrunt version manager inspired by tfenv
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/cunymatthieu/tgenv
+	install = tgenv.install
+	arch = x86_64
+	license = MIT
+	provides = terragrunt
+	conflicts = terragrunt
+	source = https://github.com/cunymatthieu/tgenv/archive/v0.0.3.tar.gz
+	sha512sums = 0e8cc9f360bd2efd84cec2f97eb79d290a64f8b1df57f4d9253bba77cc63dd0b06382c1c793c8e1093e25977e133eb49f5fa1f885a4a229ee701701bc4f29323
+
+pkgname = tgenv
+
