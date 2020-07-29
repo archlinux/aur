@@ -2,7 +2,7 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
