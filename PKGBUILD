@@ -3,7 +3,7 @@ _variant='vim'
 _extname=coc-tsserver
 _packdir="usr/share/vim/vimfiles/pack/coc/start/${_extname}"
 url='https://github.com/neoclide/coc-tsserver'
-pkgdesc='Tsserver extension for coc.nvim that provide rich features like VSCode for javascript & typescript'
+pkgdesc='JavaScript & TypeScript support for coc.nvim'
 
 pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
