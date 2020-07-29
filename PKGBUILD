@@ -21,6 +21,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix: OptiX support in Cycles'
+            'usd=20.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
@@ -36,6 +37,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+        usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
         )
 sha256sums=('SKIP'
@@ -43,6 +45,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
             '43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea')
 
 pkgver() {
@@ -58,7 +61,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v "${srcdir}"/embree.patch
+  git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
 build() {
@@ -85,6 +88,13 @@ build() {
   _OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
   if [ "$_OIDN_PKG" != "" ]; then
       _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
+  fi
+
+  # check for universal scene descriptor
+  _USD_PKG=`pacman -Qq usd=20.05 2>/dev/null` || true
+  if [ "$_USD_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_USD=ON
+                    -DUSD_ROOT=/usr )
   fi
 
   cmake -G Ninja -S "$srcdir/blender" -B build \
