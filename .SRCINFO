@@ -1,0 +1,14 @@
+pkgbase = clpm
+	pkgdesc = Common Lisp Package Manager
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://gitlab.common-lisp.net/clpm/clpm
+	arch = x86_64
+	license = BSD
+	depends = sbcl
+	provides = clpm
+	source = clpm::git+https://gitlab.common-lisp.net/clpm/clpm.git#tag=v0.3.4
+	md5sums = SKIP
+
+pkgname = clpm
+
