@@ -3,7 +3,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.134
+pkgver=${_basever}.135
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -18,7 +18,6 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz #ignore signature
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
-  config.alt     # alternate config, curently just CONFIG_REFCOUNT_FULL
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
 #validpgpkeys=(
@@ -27,8 +26,7 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'c3865e98700c524e78ce4b802b3dcbd8318a9fc1ded3a37f99325a73d3ca971d'
-            '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
+            '9917c1bf184c6fddfee093c9074132e2e2e16d356f7c523eb03b9c14f1e45d6a'
             '9bc1ea92e6ddefaa594d7383a2c1bea0fbe5efea8030b5a9cf55b6eeb3fbcaab'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
