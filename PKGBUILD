@@ -1,6 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-epsilon
-pkgver=14.4.0
+pkgver=14.4.1
+_pkgver=b83c686773b00d8a6ed2919672fd6cda6e14285a
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Epsilon firmware)"
 arch=('x86_64')
@@ -16,23 +17,23 @@ replaces=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/numworks/epsilon/archive/$pkgver.tar.gz")
-md5sums=('9aaba24ee381925dfc832444c8bd5871')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/numworks/epsilon/archive/$_pkgver.tar.gz")
+md5sums=('eb2f532e6d06294bffce750015f21097')
 
 prepare() {
-	cd "epsilon-$pkgver"
+	cd "epsilon-$_pkgver"
 	convert -background "#FFB734" "ion/src/simulator/assets/logo.svg" "$pkgname.png"
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Numworks Epsilon" --icon "$pkgname" --exec "$pkgname" --categories "Education;Emulator"
 }
 
 build() {
-	cd "epsilon-$pkgver"
+	cd "epsilon-$_pkgver"
 	make PLATFORM=simulator clean
 	make PLATFORM=simulator
 }
 
 package() {
-	cd "epsilon-$pkgver"
+	cd "epsilon-$_pkgver"
 	install -Dm755 output/release/simulator/linux/epsilon.bin "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
