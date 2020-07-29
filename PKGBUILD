@@ -1,8 +1,8 @@
 # Maintainer: Olivier Le Moal
 
 pkgname=sdrangel-bin
-pkgver=4.14.17
-_subver=207
+pkgver=4.14.18
+_subver=226
 pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
@@ -16,7 +16,7 @@ depends=('pkg-config' 'log4cpp' 'opencv' 'fftw' 'ffmpeg'
 optdepends=('ffmpeg: DATV demodulator')
 provides=("sdrangel")
 source=("https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel-${_subver}-master.tar.gz")
-sha256sums=('ebc18df8761edb380189a7ace5c11c16f5ff145830e8fcd17bec5c19c5a695d9')
+sha256sums=('c29bfeafb78562221b918f58185c53fb1acb70dfc1db08df13c08a011878a4ad')
 
 prepare() {
     cd "sdrangel-${_subver}-master"
