@@ -3,7 +3,7 @@
 
 pkgname=orocos-kdl-python-git
 pkgver=r931.546d04d
-pkgrel=2
+pkgrel=3
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains (Python binding)"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
@@ -28,6 +28,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PYKDL_PYBIND11=OFF \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         .
 
   make
