@@ -2,12 +2,14 @@ pkgbase = tuitube-git
 	pkgdesc = minimal tui youtube (invidious) frontend made in c++
 	pkgver = git
 	pkgrel = 1
-	url = https://github.com/djt3/tuitube-git/
+	url = https://github.com/djt3/tuitube/
 	arch = any
 	license = GPL3
+	makedepends = cmake
+	makedepends = git
 	depends = libcurlpp
 	depends = mpv
-	source = git+https://github.com/djt3/tuitube.git
+	source = git+https://gitlab.com/djt3/tuitube.git
 	md5sums = SKIP
 
 pkgname = tuitube-git
