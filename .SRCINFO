@@ -1,0 +1,17 @@
+pkgbase = python-tencentcloud-sdk-python-git
+	pkgdesc = Tencent Cloud API 3.0 SDK for Python.
+	pkgver = 3.0.5.r275.ge27fede
+	pkgrel = 1
+	url = https://github.com/tencentcloud/tencentcloud-sdk-python
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-tencentcloud-sdk-python
+	conflicts = python-tencentcloud-sdk-python
+	source = git+https://github.com/tencentcloud/tencentcloud-sdk-python
+	sha256sums = SKIP
+
+pkgname = python-tencentcloud-sdk-python-git
+
