@@ -1,7 +1,7 @@
 pkgbase = tranalyzer
 	pkgdesc = Lightweight flow generator and packet analyzer
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tranalyzer.com
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,14 @@ pkgbase = tranalyzer
 	depends = postgresql-libs
 	depends = mariadb-libs
 	depends = sqlite
+	depends = libbsd
 	depends = pcre
 	depends = gawk
 	optdepends = graphviz: Required by some plugins
+	optdepends = gnuplot: Required by gpq3x, plot_monitoring
+	optdepends = p0f: Required by osStat
+	optdepends = rrdtool: Required by rrdmonitor, rrdplot
+	optdepends = inotify-tools: Required by t2dmon
 	source = tranalyzer-0.8.8.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-0.8.8lmw4.tar.gz
 	sha256sums = 55beaa92d6269a184aea9e2a8ecbda029cbba932ee1a3ab12807d1d76026cce9
 
