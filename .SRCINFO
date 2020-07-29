@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-pyright-git
+	pkgdesc = Pyright extension for coc.nvim
+	pkgver = r203.172e760
+	pkgrel = 1
+	url = https://github.com/fannheyward/coc-pyright
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	provides = neovim-coc-pyright
+	conflicts = neovim-coc-pyright
+	source = coc-pyright::git+https://github.com/fannheyward/coc-pyright.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-pyright-git
+
