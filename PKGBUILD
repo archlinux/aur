@@ -18,11 +18,8 @@ pkgver() {
     printf "%s.%s" "$(awk 'match($0, /"version": "(.*)"/, a) {print a[1]}' package.json)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    gendesk --pkgname "$_name" --pkgdesc "$pkgdesc" --icon "Freechat" --categories "Network;" --genericname "微信" --name "微信" --exec "/usr/local/bin/freechat"
-}
-
 build() {
+    gendesk --pkgname "$_name" --pkgdesc "$pkgdesc" --icon "Freechat" --categories "Network;" --genericname "微信" --name "微信" --exec "/usr/local/bin/freechat"
     cd "${srcdir}"/freechat
     yarn install
     yarn run dist:linux
@@ -37,6 +34,6 @@ package(){
     install -Dm644 "${srcdir}"/freechat/build/icons/128x128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/Freechat.png
     install -Dm644 "${srcdir}"/freechat/build/icons/256x256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/Freechat.png
     install -Dm644 "${srcdir}"/freechat/build/icons/512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/Freechat.png
-    install -Dm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+    install -Dm644 "${srcdir}/${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
     install -Dm755 "${srcdir}"/freechat/dist/Freechat\ ${pkgver%.*}.AppImage "${pkgdir}"/usr/local/bin/freechat
 }
