@@ -5,12 +5,13 @@ pkgname=rvgl-io-loadlevel
 pkgver=18.0326
 pkgrel=2
 pkgdesc="Loading screens for RVGL community tracks."
-url='https://rvgl.re-volt.io'
+url='https://re-volt.io/downloads/packs'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
 optdepends=('rvgl-io-tracks: additional tracks for official events'
-            'rvgl-io-tracks-bonus: additional tracks')
+            'rvgl-io-tracks-bonus: additional tracks'
+            'rvgl-io-tracks-circuit: circuit tracks')
 makedepends=('git')
 conflicts=('rvgl-loadlevel')
 replaces=('rvgl-loadlevel')
