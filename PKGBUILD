@@ -1,8 +1,8 @@
 # Maintainer: Nico Beierle <nico dot beierle at gmail dot com>
 pkgname="hornet-bin"
 _pkgname="hornet"
-pkgver="0.4.2"
-_pkgver="0.4.2"
+pkgver="0.5.0"
+_pkgver="0.5.0-rc6"
 pkgrel="1"
 pkgdesc="Powerful IOTA fullnode software (official precompiled binary)"
 arch=('x86_64' 'aarch64')
