@@ -2,7 +2,7 @@
 
 pkgname=ai-dungeon-cli
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
 url="https://github.com/Eigenbahn/ai-dungeon-cli"
@@ -30,6 +30,11 @@ prepare() {
 	sed -i \
 		-e "s/version_format.*/version=\"$pkgver\",/" \
 		-e "s/setup_requires.*//" setup.py
+
+	# Deactivate hardcoded debug mode
+	sed -i \
+		"s/DEBUG = True/DEBUG = False/" \
+		ai_dungeon_cli/__init__.py
 }
 
 build() {
