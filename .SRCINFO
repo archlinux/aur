@@ -1,0 +1,18 @@
+pkgbase = vim-coc-tsserver-git
+	pkgdesc = Tsserver extension for coc.nvim that provide rich features like VSCode for javascript & typescript
+	pkgver = 1.5.3.r3.g2d6d066
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-tsserver
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	depends = git
+	provides = vim-coc-tsserver
+	conflicts = vim-coc-tsserver
+	source = coc-tsserver::git+https://github.com/neoclide/coc-tsserver.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-tsserver-git
+
