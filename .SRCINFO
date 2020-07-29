@@ -1,6 +1,6 @@
 pkgbase = pycharm-professional
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
-	pkgver = 2020.1.4
+	pkgver = 2020.2.0
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = pycharm-professional
 	depends = libxtst
 	depends = libxslt
 	depends = python
+	depends = libdbusmenu-glib
 	optdepends = python2: Python 2 support
 	optdepends = ipython2: For enhanced interactive Python shell v2 inside Pycharm
 	optdepends = ipython: For enhanced interactive Python shell v3 inside Pycharm
@@ -37,16 +38,14 @@ pkgbase = pycharm-professional
 	backup = opt/pycharm-professional/bin/pycharm.vmoptions
 	backup = opt/pycharm-professional/bin/pycharm64.vmoptions
 	backup = opt/pycharm-professional/bin/idea.properties
-	source = https://download.jetbrains.com/python/pycharm-professional-2020.1.4.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-professional-2020.2.tar.gz
 	source = pycharm-professional.desktop
-	source = pycharm
 	source = charm.desktop
 	source = charm
-	sha256sums = fe22d6b12b02eaa694c0003da2f09e27147feb6848c77c5220adc680008ec33f
+	sha256sums = 5301e54af750d45bd53456c8330b76e5ce92977b75be45436587f930d4b20077
 	sha256sums = aaf7113e8c56e4d977eca204d57350d9493eda2710abefd2488a2b5d47c53344
-	sha256sums = 818ed42f4200ae13315587abf6f247f93e68c658a94794f73924c985cdc145d0
 	sha256sums = b026ef96831448be743f86e7e44bfa676629e8c3eb418c893fd87515c06263a7
-	sha256sums = db54c71d65ac938bb0e4c058481463b71d784ba113a872e419c66975cbc94a3f
+	sha256sums = 36068b05bebafa9aad6f043745f7764ed108c99f7b8f74cea2163da56bd2bc0c
 
 pkgname = pycharm-professional
 
