@@ -28,7 +28,7 @@ pkgver () {
 build () {
   cd "${pkgname}"
   rm -rf build
-  meson build
+  meson --warnlevel=0 build
   ninja -C build
 }
 
