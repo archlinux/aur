@@ -1,0 +1,12 @@
+pkgbase = shift
+	pkgdesc = Shift is the desktop app for streamlining your accounts, apps, and workflows.
+	pkgver = 5.0.77
+	pkgrel = 1
+	url = https://tryshift.com/
+	arch = x86_64
+	license = custom
+	source = shift-linux-v5.0.77-stable.zip::https://update.tryshift.com/download/version/5.0.77-stable/linux_32
+	sha256sums = 3d6dce832d6dd6f45dfe8fb7a60782035094d71973c2cd336112e735ff87ed9e
+
+pkgname = shift
+
