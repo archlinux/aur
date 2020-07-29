@@ -2,13 +2,13 @@ pkgname=bliss-git
 _gitname=bliss
 pkgver=1.1.0
 pkgrel=3
-pkgdesc="A music analyzer library"
+pkgdesc='A music analyzer library'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('ffmpeg' 'cmake')
 source=('git://github.com/Polochon-street/bliss')
 md5sums=('SKIP')
-url="https://lelele.io/bliss.html"
+url='https://lelele.io/bliss.html'
  
 prepare() {
     cd "$srcdir/$_gitname"

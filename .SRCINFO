@@ -2,6 +2,7 @@ pkgbase = bliss-git
 	pkgdesc = A music analyzer library
 	pkgver = 1.1.0
 	pkgrel = 3
+	url = https://lelele.io/bliss.html
 	arch = i686
 	arch = x86_64
 	license = MIT
