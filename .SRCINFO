@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-yaml-git
+	pkgdesc = Yaml language server extension for coc.nvim
+	pkgver = 1.0.4.r1.ge3db99f
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-yaml
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	provides = neovim-coc-yaml
+	conflicts = neovim-coc-yaml
+	source = coc-yaml::git+https://github.com/neoclide/coc-yaml.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-yaml-git
+
