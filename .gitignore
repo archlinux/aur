@@ -1,4 +1,8 @@
 /chatty/
 /pkg/
 /src/
-/*.pkg.tar
+/*.tar
+/*.tar.bz2
+/*.tar.gz
+/*.tar.xz
+/*.tar.zstd
