@@ -1,0 +1,15 @@
+pkgbase = runin
+	pkgdesc = Launch a terminal to run a command, passing on stdin & stdout
+	pkgver = r2.a9636d1
+	pkgrel = 1
+	url = https://github.com/nichobi/runin
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	provides = ronin
+	source = git+https://github.com/nichobi/runin
+	md5sums = SKIP
+
+pkgname = runin
+
