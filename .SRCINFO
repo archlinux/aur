@@ -16,6 +16,7 @@ pkgbase = foot-git
 	depends = wayland
 	depends = pixman
 	depends = fontconfig
+	depends = freetype2
 	source = git+https://codeberg.org/dnkl/foot.git
 	source = git+https://codeberg.org/dnkl/tllist.git
 	source = git+https://codeberg.org/dnkl/fcft.git
