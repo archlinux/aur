@@ -1,12 +1,13 @@
 pkgbase = gettext-git
 	pkgdesc = GNU internationalization library
-	pkgver = 0.20.1.r166.g3251d1ea0
+	pkgver = 0.21.r4.g3564f5f88
 	pkgrel = 1
 	url = https://www.gnu.org/software/gettext/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = fpc
 	makedepends = grep
 	makedepends = help2man
 	makedepends = wget

@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gettext-git
-pkgver=0.20.1.r166.g3251d1ea0
+pkgver=0.21.r4.g3564f5f88
 pkgrel=1
 pkgdesc="GNU internationalization library"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gettext/"
 license=('GPL3')
 depends=('glibc' 'glib2' 'gperf' 'libunistring' 'ncurses')
-makedepends=('git' 'grep' 'help2man' 'wget' 'xz')
+makedepends=('git' 'fpc' 'grep' 'help2man' 'wget' 'xz')
 provides=('gettext')
 conflicts=('gettext')
 source=("git+https://git.savannah.gnu.org/git/gettext.git")
@@ -47,6 +47,4 @@ package() {
   cd "gettext"
 
   make DESTDIR="$pkgdir" install
-  # temporary until upstream fixes it
-  rm -rf "$pkgdir/home"
 }
