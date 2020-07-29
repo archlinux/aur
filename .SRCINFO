@@ -1,7 +1,7 @@
 pkgbase = vim-solarized8-git
 	pkgdesc = Optimized Solarized colorschemes. Best served with true-color terminals!
-	pkgver = 0.4.r0.g769661a
-	pkgrel = 4
+	pkgver = 1.2.0.r3.g5df7666
+	pkgrel = 1
 	url = http://ethanschoonover.com/solarized
 	arch = any
 	license = MIT

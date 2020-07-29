@@ -1,8 +1,8 @@
 # Maintainer: Maciej Balajewicz <mbalajew at illinois dot edu>
 
 pkgname=vim-solarized8-git
-pkgver=0.4.r0.g769661a
-pkgrel=4
+pkgver=1.2.0.r3.g5df7666
+pkgrel=1
 pkgdesc="Optimized Solarized colorschemes. Best served with true-color terminals!"
 arch=('any')
 url="http://ethanschoonover.com/solarized"
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  install -dm755 "$pkgdir/usr/share/vim/vimfiles/colors"
-  install -Dm644 colors/* "$pkgdir/usr/share/vim/vimfiles/colors/"
+  find colors doc -type f -exec \
+    install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
 }
