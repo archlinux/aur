@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.35.2
+	pkgver = 2.36
 	pkgrel = 1
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = util-linux-selinux
 	makedepends = libcap-ng
 	makedepends = libselinux
 	options = strip
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.2.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.2.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.tar.sign
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -22,7 +22,7 @@ pkgbase = util-linux-selinux
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	sha256sums = 21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a
+	sha256sums = 9e4b1c67eb13b9b67feb32ae1dc0d50e08ce9e5d82e1cccd0ee771ad2fa9e0b1
 	sha256sums = SKIP
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 	sha256sums = fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20
@@ -43,8 +43,8 @@ pkgname = util-linux-selinux
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux=2.35.2-1
-	provides = selinux-util-linux=2.35.2-1
+	provides = util-linux=2.36-1
+	provides = selinux-util-linux=2.36-1
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
@@ -64,6 +64,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.35.2-1
+	provides = libutil-linux=2.36-1
 	conflicts = libutil-linux
 
