@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2020-07-29 13:40:53.186673271 +0200
++++ CMakeLists.txt_patch	2020-07-29 13:41:33.780784323 +0200
+@@ -4,8 +4,6 @@
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-add_compile_options(-Wall -Werror)
+-add_definitions(-DQT_DEPRECATED_WARNINGS)
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTOUIC ON)
