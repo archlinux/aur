@@ -19,6 +19,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_cars_bonus"
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
