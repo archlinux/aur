@@ -1,0 +1,13 @@
+pkgbase = ttf-antonio
+	pkgdesc = A 'refined' version of the Anton font, a large typeface designed for banners and headlines
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/vernnobile/antonioFont
+	arch = any
+	license = OFL
+	makedepends = git
+	source = git+https://github.com/vernnobile/antonioFont#commit=4b3e07ab5647a613931153a09067a785f54b980a
+	sha256sums = SKIP
+
+pkgname = ttf-antonio
+
