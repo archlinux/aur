@@ -4,19 +4,19 @@
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
-pkgver=4.7.2
-_date=202001271244
+pkgver=5.1.1
+_date=202007271621
 pkgrel=1
-pkgdesc="GNU MCU Eclipse Plug-in"
+pkgdesc="Eclipse Embedded CDT (C/C++ Development Tools)"
 arch=('any')
-url="http://gnu-mcu-eclipse.github.io"
+url="https://projects.eclipse.org/projects/iot.embed-cdt"
 install="eclipse-arm.install"
 license=("GPL")
 options=('!strip')
 makedepends=('unzip')
 depends=('eclipse-cpp')
-source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$_date/ilg.gnumcueclipse.repository-$pkgver-$_date.zip")
-sha512sums=('0bb427417f93b7a79f9bb4dc838f705544d0d23d630b35fdb90423e32c1ee20f3b308a2e95e6fb0a881e0b82678cb68538be7df410540fbf45729c40efa107eb')
+source=("https://download.eclipse.org/embed-cdt/releases/$pkgver/ilg.gnumcueclipse.repository-$pkgver-$_date.zip")
+sha512sums=('4dd55f4015106d6b658d671968871ad69a3fc7d55529360c13fa190831b142ba07a5ee661d231da314c62e723b239fb22c9b86ea384bec23e7a7e245ce3d0d42')
 
 package() {
   local _dest="${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
