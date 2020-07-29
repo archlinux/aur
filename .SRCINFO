@@ -1,0 +1,23 @@
+pkgbase = network-manager-sstp-git
+	pkgdesc = SSTP support for NetworkManager
+	pkgver = 1.2.6.r70.g735d8ca
+	pkgrel = 1
+	url = http://sstp-client.sourceforge.net/#Network_Manager_Plugin
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = ppp
+	makedepends = python
+	depends = gtk3
+	depends = libnma
+	depends = libsecret
+	depends = sstp-client
+	optdepends = ppp
+	provides = network-manager-sstp
+	conflicts = network-manager-sstp
+	source = git+https://github.com/enaess/network-manager-sstp
+	sha1sums = SKIP
+
+pkgname = network-manager-sstp-git
+
