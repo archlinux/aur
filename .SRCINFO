@@ -1,7 +1,7 @@
 pkgbase = av-98
-	pkgdesc = Command line Gemini client.
+	pkgdesc = A command-line Gemini client.
 	pkgver = 1.0.2dev
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tildegit.org/solderpunk/AV-98/
 	arch = any
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = av-98
 	depends = python
 	optdepends = python-ansicolor: neater text display
 	optdepends = python-cryptography: better support of TOFU client certificates
+	noextract = AV-98
 	source = git+https://tildegit.org/solderpunk/AV-98/
 	sha256sums = SKIP
 
