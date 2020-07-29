@@ -10,6 +10,7 @@ url='https://github.com/pastpages/savepagenow/'
 license=('MIT')
 depends=('python-click' 'python-requests')
 makedepends=('python-setuptools')
+provides=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('125037683da5b9429dfbe826d89eed0cb325ee8c326fb6abd707600cc8a1242e')
 
