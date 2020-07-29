@@ -20,7 +20,7 @@ makedepends=(
   lib32-libdaemon
   swig
 )
-source=(git+https://github.com/jpirko/libteam.git#tag=471fb50d206e5a3f2eef9e4247329b51edc5c493)
+source=(git+https://github.com/jpirko/libteam#tag=471fb50d206e5a3f2eef9e4247329b51edc5c493)
 sha256sums=(SKIP)
 
 pkgver() {
