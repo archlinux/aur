@@ -2,9 +2,9 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=firefox-ubuntu-bin
-pkgver=78.0.2
+pkgver=79.0
 pkgrel=1
-_ubuntuver="$pkgver+build2-0ubuntu0.18.04.1_amd64"
+_ubuntuver="$pkgver+build1-0ubuntu0.18.04.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -22,7 +22,7 @@ provides=('firefox')
 conflicts=('firefox' 'firefox-ubuntu')
 
 source=("http://security.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-md5sums=('6ef3ef8872f63cde962ee3af7539fe16')
+md5sums=('7cb2abbd1c0bfae06a68d533e4df02f6')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
