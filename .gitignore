@@ -23,3 +23,4 @@ tags
 pkg
 src
 tags.*
+*.zst
