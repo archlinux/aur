@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-sh-git
+	pkgdesc = SH language server extension using bash-language-server for coc.nvim.
+	pkgver = v0.5.1.r0.g179138e
+	pkgrel = 1
+	url = https://github.com/josa42/coc-sh
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	provides = neovim-coc-sh
+	conflicts = neovim-coc-sh
+	source = coc-sh::git+https://github.com/josa42/coc-sh.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-sh-git
+
