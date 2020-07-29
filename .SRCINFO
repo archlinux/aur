@@ -1,0 +1,35 @@
+pkgbase = neovim-coc-python-git
+	pkgdesc = Python extension for coc.nvim
+	pkgver = 1.2.12.r2.g241c6b3
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-python
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = neovim-coc
+	depends = git
+	optdepends = python-jedi: jedi intellisense engine support
+	optdepends = anaconda: anaconda support
+	optdepends = python-pipenv: pipenv support
+	optdepends = python-poetry: poetry support
+	optdepends = python-isort: isort support
+	optdepends = ctags: ctags support
+	optdepends = autopep8: autopep8 formatting plugin
+	optdepends = python-black: black formatting plugin
+	optdepends = yapf: yapf formatting plugin
+	optdepends = flake8: flake8 linting plugin
+	optdepends = bandit: bandit linting plugin
+	optdepends = mypy: mypy linting plugin
+	optdepends = python-pep8: pep8 linting plugin
+	optdepends = python-prospector: prospector linting plugin
+	optdepends = python-pydocstyle: pydocstyle linting plugin
+	optdepends = pylama: pylama linting plugin
+	optdepends = python-pylint: pylint linting plugin
+	provides = neovim-coc-python
+	conflicts = neovim-coc-python
+	source = coc-python::git+https://github.com/neoclide/coc-python.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-python-git
+
