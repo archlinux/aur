@@ -244,7 +244,7 @@ post_upgrade() {
     # at last mhwd changes
     rm -rf /var/lib/mhwd/db/pci/graphic_drivers/intel-nvidia-optimus-manager/
     rm -rf /var/lib/mhwd/db/pci/network_drivers/r8168/
-    rm -rf/var/lib/mhwd/db/pci/network_drivers/rtlwifi_new-dkms/
+    rm -rf /var/lib/mhwd/db/pci/network_drivers/rtlwifi_new-dkms/
     
     
     
@@ -252,6 +252,7 @@ post_upgrade() {
     
     pacman -Syyuu --noconfirm
     grub-install
-    update-grub
+    grub-mkconfig -o /boot/grub/grub.cfg
+
     
     }
