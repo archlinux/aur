@@ -142,9 +142,9 @@ END
 
   # Rust 1.45
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
-  patch --ignore-whitespace << 'EOF'
---- config/makefiles/rust.mk	2020-07-28 01:00:34.145470639 +0200
-+++ config/makefiles/rust.mk.new	2020-07-29 00:30:30.972913722 +0200
+  patch -Np1 --ignore-whitespace << 'EOF'
+--- a/config/makefiles/rust.mk	2020-07-28 01:00:34.145470639 +0200
++++ b/config/makefiles/rust.mk	2020-07-29 00:30:30.972913722 +0200
 @@ -46,9 +46,17 @@
  cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
  ifndef DEVELOPER_OPTIONS
