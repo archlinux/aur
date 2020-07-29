@@ -9,9 +9,13 @@ pkgbase = kmon
 	arch = armv7h
 	license = GPL3
 	makedepends = cargo
+	makedepends = python
+	makedepends = git
 	depends = libxcb
-	source = kmon-1.3.4.tar.gz::https://github.com/orhun/kmon/archive/v1.3.4.tar.gz
-	sha512sums = fa44d73e3071e6699ea667c43646ac870068e6770aa881462bc8a78ab5a7c939b2247fab7fdf995c36a252b6d111cd6ecc633df6b6a86e58bd55a623699ebf27
+	options = zipman
+	source = git+https://github.com/orhun/kmon.git#tag=v1.3.4?signed
+	validpgpkeys = 39E678DF63BE20EA5A175156B928720AEC532117
+	sha512sums = SKIP
 
 pkgname = kmon
 
