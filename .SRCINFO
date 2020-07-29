@@ -31,7 +31,7 @@ pkgbase = linux-oled
 	sha256sums = bbe5b640e8810670b6a0cf448e9c7325f7ee8eba7e44b6ed62ba31a5fe077277
 
 pkgname = linux-oled
-	pkgdesc = The Linux kernel and modules
+	pkgdesc = The Linux kernel and modules with OLED brightness patches
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
