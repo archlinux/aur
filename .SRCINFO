@@ -1,6 +1,6 @@
 pkgbase = grok-jpeg2000
 	pkgdesc = A high performance open source JPEG 2000 codec.
-	pkgver = 5.1.0
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://github.com/GrokImageCompression/grok
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = grok-jpeg2000
 	depends = lcms2
 	depends = libjpeg
 	depends = jbigkit
-	source = grok-jpeg2000-5.1.0.tar.gz::https://github.com/GrokImageCompression/grok/archive/v5.1.0.tar.gz
-	sha256sums = 3dec755ef693fd660a308645865ed9c0746b91dc7a37f63073dbb7ce856c8eaa
+	source = grok-jpeg2000-7.5.0.tar.gz::https://github.com/GrokImageCompression/grok/archive/v7.5.0.tar.gz
+	sha256sums = 2a3121253f00448f9f119618a57906bcff720dfa119c84a41407eda79a3e6c97
 
 pkgname = grok-jpeg2000
 
