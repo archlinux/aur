@@ -1,0 +1,24 @@
+pkgbase = manjaro-bomber
+	pkgdesc = takes down manjaro replacing it with arch + backported CLI utilities
+	pkgver = 1.0
+	pkgrel = 1
+	install = manjaro-bomber.sh
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = pacman
+	depends = grub
+	depends = systemd-sysvcompat
+	depends = systemd
+	depends = filesystem
+	depends = coreutils
+	depends = sed
+	depends = awk
+	depends = pacman-contrib
+	depends = mhwd-garuda-git
+	depends = mhwd-db-garuda-git
+	provides = manjaro-system
+	conflicts = manjaro-system
+
+pkgname = manjaro-bomber
+
