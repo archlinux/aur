@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.14.2
-pkgrel=8
+pkgrel=10
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -23,7 +23,7 @@ sha512sums=('3afbaa28df7e95fcfc732c3df24ac4342b7b53f86486f833e45e0886752ea929a6e
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
             'e4f153529ad3dff82a7b08eba34857b3b81070a68f458a811a09695419cb513b82e6a3f0323cf3abedee126aff306ba23f703014bdfbd180f64373b84984e652'
             '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
-            '94b27272f8121b0869a2843fe238cf11b4d1effbbff77cee56cb3603aac7730a5faa504e1623188e47ac800ef7ca8deb595a7f4141ace08121892c9b29d57f1e')
+            'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
