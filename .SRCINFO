@@ -1,13 +1,13 @@
 pkgbase = dotgit-git
 	pkgdesc = A comprehensive solution to managing your dotfiles
-	pkgver = 2.0.0a7
+	pkgver = 2.0.0a9
 	pkgrel = 0
 	url = https://github.com/kobus-v-schoor/dotgit
 	arch = any
 	makedepends = python-setuptools
 	depends = git
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dotgit/dotgit-2.0.0a7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/dotgit/dotgit-2.0.0a9.tar.gz
 	md5sums = SKIP
 
 pkgname = dotgit-git
