@@ -1,0 +1,15 @@
+pkgbase = waybackurls-git
+	pkgdesc = Fetch all the URLs that the Wayback Machine knows about for a domain
+	pkgver = 0.0.2.r6.g89da10c
+	pkgrel = 1
+	url = https://github.com/tomnomnom/waybackurls
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = go
+	provides = waybackurls
+	source = git+https://github.com/tomnomnom/waybackurls.git
+	sha256sums = SKIP
+
+pkgname = waybackurls-git
+
