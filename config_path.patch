@@ -1,7 +1,7 @@
-diff -ur src.orig/RoslynPad.Common.UI/ViewModels/MainViewModelBase.cs src/RoslynPad.Common.UI/ViewModels/MainViewModelBase.cs
---- src.orig/RoslynPad.Common.UI/ViewModels/MainViewModelBase.cs	2020-03-08 10:34:16.955919485 +0100
-+++ src/RoslynPad.Common.UI/ViewModels/MainViewModelBase.cs	2020-03-08 10:36:26.631248084 +0100
-@@ -269,7 +269,13 @@
+diff -ur src.orig/RoslynPad.Common.UI/Services/IApplicationSettings.cs src/RoslynPad.Common.UI/Services/IApplicationSettings.cs
+--- src.orig/RoslynPad.Common.UI/Services/IApplicationSettings.cs	2020-07-18 23:44:15.000000000 +0200
++++ src/RoslynPad.Common.UI/Services/IApplicationSettings.cs	2020-07-28 17:55:06.445431776 +0200
+@@ -204,7 +204,13 @@
              }
              else // Unix or Mac
              {
@@ -14,12 +14,5 @@ diff -ur src.orig/RoslynPad.Common.UI/ViewModels/MainViewModelBase.cs src/Roslyn
 +                    }
 +                }
              }
-
+ 
              if (string.IsNullOrEmpty(documentsPath))
-@@ -782,4 +788,4 @@
-
-         #endregion
-     }
--}
-\ No newline at end of file
-+}
