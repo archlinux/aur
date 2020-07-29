@@ -1,18 +1,20 @@
 pkgbase = cdist
 	pkgdesc = A usable configuration management system
-	pkgver = 4.11.1
+	pkgver = 6.7.0
 	pkgrel = 1
-	url = https://github.com/ungleich/cdist
+	url = https://code.ungleich.ch/ungleich-public/cdist/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python
 	depends = openssh
-	source = https://github.com/ungleich/cdist/releases/download/4.11.1/cdist-4.11.1.tar.gz
-	source = https://github.com/ungleich/cdist/releases/download/4.11.1/cdist-4.11.1.tar.gz.asc
+	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/03886c989425b38d2458f6c8fcc6fcbd/cdist-6.7.0.tar.gz
+	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/e0c0566c4a4981d86a9c5daf609da0ea/cdist-6.7.0.tar.gz.asc
 	validpgpkeys = 69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901
-	sha256sums = cc35bd05bf4feed44f9ac33b1a868a27029abfd05018cee2f053f54c318186a6
-	sha256sums = SKIP
+	md5sums = abb7bd2ce6e37564075d2672f7b128ae
+	md5sums = SKIP
 
 pkgname = cdist
 
