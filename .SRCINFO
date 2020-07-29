@@ -1,0 +1,18 @@
+pkgbase = vim-coc-json-git
+	pkgdesc = Json language extension for coc.nvim
+	pkgver = 1.2.6.r0.g66b482d
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-json
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	depends = git
+	provides = vim-coc-json
+	conflicts = vim-coc-json
+	source = coc-json::git+https://github.com/neoclide/coc-json.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-json-git
+
