@@ -11,6 +11,7 @@ url='https://github.com/webrecorder/warcio'
 license=('APACHE')
 depends=('python-six')
 makedepends=('python-setuptools')
+provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/${_pythonhosted_hash}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('23d4b9a7589e5608894ce7106873939fdd0ecc5ed7601458f8b92e32590b0ed2')
 
