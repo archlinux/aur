@@ -2,10 +2,10 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-cars-bonus
-pkgver=20.0413
-pkgrel=2
+pkgver=20.0623
+pkgrel=1
 pkgdesc="Additional RVGL cars used for special events."
-url='https://rvgl.re-volt.io'
+url='https://re-volt.io/online/cars'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
@@ -19,9 +19,6 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_cars_bonus"
-
-    # Remove conflicting files present in cars pack
-    rm -r cars/minichamp2018
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
