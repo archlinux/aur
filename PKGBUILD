@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7.9
+pkgver=5.7.10
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.7-r2
+_bmqversion=5.7-r3
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20200615'
 source=(
@@ -42,28 +42,26 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f7dd45a3ae86afe15f64746d621d786f13860a65"
-  "0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch::https://git.archlinux.org/linux.git/patch/?id=ece7e249df5e71be440baaf25b324a62e0a715fa"
-  "0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch::https://git.archlinux.org/linux.git/patch/?id=b2fd0d69f3b155b0c575dd540ad354e4b5323034"
-  "0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch::https://git.archlinux.org/linux.git/patch/?id=0fe1b29d2826794bfd880944496b433c80da0173"
-  "Fix-compilation-issues-when-CONFIG-SCHED-TRACER.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/12f9ffec7586ba30fcabd0ce9f13158f0158a529.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c701fa45808d40c6ce027c31c3e318bb678cb5b3"
+  "0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch::https://git.archlinux.org/linux.git/patch/?id=18693ce191f146cea8dd6299f40e3db3a9367e82"
+  "0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch::https://git.archlinux.org/linux.git/patch/?id=3639fafc8d7ebd9bdb0365c54fdb57745c47f264"
+  "0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch::https://git.archlinux.org/linux.git/patch/?id=d14a96d0a5e05d99c5fe083c49d33197c215dbe1"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a87d3066a7849cd6ba9a004311a9ee0402d29d17f12f64ad7d942447070b43f8'
+sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
             'SKIP'
             '07bdb86bb34876ba99406b2174dac860b962a721dc9858d08e15e2608eeb96a7'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'b19d09da5beef3433702157ac7975710fc815ada9ed2a088136bb87e0c89dfd7'
+            'b2a2ae866fc3f1093f67e69ba59738827e336b8f800fb0487599127f7f3ef881'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'a9dc95da65b85d67cc021062a9e5c9cd10e2a50989dd92222f4929dfceb04c3c'
-            'd1aba2b46e810374e49296760959da48e58d88c36e377479a54e7636e1ba7dc0'
-            'bdd0344427007d11412c37294559dc71090dfd0b0e6bd4b7008f32810ba797c4'
-            '095804fb1045f6ccb52825d0d8c3aad1237e919f30586034267918a15d1249f6'
-            'dd5d00c6e6c47e5869e994f656685db31f50b77dc26393505e941fe5be7faa33')
+            'a46b42c5b7fc895a9e3951b11c8bc63b548f045f989be6b844e3b18b12901460'
+            '009cce2906e71168b7c5546858f15673bc56a16970d8d2613dcccd5ff84433bd'
+            'eb0be541a372ac917c9dced49131228734a9048f599a9113b13b9ece70ac2dc7'
+            'd3a4c90f485238a284ee9e301a7c8a400468dae5357c43412d842dcd4077c93a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -98,7 +96,6 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-  patch -Np1 -i "$srcdir/Fix-compilation-issues-when-CONFIG-SCHED-TRACER.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
