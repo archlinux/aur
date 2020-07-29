@@ -1,5 +1,5 @@
 pkgbase = meanwhile
-	pkgdesc = Meanwhile libraries
+	pkgdesc = Library for connecting to an IBM Sametime community
 	pkgver = 1.1.1
 	pkgrel = 2
 	url = https://github.com/obriencj/meanwhile

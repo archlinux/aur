@@ -2,11 +2,12 @@
 # Contributor: Troy C < rstrox -ta yahoo -tod com >
 # Contributor: Marek Skrobacki <skrobul@skrobul.com>
 # Contributor: Alasdair Haswell <ali at arhaswell dot co dot uk>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=meanwhile
 pkgver=1.1.1
 pkgrel=2
-pkgdesc="Meanwhile libraries"
+pkgdesc="Library for connecting to an IBM Sametime community"
 arch=('i686' 'x86_64')
 url="https://github.com/obriencj/meanwhile"
 license=('LGPL3')
@@ -16,7 +17,6 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/obriencj/meanwhile/archi
         fix_groupchat.patch)
 sha256sums=('10de306f03897572b30ce68ca80dffd04ec218f6842bbe0a47bb8cce933698d0'
             '54d0faa5702e3b89be2a4fe994cfb2c373f409add3ba6b340a06f183c7446b21')
-
 
 prepare() {
   cd "$pkgname-$pkgver/src"
