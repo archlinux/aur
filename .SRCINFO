@@ -1,5 +1,5 @@
 pkgbase = vim-coc-clangd-git
-	pkgdesc = clangd extension for coc.nvim
+	pkgdesc = C/C++/ObjC support for coc.nvim (powered by clangd)
 	pkgver = r102.fd082e5
 	pkgrel = 1
 	url = https://github.com/clangd/coc-clangd
