@@ -48,16 +48,16 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=79.0rc1
+pkgver=80.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-_pkgver=79.0
+_pkgver=80.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg 'nss>=3.55' ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm xorgproto)
@@ -72,7 +72,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
+sha256sums=('284daebc9876878de648f0e10632db585cb3b2344b59ea3d0952589d96aee970'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
