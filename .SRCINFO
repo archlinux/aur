@@ -1,0 +1,18 @@
+pkgbase = vim-coc-css-git
+	pkgdesc = Css language server extension for coc.nvim
+	pkgver = 1.2.4.r0.ga8cde12
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-css
+	arch = any
+	license = 
+	makedepends = yarn
+	makedepends = npm
+	depends = vim-coc
+	depends = git
+	provides = vim-coc-css
+	conflicts = vim-coc-css
+	source = coc-css::git+https://github.com/neoclide/coc-css.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-css-git
+
