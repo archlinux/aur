@@ -1,0 +1,14 @@
+pkgbase = python-django_extensions
+	pkgdesc = Extensions for Django
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/django-extensions/django-extensions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/django-extensions/django-extensions-3.0.3.tar.gz
+	sha256sums = 6230898b1e1d5deb3ddab8335b2d270edb7afa4ef916a95e479a19fdfb0464cb
+
+pkgname = python-django_extensions
+
