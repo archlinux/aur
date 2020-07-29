@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=amazon-workspaces-bin
 pkgver=3.0.8.529
-pkgrel=2
+pkgrel=3
 pkgdesc='Amazon Workspace Client'
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
@@ -22,6 +22,10 @@ build() {
     cd "$srcdir"
     ar x "$pkgname-$pkgver.deb"
     tar axvf data.tar.xz
+
+    # Fix the .desktop entry
+    sed -i -e 's/\/opt\/workspacesclient/\/usr\/share\/amazon-workspaces/' $srcdir/usr/share/applications/workspacesclient.desktop
+    mv $srcdir/usr/share/applications/workspacesclient.desktop $srcdir/usr/share/applications/amazon-workspaces.desktop
 }
 
 package() {
