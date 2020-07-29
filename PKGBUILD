@@ -2,12 +2,12 @@
 
 _gitname=lua-pam
 pkgname=lua-pam-git
-pkgver=r8.7756d5d
+pkgver=r12.4820711
 pkgrel=1
 pkgdesc="A module for lua to use PAM"
 arch=(x86_64)
 url="https://github.com/RMTT/${_gitname}"
-license=(unknown)
+license=('MIT')
 depends=(pam lua)
 makedepends=(cmake)
 provides=(lua-pam)
@@ -29,4 +29,5 @@ build() {
 package() {
     cd ${_gitname}
     install -Dm 755 -t "${pkgdir}/usr/lib/${_gitname}" build/liblua_pam.so
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
