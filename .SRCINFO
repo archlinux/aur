@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application (Generic based package)
-	pkgver = 5.5.6
-	pkgrel = 4
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = anydesk-bin
 	conflicts = anydesk-debian
 	conflicts = pango-anydesk
 	options = !strip
-	source_i686 = https://download.anydesk.com/linux/anydesk-5.5.6-i386.tar.gz
-	sha256sums_i686 = 2b62a369a9fb24cc060bf29ccd1ee94f45d4c2be8c62e4fba8b925ca3008f747
-	source_x86_64 = https://download.anydesk.com/linux/anydesk-5.5.6-amd64.tar.gz
-	sha256sums_x86_64 = d37678596d7df3926b9ea7dec842cd895618b9860fd75e490deebcf09cf3eeee
+	source_i686 = https://download.anydesk.com/linux/anydesk-6.0.0-i386.tar.gz
+	sha256sums_i686 = 369ed52f4876f29ea4d3713401493e28fa21749bc0f24f0809e5b770c93e8c37
+	source_x86_64 = https://download.anydesk.com/linux/anydesk-6.0.0-amd64.tar.gz
+	sha256sums_x86_64 = 9df6583097865591d153853f730f02dde003756dd5840dc670d25f3c275d86a5
 
 pkgname = anydesk-bin
 

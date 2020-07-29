@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
-pkgver=5.5.6
-pkgrel=4
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="The Fast Remote Desktop Application (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
@@ -16,8 +16,8 @@ options=('!strip')
 source_i686=("https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
-sha256sums_i686=('2b62a369a9fb24cc060bf29ccd1ee94f45d4c2be8c62e4fba8b925ca3008f747')
-sha256sums_x86_64=('d37678596d7df3926b9ea7dec842cd895618b9860fd75e490deebcf09cf3eeee')
+sha256sums_i686=('369ed52f4876f29ea4d3713401493e28fa21749bc0f24f0809e5b770c93e8c37')
+sha256sums_x86_64=('9df6583097865591d153853f730f02dde003756dd5840dc670d25f3c275d86a5')
 
 package() {
     # install start script which sets the env variable for theme?
