@@ -1,7 +1,7 @@
 pkgbase = google-play-music-desktop-player-bin
 	pkgdesc = A beautiful cross platform Desktop Player for Google Play Music
 	pkgver = 4.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = google-play-music-desktop-player-bin
 	source = LICENSE::https://raw.githubusercontent.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/v4.7.1/LICENSE
 	source = google-play-music-desktop-player.sh
 	sha256sums = 7253553744e72ab40fff010dc268cbdf01c4d95f313550aaf2c9b65c1cfb7ae7
-	sha256sums = 506bd6cd8b41abf37342ab83ea8839bb611eecdcc44247fe914d12708aa1b66e
+	sha256sums = fd811b5850ad1afdf2bf5c4b2434a1564339c56f250739249b23f395632c25e1
 	source_x86_64 = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.7.1/google-play-music-desktop-player_4.7.1_amd64.deb
 	sha256sums_x86_64 = b9d4f7fd01e4d7286af9c30c049b0c30c884f900d80f44d43d8a9bad0b4b55d2
 	source_i686 = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.7.1/google-play-music-desktop-player_4.7.1_i386.deb
