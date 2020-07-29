@@ -1,6 +1,6 @@
 pkgbase = djpdf
 	pkgdesc = Create small, searchable PDFs from scanned documents
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Unrud/djpdf
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = djpdf
 	depends = python-xmp-toolkit
 	depends = qpdf
 	depends = tesseract
-	source = https://github.com/Unrud/djpdf/archive/0.1.1/djpdf-0.1.1.tar.gz
-	sha256sums = acc433c66abb3c906c55b35c27bee88a249ec2ff6f887a4ca734c8973aad0ed6
+	source = https://github.com/Unrud/djpdf/archive/0.1.2/djpdf-0.1.2.tar.gz
+	sha256sums = 60245ca86907f55c03bbd2953f1e033493ddf0fca3a850e347facc7be33cc923
 
 pkgname = djpdf
 
