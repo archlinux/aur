@@ -1,0 +1,22 @@
+pkgbase = purple-mm-sms
+	pkgdesc = Purple SMS plugin using ModemManager
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/purple-mm-sms
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	depends = libpurple
+	depends = libmm-glib
+	depends = modemmanager
+	provides = purple-mm-sms
+	provides = libpurple-mm-sms
+	provides = purple-mm-sms-git
+	provides = libpurple-mm-sms-git
+	source = https://source.puri.sm/Librem5/purple-mm-sms/-/archive/v0.0.4/purple-mm-sms-v0.0.4.tar.gz
+	sha512sums = 37b4296d5c677897cb4ff0d6f22a077814eb1af2e2985570f2cd4190a317f0292aaa5302b71c5bd54bd5de9d351ce1372599c715a45638ef1ce7ba2f97b0eae3
+
+pkgname = purple-mm-sms
+
