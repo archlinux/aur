@@ -1,6 +1,6 @@
 # Maintainer: <djt3 {at} protonmail{dot}com>
 pkgname=tuitube-git
-pkgver=git
+pkgver=r138.d24cbc0
 pkgrel=1
 pkgdesc="minimal tui youtube (invidious) frontend made in c++"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('cmake' 'git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "tuitube"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

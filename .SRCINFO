@@ -1,6 +1,6 @@
 pkgbase = tuitube-git
 	pkgdesc = minimal tui youtube (invidious) frontend made in c++
-	pkgver = git
+	pkgver = r138.d24cbc0
 	pkgrel = 1
 	url = https://github.com/djt3/tuitube/
 	arch = any
