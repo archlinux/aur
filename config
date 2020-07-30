@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.6-arch1 Kernel Configuration
+# Linux/x86 5.7.11-arch1 Kernel Configuration
 #
 
 #
@@ -1621,7 +1621,10 @@ CONFIG_VLAN_8021Q_MVRP=y
 # CONFIG_DECNET is not set
 CONFIG_LLC=m
 CONFIG_LLC2=m
-# CONFIG_ATALK is not set
+CONFIG_ATALK=m
+CONFIG_DEV_APPLETALK=m
+CONFIG_IPDDP=m
+CONFIG_IPDDP_ENCAP=y
 # CONFIG_X25 is not set
 # CONFIG_LAPB is not set
 CONFIG_PHONET=m

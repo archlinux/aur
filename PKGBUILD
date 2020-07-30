@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.10
+pkgver=5.7.11
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -87,24 +87,24 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
+sha256sums=('93293032aa13c3998eeb2afd910f11c0f2e8a76ffec46f74ce3fcfac53ed60f1'
             'SKIP'
-            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
+            '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
             '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328'
             '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'f8f16c971882312c91618e4305b63f7aa2265af12208a902f87b6d3c1b1cf6ee'
-            'a0bd98f1056d06126532350a55f633c92a43e3adb94d96c94f4d22f54e4d9807'
+            '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
+            'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
             '4c5b15c39e7d8f7b8c0fbee16bcc3992cecf38bb790df494b411a57366e3b677'
-            '18f22c5c095049cf3eebe4ec2c63e659dd35af6e49d2092865643d6ae2f7c411')
+            'e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
