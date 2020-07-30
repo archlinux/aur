@@ -4,12 +4,11 @@ url='http://wiki.ros.org/trac_ik_examples'
 pkgname='ros-noetic-trac-ik-examples'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
     ros-noetic-catkin
-    ros-noetic-orocos-kdl
     ros-noetic-trac-ik-lib
 )
 makedepends=(
@@ -20,7 +19,6 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-noetic-orocos-kdl
     ros-noetic-trac-ik-lib
     ros-noetic-xacro
 )
@@ -28,6 +26,7 @@ ros_depends=(
 depends=(
     ${ros_depends[@]}
     boost
+    orocos-kdl
 )
 
 _dir="traclabs-trac_ik-f4597094e974/trac_ik_examples"
