@@ -24,7 +24,7 @@ vulkan-amdgpu-pro
 lib32-vulkan-amdgpu-pro
 )
 pkgver=${major}_${minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20
 license=('custom: multiple')
@@ -96,7 +96,7 @@ package_amdgpu-pro-core-meta () {
 package_amf-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Advanced Multimedia Framework"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "gcc-libs" "glibc" "libgl1" "libx11" "opencl-amdgpu-pro-orca=${major}_${minor}-${pkgrel}" "opencl-amdgpu-pro-pal=${major}_${minor}-${pkgrel}" "vulkan-amdgpu-pro=${major}_${minor}-${pkgrel}")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "libglvnd" "libx11" "opencl-amdgpu-pro-orca=${major}_${minor}-${pkgrel}" "opencl-amdgpu-pro-pal=${major}_${minor}-${pkgrel}" "vulkan-amdgpu-pro=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amf-amdgpu-pro_${major}-${minor}_amd64.deb
     move_copyright
@@ -105,7 +105,7 @@ package_amf-amdgpu-pro () {
 package_hip-amdgpu-pro () {
     pkgdesc="HIP-CLANG runtime. HIP-CLANG allows developers to convert CUDA code to common C++"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "glibc")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/hip-amdgpu-pro_${major}-${minor}_amd64.deb
     move_copyright
@@ -115,7 +115,7 @@ package_amdgpu-pro-libgl () {
     pkgdesc="AMDGPU Pro OpenGL driver"
     license=('custom: AMDGPU-PRO EULA')
     provides=('libgl')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "gcc" "gcc-libs" "glibc" "libdrm" "libx11" "libxcb" "libxdamage" "libxext" "libxfixes" "libxxf86vm" "wayland")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "libdrm" "libx11" "libxcb" "libxdamage" "libxext" "libxfixes" "libxxf86vm" "wayland")
     backup=(etc/amd/amdapfxx.blb)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_amd64.deb
@@ -132,7 +132,7 @@ package_lib32-amdgpu-pro-libgl () {
     pkgdesc="AMDGPU Pro OpenGL driver (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-libgl')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "amdgpu-pro-libgl=${major}_${minor}-${pkgrel}" "lib32-gcc" "lib32-gcc-libs" "lib32-glibc" "lib32-libdrm" "lib32-libx11" "lib32-libxcb" "lib32-libxdamage" "lib32-libxext" "lib32-libxfixes" "lib32-libxxf86vm" "lib32-wayland")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "amdgpu-pro-libgl=${major}_${minor}-${pkgrel}" "lib32-libdrm" "lib32-libx11" "lib32-libxcb" "lib32-libxdamage" "lib32-libxext" "lib32-libxfixes" "lib32-libxxf86vm" "lib32-wayland")
     backup=(etc/amd/amdrc etc/ld.so.conf.d/10-amdgpu-pro-i386.conf)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_i386.deb
@@ -150,7 +150,7 @@ package_lib32-amdgpu-pro-libgl () {
 package_opencl-amdgpu-pro-comgr () {
     pkgdesc="Code object manager (COMGR)"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "gcc" "gcc-libs" "glibc")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-amdgpu-pro-comgr_${major}-${minor}_amd64.deb
     move_copyright
@@ -159,7 +159,7 @@ package_opencl-amdgpu-pro-comgr () {
 package_opencl-amdgpu-pro-dev () {
     pkgdesc="AMD OpenCL SDK"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("gcc" "glibc" "opencl-amdgpu-pro-comgr=${major}_${minor}-${pkgrel}")
+    depends=("opencl-amdgpu-pro-comgr=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-amdgpu-pro-dev_${major}-${minor}_amd64.deb
     move_copyright
@@ -169,7 +169,7 @@ package_opencl-amdgpu-pro-pal () {
     pkgdesc="AMDGPU Pro OpenCL driver PAL"
     license=('custom: AMDGPU-PRO EULA')
     provides=('opencl-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "glibc" "opencl-amdgpu-pro-comgr=${major}_${minor}-${pkgrel}")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "opencl-amdgpu-pro-comgr=${major}_${minor}-${pkgrel}")
     backup=(etc/OpenCL/vendors/amdocl64.icd)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb
@@ -180,7 +180,7 @@ package_opencl-amdgpu-pro-orca () {
     pkgdesc="AMDGPU Pro OpenCL driver ORCA aka legacy"
     license=('custom: AMDGPU-PRO EULA')
     provides=('opencl-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "gcc" "glibc")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}")
     backup=(etc/OpenCL/vendors/amdocl-orca64.icd)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb
@@ -191,7 +191,7 @@ package_lib32-opencl-amdgpu-pro-orca () {
     pkgdesc="AMDGPU Pro OpenCL driver ORCA aka legacy (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-opencl-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "lib32-gcc" "lib32-glibc")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}")
     backup=(etc/OpenCL/vendors/amdocl-orca32.icd)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-orca-amdgpu-pro-icd_${major}-${minor}_i386.deb
@@ -202,7 +202,7 @@ package_vulkan-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Vulkan driver"
     license=('custom: AMDGPU-PRO EULA')
     provides=('vulkan-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "gcc" "gcc-libs" "glibc" "wayland")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "wayland")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_amd64.deb
     move_copyright
@@ -217,7 +217,7 @@ package_lib32-vulkan-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Vulkan driver (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-vulkan-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "lib32-gcc" "lib32-gcc-libs" "lib32-glibc" "lib32-wayland")
+    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "lib32-wayland")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_i386.deb
     move_copyright
