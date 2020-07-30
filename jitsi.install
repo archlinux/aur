@@ -1,0 +1,6 @@
+post_install() {
+	cat << __EOF__
+The configs are located here:
+  - /etc/jicofo
+__EOF__
+}

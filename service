@@ -1,18 +1,18 @@
 [Unit]
 Description=Jitsi-Meet Conference Focus
-After=network.target
+After=network-online.target
 
 [Service]
-EnvironmentFile=/etc/jitsi/jicofo/config
+EnvironmentFile=/etc/jicofo/config
 User=jicofo
-ExecStart=/usr/share/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --secret=${JICOFO_SECRET} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} --user_password=${JICOFO_AUTH_PASSWORD} ${JICOFO_OPTS}
-WorkingDirectory=~
+ExecStart=/usr/lib/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
+WorkingDirectory=/var/lib/jicofo
 StateDirectory=jicofo
 StateDirectoryMode=0750
 LogsDirectory=jicofo
 LogsDirectoryMode=0750
-
 Restart=on-failure
+SuccessExitStatus=143
 
 # Hardening
 NoNewPrivileges=yes
