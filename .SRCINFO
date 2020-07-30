@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-trac-ik
+pkgbase = ros-noetic-trac-ik
 	pkgdesc = ROS - The ROS packages in this repository were created to provide an improved alternative Inverse Kinematics solver to the popular inverse Jacobian methods in KDL.
 	pkgver = 1.5.1
 	pkgrel = 1
@@ -11,13 +11,13 @@ pkgbase = ros-melodic-trac-ik
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-trac-ik-python
-	depends = ros-melodic-trac-ik-lib
-	depends = ros-melodic-trac-ik-examples
-	depends = ros-melodic-trac-ik-kinematics-plugin
-	source = trac_ik-1.5.1.tar.gz::https://bitbucket.org/traclabs/trac_ik/get/1.5.1.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-trac-ik-python
+	depends = ros-noetic-trac-ik-lib
+	depends = ros-noetic-trac-ik-examples
+	depends = ros-noetic-trac-ik-kinematics-plugin
+	source = ros-noetic-trac-ik-1.5.1.tar.gz::https://bitbucket.org/traclabs/trac_ik/get/1.5.1.tar.gz
 	sha256sums = 67bdfb8dfcdf99c4ff5bd10de3c214527443a5c1ac54c99a0b5590d2692bf676
 
-pkgname = ros-melodic-trac-ik
+pkgname = ros-noetic-trac-ik
 
