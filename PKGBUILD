@@ -21,9 +21,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	# customize the output of liquidctl --version
 	export DIST_NAME="$(source /etc/os-release && echo $PRETTY_NAME)"
 	export DIST_PACKAGE="$pkgname $pkgver-$pkgrel"
+
+	cd "$srcdir/$pkgname"
 	python setup.py build
 }
 
