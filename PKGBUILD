@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=pylance-language-server
-pkgver=2020.7.3
+pkgver=2020.7.4
 pkgrel=1
 pkgdesc='Python language server based on pylance vscode extension.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ publisher='ms-python'
 extension='vscode-pylance'
 source=("pylance.zip::https://${publisher}.gallery.vsassets.io/_apis/public/gallery/publisher/${publisher}/extension/${extension}/${pkgver}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
         'pylance-language-server')
-sha256sums=('f8d778643def25c483754dc2d23bb6c2d302ace4b43e0ce3f34d19f287d1e0c8'
+sha256sums=('af454f9ba92c477f447ccda87d0c9e56a39ef9792b2b960649b5dca372cf27a4'
             'a15ec816823ae1cbfd682aeae81dabb1b8bebcd3e5a07140b7ff95c9b5c23c8e')
 
 package() {
