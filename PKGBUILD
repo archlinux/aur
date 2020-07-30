@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gonha
-pkgver=0.2.16
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -18,9 +18,9 @@ depends=('python-pyqt5'
          'python-prompt_toolkit1014'
          'ttf-fira-code')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/f6/18/517d87fa17048795c30e90b0d5ad80b1f3a75c50e709cbe2e8b3bfb78fdf/gonha-0.2.16.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/f3/6f/2c715586f1c5e5fc8dc61b7a277df30a58c17f57ceda0fe18fbdce59ab60/gonha-1.3.0.tar.gz"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
-sha256sums=('53e0a4a2ca87bcc25bea31c140996f4e576746ce4bf23d3ed6a2cf9ea4a4345d'
+sha256sums=('77bfd2bf5cd6b75e78be4d4acc8383f685bd8e0ddd13c5f5184bfb2661f724f1'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 build() {
