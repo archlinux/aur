@@ -4,9 +4,19 @@
 # Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
+# Bugs
+# - allfontsgen, allthemesgen binaries doesn't work yet. Had to 
+#   use precompiled ones.
+# - Minifying of the js files sdk-all-min.js and sdk-all.js in 
+#   /usr/share/webapps/onlyoffice/documentserver/sdkjs/ doesn't 
+#   work yet. Had to use precompiled ones.
+# - Had to replace further files:
+#   /usr/share/webapps/onlyoffice/documentserver/sdkjs/common/libfont/wasm/fonts.js
+#   /usr/share/webapps/onlyoffice/documentserver/sdkjs/common/libfont/js/fonts.js
+
 pkgname=onlyoffice-documentserver
-pkgver=5.5.3
-pkgrel=3
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -16,15 +26,15 @@ makedepends=('nodejs-lts-dubnium' 'python' 'python2' 'git' 'p7zip' 'svn' 'qt5-ba
 # gtk dependency for desktop editor, disabling it doesn't work yet
 optdepends=('rabbitmq' 'postgresql' 'nginx')
 license=('AGPL')
-source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools/archive/v5.5.3.42.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/c1e4a2ce33bdcfab29d670f5fdb10fc63cf5fd6a.tar.gz"
+source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools/archive/v5.6.0.21.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/82cdd75365a58fe0e87a3fec364fc1fc3c734010.tar.gz"
 	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/959c01c91a49a8f72324332be4dd033081c213a1.tar.gz"
 	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/2bff8e819ef459a041894d9600d053991c00e214.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/6622ecdaa43b72e84512eb93d4f1e7737cbde733.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/cee7e3fb6485fe2d339d19bb0413f8fa1655cb31.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/e6731c54dc932c0e1d42e5595e10be20574c14d5.tar.gz"
-	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/9f06b2182de20f5d77006dc63f243de5e3eccdf0.tar.gz"
-	"desktop-sdk-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/desktop-sdk/archive/7bd748ec302efc9a548a1e36cbdc1ae9d8a15f17.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/a0ad9645fc4103ca67ba3e346438567305082de8.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/ff599ba7d0387295e90fc3f38b30e1d639ce159a.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/40dc7f274f75b2fbfc8f72527537e2b72019ec1a.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/a4dcc7f1520926986c54949af57dfc8be2b0ca6a.tar.gz"
+	"desktop-sdk-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/desktop-sdk/archive/d6fdb791b60b9eda3298fe484a2b8707cc884534.tar.gz"
 	"document-server-integration-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/document-server-integration/archive/83bab147d0d597cde4eedfb2c50558fbcd2ffeb6.tar.gz"
 	"document-builder-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/DocumentBuilder/archive/e6645204b0b1a82e031ec30255dfcfeb9384d06b.tar.gz"
 	"onlyoffice-fileconverter.service"
@@ -32,17 +42,16 @@ source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools
 	"onlyoffice-docservice.service"
 	"onlyoffice-documentserver.hook"
 	"onlyoffice-documentserver.sysusers"
-	"onlyoffice-documentserver.tmpfiles"
-	"videoplayer_build_bug_fix.patch::https://github.com/ONLYOFFICE/build_tools/commit/4fccc2116510ef297cd2a1fd88964602e53418be.patch")
-sha512sums=('c16f5b4c44c0b880c192c4c10667fb3a7a29f8fe9861ebfcc5bcdab6fa13bfd2f0474c64e2e09cad37fb58b80b02268d35d201323a14803bf2353ede1357febd'
-            'f0edcc3a73de707d138e344c6ab153690f93740a14da17dbac6312e50794d335a58de732eb51fbadb10963d871818f0d5be52a8261c53344fa5e4d489dc4583d'
+	"onlyoffice-documentserver.tmpfiles")
+sha512sums=('b41db7751c85abda96a15ea430cb138c0802799fb69aef4f30eb5f8e6b43ad0dc3b1d5a12c4ffb1336f7e7d1d7636d4ae9e015f475a2c58da7c5273a874ebcba'
+            '6900d42d638d19903e3bf53ebcdabcc71acf54e8bd65bfd3a7c4e88c783c72bdf8553bf172abd987378e765d71015c00a3a9c057374c4392d06066ecc02d4090'
             '722f5d1e273f7a1c7f95fa6b76bcb8965a729866be356ea60f296d0ba082b9a94149eb80ca41ad4be79664949481d9d89b50bd17fcfcb6090660ad9da708b1fa'
             '51a147f8cf5de7f10f226318f3995b3104b63d3dc846e04f8fbe9a1bbfa7ceebe52519fcb6ce3d565ca95fbd7f2faecbb7eebb0c19778bd551fcab8102902165'
-            '2971cd15be05969fa3919933ba1198648dbbb7d4c5ada524d0393741a44bf3a7e6cf5f7c9a3f405ff549ae230d1e40decb776a9741d399b106562097d3482ab1'
-            '0ff82883a8c117b968b4e45ca72947286322e2ba874f081929b6fb19af080bc1a58ad6f26ad4498cca7baa84230cbe7ff77feca2dd7ff705bc0dbb2002e5f5cb'
-            'd29f4f4c3e7a9660e1346f7d935293f25cdaa0164b2dbdf6bfda0d28bbf2595d0c1bce10a73e131f3647de0c54da501ea6f9ea44c3f287296a0b1b7068a1a958'
-            'b259d224870bad323dda0ff9cb342e115491f66909121301548cf53daa0e5df6c8fcb82c68fd263651bd4a3a6557b255a34cd26e4689c50be59fb7d36237e4fd'
-            'a7696cbfae7ff68aacefeb43052e03fb8291fe069ec7c3eeade1865582ff743429d0df8d741d4d975231103f6106e485413404dcf1f3d645b6f1a557a8b78332'
+            '73a4c2dc4b90ba04264d38176f55bc0500717a0cabd0da8852dae4490876a99a8b566f41a5eacb894ebe2bb1e06b53b2cc86478cc8f8d593c02013400c66e05b'
+            '2e68cf4bd346f29e714e5b5782a2650b75811ad34009debb863e5b34649f817e8f6954bf489864ceee5a6df0eeec6774480959ca5e00eef2906560e25d51fea5'
+            '46aab4ec8f3b8004d4a3287651e30b0a70a76cc8902bce77aff0b31a11df7c726eb00ae505abc9ba1613cfbc38e9b35112f6bb27e6732851ce85e76160b4d6e9'
+            'b6f64bd537ae8d851f0f6a7d928cbf8f25d70209722e923edc8b274b315d5ef5d682f5ce907a04d8b1d7356382ea9040a8dac6041ac25f424ebfc0e65aec65cc'
+            'caca6d459f85f500528e6427ad9d64bd98b419fad5815298233065669297fec952dd4bc32e3e2bb026340ab457fa936637a64149dff18e654691660117973464'
             'a1a6995b6f3b988f6c9998523c234cacd4d44ba2ef42064e7c0a535e5a5fd18448198f696f463323ec3f9bdfd9c270889a483b7a0e056c0722198dd9b42fab14'
             'c98b226bf7bc07f6c83d7945c1f7571ec1a555f17199e4260ec31b93a5712a4481fabcf71552f1fe96928fd26b9e4385d552d376780f65c87681be94c9a3e027'
             '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
@@ -50,8 +59,7 @@ sha512sums=('c16f5b4c44c0b880c192c4c10667fb3a7a29f8fe9861ebfcc5bcdab6fa13bfd2f04
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
-            'e1b8395ab7ef219860aebe9e7709a60cbaea1c28a8378aac3f54ce37b39944a7fd82b7efa8d59977f0891743cdface149b9f95f4b25c1c5322cb327c50d485ed'
-            'a4e0157c938def5196a280facf6dbbb907f4f3bb7f78af7418da33964f9f0c81f6796fb1b67454957dadc3757bc171ac6762fa02c37bfa5619cd2e5ff6b75b58')
+            'e1b8395ab7ef219860aebe9e7709a60cbaea1c28a8378aac3f54ce37b39944a7fd82b7efa8d59977f0891743cdface149b9f95f4b25c1c5322cb327c50d485ed')
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
 install="onlyoffice-documentserver.install"
@@ -73,33 +81,23 @@ prepare() {
   done
 
   # Configuration for build-tools
-  cd "build_tools-5.5.3.42"
+  cd "build_tools-5.6.0.21"
   ./configure.py --branch master --module server --update 0 --qt-dir /usr/include/qt
 
-  # Use clang instead of gcc because of compile errors
-  sed -i 's/is_clang=false/is_clang=true/g' scripts/core_common/modules/v8.py
-
   # Unsure how to fix path to QT-dir
-  sed -i '28i\ \ \ \ qt_dir = ""' scripts/build.py
-
-  # Patch build file in build_tools to fix bug
-  # https://github.com/ONLYOFFICE/build_tools/issues/82
-  patch -i ../videoplayer_build_bug_fix.patch
-
-  # Somehow there is a missing header file
-  sed -i '7i#include <math.h>' "${srcdir}/desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qpushbutton_icons.h"
+  sed -i '45i\ \ \ \ qt_dir = ""' scripts/build.py
 
   # Fix config file paths
   sed -i 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' "${srcdir}/server/Common/config/production-linux.json"
   sed -i 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' "${srcdir}/server/Common/config/production-linux.json"
 
   # Ignore grunt warnigns otherwise compilation will fail
-  sed -i '55d' "${srcdir}/build_tools-5.5.3.42/scripts/build_js.py"
-  sed -i '55i\ \ return base.cmd_in_dir(directory, "grunt", ["--force"] +  params)' "${srcdir}/build_tools-5.5.3.42/scripts/build_js.py"
+  sed -i '54d' "${srcdir}/build_tools-5.6.0.21/scripts/build_js.py"
+  sed -i '54i\ \ return base.cmd_in_dir(directory, "grunt", ["--force"] +  params)' "${srcdir}/build_tools-5.6.0.21/scripts/build_js.py"
 }
 
 build() {
-  cd "${srcdir}/build_tools-5.5.3.42"
+  cd "${srcdir}/build_tools-5.6.0.21"
 
   export PATH="${srcdir}/path:$PATH"
   ./make.py
@@ -109,7 +107,7 @@ package() {
   install -d "${pkgdir}/usr/share/webapps/onlyoffice"
   install -d "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js"
   install -d "${pkgdir}/var/lib/onlyoffice/documentserver"
-  cp -r "${srcdir}/build_tools-5.5.3.42/out/linux_64/onlyoffice/documentserver" "${pkgdir}/usr/share/webapps/onlyoffice/"
+  cp -r "${srcdir}/build_tools-5.6.0.21/out/linux_64/onlyoffice/documentserver" "${pkgdir}/usr/share/webapps/onlyoffice/"
   mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/default.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/production-linux.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/log4js/production.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/"
