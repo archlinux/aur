@@ -1,18 +1,20 @@
 [Unit]
-Description=Jitsi Videobridge
-After=network.target
+Description=Jitsi-Meet Videobridge
+After=network-online.target
 
 [Service]
-EnvironmentFile=/etc/jitsi/videobridge/config
-User=jitsi-videobridge
-ExecStart=/usr/share/jitsi-videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
-WorkingDirectory=~
+EnvironmentFile=/etc/jitsi-videobridge/config
+User=jvb
+ExecStart=/usr/lib/jitsi-videobridge/jvb.sh ${JVB_OPTS}
+WorkingDirectory=/var/lib/jitsi-videobridge
 StateDirectory=jitsi-videobridge
 StateDirectoryMode=0750
 LogsDirectory=jitsi-videobridge
 LogsDirectoryMode=0750
 
 Restart=on-failure
+RestartSec=2
+
 SuccessExitStatus=143
 
 # more threads for this process

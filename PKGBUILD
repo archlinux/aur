@@ -1,57 +1,77 @@
-_pkgname=jitsi-videobridge
-pkgname=${_pkgname}-bin
-epoch=1
-pkgver=2.1+202+g5f9377b9
-pkgrel=2
-_debname=${_pkgname}2
-_debrel=1
-pkgdesc="WebRTC compatible Selective Forwarding Unit (SFU)"
+# Maintainer: C0rn3j <spleefer90@gmail.com>
+# Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
+_basename=jitsi
+_pkgname=videobridge
+_tag=2.1-273-g072dd44b
+_version=2.1+273+g072dd44b
+
+_pkgbase=${_basename}-${_pkgname}
+_debname=${_basename}-${_pkgname}2
+pkgname=${_pkgbase}-bin
+pkgver=${_version}
+pkgrel=1
+pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
-url="https://jitsi.org/jitsi-videobridge/"
+url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=('java-runtime-headless')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
+depends=("java-runtime" "bash")
+optdepends=("prosody")
 makedepends=('tar')
 options=('!strip')
-backup=('etc/jitsi/videobridge/config'
-        'etc/jitsi/videobridge/sip-communicator.properties'
-        'etc/jitsi/videobridge/callstats-java-sdk.properties'
-        'etc/jitsi/videobridge/log4j2.xml'
-        'etc/jitsi/videobridge/logging.properties')
+backup=(
+  "etc/${_pkgbase}/config"
+  "etc/${_pkgbase}/log4j2.xml"
+  "etc/${_pkgbase}/logging.properties"
+  "etc/${_pkgbase}/sip-communicator.properties"
+)
+source=(
+        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
+        "config"
+        "sip-communicator.properties"
+        "service"
+        "sysusers.conf"
+        "tmpfiles.conf"
+	"jitsi.install"
+)
+provides=(${_pkgbase})
+conflicts=(${_pkgbase})
+install=jitsi.install
 
-source=("https://download.jitsi.org/stable/${_debname}_${pkgver//+/-}-${_debrel}_all.deb"
-        "${_pkgname}.service"
-        'sysusers.conf'
-        'tmpfiles.conf'
-        'config'
-        'sip-communicator.properties')
-sha256sums=('0afce2a9c591e72a69c28665f8bf48d5e9d3a4e253e6be8737b1913f4d25b29b'
-            'a23bfd94bcf0a2ffbb9b4939ba09ce80979bd41a7d91ec3d702392e2e648a886'
-            '5b47b031d7a1dec536d3fc53e71d971b1052ea2e78e1060b404a792211363515'
-            '885923de1718b757826596aaec8e58025ae40ed622bad4b5f43b12ab975c86a2'
-            '46f686cd8ea6bb5f1ec6055d2f16cc72db4baf9d90dea234d10e661b50924624'
-            'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7')
-
-package() {
-  cd "${srcdir}"
-  tar -xJvf data.tar.xz -C "${pkgdir}"
-
-  install -d "${pkgdir}/usr/lib"
-  rm -r "${pkgdir}/etc/init.d"
-  rm -r "${pkgdir}/etc/logrotate.d"
-  mv "${pkgdir}/etc/sysctl.d" "${pkgdir}/usr/lib/sysctl.d"
-  rm -r "${pkgdir}/lib"
-  rm -r "${pkgdir}/usr/share/doc"
-  chmod 0750 "${pkgdir}/etc/jitsi/videobridge"
-
-  sed -i "s@/var/log/jitsi@/var/log/jitsi-videobridge@" "${pkgdir}/etc/jitsi/videobridge/log4j2.xml"
-
-  install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm644 'sysusers.conf' "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-  install -Dm644 'tmpfiles.conf' "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -Dm644 'config' "${pkgdir}/etc/jitsi/videobridge/config"
-  install -Dm644 'sip-communicator.properties' "${pkgdir}/etc/jitsi/videobridge/sip-communicator.properties"
+build() {
+        rm -rf ${_pkgbase}
+        mkdir ${_pkgbase}
+        tar xJf data.tar.xz -C ${_pkgbase}
 }
 
-# vim: set ts=2 sw=2 et:
+package() {
+        cd "$srcdir/${_pkgbase}"
+
+        DESTDIR="${pkgdir}/usr/lib/${_pkgbase}"
+        CONFDIR="${pkgdir}/etc/${_pkgbase}"
+
+        install -dm755 "${DESTDIR}"
+        cp -R usr/share/jitsi-videobridge/* "${DESTDIR}"
+        rm "${DESTDIR}"/{collect-dump-logs.sh,graceful_shutdown.sh}
+
+        chown -R root:root "${DESTDIR}"
+
+        install -dm750 "${CONFDIR}"
+        install -Dm640 -t "${CONFDIR}" etc/jitsi/videobridge/*
+        sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/log4j2.xml"
+
+        install -Dm644 "etc/sysctl.d/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${_pkgbase}.conf"
+
+        cd "$srcdir"
+        install -Dm640 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
+        install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
+        install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
+}
+sha256sums=('694f5afd5ecc123ec0e8fe5186adf38f3989fa7a2c9a80c0d316c7622527888a'
+            '5c79dc1e1f5ee04eba3da987c488fc53cb6e4348345cab05ab0ed6d7000f3d9d'
+            'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
+            'f87c5250acba49a62ae55293059281764a6dc8cd99acf23e4b1b8bbee03b4fb1'
+            '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
+            '4dd8141e71bbf73b39cf242902e1c1a84a38dc3160ff89e76883d999af10541c'
+            '59c2b2068205d6972c4b25bf1bbed9aaf08ff395b28309888cfe9b386dc29fa0')
