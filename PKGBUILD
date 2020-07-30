@@ -1,16 +1,16 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=wgcf
-pkgver=1.0.6
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Generate WireGuard profile from Cloudflare Warp account'
 arch=('x86_64')
 url="https://github.com/ViRb3/wgcf"
 license=('MIT')
 makedepends=('go')
 depends=('glibc')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "https://raw.githubusercontent.com/ViRb3/wgcf/master/LICENSE")
-sha256sums=('d3d3123d002c1b5dc5a321d4c122436981254951d1c46565575888a8bade44b3' '6f59111d0cb4d443c0cda4b85932c1f93a32137e31903b24877899e44e5d4a07')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('28901a452f396c43ef08235956b468b72e0835ba9ddc90ab1a7c028d4e4642c7') 
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -31,5 +31,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
