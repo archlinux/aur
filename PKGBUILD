@@ -1,30 +1,30 @@
 # Maintainer: Jack Wu (OriginCode) <self@origincode.me>
 
 pkgname=qq-linux
-pkgver=2.0.0_b1_1024
-pkgrel=3
+pkgver=2.0.0_b2_1082
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Tencent QQ for Linux"
 url="https://im.qq.com/linuxqq"
 depends=('gtk2' 'glibc' 'gcc-libs' 'nss')
 license=('custom')
 source=(
-    "$pkgname-${pkgver}_orig_x86_64.pkg.tar.xz::https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_x86_64.pkg.tar.xz"
+    "$pkgname-${pkgver}_orig_x86_64.pkg.tar.xz::http://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_x86_64.pkg.tar.xz"
     "qq.desktop"
 )
-sha512sums=(
-    'b430ee22c7d32f61982482e24ed47ad249c95ec5ba750b8d7537f880e3780a8513b101061511949245139fe122a582bdce87b784301de85e14593a8b4ad58866'
-    'a6118c6a2dc03d22b423d4bca393c6a2ef0c8494f6480db0ee1b29ca28485e3a5e648d9485595d2d4c921d1688f72c70a70949c241b2fdde6d43bd0053cdcaa2'
-)
+sha512sums=('01a5babf0fbc5e96f5ddeef3fbb6f5e766523766742d6f95ecf84d2a7f599d35dd9971ba67c8976ae7c26c5cd5f985a81e124b3621d041ebb26c7ff9db525df7'
+            'a848ecb95c69250a13bf33e3fbad0bcef2cd30973dd0bb0cea9ad4d742d607f63b76791ccbbedc4dd412bd0c39c6ec515c40dea9a8471a4635dfaa3528bfe3d2')
 provides=('linuxqq')
 conflicts=('linuxqq')
 
 package() {
-    mkdir -p "$pkgdir/opt"
-    cp -dpr --preserve=ownership "$srcdir/usr/share/tencent-qq" "$pkgdir/opt/"
+    mkdir -p "$pkgdir/opt/tencent-qq"
+    cp -pr "$srcdir/usr/local/bin/"* "$pkgdir/opt/tencent-qq/"
+    cp -pr "$srcdir/usr/local/share/tencent-qq/"* "$pkgdir/opt/tencent-qq/"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -s /opt/tencent-qq/qq "$pkgdir/usr/bin/qq"
+    ln -s ../../opt/tencent-qq/qq "$pkgdir/usr/bin/qq"
     
-    install -Dm644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/"
+    install -Dm644 "$pkgdir/opt/tencent-qq/qq.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/qq.png"
+    install -Dm644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/qq.desktop"
 }
