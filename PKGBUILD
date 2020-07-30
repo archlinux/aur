@@ -1,4 +1,4 @@
-# Maintainer: Wesley Moore <wes@wezm.net>
+# Maintainer: Art Dev <artdevjs at gmail dot com>
 pkgname=gitui-bin
 pkgver=0.9.1
 pkgrel=1
