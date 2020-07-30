@@ -1,12 +1,13 @@
 pkgbase = bazarr
 	pkgdesc = Subtitle download automation for Sonarr and Radarr.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morpheus65535/bazarr
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-lxml
+	depends = python-numpy
 	options = !strip
 	options = staticlibs
 	source = bazarr-0.9.tar.gz::https://github.com/morpheus65535/bazarr/archive/v0.9.tar.gz

@@ -3,14 +3,15 @@
 
 pkgname=bazarr
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Subtitle download automation for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=('python'
-         'python-lxml')
+         'python-lxml'
+         'python-numpy')
 
 source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archive/v${pkgver}.tar.gz"
         'bazarr.service'
