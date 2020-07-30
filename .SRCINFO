@@ -1,0 +1,17 @@
+pkgbase = picsimlab-bin
+	pkgdesc = A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/lcgamboa/picsimlab
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = wxgtk3
+	depends = picsim
+	depends = openal
+	provides = picsimlab
+	source = picsimlab-0.8.1.deb::https://sourceforge.net/projects/picsim/files/v0.8.1/picsimlab_0.8.1_unbuntu_20.04_amd64.deb/download
+	sha256sums = 6a94b4b66eaedf672292eac5c3b9c5f91810e0c49707e03a28c859f6643f86d7
+
+pkgname = picsimlab-bin
+
