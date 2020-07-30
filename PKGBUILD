@@ -2,8 +2,8 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.7.10.zen1
-pkgrel=3
+pkgver=5.7.11.zen1
+pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401IV)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -22,6 +22,7 @@ source=(
   i8042.patch
   asus-nb-wmi.patch
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.7.patch"
+  amdgpu.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,10 +30,11 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '4c278bafc2e5a04fd584ca45ddfe8bdacf52d8f5a2aac9df17d7a20479e893bf'
+            '819af2e06eff69f16fdf202a5ee5104d7f656d9293bb14800f32f47a0a6c7974'
             '2273fae30f712aa554dd10294a072b4934265b56e6146493a07c22c7df4af61d'
             'c1fab4cb53995dd87daa3772aca1b9b24bf4033fc6cecd319819a8e4ee59a10d'
-            'c28dc0d30bba3eedae9f5cf98a686bdfb25a0326df4e8c417d37a36597d21b37')
+            'c28dc0d30bba3eedae9f5cf98a686bdfb25a0326df4e8c417d37a36597d21b37'
+            'a1c008c481295a6c583d2defa8e66f394af26c441f330622df4a43dd2e776214')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
