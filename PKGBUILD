@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r417.93ce96d
+pkgver=r419.22338ed
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ install=${pkgname}.install
 source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.json")
 sha256sums=('SKIP'
-  '77757eee8954ab79ada7d61e10d434a1909af976963b21613685230f109ea801')
+  '999544d837a84716e9978a90c6ca923df58746b7bc7cf2a83dc00f2230aa8c5b')
 
 pkgver() {
   cd "${_pkgname}"
