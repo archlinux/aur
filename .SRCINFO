@@ -1,0 +1,17 @@
+pkgbase = geotrans-bin
+	pkgdesc = NGA and DOD approved coordinate converter and datum translator
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://earth-info.nga.mil/GandG/update/index.php?action=home
+	arch = x86_64
+	license = unknown
+	depends = java-runtime
+	source = ftp://ftp.nga.mil/pub2/gandg/website/wgs84/apps/geotrans/current-version/sw/end_user_version/linux_user.tgz
+	source = geotrans_logo.png
+	source = GeoTrans.desktop
+	sha256sums = 1a768700fbcf78d325d374ae4c63bc3a0c395eb779b89b1c5be6838a46e5905f
+	sha256sums = 9197dce710362d9dadafcc85d12b2b5cbb84878e2498f283194d9a425ca33cfa
+	sha256sums = 14c9ffcfdd01e5b81eaee666140bb2879714160a475de12f7934b997e9ab2e87
+
+pkgname = geotrans-bin
+

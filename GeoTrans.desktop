@@ -1,0 +1,21 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/bin/geotrans
+GenericName[en_US]=Coordinate converter and datum translator
+GenericName=Coordinate converter and datum translator
+Icon=geotrans_logo.png
+MimeType=
+Name[en_US]=GeoTrans
+Name=GeoTrans
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Science;Math;
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-RunOnDiscreteGpu=false
+X-KDE-SubstituteUID=false
+X-KDE-Username=
