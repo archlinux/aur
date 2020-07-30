@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit-ros-planning
 	pkgdesc = ROS - Planning components of MoveIt that use ROS.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = ros-noetic-moveit-ros-planning
 	depends = ros-noetic-tf2-geometry-msgs
 	depends = ros-noetic-tf2-msgs
 	depends = ros-noetic-tf2-ros
-	source = ros-noetic-moveit-ros-planning-1.0.4.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.4.tar.gz
-	sha256sums = 9449505f41ca9b7001d1071ae7ae383a1f95ec23edefb0d4b87f64c119069d5b
+	source = ros-noetic-moveit-ros-planning-1.0.5.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.5.tar.gz
+	sha256sums = 78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a
 
 pkgname = ros-noetic-moveit-ros-planning
 
