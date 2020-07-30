@@ -1,0 +1,28 @@
+pkgbase = lua-cluacov
+	pkgdesc = C extensions for LuaCov
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mpeterv/cluacov
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	depends = lua
+	source = cluacov-0.1.1.tar.gz::https://github.com/mpeterv/cluacov/archive/0.1.1.tar.gz
+	sha256sums = fc46a69fbd9be19e022b05be252d2b2c41a4fb1799ddf41c7d325d260bc77c14
+
+pkgname = lua-cluacov
+	depends = lua
+	depends = lua-luacov
+
+pkgname = lua52-cluacov
+	depends = lua52
+	depends = lua52-luacov
+
+pkgname = lua51-cluacov
+	depends = lua51
+	depends = lua51-luacov
+
