@@ -9,12 +9,15 @@ pkgname=(
   aspnet-runtime-preview
   dotnet-runtime-preview
   dotnet-sdk-preview
+  # netstandard-targeting-pack-preview
+  dotnet-targeting-pack-preview
+  aspnet-targeting-pack-preview
 )
 pkgver=5.0.0+100+preview.7.20366.6
 _hostver=5.0.0-preview.7.20364.11
 _runtimever=5.0.0-preview.7.20365.19
 _sdkver=5.0.100-preview.7.20366.6
-pkgrel=2
+pkgrel=3
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -29,7 +32,7 @@ sha512sums_aarch64=(34cc65a879c8dedf854e0bb5b8b3f415c7db1ea9281a868516b6c0fdbb6d
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
   depends=(glibc)
-  provides=(dotnet-host dotnet-host=${_hostver%-*})
+  provides=(dotnet-host)
   conflicts=(dotnet-host)
 
   install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-preview}}
@@ -42,7 +45,7 @@ package_dotnet-host-preview() {
 package_dotnet-runtime-preview() {
   pkgdesc='The .NET Core runtime (preview, binary)'
   depends=(
-    "dotnet-host>=${_hostver%-*}"
+    dotnet-host-preview
     glibc 
     icu
     krb5
@@ -53,38 +56,70 @@ package_dotnet-runtime-preview() {
   )
 
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=(dotnet-runtime=${_runtimever%-*} dotnet-runtime-5.0)
-  conflicts=(dotnet-runtime=${_runtimever%-*} dotnet-runtime-5.0)
+  provides=(dotnet-runtime-5.0)
+  conflicts=(dotnet-runtime-5.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
   ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-runtime-preview
 }
 
-package_dotnet-sdk-preview() {
-  pkgdesc='The .NET Core SDK (preview, binary)'
-  depends=(
-    dotnet-sdk-3.1
-    dotnet-runtime-preview
-    glibc
-  )
-
-  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-5.0)
-  conflicts=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-5.0)
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
-  cp -dr --no-preserve='ownership' packs/{Microsoft.AspNetCore.App.Ref,Microsoft.NETCore.App.Host.linux-x64,Microsoft.NETCore.App.Ref} "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview
-}
-
 package_aspnet-runtime-preview() {
   pkgdesc='The ASP.NET Core runtime (preview, binary)'
   depends=(dotnet-runtime-preview)
-  provides=(aspnet-runtime=${_runtimever%-*} aspnet-runtime-5.0)
-  conflicts=(aspnet-runtime=${_runtimever%-*} aspnet-runtime-5.0)
+  provides=(aspnet-runtime-5.0)
+  conflicts=(aspnet-runtime-5.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
   ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/aspnet-runtime-preview
+}
+
+package_dotnet-sdk-preview() {
+  pkgdesc='The .NET Core SDK (preview, binary)'
+  depends=(
+    dotnet-runtime-preview
+    dotnet-targeting-pack-preview
+    glibc
+    netstandard-targeting-pack
+  )
+  optdepends=('aspnet-targeting-pack-preview: Build ASP.NET Core applications')
+  provides=(dotnet-sdk-5.0)
+  conflicts=(dotnet-sdk-5.0)
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
+  cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
+  ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview
+}
+
+# package_netstandard-targeting-pack-preview() {
+#   pkgdesc='The .NET Standard targeting pack (preview, binary)'
+#   provides=(netstandard-targeting-pack-2.1)
+#   conflicts=(netstandard-targeting-pack-2.1)
+
+#   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+#   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
+#   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack-preview
+# }
+
+package_dotnet-targeting-pack-preview() {
+  pkgdesc='The .NET Core targeting pack (preview, binary)'
+  depends=(netstandard-targeting-pack)
+  provides=(dotnet-targeting-pack-5.0)
+  conflicts=(dotnet-targeting-pack-5.0)
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-preview
+}
+
+package_aspnet-targeting-pack-preview() {
+  pkgdesc='The ASP.NET Core targeting pack (preview, binary)'
+  depends=(dotnet-targeting-pack-preview)
+  provides=(aspnet-targeting-pack-5.0)
+  conflicts=(aspnet-targeting-pack-5.0)
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-preview
 }

@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview
 	pkgver = 5.0.0+100+preview.7.20366.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -18,20 +18,17 @@ pkgname = dotnet-host-preview
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
 	depends = glibc
 	provides = dotnet-host
-	provides = dotnet-host=5.0.0
 	conflicts = dotnet-host
 
 pkgname = aspnet-runtime-preview
 	pkgdesc = The ASP.NET Core runtime (preview, binary)
 	depends = dotnet-runtime-preview
-	provides = aspnet-runtime=5.0.0
 	provides = aspnet-runtime-5.0
-	conflicts = aspnet-runtime=5.0.0
 	conflicts = aspnet-runtime-5.0
 
 pkgname = dotnet-runtime-preview
 	pkgdesc = The .NET Core runtime (preview, binary)
-	depends = dotnet-host>=5.0.0
+	depends = dotnet-host-preview
 	depends = glibc
 	depends = icu
 	depends = krb5
@@ -40,18 +37,28 @@ pkgname = dotnet-runtime-preview
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=5.0.0
 	provides = dotnet-runtime-5.0
-	conflicts = dotnet-runtime=5.0.0
 	conflicts = dotnet-runtime-5.0
 
 pkgname = dotnet-sdk-preview
 	pkgdesc = The .NET Core SDK (preview, binary)
-	depends = dotnet-sdk-3.1
 	depends = dotnet-runtime-preview
+	depends = dotnet-targeting-pack-preview
 	depends = glibc
-	provides = dotnet-sdk=5.0.100
+	depends = netstandard-targeting-pack
+	optdepends = aspnet-targeting-pack-preview: Build ASP.NET Core applications
 	provides = dotnet-sdk-5.0
-	conflicts = dotnet-sdk=5.0.100
 	conflicts = dotnet-sdk-5.0
+
+pkgname = dotnet-targeting-pack-preview
+	pkgdesc = The .NET Core targeting pack (preview, binary)
+	depends = netstandard-targeting-pack
+	provides = dotnet-targeting-pack-5.0
+	conflicts = dotnet-targeting-pack-5.0
+
+pkgname = aspnet-targeting-pack-preview
+	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
+	depends = dotnet-targeting-pack-preview
+	provides = aspnet-targeting-pack-5.0
+	conflicts = aspnet-targeting-pack-5.0
 
