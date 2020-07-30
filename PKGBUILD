@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=('lzdoom-bin')
-pkgver='3.85'
+pkgname=lzdoom-bin
+pkgver=3.86a
 pkgrel=1
 pkgdesc='Fork of GZDoom 3.3.2 for legacy systems'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ optdepends=('fluidsynth' 'libsndfile' 'mpg123' 'openal' 'timidity++')
 options=('!strip' '!emptydirs')
 source_i686=("${pkgname}-${pkgver}_i686.deb::https://github.com/drfrag666/gzdoom/releases/download/${pkgver}/lzdoom_${pkgver}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_x86_64.deb::https://github.com/drfrag666/gzdoom/releases/download/${pkgver}/lzdoom_${pkgver}_amd64.deb")
-sha512sums_i686=('837160c74a6b086cb2e4a3cb82215ee82b164cdc15df2c823873f05f6f0cc8f1f93335ca0cb899bb7d24b5788b7e07f1a811a65af6395e058abea855e43d5f3e')
-sha512sums_x86_64=('8a6880e69b4c40425b0dd332d1be1ced88c08778a1f5738611f7a69d701ca0569c58651d37cdcc0492a50fea8078b3b49fc79821e3befaf5f02b465d6869958f')
+sha256sums_i686=('142fa695b4ad1b2b79f6fdc9e8bcc7161c1015f66bc1c7d3a415de3308493e8d')
+sha256sums_x86_64=('b6c1297a1a6355f1dce6f0ea6e915b0aca84d2c923770d9bdbecc225d77a2155')
 
 package() {
   tar xf data.tar.xz -C "${pkgdir}"
