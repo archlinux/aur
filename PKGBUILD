@@ -27,22 +27,22 @@ pkgver() {
 }
 
 build() {
-	# Use node 12
-	local node_version='12'
-	export npm_config_cache="$srcdir/npm_cache"
-	local npm_prefix=$(npm config get prefix)
-	npm config delete prefix
-	source /usr/share/nvm/init-nvm.sh
-	nvm install "$node_version" && nvm use "$node_version"
+    # Use node 12
+    local node_version='12'
+    export npm_config_cache="$srcdir/npm_cache"
+    local npm_prefix=$(npm config get prefix)
+    npm config delete prefix
+    source /usr/share/nvm/init-nvm.sh
+    nvm install "$node_version" && nvm use "$node_version"
 
     # Run the build
     cd "$srcdir/$_pkgname"
     npm run bootstrap
     GITHUB_REF=core@$(jq -r .version "packages/insomnia-app/config/config.core.json") npm run app-package
 
-	# Restore node config
-	npm config set prefix "$npm_prefix"
-	nvm unalias default
+    # Restore node config
+    npm config set prefix "$npm_prefix"
+    nvm unalias default
 }
 
 package() {
