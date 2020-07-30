@@ -2,7 +2,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=2020.07
+pkgver=2020.07.1
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('waterfox-current')
 replaces=('waterfox-alpha-bin')
 
 source=('waterfox-current.desktop'
-        'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+        'https://cdn.waterfox.net/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
 
 package() {
 	# Create the necessary directories.
@@ -60,4 +60,4 @@ END
 }
 
 sha256sums=('b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548'
-            '6088a3ee3ae282545b44d04218f5af7d9da288b6659a79ec3706111c8a0c6760')
+            '1e71f0cdbac908bb6d0c7c9f416f6db81de619dbef61ae6ae9f92e82686ee13d')
