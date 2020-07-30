@@ -2,7 +2,7 @@
 
 _hkgname=gtk
 pkgname=haskell-gtk2
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="The core library of the Gtk2Hs suite of libraries for Haskell based on Gtk+."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -21,7 +21,7 @@ depends=('ghc-libs'
          'webkitgtk'
          'webkit2gtk')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('70868d82c670b4fa7af3846a86cdd8f831d5178d6abc03264d0f56ff5986160abef95c77811e30fa0b71e60721ce2dfca1908aa5ac4865b71c23611fda88cc78')
+sha512sums=('3d0a75fd1eebcd0fa7c7bf5a0a2dfd622e28b3ab8f69e0f152e10dee9fb8e13b0f6ce7da3a9f304c3f2233cdf432a6d099afc89b47ce3fb4d1cb96c25d6da26b')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
