@@ -2,7 +2,7 @@
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=liquidctl-git
-pkgver=1.3.3.r321.da3fc627618e
+pkgver=1.3.3.r351.4993cd5ae5a5
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 arch=('any')
