@@ -1,0 +1,6 @@
+post_install() {
+	cat << __EOF__
+The examples for coturn/turnserver are located here:
+  - /usr/share/doc/jitsi-meet-turnserver/
+__EOF__
+}
