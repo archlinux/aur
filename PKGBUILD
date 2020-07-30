@@ -33,7 +33,7 @@ package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 liquidctl.8 "$pkgdir/usr/share/man/man8/liquidctl.8"
-	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl" docs/*-guide.md
+	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl" docs/*.md
 	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl/linux" docs/linux/*.md
 	install -Dm644 extra/linux/71-liquidctl.rules "$pkgdir/usr/lib/udev/rules.d/71-liquidctl.rules"
 
