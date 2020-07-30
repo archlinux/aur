@@ -31,7 +31,13 @@ package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 liquidctl.8 "$pkgdir/usr/share/man/man8/liquidctl.8"
+	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl" docs/*-guide.md
+	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl/linux" docs/linux/*.md
 	install -Dm644 extra/linux/71-liquidctl.rules "$pkgdir/usr/lib/udev/rules.d/71-liquidctl.rules"
+
+	# optional (mostly example scripts, but may be useful in some cases):
+	# install -D extra/yoda "$pkgdir/usr/bin/liquidctl-yoda"
+	# install -D extra/liquiddump "$pkgdir/usr/bin/liquidctl-dump"
 }
 
 check() {
