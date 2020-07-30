@@ -1,4 +1,4 @@
-pkgbase = wyrd
+pkgbase = wyrd-git
 	pkgdesc = A text-based front-end to Remind.
 	pkgver = 20200730.a33bf8f
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = wyrd
 	source = git+https://github.com/Perdu/wyrd.git
 	md5sums = SKIP
 
-pkgname = wyrd
+pkgname = wyrd-git
 

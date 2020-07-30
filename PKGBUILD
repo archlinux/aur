@@ -2,7 +2,7 @@
 # Contributor: tealeaf joss-arch@pseudonymity.net
 # Contributor: ormris ormris@ormris.com
 
-pkgname="wyrd"
+pkgname="wyrd-git"
 pkgver=20200730.a33bf8f
 pkgrel=1
 pkgdesc="A text-based front-end to Remind."
