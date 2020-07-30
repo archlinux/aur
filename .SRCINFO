@@ -1,15 +1,15 @@
 pkgbase = lightcord-bin
 	pkgdesc = A simple - customizable - Discord Client
-	pkgver = v0.1.3
-	pkgrel = 2
+	pkgver = v0.1.4
+	pkgrel = 1
 	url = https://github.com/Lightcord/Lightcord
 	arch = x86_64
 	license = MIT
 	provides = discord
-	source = lightcord-bin-v0.1.3.zip::https://lightcord.deroku.xyz/api/v1/gh/releases/Lightcord/Lightcord/v0.1.3/lightcord-linux-x64.zip
+	source = lightcord-bin-v0.1.4.zip::https://lightcord.deroku.xyz/api/v1/gh/releases/Lightcord/Lightcord/v0.1.4/lightcord-linux-x64.zip
 	source = Lightcord.desktop
 	source = https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
-	md5sums = d24b1af29cc18ede4713e3cb372cff15
+	md5sums = 9674c19bf4713a2751e7fa5710210032
 	md5sums = 7f7ade1f48d8aa92809463ba40663936
 	md5sums = f1ace6f149a3d778bfb789d10181d877
 
