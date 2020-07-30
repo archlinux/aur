@@ -9,7 +9,7 @@ url="https://github.com/swaywm/sway"
 license=('MIT')
 conflicts=('grimshot')
 replaces=('swaygrab')
-depends=("sway" "grim" "slurp" "jq" "xdg-user-dirs")
+depends=("sway" "grim" "slurp" "jq" "xdg-user-dirs" "git")
 optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
 makedepends=("scdoc")
