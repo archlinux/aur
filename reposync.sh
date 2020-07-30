@@ -55,17 +55,17 @@ files_remote_name="${repo_name}.files"
     rm -f "$db_remote_name"*
     rm -f "$files_remote_name"*
     # cleanup old files
-    pkgnames="$((for pkg in *.pkg.tar.xz; do echo "${pkg%-*-*-*}"; done;) | sort -u)"
+    pkgnames="$((for pkg in *.pkg.tar.{xz,zst}; do echo "${pkg%-*-*-*}"; done;) | sort -u)"
     for pkg in $pkgnames
     do
-        for oldpkg in $(ls -1 -v ${pkg}-*.pkg.tar.xz | head --lines=-2)
+        for oldpkg in $(ls -1 -v ${pkg}-*.pkg.tar.{xz,zst} | head --lines=-2)
         do
             echo "Removing $oldpkg from repo"
             mv "$oldpkg" "$old_pkgs"
             mv "${oldpkg}.sig" "$old_pkgs"
         done
     done
-    for pkg in $(ls -1 -v *.pkg.tar.xz)
+    for pkg in $(ls -1 -v *.pkg.tar.{xz,zst})
     do
         if [[ ! -f "${pkg}.sig" ]]
         then
