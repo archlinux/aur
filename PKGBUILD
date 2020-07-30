@@ -1,65 +1,92 @@
-# Maintainer: root@yurikoles.com
-# Contributor: Spyhawk
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Submitter: Spyhawk
 
+_pkgname=libsolv
 pkgname=libsolv-git
-pkgver=0.7.7.2.gee27eee6
+pkgver=0.7.14.r13.g956cb2d1
 pkgrel=1
-pkgdesc="A new approach to package dependency solving"
+pkgdesc='Package dependency solver using a satisfiability algorithm'
 arch=('i686' 'x86_64')
-url="https://github.com/openSUSE/libsolv"
+url="https://github.com/openSUSE/${_pkgname}"
 license=('BSD')
-makedepends=('git' 'make' 'cmake' 'expat' 'swig'
-             'perl' 'python' 'ruby' 'ninja')
-optdepends=('perl: for perl bindings'
-            'python: for python bindings'
-            'ruby: for ruby bindings'
-            'rpm-org: RPM support')
-provides=('libsolv')
-conflicts=('libsolv')
+depends=('rpm-tools' 'zchunk')
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+  'perl'
+  'python'
+  'ruby'
+  'swig')
+optdepends=(
+  'perl: for perl bindings'
+  'python: for python bindings'
+  'ruby: for ruby bindings')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/openSUSE/libsolv.git")
 sha256sums=('SKIP')
 
-# build libzypp/zypper
-BUILDZYPP=true
-if [[ "$BUILDZYPP" == 'true' ]]; then
-  makedepends+=('rpm-org')
-fi
-
 pkgver() {
   cd "${pkgname}"
-  echo $(git describe --always | sed -r 's/-/./g')
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  rm -rf build
 }
 
 build() {
-  cd "${pkgname}"
-  mkdir -p build && cd build
+  cmake \
+    -B build \
+    -S "${pkgname}" \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DUSE_VENDORDIRS=ON \
+    -DARCHLINUX=1 \
+    -DENABLE_APPDATA=ON \
+    -DENABLE_ARCHREPO=ON \
+    -DENABLE_BZIP2_COMPRESSION=ON \
+    -DENABLE_COMPLEX_DEPS=1 \
+    -DENABLE_COMPS=ON \
+    -DENABLE_CONDA=ON \
+    -DENABLE_CUDFREPO=ON \
+    -DENABLE_DEBIAN=ON \
+    -DENABLE_HAIKU=OFF \
+    -DENABLE_HELIXREPO=ON \
+    -DENABLE_LZMA_COMPRESSION=ON \
+    -DENABLE_MDKREPO=ON \
+    -DENABLE_PERL=ON \
+    -DENABLE_PUBKEY=ON \
+    -DENABLE_PYTHON=0 \
+    -DENABLE_PYTHON3=1 \
+    -DENABLE_RPMDB=ON \
+    -DENABLE_RPMDB_BYRPMHEADER=ON \
+    -DENABLE_RPMDB_LIBRPM=ON \
+    -DENABLE_RPMMD=ON \
+    -DENABLE_RPMPKG=ON \
+    -DENABLE_RUBY=ON \
+    -DENABLE_SUSEREPO=ON \
+    -DENABLE_TCL=OFF \
+    -DENABLE_ZCHUNK_COMPRESSION=ON \
+    -DWITH_SYSTEM_ZCHUNK=ON \
+    -DENABLE_ZSTD_COMPRESSION=ON \
+    -DMULTI_SEMANTICS=ON \
+    -DWITH_LIBXML2=OFF \
 
-  if [[ "${BUILDZYPP}" == 'true' ]]; then
-  cmake -G Ninja \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D ENABLE_RPMDB=1 \
-    -D ENABLE_HELIXREPO=1 \
-    -D ENABLE_PERL=1 \
-    -D ENABLE_PYTHON=1 \
-    -D ENABLE_RUBY=1 \
-    ..
-  else
-  cmake -G Ninja \
-    -D CMAKE_INSTAL1L_PREFIX=/usr \
-    -D ARCHLINUX=1 \
-    -D ENABLE_PERL=1 \
-    -D ENABLE_PYTHON=1 \
-    -D ENABLE_RUBY=1 \
-    ..
-  fi
-  ninja
+  ninja -C build
+}
+
+check() {
+  ARGS="-V" ninja -C build test
 }
 
 package() {
-  cd "${pkgname}/build"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  # cmake fix (see GH#56)
-  mkdir -p "${pkgdir}/usr/lib/cmake/LibSolv"
-  mv "${pkgdir}/usr/share/cmake/Modules/FindLibSolv.cmake" "${pkgdir}/usr/lib/cmake/LibSolv/LibSolvConfig.cmake"
+  install -Dp -m644 "${pkgname}"/LICENSE.BSD  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD"
+  install -Dp -m644 "${pkgname}"/README       "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
