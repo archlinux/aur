@@ -3,8 +3,8 @@
 
 pkgname=libzypp
 pkgver=17.24.1
-pkgrel=1
-pkgdesc="Package, Patch, Pattern, and Product Management"
+pkgrel=2
+pkgdesc="Library for package, patch, pattern and product management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
