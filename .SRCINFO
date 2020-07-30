@@ -23,7 +23,6 @@ pkgname = vim-airline-onedark-git
 	depends = vim-onedark
 	provides = vim-airline-onedark
 	conflicts = vim-airline-onedark
-	conflicts = vim-airline-themes
 
 pkgname = vim-lightline-onedark-git
 	pkgdesc = OneDark color scheme for lightline.

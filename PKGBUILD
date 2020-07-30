@@ -39,9 +39,9 @@ package_vim-airline-onedark-git() {
     depends=('vim' 'vim-airline' 'vim-onedark')
     _pkgname=vim-airline-onedark
     provides=('vim-airline-onedark')
-    conflicts=('vim-airline-onedark' 'vim-airline-themes')
+    conflicts=('vim-airline-onedark')
     cd "${srcdir}/${_pkgbase}"
-    install -Dm 644 "${srcdir}/${_pkgbase}/autoload/airline/themes/onedark.vim" "${pkgdir}/usr/share/vim/vimfiles/autoload/airline/themes/onedark.vim"
+    install -Dm 644 "${srcdir}/${_pkgbase}/autoload/airline/themes/onedark.vim" "${pkgdir}/usr/share/vim/vimfiles/pack/${_pkgbase}/start/${_pkgbase}/autoload/airline/themes/onedark.vim"
 }
 
 package_vim-lightline-onedark-git() {
@@ -51,5 +51,5 @@ package_vim-lightline-onedark-git() {
     provides=('vim-lightline-onedark')
     conflicts=('vim-lightline-onedark')
     cd "${srcdir}/${_pkgbase}"
-    install -Dm 644 "${srcdir}/${_pkgbase}/autoload/lightline/colorscheme/onedark.vim" "${pkgdir}/usr/share/vim/vimfiles/autoload/lightline/colorscheme/onedark.vim"
+    install -Dm 644 "${srcdir}/${_pkgbase}/autoload/lightline/colorscheme/onedark.vim" "${pkgdir}/usr/share/vim/vimfiles/pack/${_pkgbase}/start/${_pkgbase}/autoload/lightline/colorscheme/onedark.vim"
 }
