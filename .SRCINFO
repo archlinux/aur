@@ -1,0 +1,35 @@
+pkgbase = quickcut-git
+	pkgdesc = Your most handy video processing software.
+	pkgver = v1.3.0.r7.gd6eb81a
+	pkgrel = 1
+	url = https://github.com/HaujetZhao/QuickCut
+	arch = x86_64
+	arch = i686
+	license = MPL
+	makedepends = git
+	makedepends = icoutils
+	depends = ffmpeg
+	depends = python-srt
+	depends = python-keyboard
+	depends = python-numpy
+	depends = python-setuptools
+	depends = python-aliyun-python-sdk-core
+	depends = python-pyqt5
+	depends = python-audiotsm
+	depends = python-scipy
+	depends = python-pyaudio
+	depends = python-oss2
+	depends = python-cos-python-sdk-v5
+	depends = python-tencentcloud-sdk-python
+	depends = python-alibabacloud-nls-python-sdk
+	depends = python-auditok
+	depends = python-pymediainfo
+	provides = quickcut
+	provides = quickcut-bin
+	conflicts = quickcut
+	conflicts = quickcut-bin
+	source = git+https://github.com/HaujetZhao/QuickCut
+	sha256sums = SKIP
+
+pkgname = quickcut-git
+
