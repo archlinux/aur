@@ -1,7 +1,7 @@
 pkgbase = besu
 	pkgdesc = Hyperledger Ethereum Mainnet and Permissioned Network Client
 	pkgver = 1.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.hyperledger.org/use/besu
 	arch = any
 	license = Apache

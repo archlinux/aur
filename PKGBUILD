@@ -1,7 +1,7 @@
 # Maintainer: Ratan Rai Sur <ratan.r.sur@gmail.com>
 pkgname=besu
 pkgver=1.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Hyperledger Ethereum Mainnet and Permissioned Network Client"
 arch=('any')
 url="https://www.hyperledger.org/use/besu"
