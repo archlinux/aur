@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_tag=613
-_version=1.0+613
+_tag=614
+_version=1.0+614
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -61,7 +61,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('3ed5a772beacbc5b71241be788c40760eb509fccbc9f748d6418b5b6d1cd8b0e'
+sha256sums=('b6c6febe0d153859b6867ae97db9004a3f81a13b55aee033216fcfc287fa4104'
             '1ea9ec0ae7c398b3ac7ddc4a2597f1d660c55f1135b37dd9321ec9c473cccd21'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             'aa65cc6180c21fb111f287a5fd688d4d157dd30418966366abe30053c3c225f0'
