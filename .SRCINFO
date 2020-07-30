@@ -1,6 +1,6 @@
 pkgbase = gonha-git
 	pkgdesc = Light-weight system monitor for Linux
-	pkgver = r148.8d716b3
+	pkgver = r149.ea83cc4
 	pkgrel = 1
 	url = https://github.com/fredcox/gonha
 	arch = any
@@ -21,12 +21,13 @@ pkgbase = gonha-git
 	depends = python-requests
 	depends = python-netifaces
 	depends = python-numpy
-	depends = python-country-list
+	depends = python-country_list
 	depends = python-unit-convert
 	depends = python-portolan
+	optdepends = python-gputil: NVIDIA GPU support
 	provides = gonha
 	conflicts = gonha
-	source = gonha::git+https://github.com/fredcox/gonha
+	source = git+https://github.com/fredcox/gonha.git
 	sha256sums = SKIP
 
 pkgname = gonha-git
