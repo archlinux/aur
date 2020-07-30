@@ -1,7 +1,7 @@
 # Maintainer: Mihir Lad <mihirlad55 gmail>
 _pkgname=polybar-dwm-module
 pkgname="${_pkgname}"
-pkgver=3.4.0.r178.g01add48
+pkgver=3.4.0.r196.ga9d7241
 pkgrel=1
 pkgdesc="polybar fork with a dwm module"
 arch=("i686" "x86_64")
