@@ -106,6 +106,7 @@ pkgbase = mpv-full-build-git
 	depends = v4l-utils
 	depends = vapoursynth
 	depends = vid.stab
+	depends = vmaf
 	depends = vulkan-icd-loader
 	depends = wavpack
 	depends = wayland
