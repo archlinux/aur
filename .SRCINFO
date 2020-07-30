@@ -1,6 +1,6 @@
 pkgbase = nemo-pdf-tools
 	pkgdesc = Tools to work with PDF files from Nemo
-	pkgver = 1.2.9.0extras19.06.7
+	pkgver = 1.2.9.0extras20.04.03
 	pkgrel = 1
 	url = https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = nemo-pdf-tools
 	depends = python-pypdf2
 	depends = python-sh
 	conflicts = nemo-pdf-tools-git
-	source = nemo-pdf-tools_1.2.9-0extras19.06.7.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/nemo-extensions/+sourcefiles/nemo-pdf-tools/1.2.9-0extras19.06.7/nemo-pdf-tools_1.2.9-0extras19.06.7.tar.xz
-	sha256sums = 31c0ca2c82634fbd323d5ef3b88068edb22bbf66ffe31acf3d78786aa2d02d12
+	source = nemo-pdf-tools_1.2.9-0extras20.04.03.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/nemo-extensions/+sourcefiles/nemo-pdf-tools/1.2.9-0extras20.04.03/nemo-pdf-tools_1.2.9-0extras20.04.03.tar.xz
+	sha256sums = 3c3a57162258eddefa27a4557286b0d0ce262ee6f047681f82dd0fbb182e13c4
 
 pkgname = nemo-pdf-tools
 
