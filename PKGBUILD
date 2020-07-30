@@ -11,7 +11,7 @@ url='https://github.com/thombashi/DataProperty'
 license=('MIT')
 depends=('python-mbstrdecoder' 'python-typepy')
 makedepends=('python-setuptools')
-provides=("${_pkgname}")
+provides=("${_pkgname,,}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('70ea253f74a51e39491770ac69428488bed75d62135accb234d89358d220b6ec')
 
