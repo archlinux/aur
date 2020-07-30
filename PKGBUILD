@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=python-country_list
 _name=${pkgname#python-}
 pkgver=0.2.1
