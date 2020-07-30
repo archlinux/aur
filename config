@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.1-arch1 Kernel Configuration
+# Linux/x86 5.7.10-artix1 Kernel Configuration
 #
 
 #
@@ -37,7 +37,7 @@ CONFIG_HAVE_KERNEL_LZ4=y
 CONFIG_KERNEL_XZ=y
 # CONFIG_KERNEL_LZO is not set
 # CONFIG_KERNEL_LZ4 is not set
-CONFIG_DEFAULT_HOSTNAME="archlinux"
+CONFIG_DEFAULT_HOSTNAME="artixlinux"
 CONFIG_SWAP=y
 CONFIG_SYSVIPC=y
 CONFIG_SYSVIPC_SYSCTL=y
@@ -8778,6 +8778,8 @@ CONFIG_HWSPINLOCK=y
 #
 # Clock Source drivers
 #
+CONFIG_TIMER_OF=y
+CONFIG_TIMER_PROBE=y
 CONFIG_CLKEVT_I8253=y
 CONFIG_I8253_LOCK=y
 CONFIG_CLKBLD_I8253=y

@@ -1,20 +1,18 @@
+# Maintainer: Kian Kasad <kian at kasad.com>
 #
+# Based on the linux-mainline package by:
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
-#
-# Based on the linux package by:
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-mainline               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
+#pkgbase=linux-mainline               # Build stock -ARCH kernel
+pkgbase=linux-mainline-bootsplash       # Build kernel with a different name
 _tag=v5.8-rc7
 pkgver=5.8rc7
-pkgrel=1
-pkgdesc="Linux Mainline"
+pkgrel=3
+pkgdesc="Linux Mainline - with bootsplash support"
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
+provides=(linux-bootsplash)
 makedepends=(
   bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
@@ -24,8 +22,21 @@ options=('!strip')
 _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
-  config         # the main kernel config file
   sphinx-workaround.patch
+  0001-bootsplash.patch
+  0002-bootsplash.patch
+  0003-bootsplash.patch
+  0004-bootsplash.patch
+  0005-bootsplash.patch
+  0006-bootsplash.patch
+  0007-bootsplash.patch
+  0008-bootsplash.patch
+  0009-bootsplash.patch
+  0010-bootsplash.patch
+  0011-bootsplash.patch
+  0012-bootsplash.patch
+  0013-bootsplash.patch
+  ajax-loader.gif
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,8 +44,21 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
+            'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
+            '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
+            '1144d51e5eb980fceeec16004f3645ed04a60fac9e0c7cf88a15c5c1e7a4b89e'
+            'dd4b69def2efacf4a6c442202ad5cb93d492c03886d7c61de87696e5a83e2846'
+            '028b07f0c954f70ca37237b62e04103e81f7c658bb8bd65d7d3c2ace301297dc'
+            'c8b0cb231659d33c3cfaed4b1f8d7c8305ab170bdd4c77fce85270d7b6a68000'
+            '8dbb5ab3cb99e48d97d4e2f2e3df5d0de66f3721b4f7fd94a708089f53245c77'
+            'a7aefeacf22c600fafd9e040a985a913643095db7272c296b77a0a651c6a140a'
+            'e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89'
+            '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
+            '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
+            '92a06fecdc3b5d7ea47d0b922cbedd2c227084f7aaf9d70858a3250eb73f740c'
+            'aebc793d0064383ee6b1625bf3bb32532ec30a5c12bf9117066107d412119123')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -57,9 +81,12 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  # copy ajax-loader.gif
+  cp ../ajax-loader.gif tools/bootsplash/
+
   echo "Setting config..."
-  cp ../config .config
-  make olddefconfig
+  make localmodconfig
+  make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -68,7 +95,6 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
 }
 
 _package() {
@@ -76,7 +102,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-bootsplash)
   replaces=(virtualbox-guest-modules-mainline wireguard-maineline)
 
   cd $_srcname
@@ -195,7 +221,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
