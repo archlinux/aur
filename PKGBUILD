@@ -9,7 +9,7 @@ url="https://github.com/felixrieseberg/macintosh.js"
 license=('custom')
 depends=('gtk3' 'nss')
 provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" 'macintosh-js-bin')
 replaces=('macintosh-js-bin')
 source=("$url/releases/download/v$pkgver/macintosh.js_${pkgver}_amd64.deb"
         "https://github.com/felixrieseberg/macintosh.js/raw/v$pkgver/CREDITS.md")

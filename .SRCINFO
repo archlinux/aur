@@ -9,6 +9,7 @@ pkgbase = macintosh.js-bin
 	depends = nss
 	provides = macintosh.js
 	conflicts = macintosh.js
+	conflicts = macintosh-js-bin
 	replaces = macintosh-js-bin
 	source = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.0.5/macintosh.js_1.0.5_amd64.deb
 	source = https://github.com/felixrieseberg/macintosh.js/raw/v1.0.5/CREDITS.md
