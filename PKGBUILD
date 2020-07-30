@@ -4,8 +4,8 @@
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
-pkgver=3.4.7
-pkgrel=2
+pkgver=3.4.11
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -19,12 +19,15 @@ optdepends=('opencv-samples: samples'
             'opencl-icd-loader: For coding with OpenCL'
             'python-numpy: Python interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('4f7668a83828e0b290b8da999305b7ee30156898de00fe4db524ccf71edaf148'
-            '5e3ba5fbe0ff3ab7462d42c08501f8c15d3e46b0684aee281f735345e1353cb4')
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+        "jpeg2000_jasper.patch")
+sha256sums=('10898a0268d8f8cbaf0354ddd1d9de6abaac84e3d9a6c9754f56a0aa3383d73b'
+            'd92e3e3740196f20b5a47ef578aed471b975ef7104ae186ef7f738fcc732be96'
+            'a56c8646eea058260b87a041f291682dcdf93f6557f2714ff377a46eca842aea')
 
 prepare() {
   mkdir -p build
+  patch -p0 < jpeg2000_jasper.patch # credit: @Windfisch https://github.com/Windfisch/pkgbuild-opencv3-opt/blob/master/jpeg2000_jasper.patch
 }
 
 build() {
@@ -48,9 +51,7 @@ build() {
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
-    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
-    -DEIGEN_INCLUDE_PATH=`pkg-config --cflags-only-I eigen3 | sed "s/-I//"` \
-    -DCMAKE_DISABLE_FIND_PACKAGE_TBB=ON # workaround til TBBConfig.cmake gets fixed, see: https://github.com/opencv/opencv/issues/15795
+    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
   make
 }
 

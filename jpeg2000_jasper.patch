@@ -1,0 +1,20 @@
+--- opencv-3.4.11/modules/imgcodecs/src/grfmt_jpeg2000.cpp.orig	2020-07-30 14:14:12.720690315 +0800
++++ opencv-3.4.11/modules/imgcodecs/src/grfmt_jpeg2000.cpp	2020-07-30 14:15:01.968295525 +0800
+@@ -377,7 +377,7 @@
+ 
+     for( y = 0; y < yend - ystart; )
+     {
+-        jas_seqent_t* pix_row = &jas_matrix_get( buffer, y / ystep, 0 );
++        jas_seqent_t* pix_row = jas_matrix_getref( buffer, y / ystep, 0 );
+         uchar* dst = data + (y - yoffset) * step - xoffset;
+ 
+         if( xstep == 1 )
+@@ -443,7 +443,7 @@
+ 
+     for( y = 0; y < yend - ystart; )
+     {
+-        jas_seqent_t* pix_row = &jas_matrix_get( buffer, y / ystep, 0 );
++        jas_seqent_t* pix_row = jas_matrix_getref( buffer, y / ystep, 0 );
+         ushort* dst = data + (y - yoffset) * step - xoffset;
+ 
+         if( xstep == 1 )
