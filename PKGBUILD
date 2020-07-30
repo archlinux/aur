@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
 url="https://github.com/Eigenbahn/ai-dungeon-cli"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('6fbcc5fa603ac52668145a86a11e238486a68e0021e297e8ed4e1d82b95e5eb9')
+sha256sums=('24183e3b467737f12f863023afdba74bdb72acd3a2655fb0b0f54ad2407d6027')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -30,11 +30,6 @@ prepare() {
 	sed -i \
 		-e "s/version_format.*/version=\"$pkgver\",/" \
 		-e "s/setup_requires.*//" setup.py
-
-	# Deactivate hardcoded debug mode
-	sed -i \
-		"s/DEBUG = True/DEBUG = False/" \
-		ai_dungeon_cli/__init__.py
 }
 
 build() {
