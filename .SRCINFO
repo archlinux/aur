@@ -1,0 +1,13 @@
+pkgbase = gocredits
+	pkgdesc = gocredits creates CREDITS file from LICENSE files of dependencies
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Songmu/gocredits
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://github.com/Songmu/gocredits/archive/v0.2.0.tar.gz
+	sha256sums = 3e79e688679a94bdf3e74b326eb120a03577ac582fc0af6f020fba8706de36dd
+
+pkgname = gocredits
+
