@@ -11,7 +11,6 @@ pkgbase = unetbootin-qt5-git
 	depends = p7zip
 	depends = qt5-base
 	depends = mtools
-	depends = zenity
 	optdepends = polkit: run unetbootin directly from menu
 	optdepends = zenity: display an error if no authentication agent is found
 	provides = unetbootin
