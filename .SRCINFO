@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-freeglut
 	pkgdesc = Provides functionality for small OpenGL programs (mingw-w64)
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://freeglut.sourceforge.net/
 	arch = any
 	license = MIT

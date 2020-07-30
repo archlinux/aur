@@ -1,8 +1,6 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
-
 pkgname=mingw-w64-freeglut
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides functionality for small OpenGL programs (mingw-w64)"
 arch=(any)
 url="http://freeglut.sourceforge.net/"
@@ -32,7 +30,6 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DFREEGLUT_BUILD_DEMOS=OFF \
-      -DFREEGLUT_REPLACE_GLUT=ON \
       ..
     make
     popd
@@ -43,8 +40,9 @@ package() {
   for _arch in $_architectures; do
     cd "${srcdir}/freeglut-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    install -m644 ../include/GL/glut.h "$pkgdir"/usr/${_arch}/include/GL
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
 
