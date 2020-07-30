@@ -9,11 +9,11 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc")
+depends=("${_variant}-coc" 'python')
 makedepends=('yarn' 'npm' 'git')
 license=('')
 source=("${_extname}::git+${url}.git")
-pkgver=r203.172e760
+pkgver=r204.9c13197
 pkgrel=1
 sha256sums=('SKIP')
 
