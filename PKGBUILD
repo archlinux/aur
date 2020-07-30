@@ -33,16 +33,22 @@ _makenconfig=
 #  16. Intel Nehalem (MNEHALEM)
 #  17. Intel Westmere (MWESTMERE)
 #  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Sandy Bridge (MSANDYBRIDGE)
-#  20. Intel Ivy Bridge (MIVYBRIDGE)
-#  21. Intel Haswell (MHASWELL)
-#  22. Intel Broadwell (MBROADWELL)
-#  23. Intel Skylake (MSKYLAKE)
-#  24. Intel Skylake X (MSKYLAKEX)
-#  25. Intel Cannon Lake (MCANNONLAKE)
-#  26. Intel Ice Lake (MICELAKE)
-#  27. Generic-x86-64 (GENERIC_CPU)
-#  28. Native optimizations autodetected by GCC (MNATIVE)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
+
 _subarch=
 
 # Compile ONLY probed modules
@@ -62,26 +68,28 @@ _localmodcfg=
 
 pkgbase=linux-bootsplash
 pkgdesc='Linux kernel with kernel bootsplash support'
-_srcver=5.5.3-arch1
-pkgver=${_srcver%-*}
-pkgrel=2
+pkgver=5.7.10
+pkgrel=1
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
-makedepends=(kmod inetutils bc libelf)
+makedepends=(kmod bc libelf)
 options=('!strip')
+_gcc_more_v='20200615'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
+  0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
-  0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
-  0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-  0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
+  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0005-bootsplash.patch
+  0006-bootsplash.patch
   0007-bootsplash.patch
   0008-bootsplash.patch
   0009-bootsplash.patch
@@ -93,25 +101,23 @@ source=(
   0015-bootsplash.patch
   0016-bootsplash.patch
   0017-bootsplash.patch
-  0018-bootsplash.patch
-  0019-bootsplash.patch
   'ajax-loader.gif'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
+sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
             SKIP
+            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
-            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
-            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
-            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
-            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
-            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            'f8f16c971882312c91618e4305b63f7aa2265af12208a902f87b6d3c1b1cf6ee'
+            'a0bd98f1056d06126532350a55f633c92a43e3adb94d96c94f4d22f54e4d9807'
+            '4c5b15c39e7d8f7b8c0fbee16bcc3992cecf38bb790df494b411a57366e3b677'
+            '18f22c5c095049cf3eebe4ec2c63e659dd35af6e49d2092865643d6ae2f7c411'
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
             '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
@@ -147,6 +153,7 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
 # manually add ajax-loader.gif as 'patch' doesn't support git binary diff
   cp ../ajax-loader.gif tools/bootsplash/
 
@@ -155,6 +162,19 @@ prepare() {
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
+
+   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
+      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+
+  # FS#66613
+  # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
+  sed -i -e 's/CONFIG_KVM_WERROR=y/# CONFIG_KVM_WERROR is not set/' ./.config
+
+  # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -188,10 +208,9 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with framebuffer bootsplash support !"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192"
-  #pkgdesc="${_Kpkgdesc}"
   depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country' 'bootsplash-systemd: to enable bootsplash')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'bootsplash-systemd: to enable bootsplash')
   provides=("linux=${pkgver}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install

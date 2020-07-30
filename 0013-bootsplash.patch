@@ -1,42 +1,21 @@
-diff --git a/drivers/tty/vt/keyboard.c b/drivers/tty/vt/keyboard.c
-index f4166263bb3a..a248429194bb 100644
---- a/drivers/tty/vt/keyboard.c
-+++ b/drivers/tty/vt/keyboard.c
-@@ -47,6 +47,8 @@
+diff --git a/drivers/video/fbdev/core/fbcon.c b/drivers/video/fbdev/core/fbcon.c
+index 9a39a6fcfe98..8a9c67e1c5d8 100644
+--- a/drivers/video/fbdev/core/fbcon.c
++++ b/drivers/video/fbdev/core/fbcon.c
+@@ -1343,6 +1343,16 @@ static void fbcon_cursor(struct vc_data *vc, int mode)
+ 	int y;
+  	int c = scr_readw((u16 *) vc->vc_pos);
  
- #include <asm/irq_regs.h>
++	/*
++	 * Disable the splash here so we don't have to hook into
++	 * vt_console_print() in drivers/tty/vt/vt.c
++	 *
++	 * We'd disable the splash just before the call to
++	 * hide_cursor() anyway, so this spot is just fine.
++	 */
++	if (oops_in_progress)
++		bootsplash_disable();
++
+ 	ops->cur_blink_jiffies = msecs_to_jiffies(vc->vc_cur_blink_ms);
  
-+#include <linux/bootsplash.h>
-+
- extern void ctrl_alt_del(void);
- 
- /*
-@@ -1353,6 +1355,28 @@ static void kbd_keycode(unsigned int keycode, int down, int hw_raw)
- 	}
- #endif
- 
-+	/* Trap keys when bootsplash is shown */
-+	if (bootsplash_would_render_now()) {
-+		/* Deactivate bootsplash on ESC or Alt+Fxx VT switch */
-+		if (keycode >= KEY_F1 && keycode <= KEY_F12) {
-+			bootsplash_disable();
-+
-+			/*
-+			 * No return here since we want to actually
-+			 * perform the VT switch.
-+			 */
-+		} else {
-+			if (keycode == KEY_ESC)
-+				bootsplash_disable();
-+
-+			/*
-+			 * Just drop any other keys.
-+			 * Their effect would be hidden by the splash.
-+			 */
-+			return;
-+		}
-+	}
-+
- 	if (kbd->kbdmode == VC_MEDIUMRAW) {
- 		/*
- 		 * This is extended medium raw mode, with keys above 127
+ 	if (fbcon_is_inactive(vc, info) || vc->vc_deccm != 1)

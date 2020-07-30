@@ -1,129 +1,102 @@
-diff --git a/Documentation/ABI/testing/sysfs-platform-bootsplash b/Documentation/ABI/testing/sysfs-platform-bootsplash
-index 742c7b035ded..f8f4b259220e 100644
---- a/Documentation/ABI/testing/sysfs-platform-bootsplash
-+++ b/Documentation/ABI/testing/sysfs-platform-bootsplash
-@@ -9,3 +9,35 @@ Description:
- 		1: Splash is shown whenever fbcon would show a text console
- 		   (i.e. no graphical application is running), and a splash
- 		   file is loaded.
-+
-+What:		/sys/devices/platform/bootsplash.0/drop_splash
-+Date:		Oct 2017
-+KernelVersion:	4.14
-+Contact:	Max Staudt <mstaudt@suse.de>
-+Description:
-+		Can only be set.
-+
-+		Any value written will cause the current splash theme file
-+		to be unloaded and the text console to be redrawn.
-+
-+What:		/sys/devices/platform/bootsplash.0/load_file
-+Date:		Oct 2017
-+KernelVersion:	4.14
-+Contact:	Max Staudt <mstaudt@suse.de>
-+Description:
-+		Can only be set.
-+
-+		Any value written will cause the splash to be disabled and
-+		internal memory structures to be freed.
-+
-+		A firmware path written will cause a new theme file to be
-+		loaded and the current bootsplash to be replaced.
-+		The current enabled/disabled status is not touched.
-+		If the splash is already active, it will be redrawn.
-+
-+		The path has to be a path in /lib/firmware since
-+		request_firmware() is used to fetch the data.
-+
-+		When setting the splash from the shell, echo -n has to be
-+		used as any trailing '\n' newline will be interpreted as
-+		part of the path.
 diff --git a/Documentation/bootsplash.rst b/Documentation/bootsplash.rst
-index 611f0c558925..b35aba5093e8 100644
+index b35aba5093e8..d4f132eca615 100644
 --- a/Documentation/bootsplash.rst
 +++ b/Documentation/bootsplash.rst
-@@ -67,6 +67,14 @@ sysfs run-time configuration
-   a splash theme file is also loaded.
+@@ -195,6 +195,16 @@ Hooks - how the bootsplash is integrated
  
  
-+``/sys/devices/platform/bootsplash.0/drop_splash``
-+  Unload splash data and free memory.
-+
-+``/sys/devices/platform/bootsplash.0/load_file``
-+  Load a splash file from ``/lib/firmware/``.
-+  Note that trailing newlines will be interpreted as part of the file name.
-+
-+
  
- Kconfig
- =======
-diff --git a/drivers/video/fbdev/core/bootsplash.c b/drivers/video/fbdev/core/bootsplash.c
-index 13fcaabbc2ca..16cb0493629d 100644
---- a/drivers/video/fbdev/core/bootsplash.c
-+++ b/drivers/video/fbdev/core/bootsplash.c
-@@ -251,11 +251,65 @@ static ssize_t splash_store_enabled(struct device *device,
- 	return count;
- }
++Crating a bootsplash theme file
++===============================
++
++A simple tool for theme file creation is included in ``tools/bootsplash``.
++
++There is also an example shell script, as an example on how to use the tool
++and in order to generate a reference bootsplash file.
++
++
++
+ FAQ: Frequently Asked Questions
+ ===============================
  
-+static ssize_t splash_store_drop_splash(struct device *device,
-+					struct device_attribute *attr,
-+					const char *buf, size_t count)
-+{
-+	struct splash_file_priv *fp;
+diff --git a/tools/bootsplash/.gitignore b/tools/bootsplash/.gitignore
+index 091b99a17567..5dfced41ba82 100644
+--- a/tools/bootsplash/.gitignore
++++ b/tools/bootsplash/.gitignore
+@@ -1 +1,4 @@
+ bootsplash-packer
++bootsplash
++logo.rgb
++throbber*.rgb
+diff --git a/tools/bootsplash/bootsplash-tux.sh b/tools/bootsplash/bootsplash-tux.sh
+new file mode 100755
+index 000000000000..1078f87644b9
+--- /dev/null
++++ b/tools/bootsplash/bootsplash-tux.sh
+@@ -0,0 +1,66 @@
++#!/bin/bash
++#
++# A simple script to show how to create a bootsplash.
++# Do with it whatever you wish.
++#
++# This needs ImageMagick for the 'convert' and 'identify' tools.
++#
 +
-+	if (!buf || !count || !splash_state.file)
-+		return count;
++LOGO=../../Documentation/logo.gif
++LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
++LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
 +
-+	mutex_lock(&splash_state.data_lock);
-+	fp = splash_state.file;
-+	splash_state.file = NULL;
-+	mutex_unlock(&splash_state.data_lock);
++THROBBER=ajax-loader.gif
++THROBBER_WIDTH=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
++						cut -d x -f 1)
++THROBBER_HEIGHT=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
++						 cut -d x -f 2)
 +
-+	/* Redraw the text console */
-+	schedule_work(&splash_state.work_redraw_vc);
++convert -alpha remove \
++	-background "#ff3a40" \
++	$LOGO \
++	logo.rgb
 +
-+	bootsplash_free_file(fp);
++convert -alpha remove \
++	-background "#ff3a40" \
++	$THROBBER \
++	throbber%02d.rgb
 +
-+	return count;
-+}
 +
-+static ssize_t splash_store_load_file(struct device *device,
-+				      struct device_attribute *attr,
-+				      const char *buf, size_t count)
-+{
-+	struct splash_file_priv *fp, *fp_old;
++make clean
++make bootsplash-packer
 +
-+	if (!count)
-+		return 0;
 +
-+	fp = bootsplash_load_firmware(&splash_state.splash_device->dev,
-+				      buf);
++# Let's put Tux in the center of an orange background.
++./bootsplash-packer \
++	--bg_red 0xff \
++	--bg_green 0x3a \
++	--bg_blue 0x40 \
++	--frame_ms 48 \
++	--picture \
++	--pic_width $LOGO_WIDTH \
++	--pic_height $LOGO_HEIGHT \
++	--pic_position 0 \
++	--blob logo.rgb \
++	--picture \
++	--pic_width $THROBBER_WIDTH \
++	--pic_height $THROBBER_HEIGHT \
++	--pic_position 0x14 \
++	--pic_position_offset 20 \
++	--pic_anim_type 1 \
++	--pic_anim_loop 0 \
++	--blob throbber00.rgb \
++	--blob throbber01.rgb \
++	--blob throbber02.rgb \
++	--blob throbber03.rgb \
++	--blob throbber04.rgb \
++	--blob throbber05.rgb \
++	--blob throbber06.rgb \
++	--blob throbber07.rgb \
++	--blob throbber08.rgb \
++	--blob throbber09.rgb \
++	--blob throbber10.rgb \
++	--blob throbber11.rgb \
++	bootsplash
 +
-+	if (!fp)
-+		return -ENXIO;
-+
-+	mutex_lock(&splash_state.data_lock);
-+	fp_old = splash_state.file;
-+	splash_state.splash_fb = NULL;
-+	splash_state.file = fp;
-+	mutex_unlock(&splash_state.data_lock);
-+
-+	/* Update the splash or text console */
-+	schedule_work(&splash_state.work_redraw_vc);
-+
-+	bootsplash_free_file(fp_old);
-+	return count;
-+}
-+
- static DEVICE_ATTR(enabled, 0644, splash_show_enabled, splash_store_enabled);
-+static DEVICE_ATTR(drop_splash, 0200, NULL, splash_store_drop_splash);
-+static DEVICE_ATTR(load_file, 0200, NULL, splash_store_load_file);
- 
- 
- static struct attribute *splash_dev_attrs[] = {
- 	&dev_attr_enabled.attr,
-+	&dev_attr_drop_splash.attr,
-+	&dev_attr_load_file.attr,
- 	NULL
- };
- 
++rm *.rgb
