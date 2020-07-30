@@ -1,3 +1,4 @@
+# vim:set ts=2 sw=2 et:
 # Maintainer graysky <graysky AT archlinux DOT us>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
@@ -17,10 +18,9 @@
 
 pkgbase=kodi-git
 pkgname=(
-  "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
+  "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-_gitname='xbmc'
 pkgver=r55482.db74480506b
 pkgrel=1
 arch=('x86_64')
@@ -42,6 +42,7 @@ makedepends=(
 )
 
 _codename=Leia
+_gitname='xbmc'
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
 # $CHROOT/build/kodi-git/src/kodi-build/build/download
@@ -53,9 +54,9 @@ _codename=Leia
 #
 # fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
 #
-_libdvdcss_version="1.4.2-$_codename-Beta-5"
-_libdvdnav_version="6.0.0-$_codename-Alpha-3"
-_libdvdread_version="6.0.0-$_codename-Alpha-3"
+_libdvdcss_version="1.4.2-Leia-Beta-5"
+_libdvdnav_version="6.0.0-Leia-Alpha-3"
+_libdvdread_version="6.0.0-Leia-Alpha-3"
 _ffmpeg_version="4.3.1-Matrix-Alpha1-1"
 _fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
@@ -133,7 +134,7 @@ build() {
   # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
 
-  msg2 "building kodi-x11"
+  echo "building kodi-x11"
   cd "$srcdir/kodi-build-x11"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -155,11 +156,12 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
+    -DX11_RENDER_SYSTEM=gl \
     ../xbmc
   make
   make preinstall
 
-  msg2 "building kodi-wayland"
+  echo "building kodi-wayland"
   cd "$srcdir/kodi-build-wayland"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -185,7 +187,7 @@ build() {
   make
   make preinstall
 
-  msg2 "building kodi-gbm"
+  echo "building kodi-gbm"
   cd "$srcdir/kodi-build-gbm"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -219,8 +221,8 @@ package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
-    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
-    "$pkgbase-bin"
+    'python-pillow6' 'python-simplejson' 'xorg-xdpyinfo'
+    'KODI-BIN'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -228,10 +230,12 @@ package_kodi-git() {
     'python-pybluez: Bluetooth support'
     'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
+    'shairplay: AirPlay support'
     'upower: Display battery level'
   )
-  provides=("kodi=${pkgver}")
-  conflicts=('kodi')
+  provides=('xbmc' "kodi=${pkgver}")
+  conflicts=('xbmc')
+  replaces=('xbmc')
 
   _components=(
     'kodi'
@@ -255,9 +259,10 @@ package_kodi-git() {
 # kodi-x11
 # components: kodi-bin
 
-package_kodi-git-bin() {
+package_kodi-x11-git() {
   pkgdesc="x11 kodi binary"
-  conflicts=('kodi-bin')
+  provides=('KODI-BIN' "kodi-x11=${pkgver}")
+  replaces=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
@@ -275,13 +280,12 @@ package_kodi-git-bin() {
 
 package_kodi-git-wayland() {
   pkgdesc="wayland kodi binary"
-  provides=("$pkgbase-bin=${pkgver}")
-  conflicts=('kodi-wayland')
+  provides=('KODI-BIN' "kodi-wayland=${pkgver}")
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
     'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp>=0.2.7-1' "$pkgbase"
+    'waylandpp' "$pkgbase"
   )
 
   cd kodi-build-wayland
@@ -293,8 +297,7 @@ package_kodi-git-wayland() {
 
 package_kodi-git-gbm() {
   pkgdesc="gbm kodi binary"
-  provides=("$pkgbase-bin=${pkgver}" 'kodi-gbm')
-  conflicts=('kodi-gbm')
+  provides=('KODI-BIN' "kodi-gbm=${pkgver}")
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
