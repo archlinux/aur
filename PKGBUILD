@@ -7,7 +7,6 @@ pkgdesc="Free CAD software that lets you design and order custom front panels an
 arch=("x86_64")
 url="http://www.frontpanelexpress.com/front_panel_designer/the_idea/"
 license=("custom")
-# depends=("libpng12")
 source=("https://assets.frontpanelexpress.com/fpd/Version-$pkgver/FrontDesign-US-$pkgver-amd64.deb")
 options=("!strip")
 sha256sums=("e3653370e0f0d3cd96a200eadad813be3500fdeaa2475fc80f13fb436e856786")
