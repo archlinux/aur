@@ -1,7 +1,7 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=lazy-ips
-pkgver=20191208
+pkgver=20200706
 pkgrel=1
 pkgdesc="IPS patcher for Linux"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-gobject')
 makedepends=('python-setuptools' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/btimofeev/lazy_ips/archive/v$pkgver.tar.gz")
-sha256sums=('24c8cc95aaaa72019d43ded7df3abc62669545839f61b5643cfb13a508a2cc03')
+sha256sums=('ed47cff93b2d7ad7b0b9bf328409b11f510e593d5db9cade0756fe40ea0ae933')
 
 prepare() {
     gendesk -n \
