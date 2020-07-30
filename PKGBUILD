@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
 pkgver=r149.ea83cc4
-pkgrel=1
+pkgrel=2
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
 url='https://github.com/fredcox/gonha'
@@ -17,7 +17,7 @@ depends=('python-pyqt5'
          'python-prompt_toolkit1014'
          'python-py-cpuinfo'
          'ttf-fira-code'
-         'python-pathlib'
+         'python-pathlib2'
          'python-requests'
          'python-netifaces'
          'python-numpy'
