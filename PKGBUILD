@@ -1,6 +1,6 @@
 pkgname='texmaster'
 pkgver='2009.3'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Texmaster is a tetris clone developed by Report.'
 url='http://tetrisconcept.net/threads/texmaster.2/'
 source=(
