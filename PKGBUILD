@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-libteam
-pkgver=1.30
+pkgver=1.31
 pkgrel=1
 pkgdesc='Library for controlling team network device'
 arch=(x86_64)
@@ -20,7 +20,8 @@ makedepends=(
   lib32-libdaemon
   swig
 )
-source=(git+https://github.com/jpirko/libteam#tag=471fb50d206e5a3f2eef9e4247329b51edc5c493)
+_tag=3ee12c6d569977cf1cd30d0da77807a07aa77158
+source=(git+https://github.com/jpirko/libteam.git#tag=${_tag})
 sha256sums=(SKIP)
 
 pkgver() {
