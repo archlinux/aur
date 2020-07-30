@@ -1,18 +1,18 @@
-# Maintainer: Andrea Scarpino <andrea at archlinux dot org>
 # Maintainer: Benjamin Bädorf <aur at benjaminbaedorf dot eu>
 
-pkgname=base16-builder-rust-git
-_pkgname=base16-builder-rust
-pkgver=0.1.1.34.g34fec12
+pkgname=wlstreamer-git
+_pkgname=wlstreamer
+pkgver=0.1.0.8.g5dc4aef
 pkgrel=1
-pkgdesc="A Rust implementation of a base16 builder"
+pkgdesc="Wrapper around wf-recorder and ffmpeg that automatically switches the screen being recorded based on current window focus. Works with sway."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/ilpianista/base16-builder-rust"
-license=('MIT')
+url="https://git.b12f.io/b12f/wlstreamer"
+license=('GPL3')
 makedepends=('git' 'openssl' 'zlib' 'rust' 'cargo')
+depends=('sway' 'wf-recorder' 'ffmpeg' 'jq')
 provides=()
 conflicts=()
-source=("$_pkgname::git+https://github.com/ilpianista/base16-builder-rust.git")
+source=("$_pkgname::git+https://git.b12f.io/b12f/wlstreamer.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -29,5 +29,5 @@ build() {
 
 package() {
     cd $srcdir
-    cargo install --no-track --root="$pkgdir/usr" --git=https://github.com/ilpianista/base16-builder-rust
+    cargo install --no-track --root="$pkgdir/usr" --git=https://git.b12f.io/b12f/wlstreamer.git
 }
