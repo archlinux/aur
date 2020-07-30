@@ -9,24 +9,17 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc" 'rust-analyzer')
+depends=("${_variant}-coc")
 makedepends=('yarn' 'npm' 'git')
 license=('')
-source=("${_extname}::git+${url}.git"
-        'serverPath.patch')
+source=("${_extname}::git+${url}.git")
 pkgver=r464.4b3847f
 pkgrel=1
-sha256sums=('SKIP'
-            '88ba4cda5fb8729d653918a6d9d05161529ba21c7449e08a83507d47f8bcb64d')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${_extname}"
-    patch --forward --strip=1 --input="${srcdir}/serverPath.patch"
 }
 
 build() {
@@ -44,6 +37,4 @@ package() {
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
-    cd ../
-    git checkout -- package.json
 }
