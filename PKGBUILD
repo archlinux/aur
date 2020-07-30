@@ -1,16 +1,15 @@
-# Maintainer: orhun <github.com/orhun>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=zps
-pkgdesc="A small utility for listing and cleaning up zombie processes."
 pkgver=1.2.2
 pkgrel=1
-arch=('any')
+pkgdesc="A small utility for listing and cleaning up zombie processes"
+arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
 makedepends=('cmake')
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=('https://github.com/orhun/zps/archive/1.2.2.tar.gz')
-sha256sums=('SKIP')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('SKIP')
+validpgpkeys=('39E678DF63BE20EA5A175156B928720AEC532117') # orhun <orhunparmaksiz@gmail.com>
 
 build() {
   cd "$pkgname-$pkgver"
