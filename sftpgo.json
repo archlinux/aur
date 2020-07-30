@@ -1,23 +1,26 @@
 {
-  "sftpd": {
-    "bind_port": 2022,
-    "bind_address": "",
+  "common": {
     "idle_timeout": 15,
-    "max_auth_tries": 0,
-    "umask": "0022",
-    "banner": "",
     "upload_mode": 0,
     "actions": {
       "execute_on": [],
       "hook": ""
     },
+    "setstat_mode": 0,
+    "proxy_protocol": 0,
+    "proxy_allowed": []
+  },
+  "sftpd": {
+    "bind_port": 2022,
+    "bind_address": "",
+    "max_auth_tries": 0,
+    "banner": "",
     "host_keys": [],
     "kex_algorithms": [],
     "ciphers": [],
     "macs": [],
     "trusted_user_ca_keys": [],
     "login_banner_file": "",
-    "setstat_mode": 0,
     "enabled_ssh_commands": [
       "md5sum",
       "sha1sum",
@@ -25,9 +28,21 @@
       "pwd",
       "scp"
     ],
-    "keyboard_interactive_auth_hook": "",
-    "proxy_protocol": 0,
-    "proxy_allowed": []
+    "keyboard_interactive_auth_hook": ""
+  },
+  "ftpd": {
+    "bind_port": 0,
+    "bind_address": "",
+    "banner": "",
+    "banner_file": "",
+    "active_transfers_port_non_20": false,
+    "force_passive_ip": "",
+    "passive_port_range": {
+      "start": 50000,
+      "end": 50100
+    },
+    "certificate_file": "",
+    "certificate_key_file": ""
   },
   "data_provider": {
     "driver": "sqlite",

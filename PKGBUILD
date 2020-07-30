@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r412.3702bc8
+pkgver=r417.93ce96d
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ install=${pkgname}.install
 source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.json")
 sha256sums=('SKIP'
-  'fb4dc558c4dcba5e9d9ce9716653439b11d34f468599609cc4b8e79692ef8417')
+  '77757eee8954ab79ada7d61e10d434a1909af976963b21613685230f109ea801')
 
 pkgver() {
   cd "${_pkgname}"
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
