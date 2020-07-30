@@ -13,9 +13,7 @@ pkgbase = liquidctl-git
 	depends = python-pyusb
 	depends = python-hidapi
 	provides = liquidctl
-	provides = python-liquidctl
 	conflicts = liquidctl
-	conflicts = python-liquidctl
 	source = liquidctl-git::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master
 	sha256sums = SKIP
 

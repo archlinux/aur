@@ -10,8 +10,8 @@ url='https://github.com/jonasmalacofilho/liquidctl'
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-docopt' 'python-pyusb' 'python-hidapi')
 makedepends=('git' 'python-pytest')
-provides=("${pkgname%-git}" "python-${pkgname%-git}")
-conflicts=("${pkgname%-git}" "python-${pkgname%-git}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master")
 sha256sums=('SKIP')
 
