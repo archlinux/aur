@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r55482.db74480506b
+	pkgver = r55527.4cbcb6cb6da
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -89,50 +89,27 @@ pkgbase = kodi-git
 	sha256sums = 27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1
 	sha256sums = edff38cea510817c3682c7c6086054ac49adaa478285093ea294d83db065b83f
 
-pkgname = kodi-git
+pkgname = kodi-git-x11
 	pkgdesc = A software media player and entertainment hub for digital media (master branch)
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = python-pycryptodomex
-	depends = python-pillow
+	depends = python-pillow6
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
-	depends = shairplay
-	depends = kodi-git-bin
+	depends = KODI-BIN
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
+	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=r55482.db74480506b
-	conflicts = kodi
-
-pkgname = kodi-git-bin
-	pkgdesc = x11 kodi binary
-	depends = bluez-libs
-	depends = curl
-	depends = lcms2
-	depends = libass
-	depends = libbluray
-	depends = libcdio
-	depends = libcec
-	depends = libmicrohttpd
-	depends = libnfs
-	depends = libpulse
-	depends = libva
-	depends = libvdpau
-	depends = libxrandr
-	depends = libxslt
-	depends = lirc
-	depends = mariadb-libs
-	depends = python
-	depends = smbclient
-	depends = taglib
-	depends = tinyxml
-	depends = kodi-git
-	conflicts = kodi-bin
+	provides = xbmc
+	provides = kodi=r55527.4cbcb6cb6da
+	conflicts = xbmc
+	replaces = xbmc
 
 pkgname = kodi-git-wayland
 	pkgdesc = wayland kodi binary
@@ -155,10 +132,10 @@ pkgname = kodi-git-wayland
 	depends = smbclient
 	depends = taglib
 	depends = tinyxml
-	depends = waylandpp>=0.2.7-1
+	depends = waylandpp
 	depends = kodi-git
-	provides = kodi-git-bin=r55482.db74480506b
-	conflicts = kodi-wayland
+	provides = KODI-BIN
+	provides = kodi-wayland=r55527.4cbcb6cb6da
 
 pkgname = kodi-git-gbm
 	pkgdesc = gbm kodi binary
@@ -183,14 +160,13 @@ pkgname = kodi-git-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-git
-	provides = kodi-git-bin=r55482.db74480506b
-	provides = kodi-gbm
-	conflicts = kodi-gbm
+	provides = KODI-BIN
+	provides = kodi-gbm=r55527.4cbcb6cb6da
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r55482.db74480506b
+	provides = kodi-eventclients=r55527.4cbcb6cb6da
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -199,12 +175,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r55482.db74480506b
+	provides = kodi-tools-texturepacker=r55527.4cbcb6cb6da
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r55482.db74480506b
+	provides = kodi-dev=r55527.4cbcb6cb6da
 	conflicts = kodi-dev
 
