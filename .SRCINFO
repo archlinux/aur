@@ -1,25 +1,28 @@
 pkgbase = archiso-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images
-	pkgver = 45.r14.g550aca7
+	pkgver = 45.r37.gd7fc56e
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = arch-install-scripts
-	depends = bash
-	depends = curl
-	depends = dosfstools
-	depends = e2fsprogs
-	depends = edk2-shell
-	depends = libisoburn
-	depends = mkinitcpio
-	depends = squashfs-tools
-	provides = archiso=45.r14.g550aca7
-	conflicts = archiso
 	source = git+https://gitlab.archlinux.org/archlinux/archiso.git
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 
 pkgname = archiso-git
+	depends = arch-install-scripts
+	depends = bash
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = edk2-shell
+	depends = libisoburn
+	depends = squashfs-tools
+	provides = archiso=45.r37.gd7fc56e
+	conflicts = archiso
+
+pkgname = mkinitcpio-archiso-git
+	pkgdesc = mkinitcpio hooks for archiso
+	provides = mkinitcpio-archiso=45.r37.gd7fc56e
+	conflicts = mkinitcpio-archiso
 

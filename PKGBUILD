@@ -5,27 +5,38 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
-pkgname='archiso-git'
-pkgver=45.r14.g550aca7
+pkgbase='archiso-git'
+pkgname=('archiso-git' 'mkinitcpio-archiso-git')
+pkgver=45.r37.gd7fc56e
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/archiso'
 license=('GPL')
-depends=('arch-install-scripts' 'bash' 'curl' 'dosfstools' 'e2fsprogs' 'edk2-shell' 'libisoburn' 'mkinitcpio' 'squashfs-tools')
 makedepends=('git')
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
 source=('git+https://gitlab.archlinux.org/archlinux/archiso.git')
 validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${pkgbase%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  cd "${srcdir}/${pkgname%-git}"
+package_archiso-git() {
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=${pkgver}")
+  depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'edk2-shell' 'libisoburn' 'squashfs-tools')
+
+  cd "${srcdir}/${pkgbase%-git}"
   make DESTDIR="${pkgdir}/" install
+}
+
+package_mkinitcpio-archiso-git() {
+  pkgdesc='mkinitcpio hooks for archiso'
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=${pkgver}")
+
+  cd "${srcdir}/${pkgbase%-git}"
+  make DESTDIR="${pkgdir}/" install-initcpio
 }
