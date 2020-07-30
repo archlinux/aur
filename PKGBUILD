@@ -1,26 +1,26 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=markdown2ctags
-pkgver=0.2.5
-pkgrel=2
-pkgdesc="Generate ctags-compatible tags files for Markdown documents"
+pkgver=0.3.1
+pkgrel=1
+pkgdesc='Generate ctags-compatible tags files for Markdown documents'
 arch=('any')
 depends=('python')
-url="https://github.com/jszakmeister/markdown2ctags"
+makedepends=('python-setuptools')
+url="https://github.com/jszakmeister/$pkgname"
 license=('BSD3')
-source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jszakmeister/$pkgname/tar.gz/v$pkgver")
-sha256sums=('592619871396bcbb2cd16332cf4392cb2e7b593f5a914658c696763abe391ba4')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3355c0d5d4186b825e7096a8ca2f1712d1544ec4b7dd22b2e0e56787ccf0a286')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/markdown2ctags"
-
-  msg2 'Installing documentation...'
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/markdown2ctags"
-
-  msg2 'Installing...'
-  install -Dm 755 markdown2ctags.py "$pkgdir/usr/bin/markdown2ctags"
+    cd "$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst
 }

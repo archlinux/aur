@@ -1,13 +1,14 @@
 pkgbase = markdown2ctags
 	pkgdesc = Generate ctags-compatible tags files for Markdown documents
-	pkgver = 0.2.5
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/jszakmeister/markdown2ctags
 	arch = any
 	license = BSD3
+	makedepends = python-setuptools
 	depends = python
-	source = markdown2ctags-0.2.5.tar.gz::https://codeload.github.com/jszakmeister/markdown2ctags/tar.gz/v0.2.5
-	sha256sums = 592619871396bcbb2cd16332cf4392cb2e7b593f5a914658c696763abe391ba4
+	source = markdown2ctags-0.3.1.tar.gz::https://github.com/jszakmeister/markdown2ctags/archive/v0.3.1.tar.gz
+	sha256sums = 3355c0d5d4186b825e7096a8ca2f1712d1544ec4b7dd22b2e0e56787ccf0a286
 
 pkgname = markdown2ctags
 
