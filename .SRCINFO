@@ -1,20 +1,16 @@
 pkgbase = python-tabledata
-	pkgdesc = A Python library to represent tabular data for pytablewriter/pytablereader/SimpleSQLite.
-	pkgver = 0.0.5
+	pkgdesc = Represent tabular data
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/thombashi/tabledata
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-pathvalidate>=0.16.2
-	depends = python-dataproperty>=0.29.1
-	depends = python-logbook>=1.1.0
-	depends = python-six
-	depends = python-typepy>=0.0.20
-	depends = python-wheel
-	source = https://github.com/thombashi/tabledata/archive/v0.0.5.tar.gz
-	md5sums = 7b6256da07b2381c50cb8db8df1241f9
+	depends = python-dataproperty
+	depends = python-typepy
+	provides = tabledata
+	source = https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.1.2.tar.gz
+	sha256sums = db893596ab9066e5c4f002ae0fed70657e3b75cceb52dd1de5a0e145e338d830
 
 pkgname = python-tabledata
 
