@@ -3,9 +3,8 @@
 
 pkgname=python-solid-git
 _pkgname=solidpython
-pkgver=r476.bb341d7
-_pkgver=0.4.9
-pkgrel=2
+pkgver=r480.60a6296
+pkgrel=1
 pkgdesc="SolidPython: OpenSCAD for Python"
 arch=('any')
 license=('LGPL2.1')
@@ -16,6 +15,11 @@ conflicts=("${pkgname%-git}")
 depends=('python-euclid3' 'python-pypng' 'python-prettytable' 'python-regex')
 source=("git+https://github.com/SolidCode/${_pkgname}.git")
 md5sums=(SKIP)
+
+_pkgver() {
+  # helper function to get the built package version
+  poetry version | cut -d' ' -f2 | tr -d '[:space:]'
+}
 
 pkgver() {
   cd ${_pkgname}
@@ -31,13 +35,14 @@ prepare() {
 build() {
   cd ${_pkgname}
   poetry build --format sdist
-  tar xvf dist/${_pkgname}-${_pkgver}.tar.gz
+  tar xvf dist/${_pkgname}-$(_pkgver).tar.gz
 
-  cd ${_pkgname}-${_pkgver}/
+  cd ${_pkgname}-$(_pkgver)/
   python setup.py build
 }
 
 package() {
-  cd ${_pkgname}/${_pkgname}-${_pkgver}/
+  cd ${_pkgname}
+  cd ${_pkgname}-$(_pkgver)/
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

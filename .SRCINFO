@@ -1,7 +1,7 @@
 pkgbase = python-solid-git
 	pkgdesc = SolidPython: OpenSCAD for Python
-	pkgver = r476.bb341d7
-	pkgrel = 2
+	pkgver = r480.60a6296
+	pkgrel = 1
 	url = https://github.com/SolidCode/SolidPython
 	arch = any
 	license = LGPL2.1
