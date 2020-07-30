@@ -6,7 +6,8 @@ pkgbase = python-portolan
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	source = python-portolan-1.0.1.tar.gz::https://github.com/fitnr/portolan/archive/v1.0.1.tar.gz
+	depends = python
+	source = portolan-1.0.1.tar.gz::https://github.com/fitnr/portolan/archive/v1.0.1.tar.gz
 	sha256sums = ce9d81b60ab705f1e305d3d691883d740bf35079acea75ea448927915b220d4c
 
 pkgname = python-portolan
