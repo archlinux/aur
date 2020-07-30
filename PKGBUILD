@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
 pkgver=r149.ea83cc4
-pkgrel=2
+pkgrel=3
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
 url='https://github.com/fredcox/gonha'
@@ -23,9 +23,9 @@ depends=('python-pyqt5'
          'python-numpy'
          'python-country_list'
          'python-unit-convert'
-         'python-portolan')
+         'python-portolan'
+         'python-gputil')
 makedepends=('python-setuptools' 'git')
-optdepends=('python-gputil: NVIDIA GPU support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/fredcox/gonha.git')
