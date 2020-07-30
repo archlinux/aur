@@ -1,0 +1,16 @@
+pkgbase = ume-git
+	pkgdesc = VTE based terminal emulator forked from sakura
+	pkgver = 0.0.0_65
+	pkgrel = 1
+	url = https://github.com/SgtWiggles/ume
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = vte3
+	depends = libxft
+	source = git+https://github.com/SgtWiggles/ume.git
+	sha256sums = SKIP
+
+pkgname = ume-git
+
