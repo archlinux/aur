@@ -1,6 +1,6 @@
 pkgbase = openmp-nvptx
 	pkgdesc = LLVM OpenMP Runtime Library with NVPTX offloading targets enaled
-	pkgver = 10.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://openmp.llvm.org/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = openmp-nvptx
 	optdepends = cuda
 	provides = openmp
 	conflicts = openmp
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/openmp-10.0.0.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/openmp-10.0.0.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz.sig
 	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = 3b9ff29a45d0509a1e9667a0feb43538ef402ea8cfc7df3758a01f20df08adfa
+	sha256sums = d19f728c8e04fb1e94566c8d76aef50ec926cd2f95ef3bf1e0a5de4909b28b44
 	sha256sums = SKIP
 
 pkgname = openmp-nvptx
