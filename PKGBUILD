@@ -1,6 +1,6 @@
 # Maintainer: Caio Novais <caionov08 at gmail dot com>
 pkgname=whatsapp-for-linux
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="An unofficial WhatsApp linux client desktop application."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtkmm3' 'webkit2gtk')
 makedepends=('cmake')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eneshecan/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('903f3650211e5d44bf7c4020ade43923')
+sha1sums=('3f12c2909b1d60cc1c247e29f9f4b834c18c7494')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver" || exit
