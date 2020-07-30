@@ -1,0 +1,24 @@
+pkgbase = ros-noetic-rqt-controller-manager
+	pkgdesc = ROS - Graphical frontend for interacting with the controller manager.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = http://wiki.ros.org/rqt_controller_manager
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	makedepends = python-setuptools
+	depends = ros-noetic-controller-manager-msgs
+	depends = ros-noetic-rospy
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rqt-gui-py
+	source = ros-noetic-rqt-controller-manager-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
+	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
+
+pkgname = ros-noetic-rqt-controller-manager
+
