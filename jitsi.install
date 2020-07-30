@@ -1,0 +1,9 @@
+post_install() {
+	cat << __EOF__
+The examples for prosody are located here:
+  - /usr/share/doc/jitsi-meet-prosody/
+
+The webapps is here:
+  - /usr/lib/jitsi-meet-prosody/
+__EOF__
+}

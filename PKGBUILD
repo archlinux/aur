@@ -1,27 +1,55 @@
-pkgname=jitsi-meet-prosody-bin
-pkgver=1.0.4127
+# Maintainer: C0rn3j <spleefer90@gmail.com>
+# Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
+_basename=jitsi-meet
+_pkgname=prosody
+_tag=1.0.4289
+_version=1.0.4289
+
+_pkgbase=${_basename}-${_pkgname}
+_debname=${_basename}-${_pkgname}
+pkgname=${_pkgbase}-bin
+pkgver=${_version}
 pkgrel=1
-_debrel=1
-pkgdesc="Prosody plugins for jitsi-meet"
+pkgdesc="Jitsi Meet Prosody Plugins binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=('prosody')
+depends=()
+optdepends=("prosody" "lua52" "lua52-sec" "lua52-zip" "lua52-event")
+makedepends=('tar')
 options=('!strip')
-conflicts=('jitsi-meet-prosody-plugins')
+backup=(
+)
+source=(
+        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
+	"jitsi.install"
+)
+provides=(${_pkgbase})
+conflicts=(${_pkgbase})
+install=jitsi.install
 
-source=("https://download.jitsi.org/stable/jitsi-meet-prosody_${pkgver}-${_debrel}_all.deb")
-sha256sums=('bc72563dfe0bd5c1b6516fc824a48038597a56626d78af0e19484e8283da8475')
-
-package() {
-  cd "${srcdir}"
-  tar -xJvf data.tar.xz -C "${pkgdir}"
-
-  rm -r "${pkgdir}/usr/share/doc/jitsi-meet-prosody"
-  mv "${pkgdir}/usr/share/jitsi-meet/prosody-plugins" "${pkgdir}/usr/share/jitsi-meet-prosody-plugins"
-  rmdir "${pkgdir}/usr/share/jitsi-meet"
-  mv "${pkgdir}/usr/share/jitsi-meet-prosody" "${pkgdir}/usr/share/doc/jitsi-meet-prosody-plugins"
-  sed -i 's@/usr/share/jitsi-meet/prosody-plugins@/usr/share/jitsi-meet-prosody-plugins@' "${pkgdir}/usr/share/doc/jitsi-meet-prosody-plugins/prosody.cfg.lua-jvb.example"
+build() {
+        rm -rf ${_pkgbase}
+        mkdir ${_pkgbase}
+        tar xJf data.tar.xz -C ${_pkgbase}
 }
 
-# vim: set ts=2 sw=2 et:
+package() {
+        cd "$srcdir/${_pkgbase}"
+
+        DESTDIR="${pkgdir}/usr/lib/${_pkgbase}"
+        DOCDIR="${pkgdir}/usr/share/doc/${_pkgbase}"
+        install -d "$DESTDIR"
+	install -d "$DOCDIR"
+	cp -R usr/share/jitsi-meet/prosody-plugins/* "${DESTDIR}"
+	cp -R usr/share/jitsi-meet-prosody/* "${DOCDIR}"
+
+        sed -i 's@/usr/share/jitsi-meet/prosody-plugins/@/usr/lib/'${_pkgbase}'@' "${pkgdir}/usr/share/doc/${_pkgbase}/prosody.cfg.lua-jvb.example"
+
+        chown -R root:root "${pkgdir}"
+	
+
+}
+sha256sums=('d4856273a78ca725a4a0016682c4931dee83730894b3b71e8a060d439ea00c11'
+            'f1be0156fa053042b6f0306a8966a4b5b65c5fd3b53ac2268d275fb9daa986bf')
