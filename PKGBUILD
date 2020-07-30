@@ -9,7 +9,7 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc")
+depends=("${_variant}-coc" 'python')
 optdepends=('python-jedi: jedi intellisense engine support'
             'anaconda: anaconda support'
             'python-pipenv: pipenv support'
