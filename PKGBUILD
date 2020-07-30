@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_tag=613
-_version=1.0+613
+_tag=614
+_version=1.0+614
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
