@@ -10,7 +10,7 @@
 
 pkgbase=liblinear
 pkgname=(liblinear python-liblinear python2-liblinear)
-pkgver=2.40
+pkgver=2.41
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('gcc-libs')
 makedepends=('gcc')
 source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "fix-import-module.diff")
-sha256sums=('7fa2652c65dff5164a2fb27294ad1097b580d0a8093b75c1851bb8c19e6a5bbd'
+sha256sums=('04b7ccc5124be6833f788b9817a7df0b1679279734e24b24c7a787501a03a43d'
             'c595cbf378ca2e781a63cb7127880c8d4bd8b118d1aef1b7b5a4324ba065e6b0')
 
 prepare() {
