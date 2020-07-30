@@ -4,9 +4,9 @@
 pkgname=liquidctl-git
 pkgver=1.3.3.r351.4993cd5
 pkgrel=1
-pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
+pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
-url="https://github.com/jonasmalacofilho/liquidctl"
+url='https://github.com/jonasmalacofilho/liquidctl'
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-docopt' 'python-pyusb' 'python-hidapi')
 makedepends=('git' 'python-pytest')
