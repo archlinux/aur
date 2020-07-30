@@ -86,7 +86,7 @@ source=(
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
+  0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
 )
 validpgpkeys=(
@@ -103,7 +103,7 @@ sha256sums=('93293032aa13c3998eeb2afd910f11c0f2e8a76ffec46f74ce3fcfac53ed60f1'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
             'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
-            '4c5b15c39e7d8f7b8c0fbee16bcc3992cecf38bb790df494b411a57366e3b677'
+            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c'
             'e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123')
 
 export KBUILD_BUILD_HOST=archlinux
