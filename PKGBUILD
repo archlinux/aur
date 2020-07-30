@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.07
+pkgver=2020.07.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -25,7 +25,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=29877042dd393774197b134426e37cb0dbabef34
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
-_commit=a9ff8a87b824791dfeddf82e6609f35677db8008
+_commit=16b860889bf5b4539d2103b23c8ef3625ac63929
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
@@ -36,8 +36,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::$_filesurl/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
-        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch"
-        BMO1640982.patch)
+        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -49,7 +48,7 @@ sha256sums=('SKIP'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
             '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612'
-            '33d7feed2093e45a3849785daf67a506052bc37f5c7e3813f7d318b9cfeb5129')
+            )
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -69,8 +68,6 @@ prepare() {
   patch -Np1 -i ../classic-kde.patch
   patch -Np1 -i ../classic-kde-xul.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
-
-  patch -Np1 -i ../BMO1640982.patch
 
   cat >.mozconfig <<END
 export CC=clang
