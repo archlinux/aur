@@ -9,6 +9,7 @@ pkgbase = python-prompt_toolkit1014
 	depends = python-six
 	depends = python-wcwidth
 	provides = python-prompt_toolkit=1.0.14
+	conflicts = python-prompt_toolkit
 	conflicts = python-prompt_toolkit1
 	source = python-prompt_toolkit1014-1.0.14.tar.gz::https://files.pythonhosted.org/packages/55/56/8c39509b614bda53e638b7500f12577d663ac1b868aef53426fc6a26c3f5/prompt_toolkit-1.0.14.tar.gz
 	sha256sums = cc66413b1b4b17021675d9f2d15d57e640b06ddfd99bb724c73484126d22622f

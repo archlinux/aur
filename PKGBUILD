@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/jonathanslenders/python-prompt-toolkit"
 license=('BSD')
 provides=('python-prompt_toolkit=1.0.14')
-conflicts=('python-prompt_toolkit1')
+conflicts=('python-prompt_toolkit' 'python-prompt_toolkit1')
 depends=('python-six'
          'python-wcwidth')
 makedepends=('python-setuptools')
