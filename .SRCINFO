@@ -1,6 +1,6 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 4.12.3
+	pkgver = 4.13.0beta2
 	pkgrel = 1
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
@@ -32,10 +32,10 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	source = https://download.qt.io/official_releases/qtcreator/4.12/4.12.3/qt-creator-opensource-src-4.12.3.tar.xz
+	source = https://download.qt.io/development_releases/qtcreator/4.13/4.13.0-beta2/qt-creator-opensource-src-4.13.0-beta2.tar.xz
 	source = qtcreator-preload-plugins.patch
 	source = qtcreator-clang-libs.patch
-	sha256sums = 81e12010aace162755f3a94ff788f7973f7a902ac1a9bc968f30e535cf5da32a
+	sha256sums = 6159d152861a6a81daaeba6f38a869245f94330162ff8ddc136d0eceb1c466b2
 	sha256sums = b40e222b30c355d1230160a4e933dbd161b8748125662e3bde312ea52296457a
 	sha256sums = 0f6d0dc41a87aae9ef371b1950f5b9d823db8b5685c6ac04a7a7ac133eb19a3f
 

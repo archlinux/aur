@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.12
-_pkgver=${_pkgvermajmin}.3
-_verpostfix=""
+_pkgvermajmin=4.13
+_pkgver=${_pkgvermajmin}.0
+_verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -41,7 +41,7 @@ makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz"
         qtcreator-preload-plugins.patch
         qtcreator-clang-libs.patch)
-sha256sums=('81e12010aace162755f3a94ff788f7973f7a902ac1a9bc968f30e535cf5da32a'
+sha256sums=('6159d152861a6a81daaeba6f38a869245f94330162ff8ddc136d0eceb1c466b2'
             'b40e222b30c355d1230160a4e933dbd161b8748125662e3bde312ea52296457a'
             '0f6d0dc41a87aae9ef371b1950f5b9d823db8b5685c6ac04a7a7ac133eb19a3f')
 
@@ -78,10 +78,10 @@ build() {
 package() {
   cd ${srcdir}/${_filename}
 
-  make INSTALL_ROOT="$pkgdir/usr/" install
-  make INSTALL_ROOT="$pkgdir/usr/" install_docs
+  make INSTALL_ROOT=${pkgdir}/usr/ install
+  make INSTALL_ROOT=${pkgdir}/usr/ install_docs
 
-  install -Dm644 "$srcdir"/qt-creator-opensource-src-$pkgver/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+  install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 
 # Link clazy plugin explicitely
   #patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
