@@ -1,53 +1,75 @@
-_pkgname=jitsi-meet
-pkgname=${_pkgname}-bin
-pkgver=1.0.4025
+# Maintainer: C0rn3j <spleefer90@gmail.com>
+# Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
+_basename=jitsi
+_pkgname=meet
+_tag=1.0.4289
+_version=1.0.4289
+
+_pkgbase=${_basename}-${_pkgname}
+_debname=${_basename}-${_pkgname}-web
+pkgname=${_pkgbase}-bin
+pkgver=${_version}
 pkgrel=1
-_debrel=1
-pkgdesc="WebRTC JavaScript video conferences"
+pkgdesc="Jitsi Meet Web binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=()
-optdepends=('jicofo'
-            'jitsi-videobridge'
-            'nginx'
-            'prosody')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
-makedepends=('binutils' 'tar')
+optdepends=("nginx")
+makedepends=('tar')
 options=('!strip')
-backup=('etc/jitsi/meet/config.js'
-        'etc/jitsi/meet/interface_config.js'
-        'etc/jitsi/meet/logging_config.js')
+backup=(
+  "etc/webapps/${_pkgbase}/logging_config.js"
+  "etc/webapps/${_pkgbase}/config.js"
+  "etc/webapps/${_pkgbase}/interface_config.js"
+)
+source=(
+        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
+        "https://download.jitsi.org/stable/${_debname}-config_${_tag}-1_all.deb"
+	"jitsi.install"
+)
+noextract=(
+	"${_debname}-config_${_tag}-1_all.deb"
+)
+provides=(${_pkgbase})
+conflicts=(${_pkgbase})
+install=jitsi.install
 
-source=("https://download.jitsi.org/stable/${_pkgname}-web_${pkgver}-${_debrel}_all.deb"
-        "https://download.jitsi.org/stable/${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb")
-noextract=("${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb")
-sha256sums=('60fe635ce05c7a6824e994a88f4adcb2b6e9ff176a7a4e444a70bced58c3f0b0'
-            'e0e5cc13e87f8d9455032be11b6a6619a5a5609f9de26165a7a6712be97cef3d')
+build() {
+        rm -rf ${_pkgbase}
+        mkdir ${_pkgbase}
+        tar xJf data.tar.xz -C ${_pkgbase}
+	ar p "${_debname}-config_${_tag}-1_all.deb" data.tar.xz | tar xJC ${_pkgbase}
 
-prepare() {
-  mkdir -p config
-  ar p "${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb" data.tar.xz | tar -xJvC config
-  sed -i 's/jitsi-meet\.example\.com-config\.js/config.js/g' config/usr/share/jitsi-meet-web-config/jitsi-meet.example{,-apache}
 }
 
 package() {
-  cd "${srcdir}"
-  tar -xJvf data.tar.xz -C "${pkgdir}"
+        cd "$srcdir/${_pkgbase}"
 
-  rm -r "${pkgdir}/usr/share/doc"
+        DESTDIR="${pkgdir}/usr/share/webapps/${_pkgbase}"
+        CONFDIR="${pkgdir}/etc/webapps/${_pkgbase}"
+        DOCDIR="${pkgdir}/usr/share/doc/${_pkgbase}"
 
-  install -d "${pkgdir}/etc/jitsi/meet"
-  install -Dm644 'config/usr/share/jitsi-meet-web-config/config.js' "${pkgdir}/etc/jitsi/meet/config.js"
-  mv "${pkgdir}/usr/share/jitsi-meet/interface_config.js" "${pkgdir}/etc/jitsi/meet/interface_config.js"
-  mv "${pkgdir}/usr/share/jitsi-meet/logging_config.js" "${pkgdir}/etc/jitsi/meet/logging_config.js"
-  ln -s '/etc/jitsi/meet/config.js' "${pkgdir}/usr/share/jitsi-meet/config.js"
-  ln -s '/etc/jitsi/meet/interface_config.js' "${pkgdir}/usr/share/jitsi-meet/interface_config.js"
-  ln -s '/etc/jitsi/meet/logging_config.js' "${pkgdir}/usr/share/jitsi-meet/logging_config.js"
+        install -d "$DESTDIR"
+        install -d "$CONFDIR"
+	install -d "$DOCDIR"
 
-  install -Dm644 'config/usr/share/jitsi-meet-web-config/jitsi-meet.example' "${pkgdir}/usr/share/doc/jitsi-meet/nginx.conf.example"
-  install -Dm644 'config/usr/share/jitsi-meet-web-config/jitsi-meet.example-apache' "${pkgdir}/usr/share/doc/jitsi-meet/apache.conf.example"
+	cp -R usr/share/jitsi-meet/* "${DESTDIR}"
+        cp usr/share/jitsi-meet-web-config/config.js "${DESTDIR}"
+        cp -R usr/share/jitsi-meet-web-config/* "${DOCDIR}"
+
+        for i in interface_config.js logging_config.js config.js
+        do
+                install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
+                ln -sf "/etc/webapps/${_pkgbase}/${i}" "$DESTDIR/${i}"
+        done
+
+        sed -i 's@/usr/share/jitsi-meet@/usr/share/webapps/'${_pkgbase}'@' "${pkgdir}/usr/share/doc/${_pkgbase}/"*
+        sed -i 's@/etc/jitsi/meet@/etc/webapps/'${_pkgbase}'@' "${pkgdir}/usr/share/doc/${_pkgbase}/"*
+        
+        chown -R root:root "${pkgdir}"
 }
-
-# vim: set ts=2 sw=2 et:
+sha256sums=('576164c7669ffde6536616e8ee450a4b84ce0800974d61e01858d15f0238d32a'
+            '016d5cd56e51789d0d614644cfc471868741c8feec290e682fafc7dc65c3ad6f'
+            'a6c7bd3a8c46f4192e6de555ee0c72cd87849a74159148f67ef3d3873796147a')

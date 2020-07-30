@@ -1,0 +1,12 @@
+post_install() {
+	cat << __EOF__
+The configs are located here:
+   - /etc/webapps/jitsi-meet/
+
+The examples for nginx/apache are located here:
+  - /usr/share/doc/jitsi-meet/
+
+The webapps is here:
+  - /usr/share/webapps/jitsi-meet/
+__EOF__
+}
