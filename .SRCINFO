@@ -1,0 +1,20 @@
+pkgbase = wlr-sunclock-git
+	pkgdesc = Displays a sunclock desktop widget using the layer shell protocol
+	pkgver = r11.dc63ea9
+	pkgrel = 1
+	url = https://github.com/sentriz/wlr-sunclock
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = gobject-introspection
+	depends = gtk-layer-shell
+	provides = wlr-sunclock
+	conflicts = wlr-sunclock
+	source = wlr-sunclock::git+https://github.com/sentriz/wlr-sunclock.git
+	md5sums = SKIP
+
+pkgname = wlr-sunclock-git
+
