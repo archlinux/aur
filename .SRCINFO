@@ -9,6 +9,7 @@ pkgbase = vim-coc-python-git
 	makedepends = npm
 	makedepends = git
 	depends = vim-coc
+	depends = python
 	optdepends = python-jedi: jedi intellisense engine support
 	optdepends = anaconda: anaconda support
 	optdepends = python-pipenv: pipenv support
