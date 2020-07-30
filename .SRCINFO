@@ -1,7 +1,7 @@
 pkgbase = gtkatlantic
 	pkgdesc = Monopoly board game client for the monopd server.
 	pkgver = git
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gtkatlantic.gradator.net/
 	arch = i686
 	arch = x86_64

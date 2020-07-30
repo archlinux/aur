@@ -1,5 +1,5 @@
 # Maintainer: Josh Dye <josh.jpenguin@gmail.com>
-# Maintainer: Daniel Plank < tyrolyean@gmx.at >
+# Maintainer: Daniel Plank < tyrolyean@tyrolyean.net >
 # Contributor: Tasos Latsas < tlatsas2000 at gmail dot com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: damir <damir@archlinux.org>
@@ -8,7 +8,7 @@
 
 pkgname=gtkatlantic
 pkgver=git
-pkgrel=2
+pkgrel=3
 pkgdesc="Monopoly board game client for the monopd server."
 arch=("i686" "x86_64")
 url="http://gtkatlantic.gradator.net/"
