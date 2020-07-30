@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-object-recognition-msgs
 	pkgdesc = ROS - Object_recognition_msgs contains the ROS message and the actionlib definition used in object_recognition_core.
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://wiki.ros.org/object_recognition_msgs
 	arch = any
 	license = BSD
@@ -20,8 +20,8 @@ pkgbase = ros-noetic-object-recognition-msgs
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-shape-msgs
-	source = ros-noetic-object-recognition-msgs-0.4.1.tar.gz::https://github.com/wg-perception/object_recognition_msgs/archive/0.4.1.tar.gz
-	sha256sums = b7689a079ad78a4358946fa5a38de0c9a5c12e46381d22106f053ac5cde357f1
+	source = ros-noetic-object-recognition-msgs-0.4.2.tar.gz::https://github.com/wg-perception/object_recognition_msgs/archive/0.4.2.tar.gz
+	sha256sums = 7377cb764799d30fd2812d0ef1ff52e5f5c5479bced087c45ef478195f941f16
 
 pkgname = ros-noetic-object-recognition-msgs
 
