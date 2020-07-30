@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-tf2-eigen
 	pkgdesc = ROS - tf2_eigen.
-	pkgver = 0.6.5
-	pkgrel = 3
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://wiki.ros.org/tf2_eigen
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-tf2-eigen
 	depends = ros-noetic-tf2
 	depends = ros-noetic-geometry-msgs
 	depends = eigen
-	source = ros-noetic-tf2-eigen-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
-	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
+	source = ros-noetic-tf2-eigen-0.7.2.tar.gz::https://github.com/ros/geometry2/archive/0.7.2.tar.gz
+	sha256sums = 66760dc51815155bf5654c9d9345fa3c6411616d53585ea3c1f6f9e43a556fc3
 
 pkgname = ros-noetic-tf2-eigen
 
