@@ -3,7 +3,7 @@
 _pkgname=mustream
 pkgname=$_pkgname-git
 pkgver=r55.2f0cb52
-pkgrel=3
+pkgrel=4
 pkgdesc=" A script to play music (with spotify) through the command line. "
 arch=(any)
 url="https://github.com/belkadev/$_pkgname"

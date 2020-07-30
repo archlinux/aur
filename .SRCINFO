@@ -1,7 +1,7 @@
 pkgbase = mustream-git
-	pkgdesc = Small exploit to stream music from the spotify library using your terminal.
+	pkgdesc = A script to play music (with spotify) through the command line.
 	pkgver = r55.2f0cb52
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/belkadev/mustream
 	arch = any
 	license = GPL3
