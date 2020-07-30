@@ -4,7 +4,7 @@ url="http://wiki.ros.org/libfranka"
 pkgname='ros-noetic-libfranka'
 pkgver='0.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(
@@ -26,8 +26,15 @@ depends=(
 )
 
 _dir="libfranka-release-upstream-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/libfranka-release/archive/upstream/$pkgver.tar.gz")
-sha256sums=('8cd70e0e468b5ee7023122b217cfe3358faddee0ba6c1d560b0dc23925be6839')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/libfranka-release/archive/upstream/$pkgver.tar.gz"
+        "include.patch::https://patch-diff.githubusercontent.com/raw/frankaemika/libfranka/pull/66.patch")
+sha256sums=('8cd70e0e468b5ee7023122b217cfe3358faddee0ba6c1d560b0dc23925be6839'
+            'SKIP')
+
+prepare() {
+    cd "${srcdir}/${_dir}"
+    patch --forward --strip=1 --input="${srcdir}/include.patch"
+}
 
 build() {
     # Use ROS environment variables

@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-libfranka
 	pkgdesc = ROS - libfranka is a C++ library for Franka Emika research robots
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/libfranka
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = ros-noetic-libfranka
 	depends = poco
 	depends = eigen
 	source = ros-noetic-libfranka-0.8.0.tar.gz::https://github.com/frankaemika/libfranka-release/archive/upstream/0.8.0.tar.gz
+	source = include.patch::https://patch-diff.githubusercontent.com/raw/frankaemika/libfranka/pull/66.patch
 	sha256sums = 8cd70e0e468b5ee7023122b217cfe3358faddee0ba6c1d560b0dc23925be6839
+	sha256sums = SKIP
 
 pkgname = ros-noetic-libfranka
 
