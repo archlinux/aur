@@ -1,6 +1,6 @@
 # Maintainer: dranion <dranion@pm.me>
 # Contributer: kausban <mail at kausban com> 
-pkgname=polar-bookshelf-beta-bin
+pkgname=polar-bookshelf-bin-beta
 pkgver=2.0.0
 pkgrel=11
 pkgdesc="Polar Bookshelf"
