@@ -32,7 +32,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DFREEGLUT_BUILD_DEMOS=OFF \
-      -FREEGLUT_REPLACE_GLUT=ON \
+      -DFREEGLUT_REPLACE_GLUT=ON \
       ..
     make
     popd
