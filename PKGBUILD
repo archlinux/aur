@@ -3,22 +3,22 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2020.1.2
-_pkgver=2020.1.2
+pkgver=2020.2
+_pkgver=2020.2
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
 url="https://www.jetbrains.com/pycharm-edu/"
 provides=('pycharm-edu')
 license=('Apache')
-depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('giflib' 'glibc' 'libxtst' 'libxslt' 'libdbusmenu-glib')
+makedepends=('python-setuptools')
 options=(!strip)
 source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
             'ipython: For enhanced interactive Python shell v3')
-sha256sums=('f941fea0ffc7438d547b2ad9e6a53412ce1b802d12129079dccf02e537ddbda9'
+sha256sums=('bab38f9a05e105e6a583eebad7d217c988050ae02098688f01385b617ab4c7e5'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
