@@ -22,7 +22,6 @@ pkgbase = gonha
 	depends = python-numpy
 	depends = python-country_list
 	depends = python-unit-convert
-	conflicts = gonha-git
 	source = https://pypi.org/packages/source/g/gonha/gonha-1.3.0.tar.gz
 	source = https://github.com/fredcox/gonha/raw/master/LICENSE
 	sha256sums = 77bfd2bf5cd6b75e78be4d4acc8383f685bd8e0ddd13c5f5184bfb2661f724f1
