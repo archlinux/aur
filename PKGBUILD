@@ -1,10 +1,9 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2154 # allow unused/unset variables
-# shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
 _fragment=${FRAGMENT:-#branch=master}
+# shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 #some extra, unofficially supported stuff goes here:
@@ -81,7 +80,7 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
