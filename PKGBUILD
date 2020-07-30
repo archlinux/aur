@@ -1,9 +1,8 @@
-# $Id$
 # Contributor: Albakham <contact@geber.ga>
 
 pkgname=protonmail-desktop
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Unofficial app that emulates a native client for the ProtonMail e-mail service"
 arch=(any)
 url="https://github.com/protonmail-desktop/application"
@@ -14,9 +13,9 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/protonmail-desktop/application/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('830a00ea5092d44d35eacd3ca340de87a562767bce6a740606840a672f8643e1'
+sha256sums=('efbc28152a6409cabb8d62d8f9ad18336670edcf4c6fc04fc351faef9eebae1b'
             'f830633b18a59b7d2a7787e9f0b4d8de802522e0c7732d1032ced354ab861532'
-            '780f8d0502fb1488df8ffee6e39403680376a1a0eebb0d6728002897aebe0e03')
+            'f9c79e8690cf3b72b3250c948706bff0fb12c3f9109433c0108d805aa707b224')
 
 build() {
   cd application-$pkgver
