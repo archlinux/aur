@@ -1,7 +1,7 @@
 pkgbase = replay-sorcery-git
 	pkgdesc = Open-source, instant-replay solution for Linux
-	pkgver = r80.b70061f
-	pkgrel = 3
+	pkgver = r113.9855d9d
+	pkgrel = 1
 	url = https://github.com/matanui159/ReplaySorcery
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,20 @@ pkgbase = replay-sorcery-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = nasm
+	depends = gcc-libs
+	depends = libxext
 	provides = replay-sorcery
+	conflicts = replay-sorcery
 	source = replay-sorcery::git+https://github.com/matanui159/ReplaySorcery.git
-	source = replay-sorcery.conf
+	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
+	source = git+https://github.com/ianlancetaylor/libbacktrace.git
+	source = git+https://code.videolan.org/videolan/x264.git
+	source = git+https://github.com/lieff/minimp4.git
 	sha256sums = SKIP
-	sha256sums = 47eda70a2347fcc0c020c27392e88bda93a1a6ab269ec8101bc68283105de2ba
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = replay-sorcery-git
 
