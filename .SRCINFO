@@ -1,0 +1,20 @@
+pkgbase = insomnia-git
+	pkgdesc = HTTP and GraphQL client for developers
+	pkgver = 2020.4.0_alpha.3
+	pkgrel = 1
+	url = https://github.com/Kong/insomnia
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = nvm
+	depends = electron
+	depends = jq
+	depends = npm
+	provides = insomnia
+	conflicts = insomnia
+	source = insomnia::git+https://github.com/Kong/insomnia.git
+	sha256sums = SKIP
+
+pkgname = insomnia-git
+

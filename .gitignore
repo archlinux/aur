@@ -1,0 +1,7 @@
+*.tar.xz
+*.tar.lz
+*.tar.gz
+*.tar.zst
+/insomnia
+/pkg
+/src
