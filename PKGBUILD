@@ -2,8 +2,8 @@
 # Contributor: Dan Trickey
 pkgname=webots-bin
 pkgname=webots
-pkgver=2020a.rev1
-pkgrel=2
+pkgver=2020b
+pkgrel=0
 pkgdesc="Mobile robot simulation software."
 arch=('x86_64')
 url="https://cyberbotics.com/"
@@ -17,8 +17,8 @@ optdepends=('alsa-lib' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'fontconfig'
 
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/cyberbotics/webots/releases/download/R2020a-rev1/webots_2020a-rev1_amd64.deb")
-sha512sums_x86_64=('1696d1d3cb16120e0038a43982f97fb0a7ec2f8bf1b46d22d0d459d4a2dcb1e330b7c2d66e56d9a900a11f09d8ea5b7e2cf55d70655cf1629fce8506f42c7863')
+source_x86_64=("https://github.com/cyberbotics/webots/releases/download/R2020b/webots_2020b_amd64.deb")
+sha512sums_x86_64=('a4a34e5ed0745987e71ac4a7b642d96adfa3ffff9b85fab67e418bae1fb9431887a98d77d744aa17285a70c5eb6f25de92c31e74d0c94b8205ce0374dc0c66da')
 
 package(){
 
