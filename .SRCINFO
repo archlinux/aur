@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-geometric-shapes
 	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 4
 	url = http://wiki.ros.org/geometric_shapes
 	arch = i686
@@ -35,8 +35,8 @@ pkgbase = ros-noetic-geometric-shapes
 	depends = eigen
 	depends = console-bridge
 	depends = qhull
-	source = ros-noetic-geometric-shapes-0.6.1.tar.gz::https://github.com/ros-planning/geometric_shapes/archive/0.6.1.tar.gz
-	sha256sums = 768ecbd9bf8501a844b358026d6ae1db5d4d70d1958f47f5ca64c1ee7bd20b8c
+	source = ros-noetic-geometric-shapes-0.7.0.tar.gz::https://github.com/ros-planning/geometric_shapes/archive/0.7.0.tar.gz
+	sha256sums = 5b381526645555f550a5de52ac944ed37f67194509f596c24d82d0e9fb4e60da
 
 pkgname = ros-noetic-geometric-shapes
 
