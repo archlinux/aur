@@ -1,6 +1,6 @@
 pkgname='texmaster'
 pkgver='2009.3'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Texmaster is a tetris clone developed by Report.'
 url='http://tetrisconcept.net/threads/texmaster.2/'
 source=(
@@ -12,6 +12,7 @@ md5sums=('afe9c927d145829d3f6c8c47091f7be5'
          '2cc37514846c4bdfc8d9d3320ed78353'
          '2cc3ce9cbfe611ee49440a0b0590d90f')
 arch=('i686' 'x86_64')
+license=('unknown')
 depends=('sdl' 'zlib')
 
 package() {
