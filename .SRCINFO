@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit-ros-move-group
 	pkgdesc = ROS - The move_group node for MoveIt.
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = ros-noetic-moveit-ros-move-group
 	depends = ros-noetic-moveit-ros-planning
 	depends = ros-noetic-std-srvs
 	depends = ros-noetic-actionlib
-	source = ros-noetic-moveit-ros-move-group-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
-	sha256sums = b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4
+	source = ros-noetic-moveit-ros-move-group-1.0.5.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.5.tar.gz
+	sha256sums = 78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a
 
 pkgname = ros-noetic-moveit-ros-move-group
 
