@@ -1,8 +1,9 @@
 # Maintainer: Kevin Puertas <kevinpr@jkanetwork.com>
+# Co-Maintainer: 1ace <arch.aur@engestrom.ch>
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=gdevelop
-pkgver=5.0.0.beta92
+pkgver=5.0.0.beta97
 pkgrel=1
 pkgdesc="Open-source, cross-platform game creator designed to be used by everyone - no programming skills required."
 arch=('x86_64')
@@ -12,17 +13,17 @@ groups=()
 provides=('gdevelop')
 conflicts=('gdevelop')
 depends=('gconf')
-source=("https://github.com/4ian/GDevelop/releases/download/v${pkgver//.b/-b}/gdevelop-${pkgver//.b/-b}.tar.gz"
+source=("https://github.com/4ian/GDevelop/releases/download/v${pkgver//.b/-b}/GDevelop-${pkgver%%.*}-${pkgver//.b/-b}.AppImage"
         'https://github.com/4ian/GDevelop/raw/master/Core/docs/images/glogo.png'
         'gdevelop.desktop')
-sha256sums=('b504e1ef8015e40ebdd5b037030eed50f4b55611e0befcbabebaaec463022d9d'
+sha256sums=('a014f1c6dca04c07767c388a391f704f230744195ef1a1f8354a41d023e9cab2'
             '6ec8974d1c073442e1e653ac75d8ab4c1ed1cc1c2d14c6d73d6c50543a4f4b5f'
-            '0e445ccbefd17af5d1d1984ba76fbc7b283eed04a0dcacf3a020739180c2d898')
+            'd6074b92d0e5896a33cc007fa59eb35759569047b3a31d35108134beb538e039')
+options=('!strip')
 
 package() {
-  install -dm 755 "$pkgdir"/{opt/${_pkgname},usr/{bin,share/{applications,pixmaps}}}
-  cp -a "${srcdir}/${_pkgname}-${pkgver//.b/-b}/." "${pkgdir}/opt/$_pkgname/"
-  ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -dm 755 "$pkgdir"/usr/{bin,share/{applications,pixmaps}}
+  install -m755 *.AppImage "$pkgdir/usr/bin/$_pkgname"
   install -D -m 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D -m 644 "${srcdir}/glogo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
