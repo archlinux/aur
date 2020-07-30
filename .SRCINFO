@@ -1,19 +1,15 @@
 pkgbase = python-typepy
-	pkgdesc = A Python library for variable type checker/validator/converter at a run time.
-	pkgver = 0.0.20
+	pkgdesc = Variable run time type checker/validator/converter
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/thombashi/typepy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-mbstrdecoder>=0.2.2
-	depends = python-enum-compat
-	depends = python-dateutil>=2.6.1
-	depends = python-pytz>=2017.2
-	depends = python-six>=1.10
-	source = https://github.com/thombashi/typepy/archive/v0.0.20.tar.gz
-	md5sums = e30195e2d5ba01df57405ce301e846eb
+	depends = python-mbstrdecoder
+	provides = typepy
+	source = https://files.pythonhosted.org/packages/source/t/typepy/typepy-1.1.1.tar.gz
+	sha256sums = a0850559dfd135577c6d565c0268fcad1327cab9c4c295015d4d882aa9a24786
 
 pkgname = python-typepy
 
