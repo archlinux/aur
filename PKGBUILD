@@ -16,7 +16,14 @@ depends=('python-pyqt5'
          'python-colr'
          'python-distro'
          'python-prompt_toolkit1014'
-         'ttf-fira-code')
+         'python-py-cpuinfo'
+         'ttf-fira-code'
+         'python-pathlib'
+         'python-requests'
+         'python-netifaces'
+         'python-numpy'
+         'python-country-list'
+         'python-unit-convert')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/f3/6f/2c715586f1c5e5fc8dc61b7a277df30a58c17f57ceda0fe18fbdce59ab60/gonha-1.3.0.tar.gz"
         'LICENSE::https://github.com/fredcox/gonha/raw/master/LICENSE')
