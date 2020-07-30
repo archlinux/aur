@@ -1,46 +1,33 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=yakuake-git
-pkgver=v3.0.2.6.g87f7321
+_pkgname=yakuake
+pkgname=${_pkgname}-git
+pkgver=20.04.2.r40.g946ecc7
 pkgrel=1
-pkgdesc="A drop-down terminal emulator based on KDE Konsole technology. (GIT version)"
-arch=('i686' 'x86_64')
-url='https://www.kde.org/applications/system/yakuake'
-license=('GPL')
-depends=('knewstuff'
-         'konsole'
-         'kwayland'
-         'hicolor-icon-theme'
-         )
-makedepends=('extra-cmake-modules'
-             'git'
-             'python'
-             )
-conflicts=('yakuake')
-provides=('yakuake')
-source=('git://anongit.kde.org/yakuake.git')
-sha1sums=('SKIP')
+pkgdesc='A drop-down terminal emulator based on KDE konsole technology'
+arch=('x86_64')
+url='https://kde.org/applications/system/org.kde.yakuake'
+license=('GPL2')
+groups=('kde-applications' 'kde-utilities')
+depends=('hicolor-icon-theme' 'konsole' 'kwayland')
+makedepends=('extra-cmake-modules' 'git')
+provides=("${_pkgname}")
+source=("git+https://invent.kde.org/utilities/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd yakuake
-  echo "$(git describe --long --tags | tr - .)"
-}
-
-prepare() {
-  mkdir -p build
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../yakuake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S "${_pkgname}" \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
+
+# vim: ts=2 sw=2 et:
