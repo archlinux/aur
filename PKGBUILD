@@ -51,7 +51,7 @@ _major=5.7
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,9 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-updates-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-updates-v10-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-updates-v10-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
+        "${_lucjanpath}/arch-updates-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-updates-v11-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-updates-v11-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
+        "${_lucjanpath}/arch-updates-v11-sep/0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -324,11 +325,12 @@ sha512sums=('70dad9d4469f620df840dc00930218805df7fedb4cc2836df913eed36bf2c70c94c
             'SKIP'
             'c7c5b222578a95cf4df69f9e8fa4ae2fb83075c26f0379676bf78e110f113c6f4ce5fe9d61eaf1c0d04563522e9d5998acd75bedba47866725e89cbbf64a1bba'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            '9ac046cc94e41eee9ca1b527f7f73510977a2255d6d9f8d4fa022304f09c4a32dd413cad8821b61586479c2093b9ec86386b801530308d16347342af59f5a376'
-            '663a0d0f9586837c7a460c13fadfd2d084a6505d9ad086e6fdeaf3a59123645edb91723d07142a9ec79dfab891053c0944e6b5a5dcb03736ece0d57d5e483908'
-            '49060330eae0b31e49b9360a11f3f48a3c0895301b97e79324913f99c008e54f8a9b9cb79df8b3794d81cfbe5648a21ae16034b26d7f7fbe2d33a2f8744aa894'
+            'b931b5bb841bb15933145dbec1cca501495daba41d4630baf12fea834192aa08cb2c3810e5082490163acabc0f7a5456f2f1ecea0941bbe6c9bb53378745f5e4'
+            'a5a1c8bf77a15ac2f1b7af6b35c2883e92cc44b901e0f34680b6af45692164096e37b1d39600698d5093daa84d95ca14605c07b1f0f13a66cf64c41445f9e67f'
+            'f8bc93386fcbe006fad3995c52db0eb697f9ce0be790715c3c72cb3e93c13624e8024f8e271621040d69ca0b9b9d5379c74fb0ad5f4d86b1ccf08fe600e09219'
+            '2773d7e9be5ac7fc3c69588481b77ed4f6b880761b317746d6ae7dd02da443b503aafd9d23eefdb906a12d1c36b8bfdc49a6e350b814ec85eaaa2564ccd66994'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'f33694ddf2b9552d5ca186911b04647a8902d0b515d3098ecb8950aa95c5c16cab89e13a7eeb24eeb363795a4c7de212997dcbe609e84d38133a1bfc498ef928')
+            '9c2b8bf53828feb4602c07295b157e0613f6e0f94d96cf09d942374e21d3e4aa2b0dfea0fd0f98bbb8e172e61c06eb975cfd219d6d25e39fc535110c3b763dbc')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
