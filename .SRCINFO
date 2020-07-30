@@ -1,7 +1,7 @@
 pkgbase = gonha
 	pkgdesc = Light-weight system monitor for Linux
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fredcox/gonha
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = gonha
 	depends = python-prompt_toolkit1014
 	depends = python-py-cpuinfo
 	depends = ttf-fira-code
-	depends = python-pathlib
+	depends = python-pathlib2
 	depends = python-requests
 	depends = python-netifaces
 	depends = python-numpy
