@@ -1,5 +1,5 @@
 pkgbase = blender-2.90-git
-	pkgdesc = Maintenance version of Blender v2.90 branch
+	pkgdesc = Aplha version of Blender v2.90 branch
 	pkgver = 2.90.r98225.g2bc017ece14
 	pkgrel = 1
 	url = https://blender.org/

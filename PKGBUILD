@@ -21,7 +21,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 pkgname=blender-2.90-git
 pkgver=2.90.r98225.g2bc017ece14
 pkgrel=1
-pkgdesc="Maintenance version of Blender v2.90 branch"
+pkgdesc="Aplha version of Blender v2.90 branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
