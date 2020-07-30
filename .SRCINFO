@@ -1,6 +1,6 @@
 pkgbase = libretro-ppsspp-rbp
 	pkgdesc = Sony PlayStation Portable core (build for Raspberry Pi)
-	pkgver = 27206
+	pkgver = 27598
 	pkgrel = 1
 	url = https://github.com/libretro/ppsspp
 	arch = armv7h
@@ -12,19 +12,22 @@ pkgbase = libretro-ppsspp-rbp
 	makedepends = python
 	depends = ffmpeg
 	depends = libegl
+	depends = libpng
 	depends = libretro-core-info
 	depends = libzip
 	depends = snappy
-	provides = libretro-ppsspp=27206
+	provides = libretro-ppsspp=27598
 	conflicts = libretro-ppsspp
-	source = libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=ba06c87a7dd953ff8f376fd6a5f811d29e1bdc6a
+	source = libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=70802e61de670fc66de23356a6ffab9b4b018d9b
 	source = git+https://github.com/Kingcom/armips.git
 	source = git+https://github.com/discordapp/discord-rpc.git
 	source = ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
 	source = git+https://github.com/hrydgard/ppsspp-lang.git
+	source = ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
 	source = git+https://github.com/Tencent/rapidjson.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	source = armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

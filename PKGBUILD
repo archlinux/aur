@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=27206
+pkgver=27598
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -16,6 +16,7 @@ conflicts=("${_pkgname}")
 depends=(
   ffmpeg
   libegl
+  libpng
   libretro-core-info
   libzip
   snappy
@@ -26,26 +27,27 @@ makedepends=(
   mesa
   python
 )
+_commit=70802e61de670fc66de23356a6ffab9b4b018d9b
 source=(
-  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=ba06c87a7dd953ff8f376fd6a5f811d29e1bdc6a
+  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
+  ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
 )
-sha256sums=(
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd libretro-ppsspp
@@ -56,7 +58,7 @@ pkgver() {
 prepare() {
   cd libretro-ppsspp
 
-  for submodule in assets/lang ext/glslang; do
+  for submodule in assets/lang ext/glslang ext/miniupnp; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
