@@ -65,7 +65,7 @@ arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'cpio')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'cpio' 'zstd')
 
 if [ -n "$_htmldocs_enable" ]; then
     makedepends+=('python-sphinx' 'python-sphinx_rtd_theme'

@@ -10,6 +10,7 @@ pkgbase = linux-lqx
 	makedepends = bc
 	makedepends = libelf
 	makedepends = cpio
+	makedepends = zstd
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.sign
