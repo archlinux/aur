@@ -3,8 +3,8 @@
 _pkgname=mustream
 pkgname=$_pkgname-git
 pkgver=r55.2f0cb52
-pkgrel=2
-pkgdesc="A quick 'hack' to stream any music (from spotify) through the command line."
+pkgrel=3
+pkgdesc=" A script to play music (with spotify) through the command line. "
 arch=(any)
 url="https://github.com/belkadev/$_pkgname"
 license=('GPL3')
