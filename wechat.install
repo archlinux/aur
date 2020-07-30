@@ -1,0 +1,7 @@
+post_upgrade() {
+    echo "Deleting existing WeChat bottles..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/DCS-WeChat/ \;
+}
+post_remove() {
+    post_upgrade
+}

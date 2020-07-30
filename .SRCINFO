@@ -1,0 +1,19 @@
+pkgbase = com.qq.weixin.dcs
+	pkgdesc = Tencent WeChat Client on Deepin Wine 5
+	pkgver = 2.9.5.41
+	pkgrel = 1
+	url = http://weixin.qq.com/
+	install = wechat.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	source = http://store.jerrywang.top/store/chat/com.qq.weixin.dcs/com.qq.weixin.dcs_2.9.5.41_i386.deb
+	sha512sums = 850297e7741c1bbeef12cd2fdcf85de707c7b13669de934f8c369801e44c9119a57fab69c321f1c77b79c9e3ee24ffd47784de9cfe704caa53e6c2bf0c9f65d2
+
+pkgname = com.qq.weixin.dcs
+
