@@ -1,8 +1,8 @@
-# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
+# Maintainer: Krystian <krystian@krystianch.com>
 
 pkgname=codimd-git
 pkgver=r2487.dde1c742
-pkgrel=1
+pkgrel=2
 pkgdesc="real-time collaborative markdown notes"
 arch=('any')
 url="https://demo.codimd.org/"

@@ -1,7 +1,7 @@
 pkgbase = codimd-git
 	pkgdesc = real-time collaborative markdown notes
 	pkgver = r2487.dde1c742
-	pkgrel = 1
+	pkgrel = 2
 	url = https://demo.codimd.org/
 	install = codimd.install
 	arch = any
