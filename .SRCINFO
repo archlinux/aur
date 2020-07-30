@@ -1,0 +1,18 @@
+pkgbase = python-alibabacloud-nls-python-sdk-git
+	pkgdesc = Alibaba Cloud Ali_Speech SDK for Python.
+	pkgver = 2.0.0.r1.g5dc8484
+	pkgrel = 1
+	url = https://github.com/aliyun/alibabacloud-nls-python-sdk
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-requests
+	depends = python-websocket-client
+	provides = python-alibabacloud-nls-python-sdk
+	conflicts = python-alibabacloud-nls-python-sdk
+	source = git+https://github.com/aliyun/alibabacloud-nls-python-sdk
+	sha256sums = SKIP
+
+pkgname = python-alibabacloud-nls-python-sdk-git
+
