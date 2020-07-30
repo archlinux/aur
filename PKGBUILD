@@ -19,7 +19,7 @@ depends=(gtk3 mozilla-common libxt mime-types dbus-glib
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm libpipewire02)
+             python nodejs python2-psutil cbindgen nasm libpipewire02 lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'xdg-desktop-portal: Required for screen sharing'
@@ -85,6 +85,8 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
+ac_add_options --disable-elf-hack
 ac_add_options --enable-lto
 export MOZ_PGO=1
 export CC=clang
