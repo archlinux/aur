@@ -1,7 +1,6 @@
 pkgname=mingw-w64-opencascade
-pkgver=7.4.0
-_pkgver=${pkgver//_/}
-_pkgver=V${_pkgver//./_}
+pkgver=7.4.0.1
+_pkgver=V7_4_0p1
 pkgrel=1
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)"
 arch=('any')
@@ -12,7 +11,7 @@ depends=('mingw-w64-tk' 'mingw-w64-gl2ps' 'mingw-w64-ffmpeg' 'mingw-w64-freeimag
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("opencascade-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz" 'fix-install-dir-references.patch')
-sha256sums=('655da7717dac3460a22a6a7ee68860c1da56da2fec9c380d8ac0ac0349d67676'
+sha256sums=('e00fedc221560fda31653c23a8f3d0eda78095c87519f338d4f4088e2ee9a9c0'
             'afb584aa453993ae8d9e2b983594558531ede735a5892754b812be30650c9fb5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
