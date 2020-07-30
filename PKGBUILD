@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r352.g530a0863b8
+pkgver=0.32.0.r608.g700f4ef5fa
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -126,7 +126,6 @@ makedepends=(
 optdepends=(
             'cuda: mpv ffmpeg nvcc and libnpp support'
             'davs2: Additional libdavs2 support for ffmpeg'
-            'flite1-patched: Additional libflite support for ffmpeg'
             'libilbc: Additional libilbc support for ffmpeg'
             'libklvanc-git: Additional libklvanc support for ffmpeg'
             'libopenmpt: Additional libopenmpt support for ffmpeg'
@@ -165,14 +164,11 @@ backup=('etc/mpv/encoding-profiles.conf')
 # MPV_NO_CHECK_OPT_DEPEND
 # if you don't need opt dependency checked, defined this
 # for example
-# MPV_NO_CHECK_OPT_DEPEND=yes makepkg -sif
+# MPV_NO_CHECK_OPT_DEPEND=yes makepkg -si
 
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libdavs2.so ]; then
     depends+=('davs2')
-  fi
-  if [ -f /usr/lib/libflite_cmu_time_awb.so ]; then
-    depends+=('flite1-patched')
   fi
   if [ -f /usr/lib/libklvanc.so ]; then
     depends+=('libklvanc')
@@ -387,9 +383,6 @@ prepare() {
     if [ -f /usr/lib/libdavs2.so ]; then
       _ffmpeg_options+=('--enable-libdavs2')
     fi
-    if [ -f /usr/lib/libflite_cmu_time_awb.so ]; then
-      _ffmpeg_options+=('--enable-libflite')
-    fi
     if [ -f /usr/lib/libklvanc.so ]; then
       _ffmpeg_options+=('--enable-libklvanc')
     fi
@@ -402,9 +395,6 @@ prepare() {
     if [ -f /usr/lib/libopenmpt.so ]; then
       _ffmpeg_options+=('--enable-libopenmpt')
     fi
-    # if [ -f /usr/lib/libmujs.so ]; then
-    #   _mpv_options+=('mujs')
-    # fi
     if [ -f /usr/lib/libopenh264.so ]; then
       _ffmpeg_options+=('--enable-libopenh264')
     fi
@@ -436,6 +426,7 @@ prepare() {
       _ffmpeg_options+=('--enable-libnpp')
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
+      _ffmpeg_options+=('--nvccflags=-O2')
       _mpv_options+=('--enable-cuda-hwaccel')
       _mpv_options+=('--enable-cuda-interop')
     fi
