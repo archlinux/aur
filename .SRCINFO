@@ -1,18 +1,15 @@
 pkgbase = python-subprocrunner
-	pkgdesc = A Python wrapper library for subprocess module.
-	pkgver = 0.10.0
+	pkgdesc = Python wrapper library for subprocess module
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/thombashi/subprocrunner
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-logbook>=1.1.0
 	depends = python-mbstrdecoder
-	depends = python-six
-	depends = python-typepy>=0.0.20
-	source = https://github.com/thombashi/subprocrunner/archive/v0.10.0.tar.gz
-	md5sums = 257cc2cc7fd830758c8a33f29c32f6e7
+	provides = subprocrunner
+	source = https://files.pythonhosted.org/packages/source/s/subprocrunner/subprocrunner-1.2.1.tar.gz
+	sha256sums = 446b0763ee6896f8e20e8a4484387c26e3ebd8ba586b84580c7e1fe75e469724
 
 pkgname = python-subprocrunner
 
