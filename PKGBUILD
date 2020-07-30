@@ -1,4 +1,5 @@
-# Contributor: Dany Marcoux <danymarcoux+archlinux@gmail.com>
+# Contributor: Aoibhinn Nic Aoidh <oibind@pm.me>
+# Maintainer: Dany Marcoux <danymarcoux+archlinux@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf-bin
