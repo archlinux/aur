@@ -1,0 +1,27 @@
+pkgbase = ros-noetic-ros-control
+	pkgdesc = ROS - A set of packages that include controller interfaces, controller managers, transmissions and hardware_interfaces.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ros_control
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-combined-robot-hw
+	depends = ros-noetic-controller-interface
+	depends = ros-noetic-controller-manager
+	depends = ros-noetic-controller-manager-msgs
+	depends = ros-noetic-hardware-interface
+	depends = ros-noetic-joint-limits-interface
+	depends = ros-noetic-realtime-tools
+	depends = ros-noetic-transmission-interface
+	source = ros-noetic-ros-control-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
+	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
+
+pkgname = ros-noetic-ros-control
+
