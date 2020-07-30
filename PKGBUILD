@@ -8,7 +8,7 @@ url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dylanaraps/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('934e54f1bad59bc53cd97bd799ed830c')
+sha1sums=('9440d085e9ef93a94127ed634edbbfb2048186c7')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/pfetch" "$pkgdir/usr/bin/pfetch"

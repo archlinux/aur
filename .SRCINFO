@@ -7,7 +7,7 @@ pkgbase = pfetch
 	license = MIT
 	provides = pfetch
 	source = pfetch-0.6.0.tar.gz::https://github.com/dylanaraps/pfetch/archive/0.6.0.tar.gz
-	md5sums = 934e54f1bad59bc53cd97bd799ed830c
+	sha1sums = 9440d085e9ef93a94127ed634edbbfb2048186c7
 
 pkgname = pfetch
 
