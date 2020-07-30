@@ -4,8 +4,8 @@
 # Based on ddgr's PKGBUILD from the AUR
 
 pkgname=ddgr-git
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
