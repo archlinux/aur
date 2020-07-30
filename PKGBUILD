@@ -45,4 +45,5 @@ package() {
 check() {
 	cd "$srcdir/$pkgname"
 	pytest
+	python -m liquidctl.cli list --verbose
 }
