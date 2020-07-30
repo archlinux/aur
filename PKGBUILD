@@ -5,7 +5,7 @@
 [[ -v TRAVIS ]] && DISABLE_PYTHON=1
 
 # Configuration.
-_ver="v19.11" #switch to last blender supported version, latest is "v20.02"
+_ver="v20.05" #switch to last blender supported version, latest is "v20.08"
 _fragment="#tag=$_ver"
 if ((DISABLE_PYTHON)); then
   _CMAKE_FLAGS+=( "-DPXR_ENABLE_PYTHON_SUPPORT:BOOL=OFF" )
@@ -14,12 +14,11 @@ else
   _CMAKE_FLAGS+=( -DPXR_PYTHON_SHEBANG:STRING="/usr/bin/python2" )
   eval "depends+=( python2{,-opengl,-pyside} )"
   eval "makedepends+=( python2-{jinja,pyside-tools} )"
-:
 fi
 
 pkgname=usd
 pkgver=${_ver#v}
-pkgrel=2
+pkgrel=1
 pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://www.openusd.org"
@@ -31,8 +30,8 @@ source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
         "blender.patch")
 sha256sums=('SKIP'
-            'dec16bd0270c9d682f34c555e38812ea010bee88907a02d6ce60f3f319b21425'
-            'a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587')
+            '2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e'
+            '95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a')
 
 prepare() {
   git -C USD apply -v "${srcdir}"/{boost_python2,blender}.patch
@@ -47,10 +46,14 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DPXR_BUILD_TESTS:BOOL=OFF
     -DPXR_BUILD_MONOLITHIC:BOOL=ON          # Required by blender-2.83
-                )
+    -DBoost_NO_BOOST_CMAKE=ON               # Fix boost overwriting boost_python27 with boost_python
+    -DPXR_SET_INTERNAL_NAMESPACE=usdBlender
+    -DBUILD_SHARED_LIBS=ON
+    -DCMAKE_DEBUG_POSTFIX=_d
+  )
   cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 # shellcheck disable=SC2046
-  ninja -C build $([ -v MAKEFLAGS ] || echo -j1)
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 #check() {
