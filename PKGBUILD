@@ -7,7 +7,7 @@
 pkgbase=linux-mainline-bootsplash       # Build kernel with a different name
 _tag=v5.8-rc7
 pkgver=5.8rc7
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Mainline - with bootsplash support"
 arch=(x86_64)
 url="https://kernel.org/"
@@ -95,6 +95,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make htmldocs
 }
 
 _package() {
@@ -221,7 +222,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
