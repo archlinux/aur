@@ -3,7 +3,7 @@
 
 pkgname=siril
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPLv3')
@@ -24,7 +24,7 @@ sha1sums=('31ac2eb0f6f59e35d3732dfd7a532e017e46f95c')
 
 build() {
   cd "${_pkgname}"
-  ./autogen.sh --prefix=/usr
+  CFLAGS='-fcommon' ./autogen.sh --prefix=/usr
   make
 }
 
