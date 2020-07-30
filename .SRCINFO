@@ -9,6 +9,7 @@ pkgbase = neovim-coc-pyright-git
 	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
+	depends = python
 	provides = neovim-coc-pyright
 	conflicts = neovim-coc-pyright
 	source = coc-pyright::git+https://github.com/fannheyward/coc-pyright.git
