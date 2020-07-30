@@ -1,0 +1,13 @@
+pkgbase = python-unit-convert
+	pkgdesc = Easily convert units to different quantities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Peter92/unit-convert
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = python-unit-convert-1.0.0.tar.gz::https://github.com/Peter92/unit-convert/archive/1.0.0.tar.gz
+	sha256sums = 937cc21ded0b3e6bcc32285334e77d9e8a23dc2d05846140cec05f018a9a98d4
+
+pkgname = python-unit-convert
+
