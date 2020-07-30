@@ -1,7 +1,8 @@
-pkg/
-src/
-*.tar
-*.tar.bz2
-*.tar.gz
-*.tar.xz
-*.tar.zstd
+/purple-mm-sms/
+/pkg/
+/src/
+/*.tar
+/*.tar.bz2
+/*.tar.gz
+/*.tar.xz
+/*.tar.zstd
