@@ -1,6 +1,6 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=com.qq.weixin.dcs
-pkgver=2.9.5.41
+pkgver=2.9.5.56
 pkgrel=1
 epoch=
 pkgdesc="Tencent WeChat Client on Deepin Wine 5"
@@ -20,7 +20,7 @@ options=()
 install=wechat.install
 changelog=
 source=("http://store.jerrywang.top/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-sha512sums=("850297e7741c1bbeef12cd2fdcf85de707c7b13669de934f8c369801e44c9119a57fab69c321f1c77b79c9e3ee24ffd47784de9cfe704caa53e6c2bf0c9f65d2")
+sha512sums=('acb06c23d921ca838154487d54638b9cac06ac4b8867c0572a258f9744140218b6ef9a99e97f9076acf7b6cc5b05217960ffbafb55800232e90c30c6c3641d21')
 validpgpkeys=()
 
 package() {
