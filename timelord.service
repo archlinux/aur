@@ -1,0 +1,17 @@
+# This is experimental service file.
+# See distrib/systemd/README
+
+[Unit]
+Description=Netatalk timelord (network time) service for Macintosh clients
+After=syslog.target network.target slpd.service avahi-daemon.service atalk.service
+Requires=atalk.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+ExecStart=/usr/sbin/timelord
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

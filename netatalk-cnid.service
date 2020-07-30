@@ -1,0 +1,18 @@
+# This is experimental service file.
+# See distrib/systemd/README
+
+[Unit]
+Description=Netatalk CNID database daemon for AFP fileserver
+After=syslog.target network.target
+Before=netatalk.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+ExecStart=/usr/sbin/cnid_metad -l log_note
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+Also=netatalk.service

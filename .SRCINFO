@@ -1,14 +1,14 @@
 pkgbase = netatalk-ddp
 	pkgdesc = A kernel-level implementation of AppleTalk, AFP, and PAP services
 	pkgver = 2.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://netatalk.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = openslp
 	depends = libcups
-	depends = libgcrypt>=1.2.3
+	depends = libgcrypt15
 	depends = libtirpc
 	depends = libwrap
 	depends = rpcsvc-proto
@@ -32,6 +32,12 @@ pkgbase = netatalk-ddp
 	source = netatalk-uams_dhx_pam.patch
 	source = netatalk-uams_randnum.patch
 	source = netatalk-papd_print_cups.patch
+	source = a2boot.service
+	source = atalk.service
+	source = netatalk-cnid.service
+	source = netatalk.service
+	source = pap.service
+	source = timelord.service
 	md5sums = cd8ca5be7ebb0ac42d5576f401a8a8ba
 	md5sums = e56ca98c7399916d73cd6de1beb4a567
 	md5sums = 3a9237d97a109e1d7923c93e6c91c182
@@ -39,6 +45,12 @@ pkgbase = netatalk-ddp
 	md5sums = ced20afc4ac36220efbb452fc8d56881
 	md5sums = e57f9714b04c9b52f40260ed62dce82d
 	md5sums = 6d8c7d17632dcb6d062987dba43089f0
+	md5sums = fb2a3edcde5924932d1e40d77ea10087
+	md5sums = 7f4f693b087a2196adfa42a4e7162bc7
+	md5sums = 0063d66bf9649d585f3a5c6915d840ce
+	md5sums = d4bdcf02712beae9bce2b147b1861920
+	md5sums = 2dc6baaaf73a5c7ada9dea018dae1ac9
+	md5sums = 03de1519d7bebedd09748a215537e0cb
 
 pkgname = netatalk-ddp
 
