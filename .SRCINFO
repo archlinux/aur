@@ -1,10 +1,10 @@
 pkgbase = archiso-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images
-	pkgver = 45.r37.gd7fc56e
+	pkgver = 46.r0.g945f383
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	source = git+https://gitlab.archlinux.org/archlinux/archiso.git
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
@@ -15,14 +15,16 @@ pkgname = archiso-git
 	depends = bash
 	depends = dosfstools
 	depends = e2fsprogs
-	depends = edk2-shell
 	depends = libisoburn
 	depends = squashfs-tools
-	provides = archiso=45.r37.gd7fc56e
+	optdepends = edk2-ovmf: for emulating UEFI with run_archiso
+	optdepends = qemu: for run_archiso
+	provides = archiso=46.r0.g945f383
 	conflicts = archiso
 
 pkgname = mkinitcpio-archiso-git
-	pkgdesc = mkinitcpio hooks for archiso
-	provides = mkinitcpio-archiso=45.r37.gd7fc56e
+	pkgdesc = Mkinitcpio hooks and scripts for archiso
+	depends = mkinitcpio
+	provides = mkinitcpio-archiso=46.r0.g945f383
 	conflicts = mkinitcpio-archiso
 

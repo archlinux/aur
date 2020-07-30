@@ -7,12 +7,12 @@
 
 pkgbase='archiso-git'
 pkgname=('archiso-git' 'mkinitcpio-archiso-git')
-pkgver=45.r37.gd7fc56e
+pkgver=46.r0.g945f383
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
-url='https://gitlab.archlinux.org/archlinux/archiso'
-license=('GPL')
+url="https://gitlab.archlinux.org/archlinux/archiso"
+license=('GPL3')
 makedepends=('git')
 source=('git+https://gitlab.archlinux.org/archlinux/archiso.git')
 validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
@@ -24,16 +24,20 @@ pkgver() {
 }
 
 package_archiso-git() {
+  depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn'
+  'squashfs-tools')
+  optdepends=('edk2-ovmf: for emulating UEFI with run_archiso'
+              'qemu: for run_archiso')
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=${pkgver}")
-  depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'edk2-shell' 'libisoburn' 'squashfs-tools')
 
   cd "${srcdir}/${pkgbase%-git}"
   make DESTDIR="${pkgdir}/" install
 }
 
 package_mkinitcpio-archiso-git() {
-  pkgdesc='mkinitcpio hooks for archiso'
+  pkgdesc='Mkinitcpio hooks and scripts for archiso'
+  depends=('mkinitcpio')
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=${pkgver}")
 
