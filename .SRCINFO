@@ -1,0 +1,19 @@
+pkgbase = polar-bookshelf-beta-bin
+	pkgdesc = Polar Bookshelf
+	pkgver = 2.0.0
+	pkgrel = 11
+	url = https://github.com/burtonator/polar-bookshelf
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source_x86_64 = https://github.com/burtonator/polar-bookshelf/releases/download/v2.0.0-beta.11/polar-desktop-app-2.0.0-beta.11-x64.tar.gz
+	source_x86_64 = polar-bookshelf.desktop
+	source_x86_64 = polar-bookshelf.svg
+	md5sums_x86_64 = 54eb43af782bb3add42dfb21a17035c8
+	md5sums_x86_64 = b2228efc30c42e5367e7c5eeee1b924c
+	md5sums_x86_64 = 35ca519dbf171f3fce2349215615c8d6
+
+pkgname = polar-bookshelf-beta-bin
+
