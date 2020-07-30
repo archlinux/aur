@@ -2,8 +2,8 @@
 
 _pkgname=mustream
 pkgname=$_pkgname-git
-pkgver=r38.f0d6c02
-pkgrel=1
+pkgver=r55.2f0cb52
+pkgrel=2
 pkgdesc="A quick 'hack' to stream any music (from spotify) through the command line."
 arch=(any)
 url="https://github.com/belkadev/$_pkgname"
@@ -24,5 +24,5 @@ pkgver() {
 }
 
 package () {
-            install -Dm755 "$srcdir/$_pkgname/mustream.sh" "$pkgdir/usr/bin/play"
+            install -Dm755 "$srcdir/$_pkgname/play" "$pkgdir/usr/bin/play"
 }
