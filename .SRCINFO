@@ -1,7 +1,7 @@
 pkgbase = ocaml-menhir
 	pkgdesc = Menhir is a LR(1) parser generator for the OCaml.
 	pkgver = 20200624
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cristal.inria.fr/~fpottier/menhir/
 	arch = x86_64
 	license = GPL
