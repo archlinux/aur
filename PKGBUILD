@@ -4,7 +4,7 @@ url='https://moveit.ros.org'
 pkgname='ros-noetic-moveit-core'
 pkgver='1.0.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -58,15 +58,6 @@ _dir="moveit-${pkgver}/moveit_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a')
 
-#prepare() {
-#  cd ${srcdir}
-#  find . \( -iname *.cpp -o -iname *.h \) \
-#      -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
-#      -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
-#      -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
-#      -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
-#}
-
 build() {
     # Use ROS environment variables
     source /usr/share/ros-build-tools/clear-ros-env.sh
@@ -75,8 +66,6 @@ build() {
     # Create build directory
     [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
     cd ${srcdir}/build
-
-    #export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/ros/noetic/lib64/pkgconfig
 
     # Build project
     cmake ${srcdir}/${_dir} \
