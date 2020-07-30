@@ -24,7 +24,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-2.83-git
-pkgver=2.83.r95191.g331bf04fad9
+pkgver=2.83.r95643.gd5809b39d5b
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 changelog=blender.changelog
@@ -51,6 +51,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
+        'cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -59,7 +60,8 @@ sha256sums=('SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
-            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
+            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
+            '2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -78,6 +80,7 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
+  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
 }
 
 build() {
