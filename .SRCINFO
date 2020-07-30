@@ -1,0 +1,14 @@
+pkgbase = python-stdlib-list
+	pkgdesc = A list of Python Standard Libraries (2.6-7, 3.2-8).
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/theislab/stdlib-list
+	arch = any
+	license = MIT
+	depends = python
+	noextract = stdlib_list-0.7.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/stdlib-list/stdlib_list-0.7.0-py3-none-any.whl
+	sha256sums = 0ed79a0badf4f666aad046cde364ccac68ca1438a211ec74b0153e0eb5642a3e
+
+pkgname = python-stdlib-list
+
