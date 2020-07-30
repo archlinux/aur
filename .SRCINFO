@@ -9,14 +9,16 @@ pkgbase = xfce4-multiload-ng-plugin-gtk3
 	makedepends = intltool
 	depends = gtk3
 	depends = cairo
-	depends = libxfce4util
-	depends = xfce4-panel
+	depends = libxfce4util>=4.12.0
+	depends = xfce4-panel>=4.12.0
 	depends = multiload-ng-common
 	conflicts = xfce4-multiload-ng-plugin-gtk2
 	conflicts = xfce4-multiload-ng-plugin-gtk2-git
 	conflicts = xfce4-multiload-ng-plugin-gtk3-git
 	source = https://github.com/udda/multiload-ng/archive/v1.5.2.tar.gz
+	source = build-fix.patch
 	md5sums = bdb9344d696324bd4db04a8bce6d7ec0
+	md5sums = b474387e4532bdd6a639f721a51d2587
 
 pkgname = xfce4-multiload-ng-plugin-gtk3
 
