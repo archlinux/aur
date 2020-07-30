@@ -1,4 +1,5 @@
 *.xz
+*.zst
 OpenRAModSDK
 pkg
 src
