@@ -1,6 +1,6 @@
 # Maintainer: Silas Henrique <silash35@gmail.com>
 pkgname=qpdftools
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=0
 pkgdesc="Qpdf Tools is an easy-to-use Qt interface for Ghostscript and Stapler"
@@ -13,7 +13,7 @@ provides=('qpdftools')
 conflicts=('qpdftools-git')
 
 source=("https://github.com/silash35/qpdftools/archive/v$pkgver.tar.gz")
-md5sums=('a1b92464530b54fb87646ddf25105532')
+md5sums=('1028ff22550beee23cb35d8718286a4d')
 
 build() {
 	cd qpdftools-$pkgver
