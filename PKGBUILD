@@ -10,25 +10,23 @@
 # shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
-pkgver=4.3.1.0
-pkgrel=2
+pkgver=4.3.3.0
+pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync)
 conflicts=(megasync)
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
-depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
-         'qt5-svg' 'libmediainfo' 'libraw' 'qt5-base' 'ffmpeg')
+depends=('c-ares' 'crypto++' 'libsodium' 'libuv'
+         'libmediainfo' 'libraw' 'qt5-base' 'qt5-svg' 'qt5-x11extras' 'ffmpeg')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "qt5_5.15.patch"
         )
 sha256sums=('SKIP'
-            'SKIP'
-            '27cf5f69ed40ae02e2a4145ccb4931834a60c32d907b083e8b3db626c3062562')
+            'SKIP')
 
 prepare() {
     cd "MEGAsync"
@@ -39,8 +37,6 @@ prepare() {
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
     sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
-
-    git -C "$srcdir"/MEGAsync apply "$srcdir"/qt5_5.15.patch
 }
 
 build() {
@@ -76,9 +72,9 @@ build() {
 
 package () {
     cd "MEGAsync"
-    install -Dm 644 LICENCE.md "${pkgdir}/usr/share/licenses/megasync/LICENCE"
-    install -Dm 644 installer/terms.txt "${pkgdir}/usr/share/licenses/megasync/terms.txt"
-    install -Dm 644 src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/megasync/SDK-LICENCE"
+    install -Dm 644 LICENCE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENCE"
+    install -Dm 644 installer/terms.txt "${pkgdir}/usr/share/licenses/$pkgname/terms.txt"
+    install -Dm 644 src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/SDK-LICENCE"
     
     cd "src"
     install -dm 755 "${pkgdir}/usr/bin"
