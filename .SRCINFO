@@ -1,0 +1,22 @@
+pkgbase = ros-noetic-combined-robot-hw
+	pkgdesc = ROS - Combined Robot HW class.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-hardware-interface
+	makedepends = ros-noetic-pluginlib
+	depends = ros-noetic-roscpp
+	source = ros-noetic-combined-robot-hw-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
+	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
+
+pkgname = ros-noetic-combined-robot-hw
+
