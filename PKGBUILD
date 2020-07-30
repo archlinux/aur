@@ -3,10 +3,10 @@
 _name=stdlib-list
 pkgname=python-$_name
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A list of Python Standard Libraries (2.6-7, 3.2-8).'
 arch=(any)
-url="https://github.com/theislab/$_name"
+url="https://github.com/jackmaney/$_name"
 license=(MIT)
 depends=(python)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
