@@ -1,0 +1,17 @@
+pkgbase = rptable-git
+	pkgdesc = A simple periodic table viewer for GTK written in Rust
+	pkgver = v1.0.0.r0.g0e7284a
+	pkgrel = 1
+	url = https://github.com/pjtsearch/rptable
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = gtk3
+	provides = rptable
+	options = !strip
+	source = git+https://github.com/pjtsearch/rptable
+	md5sums = SKIP
+
+pkgname = rptable-git
+
