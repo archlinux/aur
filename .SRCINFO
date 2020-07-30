@@ -1,4 +1,4 @@
-pkgbase = polar-bookshelf-beta-bin
+pkgbase = polar-bookshelf-bin-beta
 	pkgdesc = Polar Bookshelf
 	pkgver = 2.0.0
 	pkgrel = 11
@@ -15,5 +15,5 @@ pkgbase = polar-bookshelf-beta-bin
 	md5sums_x86_64 = b2228efc30c42e5367e7c5eeee1b924c
 	md5sums_x86_64 = 35ca519dbf171f3fce2349215615c8d6
 
-pkgname = polar-bookshelf-beta-bin
+pkgname = polar-bookshelf-bin-beta
 
