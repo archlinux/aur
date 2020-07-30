@@ -2,7 +2,7 @@
 
 _pkgname=sonarqube
 pkgname=${_pkgname}-lts
-pkgver=7.9.3
+pkgver=7.9.4
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('151ca73046bd788b68fbaefe362af2862565fdb0cdfae715a669539a725808fd'
+sha256sums=('67fd0e9b2f4a1cf481ac9c5487173e4b1aa05381e6219428f53de510c8f2289d'
             '26ca557a0d371702124212df1ab82a56bb49d6ea26ef7fb472f953e9c2cc5a21'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
@@ -43,9 +43,7 @@ package() {
     cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/webapps/${_pkgname}/"
     
     # Delete unused files.
-    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/linux-x86-32"
     rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/macosx-universal-64"
-    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-32"
     rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-64"
 
     # Install the license.
@@ -69,5 +67,3 @@ package() {
     ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/run"
     ln -s "/etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/conf"
 }
-
-
