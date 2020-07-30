@@ -1,51 +1,77 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Submitter: Spyhawk
 
-pkgname=libzypp-git
-pkgver=17.22.1
-pkgrel=2
-pkgdesc="Package, Patch, Pattern, and Product Management"
+_pkgname=libzypp
+pkgname="${_pkgname}-git"
+pkgver=17.24.1.r9.g52f82f322
+pkgrel=1
+pkgdesc='Library for package, patch, pattern and product management'
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
-depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
-makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
-             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc'
-             'libsigc++' 'nginx' 'fcgi')
-provides=('libzypp')
-conflicts=('libzypp')
-source=('git+https://github.com/openSUSE/libzypp.git')
+depends=(
+  'boost-libs'
+  'gpgme'
+  'libproxy'
+  'libsigc++'
+  'libsolv'
+  'libsystemd'
+  'libxml2'
+)
+makedepends=(
+  'asciidoc'
+  'boost'
+  'cmake'
+  'dejagnu'
+  'expat'
+  'git'
+  'gnupg'
+  'graphviz'
+  'ninja'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git")
 sha256sums=('SKIP')
-_gitname="libzypp"
+
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git describe --always | sed -r 's/-/./g')
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # CMake doesn't find FindLibSolv.cmake in /usr/share/cmake/Modules
+  cp /usr/share/cmake/Modules/FindLibSolv.cmake "${pkgname}"/cmake/modules/
+
+  rm -rf build
 }
 
 build() {
-  cd "${_gitname}"
-  mkdir -p build && cd build
   cmake \
+    -B build \
+    -S "${pkgname}" \
     -G Ninja \
-    -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D LIB=lib \
     -D CMAKE_SKIP_RPATH=1 \
-    -D DISABLE_AUTODOCS=1 \
     -D DISABLE_LIBPROXY=0 \
-    ..
-  ninja
+    -D DISABLE_AUTODOCS=1 \
+    -D DISABLE_MEDIABACKEND_TESTS=ON \
+
+  ninja -C build
 }
 
+# check() {
+#   ninja -C build test
+# }
+
 package() {
-  cd "${_gitname}/build"
-  DESTDIR="${pkgdir}/" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 
   # cmake fix (see GH#28)
-  mkdir -p "${pkgdir}/usr/lib/cmake/Zypp"
-  mv "${pkgdir}/usr/share/cmake/Modules/FindZypp.cmake" "${pkgdir}/usr/lib/cmake/Zypp/ZyppConfig.cmake"
-  mv "${pkgdir}/usr/share/cmake/Modules/ZyppCommon.cmake" "${pkgdir}/usr/lib/cmake/Zypp/ZyppCommon.cmake"
-  
-  # hacky lib64 symlink fix
-  mv "${pkgdir}"/usr/lib64/* "${pkgdir}/usr/lib/"
-  rmdir "${pkgdir}/usr/lib64"
+  mkdir -p "${pkgdir}"/usr/lib/cmake/Zypp
+  mv "${pkgdir}"/usr/share/cmake/Modules/* "${pkgdir}"/usr/lib/cmake/Zypp/
+  rm -rf "${pkgdir}"/usr/share/cmake
 }

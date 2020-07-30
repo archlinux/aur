@@ -1,4 +1,5 @@
-libzypp
+*.tar.gz
 src
 pkg
 *.pkg.*
+*.log
