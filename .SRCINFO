@@ -1,18 +1,13 @@
 pkgbase = front-panel-designer
 	pkgdesc = Free CAD software that lets you design and order custom front panels and enclosures exactly to your specification.
-	pkgver = 4.5.1
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = http://www.frontpanelexpress.com/front_panel_designer/the_idea/
-	arch = i686
 	arch = x86_64
 	license = custom
-	depends = libpng12
-	source = front-panel-express.desktop
-	source = front-panel-express-order.desktop
-	source = http://www.frontpanelexpress.com/fileadmin/downloads/FrontDesign-US-4.5.1-amd64.tgz
-	md5sums = 73c1659746c9ded0a4619d15d810b6be
-	md5sums = c6e6f3eba58cf32708247caeba614b72
-	md5sums = 9aa42375f4664e71ea61324e7b052729
+	options = !strip
+	source = https://assets.frontpanelexpress.com/fpd/Version-6.3.1/FrontDesign-US-6.3.1-amd64.deb
+	sha256sums = e3653370e0f0d3cd96a200eadad813be3500fdeaa2475fc80f13fb436e856786
 
 pkgname = front-panel-designer
 
