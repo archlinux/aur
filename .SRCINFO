@@ -1,5 +1,5 @@
 pkgbase = blender-2.83-git
-	pkgdesc = Development version of Blender 2.8 branch
+	pkgdesc = LTS Maintenance version of blender-v2.83-release branch
 	pkgver = 2.83.r95643.gd5809b39d5b
 	pkgrel = 1
 	url = https://blender.org/

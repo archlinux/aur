@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 pkgname=blender-2.83-git
 pkgver=2.83.r95643.gd5809b39d5b
 pkgrel=1
-pkgdesc="Development version of Blender 2.8 branch"
+pkgdesc="LTS Maintenance version of blender-v2.83-release branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
