@@ -7,7 +7,7 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20200225.4fbdd232
+pkgver=20200720.2bc30bb7
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
@@ -15,21 +15,19 @@ license=('Apache')
 arch=('x86_64')
 makedepends=('git' 'go')
 source=("git+https://github.com/mholt/caddy.git"
-        'tmpfiles'
         'service'
         'conf')
 sha256sums=('SKIP'
-            'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
-            'e9c228a7ae33e4beb229bcf4f49f031d9b19dc1de78bf2e26c885c401e017ad6'
-            '5c48ac9bb5bdba72d2f5aed5a32356f38b196c88a18ba0c91cb6157675506ea1')
+            '9b896e77ac33b9b364582d93cf5ab180145aa8879f9e6400e4c8620851b0c194'
+            '52e461351f3040ad62c6d7fcfd84391e820ae1a1935b87efd1d5eb271cdabce9')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-backup=('etc/caddy.conf')
+backup=('srv/http/Caddyfile')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/caddy"
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
@@ -40,14 +38,13 @@ prepare() {
 
 build() {
 	cd "${srcdir}/caddy"
-	cd caddy
-	go build -v
+	go build -v -o caddy2 cmd/caddy/main.go
 }
 
 package() {
 	cd "${srcdir}/caddy"
-	install -D -m 0755 caddy/caddy "${pkgdir}/usr/bin/caddy"
-	install -D -m 0644 ../tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
-	install -D -m 0644 ../service "${pkgdir}/usr/lib/systemd/system/caddy.service"
-	install -D -m 0644 ../conf "${pkgdir}/etc/caddy.conf"
+	install -D -m 0755 caddy2 "${pkgdir}/usr/bin/caddy2"
+	install -D -m 0644 ../service "${pkgdir}/usr/lib/systemd/system/caddy2.service"
+	install -D -m 0644 ../conf "${pkgdir}/srv/http/Caddyfile"
+	ln -s caddy2 "${pkgdir}/usr/bin/caddy"
 }

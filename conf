@@ -1,4 +1,8 @@
-*:80 {
-	gzip
-	root /srv/http
+# https://caddyserver.com/docs/caddyfile
+
+{
+	root * /srv/http
+	file_server {
+		index index.xhtml index.html index.htm
+	}
 }
