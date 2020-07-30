@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli-git
-pkgver=0.4.1
+pkgver=0.4.1.r0.g771f9cc
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=("SKIP")
 pkgver() {
 	cd "$srcdir/$pkgname"
 	( set -o pipefail
-	git describe --tags 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --tags --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
