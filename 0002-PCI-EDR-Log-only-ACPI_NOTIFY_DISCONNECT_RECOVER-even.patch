@@ -1,4 +1,4 @@
-From ece7e249df5e71be440baaf25b324a62e0a715fa Mon Sep 17 00:00:00 2001
+From a0df6b44e7df165a1108e23d4e27e91c30e69a3b Mon Sep 17 00:00:00 2001
 From: Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>
 Date: Wed, 15 Apr 2020 17:38:32 -0700
 Subject: [PATCH 2/5] PCI/EDR: Log only ACPI_NOTIFY_DISCONNECT_RECOVER events
