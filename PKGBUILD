@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.3.3.r358.dd4b583
+pkgver=1.3.3.r359.6951f41
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -22,10 +22,9 @@ pkgver() {
 }
 
 build() {
-	# customize the output of liquidctl --version
-	# (note: in ArchLinux /etc/os-release is a symlink managed by systemd,
-	# see: https://bbs.archlinux.org/viewtopic.php?id=251724)
-	export DIST_NAME="$(source /etc/os-release && echo $PRETTY_NAME)"
+	# customize the output of liquidctl --version; official distribution
+	# packages should generally set DIST_NAME to os-release PRETTY_NAME)
+	export DIST_NAME="Arch User Repository"
 	export DIST_PACKAGE="$pkgname $pkgver-$pkgrel"
 
 	cd "$srcdir/$pkgname"
