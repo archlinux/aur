@@ -1,7 +1,7 @@
 pkgbase = acme-dns
 	pkgdesc = DNS server for ACME dns-01 challenges
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joohoi/acme-dns
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = acme-dns
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = acme-dns.service
-	source = https://github.com/joohoi/acme-dns/archive/v0.8.tar.gz
+	source = acme-dns-src-v0.8.tar.gz::https://github.com/joohoi/acme-dns/archive/v0.8.tar.gz
 	sha256sums = edd9873e5d24736b9164467f7543dab42dc177d6c98b4ca6a572dfcbdd2202a4
 	sha256sums = e8a8b3ffda44a3c346925ba4de197f1b6f139bfe52b9f77e6cb3f87677d3ad98
 	sha256sums = dea89dea17e9f0eff9adf5af56a876ceb738d94f0281a6ece9ca841ec39cf6be
