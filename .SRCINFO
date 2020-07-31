@@ -1,14 +1,13 @@
 pkgbase = pantheon-git-meta
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
-	pkgver = 20180825
-	pkgrel = 3
+	pkgver = 20200522
+	pkgrel = 4
 	url = http://elementary.io
 	arch = any
 	license = LGPL
 	depends = granite-git
 	depends = gala-git
 	depends = pantheon-videos-git
-	depends = cerbere-git
 	depends = contractor-git
 	depends = elementary-wallpapers-git
 	depends = pantheon-dpms-helper-git

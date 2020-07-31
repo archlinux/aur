@@ -1,6 +1,6 @@
 pkgname=pantheon-git-meta
-pkgver=20180825
-pkgrel=3
+pkgver=20200522
+pkgrel=4
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -8,7 +8,6 @@ license=(LGPL)
 depends=(granite-git
   gala-git
   pantheon-videos-git
-	cerbere-git
   contractor-git
   elementary-wallpapers-git
 	pantheon-dpms-helper-git
