@@ -8,7 +8,8 @@ pkgdesc="A central repository for many useful Tsunami Security Scanner plugins"
 arch=(any)
 url="https://github.com/google/tsunami-security-scanner-plugins"
 license=('Apache')
-depends=('java-runtime-common') 
+makedepends=('git')
+depends=('java-runtime') 
 source=("git+${url}.git")
 
 sha256sums=('SKIP')

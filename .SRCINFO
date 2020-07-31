@@ -5,7 +5,8 @@ pkgbase = google-tsunami-security-scanner-plugins-git
 	url = https://github.com/google/tsunami-security-scanner-plugins
 	arch = any
 	license = Apache
-	depends = java-runtime-common
+	makedepends = git
+	depends = java-runtime
 	source = git+https://github.com/google/tsunami-security-scanner-plugins.git
 	sha256sums = SKIP
 
