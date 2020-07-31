@@ -1,0 +1,15 @@
+pkgbase = nodejs-nodeppt
+	pkgdesc = A simple, in-browser, markdown-driven presentation framework
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/ksky521/nodeppt
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = nodeppt-2.2.2.tgz
+	source = https://registry.npmjs.org/nodeppt/-/nodeppt-2.2.2.tgz
+	sha256sums = 32c42ef86f7b97c672022a0f4d54bba1a420bf100ea50a9e99769ccf4d4a9110
+
+pkgname = nodejs-nodeppt
+
