@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.7.11
 pkgver=5.7.v.11
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,6 +19,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
+	# linux package install directives for pacman
+	'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
 )
@@ -27,6 +29,8 @@ sha256sums=('SKIP'
             '01a480a9f80cc7336289e8e04712bd56f68e2f5d7db53348ac1bcedd419ea923'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
+            #linux install file
+            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
             '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47'
            )
@@ -103,8 +107,7 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg" && install=${install}.pkg
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
@@ -224,7 +227,10 @@ _package-headers() {
   done
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  #rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  while read modarch; do
+   rm -rf $modarch
+  done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
 }
 
 _package-docs() {
