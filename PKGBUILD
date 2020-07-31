@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-plotly
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="An open-source, interactive graphing library"
 url="https://github.com/plotly/plotly.py"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
-sha512sums=('55fefb9a2e93b7789139006f9256a2b08f22a8210cdb5df9333dca884c60bcb6f250493776a4cf750a23cffaa6e4731c6eda6f7c27992b666aeedc93ad93c054')
+sha512sums=('2e48df60dfbda2bb3978ea574937259f89fcd850800301b88bb42e8d24434e422e783cc1dff88aa04e7021842cc4091ddbbadc0aa53c142b1c586243c057743c')
 
 build() {
   cd plotly.py-${pkgver}/packages/python/plotly
