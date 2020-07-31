@@ -1,15 +1,15 @@
 pkgbase = macintosh-js-bin
 	pkgdesc = Mac OS 8, running in an Electron app pretending to be a 1991 Macintosh Quadra
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/felixrieseberg/macintosh.js
 	arch = x86_64
 	license = custom
 	depends = gtk3
 	depends = nss
-	source = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.0.4/macintosh.js_1.0.4_amd64.deb
-	source = https://raw.githubusercontent.com/felixrieseberg/macintosh.js/v1.0.4/CREDITS.md
-	sha256sums = 182a37a57ca731e6c7ea1b08e8ba338a0b7952033bc00af45b0d8dffb63193d1
+	source = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.0.5/macintosh.js_1.0.5_amd64.deb
+	source = https://raw.githubusercontent.com/felixrieseberg/macintosh.js/v1.0.5/CREDITS.md
+	sha256sums = fe122471e4534da365cb5758b52c78513811453d01e26d65efc8127479c38c3b
 	sha256sums = 6a221f623fa4f773ea6ba81c8a1731ff0d680cc7e8f20c68488c31b0f13e3dec
 
 pkgname = macintosh-js-bin
