@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Michael Lass <bevan@bi-co.net>
+# Contributor: Michael Lass <bevan@bi-co.net>
 pkgname=macintosh.js-bin
 pkgver=1.0.5
 pkgrel=1
