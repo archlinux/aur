@@ -1,4 +1,8 @@
+kaniko-*.pkg.tar.zst
 kaniko-*.pkg.tar.xz
+kaniko-*.tar.gz
 kaniko-*.sh
+kaniko-*.log
+PKGBUILD-namcap.log
 pkg/
 src/

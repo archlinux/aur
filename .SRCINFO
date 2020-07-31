@@ -1,14 +1,14 @@
 pkgbase = kaniko
 	pkgdesc = A tool to build container images from a Dockerfile, inside a container or Kubernetes cluster
-	pkgver = 0.9.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/GoogleContainerTools/kaniko
 	arch = any
 	license = APACHE
 	depends = docker
 	depends = google-cloud-sdk
-	source = kaniko-0.9.0.tar.gz::https://github.com/GoogleContainerTools/kaniko/archive/v0.9.0.tar.gz
-	sha256sums = f6138c7eb1f1e1418a0db8aaa890bc839dde3327f5f3a31546f34ca562022805
+	source = kaniko-0.24.0.tar.gz::https://github.com/GoogleContainerTools/kaniko/archive/v0.24.0.tar.gz
+	sha256sums = e79a6184f21331204d9438e2e0d4bd34ad86c70f7376579502f92483081c89c6
 
 pkgname = kaniko
 
