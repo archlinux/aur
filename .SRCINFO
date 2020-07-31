@@ -1,5 +1,5 @@
 pkgbase = sdcv-git
-	pkgdesc = StarDict Console Version
+	pkgdesc = StarDict Console Version - Git version
 	pkgver = 0.5.2.r23.g995bdc5
 	pkgrel = 1
 	url = https://dushistov.github.io/sdcv/
