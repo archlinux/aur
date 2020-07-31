@@ -1,0 +1,14 @@
+pkgbase = notp-bin
+	pkgdesc = One Time Password Generator
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/kondanta/notp
+	arch = x86_64
+	license = MIT
+	conflicts = notp
+	conflicts = notp-git
+	source = notp::https://github.com/kondanta/notp/releases/download/v2.1.0/notp_linux
+	sha512sums = 89d717d71233dcc418e36af66929a3c38ae78195d2656d8f77732fd7bf3062fff1f0592868a1473fde2168f181e896e98f2afc8c277bcfeeeb01b923e3c73b7d
+
+pkgname = notp-bin
+
