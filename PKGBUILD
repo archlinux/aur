@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -28,7 +28,7 @@ sha256sums=(
     "23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6"
 )
 options=(!strip)
-DLAGENTS=("https::./dlagent $url %u %o")
+DLAGENTS=("https::$PWD/dlagent $url %u %o")
 
 package() {
     _pkg=FreeFileSync
