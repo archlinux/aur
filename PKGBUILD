@@ -2,7 +2,7 @@
 
 _hkgname=apply-refact
 pkgname=haskell-apply-refact
-pkgver=0.6.0.0
+pkgver=0.8.2.0
 pkgrel=1
 pkgdesc="Perform refactorings specified by the refact library"
 url="https://hackage.haskell.org/package/${_hkgname}"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=("custom:BSD3")
 depends=('ghc-libs'
          'haskell-filemanip'
-         'haskell-ghc-exactprint>=0.5.7.0'
+         'haskell-ghc-exactprint'
          'haskell-optparse-applicative'
          'haskell-refact'
          'haskell-syb'
@@ -19,7 +19,7 @@ depends=('ghc-libs'
          'haskell-unix-compat')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('438e384a2885e1f749eedf67a9257810f75e1b53a6e1dbe05ff09d3931ef51b6451f016933c32cd0aba84edca0839185526c4d1fb6b2bcd9fffd2d340fbae8a9')
+sha512sums=('2b4a7f96ad3de93965aa1f13bf4a5bb8de1eb8708a8f32d5bd8221f913267daab0b8a82c4d799d4a0f8e5b9918d3db89e2179f2eb98116e577613cee9bfde119')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
