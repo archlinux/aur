@@ -1,6 +1,6 @@
 post_upgrade() {
     echo 
-    echo "If WeChat doesn't work after an upgrade, try removing ~/.deepinwine/DCS-WeChat and start it again."
+    echo "Remove ~/.deepinwine/DCS-WeChat to generate a new bottle."
     echo 
 }
 
