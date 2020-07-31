@@ -1,6 +1,6 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.6.3.r17.g2aa3fa9
+	pkgver = 6.6.3.r18.gd562467
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = cpeditor-git
 	optdepends = jre-openjdk: execute Java support
 	optdepends = python: execute Python support
 	optdepends = xterm: detached run support
+	provides = cpeditor
 	conflicts = cpeditor
 	source = git://github.com/cpeditor/cpeditor.git
 	source = git://github.com/cpeditor/QCodeEditor.git

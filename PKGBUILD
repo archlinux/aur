@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.6.3.r17.g2aa3fa9
+pkgver=6.6.3.r18.gd562467
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -24,6 +24,7 @@ optdepends=(
 	'python: execute Python support'
 	'xterm: detached run support'
 )
+provides=('cpeditor')
 conflicts=("cpeditor")
 
 source=('git://github.com/cpeditor/cpeditor.git'
