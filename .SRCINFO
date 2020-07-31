@@ -1,6 +1,6 @@
 pkgbase = timekpr-next-git
 	pkgdesc = Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in. Beta branch.
-	pkgver = r179.5971737
+	pkgver = r298.127515b
 	pkgrel = 1
 	url = https://launchpad.net/timekpr-next
 	install = timekpr-next-git.install

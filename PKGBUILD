@@ -2,7 +2,7 @@
 
 _pkgname=timekpr
 pkgname=$_pkgname-next-git
-pkgver=r179.5971737
+pkgver=r298.127515b
 pkgrel=1
 pkgdesc="Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in. Beta branch."
 arch=('any')
@@ -35,6 +35,7 @@ package() {
 			"") ;;
 			*)
 			f=`basename "$a"`
+			b=$(echo "$b" | sed 's|^lib/|usr/lib/|')
 			if [ -d $a ]; then
 				install -d "$pkgdir/$b/$f"
 			else
