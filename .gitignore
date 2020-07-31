@@ -2,3 +2,4 @@
 jupyterlab
 src
 pkg
+*.zst
