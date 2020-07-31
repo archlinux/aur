@@ -14,6 +14,7 @@ pkgbase = unetbootin-qt5-git
 	optdepends = polkit: run unetbootin directly from menu
 	optdepends = zenity: display an error if no authentication agent is found
 	provides = unetbootin
+	conflicts = unetbootin
 	source = unetbootin-qt5-git::git+https://github.com/Chemrat/unetbootin.git
 	source = org.archlinux.pkexec.unetbootin.policy
 	source = remove-qt-x11-no-mitshm.patch
