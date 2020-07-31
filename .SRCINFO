@@ -1,6 +1,6 @@
 pkgbase = yandex-music-player
 	pkgdesc = Yandex Music desktop Electron application with MPRIS support
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/phpusr/yandex-music-player
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = yandex-music-player
 	source = ymp.sh
 	sha1sums = 6b8693c7069e85149c60f1057a34179a878b57b7
 	sha1sums = a10d6976131fa866a68366c5ce2e74542f54c86e
-	source_x86_64 = yandex-music-player.tar.gz::https://github.com/phpusr/yandex-music-player/archive/v1.0.1.tar.gz
-	sha1sums_x86_64 = 26a265743827efcb6f6285e56f46dbb0d6a6c981
+	source_x86_64 = yandex-music-player-v1.1.tar.gz::https://github.com/phpusr/yandex-music-player/archive/v1.1.tar.gz
+	sha1sums_x86_64 = c8b9b8ec80623d172b80298dfe4121e45aa49a93
 
 pkgname = yandex-music-player
 
