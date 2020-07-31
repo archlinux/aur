@@ -164,8 +164,8 @@ END
  endif
  
  ifdef CARGO_INCREMENTAL
---- python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2020-07-28 00:27:34.259562926 +0200
-+++ python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py.new	2020-07-29 00:34:28.329240946 +0200
+--- a/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2020-07-28 00:27:34.259562926 +0200
++++ b/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2020-07-29 00:34:28.329240946 +0200
 @@ -1705,13 +1705,6 @@
  
          self.assertEqual(
