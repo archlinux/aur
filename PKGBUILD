@@ -1,6 +1,7 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=sdcv-git
+_pkgname=sdcv
 pkgver=0.5.2.r23.g995bdc5
 pkgrel=1
 pkgdesc="StarDict Console Version - Git version"
@@ -14,17 +15,15 @@ conflicts=('sdcv')
 source=('git+https://github.com/Dushistov/sdcv.git')
 md5sums=('SKIP')
 
-_gitname=sdcv
-
 pkgver() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
   git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
 
   install -d build
   cd build
@@ -35,8 +34,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_gitname}/build"
+  cd "${srcdir}/${_pkgname}/build"
 
   make DESTDIR="${pkgdir}" install
 }
+
 # vim:set ts=2 sw=2 et:
