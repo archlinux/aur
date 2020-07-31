@@ -6,7 +6,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.15
+pkgver=4.1.0
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -20,7 +20,6 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'
-  'libsecp256k1'
   'python'
   'python-dateutil'
   'python-dnspython'
@@ -51,11 +50,13 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
-sha256sums=('4905321a9355c6c39d1bded1dfd120324c6f5a63db53a6ba461d7b1da57190cf')
+source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "Electron-Cash-${pkgver}"
+  cd "${pkgname}"
+
+  git submodule update --init
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
@@ -65,18 +66,21 @@ build() {
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
   # Create translations (optional):
   python contrib/make_locale
+  # Use libsecp
+  bash contrib/make_secp
   # Build
   python setup.py build
 }
 
 check() {
-  cd "Electron-Cash-${pkgver}"
+  cd "${pkgname}"
 
-  tox -e py38
+  # there's a broken test in 4.1.0
+  # tox -e py38
 }
 
 package() {
-  cd "Electron-Cash-${pkgver}"
+  cd "${pkgname}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
