@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.7.11
-pkgver=5.7.v.11
-pkgrel=2
+gitver=v5.7.12
+pkgver=5.7.v.12
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -28,7 +28,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '64f1f80187b5ace438cf9fd6afba89e0bad35c1e594beca111b3131df1e60000'
+            'ba4fe0d1042fbe70d06b27aaa121bc3f98d0134a4f9cb593e06ed6073d257005'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #linux install file
