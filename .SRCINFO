@@ -1,0 +1,18 @@
+pkgbase = dmenu-aloussase
+	pkgdesc = aloussase's build of suckless' dmenu
+	pkgver = 0.8.2.r12.1946267
+	pkgrel = 1
+	url = https://github.com/aloussase/dmenu-aloussase.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = ttf-fira-code
+	depends = terminus-font
+	provides = dmenu
+	conflicts = dmenu
+	source = git+https://github.com/aloussase/dmenu-aloussase.git
+	md5sums = SKIP
+
+pkgname = dmenu-aloussase
+
