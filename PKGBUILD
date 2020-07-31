@@ -1,11 +1,12 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
+# Contributor: c4t0
 
 pkgname=sbagen
 pkgver=1.4.5
 _river_ver=1.4.1
 _rhybag_ver=0.1.1
 _binauralanalysis_ver=20040521
-pkgrel=6
+pkgrel=7
 pkgdesc='A binural brainwave generator'
 url='http://uazu.net/sbagen'
 license=('GPL')
@@ -25,7 +26,9 @@ source=(
   "anarange.1"
   "downsample.1"
   "rhybag.1"
+  'build-fix.patch'
 )
+
 sha512sums=(
   '35a8cdf0ca59cef01200a102c6f718b163006eec6c3450e7ee32bac0454be2db4d9a4df2f1a52d6cc2beda1d45bf9a7816a2c9dfae710eef14dbe5667cec9bf9'
   'f61c9308c671dc9cef9b9e60ba37cc5a9dc6ac45b5ab34d0818e08f6006eeba0ede4756e0c5375b11963e04f4e1e801119af8df8726c867e3be399983b12bc30'
@@ -34,10 +37,12 @@ sha512sums=(
   'a14924d7b001f2e558b97d32a844dd18b54eb7ae7a1111a25dae1b3c53129cedeb546043301ee15ac33fed03ad4dc5330e534c3ab27d3f1f6a166499319cbaa7'
   'a84e774f1a4c1f57716f3097228baebb8caf5424bd1316ce1d8f596cac44e9a16c1a56814405b48b87557108db1d4cf4fee56875b82d7390ec3c41d4e2a280a8'
   'db30da37feb3c970f1dcc5271aa9350b3694c48fdb5585db2e6f3f178f9cd26af1fd48d238786ccac19d2f65ebcccff9622b358b2a16396696e94448e66648f5'
+  'f16fe080432c0ea1ba6e43a0f0fa78121706ad86fc8503509d7289f62459618abc0243e398eab157808c092a5c2e2dc8b1826fc3a22340cdb5896684ed6bacaa'
 )
 
 prepare() {
   cd $pkgname-$pkgver
+  patch -p1 < ../build-fix.patch
 
   while read -r file; do
       sed -i -re 's|(river[12]\.ogg)|/usr/share/sbagen/media/\1|g' "$file"

@@ -1,0 +1,13 @@
+diff --git a/sbagen.c b/sbagen.c
+index f2aeaf2..c26d261 100644
+--- a/sbagen.c
++++ b/sbagen.c
+@@ -181,7 +181,7 @@ void debug(char *fmt, ...) ;
+ void warn(char *fmt, ...) ;
+ void * Alloc(size_t len) ;
+ char * StrDup(char *str) ;
+-inline int calcNow() ;
++inline static int calcNow() ;
+ void loop() ;
+ void outChunk() ;
+ void corrVal(int ) ;
