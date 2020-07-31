@@ -1,10 +1,10 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
-_pkgbase=ipts-uapi
+_pkgbase=ipts
 pkgname=ipts-uapi-dkms-git
 _repo=intel-precise-touch
-_branch=feature/uapi
-pkgver=r96.2d03225
+#_branch=feature/uapi
+pkgver=r98.52a3a17
 pkgrel=1
 epoch=1
 pkgdesc="The kernelspace part of IPTS (Intel Precise Touch & Stylus) for Linux. \
@@ -14,12 +14,12 @@ url="https://github.com/linux-surface/${_repo}"
 license=('GPL2')
 makedepends=('git')
 depends=('dkms' 'iptsd')
-optdepends=('linux-surface: A kernel with IPTS patch built-in'
-            'linux-surface-headers: Headers of linux-surface')
+optdepends=()
 #conflicts=("${_pkgbase}")
 #install=${pkgname}.install
 provides=('ipts-uapi-dkms')
-source=("git+${url}.git#branch=${_branch}")
+#source=("git+${url}.git#branch=${_branch}")
+source=("git+${url}.git")
 md5sums=(SKIP)
 
 pkgver() {
