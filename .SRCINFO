@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 5.0.9
-	pkgrel = 3
+	pkgrel = 6
 	url = https://github.com/ValveSoftware/Proton/
 	arch = x86_64
 	license = BSD
@@ -9,8 +9,10 @@ pkgbase = proton
 	depends = wine-valve
 	source = https://github.com/ValveSoftware/Proton/archive/proton-5.0-9.tar.gz
 	source = wined3d-interop.h
+	source = wine-dynamic_load_wrapper.patch
 	md5sums = 8737560d53ab3d7bc49b0d463e47387a
 	md5sums = 1f6f0f5e4679418d4976e0cf9589a8d9
+	md5sums = 38464f9805e4423ba5f92f8864168f97
 
 pkgname = proton
 
