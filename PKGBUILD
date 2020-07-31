@@ -12,7 +12,7 @@ license=('GPL2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 optdepends=("ipts-uapi-dkms: The kernel module required by this daemon. \
-Alternatively, you can build this module within your kernel.")
+Alternatively, you can use a kernel with this module built in.")
 makedepends=('go')
 source=("git+${url}.git")
 sha256sums=('SKIP')
