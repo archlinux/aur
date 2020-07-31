@@ -1,0 +1,22 @@
+pkgbase = python-anesthetic-git
+	pkgdesc = nested sampling visualisation
+	pkgver = r319.2351380
+	pkgrel = 1
+	url = https://github.com/williamjameshandley/anesthetic
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-fastkde
+	provides = python-anesthetic
+	conflicts = python-anesthetic
+	options = !emptydirs
+	source = python-anesthetic::git+https://github.com/williamjameshandley/anesthetic.git
+	md5sums = SKIP
+
+pkgname = python-anesthetic-git
+
