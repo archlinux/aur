@@ -1,0 +1,21 @@
+pkgbase = rtl8189es-dkms-git
+	pkgdesc = RTL8189ES / RTL8189ETV modules (DKMS)
+	pkgver = 42f2934
+	pkgrel = 1
+	url = https://github.com/jwrdegoede/rtl8189ES_linux
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	conflicts = rtl8189es
+	source = git+https://github.com/jwrdegoede/rtl8189ES_linux
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 9f3d65da70934f34f5b9eebf10387d4b
+
+pkgname = rtl8189es-dkms-git
+
