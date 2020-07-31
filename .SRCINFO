@@ -1,6 +1,6 @@
 pkgbase = python-beniget
 	pkgdesc = A static analyzer for Python3 code
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/serge-sans-paille/beniget
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-beniget
 	depends = python
 	depends = python-gast
 	provides = python-beniget
-	source = python-beniget-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/b/beniget/beniget-0.2.1.tar.gz
-	sha256sums = 6b14f24dc6334e2ea9c71e4eaf6085c405dffbd8bbabf7e7e8e5ddb14936b9df
+	source = python-beniget-0.2.3.tar.gz::https://files.pythonhosted.org/packages/source/b/beniget/beniget-0.2.3.tar.gz
+	sha256sums = 350422b0598c92fcc5f8bcaf77f2a62f6744fb8f2fb495b10a50176c1283639f
 
 pkgname = python-beniget
 
