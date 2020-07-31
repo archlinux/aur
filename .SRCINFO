@@ -1,7 +1,7 @@
 pkgbase = papis
 	pkgdesc = Papis is a powerful and highly extensible command-line based document and bibliography manager.
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL
