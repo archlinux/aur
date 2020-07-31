@@ -1,0 +1,227 @@
+From 3dc8fc5fde2896e2298a0cbea356f7026455c6ce Mon Sep 17 00:00:00 2001
+From: Denis Efremov <efremov@linux.com>
+Date: Mon, 8 Jun 2020 12:59:44 +0300
+Subject: [PATCH 2/9] kbuild: fix broken builds because of GZIP,BZIP2,LZOP
+ variables
+
+Redefine GZIP, BZIP2, LZOP variables as KGZIP, KBZIP2, KLZOP resp.
+GZIP, BZIP2, LZOP env variables are reserved by the tools. The original
+attempt to redefine them internally doesn't work in makefiles/scripts
+intercall scenarios, e.g., "make GZIP=gzip bindeb-pkg" and results in
+broken builds. There can be other broken build commands because of this,
+so the universal solution is to use non-reserved env variables for the
+compression tools.
+
+Fixes: 8dfb61dcbace ("kbuild: add variables for compression tools")
+Signed-off-by: Denis Efremov <efremov@linux.com>
+Tested-by: Guenter Roeck <linux@roeck-us.net>
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+---
+ Makefile                          | 24 +++++-------------------
+ arch/arm/boot/deflate_xip_data.sh |  2 +-
+ arch/ia64/Makefile                |  2 +-
+ arch/m68k/Makefile                |  8 ++++----
+ arch/parisc/Makefile              |  2 +-
+ scripts/Makefile.lib              |  6 +++---
+ scripts/Makefile.package          |  6 +++---
+ scripts/package/buildtar          |  4 ++--
+ 8 files changed, 20 insertions(+), 34 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d55c60fb3912..8bfe2f51f23d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -447,27 +447,13 @@ PYTHON		= python
+ PYTHON3		= python3
+ CHECK		= sparse
+ BASH		= bash
+-GZIP		= gzip
+-BZIP2		= bzip2
+-LZOP		= lzop
++KGZIP		= gzip
++KBZIP2		= bzip2
++KLZOP		= lzop
+ LZMA		= lzma
+ LZ4		= lz4c
+ XZ		= xz
+ 
+-# GZIP, BZIP2, LZOP env vars are used by the tools. Support them as the command
+-# line interface, but use _GZIP, _BZIP2, _LZOP internally.
+-_GZIP          := $(GZIP)
+-_BZIP2         := $(BZIP2)
+-_LZOP          := $(LZOP)
+-
+-# Reset GZIP, BZIP2, LZOP in this Makefile
+-override GZIP=
+-override BZIP2=
+-override LZOP=
+-
+-# Reset GZIP, BZIP2, LZOP in recursive invocations
+-MAKEOVERRIDES += GZIP= BZIP2= LZOP=
+-
+ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
+ 		  -Wbitwise -Wno-return-void -Wno-unknown-attribute $(CF)
+ NOSTDINC_FLAGS :=
+@@ -515,7 +501,7 @@ CLANG_FLAGS :=
+ export ARCH SRCARCH CONFIG_SHELL BASH HOSTCC KBUILD_HOSTCFLAGS CROSS_COMPILE LD CC
+ export CPP AR NM STRIP OBJCOPY OBJDUMP OBJSIZE READELF PAHOLE LEX YACC AWK INSTALLKERNEL
+ export PERL PYTHON PYTHON3 CHECK CHECKFLAGS MAKE UTS_MACHINE HOSTCXX
+-export _GZIP _BZIP2 _LZOP LZMA LZ4 XZ
++export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ
+ export KBUILD_HOSTCXXFLAGS KBUILD_HOSTLDFLAGS KBUILD_HOSTLDLIBS LDFLAGS_MODULE
+ 
+ export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
+@@ -1022,7 +1008,7 @@ export mod_strip_cmd
+ mod_compress_cmd = true
+ ifdef CONFIG_MODULE_COMPRESS
+   ifdef CONFIG_MODULE_COMPRESS_GZIP
+-    mod_compress_cmd = $(_GZIP) -n -f
++    mod_compress_cmd = $(KGZIP) -n -f
+   endif # CONFIG_MODULE_COMPRESS_GZIP
+   ifdef CONFIG_MODULE_COMPRESS_XZ
+     mod_compress_cmd = $(XZ) -f
+diff --git a/arch/arm/boot/deflate_xip_data.sh b/arch/arm/boot/deflate_xip_data.sh
+index 739f0464321e..304495c3c2c5 100755
+--- a/arch/arm/boot/deflate_xip_data.sh
++++ b/arch/arm/boot/deflate_xip_data.sh
+@@ -56,7 +56,7 @@ trap 'rm -f "$XIPIMAGE.tmp"; exit 1' 1 2 3
+ # substitute the data section by a compressed version
+ $DD if="$XIPIMAGE" count=$data_start iflag=count_bytes of="$XIPIMAGE.tmp"
+ $DD if="$XIPIMAGE"  skip=$data_start iflag=skip_bytes |
+-$_GZIP -9 >> "$XIPIMAGE.tmp"
++$KGZIP -9 >> "$XIPIMAGE.tmp"
+ 
+ # replace kernel binary
+ mv -f "$XIPIMAGE.tmp" "$XIPIMAGE"
+diff --git a/arch/ia64/Makefile b/arch/ia64/Makefile
+index f817f3d5e758..2876a7df1b0a 100644
+--- a/arch/ia64/Makefile
++++ b/arch/ia64/Makefile
+@@ -40,7 +40,7 @@ $(error Sorry, you need a newer version of the assember, one that is built from
+ endif
+ 
+ quiet_cmd_gzip = GZIP    $@
+-cmd_gzip = cat $(real-prereqs) | $(_GZIP) -n -f -9 > $@
++cmd_gzip = cat $(real-prereqs) | $(KGZIP) -n -f -9 > $@
+ 
+ quiet_cmd_objcopy = OBJCOPY $@
+ cmd_objcopy = $(OBJCOPY) $(OBJCOPYFLAGS) $(OBJCOPYFLAGS_$(@F)) $< $@
+diff --git a/arch/m68k/Makefile b/arch/m68k/Makefile
+index ce6db5e5a5a3..0415d28dbe4f 100644
+--- a/arch/m68k/Makefile
++++ b/arch/m68k/Makefile
+@@ -135,10 +135,10 @@ vmlinux.gz: vmlinux
+ ifndef CONFIG_KGDB
+ 	cp vmlinux vmlinux.tmp
+ 	$(STRIP) vmlinux.tmp
+-	$(_GZIP) -9c vmlinux.tmp >vmlinux.gz
++	$(KGZIP) -9c vmlinux.tmp >vmlinux.gz
+ 	rm vmlinux.tmp
+ else
+-	$(_GZIP) -9c vmlinux >vmlinux.gz
++	$(KGZIP) -9c vmlinux >vmlinux.gz
+ endif
+ 
+ bzImage: vmlinux.bz2
+@@ -148,10 +148,10 @@ vmlinux.bz2: vmlinux
+ ifndef CONFIG_KGDB
+ 	cp vmlinux vmlinux.tmp
+ 	$(STRIP) vmlinux.tmp
+-	$(_BZIP2) -1c vmlinux.tmp >vmlinux.bz2
++	$(KBZIP2) -1c vmlinux.tmp >vmlinux.bz2
+ 	rm vmlinux.tmp
+ else
+-	$(_BZIP2) -1c vmlinux >vmlinux.bz2
++	$(KBZIP2) -1c vmlinux >vmlinux.bz2
+ endif
+ 
+ archclean:
+diff --git a/arch/parisc/Makefile b/arch/parisc/Makefile
+index e1aa514aeb36..412ddec0297d 100644
+--- a/arch/parisc/Makefile
++++ b/arch/parisc/Makefile
+@@ -162,7 +162,7 @@ vmlinuz: bzImage
+ 	$(OBJCOPY) $(boot)/bzImage $@
+ else
+ vmlinuz: vmlinux
+-	@$(_GZIP) -cf -9 $< > $@
++	@$(KGZIP) -cf -9 $< > $@
+ endif
+ 
+ install:
+diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
+index a1c1424e6b52..64263019752a 100644
+--- a/scripts/Makefile.lib
++++ b/scripts/Makefile.lib
+@@ -241,7 +241,7 @@ cmd_objcopy = $(OBJCOPY) $(OBJCOPYFLAGS) $(OBJCOPYFLAGS_$(@F)) $< $@
+ # ---------------------------------------------------------------------------
+ 
+ quiet_cmd_gzip = GZIP    $@
+-      cmd_gzip = cat $(real-prereqs) | $(_GZIP) -n -f -9 > $@
++      cmd_gzip = cat $(real-prereqs) | $(KGZIP) -n -f -9 > $@
+ 
+ # DTC
+ # ---------------------------------------------------------------------------
+@@ -334,7 +334,7 @@ printf "%08x\n" $$dec_size |						\
+ )
+ 
+ quiet_cmd_bzip2 = BZIP2   $@
+-      cmd_bzip2 = { cat $(real-prereqs) | $(_BZIP2) -9; $(size_append); } > $@
++      cmd_bzip2 = { cat $(real-prereqs) | $(KBZIP2) -9; $(size_append); } > $@
+ 
+ # Lzma
+ # ---------------------------------------------------------------------------
+@@ -343,7 +343,7 @@ quiet_cmd_lzma = LZMA    $@
+       cmd_lzma = { cat $(real-prereqs) | $(LZMA) -9; $(size_append); } > $@
+ 
+ quiet_cmd_lzo = LZO     $@
+-      cmd_lzo = { cat $(real-prereqs) | $(_LZOP) -9; $(size_append); } > $@
++      cmd_lzo = { cat $(real-prereqs) | $(KLZOP) -9; $(size_append); } > $@
+ 
+ quiet_cmd_lz4 = LZ4     $@
+       cmd_lz4 = { cat $(real-prereqs) | $(LZ4) -l -c1 stdin stdout; \
+diff --git a/scripts/Makefile.package b/scripts/Makefile.package
+index b2b6153af63a..f952fb64789d 100644
+--- a/scripts/Makefile.package
++++ b/scripts/Makefile.package
+@@ -45,7 +45,7 @@ if test "$(objtree)" != "$(srctree)"; then \
+ 	false; \
+ fi ; \
+ $(srctree)/scripts/setlocalversion --save-scmversion; \
+-tar -I $(_GZIP) -c $(RCS_TAR_IGNORE) -f $(2).tar.gz \
++tar -I $(KGZIP) -c $(RCS_TAR_IGNORE) -f $(2).tar.gz \
+ 	--transform 's:^:$(2)/:S' $(TAR_CONTENT) $(3); \
+ rm -f $(objtree)/.scmversion
+ 
+@@ -127,8 +127,8 @@ util/PERF-VERSION-GEN $(CURDIR)/$(perf-tar)/);              \
+ tar rf $(perf-tar).tar $(perf-tar)/HEAD $(perf-tar)/PERF-VERSION-FILE; \
+ rm -r $(perf-tar);                                                  \
+ $(if $(findstring tar-src,$@),,                                     \
+-$(if $(findstring bz2,$@),$(_BZIP2),                                 \
+-$(if $(findstring gz,$@),$(_GZIP),                                  \
++$(if $(findstring bz2,$@),$(KBZIP2),                                 \
++$(if $(findstring gz,$@),$(KGZIP),                                  \
+ $(if $(findstring xz,$@),$(XZ),                                     \
+ $(error unknown target $@))))                                       \
+ 	-f -9 $(perf-tar).tar)
+diff --git a/scripts/package/buildtar b/scripts/package/buildtar
+index ad62c6879622..fb1578e72ab9 100755
+--- a/scripts/package/buildtar
++++ b/scripts/package/buildtar
+@@ -28,11 +28,11 @@ case "${1}" in
+ 		opts=
+ 		;;
+ 	targz-pkg)
+-		opts="-I ${_GZIP}"
++		opts="-I ${KGZIP}"
+ 		tarball=${tarball}.gz
+ 		;;
+ 	tarbz2-pkg)
+-		opts="-I ${_BZIP2}"
++		opts="-I ${KBZIP2}"
+ 		tarball=${tarball}.bz2
+ 		;;
+ 	tarxz-pkg)
+-- 
+2.28.0
+

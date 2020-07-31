@@ -1,0 +1,115 @@
+From 2019b74879487ec698326ad2710be00736f3973a Mon Sep 17 00:00:00 2001
+From: Nick Terrell <terrelln@fb.com>
+Date: Thu, 20 Jun 2019 15:15:08 -0700
+Subject: [PATCH 5/9] init: add support for zstd compressed kernel
+
+* Adds the zstd and zstd22 cmds to scripts/Makefile.lib
+* Adds the HAVE_KERNEL_ZSTD and KERNEL_ZSTD options
+
+Architecture specific support is still needed for decompression.
+
+Reviewed-by: Kees Cook <keescook@chromium.org>
+Tested-by: Sedat Dilek <sedat.dilek@gmail.com>
+Signed-off-by: Nick Terrell <terrelln@fb.com>
+---
+ Makefile             |  3 ++-
+ init/Kconfig         | 15 ++++++++++++++-
+ scripts/Makefile.lib | 22 ++++++++++++++++++++++
+ 3 files changed, 38 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8bfe2f51f23d..2923b859372c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -453,6 +453,7 @@ KLZOP		= lzop
+ LZMA		= lzma
+ LZ4		= lz4c
+ XZ		= xz
++ZSTD		= zstd
+ 
+ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
+ 		  -Wbitwise -Wno-return-void -Wno-unknown-attribute $(CF)
+@@ -501,7 +502,7 @@ CLANG_FLAGS :=
+ export ARCH SRCARCH CONFIG_SHELL BASH HOSTCC KBUILD_HOSTCFLAGS CROSS_COMPILE LD CC
+ export CPP AR NM STRIP OBJCOPY OBJDUMP OBJSIZE READELF PAHOLE LEX YACC AWK INSTALLKERNEL
+ export PERL PYTHON PYTHON3 CHECK CHECKFLAGS MAKE UTS_MACHINE HOSTCXX
+-export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ
++export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ ZSTD
+ export KBUILD_HOSTCXXFLAGS KBUILD_HOSTLDFLAGS KBUILD_HOSTLDLIBS LDFLAGS_MODULE
+ 
+ export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
+diff --git a/init/Kconfig b/init/Kconfig
+index 965a628556e8..91471c337abc 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -160,13 +160,16 @@ config HAVE_KERNEL_LZO
+ config HAVE_KERNEL_LZ4
+ 	bool
+ 
++config HAVE_KERNEL_ZSTD
++	bool
++
+ config HAVE_KERNEL_UNCOMPRESSED
+ 	bool
+ 
+ choice
+ 	prompt "Kernel compression mode"
+ 	default KERNEL_GZIP
+-	depends on HAVE_KERNEL_GZIP || HAVE_KERNEL_BZIP2 || HAVE_KERNEL_LZMA || HAVE_KERNEL_XZ || HAVE_KERNEL_LZO || HAVE_KERNEL_LZ4 || HAVE_KERNEL_UNCOMPRESSED
++	depends on HAVE_KERNEL_GZIP || HAVE_KERNEL_BZIP2 || HAVE_KERNEL_LZMA || HAVE_KERNEL_XZ || HAVE_KERNEL_LZO || HAVE_KERNEL_LZ4 || HAVE_KERNEL_ZSTD || HAVE_KERNEL_UNCOMPRESSED
+ 	help
+ 	  The linux kernel is a kind of self-extracting executable.
+ 	  Several compression algorithms are available, which differ
+@@ -245,6 +248,16 @@ config KERNEL_LZ4
+ 	  is about 8% bigger than LZO. But the decompression speed is
+ 	  faster than LZO.
+ 
++config KERNEL_ZSTD
++	bool "ZSTD"
++	depends on HAVE_KERNEL_ZSTD
++	help
++	  ZSTD is a compression algorithm targeting intermediate compression
++	  with fast decompression speed. It will compress better than GZIP and
++	  decompress around the same speed as LZO, but slower than LZ4. You
++	  will need at least 192 KB RAM or more for booting. The zstd command
++	  line tools is required for compression.
++
+ config KERNEL_UNCOMPRESSED
+ 	bool "None"
+ 	depends on HAVE_KERNEL_UNCOMPRESSED
+diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
+index 64263019752a..af8bfc13e88e 100644
+--- a/scripts/Makefile.lib
++++ b/scripts/Makefile.lib
+@@ -395,6 +395,28 @@ quiet_cmd_xzkern = XZKERN  $@
+ quiet_cmd_xzmisc = XZMISC  $@
+       cmd_xzmisc = cat $(real-prereqs) | $(XZ) --check=crc32 --lzma2=dict=1MiB > $@
+ 
++# ZSTD
++# ---------------------------------------------------------------------------
++# Appends the uncompressed size of the data using size_append. The .zst
++# format has the size information available at the beginning of the file too,
++# but it's in a more complex format and it's good to avoid changing the part
++# of the boot code that reads the uncompressed size.
++#
++# Note that the bytes added by size_append will make the zstd tool think that
++# the file is corrupt. This is expected.
++#
++# zstd uses a maximum window size of 8 MB. zstd22 uses a maximum window size of
++# 128 MB. zstd22 is used for kernel compression because it is decompressed in a
++# single pass, so zstd doesn't need to allocate a window buffer. When streaming
++# decompression is used, like initramfs decompression, zstd22 should likely not
++# be used because it would require zstd to allocate a 128 MB buffer.
++
++quiet_cmd_zstd = ZSTD    $@
++      cmd_zstd = { cat $(real-prereqs) | $(ZSTD) -19; $(size_append); } > $@
++
++quiet_cmd_zstd22 = ZSTD22  $@
++      cmd_zstd22 = { cat $(real-prereqs) | $(ZSTD) -22 --ultra; $(size_append); } > $@
++
+ # ASM offsets
+ # ---------------------------------------------------------------------------
+ 
+-- 
+2.28.0
+

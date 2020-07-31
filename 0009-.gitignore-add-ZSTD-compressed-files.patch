@@ -1,0 +1,31 @@
+From 7607e262c9fff41c71b2c999f8ee456f13147d30 Mon Sep 17 00:00:00 2001
+From: Adam Borowski <kilobyte@angband.pl>
+Date: Wed, 18 Mar 2020 20:43:11 -0700
+Subject: [PATCH 9/9] .gitignore: add ZSTD-compressed files
+
+For now, that's arch/x86/boot/compressed/vmlinux.bin.zst but probably more
+will come, thus let's be consistent with all other compressors.
+
+Tested-by: Sedat Dilek <sedat.dilek@gmail.com>
+Reviewed-by: Kees Cook <keescook@chromium.org>
+Signed-off-by: Nick Terrell <terrelln@fb.com>
+Signed-off-by: Adam Borowski <kilobyte@angband.pl>
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitignore b/.gitignore
+index 2258e906f01c..23871de69072 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -44,6 +44,7 @@
+ *.tab.[ch]
+ *.tar
+ *.xz
++*.zst
+ Module.symvers
+ modules.builtin
+ modules.order
+-- 
+2.28.0
+
