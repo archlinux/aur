@@ -1,0 +1,17 @@
+pkgbase = python-sqliteschema
+	pkgdesc = Dump table schema of a SQLite database file
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/thombashi/sqliteschema
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-mbstrdecoder
+	depends = python-tabledata
+	depends = python-typepy
+	provides = sqliteschema
+	source = https://files.pythonhosted.org/packages/source/s/sqliteschema/sqliteschema-1.0.1.tar.gz
+	sha256sums = cc1e03208839b7ae445f71f23370b3bee4946256c6c9c477fbe0b4f477431dc1
+
+pkgname = python-sqliteschema
+
