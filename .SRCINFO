@@ -1,6 +1,6 @@
 pkgbase = ttf-sudo
 	pkgdesc = A font for programmers and command line users
-	pkgver = 0.42
+	pkgver = 0.50
 	pkgrel = 1
 	url = https://www.kutilek.de/sudo-font/
 	install = ttf-sudo.install
@@ -8,8 +8,8 @@ pkgbase = ttf-sudo
 	license = SIL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/jenskutilek/sudo-font/archive/v0.42.tar.gz
-	md5sums = fc0ff0f0133c6e5a3d61fadb2914ac2e
+	source = https://github.com/jenskutilek/sudo-font/archive/v0.50.tar.gz
+	md5sums = 0cca8420448f28489564993bdbd3706c
 
 pkgname = ttf-sudo
 
