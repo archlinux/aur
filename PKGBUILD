@@ -3,12 +3,11 @@
 
 pkgname=culmus
 pkgver=0.133
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of Type1 and TrueType Hebrew fonts"
 arch=('any')
 url="http://culmus.sourceforge.net"
 license=('GPL2')
-depends=('xorg-fonts-encodings')
 source=(
   "http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}-0.121-fontconfig_fix.patch"
