@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=rev.11375
+pkgver=rev.11399
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
@@ -25,12 +25,9 @@ pkgver() {
 
 prepare(){
 echo "Prepare section"
-#Only needed until it becomes part of the source
-#pwd
-#cd ..
-#cp -va ./CMakeLists.txt "${srcdir}"/Assets-Production/;
-#cp -va ./vs "${srcdir}"/Assets-Production/;
-#cp -va ./vsettings "${srcdir}"/Assets-Production/;
+#Patches section
+cd ${srcdir}/Assets-Production/
+git apply ../../19.patch
 }
 
 
