@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/notp/
+*.tar.xz
+*.tar.gz
