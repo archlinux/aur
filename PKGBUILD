@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/lucko/LuckPerms"
 license=("MIT")
 depends=("craftbukkit>=1.8.0")
-source=("https://ci.lucko.me/job/LuckPerms/$_buildver/artifact/bukkit/target/LuckPerms-Bukkit-$_pkgver.jar")
+source=("https://ci.lucko.me/job/LuckPerms/$_buildver/artifact/bukkit/build/libs/LuckPerms-Bukkit-$_pkgver.jar")
 noextract=("LuckPerms-Bukkit-$_pkgver.jar")
 sha256sums=('SKIP')
 

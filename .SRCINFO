@@ -7,7 +7,7 @@ pkgbase = spigot-plugin-luckperms
 	license = MIT
 	depends = craftbukkit>=1.8.0
 	noextract = LuckPerms-Bukkit-5.1.84.jar
-	source = https://ci.lucko.me/job/LuckPerms/1143/artifact/bukkit/target/LuckPerms-Bukkit-5.1.84.jar
+	source = https://ci.lucko.me/job/LuckPerms/1143/artifact/bukkit/build/libs/LuckPerms-Bukkit-5.1.84.jar
 	sha256sums = SKIP
 
 pkgname = spigot-plugin-luckperms
