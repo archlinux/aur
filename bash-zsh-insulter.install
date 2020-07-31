@@ -1,0 +1,25 @@
+post_install() {
+	cat << EOF
+
+Source the file automatically for new logins by adding the following to /etc/bash.bashrc (~/.zshrc for zsh) or any of the other locations where you can configure your shell automatically during login
+
+if [ -f /etc/bash.command-not-found ]; then
+	. /etc/bash.command-not-found
+fi
+
+Start again the shell and type some invalid commands for the effects to be visible.
+
+EOF
+}
+
+post_remove() {
+  cat << EOF
+
+Remove the following from /etc/bash.bashrc (~/.zshrc for zsh) or any of the other locations where you can configure your shell automatically during login
+
+if [ -f /etc/bash.command-not-found ]; then
+	. /etc/bash.command-not-found
+fi
+
+EOF
+}

@@ -1,0 +1,13 @@
+pkgbase = bash-zsh-insulter
+	pkgdesc = Insults the user when typing wrong command. For Bash v4+ or Zsh
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/hkbakke/bash-insulter
+	install = bash-zsh-insulter.install
+	arch = any
+	license = MIT
+	source = bash.command-not-found::https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
+	md5sums = 757b466982999fe563256ed0e3d6e6bb
+
+pkgname = bash-zsh-insulter
+
