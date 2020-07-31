@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.7.10
-_pkgverpntrel=10
+pkgver=5.7.11
+_pkgverpntrel=11
 pkgrel=1
 _ckpatchversion=1
 _cpusched="MuQSS"
@@ -103,7 +103,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('95c1040a9b8b7c08b5bd607981e0427d'
+md5sums=('ffdb73ce9e792e141baa72628dd21230'
          'SKIP'
          'dd2441189c14b66f1f051121d5602345'
          '2cebdad39da582fd6a0c01746c8adb42'
