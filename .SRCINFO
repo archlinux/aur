@@ -1,6 +1,6 @@
 pkgbase = elemental
 	pkgdesc = distributed-memory dense linear algebra
-	pkgver = 1.3.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/LLNL/Elemental
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = elemental
 	makedepends = libmpc
 	makedepends = gcc-fortran
 	options = !makeflags
-	source = elemental-1.3.4.tar.gz::https://github.com/LLNL/Elemental/archive/v1.3.4.tar.gz
-	sha256sums = 7979f6656f698f0bbad6798b39d4b569835b3013ff548d98089fce7c283c6741
+	source = elemental-1.4.0.tar.gz::https://github.com/LLNL/Elemental/archive/v1.4.0.tar.gz
+	sha256sums = c13374ff4a6c4d1076e47ba8c8d91a7082588b9958d1ed89cffb12f1d2e1452e
 
 pkgname = elemental
 
