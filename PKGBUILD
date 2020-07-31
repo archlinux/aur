@@ -9,11 +9,10 @@ arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/jeff-hughes/shellcaster"
 license=('GPL3')
 
-depends=('sqlite>=3.23.0' 'openssl>=1.1.0')
+depends=('ncurses>=6.0' 'sqlite>=3.23.0' 'openssl>=1.1.0')
 makedepends=(
     'git'
-    'rustup>=1.17.0'
-    'ncurses'
+    'rust>=1.42.0'
 )
 
 provides=('shellcaster')
@@ -30,7 +29,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    cargo install --no-track --locked --no-default-features --features "native-tls" --root "${pkgdir}/usr" --path .
+    cargo install --no-track --locked --no-default-features --features "wide,native-tls" --root "${pkgdir}/usr" --path .
     rm -f "${pkgdir}"/usr/.crate*
 
     install -Dm644 ./config.toml "${pkgdir}/etc/${_pkgname}/config.toml"
