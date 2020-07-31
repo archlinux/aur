@@ -1,15 +1,26 @@
 pkgbase = pgyvpn-bin
 	pkgdesc = Suitable for business personnal long-distance intelligent network access
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://pgy.oray.com/download/
 	install = .INSTALL
+	arch = x86_64
+	arch = i686
+	arch = aarch64
 	arch = armv7h
 	license = custom
 	source = LICENSE::https://service.oray.com/question/1820.html
+	source = pgyvpn.service
 	sha256sums = SKIP
-	source_armv7h = http://download.oray.com/pgy/embed/PgyVPN-2.2.0-armhf_systemd.deb
-	sha256sums_armv7h = fe27877ca149907c3e94630c5d30b1e346e6fa26f69c9071ea851135915a39d5
+	sha256sums = 25995cc8f865139147ced000fea52a8f4dda072addbf9e4a3b18b5c599a8be7f
+	source_x86_64 = http://dl-cdn.oray.com/pgy/linux/PgyVPN_Ubuntu_2.2.1_X86_64.deb
+	sha256sums_x86_64 = 6a274cc1066dedd1559ef0716b7f6fe7aae503d9e82471ebca42234072e41814
+	source_i686 = http://dl-cdn.oray.com/pgy/linux/PgyVPN_Ubuntu_2.2.1_i386.deb
+	sha256sums_i686 = c1d695592944d2b5465f9567b89aeaeba3903c7458c97a7074fc938e106b3721
+	source_aarch64 = http://dl-cdn.oray.com/pgy/linux/PgyVPN_Raspbian_2.2.1_arm64_systemd.deb
+	sha256sums_aarch64 = 13461c523035f112f92ef3e5ceca5f9adf0bff3a1fa1c04408b98a7ac0978d95
+	source_armv7h = http://dl-cdn.oray.com/pgy/linux/PgyVPN_Raspbian_2.2.1_armhf_systemd.deb
+	sha256sums_armv7h = 3fa1f8d0e5d66cfcba8b18620311b2e6a5566daf2dd127f0346ce5fadf1096bb
 
 pkgname = pgyvpn-bin
 

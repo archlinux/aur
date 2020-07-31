@@ -1,0 +1,14 @@
+[Unit]
+Description=Running pgyvpn and pgyvpn_monitor
+After=network.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/pgyvpn_svr -r -s -a pgy-api.oray.com -E 255.255.255.255 -l /var/log/oray/pgyvpn_svr -T "" --oraysl --oraysllog /var/log/oray/pgyvpn_oraysl --autologin 
+RemainAfterExit=no
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
