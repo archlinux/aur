@@ -1,7 +1,7 @@
 pkgbase = python-qmk
 	pkgdesc = A program to help users work with QMK
 	pkgver = 0.0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qmk/qmk_cli
 	arch = any
 	license = MIT
@@ -35,7 +35,20 @@ pkgbase = python-qmk
 	provides = qmk
 	conflicts = qmk
 	source = https://github.com/qmk/qmk_cli/archive/0.0.35.tar.gz
+	source = 50-atmel-dfu.rules
+	source = 54-input-club-keyboard.rules
+	source = 55-caterina.rules
+	source = 56-dfu-util.rules
+	source = 57-bootloadhid.rules
+	source = python-qmk.install
 	md5sums = 60e198326815bad6af8971e69b95709a
+	md5sums = ce0817b57cc65e1b40e1d0015050a9f9
+	md5sums = 89d4e608e03def55193afde3e6d27b2c
+	md5sums = 3a5ed80897da7caf331908ed21cdfcfb
+	md5sums = cdd374ddb63b5570817063a3272aeb6d
+	md5sums = bd8d991a807e12acc88f87b0ac749cb2
+	md5sums = da712505652b669000a1c8408c93da81
 
 pkgname = python-qmk
+	install = python-qmk.install
 

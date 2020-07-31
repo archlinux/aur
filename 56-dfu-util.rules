@@ -1,0 +1,4 @@
+# stm32duino
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1eaf", ATTRS{idProduct}=="0003", TAG+="uaccess", RUN{builtin}+="uaccess"
+# Generic stm32
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess", RUN{builtin}+="uaccess"

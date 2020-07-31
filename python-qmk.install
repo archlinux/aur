@@ -1,0 +1,5 @@
+post_install() {
+  echo '[qmk] ==> If you are using a custom kernel, to be able to detect;'
+  echo '[qmk] ==> * For Pro Micro (Atmega32u4), enable CONFIG_USB_ACM=y'
+  echo '[qmk] ==> * For other boards, may need USB_SERIAL sub-options.'
+}
