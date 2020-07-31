@@ -6,14 +6,14 @@ pkgver=0.5.2.r23.g995bdc5
 pkgrel=1
 pkgdesc="StarDict Console Version - Git version"
 arch=('x86_64')
-url="https://dushistov.github.io/sdcv/"
+url="https://github.com/Dushistov/sdcv"
 license=('GPL')
 depends=('glib2' 'readline' 'zlib')
 makedepends=('cmake' 'git')
+source=("git+${url}.git")
+md5sums=('SKIP')
 provides=('sdcv')
 conflicts=('sdcv')
-source=('git+https://github.com/Dushistov/sdcv.git')
-md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
