@@ -3,7 +3,7 @@
 
 pkgname=alttab-git
 _name=alttab
-pkgver=v1.4.0.22.g45816dc
+pkgver=v1.5.0.2.g6b18998
 pkgrel=1
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/alttab"
@@ -23,7 +23,7 @@ build() {
 	pwd
 	ls -al
 	cd "$_name"
-	CFLAGS="$CFLAGS -fcommon" ./configure --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
