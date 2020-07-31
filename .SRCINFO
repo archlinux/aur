@@ -1,6 +1,6 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
-	pkgver = 1.7.0.rc0
+	pkgver = 1.7.0.rc1
 	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = mxnet
 	depends = python-numpy
 	depends = python-requests
 	optdepends = python-graphviz
-	source = mxnet::git+https://github.com/apache/incubator-mxnet#tag=1.7.0.rc0
+	source = mxnet::git+https://github.com/apache/incubator-mxnet#tag=1.7.0.rc1
 	source = git+https://github.com/dmlc/dlpack
 	source = git+https://github.com/dmlc/dmlc-core
 	source = git+https://github.com/google/googletest
