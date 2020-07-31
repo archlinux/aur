@@ -1,14 +1,13 @@
 pkgbase = alibaba-puhuiti
 	pkgdesc = Alibaba PuHuiTi fonts
 	pkgver = 1.01
-	pkgrel = 2
-	url = https://alibabafont.taobao.com
+	pkgrel = 3
+	url = https://ics.alibaba.com/font/alibaba-sans
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://aifont.oss-cn-beijing.aliyuncs.com/Alibaba%20PuHuiTi/Alibaba%20PuHuiTi_AlibabaSans.zip
-	sha512sums = 6e0119b1a4d50128bbe6dfbe38c13fc3490651aa706ff7b7773248bcb931bfad8fbb752b7883621fbcd53f757425e624b8f6d293fa1aac1685ead9bba03aca12
+	makedepends = unzip
+	source = alibaba-puhuiti-1.01.zip::https://ics-static.oss-cn-hangzhou.aliyuncs.com/static/ucan/ucan_alibaba_font.zip?spm=0.font.0.0.e21dbbcfIGV8il&file=ucan_alibaba_font.zip
+	sha512sums = e2cac62e55a96cc641516f859ea4f613d5a976725362afc4a8483d767fb19a394b34d36565e2ddb264f3986b443b7827eb641051b54355e03061b86677a23fd8
 
 pkgname = alibaba-puhuiti
 
