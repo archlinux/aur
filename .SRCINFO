@@ -1,6 +1,6 @@
 pkgbase = pip-tools
 	pkgdesc = A set of tools to keep your pinned Python dependencies fresh.
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/jazzband/pip-tools/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pip-tools
 	depends = python-click
 	depends = python-pip>=20.0
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-5.3.0.tar.gz
-	sha256sums = 13ab79c33778e4071500fe6390ab99b6ab8e552e40fe0fcf3e32419963f1bd5c
+	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-5.3.1.tar.gz
+	sha256sums = 5672c2b6ca0f1fd803f3b45568c2cf7fadf135b4971e7d665232b2075544c0ef
 
 pkgname = pip-tools
 
