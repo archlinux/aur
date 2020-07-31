@@ -2,7 +2,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=0.12.r530.ge2a3f2d8
+pkgver=0.14.0.r20.gd2e72011
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
@@ -24,23 +24,47 @@ pkgver() {
     )
 }
 
+prepare() {
+    mkdir -p "$srcdir/build"
+    export GOPATH="$srcdir/build"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+    cd "$srcdir/elvish"
+    go mod vendor
+}
+
 build() {
     export GOPATH="$srcdir/build"
-    cd "$srcdir/$_pkgname"
-    go build -trimpath \
-        -ldflags "-X github.com/elves/elvish/buildinfo.Version=$pkgver \
-        -extldflags ${LDFLAGS}" .
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+    cd "$srcdir/elvish"
+    go build -v -ldflags="-X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" .
 
-    go clean -modcache
+    cd website
+    mkdir "$srcdir/doc"
+    go build -v ./cmd/elvdoc/
+    for file in builtin edit epm language math platform readline-binding re store str unix; do
+        ./elvdoc -filter < "ref/$file.md" | pandoc \
+            -s -f gfm -t man -V section:7 \
+            -V header:"Miscellaneous Information Manual" \
+            -V footer:"Elvish $pkgver" -M date:"$(date -u --date=@${SOURCE_DATE_EPOCH} "+%b %d, %Y")" \
+            -M title:"elvish-$file" \
+            -o "$srcdir/doc/elvish-$file.7"
+    done
 }
 
 check() {
     export GOPATH="$srcdir/build"
-    cd "$srcdir/$_pkgname"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-trimpath -mod=vendor -modcacherw"
+    cd "$srcdir/elvish"
     make test
 }
 
 package() {
-    install -Dm755 "$srcdir/$_pkgname/elvish" -t "$pkgdir/usr/bin/"
-    install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm755 "$srcdir/elvish/elvish" -t "$pkgdir/usr/bin/"
+    install -Dm644 "$srcdir/elvish/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+    install -dm755 "$pkgdir/usr/share/man/man7"
+    cp -rv --no-preserve=ownership "$srcdir/doc/"* "$pkgdir/usr/share/man/man7"
 }
