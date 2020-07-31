@@ -4,7 +4,7 @@
 
 pkgname='hda-verb'
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to send commands (verbs) to HD-Audio codecs"
 arch=('i686' 'x86_64')
 depends=('glibc')
@@ -15,10 +15,10 @@ md5sums=('60be775c58feb2f8b9644dfeca0ad0d8')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-
 	make || return 1
 }
 
 package() {
-        install -D $pkgname $pkgdir/usr/bin/$pkgname
+	cd $srcdir/$pkgname-$pkgver
+	install -D $pkgname $pkgdir/usr/bin/$pkgname
 }
