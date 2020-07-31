@@ -47,7 +47,7 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-LOCAL_MAKE_FLAGS="LLVM=1"
+LOCAL_MAKE_FLAGS="LLVM=1 LLVM_IAS=1"
 
 prepare() {
   cd $_srcname
