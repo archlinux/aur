@@ -1,7 +1,10 @@
 post_upgrade() {
+    echo 
+    echo "If WeChat doesn't work after an upgrade, try removing ~/.deepinwine/DCS-WeChat and start it again."
+    echo 
+}
+
+post_remove() {
     echo "Deleting existing WeChat bottles..."
     find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/DCS-WeChat/ \;
-}
-post_remove() {
-    post_upgrade
 }
