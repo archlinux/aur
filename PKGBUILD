@@ -29,7 +29,7 @@ depends=('python-pyqt5'
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'https://github.com/fredcox/gonha/raw/master/LICENSE')
-sha256sums=('a90ae31e062f78ad707bce5ae6d848156ec8893205060da7098b0e3e380f84c8'
+sha256sums=('ebd792be4e2c065970b51def6d0f3961369d23c865456556f4c9a2b7d6ef2549'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 #build() {
