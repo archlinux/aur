@@ -1,22 +1,30 @@
-pkgname='python-pytablereader'
-_module='pytablereader'
-pkgver='0.15.0'
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Florian Wittmann
+
+_pkgname=pytablereader
+pkgname=python-${_pkgname}
+pkgver=0.30.0
 pkgrel=1
-pkgdesc="A Python library to load structured table data from files/strings/URL with various data format: CSV/Excel/Google-Sheets/HTML/JSON/LTSV/Markdown/SQLite/TSV."
-url="https://github.com/thombashi/pytablereader"
-depends=('python' 'python-xlrd>=1.0.0' 'python-path.py>=10.3.1' 'python-markdown2>=2.3.4' 'python-beautifulsoup4>=4.6.0' 'python-dataproperty>=0.29.1' 'python-enum-compat' 'python-jsonschema>=2.6.0' 'python-logbook' 'python-mbstrdecoder' 'python-pathvalidate>=0.16.2' 'python-pyparsing>=2.2.0' 'python-requests>=2.18.4' 'python-six' 'python-typepy>=0.0.20')
-makedepends=('python-setuptools')
-license=('MIT')
+pkgdesc='Load structured table data from various file formats'
 arch=('any')
-source=("https://github.com/thombashi/pytablereader/archive/v${pkgver}.tar.gz")
-md5sums=('b413490da71dd99e5ab150578c1c7ada')
+url='https://github.com/thombashi/pytablereadera'
+license=('MIT')
+depends=('python-beautifulsoup4' 'python-dataproperty' 'python-jsonschema' 'python-mbstrdecoder' 'python-path' 'python-pathvalidate' 'python-tabledata' 'python-typepy')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('cb45e968e1a781468196b4c65ec23347eeed0d3985d70bfa8bfbd6d9533fa935')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 'README.rst' "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
+  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
