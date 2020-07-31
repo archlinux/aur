@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=r164.db10ab0
+pkgver=r176.dd07f49
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -11,20 +11,19 @@ depends=('python-pyqt5'
          'python-ewmh'
          'python-psutil'
          'python-humanfriendly'
-         'python-pyinquirer'
-         'python-colr'
-         'python-distro'
-         'python-prompt_toolkit1014'
-         'python-py-cpuinfo'
-         'ttf-fira-code'
          'python-pathlib2'
+         'python-pyinquirer'
+         'python-distro'
+         'python-py-cpuinfo'
          'python-requests'
          'python-netifaces'
-         'python-numpy'
          'python-country_list'
-         'python-unit-convert'
          'python-portolan'
-         'python-gputil')
+         'python-unit-convert'
+         'python-gputil'
+         'python-coloredlogs'
+         'python-prompt_toolkit1014'
+         'ttf-fira-code')
 makedepends=('python-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
