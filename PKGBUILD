@@ -1,12 +1,13 @@
 # Maintainer: bilabila <bilabila@qq.com>
 pkgname=ocp-setup
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='oceanbase cloud platform setup'
 arch=(x86_64)
 url=https://oceanbase.alipay.com/docs
 provides=($pkgname)
 conflicts=($pkgname)
+license=(custom)
 depends=(java-openjfx)
 source=('https://gw.alipayobjects.com/os/downloads/ossupload/ocp-release.zip'
 $pkgname)

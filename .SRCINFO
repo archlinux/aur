@@ -1,10 +1,11 @@
 pkgbase = ocp-setup
 	pkgdesc = oceanbase cloud platform setup
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://oceanbase.alipay.com/docs
 	install = ocp-setup.install
 	arch = x86_64
+	license = custom
 	depends = java-openjfx
 	provides = ocp-setup
 	conflicts = ocp-setup
