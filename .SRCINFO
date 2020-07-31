@@ -1,0 +1,15 @@
+pkgbase = wwd-dde
+	pkgdesc = Local development environment toolset based on Docker supporting multiple projects.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/whatwedo/dde
+	arch = any
+	depends = docker
+	depends = docker-compose
+	depends = mutagen.io-bin
+	depends = make
+	source = https://codeload.github.com/whatwedo/dde/zip/v0.2.4
+	md5sums = 7df9878521f62ee80b07e7dfb6e05643
+
+pkgname = wwd-dde
+
