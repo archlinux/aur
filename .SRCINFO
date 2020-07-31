@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-opencv
 	pkgdesc = Open Source Computer Vision Library (mingw-w64)
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = mingw-w64-opencv
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = opencv-4.3.0.zip::https://github.com/opencv/opencv/archive/4.3.0.zip
-	source = opencv_contrib-4.3.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.3.0.tar.gz
-	sha256sums = 36799186756c1e12adde97f0a8d1afc395d5b0f86d8ad9ef951bc33aa732f9b9
-	sha256sums = acb8e89c9e7d1174e63e40532125b60d248b00e517255a98a419d415228c6a55
+	source = opencv-4.4.0.zip::https://github.com/opencv/opencv/archive/4.4.0.zip
+	source = opencv_contrib-4.4.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.4.0.tar.gz
+	sha256sums = 7faa0991c74cda52313ee37ef73f3e451332a47e7aa36c2bb2240b69f5002d27
+	sha256sums = a69772f553b32427e09ffbfd0c8d5e5e47f7dab8b3ffc02851ffd7f912b76840
 
 pkgname = mingw-w64-opencv
 
