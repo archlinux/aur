@@ -1,7 +1,7 @@
 # Maintainer: Jedrzej Nowak <pigmej@gmail.com>
 
 pkgname=teleport-client
-pkgver=4.2.11
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure client only"
 arch=('x86_64' 'arm')
@@ -12,14 +12,14 @@ source_x86_64=(
     "https://get.gravitational.com/teleport-v${pkgver}-linux-amd64-bin.tar.gz"
     )
 sha256sums_x86_64=(
-    '06cceb16c9464317f8391be421e66ec7fdb3684123f20406cbc64be46909869a'
+    'daa7bfb239409c9231a22019ba39046d17bc75d021ce16d3333e0abadf158ddf'
     )
 source_arm=(
     "https://get.gravitational.com/teleport-v${pkgver}-linux-arm-bin.tar.gz"
     )
 
 sha256sums_arm=(
-    'dbae9e5f4bd57fadde03789f27609e56dac5c504b8a2474805291c184dd679ac'
+    'e43fe669974cb1882edae6b78a0f33e833aa5aaac0df95aa21ca0e7ef2dbfb56'
     )
 
 options=(!strip)
