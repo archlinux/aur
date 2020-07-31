@@ -5,6 +5,7 @@
 *.tar.gz
 *.tar.bz2
 *.tar.xz
+*.tar.zst
 src
 pkg
 *.ttf
