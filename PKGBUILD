@@ -2,7 +2,7 @@
 pkgname=qhot-git
 _realname=qhot
 confilicts=('qhot')
-pkgver=d8be17e
+pkgver=ca0722e
 pkgrel=1
 pkgdesc="Hot reload for nested QML files!"
 arch=('i686' 'x86_64')
