@@ -1,4 +1,13 @@
-src
-pkg
-*.rpm
-*.tar.*
+*
+!.gitignore
+!elasticsearch.default
+!elasticsearch-env
+!elasticsearch-keystore.service
+!elasticsearch-keystore@.service
+!elasticsearch.service
+!elasticsearch@.service
+!elasticsearch-sysctl.conf
+!elasticsearch-tmpfile.conf
+!elasticsearch-user.conf
+!PKGBUILD
+!.SRCINFO
