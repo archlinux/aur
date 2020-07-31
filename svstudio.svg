@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="128"
+   width="128"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="logo1.svg"
+   id="svg48"
+   version="1.1"
+   viewBox="0 0 128 128.00001">
+  <metadata
+     id="metadata52">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg48"
+     inkscape:window-maximized="1"
+     inkscape:window-y="28"
+     inkscape:window-x="0"
+     inkscape:cy="105.14393"
+     inkscape:cx="77.389986"
+     inkscape:zoom="7.9028299"
+     showgrid="false"
+     id="namedview50"
+     inkscape:window-height="1023"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#15e879;}.cls-2{fill:#666;}.cls-3{fill:#ccc;}</style>
+  </defs>
+  <title
+     id="title6">logo</title>
+  <g
+     transform="matrix(2.2570975,0,0,5.3134081,0,-17.913619)"
+     data-name="レイヤー 2"
+     id="レイヤー_2"
+     style="stroke-width:1.00001">
+    <g
+       data-name="レイヤー 1"
+       id="レイヤー_1-2"
+       style="stroke-width:1.00001">
+      <path
+         id="path8"
+         d="M 14.69,17.31 C 11.89,10.79 8.71,3.4 4.25,3.4 H 0.71 L 0,4.82 h 4.25 c 3.53,0 6.64,7.24 9.14,13.05 0.74,1.74 1.44,3.35 2.11,4.75 0.27,-0.52 0.53,-1.08 0.8,-1.65 -0.55,-1.2 -1.1,-2.47 -1.61,-3.66 z"
+         class="cls-1"
+         style="stroke-width:1.00001" />
+      <path
+         id="path10"
+         d="m 35.43,3.4 a 5.27,5.27 0 0 0 -3.64,1.73 12,12 0 0 1 0.89,1.09 4.06,4.06 0 0 1 2.75,-1.4 H 39 L 39.71,3.4 Z"
+         class="cls-1"
+         style="stroke-width:1.00001" />
+      <path
+         id="path12"
+         d="m 25,17.31 c -1.67,3.91 -3.76,8.77 -5.15,8.77 -0.76,0 -1.74,-1.48 -2.75,-3.46 -0.26,0.55 -0.53,1.06 -0.79,1.53 1.14,2.05 2.26,3.34 3.54,3.34 2.33,0 4.15,-4.24 6.46,-9.62 1.58,-3.68 3.41,-7.93 5.43,-10.56 A 13.53,13.53 0 0 0 30.84,6.18 C 28.6,8.93 26.72,13.29 25,17.31 Z"
+         class="cls-1"
+         style="stroke-width:1.00001" />
+      <path
+         id="path14"
+         d="m 41.1,3.4 -0.71,1.42 h 8.91 a 24.23,24.23 0 0 0 -6.72,4.51 c -1.66,1.44 -3,2.57 -4.31,2.57 l -0.68,1.35 a 3.73,3.73 0 0 0 0.68,0.07 c 1.88,0 3.44,-1.35 5.24,-2.92 C 46.26,8 49.68,5.05 56,4.84 v 0 L 56.71,3.42 H 41.1 Z"
+         class="cls-2"
+         style="stroke-width:1.00001" />
+      <path
+         id="path16"
+         d="m 12.76,26.08 c -1,0 -2.46,-2.93 -3.63,-5.28 C 6.24,15 4.59,14.74 1.42,14.74 H 0.71 L 0,16.15 h 1.42 c 2.69,0 3.81,0 6.44,5.28 1.87,3.76 3.11,6.06 4.9,6.06 1.27,0 2.4,-1.29 3.54,-3.34 -0.26,-0.47 -0.53,-1 -0.79,-1.53 -1.01,1.98 -1.99,3.46 -2.75,3.46 z"
+         class="cls-3"
+         style="stroke-width:1.00001" />
+      <path
+         id="path18"
+         d="M 33.9,8 C 33.5,7.4 33.1,6.81 32.69,6.25 a 11.65,11.65 0 0 0 -1,1.09 c 0.33,0.46 0.66,1 1,1.44 1.08,1.63 2.19,3.28 3.67,4.08 L 37,11.56 A 11.07,11.07 0 0 1 33.9,8 Z"
+         class="cls-3"
+         style="stroke-width:1.00001" />
+      <path
+         id="path20"
+         d="m 28.35,3.4 c -4.46,0 -7.64,7.39 -10.44,13.91 -0.51,1.19 -1.06,2.46 -1.61,3.69 0.26,0.57 0.53,1.13 0.79,1.65 0.68,-1.4 1.38,-3 2.12,-4.75 2.5,-5.81 5.61,-13 9.14,-13 a 3.48,3.48 0 0 1 2.48,1.36 12.22,12.22 0 0 1 1,-1 4.68,4.68 0 0 0 -3.48,-1.86 z"
+         class="cls-3"
+         style="stroke-width:1.00001" />
+    </g>
+  </g>
+</svg>
