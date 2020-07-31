@@ -1,7 +1,7 @@
 pkgbase = aura-bin
 	pkgdesc = A secure package manager for Arch Linux and the AUR - Prebuilt binary
 	pkgver = 3.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fosskers/aura
 	arch = x86_64
 	license = GPL3

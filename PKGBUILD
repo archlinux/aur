@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 pkgname=aura-bin
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
 url="https://github.com/fosskers/aura"
 license=('GPL3')
@@ -28,12 +28,12 @@ package() {
 
     # Installing bash completions
     install -Dm644 bashcompletion.sh \
-      "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+      "$pkgdir/usr/share/bash-completion/completions/aura"
 
     # Installing zsh completions
     install -Dm644 _aura -t \
       "$pkgdir/usr/share/zsh/site-functions"
 
     # Directories for storing PKGBUILDs, source packages & installed package states
-    install -d "$pkgdir/var/cache/$pkgname/"{pkgbuilds,src,states}
+    install -d "$pkgdir/var/cache/aura/"{pkgbuilds,src,states}
 }
