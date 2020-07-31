@@ -3,7 +3,7 @@
 # Contributor: Yamakaky <yamakaky@yamaworld.fr>
 
 pkgname=rust-src
-pkgver=1.45.0
+pkgver=1.45.1
 pkgrel=1
 pkgdesc='Systems programming language focused on safety, speed and concurrency (source code)'
 arch=('any')
@@ -11,7 +11,7 @@ url='http://rust-lang.org'
 license=('Apache' 'MIT')
 options=(!strip)
 source=("rust-${pkgver}.tar.gz::https://github.com/rust-lang/rust/archive/${pkgver}.tar.gz")
-sha256sums=('c3b2ef2bc0de05505c547e5235f7d1121dd01b635ef59c8a94f7f7bb71b15fe3')
+sha256sums=('d93581d431b616fd73d70d96ef26d97885786e03bdcd964a69dbc92e65147290')
 
 package() {
   cd "rust-${pkgver}"
