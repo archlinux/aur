@@ -1,0 +1,25 @@
+pkgbase = xfce4-git-meta
+	pkgdesc = Meta package for installing the xfce4 group
+	pkgver = 4.15
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = GPL
+	depends = exo-git
+	depends = garcon-git
+	depends = thunar-git
+	depends = thunar-volman-git
+	depends = tumbler-git
+	depends = xfce4-appfinder-git
+	depends = xfce4-panel-git
+	depends = xfce4-power-manager-git
+	depends = xfce4-session-git
+	depends = xfce4-settings-git
+	depends = xfce4-terminal-git
+	depends = xfconf-git
+	depends = xfdesktop-git
+	depends = xfwm4-git
+	depends = xfwm4-themes-git
+
+pkgname = xfce4-git-meta
+
