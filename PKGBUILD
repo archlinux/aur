@@ -2,10 +2,10 @@
 
 pkgname=ttf-neodgm
 pkgver=1.50
-pkgrel=1
-pkgdesc="TrueType port of a good-old Korean bitmap font, with enhancements."
+pkgrel=2
+pkgdesc='TrueType port of a good-old Korean bitmap font, with enhancements.'
 arch=('any')
-url="http://dalgona.hontou.moe/neodgm/"
+url='https://neodgm.dalgona.dev/'
 license=('OFL')
 install=ttf-neodgm.install
 source=("https://github.com/Dalgona/neodgm/releases/download/v${pkgver}/neodgm.ttf"
