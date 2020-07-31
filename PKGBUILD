@@ -11,9 +11,11 @@ depends=('qt5-script' 'qt5-serialport' 'qt5-multimedia')
 makedepends=('qt5-tools')
 
 source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip"
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        "qt5.15.patch::https://github.com/szieke/ScriptCommunicator_serial-terminal/commit/18a9c1dfd2931747a2b95683c77ae5a60de97798.patch")
 sha256sums=('d1d162eb1c04bcbb5cd9c9d02402a09884edb7db9575e9e622bf93e47bf221b2'
-            'a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566')
+            'a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566'
+            'db9e41224114efcff61b76ae3f4383790c410b2db3027f10858fbc07706d7f81')
 
 
 prepare() {
@@ -21,6 +23,8 @@ prepare() {
 	cd $pkgname
 	echo "DESTDIR = build" >> ScriptCommunicator.pro
 	echo "DESTDIR = build" >> ScriptEditor/ScriptEditor.pro
+	
+	patch -Np2 < ../qt5.15.patch
 }
 
 build() {

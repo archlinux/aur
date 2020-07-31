@@ -12,8 +12,10 @@ pkgbase = script-communicator
 	depends = qt5-multimedia
 	source = https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_05_11.zip
 	source = script-communicator.desktop
+	source = qt5.15.patch::https://github.com/szieke/ScriptCommunicator_serial-terminal/commit/18a9c1dfd2931747a2b95683c77ae5a60de97798.patch
 	sha256sums = d1d162eb1c04bcbb5cd9c9d02402a09884edb7db9575e9e622bf93e47bf221b2
 	sha256sums = a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566
+	sha256sums = db9e41224114efcff61b76ae3f4383790c410b2db3027f10858fbc07706d7f81
 
 pkgname = script-communicator
 
