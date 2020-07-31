@@ -1,7 +1,7 @@
 # Maintainer: Fredrik Söderström <tirithen@gmail.com>
 pkgname=search
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Search the web from the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tirithen/terminal-search"
@@ -14,7 +14,7 @@ makedepends=(
   'ldc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tirithen/terminal-${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8911dae02c0d58090eff96b35636435bb5877e263c4b9c19086defc4fdc6597c')
+sha256sums=('7019827fa42c6a0e07a79c43ffffc469e2a9d01c84c6aef3f1be7fcec9a33d85')
 
 build() {
 	cd "$srcdir/terminal-$pkgname-$pkgver"
