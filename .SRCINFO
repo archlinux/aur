@@ -1,10 +1,10 @@
 pkgbase = chemdoodle
 	pkgdesc = Chemical drawing and publishing software for desktop, web and mobile (Trial)
-	pkgver = 10.4.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = http://www.chemdoodle.com
 	arch = x86_64
-	license = custom
+	license = custom:chemdoodle
 	makedepends = gendesk
 	depends = gtk2
 	depends = libxtst
@@ -13,8 +13,8 @@ pkgbase = chemdoodle
 	depends = libnet
 	depends = libxxf86vm
 	depends = alsa-lib
-	source = chemdoodle-10.4.0.bin::https://www.ichemlabs.com/downloads/ChemDoodle-linux-10.4.0.bin
-	sha256sums = 0fe00624558dbcbcecddebc223f9ddd9359236d2536e24018c80306e3f09cc2d
+	source = chemdoodle-11.0.0.bin::https://www.ichemlabs.com/downloads/ChemDoodle-linux-11.0.0.bin
+	sha256sums = 0af7b4d190c1c5fe55d4ace7b2da7d4404f9b3641c1b9dc021ba79ab2e0e411d
 	depends_x86_64 = gcc-libs-multilib
 
 pkgname = chemdoodle
