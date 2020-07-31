@@ -1,6 +1,6 @@
 pkgbase = archuseriso
 	pkgdesc = Templates for building Arch Linux Live ISO images. Featuring persistence, encryption.
-	pkgver = 0.4.4.2
+	pkgver = 0.4.4.3
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = archuseriso
 	depends = archiso
 	depends = syslinux
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.4.2.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.4.2.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.4.3.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.4.3.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha256sums = 0d67077a4384c985e761a57df4c203dd36afa9c20f00bd55858e5580128d2dc7
+	sha256sums = 123b656709af4135aafa1a5f9da0c1c52a140ef9b8f266d7173ac3c5b8fb7dcf
 	sha256sums = SKIP
-	b2sums = c55d690f2c4ead696f55e13eefe950a23c911f7265b4ed25d16ab90588f41ba52966375f273958aa143884d82fe6d508b276b24d724a5a147e606c55496ce6d4
+	b2sums = 27f5bf0369ed17fa148c1e39125a4af48b93c82caaa5c0785559ec8f545a5dd1757013f96662b40e3cefdf2de4f0eff17817e2b35979c09edc05c5e307d2ff6c
 	b2sums = SKIP
 
 pkgname = archuseriso
