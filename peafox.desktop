@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Peafox
+GenericName=Peafox
+Comment=Firefox fork hardened by default and without the telemetry. 
+Version=1.0
+
+Exec=peafox %u
+Icon=peafox
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupNotify=true
+StartupWMClass=firefox
+Categories=Network;WebBrowser;
