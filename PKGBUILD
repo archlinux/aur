@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.44V0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
