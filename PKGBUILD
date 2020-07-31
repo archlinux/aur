@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.54
 pkgver=5.4.v.54
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -19,6 +19,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
+        # linux package install directives for pacman
+        'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
 	# i2c write rework patch
@@ -30,6 +32,8 @@ sha256sums=('SKIP'
             'ab50d5675abb6736859b0e274ccf27bcba6346541b1940c349ac394eb6297eb3'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
+            #linux install file
+            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
             '27b7fc535ade94b636c3ec4e809e141831e9465a0ef55215a9852b87048629e2'
             #i2c write rework patchfile
@@ -232,7 +236,9 @@ _package-headers() {
   done
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  while read modarch; do
+   rm -rf $modarch
+  done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
 
   #Fix missing vdso files after overhaul
   cp -r "include/vdso/" "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
