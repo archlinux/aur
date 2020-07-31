@@ -1,4 +1,6 @@
 # Maintainer: Caio Novais <caionov08 at gmail dot com>
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2154
 pkgname=pfetch
 pkgver=0.6.0
 pkgrel=1
