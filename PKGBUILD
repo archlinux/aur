@@ -23,7 +23,9 @@ depends=('python-pyqt5'
          'python-gputil'
          'python-coloredlogs'
          'python-prompt_toolkit1014'
-         'ttf-fira-code')
+         'ttf-fira-code'
+         'smartmontools'
+         'nvme-cli')
 makedepends=('python-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
