@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha
 pkgver=1.3.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
 url='https://github.com/fredcox/gonha'
@@ -23,6 +23,7 @@ depends=('python-pyqt5'
          'python-numpy'
          'python-country_list'
          'python-unit-convert'
+         'python-portolan'
          'python-gputil')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
