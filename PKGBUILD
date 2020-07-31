@@ -2,7 +2,7 @@
 
 _hkgname=ghc-exactprint
 pkgname=haskell-ghc-exactprint
-pkgver=0.6.2
+pkgver=0.6.3.2
 pkgrel=1
 pkgdesc="Using the API Annotations available from GHC 7.10.2, this library provides a means to round trip any code that can be compiled by GHC, currently excluding lhs files."
 url="https://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ license=("custom:BSD3")
 depends=('ghc-libs' 'haskell-ghc-paths' 'haskell-syb' 'haskell-free')
 makedepends=('ghc' 'haskell-filemanip' 'haskell-hunit' 'haskell-diff' 'haskell-silently')
 source=("https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('2c0e45472db6d3ac5f3d244919672453caf26a8251407fc52a598137775ca7b50cfdb297a1fbb86bc2ce748e40097ff39aa8fc8b3c2014205b3a7f6acad961c2')
+sha512sums=('ab6965a7787a44fe637cc26b827ce657eecdd91659baf8bd1e504ef482ba104dc1bb3785179404357f67e336bf7813aab6b1e9381816f4a899fff4cde6066df6')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
