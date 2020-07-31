@@ -2,8 +2,8 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=jspeak
 _pkgname=JSpeak
-pkgver=2020.7.26
-pkgrel=4
+pkgver=2020.7.31
+pkgrel=5
 pkgdesc='A Text to Speech Reader Front-end that Reads from the Clipboard and with Exceptionable Features '
 arch=('any')
 url="https://github.com/BullShark/$_pkgname"
@@ -14,9 +14,17 @@ source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver-$pkgre
 sha256sums=('SKIP')
 
 package() {
+  mkdir -p $pkgdir/usr/lib
+	cp -a $srcdir/usr/lib/jspeak $pkgdir/usr/lib/jspeak
+
   mkdir -p $pkgdir/usr/local
 	cp -a $srcdir/usr/local/bin $pkgdir/usr/local/bin
   chmod +x $pkgdir/usr/local/bin/$pkgname
-  mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/usr/lib/jspeak $pkgdir/usr/lib/jspeak
+
+  mkdir -p $pkgdir/usr/share/applications
+        cp -a $srcdir/usr/share/applications/jspeak.desktop $pkgdir/usr/share/applications/jspeak.desktop
+
+  mkdir -p $pkgdir/usr/share/piximaps
+        cp -a $srcdir/usr/share/piximaps/jspeak.png $pkgdir/usr/share/piximaps/jspeak.png
 }
+
