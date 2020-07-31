@@ -1,11 +1,11 @@
-# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Maintainer: Jeffrey Bouter <jb@warpnet.nl>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=salt-lint
 epoch=
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=00
 pkgdesc='A command-line utility that checks for best practices in SaltStack.'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/dc/82/a43a7c385efb19810691a3fda5676c5e233d405ffb55d408bfa8453d272c/salt_lint-0.3.0-py3-none-any.whl)
-md5sums+=(24bee23b1e8aa9145539d13e8f67a0a2)
-noextract+=(salt_lint-0.3.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/99/ff/25a170ad483284692c9105038c68d3a80220d259e555e4ecd37fce13bef6/salt_lint-0.4.0-py3-none-any.whl)
+md5sums+=(cfdac957c532278428580ee5c0ff0409)
+noextract+=(salt_lint-0.4.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(cbbaec5f9f4ae8e04a44ed3ae41b5071)
 
