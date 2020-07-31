@@ -95,6 +95,6 @@ fi
 	mkdir -p "${pkgdir}"/usr/share/icons
 	install -m755 icon-mage.png "${pkgdir}"/usr/share/icons/
 	mkdir -p "${pkgdir}"/usr/share/applications
-	install -m755 xmage.desktop "${pkgdir}"/usr/share/applications/xmage.desktop
+	install -m755 ../xmage.desktop "${pkgdir}"/usr/share/applications/xmage.desktop
 }
 
