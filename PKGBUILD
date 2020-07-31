@@ -1,8 +1,8 @@
 # Maintainer: Ethan Skinner (etskinner) <etskinner@gmail.com>
 pkgname=spigot-plugin-luckperms
-pkgver=$_pkgver+b$_buildver
 _pkgver=5.1.84
 _buildver=1143
+pkgver=$_pkgver+b$_buildver
 pkgrel=1
 pkgdesc="An advanced permissions plugin for Bukkit/Spigot, BungeeCord and Sponge."
 arch=(any)
