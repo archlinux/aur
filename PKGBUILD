@@ -3,13 +3,13 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.7.1.r19.ge0d757a395d1
+pkgver=5.7.7.r190.g62a6be503ef8
 _kernel_rel=5.7
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
-url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
+url="https://gitlab.com/post-factum/pf-kernel/-/wikis/README"
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole
@@ -21,12 +21,13 @@ _srcname="${pkgbase}"
 source=(
   "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
   config
+  sphinx-workaround.patch
   pf_defconfig
-  sphinx-workaround.patch)
+)
 sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e')
 
 pkgver() {
   cd "${_srcname}"
@@ -45,7 +46,6 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  # _pfrel=`git describe --abbrev=0 --tags| cut -d'-' -f2|sed 's/pf//g'`
 
   local src
   for src in "${source[@]}"; do
@@ -97,7 +97,7 @@ _package-git() {
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm "$modulesdir"/{source,build}
+  rm -f "$modulesdir"/{source,build}
 }
 
 _package-headers-git() {
