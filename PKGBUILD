@@ -1,8 +1,9 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
-# Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
+# Contributor: Fabio Loli
+# Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.3.3.r351.4993cd5
+pkgver=1.3.3.r358.dd4b583
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -22,6 +23,8 @@ pkgver() {
 
 build() {
 	# customize the output of liquidctl --version
+	# (note: in ArchLinux /etc/os-release is a symlink managed by systemd,
+	# see: https://bbs.archlinux.org/viewtopic.php?id=251724)
 	export DIST_NAME="$(source /etc/os-release && echo $PRETTY_NAME)"
 	export DIST_PACKAGE="$pkgname $pkgver-$pkgrel"
 
@@ -37,7 +40,8 @@ package() {
 	install -Dm644 -t "$pkgdir/usr/share/doc/liquidctl/linux" docs/linux/*.md
 	install -Dm644 extra/linux/71-liquidctl.rules "$pkgdir/usr/lib/udev/rules.d/71-liquidctl.rules"
 
-	# optional (mostly example scripts, but may be useful in some cases):
+	# optional scripts, originally intended as examples, but that may be
+	# useful in some scenarios (note: versioned separately from liquidctl):
 	# install -D extra/yoda "$pkgdir/usr/bin/liquidctl-yoda"
 	# install -D extra/liquiddump "$pkgdir/usr/bin/liquidctl-dump"
 }
