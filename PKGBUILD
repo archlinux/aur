@@ -29,9 +29,10 @@ source=(
   0007-x86-bump-ZO_z_extra_bytes-margin-for-zstd.patch
   0008-x86-Add-support-for-ZSTD-compressed-kernel.patch
   0009-.gitignore-add-ZSTD-compressed-files.patch
+  enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch
 )
 sha256sums=('SKIP'
-            'b76a84a8b34e23214bdc6aa2353ccd0f235a92b3c0e33cf5a29b81dec7feaa90'
+            '8a7da84f09755b5cfbc459ff04e61682f2e9709015989b91f76b9adb41b52447'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '67a0300b0b98b7339799781b71114b4ecbba5808001917173fcf6a50f1944051'
             'c51ecd4fdf6b72c64da014a31943b488968a23e7e803ba46c577782d59eeef81'
@@ -41,7 +42,8 @@ sha256sums=('SKIP'
             '2e187f5107496218eb6ff0624f2ec402e9e0e88f23e9d0879b2ac436ff19eb55'
             'a1414049540146dc9786b4736ed86d937d6c2e88a7868488d7d8ea873c4cb2fa'
             'c19fcfe5a8808e0446b3598705a63c42edfe80427f06da6cd459d1477ecc51f9'
-            'e0be06345b71474f5ff76afddd3b9a6a6d18952cdcaeb8434207621ebcf4c7db')
+            'e0be06345b71474f5ff76afddd3b9a6a6d18952cdcaeb8434207621ebcf4c7db'
+            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
