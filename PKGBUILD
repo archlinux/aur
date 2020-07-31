@@ -1,13 +1,13 @@
 # Maintainer: Andy Nicholson <andrew@anicholson.net>
 
 pkgname=k6
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
 url="https://github.com/loadimpact/k6"
 license=('AGPL3')
-depends=('go')
+depends=('go>=1.14')
 makedepends=('mercurial')
 options=('!strip' '!emptydirs')
 _gourl=github.com/loadimpact/k6
