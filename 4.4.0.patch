@@ -7,7 +7,7 @@ index d9bc871126a304d5ddb8fb3695b7258d0e25decb..8434628e5f6b26bcaaa5f53e8cde55a5
    endforeach
  else
 -  opencv_dep = dependency('opencv4', version : ['>= 4.0.0', '< 4.2.0'], required : false)
-+  opencv_dep = dependency('opencv4', version : ['>= 4.0.0', '< 4.4.0'], required : false)
++  opencv_dep = dependency('opencv4', version : ['>= 4.0.0', '< 4.5.0'], required : false)
    opencv_found = opencv_dep.found()
    if opencv_found
      foreach h : libopencv4_headers
