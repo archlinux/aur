@@ -2,7 +2,7 @@
 
 _name=scanpydoc
 pkgname=python-$_name
-pkgver=0.4.5
+pkgver=0.5
 pkgrel=1
 pkgdesc='A series of Sphinx extensions to get easy to maintain, numpydoc style documentation.'
 arch=(any)
@@ -12,12 +12,13 @@ depends=(python-sphinx python-get_version)
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('90e8258157744718879e62f5ce8487d2740056bac8d95d267f9bb04ee7e33d9a')
+sha256sums=('d6527f4d4bafa5a87fbb65613b0e3fe9c7b02cc9c3775de1795e183d9621af0f')
 noextract=("$_wheel")
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
+	#fix permissions
 	find "$site" -type f -exec chmod 644 {} \;
 }
