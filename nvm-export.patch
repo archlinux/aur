@@ -31,7 +31,7 @@ index 7cb5ffb..c2b1d84 100755
 --- a/src/base/reconstruction.h
 +++ b/src/base/reconstruction.h
 @@ -229,7 +229,7 @@ class Reconstruction {
-   void ImportPLY(const std::string& path);
+   void ImportPLY(const std::vector<PlyPoint>& ply_points);
  
    // Export to other data formats.
 -  bool ExportNVM(const std::string& path) const;

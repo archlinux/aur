@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.6.dev.3.r32.g19bf5b2
+	pkgver = 3.6.r3.gd1176fe
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = colmap-git
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin
 	sha256sums = SKIP
-	sha256sums = d8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36
+	sha256sums = 566331937811f643da5e4c2e5decae3927e7df293c0647acf2e4789ff2a43750
 	sha256sums = 531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686
 	sha256sums = d37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2
 	sha256sums = d2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a
