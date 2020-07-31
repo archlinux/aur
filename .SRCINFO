@@ -1,7 +1,7 @@
 pkgbase = gonha-git
 	pkgdesc = Light-weight system monitor for Linux
-	pkgver = r149.ea83cc4
-	pkgrel = 3
+	pkgver = r164.db10ab0
+	pkgrel = 1
 	url = https://github.com/fredcox/gonha
 	arch = any
 	license = MIT

@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=r149.ea83cc4
-pkgrel=3
+pkgver=r164.db10ab0
+pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
 url='https://github.com/fredcox/gonha'
@@ -36,14 +36,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "${pkgname%-git}"
-  python setup.py build
-}
+#build() {
+#  cd "${pkgname%-git}"
+#  python setup.py build
+#}
 
 package() {
   cd "${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 #--skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
