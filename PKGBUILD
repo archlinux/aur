@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.7
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -320,7 +320,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('70dad9d4469f620df840dc00930218805df7fedb4cc2836df913eed36bf2c70c94c9256e7490db4ee6a40c49dd509ab9a46e4eb46c4c28ebebfbffeba48b944d'
+sha512sums=('8630936f2ea67fa4eaeea759f91dd71e35c294947ae6f71953ac3d99e5f93971f8c2b9e0eb18b09a35a3993e7ef648ca17160600aa07ea24f3beed44f3ed5a75'
             'SKIP'
             'd383ff21c59aaccffbf9fac412495383118612ddbe6bf06691e2038d2b886754d2ba85b29f970f548103e1d0be519d114ba4641f29d329b604c7456db36ff193'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
