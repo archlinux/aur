@@ -69,16 +69,16 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  eval ${LOCAL_MAKE_FLAGS} make olddefconfig
+  eval ${LOCAL_MAKE_FLAGS} make -j$(nproc) olddefconfig
 
-  eval ${LOCAL_MAKE_FLAGS} make -s kernelrelease > version
+  eval ${LOCAL_MAKE_FLAGS} make -j$(nproc) -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  eval ${LOCAL_MAKE_FLAGS} make all
-  eval ${LOCAL_MAKE_FLAGS} make htmldocs
+  eval ${LOCAL_MAKE_FLAGS} make -j$(nproc) all
+  eval ${LOCAL_MAKE_FLAGS} make -j$(nproc) htmldocs
 }
 
 _package() {
@@ -96,13 +96,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(${LOCAL_MAKE_FLAGS} make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(${LOCAL_MAKE_FLAGS} make -j$(nproc) -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  eval ${LOCAL_MAKE_FLAGS} make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  eval ${LOCAL_MAKE_FLAGS} make -j$(nproc) INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
