@@ -3,7 +3,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=bitwarden-bin
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
@@ -29,4 +29,4 @@ package(){
 	chmod 4755 $pkgdir/opt/Bitwarden/chrome-sandbox
 }
 
-sha512sums=('e6b76002990f395fa315f667c2f003987b593a0840ce50fd8abd46eaf5a596e563f489bed855d4e4672f622cad6557a81e2375cc03c7d1a4c2cc80feac631675')
+sha512sums=('d1fd3268a43ead32c14c09db95b32372992d08e4a66a443638643e703854ea62fe5d318ed08a0e0c73b6a7bc3b283546e07249a28ba3976ec6caf3af27c96234')
