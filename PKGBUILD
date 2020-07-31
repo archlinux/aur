@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=notp-git
-pkgver=v2.1.0.r57.g0aa13af
+pkgver=2.1.0.r57.g0aa13af
 pkgrel=1
 pkgdesc="One Time Password Generator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
