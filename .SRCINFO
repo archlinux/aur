@@ -1,6 +1,6 @@
 pkgbase = spigot-plugin-luckperms
 	pkgdesc = An advanced permissions plugin for Bukkit/Spigot, BungeeCord and Sponge.
-	pkgver = +b
+	pkgver = 5.1.84+b1143
 	pkgrel = 1
 	url = https://github.com/lucko/LuckPerms
 	arch = any
