@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+_subarch=11
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -105,7 +105,7 @@ validpgpkeys=(
 )
 md5sums=('ffdb73ce9e792e141baa72628dd21230'
          'SKIP'
-         'dd2441189c14b66f1f051121d5602345'
+         '69886bccefd16be041e7dac38e35b1fd'
          '2cebdad39da582fd6a0c01746c8adb42'
          'cb960fcd1691d360491ed5c97a63a032'
          'b10e4c612d5240d66fad8f1c50fe3242'
