@@ -1,20 +1,22 @@
-# Maintainer: Jni <jni.viens at protonmail dot com>
+# Maintainers: goetzc
+# Contributors: Jni <jni.viens at protonmail dot com>
 pkgname=bitrise
-pkgver=1.3.5
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/bitrise-io/bitrise"
 license=('MIT')
-depends=(envman stepman)
-provides=(bitrise)
+provides=('bitrise')
+optdepends=('envman' 'stepman')
 install=$pkgname.install
-source=(https://github.com/bitrise-io/bitrise/releases/download/1.3.4/bitrise-Linux-$CARCH
+source=("https://github.com/bitrise-io/bitrise/releases/download/$pkgver/bitrise-Linux-$CARCH"
         https://raw.githubusercontent.com/bitrise-io/bitrise/master/LICENSE)
-md5sums=('1bc712c3ac35d12c6796c4e87ecff083'
-         '10c39cc7466456c17298b32d04bfa8d9')
 
 package() {
   install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "$srcdir/$pkgname-Linux-$CARCH" "$pkgdir/usr/bin/bitrise"
 }
+
+sha256sums=('d75cc141c159d9f52c109114483d9d0ce7679509904721489f4991921472bef2'
+            'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
