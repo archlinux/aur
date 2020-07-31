@@ -17,6 +17,7 @@ url='https://unetbootin.github.io'
 depends=('syslinux' 'p7zip' 'qt5-base' 'mtools')
 makedepends=('git' 'qt5-tools')
 provides=('unetbootin')
+conflicts=('unetbootin')
 optdepends=('polkit: run unetbootin directly from menu'
             'zenity: display an error if no authentication agent is found')
 source=("${pkgname}::git+https://github.com/Chemrat/unetbootin.git"
@@ -35,8 +36,8 @@ b2sums=('SKIP'
 prepare() {
 	cd "${pkgname}"
 	patch --forward --strip=1 --input="${srcdir}/remove-qt-x11-no-mitshm.patch"
-	cd "src/unetbootin"
 
+	cd "src/unetbootin"
 	# Use Qt5 build tools instead
 	sed -i -e 's/-qt4/-qt5/g' build-nostatic
 
