@@ -7,13 +7,13 @@
 
 pkgname=musique
 pkgver=1.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('phonon-qt5' 'taglib' 'mpv')
+depends=('taglib' 'mpv')
 optdepends=('finetune')
 makedepends=('git' 'qt5-tools')
 source=("git+${_giturl}/musique.git#tag=${pkgver}" "git+${_giturl}/http.git" "git+${_giturl}/idle.git" "git+${_giturl}/media.git")

@@ -1,13 +1,12 @@
 pkgbase = musique
 	pkgdesc = A finely crafted music player
 	pkgver = 1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-tools
-	depends = phonon-qt5
 	depends = taglib
 	depends = mpv
 	optdepends = finetune
