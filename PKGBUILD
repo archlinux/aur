@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
 pkgver=3.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
 arch=('i686' 'x86_64')
@@ -24,13 +24,18 @@ optdepends=('doxygen: generate documentation'
             'swig: build interface to APIs')
 makedepends=('cmake')
 _name=OpenVSP-OpenVSP_${pkgver}
-source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('8abda9fe84dd9414e43bd781625e66e64c729ccd096cf187e0fbfe28ae59c880')
+source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz"
+        "browser-launch.patch"::"https://github.com/OpenVSP/OpenVSP/commit/970d41dd53bd7307da597a72cde7a1b2b7595b33.patch")
+sha256sums=('8abda9fe84dd9414e43bd781625e66e64c729ccd096cf187e0fbfe28ae59c880'
+            'b7a8cf2275974a2c6acc907ef0d9a934d984a32ab498c87060033f00c81ac0fb')
 
 prepare() {
 
   # Add -lcblas to cmake flags
   sed -i -e 's/X_FLAGS} -fPIC/X_FLAGS} -lcblas -fPIC/g' ${srcdir}/${_name}/SuperProject/CMakeLists.txt
+
+  cd "${srcdir}/${_name}"
+  patch --forward --strip=1 --input="${srcdir}/browser-launch.patch"
 
 }
 

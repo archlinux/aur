@@ -1,7 +1,7 @@
 pkgbase = openvsp
 	pkgdesc = OpenVSP allows the user to create a 3D model of an aircraft defined by common engineering parameters.
 	pkgver = 3.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openvsp.org
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,9 @@ pkgbase = openvsp
 	optdepends = python: python API module
 	optdepends = swig: build interface to APIs
 	source = openvsp-3.21.2::https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_3.21.2.tar.gz
+	source = browser-launch.patch::https://github.com/OpenVSP/OpenVSP/commit/970d41dd53bd7307da597a72cde7a1b2b7595b33.patch
 	sha256sums = 8abda9fe84dd9414e43bd781625e66e64c729ccd096cf187e0fbfe28ae59c880
+	sha256sums = b7a8cf2275974a2c6acc907ef0d9a934d984a32ab498c87060033f00c81ac0fb
 
 pkgname = openvsp
 
