@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.symphytum</id>
+  <launchable type="desktop-id">symphytum.desktop</launchable>
+  <name>Symphytum</name>
+  <summary>Easy-to-use personal database software</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>BSD-2-Clause</project_license>
+  <description>
+    <p>Symphytum is a free and open-source personal database software written in C++ and Qt for Windows, macOS and Linux. Design and edit simple databases in a visual and intuitive way, without any need to study complex database languages. Symphytum is directed at users who just want to organize data in custom designed collections without giving up advantages of database engines like fast loading speed, large data set handling, fast searching, sorting and more.</p>
+    <p>Manage all kind of data ranging from contacts, inventory, any type of collection, customers and so on. There are limitations though, Symphytum is not able to handle relational data and automatic field calculations yet. Also the import from CSV files is very limited, all imported data sets are handled just as text fields, future improvements to the import dialog, to specify each field type, are planned though.</p>
+    <p>Symphytum is able to synchronise your data through different cloud services like Dropbox or MEGA. It can detect and handle sync conflicts in case multiple user are using the same database via a supported cloud service.</p>
+    <p>Technically Symphytum is powered by the SQLite database engine, which is the leading embedded database solution, used in many mobile apps and modern computer programs, like web browsers, media players and email clients. SQLite is tiny, efficient and very fast. It can handle huge amount of data while being highly resistant to data corruption.</p>
+    <p>Features:</p>
+    <ul>
+      <li>Fields Are Not Just Text. Design your input forms with support for different data types: text, numeric, date, progress, image, file list, checkbox, combobox, etc.</li>
+      <li>Two Views On The Same Data. Use the form view for structured data input and representation, use the table-like view for searching, sorting and comparing.</li>
+      <li>Dynamic Layout Engine. Rearrange dynamically your database layout by drag and drop in form view.</li>
+      <li>Integrated Cloud Sync. Using Symphytum across multiple computers is a joy. Your data is always automatically synchronised everywhere. Drivers for cloud services such as Dropbox and MEGA are included.</li>
+      <li>Sync Conflict Management. Symphytum manages synchronisation conflicts for you. While only one session with write access is allowed at the same time, other computers may access the database in read-only mode during an open session.</li>
+      <li>Date Reminder. Date fields keep you informed on tasks, appointments or birthdays, if requested. All Reminders, once triggered, are listed in one place.</li>
+      <li>Fast Search. Search while typing with highlighted results in a table view.</li>
+      <li>Backup and Export. Backup your data with a simple backup wizard and export your data to CSV.</li>
+      <li>Multilingual. User interface available in English, German, Polish, French and Italian.</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/giowck/symphytum/master/stuff/screenshots/mainwindow.png</image>
+      <caption>Form view</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/giowck/symphytum/master/stuff/screenshots/tablieview.png</image>
+      <caption>Table view</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/giowck/symphytum/master/stuff/screenshots/dynamic_layout.gif</image>
+      <caption>Dynamic layout engine</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/giowck/symphytum/master/stuff/screenshots/addfield.png</image>
+      <caption>Create field</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/giowck/symphytum/master/stuff/screenshots/cloudsync.png</image>
+      <caption>Cloud sync</caption>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/giowck/symphytum/issues</url>
+  <url type="homepage">https://github.com/giowck/symphytum</url>
+</component>
