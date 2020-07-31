@@ -4,7 +4,7 @@
 pkgname="auryo"
 _desktopname="auryo"
 _fullpkgname="Auryo"
-pkgver=2.4.0
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
@@ -13,7 +13,7 @@ license=("GPL3")
 makedepends=('npm' 'yarn')
 conflicts=('auryo-bin' 'auryo-git')
 source=("https://github.com/Superjo149/auryo/archive/v${pkgver}.tar.gz")
-md5sums=('780f6539eb5ab6f11ada0e53b1cbd269')
+md5sums=('57b79057961f5accdad5e529fa0dc8d2')
 _replace_str="\/opt\/${_fullpkgname}\/${_fullpkgname}"
 
 prepare() {
@@ -27,12 +27,12 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     yarn install
     yarn build
-    yarn run package:linux
+    yarn electron-builder --linux pacman
 }
 
 package() {
-    mkdir "${srcdir}/${pkgver}"
-    tar -xvf ${srcdir}/${pkgname}-${pkgver}/release/${pkgname}-${pkgver}.pacman -C ${srcdir}/${pkgver}
+    mkdir -p "${srcdir}/${pkgver}"
+    tar -xvf ${srcdir}/${pkgname}-${pkgver}/build/release/${pkgname}-${pkgver}.pacman -C ${srcdir}/${pkgver}
     cd "${srcdir}/${pkgver}"
     install -dm755 "${pkgdir}/opt/"
     install -dm755 "${pkgdir}/usr/share/applications/"
