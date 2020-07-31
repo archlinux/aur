@@ -47,7 +47,6 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-# TODO: Switch to LLVM=1 when 5.8 is released
 LOCAL_MAKE_FLAGS="LLVM=1"
 
 prepare() {
