@@ -17,7 +17,7 @@
 
 
 pkgname='tor-browser-behind-tor'
-pkgver='9.5.1'
+pkgver='9.5.3'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -83,16 +83,12 @@ source=("tor-browser.desktop"
 	"tor-browser.png"
 	"tor-browser.sh")
 
-### IMPORTANT #################################################################
-# No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
-# with each release, everything is done automatically! Leave them like this!  #
-###############################################################################
 sha256sums=('9ee0a4672e2d0835ffb94bcf26e17b56432030496a9cdf019b70c96083c24340'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '89118837e6db1d7b089e0067a6430e9a1a8602a64e00b7ea94382abfb0d3e502')
-sha256sums_i686=('74e131b5394b895031937c8f549cdd87e4b8c121c74ff7a8a1e3b52f41aab2b9'
+sha256sums_i686=('cb10c6349d3e25a273cfd8aa77fa672c9b763241fa6f1e42378d98c43b002f9d'
                  'SKIP')
-sha256sums_x86_64=('ad91c18306534c520eb56a5984efec8c62c83f119f9d462c3aae1429f645bba3'
+sha256sums_x86_64=('648931503b886d687828df9730aa284b7c18303682cc82f06c9da4a734c81bcf'
                    'SKIP')
 
 noextract=("tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"
