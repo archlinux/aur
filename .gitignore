@@ -1,3 +1,7 @@
-src
-pkg
-*.tar.*
+*
+!.gitignore
+!kibana.service
+!PKGBUILD
+!.SRCINFO
+!tmpfile.conf
+!user.conf
