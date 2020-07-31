@@ -22,6 +22,7 @@ pkgbase = djpdf
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = tesseract
+	depends = tesseract-data-eng
 	source = https://github.com/Unrud/djpdf/archive/0.1.2/djpdf-0.1.2.tar.gz
 	sha256sums = 60245ca86907f55c03bbd2953f1e033493ddf0fca3a850e347facc7be33cc923
 
