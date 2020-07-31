@@ -3,7 +3,7 @@
 pkgname=sdcv-git
 pkgver=0.5.2.r23.g995bdc5
 pkgrel=1
-pkgdesc="StarDict Console Version"
+pkgdesc="StarDict Console Version - Git version"
 arch=('x86_64')
 url="https://dushistov.github.io/sdcv/"
 license=('GPL')
