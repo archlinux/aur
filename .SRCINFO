@@ -1,7 +1,7 @@
 pkgbase = libdigidocpp
 	pkgdesc = Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards
 	pkgver = 3.14.3.1399
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686

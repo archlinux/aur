@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
 pkgver=3.14.3.1399
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
