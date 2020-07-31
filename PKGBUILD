@@ -3,8 +3,9 @@
 # Debian Upstream Maintainer: IOhannes m zmölnig <umlaeute at debian.org>
 
 pkgname=pd-lua-git
-pkgver=47.8eaaaa3
+pkgver=0.10.1.r11.g3feda95
 pkgrel=1
+epoch=1
 pkgdesc="Lua bindings for Pd"
 arch=("i686" "x86_64")
 license=('GPL')
@@ -22,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $srcdir/pd-lua
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
