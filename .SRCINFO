@@ -1,7 +1,7 @@
 pkgbase = gerbera
 	pkgdesc = UPnP Media Server (Based on MediaTomb)
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
 	arch = i686
@@ -25,10 +25,10 @@ pkgbase = gerbera
 	depends = libmatroska
 	optdepends = libmariadbclient
 	options = emptydirs
-	source = gerbera-1.5.0.tar.gz::https://github.com/gerbera/gerbera/archive/v1.5.0.tar.gz
+	source = gerbera-1.6.0.tar.gz::https://github.com/gerbera/gerbera/archive/v1.6.0.tar.gz
 	source = gerbera.sysusers
 	source = gerbera.tmpfiles
-	sha256sums = 693a99b295bc79d842f036a6d04996d4676ac0791d65f3a1f7aab4badf9fb5ef
+	sha256sums = 3a4956ec5fea1101e8daa32d9cfb985db908a49e2ac6137a1b2bf509e2684a6c
 	sha256sums = 0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc
 	sha256sums = 452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8
 

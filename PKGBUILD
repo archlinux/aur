@@ -4,8 +4,8 @@
 # Contributor: Francois Menning <f.menning@pm.me>
 
 pkgname=gerbera
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/gerbera/gerbera"
@@ -18,14 +18,14 @@ options=('emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gerbera/gerbera/archive/v$pkgver.tar.gz"
 	gerbera.sysusers
 	gerbera.tmpfiles)
-sha256sums=('693a99b295bc79d842f036a6d04996d4676ac0791d65f3a1f7aab4badf9fb5ef'
+sha256sums=('3a4956ec5fea1101e8daa32d9cfb985db908a49e2ac6137a1b2bf509e2684a6c'
             '0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc'
             '452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	sed -i 's/${PC_UPNP_LIBRARIES}//g' cmake/FindLibUpnp.cmake
+	sed -i 's/${PC_UPNP_LIBRARIES}//g' cmake/Findpupnp.cmake
 	export PKG_CONFIG_PATH="/usr/lib/libupnp-1.12/pkgconfig/:${PKG_CONFIG_PATH}"
 	# Gerbera build options can be found here: https://github.com/gerbera/gerbera/blob/master/CMakeLists.txt
 	# use sqlite backend
