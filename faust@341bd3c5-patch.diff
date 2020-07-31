@@ -1,0 +1,204 @@
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index e4d12e08d..be0590395 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -181,13 +181,17 @@ if (INCLUDE_LLVM )
+ 		endif()
+ 	endif()
+ 
+-	string (REGEX REPLACE "([0-9])\\.([0-9]).*" "LLVM_\\1\\2" LLVM_VERSION ${LLVM_PACKAGE_VERSION})
++	string (REGEX REPLACE "([0-9]+)\\.([0-9]+).*" "LLVM_\\1\\2" LLVM_VERSION ${LLVM_PACKAGE_VERSION})
+ 
+ 	# the declarations below are redundant but necessary to cope with different cmake behaviors on different platforms
+ 	set (TMP ${SRCDIR}/generator/llvm)
+ 	set_property(SOURCE ${TMP}/llvm_dsp_aux.cpp ${TMP}/llvm_dynamic_dsp_aux.cpp APPEND_STRING PROPERTY COMPILE_FLAGS "-fno-rtti ${LLVM_DEFINITIONS}")
+ 	set_property(SOURCE ${TMP}/llvm_dsp_aux.cpp ${TMP}/llvm_dynamic_dsp_aux.cpp APPEND_STRING PROPERTY CMAKE_CXX_FLAGS "-fno-rtti ${LLVM_DEFINITIONS}")
+ 	set (FAUST_LIBS ${FAUST_LIBS} ${LLVM_LD_FLAGS} ${LLVM_LIBS})
++
++	if("${LLVM_PACKAGE_VERSION}" VERSION_GREATER_EQUAL 10)
++         set (CMAKE_CXX_STANDARD 14)
++	endif()
+ endif()
+ 
+ ####################################
+diff --git a/compiler/generator/llvm/llvm_code_container.cpp b/compiler/generator/llvm/llvm_code_container.cpp
+index ae88a24d9..60af94672 100644
+--- a/compiler/generator/llvm/llvm_code_container.cpp
++++ b/compiler/generator/llvm/llvm_code_container.cpp
+@@ -68,7 +68,7 @@ LLVMCodeContainer::LLVMCodeContainer(const string& name, int numInputs, int numO
+ 
+     // Set "-fast-math"
+     FastMathFlags FMF;
+-#if defined(LLVM_60)
++#if defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+     FMF.setFast();  // has replaced the below function
+ #else
+     FMF.setUnsafeAlgebra();
+@@ -98,7 +98,7 @@ LLVMCodeContainer::LLVMCodeContainer(const string& name, int numInputs, int numO
+ 
+     // Set "-fast-math"
+     FastMathFlags FMF;
+-#if defined(LLVM_60)
++#if defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+     FMF.setFast();  // has replaced the below function
+ #else
+     FMF.setUnsafeAlgebra();
+@@ -220,7 +220,7 @@ void LLVMCodeContainer::generateComputeBegin(const string& counter)
+         Function::Create(llvm_compute_type, GlobalValue::ExternalLinkage, "compute" + fKlassName, fModule);
+     llvm_compute->setCallingConv(CallingConv::C);
+ 
+-#if !defined(LLVM_50) && !defined(LLVM_60)
++#if !defined(LLVM_50) && !defined(LLVM_60) && !defined(LLVM_70) && !defined(LLVM_80) && !defined(LLVM_90) && !defined(LLVM_100)
+     llvm_compute->setDoesNotAlias(3U);
+     llvm_compute->setDoesNotAlias(4U);
+ #endif
+diff --git a/compiler/generator/llvm/llvm_dsp_aux.cpp b/compiler/generator/llvm/llvm_dsp_aux.cpp
+index 725a5d248..4a3e077e4 100644
+--- a/compiler/generator/llvm/llvm_dsp_aux.cpp
++++ b/compiler/generator/llvm/llvm_dsp_aux.cpp
+@@ -37,7 +37,7 @@
+ #include <llvm/Support/FileSystem.h>
+ #include <llvm/Support/TargetSelect.h>
+ 
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+ #include <llvm/Bitcode/BitcodeReader.h>
+ #include <llvm/Bitcode/BitcodeWriter.h>
+ #else
+diff --git a/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp b/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp
+index df0b590f6..c20e7b7db 100644
+--- a/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp
++++ b/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp
+@@ -73,7 +73,7 @@
+ #include <llvm/Target/TargetLibraryInfo.h>
+ #endif
+ 
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+ #include <llvm/Bitcode/BitcodeReader.h>
+ #include <llvm/Bitcode/BitcodeWriter.h>
+ #include <llvm/Transforms/IPO/AlwaysInliner.h>
+@@ -82,6 +82,11 @@
+ #include <llvm/Support/raw_ostream.h>
+ #endif
+ 
++#if defined(LLVM_100)
++#include <llvm/InitializePasses.h>
++#include <llvm/Support/CodeGen.h>
++#endif
++
+ using namespace llvm;
+ using namespace std;
+ 
+@@ -118,7 +123,7 @@ static bool isParam(int argc, const char* argv[], const string& param)
+     return false;
+ }
+ 
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+ static Module* ParseBitcodeFile(MEMORY_BUFFER Buffer, LLVMContext& Context, string* ErrMsg)
+ {
+     using namespace llvm;
+@@ -162,7 +167,11 @@ void llvm_dynamic_dsp_factory_aux::write(std::ostream* out, bool binary, bool sm
+     string             res;
+     raw_string_ostream out_str(res);
+     if (binary) {
++#if defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
++        WriteBitcodeToFile(*fModule, out_str);
++#else
+         WriteBitcodeToFile(fModule, out_str);
++#endif
+     } else {
+         out_str << *fModule;
+     }
+@@ -174,7 +183,11 @@ string llvm_dynamic_dsp_factory_aux::writeDSPFactoryToBitcode()
+ {
+     string             res;
+     raw_string_ostream out(res);
++#if defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
++    WriteBitcodeToFile(*fModule, out);
++#else
+     WriteBitcodeToFile(fModule, out);
++#endif
+     out.flush();
+     return base64_encode(res);
+ }
+@@ -183,7 +196,11 @@ void llvm_dynamic_dsp_factory_aux::writeDSPFactoryToBitcodeFile(const string& bi
+ {
+     STREAM_ERROR   err;
+     raw_fd_ostream out(bit_code_path.c_str(), err, sysfs_binary_flag);
++#if defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
++    WriteBitcodeToFile(*fModule, out);
++#else
+     WriteBitcodeToFile(fModule, out);
++#endif
+ }
+ 
+ // IR
+@@ -234,7 +251,7 @@ static void AddOptimizationPasses(PassManagerBase& MPM, FUNCTION_PASS_MANAGER& F
+         }
+         Builder.Inliner = createFunctionInliningPass(Threshold);
+     } else {
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+         Builder.Inliner = createAlwaysInlinerLegacyPass();
+ #else
+         Builder.Inliner = createAlwaysInlinerPass();
+@@ -317,7 +334,7 @@ bool llvm_dynamic_dsp_factory_aux::initJIT(string& error_msg)
+ 
+         builder.setOptLevel(CodeGenOpt::Aggressive);
+         builder.setEngineKind(EngineKind::JIT);
+-#if !defined(LLVM_60)
++#if !defined(LLVM_60) && !defined(LLVM_70) && !defined(LLVM_80) && !defined(LLVM_90) && !defined(LLVM_100)
+         builder.setCodeModel(CodeModel::JITDefault);
+ #endif
+ 
+@@ -348,7 +365,7 @@ bool llvm_dynamic_dsp_factory_aux::initJIT(string& error_msg)
+ 
+         // -fastmath is activated at IR level, and has to be setup at JIT level also
+ 
+-#if !defined(LLVM_50) && !defined(LLVM_60)
++#if !defined(LLVM_50) && !defined(LLVM_60) && !defined(LLVM_70) && !defined(LLVM_80) && !defined(LLVM_90) && !defined(LLVM_100)
+         targetOptions.LessPreciseFPMADOption = true;
+ #endif
+         targetOptions.AllowFPOpFusion       = FPOpFusion::Fast;
+@@ -357,7 +374,7 @@ bool llvm_dynamic_dsp_factory_aux::initJIT(string& error_msg)
+         targetOptions.NoNaNsFPMath          = true;
+         targetOptions.GuaranteedTailCallOpt = true;
+ 
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+         targetOptions.NoTrappingFPMath = true;
+         targetOptions.FPDenormalMode   = FPDenormal::IEEE;
+ #endif
+@@ -410,7 +427,7 @@ bool llvm_dynamic_dsp_factory_aux::initJIT(string& error_msg)
+             }
+ 
+             if ((debug_var != "") && (debug_var.find("FAUST_LLVM1") != string::npos)) {
+-#if defined(LLVM_60)
++#if defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+             // TargetRegistry::printRegisteredTargetsForVersion(std::cout);
+ #else
+             TargetRegistry::printRegisteredTargetsForVersion();
+@@ -427,7 +444,7 @@ bool llvm_dynamic_dsp_factory_aux::initJIT(string& error_msg)
+             pm.add(createVerifierPass());
+ 
+             if ((debug_var != "") && (debug_var.find("FAUST_LLVM4") != string::npos)) {
+-#if defined(LLVM_38) || defined(LLVM_39) || defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_38) || defined(LLVM_39) || defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+             // TODO
+ #else
+             tm->addPassesToEmitFile(pm, fouts(), TargetMachine::CGFT_AssemblyFile, true);
+diff --git a/compiler/generator/llvm/llvm_instructions.hh b/compiler/generator/llvm/llvm_instructions.hh
+index c1147950d..b9f230f53 100644
+--- a/compiler/generator/llvm/llvm_instructions.hh
++++ b/compiler/generator/llvm/llvm_instructions.hh
+@@ -58,7 +58,7 @@
+ #include <llvm/Support/raw_ostream.h>
+ #include <llvm/Transforms/Scalar.h>
+ 
+-#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60)
++#if defined(LLVM_40) || defined(LLVM_50) || defined(LLVM_60) || defined(LLVM_70) || defined(LLVM_80) || defined(LLVM_90) || defined(LLVM_100)
+ #include <llvm/Bitcode/BitcodeReader.h>
+ #include <llvm/Bitcode/BitcodeWriter.h>
+ #else
