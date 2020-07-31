@@ -1,18 +1,14 @@
 pkgbase = protoc-gen-go-grpc
 	pkgdesc = gRPC bindings generator for Go language
-	pkgver = 1.30.0
-	pkgrel = 3
+	pkgver = 1.31.0
+	pkgrel = 0
 	url = https://github.com/grpc/grpc-go
-	arch = i686
-	arch = x86_64
-	arch = armv5tel
-	arch = armv6l
-	arch = armv71
+	arch = any
 	license = Apache
 	makedepends = go
 	depends = protoc-gen-go
-	source = https://github.com/grpc/grpc-go/archive/v1.30.0.tar.gz
-	sha256sums = add9d2c86ea2611a95957ae97c4369c3fc8b381d4c55ca5c0df9daaa220eda54
+	source = https://github.com/grpc/grpc-go/archive/v1.31.0.tar.gz
+	sha256sums = 9975bd09c992a6fa355da69925aba25957b87b9643bbe62792e928b6355fd805
 
 pkgname = protoc-gen-go-grpc
 
