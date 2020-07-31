@@ -1,7 +1,7 @@
 pkgbase = knemo
 	pkgdesc = The KDE Network Monitor
 	pkgver = 0.7.7.git20151003
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.linux-apps.com/content/show.php?content=12956
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = knemo
 	depends = plasma-framework
 	depends = hicolor-icon-theme
 	options = libtool
-	source = git://git.kde.org/knemo.git#commit=f3afe2e4b6f091f21a64905965abafd2ef46826d
+	source = git+https://github.com/KDE/knemo.git#commit=f3afe2e4b6f091f21a64905965abafd2ef46826d
 	source = knemo-gcc6.patch
 	sha256sums = SKIP
 	sha256sums = 840fe4f68ff6b9e801d98482a0b76f42764332d81071589ac3bc5632bfc49d92
