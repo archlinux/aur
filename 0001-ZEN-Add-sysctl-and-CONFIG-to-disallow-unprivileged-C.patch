@@ -127,6 +127,3 @@ index 8eadadc478f9..c36ecd19562c 100644
  static struct kmem_cache *user_ns_cachep __read_mostly;
  static DEFINE_MUTEX(userns_state_mutex);
  
--- 
-2.27.0
-

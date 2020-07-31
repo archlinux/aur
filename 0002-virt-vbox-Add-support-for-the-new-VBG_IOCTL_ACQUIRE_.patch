@@ -687,6 +687,3 @@ index f79d7abe27db..15125f6ec60d 100644
  /** VBG_IOCTL_CHANGE_GUEST_CAPABILITIES data structure. */
  struct vbg_ioctl_set_guest_caps {
  	/** The header. */
--- 
-2.27.0
-
