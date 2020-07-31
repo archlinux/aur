@@ -20,7 +20,6 @@ depends=(
 	xfconf-git
 	xfdesktop-git
 	xfwm4-git
-	xfwm4-themes-git
 )
 
 package() {

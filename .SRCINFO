@@ -19,7 +19,6 @@ pkgbase = xfce4-git-meta
 	depends = xfconf-git
 	depends = xfdesktop-git
 	depends = xfwm4-git
-	depends = xfwm4-themes-git
 
 pkgname = xfce4-git-meta
 
