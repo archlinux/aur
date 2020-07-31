@@ -1,0 +1,19 @@
+pkgbase = sdcv-git
+	pkgdesc = StarDict Console Version
+	pkgver = 0.5.2.r23.g995bdc5
+	pkgrel = 1
+	url = https://dushistov.github.io/sdcv/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = glib2
+	depends = readline
+	depends = zlib
+	provides = sdcv
+	conflicts = sdcv
+	source = git+https://github.com/Dushistov/sdcv.git
+	md5sums = SKIP
+
+pkgname = sdcv-git
+
