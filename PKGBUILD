@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archi
         "$pkgname.desktop")
 sha256sums=('cea7684aa76caa7e62a9124f6070249b9d90d41ce998f7ebd7d994a3bf25a2bd'
             '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a'
-            '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
+            '123bb8691306c30bf8c57451533dda07c0f77859e44d935b7f04e35e7b7a38f3')
 
 build() {
 	cd "$pkgname-$pkgver"
