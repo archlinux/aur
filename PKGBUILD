@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha
-pkgver=1.3.62
+pkgver=1.3.64
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -27,7 +27,7 @@ depends=('python-pyqt5'
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'https://github.com/fredcox/gonha/raw/master/LICENSE')
-sha256sums=('6441ce0aa3c182a67031e52244b925bd3e2448097afe58dd5a49f820ea894710'
+sha256sums=('a90ae31e062f78ad707bce5ae6d848156ec8893205060da7098b0e3e380f84c8'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 #build() {
