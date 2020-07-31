@@ -2,7 +2,7 @@
 pkgname=notp-git
 pkgver=2.1.0.r57.g0aa13af
 pkgrel=1
-pkgdesc="One Time Password Generator"
+pkgdesc="One Time Password Generator (git)"
 arch=('x86_64')
 url="https://github.com/kondanta/notp"
 license=('MIT')
