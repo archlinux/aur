@@ -4,7 +4,7 @@
 pkgname=java-openjdk-ea-bin
 
 _majorver=15
-_buildver=33
+_buildver=34
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -36,33 +36,33 @@ provides=(
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('6de169c1de7d37e6c5d5b59a12410a908f22576c07f98d9915a586d91909fc12')
+sha256sums=('359d74ed4010ef32ae32bb0665a7a62bc5d440aa17c382f22a6d103bf83589a5')
 else
-sha256sums=('124fd9ba4611895460ff1547df282cd49b0e9ba2f00c9ead211b59142cc642c4')
+sha256sums=('c3d653467f34723f6d2eeb8a1d9c0266f2222af6d07c18f58ca697e8ae2de1c2')
 fi
 
 
 _eaname=java-${_majorver}-openjdk
-_jvmdir=usr/lib/jvm/${_eaname}
+_jvmdir=/usr/lib/jvm/${_eaname}
 
 package() {
   # Install
-  install -d "${pkgdir}/${_jvmdir}"
+  install -d "${pkgdir}${_jvmdir}"
   cd jdk-${_majorver}
-  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
+  cp -a bin include jmods lib release "${pkgdir}${_jvmdir}/"
 
   # Link JKS keystore from ca-certificates-utils
-  rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+  rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
 
   # Legal
   install -d "${pkgdir}/usr/share/licenses/${_eaname}"
   cp -a legal "${pkgdir}/usr/share/licenses/${_eaname}/"
-  ln -s /usr/share/licenses/${_eaname} "${pkgdir}/${_jvmdir}/legal"
+  ln -s /usr/share/licenses/${_eaname} "${pkgdir}${_jvmdir}/legal"
 
   # Conf
   install -d "${pkgdir}/etc"
   cp -r conf "${pkgdir}/etc/${_eaname}"
-  ln -s /etc/${_eaname} "${pkgdir}/${_jvmdir}/conf"
+  ln -s /etc/${_eaname} "${pkgdir}${_jvmdir}/conf"
 }
 # vim:set ts=2 sw=2 et:
