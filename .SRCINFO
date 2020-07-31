@@ -1,15 +1,15 @@
 pkgbase = python-pytest-pycharm
 	pkgdesc = Plugin for pytest to enter PyCharm debugger on uncaught exceptions.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/jlubcke/pytest-pycharm
 	arch = any
 	license = BSD
 	makedepends = python-pip
 	depends = python
-	noextract = pytest_pycharm-0.5.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/p/pytest-pycharm/pytest_pycharm-0.5.0-py3-none-any.whl
-	sha256sums = 9e51c032f5c5953e65aac4b486dd7d7abe4322fc7e951328f229630b3e6bd09f
+	noextract = pytest_pycharm-0.6.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/p/pytest-pycharm/pytest_pycharm-0.6.0-py3-none-any.whl
+	sha256sums = 6d363c98a6f14ae27eb7a4f30be90946fb3c93003365ae18632161fc988de3a7
 
 pkgname = python-pytest-pycharm
 
