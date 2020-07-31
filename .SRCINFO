@@ -1,12 +1,12 @@
 pkgbase = xml-security-c
 	pkgdesc = C++ Implementation of W3C security standards for XML
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://santuario.apache.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = xalan-c
+	depends = xerces-c
 	source = https://www.apache.org/dist/santuario/c-library/xml-security-c-2.0.2.tar.bz2.asc
 	source = https://www.apache.org/dist/santuario/c-library/xml-security-c-2.0.2.tar.bz2
 	validpgpkeys = DCAA15007BED9DE690CD9523378B845402277962
