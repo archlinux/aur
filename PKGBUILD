@@ -1,7 +1,7 @@
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
 
 pkgname=upbge-git
-pkgver=101471.6e94f8ab7d4
+pkgver=101932.d7b695c5250
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ source=('git://github.com/UPBGE/upbge.git' \
 	'blender-translations.git::git://git.blender.org/blender-translations.git' \
 	'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
 	embree.patch \
+	cuda11.patch \
 	upbge.desktop)
 md5sums=(
 	'SKIP' 
@@ -36,6 +37,7 @@ md5sums=(
 	'SKIP' 
 	'SKIP' 
 	'1f0b37cb559e2b03d725677b19b80ba8'
+	'17fb962ec1fd7e539bfa5c5a4af8a675' 
 	'37ce92c740691f858156511e22b40143')
 
 # determine whether we can precompile CUDA kernels
@@ -84,6 +86,8 @@ prepare() {
 	if [ "$_EMBREE_PKG" != "" ]; then
 		git apply -v "${srcdir}"/embree.patch
 	fi
+
+	git apply -v "${srcdir}"/cuda11.patch
 }
 
 build() {

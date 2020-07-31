@@ -1,6 +1,6 @@
 pkgbase = upbge-git
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine
-	pkgver = 101552.3f20e80b755
+	pkgver = 101932.d7b695c5250
 	pkgrel = 1
 	url = https://upbge.org/
 	install = upbge.install
@@ -43,6 +43,7 @@ pkgbase = upbge-git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = embree.patch
+	source = cuda11.patch
 	source = upbge.desktop
 	md5sums = SKIP
 	md5sums = SKIP
@@ -50,6 +51,7 @@ pkgbase = upbge-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 1f0b37cb559e2b03d725677b19b80ba8
+	md5sums = 17fb962ec1fd7e539bfa5c5a4af8a675
 	md5sums = 37ce92c740691f858156511e22b40143
 
 pkgname = upbge-git

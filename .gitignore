@@ -4,5 +4,6 @@
 !upbge.install
 !upbge.desktop
 !embree.patch
+!cuda11.patch
 !.SRCINFO
 !.gitignore
