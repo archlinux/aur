@@ -1,6 +1,6 @@
 pkgbase = simutrans-nightly
 	pkgdesc = Transportation simulation game - Nightly build
-	pkgver = 20200730
+	pkgver = 20200731
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = x86_64
