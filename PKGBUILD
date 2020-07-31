@@ -2,7 +2,7 @@
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=trace-cmd
-pkgver=2.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Userspace tooling for the Linux kernel Ftrace internal tracer"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ makedepends=('python' 'swig' 'asciidoc')
 optdepends=('python: for Python plugins')
 source=("https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/trace-cmd-v${pkgver}.tar.gz"
         "${pkgname}-2.9-make_install.patch")
-sha512sums=('a37390e7ad29c9e7a97e5e7792505fe96a3802d6ea103e7c0f362a7b8cc29a102d483ec1a883b632fd9e0e7297f17866ae5eac59c825f08a8068b431a8f819e1'
+sha512sums=('186bfdd8ff1e88e9e6d3ae87b123f049892deaaa8d6a42944b6f8abee6b828946b88774029aa96daf4423a3dfc01b42835508f44f636dd02579ef9a8ef425131'
             'c9321b2b885d88557a057d7064690274799ab1d67a8babb78b1c54c4d81546fdea7313286cfd5fb9efbbcf87cf8394dcb17202ac88434a351aa652e7109e1db6')
-b2sums=('56421d7fded59b04466b3da7659df8059671a10c22dfc05610b63ee824288323e8935f18abc8a0e82288d12b1ec683bd54bca5047ca22a74b804dc3139792585'
+b2sums=('f7aa2f12b2c90f35390857ed6f5818b74c42be36ce70835d86410f9f4931d27410123baaad007fa2795c1ba1f5bafc739db620f467ccc48021d774ee7be8a68d'
         '8a644be295417b1fd5fb807285a7176ef0ceb737352bbb4c7a88441f9b955a90befe974d890a58f2b8fb6de8a68a1b3c5d207f057c4b08db79caf6e97fa66f50')
 
 prepare() {
