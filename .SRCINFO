@@ -1,6 +1,6 @@
 pkgbase = perl-math-mpc
-	pkgdesc = perl interface to the MPC (multi precision complex) library.
-	pkgver = 1.08
+	pkgdesc = Math::MPC - perl interface to the MPC (multi precision complex) library.
+	pkgver = 1.09
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-MPC
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = perl-math-mpc
 	depends = mpfr>=3.1.3.p4
 	depends = perl-math-mpfr>=3.23
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPC-1.08.tar.gz
-	md5sums = 96d73685c1ce9f7c7774b3bed2ebe4f5
-	sha512sums = adeb38d72ad0ab0b1fe5918e58f033b199b9aec6d40adf133f98aac412199be47ad0b6b0a8787553f2f27e15100f9464564d611dc99167195488633b879302ac
+	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPC-1.09.tar.gz
+	md5sums = f65e713a5ad16f44e5b621c26fd68419
+	sha512sums = 48f7b7ff09ac47b09cddf663487f202a673332270f7863c64a9720982789e02979f48259f1a98285ce23eb0bf06c93e5ddb3862e087fad7a9fbfed4bbe89a7df
 
 pkgname = perl-math-mpc
 
