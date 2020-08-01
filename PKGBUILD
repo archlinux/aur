@@ -1,8 +1,8 @@
-# Maintainer: Ronan Pigott <rpigott@berkeley.edu>
+# Maintainer: Eli Stone <eli.stonium@gmail.com>
 
 pkgname=qencoder
 _name="${pkgname#python-}"
-pkgver=1.3.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A Qt video encoder GUI for open codec formats'
 url='https://github.com/natis1/qencoder'
@@ -15,11 +15,11 @@ source=(
 makedepends=('python-setuptools')
 depends=(
 	'python' 'python-pyqt5' 'python-psutil'
-	'python-opencv-python' 'python-scenedetect' 'python-tqdm'
+	'opencv' 'python-scenedetect'
 	'python-scipy' 'python-numpy'
 	'libvpx' 'aom' 'ffmpeg' 
 )
-sha256sums=('a28d51e8399d5e220676ee48a5fa5ae729188344731afcde35107ae99d551d70'
+sha256sums=('8e1ad59b00ff6624ad0252dbd6886e0f45cba0e3a0b73ffceebe6c1829b18ff4'
             '3e9786a3fe1b7d6e3798fcf07cdd1e5db29e125cdc4c559dc095a8b1a143b1a5')
 
 build() {
