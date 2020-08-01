@@ -40,5 +40,5 @@ check() {
 package() {
         cd "$pkgname" || return 1
         install -Dm755 "./pidswallow" "$pkgdir/usr/bin/pidswallow"
-        install -Dm644 "./README.md" "$pkgdir/usr/share/doc/$pkgname"
+        install -Dm644 "./README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
