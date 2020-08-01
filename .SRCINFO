@@ -1,0 +1,18 @@
+pkgbase = notify-broadcast-git
+pkgdesc = Broadcast desktop notifications to all users having a graphical DBUS session
+pkgver = 0.9.r1
+pkgrel = 1
+url = https://github.com/kiriakos/notify-broadcast
+arch = any
+license = GPL
+makedepends = git
+depends = libnotify
+depends = sed
+depends = findutils
+depends = coreutils
+depends = binutils
+depends = grep
+source = git+https://github.com/kiriakos/notify-broadcast.git
+md5sums = SKIP
+pkgname = notify-broadcast-git
+
