@@ -17,10 +17,8 @@ arch=('i686' 'x86_64')
 depends=()
 options=(!libtool)
 conflicts=('libace')
-source=("https://download.dre.vanderbilt.edu/previous_versions/ACE-${pkgver}.tar.gz"
-        "license.txt")
-sha256sums=('85382427bf2c87eca215a6d963ad6b427a8d5b696ac96367e67bb952b3d2885c'
-            '4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954')
+source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_10/ACE-${pkgver}.tar.gz")
+sha256sums=('16b3668bfd47008a9ec2d916afeaea9c6e36205f7daed34eb305a1a99e4cfa3d')
 
 build() {
   export ACE_ROOT=$srcdir/ACE_wrappers
