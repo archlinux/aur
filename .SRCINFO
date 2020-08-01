@@ -1,0 +1,16 @@
+pkgbase = fatsort-svn
+	pkgdesc = Sorts directory structures of FAT16 and FAT32 file systems
+	pkgver = 1.6.3.r620
+	pkgrel = 1
+	url = http://fatsort.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = help2man
+	depends = glibc
+	provides = fatsort
+	conflicts = fatsort
+	source = fatsort-svn::svn+https://svn.code.sf.net/p/fatsort/code/trunk
+	sha256sums = SKIP
+
+pkgname = fatsort-svn
+
