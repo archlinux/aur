@@ -17,44 +17,46 @@ conflicts=('ttf-malayalam-fonts-meta'
 	'ttf-malayalam-font-manjari')
 arch=(any)
 source=("LICENSE.txt"
-	"https://smc.org.in/downloads/fonts/rachana/Rachana-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/rachana/Rachana-Bold.ttf"
-	"https://smc.org.in/downloads/fonts/meera/Meera-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/manjari/Manjari-Regular.otf"
-	"https://smc.org.in/downloads/fonts/manjari/Manjari-Thin.otf"
-	"https://smc.org.in/downloads/fonts/manjari/Manjari-Bold.otf"
-	"https://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/suruma/Suruma.ttf"
-	"https://smc.org.in/downloads/fonts/raghumalayalamsans/RaghuMalayalamSans-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/dyuthi/Dyuthi-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/uroob/Uroob-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf"
-	"https://smc.org.in/downloads/fonts/karumbi/Karumbi-Regular.ttf")
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-rachana/fonts-smc-rachana_7.0.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-meera/fonts-smc-meera_7.0.3-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-manjari/fonts-smc-manjari_1.710-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-anjalioldlipi/fonts-smc-anjalioldlipi_7.1.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-suruma/fonts-smc-suruma_3.2.3-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-raghumalayalamsans/fonts-smc-raghumalayalamsans_2.2.1-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-dyuthi/fonts-smc-dyuthi_3.0.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-keraleeyam/fonts-smc-keraleeyam_3.0.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-uroob/fonts-smc-uroob_2.0.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-chilanka/fonts-smc-chilanka_1.400-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-karumbi/fonts-smc-karumbi_1.1.2-1_all.deb"
+	"http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-smc-gayathri/fonts-smc-gayathri_1.100-1_all.deb")
 
 md5sums=('55fa571b7e08283f24c93621194373c7'
-         '80d0e7ee6c910325d54c74e96fa51311'
-         'da269e59d4cec4726b76ca058b5a2598'
-         '0be3384c30ecf2a7cccb121f475684bf'
-         'f5b807b946e3143ca615c73145195003'
-         '6ba3ca81dac063c6eb6d5564226cee64'
-         '4eac8684c344f396849f2e43af78a6ab'
-         '78560d6c3d6eaafe8a3d80fc385da019'
-         '00d4598d7318a36c21b25a3568f0b73d'
-         '3f49f7d15fc240b511323605895c5392'
-         'a4197fa15cab5808106df900db07c2ed'
-         'f5353ee42422f0e493ad2affc9ab0dd9'
-         '63ddb5360891c820b6c4d6fdc048ab7b'
-         'cf25d3fbfce6c6fd59dcecca57f1c7d1'
-         '57285cae8f1a08813291667b0fc82665')
+	'4813938891b1dc1031ee9436f5de3bbd'
+	'af2347adf1cd5e9672ce226cf5a8c8cd'
+	'ab4bbab66318664bfdedbced1d16f9ad'
+	'3d655baae4f4b23f10290055c5d87faa'
+	'838c2bcebcd1d52b29b07dc568111fad'
+	'f2da79691cd09b42e919e49b332e6f1a'
+	'68a42e23c72729a901491a33cb177176'
+	'e37787b9449140dbf2469c2c8081edff'
+	'72815a33de8bd293a365a4d1bb3c4a4b'
+	'e8c97e23b0ed7778227ca921ceef7126'
+	'28861cce73504c0e00e8bd3eb4d1b9a2'
+	'f31e89b1235a8b0fe37d7fcfbfb71ff8')
 
+noextract=("${source[@]##*/}")
+prepare() {
+	for i in "$srcdir"/*.deb;do bsdtar -xf "$i"; tar -xf "$srcdir/data.tar.xz"; done;
+
+}
 package() {
+	
 	install -d "$pkgdir/usr/share/fonts/TTF/malayalam"
 	install -d "$pkgdir/usr/share/fonts/malayalam"
 	install -d "$pkgdir/usr/share/doc/fonts-smc-malayalam"
 	install -t "$pkgdir/usr/share/doc/fonts-smc-malayalam" -m644 "LICENSE.txt"
-	install -t "$pkgdir/usr/share/fonts/TTF/malayalam" -m644 *.ttf
-	install -t "$pkgdir/usr/share/fonts/malayalam" -m644 *.otf
+	install -t "$pkgdir/usr/share/fonts/TTF/malayalam" -m644 "$srcdir/usr/share/fonts/truetype/malayalam"/*.ttf
+	install -t "$pkgdir/usr/share/fonts/malayalam" -m644 "$srcdir/usr/share/fonts/opentype/malayalam"/*.otf
 }
 
 
