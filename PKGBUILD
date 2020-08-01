@@ -15,13 +15,12 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='44723d18034669974f54f582d28d9ce19b842d58'
+_commit='8b4e00829eb84d4e7b4da11acf1f98f1e8166e5b'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-_srcname=ImageMagick
-pkgver=7.0.10.24
+pkgver=7.0.10.25
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
@@ -48,25 +47,22 @@ sha256sums=('SKIP'
             'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30')
 
 prepare() {
-    cd "$_srcname"
-    
-    mkdir -p docpkg/usr/share
+    mkdir -p ImageMagick/docpkg/usr/share
     
     # fix up typemaps to match Arch Linux packages, where possible
-    patch -Np1 -i "${srcdir}/arch-fonts.diff"
+    patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
     
     # use correct parameter for inkscape 1.0
-    patch -Np1 -i "${srcdir}/imagemagick-inkscape-1.0.patch"
+    patch -d ImageMagick -Np1 -i "${srcdir}/imagemagick-inkscape-1.0.patch"
     
     # fix for 'sh: gitversion.sh: command not found' during autoreconf
-    sed -i 's|(gitversion|(./gitversion|' configure.ac
+    sed -i 's|(gitversion|(./gitversion|' ImageMagick/configure.ac
     
-    autoreconf -fis
+    autoreconf -fis ImageMagick
 }
 
 build() {
-    cd "$_srcname"
-    
+    cd ImageMagick
     export CFLAGS+=' -I/usr/include/FLIF'
     
     ./configure \
@@ -130,15 +126,13 @@ build() {
         PCLDelegate='/usr/bin/gpcl6'
         
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    
     make
 }
 
 check() (
-    cd "$_srcname"
     ulimit -n 4096
-    sed -e '/validate-formats/d' -i Makefile
-    make check
+    sed -e '/validate-formats/d' -i ImageMagick/Makefile
+    make -C ImageMagick check
 )
 
 package_imagemagick-full() {
@@ -165,20 +159,18 @@ package_imagemagick-full() {
     conflicts=('imagemagick' 'libmagick')
     replaces=('libmagick-full')
     
-    cd "$_srcname"
-    make DESTDIR="$pkgdir" install
+    make -C ImageMagick DESTDIR="$pkgdir" install
     
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     rm "$pkgdir"/usr/lib/*.la
     
     # split docs
-    mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
+    mv "${pkgdir}/usr/share/doc" ImageMagick/docpkg/usr/share/
     
     # harden security policy: https://bugs.archlinux.org/task/62785
     sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-7/policy.xml"
     
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_imagemagick-full-doc() {
@@ -187,10 +179,6 @@ package_imagemagick-full-doc() {
     provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
-    cd "$_srcname"
-    
-    cp -a docpkg/* "$pkgdir"
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -a ImageMagick/docpkg/* "$pkgdir"
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
