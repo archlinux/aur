@@ -1,6 +1,6 @@
 pkgbase = pacadd
 	pkgdesc = A simple tool for managing repositories
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/BiteDasher/pacadd
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pacadd
 	depends = bash
 	depends = sed
 	depends = coreutils
-	source = pacadd-1.0.0.tar.gz::https://github.com/BiteDasher/pacadd/archive/1.0.0.tar.gz
-	sha256sums = f4b7b26e65d197892d7ce169faf3758a29bbebee9993ebab30d280992a5e0557
+	source = pacadd-1.0.1.tar.gz::https://github.com/BiteDasher/pacadd/archive/1.0.1.tar.gz
+	sha256sums = 3c9629ab0e0c61d2c57b32e87cac384426a3eb636328a46ecf6e3ed0ddd85abb
 
 pkgname = pacadd
 
