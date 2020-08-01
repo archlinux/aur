@@ -1,7 +1,7 @@
 pkgbase = svstudio-bin
 	pkgdesc = Synthesizer V Studio, a high-quality singing synthesis software.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dreamtonics.com
 	arch = x86_64
 	license = custom

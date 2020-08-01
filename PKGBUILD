@@ -1,7 +1,8 @@
+# Maintainer: Sukanka<su975853527 AT gmail.com>
 pkgname=svstudio-bin
 _pkgname=svstudio
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Synthesizer V Studio, a high-quality singing synthesis software."
 url="https://dreamtonics.com"
 arch=('x86_64')
