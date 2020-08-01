@@ -9,6 +9,7 @@ arch=("any")
 url="https://github.com/systemd/php-systemd"
 license=("MIT")
 makedepends=("php")
+depends=("libsystemd")
 backup=("etc/php/conf.d/systemd.ini")
 
 source=("https://github.com/systemd/php-systemd/archive/release-${pkgver}.zip" 

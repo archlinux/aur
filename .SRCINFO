@@ -6,6 +6,7 @@ pkgbase = php-systemd
 	arch = any
 	license = MIT
 	makedepends = php
+	depends = libsystemd
 	backup = etc/php/conf.d/systemd.ini
 	source = https://github.com/systemd/php-systemd/archive/release-0.1.2.zip
 	source = php7-support.patch
