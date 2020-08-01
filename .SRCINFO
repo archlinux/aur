@@ -1,17 +1,23 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
-	pkgver = 1.9
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-matplotlib
+	checkdepends = python-crc32c
 	makedepends = python-setuptools
 	makedepends = git
+	depends = python-numpy
 	depends = python-protobuf
 	depends = python-six
+	optdepends = python-crc32c: speed up
+	optdepends = python-soundfile: 200x speed up the add_audio() function
 	conflicts = python-tensorboard-git
-	source = git+https://github.com/lanpa/tensorboardX.git#tag=v1.9
-	sha256sums = SKIP
+	source = https://github.com/lanpa/tensorboardX/archive/v2.1.tar.gz
+	sha256sums = 2556d5601eab25b8fafa20aa0ea36c9c307be225122e68d6047b558edc302fa3
 
 pkgname = python-tensorboardx
 
