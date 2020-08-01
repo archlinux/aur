@@ -1,0 +1,10 @@
+--- php_systemd.h.orig	2020-08-01 12:29:39.651175518 +0200
++++ php_systemd.h	2020-08-01 12:41:11.610706097 +0200
+@@ -9,3 +9,7 @@
+ #define phpext_systemd_ptr &systemd_module_entry
+ 
+ #endif
++
++#ifndef SD_JOURNAL_SUPPRESS_LOCATION
++#define SD_JOURNAL_SUPPRESS_LOCATION 1
++#endif
