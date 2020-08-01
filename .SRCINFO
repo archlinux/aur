@@ -1,0 +1,17 @@
+pkgbase = shsh-git
+	pkgdesc = A multi-threaded manager for shell scripts, functions, binaries, completions files.
+	pkgver = 2.4.1.r3.gcd0814f
+	pkgrel = 1
+	url = https://github.com/soraxas/shsh
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = shsh
+	conflicts = shsh
+	source = shsh-git::git+https://github.com/soraxas/shsh#branch=master
+	source = shsh-entrypoint.sh
+	sha256sums = SKIP
+	sha256sums = 23826816377fc14a0c9d7eb9d326ccfa0d887bb753e900939f2d7990380dba3a
+
+pkgname = shsh-git
+
