@@ -1,0 +1,14 @@
+pkgbase = python-crc32c
+	pkgdesc = Implementation of the crc32c algorithm in hardware and software
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ICRAR/crc32c
+	arch = any
+	license = LGPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/ICRAR/crc32c/archive/v2.0.1.tar.gz
+	sha256sums = 599991270618bb49101cffaf7303ee2e8ffc2126450b8c7b2c7e85d3677725ea
+
+pkgname = python-crc32c
+
