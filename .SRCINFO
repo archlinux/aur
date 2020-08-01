@@ -1,6 +1,6 @@
 pkgbase = qv2ray-dev-git
 	pkgdesc = Cross-platform V2ray Client written in Qt (Development Release)
-	pkgver = 2.6.0.5483.r1885.9d52ac0
+	pkgver = 2.6.2.5819.r2333.311f7ee2
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = qv2ray-dev-git
 	depends = hicolor-icon-theme
 	depends = qt5-base>5.11.0
 	depends = grpc>=1.27.0
-	depends = zxing-cpp
 	optdepends = v2ray: use system v2ray core.
 	provides = qv2ray
 	conflicts = qv2ray
