@@ -8,7 +8,7 @@
 # Maintainer: liupold <rohhnch@protonmail.ch>
 
 pkgname=pidswallow-dev-git
-pkgrel=3
+pkgrel=4
 pkgver=2.0.d # dev
 pkgdesc="A script to swallow your terminal automatically"
 arch=(x86_64)
@@ -20,7 +20,7 @@ checkdepends=(shellcheck)
 provides=(pidswallow)
 conflicts=(pidswallow)
 
-source=("$pkgname::git+$url")
+source=("$pkgname::git+https://github.com/Liupold/pidswallow")
 sha256sums=("SKIP")
 
 pkgver() {

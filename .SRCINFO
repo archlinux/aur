@@ -1,7 +1,7 @@
 pkgbase = pidswallow-dev-git
 	pkgdesc = A script to swallow your terminal automatically
 	pkgver = 2.0.d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Liupold/pidswallow/tree/dev
 	arch = x86_64
 	license = APACHE
@@ -10,7 +10,7 @@ pkgbase = pidswallow-dev-git
 	depends = xdotool
 	provides = pidswallow
 	conflicts = pidswallow
-	source = pidswallow-dev-git::git+https://github.com/Liupold/pidswallow/tree/dev
+	source = pidswallow-dev-git::git+https://github.com/Liupold/pidswallow
 	sha256sums = SKIP
 
 pkgname = pidswallow-dev-git
