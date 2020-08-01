@@ -4,12 +4,13 @@
 
 pkgname=idevicerestore
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Restore/upgrade firmware of iOS devices'
 arch=('x86_64')
 url='https://www.libimobiledevice.org'
 license=('LGPL3')
 depends=('curl' 'libimobiledevice' 'libplist' 'libirecovery' 'libzip' 'openssl' 'zlib')
+conflicts=('idevicerestore-git') # https://aur.archlinux.org/packages/idevicerestore-git/#comment-759041
 source=("https://github.com/libimobiledevice/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
         '0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('32712e86315397fd2e8999e77a2d2f790c67f6b4aa50d4d1c64cb2c4609836f7'
