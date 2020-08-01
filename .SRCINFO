@@ -6,6 +6,7 @@ pkgbase = python-dash-daq
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-dash-table
 	depends = python
 	depends = python-dash
 	depends = python-dash-table
