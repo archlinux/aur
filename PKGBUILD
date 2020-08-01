@@ -2,7 +2,7 @@
 
 pkgname=archivebox
 pkgver=0.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The open source self-hosted web archive"
 arch=("any")
 url="https://github.com/pirate/ArchiveBox"
@@ -12,7 +12,7 @@ conflicts=('archivebox')
 depends=('python-django' 'python-mypy_extensions' 'wget'
          'python-crontab' 'python-atomicwrites' 'python-dateparser'
          'python-requests' 'python-base32_crockford' 'python-w3lib'
-         'chromium' 'python-django_extensions' 'git'
+         'chromium' 'python-django-extensions' 'git'
          'youtube-dl' 'curl')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
