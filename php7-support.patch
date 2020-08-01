@@ -1,7 +1,7 @@
-diff --git a/systemd.c b/systemd.c
+diff --git systemd.c systemd.c
 index 9479556..6a0d573 100644
---- a/systemd.c
-+++ b/systemd.c
+--- systemd.c
++++ systemd.c
 @@ -30,7 +30,11 @@ ZEND_GET_MODULE(systemd)
  PHP_FUNCTION(sd_journal_send)
  {
