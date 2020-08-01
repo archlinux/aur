@@ -10,7 +10,7 @@ pkgbase = bigtime
 	depends = coreutils
 	depends = libnotify
 	depends = ncurses
-	source = https://github.com/teegre/bigtime/archive/20200801-1.2.4.tar.gz
+	source = https://github.com/teegre/bigtime/archive/bigtime-20200801-1.2.4.tar.gz
 	sha256sums = 7ac9ed8aef45fcd0be6971d78886d173757c40c2d3c91f65f5279cfba3d04b6e
 
 pkgname = bigtime
