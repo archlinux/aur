@@ -13,7 +13,7 @@ url="https://github.com/intersimone999/${_gitname}"
 license=('GPL3')
 depends=('silos')
 makedepends=('git')
-source=("git+$url.git#tag=$_gittag")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 package() {

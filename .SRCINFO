@@ -8,7 +8,7 @@ pkgbase = silo-google-scholar
 	license = GPL3
 	makedepends = git
 	depends = silos
-	source = git+https://github.com/intersimone999/silos-apps.git#tag=0.1
+	source = git+https://github.com/intersimone999/silos-apps.git
 	sha256sums = SKIP
 
 pkgname = silo-google-scholar
