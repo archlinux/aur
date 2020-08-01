@@ -2,12 +2,12 @@
 
 pkgname=python-aiocron
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide a decorator to run function at time"
 arch=(any)
 url="https://github.com/gawel/aiocron/"
 license=('EPL')
-depends=('python')
+depends=('python' 'python-tzlocal' 'python-croniter')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/aiocron/aiocron-$pkgver.tar.gz")
 sha256sums=('7f7c343b5bb18695206714f038726e3795e6dfa69affcc25abe17838d51be69c')
