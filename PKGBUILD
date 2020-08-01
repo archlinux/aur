@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ispc-bin
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Intel SPMD program compiler"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 provides=('ispc')
 conflicts=('ispc')
 source=("ispc-v$pkgver-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v$pkgver/ispc-v$pkgver-linux.tar.gz")
-sha256sums=('8ab1189bd5db596b3eee9d9465d3528b6626a7250675d67102761bb0d284cd21')
+sha256sums=('83449a07fe4cb1b31f6a362b6a0c07669590bcf973aca43569b8d5ae6df23d74')
 
 
 package() {
