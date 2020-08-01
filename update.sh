@@ -66,6 +66,7 @@ optdepends=(
 )
 makedepends=(
     'python-setuptools'
+    'python-sphinx'
 )
 license=('${LICENSE}')
 arch=('any')
@@ -86,8 +87,6 @@ build() {
 }
 
 package() {
-    pushd \${srcdir}
-
     pushd \"\${_module}-\${pkgver}\"
     python setup.py install --root=\"\${pkgdir}\" --optimize=1 --skip-build
     popd
@@ -95,6 +94,11 @@ package() {
     pushd \"\${_module}-v\${pkgver}\"
 
     desktop-file-install --dir=\${pkgdir}/usr/share/applications sublime-music.desktop
+
+    pushd docs
+    make man
+    install -Dm644 ./_build/man/sublime-music.1 \"\${pkgdir}/usr/share/man/man1/sublime-music.1\"
+    popd
 
     pushd logo/rendered
     install -Dm644 16.png \${pkgdir}/usr/share/icons/hicolor/16x16/apps/sublime-music.png
@@ -112,8 +116,6 @@ package() {
     popd
 
     popd  # pkg
-
-    popd  # srcdir
 }" >> PKGBUILD
 
 updpkgsums
