@@ -15,17 +15,19 @@
 puredata=${puredata:-pd}
 pkgpref=$(echo "$puredata" | sed -e 's/-//g')
 
-# Branch to build (master by default)
+# Branch to build (master by default). NOTE: For now, this just gets ignored,
+# as the master branch is quite old, and the HEAD of the current development
+# branch doesn't build. Rev. 0a5d578 on the development branch is known to
+# work fine, though, so that's what we're using right now.
 branch=${branch:-master}
-# Current development branch, this doesn't build yet.
-#branch=dev/v0.1.2
+commit=${commit:-0a5d578a8816c58a1427e1609f844e3e075b7d06}
 
 # Source and destination package names.
 src_pkgname=pd-faustgen
 dest_pkgname=$pkgpref-faustgen
 
 pkgname=$dest_pkgname-git
-pkgver=0.1.1.r2.g569140a
+pkgver=0.1.1.r10.g0a5d578
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
@@ -36,8 +38,10 @@ makedepends=('cmake' 'llvm')
 provides=("$dest_pkgname")
 conflicts=("$dest_pkgname")
 # faust@341bd3c5-patch.diff can be removed once upstream updates the included
-# faust submodule to a version that supports LLVM 10.
-source=("git+https://github.com/CICM/$src_pkgname.git#branch=$branch"
+# faust submodule in the master branch to a version that supports LLVM 10. For
+# now, use the following commit on the dev/v0.1.2 branch which is known to work.
+#source=("git+https://github.com/CICM/$src_pkgname.git#branch=$branch"
+source=("git+https://github.com/CICM/$src_pkgname.git#commit=$commit"
 	"faust@341bd3c5-patch.diff")
 md5sums=('SKIP'
          '99f845fe8a258a8185577beae6ff67d9')

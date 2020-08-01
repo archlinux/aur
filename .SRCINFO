@@ -1,6 +1,6 @@
 pkgbase = pd-faustgen-git
 	pkgdesc = The FAUST compiler embedded in a Pd external - git version
-	pkgver = 0.1.1.r2.g569140a
+	pkgver = 0.1.1.r10.g0a5d578
 	pkgrel = 1
 	url = https://github.com/CICM/pd-faustgen
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = pd-faustgen-git
 	depends = llvm-libs
 	provides = pd-faustgen
 	conflicts = pd-faustgen
-	source = git+https://github.com/CICM/pd-faustgen.git#branch=master
+	source = git+https://github.com/CICM/pd-faustgen.git#commit=0a5d578a8816c58a1427e1609f844e3e075b7d06
 	source = faust@341bd3c5-patch.diff
 	md5sums = SKIP
 	md5sums = 99f845fe8a258a8185577beae6ff67d9
