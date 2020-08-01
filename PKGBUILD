@@ -11,6 +11,7 @@ depends=('sh' 'coreutils' 'sed' 'bc')
 provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz")
 conflicts=('sh-make-tools')
+makedepends=('git' 'emacs')
 source=(git+https://github.com/Thaodan/$_pkgname)
 md5sums=('SKIP')
 
