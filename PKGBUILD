@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=10
-_clr=972
+_minor=11
+_clr=973
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33530
+_clear_version=33570
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=65bfabb4d1c13d84b778883c8b8ec81197639603fd98649037cfc69cb4c066b0
+_config_hash=166aa702ffe87c5a527042b6a3135c9322e4ef8fb40c14552e465c74a6fa64b0
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -106,3 +106,6 @@ b2sums=('f4f7a2f4105e9a568fc963eb428b661a822e4979ccb05de2f096495305fb676874bb0ff
 b2sums=('e2f464e3144e62534df88f1f6884599b98a9469309be6f94eb7f1ff00b17303529e4d02f102703a9544aec3d4125804bb8fda63679b04160b8db25a59f40d6af'
         'b03ee5d2ccf30c9efebf69d05151f9f7064dc0c4aa8aa7fc701970ce26c2c9b427bf437bf1373db3bbeb194216af1f6396279354a791e43159c6f7383433b395'
         '43f12f3b4f9b64b45a5a15db1396fa05c044b7676af0aa1a4b9086005902f4450f791b23f12b7c8863010b8513765175741e60feab1efe0cfb16ab68ccec9c06')
+b2sums=('863138ce7a43e996b9e816392059b4da236d09ae8214362867acc8d1f273451311529a21aa6e58ae9683a2f5c042df257007267c6a5a3a631a1db8e69d060b33'
+        'af13b832840a7b9f58a2c2ef094c4e55e62b275590c8e0a24405eb81393b599ae409d2a8547e365ae00e4c7b624b1466c6d48ca90a140e92b32f2afbcebba733'
+        '6b2fee6b2651abcc9432a7e5c9d83ac2cea16b7b995f768cb77ccb92f9942becb407a4c284f2904d11eee38152aee0bf6f2b4db3fdd1171d49c61b5575795bdc')
