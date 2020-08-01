@@ -36,6 +36,8 @@ pkgbase = swift-language-git
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master
 	source = 0001-not-build-ninja-icu.patch
 	source = 0003-swift-python2-as-fallback-only.patch
+	source = 0005-duplicate-term-module.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

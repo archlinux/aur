@@ -1,0 +1,24 @@
+From 1be2cee533fa327a43fd9a8ff32d5d388de8aa9b Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Sat, 1 Aug 2020 14:45:45 +0200
+Subject: [PATCH] duplicate term module
+
+---
+ docs/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index c748bd36eb..eef2c34984 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -10,7 +10,6 @@ SET(SWIFT_SPHINX_PAPER_SIZE "letter"
+   CACHE STRING "Paper size for generated documentation")
+ 
+ SET(SPHINX_ARGS
+-  -W
+   -D latex_elements.papersize=${SWIFT_SPHINX_PAPER_SIZE}
+   -d ${CMAKE_BINARY_DIR}/doctrees)
+ 
+-- 
+2.28.0
+

@@ -39,9 +39,11 @@ source=(
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     '0001-not-build-ninja-icu.patch'
     '0003-swift-python2-as-fallback-only.patch'
+    '0005-duplicate-term-module.patch'
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -63,6 +65,7 @@ md5sums=(
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
     ( cd swift && patch -p1 -i "$srcdir/0003-swift-python2-as-fallback-only.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0005-duplicate-term-module.patch" )
 }
 
 pkgver() {
