@@ -21,7 +21,7 @@
  libspeex_encoder_deps="libspeex"
  libspeex_encoder_select="audio_frame_queue"
 +libsvt_hevc_encoder_deps="libsvthevc"
- libsvt_av1_encoder_deps="libsvtav1"
+ libsvtav1_encoder_deps="libsvtav1"
  libtheora_encoder_deps="libtheora"
  libtwolame_encoder_deps="libtwolame"
 @@ -6401,6 +6404,7 @@ enabled libsoxr           && require libsoxr soxr.h soxr_create -lsoxr
@@ -39,7 +39,7 @@
  OBJS-$(CONFIG_LIBSPEEX_DECODER)           += libspeexdec.o
  OBJS-$(CONFIG_LIBSPEEX_ENCODER)           += libspeexenc.o
 +OBJS-$(CONFIG_LIBSVT_HEVC_ENCODER)        += libsvt_hevc.o
- OBJS-$(CONFIG_LIBSVT_AV1_ENCODER)         += libsvt_av1.o
+ OBJS-$(CONFIG_LIBSVTAV1_ENCODER)          += libsvtav1.o
  OBJS-$(CONFIG_LIBTHEORA_ENCODER)          += libtheoraenc.o
  OBJS-$(CONFIG_LIBTWOLAME_ENCODER)         += libtwolame.o
 --- a/libavcodec/allcodecs.c
@@ -49,7 +49,7 @@
  extern AVCodec ff_libspeex_encoder;
  extern AVCodec ff_libspeex_decoder;
 +extern AVCodec ff_libsvt_hevc_encoder;
- extern AVCodec ff_libsvt_av1_encoder;
+ extern AVCodec ff_libsvtav1_encoder;
  extern AVCodec ff_libtheora_encoder;
  extern AVCodec ff_libtwolame_encoder;
 --- /dev/null
