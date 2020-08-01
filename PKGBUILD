@@ -9,7 +9,7 @@
 pkgname=unetbootin-qt5-git
 _pkgname=unetbootin
 pkgver=655.r4.g9cc0841
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL')
 pkgdesc='Create bootable Live USB drives (Qt5 fork)'

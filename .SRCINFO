@@ -1,7 +1,7 @@
 pkgbase = unetbootin-qt5-git
 	pkgdesc = Create bootable Live USB drives (Qt5 fork)
 	pkgver = 655.r4.g9cc0841
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unetbootin.github.io
 	arch = x86_64
 	license = GPL
