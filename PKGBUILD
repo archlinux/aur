@@ -7,7 +7,7 @@
 pkgbase=linux-mainline-bootsplash       # Build kernel with a different name
 _tag=v5.8-rc7
 pkgver=5.8rc7
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux Mainline - with bootsplash support"
 arch=(x86_64)
 url="https://kernel.org/"
@@ -22,6 +22,7 @@ options=('!strip')
 _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
+  config
   sphinx-workaround.patch
   0001-bootsplash.patch
   0002-bootsplash.patch
@@ -44,6 +45,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
+            'c5d24fdb54ed0672d0e2b258c4db8014d66c9a798c88e16ac1c4e188758a9384'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
@@ -85,8 +87,8 @@ prepare() {
   cp ../ajax-loader.gif tools/bootsplash/
 
   echo "Setting config..."
-  make localmodconfig
-  make nconfig
+  cp ../config .config
+  make olddefconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
