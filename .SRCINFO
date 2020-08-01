@@ -1,0 +1,16 @@
+pkgbase = nault-bin
+	pkgdesc = Official Nault AppImage client
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Nault/Nault
+	install = nault-bin.install
+	arch = x86_64
+	provides = nault-bin
+	conflicts = nault-bin
+	noextract = nault.AppImage
+	options = !strip
+	source = https://github.com/Nault/Nault/releases/download/v1.7.0/Nault-1.7.0.AppImage
+	sha512sums = 80b5c21fdcd4822afb57aa7e102c8a8e802392a5c70cc60409ab3fc0f8401415ad85e5e3a171a32af4b4b1915d36a66e3f9b89d006655c5e63f66091012c22b2
+
+pkgname = nault-bin
+
