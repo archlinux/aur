@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.7.11.zen1
+pkgver=5.7.12.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401IV)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
