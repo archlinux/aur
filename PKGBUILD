@@ -7,7 +7,7 @@
 pkgname=oxygen-sounds
 pkgdesc='KDE Oxygen sound pack'
 pkgver=5.19.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
@@ -17,6 +17,6 @@ b2sums=('86153365b2499e6cee2f60960f4be70e7fe954ee20dc3bee8f858084996e561bd290803
 package() {
   cd "oxygen-$pkgver"
   for file in sounds/*.ogg;do
-    install -Dm 644 "$file" "$pkgdir/usr/share/sounds"
+    install -Dm 644 "$file" "$pkgdir/usr/share/sounds/$file"
   done
 }
