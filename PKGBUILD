@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url/archive/"$pkgname-${pkgver/_/-}".tar.gz")
+source=("$url/archive/"${pkgver/_/-}".tar.gz")
 noextract=()
 sha256sums=(7ac9ed8aef45fcd0be6971d78886d173757c40c2d3c91f65f5279cfba3d04b6e)
 
