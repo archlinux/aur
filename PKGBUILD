@@ -2,14 +2,14 @@
 # Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
 
 pkgname=bigtime
-pkgver=20200731_1.2.3
+pkgver=20200801_1.2.4
 pkgrel=1
 pkgdesc="Customizable clock for the terminal"
 arch=('any')
 url="https://github.com/teegre/bigtime"
 license=('MIT')
 groups=()
-depends=('alsa-utils' 'bash' 'coreutils' 'ncurses')
+depends=('alsa-utils' 'bash' 'coreutils' 'libnotify' 'ncurses')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/archive/"${pkgver/_/-}".tar.gz")
 noextract=()
-sha256sums=(acd2ece02ef8241cd69cb7a41c36a7204d28985387a73cb88285dc536a1c85ef)
+sha256sums=(7ac9ed8aef45fcd0be6971d78886d173757c40c2d3c91f65f5279cfba3d04b6e)
 
 package() {
   cd "$pkgname-${pkgver/_/-}"
