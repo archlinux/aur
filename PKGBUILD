@@ -4,15 +4,15 @@
 # Contributor: Chuck Yang <Chuck.Yang@gmail.com>
 
 pkgname=lshw-git
-pkgver=B.02.19.r27.ge6a0a16
+pkgver=B.02.19.r39.g9ae06b4
 pkgrel=1
 pkgdesc='A small tool to provide detailed information on the hardware configuration of the machine.'
 url=https://ezix.org/project/wiki/HardwareLiSter
 license=(GPL)
 arch=(x86_64)
 depends=(gcc-libs hwids)
-optdepends=(gtk2)
-makedepends=(gtk2 sqlite git)
+optdepends=(gtk3)
+makedepends=(gtk3 sqlite git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=(git+https://ezix.org/src/pkg/lshw.git)
