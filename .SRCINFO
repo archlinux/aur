@@ -1,7 +1,7 @@
 pkgbase = vim-rec
 	pkgdesc = GNU Recutils syntax highlighting support for Vim
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zaid/vim-rec
 	arch = any
 	groups = vim-plugins
