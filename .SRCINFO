@@ -1,6 +1,6 @@
 pkgbase = inverse-icon-theme-git
 	pkgdesc = A colorful Design icon theme for linux desktops
-	pkgver = r24.41e1bc5
+	pkgver = r29.f47fcf7
 	pkgrel = 1
 	url = https://github.com/yeyushengfan258/Inverse-icon-theme
 	arch = any
