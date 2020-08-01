@@ -1,0 +1,15 @@
+pkgbase = silo-google-scholar
+	pkgdesc = Standalone silo app for Google Scholar
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/intersimone999/silos-apps
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = silos
+	source = git+https://github.com/intersimone999/silos-apps.git#tag=0.1
+	sha256sums = SKIP
+
+pkgname = silo-google-scholar
+
