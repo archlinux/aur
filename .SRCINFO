@@ -1,6 +1,6 @@
 pkgbase = libbobcat
 	pkgdesc = Bobcat (Brokken's Own Base Classes And Templates) library
-	pkgver = 5.00.02
+	pkgver = 5.05.00
 	pkgrel = 1
 	url = https://fbb-git.gitlab.io/bobcat/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = libbobcat
 	makedepends = yodl>=3.07.01
 	depends = openssl
 	depends = libx11>=1.6.2
-	source = https://gitlab.com/fbb-git/bobcat/-/archive/5.00.02/bobcat-5.00.02.tar.gz
-	md5sums = 33a0fd25e274deae7a3e25133ce601f6
+	source = https://gitlab.com/fbb-git/bobcat/-/archive/5.05.00/bobcat-5.05.00.tar.gz
+	md5sums = eb3502a8ecd3372163f68e8bd2bf1395
 
 pkgname = libbobcat
 

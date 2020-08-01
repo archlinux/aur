@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
-pkgver=5.00.02
+pkgver=5.05.00
 pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('icmake>=8.01.00' 'openssl' 'readline' 'libmilter>=8.14.4'
              'libx11>=1.6.2' 'yodl>=3.07.01')
 optdepends=()
 source=("https://gitlab.com/fbb-git/bobcat/-/archive/${pkgver}/bobcat-${pkgver}.tar.gz")
-md5sums=('33a0fd25e274deae7a3e25133ce601f6')
+md5sums=('eb3502a8ecd3372163f68e8bd2bf1395')
 
 build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
@@ -21,7 +21,7 @@ build() {
   # Since makepkg always defines CXXFLAGS, it overrides the default value
   # defined in the build system, which is problematic because it needs a
   # specific C++ version. Add it back here.
-  CXXFLAGS="$CXXFLAGS -std=c++17"
+  CXXFLAGS="$CXXFLAGS -std=c++20"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
   # ./build -P libraries all
