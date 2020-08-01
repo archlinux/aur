@@ -1,6 +1,6 @@
 pkgbase = gog-terraria
 	pkgdesc = The very world is at your fingertips as you fight for survival, fortune, and glory.
-	pkgver = 1.3.5.3.14602
+	pkgver = 1.4.0.5.38805
 	pkgrel = 1
 	epoch = 1
 	url = http://terraria.org/
@@ -10,11 +10,11 @@ pkgbase = gog-terraria
 	makedepends = libarchive
 	depends = sdl2
 	optdepends = firejail: Automatically sandbox this application from your OS
-	noextract = terraria_en_1_3_5_3_14602.sh
-	source = gog://terraria_en_1_3_5_3_14602.sh
+	noextract = terraria_v1_4_0_5_38805.sh
+	source = gog://terraria_v1_4_0_5_38805.sh
 	source = gog-terraria.desktop
 	source = gog-terraria
-	sha256sums = f70d831caad51aa6c37a195a0740990c0625ce38b8e2302c290903b5559351ec
+	sha256sums = 3c2e0145f30829cf0c956a69aca8867a4027d9dadbcb0a359ad70eade3bae066
 	sha256sums = 815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093
 	sha256sums = afc115c0cbb42a12e082f5860c159eb8dcf525d360d2f9b167cc4ddb80ba03e7
 
