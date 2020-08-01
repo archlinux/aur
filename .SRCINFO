@@ -8,6 +8,7 @@ pkgbase = icqdesktop-git
 	license = Apache
 	makedepends = cmake
 	makedepends = glfw-x11
+	makedepends = python
 	depends = fontconfig
 	depends = libxdamage
 	depends = libxcomposite
@@ -19,7 +20,7 @@ pkgbase = icqdesktop-git
 	source = icqdesktop-git::git+https://github.com/mail-ru-im/im-desktop.git
 	source = icq.desktop
 	md5sums = SKIP
-	md5sums = 7c16e645547ab40bd577b81c9705d5c1
+	md5sums = c057fc7de909f05e66abe0d21354d135
 
 pkgname = icqdesktop-git
 

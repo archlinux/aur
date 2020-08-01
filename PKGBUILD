@@ -17,10 +17,10 @@ _git_reponame='im-desktop'
 
 pkgname='icqdesktop-git'
 pkgver=r18.271e42d
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 depends=('fontconfig' 'libxdamage' 'libxcomposite' 'freetype2' 'libxext')
-makedepends=('cmake' 'glfw-x11')
+makedepends=('cmake' 'glfw-x11' 'python')
 #optdepends=('')
 pkgdesc='Official ICQ desktop client for Linux'
 url='https://icq.com/'
@@ -28,7 +28,7 @@ license=('Apache')
 source=("${pkgname}::git+https://github.com/mail-ru-im/${_git_reponame}.git"
         'icq.desktop')
 md5sums=('SKIP'
-         '7c16e645547ab40bd577b81c9705d5c1')
+         'c057fc7de909f05e66abe0d21354d135')
 conflicts=('icqdesktop' 'icqdesktop-bin')
 provides=('icqdesktop-git')
 
@@ -38,11 +38,15 @@ pkgver() {
 }
 
 prepare() {
-  printf "WARNING! Compiling require not less 6Gb available memory"
+  printf "WARNING! Compiling require not less 6Gb available memory\n"
 }
 
 build() {
-  cmake ${pkgname} -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DLINUX_ARCH=$LINUX_ARCH
+  cmake ${pkgname}           \
+         -G "Unix Makefiles" \
+         -DCMAKE_BUILD_TYPE=Release \
+         -DLINUX_ARCH=$LINUX_ARCH
+#         -DICQ_QT_DYNAMIC=YES
   make
 }
 
