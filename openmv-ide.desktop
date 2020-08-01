@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=openmvide
+Path=/opt/openmv-ide
+Icon=openmv-ide
+Name=OpenMV IDE
+GenericName=The IDE of choice for OpenMV Cam Development.
+GenericName[de]=Die IDE der Wahl zur OpenMV Cam Entwicklung
+Terminal=false
+Categories=Development;IDE;
+MimeType=text/x-python;
