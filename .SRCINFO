@@ -1,0 +1,13 @@
+pkgbase = cinnamenu
+	pkgdesc = A flexible menu providing formatting options, web bookmarks, search provider support and fuzzy searching.
+	pkgver = 20200801
+	pkgrel = 1
+	url = https://cinnamon-spices.linuxmint.com/applets/view/322
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip
+	md5sums = SKIP
+
+pkgname = cinnamenu
+
