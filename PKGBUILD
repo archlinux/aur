@@ -5,13 +5,13 @@
 
 pkgname=lshw-git
 pkgver=B.02.19.r39.g9ae06b4
-pkgrel=1
-pkgdesc='A small tool to provide detailed information on the hardware configuration of the machine.'
+pkgrel=2
+pkgdesc='A small tool to provide detailed information on the hardware configuration of the machine'
 url=https://ezix.org/project/wiki/HardwareLiSter
 license=(GPL)
 arch=(x86_64)
 depends=(gcc-libs hwids)
-optdepends=(gtk3)
+optdepends=('gtk3: for gtk-lshw')
 makedepends=(gtk3 sqlite git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    sed -i 's|/usr/bin/gtk-lshw|/usr/sbin/gtk-lshw|' src/gui/integration/gtk-lshw.desktop
+    sed -i 's|/usr/sbin/gtk-lshw|/usr/bin/gtk-lshw|' src/gui/integration/gtk-lshw.desktop
 }
 
 build() {
