@@ -2,7 +2,6 @@
 
 pkgname=sabnzbd
 pkgver=3.0.0
-_subver='RC2'
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
@@ -39,14 +38,14 @@ backup=('var/lib/sabnzbd/sabnzbd.ini')
 install='sabnzbd.install'
 
 source=(
-  "https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}${_subver}/SABnzbd-${pkgver}${_subver}-src.tar.gz"
+  "https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/SABnzbd-${pkgver}-src.tar.gz"
   'sabnzbd.service'
   'sabnzbd@.service'
   'sabnzbd.sysusers'
   'sabnzbd.tmpfiles'
 )
         
-sha256sums=('283ef96a001bfb1806b208102a73f2198d7c505d92430c96197da23c74d9fc71'
+sha256sums=('2fea94378de55ff6f182c404f6afbe06f8c272855efc344d6354e433272ef24d'
             'c1bcdb5ce7787aab5ab4f07508c1451441f42df0ec7be85a5dedda0a5ee70014'
             '4c4ff2882de744d1b5435470ed829d58defcc84fafc56e6211d1298c0b22813f'
             '525f294372963fde09db08b0368c80078a16d4cefcb34f8179706336709afdf7'
@@ -54,7 +53,7 @@ sha256sums=('283ef96a001bfb1806b208102a73f2198d7c505d92430c96197da23c74d9fc71'
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/sabnzbd"
-  cp -r "${srcdir}/SABnzbd-${pkgver}${_subver}/"* "${pkgdir}/usr/lib/sabnzbd"
+  cp -r "${srcdir}/SABnzbd-${pkgver}/"* "${pkgdir}/usr/lib/sabnzbd"
 
   find "${pkgdir}/usr/lib/sabnzbd" -type d -exec chmod 755 {} \;
   find "${pkgdir}/usr/lib/sabnzbd" -type f -exec chmod 644 {} \;
