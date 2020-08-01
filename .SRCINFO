@@ -1,0 +1,14 @@
+pkgbase = python-genson
+	pkgdesc = GenSON is a powerful, user-friendly JSON Schema generator.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/wolverdude/genson
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/genson/genson-1.2.1.tar.gz
+	sha256sums = 40b8faa17f53240f224d683d7a302b5f7b35eb7ab2aba1c223a58a38b8d09c42
+
+pkgname = python-genson
+
