@@ -1,0 +1,16 @@
+pkgbase = shsh
+	pkgdesc = Bring your favorite shell wherever you go through the ssh
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/soraxas/shsh
+	arch = any
+	license = MIT
+	provides = shsh
+	conflicts = shsh
+	source = shsh-2.4.2.tar.gz::https://github.com/soraxas/shsh/archive/v2.4.2.tar.gz
+	source = shsh-entrypoint.sh
+	sha256sums = 13c2174d0847629143f48e4d4b5cab046b11217dc925be853720e79f0649877b
+	sha256sums = 23826816377fc14a0c9d7eb9d326ccfa0d887bb753e900939f2d7990380dba3a
+
+pkgname = shsh
+
