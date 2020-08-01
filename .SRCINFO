@@ -1,7 +1,7 @@
 pkgbase = php-systemd
 	pkgdesc = PHP extension allowing native interaction with systemd and its journal
 	pkgver = 0.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/systemd/php-systemd
 	arch = any
 	license = MIT

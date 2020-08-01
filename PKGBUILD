@@ -2,7 +2,7 @@
 
 pkgname=php-systemd
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 
 pkgdesc="PHP extension allowing native interaction with systemd and its journal"
 arch=("any")
