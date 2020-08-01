@@ -1,0 +1,19 @@
+pkgbase = retdec-bin
+	pkgdesc = RetDec is a retargetable machine-code decompiler based on LLVM.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/avast/retdec
+	arch = x86_64
+	license = MIT
+	depends = graphviz
+	depends = bc
+	depends = upx
+	depends = wget
+	depends = python
+	provides = retdec
+	conflicts = retdec
+	source = https://github.com/avast/retdec/releases/download/v4.0/retdec-v4.0-ubuntu-64b.tar.xz
+	sha256sums = 02b2c564108038126e70a378631f729abaca52d934afd597522d32843cf900fb
+
+pkgname = retdec-bin
+
