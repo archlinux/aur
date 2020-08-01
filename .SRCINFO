@@ -1,6 +1,6 @@
 pkgbase = peertube-viewer-rs-bin
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
-	pkgver = 1.6.4
+	pkgver = 1.7.1
 	pkgrel = 0
 	url = https://gitlab.com/peertube-viewer/peertube-viewer-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = peertube-viewer-rs-bin
 	depends = openssl
 	provides = peertube-viewer-rs
 	conflicts = peertube-viewer-rs
-	noextract = release-v1.6.4.tar.gz.zip
-	source = release-v1.6.4.tar.gz.zip::https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/jobs/artifacts/v1.6.4/download?job=release-linux
-	md5sums = fb3c8ceb5db7f55e5174919d88d66466
+	noextract = release-v1.7.1.tar.gz.zip
+	source = release-v1.7.1.tar.gz.zip::https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/jobs/artifacts/v1.7.1/download?job=release-linux
+	md5sums = 98df8afa03ba713600d7d71cdba263a9
 
 pkgname = peertube-viewer-rs-bin
 
