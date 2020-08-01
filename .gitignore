@@ -1,5 +1,6 @@
 *
 !.gitignore
 !main.patch
+!noisetorch-git.install
 !.SRCINFO
 !PKGBUILD

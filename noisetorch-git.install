@@ -1,0 +1,9 @@
+post_upgrade() {
+	printf "If you are upgrading from a versions prior to 0.5.3.beta.r1.g5ce761a-2\n"
+	printf "it is recommended to update the config file located at either\n\n"
+	printf "\$HOME/.config/noisetorch/config.toml\n\n"
+	printf " -OR- \n\n"
+	printf "\$XDG_CONFIG_HOME/noisetorch.config.toml\n\n"
+	printf "Make sure the file contains 'EnableUpdates = true'\n"
+	printf "Otherwise you may experience issues with future updates.\n\n"
+}
