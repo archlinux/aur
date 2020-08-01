@@ -5,8 +5,8 @@
 pkgbase=python-pytorch-rocm
 pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
-pkgver=1.6.0rc7
-_pkgver=1.6.0-rc7
+pkgver=1.6.0
+_pkgver=1.6.0
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
