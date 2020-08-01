@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Maintainer: Felix Springer <felixspringer149@gmail.com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
 
 _hkgname=finite-typelits
 pkgname=haskell-finite-typelits
