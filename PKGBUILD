@@ -1,10 +1,10 @@
 # Maintainer: Chirantan Ekbote <chirantan.ekbote at gmail.com>
 # Contributor: Brian Schubert <bewschubert@gmail.com>
 
-_build_doc=ON
+_build_doc=OFF
 _build_apps=ON
 pkgname=openmesh
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ depends=('mesa')
 optdepends=('qt5-base: for using included applications')
 source=("${pkgname}-${pkgver}.tar.bz2::http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2"
     doc-install.patch)
-sha256sums=('f3311232d3611847c523bd4792ce8700f7ec81e9e1ff2a4bdda18eac70577d33'
+
+sha256sums=('9bc43a3201ba27ed63de66c4c09e23746272882c37a3451e71f0cf956f9be076'
             'cedf4ab2e6349caba7e899b5462643435bb42d7e70c6231e582f056ddf7bf41b')
 
 if [[ "${_build_doc}" == "ON" && "${_build_apps}" == "ON" ]]; then
@@ -52,7 +53,7 @@ build() {
 package() {
     cd "${srcdir}"/OpenMesh-${pkgver}/build
     make DESTDIR="${pkgdir}" install
-    
+
     # install licenses
     mkdir -p "${pkgdir}"/usr/share/licenses/openmesh/
     install -D -m644 ../LICENSE \
