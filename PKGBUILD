@@ -18,10 +18,10 @@
 
 pkgbase=kodi-git
 pkgname=(
-  "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
+  "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r55527.4cbcb6cb6da
+pkgver=r55550.6386f23c2da
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -217,7 +217,7 @@ build() {
 # kodi
 # components: kodi
 
-package_kodi-git-x11() {
+package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
@@ -259,7 +259,7 @@ package_kodi-git-x11() {
 # kodi-x11
 # components: kodi-bin
 
-package_kodi-x11-git() {
+package_kodi-git-x11() {
   pkgdesc="x11 kodi binary"
   provides=('KODI-BIN' "kodi-x11=${pkgver}")
   replaces=('kodi-bin')
