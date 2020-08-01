@@ -1,7 +1,7 @@
 pkgbase = pidswallow
 	pkgdesc = A script to swallow your terminal automatically
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Liupold/pidswallow
 	arch = x86_64
 	license = APACHE
