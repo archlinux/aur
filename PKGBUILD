@@ -1,8 +1,8 @@
 # Maintainer: Shining Xu <skyfiretime@gmail.com>
 
 pkgname=timecamp-bin
-pkgver=1.4.6.2
-pkgrel=3
+pkgver=1.5.6.2
+pkgrel=1
 pkgdesc='Client application for TimeCamp software (Binary).'
 arch=('x86_64')
 url='https://www.timecamp.com/en/desktop-app'
@@ -16,7 +16,7 @@ source=(
     'LICENSE.html::https://docs.google.com/document/d/e/2PACX-1vSj_4_AJgXCuyKze5XFckN9-DwR8Jobo5lUyrgimRgKXjgpGdxUkFetSK8Nogxe7YkuPySCpUhRfrjz/pub?embedded=true'
 )
 md5sums=(
-    '10c0a76dd883e9e39fadcb6da5e7dc91'
+    'c00a68e93c7d3c95cb63e2b33a8ed0c4'
     'SKIP'
 )
 
