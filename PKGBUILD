@@ -14,7 +14,9 @@ pkgdesc="Local development environment toolset based on Docker supporting multip
 package () {
     mkdir -p ${pkgdir}/opt/whatwedo/dde
     mkdir -p ${pkgdir}/usr/bin
-    rsync -rtl ${srcdir}/dde-${pkgver}/* ${pkgdir}/opt/whatwedo/dde
-    echo make -f /opt/whatwedo/dde/Makefile > ${pkgdir}/usr/bin/dde
+    sed -i 's/\- \.\/data/\- ~\/\.dde\/data/g' ${srcdir}/dde-${pkgver}/docker-compose.yml
+    sed -i 's/\$(ROOT_DIR)\/data/\~\/\.dde\/data/g' ${srcdir}/dde-${pkgver}/Makefile
+    cp -rf ${srcdir}/dde-${pkgver}/* ${pkgdir}/opt/whatwedo/dde
+    echo 'make -f /opt/whatwedo/dde/Makefile "$@"' > ${pkgdir}/usr/bin/dde
     chmod 755 ${pkgdir}/usr/bin/dde
 }
