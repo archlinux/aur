@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.07
+pkgver=2020.07.1
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -23,15 +23,20 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.07-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.07.1-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
-        $pkgname.desktop)
-sha256sums=('150f46733f1ae28d9ea0b0840069a4080e637a24c49863b81dade3f26ea514bd'
-            '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3')
+        $pkgname.desktop
+	bug1654465.diff)
+sha256sums=('71be464bd6c593245a237a43f2e125a4e7dd45f8f6c96528d478ce2af150bc42'
+            '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
+            '4d181c76060845048092724b2fc6f0c2aa76db543c9ba3490f313651de6bb97d')
 
 prepare() {
   mkdir -p mozbuild
   cd Waterfox-$_archivename
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
+  patch -Np1 -i ../bug1654465.diff
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -41,6 +46,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
