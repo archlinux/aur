@@ -5,13 +5,13 @@
 pkgname="nemo-pdf-tools"
 pkgver="1.2.9.0extras20.04.03"
 _pkgver="1.2.9-0extras20.04.03"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Tools to work with PDF files from Nemo"
 arch=('any')
 url="https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/"
 _ppaurl=('https://launchpad.net/~atareao/+archive/ubuntu/nemo-extensions')
 license=('MIT')
-depends=('hicolor-icon-theme' 'nemo-python' 'python-cairo' 'python-pillow' 'gtk3' 'poppler' 'python-pypdf2' 'python-sh')
+depends=('hicolor-icon-theme' 'nemo-python' 'python-cairo' 'python-pillow' 'python-plumbum' 'gtk3' 'poppler' 'python-pypdf2' 'python-sh')
 conflicts=("${pkgname}-git")
 
 source=("${pkgname}_${_pkgver}.tar.xz::${_ppaurl}/+sourcefiles/${pkgname}/${_pkgver}/${pkgname}_${_pkgver}.tar.xz")
