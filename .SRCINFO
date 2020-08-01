@@ -1,0 +1,22 @@
+pkgbase = mu-wizard-git
+	pkgdesc = Shell script to easily setup mu4e on Emacs
+	pkgver = 0.r4.g97b6519
+	pkgrel = 1
+	url = https://github.com/cemkeylan/mu-wizard
+	install = mu-wizard.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = isync
+	depends = msmtp
+	depends = mu
+	depends = pass
+	optdepends = pash: alternative password manager
+	optdepends = pm: alternative password manager
+	provides = mu-wizard
+	conflicts = mu-wizard
+	source = git+https://github.com/cemkeylan/mu-wizard
+	md5sums = SKIP
+
+pkgname = mu-wizard-git
+
