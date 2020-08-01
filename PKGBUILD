@@ -3,7 +3,7 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.3.1.r80.ga6bfa71
+pkgver=0.4.1.r92.gb07db5d
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -65,6 +65,7 @@ package_lib32-mangohud-git() {
     conflicts=('lib32-mangohud')
 
     DESTDIR="$pkgdir" ninja -C build32 install
+    rm -r "$pkgdir/usr/share/man"
 }
 
 package_mangohud-common-git() {
