@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.1.18.0
+pkgver=2.1.18.1
 pkgrel=1
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
@@ -28,7 +28,7 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"36437c33b258f890eb1da16c955de40e55e1569f55fc83085c452e1255ca8721"
+	"e2cf54f5b28e18fc88e76e1703f2e39bf144c88378334527e4a1246974659a85"
 	"87e13ccaf0359ad86713721448f14073d9e4b8904fb1353b259c351482c326a7"
 )
 source=(
