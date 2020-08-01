@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 
 pkgname=raven-qt
-pkgver=3.3.1
+pkgver=4.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
@@ -16,9 +16,13 @@ provides=('raven-qt' 'ravencoind' 'ravencoin-tx')
 conflicts=(raven)
 install=raven-qt.install
 source=("${pkgname%-git}::git+http://github.com/RavenProject/Ravencoin.git#tag=v${pkgver}"
-	"$pkgname.desktop")
+	"$pkgname.desktop"
+	overviewpage.patch
+	trafficgraphwidget.patch)
 sha256sums=('SKIP'
-	'e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df')
+	'e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df'
+	'40bc04ac7f6ab4549374d54a149c21ba5f20c87334e8b0158ab6c47f8286a2b2'
+	'eca98cd942e177f5f1bc92b1196acb1996847e2bcb6bb008580d3b4e9384b2d7')
 build() {
 	cd "$srcdir/$pkgname" || exit
 	find . -type f -iname "*.sh" -exec chmod +x {} \;
@@ -28,6 +32,8 @@ build() {
 	./autogen.sh
 	./configure --prefix=/usr --with-pic --disable-shared --enable-cxx \
 		--disable-bench --disable-tests
+	patch $srcdir/$pkgname/src/qt/overviewpage.h $srcdir/overviewpage.patch
+	patch $srcdir/$pkgname/src/qt/trafficgraphwidget.h $srcdir/trafficgraphwidget.patch
 	make ${MAKEFLAGS}
 }
 

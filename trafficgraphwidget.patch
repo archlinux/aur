@@ -1,0 +1,10 @@
+--- trafficgraphwidget.h	2020-08-01 14:29:33.337820045 -0500
++++ delete.h	2020-08-01 15:05:42.066894949 -0500
+@@ -8,6 +8,7 @@
+ 
+ #include <QWidget>
+ #include <QQueue>
++#include <QPainterPath>
+ 
+ class ClientModel;
+ 

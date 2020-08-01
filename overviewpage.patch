@@ -1,0 +1,10 @@
+--- overviewpage.h	2020-08-01 14:29:33.324486714 -0500
++++ deleteme.h	2020-08-01 14:55:01.144025826 -0500
+@@ -11,6 +11,7 @@
+ #include <QSortFilterProxyModel>
+ #include <QWidget>
+ #include <QMenu>
++#include <QPainterPath>
+ #include <memory>
+ 
+ class ClientModel;
