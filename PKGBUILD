@@ -7,9 +7,9 @@
 # shellcheck disable=SC2154
 # Maintainer: liupold <rohhnch@protonmail.ch>
 
-pkgname=pidswallow-dev-git
+pkgname=pidswallow
 pkgrel=1
-pkgver=2.0.d # dev
+pkgver=1.0
 pkgdesc="A script to swallow your terminal automatically"
 arch=(x86_64)
 url="https://github.com/Liupold/pidswallow"
@@ -18,27 +18,18 @@ depends=(xdotool)
 makedepends=(git)
 checkdepends=(shellcheck)
 provides=(pidswallow)
-conflicts=(pidswallow)
 
-source=("$pkgname::git+$url")
-sha256sums=("SKIP")
+source=("$pkgname-$pkgver::https://github.com/Liupold/pidswallow/archive/1.0.tar.gz")
+sha256sums=("1ad08b49c9a9502bff47fd58df8b5a06252f7d349a8cdf4105932a77232adb69")
 
-pkgver() {
-        cd "$pkgname" || return 1
-        git checkout dev > /dev/null 2>&1
-        printf "2.0.d.r%s.%s" \
-                "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
-}
 
 check() {
-        cd "$pkgname" || return 1
-        git checkout dev > /dev/null 2>&1
+        cd "$pkgname-$pkgver" || return 1
         shellcheck "./pidswallow"
 }
 
 package() {
-        cd "$pkgname" || return 1
+        cd "$pkgname-$pkgver" || return 1
         install -Dm755 "./pidswallow" "$pkgdir/usr/bin/pidswallow"
         install -Dm644 "./README.md" "$pkgdir/usr/share/doc/$pkgname"
 }
