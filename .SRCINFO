@@ -1,0 +1,15 @@
+pkgbase = pacadd
+	pkgdesc = A simple tool for managing repositories
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/pacadd
+	arch = any
+	license = MIT
+	depends = bash
+	depends = sed
+	depends = coreutils
+	source = pacadd-1.0.0.tar.gz::https://github.com/BiteDasher/pacadd/archive/1.0.0.tar.gz
+	sha256sums = f4b7b26e65d197892d7ce169faf3758a29bbebee9993ebab30d280992a5e0557
+
+pkgname = pacadd
+
