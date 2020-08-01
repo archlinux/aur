@@ -1,6 +1,12 @@
 Proton-5.9-GE-5-ST
 
-GloriousEggroll released this on July 28
+GloriousEggroll released this Jul 28, 2020
+
+7-28-2020 UPDATE:
+-I ported the rest of the winevulkan patches from 5.9->5.13. This allows World War Z to run with AMDVLK and Nvidia. Does not work with RADV yet.
+
+7-27-2020:
+Another round of fixes for the stable version:
 
 -Updated vkd3d -- allows Death Stranding to run with mesa RADV/ACO
 -Backported a total of 36 winex11 and user32 patches from 5.9->5.13 to allow AC Odyssey black bars to be fixed
@@ -8,9 +14,10 @@ GloriousEggroll released this on July 28
 -Added missing patch wine-mirror/wine@0114308 which fixes Origin hanging on login (needed after adding Assetto patch which introduced the hang)
 -Removed previously added Borderlands 3 launch options as they were reported to break new prefix creation on fresh installs
 
+
 Proton-5.9-GE-4-ST
 
-GloriousEggroll released this on July 26
+GloriousEggroll released this on Jul 26, 2020
 
 -Death Stranding patches backported, works with nvidia or amdvlk (not working on RADV yet)
 -Borderlands 3 now works in DX12 mode (may occasionally crash on 'optimizing shaders' when first loading the game)
@@ -22,7 +29,8 @@ GloriousEggroll released this on July 26
 -Minor bug fix in warframe controller detection hack
 -Upstream build system mingw changes backported
 -vkd3d updated to use vkd3d-proton
--dxvk updated 
+-dxvk updated
+
 
 Proton-5.9-GE-3-ST
 
@@ -69,6 +77,7 @@ Fixes:
 -Added patch that allows MGS: Ground Zeroes to run (keyboard+mouse input is currently broken, needs more work. Works with controller)
 -Added workaround for Warframe launcher rendering all black in wined3d mode (game still crashes in wined3d) - Thanks Iglu47
 -README has been overhauled. Thank you TheEvilSkeleton!
+
 
 Proton-5.11-GE-2-MF
 
@@ -164,7 +173,7 @@ Hi all, I'm marking this as another pre-release as we still have some audio issu
 -FAudio updated
 
 Known issues:
--Fullscreen hack still disabled for the time being to retain compatiblity with MK11
+-Fullscreen hack still disabled for the time being to retain compatibility with MK11
 -Path of Exile cannot switch to vulkan renderer when using RADV, but works with AMDVLK. This is something else tied to fullscreen hack, as patching in fullscreen hack allows it to switch. RADV currently has a lot of graphical glitches with PoE anyway, so for the time being AMDVLK is the better option to use.
 -Soul Calibur VI still hangs at intro due to incomplete SAR work in media foundation
 -Injustice 2 and MK11 cut scene audio is missing due to incomplete SAR work in media foundation
@@ -417,7 +426,7 @@ GloriousEggroll released this Feb 17, 2020
 This is mainly a hotfix + feature release build.
 
 Hotfix:
--Fixed warframe requiring a controller to be plugged in. That's right, you no longer need xboxdrv! I spent the weekend debugging it and was finally able to come up with a bit of a hacky workaround, but it works for now until valve addresses the issue (it has to do with the way lsteamclient handles controllers)
+-Fixed warframe requiring a controller to be plugged in. That's right, you no longer need xboxdrv! I spent the weekend debugging it and was finally able to come up with a bit of a hacky workaround, but it works for now until valve addresses the issue (it has to do with the way steamclient handles controllers)
 
 Feature:
 -vkd3d branch is latest from codeweavers + DXIL changes by Hans Kristian (who has been doing a lot of vkd3d submissions) + metro exodus commits that both Hans and Doitsujin (creator of dxvk) have been working on together. The previous release had Hans's DXIL changes, this just adds the Metro changes on top of it. With that being said, expect some minor graphical glitches in vkd3d with Metro Exodus
