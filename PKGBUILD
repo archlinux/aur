@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=r176.dd07f49
+pkgver=r205.babf7a3
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -22,10 +22,10 @@ depends=('python-pyqt5'
          'python-unit-convert'
          'python-gputil'
          'python-coloredlogs'
+         'python-numpy'
          'python-prompt_toolkit1014'
          'ttf-fira-code'
-         'smartmontools'
-         'nvme-cli')
+         'hddtemp')
 makedepends=('python-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -37,14 +37,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-#build() {
-#  cd "${pkgname%-git}"
-#  python setup.py build
-#}
-
 package() {
   cd "${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1 #--skip-build
+  python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
