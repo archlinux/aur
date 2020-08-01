@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/archive/"${pkgver/_/-}".tar.gz")
 noextract=()
-sha256sums=(7ac9ed8aef45fcd0be6971d78886d173757c40c2d3c91f65f5279cfba3d04b6e)
+sha256sums=(6cf587ca109c02db9ab26550c5d6f237cde3783b302b11f41a948291a077159f)
 
 package() {
   cd "$pkgname-${pkgver/_/-}"
