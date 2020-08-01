@@ -1,6 +1,6 @@
 # Maintainer: Arch-Jason <arch-jason@outlook.com>
 pkgname=zff
-pkgver=5.5.7
+pkgver=5.5.8
 pkgrel=1
 pkgdesc="A simple game"
 arch=(any)
