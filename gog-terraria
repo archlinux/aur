@@ -7,7 +7,7 @@ cd /opt/gog-terraria/  # The launcher fails unless in its dir.
 if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
   echo "Firejail detected. Enforcing a sandbox"
   echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
-  firejail --caps.drop=all "$run"
+  firejail --caps.drop=all --profile=/opt/gog-terraria/gog-terraria.profile "$run"
 else
   "$run"
 fi
