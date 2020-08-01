@@ -1,6 +1,6 @@
 pkgbase = python-pytablereader
 	pkgdesc = Load structured table data from various file formats
-	pkgver = 0.30.0
+	pkgver = 0.30.1
 	pkgrel = 1
 	url = https://github.com/thombashi/pytablereadera
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-pytablereader
 	depends = python-tabledata
 	depends = python-typepy
 	provides = pytablereader
-	source = https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.30.0.tar.gz
-	sha256sums = cb45e968e1a781468196b4c65ec23347eeed0d3985d70bfa8bfbd6d9533fa935
+	source = https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.30.1.tar.gz
+	sha256sums = dc0eba98a45b91a25a9c4ed31ee6c1779983d058f8c1dc879394ef386f703e76
 
 pkgname = python-pytablereader
 

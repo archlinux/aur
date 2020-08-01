@@ -3,7 +3,7 @@
 
 _pkgname=pytablereader
 pkgname=python-${_pkgname}
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc='Load structured table data from various file formats'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-beautifulsoup4' 'python-dataproperty' 'python-jsonschema' 'pyth
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb45e968e1a781468196b4c65ec23347eeed0d3985d70bfa8bfbd6d9533fa935')
+sha256sums=('dc0eba98a45b91a25a9c4ed31ee6c1779983d058f8c1dc879394ef386f703e76')
 
 build() {
   cd "${_pkgname}-${pkgver}"
