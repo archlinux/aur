@@ -1,0 +1,13 @@
+pkgbase = technic-launcher
+	pkgdesc = The Technic Launcher will get you playing your favorite minecraft modpacks in no time. Choose from thousands of modpacks and install them with a single click. Offline (LAN) version
+	pkgver = v4.666
+	pkgrel = 1
+	url = https://www.technicpack.net/
+	arch = x86_64
+	license = GPL3
+	depends = jre8-openjdk
+	source = git://github.com/Gouster4/AUR.git#branch=technic-launcher
+	md5sums = SKIP
+
+pkgname = technic-launcher
+
