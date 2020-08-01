@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('taglib' 'mpv')
+depends=('qt5-base' 'taglib' 'mpv')
 optdepends=('finetune')
 makedepends=('git' 'qt5-tools')
 source=("git+${_giturl}/musique.git#tag=${pkgver}" "git+${_giturl}/http.git" "git+${_giturl}/idle.git" "git+${_giturl}/media.git")
