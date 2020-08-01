@@ -8,7 +8,7 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -31,6 +31,7 @@ prepare() {
 
 build() {
   arch-meson $_pkgbase build \
+    -D udevrulesdir=/usr/lib/udev/rules.d \
     -D gstreamer=false \
     -D docs=true \
     -D man=true
