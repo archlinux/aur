@@ -1,6 +1,6 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
-	pkgver = 2.3.0rc2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://www.tensorflow.org/
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = tensorflow-rocm
 	depends = intel-mkl
 	depends = onednn
 	optdepends = tensorboard: Tensorflow visualization toolkit
-	source = tensorflow-rocm-2.3.0rc2.tar.gz::https://github.com/tensorflow/tensorflow/archive/v2.3.0-rc2.tar.gz
+	source = tensorflow-rocm-2.3.0.tar.gz::https://github.com/tensorflow/tensorflow/archive/v2.3.0.tar.gz
 	source = numpy1.20.patch::https://github.com/tensorflow/tensorflow/commit/75ea0b31477d6ba9e990e296bbbd8ca4e7eebadf.patch
 	source = build-against-actual-mkl.patch
-	sha512sums = 94a2663497d333d543f363e9fea94fbcfdcdbbc0dfbaf009ba9181a808713aeb78f9b8805f56bea5fd3925a36f105427b3996795750589f378d8afbdadc2b86d
+	sha512sums = 86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac
 	sha512sums = df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc
 	sha512sums = e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08
 

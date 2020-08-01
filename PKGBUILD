@@ -6,8 +6,8 @@
 
 pkgbase=tensorflow-rocm
 pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
-pkgver=2.3.0rc2
-_pkgver=2.3.0-rc2
+pkgver=2.3.0
+_pkgver=2.3.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -21,7 +21,7 @@ optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         numpy1.20.patch::https://github.com/tensorflow/tensorflow/commit/75ea0b31477d6ba9e990e296bbbd8ca4e7eebadf.patch
         build-against-actual-mkl.patch)
-sha512sums=('401c6e2a89aff763b2aa102d0dacc99c955d2d2eea41ec93de8c9c0f3422d85ad7cabf04991675ac45ef9fe5e971794dba3a062ba527d9af41d2d4072806730c'
+sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
             'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08')
 
