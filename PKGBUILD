@@ -120,6 +120,8 @@ package() {
 
 	mv "$pkgdir/usr/share/blender" "$pkgdir/usr/share/upbge"
 
+	install -D -m755 "$srcdir"/blender-build/bin/blenderplayer \
+		"$pkgdir"/usr/bin/blenderplayer
 	install -D -m644 "$srcdir"/upbge.desktop \
 		"$pkgdir"/usr/share/applications/upbge.desktop
 	install -D -m644 "$srcdir"/upbge/release/freedesktop/icons/scalable/apps/upbge.svg \
