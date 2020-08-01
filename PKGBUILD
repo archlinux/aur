@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=bisonc++
-pkgver=6.03.00
+pkgver=6.04.00
 pkgrel=1
 pkgdesc='C++ parser generator'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('icmake' 'yodl')
 optdepends=()
 source=("https://gitlab.com/fbb-git/bisoncpp/-/archive/${pkgver}/bisoncpp-${pkgver}.tar.gz"
         'manual_license.patch')
-md5sums=('13dcb06e43a55e0f90303e3572ac269c'
+md5sums=('658bd2eec098d5ebf67fc9f493a1a78d'
          'bab1f76582bd7518df6debe7265fdd7c')
 
 build() {
@@ -20,7 +20,7 @@ build() {
 
   patch -p1 -i "$srcdir/manual_license.patch"
 
-  CXXFLAGS="$CXXFLAGS --std=c++2a"
+  CXXFLAGS="$CXXFLAGS --std=c++20"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
   # ./build -P program
