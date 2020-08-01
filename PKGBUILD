@@ -7,7 +7,7 @@
 
 pkgname=musique
 pkgver=1.9
-pkgrel=4
+pkgrel=5
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
