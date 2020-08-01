@@ -15,6 +15,7 @@ sha256sums=('66bdce2fa39ca142d63f322cf9b0dc93873269930652a30037c1882fe99e02fd'
 
 _instname=google-drive
 _name1=GoogleDrive-linux-x64
+_executablename=GoogleDrive
 
 build() {
     nativefier "https://drive.google.com/" \
@@ -32,7 +33,7 @@ package() {
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
 
     cp -rL $_name1 "$pkgdir"/opt/$pkgname
-    ln -sf /opt/$pkgname/$_instname "$pkgdir"/usr/bin/$_instname
+    ln -sf /opt/$pkgname/$_executablename "$pkgdir"/usr/bin/$_instname
     ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$_instname.png
 
     chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
