@@ -1,9 +1,9 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 
 pkgname=mopidy-youtube
-_pkgname="mopidy-youtube-3.0"
-pkgver=v3.0.0
-_pkgver=v3.0
+_pkgname="mopidy-youtube-3.1"
+pkgver=v3.1.0
+_pkgver=v3.1
 pkgrel=2
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -27,5 +27,5 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('63cbc88f22537f23cdf8155066f02120')
-sha1sums=('616a5f242eb5aefa94a8541f3eb9d3c2b71c6f28')
+md5sums=('8b5be5f43408b409df3cc8102ad2f6e0')
+sha1sums=('55f08fa302d7f88a782830066cb1bc0f1595832c')
