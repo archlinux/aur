@@ -1,6 +1,6 @@
 pkgbase = openmesh
 	pkgdesc = A generic and efficient data structure for representing and manipulating polygonal meshes
-	pkgver = 8.0
+	pkgver = 8.1
 	pkgrel = 1
 	url = http://www.openmesh.org
 	arch = i686
@@ -8,13 +8,11 @@ pkgbase = openmesh
 	license = BSD
 	makedepends = cmake
 	makedepends = qt5-base
-	makedepends = graphviz
-	makedepends = doxygen
 	depends = mesa
 	optdepends = qt5-base: for using included applications
-	source = openmesh-8.0.tar.bz2::http://www.openmesh.org/media/Releases/8.0/OpenMesh-8.0.tar.bz2
+	source = openmesh-8.1.tar.bz2::http://www.openmesh.org/media/Releases/8.1/OpenMesh-8.1.tar.bz2
 	source = doc-install.patch
-	sha256sums = f3311232d3611847c523bd4792ce8700f7ec81e9e1ff2a4bdda18eac70577d33
+	sha256sums = 9bc43a3201ba27ed63de66c4c09e23746272882c37a3451e71f0cf956f9be076
 	sha256sums = cedf4ab2e6349caba7e899b5462643435bb42d7e70c6231e582f056ddf7bf41b
 
 pkgname = openmesh
