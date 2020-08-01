@@ -1,0 +1,22 @@
+pkgbase = opentsdb
+	pkgdesc = Distributed, scalable Time Series Database (TSDB) written on top of HBase
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://opentsdb.net/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	makedepends = java-environment=7
+	makedepends = java-runtime=6
+	depends = java-runtime
+	depends = hbase
+	depends = gnuplot
+	source = https://github.com/OpenTSDB/opentsdb/archive/v2.4.0.zip
+	sha512sums = bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9
+
+pkgname = opentsdb
+
