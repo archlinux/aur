@@ -1,0 +1,26 @@
+pkgbase = bludigon
+	pkgver = 0.1.0.0
+	pkgrel = 1
+	url = https://github.com/jumper149/bludigon
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = ghc-libs
+	depends = haskell-data-default
+	depends = haskell-finite-typelits
+	depends = haskell-lifted-base
+	depends = haskell-monad-control
+	depends = haskell-time-compat
+	depends = haskell-transformers-base
+	depends = haskell-x11
+	depends = libx11
+	depends = libxrandr
+	source = git+https://github.com/jumper149/bludigon.git
+	source = compile-dynamically.patch
+	source = Setup.hs
+	sha256sums = SKIP
+	sha256sums = acb3e75bd709d855e4715bc48250fe01163ded72ad42a094d80925e3854b8b83
+	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
+
+pkgname = bludigon
+
