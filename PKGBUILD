@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=78.0.2
+pkgver=79.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil git binutils)
+             python-setuptools python-psutil git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -26,7 +26,8 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                "git+https://gitlab.com/${pkgname}-community/settings.git"
                "megabar.patch"
-               "remove_addons.patch")
+               "remove_addons.patch"
+               https://raw.githubusercontent.com/archlinux/svntogit-packages/master/firefox/repos/extra-x86_64/bug1654465.diff)
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $pkgname.desktop
                 "git+https://gitlab.com/${pkgname}-community/browser/common.git"
@@ -34,22 +35,25 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "megabar.patch"
                 "remove_addons.patch"
                 arm.patch
-                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+                https://raw.githubusercontent.com/archlinux/svntogit-packages/master/firefox/repos/extra-x86_64/bug1654465.diff)
 
-sha256sums_x86_64=('1aa00ec6d40a771d525b867b175be28eda096becc745875bcceb133a985750fc'
+sha256sums_x86_64=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c'
-                   '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0')
-sha256sums_aarch64=('1aa00ec6d40a771d525b867b175be28eda096becc745875bcceb133a985750fc'
+                   '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
+                   'e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6')
+sha256sums_aarch64=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c'
                     '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
+                    'e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6')
 
 prepare() {
   mkdir mozbuild
@@ -114,7 +118,7 @@ END
   export CXXFLAGS+=" -g0"
   export RUSTFLAGS="-Cdebuginfo=0"
 
-  export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+  export LDFLAGS+=" -Wl,--no-keep-memory"
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
 
@@ -125,6 +129,9 @@ else
 ac_add_options --enable-optimize
 END
 fi
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
+  patch -Np1 -i ../bug1654465.diff
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
@@ -215,6 +222,7 @@ ac_add_options --enable-lto
 ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-linker=lld
 END
 
 else
@@ -224,7 +232,8 @@ ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --enable-linker=gold
+ac_add_options --enable-linker=lld
+ac_add_options --disable-elf-hack
 END
 
 fi
