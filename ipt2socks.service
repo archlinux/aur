@@ -1,0 +1,16 @@
+[Unit]
+Description=utility for converting iptables(redirect/tproxy) to socks5
+After=network.target
+
+[Service]
+User=nobody
+EnvironmentFile=/etc/ipt2socks/ipt2socks.conf
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/ipt2socks -s $server_addr -p $server_port -l $listen_port -j $thread_nums $extra_args
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
