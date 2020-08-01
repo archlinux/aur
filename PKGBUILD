@@ -7,7 +7,7 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -36,8 +36,10 @@ depends=(
   'qt5-base'
   'qt5-svg'
   'ttf-bitstream-vera'
+  'python-certifi'
 )
 optdepends=(
+  'tor: Tor support'
   'python-btchip: Ledger hardware wallet support'
   'python-hidapi: Digital Bitbox hardware wallet support'
   'python-matplotlib: plot transaction history in graphical mode'
