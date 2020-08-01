@@ -2,7 +2,7 @@
 # Tue Jul 23 05:22:00 UTC 2019
 pkgbase = megazeux
 	pkgdesc = Game creation system
-	pkgver = 2.92
+	pkgver = 2.92e
 	pkgrel = 1
 	url = http://www.digitalmzx.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = megazeux
 	depends = libvorbis
 	depends = libpng
 	depends = sdl2
-	source = mzx292src.tar.xz::http://vault.digitalmzx.net/download.php?latest=src&ver=2.92
-        sha256sums = 841cf520002b6807ca2a11368be7942fd3eea8dc85f59b1cea07a7fba48e6c1e
+	source = mzx292esrc.tar.xz::http://vault.digitalmzx.net/download.php?latest=src&ver=2.92e
+        sha256sums = 1d25e7cc07a9ffdba229bfe59b9a52eff8d7459be78cfb7eb9746539b51634be
 
 pkgname = megazeux
