@@ -2,7 +2,7 @@
 
 pkgname=gog-terraria
 pkgver=1.4.0.5.38805
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"

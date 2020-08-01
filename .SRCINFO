@@ -1,7 +1,7 @@
 pkgbase = gog-terraria
 	pkgdesc = The very world is at your fingertips as you fight for survival, fortune, and glory.
 	pkgver = 1.4.0.5.38805
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://terraria.org/
 	arch = i686
