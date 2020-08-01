@@ -28,11 +28,6 @@ if [[ $# == 2 ]]; then
     pkgrel=$2
 fi
 
-# Manually download the logo build artifact to avoid the fact that the GitLab
-# artifacts download using the tag may give you an incorrect version of the
-# logo build artifacts.
-# wget -O logo.zip "https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v$1/download?job=build_logo"
-
 SRCS=(
     https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PROJ_NAME}-$1.tar.gz
     https://gitlab.com/sumner/sublime-music/-/archive/v$1/sublime-music-v$1.tar.gz
