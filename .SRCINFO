@@ -1,14 +1,14 @@
 pkgbase = reason-language-server
 	pkgdesc = A language server for reason, in reason
-	pkgver = 1.7.8
-	pkgrel = 2
+	pkgver = 1.7.10
+	pkgrel = 1
 	url = https://github.com/jaredly/reason-language-server
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = reason-language-server-1.7.8.tar.gz::https://github.com/jaredly/reason-language-server/releases/download/1.7.8/rls-linux.zip
+	source = reason-language-server-1.7.10.tar.gz::https://github.com/jaredly/reason-language-server/releases/download/1.7.10/rls-linux.zip
 	source = LICENSE.md
-	md5sums = 6000a649b5baa07dab9b7eb7eeffce51
+	md5sums = 561e351168c0fa0123a234a4dbe545a2
 	md5sums = 53b2980d07d569c6711b8455108a99cd
 
 pkgname = reason-language-server
