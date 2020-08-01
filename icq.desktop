@@ -5,4 +5,5 @@ Name=ICQ
 Comment=Official ICQ client
 Exec=icq
 Icon=icq
+Terminal=false
 Categories=Network;InstantMessaging;

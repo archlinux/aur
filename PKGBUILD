@@ -17,14 +17,14 @@ _git_reponame='im-desktop'
 
 pkgname='icqdesktop-git'
 pkgver=r18.271e42d
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-#depends=('')
-makedepends=('git' 'cmake' 'glfw-x11')
+depends=('fontconfig' 'libxdamage' 'libxcomposite' 'freetype2' 'libxext')
+makedepends=('cmake' 'glfw-x11')
 #optdepends=('')
 pkgdesc='Official ICQ desktop client for Linux'
 url='https://icq.com/'
-license=('Apache' 'custom')
+license=('Apache')
 source=("${pkgname}::git+https://github.com/mail-ru-im/${_git_reponame}.git"
         'icq.desktop')
 md5sums=('SKIP'
@@ -48,7 +48,7 @@ build() {
 
 package() {
   install -Dm755 "${pkgname}/bin/Release${LINUX_ARCH}/icq" "${pkgdir}/usr/bin/icq"
-  install -Dm644 "${pkgname}/gui/resources/main_window/logo_icq.svg" "${pkgdir}/usr/share/pixmaps/icq.png"
+  install -Dm644 "${pkgname}/products/icq/app/resources/main_window/logo.svg" "${pkgdir}/usr/share/pixmaps/icq.svg"
   install -Dm644 icq.desktop "${pkgdir}/usr/share/applications/icq.desktop"
 }
 
