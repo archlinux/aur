@@ -8,7 +8,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.5.9
+pkgver=6.5.10
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
