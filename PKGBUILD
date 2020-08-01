@@ -12,9 +12,9 @@ pkgdesc="Local development environment toolset based on Docker supporting multip
 
 
 package () {
-    mkdir -p ${srcdir}/usr/bin/
-    echo make -f ${pkgdir}/opt/whatwedo/dde/Makefile > ${srcdir}/usr/bin/dde
     mkdir -p ${pkgdir}/opt/whatwedo/dde
+    mkdir -p ${pkgdir}/usr/bin
     rsync -rtl ${srcdir}/dde-${pkgver}/* ${pkgdir}/opt/whatwedo/dde
-    install -Dm755 ${srcdir}/usr/bin/dde ${pkgdir}/usr/bin/dde
+    echo make -f /opt/whatwedo/dde/Makefile > ${pkgdir}/usr/bin/dde
+    chmod 755 ${pkgdir}/usr/bin/dde
 }
