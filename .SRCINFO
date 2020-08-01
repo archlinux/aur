@@ -1,14 +1,14 @@
 pkgbase = skribilo-git
 	pkgdesc = The Ultimate Document Programming Framework from git
 	pkgver = 0.9.4.r7.g60f1a4c
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.nongnu.org/skribilo/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = guile-git
-	makedepends = guile-reader
+	makedepends = guile3.0-reader
 	makedepends = ploticus
 	depends = bash
 	provides = skribilo
