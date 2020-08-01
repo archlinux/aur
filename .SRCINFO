@@ -1,0 +1,21 @@
+pkgbase = gensystray-git
+	pkgdesc = Create your own system tray item to run your favorite commands.
+	pkgver = r25.fd5a9b7
+	pkgrel = 1
+	url = https://github.com/dardevelin/gensystray
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk3
+	depends = sdl2
+	provides = gensystray
+	conflicts = gensystray
+	source = gensystray::git+https://github.com/dardevelin/gensystray.git
+	source = gensystray.sample.cfg
+	sha256sums = SKIP
+	sha256sums = 02b33f2c064c96308ce4754f24f0fad36f8d56c5fbdc55acc34ebc7b09532b42
+
+pkgname = gensystray-git
+
