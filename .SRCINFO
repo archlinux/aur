@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.07.09.a.r48.gb8b80b6b1cf
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.07.22.a.r354.g79ff5e36e8d
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = swift-language-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-six
+	makedepends = python2
 	depends = icu
 	depends = libedit
 	depends = libxml2
