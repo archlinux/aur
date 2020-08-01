@@ -1,13 +1,14 @@
 pkgbase = google-drive-nativefier
 	pkgdesc = Electron wrapper for the Google Drive web application
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drive.google.com
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = nodejs-nativefier
 	makedepends = npm
+	makedepends = unzip
 	source = google-drive-nativefier.png
 	source = google-drive-nativefier.desktop
 	sha256sums = 66bdce2fa39ca142d63f322cf9b0dc93873269930652a30037c1882fe99e02fd
