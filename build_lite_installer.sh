@@ -3,7 +3,7 @@
 set -e
 
 printf "\n\n Buildscript for the distribution independed installer of"
-printf " EVE Online Launcher Setup\n\n"
+printf " EVE Online Launcher Setup (Lite)\n\n"
 
 version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
@@ -54,6 +54,27 @@ if [ "$rcsum" != "$mscsum" ] ;then
     exit 0
 fi
 
+if [ ! -r "./evelauncher-$version.tar.gz" ] ;then
+    printf "\nGet evelauncher-$version.tar.gz...\n\n"
+    curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
+fi
+rcsum="$(sha256sum ./evelauncher-$version.tar.gz| cut -d' ' -f1)"
+if [ "$rcsum" != "$elcsum" ] ;then
+    printf "\n\nError: Checksum evelauncher-$version.tar.gz mismatch!"
+    printf "\nLeaving.\n\n"
+    exit 0
+fi
+
+if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
+    printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
+    curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
+fi
+rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
+if [ "$rcsum" != "$dvcsum" ] ;then
+    printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
+    rm -f ./dxvk-$dvver.tar.gz
+fi
+
 printf "\nCreate clean build environment..."
 if [ -d src/ ] ;then rm -rf src/* ;else mkdir src/ ;fi
 
@@ -68,7 +89,6 @@ echo "done."
 
 printf "\nCopy needed files from AUR source..."
 for eia in ../eve-icons*.tar.gz ;do tar xf $eia -C evesetup/ ;done
-for eta in ../eve-transl5.12-??.tar.gz ;do cp $eta evesetup/ ;done
 for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
     cmd=eve$cmd
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
@@ -77,43 +97,54 @@ done
 cp ../evesetup.shlib evesetup/
 cp ../evelauncher.kwinrule evesetup/
 cp ../evelauncher.lua evesetup/
-cp ../evelauncher.sh.in evesetup/evelauncher.sh
+cp ../evelauncher.sh evesetup/
 sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
-cp ../setup.sh.in evesetup/setup.sh
+cp ../setup_lite.sh.in evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
-sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
 sed -i s,dvver=\"\",dvver=\"$dvver\", evesetup/setup.sh
-sed -i s,dvcsum=\"\",dvcsum=\"$dvcsum\", evesetup/setup.sh
 chmod a+x evesetup/setup.sh
+cp ../dxvk-$dvver.tar.gz evesetup/ 2>/dev/null || true
 echo "done."
 
-if [ -f "../evelauncher-$version.tar.gz" ] ;then
-    printf "\nFound EVE Launcher archive..."
-    rcsum="$(sha256sum ../evelauncher-$version.tar.gz | cut -d' ' -f1)"
-    if [ "$rcsum" = "$elcsum" ] ;then
-	cp ../evelauncher-$version.tar.gz evesetup/ && \
-	echo "added."
-    else
-	echo "skipped, checksum mismatch."
-    fi
-else
-    printf "\nEVE Launcher archive not found, will be downloaded during the setup process.\n"
-fi
-if [ -f "../dxvk-$dvver.tar.gz" ] ;then
-    printf "\nFound DXVK archive..."
-    rcsum="$(sha256sum ../dxvk-$dvver.tar.gz | cut -d' ' -f1)"
-    if [ "$rcsum" = "$dvcsum" ] ;then
-	cp ../dxvk-$dvver.tar.gz evesetup/ && \
-	echo "added."
-    else
-	echo "skipped, checksum mismatch."
-    fi
-else
-    printf "\nDXVK archive not found, will be downloaded during the setup process.\n"
-fi
-printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
-./makeself.sh --tar-quietly evesetup/ ../evesetup-$version-$release-$arch.run \
-    "EVE Online Launcher Setup $version-$release" ./setup.sh
+printf "\nExtract evelauncher-$version.tar.gz..."
+tar xf ../evelauncher-$version.tar.gz
+echo "done."
+
+printf "\nClean up evelauncher directory..."
+cd evelauncher/
+rm -rf ./resources/ ./plugins/
+rm -f ./*.a ./*.la ./*.prl ./*[Qq]t* ./libicu* ./libpng* ./libxcb*
+cp -f ../../evelauncher.sh.real ./evelauncher.sh
+chmod 0755 ./*
+chmod 0644 ./roots.pem ./*.qm ./errorpage/*
+echo "done."
+
+printf "\nReplace identical files with symbolic links..."
+ln -sf evelauncher.sh LogLite.sh
+ln -sf libgpr.so.6.0.0 libgpr.so
+ln -sf libgpr.so.6.0.0 libgpr.so.6
+ln -sf libgrpc++.so.1.12.0 libgrpc++.so
+ln -sf libgrpc++.so.1.12.0 libgrpc++.so.1
+ln -sf libgrpc++.so.1.12.0 libgrpc++.so.6
+ln -sf libgrpc.so.6.0.0 libgrpc.so
+ln -sf libgrpc.so.6.0.0 libgrpc.so.6
+ln -sf libprotobuf.so.16.0.0 libprotobuf.so
+ln -sf libprotobuf.so.16.0.0 libprotobuf.so.16
+echo "done."
+
+printf "\nRemove unneeded symbols from files..."
+find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
+echo "done."
+
+printf "\nRepack evelauncher-$version.tar.gz..."
+touch ./*
+cd ../
+tar czf evesetup/evelauncher-$version.tar.gz evelauncher/
+echo "done."
+
+printf "\nBuild self-extractable archive evesetup-lite-${version}-$release-$arch.run\n\n"
+./makeself.sh --tar-quietly evesetup/ ../evesetup-lite-${version}-$release-$arch.run \
+    "EVE Online Launcher Setup (Lite) ${version}-$release" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
 rm -rf src/

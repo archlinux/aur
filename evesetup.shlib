@@ -47,7 +47,7 @@ check_env() {
 }
 
 check_steam() {
-    if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam 2>/dev/null)" ] ;then
+    if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam)" ] ;then
 	echo "8500" >$LAUNCHER/steam_appid.txt
     fi
 }
@@ -77,16 +77,16 @@ check_wine() {
     DXVKFILELIST="d3d10core d3d11 dxgi"
     WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
     W32SYSDIR=${WINSYSDIR%/*}/syswow64
-    INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null | tr -dc [:digit:]) || true
+    INSTWINE=$(cat $WINEPREFIX/.update-timestamp | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
     WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
     WINEDATE=$(getdate $WINECONF)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Prepare wine environment for EVE"
-	for DXVKFILE in $DXVKFILELIST ;do
-	    rm $WINSYSDIR/$DXVKFILE.dll* 2>/dev/null || true
-	    rm $W32SYSDIR/$DXVKFILE.dll* 2>/dev/null || true
-	    sed -i /\"$DXVKFILE\"=\"native\"/d $WINEPREFIX/user.reg 2>/dev/null || true
+	for DXVKFILE in "d3d10_1 d3d10core d3d10 d3d11 d3d9 dxgi" ;do
+	    rm $WINSYSDIR/$DXVKFILE.dll* || true
+	    rm $W32SYSDIR/$DXVKFILE.dll* || true
+	    sed -i /\"$DXVKFILE\"=\"/d $WINEPREFIX/user.reg || true
 	done
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
@@ -118,15 +118,14 @@ check_wine() {
 }
 
 desktop_msg() {
-    if [ -x "$(which notify-send 2>/dev/null)" ] ;then
+    if [ -x "$(which notify-send)" ] ;then
 	notify-send -i eve $(basename $0) "$@"
     fi
     printf "$(basename $0): $@\n"
 }
 
 getdate() {
-    printf $(ls -l --time-style=+%s $1 2>/dev/null | cut -d' ' -f6) \
-	2>/dev/null || printf 180
+    printf $(ls -l --time-style=+%s $1 | cut -d' ' -f6) || printf 180
 }
 
 getval() {

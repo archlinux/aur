@@ -1,0 +1,128 @@
+#!/bin/sh
+
+set -e
+
+bootstrap_install() {
+    install -dv "$destdir"
+    install -dv "$bindir"
+    install -dv "$libdir"
+    install -dv "$docdir"
+    install -d "$prefix/bin/"
+    install -d "$prefix/share/applications/"
+    if [ -f "./dxvk-$dvver.tar.gz" ] ;then
+	install -d "$libdir/dxvk/"
+	echo "dxvk-$dvver" >"$libdir/dxvk/version"
+	chmod 0644 "$libdir/dxvk/version"
+	tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
+	    --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
+    fi
+    install -pm 0644 "./evesetup.shlib" "$libdir"
+    install -pm 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
+    install -m 0644 "./evelauncher.kwinrule" "$docdir"
+    install -m 0644 "./evelauncher.lua" "$docdir"
+    sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
+    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+	cmd=eve$cmd
+	if [ -f "./$cmd" ] ;then
+	    sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
+	    install -p "./$cmd" "$bindir/"
+	else
+	    if [ "$cmd" = "everestore" ] ;then
+		ln -s evebackup "$bindir/$cmd"
+	    else
+		ln -s evewine "$bindir/$cmd"
+	    fi
+	fi
+	[ "$bindir" != "$prefix/bin" ] && ln -s "$bindir/$cmd" "$prefix/bin/$cmd"
+	if [ ! "$cmd" = "evewine" ] ;then
+	    oexec=$(grep Exec= ./${cmd%.*}.desktop)
+	    sed -i s,$oexec,Exec=$prefix/bin/$cmd, ./${cmd%.*}.desktop
+	    install -m 0644 "./${cmd%.*}.desktop" "$prefix/share/applications/"
+	fi
+    done
+    for icons in $(find . -type f -name '*.png') ;do
+	install -D -m 0644 "$icons" "$prefix/share/${icons#*/}"
+    done
+    if [ -x $(which gtk-update-icon-cache) ] ;then
+	if [ -f "${prefix}/share/icons/hicolor/icon-theme.cache" ] ;then
+	    gtk-update-icon-cache -t -f "${prefix}/share/icons/hicolor" 2>/dev/null
+	    chmod 0644 "${prefix}/share/icons/hicolor/icon-theme.cache"
+	fi
+    fi
+}
+
+bootstrap_remove() {
+    for icons in $(find . -type f -name '*.png') ;do
+	rm -f "$prefix/share/${icons#*/}"
+    done
+    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+	cmd=eve$cmd
+	rm -fv "$prefix/bin/$cmd"
+	if [ ! "$cmd" = "evewine" ] ;then
+	    rm -f "$prefix/share/applications/${cmd%.*}.desktop"
+	fi
+    done
+    rm -rfv "$destdir"
+}
+
+check_req() {
+    if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
+	req="${req}7z\n"
+    fi
+    if [ ! -x "$(which wine 2>/dev/null)" ] ;then
+	req="${req}wine\n"
+    fi
+    tar xf evelauncher-$elver.tar.gz
+    cd evelauncher/
+    req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')"
+    cd ../
+    rm -rf evelauncher/
+    if [ "x$req" != "x" ] ;then
+	printf "\nFollowing requirements are missing:\n"
+	printf "\n$req\n"
+	printf "\nPlease install these requirements with your Package Manager.\n"
+	printf "\nLeaving.\n\n"
+	exit 0
+    fi
+}
+
+prefix="/usr"
+destdir="/opt/evesetup"
+bindir="$destdir/bin"
+libdir="$destdir/lib"
+docdir="$destdir/doc"
+elver=""
+dvver=""
+key=""
+
+if [ $(id -u) -ne 0 ] ;then
+    printf "\nEVE Online Launcher Setup need root permissions."
+    printf "\nLeaving.\n\n"
+    exit 0
+fi
+
+if [ -d "$destdir" ] ;then
+    printf "\n"
+    read -p 'Remove EVE Online Launcher Setup? (Y/n) ' key
+    if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
+	printf "\nRemoving...\n\n"
+	bootstrap_remove
+    fi
+else
+    printf "\n"
+    read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
+    if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
+	printf "\nInstalling...\n\n"
+	check_req
+	printf "\n"
+	bootstrap_install
+	printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"
+	for cmd in *.desktop ;do
+	    oexec=$(grep Exec= $cmd | cut -d= -f2); oexec=${oexec##*/}
+	    [ ! "$oexec" = "evelauncher.sh" ] && \
+	    printf " $oexec\t- $(grep Comment= $cmd | cut -d= -f2)\n"
+	done
+	printf "\n evelauncher.sh\t- EVE Online Launcher\n"
+    fi
+fi
+printf "\nDone.\n\n"

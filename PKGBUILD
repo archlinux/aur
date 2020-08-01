@@ -1,11 +1,11 @@
-#Maintainer: Gharim Turen <gharim@turen.de>
+#Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=1
+pkgrel=2
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
-license=('custom')
+license=('zlib/png')
 
 install=${pkgname}.install
 
@@ -43,7 +43,9 @@ source=("evelauncher.desktop"
         "evelauncher.kwinrule"
         "evelauncher.lua"
         "build_installer.sh"
+        "build_lite_installer.sh"
         "setup.sh.in"
+        "setup_lite.sh.in"
         "eve-icons.tar.gz"
         "eve-icons_large.tar.gz"
         "eve-transl5.12-de.tar.gz"
@@ -127,7 +129,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
             '7c658874857586e70d5b727895905c884cf6aa7b1d172f3811ab62bec52d98c4'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            'dc3b9db6821e6889e4afeecb57758c73b5e1802437e9d99db98ac43ff77171e6'
+            '954811cf68bb9e3628efea4aa7606095a032d9ac8225bfdc64c74b1f862a84e5'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             '9079fd9ed7967479b7a78643d43537c04f9275303cd713651d2481bf4c658653'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
@@ -138,8 +140,10 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            '342c32f51a196fd21db9f7930c122ea38e25bd5e8be5574fd404b218c70d2fb4'
-            'cf97637f85a60c6d3f3ff70ecd2ed0ad1427d5f56253bd86839ed3b2ac40c509'
+            '51eae400033fab0ca0a4a292c9c725dd0da25809d037002130bc1e23fa6c0702'
+            '617349fb5f7ca9071e7d2465f5c0d1e01ad501edf3c2458a2ebcdca33d38b070'
+            'df3740824bf4f8b5c1e2d6d84ef4d4c1eba41127db4d33ea4140491d762a75a8'
+            'ca35e12c37854ef2d4020e06ea945eb15973ed151788ca412f1b3fc5f48bacf8'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'
