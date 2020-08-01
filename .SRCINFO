@@ -1,0 +1,110 @@
+pkgbase = java-openj9
+	pkgver = 14.0.2.b12_openj9_0.21.0
+	pkgrel = 1
+	url = http://www.eclipse.org/openj9/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment>=11
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	makedepends = freemarker
+	source = openj9-openjdk-jdk-0.21.0.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk14/archive/openj9-0.21.0.tar.gz
+	source = https://github.com/eclipse/openj9/archive/openj9-0.21.0.tar.gz
+	source = openj9-omr-0.21.0.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-0.21.0.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	source = openj9-make-jvmti-test-variables-static.patch
+	source = omr-omrstr-iconv-failure-overflow.patch
+	source = omr-fam.patch
+	sha256sums = f68213a6ecfe608eab4f16e50704912375e22d83b90e30d0aa150d1190f8e901
+	sha256sums = 84eac0ff622847d34704aef92d34d0d83e7ccf91fb9e21f7e9146e0f96d72c3f
+	sha256sums = a7d771a89b734d8f86d17cf5793d7e81e2d915f207739ebafc5208e2efcc2ca8
+	sha256sums = 7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230
+	sha256sums = bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd
+	sha256sums = bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975
+	sha256sums = 5b65c0819be140e90ef11c9d7c3011d39aaa304e3fd9af0f8d61c6de618f93bf
+	sha256sums = f37290530dcb8eb5acb4f70609c55b7e2be134f1052ebf20f117c2996a749858
+	sha256sums = c288b0a1a2424967d9c00e4d07d16f5d703f6b9b1195839753480fcd9810faf5
+
+pkgname = jre-openj9-headless
+	pkgdesc = OpenJDK Java 14 headless runtime environment
+	install = install_jre-openj9-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = lcms2
+	depends = libnet
+	depends = freetype2
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=14
+	provides = java-runtime-headless-openj9=14
+	provides = jre14-openj9-headless=14.0.2.b12_openj9_0.21.0-1
+	backup = etc/java-openj9/logging.properties
+	backup = etc/java-openj9/management/jmxremote.access
+	backup = etc/java-openj9/management/jmxremote.password.template
+	backup = etc/java-openj9/management/management.properties
+	backup = etc/java-openj9/net.properties
+	backup = etc/java-openj9/security/java.policy
+	backup = etc/java-openj9/security/java.security
+	backup = etc/java-openj9/security/policy/README.txt
+	backup = etc/java-openj9/security/policy/limited/default_US_export.policy
+	backup = etc/java-openj9/security/policy/limited/default_local.policy
+	backup = etc/java-openj9/security/policy/limited/exempt_local.policy
+	backup = etc/java-openj9/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-openj9/security/policy/unlimited/default_local.policy
+	backup = etc/java-openj9/sound.properties
+
+pkgname = jre-openj9
+	pkgdesc = OpenJDK Java 14 full runtime environment
+	install = install_jre-openj9.sh
+	depends = jre14-openj9-headless=14.0.2.b12_openj9_0.21.0-1
+	depends = giflib
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=14
+	provides = java-runtime-openj9=14
+	provides = jre14-openj9=14.0.2.b12_openj9_0.21.0-1
+
+pkgname = jdk-openj9
+	pkgdesc = OpenJDK Java 14 development kit
+	install = install_jdk-openj9.sh
+	depends = jre14-openj9=14.0.2.b12_openj9_0.21.0-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	provides = java-environment=14
+	provides = java-environment-openj9=14
+	provides = jdk14-openj9=14.0.2.b12_openj9_0.21.0-1
+
+pkgname = openj9-src
+	pkgdesc = OpenJDK Java 14 sources
+	depends = jdk14-openj9=14.0.2.b12_openj9_0.21.0-1
+	provides = openj914-src=14.0.2.b12_openj9_0.21.0-1
+
+pkgname = openj9-doc
+	pkgdesc = OpenJDK Java 14 documentation
+	depends = jdk14-openj9=14.0.2.b12_openj9_0.21.0-1
+	provides = openj914-doc=14.0.2.b12_openj9_0.21.0-1
+

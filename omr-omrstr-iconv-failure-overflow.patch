@@ -1,0 +1,13 @@
+diff --git a/port/common/omrstr.c b/port/common/omrstr.c
+index ad76cdf93..f936f0026 100644
+--- a/port/common/omrstr.c
++++ b/port/common/omrstr.c
+@@ -3121,7 +3121,7 @@ convertPlatformToWide(struct OMRPortLibrary *portLibrary, charconvState_t encodi
+ 		} else if (E2BIG == errno) {
+ 			resultSize = (outBufferSize - wideBufferLimit); /* number of bytes written */
+ 		} else {
+-			resultSize = OMRPORT_ERROR_STRING_ILLEGAL_STRING;
++			return OMRPORT_ERROR_STRING_ILLEGAL_STRING;
+ 		}
+ 	} else {
+ 		resultSize = (outBufferSize - wideBufferLimit); /* number of bytes written */

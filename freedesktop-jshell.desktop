@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 14 with OpenJ9 Shell
+Comment=OpenJDK Java 14 with OpenJ9 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-14-openj9/bin/jshell
+Terminal=true
+Type=Application
+Icon=java14-openj9
+Categories=Application;System;

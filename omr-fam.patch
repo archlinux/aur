@@ -1,0 +1,70 @@
+diff --git a/ddr/tools/blob_reader/blob_reader.cpp b/ddr/tools/blob_reader/blob_reader.cpp
+index 028decd0c..a0212609f 100644
+--- a/ddr/tools/blob_reader/blob_reader.cpp
++++ b/ddr/tools/blob_reader/blob_reader.cpp
+@@ -85,7 +85,7 @@ struct BlobHeaderV1 {
+ 
+ struct BlobString {
+ 	uint16_t length;
+-	char data[1]; /* flexible array member */
++	char data[];
+ 
+ 	void endian_swap()
+ 	{
+diff --git a/include_core/ute_core.h b/include_core/ute_core.h
+index 8b3b1c65d..330ea52c6 100644
+--- a/include_core/ute_core.h
++++ b/include_core/ute_core.h
+@@ -125,7 +125,7 @@ typedef struct UtTraceRecord {
+ 	uint64_t threadSyn2;	/* Thread synonym 2               */
+ 	int32_t firstEntry;		/* Offset to first trace entry    */
+ 	int32_t nextEntry;		/* Offset to next entry           */
+-	char threadName[1];		/* Thread name                    */
++	char threadName[];		/* Thread name                    */
+ } UtTraceRecord;
+ 
+ /*
+diff --git a/include_core/ute_dataformat.h b/include_core/ute_dataformat.h
+index 71d9e36ad..8a9dcb487 100644
+--- a/include_core/ute_dataformat.h
++++ b/include_core/ute_dataformat.h
+@@ -180,7 +180,7 @@ typedef struct UtProcSection {
+ #define UT_TRACE_ACTIVE_SECTION_NAME "UTTA"
+ typedef struct UtActiveSection {
+ 	UtDataHeader header; /* Eyecatcher, version etc        */
+-	char active[1]; /* Trace activation commands      */
++	char active[]; /* Trace activation commands      */
+ } UtActiveSection;
+ 
+ /*
+@@ -191,7 +191,7 @@ typedef struct UtActiveSection {
+ #define UT_TRACE_SERVICE_SECTION_NAME "UTSS"
+ typedef struct UtServiceSection {
+ 	UtDataHeader header; /* Eyecatcher, version etc        */
+-	char level[1]; /* Service level info             */
++	char level[]; /* Service level info             */
+ } UtServiceSection;
+ 
+ /*
+@@ -202,7 +202,7 @@ typedef struct UtServiceSection {
+ #define UT_TRACE_STARTUP_SECTION_NAME "UTSO"
+ typedef struct UtStartupSection {
+ 	UtDataHeader header; /* Eyecatcher, version etc        */
+-	char options[1]; /* Startup options                */
++	char options[]; /* Startup options                */
+ } UtStartupSection;
+ 
+ /*
+diff --git a/omrtrace/omrtrace_internal.h b/omrtrace/omrtrace_internal.h
+index e52347eac..a68a88abd 100644
+--- a/omrtrace/omrtrace_internal.h
++++ b/omrtrace/omrtrace_internal.h
+@@ -157,7 +157,7 @@ typedef struct OMR_TraceGlobal OMR_TraceGlobal;
+ typedef struct  UtTraceCfg {
+ 	UtDataHeader       header;
+ 	struct UtTraceCfg  *next;             /* Next trace config command        */
+-	char               command[1];       /* Start of variable length section */
++	char               command[];         /* Start of variable length section */
+ } UtTraceCfg;
+ 
+ typedef struct UtDeferredConfigInfo {

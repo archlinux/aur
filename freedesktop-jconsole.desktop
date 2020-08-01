@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 14 with OpenJ9 Console
+Comment=OpenJDK Java 14 with OpenJ9 Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=/usr/lib/jvm/java-14-openj9/bin/jconsole
+Terminal=false
+Type=Application
+Icon=java14-openj9
+Categories=Application;System;
