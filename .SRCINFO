@@ -1,16 +1,21 @@
 pkgbase = moneymanagerex-git
-	pkgdesc = An easy-to-use personal finance suite
-	pkgver = 1.4.0.alpha.1.r61.e6adf480
+	pkgdesc = MoneyManagerEx 1.3.5 with DB v.7 An easy-to-use personal finance suite. This package will always point to the newest stable version.
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = http://www.moneymanagerex.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = git
-	makedepends = boost
+	makedepends = fakeroot
+	makedepends = file
+	makedepends = gawk
+	makedepends = gcc
 	makedepends = gettext
+	makedepends = git
 	makedepends = lsb-release
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = rapidjson
 	depends = wxgtk3
 	depends = webkit2gtk
 	optdepends = cups: for printing support
@@ -21,4 +26,3 @@ pkgbase = moneymanagerex-git
 	sha256sums = SKIP
 
 pkgname = moneymanagerex-git
-
