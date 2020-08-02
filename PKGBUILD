@@ -6,8 +6,8 @@
 pkgname=moneymanagerex-git
 _gitname=moneymanagerex
 pkgver=1.3.5
-pkgrel=1
-pkgdesc="MoneyManagerEx 1.3.5 with DB v.7 An easy-to-use personal finance suite. This package will always point to the newest stable version."
+pkgrel=0
+pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
@@ -17,7 +17,7 @@ optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex')
-source=(git+https://github.com/moneymanagerex/moneymanagerex.git#branch=v1.3.5)
+source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.3.5)
 sha256sums=('SKIP')
 
 pkgver() {
