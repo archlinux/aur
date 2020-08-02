@@ -1,0 +1,14 @@
+post_upgrade() {
+  echo "In version 1.0beta configuration is moved from gconf"
+  echo "to gsettings. To migrate your settings you will need to "
+  echo "have the optional dependencies 'gconf' and 'python-lxml' installed."
+  echo 
+  echo "Dump the preferences from GConf: "
+  echo "\$ gconftool --dump /apps/dockbarx > dockbarx.xml"
+  echo 
+  echo "Run the migration tool: "
+  echo "\$ dbx_migrate_settings dockbarx.xml"
+  echo ""
+  echo "Move your application folder: "
+  echo "\$ mv ~/.dockbarx ~/.local/share/dockbarx "
+}
