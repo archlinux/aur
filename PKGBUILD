@@ -5,8 +5,9 @@ pkgdesc="Library for playback of various streamed audio formats used in video ga
 arch=(x86_64)
 url='https://github.com/kode54/vgmstream'
 license=(BSD)
-depends=(audacious ffmpeg libao libatrac9-git libogg libvorbis mpg123)
-makedepends=(git)
+depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123)
+makedepends=(audacious git)
+optdepends=('audacious: for using the bundled plugin')
 source=(${pkgname}::git+https://github.com/kode54/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
