@@ -1,6 +1,6 @@
 pkgbase = openra-sp-git
 	pkgdesc = A Tiberian Sun-inspired mod of OpenRA
-	pkgver = 357.git.94df9c2
+	pkgver = 359.git.2ae39ba
 	pkgrel = 1
 	url = https://github.com/ABrandau/Shattered-Paradise-SDK
 	install = openra-sp.install

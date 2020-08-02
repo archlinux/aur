@@ -2,7 +2,7 @@
 
 pkgname=openra-sp-git
 _pkgname=${pkgname/-git}
-pkgver=357.git.94df9c2
+pkgver=359.git.2ae39ba
 pkgrel=1
 pkgdesc="A Tiberian Sun-inspired mod of OpenRA"
 arch=('any')
