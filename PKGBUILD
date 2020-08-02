@@ -4,7 +4,7 @@ pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
 pkgver=v1.3.0.r7.gd6eb81a
-pkgrel=1
+pkgrel=2
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -50,7 +50,7 @@ package() {
 
   # icon
   icotool -x icon.ico
-  install -Dm644 icon_10_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -Dm644 icon_*_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
   
 
   # desktop entry
