@@ -4,7 +4,7 @@ pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
 pkgver=v1.3.0.r7.gd6eb81a
-pkgrel=2
+pkgrel=3
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -51,7 +51,13 @@ package() {
   # icon
   icotool -x icon.ico
   install -Dm644 icon_*_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
-  
+
+  # other
+  mv languages ${pkgdir}/usr/lib/${_pkgname}/
+  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ alispeech.log
+  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ database.db
+  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ traceback.log
+  install -dm777 ${pkgdir}/usr/lib/${_pkgname}/misc
 
   # desktop entry
   cat > ${pkgdir}/usr/share/applications/${_pkgname}.desktop << EOF
@@ -61,6 +67,7 @@ Version=1.0
 Name=QuickCut
 Comment=video processing software
 Exec=quickcut
+Path=/usr/lib/quickcut
 Icon=quickcut
 Terminal=false
 EOF
