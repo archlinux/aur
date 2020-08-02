@@ -1,0 +1,324 @@
+From cda63355208cf9e1c702b2857f911c503087ed94 Mon Sep 17 00:00:00 2001
+From: Dominik Csapak <dominik.csapak@gmail.com>
+Date: Sun, 2 Aug 2020 10:05:20 +0200
+Subject: [PATCH 2/2] remove apt dependency
+
+not needed for the client, and would depend on libapt-pkg-dev
+
+Signed-off-by: Dominik Csapak <dominik.csapak@gmail.com>
+---
+ Cargo.toml           |   1 -
+ src/api2/node.rs     |   2 -
+ src/api2/node/apt.rs | 268 -------------------------------------------
+ 3 files changed, 271 deletions(-)
+ delete mode 100644 src/api2/node/apt.rs
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 99b55558..720b8f52 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -14,7 +14,6 @@ name = "proxmox_backup"
+ path = "src/lib.rs"
+ 
+ [dependencies]
+-apt-pkg-native = "0.3.1" # custom patched version
+ base64 = "0.12"
+ bitflags = "1.2.1"
+ bytes = "0.5"
+diff --git a/src/api2/node.rs b/src/api2/node.rs
+index b80a6618..65d950a9 100644
+--- a/src/api2/node.rs
++++ b/src/api2/node.rs
+@@ -34,7 +34,6 @@ pub(crate) mod rrd;
+ mod services;
+ mod status;
+ mod subscription;
+-mod apt;
+ mod syslog;
+ pub mod tasks;
+ mod time;
+@@ -283,7 +282,6 @@ fn upgrade_to_websocket(
+ }
+ 
+ pub const SUBDIRS: SubdirMap = &[
+-    ("apt", &apt::ROUTER),
+     ("disks", &disks::ROUTER),
+     ("dns", &dns::ROUTER),
+     ("journal", &journal::ROUTER),
+diff --git a/src/api2/node/apt.rs b/src/api2/node/apt.rs
+deleted file mode 100644
+index 37bf48d4..00000000
+--- a/src/api2/node/apt.rs
++++ /dev/null
+@@ -1,268 +0,0 @@
+-use apt_pkg_native::Cache;
+-use anyhow::{Error, bail};
+-use serde_json::{json, Value};
+-
+-use proxmox::{list_subdirs_api_method, const_regex};
+-use proxmox::api::{api, RpcEnvironment, RpcEnvironmentType, Permission};
+-use proxmox::api::router::{Router, SubdirMap};
+-
+-use crate::server::WorkerTask;
+-
+-use crate::config::acl::{PRIV_SYS_AUDIT, PRIV_SYS_MODIFY};
+-use crate::api2::types::{APTUpdateInfo, NODE_SCHEMA, UPID_SCHEMA};
+-
+-const_regex! {
+-    VERSION_EPOCH_REGEX = r"^\d+:";
+-    FILENAME_EXTRACT_REGEX = r"^.*/.*?_(.*)_Packages$";
+-}
+-
+-// FIXME: Replace with call to 'apt changelog <pkg> --print-uris'. Currently
+-// not possible as our packages do not have a URI set in their Release file
+-fn get_changelog_url(
+-    package: &str,
+-    filename: &str,
+-    source_pkg: &str,
+-    version: &str,
+-    source_version: &str,
+-    origin: &str,
+-    component: &str,
+-) -> Result<String, Error> {
+-    if origin == "" {
+-        bail!("no origin available for package {}", package);
+-    }
+-
+-    if origin == "Debian" {
+-        let source_version = (VERSION_EPOCH_REGEX.regex_obj)().replace_all(source_version, "");
+-
+-        let prefix = if source_pkg.starts_with("lib") {
+-            source_pkg.get(0..4)
+-        } else {
+-            source_pkg.get(0..1)
+-        };
+-
+-        let prefix = match prefix {
+-            Some(p) => p,
+-            None => bail!("cannot get starting characters of package name '{}'", package)
+-        };
+-
+-        // note: security updates seem to not always upload a changelog for
+-        // their package version, so this only works *most* of the time
+-        return Ok(format!("https://metadata.ftp-master.debian.org/changelogs/main/{}/{}/{}_{}_changelog",
+-                          prefix, source_pkg, source_pkg, source_version));
+-
+-    } else if origin == "Proxmox" {
+-        let version = (VERSION_EPOCH_REGEX.regex_obj)().replace_all(version, "");
+-
+-        let base = match (FILENAME_EXTRACT_REGEX.regex_obj)().captures(filename) {
+-            Some(captures) => {
+-                let base_capture = captures.get(1);
+-                match base_capture {
+-                    Some(base_underscore) => base_underscore.as_str().replace("_", "/"),
+-                    None => bail!("incompatible filename, cannot find regex group")
+-                }
+-            },
+-            None => bail!("incompatible filename, doesn't match regex")
+-        };
+-
+-        return Ok(format!("http://download.proxmox.com/{}/{}_{}.changelog",
+-                          base, package, version));
+-    }
+-
+-    bail!("unknown origin ({}) or component ({})", origin, component)
+-}
+-
+-fn list_installed_apt_packages<F: Fn(&str, &str, &str) -> bool>(filter: F)
+-    -> Vec<APTUpdateInfo> {
+-
+-    let mut ret = Vec::new();
+-
+-    // note: this is not an 'apt update', it just re-reads the cache from disk
+-    let mut cache = Cache::get_singleton();
+-    cache.reload();
+-
+-    let mut cache_iter = cache.iter();
+-
+-    loop {
+-        let view = match cache_iter.next() {
+-            Some(view) => view,
+-            None => break
+-        };
+-
+-        let current_version = match view.current_version() {
+-            Some(vers) => vers,
+-            None => continue
+-        };
+-        let candidate_version = match view.candidate_version() {
+-            Some(vers) => vers,
+-            // if there's no candidate (i.e. no update) get info of currently
+-            // installed version instead
+-            None => current_version.clone()
+-        };
+-
+-        let package = view.name();
+-        if filter(&package, &current_version, &candidate_version) {
+-            let mut origin_res = "unknown".to_owned();
+-            let mut section_res = "unknown".to_owned();
+-            let mut priority_res = "unknown".to_owned();
+-            let mut change_log_url = "".to_owned();
+-            let mut short_desc = package.clone();
+-            let mut long_desc = "".to_owned();
+-
+-            // get additional information via nested APT 'iterators'
+-            let mut view_iter = view.versions();
+-            while let Some(ver) = view_iter.next() {
+-                if ver.version() == candidate_version {
+-                    if let Some(section) = ver.section() {
+-                        section_res = section;
+-                    }
+-
+-                    if let Some(prio) = ver.priority_type() {
+-                        priority_res = prio;
+-                    }
+-
+-                    // assume every package has only one origin file (not
+-                    // origin, but origin *file*, for some reason those seem to
+-                    // be different concepts in APT)
+-                    let mut origin_iter = ver.origin_iter();
+-                    let origin = origin_iter.next();
+-                    if let Some(origin) = origin {
+-
+-                        if let Some(sd) = origin.short_desc() {
+-                            short_desc = sd;
+-                        }
+-
+-                        if let Some(ld) = origin.long_desc() {
+-                            long_desc = ld;
+-                        }
+-
+-                        // the package files appear in priority order, meaning
+-                        // the one for the candidate version is first
+-                        let mut pkg_iter = origin.file();
+-                        let pkg_file = pkg_iter.next();
+-                        if let Some(pkg_file) = pkg_file {
+-                            if let Some(origin_name) = pkg_file.origin() {
+-                                origin_res = origin_name;
+-                            }
+-
+-                            let filename = pkg_file.file_name();
+-                            let source_pkg = ver.source_package();
+-                            let source_ver = ver.source_version();
+-                            let component = pkg_file.component();
+-
+-                            // build changelog URL from gathered information
+-                            // ignore errors, use empty changelog instead
+-                            let url = get_changelog_url(&package, &filename, &source_pkg,
+-                                &candidate_version, &source_ver, &origin_res, &component);
+-                            if let Ok(url) = url {
+-                                change_log_url = url;
+-                            }
+-                        }
+-                    }
+-
+-                    break;
+-                }
+-            }
+-
+-            let info = APTUpdateInfo {
+-                package,
+-                title: short_desc,
+-                arch: view.arch(),
+-                description: long_desc,
+-                change_log_url,
+-                origin: origin_res,
+-                version: candidate_version,
+-                old_version: current_version,
+-                priority: priority_res,
+-                section: section_res,
+-            };
+-            ret.push(info);
+-        }
+-    }
+-
+-    return ret;
+-}
+-
+-#[api(
+-    input: {
+-        properties: {
+-            node: {
+-                schema: NODE_SCHEMA,
+-            },
+-        },
+-    },
+-    returns: {
+-        description: "A list of packages with available updates.",
+-        type: Array,
+-        items: { type: APTUpdateInfo },
+-    },
+-    access: {
+-        permission: &Permission::Privilege(&[], PRIV_SYS_AUDIT, false),
+-    },
+-)]
+-/// List available APT updates
+-fn apt_update_available(_param: Value) -> Result<Value, Error> {
+-    let ret = list_installed_apt_packages(|_pkg, cur_ver, can_ver| cur_ver != can_ver);
+-    Ok(json!(ret))
+-}
+-
+-#[api(
+-    protected: true,
+-    input: {
+-        properties: {
+-            node: {
+-                schema: NODE_SCHEMA,
+-            },
+-            quiet: {
+-                description: "Only produces output suitable for logging, omitting progress indicators.",
+-                type: bool,
+-                default: false,
+-                optional: true,
+-            },
+-        },
+-    },
+-    returns: {
+-        schema: UPID_SCHEMA,
+-    },
+-    access: {
+-        permission: &Permission::Privilege(&[], PRIV_SYS_MODIFY, false),
+-    },
+-)]
+-/// Update the APT database
+-pub fn apt_update_database(
+-    quiet: Option<bool>,
+-    rpcenv: &mut dyn RpcEnvironment,
+-) -> Result<String, Error> {
+-
+-    let username = rpcenv.get_user().unwrap();
+-    let to_stdout = if rpcenv.env_type() == RpcEnvironmentType::CLI { true } else { false };
+-    let quiet = quiet.unwrap_or(API_METHOD_APT_UPDATE_DATABASE_PARAM_DEFAULT_QUIET);
+-
+-    let upid_str = WorkerTask::new_thread("aptupdate", None, &username.clone(), to_stdout, move |worker| {
+-        if !quiet { worker.log("starting apt-get update") }
+-
+-        // TODO: set proxy /etc/apt/apt.conf.d/76pbsproxy like PVE
+-
+-        let mut command = std::process::Command::new("apt-get");
+-        command.arg("update");
+-
+-        let output = crate::tools::run_command(command, None)?;
+-        if !quiet { worker.log(output) }
+-
+-        // TODO: add mail notify for new updates like PVE
+-
+-        Ok(())
+-    })?;
+-
+-    Ok(upid_str)
+-}
+-
+-const SUBDIRS: SubdirMap = &[
+-    ("update", &Router::new()
+-        .get(&API_METHOD_APT_UPDATE_AVAILABLE)
+-        .post(&API_METHOD_APT_UPDATE_DATABASE)
+-    ),
+-];
+-
+-pub const ROUTER: Router = Router::new()
+-    .get(&list_subdirs_api_method!(SUBDIRS))
+-    .subdirs(SUBDIRS);
+-- 
+2.28.0
+

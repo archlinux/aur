@@ -1,9 +1,10 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 0.8.7
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://www.proxmox.com
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	makedepends = cargo
 	makedepends = clang
@@ -15,12 +16,12 @@ pkgbase = proxmox-backup-client
 	depends = pam
 	depends = systemd-libs
 	depends = acl
-	source = proxmox-backup-client-0.8.7::git://git.proxmox.com/git/proxmox-backup.git#tag=v0.8.7
+	source = proxmox-backup-client-0.8.9::git://git.proxmox.com/git/proxmox-backup.git#tag=v0.8.9
 	source = 0001-adapt-cargo-toml-and-remove-systemd-linking.patch
-	source = 0002-tools-xattr-a-char-from-C-is-not-universally-a-rust-.patch
+	source = 0002-remove-apt-dependency.patch
 	sha512sums = SKIP
-	sha512sums = d664e912e8196b7ca11603d42b7db58dad3b2a6afbaec665c6a8a3e3756ef131d1eca43bc00790049fa1edbe469c46a8f071601118f761f4570a596b046646f9
-	sha512sums = 834ef2829ee3c73e40cd6d1c615b5d26980e679ca638d1cbf9a35930c114a31203d44d5ccbbc7786f82562042bf6c244218e3b06f53cc85165e6f1f6c6265aae
+	sha512sums = 9c506ac1f02582b272842e2b11740c11e96dd13fe7757958ebfed22f839f1baecd0d80234d3f8f1284ecd7f4cce5b072e04756e42a7a50868b4078d196d971ff
+	sha512sums = 46b76c7a22564b2ecb51c8a7daa62afe7d47f81702b40007cbebf67f409352cb2ea52f95a639e82c0f059c1a6dfb9282acca6054937f4959a1309a272fb5496a
 
 pkgname = proxmox-backup-client
 

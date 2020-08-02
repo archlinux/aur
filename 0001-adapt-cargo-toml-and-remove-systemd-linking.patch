@@ -1,7 +1,7 @@
-From d8b63a0a690032af2e8386b8acc3e0860e7271c9 Mon Sep 17 00:00:00 2001
+From 92d37d2f42ff2c9cf3e9bee8ab3177e2b016e656 Mon Sep 17 00:00:00 2001
 From: Dominik Csapak <dominik.csapak@gmail.com>
 Date: Wed, 15 Jul 2020 07:37:24 +0000
-Subject: [PATCH] adapt cargo toml and remove systemd linking
+Subject: [PATCH 1/2] adapt cargo toml and remove systemd linking
 
 use crates.io (not a local repository) and use the
 git repositories for the proxmox dependencies
@@ -11,10 +11,10 @@ it also in, even if the proxmox-backup-client and pxar does not use it
 
 Signed-off-by: Dominik Csapak <dominik.csapak@gmail.com>
 ---
- .cargo/config       | 5 -----
- Cargo.toml          | 8 ++++----
- src/tools/daemon.rs | 2 --
- 3 files changed, 4 insertions(+), 11 deletions(-)
+ .cargo/config       |  5 -----
+ Cargo.toml          | 10 +++++-----
+ src/tools/daemon.rs |  2 --
+ 3 files changed, 5 insertions(+), 12 deletions(-)
  delete mode 100644 .cargo/config
 
 diff --git a/.cargo/config b/.cargo/config
@@ -29,35 +29,27 @@ index 3b5b6e48..00000000
 -[source.crates-io]
 -replace-with = "debian-packages"
 diff --git a/Cargo.toml b/Cargo.toml
-index 10dd864a..7c334b4d 100644
+index 258a9bb2..99b55558 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -37,12 +37,12 @@ pam = "0.7"
+@@ -38,12 +38,12 @@ pam = "0.7"
  pam-sys = "0.5"
  percent-encoding = "2.1"
  pin-utils = "0.1.0"
 -pathpatterns = "0.1.2"
--proxmox = { version = "0.2.0", features = [ "sortable-macro", "api-macro" ] }
+-proxmox = { version = "0.2.1", features = [ "sortable-macro", "api-macro", "websocket" ] }
 +pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.2.0", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git" }
++proxmox = { version = "0.2.1", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "459a99d150aa2773865afde234c277be6b0efcde" }
  #proxmox = { git = "ssh://gitolite3@proxdev.maurer-it.com/rust/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
- #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro" ] }
+-#proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.0"
--pxar = { version = "0.2.0", features = [ "tokio-io", "futures-io" ] }
+-pxar = { version = "0.2.1", features = [ "tokio-io", "futures-io" ] }
++#proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro" ] }
 +proxmox-fuse = { version = "0.1.0", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
-+pxar = { version = "0.2.0", features = [ "tokio-io", "futures-io" ] , git = "git://git.proxmox.com/git/pxar.git"}
++pxar = { version = "0.2.1", features = [ "tokio-io", "futures-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "cbf1b17b0036906e1ee34d8cb6bcf4365f7f1c62"}
  #pxar = { path = "../pxar", features = [ "tokio-io", "futures-io" ] }
  regex = "1.2"
  rustyline = "6"
-@@ -54,7 +54,7 @@ tokio = { version = "0.2.9", features = [ "blocking", "fs", "io-util", "macros",
- tokio-openssl = "0.4.0"
- tokio-util = { version = "0.3", features = [ "codec" ] }
- tower-service = "0.3.0"
--udev = "0.3"
-+udev = "0.4"
- url = "2.1"
- #valgrind_request = { git = "https://github.com/edef1c/libvalgrind_request", version = "1.1.0", optional = true }
- walkdir = "2"
 diff --git a/src/tools/daemon.rs b/src/tools/daemon.rs
 index 397ab991..f106f2da 100644
 --- a/src/tools/daemon.rs
@@ -79,5 +71,5 @@ index 397ab991..f106f2da 100644
      fn sd_notify(unset_environment: c_int, state: *const c_char) -> c_int;
  }
 -- 
-2.27.0
+2.28.0
 
