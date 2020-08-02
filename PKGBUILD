@@ -2,8 +2,7 @@
 
 pkgname=bludigon
 pkgver=0.1.0.0
-_gitcommit=d315d4193bfedbb0f7b1d9ab06c6010e71bee2cc
-pkgrel=3
+pkgrel=4
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/bludigon"
 license=('custom:BSD3')
@@ -22,25 +21,25 @@ depends=(
   'libxrandr'
 )
 source=(
-  "https://github.com/jumper149/${pkgname}/archive/${_gitcommit}.tar.gz"
+  "https://github.com/jumper149/${pkgname}/archive/v${pkgver}.tar.gz"
   "compile-dynamically.patch"
   "Setup.hs"
 )
 sha256sums=(
-  'f17aab087a9cead1175f65dccac7cab128aa5a528c131a8c13b9ae54b1d643ae'
+  '2abbcc209c53268542f663918a3774ffd60f27c57dc05a0ab1e97348aedb2d1e'
   'acb3e75bd709d855e4715bc48250fe01163ded72ad42a094d80925e3854b8b83'
   '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689'
 )
 
 prepare() {
-  cd "${pkgname}-${_gitcommit}"
+  cd "${pkgname}-${pkgver}"
 
   patch -p1 -i "${srcdir}/compile-dynamically.patch"
   cp "${srcdir}/Setup.hs" "./"
 }
 
 build() {
-  cd "${pkgname}-${_gitcommit}"
+  cd "${pkgname}-${pkgver}"
 
   runhaskell Setup configure -O \
     --disable-library-vanilla \
@@ -63,13 +62,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${_gitcommit}"
+  cd "${pkgname}-${pkgver}"
 
   runhaskell Setup test
 }
 
 package() {
-  cd "${pkgname}-${_gitcommit}"
+  cd "${pkgname}-${pkgver}"
 
   install -D -m744 register.sh "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
   install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
