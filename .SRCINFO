@@ -1,7 +1,7 @@
 pkgbase = freqtweak-git
 	pkgdesc = Audio Effect Processor and Spectrum Analyzer
 	pkgver = r15.d420533
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/essej/freqtweak
 	arch = i686
 	arch = x86_64
