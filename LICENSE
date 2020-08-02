@@ -1,0 +1,24 @@
+			Released under the respect the work of the original author license.
+			-------------------------------------------------------------------
+			
+The source code for RomVault has been released for the benefit of the emulation community.
+This means you should ask yourself if you make a change/improvement/branch of this code, does your changes
+also benefit the emulation community? If so then please give back to the community in a respectful way.
+
+What does giving back to the community in a respectful way mean:
+	Ideally it means contribute your changes back to the author of the source, so that your changes can be worked into the main build.
+	If you make a reasonably large change that you think others will benefit from put out your own branches for other people to try,
+	and then maybe this can also be worked into the main code.
+	
+	It means DO NOT make a small change/fix, re-brand the program and claim you are the greatest developer ever for releasing 'your' software.
+	This type of behaviour is disrespectful to the original author and the emulation community, and is against the nature of this license.
+	
+If you want to use large parts of this code (such as the DAT reader or torrentZip library) in your own project go right ahead, 
+I hope you can do something cool with this code to add to or improve your new and existing projects. Please let the author know how you
+are using it, it would be cool to hear about other things this is being used for. 
+
+DO NOT sell this software or any derivative works from this software without permission from the author.
+I have put 100's of hours of development into this code and only ever asked for donations to support this project.
+So if you go and grab this code and start selling it or derivative works, that is disrespecting the nature of this license,
+and so not permitted without permission.
+
