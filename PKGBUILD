@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Cross-platform desktop app to clean image metadata"
 arch=('x86_64')
@@ -16,8 +16,8 @@ depends=('libnotify'
 provides=('exifcleaner')
 source=("${pkgname}-${pkgver}.deb::https://github.com/szTheory/exifcleaner/releases/download/v${pkgver}/exifcleaner_${pkgver}_amd64.deb"
         'LICENSE::https://github.com/szTheory/exifcleaner/raw/master/LICENSE')
-sha256sums=('602b90d32f37172376994954db7a49e711b70485e3663a93a0fdda43fac48b68'
-            '4f0d43086d8a8843370e36feea94812ddb36d1824d18abf0deec42a69e33f9b6')
+sha256sums=('581916126c3632a87cc3ace736ac28e854684fff10ba4368f1c29841239d7e7f'
+            'a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac')
 
 package() {
   tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
