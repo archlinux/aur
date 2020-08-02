@@ -1,0 +1,16 @@
+pkgbase = prometheus-speedtest-exporter
+	pkgdesc = This Prometheus exporter check your network connection
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nlamirault/speedtest_exporter
+	arch = any
+	license = Apache-2.0
+	makedepends = glide
+	depends = go
+	source = prometheus-speedtest-exporter-0.3.0.tar.gz::https://github.com/nlamirault/speedtest_exporter/archive/v0.3.0.tar.gz
+	source = prometheus-speedtest-exporter.service
+	md5sums = 3ba81a313be0feea5c4d6533e13ecd83
+	md5sums = ca9a701a088f1ada3c6a50e2d3250868
+
+pkgname = prometheus-speedtest-exporter
+
