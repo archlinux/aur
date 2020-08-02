@@ -1,4 +1,4 @@
-# Maintainer: William Brown <plshelpme19132@protonmail.com>
+# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="processing-bin"
 pkgver="3.5.4"
 pkgrel="4"
