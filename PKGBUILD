@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=r244.336e25e
+pkgver=1.6.14.r245.d3e0892
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -25,7 +25,7 @@ depends=('python-pyqt5'
          'python-prompt_toolkit1014'
          'ttf-fira-code'
          'hddtemp')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'python-pip' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/fredcox/gonha.git')
@@ -33,7 +33,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(pip show ${pkgname%-git} | grep Version | sed 's/Version: //')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
