@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-cdplayer
 pkgver=1.2.4
-_vdrapi=2.4.1
-pkgrel=3
+_vdrapi=2.4.3
+pkgrel=4
 pkgdesc="CD-Player plugin which supports CD-Text and CDDB-Database"
 url="http://uli-eckhardt.de/vdr/cdplayer.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
