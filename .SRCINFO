@@ -1,7 +1,7 @@
 pkgbase = gensystray-git
 	pkgdesc = Create your own system tray item to run your favorite commands.
 	pkgver = r25.fd5a9b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dardevelin/gensystray
 	arch = x86_64
 	license = GPL3
