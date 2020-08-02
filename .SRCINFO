@@ -1,7 +1,7 @@
 pkgbase = java-gnome-bin
 	pkgdesc = Binaries of Java bindings to the GNOME platform (including gtk, glib and glade)
 	pkgver = 4.1.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nikitabobko/java-gnome-bin
 	arch = x86_64
 	license = GPL

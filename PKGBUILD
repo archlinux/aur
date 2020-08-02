@@ -2,7 +2,7 @@
 
 pkgname=java-gnome-bin
 pkgver=4.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Binaries of Java bindings to the GNOME platform (including gtk, glib and glade)'
 arch=('x86_64')
 url='https://github.com/nikitabobko/java-gnome-bin'
