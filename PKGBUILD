@@ -1,12 +1,12 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=40.3a60bc9
+pkgver=41.fac7d1e
 pkgrel=1
 pkgdesc="An AUR helper with asp support."
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
 license=('GPL v3')
-depends=('pacman' 'asp' 'devtools' 'git')
+depends=('pacman' 'asp' 'devtools' 'git' 'python3')
 makedepends=('git')
 
 source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')
@@ -32,7 +32,7 @@ package() {
 	install -dm755 "${pkgdir}/etc/buildaur/postrunhooks"
 	install -dm755 "${pkgdir}/etc/buildaur/hooks"
 	install -Dm0755 -t "$pkgdir/etc/buildaur/prehooks" ./prehooks/*
-	install -Dm644 buildaur.conf "$pkgdir/etc/buildaur/"
+	install -m644 buildaur.conf "$pkgdir/etc/buildaur/"
 	#install -Dm0755 -t "$pkgdir/etc/buildaur/posthooks" ./posthooks/*
 	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
