@@ -1,0 +1,40 @@
+diff --git a/adb/adb.bash b/adb/adb.bash
+index b1b3957c0..733fc12bd 100644
+--- a/adb/adb.bash
++++ b/adb/adb.bash
+@@ -15,6 +15,15 @@
+ # limitations under the License.
+ #
+
++case "$SHELL" in
++	*bash*)
++		function check_type() { type -t "$1"; }
++		;;
++	*zsh*)
++		function check_type() { type "$1"; }
++		;;
++esac
++
+ _adb() {
+     if ! check_type "$1" >/dev/null; then
+         return
+diff --git a/fastboot/fastboot.bash b/fastboot/fastboot.bash
+index 406e8b8d7..bc50e4aa0 100644
+--- a/fastboot/fastboot.bash
++++ b/fastboot/fastboot.bash
+@@ -15,6 +15,15 @@
+ # limitations under the License.
+ #
+
++case "$SHELL" in
++        *bash*)
++                function check_type() { type -t "$1"; }
++                ;;
++        *zsh*)
++                function check_type() { type "$1"; }
++                ;;
++esac
++
+ _fastboot() {
+     if ! check_type "$1" >/dev/null; then
+         return
