@@ -1,4 +1,4 @@
-# Maintainer: William Brown <plshelpme19132@protonmail.com>
+# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 # Contributor: Levente Polyak <anthraxx@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
