@@ -1,0 +1,16 @@
+pkgbase = mpv-webm-bin-git
+	pkgdesc = Simple WebM maker for mpv
+	pkgver = r86.13f93e8
+	pkgrel = 1
+	url = https://github.com/ekisu/mpv-webm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	provides = mpv-webm
+	conflicts = mpv-webm
+	source = git+https://github.com/ekisu/mpv-webm.git
+	md5sums = SKIP
+
+pkgname = mpv-webm-bin-git
+
