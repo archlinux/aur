@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Facebook
+Comment=Facebook for desktop built with nativefier (electron)
+Exec=facebook-nativefier
+Icon=facebook-nativefier
+Encoding=UTF-8
+StartupWMClass=facebook-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;

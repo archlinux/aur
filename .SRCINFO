@@ -1,0 +1,22 @@
+pkgbase = facebook-nativefier
+	pkgdesc = Facebook desktop app built with nativefier (electron)
+	pkgver = 20200802
+	pkgrel = 1
+	url = https://facebook.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = facebook-nativefier.png
+	source = facebook-nativefier.desktop
+	md5sums = b59d15f1d09ebd9882cad4a448688aac
+	md5sums = 9dc630d63334dcfb8766566013cef991
+
+pkgname = facebook-nativefier
+
