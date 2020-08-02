@@ -1,0 +1,12 @@
+diff --git a/Makefile.mk b/Makefile.mk
+index a6b54c3..2caa604 100644
+--- a/Makefile.mk
++++ b/Makefile.mk
+@@ -39,5 +39,5 @@ clean:
+ 	$(RM) *.so *.o *~
+ 
+ install: all
+-	mkdir -p $(INSTALLATION_PATH)
+-	cp -r *.so *.ttl modgui $(INSTALLATION_PATH)
++	install -Dm755 $(PLUGIN_SO) -t $(INSTALLATION_PATH)
++	install -Dm644 manifest.ttl tap_$(PLUGIN).ttl $(INSTALLATION_PATH)

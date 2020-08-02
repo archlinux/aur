@@ -1,0 +1,26 @@
+pkgbase = tap-lv2-nomodgui-git
+	pkgdesc = LV2 port of the TAP (Tom's Audio Processing) plugins without the MOD GUI
+	pkgver = r98.cab6e0d
+	pkgrel = 1
+	url = https://github.com/moddevices/tap-lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL2
+	makedepends = git
+	makedepends = lv2
+	depends = glibc
+	provides = tap-lv2
+	provides = tap-plugins.lv2
+	provides = tap-plugins-lv2
+	conflicts = tap-lv2
+	conflicts = tap-plugins.lv2
+	conflicts = tap-plugins-lv2
+	conflicts = tap-plugins-lv2-git
+	source = git+https://github.com/moddevices/tap-lv2.git
+	source = tap-lv2-makefile.patch
+	md5sums = SKIP
+	md5sums = dee24b09ecbe707d4d9d397149f9a794
+
+pkgname = tap-lv2-nomodgui-git
+

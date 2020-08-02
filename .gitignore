@@ -1,0 +1,5 @@
+pkg/
+src/
+tap-lv2/
+tap-lv2-nomodgui-*.pkg.tar.xz
+tap-lv2-nomodgui-*.pkg.tar.zst
