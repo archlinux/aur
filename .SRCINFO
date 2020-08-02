@@ -1,7 +1,7 @@
 pkgbase = lazyman-git
 	pkgdesc = A simple program that lets you stream every NHL and MLB game
-	pkgver = 2.4.0.20191028
-	pkgrel = 2
+	pkgver = 2.4.0.20200224
+	pkgrel = 1
 	url = https://github.com/StevensNJD4/LazyMan
 	arch = any
 	license = GPL2
@@ -15,16 +15,14 @@ pkgbase = lazyman-git
 	provides = lazyman
 	conflicts = lazyman
 	backup = usr/share/java/lazyman/config.properties
-	source = git+https://github.com/StevensNJD4/LazyMan.git
+	source = git+https://github.com/skydrome/LazyMan.git#branch=gui
 	source = git+https://github.com/jwallet/go-mlbam-proxy.git
-	source = update-to-java-13.patch
 	source = config.properties
 	source = lazyman.sh
 	source = lazyman.png
 	source = lazyman.desktop
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 96d5ba5fd23360767fb365b46c0bfc3e
 	md5sums = cae201808fa8b54bfb89333b5f05e3af
 	md5sums = b387dc6c2bdf54718d6d2e48f9f37e3d
 	md5sums = 41aebb968e8b6856d1b73cabd6a8c5d2
