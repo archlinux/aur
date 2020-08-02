@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -55,7 +55,7 @@ build() {
     -DWITH_CUDA=ON \
     -DCUDA_FAST_MATH=ON \
     -DWITH_CUBLAS=ON \
-    -DCUDA_HOST_COMPILER=/usr/bin/gcc-8 \
+    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
     -DOPENCV_SKIP_PYTHON_LOADER=ON \
     -DEIGEN_INCLUDE_PATH=/usr/include/eigen3 \

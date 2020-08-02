@@ -1,7 +1,7 @@
 pkgbase = opencv-cuda
 	pkgdesc = Open Source Computer Vision Library with CUDA support
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
 	license = BSD
