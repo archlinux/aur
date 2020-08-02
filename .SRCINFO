@@ -1,5 +1,5 @@
 pkgbase = engauge-git
-	pkgver = 11.3.r1.gbed09aa6
+	pkgver = 12.2.1.r14.g64fa52aa
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
@@ -16,10 +16,8 @@ pkgbase = engauge-git
 	makedepends = git
 	source = git+https://github.com/markummitchell/engauge-digitizer.git
 	source = engauge.sh
-	source = engauge.desktop
 	sha256sums = SKIP
 	sha256sums = 4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18
-	sha256sums = 1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4
 
 pkgname = engauge-git
 	pkgdesc = Extracts data points from images of graphs

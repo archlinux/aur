@@ -5,7 +5,7 @@
 _pkgbase='engauge-digitizer'
 pkgname=('engauge-git' 'engauge-samples-git')
 pkgbase=engauge-git
-pkgver=11.3.r1.gbed09aa6
+pkgver=12.2.1.r14.g64fa52aa
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ license=('GPL')
 makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' 'poppler-qt5' 'git')
 source=("git+https://github.com/markummitchell/${_pkgbase}.git"
         "${pkgbase%-git}.sh"
-        "${pkgbase%-git}.desktop")
+        )
 sha256sums=('SKIP'
             '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
-            '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
+        )
 install=engauge.install
 
 pkgver() {
@@ -48,7 +48,7 @@ package_engauge-git() {
   install -Dm644 src/img/$_pkgbase.svg \
     "$pkgdir"/usr/share/icons/$_pkgbase.svg
   # desktop
-  install -Dm644 "$srcdir"/${pkgbase%-git}.desktop \
+  install -Dm644 "$srcdir"/${pkgbase%-git}/${pkgbase%-git}.desktop \
 	  "$pkgdir"/usr/share/applications/${pkgbase%-git}.desktop
 }
 
