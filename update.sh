@@ -84,6 +84,19 @@ build() {
 package() {
     pushd \"\${_module}-\${pkgver}\"
     python setup.py install --root=\"\${pkgdir}\" --optimize=1 --skip-build
+
+    # Move all of the package data resources to \${pkgdir}/usr/share/sublime-music
+    data_dir=\${pkgdir}/usr/share/sublime-music
+    mkdir -p \${data_dir}/adapters/subsonic \${data_dir}/dbus \${data_dir}/ui
+    pushd \${pkgdir}/usr/lib/python3.8/site-packages/sublime
+    mv adapters/icons \${data_dir}/adapters
+    mv adapters/images \${data_dir}/adapters
+    mv adapters/subsonic/icons \${data_dir}/adapters/subsonic
+    mv dbus/mpris_specs \${data_dir}/dbus
+    mv ui/icons \${data_dir}/ui
+    mv ui/images \${data_dir}/ui
+    popd
+
     popd
 
     pushd \"\${_module}-v\${pkgver}\"
