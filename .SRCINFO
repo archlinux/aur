@@ -1,12 +1,13 @@
 pkgbase = vgmstream-kode54-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games (kode54's fork)
 	pkgver = r1050.3185.g471dadb4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kode54/vgmstream
 	arch = x86_64
 	license = BSD
 	makedepends = audacious
 	makedepends = git
+	makedepends = gtk2
 	depends = ffmpeg
 	depends = libao
 	depends = libatrac9-git
