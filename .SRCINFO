@@ -1,0 +1,14 @@
+pkgbase = mtg-arena-tool-bin
+	pkgdesc = An MTG Arena deck and statistics manager
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = https://github.com/Manuel-777/MTG-Arena-Tool
+	arch = x86_64
+	license = GPL3
+	provides = mtg-arena-tool
+	noextract = mtg-arena-tool-bin-5.4.1.AppImage
+	source = mtg-arena-tool-bin-5.4.1.AppImage::https://github.com/Manuel-777/MTG-Arena-Tool/releases/download/v5.4.1/MTG-Arena-Tool-5.4.1.AppImage
+	sha256sums = db07a183c78d86382e90811565dd5d10065f3101c0dbb987bcb5ddca7e1bd6bf
+
+pkgname = mtg-arena-tool-bin
+
