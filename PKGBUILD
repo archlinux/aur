@@ -14,7 +14,7 @@ depends=('python-setuptools' 'python-six>=1.13.0')
 optdepends=('python-yaml>=5.3' 'python-jinja>=2.10.3' 'python-argcomplete: automatic shell completion')
 checkdepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v${pkgver}.tar.gz")
-sha512sums=('022249e2f7c66d07618cdcbe5fd9a086dfa204179920b651af0886762302428572371ddbfa60c3958cb7e863cb387f4bdc1ec4d09e0496dc7e66011325796cd4')
+sha512sums=('52b6752d2b62097df790f432ecfb2e3d196950ad49548fa3c68a329f16f9e2d3db2741debe2b3f913894857805b60b1b460a939fd1b34a58efa738175839dea8')
 
 check() {
   mkdir "$srcdir/check"
