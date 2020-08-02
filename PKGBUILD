@@ -89,7 +89,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Linux kernel for AMD CPU based hardware"
+  pkgdesc="Linux kernel aimed at the latest AMD CPU based hardware"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
@@ -151,7 +151,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kerel for AMD CPU based hardware"
+  pkgdesc="Header files and scripts for building modules for Linux kernel aimed at the latest AMD CPU based hardware"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
