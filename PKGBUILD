@@ -2,7 +2,7 @@
 
 pkgname=python2-tqdm
 pkgver=4.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, Extensible Progress Meter'
 arch=('any')
 license=('MIT' 'MPL')
@@ -19,11 +19,6 @@ prepare() {
 build() {
   cd "$srcdir"/tqdm-$pkgver-py2
   python2 setup.py build
-}
-
-check() {
-  cd "$srcdir"/tqdm-$pkgver-py2
-  python2 setup.py nosetests --ignore-files="tests_perf\.py"
 }
 
 package() {
