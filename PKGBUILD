@@ -1,13 +1,13 @@
-# Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bit-shift.io -> https://github.com/bit-shift-io
+# Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bitshift.io -> https://github.com/bit-shift-io
 pkgname=audiobook-git
-pkgver=r39.6ee8b5b
+pkgver=r107.33c2833
 pkgrel=1
-pkgdesc="A simple audio book reader. Written in Qt and C++."
-arch=('x86_64')
+pkgdesc="A simple audio book reader. Written in QT/QML and C++."
+arch=('any')
 url="https://github.com/bit-shift-io/audiobook"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'taglib')
+depends=('qt5-declarative')
+makedepends=('cmake' 'git' 'qt5-tools' 'qt5-multimedia' 'qt5-svg')
 provides=('audiobook')
 source=("${pkgname}::git+https://github.com/bit-shift-io/audiobook.git")
 md5sums=('SKIP')
