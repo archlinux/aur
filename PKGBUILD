@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname/build"
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   cmake --build . --target package
 }
 
