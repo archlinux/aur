@@ -1,6 +1,6 @@
-# shellcheck disable=SC2034
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-
+# shellcheck disable=SC2034,SC2164 # mask unused variable warning, mask cd without fallback warning.
 # ToDo:
 # * add libraw to openimageio
 
@@ -25,12 +25,14 @@ source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
         "https://github.com/alicevision/AliceVision/pull/709.patch"
+        "cuda11.patch"
         )
 sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
             'SKIP'
             'SKIP'
             'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
-            '3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8')
+            '3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8'
+            'fbf961b52a13105fc3190ee1213872cb421cd5351065bee423f12f8606b76373')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -74,6 +76,7 @@ prepare() {
   cd ${srcdir}/${_path}
   patch -Np1 -i ${srcdir}/submodule.patch
   patch -Np1 -i ${srcdir}/709.patch
+  patch -Np1 -i ${srcdir}/cuda11.patch
   rm -rf src/dependencies/{MeshSDFilter,nanoflann}
   cp -r ${srcdir}/MeshSDFilter src/dependencies/MeshSDFilter
   cp -r ${srcdir}/nanoflann src/dependencies/nanoflann
