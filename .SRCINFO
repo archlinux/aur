@@ -1,6 +1,6 @@
 pkgbase = python2-tqdm
 	pkgdesc = Fast, Extensible Progress Meter
-	pkgver = 4.44.1
+	pkgver = 4.48.0
 	pkgrel = 1
 	url = https://github.com/tqdm/tqdm
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-tqdm
 	checkdepends = python2-coverage
 	checkdepends = python2-flake8
 	makedepends = python2-setuptools
-	source = python2-tqdm-4.44.1.tar.gz::https://github.com/tqdm/tqdm/archive/v4.44.1.tar.gz
-	sha512sums = 7661cddb340c2a28f01d2b8ebd3f2041a28398b16259d227ba6ec99f08b8be48b267cef913b104a1cea89147ef062fb7af9c84bf06ffb0f2834d4e2aab6e6359
+	source = python2-tqdm-4.48.0.tar.gz::https://github.com/tqdm/tqdm/archive/v4.48.0.tar.gz
+	sha512sums = 2783725d2a06149f1d464826652ff46fc2114246fcbef170f24d39a97e17e84daa8cf01d2f91bf8eecd8551ceabe4eb38c932b5688e9018d1f92b1a10e487262
 
 pkgname = python2-tqdm
 
