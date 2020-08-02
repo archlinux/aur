@@ -32,6 +32,6 @@ package() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	pytest
+	pytest -k "not test_backwards_compatibility_11"
 	python -m liquidctl.cli list --verbose
 }
