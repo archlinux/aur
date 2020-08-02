@@ -13,7 +13,7 @@ license=('GPL')
 depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rodlie/$pkgname/archive/$pkgver.tar.gz" qt-5.15+gentoo.patch)
 sha256sums=('58c6af502b606e63f96e8aec96b65ca9125be18ecdd5e4680ccaf50e9c40b064'
-            '143a664ccd9b677924f6168d7d358201b8693a03f3a0c76efe348f7b39489b99')
+            '34271a58f32eeed01ab2db408505e8a1cef20f4a60a372ba78c5607b404eb010')
 
 prepare() {
   cd $pkgname-${pkgver//_/-}

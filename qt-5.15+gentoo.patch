@@ -4,7 +4,7 @@ diff -Naur qtfm-6.2.0.orig/libfm/iconlist.cpp qtfm-6.2.0.new/libfm/iconlist.cpp
 @@ -1,5 +1,7 @@
  #include "iconlist.h"
  
-+#include <QpainterPath>
++#include <QPainterPath>
 +
  QSize IconListDelegate::sizeHint(const QStyleOptionViewItem &option,
                                   const QModelIndex &index) const
