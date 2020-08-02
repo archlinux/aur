@@ -32,7 +32,7 @@ build() {
 package() {
   mkdir -p "${pkgdir}${_install_dir}"
 	cd "${_pkgname}"
-	install -D -m755 "${_pkgname}" "${pkgdir}usr/bin/${_pkgname}"
+	install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m644 "gensystray_default.png" "${pkgdir}${_install_dir}${_pkgname}.png"
   install -D -m644 "README.md" "${pkgdir}${_install_dir}README.md"
   install -D -m644 "../gensystray.sample.cfg" "${pkgdir}${_install_dir}${_pkgname}.sample.cfg"
