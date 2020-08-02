@@ -21,7 +21,7 @@ optdepends=('opencv-samples: samples'
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
         "jpeg2000_jasper.patch")
-sha256sums=('10898a0268d8f8cbaf0354ddd1d9de6abaac84e3d9a6c9754f56a0aa3383d73b'
+sha256sums=('eb2bdd90bc4099f28595170c0f9dc0d371733e1229046a9b98ba580377a2e82c'
             'd92e3e3740196f20b5a47ef578aed471b975ef7104ae186ef7f738fcc732be96'
             'a56c8646eea058260b87a041f291682dcdf93f6557f2714ff377a46eca842aea')
 
