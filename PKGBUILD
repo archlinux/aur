@@ -9,7 +9,6 @@ pkgdesc="Manual pages for GNU/kFreeBSD systems"
 arch=('any')
 url="http://packages.debian.org/sid/freebsd-manpages"
 license=('BSD')
-#depends=('')
 makedepends=('tar')
 source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}-${_bsdrel}_all.deb")
 md5sums=('215d533dd5758c5e0cdfd9f3ea4c3094')
