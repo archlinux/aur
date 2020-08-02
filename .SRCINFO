@@ -1,6 +1,6 @@
 pkgbase = solarwallet-appimage
 	pkgdesc = Wallet for the Stellar payment network by SatoshiPay (AppImage)
-	pkgver = 0.25.2
+	pkgver = 0.25.3
 	pkgrel = 1
 	url = https://solarwallet.io/
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = solarwallet-appimage
 	provides = solarwallet
 	conflicts = solarwallet
 	options = !strip
-	source = https://github.com/satoshipay/solar/archive/v0.25.2.tar.gz
+	source = https://github.com/satoshipay/solar/archive/v0.25.3.tar.gz
 	source = solarwallet-appimage.sh
 	source = solarwallet-appimage.desktop
-	md5sums = dbbbf8d23142c3d2208ade218af235c8
-	md5sums = 9065522af7470ea8274db63226ff189a
-	md5sums = 997ffe13c2bed2205ac343a631fb2d21
+	sha256sums = 19d4b8f5f35b992424caaaa1bff346ba8e806b7493a6839d7475170e7c79f4e8
+	sha256sums = ed2e309b16b78b82896331cacb12382c1cd7ca2327884a9a1a4d6320e7044ab7
+	sha256sums = f651916474463e95ce114b2298bd452c08db389fab30901cadcd86d3b3613f85
 
 pkgname = solarwallet-appimage
 
