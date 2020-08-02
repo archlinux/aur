@@ -1,5 +1,5 @@
 pkgname=vgmstream-kode54-git
-pkgver=r1050.2771.ge58c73aa
+pkgver=r1050.3185.g471dadb4
 pkgrel=1
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(x86_64)
@@ -10,12 +10,10 @@ makedepends=(git)
 source=(${pkgname}::git+https://github.com/kode54/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
-        fix-audacious-prefix.patch
         install-headers.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            'd2f0a5d991cc7e629c58f529f82a4e0b9be3b68a49b86a98e1a6dbb106e6b1c3'
             'e3e94769b6545e2c8c0b60ffda684b659bb8db06f3fb9d7645fd4a734d115bac')
 
 pkgver() {
@@ -29,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p0 < "$srcdir"/fix-audacious-prefix.patch
   patch -p0 < "$srcdir"/install-headers.patch
 }
 
