@@ -48,7 +48,7 @@ package_engauge-git() {
   install -Dm644 src/img/$_pkgbase.svg \
     "$pkgdir"/usr/share/icons/$_pkgbase.svg
   # desktop
-  install -Dm644 "$srcdir"/${pkgbase%-git}/${pkgbase%-git}.desktop \
+  install -Dm644 "$srcdir"/${_pkgbase}/dev/${_pkgbase}.desktop \
 	  "$pkgdir"/usr/share/applications/${pkgbase%-git}.desktop
 }
 
