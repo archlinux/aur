@@ -25,8 +25,8 @@ source=(
 	gyp::git+https://chromium.googlesource.com/external/gyp#commit=${gyp_commit}
 	git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
 	pr444.patch::https://fars.ee/2is4
-	https://downloads.sourceforge.net/pnsft-aur/x-ken-all-201810.zip
-	https://downloads.sourceforge.net/pnsft-aur/jigyosyo-201810.zip
+	https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo.zip
+	https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all.zip
 	https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 )
 sha512sums=(
@@ -34,9 +34,9 @@ sha512sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'9284b6865ee063a294369f40947a2ff7fc3ce49a2bbe9ebbf282a0e0bf199cedc18e1bc51ba8c3e4ed00404f8ef36e6a9db0602b51083f358a1ff555fd031858'
-	'59d0a5e62c698ebc64008f1fb2ed68ebbbd7798d9d95f2e4852261fb09d53e9f8c102f385ed8f2001e3da6c2a0a50d64f1f20e70671948b492f972c487655efe'
-	'daf41f63bd1afc0937beb12aa007ead8a239fabc3af2237e4adf75238b0e0e520f6051f5a98d413a541f901e17a1488eb3fad6d0bba1f1561987365236d64146'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a'
 )
 
