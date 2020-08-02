@@ -7,7 +7,7 @@
 _pkgname=imx_usb_loader
 pkgname=${_pkgname}-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to communicate with I.MX bootroms to execute code"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/boundarydevices/imx_usb_loader'
@@ -25,6 +25,6 @@ build() {
 
 package(){
   cd "$srcdir/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" sysconfdir=/etc install
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
