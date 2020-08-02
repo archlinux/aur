@@ -4,19 +4,19 @@
 
 pkgname=moneymanagerex-git
 _gitname=moneymanagerex
-pkgver=1.4.0.alpha.1.r61.e6adf480
+pkgver=1.3.5
 pkgrel=1
-pkgdesc="An easy-to-use personal finance suite"
-arch=('i686' 'x86_64')
+pkgdesc="MoneyManagerEx 1.3.5 with DB v.7 An easy-to-use personal finance suite. This package will always point to the newest stable version."
+arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxgtk3' 'webkit2gtk') 
-makedepends=('cmake' 'git' 'boost' 'gettext' 'lsb-release')
+makedepends=('cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex')
-source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
+source=(git+https://github.com/moneymanagerex/moneymanagerex.git#branch=v1.3.5)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,9 +32,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname/build"
-  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
-  make
-  make po
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake --build . --target package
 }
 
 package() {
