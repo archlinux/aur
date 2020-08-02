@@ -1,0 +1,4 @@
+src/
+pkg/
+fahcontrol-gtk3-git/
+*.pkg.tar.*

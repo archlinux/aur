@@ -1,15 +1,20 @@
-pkgbase = fahcontrol
-	pkgdesc = Graphical monitor and control utility for the Folding@home client
-	pkgver = 7.6.13
-	pkgrel = 2
+pkgbase = fahcontrol-gtk3-git
+	pkgdesc = Graphical monitor and control utility for the Folding@home client (python3/GTK3 fork)
+	pkgver = r156.7ae5c23
+	pkgrel = 1
 	url = https://foldingathome.org
 	arch = any
 	license = GPL3
-	depends = python2
-	depends = pygtk
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
 	optdepends = fahviewer: 3D simulation viewer
-	source = https://download.foldingathome.org/releases/public/release/fahcontrol/centos-6.7-64bit/v7.6/fahcontrol-7.6.13-1.noarch.rpm
-	md5sums = 997c49f1aff860bad37dd273e46bd655
+	source = fahcontrol-gtk3-git::git+https://github.com/cdberkstresser/fah-control.git
+	source = fahcontrol-icon-path-linux.patch
+	sha256sums = SKIP
+	sha256sums = 369f69b76a0692f1b2963a8e970aca019ba4f45fa18806800e600991d2fb48bb
 
-pkgname = fahcontrol
+pkgname = fahcontrol-gtk3-git
 

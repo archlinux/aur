@@ -1,0 +1,20 @@
+--- fahcontrol-gtk3-git/fah/FAHControl.py	2020-08-02 22:42:01.389885129 +0300
++++ fahcontrol-gtk3-git/fah/FAHControl.py.old	2020-08-02 22:10:12.183013169 +0300
+@@ -204,7 +204,7 @@
+         self.mono_font = Pango.FontDescription('Monospace')
+ 
+         # Default icon
+-        self.window.set_default_icon_from_file(os.path.dirname(os.path.abspath(__file__)) + '/../images/FAHControl.ico')
++        self.window.set_default_icon_from_file('/usr/share/pixmaps/FAHControl.ico')
+ 
+         # Filter glade
+         if len(glade) < 1024:
+@@ -296,7 +296,7 @@
+ 
+         # About Dialog
+         icon = builder.get_object('about_icon',)
+-        icon.set_from_file(os.path.dirname(os.path.abspath(__file__)) + '/../images/FAHControl.ico')
++        icon.set_from_file('/usr/share/pixmaps/FAHControl.ico')
+ 
+         about_version = builder.get_object('about_version')
+         about_version.set_markup('<b>Version: %s</b>' % version)
