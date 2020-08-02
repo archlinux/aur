@@ -9,7 +9,7 @@
 
 _pkgname=python-sipsimple
 pkgname=python2-sipsimple
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Python SDK for development of SIP end-points"
 license=('custom:MIT' 'LGPL')
@@ -19,13 +19,13 @@ depends=('alsa-lib' 'util-linux' 'python2-dateutil' 'cython2' 'python2-cjson' 'o
          'python2-dnspython' 'python2-eventlib' 'python2-msrplib' 'python2-xcaplib' 'python2-otr' 'ffmpeg')
 options=('!makeflags')
 source=("https://github.com/AGProjects/${_pkgname}/archive/release-${pkgver}.tar.gz"
-        "snd_pcm_drop.patch")
-sha512sums=('007205bf5a88b2ebfa32541e3a3dc47effa1854648371d8fcc90b07a302fffe5bde4c2f8e2231fdf24df397bc237d7bd1e6414f17fc4d9b6486137bcb98fccc7'
-            '887cb3cfee82280c07bf4ba1779aebc2fbc49e2afff87ed3cd1e58b5ac8973e6d7f93e86284511dfef154a1f991bc985b4c97fc3b7d327d6791b72a124526683')
+        "pj_attr_gcc10.patch")
+sha512sums=('80ccededddb9a7eae229cb032bfd4e6a37ecf402a1ceded9fa592695f92fa458d2635a4484f2ef350e76fcb37736f0660535286b3f9535681e73c8791e3745cb'
+            '60703259bb829f7b13cb3645f4cbaf6dd5662cada2c0f2f3765cfc74456f8e60c5001793aed59d71fd12c3d2abcbf12be3b4260e5ad6c061abdf3df8c9de0740')
 
 prepare() {
-  cd  "${srcdir}/${_pkgname}-release-${pkgver}"
-  patch -p1 < "${srcdir}"/snd_pcm_drop.patch
+  cd  "${srcdir}"
+  patch -p1 -i "${srcdir}"/pj_attr_gcc10.patch
 }
 
 build() {
