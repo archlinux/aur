@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,2154,2148
 
 pkgname=lix
-pkgver=0.9.31
+pkgver=0.9.32
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
