@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export PATH="/usr/lib/jvm/java-11-openjdk/jre/bin/:$PATH"
+export PATH="/usr/lib/jvm/java-11-openjdk/lib/:$PATH"
 
 CLASSPATH=/usr/share/java/jexiftoolgui/jexiftoolgui.jar
 
