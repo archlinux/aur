@@ -22,7 +22,7 @@ pkgbase = moneymanagerex-git
 	provides = moneymanagerex
 	conflicts = moneymanagerex
 	replaces = mmex
-	source = git+https://github.com/moneymanagerex/moneymanagerex.git
+	source = git+https://github.com/moneymanagerex/moneymanagerex.git#branch=v1.3.5
 	sha256sums = SKIP
 
 pkgname = moneymanagerex-git
