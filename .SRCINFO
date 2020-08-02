@@ -1,25 +1,20 @@
 pkgbase = bigjubeldesktop-git
 	pkgdesc = Desktop client for BigJubel: calculate current jubilees
-	pkgver = 0.1.0.r1.g2b8b27b
+	pkgver = 0.2.0.r1.gd9cf9fc
 	pkgrel = 1
 	url = https://www.kabus.eu/git/bigjubeldesktop
 	arch = any
 	license = GPL
-	makedepends = npm
 	makedepends = git
 	makedepends = imagemagick
+	makedepends = coreutils
+	makedepends = sed
 	depends = bigjubelweb
-	depends = electron
+	depends = python-pywebview
 	provides = bigjubeldesktop
 	conflicts = bigjubeldesktop
-	source = bigjubeldesktop::git://www.kabus.eu/git/bigjubeldesktop
-	source = logo.png::https://www.kabus.eu/bigjubel/static/logo32.png
-	source = exec.sh
-	source = bigjubel.desktop
+	source = bigjubeldesktop-git::git://www.kabus.eu/git/bigjubeldesktop
 	md5sums = SKIP
-	md5sums = 67bbdfd42a1436d5e49ed394a0027524
-	md5sums = 2b8d2457541968447f28de29a319aac1
-	md5sums = 22d907a051651f77f014544a7a015440
 
 pkgname = bigjubeldesktop-git
 
