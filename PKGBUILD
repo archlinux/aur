@@ -4,7 +4,7 @@
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.29.r1572290530.9b38eb65
+pkgver=0.9.31.r1587672355.8757be6b
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")

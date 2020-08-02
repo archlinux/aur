@@ -1,6 +1,6 @@
 pkgbase = lix-git
 	pkgdesc = An action-puzzle game inspired by Lemmings
-	pkgver = 0.9.29.r1572290530.9b38eb65
+	pkgver = 0.9.32.r1596319755.a7f62251
 	pkgrel = 1
 	url = http://www.lixgame.com/
 	arch = i686
