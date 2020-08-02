@@ -1,7 +1,7 @@
 pkgbase = hippoplayer-git
 	pkgdesc = A modern music player for your oldsk00l needs
 	pkgver = r421.ffd6581
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emoon/HippoPlayer
 	install = hippoplayer-git.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=hippoplayer-git
 pkgver=r421.ffd6581
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern music player for your oldsk00l needs"
 arch=('x86_64')
 url='https://github.com/emoon/HippoPlayer'
@@ -47,12 +47,9 @@ package() {
   install -Dm755 hippoplayer.sh "${pkgdir}/usr/bin/hippoplayer"
   install -Dm644 data/hippo.png "${pkgdir}/usr/share/pixmaps/hippoplayer.png"
   install -Dm755 t2-output/linux-gcc-debug-default/hippo_player -t "${pkgdir}/usr/share/hippoplayer/"
-  # install -Dm755 t2-output/linux-gcc-debug-default/flatc -t "${pkgdir}/usr/share/hippoplayer/"
   install -Dm755 t2-output/linux-gcc-debug-default/uade-* -t "${pkgdir}/usr/share/hippoplayer/"
   install -Dm644 t2-output/linux-gcc-debug-default/libopenmpt.cfg -t "${pkgdir}/usr/share/hippoplayer/"
   install -Dm755 t2-output/linux-gcc-debug-default/*.so -t "${pkgdir}/usr/share/hippoplayer/"
-  # install -Dm644 t2-output/linux-gcc-debug-default/*.a -t "${pkgdir}/usr/share/hippoplayer/"
-  install -Dm666 t2-output/linux-gcc-debug-default/*.db -t "${pkgdir}/usr/share/hippoplayer/"
   chmod 757 "${pkgdir}/usr/share/hippoplayer/"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
@@ -60,11 +57,11 @@ package() {
   cp -R bin/ "${pkgdir}/usr/share/hippoplayer/"
   rm -rf "${pkgdir}/usr/share/hippoplayer/data/mac"
   gendesk -f -n --pkgname "${pkgname%-git}" \
-            --pkgdesc "$pkgdesc" \
-            --name "HippoPlayer" \
-            --comment "$pkgdesc" \
-            --exec "${pkgname%-git}" \
-            --categories 'Utility;Audio;AudioVideo' \
-            --icon "${pkgname%-git}"
+          --pkgdesc "$pkgdesc" \
+          --name "HippoPlayer" \
+          --comment "$pkgdesc" \
+          --exec "${pkgname%-git}" \
+          --categories 'Utility;Audio;AudioVideo' \
+          --icon "${pkgname%-git}"
   install -Dm644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
