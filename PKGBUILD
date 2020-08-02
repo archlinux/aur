@@ -7,7 +7,7 @@ pkgdesc="A very simple screen magnifier"
 arch=(x86_64)
 url="https://github.com/stuartlangridge/magnus/"
 license=('MIT')
-depends=('python3' 'python-setproctile' 'gobject-introspection-runtime' 'gobject-introspection' 'gtk3' 'libkeybinder3' 'gdk-pixbuf2')
+depends=('python3' 'python-setproctitle' 'gobject-introspection-runtime' 'gobject-introspection' 'gtk3' 'libkeybinder3' 'gdk-pixbuf2')
 source=("https://github.com/stuartlangridge/magnus/archive/${pkgver}.tar.gz")
 md5sums=('53249667de050d930dcde097ff9ee937')
 

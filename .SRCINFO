@@ -6,6 +6,7 @@ pkgbase = magnus
 	arch = x86_64
 	license = MIT
 	depends = python3
+	depends = python-setproctitle
 	depends = gobject-introspection-runtime
 	depends = gobject-introspection
 	depends = gtk3
