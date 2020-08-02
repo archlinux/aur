@@ -3,7 +3,7 @@
 pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
-pkgver=v0.11.4.r2.g44a6457
+pkgver=v0.11.6.r5.g0a5faa2
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
@@ -54,6 +54,18 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+    # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
+    data_dir=${pkgdir}/usr/share/sublime-music
+    mkdir -p $data_dir/adapters/subsonic $data_dir/dbus $data_dir/ui
+    pushd ${pkgdir}/usr/lib/python3.8/site-packages/sublime
+    mv adapters/icons $data_dir/adapters
+    mv adapters/images $data_dir/adapters
+    mv adapters/subsonic/icons $data_dir/adapters/subsonic
+    mv dbus/mpris_specs $data_dir/dbus
+    mv ui/icons $data_dir/ui
+    mv ui/images $data_dir/ui
+    popd
 
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
 
