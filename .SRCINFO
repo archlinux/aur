@@ -1,6 +1,6 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program (GIT VERSION)
-	pkgver = 6567.51ef0dec
+	pkgver = 6576.793f0966
 	pkgrel = 1
 	url = http://live.gnome.org/Dia
 	arch = x86_64
