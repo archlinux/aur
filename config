@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.6-arch1 Kernel Configuration
+# Linux/x86 5.7.12-arch1 Kernel Configuration
 #
 
 #
@@ -461,9 +461,11 @@ CONFIG_EFI_MIXED=y
 CONFIG_SECCOMP=y
 # CONFIG_HZ_100 is not set
 # CONFIG_HZ_250 is not set
-CONFIG_HZ_300=y
+# CONFIG_HZ_300 is not set
+CONFIG_HZ_500=y
+# CONFIG_HZ_750 is not set
 # CONFIG_HZ_1000 is not set
-CONFIG_HZ=300
+CONFIG_HZ=500
 CONFIG_SCHED_HRTICK=y
 CONFIG_KEXEC=y
 CONFIG_KEXEC_FILE=y
@@ -1622,7 +1624,10 @@ CONFIG_VLAN_8021Q_MVRP=y
 # CONFIG_DECNET is not set
 CONFIG_LLC=m
 CONFIG_LLC2=m
-# CONFIG_ATALK is not set
+CONFIG_ATALK=m
+CONFIG_DEV_APPLETALK=m
+CONFIG_IPDDP=m
+CONFIG_IPDDP_ENCAP=y
 # CONFIG_X25 is not set
 # CONFIG_LAPB is not set
 CONFIG_PHONET=m
