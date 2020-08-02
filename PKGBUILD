@@ -1,38 +1,35 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
-# Contributor: rayman2200 
+# Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=dockbarx
-pkgver=0.93
+_pkgver=1.0beta
+pkgver=1.0beta+r820+4a5b382
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
-arch=('i686' 'x86_64')
+arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/M7S/dockbarx"
 license=('GPL3')
-depends=('python2-wnck' 'pygtk' 'python2-xdg' 'python2-dbus' 'python2-numpy' 
-         'python2-pillow' 'python2-keybinder2' 'hicolor-icon-theme' 'python2-xlib'
-         'python2-gconf' 'python2-six')
-optdepends=('avant-window-navigator: AWN DockBarX Plugin'
-            'xfce4-dockbarx-plugin: Xfce4 Panel Plugin'
+depends=('libkeybinder3' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pillow'
+         'python-xlib' 'python-xdg')
+makedepends=('python-setuptools' 'python-polib' 'git')
+optdepends=('mate-panel: mate applet'
             'zeitgeist: recently used file list'
-            'compiz-fusion-plugins-main: opacify plugin'
-            'dockmanager: dockmanager plugins'
-            'cardapio-bzr: required to run menu applet for dockx (standalone dock)')
-conflicts=('dockbarx-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/M7S/dockbarx/archive/${pkgver}.tar.gz")
-sha256sums=('3f81b39d051c8b961df32e883069276dca10d84bae997b18f7938b004a3577e2')
+            'xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin'
+            'python-pyudev: dockx battery applet'
+            'gconf: export settings from older versions of dockbarx'
+            'python-lxml: import settings script')
+_commit='4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba'
+source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}")
+sha256sums=('SKIP')
+install="${pkgname}.install"
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "%s+r%s+%s" "${_pkgver}" "$( git rev-list --count HEAD )" "$( git rev-parse --short HEAD )"
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root "${pkgdir}" --optimize=1
 
-  python2 setup.py install --root "${pkgdir}"
-
-  mkdir -p "${pkgdir}"/usr/share/avant-window-navigator/applets
-  cp -r AWN/* "${pkgdir}"/usr/share/avant-window-navigator/applets
-  
-  mkdir -p "${pkgdir}"/usr/share/pixmaps
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
-
-  sed -i 's:^Categories=.*:Categories=GTK;GNOME;Settings;X-GNOME-PersonalSettings;:' "${pkgdir}"/usr/share/applications/dbx_preference.desktop
-  sed -i 's:\(/usr/bin/python\)\([^2]\):\12\2:' "${pkgdir}"/usr/bin/{dockbarx_factory,dbx_preference,dockx}
-
+  install -Dm644 "${srcdir}/${pkgname}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
 }
