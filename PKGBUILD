@@ -6,24 +6,23 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=4.3.1.0
-pkgrel=2
+pkgver=4.3.3.0
+pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
-         'qt5-svg' 'libmediainfo' 'libraw' 'qt5-base' 'ffmpeg' 'libpdfium')
+         'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw' 'qt5-base'
+         'ffmpeg' 'libpdfium')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "pdfium.patch"
-        "add-missing-include.patch")
+        "pdfium.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'f913ff490771e170610829f42f9285412ed8f4e7343f5dd7cb33e3bda4175aba'
-            'c4fa2f7c9e17c205bf009bc601b974ad6ac380e73238849b0be01d855a805e3f')
+            '3a03d20165ebfb523644229bd650a2d0e51506c9555a1a9b28c61d07b8f28d7a')
 
 prepare() {
     cd "MEGAsync"
@@ -33,9 +32,6 @@ prepare() {
 
     cd "src/MEGASync/mega"
     patch -Np1 -i "../../../../pdfium.patch"
-
-    cd ..
-    patch -Np1 -i "../../../add-missing-include.patch"
 }
 
 build() {
