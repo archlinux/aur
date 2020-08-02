@@ -1,77 +1,46 @@
+# Maintainer :  Cyberfee <deltax.fluxion@gmail.com>
 
 
-#build() {
-#cd "$srcdir/${pkgname%-git}"
-#autoreconf --force --install --symlink
-#./configure --prefix=/usr
-#make
-#}
-
-#check() {
-#cd "$srcdir/${pkgname%-git}"
-#make -k check
-#}
-
-#package() {
-#cd "$srcdir/${pkgname%-git}"
-#make DESTDIR="$pkgdir/" install
-#}
-
-
-
-
-####################
-
-# and remove these comments. For more information, see 'man PKGBUILD'.
-
-# Maintainer: binaryplease <binaryplease@gmail.com>
 pkgname=fluxion-git
-pkgver=1.0.0
+
+pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
+pkgver=4.10.r198.5b0ef2b
 pkgrel=1
-pkgdesc="Fluxion is a remake of linset by vk496 with less bugs and more features."
-arch=('x86_64' 'i686')
-url="https://github.com/deltaxflux/fluxion"
-license=('GNU')
-groups=()
+
+pkgdesc='Security auditing and social-engineering research tool'
+url="https://fluxionnetwork.github.io/${pkgname-git}"
+arch=('any')
+license=('GPL3')
+
 makedepends=('git')
-depends=('git' 'aircrack-ng' 'gawk' 'bully' 'curl' 'dhcp' 'hostapd' 'wireless_tools' 'lighttpd' 'macchanger' 'mdk3' 'nmap' 'openssl' 'php-cgi' 'pyrit' 'python' 'reaver' 'rfkill' 'unzip' 'xterm' 'zenity' 'binutils')
-provides=("${pkgname%-git}")
+depends=('bc' 'xterm' 'unzip' 'p7zip' 'openssl' 'net-tools' 'php-cgi' 'curl' 'dhcp' 'hostapd' 'lighttpd' 'iw' 'wireless_tools' 'nmap' 'dsniff' 'macchanger' 'aircrack-ng' 'cowpatty' 'mdk3' 'mdk4')
+
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=("${pkgname%-git}::git+https://github.com/deltaxflux/fluxion.git#branch=master")
-noextract=()
-md5sums=('SKIP')
+provides=("${pkgname%-git}")
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+install="${pkgname%-git}.install"
+source=("git+https://github.com/FluxionNetwork/${pkgname/-/.}")
+sha256sums=('SKIP')
 
-pkgver() {
-		cd "$srcdir/${pkgname%-git}"
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+options=('zipman')
 
-#prepare() {
-#cd "$srcdir/${pkgname%-git}"
-#patch -p1 -i "$srcdir/${pkgname%-git}.patch"
-#}
-
-build() {
-		cd "$srcdir/${pkgname%-git}"
-		#./autogen.sh
-		#./configure --prefix=/usr
-		#make
-}
-
-#check() {
-#cd "$srcdir/${pkgname%-git}"
-#make -k check
-#}
 
 package() {
-		# cd "$_pkgname"
-		install "$srcdir/${pkgname%-git}"
-		install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+  cd "${pkgname%-git}"
+
+  install -Dm755 "${pkgname%-git}.sh" -t"$pkgdir/usr/share/${pkgname%-git}/"
+  cp -a --no-preserve=ownership attacks language lib logos misc scripts preferences "$pkgdir/usr/share/${pkgname%-git}"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%-git}" <<-EOF
+		#!/bin/sh
+
+		cd /usr/share/${pkgname%-git}
+		exec bash ${pkgname%-git}.sh "\$@"
+	EOF
+
+  install -Dm644 *.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+  install -Dm644 "docs/man/${pkgname%-git}.1" -t"$pkgdir/usr/share/man/man1/"
 }
+
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
