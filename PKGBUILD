@@ -13,7 +13,7 @@ depends=('python'
          'python-xarray')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoechenberger/questplus/archive/${pkgver}.tar.gz")
-sha256sums=('9137a51abbbf50d0040e413391c894227e19f4d366dbcbcc30ba51c6cadd75fa')
+sha256sums=('61cffe0950db5d76c75ee9d39d94cdbdac4d7eef675b55b4a0cc30e380ecbfec')
 
 package() {
   cd "${srcdir}/questplus-${pkgver}"
