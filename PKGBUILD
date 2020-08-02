@@ -2,7 +2,7 @@
 
 pkgname=plascolin
 pkgver=2.02
-pkgrel=1
+pkgrel=2
 depends=('gtk2' 'cairo')
 pkgdesc="A tool to create and to view anaglyph stereo images and to display the left and right image on output devices"
 url="http://www.schrammel.org/stereo-plascolin.php"
@@ -15,6 +15,10 @@ md5sums=('56e741d7cae3993d49fc0ee3588e9349')
 build() {
   cd ${srcdir}/${pkgname}_${pkgver}
   make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}_${pkgver}
   install -Dm0755 plascolin $pkgdir/usr/bin/plascolin
   install -Dm0644 plascolin.ui $pkgdir/usr/share/plascolin/plascolin.ui
 }
