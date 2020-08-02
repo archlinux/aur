@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy
 pkgver=0.9.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
 url="https://getgammy.com"
@@ -15,13 +15,19 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Fushko/gammy/archive/v$pkgv
 sha256sums=('3d7f82b5f39d04438edbc3533c3a66b7d72c6744480985c43e5c3c0922e500e1'
             '6c67db210bd45f51d80119d25ffcaff9861aea926427ccf186d4530cf35ecf5d')
 
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# Adjust target.path
+	sed -i 's|opt/$${TARGET}|usr|g' Gammy.pro
+
+	# Fix build
+	sed -i '/#include <vector>/a #include <stdint.h>' src/utils.h
+}
+
 build() {
 	cd "$pkgname-$pkgver"
 	qmake Gammy.pro
-
-	# Don't install binary in /opt/
-	sed -i 's|opt/gammy/|usr/|g' Makefile
-
 	make
 }
 
