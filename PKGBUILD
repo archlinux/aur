@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-cecremote
 pkgver=1.5.0
-_vdrapi=2.4.1
-pkgrel=1
+_vdrapi=2.4.3
+pkgrel=2
 pkgdesc="Receive and send commands via CEC"
 url="http://uli-eckhardt.de/vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
