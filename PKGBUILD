@@ -1,42 +1,41 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=xfce4-dockbarx-plugin
-pkgver=0.5
-pkgrel=4
+_pkgver=0.6
+pkgver=0.6+r62+f7585b5
+pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/m7s/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx>=0.91' 'xfce4-panel<4.15.0')
-makedepends=('python2' 'git' 'vala')
-conflicts=("${pkgname}-git" 'dockbarx-gtk3-git') # Use xfce4-dockbarx-plugin-gtk3-git to work with the GTK3 version of dockbarx
-
-#source=( ${pkgname}-${pkgver}.tar.gz::https://github.com/TiZ-EX1/${pkgname}/archive/v${pkgver}.tar.gz )
-#sha256sums=('c55e5231ae8b69ab10c22ab5150e47f5392b2398572e753cbcb1a147362e0ba5')
-# Version 0.5 was never properly tagged, so use the commit directly
-_commit='cf16d6f415d03828e7a702550a0552ed5ea7ce0c' # 1 after version bump with updated README
-source=("${pkgname}::git+https://github.com/TiZ-EX1/xfce4-dockbarx-plugin#commit=${_commit}"
-        'pref_dialog_fix.patch::https://github.com/TiZ-EX1/xfce4-dockbarx-plugin/commit/960ed3806d00b33b6a254fb583b366177ba56b77.patch'
-        'vala0.48fix.patch')
+depends=('dockbarx>=1.0beta' 'xfce4-panel>=4.12')
+makedepends=('git' 'vala')
+_commit='f7585b53792fc9945be6a8f95a08aed8663b1b04'
+source=("${pkgname}::git+https://github.com/M7S/${pkgname}#commit=${_commit}"
+        'fixes.patch')
 sha256sums=('SKIP'
-            '04892f2eb8413a79288b234ed61af588a66f70553a9db9272d8f1d7904ad1dfa'
-            '4b6c29fe052d6e890fbb67c5622728569a630bb6128c5b033039c5d00b22994d')
+            '8f529817c1de28dc4ef2047254863d446f6c83a0120f90af9eac3f1524179f31')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "%s+r%s+%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd "${srcdir}/${pkgname}" #-${pkgver}"
-  patch -Np1 -i ../pref_dialog_fix.patch
-  patch -Np2 -r- -i ../vala0.48fix.patch
+  cd "${srcdir}/${pkgname}"
+  # Apply xuzhen's fixes for background color while waiting on pull request to be accepted
+  patch -Np1 -r- -i ../fixes.patch
+
+  PREFIX=/usr python ./waf configure
 }
 
 build() {
-  cd "${srcdir}/${pkgname}" #-${pkgver}"
-  sed -i 's:env python$:&2:' waf wscript
-  PREFIX=/usr ./waf configure
-  ./waf build
+  cd "${srcdir}/${pkgname}"
+  python ./waf build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" #-${pkgver}"
-  DESTDIR="${pkgdir}" ./waf install
+  cd "${srcdir}/${pkgname}"
+  DESTDIR="${pkgdir}" python ./waf install
 }
 

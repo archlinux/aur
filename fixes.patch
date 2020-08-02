@@ -1,0 +1,222 @@
+From db5051bf76aff2ac01c8f4203c63870f40f00b52 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sat, 27 Jun 2020 14:46:21 +0800
+Subject: [PATCH 1/2] Remove an unnecessary requirement
+
+---
+ wscript | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/wscript b/wscript
+index 2c06b4c..3d8d464 100644
+--- a/wscript
++++ b/wscript
+@@ -43,7 +43,6 @@ def configure (ctx):
+     ctx.load('vala')
+     ctx.env.append_value('CFLAGS', '-DGETTEXT_PACKAGE="gtk30"')
+     args = '--cflags --libs'
+-    ctx.find_program('dockx')
+     ctx.check_cfg(package = 'glib-2.0', atleast_version = '2.42',
+         uselib_store = 'GLIB', mandatory = True, args = args)
+     ctx.check_cfg(package = 'gtk+-3.0', atleast_version = '3.22',
+
+From aa9c974d82df99ede2c6eabf4d7b1663bfd69f42 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sat, 18 Jul 2020 14:08:20 +0800
+Subject: [PATCH 2/2] fixed Gtk3 & xfce4-panel 4.14 compatibility
+
+---
+ src/dockbarx.vala          |  3 ---
+ src/preferences.vala       | 28 +++++++++-------------------
+ src/xfce4-dockbarx-plug.py | 37 ++++++++++++++++++++-----------------
+ 3 files changed, 29 insertions(+), 39 deletions(-)
+
+diff --git a/src/dockbarx.vala b/src/dockbarx.vala
+index 56006c1..a0cc65e 100644
+--- a/src/dockbarx.vala
++++ b/src/dockbarx.vala
+@@ -35,7 +35,6 @@ public class DockbarXPlugin : PanelPlugin {
+     private bool         starting_dbx = false;
+     public  int          bgmode      { get; set; }
+     public  string       color       { get; set; }
+-    public  int          alpha       { get; set; }
+     public  string       image       { get; set; }
+     public  int          offset      { get; set; }
+     public  int          max_size    { get; set; }
+@@ -64,7 +63,6 @@ public class DockbarXPlugin : PanelPlugin {
+         
+         bgmode = xfc.get_int("/bgmode", 2);
+         color = xfc.get_string("/color", "#000");
+-        alpha = xfc.get_int("/alpha", 100);
+         image = xfc.get_string("/image", "");
+         offset = xfc.get_int("/offset", 0);
+         max_size = xfc.get_int("/max-size", 0);
+@@ -74,7 +72,6 @@ public class DockbarXPlugin : PanelPlugin {
+         
+         Xfconf.property_bind(xfc, "/mode", typeof(int), this, "bgmode");
+         Xfconf.property_bind(xfc, "/color", typeof(string), this, "color");
+-        Xfconf.property_bind(xfc, "/alpha", typeof(int), this, "alpha");
+         Xfconf.property_bind(xfc, "/image", typeof(string), this, "image");
+         Xfconf.property_bind(xfc, "/offset", typeof(int), this, "offset");
+         Xfconf.property_bind(xfc, "/max-size", typeof(int), this, "max-size");
+diff --git a/src/preferences.vala b/src/preferences.vala
+index f380d66..f552585 100755
+--- a/src/preferences.vala
++++ b/src/preferences.vala
+@@ -29,7 +29,6 @@ class PrefDialog : Dialog {
+     private RadioButton       image_radio;
+     private RadioButton       blend_radio;
+     private ColorButton       color_button;
+-    private Scale            alpha_scale;
+     private FileChooserButton image_button;
+     private SpinButton        offset_spin;
+     private SpinButton        max_size_spin;
+@@ -40,7 +39,7 @@ class PrefDialog : Dialog {
+         title = "DockbarX Preferences";
+         response.connect((i) => { destroy(); });
+         unowned Box content = get_content_area() as Box;
+-        content.spacing	 = 12;
++        content.spacing = 12;
+         content.orientation = Orientation.VERTICAL;
+ 
+         color_radio = new RadioButton.with_label(null, "Solid color");
+@@ -49,8 +48,6 @@ class PrefDialog : Dialog {
+         blend_radio = new RadioButton.with_label_from_widget(
+          image_radio, "Blend with panel");
+         color_button = new ColorButton();
+-        alpha_scale = new Scale.with_range(Orientation.HORIZONTAL, 0, 100, 1);
+-        alpha_scale.value_pos = PositionType.RIGHT;
+         image_button = new FileChooserButton("Select background image",
+          FileChooserAction.OPEN);
+         offset_spin = new SpinButton.with_range(-32767, 32767, 1);
+@@ -81,25 +78,22 @@ class PrefDialog : Dialog {
+         var color_table = new Grid();
+         color_table.set_column_spacing( 8 );
+         var color_label = new Label("Color:");
+-        var alpha_label = new Label("Alpha:");
+         color_table.attach(color_label, 0, 0, 1, 1);
+-        color_table.attach(alpha_label, 0, 1, 1, 1);
+-        color_button.set_hexpand(false);
++        color_button.set_hexpand(true);
++        ((Gtk.ColorChooser) color_button).set_use_alpha(true);
+         color_table.attach(color_button, 1, 0, 1, 1);
+-        alpha_scale.set_hexpand(true);
+-        color_table.attach(alpha_scale, 1, 1, 5, 1);
+         color_frame.add(color_table);
+ 
+         var image_table = new Grid();
+         image_table.set_column_spacing( 8 );
+         var image_label = new Label("Image:");
+         var offset_label = new Label("Offset:");
+-        image_table.attach(image_label, 0, 0, 1, 1); //, 0, 0, 0, 0);
+-        image_table.attach(offset_label, 0, 1, 1, 1); //, 0, 0, 0, 0);
+-        image_table.attach(image_button, 1, 0, 3, 1); //, AttachOptions.EXPAND |
+-        //AttachOptions.FILL, 0, 0, 0);
+-        image_table.attach(offset_spin, 1, 1, 1, 1); //, AttachOptions.EXPAND |
+-        //AttachOptions.FILL, 0, 0, 0);
++        image_table.attach(image_label, 0, 0, 1, 1);
++        image_table.attach(offset_label, 0, 1, 1, 1);
++        image_button.set_hexpand(true);
++        image_table.attach(image_button, 1, 0, 1, 1);
++        offset_spin.set_hexpand(true);
++        image_table.attach(offset_spin, 1, 1, 1, 1);
+         image_frame.add(image_table);
+         
+         var size_box = new Box(Orientation.HORIZONTAL, 2);
+@@ -123,7 +117,6 @@ class PrefDialog : Dialog {
+         var color = Gdk.RGBA();
+         color.parse(plugin.color);
+         color_button.rgba = color;
+-        alpha_scale.set_value(plugin.alpha);
+         image_button.set_filename(plugin.image);
+         offset_spin.value = plugin.offset;
+         max_size_spin.value = plugin.max_size;
+@@ -155,9 +148,6 @@ class PrefDialog : Dialog {
+         color_button.color_set.connect(() => {
+             plugin.color = color_button.rgba.to_string();
+         });
+-        alpha_scale.value_changed.connect(() => {
+-            plugin.alpha = (int)alpha_scale.get_value();
+-        });
+         image_button.file_set.connect(() => {
+             plugin.image = image_button.get_filename();
+         });
+diff --git a/src/xfce4-dockbarx-plug.py b/src/xfce4-dockbarx-plug.py
+index a3898b1..88fedae 100755
+--- a/src/xfce4-dockbarx-plug.py
++++ b/src/xfce4-dockbarx-plug.py
+@@ -29,6 +29,7 @@
+ gi.require_version("Gtk", "3.0")
+ from gi.repository import Gtk
+ from gi.repository import Gdk
++from gi.repository import GdkPixbuf
+ from gi.repository import GObject
+ import cairo
+ import dbus
+@@ -123,8 +124,9 @@ def xfconf_changed (self, channel, prop, val):
+             elif "block-autohide" in prop:
+                 pass  # This is one way comm from the plug to the socket.
+             elif self.mode == 0 and ("color" in prop or "alpha" in prop):
+-                self.color_pattern(Gdk.color_parse(self.xfconf_get_dbx(
+-                 "color", "#000")), self.xfconf_get_dbx("alpha", 100))
++                color = Gdk.RGBA()
++                color.parse(self.xfconf_get_dbx("color", "#000"))
++                self.color_pattern(color)
+             elif self.mode == 1 and ("image" in prop or "offset" in prop):
+                 self.image_pattern(self.xfconf_get_dbx("image", ""))
+             else:
+@@ -157,25 +159,22 @@ def config_bg (self):
+         if self.mode == 1:
+             self.image_pattern(self.xfconf_get_dbx("image", ""))
+         elif self.mode == 0:
+-            self.color_pattern(Gdk.color_parse(self.xfconf_get_dbx(
+-             "color", "#000")), self.xfconf_get_dbx("alpha", 100))
++            color = Gdk.RGBA()
++            color.parse(self.xfconf_get_dbx("color", "#000"))
++            self.color_pattern(color)
+         else:
+             self.pattern_from_dbus()
+ 
+-    def color_pattern (self, color, alpha):
+-        if Gdk.Screen.get_default().get_rgba_visual() is None: alpha = 100
+-        self.pattern = cairo.SolidPattern(color.red_float, color.green_float,
+-         color.blue_float, alpha / 100.0)
++    def color_pattern (self, color):
++        if Gdk.Screen.get_default().get_rgba_visual() is None:
++            color.alpha = 1
++        self.pattern = cairo.SolidPattern(color.red, color.green, color.blue, color.alpha)
+ 
+     def image_pattern (self, image, from_dbus=False):
+         self.offset = self.xfconf_get_dbx("offset", 0)
+         try:
+-            if str(image).endswith("svg"):
+-                # Todo: Get a better height and width. How does xfcepanel handle it?
+-                surface = Cairo.SVGSurface(image, self.get_allocation_height(), self.get_allocation_width())
+-            else:
+-                surface = cairo.ImageSurface.create_from_png(image)
+-
++            pixbuf = GdkPixbuf.Pixbuf.new_from_file(image)
++            surface = Gdk.cairo_surface_create_from_pixbuf(pixbuf, 0)
+             self.pattern = cairo.SurfacePattern(surface)
+             self.pattern.set_extend(cairo.EXTEND_REPEAT)
+             tx = self.offset if self.orient in ("up", "down") else 0
+@@ -194,12 +193,16 @@ def image_pattern (self, image, from_dbus=False):
+     def pattern_from_dbus (self):
+         bgstyle = self.xfconf_get_panel("background-style", 0)
+         image = self.xfconf_get_panel("background-image", "")
+-        alpha = self.xfconf_get_panel("background-alpha", 100)
+         if bgstyle == 2 and os.path.isfile(image):
+             self.image_pattern(image, from_dbus=True)
+         elif bgstyle == 1:
+-            col = self.xfconf_get_panel("background-color", [0, 0, 0, 0])
+-            self.color_pattern(Gdk.Color(col[0], col[1], col[2]), alpha)
++            col = self.xfconf_get_panel("background-rgba", None)
++            if col is None:
++                # xfce4-panel < 4.14
++                col = self.xfconf_get_panel("background-color", [0, 0, 0, 0])
++                col = [v / 65535.0 for v in col]
++                col[3] = self.xfconf_get_panel("background-alpha", 100) / 100.0
++            self.color_pattern(Gdk.RGBA(col[0], col[1], col[2], col[3]))
+         else:
+             self.pattern = None
+ 

@@ -1,26 +1,21 @@
 pkgbase = xfce4-dockbarx-plugin
 	pkgdesc = Embed DockbarX in the xfce4-panel
-	pkgver = 0.5
-	pkgrel = 4
-	url = https://github.com/TiZ-EX1/xfce4-dockbarx-plugin
+	pkgver = 0.6+r62+f7585b5
+	pkgrel = 1
+	url = https://github.com/m7s/xfce4-dockbarx-plugin
 	arch = i686
 	arch = x86_64
-	arch = aarch64
 	arch = armv7h
+	arch = aarch64
 	license = X11
-	makedepends = python2
 	makedepends = git
 	makedepends = vala
-	depends = dockbarx>=0.91
-	depends = xfce4-panel<4.15.0
-	conflicts = xfce4-dockbarx-plugin-git
-	conflicts = dockbarx-gtk3-git
-	source = xfce4-dockbarx-plugin::git+https://github.com/TiZ-EX1/xfce4-dockbarx-plugin#commit=cf16d6f415d03828e7a702550a0552ed5ea7ce0c
-	source = pref_dialog_fix.patch::https://github.com/TiZ-EX1/xfce4-dockbarx-plugin/commit/960ed3806d00b33b6a254fb583b366177ba56b77.patch
-	source = vala0.48fix.patch
+	depends = dockbarx>=1.0beta
+	depends = xfce4-panel>=4.12
+	source = xfce4-dockbarx-plugin::git+https://github.com/M7S/xfce4-dockbarx-plugin#commit=f7585b53792fc9945be6a8f95a08aed8663b1b04
+	source = fixes.patch
 	sha256sums = SKIP
-	sha256sums = 04892f2eb8413a79288b234ed61af588a66f70553a9db9272d8f1d7904ad1dfa
-	sha256sums = 4b6c29fe052d6e890fbb67c5622728569a630bb6128c5b033039c5d00b22994d
+	sha256sums = 8f529817c1de28dc4ef2047254863d446f6c83a0120f90af9eac3f1524179f31
 
 pkgname = xfce4-dockbarx-plugin
 
