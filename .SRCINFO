@@ -1,7 +1,7 @@
 pkgbase = qtfm
 	pkgdesc = A lightweight file manager
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rodlie/qtfm/releases
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = qtfm
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	source = qtfm-6.2.0.tar.gz::https://github.com/rodlie/qtfm/archive/6.2.0.tar.gz
+	source = qt-5.15+gentoo.patch
 	sha256sums = 58c6af502b606e63f96e8aec96b65ca9125be18ecdd5e4680ccaf50e9c40b064
+	sha256sums = 143a664ccd9b677924f6168d7d358201b8693a03f3a0c76efe348f7b39489b99
 
 pkgname = qtfm
 
