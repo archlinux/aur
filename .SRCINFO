@@ -1,6 +1,6 @@
 pkgbase = engauge-git
 	pkgver = 12.2.1.r14.g64fa52aa
-	pkgrel = 1
+	pkgrel = 2
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
 	arch = i686
