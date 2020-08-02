@@ -2,24 +2,23 @@
 
 _pkgname=xfwm4
 pkgname=${_pkgname}-devel
-pkgver=4.13.4
+pkgver=4.15.0
 pkgrel=1
-pkgdesc="Xfce window manager"
-arch=('i686' 'x86_64')
+pkgdesc="Xfce window manager (development snapshot)"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('libxfce4ui>=4.12.0' 'libwnck3' 'xfconf' 'hicolor-icon-theme' 'libxpresent')
-makedepends=('intltool' 'exo')
+depends=('libxfce4ui' 'xfconf' 'libwnck3' 'libepoxy' 'libxpresent' 'hicolor-icon-theme')
+makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!libtool')
-source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('31940e0e1d821d839b9ef1462bb1ca36e7935cd7589e4418993e3901ca6c0ec5')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('b674cc8e772597669ca33eb3d13575ec967d0059f57c816ba9fbae59ef7d0804')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
+  cd "${_pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -31,12 +30,11 @@ build() {
     --enable-compositor \
     --enable-xsync \
     --enable-xpresent \
-    --disable-debug \
-    --enable-maintainer-mode
+    --disable-debug
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 }
