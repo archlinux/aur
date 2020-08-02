@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
-pkgver=0.9.57.r2.b29b16d
+pkgver=0.9.58.r6.65fbbb2
 pkgrel=1
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
@@ -22,13 +22,19 @@ pkgver() {
 	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+
+	# Adjust target.path
+	sed -i 's|opt/$${TARGET}|usr|g' Gammy.pro
+
+	# Fix build
+	sed -i '/#include <vector>/a #include <stdint.h>' src/utils.h
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	qmake Gammy.pro
-
-	# Don't install binary in /opt/
-	sed -i 's|opt/gammy/|usr/|g' Makefile
-
 	make
 }
 
