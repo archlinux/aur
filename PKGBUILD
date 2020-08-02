@@ -1,8 +1,9 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
+
 pkgname=zecwallet-lite
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="A z-Addr first lightwallet for Zcash."
+pkgdesc="Z-Addr first, Sapling compatible lightwallet client for Zcash"
 arch=('any')
 url="https://github.com/adityapk00/zecwallet-lite"
 license=('MIT')
@@ -25,7 +26,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  #yarn build --linux
   yarn package-linux
 }
 
