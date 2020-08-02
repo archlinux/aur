@@ -4,9 +4,9 @@
 pkgname=vdr-vnsiserver
 pkgver=1.8.0.r0.g49003f0
 _gitver=49003f036609ee2a0b8d819979c063d8f8d348c8
-_vdrapi=2.4.1
+_vdrapi=2.4.3
 epoch=2
-pkgrel=2
+pkgrel=3
 url="https://github.com/FernetMenta/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
