@@ -1,6 +1,6 @@
 pkgbase = bludigon
 	pkgver = 0.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jumper149/bludigon
 	arch = x86_64
 	license = custom:BSD3
@@ -15,7 +15,7 @@ pkgbase = bludigon
 	depends = haskell-x11
 	depends = libx11
 	depends = libxrandr
-	source = git+https://github.com/jumper149/bludigon.git
+	source = https://github.com/jumper149/bludigon/archive/d315d4193bfedbb0f7b1d9ab06c6010e71bee2cc
 	source = compile-dynamically.patch
 	source = Setup.hs
 	sha256sums = SKIP

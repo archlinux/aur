@@ -2,7 +2,8 @@
 
 pkgname=bludigon
 pkgver=0.1.0.0
-pkgrel=1
+_gitcommit=d315d4193bfedbb0f7b1d9ab06c6010e71bee2cc
+pkgrel=2
 pkgdesc=""
 url="https://github.com/jumper149/bludigon"
 license=('custom:BSD3')
@@ -21,7 +22,7 @@ depends=(
   'libxrandr'
 )
 source=(
-  "git+https://github.com/jumper149/${pkgname}.git"
+  "https://github.com/jumper149/${pkgname}/archive/${_gitcommit}"
   "compile-dynamically.patch"
   "Setup.hs"
 )
@@ -32,14 +33,14 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname}-${_gitcommit}"
 
   patch -p1 -i "${srcdir}/compile-dynamically.patch"
   cp "${srcdir}/Setup.hs" "./"
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}-${_gitcommit}"
 
   runhaskell Setup configure -O \
     --disable-library-vanilla \
@@ -62,19 +63,19 @@ build() {
 }
 
 check() {
-  cd ${pkgname}
+  cd "${pkgname}-${_gitcommit}"
 
   runhaskell Setup test
 }
 
 package() {
-    cd "${pkgname}"
+  cd "${pkgname}-${_gitcommit}"
 
-    install -D -m744 register.sh "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
-    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
-    runhaskell Setup copy --destdir="${pkgdir}"
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+  install -D -m744 register.sh "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+  install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+  runhaskell Setup copy --destdir="${pkgdir}"
+  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
