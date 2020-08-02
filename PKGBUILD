@@ -8,7 +8,7 @@ arch=('any')
 url=https://github.com/plotly/dash-daq
 license=('MIT')
 depends=(python python-dash python-dash-table python-future yarn python-yaml)
-makedepends=(python-setuptools python-dash-table)
+makedepends=(python-setuptools python-dash-table yarn python-brotli)
 source=(https://github.com/plotly/dash-daq/archive/v${pkgver}.tar.gz)
 sha256sums=('a3c37622843bbd2919565ff6ad08c132fa9155b31f8efce2d627ffa619715d21')
 
