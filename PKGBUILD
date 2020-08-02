@@ -1,33 +1,21 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
-pkgname=lwjgl
-pkgver=3.0.0
-pkgrel=1
-pkgdesc='Lightweight Java Game Library - for use in game projects in Java.'
-arch=(any)
-url='https://lwjgl.org/'
-license=('BSD')
-changelog=ChangeLog
-options=(!strip)
-source=("$pkgname-$pkgver.zip::https://github.com/LWJGL/lwjgl3/releases/download/$pkgver/$pkgname.zip")
-md5sums=('1c3148216400988d731b3987993a0a43')
-sha1sums=('1f309cbd7a687a0e41636b167a41101b4f48854c')
-
+# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
+pkgname="lwjgl"
+pkgver="3.2.3"
+pkgrel="1"
+arch=("any")
+pkgdesc="Java library that enables access to OpenGL, OpenAL, Vulkan, and more."
+url="https://github.com/LWJGL/lwjgl3#readme"
+source=("https://github.com/LWJGL/lwjgl3/releases/download/$pkgver/$pkgname-$pkgver.zip")
+md5sums=("41becadd1b9208785646e04186397e8c")
+options=("!strip")
+license=("BSD")
+depends=("java-environment")
 package() {
-  _sharedir="$pkgdir/usr/share"
-  # Install licenses
-  install -d "$_sharedir/licenses/$pkgname/3rdparty"
-  install -m644 -t "$_sharedir/licenses/$pkgname/3rdparty" doc/3rdparty/*
-  install -m644 -t "$_sharedir/licenses/$pkgname" LICENSE
-  rm -rf LICENSE doc/3rdparty
-  # Install docs
-  install -d "$_sharedir/doc/$pkgname"
-  install -m644 -t "$_sharedir/doc/$pkgname" doc/*
-  # Install library files
-  install -d "$_sharedir/$pkgname/jar"
-  install -m644 -t "$_sharedir/$pkgname/jar" jar/*
-  install -d "$_sharedir/$pkgname/native"
-  install -m644 -t "$_sharedir/$pkgname/native" native/*
-  install -m644 -t "$_sharedir/$pkgname" build.txt src.zip
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cp LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+	mkdir "$pkgdir/usr/share/$pkgname"
+	cp -R * "$pkgdir/usr/share/$pkgname"
+	rm -f "$pkgdir/usr/share/$pkgname/$pkgname-$pkgver.zip"
+	unset pkgnamedir
 }
-
-# vim:set ts=2 sw=2 et:
