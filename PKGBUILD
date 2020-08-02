@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=4.0.b1.g0373528
+pkgver=4.0.b1.r911.g0373528
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -19,8 +19,8 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 #	git describe --long --tags --match "[0-9]*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 #	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-	printf "%s.g%s" "$(grep -oP "(?<=version=').*(?=')" setup.py)" \
-		"$(git rev-parse --short HEAD)"
+	printf "%s.r%s.g%s" "$(grep -oP "(?<=version=').*(?=')" setup.py)" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
