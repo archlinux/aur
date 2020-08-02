@@ -1,0 +1,33 @@
+From 40c1d958d97f0ecbfd3120d5121b78569c2b11bd Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Sun, 2 Aug 2020 15:31:53 +0200
+Subject: [PATCH] Fix build against cuda<=11
+
+---
+ src/CMakeLists.txt | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 85510ae57..6f903fd8c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -730,9 +730,13 @@ if(ALICEVISION_HAVE_CUDA)
+ 
+   set(CUDA_NVCC_FLAGS_DEBUG   "${CUDA_NVCC_FLAGS_DEBUG};-G;-g")
+   # set(CUDA_NVCC_FLAGS_RELEASE "${CUDA_NVCC_FLAGS_RELEASE};-O3")
+-  if(NOT CUDA_VERSION_MAJOR LESS 9)
+-    set(ALICEVISION_CUDA_CC_LIST_BASIC 30 35 50 52 60 61 62)
+-  elseif(CUDA_VERSION_MAJOR GREATER 7)
++  if(CUDA_VERSION_MAJOR GREATER_EQUAL 11)
++    set(ALICEVISION_CUDA_CC_LIST_BASIC 50 52 60 61 62 70 72 75 80)
++  elseif(CUDA_VERSION_MAJOR GREATER_EQUAL 10)
++    set(ALICEVISION_CUDA_CC_LIST_BASIC 30 35 50 52 60 61 62 70 72 75)
++  elseif(CUDA_VERSION_MAJOR GREATER_EQUAL 9)
++    set(ALICEVISION_CUDA_CC_LIST_BASIC 30 35 50 52 60 61 62 70 72)
++  elseif(CUDA_VERSION_MAJOR GREATER_EQUAL 8)
+     set(ALICEVISION_CUDA_CC_LIST_BASIC 20 30 35 50 52 60 61 62)
+   else()
+     set(ALICEVISION_CUDA_CC_LIST_BASIC 20 30 35 50 52 )
+-- 
+2.28.0
+
