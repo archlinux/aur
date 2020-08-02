@@ -1,34 +1,43 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 _pkgname=xfce4-dockbarx-plugin
-pkgname=$_pkgname-git
-pkgver=49.a2dcb66
-pkgrel=3
+pkgname=${_pkgname}-git
+_pkgver=0.6
+pkgver=0.6+r62+f7585b5
+pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
-arch=('i686' 'x86_64')
-url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/m7s/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx>=0.91' 'xfce4-panel<4.15.0')
-makedepends=('python2' 'git' 'vala')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=( ${_pkgname}::git+https://github.com/TiZ-EX1/${_pkgname}.git )
-sha256sums=('SKIP')
+depends=('dockbarx>=1.0beta' 'xfce4-panel>=4.12')
+makedepends=('git' 'vala')
+provides=("${_pkgname}=${pkgver}")
+_branch='pygi-python3'
+source=("${_pkgname}::git+https://github.com/M7S/${_pkgname}#branch=${_branch}"
+        'fixes.patch')
+sha256sums=('SKIP'
+            '8f529817c1de28dc4ef2047254863d446f6c83a0120f90af9eac3f1524179f31')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git rev-list --count master).$(git rev-parse --short master)"
+  printf "%s+r%s+%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  # Apply xuzhen's fixes for background color while waiting on pull request to be accepted
+  patch -Np1 -r- -i ../fixes.patch
+
+  PREFIX=/usr python ./waf configure
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  sed -i 's:env python$:&2:' waf wscript
-  PREFIX=/usr ./waf configure
-  ./waf build
+  python ./waf build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  DESTDIR="${pkgdir}" ./waf install
+  DESTDIR="${pkgdir}" python ./waf install
 }
 
