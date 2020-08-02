@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=reggae
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='Build system in D, Python, Ruby, Javascript or Lua'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('ninja' 'dmd' 'dub')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atilaneves/reggae/archive/v${pkgver}.tar.gz")
-sha256sums=('001847383ac27997830efaf61d388d8fe6d211a5e86d9e71a4284005c22518e7')
+sha256sums=('79cd77ff681ad97120b0be771a6cd1b84bb28e95cdda2131e06441516af6e919')
 
 build() {
   cd "${pkgname}-${pkgver}"
