@@ -1,6 +1,6 @@
 pkgbase = bombsquad
 	pkgdesc = An explosive arcade-style party game
-	pkgver = 1.5.13
+	pkgver = 1.5.23
 	pkgrel = 1
 	url = http://www.froemling.net/apps/bombsquad
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = bombsquad
 	depends = sdl2
 	depends = libvorbis
 	depends = libogg
-	source = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_1.5.13.tar.gz
+	depends = python37
+	source = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_1.5.23.tar.gz
 	source = bombsquad.sh
 	source = bombsquad.desktop
-	sha256sums = 62bf7f01b5133c9a8524598b4a680790f71d910f8959182d4a68db55bd462d24
+	sha256sums = 5c691cc81321731e01e7c4944a3a0353b8b83229a6b407de489820dcf8622e74
 	sha256sums = 850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515
 	sha256sums = 900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c
 
