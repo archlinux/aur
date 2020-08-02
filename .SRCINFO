@@ -1,6 +1,6 @@
 pkgbase = chowtapemodel.lv2-git
 	pkgdesc = Physical modelling signal processing for analog tape recording.
-	pkgver = r101.822fa51
+	pkgver = r102.a598bae
 	pkgrel = 1
 	url = https://github.com/jatinchowdhury18/AnalogTapeModel
 	arch = x86_64

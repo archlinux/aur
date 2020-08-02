@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=chowtapemodel.lv2-git
 pkgdesc="Physical modelling signal processing for analog tape recording."
-pkgver=r101.822fa51
+pkgver=r102.a598bae
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -35,6 +35,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
   git submodule update --init
+  rm -rf Juce/VST2_SDK
 }
 
 build() {
