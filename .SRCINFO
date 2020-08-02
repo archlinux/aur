@@ -1,6 +1,6 @@
 pkgbase = wasm-bindgen-bin
 	pkgdesc = Interoperating JS and Rust code (binary builds)
-	pkgver = 0.2.63
+	pkgver = 0.2.67
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-bindgen
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wasm-bindgen-bin
 	provides = wasm-bindgen
 	conflicts = wasm-bindgen
 	conflicts = wasm-bindgen-git
-	source = https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.63/wasm-bindgen-0.2.63-x86_64-unknown-linux-musl.tar.gz
+	source = https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.67/wasm-bindgen-0.2.67-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = SKIP
 
 pkgname = wasm-bindgen-bin
