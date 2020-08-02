@@ -16,7 +16,7 @@ prepare() {
 	# This is not needed and takes space.
 	rm install.sh uninstall.sh
 	# Normally, install.sh would handle the creation of the .desktop file, but that
-	# would install to a home dir rather than to root. Lines 20-22 will do.
+	# would install to a home dir rather than to root. The following 3 lines will do.
 	cp lib/desktop.template processing.desktop
 	sed -ie "s,<BINARY_LOCATION>,/opt/processing/processing," "$srcdir/processing-$pkgver/processing.desktop"
 	sed -ie "s,<ICON_NAME>,processing," "$srcdir/processing-$pkgver/processing.desktop"
