@@ -11,7 +11,7 @@ _pkgbase=xorg-server
 pkgname=('xorg-server-noudev' 'xorg-server-xephyr-noudev' 'xorg-server-xvfb-noudev' 'xorg-server-xnest-noudev'
          'xorg-server-xwayland-noudev' 'xorg-server-common-noudev' 'xorg-server-devel-noudev')
 pkgver=1.20.8
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 license=('custom')
 groups=('xorg-noudev')
@@ -26,6 +26,7 @@ source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${p
         xserver-autobind-hotplug.patch
         0001-v2-FS-58644.patch
         0002-fix-libshadow-2.patch
+        0001-fix-for-ZDI-11426.patch
         xvfb-run # with updates from FC master
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -38,6 +39,7 @@ sha512sums=('ab0ec0fcbf490c61558b9297f61b58fd2dedb676c78bef6431dc9166054743b43a0
             'd84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22'
             '74e1aa0c101e42f0f25349d305641873b3a79ab3b9bb2d4ed68ba8e392b4db2701fcbc35826531ee2667d3ee55673e4b4fecc2a9f088141af29ceb400f72f363'
             '3d3be34ad9fa976daec53573d3a30a9f1953341ba5ee27099af0141f0ef7994fa5cf84dc08aae848380e6abfc10879f9a67f07601c7a437abf8aef13a3ec9fe1'
+            '153ff7eed7fda7c6e28f28e514180fb0397ee984e709af95b8a9dcf6b2862191627cf725aae33d4b03f4aab2a988c2d4fa2e77e5c6a874b656c962b27cb5240b'
             '73c8ead9fba6815dabfec0a55b3a53f01169f6f2d14ac4a431e53b2d96028672dbd6b50a3314568847b37b1e54ea4fc02bdf677feabb3b2697af55e2e5331810'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
@@ -53,6 +55,9 @@ prepare() {
 
   # Fix libshadow.so: libfb.so => not found - merge in master
   patch -Np1 -i ../0002-fix-libshadow-2.patch
+
+  # fix CVE-2020-14347
+  patch -Np1 -i ../0001-fix-for-ZDI-11426.patch
 }
 
 build() {
