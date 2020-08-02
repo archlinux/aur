@@ -1,4 +1,5 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero at gmail.com>
+# Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: TDY <tdy@gmx.com>
 
