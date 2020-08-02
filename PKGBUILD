@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=flexc++
-pkgver=2.07.06
+pkgver=2.07.09
 pkgrel=1
 pkgdesc="C++ scanner generator"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ depends=('libbobcat>=4.01.00')
 makedepends=('icmake>=8.00.04' 'yodl>=3.06.00')
 optdepends=()
 source=("https://gitlab.com/fbb-git/flexcpp/-/archive/${pkgver}/flexcpp-${pkgver}.tar.gz")
-md5sums=('68f0185f236b8d905568822c38e6b448')
+md5sums=('dd7b86931fc8bbe2873fb0b71fe3c903')
 
 build() {
   cd "$srcdir/flexcpp-${pkgver}/flexc++"
 
-  CXXFLAGS="$CXXFLAGS --std=c++2a"
+  CXXFLAGS="$CXXFLAGS --std=c++20"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
   # ./build -P program
