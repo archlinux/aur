@@ -1,17 +1,17 @@
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=python-params-flow
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A TensorFlow Keras coding style for reducing boilerplate code in custom layers and models."
 url="https://github.com/kpe/params-flow"
 arch=(x86_64)
 makedepends=(git python 'python-setuptools')
-_pkgver="0.8.1"
+_pkgver="0.8.2"
 source=(
   "https://github.com/kpe/params-flow/archive/v$_pkgver.tar.gz"
 )
 sha256sums=(
-  "41b95d63bc549482bd0df3cf7d66047e7380c1483e6084e5d37996eb8b0f9570"
+  "7ae336a0112151dcf844e6e6d4d778bccce55175f32f5a5e8eb8825f244038c4"
 )
 
 
