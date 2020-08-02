@@ -13,7 +13,7 @@ makedepends=('git' 'python-distutils-extra')
 license=('GPL2')
 backup=("etc/oblogout.conf")
 provides=('oblogout')
-conflicts=('openboxlogout-gnome' 'oblogout' 'oblogout-fork')
+conflicts=('oblogout' 'oblogout-fork-git')
 install="oblogout.install"
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
