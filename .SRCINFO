@@ -1,6 +1,6 @@
 pkgbase = guiscrcpy-git
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 3.9.2.r6.g378f2c1
+	pkgver = 3.9.2.r77.g0373528
 	pkgrel = 1
 	url = https://guiscrcpy.github.io
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = guiscrcpy-git
 	depends = scrcpy
 	depends = python-pyqt5
 	depends = python-pynput
-	depends = python-fonttools
+	depends = python-qtpy
 	depends = python-psutil
 	depends = python-cairosvg
 	optdepends = usbaudio: AOA audio, deprecated since Android 8.0
