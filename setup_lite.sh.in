@@ -66,6 +66,9 @@ bootstrap_remove() {
 }
 
 check_req() {
+    if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
+	req="${req}libxcb-xinerama\n"
+    fi
     if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
 	req="${req}7z\n"
     fi
@@ -112,7 +115,7 @@ else
     printf "\n"
     read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
     if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
-	printf "\nInstalling...\n\n"
+	printf "\nInstalling...\n"
 	check_req
 	printf "\n"
 	bootstrap_install

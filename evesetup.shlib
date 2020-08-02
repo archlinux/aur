@@ -83,7 +83,7 @@ check_wine() {
     WINEDATE=$(getdate $WINECONF)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Prepare wine environment for EVE"
-	for DXVKFILE in "d3d10_1 d3d10core d3d10 d3d11 d3d9 dxgi" ;do
+	for DXVKFILE in d3d10_1 d3d10core d3d10 d3d11 d3d9 dxgi ;do
 	    rm $WINSYSDIR/$DXVKFILE.dll* || true
 	    rm $W32SYSDIR/$DXVKFILE.dll* || true
 	    sed -i /\"$DXVKFILE\"=\"/d $WINEPREFIX/user.reg || true

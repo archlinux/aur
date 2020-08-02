@@ -134,23 +134,22 @@ get_dxvk() {
 }
 
 check_req() {
-    if [ -x "$(which 7z 2>/dev/null)" ] ;then
-	printf "\n$(7z | head -n2 | cut -d: -f1 | tr -d [:cntrl:])found."
-    else
-	printf "\nError: 7z not found. 7z are needed by evebackup."
+    if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
+	printf "\nWarning: libxcb-xinerama needed by evelauncher not found."
+	printf "\n\tPlease install libxcb-xinerama with your Package Manager.\n"
+	key="nf"
+    fi
+    if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
+	printf "\nError: 7z needed by evebackup not found."
 	printf "\n\tPlease install p7zip or p7zip-full with your Package Manager.\n"
 	key="nf"
     fi
-    if [ -x "$(which curl 2>/dev/null)" ] ;then
-	printf "\nCurl version $(curl -V | head -n1 | cut -d' ' -f2) found."
-    else
-	printf "\n\nError: Curl not found. Curl are needed for downloading evelauncher binaries."
+    if [ ! -x "$(which curl 2>/dev/null)" ] ;then
+	printf "\n\nError: Curl needed for downloading evelauncher binaries not found."
 	printf "\n\tPlease install curl with your Package Manager.\n"
 	key="nf"
     fi
-    if [ -x "$(which wine 2>/dev/null)" ] ;then
-	printf "\nWine version $(wine --version) found."
-    else
+    if [ ! -x "$(which wine 2>/dev/null)" ] ;then
 	printf "\n\nError: Wine not found."
 	printf "\n\tPlease install wine with your Package Manager."
 	printf "\n\tWineHQ or Developer Version are recommended.\n"
@@ -189,7 +188,7 @@ else
     printf "\n"
     read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
     if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
-	printf "\nInstalling...\n\n"
+	printf "\nInstalling...\n"
 	check_req
 	build_lib
 	get_dxvk
