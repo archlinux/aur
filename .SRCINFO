@@ -1,6 +1,6 @@
 pkgbase = wlr-sunclock-git
 	pkgdesc = Displays a sunclock desktop widget using the layer shell protocol
-	pkgver = r14.62fb220
+	pkgver = r11.ebc3a06
 	pkgrel = 1
 	url = https://github.com/sentriz/wlr-sunclock
 	arch = x86_64
