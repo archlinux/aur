@@ -13,6 +13,6 @@ source=("https://github.com/nikitabobko/${pkgname}/releases/download/v${pkgver//
 sha256sums=("905cafabd03a1f1b07e85e13d8fc56c77ac8f9d25ce2fc02b71eedcc1f220ac9")
 
 package() {
-    cd ${srcdir}/${pkgname}-v${pkgver}-${pkgrel}
+    cd ${srcdir}/${pkgname}-v${pkgver}-3
     cp -r --no-dereference * ${pkgdir}
 }
