@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver='1.5.11'
+pkgver='1.6.0'
 pkgrel=1
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)"
 arch=('any')
@@ -13,9 +13,10 @@ optdepends=('python-pystray: systray support'
 	'python-jinja: display mirroring support'
 	'python-pywebview>=3.3.1: desktop client and display mirroring support'
 	'python-werkzeug: desktop client support'
-	'python-flask: desktop client support')
+	'python-flask: desktop client support'
+	'svp: SmoothVideo Project server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/jellyfin-mpv-shim/archive/v$pkgver.tar.gz")
-sha256sums=('b7b98af801b89a130c8b3564eb87158e48e01240b6382a559798aa63e3d9f056')
+sha256sums=('5adf171ee7f5e76a84ab65243e0043a9d3cbb37baf0964be58af94f534bc62a7')
 
 build() {
 	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
