@@ -8,7 +8,7 @@
 # Maintainer: liupold <rohhnch@protonmail.ch>
 
 pkgname=pidswallow-dev-git
-pkgrel=4
+pkgrel=5
 pkgver=2.0.d # dev
 pkgdesc="A script to swallow your terminal automatically"
 arch=(x86_64)
@@ -25,7 +25,12 @@ sha256sums=("SKIP")
 
 pkgver() {
         cd "$pkgname" || return 1
-        git checkout dev > /dev/null 2>&1
+        {
+                git checkout dev
+                git stash
+                git pull
+        } >/dev/null 2>&1
+
         printf "2.0.d.r%s.%s" \
                 "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
