@@ -1,21 +1,21 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
 
 pkgname=python-bpsproxy
-_module='BPSProxy'
-pkgver=0.2.0
-pkgrel=2
+_module='bpsproxy'
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Blender Power Sequencer proxy generator tool"
 url="https://github.com/GDquest/BPSProxy"
 depends=('python' 'python-tqdm' 'ffmpeg')
 makedepends=('python-setuptools' 'pandoc')
 license=('GPL')
 arch=('any')
-source=("https://github.com/GDquest/BPSProxy/archive/${pkgver}.tar.gz")
-sha256sums=('c264b23ae19b41e19a99c0473b07dbf650a43ed5629de51c410da8d980211a55')
+source=("https://files.pythonhosted.org/packages/36/91/66a1a8918566223204bf6b6ee6b81ede36f6bde021dd61c4ef9252d502c6/bpsproxy-${pkgver}.tar.gz")
+sha256sums=('0aa366568abd4dd182d94a53af40ac3f86b358ba89547a1de9be30ec48a4cd91')
 
 build() {
   cd "${srcdir}/${_module}-${pkgver}"
-  pandoc README.md -o README.rst
+  pandoc README.rst -o README.md
   python setup.py build
 }
 

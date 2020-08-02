@@ -1,7 +1,7 @@
 pkgbase = python-bpsproxy
 	pkgdesc = Blender Power Sequencer proxy generator tool
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/GDquest/BPSProxy
 	arch = any
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = python-bpsproxy
 	depends = python
 	depends = python-tqdm
 	depends = ffmpeg
-	source = https://github.com/GDquest/BPSProxy/archive/0.2.0.tar.gz
-	sha256sums = c264b23ae19b41e19a99c0473b07dbf650a43ed5629de51c410da8d980211a55
+	source = https://files.pythonhosted.org/packages/36/91/66a1a8918566223204bf6b6ee6b81ede36f6bde021dd61c4ef9252d502c6/bpsproxy-0.2.1.tar.gz
+	sha256sums = 0aa366568abd4dd182d94a53af40ac3f86b358ba89547a1de9be30ec48a4cd91
 
 pkgname = python-bpsproxy
 	depends = python
