@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-rssreader
 pkgver=2.4.0
-_vdrapi=2.4.1
-pkgrel=2
+_vdrapi=2.4.3
+pkgrel=3
 pkgdesc="Provides a simple OSD menu based user interface for reading user-defined RSS streams"
 url="http://www.saunalahti.fi/rahrenbe/vdr/rssreader/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
