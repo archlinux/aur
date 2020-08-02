@@ -1,13 +1,13 @@
 # Maintainer: gardenapple@posteo.net
 pkgname=readability-cli
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
 arch=('any')
 url="https://www.npmjs.com/package/@gardenapple/readability-cli"
 license=('GPL3')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=()
 noextract=()
 
