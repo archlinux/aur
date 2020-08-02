@@ -1,3 +1,4 @@
+# Maintainer: Matthew Tran <0e4ef622@gmail.com>
 # Contributor: Marcel O'Neil <marcel at marceloneil dot com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
@@ -6,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.15.r0.g21a254aa9
+pkgver=4.1.0.r9.gebc7f40de
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -20,7 +21,6 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'
-  'libsecp256k1'
   'python'
   'python-dateutil'
   'python-dnspython'
@@ -39,6 +39,7 @@ depends=(
   'ttf-bitstream-vera'
 )
 optdepends=(
+  'tor: Tor support'
   'python-btchip: Ledger hardware wallet support'
   'python-hidapi: Digital Bitbox hardware wallet support'
   'python-matplotlib: plot transaction history in graphical mode'
