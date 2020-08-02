@@ -4,7 +4,7 @@
 pkgname=freebsd-manpages
 pkgver=12.0
 _bsdrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manual pages for GNU/kFreeBSD systems"
 arch=('any')
 url="http://packages.debian.org/sid/freebsd-manpages"
@@ -14,6 +14,7 @@ source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgv
 md5sums=('215d533dd5758c5e0cdfd9f3ea4c3094')
 
 prepare () {
+    echo "Unpacking files..."
     tar xf data.tar.xz 
 }
 
