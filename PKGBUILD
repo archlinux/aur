@@ -2,7 +2,7 @@
 
 pkgname=zerynth-studio
 _archivename=${pkgname%%-studio}.tar.xz
-pkgver=2.3.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A powerful IDE for embedded programming in Python that enables the IoT"
 arch=('x86_64')
@@ -38,5 +38,5 @@ package() {
 }
 
 md5sums=('cad56e5e0a1b04b1220004470c7e08b1'
-	'566bd15aa6acedd409673ab634ab1148'
-'6cc82b387ddbee922b8e246efa5a6b97')
+         '566bd15aa6acedd409673ab634ab1148'
+         '6cc82b387ddbee922b8e246efa5a6b97')

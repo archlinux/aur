@@ -1,6 +1,6 @@
 pkgbase = zerynth-studio
 	pkgdesc = A powerful IDE for embedded programming in Python that enables the IoT
-	pkgver = 2.3.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://www.zerynth.com/zerynth-studio/
 	arch = x86_64
