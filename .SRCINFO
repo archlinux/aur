@@ -1,23 +1,23 @@
 pkgbase = g4l
 	pkgdesc = Ghost 4 Linux is a hard disk and partition imaging and cloning tool.
-	pkgver = 0.56
+	pkgver = 0.57
 	pkgrel = 1
 	url = http://freecode.com/projects/g4l/
 	arch = any
 	license = GPL
 	makedepends = wget
+	depends = bzip2
 	depends = ddrescue
-	depends = partimage
 	depends = dd_rhelp
 	depends = dialog
-	depends = lzop
-	depends = gzip
-	depends = bzip2
-	depends = ncurses
 	depends = fsarchiver
-	noextract = g4l-v0.56.devel.tar.gz
-	source = http://fossies.org/linux/misc/g4l-v0.56.devel.tar.gz
-	md5sums = e2b322bbb595fd2dcfdd70662d6c5804
+	depends = gzip
+	depends = lzop
+	depends = ncurses
+	depends = partimage
+	noextract = g4l-v0.57.devel.tar.gz
+	source = http://fossies.org/linux/misc/g4l-v0.57.devel.tar.gz
+	md5sums = 9b1f7884e4c9f238f0965dcdc6d7bf6a
 
 pkgname = g4l
 

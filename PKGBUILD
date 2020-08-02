@@ -1,28 +1,28 @@
 # Maintainer: robertfoster
 
 pkgname=g4l
-pkgver=0.56
+pkgver=0.57
 pkgrel=1
 pkgdesc="Ghost 4 Linux is a hard disk and partition imaging and cloning tool."
 arch=('any')
 url="http://freecode.com/projects/g4l/"
 license=('GPL')
-depends=('ddrescue' 'partimage' 'dd_rhelp' 'dialog' 'lzop' 'gzip' 'bzip2' 'ncurses' 'fsarchiver')
-source=(http://fossies.org/linux/misc/${pkgname}-v${pkgver}.devel.tar.gz)
+depends=('bzip2' 'ddrescue' 'dd_rhelp' 'dialog' 'fsarchiver' 'gzip' 'lzop' 'ncurses' 'partimage' )
+source=("http://fossies.org/linux/misc/${pkgname}-v${pkgver}.devel.tar.gz")
 noextract=(${pkgname}-v${pkgver}.devel.tar.gz)
 makedepends=(wget)
 
 package() {
-  cd $srcdir
-  tar -zxvf ${pkgname}-v${pkgver}.devel.tar.gz -C $srcdir bootcd/rootfs
-  tar -zxvf ${pkgname}-v${pkgver}.devel.tar.gz -C $srcdir resources/jetcat
-  mkdir -p $pkgdir/usr/bin/
-  mv $srcdir/bootcd/rootfs/{*g4l,g4l3*} $pkgdir/usr/bin/
-  mkdir -p $pkgdir/mnt/local
-  cd resources/jetcat
-  make clean
-  make all 
-  install -c -s -m 755 jetcat-mod $pkgdir/usr/bin
+    cd $srcdir
+    tar -zxvf ${pkgname}-v${pkgver}.devel.tar.gz -C $srcdir bootcd/rootfs
+    tar -zxvf ${pkgname}-v${pkgver}.devel.tar.gz -C $srcdir resources/jetcat
+    mkdir -p $pkgdir/usr/bin/
+    mv $srcdir/bootcd/rootfs/{*g4l,g4l3*} $pkgdir/usr/bin/
+    mkdir -p $pkgdir/mnt/local
+    cd resources/jetcat
+    make clean
+    make all
+    install -c -s -m 755 jetcat-mod $pkgdir/usr/bin
 }
 
-md5sums=('e2b322bbb595fd2dcfdd70662d6c5804')
+md5sums=('9b1f7884e4c9f238f0965dcdc6d7bf6a')
