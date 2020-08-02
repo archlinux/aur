@@ -6,7 +6,7 @@
 
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=5.0.1.r400.g873d569b5
+pkgver=5.0.1.r482.gd2de25ecc
 #_fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="An Open Source Multi-physics Simulation Engine"
@@ -16,7 +16,7 @@ url="https://projectchrono.org/"
 depends=(openmpi blas boost-libs hdf5)
 makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
 makedepends+=(python swig) # MODULE_PYTHON
-makedepends+=(cuda)        # MODULE_GRANULAR
+makedepends+=('cuda<=10.2.89')        # MODULE_GRANULAR
                            # MODULE_PARALLEL optional
 makedepends+=(blaze)       # MODULE_PARALLEL required
 makedepends+=(thrust)      # MODULE_PARALLEL required
