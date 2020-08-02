@@ -10,7 +10,7 @@ optdepends=('ipython' 'python-ipywidgets')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
 sha512sums=('2e48df60dfbda2bb3978ea574937259f89fcd850800301b88bb42e8d24434e422e783cc1dff88aa04e7021842cc4091ddbbadc0aa53c142b1c586243c057743c')
 
 build() {
