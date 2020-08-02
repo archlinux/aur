@@ -7,7 +7,7 @@
 _pkgname=imx_usb_loader
 pkgname=${_pkgname}-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to communicate with I.MX bootroms to execute code"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/boundarydevices/imx_usb_loader'
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make
+  make sysconfdir=/etc
 }
 
 package(){
