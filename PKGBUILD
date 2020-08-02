@@ -1,4 +1,4 @@
-# Maintainer: William Brown
+# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="thrive-launcher-bin"
 pkgver="1.2.3"
 pkgrel="2"
