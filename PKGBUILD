@@ -32,7 +32,7 @@ prepare() {
 
 check() {
 	cd "$pkgname"
-	pytest
+	env PYTHONPATH=$(sh -c "echo build/lib.linux*/") pytest
 }
 
 build() {
