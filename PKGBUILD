@@ -1,4 +1,4 @@
-# Maintainer: Marcel O'Neil <marcel@marceloneil.com>
+# Contributor: Marcel O'Neil <marcel at marceloneil dot com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
