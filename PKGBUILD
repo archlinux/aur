@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-tvscraper
 pkgver=0.2.0
-_vdrapi=2.4.1
-pkgrel=12
+_vdrapi=2.4.3
+pkgrel=13
 pkgdesc="Runs in the background and collects metadata for all available EPG events"
 url="http://www.vdr-portal.de/board1-news/board2-vdr-news/119880-announce-tvscrapper-0-0-1/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
