@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=ZecWallet Lite
+Exec=/opt/zecwallet-lite/zecwallet-lite %U
+Terminal=false
+Type=Application
+Icon=zecwallet-lite
+StartupWMClass=zecwalletlite
+Comment=Zecwallet Lite
+GenericName=Zcash Wallet
+StartupNotify=true
+Categories=Network;Cryptocurrency;
+MimeType=x-scheme-handler/zcash;
+Keywords=zecwallet;

@@ -1,0 +1,22 @@
+pkgbase = zecwallet-lite
+	pkgdesc = A z-Addr first lightwallet for Zcash.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/adityapk00/zecwallet-lite
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = yarn
+	depends = electron
+	provides = zcash-wallet
+	options = !strip
+	source = zecwallet-lite-1.2.0.tar.gz::https://github.com/adityapk00/zecwallet-lite/archive/v1.2.0.tar.gz
+	source = zecwallet-icons.tar.xz
+	source = zecwallet-lite.desktop
+	sha256sums = cb015d0f6ed919314c920ecbb641791fdb6d4167d3913e19d555022fa2920fab
+	sha256sums = 19d8b4acee2c6ff062e86ecbb2365123d0471f2991192323780b53630104574d
+	sha256sums = a53083250c61d1e43cf3b5c371222bb5740e2befcdc4d9b7ea003a1f4ac30ef4
+
+pkgname = zecwallet-lite
+
