@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/sky-aw/fetchpac.git")
-md5sums=('SKIP') #autofill using updpkgsums
+md5sums=('SKIP')
 
 package() {
   cd "$pkgname"
