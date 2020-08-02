@@ -16,7 +16,7 @@ pkgbase = chromedriver-beta
 	provides = chromedriver
 	conflicts = chromium
 	source = chromedriver_85.0.4183.38_linux64.zip::https://chromedriver.storage.googleapis.com/85.0.4183.38/chromedriver_linux64.zip
-	md5sums = 2f8396ddda324e6ef06f14b9030e7f25
+	md5sums = 856c69ea0e6c71b04119167e1b72e4bf
 
 pkgname = chromedriver-beta
 
