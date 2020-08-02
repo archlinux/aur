@@ -3,7 +3,7 @@
 pkgname=bludigon
 pkgver=0.1.0.0
 _gitcommit=d315d4193bfedbb0f7b1d9ab06c6010e71bee2cc
-pkgrel=2
+pkgrel=3
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/bludigon"
 license=('custom:BSD3')
@@ -22,12 +22,12 @@ depends=(
   'libxrandr'
 )
 source=(
-  "https://github.com/jumper149/${pkgname}/archive/${_gitcommit}"
+  "https://github.com/jumper149/${pkgname}/archive/${_gitcommit}.tar.gz"
   "compile-dynamically.patch"
   "Setup.hs"
 )
 sha256sums=(
-  'SKIP'
+  'f17aab087a9cead1175f65dccac7cab128aa5a528c131a8c13b9ae54b1d643ae'
   'acb3e75bd709d855e4715bc48250fe01163ded72ad42a094d80925e3854b8b83'
   '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689'
 )
