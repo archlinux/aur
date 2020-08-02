@@ -1,0 +1,17 @@
+pkgbase = portfall-bin
+	pkgdesc = A desktop k8s port-forwarding portal for easy access to all your cluster UIs
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://rekon.uk/2020/04/portfall-a-desktop-k8s-port-forwarding-portal-for-easy-access-to-all-your-cluster-uis
+	arch = x86_64
+	license = MIT
+	provides = portfall
+	noextract = portfall-bin-0.8.4.AppImage
+	options = !strip
+	source = portfall-bin-0.8.4.AppImage::https://github.com/rekon-oss/portfall/releases/download/v0.8.4/Portfall-x86_64.AppImage
+	source = LICENSE::https://github.com/rekon-oss/portfall/raw/master/LICENSE
+	sha256sums = d666308f453bf5dcff281304b3bb30065554fe531ceecb7a7e134286841998f6
+	sha256sums = 0f6798f263a13080ef7988de3e9fd4d71ff20b6690052e1b434843c55dcaa897
+
+pkgname = portfall-bin
+
