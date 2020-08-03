@@ -8,7 +8,7 @@ pkgdesc='Outscale CLI'
 
 arch=('any')
 url='https://github.com/outscale/osc-cli'
-license=(GPL3)
+license=(BSD)
 
 makedepends=('python-setuptools')
 depends=(python-fire python-requests python-xmltodict)
