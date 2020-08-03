@@ -1,0 +1,14 @@
+pkgbase = appimage-manager
+	pkgdesc = AppImage package manager.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/AppImageCrafters/appimage-manager
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/AppImageCrafters/appimage-manager.git#tag=v0.1.2
+	sha256sums = SKIP
+
+pkgname = appimage-manager
+
