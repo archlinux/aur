@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/zzrough/$_gitname"
 license=('GPL3')
 depends=('gnome-shell')
+makedepends=('git')
 install=$_pkgname.install
 source=(git+https://github.com/zzrough/$_gitname)
 sha256sums=('SKIP')

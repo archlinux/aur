@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-drop-down-terminal-git
 	install = drop-down-terminal.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = gnome-shell
 	source = git+https://github.com/zzrough/gs-extensions-drop-down-terminal
 	sha256sums = SKIP
