@@ -1,14 +1,14 @@
 pkgbase = python-trytond_customs
 	pkgdesc = Tryton module for customs
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_customs/trytond_customs-5.2.0.tar.gz
-	sha256sums = 41e7bccedeeb4a9b9cabc5b26040cf2ea4189791950856edc945efc1e53f7798
+	source = https://files.pythonhosted.org/packages/source/t/trytond_customs/trytond_customs-5.6.0.tar.gz
+	sha256sums = 41e7bccedeeb4a9b9cabc5b26040cf2ea4189791950856edc945efc1e53f7798 fd87a3c25932aabc6f71586fdca0e5b1a8c0e5efded3503b8c614b130035d49b
 
 pkgname = python-trytond_customs
 
