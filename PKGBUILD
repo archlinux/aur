@@ -19,7 +19,7 @@ provides=($_pkgname=$pkgver)
 conflicts=($_pkgname libxfce4menu{,-git})
 replaces=(libxfce4menu{,-git})
 options=(!libtool !makeflags)
-source=($pkgname::git://git.xfce.org/xfce/$_pkgname)
+source=($pkgname::git+https://gitlab.xfce.org/xfce/$_pkgname)
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 

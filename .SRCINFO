@@ -19,7 +19,7 @@ pkgbase = garcon-git
 	replaces = libxfce4menu-git
 	options = !libtool
 	options = !makeflags
-	source = garcon-git::git://git.xfce.org/xfce/garcon
+	source = garcon-git::git+https://gitlab.xfce.org/xfce/garcon
 	sha256sums = SKIP
 	sha512sums = SKIP
 
