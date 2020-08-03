@@ -1,13 +1,11 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=3
+pkgrel=4
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
 license=('zlib/png')
-
-install=${pkgname}.install
 
 depends=('icu'
          'openssl'
@@ -107,9 +105,10 @@ package() {
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
         rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
         rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
+        rm -f ${srcdir}/evelauncher/roots.pem
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
         chmod 0755 ${srcdir}/evelauncher/*
-        chmod 0644 ${srcdir}/evelauncher/*.qm ${srcdir}/evelauncher/roots.pem
+        chmod 0644 ${srcdir}/evelauncher/*.qm
         chmod 0644 ${srcdir}/evelauncher/errorpage/*
         ln -sf evelauncher.sh ${srcdir}/evelauncher/LogLite.sh
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so
@@ -140,10 +139,10 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            '51eae400033fab0ca0a4a292c9c725dd0da25809d037002130bc1e23fa6c0702'
-            '617349fb5f7ca9071e7d2465f5c0d1e01ad501edf3c2458a2ebcdca33d38b070'
-            'ce406f8fe7db143a30a4c85cabfeeb0718c2d4521dc7ad2393743bdc9c9c59ec'
-            '9e88a8eeb2b3a9f2551ab204ee632d1ea03742c57f446ea63c9461c6b927082e'
+            'cda0f7cf511a527645a8a8f4d041888db34d03372a9a45bdecc2eb19133301b0'
+            '18d624c454b452c4d39013c689f8f122774354657a320118601f11df942c15d8'
+            '67f4464116d4e20c058f4b2b17dbfc7507cf5c0c626e88516b475efcab6e6233'
+            '498f276ed8f7ddc75f3cdd525849ee5ef4c3285789e61250b844c38943dcac04'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'

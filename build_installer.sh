@@ -37,13 +37,14 @@ while read pline ;do
     plc=$(expr $plc + 1)
 done < PKGBUILD
 
+if [ ! -x "$(which curl 2>/dev/null)" ] ;then
+    printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
+    printf "\n\tPlease install curl with your Package Manager.\n"
+    printf "\nLeaving.\n\n"
+    exit 0
+fi
+
 if [ ! -f "./makeself-2.4.0.run" ] ;then
-    if [ ! -x "$(which curl)" ] ;then
-	echo "Curl not found. Curl are needed for downloading makeself build tool."
-	echo " Please install curl with your Package Manager."
-	printf "\nLeaving.\n\n"
-	exit 0
-    fi
     printf "\nGet makeself...\n\n"
     curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi

@@ -16,8 +16,8 @@ bootstrap_install() {
 	tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
 	    --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
     fi
-    install -pm 0644 "./evesetup.shlib" "$libdir"
-    install -pm 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
+    install -m 0644 "./evesetup.shlib" "$libdir"
+    install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
     install -m 0644 "./evelauncher.kwinrule" "$docdir"
     install -m 0644 "./evelauncher.lua" "$docdir"
     sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
@@ -25,7 +25,7 @@ bootstrap_install() {
 	cmd=eve$cmd
 	if [ -f "./$cmd" ] ;then
 	    sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
-	    install -p "./$cmd" "$bindir/"
+	    install "./$cmd" "$bindir/"
 	else
 	    if [ "$cmd" = "everestore" ] ;then
 		ln -s evebackup "$bindir/$cmd"
@@ -62,7 +62,8 @@ bootstrap_remove() {
 	    rm -f "$prefix/share/applications/${cmd%.*}.desktop"
 	fi
     done
-    rm -rfv "$destdir"
+    printf "\nRemove $destdir...\n"
+    rm -rf "$destdir"
 }
 
 check_req() {
@@ -81,9 +82,9 @@ check_req() {
     cd ../
     rm -rf evelauncher/
     if [ "x$req" != "x" ] ;then
-	printf "\nFollowing requirements are missing:\n"
+	printf "\nError: Following requirements are missed:\n"
 	printf "\n$req\n"
-	printf "\nPlease install these requirements with your Package Manager.\n"
+	printf "Please install these requirements with your Package Manager.\n"
 	printf "\nLeaving.\n\n"
 	exit 0
     fi

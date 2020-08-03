@@ -37,13 +37,14 @@ while read pline ;do
     plc=$(expr $plc + 1)
 done < PKGBUILD
 
+if [ ! -x "$(which curl 2>/dev/null)" ] ;then
+    printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
+    printf "\n\tPlease install curl with your Package Manager.\n"
+    printf "\nLeaving.\n\n"
+    exit 0
+fi
+
 if [ ! -f "./makeself-2.4.0.run" ] ;then
-    if [ ! -x "$(which curl)" ] ;then
-	echo "Curl not found. Curl are needed for downloading makeself build tool."
-	echo " Please install curl with your Package Manager."
-	printf "\nLeaving.\n\n"
-	exit 0
-    fi
     printf "\nGet makeself...\n\n"
     curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
@@ -113,10 +114,10 @@ echo "done."
 printf "\nClean up evelauncher directory..."
 cd evelauncher/
 rm -rf ./resources/ ./plugins/
-rm -f ./*.a ./*.la ./*.prl ./*[Qq]t* ./libicu* ./libpng* ./libxcb*
+rm -f ./*.a ./*.la ./*.pem ./*.prl ./*[Qq]t* ./libicu* ./libpng* ./libxcb*
 cp -f ../../evelauncher.sh.real ./evelauncher.sh
 chmod 0755 ./*
-chmod 0644 ./roots.pem ./*.qm ./errorpage/*
+chmod 0644 ./*.qm ./errorpage/*
 echo "done."
 
 printf "\nReplace identical files with symbolic links..."

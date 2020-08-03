@@ -86,9 +86,9 @@ build_lib() {
     echo "done."
     printf "\nClean up evelauncher directory..."
     cd evelauncher/
-    rm -f ./*.a ./*.la ./*.prl ./libxcb*
+    rm -f ./*.a ./*.la ./*.pem ./*.prl ./libxcb*
     chmod 0755 ./*
-    chmod 0644 ./*.qm ./*.pem ./*.conf ./errorpage/*
+    chmod 0644 ./*.qm ./*.conf ./errorpage/*
     echo "done."
     printf "\nReplace identical files with symbolic links..."
     ln -sf evelauncher.sh LogLite.sh
@@ -135,27 +135,24 @@ get_dxvk() {
 
 check_req() {
     if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-	printf "\nWarning: libxcb-xinerama needed by evelauncher not found."
-	printf "\n\tPlease install libxcb-xinerama with your Package Manager.\n"
-	key="nf"
+	req="${req}libxcb-xinerama\n"
     fi
     if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
-	printf "\nError: 7z needed by evebackup not found."
-	printf "\n\tPlease install p7zip or p7zip-full with your Package Manager.\n"
-	key="nf"
+	req="${req}7z\n"
     fi
     if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-	printf "\n\nError: Curl needed for downloading evelauncher binaries not found."
-	printf "\n\tPlease install curl with your Package Manager.\n"
-	key="nf"
+	req="${req}curl\n"
     fi
     if [ ! -x "$(which wine 2>/dev/null)" ] ;then
-	printf "\n\nError: Wine not found."
-	printf "\n\tPlease install wine with your Package Manager."
-	printf "\n\tWineHQ or Developer Version are recommended.\n"
-	key="nf"
+	req="${req}wine\n"
     fi
-    if [ "x$key" = "xnf" ] ;then printf "\n\nLeaving.\n\n" ;exit 0 ;fi
+    if [ "x$req" != "x" ] ;then
+	printf "\nError: Following requirements are missed:\n"
+	printf "\n$req\n"
+	printf "Please install these requirements with your Package Manager.\n"
+	printf "\nLeaving.\n\n"
+	exit 0
+    fi
 }
 
 prefix="/usr"
