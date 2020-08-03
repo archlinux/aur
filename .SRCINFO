@@ -1,8 +1,8 @@
 pkgbase = python-lunr
 	pkgdesc = A Python implementation of Lunr.js (for mkdocs)
 	pkgver = 0.5.8
-	pkgrel = 2
-	url = https://pypi.org/project/mdx_gh_links/
+	pkgrel = 3
+	url = https://github.com/yeraydiazdiaz/lunr.py
 	arch = any
 	license = MIT
 	makedepends = python-setuptools

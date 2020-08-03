@@ -2,10 +2,10 @@
 pkgname=python-lunr
 _pkgname=lunr
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python implementation of Lunr.js (for mkdocs)"
 arch=('any')
-url="https://pypi.org/project/mdx_gh_links/"
+url="https://github.com/yeraydiazdiaz/lunr.py"
 license=('MIT')
 # Most of these deps are transitive deps of python-nltk
 depends=('python-nltk>=3.2.5' 'python-future>=0.16.0' 'python-tqdm' 'python-joblib' 'python-regex')
