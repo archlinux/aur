@@ -2,7 +2,7 @@
 
 pkgname=latex-pgfplots
 pkgname_=pgfplots
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc='Allows drawing normal and/or logarithmic plots directly in TeX'
 arch=(any)
@@ -11,8 +11,8 @@ license=(GPL)
 install=pgfplots.install
 depends=(tetex)
 conflicts=(texlive-pictures)
-source=("https://downloads.sourceforge.net/project/$pkgname_/$pkgname_/$pkgver/${pkgname_}_${pkgver}.tds.zip")
-sha256sums=('7da7eb19ed2115b42e746bf4224d6ad8bdb1ca7a267f6108cfbbd1ad9c81203c')
+source=("https://github.com/pgf-tikz/${pkgname_}/releases/download/${pkgver}/${pkgname_}_${pkgver}.tds.zip")
+sha256sums=('6fdeb9af837a46e9e7aaf012f8cb40277d8d234814dd9da9aff7fc27664fc2cf')
 
 package() {
     dest=${pkgdir}/usr/share/texmf-dist/tex/latex/$pkgname_
