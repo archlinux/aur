@@ -5,7 +5,7 @@
 pkgname=loic
 pkgver=2.0.0.4
 _pkgver=2.0.0.4-1
-pkgrel=5
+pkgrel=6
 pkgdesc="An open source network stress tool for Windows. Based on Praetox's project at https://sourceforge.net/projects/loic/ and written in C#."
 arch=('any')
 url="https://github.com/NewEraCracker/LOIC"
