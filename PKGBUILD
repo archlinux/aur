@@ -3,8 +3,8 @@
 # Contributor: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
 pkgname=linx-server
-pkgver=2.3.5
-pkgrel=2
+pkgver=2.3.6
+pkgrel=1
 pkgdesc='Self-hosted file/code/media sharing website'
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
@@ -19,7 +19,7 @@ source=("https://github.com/andreimarcu/linx-server/archive/v${pkgver}.tar.gz"
         'linx-cleanup.service'
         'linx-server.tmpfiles'
         'linx-server.sysusers')
-sha256sums=('fe5d66b4e3c1734dfbd109a59598945593480150e6eaa59fe25b0d3083e15de1'
+sha256sums=('28226fe7612e71173ce3583abef693198777155e4a98f1809cc6cd295c2b93e7'
             '261b5cdfa0c3751c8811ee239a9c61952bbdf21d93f318c0a86a2d90075f2e19'
             '97e8205e708afa5891918d1f50dc9d96096a05249bd1661d851110d3a968b3b3'
             'fdae9fb4942de21da6a27de235ac6a72089699ad79e3138d0de6dc9aaedd4723'
