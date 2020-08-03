@@ -1,0 +1,16 @@
+pkgbase = rime-middle-chinese-git
+	pkgdesc = 中古漢語（切韻音系）全拼及三拼
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/biopolyhedron/rime-middle-chinese
+	arch = x86_64
+	license = custom
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	depends = rime-luna-pinyin
+	source = rime-middle-chinese-git::git+https://github.com/biopolyhedron/rime-middle-chinese
+	sha512sums = SKIP
+
+pkgname = rime-middle-chinese-git
+
