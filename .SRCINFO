@@ -1,0 +1,14 @@
+pkgbase = paleta-git
+	pkgdesc = Change terminal colors on-the-fly independent of terminal emulator.
+	pkgver = r138.b200489
+	pkgrel = 3
+	url = https://github.com/dylanaraps/paleta
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = paleta
+	source = paleta::git+https://github.com/dylanaraps/paleta.git
+	md5sums = SKIP
+
+pkgname = paleta-git
+
