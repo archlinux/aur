@@ -2,7 +2,7 @@
 
 pkgname=vc4c-git
 pkgver=r683.f986061
-pkgrel=4
+pkgrel=5
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
@@ -21,13 +21,13 @@ pkgver() {
 }
 
 build() {
-	mkdir -p $srcdir/VC4C/build
-	cd $srcdir/VC4C/build
+	mkdir -p "$srcdir/VC4C/build"
+	cd "$srcdir/VC4C/build"
 	cmake "$srcdir/VC4C" -DCMAKE_BUILD_TYPE=Release -DMULTI_THREADED=true -DCLANG_FOUND=/usr/bin/clang -DVC4CL_STDLIB_DIR=/usr/local/include/vc4cl-stdlib -DVC4CL_STDLIB_PRECOMPILE=OFF -Wno-dev
 	make
 }
 
 package() {
-	cd $srcdir/VC4C/build
-	make DESTDIR="$pkgdir"/ install
+	cd "$srcdir/VC4C/build"
+	make DESTDIR="$pkgdir/" install
 }
