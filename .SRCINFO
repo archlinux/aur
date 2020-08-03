@@ -1,5 +1,5 @@
 pkgbase = qualcoder
-	pkgdesc = Convert various source codes into pdf file with custom features
+	pkgdesc = Qualitative data analysis software written in python3 and pyqt5
 	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/ccbogel/QualCoder

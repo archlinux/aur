@@ -3,7 +3,7 @@
 pkgname=qualcoder
 pkgver=1.9
 pkgrel=1
-pkgdesc="Convert various source codes into pdf file with custom features"
+pkgdesc="Qualitative data analysis software written in python3 and pyqt5"
 arch=('any')
 url='https://github.com/ccbogel/QualCoder'
 license=('MIT')
