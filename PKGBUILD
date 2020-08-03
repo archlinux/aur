@@ -3,7 +3,7 @@
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -28,8 +28,8 @@ optdepends=(
     'boxtron: for optional Boxtron support'
 )
 
-source=("https://github.com/frostworx/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('fae4bcf3dac99faa8e5af03fd4bfb957')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('bdb5b13bae5927d4f4ee0bf47afa1dee35260accba81f57d8db40a90cad2f355')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
