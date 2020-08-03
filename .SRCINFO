@@ -13,11 +13,9 @@ pkgbase = vim-visual-multi-git
 	source = vim-visual-multi::git+https://github.com/mg979/vim-visual-multi.git#branch=master
 	source = vim-visual-multi-git.install
 	source = vimtutor-visual-multi
-	source = visual-multi-vim-doc.hook
 	sha256sums = SKIP
 	sha256sums = 10e9f3d21e7f5fce07f2e8ffab0ccd08cdb52f5097c84afaa355c06668faf046
 	sha256sums = 04d22ed7476c8c4ba565a805c8a3bac6e7252f6cc15106545e5c71dbb996229b
-	sha256sums = cfdbc5aaa42b088365a4b99478a3efb56ab828a50e70e122f307ea2b8c3690bf
 
 pkgname = vim-visual-multi-git
 
