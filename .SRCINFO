@@ -1,12 +1,12 @@
 pkgbase = factorio-headless-experimental
 	pkgdesc = A 2D game about building and maintaining factories - Server version (experimental branch)
-	pkgver = 0.18.40
+	pkgver = 0.18.41
 	pkgrel = 1
 	url = http://www.factorio.com/
 	install = factorio-headless.install
 	arch = x86_64
 	license = custom: commercial
-	provides = factorio-headless=0.18.40
+	provides = factorio-headless=0.18.41
 	conflicts = factorio
 	conflicts = factorio-demo
 	conflicts = factorio-headless
@@ -20,12 +20,12 @@ pkgbase = factorio-headless-experimental
 	source = factorio-headless.service
 	source = factorio-headless.conf
 	source = factorio-headless.sysusers
-	source = factorio_headless_x64_0.18.40.tar.xz::http://www.factorio.com/get-download/0.18.40/headless/linux64
+	source = factorio_headless_x64_0.18.41.tar.xz::http://www.factorio.com/get-download/0.18.41/headless/linux64
 	sha256sums = 8859e0c8650bd90a7ff35f6ec15df91cbbc5ef6ffab6119876731feb811861d1
 	sha256sums = 72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7
 	sha256sums = d384e69bac3807006b0af787d1c5dcd9f247ad49c7250ac18a3737763d755d47
 	sha256sums = 87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64
-	sha256sums = 696fe660fea945f38d12d49cf0b4737522d061fab5b3afd59467c4b2e375711a
+	sha256sums = 62bff0b9514c25f8428d7a9ef23f6acf51b4cfa68acb64241104920a99948b27
 
 pkgname = factorio-headless-experimental
 
