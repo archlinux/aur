@@ -1,7 +1,7 @@
 pkgbase = agedu
 	pkgdesc = A UNIX utility for tracking down wasted disk space
 	pkgver = 20200705
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64

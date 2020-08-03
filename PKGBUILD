@@ -11,7 +11,7 @@
 
 pkgname=agedu
 pkgver=20200705
-pkgrel=1
+pkgrel=2
 pkgdesc="A UNIX utility for tracking down wasted disk space"
 arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
@@ -22,12 +22,12 @@ b2sums=('2802b223979b2f15efd14b6f1f445b9ca00312068ade3c26a057d54a65d5074fdcdee04
 prepare() {
   cd "$srcdir/$pkgname-$pkgver.2a7d4a2"
   ./mkauto.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" CPPFLAGS="$CPPFLAGS"
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver.2a7d4a2"
-  make
+  make $MAKEFLAGS
 }
 
 package() {
