@@ -1,8 +1,8 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=zectl
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="ZFS Boot Environment manager."
 url="http://github.com/johnramsden/${pkgname}"
 arch=('any')
@@ -14,16 +14,9 @@ provides=("zectl")
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}.tar.gz"
-    "0001-Remove-libspl-no-longer-needed.patch"
 )
 
-sha256sums=('3103d955b990c9b67ba1c7b50b4c712a7edea605f37ff167c4f71a6756f13cf8'
-            '6d826973996382d893df5958c6aeaed237aed4077b6e12bcbeb97e578d86c3ee')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/0001-Remove-libspl-no-longer-needed.patch"
-}
+sha256sums=('cc39e9cd97d2cfa0c884d911d24a61d3f2bfcff92721951be8df7096276de80c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
