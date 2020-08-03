@@ -6,7 +6,7 @@
 pkgname=plausible-git
 _pkgname=plausible
 pkgver=r456.b29afde
-pkgrel=7
+pkgrel=8
 license=('MIT')
 pkgdesc='Simple and privacy-friendly alternative to Google Analytics'
 makedepends=("nodejs" "yarn" "python" "npm" "nodejs-webpack" "wget" "ca-certificates" "gnupg" "elixir")
@@ -22,7 +22,7 @@ source=("${pkgname%-*}::git+https://github.com/plausible/analytics.git"
 sha1sums=('SKIP'
           'b52729ab148fcf4e2be54abc37f01aebd02b1655'
           '1ddfc6e48f8b39c9e0a59ba1bd12a827b34716f1'
-          '75160f7a93b60e78a505b69fb1536cbb855256f0'
+          '1f7c448513d7ca4b4ff0890c1b8df282ca5092f6'
           'c5866213a3154ffb9e3a878c7c274331fdc3adef')
 provides=('plausible')
 conflicts=('plausible')
