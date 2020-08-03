@@ -1,6 +1,6 @@
 # Maintainer: piegames <aur@piegames.de>
 pkgname=blockmap-git
-pkgver=2.1.0.r0.e86f704
+pkgver=2.2.0.r0.db49965
 pkgrel=1
 pkgdesc="Minecraft map viewer/renderer"
 arch=('any')
@@ -13,9 +13,9 @@ source=("${pkgname}"::'git+https://github.com/Minecraft-Technik-Wiki/BlockMap'
 		"blockmap-gui.sh"
 		"BlockMap.desktop")
 sha512sums=('SKIP'
-            '12f074b279ae23d65ff4d4800592c6dcbfd7708cfb164a78f2c0aa3693776e167e9e43606eaf819d503cc5ec9ae016e48d0e3adc7c4755cf413ea6f810345971'
-            '23697d4722300f5ecf9b229f468c4f4fa65f83319df329148d74e66a34ed4f57fdbcd429e91853f898fb2692bdc8ba8a74e0b4776713b59b81b963a0bb1d580a'
-            'ae3d4a6ef7593ba7744dd3e08f2fa6ffe96fd2ec670722bf42710c6a77d2223321c09cafb003adc36924dc997756650caf110a3145ee598ee3f27b56610091f5')
+            '4b311ac92be3984eca9457f72c0fd87327532b063d5d6bdf38fec683ed2f14fd3dd252f7441e3b15429dcfe7618715da2c2c88adb9ef5b7be85b56d2b7aab35b'
+            '5915722b07aba215978ab13531e672f54fc26ebb27cc82fbd8c6103b2ba28c7a1829128dbad31e1682525e78812a8d472d92a66653a4f2d49d7fc5b2ac175bb5'
+            '260855d885b219c343e162feb77aff96c340ea2582d1d58a4fc06a1c1a1c7b099c6a2f0bad59fda0fc0dbac7aecbb245f0650d4e1f299b14d81766f22b906902')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
