@@ -6,7 +6,7 @@
 pkgname=why3
 pkgver=1.3.1
 _pkgvercode=38291 # Update when bumping release
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for deductive program verification'
 arch=('x86_64')
 options=('!makeflags')
@@ -21,10 +21,12 @@ build() {
 
   ./configure --prefix=/usr --disable-pvs-libs
   make
+  make byte opt
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install-lib
 }
