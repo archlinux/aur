@@ -4,17 +4,14 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.8
 pkgver=5.8.v.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 
-#https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/log/?h=linux-4.19.y
-
-#source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -26,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '34fa0410e76c72b1a44c1ac701741e2344c2c4252e9c552deaece872f8c03a2c'
+            '8efab7a3853f472feeda0a6e1bad56c2d144ad0bf12e2ec0a8ec7f49c617504b'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #linux install file
@@ -43,8 +40,6 @@ pkgver() {
 
 prepare() {
   cd "${_srcname}"
-  #We want to base this on the release
-  git checkout tags/$gitver
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
