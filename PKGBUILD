@@ -13,11 +13,11 @@ url=http://git.xfce.org/xfce/${pkgname%-*}/tree/README
 license=(GPL2)
 groups=(xfce4-git)
 depends=(glib2)
-makedepends=(git xfce4-dev-tools gobject-introspection)
+makedepends=(git xfce4-dev-tools gobject-introspection vala)
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 options=(!libtool)
-source=($pkgname::git://git.xfce.org/xfce/${pkgname%-*})
+source=($pkgname::git+https://gitlab.xfce.org/xfce/${pkgname%-*})
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 

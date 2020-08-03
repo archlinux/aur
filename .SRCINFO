@@ -10,11 +10,12 @@ pkgbase = libxfce4util-git
 	makedepends = git
 	makedepends = xfce4-dev-tools
 	makedepends = gobject-introspection
+	makedepends = vala
 	depends = glib2
 	provides = libxfce4util=4.15.2.r1.ge475294
 	conflicts = libxfce4util
 	options = !libtool
-	source = libxfce4util-git::git://git.xfce.org/xfce/libxfce4util
+	source = libxfce4util-git::git+https://gitlab.xfce.org/xfce/libxfce4util
 	sha256sums = SKIP
 	sha512sums = SKIP
 
