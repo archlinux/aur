@@ -1,16 +1,13 @@
 pkgbase = ttf-monoid-git
 	pkgdesc = Open Source coding font
-	pkgver = r425.e9d77ec1
+	pkgver = r427.a331c7c5
 	pkgrel = 1
 	url = http://larsenwork.github.io/monoid/
-	install = ttf-monoid-git.install
 	arch = any
 	license = custom:MIT
 	makedepends = git
 	makedepends = fontforge
 	makedepends = python
-	depends = xorg-font-utils
-	depends = fontconfig
 	provides = ttf-mono16
 	provides = ttf-mono16-git
 	provides = ttf-monoid

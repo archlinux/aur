@@ -1,18 +1,16 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='ttf-monoid-git'
+pkgname=ttf-monoid-git
 pkgdesc='Open Source coding font'
-pkgver=r425.e9d77ec1
+pkgver=r427.a331c7c5
 pkgrel=1
-arch=('any')
-license=('custom:MIT')
-url='http://larsenwork.github.io/monoid/'
+arch=(any)
+license=(custom:MIT)
+url=http://larsenwork.github.io/monoid/
+makedepends=(git fontforge python)
+conflicts=(ttf-mono16 ttf-mono16-git ttf-monoid)
+provides=("${conflicts[@]}")
 source=("${pkgname}::git://github.com/larsenwork/monoid.git"
 	'fontbuilder-python3.patch')
-install="${pkgname}.install"
-depends=('xorg-font-utils' 'fontconfig')
-makedepends=('git' 'fontforge' 'python')
-conflicts=('ttf-mono16' 'ttf-mono16-git' 'ttf-monoid')
-provides=( "${conflicts[@]}" )
 sha512sums=('SKIP'
             '7f06b8827ed12b3070512ae58424b92a05635eefe0dee0d6314f1b92230f431e2fde5a2d70adbff324bbcb4ce70b135ccda2a6dfaaeb7b6e4219a447034f00c0')
 
