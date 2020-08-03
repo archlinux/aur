@@ -1,0 +1,19 @@
+pkgbase = mpv-shim-default-shaders
+	pkgdesc = Preconfigured set of MPV shaders and configurations for MPV Shim media clients.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/iwalton3/default-shader-pack
+	arch = any
+	license = custom
+	options = !strip
+	source = mpv-shim-default-shaders-1.0.0.tar.gz::https://github.com/iwalton3/default-shader-pack/archive/v1.0.0.tar.gz
+	source = FSRCNNX-LICENSE::https://raw.githubusercontent.com/igv/FSRCNN-TensorFlow/master/LICENSE
+	source = Anime4K-LICENSE::https://raw.githubusercontent.com/bloc97/Anime4K/master/LICENSE
+	source = StaticGrain-LICENSE::https://raw.githubusercontent.com/wopian/mpv-config/master/LICENSE
+	sha256sums = 48f026e188db8deeb248a510e58e8838489f54f631342a6459da19fc252655bc
+	sha256sums = a3877cc78b2f5819135bc419775a4afa98ce0c70d72360ed78fe3895fa1df2b5
+	sha256sums = 5bad448b737378e3d0c977ad0d0521fa37ad279a7e76ea9a31d9257eeb6953f5
+	sha256sums = 88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd
+
+pkgname = mpv-shim-default-shaders
+
