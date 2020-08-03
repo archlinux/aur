@@ -1,0 +1,27 @@
+diff --unified --recursive --text src/vulkan-man-pages-1.2.148/Makefile src2/vulkan-man-pages-1.2.148/Makefile
+--- src/vulkan-man-pages-1.2.148/Makefile	2020-07-20 03:04:18.000000000 -0500
++++ src2/vulkan-man-pages-1.2.148/Makefile	2020-08-02 21:37:51.683223751 -0500
+@@ -407,7 +407,7 @@
+ 
+ # Build the individual refpages, then the symbolic links from aliases
+ MANHTMLDIR  = $(OUTDIR)/man/html
+-MANHTML     = $(MANSOURCES:$(REFPATH)/%.txt=$(MANHTMLDIR)/%.html)
++MANHTML     = $(MANSOURCES:$(REFPATH)/%.txt=$(MANHTMLDIR)/%.3)
+ buildmanpages: $(MANHTML)
+ 	$(MAKE) $(SUBMAKEOPTIONS) -e manaliases
+ 
+@@ -427,11 +427,11 @@
+ # suppress make output instead of using QUIET
+ # Running translate_math.js on every refpage is slow since most of them
+ # don't contain math, so do a quick search for latexmath delimiters.
+-$(MANHTMLDIR)/%.html: KATEXDIR = ../../katex
+-$(MANHTMLDIR)/%.html: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
++$(MANHTMLDIR)/%.3: KATEXDIR = ../../katex
++$(MANHTMLDIR)/%.3: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
+ 	@echo "Building $@ from $< using default options"
+ 	@$(MKDIR) $(MANHTMLDIR)
+-	@$(ASCIIDOC) -b html5 $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
++	@$(ASCIIDOC) -b manpage $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
+ 	    -d manpage -o $@ $<
+ 	@if egrep -q '\\[([]' $@ ; then \
+ 	    $(TRANSLATEMATH) $@ ; \

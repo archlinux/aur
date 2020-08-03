@@ -1,0 +1,23 @@
+pkgbase = vulkan-man-pages
+	pkgdesc = Vulkan man pages as manpages
+	pkgver = 1.2.148
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-Docs
+	arch = any
+	license = custom
+	makedepends = asciidoctor
+	makedepends = cmake
+	makedepends = dblatex
+	makedepends = ghostscript
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python3
+	makedepends = source-highlight
+	source = https://github.com/KhronosGroup/Vulkan-Docs/archive/v1.2.148.tar.gz
+	source = manpage.patch
+	sha256sums = 6eb9f22f193308efa90d947b927c47583d2a6c0e133d1b4a1a0f97d94b8a670e
+	sha256sums = 6de188870cdd213f7184d34df69b65df811bb52932a0f604248dbb323bfd979b
+
+pkgname = vulkan-man-pages
+
