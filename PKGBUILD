@@ -22,26 +22,19 @@ optdepends=('git: git support'
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git#branch=master"
-        'signify-vim-doc.hook')
-sha256sums=('SKIP'
-            '927fd66f0d28818775d5b8210fa2db30eee0cbba4f02ce7a63037065857d616b')
+source=("${_pkgname}::git+${url}.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd "${srcdir}/${_pkgname}"
-    touch doc/tags
-}
-
 package() {
     cd "${srcdir}/${_pkgname}"
+    vim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc plugin -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/pack/${_pkgname}/start/${_pkgname}/{}" \;
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}"/signify-vim-doc.hook "${pkgdir}"/usr/share/libalpm/hooks/signify-vim-doc.hook
 }

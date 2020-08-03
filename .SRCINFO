@@ -21,9 +21,7 @@ pkgbase = vim-signify-git
 	provides = vim-signify
 	conflicts = vim-signify
 	source = vim-signify::git+https://github.com/mhinz/vim-signify.git#branch=master
-	source = signify-vim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 927fd66f0d28818775d5b8210fa2db30eee0cbba4f02ce7a63037065857d616b
 
 pkgname = vim-signify-git
 
