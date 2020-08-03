@@ -1,7 +1,7 @@
 pkgbase = pdf.tocgen
 	pkgdesc = A CLI toolset for generating table of contents for PDF documents.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Krasjet/pdf.tocgen
 	arch = any
 	license = GPL3

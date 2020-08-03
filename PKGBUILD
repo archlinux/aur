@@ -2,7 +2,7 @@
 
 pkgname=pdf.tocgen
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI toolset for generating table of contents for PDF documents."
 arch=('any')
 url="https://github.com/Krasjet/pdf.tocgen"
@@ -12,11 +12,11 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
 sha256sums=('aa05d985d6c5950ac5303496ef3b6129289bb89e663c69da353a56192e9757d2')
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
