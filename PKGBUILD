@@ -3,7 +3,7 @@
 
 _pkgname=tabledata
 pkgname=python-${_pkgname}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Represent tabular data'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-dataproperty' 'python-typepy')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('db893596ab9066e5c4f002ae0fed70657e3b75cceb52dd1de5a0e145e338d830')
+sha256sums=('fa4c2db55cbb198ca5e21063ae743f418d3efbba94cd4844d2f759f994df76a2')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -23,8 +23,8 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'README.rst' "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.rst'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:

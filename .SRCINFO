@@ -1,6 +1,6 @@
 pkgbase = python-tabledata
 	pkgdesc = Represent tabular data
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/thombashi/tabledata
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-tabledata
 	depends = python-dataproperty
 	depends = python-typepy
 	provides = tabledata
-	source = https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.1.2.tar.gz
-	sha256sums = db893596ab9066e5c4f002ae0fed70657e3b75cceb52dd1de5a0e145e338d830
+	source = https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.1.3.tar.gz
+	sha256sums = fa4c2db55cbb198ca5e21063ae743f418d3efbba94cd4844d2f759f994df76a2
 
 pkgname = python-tabledata
 
