@@ -1,0 +1,17 @@
+pkgbase = nordugrid-arc
+	pkgdesc = The Advanced Resource Connector (ARC) middleware, developed by the NorduGrid Collaboration.
+	pkgver = 6.7.0
+	pkgrel = 1
+	url = http://www.nordugrid.org/arc/arc6
+	arch = x86_64
+	license = Apache 2.0
+	depends = python2
+	depends = globus-toolkit
+	source = http://download.nordugrid.org/packages/nordugrid-arc/releases/6.7.0/src/nordugrid-arc-6.7.0.tar.gz
+	source = http://download.nordugrid.org/packages/nordugrid-arc/releases/6.7.0/src/nordugrid-arc-6.7.0.tar.gz.asc
+	validpgpkeys = 2BD6CDCE625B9FD35F25621DE8C1DBE17CE871D5
+	sha256sums = 156265ff7dcebe94e61e850ce11584ad70ee25f885bba9277810d8ed2e1ab408
+	sha256sums = SKIP
+
+pkgname = nordugrid-arc
+
