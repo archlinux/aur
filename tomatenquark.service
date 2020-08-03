@@ -1,0 +1,13 @@
+[Unit]
+Description=Tomatenquark dedicated server
+After=network.target
+
+[Service]
+User=nobody
+ExecStart=/opt/tomatenquark/bin/linux_server
+Restart=on-abort
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target
+

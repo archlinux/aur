@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /opt/tomatenquark
+bin/linux_client -q${HOME}/.config/tomatenquark -r
+
+

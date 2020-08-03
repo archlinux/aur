@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Tomatenquark
+Comment=FPS that uses an improved version of the Cube engine
+Exec=tomatenquark-client %u
+Icon=tomatenquark
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;ActionGame;

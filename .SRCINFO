@@ -1,0 +1,37 @@
+pkgbase = tomatenquark
+	pkgdesc = FPS that uses an improved version of the Cube engine
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://tomatenquark.org/
+	arch = x86_64
+	license = ZLIB
+	makedepends = sdl_mixer
+	makedepends = sdl_image
+	makedepends = mesa-libgl
+	makedepends = glu
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_image
+	depends = curl
+	backup = etc/conf.d/tomatenquark
+	source = https://github.com/tomatenquark/code/releases/download/v0.2.1/tomatenquark_ubuntu.zip
+	source = tomatenquark-client
+	source = tomatenquark-server
+	source = tomatenquark.confd
+	source = tomatenquark.png
+	source = tomatenquark.service
+	source = tomatenquark.sysusers
+	source = tomatenquark.desktop
+	source = license.txt
+	md5sums = e0604e4576fa33f0a947cbc3ff3c67f4
+	md5sums = 05d9b7ebc5732edff1e741e8b042f808
+	md5sums = db6466d1bec9040bd34d43309fee02d1
+	md5sums = 42f0f33fcefbe6626d33adcb5a0b702c
+	md5sums = 9db39b41bcb2e4f187665c0f13ce1525
+	md5sums = 06eae4fe31d049e3757e6d823887639c
+	md5sums = 77f682a75e5b8ea2a5744cda38d7e020
+	md5sums = 7eba38349fe655cba142d412caf61a9c
+	md5sums = 814c1191b0b8b79054db7f5447ccc05b
+
+pkgname = tomatenquark
+

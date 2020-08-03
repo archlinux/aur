@@ -1,0 +1,22 @@
+#!/bin/sh
+
+TOMAT_USER=nobody
+LOGDIR=/var/log/tomatenquark
+[ -f /etc/conf.d/tomatenquark ] && . /etc/conf.d/tomatenquark
+
+cd /opt/tomatenquark
+
+if [ "$(id -u)" == "0" ]; then
+    if [ ! -d "$LOGDIR" ]; then
+        mkdir -p "$LOGDIR"
+        chown "$TOMAT_USER:log" "$LOGDIR"
+    fi
+
+    sudo -Hu "$TOMAT_USER" \
+    nohup /opt/tomatenquark/bin/linux_server \
+            >>  "$LOGDIR/main.log" \
+            2>> "$LOGDIR/error.log" \
+            <   /dev/null  &
+else
+    bin/linux_server
+fi

@@ -1,0 +1,3 @@
+# Server options
+TOMAT_USER=tomatenquark
+LOGDIR=/var/log/tomatenquark
