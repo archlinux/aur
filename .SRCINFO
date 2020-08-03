@@ -1,0 +1,12 @@
+pkgbase = kewld
+  pkgdesc = A super kewl C++ IRC daemon
+  pkgver = 1.0.0
+  pkgrel = 3
+  url = https://github.com/patztablook22/kewld
+  arch = x86_64
+  license = MIT
+  depends = git
+  depends = glibc
+  depends = openssl
+
+pkgname = kewld
