@@ -1,6 +1,6 @@
 pkgbase = korla-icon-theme-git
 	pkgdesc = Korla icon theme is a mix of the following icon sets: Korla and Papirus
-	pkgver = r520.ddba0352
+	pkgver = r523.1f28c0e0
 	pkgrel = 1
 	url = https://github.com/bikass/korla
 	install = korla-icon-theme-git.install
