@@ -1,15 +1,15 @@
 # Maintainer: Milkii Brewster (milkii on freenode)
 # Creator: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=gimp-plugin-texturize-git
-pkgver=2.2
+pkgver=r35.a14af5b
 pkgrel=1
 pkgdesc="Generates large textures from a small sample"
 arch=('i686' 'x86_64')
 url="http://github.com/lmanul/gimp-texturize/"
 license=('GPL')
-depends=('gimp')
+depends=('git' 'gimp')
 makedepends=('perl-xml-parser')
-source=(git+https://github.com/lmanul/gimp-texturize)
+source=($pkgname::git+https://github.com/lmanul/gimp-texturize)
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,12 +21,12 @@ pkgver() {
  }
 
 prepare() {
-  cd "${srcdir}/gimp-texturize-master"
+  cd "$pkgname"
   ./autogen.sh
 }
 
 build() {
-  cd "$srcdir"/gimp-texturize-master
+  cd "$pkgname"
   # fix the build with recent versions of gimp
   # find . -type f -name "*.c" -exec sed -i '/.*gimpimage_pdb.h.*/ d' '{}' ';'
   # find . -type f -name "*.cpp" -exec sed -i '/.*gimpimage_pdb.h.*/ d' '{}' ';'
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/gimp-texturize-master
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
 }

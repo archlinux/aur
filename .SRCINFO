@@ -1,14 +1,15 @@
 pkgbase = gimp-plugin-texturize-git
 	pkgdesc = Generates large textures from a small sample
-	pkgver = 2.2
+	pkgver = r35.a14af5b
 	pkgrel = 1
 	url = http://github.com/lmanul/gimp-texturize/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = perl-xml-parser
+	depends = git
 	depends = gimp
-	source = git+https://github.com/lmanul/gimp-texturize
+	source = gimp-plugin-texturize-git::git+https://github.com/lmanul/gimp-texturize
 	md5sums = SKIP
 
 pkgname = gimp-plugin-texturize-git
