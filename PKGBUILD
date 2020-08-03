@@ -1,7 +1,7 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com
 pkgname=trytond
-	pkgver=5.4.1
-_pkgdir=5.4
+pkgver=5.6.5
+_pkgdir=5.6
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
@@ -24,7 +24,7 @@ source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'trytond.conf'
         'trytond.service')
-sha256sums=('e0da50838c6aecfed24708e5b14ecee282bed1de94e8c7ba8825370bac4b7c47'
+sha256sums=('a373d73b141d71f8e30d728dd8380955bc0f33daaa097201fa9a952e3663e6d8'
 	 'SKIP'
 	 'b843e9cc60ef01bea8fff6bdcd5cc1bf0838ff04d140caa8fcf146ff87619ae4'
 	 'a5c54c8e0408fd757f7688a784ea0ba713c1f46636b5c67858d3817433151f34')
